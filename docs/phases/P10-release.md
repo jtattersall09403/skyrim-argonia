@@ -11,6 +11,7 @@ files, with the dependency list fetched from its sources; and the owner has a du
 ## Work packages
 
 ### WP10.1 Release artifacts
+- Run universal-modder's `publish-mod` lint and `um publish check` (decision 0020) alongside our no-assets guard.
 - CI builds `Argonia.esm`, our BSAs (our files only), our DLLs (release configuration: ArgoniaBridge excluded),
   PrismaUI views, the fonts (Pelagiad with its OFL licence), the installer; `no_assets.py` checks the release
   file list; artifacts attached to a GitHub release with checksums.

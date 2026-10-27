@@ -9,7 +9,8 @@ FreeClimb, SkyParkour (or not), EVG Animated Traversal and Underwater NG on the 
 **Re-check before starting:** FreeClimb (its repo had one commit when researched), SkyParkour, EVG Animated
 Traversal, Underwater NG and Sailable Ship versions on the pinned runtime.
 
-**Read first.** [skyrim-combat-traversal](../research/2026-10-27/skyrim-combat-traversal.md) §2–3;
+**Read first.** Decision 0020; universal-modder's `port-a-mod` skill (for any fork) and field notes on climbing
+(White Knuckle) and `porting-a-vehicle-semantic-traps` (boats); [skyrim-combat-traversal](../research/2026-10-27/skyrim-combat-traversal.md) §2–3;
 [um-ghidra-lens](../research/2026-10-27/um-ghidra-lens.md) §4 (Faith Runner, AC1 Movement Rewritten, White
 Knuckle note), §6 climbing and boats rows; imported `docs/design/world/76-stats-progression.md` §122;
 `docs/design/research/` botw-climbing-system, skyrim-climbing-mod-survey, swim-climb-boat-implementation,

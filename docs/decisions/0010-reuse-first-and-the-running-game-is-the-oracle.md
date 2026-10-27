@@ -34,7 +34,8 @@ Ghidra approach). Evidence: [um-ghidra-lens](../research/2026-10-27/um-ghidra-le
    written down, with provenance.
 5. **Parity documents.** Each port (combat, climbing, boats) keeps a parity table: feature, source value,
    our value, substitution and reason, check.
-6. **universal-modder itself** (MIT) is vendored in P0 as reference skills (`mod-any-game`,
+6. **universal-modder itself** (MIT) is vendored in P0 (its full skill set, agents and knowledge base: decision
+   0020) as reference skills (`mod-any-game`,
    `reverse-engineering`, `game-automation`, the Bethesda playbook and the relevant field notes), adapted to
    this repo and credited; its safety rules (no anti-cheat titles, no DRM bypass, no redistribution) are
    ours too.

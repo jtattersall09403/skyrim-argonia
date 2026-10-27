@@ -12,7 +12,9 @@ runtime timing-control method. P4-WP4.1 stats exist (or are stubbed with the sam
 **Re-check before starting:** BFCO, Precision (and its 1.7.x port), TDM, OAR, SCAR, CPR versions on the pinned
 runtime; the DSR patch version; new DS-style moveset releases.
 
-**Read first.** Decisions 0004, 0014 §2, 0019; [skyrim-combat-traversal](../research/2026-10-27/skyrim-combat-traversal.md)
+**Read first.** Decisions 0004, 0014 §2, 0019, 0020; universal-modder's `mashup-mods` and `reverse-engineering`
+skills and field notes `porting-dark-souls-remastered-enemies-into-elden-ring`, `collision-and-combat-bridging`,
+`prove-your-replay-bench-can-fail…`; [skyrim-combat-traversal](../research/2026-10-27/skyrim-combat-traversal.md)
 §1, §3, §4; [um-ghidra-lens](../research/2026-10-27/um-ghidra-lens.md) §1.7 (the DSR→Elden Ring port: which DS1
 data carries which behaviour), §3A (DSR tools); imported `docs/design/world/76-stats-progression.md` §116–121,
 §128 (the sheet only); old combat docs only as background on intent.

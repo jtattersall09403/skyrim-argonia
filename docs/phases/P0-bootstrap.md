@@ -39,11 +39,14 @@ three.js-specific:
   `voice-reader`, `corpus-reader` (copy now, adapt in P4); `place-builder` becomes `world-builder` in P3.
 - `.claude/skills/`: `text-review`, `dialogue-write`, `cost-review`, `routing-audit` (adapt now);
   `journey-author` becomes `scenario-author` in P2 (in-game YAML scenarios for the bridge). Vendor
-  universal-modder's `mod-any-game`, `reverse-engineering`, `game-automation` skills and its Bethesda playbook
-  plus the field notes named in decision 0010 into `.claude/skills/um-*` with its MIT licence and a credit
-  line; edit them to point at this repo's tools and rules.
-- `tooling/`: `brief_template.py` (Lane, Paths, Acceptance, Report path, Test level, Route: the same fields as
-  CLAUDE.md and ways-of-working §2), `shell_guard.py` (refuse `sleep`,
+  universal-modder (decision 0020): its skills (`share-field-notes`, `game-recon`, `game-research-websearch`,
+  `reverse-engineering`, `game-automation`, `mod-any-game`, `mashup-mods`, `port-a-mod`, `asset-pipeline`,
+  `fal-assets`, `publish-mod`, `showcase-video`), its three agent definitions (orchestrator, game worker,
+  offline worker; mapped onto our roles), its engine playbooks (Bethesda, FromSoftware) and its knowledge base,
+  into `.claude/skills/um/` and `docs/research/um-knowledge/` with its MIT licence and a credit line; adapt only
+  paths and rules that conflict with this repo.
+- `tooling/`: `brief_template.py` (Lane, Paths, Acceptance, Report path, Test level, Route, **Prior art**: the
+  same fields as CLAUDE.md and ways-of-working §2; decision 0020 §6), `shell_guard.py` (refuse `sleep`,
   poll loops, `git checkout --`/`restore`/`stash`/`reset --hard`, `pkill/killall`, empty commit pathspecs),
   `job_guard.sh` (long jobs in background with a log and a wait that returns within 270 s; `--gpu` takes the
   GPU-box lock so only one lane drives the game), `session_tokens.py`
@@ -82,6 +85,9 @@ download is not from a package manager), installing:
 - Node 22, Chrome for Testing (headless), Playwright: the PrismaUI view harness (L3).
 - JDK 25 + Ghidra 12.2 + PyGhidra 3.2 (headless only), Address Library names database for Skyrim; kept for
   targeted questions (decision 0010 §4).
+- universal-modder's `um` CLI (Python) for `kb search`, `scan`, `backup`, `publish check` (decision 0020 §3).
+- Ghidra MCP servers bound to 127.0.0.1: **pyghidra-mcp** (headless) and **ReVa** (agent-oriented; follow its own
+  CLAUDE.md/AGENTS.md); GhidraMCP only if those fall short (decision 0020 §5).
 - JPEXS FFDec (Java) for inspecting vanilla SWFs and building our own (decision 0014 §7).
 - Souls tools: soulstruct (Python), the Paramdex repo (DS1R/DS3 definitions and names), UXM Selective Unpack and
   DSAnimStudio under the wow64 Wine prefix (if they fail under Wine, P1-S6 names the fallback: a temporary

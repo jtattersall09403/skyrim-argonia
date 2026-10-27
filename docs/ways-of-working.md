@@ -19,8 +19,9 @@ How the planner and its agents build Argonia. Inherited from elder-souls-argonia
 
 Every build brief is written with `tooling/brief_template.py --write` and has: **Lane** (id), **Paths** (what
 the lane owns; others avoid them), **Acceptance** (a runnable command or a measured number, never "looks
-good"), **Report path**, **Test level** (the lowest sufficient), and the **reuse route** chosen (decision 0010)
-with why higher routes were not enough. One deliverable per context; at the context marker (**300k tokens of
+good"), **Report path**, **Test level** (the lowest sufficient), the **reuse route** chosen (decision 0010)
+with why higher routes were not enough, and **Prior art** (decision 0020: which universal-modder field notes and
+skills, mod sources and open reimplementations were searched and what was reused). One deliverable per context; at the context marker (**300k tokens of
 context; 100k for Haiku agents**) an agent commits what is green and writes a hand-off note (done, commits, next
 steps with file:line, reds). A lane whose diff passes **1,500 changed lines** runs one code review (a `reader` or
 `deliver` in review mode) over its commits before reporting.

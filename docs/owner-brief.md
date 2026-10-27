@@ -102,6 +102,7 @@ Something they can **play**, that is:
 | 2026-10-27 | **Our own original UI** for most major screens and **our own HUD**, like the old repo's, looking nothing like Skyrim's (decision 0017). |
 | 2026-10-27 | The $100/month cap is for AWS infrastructure only. |
 | 2026-10-27 | The owner can add the **Creation Kit** from Steam (decision 0018). |
+| 2026-10-27 | Use universal-modder's and the Ghidra ecosystem's agent skills and methods wherever useful: "we really don't want to reinvent the wheel" (decision 0020). |
 | 2026-10-27 | The old project's combat and animations were "quite bad and buggy": do not reproduce them. Combat is Dark Souls-like, **as close as possible to DS1 Remastered's numbers, system and feel**, wired to our stats (decision 0019). |
 | 2026-10-27 | Study **OpenMW's window layouts and contents** to improve our own UI, which "still needs some work"; design the UI holistically with "eyes on" transitions in focused loops, so moving between screens is never jarring (e.g. the skill constellations) (decision 0017 §7–8). |
 | 2026-10-27 | Skyrim's own UI symbols (e.g. the sneak eye) should be **loaded from the player's local Skyrim files**, not redrawn. The **trim flourishes** were made by the owner with ChatGPT and are fine to use. |

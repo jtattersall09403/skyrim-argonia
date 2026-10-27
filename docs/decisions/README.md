@@ -25,6 +25,7 @@ Rulings inherited from elder-souls-argonia are listed (carry / adapt / drop) in
 - [0016](0016-weapon-classes-follow-morrowind.md) Weapon classes follow Morrowind, including crossbows and thrown
 - [0017](0017-our-own-original-ui-ported-from-the-old-repo.md) Our own original UI and HUD, ported from the old project's React design system; one holistic UI with eyes on every transition
 - [0019](0019-combat-is-rebuilt-from-ds1-not-ported-from-the-old-project.md) Combat is rebuilt from Dark Souls Remastered (whole system, wired to our stats), not ported from the old project
+- [0020](0020-reuse-others-methods-universal-modder-and-ghidra-tooling.md) Reuse others' methods: universal-modder's skills, agents and field notes; agent-ready Ghidra tooling (ReVa, pyghidra-mcp)
 - [0018](0018-the-creation-kit-is-a-tool-not-the-workflow.md) The Creation Kit is installed and used as a scripted tool; records are written by code
 
 ## Open owner calls
@@ -51,4 +52,5 @@ recommendation; the answer is recorded in the named record (or a new one) and th
 | O-16 | Does one rest bank one pending level or all of them (left open by old 0147) | P4 packet 1 | One per rest (the old 76 text) |
 | O-17 | Evidence of the permissions the owner already holds (old sourcing log, 2026-09-24: "permission is held from every mod author in the pool, KotM included"): do they cover a public dependency and AI use? | P2 | Share the evidence; send new requests only where it falls short |
 | O-18 | Quest target at maturity: 450–550 (old 0027) or 550–740 (old quest docs) | P9 | 450–550 baseline, 550–740 stretch |
+| O-19 | Contribute our working ports back to universal-modder's knowledge base as scrubbed field notes (decision 0020 §7) | P5 onward | Yes, after the owner sees each note |
 | O-13 | Public name: "Argonia" overlaps Tamriel Rebuilt's planned territory and the dormant Beyond Skyrim: Argonia; release title and Nexus wording must not imply either | P10 | "Elder Souls: Argonia" or similar, with a "not affiliated" line |

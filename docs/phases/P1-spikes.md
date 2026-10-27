@@ -11,7 +11,9 @@ component.
 version, each candidate mod's latest file and supported runtimes, Proton and Selkies versions, GPU spot prices in
 eu-west-2. Record what changed in `docs/research/`.
 
-**Read first.** Decisions 0001, 0002, 0004, 0007, 0008, 0010, 0014; research
+**Read first.** Decisions 0001, 0002, 0004, 0007, 0008, 0010, 0014, 0020; universal-modder's `game-recon`,
+`game-automation` and `reverse-engineering` skills and the field notes listed in 0020 §4 for S1 (command-file
+bridge, frame readback, unkillable-zombie relaunch), S4 (plugin record format), S6 (DSR proxy-DLL note); research
 [skyrim-tooling](../research/2026-10-27/skyrim-tooling.md) (§0–3, §5–7),
 [skyrim-morrowind-soul](../research/2026-10-27/skyrim-morrowind-soul.md) §1, §5,
 [skyrim-combat-traversal](../research/2026-10-27/skyrim-combat-traversal.md) §0–1, §4,

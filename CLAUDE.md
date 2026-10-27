@@ -33,7 +33,7 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 - Reuse first, in route order: data → dependency mod → open-mod fork → Papyrus → our SKSE → our deep hook or
   HTML screen → ask the owner ([0010](docs/decisions/0010-reuse-first-and-the-running-game-is-the-oracle.md)).
 - Base-Skyrim assets come from Tropical Skyrim SSE before vanilla; Black Marsh mods before both (0006 §8).
-- Study before building: owned games, mod source, OpenMW's source, reference ports; record findings in `docs/research/`.
+- Study before building: search universal-modder's field notes and skills first, then owned games, mod source, OpenMW's source, reference ports; record findings in `docs/research/` ([0020](docs/decisions/0020-reuse-others-methods-universal-modder-and-ghidra-tooling.md)).
 - The running game is the oracle: behaviour closes only on an in-game check that can fail (L4+).
 - Ghidra is a scalpel: targeted headless scripts for a named question; output stays in `$ARGONIA_PRIVATE`.
 - Every system is built to its final interface; content can be thin, systems ship whole.
@@ -45,7 +45,7 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 ## Agents and briefs
 
 - Model and effort live only in `.claude/agents/` frontmatter ([ways of working](docs/ways-of-working.md)).
-- Briefs come from `tooling/brief_template.py --write`: Lane, Paths, Acceptance (runnable or measured), Report path, Test level, Route.
+- Briefs come from `tooling/brief_template.py --write`: Lane, Paths, Acceptance (runnable or measured), Report path, Test level, Route, Prior art.
 - One deliverable per context; at the context marker commit what is green and write the hand-off note.
 - One builder per place, plugin module or UI view at a time; no swarms.
 - No `sleep` or polling; long jobs under `job_guard.sh` in the background; waits return within 270 s.

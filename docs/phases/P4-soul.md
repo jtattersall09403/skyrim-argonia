@@ -8,7 +8,8 @@ that need the world use the S4 sample block until P3's places land.
 
 **Re-check before starting:** Custom Skills Framework, PrismaUI, SkyUI 6 and Flat World Map Framework versions.
 
-**Read first.** Decisions 0005 (in full), 0014, 0016; [skyrim-morrowind-soul](../research/2026-10-27/skyrim-morrowind-soul.md)
+**Read first.** Decisions 0005 (in full), 0014, 0016, 0017, 0020; universal-modder's Skyrim field note
+`rebuilding-a-cut-gatekeeper-with-generated-plugin-records…` (quests and dialogue from code); [skyrim-morrowind-soul](../research/2026-10-27/skyrim-morrowind-soul.md)
 in full; [audit-systems](../research/2026-10-27/audit-systems.md); imported design docs:
 `docs/design/world/76-stats-progression.md` (the spec, ~1,640 lines; §102, §116–129 are binding unless a
 decision here changes them), `docs/design/quests/` (00-overview, 20-world-provisions, 30-main-quest,
