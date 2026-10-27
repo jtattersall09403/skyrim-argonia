@@ -1,0 +1,3 @@
+# Private working data that must never reach this public repo (decision 0003): Morrowind text quoted for
+# style reference, owner game files, research dumps. Mirrors $ARGONIA_PRIVATE on a dev box.
+/private/
