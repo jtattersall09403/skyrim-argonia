@@ -187,28 +187,37 @@ PrismaUI views read and write state through the typed message schema (P2-WP2.8).
   replacing Skyrim's local map.
 - **Acceptance:** L3 tests; L4 scenarios open each and read state.
 
-### WP4.10 UI skin, Pelagiad, HUD (C10, C11)
-- **Pelagiad everywhere:** replace the vanilla font set through `fontconfig.txt` and font SWFs (the standard
-  font-replacer method), verifying every vanilla menu in the stack renders Pelagiad (screenshot sweep).
-- **Pelagiad in vanilla menus** comes from our own font library SWF and `fontconfig.txt` (decision 0014 §7).
-- **Morrowind's windows as PrismaUI views:** stats/character sheet, magic (spells by school, powers, effects),
-  **inventory with paperdoll** (equipped slots drawn as Morrowind's doll, filters, weight/burden), map (WP4.9), as
-  tiled windows on desktop and full-screen pages at the phone shapes (the old 2.2 layout).
-- Other vanilla menus (container, barter, crafting, training, sleep/wait, tween/system, MCM): per screen in the
-  0014 §7 order (PrismaUI replacement, our own original SWF via Infinity UI, installer-time patch), recorded per
-  screen with its fallback; acceptance for any SWF is the L4 screenshot sweep.
-- HUD: souls-style bars top-left that grow with stats (health, stamina, magicka, breath), sneak eye (four states:
-  hidden/caution/danger/detected), equipped-hands plaque bottom-left, effect stack bottom-right, vastei plaque,
-  toast queue, place-discovered banner, floating prompt with input glyph; no compass; boss bars via TrueHUD
-  restyled. Gamepad and keyboard prompts both.
-- **Acceptance:** screenshot sweep of every menu and HUD state at 1080p and 720p; reader panel against the old
-  ui-lab references (`apps/ui-lab` shots in the old repo) and the Nordic-tells checklist.
+### WP4.10 Our own UI and HUD (C10, C11; decision 0017)
+- **Port the old screens** from the old `packages/ui/src/screens/` onto the P2 design-system port, wired to
+  ArgoniaCore: Dialogue (with WP4.6), Journal (WP4.9), Inventory **with paperdoll** (equipped slots drawn as
+  Morrowind's doll, filters, weight and burden), Stats/Sheet, Magic and Spells (by school, powers, active
+  effects), Barter/Trade, Container, Services (training, travel, repair, spellmaking, enchanting), Alchemy,
+  Smithing and the other crafting stations, LevelUp (the sitting, WP4.2), Rest, Death (vastei pile), Gift,
+  Factions, Crime (the Owing), Lock, Pickpocket, Reader (books, notes, signs), Settings, PauseDeck, Load (rest-only
+  saving rules), Loading, WindCall (boats, P6). Windows tile on desktop and become full-screen pages at the phone
+  shapes, as in the old 2.2 design. Each screen's old tests move with it.
+- **The HUD** from the old `packages/ui/src/hud/`: souls-style bars that grow with stats (health, stamina,
+  magicka, breath; climb stamina), belt (quick items), corners, crosshair, sneak eye (four states), effect stack,
+  place-discovered banner, quest notices, wind mark, vastei plaque, floating prompt with input glyphs (keyboard
+  and gamepad); no compass. Boss bars drawn by our HUD (TrueHUD only as a data source if that is cheaper).
+- **Vanilla menus are hidden or replaced** wherever our view covers their function (inventory, magic, map,
+  journal, stats, skills/perk constellation, barter, container, training, sleep/wait, lockpicking, crafting,
+  dialogue, race menu, tween menu, HUD, compass). Any vanilla screen that must remain is handled by 0014 §7 and
+  listed in the immersion inventory.
+- **Pelagiad everywhere:** in our views via the web font; in any remaining vanilla text via our own font library
+  SWF and `fontconfig.txt` (0014 §7).
+- OpenMW's MyGUI layouts and Morrowind screenshots are the structural reference for what each window contains
+  (decision 0017 §6); no OpenMW or Bethesda art.
+- **Acceptance:** each ported screen passes its old tests and new L3 screenshot tests at all four viewports; an
+  L4 sweep opens every screen and HUD state in game through the stream at 1080p and 720p; a reader panel compares
+  against the old ui-lab references (read in the old repo, never copied) and the Nordic-tells checklist; no vanilla
+  menu that our views replace can be opened.
 
 ### WP4.11 Items, weapon classes, armour pieces, condition (C5, C6)
 - Import the 508 items (class × material, soft requirements, tempering grades) into WEAP/ARMO/ARMA/MISC/BOOK
   records; weapon class keywords drive the skill used (CSF redirect hook from vanilla One/Two-handed XP).
 - Spears and throwing weapons through dependency mods (Animated Armoury/Armory Extended pattern, Throwable
-  Weapons SKSE); crossbows vanilla (crossbows and thrown are provisional: decision 0016, owner call O-15); Argonian weapon packs (P2 manifest).
+  Weapons SKSE); crossbows vanilla (crossbows and thrown weapons are in: decision 0016); Argonian weapon packs (P2 manifest).
 - Armour slots: helm 30, cuirass 32, pauldrons 57 (+46/47/59 for the second side), greaves 49 or 53, boots 37,
   gauntlets 33 (+58/59), shield 39; body meshes must not include arms/legs where those slots are separate.
   Separate left/right meshes only where a sourced mod ships them; otherwise paired pieces in separate slots

@@ -1,6 +1,7 @@
-# 0016: Weapon classes follow Morrowind, including crossbows and thrown weapons (provisional)
+# 0016: Weapon classes follow Morrowind, including crossbows and thrown weapons
 
-**Status:** provisional 2026-10-27; owner call **O-15** confirms or reverts before P4-WP4.11.
+**Status:** decided 2026-10-27 (owner: "Crossbows and thrown weapons, yes let's have them back in"; O-15
+answered).
 
 ## Context
 
@@ -10,10 +11,9 @@ Morrowind" as a must-have of Morrowind's soul. Morrowind's Marksman covers bows,
 (darts, throwing stars, throwing knives). The newer, more specific owner statement points the other way from the
 old cut, but it is an owner ruling either way.
 
-## Decision (provisional)
+## Decision
 
 1. Marksman covers **bows, crossbows and thrown weapons**, as in Morrowind. Crossbows are vanilla (Dawnguard);
    thrown weapons come from Throwable Weapons SKSE (GPL-3) plus its NPC add-on, as dependencies.
 2. Whips stay cut (not a Morrowind class).
 3. Old decision 0031's crossbow/thrown cut moves from Carry to **Adapt** in inherited-rulings.
-4. If the owner reverts (O-15), Marksman = bows only, and crossbows/thrown are hidden by the immersion inventory.

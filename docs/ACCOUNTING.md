@@ -73,6 +73,10 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | B9 | Native phone was an option, streaming acceptable | 0007 |
 | B10 | Tropical Skyrim SSE for base assets | 0006 §8 |
 | B11 | VS Code in the browser for working on the VM | 0008 §1; infra/README |
+| B12 | Crossbows and thrown weapons back in | 0016 |
+| B13 | Our own original UI for major screens and our own HUD, like the old repo's; use mod-scene or OpenMW UI only if it saves work | 0017 (port of the old React design system; OpenMW as structural reference; no Morrowind UI exists in the Skyrim mod scene) |
+| B14 | The $100 cap is AWS infrastructure only | 0008 |
+| B15 | FaceGen and distant terrain: "surely handled by Skyrim's engine" | 0014 §3–4 explains: the engine draws them, but from per-NPC face files and per-worldspace LOD files that a new worldspace and new NPCs lack; templates reuse existing faces; terrain LOD meshes are ours and may ship |
 
 ## C. Engine and approach research
 
@@ -110,7 +114,7 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | D5 | No persuasion menu, no 0–100 disposition in Skyrim | In | P4-WP4.6 |
 | D6 | Custom Skills Framework (MIT), Sleep to Gain Experience, Sleep to Level Up, E.S.L.A., Classic Classes and Birthsigns, Experience, Skill Uncapper, Gold Is XP, Enderal progression | In | P4-WP4.1/4.2 |
 | D7 | Respawn – Soulslike (grave + last bed, permissive), Respawn – Death Overhaul | In | P4-WP4.4 |
-| D8 | Animated Armoury, Armory Extended, Throwable Weapons SKSE, crossbows vanilla | In | P4-WP4.11; P2-WP2.1; crossbows/thrown provisional (0016, O-15) |
+| D8 | Animated Armoury, Armory Extended, Throwable Weapons SKSE, crossbows vanilla | In | P4-WP4.11; P2-WP2.1; crossbows/thrown in (0016, owner ruling) |
 | D9 | Split L/R armour meshes are an asset gap; body mesh conflicts | In / Open | P4-WP4.11; O-9 |
 | D10 | Wayfinder, No Google Maps Skyrim (GPL), Compass Navigation Overhaul, quest-marker settings, Flat World Map Framework, A Quality World Map, Atlas Map Markers | In | P4-WP4.8/4.9 |
 | D11 | SkyUI 6, Infinity UI, TrueHUD, PrismaUI (licence: dependency fine; forks need permission; Ultralight licence), dMenu NG, full SWF skins; Scaleform authoring poor on Linux | In | P2-WP2.8; P4-WP4.10 |
@@ -228,7 +232,7 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 |---|---|---|
 | I1 | Re-timing animations "with annotations" would ship modified clips | decision 0014 §2; P1-S9/G9; P5 constants, WP5.2, WP5.9; CLAUDE.md |
 | I2 | FaceGen, LOD, silent voice files are derived assets | 0014 §3–6; 0003 §7; P1-S4; P2-WP2.3; P3-WP3.8; Fuz Ro D-oh |
-| I3 | Crossbows/thrown reintroduced against old 0031 | decision 0016 (provisional), O-15; inherited-rulings 0031 row |
+| I3 | Crossbows/thrown reintroduced against old 0031 | decision 0016; the owner confirmed them on 2026-10-27; inherited-rulings 0031 row |
 | I4 | Budget at the cap; costs unbudgeted | 0008 hard cap, per-phase budgets, stop-and-ask rule |
 | I5 | 0002 named the wrong spike | 0002 → P1-S3/G3 |
 | I6 | Vanilla SWF reskins and the font SWF | 0014 §7; P4-WP4.10; P8-WP8.3; FFDec in P0-WP0.4 |

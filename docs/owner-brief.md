@@ -98,3 +98,6 @@ Something they can **play**, that is:
 | 2026-10-27 | Native phone play was "an option" to compare, not a requirement; streaming is acceptable. |
 | 2026-10-27 | Use **Tropical Skyrim** (the SSE version, [Nexus SSE 78044](https://www.nexusmods.com/skyrimspecialedition/mods/78044); original [Nexus 33017](https://www.nexusmods.com/skyrim/mods/33017)) as the source for any base-Skyrim game assets: where we would use a vanilla Skyrim asset, use Tropical Skyrim's version. |
 | 2026-10-27 | The owner works on the build machine through **VS Code in the browser** (vscode.dev tunnel). |
+| 2026-10-27 | **Crossbows and thrown weapons are back in** (Morrowind's Marksman). |
+| 2026-10-27 | **Our own original UI** for most major screens and **our own HUD**, like the old repo's, looking nothing like Skyrim's (decision 0017). |
+| 2026-10-27 | The $100/month cap is for AWS infrastructure only. |

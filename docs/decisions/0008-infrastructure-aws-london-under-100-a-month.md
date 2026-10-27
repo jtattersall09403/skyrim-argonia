@@ -37,7 +37,9 @@ possible", London). Prices re-measured in P0 and recorded in [infra/README.md](.
 | S3 (saves, small backups) | <10 GB | <1 |
 | **Total** | | **~$95–110** |
 
-This is at the limit. **The $100 is a hard cap** for AWS (owner rule). **Levers, in order:** idle-stop the build VM when no agent session runs (biggest);
+This is at the limit. **The $100 is a hard cap for AWS infrastructure only** (owner rule). The Claude
+subscription is separate (decision 0013); Fal usage is separate and small (the old project's UI art cost about
+$0.15 per generated image) and is reported in check-ins. **Levers, in order:** idle-stop the build VM when no agent session runs (biggest);
 shrink the GPU disk by keeping only the pinned files; use g4dn for agent runs; release the old
 elder-souls-argonia machine's 250 GiB disk (~$23/month while stopped, outside this table: owner call O-1);
 move to `m7i.large` for the build VM during low-parallelism phases.

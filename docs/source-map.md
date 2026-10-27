@@ -23,7 +23,7 @@ recorded in `world/IMPORTED_FROM.md`, never silently skipped.
 | `world/sources/lore/` | lore dossiers (era policy, sources) | `world/sources/lore/` | the Morrowind dialogue corpus file: private, as above |
 | `world/sources/assets/registry-*.jsonl`, `registry-summary.json` | vault inventory (27,929 rows) and pool summary | `world/sources/assets/` | metadata only, no assets |
 | `packages/world-schema/schemas/*.json`, `integrity.py` | 21 schemas and the integrity checker | `world/schemas/`, `tools/argonia_world/integrity.py` | |
-| `packages/ui/src/tokens/palette.ts` | UI palette tokens | `ui/src/tokens/palette.ts` | |
+| `packages/ui/` (src, tests, CSS: tokens, components, focus and viewport models, HUD, map, screens; ~18,400 lines of React 19) | our design system and every screen | `ui/` (P2-WP2.8, P4-WP4.10) | decision 0017; assets only if provenance-clean: `Pelagiad.woff` + OFL (yes), Fal-made map glyphs (yes), `symbols.svg` (split: Fal-made symbols yes, shapes exported from Skyrim's `hudmenu.gfx` **no**, redraw), `flourish-*.webp` (check the reference image's source first) |
 | Pelagiad font files and licence (from the old repo or OpenMW) | font | `ui/fonts/` | OFL; allowlisted |
 
 Read **in place** from the old repo, not imported: README credits (~lines 48–320), `tooling/asset-pipeline/mod-register.json`,
@@ -68,7 +68,7 @@ permission evidence), the old kit manifests used by the kit-id mapper (P1-S4).
 ## 4. Not imported (deliberately)
 
 - `apps/`, `packages/*` code (three.js renderer, R3F, Rapier, ecctrl, studio, game shell), except the data
-  and docs listed above. The TypeScript dialogue/narrative runtime may be read in P1-S5 to decide whether it runs
+  and docs listed above and **`packages/ui`**, which is ported (decision 0017). The TypeScript dialogue/narrative runtime may be read in P1-S5 to decide whether it runs
   inside PrismaUI; if so it is copied then, with a note.
 - `apps/world-studio/public/` (562 MB of converted Skyrim and mod assets): never.
 - `lanes/` (2.3 GB of agent work folders): never; lessons are already in the audits.

@@ -132,12 +132,15 @@ and permission requests out to mod authors.
 - **Acceptance:** the inventory lists every vanilla menu and every record our sample world references; counts
   by type are in PROGRESS.
 
-### WP2.8 The PrismaUI view harness
-- `ui/` (TypeScript, Vite): shared tokens from the old `packages/ui/src/tokens/palette.ts` (panel #0e1711, trim
-  #6b7744, bone #d6cfb0, health #8f2e22, stamina #2a6b33, magicka #2f4e94, breath #386570, marker tan #d8b070,
-  crime #e0705a), Pelagiad web font (OFL licence file shipped), components (window, scroll list, hyperlink
-  text, tooltip, button, bar), a mock data server, Playwright screenshot tests at 1920×1080 and 1280×720,
-  keyboard/gamepad navigation tests.
+### WP2.8 Port the old design system into the PrismaUI view harness (decision 0017)
+- `ui/` (React 19, TypeScript, Vite): port the old `packages/ui` design system as-is where possible: tokens and
+  palette (panel #0e1711, trim #6b7744, bone #d6cfb0, health #8f2e22, stamina #2a6b33, magicka #2f4e94, breath
+  #386570, marker tan #d8b070, crime #e0705a), components (Window, Deck, List, Tabs, Tip, Bar, Meter, Slider,
+  CountPicker, Linked, Items, Overlays, Symbol), the focus model (keyboard/gamepad/touch), the viewport model, CSS,
+  and their vitest tests; Pelagiad web font with its OFL licence; only provenance-clean assets (0017 §5: split
+  `symbols.svg`, redraw the Skyrim-derived glyphs, check the flourishes' source image).
+- Replace old `@elder-souls/game-core` / `text-catalogue` imports with the typed message schema; a mock data
+  server feeds the harness; Playwright screenshot tests; keyboard/gamepad navigation tests.
 - The bridge between ArgoniaCore and views: a typed JSON message schema (`ui/schema/*.ts` and its C++ twin
   generated from one source).
 - Viewports: 1920×1080, 1280×720, and the Honor Magic V5's folded (~21:9) and unfolded (near-square) shapes at

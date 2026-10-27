@@ -22,7 +22,8 @@ Rulings inherited from elder-souls-argonia are listed (carry / adapt / drop) in
 - [0013](0013-subscription-and-pace.md) Subscription and pace: 5x first, 20x for parallel content
 - [0014](0014-derived-files-are-made-on-the-players-machine.md) Derived files (FaceGen, LOD, behaviours, timing, menus) are made at runtime or on the player's machine
 - [0015](0015-repo-licence-and-licence-tracking.md) Repo licence (GPL-3.0 code, CC BY-NC-SA content, recommended) and licence tracking
-- [0016](0016-weapon-classes-follow-morrowind.md) Weapon classes follow Morrowind, including crossbows and thrown (provisional)
+- [0016](0016-weapon-classes-follow-morrowind.md) Weapon classes follow Morrowind, including crossbows and thrown
+- [0017](0017-our-own-original-ui-ported-from-the-old-repo.md) Our own original UI and HUD, ported from the old project's React design system
 
 ## Open owner calls
 
@@ -44,7 +45,7 @@ recommendation; the answer is recorded in the named record (or a new one) and th
 | O-11 | Voice: stay unvoiced text dialogue (old 0139/0143) | P4 | Yes |
 | O-12 | Old repo's GitHub Pages build exposes converted assets publicly (outside this repo's scope) | any time | Owner's choice; flagged only |
 | O-14 | Repo licence (decision 0015) | P0 | GPL-3.0-or-later code, CC BY-NC-SA 4.0 content |
-| O-15 | Crossbows and thrown weapons back in (decision 0016), reversing the old 0031 cut | P4 | Yes (Morrowind's Marksman) |
+| ~~O-15~~ | ~~Crossbows and thrown weapons back in~~ | — | **Answered 2026-10-27: yes** (decision 0016) |
 | O-16 | Does one rest bank one pending level or all of them (left open by old 0147) | P4 packet 1 | One per rest (the old 76 text) |
 | O-17 | Evidence of the permissions the owner already holds (old sourcing log, 2026-09-24: "permission is held from every mod author in the pool, KotM included"): do they cover a public dependency and AI use? | P2 | Share the evidence; send new requests only where it falls short |
 | O-18 | Quest target at maturity: 450–550 (old 0027) or 550–740 (old quest docs) | P9 | 450–550 baseline, 550–740 stretch |

@@ -56,8 +56,8 @@ skse/  (CMake, CommonLibSSE-NG, built from Linux)
    ArgoniaBoats   helm sailing (Wind Waker model), boat ownership/moorings/recovery
    ArgoniaBridge  DEV ONLY: localhost HTTP/MCP for agents (teleport, console, state, screenshots, input queue)
 papyrus/   our scripts (quest fragments generated + hand-written systems glue)
-ui/        PrismaUI views (TypeScript/HTML/CSS): dialogue, journal, local map, sitting, persuasion, chargen,
-           HUD, stats/inventory skins; a mock harness runs them in headless Chrome
+ui/        our own original UI as PrismaUI views (React/TypeScript), ported from the old repo's design system
+           (decision 0017): HUD and every major screen; a mock harness runs them in headless Chrome
 data/      golden combat table, dependency manifest (pinned mods), immersion inventory, sourcing register,
            FormID allocator, parity tables
 installer/ modlist manifest + install/verify scripts; later a Wabbajack/Jackify list
@@ -109,7 +109,7 @@ hook/HTML screen). "Deps" are player-downloaded mods (pinned in P2). Source desi
 | Quests as data, conditions | 0153, condition vocabulary | 1 + 4 + 5 | — | quest generator + condition evaluator | P4, P9 |
 | Journal, directions, no markers | 0137 | 2 + 5 + 6 | Wayfinder (pattern), No Google Maps | directions generator + journal view | P4 |
 | World map, local map | old map styles | 2 + 6 | Flat World Map Framework | map art (UI) + local map view | P4 |
-| UI skin, Pelagiad, HUD, chargen, inventory with paperdoll | 2.2 UI, palette | 1 + 2 + 6 | SkyUI 6, TrueHUD, Infinity UI, PrismaUI | views, our font library (0014 §7) | P4 |
+| Our own UI and HUD (every major screen, chargen, inventory with paperdoll), Pelagiad | old `packages/ui` (React), 2.2 UI, palette | 6 (port) | PrismaUI; TrueHUD/Infinity UI only to save engineering | ported views (0017), our font library (0014 §7) | P2, P4, P8 |
 | Weapon classes (incl. crossbows/thrown, 0016), armour slots, armour rating, condition | 76 §118, 0040 | 1 + 2 + 5 | spear/throwing mods, animation sets | keywords, slot data, rating hook | P4 |
 | Economy, barter, training, services | 0141, 76 §124 | 1 + 4 (+5) | — | data, price hook | P4 |
 | Magic (never fails, spellmaking, hands, dual cast) | 0146, 0148, 76 §123 | 1 + 4 + 5 | Skyrim magic | ArgoniaCore magic rules | P4 |

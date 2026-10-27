@@ -34,7 +34,7 @@ water) tuned. After P8, everything new in P9 enters the inventory already compli
   sampled verdicts (disagreements fixed and the rule that caused them updated).
 
 ### WP8.3 UI, menus, fonts, loading screens, main menu
-- Every vanilla menu in the stack (including MCM, tween menu, system menu, journal tabs we kept, crafting,
+- Our own views (decision 0017) cover every major screen and the HUD from P4. Here: every remaining vanilla menu in the stack (including MCM, tween menu, system menu, journal tabs we kept, crafting,
   lockpicking if kept, training, sleep/wait, loading menu, main menu, credits) restyled or replaced by the decision
   0014 §7 order (PrismaUI replacement, our own original SWF, installer-time patch; never a shipped edit of a
   Bethesda or mod SWF); Pelagiad
