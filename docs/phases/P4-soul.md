@@ -345,7 +345,7 @@ The old registries no other WP names (source-map §1 imports them):
 - `deeds.json` (counters read by the condition vocabulary) and `rumour-pools.json` → ArgoniaCore state used by the
   WP4.6 evaluator;
 - `markers.json` → WP4.8 grantable markers;
-- `physical-materials.json` (arrow stick/ricochet/break) → P5-WP5.7.
+- `physical-materials.json` (arrow stick/ricochet/break) → P5-WP5.9.
 - **Acceptance:** each registry has a consumer and an L1 check that every row is used; L4 scenario for one hazard,
   one harvest and one rumour.
 

@@ -43,8 +43,9 @@ permission evidence), the old kit manifests used by the kit-id mapper (P1-S4).
   source-game-systems-crosscheck, slice-systems-checklist), `docs/research/lore/creature-asset-availability.md`.
 - `docs/phases/2-slice/` (2.1–2.15 briefs and outcomes) for design intent; `docs/phases/P-polish/backlog.md`
   (~470 rows) to triage in P7 for anything still relevant.
-- `apps/combat-sandbox/docs/architecture/` (poise-and-stagger, ranged-combat, input) and
-  `packages/game-core/src/combat/README.md`, `packages/game-core/src/stats/README.md`.
+- `packages/game-core/src/stats/README.md` (the sheet). The old combat docs
+  (`apps/combat-sandbox/docs/architecture/`, `packages/game-core/src/combat/README.md`, the poise research) are
+  **background on intent only**: the old combat is not ported (decision 0019).
 - `docs/decisions/` in full as `docs/design/old-decisions/` (the why behind every inherited ruling).
 - `apps/ui-lab` screenshots are referenced by path in the old repo only (they contain rendered Skyrim assets:
   never copied here).

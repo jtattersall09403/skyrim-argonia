@@ -66,15 +66,17 @@ Status: `todo`, `in progress (lane)`, `done (commit)`, `blocked (why)`, `dropped
 | P4 | 4.19 | Schedules and the lamp clock | todo |
 | P4 | 4.20 | Owner packets | todo |
 | P4 | 4.21 | World registries | todo |
+| P5 | 5.0 | Wiring specification | todo |
 | P5 | 5.1 | Measure DSR into the golden table | todo |
-| P5 | 5.2 | Configure the stack | todo |
-| P5 | 5.3 | ArgoniaCombat core | todo |
-| P5 | 5.4 | ±1-frame test dummy | todo |
-| P5 | 5.5 | Enemy AI and archetypes | todo |
-| P5 | 5.6 | Bosses | todo |
-| P5 | 5.7 | Ranged and hand-to-hand | todo |
-| P5 | 5.8 | Ragdolls and hit feel | todo |
-| P5 | 5.9 | Owner feel packets | todo |
+| P5 | 5.2 | Combat engine: DS1 state machine in our core | todo |
+| P5 | 5.3 | Adapter over the frameworks | todo |
+| P5 | 5.4 | Movesets chosen for fidelity | todo |
+| P5 | 5.5 | ±1-frame test suite | todo |
+| P5 | 5.6 | Enemy AI and archetypes | todo |
+| P5 | 5.7 | Feel against DSR, side by side | todo |
+| P5 | 5.8 | Bosses | todo |
+| P5 | 5.9 | Ranged, thrown, hand-to-hand, ragdolls | todo |
+| P5 | 5.10 | Owner feel packets | todo |
 | P6 | 6.1 | Climbing | todo |
 | P6 | 6.2 | Ladders | todo |
 | P6 | 6.3 | Swimming and diving | todo |

@@ -39,8 +39,8 @@ live (since Nov 2022) though it has no client anti-cheat.
 
 - The 13/11/9 question is first answered by P1 gate G6 and confirmed (with the full table) in P5-WP5.1; the
   result is written back here.
-- The old weapon-family parry windows (old 0040: one-hand 0.20 s, two-hand 0.16 s, shield 0.26 s) and the old
-  0.1–0.29 s constant are replaced by DS1's measured shield and parry-weapon windows; the parity table records it.
+- Decision 0019 widens this record: DSR specifies the whole combat system, not only timings; nothing of the old
+  project's combat (code, constants, animation choices) is inherited.
 - Burden tiers: Argonia's ratios (fast < 0.2, mid < 0.35, fat < 1, of carry capacity) define the tiers; DSR
   supplies the i-frames and recovery per tier (DSR's own 25%/50% thresholds do not bind).
 - Combat feel depends on Skyrim animations matching DS1 windows; timing is fixed on the animation side through

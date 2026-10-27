@@ -24,7 +24,7 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | A11 | Morrowind-style map | In | 0005 C9; P3-WP3.8 map image; P4-WP4.9 |
 | A12 | Cuirass, pauldrons etc. (nice to have) | In | 0005 C6; P4-WP4.11; O-9 for split meshes |
 | A13 | Custom HUD | In | 0005 C11; P4-WP4.10 |
-| A14 | Dark Souls combat hooked to Morrowind-based stats | In | 0004; P5-WP5.3 damage formula on the sheet |
+| A14 | Dark Souls combat hooked to Morrowind-based stats | In | 0004, 0019; P5-WP5.0 wiring spec, WP5.2 state machine |
 | A15 | Use the existing thinking in the argonia repo for combat/stats | In | imported 76-stats-progression and combat docs; P4/P5 read lists |
 | A16 | ds3-open-re as a reverse-engineering example | Out (as a tool) | it is netcode only (engine-feasibility §3, um-ghidra-lens §3.1); DSR data tools used instead (0004) |
 | A17 | Ghidra, universal-modder, Ghidrust for RE and extraction | In | 0010 (route order, scalpel use, vendored skills); P0-WP0.2/0.4; P5-WP5.1; Ghidrust Out as experimental (um-ghidra-lens §2.2) |
@@ -81,6 +81,7 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | B18 | Holistic UI design; "eyes on" transitions in focused loops; no jarring vanilla screens (e.g. constellations) | 0017 §7; P4-WP4.10a (UI map), WP4.10 (transition loop); P8-WP8.3; perk constellations hidden (WP4.3) |
 | B19 | Load Skyrim's own symbols (sneak eye) from the player's files | 0017 §5; 0014 §8; P2-WP2.8 |
 | B20 | Trim flourishes are the owner's ChatGPT art | 0017 §5; sourcing register |
+| B21 | Do not reproduce the old project's buggy combat and animations; DS1R numbers, system and feel, wired to our stats | 0019; P5 rewritten (WP5.0 wiring spec, WP5.2 DS1 state machine in a tested core, WP5.4 movesets chosen for fidelity, WP5.7 side-by-side with DSR); inherited-rulings 0037/0040/0090 |
 | B15 | FaceGen and distant terrain: "surely handled by Skyrim's engine" | 0014 §3–4 explains: the engine draws them, but from per-NPC face files and per-worldspace LOD files that a new worldspace and new NPCs lack; templates reuse existing faces; terrain LOD meshes are ours and may ship |
 
 ## C. Engine and approach research
@@ -90,7 +91,7 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | C1 | OpenMW 0.51: Morrowind systems native, Lua combat partly hardcoded, water one level per cell, Skyrim ESM4 load-and-view only, no maintained Android build | Out (as host) | 0001 table; engine-feasibility research; fallback trigger 0001 §3 |
 | C2 | OpenMW mods (dodge, lock-on, parry, sailing ship, climbing compilation, NCGD, Surefire…) and their permissions | Out (as host) | engine-feasibility §4; used only if the fallback triggers |
 | C3 | Morrowind/OpenMW asset coverage for Black Marsh is thin (5–15% of the Argonian core) | In (as evidence) | 0001 rationale |
-| C4 | OpenMW modern-physics fork (ragdolls, carry/throw) | Out | AI-written, unreviewed, Windows-only; ragdolls come from XP32 + Precision (P5-WP5.8) |
+| C4 | OpenMW modern-physics fork (ragdolls, carry/throw) | Out | AI-written, unreviewed, Windows-only; ragdolls come from XP32 + Precision (P5-WP5.9) |
 | C5 | openmw-web (WASM), Android community builds | Out | Skyrim host; no native phone (0007) |
 | C6 | Mudcrab: converter + world viewer, not playable | Out (now) | 0001 S4 |
 | C7 | Bandai Namco EULA: no RE, no derivative works, DMCA history | In | 0004; legal §1 |
@@ -126,14 +127,14 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | D12 | Encounter zones min=max, Morrowloot, carriages pattern for travel, EnableFastTravel, training game setting, merchant gold | In | P4-WP4.12–4.14 |
 | D13 | Beyond Skyrim: Argonia dormant; name overlap | In / Open | O-13 |
 | D14 | Precision (API callbacks), TDM (no distance setter), TrueHUD, OAR (custom conditions), BFCO (active; conflicts with MCO), SCAR (MIT), CPR, UND, Wait Your Turn, Distance Based Combat, TK Dodge SE (restrictive) vs RE/Redux, Valhalla (BSD-3), Elden Parry, Rim Parry, zxlice, Blade and Blunt, Poisebreaker, Chocolate Poise (MIT), Archery Locational Damage, AMR/AMF, LoreRim/Elder Souls modlists | In | P5-WP5.2/5.3; P2-WP2.1 conflict list |
-| D15 | No melee hit-zone mod; buildable from Precision's hit rigid body | In | P5-WP5.3 |
-| D16 | ArgoniaCombat design (pre-hit ignore for i-frames, OAR burden-tier roll, parry window, riposte paired anims, backstab angle, poise fork, 20 m lock-on ≈ 1,400 units) | In | P5-WP5.3 |
-| D17 | ±1-frame test dummy at 30/60 fps; tunnelling check | In | P5-WP5.4 |
+| D15 | No melee hit-zone mod; buildable from Precision's hit rigid body | In | P5-WP5.3 (per-hitbox rates as DS1 data defines them, 0019) |
+| D16 | ArgoniaCombat design (pre-hit ignore for i-frames, OAR burden-tier roll, parry window, riposte paired anims, backstab angle, poise fork, 20 m lock-on ≈ 1,400 units) | In (adapter mechanics) / replaced (numbers) | P5-WP5.3 adapter; numbers and rules now from DSR (0019): lock-on from `LockCamParam`, per-hitbox rates instead of head ×2, poise in our core (Chocolate Poise as reference only) |
+| D17 | ±1-frame test dummy at 30/60 fps; tunnelling check | In | P5-WP5.5 |
 | D18 | FromSoft-derived movesets on Nexus (e.g. Cathedral Knight) | Out | 0004 §5 |
 | D19 | FreeClimb (GPL-3.0-only; Mixamo/Threepeat clips), SkyParkour, SkyClimb (superseded), EVG Animated Traversal (ladders), climbing stamina add-on | In | P6-WP6.1/6.2 |
 | D20 | Underwater NG, swim sprint mod, vanilla diving | In | P6-WP6.3 |
 | D21 | Sailable Ship (scripted helm, issues: deck instability, unanimated sails, save at helm, 60 fps), Sailboats (mount race, restrictive), L.V.X Boats, Rowboats (CC BY-SA), rowboat spell, Animated Ships | In | P6-WP6.4/6.5 |
-| D22 | PLANCK VR-only; XP32 True Ragdoll; Precision impulses; Skyrim Delirium unverified | In / Out | P5-WP5.8 (PLANCK Out: VR only) |
+| D22 | PLANCK VR-only; XP32 True Ragdoll; Precision impulses; Skyrim Delirium unverified | In / Out | P5-WP5.9 (PLANCK Out: VR only) |
 | D23 | Pandora under Proton fragile; generate on the playing machine | In | P1-S3; P2 risks |
 | D24 | Mutagen, Spriggit, Synthesis (not needed), xEdit under Wine (read-only), plugin2text (lossy) | In | P2-WP2.5; P0-WP0.4 |
 | D25 | Terrain maps exactly (126×126 cells at one sample per vertex); VHGT re-basing; ≤6 layers per quadrant | In | P3-WP3.1 |
@@ -235,7 +236,7 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 
 | # | Finding | Fixed in |
 |---|---|---|
-| I1 | Re-timing animations "with annotations" would ship modified clips | decision 0014 §2; P1-S9/G9; P5 constants, WP5.2, WP5.9; CLAUDE.md |
+| I1 | Re-timing animations "with annotations" would ship modified clips | decision 0014 §2; P1-S9/G9; P5 fixed rules, WP5.3, WP5.4, WP5.10; CLAUDE.md |
 | I2 | FaceGen, LOD, silent voice files are derived assets | 0014 §3–6; 0003 §7; P1-S4; P2-WP2.3; P3-WP3.8; Fuz Ro D-oh |
 | I3 | Crossbows/thrown reintroduced against old 0031 | decision 0016; the owner confirmed them on 2026-10-27; inherited-rulings 0031 row |
 | I4 | Budget at the cap; costs unbudgeted | 0008 hard cap, per-phase budgets, stop-and-ask rule |

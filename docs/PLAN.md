@@ -119,15 +119,10 @@ hook/HTML screen). "Deps" are player-downloaded mods (pinned in P2). Source desi
 | Crafting (alchemy, smithing tiers, enchanting) | 0150, 76 §124 | 1 + 4 | Skyrim crafting | recipes, stations | P4 |
 | Stealth, crime, Owing, locks, pickpocket | 0151, 0092 | 1 + 4 + 5 | Skyrim detection | Owing ledger, lock threshold | P4 |
 | Factions, reputation, allegiance | 0028, 76 §125 | 1 + 4 | — | data + Papyrus | P4 |
-| Hit detection | — | 2 | Precision | — | P5 |
-| Dodge/roll i-frames by equip load | DSR | 2 + 5 | TK Dodge RE/Redux, OAR | ArgoniaCombat | P5 |
-| Parry, riposte, backstab | DSR | 2 + 5 | Elden Parry (window), paired anims | ArgoniaCombat | P5 |
-| Poise and stagger | DSR, 0037 | 3 + 5 | Chocolate Poise (MIT fork) | ArgoniaCombat | P5 |
-| Hit zones (head ×2) | 76 §121 | 5 | Precision API | ArgoniaCombat | P5 |
-| Lock-on (20 m) | old lockOn | 2 (+5) | True Directional Movement | range enforcement | P5 |
-| Stamina | 76 §121.2 | 1 + 5 | — | ArgoniaCombat table | P5 |
-| Movesets and attack framework | DSR timings | 2 (+5) | BFCO (+AMR, Payload Interpreter, MCM Helper, XPMSSE), permitted movesets | runtime timing control (0014 §2) | P1-G9, P5 |
-| Enemy AI, bosses | DSR AI shape, 0142 | 2 + 5 | SCAR (MIT), CPR, UND, Wait Your Turn, TrueHUD | boss phases | P5 |
+| **Combat: DS1's whole system** (state machine, buffering and cancels, roll/backstep i-frames by burden, stamina, guard, parry/riposte, backstab, poise and stagger, hyper-armour, per-hitbox rates, lock-on) | **DSR measured** (0004, 0019); nothing from the old combat | 5 | Precision (hits), BFCO (attacks), TK Dodge (roll input), TDM (lock-on), OAR (clip choice) as I/O only | ArgoniaCombat: our core state machine + adapter | P5 |
+| Wiring DS1 to our stats | 76 sheet + DSR | 5 | — | the wiring specification (P5-WP5.0) | P5 |
+| Movesets | chosen for DS1 fidelity (0019 §4) | 2 (+5) | permitted Skyrim movesets, AMR, Payload Interpreter, XPMSSE | runtime timing control (0014 §2) | P1-G9, P5 |
+| Enemy AI, bosses | DSR AI shape, 0142 | 2 + 5 | SCAR (MIT), CPR, UND, Wait Your Turn | AI config from DSR summaries; boss phases | P5 |
 | Ranged (shoulder aim, recoverable arrows) | 76 §121.1 | 1 + 2 | Skyrim archery, TDM aim | tuning | P5 |
 | Climbing | 0152 BotW | 2 (+3) | FreeClimb (GPL), SkyParkour | stamina/rule tuning | P6 |
 | Ladders | 0152 | 2 | EVG Animated Traversal | marker placement | P6 |
@@ -137,7 +132,7 @@ hook/HTML screen). "Deps" are player-downloaded mods (pinned in P2). Source desi
 | Graphics: lighting, fog, volumetrics | owner | 2 | Community Shaders (+ its volumetric/fog features), weather mods restyled | presets | P2, P8 |
 | Music, ambience, UI sound | owner | 1 + Fal/CC | — | music records | P8 |
 | Vanilla quarantine | 0012 | 1 + 4 | Fuz Ro D-oh (silent lines) | start quest, overrides | P2, P8 |
-| World registries: hazards, grave stakes, harvest, deeds, rumours, markers, physical materials | old registries | 1 + 4 + 5 | — | data + ArgoniaCore | P4-WP4.21, P5-WP5.7 |
+| World registries: hazards, grave stakes, harvest, deeds, rumours, markers, physical materials | old registries | 1 + 4 + 5 | — | data + ArgoniaCore | P4-WP4.21, P5-WP5.9 |
 | Immersion inventory and audit | 0006 | tool | — | inventory generator | P2 → P8 |
 | Install, pin, distribute | 0002, 0003 | — | SKSE, Address Library, Pandora, PrismaUI | installer, modlist | P2, P10 |
 

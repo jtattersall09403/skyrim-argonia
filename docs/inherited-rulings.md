@@ -38,10 +38,10 @@ decisions or a later owner ruling change them. A row's verdict changes only by a
 | 0034 | build sequence (superseded) | Drop | |
 | 0035 | attributes and pace | Carry | |
 | 0036 | vegetation placement | Adapt | REFR scatter + grass (P3-WP3.7) |
-| 0037 | stat QA rulings (DS1 poise, no practice discount) | Carry | poise numbers now measured from DSR (0004) |
+| 0037 | stat QA rulings (DS1 poise, no practice discount) | Carry / Adapt | no practice discount carries; poise is DS1's measured system, not the old numbers (0019) |
 | 0038 | package rule (superseded) | Drop | |
 | 0039 | source-game crosscheck triage (no survival, no bleedout) | Carry | |
-| 0040 | animation packs and combat rules they carry | Adapt | Skyrim movesets as dependencies; no FromSoft rips (0004) |
+| 0040 | animation packs and combat rules they carry | Drop | movesets are re-chosen for DS1 fidelity; old parry rules replaced by DSR (0019) |
 | 0041 | settlements and places | Carry | |
 | 0042 | build-out steers (cuts: mounts, fire spread, tide gating, river pirates, drifting settlements; Hist powers kept; engineering standards) | Carry / Adapt | cuts and Hist powers carry; engineering standards replaced by ways-of-working |
 | 0043 | text quality workstream | Carry | style guide, linter, reviewer |
@@ -65,7 +65,7 @@ decisions or a later owner ruling change them. A row's verdict changes only by a
 | 0085, 0086 | kit truth mined from placement evidence; kit skills | Adapt | "read what goes with what from plugin data" carries; kit skills not copied |
 | 0087 | Opus decides when delegated (superseded in part) | Drop | |
 | 0088, 0089 | stats model and combat runtime as packages | Adapt | ArgoniaCore/ArgoniaCombat with a pure core library |
-| 0090 | arrow damage calibrated to the band ladder | Carry | |
+| 0090 | arrow damage calibrated to the band ladder | Adapt | intent only; ranged damage comes from the wiring spec (0019) |
 | 0091 | off hand holds shield, weapon or light | Carry | native |
 | 0092 | stealth is a detection service | Adapt | Skyrim detection tuned (P4-WP4.17) |
 | 0093 | swimming behind the controller boundary | Adapt | Skyrim swim + Underwater NG |

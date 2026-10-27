@@ -180,7 +180,9 @@ Greenspring) and a road.
   re-estimate of every later phase (PLAN §5).**
 
 ## S9 → G9: DS1 timing without shipping edited animations (budget 5 days)
-- Decision 0014 §2. On one roll, one straight-sword light attack and one shield parry: drive timing at runtime
+- Decisions 0014 §2 and 0019 §4. First pick, for each of the three actions, the permitted Skyrim clip whose motion
+  is already closest to the DSR reference capture; then, on one roll, one straight-sword light attack and one
+  shield parry: drive timing at runtime
   (our plugin changes playback speed inside windows through graph variables / Payload Interpreter / AMR and opens
   our i-frame/parry/active windows from animation events), measure with an early version of the P5 test dummy.
 - If a window cannot be met at runtime, prototype the **install-time patcher**: our annotation/timing delta applied

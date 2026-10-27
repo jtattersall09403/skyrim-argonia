@@ -1,144 +1,169 @@
-# P5: Dark Souls 1 combat on Argonia's stats
+# P5: Dark Souls 1 combat, wired to Argonia's stats
 
-**Goal.** Combat that feels like Dark Souls Remastered (timings measured from DSR, decision 0004) while damage,
-mitigation and stamina come from Argonia's Morrowind-based sheet (decision 0005), for the player and every
-enemy, with souls-style enemy AI and authored bosses.
+**Goal.** Combat as close as possible to Dark Souls Remastered in numbers, system behaviour and feel, for the
+player and every enemy, with DS1-shaped enemy AI and authored bosses, and with damage, stamina, carry and
+protection coming from Argonia's Morrowind-based sheet through a written wiring specification (decisions 0004,
+0019). Nothing is ported from the old project's combat (0019 §3).
 
-**Starting state.** P2 passed (stack pinned with Precision, TDM, BFCO, OAR, TK Dodge, Elden Parry, SCAR, CPR,
-TrueHUD; bridge with hit and animation event timestamps). G6 gave the first golden-table rows. P4-WP4.1 stats
-are in place (or stubbed with the same interface).
+**Starting state.** P2 passed (stack pinned with Precision, TDM, BFCO, OAR, TK Dodge, SCAR, CPR, TrueHUD; bridge
+with hit and animation event timestamps and an input queue). G6 gave the first golden-table rows; G9 proved the
+runtime timing-control method. P4-WP4.1 stats exist (or are stubbed with the same interface).
 
 **Re-check before starting:** BFCO, Precision (and its 1.7.x port), TDM, OAR, SCAR, CPR versions on the pinned
-runtime; the DSR patch version.
+runtime; the DSR patch version; new DS-style moveset releases.
 
-**Read first.** Decisions 0004, 0014 (§2: how timing reaches the game, proven in G9); [skyrim-combat-traversal](../research/2026-10-27/skyrim-combat-traversal.md) §1,
-§3, §4 in full; [um-ghidra-lens](../research/2026-10-27/um-ghidra-lens.md) §1.7 (DSR→ER note), §3A;
-[audit-systems](../research/2026-10-27/audit-systems.md) (combat, poise, ranged, hit zones, AI); imported
-`docs/design/world/76-stats-progression.md` §102, §118, §121, §128; `docs/design/research/dark-souls-poise-mechanics.md`;
-old decisions 0031–0037, 0040, 0089–0091, 0142.
+**Read first.** Decisions 0004, 0014 §2, 0019; [skyrim-combat-traversal](../research/2026-10-27/skyrim-combat-traversal.md)
+§1, §3, §4; [um-ghidra-lens](../research/2026-10-27/um-ghidra-lens.md) §1.7 (the DSR→Elden Ring port: which DS1
+data carries which behaviour), §3A (DSR tools); imported `docs/design/world/76-stats-progression.md` §116–121,
+§128 (the sheet only); old combat docs only as background on intent.
 
-**Design constants that do not move** (76 §102): stats never scale i-frames, parry windows or wind-ups; no to-hit
-dice: a swing that visibly connects lands; timing is fixed on the animation side, never by retuning numbers, and
-"the animation side" means runtime speed/window control or the install-time patcher of decision 0014 §2, never a
-shipped edited clip. **Burden tiers** are Argonia's (fast < 0.2, mid < 0.35, fat < 1 of capacity); DSR supplies
-the i-frames and recovery per tier, not its own 25%/50% thresholds (decision 0004).
+**Fixed rules.** DS1 decides feel and behaviour; our sheet decides progression (0019 §2). Stats never scale
+i-frames, windows or wind-ups (true in DS1 too). No to-hit dice: contact lands. Timing is corrected at runtime
+or by the install-time patcher (0014 §2), never by shipping edited clips, and never by bending measured numbers.
 
 ## Work packages
 
+### WP5.0 The wiring specification (owner reviews)
+- `docs/design/combat-wiring.md`: for every DS1 quantity that depends on the character, its Argonia source and
+  formula, chosen so that a DS1 character and an Argonia character of equivalent strength get the same ratios:
+  - **Damage:** DS1 weapon base damage and scaling letters → listed damage × (0.40 + 0.60 × k(score)) × (Str +
+    50)/100 (76 §121.1), with the weapon class's skill providing the score; calibrate so a "C-scaling" DS1 weapon at
+    a typical mid-game build matches our mid-game skill band.
+  - **Stamina:** DS1 max stamina by Endurance and per-action costs → our stamina max (60 + 0.8 × End, +4 above 50)
+    and the DS1 costs scaled by the ratio of maxima at equivalent strength; DS1 regen rate and delay kept as DS1
+    measures them (they are feel), adjusted only for our Agility term if the owner agrees.
+  - **Equip load:** DS1's < 25% / < 50% / ≤ 100% thresholds → our burden tiers (fast < 0.2, mid < 0.35, fat < 1
+    of capacity 30 + 3 × Str kg); i-frames and recovery per tier from DS1.
+  - **Defence and poise:** DS1 armour defence and absorption → our armour rating and mitigation (AR/(AR + 135.6 +
+    0.6 × damage)); DS1 armour poise → our armour pieces' poise with armour skill choosing the position in the
+    range; whether Agility adds poise (the old design) is an explicit owner question, default **no** (DS1 has none).
+  - **Guard:** DS1 shield stability and absorption → our Block skill and shield records.
+  - **Enemies:** DS1 enemy archetypes' HP, poise, damage and stamina → our D1–D5 bands (76 §128), keeping DS1's
+    hits-to-kill ratios per band.
+- **Acceptance:** every combat-relevant number in the golden table has a wiring row; L2 tests compute both sides for
+  5 reference builds and match the stated ratios; the owner approves the spec in a packet.
+
 ### WP5.1 Measure DSR into the golden table
-- Extend G6 to the full list: per player action (light, heavy, running, rolling, jumping and plunging attacks
-  for each weapon class we have: dagger, straight sword, curved sword, greatsword, axe, hammer, spear, fist,
-  bow, crossbow), startup / active / recovery frames, cancel windows (JumpTable flags), stamina cost, poise damage
-  (`dmgLevel`, AtkParam poise fields), guard values (GuardRate, GuardStaminaCutRate, GuardBreakRate); rolls
-  (fast/mid/fat i-frames and recovery; the 25%/50% equip-load thresholds, mapped to Argonia's burden tiers
-  fast/mid/fat); backstep; parry windows by shield class and parry-broken state (SpEffect 30) duration; riposte
-  and backstab damage multipliers; poise pools per armour class (EquipParamProtector), the refill rule (DS1:
-  full refill after a time unhit; measure it); stamina regen rate and delay; NPC poise (`superArmorDurability`)
-  for the enemy archetypes; throw/grab rows only if a boss uses them.
-- AI shape: decompile the Hollow, Balder Knight and Black Knight AI Lua with soulstruct (local names intact) and
-  write our own goal-tree summaries (approach distances, combo odds, punish rules, retreat rules) as knowledge;
+- For every player action Argonia has (light, heavy, running, rolling, jumping and plunging attacks for dagger,
+  straight sword, curved sword, greatsword, axe, great axe, hammer, great hammer, spear, fist, bow, crossbow,
+  thrown weapons, shields): startup / active / recovery, cancel windows (JumpTable flags), input buffer behaviour,
+  stamina cost, poise damage (`dmgLevel`, AtkParam poise fields), hyper-armour frames, guard values (GuardRate,
+  GuardStaminaCutRate, GuardBreakRate); rolls and backstep (i-frames and recovery per equip-load tier); parry
+  windows by shield/parry-weapon class and the parried-state duration (SpEffect 30); riposte and backstab
+  multipliers and paired-attack lengths; poise pools (EquipParamProtector) and the refill rule; stamina regen,
+  delay and exhaustion; lock-on range and switching (`LockCamParam`); per-hitbox damage rates for enemies that use
+  them; NPC poise (`superArmorDurability`), HP, stamina and damage for each enemy archetype we mirror; throws only
+  where a boss needs one.
+- **AI shape:** decompile the AI Lua of the archetypes we mirror (Hollow, Hollow Soldier, Balder Knight, Black
+  Knight, a beast, a caster, an archer) with soulstruct and write our own summaries (approach and spacing
+  distances, combo odds, punish rules, retreat rules, reaction to the player's heal/whiff/roll) as knowledge;
   never transcribe the Lua.
-- Every row has provenance (`DSR:` file, animation id, event; `OWNER:`; `GUESS:`); 13/11/9 settled.
-- Live capture for rows the files cannot answer: DSR offline on the GPU box under Proton, debug menu mod
-  (Nexus DSR 266) or DSR Gadget for stable cameras, 20 repeats at 60 fps.
-- **Acceptance:** golden table complete for the list; `GUESS:` rows ≤ 5% and each named.
+- **Reference captures:** DSR offline on the GPU box under Proton with the debug-menu mod (Nexus DSR 266) or DSR
+  Gadget for stable cameras: 60 fps recordings of each player action, each archetype's attack set, and scripted
+  duels, kept in `$ARGONIA_PRIVATE` as the feel reference (WP5.7).
+- Every row has provenance (`DSR:` file, animation id, event; `DS3:` only where DS1 lacks it; `OWNER:` for an owner
+  deviation; `GUESS:` for unmeasured placeholders, which must reach zero before P5 closes).
+- **Acceptance:** golden table complete for the list; zero `GUESS:` rows; the 13/11/9 question settled and written
+  into decision 0004.
 
-### WP5.2 Configure the stack
-- BFCO (attack framework; MCO excluded), Precision (hit detection, with its Pandora patch), TDM (lock-on,
-  target switching, projectile aim), TK Dodge RE/Redux (roll input and animations; its own i-frames set to 0),
-  OAR (animation choice by our conditions), Elden Parry (kept only if its projectile deflect is wanted; its
-  window replaced by ours), TrueHUD (boss bars; poise meter hidden), SCAR (combo AI), CPR (spacing,
-  strafing), Ultimate NPC Dodging, Wait Your Turn (attack tokens), AMR/AMF (root motion), XP32 True Ragdoll.
-- Movesets: permitted Skyrim-modder movesets or vanilla attacks, brought to the golden table's timings by the G9
-  method (runtime speed and window control; the install-time patcher only where runtime control cannot reach a
-  window); **no** packs ripped from FromSoftware games (decision 0004); each in the dependency manifest with its
-  permission.
-- **Acceptance:** smoke combat scenario on the pinned runtime with no crash; every framework's API version
-  recorded.
+### WP5.2 The combat engine: DS1's state machine in our own core
+- `skse/core/combat/` (pure C++, no Skyrim types): one explicit state machine per combatant (idle, moving,
+  attacking with phases startup/active/recovery, rolling, backstepping, guarding, guard-broken, parried,
+  staggered by level, knocked down, riposting, being riposted, backstabbing, exhausted, healing/using item, dead),
+  with transitions, input buffering and cancel rules exactly as WP5.1 measured; all numbers from the golden
+  table and the wiring spec; deterministic given a time stream, so it is fully unit-testable.
+- Exhaustive L2 tests: every transition, every buffer and cancel window, every stamina gate, every poise
+  threshold, generated from the golden table (one test per row) plus scenario tests (roll through a swing, parry →
+  riposte, guard break → punish, poise break mid-combo, exhaustion).
+- **Acceptance:** 100% of the state machine's transitions covered by tests; tests green; parity table
+  `data/combat/parity.md` lists every DS1 feature, DSR value, our value, substitution and its test.
 
-### WP5.3 ArgoniaCombat: the timing and poise core
-In `skse/core/combat` (pure C++, L2-tested) plus `skse/ArgoniaCombat` (adapters), all numbers from
-`data/combat/golden-table.json` + Argonia's sheet:
-- **Hit pipeline** on Precision's pre-hit callback: ignore hits in the target's i-frame window; parry window
-  check; hit zone from the hit rigid body (head ×2 via `GetOriginalFromClone` → bone; any hurtbox lands); push
-  stagger 0 so vanilla stagger is suppressed; post-hit callback timestamps hits for the poise refill.
-- **Damage:** listed damage × (0.40 + 0.60 × k(score)) × (Str + 50)/100 × crit × hit zone (76 §121.1; Strength
-  does not scale bows), armour mitigation from WP4.1, arrowheads at 60% armour effect.
-- **Dodge:** roll animation chosen by an OAR custom condition `ArgoniaBurdenTier` (fast/mid/fat); i-frame
-  timer starts on the dodge-start event with the measured window per tier (in game seconds, never frame counts).
-- **Parry, riposte, backstab:** parry window opened from the bash/parry start event per shield class; a hit inside
-  it is cancelled and the attacker enters the parried state for the measured duration; riposte input in that
-  state plays a paired animation with the class multiplier (dagger highest; never stacks with the sneak table);
-  backstab by facing angle (|Δyaw| < measured θ, ~60° prior), distance, target not attacking.
-- **Poise:** forked from Chocolate Poise (MIT) or written fresh (~300 lines): hidden pool = Agility/2 + armour
-  pieces' poise (heavy > medium > light, skill sets the position in the range) + effects; each hit subtracts the
-  weapon class × attack type poise damage; pool ≤ 0 → stagger and full reset; full refill after the measured
-  time unhit (~5 s in the old design); hyper-armour flags from attack annotations; bosses may be unstaggerable;
-  spell casts interrupted on poise break.
-- **Stamina:** one bar; per-action costs and regen from the table; regen blocked during actions (graph variable
-  check); exhaustion behaviour per DSR.
-- **Guard:** stability, chip damage and guard break from the table.
-- **Lock-on:** TDM; enforce 20 m (~1,400 units) by its setting or by `RequestDisableTargetLock` past range;
-  nearest pick, stick flick retargets.
-- The parity table records that the old weapon-family parries (old 0040: one-hand 0.20 s, two-hand 0.16 s, shield
-  0.26 s) and the old 0.1–0.29 s constant are replaced by DS1's measured shield and parry-weapon windows.
-- **Acceptance:** L2 tests for every rule; parity table `data/combat/parity.md` lists every feature, DSR value,
-  our value, substitution and check.
+### WP5.3 The adapter: driving Skyrim through the frameworks
+- `skse/ArgoniaCombat` is a thin adapter between the core and the game. The frameworks are the I/O, not the design:
+  - **BFCO** (attack framework; MCO excluded) and the chosen movesets play the actions; the core decides which
+    action may start and when it may be cancelled.
+  - **Precision** supplies weapon-contact hits; its pre-hit callback asks the core whether the hit lands (i-frames,
+    parry, guard), what it does (damage via the wiring, poise damage, stagger level, hitbox rate), and suppresses
+    vanilla stagger; its post-hit callback feeds the core's clocks.
+  - **TK Dodge RE/Redux** supplies roll/backstep input and animations (its own i-frames set to 0); the core owns
+    the i-frame window per burden tier; the roll clip per tier is chosen by an OAR condition we register.
+  - **TDM** supplies lock-on and target switching; the core enforces DS1's range and switching rules.
+  - **OAR** conditions expose core state (burden tier, parried, exhausted, stagger level) to animation choice.
+  - **Timing control** (decision 0014 §2, proven in G9): playback speed and window events adjusted at runtime so
+    each clip meets its measured window.
+- **Acceptance:** the smoke combat scenario runs with no crash; every framework's API version and the adapter's
+  coverage of core events are recorded.
 
-### WP5.4 The ±1-frame test dummy
-- Bridge command spawns a test dummy whose scripted attack contacts at t0 + k/60 s relative to the player's
-  roll or parry start; logs pre-hit accept/ignore with timestamps from one clock; runs at capped 30 and 60 fps.
-- Also logs Precision contact time against annotation time to catch tunnelling on fast swings.
-- **Acceptance (L4):** every measured window edge (roll per tier, parry per shield class, attack active frames,
-  parried-state duration) within one DS1 frame (33 ms) of the table, aiming for 16 ms, at both frame caps.
+### WP5.4 Movesets chosen for fidelity (decision 0019 §4)
+- Survey permitted Skyrim movesets and animation packs for each weapon class, rolls, backsteps, guard, parry and
+  riposte/backstab pairs, stagger and knockdown reactions; score each against the DSR reference captures (motion
+  read: weight, anticipation, follow-through; and measured distance from the DS1 windows before correction).
+- Pick the closest per class; reject any whose correction would exceed a stated limit (for example more than
+  ±20% speed change inside a window), and any FromSoftware-derived pack.
+- **Acceptance:** a selection table with scores, licences and the correction each needs; reader agents agree with
+  the picks on side-by-side clips; the owner sees the shortlist.
 
-### WP5.5 Enemy AI and archetypes
-- The old project's 12 humanoid archetypes and 27–30 creature clip sets (old `ai/enemyAi.ts`,
-  `hostileReaction.ts`, `search.ts`, `speciesHunt.ts`, `casterSeam.ts`) mapped onto combat styles, SCAR data
-  (combo choice by distance and angle), CPR data (advance, back off, circle, fall back), UND (NPC dodges) and
-  Wait Your Turn (attack tokens); DSR AI-shape summaries guide approach distances and punish rules ("punish"
-  reads our state via graph variables: target recovering, whiffed, healing).
-- Calm / draw / come / fight / return / flee from each record's fight-flee-alarm; packs with leaders; archers;
-  casters; per-observer detection from P4.
-- **Acceptance:** the old project's duel tests reborn as L4 scenarios (a sample of the 1,085 duels): win-rate and
-  time-to-kill bands by danger band within the old balance harness's predicted ranges.
+### WP5.5 The ±1-frame test suite
+- The bridge's test dummy contacts at t0 + k/60 s relative to the player's roll, parry, attack or guard start and
+  logs accept/ignore from the core and from Precision on one clock, at capped 30 and 60 fps; also checks contact
+  time against annotation time for tunnelling on fast swings.
+- **Acceptance (L4):** every measured window edge within one DS1 frame (33 ms), aiming for 16 ms, at both caps, for
+  the player and each mirrored archetype.
 
-### WP5.6 Bosses
-- Authored bosses with phases in ArgoniaCombat (HP thresholds swap combat style or moveset via OAR conditions),
-  TrueHUD boss bars restyled, arenas: the old prototype Xal-Krona, the swamp leviathan, the Wamasu guardian of
-  the main quest, boss variants at health ×5 (old 0042 §5).
-- **Acceptance:** each boss has an L4 scenario (phase transitions fire) and an owner feel packet.
+### WP5.6 Enemy AI and archetypes
+- Our own AI built on SCAR (combo choice by distance and angle), CPR (advance, back off, circle, fall back), UND
+  (NPC dodges) and Wait Your Turn (attack tokens), configured from the WP5.1 AI-shape summaries; "punish" reads
+  core state through graph variables (target recovering, whiffed, healing, exhausted).
+- Enemies use the same core state machine and wiring (one stat schema for every actor), with DS1-mirrored
+  archetypes mapped onto Argonia's creatures and humanoids (the 12 humanoid archetypes and the creature sets of
+  the world registries), per-region roaming bands and hostile places from P4-WP4.14.
+- **Acceptance:** scripted duels per archetype reproduce the DSR captures' behaviour (approach distances, combo
+  lengths, punish reaction) within stated tolerances; hits-to-kill per danger band match the wiring spec.
 
-### WP5.7 Ranged and hand-to-hand
-- Bows and crossbows: Skyrim archery with TDM projectile aim; shoulder-aim camera (+0.55 right, +0.22 up, 1.7
-  back; old TotK reference); recoverable arrows (Skyrim native chance, tuned), fire and effect arrows, coatings;
-  Strength does not scale bow damage; the old arrow calibration (old 0090) checked against the band ladder.
-- Hand-to-hand drains stamina; the knock-out finisher (deferred in the old design) built if cheap.
-- Arrow surface response (stick, ricochet, break) from the old `physical-materials.json` mapped onto Skyrim
-  projectile impact data where possible; anything Skyrim cannot express is recorded as a substitution.
-- **Acceptance:** L4 scenarios; the old bow regression cases where they translate.
+### WP5.7 Feel against DSR, side by side
+- For each player action and each archetype: the same scripted inputs in DSR (reference capture) and in Argonia,
+  recorded at 60 fps and shown side by side (L5, reason: feel). Reader agents compare anticipation, impact,
+  hit-stop, recoil, stagger reactions, camera behaviour and sound timing, and list differences with the frame
+  where they occur. Fixes go through moveset choice, timing control, hit-stop/recoil settings and camera settings,
+  never by changing measured numbers.
+- **Acceptance:** reader panels report no difference rated "obvious"; then the owner packets (WP5.10).
 
-### WP5.8 Ragdolls and hit feel
-- XP32 True Ragdoll for deaths; Precision hit impulses; hit-stop and recoil from Precision settings tuned to DSR
-  footage, not invented.
-- **Acceptance:** reader panel on clips (L5, reason: feel) and the owner packet.
+### WP5.8 Bosses
+- Authored bosses built on the same engine: phases (HP thresholds switch combat style or moveset via OAR
+  conditions), arenas, boss bars drawn by our HUD (decision 0017): the swamp leviathan, the Wamasu guardian of the
+  main quest, Xal-Krona, and the main antagonist (duel). Each boss's design references a DS1 boss of similar shape
+  for pacing (attack variety, punish windows, phase change), measured the same way.
+- **Acceptance:** each boss has L4 scenarios (phase transitions fire; punish windows match its spec) and an owner
+  feel packet.
 
-### WP5.9 Owner feel packets
-Two packets: (1) player combat vs three archetypes and one boss; (2) the full roster by danger band. Each with
-a list of things to feel (roll timing per burden tier, parry, riposte, poise breaks, stamina rhythm) and how to
-reply. Feel fixes go to the animation side (runtime speed and window control, moveset choice; decision 0014 §2), never to the golden table's measured
-numbers unless the owner rules a deliberate deviation (recorded as `OWNER:`).
+### WP5.9 Ranged, thrown, hand-to-hand, ragdolls
+- Bows, crossbows and thrown weapons (decision 0016) with DS1's aiming and draw/reload timings where DS1 has an
+  equivalent, TDM projectile aim, recoverable arrows, effect arrows and coatings; arrow surface response (stick,
+  ricochet, break) from the old `physical-materials.json` mapped onto Skyrim impact data where possible.
+- Hand-to-hand as DS1's fists (stamina drain, stagger).
+- Deaths with XP32 True Ragdoll and Precision hit impulses.
+- **Acceptance:** L4 scenarios per weapon type; ranged windows in the ±1-frame suite.
+
+### WP5.10 Owner feel packets
+Two packets: (1) the player's moveset per weapon class, rolls per burden tier, guard, parry and riposte, backstab,
+poise breaks, stamina rhythm, against three archetypes; (2) the full roster by danger band and one boss. Each lists
+what to feel and how to reply. A deviation from DS1 happens only as an owner ruling, recorded as `OWNER:` in the
+golden table.
 
 ## Exit gate
-Golden table complete; ±1-frame suite green at 30 and 60 fps; archetype and boss scenarios green; owner feel
-packets with no open blocker.
+Wiring spec approved; golden table complete with zero `GUESS:` rows; state machine fully tested; ±1-frame suite
+green at 30 and 60 fps; archetype and boss scenarios green; side-by-side panels clean; owner feel packets with no
+open blocker.
 
 ## Risks and fallbacks
-- **Animation feel** is the weak link (Skyrim clips vs DS1 timing): survey permitted movesets early; re-time
-  vanilla with annotations; never import FromSoft animations.
+- **Animation fidelity** is the weak link: pick movesets for closeness first (WP5.4); if no permitted moveset is
+  close enough for a weapon class, tell the owner and propose a narrower class list or a commissioned moveset
+  rather than shipping a poor one.
 - **Framework conflicts** (BFCO vs others): the manifest's conflict list; test after each addition.
-- **Precision tunnelling** on fast swings: lower its collision step or widen capsules for those weapons.
+- **Precision tunnelling** on fast swings: tune its collision step or capsules for those weapons.
+- **Bugs**: every bug found becomes a failing test before its fix (0019 §5).
 
 ## Deliberately out of scope
-Weapon arts and DS3-only mechanics (hyper-armour beyond what DS1 has) unless the owner asks; active ragdoll (VR-only
-PLANCK); multiplayer/invasions; FromSoftware animations or data in any form.
+Anything ported from the old project's combat (0019 §3); DS3/Elden Ring-only mechanics (weapon arts, guard
+counters, jump attacks beyond DS1) unless the owner asks; active ragdoll (VR-only PLANCK); multiplayer, invasions,
+summons; FromSoftware animations or data in any form.

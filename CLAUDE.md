@@ -21,6 +21,7 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
   ([0003](docs/decisions/0003-nothing-shipped-that-players-do-not-own.md)); the no-assets guard is not bypassed.
 - Never make art beyond UI and minor Fal-made 2D elements ([0006](docs/decisions/0006-black-marsh-immersion-no-nordic-element-survives.md)).
 - Never take FromSoftware data, animations or code into Argonia: measure DSR, write our own numbers ([0004](docs/decisions/0004-ds1-remastered-is-the-combat-oracle.md)).
+- Never port the old project's combat code, constants or animation choices; DSR is the combat spec, wired to our stats ([0019](docs/decisions/0019-combat-is-rebuilt-from-ds1-not-ported-from-the-old-project.md)).
 - Never bypass DRM, anti-cheat or ownership checks; DSR only offline while anything is loaded.
 - Never let a vanilla Skyrim system, asset, sound or word reach the player unreviewed ([0012](docs/decisions/0012-vanilla-skyrim-is-quarantined.md)).
 - Never retune measured combat numbers for feel; fix timing on the animation side by runtime control or the install-time patcher ([0014](docs/decisions/0014-derived-files-are-made-on-the-players-machine.md)).
