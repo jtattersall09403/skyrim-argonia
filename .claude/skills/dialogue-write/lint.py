@@ -18,11 +18,11 @@ BANS = pathlib.Path(__file__).with_name("bans.yaml")
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("lines")
-    ap.add_argument("--race", default=None, help="speaker race, for bans with appliesTo")
+    ap.add_argument("--race", default=None, help="speaker race (one of the ten), for bans with appliesTo")
     args = ap.parse_args()
 
     bans = [b for b in yaml.safe_load(BANS.read_text())
-            if b.get("appliesTo") in (None, args.race)]
+            if b.get("appliesTo") is None or args.race in b["appliesTo"]]
     rows = pathlib.Path(args.lines).read_text().splitlines()
     hits = 0
     for n, row in enumerate(rows, 1):

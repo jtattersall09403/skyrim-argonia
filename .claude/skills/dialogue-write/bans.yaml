@@ -57,18 +57,18 @@
     - We keep quiet, because if travellers hear of this, they will stop sleeping here and buying our rope.
   detect: "\\bfor the [a-z]+ and the [a-z]+[.!?]"
 
-- id: B06-argonian-contraction
-  rule: Argonian speakers use full forms (do not, it is, you are) except when angry, dismissive or fighting.
+- id: B06-full-forms
+  rule: Argonian and Khajiit speakers use full forms (do not, it is, you are) except when angry, dismissive or fighting; other races contract at their own rates (voices.md).
   bad:
     - It's not salt. (calm Argonian)
   good:
     - It is not salt.
     - Don't touch my pot! (angry Argonian bark)
   detect: "(?i)\\b\\w+'(re|ll|ve|d|m|t)\\b|\\b(it|that|there|he|she|what|who|here|let|where)'s\\b"
-  appliesTo: argonian
+  appliesTo: [argonian, khajiit]
 
 - id: B07-wry-quip
-  rule: Argonians are earnest; no Imperial-style dry quips at the end of a line.
+  rule: Argonian speakers are earnest; no dry quips at the end of a line (other races follow voices.md).
   bad:
     - He was not happy. Neither were his boots.
     - Brave travellers do not come back for stew.
@@ -76,7 +76,7 @@
     - He was angry about it, and his boots were soaked through.
     - Do not try to fight it. People who fight a wamasu do not come back.
   detect: review
-  appliesTo: argonian
+  appliesTo: [argonian]
 
 - id: B08-american-english
   rule: British spelling and punctuation; no serial comma before the last item in a list.
