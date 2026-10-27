@@ -68,6 +68,8 @@ the border; the haze is opaque by about 10 km.
 - Production version of the G4 converter for all exterior cells and every interior: walkable triangles from
   the generated terrain and placed collision (Recast on our geometry), door triangles linked to load doors,
   water triangles flagged, cross-cell edge links, NAVI master data, cover data where cheap.
+- The Creation Kit's generator (decision 0018, driven by a GUI script on a virtual display) covers cells our
+  converter cannot, with its output captured to Spriggit.
 - **Acceptance:** 200 random NPC path requests between reachable points succeed (bridge path query); 20 NPCs
   with sandbox packages do not stand still for more than 60 s in a 10-minute sim.
 

@@ -108,8 +108,10 @@ and permission requests out to mod authors.
   split into ESL-flagged helpers only if record counts require), then Spriggit serialize to `plugin/`.
 - `make plugin` regenerates deterministically; `make check` includes a Spriggit round trip
   (serialize → deserialize → byte-identical plugin) and "regenerate twice, no diff".
-- Papyrus build: the reference compiler (CK PapyrusCompiler under Wine) with the base script sources from the
-  player's Skyrim install (never committed); compare russo-2025/papyrus-compiler as a native option.
+- Papyrus build: the reference compiler (the Creation Kit's PapyrusCompiler under Wine) with the base script
+  sources from the CK's `Scripts.zip` (never committed; decision 0018); compare russo-2025/papyrus-compiler as a native option.
+- **CK load check:** `tools/ck/load_check.sh` loads `Argonia.esm` in the CK under Wine/Xvfb and fails on new
+  warnings in its log (an extra L1 check; decision 0018).
 - BSA packing with BSArch under Wine (our files only: UI images, fonts, Papyrus `.pex`, our textures if any).
 - **Acceptance:** `make plugin && make check` green; an intentional record change shows up as a one-file
   Spriggit diff.
@@ -137,8 +139,11 @@ and permission requests out to mod authors.
   palette (panel #0e1711, trim #6b7744, bone #d6cfb0, health #8f2e22, stamina #2a6b33, magicka #2f4e94, breath
   #386570, marker tan #d8b070, crime #e0705a), components (Window, Deck, List, Tabs, Tip, Bar, Meter, Slider,
   CountPicker, Linked, Items, Overlays, Symbol), the focus model (keyboard/gamepad/touch), the viewport model, CSS,
-  and their vitest tests; Pelagiad web font with its OFL licence; only provenance-clean assets (0017 §5: split
-  `symbols.svg`, redraw the Skyrim-derived glyphs, check the flourishes' source image).
+  and their vitest tests; Pelagiad web font with its OFL licence; only provenance-clean assets (0017 §5: our
+  Fal-made symbols and map glyphs, the owner's ChatGPT-made flourishes; Skyrim's symbols extracted at install).
+- **Skyrim's own UI symbols** (sneak eye, map pins, button glyphs) are extracted on the installing machine from
+  the player's `Skyrim - Interface.bsa` by the ported `extract_symbols.mjs` (decision 0017 §5); the harness
+  uses labelled placeholders for them and the L4 sweep checks the real ones.
 - Replace old `@elder-souls/game-core` / `text-catalogue` imports with the typed message schema; a mock data
   server feeds the harness; Playwright screenshot tests; keyboard/gamepad navigation tests.
 - The bridge between ArgoniaCore and views: a typed JSON message schema (`ui/schema/*.ts` and its C++ twin

@@ -187,6 +187,26 @@ PrismaUI views read and write state through the typed message schema (P2-WP2.8).
   replacing Skyrim's local map.
 - **Acceptance:** L3 tests; L4 scenarios open each and read state.
 
+### WP4.10a Study OpenMW and Morrowind's windows; the UI map (decision 0017 §7–8)
+- **OpenMW study** (`research` agent): read OpenMW's MyGUI window layouts (`files/data/mygui/*.layout` in its
+  GPL source) and its Lua UI, plus Morrowind's own screens (the owner's copy, through tes3conv facts and in-game
+  captures if needed): for each window (stats, inventory/paperdoll, magic, map, journal, dialogue, barter,
+  container, spellmaking, enchanting, alchemy, training, travel, rest/wait, level-up, chargen, persuasion, pause
+  menu, HUD) record what it contains, its controls, its keyboard/gamepad behaviour and how it hands off to the
+  next window. Output: `docs/research/ui/openmw-morrowind-windows.md`.
+- **Gap analysis** of the ported old UI against that study and the soul contract: what is missing, confusing or
+  un-Morrowind-like ("ours still needs some work", owner); a prioritised improvement list feeding WP4.10.
+- **The UI map** (`docs/design/ui-map.md`): every screen, overlay, popup, notification, prompt and **every
+  transition** (gameplay ↔ dialogue, ↔ inventory and the other windows, ↔ the sitting after rest, death → wake,
+  sleep/wait, loading screens, menu ↔ menu, chargen → first control), with the rule that **in normal play the
+  player never sees a vanilla Skyrim screen**: each vanilla surface is listed with how it is replaced, suppressed
+  or restyled (message boxes, "you cannot sleep now", quest-updated and location-discovered notifications,
+  tutorial popups, activation prompts, the loading menu, the perk constellations, the level-up notice, the
+  favourites and tween menus, the console only in dev builds).
+- **Acceptance:** the study covers every window listed; the UI map has no surface without an owner (our view,
+  suppressed, or restyled) and no transition without a planned check; the owner reviews the map and the gap list
+  in a packet before the bulk of WP4.10.
+
 ### WP4.10 Our own UI and HUD (C10, C11; decision 0017)
 - **Port the old screens** from the old `packages/ui/src/screens/` onto the P2 design-system port, wired to
   ArgoniaCore: Dialogue (with WP4.6), Journal (WP4.9), Inventory **with paperdoll** (equipped slots drawn as
@@ -208,8 +228,14 @@ PrismaUI views read and write state through the typed message schema (P2-WP2.8).
   SWF and `fontconfig.txt` (0014 §7).
 - OpenMW's MyGUI layouts and Morrowind screenshots are the structural reference for what each window contains
   (decision 0017 §6); no OpenMW or Bethesda art.
-- **Acceptance:** each ported screen passes its old tests and new L3 screenshot tests at all four viewports; an
-  L4 sweep opens every screen and HUD state in game through the stream at 1080p and 720p; a reader panel compares
+- **Eyes on transitions, in focused loops:** one UI lane owns the whole UI (no swarm), works through the UI map
+  transition by transition, and for each records an L5 clip (stated reason: motion and hand-off cannot be judged
+  from stills) of the transition in game, judged by `reader` agents against the map's intent (no vanilla flash, no
+  jump in style, no focus lost, no input eaten, consistent timing and sound); fixes, then re-records, until clean;
+  then a transitions owner packet.
+- **Acceptance:** each ported screen passes its old tests and new L3 screenshot tests at all four viewports; every
+  transition in the UI map has a passing L5 judgement; an L4 sweep opens every screen and HUD state in game
+  through the stream at 1080p and 720p; a reader panel compares
   against the old ui-lab references (read in the old repo, never copied) and the Nordic-tells checklist; no vanilla
   menu that our views replace can be opened.
 

@@ -41,17 +41,32 @@ Argonia repo"; "HUD I want to be our own new original version like in the other 
 5. **Assets:** only assets whose provenance is clean come across. From the old README credits:
    - `Pelagiad.woff` + `Pelagiad-OFL.txt`: OFL, import.
    - The Black Marsh map glyphs (`map/icons/argonia/sheet.png`, Fal-made, traced to `glyphs.json`): import.
-   - The spell-school, status and deck-tab symbols (Fal-made, traced): import, **but they live in
-     `symbols.svg` together with shapes exported from Skyrim's `hudmenu.gfx`** (sneak eye, map pins, button
-     glyphs), which are Bethesda-derived and may not be published: split the sheet, import only the Fal-made
-     symbols, and redraw the rest as original SVG (or Fal + trace).
-   - The trim flourishes (`flourish-*.webp`, cut from a "Morrowind pause screen, Black Marsh restyle" reference
-     image): import only after checking that reference image's provenance (if it is a restyled Morrowind
-     screenshot it is derived; redraw).
+   - The spell-school, status and deck-tab symbols (Fal-made, traced): import. They live in `symbols.svg` together
+     with shapes the old project exported from Skyrim's own HUD file (`hudmenu.gfx`: sneak eye, map pins, button
+     glyphs). Those shapes are Bethesda's, so they are **not committed**; instead, as the owner suggested, they are
+     **loaded from the player's own Skyrim files**: the installer runs the old project's extraction script
+     (`tooling/ui/extract_symbols.mjs`, ported) on the player's `Skyrim - Interface.bsa` and writes the sheet into
+     the installed UI folder on their machine (decision 0014). The committed sheet holds only our symbols plus
+     named placeholders for the extracted ones.
+   - The trim flourishes (`flourish-*.webp`): the owner made them with ChatGPT (owner, 2026-10-27): our own art,
+     import, with a sourcing-register row.
 6. **OpenMW** is consulted for structure and behaviour (what Morrowind's windows contain and how they
    interact), never for art. Mod-scene UI frameworks (SkyUI 6, Infinity UI, TrueHUD) are used only where they
    remove engineering work (e.g. TrueHUD's boss-bar data, Infinity UI's injection for any remaining SWF), never for
    the look.
+
+7. **The UI is designed and checked as one whole** (owner: moving between vanilla and custom screens would be
+   jarring, e.g. the skill-tree constellations). A UI map lists every screen, overlay, popup, notification and
+   the transitions between them (opening, closing, hand-offs to and from gameplay, loading, death, sleeping,
+   dialogue entry and exit); the rule is that **in normal play the player never sees a vanilla Skyrim screen**.
+   Engine-owned leftovers (message boxes, "you cannot sleep now", quest/discovery notifications, tutorial popups,
+   activation prompts, the loading menu, the console) are suppressed, replaced or restyled. A dedicated UI lane
+   designs holistically, and focused loops put "eyes on" every transition: recorded L5 clips of each transition
+   (stated reason: motion and hand-off cannot be judged from stills) judged by reader agents, then owner packets.
+   P4-WP4.10a and P8-WP8.3 hold the work.
+8. **OpenMW study:** a research pass reads OpenMW's MyGUI window layouts and Lua UI (what each Morrowind window
+   contains, its controls and behaviour) and Morrowind's own screens, and writes a gap analysis against our ported
+   UI, which "still needs some work" (owner); the improvements go into the port.
 
 ## Consequences
 

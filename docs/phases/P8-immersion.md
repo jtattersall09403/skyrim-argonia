@@ -34,6 +34,9 @@ water) tuned. After P8, everything new in P9 enters the inventory already compli
   sampled verdicts (disagreements fixed and the rule that caused them updated).
 
 ### WP8.3 UI, menus, fonts, loading screens, main menu
+- Re-run the P4 UI map's transition loop over the whole game (every screen and transition now reachable,
+  including those P5–P7 added: boss bars, boat wind call, climbing stamina, death/wake), same method: L5 clips
+  judged by readers, then an owner packet.
 - Our own views (decision 0017) cover every major screen and the HUD from P4. Here: every remaining vanilla menu in the stack (including MCM, tween menu, system menu, journal tabs we kept, crafting,
   lockpicking if kept, training, sleep/wait, loading menu, main menu, credits) restyled or replaced by the decision
   0014 §7 order (PrismaUI replacement, our own original SWF, installer-time patch; never a shipped edit of a

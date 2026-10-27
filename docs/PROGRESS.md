@@ -53,6 +53,7 @@ Status: `todo`, `in progress (lane)`, `done (commit)`, `blocked (why)`, `dropped
 | P4 | 4.7 | Dialogue and text content | todo |
 | P4 | 4.8 | Quests, directions, no markers | todo |
 | P4 | 4.9 | Journal, world map, local map | todo |
+| P4 | 4.10a | OpenMW/Morrowind window study, gap analysis, UI map | todo |
 | P4 | 4.10 | UI skin, Pelagiad, HUD | todo |
 | P4 | 4.11 | Items, weapon classes, armour pieces, condition | todo |
 | P4 | 4.12 | Economy, training, services | todo |

@@ -74,6 +74,9 @@ docs/` plus gitignored `out/ build/ private/`.
 **Derived files** (FaceGen, LOD, behaviours, animation timing, menu patches) are made at runtime or by the
 installer on the player's machine, never shipped ([0014](decisions/0014-derived-files-are-made-on-the-players-machine.md)).
 
+**The Creation Kit** is installed and used only as a scripted tool (Papyrus compiler, load checks, navmesh,
+FaceGen, flowmaps); records are written by code ([0018](decisions/0018-the-creation-kit-is-a-tool-not-the-workflow.md)).
+
 **Machines.** The build VM (`argonia-build`, x86, no GPU) runs Claude Code, generators, compilers (Wine for
 the Windows-only ones) and levels L1–L3 tests. The GPU box (`argonia-play`, started on demand) runs Skyrim
 under Proton with the pinned stack, ArgoniaBridge, Selkies for the owner, and levels L4–L6 tests.
@@ -109,7 +112,7 @@ hook/HTML screen). "Deps" are player-downloaded mods (pinned in P2). Source desi
 | Quests as data, conditions | 0153, condition vocabulary | 1 + 4 + 5 | — | quest generator + condition evaluator | P4, P9 |
 | Journal, directions, no markers | 0137 | 2 + 5 + 6 | Wayfinder (pattern), No Google Maps | directions generator + journal view | P4 |
 | World map, local map | old map styles | 2 + 6 | Flat World Map Framework | map art (UI) + local map view | P4 |
-| Our own UI and HUD (every major screen, chargen, inventory with paperdoll), Pelagiad | old `packages/ui` (React), 2.2 UI, palette | 6 (port) | PrismaUI; TrueHUD/Infinity UI only to save engineering | ported views (0017), our font library (0014 §7) | P2, P4, P8 |
+| Our own UI and HUD (every major screen, chargen, inventory with paperdoll), Pelagiad; UI map and transition loops; OpenMW window study | old `packages/ui` (React), 2.2 UI, palette | 6 (port) | PrismaUI; TrueHUD/Infinity UI only to save engineering | ported views (0017), our font library (0014 §7) | P2, P4, P8 |
 | Weapon classes (incl. crossbows/thrown, 0016), armour slots, armour rating, condition | 76 §118, 0040 | 1 + 2 + 5 | spear/throwing mods, animation sets | keywords, slot data, rating hook | P4 |
 | Economy, barter, training, services | 0141, 76 §124 | 1 + 4 (+5) | — | data, price hook | P4 |
 | Magic (never fails, spellmaking, hands, dual cast) | 0146, 0148, 76 §123 | 1 + 4 + 5 | Skyrim magic | ArgoniaCore magic rules | P4 |

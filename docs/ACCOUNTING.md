@@ -76,6 +76,11 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | B12 | Crossbows and thrown weapons back in | 0016 |
 | B13 | Our own original UI for major screens and our own HUD, like the old repo's; use mod-scene or OpenMW UI only if it saves work | 0017 (port of the old React design system; OpenMW as structural reference; no Morrowind UI exists in the Skyrim mod scene) |
 | B14 | The $100 cap is AWS infrastructure only | 0008 |
+| B16 | The owner can get the Creation Kit; "isn't that how mods normally get made?" | 0018 (CK as a scripted tool; records by code; Papyrus compiler and base scripts come from the CK); P0-WP0.5; P2-WP2.5; P3-WP3.4 |
+| B17 | Study OpenMW's window layouts and contents to improve our UI | 0017 §8; P4-WP4.10a |
+| B18 | Holistic UI design; "eyes on" transitions in focused loops; no jarring vanilla screens (e.g. constellations) | 0017 §7; P4-WP4.10a (UI map), WP4.10 (transition loop); P8-WP8.3; perk constellations hidden (WP4.3) |
+| B19 | Load Skyrim's own symbols (sneak eye) from the player's files | 0017 §5; 0014 §8; P2-WP2.8 |
+| B20 | Trim flourishes are the owner's ChatGPT art | 0017 §5; sourcing register |
 | B15 | FaceGen and distant terrain: "surely handled by Skyrim's engine" | 0014 §3–4 explains: the engine draws them, but from per-NPC face files and per-worldspace LOD files that a new worldspace and new NPCs lack; templates reuse existing faces; terrain LOD meshes are ours and may ship |
 
 ## C. Engine and approach research

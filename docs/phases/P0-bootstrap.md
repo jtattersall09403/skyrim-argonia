@@ -103,7 +103,8 @@ download is not from a package manager), installing:
   `cat` of that file.
 - **Owner step:** Steam login for `steamcmd` with Steam Guard (owner approves on their phone once). Download
   into `$ARGONIA_GAME_ROOT` (`~/games`, outside the repo): **Skyrim SE** (masters and archives only; used read-only
-  by Mutagen and for the immersion inventory), **Dark Souls Remastered** (for soulstruct; P1-S6/P5),
+  by Mutagen and for the immersion inventory), **the Creation Kit** (owner adds it to their Steam library first;
+  decision 0018: Papyrus compiler and base script sources, load checks), **Dark Souls Remastered** (for soulstruct; P1-S6/P5),
   **Morrowind GOTY** (reference: `Morrowind.esm` via tes3conv for GMSTs and dialogue filter facts). Dark Souls 3
   only if P5 needs a secondary value.
 - R2 vault fetch: `tools/fetch_vault.py` pulls only the parts P3 needs (frozen heightfield arrays, apron

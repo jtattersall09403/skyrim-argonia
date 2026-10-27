@@ -43,7 +43,9 @@ converted material from the user's own games") is the community precedent: toler
    making; (c) an installer-time patch of the player's SWF. The **font library** (Pelagiad compiled into our own
    `fonts_*.swf` plus our own `fontconfig.txt`) is our file (OFL font, our build): allowlisted. Tooling: JPEXS
    FFDec (Java, Linux) to inspect vanilla SWFs and build our own; acceptance for any SWF is an L4 screenshot sweep.
-8. **The guard** stays strict: only allowlisted files of our own making pass; release file lists are checked
+8. **UI symbols from Skyrim** (sneak eye, map pins, button glyphs): extracted by the installer from the player's
+   own `Skyrim - Interface.bsa` (decision 0017 §5).
+9. **The guard** stays strict: only allowlisted files of our own making pass; release file lists are checked
    (P10-WP10.1); installer outputs never enter the repo or a release.
 
 ## Consequences

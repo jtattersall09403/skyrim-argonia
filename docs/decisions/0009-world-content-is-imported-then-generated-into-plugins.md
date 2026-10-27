@@ -18,8 +18,9 @@ style guide and a Morrowind exemplar corpus. The owner may keep developing the t
    for skyrim-argonia; later changes in the old repo are pulled only deliberately (a dated re-import note).
 2. **Pipeline:** `world/` JSON → generators (Python for planning and checks, C# Mutagen for records) →
    **Spriggit** YAML (one file per record, committed, reviewable) → `Argonia.esm` (+ BSAs of our own files)
-   as build outputs. Hand edits in the Creation Kit are not the workflow; a CK touch is a last resort and its
-   result is captured back into Spriggit.
+   as build outputs. Hand edits in the Creation Kit are not the workflow; the CK is installed and used as a
+   scripted tool (Papyrus compiler, load checks, navmesh, FaceGen, flowmaps; decision 0018), and anything it
+   produces is captured back into Spriggit.
 3. **Record identity:** every world id maps to a stable EditorID (`ARG_` prefix plus the id) and a FormID
    allocated by a committed allocator table, so regenerating never renumbers.
 4. **Skyrim-specific facts** (units ×70.03 per metre, ZYX Euler, cell 4096 units = 58.5 m, LAND 33×33 per
