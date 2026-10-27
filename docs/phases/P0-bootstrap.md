@@ -1,0 +1,135 @@
+# P0: Bootstrap the repo, the ways of working, the build VM and the content
+
+**Goal.** A planner session on the build VM can brief agents that build, check and commit safely. The
+toolchain the later phases need is installed and smoke-tested, the old project's content is imported and
+validates, and the owner has had the first check-in.
+
+**Starting state.** The repo holds docs only: this plan, decisions, research, owner brief and accounting.
+The owner has an AWS budget alert, an `argonia-build` m7i.xlarge spot instance (Ubuntu 24.04, 120 GiB gp3, no
+inbound rules, SSM role `argonia-build-ssm`), a VS Code tunnel `argonia-build` reachable at
+vscode.dev/tunnel/argonia-build, Claude Code logged in, `gh` authenticated, and the repo cloned to
+`~/skyrim-argonia`. If any of that is missing, the first check-in asks for it.
+
+**Read first.** [PLAN.md](../PLAN.md), [ways-of-working.md](../ways-of-working.md),
+[source-map.md](../source-map.md), [inherited-rulings.md](../inherited-rulings.md), decisions 0003, 0008, 0009,
+0010, 0011, [audit-infra](../research/2026-10-27/audit-infra.md).
+
+## Work packages
+
+### WP0.1 Repo skeleton and rules
+- Create the directories in PLAN §3 with a one-paragraph README in each (what lives there, what never does).
+- `.gitignore`: `out/`, `build/`, `private/`, every asset extension listed in decision 0003, `*.npy`, Wine
+  prefixes, `node_modules/`, `.venv/`.
+- Finalise `CLAUDE.md` (already drafted; keep under its word budget, enforced by
+  `tooling/tests/test_word_budget.py`, budget 1,100 words).
+- `docs/PROGRESS.md` rows for every work package of every phase (already drafted; keep it the live status).
+- **Acceptance:** `tree -L 2` matches PLAN §3; `pytest tooling/tests/test_word_budget.py` passes.
+
+### WP0.2 Ways-of-working tooling (lean, decision 0011)
+Copy from elder-souls-argonia and adapt (paths in [source-map.md](../source-map.md) §3), trimming everything
+three.js-specific:
+- `.claude/agents/`: `deliver`, `deliver-small`, `find`, `run`, `check`, `research`, `reader` (keep their
+  frontmatter model/effort pattern; rewrite bodies for this repo); `dialogue-lane`, `dialogue-writer`,
+  `voice-reader`, `corpus-reader` (copy now, adapt in P4); `place-builder` becomes `world-builder` in P3.
+- `.claude/skills/`: `text-review`, `dialogue-write`, `cost-review`, `routing-audit` (adapt now);
+  `journey-author` becomes `scenario-author` in P2 (in-game YAML scenarios for the bridge). Vendor
+  universal-modder's `mod-any-game`, `reverse-engineering`, `game-automation` skills and its Bethesda playbook
+  plus the field notes named in decision 0010 into `.claude/skills/um-*` with its MIT licence and a credit
+  line; edit them to point at this repo's tools and rules.
+- `tooling/`: `brief_template.py` (Lane, Paths, Acceptance, Report path), `shell_guard.py` (refuse `sleep`,
+  poll loops, `git checkout --`/`restore`/`stash`/`reset --hard`, `pkill/killall`, empty commit pathspecs),
+  `job_guard.sh` (long jobs in background with a log and a wait that returns within 270 s), `session_tokens.py`
+  (token and cost report), `owner_inbox.py` (posts a check-in as a GitHub issue labelled `owner-check-in`).
+  Each hook gets a test that makes it fail on purpose. Nothing else is copied until an incident earns it.
+- `.claude/settings.json`: model `claude-opus-5-5[1m]` for the planner; hooks for shell_guard and the
+  no-assets guard; SessionStart prints `session_tokens.py --brief` and `PROGRESS.md`'s in-progress rows.
+- **Acceptance:** `pytest tooling/tests` passes, including one fail-on-purpose test per hook; a `deliver-small`
+  brief made with `brief_template.py --write` is accepted by the guard and one missing a field is refused.
+
+### WP0.3 The no-assets guard and the gate
+- `tooling/guards/no_assets.py` (decision 0003): refuses staged files by extension, by magic bytes (NIF
+  "Gamebryo File Format", BSA "BSA\0", DDS "DDS ", HKX packfile, FSB/XWM/FUZ, TES4 "TES4" record header, FromSoft
+  "BND4"/"DCX\0"), over 1 MB outside `tooling/guards/allowlist.txt`, and text containing decompiler signatures
+  (`undefined8`, `__thiscall`, `FUN_`, `DAT_`, Ghidra/IDA banners). Installed as a git pre-commit hook and run
+  in the gate.
+- **The gate:** `make check` runs, in parallel, in ≤ 3 minutes: no-assets guard over the tree, Python lint
+  and unit tests, C++ core unit tests (once they exist), UI harness tests (once they exist), Spriggit
+  round-trip (once it exists), schema validation of `world/` and `data/`, CLAUDE.md word budget, link check of
+  `docs/`. One command, one summary of every red. CI (GitHub Actions, free for public repos) runs the same
+  command on push.
+- **Acceptance:** committing a 1-byte file named `x.nif` or a file starting with `TES4` is refused; `make check`
+  passes on a clean tree and lists every red on a seeded-bad tree.
+
+### WP0.4 Build VM toolchain
+`infra/build-vm/setup.sh` (idempotent; versions pinned in `infra/build-vm/toolchain.lock`, sha256 where a
+download is not from a package manager), installing:
+- Python 3.12 venv with `numpy`, `pydantic`, `pytest`, `ruff`, `soulstruct` (DSR), `requests`, `boto3`.
+- .NET 8 SDK; Mutagen (NuGet) via a `tools/ArgoniaGen` console project; Spriggit CLI.
+- Wine (staging, wow64) + winetricks; a win64 prefix for xEdit with the riched20 patch (universal-modder
+  note); `msvc-wine` (MSVC `cl.exe`/`link.exe` under Wine) and `clang-cl` + `xwin` + `lld-link` as the second
+  route; CMake, Ninja, vcpkg with a cross triplet. (The SKSE build itself is proved in P1-S1.)
+- Node 22, Chrome for Testing (headless), Playwright: the PrismaUI view harness (L3).
+- JDK 25 + Ghidra 12.2 + PyGhidra 3.2 (headless only), Address Library names database for Skyrim; kept for
+  targeted questions (decision 0010 §4).
+- `steamcmd`, `rclone`, AWS CLI v2, `gh`, `jq`, `tmux`.
+- `infra/build-vm/idle-stop.sh` as a systemd timer: stop the instance after 90 minutes with no Claude Code
+  process, no `job_guard` job and no VS Code tunnel client. Port the old repo's `idle-stop.sh` idea; add a
+  CloudWatch CPU alarm backstop.
+- **Acceptance:** `infra/build-vm/smoke.sh` prints a version line for every tool and exits 0; a deliberately
+  idle period of 90 minutes stops the instance (checked once, then trusted).
+
+### WP0.5 Secrets and game files on the build VM
+- Secrets in `~/.argonia/secrets.env` (mode 600, outside the repo): R2 credentials for the old vault, AWS
+  defaults, Nexus API key (if O-6 says so), later the Fal key. Never echoed in logs; the shell guard refuses
+  `cat` of that file.
+- **Owner step:** Steam login for `steamcmd` with Steam Guard (owner approves on their phone once). Download
+  into `$ARGONIA_GAME_ROOT` (`~/games`, outside the repo): **Skyrim SE** (masters and archives only; used read-only
+  by Mutagen and for the immersion inventory), **Dark Souls Remastered** (for soulstruct; P1-S6/P5),
+  **Morrowind GOTY** (reference: `Morrowind.esm` via tes3conv for GMSTs and dialogue filter facts). Dark Souls 3
+  only if P5 needs a secondary value.
+- R2 vault fetch: `tools/fetch_vault.py` pulls only the parts P3 needs (frozen heightfield arrays, apron
+  rasters, nav bakes) into `$ARGONIA_DATA`, checked against `world/sources/terrain/freeze.json` hashes.
+  **Owner step:** provide the R2 credentials from the old project's secrets file (it is on the stopped old
+  machine's disk at `/workspaces/.es-secrets.env`, or in the owner's password manager).
+- **Acceptance:** `tools/ArgoniaGen` lists record counts of `Skyrim.esm` (proves Mutagen reads the masters);
+  `soulstruct` opens DSR's GameParam and prints the row count of `AtkParam_Pc`; the heightfield hash matches.
+
+### WP0.6 Import the world from elder-souls-argonia
+- `tools/import_old.py --commit <sha>` copies the paths in [source-map.md](../source-map.md) §1 into `world/`
+  and `docs/design/`, records the source commit in `world/IMPORTED_FROM.md`, and copies the schemas and the
+  integrity checker.
+- Re-run the old integrity checker (`packages/world-schema/integrity.py`) against the imported copy; port it to
+  `tools/argonia_world/integrity.py` and put it in the gate.
+- Import the design docs the later phases cite (stats spec 76, combat and stealth docs, quest docs, dialogue
+  standards, text style guide, lore dossiers) into `docs/design/` unchanged, each with a header line naming the
+  source path and commit. Edit them only when a later phase changes the design, and say so in a decision.
+- **Acceptance:** integrity check passes on the imported copy; `docs/design/` link check passes.
+
+### WP0.7 Infra record and cost baseline
+- `infra/README.md`: measured spot price of m7i.xlarge, region, instance ids, IAM roles, budget alert ids,
+  what runs where, how to start/stop, idle rules. Update decision 0008's table with measured numbers.
+- IAM: create `argonia-agent` policy (EC2 start/stop/describe on `project=argonia` tags, S3 read/write on
+  `argonia-<owner>-saves`, Cost Explorer read). **Owner step:** attach it to the build VM's role.
+- Decide O-1 (old machine's disk) with the owner.
+- **Acceptance:** `aws ec2 describe-instances --filters Name=tag:project,Values=argonia` works from the build VM;
+  `tools/cost_report.py` prints month-to-date spend.
+
+### WP0.8 First owner check-in
+Post (via `owner_inbox.py`) what P0 delivered, measured costs, O-1/O-2 asks, and what P1 will need from the
+owner (Steam login on the GPU box, a 20-minute streaming test on phone and Mac).
+
+## Exit gate
+- `make check` green in CI and on the VM; every hook's fail-on-purpose test passes.
+- Toolchain smoke green; game files present; world imported and valid.
+- PROGRESS rows for P0 green; P1's starting state written at the top of P1.
+
+## Risks and fallbacks
+- **Wine/msvc-wine install friction**: fall back to clang-cl + xwin (route b) and leave msvc-wine to P1-S1.
+- **Steam Guard from a datacentre IP** prompts repeatedly: use `steamcmd` with the owner's mobile approval;
+  if it keeps failing, the owner copies the files once from their own install via the stream later.
+- **R2 credentials lost**: the heightfield can be rebuilt by the old repo's terrain chain from the vault, but
+  the vault itself lives in R2; if both are gone, re-derive from Tamriel Worldspaces – Argonia (118678) with the
+  old chain (expensive; owner call).
+
+## Deliberately out of scope
+The GPU box (P1), any game-facing code (P1+), CI on a GPU (never: GPU checks are L4 jobs on the GPU box).
