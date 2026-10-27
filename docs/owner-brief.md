@@ -96,3 +96,5 @@ Something they can **play**, that is:
 | 2026-10-27 | New public repo `skyrim-argonia`; old repo left alone. |
 | 2026-10-27 | AWS region **London (eu-west-2)**. The old m7i.2xlarge build box is stopped. |
 | 2026-10-27 | Native phone play was "an option" to compare, not a requirement; streaming is acceptable. |
+| 2026-10-27 | Use **Tropical Skyrim** (the SSE version, [Nexus SSE 78044](https://www.nexusmods.com/skyrimspecialedition/mods/78044); original [Nexus 33017](https://www.nexusmods.com/skyrim/mods/33017)) as the source for any base-Skyrim game assets: where we would use a vanilla Skyrim asset, use Tropical Skyrim's version. |
+| 2026-10-27 | The owner works on the build machine through **VS Code in the browser** (vscode.dev tunnel). |

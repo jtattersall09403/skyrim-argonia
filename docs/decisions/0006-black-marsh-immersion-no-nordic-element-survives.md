@@ -43,6 +43,19 @@ of UI and art elements, an agentic approach that covers everything 100%; Fal all
    forbid AI-made companions is either cleared in writing by its author or dropped (docs/legal-and-sourcing.md).
    The Nexus page discloses AI use.
 
+8. **Tropical Skyrim is the base-asset layer** (owner ruling 2026-10-27). Tropical Skyrim's SSE version
+   ([Nexus SSE 78044](https://www.nexusmods.com/skyrimspecialedition/mods/78044); original by Soolie,
+   [Nexus 33017](https://www.nexusmods.com/skyrim/mods/33017)) is a required dependency and the source for any
+   base-Skyrim asset: wherever a generator or builder would pick a vanilla Skyrim tree, plant, grass, rock,
+   landscape texture, ground cover, weather texture or other base asset, it picks Tropical Skyrim's
+   replacement or addition instead. A vanilla asset is used only where Tropical Skyrim has no equivalent, and
+   then only with a `keep` verdict in the inventory. Asset selection order: Black Marsh–specific mods (Black
+   Marsh & Valenwood, Xanmeer, King of the Murkmire, Sign of Cipactli…) → **Tropical Skyrim** → other permitted
+   mods → vanilla Skyrim. Because Tropical Skyrim replaces vanilla files in place, it also removes many Nordic
+   tells at source; the inventory still checks each one. Permissions: the original requires contacting Soolie,
+   and it bundles GKB, Muppetpuppet, Tamira, Birds of Skyrim and lookout21 assets with their own terms; the SSE
+   port's author is asked too (O-5).
+
 ## Consequences
 
 - The immersion audit is a cross-cutting track (T-IMM in [PLAN.md](../PLAN.md)), not one late phase: the

@@ -89,8 +89,8 @@ hook/HTML screen). "Deps" are player-downloaded mods (pinned in P2). Source desi
 | LOD, distant terrain | — | 1 | xLODGen, DynDOLOD (tools, Wine) | lod job | P3 |
 | Regions, weather, climate, sky | climate/weather-states, star catalogue | 1 | — | ArgoniaGen | P3 |
 | Roads, routes, travel services | routes/*.json, 23 services | 1 + 4 | — | travel dialogue + Papyrus | P3, P4 |
-| Places, interiors, doors | blueprints, 0114 interior manifest | 1 | BM&V, Tropical Skyrim, Xanmeer, KotM, others | placement converter | P3, P9 |
-| Vegetation | flora rules, groundcover rules | 1 | Tropical Skyrim, BM&V, Skyrim grass | scatter converter | P3 |
+| Places, interiors, doors | blueprints, 0114 interior manifest | 1 | BM&V, Xanmeer, KotM, others; **Tropical Skyrim SSE** for any base-Skyrim asset | placement converter | P3, P9 |
+| Vegetation | flora rules, groundcover rules | 1 | BM&V, **Tropical Skyrim SSE (78044)** (base-asset layer, 0006 §8) | scatter converter | P3 |
 | NPCs, faces, schedules | npcs.json, 0138 lamp clock | 1 (+FaceGen solution) | — | ArgoniaGen, AI packages | P1 spike, P3, P9 |
 | Fixed danger D0–D5, roaming bands, respawn on rest | 0004, 0142, 76 §128 | 1 + 4 | — | encounter zones, spawner | P4 |
 | Attributes, 27 skills, classes, races, birthsigns | 76 §116–119 | 2 + 5 | Custom Skills Framework | ArgoniaCore stats | P4 |

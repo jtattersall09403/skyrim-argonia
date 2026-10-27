@@ -32,7 +32,7 @@ recommendation; the answer is recorded in the named record (or a new one) and th
 | O-2 | Subscription: 5x now, 20x from P9 | P0, P9 | 0013 |
 | O-3 | Confirm the pinned runtime chosen in P1 | P1 end | 0002 rule |
 | O-4 | Perks: invisible engine layer only, or a visible Morrowind-flavoured perk layer merged with vastei | P4 | Invisible layer (0005 C4) |
-| O-5 | Send permission requests to mod authors (drafted by agents, sent from the owner's Nexus/ModDB account): Black Marsh & Valenwood (dalecallen1987), MihailMods, Tropical Skyrim (Soolie), King of the Murkmire (pancake0723; AI clause), Xanmeer tileset (NorthwindBlue, DarthVitrial), Sign of Cipactli (URL unknown), Tamriel Worldspaces – Argonia (118678) | P2 | Send all in one batch early; build only on cleared mods |
+| O-5 | Send permission requests to mod authors (drafted by agents, sent from the owner's Nexus/ModDB account): Black Marsh & Valenwood (dalecallen1987), MihailMods, Tropical Skyrim (Soolie) and its SSE port (78044), King of the Murkmire (pancake0723; AI clause), Xanmeer tileset (NorthwindBlue, DarthVitrial), Sign of Cipactli (URL unknown), Tamriel Worldspaces – Argonia (118678) | P2 | Send all in one batch early; build only on cleared mods |
 | O-6 | Nexus Premium (needed for scripted API downloads; otherwise each download is a manual click) | P1 | Use Premium for the build and GPU machines if already held; otherwise one manual download session, cached to S3/R2 |
 | O-7 | Steam login on the GPU box (Steam Guard approval on the owner's phone, once) | P1 | Owner logs in through the stream once; then offline mode |
 | O-8 | Music source: CC-licensed, commissioned, or Fal-generated (AI clause interactions) | P8 | CC-licensed first, Fal for gaps |
