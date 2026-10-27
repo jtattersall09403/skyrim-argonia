@@ -8,14 +8,20 @@ enemy, with souls-style enemy AI and authored bosses.
 TrueHUD; bridge with hit and animation event timestamps). G6 gave the first golden-table rows. P4-WP4.1 stats
 are in place (or stubbed with the same interface).
 
-**Read first.** Decision 0004; [skyrim-combat-traversal](../research/2026-10-27/skyrim-combat-traversal.md) §1,
+**Re-check before starting:** BFCO, Precision (and its 1.7.x port), TDM, OAR, SCAR, CPR versions on the pinned
+runtime; the DSR patch version.
+
+**Read first.** Decisions 0004, 0014 (§2: how timing reaches the game, proven in G9); [skyrim-combat-traversal](../research/2026-10-27/skyrim-combat-traversal.md) §1,
 §3, §4 in full; [um-ghidra-lens](../research/2026-10-27/um-ghidra-lens.md) §1.7 (DSR→ER note), §3A;
 [audit-systems](../research/2026-10-27/audit-systems.md) (combat, poise, ranged, hit zones, AI); imported
 `docs/design/world/76-stats-progression.md` §102, §118, §121, §128; `docs/design/research/dark-souls-poise-mechanics.md`;
 old decisions 0031–0037, 0040, 0089–0091, 0142.
 
 **Design constants that do not move** (76 §102): stats never scale i-frames, parry windows or wind-ups; no to-hit
-dice: a swing that visibly connects lands; timing is fixed on the animation side, never by retuning numbers.
+dice: a swing that visibly connects lands; timing is fixed on the animation side, never by retuning numbers, and
+"the animation side" means runtime speed/window control or the install-time patcher of decision 0014 §2, never a
+shipped edited clip. **Burden tiers** are Argonia's (fast < 0.2, mid < 0.35, fat < 1 of capacity); DSR supplies
+the i-frames and recovery per tier, not its own 25%/50% thresholds (decision 0004).
 
 ## Work packages
 
@@ -43,8 +49,10 @@ dice: a swing that visibly connects lands; timing is fixed on the animation side
   OAR (animation choice by our conditions), Elden Parry (kept only if its projectile deflect is wanted; its
   window replaced by ours), TrueHUD (boss bars; poise meter hidden), SCAR (combo AI), CPR (spacing,
   strafing), Ultimate NPC Dodging, Wait Your Turn (attack tokens), AMR/AMF (root motion), XP32 True Ragdoll.
-- Movesets: permitted Skyrim-modder movesets or vanilla attacks re-timed with annotations; **no** packs ripped
-  from FromSoftware games (decision 0004); each in the dependency manifest with its permission.
+- Movesets: permitted Skyrim-modder movesets or vanilla attacks, brought to the golden table's timings by the G9
+  method (runtime speed and window control; the install-time patcher only where runtime control cannot reach a
+  window); **no** packs ripped from FromSoftware games (decision 0004); each in the dependency manifest with its
+  permission.
 - **Acceptance:** smoke combat scenario on the pinned runtime with no crash; every framework's API version
   recorded.
 
@@ -72,6 +80,8 @@ In `skse/core/combat` (pure C++, L2-tested) plus `skse/ArgoniaCombat` (adapters)
 - **Guard:** stability, chip damage and guard break from the table.
 - **Lock-on:** TDM; enforce 20 m (~1,400 units) by its setting or by `RequestDisableTargetLock` past range;
   nearest pick, stick flick retargets.
+- The parity table records that the old weapon-family parries (old 0040: one-hand 0.20 s, two-hand 0.16 s, shield
+  0.26 s) and the old 0.1–0.29 s constant are replaced by DS1's measured shield and parry-weapon windows.
 - **Acceptance:** L2 tests for every rule; parity table `data/combat/parity.md` lists every feature, DSR value,
   our value, substitution and check.
 
@@ -104,6 +114,8 @@ In `skse/core/combat` (pure C++, L2-tested) plus `skse/ArgoniaCombat` (adapters)
   back; old TotK reference); recoverable arrows (Skyrim native chance, tuned), fire and effect arrows, coatings;
   Strength does not scale bow damage; the old arrow calibration (old 0090) checked against the band ladder.
 - Hand-to-hand drains stamina; the knock-out finisher (deferred in the old design) built if cheap.
+- Arrow surface response (stick, ricochet, break) from the old `physical-materials.json` mapped onto Skyrim
+  projectile impact data where possible; anything Skyrim cannot express is recorded as a substitution.
 - **Acceptance:** L4 scenarios; the old bow regression cases where they translate.
 
 ### WP5.8 Ragdolls and hit feel
@@ -114,7 +126,7 @@ In `skse/core/combat` (pure C++, L2-tested) plus `skse/ArgoniaCombat` (adapters)
 ### WP5.9 Owner feel packets
 Two packets: (1) player combat vs three archetypes and one boss; (2) the full roster by danger band. Each with
 a list of things to feel (roll timing per burden tier, parry, riposte, poise breaks, stamina rhythm) and how to
-reply. Feel fixes go to the animation side (annotations, moveset choice), never to the golden table's measured
+reply. Feel fixes go to the animation side (runtime speed and window control, moveset choice; decision 0014 §2), never to the golden table's measured
 numbers unless the owner rules a deliberate deviation (recorded as `OWNER:`).
 
 ## Exit gate
@@ -126,3 +138,7 @@ packets with no open blocker.
   vanilla with annotations; never import FromSoft animations.
 - **Framework conflicts** (BFCO vs others): the manifest's conflict list; test after each addition.
 - **Precision tunnelling** on fast swings: lower its collision step or widen capsules for those weapons.
+
+## Deliberately out of scope
+Weapon arts and DS3-only mechanics (hyper-armour beyond what DS1 has) unless the owner asks; active ragdoll (VR-only
+PLANCK); multiplayer/invasions; FromSoftware animations or data in any form.

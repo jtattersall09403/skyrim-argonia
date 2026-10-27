@@ -6,6 +6,9 @@ Argonian breath rules, and sailable, ownable boats (Wind Waker sailing, horse-li
 **Starting state.** P2 passed; P3's water and navmesh exist at least for the slice region; G3 confirmed
 FreeClimb, SkyParkour (or not), EVG Animated Traversal and Underwater NG on the pinned runtime.
 
+**Re-check before starting:** FreeClimb (its repo had one commit when researched), SkyParkour, EVG Animated
+Traversal, Underwater NG and Sailable Ship versions on the pinned runtime.
+
 **Read first.** [skyrim-combat-traversal](../research/2026-10-27/skyrim-combat-traversal.md) §2–3;
 [um-ghidra-lens](../research/2026-10-27/um-ghidra-lens.md) §4 (Faith Runner, AC1 Movement Rewritten, White
 Knuckle note), §6 climbing and boats rows; imported `docs/design/world/76-stats-progression.md` §122;
@@ -18,7 +21,10 @@ player-boats-as-horses; old decisions 0093, 0152, 0158, 0159; old phase docs 2.1
 - FreeClimb (GPL-3.0-only; SKSE; free climbing on valid walls, sideways leap catches, push-away, let go, auto
   mantle, obstacle bypass, optional stamina drain) configured to the old rules: slope bands (walk below ~57°,
   then scramble, then climb), solid-mesh size limits, surface classes with wet grip (slip when wet), climb speed
-  1.1 m/s × band(0.85–1.25), drain 7.5/s × band, mantle cost 18, burden multiplier, fall at zero stamina; walls
+  1.1 m/s × band(0.85–1.25), drain 7.5/s × band, burden drain multiplier ×0.85/×1.0/×1.35 (fast/mid/fat), mantle
+  cost 18, ledge grab cost 8, hanging recovers 12% of normal stamina regen, climbing grants skill XP at 0.2 per
+  metre, the scramble/slide band 57.3–70° between walking and climbing (76 ~963–966, botw-climbing-system),
+  fall at zero stamina; walls
   under 10 m open to all, ~25 m a real climber, over 40 m a specialist (Athletics/Acrobatics/Agility); **no wall
   running** (old 0152), so FreeClimb's wall run is disabled.
 - Where FreeClimb lacks a rule (wet slip, stamina by burden), add it: through its menu/API first, then a fork
@@ -38,9 +44,12 @@ player-boats-as-horses; old decisions 0093, 0152, 0158, 0159; old phase docs 2.1
 
 ### WP6.3 Swimming and diving
 - Skyrim swimming (native) + Underwater NG (buoyancy from equipment, swim speed, Diving skill → mapped to our
-  Athletics where possible, depth visuals and audio); stroke 2.8 m/s, sprint-swim ×1.4 drains stamina,
+  Athletics where possible, depth visuals and audio); swim sprint from the swim-sprint mod (Nexus 67028) if its
+  permissions allow, else our own; stroke 2.8 m/s (the later owner-asked reference) scaled by Athletics (×0.5 →
+  ×1.5, 76 §122), sprint-swim ×1.4 drains stamina,
   shoulder-depth entry 1.4 m; breath = 25 + 0.35 × Athletics + 0.25 × Endurance seconds; Argonians unlimited;
-  30 s submerged open to all, 60 s specialist; drowning damage; swim attacks (BFCO supports them); water as a
+  the underwater contract (76 ~978–983): 30 s submerged open to all, 45 s competent, 60 s specialist, over 75 s
+  only for Argonians, water-breathing spells or equipment; drowning damage; swim attacks (BFCO supports them); water as a
   stealth medium (submerged breaks sight, P4-WP4.17); no route requires being Argonian (old 0152 §4).
 - **Acceptance:** L4 scenarios for breath per race and stats, a dive through a flooded passage, swim combat.
 
@@ -83,3 +92,7 @@ sailing (vs Wind Waker model) written.
   passenger rather than simulating buoyancy; Wind Waker's model is kinematic anyway.
 - **Climbing on generated terrain** behaves differently from hand-made walls: tune slope bands on the province
   survey before content work.
+
+## Deliberately out of scope
+Mounts (cut, old 0042); boats chasing boats (cut, old 0026); wall running (old 0152); active buoyancy physics
+(boats stay kinematic); levitation (P4-WP4.15).

@@ -19,6 +19,8 @@ level).
   radicals, recorded dead, recruited by the Veiled Reed" (main quest "The Eye and the Root"), in the
   pirate-freeholds / dunmer-north border with the Opening Work Camp (an already-built place), the route to the
   first town, and enough of the region to hold 2–3 hours of play.
+- **The vastei tutorial scene** (owner requirement, 76 ~563–569): vastei is taught in fiction in the opening hours
+  by a Nisswo character ("the change you have earned"), with the first death and pile retrieval staged safely.
 - Scope list: places (built and new), NPCs, quests (the opening + 1 faction line start + 3 local quests), every
   system's first rungs (one climbable cliff route, one dive, one boat trip, one boss), crafting stations, a
   merchant of each type, a trainer, a travel service.
@@ -33,7 +35,7 @@ level).
 - **Acceptance:** data checks green (L1); every quest runs in an L4 scenario; the direction validator passes.
 
 ### WP7.3 Journeys
-- The old journey set reborn as in-game scenarios (`tests/journeys/*.yaml`): combat, magic, crafting, stealth,
+- The old journey set reborn as in-game scenarios (`tests/journeys/*.yaml`): the vastei tutorial, combat, magic, crafting, stealth,
   quests, climb and swim, boats, persistence (rest, die, recover vastei, save/load), chargen, travel service.
 - Each journey plays the shipped path only (old 0149: no debug mode stands in for a game action).
 - **Acceptance:** all journeys green on two consecutive runs.
@@ -51,9 +53,18 @@ level).
   backlog with one quick-fix attempt each.
 - **Acceptance:** the owner completes the slice and calls it the game they want, or lists what must change.
 
+### WP7.5b Triage the old polish backlog
+- Read the old project's polish backlog (`docs/design/phases/P-polish/backlog.md`, ~470 rows): each row is
+  carried into `docs/phases/backlog.md` (if it describes a design intent still true here), or dropped as
+  three.js-specific, with a one-word reason column.
+- **Acceptance:** every old row has a verdict; carried rows are tagged to a phase.
+
 ### WP7.6 Re-plan
 - Measure: time per place, per quest, per dialogue round, per GPU check; costs per week; the owner's turnaround.
   Re-estimate P8–P10 and set P9's packet size and lane count (and O-2: when to move to the 20x plan).
+- Write `docs/phases/P9-packet-template.md` from what the slice taught.
+- **Acceptance:** PLAN §5 table updated with measured estimates; the packet template exists; O-2 asked in the
+  P7 check-in with the measured numbers.
 
 ## Exit gate
 Slice complete; journeys green; zero reachable unreviewed inventory rows; owner playthrough with no open
@@ -63,3 +74,7 @@ blocker; P9 packet template written from what the slice taught.
 - **Integration surprises between phases** (combat × dialogue interception, boats × save, climbing × navmesh):
   the journeys exist to catch them; fix at source, once.
 - **Owner finds the streamed feel poor in long sessions**: revisit 0007 options (bitrate, codec, a local PC).
+
+## Deliberately out of scope
+Regions beyond the slice (P9); the immersion sweep of anything the slice cannot reach (P8); release packaging
+(P10).

@@ -64,7 +64,15 @@ installer/ modlist manifest + install/verify scripts; later a Wabbajack/Jackify 
 infra/     build VM and GPU box scripts, Selkies, idle-stop, budgets, Steam/Proton setup
 tests/     in-game scenarios (YAML) the bridge runs on the GPU box; Python/C++ unit tests
 tooling/   guards (no_assets, shell, job), brief template, session tokens, owner inbox
+spikes/    Phase 1 spike code (throwaway unless a spike adopts it)
+private/   gitignored: decompiles, dumps, Morrowind/DS reference text, drafts ($ARGONIA_PRIVATE)
 ```
+
+Top-level directories: `world/ tools/ plugin/ skse/ papyrus/ ui/ data/ installer/ infra/ tests/ tooling/ spikes/
+docs/` plus gitignored `out/ build/ private/`.
+
+**Derived files** (FaceGen, LOD, behaviours, animation timing, menu patches) are made at runtime or by the
+installer on the player's machine, never shipped ([0014](decisions/0014-derived-files-are-made-on-the-players-machine.md)).
 
 **Machines.** The build VM (`argonia-build`, x86, no GPU) runs Claude Code, generators, compilers (Wine for
 the Windows-only ones) and levels L1–L3 tests. The GPU box (`argonia-play`, started on demand) runs Skyrim
@@ -94,15 +102,15 @@ hook/HTML screen). "Deps" are player-downloaded mods (pinned in P2). Source desi
 | NPCs, faces, schedules | npcs.json, 0138 lamp clock | 1 (+FaceGen solution) | — | ArgoniaGen, AI packages | P1 spike, P3, P9 |
 | Fixed danger D0–D5, roaming bands, respawn on rest | 0004, 0142, 76 §128 | 1 + 4 | — | encounter zones, spawner | P4 |
 | Attributes, 27 skills, classes, races, birthsigns | 76 §116–119 | 2 + 5 | Custom Skills Framework | ArgoniaCore stats | P4 |
-| Skill use, vastei, levels at rest, sitting | 76 §120 | 3 + 5 + 6 | Sleep to Gain XP (pattern), Skill Uncapper | ArgoniaCore + sitting view | P4 |
+| Skill use, vastei, levels at rest, sitting (PrismaUI view) | 76 §120, 0147 | 3 + 5 + 6 | Sleep to Gain XP (pattern), Skill Uncapper | ArgoniaCore + sitting view | P4 |
 | Death pile, wake at last rest, rest = only save | 76 §126, 0031, 0144 | 3 + 5 | Respawn – Soulslike (pattern, permissive) | ArgoniaCore | P4 |
 | Perks | owner C4 | 1 | — | perk audit + records | P4 |
 | Dialogue: topics, hyperlinks, disposition, persuasion | 0139, 0143, 0145, dialogue data | 5 + 6 | PrismaUI | ArgoniaCore topic store + dialogue view | P1 spike, P4 |
 | Quests as data, conditions | 0153, condition vocabulary | 1 + 4 + 5 | — | quest generator + condition evaluator | P4, P9 |
 | Journal, directions, no markers | 0137 | 2 + 5 + 6 | Wayfinder (pattern), No Google Maps | directions generator + journal view | P4 |
 | World map, local map | old map styles | 2 + 6 | Flat World Map Framework | map art (UI) + local map view | P4 |
-| UI skin, Pelagiad, HUD, chargen | 2.2 UI, palette | 1 + 2 + 6 | SkyUI 6, TrueHUD, Infinity UI, PrismaUI | views + font config | P4 |
-| Weapon classes, armour slots, armour rating | 76 §118, 0040 | 1 + 2 + 5 | spear/throwing mods, animation sets | keywords, slot data, rating hook | P4 |
+| UI skin, Pelagiad, HUD, chargen, inventory with paperdoll | 2.2 UI, palette | 1 + 2 + 6 | SkyUI 6, TrueHUD, Infinity UI, PrismaUI | views, our font library (0014 §7) | P4 |
+| Weapon classes (incl. crossbows/thrown, 0016), armour slots, armour rating, condition | 76 §118, 0040 | 1 + 2 + 5 | spear/throwing mods, animation sets | keywords, slot data, rating hook | P4 |
 | Economy, barter, training, services | 0141, 76 §124 | 1 + 4 (+5) | — | data, price hook | P4 |
 | Magic (never fails, spellmaking, hands, dual cast) | 0146, 0148, 76 §123 | 1 + 4 + 5 | Skyrim magic | ArgoniaCore magic rules | P4 |
 | Crafting (alchemy, smithing tiers, enchanting) | 0150, 76 §124 | 1 + 4 | Skyrim crafting | recipes, stations | P4 |
@@ -115,7 +123,7 @@ hook/HTML screen). "Deps" are player-downloaded mods (pinned in P2). Source desi
 | Hit zones (head ×2) | 76 §121 | 5 | Precision API | ArgoniaCombat | P5 |
 | Lock-on (20 m) | old lockOn | 2 (+5) | True Directional Movement | range enforcement | P5 |
 | Stamina | 76 §121.2 | 1 + 5 | — | ArgoniaCombat table | P5 |
-| Movesets and attack framework | DSR timings | 2 | BFCO (+AMR, Payload Interpreter, MCM Helper, XPMSSE), permitted movesets | annotations re-timed | P5 |
+| Movesets and attack framework | DSR timings | 2 (+5) | BFCO (+AMR, Payload Interpreter, MCM Helper, XPMSSE), permitted movesets | runtime timing control (0014 §2) | P1-G9, P5 |
 | Enemy AI, bosses | DSR AI shape, 0142 | 2 + 5 | SCAR (MIT), CPR, UND, Wait Your Turn, TrueHUD | boss phases | P5 |
 | Ranged (shoulder aim, recoverable arrows) | 76 §121.1 | 1 + 2 | Skyrim archery, TDM aim | tuning | P5 |
 | Climbing | 0152 BotW | 2 (+3) | FreeClimb (GPL), SkyParkour | stamina/rule tuning | P6 |
@@ -125,20 +133,22 @@ hook/HTML screen). "Deps" are player-downloaded mods (pinned in P2). Source desi
 | Ragdolls (nice to have) | — | 2 | XP32 True Ragdoll, Precision impulses | — | P5 |
 | Graphics: lighting, fog, volumetrics | owner | 2 | Community Shaders (+ its volumetric/fog features), weather mods restyled | presets | P2, P8 |
 | Music, ambience, UI sound | owner | 1 + Fal/CC | — | music records | P8 |
-| Vanilla quarantine | 0012 | 1 + 4 | — | start quest, overrides | P2, P8 |
+| Vanilla quarantine | 0012 | 1 + 4 | Fuz Ro D-oh (silent lines) | start quest, overrides | P2, P8 |
+| World registries: hazards, grave stakes, harvest, deeds, rumours, markers, physical materials | old registries | 1 + 4 + 5 | — | data + ArgoniaCore | P4-WP4.21, P5-WP5.7 |
 | Immersion inventory and audit | 0006 | tool | — | inventory generator | P2 → P8 |
 | Install, pin, distribute | 0002, 0003 | — | SKSE, Address Library, Pandora, PrismaUI | installer, modlist | P2, P10 |
 
 ## 5. Phases
 
 Estimates are calendar weeks on the 5x plan with the owner answering check-ins within a day or two. They are
-guesses: universal-modder's evidence is 4 days to 2 weeks per mechanic with a human checking builds. Re-plan
-at every phase close with measured numbers.
+guesses: universal-modder's evidence is 4 days to 2 weeks per mechanic with a human checking builds, so they are
+likely optimistic. **At P1's close the planner re-estimates every phase** from G8's measured cycle time × the
+number of L4 checks each phase plans, and re-plans at every phase close after that.
 
 | Phase | Goal | Depends on | Owner involvement | Est. |
 |---|---|---|---|---|
 | [P0](phases/P0-bootstrap.md) | Repo, ways of working, build VM toolchain, content import | — | infra steps, O-1, O-2 | 1–2 wk |
-| [P1](phases/P1-spikes.md) | Eight go/no-go spikes (G1–G8) that decide whether the architecture holds | P0 | Steam login (O-7), stream test, O-3, O-6 | 2–4 wk |
+| [P1](phases/P1-spikes.md) | Nine go/no-go spikes (G1–G9) that decide whether the architecture holds | P0 | Steam login (O-7), stream test, O-3, O-6 | 2–4 wk |
 | [P2](phases/P2-foundation.md) | Pinned dependency stack, installer, full bridge and test harness, generator pipeline, immersion inventory, permission requests | P1 | O-5 | 2–3 wk |
 | [P3](phases/P3-world.md) | The Argonia worldspace: terrain, apron, water, navmesh, LOD, regions/weather, roads, vegetation, the already-built places | P2 | 1 walk packet | 3–5 wk |
 | [P4](phases/P4-soul.md) | Morrowind's soul: stats, levelling, death, dialogue, quests, journal, map, UI/HUD, chargen, items, economy, magic, crafting, stealth, factions, danger | P2 (P3 for in-world checks) | 2–3 packets, O-4, O-9, O-11 | 6–9 wk |
@@ -154,7 +164,8 @@ one game at a time) and orders work by the dependency column.
 
 **Cross-cutting tracks**, run by the planner in every phase:
 - **T-IMM** immersion: every new element enters the inventory with a verdict (0006).
-- **T-COST** cost: month-to-date AWS spend and Claude usage in every owner check-in; stop machines.
+- **T-COST** cost: month-to-date AWS spend and Claude usage in every owner check-in; stop machines; the
+  stop-and-ask rule and per-phase budgets in decision 0008.
 - **T-LEGAL** sourcing: every dependency and asset has a sourcing-register row before it is used.
 - **T-OWN** owner check-ins: one packet per milestone, plain English, one check per bullet, how to reply.
 - **T-DOCS** docs stay current: the repo holds the current state, git the history.
@@ -167,7 +178,7 @@ the planner diagnoses, tries the phase's listed fallbacks, and only then brings 
 
 The architecture's single biggest uncertainties are front-loaded into P1: SKSE from Linux, Skyrim headless on
 the GPU box, streaming latency, world generation without the Creation Kit (navmesh, faces), the HTML dialogue
-window, DSR measurement, and Pandora on Linux. If G1 or G4 fails, decision 0001's fallback applies.
+window, DSR measurement, Pandora on Linux, and meeting DS1 timings without shipping edited animations (G9). If G1 or G4 fails, decision 0001's fallback applies.
 
 ## 7. What is deliberately not in this plan
 

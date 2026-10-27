@@ -20,6 +20,9 @@ Rulings inherited from elder-souls-argonia are listed (carry / adapt / drop) in
 - [0011](0011-ways-of-working-are-inherited-lean.md) Ways of working are inherited, lean
 - [0012](0012-vanilla-skyrim-is-quarantined.md) Vanilla Skyrim is quarantined
 - [0013](0013-subscription-and-pace.md) Subscription and pace: 5x first, 20x for parallel content
+- [0014](0014-derived-files-are-made-on-the-players-machine.md) Derived files (FaceGen, LOD, behaviours, timing, menus) are made at runtime or on the player's machine
+- [0015](0015-repo-licence-and-licence-tracking.md) Repo licence (GPL-3.0 code, CC BY-NC-SA content, recommended) and licence tracking
+- [0016](0016-weapon-classes-follow-morrowind.md) Weapon classes follow Morrowind, including crossbows and thrown (provisional)
 
 ## Open owner calls
 
@@ -40,4 +43,9 @@ recommendation; the answer is recorded in the named record (or a new one) and th
 | O-10 | Slice region and opening (default: the opening work camp near Stormhold / Alten Corimont, as in the old main quest) | P7 | Default |
 | O-11 | Voice: stay unvoiced text dialogue (old 0139/0143) | P4 | Yes |
 | O-12 | Old repo's GitHub Pages build exposes converted assets publicly (outside this repo's scope) | any time | Owner's choice; flagged only |
+| O-14 | Repo licence (decision 0015) | P0 | GPL-3.0-or-later code, CC BY-NC-SA 4.0 content |
+| O-15 | Crossbows and thrown weapons back in (decision 0016), reversing the old 0031 cut | P4 | Yes (Morrowind's Marksman) |
+| O-16 | Does one rest bank one pending level or all of them (left open by old 0147) | P4 packet 1 | One per rest (the old 76 text) |
+| O-17 | Evidence of the permissions the owner already holds (old sourcing log, 2026-09-24: "permission is held from every mod author in the pool, KotM included"): do they cover a public dependency and AI use? | P2 | Share the evidence; send new requests only where it falls short |
+| O-18 | Quest target at maturity: 450–550 (old 0027) or 550–740 (old quest docs) | P9 | 450–550 baseline, 550–740 stretch |
 | O-13 | Public name: "Argonia" overlaps Tamriel Rebuilt's planned territory and the dormant Beyond Skyrim: Argonia; release title and Nexus wording must not imply either | P10 | "Elder Souls: Argonia" or similar, with a "not affiliated" line |

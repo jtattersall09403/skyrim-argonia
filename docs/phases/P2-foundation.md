@@ -8,7 +8,9 @@ and permission requests out to mod authors.
 **Starting state.** P1 exit gate passed; the pinned runtime is known (decision 0002); the spikes' code is in
 `spikes/`.
 
-**Read first.** Decisions 0002, 0003, 0006, 0009, 0010, 0012; research
+**Re-check before starting:** every manifest mod's current version and permissions page; Nexus API terms.
+
+**Read first.** Decisions 0002, 0003, 0006, 0009, 0010, 0012, 0014, 0015; research
 [skyrim-tooling](../research/2026-10-27/skyrim-tooling.md) §1–5,
 [skyrim-combat-traversal](../research/2026-10-27/skyrim-combat-traversal.md) §0, §5,
 [assets-creatures](../research/2026-10-27/assets-creatures.md) §3d; [legal-and-sourcing.md](../legal-and-sourcing.md).
@@ -33,11 +35,19 @@ and permission requests out to mod authors.
   Landscape – Aendemika of Vvardenfell (Morrowind Nexus 59713, ground materials: check it is usable from Skyrim
   or drop). The full list comes from the old repo's README credits (lines ~48–320), `sourcing-register.json`,
   `tooling/asset-pipeline/mod-register.json` and `world/sources/assets/registry-summary.json`.
+- Columns also include **licence** and **linked or forked by** (which of our binaries include its code;
+  decision 0015).
+- The manifest's source list is read **in place** from the old repo (README credits ~lines 48–320,
+  `world/sources/registries/sourcing-register.json`, `tooling/asset-pipeline/mod-register.json`,
+  `world/sources/assets/registry-summary.json`); only the resulting manifest is committed here.
 - `tools/deps_check.py`: verifies hashes of downloaded files, flags unknown AI clauses and missing permissions.
 - **Acceptance:** every mod the old world JSON references (by mesh path or plugin) is in the manifest; the check
   lists zero unknowns or each unknown has an O-5 request open.
 
-### WP2.2 Permission requests (owner call O-5)
+### WP2.2 Permission requests (owner calls O-17 then O-5)
+- **First, O-17:** the old project records that the owner already held permission from every author in its
+  asset pool (sourcing log, 2026-09-24), KotM included. Ask the owner for that evidence and check whether it
+  covers being a public dependency of an AI-assisted mod; send new requests only where it falls short.
 - Draft, per author, a short message: what Argonia is (free, requires Skyrim, nothing redistributed; players
   download your mod), which of their files we reference, that the project uses AI for code and text (and Fal for
   minor 2D art), and the specific ask (OK to require your mod as a master/dependency and reference its records
@@ -46,26 +56,42 @@ and permission requests out to mod authors.
   pancake0723 (King of the Murkmire; its terms forbid use in mods that "make use of AI"), NorthwindBlue and
   DarthVitrial (Xanmeer), the Sign of Cipactli author, the Tamriel Worldspaces – Argonia author (118678; our
   heightfield's origin), plus any manifest row whose terms say "ask".
-- **Owner step:** send them from the owner's accounts. Track replies in the sourcing register.
+- Drafts go in a **secret gist** (`gh gist create`, not public) titled "Argonia permission drafts"; the check-in
+  names the gist's title only. **Owner step:** copy each draft into a Nexus/ModDB private message from the
+  owner's account; paste each reply (or a screenshot path) back as a comment on that gist. An agent records the
+  outcome in the sourcing register.
 - **Acceptance:** all requests sent; each reply recorded; a mod whose author refuses or does not reply in 30 days
   is replaced or dropped, and the affected places re-kitted (P3/P9 note).
 
-### WP2.3 Installer and deploy
+### WP2.3 Installer, derived files and deploy
 - `installer/install.py` (runs on the GPU box; later on players' machines under Windows or Linux): checks the
   Skyrim exe version against the pin, downloads or locates each manifest mod (Nexus API with the owner's key if
   Premium, else a manual-download folder), verifies hashes, extracts in load order into a clean Data overlay,
   writes `plugins.txt`/`loadorder.txt`, runs Pandora headless, installs our plugin, DLLs and PrismaUI views,
-  and runs the smoke scenario.
+  runs the **derived-file steps** of decision 0014 (FaceGen if templates do not suffice, terrain LOD, object LOD if
+  feasible, the animation patcher if G9 needed it, SWF patches if any), and runs the smoke scenario. Each step is
+  logged and re-runnable, and its outputs stay on that machine.
+- **Manual downloads** (no Nexus Premium, or ModDB): the installer prints the exact file list (mod, file name,
+  URL, expected hash) and waits for files dropped into `~/argonia-downloads/`; for the owner's machines this is one
+  session through the Selkies stream, after which the archives are cached privately in an S3 bucket (never
+  public) so rebuilds need no repeat.
+- **Build-VM masters:** a sync step copies the dependency **plugins** (ESM/ESP/ESL only, not archives) to
+  `$ARGONIA_GAME_ROOT/Data` on the build VM so Mutagen can master them; plus mesh path lists (no meshes) for
+  existence checks. Disk budget: under 5 GiB.
 - `make deploy` from the build VM: build, rsync outputs to the GPU box, restart the game, wait for the bridge.
 - **Acceptance:** from a fresh GPU box (`infra/gpu-box/create.sh` + `setup.sh` + `installer/install.py`), the
   smoke scenario passes with no manual steps except the documented manual downloads.
 
 ### WP2.4 ArgoniaBridge and the scenario runner (the in-game oracle)
-- Grow the S1 bridge into `skse/ArgoniaBridge` (built only in dev configuration, never shipped): endpoints for
-  teleport, console, Papyrus calls, state reads (quest stages, globals, actor values, AI package, position,
-  inventory, dialogue topic list, nav path result, our ArgoniaCore state), time scale and wait, an input queue
-  (keyboard/gamepad events), in-process screenshots with frame counters, and event subscriptions (hit events
-  with timestamps from Precision callbacks, animation events) for timing checks.
+- Grow the S1 bridge into `skse/ArgoniaBridge` (built only in dev configuration, never shipped; bound to
+  127.0.0.1 with a token, reached through an SSH tunnel): endpoints for teleport, console, Papyrus calls, state
+  reads (quest stages, globals, actor values, AI package, position, inventory, dialogue topic list, our
+  ArgoniaCore state), a **nav path query** (path length or failure between two points for an actor), time scale
+  and wait, an input queue (keyboard/gamepad events), in-process screenshots with frame counters, event
+  subscriptions (hit events with timestamps from Precision callbacks, animation events) for timing checks,
+  **music and sound events** (current music type and track, sound descriptors played, voice lines spoken), and a
+  **booth mode** (teleport to a lit test cell, place a base record, frame it from 6 angles) for the immersion
+  contact sheets. Each endpoint has a fail-on-purpose test.
 - `tests/scenarios/*.yaml` + `tools/run_scenario.py`: steps, expectations, timeouts; crash detection (Crash
   Logger file, process gone) reported as a failure, never "still running" (AutoTest's flaw); the stale-frame
   check (two frames must differ); circuit breaker after 3 identical failures; artifacts to `out/runs/<id>/`.
@@ -75,7 +101,9 @@ and permission requests out to mod authors.
 
 ### WP2.5 The generation pipeline
 - `tools/argonia_world` (Python package): loaders for every imported schema, the units module
-  (`skyrim_units.py`), the FormID allocator (`data/formids.json`, append-only), intermediate JSON writers.
+  (`skyrim_units.py`), the FormID allocator (`data/formids.json`, append-only), the **kit-id mapper**
+  (`kit_to_base.py` from G4, production quality: every kit piece and composite in the old manifests resolves to a
+  base record or a new STAT of ours; an L1 check fails on any unresolved layout op), intermediate JSON writers.
 - `tools/ArgoniaGen` (C#): reads intermediate JSON, writes records with Mutagen into `Argonia.esm` (ESM flag;
   split into ESL-flagged helpers only if record counts require), then Spriggit serialize to `plugin/`.
 - `make plugin` regenerates deterministically; `make check` includes a Spriggit round trip
@@ -112,6 +140,8 @@ and permission requests out to mod authors.
   keyboard/gamepad navigation tests.
 - The bridge between ArgoniaCore and views: a typed JSON message schema (`ui/schema/*.ts` and its C++ twin
   generated from one source).
+- Viewports: 1920×1080, 1280×720, and the Honor Magic V5's folded (~21:9) and unfolded (near-square) shapes at
+  the UI scale chosen in G2; a readability check (minimum rendered text height) in each.
 - **Acceptance:** the G5 dialogue view moves into the harness and passes; screenshot tests are deterministic.
 
 ### WP2.9 Graphics baseline
@@ -133,9 +163,14 @@ passes; the inventory v1 exists; all permission requests sent. P2 owner check-in
 summary, permission replies so far, costs.
 
 ## Risks and fallbacks
+- **Check-ins are public** (public repo): no secrets, links to machines, IPs or start URLs in issues
+  (ways-of-working §5).
 - **Pandora fragile under Proton**: pin the Pandora version, generate on the box, keep the generated output
   hash in the manifest; if it breaks, Nemesis under Proton.
 - **Nexus downloads without Premium**: a one-off manual session through the stream, cached to S3 privately
   (never public).
 - **A dependency's author refuses**: replace it (the manifest names alternatives) or build the function
   ourselves on a higher route.
+
+## Deliberately out of scope
+Gameplay systems (P4–P6); world content beyond the sample (P3); release packaging (P10: Wabbajack, FOMOD, docs).

@@ -28,13 +28,20 @@ live (since Nov 2022) though it has no client anti-cheat.
    constant the data cannot answer, via targeted headless PyGhidra scripts on a runtime memory dump (DSR's exe
    is packed on disk), never a whole-binary chat session.
 4. **DS3** is a secondary source only for what DS1 lacks (HKS input-buffer rules, hyper-armour), tagged `DS3:`.
-5. **Animations stay Skyrim-side** (vanilla or permitted mod movesets), re-timed to the golden table. No
+5. **Animations stay Skyrim-side** (vanilla or permitted mod movesets), brought to the golden table's timings
+   by the mechanism in decision 0014 §2 (runtime speed and window control first; an install-time patcher of the
+   player's own clips only if needed), never by shipping edited clips. No
    FromSoftware-derived movesets (several Nexus packs are DS3/ER rips: excluded whatever their Nexus page says).
 6. **Verification:** every window edge in game is within ±1 DS1 frame (33 ms, aim 16 ms) of the golden table,
    checked by the scripted test dummy at capped 30 and 60 fps (P5).
 
 ## Consequences
 
-- The 13/11/9 question is settled by measurement in P5-WP5.1; the result is written back here.
-- Combat feel depends on Skyrim animations matching DS1 windows; timing is fixed on the animation side
-  (annotations), never by bending the numbers.
+- The 13/11/9 question is first answered by P1 gate G6 and confirmed (with the full table) in P5-WP5.1; the
+  result is written back here.
+- The old weapon-family parry windows (old 0040: one-hand 0.20 s, two-hand 0.16 s, shield 0.26 s) and the old
+  0.1–0.29 s constant are replaced by DS1's measured shield and parry-weapon windows; the parity table records it.
+- Burden tiers: Argonia's ratios (fast < 0.2, mid < 0.35, fat < 1, of carry capacity) define the tiers; DSR
+  supplies the i-frames and recovery per tier (DSR's own 25%/50% thresholds do not bind).
+- Combat feel depends on Skyrim animations matching DS1 windows; timing is fixed on the animation side through
+  decision 0014 §2, never by bending the numbers.

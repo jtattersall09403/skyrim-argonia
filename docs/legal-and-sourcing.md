@@ -23,7 +23,11 @@ distributed or supported by ZeniMax" notice is required (P10). SKSE-style plugin
 ten years. Steam: personal, non-commercial use; streaming one's own copy to oneself fits; no one else uses the
 owner's stream. DRM is never bypassed (no Goldberg or similar emulators).
 
-## 2. Permissions to request (owner call O-5; drafts in P2-WP2.2)
+## 2. Permissions to request (owner calls O-17 then O-5; drafts in P2-WP2.2)
+
+First check what the owner already holds: the old project records owner-held permission from every author in its
+pool (2026-09-24, KotM included; old settlement-kit sourcing log). Confirm with the owner whether that permission
+covers a **public dependency** of an **AI-assisted** mod; request only what is missing.
 
 | Author / mod | Why we need it | Terms as researched |
 |---|---|---|
@@ -51,3 +55,8 @@ project rule). The release credits are generated from it.
 Each Fal output gets a register row: prompt, model id, date, our file path, the dependencies it appears beside
 (to catch AI-clause conflicts). Fal output is our own file and may be committed if it is 2D UI art under the
 size allowlist.
+
+## 5. Our own licence
+
+Decision 0015 (owner call O-14): recommended GPL-3.0-or-later for code (compatible with Mutagen and any FreeClimb
+fork) and CC BY-NC-SA 4.0 for our original content; third-party files keep their own licences.

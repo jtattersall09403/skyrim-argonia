@@ -7,7 +7,9 @@ places the old project had already built, walkable end to end with NPCs who can 
 **Starting state.** P2 exit gate passed: pipeline, bridge, installer, inventory v1. G4 and G7 proved terrain,
 one place, navmesh, faces and stepped rivers on a sample block.
 
-**Read first.** Decisions 0009, 0010; [audit-world](../research/2026-10-27/audit-world.md) §1, §3, §4;
+**Re-check before starting:** xLODGen/DynDOLOD versions and Linux/Proton reports; Tropical Skyrim SSE file version.
+
+**Read first.** Decisions 0009, 0010, 0014; [audit-world](../research/2026-10-27/audit-world.md) §1, §3, §4;
 [skyrim-tooling](../research/2026-10-27/skyrim-tooling.md) §1, §5; imported design docs: `docs/design/world/00-core.md`
 (in full), `20-province-design.md`, `60-water-traversal.md`, `72-navigation-ai.md`, `97-placement-principles.md`,
 `98-data-model.md`, old decisions 0015, 0047, 0049, 0058–0069, 0102, 0114, 0128, 0137, 0140 (via
@@ -51,7 +53,7 @@ the border; the haze is opaque by about 10 km.
   planes.
 - Rivers: 101 rivers, 615 reaches, 202 junctions from `hydrology-graph.json`: each reach becomes placed water
   plane segments stepped at the graph's grade, with a vanilla waterfall/rapids piece at each step (old 0064:
-  waterfalls are the vanilla kit) and flow direction set where the water type supports it. 2,280 bodies are
+  waterfalls are the vanilla kit) and flow from the method G7 proved (generated flowmap) or still water where G7 recorded the loss. 2,280 bodies are
   classified (sea, lagoon, lake, pond, river, rapids, falls, spring) into placement rules.
 - The old project's "the water line is high water" (old 0063) holds: one static level per body. **Seasonal
   water levels (old 0049) are not modelled**: Skyrim water planes are static; flood seasons survive only as
@@ -101,7 +103,12 @@ the border; the haze is opaque by about 10 km.
 
 ### WP3.8 LOD and the world map image
 - xLODGen (terrain LOD) and DynDOLOD (object and tree LOD) under Wine with the documented Texconv workaround
-  (plain Wine 9.22, retries); 32–64 GB RAM advised, so run on a temporary larger spot instance, costed first.
+  (plain Wine 9.22, retries); 32–64 GB RAM advised, so run on a temporary 64 GiB spot instance (budget in decision
+  0008), stopped after.
+- **Who generates LOD (decision 0014 §4):** LOD output is derived from mod and vanilla textures, so it is never
+  shipped. Measure the player-side cost (time, RAM) of the same steps; the installer runs terrain LOD always and
+  object LOD only if a typical player PC (16 GB) can do it in under an hour; otherwise ship our LOD settings only
+  and record the visual loss for players (the owner's GPU box gets full LOD).
 - A painted-look world map image rendered from our own heightfield, hydrology and land cover (the UI
   exception), consumed by the paper map in P4-WP4.9.
 - **Acceptance:** distant views show terrain and tree LOD with no missing tiles; the LOD build is a scripted job.
@@ -121,6 +128,13 @@ the border; the haze is opaque by about 10 km.
 - **Acceptance (L4 + L6):** each ported place passes its scenario (enter every building, every promised socket
   is usable, NPCs reach their spots); a P3 **walk packet**: the owner walks Greenspring and Claywater Station
   and one road leg through the stream and rules blocker/polish.
+
+### WP3.9b One assembled interior (no source-plugin interior to copy)
+- Prove one interior assembled from kit pieces (not copied from a source plugin): room bounds and portals for
+  occlusion, a lighting template and placed lights, interior navmesh through the WP3.4 converter, load doors.
+  This is the pattern for P9's dungeon-kind interiors without a plugin interior.
+- **Acceptance:** an L4 scenario walks it, NPCs path inside it, frame time within the G2 bar, a reader panel
+  judges the lighting against two vanilla interiors.
 
 ### WP3.10 Performance pass
 - Measure frame time across a grid of 100 sampled cells on the chosen instance; fix the worst 10 (vegetation

@@ -1,7 +1,7 @@
 # 0002: One pinned Skyrim runtime
 
 **Status:** decided 2026-10-27 (owner: "Yes on pinning the Skyrim version"). Which version: chosen in Phase 1
-(P1-S6) and recorded here.
+(P1-S3, gate G3) and recorded here.
 
 ## Context
 
@@ -16,10 +16,11 @@ contradicts the rest and must be checked against the actual exe. CommonLibSSE-NG
 
 1. Argonia supports **exactly one Skyrim runtime** at a time. Our own plugins are still built multi-runtime
    (NG) so that moving the pin is cheap.
-2. Candidates, decided by Phase 1 test S6: **1.6.1170** (widest mod ecosystem, the community's rollback
+2. Candidates, decided by Phase 1 spike S3 (gate G3): **1.6.1170** (widest mod ecosystem, the community's rollback
    target) or **1.7.104** (current; BFCO 3.100.8+, Underwater NG, FreeClimb, CSF 3.2 support it). Rule: the
    version on which the whole pinned dependency list (docs/phases/P2-foundation.md, WP2.1) loads and passes the
-   smoke test wins; ties go to 1.6.1170.
+   smoke test wins; ties go to 1.6.1170. Constraint: King of the Murkmire's meshes use textures from the Creation
+   Club and AE archives (`_ResourcePack.bsa`, CC masters), so a 1.5.97 pin would drop KotM or need those masters.
 3. The GPU machine image is never updated by Steam: Steam runs in offline mode with updates disabled, and the
    exact depot manifest is recorded in `infra/README.md` so the image can be rebuilt (steamcmd
    `download_depot` of that manifest).

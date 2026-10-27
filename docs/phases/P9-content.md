@@ -47,7 +47,8 @@ The planner may reorder by the main quest's needs; the order is recorded in PROG
 ## The packet (what one region packet contains and the steps it runs)
 
 Each region is split into **packets** of about 20–40 places (a district for cities). One packet is one lane's
-brief at a time; on 20x, up to 4 packets run in parallel in **different regions** (never two builders on one
+brief at a time; on 20x, up to 4 packets run in parallel in **different regions**, sharing the one GPU box
+through the `job_guard.sh --gpu` lock (never two builders on one
 place or district: the Helstrom lesson, old 0133).
 
 1. **Plan** (L1): from the catalogue, list the packet's places, their classes (settlement, ruin, lair, works,
@@ -66,9 +67,11 @@ place or district: the Helstrom lesson, old 0133).
 7. **Encounters and loot** (L1): creatures and hostiles by band; roaming band table; fixed loot.
 8. **Books and signs** (L1): written to the style guide, text-review.
 9. **Immersion** (gate): every new element enters the inventory compliant.
-10. **Checks** (L4): a packet scenario walks every place, enters every building, talks to every NPC once, runs
+10. **Navmesh and LOD:** regenerate navmesh for every cell the packet touched (and its neighbours' edge links)
+    in the packet; rebuild LOD once at **region close** on the temporary 64 GiB instance (budget in decision 0008).
+11. **Checks** (L4): a packet scenario walks every place, enters every building, talks to every NPC once, runs
     every quest; frame-time sample per place.
-11. **Owner walk** (L6): one packet per region (not per packet): a route through the region's new places and
+12. **Owner walk** (L6): one packet per region (not per packet): a route through the region's new places and
     its quests; blocker/polish triage.
 
 ## Main quest, factions, endings
@@ -98,3 +101,7 @@ M2 reached, or the owner declares the content complete; all region walk packets 
   any Fal or retexture work.
 - **Cost**: 20x usage is measured weekly against the plan's cap; if lanes queue on the GPU box, add a second
   GPU box only after costing it against the budget.
+
+## Deliberately out of scope
+New systems (any system gap found here goes back to its phase as a decision); new meshes; regions outside the
+province (the apron stays unreachable).

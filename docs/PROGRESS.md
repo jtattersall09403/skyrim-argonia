@@ -22,6 +22,7 @@ Status: `todo`, `in progress (lane)`, `done (commit)`, `blocked (why)`, `dropped
 | P1 | S6/G6 | Measuring DSR | todo |
 | P1 | S7/G7 | Swimmable stepped rivers | todo |
 | P1 | S8/G8 | Agentic loop end to end | todo |
+| P1 | S9/G9 | DS1 timing without shipping edited animations | todo |
 | P2 | 2.1 | Dependency manifest | todo |
 | P2 | 2.2 | Permission requests | todo |
 | P2 | 2.3 | Installer and deploy | todo |
@@ -41,6 +42,7 @@ Status: `todo`, `in progress (lane)`, `done (commit)`, `blocked (why)`, `dropped
 | P3 | 3.7 | Vegetation | todo |
 | P3 | 3.8 | LOD and world map image | todo |
 | P3 | 3.9 | The already-built places | todo |
+| P3 | 3.9b | One assembled interior | todo |
 | P3 | 3.10 | Performance pass | todo |
 | P4 | 4.1 | Attributes, skills, formulas | todo |
 | P4 | 4.2 | Skill use, vastei, levels at rest, sitting | todo |
@@ -62,6 +64,7 @@ Status: `todo`, `in progress (lane)`, `done (commit)`, `blocked (why)`, `dropped
 | P4 | 4.18 | Factions and reputation | todo |
 | P4 | 4.19 | Schedules and the lamp clock | todo |
 | P4 | 4.20 | Owner packets | todo |
+| P4 | 4.21 | World registries | todo |
 | P5 | 5.1 | Measure DSR into the golden table | todo |
 | P5 | 5.2 | Configure the stack | todo |
 | P5 | 5.3 | ArgoniaCombat core | todo |
@@ -82,6 +85,7 @@ Status: `todo`, `in progress (lane)`, `done (commit)`, `blocked (why)`, `dropped
 | P7 | 7.3 | Journeys | todo |
 | P7 | 7.4 | Slice immersion pass | todo |
 | P7 | 7.5 | Owner playthrough | todo |
+| P7 | 7.5b | Triage the old polish backlog | todo |
 | P7 | 7.6 | Re-plan and P9 packet template | todo |
 | P8 | 8.1 | Inventory completeness | todo |
 | P8 | 8.2 | Verdicts at scale | todo |

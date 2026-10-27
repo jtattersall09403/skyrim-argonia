@@ -35,7 +35,9 @@ water) tuned. After P8, everything new in P9 enters the inventory already compli
 
 ### WP8.3 UI, menus, fonts, loading screens, main menu
 - Every vanilla menu in the stack (including MCM, tween menu, system menu, journal tabs we kept, crafting,
-  lockpicking if kept, training, sleep/wait, loading menu, main menu, credits) restyled or replaced; Pelagiad
+  lockpicking if kept, training, sleep/wait, loading menu, main menu, credits) restyled or replaced by the decision
+  0014 §7 order (PrismaUI replacement, our own original SWF, installer-time patch; never a shipped edit of a
+  Bethesda or mod SWF); Pelagiad
   verified everywhere; icons replaced (Fal for any icon with no sourced equivalent).
 - Loading screens: Black Marsh paintings (Fal-made or sourced) with loading facts from the text catalogue
   (old "the marsh does what the loading facts say", 0157).
@@ -65,6 +67,8 @@ water) tuned. After P8, everything new in P9 enters the inventory already compli
 - Community Shaders presets per region and weather: humid marsh light, volumetric fog and god rays through
   canopy, marsh mist, waterfall mist, rain; water shader tuned for murky fresh water vs sea; image spaces; all
   measured against the G2 frame-time bar on the chosen instance.
+- Use RenderDoc captures on the GPU box (Linux/Proton supports it) for pass order and fog parameters when a look
+  question cannot be answered from settings.
 - Reference: the old project's look decisions (haze by default, old 0136; light and world time, old 0016; mist
   volumes, old 0124) and its screenshots.
 - **Acceptance:** reader panel on a 50-shot vantage set across regions and weathers; owner look packet; frame
@@ -79,3 +83,6 @@ final look approved by the owner; the gate now enforces compliance for every new
   keep reader cost proportional; the owner sees samples, not everything.
 - **AI clauses** limit Fal use where a dependency forbids AI: such rows fall back to sourced or CC art, or the
   dependency is reconsidered.
+
+## Deliberately out of scope
+New meshes (never); content building (P9); voice acting (unvoiced, O-11).

@@ -40,7 +40,7 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | A27 | Playable on Honor Magic V5 and MacBook Air M2; nothing installed on the Mac | In | 0007 streaming; VS Code tunnel for development (0008) |
 | A28 | Streaming from a GPU VM for seamless saves | In | 0007 §4; P2-WP2.10 |
 | A29 | Not wedded to RunPod; research others with good Claude Code/MCP compatibility | In | hosting-streaming §2; 0008 §3–4 (AWS CLI/MCP; RunPod out for play due to UDP; Vast.ai fallback) |
-| A30 | Claude Code on an affordable AWS instance, ≤ $100/month | In | 0008 (estimate ~$95–110 with levers); T-COST |
+| A30 | Claude Code on an affordable AWS instance, ≤ $100/month | In | 0008: $100 is a **hard cap**; per-phase budgets; weekly projection with a stop-and-ask rule (T-COST) |
 | A31 | Autonomous testing loops on AWS or a GPU service | In | ways-of-working §3; P1-S8/G8; P2-WP2.4 |
 | A32 | Not Hetzner | In | 0008 §4 |
 | A33 | 20x (parallel, ~60 h/wk) vs 5x (~120 h/wk) plan; usage arithmetic | In / Open | 0013; O-2 |
@@ -53,8 +53,9 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | A40 | Fal MCP for minor new art | In | 0006 §6–7; legal §4 |
 | A41 | New public repo; old repo untouched; may continue three.js separately | In | 0003; 0009 §1; source-map |
 | A42 | Plan for the future agent; bootstrap its own structure and ways of working from the old repo | In | P0-WP0.1/0.2; ways-of-working; source-map §3 |
-| A43 | Plan complete, no petering out in later phases | In | P7–P10 written to the same template as P0–P6; this ledger |
+| A43 | Plan complete, no petering out in later phases | In | every phase file has goal, starting state, re-check/read-first, WPs with acceptance, exit gate, risks, out of scope; an independent audit (68 findings, all fixed: section I) |
 | A44 | Tropical Skyrim (SSE 78044) as the source for any base-Skyrim assets | In | 0006 §8; P2-WP2.1; P3-WP3.1/3.7; P8-WP8.2; legal §2 |
+| A46 | "Other games if relevant" the owner owns | In | 0010 §2 (study owned games); none needed beyond Skyrim SE, Morrowind, DSR, DS3 so far; the planner asks the owner's library when a system lacks a reference |
 | A45 | Use the universal-modder/Ghidra perspective as a primary lens across every system, water included | In | 0010; um-ghidra-lens §6 per-system table; P1-S7 (water question as the first Ghidra use); P5-WP5.1 |
 
 ## B. Owner rulings during planning (owner-brief §3)
@@ -109,7 +110,7 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | D5 | No persuasion menu, no 0–100 disposition in Skyrim | In | P4-WP4.6 |
 | D6 | Custom Skills Framework (MIT), Sleep to Gain Experience, Sleep to Level Up, E.S.L.A., Classic Classes and Birthsigns, Experience, Skill Uncapper, Gold Is XP, Enderal progression | In | P4-WP4.1/4.2 |
 | D7 | Respawn – Soulslike (grave + last bed, permissive), Respawn – Death Overhaul | In | P4-WP4.4 |
-| D8 | Animated Armoury, Armory Extended, Throwable Weapons SKSE, crossbows vanilla | In | P4-WP4.11; P2-WP2.1 |
+| D8 | Animated Armoury, Armory Extended, Throwable Weapons SKSE, crossbows vanilla | In | P4-WP4.11; P2-WP2.1; crossbows/thrown provisional (0016, O-15) |
 | D9 | Split L/R armour meshes are an asset gap; body mesh conflicts | In / Open | P4-WP4.11; O-9 |
 | D10 | Wayfinder, No Google Maps Skyrim (GPL), Compass Navigation Overhaul, quest-marker settings, Flat World Map Framework, A Quality World Map, Atlas Map Markers | In | P4-WP4.8/4.9 |
 | D11 | SkyUI 6, Infinity UI, TrueHUD, PrismaUI (licence: dependency fine; forks need permission; Ultralight licence), dMenu NG, full SWF skins; Scaleform authoring poor on Linux | In | P2-WP2.8; P4-WP4.10 |
@@ -167,7 +168,7 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | E12 | Two machines (build VM without GPU, GPU box on demand) | In | 0008; PLAN §3 |
 | E13 | Budget estimate and levers; at the $100 limit | In | 0008 table |
 | E14 | Old m7i.2xlarge box costs ~$23/month stopped | Open | O-1 |
-| E15 | Old infra lessons: idle-stop, R2 vault restore, Wine prefix fragility, /tmp wiped at stop, wineboot hang with a display | In | P0-WP0.4/0.5; source-map §3 |
+| E15 | Old infra lessons: idle-stop, R2 vault restore, Wine prefix fragility, /tmp wiped at stop, wineboot hang with a display | In | P0-WP0.4 (idle-stop, two Wine versions, wineboot without DISPLAY, /tmp rule), P0-WP0.5 (R2 restore steps); source-map §3 |
 | E16 | AWS step-by-step setup (budget, instance, IAM role glitch, spot settings, Session Manager, VS Code tunnel, Claude Code, gh) | In | infra/README "What the owner did by hand" |
 
 ## F. The old project's content, designs and lessons
@@ -220,3 +221,75 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | H6 | Native Android build | impossible on Skyrim (0007) |
 | H7 | Codespaces | superseded in the old project; not used |
 | H8 | A second GPU box for parallel L4 | only if measured queueing justifies it within budget (P9 risks) |
+
+## I. The independent audit (2026-10-27): 68 findings, each fixed
+
+| # | Finding | Fixed in |
+|---|---|---|
+| I1 | Re-timing animations "with annotations" would ship modified clips | decision 0014 §2; P1-S9/G9; P5 constants, WP5.2, WP5.9; CLAUDE.md |
+| I2 | FaceGen, LOD, silent voice files are derived assets | 0014 §3–6; 0003 §7; P1-S4; P2-WP2.3; P3-WP3.8; Fuz Ro D-oh |
+| I3 | Crossbows/thrown reintroduced against old 0031 | decision 0016 (provisional), O-15; inherited-rulings 0031 row |
+| I4 | Budget at the cap; costs unbudgeted | 0008 hard cap, per-phase budgets, stop-and-ask rule |
+| I5 | 0002 named the wrong spike | 0002 → P1-S3/G3 |
+| I6 | Vanilla SWF reskins and the font SWF | 0014 §7; P4-WP4.10; P8-WP8.3; FFDec in P0-WP0.4 |
+| I7 | No repo licence; GPL untracked | decision 0015, O-14; P0-WP0.1; P2-WP2.1 licence columns |
+| I8 | Old registries without consumers | P4-WP4.21; source-map §1 |
+| I9 | Movement formulas missing | P4-WP4.1; P6-WP6.3 |
+| I10 | Disposition details; Speechcraft in base | P4-WP4.6 |
+| I11 | Waking from death counts as a rest; respawn classes | P4-WP4.4 |
+| I12 | Vastei tutorial scene | P7-WP7.1, WP7.3 |
+| I13 | Old 0147 open calls | O-16; P4-WP4.2 |
+| I14 | Skyrim dialogue-engine facts | P4-WP4.6, WP4.8 |
+| I15 | Steam re-login every couple of weeks | P1-S0 steam_check |
+| I16 | G3 list missing P5 mods; Precision 1.7.x port | P1-S3 union list |
+| I17 | River flowmaps need the CK | P1-S7; P3-WP3.3 |
+| I18 | Kit-id → base record mapping | P1-S4; P2-WP2.5 |
+| I19 | Assembled interiors unproven | P3-WP3.9b |
+| I20 | Owner-held permissions from 2026-09 | O-17; P2-WP2.2; legal §2 |
+| I21 | Phone aspect ratios and readability | P1-S2/S5; P2-WP2.8 |
+| I22 | Inventory with paperdoll had no WP | P4-WP4.10 |
+| I23 | PrismaUI fallback | 0001 §2; P1/P4 risks; 0014 §7 |
+| I24 | Dependency plugins on the build VM | P2-WP2.3 build-VM masters |
+| I25 | UXM, Paramdex, DSAnimStudio, tes3conv | P0-WP0.4 |
+| I26 | Old backlog triage | P7-WP7.5b |
+| I27 | P1 ordering vs dependencies | P1 order section; S1 `/input` and `make deploy` |
+| I28 | Bridge exposure | 127.0.0.1 + token + SSH tunnel (P1-S1, P2-WP2.4) |
+| I29 | Brief fields | P0-WP0.2 |
+| I30 | Wine versions | P0-WP0.4 two pinned versions |
+| I31 | Training rules | P4-WP4.12; 0005 C13 |
+| I32 | Levelling curve and rules | P4-WP4.2 |
+| I33 | Phase template gaps | all phases: out of scope, risks, acceptances |
+| I34 | Spike time budgets | P1 (every spike) |
+| I35 | Guard WP reference | 0003 §5 |
+| I36 | Where 13/11/9 is settled | 0004, P1-S6, P5-WP5.1 |
+| I37 | Burden thresholds | 0004; P5 constants |
+| I38 | Tier labels; RaceMenu | 0005 C3, C12; P1-S3 |
+| I39 | Check-ins on a public repo | ways-of-working §5; P2 risks; P10-WP10.5 |
+| I40 | Bridge capabilities used later | P2-WP2.4 (path query, music/sound events, booth mode) |
+| I41 | P9 navmesh/LOD per packet | P9 packet step 10 |
+| I42 | Windows machine for P10 | P10-WP10.2 |
+| I43 | Owner-step instructions | P0-WP0.5 (R2), P2-WP2.2 (gist drafts), P2-WP2.3 (manual downloads) |
+| I44 | Stale research re-checks | "Re-check before starting" in P0–P6 |
+| I45 | Optimistic estimates | PLAN §5 re-estimate at P1 close from G8 |
+| I46 | Hand-off and review numbers | ways-of-working §2 (300k/100k; 1,500 lines) |
+| I47 | One game worker; per-port journals | ways-of-working §3; job_guard `--gpu` |
+| I48 | KotM needs CC/AE archives | 0002 §2; P1-S3 |
+| I49–I61 | Nits: soft requirement cap, underwater contract, climb numbers, stale counts, magic/alchemy/lock formulas, 0040 parries, class bonuses, tree, wording, backlog path, socket activities | P4-WP4.1/4.5/4.15/4.16/4.17/4.19; P6-WP6.1/6.3; P5-WP5.3; PLAN §3; 0006 §7; P0-WP0.1 |
+| I63–I68 | Other games row; bleedout wording; S3 redefinition; /tmp; in-place reads; private-repo access | A46; P4-WP4.4; 0001 §2; P0-WP0.4; source-map; P0-WP0.5 |
+
+## J. Research items noted and deliberately not used (audit I62)
+
+| Item | Why not |
+|---|---|
+| Smithbox, WitchyBND | soulstruct covers DSR on Linux; Smithbox is Windows-only and DS3-focused |
+| Cheat Engine / TGA tables | live memory editing not needed; offline capture + TAE reading suffice (0004) |
+| Pyro (Papyrus build wrapper) | the reference compiler is called directly |
+| SkyUILib | only needed by AutoTest, which we replace with our bridge |
+| Vigilant, Skyblivion | precedents only (content on vanilla mechanics) |
+| Horizon Zero Dawn fast travel mod | no fast travel at all (0005 C13) |
+| Rowboat spell, Animated Ships | NPC/ambient boats; ours are ArgoniaBoats |
+| reversedwithai.com list | no Morrowind/Skyrim/Souls entry |
+| Morroblivion precedent | informs 0014 (install-time derivation); nothing to adopt |
+| "Funny-Bones" Elden Ring controller in Skyrim | human-made report, source not found |
+| Encounter zone "Match PC below minimum" flag | must stay **off** (fixed danger); noted in P4-WP4.14 by min = max |
+| RenderDoc | used only for P8 look questions (P8-WP8.6) |

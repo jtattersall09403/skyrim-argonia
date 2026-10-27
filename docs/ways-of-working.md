@@ -20,8 +20,10 @@ How the planner and its agents build Argonia. Inherited from elder-souls-argonia
 Every build brief is written with `tooling/brief_template.py --write` and has: **Lane** (id), **Paths** (what
 the lane owns; others avoid them), **Acceptance** (a runnable command or a measured number, never "looks
 good"), **Report path**, **Test level** (the lowest sufficient), and the **reuse route** chosen (decision 0010)
-with why higher routes were not enough. One deliverable per context; at the context marker an agent commits
-what is green and writes a hand-off note (done, commits, next steps with file:line, reds).
+with why higher routes were not enough. One deliverable per context; at the context marker (**300k tokens of
+context; 100k for Haiku agents**) an agent commits what is green and writes a hand-off note (done, commits, next
+steps with file:line, reds). A lane whose diff passes **1,500 changed lines** runs one code review (a `reader` or
+`deliver` in review mode) over its commits before reporting.
 
 Agents return at most 25 lines (outcome, changes, measurements, failures, recommendations); the full report
 goes to the report path.
@@ -42,7 +44,11 @@ for a game action); the running game is the oracle for behaviour; prove the scre
 frames differ); stop after 3 identical failures and diagnose; never let the thing under test own the test; a
 crash is a failure, never "still running"; a check that cannot change a decision is not run.
 
-GPU-box time is the bottleneck: batch L4 checks per lane, start the box once per batch, stop it after.
+GPU-box time is the bottleneck: batch L4 checks per lane, start the box once per batch, stop it after. **Only
+one lane drives the game at a time** (universal-modder's one-game-worker rule): `job_guard.sh --gpu` takes a lock
+on the GPU box; other lanes queue. Each port (combat, climbing, boats, dialogue) keeps a journal file
+`docs/research/journals/<port>.md` (universal-modder's MODLOG): what was tried, measured and learned, so nothing
+is lost at a context hand-off.
 
 ## 4. The gate
 
@@ -62,7 +68,12 @@ usage). Nothing measurable is sent to the owner.
 **Blocker vs polish** (old rule): a blocker is something the player cannot do (stuck, falls through, crash,
 lost save, unreachable control) or sees at the normal play camera in normal play (floating, a limb through a
 wall, a visible pop, a Nordic element). Everything else is polish: one quick fix, then the backlog
-(`docs/phases/backlog.md`), never a relaunch.
+(`docs/phases/backlog.md`, created in P0-WP0.1), never a relaunch.
+
+**The repo is public, so check-in issues are too.** Issues carry no secrets, no start links, no stream URLs, no IP
+addresses and no Lambda or console links; those reach the owner privately (a secret gist via `gh gist create` without
+`--public`, referred to in the issue only by its title, which the owner finds in their own gist list; or the
+owner's AWS console). Costs may be summarised.
 
 ## 6. Cost controls (old 0079, 0083, 0118)
 

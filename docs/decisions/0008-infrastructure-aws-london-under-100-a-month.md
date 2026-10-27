@@ -37,10 +37,29 @@ possible", London). Prices re-measured in P0 and recorded in [infra/README.md](.
 | S3 (saves, small backups) | <10 GB | <1 |
 | **Total** | | **~$95–110** |
 
-This is at the limit. **Levers, in order:** idle-stop the build VM when no agent session runs (biggest);
+This is at the limit. **The $100 is a hard cap** for AWS (owner rule). **Levers, in order:** idle-stop the build VM when no agent session runs (biggest);
 shrink the GPU disk by keeping only the pinned files; use g4dn for agent runs; release the old
 elder-souls-argonia machine's 250 GiB disk (~$23/month while stopped, outside this table: owner call O-1);
 move to `m7i.large` for the build VM during low-parallelism phases.
+
+## Per-phase cost budget (AWS, on top of the steady state above)
+
+| Phase | Extra items | Budget |
+|---|---|---|
+| P0 | none (build VM only) | $0 |
+| P1 | GPU benchmark hours on three instance types (~15 h); a temporary Windows spot instance only if G1/G4/G6 need it (~10 h); owner streaming test | ≤ $25 |
+| P2 | installer from-scratch runs (~10 GPU hours) | ≤ $10 |
+| P3 | a 64 GiB spot instance for LOD generation (~6 h per full build; e.g. r7i.2xlarge/m7i.4xlarge spot), navmesh/vegetation L4 sweeps | ≤ $15 |
+| P4–P6 | L4 batches inside the steady-state GPU hours | $0 extra |
+| P7 | owner playthrough hours (counted as play) | $0 extra |
+| P8 | contact-sheet render batches (~20 GPU hours on g4dn) | ≤ $10 |
+| P9 | per region: L4 sweeps (~10 GPU hours) and one LOD rebuild at region close (~6 h big instance) | ≤ $10 per region |
+| P10 | a temporary Windows spot instance for install tests (~10 h) | ≤ $10 |
+
+**Stop-and-ask rule (T-COST):** the planner projects the month's AWS total weekly (month-to-date plus planned
+hours at current spot prices). If the projection exceeds $100, it stops starting new paid work, applies the
+levers above, and if that is not enough asks the owner (raise the cap for the month, or slow down). A phase's
+extra budget overrunning by 50% also triggers a check-in.
 
 ## Consequences
 

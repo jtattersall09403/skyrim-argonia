@@ -26,8 +26,8 @@ of UI and art elements, an agentic approach that covers everything 100%; Fal all
 3. **Visual judgement** is done by independent `reader` agents on in-game captures with a Nordic-tells
    checklist (knotwork, dragon motifs, Nordic runes, horned helmets, Skyrim seal, Sovngarde/Dragonborn
    wording, snow/pine palettes, Nordic voice accents) and by the owner on sampled packets.
-4. **Font:** **Pelagiad** (SIL OFL; OpenMW's free twin of Magic Cards) everywhere: vanilla menus via
-   `fontconfig.txt`/font SWF replacement, PrismaUI views via web font. Shipping Pelagiad is permitted by OFL
+4. **Font:** **Pelagiad** (SIL OFL; OpenMW's free twin of Magic Cards) everywhere: vanilla menus via our own
+   font library SWF and `fontconfig.txt` (decision 0014 §7), PrismaUI views via web font. Shipping Pelagiad is permitted by OFL
    with its licence file.
 5. **Music:** new music for every music type (explore by region and time, combat, dungeon, town, menu,
    death, discovery). Sources in order: (a) permissively licensed existing music (CC0/CC-BY, credited);
@@ -40,7 +40,7 @@ of UI and art elements, an agentic approach that covers everything 100%; Fal all
 7. **AI-use constraint.** Some mod authors forbid use of their assets in mods "that make use of AI" (King of
    the Murkmire's terms), and Nexus requires AI-content disclosure (since 2026-07-31). Argonia's code, text and
    any Fal art are AI-made, so: the sourcing register records each dependency's AI clause; any mod whose terms
-   forbid AI-made companions is either cleared in writing by its author or dropped (docs/legal-and-sourcing.md).
+   forbid AI-made content is either cleared in writing by its author or dropped (docs/legal-and-sourcing.md).
    The Nexus page discloses AI use.
 
 8. **Tropical Skyrim is the base-asset layer** (owner ruling 2026-10-27). Tropical Skyrim's SSE version

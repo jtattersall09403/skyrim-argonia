@@ -2,7 +2,7 @@
 
 **Status:** decided 2026-10-27 (owner: "I don't mind the idea of using Skyrim as host in theory", provided
 Argonia keeps Morrowind's soul; owner asked to get cracking with it). Confirmed or reversed by the Phase 1
-gates (G1–G8 in [P1](../phases/P1-spikes.md)).
+gates (G1–G9 in [P1](../phases/P1-spikes.md)).
 
 ## Context
 
@@ -38,6 +38,11 @@ Skyrim makes the body free and the soul a code problem.
      the topic-index journal, the local map, the sitting/persuasion/chargen screens and the HUD, drawn as
      HTML through PrismaUI. Raw-offset patches of SkyrimSE.exe are a last resort and need a decision record.
    - **S4, a different engine reading Skyrim data**: not now.
+   - Note: the research report defined S3 as "deep reverse-engineered hooking"; this plan narrows S3 to
+     replacement screens plus any unavoidable deep hook, because PrismaUI makes HTML screens the cheap form of S3.
+   - **PrismaUI risk:** single author, restrictive licence. Pin its version early (P2); every S3 screen keeps a
+     fallback (an SWF of our own or the vanilla menu path, decision 0014 §7) so a PrismaUI failure degrades the
+     look, never strands a quest.
 3. **Fallback trigger.** If Phase 1 gate G1 (SKSE plugin built on Linux, loading under Proton, bridge working)
    or G4 (world sample generated without the Creation Kit, navmesh and faces solved) fails after the
    spike's budget and its listed workarounds, stop and bring the owner a re-plan: Windows build/test

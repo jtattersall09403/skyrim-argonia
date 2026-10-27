@@ -10,6 +10,9 @@ inbound rules, SSM role `argonia-build-ssm`), a VS Code tunnel `argonia-build` r
 vscode.dev/tunnel/argonia-build, Claude Code logged in, `gh` authenticated, and the repo cloned to
 `~/skyrim-argonia`. If any of that is missing, the first check-in asks for it.
 
+**Re-check before starting:** Claude Code install method, Ghidra/JDK versions, .NET/Mutagen/Spriggit versions,
+m7i.xlarge spot price.
+
 **Read first.** [PLAN.md](../PLAN.md), [ways-of-working.md](../ways-of-working.md),
 [source-map.md](../source-map.md), [inherited-rulings.md](../inherited-rulings.md), decisions 0003, 0008, 0009,
 0010, 0011, [audit-infra](../research/2026-10-27/audit-infra.md).
@@ -18,6 +21,9 @@ vscode.dev/tunnel/argonia-build, Claude Code logged in, `gh` authenticated, and 
 
 ### WP0.1 Repo skeleton and rules
 - Create the directories in PLAN §3 with a one-paragraph README in each (what lives there, what never does).
+- `LICENSE` and `LICENSE-content` per decision 0015 once the owner answers O-14 (recommended: GPL-3.0-or-later
+  code, CC BY-NC-SA 4.0 content); a licensing section in README.
+- `docs/phases/backlog.md` (polish backlog, empty table) and `docs/research/journals/` (per-port journals).
 - `.gitignore`: `out/`, `build/`, `private/`, every asset extension listed in decision 0003, `*.npy`, Wine
   prefixes, `node_modules/`, `.venv/`.
 - Finalise `CLAUDE.md` (already drafted; keep under its word budget, enforced by
@@ -36,9 +42,11 @@ three.js-specific:
   universal-modder's `mod-any-game`, `reverse-engineering`, `game-automation` skills and its Bethesda playbook
   plus the field notes named in decision 0010 into `.claude/skills/um-*` with its MIT licence and a credit
   line; edit them to point at this repo's tools and rules.
-- `tooling/`: `brief_template.py` (Lane, Paths, Acceptance, Report path), `shell_guard.py` (refuse `sleep`,
+- `tooling/`: `brief_template.py` (Lane, Paths, Acceptance, Report path, Test level, Route: the same fields as
+  CLAUDE.md and ways-of-working §2), `shell_guard.py` (refuse `sleep`,
   poll loops, `git checkout --`/`restore`/`stash`/`reset --hard`, `pkill/killall`, empty commit pathspecs),
-  `job_guard.sh` (long jobs in background with a log and a wait that returns within 270 s), `session_tokens.py`
+  `job_guard.sh` (long jobs in background with a log and a wait that returns within 270 s; `--gpu` takes the
+  GPU-box lock so only one lane drives the game), `session_tokens.py`
   (token and cost report), `owner_inbox.py` (posts a check-in as a GitHub issue labelled `owner-check-in`).
   Each hook gets a test that makes it fail on purpose. Nothing else is copied until an incident earns it.
 - `.claude/settings.json`: model `claude-opus-5-5[1m]` for the planner; hooks for shell_guard and the
@@ -65,13 +73,22 @@ three.js-specific:
 download is not from a package manager), installing:
 - Python 3.12 venv with `numpy`, `pydantic`, `pytest`, `ruff`, `soulstruct` (DSR), `requests`, `boto3`.
 - .NET 8 SDK; Mutagen (NuGet) via a `tools/ArgoniaGen` console project; Spriggit CLI.
-- Wine (staging, wow64) + winetricks; a win64 prefix for xEdit with the riched20 patch (universal-modder
-  note); `msvc-wine` (MSVC `cl.exe`/`link.exe` under Wine) and `clang-cl` + `xwin` + `lld-link` as the second
+- Wine: **two pinned versions** in `toolchain.lock`: a wow64 Wine (the old project used 11.13 wow64) for xEdit
+  (win64 prefix with the riched20 patch, universal-modder note), PapyrusCompiler, BSArch, msvc-wine and
+  DSAnimStudio/UXM; and **plain Wine 9.22** for xLODGen/DynDOLOD's Texconv (fails at random on staging/Proton
+  builds). Each tool's wrapper script names its prefix and version. Wineboot hangs if a display is present: run
+  `wineboot` without `DISPLAY`; `msvc-wine` (MSVC `cl.exe`/`link.exe` under Wine) and `clang-cl` + `xwin` + `lld-link` as the second
   route; CMake, Ninja, vcpkg with a cross triplet. (The SKSE build itself is proved in P1-S1.)
 - Node 22, Chrome for Testing (headless), Playwright: the PrismaUI view harness (L3).
 - JDK 25 + Ghidra 12.2 + PyGhidra 3.2 (headless only), Address Library names database for Skyrim; kept for
   targeted questions (decision 0010 §4).
+- JPEXS FFDec (Java) for inspecting vanilla SWFs and building our own (decision 0014 §7).
+- Souls tools: soulstruct (Python), the Paramdex repo (DS1R/DS3 definitions and names), UXM Selective Unpack and
+  DSAnimStudio under the wow64 Wine prefix (if they fail under Wine, P1-S6 names the fallback: a temporary
+  Windows spot instance).
+- tes3conv (MIT) for reading Morrowind.esm as JSON (reference facts only).
 - `steamcmd`, `rclone`, AWS CLI v2, `gh`, `jq`, `tmux`.
+- `/tmp` is wiped at every stop: nothing durable lives there; scratch goes to `~/argonia-scratch/` or `private/`.
 - `infra/build-vm/idle-stop.sh` as a systemd timer: stop the instance after 90 minutes with no Claude Code
   process, no `job_guard` job and no VS Code tunnel client. Port the old repo's `idle-stop.sh` idea; add a
   CloudWatch CPU alarm backstop.
@@ -80,7 +97,9 @@ download is not from a package manager), installing:
 
 ### WP0.5 Secrets and game files on the build VM
 - Secrets in `~/.argonia/secrets.env` (mode 600, outside the repo): R2 credentials for the old vault, AWS
-  defaults, Nexus API key (if O-6 says so), later the Fal key. Never echoed in logs; the shell guard refuses
+  defaults, Nexus API key (if O-6 says so), later the Fal key, and a GitHub token able to read the owner's **private** elder-souls-argonia repo
+  (`gh auth refresh -s repo`, or a fine-grained token with read access to that one repo) for the import. Never
+  echoed in logs; the shell guard refuses
   `cat` of that file.
 - **Owner step:** Steam login for `steamcmd` with Steam Guard (owner approves on their phone once). Download
   into `$ARGONIA_GAME_ROOT` (`~/games`, outside the repo): **Skyrim SE** (masters and archives only; used read-only
@@ -89,8 +108,12 @@ download is not from a package manager), installing:
   only if P5 needs a secondary value.
 - R2 vault fetch: `tools/fetch_vault.py` pulls only the parts P3 needs (frozen heightfield arrays, apron
   rasters, nav bakes) into `$ARGONIA_DATA`, checked against `world/sources/terrain/freeze.json` hashes.
-  **Owner step:** provide the R2 credentials from the old project's secrets file (it is on the stopped old
-  machine's disk at `/workspaces/.es-secrets.env`, or in the owner's password manager).
+  **Owner step:** provide the R2 credentials from the old project's secrets file. If they are not in the
+  owner's password manager, they are at `/workspaces/.es-secrets.env` on the stopped old machine's disk. Steps:
+  (1) start the old instance in the EC2 console; (2) connect with Session Manager (or the old VS Code tunnel);
+  (3) `sudo cat /workspaces/.es-secrets.env` and copy the R2 lines into `~/.argonia/secrets.env` on the new
+  machine through the VS Code editor (never into chat or an issue); (4) stop the old instance again. Do this before
+  answering O-1 (deleting that disk).
 - **Acceptance:** `tools/ArgoniaGen` lists record counts of `Skyrim.esm` (proves Mutagen reads the masters);
   `soulstruct` opens DSR's GameParam and prints the row count of `AtkParam_Pc`; the heightfield hash matches.
 
@@ -115,8 +138,10 @@ download is not from a package manager), installing:
   `tools/cost_report.py` prints month-to-date spend.
 
 ### WP0.8 First owner check-in
-Post (via `owner_inbox.py`) what P0 delivered, measured costs, O-1/O-2 asks, and what P1 will need from the
-owner (Steam login on the GPU box, a 20-minute streaming test on phone and Mac).
+Post (via `owner_inbox.py`) what P0 delivered, measured costs, the O-1, O-2 and O-14 asks, and what P1 will need
+from the owner (Steam login on the GPU box, a 20-minute streaming test on phone and Mac).
+- **Acceptance:** the issue exists with the `owner-check-in` label, contains no secret or link to a machine, and
+  lists every open call due by P1.
 
 ## Exit gate
 - `make check` green in CI and on the VM; every hook's fail-on-purpose test passes.

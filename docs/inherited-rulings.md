@@ -32,7 +32,7 @@ decisions or a later owner ruling change them. A row's verdict changes only by a
 | 0028 | allegiance reward tracks, quest index, novelty rule | Carry | |
 | 0029 | forward research pack | Drop | process |
 | 0030 | quest tiers, locks, swimming | Carry | tier protection |
-| 0031 | stats round 1 (vastei, respawn on rest) | Carry | C3 |
+| 0031 | stats round 1 (vastei, respawn on rest; cut whips, crossbows, throwing) | Carry / Adapt | C3 carries; the crossbow/thrown cut is reversed provisionally by 0016 (O-15); whips stay cut |
 | 0032 | weather and atmosphere | Adapt | Skyrim weather + Community Shaders |
 | 0033 | stat design, numbers, balance harness | Carry | numbers; the harness logic ported to L2 tests |
 | 0034 | build sequence (superseded) | Drop | |

@@ -6,7 +6,9 @@ C1–C15) passes in game, built to the old project's designs, with the owner hav
 **Starting state.** P2 exit gate passed (pipeline, bridge, view harness, installer). P3 runs alongside; checks
 that need the world use the S4 sample block until P3's places land.
 
-**Read first.** Decision 0005 in full; [skyrim-morrowind-soul](../research/2026-10-27/skyrim-morrowind-soul.md)
+**Re-check before starting:** Custom Skills Framework, PrismaUI, SkyUI 6 and Flat World Map Framework versions.
+
+**Read first.** Decisions 0005 (in full), 0014, 0016; [skyrim-morrowind-soul](../research/2026-10-27/skyrim-morrowind-soul.md)
 in full; [audit-systems](../research/2026-10-27/audit-systems.md); imported design docs:
 `docs/design/world/76-stats-progression.md` (the spec, ~1,640 lines; §102, §116–129 are binding unless a
 decision here changes them), `docs/design/quests/` (00-overview, 20-world-provisions, 30-main-quest,
@@ -51,8 +53,10 @@ PrismaUI views read and write state through the typed message schema (P2-WP2.8).
   point above; stamina regen 12 + 0.24 × Agi per second after a 1.05 s delay; magicka = 20 + 3 × Int; carry
   capacity 30 + 3 × Str kg with burden tiers by carried/capacity (fast < 0.2, mid < 0.35, fat < 1, overloaded);
   armour mitigation AR/(AR + 135.6 + 0.6 × damage); light/medium/heavy ×0.75/0.9/1.0; material ladder steel 1.0
-  to daedric 4.4; Speed drives movement (SpeedMult); no wield requirements, soft requirements (stamina ×(1 +
-  0.07d)); difficulty knob scales enemy damage only (0.7/1.0/1.35).
+  to daedric 4.4; no wield requirements, soft requirements (stamina ×(1 + 0.07d), d capped at 20);
+  **movement (76 §122):** walk 4.5 m/s × (0.75 + Speed/200) × (1 − 0.3 × load), sprint = walk × (1 +
+  Athletics/250), jump apex 1.378 m × (0.80 + Acrobatics/125), safe fall 2 + Acrobatics/25 m, overloaded = walk at
+  40% with no run, jump or swim up (SpeedMult, jump height and fall-damage game settings plus ArgoniaCore); difficulty knob scales enemy damage only (0.7/1.0/1.35).
 - One StatEffect stack (field, op, magnitude, source) for races, signs, disease, potions, spells, enchants,
   mapped onto Skyrim magic effects where they exist and ArgoniaCore modifiers where not.
 - Burden tiers also select the roll tier for combat (P5).
@@ -63,8 +67,13 @@ PrismaUI views read and write state through the typed message schema (P2-WP2.8).
 - Skills grow by use "in anger" with the old worthiness anti-grind rules (76 §120.2); **vastei** accrues per
   qualifying use (= 4 × worthiness × (1 + effSkill/50)); trainers and skill books grant ranks and **no** vastei;
   quest rewards and looting never grant vastei.
-- 10 major/minor ranks → one pending level (early levels faster per old 0147: ranks per level ramp 1, 2 … 8 —
-  check 0147's exact curve); misc ranks or ranks in a skill at 100 count 1:3; no practice discount, no
+- Ranks per pending level follow old 0147's curve exactly: `ranksPerLevel` = [1, 2, 3, 4, 5, 6, 7, 8] for levels
+  1→2 … 8→9, then 8 per level from level 8 on (the old `curves.json`); canon's flat 10 is replaced. A rank in a
+  misc skill, or in any skill already at 100, counts 1:3. Skill rank cost = (skill + 1) × class factor ×
+  specialisation factor with Morrowind's use values (76 §120, lines ~430–451); fight-use scaling by danger band
+  (76 ~1491–1496); maxed skills keep paying vastei; unspent vastei carries over between sittings; **one pending
+  level is consolidated per sitting** (76 ~597) unless the owner rules otherwise (**O-16**: one vs all pending
+  levels per rest); no practice discount, no
   repeat-target damping (old 0037); level 2 in 15–30 minutes, level 10 in about 4–6 hours, no cap.
 - Levels are taken only when resting: the **sitting view** (PrismaUI) spends vastei on attributes at cost
   40(1 + lvl/10)^1.3 × (1 + attr/50)^2 × (1 + 0.5(n − 1)), max 5 points per attribute per sitting; health
@@ -89,19 +98,24 @@ PrismaUI views read and write state through the typed message schema (P2-WP2.8).
   game hours, owned ×1.08; a camp gives only the sitting.
 - **Rest is the only save**: manual saves, quicksave and autosaves are hidden from the player; rest writes the
   save; a hidden suspend-save on quit protects against stream drops and crashes (old 2.13 intent).
-- **Death:** intercept death (Respawn – Soulslike pattern, permissive licence; bleedout interception), wake at
+- **Death:** intercept death (Respawn – Soulslike pattern, permissive licence; the technique intercepts the
+  vanilla bleedout state; there is no bleedout *mechanic* for the player, old 0039), wake at
   the last rest with the world persisting; skills, levels, items and gold kept; carried vastei drops as **one**
   pile at the death spot (a second death replaces it); within 2 m a prompt "Take Vastei (N)" takes it all back;
   the pile shows as a gold ring with a halo and rising wisps (old `deathPileMarker` design, built from vanilla
   effect shaders).
 - **Respawn on rest:** generic enemies respawn on rest; named actors, bosses and placed treasure never; a cleared
-  dungeon stops respawning (old 0031).
+  dungeon stops respawning (old 0031). Each actor and socket carries a respawn class `onRest | never |
+  untilCleared` (76 ~1328). **Waking from death counts as a rest** for respawn, so a vastei retrieval run crosses
+  repopulated ground (76 ~1325).
 - **Acceptance:** L4 scenarios for each rule; save/load round trip keeps every co-save value.
 
 ### WP4.5 Races, birthsigns, classes, character creation (C12)
 - Races: Skyrim's ten with Morrowind-style packages (old 0096: one race record keyed by the roster with
   Morrowind's packages); Argonians breathe water; sex is an axis (old 0054).
 - Birthsigns: the 13 replace the standing stones (stones removed from the world).
+- Class start bonuses (76 ~398–413): +25 major, +10 minor, +5 specialisation skills, +10 favoured attributes,
+  ×0.8 skill XP cost in the class's skills; the 18 presets.
 - Classes: the old presets plus custom and the question-generated class (Morrowind's questions rewritten for
   Black Marsh); 5 major, 5 minor, specialisation, 2 favoured attributes.
 - Chargen flow (PrismaUI): name → race (vanilla face sliders behind our frame) → class → birthsign → review;
@@ -119,9 +133,17 @@ PrismaUI views read and write state through the typed message schema (P2-WP2.8).
   speakerCulture, settlementStanding, seenBy, successorActive, localVariantActive. Native Skyrim conditions are
   used where they exist (GetStage, GetItemCount, GetFactionRank, GetInCurrentLocation, GetCurrentTime, GetDead,
   GetDetected, GetIsCurrentWeather…).
-- **Disposition** 0–100 per NPC: base from race, faction (half of reputation), Personality, Speechcraft; changes
-  the talk but never gates greetings or essential topics; floor 0; daily recovery (old 0145).
+- **Disposition** 0–100 per NPC (old 0145, 76 ~219): base from race, faction (half of reputation) and Personality
+  (+0.5 × (Per − 50)); Speechcraft enters only the persuasion score; three bands (< 30 low, 30–69 neutral, ≥ 70
+  high) select response variants; daily drift of 5 toward 50; gifts move 1–20 points, at most 30 per day, through a
+  "Give a gift" button; disposition changes the talk but never gates greetings or essential topics; floor 0.
 - Barks and idle chatter as subtitles, from the old bark lines; no vanilla Nordic barks (decision 0012).
+- **Skyrim dialogue-engine facts** (universal-modder's Skyrim field note) for any line on the vanilla path: DLBR
+  flags (blocking 0x2, exclusive 0x4, 0x6 to take over an NPC); a shared INFO needs its own conditions to pass;
+  voice paths `<plugin>/<voicetype>/<quest>_<topic>_<formid low 12 bits>_<n>.fuz` with quest + topic EDIDs ≤ 25
+  characters; delocalise copied strings; force-greet packages re-evaluate only on `EvaluatePackage()`; player
+  prompts ~80 characters max; begin fragments are reliable, **end fragments on Goodbye lines are not**: never put
+  quest logic there.
 - **Acceptance:** L2 tests per predicate and action; L3 view tests; L4 scenarios: topic learned from A asked of
   B; disposition variants; persuasion moves disposition; services open; an essential topic at disposition 0.
 
@@ -148,6 +170,8 @@ PrismaUI views read and write state through the typed message schema (P2-WP2.8).
 - **Directions generator:** quest givers' directions are written into the journal from the P3 route graph
   ("follow the road west past the broken column, then take the left fork to the river"), checked by a validator
   that walks the described route in data (old 0153).
+- Generated stage fragments use begin fragments only (see WP4.6's engine facts).
+- **Grantable markers** come from the old `markers.json` registry (grantMapMarker actions, old 0137).
 - **No markers:** quest targets have no map or compass markers (No Google Maps plugin; objective target data
   omitted; compass removed in WP4.10); map markers for places appear only after the player reaches them on foot
   (old 0137); grantable markers only through in-world acts (a guide marks your map).
@@ -166,10 +190,13 @@ PrismaUI views read and write state through the typed message schema (P2-WP2.8).
 ### WP4.10 UI skin, Pelagiad, HUD (C10, C11)
 - **Pelagiad everywhere:** replace the vanilla font set through `fontconfig.txt` and font SWFs (the standard
   font-replacer method), verifying every vanilla menu in the stack renders Pelagiad (screenshot sweep).
-- Vanilla menus kept (inventory, container, barter, magic, crafting, lockpicking if kept, tween/system menus) are
-  restyled through SkyUI 6/Infinity UI SWF skins to the palette; screens that Morrowind shapes differently
-  (stats/character sheet, magic list with schools, spellmaking, enchanting where different) become PrismaUI views.
-  Choose per screen by reuse order (0010) and record it.
+- **Pelagiad in vanilla menus** comes from our own font library SWF and `fontconfig.txt` (decision 0014 §7).
+- **Morrowind's windows as PrismaUI views:** stats/character sheet, magic (spells by school, powers, effects),
+  **inventory with paperdoll** (equipped slots drawn as Morrowind's doll, filters, weight/burden), map (WP4.9), as
+  tiled windows on desktop and full-screen pages at the phone shapes (the old 2.2 layout).
+- Other vanilla menus (container, barter, crafting, training, sleep/wait, tween/system, MCM): per screen in the
+  0014 §7 order (PrismaUI replacement, our own original SWF via Infinity UI, installer-time patch), recorded per
+  screen with its fallback; acceptance for any SWF is the L4 screenshot sweep.
 - HUD: souls-style bars top-left that grow with stats (health, stamina, magicka, breath), sneak eye (four states:
   hidden/caution/danger/detected), equipped-hands plaque bottom-left, effect stack bottom-right, vastei plaque,
   toast queue, place-discovered banner, floating prompt with input glyph; no compass; boss bars via TrueHUD
@@ -181,7 +208,7 @@ PrismaUI views read and write state through the typed message schema (P2-WP2.8).
 - Import the 508 items (class × material, soft requirements, tempering grades) into WEAP/ARMO/ARMA/MISC/BOOK
   records; weapon class keywords drive the skill used (CSF redirect hook from vanilla One/Two-handed XP).
 - Spears and throwing weapons through dependency mods (Animated Armoury/Armory Extended pattern, Throwable
-  Weapons SKSE); crossbows vanilla; Argonian weapon packs (P2 manifest).
+  Weapons SKSE); crossbows vanilla (crossbows and thrown are provisional: decision 0016, owner call O-15); Argonian weapon packs (P2 manifest).
 - Armour slots: helm 30, cuirass 32, pauldrons 57 (+46/47/59 for the second side), greaves 49 or 53, boots 37,
   gauntlets 33 (+58/59), shield 39; body meshes must not include arms/legs where those slots are separate.
   Separate left/right meshes only where a sourced mod ships them; otherwise paired pieces in separate slots
@@ -197,8 +224,10 @@ PrismaUI views read and write state through the typed message schema (P2-WP2.8).
   0.95) with Morrowind's pcTerm advantage (S2 price hook; game settings as the S1 approximation if the hook
   fails); finite purses by trade class (general 750, smith 1,000, …, rich 9,375) × place tier (city 1, town
   0.75, village 0.5), refill every 48 h; one price contract: coin, goods or a favour (old 0141).
-- Training: 10 × skill gold per rank, trainer's own skill as the cap and the governing attribute as a cap;
-  `iTrainingNumAllowedPerLevel` set to match the old design; skill books +1 rank each (5 per skill).
+- Training (the old design, 76 ~281–284 and ~1231): 10 × skill gold per rank, one rank per session, capped by the
+  governing attribute's base value; **no per-level session limit** (`iTrainingNumAllowedPerLevel` set high enough
+  to be unlimited); Morrowind's "trainer cannot teach above their own skill" is offered to the owner as an optional
+  addition, not built by default; skill books +1 rank each (5 per skill).
 - Services: repair, enchant, spellmaking, recharge, cure, guides, ferries, tolls; spells 2 gold per magicka.
 - **Acceptance:** L2 price tests; L4 barter scenario reads prices for 3 merchants at 2 dispositions.
 
@@ -224,8 +253,11 @@ PrismaUI views read and write state through the typed message schema (P2-WP2.8).
   innate resist; cost reduction capped at 75%; spells in hands (Skyrim native) with hold-charge and dual-cast
   ×2.2 magnitude ×2.8 cost; stream spells; casts interrupted by poise break (P5); powers once a day; Hist
   communion powers race-neutral (old 0042) on the power slot freed by shouts (decision 0012).
-- Import 300 effects and 876 spells (old packages/magic) with Morrowind names, mapped onto MGEF archetypes;
-  Mysticism effects (detect, soul trap, dispel, telekinesis, absorb) as far as Skyrim supports them.
+- Magicka regenerates 0.5 + 0.05 × Willpower per second; cost and cast-time bands and the levitation speed formula
+  from 76 (~1026–1028, ~1081); spell sellers carry 10–24 spells (76 ~1137–1147).
+- Import the effects and spells (recount at import; the old data had 301 effects and 874 spells in
+  old packages/magic) with Morrowind names, mapped onto MGEF archetypes; Mysticism effects (detect, soul trap,
+  dispel, telekinesis, absorb) as far as Skyrim supports them.
 - **Spellmaking** (up to 8 effects, fee 7 × cost) as a PrismaUI service screen over SKSE spell creation;
   enchanting points = (Enchant + Int/5)/3, constant effects tiered by soul size, disenchant teaches the effect.
 - Levitation: try an S2 implementation (flying controller); if not feasible within its time box, drop it and
@@ -236,8 +268,9 @@ PrismaUI views read and write state through the typed message schema (P2-WP2.8).
 
 ### WP4.16 Crafting
 - Alchemy always succeeds; effects revealed at skill 15/30/45/60; potions are the healing economy (no estus);
-  weapon poisons and oils coat the next hit; smithing = repair + temper (3 grades, +8% at 25/55/80) + forge
-  (tier 1 + floor(skill/14)); 7 stations, 154 recipes, 8 material tiers; resource nodes; fortify-crafting
+  potion strength and duration by the old formula with Intelligence/10 (76 ~1157–1160); weapon poisons and oils
+  coat the next hit; smithing = repair + temper (3 grades, +8% at 25/55/80) + forge (tier 1 + floor(skill/14)); 7
+  stations, recipes recounted at import (the old data had 218; 154 was the 2.9b count), 8 material tiers; resource nodes; fortify-crafting
   loop allowed but scarce (old 0150).
 - **Acceptance:** L4 scenario per station.
 
@@ -250,7 +283,9 @@ PrismaUI views read and write state through the typed message schema (P2-WP2.8).
   (advances the clock, costs pending skill progress), or resist; trespass zones with hours; locals challenge
   where there is no watch (old 0039/0151).
 - Locks are a threshold, (Security + Agility/5) × tool ≥ lock level (S2 hook replacing the lockpicking minigame,
-  as Morrowind had none); traps as data; pickpocket is the one seeded gamble.
+  as Morrowind had none), with lockpick wear and the out-of-combat fatigue multiplier 0.85 + 0.15 × stamina (76
+  ~316, ~353); the Elusiveness formula with its ×1.5/×0.5 direction factor (76 ~352); traps from `traps.json`;
+  pickpocket from `pickpocket.json` is the one seeded gamble; detection tuning from `detection.json`.
 - **Acceptance:** L4 scenarios for detection states, a sneak blow, each Owing path, a lock threshold.
 
 ### WP4.18 Factions and reputation
@@ -261,8 +296,23 @@ PrismaUI views read and write state through the typed message schema (P2-WP2.8).
 
 ### WP4.19 People's lives: schedules and the lamp clock
 - Day blocks → AI packages with hour windows (rise 05:30, work 06:30, meal 12–13, home 17:30 when lamps light,
-  bed 22:00, per-person jitter, role exceptions, predator hunt blocks); shops lock; NPCs walk the path network.
+  bed 22:00, per-person jitter, role exceptions, predator hunt blocks); shops lock (day-locked doors by script); NPCs
+  walk the path network; socket activities (stand, sit, sleep, lean, work-at, **fish, tend, cook, pole**) map to
+  idle markers with existing idle animations (Skyrim's or permitted mods'; missing ones recorded as substitutions);
+  "walk when seen, swap when unseen" (old 0138) becomes AI packages plus off-screen package jumps.
 - **Acceptance:** 24-hour time-skip scenario in Greenspring: each NPC is where its schedule says at 6 sampled times.
+
+### WP4.21 World registries
+The old registries no other WP names (source-map §1 imports them):
+- `hazard-volumes.json` (burning peat etc., 1 s tick) → hazard trigger activators with damage spells;
+- `grave-stakes.json` (xul-vaat, old 0157 item 10) → placed activators with their lore effect;
+- `creature-harvest.json` (drops per species) → death items / harvest activators;
+- `deeds.json` (counters read by the condition vocabulary) and `rumour-pools.json` → ArgoniaCore state used by the
+  WP4.6 evaluator;
+- `markers.json` → WP4.8 grantable markers;
+- `physical-materials.json` (arrow stick/ricochet/break) → P5-WP5.7.
+- **Acceptance:** each registry has a consumer and an L1 check that every row is used; L4 scenario for one hazard,
+  one harvest and one rumour.
 
 ### WP4.20 Owner packets
 Three packets as each group lands: (1) chargen, stats, levelling, death; (2) dialogue, quests, journal, map, UI,
@@ -274,7 +324,13 @@ C1–C15 each pass their acceptance and have been seen by the owner; the soul pa
 immersion inventory has verdicts for every vanilla system P4 replaced or hid.
 
 ## Risks and fallbacks
+- **PrismaUI** fails or its author withdraws it: every view keeps its 0014 §7 fallback; the version is pinned.
 - **Intercepting vanilla dialogue** for every NPC is fragile: keep a vanilla-menu path that still works (Skywind
   style) behind the view, so a broken view never strands a quest.
 - **AV conflicts** with dependency scripts: the AV audit in WP4.1; co-save values as the fallback.
 - **Scope**: P4 is the biggest phase; ship it in the three packet groups, never as one batch.
+
+## Deliberately out of scope
+Combat numbers (P5), traversal (P6), new content beyond the imported data and the slice (P7, P9), the final
+immersion sweep of untouched vanilla menus (P8), levitation if its time box fails (recorded loss), Morrowind's
+optional trainer-skill cap unless the owner asks.

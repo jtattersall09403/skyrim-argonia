@@ -26,6 +26,9 @@ files, with the dependency list fetched from its sources; and the owner has a du
   from scratch.
 - **FOMOD** package of our own files for Mod Organizer 2 users who manage their own stacks (documented as
   unsupported if they add other mods).
+- **Windows test machine:** a temporary Windows spot GPU instance (g4dn Windows AMI, costed within P10's budget
+  in decision 0008, stopped after) with a fresh Steam install of Skyrim SE at the pin, used for the Windows
+  installer, Wabbajack compile and install tests; or the owner's own Windows PC if they have one.
 - **Acceptance:** three clean installs (installer on Windows, Wabbajack on Windows, Jackify on Linux) reach the
   opening.
 
@@ -41,20 +44,35 @@ files, with the dependency list fetched from its sources; and the owner has a du
 - **Acceptance:** docs reviewed by `text-review`; links checked.
 
 ### WP10.4 Nexus page
-- Page text, screenshots (our own captures), requirements list, permissions section (our files: open licence
-  of the owner's choice for code; data and text terms), AI tags, links to the repo and the release.
+- Page text, screenshots (our own captures), requirements list, permissions section (our licences per decision
+  0015), AI tags, links to the repo and the release.
 - **Owner step:** the owner publishes from their account.
+- **Acceptance:** the page draft passes text-review; every requirement links to its source page; the owner
+  confirms publication.
 
 ### WP10.5 The owner's permanent setup
 - A golden AMI of the GPU box (pinned Skyrim, stack, Argonia, Selkies), saves on S3, a one-click start (a
-  bookmark to a small "start my game" Lambda URL or an AWS console shortcut), idle-stop, cost per hour
-  confirmed; the build VM can be stopped between development bursts.
+  "start my game" Lambda function URL protected by IAM auth or a long secret, rate-limited, refusing to start
+  if the month's projected cost is over the cap; or an AWS console shortcut), never posted in a public issue;
+  idle-stop; cost per hour confirmed; the build VM can be stopped between development bursts.
 - **Acceptance:** the owner starts a session from the phone with one tap and plays within 3 minutes; monthly
   cost of play-only use reported.
 
 ### WP10.6 After release
 - Bug triage process (issue template → planner triage → fix lanes → patch release); runtime-pin moves only by
   decision record; dependency updates only after the full smoke and journeys pass.
+- **Acceptance:** the issue template exists; one dry-run bug goes from report to a patch release through the
+  process.
 
 ## Exit gate
 Release published; three install paths verified; owner's one-tap play works; P10 check-in with costs.
+
+## Risks and fallbacks
+- **A dependency disappears or changes after release** (mods get hidden or updated): the manifest pins file ids
+  and hashes; the installer refuses mismatches; a replacement goes through a decision and a patch release.
+- **Bethesda patches Skyrim**: players are told to stay on the pin; the downgrade guide covers rollback.
+- **An author withdraws permission**: remove the dependency in a patch release; re-kit the affected places.
+
+## Deliberately out of scope
+Console ports (impossible with SKSE); Steam Workshop or Bethesda.net Creations distribution (SKSE plugins are not
+allowed there); paid or crowdfunded anything.

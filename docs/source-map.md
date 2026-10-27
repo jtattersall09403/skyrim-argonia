@@ -12,7 +12,7 @@ recorded in `world/IMPORTED_FROM.md`, never silently skipped.
 | `world/sources/catalogue/places-*.json` | 827 places in 8 region packets | `world/sources/catalogue/` | |
 | `world/sources/blueprints/*.layout.json`, `place.*.json` | ~20 built place layouts (poses of Skyrim kit pieces) | `world/sources/blueprints/` | P3-WP3.9 |
 | `world/sources/placement/` (incl. `accepted-places.json`, `exterior-interior-links.json`, `boats.json`) | acceptance, interior links (38 kit interiors), moorings | `world/sources/placement/` | |
-| `world/sources/registries/` (npcs, factions, items, creatures, quests, locks, loot, traps, sourcing-register…) | the normalised record set | `world/sources/registries/` | |
+| `world/sources/registries/` (npcs, factions, items, creatures, quests, locks, loot, traps, pickpocket, detection, hazard-volumes, grave-stakes, creature-harvest, deeds, rumour-pools, markers, physical-materials, trainers, sourcing-register…) | the normalised record set | `world/sources/registries/` | every registry has a named consumer (P4-WP4.21 lists the ones no other WP names) |
 | `world/sources/quests/` | quest lines and stages (main, factions, standalone, proposed, local-<region>) | `world/sources/quests/` | |
 | `world/sources/dialogue/` | place lines, pool, culture sheets, stance, topics, facts, gates, glossary, exemplars | `world/sources/dialogue/` | exemplar corpus is Morrowind text quoted for style reference: keep it private (`$ARGONIA_PRIVATE`), not public, unless its size and use are fair-use-clear (owner decides) |
 | `world/sources/text/` | journal, books/documents, signs, loading facts, names | `world/sources/text/` | |
@@ -25,6 +25,10 @@ recorded in `world/IMPORTED_FROM.md`, never silently skipped.
 | `packages/world-schema/schemas/*.json`, `integrity.py` | 21 schemas and the integrity checker | `world/schemas/`, `tools/argonia_world/integrity.py` | |
 | `packages/ui/src/tokens/palette.ts` | UI palette tokens | `ui/src/tokens/palette.ts` | |
 | Pelagiad font files and licence (from the old repo or OpenMW) | font | `ui/fonts/` | OFL; allowlisted |
+
+Read **in place** from the old repo, not imported: README credits (~lines 48–320), `tooling/asset-pipeline/mod-register.json`,
+the settlement kit sourcing log (`docs/research/placement-settlements/settlement-kit-sourcing-log.md`, for O-17's
+permission evidence), the old kit manifests used by the kit-id mapper (P1-S4).
 
 ## 2. Design docs → `docs/design/` (unchanged copies with a source header)
 

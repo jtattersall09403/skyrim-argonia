@@ -3,7 +3,7 @@
 | Phase | File |
 |---|---|
 | P0 Bootstrap | [P0-bootstrap.md](P0-bootstrap.md) |
-| P1 Spikes and gates G1–G8 | [P1-spikes.md](P1-spikes.md) |
+| P1 Spikes and gates G1–G9 | [P1-spikes.md](P1-spikes.md) |
 | P2 Foundation | [P2-foundation.md](P2-foundation.md) |
 | P3 World | [P3-world.md](P3-world.md) |
 | P4 Morrowind's soul | [P4-soul.md](P4-soul.md) |

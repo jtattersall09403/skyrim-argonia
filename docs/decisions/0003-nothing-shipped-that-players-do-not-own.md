@@ -23,13 +23,15 @@
    Wabbajack/Jackify modlist (P10). We reference their records and mesh paths from our plugin; we do not copy
    their files. Where a mod's terms forbid *requiring* it in another mod or using it with AI-made content,
    we ask the author or drop it (docs/legal-and-sourcing.md).
-5. **Enforcement:** a committed `tooling/guards/no_assets.py` (P0-WP0.4) runs in the gate and as a pre-commit
+5. **Enforcement:** a committed `tooling/guards/no_assets.py` (P0-WP0.3) runs in the gate and as a pre-commit
    hook: it refuses binary asset extensions (`.nif .dds .hkx .bsa .ba2 .fuz .xwm .wav .esm .esp .esl .swf .tae
    .flver .bnd .dcx .param` and more), files over 1 MB outside an allowlist, and known decompiler signatures.
    Allowlisted exceptions (our UI images, Pelagiad, generated test fixtures that contain no game data) are
    listed with a reason.
 6. **Screenshots and clips** from the game may appear in owner check-ins (GitHub issues) because that is
    ordinary fair commentary of one's own play, but are never committed.
+7. **Derived files** (FaceGen heads, LOD, behaviours, re-timed animations, silent voice files, patched menus)
+   are made at runtime or on the player's machine by the installer, never shipped (decision 0014).
 
 ## Consequences
 
