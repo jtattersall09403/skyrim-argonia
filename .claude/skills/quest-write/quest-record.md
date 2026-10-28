@@ -8,7 +8,8 @@ the sections **in this order**, because each is built from the ones above it.
 |---|---|---|---|
 | 1 | `id`, `code`, `title`, `place`, `line`, `shapes`, `foundation`, `status` | identity; `line` is local, faction, main, daedric or detectives; `shapes` from the quest index taxonomy, primary first; `foundation` names the old design it rebuilds and what changed; status is `design`, `reviewed`, `briefed`, `written` | the quest index |
 | 2 | `sources` | the place record, culture sheets and roster read, by path | the world data |
-| 3 | `premise` | one sentence the player could say back after the quest | the place's quest hooks |
+| 3 | `actionPlan` | the skill uses the quest is built round (`skill`, `use` from `skill-uses.yaml`), chosen from `action_plan.py` proposals or written, with the reason | the line or faction profile, the place, the shapes |
+| 3b | `premise` | one sentence the player could say back after the quest | the place's quest hooks + the action plan |
 | 4 | `truth` | what really happened before the player arrives: numbered events with when, who, where, what and why, in physical terms | premise + cast motives |
 | 5 | `facts` | the only new world facts the quest adds; each `from` a truth event or an existing fact id | truth |
 | 6 | `cast` | each person (roster id) with persona, what they want and fear, and for every fact: `knows`, `believes: <false version>`, `suspects`, `hides: <reason>` or nothing (ignorant); `changes` per stage | truth + culture sheets |
@@ -16,7 +17,7 @@ the sections **in this order**, because each is built from the ones above it.
 | 8 | `conclusions` | what the player must work out, each with at least three clues | truth |
 | 9 | `clues` | each clue's form (line, thing, place, behaviour), carrier (a person or a thing), the facts it gives and the conclusions it supports | cast knowledge + things |
 | 10 | `shapeData` | the sections each shape requires (`shapes.yaml`), e.g. lies and accusation for MURDER, source to cure for CONTAMINATION | truth + clues |
-| 11 | `stages` | objective, `pre`, `onEnter`, `post` (in the condition vocabulary), `actions` or `approaches` each with actions (`principles/actions.md`), what the player learns (fact ids), directions, fail-forward | conclusions + clues |
+| 11 | `stages` | objective, `pre`, `onEnter`, `post` (in the condition vocabulary), `actions` or `approaches` each with actions (`skill`, `use`, optional `target`, `setting`, `note`; `principles/actions.md`), what the player learns (fact ids), directions, fail-forward | conclusions + clues |
 | 12 | `endings` | condition, world changes, where the player will see them, rewards | stages |
 | 13 | `topics` | per person and stage: topic name, essential or not, intent, facts used, facts hidden, topics granted | cast + stages |
 

@@ -60,8 +60,8 @@ place or district: the Helstrom lesson, old 0133).
    own ground; every building enterable via the plugin's interior or an assembled interior; sockets fulfilled
    (old 0104: promises are fulfilled by placed interactables); cities hand-built by district in 3D (old 0133).
 4. **People** (L1→L4): NPC records, faces (P1 solution), outfits, schedules on the lamp clock, services, factions.
-5. **Quests** (decision 0017): each quest anchored here is written or rebuilt through `quest-write` (routed to
-   its shape's principles), reviewed by `quest-review`, and its `new` things handed to step 3's builder; then
+5. **Quests** (decision 0017): each quest anchored here is written or rebuilt through `quest-write` (an action
+   plan from `action_plan.py` with the packet's quests as the ledger, then routed to its shape's principles), reviewed by `quest-review`, and its `new` things handed to step 3's builder; then
    stage graphs (L1→L4), directions validated against the route graph, fail-forward for dead NPCs.
 6. **Dialogue round** (`dialogue-write` on Sonnet, from generated briefs): greetings, place topics, quest topics,
    barks, journal text, for every person in the packet.

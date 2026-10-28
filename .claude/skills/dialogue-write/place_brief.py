@@ -4,8 +4,10 @@ directions) from the place record and culture sheets, in the same shape as quest
 Usage: python3 place_brief.py --place-facts PLACE.json --sheets SHEET.json [SHEET.json ...]
                               --person PERSON_ID --persona PERSONA.yaml --out BRIEF.md
 
-PERSONA.yaml holds what the people registry will hold after the P0 import: race, sex, role, visible,
-chattiness, friendliness, formality, backstory, faction. Facts are the person's own (the place record names
+PERSONA.yaml holds what the people registry will hold after the P0 import: race, sex, upbringing
+(marsh-born or newcomer), role, visible, chattiness, friendliness, formality, backstory, faction, factionId,
+rank. Culture sheets apply by level: region by the place, people by race and upbringing, faction and office by
+factionId and rank, settlement by place, group and household by membership. Facts are the person's own (the place record names
 them as carrier) plus what the player can see; opinions come from the culture sheets, most specific first.
 """
 import argparse
@@ -64,9 +66,29 @@ def main() -> int:
     sheets = []
     for s in a.sheets:
         sheets += json.loads(pathlib.Path(s).read_text())["entries"]
-    chain = [s for s in sheets if s.get("placeId") == place["placeId"] or a.person in s.get("members", [])]
-    order = {"settlement": 0, "group": 1, "household": 2}
-    chain.sort(key=lambda s: order.get(s["level"], 3))
+    # Broad sheets (province, region, people, faction, office) apply when passed; place sheets when they are
+    # this place's; group and household sheets when they list this person. Most general first.
+    order = ["province", "region", "people", "faction", "office", "settlement", "group", "household"]
+    region = place["placeId"].split(".")[1]
+
+    def applies(s):
+        lv = s["level"]
+        if lv == "province":
+            return True
+        if lv == "region":
+            return s["id"].endswith("." + region)
+        if lv == "people":
+            return s.get("race") == persona["race"] and s.get("upbringing") in (None, persona.get("upbringing"))
+        if lv == "faction":
+            return s.get("factionId") == persona.get("factionId")
+        if lv == "office":
+            return s.get("factionId") == persona.get("factionId") and s.get("rank") == persona.get("rank")
+        if lv == "settlement":
+            return s.get("placeId") == place["placeId"]
+        return a.person in s.get("members", [])
+
+    chain = [s for s in sheets if applies(s)]
+    chain.sort(key=lambda s: order.index(s["level"]) if s["level"] in order else len(order))
     if not chain:
         print("no culture sheet covers this person; no brief written")
         return 1
@@ -95,6 +117,12 @@ def main() -> int:
         for d in s.get("dissent", []):
             if d["personId"] == a.person:
                 L.append(f"  - **this person dissents on {d['topic']}:** {d['text']}")
+    h = world.get("hostility", {})
+    if h:
+        L += ["", "## When this talk happens",
+              f"- The place is {h.get('baseline')} (owner: {h.get('owner')}); it turns "
+              + "; ".join(f"{f['to']} when {f['when']}" for f in h.get("flips", [])) if h.get("flips") else
+              f"- The place is {h.get('baseline')}."]
     L += ["", "## Others here (the player may be sent to them)"]
     L += [f"- {p['name']}: {p['role']}" for p in world["people"] if p["id"] != a.person]
     L += ["", "## What the player can see of the place"] + [f"- `{f['id']}`: {f['claim']}" for f in seen]

@@ -15,7 +15,8 @@ field; no job text before fields 1 to 9 are complete. The quests are then slices
 3. **Local root:** one local history and one contested ideal the faction embodies, and why it competes with
    each other guild. Grounded in the lore dossiers and the extrapolation, with sources.
 4. **Rank ladder (5 to 7):** title, entry test (standing plus a skill, task or knowledge test; never time
-   alone), what it unlocks, how many jobs, and **one new verb per rank**. The top post comes only at the
+   alone), what it unlocks, how many jobs, and **one new skill use per rank**, drawn from the line's profile
+   (`profiles.yaml`) and combined with the earlier ones in later jobs. The top post comes only at the
    finale, with a cost (Skyrim's "leader in ten hours" is the anti-pattern).
 5. **Job table:** id, rank, type (find, follow, question, scene, confront, deliver), the verb it teaches,
    places, clues planted, who appears. No two consecutive jobs share a type; one job per rank breaks the

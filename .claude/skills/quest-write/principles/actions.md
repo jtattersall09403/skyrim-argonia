@@ -1,31 +1,40 @@
-# Actions: what the player does
+# Actions: what the player does, by skill
 
-Read for every quest. Owner ruling (0017 §9): nearly every quest makes the player **use their skills**, in a
-wide, creative variety of combinations; a chain of "talk to X, then Y, then Z" is not a quest. Evidence:
-`docs/research/2026-10-27/quest-actions-and-skills.md` (its verb families, ten combination patterns, faction
-profile method and variety measures; its thresholds are inferences, so they are starting values to tune).
-Draft: P4-WP4.0 merges this with the old verb tags (`docs/design/quests/00-overview.md` §4) and each faction's
-profile from 40-factions.
+Read for every quest. Owner rulings (0017 §9, 2026-10-28): an action is **a use of one of the player's
+skills** (long blade, axe, sneak, security, alchemy, armorer, speechcraft, athletics and the rest). That is
+what makes a quest interesting: it uses and builds the character the player is making. Each skill can be used
+in many ways (long blade against rats in a cellar, a giant in a ruin, the town watch on a bridge, a duellist
+at dawn), and quests combine skills creatively. A chain of plain conversations is not a quest. Evidence:
+`docs/research/2026-10-27/quest-actions-and-skills.md`.
 
-## Rules
+## Actions first, then the quest is built round them
 
-1. **Every stage that is not an ending has at least one action** with its family, verb and skill (the record's
-   `actions`, or `actions` on each of its `approaches`). Talking is an action only when it uses a skill:
-   persuading, bargaining, intimidating, presenting evidence, lying, accusing.
-2. **A quest uses at least two families,** and at least one stage offers approaches from different families
-   (a talker, a thief, a fighter and a mage can each get through it).
-3. **Families:** combat (melee, ranged, magic, boss, defend, ambush); stealth (sneak, pick a lock, pickpocket,
-   disguise, plant, escape); observe (spy while hidden, examine, track, read); speech (persuade, bargain,
-   intimidate, lie, present evidence, accuse); traversal (climb, swim, dive, pole or sail a boat, run, cross
-   flood); acquire (find, take, gather, buy, steal); craft (alchemy, enchant, repair, forge); magic outside
-   combat (detect, water-breathe, levitate, charm, summon); place (clear a cave or ruin, defend a spot, open a
-   route). Black Marsh gives its own: diving flooded ruins, poling channels, climbing a Hist, tracking in mud.
-4. **Combine and escalate:** later stages combine families the earlier ones taught (watch the route, then
-   sneak in by it, then forge the ledger found there, then persuade the clerk with it).
-5. **Faction lean:** a faction quest draws most of its actions from its profile (assassins: stealth and
-   killing; thieves: stealth and theft; fighters: combat; mages: magic; detectives: observe and speech, with
-   whatever the case needs), and each rank adds a verb.
-6. **Variety is counted:** within a line or a region packet, no two quests share the same family pair as their
-   main actions, and no verb is the main action of consecutive quests.
-7. **Actions fit the person and the place:** the action a stage asks for follows from the truth (a body under
-   water means a dive; a guarded store means a lock, a bribe or a distraction).
+1. **Draw an action plan before the truth.** Run
+   `python3 .claude/skills/quest-write/action_plan.py --line <line> [--profile <faction>] --band <D0..D5>
+   --shapes <SHAPE,...> --ledger <dir of quest records already in the line or packet>`. It proposes varied
+   plans from `skill-uses.yaml` (skill, use, target, setting), weighted by the line's or faction's profile and
+   steering away from what the ledger has already used. Pick one, adapt it, or write your own from the
+   catalogue; record it as `actionPlan` with the reason.
+2. **Then write the truth so the actions follow from it.** A dive needs something under water; a lock needs
+   something worth locking; a duel needs someone with a grievance. The plausibility pass still applies: if an
+   action does not follow from believable people and places, change the plan or the truth.
+3. **Every stage that is not an ending has an action** (`skill`, `use`, target, setting), or offers
+   approaches that each have one. Speech counts when it uses Speechcraft or Mercantile (persuade, intimidate,
+   bribe, present evidence, accuse), not when it is only listening.
+4. **Offer more than one build a way through** where the story allows: a stage a fighter, a thief, a mage and
+   a talker can each pass, at different costs.
+5. **Each use carries its `needs`** (`skill-uses.yaml`): the hostiles and their band, the lock and its level,
+   the climbable face, the dive, the recipe. They become `things` rows, so the world is built to hold them.
+6. **Escalate across a line:** later quests combine skills the earlier ones used, against harder targets and
+   settings; each rank adds a use.
+7. **Variety is steered, not capped.** The generator weights against repeats of the same skill, use, target
+   and setting in a line or region packet; the reviewer flags sameness. There is no fixed quota.
+
+## Profiles
+
+A line or faction profile weights skills (and may favour targets and settings). The Shadowscales lean to
+sneak, short blade and marksman; the Night-Reed Chapter to sneak, security, acrobatics and mercantile; the
+detectives to speechcraft, sneak and observation uses, with combat when a case turns; a fighters' line to the
+weapon and armour skills; mages to the magic schools. These are starting weights in `profiles.yaml`;
+P4-WP4.0 sets every faction's profile from its design in 40-factions and its culture sheet. A local quest
+takes its weights from the place: its danger band, its terrain (water, heights, ruins) and its people's work.

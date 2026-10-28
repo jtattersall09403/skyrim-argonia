@@ -35,8 +35,11 @@ record must hold.
 
 ## 3. Write the record in order
 
-1. **Premise**, one sentence the player could say back afterwards.
-2. **Truth**: numbered physical events (who, where, when, what, why), before any stage.
+1. **Action plan** (`principles/actions.md`): run `action_plan.py` with the line's or faction's profile, the
+   shapes, the band and the ledger of quests already in the line or packet; choose, adapt or write the skill
+   uses the quest is built round.
+2. **Premise**, one sentence the player could say back afterwards, and the **truth**: numbered physical
+   events (who, where, when, what, why), written so the planned actions follow from them.
 3. **Plausibility pass**, person by person: would a sensible person with these wants, fears and knowledge do
    this? If not, change the truth, never the person.
 4. **Facts** the truth creates, each `from` a truth event or a culture-sheet entry.
@@ -45,7 +48,8 @@ record must hold.
 6. **Things**: every trace and object, with an existing id or a `new` row the world builder places.
 7. **Conclusions and clues**: three clues per conclusion, two forms at least, each a trace of the truth.
 8. **`shapeData`** for each shape, as its principles file says.
-9. **Stages** with conditions in the condition vocabulary, **actions** (`actions.md`), approaches,
+9. **Stages** with conditions in the condition vocabulary, **actions** from the plan (skill and use from
+   `skill-uses.yaml`, with target and setting), approaches,
    directions, what the player learns, and fail-forward.
 10. **Endings**: two or more with real costs, where the player sees each, and the rewards.
 11. **Topics**: per person and stage, the intent, the facts it may state and hide, the links it grants. An
@@ -56,6 +60,8 @@ record must hold.
 1. `quest-review` by the `quest-reviewer` agent, which has not seen your reasoning.
 2. Revise the record for every finding, or answer it in the record.
 3. `python3 .claude/skills/quest-write/brief.py QUEST.yaml OUT_DIR --place-facts PLACE.json` builds one brief
-   per person; it writes nothing while any reference, required `shapeData` section or stage action is missing.
+   per person; it writes nothing while any reference, required `shapeData` section, stage action or
+   catalogue skill and use is missing, and each brief lists what the player does at each topic's stages so
+   the lines set it up.
 4. `dialogue-write` (the `dialogue-writer` agent) per brief. A fact request comes back here; add the fact and
    rebuild the briefs.

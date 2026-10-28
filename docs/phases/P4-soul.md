@@ -37,9 +37,12 @@ owner **before** the import, so they hold principles and formats but not the old
 - **Reconcile, one format each:** the quest record becomes the imported quest schema extended with the
   record's sections (truth, cast knowledge, things, clues, `shapeData`, actions), never a second quest format;
   conditions and actions use the condition vocabulary; the journal rules follow the imported journal design;
-  the action families in `principles/actions.md` take the old verb tags and
-  `docs/research/2026-10-27/quest-actions-and-skills.md`, and each faction's action profile comes from
-  40-factions; the novelty rule and shape budget move into `quest-write`; cast comes from 36-cast-roster.
+  the skill-use catalogue (`quest-write/skill-uses.yaml`) takes the old verb tags, every imported system the
+  player can use (crafting, boats, the Owing, persuasion) and
+  `docs/research/2026-10-27/quest-actions-and-skills.md`; each faction's profile (`profiles.yaml`) comes from
+  40-factions and its culture sheet; each use's `needs` is mapped to the engine feature that provides it
+  (encounter spawns, lock levels, recipes, water and climb volumes); `action_plan.py` is tuned until its
+  proposals read as plausible quests; the novelty rule and shape budget move into `quest-write`; cast comes from 36-cast-roster.
   Delete anything in the skills that duplicates or contradicts the foundation, and re-point every path at
   `world/` and `docs/design/`.
 - **Engine compatibility:** a mapping table, in `quest-write/quest-record.md`, from every machine field of the

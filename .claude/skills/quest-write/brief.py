@@ -15,6 +15,8 @@ import yaml
 
 VOICES = pathlib.Path(__file__).resolve().parents[1] / "dialogue-write" / "voices.md"
 SHAPES = pathlib.Path(__file__).with_name("shapes.yaml")
+USES = pathlib.Path(__file__).with_name("skill-uses.yaml")
+WEAPONS = ["long-blade", "short-blade", "axe", "blunt-weapon", "spear", "marksman", "hand-to-hand"]
 
 
 def voice_row(race: str) -> str:
@@ -83,6 +85,18 @@ def main() -> int:
             missing += [f"shapeData.{r}: required by {key}" for r in routing["shapes"][key]["require"] if r not in data]
     if q.get("line") not in routing["lines"]:
         missing.append(f"line {q.get('line')!r}: not one of {', '.join(routing['lines'])}")
+    catalogue = yaml.safe_load(USES.read_text())["skills"]
+
+    def stage_actions(s):
+        return list(s.get("actions", [])) + [x for ap_ in s.get("approaches", []) for x in ap_.get("actions", [])]
+
+    for s in q["stages"]:
+        for x in stage_actions(s):
+            skills = WEAPONS if x.get("skill") == "any-weapon" else [x.get("skill")]
+            if not any(sk in catalogue and x.get("use") in catalogue[sk]["uses"] for sk in skills):
+                missing.append(f"stage {s['id']}: {x.get('skill')}: {x.get('use')} is not in skill-uses.yaml")
+    if "actionPlan" not in q:
+        missing.append("actionPlan: missing (principles/actions.md)")
     if "WONDER" not in q.get("shapes", []):
         for s in q["stages"]:
             if not s.get("ending") and not (s.get("actions") or any(a.get("actions") for a in s.get("approaches", []))):
@@ -138,6 +152,11 @@ def main() -> int:
                 lines += ["- Hides (until the intent says otherwise):"] + [f"  - `{f}`: {claims[f]}" for f in t["hides"]]
             if t.get("grants"):
                 lines.append(f"- Words that become topic links: {', '.join(t['grants'])}")
+            acts = [x for s_ in q["stages"] if s_["id"] in t["stages"] for x in stage_actions(s_)]
+            if acts:
+                lines += ["- What the player does at these stages (set it up: who, where, what danger, what they need):"]
+                lines += [f"  - {x['skill']}: {x['use']}" + (f" ({x['target']})" if x.get("target") else "")
+                          + (f", {x['setting']}" if x.get("setting") else "") for x in acts]
             lines += [f"- {c['name']}'s knowledge at stage {first}:"]
             lines += [f"  - `{f}`: {v}" for f, v in col.items()]
             lines += [f"- The player already knows at stage {first} (anything else is explained when first named):"]

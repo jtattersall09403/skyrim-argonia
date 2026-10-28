@@ -27,14 +27,16 @@ any of the ten races as speaker or player; quest types need their own principles
    generated briefs. Morrowind's lines are models by id from the private corpus (0003); they never enter the repo.
 7. **Old written lines are not used.** The imported dialogue's facts, topics, culture sheets and glossary are
    kept; its written lines (about 1,471 place lines and 569 pool lines) are neither shipped nor used as models.
-   Every line is written afresh with `dialogue-write` (P4-WP4.7 for the slice's people, P9 for the rest).
+   Every line is written afresh with `dialogue-write`, but only once P4-WP4.0 has finished the skills: P4-WP4.7
+   for the slice's people, P9 for the rest. Until then the old lines stay in the import, unused.
 8. **The old quest design is the foundation.** The old main quest, faction lines, cast roster, side quests,
    quest index, condition vocabulary and journal design are kept and improved, not replaced: P4-WP4.0 fits the
    skills to them, and each quest (the 38 staged ones and the skeletons) passes `quest-review` and is rebuilt
    through `quest-write` from its old premise and cast before its dialogue is written (P4-WP4.8, P9).
-9. **Quests have action.** Nearly every stage makes the player use their skills (fight, persuade, sneak,
-   steal, spy, dive, climb, sail, cast, craft, clear a place), varied and combined; a faction's quests lean to
-   its own profile; a chain of conversations alone is not a quest (`quest-write/principles/actions.md`).
+9. **Quests are built round skill use.** An action is a use of one of the player's skills; each quest starts
+   from an action plan drawn from the skill-use catalogue, weighted by its line's or faction's profile and
+   away from what its line and region already use, and its truth and stages are written so those actions
+   follow; a chain of conversations alone is not a quest (`quest-write/principles/actions.md`).
 
 ## Consequences
 

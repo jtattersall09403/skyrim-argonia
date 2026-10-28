@@ -21,6 +21,19 @@ playerStart:
   - fact.greenspring.vibe-approach-1   # a small clear pool lies under the Hist
   - fact.greenspring.vibe-silhouette-1   # huts stand round the spring
 
+actionPlan:
+  # Chosen by hand from action_plan.py proposals (profile local; shapes MURDER, CONTAMINATION), then the truth
+  # was written so each action follows from it: the body is under water (dive), the pack is in a locked store
+  # (pick-a-lock or persuade), the killer checks the spring at night (spy), the satchel is on him (pickpocket).
+  - {skill: speechcraft, use: persuade}
+  - {skill: sneak, use: sneak-past}
+  - {skill: athletics, use: dive}
+  - {skill: security, use: pick-a-lock}
+  - {skill: sneak, use: spy}
+  - {skill: sneak, use: pickpocket}
+  - {skill: speechcraft, use: accuse}
+  - {skill: any-weapon, use: fight}
+
 premise: A courier was murdered and staked in Greenspring's spring, travellers are falling sick from the water, and the player finds the body and the killer.
 
 truth:
@@ -172,32 +185,32 @@ stages:
     pre: {any: [{speakerDispositionAtLeast: 40}, {flag: flag.lh38.persuaded}]}
     onEnter: [{grantTopic: topic.sickness-at-the-spring}, {setFlag: [flag.lh38.started, true]}]
     learns: [fact.lh38.sickness, fact.lh38.pool-office]
-    actions: [{family: speech, verb: persuade, skill: speechcraft, note: "raise Mee-Sei's disposition, or admire/bribe"}]
+    actions: [{skill: speechcraft, use: persuade, note: "raise Mee-Sei's disposition, or admire or bribe her"}]
     directions: "the pool under the Hist, a short walk from the fire stand (landmark: the Hist)"
   - id: 20
     objective: "Get into the pool under the Hist."
     pre: {flag: flag.lh38.started}
     approaches:
-      - {id: a-ask, actions: [{family: speech, verb: persuade, skill: speechcraft, note: "convince Im-Moro with k2 or k3 as evidence"}]}
-      - {id: a-night, actions: [{family: stealth, verb: sneak, skill: sneak, note: "enter the pool at night unseen; seen = crime: fouling the pool"}]}
+      - {id: a-ask, actions: [{skill: speechcraft, use: persuade, note: "convince Im-Moro with k2 or k3 as evidence"}]}
+      - {id: a-night, actions: [{skill: sneak, use: sneak-past, target: "Im-Moro and the night watch", setting: at night, note: "seen = crime: fouling the pool"}]}
     post: {setFlag: [flag.lh38.in-pool, true]}
   - id: 30
     objective: "Search the spring's throat."
     pre: {flag: flag.lh38.in-pool}
     actions:
-      - {family: traversal, verb: dive, skill: athletics, note: "swim down between the Hist's roots; breath matters; a light helps"}
-      - {family: acquire, verb: take, note: "cut free and take thing.knotted-rope"}
-      - {family: observe, verb: examine, note: "examine thing.grave-stake: its face is blank"}
+      - {skill: athletics, use: dive, setting: in a flooded ruin or underwater, note: "between the Hist's roots; breath matters (alteration: water-breathe also works)"}
+      - {skill: illusion, use: light-a-dark-place, note: "optional: the throat is dark; a torch will not burn underwater"}
+      - {skill: mysticism, use: detect-life, note: "optional: nothing alive below; the stake's blank face is seen by looking"}
     post: {setFlag: [flag.lh38.body-found, true]}
     learns: [fact.lh38.body-in-throat, fact.lh38.stake-blank, fact.lh38.rope-knot]
   - id: 40
     objective: "Find out who the dead man was and who killed him."
     pre: {flag: flag.lh38.body-found}
     approaches:
-      - {id: a-store, actions: [{family: stealth, verb: pick-lock, skill: security, note: "open the lodge store to find thing.courier-pack"}, {family: speech, verb: present-evidence, note: "or show Haj-Tei the rope and he opens it"}]}
-      - {id: a-watch, actions: [{family: observe, verb: spy, skill: sneak, note: "hide near the spring after the lamps are out and watch Reeh-Shaal stare into the water (k11)"}]}
-      - {id: a-satchel, actions: [{family: stealth, verb: pickpocket, skill: sneak, note: "lift thing.satchel from Reeh-Shaal, or search his mat while he is at the spring"}]}
-      - {id: a-rope, actions: [{family: speech, verb: present-evidence, note: "show Tsono-Ra the rope; she knows her knot"}]}
+      - {id: a-store, actions: [{skill: security, use: pick-a-lock, note: "the lodge store, to find thing.courier-pack"}, {skill: speechcraft, use: present-evidence, note: "or show Haj-Tei the rope and he opens it"}]}
+      - {id: a-watch, actions: [{skill: sneak, use: spy, target: "Reeh-Shaal at the stone lip", setting: at night, note: "k11"}]}
+      - {id: a-satchel, actions: [{skill: sneak, use: pickpocket, target: Reeh-Shaal, note: "thing.satchel; or search his mat while he is at the spring"}]}
+      - {id: a-rope, actions: [{skill: speechcraft, use: present-evidence, note: "show Tsono-Ra the rope; she knows her knot"}]}
     learns: [fact.lh38.courier-missing, fact.lh38.pack-unpaid, fact.lh38.rope-sold-late, fact.lh38.reeh-waiting, fact.lh38.night-watch]
     post: {setFlag: [flag.lh38.suspect-known, true]}
     failForward: "if Tsono-Ra is dead or hostile, the knot, the night watch and the pack still point at Reeh-Shaal"
@@ -205,15 +218,15 @@ stages:
     objective: "Confront Reeh-Shaal."
     pre: {flag: flag.lh38.suspect-known}
     approaches:
-      - {id: a-accuse, actions: [{family: speech, verb: accuse, note: "name him and present two of: the rope, the pack, the satchel, the night watch"}]}
-      - {id: a-fight, actions: [{family: combat, verb: fight, note: "he draws a short blade and runs for the landing; D2"}]}
-      - {id: a-bribe, actions: [{family: speech, verb: bargain, skill: mercantile, note: "take the packet and let him go"}]}
+      - {id: a-accuse, actions: [{skill: speechcraft, use: accuse, note: "name him and present two of: the rope, the pack, the satchel, the night watch"}]}
+      - {id: a-fight, actions: [{skill: any-weapon, use: fight, target: "Reeh-Shaal, short blade", setting: "running for the landing", note: D2}]}
+      - {id: a-bribe, actions: [{skill: mercantile, use: bargain, note: "take the packet and let him go"}]}
     post: {setFlag: [flag.lh38.resolved, true]}
     learns: [fact.lh38.packet]
   - id: 60
     objective: "Tell Im-Moro so the body can be raised."
     pre: {flag: flag.lh38.body-found}
-    actions: [{family: speech, verb: present-evidence, note: "show Im-Moro the rope or lead her to the throat"}]
+    actions: [{skill: speechcraft, use: present-evidence, note: "show Im-Moro the rope or lead her to the throat"}]
     post: {setFlag: [flag.lh38.raised, true]}
   - {id: 90, ending: failed, pre: {any: [{not: {npcAlive: npc.hist-heartland.greenspring.n2}}, {not: {npcAlive: npc.hist-heartland.greenspring.spring-keeper}}]}}
 

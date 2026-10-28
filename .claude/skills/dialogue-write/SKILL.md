@@ -23,6 +23,10 @@ faction, chattiness, friendliness, formality, backstory, wants, fears); the voic
 may be sent to; the things lines may name, by id; and per topic the intent, the facts it may state and hide,
 the speaker's knowledge, the links it grants, and what the player already knows.
 
+**Lines set up the action.** A quest brief lists what the player does at each topic's stages (the skill
+uses); the lines give what the player needs to do it: who, where, when, what danger, what they will need
+(a light for the dive, the guard's hours, the lock's owner), never how the designer expects it solved.
+
 **The writer adds no facts.** A line that needs one not in the brief is not written: the writer asks for the
 fact, the quest writer adds it to the record, and the brief is rebuilt.
 

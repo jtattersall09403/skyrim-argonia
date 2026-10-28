@@ -56,9 +56,12 @@ The world
 18. Does anything break Black Marsh in 4E 201: a Nordic element, a vanilla Skyrim reference, the wrong era?
 
 Action and fit
-19. Does almost every stage make the player use a skill, across at least two families, with one stage
-    offering approaches from different families? Is it more than a chain of conversations?
-20. Do the actions follow from the truth and the place, and does a faction quest lean to its profile?
+19. Is the quest built round an action plan of real skill uses (long blade, sneak, alchemy, athletics...),
+    with almost every stage using one and at least one stage open to different builds? Is it more than a
+    chain of conversations?
+20. Do the actions follow from the truth and the place, do they lean to the line's or faction's profile, and
+    do they vary from the quests around it (the same skill, use, target and setting not repeated without
+    reason)?
 21. Does each shape's checklist in its principles file pass, and is every required `shapeData` section real
     rather than filled for form?
 22. Is the quest built on its old design (`foundation`), and is each change from it an improvement?

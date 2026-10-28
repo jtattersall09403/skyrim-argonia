@@ -1,0 +1,122 @@
+# The skill-use catalogue: what quests can ask the player to DO, by the game's own skills (decision 0005 C2:
+# Morrowind's 27; crossbows and thrown under Marksman, 0016). A quest's actions are drawn from here, so they
+# use and build the player's real skills. Variety comes from crossing a use with a target and a setting.
+# `needs` is what the world must hold for the use (it becomes `things` rows and, via P4-WP4.0, engine features).
+# Draft 2026-10-28: P4-WP4.0 extends it from the old verb tags (00-overview §4) and the imported systems,
+# and maps every `needs` to its engine feature.
+
+targets:   # who or what a combat, stealth or magic use is aimed at; danger band comes from the place
+  vermin: [rats in the meal sacks, mudcrabs on a landing, a nest of fleshflies]
+  beasts: [a hackwing flock, a wamasu, a swamp leviathan, a pack of nix-hounds, a giant snapping turtle]
+  people: [bandits on a road, a deserter, the town watch, an assassin, a rival crew, a duellist, pirates]
+  undead-and-spirits: [a restless ancestor, a Kothringi revenant, a staked corpse that will not stay down]
+  daedra: [a summoned scamp, a Daedric guardian, a bound servant gone loose]
+  bosses: [a warlord, a creature that guards a ruin, a named antagonist]
+settings:   # where and how; pick one per use
+  - open ground by day
+  - at night
+  - in a flooded ruin or underwater
+  - from a boat or on a moving boat
+  - high up (a Hist, a cliff, a tower)
+  - in a crowd or a market
+  - inside someone's house or a guarded store
+  - against the clock (a tide, a ceremony, a departing boat)
+  - with an ally to keep alive
+  - outnumbered, or one against one
+
+skills:
+  # combat: weapons (each weapon skill takes the combat uses below with its own weapon)
+  long-blade:   {family: combat, uses: [fight, duel, defend, ambush, clear-a-place, hunt, protect]}
+  short-blade:  {family: combat, uses: [fight, ambush, assassinate, duel, clear-a-place]}
+  axe:          {family: combat, uses: [fight, defend, clear-a-place, hunt, break-through]}
+  blunt-weapon: {family: combat, uses: [fight, defend, clear-a-place, break-through, subdue]}
+  spear:        {family: combat, uses: [fight, hunt, defend, fish-or-spear-in-water]}
+  marksman:     {family: combat, uses: [snipe, hunt, defend-from-height, cut-a-rope-or-signal, shoot-from-a-boat]}
+  hand-to-hand: {family: combat, uses: [brawl, subdue, win-a-wager-fight]}
+  block:        {family: combat, uses: [hold-a-line, protect]}
+  # armour and endurance: a quest asks for them by where it sends the player
+  heavy-armor:  {family: endure, uses: [hold-a-line, walk-through-a-hazard]}
+  medium-armor: {family: endure, uses: [hold-a-line, long-march]}
+  light-armor:  {family: endure, uses: [run-a-gauntlet, swim-armoured]}
+  unarmored:    {family: endure, uses: [blend-in-unarmed, rite-without-iron]}
+  # magic
+  destruction:  {family: magic, uses: [fight, burn-a-nest, break-a-barrier, kill-from-range]}
+  alteration:   {family: magic, uses: [water-breathe, water-walk, levitate-to-a-ledge, open-a-lock, feather-to-carry]}
+  illusion:     {family: magic, uses: [charm, calm, frenzy, become-invisible, light-a-dark-place]}
+  conjuration:  {family: magic, uses: [summon-help, bind-a-spirit, banish, raise-a-witness]}
+  mysticism:    {family: magic, uses: [detect-life, detect-enchantment, soul-trap, telekinesis, mark-and-recall]}
+  restoration:  {family: magic, uses: [heal-the-sick, cure-disease, cure-poison, keep-an-ally-alive]}
+  enchant:      {family: craft, uses: [make-an-item, recharge-a-relic, read-an-enchantment]}
+  alchemy:      {family: craft, uses: [brew-a-cure, brew-a-poison, identify-a-poison, gather-ingredients]}
+  armorer:      {family: craft, uses: [repair, smith-to-order, judge-a-weapon]}
+  # stealth
+  sneak:        {family: stealth, uses: [sneak-past, spy, follow, pickpocket, plant, steal]}
+  security:     {family: stealth, uses: [pick-a-lock, disarm-a-trap, open-a-strongbox, set-a-trap]}
+  acrobatics:   {family: traversal, uses: [jump-a-gap, fall-safely, reach-a-roof]}
+  athletics:    {family: traversal, uses: [swim, dive, climb, run-down, outrun, pole-or-sail-a-boat, cross-a-flood]}
+  # speech and trade
+  speechcraft:  {family: speech, uses: [persuade, intimidate, admire, taunt, lie, present-evidence, accuse, interrogate]}
+  mercantile:   {family: speech, uses: [bargain, bribe, buy-the-only-one, appraise, sell-a-forgery]}
+
+uses:   # what a use asks of the world (becomes things rows); uses not listed need only a target or a person
+  fight: {needs: [hostile people or creatures of a stated band at a place]}
+  clear-a-place: {needs: [a dungeon, cave, ruin or camp with its hostiles and a cleared state]}
+  hunt: {needs: [a creature with a habit, territory and traces]}
+  assassinate: {needs: [a target with a routine, guards with bounded senses, an escape route]}
+  snipe: {needs: [a height or cover with sight of the target]}
+  sneak-past: {needs: [watchers with routines and senses, at least two routes]}
+  spy: {needs: [a person doing something at a place and time, cover to watch from]}
+  follow: {needs: [a person with a route, places to hide along it]}
+  pickpocket: {needs: [a person carrying the item]}
+  plant: {needs: [an item to place, a container or person to place it on]}
+  steal: {needs: [an item, its owner, where it is kept]}
+  pick-a-lock: {needs: [a lock of a stated level, a reason it is locked]}
+  disarm-a-trap: {needs: [a trap of a stated kind]}
+  swim: {needs: [water a route crosses]}
+  dive: {needs: [an underwater space reachable within a breath or with water-breathing]}
+  climb: {needs: [a climbable face with a top worth reaching]}
+  pole-or-sail-a-boat: {needs: [a boat the player can use, a water route]}
+  persuade: {needs: [a person with a stated objection the player can answer]}
+  present-evidence: {needs: [an item or learned topic, and a statement it refutes]}
+  accuse: {needs: [a suspect, the exhibits that convict]}
+  bargain: {needs: [a trader with something to sell or buy]}
+  bribe: {needs: [a person whose price is stated or findable]}
+  brew-a-cure: {needs: [a recipe or a person who knows it, ingredients in the world]}
+  identify-a-poison: {needs: [a poisoned thing, an alchemist or a test]}
+  heal-the-sick: {needs: [sick people]}
+  water-breathe: {needs: [a dive too long for one breath]}
+  levitate-to-a-ledge: {needs: [a ledge out of climbing reach]}
+  bind-a-spirit: {needs: [a spirit, a soul gem or a binding rite]}
+  detect-life: {needs: [hidden people or creatures]}
+  smith-to-order: {needs: [a forge, materials, a buyer]}
+  make-an-item: {needs: [an enchanting station or enchanter, a soul gem, an item]}
+
+targetsFor:   # which target groups a use can be aimed at; uses not listed take no target
+  fight: [vermin, beasts, people, undead-and-spirits, daedra, bosses]
+  duel: [people, bosses]
+  defend: [beasts, people, undead-and-spirits, daedra]
+  ambush: [beasts, people]
+  clear-a-place: [vermin, beasts, people, undead-and-spirits, daedra]
+  hunt: [beasts, people]
+  protect: [beasts, people, undead-and-spirits, daedra]
+  break-through: [people, daedra]
+  subdue: [people]
+  brawl: [people]
+  win-a-wager-fight: [people]
+  assassinate: [people, bosses]
+  snipe: [beasts, people]
+  hold-a-line: [beasts, people, undead-and-spirits, daedra]
+  kill-from-range: [beasts, people, daedra]
+  burn-a-nest: [vermin, beasts]
+  calm: [beasts, people]
+  frenzy: [beasts, people]
+  charm: [people]
+  banish: [undead-and-spirits, daedra]
+  bind-a-spirit: [undead-and-spirits, daedra]
+  soul-trap: [beasts, undead-and-spirits, daedra]
+  sneak-past: [people, beasts]
+  spy: [people]
+  follow: [people]
+  pickpocket: [people]
+  intimidate: [people]
+  interrogate: [people]

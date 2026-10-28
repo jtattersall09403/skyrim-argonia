@@ -1,0 +1,21 @@
+# Weights per line or faction: `families` first (a family's weight is shared by its skills), then `skills`
+# within them (1 = default, 3 = strong lean, 0 = never). Unlisted families and skills weigh 1; `endure`
+# (armour skills) defaults low because a quest uses them through where it sends the player.
+# Starting values from the 2026-10-28 session; P4-WP4.0 sets every faction from 40-factions and its culture
+# sheet, and adds favoured targets and settings.
+default: {families: {endure: 0.3}}
+local: {families: {endure: 0.3}}
+shadowscales:
+  families: {stealth: 3, combat: 2, magic: 1, craft: 1, speech: 0.5, endure: 0.3}
+  skills: {short-blade: 3, marksman: 2, illusion: 2, alchemy: 2}
+night-reed:
+  families: {stealth: 3, traversal: 2, speech: 2, combat: 0.5, endure: 0.3}
+  skills: {security: 3, acrobatics: 2, mercantile: 2}
+detectives:
+  families: {speech: 3, stealth: 2, magic: 1, craft: 1, traversal: 1, combat: 0.7, endure: 0.2}
+  skills: {speechcraft: 3, sneak: 2, mysticism: 2, alchemy: 1.5}
+fighters:
+  families: {combat: 3, endure: 1, traversal: 1, stealth: 0.5}
+mages:
+  families: {magic: 3, craft: 1.5, combat: 0.5, endure: 0.2}
+  skills: {enchant: 2}
