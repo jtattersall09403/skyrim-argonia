@@ -244,7 +244,7 @@ export class Metrics {
         this.probe.watch()
         this.probe.onSample = (s) => this.sink.push({ kind: "p2s", v: 1, session: this.session, setup: this.setupLabel(), t: s.at, source: s.source, what: s.what, ms: s.ms, displayMs: s.displayMs, pending: s.pending })
         const q = new URLSearchParams(location.search)
-        this.sink.push({ kind: "session", v: 1, session: this.session, t: Date.now(), client: CLIENT_VERSION, page: location.pathname,
+        this.sink.push({ kind: "session", v: 1, session: this.session, setup: this.setupLabel(), t: Date.now(), client: CLIENT_VERSION, page: location.pathname,
             query: Object.fromEntries([...q].filter(([k]) => !/pass|token|key/i.test(k))), device: device(), net: network() })
         setInterval(() => void this.tick(), 1000)
         setInterval(() => this.summary(false), 60_000)
