@@ -19,6 +19,9 @@ if ($why) {
   return
 }
 $last = if (Test-Path "$State\last-active") { [datetime](Get-Content "$State\last-active") } else { Set-Content "$State\last-active" $now.ToString('o'); $now }
+# Idle time never counts from before this boot (a stamp can survive a manual or AWS-side stop).
+$boot = (Get-CimInstance Win32_OperatingSystem).LastBootUpTime
+if ($last -lt $boot) { $last = $boot }
 $idle = [int]($now - $last).TotalMinutes
 if ($Status) { "idle for $idle min (stops at $IdleMinutes)"; return }
 if ($idle -ge $IdleMinutes) {

@@ -39,7 +39,7 @@ async function startPage(env) {
   const s = await state(env)
   if (s.state === "stopped") {
     await ec2(env, { Action: "StartInstances", "InstanceId.1": s.id })
-    return page("Starting the game machine", "About 3–4 minutes. This page reloads into the stream when it is ready.", true)
+    return page("Starting the game machine", "Usually under a minute. This page turns into the stream as soon as it is ready.", true)
   }
   if (s.state === "stopping") return page("The game machine is still switching off", "Give it a minute; this page will start it again.", true)
   if (s.state === "running") return page("The game machine is on; its desktop is starting", "Usually under two minutes.", true)
