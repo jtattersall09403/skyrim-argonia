@@ -15,8 +15,9 @@ The writer works only from a brief built from a record, never from a hand-writte
 
 - **Quest topics:** `quest-write/brief.py` builds one brief per person from the quest record.
 - **Place topics** (greeting, my trade, the place, rumours, danger, work, directions): the same brief shape,
-  from the place record and culture sheets (builder to come; until then the planner assembles it with the
-  same headings).
+  from the place record, the people registry and the culture sheets: `place_brief.py`, which picks the
+  sheets that apply (region by place, people by race and upbringing, faction and office by faction and rank,
+  settlement, group and household) and says when the talk can happen (a hostile place's flips).
 
 A brief holds: what the player can see (race, sex, place, pose, gear); what they cannot (role, household,
 faction, chattiness, friendliness, formality, backstory, wants, fears); the voice card; the others the player
