@@ -30,6 +30,8 @@ Rulings inherited from elder-souls-argonia are listed (carry / adapt / drop) in
 - [0022](0022-the-studio-boots-into-any-place.md) The studio: a dev build of the game that boots into any place, for agents and the owner; it only observes and teleports
 - [0023](0023-five-parts-de-risk-first.md) Five parts, de-risk first: foundation, the core loop (the host go/no-go), the slice in two tracks, the shell, the build-out
 - [0018](0018-the-creation-kit-is-a-tool-not-the-workflow.md) The Creation Kit is installed and used as a scripted tool; records are written by code
+- [0024](0024-content-is-written-from-one-source-of-truth.md) Quests, dialogue and text are written from one source of truth, through generated briefs and the quest-write, quest-review and dialogue-write skills; old written lines are not used
+- [0025](0025-a-detectives-faction.md) A detectives' faction, rival to the Shadowscales and the Night-Reed Chapter, escalating to a grand murder-mystery finale
 
 ## Open owner calls
 
@@ -58,3 +60,4 @@ recommendation; the answer is recorded in the named record (or a new one) and th
 | O-19 | Contribute our working ports back to universal-modder's knowledge base as scrubbed field notes (decision 0020 §7) | 2.7 onward | Yes, after the owner sees each note |
 | O-13 | Public name: "Argonia" overlaps Tamriel Rebuilt's planned territory and the dormant Beyond Skyrim: Argonia; release title and Nexus wording must not imply either | 3.4 | "Elder Souls: Argonia" or similar, with a "not affiliated" line |
 | O-20 | Publish the slice as early access once the stranger's install is clean | 3.5 | Yes: real players find install problems no test machine does |
+| O-21 | Keep a private, never-committed copy of the Morrowind dialogue corpus (a UESP pull held in the old repo) as `dialogue-write`'s style models, now that Morrowind is not owned on Steam (decision 0024 §6) | 0.1 | Yes: private only, cited by id, never quoted in the repo, a brief, a report or an issue |

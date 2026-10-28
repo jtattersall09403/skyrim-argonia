@@ -146,6 +146,8 @@ column is Part 1's thread; "whole" is the chunk that completes it.
 | Death pile, wake at last rest, rest = only save | 76 §126, 0031, 0144 | 3 + 5 | Respawn – Soulslike (pattern) | ArgoniaCore | 1.5 → 2.8 |
 | Dialogue: topics, hyperlinks, disposition, persuasion | 0139, 0143, 0145, dialogue data | 5 + 6 | PrismaUI | topic store + dialogue view | 0.2 G5 → 1.3 → 2.5 |
 | Quests as data, conditions | 0153, condition vocabulary | 1 + 4 + 5 | — | quest generator + evaluator | 2.12 → 4.3 |
+| Writing quests, dialogue and text (one source of truth, generated briefs; [0024](decisions/0024-content-is-written-from-one-source-of-truth.md)) | old quest design, culture sheets | tool | — | skills `quest-write`, `quest-review`, `dialogue-write`; agents `quest-reviewer`, `dialogue-writer`, `corpus-find` | 0.1 §b, §i → 1.3 → 2.5, 2.12 → 3.3 → 4.2, 4.3 |
+| Investigation support and the detectives' faction ([0025](decisions/0025-a-detectives-faction.md)) | condition vocabulary, 40-factions, lore extrapolation | 1 + 4 + 5 | — | evaluator predicates, journal clues, faction record, line record | 0.1 §i → 2.4, 2.5, 2.12 → 4.1 → 4.2, 4.3 |
 | Journal, directions, no markers | 0137 | 2 + 5 + 6 | Wayfinder (pattern), No Google Maps | directions generator + journal view | 2.12 |
 | World map, local map | old map styles | 2 + 6 | Flat World Map Framework | map views | 2.12 |
 | Our own UI and HUD, Pelagiad, the UI map, transitions | old `packages/ui`, 0017 | 6 (port) | PrismaUI; TrueHUD/Infinity UI only to save engineering | ported views, font library | 1.2 → 2.2 → 3.1 |
@@ -196,6 +198,8 @@ cycle times at 0.2 (G8), at Part 1's close, at Part 2's close and at 4.1.
 - **T-OWN, owner check-ins:** plain English, one check per bullet, studio scenes named, how to reply.
 - **T-DOCS, docs:** the repo holds the current state and git the history; briefs are rewritten just in time
   (0023 §7).
+- **T-WRITE, writing:** every quest, line of dialogue, journal entry and book is written through the writing
+  skills in decision 0024's order; no text is written outside it.
 
 ## 6. Gates
 

@@ -14,13 +14,13 @@ recorded in `world/IMPORTED_FROM.md`, never silently skipped.
 | `world/sources/placement/` (incl. `accepted-places.json`, `exterior-interior-links.json`, `boats.json`) | acceptance, interior links (38 kit interiors), moorings | `world/sources/placement/` | |
 | `world/sources/registries/` (npcs, factions, items, creatures, quests, locks, loot, traps, pickpocket, detection, hazard-volumes, grave-stakes, creature-harvest, deeds, rumour-pools, markers, physical-materials, trainers, sourcing-register…) | the normalised record set | `world/sources/registries/` | every registry has a named consumer (2.12 §c and 2.14 lists the ones no other WP names) |
 | `world/sources/quests/` | quest lines and stages (main, factions, standalone, proposed, local-<region>) | `world/sources/quests/` | |
-| `world/sources/dialogue/` | place lines, pool, culture sheets, stance, topics, facts, gates, glossary, exemplars | `world/sources/dialogue/` | exemplar corpus is Morrowind text quoted for style reference: keep it private (`$ARGONIA_PRIVATE`), not public, unless its size and use are fair-use-clear (owner decides) |
+| `world/sources/dialogue/` | place lines, pool, culture sheets, stance, topics, facts, gates, glossary, exemplars | `world/sources/dialogue/` (the written lines are reference only, never shipped or used as models: decision 0024 §7) | the exemplar corpus (`exemplars/morrowind-full.json`, `morrowind.json`) is Bethesda's text from UESP: it goes to `$ARGONIA_PRIVATE/dialogue/morrowind/`, never `world/`, and only once O-21 is answered |
 | `world/sources/text/` | journal, books/documents, signs, loading facts, names | `world/sources/text/` | |
 | `world/sources/hydrology/` | hydrology graph (101 rivers, 615 reaches, 2,280 bodies), bodies, corrections | `world/sources/hydrology/` | |
 | `world/sources/routes/` | road legs, travel services (23), harbour and rootworm stations | `world/sources/routes/` | |
 | `world/sources/terrain/` (freeze.json, patches) | hashes and patches of the frozen heightfield | `world/sources/terrain/` | arrays themselves come from R2 (decision 0009 §5) |
 | `world/sources/climate/`, `sky/`, `flora/`, `regions/`, `settlements/`, `sites/`, `demographics/`, `economy/`, `vocab/`, `anchors/`, `audio/` (metadata only) | climate, weather states, stars, flora and groundcover rules, region data, socket vocabulary | same under `world/sources/` | no audio files |
-| `world/sources/lore/` | lore dossiers (era policy, sources) | `world/sources/lore/` | the Morrowind dialogue corpus file: private, as above |
+| `world/sources/lore/` | lore dossiers (era policy, sources), **including `extrapolation/`** (the province in 4E 201, settlement register, quest-plan deltas; read by decision 0025's lore pass) | `world/sources/lore/` | `morrowind-dialogue-corpus-full.md`: private, as above |
 | `world/sources/assets/registry-*.jsonl`, `registry-summary.json` | vault inventory (27,929 rows) and pool summary | `world/sources/assets/` | metadata only, no assets |
 | `packages/world-schema/schemas/*.json`, `integrity.py` | 21 schemas and the integrity checker | `world/schemas/`, `tools/argonia_world/integrity.py` | |
 | `packages/ui/` (src, tests, CSS: tokens, components, focus and viewport models, HUD, map, screens; ~18,400 lines of React 19) | our design system and every screen | `ui/` (1.2, 2.2) | decision 0017; assets only if provenance-clean: `Pelagiad.woff` + OFL (yes), Fal-made map glyphs (yes), `symbols.svg` (split: Fal-made symbols yes; the shapes exported from Skyrim's `hudmenu.gfx` are **not committed** but extracted on the installing machine by the ported `tooling/ui/extract_symbols.mjs`), `flourish-*.webp` (yes: the owner made them with ChatGPT) |
@@ -59,9 +59,10 @@ permission evidence), the old kit manifests used by the kit-id mapper (0.2 G4).
 | Old path | Take | Change |
 |---|---|---|
 | `.claude/agents/deliver.md`, `deliver-small.md`, `find.md`, `run.md`, `check.md`, `research.md`, `reader.md` | frontmatter pattern (model, effort, tools, omitClaudeMd) and the core instructions | remove three.js/studio/kit specifics; point at this repo's gate and bridge |
-| `.claude/agents/dialogue-lane.md`, `dialogue-writer.md`, `voice-reader.md`, `corpus-reader.md` | as-is in 0.1, adapted in 2.5 | output to ArgoniaCore data, not TS packages |
+| `.claude/agents/dialogue-lane.md`, `voice-reader.md` | as-is in 0.1, adapted in 2.5 | output to ArgoniaCore data, not TS packages; drive the writing skills' agents |
+| `.claude/agents/dialogue-writer.md`, `corpus-reader.md` | not copied | superseded by the writing-skills branch's `dialogue-writer` and `corpus-find` (§5) |
 | `.claude/agents/place-builder.md` | becomes `world-builder` in 2.W5 | Skyrim records, not GLB kits |
-| `.claude/skills/text-review`, `dialogue-write`, `cost-review`, `routing-audit` | adapt | paths |
+| `.claude/skills/text-review`, `cost-review`, `routing-audit` | adapt | paths; **not** the old `dialogue-write`: ours was written from scratch (0024, §5) |
 | `.claude/skills/journey-author` | becomes `scene-author` (0.4) | studio scenes and eyeless journeys for both runners |
 | `.claude/skills/place`, `kit-build`, `kit-mining`, `composite-author`, `modular-runs`, `visual-look` | read for lessons only | three.js kit pipeline; not copied |
 | `tooling/repo-standards/brief_template.py`, `shell_guard.py` (subset), `job_guard.sh` (simplified), `session_tokens.py`, `owner_inbox.py`, `test_word_budget.py` | copy and trim | per decision 0011 |
@@ -80,3 +81,15 @@ permission evidence), the old kit manifests used by the kit-id mapper (0.2 G4).
 - The Python world-generation pipeline (`tooling/world-generation/`, ~208k lines): not imported; the frozen
   outputs are. If terrain must be regenerated, run it in the old repo.
 - `tooling/gpu-lane/` (RunPod/Chrome/WebGL harness): not applicable.
+
+## 5. The writing-skills branches of this repo → `.claude/`, `docs/research/`
+
+Two side branches of this repo hold work done with the owner before this plan's restructure. 0.1 §b brings
+them in (the list, what is adapted, and the acceptance); they are never merged.
+
+| Branch and path | Take | Change |
+|---|---|---|
+| `claude/blissful-bardeen-rstsfp`: `.claude/skills/dialogue-write/`, `quest-write/`, `quest-review/`; `.claude/agents/corpus-find.md`, `dialogue-writer.md`, `quest-reviewer.md` | all files | P-phase ids → chunk ids; its decisions 0017/0018 → 0024/0025; corpus under `$ARGONIA_PRIVATE`; no model names outside frontmatter; fitted to the import in 0.1 §i |
+| the same branch: `docs/research/2026-10-27/quest-*.md`, `questline-design.md` (nine packs) | as-is | indexed in the research README |
+| the same branch: its decisions, owner-brief and ACCOUNTING rows, PLAN, PROGRESS, CLAUDE.md, source-map and P-phase edits | already carried into this plan | not copied |
+| `claude/sweet-rubin-96mlvj`: `tooling/dialogue/fetch_morrowind_corpus.sh` | its three copy paths | folded into `tools/import_old.py`'s private routing (§1) |

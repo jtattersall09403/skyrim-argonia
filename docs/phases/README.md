@@ -182,6 +182,7 @@ reason.
 | 0.0 G0 (it can be played through the stream) | everything else | if the stream or the controls fail, nothing else is worth building |
 | 0.2 G10 (where the rules run) | 1.1 | it decides how ArgoniaCore hosts the rules |
 | 0.4 studio and runners | every L4 check and owner check after Part 0 | nothing is tested through the new-game flow |
+| 0.1 §i the writing skills fitted to the import | 1.3 onwards (every line and quest) | all text is written through them (decision 0024) |
 | 0.5 pipeline | Part 1 and everything after | records are generated, never hand-made |
 | 1.7 the owner's verdict | Part 2 | the host is confirmed before the world and systems are built at scale |
 | 2.W5 wave 1 of the slice places | 2.4 people onwards | people, loot and quests live in those places |

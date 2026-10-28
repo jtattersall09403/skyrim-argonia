@@ -92,6 +92,13 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | B30 | Review and overhaul the old dialogue and quest tests (many bad) | 0.1 test review; 0.2 G10 counts only keep tests; 2.5 and 2.12 tests built from the review |
 | B31 | Is the one-place core loop actually cheaper than the alternatives? | 0023 "Why the thread is worth its cost" (an insurance cost of about 2–3 weeks; trimmed to the host-risky systems) |
 | B27 | Work in parts like the old repo, reviewed critically: slice places and systems first, then the new-game flow, then the sideways build-out; rewrite the plan holistically | 0023 (five parts; the core loop as the host go/no-go; the slice in two tracks; immersion as a gate; briefs just in time); phases/README.md; PLAN §5; this rewrite replaced the first plan's eleven phases |
+| B32 | Dialogue reads as Morrowind's; old written lines not used; skill from scratch (2026-10-27) | 0024 §6–7; `dialogue-write` brought in at 0.1 §b, fitted at §i; lines written in 1.3, 2.5, 3.3, 4.2 |
+| B33 | Banned constructions (personification, verbless fragments, dangling modifiers, opaque references), British English, disposition hints (2026-10-27) | `dialogue-write/bans.yaml` and `lint.py`; 0024; 2.5 owner check feeds new bans |
+| B34 | Any of ten races as speaker or player; address by race, faction, rank (2026-10-27) | `dialogue-write/voices.md`, SKILL §2; 2.4 persona fields; 2.5 §b listener variants |
+| B35 | Consistent first time across quests, places, dialogue, characters, facts; quest writer and reviewer skills; per-type principles from research (2026-10-27) | 0024; `quest-write`, `quest-review`; the nine `docs/research/2026-10-27/quest-*` and `questline-design` packs (0.1 §b) |
+| B36 | Quests have varied skill-based action, by faction profile; output fits the engine; old quest design is the foundation (2026-10-28) | 0024 §8–9; `quest-write/principles/actions.md`; 0.1 §i (catalogue, profiles, engine mapping table); 2.12 §a, 4.2 step 5, 4.3 |
+| B37 | A detectives' faction rival to Shadowscales and Night-Reed, escalating to a murder-mystery finale (2026-10-27) | 0025; 0.1 §i coverage check; 2.4 §c lore pass and record; 2.5 §a, 2.12 §a investigation support; 4.1 §d line record; 4.2, 4.3 |
+| B38 | Bring in the side branch's writing skills and build their use into the later chunks (2026-10-28) | 0.1 §b (port list, adaptations, acceptance), §i (fit to the import); 1.3, 2.4, 2.5, 2.12, 3.3, 4.1–4.3; source-map §5 |
 | B15 | FaceGen and distant terrain: "surely handled by Skyrim's engine" | 0014 §3–4 explains: the engine draws them, but from per-NPC face files and per-worldspace LOD files that a new worldspace and new NPCs lack; templates reuse existing faces; terrain LOD meshes are ours and may ship |
 
 ## C. Engine and approach research
@@ -208,10 +215,10 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | F11 | Cuts: mounts, fire spread, tide gating, river pirates, drifting settlements, survival, bleedout, boat chases, voice acting | Out | PLAN §7 (old 0026/0039/0042/0139) |
 | F12 | Old reds (three climb visual checks, 60 fps on phone, 90 s load) | Out | three.js-specific; climbing re-done on FreeClimb |
 | F13 | Polish backlog (~470 rows) | In | source-map §2; triaged once in 0.1 |
-| F14 | Dialogue on Sonnet (owner ruling in old 0079) | In | 2.5 |
+| F14 | Dialogue on Sonnet (owner ruling in old 0079) | In | `dialogue-writer` frontmatter (0.1 §b); 0024 consequences |
 | F15 | Content targets: 450–550 quests (0027) vs 550–740 (quest docs) | Open (minor) | 4.2 inventory table; O-18 at 4.1: 450–550 baseline, 550–740 stretch, owner confirms |
 | F16 | 4 creature species without a source | In | 4.2 inventory (redesign or replace) |
-| F17 | Morrowind exemplar dialogue corpus (Bethesda text) | In | kept private (source-map §1) |
+| F17 | Morrowind exemplar dialogue corpus (Bethesda text, a UESP pull; Morrowind not owned on Steam) | Open | private only, never committed (source-map §1, legal-and-sourcing §1); O-21 confirms at 0.1 |
 | F18 | Old TS dialogue/narrative runtime reusable in PrismaUI? | In | 0.2 G5 evaluation |
 
 ## G. Licensing and permissions

@@ -15,7 +15,7 @@ family, the real view and the real formulas. Part 2 deepens each one and never r
 
 | Verb | First rung here | Made whole in |
 |---|---|---|
-| talk | three Claywater people with their imported lines: greeting, hyperlinked topics, disposition bands, Goodbye | 2.5 |
+| talk | three Claywater people with lines written afresh by the writing skills (0024): greeting, hyperlinked topics, disposition bands, Goodbye | 2.5 |
 | carry, equip, read | one weapon class, one armour set in Morrowind slots, a container, a book; burden tiers | 2.3 |
 | fight | straight sword, rolls per burden tier, guard, parry, riposte, backstab, poise, against one DS1-mirrored archetype, measured from DSR | 2.7 |
 | grow | skill use in anger → vastei → a pending level → rest → the sitting | 2.8 |
