@@ -142,7 +142,7 @@ run at a time, so a second comment queues. It only starts the existing machine a
 
 ### Step 7: Steam on the build VM (game data for the tools)
 The build VM needs Skyrim SE's own data files (read-only, for our record generator), Dark Souls Remastered (for
-measuring) and Morrowind (for reference facts). In the VS Code terminal:
+measuring). In the VS Code terminal:
 
 ```bash
 sudo add-apt-repository -y multiverse && sudo dpkg --add-architecture i386 && sudo apt update
@@ -154,7 +154,7 @@ It asks for your password and a Steam Guard code once, then remembers the login.
 
 ```bash
 steamcmd +@sSteamCmdForcePlatformType windows +force_install_dir ~/games/dsr +login YOUR_STEAM_NAME +app_update 570940 validate +quit
-steamcmd +@sSteamCmdForcePlatformType windows +force_install_dir ~/games/morrowind +login YOUR_STEAM_NAME +app_update 22320 validate +quit
+# Morrowind is not needed (owner, 2026-10-28)
 ```
 
 If an app id is refused, the agent finds the right one; it is not worth your time.
