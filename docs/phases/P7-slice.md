@@ -62,7 +62,12 @@ level).
 ### WP7.6 Re-plan
 - Measure: time per place, per quest, per dialogue round, per GPU check; costs per week; the owner's turnaround.
   Re-estimate P8–P10 and set P9's packet size and lane count (and O-2: when to move to the 20x plan).
-- Write `docs/phases/P9-packet-template.md` from what the slice taught.
+- Write `docs/phases/P9-packet-template.md` from what the slice taught; its quest and dialogue steps follow
+  decision 0017's order.
+- **Detectives' faction (decision 0018):** the lore pass (its place in 4E 201 Black Marsh, from the lore
+  dossiers and extrapolation, written as an extrapolation entry) and its line record through `quest-write`
+  (ranks, cases per rank, recurring cast and rival, the finale and the clues seeded for it), reviewed by
+  `quest-review`, so every P9 packet plans the cases it hosts.
 - **Acceptance:** PLAN §5 table updated with measured estimates; the packet template exists; O-2 asked in the
   P7 check-in with the measured numbers.
 

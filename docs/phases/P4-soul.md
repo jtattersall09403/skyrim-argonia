@@ -23,6 +23,38 @@ PrismaUI views read and write state through the typed message schema (P2-WP2.8).
 
 ## Work packages
 
+### WP4.0 Finalise the writing skills against the imported design (decisions 0017, 0018)
+Runs as soon as P0-WP0.6 has landed, in parallel with P1 to P3 (it needs no GPU box). The skills
+(`.claude/skills/dialogue-write`, `quest-write`, `quest-review`) were started in a practice session with the
+owner **before** the import, so they hold principles and formats but not the old project's quest system.
+- **Read the foundation:** `docs/design/quests/` in full (00-overview and its verb tags, 20-world-provisions,
+  30-main-quest, 36-cast-roster, 40-factions, 50-side-quests, the quest index and its shape taxonomy and novelty
+  rule, 57-glossary, 85-condition-vocabulary, 90-production-sequence); the quest data and its schema
+  (`world/sources/quests/`); the journal design and UI; the dialogue README, standards and culture sheets; the
+  lore dossiers and the extrapolation; the text style guide. The old main quest, faction lines, cast and side
+  quests are the **foundation**: kept and improved, not replaced (0017 §8). The old written dialogue lines are
+  not models (0017 §7).
+- **Reconcile, one format each:** the quest record becomes the imported quest schema extended with the
+  record's sections (truth, cast knowledge, things, clues, `shapeData`, actions), never a second quest format;
+  conditions and actions use the condition vocabulary; the journal rules follow the imported journal design;
+  the action families in `principles/actions.md` take the old verb tags and
+  `docs/research/2026-10-27/quest-actions-and-skills.md`, and each faction's action profile comes from
+  40-factions; the novelty rule and shape budget move into `quest-write`; cast comes from 36-cast-roster.
+  Delete anything in the skills that duplicates or contradicts the foundation, and re-point every path at
+  `world/` and `docs/design/`.
+- **Engine compatibility:** a mapping table, in `quest-write/quest-record.md`, from every machine field of the
+  record and the dialogue output to what consumes it: stages and objectives to the WP4.8 quest generator
+  (QUST records, Papyrus fragments), topics and lines to the WP4.6 topic store, conditions to the ArgoniaCore
+  evaluator, `new` things to the P3/P9 placement builders, journal text to the WP4.9 journal. A field the
+  engine cannot express is raised as a decision, not dropped. Check the imported quest system covers
+  evidence-gated topics, presenting evidence and accusation (0018); list what WP4.8 must add.
+- **Builders on imported data:** `quest-write/brief.py` and `dialogue-write/place_brief.py` read `world/`
+  (people registry for persona, place records, culture sheets); the corpus split and the agents
+  (`corpus-find`, `quest-reviewer`, `dialogue-writer`) work as their files say.
+- **Acceptance:** LH38 (the worked example, `quest-write/examples/lh38.yaml`) and one faction quest from
+  40-factions each go record → `quest-review` → briefs → lines → linter on the imported data with no hand
+  fixes; the mapping table has a consumer for every field; the owner reads LH38's lines in a check-in.
+
 ### WP4.1 Attributes, skills and the stat formulas (C2)
 - **Attributes:** Strength, Intelligence, Willpower, Agility, Speed, Endurance, Personality (no Luck), stored in
   reserved actor values. Choose between obsolete AVs and `Variable01`–`10` by checking which vanilla and
@@ -156,8 +188,9 @@ PrismaUI views read and write state through the typed message schema (P2-WP2.8).
 - Text catalogue: every player-visible string from one keyed catalogue (journal, books, signs, place names,
   item names, spell names, loading facts, hydrology names), checked by the prose linter and the `text-review`
   skill against the style guide; the Morrowind exemplar corpus guides new writing.
-- Dialogue writing (new lines for new NPCs) runs the `dialogue-write` skill on **Sonnet** (old owner ruling),
-  with voice-reader panels and corpus reads.
+- **Lines are written afresh (decision 0017 §7):** the imported facts, topics, culture sheets and glossary are
+  flattened; the imported written lines are not shipped. Every person the slice reaches gets new lines from
+  `dialogue-write` (on **Sonnet**, old owner ruling) through generated briefs; P9 does the rest.
 - **Acceptance:** every imported line reachable in game for its speaker (L1 data check plus 20 sampled L4 talks);
   linter green.
 
@@ -166,7 +199,11 @@ PrismaUI views read and write state through the typed message schema (P2-WP2.8).
   endings) → QUST records with stages, log entries, objectives and aliases, plus generated Papyrus stage
   fragments; non-native conditions and actions call ArgoniaCore; tier protection (main > faction > side, old
   0030); nobody is unkillable (old 0138), so every quest has a fail-forward for a dead NPC.
-- Import the 38 staged quests now; the rest are authored in P9.
+- Import the 38 staged quests as inputs: each passes `quest-review` and is rebuilt through `quest-write` before
+  its dialogue (decision 0017 §8); the rest are authored in P9.
+- **Investigation support (decision 0018):** whatever WP4.0 found missing from the imported quest system for
+  evidence-gated topics, presenting evidence and accusation; built whole, since the detectives' line and
+  every MURDER, THEFT and FRAUD quest use it.
 - **Directions generator:** quest givers' directions are written into the journal from the P3 route graph
   ("follow the road west past the broken column, then take the left fork to the river"), checked by a validator
   that walks the described route in data (old 0153).
@@ -289,7 +326,8 @@ PrismaUI views read and write state through the typed message schema (P2-WP2.8).
 - **Acceptance:** L4 scenarios for detection states, a sneak blow, each Owing path, a lock threshold.
 
 ### WP4.18 Factions and reputation
-- 32 factions with ranks as reputation ceilings (associate 0, member 10, senior 40…), reputation −100 to 100,
+- 33 factions (the imported 32 plus the detectives' faction record, decision 0018; its line comes in P9) with
+  ranks as reputation ceilings (associate 0, member 10, senior 40…), reputation −100 to 100,
   crime against a member lowers standing with all; allegiance rites as permanent packages (old 0028); no
   followers.
 - **Acceptance:** L4 scenario joins, rises and is expelled.

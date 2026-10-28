@@ -23,6 +23,8 @@ Rulings inherited from elder-souls-argonia are listed (carry / adapt / drop) in
 - [0014](0014-derived-files-are-made-on-the-players-machine.md) Derived files (FaceGen, LOD, behaviours, timing, menus) are made at runtime or on the player's machine
 - [0015](0015-repo-licence-and-licence-tracking.md) Repo licence (GPL-3.0 code, CC BY-NC-SA content, recommended) and licence tracking
 - [0016](0016-weapon-classes-follow-morrowind.md) Weapon classes follow Morrowind, including crossbows and thrown (provisional)
+- [0017](0017-content-is-written-from-one-source-of-truth.md) Quests, dialogue and text are written from one source of truth, through generated briefs and the quest-write, quest-review and dialogue-write skills
+- [0018](0018-a-detectives-faction.md) A detectives' faction, rival to the Shadowscales and the Night-Reed Chapter, escalating to a grand murder-mystery finale
 
 ## Open owner calls
 

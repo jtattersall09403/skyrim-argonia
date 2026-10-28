@@ -14,6 +14,7 @@ import sys
 import yaml
 
 VOICES = pathlib.Path(__file__).resolve().parents[1] / "dialogue-write" / "voices.md"
+SHAPES = pathlib.Path(__file__).with_name("shapes.yaml")
 
 
 def voice_row(race: str) -> str:
@@ -68,6 +69,24 @@ def main() -> int:
     for con in q["conclusions"]:
         if len(con["clues"]) < 3:
             missing.append(f"conclusion {con['id']}: {len(con['clues'])} clues, needs 3")
+
+    # The sections the quest's shapes and line require (shapes.yaml), and an action in every stage
+    # except an ending or a WONDER (principles/actions.md).
+    routing = yaml.safe_load(SHAPES.read_text())
+    data = q.get("shapeData", {})
+    for shape in q.get("shapes", []):
+        keys = [shape] + ([f"{shape}/{data['theftMode']}"] if shape == "THEFT" and "theftMode" in data else [])
+        for key in keys:
+            if key not in routing["shapes"]:
+                missing.append(f"shape {key}: not in shapes.yaml")
+                continue
+            missing += [f"shapeData.{r}: required by {key}" for r in routing["shapes"][key]["require"] if r not in data]
+    if q.get("line") not in routing["lines"]:
+        missing.append(f"line {q.get('line')!r}: not one of {', '.join(routing['lines'])}")
+    if "WONDER" not in q.get("shapes", []):
+        for s in q["stages"]:
+            if not s.get("ending") and not (s.get("actions") or any(a.get("actions") for a in s.get("approaches", []))):
+                missing.append(f"stage {s['id']}: no actions (principles/actions.md)")
     if missing:
         print("record is not whole; no briefs written:\n  " + "\n  ".join(missing))
         return 1

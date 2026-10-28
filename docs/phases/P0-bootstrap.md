@@ -37,7 +37,9 @@ three.js-specific:
 - `.claude/agents/`: `deliver`, `deliver-small`, `find`, `run`, `check`, `research`, `reader` (keep their
   frontmatter model/effort pattern; rewrite bodies for this repo); `dialogue-lane`, `dialogue-writer`,
   `voice-reader`, `corpus-reader` (copy now, adapt in P4); `place-builder` becomes `world-builder` in P3.
-- `.claude/skills/`: `text-review`, `dialogue-write`, `cost-review`, `routing-audit` (adapt now);
+- `.claude/skills/`: `text-review`, `cost-review`, `routing-audit` (adapt now). `dialogue-write`, `quest-write` and
+  `quest-review` already exist (decision 0017; written from scratch, not copied); re-point their paths at `world/`
+  once WP0.6 lands, and add agents `corpus-find` and `quest-reviewer` as their frontmatter says.
   `journey-author` becomes `scenario-author` in P2 (in-game YAML scenarios for the bridge). Vendor
   universal-modder's `mod-any-game`, `reverse-engineering`, `game-automation` skills and its Bethesda playbook
   plus the field notes named in decision 0010 into `.claude/skills/um-*` with its MIT licence and a credit
@@ -124,7 +126,7 @@ download is not from a package manager), installing:
 - Re-run the old integrity checker (`packages/world-schema/integrity.py`) against the imported copy; port it to
   `tools/argonia_world/integrity.py` and put it in the gate.
 - Import the design docs the later phases cite (stats spec 76, combat and stealth docs, quest docs, dialogue
-  standards, text style guide, lore dossiers) into `docs/design/` unchanged, each with a header line naming the
+  standards, text style guide, lore dossiers and the lore extrapolation) into `docs/design/` unchanged, each with a header line naming the
   source path and commit. Edit them only when a later phase changes the design, and say so in a decision.
 - **Acceptance:** integrity check passes on the imported copy; `docs/design/` link check passes.
 

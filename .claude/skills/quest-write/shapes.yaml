@@ -1,0 +1,32 @@
+# Routing: each quest's primary shape (first in `shapes`) and line type pick the principle files to read and
+# the `shapeData` sections the record must hold. Secondary shapes add their files and sections too.
+# brief.py reads this file: a record missing a required section for its shapes is not whole.
+
+always: [principles/general.md, principles/actions.md]
+
+lines:
+  local: [principles/questlines.md]
+  faction: [principles/questlines.md]
+  main: [principles/questlines.md]
+  daedric: [principles/questlines.md, principles/otherworldly.md]
+  detectives: [principles/questlines.md, principles/investigation.md]
+
+shapes:
+  MURDER:        {read: [principles/investigation.md], require: [timeline, lies, nodes, leads, redHerrings, openQuestions, accusation, endings]}
+  MISSING:       {read: [principles/investigation.md], require: [fate, trail, nodes, leads, openQuestions]}
+  RECKONING:     {read: [principles/investigation.md], require: [timeline, guiltyParties, nodes, leads]}
+  THEFT:         {read: [principles/crime-and-deceit.md], require: [theftMode]}   # theftMode: commit or solve
+  THEFT/commit:  {read: [principles/crime-and-deceit.md], require: [score, sources, onSiteFact, planTexts, routes, failureLadder, escape, aftermath]}
+  THEFT/solve:   {read: [principles/crime-and-deceit.md, principles/investigation.md], require: [ledger, redHerrings, accusation, nodes, leads]}
+  FRAUD:         {read: [principles/crime-and-deceit.md, principles/investigation.md], require: [records, mismatch, victims, ledger, accusation]}
+  SMUGGLING:     {read: [principles/crime-and-deceit.md], require: [cargo, tell, routes, checkpoints, cargoReveal]}
+  DISPUTE:       {read: [principles/social.md], require: [claims, verdicts, revealOrder, aftermath, deadline]}
+  NEGOTIATION:   {read: [principles/social.md], require: [sides, leverage, objections, aftermath]}
+  SUCCESSION:    {read: [principles/social.md], require: [legitimacies, candidates, voteLedger, revealOrder, deadline]}
+  BONDAGE:       {read: [principles/social.md], require: [bondageSheet, costToTheBound, aftermath]}
+  PREDATOR:      {read: [principles/threat-and-journey.md], require: [habit, whyUnsolved, twist, clueChoices, nonCombat, weakSample]}
+  CONTAMINATION: {read: [principles/threat-and-journey.md], require: [source, spread, sign, cure, firstIllLastWell, misdiagnosis, ladder]}
+  EXPEDITION:    {read: [principles/threat-and-journey.md], require: [rumour, route, gate, prize, return, prepHints, pointOfNoReturn, nonLethalFailure]}
+  HAUNTING:      {read: [principles/otherworldly.md], require: [theDead, deathTrace, manifestation, resolutions, wishVsNeed]}
+  RITE:          {read: [principles/otherworldly.md], require: [rite, beats, breakPoints]}
+  WONDER:        {read: [principles/otherworldly.md], require: [image, rule, answer, familiarGround]}

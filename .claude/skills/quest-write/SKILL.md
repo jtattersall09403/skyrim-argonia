@@ -1,62 +1,61 @@
 ---
 name: quest-write
-description: Design or rewrite an Argonia quest as a quest record (hidden truth, cast knowledge, things, clues, stages, endings, topics) from the place and culture data, then build the dialogue briefs from it. Use before any quest dialogue is written, and to rework a quest after review.
+description: Design or rewrite an Argonia quest or questline as a record (hidden truth, cast knowledge, things, clues, actions, stages, endings, topics) from the place, culture and quest data, routed to the principles for its shape and line, then build the dialogue briefs from it. Use before any quest dialogue is written, and to rework a quest after review.
 ---
 
 # Writing a quest
 
-Draft, in practice with the owner. Quests, their dialogue and the world are made consistent by being built
-from one record in a fixed order, not by checking afterwards. The record format is
+**Draft, started 2026-10-27 before the old project was imported.** P4-WP4.0 finishes it against the imported
+quest system (decision 0017). Quests, their dialogue and the world are consistent because they are built
+from one record in a fixed order, not because they are checked afterwards. The record format is
 [quest-record.md](quest-record.md); a worked example is [examples/lh38.yaml](examples/lh38.yaml).
-Evidence for the principles: `docs/research/2026-10-27/quest-design-elder-scrolls.md` and
-`quest-design-open-world-rpg.md` (both from search summaries; the source pages were blocked).
 
-## 1. Read before designing
+## 1. Start from the foundation
 
-- The place record (facts with ids, people roster, things and sockets, routes and landmarks, quest hooks).
-- The culture sheets down to each household: norms, taboos, values, contempts, opinions, never-said.
-- The other quests at the place and its neighbours, so the cast is not double-booked and facts do not clash.
-- The region's danger band (danger is fixed and must be warned of in dialogue).
+- The old project's quest design is the base (0017 §8): an existing quest's premise, cast and beats are kept
+  and improved, with what changed and why in the record's `foundation`. New quests follow the quest index's
+  novelty rule and shape budget.
+- Read: the place record (facts, people, things, routes, landmarks, hooks); the culture sheets to each
+  household; the other quests at the place and its neighbours; the region's danger band; for a line, its line
+  record first.
 
-## 2. Write the record in order
+## 2. Route to the principles
+
+Read `shapes.yaml`: always `principles/general.md` and `principles/actions.md`; the file for the line type
+(`questlines.md`); the file for each shape (primary first). Each shape names the `shapeData` sections the
+record must hold.
+
+| Shapes | File |
+|---|---|
+| MURDER, MISSING, RECKONING, and THEFT or FRAUD to solve | `principles/investigation.md` |
+| THEFT, FRAUD, SMUGGLING | `principles/crime-and-deceit.md` |
+| DISPUTE, NEGOTIATION, SUCCESSION, BONDAGE | `principles/social.md` |
+| PREDATOR, CONTAMINATION, EXPEDITION | `principles/threat-and-journey.md` |
+| HAUNTING, RITE, WONDER, Daedric | `principles/otherworldly.md` |
+
+## 3. Write the record in order
 
 1. **Premise**, one sentence the player could say back afterwards.
-2. **Truth**: what really happened before the player arrives, as numbered physical events (who, where, when,
-   what, why). Write this before any stage.
-3. **Plausibility pass**, event by event and person by person: would a sensible person with this person's
-   wants, fears and knowledge do this? Write the reason down. If the honest answer is no, change the truth,
-   never the person. (The first LH38 failed here: villagers knowingly left a corpse in their own water.)
-4. **Facts**: the new facts the truth creates, each `from` a truth event.
-5. **Cast and knowledge**: for every person and fact, knows, believes (the false version), suspects, hides
-   (with the reason) or ignorant, and how that changes by stage. Knowledge comes only from events the person
-   took part in or was told of.
-6. **Things**: every physical trace the truth leaves and every object the player touches. Use an existing id
-   from the place record, or mark it `new` with where it goes and its state per stage; the world builder
-   places `new` things from these rows.
-7. **Conclusions and clues**: what the player must work out, each with at least three clues in at least two
-   forms (a line, a thing, a place, a behaviour), so one missed clue never strands them (the Three Clue Rule).
-   Each clue is a trace of a truth event, carried by a person or thing in the record.
-8. **Stages**: objective, precondition, postcondition, what the player learns, and directions by landmark,
-   direction and distance (no markers; the journal carries them). At least one stage offers more than one
-   approach (persuade, sneak, fight, pay). Say what happens if a needed person dies (fail-forward).
-9. **Endings**: at least two with real costs on both sides, none presented as the right one. Each says what
-   changes in the world, where the player will see it, and the reward: proportionate to risk and effort,
-   tied to the story (training, a service, goods, standing, a lead onward).
-10. **Topics**: for each person and stage, the topic name, essential or not, the intent, the facts it may
-    state and the facts it hides, and the words that become links. An intent only rephrases its listed
-    facts; anything else it needs becomes a fact first.
-
-## 3. Shape
-
-- A local quest has a hook, at least two lines of enquiry the player can follow in either order, a revelation,
-  a decision and a visible consequence: about five stages over at least three spots.
-- The player investigates or acts; nobody simply hands over the answer.
-- A quest that needs disposition says so in the line that holds back (dialogue-write B09).
+2. **Truth**: numbered physical events (who, where, when, what, why), before any stage.
+3. **Plausibility pass**, person by person: would a sensible person with these wants, fears and knowledge do
+   this? If not, change the truth, never the person.
+4. **Facts** the truth creates, each `from` a truth event or a culture-sheet entry.
+5. **Cast and knowledge**: for every person and fact, knows, believes, suspects, hides (with the reason) or
+   ignorant, and how that changes by stage.
+6. **Things**: every trace and object, with an existing id or a `new` row the world builder places.
+7. **Conclusions and clues**: three clues per conclusion, two forms at least, each a trace of the truth.
+8. **`shapeData`** for each shape, as its principles file says.
+9. **Stages** with conditions in the condition vocabulary, **actions** (`actions.md`), approaches,
+   directions, what the player learns, and fail-forward.
+10. **Endings**: two or more with real costs, where the player sees each, and the rewards.
+11. **Topics**: per person and stage, the intent, the facts it may state and hide, the links it grants. An
+    intent only rephrases its listed facts; anything else becomes a fact first.
 
 ## 4. Hand on
 
-1. Ask for a `quest-review` by a reviewer that has not seen your reasoning (section 1 of that skill).
-2. Revise the record for every finding, or answer it in the record's notes.
-3. Build the briefs: `python3 .claude/skills/quest-write/brief.py QUEST.yaml OUT_DIR --place-facts PLACE.json`.
-   The builder writes nothing until every fact, thing, clue and person resolves.
-4. Hand each brief to `dialogue-write`. When a writer asks for a fact, add it to the record and rebuild.
+1. `quest-review` by the `quest-reviewer` agent, which has not seen your reasoning.
+2. Revise the record for every finding, or answer it in the record.
+3. `python3 .claude/skills/quest-write/brief.py QUEST.yaml OUT_DIR --place-facts PLACE.json` builds one brief
+   per person; it writes nothing while any reference, required `shapeData` section or stage action is missing.
+4. `dialogue-write` (the `dialogue-writer` agent) per brief. A fact request comes back here; add the fact and
+   rebuild the briefs.

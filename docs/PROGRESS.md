@@ -6,7 +6,7 @@ Status: `todo`, `in progress (lane)`, `done (commit)`, `blocked (why)`, `dropped
 | Phase | WP | Title | Status |
 |---|---|---|---|
 | P0 | 0.1 | Repo skeleton and rules | todo |
-| P0 | 0.2 | Ways-of-working tooling | todo |
+| P0 | 0.2 | Ways-of-working tooling | in progress (writing skills drafted: dialogue-write, quest-write, quest-review; 0017) |
 | P0 | 0.3 | No-assets guard and the gate | todo |
 | P0 | 0.4 | Build VM toolchain | todo |
 | P0 | 0.5 | Secrets and game files | todo |
@@ -44,6 +44,7 @@ Status: `todo`, `in progress (lane)`, `done (commit)`, `blocked (why)`, `dropped
 | P3 | 3.9 | The already-built places | todo |
 | P3 | 3.9b | One assembled interior | todo |
 | P3 | 3.10 | Performance pass | todo |
+| P4 | 4.0 | Finalise the writing skills against the imported design (after P0-WP0.6) | todo |
 | P4 | 4.1 | Attributes, skills, formulas | todo |
 | P4 | 4.2 | Skill use, vastei, levels at rest, sitting | todo |
 | P4 | 4.3 | Perk audit (O-4) | todo |
@@ -94,6 +95,7 @@ Status: `todo`, `in progress (lane)`, `done (commit)`, `blocked (why)`, `dropped
 | P8 | 8.5 | Vanilla quarantine complete | todo |
 | P8 | 8.6 | Final look | todo |
 | P9 | — | Region packets (rows added per packet at P7 close) | todo |
+| P7/P9 | 0018 | Detectives' faction: lore pass and line record (P7-WP7.6), cases and finale (P9) | todo |
 | P10 | 10.1 | Release artifacts | todo |
 | P10 | 10.2 | Install paths | todo |
 | P10 | 10.3 | Documentation | todo |

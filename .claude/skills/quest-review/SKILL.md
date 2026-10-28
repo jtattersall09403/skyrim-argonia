@@ -5,7 +5,7 @@ description: Review an Argonia quest record before dialogue is written, as a pla
 
 # Reviewing a quest
 
-Draft. The review is design critique of the record, run before any dialogue exists, so problems are fixed
+Draft (finished in P4-WP4.0 with the imported quest system). The review is design critique of the record, run before any dialogue exists, so problems are fixed
 where they start. It is not the consistency mechanism (that is the record's build order and the brief
 builder); it judges whether the quest is good and believable.
 
@@ -13,7 +13,9 @@ builder); it judges whether the quest is good and believable.
 
 - Run as a fresh agent given only the quest record, the place record, the culture sheets and this skill;
   never the author's reasoning, so the reading is not anchored on it.
-- Read `docs/research/2026-10-27/quest-design-elder-scrolls.md` and `quest-design-open-world-rpg.md`.
+- Read the principle files the record routes to (`quest-write/shapes.yaml`: always `general.md` and
+  `actions.md`, the line's file, each shape's file); their checklists are part of this review. The research
+  packs behind them are in `docs/research/2026-10-27/`.
 
 ## 2. Read it twice
 
@@ -22,7 +24,7 @@ builder); it judges whether the quest is good and believable.
    would I be lost, bored or unrewarded?
 2. **As the designer**, against the checklist below.
 
-## 3. Checklist (answer each yes or no, with the record ids that show it)
+## 3. Checklist (answer each yes or no, with the record ids that show it; then each routed principle file's checklist)
 
 Premise and truth
 1. Can the premise be said in one sentence, and would a sensible person in Black Marsh act as it requires?
@@ -53,9 +55,17 @@ The world
     row, not assumed?
 18. Does anything break Black Marsh in 4E 201: a Nordic element, a vanilla Skyrim reference, the wrong era?
 
+Action and fit
+19. Does almost every stage make the player use a skill, across at least two families, with one stage
+    offering approaches from different families? Is it more than a chain of conversations?
+20. Do the actions follow from the truth and the place, and does a faction quest lean to its profile?
+21. Does each shape's checklist in its principles file pass, and is every required `shapeData` section real
+    rather than filled for form?
+22. Is the quest built on its old design (`foundation`), and is each change from it an improvement?
+
 Text
-19. Will the player understand every name and thing when first met (the brief's player-knows lists)?
-20. Does each topic's intent only rephrase its listed facts?
+23. Will the player understand every name and thing when first met (the brief's player-knows lists)?
+24. Does each topic's intent only rephrase its listed facts?
 
 ## 4. Report
 

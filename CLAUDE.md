@@ -38,6 +38,7 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 - Every system is built to its final interface; content can be thin, systems ship whole.
 - World data lives in `world/` and is generated into records; Spriggit YAML in `plugin/` is reviewed, the ESM is a build output ([0009](docs/decisions/0009-world-content-is-imported-then-generated-into-plugins.md)).
 - Skyrim unit facts live only in the units module.
+- Quests, dialogue and text are written only through `quest-write` → `quest-review` → generated briefs → `dialogue-write`, never by hand or from old lines ([0017](docs/decisions/0017-content-is-written-from-one-source-of-truth.md)).
 - New state lives in ArgoniaCore's co-save; rules live in the pure C++ core with unit tests.
 - Record every dependency and asset in the sourcing register in the same commit that first uses it.
 

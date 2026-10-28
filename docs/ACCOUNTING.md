@@ -73,6 +73,12 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | B9 | Native phone was an option, streaming acceptable | 0007 |
 | B10 | Tropical Skyrim SSE for base assets | 0006 §8 |
 | B11 | VS Code in the browser for working on the VM | 0008 §1; infra/README |
+| B12 | Dialogue reads as Morrowind's; old written lines not used; skill from scratch | 0017 §6–7; `.claude/skills/dialogue-write`; P4-WP4.7 |
+| B13 | Banned constructions (personification, verbless fragments, dangling modifiers, opaque references), British English, disposition hints | `dialogue-write/bans.yaml` and `lint.py`; 0017 |
+| B14 | Any of ten races as speaker or player; address by race, faction, rank | `dialogue-write/voices.md`, SKILL §2 |
+| B15 | Consistent first time across quests, places, dialogue, characters, facts; quest writer and reviewer skills; per-type principles from research | 0017; `.claude/skills/quest-write`, `quest-review`; `docs/research/2026-10-27/quest-*.md`, `questline-design.md` |
+| B17 | Quests have varied skill-based action, by faction profile; output fits the engine; old quest design is the foundation | 0017 §8–9; `quest-write/principles/actions.md`; P4-WP4.0 |
+| B16 | A detectives' faction rival to Shadowscales and Night-Reed, escalating to a murder-mystery finale | 0018; P4-WP4.8, WP4.18; P7-WP7.6; P9 |
 
 ## C. Engine and approach research
 

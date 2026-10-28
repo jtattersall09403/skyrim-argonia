@@ -14,13 +14,13 @@ recorded in `world/IMPORTED_FROM.md`, never silently skipped.
 | `world/sources/placement/` (incl. `accepted-places.json`, `exterior-interior-links.json`, `boats.json`) | acceptance, interior links (38 kit interiors), moorings | `world/sources/placement/` | |
 | `world/sources/registries/` (npcs, factions, items, creatures, quests, locks, loot, traps, pickpocket, detection, hazard-volumes, grave-stakes, creature-harvest, deeds, rumour-pools, markers, physical-materials, trainers, sourcing-register…) | the normalised record set | `world/sources/registries/` | every registry has a named consumer (P4-WP4.21 lists the ones no other WP names) |
 | `world/sources/quests/` | quest lines and stages (main, factions, standalone, proposed, local-<region>) | `world/sources/quests/` | |
-| `world/sources/dialogue/` | place lines, pool, culture sheets, stance, topics, facts, gates, glossary, exemplars | `world/sources/dialogue/` | exemplar corpus is Morrowind text quoted for style reference: keep it private (`$ARGONIA_PRIVATE`), not public, unless its size and use are fair-use-clear (owner decides) |
+| `world/sources/dialogue/` | place lines, pool, culture sheets, stance, topics, facts, gates, glossary, exemplars | `world/sources/dialogue/` (the written lines are imported for reference only and never used as models or shipped, 0017 §7) | exemplar corpus is Morrowind text quoted for style reference: keep it private (`$ARGONIA_PRIVATE`), not public, unless its size and use are fair-use-clear (owner decides) |
 | `world/sources/text/` | journal, books/documents, signs, loading facts, names | `world/sources/text/` | |
 | `world/sources/hydrology/` | hydrology graph (101 rivers, 615 reaches, 2,280 bodies), bodies, corrections | `world/sources/hydrology/` | |
 | `world/sources/routes/` | road legs, travel services (23), harbour and rootworm stations | `world/sources/routes/` | |
 | `world/sources/terrain/` (freeze.json, patches) | hashes and patches of the frozen heightfield | `world/sources/terrain/` | arrays themselves come from R2 (decision 0009 §5) |
 | `world/sources/climate/`, `sky/`, `flora/`, `regions/`, `settlements/`, `sites/`, `demographics/`, `economy/`, `vocab/`, `anchors/`, `audio/` (metadata only) | climate, weather states, stars, flora and groundcover rules, region data, socket vocabulary | same under `world/sources/` | no audio files |
-| `world/sources/lore/` | lore dossiers (era policy, sources) | `world/sources/lore/` | the Morrowind dialogue corpus file: private, as above |
+| `world/sources/lore/` | lore dossiers (era policy, sources), **including `extrapolation/`** (the province state in 4E 201, settlement register, quest-plan deltas; needed by 0018) | `world/sources/lore/` | the Morrowind dialogue corpus file: private, as above |
 | `world/sources/assets/registry-*.jsonl`, `registry-summary.json` | vault inventory (27,929 rows) and pool summary | `world/sources/assets/` | metadata only, no assets |
 | `packages/world-schema/schemas/*.json`, `integrity.py` | 21 schemas and the integrity checker | `world/schemas/`, `tools/argonia_world/integrity.py` | |
 | `packages/ui/src/tokens/palette.ts` | UI palette tokens | `ui/src/tokens/palette.ts` | |
@@ -56,7 +56,7 @@ permission evidence), the old kit manifests used by the kit-id mapper (P1-S4).
 | `.claude/agents/deliver.md`, `deliver-small.md`, `find.md`, `run.md`, `check.md`, `research.md`, `reader.md` | frontmatter pattern (model, effort, tools, omitClaudeMd) and the core instructions | remove three.js/studio/kit specifics; point at this repo's gate and bridge |
 | `.claude/agents/dialogue-lane.md`, `dialogue-writer.md`, `voice-reader.md`, `corpus-reader.md` | as-is in P0, adapted in P4 | output to ArgoniaCore data, not TS packages |
 | `.claude/agents/place-builder.md` | becomes `world-builder` in P3 | Skyrim records, not GLB kits |
-| `.claude/skills/text-review`, `dialogue-write`, `cost-review`, `routing-audit` | adapt | paths |
+| `.claude/skills/text-review`, `cost-review`, `routing-audit` | adapt | paths; **not** `dialogue-write`: ours was written from scratch (0017) |
 | `.claude/skills/journey-author` | becomes `scenario-author` (P2) | bridge YAML scenarios |
 | `.claude/skills/place`, `kit-build`, `kit-mining`, `composite-author`, `modular-runs`, `visual-look` | read for lessons only | three.js kit pipeline; not copied |
 | `tooling/repo-standards/brief_template.py`, `shell_guard.py` (subset), `job_guard.sh` (simplified), `session_tokens.py`, `owner_inbox.py`, `test_word_budget.py` | copy and trim | per decision 0011 |

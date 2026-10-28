@@ -60,10 +60,11 @@ place or district: the Helstrom lesson, old 0133).
    own ground; every building enterable via the plugin's interior or an assembled interior; sockets fulfilled
    (old 0104: promises are fulfilled by placed interactables); cities hand-built by district in 3D (old 0133).
 4. **People** (L1→L4): NPC records, faces (P1 solution), outfits, schedules on the lamp clock, services, factions.
-5. **Dialogue round** (`dialogue-lane` on Sonnet): greetings, topics, per-person opinions over shared facts,
-   barks; voice-reader panels; corpus read every third batch (old process).
-6. **Quests** (L1→L4): stage graphs for the packet's local quests and any faction/main stages anchored here;
-   directions validated against the route graph; journal text; fail-forward for dead NPCs.
+5. **Quests** (decision 0017): each quest anchored here is written or rebuilt through `quest-write` (routed to
+   its shape's principles), reviewed by `quest-review`, and its `new` things handed to step 3's builder; then
+   stage graphs (L1→L4), directions validated against the route graph, fail-forward for dead NPCs.
+6. **Dialogue round** (`dialogue-write` on Sonnet, from generated briefs): greetings, place topics, quest topics,
+   barks, journal text, for every person in the packet.
 7. **Encounters and loot** (L1): creatures and hostiles by band; roaming band table; fixed loot.
 8. **Books and signs** (L1): written to the style guide, text-review.
 9. **Immersion** (gate): every new element enters the inventory compliant.
@@ -80,7 +81,8 @@ place or district: the Helstrom lesson, old 0133).
   three endings CUT / CLAIM / MEND; old 0026/0028) is built across packets in story order, each quest staged when
   its region packet lands; tier protection (main > faction > side; old 0030).
 - The 8 major faction lines (Shadowscales, Night-Reed, Nisswo, Many-Root; Marsh Charter, Sunken Archive,
-  Reed-Sail Compact, League of Open Water) and the compact lines, with allegiance reward tracks (old 0028).
+  Reed-Sail Compact, League of Open Water), the **detectives' line** (decision 0018: cases built in the packets
+  that host them, the finale when its region lands) and the compact lines, with allegiance reward tracks (old 0028).
 - The climax expedition Helstrom → Lost City with the Wamasu guardian (P5 boss) and the named antagonist (duel
   or words).
 

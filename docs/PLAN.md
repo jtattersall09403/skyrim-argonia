@@ -107,6 +107,9 @@ hook/HTML screen). "Deps" are player-downloaded mods (pinned in P2). Source desi
 | Perks | owner C4 | 1 | — | perk audit + records | P4 |
 | Dialogue: topics, hyperlinks, disposition, persuasion | 0139, 0143, 0145, dialogue data | 5 + 6 | PrismaUI | ArgoniaCore topic store + dialogue view | P1 spike, P4 |
 | Quests as data, conditions | 0153, condition vocabulary | 1 + 4 + 5 | — | quest generator + condition evaluator | P4, P9 |
+| Writing quests, dialogue and text (one source of truth, generated briefs) | 0017 | tool | — | skills `quest-write` (record, brief builder, type principles), `quest-review`, `dialogue-write` (bans, voices, linter) | drafted 2026-10-27; finalised in P4-WP4.0 right after the P0 import; used P4, P7, P9 |
+| Investigation support: evidence-gated topics and accusations, journal clue list | 0018 | 5 + 6 | — | ArgoniaCore condition evaluator + journal view | P4 |
+| Detectives' faction line | 0018 | 1 + 4 | — | line record + quest records via the skills | P7 (design), P9 (build) |
 | Journal, directions, no markers | 0137 | 2 + 5 + 6 | Wayfinder (pattern), No Google Maps | directions generator + journal view | P4 |
 | World map, local map | old map styles | 2 + 6 | Flat World Map Framework | map art (UI) + local map view | P4 |
 | UI skin, Pelagiad, HUD, chargen, inventory with paperdoll | 2.2 UI, palette | 1 + 2 + 6 | SkyUI 6, TrueHUD, Infinity UI, PrismaUI | views, our font library (0014 §7) | P4 |
@@ -169,6 +172,8 @@ one game at a time) and orders work by the dependency column.
 - **T-LEGAL** sourcing: every dependency and asset has a sourcing-register row before it is used.
 - **T-OWN** owner check-ins: one packet per milestone, plain English, one check per bullet, how to reply.
 - **T-DOCS** docs stay current: the repo holds the current state, git the history.
+- **T-WRITE** writing: every quest, line of dialogue, journal entry and book is written through the skills in
+  decision 0017's order; no text is written outside it.
 
 ## 6. Phase gates
 
