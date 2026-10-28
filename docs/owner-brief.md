@@ -42,8 +42,8 @@ Something they can **play**, that is:
    the engine elements exist, we're just combining them in new ways and then our value add is the new
    arrangement, story, quests, setting."
 9. **Distribution**: playable only if you own the base game(s). Nothing shipped that we are not supposed to
-   ship (Mudcrab is the cited example of the model). The owner owns **Skyrim SE, Morrowind GOTY, Dark Souls 3
-   and Dark Souls Remastered** on Steam, and other games "if relevant".
+   ship (Mudcrab is the cited example of the model). The owner owns **Skyrim SE, Dark Souls 3 and Dark Souls
+   Remastered** on Steam (Morrowind only on a lost CD, so it is not used: corrected 2026-10-28), and other games "if relevant".
 10. **Devices**: playable on the **Honor Magic V5** phone and a **MacBook Air M2**. Nothing can be installed on
     the Mac (a work machine). Open to workarounds. The owner's idea: assets and engine on a GPU VM, streamed on
     demand to a browser on phone or Mac, which also gives seamless saves across both. The owner asked for a
