@@ -4,6 +4,7 @@
 #   run.sh ps '<powershell>'        run a command
 #   run.sh setup [stage]            copy infra/gpu-box/*.ps1 over and run setup.ps1, rebooting when it asks
 #   run.sh put <local> <remote>     copy a file or directory to the machine
+#   run.sh desktop '<powershell>'   run in the logged-in desktop session (GUI apps, display settings); waits
 #   run.sh start | stop             start or stop the instance
 set -euo pipefail
 export PATH="$HOME/.local/bin:$PATH"
@@ -31,6 +32,17 @@ wait_ssh() {
 case "${1:-}" in
   ip) ip ;;
   ps) shift; ps "$*" ;;
+  desktop)
+    shift
+    printf '%s\n' "$*" > "${TMPDIR:-/tmp}/argonia-desktop.ps1"
+    scp "${SSH_OPTS[@]}" "${TMPDIR:-/tmp}/argonia-desktop.ps1" "Administrator@$(ip):C:/argonia/desktop-job.ps1" >/dev/null
+    ps '$o="C:\argonia\logs\desktop-job.log"; Remove-Item $o -EA SilentlyContinue
+$a=New-ScheduledTaskAction -Execute powershell.exe -Argument "-ExecutionPolicy Bypass -WindowStyle Hidden -Command & C:\argonia\desktop-job.ps1 *> $o; New-Item C:\argonia\logs\desktop-job.done -Force"
+Remove-Item C:\argonia\logs\desktop-job.done -EA SilentlyContinue
+Register-ScheduledTask -TaskName argonia-desktop-job -Action $a -User Administrator -RunLevel Highest -Force | Out-Null
+Start-ScheduledTask argonia-desktop-job
+for ($i=0; $i -lt 240 -and -not (Test-Path C:\argonia\logs\desktop-job.done); $i++) { Start-Sleep 1 }
+Get-Content $o -EA SilentlyContinue' ;;
   put) scp "${SSH_OPTS[@]}" -r "$2" "Administrator@$(ip):$3" ;;
   setup)
     stage="${2:-all}"

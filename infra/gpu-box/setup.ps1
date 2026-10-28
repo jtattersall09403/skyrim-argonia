@@ -151,7 +151,7 @@ size=2
 2\arguments=--auto_run --auto_close -o "$m/mods/Pandora Output"
 2\toolbar=true
 2\ownicon=true
-"@ | Set-Content "$Root\MO2\ModOrganizer.ini" -Encoding UTF8
+"@ | Set-Content "$Root\MO2\ModOrganizer.ini" -Encoding ASCII
   Write-Host "combat: $((Get-ChildItem "$Root\MO2\mods" -Directory).Count) mod folders, skse loader $(Test-Path "$game\skse64_loader.exe")"
 }
 
