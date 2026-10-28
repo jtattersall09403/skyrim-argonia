@@ -106,7 +106,7 @@ decisions or a later owner ruling change them. A row's verdict changes only by a
 | 0146 | magic ships whole: Skyrim hands | Carry | |
 | 0147 | early levels fast | Carry | |
 | 0148 | spell sellers carry a sheet | Carry | |
-| 0149 | the studio plays the game: no modes/flags for game actions | Carry | decision 0022: the studio only observes and teleports |
+| 0149 | combat is part of the normal game, not a separate "fight mode" | Carry (corrected 2026-10-28) | in Skyrim this holds by construction; it never banned debug shortcuts, which agents may use (owner-brief) |
 | 0150 | crafting ships whole | Carry | |
 | 0151 | stealth, crime and locks whole; the Owing | Carry | |
 | 0152 | province-wide climbing from FreeClimb's clips; swim closed; ladders; water stealth | Adapt | FreeClimb runs natively as a dependency; licence-reading waiver ("private, undistributed") **does not carry**: permissions are asked (0003) |
