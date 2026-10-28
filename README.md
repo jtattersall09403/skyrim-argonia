@@ -1,7 +1,7 @@
 # Elder Souls: Argonia (Skyrim SE)
 (Developed and written with Claude Opus 5.5)
 
-A free, non-commercial total conversion for **The Elder Scrolls V: Skyrim Special Edition**, set in Black Marsh,
+A free, non-commercial total conversion mod for **The Elder Scrolls V: Skyrim Special Edition**, set in Black Marsh,
 with Morrowind's systems and spirit, Dark Souls-style combat, climbing, swimming and sailable boats.
 
 **Status:** planning complete; Part 0 (foundation), chunk 0.1, next. See [docs/PLAN.md](docs/PLAN.md) and
