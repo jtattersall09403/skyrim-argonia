@@ -29,8 +29,9 @@ studio, then the game shell, then a build-out in packets.
     built. The old combat was bad, a DS1 parry window is a few frames, and the stream adds tens of
     milliseconds. That is the host risk most likely to change the whole plan, and its fallback (0001: OpenMW)
     is cheap only before the world and systems exist.
-  - **Wasted reuse.** It planned to port the old project's tested, engine-neutral rule code to C++ without
-    asking whether it could run as it is (chunk 0.2, G10).
+  - **Porting the old rule code at all.** It planned to port the old project's rule code to C++. Decision 0026
+    (2026-10-28) settles this the other way: the old code is goal evidence only, and each goal is met with
+    Skyrim's own systems first (0.2 G10's native map).
 
 ## Decision
 
@@ -102,6 +103,6 @@ It is not cheaper when nothing goes wrong; it is insurance, priced like this.
 
 - The P0–P10 phase files are replaced by `docs/phases/0-foundation/` to `4-buildout/`. Every P-number
   reference is rewritten in place.
-- Spike G10 (where the rules run) joins 0.2. Its answer sets how 1.1 builds ArgoniaCore.
+- Spike G10 (where each rule lives, decision 0026) joins 0.2. Its native map sets how 1.1 builds ArgoniaCore.
 - The planner re-estimates the remaining parts from measured cycle times at 0.2 (G8), at Part 1's close, at Part 2's
   close and at 4.1.

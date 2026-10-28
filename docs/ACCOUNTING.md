@@ -87,7 +87,7 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | B24 | The lane that builds a feature tests the feature and its joins in the same loop; no separate seam loops | 0021 §2; loops.md rule 2; every brief's "Joins owned" |
 | B25 | Journeys are headless only: no agent plays the game by looking; no harness or capture rigs | 0021 §3; loops.md rule 5; 0.4 §c (the two runners, schema refuses stills and clips in a journey) |
 | B26 | A studio for agents and the owner: drop in, teleport, test, without the new-game flow | 0022; 0.4 §b; every owner check names a studio scene or place |
-| B28 | Critical review: test the joins and combat feel early; reuse the old tested rule code | 0023 (Part 1 core loop and verdict); 0.2 G10 |
+| B28 | Critical review: test the joins and combat feel early; the old project gives goals and content, every system built natively (owner, 2026-10-28) | 0023 (Part 1 core loop and verdict); 0026; 0.1 §f goals list; 0.2 G10 native map |
 | B29 | Stream vanilla Skyrim to the phone and Mac first, with touch and GameSir controls; stop if unplayable | 0.0 (G0); phases/README dependency table; PLAN §6 |
 | B30 | Review and overhaul the old dialogue and quest tests (many bad) | 0.1 test review; 0.2 G10 counts only keep tests; 2.5 and 2.12 tests built from the review |
 | B31 | Is the one-place core loop actually cheaper than the alternatives? | 0023 "Why the thread is worth its cost" (an insurance cost of about 2–3 weeks; trimmed to the host-risky systems) |
@@ -219,7 +219,7 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | F15 | Content targets: 450–550 quests (0027) vs 550–740 (quest docs) | Open (minor) | 4.2 inventory table; O-18 at 4.1: 450–550 baseline, 550–740 stretch, owner confirms |
 | F16 | 4 creature species without a source | In | 4.2 inventory (redesign or replace) |
 | F17 | Morrowind exemplar dialogue corpus (Bethesda text, a UESP pull; Morrowind not owned on Steam) | Open | private only, never committed (source-map §1, legal-and-sourcing §1); O-21 confirms at 0.1 |
-| F18 | Old TS dialogue/narrative runtime reusable in PrismaUI? | In | 0.2 G5 evaluation |
+| F18 | Old TS dialogue/narrative runtime reusable in PrismaUI? | Out | 0026: old code is goal evidence only; G5 tries tes4skyrim's MorrowindRuntime first |
 
 ## G. Licensing and permissions
 

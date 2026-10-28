@@ -25,7 +25,7 @@ recorded in `world/IMPORTED_FROM.md`, never silently skipped.
 | `packages/world-schema/schemas/*.json`, `integrity.py` | 21 schemas and the integrity checker | `world/schemas/`, `tools/argonia_world/integrity.py` | |
 | `packages/ui/` (src, tests, CSS: tokens, components, focus and viewport models, HUD, map, screens; ~18,400 lines of React 19) | our design system and every screen | `ui/` (1.2, 2.2) | decision 0017; assets only if provenance-clean: `Pelagiad.woff` + OFL (yes), Fal-made map glyphs (yes), `symbols.svg` (split: Fal-made symbols yes; the shapes exported from Skyrim's `hudmenu.gfx` are **not committed** but extracted on the installing machine by the ported `tooling/ui/extract_symbols.mjs`), `flourish-*.webp` (yes: the owner made them with ChatGPT) |
 | Pelagiad font files and licence (from the old repo or OpenMW) | font | `ui/fonts/` | OFL; allowlisted |
-| The engine-neutral rule packages with their tests: `packages/dialogue`, `narrative`, `economy`, `crafting`, `save`, `magic`, `world-time`, `text-catalogue`, and `packages/game-core/src/{stats,crime,factions,inventory,equipment,scheduling,perception,traps,travel,encounters,people,rng,validation}` | the tested rules, for spike G10 | `private/old-packages/` (read-only) until G10 decides; then `rules/` if chosen | **never** `combat`, `ai`, `anim`, `movement`, `locomotion` or render folders (decision 0019); our own code, so no licence issue |
+| The engine-neutral rule packages with their tests: `packages/dialogue`, `narrative`, `economy`, `crafting`, `save`, `magic`, `world-time`, `text-catalogue`, and `packages/game-core/src/{stats,crime,factions,inventory,equipment,scheduling,perception,traps,travel,encounters,people,rng,validation}` | goal evidence for the goals list (decision 0026) | `private/old-packages/` (read-only), never built | **never** `combat`, `ai`, `anim`, `movement`, `locomotion` or render folders (decision 0019); our own code, so no licence issue |
 | The old journey format and runners: `.claude/skills/journey-author/`, `journey.ts`, `seams-session.test.ts`, `apps/game/src/journey.test.tsx` | the journey script format, the starting point for the core runner | read in place by 0.4 | |
 | `docs/research/combat-and-systems/slice-systems-checklist.md` | the slice coverage checklist | `docs/design/slice-systems-checklist.md` (rewritten in 2.17) | |
 | `world/sources/blueprints/place.fixture.proving-ground*.json` | the studio's proving ground | regenerated through 0.5 in 0.4 | studio-only, never reachable in the game |
@@ -75,7 +75,7 @@ permission evidence), the old kit manifests used by the kit-id mapper (0.2 G4).
 
 - `apps/`, `packages/*` code (three.js renderer, R3F, Rapier, ecctrl, studio, game shell), except the data
   and docs listed above, **`packages/ui`**, which is ported (decision 0017), and the engine-neutral rule packages
-  above, which spike G10 may adopt.
+  above, which are read for goals only (decision 0026).
 - `apps/world-studio/public/` (562 MB of converted Skyrim and mod assets): never.
 - `lanes/` (2.3 GB of agent work folders): never; lessons are already in the audits.
 - The Python world-generation pipeline (`tooling/world-generation/`, ~208k lines): not imported; the frozen

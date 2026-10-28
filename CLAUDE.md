@@ -40,10 +40,10 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 - Ghidra is a scalpel: targeted headless scripts for a named question; output stays in `$ARGONIA_PRIVATE`.
 - De-risk first: prove each class of work on a real sample before scaling it; Part 1's thread joins every system before any is built wide (0023).
 - Every system is built to its final interface; content can be thin, systems ship whole; what the player meets is complete.
-- Places are rebuilt natively the Skyrim way from their design; the old project gives content, never machinery ([0026](docs/decisions/0026-places-are-rebuilt-natively-the-skyrim-way.md)).
+- Everything is built natively the Skyrim way: the old project gives goals and content, never machinery; Skyrim's own systems and tools first, used better ([0026](docs/decisions/0026-everything-is-built-natively-the-skyrim-way.md)).
 - World data lives in `world/` and is generated into records; Spriggit YAML in `plugin/` is reviewed, the ESM is a build output ([0009](docs/decisions/0009-world-content-is-imported-then-generated-into-plugins.md)).
 - Skyrim unit facts live only in the units module.
-- New state lives in ArgoniaCore's versioned co-save families; rules live where G10 decided, unit-tested; logic stays out of Papyrus.
+- New state lives in ArgoniaCore's versioned co-save families; rules live where G10's native map put them, unit-tested; logic stays out of Papyrus.
 - Record every dependency and asset in the sourcing register in the same commit that first uses it.
 
 ## Agents and briefs

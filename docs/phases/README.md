@@ -180,7 +180,7 @@ reason.
 | This | before | because |
 |---|---|---|
 | 0.0 G0 (it can be played through the stream) | everything else | if the stream or the controls fail, nothing else is worth building |
-| 0.2 G10 (where the rules run) | 1.1 | it decides how ArgoniaCore hosts the rules |
+| 0.2 G10 (the native map: where each rule lives) | 1.1 | it decides what Skyrim carries and what ArgoniaCore must (decision 0026) |
 | 0.4 studio and runners | every L4 check and owner check after Part 0 | nothing is tested through the new-game flow |
 | 0.1 §i the writing skills fitted to the import | 1.3 onwards (every line and quest) | all text is written through them (decision 0024) |
 | 0.5 pipeline | Part 1 and everything after | records are generated, never hand-made |

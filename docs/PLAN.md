@@ -36,8 +36,9 @@ traced to where it is handled in [ACCOUNTING.md](ACCOUNTING.md).
    built at scale.
 2. **Reuse first, in route order** ([0010](decisions/0010-reuse-first-and-the-running-game-is-the-oracle.md)):
    data → existing mod (player-downloaded) → fork of an open mod → Papyrus → our SKSE code → our deep hook or
-   HTML screen → ask the owner. That includes our own old code: the old project's engine-neutral rule packages
-   run as they are if spike G10 says they can. We never make art beyond UI and minor Fal-made 2D elements,
+   HTML screen → ask the owner. The old project is the guide to goals and the source of content, never of
+   machinery: each goal is met with Skyrim's own systems and existing tools first, used better
+   ([0026](decisions/0026-everything-is-built-natively-the-skyrim-way.md)). We never make art beyond UI and minor Fal-made 2D elements,
    never ship others' files, and never copy decompiled code.
 3. **The running game is the oracle; the studio is how we reach it.** Nothing is done until it passes in game
    with a check that can fail. Every in-game check and owner check starts in the studio, the real game that
@@ -59,8 +60,8 @@ skse/  (CMake, CommonLibSSE-NG, built from Linux)
    core/      pure C++ logic, no Skyrim types, unit-tested natively on Linux
    ArgoniaCore    all new state and the co-save families; calls the rules (stats, vastei, topics, conditions,
                   disposition, Owing, directions, journal); the menu router; PrismaUI bindings
-rules/     the rules host chosen by spike G10: the old project's TypeScript rule packages bundled for an
-           embedded engine, or their C++ port in skse/core/ (combat is always new C++)
+skse/core/ the rules Skyrim's own systems cannot carry (G10's native map), pure C++, unit-tested;
+           written fresh, never ported (decision 0026)
    ArgoniaCombat  DS1 timing windows, i-frames, parry/riposte, backstab, poise, hit zones, stamina table,
                   boss phases; consumes Precision/TDM/OAR/TK Dodge APIs
    ArgoniaBoats   helm sailing (Wind Waker model), boat ownership/moorings/recovery
@@ -80,7 +81,7 @@ spikes/    0.2 spike code (throwaway unless a spike adopts it)
 private/   gitignored: decompiles, dumps, Morrowind/DS reference text, drafts ($ARGONIA_PRIVATE)
 ```
 
-Top-level directories: `world/ tools/ plugin/ skse/ rules/ papyrus/ ui/ data/ installer/ infra/ tests/ tooling/
+Top-level directories: `world/ tools/ plugin/ skse/ papyrus/ ui/ data/ installer/ infra/ tests/ tooling/
 spikes/ docs/` plus gitignored `out/ build/ private/`.
 
 **Derived files** (FaceGen, LOD, behaviours, animation timing, menu patches) are made at runtime or by the
@@ -137,7 +138,7 @@ column is Part 1's thread; "whole" is the chunk that completes it.
 | Vegetation | flora rules, groundcover rules | 1 | BM&V, **Tropical Skyrim SSE (78044)** (0006 §8) | scatter converter | 2.W4 |
 | The studio, scenes, the two runners | old 0149, 0155, 0156 | 5 + 6 | PrismaUI | ArgoniaBridge, ArgoniaStudio, `tools/run_journey.py` | 0.4 |
 | Game state, co-save, message schema, menu router | old 2.1 seam | 5 | — | ArgoniaCore | 1.1 |
-| Where the rules run | old `packages/*` (engine-neutral TS) | 5 | QuickJS-ng (if chosen) | `rules/` or `skse/core/` | 0.2 G10 → 1.1 |
+| Where each rule lives | the goals list (old designs as goals, 0026) | 1 → 5 | Skyrim's native systems, tes4skyrim's runtimes, PLAN §4 mods | the native map, `skse/core/` for what is left | 0.2 G10 → 1.1 |
 | NPCs, whole-body templates, schedules, factions | the old people carried over (0026 §6), 0138 lamp clock, 0028 | 1 (+FaceGen for unique faces) | — | ArgoniaGen, AI packages | 0.2 G4 → 2.4 |
 | Fixed danger D0–D5, roaming bands, respawn on rest | 0004, 0142, 76 §128 | 1 + 4 | — | encounter zones, spawner | 1.4 → 2.7 §j |
 | Attributes, 27 skills, formulas | 76 §116–122 | 2 + 5 | Custom Skills Framework | ArgoniaCore stats | 1.3 (whole) |
@@ -226,8 +227,8 @@ The three go/no-go moments:
 - **Mounts, fire spreading, tide gating, the river-pirate system, drifting settlements, survival needs,
   bleedout** (cut in the old project, 0039/0042) and **boats chasing boats** (cut in 0026).
 - **The old three.js renderer, streaming, LOD, light-field, kit-compression, Pages deploy and phone-frame
-  work** (three.js-specific; see [inherited-rulings.md](inherited-rulings.md)). The old rule packages are
-  not in this list: spike G10 decides whether they run here as they are.
+  work** (three.js-specific; see [inherited-rulings.md](inherited-rulings.md)). The old rule packages too:
+  they are goal evidence only (decision 0026).
 - **Multiplayer, monetisation, crowdfunding** (EULAs and the owner's "free" rule).
 - **Any FromSoftware asset or moveset** (0004) and **any decompiled code** (0003).
 - **Sea of Thieves, BotW, Wind Waker binaries**: studied only from talks and public docs (anti-cheat,
