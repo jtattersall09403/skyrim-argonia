@@ -18,19 +18,19 @@ people have figured a lot out already").
 1. **Vendor and use universal-modder's skills** in `.claude/skills/um/` (MIT licence and credit kept; adapted only
    where paths or this repo's rules require), and use them wherever they fit:
 
-   | Skill | Used for | Phases |
+   | Skill | Used for | Chunks |
    |---|---|---|
    | `share-field-notes` | **search the knowledge base before any system work** (the field notes are prior art) | every WP |
-   | `game-recon` | fingerprinting Skyrim's install, loaders, saves; DSR's install and offline safety | P0, P1 |
+   | `game-recon` | fingerprinting Skyrim's install, loaders, saves; DSR's install and offline safety | 0.1, 0.2 |
    | `game-research-websearch` | archive-aware research of mods, tools and dead forum threads | all research |
-   | `reverse-engineering` | DSR data and targeted native questions; Skyrim questions CommonLib does not answer; file formats | P1-S6/S7, P5 |
-   | `game-automation` | launching and driving Skyrim and DSR, screenshots, input, recording | P1, P2-WP2.4, P5 |
+   | `reverse-engineering` | DSR data and targeted native questions; Skyrim questions CommonLib does not answer; file formats | 0.2 G6/G7, 1.4, 2.7 |
+   | `game-automation` | launching and driving Skyrim and DSR, screenshots, input, recording | 0.2, 0.4, 1.4, 2.7 |
    | `mod-any-game` | the overall loop (cheapest route, journal, slice, verify in the real game, record) | every system |
-   | `mashup-mods` | cross-game rules: transplant a mechanic, parity documents, list every substitution | P5, P6 |
-   | `port-a-mod` | porting open-licence mods we fork (FreeClimb, Chocolate Poise reference, Sailable Ship) | P5, P6 |
-   | `asset-pipeline`, `fal-assets` | minor 2D UI art, icons, map, loading paintings | P4, P8 |
-   | `publish-mod` | pre-release lint (no game files, no decompiled code, no keys), README, credits, AI disclosure | P10 |
-   | `showcase-video` | owner packet clips and the release video | P7–P10 |
+   | `mashup-mods` | cross-game rules: transplant a mechanic, parity documents, list every substitution | 2.7, 2.13, 2.15 |
+   | `port-a-mod` | porting open-licence mods we fork (FreeClimb, Chocolate Poise reference, Sailable Ship) | 2.7, 2.13, 2.15 |
+   | `asset-pipeline`, `fal-assets` | minor 2D UI art, icons, map, loading paintings | 1.2, 2.2, 3.1 |
+   | `publish-mod` | pre-release lint (no game files, no decompiled code, no keys), README, credits, AI disclosure | 3.4, 4.6 |
+   | `showcase-video` | owner packet clips and the release video | 2.17 onward |
 
 2. **Use its agent pattern**: its orchestrator / game worker / offline worker split maps onto ours (the planner;
    the one lane holding the GPU-box lock, the only one that touches the running game; build-VM lanes that study
@@ -38,10 +38,10 @@ people have figured a lot out already").
    files is our planner's rule.
 3. **Install and use the `um` CLI** on the build VM where it helps (`um kb search`, `um scan`, `um backup` for DSR
    saves, `um publish check`), adapting Windows-only commands to our Linux/Proton machines or skipping them.
-4. **Read these field notes before the work they bear on** (each is cited in the matching phase): Skyrim:
-   `rebuilding-a-cut-gatekeeper-with-generated-plugin-records…` (P4 quests/dialogue); DSR:
-   `porting-dark-souls-remastered-enemies-into-elden-ring` (P5) and `portal-gun-prototype-via-dinput8-proxy-dll…`
-   (P1-S6, DSR camera and proxy-DLL facts); techniques: `oracles-how-agents-know-a-mod-works`,
+4. **Read these field notes before the work they bear on** (each is cited in the matching chunk brief): Skyrim:
+   `rebuilding-a-cut-gatekeeper-with-generated-plugin-records…` (1.6, 2.5, 2.12 quests and dialogue); DSR:
+   `porting-dark-souls-remastered-enemies-into-elden-ring` (2.7) and `portal-gun-prototype-via-dinput8-proxy-dll…`
+   (0.2 G6, DSR camera and proxy-DLL facts); techniques: `oracles-how-agents-know-a-mod-works`,
    `prove-your-replay-bench-can-fail…`, `when-the-first-real-run-fails-suspect-the-oracle…`,
    `driving-a-game-from-a-mod-side-command-file…`, `driving-real-games-safely`,
    `a-force-quit-pc-game-relaunch-wedges-as-an-unkillable-zombie`, `recording-game-footage`,
@@ -64,5 +64,5 @@ people have figured a lot out already").
 
 ## Consequences
 
-- P0-WP0.2 vendors the skills and agents; P0-WP0.4 installs `um`, pyghidra-mcp and ReVa; `brief_template.py` gains
+- 0.1 vendors the skills and agents; 0.1 installs `um`, pyghidra-mcp and ReVa; `brief_template.py` gains
   the "Prior art" field.

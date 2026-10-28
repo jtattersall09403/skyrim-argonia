@@ -33,11 +33,11 @@ live (since Nov 2022) though it has no client anti-cheat.
    player's own clips only if needed), never by shipping edited clips. No
    FromSoftware-derived movesets (several Nexus packs are DS3/ER rips: excluded whatever their Nexus page says).
 6. **Verification:** every window edge in game is within ±1 DS1 frame (33 ms, aim 16 ms) of the golden table,
-   checked by the scripted test dummy at capped 30 and 60 fps (P5).
+   checked by the scripted test dummy at capped 30 and 60 fps (1.4, 2.7 §f).
 
 ## Consequences
 
-- The 13/11/9 question is first answered by P1 gate G6 and confirmed (with the full table) in P5-WP5.1; the
+- The 13/11/9 question is first answered by gate G6 (0.2) and confirmed (with the full table) in 2.7 §b; the
   result is written back here.
 - Decision 0019 widens this record: DSR specifies the whole combat system, not only timings; nothing of the old
   project's combat (code, constants, animation choices) is inherited.

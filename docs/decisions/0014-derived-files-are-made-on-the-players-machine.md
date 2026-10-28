@@ -17,23 +17,23 @@ converted material from the user's own games") is the community precedent: toler
    dependency mod that does it at runtime); (b) author our own original file from scratch (allowlisted, our
    copyright); (c) generate it on the player's machine with the installer from their own files; never (d) ship
    a derived file.
-2. **Animation timing (P5):** (a) runtime: our SKSE plugin scales playback speed inside measured windows (graph
+2. **Animation timing (1.4, 2.7):** (a) runtime: our SKSE plugin scales playback speed inside measured windows (graph
    variables, Payload Interpreter/AMR, animation-event-driven speed changes) and opens/closes our own timing
    windows from animation events, so DS1 timings are met without editing clips; (c) if a window cannot be met at
    runtime, an **install-time patcher** applies our annotation/timing deltas (a small diff we author) to the
-   player's own copy of the clip. Proven in P1 gate G9 on one roll, one attack and one parry.
-3. **FaceGen (P1-S4, P9).** Skyrim's engine does draw faces itself, but for NPCs it draws them from FaceGen files
+   player's own copy of the clip. Proven in gate G9 (0.2) on one roll, one attack and one parry.
+3. **FaceGen (0.2 G4, 2.4, 4.2).** Skyrim's engine does draw faces itself, but for NPCs it draws them from FaceGen files
    the Creation Kit pre-bakes per NPC (a head mesh and a tint texture); an NPC without them gets the "dark face"
    bug. Only the player's face is built live (the race menu). So: (a) **template NPCs** (TPLT) that reuse the
    faces Skyrim and our dependency mods already ship (no new files: the default for most of Argonia's cast);
    (c) for unique faces, an installer step that generates heads from the player's own head parts. Chosen in G4.
-4. **LOD (P3-WP3.8).** Skyrim's engine draws distant land and objects itself, but from pre-generated LOD files
+4. **LOD (2.W4).** Skyrim's engine draws distant land and objects itself, but from pre-generated LOD files
    per worldspace; a new worldspace has none, so its distance would be empty. **Terrain LOD meshes** are built
    only from our own heightfield, so they are our data and may ship; **terrain LOD textures** are made from land
    textures (Tropical Skyrim, mods, vanilla), so the installer generates them with xLODGen (light). Object/tree LOD: the
    installer runs DynDOLOD or ships only our own LOD *settings*, with documented RAM/time; for the owner's GPU box
    we run it there. If player-side object LOD is too heavy, ship without object LOD and record the visual loss.
-   Measured in P3-WP3.8.
+   Measured in 2.W4.
 5. **Behaviours:** Pandora runs on the player's machine (already the plan).
 6. **Silent voice lines:** (a) the PrismaUI dialogue view shows text without audio; for any line still on the
    vanilla path, the **Fuz Ro D-oh** dependency (runtime silent-line timing) instead of generated files.
@@ -46,10 +46,10 @@ converted material from the user's own games") is the community precedent: toler
 8. **UI symbols from Skyrim** (sneak eye, map pins, button glyphs): extracted by the installer from the player's
    own `Skyrim - Interface.bsa` (decision 0017 §5).
 9. **The guard** stays strict: only allowlisted files of our own making pass; release file lists are checked
-   (P10-WP10.1); installer outputs never enter the repo or a release.
+   (3.4); installer outputs never enter the repo or a release.
 
 ## Consequences
 
-- The installer (P2-WP2.3, P10-WP10.2) grows steps: FaceGen (if needed), LOD, behaviours, animation patcher (if
+- The installer (0.3, 3.4) grows steps: FaceGen (if needed), LOD, behaviours, animation patcher (if
   needed), SWF patches (if any). Each is a scripted, logged, re-runnable step on the player's machine.
 - The owner's GPU box is installed by the same installer, so it exercises the player path.

@@ -19,11 +19,11 @@ assets-creatures §3, skyrim-tooling §4, engine-feasibility §3) and decisions 
 Bandai Namco's EULA forbids reverse engineering and derivative works; reading and measuring our own copy for
 knowledge is the low-risk part; copying is excluded. Bethesda's Creation Kit EULA: personal, non-commercial,
 for use with the product, for owners of authorised copies; ZeniMax receives a licence to the mod; a "not made,
-distributed or supported by ZeniMax" notice is required (P10). SKSE-style plugins have been tolerated for over
+distributed or supported by ZeniMax" notice is required (3.4). SKSE-style plugins have been tolerated for over
 ten years. Steam: personal, non-commercial use; streaming one's own copy to oneself fits; no one else uses the
 owner's stream. DRM is never bypassed (no Goldberg or similar emulators).
 
-## 2. Permissions to request (owner calls O-17 then O-5; drafts in P2-WP2.2)
+## 2. Permissions to request (owner calls O-17 then O-5; drafts in 0.3)
 
 First check what the owner already holds: the old project records owner-held permission from every author in its
 pool (2026-09-24, KotM included; old settlement-kit sourcing log). Confirm with the owner whether that permission

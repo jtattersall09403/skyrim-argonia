@@ -21,14 +21,14 @@ quests and dialogue that way. The CK also ships things we need regardless of how
    the work reviewable, repeatable and agent-friendly. The CK is never the place where content is authored.
 3. **What the CK is used for** (each a scripted job, never hand work):
    - **Papyrus compiling:** the reference `PapyrusCompiler.exe` and the base script sources (`Scripts.zip`) ship
-     with the CK; our scripts compile against them (P2-WP2.5). This alone makes the CK required.
+     with the CK; our scripts compile against them (0.5). This alone makes the CK required.
    - **Checking our plugin:** loading `Argonia.esm` in the CK under Wine/Xvfb and reading its warnings log is an
      extra L1 check (data errors the CK reports at load).
-   - **Navmesh** (P1-S4 option b, P3-WP3.4): the CK's generator driven by a GUI macro (xdotool on Xvfb), its output
+   - **Navmesh** (0.2 G4 option b, 2.W4): the CK's generator driven by a GUI macro (xdotool on Xvfb), its output
      captured back to Spriggit, wherever our own Recast converter is not good enough.
-   - **FaceGen export** for development and the owner's GPU box (P1-S4), if templates do not cover a face; for
+   - **FaceGen export** for development and the owner's GPU box (0.2 G4), if templates do not cover a face; for
      players, the installer's own step (decision 0014 §3).
-   - **Water flowmaps** (P1-S7) if we cannot generate them ourselves.
+   - **Water flowmaps** (0.2 G7) if we cannot generate them ourselves.
    - **Previews:** the CK's render window as a quick still check of a cell, when the game itself is not needed.
 4. **How Claude interfaces with it:** through files (plugins in, logs out), its command-line switches
    (`-GenerateLips` and similar where they exist), and GUI automation scripts on a virtual display with

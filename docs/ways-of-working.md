@@ -13,7 +13,7 @@ How the planner and its agents build Argonia. Inherited from elder-souls-argonia
   jobs to `run`, judgement of images and prose to `reader`.
 - **Agents** (in `.claude/agents/`, model and effort set only in their frontmatter): `deliver` (Opus, builds a
   packet from a brief), `deliver-small` (Sonnet, a bounded change with a quick acceptance), `world-builder`
-  (from P3), `find`, `run`, `check` (Haiku), `research`, `reader` (Sonnet), the dialogue agents (Sonnet).
+  (from 2.W5), `find`, `run`, `check` (Haiku), `research`, `reader` (Sonnet), the dialogue agents (Sonnet).
 
 ## 2. Briefs
 
@@ -29,19 +29,25 @@ steps with file:line, reds). A lane whose diff passes **1,500 changed lines** ru
 Agents return at most 25 lines (outcome, changes, measurements, failures, recommendations); the full report
 goes to the report path.
 
-## 3. Loops and the ladder (decision 0021; full text in [loops.md](loops.md))
+## 3. Loops, the ladder and the studio (decisions 0021, 0022; full text in [loops.md](loops.md))
 
-Work is checked by **fast focused loops with eyes**, one per feature subset and one per seam, each block at the
-cheapest rung that reliably proves it, composed once:
+Work is checked by **fast focused loops with eyes**. The lane that builds a feature subset tests the subset and
+its joins to what is already built in the same loop; each block at the cheapest level that reliably proves it,
+composed once:
 
 | Level | What | Where | Example |
 |---|---|---|---|
 | L1 data | schemas, integrity, generated-record checks, Spriggit round trip, direction validator, CK load log | build VM | every NPC has a home cell |
-| L2 logic and simulation | unit tests of the C++ core and Python tools; core simulations of our own systems' joins with no game | build VM | a duel by time stream; a quest walked stage by stage |
+| L2 logic and the core runner | unit tests of the rules and tools; the core runner playing a journey against our systems with no game | build VM | a duel by time stream; a quest walked stage by stage |
 | L3 still (off-game) | PrismaUI views in headless Chrome against mock JSON; readers on stills | build VM | dialogue view shows hyperlinks at every viewport |
-| L4 in game, staged | staged scenes through ArgoniaBridge on the GPU box: state reads, event timestamps, in-game stills read by readers | GPU box | roll i-frames within ±1 frame; a place's vantage stills |
-| L5 filmed seam | a 3–8 s clip (or side by side with DSR), read frame by frame, **only with a stated reason** | GPU box | a transition's feel |
-| L6 owner | the owner plays a packet through the stream | owner | slice playthrough |
+| L4 in game, from a studio scene | a scene applied in the studio; the game runner's state reads and event timestamps; fixed-vantage stills read by readers | GPU box | roll i-frames within ±1 frame; a place's vantage stills |
+| L5 short clip | a 3–8 s clip (or side by side with DSR), read frame by frame, **only with a stated reason** | GPU box | a transition's feel |
+| L6 owner | the owner plays in the studio (Parts 0–2) or the real game (Parts 3–4) through the stream | owner | the slice playthrough |
+
+**The studio** (0022) is the real game with a dev panel that boots straight into any place from a scene file, and
+that only observes and teleports. Every L4 check and every owner check starts there; nothing is tested through the
+new-game flow. **Journeys are eyeless** (0021 §3): one script on the core runner and the game runner, state and
+events only, teleport between short steps, no stills, no clips, no agent playing by looking.
 
 Rules (old 0149/0155/0156 and universal-modder's oracle rules): test the shipped path (no debug mode stands in
 for a game action); the running game is the oracle for behaviour; prove the screenshot oracle is live (two
@@ -58,21 +64,22 @@ is lost at a context hand-off.
 
 `make check` (≤ 3 minutes, one command, every red in one summary) is the only gate; CI runs the same command.
 It contains the no-assets guard, lint and unit tests, UI harness tests, schema/integrity checks, Spriggit round
-trip, regenerate-twice-no-diff, the immersion coverage check (from P7), link checks and the CLAUDE.md word
+trip, regenerate-twice-no-diff, the immersion gate (binding from 2.17), link checks and the CLAUDE.md word
 budget. A new check earns its place by catching a real defect, and is made to fail on purpose once. Stale
 generated data is the commonest red: regenerate, never hand-edit generated files.
 
 ## 5. Owner check-ins
 
 `tooling/owner_inbox.py --post` opens a GitHub issue labelled `owner-check-in`: plain English, one check per
-bullet, what to try and where (a save on the GPU box, a start link), how to reply (comment on the issue; the
+bullet, what to try and where (a studio scene or place by name), how to reply (comment on the issue; the
 owner may also reply in a Claude chat), the open owner calls, and the week's costs (AWS month-to-date, Claude
 usage). Nothing measurable is sent to the owner.
 
 **Blocker vs polish** (old rule): a blocker is something the player cannot do (stuck, falls through, crash,
 lost save, unreachable control) or sees at the normal play camera in normal play (floating, a limb through a
 wall, a visible pop, a Nordic element). Everything else is polish: one quick fix, then the backlog
-(`docs/phases/backlog.md`, created in P0-WP0.1), never a relaunch.
+(`docs/phases/backlog.md`, tagged `P1 before-scale`, `P2 rolling` or `P3 final`; [phases/README.md](phases/README.md)), never
+a relaunch.
 
 **The repo is public, so check-in issues are too.** Issues carry no secrets, no start links, no stream URLs, no IP
 addresses and no Lambda or console links; those reach the owner privately (a secret gist via `gh gist create` without
@@ -99,7 +106,7 @@ lines Claude Code is configured to add. Never rewrite pushed history.
 ## 8. Docs
 
 The repo holds the current state, git the history: rewrite in place, delete the superseded, no `v1`/`legacy`
-twins. Decisions hold the why; phase files hold the work; PROGRESS holds status; research holds evidence.
+twins. Decisions hold the why; chunk briefs hold the work (written just in time, nothing dropped: 0023 §7); PROGRESS holds status; research holds evidence.
 CLAUDE.md holds only binding one-line rules under its word budget.
 
 ## 9. Lessons from the old project to keep in mind

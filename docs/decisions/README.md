@@ -26,32 +26,35 @@ Rulings inherited from elder-souls-argonia are listed (carry / adapt / drop) in
 - [0017](0017-our-own-original-ui-ported-from-the-old-repo.md) Our own original UI and HUD, ported from the old project's React design system; one holistic UI with eyes on every transition
 - [0019](0019-combat-is-rebuilt-from-ds1-not-ported-from-the-old-project.md) Combat is rebuilt from Dark Souls Remastered (whole system, wired to our stats), not ported from the old project
 - [0020](0020-reuse-others-methods-universal-modder-and-ghidra-tooling.md) Reuse others' methods: universal-modder's skills, agents and field notes; agent-ready Ghidra tooling (ReVa, pyghidra-mcp)
-- [0021](0021-fast-focused-loops-and-the-ladder.md) Fast focused loops with eyes, for features and seams, on the cheapest rung of the ladder (old 0155/0156, rebuilt for this infrastructure)
+- [0021](0021-fast-focused-loops-and-the-ladder.md) Fast focused loops with eyes on the cheapest rung of the ladder; one lane tests a feature and its joins; journeys are eyeless on two runners
+- [0022](0022-the-studio-boots-into-any-place.md) The studio: a dev build of the game that boots into any place, for agents and the owner; it only observes and teleports
+- [0023](0023-five-parts-de-risk-first.md) Five parts, de-risk first: foundation, the core loop (the host go/no-go), the slice in two tracks, the shell, the build-out
 - [0018](0018-the-creation-kit-is-a-tool-not-the-workflow.md) The Creation Kit is installed and used as a scripted tool; records are written by code
 
 ## Open owner calls
 
-Calls only the owner can make. The planner raises each in an owner check-in when its phase reaches it, with a
+Calls only the owner can make. The planner raises each in an owner check-in when its chunk reaches it, with a
 recommendation; the answer is recorded in the named record (or a new one) and the row is struck through.
 
 | Id | Call | Needed by | Recommendation |
 |---|---|---|---|
-| O-1 | Fate of the old elder-souls-argonia EC2 machine (stopped; ~$23/month for its 250 GiB disk) | P0 | Snapshot the disk to S3, then delete the volume; keep the R2 vault |
-| O-2 | Subscription: 5x now, 20x from P9 | P0, P9 | 0013 |
-| O-3 | Confirm the pinned runtime chosen in P1 | P1 end | 0002 rule |
-| O-4 | Perks: invisible engine layer only, or a visible Morrowind-flavoured perk layer merged with vastei | P4 | Invisible layer (0005 C4) |
-| O-5 | Send permission requests to mod authors (drafted by agents, sent from the owner's Nexus/ModDB account): Black Marsh & Valenwood (dalecallen1987), MihailMods, Tropical Skyrim (Soolie) and its SSE port (78044), King of the Murkmire (pancake0723; AI clause), Xanmeer tileset (NorthwindBlue, DarthVitrial), Sign of Cipactli (URL unknown), Tamriel Worldspaces – Argonia (118678) | P2 | Send all in one batch early; build only on cleared mods |
-| O-6 | Nexus Premium (needed for scripted API downloads; otherwise each download is a manual click) | P1 | Use Premium for the build and GPU machines if already held; otherwise one manual download session, cached to S3/R2 |
-| O-7 | Steam login on the GPU box (Steam Guard approval on the owner's phone, once) | P1 | Owner logs in through the stream once; then offline mode |
-| O-8 | Music source: CC-licensed, commissioned, or Fal-generated (AI clause interactions) | P8 | CC-licensed first, Fal for gaps |
-| O-9 | Split pauldrons/gauntlets if no sourced split meshes exist | P4 | Accept paired pieces in separate slots |
-| O-10 | Slice region and opening (default: the opening work camp near Stormhold / Alten Corimont, as in the old main quest) | P7 | Default |
-| O-11 | Voice: stay unvoiced text dialogue (old 0139/0143) | P4 | Yes |
+| O-1 | Fate of the old elder-souls-argonia EC2 machine (stopped; ~$23/month for its 250 GiB disk) | 0.1 | Snapshot the disk to S3, then delete the volume; keep the R2 vault |
+| O-2 | Subscription: 5x now, 20x from Part 4 | 0.1, 4.1 | 0013 |
+| O-3 | Confirm the pinned runtime chosen in 0.2 | 0.2 end | 0002 rule |
+| O-4 | Perks: invisible engine layer only, or a visible Morrowind-flavoured perk layer merged with vastei | 2.1 (asked in 1.8) | Invisible layer (0005 C4) |
+| O-5 | Send permission requests to mod authors (drafted by agents, sent from the owner's Nexus/ModDB account): Black Marsh & Valenwood (dalecallen1987), MihailMods, Tropical Skyrim (Soolie) and its SSE port (78044), King of the Murkmire (pancake0723; AI clause), Xanmeer tileset (NorthwindBlue, DarthVitrial), Sign of Cipactli (URL unknown), Tamriel Worldspaces – Argonia (118678) | 0.3 | Send all in one batch early; build only on cleared mods |
+| O-6 | Nexus Premium (needed for scripted API downloads; otherwise each download is a manual click) | 0.2 | Use Premium for the build and GPU machines if already held; otherwise one manual download session, cached to S3/R2 |
+| O-7 | Steam login on the GPU box (Steam Guard approval on the owner's phone, once) | 0.2 | Owner logs in through the stream once; then offline mode |
+| O-8 | Music source: CC-licensed, commissioned, or Fal-generated (AI clause interactions) | 2.16 | CC-licensed first, Fal for gaps |
+| O-9 | Split pauldrons/gauntlets if no sourced split meshes exist | 2.3 (asked in 1.8) | Accept paired pieces in separate slots |
+| O-10 | Slice region and opening (default: the opening work camp near Stormhold / Alten Corimont, as in the old main quest) | 3.3 | Default |
+| O-11 | Voice: stay unvoiced text dialogue (old 0139/0143) | 1.8 | Yes |
 | O-12 | Old repo's GitHub Pages build exposes converted assets publicly (outside this repo's scope) | any time | Owner's choice; flagged only |
-| O-14 | Repo licence (decision 0015) | P0 | GPL-3.0-or-later code, CC BY-NC-SA 4.0 content |
+| O-14 | Repo licence (decision 0015) | 0.1 | GPL-3.0-or-later code, CC BY-NC-SA 4.0 content |
 | ~~O-15~~ | ~~Crossbows and thrown weapons back in~~ | — | **Answered 2026-10-27: yes** (decision 0016) |
-| O-16 | Does one rest bank one pending level or all of them (left open by old 0147) | P4 packet 1 | One per rest (the old 76 text) |
-| O-17 | Evidence of the permissions the owner already holds (old sourcing log, 2026-09-24: "permission is held from every mod author in the pool, KotM included"): do they cover a public dependency and AI use? | P2 | Share the evidence; send new requests only where it falls short |
-| O-18 | Quest target at maturity: 450–550 (old 0027) or 550–740 (old quest docs) | P9 | 450–550 baseline, 550–740 stretch |
-| O-19 | Contribute our working ports back to universal-modder's knowledge base as scrubbed field notes (decision 0020 §7) | P5 onward | Yes, after the owner sees each note |
-| O-13 | Public name: "Argonia" overlaps Tamriel Rebuilt's planned territory and the dormant Beyond Skyrim: Argonia; release title and Nexus wording must not imply either | P10 | "Elder Souls: Argonia" or similar, with a "not affiliated" line |
+| O-16 | Does one rest bank one pending level or all of them (left open by old 0147) | 1.8 | One per rest (the old 76 text) |
+| O-17 | Evidence of the permissions the owner already holds (old sourcing log, 2026-09-24: "permission is held from every mod author in the pool, KotM included"): do they cover a public dependency and AI use? | 0.3 | Share the evidence; send new requests only where it falls short |
+| O-18 | Quest target at maturity: 450–550 (old 0027) or 550–740 (old quest docs) | 4.1 | 450–550 baseline, 550–740 stretch |
+| O-19 | Contribute our working ports back to universal-modder's knowledge base as scrubbed field notes (decision 0020 §7) | 2.7 onward | Yes, after the owner sees each note |
+| O-13 | Public name: "Argonia" overlaps Tamriel Rebuilt's planned territory and the dormant Beyond Skyrim: Argonia; release title and Nexus wording must not imply either | 3.4 | "Elder Souls: Argonia" or similar, with a "not affiliated" line |
+| O-20 | Publish the slice as early access once the stranger's install is clean | 3.5 | Yes: real players find install problems no test machine does |

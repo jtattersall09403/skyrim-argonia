@@ -32,7 +32,7 @@ Argonia repo"; "HUD I want to be our own new original version like in the other 
    and the Owing, lockpick threshold, pickpocket, books and notes, character creation, pause menu, settings,
    load/save (rest-only rules), loading screens and the main menu where PrismaUI can draw them, and the whole HUD.
 2. **Porting order:** the design system first (tokens, components, focus and viewport models), then the HUD, then
-   screens in the order P4 needs them. The old tests (vitest) come along and run in the L3 harness.
+   screens in the order the core loop (1.2) and the slice (2.2) need them. The old tests (vitest) come along and run in the L3 harness.
 3. **Data layer:** a typed message schema (`ui/schema/`) replaces old `@elder-souls/game-core` and
    `text-catalogue` imports; ArgoniaCore supplies state and receives actions.
 4. **Vanilla menus that remain** (only those with no player-facing role in Argonia, or engine-owned ones we
@@ -63,13 +63,13 @@ Argonia repo"; "HUD I want to be our own new original version like in the other 
    activation prompts, the loading menu, the console) are suppressed, replaced or restyled. A dedicated UI lane
    designs holistically, and focused loops put "eyes on" every transition: recorded L5 clips of each transition
    (stated reason: motion and hand-off cannot be judged from stills) judged by reader agents, then owner packets.
-   P4-WP4.10a and P8-WP8.3 hold the work.
+   2.2 §a and 3.1 hold the work.
 8. **OpenMW study:** a research pass reads OpenMW's MyGUI window layouts and Lua UI (what each Morrowind window
    contains, its controls and behaviour) and Morrowind's own screens, and writes a gap analysis against our ported
    UI, which "still needs some work" (owner); the improvements go into the port.
 
 ## Consequences
 
-- P2-WP2.8 becomes "port the design system"; P4-WP4.10 and P8-WP8.3 build from the port.
+- 1.2 becomes "port the design system"; 2.2 and 3.1 build from the port.
 - 0014 §7's per-screen order now starts from "our own PrismaUI view" for every major screen.
 - The PrismaUI dependency risk grows (0001 §2): pin its version early; keep the fallback rule.

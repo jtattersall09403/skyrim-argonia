@@ -1,105 +1,70 @@
 # Progress
 
-The live status of every work package. One row each; the planner updates rows as lanes start and close.
-Status: `todo`, `in progress (lane)`, `done (commit)`, `blocked (why)`, `dropped (decision)`.
+The live status of every chunk. One row each; the planner updates rows as lanes start and close.
+Status: `todo`, `in progress (lane)`, `done (commit)`, `blocked (why)`, `dropped (decision)`. Chunk ids and briefs:
+[phases/README.md](phases/README.md).
 
-| Phase | WP | Title | Status |
+| Part | Chunk | Title | Status |
 |---|---|---|---|
-| P0 | 0.1 | Repo skeleton and rules | todo |
-| P0 | 0.2 | Ways-of-working tooling | todo |
-| P0 | 0.3 | No-assets guard and the gate | todo |
-| P0 | 0.4 | Build VM toolchain | todo |
-| P0 | 0.5 | Secrets and game files | todo |
-| P0 | 0.6 | Import the world | todo |
-| P0 | 0.7 | Infra record and cost baseline | todo |
-| P0 | 0.8 | First owner check-in | todo |
-| P1 | S0 | GPU box | todo |
-| P1 | S1/G1 | SKSE from Linux + bridge under Proton | todo |
-| P1 | S2/G2 | Streaming and performance | todo |
-| P1 | S3/G3 | Runtime pin and dependency stack | todo |
-| P1 | S4/G4 | World sample without the CK (terrain, place, navmesh, faces) | todo |
-| P1 | S5/G5 | Morrowind dialogue window | todo |
-| P1 | S6/G6 | Measuring DSR | todo |
-| P1 | S7/G7 | Swimmable stepped rivers | todo |
-| P1 | S8/G8 | Agentic loop end to end | todo |
-| P1 | S9/G9 | DS1 timing without shipping edited animations | todo |
-| P2 | 2.1 | Dependency manifest | todo |
-| P2 | 2.2 | Permission requests | todo |
-| P2 | 2.3 | Installer and deploy | todo |
-| P2 | 2.4 | Bridge and scenario runner | todo |
-| P2 | 2.5 | Generation pipeline | todo |
-| P2 | 2.6 | Vanilla quarantine baseline | todo |
-| P2 | 2.7 | Immersion inventory v1 | todo |
-| P2 | 2.8 | PrismaUI view harness | todo |
-| P2 | 2.9 | Graphics baseline | todo |
-| P2 | 2.10 | Saves, idle-stop, cost logging | todo |
-| P3 | 3.1 | Terrain | todo |
-| P3 | 3.2 | Apron and edges | todo |
-| P3 | 3.3 | Water | todo |
-| P3 | 3.4 | Navmesh | todo |
-| P3 | 3.5 | Regions, climate, weather, sky, light | todo |
-| P3 | 3.6 | Roads, routes, travel infrastructure | todo |
-| P3 | 3.7 | Vegetation | todo |
-| P3 | 3.8 | LOD and world map image | todo |
-| P3 | 3.9 | The already-built places | todo |
-| P3 | 3.9b | One assembled interior | todo |
-| P3 | 3.10 | Performance pass | todo |
-| P4 | 4.1 | Attributes, skills, formulas | todo |
-| P4 | 4.2 | Skill use, vastei, levels at rest, sitting | todo |
-| P4 | 4.3 | Perk audit (O-4) | todo |
-| P4 | 4.4 | Rest, saving, death, respawn | todo |
-| P4 | 4.5 | Races, birthsigns, classes, chargen | todo |
-| P4 | 4.6 | Dialogue runtime | todo |
-| P4 | 4.7 | Dialogue and text content | todo |
-| P4 | 4.8 | Quests, directions, no markers | todo |
-| P4 | 4.9 | Journal, world map, local map | todo |
-| P4 | 4.10a | OpenMW/Morrowind window study, gap analysis, UI map | todo |
-| P4 | 4.10 | UI skin, Pelagiad, HUD | todo |
-| P4 | 4.11 | Items, weapon classes, armour pieces, condition | todo |
-| P4 | 4.12 | Economy, training, services | todo |
-| P4 | 4.13 | Travel services, no fast travel | todo |
-| P4 | 4.14 | Fixed danger, encounters, respawn | todo |
-| P4 | 4.15 | Magic | todo |
-| P4 | 4.16 | Crafting | todo |
-| P4 | 4.17 | Stealth, crime, locks, the Owing | todo |
-| P4 | 4.18 | Factions and reputation | todo |
-| P4 | 4.19 | Schedules and the lamp clock | todo |
-| P4 | 4.20 | Owner packets | todo |
-| P4 | 4.21 | World registries | todo |
-| P5 | 5.0 | Wiring specification | todo |
-| P5 | 5.1 | Measure DSR into the golden table | todo |
-| P5 | 5.2 | Combat engine: DS1 state machine in our core | todo |
-| P5 | 5.3 | Adapter over the frameworks | todo |
-| P5 | 5.4 | Movesets chosen for fidelity | todo |
-| P5 | 5.5 | ±1-frame test suite | todo |
-| P5 | 5.6 | Enemy AI and archetypes | todo |
-| P5 | 5.7 | Feel against DSR, side by side | todo |
-| P5 | 5.8 | Bosses | todo |
-| P5 | 5.9 | Ranged, thrown, hand-to-hand, ragdolls | todo |
-| P5 | 5.10 | Owner feel packets | todo |
-| P6 | 6.1 | Climbing | todo |
-| P6 | 6.2 | Ladders | todo |
-| P6 | 6.3 | Swimming and diving | todo |
-| P6 | 6.4 | Boats: sailing | todo |
-| P6 | 6.5 | Boats: ownership | todo |
-| P6 | 6.6 | Owner packets | todo |
-| P7 | 7.1 | Slice scope (O-10) | todo |
-| P7 | 7.2 | Slice content | todo |
-| P7 | 7.3 | Journeys | todo |
-| P7 | 7.4 | Slice immersion pass | todo |
-| P7 | 7.5 | Owner playthrough | todo |
-| P7 | 7.5b | Triage the old polish backlog | todo |
-| P7 | 7.6 | Re-plan and P9 packet template | todo |
-| P8 | 8.1 | Inventory completeness | todo |
-| P8 | 8.2 | Verdicts at scale | todo |
-| P8 | 8.3 | UI, menus, fonts, loading screens, main menu | todo |
-| P8 | 8.4 | Music and sound (O-8) | todo |
-| P8 | 8.5 | Vanilla quarantine complete | todo |
-| P8 | 8.6 | Final look | todo |
-| P9 | — | Region packets (rows added per packet at P7 close) | todo |
-| P10 | 10.1 | Release artifacts | todo |
-| P10 | 10.2 | Install paths | todo |
-| P10 | 10.3 | Documentation | todo |
-| P10 | 10.4 | Nexus page | todo |
-| P10 | 10.5 | Owner's permanent setup | todo |
-| P10 | 10.6 | After release | todo |
+| 0 | 0.1 | Bootstrap: repo, ways of working, build VM, import | todo |
+| 0 | 0.2 | The GPU box and the go/no-go spikes G1–G10 | todo |
+| 0 | 0.2 S0 | GPU box | todo |
+| 0 | 0.2 G1 | SKSE from Linux + bridge under Proton | todo |
+| 0 | 0.2 G2 | Streaming, performance and measured latency | todo |
+| 0 | 0.2 G3 | Runtime pin and dependency stack | todo |
+| 0 | 0.2 G4 | World sample without the CK (Claywater Station block) | todo |
+| 0 | 0.2 G5 | Morrowind dialogue window | todo |
+| 0 | 0.2 G6 | Measuring DSR | todo |
+| 0 | 0.2 G7 | Swimmable stepped rivers | todo |
+| 0 | 0.2 G8 | Agentic loop end to end | todo |
+| 0 | 0.2 G9 | DS1 timing without shipping edited animations | todo |
+| 0 | 0.2 G10 | Where the rules run | todo |
+| 0 | 0.3 | The pinned stack, permissions and the installer | todo |
+| 0 | 0.4 | The bridge, the studio and the two runners | todo |
+| 0 | 0.5 | The record pipeline, the quarantine and the immersion inventory | todo |
+| 1 | 1.1 | The game-state seam | todo |
+| 1 | 1.2 | The UI foundation: design system, HUD and the thread's screens | todo |
+| 1 | 1.3 | Talk, trade and carry, on the sheet | todo |
+| 1 | 1.4 | Fight: the DS1 core, first rung | todo |
+| 1 | 1.5 | Grow, die, rest, save | todo |
+| 1 | 1.6 | A quest, the journal and directions | todo |
+| 1 | 1.7 | Move: climb, swim, sail | todo |
+| 1 | 1.8 | The core-loop journey and the owner's verdict | todo |
+| 2 | 2.W1 | Terrain, apron and edges | todo |
+| 2 | 2.W2 | Water | todo |
+| 2 | 2.W3 | Regions, weather, light, roads and the route graph | todo |
+| 2 | 2.W4 | Vegetation, navmesh and LOD | todo |
+| 2 | 2.W5 | The slice places, in two waves | todo |
+| 2 | 2.W5 wave 1 | Greenspring, The Broke Column, Riverwalk, Lighter Flotilla, two routes | todo |
+| 2 | 2.W5 wave 2 | the other eleven slice places | todo |
+| 2 | 2.W6 | Performance and the world walk | todo |
+| 2 | 2.1 | The sheet whole: races, birthsigns, classes, effects, perks | todo |
+| 2 | 2.2 | The UI whole: the OpenMW study, the UI map, every screen | todo |
+| 2 | 2.3 | Items | todo |
+| 2 | 2.4 | People | todo |
+| 2 | 2.5 | Dialogue | todo |
+| 2 | 2.6 | Trade, services and travel | todo |
+| 2 | 2.7 | Combat and encounters | todo |
+| 2 | 2.8 | Progression, rest and death | todo |
+| 2 | 2.9 | Magic | todo |
+| 2 | 2.10 | Crafting | todo |
+| 2 | 2.11 | Stealth, crime, locks and the Owing | todo |
+| 2 | 2.12 | Quests, journal and maps | todo |
+| 2 | 2.13 | Swim and climb | todo |
+| 2 | 2.14 | Marsh specials: hazards, effect arrows, harvests, materials | todo |
+| 2 | 2.15 | Boats | todo |
+| 2 | 2.16 | Sound and music | todo |
+| 2 | 2.17 | Persistence, the immersion gate and the playthrough | todo |
+| 3 | 3.1 | Boot, main menu, loading, settings and controls | todo |
+| 3 | 3.2 | Character creation | todo |
+| 3 | 3.3 | The opening | todo |
+| 3 | 3.4 | Install, release and the owner's permanent setup | todo |
+| 3 | 3.5 | First playable | todo |
+| 4 | 4.1 | Before scale | todo |
+| 4 | 4.2 | Region packets | todo |
+| 4 | 4.3 | Narrative lines | todo |
+| 4 | 4.4 | Assembled interiors | todo |
+| 4 | 4.5 | Systems depth | todo |
+| 4 | 4.6 | Final look, polish and release | todo |
+
+Part 4 packets (`4.2-<region>-<n>`), lines (`4.3-<line>`) and depth chunks (`4.5-<system>`) get rows as 4.1 plans them.

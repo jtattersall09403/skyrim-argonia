@@ -3,7 +3,7 @@
 A free, non-commercial total conversion for **The Elder Scrolls V: Skyrim Special Edition**, set in Black Marsh,
 with Morrowind's systems and spirit, Dark Souls-style combat, climbing, swimming and sailable boats.
 
-**Status:** planning complete; Phase 0 (bootstrap) next. See [docs/PLAN.md](docs/PLAN.md) and
+**Status:** planning complete; Part 0 (foundation), chunk 0.1, next. See [docs/PLAN.md](docs/PLAN.md) and
 [docs/PROGRESS.md](docs/PROGRESS.md).
 
 ## What this repo contains, and what it never will
@@ -35,5 +35,5 @@ affiliated with Tamriel Rebuilt or Beyond Skyrim. Built largely with AI assistan
 
 ## Credits
 
-Credits are generated from `data/sourcing-register.json` once it exists (Phase 2). The plan already depends on
+Credits are generated from `data/sourcing-register.json` once it exists (chunk 0.3). The plan already depends on
 the work of many mod authors; see [docs/legal-and-sourcing.md](docs/legal-and-sourcing.md).

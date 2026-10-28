@@ -10,10 +10,12 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 
 ## Session start
 
-- The planner reads [PLAN](docs/PLAN.md) in full, then [PROGRESS](docs/PROGRESS.md), then the current phase
-  file in `docs/phases/`, then the [decisions index](docs/decisions/README.md) line for anything it touches.
+- The planner reads [PLAN](docs/PLAN.md) in full, then [PROGRESS](docs/PROGRESS.md), then
+  [the schedule](docs/phases/README.md), the current part's README and chunk brief, then the
+  [decisions index](docs/decisions/README.md) line for anything it touches.
 - Subagents read what their brief routes.
-- Phase 0 starts with [P0](docs/phases/P0-bootstrap.md); do the phases in dependency order.
+- Work starts at chunk [0.1](docs/phases/0-foundation/0.1-bootstrap.md); parts run in order, chunks by the
+  chunk table's dependencies ([0023](docs/decisions/0023-five-parts-de-risk-first.md)).
 
 ## Never
 
@@ -36,10 +38,11 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 - Study before building: search universal-modder's field notes and skills first, then owned games, mod source, OpenMW's source, reference ports; record findings in `docs/research/` ([0020](docs/decisions/0020-reuse-others-methods-universal-modder-and-ghidra-tooling.md)).
 - The running game is the oracle: behaviour closes only on an in-game check that can fail (L4+).
 - Ghidra is a scalpel: targeted headless scripts for a named question; output stays in `$ARGONIA_PRIVATE`.
-- Every system is built to its final interface; content can be thin, systems ship whole.
+- De-risk first: prove each class of work on a real sample before scaling it; Part 1's thread joins every system before any is built wide (0023).
+- Every system is built to its final interface; content can be thin, systems ship whole; what the player meets is complete.
 - World data lives in `world/` and is generated into records; Spriggit YAML in `plugin/` is reviewed, the ESM is a build output ([0009](docs/decisions/0009-world-content-is-imported-then-generated-into-plugins.md)).
 - Skyrim unit facts live only in the units module.
-- New state lives in ArgoniaCore's co-save; rules live in the pure C++ core with unit tests.
+- New state lives in ArgoniaCore's versioned co-save families; rules live where G10 decided, unit-tested; logic stays out of Papyrus.
 - Record every dependency and asset in the sourcing register in the same commit that first uses it.
 
 ## Agents and briefs
@@ -53,17 +56,19 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 
 ## Testing and the gate
 
-- Fast focused loops with eyes, per feature and per seam, each block at the cheapest rung that proves it, composed once, journeys last ([loops](docs/loops.md)): L1 data, L2 logic and core simulation, L3 off-game stills, L4 in-game staged, L5 filmed seam with a reason, L6 owner.
-- Staged scenes set state at step 0 and never set what they test; measure everything, diagnose all, fix once, re-measure.
+- Fast focused loops with eyes; the lane that builds a feature tests it and its joins in one loop; each block at the cheapest level that proves it, composed once ([loops](docs/loops.md), [0021](docs/decisions/0021-fast-focused-loops-and-the-ladder.md)): L1 data, L2 logic and the core runner, L3 off-game stills, L4 in game from a studio scene, L5 a clip with a reason, L6 owner.
+- Every in-game check starts from a studio scene, never the new-game flow; the studio only observes and teleports, no mode or switch stands in for a game action ([0022](docs/decisions/0022-the-studio-boots-into-any-place.md)).
+- Journeys are eyeless: one script on the core runner and the game runner, state and events only, teleport between short steps; no agent plays by looking.
+- Scenes set state at step 0 and never set what they test; measure everything, diagnose all, fix once, re-measure.
 - `make check` is the one gate (≤ 3 min); run only what the change can reach; a red is re-proved by its one test.
 - Prove the screenshot oracle is live; stop after 3 identical failures and diagnose; a crash is a failure.
 - Batch GPU-box checks; stop the GPU box when the batch ends.
 
 ## The owner
 
-- Owner check-ins via `tooling/owner_inbox.py --post`: plain English, one check per bullet, how to reply, costs.
+- Owner check-ins via `tooling/owner_inbox.py --post`: plain English, one check per bullet, studio scenes or places named (never machine links), how to reply, costs.
 - Nothing measurable goes to the owner; the owner plays packets and rules on the open calls.
-- Blocker = cannot do the action, or sees it at the play camera (including a Nordic element); else polish: one quick fix, then the backlog.
+- Blocker = cannot do the action, or sees it at the play camera (including a Nordic element); else polish: one quick fix, then the backlog tagged `P1 before-scale`, `P2 rolling` or `P3 final`.
 - Ask the owner only on hard-to-reverse calls; record every ruling in a decision and the owner brief.
 
 ## Costs
@@ -73,4 +78,4 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 ## Docs
 
 - The repo holds the current state, git the history: rewrite in place, delete the superseded.
-- Decisions hold the why, phase files the work, PROGRESS the status, research the evidence.
+- Decisions hold the why, chunk briefs the work (rewritten just in time, nothing dropped), PROGRESS the status, research the evidence.

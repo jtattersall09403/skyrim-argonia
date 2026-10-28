@@ -1,7 +1,7 @@
 # 0008: Infrastructure: AWS London, an x86 build VM and an on-demand GPU box, under $100 a month
 
 **Status:** decided 2026-10-27 (owner: AWS, max $100/month for infrastructure, not Hetzner, "as cheaply as
-possible", London). Prices re-measured in P0 and recorded in [infra/README.md](../../infra/README.md).
+possible", London). Prices re-measured in 0.1 and recorded in [infra/README.md](../../infra/README.md).
 
 ## Decision
 
@@ -11,7 +11,7 @@ possible", London). Prices re-measured in P0 and recorded in [infra/README.md](.
    in the AWS console is the break-glass shell. Nothing is installed on the Mac. Claude Code runs in the
    tunnel's terminal inside `tmux`. x86 is required: Wine (xEdit,
    PapyrusCompiler, msvc-wine, BSArch, xLODGen, DSAnimStudio) does not run on Graviton.
-2. **GPU box `argonia-play`**: created in P1 from a script in `infra/`; g6.xlarge (L4) spot by default, g4dn
+2. **GPU box `argonia-play`**: created in 0.2 from a script in `infra/`; g6.xlarge (L4) spot by default, g4dn
    (T4) for light agent runs if the benchmark allows, in the same VPC/AZ as the build VM. Stopped when idle
    (15 min). It holds Skyrim, the pinned dependency mods, Proton, the agent bridge, Selkies and saves.
 3. **Control from Claude Code**: AWS CLI under an IAM role scoped to start/stop/describe instances tagged
@@ -20,10 +20,10 @@ possible", London). Prices re-measured in P0 and recorded in [infra/README.md](.
    and the bridge port only).
 4. **RunPod is not used for play** (no inbound UDP: WebRTC fails). Vast.ai is the documented fallback GPU host.
    Hetzner is excluded.
-5. **Budget guard**: an AWS Budget at $100 with alerts at 50/80/100% actual and 100% forecast (P0 step 1).
+5. **Budget guard**: an AWS Budget at $100 with alerts at 50/80/100% actual and 100% forecast (the owner's setup step 1).
    The planner reads month-to-date cost weekly (Cost Explorer via CLI) and reports it in the owner check-in.
 
-## Monthly estimate (London, 2026-10-27 prices, re-measure in P0)
+## Monthly estimate (London, 2026-10-27 prices, re-measure in 0.1)
 
 | Item | Assumption | $/month |
 |---|---|---|
@@ -42,25 +42,21 @@ subscription is separate (decision 0013); Fal usage is separate and small (the o
 $0.15 per generated image) and is reported in check-ins. **Levers, in order:** idle-stop the build VM when no agent session runs (biggest);
 shrink the GPU disk by keeping only the pinned files; use g4dn for agent runs; release the old
 elder-souls-argonia machine's 250 GiB disk (~$23/month while stopped, outside this table: owner call O-1);
-move to `m7i.large` for the build VM during low-parallelism phases.
+move to `m7i.large` for the build VM during low-parallelism parts.
 
-## Per-phase cost budget (AWS, on top of the steady state above)
+## Per-part cost budget (AWS, on top of the steady state above)
 
-| Phase | Extra items | Budget |
+| Part | Extra items | Budget |
 |---|---|---|
-| P0 | none (build VM only) | $0 |
-| P1 | GPU benchmark hours on three instance types (~15 h); a temporary Windows spot instance only if G1/G4/G6 need it (~10 h); owner streaming test | ≤ $25 |
-| P2 | installer from-scratch runs (~10 GPU hours) | ≤ $10 |
-| P3 | a 64 GiB spot instance for LOD generation (~6 h per full build; e.g. r7i.2xlarge/m7i.4xlarge spot), navmesh/vegetation L4 sweeps | ≤ $15 |
-| P4–P6 | L4 batches inside the steady-state GPU hours | $0 extra |
-| P7 | owner playthrough hours (counted as play) | $0 extra |
-| P8 | contact-sheet render batches (~20 GPU hours on g4dn) | ≤ $10 |
-| P9 | per region: L4 sweeps (~10 GPU hours) and one LOD rebuild at region close (~6 h big instance) | ≤ $10 per region |
-| P10 | a temporary Windows spot instance for install tests (~10 h) | ≤ $10 |
+| 0 | GPU benchmark hours on three instance types (~15 h); a temporary Windows spot instance only if G1/G4/G6 need it (~10 h); the owner's streaming test; installer from-scratch runs (~10 GPU hours) | ≤ $35 |
+| 1 | the core-loop soak (~3 GPU hours); L4 batches otherwise inside the steady state | ≤ $5 |
+| 2 | a 64 GiB spot instance for LOD generation (~6 h per full build; e.g. r7i.2xlarge/m7i.4xlarge spot) and navmesh/vegetation L4 sweeps (world track); systems-track L4 batches inside the steady state; the owner's playthrough counted as play | ≤ $20 |
+| 3 | a temporary Windows spot instance for install and release tests (~10 h) | ≤ $10 |
+| 4 | immersion booth batches at 4.1 (~20 GPU hours on g4dn, ≤ $10); per region: L4 sweeps (~10 GPU hours) and one LOD rebuild at region close (~6 h big instance), ≤ $10 per region | as listed |
 
 **Stop-and-ask rule (T-COST):** the planner projects the month's AWS total weekly (month-to-date plus planned
 hours at current spot prices). If the projection exceeds $100, it stops starting new paid work, applies the
-levers above, and if that is not enough asks the owner (raise the cap for the month, or slow down). A phase's
+levers above, and if that is not enough asks the owner (raise the cap for the month, or slow down). A part's
 extra budget overrunning by 50% also triggers a check-in.
 
 ## Consequences

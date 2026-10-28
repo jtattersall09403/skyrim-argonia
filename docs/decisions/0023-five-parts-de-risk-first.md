@@ -1,0 +1,87 @@
+# 0023: Five parts, de-risk first: foundation, the core loop, the slice in two tracks, the shell, the build-out
+
+**Status:** decided 2026-10-28. The owner asked for a critical review of the old project's four parts and of
+this repo's first plan (P0–P10), and for the best approach from here: "ok that's what we were *going* to do,
+what do I think we *should* do now".
+
+## What the two plans got right and wrong
+
+**The old plan** (its `docs/phases/README.md`, old 0134): world build, then a slice of every system in the
+studio, then the game shell, then a build-out in packets.
+- **Right:**
+  - de-risk before scale;
+  - systems whole, content thin, and what the player meets complete;
+  - play in a studio on shipping code (old 0149);
+  - the real front door built only once the slice works;
+  - three polish queues, and a blocker is never polish.
+- **Wrong here:** world first. In three.js the world *was* the risk (a renderer, terrain, water and kits built
+  from nothing). On Skyrim the engine renders, so the world is mostly data conversion. Its two hard parts,
+  navmesh and LOD, are tested on a sample by the 0.2 spike G4.
+
+**This repo's first plan** (P0–P10, by system).
+- **Right:** go/no-go spikes up front, and the guardrails (nothing shipped, a pinned runtime, DSR as the combat
+  spec, the immersion gate).
+- **Wrong, three ways:**
+  - **Late joins.** Every system was built in isolation and joined only at P7. In Skyrim modding the costly
+    failures are the joins: conflicts in the mod stack, script lag, crashes where combat frameworks, PrismaUI
+    views, dialogue interception and the co-save meet.
+  - **Untested feel.** Nobody felt DS1 combat through the stream until P5, after the world and the soul were
+    built. The old combat was bad, a DS1 parry window is a few frames, and the stream adds tens of
+    milliseconds. That is the host risk most likely to change the whole plan, and its fallback (0001: OpenMW)
+    is cheap only before the world and systems exist.
+  - **Wasted reuse.** It planned to port the old project's tested, engine-neutral rule code to C++ without
+    asking whether it could run as it is (chunk 0.2, G10).
+
+## Decision
+
+1. **Five parts, ordered by remaining uncertainty:**
+
+   | Part | De-risks | Ends when the owner can say |
+   |---|---|---|
+   | 0 Foundation | that agents can build, test and stream Skyrim from AWS; the go/no-go spikes | "I dropped into the studio on my phone and teleported around" |
+   | 1 The core loop | that every system can join on the host, and that DS1 combat feels right through the stream | "this is the game I want; it is worth building" (the last cheap moment to change host) |
+   | 2 The slice, two tracks | that the province can be generated and every system exists whole on the slice places | "I played the slice in the studio; every system is real; the world is leg-work" |
+   | 3 The game shell | that a player installs, starts a new game and lands in the slice | "I started a new game and reached the open world; a stranger installed it" |
+   | 4 Build out sideways | nothing new: packets scale what is proven | "the whole province is populated, every quest completes, and it is released" |
+
+2. **Part 1 is a thin thread through everything, on one place.** It uses Claywater Station (G4's sample block)
+   and the proving ground. Each system gets its first rung at its final interface, so later chunks deepen it and
+   never replace it:
+   - talk with topics, and trade;
+   - carry, equip and read;
+   - one weapon class against one archetype with measured DS1 numbers;
+   - die and recover vastei; rest, level and save;
+   - one quest in the journal with directions;
+   - climb, swim, and sail one boat.
+
+3. **Part 2 runs two tracks side by side.** They share the GPU box well, because the world track checks
+   mostly at L1 on the build VM and the systems track checks mostly at L2 and L4.
+   - **The world track (2.W):** the whole worldspace generated once, then the slice places ported in waves.
+   - **The systems track (2.1–2.17):** every system made whole on those places, in dependency order.
+
+4. **The rules decided by the old plan hold:**
+   - **Final-shaped from the first line:** the studio only observes and teleports (0022).
+   - **Scaled data shapes, thin content**, with wide loads where they are cheap.
+   - **What the player meets is complete.**
+   - **Three polish queues:** `P1 before-scale`, `P2 rolling`, `P3 final`.
+   - **Cities and the opening's places are built with the owner.**
+
+5. **The slice is the old slice.** That means the sixteen places the old project built and walked, its two
+   routes and the wild between them. Helstrom and the cities wait for chunk 4.1.
+
+6. **Immersion is a gate, not a late phase.** Every reachable element has a verdict from Part 2's close. Each
+   packet's elements enter compliant. Unreachable rows never block.
+
+7. **Briefs are written just in time, with nothing dropped.** Design content (formulas, rules, counts, rulings)
+   is written now, in the brief that will build it. The steps and Starting state of a later chunk are rewritten
+   when the chunk before it closes. ACCOUNTING maps every owner requirement to its chunk.
+
+8. **Ids are `<part>.<chunk>`** (0.4, 1.3, 2.8, 2.W3). The part README holds the chunk table.
+
+## Consequences
+
+- The P0–P10 phase files are replaced by `docs/phases/0-foundation/` to `4-buildout/`. Every P-number
+  reference is rewritten in place.
+- Spike G10 (where the rules run) joins 0.2. Its answer sets how 1.1 builds ArgoniaCore.
+- The planner re-estimates the remaining parts from measured cycle times at 0.2 (G8), at Part 1's close and at
+  4.1.

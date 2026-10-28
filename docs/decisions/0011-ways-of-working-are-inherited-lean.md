@@ -17,7 +17,7 @@ growing, rule accretion in CLAUDE.md producing contradictory rules agents resolv
    every build brief has Lane, Paths, Acceptance (a runnable command or a measured number) and a report path;
    the testing ladder (cheapest sufficient level, compose once); one gate; decision records for the why;
    PROGRESS rows; fix forward; owner check-ins in plain English.
-2. **Start lean.** P0 copies the *ideas* and only the few tools that pay for themselves at once (brief
+2. **Start lean.** Chunk 0.1 copies the *ideas* and only the few tools that pay for themselves at once (brief
    template, shell guard against sleeps/polls and destructive git, job guard for long jobs, the no-assets
    guard, session token report, owner inbox). Every further hook or gate is added only after a measured
    incident it would have prevented, with a test that makes it fail on purpose. CLAUDE.md stays under a word

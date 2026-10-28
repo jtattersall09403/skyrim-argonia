@@ -15,7 +15,7 @@ as close as possible to the Dark Souls 1 Remastered numbers and engine/system/fe
    Measured from the owner's copy (decision 0004), recorded in the golden table with provenance.
 2. **Argonia's stats are wired in, not substituted.** DS1 governs how combat *behaves and feels*; Argonia's
    Morrowind-based sheet governs *who you are*: how hard you hit, how much stamina you have, how much you can
-   carry, how well armour protects you. A written **wiring specification** (P5-WP5.0) maps each DS1 quantity onto
+   carry, how well armour protects you. A written **wiring specification** (2.7 §a) maps each DS1 quantity onto
    our attributes, skills and formulas (e.g. DS1 weapon scaling → our skill score k(s) and Strength; DS1 Endurance
    stamina and equip load → our Endurance, carry capacity and burden tiers; DS1 armour defence and poise → our
    armour rating, mitigation and armour skills), preserving DS1's ratios at equivalent character strength. Where
@@ -37,6 +37,6 @@ as close as possible to the Dark Souls 1 Remastered numbers and engine/system/fe
 
 ## Consequences
 
-- P5 is rewritten around DSR as the specification (P5-WP5.0 wiring spec, WP5.1 measurement, WP5.2 state machine).
+- Combat (first rung 1.4, whole 2.7) is written around DSR as the specification (2.7 §a wiring spec, 2.7 §b measurement, 2.7 §c state machine).
 - Decision 0004's "old constants" consequences are replaced by this record; inherited-rulings mark the old combat
   records Drop (as implementation) or Adapt (as intent only).

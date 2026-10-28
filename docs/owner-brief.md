@@ -81,7 +81,7 @@ Something they can **play**, that is:
    version separately.
 7. The plan is written for the future Claude Code agent and must be complete: "every detail needs to be
    accounted for, either you are deliberately leaving it out or you're putting it in", and no petering out in
-   later phases.
+   later parts.
 
 ## 3. Rulings given during planning
 
@@ -104,6 +104,10 @@ Something they can **play**, that is:
 | 2026-10-27 | The owner can add the **Creation Kit** from Steam (decision 0018). |
 | 2026-10-27 | Use universal-modder's and the Ghidra ecosystem's agent skills and methods wherever useful: "we really don't want to reinvent the wheel" (decision 0020). |
 | 2026-10-28 | Keep the old "fast focused loops with eyes, for features and seams" way of working and its ladder (cheapest reliable check first), updated for the new infrastructure (decision 0021). |
+| 2026-10-28 | The lane that builds a feature subset tests the feature **and its joins** in the same loop; no separate seam loops (decision 0021 §2). |
+| 2026-10-28 | **Journeys are headless only**: getting an agent to play the game for more than a few seconds was buggy and produced harness and capture issues rather than findings (decision 0021 §3). |
+| 2026-10-28 | A **studio**: something agents can drive headless and the owner can play, to drop in and teleport around the world without going through the new-game flow (decision 0022). |
+| 2026-10-28 | Plan in **parts** as the old repo did (slice places and systems first, then the new-game flow, then the sideways build-out), but critically reviewed for this host and rewritten as one consistent plan, not a patchwork (decision 0023). |
 | 2026-10-27 | The old project's combat and animations were "quite bad and buggy": do not reproduce them. Combat is Dark Souls-like, **as close as possible to DS1 Remastered's numbers, system and feel**, wired to our stats (decision 0019). |
 | 2026-10-27 | Study **OpenMW's window layouts and contents** to improve our own UI, which "still needs some work"; design the UI holistically with "eyes on" transitions in focused loops, so moving between screens is never jarring (e.g. the skill constellations) (decision 0017 §7–8). |
 | 2026-10-27 | Skyrim's own UI symbols (e.g. the sneak eye) should be **loaded from the player's local Skyrim files**, not redrawn. The **trim flourishes** were made by the owner with ChatGPT and are fine to use. |

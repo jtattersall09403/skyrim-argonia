@@ -13,7 +13,7 @@ style guide and a Morrowind exemplar corpus. The owner may keep developing the t
 
 ## Decision
 
-1. **Import, then own.** P0 copies the engine-neutral sources (list in [source-map.md](../source-map.md))
+1. **Import, then own.** Chunk 0.1 copies the engine-neutral sources (list in [source-map.md](../source-map.md))
    into `world/` here, with the source commit recorded. From then on this repo's copy is the source of truth
    for skyrim-argonia; later changes in the old repo are pulled only deliberately (a dated re-import note).
 2. **Pipeline:** `world/` JSON → generators (Python for planning and checks, C# Mutagen for records) →

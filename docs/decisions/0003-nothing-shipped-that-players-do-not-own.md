@@ -20,10 +20,10 @@
    player's Data folder. Morrowind and Dark Souls Remastered/3 are **knowledge sources only** (decision 0004):
    nothing from them is needed at runtime.
 4. **Third-party mods are dependencies the player downloads** (Nexus, ModDB) through the installer or a
-   Wabbajack/Jackify modlist (P10). We reference their records and mesh paths from our plugin; we do not copy
+   Wabbajack/Jackify modlist (3.4). We reference their records and mesh paths from our plugin; we do not copy
    their files. Where a mod's terms forbid *requiring* it in another mod or using it with AI-made content,
    we ask the author or drop it (docs/legal-and-sourcing.md).
-5. **Enforcement:** a committed `tooling/guards/no_assets.py` (P0-WP0.3) runs in the gate and as a pre-commit
+5. **Enforcement:** a committed `tooling/guards/no_assets.py` (0.1) runs in the gate and as a pre-commit
    hook: it refuses binary asset extensions (`.nif .dds .hkx .bsa .ba2 .fuz .xwm .wav .esm .esp .esl .swf .tae
    .flver .bnd .dcx .param` and more), files over 1 MB outside an allowlist, and known decompiler signatures.
    Allowlisted exceptions (our UI images, Pelagiad, generated test fixtures that contain no game data) are
