@@ -66,6 +66,13 @@ level).
 - **Acceptance:** PLAN §5 table updated with measured estimates; the packet template exists; O-2 asked in the
   P7 check-in with the measured numbers.
 
+## Loops (docs/loops.md)
+- **Feature loops:** each new slice place (L1, L4 sweep and stills); each slice quest (L2 walk, L4 run); each
+  dialogue round (reader panels); the immersion pass (L4 stills sweep with the Nordic-tells checklist).
+- **Seam loops:** every cross-system seam the slice exercises that earlier phases did not (listed in the slice's
+  seam table with two owners each), at the cheapest level that shows it.
+- **Journeys:** the WP7.3 set (L4), then the owner's full playthrough (L6).
+
 ## Exit gate
 Slice complete; journeys green; zero reachable unreviewed inventory rows; owner playthrough with no open
 blocker; P9 packet template written from what the slice taught.

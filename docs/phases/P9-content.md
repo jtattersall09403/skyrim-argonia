@@ -91,6 +91,15 @@ place or district: the Helstrom lesson, old 0133).
   early-access release (P10 may run here).
 - **M2 (maturity):** every active catalogue place built, 450–550 quests, all factions complete. Owner sign-off.
 
+## Loops (docs/loops.md)
+- **Per packet:** the packet steps above are its loops: plan and kit check (L1), each place (L1, L4 sweep and
+  stills), people (L1, L4 schedule skip), dialogue (reader panels), quests (L2 walk, L4 run), encounters and loot (L1,
+  L2), books (L1), immersion (gate).
+- **Seam loops (two owners):** new places ↔ the route graph and directions (places, quests) L1 validator; new NPCs ↔
+  schedules ↔ navmesh (people, navmesh) L4; a packet's cells ↔ neighbouring packets' cells (both packets) L4 edge
+  stills; new quests ↔ the main quest and faction lines (quest owners) L2 walk.
+- **Journeys:** a region walk per region (L4 staged), then the owner's walk packet (L6).
+
 ## Exit gate
 M2 reached, or the owner declares the content complete; all region walk packets closed; the gate green.
 

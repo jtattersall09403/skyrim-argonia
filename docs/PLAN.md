@@ -81,10 +81,11 @@ FaceGen, flowmaps); records are written by code ([0018](decisions/0018-the-creat
 the Windows-only ones) and levels L1–L3 tests. The GPU box (`argonia-play`, started on demand) runs Skyrim
 under Proton with the pinned stack, ArgoniaBridge, Selkies for the owner, and levels L4–L6 tests.
 
-**Testing levels** (cheapest sufficient level wins; compose once; detail in
-[ways-of-working.md](ways-of-working.md)): L1 data and records; L2 unit (Python, native C++ core); L3 UI
-harness (PrismaUI views in headless Chrome against mock JSON); L4 in-game scripted through the bridge; L5
-recorded clip for a feel judgement, only with a stated reason; L6 the owner plays a packet via the stream.
+**Loops and the ladder** ([loops.md](loops.md), [0021](decisions/0021-fast-focused-loops-and-the-ladder.md)): fast
+focused loops with eyes, one per feature subset and one per seam, each block at the cheapest rung that reliably
+proves it, composed once, journeys last. Rungs: L1 data; L2 logic and core simulation (our systems' joins, no
+game); L3 off-game stills (UI harness); L4 in-game staged scenes on the GPU box (state, timestamps, in-game
+stills); L5 filmed seam, only with a stated reason; L6 the owner plays a packet via the stream.
 
 ## 4. Every system, where it lives, and which phase builds it
 

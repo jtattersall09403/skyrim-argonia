@@ -355,6 +355,25 @@ Three packets as each group lands: (1) chargen, stats, levelling, death; (2) dia
 HUD; (3) economy, travel, magic, crafting, stealth, factions, people. Each: what to try, where (save provided),
 how to reply; blockers vs polish per the rules in ways-of-working.
 
+## Loops (docs/loops.md)
+- **Feature loops, one per subset** (each with its own eyes): stats and formulas (L2 sim: every archetype × five
+  builds); skill use and vastei (L2 sim, L4 sample); the sitting (L3, L4); perks hidden (L4); rest, saving, death,
+  pile and respawn (L2, L4); chargen (L3, L4); dialogue runtime (L2 dialogue walk, L3, L4); dialogue content (L1,
+  reader panels); each imported quest (L2 walk, L4 run); directions (L1 validator); journal and maps (L3, L4); each
+  UI screen (L3 at four viewports, L4); HUD states (L3, L4); items, slots and condition (L2, L4); economy and training
+  (L2, L4); travel services (L4); danger bands and encounters (L1, L2); magic and spellmaking (L2, L4); crafting
+  stations (L2, L4); stealth, locks and the Owing (L2, L4); factions (L2, L4); schedules (L4 24-hour skip); world
+  registries (L1, L4).
+- **Seam loops (two owners):** talk → topic learned → journal topics index (dialogue, journal) L2 + L4; quest stage →
+  journal entry → directions (quests, journal) L2; skill use → vastei → pending level (skills, progression) L2; rest →
+  sitting → save (rest, progression) L4; death → pile → wake → respawn (death, encounters) L4; disposition ↔ barter
+  prices (dialogue, economy) L2; crime → Owing → greeting changes (stealth, dialogue) L2 + L4; spellmaking → cast
+  (magic, UI) L4; every UI-map transition (UI, the system on the other side) **L5, reason: hand-offs are seen only
+  in motion**; every system's co-save round trip (system, save) L2 + L4.
+- **Journeys:** new game → chargen → first conversation → first quest → rest → sitting; a burglary → caught →
+  Owing → custody → release; buy a spell → cast it → brew a potion → drink it. Each a staged scene (L4) after the
+  loops are green, then an owner packet (L6).
+
 ## Exit gate
 C1–C15 each pass their acceptance and have been seen by the owner; the soul packets have no open blocker; the
 immersion inventory has verdicts for every vanilla system P4 replaced or hid.

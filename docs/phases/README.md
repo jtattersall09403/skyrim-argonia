@@ -15,5 +15,5 @@
 | P10 Release | [P10-release.md](P10-release.md) |
 
 Every phase file follows one template: goal, starting state, read-first list, work packages with acceptance,
-exit gate, risks and fallbacks, and what is deliberately out of scope. A phase's starting state is rewritten
+a **Loops** section (feature loops, seam loops with two owners, journeys; [loops.md](../loops.md)), exit gate, risks and fallbacks, and what is deliberately out of scope. A phase's starting state is rewritten
 when the previous phase closes.

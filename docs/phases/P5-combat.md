@@ -152,6 +152,18 @@ poise breaks, stamina rhythm, against three archetypes; (2) the full roster by d
 what to feel and how to reply. A deviation from DS1 happens only as an owner ruling, recorded as `OWNER:` in the
 golden table.
 
+## Loops (docs/loops.md)
+- **Feature loops, one per subset:** each weapon class's moveset windows (L4 timestamps); rolls and backstep per
+  burden tier (L4); guard, parry, riposte, backstab (L2 sim, L4); poise and stagger (L2, L4); stamina (L2, L4);
+  lock-on (L4); each mirrored archetype's AI (L2 sim, L4 duel); each boss (L4); ranged and thrown (L4); feel per
+  action and archetype **L5, reason: feel against DSR side by side**.
+- **Seam loops (two owners):** the wiring spec ↔ the sheet (combat, stats) L2 over five builds; core windows ↔
+  clip timing (combat, animation) L4; combat ↔ HUD bars and boss bar (combat, UI) L3 + L4; poise break ↔ casting
+  interrupted (combat, magic) L2 + L4; death ↔ vastei pile (combat, death) L4; sneak attack ↔ combat state
+  (stealth, combat) L2 + L4; attacked while climbing or swimming (combat, traversal) L4.
+- **Journeys:** a duel ladder from D1 to D5; a boss fight with its phases; an archer ambush in a swamp. Staged (L4)
+  after the loops are green, then owner feel packets (L6).
+
 ## Exit gate
 Wiring spec approved; golden table complete with zero `GUESS:` rows; state machine fully tested; ±1-frame suite
 green at 30 and 60 fps; archetype and boss scenarios green; side-by-side panels clean; owner feel packets with no

@@ -26,6 +26,7 @@ Rulings inherited from elder-souls-argonia are listed (carry / adapt / drop) in
 - [0017](0017-our-own-original-ui-ported-from-the-old-repo.md) Our own original UI and HUD, ported from the old project's React design system; one holistic UI with eyes on every transition
 - [0019](0019-combat-is-rebuilt-from-ds1-not-ported-from-the-old-project.md) Combat is rebuilt from Dark Souls Remastered (whole system, wired to our stats), not ported from the old project
 - [0020](0020-reuse-others-methods-universal-modder-and-ghidra-tooling.md) Reuse others' methods: universal-modder's skills, agents and field notes; agent-ready Ghidra tooling (ReVa, pyghidra-mcp)
+- [0021](0021-fast-focused-loops-and-the-ladder.md) Fast focused loops with eyes, for features and seams, on the cheapest rung of the ladder (old 0155/0156, rebuilt for this infrastructure)
 - [0018](0018-the-creation-kit-is-a-tool-not-the-workflow.md) The Creation Kit is installed and used as a scripted tool; records are written by code
 
 ## Open owner calls

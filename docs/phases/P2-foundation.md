@@ -164,6 +164,15 @@ and permission requests out to mod authors.
   `tools/cost_report.py` sums AWS cost and Claude usage for check-ins.
 - **Acceptance:** a stop/start round trip keeps the save; the cost report shows the week.
 
+## Loops (docs/loops.md)
+- **Feature loops:** dependency stack smoke (L4); installer from scratch (L4); each bridge endpoint (L2 unit + L4
+  fail-on-purpose); pipeline determinism and Spriggit round trip (L1); quarantine running-quest list (L4); inventory
+  counts (L1); the ported design system and its tests (L2, L3 at four viewports).
+- **Seam loops (two owners):** generator → plugin → CK load log → game load (pipeline, installer) L1 then L4;
+  bridge ↔ scenario runner (bridge, runner): proved on a known-green scene before any lane uses it (loops rule 9);
+  installer ↔ derived-file steps (installer, decision 0014 steps) L4.
+- **Journeys:** none (foundation); the smoke scenario is the composition check.
+
 ## Exit gate
 A fresh GPU box reaches a passing smoke scenario through the installer; the pipeline regenerates the sample
 world deterministically; 10+ scenarios green; the dialogue view lives in the harness; the quarantine scenario

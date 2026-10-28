@@ -53,7 +53,8 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 
 ## Testing and the gate
 
-- Test at the cheapest sufficient level (L1 data, L2 unit, L3 UI harness, L4 in game, L5 clip with a reason, L6 owner).
+- Fast focused loops with eyes, per feature and per seam, each block at the cheapest rung that proves it, composed once, journeys last ([loops](docs/loops.md)): L1 data, L2 logic and core simulation, L3 off-game stills, L4 in-game staged, L5 filmed seam with a reason, L6 owner.
+- Staged scenes set state at step 0 and never set what they test; measure everything, diagnose all, fix once, re-measure.
 - `make check` is the one gate (≤ 3 min); run only what the change can reach; a red is re-proved by its one test.
 - Prove the screenshot oracle is live; stop after 3 identical failures and diagnose; a crash is a failure.
 - Batch GPU-box checks; stop the GPU box when the batch ends.

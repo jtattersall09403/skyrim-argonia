@@ -143,6 +143,19 @@ the border; the haze is opaque by about 10 km.
   density, light counts, LOD settings).
 - **Acceptance:** 95% of sampled cells hold ≥ 60 fps median at 1080p on the chosen instance.
 
+## Loops (docs/loops.md)
+- **Feature loops, one per subset:** terrain heights and seams (L1 data, L4 probe heights, L4 vantage stills); apron
+  and closed edges (L4); water by class: sea, lagoon, lake, river reach, rapids, falls (L4 swim scenario + stills);
+  navmesh (L4 path queries); regions and weather (L4 stills over a 7-day time skip); roads (L4 walk); vegetation by
+  region class (L4 stills + frame time); LOD (L4 vantage stills); each ported place (L1 every op resolves, L4 sweep
+  and stills); the assembled interior (L4).
+- **Seam loops (two owners):** terrain ↔ a place's own ground at pad edges (terrain, place) L4 stills; road ↔ place
+  entrance (roads, place) L4 walk; water ↔ banks and fords (water, terrain) L4 stills; navmesh ↔ doors and interiors
+  (navmesh, place) L4 path through a door; weather ↔ interiors (weather, place) L4; near ↔ LOD hand-off (LOD,
+  vegetation) **L5, reason: pop-in is visible only in motion**.
+- **Journey:** walk a road leg into Claywater Station and Greenspring and an interior at dusk in rain (L4 staged
+  scene), then the owner's walk packet (L6).
+
 ## Exit gate
 The province is walkable border to border; water, navmesh, LOD and weather pass their checks; the ported places
 pass; performance bar met; the owner walk packet has no open blocker.

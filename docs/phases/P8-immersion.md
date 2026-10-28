@@ -77,6 +77,15 @@ water) tuned. After P8, everything new in P9 enters the inventory already compli
 - **Acceptance:** reader panel on a 50-shot vantage set across regions and weathers; owner look packet; frame
   time within the bar.
 
+## Loops (docs/loops.md)
+- **Feature loops, one per inventory queue:** data verdicts (L1) beside booth contact sheets read by readers (L4);
+  menus (L3, L4 sweep); audio (L4 audio log); quarantine (L4 50-day scenario); the look per region and weather (L4
+  vantage stills + frame time).
+- **Seam loops:** every UI-map transition across the whole game (UI, the system on the other side) **L5, reason:
+  motion**; music hand-offs (explore → combat → explore; town; dungeon) (music, the state that triggers them) L4
+  audio log.
+- **Journeys:** none new; the owner's look, listening and transitions packets (L6).
+
 ## Exit gate
 Inventory 100% (no reachable row without a passing check); music and sound complete; quarantine scenario green;
 final look approved by the owner; the gate now enforces compliance for every new element.

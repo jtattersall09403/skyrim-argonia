@@ -83,6 +83,7 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | B20 | Trim flourishes are the owner's ChatGPT art | 0017 §5; sourcing register |
 | B21 | Do not reproduce the old project's buggy combat and animations; DS1R numbers, system and feel, wired to our stats | 0019; P5 rewritten (WP5.0 wiring spec, WP5.2 DS1 state machine in a tested core, WP5.4 movesets chosen for fidelity, WP5.7 side-by-side with DSR); inherited-rulings 0037/0040/0090 |
 | B22 | Use universal-modder / Ghidra agent skills and methods wherever useful | 0020 (full skill set, agents, `um` CLI, field-note reading list per phase, ReVa and pyghidra-mcp, "Prior art" brief field, O-19 giving back); P0-WP0.2/0.4; P1/P4/P5/P6/P10 read lists |
+| B23 | Carry the "fast focused loops with eyes, features and seams, on the cheapest rung of the ladder" way of working, updated for the new infrastructure | 0021; docs/loops.md (ladder rebuilt: L2 core simulation + L4 staged in-game on the GPU box); a Loops section in every phase P2–P9; ways-of-working §3; CLAUDE.md |
 | B15 | FaceGen and distant terrain: "surely handled by Skyrim's engine" | 0014 §3–4 explains: the engine draws them, but from per-NPC face files and per-worldspace LOD files that a new worldspace and new NPCs lack; templates reuse existing faces; terrain LOD meshes are ours and may ship |
 
 ## C. Engine and approach research

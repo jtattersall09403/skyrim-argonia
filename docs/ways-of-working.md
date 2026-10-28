@@ -29,16 +29,19 @@ steps with file:line, reds). A lane whose diff passes **1,500 changed lines** ru
 Agents return at most 25 lines (outcome, changes, measurements, failures, recommendations); the full report
 goes to the report path.
 
-## 3. Testing levels (cheapest sufficient level wins; compose once)
+## 3. Loops and the ladder (decision 0021; full text in [loops.md](loops.md))
+
+Work is checked by **fast focused loops with eyes**, one per feature subset and one per seam, each block at the
+cheapest rung that reliably proves it, composed once:
 
 | Level | What | Where | Example |
 |---|---|---|---|
-| L1 | Data and records: schemas, integrity, generated-record checks, Spriggit round trip, direction validator | build VM | every NPC has a home cell |
-| L2 | Unit: Python tools, the pure C++ core (formulas, timing windows, condition evaluator) | build VM | stamina formula; parry window maths |
-| L3 | UI harness: PrismaUI views in headless Chrome against mock JSON; screenshots | build VM | dialogue view shows hyperlinks |
-| L4 | In game, scripted through ArgoniaBridge on the GPU box: state reads, event timestamps, screenshots | GPU box | roll i-frames within ±1 frame |
-| L5 | Recorded clip for a feel judgement by reader agents; **only with a stated reason** a lower level cannot answer | GPU box | hit feel vs DSR footage |
-| L6 | The owner plays a packet through the stream | owner | slice playthrough |
+| L1 data | schemas, integrity, generated-record checks, Spriggit round trip, direction validator, CK load log | build VM | every NPC has a home cell |
+| L2 logic and simulation | unit tests of the C++ core and Python tools; core simulations of our own systems' joins with no game | build VM | a duel by time stream; a quest walked stage by stage |
+| L3 still (off-game) | PrismaUI views in headless Chrome against mock JSON; readers on stills | build VM | dialogue view shows hyperlinks at every viewport |
+| L4 in game, staged | staged scenes through ArgoniaBridge on the GPU box: state reads, event timestamps, in-game stills read by readers | GPU box | roll i-frames within ±1 frame; a place's vantage stills |
+| L5 filmed seam | a 3–8 s clip (or side by side with DSR), read frame by frame, **only with a stated reason** | GPU box | a transition's feel |
+| L6 owner | the owner plays a packet through the stream | owner | slice playthrough |
 
 Rules (old 0149/0155/0156 and universal-modder's oracle rules): test the shipped path (no debug mode stands in
 for a game action); the running game is the oracle for behaviour; prove the screenshot oracle is live (two

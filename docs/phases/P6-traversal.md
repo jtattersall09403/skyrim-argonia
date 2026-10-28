@@ -83,6 +83,17 @@ player-boats-as-horses; old decisions 0093, 0152, 0158, 0159; old phase docs 2.1
 ### WP6.6 Owner packets
 Two packets: climbing + swimming course; boats (a sailing trip between two moorings and a river dugout run).
 
+## Loops (docs/loops.md)
+- **Feature loops, one per subset:** climbing per wall class, wet and dry (L4 + stills); climb stamina (L2, L4);
+  ladders (L4 sweep); swimming and diving per race and stats (L2, L4); sailing model (L2 sim of the Wind Waker
+  model, L4 course); boat ownership, mooring, recovery, fetch (L2, L4); the wind call (L4).
+- **Seam loops (two owners):** climb → fall damage (climbing, stats) L4; climbing ↔ combat (traversal, combat) L4;
+  submerged ↔ stealth (swimming, stealth) L2 + L4; boat ↔ mooring ↔ rest recovery (boats, rest) L4; boat ↔ save
+  rules (boats, save) L4; climbing out of water (swimming, climbing) **L5, reason: the hand-off is seen only in
+  motion**; boat theft → Owing (boats, crime) L2.
+- **Journeys:** climb a cliff route to a shrine; dive through a flooded passage; sail between two moorings in a
+  changing wind and moor. Staged (L4), then owner packets (L6).
+
 ## Exit gate
 Course scenarios green; owner packets with no open blocker; the parity notes for climbing (vs BotW rules) and
 sailing (vs Wind Waker model) written.

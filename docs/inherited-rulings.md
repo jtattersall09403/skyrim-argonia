@@ -112,8 +112,8 @@ decisions or a later owner ruling change them. A row's verdict changes only by a
 | 0152 | province-wide climbing from FreeClimb's clips; swim closed; ladders; water stealth | Adapt | FreeClimb runs natively as a dependency; licence-reading waiver ("private, undistributed") **does not carry**: permissions are asked (0003) |
 | 0153 | quests as data | Carry | |
 | 0154 | only the build gates deploys | Adapt | release artifacts gated by the build and the no-assets guard |
-| 0155 | journeys are staged scenes | Carry | in-game scenarios |
-| 0156 | test each block at its cheapest level | Carry | levels L1–L6 |
+| 0155 | journeys are staged scenes | Carry | docs/loops.md, decision 0021 |
+| 0156 | test each block at its cheapest level | Carry | docs/loops.md (ladder rebuilt for Skyrim: L2 core simulation + L4 staged in-game), decision 0021 |
 | 0157 | the marsh does what the loading facts say | Carry | |
 | 0158, 0159 | boats whole; Wind Waker sailing, dugout and sea hull first | Carry | P6 |
 
