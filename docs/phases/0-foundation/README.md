@@ -1,6 +1,7 @@
 # Part 0: Foundation
 
-**Goal.** By the end of this part:
+**Goal.** First, prove the game can be played at all through the stream on the owner's phone and Mac (0.0, gate
+G0); if not, stop. Then, by the end of this part:
 - agents on the build VM can brief, build, check and commit safely;
 - every assumption the architecture rests on has passed a go/no-go spike;
 - the pinned stack installs onto a fresh GPU box by script;
@@ -30,7 +31,8 @@ If any of these is missing, 0.1's first check-in asks for it.
 
 | Id | Chunk | Depends on | Lane-able beside |
 |---|---|---|---|
-| 0.1 | [Bootstrap: repo, ways of working, build VM, import](0.1-bootstrap.md) | — | — |
+| 0.0 | [Can it be played? Vanilla Skyrim streamed, touch and GameSir controls, a feel probe (G0)](0.0-can-it-be-played.md) | — | — |
+| 0.1 | [Bootstrap: repo, ways of working, build VM, import](0.1-bootstrap.md) | 0.0 (G0 passed) | — |
 | 0.2 | [The GPU box and the go/no-go spikes G1–G10](0.2-spikes.md) | 0.1 | 0.3 §a, §b |
 | 0.3 | [The pinned stack, permissions and the installer](0.3-stack-and-installer.md) | 0.2 G3 | 0.4, 0.5 |
 | 0.5 | [The record pipeline, the quarantine and the immersion inventory](0.5-pipeline-quarantine-inventory.md) | 0.2 G4 | 0.3 |
@@ -41,7 +43,7 @@ as G1-bridge scripts.
 
 ## Part 0 exit (the owner signs)
 
-- G1–G10 passed, or the owner accepted a gate's documented fallback in writing. Decisions 0001, 0002, 0004,
+- G0–G10 passed, or the owner accepted a gate's documented fallback in writing. Decisions 0001, 0002, 0004,
   0007 and 0014 carry the measured facts.
 - A fresh GPU box reaches a passing smoke scene through `installer/install.py` with no manual step beyond the
   documented downloads.

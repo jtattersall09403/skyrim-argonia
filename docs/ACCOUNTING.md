@@ -30,7 +30,7 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | A17 | Ghidra, universal-modder, Ghidrust for RE and extraction | In | 0010 (route order, scalpel use, vendored skills); 0.1/0.4; 2.7 §b; Ghidrust Out as experimental (um-ghidra-lens §2.2) |
 | A18 | "Anything else from Skyrim" from Mudcrab | Out (for now) | Mudcrab is a world viewer, not playable (0001 table); Skyrim itself is the host; watch as S4 |
 | A19 | Free climbing (Mirror's Edge parkour-in-Skyrim reference; anything like free climbing) | In | 2.13 (FreeClimb + SkyParkour); the "one day" video is a second-hand report (um-ghidra-lens §4) |
-| A20 | Player-controlled boats; research best source | In | 1.7; 2.15 (Sailable Ship base, Wind Waker model, ownership) |
+| A20 | Player-controlled boats; research best source | In | 1.6; 2.15 (Sailable Ship base, Wind Waker model, ownership) |
 | A21 | Skyrim SE or DS3 level graphics | In | Skyrim host; 0.3 Community Shaders; 4.6 |
 | A22 | Modern features: volumetric or pseudo-volumetric fog, lighting | In | 0.3; 2.W2 (mist); 4.6 |
 | A23 | Minimal new art; extract/adapt from Morrowind, Skyrim SE, DS1/3 and community mods | In / partly Out | 0006 §6; Skyrim and mod assets used at runtime; **Morrowind and DS assets Out** (licences, 0003/0004; Morrowind assets cannot run in Skyrim without conversion, which Bethesda's terms bind to Morrowind) |
@@ -88,6 +88,9 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | B25 | Journeys are headless only: no agent plays the game by looking; no harness or capture rigs | 0021 §3; loops.md rule 5; 0.4 §c (the two runners, schema refuses stills and clips in a journey) |
 | B26 | A studio for agents and the owner: drop in, teleport, test, without the new-game flow | 0022; 0.4 §b; every owner check names a studio scene or place |
 | B28 | Critical review: test the joins and combat feel early; reuse the old tested rule code | 0023 (Part 1 core loop and verdict); 0.2 G10 |
+| B29 | Stream vanilla Skyrim to the phone and Mac first, with touch and GameSir controls; stop if unplayable | 0.0 (G0); phases/README dependency table; PLAN §6 |
+| B30 | Review and overhaul the old dialogue and quest tests (many bad) | 0.1 test review; 0.2 G10 counts only keep tests; 2.5 and 2.12 tests built from the review |
+| B31 | Is the one-place core loop actually cheaper than the alternatives? | 0023 "Why the thread is worth its cost" (an insurance cost of about 2–3 weeks; trimmed to the host-risky systems) |
 | B27 | Work in parts like the old repo, reviewed critically: slice places and systems first, then the new-game flow, then the sideways build-out; rewrite the plan holistically | 0023 (five parts; the core loop as the host go/no-go; the slice in two tracks; immersion as a gate; briefs just in time); phases/README.md; PLAN §5; this rewrite replaced the first plan's eleven phases |
 | B15 | FaceGen and distant terrain: "surely handled by Skyrim's engine" | 0014 §3–4 explains: the engine draws them, but from per-NPC face files and per-worldspace LOD files that a new worldspace and new NPCs lack; templates reuse existing faces; terrain LOD meshes are ours and may ship |
 
@@ -129,7 +132,7 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | D7 | Respawn – Soulslike (grave + last bed, permissive), Respawn – Death Overhaul | In | 2.8 |
 | D8 | Animated Armoury, Armory Extended, Throwable Weapons SKSE, crossbows vanilla | In | 2.3; 0.3; crossbows/thrown in (0016, owner ruling) |
 | D9 | Split L/R armour meshes are an asset gap; body mesh conflicts | In / Open | 2.3; O-9 |
-| D10 | Wayfinder, No Google Maps Skyrim (GPL), Compass Navigation Overhaul, quest-marker settings, Flat World Map Framework, A Quality World Map, Atlas Map Markers | In | 1.6; 2.12 |
+| D10 | Wayfinder, No Google Maps Skyrim (GPL), Compass Navigation Overhaul, quest-marker settings, Flat World Map Framework, A Quality World Map, Atlas Map Markers | In | 2.12 |
 | D11 | SkyUI 6, Infinity UI, TrueHUD, PrismaUI (licence: dependency fine; forks need permission; Ultralight licence), dMenu NG, full SWF skins; Scaleform authoring poor on Linux | In | 1.2; 2.2 |
 | D12 | Encounter zones min=max, Morrowloot, carriages pattern for travel, EnableFastTravel, training game setting, merchant gold | In | 2.6; 2.7 §j |
 | D13 | Beyond Skyrim: Argonia dormant; name overlap | In / Open | O-13 |
@@ -138,9 +141,9 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | D16 | ArgoniaCombat design (pre-hit ignore for i-frames, OAR burden-tier roll, parry window, riposte paired anims, backstab angle, poise fork, 20 m lock-on ≈ 1,400 units) | In (adapter mechanics) / replaced (numbers) | 2.7 §d adapter; numbers and rules now from DSR (0019): lock-on from `LockCamParam`, per-hitbox rates instead of head ×2, poise in our core (Chocolate Poise as reference only) |
 | D17 | ±1-frame test dummy at 30/60 fps; tunnelling check | In | 2.7 §f |
 | D18 | FromSoft-derived movesets on Nexus (e.g. Cathedral Knight) | Out | 0004 §5 |
-| D19 | FreeClimb (GPL-3.0-only; Mixamo/Threepeat clips), SkyParkour, SkyClimb (superseded), EVG Animated Traversal (ladders), climbing stamina add-on | In | 1.7; 2.13 |
+| D19 | FreeClimb (GPL-3.0-only; Mixamo/Threepeat clips), SkyParkour, SkyClimb (superseded), EVG Animated Traversal (ladders), climbing stamina add-on | In | 1.6; 2.13 |
 | D20 | Underwater NG, swim sprint mod, vanilla diving | In | 2.13 |
-| D21 | Sailable Ship (scripted helm, issues: deck instability, unanimated sails, save at helm, 60 fps), Sailboats (mount race, restrictive), L.V.X Boats, Rowboats (CC BY-SA), rowboat spell, Animated Ships | In | 1.7; 2.15 |
+| D21 | Sailable Ship (scripted helm, issues: deck instability, unanimated sails, save at helm, 60 fps), Sailboats (mount race, restrictive), L.V.X Boats, Rowboats (CC BY-SA), rowboat spell, Animated Ships | In | 1.6; 2.15 |
 | D22 | PLANCK VR-only; XP32 True Ragdoll; Precision impulses; Skyrim Delirium unverified | In / Out | 2.7 §i (PLANCK Out: VR only) |
 | D23 | Pandora under Proton fragile; generate on the playing machine | In | 0.2 G3; 0.3 risks |
 | D24 | Mutagen, Spriggit, Synthesis (not needed), xEdit under Wine (read-only), plugin2text (lossy) | In | 0.5; 0.1 |
@@ -287,7 +290,7 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | I42 | Windows machine for release tests | 3.4 |
 | I43 | Owner-step instructions | 0.1 (R2), 0.3 (gist drafts), 0.3 (manual downloads) |
 | I44 | Stale research re-checks | "Re-check before starting" in every chunk brief |
-| I45 | Optimistic estimates | PLAN §5 re-estimates at 0.2 (G8), 1.8, 2.17 and 4.1 |
+| I45 | Optimistic estimates | PLAN §5 re-estimates at 0.2 (G8), 1.7, 2.17 and 4.1 |
 | I46 | Hand-off and review numbers | ways-of-working §2 (300k/100k; 1,500 lines) |
 | I47 | One game worker; per-port journals | ways-of-working §3; job_guard `--gpu` |
 | I48 | KotM needs CC/AE archives | 0002 §2; 0.2 G3 |

@@ -39,7 +39,7 @@ people have figured a lot out already").
 3. **Install and use the `um` CLI** on the build VM where it helps (`um kb search`, `um scan`, `um backup` for DSR
    saves, `um publish check`), adapting Windows-only commands to our Linux/Proton machines or skipping them.
 4. **Read these field notes before the work they bear on** (each is cited in the matching chunk brief): Skyrim:
-   `rebuilding-a-cut-gatekeeper-with-generated-plugin-records…` (1.6, 2.5, 2.12 quests and dialogue); DSR:
+   `rebuilding-a-cut-gatekeeper-with-generated-plugin-records…` (2.5, 2.12 quests and dialogue); DSR:
    `porting-dark-souls-remastered-enemies-into-elden-ring` (2.7) and `portal-gun-prototype-via-dinput8-proxy-dll…`
    (0.2 G6, DSR camera and proxy-DLL facts); techniques: `oracles-how-agents-know-a-mod-works`,
    `prove-your-replay-bench-can-fail…`, `when-the-first-real-run-fails-suspect-the-oracle…`,

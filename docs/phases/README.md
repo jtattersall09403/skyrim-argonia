@@ -18,8 +18,8 @@ uncertainty:
 
 | Part | De-risks | Ends when the owner can say |
 |---|---|---|
-| [0 Foundation](0-foundation/README.md) | that agents can build, test and stream Skyrim from AWS; the go/no-go spikes | "I dropped into the studio on my phone and teleported around" |
-| [1 The core loop](1-core-loop/README.md) | that every system can join on this host, and that DS1 combat feels right through the stream | "this is the game I want; it is worth building" |
+| [0 Foundation](0-foundation/README.md) | first, that Skyrim streamed from AWS can be played on the phone and Mac at all; then that agents can build and test it; the go/no-go spikes | "I dropped into the studio on my phone and teleported around" |
+| [1 The core loop](1-core-loop/README.md) | that the risky systems can join on this host, and that DS1 combat feels right through the stream | "this is the game I want; it is worth building" |
 | [2 The slice](2-slice/README.md) | that the province can be generated and every system exists whole on the slice places | "I played the slice in the studio; every system is real; the world is leg-work" |
 | [3 The game shell](3-shell/README.md) | that a player installs, starts a new game and lands in the slice | "I started a new game and reached the open world; a stranger installed it" |
 | [4 Build out sideways](4-buildout/README.md) | nothing new: packets scale what is proven | "the whole province is populated, every quest completes, and it is released" |
@@ -88,6 +88,8 @@ reason.
 ## The parts in one view
 
 **Part 0, [Foundation](0-foundation/README.md).**
+- 0.0 **can it be played?** vanilla Skyrim streamed to the phone and the Mac, with touch and a GameSir pad, and
+  a stock souls-like feel probe (gate G0: if it fails, nothing else starts);
 - 0.1 the repo, the ways of working, the build VM and the import;
 - 0.2 the go/no-go spikes G1–G10 and the GPU box;
 - 0.3 the pinned stack, permissions and the installer;
@@ -97,12 +99,11 @@ reason.
 **Part 1, [The core loop](1-core-loop/README.md)**, on Claywater Station and the proving ground:
 - 1.1 the game-state seam;
 - 1.2 the UI foundation;
-- 1.3 talk, trade and carry;
+- 1.3 talk and carry;
 - 1.4 fight;
 - 1.5 grow, die, rest, save;
-- 1.6 a quest;
-- 1.7 move: climb, swim, sail;
-- 1.8 the owner's verdict.
+- 1.6 move: climb, swim, sail;
+- 1.7 the owner's verdict.
 
 **Part 2, [The slice](2-slice/README.md)**, in two tracks side by side.
 - **World track:**
@@ -178,10 +179,11 @@ reason.
 
 | This | before | because |
 |---|---|---|
+| 0.0 G0 (it can be played through the stream) | everything else | if the stream or the controls fail, nothing else is worth building |
 | 0.2 G10 (where the rules run) | 1.1 | it decides how ArgoniaCore hosts the rules |
 | 0.4 studio and runners | every L4 check and owner check after Part 0 | nothing is tested through the new-game flow |
 | 0.5 pipeline | Part 1 and everything after | records are generated, never hand-made |
-| 1.8 the owner's verdict | Part 2 | the host is confirmed before the world and systems are built at scale |
+| 1.7 the owner's verdict | Part 2 | the host is confirmed before the world and systems are built at scale |
 | 2.W5 wave 1 of the slice places | 2.4 people onwards | people, loot and quests live in those places |
 | 2.1 the sheet | 2.4 people, 2.7 combat, 3.2 character creation | every actor and formula reads it |
 | 2.3 items | 2.6 trade, 2.7 loot, 2.11 theft | they move items |

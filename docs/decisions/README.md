@@ -39,20 +39,20 @@ recommendation; the answer is recorded in the named record (or a new one) and th
 | Id | Call | Needed by | Recommendation |
 |---|---|---|---|
 | O-1 | Fate of the old elder-souls-argonia EC2 machine (stopped; ~$23/month for its 250 GiB disk) | 0.1 | Snapshot the disk to S3, then delete the volume; keep the R2 vault |
-| O-2 | Subscription: 5x now, 20x from Part 4 (or Part 2's two tracks, if measured) | 0.1, 1.8, 2.17, 4.1 | 0013 |
+| O-2 | Subscription: 5x now, 20x from Part 4 (or Part 2's two tracks, if measured) | 0.1, 1.7, 2.17, 4.1 | 0013 |
 | O-3 | Confirm the pinned runtime chosen in 0.2 | 0.2 end | 0002 rule |
-| O-4 | Perks: invisible engine layer only, or a visible Morrowind-flavoured perk layer merged with vastei | 2.1 (asked in 1.8) | Invisible layer (0005 C4) |
+| O-4 | Perks: invisible engine layer only, or a visible Morrowind-flavoured perk layer merged with vastei | 2.1 (asked in 1.7) | Invisible layer (0005 C4) |
 | O-5 | Send permission requests to mod authors (drafted by agents, sent from the owner's Nexus/ModDB account): Black Marsh & Valenwood (dalecallen1987), MihailMods, Tropical Skyrim (Soolie) and its SSE port (78044), King of the Murkmire (pancake0723; AI clause), Xanmeer tileset (NorthwindBlue, DarthVitrial), Sign of Cipactli (URL unknown), Tamriel Worldspaces – Argonia (118678) | 0.3 | Send all in one batch early; build only on cleared mods |
 | O-6 | Nexus Premium (needed for scripted API downloads; otherwise each download is a manual click) | 0.2 | Use Premium for the build and GPU machines if already held; otherwise one manual download session, cached to S3/R2 |
-| O-7 | Steam login on the GPU box (Steam Guard approval on the owner's phone, once) | 0.2 | Owner logs in through the stream once; then offline mode |
+| O-7 | Steam login on the GPU box (Steam Guard approval on the owner's phone, once) | 0.0 | Owner logs in through the stream once; then offline mode |
 | O-8 | Music source: CC-licensed, commissioned, or Fal-generated (AI clause interactions) | 2.16 | CC-licensed first, Fal for gaps |
-| O-9 | Split pauldrons/gauntlets if no sourced split meshes exist | 2.3 (asked in 1.8) | Accept paired pieces in separate slots |
+| O-9 | Split pauldrons/gauntlets if no sourced split meshes exist | 2.3 (asked in 1.7) | Accept paired pieces in separate slots |
 | O-10 | The opening's scope (default: the Opening Work Camp near Stormhold / Alten Corimont, as in the old main quest) | 3.3 | Default |
-| O-11 | Voice: stay unvoiced text dialogue (old 0139/0143) | 1.8 | Yes |
+| O-11 | Voice: stay unvoiced text dialogue (old 0139/0143) | 1.7 | Yes |
 | O-12 | Old repo's GitHub Pages build exposes converted assets publicly (outside this repo's scope) | any time | Owner's choice; flagged only |
 | O-14 | Repo licence (decision 0015) | 0.1 | GPL-3.0-or-later code, CC BY-NC-SA 4.0 content |
 | ~~O-15~~ | ~~Crossbows and thrown weapons back in~~ | — | **Answered 2026-10-27: yes** (decision 0016) |
-| O-16 | Does one rest bank one pending level or all of them (left open by old 0147) | 1.8 | One per rest (the old 76 text) |
+| O-16 | Does one rest bank one pending level or all of them (left open by old 0147) | 1.7 | One per rest (the old 76 text) |
 | O-17 | Evidence of the permissions the owner already holds (old sourcing log, 2026-09-24: "permission is held from every mod author in the pool, KotM included"): do they cover a public dependency and AI use? | 0.3 | Share the evidence; send new requests only where it falls short |
 | O-18 | Quest target at maturity: 450–550 (old 0027) or 550–740 (old quest docs) | 4.1 | 450–550 baseline, 550–740 stretch |
 | O-19 | Contribute our working ports back to universal-modder's knowledge base as scrubbed field notes (decision 0020 §7) | 2.7 onward | Yes, after the owner sees each note |

@@ -14,7 +14,7 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
   [the schedule](docs/phases/README.md), the current part's README and chunk brief, then the
   [decisions index](docs/decisions/README.md) line for anything it touches.
 - Subagents read what their brief routes.
-- Work starts at chunk [0.1](docs/phases/0-foundation/0.1-bootstrap.md); parts run in order, chunks by the
+- Work starts at chunk [0.0](docs/phases/0-foundation/0.0-can-it-be-played.md) (can it be played through the stream?); parts run in order, chunks by the
   chunk table's dependencies ([0023](docs/decisions/0023-five-parts-de-risk-first.md)).
 
 ## Never

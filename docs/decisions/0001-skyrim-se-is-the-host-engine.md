@@ -2,7 +2,7 @@
 
 **Status:** decided 2026-10-27 (owner: "I don't mind the idea of using Skyrim as host in theory", provided
 Argonia keeps Morrowind's soul; owner asked to get cracking with it). Confirmed or reversed by the 0.2
-gates (G1–G10 in [0.2](../phases/0-foundation/0.2-spikes.md)) and the owner's verdict after the core loop ([1.8](../phases/1-core-loop/1.8-verdict.md)).
+gates (G1–G10 in [0.2](../phases/0-foundation/0.2-spikes.md)) and the owner's verdict after the core loop ([1.7](../phases/1-core-loop/1.7-verdict.md)).
 
 ## Context
 

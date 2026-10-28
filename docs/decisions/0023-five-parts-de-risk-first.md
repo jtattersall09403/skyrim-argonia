@@ -44,14 +44,13 @@ studio, then the game shell, then a build-out in packets.
    | 3 The game shell | that a player installs, starts a new game and lands in the slice | "I started a new game and reached the open world; a stranger installed it" |
    | 4 Build out sideways | nothing new: packets scale what is proven | "the whole province is populated, every quest completes, and it is released" |
 
-2. **Part 1 is a thin thread through everything, on one place.** It uses Claywater Station (G4's sample block)
-   and the proving ground. Each system gets its first rung at its final interface, so later chunks deepen it and
-   never replace it:
-   - talk with topics, and trade;
+2. **Part 1 is a thin thread through every system that is risky on this host, on one place.** It uses Claywater Station (G4's sample block)
+   and the proving ground. Each of those systems gets its first rung at its final interface, so later chunks deepen it
+   and never replace it. Barter and quests are left to Part 2 as well-trodden ground:
+   - talk with topics;
    - carry, equip and read;
    - one weapon class against one archetype with measured DS1 numbers;
    - die and recover vastei; rest, level and save;
-   - one quest in the journal with directions;
    - climb, swim, and sail one boat.
 
 3. **Part 2 runs two tracks side by side.** They share the GPU box well, because the world track checks
@@ -77,6 +76,27 @@ studio, then the game shell, then a build-out in packets.
    when the chunk before it closes. ACCOUNTING maps every owner requirement to its chunk.
 
 8. **Ids are `<part>.<chunk>`** (0.4, 1.3, 2.8, 2.W3). The part README holds the chunk table.
+
+## Why the thread is worth its cost (owner: "will testing stuff at one location then doing the part 2 slice actually be any cheaper?")
+
+It is not cheaper when nothing goes wrong; it is insurance, priced like this.
+- **The cost, if everything works:** about 2–3 weeks on a project of roughly 18–30 months (PLAN §5). Every rung
+  is final-shaped, so Part 2 deepens it rather than redoing it. The real extra is the second visit to each
+  system (context, a second brief), the core-loop journey, the soak and the verdict.
+- **The saving, if something is wrong with the host:** combat that cannot feel like DS1 here, dialogue
+  interception that breaks, or a mod stack that crashes once our pieces meet. Without the thread, these surface
+  at the slice's close, about 6–9 months in. With it, they surface about 3 months in. That saves roughly 3–6
+  months of building on a failing base, while switching hosts is still cheap.
+- **The odds:** at the planner's judgement of a 15–30% chance of such a finding for a conversion this ambitious,
+  the expected saving (about 0.5–1.5 months) exceeds the cost. Smaller integration bugs found early are also
+  cheaper, because less is built on them.
+- **How to keep the cost down:**
+  - the thread holds only the host-risky systems; barter and quests went to Part 2;
+  - Claywater Station costs nothing extra, because G4 builds that block anyway;
+  - the cheapest de-risk of all runs first, in 0.0: whether the game can be played through the stream at all,
+    for a few dollars and days.
+- **What dominates total cost** is not the part order. It is the time per in-game check and the owner's
+  turnaround, which is why the studio's scene-switch targets (0.4) are numbers.
 
 ## Consequences
 

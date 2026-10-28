@@ -1,6 +1,6 @@
 # 0007: The owner plays by browser streaming from an AWS GPU machine
 
-**Status:** decided 2026-10-27. Latency to be measured in 0.2 (gate G2).
+**Status:** decided 2026-10-27. Playability, controls and latency are measured first of all, in 0.0 (gate G0), on vanilla Skyrim; re-measured with the full stack in 0.2 (G2).
 
 ## Context
 
@@ -13,7 +13,7 @@ to a browser, which also gives seamless saves across devices.
 
 1. The game runs on an on-demand **AWS GPU instance in London** (g6.xlarge L4 preferred for modded Skyrim
    and AV1/H.264 NVENC; g4dn.xlarge T4 for lighter agent test runs; g5.xlarge A10G if L4 spot is scarce),
-   chosen by the 0.2 benchmark (G2).
+   chosen by the 0.0 and 0.2 benchmarks (G0, G2).
 2. **Selkies** (linuxserver.io build) streams the desktop to a browser tab over WebRTC, with WebSocket/TCP-443
    mode for networks that block UDP (likely the work Mac's). Moonlight-Web + Sunshine is the alternative if
    Selkies' latency or controls disappoint.
@@ -33,5 +33,5 @@ to a browser, which also gives seamless saves across devices.
 
 - One target platform for agents to test (Linux + Proton on the GPU box), which is the same box the owner plays
   on: what the agents test is what the owner plays.
-- Video compression smears dense foliage and water; the 0.2 measurement records the bitrate the owner accepts.
+- Video compression smears dense foliage and water; the 0.0 measurement records the bitrate the owner accepts.
 - Data use is ~3–4 GB/hour; on mobile data the owner should prefer Wi-Fi.

@@ -132,7 +132,7 @@ column is Part 1's thread; "whole" is the chunk that completes it.
 | Navmesh | old Recast bakes | 1 (+CK fallback) | — | navmesh writer | 0.2 G4 → 2.W4 |
 | LOD, distant terrain, the map image | — | 1 | xLODGen, DynDOLOD (tools, Wine) | lod job | 2.W4 |
 | Regions, weather, climate, sky | climate/weather-states, star catalogue | 1 | — | ArgoniaGen | 2.W3 |
-| Roads, routes, the route graph | routes/*.json | 1 | — | route generator | 1.6 (the block) → 2.W3 |
+| Roads, routes, the route graph | routes/*.json | 1 | — | route generator | 2.W3 |
 | Places, interiors, doors | blueprints, 0114 interior manifest | 1 | BM&V, Xanmeer, KotM, others; **Tropical Skyrim SSE** for any base-Skyrim asset | kit-id mapper, `world-builder` | 0.2 G4 → 2.W5 → 4.2, 4.4 |
 | Vegetation | flora rules, groundcover rules | 1 | BM&V, **Tropical Skyrim SSE (78044)** (0006 §8) | scatter converter | 2.W4 |
 | The studio, scenes, the two runners | old 0149, 0155, 0156 | 5 + 6 | PrismaUI | ArgoniaBridge, ArgoniaStudio, `tools/run_journey.py` | 0.4 |
@@ -145,12 +145,12 @@ column is Part 1's thread; "whole" is the chunk that completes it.
 | Skill use, vastei, levels at rest, the sitting | 76 §120, 0147 | 3 + 5 + 6 | Sleep to Gain XP (pattern), Skill Uncapper | ArgoniaCore + sitting view | 1.5 → 2.8 |
 | Death pile, wake at last rest, rest = only save | 76 §126, 0031, 0144 | 3 + 5 | Respawn – Soulslike (pattern) | ArgoniaCore | 1.5 → 2.8 |
 | Dialogue: topics, hyperlinks, disposition, persuasion | 0139, 0143, 0145, dialogue data | 5 + 6 | PrismaUI | topic store + dialogue view | 0.2 G5 → 1.3 → 2.5 |
-| Quests as data, conditions | 0153, condition vocabulary | 1 + 4 + 5 | — | quest generator + evaluator | 1.6 → 2.12 → 4.3 |
-| Journal, directions, no markers | 0137 | 2 + 5 + 6 | Wayfinder (pattern), No Google Maps | directions generator + journal view | 1.6 → 2.12 |
+| Quests as data, conditions | 0153, condition vocabulary | 1 + 4 + 5 | — | quest generator + evaluator | 2.12 → 4.3 |
+| Journal, directions, no markers | 0137 | 2 + 5 + 6 | Wayfinder (pattern), No Google Maps | directions generator + journal view | 2.12 |
 | World map, local map | old map styles | 2 + 6 | Flat World Map Framework | map views | 2.12 |
 | Our own UI and HUD, Pelagiad, the UI map, transitions | old `packages/ui`, 0017 | 6 (port) | PrismaUI; TrueHUD/Infinity UI only to save engineering | ported views, font library | 1.2 → 2.2 → 3.1 |
 | Weapon classes (incl. crossbows/thrown, 0016), armour slots, condition | 76 §118, 0040 | 1 + 2 + 5 | spear/throwing mods, animation sets | keywords, slot data, rating hook | 1.3 → 2.3 |
-| Economy, barter, training, services, travel | 0141, 76 §124 | 1 + 4 (+5) | — | data, price hook | 1.3 → 2.6 |
+| Economy, barter, training, services, travel | 0141, 76 §124 | 1 + 4 (+5) | — | data, price hook | 2.6 |
 | Magic | 0146, 0148, 76 §123 | 1 + 4 + 5 | Skyrim magic | magic rules | 2.9 |
 | Crafting | 0150, 76 §124 | 1 + 4 | Skyrim crafting | recipes, stations | 2.10 |
 | Stealth, crime, Owing, locks, pickpocket | 0151, 0092 | 1 + 4 + 5 | Skyrim detection | Owing ledger, lock threshold | 2.11 |
@@ -159,9 +159,9 @@ column is Part 1's thread; "whole" is the chunk that completes it.
 | Movesets | chosen for DS1 fidelity (0019 §4) | 2 (+5) | permitted Skyrim movesets, AMR, Payload Interpreter, XPMSSE | runtime timing control (0014 §2) | 0.2 G9 → 1.4 → 2.7 §e |
 | Enemy AI, bosses | DSR AI shape, 0142 | 2 + 5 | SCAR (MIT), CPR, UND, Wait Your Turn | AI config; boss phases | 1.4 → 2.7 → 4.3 |
 | Ranged (shoulder aim, recoverable arrows), thrown | 76 §121.1 | 1 + 2 | Skyrim archery, TDM aim, Throwable Weapons SKSE | tuning | 2.7 §i |
-| Climbing, ladders | 0152 BotW | 2 (+3) | FreeClimb (GPL), SkyParkour, EVG Animated Traversal | rule tuning | 1.7 → 2.13 |
-| Swimming, diving, breath | 76 §122 | 1 + 2 | Underwater NG | breath formula | 1.7 → 2.13 |
-| Boats: sail, own, moor, recover | 0158, 0159 | 3 + 5 | Sailable Ship (modify with credit), Sailboats (pattern), Rowboats (CC BY-SA) | ArgoniaBoats | 1.7 → 2.15 |
+| Climbing, ladders | 0152 BotW | 2 (+3) | FreeClimb (GPL), SkyParkour, EVG Animated Traversal | rule tuning | 1.6 → 2.13 |
+| Swimming, diving, breath | 76 §122 | 1 + 2 | Underwater NG | breath formula | 1.6 → 2.13 |
+| Boats: sail, own, moor, recover | 0158, 0159 | 3 + 5 | Sailable Ship (modify with credit), Sailboats (pattern), Rowboats (CC BY-SA) | ArgoniaBoats | 1.6 → 2.15 |
 | Marsh specials: hazards, harvests, effect arrows, materials | 0157, old registries | 1 + 4 + 5 | — | data + ArgoniaCore | 2.14 |
 | Ragdolls (nice to have) | — | 2 | XP32 True Ragdoll, Precision impulses | — | 2.7 §i |
 | Graphics: lighting, fog, volumetrics | owner | 2 | Community Shaders, weather mods restyled | presets | 0.3 → 2.W3 → 4.6 |
@@ -181,8 +181,8 @@ cycle times at 0.2 (G8), at Part 1's close, at Part 2's close and at 4.1.
 
 | Part | What | Ends when the owner can say | Owner involvement | Est. |
 |---|---|---|---|---|
-| [0 Foundation](phases/0-foundation/README.md) | repo, toolchain, import; spikes G1–G10; pinned stack and installer; the bridge, **the studio** and the two runners; the record pipeline | "I dropped into the studio on my phone and teleported around" | infra steps, Steam login (O-7), stream test, O-1–O-3, O-5, O-6, O-14, O-17 | 6–10 wk |
-| [1 The core loop](phases/1-core-loop/README.md) | one thin thread through every system at Claywater Station: talk, trade, carry, fight (DS1), grow, die, rest, save, a quest, climb, swim, sail | "this is the game I want; it is worth building" (host go/no-go) | the verdict packet; O-4, O-9, O-11, O-16 | 5–8 wk |
+| [0 Foundation](phases/0-foundation/README.md) | first: can vanilla Skyrim be played through the stream on the phone and Mac, with touch and a GameSir pad (G0); then repo, toolchain, import; spikes G1–G10; pinned stack and installer; the bridge, **the studio** and the two runners; the record pipeline | "I dropped into the studio on my phone and teleported around" | infra steps, Steam login (O-7), stream test, O-1–O-3, O-5, O-6, O-14, O-17 | 6–10 wk |
+| [1 The core loop](phases/1-core-loop/README.md) | one thin thread through the host-risky systems at Claywater Station: talk, carry, fight (DS1), grow, die, rest, save, climb, swim, sail | "this is the game I want; it is worth building" (host go/no-go) | the verdict packet; O-4, O-9, O-11, O-16 | 5–8 wk |
 | [2 The slice](phases/2-slice/README.md) | world track: the whole worldspace and the slice places; systems track: every system whole | "I played the slice in the studio; every system is real; the world is leg-work" | wave and world walks, a packet per few systems, the playthrough, O-8 | 5–8 months |
 | [3 The game shell](phases/3-shell/README.md) | main menu, settings, controls, character creation, the opening, install paths, first playable | "I started a new game and reached the open world; a stranger installed it" | the opening (hands-on), O-10, O-13, O-20 | 5–8 wk |
 | [4 Build out sideways](phases/4-buildout/README.md) | before scale, region packets, narrative lines, interiors, systems depth, final look and release | "the whole province is populated, every quest completes, and it is released" | cities (hands-on), a walk per region, O-2, O-18 | many months (20x) |
@@ -208,9 +208,11 @@ A part closes only when:
 A failed gate is never waved through. The planner diagnoses, tries the brief's listed fallbacks, and only then
 brings the owner a re-plan.
 
-The two host-level go/no-go moments:
+The three go/no-go moments:
+- **0.0's gate G0**, before anything else is built: if the stream or the controls are not playable after the
+  listed fallbacks, the owner re-plans (a local PC or Steam Deck, a native engine, a different combat shape).
 - **0.2's gates G1–G10.** If G1 or G4 fails, decision 0001's fallback applies.
-- **1.8's verdict.** A "no" on combat or the host triggers decision 0001's re-plan, while switching is still cheap.
+- **1.7's verdict.** A "no" on combat or the host triggers decision 0001's re-plan, while switching is still cheap.
 
 ## 7. What is deliberately not in this plan
 
@@ -241,7 +243,7 @@ From Skyrim modding, each owned by a rule or a chunk:
 - **Saves rot across builds:** the co-save is versioned with migrations from day one (1.1). The studio always
   starts from a fresh base save (0.4). The owner's long-lived save starts only in Part 3.
 - **The mod stack is the fragile part:** one pinned runtime, pinned file hashes, a conflict list, re-test after
-  each addition (0.3). A 60-minute soak closes Part 1 (1.8).
+  each addition (0.3). A 60-minute soak closes Part 1 (1.7).
 - **Never restart the game per check:** keep it running and apply scenes (≤ 20 s each, 0.4).
 - **Steam's offline mode needs an online login every few weeks:** checked at every box start (0.2 S0).
 - **Stream latency is measured, not guessed,** and written beside every feel verdict. DS1 numbers are never

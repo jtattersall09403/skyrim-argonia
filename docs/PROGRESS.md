@@ -6,9 +6,9 @@ Status: `todo`, `in progress (lane)`, `done (commit)`, `blocked (why)`, `dropped
 
 | Part | Chunk | Title | Status |
 |---|---|---|---|
+| 0 | 0.0 | Can it be played? Vanilla Skyrim streamed, touch and GameSir controls, a feel probe (G0) | todo |
 | 0 | 0.1 | Bootstrap: repo, ways of working, build VM, import | todo |
 | 0 | 0.2 | The GPU box and the go/no-go spikes G1–G10 | todo |
-| 0 | 0.2 S0 | GPU box | todo |
 | 0 | 0.2 G1 | SKSE from Linux + bridge under Proton | todo |
 | 0 | 0.2 G2 | Streaming, performance and measured latency | todo |
 | 0 | 0.2 G3 | Runtime pin and dependency stack | todo |
@@ -24,12 +24,11 @@ Status: `todo`, `in progress (lane)`, `done (commit)`, `blocked (why)`, `dropped
 | 0 | 0.5 | The record pipeline, the quarantine and the immersion inventory | todo |
 | 1 | 1.1 | The game-state seam | todo |
 | 1 | 1.2 | The UI foundation: design system, HUD and the thread's screens | todo |
-| 1 | 1.3 | Talk, trade and carry, on the sheet | todo |
+| 1 | 1.3 | Talk and carry, on the sheet | todo |
 | 1 | 1.4 | Fight: the DS1 core, first rung | todo |
 | 1 | 1.5 | Grow, die, rest, save | todo |
-| 1 | 1.6 | A quest, the journal and directions | todo |
-| 1 | 1.7 | Move: climb, swim, sail | todo |
-| 1 | 1.8 | The core-loop journey and the owner's verdict | todo |
+| 1 | 1.6 | Move: climb, swim, sail | todo |
+| 1 | 1.7 | The core-loop journey and the owner's verdict | todo |
 | 2 | 2.W1 | Terrain, apron and edges | todo |
 | 2 | 2.W2 | Water | todo |
 | 2 | 2.W3 | Regions, weather, light, roads and the route graph | todo |

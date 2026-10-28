@@ -115,7 +115,7 @@ decisions or a later owner ruling change them. A row's verdict changes only by a
 | 0155 | journeys are staged scenes | Adapt | decision 0021: journeys are eyeless scripts on two runners; no stills or clips in a journey |
 | 0156 | test each block at its cheapest level | Carry | docs/loops.md (ladder rebuilt for Skyrim: L2 core runner + L4 game runner from a studio scene; joins tested in the feature's own lane), decision 0021 |
 | 0157 | the marsh does what the loading facts say | Carry | |
-| 0158, 0159 | boats whole; Wind Waker sailing, dugout and sea hull first | Carry | 1.7, 2.15 |
+| 0158, 0159 | boats whole; Wind Waker sailing, dugout and sea hull first | Carry | 1.6, 2.15 |
 
 The old `CLAUDE.md` rules "we never make art (UI excepted)" and "take assets, never Papyrus or SKSE code" are
 **adapted**: art stays sourced except UI and minor Fal-made 2D elements (0006); Papyrus and SKSE code from

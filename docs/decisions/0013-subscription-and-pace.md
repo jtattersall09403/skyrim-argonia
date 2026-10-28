@@ -15,7 +15,7 @@ bottleneck, not tokens.
 1. **Parts 0–3 run on 5x.** They are spike- and oracle-bound: one GPU box runs one game at a time, and most
    work is sequential (a plugin waits for its in-game check). Parallelism beyond 2–3 lanes would queue on the
    GPU box. Part 2's two tracks (the world on the build VM beside the systems on the GPU box) may justify
-   20x earlier: the planner measures it at 1.8 and asks O-2 with the numbers.
+   20x earlier: the planner measures it at 1.7 and asks O-2 with the numbers.
 2. **Part 4 (the build-out) is where 20x pays**: many independent region packets, dialogue rounds and
    places, mostly checked at data and still-image levels, with GPU checks batched.
 3. Re-evaluate at each part close from measured numbers: tokens per week used vs the plan's weekly cap,
