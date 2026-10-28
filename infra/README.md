@@ -21,6 +21,8 @@ capacity was); traffic between them crosses AZs at about $0.01/GB.
 - IAM role `argonia-build-ssm` on the build VM: `AmazonSSMManagedInstanceCore` (+ optional
   `CloudWatchAgentServerPolicy`); 0.1 adds the `argonia-agent` policy (EC2 start/stop/describe on
   `project=argonia`, S3 on the saves bucket, Cost Explorer read).
+- Passwords the owner types are four random words from the EFF large list, hyphenated (`chunk-table-scissors-otter`,
+  about 51 bits); the Windows one is Capitalised, which Windows' complexity policy needs.
 - Secrets: `~/.argonia/secrets.env` on the build VM (mode 600; never in the repo): R2 credentials (old vault),
   Nexus API key (if Premium), Fal key (1.2 onward), Selkies password.
 - Steam: the owner's account, logged in once on each machine with Steam Guard; offline mode on the game machine;
