@@ -19,6 +19,7 @@ Status: `todo`, `in progress (lane)`, `done (commit)`, `blocked (why)`, `dropped
 | 0 | 0.2 G8 | Agentic loop end to end | todo |
 | 0 | 0.2 G9 | DS1 timing without shipping edited animations | todo |
 | 0 | 0.2 G10 | Where each rule lives: the native map | todo |
+| 0 | 0.2 G11 | The UI approach, chosen with the owner | todo |
 | 0 | 0.3 | The pinned stack, permissions and the installer | todo |
 | 0 | 0.4 | The bridge, the studio and the two runners | todo |
 | 0 | 0.5 | The record pipeline, the quarantine and the immersion inventory | todo |

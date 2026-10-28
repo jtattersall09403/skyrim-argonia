@@ -69,7 +69,7 @@ skse/core/ the rules Skyrim's own systems cannot carry (G10's native map), pure 
                   events, still, booth, frametime)
    ArgoniaStudio  DEV ONLY: the studio boot and the owner's panel (decision 0022)
 papyrus/   our scripts (quest fragments generated + hand-written systems glue)
-ui/        our own original UI as PrismaUI views (React/TypeScript), ported from the old repo's design system
+ui/        our own UI, one design system (`ui/DESIGN.md`), in the approach G11 chose with the owner
            (decision 0017): HUD and every major screen; a mock harness runs them in headless Chrome
 data/      golden combat table, dependency manifest (pinned mods), immersion inventory, sourcing register,
            FormID allocator, parity tables
@@ -151,7 +151,7 @@ column is Part 1's thread; "whole" is the chunk that completes it.
 | Investigation support and the detectives' faction ([0025](decisions/0025-a-detectives-faction.md)) | condition vocabulary, 40-factions, lore extrapolation | 1 + 4 + 5 | — | evaluator predicates, journal clues, faction record, line record | 0.1 §i → 2.4, 2.5, 2.12 → 4.1 → 4.2, 4.3 |
 | Journal, directions, no markers | 0137 | 2 + 5 + 6 | Wayfinder (pattern), No Google Maps | directions generator + journal view | 2.12 |
 | World map, local map | old map styles | 2 + 6 | Flat World Map Framework | map views | 2.12 |
-| Our own UI and HUD, Pelagiad, the UI map, transitions | old `packages/ui`, 0017 | 6 (port) | PrismaUI; TrueHUD/Infinity UI only to save engineering | ported views, font library | 1.2 → 2.2 → 3.1 |
+| Our own UI and HUD, Pelagiad, the UI map, transitions | 0017's four goals; old `packages/ui` as one candidate | 6 | chosen in G11 with the owner (PrismaUI the working assumption; SkyUI-style Scaleform, MorrowindRuntime's menu, OpenMW layouts) | the design system, `ui/DESIGN.md`, views, font library | 0.2 G11 → 1.2 → 2.2 → 3.1 |
 | Weapon classes (incl. crossbows/thrown, 0016), armour slots, condition | 76 §118, 0040 | 1 + 2 + 5 | spear/throwing mods, animation sets | keywords, slot data, rating hook | 1.3 → 2.3 |
 | Economy, barter, training, services, travel | 0141, 76 §124 | 1 + 4 (+5) | — | data, price hook | 2.6 |
 | Magic | 0146, 0148, 76 §123 | 1 + 4 + 5 | Skyrim magic | magic rules | 2.9 |

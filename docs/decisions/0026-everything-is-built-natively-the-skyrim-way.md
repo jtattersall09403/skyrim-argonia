@@ -72,10 +72,8 @@ engine that already has native systems for most of them.
    comes from one template NPC that supplies race, head parts, skin, weight and height together (TPLT with the
    traits flag), never a face alone. Each person gets a full-body still, and a reader checks it for neck seams
    and skin-tone mismatches.
-8. **The UI is the one piece of old code carried over** (decision 0017; the owner ruled the old dialogue UI a
-   foundation to improve). PrismaUI runs web views inside Skyrim, so the React views run there as they were
-   designed to. Their three.js and game-shell couplings are cut. Where Skyrim's own menu does a job well once
-   restyled (barter, say), the screen's brief compares the two.
+8. **The UI's approach is chosen with the owner** (decision 0017, spike G11). Adapting the old React UI in web
+   views is one candidate among Skyrim's own menus, MorrowindRuntime's, OpenMW's layouts and hybrids.
 
 ## Consequences
 

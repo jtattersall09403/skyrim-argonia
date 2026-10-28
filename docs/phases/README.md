@@ -91,7 +91,7 @@ reason.
 - 0.0 **can it be played?** vanilla Skyrim streamed to the phone and the Mac, with touch and a GameSir pad, and
   a stock souls-like feel probe (gate G0: if it fails, nothing else starts);
 - 0.1 the repo, the ways of working, the build VM and the import;
-- 0.2 the go/no-go spikes G1–G10 and the GPU box;
+- 0.2 the go/no-go spikes G1–G11 and the GPU box;
 - 0.3 the pinned stack, permissions and the installer;
 - 0.4 the bridge, the studio and the two runners;
 - 0.5 the record pipeline, the vanilla quarantine and the immersion inventory.
