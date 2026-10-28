@@ -1,0 +1,11 @@
+[Unit]
+Description=Open tmux session argonia and resume, wake or wait (chunk 0.0)
+After=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=%h/skyrim-argonia/infra/build-vm/resume.sh
+
+[Install]
+WantedBy=default.target

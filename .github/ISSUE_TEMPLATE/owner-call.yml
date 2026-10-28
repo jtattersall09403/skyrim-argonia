@@ -1,0 +1,25 @@
+name: Owner call
+description: Decide something (agents post these with tooling/owner_inbox.py)
+title: "Owner call: "
+labels: ["owner-call"]
+assignees: ["jtattersall09403"]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: The question
+      description: What needs deciding, why now, and what each choice costs.
+    validations:
+      required: true
+  - type: dropdown
+    id: choice
+    attributes:
+      label: Your choice
+      options:
+        - The recommended option
+        - Another option
+        - Something else (say below)
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes

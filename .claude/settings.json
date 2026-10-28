@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "rm -f \"$HOME/.argonia/state/clean-stop\""
+          }
+        ]
+      }
+    ]
+  }
+}

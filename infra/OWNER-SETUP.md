@@ -40,7 +40,7 @@ Status: **[x]** done, **[ ]** to do, **[~]** waiting on AWS or someone else. The
   3. Run `gh auth login`.
   4. Clone the repo: `git clone https://github.com/jtattersall09403/skyrim-argonia ~/skyrim-argonia`.
   5. Set git config: `user.name`, and the owner's email.
-- [ ] **The secrets file, first line only now.** Run `mkdir -p ~/.argonia && touch ~/.argonia/secrets.env && chmod 600 ~/.argonia/secrets.env`,
+- [x] **The secrets file, first line only now.** Run `mkdir -p ~/.argonia && touch ~/.argonia/secrets.env && chmod 600 ~/.argonia/secrets.env`,
   then open it in the VS Code editor (File → Open File → `/home/ubuntu/.argonia/secrets.env`) and add one line:
   - `NEXUS_API_KEY=...`: Nexus Mods → profile → Site preferences → API keys → personal API key (Premium account).
     0.0 needs it for the souls-like mods in the combat test.

@@ -1,0 +1,60 @@
+# Wake on reply (chunk 0.0 §a): an owner comment on an owner issue starts the stopped build VM.
+# Only the owner's own comments count: agent posts come from the same account (the build VM's gh) and carry
+# the marker <!-- argonia-agent -->, so they are skipped. It only starts the existing machine, never creates one.
+name: wake
+on:
+  issue_comment:
+    types: [created]
+concurrency:
+  group: wake
+  cancel-in-progress: false
+permissions:
+  id-token: write
+  contents: read
+  issues: write
+jobs:
+  wake:
+    if: >-
+      github.event.comment.user.login == 'jtattersall09403' &&
+      !contains(github.event.comment.body, '<!-- argonia-agent -->') &&
+      (contains(github.event.issue.labels.*.name, 'owner-check') ||
+       contains(github.event.issue.labels.*.name, 'owner-call'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_WAKE_ROLE_ARN }}
+          aws-region: eu-west-2
+      - name: Start argonia-build if it is stopped
+        id: start
+        run: |
+          read -r id state < <(aws ec2 describe-instances \
+            --filters Name=tag:Name,Values=argonia-build \
+            --query 'Reservations[].Instances[?State.Name!=`terminated`][].[InstanceId,State.Name]' --output text | head -1)
+          echo "instance $id is $state"
+          if [ -z "$id" ]; then echo "result=missing" >> "$GITHUB_OUTPUT"; exit 0; fi
+          if [ "$state" != "stopped" ]; then echo "result=$state" >> "$GITHUB_OUTPUT"; exit 0; fi
+          if out=$(aws ec2 start-instances --instance-ids "$id" 2>&1); then
+            echo "result=started" >> "$GITHUB_OUTPUT"
+          else
+            echo "$out"
+            if grep -q -E 'InsufficientInstanceCapacity|capacity' <<<"$out"; then
+              echo "result=no-capacity" >> "$GITHUB_OUTPUT"
+            else
+              echo "result=error" >> "$GITHUB_OUTPUT"
+            fi
+          fi
+      - name: Tell the owner when it could not start
+        if: steps.start.outputs.result == 'no-capacity' || steps.start.outputs.result == 'error' || steps.start.outputs.result == 'missing'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESULT: ${{ steps.start.outputs.result }}
+        run: |
+          case "$RESULT" in
+            no-capacity) msg="AWS has no spot capacity for the build VM right now. The spot request will start it when capacity returns; you can also try Start in the EC2 console later." ;;
+            missing) msg="I could not find the build VM (tag Name=argonia-build). Nothing was created." ;;
+            *) msg="Starting the build VM failed; see the wake workflow run log." ;;
+          esac
+          gh issue comment "${{ github.event.issue.number }}" -R "${{ github.repository }}" \
+            --body "$msg"$'\n\n<!-- argonia-agent -->'

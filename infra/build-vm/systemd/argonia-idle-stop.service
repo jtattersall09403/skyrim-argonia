@@ -1,0 +1,6 @@
+[Unit]
+Description=Argonia build VM idle-stop check (chunk 0.0)
+
+[Service]
+Type=oneshot
+ExecStart=%h/skyrim-argonia/infra/build-vm/idle-stop.sh

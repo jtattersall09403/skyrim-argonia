@@ -1,0 +1,24 @@
+name: Owner check
+description: Play something and say how it went (agents post these with tooling/owner_inbox.py)
+title: "Owner check: "
+labels: ["owner-check"]
+assignees: ["jtattersall09403"]
+body:
+  - type: markdown
+    attributes:
+      value: "Each step is one thing to try, in a named studio scene or place. Tick it when done and reply below."
+  - type: checkboxes
+    id: steps
+    attributes:
+      label: Steps
+      options:
+        - label: Step one
+  - type: textarea
+    id: reply
+    attributes:
+      label: Your reply
+      description: What worked, what did not, anything that jarred. Plain words are fine.
+  - type: textarea
+    id: costs
+    attributes:
+      label: Costs so far (agent fills in)
