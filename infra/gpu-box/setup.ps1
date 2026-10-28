@@ -83,6 +83,8 @@ function Install-Stream {
     $msi = Get-File 'https://github.com/LizardByte/Sunshine/releases/download/v2026.914.233613/Sunshine-Windows-AMD64-installer.msi' 'sunshine.msi'
     Start-Process msiexec.exe -ArgumentList '/i', $msi, '/qn', '/norestart' -Wait
   }
+  # Moonlight's app list starts the game directly: Skyrim, Skyrim (souls-like mods), or the desktop.
+  Copy-Item "$Root\infra\sunshine-apps.json" 'C:\Program Files\Sunshine\config\apps.json' -Force
   Write-Host "sunshine: $((Get-Service SunshineService -ErrorAction SilentlyContinue).Status)"
 
   if (-not (Test-Path "$Root\moonlight-web\web-server.exe")) {

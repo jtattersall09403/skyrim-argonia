@@ -1,0 +1,19 @@
+{
+  "env": {},
+  "apps": [
+    {
+      "name": "Skyrim",
+      "detached": ["powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\combat-mode.ps1 play-vanilla"],
+      "image-path": "steam.png"
+    },
+    {
+      "name": "Skyrim (souls-like mods)",
+      "detached": ["powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\combat-mode.ps1 play-modded"],
+      "image-path": "steam.png"
+    },
+    {
+      "name": "Desktop",
+      "image-path": "desktop.png"
+    }
+  ]
+}

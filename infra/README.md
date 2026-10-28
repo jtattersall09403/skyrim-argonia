@@ -23,6 +23,9 @@ capacity was); traffic between them crosses AZs at about $0.01/GB.
   `project=argonia`, S3 on the saves bucket, Cost Explorer read).
 - Passwords the owner types are four random words from the EFF large list, hyphenated (`chunk-table-scissors-otter`,
   about 51 bits); the Windows one is Capitalised, which Windows' complexity policy needs.
+- **Never reset the game machine's Windows password** (`net user`): Windows then drops everything it encrypted
+  under the old one, including Steam's saved sign-in, and the owner has to sign in to Steam again (2026-10-28).
+  Change it only as the signed-in user, with the old password.
 - Secrets: `~/.argonia/secrets.env` on the build VM (mode 600; never in the repo): R2 credentials (old vault),
   Nexus API key (if Premium), Fal key (1.2 onward), Selkies password.
 - Steam: the owner's account, logged in once on each machine with Steam Guard; offline mode on the game machine;
