@@ -9,8 +9,12 @@ Status: **[x]** done, **[ ]** to do, **[~]** waiting on AWS or someone else. The
 
 ## Already done (2026-10-27 to 28)
 - [x] AWS budget alert `argonia-monthly` ($100).
-- [x] Build VM `argonia-build` (m7i.xlarge spot, London), with the IAM role `argonia-build-ssm`.
-- [x] The VS Code tunnel `argonia-build`.
+- [x] Build VM `argonia-build`: **m7i-flex.xlarge** persistent spot (stop on interruption), London, with the IAM role
+  `argonia-build-ssm` and tags `Name=argonia-build`, `project=argonia`. It moved from m7i.xlarge on 2026-10-28 after three
+  spot interruptions in 30 minutes; the Spot Advisor gives m7i-flex.xlarge under 5% a month. It was rebuilt from the
+  snapshot `argonia-build-2026-10-28` (image `argonia-build-ena`).
+- [x] The VS Code tunnel `argonia-build`, signed in with **GitHub** (`jtattersall09403`). The browser must sign in to
+  vscode.dev with the same GitHub account; a Microsoft sign-in hangs on "opening remote".
 - [x] GPU spot quota "All G and VT Spot Instance Requests", eu-west-2: 8 vCPUs, approved 2026-10-28. That is one
   g6.2xlarge or two g6.xlarge. A rise to 16 is requested only when parallel game copies are needed.
 

@@ -8,7 +8,7 @@ Prices are 2026-10-27 research values until 0.1 replaces them with measured ones
 
 | Name | Role | Type | Pricing | Disk | Access | Status |
 |---|---|---|---|---|---|---|
-| `argonia-build` | Claude Code, generators, compilers, L1–L3 tests | m7i.xlarge (4 vCPU, 16 GiB, x86), Ubuntu 24.04 | persistent spot, stop on interruption (spot price: _to record_) | 120 GiB gp3 | VS Code tunnel `argonia-build` (vscode.dev/tunnel/argonia-build, GitHub sign-in); SSM Session Manager as break-glass; no inbound rules | created by the owner 2026-10-27 |
+| `argonia-build` | Claude Code, generators, L1–L3 tests | m7i-flex.xlarge (4 vCPU, 16 GiB, x86), Ubuntu 24.04 (moved from m7i.xlarge 2026-10-28: interruptions) | persistent spot, stop on interruption (spot price: _to record_) | 120 GiB gp3 | VS Code tunnel `argonia-build` (vscode.dev/tunnel/argonia-build, GitHub sign-in); SSM Session Manager as break-glass; no inbound rules | created by the owner 2026-10-27 |
 | `argonia-play` | Skyrim under Proton, bridge, Selkies, L4–L6 | g6.xlarge (L4) default; g4dn.xlarge / g5.xlarge fallbacks | persistent spot, stop on interruption; idle-stop 15 min | ~150 GiB gp3 | from the build VM over the VPC; owner via Selkies | created in 0.2 G0 |
 | old elder-souls-argonia box | the old project | m7i.2xlarge | stopped | 250 GiB gp3 (~$23/month) | — | owner call O-1 |
 
