@@ -116,6 +116,18 @@ function Install-Dcv {
     $msi = Get-File 'https://d1uj6qtbmh3dt5.cloudfront.net/nice-dcv-server-x64-Release.msi' 'dcv-server.msi'
     Start-Process msiexec.exe -ArgumentList '/i', $msi, 'ADDLOCAL=ALL', 'AUTOMATIC_SESSION_OWNER=Administrator', '/qn', '/norestart', "/l*v $Root\logs\dcv-install.log" -Wait
   }
+  # DCV keeps the desktop at 1920x1080 whatever the browser's size, and never locks it on disconnect (a locked
+  # desktop hides the input marker and blocks Sunshine's stream). Windows' own idle lock is off too.
+  $k = 'HKLM:\SOFTWARE\GSettings\com\nicesoftware\dcv'
+  New-Item -Path "$k\display", "$k\security" -Force | Out-Null
+  New-ItemProperty -Path "$k\display" -Name enable-client-resize -PropertyType DWord -Value 0 -Force | Out-Null
+  New-ItemProperty -Path "$k\display" -Name console-session-default-layout -PropertyType String -Force `
+    -Value "[{'w':<int32 1920>, 'h':<int32 1080>, 'x':<int32 0>, 'y':<int32 0>}]" | Out-Null
+  New-ItemProperty -Path "$k\security" -Name os-auto-lock -PropertyType DWord -Value 0 -Force | Out-Null
+  New-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' -Name InactivityTimeoutSecs -PropertyType DWord -Value 0 -Force | Out-Null
+  New-Item -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization' -Force | Out-Null
+  New-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization' -Name NoLockScreen -PropertyType DWord -Value 1 -Force | Out-Null
+  powercfg /SETACVALUEINDEX SCHEME_CURRENT SUB_NONE CONSOLELOCK 0; powercfg /SETACTIVE SCHEME_CURRENT
   New-NetFirewallRule -Name dcv-8443 -DisplayName 'DCV 8443' -Protocol TCP -LocalPort 8443 -Action Allow -ErrorAction SilentlyContinue | Out-Null
   New-NetFirewallRule -Name dcv-8443u -DisplayName 'DCV 8443 UDP' -Protocol UDP -LocalPort 8443 -Action Allow -ErrorAction SilentlyContinue | Out-Null
   Write-Host "dcv: $((Get-Service dcvserver -ErrorAction SilentlyContinue).Status)"
