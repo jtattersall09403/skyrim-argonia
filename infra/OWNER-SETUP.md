@@ -15,6 +15,19 @@ Status: **[x]** done, **[ ]** to do, **[~]** waiting on AWS or someone else. The
   g6.2xlarge or two g6.xlarge. A rise to 16 is requested only when parallel game copies are needed.
 
 ## Before chunk 0.0 starts
+- [ ] **Start the build VM** whenever it is stopped: AWS console (London region) → EC2 → Instances → select
+  `argonia-build` → Instance state → Start. Wait about a minute until it shows Running and 2/2 checks, then open
+  `https://vscode.dev/tunnel/argonia-build` and sign in with GitHub. (The AWS console phone app works too.)
+- [ ] **The idle backstop alarm** (once): EC2 → Instances → select `argonia-build` → Actions → Monitor and
+  troubleshoot → Manage CloudWatch alarms → Create an alarm.
+  - Notification: off.
+  - Alarm action: on, **Stop**.
+  - Alarm thresholds: CPU utilization, Average, **<= 2 percent**, for **12 consecutive periods of 5 minutes** (one
+    hour).
+  - Name it `argonia-build-idle-stop` → Create.
+
+  This is only a backstop. In 0.0 the agent installs a smarter idle-stop on the machine: it stops after about
+  20 minutes with no agent working and no VS Code tab open, and it never stops mid-job.
 - [ ] **Claude Code and GitHub on the build VM** (setup step 4):
   1. In the VS Code terminal, start a tmux session: `tmux new -s argonia` (later, `tmux attach -t argonia` gets
      back to it).
