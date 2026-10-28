@@ -32,6 +32,7 @@ Rulings inherited from elder-souls-argonia are listed (carry / adapt / drop) in
 - [0018](0018-the-creation-kit-is-a-tool-not-the-workflow.md) The Creation Kit is installed and used as a scripted tool; records are written by code
 - [0024](0024-content-is-written-from-one-source-of-truth.md) Quests, dialogue and text are written from one source of truth, through generated briefs and the quest-write, quest-review and dialogue-write skills; old written lines are not used
 - [0025](0025-a-detectives-faction.md) A detectives' faction, rival to the Shadowscales and the Night-Reed Chapter, escalating to a grand murder-mystery finale
+- [0026](0026-places-are-rebuilt-natively-the-skyrim-way.md) Places are rebuilt natively, the Skyrim way: the old project gives content (heightfield, designs, people), never machinery; navmesh by tes4skyrim's method; whole-body NPC templates
 
 ## Open owner calls
 

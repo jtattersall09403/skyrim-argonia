@@ -129,22 +129,22 @@ column is Part 1's thread; "whole" is the chunk that completes it.
 |---|---|---|---|---|---|
 | Worldspace terrain (126×126 cells) + apron | old heightfield, 0067 apron | 1 | — | tools + ArgoniaGen | 0.2 G4 → 2.W1 |
 | Rivers, lakes, waterfalls, sea | hydrology graph, 0064 waterfalls vanilla kit | 1 (+5 if needed) | vanilla water records/meshes | water planner | 0.2 G7 → 2.W2 |
-| Navmesh | old Recast bakes | 1 (+CK fallback) | — | navmesh writer | 0.2 G4 → 2.W4 |
+| Navmesh | the world's own collision (0026 §3) | 1 (+CK check and fallback) | tes4skyrim's navmesh method | navmesh job | 0.2 G4 → 2.W4 |
 | LOD, distant terrain, the map image | — | 1 | xLODGen, DynDOLOD (tools, Wine) | lod job | 2.W4 |
 | Regions, weather, climate, sky | climate/weather-states, star catalogue | 1 | — | ArgoniaGen | 2.W3 |
 | Roads, routes, the route graph | routes/*.json | 1 | — | route generator | 2.W3 |
-| Places, interiors, doors | blueprints, 0114 interior manifest | 1 | BM&V, Xanmeer, KotM, others; **Tropical Skyrim SSE** for any base-Skyrim asset | kit-id mapper, `world-builder` | 0.2 G4 → 2.W5 → 4.2, 4.4 |
+| Places, interiors, doors | blueprints, 0114 interior manifest | 1 | BM&V, Xanmeer, KotM, others; **Tropical Skyrim SSE** for any base-Skyrim asset | piece resolver, `world-builder`, rebuilt natively (0026) | 0.2 G4 → 2.W5 → 4.2, 4.4 |
 | Vegetation | flora rules, groundcover rules | 1 | BM&V, **Tropical Skyrim SSE (78044)** (0006 §8) | scatter converter | 2.W4 |
 | The studio, scenes, the two runners | old 0149, 0155, 0156 | 5 + 6 | PrismaUI | ArgoniaBridge, ArgoniaStudio, `tools/run_journey.py` | 0.4 |
 | Game state, co-save, message schema, menu router | old 2.1 seam | 5 | — | ArgoniaCore | 1.1 |
 | Where the rules run | old `packages/*` (engine-neutral TS) | 5 | QuickJS-ng (if chosen) | `rules/` or `skse/core/` | 0.2 G10 → 1.1 |
-| NPCs, faces, schedules, factions | npcs.json, 0138 lamp clock, 0028 | 1 (+FaceGen solution) | — | ArgoniaGen, AI packages | 0.2 G4 → 2.4 |
+| NPCs, whole-body templates, schedules, factions | the old people carried over (0026 §6), 0138 lamp clock, 0028 | 1 (+FaceGen for unique faces) | — | ArgoniaGen, AI packages | 0.2 G4 → 2.4 |
 | Fixed danger D0–D5, roaming bands, respawn on rest | 0004, 0142, 76 §128 | 1 + 4 | — | encounter zones, spawner | 1.4 → 2.7 §j |
 | Attributes, 27 skills, formulas | 76 §116–122 | 2 + 5 | Custom Skills Framework | ArgoniaCore stats | 1.3 (whole) |
 | Races, birthsigns, classes, effect stack, perks | 76 §116–119, owner C4 | 1 + 5 | — | records, perk audit | 2.1 |
 | Skill use, vastei, levels at rest, the sitting | 76 §120, 0147 | 3 + 5 + 6 | Sleep to Gain XP (pattern), Skill Uncapper | ArgoniaCore + sitting view | 1.5 → 2.8 |
 | Death pile, wake at last rest, rest = only save | 76 §126, 0031, 0144 | 3 + 5 | Respawn – Soulslike (pattern) | ArgoniaCore | 1.5 → 2.8 |
-| Dialogue: topics, hyperlinks, disposition, persuasion | 0139, 0143, 0145, dialogue data | 5 + 6 | PrismaUI | topic store + dialogue view | 0.2 G5 → 1.3 → 2.5 |
+| Dialogue: topics, hyperlinks, disposition, persuasion | 0139, 0143, 0145, dialogue data | 2 or 5 + 6 | tes4skyrim's MorrowindRuntime (OpenMW's engine in SKSE; audited in 0.1 §j), PrismaUI | topic store + dialogue view | 0.2 G5 → 1.3 → 2.5 |
 | Quests as data, conditions | 0153, condition vocabulary | 1 + 4 + 5 | — | quest generator + evaluator | 2.12 → 4.3 |
 | Writing quests, dialogue and text (one source of truth, generated briefs; [0024](decisions/0024-content-is-written-from-one-source-of-truth.md)) | old quest design, culture sheets | tool | — | skills `quest-write`, `quest-review`, `dialogue-write`; agents `quest-reviewer`, `dialogue-writer`, `corpus-find` | 0.1 §b, §i → 1.3 → 2.5, 2.12 → 3.3 → 4.2, 4.3 |
 | Investigation support and the detectives' faction ([0025](decisions/0025-a-detectives-faction.md)) | condition vocabulary, 40-factions, lore extrapolation | 1 + 4 + 5 | — | evaluator predicates, journal clues, faction record, line record | 0.1 §i → 2.4, 2.5, 2.12 → 4.1 → 4.2, 4.3 |

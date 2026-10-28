@@ -24,8 +24,9 @@ quests and dialogue that way. The CK also ships things we need regardless of how
      with the CK; our scripts compile against them (0.5). This alone makes the CK required.
    - **Checking our plugin:** loading `Argonia.esm` in the CK under Wine/Xvfb and reading its warnings log is an
      extra L1 check (data errors the CK reports at load).
-   - **Navmesh** (0.2 G4 option b, 2.W4): the CK's generator driven by a GUI macro (xdotool on Xvfb), its output
-     captured back to Spriggit, wherever our own Recast converter is not good enough.
+   - **Navmesh** (0.2 G4, 2.W4): the CK's generator, scripted on the Windows game machine, as the check on
+     tes4skyrim's method and the fallback for cells it cannot do (decision 0026 §3), its output captured back to
+     Spriggit.
    - **FaceGen export** for development and the owner's GPU box (0.2 G4), if templates do not cover a face; for
      players, the installer's own step (decision 0014 §3).
    - **Water flowmaps** (0.2 G7) if we cannot generate them ourselves.

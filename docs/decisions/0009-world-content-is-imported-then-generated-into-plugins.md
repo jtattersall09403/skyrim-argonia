@@ -33,7 +33,7 @@ style guide and a Morrowind exemplar corpus. The owner may keep developing the t
 
 ## Consequences
 
-- Places built in the old repo as poses of Skyrim kit pieces port directly to REFRs (the meshes are already
-  Skyrim's or Skyrim mods'), which is the strongest reason the import is cheap.
+- Places are rebuilt natively from their design notes, with the old layouts as a guide (decision 0026). Every piece
+  the old places used is already Skyrim's or a Skyrim mod's, so each resolves to a base record.
 - Morrowind-style dialogue and quest conditions beyond Skyrim's condition functions are evaluated by
   ArgoniaCore (S2), fed by the same JSON.
