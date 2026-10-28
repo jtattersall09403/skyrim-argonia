@@ -1,0 +1,18 @@
+{
+  "name": "argonia-stream-client",
+  "version": "0.1.0",
+  "description": "Our client page: Moonlight-Web v3.0.1's web frontend plus the touch gamepad and the stream metrics (chunk 0.0 §c)",
+  "license": "GPL-3.0-or-later",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --experimental-strip-types --no-warnings --test test/*.test.ts",
+    "lint": "tsc --noEmit -p tsconfig.json",
+    "bundle": "esbuild src/main.ts --bundle --format=iife --target=chrome100,safari15 --minify --sourcemap=linked --outfile=build/argonia.js"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "esbuild": "0.24.0",
+    "typescript": "5.6.3"
+  }
+}

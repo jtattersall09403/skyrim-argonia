@@ -1,0 +1,43 @@
+<!doctype html>
+<!-- Offline harness for argonia.js (chunk 0.0 §c): no Moonlight-Web, no network. A canvas plays the host: busy
+     game-like content, and 30 ms after each new key press or gamepad button (read the way upstream reads pads:
+     navigator.getGamepads() every frame) it draws the marker's two-tone square in the top-left for 60 ms. The canvas
+     is streamed into a video.video-stream element, where argonia.js samples the corner and pairs flashes to inputs. -->
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<title>argonia local harness</title><script src="argonia.js"></script>
+<style>html,body{margin:0;background:#000;height:100%}#root video{width:100%;height:100%;object-fit:contain}</style></head>
+<body><div id="input" tabindex="0"></div><div id="root"><video class="video-stream" muted autoplay playsinline></video></div>
+<script>
+const W = 1920, H = 1080, HALF = 24, HOST_DELAY_MS = 30, FLASH_MS = 60
+const c = document.createElement("canvas"); c.width = W; c.height = H
+const g = c.getContext("2d")
+let blackLeft = true, flashUntil = 0
+const pending = []
+window.hostLog = []
+function hostPress(what) { pending.push({ due: performance.now() + HOST_DELAY_MS, what }) }
+window.addEventListener("keydown", (e) => { if (!e.repeat) hostPress(e.code) })
+let prev = []
+function frame() {
+  const now = performance.now()
+  // upstream-style pad read
+  for (const p of navigator.getGamepads()) {
+    if (!p) continue
+    const cur = p.buttons.map((b) => b.pressed)
+    cur.forEach((d, i) => { if (d && !prev[i]) hostPress("pad" + i) })
+    prev = cur
+  }
+  while (pending.length && pending[0].due <= now) { const p = pending.shift(); blackLeft = !blackLeft; flashUntil = now + FLASH_MS; hostLog.push({ at: now, what: p.what }) }
+  // game-like content: moving colour bands, never flat
+  for (let x = 0; x < 200; x += 10) { g.fillStyle = `hsl(${(x * 3 + now / 5) % 360},70%,50%)`; g.fillRect(x, 0, 10, 200) }
+  g.fillStyle = "#334"; g.fillRect(200, 0, W - 200, H)
+  if (now < flashUntil) {
+    g.fillStyle = blackLeft ? "#000" : "#fff"; g.fillRect(0, 0, HALF, HALF)
+    g.fillStyle = blackLeft ? "#fff" : "#000"; g.fillRect(HALF, 0, HALF, HALF)
+  }
+  requestAnimationFrame(frame)
+}
+requestAnimationFrame(frame)
+const v = document.querySelector("video")
+v.srcObject = c.captureStream(60)
+v.play()
+</script></body></html>

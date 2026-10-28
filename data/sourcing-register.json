@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Moonlight-Web (moonlight-web-stream)",
+    "source_url": "https://github.com/MrCreativ3001/moonlight-web-stream/releases/tag/v3.0.1",
+    "version": "v3.0.1 (release asset moonlight-web-x86_64-pc-windows-gnu.zip, sha256 7680f8eb...40b1f)",
+    "licence": "GPL-3.0-or-later",
+    "used_by": "infra/stream-client (our client page, chunk 0.0 §c)",
+    "linked_or_forked_by": "forked: build.sh fetches the release's built static/ at the tag, adds our argonia.js (src/) and one script tag in stream.html; nothing upstream is committed; NOTICE and LICENSE kept",
+    "notes": "Rust server not rebuilt (the frontend build needs cargo for ts-rs bindings and the moonlight-common-rust wasm). Our changes are GPL-3.0-or-later too."
+  },
+  {
+    "name": "esbuild, TypeScript, @types/node (dev tools)",
+    "source_url": "https://www.npmjs.com/package/esbuild",
+    "version": "esbuild 0.24.0, typescript 5.6.3, @types/node 22.9.0",
+    "licence": "MIT (esbuild, @types/node), Apache-2.0 (typescript)",
+    "used_by": "infra/stream-client build and lint",
+    "linked_or_forked_by": "npm devDependencies (package-lock.json); not shipped",
+    "notes": "Build tools only."
+  },
+  {
+    "name": "Puppeteer with Chrome for Testing (test tool)",
+    "source_url": "https://pptr.dev",
+    "version": "puppeteer 23.6.0, Chrome 130.0.6723.58",
+    "licence": "Apache-2.0 (puppeteer); Chrome for Testing under Google's terms",
+    "used_by": "infra/stream-client/e2e (end-to-end and offline checks on the build VM)",
+    "linked_or_forked_by": "installed by e2e.sh under the gitignored build/e2e; not shipped",
+    "notes": "Test only."
+  }
+]

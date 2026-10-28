@@ -1,0 +1,16 @@
+Argonia stream client (Elder Souls: Argonia, chunk 0.0 §c)
+
+This is a modified version of Moonlight-Web by MrCreativ3001 and contributors,
+https://github.com/MrCreativ3001/moonlight-web-stream, release v3.0.1 (tag v3.0.1),
+licensed under the GNU General Public License v3.0 or later (see LICENSE.txt).
+
+Changes (2026-10-28), by the Elder Souls: Argonia project, also under GPL-3.0-or-later:
+- stream.html loads one extra script, argonia.js, before upstream's stream.js. Upstream's own
+  files are otherwise the unmodified v3.0.1 release build.
+- argonia.js (source: infra/stream-client/src in https://github.com/jtattersall09403/skyrim-argonia)
+  adds an on-screen touch gamepad presented to the page as a standard Gamepad API pad,
+  per-second stream metrics (round trip, jitter, loss, bitrate, frame rate, decode time, drops,
+  resolution, codec, transport, device, network, input source) sent to a collector on the
+  game machine, and press-to-screen latency measured from a host-drawn corner marker.
+
+Corresponding source: upstream's at the tag above, plus infra/stream-client in this repository.
