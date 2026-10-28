@@ -1,10 +1,21 @@
-# Wake on reply (chunk 0.0 §a): an owner comment on an owner issue starts the stopped build VM.
-# Only the owner's own comments count: agent posts come from the same account (the build VM's gh) and carry
-# the marker <!-- argonia-agent -->, so they are skipped. It only starts the existing machine, never creates one.
+# Wake on reply, and the owner's play switch (chunk 0.0 §a, owner call #6).
+# - An owner comment on an owner issue starts the stopped build VM (so the agent reads it).
+# - A comment that is just "play" or "ready" also starts the game machine and replies when it is up; "stop" stops
+#   it. The game machine also stops itself after 15 minutes with no stream client (idle-stop.ps1).
+# - "Run workflow" (GitHub mobile too) does the same without a comment.
+# Only the owner's own comments count: agent posts come from the same account (the build VM's gh) and carry the
+# marker <!-- argonia-agent -->, so they are skipped. It only starts or stops existing machines, never creates one.
 name: wake
 on:
   issue_comment:
     types: [created]
+  workflow_dispatch:
+    inputs:
+      action:
+        description: "play = start the game machine, stop = stop it, wake = start the build VM only"
+        type: choice
+        options: [play, stop, wake]
+        default: play
 concurrency:
   group: wake
   cancel-in-progress: false
@@ -15,46 +26,81 @@ permissions:
 jobs:
   wake:
     if: >-
-      github.event.comment.user.login == 'jtattersall09403' &&
-      !contains(github.event.comment.body, '<!-- argonia-agent -->') &&
-      (contains(github.event.issue.labels.*.name, 'owner-check') ||
-       contains(github.event.issue.labels.*.name, 'owner-call'))
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.comment.user.login == 'jtattersall09403' &&
+       !contains(github.event.comment.body, '<!-- argonia-agent -->') &&
+       (contains(github.event.issue.labels.*.name, 'owner-check') ||
+        contains(github.event.issue.labels.*.name, 'owner-call')))
     runs-on: ubuntu-latest
-    timeout-minutes: 3
+    timeout-minutes: 8
     steps:
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ vars.AWS_WAKE_ROLE_ARN }}
           aws-region: eu-west-2
-      - name: Start argonia-build if it is stopped
-        id: start
+      - name: Decide what the owner asked for
+        id: ask
+        env:
+          BODY: ${{ github.event.comment.body }}
+          INPUT: ${{ github.event.inputs.action }}
         run: |
-          read -r id state < <(aws ec2 describe-instances \
-            --filters Name=tag:Name,Values=argonia-build \
-            --query 'Reservations[].Instances[?State.Name!=`terminated`][].[InstanceId,State.Name]' --output text | head -1)
-          echo "instance $id is $state"
-          if [ -z "$id" ]; then echo "result=missing" >> "$GITHUB_OUTPUT"; exit 0; fi
-          if [ "$state" != "stopped" ]; then echo "result=$state" >> "$GITHUB_OUTPUT"; exit 0; fi
-          if out=$(aws ec2 start-instances --instance-ids "$id" 2>&1); then
-            echo "result=started" >> "$GITHUB_OUTPUT"
-          else
-            echo "$out"
-            if grep -q -E 'InsufficientInstanceCapacity|capacity' <<<"$out"; then
-              echo "result=no-capacity" >> "$GITHUB_OUTPUT"
-            else
-              echo "result=error" >> "$GITHUB_OUTPUT"
+          # Only a comment that is just the word counts, so a long reply never switches the game machine.
+          word=$(tr -d '[:space:][:punct:]' <<<"$BODY" | tr '[:upper:]' '[:lower:]')
+          if [ -n "$INPUT" ]; then a="$INPUT"
+          elif [ "$word" = stop ]; then a=stop
+          elif [ "$word" = play ] || [ "$word" = ready ]; then a=play
+          else a=wake; fi
+          echo "action=$a" >> "$GITHUB_OUTPUT"; echo "action: $a"
+      - name: Start or stop the machines
+        id: run
+        env:
+          ACTION: ${{ steps.ask.outputs.action }}
+        run: |
+          state() { aws ec2 describe-instances --filters "Name=tag:Name,Values=$1" \
+            --query 'Reservations[].Instances[?State.Name!=`terminated`][].[InstanceId,State.Name]' --output text | head -1; }
+          start() {  # name -> result: started / already-<state> / no-capacity / denied / missing
+            read -r id st < <(state "$1")
+            if [ -z "$id" ]; then echo missing; return; fi
+            if [ "$st" != stopped ]; then echo "already-$st"; return; fi
+            if out=$(aws ec2 start-instances --instance-ids "$id" 2>&1); then echo started
+            elif grep -q -E 'InsufficientInstanceCapacity|capacity' <<<"$out"; then echo no-capacity
+            elif grep -q -E 'UnauthorizedOperation|AccessDenied' <<<"$out"; then echo denied
+            else echo "error: $out" >&2; echo error; fi
+          }
+          build=$(start argonia-build); echo "build=$build" >> "$GITHUB_OUTPUT"; echo "build VM: $build"
+          play=none
+          if [ "$ACTION" = play ]; then
+            play=$(start argonia-play)
+            if [ "$play" = started ] || [ "$play" = already-pending ]; then
+              read -r id _ < <(state argonia-play)
+              aws ec2 wait instance-running --instance-ids "$id" && play=running
             fi
+          elif [ "$ACTION" = stop ]; then
+            read -r id st < <(state argonia-play)
+            if [ -n "$id" ] && [ "$st" = running ]; then
+              aws ec2 stop-instances --instance-ids "$id" >/dev/null 2>&1 && play=stopped || play=denied
+            else play="already-$st"; fi
           fi
-      - name: Tell the owner when it could not start
-        if: steps.start.outputs.result == 'no-capacity' || steps.start.outputs.result == 'error' || steps.start.outputs.result == 'missing'
+          echo "play=$play" >> "$GITHUB_OUTPUT"; echo "game machine: $play"
+      - name: Tell the owner
+        if: github.event_name == 'issue_comment'
         env:
           GH_TOKEN: ${{ github.token }}
-          RESULT: ${{ steps.start.outputs.result }}
+          ACTION: ${{ steps.ask.outputs.action }}
+          BUILD: ${{ steps.run.outputs.build }}
+          PLAY: ${{ steps.run.outputs.play }}
         run: |
-          case "$RESULT" in
-            no-capacity) msg="AWS has no spot capacity for the build VM right now. The spot request will start it when capacity returns; you can also try Start in the EC2 console later." ;;
-            missing) msg="I could not find the build VM (tag Name=argonia-build). Nothing was created." ;;
-            *) msg="Starting the build VM failed; see the wake workflow run log." ;;
+          msg=""
+          case "$PLAY" in
+            running|already-running) msg="The game machine is on. Give it about two minutes to sign in to its desktop, then open https://play.jacktat-play.stream. It stops itself 15 minutes after you finish, or reply **stop**." ;;
+            stopped) msg="The game machine is stopping." ;;
+            already-stopped|already-stopping) msg="The game machine was already off." ;;
+            no-capacity) msg="AWS has no spot capacity for the game machine right now; I'll keep trying when my machine wakes, or try **play** again in a while." ;;
+            denied) msg="I couldn't switch the game machine: the GitHub wake role needs one more permission (see issue #6). My machine is waking and will start it instead." ;;
           esac
-          gh issue comment "${{ github.event.issue.number }}" -R "${{ github.repository }}" \
-            --body "$msg"$'\n\n<!-- argonia-agent -->'
+          case "$BUILD" in
+            no-capacity) msg="$msg"$'\n\n'"AWS has no spot capacity for my build machine right now; it will start when capacity returns." ;;
+            missing|error) msg="$msg"$'\n\n'"I could not start my build machine; see the wake workflow log." ;;
+          esac
+          [ -n "$msg" ] && gh issue comment "${{ github.event.issue.number }}" -R "${{ github.repository }}" \
+            --body "$msg"$'\n\n<!-- argonia-agent -->' || true
