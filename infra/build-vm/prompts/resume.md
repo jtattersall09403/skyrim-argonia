@@ -5,5 +5,6 @@ written). Resume, following CLAUDE.md:
    `python3 tooling/owner_inbox.py --unread` for owner comments since the last stop.
 2. Subagents cannot be revived: relaunch each lane from its hand-off note and last commit. A GPU-box job that was
    interrupted reruns from its last checkpoint under tooling/job_guard.sh.
-3. Continue the work. Stop only when it is complete, when a critical blocker needs the owner, or at a handover the
+3. Close any owner issue whose answer is already recorded (`owner_inbox.py --close N --commit SHA`).
+4. Continue the work. Stop only when it is complete, when a critical blocker needs the owner, or at a handover the
    owner asked for; then post the owner issue and run `tooling/agent_stop.sh "<why>"`.

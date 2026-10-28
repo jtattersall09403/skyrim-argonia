@@ -1,0 +1,120 @@
+# Set up the Windows game machine argonia-play (chunk 0.0 §b, §c). Run from the build VM:
+#   infra/gpu-box/run.sh setup [stage]
+# Idempotent: each step checks before it acts. Stages: base (driver, Steam, MO2, tools), stream (hosts),
+# all (default). Reboots are requested by printing REBOOT-NEEDED; run.sh reboots and runs it again.
+param([string]$Stage = 'all')
+$ErrorActionPreference = 'Stop'
+$ProgressPreference = 'SilentlyContinue'
+$Root = 'C:\argonia'
+$Dl = "$Root\downloads"
+New-Item -ItemType Directory -Force -Path $Root, $Dl, "$Root\logs" | Out-Null
+
+function Get-File($Url, $Name) {
+  $out = Join-Path $Dl $Name
+  if (-not (Test-Path $out)) { Write-Host "download $Name"; Invoke-WebRequest -Uri $Url -OutFile $out -UseBasicParsing }
+  return $out
+}
+
+function Install-Base {
+  # The AWS GRID driver: public bucket, NVENC, licensed automatically on EC2 (the _aws_swl build).
+  $nv = Get-CimInstance Win32_VideoController | Where-Object { $_.Name -like 'NVIDIA*' }
+  if (-not $nv) {
+    $key = (Invoke-RestMethod 'https://ec2-windows-nvidia-drivers.s3.amazonaws.com/?prefix=latest/').ListBucketResult.Contents |
+      Where-Object { $_.Key -like '*server2022*.exe' } | Select-Object -First 1 -ExpandProperty Key
+    $exe = Get-File "https://ec2-windows-nvidia-drivers.s3.amazonaws.com/$key" 'nvidia-grid.exe'
+    Write-Host "install NVIDIA driver $key"
+    Start-Process $exe -ArgumentList '-s', '-noreboot', '-clean' -Wait
+    Write-Host 'REBOOT-NEEDED'
+    return
+  }
+  Write-Host "driver: $($nv.Name) $($nv.DriverVersion)"
+
+  # High performance power plan, no sleep, no screen saver.
+  powercfg /setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
+  powercfg /change monitor-timeout-ac 0; powercfg /change standby-timeout-ac 0
+
+  if (-not (Test-Path 'C:\Program Files (x86)\Steam\steam.exe')) {
+    $s = Get-File 'https://cdn.akamai.steamstatic.com/client/installer/SteamSetup.exe' 'SteamSetup.exe'
+    Start-Process $s -ArgumentList '/S' -Wait
+  }
+  Write-Host 'steam: installed'
+
+  if (-not (Test-Path "$Root\MO2\ModOrganizer.exe")) {
+    $rel = Invoke-RestMethod 'https://api.github.com/repos/ModOrganizer2/modorganizer/releases/latest'
+    $asset = $rel.assets | Where-Object { $_.name -match '^Mod\.Organizer-[\d.]+\.7z$' } | Select-Object -First 1
+    $7z = Get-File 'https://www.7-zip.org/a/7zr.exe' '7zr.exe'
+    $arc = Get-File $asset.browser_download_url $asset.name
+    & $7z x $arc "-o$Root\MO2" -y | Out-Null
+  }
+  Write-Host 'mo2: installed'
+}
+
+function Install-Stream {
+  # The desktop must be on the T4, not EC2's basic adapter, for NVENC capture.
+  Get-PnpDevice -Class Display | Where-Object { $_.FriendlyName -eq 'Microsoft Basic Display Adapter' -and $_.Status -eq 'OK' } |
+    ForEach-Object { pnputil /disable-device $_.InstanceId | Out-Null; Write-Host 'basic display adapter disabled' }
+
+  # Xbox 360 controller driver: missing on Windows Server; from the Microsoft Update Catalog (2.5 MB, signed).
+  if (-not (Get-WindowsDriver -Online | Where-Object { $_.OriginalFileName -like '*xusb*' })) {
+    $cab = Get-File 'https://catalog.s.download.windowsupdate.com/msdownload/update/driver/drvs/2013/01/20289581_7385d6be1b053a35955a910f11436729a1d4cb56.cab' 'xusb.cab'
+    $x = "$Dl\xusb"; New-Item -ItemType Directory -Force $x | Out-Null
+    expand.exe $cab -F:* $x | Out-Null
+    Get-ChildItem $x -Filter *.inf | ForEach-Object { pnputil /add-driver $_.FullName /install | Out-Null }
+  }
+  Write-Host "xusb: $([bool](Get-WindowsDriver -Online | Where-Object { $_.OriginalFileName -like '*xusb*' }))"
+
+  # ViGEmBus (virtual Xbox 360 pad for Sunshine): every installer refuses Server, so the signed driver comes out
+  # of the v1.17.333 MSI by an admin extract and goes in with nefarius's nefcon.
+  if (-not (Get-PnpDevice -FriendlyName '*Virtual Gamepad Emulation Bus*' -ErrorAction SilentlyContinue)) {
+    $nz = Get-File 'https://github.com/nefarius/nefcon/releases/download/v1.21.0/nefcon_v1.21.0.zip' 'nefcon.zip'
+    Expand-Archive $nz "$Dl\nefcon" -Force
+    $nef = Get-ChildItem "$Dl\nefcon" -Recurse -Filter nefconw.exe | Where-Object { $_.FullName -match 'x64' } | Select-Object -First 1
+    $msi = Get-File 'https://github.com/nefarius/ViGEmBus/releases/download/setup-v1.17.333/ViGEmBusSetup_x64.msi' 'vigembus-1.17.msi'
+    $vx = "$Dl\vigem"
+    Start-Process msiexec.exe -ArgumentList '/a', $msi, '/qn', "TARGETDIR=$vx" -Wait
+    $inf = Get-ChildItem $vx -Recurse -Filter ViGEmBus.inf | Select-Object -First 1
+    if (-not $inf -or -not $nef) { throw "ViGEmBus: driver files not found under $vx" }
+    & $nef.FullName --create-device-node --hardware-id 'Nefarius\ViGEmBus\Gen1' --class-name System --class-guid '4D36E97D-E325-11CE-BFC1-08002BE10318'
+    & $nef.FullName --install-driver --inf-path $inf.FullName
+  }
+  Write-Host "vigembus: $((Get-PnpDevice -FriendlyName '*Virtual Gamepad Emulation Bus*' -ErrorAction SilentlyContinue).Status)"
+
+  if (-not (Test-Path 'C:\Program Files\Sunshine\sunshine.exe')) {
+    $msi = Get-File 'https://github.com/LizardByte/Sunshine/releases/download/v2026.914.233613/Sunshine-Windows-AMD64-installer.msi' 'sunshine.msi'
+    Start-Process msiexec.exe -ArgumentList '/i', $msi, '/qn', '/norestart' -Wait
+  }
+  Write-Host "sunshine: $((Get-Service SunshineService -ErrorAction SilentlyContinue).Status)"
+
+  if (-not (Test-Path "$Root\moonlight-web\web-server.exe")) {
+    $z = Get-File 'https://github.com/MrCreativ3001/moonlight-web-stream/releases/download/v3.0.1/moonlight-web-x86_64-pc-windows-gnu.zip' 'moonlight-web.zip'
+    Expand-Archive $z "$Root\moonlight-web" -Force
+    $exe = Get-ChildItem "$Root\moonlight-web" -Recurse -Filter web-server.exe | Select-Object -First 1
+    if ($exe.DirectoryName -ne "$Root\moonlight-web") { Copy-Item "$($exe.DirectoryName)\*" "$Root\moonlight-web" -Recurse -Force }
+  }
+  Write-Host 'moonlight-web: installed'
+
+  if (-not (Test-Path "$Root\cloudflared.exe")) {
+    Invoke-WebRequest 'https://github.com/cloudflare/cloudflared/releases/download/2026.10.5/cloudflared-windows-amd64.exe' -OutFile "$Root\cloudflared.exe" -UseBasicParsing
+  }
+  Write-Host 'cloudflared: installed'
+}
+
+function Install-Dcv {
+  # Amazon DCV with its bundled virtual display and gamepad driver; licensed free on EC2 through the instance
+  # role's read of the dcv-license bucket.
+  if (-not (Get-Service dcvserver -ErrorAction SilentlyContinue)) {
+    $msi = Get-File 'https://d1uj6qtbmh3dt5.cloudfront.net/nice-dcv-server-x64-Release.msi' 'dcv-server.msi'
+    Start-Process msiexec.exe -ArgumentList '/i', $msi, 'ADDLOCAL=ALL', 'AUTOMATIC_SESSION_OWNER=Administrator', '/qn', '/norestart', "/l*v $Root\logs\dcv-install.log" -Wait
+  }
+  New-NetFirewallRule -Name dcv-8443 -DisplayName 'DCV 8443' -Protocol TCP -LocalPort 8443 -Action Allow -ErrorAction SilentlyContinue | Out-Null
+  New-NetFirewallRule -Name dcv-8443u -DisplayName 'DCV 8443 UDP' -Protocol UDP -LocalPort 8443 -Action Allow -ErrorAction SilentlyContinue | Out-Null
+  Write-Host "dcv: $((Get-Service dcvserver -ErrorAction SilentlyContinue).Status)"
+}
+
+switch ($Stage) {
+  'base' { Install-Base }
+  'stream' { Install-Stream }
+  'dcv'    { Install-Dcv }
+  'all'  { Install-Base; Install-Stream; Install-Dcv }
+  default { throw "unknown stage $Stage" }
+}

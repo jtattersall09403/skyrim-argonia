@@ -68,6 +68,7 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 ## The owner
 
 - Owner check-ins via `tooling/owner_inbox.py --post`: plain English, one check per bullet, studio scenes or places named (never machine links), how to reply, costs.
+- Close each owner issue with `owner_inbox.py --close` as soon as its answer is recorded or its check is done; none stays open after it is answered.
 - Nothing measurable goes to the owner; the owner plays packets and rules on the open calls.
 - Blocker = cannot do the action, or sees it at the play camera (including a Nordic element); else polish: one quick fix, then the backlog tagged `P1 before-scale`, `P2 rolling` or `P3 final`.
 - Ask the owner only on hard-to-reverse calls; record every ruling in a decision and the owner brief.
