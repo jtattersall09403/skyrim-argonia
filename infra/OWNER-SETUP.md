@@ -28,7 +28,7 @@ Status: **[x]** done, **[ ]** to do, **[~]** waiting on AWS or someone else. The
 
   This is only a backstop. In 0.0 the agent installs a smarter idle-stop on the machine: it stops after about
   20 minutes with no agent working and no VS Code tab open, and it never stops mid-job.
-- [ ] **Claude Code and GitHub on the build VM** (setup step 4):
+- [x] **Claude Code and GitHub on the build VM** (setup step 4, done 2026-10-28):
   1. In the VS Code terminal, start a tmux session: `tmux new -s argonia` (later, `tmux attach -t argonia` gets
      back to it).
   2. Install Claude Code: `curl -fsSL https://claude.ai/install.sh | bash`, then open a new terminal tab and check
@@ -36,9 +36,13 @@ Status: **[x]** done, **[ ]** to do, **[~]** waiting on AWS or someone else. The
   3. Run `gh auth login`.
   4. Clone the repo: `git clone https://github.com/jtattersall09403/skyrim-argonia ~/skyrim-argonia`.
   5. Set git config: `user.name`, and the owner's email.
-- [ ] **The secrets file.** Run `mkdir -p ~/.argonia && touch ~/.argonia/secrets.env && chmod 600 ~/.argonia/secrets.env`,
-  then open it in the VS Code editor and add these lines, one per line, as `NAME=value`:
-  - `NEXUS_API_KEY`: Nexus Mods → profile → Site preferences → API keys → personal API key (Premium account).
+- [ ] **The secrets file, first line only now.** Run `mkdir -p ~/.argonia && touch ~/.argonia/secrets.env && chmod 600 ~/.argonia/secrets.env`,
+  then open it in the VS Code editor (File → Open File → `/home/ubuntu/.argonia/secrets.env`) and add one line:
+  - `NEXUS_API_KEY=...`: Nexus Mods → profile → Site preferences → API keys → personal API key (Premium account).
+    0.0 needs it for the souls-like mods in the combat test.
+
+## When chunk 0.1 starts (the agent asks; not needed for 0.0)
+- [ ] Add these lines to `~/.argonia/secrets.env`:
   - `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY` and `R2_ENDPOINT`: the old project's Cloudflare R2 credentials.
     These are in the owner's password manager, or in `/workspaces/.es-secrets.env` on the stopped old machine (see
     chunk 0.1 §e for the safe way to copy them).
@@ -51,6 +55,9 @@ Status: **[x]** done, **[ ]** to do, **[~]** waiting on AWS or someone else. The
   (free with Skyrim SE).
 
 ## During setup, after step 4 (about 15 minutes)
+
+If the machine is interrupted (spot) before 0.0 installs auto-resume: start it again (top of this file), open
+VS Code, then in the terminal run `tmux new -s argonia -c ~/skyrim-argonia`, then `claude --continue`.
 
 ### Step 5: the agent's AWS permissions
 AWS console → IAM → Roles → `argonia-build-ssm` → Add permissions → Create inline policy → JSON. Paste the
