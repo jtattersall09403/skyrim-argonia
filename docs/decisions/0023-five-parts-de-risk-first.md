@@ -83,5 +83,5 @@ studio, then the game shell, then a build-out in packets.
 - The P0–P10 phase files are replaced by `docs/phases/0-foundation/` to `4-buildout/`. Every P-number
   reference is rewritten in place.
 - Spike G10 (where the rules run) joins 0.2. Its answer sets how 1.1 builds ArgoniaCore.
-- The planner re-estimates the remaining parts from measured cycle times at 0.2 (G8), at Part 1's close and at
-  4.1.
+- The planner re-estimates the remaining parts from measured cycle times at 0.2 (G8), at Part 1's close, at Part 2's
+  close and at 4.1.

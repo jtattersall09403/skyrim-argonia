@@ -31,10 +31,13 @@ If any of these is missing, 0.1's first check-in asks for it.
 | Id | Chunk | Depends on | Lane-able beside |
 |---|---|---|---|
 | 0.1 | [Bootstrap: repo, ways of working, build VM, import](0.1-bootstrap.md) | — | — |
-| 0.2 | [The GPU box and the go/no-go spikes G1–G10](0.2-spikes.md) | 0.1 | 0.3a |
+| 0.2 | [The GPU box and the go/no-go spikes G1–G10](0.2-spikes.md) | 0.1 | 0.3 §a, §b |
 | 0.3 | [The pinned stack, permissions and the installer](0.3-stack-and-installer.md) | 0.2 G3 | 0.4, 0.5 |
-| 0.4 | [The bridge, the studio and the two runners](0.4-bridge-studio-runners.md) | 0.2 G1, G8 | 0.5 |
-| 0.5 | [The record pipeline, the quarantine and the immersion inventory](0.5-pipeline-quarantine-inventory.md) | 0.2 G4 | 0.4 |
+| 0.5 | [The record pipeline, the quarantine and the immersion inventory](0.5-pipeline-quarantine-inventory.md) | 0.2 G4 | 0.3 |
+| 0.4 | [The bridge, the studio and the two runners](0.4-bridge-studio-runners.md) | 0.2 G1, G4, G5, G8, G10 (so after 0.2 closes); 0.5 §a, §b | 0.3 |
+
+0.5's quarantine journey and inventory reachability run on the 0.4 game runner when it lands; until then they run
+as G1-bridge scripts.
 
 ## Part 0 exit (the owner signs)
 
@@ -50,4 +53,4 @@ If any of these is missing, 0.1's first check-in asks for it.
 - **Owner check:** the owner opens the studio on the phone (folded and unfolded) and on the Mac, walks the
   sample place, teleports, and rules on stream feel and text readability. The check-in carries:
   - the gate evidence, the costs so far and the re-estimate of Parts 1–4;
-  - the O-3 (runtime pin) and O-6 (Nexus Premium) asks.
+  - the O-3 (runtime pin) ask, and O-6 (Nexus Premium) if 0.1 left it open.

@@ -64,7 +64,8 @@ rules/     the rules host chosen by spike G10: the old project's TypeScript rule
    ArgoniaCombat  DS1 timing windows, i-frames, parry/riposte, backstab, poise, hit zones, stamina table,
                   boss phases; consumes Precision/TDM/OAR/TK Dodge APIs
    ArgoniaBoats   helm sailing (Wind Waker model), boat ownership/moorings/recovery
-   ArgoniaBridge  DEV ONLY: localhost API for agents (scene, teleport, time, weather, input, read, events, still)
+   ArgoniaBridge  DEV ONLY: localhost API for agents (scene, teleport, time, weather, input, activate, read, nav,
+                  events, still, booth, frametime)
    ArgoniaStudio  DEV ONLY: the studio boot and the owner's panel (decision 0022)
 papyrus/   our scripts (quest fragments generated + hand-written systems glue)
 ui/        our own original UI as PrismaUI views (React/TypeScript), ported from the old repo's design system
@@ -75,7 +76,7 @@ installer/ modlist manifest + install/verify scripts; later a Wabbajack/Jackify 
 infra/     build VM and GPU box scripts, Selkies, idle-stop, budgets, Steam/Proton setup
 tests/     scenes/ (studio scenes), journeys/ (eyeless scripts for both runners); Python/C++/TS unit tests
 tooling/   guards (no_assets, shell, job), brief template, session tokens, owner inbox
-spikes/    Phase 1 spike code (throwaway unless a spike adopts it)
+spikes/    0.2 spike code (throwaway unless a spike adopts it)
 private/   gitignored: decompiles, dumps, Morrowind/DS reference text, drafts ($ARGONIA_PRIVATE)
 ```
 

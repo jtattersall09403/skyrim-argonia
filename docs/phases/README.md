@@ -156,7 +156,8 @@ reason.
   - its deliverables with acceptance (runnable or a number) and its wide loads;
   - **Loops**;
   - the **owner check** (plain English, scenes named, how to reply);
-  - risks and fallbacks, and what is deliberately out of scope.
+  - risks and fallbacks, and what is deliberately out of scope, where the chunk has any (a missing section means
+    none known).
 - **Just in time, nothing dropped** (0023 §7). Design content (formulas, counts, rules, rulings) is written now,
   in the brief that will build it. The agent that closes a chunk does three things in one commit:
   - replaces the chunk's Starting state with one **Outcome** paragraph (what shipped, where it lives, what is

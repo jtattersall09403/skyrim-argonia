@@ -15,9 +15,9 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | A2 | Morrowind engine for dialogue, quests, inventory, UI, adapted (content, colour themes, stats/progression changes) | In (as Morrowind's soul on Skyrim) | 0001 explains why not the Morrowind engine itself; 0005 C1–C15; Part 1 (first rungs) and Part 2 (whole) |
 | A3 | Weapon and item classes matching Morrowind | In | 0005 C5; 2.3 |
 | A4 | UI like Morrowind's; colour themes | In | 0005 C10; 2.2; palette import (1.2) |
-| A5 | Dialogue like Morrowind's: branching topics, UI, writing style | In | 0005 C1; 0.2 G5; 2.5, 4.7; style guide import |
+| A5 | Dialogue like Morrowind's: branching topics, UI, writing style | In | 0005 C1; 0.2 G5; 1.3; 2.5; style guide import |
 | A6 | Attributes and stats like Morrowind's | In | 0005 C2; 1.3 (27-skill mapping table) |
-| A7 | Levelling with resting and vastei | In | 0005 C3; 2.8, 4.4 |
+| A7 | Levelling with resting and vastei | In | 0005 C3; 1.5; 2.8 |
 | A8 | Open to merging vastei with Skyrim attributes/levelling/perks; perks would need auditing | In / Open | 0005 C4; 2.1 perk audit; O-4 |
 | A9 | No quest markers; directions written into the journal, followed like verbal directions | In | 0005 C7; 2.12 (directions generator + validator); 2.W3 route graph |
 | A10 | Morrowind-style journal | In | 0005 C8; 2.12 |
@@ -30,7 +30,7 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | A17 | Ghidra, universal-modder, Ghidrust for RE and extraction | In | 0010 (route order, scalpel use, vendored skills); 0.1/0.4; 2.7 §b; Ghidrust Out as experimental (um-ghidra-lens §2.2) |
 | A18 | "Anything else from Skyrim" from Mudcrab | Out (for now) | Mudcrab is a world viewer, not playable (0001 table); Skyrim itself is the host; watch as S4 |
 | A19 | Free climbing (Mirror's Edge parkour-in-Skyrim reference; anything like free climbing) | In | 2.13 (FreeClimb + SkyParkour); the "one day" video is a second-hand report (um-ghidra-lens §4) |
-| A20 | Player-controlled boats; research best source | In | 2.15/6.5 (Sailable Ship base, Wind Waker model, ownership) |
+| A20 | Player-controlled boats; research best source | In | 1.7; 2.15 (Sailable Ship base, Wind Waker model, ownership) |
 | A21 | Skyrim SE or DS3 level graphics | In | Skyrim host; 0.3 Community Shaders; 4.6 |
 | A22 | Modern features: volumetric or pseudo-volumetric fog, lighting | In | 0.3; 2.W2 (mist); 4.6 |
 | A23 | Minimal new art; extract/adapt from Morrowind, Skyrim SE, DS1/3 and community mods | In / partly Out | 0006 §6; Skyrim and mod assets used at runtime; **Morrowind and DS assets Out** (licences, 0003/0004; Morrowind assets cannot run in Skyrim without conversion, which Bethesda's terms bind to Morrowind) |
@@ -54,7 +54,7 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | A41 | New public repo; old repo untouched; may continue three.js separately | In | 0003; 0009 §1; source-map |
 | A42 | Plan for the future agent; bootstrap its own structure and ways of working from the old repo | In | 0.1/0.2; ways-of-working; source-map §3 |
 | A43 | Plan complete, no petering out in later phases | In | every chunk brief has goal, starting state, re-check/read-first, deliverables with acceptance, Loops, owner check, risks, out of scope, with design detail written now and steps rewritten just in time (0023 §7); an independent audit (68 findings, all fixed: section I) |
-| A44 | Tropical Skyrim (SSE 78044) as the source for any base-Skyrim assets | In | 0006 §8; 0.3; 2.W1/3.7; 4.1; legal §2 |
+| A44 | Tropical Skyrim (SSE 78044) as the source for any base-Skyrim assets | In | 0006 §8; 0.3; 2.W1; 2.W4; 4.1; legal §2 |
 | A46 | "Other games if relevant" the owner owns | In | 0010 §2 (study owned games); none needed beyond Skyrim SE, Morrowind, DSR, DS3 so far; the planner asks the owner's library when a system lacks a reference |
 | A45 | Use the universal-modder/Ghidra perspective as a primary lens across every system, water included | In | 0010; um-ghidra-lens §6 per-system table; 0.2 G7 (water question as the first Ghidra use); 2.7 §b |
 
@@ -87,6 +87,7 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | B24 | The lane that builds a feature tests the feature and its joins in the same loop; no separate seam loops | 0021 §2; loops.md rule 2; every brief's "Joins owned" |
 | B25 | Journeys are headless only: no agent plays the game by looking; no harness or capture rigs | 0021 §3; loops.md rule 5; 0.4 §c (the two runners, schema refuses stills and clips in a journey) |
 | B26 | A studio for agents and the owner: drop in, teleport, test, without the new-game flow | 0022; 0.4 §b; every owner check names a studio scene or place |
+| B28 | Critical review: test the joins and combat feel early; reuse the old tested rule code | 0023 (Part 1 core loop and verdict); 0.2 G10 |
 | B27 | Work in parts like the old repo, reviewed critically: slice places and systems first, then the new-game flow, then the sideways build-out; rewrite the plan holistically | 0023 (five parts; the core loop as the host go/no-go; the slice in two tracks; immersion as a gate; briefs just in time); phases/README.md; PLAN §5; this rewrite replaced the first plan's eleven phases |
 | B15 | FaceGen and distant terrain: "surely handled by Skyrim's engine" | 0014 §3–4 explains: the engine draws them, but from per-NPC face files and per-worldspace LOD files that a new worldspace and new NPCs lack; templates reuse existing faces; terrain LOD meshes are ours and may ship |
 
@@ -124,22 +125,22 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | D3 | Biped slots 30–61, 15 free | In | 2.3 slot table |
 | D4 | Skywind (topics as prompts), Enderal (own DLL hooks dialogue menu), Dialogue History, Dynamic Dialogue Replacer, Classic Dialogue Menu, EZ2C | In | 0.2 G5; 2.5 |
 | D5 | No persuasion menu, no 0–100 disposition in Skyrim | In | 2.5 |
-| D6 | Custom Skills Framework (MIT), Sleep to Gain Experience, Sleep to Level Up, E.S.L.A., Classic Classes and Birthsigns, Experience, Skill Uncapper, Gold Is XP, Enderal progression | In | 1.3/4.2 |
+| D6 | Custom Skills Framework (MIT), Sleep to Gain Experience, Sleep to Level Up, E.S.L.A., Classic Classes and Birthsigns, Experience, Skill Uncapper, Gold Is XP, Enderal progression | In | 1.3; 1.5; 2.8 |
 | D7 | Respawn – Soulslike (grave + last bed, permissive), Respawn – Death Overhaul | In | 2.8 |
 | D8 | Animated Armoury, Armory Extended, Throwable Weapons SKSE, crossbows vanilla | In | 2.3; 0.3; crossbows/thrown in (0016, owner ruling) |
 | D9 | Split L/R armour meshes are an asset gap; body mesh conflicts | In / Open | 2.3; O-9 |
-| D10 | Wayfinder, No Google Maps Skyrim (GPL), Compass Navigation Overhaul, quest-marker settings, Flat World Map Framework, A Quality World Map, Atlas Map Markers | In | 2.12/4.9 |
+| D10 | Wayfinder, No Google Maps Skyrim (GPL), Compass Navigation Overhaul, quest-marker settings, Flat World Map Framework, A Quality World Map, Atlas Map Markers | In | 1.6; 2.12 |
 | D11 | SkyUI 6, Infinity UI, TrueHUD, PrismaUI (licence: dependency fine; forks need permission; Ultralight licence), dMenu NG, full SWF skins; Scaleform authoring poor on Linux | In | 1.2; 2.2 |
-| D12 | Encounter zones min=max, Morrowloot, carriages pattern for travel, EnableFastTravel, training game setting, merchant gold | In | 2.6–4.14 |
+| D12 | Encounter zones min=max, Morrowloot, carriages pattern for travel, EnableFastTravel, training game setting, merchant gold | In | 2.6; 2.7 §j |
 | D13 | Beyond Skyrim: Argonia dormant; name overlap | In / Open | O-13 |
-| D14 | Precision (API callbacks), TDM (no distance setter), TrueHUD, OAR (custom conditions), BFCO (active; conflicts with MCO), SCAR (MIT), CPR, UND, Wait Your Turn, Distance Based Combat, TK Dodge SE (restrictive) vs RE/Redux, Valhalla (BSD-3), Elden Parry, Rim Parry, zxlice, Blade and Blunt, Poisebreaker, Chocolate Poise (MIT), Archery Locational Damage, AMR/AMF, LoreRim/Elder Souls modlists | In | 2.7 §c/5.3; 0.3 conflict list |
+| D14 | Precision (API callbacks), TDM (no distance setter), TrueHUD, OAR (custom conditions), BFCO (active; conflicts with MCO), SCAR (MIT), CPR, UND, Wait Your Turn, Distance Based Combat, TK Dodge SE (restrictive) vs RE/Redux, Valhalla (BSD-3), Elden Parry, Rim Parry, zxlice, Blade and Blunt, Poisebreaker, Chocolate Poise (MIT), Archery Locational Damage, AMR/AMF, LoreRim/Elder Souls modlists | In | 1.4; 2.7 §c, §d; 0.3 conflict list |
 | D15 | No melee hit-zone mod; buildable from Precision's hit rigid body | In | 2.7 §d (per-hitbox rates as DS1 data defines them, 0019) |
 | D16 | ArgoniaCombat design (pre-hit ignore for i-frames, OAR burden-tier roll, parry window, riposte paired anims, backstab angle, poise fork, 20 m lock-on ≈ 1,400 units) | In (adapter mechanics) / replaced (numbers) | 2.7 §d adapter; numbers and rules now from DSR (0019): lock-on from `LockCamParam`, per-hitbox rates instead of head ×2, poise in our core (Chocolate Poise as reference only) |
 | D17 | ±1-frame test dummy at 30/60 fps; tunnelling check | In | 2.7 §f |
 | D18 | FromSoft-derived movesets on Nexus (e.g. Cathedral Knight) | Out | 0004 §5 |
-| D19 | FreeClimb (GPL-3.0-only; Mixamo/Threepeat clips), SkyParkour, SkyClimb (superseded), EVG Animated Traversal (ladders), climbing stamina add-on | In | 2.13/6.2 |
+| D19 | FreeClimb (GPL-3.0-only; Mixamo/Threepeat clips), SkyParkour, SkyClimb (superseded), EVG Animated Traversal (ladders), climbing stamina add-on | In | 1.7; 2.13 |
 | D20 | Underwater NG, swim sprint mod, vanilla diving | In | 2.13 |
-| D21 | Sailable Ship (scripted helm, issues: deck instability, unanimated sails, save at helm, 60 fps), Sailboats (mount race, restrictive), L.V.X Boats, Rowboats (CC BY-SA), rowboat spell, Animated Ships | In | 2.15/6.5 |
+| D21 | Sailable Ship (scripted helm, issues: deck instability, unanimated sails, save at helm, 60 fps), Sailboats (mount race, restrictive), L.V.X Boats, Rowboats (CC BY-SA), rowboat spell, Animated Ships | In | 1.7; 2.15 |
 | D22 | PLANCK VR-only; XP32 True Ragdoll; Precision impulses; Skyrim Delirium unverified | In / Out | 2.7 §i (PLANCK Out: VR only) |
 | D23 | Pandora under Proton fragile; generate on the playing machine | In | 0.2 G3; 0.3 risks |
 | D24 | Mutagen, Spriggit, Synthesis (not needed), xEdit under Wine (read-only), plugin2text (lossy) | In | 0.5; 0.1 |
@@ -153,13 +154,13 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | D32 | CK under Proton: render works, linking/triggers crash; no headless | In | 0.2 G4 fallback only |
 | D33 | SKSE from Linux: msvc-wine first, clang-cl + xwin second (link.exe export issue) | In | 0.2 G1 |
 | D34 | Address Library names DB; no shared Ghidra/IDA databases; skyretk RTTI dumps | In | 0010 §4 |
-| D35 | Running Skyrim + SKSE under Proton headless; skip MO2; write plugins.txt; SteamAppId; DXVK on headless X | In | 0.2 G0/S1; 0.3 |
-| D36 | Steamworks DRM: log in once, offline mode; no Goldberg | In | 0.2 G0; legal §1 |
+| D35 | Running Skyrim + SKSE under Proton headless; skip MO2; write plugins.txt; SteamAppId; DXVK on headless X | In | 0.2 S0, G1; 0.3 |
+| D36 | Steamworks DRM: log in once, offline mode; no Goldberg | In | 0.2 S0; legal §1 |
 | D37 | SkyrimNet MCP pattern; ConsoleUtil Extended; AutoTest (crash = stuck "started"); Crash Logger | In | 0.2 G1; 0.4 |
 | D38 | Performance: T4 for light lists, A10G/L4 for heavy; CPU-bound on cloud Xeons; benchmark per instance | In | 0.2 G2 |
 | D39 | CK EULA: non-commercial, owners only, ZeniMax licence, required notice; Enderal precedent | In | legal §1; 3.4 |
 | D40 | Distribution: Nexus mod + FOMOD + Wabbajack + Jackify | In | 3.4 |
-| D41 | Mapping table JSON → WRLD/CELL/REFR/NPC_/PACK/QUST/DIAL/INFO; ~60% of conditions native; the rest need ArgoniaCore | In | 2.5/4.8; 0009 |
+| D41 | Mapping table JSON → WRLD/CELL/REFR/NPC_/PACK/QUST/DIAL/INFO; ~60% of conditions native; the rest need ArgoniaCore | In | 2.5; 2.12; 0009 |
 | D42 | Cell water is one plane; rivers as placed water | In | 0.2 G7; 2.W2 |
 | D43 | Day-locked doors need script | In | 2.4 (shops lock) |
 | D44 | Owing ledger needs Papyrus/SKSE (crime per hold faction) | In | 2.11 |
@@ -256,7 +257,7 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | I12 | Vastei tutorial scene | 3.3, 2.17 |
 | I13 | Old 0147 open calls | O-16; 2.8 |
 | I14 | Skyrim dialogue-engine facts | 2.5, 2.12 |
-| I15 | Steam re-login every couple of weeks | 0.2 G0 steam_check |
+| I15 | Steam re-login every couple of weeks | 0.2 S0 steam_check |
 | I16 | G3 list missing combat mods; Precision 1.7.x port | 0.2 G3 union list |
 | I17 | River flowmaps need the CK | 0.2 G7; 2.W2 |
 | I18 | Kit-id → base record mapping | 0.2 G4; 0.5 |
@@ -290,7 +291,7 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | I46 | Hand-off and review numbers | ways-of-working §2 (300k/100k; 1,500 lines) |
 | I47 | One game worker; per-port journals | ways-of-working §3; job_guard `--gpu` |
 | I48 | KotM needs CC/AE archives | 0002 §2; 0.2 G3 |
-| I49–I61 | Nits: soft requirement cap, underwater contract, climb numbers, stale counts, magic/alchemy/lock formulas, 0040 parries, class bonuses, tree, wording, backlog path, socket activities | 1.3/4.5/4.15/4.16/4.17/4.19; 2.13/6.3; 2.7 §d; PLAN §3; 0006 §7; 0.1 |
+| I49–I61 | Nits: soft requirement cap, underwater contract, climb numbers, stale counts, magic/alchemy/lock formulas, 0040 parries, class bonuses, tree, wording, backlog path, socket activities | 1.3; 2.1; 2.4; 2.9; 2.10; 2.11; 2.13; 2.7 §d; PLAN §3; 0006 §7; 0.1 |
 | I63–I68 | Other games row; bleedout wording; S3 redefinition; /tmp; in-place reads; private-repo access | A46; 2.8; 0001 §2; 0.1; source-map; 0.1 |
 
 ## J. Research items noted and deliberately not used (audit I62)

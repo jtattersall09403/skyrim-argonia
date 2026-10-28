@@ -30,7 +30,7 @@ affiliated with Tamriel Rebuilt or Beyond Skyrim. Built largely with AI assistan
 | `data/` | combat golden table, dependency manifest, immersion inventory, sourcing register |
 | `installer/` | install and verify scripts |
 | `infra/` | machine setup and operations |
-| `tests/` | in-game scenarios and unit tests |
+| `tests/` | studio scenes and journeys and unit tests |
 | `tooling/` | guards and agent tooling |
 
 ## Credits

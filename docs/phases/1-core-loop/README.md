@@ -38,8 +38,8 @@ Written by the agent that closes Part 0.
 | Id | Chunk | Depends on | Lane-able beside |
 |---|---|---|---|
 | 1.1 | [The game-state seam](1.1-game-state-seam.md) | Part 0 | 1.2 |
-| 1.2 | [The UI foundation: design system, HUD and the thread's screens](1.2-ui-foundation.md) | 1.1 schema | 1.3 data |
-| 1.3 | [Talk, trade and carry, on the sheet](1.3-talk-trade-carry.md) | 1.1 | 1.4a |
+| 1.2 | [The UI foundation: design system, HUD and the thread's screens](1.2-ui-foundation.md) | 1.1 schema | 1.3 §a |
+| 1.3 | [Talk, trade and carry, on the sheet](1.3-talk-trade-carry.md) | 1.1 | 1.4 (measurement and wiring draft) |
 | 1.4 | [Fight: the DS1 core, first rung](1.4-fight.md) | 1.1, 1.3 sheet | 1.2 |
 | 1.5 | [Grow, die, rest, save](1.5-grow-die-rest-save.md) | 1.3, 1.4 | 1.6 |
 | 1.6 | [A quest, the journal and directions](1.6-a-quest.md) | 1.3 | 1.5, 1.7 |

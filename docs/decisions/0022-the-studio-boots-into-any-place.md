@@ -56,7 +56,11 @@ running" (research `skyrim-tooling`). The studio is that practice turned into a 
    runner starts in seconds from a known state:
    - `scene` (apply a scene file), `teleport`, `time`, `weather`;
    - `input` (short real inputs), `activate`;
-   - `read` (state), `events` (subscribe with timestamps), `still` (a fixed-vantage screenshot), `booth`.
+   - `read` (state), `nav`, `events` (subscribe with timestamps), `still` (a fixed-vantage screenshot), `booth`,
+     `frametime`.
+
+   `console` and `papyrus` exist only inside the scene applier and spike scripts, never in a journey or the
+   panel.
 6. **The fixtures.** Two studio-only places carry no lore and are never reachable in the game:
    - the **proving ground**, adapted from the old repo's `place.fixture.proving-ground` (a flat arena with
      walls of each climb class, water of each depth, doors, a ladder, targets);

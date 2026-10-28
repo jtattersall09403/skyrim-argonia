@@ -45,7 +45,7 @@ permission evidence), the old kit manifests used by the kit-id mapper (0.2 G4).
 - `docs/research/combat-and-systems/` (dark-souls-poise-mechanics, stats-progression-reference-games,
   botw-climbing-system, skyrim-climbing-mod-survey, swim-climb-boat-implementation, player-boats-as-horses,
   source-game-systems-crosscheck, slice-systems-checklist), `docs/research/lore/creature-asset-availability.md`.
-- `docs/phases/2-slice/` (2.1–2.15 briefs and outcomes) for design intent; `docs/phases/P-polish/backlog.md`
+- `docs/phases/2-slice/` (2.1–2.15 briefs and outcomes) for design intent; the old repo's `docs/phases/P-polish/backlog.md`
   (~470 rows), triaged once in 0.1: each row carried to its chunk or dropped with a reason.
 - `packages/game-core/src/stats/README.md` (the sheet). The old combat docs
   (`apps/combat-sandbox/docs/architecture/`, `packages/game-core/src/combat/README.md`, the poise research) are

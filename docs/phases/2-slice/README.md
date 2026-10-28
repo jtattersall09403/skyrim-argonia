@@ -51,7 +51,7 @@ meet at the places: the systems that need people (2.4 onwards) wait for wave 1, 
 | 2.W2 | [Water](2.W2-water.md) | 2.W1 | systems track |
 | 2.W3 | [Regions, weather, light, roads and the route graph](2.W3-regions-roads.md) | 2.W1 | 2.W2 |
 | 2.W4 | [Vegetation, navmesh and LOD](2.W4-vegetation-navmesh-lod.md) | 2.W2, 2.W3 | systems track |
-| 2.W5 | [The slice places, in two waves](2.W5-slice-places.md) | 2.W1–2.W3 (wave 1); 2.W4 (wave 2) | systems track |
+| 2.W5 | [The slice places, in two waves](2.W5-slice-places.md) | 2.W1–2.W4 (navmesh at least, for wave 1) | systems track |
 | 2.W6 | [Performance and the world walk](2.W6-performance-walk.md) | 2.W5 wave 2 | systems track |
 | 2.1 | [The sheet whole: races, birthsigns, classes, effects, perks](2.1-the-sheet.md) | Part 1 exit | world track |
 | 2.2 | [The UI whole: the OpenMW study, the UI map, every screen](2.2-ui-whole.md) | Part 1 exit | 2.1, 2.3 |
@@ -62,11 +62,11 @@ meet at the places: the systems that need people (2.4 onwards) wait for wave 1, 
 | 2.7 | [Combat and encounters](2.7-combat.md) | 2.3 (2.4 for encounters) | 2.5, 2.6 |
 | 2.8 | [Progression, rest and death](2.8-progression.md) | 2.7 | 2.9 |
 | 2.9 | [Magic](2.9-magic.md) | 2.8 | 2.11 |
-| 2.10 | [Crafting](2.10-crafting.md) | 2.9 | 2.11, 2.12 |
-| 2.11 | [Stealth, crime, locks and the Owing](2.11-stealth-crime.md) | 2.6, 2.7 | 2.9 |
+| 2.10 | [Crafting](2.10-crafting.md) | 2.9, 2.W5 wave 2 | 2.11, 2.12 |
+| 2.11 | [Stealth, crime, locks and the Owing](2.11-stealth-crime.md) | 2.6, 2.7, 2.W5 wave 2 | 2.9 |
 | 2.12 | [Quests, journal and maps](2.12-quests-journal-map.md) | 2.5, 2.11 | — |
 | 2.13 | [Swim and climb](2.13-swim-and-climb.md) | 2.W4, 2.7 | 2.12 |
-| 2.14 | [Marsh specials: hazards, effect arrows, harvests, materials](2.14-marsh-specials.md) | 2.9, 2.10, 2.13 | — |
+| 2.14 | [Marsh specials: hazards, effect arrows, harvests, materials](2.14-marsh-specials.md) | 2.9, 2.10, 2.13, 2.W5 wave 2 | — |
 | 2.15 | [Boats](2.15-boats.md) | 2.13, 2.6 | 2.16 prep |
 | 2.16 | [Sound and music](2.16-sound-and-music.md) | 2.15 | — |
 | 2.17 | [Persistence, the immersion gate and the playthrough](2.17-playthrough.md) | all above | — |
