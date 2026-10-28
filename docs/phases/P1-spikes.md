@@ -193,6 +193,10 @@ Greenspring) and a road.
   or with the patcher, and the method is written into decision 0014. **If it fails:** the owner decides between
   looser timing (recorded deviations) and a different moveset source.
 
+## Loops (docs/loops.md)
+Each spike is its own focused loop, closed by its gate; the ladder still applies inside a spike (prove at L1–L3
+before spending GPU time at L4, and film nothing without a reason).
+
 ## Exit gate
 All of G1–G9 pass, or a gate's documented fallback is accepted by the owner in writing. Decisions 0001, 0002,
 0004, 0007 and 0014 are updated with the measured facts. The P1 owner check-in reports each gate with evidence

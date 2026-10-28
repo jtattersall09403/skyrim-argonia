@@ -150,6 +150,9 @@ from the owner (Steam login on the GPU box, a 20-minute streaming test on phone 
 - **Acceptance:** the issue exists with the `owner-check-in` label, contains no secret or link to a machine, and
   lists every open call due by P1.
 
+## Loops (docs/loops.md)
+None: P0 runs its acceptance commands and the gate (old rule: phases that build tooling do not loop).
+
 ## Exit gate
 - `make check` green in CI and on the VM; every hook's fail-on-purpose test passes.
 - Toolchain smoke green; game files present; world imported and valid.

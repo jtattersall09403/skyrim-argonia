@@ -65,6 +65,10 @@ files, with the dependency list fetched from its sources; and the owner has a du
 - **Acceptance:** the issue template exists; one dry-run bug goes from report to a patch release through the
   process.
 
+## Loops (docs/loops.md)
+- **Feature loops:** the release file list (L1 guard); each install path from scratch (L4 on a clean machine).
+- **Journey:** a stranger's install from the docs alone, start to the opening (L4), then the owner's one-tap play (L6).
+
 ## Exit gate
 Release published; three install paths verified; owner's one-tap play works; P10 check-in with costs.
 
