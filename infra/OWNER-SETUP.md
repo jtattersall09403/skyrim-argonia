@@ -17,8 +17,10 @@ Status: **[x]** done, **[ ]** to do, **[~]** waiting on AWS or someone else. The
 
 ## Before chunk 0.0 starts
 - [ ] **Claude Code and GitHub on the build VM** (setup step 4):
-  1. In the VS Code terminal, start a tmux session: `tmux new -s argonia`.
-  2. Install Claude Code and log in.
+  1. In the VS Code terminal, start a tmux session: `tmux new -s argonia` (later, `tmux attach -t argonia` gets
+     back to it).
+  2. Install Claude Code: `curl -fsSL https://claude.ai/install.sh | bash`, then open a new terminal tab and check
+     with `claude --version`. Log in by running `claude` and following the browser prompt with the Max account.
   3. Run `gh auth login`.
   4. Clone the repo: `git clone https://github.com/jtattersall09403/skyrim-argonia ~/skyrim-argonia`.
   5. Set git config: `user.name`, and the owner's email.
