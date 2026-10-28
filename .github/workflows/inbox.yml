@@ -1,0 +1,45 @@
+# The agents' voice in the owner inbox (chunk 0.0 §a). The build VM's gh is signed in as the owner, and GitHub
+# never notifies anyone of their own actions, so agents post through this workflow instead: issues and comments
+# come from github-actions[bot], assigned to the owner, and GitHub mobile pushes them. Run by tooling/owner_inbox.py.
+name: inbox
+on:
+  workflow_dispatch:
+    inputs:
+      op: {description: "post | comment | close", required: true, type: string}
+      number: {description: "issue number (comment, close)", required: false, type: string}
+      title: {description: "issue title (post)", required: false, type: string}
+      label: {description: "owner-check | owner-call (post)", required: false, type: string}
+      milestone: {description: "milestone title (post)", required: false, type: string}
+      body: {description: "markdown body", required: false, type: string}
+      nonce: {description: "lets the caller find what it posted", required: true, type: string}
+permissions:
+  issues: write
+  contents: read
+concurrency:
+  group: inbox
+  cancel-in-progress: false
+jobs:
+  inbox:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      OP: ${{ inputs.op }}
+      NUMBER: ${{ inputs.number }}
+      TITLE: ${{ inputs.title }}
+      LABEL: ${{ inputs.label }}
+      MILESTONE: ${{ inputs.milestone }}
+      BODY: ${{ inputs.body }}
+      NONCE: ${{ inputs.nonce }}
+    steps:
+      - name: Post
+        run: |
+          printf '%s\n\n<!-- argonia-agent nonce=%s -->\n' "$BODY" "$NONCE" > body.md
+          case "$OP" in
+            post)    gh issue create --title "$TITLE" --body-file body.md --assignee jtattersall09403 \
+                       --label "$LABEL" --milestone "$MILESTONE" ;;
+            comment) gh issue comment "$NUMBER" --body-file body.md ;;
+            close)   gh issue comment "$NUMBER" --body-file body.md && gh issue close "$NUMBER" ;;
+            *) echo "unknown op $OP"; exit 1 ;;
+          esac

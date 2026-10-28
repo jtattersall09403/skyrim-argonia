@@ -9,6 +9,17 @@
           }
         ]
       }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd \"$CLAUDE_PROJECT_DIR\" && python3 tooling/owner_inbox.py --hook",
+            "timeout": 30
+          }
+        ]
+      }
     ]
   }
 }

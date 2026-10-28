@@ -1,5 +1,6 @@
 # Wake on reply, and the owner's play switch (chunk 0.0 §a, owner call #6).
-# - An owner comment on an owner issue starts the stopped build VM (so the agent reads it).
+# - An owner comment on an owner issue, or any issue the owner opens, starts the stopped build VM (so the agent
+#   reads it and acknowledges it).
 # - A comment that is just "play" or "ready" also starts the game machine and replies when it is up; "stop" stops
 #   it. The game machine also stops itself after 15 minutes with no stream client (idle-stop.ps1).
 # - "Run workflow" (GitHub mobile too) does the same without a comment.
@@ -9,6 +10,8 @@ name: wake
 on:
   issue_comment:
     types: [created]
+  issues:
+    types: [opened]
   workflow_dispatch:
     inputs:
       action:
@@ -27,8 +30,10 @@ jobs:
   wake:
     if: >-
       github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'issues' && github.event.issue.user.login == 'jtattersall09403' &&
+       !contains(github.event.issue.body, '<!-- argonia-agent')) ||
       (github.event.comment.user.login == 'jtattersall09403' &&
-       !contains(github.event.comment.body, '<!-- argonia-agent -->') &&
+       !contains(github.event.comment.body, '<!-- argonia-agent') &&
        (contains(github.event.issue.labels.*.name, 'owner-check') ||
         contains(github.event.issue.labels.*.name, 'owner-call')))
     runs-on: ubuntu-latest
@@ -83,7 +88,7 @@ jobs:
           fi
           echo "play=$play" >> "$GITHUB_OUTPUT"; echo "game machine: $play"
       - name: Tell the owner
-        if: github.event_name == 'issue_comment'
+        if: github.event_name == 'issue_comment' || github.event_name == 'issues'
         env:
           GH_TOKEN: ${{ github.token }}
           ACTION: ${{ steps.ask.outputs.action }}
