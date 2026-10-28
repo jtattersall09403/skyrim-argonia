@@ -1,4 +1,5 @@
 # Elder Souls: Argonia (Skyrim SE)
+(Developed and written with Claude Opus 5.5)
 
 A free, non-commercial total conversion for **The Elder Scrolls V: Skyrim Special Edition**, set in Black Marsh,
 with Morrowind's systems and spirit, Dark Souls-style combat, climbing, swimming and sailable boats.
@@ -6,9 +7,9 @@ with Morrowind's systems and spirit, Dark Souls-style combat, climbing, swimming
 **Status:** planning complete; Part 0 (foundation), chunk 0.1, next. See [docs/PLAN.md](docs/PLAN.md) and
 [docs/PROGRESS.md](docs/PROGRESS.md).
 
-## What this repo contains, and what it never will
+## What this repo contains
 
-This repository is public on purpose. It contains only our own source code, our own generated data, docs and
+This repository contains only our own source code, our own generated data, docs and
 tests. **It never contains any file from Skyrim, any other game, or any third-party mod**, converted or not.
 To play, you will need your own copy of Skyrim Special Edition and a list of free mods downloaded from their
 authors' pages; the installer will guide you. Details: [decision 0003](docs/decisions/0003-nothing-shipped-that-players-do-not-own.md).
