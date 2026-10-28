@@ -11,9 +11,8 @@ Status: **[x]** done, **[ ]** to do, **[~]** waiting on AWS or someone else. The
 - [x] AWS budget alert `argonia-monthly` ($100).
 - [x] Build VM `argonia-build` (m7i.xlarge spot, London), with the IAM role `argonia-build-ssm`.
 - [x] The VS Code tunnel `argonia-build`.
-- [~] GPU spot quota: "All G and VT Spot Instance Requests", eu-west-2. The applied value was 0; an increase to 8
-  was requested on 2026-10-28. Confirm in AWS console → Service Quotas → Amazon EC2. It needs at least 4 for one
-  g6.xlarge.
+- [x] GPU spot quota "All G and VT Spot Instance Requests", eu-west-2: 8 vCPUs, approved 2026-10-28. That is one
+  g6.2xlarge or two g6.xlarge. A rise to 16 is requested only when parallel game copies are needed.
 
 ## Before chunk 0.0 starts
 - [ ] **Claude Code and GitHub on the build VM** (setup step 4):
