@@ -107,6 +107,22 @@ function Install-Stream {
     Register-ScheduledTask -TaskName argonia-display -Action $a -Trigger (New-ScheduledTaskTrigger -AtLogOn -User Administrator) -User Administrator -RunLevel Highest | Out-Null
   }
   Write-Host 'display: pinned at logon'
+  # The machine stops itself after 15 minutes with no stream client and no agent (idle-stop.ps1).
+  if (-not (Get-ScheduledTask -TaskName argonia-idle-stop -ErrorAction SilentlyContinue)) {
+    $a = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument "-ExecutionPolicy Bypass -WindowStyle Hidden -File $Root\infra\idle-stop.ps1"
+    $tr = New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(5) -RepetitionInterval (New-TimeSpan -Minutes 5)
+    Register-ScheduledTask -TaskName argonia-idle-stop -Action $a -Trigger $tr -User SYSTEM -RunLevel Highest | Out-Null
+  }
+  # The owner's desktop launchers: vanilla, or the 0.0 combat-test mods.
+  $sh = New-Object -ComObject WScript.Shell
+  foreach ($l in @(@('Skyrim (vanilla)', 'play-vanilla'), @('Skyrim (souls-like mods)', 'play-modded'))) {
+    $s = $sh.CreateShortcut("C:\Users\Public\Desktop\$($l[0]).lnk")
+    $s.TargetPath = 'powershell.exe'
+    $s.Arguments = "-ExecutionPolicy Bypass -WindowStyle Hidden -File $Root\infra\combat-mode.ps1 $($l[1])"
+    $s.IconLocation = 'C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition\SkyrimSE.exe,0'
+    $s.Save()
+  }
+  Write-Host 'idle-stop and launchers: set'
 }
 
 function Install-Dcv {
@@ -131,6 +147,24 @@ function Install-Dcv {
   New-NetFirewallRule -Name dcv-8443 -DisplayName 'DCV 8443' -Protocol TCP -LocalPort 8443 -Action Allow -ErrorAction SilentlyContinue | Out-Null
   New-NetFirewallRule -Name dcv-8443u -DisplayName 'DCV 8443 UDP' -Protocol UDP -LocalPort 8443 -Action Allow -ErrorAction SilentlyContinue | Out-Null
   Write-Host "dcv: $((Get-Service dcvserver -ErrorAction SilentlyContinue).Status)"
+}
+
+function Install-GameRedist {
+  # Skyrim's runtimes (DirectX June 2010 for XINPUT1_3, VC++ 2015): Steam installs them on a first launch through
+  # its own installer, but the game files here were copied in, and Windows Server ships neither.
+  $g = 'C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition\_CommonRedist'
+  if (-not (Test-Path C:\Windows\System32\xinput1_3.dll)) {
+    Start-Process "$g\DirectX\Jun2010\DXSETUP.exe" -ArgumentList '/silent' -Wait
+  }
+  foreach ($vc in 'vc_redist.x64.exe', 'vc_redist.x86.exe') {
+    Start-Process "$g\vcredist\2015\$vc" -ArgumentList '/install', '/quiet', '/norestart' -Wait
+  }
+  # Skyrim 1.7 aborts at start-up (0xC0000409 in ucrtbase) without Media Foundation, an optional feature on Server.
+  if ((Get-WindowsFeature Server-Media-Foundation).InstallState -ne 'Installed') {
+    Install-WindowsFeature Server-Media-Foundation | Out-Null
+    Write-Host 'REBOOT-NEEDED'
+  }
+  Write-Host "game runtimes: xinput1_3 $(Test-Path C:\Windows\System32\xinput1_3.dll)"
 }
 
 function Install-Combat {
@@ -178,6 +212,7 @@ switch ($Stage) {
   'stream' { Install-Stream }
   'dcv'    { Install-Dcv }
   'combat' { Install-Combat }
+  'redist' { Install-GameRedist }
   'all'  { Install-Base; Install-Stream; Install-Dcv }
   default { throw "unknown stage $Stage" }
 }

@@ -1,26 +1,110 @@
 {
-  "_about": "Chunk 0.0 §d: the stock souls-like stack for the one combat test, in install order. Nexus SSE mod and file ids only; the files are downloaded to ~/.argonia/mods and never committed (decision 0003). Chosen in docs/research/2026-10-28/stream-and-combat-stack.md §2.2.",
+  "_about": "Chunk 0.0 \u00a7d: the stock souls-like stack for the one combat test, in install order. Nexus SSE mod and file ids only; the files are downloaded to ~/.argonia/mods and never committed (decision 0003). Chosen in docs/research/2026-10-28/stream-and-combat-stack.md \u00a72.2.",
   "game": "skyrimspecialedition",
   "runtime": "1.7.104.0 (Steam build 24914197)",
   "mods": [
-    {"name": "SKSE64", "mod": 30379, "file": 795992, "root": true},
-    {"name": "Address Library", "mod": 32444, "file": 795954},
-    {"name": "SkyUI", "mod": 12604, "file": 749043},
-    {"name": "MCM Helper", "mod": 53000, "file": 795510},
-    {"name": "Pandora Behaviour Engine Plus", "mod": 133232, "file": 813165, "tool": true},
-    {"name": "Open Animation Replacer", "mod": 92109, "file": 798222},
-    {"name": "Animation Queue Fix", "mod": 82395, "file": 798212},
-    {"name": "Precision", "mod": 72347, "file": 798533},
-    {"name": "True Directional Movement", "mod": 51614, "file": 798770},
-    {"name": "TrueHUD", "mod": 62775, "file": 798218},
-    {"name": "Dodge - MCO (DMCO)", "mod": 175129, "file": 733265},
-    {"name": "Dodge Framework NG 1.7.x", "mod": 195352, "file": 820221},
-    {"name": "IFrame Generator RE AE", "mod": 82737, "file": 794617},
-    {"name": "Behavior Data Injector Universal Support", "mod": 78159, "file": 794609},
-    {"name": "AMR 1.7.104 Update", "mod": 191697, "file": 805238},
-    {"name": "SkySA", "mod": 31390, "file": 203059},
-    {"name": "Elder Souls - Sword 2.0", "mod": 47191, "file": 217554},
-    {"name": "OAR-added Stamina Cost", "mod": 179721, "file": 751119},
-    {"name": "SSE Display Tweaks", "mod": 34705, "file": 797175}
+    {
+      "name": "SKSE64",
+      "mod": 30379,
+      "file": 795992,
+      "root": true
+    },
+    {
+      "name": "Address Library",
+      "mod": 32444,
+      "file": 795954
+    },
+    {
+      "name": "SkyUI",
+      "mod": 12604,
+      "file": 749043
+    },
+    {
+      "name": "MCM Helper",
+      "mod": 53000,
+      "file": 795510
+    },
+    {
+      "name": "Pandora Behaviour Engine Plus",
+      "mod": 133232,
+      "file": 813165,
+      "tool": true
+    },
+    {
+      "name": "Open Animation Replacer",
+      "mod": 92109,
+      "file": 798222
+    },
+    {
+      "name": "Animation Queue Fix",
+      "mod": 82395,
+      "file": 798212
+    },
+    {
+      "name": "Precision",
+      "mod": 72347,
+      "file": 798533
+    },
+    {
+      "name": "True Directional Movement",
+      "mod": 51614,
+      "file": 798770
+    },
+    {
+      "name": "TrueHUD",
+      "mod": 62775,
+      "file": 798218
+    },
+    {
+      "name": "Dodge - MCO (DMCO)",
+      "mod": 175129,
+      "file": 733265
+    },
+    {
+      "name": "Dodge Framework NG 1.7.x",
+      "mod": 195352,
+      "file": 820221
+    },
+    {
+      "name": "IFrame Generator RE AE",
+      "mod": 82737,
+      "file": 794617
+    },
+    {
+      "name": "Behavior Data Injector Universal Support",
+      "mod": 78159,
+      "file": 794609
+    },
+    {
+      "name": "AMR 1.7.104 Update",
+      "mod": 191697,
+      "file": 805238
+    },
+    {
+      "name": "SkySA",
+      "mod": 31390,
+      "file": 203059
+    },
+    {
+      "name": "Elder Souls - Sword 2.0",
+      "mod": 47191,
+      "file": 217554
+    },
+    {
+      "name": "OAR-added Stamina Cost",
+      "mod": 179721,
+      "file": 751119
+    },
+    {
+      "name": "SSE Display Tweaks",
+      "mod": 34705,
+      "file": 797175
+    },
+    {
+      "name": "Crash Logger",
+      "mod": 59818,
+      "file": 825684,
+      "diagnostic": true
+    }
   ]
 }

@@ -1,0 +1,2 @@
+[{"wait": 1000}, {"shot": "s1-before"}, {"key": "Backquote"}, {"wait": 1200}, {"text": "coc riverwood"}, {"key": "Enter"},
+ {"wait": 8000}, {"shot": "s1-8s"}, {"wait": 30000}, {"shot": "s1-38s"}]

@@ -37,11 +37,11 @@ case "${1:-}" in
     printf '%s\n' "$*" > "${TMPDIR:-/tmp}/argonia-desktop.ps1"
     scp "${SSH_OPTS[@]}" "${TMPDIR:-/tmp}/argonia-desktop.ps1" "Administrator@$(ip):C:/argonia/desktop-job.ps1" >/dev/null
     ps '$o="C:\argonia\logs\desktop-job.log"; Remove-Item $o -EA SilentlyContinue
-$a=New-ScheduledTaskAction -Execute powershell.exe -Argument "-ExecutionPolicy Bypass -WindowStyle Hidden -Command & C:\argonia\desktop-job.ps1 *> $o; New-Item C:\argonia\logs\desktop-job.done -Force"
+$a=New-ScheduledTaskAction -Execute powershell.exe -Argument "-ExecutionPolicy Bypass -WindowStyle Hidden -Command try { & C:\argonia\desktop-job.ps1 *> $o } finally { New-Item C:\argonia\logs\desktop-job.done -Force }"
 Remove-Item C:\argonia\logs\desktop-job.done -EA SilentlyContinue
 Register-ScheduledTask -TaskName argonia-desktop-job -Action $a -User Administrator -RunLevel Highest -Force | Out-Null
 Start-ScheduledTask argonia-desktop-job
-for ($i=0; $i -lt 240 -and -not (Test-Path C:\argonia\logs\desktop-job.done); $i++) { Start-Sleep 1 }
+for ($i=0; $i -lt '"${DESKTOP_WAIT:-240}"' -and -not (Test-Path C:\argonia\logs\desktop-job.done); $i++) { Start-Sleep 1 }
 Get-Content $o -EA SilentlyContinue' ;;
   put) scp "${SSH_OPTS[@]}" -r "$2" "Administrator@$(ip):$3" ;;
   setup)

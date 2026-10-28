@@ -1,0 +1,2 @@
+[{"viewport": [1920, 1080]}, {"wait": 15000}, {"key": "Shift"}, {"wait": 1000}, {"key": "Enter"}, {"wait": 2500}, {"shot": "after-confirm"},
+ {"wait": 40000}, {"shot": "modded-camp"}]

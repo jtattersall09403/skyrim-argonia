@@ -47,7 +47,10 @@ switch ($Cmd) {
   'off' {
     if ((Get-Mode) -eq 'off') { 'already off'; break }
     if (Get-Process SkyrimSE -EA SilentlyContinue) { throw 'Skyrim is running; quit it first' }
-    foreach ($f in Get-Content "$State\files.txt") { Remove-Item (Join-Path $Data $f) -Force -EA SilentlyContinue }
+    # The \\?\ form, because some mod folders end in a dot or space, which ordinary Windows paths cannot reach.
+    foreach ($f in Get-Content "$State\files.txt") { Remove-Item -LiteralPath ("\\?\" + (Join-Path $Data $f)) -Force -EA SilentlyContinue }
+    Get-ChildItem $Data -Recurse -Directory | Sort { $_.FullName.Length } -Descending |
+      ? { -not (Get-ChildItem -LiteralPath $_.FullName -Force) } | % { Remove-Item -LiteralPath ("\\?\" + $_.FullName) -Force }
     if (Test-Path "$State\backup") { robocopy "$State\backup" $Data /E /NFL /NDL /NJH /NJS /NP | Out-Null; Remove-Item "$State\backup" -Recurse -Force }
     if (Test-Path "$State\plugins-vanilla.txt") { Copy-Item "$State\plugins-vanilla.txt" "$Prefs\Plugins.txt" -Force } else { Remove-Item "$Prefs\Plugins.txt" -EA SilentlyContinue }
     Remove-Item "$State\files.txt"
@@ -67,7 +70,7 @@ switch ($Cmd) {
     & $PSCommandPath on
     "pandora: $n files added to the overlay"
   }
-  'play-vanilla' { & $PSCommandPath off; Start-Process 'steam://rungameid/489830' }
+  'play-vanilla' { & $PSCommandPath off; Start-Process "$Game\SkyrimSE.exe" -WorkingDirectory $Game }
   'play-modded'  { & $PSCommandPath on; Start-Process "$Game\skse64_loader.exe" -WorkingDirectory $Game }
   default { throw "unknown command $Cmd" }
 }

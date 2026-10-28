@@ -41,6 +41,25 @@ def unpack(archive, dest):
                 f.rename(target)
 
 
+# Skyrim's loose-file scan overruns a fixed MAX_PATH buffer on any path of 260+ characters under the game's Data
+# folder (0xC0000409 at start-up, even in vanilla). The game's own prefix is 77 characters, so mod paths are capped.
+GAME_DATA = r"C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition\Data" + "\\"
+MAX_PATH = 259
+
+
+def prune(data):
+    """Drop OAR "put your <clip> file here.txt" placeholders (instructions, no function) and fail on long paths."""
+    for f in list(data.rglob("*")):
+        if f.is_file() and f.name.lower().startswith("put your ") and f.suffix.lower() == ".txt":
+            f.unlink()
+    for d in sorted((x for x in data.rglob("*") if x.is_dir()), key=lambda x: -len(x.parts)):
+        if not any(d.iterdir()):
+            d.rmdir()
+    too_long = [f for f in data.rglob("*") if f.is_file() and len(GAME_DATA) + len(str(f.relative_to(data))) > MAX_PATH]
+    if too_long:
+        raise SystemExit(f"paths too long for Skyrim in {data.name}: {too_long[0].relative_to(data)}")
+
+
 def copy_into(src, dst):
     if src.is_dir():
         shutil.copytree(src, dst, dirs_exist_ok=True)
@@ -104,6 +123,7 @@ def main():
         data = mo2 / "mods" / m["name"]
         data.mkdir(parents=True, exist_ok=True)
         place(m["mod"], src, data, root, tools)
+        prune(data)
         if m["mod"] not in (30379, 133232) or any(data.iterdir()):
             names.append(m["name"])
         print(f"staged {m['name']}")
