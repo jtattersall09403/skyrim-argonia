@@ -92,6 +92,10 @@ function Install-Stream {
     if ($exe.DirectoryName -ne "$Root\moonlight-web") { Copy-Item "$($exe.DirectoryName)\*" "$Root\moonlight-web" -Recurse -Force }
   }
   Write-Host 'moonlight-web: installed'
+  if (-not (Get-ScheduledTask -TaskName argonia-moonlight-web -ErrorAction SilentlyContinue)) {
+    $a = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument "-ExecutionPolicy Bypass -File $Root\infra\moonlight-web.ps1"
+    Register-ScheduledTask -TaskName argonia-moonlight-web -Action $a -Trigger (New-ScheduledTaskTrigger -AtStartup) -User SYSTEM -RunLevel Highest | Out-Null
+  }
 
   if (-not (Test-Path "$Root\cloudflared.exe")) {
     Invoke-WebRequest 'https://github.com/cloudflare/cloudflared/releases/download/2026.10.5/cloudflared-windows-amd64.exe' -OutFile "$Root\cloudflared.exe" -UseBasicParsing
@@ -111,10 +115,51 @@ function Install-Dcv {
   Write-Host "dcv: $((Get-Service dcvserver -ErrorAction SilentlyContinue).Status)"
 }
 
+function Install-Combat {
+  # The 0.0 combat test (§d): the MO2 instance staged by combat_test_stage.py and copied to
+  # C:\argonia\combat-stage. Steam's own launch stays vanilla; MO2's "SKSE" executable is the modded game.
+  $game = 'C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition'
+  $stage = "$Root\combat-stage"
+  if (-not (Test-Path $stage)) { throw "no stage at ${stage}; run combat_test_stage.py and copy it first" }
+  Copy-Item "$stage\root\*" $game -Force
+  Copy-Item "$stage\MO2\*" "$Root\MO2" -Recurse -Force
+  $g = $game.Replace('\', '\\')
+  $m = "$Root\MO2".Replace('\', '/')
+  @"
+[General]
+gameName=Skyrim Special Edition
+gamePath=@ByteArray($g)
+selected_profile=@ByteArray(Default)
+first_start=false
+
+[Settings]
+check_for_updates=false
+profile_local_inis=false
+profile_local_saves=false
+
+[customExecutables]
+size=2
+1\title=SKSE
+1\binary=$($game.Replace('\', '/'))/skse64_loader.exe
+1\workingDirectory=$($game.Replace('\', '/'))
+1\arguments=
+1\toolbar=true
+1\ownicon=true
+2\title=Pandora
+2\binary=$m/tools/Pandora/Pandora Behaviour Engine+.exe
+2\workingDirectory=$m/tools/Pandora
+2\arguments=--auto_run --auto_close -o "$m/mods/Pandora Output"
+2\toolbar=true
+2\ownicon=true
+"@ | Set-Content "$Root\MO2\ModOrganizer.ini" -Encoding UTF8
+  Write-Host "combat: $((Get-ChildItem "$Root\MO2\mods" -Directory).Count) mod folders, skse loader $(Test-Path "$game\skse64_loader.exe")"
+}
+
 switch ($Stage) {
   'base' { Install-Base }
   'stream' { Install-Stream }
   'dcv'    { Install-Dcv }
+  'combat' { Install-Combat }
   'all'  { Install-Base; Install-Stream; Install-Dcv }
   default { throw "unknown stage $Stage" }
 }
