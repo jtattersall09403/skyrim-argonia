@@ -25,7 +25,7 @@ const CSS = `
 #argonia-touch .at-btn[data-id="b"] { border-color: rgba(220,80,70,.8); }
 #argonia-touch .at-btn[data-id="x"] { border-color: rgba(80,140,230,.8); }
 #argonia-touch .at-btn[data-id="y"] { border-color: rgba(230,190,60,.85); }
-#argonia-touch-toggle { position: fixed; z-index: 901; pointer-events: auto; touch-action: none; border-radius: 10px; opacity: .55;
+#argonia-touch-toggle, #argonia-keyboard-toggle { position: fixed; z-index: 901; pointer-events: auto; touch-action: none; border-radius: 10px; opacity: .55;
   background: rgba(20,24,18,.5); border: 2px solid rgba(235,230,210,.5); display: flex; align-items: center; justify-content: center; }
 #argonia-touch-toggle[aria-pressed="true"] { opacity: .8; }
 html.argonia-touch-on, html.argonia-touch-on body { touch-action: none; overscroll-behavior: none; overflow: hidden; }
@@ -46,6 +46,7 @@ export type TouchLayerHooks = {
 export class TouchLayer {
     readonly root = document.createElement("div")
     readonly toggle = document.createElement("button")
+    readonly keyboard = document.createElement("button")
     private layout: Layout | null = null
     private buttons = new Map<ButtonId, HTMLElement>()
     private override: boolean | null = null
@@ -74,8 +75,17 @@ export class TouchLayer {
         this.toggle.innerHTML = PAD_ICON
         this.toggle.addEventListener("pointerdown", (e) => { e.preventDefault(); e.stopPropagation() })
         this.toggle.addEventListener("click", (e) => { e.stopPropagation(); this.override = !this.shown; this.update() })
+        // The phone keyboard (Steam sign-in, the console, save names): presses upstream's own "Keyboard" menu item,
+        // so its text handling is reused; the press happens inside this tap, so the browser lets the keyboard open.
+        this.keyboard.id = "argonia-keyboard-toggle"
+        this.keyboard.type = "button"
+        this.keyboard.setAttribute("aria-label", "Show the keyboard")
+        this.keyboard.textContent = "⌨"
+        this.keyboard.addEventListener("pointerdown", (e) => { e.preventDefault(); e.stopPropagation() })
+        this.keyboard.addEventListener("click", (e) => { e.stopPropagation(); openUpstreamKeyboard() })
         document.body.appendChild(this.root)
         document.body.appendChild(this.toggle)
+        document.body.appendChild(this.keyboard)
         // pads: hide the touch pad when a real one connects (ours is told apart by its id)
         window.addEventListener("gamepadconnected", (e) => { if (!(e as GamepadEvent).gamepad?.id?.startsWith("Argonia")) { this.override = null; this.update() } })
         window.addEventListener("gamepaddisconnected", (e) => { if (!(e as GamepadEvent).gamepad?.id?.startsWith("Argonia")) this.update() })
@@ -95,6 +105,7 @@ export class TouchLayer {
         const auto = this.hasTouch && this.pad.realPads().length === 0
         const shown = this.override ?? auto
         this.toggle.hidden = !this.hasTouch && this.override === null
+        this.keyboard.hidden = this.toggle.hidden
         this.toggle.setAttribute("aria-pressed", String(shown))
         if (shown === this.shown) return
         this.shown = shown
@@ -125,6 +136,7 @@ export class TouchLayer {
             this.buttons.set(b.id, el)
         }
         Object.assign(this.toggle.style, { left: `${l.toggle.x}px`, top: `${l.toggle.y}px`, width: `${l.toggle.w}px`, height: `${l.toggle.h}px` })
+        Object.assign(this.keyboard.style, { left: `${l.toggle.x + l.toggle.w + 8}px`, top: `${l.toggle.y}px`, width: `${l.toggle.w}px`, height: `${l.toggle.h}px`, fontSize: `${Math.round(l.toggle.h * 0.55)}px` })
         this.paint()
     }
 
@@ -176,6 +188,7 @@ export class TouchLayer {
         el.addEventListener("pointerdown", (e) => {
             e.preventDefault()
             e.stopPropagation()
+            if (upstreamControlAt(e.clientX, e.clientY)) return // upstream's menu tab sits under the left stick's area
             if (owner !== null) return // one finger owns a stick; a second finger here does nothing
             owner = e.pointerId
             try { el.setPointerCapture(e.pointerId) } catch { /* synthetic pointers */ }
@@ -207,4 +220,26 @@ export class TouchLayer {
         el.addEventListener("lostpointercapture", end)
         return el
     }
+}
+
+/** Upstream's controls that must stay tappable under a stick area: a tap on one clicks it and reports true. */
+function upstreamControlAt(x: number, y: number): boolean {
+    const slop = 10
+    for (const el of [document.getElementById("sidebar-button")]) {
+        if (!el) continue
+        const r = el.getBoundingClientRect()
+        if (r.width && x >= r.left - slop && x <= r.right + slop && y >= r.top - slop && y <= r.bottom + slop) {
+            (el as HTMLElement).click()
+            return true
+        }
+    }
+    return false
+}
+
+/** Open upstream's on-screen keyboard by pressing its "Keyboard" menu item; fall back to its input element. */
+function openUpstreamKeyboard() {
+    const items = [...document.querySelectorAll<HTMLElement>("#sidebar-root button")]
+    const item = items.find((b) => b.textContent?.trim() === "Keyboard")
+    if (item) { item.click(); return }
+    document.getElementById("input")?.focus()
 }

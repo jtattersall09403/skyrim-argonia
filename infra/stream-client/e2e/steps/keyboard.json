@@ -1,0 +1,1 @@
+[{"wait": 3000}, {"tap": [17, 204]}, {"wait": 1500}, {"shot": "kb-menu"}, {"tap": [17, 204]}, {"wait": 1000}, {"click": "#argonia-keyboard-toggle"}, {"wait": 1500}, {"shot": "kb-open"}]

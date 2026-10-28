@@ -2,7 +2,7 @@
 // of steps typed and pressed through Moonlight-Web, so Sunshine injects them exactly as the owner's input is.
 // Used for setup (test saves through the console); journeys stay eyeless and never use this (CLAUDE.md).
 //   node drive.mjs <outDir> webrtc <steps.json>
-// steps: [{"key": "Backquote"} | {"text": "coc riverwood"} | {"wait": ms} | {"shot": "name"} | {"viewport": [w, h]}]
+// steps: [{"key": "Backquote"} | {"text": "coc riverwood"} | {"wait": ms} | {"shot": "name"} | {"viewport": [w, h]} | {"tap": [x, y]} | {"click": "css"}]
 import fs from "node:fs"
 import os from "node:os"
 import path from "node:path"
@@ -56,7 +56,8 @@ try {
     if (ids.error) throw new Error(ids.error)
     const apps = JSON.parse(ids.appsText)
     const list = apps.apps ?? apps
-    const desktop = list.find((a) => /desktop/i.test(a.title ?? a.name ?? "")) ?? list[0]
+    const want = new RegExp(process.env.ARGONIA_APP ?? "desktop", "i")  // which Sunshine app to start
+    const desktop = list.find((a) => want.test(a.title ?? a.name ?? "")) ?? list[0]
     const appId = desktop.app_id ?? desktop.id
     log(`host ${ids.hostId}, app ${appId} (${desktop.title ?? desktop.name}), transport ${transport}`)
 
@@ -84,6 +85,8 @@ try {
         if (s.key) { await page.keyboard.down(s.key); await wait(80); await page.keyboard.up(s.key); await wait(250) }
         else if (s.text) { for (const ch of s.text) { await page.keyboard.type(ch); await wait(90) } }
         else if (s.wait) await wait(s.wait)
+        else if (s.tap) { await page.touchscreen.tap(s.tap[0], s.tap[1]); await wait(400) }
+        else if (s.click) { await page.click(s.click).catch((e) => log("click failed", s.click, e.message)); await wait(600) }
         else if (s.viewport) { await page.setViewport({ width: s.viewport[0], height: s.viewport[1], hasTouch: true, deviceScaleFactor: 1 }); await wait(1500) }
         else if (s.shot) { await page.screenshot({ path: path.join(out, `drive-${s.shot}.png`) }); log("shot", s.shot) }
     }
