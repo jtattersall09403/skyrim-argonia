@@ -38,8 +38,11 @@ try:
     call("POST", "/login", {"name": user, "password": pw}).read()
     hosts = json.loads(call("GET", "/hosts").readline() or b"{}")
     print("hosts before:", json.dumps(hosts)[:300])
-    found = re.findall(r'"host_id":\s*(\d+)', json.dumps(hosts))
-    host_id = int(found[0]) if found else json.loads(call("POST", "/host", {"address": "localhost"}).read())["host"]["host_id"]
+    # Sunshine is added as 127.0.0.1, not "localhost": Windows resolves localhost to ::1 first, and Moonlight-Web
+    # then opens IPv4 media sockets against an IPv6 address (os error 10047).
+    for old in re.findall(r'"host_id":\s*(\d+)', json.dumps(hosts)):
+        call("DELETE", f"/host?host_id={old}").read()
+    host_id = json.loads(call("POST", "/host", {"address": "127.0.0.1"}).read())["host"]["host_id"]
     ctx = ssl.create_default_context(); ctx.check_hostname = False; ctx.verify_mode = ssl.CERT_NONE
     auth = base64.b64encode(f"{user}:{pw}".encode()).decode()
     hdr = {"Authorization": f"Basic {auth}", "Content-Type": "application/json"}

@@ -1,5 +1,6 @@
 # Display helpers for the game machine's desktop session (chunk 0.0 §b): list modes, set a mode on a display.
 #   display.ps1 list | display.ps1 set <\\.\DISPLAYn> <width> <height> [hz] [primary]
+#   display.ps1 pin      set the primary display to 1920x1080@60 (at logon: the head Windows picks varies by boot)
 param([string]$Cmd = 'list', [string]$Dev, [int]$W, [int]$H, [int]$Hz = 60, [switch]$Primary)
 Add-Type @'
 using System; using System.Runtime.InteropServices;
@@ -14,6 +15,10 @@ public class Disp {
 }
 '@
 function New-Mode { $m = New-Object Disp+DEVMODE; $m.dmSize = [Runtime.InteropServices.Marshal]::SizeOf($m); $m }
+if ($Cmd -eq 'pin') {
+  Add-Type -AssemblyName System.Windows.Forms
+  $Dev = ([System.Windows.Forms.Screen]::AllScreens | ? Primary).DeviceName; $W = 1920; $H = 1080; $Hz = 60; $Primary = $true; $Cmd = 'set'
+}
 if ($Cmd -eq 'list') {
   Add-Type -AssemblyName System.Windows.Forms
   foreach ($s in [System.Windows.Forms.Screen]::AllScreens) {

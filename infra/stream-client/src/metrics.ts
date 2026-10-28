@@ -81,8 +81,13 @@ export class InputLog {
             if (el.closest("#argonia-touch, #argonia-touch-toggle, .sidebar-overlay, #modal-overlay, input, textarea, select")) return false
             return true
         }
+        // Keys still reach the host when focus sits on a touch control, so only text fields and dialogs are skipped.
+        const keyToHost = (t: EventTarget | null) => {
+            const el = t as Element | null
+            return !(el && el.closest && el.closest(".sidebar-overlay, #modal-overlay, input, textarea, select"))
+        }
         const stamp = (e: Event) => (e.timeStamp > 0 && e.timeStamp <= performance.now() + 1 ? e.timeStamp : performance.now())
-        window.addEventListener("keydown", (e) => { if (!e.repeat && toHost(e.target)) this.press("keyboard", e.code, stamp(e)) }, { capture: true })
+        window.addEventListener("keydown", (e) => { if (!e.repeat && keyToHost(e.target)) this.press("keyboard", e.code, stamp(e)) }, { capture: true })
         window.addEventListener("mousedown", (e) => { if (toHost(e.target)) this.press("mouse", `button${e.button}`, stamp(e)) }, { capture: true })
         window.addEventListener("mousemove", (e) => { if (toHost(e.target)) this.active("mouse") }, { capture: true, passive: true })
         let last: boolean[][] = []

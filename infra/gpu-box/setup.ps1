@@ -101,6 +101,12 @@ function Install-Stream {
     Invoke-WebRequest 'https://github.com/cloudflare/cloudflared/releases/download/2026.10.5/cloudflared-windows-amd64.exe' -OutFile "$Root\cloudflared.exe" -UseBasicParsing
   }
   Write-Host 'cloudflared: installed'
+  # The desktop is pinned to 1920x1080 at every logon, so the stream is never letterboxed.
+  if (-not (Get-ScheduledTask -TaskName argonia-display -ErrorAction SilentlyContinue)) {
+    $a = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument "-ExecutionPolicy Bypass -WindowStyle Hidden -File $Root\infra\display.ps1 pin"
+    Register-ScheduledTask -TaskName argonia-display -Action $a -Trigger (New-ScheduledTaskTrigger -AtLogOn -User Administrator) -User Administrator -RunLevel Highest | Out-Null
+  }
+  Write-Host 'display: pinned at logon'
 }
 
 function Install-Dcv {
