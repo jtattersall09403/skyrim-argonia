@@ -4,6 +4,8 @@ the game machine, fronted by Cloudflare Access so only the owner's email gets in
 
   cloudflare_gate.py check       verify the token, the zone and the login methods; change nothing
   cloudflare_gate.py apply       create or update the tunnel, its routes, DNS and the Access apps (idempotent)
+  cloudflare_gate.py worker      deploy the play switch (infra/cloudflare/play-switch.js) on play. and dcv., with
+                                 its schedules; needs AWS_SWITCH_KEY_ID / AWS_SWITCH_SECRET in secrets.env
 
 Reads CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID, CLOUDFLARE_DOMAIN and GATE_EMAIL from ~/.argonia/secrets.env and
 writes CLOUDFLARE_TUNNEL_TOKEN back there; nothing secret is printed. The machine opens no web port: cloudflared
@@ -118,5 +120,38 @@ def apply():
     print("access: only the owner's email may sign in, sessions last 30 days")
 
 
+NIGHT_STOP = "0 3 * * *"  # 03:00 UTC: 03:00 UK in winter, 04:00 in summer
+
+
+def worker():
+    import uuid
+    src = (pathlib.Path(__file__).resolve().parents[1] / "cloudflare" / "play-switch.js").read_text()
+    meta = {"main_module": "play-switch.js", "compatibility_date": "2026-10-01", "bindings": [
+        {"type": "secret_text", "name": "AWS_KEY_ID", "text": env["AWS_SWITCH_KEY_ID"]},
+        {"type": "secret_text", "name": "AWS_SECRET", "text": env["AWS_SWITCH_SECRET"]},
+        {"type": "plain_text", "name": "NIGHT_STOP", "text": NIGHT_STOP}]}
+    b = uuid.uuid4().hex
+    body = (f"--{b}\r\nContent-Disposition: form-data; name=\"metadata\"\r\nContent-Type: application/json\r\n\r\n"
+            f"{json.dumps(meta)}\r\n--{b}\r\nContent-Disposition: form-data; name=\"play-switch.js\"; "
+            f"filename=\"play-switch.js\"\r\nContent-Type: application/javascript+module\r\n\r\n{src}\r\n--{b}--\r\n")
+    req = urllib.request.Request(f"https://api.cloudflare.com/client/v4/accounts/{ACCT}/workers/scripts/argonia-play-switch",
+                                 method="PUT", data=body.encode(),
+                                 headers={"Authorization": f"Bearer {env['CLOUDFLARE_API_TOKEN']}",
+                                          "Content-Type": f"multipart/form-data; boundary={b}"})
+    try:
+        urllib.request.urlopen(req, timeout=60).read()
+    except urllib.error.HTTPError as e:
+        raise SystemExit(f"worker upload: {e.code} {e.read().decode()[:400]}")
+    cf("PUT", f"/accounts/{ACCT}/workers/scripts/argonia-play-switch/schedules",
+       [{"cron": "*/30 * * * *"}, {"cron": NIGHT_STOP}])
+    zid = zone_id()
+    have = {r["pattern"] for r in cf("GET", f"/zones/{zid}/workers/routes")}
+    for prefix in ROUTES:
+        pattern = f"{prefix}.{DOMAIN}/*"
+        if pattern not in have:
+            cf("POST", f"/zones/{zid}/workers/routes", {"pattern": pattern, "script": "argonia-play-switch"})
+    print("play switch deployed on", ", ".join(f"{p}.{DOMAIN}" for p in ROUTES), "with schedules every 30 min and", NIGHT_STOP)
+
+
 if __name__ == "__main__":
-    {"check": check, "apply": apply}[sys.argv[1] if len(sys.argv) > 1 else "check"]()
+    {"check": check, "apply": apply, "worker": worker}[sys.argv[1] if len(sys.argv) > 1 else "check"]()
