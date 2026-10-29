@@ -1,0 +1,2 @@
+[{"wait": 8000}, {"click": "video.video-stream"}, {"wait": 2000},
+ {"probe": "(() => { const a = [...document.querySelectorAll('audio, video')].map(e => ({ tag: e.tagName, paused: e.paused, muted: e.muted, tracks: e.srcObject ? e.srcObject.getAudioTracks().map(t => t.readyState + ':' + t.enabled) : null })); return { media: a } })()"}]

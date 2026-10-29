@@ -7,7 +7,7 @@
 
 export const MAX_EDGE = 2560   // the T4's NVENC and the stream budget: larger screens are scaled to fit
 export const MIN_KBPS = 8000
-export const MAX_KBPS = 30000
+export const MAX_KBPS = 50000
 
 /** The stream size for a screen: its physical pixels, longest edge capped at MAX_EDGE, both sides even. */
 export function streamSize(cssW: number, cssH: number, dpr: number): { width: number, height: number } {
@@ -18,9 +18,9 @@ export function streamSize(cssW: number, cssH: number, dpr: number): { width: nu
     return { width: even(w), height: even(h) }
 }
 
-/** Bitrate for a size at 60 fps: about 0.1 bits a pixel a frame, inside [MIN_KBPS, MAX_KBPS]. */
+/** Bitrate for a size at 60 fps: about 0.2 bits a pixel a frame (0.1 looked soft to the owner), inside [MIN_KBPS, MAX_KBPS]. */
 export function bitrateFor(width: number, height: number): number {
-    return Math.round(Math.min(MAX_KBPS, Math.max(MIN_KBPS, (width * height * 60 * 0.1) / 1000)))
+    return Math.round(Math.min(MAX_KBPS, Math.max(MIN_KBPS, (width * height * 60 * 0.2) / 1000)))
 }
 
 export function applyStreamSettings(storage: Storage = localStorage) {

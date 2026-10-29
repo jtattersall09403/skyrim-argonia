@@ -42,10 +42,16 @@ try {
   $r = [Disp]::SoleDisplay($vdd, 1920, 1080, 60)
   # Sunshine captures this display from now on.
   $conf = 'C:\Program Files\Sunshine\config\sunshine.conf'
-  $lines = @(Get-Content $conf -EA SilentlyContinue | ? { $_ -notmatch '^(output_name|address_family)\s*=' })
-  ($lines + "output_name = $vdd") | Set-Content $conf -Encoding ASCII
+  $lines = @(Get-Content $conf -EA SilentlyContinue | ? { $_ -notmatch '^(output_name|address_family|keep_sink_default)\s*=' })
+  # keep_sink_default: the virtual audio device stays the default between streams, so a game left running keeps
+  # its sound when a new session resumes it (each stream otherwise re-creates the device and the game goes quiet).
+  ($lines + "output_name = $vdd" + 'keep_sink_default = enabled') | Set-Content $conf -Encoding ASCII
   Restart-Service SunshineService
   Add-Content $log "$(Get-Date -Format o) $($seen.Count) sizes loaded; $vdd primary at 1920x1080 ($r); Sunshine output_name = $vdd"
 } catch {
   Add-Content $log "$(Get-Date -Format o) error: $_"
 }
+# The GRID driver's session container shows a "NVIDIA Control Panel is not found" pop-up over the game at every
+# logon (no driver setting stops it). Restarted once after logon, the service brings it back without the pop-up.
+Start-Sleep 15
+Get-Process NVDisplay.Container -EA SilentlyContinue | ? { $_.SessionId -ne 0 } | Stop-Process -Force -EA SilentlyContinue

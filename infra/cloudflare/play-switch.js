@@ -26,8 +26,19 @@ export default {
       return page("Stopping the game machine", "It is switching off. Nothing is charged while it is off.", false)
     }
     if (url.pathname === "/argonia/start") return startPage(env)
+    // One sign-in only (owner, 2026-10-29): Moonlight-Web serves its default user to anyone without a session, and
+    // only the owner gets past Access, but a stale or expired mlSession cookie makes it ask for a login instead.
+    // So the cookie never reaches it.
+    let req = request
+    const cookie = request.headers.get("cookie")
+    if (cookie && /(^|;\s*)mlSession=/.test(cookie)) {
+      const headers = new Headers(request.headers)
+      const rest = cookie.split(/;\s*/).filter((c) => !c.startsWith("mlSession=")).join("; ")
+      if (rest) headers.set("cookie", rest); else headers.delete("cookie")
+      req = new Request(request, { headers })
+    }
     let res
-    try { res = await fetch(request) } catch (e) { res = null }
+    try { res = await fetch(req) } catch (e) { res = null }
     if (res && res.status !== 530 && res.status !== 502 && res.status !== 1033) return res
     return startPage(env)
   },
