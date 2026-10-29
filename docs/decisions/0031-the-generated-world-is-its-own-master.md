@@ -31,3 +31,8 @@ As YAML that is hundreds of megabytes of numbers no reviewer reads; it would swa
 
 - Reviewers see the ground through the L1 checks and stills, not through YAML.
 - The terrain, water and region writers in `tools/ArgoniaGen` target the right plugin by record kind.
+- A generated record that must point at an authored one cannot (the master cannot reference its dependant): the
+  master carries a **shell** of the authored record (EditorID and owner only, ids from a reserved append-only range in
+  the `formid` table) and the authored plugin overrides the shell with its content. First case: each cell's region list
+  (XCLR) points at REGN shells in `ArgoniaWorld.esm`; `Argonia.esm` overrides each with its weathers, objects, map name
+  and areas (2.W3). The border region needs no XCLR and lives wholly in `Argonia.esm`.
