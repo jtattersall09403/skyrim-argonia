@@ -56,14 +56,24 @@
       "file": 798218
     },
     {
-      "name": "Dodge - MCO (DMCO)",
-      "mod": 175129,
-      "file": 733265
+      "name": "TK Dodge SE (meshes for RE)",
+      "mod": 15309,
+      "file": 315866
     },
     {
-      "name": "Dodge Framework NG 1.7.x",
-      "mod": 195352,
-      "file": 820221
+      "name": "TK Dodge RE",
+      "mod": 56956,
+      "file": 402680
+    },
+    {
+      "name": "TK Dodge RE Addon 1.7.99+",
+      "mod": 125238,
+      "file": 800181
+    },
+    {
+      "name": "Dynamic Dodge Animation",
+      "mod": 79598,
+      "file": 429066
     },
     {
       "name": "IFrame Generator RE AE",

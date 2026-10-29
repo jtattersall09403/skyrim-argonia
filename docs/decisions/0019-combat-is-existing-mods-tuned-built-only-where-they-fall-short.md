@@ -11,7 +11,7 @@ build what genuinely needs building."
 ## Decision
 
 1. **Existing mods are the combat system.** The souls-like stack from 0.0 (SkySA with the Elder Souls sword
-   moveset, Precision, TDM, TrueHUD, DMCO on Dodge Framework NG with IFrame Generator, Elden Parry with Rim Parry
+   moveset, Precision, TDM, TrueHUD, TK Dodge RE with Dynamic Dodge Animation and IFrame Generator, Elden Parry with Rim Parry
    and Execution, Modern Stagger Lock, MaxsuBlockOverhaul, OAR-added Stamina Cost;
    `infra/gpu-box/combat-test-mods.json`) is the starting point, widened with other permitted mods (BFCO, SCAR,
    CPR and the like) where they cover more of DS1. Each mod is reached in the

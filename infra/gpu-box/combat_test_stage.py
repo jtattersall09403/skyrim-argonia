@@ -19,7 +19,12 @@ HOME = pathlib.Path.home()
 
 # FOMOD choices (folders relative to the archive root, copied into Data in this order).
 FOMOD = {
-    175129: ["Mandatory", "MCO"],  # DMCO: the MCO variant; we use SkySA for attacks, not MCO or DXP
+    # TK Dodge RE: behaviour patch and INI (the DLL is the addon's), with dodging while sheathed (DS1 rolls with
+    # anything in hand), the forward-dodge fix and dodging out of stagger under TDM
+    56956: ["TK dodge re v0.55-rc3 DLL/Main/*", "TK dodge re v0.55-rc3 DLL/Sheathed Dodge/*",
+            "TK dodge re v0.55-rc3 DLL/Forward dodge movement fix/*",
+            "TK dodge re v0.55-rc3 DLL/Allow dodging when stagger - Directional Movement/*"],
+    79598: ["Dynamic Dodge/Roll to cancel attack/Dynamic Dodge - TK Dodge RE-0.55-rc3/*"],  # rolls, steps, backstep
     72347: ["Interface", "MCM", "Meshes", "Scripts", "SKSE", "Textures", "Nemesis_Engine/mod/colis",
             "Precision.esp"],  # Precision: required files, no compatibility patch
     53000: ["Data/*", "SkyrimSE/SKSE", "ESL/MCMHelper.esp", "Loose/*"],  # MCM Helper: SE, ESL, loose
@@ -174,6 +179,13 @@ def main():
                 else text + f"\n{k} = {v}\n"
         ini.write_text(text)
         print("elden parry window set in", ini.relative_to(mo2))
+    # TK Dodge on the sprint key (the gamepad's right button, Option on a Mac), as DS1 rolls: a tap rolls, a hold
+    # runs (owner, 2026-10-29). Its stock key is LB. The other settings stay stock.
+    tomls = [f for n in names for f in (mo2 / "mods" / n).rglob("tk-dodge.toml")]
+    if tomls:
+        toml = tomls[-1]
+        toml.write_text(re.sub(r"^bUseSprintKey\s*=.*$", "bUseSprintKey = true", toml.read_text(), flags=re.M))
+        print("tk dodge on the sprint key in", toml.relative_to(mo2))
     plugins = []
     for n in names:  # later mods may ship the same plugin (Rim Parry's CTD fix): list each once, first place
         for f in sorted((mo2 / "mods" / n).iterdir()):

@@ -105,7 +105,7 @@ switch ($Cmd) {
   'pandora' {
     # Pandora (a GUI app: run in the desktop session) writes to the outputPath in its Settings.json and, with
     # --auto_run, patches the mods cached in <output>\Pandora_Engine\ActiveMods.json (code, active, priority).
-    if ((Get-Mode) -ne 'on') { & $PSCommandPath on | Out-Null }
+    & $PSCommandPath on | Out-Null   # always: Data must be the overlay just built, not an older 'on'
     $out = "$Root\pandora-out"; Remove-Item $out -Recurse -Force -EA SilentlyContinue
     New-Item -ItemType Directory -Force "$out\Pandora_Engine" | Out-Null
     $tool = "$Root\MO2\tools\Pandora"
