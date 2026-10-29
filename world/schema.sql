@@ -5139,9 +5139,67 @@ CREATE TABLE "terrain_patch" (
   "id" TEXT NOT NULL PRIMARY KEY
 );
 
--- Home of a water body (lake, river reach, marsh) of the graph. Migrated by 2.W2 from world/sources/hydrology/*.json; until then a key only.
+-- Migrated by 2.W2 (tools/argonia_world/water/migrate.py); the rest of the family is below the 0030 marker.
+-- Home of a standing water body of the graph (ocean, lagoon, lake, tarn, pond, pool, plunge pool, marsh family); levelM is the high-water line (old 0063); its extent is the connected water of the frozen body-level raster around deepest_x/y (full-res samples, y south).
 CREATE TABLE "hydrology_body" (
-  "id" TEXT NOT NULL PRIMARY KEY
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "kind" TEXT,
+  "origin" TEXT,
+  "level_m" REAL,
+  "altitude_band" TEXT,
+  "area_m2" REAL,
+  "max_depth_m" REAL,
+  "sheet" BOOLEAN,
+  "season" TEXT,
+  "season_response" REAL,
+  "wet_season_level_m" REAL,
+  "dry_season_level_m" REAL,
+  "deepest_x" INTEGER,
+  "deepest_y" INTEGER,
+  "bbox_x0" INTEGER,
+  "bbox_y0" INTEGER,
+  "bbox_x1" INTEGER,
+  "bbox_y1" INTEGER,
+  "region" INTEGER,
+  "mean_depth_m" REAL,
+  "outflow_reach_id" TEXT REFERENCES "hydrology_reach"("id"),
+  "terrain_precondition_kind" TEXT,
+  "terrain_precondition_level_m" REAL,
+  "terrain_precondition_floor_max_m" REAL,
+  "terrain_precondition_spill_m" REAL,
+  "approved_id" TEXT,
+  "approved_kind" TEXT,
+  "approved_level_m" REAL,
+  "approved_area_m2" REAL,
+  "approved_measured_kind" TEXT,
+  "approved_overlap_of_approved" REAL,
+  "approved_part" INTEGER,
+  "sink" BOOLEAN,
+  "approved_unreviewed" BOOLEAN,
+  "terrain_precondition_channel_level_m" REAL,
+  "captured" BOOLEAN,
+  "pre_carve_level_m" REAL,
+  "pre_carve_area_m2" REAL,
+  "pre_carve_spill_m" REAL,
+  "lost_at_carve" BOOLEAN,
+  "caused_by_fall_reach_id" TEXT REFERENCES "hydrology_reach"("id"),
+  "joined_sea" BOOLEAN,
+  "declared_by" TEXT,
+  "terrain_precondition_depth_m" REAL,
+  "terrain_precondition_radius_m" REAL,
+  "terrain_precondition_throw_m" REAL,
+  "terrain_precondition_hold_m" REAL,
+  "terrain_precondition_law" TEXT,
+  "name" TEXT,
+  "lore" TEXT,
+  "terrain_precondition_bed_m" REAL,
+  "terrain_precondition_shoreline" TEXT,
+  "terrain_precondition_island_radius_m" REAL,
+  "terrain_precondition_island_top_m" REAL,
+  "terrain_precondition_island_note" TEXT,
+  "realised_by" TEXT,
+  "caused_by_stage" TEXT,
+  "caused_by_why" TEXT
 );
 
 -- Home of a flow edge between two bodies. Migrated by 2.W2 from world/sources/hydrology/hydrology-graph.json; until then a key only.
@@ -5261,6 +5319,156 @@ CREATE TABLE "culture_kit" (
 );
 
 -- == End of the 0030 migration's tables. A later chunk appends its own tables below this line. ==
+
+-- == The hydrology family (2.W2; migrated from the old hydrology graph, decision 0030 §6) ==
+-- Read through db.py by tools/argonia_world/water; the migration is tools/argonia_world/water/migrate.py.
+-- Frame: east/south metres from the province's north-west corner; x = column (east), y = row (south)
+-- of the 4033^2 full-res samples; levels in metres above sea.
+
+-- Home of a river: one stem from headwater to mouth (old 0058; the graph's README).
+CREATE TABLE "hydrology_river" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "name" TEXT,
+  "strahler" INTEGER,
+  "mouth_kind" TEXT,
+  "mouth_body_id" TEXT REFERENCES "hydrology_body"("id"),
+  "mouth_form" TEXT,
+  "water" TEXT,
+  "accum_km2" REAL,
+  "length_m" REAL,
+  "source_east_m" REAL,
+  "source_south_m" REAL,
+  "mouth_east_m" REAL,
+  "mouth_south_m" REAL,
+  "mouth_through_body_id" TEXT REFERENCES "hydrology_body"("id"),
+  "tributary_of_river_id" TEXT REFERENCES "hydrology_river"("id"),
+  "tributary_of_junction_id" TEXT REFERENCES "hydrology_junction"("id"),
+  "mouth_river_id" TEXT REFERENCES "hydrology_river"("id"),
+  "mouth_junction_id" TEXT REFERENCES "hydrology_junction"("id")
+);
+
+-- Home of a junction: a source, confluence or mouth of the river network.
+CREATE TABLE "hydrology_junction" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "east_m" REAL,
+  "south_m" REAL,
+  "level_m" REAL,
+  "kind" TEXT,
+  "outflow_reach_id" TEXT REFERENCES "hydrology_reach"("id")
+);
+
+-- Home of a reach: a stretch of one river with one kind and one surface; levels in metres above sea.
+CREATE TABLE "hydrology_reach" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "river_id" TEXT REFERENCES "hydrology_river"("id"),
+  "kind" TEXT,
+  "surface" TEXT,
+  "band" INTEGER,
+  "plunge_pool" BOOLEAN,
+  "downstream_reach_id" TEXT REFERENCES "hydrology_reach"("id"),
+  "from_junction_id" TEXT REFERENCES "hydrology_junction"("id"),
+  "to_junction_id" TEXT REFERENCES "hydrology_junction"("id"),
+  "accum_km2" REAL,
+  "slope" REAL,
+  "slope_max" REAL,
+  "width_m" REAL,
+  "depth_m" REAL,
+  "length_m" REAL,
+  "level_from_m" REAL,
+  "level_to_m" REAL,
+  "speed_ms" REAL,
+  "season" TEXT,
+  "tidal" BOOLEAN,
+  "terrain_precondition_kind" TEXT,
+  "terrain_precondition_bed_level_from_m" REAL,
+  "terrain_precondition_bed_level_to_m" REAL,
+  "terrain_precondition_bed_max_m" REAL,
+  "terrain_precondition_width_m" REAL,
+  "terrain_precondition_width_max_m" REAL,
+  "terrain_precondition_shoulder_crest_m" REAL,
+  "terrain_precondition_seal_cap_m" REAL,
+  "water" TEXT,
+  "body_id" TEXT REFERENCES "hydrology_body"("id"),
+  "terrain_precondition_body_id" TEXT REFERENCES "hydrology_body"("id"),
+  "terrain_precondition_level_m" REAL,
+  "fall_drop_m" REAL,
+  "fall_lip_level_m" REAL,
+  "fall_plunge_level_m" REAL,
+  "fall_plunge_body_id" TEXT REFERENCES "hydrology_body"("id"),
+  "fall_lip_speed_ms" REAL,
+  "fall_origin" TEXT,
+  "terrain_precondition_lip_level_m" REAL,
+  "terrain_precondition_plunge_level_m" REAL,
+  "terrain_precondition_drop_m" REAL,
+  "terrain_precondition_face_min_slope" REAL,
+  "terrain_precondition_lip_notch" BOOLEAN,
+  "origin" TEXT,
+  "feeder" TEXT
+);
+
+-- Home of a river's reaches, headwater (ord 0) to mouth.
+CREATE TABLE "hydrology_river_reach" (
+  "river_id" TEXT NOT NULL REFERENCES "hydrology_river"("id"),
+  "ord" INTEGER NOT NULL,
+  "reach_id" TEXT NOT NULL REFERENCES "hydrology_reach"("id"),
+  PRIMARY KEY ("river_id", "ord")
+);
+
+-- Home of a reach's upstream reaches.
+CREATE TABLE "hydrology_reach_upstream" (
+  "reach_id" TEXT NOT NULL REFERENCES "hydrology_reach"("id"),
+  "ord" INTEGER NOT NULL,
+  "upstream_reach_id" TEXT NOT NULL REFERENCES "hydrology_reach"("id"),
+  PRIMARY KEY ("reach_id", "ord")
+);
+
+-- Home of a reach's centreline, [east, south] metres from the province's north-west corner every ~5.5 m, headwater
+-- first.
+CREATE TABLE "hydrology_reach_point" (
+  "reach_id" TEXT NOT NULL REFERENCES "hydrology_reach"("id"),
+  "ord" INTEGER NOT NULL,
+  "east_m" REAL NOT NULL,
+  "south_m" REAL NOT NULL,
+  PRIMARY KEY ("reach_id", "ord")
+);
+
+-- Home of a junction's inflowing reaches.
+CREATE TABLE "hydrology_junction_inflow" (
+  "junction_id" TEXT NOT NULL REFERENCES "hydrology_junction"("id"),
+  "ord" INTEGER NOT NULL,
+  "reach_id" TEXT NOT NULL REFERENCES "hydrology_reach"("id"),
+  PRIMARY KEY ("junction_id", "ord")
+);
+
+-- Home of a body's inflowing reaches.
+CREATE TABLE "hydrology_body_inflow" (
+  "body_id" TEXT NOT NULL REFERENCES "hydrology_body"("id"),
+  "ord" INTEGER NOT NULL,
+  "reach_id" TEXT NOT NULL REFERENCES "hydrology_reach"("id"),
+  PRIMARY KEY ("body_id", "ord")
+);
+
+-- Home of the approved (16a) bodies merged into a body's approved match.
+CREATE TABLE "hydrology_body_approved_merged" (
+  "body_id" TEXT NOT NULL REFERENCES "hydrology_body"("id"),
+  "ord" INTEGER NOT NULL,
+  "merged_body_id" TEXT NOT NULL,
+  PRIMARY KEY ("body_id", "ord")
+);
+
+-- Home of an authored bowl's radii (the Blackrose lake).
+CREATE TABLE "hydrology_body_radius" (
+  "body_id" TEXT NOT NULL REFERENCES "hydrology_body"("id"),
+  "ord" INTEGER NOT NULL,
+  "radius_m" REAL NOT NULL,
+  PRIMARY KEY ("body_id", "ord")
+);
+
+-- Home of one setting of the hydrology graph (thresholds, grid, vocabulary, source hashes), its value as JSON text.
+CREATE TABLE "hydrology_setting" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "value" TEXT NOT NULL
+);
 
 -- == Regions, weather, light, roads and the route graph (2.W3; decision 0028: regions are the unit of authorship) ==
 -- Read and written through db.py by tools/argonia_world/regions and tools/argonia_world/routes; the migration of
