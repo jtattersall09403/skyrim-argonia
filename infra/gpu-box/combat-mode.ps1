@@ -1,7 +1,7 @@
 # Switch the game machine's Skyrim between vanilla and the 0.0 combat-test mods (§d), and launch it.
 #   combat-mode.ps1 build          merge the staged mods (C:\argonia\MO2\mods, list order) into C:\argonia\combat-overlay
-#   combat-mode.ps1 on|off         lay the overlay over Data (recording every file and backing up any it replaces),
-#                                  or take it off again exactly; sets Plugins.txt to match
+#   combat-mode.ps1 on|off         off: Data back to the vanilla install exactly (every file not in
+#                                  vanilla-data-files.txt removed, Plugins.txt cleared); on: off, then the overlay
 #   combat-mode.ps1 pandora        with the overlay on, run Pandora and add its behaviour output to the overlay
 #   combat-mode.ps1 play-vanilla | play-modded [-Wait]   switch, then launch (the owner's desktop shortcuts);
 #                                  -Wait stays until Skyrim exits, so Sunshine knows when the game is open
@@ -16,7 +16,7 @@ $State = "$Root\combat-state"
 $Prefs = "$env:LOCALAPPDATA\Skyrim Special Edition"
 New-Item -ItemType Directory -Force $State, $Prefs | Out-Null
 
-function Get-Mode { if (Test-Path "$State\files.txt") { 'on' } else { 'off' } }
+function Get-Mode { if (Test-Path "$State\mode-on") { 'on' } else { 'off' } }
 
 # Skyrim fills the current desktop (sunshine-prep.ps1 sized it to the client) and keeps running without focus,
 # so a reconnect or a click elsewhere never pauses it.
@@ -39,6 +39,10 @@ function Set-GameWindow {
   }
   & $set "$docs\SkyrimPrefs.ini" 'Display' @{ 'iSize W' = $b.Width; 'iSize H' = $b.Height; 'bFull Screen' = 0; 'bBorderless' = 1 }
   & $set "$docs\Skyrim.ini" 'General' @{ 'bAlwaysActive' = 1 }
+  # Skyrim does not declare DPI awareness, so on a scaled desktop Windows enlarges its window past the screen edge.
+  $layers = 'HKCU:\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers'
+  New-Item -Path $layers -Force | Out-Null
+  Set-ItemProperty -Path $layers -Name "$Game\SkyrimSE.exe" -Value '~ HIGHDPIAWARE'
   # Third person only (owner, 2026-10-29): scrolling in stops before first person.
   & $set "$docs\Skyrim.ini" 'Camera' @{ 'fMinCurrentZoom' = '0.1' }
 }
@@ -68,45 +72,49 @@ switch ($Cmd) {
     "overlay: $((Get-ChildItem $Overlay -Recurse -File).Count) files"
   }
   'on' {
-    if ((Get-Mode) -eq 'on') { 'already on'; break }
     if (Get-Process SkyrimSE -EA SilentlyContinue) { throw 'Skyrim is running; quit it first' }
-    $files = Get-ChildItem $Overlay -Recurse -File | % { $_.FullName.Substring($Overlay.Length + 1) }
-    New-Item -ItemType Directory -Force "$State\backup" | Out-Null
-    foreach ($f in $files) {
-      $dst = Join-Path $Data $f
-      if (Test-Path $dst) { $b = Join-Path "$State\backup" $f; New-Item -ItemType Directory -Force (Split-Path $b) | Out-Null; Copy-Item $dst $b -Force }
-    }
+    & $PSCommandPath off | Out-Null
     robocopy $Overlay $Data /E /NFL /NDL /NJH /NJS /NP | Out-Null
-    $files | Set-Content "$State\files.txt"
-    if (Test-Path "$Prefs\Plugins.txt") { Copy-Item "$Prefs\Plugins.txt" "$State\plugins-vanilla.txt" -Force }
     Copy-Item "$State\plugins-modded.txt" "$Prefs\Plugins.txt" -Force
-    "combat mods on: $($files.Count) files"
+    New-Item -ItemType File -Force "$State\mode-on" | Out-Null
+    "combat mods on: $((Get-ChildItem $Overlay -Recurse -File).Count) files"
   }
   'off' {
-    if ((Get-Mode) -eq 'off') { 'already off'; break }
+    # Independent of any record: everything in Data that the vanilla install does not have goes (the game's own
+    # shader cache stays). Vanilla Data has no loose files the mods replace, so nothing needs restoring.
     if (Get-Process SkyrimSE -EA SilentlyContinue) { throw 'Skyrim is running; quit it first' }
-    # The \\?\ form, because some mod folders end in a dot or space, which ordinary Windows paths cannot reach.
-    foreach ($f in Get-Content "$State\files.txt") { Remove-Item -LiteralPath ("\\?\" + (Join-Path $Data $f)) -Force -EA SilentlyContinue }
+    $vanilla = @{}; Get-Content "$Root\infra\vanilla-data-files.txt" | % { $vanilla[$_.ToLower()] = 1 }
+    $removed = 0
+    # cmd's dir and the \\?\ form reach paths that ordinary Windows paths cannot (names ending in a dot or space).
+    foreach ($f in (cmd /c "dir /s /b /a-d `"\\?\$Data`"" 2>$null)) {
+      $rel = $f.Substring($f.IndexOf('\Data\') + 6).ToLower()
+      if ($vanilla[$rel] -or $rel.StartsWith('shadercache\')) { continue }
+      Remove-Item -LiteralPath $f -Force -EA SilentlyContinue; $removed++
+    }
     Get-ChildItem $Data -Recurse -Directory | Sort { $_.FullName.Length } -Descending |
       ? { -not (Get-ChildItem -LiteralPath $_.FullName -Force) } | % { Remove-Item -LiteralPath ("\\?\" + $_.FullName) -Force }
-    if (Test-Path "$State\backup") { robocopy "$State\backup" $Data /E /NFL /NDL /NJH /NJS /NP | Out-Null; Remove-Item "$State\backup" -Recurse -Force }
-    if (Test-Path "$State\plugins-vanilla.txt") { Copy-Item "$State\plugins-vanilla.txt" "$Prefs\Plugins.txt" -Force } else { Remove-Item "$Prefs\Plugins.txt" -EA SilentlyContinue }
-    Remove-Item "$State\files.txt"
-    'combat mods off (vanilla)'
+    Remove-Item "$Prefs\Plugins.txt", "$State\mode-on" -Force -EA SilentlyContinue
+    "combat mods off (vanilla): $removed files removed"
   }
   'pandora' {
-    if ((Get-Mode) -ne 'on') { throw 'turn the overlay on first' }
+    # Pandora (a GUI app: run in the desktop session) writes to the outputPath in its Settings.json and, with
+    # --auto_run, patches the mods cached in <output>\Pandora_Engine\ActiveMods.json (code, active, priority).
+    if ((Get-Mode) -ne 'on') { & $PSCommandPath on | Out-Null }
     $out = "$Root\pandora-out"; Remove-Item $out -Recurse -Force -EA SilentlyContinue
-    $exe = "$Root\MO2\tools\Pandora\Pandora Behaviour Engine+.exe"
-    $p = Start-Process $exe -WorkingDirectory (Split-Path $exe) -ArgumentList '--tesv', "`"$Game`"", '--auto_run', '--auto_close', '-o', "`"$out`"" -PassThru
+    New-Item -ItemType Directory -Force "$out\Pandora_Engine" | Out-Null
+    $tool = "$Root\MO2\tools\Pandora"
+    $settings = @{ app = @{ theme = 0 }; games = @{ SkyrimSE = @{ gameDataPath = $Data; outputPath = $out } } }
+    $settings | ConvertTo-Json -Depth 5 | Set-Content "$tool\Settings.json" -Encoding ASCII
+    $codes = @(Get-ChildItem "$Data\Nemesis_Engine\mod", "$Data\Pandora_Engine\mod" -Directory -EA SilentlyContinue | % Name)
+    $i = 0; $entries = foreach ($c in $codes) { [ordered]@{ code = $c; active = $true; priority = ++$i } }
+    ConvertTo-Json @($entries) | Set-Content "$out\Pandora_Engine\ActiveMods.json" -Encoding ASCII
+    $p = Start-Process "$tool\Pandora Behaviour Engine+.exe" -WorkingDirectory $tool -ArgumentList "--tesv:`"$Game`" --auto_run --auto_close" -PassThru
     if (-not $p.WaitForExit(240000)) { $p.Kill(); throw 'Pandora did not finish in 240 s' }
-    $n = (Get-ChildItem $out -Recurse -File -EA SilentlyContinue).Count
-    if ($n -eq 0) { throw "Pandora wrote nothing (exit $($p.ExitCode)); see its Engine.log" }
-    # Take the overlay off, fold Pandora's output into it, and put it back on so off stays exact.
-    & $PSCommandPath off | Out-Null
-    robocopy $out $Overlay /E /NFL /NDL /NJH /NJS /NP | Out-Null
-    & $PSCommandPath on
-    "pandora: $n files added to the overlay"
+    $n = (Get-ChildItem "$out\meshes" -Recurse -File -EA SilentlyContinue).Count
+    if ($n -eq 0) { throw "Pandora wrote no behaviours (exit $($p.ExitCode)); see $out\Engine.log" }
+    robocopy $out $Overlay /E /XD Pandora_Engine /XF Engine.log /NFL /NDL /NJH /NJS /NP | Out-Null
+    & $PSCommandPath on | Out-Null
+    "pandora: $n behaviour files from $($codes.Count) mods ($($codes -join ', '))"
   }
   { $_ -in 'play-vanilla', 'play-modded' } {
     # Already running (a reconnect, or the other card): bring it to the front; never start a second copy.

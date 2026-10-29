@@ -59,6 +59,13 @@ try {
     const appId = desktop.app_id ?? desktop.id
     log(`host ${ids.hostId}, app ${appId} (${desktop.title ?? desktop.name}), transport ${transport}`)
 
+    // Sunshine runs one app at a time and a new session resumes whatever is running (the Desktop never ends by
+    // itself), so quit it first when asked.
+    if (true) {
+        const c = await page.evaluate(async (hostId) => (await fetch("/api/host/cancel", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ host_id: hostId }) })).status, ids.hostId)
+        log("cancelled the running app:", c)
+        await wait(3000)
+    }
     await page.goto(`${base}/stream.html?hostId=${ids.hostId}&appId=${appId}&setup=e2e-headless-${transport}&argoniaTouch=1&dataTransport=${transport}`, { waitUntil: "domcontentloaded" })
     const session = await page.evaluate(() => window.argonia?.metrics?.session)
     if (!session) throw new Error("argonia.js did not load on stream.html")

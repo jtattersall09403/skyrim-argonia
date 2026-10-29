@@ -1,0 +1,4 @@
+[{"wait": 4000}, {"click": "video.video-stream"}, {"wait": 800}, {"probe": "({ locked: !!document.pointerLockElement })"},
+ {"key": "Enter"}, {"wait": 3000}, {"key": "Enter"}, {"wait": 3000}, {"key": "Enter"}, {"wait": 45000},
+ {"shot": "cam-0"}, {"look": [700, 0, 35]}, {"wait": 1200}, {"shot": "cam-right"},
+ {"look": [0, -350, 15]}, {"wait": 1200}, {"shot": "cam-up"}]

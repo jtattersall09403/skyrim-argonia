@@ -1,0 +1,34 @@
+_resourcepack.bsa
+_resourcepack.esl
+ccbgssse001-fish.bsa
+ccbgssse001-fish.esm
+ccbgssse025-advdsgs.bsa
+ccbgssse025-advdsgs.esm
+ccbgssse037-curios.bsa
+ccbgssse037-curios.esl
+ccqdrsse001-survivalmode.bsa
+ccqdrsse001-survivalmode.esl
+dawnguard.esm
+dragonborn.esm
+hearthfires.esm
+marketplacetextures.bsa
+skyrim - animations.bsa
+skyrim - interface.bsa
+skyrim - meshes0.bsa
+skyrim - meshes1.bsa
+skyrim - misc.bsa
+skyrim - shaders.bsa
+skyrim - sounds.bsa
+skyrim - textures0.bsa
+skyrim - textures1.bsa
+skyrim - textures2.bsa
+skyrim - textures3.bsa
+skyrim - textures4.bsa
+skyrim - textures5.bsa
+skyrim - textures6.bsa
+skyrim - textures7.bsa
+skyrim - textures8.bsa
+skyrim - voices_en0.bsa
+skyrim.esm
+update.esm
+video\bgs_logo.bik

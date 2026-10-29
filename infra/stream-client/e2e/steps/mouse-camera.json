@@ -1,0 +1,5 @@
+[{"wait": 55000}, {"shot": "mc-loaded"},
+ {"click": "video.video-stream"}, {"wait": 800},
+ {"probe": "({ locked: !!document.pointerLockElement, mode: JSON.parse(localStorage.getItem('mlSettings')||'{}').mouseMode, size: window.argonia && window.argonia.streamSize })"},
+ {"shot": "mc-before-look"}, {"look": [400, 0, 20]}, {"wait": 800}, {"shot": "mc-after-look"},
+ {"look": [0, -200, 10]}, {"wait": 800}, {"shot": "mc-after-look-up"}]

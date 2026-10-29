@@ -1,0 +1,3 @@
+[{"wait": 4000}, {"click": "video.video-stream"}, {"wait": 800}, {"key": "KeyF"}, {"wait": 2500}, {"shot": "tp-camp"},
+ {"key": "Backquote"}, {"wait": 1200}, {"text": "save ArgoniaBanditCamp"}, {"key": "Enter"}, {"wait": 4000}, {"key": "Backquote"}, {"wait": 1000},
+ {"shot": "tp-camp-saved"}]

@@ -4,8 +4,7 @@ Add-Type -AssemblyName System.Drawing
 $out = 'C:\argonia\cards'; New-Item -ItemType Directory -Force $out | Out-Null
 $cards = @(
   @{ file = 'skyrim.png';       title = "SKYRIM";       sub = "vanilla";                 colour = '#2b3a2b' },
-  @{ file = 'skyrim-souls.png'; title = "SKYRIM";       sub = "souls-like mods";         colour = '#3a2b2b' },
-  @{ file = 'desktop.png';      title = "DESKTOP";      sub = "Windows, for setup";       colour = '#22303a' }
+  @{ file = 'skyrim-souls.png'; title = "SKYRIM";       sub = "souls-like mods";         colour = '#3a2b2b' }
 )
 foreach ($c in $cards) {
   $bmp = New-Object System.Drawing.Bitmap 600, 800

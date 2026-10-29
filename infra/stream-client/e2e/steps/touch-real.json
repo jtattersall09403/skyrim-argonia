@@ -1,0 +1,12 @@
+[{"wait": 6000}, {"shot": "t-start"},
+ {"probe": "({ touchPoints: navigator.maxTouchPoints, coarse: matchMedia('(pointer: coarse)').matches, padShown: argonia.layer.isShown() })"},
+ {"tap": "#argonia-touch-toggle"}, {"wait": 600}, {"probe": "({ afterPadTap: argonia.layer.isShown() })"},
+ {"tap": "#argonia-touch-toggle"}, {"wait": 600}, {"probe": "({ afterSecondPadTap: argonia.layer.isShown() })"},
+ {"tap": "#argonia-keyboard-toggle"}, {"wait": 800},
+ {"probe": "({ keyboardOpen: !!document.querySelector('.stream-keyboard-native button.visible'), sticksPaused: document.getElementById('argonia-touch').classList.contains('at-paused') })"},
+ {"shot": "t-keyboard"},
+ {"tap": ".stream-keyboard-native button.visible"}, {"wait": 600},
+ {"tap": "#sidebar-button"}, {"wait": 900},
+ {"probe": "({ menuOpen: document.getElementById('sidebar-root').classList.contains('sidebar-show'), sticksPaused: document.getElementById('argonia-touch').classList.contains('at-paused') })"},
+ {"shot": "t-menu"},
+ {"probe": "(() => { const b = [...document.querySelectorAll('#sidebar-root button')].find(x => x.textContent.trim() === 'Stats'); const r = b && b.getBoundingClientRect(); return r ? { statsAt: [Math.round(r.x + r.width/2), Math.round(r.y + r.height/2)] } : { statsAt: null } })()"}]

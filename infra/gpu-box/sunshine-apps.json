@@ -28,17 +28,6 @@
       "cmd": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\combat-mode.ps1 play-modded -Wait",
       "auto-detach": false,
       "wait-all": true
-    },
-    {
-      "name": "Desktop",
-      "prep-cmd": [
-        {
-          "do": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\sunshine-prep.ps1",
-          "undo": "",
-          "elevated": false
-        }
-      ],
-      "image-path": "C:\\argonia\\cards\\desktop.png"
     }
   ]
 }
