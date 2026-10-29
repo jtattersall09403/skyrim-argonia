@@ -436,6 +436,12 @@
           "where",
           "ref"
          ]
+        ],
+        [
+         "objective_text",
+         [
+          "objectiveText"
+         ]
         ]
        ],
        "conds": [
@@ -450,6 +456,7 @@
        "order": [
         "id",
         "text",
+        "objectiveText",
         "completeWhen"
        ],
        "children": []
@@ -1378,12 +1385,19 @@
       [
        "carrier"
       ]
+     ],
+     [
+      "kind",
+      [
+       "kind"
+      ]
      ]
     ],
     "conds": [],
     "acts": [],
     "order": [
      "id",
+     "kind",
      "form",
      "carrier",
      "gives",

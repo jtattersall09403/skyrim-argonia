@@ -3,8 +3,8 @@
 
 `dialogue-write` writes one YAML file per person; `import` replaces that person's written lines with the file's,
 through db.py (every key, lookup and condition term enforced; nothing written while one fails); `export` rebuilds
-the file from the rows. Written lines are `dialogue_line` rows whose id starts `line.`; the imported reference lines
-(0024 §7: greeting.*, override.*, bark.*, pool lines) are never touched.
+the file from the rows. Written lines are `dialogue_line` rows with `status` `written` (ids start `line.`); the imported reference lines
+(`status` `imported`, 0024 §7: greeting.*, override.*, bark.*, pool lines) are never touched.
 
     speaker: npc.imperial-fringe.claywater-station.well-keeper
     place: place.imperial-fringe.claywater-station
@@ -91,8 +91,8 @@ def _terms(c):
 
 
 def _owned(w: db.World, speaker: str) -> list[sqlite3.Row]:
-    return w.query("SELECT id, available, on_delivered FROM dialogue_line WHERE speaker = ? AND id LIKE ?",
-                   speaker, PREFIX + "%")
+    return w.query("SELECT id, available, on_delivered FROM dialogue_line WHERE speaker = ? AND status = 'written'",
+                   speaker)
 
 
 def import_lines(w: db.World, doc: dict) -> list[str]:
@@ -106,7 +106,7 @@ def import_lines(w: db.World, doc: dict) -> list[str]:
         lid = ln["id"]
         row = {"id": lid, "type": ln.get("type", "dialogue"), "speaker": doc["speaker"], "words": ln["words"],
                "variants_low": ln.get("low"), "variants_high": ln.get("high"), "place_id": doc.get("place"),
-               "keys_topic": ln.get("topic"), "slot": ln.get("slot")}
+               "keys_topic": ln.get("topic"), "slot": ln.get("slot"), "status": "written"}
         if ln.get("available"):
             row["available"] = f"dialogue_line:{lid}:available"
             out.cond(ln["available"], row["available"])
@@ -148,7 +148,7 @@ def import_lines(w: db.World, doc: dict) -> list[str]:
 
 def export(w: db.World, speaker: str) -> dict:
     lines, place = [], None
-    for r in w.query("SELECT * FROM dialogue_line WHERE speaker = ? AND id LIKE ? ORDER BY id", speaker, PREFIX + "%"):
+    for r in w.query("SELECT * FROM dialogue_line WHERE speaker = ? AND status = 'written' ORDER BY id", speaker):
         place = place or r["place_id"]
         ln = {"id": r["id"], "type": r["type"]}
         if r["keys_topic"]:

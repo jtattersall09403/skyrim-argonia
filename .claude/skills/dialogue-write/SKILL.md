@@ -59,8 +59,8 @@ and quote against the corpus before using it. Never paste Morrowind lines into t
 
 ## 4. Voice rules
 
-- **Bands:** refusal below 10, unfriendly 10 to 40, medium 40 to 70, friendly 70 to 100. Length follows
-  warmth: low bands are short; only the friendly band is chatty.
+- **Bands** (1.3's three, by disposition): `low` below 30, `words` 30 to 69, `high` 70 and over. Length follows
+  warmth: the low band is short; only the high band is chatty.
 - **Essential topics have no refusal band** (old 0145): the low band is grudging but still
   gives what the quest needs.
 - **Held-back information says so** (B09), so the player knows to raise disposition.

@@ -3103,6 +3103,7 @@ CREATE TABLE "quest_stage" (
 );
 
 -- Home of one row per element of `stages[].objectives` of each quest_stage row (ordered by `ord` where it has one).
+-- `text` is the objective's text key; `objective_text` its words (the record's `objectiveText`).
 CREATE TABLE "quest_objective" (
   "quest_id" TEXT NOT NULL,
   "stages_ord" INTEGER NOT NULL,
@@ -3111,6 +3112,7 @@ CREATE TABLE "quest_objective" (
   "text" TEXT NOT NULL,
   "complete_when" TEXT NOT NULL REFERENCES "condition"("id"),
   "where_ref" TEXT,
+  "objective_text" TEXT,
   PRIMARY KEY ("quest_id", "stages_ord", "ord"),
   FOREIGN KEY ("quest_id", "stages_ord") REFERENCES "quest_stage" ("quest_id", "ord") ON DELETE CASCADE
 );
@@ -3286,12 +3288,14 @@ CREATE TABLE "quest_conclusion_clue" (
 );
 
 -- Home of one row per element of `clues` of each quest row (ordered by `ord` where it has one).
+-- `kind`: a `concept` clue says what happened, a `lead` where to go next (quest-write principles/general.md §6).
 CREATE TABLE "quest_clue" (
   "quest_id" TEXT NOT NULL,
   "ord" INTEGER NOT NULL,
   "id" TEXT NOT NULL,
   "form" TEXT NOT NULL,
   "carrier" TEXT NOT NULL,
+  "kind" TEXT CHECK ("kind" IN ('concept', 'lead')),
   PRIMARY KEY ("quest_id", "ord"),
   FOREIGN KEY ("quest_id") REFERENCES "quest" ("id") ON DELETE CASCADE
 );
@@ -3941,7 +3945,7 @@ CREATE TABLE "glossary_form" (
 
 -- Home of every dialogue line (decision 0030: lines): greeting, topic answer, override or pool line; its speaker (or
 -- its pool), topic, words and variants, conditions (`available`), the facts it states, links and what it does when
--- delivered. The imported lines are reference only (0024 §7): `status` says so.
+-- delivered. The imported lines are reference only (0024 §7): `status` says so (`imported` reference, `written` ours).
 CREATE TABLE "dialogue_line" (
   "id" TEXT NOT NULL,
   "type" TEXT NOT NULL REFERENCES "line_type"("id"),
@@ -3959,6 +3963,7 @@ CREATE TABLE "dialogue_line" (
   "fallback_for" TEXT,
   "on_delivered" TEXT REFERENCES "action_list"("id"),
   "fallback" BOOLEAN CHECK ("fallback" IN (0, 1)),
+  "status" TEXT NOT NULL CHECK ("status" IN ('imported', 'written')),
   PRIMARY KEY ("id")
 );
 

@@ -28,7 +28,7 @@ def w():
 
 
 def imported_reference(w):
-    return sorted(map(tuple, w.query("SELECT * FROM dialogue_line WHERE speaker = ? AND id NOT LIKE 'line.%'", LIVIA)))
+    return sorted(map(tuple, w.query("SELECT * FROM dialogue_line WHERE speaker = ? AND status = 'imported'", LIVIA)))
 
 
 def test_round_trip(w):
@@ -39,6 +39,14 @@ def test_round_trip(w):
     mine = [ln for ln in got["lines"] if ln["id"].startswith("line.test.")]
     assert mine == [{k: v for k, v in ln.items()} for ln in DOC["lines"]]
     assert imported_reference(w) == before
+
+
+def test_written_lines_are_marked_and_the_import_is_not(w):
+    assert L.import_lines(w, copy.deepcopy(DOC)) == []
+    assert set(w.values("SELECT status FROM dialogue_line WHERE id LIKE 'line.test.%'")) == {"written"}
+    assert w.values("SELECT count(*) FROM dialogue_line WHERE status = 'imported' AND id LIKE 'line.%'") == [0]
+    with pytest.raises(Exception):
+        w.insert("dialogue_line", id="line.test.bad", type="greeting", words="x", status="draft")
 
 
 def test_reimport_replaces(w):

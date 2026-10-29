@@ -66,3 +66,19 @@ def test_a_bad_value_leaves_the_quest_as_it_was(w):
     errs = Q.import_record(w, q)
     assert errs and "journal" in errs[0]
     assert snapshot(w, QUESTS[0]) == before
+
+
+def test_objective_text_and_clue_kind_round_trip(w):
+    q = Q.export(w, "quest.local.lf83")
+    q["stages"][0]["objectives"][0]["objectiveText"] = "Hear the well-keeper."
+    q["clues"][0]["kind"] = "lead"
+    assert Q.import_record(w, Q.yaml.safe_load(Q.dump(q))) == []
+    got = Q.export(w, "quest.local.lf83")
+    assert got["stages"][0]["objectives"][0]["objectiveText"] == "Hear the well-keeper."
+    assert got["clues"][0]["kind"] == "lead"
+
+
+def test_a_clue_kind_outside_concept_and_lead_is_refused(w):
+    q = Q.export(w, "quest.local.lf83")
+    q["clues"][0]["kind"] = "hint"
+    assert Q.import_record(w, q) != []
