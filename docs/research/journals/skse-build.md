@@ -57,3 +57,25 @@ save and load; `ArgoniaBridge/ping.ps1` returns ok and `-Token bad` fails. Addre
   4.3.1-msvc1. Under MSVC, ctest passed 2 of 2. Outputs: `ArgoniaCore.dll` 629,248 bytes (dist) and
   `ArgoniaBridge.dll` 588,800 bytes (dev), copied into MO2 `mods\Argonia SKSE` and `mods\Argonia SKSE (dev only)`.
   The game and Data were not touched.
+
+## 2026-10-29: the core rules, built VM only (lane 1.1-core-rules)
+
+- **What landed.** 14 modules in `skse/core` (native map §6.1 less `topics`), one ctest per module plus the co-save
+  contract: `core.cosave`, `core.curve` … `core.families`, and `bridge.protocol`; 16 tests. `check.sh` builds and runs
+  them in 9.1 s wall (peak RSS 209 MB, CMake + Ninja, g++ 13.3, `-std=c++23 -Werror -Wpedantic`). The plain-c++
+  fallback (no CMake) compiles every `src/*.cpp` once and links each `tests/test_*.cpp`; it ran 15 core executables
+  green.
+- **Numbers are generated (G11.2).** `tools/argonia_world/core_tables.py` reads the sheet, progression and condition
+  tables through `db.py` and writes `core/generated/argonia/core/tables_{sheet,progression,conditions}.h` (data only,
+  committed). `check.sh` first runs `core_tables --check` (regenerate in memory, diff, exit 1 with the diff). A
+  pytest (`tools/argonia_world/tests/test_core_tables.py`) scans the 13 rule modules for any numeric literal but 0
+  and 1, after stripping comments and strings. The co-save byte layer (`cosave`, `families`) is exempt: it is
+  encoding, not formulas. Argument positions in `conditions.cpp` are named (`first`, `second`, `third`) for that
+  reason.
+- **The co-save contract grew without breaking ArgoniaCore.** `cosave.h` keeps `upgrade` and `FamilySpec`, and
+  `Writer`/`Reader` gained u8, u64, i32, f64 and str. `families.h` adds the sparse migration table (`Step{from, lift}`),
+  the `Registry`, readable refusals (no migration, newer, broken, unknown family, version 0) and reset on refusal.
+- **Portability for MSVC 19.51:** C++23 `std::expected` and `std::bit_cast`; no GNU extension; no `<format>`. Not
+  compiled under MSVC yet: the planner runs `infra/gpu-box/skse_build.sh build windows-dev`.
+- **A pitfall:** a function with the same name as its namespace (`carriers::carriers`) is ambiguous under
+  `using namespace`, so it is `carriers::compute`.
