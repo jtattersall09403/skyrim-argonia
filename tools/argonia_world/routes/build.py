@@ -204,6 +204,7 @@ def exit_point(surface, side: str) -> tuple[float, float]:
 
 
 EXITS = {"blackwood-road": "west", "tear-road": "north"}  # old 0069: the two attested exits
+EXIT_NAMES = {"blackwood-road": "Leyawiin", "tear-road": "Tear"}  # where each road leads (its route row's notes)
 
 
 def build(w, root: Path | None = None) -> dict:
@@ -224,7 +225,8 @@ def build(w, root: Path | None = None) -> dict:
             nid = f"exit.{name}"
             if nid not in nodes:
                 x, y = exit_point(surface, EXITS[name])
-                nodes[nid] = {"id": nid, "kind": "exit", "place_id": None, "station_id": None, "x_m": x, "y_m": y}
+                nodes[nid] = {"id": nid, "kind": "exit", "place_id": None, "station_id": None, "x_m": x, "y_m": y,
+                             "name": EXIT_NAMES[name]}
             return nid
         pid = names.get(name)
         if pid:
@@ -417,12 +419,34 @@ def write(w, nodes, roads, edges, pos, root) -> None:
             continue
         n = nodes[nid]
         sid = f"sign.{nid.split('.', 1)[1]}"
-        arms = []
-        for k, (e, toward, far) in enumerate(sorted(legs, key=lambda x: x[0]["id"])):
+        arms, named = [], set()
+        for e, toward, far in sorted(legs, key=lambda x: x[0]["id"]):
+            far = named_beyond(deg, nodes, nid, far, e)
+            if far in named or far == nid:
+                continue  # one arm per destination: the first leg (by id) that reaches it
+            named.add(far)
             bearing = math.degrees(math.atan2(toward[0] - n["x_m"], -(toward[1] - n["y_m"]))) % 360
-            arms.append({"signpost_id": sid, "ord": k, "to_node_id": far, "bearing_deg": round(bearing, 1)})
+            arms.append({"signpost_id": sid, "ord": len(arms), "to_node_id": far, "bearing_deg": round(bearing, 1)})
+        if len(arms) < 2:
+            continue
         w.insert("signpost", id=sid, node_id=nid, x_m=n["x_m"], y_m=n["y_m"], yaw_deg=arms[0]["bearing_deg"])
         w.insert_many("signpost_arm", arms)
+
+
+def named_beyond(deg, nodes, start: str, cur: str, edge: dict) -> str:
+    """The first node with a name (a place, station or exit) reached from `start` along `edge` and on through
+    junctions, keeping to the leg's own route where a junction offers it. A signpost arm reads that node's name, so
+    an arm never points at a nameless junction."""
+    prev, seen = start, {start}
+    while nodes[cur]["kind"] == "junction" and cur not in seen:
+        seen.add(cur)
+        onward = [x for x in deg[cur] if x[2] != prev]
+        if not onward:
+            break
+        same = [x for x in onward if x[0]["route_id"] == edge["route_id"]]
+        edge, _, nxt = sorted(same or onward, key=lambda x: x[0]["id"])[0]
+        prev, cur = cur, nxt
+    return cur
 
 
 # --- checks ----------------------------------------------------------------------------------------------------------

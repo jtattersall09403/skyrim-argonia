@@ -5795,8 +5795,12 @@ CREATE TABLE "route_node" (
   "place_id" TEXT REFERENCES "place"("id"),
   "station_id" TEXT REFERENCES "travel_station"("id"),
   "x_m" REAL NOT NULL,
-  "y_m" REAL NOT NULL
+  "y_m" REAL NOT NULL,
+  "name" TEXT,
+  CHECK (("kind" = 'exit') = ("name" IS NOT NULL))
 );
+-- name: what a signpost arm to an exit reads (the city its road leads to beyond the closed border); a place's arm
+-- reads the place's own name.
 
 -- Home of an edge of the route graph: one leg of a route between two nodes, its length on the ground (3D over the
 -- 2.W1 heights for land legs, straight for water and root legs).

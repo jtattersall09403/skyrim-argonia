@@ -1,5 +1,5 @@
-{"id":"exit.blackwood-road","kind":"exit","x_m":0.0,"y_m":3030.55872}
-{"id":"exit.tear-road","kind":"exit","x_m":6379.161599999999,"y_m":0.0}
+{"id":"exit.blackwood-road","kind":"exit","x_m":0.0,"y_m":3030.55872,"name":"Leyawiin"}
+{"id":"exit.tear-road","kind":"exit","x_m":6379.161599999999,"y_m":0.0,"name":"Tear"}
 {"id":"junction.road.cartwrights-cross-fig-market.1790","kind":"junction","x_m":1919.23,"y_m":3323.01}
 {"id":"junction.road.gideon-blackwood-road.1087","kind":"junction","x_m":710.33,"y_m":3186.63}
 {"id":"junction.road.gideon-soulrest.1234","kind":"junction","x_m":2072.77,"y_m":3834.81}
