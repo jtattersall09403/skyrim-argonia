@@ -1,0 +1,16 @@
+{"id":"sign.place.dunmer-north.stormhold","node_id":"node.place.dunmer-north.stormhold","x_m":2706.0,"y_m":781.0,"yaw_deg":297.7}
+{"id":"sign.place.dunmer-north.thorn","node_id":"node.place.dunmer-north.thorn","x_m":6248.0,"y_m":616.0,"yaw_deg":193.7}
+{"id":"sign.place.imperial-fringe.gideon","node_id":"node.place.imperial-fringe.gideon","x_m":1551.0,"y_m":3069.0,"yaw_deg":16.2}
+{"id":"sign.place.imperial-penal-south.blackrose","node_id":"node.place.imperial-penal-south.blackrose","x_m":2343.0,"y_m":6424.8,"yaw_deg":9.3}
+{"id":"sign.place.mercantile-coast.lilmoth","node_id":"node.place.mercantile-coast.lilmoth","x_m":3597.0,"y_m":6325.0,"yaw_deg":225.8}
+{"id":"sign.place.mercantile-coast.soulrest","node_id":"node.place.mercantile-coast.soulrest","x_m":528.0,"y_m":6424.0,"yaw_deg":64.9}
+{"id":"sign.place.pirate-freeholds.alten-corimont","node_id":"node.place.pirate-freeholds.alten-corimont","x_m":3927.0,"y_m":1177.0,"yaw_deg":39.0}
+{"id":"sign.road.cartwrights-cross-fig-market.1790","node_id":"junction.road.cartwrights-cross-fig-market.1790","x_m":1919.23,"y_m":3323.01,"yaw_deg":315.0}
+{"id":"sign.road.gideon-blackwood-road.1087","node_id":"junction.road.gideon-blackwood-road.1087","x_m":710.33,"y_m":3186.63,"yaw_deg":45.0}
+{"id":"sign.road.gideon-soulrest.1234","node_id":"junction.road.gideon-soulrest.1234","x_m":2072.77,"y_m":3834.81,"yaw_deg":0.0}
+{"id":"sign.road.soulrest-blackrose.2289","node_id":"junction.road.soulrest-blackrose.2289","x_m":2065.46,"y_m":6181.75,"yaw_deg":45.0}
+{"id":"sign.road.soulrest-blackrose.711","node_id":"junction.road.soulrest-blackrose.711","x_m":888.33,"y_m":6890.96,"yaw_deg":0.0}
+{"id":"sign.road.soulrest-blackrose.906","node_id":"junction.road.soulrest-blackrose.906","x_m":1066.5,"y_m":6920.2,"yaw_deg":270.0}
+{"id":"sign.road.stormhold-thorn.1114","node_id":"junction.road.stormhold-thorn.1114","x_m":3520.42,"y_m":508.14,"yaw_deg":306.9}
+{"id":"sign.road.thorn-tear-road.369","node_id":"junction.road.thorn-tear-road.369","x_m":6496.14,"y_m":530.07,"yaw_deg":225.0}
+{"id":"sign.track.mercantile-coast.coast-road.3444","node_id":"junction.track.mercantile-coast.coast-road.3444","x_m":2712.39,"y_m":6282.63,"yaw_deg":268.2}

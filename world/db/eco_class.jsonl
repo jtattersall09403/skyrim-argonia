@@ -1,0 +1,11 @@
+{"id":"coastal-lagoon","name":"coastal lagoon","weather_group_id":"coastal","misty":false,"exterior":true,"about":"sheltered water, reed beds, salt; the sea"}
+{"id":"deep-river-corridor","name":"deep river corridor","weather_group_id":"marsh","misty":true,"exterior":true,"about":"large channel, levees, oxbows"}
+{"id":"deep-sink-basin","name":"deep sink basin","weather_group_id":"marsh","misty":true,"exterior":true,"about":"permanently flooded depressions"}
+{"id":"flooded-forest","name":"flooded forest","weather_group_id":"jungle","misty":true,"exterior":true,"about":"shallow water under canopy; the jungle"}
+{"id":"interior-swamp","name":"interior swamp","weather_group_id":"marsh","misty":true,"exterior":true,"about":"pools, hummocks, winding channels"}
+{"id":"karst-cavern-belt","name":"karst/root cavern belt","weather_group_id":"marsh","misty":true,"exterior":false,"about":"sinkholes and caves: interiors only, so no exterior REGN (lighting templates carry it)"}
+{"id":"northern-transition","name":"northern transition","weather_group_id":"lowland","misty":false,"exterior":true,"about":"firmer Morrowind-facing ground"}
+{"id":"rootland","name":"rootland","weather_group_id":"marsh","misty":true,"exterior":true,"about":"Hist root influence, organic ground"}
+{"id":"seasonal-floodplain","name":"seasonal floodplain","weather_group_id":"lowland","misty":true,"exterior":true,"about":"temporary lakes and channels"}
+{"id":"tidal-delta","name":"tidal delta","weather_group_id":"coastal","misty":true,"exterior":true,"about":"braided channels, mudflats, mangroves"}
+{"id":"western-frontier","name":"western frontier","weather_group_id":"uplands","misty":false,"exterior":true,"about":"red clay, roads, the border hills"}

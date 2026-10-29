@@ -1,0 +1,6 @@
+{"weather_state_id":"clear-humid","name":"Humid haze","visibility_factor":1.0,"wetness":0.0}
+{"weather_state_id":"dry-haze","name":"Dry-season haze","visibility_factor":0.8,"wetness":-0.3,"notes":"Dry season only; peat-fire risk in burned/peat soils."}
+{"weather_state_id":"ground-mist","name":"Ground mist","visibility_factor":0.45,"wetness":0.1,"notes":"Dawn/dusk default in marsh classes; mist field gives local density."}
+{"weather_state_id":"monsoon-downpour","name":"Monsoon downpour","visibility_factor":0.35,"wetness":1.0,"notes":"Raises flood state one band while active; rivers swell."}
+{"weather_state_id":"sea-squall","name":"Sea squall","visibility_factor":0.5,"wetness":0.7,"notes":"Coastal/tidal classes; dangerous small-boat conditions."}
+{"weather_state_id":"storm","name":"Storm","visibility_factor":0.3,"wetness":0.9,"notes":"Lightning; wamasu-territory synergy (plan §27)."}

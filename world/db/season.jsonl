@@ -1,0 +1,3 @@
+{"id":"dry","name":"Dry season","share":0.35,"effects":"flood states low, dry-haze enabled, some shallow crossings open, peat-fire risk, overland travel favoured"}
+{"id":"hatching","name":"Hatching turn","share":0.15,"effects":"transition weeks: giant-snake and insect breeding hazards spike (Tips for Black Marsh Travel); guides advise against deep travel"}
+{"id":"wet","name":"Wet season","share":0.5,"effects":"flood states high, monsoon/storm weights x2, insect hatching peaks (travel-advice hazard calendar), boats favoured"}

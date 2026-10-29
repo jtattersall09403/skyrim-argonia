@@ -1,0 +1,48 @@
+{"id":"border","edid":"ARG_Region_border","border":true,"cells":0}
+{"id":"dunmer-north.coastal-lagoon","edid":"ARG_Region_dunmer_north_coastal_lagoon","region_id":"dunmer-north","eco_class_id":"coastal-lagoon","map_name":"Shadowfen","border":false,"cells":786}
+{"id":"dunmer-north.deep-sink-basin","edid":"ARG_Region_dunmer_north_deep_sink_basin","region_id":"dunmer-north","eco_class_id":"deep-sink-basin","map_name":"Shadowfen","border":false,"cells":102}
+{"id":"dunmer-north.interior-swamp","edid":"ARG_Region_dunmer_north_interior_swamp","region_id":"dunmer-north","eco_class_id":"interior-swamp","map_name":"Shadowfen","border":false,"cells":51}
+{"id":"dunmer-north.northern-transition","edid":"ARG_Region_dunmer_north_northern_transition","region_id":"dunmer-north","eco_class_id":"northern-transition","map_name":"Shadowfen","border":false,"cells":2354}
+{"id":"dunmer-north.rootland","edid":"ARG_Region_dunmer_north_rootland","region_id":"dunmer-north","eco_class_id":"rootland","map_name":"Shadowfen","border":false,"cells":4}
+{"id":"dunmer-north.tidal-delta","edid":"ARG_Region_dunmer_north_tidal_delta","region_id":"dunmer-north","eco_class_id":"tidal-delta","map_name":"Shadowfen","border":false,"cells":7}
+{"id":"hist-heartland.coastal-lagoon","edid":"ARG_Region_hist_heartland_coastal_lagoon","region_id":"hist-heartland","eco_class_id":"coastal-lagoon","map_name":"Middle Argonia","border":false,"cells":703}
+{"id":"hist-heartland.deep-sink-basin","edid":"ARG_Region_hist_heartland_deep_sink_basin","region_id":"hist-heartland","eco_class_id":"deep-sink-basin","map_name":"Middle Argonia","border":false,"cells":137}
+{"id":"hist-heartland.flooded-forest","edid":"ARG_Region_hist_heartland_flooded_forest","region_id":"hist-heartland","eco_class_id":"flooded-forest","map_name":"Middle Argonia","border":false,"cells":1435}
+{"id":"hist-heartland.interior-swamp","edid":"ARG_Region_hist_heartland_interior_swamp","region_id":"hist-heartland","eco_class_id":"interior-swamp","map_name":"Middle Argonia","border":false,"cells":163}
+{"id":"hist-heartland.rootland","edid":"ARG_Region_hist_heartland_rootland","region_id":"hist-heartland","eco_class_id":"rootland","map_name":"Middle Argonia","border":false,"cells":350}
+{"id":"hist-heartland.tidal-delta","edid":"ARG_Region_hist_heartland_tidal_delta","region_id":"hist-heartland","eco_class_id":"tidal-delta","map_name":"Middle Argonia","border":false,"cells":11}
+{"id":"hist-heartland.western-frontier","edid":"ARG_Region_hist_heartland_western_frontier","region_id":"hist-heartland","eco_class_id":"western-frontier","map_name":"Middle Argonia","border":false,"cells":53}
+{"id":"imperial-fringe.coastal-lagoon","edid":"ARG_Region_imperial_fringe_coastal_lagoon","region_id":"imperial-fringe","eco_class_id":"coastal-lagoon","map_name":"Blackwood","border":false,"cells":3}
+{"id":"imperial-fringe.deep-sink-basin","edid":"ARG_Region_imperial_fringe_deep_sink_basin","region_id":"imperial-fringe","eco_class_id":"deep-sink-basin","map_name":"Blackwood","border":false,"cells":115}
+{"id":"imperial-fringe.rootland","edid":"ARG_Region_imperial_fringe_rootland","region_id":"imperial-fringe","eco_class_id":"rootland","map_name":"Blackwood","border":false,"cells":85}
+{"id":"imperial-fringe.western-frontier","edid":"ARG_Region_imperial_fringe_western_frontier","region_id":"imperial-fringe","eco_class_id":"western-frontier","map_name":"Blackwood","border":false,"cells":2179}
+{"id":"imperial-penal-south.coastal-lagoon","edid":"ARG_Region_imperial_penal_south_coastal_lagoon","region_id":"imperial-penal-south","eco_class_id":"coastal-lagoon","map_name":"Blackrose","border":false,"cells":250}
+{"id":"imperial-penal-south.deep-river-corridor","edid":"ARG_Region_imperial_penal_south_deep_river_corridor","region_id":"imperial-penal-south","eco_class_id":"deep-river-corridor","map_name":"Blackrose","border":false,"cells":40}
+{"id":"imperial-penal-south.deep-sink-basin","edid":"ARG_Region_imperial_penal_south_deep_sink_basin","region_id":"imperial-penal-south","eco_class_id":"deep-sink-basin","map_name":"Blackrose","border":false,"cells":145}
+{"id":"imperial-penal-south.flooded-forest","edid":"ARG_Region_imperial_penal_south_flooded_forest","region_id":"imperial-penal-south","eco_class_id":"flooded-forest","map_name":"Blackrose","border":false,"cells":68}
+{"id":"imperial-penal-south.interior-swamp","edid":"ARG_Region_imperial_penal_south_interior_swamp","region_id":"imperial-penal-south","eco_class_id":"interior-swamp","map_name":"Blackrose","border":false,"cells":339}
+{"id":"imperial-penal-south.rootland","edid":"ARG_Region_imperial_penal_south_rootland","region_id":"imperial-penal-south","eco_class_id":"rootland","map_name":"Blackrose","border":false,"cells":7}
+{"id":"imperial-penal-south.tidal-delta","edid":"ARG_Region_imperial_penal_south_tidal_delta","region_id":"imperial-penal-south","eco_class_id":"tidal-delta","map_name":"Blackrose","border":false,"cells":4}
+{"id":"mercantile-coast.coastal-lagoon","edid":"ARG_Region_mercantile_coast_coastal_lagoon","region_id":"mercantile-coast","eco_class_id":"coastal-lagoon","map_name":"Oliis Bay","border":false,"cells":1084}
+{"id":"mercantile-coast.deep-sink-basin","edid":"ARG_Region_mercantile_coast_deep_sink_basin","region_id":"mercantile-coast","eco_class_id":"deep-sink-basin","map_name":"Oliis Bay","border":false,"cells":90}
+{"id":"mercantile-coast.flooded-forest","edid":"ARG_Region_mercantile_coast_flooded_forest","region_id":"mercantile-coast","eco_class_id":"flooded-forest","map_name":"Oliis Bay","border":false,"cells":301}
+{"id":"mercantile-coast.interior-swamp","edid":"ARG_Region_mercantile_coast_interior_swamp","region_id":"mercantile-coast","eco_class_id":"interior-swamp","map_name":"Oliis Bay","border":false,"cells":535}
+{"id":"mercantile-coast.rootland","edid":"ARG_Region_mercantile_coast_rootland","region_id":"mercantile-coast","eco_class_id":"rootland","map_name":"Oliis Bay","border":false,"cells":6}
+{"id":"mercantile-coast.tidal-delta","edid":"ARG_Region_mercantile_coast_tidal_delta","region_id":"mercantile-coast","eco_class_id":"tidal-delta","map_name":"Oliis Bay","border":false,"cells":7}
+{"id":"mercantile-coast.western-frontier","edid":"ARG_Region_mercantile_coast_western_frontier","region_id":"mercantile-coast","eco_class_id":"western-frontier","map_name":"Oliis Bay","border":false,"cells":27}
+{"id":"naga-kur-deeps.deep-river-corridor","edid":"ARG_Region_naga_kur_deeps_deep_river_corridor","region_id":"naga-kur-deeps","eco_class_id":"deep-river-corridor","map_name":"Dead-Water","border":false,"cells":5}
+{"id":"naga-kur-deeps.deep-sink-basin","edid":"ARG_Region_naga_kur_deeps_deep_sink_basin","region_id":"naga-kur-deeps","eco_class_id":"deep-sink-basin","map_name":"Dead-Water","border":false,"cells":139}
+{"id":"naga-kur-deeps.flooded-forest","edid":"ARG_Region_naga_kur_deeps_flooded_forest","region_id":"naga-kur-deeps","eco_class_id":"flooded-forest","map_name":"Dead-Water","border":false,"cells":128}
+{"id":"naga-kur-deeps.interior-swamp","edid":"ARG_Region_naga_kur_deeps_interior_swamp","region_id":"naga-kur-deeps","eco_class_id":"interior-swamp","map_name":"Dead-Water","border":false,"cells":154}
+{"id":"naga-kur-deeps.rootland","edid":"ARG_Region_naga_kur_deeps_rootland","region_id":"naga-kur-deeps","eco_class_id":"rootland","map_name":"Dead-Water","border":false,"cells":289}
+{"id":"pirate-freeholds.coastal-lagoon","edid":"ARG_Region_pirate_freeholds_coastal_lagoon","region_id":"pirate-freeholds","eco_class_id":"coastal-lagoon","map_name":"Alten Corimont","border":false,"cells":71}
+{"id":"pirate-freeholds.deep-sink-basin","edid":"ARG_Region_pirate_freeholds_deep_sink_basin","region_id":"pirate-freeholds","eco_class_id":"deep-sink-basin","map_name":"Alten Corimont","border":false,"cells":23}
+{"id":"pirate-freeholds.flooded-forest","edid":"ARG_Region_pirate_freeholds_flooded_forest","region_id":"pirate-freeholds","eco_class_id":"flooded-forest","map_name":"Alten Corimont","border":false,"cells":241}
+{"id":"pirate-freeholds.rootland","edid":"ARG_Region_pirate_freeholds_rootland","region_id":"pirate-freeholds","eco_class_id":"rootland","map_name":"Alten Corimont","border":false,"cells":3}
+{"id":"pirate-freeholds.tidal-delta","edid":"ARG_Region_pirate_freeholds_tidal_delta","region_id":"pirate-freeholds","eco_class_id":"tidal-delta","map_name":"Alten Corimont","border":false,"cells":4}
+{"id":"pirate-freeholds.western-frontier","edid":"ARG_Region_pirate_freeholds_western_frontier","region_id":"pirate-freeholds","eco_class_id":"western-frontier","map_name":"Alten Corimont","border":false,"cells":111}
+{"id":"saxhleel-coast.coastal-lagoon","edid":"ARG_Region_saxhleel_coast_coastal_lagoon","region_id":"saxhleel-coast","eco_class_id":"coastal-lagoon","map_name":"Archon Coast","border":false,"cells":2783}
+{"id":"saxhleel-coast.deep-sink-basin","edid":"ARG_Region_saxhleel_coast_deep_sink_basin","region_id":"saxhleel-coast","eco_class_id":"deep-sink-basin","map_name":"Archon Coast","border":false,"cells":22}
+{"id":"saxhleel-coast.flooded-forest","edid":"ARG_Region_saxhleel_coast_flooded_forest","region_id":"saxhleel-coast","eco_class_id":"flooded-forest","map_name":"Archon Coast","border":false,"cells":372}
+{"id":"saxhleel-coast.interior-swamp","edid":"ARG_Region_saxhleel_coast_interior_swamp","region_id":"saxhleel-coast","eco_class_id":"interior-swamp","map_name":"Archon Coast","border":false,"cells":73}
+{"id":"saxhleel-coast.tidal-delta","edid":"ARG_Region_saxhleel_coast_tidal_delta","region_id":"saxhleel-coast","eco_class_id":"tidal-delta","map_name":"Archon Coast","border":false,"cells":17}

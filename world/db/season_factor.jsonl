@@ -1,0 +1,5 @@
+{"season_id":"dry","weather_state_id":"monsoon-downpour","factor":0.5}
+{"season_id":"hatching","weather_state_id":"dry-haze","factor":0.0}
+{"season_id":"wet","weather_state_id":"dry-haze","factor":0.0}
+{"season_id":"wet","weather_state_id":"monsoon-downpour","factor":2.0}
+{"season_id":"wet","weather_state_id":"storm","factor":2.0}
