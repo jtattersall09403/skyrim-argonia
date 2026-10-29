@@ -25,5 +25,23 @@
     "used_by": "infra/stream-client/e2e (end-to-end and offline checks on the build VM)",
     "linked_or_forked_by": "installed by e2e.sh under the gitignored build/e2e; not shipped",
     "notes": "Test only."
+  },
+  {
+    "name": "Mutagen (Mutagen.Bethesda.Skyrim)",
+    "source_url": "https://github.com/Mutagen-Modding/Mutagen",
+    "version": "0.54.4 (NuGet)",
+    "licence": "GPL-3.0",
+    "used_by": "tools/ArgoniaGen (records, chunk 0.1/0.4 §a), tools/immersion/InventoryDump (0.4 §c)",
+    "linked_or_forked_by": "linked as a NuGet package at build; nothing vendored",
+    "notes": "build-VM tools only; never shipped to players"
+  },
+  {
+    "name": "Spriggit (Spriggit.Yaml CLI)",
+    "source_url": "https://github.com/Mutagen-Modding/Spriggit",
+    "version": "0.41.0 (sha256 146bf173…b5b, infra/build-vm/toolchain.lock)",
+    "licence": "GPL-3.0",
+    "used_by": "tools/ArgoniaGen/pipeline.py: Argonia.esm <-> plugin/Argonia/ YAML (0.4 §a)",
+    "linked_or_forked_by": "run as a CLI; nothing vendored",
+    "notes": "build-VM tool only"
   }
 ]
