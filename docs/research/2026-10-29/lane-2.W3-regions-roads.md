@@ -194,3 +194,8 @@ they do not gate.
   were dropped.
 - `weather::on_day` returns `std::expected` and refuses a bad month or day. Before, a bad date was read as day 0
   and wrote the dry chances.
+
+**Late note (0.2 stack, after the hand-off):** the dependency masters are now in `~/games/skyrimse/Data` (36 plugins,
+Tropical Skyrim.esp among them; mesh lists in `Data/argonia-mesh-lists/`, load order in `Data/argonia-plugins.txt`).
+First step of the next lane: re-verify the 34 `object_form` rows and the 17 Tropical Skyrim weathers against the
+installed `Tropical Skyrim.esp` (the read so far was of the 78044 archive's copy).
