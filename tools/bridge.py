@@ -182,6 +182,8 @@ class Bridge:
         if not reply.get("ok") and reply.get("error") == "bad token":  # a new launch: read its token once
             reply = self._exchange(line.format(t=self.token(refresh=True)), cap)
         if not reply.get("ok"):
+            if "did not run the task" in str(reply.get("error")):  # a stalled or crashed main thread
+                self._raise_if_down()
             raise BridgeError(f"{command}: {reply.get('error')}")
         return reply.get("result")
 
