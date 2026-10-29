@@ -1,0 +1,6 @@
+[Unit]
+Description=Resume Claude Code if it died without a reboot (OOM, crash)
+
+[Service]
+Type=oneshot
+ExecStart=%h/skyrim-argonia/infra/build-vm/watchdog.sh
