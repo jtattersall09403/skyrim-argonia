@@ -317,7 +317,7 @@ def main(argv: list[str]) -> int:
     ap.add_argument("--overrides", required=True)
     ap.add_argument("--palettes", required=True)
     a = ap.parse_args(argv)
-    load = lambda p: json.loads(Path(p).read_text(encoding="utf-8"))  # noqa: E731
+    load = lambda p: json.loads(Path(p).read_text(encoding="utf-8"))
     rows = rows_from(load(a.weather), load(a.overrides), load(a.palettes))
     w = db.open()
     counts = write(w, rows)
