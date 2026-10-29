@@ -1,0 +1,16 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg/master/scripts/vcpkg.schema.json",
+  "name": "argonia-skse",
+  "version": "0.3.0",
+  "description": "CommonLibSSE-NG v15.2.0's dependencies for Argonia's SKSE plugins; the same baseline CommonLibSSE-NG pins.",
+  "license": "GPL-3.0-or-later",
+  "supports": "windows & x64",
+  "builtin-baseline": "ee12231b20c95013c6638d845d04c91559a1d1ff",
+  "dependencies": [
+    { "name": "spdlog", "version>=": "1.16.0" },
+    { "name": "fmt", "version>=": "12.1.0" },
+    { "name": "directxtk", "version>=": "2025-10-27" },
+    { "name": "directxmath", "version>=": "2025-04-03" },
+    { "name": "rapidcsv", "version>=": "8.90" }
+  ]
+}

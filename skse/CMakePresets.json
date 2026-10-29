@@ -1,0 +1,46 @@
+{
+  "version": 6,
+  "configurePresets": [
+    {
+      "name": "linux-core",
+      "displayName": "Build VM: core and the bridge protocol, unit tests only",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/../build/skse/${presetName}",
+      "cacheVariables": { "CMAKE_BUILD_TYPE": "Debug", "ARGONIA_PLUGINS": "OFF" },
+      "condition": { "type": "notEquals", "lhs": "${hostSystemName}", "rhs": "Windows" }
+    },
+    {
+      "name": "windows-dev",
+      "displayName": "Game machine: every plugin, dev-only ones included (MSVC, run inside vcvars64)",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/../build/${presetName}",
+      "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_C_COMPILER": "cl",
+        "CMAKE_CXX_COMPILER": "cl",
+        "VCPKG_TARGET_TRIPLET": "x64-windows-static-md",
+        "VCPKG_INSTALLED_DIR": "${sourceDir}/../vcpkg_installed",
+        "FETCHCONTENT_BASE_DIR": "${sourceDir}/../deps",
+        "ARGONIA_PLUGINS": "ON",
+        "ARGONIA_RELEASE": "OFF"
+      },
+      "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Windows" }
+    },
+    {
+      "name": "windows-release",
+      "inherits": "windows-dev",
+      "displayName": "Game machine: shippable plugins only; a dev-only plugin is refused",
+      "cacheVariables": { "ARGONIA_RELEASE": "ON" }
+    }
+  ],
+  "buildPresets": [
+    { "name": "linux-core", "configurePreset": "linux-core" },
+    { "name": "windows-dev", "configurePreset": "windows-dev" },
+    { "name": "windows-release", "configurePreset": "windows-release" }
+  ],
+  "testPresets": [
+    { "name": "linux-core", "configurePreset": "linux-core", "output": { "outputOnFailure": true } },
+    { "name": "windows-dev", "configurePreset": "windows-dev", "output": { "outputOnFailure": true } }
+  ]
+}

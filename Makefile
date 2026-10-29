@@ -1,6 +1,6 @@
 # The one gate. `make check` runs every target in parallel and ends with one list of the reds.
 RED := .git/check-red
-PARTS := guard lint unit budget links
+PARTS := guard lint unit budget links skse
 # A failing part records its name, then fails.
 FAIL = || { echo $@ >> $(RED); exit 1; }
 
@@ -27,6 +27,10 @@ budget:
 
 links:
 	@python3 tooling/check_links.py $(FAIL)
+
+# skse/core and the bridge protocol: pure C++ unit tests built natively on the build VM (0.3 §b).
+skse:
+	@bash skse/check.sh $(FAIL)
 
 hooks:
 	@bash tooling/guards/install_hooks.sh
