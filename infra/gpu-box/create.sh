@@ -4,6 +4,7 @@
 # Windows side is setup.ps1, run over SSH.
 #
 #   infra/gpu-box/create.sh [instance-type] [az]     default g6.xlarge in eu-west-2a (see infra/README.md)
+# More game machines (argonia-play-2, -3, …) are clones of this one, not new installs: infra/gpu-box/clone.sh.
 set -euo pipefail
 export PATH="$HOME/.local/bin:$PATH"
 R=eu-west-2

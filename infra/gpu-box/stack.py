@@ -15,6 +15,9 @@ the game machine, with exact undo (chunk 0.2 §b; grew from 0.0's combat_test_st
                                               (hashes cached by size and mtime on the machine; --full rehashes all)
   stack.py masters                            plugins (ESM/ESP/ESL) and mesh path lists to $ARGONIA_GAME_ROOT/Data (0.4)
 
+Machine: `stack.py --machine argonia-play-2 <cmd>` (or ARGONIA_PLAY=argonia-play-2) drives that game machine; the
+default is argonia-play. Each machine keeps its own push record and menu still.
+
 Sets: a group may hold alternative sets (row "set"); the profile takes one per group (default: the manifest's first),
 so a second combat stack is a set of rows and `--set combat=<name>` swaps it; `stack.ps1 on` always starts from bare
 Data, which is the exact undo. Nothing staged here is committed (decision 0003).
@@ -44,6 +47,12 @@ STACK = HOME / ".argonia" / "stack"
 MO2 = STACK / "MO2"
 PROFILE = "Argonia"
 RUN = str(HERE / "run.sh")
+
+
+def per_machine(path: pathlib.Path) -> pathlib.Path:
+    """argonia-play keeps the old path; another machine (ARGONIA_PLAY) gets <name>-<machine> beside it."""
+    m = os.environ.get("ARGONIA_PLAY", "argonia-play")
+    return path if m == "argonia-play" else path.with_name(f"{path.name}-{m}")
 API = "https://api.nexusmods.com/v1"
 CACHE_BUCKET = "argonia-private-050977237313"
 GAME_DATA = r"C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition\Data" + "\\"
@@ -611,7 +620,7 @@ def join_parts(n):
 
 def cmd_push(a):
     """Tar each changed mod folder, copy it over and unpack it into C:\\argonia\\MO2\\mods\\<id>."""
-    out = STACK / "push"
+    out = per_machine(STACK / "push")
     out.mkdir(exist_ok=True)
     sent = json.loads((out / "sent.json").read_text()) if (out / "sent.json").exists() else {}
     names = [d.name for d in sorted((MO2 / "mods").iterdir())]
@@ -671,7 +680,7 @@ def cmd_menu(a):
     keep = "$env:ARGONIA_KEEP = '1'; " if os.environ.get("ARGONIA_KEEP") else ""  # leave the game running after
     out = run("desktop", keep + r"& C:\argonia\infra\stack.ps1 menu", capture=True)
     print(out)
-    stills = STACK / "stills"
+    stills = per_machine(STACK / "stills")
     stills.mkdir(exist_ok=True)
     run("get", "C:/argonia/logs/menu.png", str(stills / "menu.png"), check=False)
     if "MAIN-MENU OK" not in out:
@@ -788,6 +797,7 @@ def cmd_masters(a):
 
 def main():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    p.add_argument("--machine", help="game machine (default $ARGONIA_PLAY, else argonia-play)")
     sub = p.add_subparsers(dest="cmd", required=True)
     f = sub.add_parser("fetch")
     f.add_argument("--record", action="store_true")
@@ -802,6 +812,8 @@ def main():
         sub.add_parser(name)
     sub.add_parser("verify").add_argument("--full", action="store_true", help="rehash every file (no cache)")
     a = p.parse_args()
+    if a.machine:
+        os.environ["ARGONIA_PLAY"] = a.machine  # run.sh reads it
     {"fetch": cmd_fetch, "stage": cmd_stage, "push": cmd_push, "install": cmd_install, "menu": cmd_menu,
      "verify": cmd_verify, "masters": cmd_masters, "prune": cmd_prune, "evict": cmd_evict}[a.cmd](a)
 

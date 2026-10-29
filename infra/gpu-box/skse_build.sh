@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # make deploy's first half (chunk 0.3 §b): send skse/ to the game machine and build it there with MSVC.
-#   skse_build.sh [tools|build|all] [windows-dev|windows-release]      default: build windows-dev
+#   skse_build.sh [--machine argonia-play-N] [tools|build|all] [windows-dev|windows-release]   default: build windows-dev
+#   on argonia-play (or $ARGONIA_PLAY)
 # Windows' OpenSSH has no rsync, so the tree goes as one tar (tracked and new files under skse/, ignored ones
 # left out, file times kept so Ninja rebuilds only what changed) over scp, then skse_build.ps1 unpacks and builds.
 # The first run on a fresh machine is `all` (installs VS 2026 Build Tools, MinGit, vcpkg; tens of minutes): run it
@@ -8,9 +9,10 @@
 set -euo pipefail
 here=$(cd "$(dirname "$0")" && pwd)
 repo=$(cd "$here/../.." && pwd)
+if [ "${1:-}" = --machine ]; then export ARGONIA_PLAY=$2; shift 2; fi
 stage=${1:-build}
 preset=${2:-windows-dev}
-case "$stage" in tools|build|all) ;; *) sed -n '2,3p' "$0"; exit 2 ;; esac
+case "$stage" in tools|build|all) ;; *) sed -n '2,4p' "$0"; exit 2 ;; esac
 run="$here/run.sh"
 
 tarball=$(mktemp --suffix=.tar)

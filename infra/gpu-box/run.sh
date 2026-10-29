@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-# Drive the Windows game machine from the build VM over SSH (chunk 0.0 §b).
+# Drive a Windows game machine from the build VM over SSH (chunk 0.0 §b).
+#   run.sh [--machine argonia-play-N] <cmd> ...   or ARGONIA_PLAY=argonia-play-N; default argonia-play
+#   run.sh machine                  print the machine's name and instance id (no SSH): the dry run
 #   run.sh ip                       print its private IP
 #   run.sh ps '<powershell>'        run a command
 #   run.sh setup [stage]            copy infra/gpu-box/*.ps1 over and run setup.ps1, rebooting when it asks
@@ -9,18 +11,21 @@
 #   run.sh start | stop             start or stop the instance
 #   run.sh up                       start it whatever its state: waits out a stop still in progress first
 set -euo pipefail
+case "${1:-}" in --machine) export ARGONIA_PLAY=$2; shift 2 ;; --machine=*) export ARGONIA_PLAY=${1#--machine=}; shift ;; esac
+M=${ARGONIA_PLAY:-argonia-play}
+case "$M" in argonia-play|argonia-play-[0-9]*) ;; *) echo "no such game machine: $M" >&2; exit 2 ;; esac
 export PATH="$HOME/.local/bin:$PATH"
 here=$(cd "$(dirname "$0")" && pwd)
 KEY="$HOME/.argonia/keys/argonia-play"
 R=eu-west-2
 
 ip() {
-  aws ec2 describe-instances --region $R --filters Name=tag:Name,Values=argonia-play \
+  aws ec2 describe-instances --region $R --filters Name=tag:Name,Values="$M" \
     Name=instance-state-name,Values=pending,running,stopping,stopped \
     --query 'Reservations[0].Instances[0].PrivateIpAddress' --output text
 }
 id() {
-  aws ec2 describe-instances --region $R --filters Name=tag:Name,Values=argonia-play \
+  aws ec2 describe-instances --region $R --filters Name=tag:Name,Values="$M" \
     Name=instance-state-name,Values=pending,running,stopping,stopped \
     --query 'Reservations[0].Instances[0].InstanceId' --output text
 }
@@ -33,12 +38,13 @@ wait_ssh() {
 }
 
 case "${1:-}" in
+  machine) echo "$M $(id)" ;;
   ip) ip ;;
   ps) shift; ps "$*" ;;
   desktop)
     shift
-    printf '%s\n' "$*" > "${TMPDIR:-/tmp}/argonia-desktop.ps1"
-    scp "${SSH_OPTS[@]}" "${TMPDIR:-/tmp}/argonia-desktop.ps1" "Administrator@$(ip):C:/argonia/desktop-job.ps1" >/dev/null
+    printf '%s\n' "$*" > "${TMPDIR:-/tmp}/argonia-desktop-$M.ps1"
+    scp "${SSH_OPTS[@]}" "${TMPDIR:-/tmp}/argonia-desktop-$M.ps1" "Administrator@$(ip):C:/argonia/desktop-job.ps1" >/dev/null
     ps '$o="C:\argonia\logs\desktop-job.log"; Remove-Item $o -EA SilentlyContinue
 $a=New-ScheduledTaskAction -Execute powershell.exe -Argument "-ExecutionPolicy Bypass -WindowStyle Hidden -Command try { & C:\argonia\desktop-job.ps1 *> $o } finally { New-Item C:\argonia\logs\desktop-job.done -Force }"
 Remove-Item C:\argonia\logs\desktop-job.done -EA SilentlyContinue
@@ -75,5 +81,5 @@ Get-Content $o -EA SilentlyContinue' ;;
     wait_ssh; echo "running at $(ip)" ;;
   start) aws ec2 start-instances --region $R --instance-ids "$(id)" >/dev/null; wait_ssh; echo "running at $(ip)" ;;
   stop) "$here/saves.sh" backup || echo "saves backup failed" >&2; aws ec2 stop-instances --region $R --instance-ids "$(id)" >/dev/null; echo stopping ;;
-  *) sed -n '2,8p' "$0"; exit 2 ;;
+  *) sed -n '2,10p' "$0"; exit 2 ;;
 esac

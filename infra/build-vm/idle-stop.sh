@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 # Stop the build VM after IDLE_MINUTES with all three of: no Claude Code activity, no job_guard job, and no
 # VS Code tunnel client (chunk 0.0 §a). Run every minute by argonia-idle-stop.timer. The CloudWatch alarm
-# (an hour under 2% CPU) stays as the backstop.
+# (an hour under 2% CPU) stays as the backstop. Before it stops, it stops every running game-machine clone
+# (argonia-play-N): clones serve only agents, so with no agent left they are idle, and their own idle-stop.ps1 has no
+# Cloudflare watchdog behind it the way argonia-play has. argonia-play is left to its own idle-stop and the play switch,
+# since the owner may be playing on it.
 #
 #   idle-stop.sh          check once; stop the machine if idle long enough
 #   idle-stop.sh --status print each signal and the idle time, never stop
@@ -82,6 +85,13 @@ if [ ! -f "$STATE/clean-stop" ]; then
 fi
 rm -f "$STATE/last-active"
 logger -t argonia-idle-stop "stopping after $idle idle minutes"
+repo=$(cd "$(dirname "$0")/../.." && pwd)
+for m in $(aws ec2 describe-instances --region eu-west-2 \
+    --filters 'Name=tag:Name,Values=argonia-play-*' Name=instance-state-name,Values=running \
+    --query 'Reservations[].Instances[].Tags[?Key==`Name`].Value' --output text 2>/dev/null || true); do
+  logger -t argonia-idle-stop "stopping game machine $m"
+  timeout 300 "$repo/infra/gpu-box/run.sh" --machine "$m" stop >/dev/null 2>&1 || true
+done
 id=$(aws ec2 describe-instances --region eu-west-2 \
   --filters Name=tag:Name,Values=argonia-build Name=instance-state-name,Values=running \
   --query 'Reservations[].Instances[].InstanceId' --output text 2>/dev/null || true)

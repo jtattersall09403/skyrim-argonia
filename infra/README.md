@@ -10,10 +10,40 @@ Prices are 2026-10-27 research values until 0.1 replaces them with measured ones
 |---|---|---|---|---|---|---|
 | `argonia-build` | Claude Code, generators, L1–L3 tests | m7i-flex.xlarge (4 vCPU, 16 GiB, x86), Ubuntu 24.04 (moved from m7i.xlarge 2026-10-28: interruptions) | persistent spot, stop on interruption (spot price: _to record_) | 120 GiB gp3 | VS Code tunnel `argonia-build` (vscode.dev/tunnel/argonia-build, GitHub sign-in); SSM Session Manager as break-glass; no inbound rules | created by the owner 2026-10-27 |
 | `argonia-play` | Skyrim (Windows Server 2022), Sunshine + Moonlight-Web, DCV, the gate, L4–L6 | g4dn.xlarge (T4) in eu-west-2a (g6/g5 had no spot capacity on 2026-10-28; type can change while stopped) | persistent spot, stop on interruption; idle-stop 15 min (`infra/gpu-box/idle-stop.ps1`); spot ~$0.25/h on 2026-10-28 | 150 GiB gp3 (~$14/month) | SSH from the build VM only (`infra/gpu-box/run.sh`); owner via `play.`/`dcv.` on the gated domain | created 2026-10-28 by `infra/gpu-box/create.sh` |
+| `argonia-play-N` (2, 3, …) | more game-driving lanes (owner, 2026-10-29: as many as parallelism needs) | the source's type, persistent spot | idle-stop as `argonia-play`; the build VM's idle-stop also stops every running clone | 150 GiB gp3 each (~$14/month, stopped or not) | SSH from the build VM only, group `argonia-play-clone` (egress inside the VPC only: no stream, no tunnel, Steam offline) | `infra/gpu-box/clone.sh`; waiting on the owner (IAM for images, spot G quota 8 vCPU = two running at once), issue 13 |
 | old elder-souls-argonia box | the old project | m7i.2xlarge | stopped | 250 GiB gp3 (~$23/month) | — | owner call O-1 |
 
 Region: **eu-west-2 (London)**, one VPC: the build VM in eu-west-2c, the game machine in eu-west-2a (where Windows GPU spot
 capacity was); traffic between them crosses AZs at about $0.01/GB.
+
+## Several game machines
+
+- Every machine tool takes the target: `ARGONIA_PLAY=argonia-play-2`, or `--machine argonia-play-2` on `run.sh`,
+  `stack.py`, `skse_build.sh` and `tools/bridge.py`; the default is `argonia-play`. `run.sh machine` prints which.
+- `tooling/job_guard.sh run --gpu=argonia-play-2 …` takes that machine's lock and runs the job with `ARGONIA_PLAY`
+  set; bare `--gpu` is `$ARGONIA_PLAY`, else `argonia-play` (its old `gpu.lock`). Locks are per machine.
+- Per machine on the build VM: saves go to `saves/<name>/` in the bucket (argonia-play keeps `saves/`), stack.py's
+  push record and menu still to `~/.argonia/stack/{push,stills}-<name>`, the bridge's tunnel port to 47615 + N.
+- `infra/gpu-box/clone.sh argonia-play-N` makes one: an image of the source with `--no-reboot` (reused for later
+  clones), a spot launch, then the tunnel connector off and the Windows name `ARGONIA-PLAY-N`.
+- The owner's gate, play switch and alarm serve `argonia-play` only.
+
+**Cost (2026-10-29, London spot):** a running g4dn.xlarge game machine is **$0.251/h** ($0.246 spot + $0.005
+IPv4); a g6.xlarge $0.292/h. Each one also costs **$13.92/month** for its 150 GiB disk whether running or not;
+the clone image adds about $0.053 per GB stored per month (about $4–5). The build VM is $0.090/h plus
+$11.14/month disk. `tools/cost_report.py` prints these live for every machine.
+
+**November forecast** (build VM ~520 h ≈ $47 + $11 disk; egress and IPv4 ~$5):
+
+| Game machines | Game hours | Forecast |
+|---|---|---|
+| 1 (`argonia-play`) | 60 | ~$92 |
+| 2 | 100 | ~$121 (image kept) |
+| 3 | 100 | ~$135 |
+| 3 | 150 | ~$147 |
+
+So every machine past the first breaks the $100 cap (0008) on its disk alone. The owner's call is on issue 13: keep
+the clones, or make them per batch and delete them after (then a clone costs only its hours plus the image).
 
 ## Accounts, roles, budget
 
@@ -45,7 +75,7 @@ capacity was); traffic between them crosses AZs at about $0.01/GB.
 
 - Build VM: `infra/build-vm/install.sh` installs `idle-stop.sh` (a timer, 20 minutes idle) and `resume.sh` (at
   boot); `setup.sh` and `smoke.sh` come in 0.1.
-- Game machine: `infra/gpu-box/create.sh` (launch), `run.sh` (SSH, desktop-session jobs, start and stop),
+- Game machine: `infra/gpu-box/create.sh` (launch), `clone.sh` (another game machine from its image), `run.sh` (SSH, desktop-session jobs, start and stop),
   `setup.ps1` (stages), `cloudflare_gate.py` (the gate), `pair_moonlight_web.py`, `combat-mode.ps1`,
   `idle-stop.ps1`; golden AMI in 3.4.
 - `installer/install.py` (0.3).
