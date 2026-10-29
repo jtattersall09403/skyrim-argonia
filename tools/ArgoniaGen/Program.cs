@@ -3,7 +3,7 @@
 //   index      --data <dir> --plugins a.esm,b.esm --out <json>  every modelled base record and archive mesh (pieces.py)
 //   quests     --data <dir> --plugins a.esm,b.esm --out <json>  vanilla quests: start-game-enabled and story-manager-started
 //   generate   --in <json> --data <dir> --out <Argonia.esm>     the records, written deterministically
-//   world      --in <json> --land <dir> --data <dir> --out <ArgoniaWorld.esm>   the generated ground (LandWorld.cs)
+//   world      --in <json> --land <dir> --data <dir> --out <ArgoniaWorld.esm> [--water <dir>]   the generated ground (LandWorld.cs) and its water (WaterRecords.cs)
 using ArgoniaGen;
 
 static int Fail(string m) { Console.Error.WriteLine(m); return 1; }
@@ -34,7 +34,7 @@ try
         case "world":
             return LandWorld.Run(Opt("--in") ?? throw new ArgumentException("missing --in"),
                                  Opt("--land") ?? throw new ArgumentException("missing --land"), Dir(Opt("--data")),
-                                 Opt("--out") ?? throw new ArgumentException("missing --out"));
+                                 Opt("--out") ?? throw new ArgumentException("missing --out"), Opt("--water"));
         default:
             return Fail($"unknown command {args[0]}");
     }

@@ -1,0 +1,17 @@
+{
+ "id": "water-budget-32",
+ "status": "draft (2.W2): owed L4, run by 0.3's hands; decides the plane budget with water-budget-64",
+ "checks": "the frame time of a cell holding 32 water planes, against the same view with its planes disabled (the planner's ruling of 2026-10-29: the final budget is chosen after this measurement)",
+ "base": "the base save; ArgoniaWorld.esm built with `python -m tools.argonia_world.water plan --budget 64` (so both test cells exist in one build), Argonia.esm, Community Shaders at the pinned version",
+ "cell": [-29, -38],
+ "why_this_cell": "the 64-budget plan places exactly 32 plane references here (out/water/cells.jsonl), no cell water height",
+ "step0": ["weather fixed to clear, 12:00; tcai; the player hidden from the camera (tfc off, tm off), FOV 85",
+           "teleport to the cell centre (x -116736, y -153600) at 600 units above the cell's highest plane, pitch 35 degrees down, heading north",
+           "wait until the cell and its neighbours report loaded and 10 s more"],
+ "measure": ["frame time each frame for 30 s (the bridge's frame-time read, 0.3 §d), median and 95th percentile",
+             "the same 30 s with every water-plane reference of the cell disabled through the console (`disable` on each formKey in the cell's line), then enabled again",
+             "the draw-call count if the bridge exposes it",
+             "one still at the play camera with the planes on"],
+ "result": "median and p95 frame time on and off; the cost per plane = (on - off) / 32",
+ "fails_if": "the game crashes; the cell does not load; the oracle still does not differ between frames (screenshot oracle not live)"
+}

@@ -1,0 +1,12 @@
+# Draft (2.W2): owed L4. 2.W2 §a acceptance: screenshots at 30 river steps show no z-fighting.
+id: water-steps-stills
+status: draft, owed L4
+scene: water-reaches
+steps_from: out/water/plan.json (`sampleReach.steps` and the 30 step pieces the lane lists from cells.jsonl: 10 rapids,
+  10 cascades, 5 falls, 5 steps inside merged reaches of water_budget_cell)
+per_step:
+  - teleport to 6 m downstream of the step's line at the lower level + 150 units, facing upstream, pitch 15 down
+  - wait for the cell to load, then a still; a second still 2 m to the side
+reader: the reader agent, checklist: z-fighting or flicker between two sheets, a sheet edge in the air, a gap
+  between steps not hidden by the piece, the piece's scale against the channel; and the feel question
+fails_if: any still flagged z-fighting or a floating edge

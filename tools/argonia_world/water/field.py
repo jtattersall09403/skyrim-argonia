@@ -63,6 +63,8 @@ class Field:
     reach_samples: dict[str, int] = field(default_factory=dict)
     shore_filled: int = 0
     shown: np.ndarray | None = None  # the level the plan stands over each sample (plan.plan_cells sets it)
+    owner: np.ndarray | None = None  # int32 index into `owners` (the body or reach whose water it is), -1 none
+    owners: list[str] = field(default_factory=list)
 
 
 def _flood(ground: np.ndarray, level: float, seed: tuple[int, int], radius: int) -> tuple[np.ndarray, int, int]:
@@ -95,6 +97,9 @@ def build(g: Graph, inp: Inputs, rules: dict[str, tuple[str, str]], steps: dict[
     wtype = np.full((n, n), DRY, dtype=np.uint8)
     source = np.zeros((n, n), dtype=np.uint8)
     f = Field(level, wtype, source)
+    f.owners = sorted(g.bodies) + sorted(steps)
+    oix = {k: i for i, k in enumerate(f.owners)}
+    f.owner = np.full((n, n), -1, dtype=np.int32)
     tix = {t: i for i, t in enumerate(WATER_TYPES)}
     # 1. bodies: the raster's samples first, for every body, then the floods of the bodies it does not hold (a
     # flood takes only ground the raster gives no water, so it never takes another body's samples)
@@ -104,6 +109,7 @@ def build(g: Graph, inp: Inputs, rules: dict[str, tuple[str, str]], steps: dict[
         level.ravel()[idx] = b.level_m
         wtype.ravel()[idx] = t
         source.ravel()[idx] = 1
+        f.owner.ravel()[idx] = oix[b.id]
         f.body_samples[b.id] = idx
 
     pending = []
@@ -189,6 +195,7 @@ def build(g: Graph, inp: Inputs, rules: dict[str, tuple[str, str]], steps: dict[
                 win_l[take] = L[take]
                 wtype[r_lo:r_hi + 1, c_lo:c_hi + 1][take] = t
                 win_s[take] = 4
+                f.owner[r_lo:r_hi + 1, c_lo:c_hi + 1][take] = oix[rid]
                 count += int(take.sum())
         f.reach_samples[rid] = count
     shore_fill(f, inp.ground)
@@ -208,6 +215,7 @@ def shore_fill(f: Field, ground: np.ndarray, rounds: int = SHORE_FILL_SAMPLES) -
     for _ in range(rounds):
         new_l = f.level.copy()
         new_t = f.wtype.copy()
+        new_o = f.owner.copy() if f.owner is not None else None
         for r0 in range(0, n, band):
             r1 = min(n, r0 + band)
             a0, a1 = max(0, r0 - 1), min(n, r1 + 1)
@@ -215,6 +223,7 @@ def shore_fill(f: Field, ground: np.ndarray, rounds: int = SHORE_FILL_SAMPLES) -
             gr = np.asarray(ground[a0:a1], dtype=np.float32)
             best = np.full(lv.shape, np.inf, dtype=np.float32)
             bt = np.full(lv.shape, DRY, dtype=np.uint8)
+            bo = np.full(lv.shape, -1, dtype=np.int32)
             for dr, dc in ((1, 0), (-1, 0), (0, 1), (0, -1)):
                 nb = np.full(lv.shape, np.nan, dtype=np.float32)
                 nt = np.full(lv.shape, DRY, dtype=np.uint8)
@@ -224,18 +233,26 @@ def shore_fill(f: Field, ground: np.ndarray, rounds: int = SHORE_FILL_SAMPLES) -
                 dst_c = slice(max(0, -dc), n + min(0, -dc))
                 nb[dst_r, dst_c] = lv[src_r, src_c]
                 nt[dst_r, dst_c] = f.wtype[a0:a1][src_r, src_c]
+                no = np.full(lv.shape, -1, dtype=np.int32)
+                if new_o is not None:
+                    no[dst_r, dst_c] = f.owner[a0:a1][src_r, src_c]
                 take = (nb > gr) & (nb < best)  # NaN compares False
                 best[take] = nb[take]
                 bt[take] = nt[take]
+                bo[take] = no[take]
             grow = np.isnan(lv) & np.isfinite(best)
             k0 = r0 - a0
             g = grow[k0:k0 + (r1 - r0)]
             new_l[r0:r1][g] = best[k0:k0 + (r1 - r0)][g]
             new_t[r0:r1][g] = bt[k0:k0 + (r1 - r0)][g]
+            if new_o is not None:
+                new_o[r0:r1][g] = bo[k0:k0 + (r1 - r0)][g]
             total += int(g.sum())
         grown = np.isnan(f.level) & ~np.isnan(new_l)
         f.source[grown] = 5
         f.level, f.wtype = new_l, new_t
+        if new_o is not None:
+            f.owner = new_o
     f.shore_filled = total
     return total
 

@@ -1,0 +1,14 @@
+# Draft (2.W2): owed L4. 2.W2 join: water <-> NPC swim paths (L4 nav).
+id: water-npc-swim
+status: draft, owed L4
+scene: water-reaches
+reaches: [river (stepped, the stepped-river proof), river (flat backwater)]
+per_reach:
+  - spawn one Argonian NPC (Argonia.esm's test actor) at the reach's start on the bank
+  - order it to travel to the reach's end through the console (the activation call a travel package makes)
+  - read every second for 120 s: its position, IsSwimming, its AI package state
+  - a still each time it enters or leaves water
+pass: it reaches the end; it swims where the reach has no bank path; it is never stuck for more than 10 s
+fails_if: stuck, walking on the riverbed under a plane, standing on a plane's surface, a crash
+note: the generated navmesh is a later 2.W chunk; until then this proves submersion on placed planes (the allowed
+  Ghidra question of 2.W2's risks if it misbehaves)

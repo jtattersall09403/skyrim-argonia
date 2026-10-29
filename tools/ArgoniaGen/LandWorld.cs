@@ -27,7 +27,7 @@ static class LandWorld
     static FormKey FK(string s) => FormKey.Factory(s);
     static P2Int16 P2(JsonElement e, string k) => new((short)e.GetProperty(k)[0].GetInt32(), (short)e.GetProperty(k)[1].GetInt32());
 
-    public static int Run(string inPath, string landDir, string data, string outPath)
+    public static int Run(string inPath, string landDir, string data, string outPath, string? waterDir = null)
     {
         using var doc = JsonDocument.Parse(File.ReadAllText(inPath));
         var root = doc.RootElement;
@@ -43,6 +43,7 @@ static class LandWorld
             throw new InvalidDataException("the world intermediate holds exactly one record, the WRLD");
         var ws = World(records[0]);
         mod.Worldspaces.Add(ws);
+        var water = waterDir is null ? null : WaterRecords.Load(mod, ws, waterDir);  // 2.W2 (WaterRecords.cs)
         // the REGN shells and each cell's XCLR (regions/api.py: Argonia.esm overrides the shells with the authored part)
         foreach (var g in root.TryGetProperty("regions", out var rg) ? rg.EnumerateArray() : Enumerable.Empty<JsonElement>())
             mod.Regions.Add(RegionWriters.Shell(g, ws.FormKey));
@@ -64,6 +65,7 @@ static class LandWorld
             {
                 using var cd = JsonDocument.Parse(line);
                 var c = ExteriorCell(cd.RootElement, out var x, out var y);
+                water?.ApplyCell(c, x, y);
                 if (xclr.TryGetValue((x, y), out var reg)) c.Regions = new ExtendedList<IFormLinkGetter<IRegionGetter>> { new FormLink<IRegionGetter>(reg) };
                 int bx = x >> 5, by = y >> 5, sx = x >> 3, sy = y >> 3;  // floor division, as the engine's blocks
                 if (!blocks.TryGetValue((bx, by), out var subs)) blocks[(bx, by)] = subs = new();
@@ -83,6 +85,7 @@ static class LandWorld
             }
             ws.SubCells.Add(b);
         }
+        water?.CheckAllApplied();
         Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(outPath))!);
         mod.BeginWrite
             .ToPath(outPath)

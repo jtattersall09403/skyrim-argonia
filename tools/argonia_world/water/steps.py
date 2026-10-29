@@ -27,6 +27,11 @@ PIECES = {
     "mist": ("meshes/effects/fxwaterfallmistblast.nif", 757.0, 652.0),       # FXWaterfallMistBlast 01ACAE
 }
 CASCADE_DROP_M = 0.75  # a step at least this tall takes the sloped waterfall body instead of the rapids line
+# A merge of steps (the plane budget, budget.py) may make a drop up to MERGED_DROP_MAX_M, or MERGED_FACTOR times the
+# grade's step where that is taller (a steep reach); the merged step's level is still the graded profile at its
+# midpoint, so the water stays within half a merged step of the grade.
+MERGED_DROP_MAX_M = 2.0
+MERGED_FACTOR = 2.0
 
 
 @dataclass(frozen=True)
@@ -101,9 +106,33 @@ def piece_for(drop: float) -> str:
     return "cascade" if drop >= CASCADE_DROP_M else "rapids"
 
 
+def merge(r: Reach, st: list[Step], k: int) -> list[Step]:
+    """Steps k and k+1 of a reach as one step over both runs, at the profile's level at the joined run's midpoint."""
+    total = arcs(r.points)[-1]
+    a, b = st[k], st[k + 1]
+    m = Step(r.id, a.index, a.s0, b.s1, profile(r, (a.s0 + b.s1) / 2, total), min(a.profile_lo_m, b.profile_lo_m),
+             max(a.profile_hi_m, b.profile_hi_m))
+    return st[:k] + [m] + st[k + 2:]
+
+
+def drop_allowed(r: Reach, merged: bool = False) -> float:
+    """The largest drop between two of a reach's steps: the grade's step (a steep reach's, as STEP_MIN_M forces),
+    or MERGED_DROP_MAX_M once the budget has merged its steps."""
+    total = arcs(r.points)[-1] if r.points else 0.0
+    drop = max(0.0, r.level_from_m - r.level_to_m)
+    fewest = max(1, int(total // STEP_MIN_M))
+    base = max(STEP_MAX_M, drop / fewest)
+    return max(MERGED_FACTOR * base, MERGED_DROP_MAX_M) if merged else base
+
+
 def plan(g: Graph, rules: dict[str, str]) -> tuple[dict[str, list[Step]], list[Piece]]:
     """Steps of every stepped reach and the pieces of every step, join and fall. `rules`: reach id -> rule."""
     steps = {rid: reach_steps(r) for rid, r in g.reaches.items() if rules.get(rid) == "stepped"}
+    return steps, pieces(g, rules, steps)
+
+
+def pieces(g: Graph, rules: dict[str, str], steps: dict[str, list[Step]]) -> list[Piece]:
+    """The pieces of every step, join and fall for these steps (after any merge)."""
     pieces: list[Piece] = []
     for rid, r in g.reaches.items():
         rule = rules.get(rid)
@@ -134,4 +163,4 @@ def plan(g: Graph, rules: dict[str, str]) -> tuple[dict[str, list[Step]], list[P
             e, s, yaw = at(r.points, st[-1].s1)
             d = st[-1].level_m - below
             pieces.append(Piece(piece_for(d), rid, e, s, st[-1].level_m, yaw, d, r.width_m))
-    return steps, pieces
+    return pieces

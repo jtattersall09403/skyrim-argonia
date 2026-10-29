@@ -1,0 +1,14 @@
+{
+ "id": "water-reaches",
+ "status": "draft (2.W2): owed L4",
+ "checks": "2.W2 §a: the swim journeys, the NPC swim paths, the step stills and the look; from the default build (budget 32)",
+ "base": "the base save, ArgoniaWorld.esm and Argonia.esm loaded, Underwater NG and Community Shaders at their pinned versions",
+ "step0": ["weather fixed to clear, 12:00", "the player's breath and swim speed at the game's defaults (no god mode: drowning is part of the check)"],
+ "places": {
+  "river (stepped, the stepped-river proof)": {"reach": "reach.949-1591", "start": [-132481, 58496], "note": "9 steps of 0.49 m, 156 m, 9 rapids pieces"},
+  "rapids": {"reach": "reach.382-1251", "start": [-205086, 102060], "end": [-196767, 97291], "note": "sloped rapid, 174 m, 31 m drop"},
+  "falls": {"reach": "reach.2681-79", "start": [89255, 252074], "end": [89171, 252172], "note": "a 5 m fall into its plunge pool"},
+  "river (flat backwater)": {"reach": "reach.313-649", "start": [-213889, 179070], "end": [-236158, 173699], "note": "382 m at 289.71 m"}
+ },
+ "positions": "z from out/water/plan.json and cells.jsonl: each start at its step's water height + 50 units (swimming at the surface)"
+}

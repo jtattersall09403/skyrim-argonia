@@ -1,0 +1,21 @@
+# Draft (2.W2): owed L4, run by 0.3's hands. The planner's ruling of 2026-10-29: the plane budget (budget.BUDGET,
+# default 32) is final only after this measurement. Both scenes come from one build at --budget 64.
+id: water-budget
+status: draft, owed L4
+scenes: [water-budget-32, water-budget-64]
+steps:
+  - scene: water-budget-32
+    do: the scene's measure list (planes on, planes off)
+    read: [frame_time_ms per frame, loaded cells, water refs enabled count]
+    still: one at the play camera, planes on
+  - scene: water-budget-64
+    do: the same
+    read: [frame_time_ms per frame, loaded cells, water refs enabled count]
+    still: one at the play camera, planes on
+  - repeat: both scenes twice more, alternating, so drift between runs shows
+decide:
+  per_plane_ms: (on - off) / planes, per scene, median of the three runs
+  rule: the lane proposes the budget from the per-plane cost and the worst view's plane count (a view loads the
+    uGridsToLoad 5 x 5 cells); the planner sets budget.BUDGET, the lane re-runs `water plan --write-db` and reports
+    the totals (16, 32, 64 are in docs/research/2026-10-29/lane-2.W2-water.md)
+fails_if: a crash; a run whose frame times are flat with the planes on and off (the measurement is not live)

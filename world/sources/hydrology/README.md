@@ -1,5 +1,13 @@
 # The hydrology graph — `hydrology-graph.json` (schema v1)
 
+> **Migrated (2.W2, 2026-10-29).** The graph itself now lives in the world database (decision 0030): the
+> `hydrology_*` tables, read through `tools/argonia_world/db.py` by `tools/argonia_world/water`;
+> `hydrology-graph.json` is deleted (git history keeps it; the one-off migration is
+> `tools/argonia_world/water/migrate.py --graph <file>`). The files still here are not yet in the database:
+> `names.json` (152 attested and extrapolated names, for the chunk that names water) and the 16a approval
+> records the graph was built from. What follows describes the old file and its old tools.
+
+
 The province's water as **typed entities with stable ids**, derived once from
 the frozen SHAPED terrain (`heightfield-shaped-f32.npy`: the sculpt with its
 valleys, lake, portages and fluvial pass — the ground the trenches are cut

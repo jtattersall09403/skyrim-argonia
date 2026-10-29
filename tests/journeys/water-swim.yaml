@@ -1,0 +1,17 @@
+# Draft (2.W2): owed L4. 2.W2 §a acceptance: a journey swims the length of three sample rivers (one per class)
+# without falling out of water.
+id: water-swim
+status: draft, owed L4
+scene: water-reaches
+reaches: [river (stepped, the stepped-river proof), rapids, falls]
+per_reach:
+  - teleport to the reach's start at the surface, facing downstream
+  - swim downstream with SkyLink forward input in 5 s legs; between legs teleport no further than the next step
+    (short steps, 0021 §3)
+  - read each second: position, IsSwimming, the water height under the player (GetWaterLevel / the bridge's read),
+    breath
+  - at each step piece: a still at the play camera
+  - at the falls: teleport across the lip to the plunge pool's surface and swim out of it
+pass: IsSwimming true at every read inside the reach's corridor, the water height under the player equal to the plan's
+  step level (within 1 unit), no fall damage, no drowning on the surface
+fails_if: IsSwimming false inside the corridor (fell out of water), a fall through a plane, a crash

@@ -13,6 +13,7 @@ import numpy as np
 
 from tools.argonia_world.water.field import MPP, Field
 from tools.argonia_world.water.model import Graph
+from tools.argonia_world.water.plan import code_of
 from tools.argonia_world.water.steps import Step, at
 
 OWN_TOL_M = 0.0051
@@ -50,7 +51,8 @@ def footprint(n: int, east: float, south: float, yaw: float, side: float) -> np.
 
 
 def plan(g: Graph, steps: dict[str, list[Step]], f: Field, ground: np.ndarray, wtypes: dict[str, str],
-         leak_tol_m: float) -> list[OPlane]:
+         leak_tol_m: float, forbid: np.ndarray | None = None) -> list[OPlane]:
+    """`forbid`: flat mask of samples no turned plane may stand over (the budget's fallback cells)."""
     n = ground.shape[0]
     shown = f.shown.ravel()
     gr = np.asarray(ground).ravel() if not isinstance(ground, np.memmap) else ground.reshape(-1)
@@ -66,7 +68,7 @@ def plan(g: Graph, steps: dict[str, list[Step]], f: Field, ground: np.ndarray, w
                 continue
             e, so, yaw = at(r.points, (s.s0 + s.s1) / 2)
             idx = footprint(n, e, so, yaw, length)
-            if idx.size == 0:
+            if idx.size == 0 or (forbid is not None and forbid[idx].any()):
                 continue
             lv = shown[idx]
             own = np.abs(lv - s.level_m) < OWN_TOL_M
@@ -75,7 +77,7 @@ def plan(g: Graph, steps: dict[str, list[Step]], f: Field, ground: np.ndarray, w
             other = ~own
             hidden = (np.isnan(lv[other]) | (lv[other] > s.level_m + OWN_TOL_M)) & \
                 (np.asarray(gr[idx[other]]) >= s.level_m - leak_tol_m)
-            code = int(round(s.level_m * 100))
+            code = code_of(s.level_m)
             if not hidden.all() or (code in taken and not taken[code].isdisjoint(idx.tolist())):
                 continue
             taken.setdefault(code, set()).update(idx.tolist())

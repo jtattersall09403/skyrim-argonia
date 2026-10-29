@@ -63,7 +63,7 @@ def records() -> list[dict]:
         out.append({"type": "WATR", "formKey": type_key(t), "edid": type_edid(t), "layer": "base:water",
                     "name": name, "opacity": op, "shallowColor": shallow, "deepColor": deep,
                     "reflectionColor": refl, "fogAbove": [fog_above[0], fog_above[1], amounts[0]],
-                    "fogUnder": [fog_under[0], fog_under[1], amounts[1]], "salt": t in ("sea", "brackish")})
+                    "fogUnder": [fog_under[0], fog_under[1], amounts[1]]})
     for t in WATER_TYPES:
         out.append({"type": "ACTI", "formKey": plane_key(t), "edid": plane_edid(t), "layer": "base:water",
                     "model": PLANE_MODEL, "bounds": [[-512, -512, 0], [512, 512, 0]], "waterType": type_key(t)})

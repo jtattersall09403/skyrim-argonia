@@ -62,3 +62,87 @@
 `terrain/tests/test_land_writer.py` and `test_terrain.py`, and in the pipeline under the system python3. The
 terrain lane's numpy needs to reach the gate's python (the venv on PATH, or importorskip). The water tests are
 green.
+
+# Continuation (lane 2.W2-water, second context, 2026-10-29)
+
+## Acceptance
+- **The plan at budget 32 covers every body:** 2,280/2,280. Each body has a plane, a cell height, the default
+  water, or a recorded loss: 6 buried and 3 others. 0 unrealised wet samples, 0 same-height overlaps, 0 floating
+  plane samples, 0 step violations, no cell over 32 planes (max 32, p95 27).
+- **ArgoniaWorld.esm carries the water:** 4 WATR, 4 ACTI, the WRLD's NAM2 set to the sea, 1,150 cells with
+  XCLW and XCWT, and 33,745 REFRs (32,214 planes and 1,531 pieces), read back from the bytes. It is 116,095,472
+  bytes.
+- **`make plugin` is deterministic.** A second write gives the same sha256, 89b6331a..e8d9a939. The plugin step
+  peaks at 1.15 GB and the full build took 224 s.
+- **The writer test passes:** `water/tests/test_water_writer.py`, 4 tests.
+- **`make check` is green:** 157 passed, 64 s, 0.29 GB. The sample manifest was regenerated deliberately: 653896d8.
+- **Peak RSS:** water plan 1.34 GB, make plugin 1.15 GB.
+
+## The plane budget (the ruling), as built (`water/budget.py`)
+1. **The greedy cover** (lossless, `plan.greedy_cover`): non-overlapping squares, largest first, at any offset.
+   It is used where the quadtree passes the budget. In the 828 cells over 16 it needs 27,818 plane references
+   against the quadtree's 41,261.
+2. **Merges, smallest loss first** (loss = samples x cm), re-estimated per candidate:
+   - interleaved non-river levels within 0.25 m merge in that cell only;
+   - consecutive steps of one reach whose levels both stand in the cell merge into one step. The whole step
+     moves, so there is no seam. A merged drop may be up to max(2.0 m, 2 x the grade's step).
+   After each round (3 to 4 rounds) the field is rebuilt.
+3. **The fallback.** The cell stands at one height, the weighted median of its water levels. Its low ground is
+   flooded and its higher water dried. Border vertices are raised 0.1 m above both the height and the water
+   beyond, unless the same water continues across the border.
+   - The regrade is the `water_regrade` table, applied by `terrain/water_regrade.py` through
+     `grid.Sources.heights`; the planner told me to add it there once the terrain lane closed.
+   - The losses are `water_loss` rows (entity, cell, kind, samples, max cm, mean cm), and the reduced cells are
+     `water_budget_cell` rows.
+   - `water plan --write-db` writes the rows. Every other run fails if they differ from the plan.
+
+| budget | cells over | merged | fallback | regraded vertices | ring cuts | bodies with loss | reaches with loss | plane refs | cell heights |
+|---|---|---|---|---|---|---|---|---|---|
+| 16 | 731 | 107 | 624 | 23,639 | 13,836 | 393 | 214 | 18,932 | 1,519 |
+| 32 | 344 | 85 | 259 | 11,243 | 6,903 | 153 | 154 | 32,214 | 1,150 |
+| 64 | 103 | 34 | 69 | 4,139 | 1,988 | 53 | 64 | 47,441 | 960 |
+
+Loss in samples by kind (one sample is 1.83 m square):
+
+| budget | fallback-flooded | fallback-raised | fallback-dried | fallback-lowered | step-merge | snap | dried | flooded | buried |
+|---|---|---|---|---|---|---|---|---|---|
+| 16 | 88,581 | 45,285 | 31,309 | 13,780 | 2,536 | 6,343 | 1,456 | 586 | 569 |
+| 32 | 38,397 | 25,383 | 17,848 | 9,906 | 5,183 | 3,825 | 2,327 | 892 | 282 |
+| 64 | 16,307 | 9,857 | 4,346 | 4,983 | 4,183 | 918 | 610 | 413 | 82 |
+
+- **Worst bodies at 32** (max cm moved): body.6-629 (25.4 m, 86 samples), body.951-323 (20.8 m, 317),
+  body.1031-1148 (17.0 m), body.56-1206 (16.0 m). These are small bodies inside steep fallback cells.
+- **The stepped-river proof's reach** (reach.949-1591) is merged at 32, from 9 steps to 5. Its banks are not
+  flagged.
+- **The 4 backswamps.** Three are recorded losses: body.1188-2927 and body.1902-3267 are `buried`, and
+  body.1511-2642 is `buried` plus `fallback-dried`. body.1523-2643 is realised on the game ground. The terrain
+  lane had closed, and the planner said nobody owns terrain/ now. No one-line terrain patch was made, so the
+  ruling's default (record the loss) stands.
+- **The next lever, not taken (my call: it is outside the ruling).** Turned step planes fail on 1 to 13 samples
+  of the lower step's water under the square. Letting a step's plane overhang the lower step by up to one sample
+  under its rapids piece, which is how vanilla rivers hide their step lines, would save most of the step bands'
+  staircase and so most of the fallback. It needs the L4 stills to judge.
+
+## Owed items 2-4, done
+- **WaterRecords.cs** is a separate file. The hook in LandWorld.cs is 3 lines (Load, ApplyCell, CheckAllApplied);
+  Program.cs gained `--water`; terrain/world.py's load order gained Dawnguard.esm for the falls piece. The order
+  with 2.W3 was agreed by message: 2.W3 committed 7e34247 first, then I built on it.
+- **pipeline.py** runs the water plan under a stamp: the water and terrain code, the hydrology and water tables,
+  and the piece index. The sample build gets the sample cells' lines, and `_terrain_stamp` covers the regrade.
+- **Checks on the LAND's ground.** The whole plan now stands on `build.game_heights_m`, not only the bank and
+  float checks. Checked against the refined plan, the game ground found 2,342 floating samples (quantisation of
+  0.114 m against a 0.05 m tolerance); planning on it gives 0. Banks are flagged on 110 reaches.
+- **Journey drafts:** `tests/scenes/water-budget-32.json`, `water-budget-64.json`, `water-reaches.json`, and
+  `tests/journeys/water-budget.yaml`, `water-swim.yaml`, `water-npc-swim.yaml`, `water-steps-stills.yaml`,
+  `water-look.yaml`.
+- **The journal** is `docs/research/journals/water.md`. The 2.W2 Outcome and 2.W4's Starting state are written.
+- **world/sources/hydrology/.** Only `hydrology-graph.json` is deleted, with its allowlist line. A grep found no
+  readers, but `names.json` (152 water names) is not in the database, so the directory was not deleted whole; its
+  README says so. The chunk that names water should migrate it.
+
+## Bugs found and fixed
+- Step codes rounded in float64 against the field's float32: off by 1 cm, so they hid most step merges.
+  `plan.code_of` is now the one conversion.
+- The C# `sea ??= Type(...)` wrote only one WATR. The writer test caught it.
+- My regrade call landed in `Sources.classes` too, and 2.W3 caught it: height floors were written as class ids
+  (index 92). The test now asserts classes are unchanged.

@@ -1,5 +1,5 @@
 {
  "cells": "world.SAMPLE",
- "sha256": "a0245b90f930ac43ee98b5d3f2d364731891d236329efc0fe6fbba71ede1a00d",
- "measured": "2026-10-29, two builds identical; 2.W3 added the REGN shells and each cell's XCLR (regions/api.py) and the road paint (routes/paint.py); built with the 2.W2 water regrade in the tree"
+ "sha256": "653896d87db61042104f2abccaaf0b7be75a075a291fa2ca66dd4f1c33e7c3fd",
+ "measured": "2026-10-29, two builds identical; 2.W2 added the water (4 WATR, 4 plane ACTI, the WRLD's default water, the sample cells' water lines from out/water/cells.jsonl) and the regrade's floors (water_regrade.py), on 2.W3's REGN shells, XCLR and road paint"
 }

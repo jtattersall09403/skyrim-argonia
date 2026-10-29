@@ -29,7 +29,7 @@ NAME = "Black Marsh"  # the worldspace's name the map shows (immersion inventory
 DEFAULT_LAND_UNITS = -2048.0  # a cell with no LAND (open sea beyond the apron) lies 29 m under the sea
 DEFAULT_WATER_UNITS = 0.0  # the sea at 0 (brief §a)
 MAP_CAMERA = (50000.0, 80000.0, 50.0)  # min, max height and pitch: Skyrim.esm Tamriel's values (measured)
-LOAD_ORDER = ["Skyrim.esm"]  # the LTEX forms are Skyrim.esm's (decision 0028)
+LOAD_ORDER = ["Skyrim.esm", "Dawnguard.esm"]  # the LTEX forms are Skyrim.esm's (decision 0028); the water's falls piece is Dawnguard's (2.W2)
 # The gate's fixed sample (decision 0031 §3): the steepest sea cliff (-19, 58), the south-west corner across the
 # border into the apron, six-layer ground in the middle, and the Tear road's gate cell on the north border.
 SAMPLE = ((-20, 57, -19, 58), (-63, -63, -62, -62), (0, 0, 1, 1), (-12, 63, -11, 64))

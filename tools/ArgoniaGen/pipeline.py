@@ -148,7 +148,53 @@ def _terrain_stamp() -> str:
     for n in sorted(vault.FILES):
         f = vault.data_dir() / n
         h.update(f"{n}:{f.stat().st_size}:{int(f.stat().st_mtime)}".encode() if f.exists() else n.encode())
+    from tools.argonia_world.terrain import water_regrade
+    h.update(water_regrade.stamp().encode())  # 2.W2's border regrade (rows in the world db)
     return h.hexdigest()
+
+
+WATER = ROOT / "tools" / "argonia_world" / "water"
+WATER_OUT = OUT / "water"
+
+
+def _water_stamp() -> str:
+    """The water plan's code (and the terrain's, whose ground it stands on), the hydrology and water tables, the
+    frozen inputs: a change replans."""
+    import hashlib
+    h = hashlib.sha256(_terrain_stamp().encode())  # first: it puts the repo on sys.path
+    from tools.argonia_world import db
+    w = db.open()
+    for f in sorted(WATER.glob("*.py")):
+        h.update(f.name.encode() + f.read_bytes())
+    for t in sorted(n for n in w.values("SELECT name FROM sqlite_master WHERE type = 'table'")
+                    if n.startswith(("hydrology_", "water_"))):
+        h.update(t.encode() + repr([tuple(r) for r in w.query(f'SELECT * FROM "{t}"')]).encode())
+    for f in (OUT / "pieces-index.json",):
+        h.update(f.read_bytes() if f.exists() else b"-")
+    return h.hexdigest()
+
+
+def water(into: Path, sample: bool) -> Path:
+    """The water plan (out/water, replanned only when its stamp changes), and for the sample its cells only."""
+    WATER_OUT.mkdir(parents=True, exist_ok=True)
+    stamp = WATER_OUT / "water.stamp"
+    now = _water_stamp()
+    if not (stamp.exists() and stamp.read_text() == now and (WATER_OUT / "cells.jsonl").exists()):
+        run(sys.executable, "-m", "tools.argonia_world.water", "plan", "--out", WATER_OUT, capped=True)
+        stamp.write_text(now)
+    if not sample:
+        return WATER_OUT
+    from tools.argonia_world.terrain.world import SAMPLE
+    d = into / "water"
+    d.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(WATER_OUT / "records.json", d / "records.json")
+    keep = []
+    for line in (WATER_OUT / "cells.jsonl").read_text().splitlines():
+        c = json.loads(line)
+        if any(x0 <= c["x"] <= x1 and y0 <= c["y"] <= y1 for x0, y0, x1, y1 in SAMPLE):
+            keep.append(line + "\n")
+    (d / "cells.jsonl").write_text("".join(keep))
+    return d
 
 
 def world(data: Path, into: Path, sample: bool) -> Path:
@@ -163,10 +209,11 @@ def world(data: Path, into: Path, sample: bool) -> Path:
         if not sample:
             stamp.write_text(now)
     run(sys.executable, "-m", "tools.argonia_world.terrain", "world", "--out", into)
+    wdir = water(into, sample)
     esm = into / "esm" / WORLD_ESM
     esm.parent.mkdir(parents=True, exist_ok=True)
     full = (CAP if CAP else []) + [str(GEN), "world", "--in", str(into / "world.json"), "--land", str(into / "land"),
-                                   "--data", str(data), "--out", str(esm)]
+                                   "--data", str(data), "--out", str(esm), "--water", str(wdir)]
     r = subprocess.run(full, cwd=ROOT, env=dict(ENV, **WORLD_ENV), capture_output=True, text=True, check=False)
     if r.returncode:
         raise SystemExit(f"plugin: ArgoniaWorld.esm failed\n{(r.stdout + r.stderr)[-3000:]}")
