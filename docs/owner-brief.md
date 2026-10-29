@@ -175,3 +175,11 @@ Something they can **play**, that is:
 | 2026-10-29 | **AWS cap:** October's spend (over the cap) is explained by the old project's costlier working in the month's first four weeks; the $100/month cap binds from November 2026 (0008). |
 | 2026-10-29 | **The gamepad follows DS1 Remastered on Switch, by button position:** roll on the right button, R1/R2 light and heavy, L1 block, L2 parry (L1 + R1 is fine while the parry mod needs it), with Skyrim's menu, journal and wait adapted onto spare buttons. |
 | 2026-10-29 | **Combat mod 28567 trialled as combat group B** beside the 0.0 stack (group A), switchable both ways; its permissions are fine for our use (owner). Group B's makeup, and whether Dynamic Dodge's 8-way rolls and Rim Parry's riposte join it, follow the evaluation (`docs/research/2026-10-29/combat-mod-28567.md`). |
+| 2026-10-29 | **Permissions for every dependency mod are obtained** by the owner (O-5 and O-17 complete); the 49 drafted requests are not sent. |
+| 2026-10-29 | **Parallel game machines are authorised**: whatever works best for parallelism (more machines, or more games on one), within the cost rules. |
+| 2026-10-29 | **Mod 60199 (Morrowind attributes and skills) is the sheet's foundation** (permissions confirmed by the owner); its UI is restyled to our theme and UI system. |
+| 2026-10-29 | **The dependency list is slimmed to what is genuinely needed** (98 rows was more than expected); every row must name the chunk that uses it. |
+| 2026-10-29 | **Water is designed, never a thoughtless fallback**: rivers authored as stepped flat reaches with rapids and falls; insignificant puddles may be dropped by design; the simplest native Skyrim method that looks good wins. |
+| 2026-10-29 | **The parchment chart follows the old repo's map**, which the owner liked. |
+| 2026-10-29 | **In-game checks are a small, smart sample** that covers most pitfalls, not exhaustive walks. |
+| 2026-10-29 | **SkyLink AI**: if our bridge gives trouble, follow SkyLink's approach as closely as possible (it worked on an earlier runtime). |
