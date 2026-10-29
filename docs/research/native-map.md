@@ -313,3 +313,93 @@ inputs. Scene names are proposals for the 1.1 build lane.
 | S30a | G30.1 | `bat duel-ring` | Draw, lock on, roll through a swing, guard, parry, riposte: each action's event or graph variable from the stack reads in order |
 | S30b | G30.2 | `bat duel-ring` | A blow of known listed damage on the reference armour removes the health the wiring draft predicts, within the Part 1 approximation it records; a light attack's stamina cost equals the spec × the burden multiplier at each tier |
 | S31 | G31.1 | any | Every game setting and mod setting in the wiring draft reads back in game equal to the table |
+
+## 6. What the map leaves to `skse/core` (for the 1.1 build lane)
+
+Pure C++20, namespace `argonia::core`, no Skyrim types, no I/O; each module takes values and returns values, and is
+unit-tested at L2 on the build VM. ArgoniaCore's adapters turn engine events into the inputs and write the outputs
+into actor values, globals, records and views (P1, P2, P7). Constants come from the generated tables (G11.2); none
+is typed into a source file. Sizes are rough estimates of new code, not counts of anything ported. Written fresh
+(0026): the old packages are read as goals only.
+
+### 6.1 Part 1 modules
+
+| Module | Size | For | Interface sketch |
+|---|---|---|---|
+| `curve` | ~60 lines, 4 fns | every score | `double score(double skill, double attr); double k(double s); double band(double lo, double hi, double s);` |
+| `sheet` | ~350 lines, ~20 fns | G14.1, G14.2, G15.1 | `struct Attributes { std::array<double,7> v; }; struct Skills { std::array<double,27> v; }; struct Sheet { Attributes a; Skills s; int level; Class cls; }; Derived derive(const Sheet&, const Effective&, double carriedKg, const Tables&);` with `Derived` = health, stamina, magicka, carryKg, staminaRegen, magickaRegen, walk, sprint, swim, jumpApex, safeFall, breath, burdenTier, basePoise |
+| `effects` | ~250 lines, ~10 fns | G15.2 | `struct StatEffect { Field f; Op op; double mag; std::optional<double> until; SourceId src; }; Effective apply(const Sheet&, std::span<const StatEffect>, double now); void expire(Stack&, double now);` |
+| `carriers` | ~150 lines | P1 (G14.1, G25.2, G30.2) | `struct HandContext { WeaponClass cls; bool bow; }; Carriers carriers(const Sheet&, const Effective&, HandContext right, HandContext left);` → damage position and Strength term per hand, armour band per class |
+| `progression` | ~450 lines, ~15 fns | G16.1, G16.2, G25.1 | `struct UseEvent { SkillId skill; UseKind kind; double damage; double targetMaxHealth; bool targetHostile, targetDummy, targetSummoned; ... }; struct Progress { std::array<double,27> xp; double vastei; int countedRanks; int pendingLevels; }; Progress apply(const Progress&, const UseEvent&, const Sheet&, const Effective&, const Tables&); double rankCost(SkillId, const Sheet&);` |
+| `sitting` | ~150 lines | G16.3 | `double cost(AttrId, int nth, int level, double attrValue, const Tables&); Result<SittingState> buy(const SittingState&, AttrId); Sheet close(const SittingState&);` (cap 5 per attribute, one pending level per sitting, unspent vastei carried) |
+| `rest` | ~120 lines | G16.3, G17.1 | `enum class RestVerdict { Rest, WaitOnly, Refused }; RestVerdict canRest(const RestContext&);` (wild and calm, settlement, hunted, in combat, bed tier) and `RestOutcome onRest(const RestContext&);` (rested effect, wake point) |
+| `death` | ~80 lines | G17.1 | `struct Pile { Pos at; double vastei; }; DeathOutcome onDeath(double carried, Pos at); std::optional<double> take(const Pile&, Pos player, double radiusM);` (one pile, a second death replaces it) |
+| `respawn` | ~60 lines | G13.1, G17.1 | `std::vector<ActorId> toReset(std::span<const Roster>, const ClearedSet&);` for `onRest`, `never`, `untilCleared` |
+| `conditions` | ~600 lines | G19.2, G18.3 | a typed predicate tree over 85's vocabulary with negation and composition; `bool eval(const Pred&, const Facts&);` where `Facts` is a pure interface ArgoniaCore implements; `std::vector<MirrorKey> mirrors(std::span<const Pred>);` lists the globals P2 must publish |
+| `topics` | ~900 lines (route b); ~150 adapter (route a, fork) | G18.1, G18.2 | `std::vector<TopicId> offered(const Speaker&, const Facts&); Answer answer(TopicId, const Speaker&, const Facts&); std::vector<Span> keywords(std::string_view text, const Known&);` (first match in record order, keyword spans, learned set) |
+| `disposition` | ~150 lines | G18.3 | `int base(const Speaker&, const Priors&); Band band(int d); int apply(int d, const Change&);` (persuasion joins in 2.5, ~100 more) |
+| `journal` | ~200 lines | G22.3 | `void append(Log&, QuestId, EntryId, GameDate); QuestIndex index(const Log&);` |
+| `items` | ~150 lines | G25.2 | `double wear(const ItemState&, WearKind, const Tables&); bool usable(const ItemState&); double armourEffectiveness(const ItemState&, const Tables&); double repairStroke(double score, const Tables&);` |
+| `families` | ~200 lines | G10.2 | `struct Family { Id id; uint32_t version; Bytes (*save)(); Status (*load)(Bytes, uint32_t from); void (*reset)(); };` with a migration table and a readable refusal for a version with no migration |
+
+Part 1 total: about 3,800 lines with our own topic store, about 3,050 with the MorrowindRuntime fork.
+
+**ArgoniaCore's hooks and sinks in Part 1** (S11a's list): the `TESHitEvent`, `TESEnterBleedoutEvent`,
+`TESContainerChangedEvent` and `MenuOpenCloseEvent` sinks; the natives the P3 fragments call (open dialogue, rest
+at a camp or bed, death handling); `CheckCast` only from 2.9; `AddSkillExperience` and `HandleHealthDamage` only
+if S16a or S17a need them. **Papyrus we ship in Part 1**, each because the engine runs these only from scripts:
+the P3 activate-choice fragments (one native call each) and the generated quest-stage fragments.
+
+### 6.2 Later modules (paper only; their chunk sizes them)
+
+`price` (~150, 2.6), `training` (~40, 2.6), `magic` (castability, the cost cap, spellmaking fee, enchant budget,
+soul cap; ~250, 2.9), `alchemy` (~100, 2.10), `smithing` (~120, 2.10), `locks` (~80, 2.11), `stealth` (Elusiveness,
+only if 2.11 hooks detection; ~120), `owing` (~300, 2.11), `persuasion` (~100, 2.5), `knowledge` (evidence and
+witnessed facts; ~150, 2.12), `calendar` (the moon override, only if needed; ~60, 2.W3), `weather` (the province
+timeline; ~100, 2.W3), `boats` (ArgoniaBoats' helm and wind model; ~600, 2.15), `combat` (ArgoniaCombat: the map's
+"build" rows, sized by 2.7 §0).
+
+## 7. Sources and what is not yet verified
+
+**Read:** CommonLibSSE-NG at `dec1be18` (the headers cited inline); [the reuse audit](2026-10-29/reuse-audit.md)
+§1–§6; [76](../design/world/76-stats-progression.md) §116–§129;
+[85](../design/quests/85-condition-vocabulary.md) §A–§B; the Part 1 briefs.
+**Web, through search excerpts** (UESP and the CK wiki returned 403 to direct fetches):
+- [W:leveling] [UESP Skyrim:Leveling](https://en.uesp.net/wiki/Skyrim:Leveling): `fXPPerSkillRank` default 1,
+  `fXPLevelUpBase` 75, `fXPLevelUpMult` 25; skill threshold `ImproveMult × level^fSkillUseCurve + ImproveOffset`,
+  `fSkillUseCurve` 1.95.
+- [W:setinchargen] [CK wiki SetInChargen](https://ck.uesp.net/wiki/SetInChargen_-_Game): `abDisableSaving`,
+  `abDisableWaiting`, `abShowControlsDisabledMessage`.
+- [W:respawn] [UESP Skyrim:Respawn](https://en.uesp.net/wiki/Skyrim:Respawn): 240 h and 720 h; a forum note that
+  `Reset()` does not override *Never Resets*.
+- [W:cellreset] [CK wiki Cell Reset](https://ck.uesp.net/wiki/Cell_Reset): cells reset only on re-entry; *Never
+  Resets* lives on the encounter zone.
+- [W:speech] [UESP Skyrim:Speech](https://en.uesp.net/wiki/Skyrim:Speech): the price factor blends `fBarterMax` 3.3
+  and `fBarterMin` 2.0 by Speech.
+
+**UNVERIFIED, and what settles each:**
+
+| Claim | Settled by |
+|---|---|
+| free reserved actor values (P1's budget) | 1.3 §a AV audit |
+| every vanilla skill gain honours AVSK `useMult` = 0 (P4) | S16a |
+| P3's fragment latency is acceptable for dialogue | S18a (measured) |
+| `SetInChargen` leaves ArgoniaCore's own `Save` working | S17a |
+| bleedout catch shows no kneel frame | S17a still |
+| resurrecting `onRest` actors in unloaded cells | S17a |
+| how Skyrim's own level is mirrored, and side effects | S16c |
+| per-instance item condition identity | S25b |
+| new condition functions from SKSE (not needed) | — |
+| 126×126 physics world size | 2.W1 |
+| runtime change of cell water height; water planes toggled keep swim and submersion | 2.W2 |
+| CK region generator repeatable | 2.W4 |
+| low-process NPC movement when unseen | 2.4 |
+| moon cycle = 8 × phase length; an override exists | 2.W3 |
+| weather forcing from SKSE | 2.W3 |
+| vendor restock setting name and default; bounty mirror into the Owing ledger | 2.6, 2.11 |
+| detection-state mapping to unaware/suspicious/engaged | 2.11 |
+| Magic Expanded's levitation; runtime spell forms; cast-time control | 2.9 |
+| FreeClimb's settings reach speed and drain; what its climbable test reads | 2.13 |
+| diving AI for creatures | 2.13 |
+| PrismaUI before the main menu | 3.1 |
+| Nexus 28567: licence, 1.7.104 support, source, clip provenance | the planner's research lane, then 2.7 §0 |
