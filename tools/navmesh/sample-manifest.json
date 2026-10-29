@@ -1,0 +1,10 @@
+{
+ "cells": [
+  0,
+  0,
+  1,
+  1
+ ],
+ "sha256": "5eed6ffd117743d1cf9e45cab8c31e45362250fa55da6198845776cacf739bcc",
+ "note": "the navmesh job on four cells (pipeline.py NAV_SAMPLE); a deliberate change rewrites it"
+}

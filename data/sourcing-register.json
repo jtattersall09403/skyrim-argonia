@@ -36,6 +36,15 @@
     "notes": "build-VM tools only; never shipped to players"
   },
   {
+    "name": "DotRecast (DotRecast.Recast)",
+    "source_url": "https://github.com/ikpil/DotRecast",
+    "version": "2026.3.1 (NuGet)",
+    "licence": "zlib",
+    "used_by": "tools/navmesh/ArgoniaNav (the exterior navmesh, chunk 2.W4 §b, 0.4 §d)",
+    "linked_or_forked_by": "linked as a NuGet package at build; nothing vendored",
+    "notes": "build-VM tool only; its output (NAVM/NAVI) is our generated data in ArgoniaWorld.esm"
+  },
+  {
     "name": "Spriggit (Spriggit.Yaml CLI)",
     "source_url": "https://github.com/Mutagen-Modding/Spriggit",
     "version": "0.41.0 (sha256 146bf173…b5b, infra/build-vm/toolchain.lock)",

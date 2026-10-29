@@ -4,7 +4,8 @@
 //   quests     --data <dir> --plugins a.esm,b.esm --out <json>  vanilla quests: start-game-enabled and story-manager-started
 //   generate   --in <json> --data <dir> --out <Argonia.esm>     the records, written deterministically
 //   ltex       --data <dir> --plugins a.esm,b.esp --out <json>   every LTEX's winning copy and every GRAS (LandTextures.cs)
-//   world      --in <json> --land <dir> --data <dir> --out <ArgoniaWorld.esm> [--water <dir>]   the generated ground (LandWorld.cs) and its water (WaterRecords.cs)
+//   world      --in <json> --land <dir> --data <dir> --out <ArgoniaWorld.esm> [--water <dir>] [--navmesh <dir>]   the generated ground (LandWorld.cs), its water (WaterRecords.cs) and navmesh (NavmeshRecords.cs)
+//   navmesh    roundtrip --in <jsonl.gz> --data <dir> --out <esm>   the vanilla NAVM round trip (NavmeshRecords.cs)
 using ArgoniaGen;
 
 static int Fail(string m) { Console.Error.WriteLine(m); return 1; }
@@ -37,7 +38,9 @@ try
         case "world":
             return LandWorld.Run(Opt("--in") ?? throw new ArgumentException("missing --in"),
                                  Opt("--land") ?? throw new ArgumentException("missing --land"), Dir(Opt("--data")),
-                                 Opt("--out") ?? throw new ArgumentException("missing --out"), Opt("--water"));
+                                 Opt("--out") ?? throw new ArgumentException("missing --out"), Opt("--water"), Opt("--navmesh"));
+        case "navmesh":
+            return NavmeshRecords.Run(args, Opt, Dir);
         default:
             return Fail($"unknown command {args[0]}");
     }

@@ -1,0 +1,10 @@
+{
+ "id": "nav-claywater",
+ "status": "draft (2.W4-navmesh): owed L4; no scene runner exists yet, so the fields are the check's needs, not a format",
+ "checks": "0.4 §d navmesh (b) and 2.W4 §b: the generated navmesh is the one the engine paths on, in the Claywater block (cells -60,8 to -53,15)",
+ "base": "the base save; ArgoniaWorld.esm built by `make navmesh` (its NAVM and the NAVI override) and Argonia.esm loaded",
+ "step0": ["cow ArgoniaWorld -57 11 (Claywater Station's cell; nothing about the navmesh is set)", "weather fixed to clear, 12:00", "tcai stays on (AI runs); the player is a spectator (tcl off, ghost on)"],
+ "points": "out/navmesh/claywater/navm (python -m tools.navmesh build --block claywater): triangle centroids, the road samples of the block, the water triangles (flag 0x0200)",
+ "reads": ["the actor's position every 1 s", "its AI package and procedure", "IsSwimming", "GetPathStatus or the bridge's path query (a path request between two points)"],
+ "fails_if": "the cell loads with no navmesh (the console's navmesh view, tmm off, shows none), a crash"
+}

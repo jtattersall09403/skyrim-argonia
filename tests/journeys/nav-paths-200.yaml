@@ -1,0 +1,14 @@
+# Draft (2.W4 §b acceptance, first half): owed L4, run by 0.3's hands through the bridge's path query.
+id: nav-paths-200
+status: draft, owed L4
+scene: nav-claywater
+points: 200 pairs of triangle centroids drawn with seed 2026 from the navmesh's main component (checks.py's
+  islands: both ends in the largest component, so each pair is reachable on the mesh), half within one cell, half
+  across 2 to 6 cells; the list is written by the lane before the run and kept beside the results
+steps:
+  - do: per pair, teleport an NPC to the first point (z on the triangle) and request a path to the second
+    read: [path status, path length, node count, time to answer]
+  - still: one per 20 pairs at the first point
+pass: 200 of 200 succeed; the path length is within 1.5 x the mesh's own shortest path (tools/navmesh computes it
+  from the same NVNM)
+fails_if: any failure (a seam, a water edge, a triangle the engine cannot find under the point), a crash

@@ -5,11 +5,13 @@
                          (out/), serialise it with Spriggit into plugin/Argonia/; build the generated ground,
                          out/ArgoniaWorld.esm (decision 0031: never serialised; the terrain is rebuilt only when its
                          code or inputs change) and print its sha256
+    pipeline.py navmesh  the province's navmesh (tools/navmesh), then out/ArgoniaWorld.esm with its NAVM and NAVI
     pipeline.py check    the FormID table append-only; every design piece resolved; regenerate twice into
                          out/check/{a,b}: identical ESM bytes and YAML trees, and equal to the committed
                          plugin/Argonia/ (else: run `make plugin`); the Spriggit round trip: plugin/Argonia/
                          and the generated ESM, both in canonical record order, are byte-identical;
-                         ArgoniaWorld.esm's fixed cell sample rebuilt and its sha256 equal to the committed manifest
+                         ArgoniaWorld.esm's fixed cell sample rebuilt and its sha256 equal to the committed manifest;
+                         the navmesh job on four cells: L1 green, its sha256 equal to tools/navmesh/sample-manifest.json
 
 Spriggit's deserialiser writes a group's records in directory-listing order, which is the filesystem's and not
 the content's; `canon` puts every group in the raw-FormID order the generator writes, so the round trip
@@ -199,9 +201,9 @@ def water(into: Path, sample: bool) -> Path:
     return d
 
 
-def world(data: Path, into: Path, sample: bool) -> Path:
+def world(data: Path, into: Path, sample: bool, nav: Path | None = None) -> Path:
     """terrain cells -> world.json -> ArgoniaWorld.esm under `into`; the full grid's cells are reused while the
-    stamp holds."""
+    stamp holds. `nav`: a built navmesh (tools/navmesh) whose NAVM and NAVI go in too (`make navmesh`)."""
     into.mkdir(parents=True, exist_ok=True)
     stamp = into / "terrain.stamp"
     now = _terrain_stamp()
@@ -215,7 +217,8 @@ def world(data: Path, into: Path, sample: bool) -> Path:
     esm = into / "esm" / WORLD_ESM
     esm.parent.mkdir(parents=True, exist_ok=True)
     full = (CAP if CAP else []) + [str(GEN), "world", "--in", str(into / "world.json"), "--land", str(into / "land"),
-                                   "--data", str(data), "--out", str(esm), "--water", str(wdir)]
+                                   "--data", str(data), "--out", str(esm), "--water", str(wdir),
+                                   *(["--navmesh", str(nav)] if nav else [])]
     r = subprocess.run(full, cwd=ROOT, env=dict(ENV, **WORLD_ENV), capture_output=True, text=True, check=False)
     if r.returncode:
         raise SystemExit(f"plugin: ArgoniaWorld.esm failed\n{(r.stdout + r.stderr)[-3000:]}")
@@ -289,6 +292,7 @@ def check() -> int:
                         "(a deliberate change: update tools/argonia_world/terrain/sample-manifest.json)")
     except SystemExit as e:
         errs.append(str(e))
+    errs += navmesh_sample()
     for e in errs:
         print(f"plugin: {e}")
     if not errs:
@@ -297,6 +301,45 @@ def check() -> int:
     return 1 if errs else 0
 
 
+# --- the navmesh (2.W4 §b): its own target, outside the gate but for a fixed sample's hash ---------------------------
+NAV = ROOT / "tools" / "navmesh"
+NAV_SAMPLE = (0, 0, 1, 1)  # four cells of the terrain sample (terrain/world.py SAMPLE)
+
+
+def navmesh_sample() -> list[str]:
+    """The navmesh job on NAV_SAMPLE: its L1 checks green and its records' sha256 as tools/navmesh/sample-manifest.json."""
+    r = subprocess.run([sys.executable, "-m", "tools.navmesh", "build", "--cells", ",".join(map(str, NAV_SAMPLE)),
+                        "--out", str(OUT / "check" / "navmesh")], cwd=ROOT, capture_output=True, text=True, check=False)
+    if r.returncode:
+        return [f"navmesh sample: red\n{(r.stdout + r.stderr)[-1500:]}"]
+    got = json.loads((OUT / "check" / "navmesh" / "build.json").read_text())["sha256"]
+    want = json.loads((NAV / "sample-manifest.json").read_text())["sha256"]
+    return [] if got == want else [f"navmesh sample hashes {got[:12]}, the manifest says {want[:12]} (a deliberate "
+                                   "change: update tools/navmesh/sample-manifest.json)"]
+
+
+def navmesh() -> int:
+    """`make navmesh`: the province's navmesh (tools/navmesh) on the current ground and water, then ArgoniaWorld.esm
+    with it (out/ArgoniaWorld.esm, as `make plugin` writes it but with every NAVM and the NAVI)."""
+    data = data_dir()
+    build_tool()
+    scans(data)
+    water(OUT / "terrain", sample=False)
+    nav = OUT / "navmesh" / "province"
+    run(sys.executable, "-m", "tools.navmesh", "build", "--province", "--out", nav, capped=True, quiet=False)
+    wesm = world(data, OUT / "terrain", sample=False, nav=nav)
+    sys.path.insert(0, str(ROOT))
+    from tools.navmesh import checks as nav_checks
+    v = nav_checks.verify_esm(wesm, nav)  # every NAVM in the plugin byte for byte as built, and the NAVI's entries
+    print(f"navmesh: {json.dumps(v)}")
+    if not v["green"]:
+        raise SystemExit("navmesh: ArgoniaWorld.esm's navmesh differs from the build")
+    shutil.copyfile(wesm, OUT / WORLD_ESM)
+    print(f"navmesh: out/{WORLD_ESM} ({wesm.stat().st_size} bytes) sha256 {sha256(wesm)}")
+    return 0
+
+
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else ""
-    sys.exit(plugin() if cmd == "plugin" else check() if cmd == "check" else (print(__doc__) or 2))
+    sys.exit(plugin() if cmd == "plugin" else check() if cmd == "check" else navmesh() if cmd == "navmesh"
+             else (print(__doc__) or 2))

@@ -1,0 +1,12 @@
+# Draft (2.W4 §b acceptance, second half): owed L4, run by 0.3's hands.
+id: nav-sandbox-20
+status: draft, owed L4
+scene: nav-claywater
+steps:
+  - do: place 20 NPCs with a sandbox package (radius 1,500 units) at 20 points across the block: 8 on the road,
+      6 in the village, 6 on the banks of the ford
+  - do: let the game run 10 minutes of real time at timescale 20
+    read: [each NPC's position every 1 s, package, procedure]
+  - still: one per NPC at the start and one at the end
+pass: no NPC stands still for more than 60 s in the 10 minutes; none leaves the navmesh (falls, swims away)
+fails_if: an NPC frozen over 60 s, one stuck at a seam or a cliff edge, a crash
