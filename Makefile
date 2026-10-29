@@ -1,6 +1,8 @@
 # The one gate. `make check` runs every target in parallel and ends with one list of the reds.
 RED := .git/check-red
 PARTS := guard lint unit budget links world plugin-check skse immersion
+# The build VM's pinned venv (infra/build-vm/toolchain.lock) when present: numpy, pytest, pyyaml.
+PY := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/python) python3)
 # A failing part records its name, then fails.
 FAIL = || { echo $@ >> $(RED); exit 1; }
 
@@ -20,7 +22,7 @@ lint:
 	else python3 -m compileall -q tooling tools >/dev/null; fi $(FAIL)
 
 unit:
-	@python3 -m pytest -q --ignore=tooling/tests/test_word_budget.py tooling/tests tools; rc=$$?; [ $$rc -eq 0 ] || [ $$rc -eq 5 ] $(FAIL)
+	@$(PY) -m pytest -q --ignore=tooling/tests/test_word_budget.py tooling/tests tools; rc=$$?; [ $$rc -eq 0 ] || [ $$rc -eq 5 ] $(FAIL)
 
 budget:
 	@python3 -m pytest -q tooling/tests/test_word_budget.py $(FAIL)
@@ -50,7 +52,7 @@ plugin:
 
 # FormIDs append-only, pieces resolved, regenerate twice identical, plugin/ current, Spriggit round trip byte-identical.
 plugin-check:
-	@python3 tools/ArgoniaGen/pipeline.py check $(FAIL)
+	@$(PY) tools/ArgoniaGen/pipeline.py check $(FAIL)
 
 hooks:
 	@bash tooling/guards/install_hooks.sh
