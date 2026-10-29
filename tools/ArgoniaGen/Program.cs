@@ -3,6 +3,7 @@
 //   index      --data <dir> --plugins a.esm,b.esm --out <json>  every modelled base record and archive mesh (pieces.py)
 //   quests     --data <dir> --plugins a.esm,b.esm --out <json>  vanilla quests: start-game-enabled and story-manager-started
 //   generate   --in <json> --data <dir> --out <Argonia.esm>     the records, written deterministically
+//   ltex       --data <dir> --plugins a.esm,b.esp --out <json>   every LTEX's winning copy and every GRAS (LandTextures.cs)
 //   world      --in <json> --land <dir> --data <dir> --out <ArgoniaWorld.esm> [--water <dir>]   the generated ground (LandWorld.cs) and its water (WaterRecords.cs)
 using ArgoniaGen;
 
@@ -17,7 +18,7 @@ string? Opt(string name)
 string Dir(string? p) => Path.GetFullPath((p ?? "").Replace("~", Environment.GetEnvironmentVariable("HOME") ?? "~"));
 string[] Plugins() => (Opt("--plugins") ?? "Skyrim.esm").Split(',', StringSplitOptions.RemoveEmptyEntries);
 
-if (args.Length == 0) return Fail("usage: ArgoniaGen counts|index|quests|generate|world ... (see Program.cs header)");
+if (args.Length == 0) return Fail("usage: ArgoniaGen counts|index|quests|generate|ltex|world ... (see Program.cs header)");
 try
 {
     switch (args[0])
@@ -31,6 +32,8 @@ try
         case "generate":
             return Generate.Run(Opt("--in") ?? throw new ArgumentException("missing --in"), Dir(Opt("--data")),
                                 Opt("--out") ?? throw new ArgumentException("missing --out"));
+        case "ltex":
+            return LandTextures.Scan(Dir(Opt("--data")), Plugins(), Opt("--out") ?? throw new ArgumentException("missing --out"));
         case "world":
             return LandWorld.Run(Opt("--in") ?? throw new ArgumentException("missing --in"),
                                  Opt("--land") ?? throw new ArgumentException("missing --land"), Dir(Opt("--data")),

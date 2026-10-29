@@ -58,3 +58,14 @@ at a hand-off. The lane reports are `docs/research/2026-10-29/lane-2.W1-terrain.
 - **Owed: the texture half.** Tropical Skyrim's texture files are not on the build VM: only the plugins and the
   mesh lists were synced, with no loose `textures/landscape` and no Tropical Skyrim BSA. The "replaces 66 of 68
   by file" finding still rests on the LE file list. The vantage stills (L4, on the game machine) settle it.
+
+## 2026-10-29: no vanilla grass on the painted ground (planner's call on the re-check)
+
+- ArgoniaGen `ltex` scans every LTEX's winning copy and every GRAS's plugins (out/ltex-scan.json: 143 LTEX, 97 GRAS,
+  1.2 s). With the full load order, Depths of Skyrim wins 7 of our 27 forms (the underwater ones) with its own flora.
+- Plan in the db: `grass_source` (Tropical Skyrim.esp; DepthsOfSkyrim.esp for underwater flora only, my call),
+  `ltex_grass_plan` (27 rows, 6 bare on purpose), `ltex_grass` (51). Seeded as the winning list filtered to the
+  sources; LFallForestDirt01 gets TropicalGrassPlant01 instead of going bare.
+- Before: the check fails on 8 forms (FieldGrass02, FallForestGrass01/02, SnowGrass01, RockGrassWater01,
+  WaterCoralGrass01). Argonia.esm now overrides those 8 LTEX (winner's fields, our grass list); after: 0. The
+  test also fails once on purpose (a SnowGrass01 left in a marsh list).

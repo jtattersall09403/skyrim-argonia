@@ -1,0 +1,10 @@
+FormKey: 01342A:Skyrim.esm
+EditorID: LFieldGrass02
+TextureSet: 013429:Skyrim.esm
+MaterialType: 012F46:Skyrim.esm
+HavokFriction: 2
+TextureSpecularExponent: 30
+Grasses:
+- 002896:Tropical Skyrim.esp
+- 007607:Tropical Skyrim.esp
+Flags: []

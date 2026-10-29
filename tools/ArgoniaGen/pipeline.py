@@ -68,11 +68,12 @@ def scans(data: Path):
     files = [data / p for p in order] + sorted(data.glob("*.bsa")) + [GEN.with_suffix(".dll")]
     stamp = json.dumps([[f.name, f.stat().st_size, int(f.stat().st_mtime)] for f in files])
     sf = OUT / "scan.stamp"
-    if sf.exists() and sf.read_text() == stamp and (OUT / "vanilla-scan.json").exists() and (OUT / "pieces-index.json").exists():
+    if sf.exists() and sf.read_text() == stamp and all((OUT / f).exists() for f in ("vanilla-scan.json", "pieces-index.json", "ltex-scan.json")):
         return
     plugins = ",".join(order)
     run(GEN, "quests", "--data", data, "--plugins", plugins, "--out", OUT / "vanilla-scan.json", capped=True)
     run(GEN, "index", "--data", data, "--plugins", plugins, "--out", OUT / "pieces-index.json", capped=True)
+    run(GEN, "ltex", "--data", data, "--plugins", plugins, "--out", OUT / "ltex-scan.json", capped=True)
     sf.write_text(stamp)
 
 
@@ -139,7 +140,8 @@ def _terrain_stamp() -> str:
     from tools.argonia_world.terrain import vault
     from tools.argonia_world.terrain.landcover import table
     h = hashlib.sha256(repr(sorted(table(db.open()).items())).encode())
-    for f in sorted(TERRAIN.glob("*.py")):
+    for f in sorted(TERRAIN / n for n in ("__main__.py", "build.py", "grid.py", "landcover.py", "paint.py", "png.py",
+                                          "quantize.py", "world.py")):  # what the cell lines depend on
         h.update(f.name.encode() + f.read_bytes())
     roads = ROOT / "tools" / "argonia_world" / "routes" / "paint.py"  # 2.W3's road paint and the rows it reads
     h.update(roads.read_bytes() + repr(db.open().values(
@@ -275,6 +277,10 @@ def check() -> int:
         run("spriggit", "deserialize", "-i", YAML, "-o", rt, *SPRIGGIT, capped=True)
         if canon(rt.read_bytes()) != canon(a_esm.read_bytes()):
             errs.append("round trip: plugin/Argonia/ deserialised is not byte-identical to the generated ESM")
+    from tools.argonia_world import db
+    from tools.argonia_world.terrain import grass
+    recs = json.loads((OUT / "check" / "a" / "argonia.json").read_text())["records"]
+    errs += [f"grass: {e}" for e in grass.check(grass.load_scan(OUT / "ltex-scan.json"), db.open(), recs)]
     try:
         got = sha256(world(data, OUT / "check" / "world", sample=True))
         want = json.loads((TERRAIN / "sample-manifest.json").read_text())["sha256"]

@@ -1,0 +1,14 @@
+FormKey: 06B4C6:Skyrim.esm
+EditorID: LCoastOceanFloor01
+TextureSet: 06B4C5:Skyrim.esm
+MaterialType: 012F48:Skyrim.esm
+HavokFriction: 2
+TextureSpecularExponent: 30
+Grasses:
+- 078F6D:Skyrim.esm
+- 05BDE1:DepthsOfSkyrim.esp
+- 078A8D:DepthsOfSkyrim.esp
+- 078A98:DepthsOfSkyrim.esp
+- 09C1AE:DepthsOfSkyrim.esp
+- 0D40AE:DepthsOfSkyrim.esp
+Flags: []

@@ -1,0 +1,8 @@
+FormKey: 075069:Skyrim.esm
+EditorID: LFrozenMarshLichen01
+TextureSet: 075068:Skyrim.esm
+MaterialType: 012F48:Skyrim.esm
+HavokFriction: 2
+TextureSpecularExponent: 30
+Grasses:
+- 04013C:Skyrim.esm

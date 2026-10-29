@@ -9,11 +9,11 @@ WeatherTypes:
   Chance: 11
 - Weather: 00080F:Argonia.esm
   Chance: 11
-- Weather: 0C821F:Skyrim.esm
+- Weather: 10A242:Skyrim.esm
   Chance: 42
 - Weather: 000811:Argonia.esm
   Chance: 8
-- Weather: 0C8220:Skyrim.esm
+- Weather: 10A241:Skyrim.esm
   Chance: 8
 SunTexture: Sky\Sun.dds
 SunGlareTexture: Sky\SunGlare.dds

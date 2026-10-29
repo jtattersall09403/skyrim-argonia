@@ -1,0 +1,13 @@
+FormKey: 013184:Skyrim.esm
+EditorID: LRiverBottom01
+TextureSet: 013183:Skyrim.esm
+MaterialType: 012F35:Skyrim.esm
+HavokFriction: 2
+TextureSpecularExponent: 30
+Grasses:
+- 078A98:DepthsOfSkyrim.esp
+- 03DCDF:DepthsOfSkyrim.esp
+- 03DCE0:DepthsOfSkyrim.esp
+- 082C9C:DepthsOfSkyrim.esp
+- 05BDE1:DepthsOfSkyrim.esp
+Flags: []

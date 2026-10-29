@@ -1,0 +1,9 @@
+FormKey: 057DCF:Skyrim.esm
+EditorID: LFallForestDirt01
+TextureSet: 057DCE:Skyrim.esm
+MaterialType: 012F38:Skyrim.esm
+HavokFriction: 2
+TextureSpecularExponent: 30
+Grasses:
+- 002896:Tropical Skyrim.esp
+Flags: []

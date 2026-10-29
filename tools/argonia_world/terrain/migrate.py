@@ -2,6 +2,7 @@
 LTEX, and each old terrain or route-grade patch's outcome from the old chain's receipts in `$ARGONIA_DATA/terrain/`.
 
     python3 -m tools.argonia_world.terrain.migrate      write (or update) the rows; idempotent
+    python3 -m tools.argonia_world.terrain.migrate grass   seed the grass plan from out/ltex-scan.json (ArgoniaGen ltex)
 
 The patch definitions themselves (the old `terrain-patches.json` and `route-grade-patches.json`, still among the
 unmigrated sources) stay unmigrated: the generator reads the old chain's post-patch array, which the receipts tie to the frozen base by
@@ -45,6 +46,17 @@ def rows():
 
 def main() -> int:
     w = db.open()
+    if sys.argv[1:] == ["grass"]:
+        from tools.argonia_world.terrain import grass
+        painted = {r[0]: r[1] for r in w.query("SELECT ltex_form_key, ltex_edid FROM land_cover_ltex")}
+        src, plans, lists = grass.seed_plan(grass.load_scan(), painted)
+        for r in w.rows("ltex_grass"):
+            w.delete("ltex_grass", r.ltex_form_key, r.ord)
+        for t, rs in (("grass_source", src), ("ltex_grass_plan", plans), ("ltex_grass", lists)):
+            for r in rs:
+                w.upsert(t, r)
+        print(w.save())
+        return 0
     data = rows()
     for t in ("terrain_input", "land_cover", "land_cover_ltex", "terrain_patch", "terrain_patch_outcome"):
         for r in data[t]:

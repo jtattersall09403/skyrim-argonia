@@ -1,0 +1,8 @@
+FormKey: 000800:Magic.esp
+EditorID: aaaMagicConfigQuest
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

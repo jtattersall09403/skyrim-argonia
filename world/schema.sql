@@ -6048,3 +6048,25 @@ CREATE TABLE "condition_op" (
   "name" TEXT NOT NULL UNIQUE,
   "ord" INTEGER NOT NULL UNIQUE
 );
+
+-- == The ground's grass (2.W1; tools/argonia_world/terrain/grass.py; decision 0006: no Nordic grass in the marsh) ==
+-- Home of a plugin a painted LTEX's grass may come from: the form must be defined or overridden there.
+CREATE TABLE "grass_source" (
+  "plugin" TEXT NOT NULL PRIMARY KEY,
+  "why" TEXT NOT NULL
+);
+
+-- Home of a painted LTEX's grass plan: every LTEX `land_cover_ltex` paints has one; no `ltex_grass` rows = bare.
+CREATE TABLE "ltex_grass_plan" (
+  "ltex_form_key" TEXT NOT NULL PRIMARY KEY,
+  "ltex_edid" TEXT NOT NULL,
+  "why" TEXT NOT NULL
+);
+
+-- The grass a painted LTEX grows, in list order (Argonia.esm overrides the LTEX where the winning list differs).
+CREATE TABLE "ltex_grass" (
+  "ltex_form_key" TEXT NOT NULL REFERENCES "ltex_grass_plan"("ltex_form_key"),
+  "ord" INTEGER NOT NULL,
+  "grass_form_key" TEXT NOT NULL,
+  PRIMARY KEY ("ltex_form_key", "ord")
+);

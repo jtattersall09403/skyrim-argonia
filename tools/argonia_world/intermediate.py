@@ -27,7 +27,7 @@ ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "out" / "intermediate" / "argonia.json"
 QUARANTINE = ROOT / "data" / "quarantine"
 KIND_ORDER = ("base", "place", "population", "quest", "patch")
-TYPE_ORDER = ("GLOB", "MUSC", "STAT", "CLAS", "SPEL", "LVLI", "QUST", "CELL", "IMGS", "WTHR", "CLMT", "REGN", "WRLD")
+TYPE_ORDER = ("GLOB", "MUSC", "STAT", "LTEX", "CLAS", "SPEL", "LVLI", "QUST", "CELL", "IMGS", "WTHR", "CLMT", "REGN", "WRLD")
 
 
 @dataclass
@@ -198,6 +198,8 @@ def build(data: Path, scan: dict, index: Index, alloc: Allocator, extra: list[La
     studio = json.loads((QUARANTINE / "start.json").read_text(encoding="utf-8"))["studio"]
     layers = quarantine_layers(alloc, scan, resolver) + [sheet_layer(alloc, alloc.world, studio)] + list(extra)
     layers += regions_api.layers(alloc, alloc.world, regions_api.wrld_record(), resolver)  # 2.W3: regions, weather, climate
+    from tools.argonia_world.terrain import grass  # 2.W1: the painted ground grows only grass-source GRAS (0006)
+    layers.append(grass.layer(alloc.world, grass.load_scan()))
     order = load_order(data) + [regions_api.LAND_PLUGIN]  # ArgoniaWorld.esm, the generated ground (decision 0031)
     return {
         "schema": 1,

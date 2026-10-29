@@ -39,6 +39,7 @@ static class Generate
                 case "CLAS": Class(mod, r); break;
                 case "SPEL": Spell(mod, r); break;
                 case "LVLI": LevItem(mod, r); break;
+                case "LTEX": LandTextures.Write(mod, r); break;
                 case "REGN" or "CLMT" or "WTHR" or "IMGS" or "WRLD": RegionWriters.Write(mod, r, data); break;
                 default: throw new InvalidDataException($"record type {type} has no writer ({S(r, "edid")})");
             }

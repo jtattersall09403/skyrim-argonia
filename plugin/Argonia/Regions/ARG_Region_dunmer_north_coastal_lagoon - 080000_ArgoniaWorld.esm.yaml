@@ -574,13 +574,13 @@ Weather:
   - Weather: 10A236:Skyrim.esm
     Chance: 15
     Global: 000815:Argonia.esm
-  - Weather: 10A235:Skyrim.esm
+  - Weather: 10A7A7:Skyrim.esm
     Chance: 5
     Global: 000816:Argonia.esm
   - Weather: 00080F:Argonia.esm
     Chance: 5
     Global: 000817:Argonia.esm
-  - Weather: 0C821F:Skyrim.esm
+  - Weather: 10A242:Skyrim.esm
     Chance: 26
     Global: 000818:Argonia.esm
   - Weather: 000810:Argonia.esm
@@ -589,7 +589,7 @@ Weather:
   - Weather: 000811:Argonia.esm
     Chance: 7
     Global: 00081A:Argonia.esm
-  - Weather: 0C8220:Skyrim.esm
+  - Weather: 10A241:Skyrim.esm
     Chance: 7
     Global: 00081B:Argonia.esm
 Map:

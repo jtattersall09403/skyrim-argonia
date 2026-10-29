@@ -1,0 +1,10 @@
+FormKey: 013876:Skyrim.esm
+EditorID: LPineForest03
+TextureSet: 013875:Skyrim.esm
+MaterialType: 012F46:Skyrim.esm
+HavokFriction: 2
+TextureSpecularExponent: 30
+Grasses:
+- 007608:Tropical Skyrim.esp
+- 002896:Tropical Skyrim.esp
+Flags: []
