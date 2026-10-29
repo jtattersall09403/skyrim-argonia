@@ -26,6 +26,11 @@ constellation menu, loading screens, the main menu, Skyrim's world map and the T
    vanilla dialogue path need silent voice files of the right length (Fuz Ro D-oh pattern) unless the PrismaUI
    dialogue view handles timing.
 5. **The immersion inventory (0006) includes every vanilla system above** with a verdict and a check.
+6. **Vanilla content may be borrowed, not banned** (owner, 2026-10-29: "we aren't shipping them, just using them
+   from the base game"): a vanilla interior, mesh or record the player's own install provides may host or furnish our
+   places when its review passes: what the player sees (architecture, props, signage), any displayed name, and what
+   comes placed with it. Invisible identifiers (EditorIDs, FormIDs) need no review. A Nordic-looking shell fails
+   unless re-dressed until it passes.
 
 ## Consequences
 
