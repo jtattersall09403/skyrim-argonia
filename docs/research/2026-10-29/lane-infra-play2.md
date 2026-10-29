@@ -24,8 +24,9 @@ reinstall, and costs the same per hour as the original. N machines are named `ar
 Until the owner grants the IAM change: play-2 and play-3 don't exist, nothing reached the main menu on a clone,
 and `argonia-play` was never touched. There was no image, so I took no snapshot.
 
-## What was built (commit 03143eb, plus the bridge commit)
+## What was built (commit 03143eb, plus the bridge commit after it)
 
+- `tools/bridge.py [--machine NAME]` and `Machine(name=)`: the local tunnel port is 47615 + N, the token cache `~/.argonia/bridge-NAME`; argonia-play keeps 47615 and `~/.argonia/bridge`.
 - `run.sh [--machine NAME]`, or `ARGONIA_PLAY=NAME`. The default is `argonia-play`. Names other than
   `argonia-play` and `argonia-play-<n>` are refused (exit 2). `run.sh machine` is the dry run:
   `argonia-play i-0a3a…` by default and `argonia-play-2 None` with the flag.

@@ -19,6 +19,8 @@ dead process or a Crash Logger file written since this launch raises GameDown wi
 
     from tools.bridge import Bridge;  b = Bridge();  b.call("player")["pos"]["z"]
 
+    python3 tools/bridge.py --machine argonia-play-2 player   # another game machine (or ARGONIA_PLAY); default argonia-play
+
 Exit codes: 0 ok, 1 the bridge or game said no (BridgeError), 2 the game is down (GameDown), 3 no reply in time.
 """
 from __future__ import annotations
@@ -43,6 +45,15 @@ HEALTH_EVERY = 20.0  # seconds between health checks while a call waits: a crash
 TIMEOUTS = {"load": 150.0, "save": 45.0, "nav": 30.0, "booth": 60.0, "input": 15.0, "wait_event": 70.0}
 DEFAULT_TIMEOUT = 15.0
 INPUT_CAP_MS = 3000  # kInputCapMs in the plugin
+
+
+def machine_name() -> str:
+    return os.environ.get("ARGONIA_PLAY", "argonia-play")
+
+
+def machine_index(name: str) -> int:
+    """argonia-play is 0, argonia-play-N is N: the local tunnel port is PORT + this, so machines never share one."""
+    return 0 if name == "argonia-play" else int(name.rsplit("-", 1)[1])
 
 
 class BridgeError(Exception):
@@ -75,20 +86,23 @@ def _last_json(text: str) -> dict:
 class Machine:
     """The game machine over SSH: run.sh for transport, bridge.ps1 for the chores."""
 
-    def __init__(self, run: Path = RUN):
+    def __init__(self, run: Path = RUN, name: str | None = None):
         self.run = str(run)
+        self.name = name or machine_name()
+        machine_index(self.name)  # a bad name fails here, not on the first call
+        self.env = dict(os.environ, ARGONIA_PLAY=self.name)
 
     def ps(self, script: str, timeout: float = 120.0) -> str:
-        return _sh([self.run, "ps", script], timeout)
+        return _sh([self.run, "ps", script], timeout, env=self.env)
 
     def install(self) -> None:
-        _sh([self.run, "put", str(HELPER), HELPER_REMOTE.replace("\\", "/")])
+        _sh([self.run, "put", str(HELPER), HELPER_REMOTE.replace("\\", "/")], env=self.env)
 
     def helper(self, cmd: str, *args: str, timeout: float = 120.0) -> dict:
         line = f"powershell -ExecutionPolicy Bypass -File {HELPER_REMOTE} -Cmd {cmd} {' '.join(args)}"
         # A helper that exits 1 still printed its JSON, so the exit code is not read here.
         p = subprocess.run([self.run, "ps", f"if (Test-Path {HELPER_REMOTE}) {{ {line} }} else {{ 'NO-HELPER' }}"],
-                           capture_output=True, text=True, errors="replace", timeout=timeout)
+                           capture_output=True, text=True, errors="replace", timeout=timeout, env=self.env)
         out = p.stdout + p.stderr
         if "NO-HELPER" in out:
             self.install()
@@ -96,19 +110,22 @@ class Machine:
         return _last_json(out)
 
     def desktop(self, script: str, wait: int = 240) -> str:
-        env = dict(os.environ, DESKTOP_WAIT=str(wait))
+        env = dict(self.env, DESKTOP_WAIT=str(wait))
         return _sh([self.run, "desktop", script], timeout=wait + 60, env=env)
 
     def get(self, remote: str, local: Path) -> None:
-        _sh([self.run, "get", remote.replace("\\", "/"), str(local)])
+        _sh([self.run, "get", remote.replace("\\", "/"), str(local)], env=self.env)
 
     def ip(self) -> str:
-        return _sh([self.run, "ip"], timeout=60).strip()
+        return _sh([self.run, "ip"], timeout=60, env=self.env).strip()
 
 
 class Bridge:
-    def __init__(self, machine: Machine | None = None, port: int = PORT, host: str = "127.0.0.1"):
+    def __init__(self, machine: Machine | None = None, port: int | None = None, host: str = "127.0.0.1"):
         self.machine = machine or Machine()
+        name = getattr(self.machine, "name", "argonia-play")
+        port = PORT + machine_index(name) if port is None else port
+        self.state = STATE if name == "argonia-play" else STATE.with_name(f"{STATE.name}-{name}")
         self.host, self.port = host, port
         self._token: str | None = None
 
@@ -135,7 +152,7 @@ class Bridge:
             return False
 
     def token(self, refresh: bool = False) -> str:
-        cache = STATE / "token"
+        cache = self.state / "token"
         if self._token and not refresh:
             return self._token
         if not refresh and cache.exists():
@@ -144,7 +161,7 @@ class Bridge:
         t = self.machine.helper("token").get("token", "")
         if not t:
             raise GameDown("no ArgoniaBridge.token: the game has not been launched with the plugin")
-        STATE.mkdir(parents=True, exist_ok=True)
+        self.state.mkdir(parents=True, exist_ok=True)
         cache.write_text(t)
         self._token = t
         return t
@@ -300,6 +317,8 @@ def main(argv: list[str]) -> int:
     if not argv or argv[0] in ("-h", "--help"):
         print(__doc__)
         return 0
+    if argv[0] == "--machine" and len(argv) > 2:
+        os.environ["ARGONIA_PLAY"], argv = argv[1], argv[2:]
     b, cmd, args = Bridge(), argv[0], argv[1:]
     try:
         if cmd == "launch":
