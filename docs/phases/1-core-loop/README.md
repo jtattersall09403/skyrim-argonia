@@ -32,6 +32,32 @@ a whole system is noted in that system's Part 2 brief, never built now.
 **The world track runs beside this part.** 2.W1–2.W4 start as soon as 0.4 passes and load the build VM;
 this part loads the GPU box. They share nothing but the pipeline (0.4 §a).
 
+## The world track's in-game sample (owner, 2026-10-29: "sample smartly")
+
+2.W1–2.W4 prove their data at L1 on every cell; in game they are checked by **one small sample chosen to hit the
+likely pitfalls**, not by walks of the whole province. One journey, `world-sample`, run once per world-track
+change set on one machine, a still per stop and a state read where a number decides:
+
+| # | Stop | Catches |
+|---|---|---|
+| 1 | Claywater block, on the road in | heights vs heightfield (probe), grass on the paint, region trees, road surface |
+| 2 | The steepest limited cliff (2.W1's worst cell) | the cliff ramp, seams, texture stretching |
+| 3 | A cell corner where four cells meet on a slope | seams in height, normals and texture |
+| 4 | One stepped river reach with rapids | step lines hidden, z-fighting, flow look |
+| 5 | One waterfall | the falls piece seated on the step |
+| 6 | One marsh basin | the designed marsh level, no floating or missing water |
+| 7 | One lake shore and one coast | banks, the sea default at 0, the apron through the haze |
+| 8 | The densest vegetation cell | frame time against the 0.2 §d bar, no Nordic flora (incl. the three vanilla rocks) |
+| 9 | One border segment and one exit gate | the player cannot leave; the closed-road message |
+| 10 | One signpost at a junction | sign text and arms |
+| 11 | Weather: a 7-day skip at the Claywater block | the region's weather cycles; the light is green-gold |
+| 12 | Navmesh: an NPC walks Claywater, 20 random path requests across the block and one swim | walkable ground, door and water links |
+| 13 | A distant view from a high point | terrain and tree LOD, no missing tiles |
+
+A failing stop is diagnosed, the whole class fixed once at L1, and the stop re-run; a new stop is added only after
+a defect the sample missed (0011 §2). The briefs' longer owed lists (1,000 probe points, 30 step stills, 200 paths)
+are met by the L1 checks plus this sample.
+
 ## Starting state
 
 Written by the agent that closes Part 0.
