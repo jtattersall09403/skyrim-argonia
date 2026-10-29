@@ -17,6 +17,38 @@ New-Item -ItemType Directory -Force $State, $Prefs | Out-Null
 
 function Get-Mode { if (Test-Path "$State\files.txt") { 'on' } else { 'off' } }
 
+# Skyrim fills the current desktop (sunshine-prep.ps1 sized it to the client) and keeps running without focus,
+# so a reconnect or a click elsewhere never pauses it.
+function Set-GameWindow {
+  Add-Type -AssemblyName System.Windows.Forms
+  $b = [System.Windows.Forms.Screen]::PrimaryScreen.Bounds
+  $docs = "$env:USERPROFILE\Documents\My Games\Skyrim Special Edition"
+  $set = {
+    param($file, $section, $values)
+    $lines = [System.Collections.Generic.List[string]](Get-Content $file)
+    foreach ($k in $values.Keys) {
+      $i = $lines.FindIndex([Predicate[string]]{ param($l) $l -match "^$([regex]::Escape($k))=" })
+      if ($i -ge 0) { $lines[$i] = "$k=$($values[$k])" }
+      else { $s = $lines.IndexOf("[$section]"); if ($s -lt 0) { $lines.Add("[$section]"); $s = $lines.Count - 1 }; $lines.Insert($s + 1, "$k=$($values[$k])") }
+    }
+    $lines | Set-Content $file -Encoding ASCII
+  }
+  & $set "$docs\SkyrimPrefs.ini" 'Display' @{ 'iSize W' = $b.Width; 'iSize H' = $b.Height; 'bFull Screen' = 0; 'bBorderless' = 1 }
+  & $set "$docs\Skyrim.ini" 'General' @{ 'bAlwaysActive' = 1 }
+}
+
+function Focus-Skyrim {
+  $p = Get-Process SkyrimSE -EA SilentlyContinue | Select -First 1
+  if (-not $p) { return $false }
+  Add-Type @'
+using System; using System.Runtime.InteropServices;
+public static class Fg { [DllImport("user32.dll")] public static extern bool SetForegroundWindow(IntPtr h);
+  [DllImport("user32.dll")] public static extern bool ShowWindow(IntPtr h, int c); }
+'@
+  [void][Fg]::ShowWindow($p.MainWindowHandle, 9); [void][Fg]::SetForegroundWindow($p.MainWindowHandle)
+  return $true
+}
+
 switch ($Cmd) {
   'build' {
     $order = Get-Content "$Root\MO2\profiles\Default\modlist.txt" | ? { $_ -like '+*' } | % { $_.Substring(1) }
@@ -70,7 +102,12 @@ switch ($Cmd) {
     & $PSCommandPath on
     "pandora: $n files added to the overlay"
   }
-  'play-vanilla' { & $PSCommandPath off; Start-Process "$Game\SkyrimSE.exe" -WorkingDirectory $Game }
-  'play-modded'  { & $PSCommandPath on; Start-Process "$Game\skse64_loader.exe" -WorkingDirectory $Game }
+  { $_ -in 'play-vanilla', 'play-modded' } {
+    # Already running (a reconnect, or the other card): bring it to the front; never start a second copy.
+    if (Focus-Skyrim) { 'Skyrim already running: brought to the front'; break }
+    Set-GameWindow
+    if ($Cmd -eq 'play-vanilla') { & $PSCommandPath off; Start-Process "$Game\SkyrimSE.exe" -WorkingDirectory $Game }
+    else { & $PSCommandPath on; Start-Process "$Game\skse64_loader.exe" -WorkingDirectory $Game }
+  }
   default { throw "unknown command $Cmd" }
 }

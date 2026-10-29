@@ -3,17 +3,20 @@
   "apps": [
     {
       "name": "Skyrim",
+      "prep-cmd": [{"do": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\sunshine-prep.ps1", "undo": "", "elevated": false}],
       "detached": ["powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\combat-mode.ps1 play-vanilla"],
-      "image-path": "steam.png"
+      "image-path": "C:\\argonia\\cards\\skyrim.png"
     },
     {
       "name": "Skyrim (souls-like mods)",
+      "prep-cmd": [{"do": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\sunshine-prep.ps1", "undo": "", "elevated": false}],
       "detached": ["powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\combat-mode.ps1 play-modded"],
-      "image-path": "steam.png"
+      "image-path": "C:\\argonia\\cards\\skyrim-souls.png"
     },
     {
       "name": "Desktop",
-      "image-path": "desktop.png"
+      "prep-cmd": [{"do": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\sunshine-prep.ps1", "undo": "", "elevated": false}],
+      "image-path": "C:\\argonia\\cards\\desktop.png"
     }
   ]
 }

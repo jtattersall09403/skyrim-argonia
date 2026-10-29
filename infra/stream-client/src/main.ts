@@ -4,6 +4,11 @@
 import { VirtualPad } from "./virtual_pad.ts"
 import { TouchLayer } from "./touch_layer.ts"
 import { Metrics, installTransportHooks, CLIENT_VERSION } from "./metrics.ts"
+import { applyStreamSettings, capturePointerOnClick } from "./stream_settings.ts"
+
+// before upstream's stream.js reads its settings: a stream sized to this screen, relative mouse
+const streamSize = applyStreamSettings()
+capturePointerOnClick()
 
 const pad = new VirtualPad()
 installTransportHooks()
@@ -18,7 +23,7 @@ function boot() {
     })
     metrics.touchShown = () => layer.isShown()
     metrics.start()
-    w.argonia = { version: CLIENT_VERSION, pad, layer, metrics }
+    w.argonia = { version: CLIENT_VERSION, pad, layer, metrics, streamSize }
 }
 
 if (document.body) boot()

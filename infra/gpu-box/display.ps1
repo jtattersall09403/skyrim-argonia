@@ -1,5 +1,6 @@
 # Display helpers for the game machine's desktop session (chunk 0.0 §b): list modes, set a mode on a display.
 #   display.ps1 list | display.ps1 set <\\.\DISPLAYn> <width> <height> [hz] [primary]
+#   display.ps1 modes    (dot-source) define Get-Modes <device> for other scripts
 #   display.ps1 pin      set the primary display to 1920x1080@60 (at logon: the head Windows picks varies by boot)
 param([string]$Cmd = 'list', [string]$Dev, [int]$W, [int]$H, [int]$Hz = 60, [switch]$Primary)
 Add-Type @'
@@ -15,6 +16,15 @@ public class Disp {
 }
 '@
 function New-Mode { $m = New-Object Disp+DEVMODE; $m.dmSize = [Runtime.InteropServices.Marshal]::SizeOf($m); $m }
+function Get-Modes([string]$Device) {
+  $m = New-Mode; $i = 0; $seen = @{}
+  while ([Disp]::EnumDisplaySettings($Device, $i, [ref]$m)) {
+    $k = "$($m.dmPelsWidth)x$($m.dmPelsHeight)@$($m.dmDisplayFrequency)"
+    if (-not $seen[$k]) { $seen[$k] = 1; [pscustomobject]@{ W = $m.dmPelsWidth; H = $m.dmPelsHeight; Hz = $m.dmDisplayFrequency } }
+    $i++
+  }
+}
+if ($Cmd -eq 'modes') { return }
 if ($Cmd -eq 'pin') {
   Add-Type -AssemblyName System.Windows.Forms
   $Dev = ([System.Windows.Forms.Screen]::AllScreens | ? Primary).DeviceName; $W = 1920; $H = 1080; $Hz = 60; $Primary = $true; $Cmd = 'set'

@@ -9,7 +9,7 @@ const CSS = `
 #argonia-touch { position: fixed; inset: 0; pointer-events: none; z-index: 900; user-select: none; -webkit-user-select: none;
   -webkit-touch-callout: none; -webkit-tap-highlight-color: transparent; font: 600 16px/1 system-ui, sans-serif; }
 #argonia-touch[hidden] { display: none; }
-#argonia-touch .at-zone { position: absolute; pointer-events: auto; touch-action: none; }
+#argonia-touch .at-zone { position: absolute; pointer-events: auto; touch-action: none; }\n#argonia-touch.at-paused, #argonia-touch.at-paused * { pointer-events: none !important; }\n#argonia-touch.at-paused { opacity: .25; }
 #argonia-touch .at-ring { position: absolute; border-radius: 50%; border: 2px solid rgba(235,230,210,.35); background: rgba(20,24,18,.18);
   pointer-events: none; transform: translate(-50%,-50%); }
 #argonia-touch .at-ring.at-live { border-color: rgba(235,230,210,.7); background: rgba(20,24,18,.3); }
@@ -73,16 +73,14 @@ export class TouchLayer {
         this.toggle.type = "button"
         this.toggle.setAttribute("aria-label", "Show or hide the touch gamepad")
         this.toggle.innerHTML = PAD_ICON
-        this.toggle.addEventListener("pointerdown", (e) => { e.preventDefault(); e.stopPropagation() })
-        this.toggle.addEventListener("click", (e) => { e.stopPropagation(); this.override = !this.shown; this.update() })
+        tapButton(this.toggle, () => { this.override = !this.shown; this.update() })
         // The phone keyboard (Steam sign-in, the console, save names): presses upstream's own "Keyboard" menu item,
         // so its text handling is reused; the press happens inside this tap, so the browser lets the keyboard open.
         this.keyboard.id = "argonia-keyboard-toggle"
         this.keyboard.type = "button"
         this.keyboard.setAttribute("aria-label", "Show the keyboard")
         this.keyboard.textContent = "⌨"
-        this.keyboard.addEventListener("pointerdown", (e) => { e.preventDefault(); e.stopPropagation() })
-        this.keyboard.addEventListener("click", (e) => { e.stopPropagation(); openUpstreamKeyboard() })
+        tapButton(this.keyboard, openUpstreamKeyboard)
         document.body.appendChild(this.root)
         document.body.appendChild(this.toggle)
         document.body.appendChild(this.keyboard)
@@ -94,6 +92,14 @@ export class TouchLayer {
         window.addEventListener("blur", () => this.pad.model.releaseAll(performance.now()))
         document.addEventListener("visibilitychange", () => { if (document.hidden) this.pad.model.releaseAll(performance.now()) })
         this.pad.model.onChange = () => this.paint()
+        const sync = () => {
+            const menu = document.getElementById("sidebar-root")?.classList.contains("sidebar-show") ?? false
+            const kb = !!document.querySelector(".stream-keyboard-native button.visible")
+            const paused = menu || kb
+            if (paused && !this.root.classList.contains("at-paused")) this.pad.model.releaseAll(performance.now())
+            this.root.classList.toggle("at-paused", paused)
+        }
+        new MutationObserver(sync).observe(document.body, { subtree: true, attributes: true, attributeFilter: ["class"] })
         this.render()
         this.update()
     }
@@ -242,4 +248,23 @@ function openUpstreamKeyboard() {
     const item = items.find((b) => b.textContent?.trim() === "Keyboard")
     if (item) { item.click(); return }
     document.getElementById("input")?.focus()
+}
+
+/** A floating button that acts when the finger lifts on it (pointer events; works where click is swallowed). */
+function tapButton(el: HTMLElement, act: () => void) {
+    let down: number | null = null
+    el.addEventListener("pointerdown", (e) => {
+        e.preventDefault(); e.stopPropagation()
+        down = e.pointerId
+        try { el.setPointerCapture(e.pointerId) } catch { /* synthetic pointers */ }
+    })
+    el.addEventListener("pointerup", (e) => {
+        e.preventDefault(); e.stopPropagation()
+        if (down !== e.pointerId) return
+        down = null
+        const r = el.getBoundingClientRect()
+        if (e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom) act()
+    })
+    el.addEventListener("pointercancel", () => { down = null })
+    el.addEventListener("click", (e) => { e.preventDefault(); e.stopPropagation() })
 }
