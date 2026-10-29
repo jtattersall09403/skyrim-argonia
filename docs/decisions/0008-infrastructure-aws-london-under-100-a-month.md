@@ -51,7 +51,7 @@ move to `m7i.large` for the build VM during low-parallelism parts.
 
 | Part | Extra items | Budget |
 |---|---|---|
-| 0 | the 0.0 stream and controls test (~10 h); GPU benchmark hours on three instance types (~15 h); a temporary Windows spot instance only if G1/G4/G6 need it (~10 h); the owner's streaming test; installer from-scratch runs (~10 GPU hours) | ≤ $35 |
+| 0 | the 0.0 stream and controls test (~10 h); GPU benchmark hours on three instance types (~15 h); a temporary Windows spot instance only if 0.3/0.4/2.7 §b need it (~10 h); the owner's streaming test; installer from-scratch runs (~10 GPU hours) | ≤ $35 |
 | 1 | the core-loop soak (~3 GPU hours); L4 batches otherwise inside the steady state | ≤ $5 |
 | 2 | a 64 GiB spot instance for LOD generation (~6 h per full build; e.g. r7i.2xlarge/m7i.4xlarge spot) and navmesh/vegetation L4 sweeps (world track); systems-track L4 batches inside the steady state; the owner's playthrough counted as play | ≤ $20 |
 | 3 | a temporary Windows spot instance for install and release tests (~10 h) | ≤ $10 |

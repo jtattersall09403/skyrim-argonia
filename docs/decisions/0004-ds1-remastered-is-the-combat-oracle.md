@@ -40,7 +40,7 @@ live (since Nov 2022) though it has no client anti-cheat.
 
 ## Consequences
 
-- The 13/11/9 question is answered when roll i-frames are tuned (G6 when the 2.7 combat map calls for it); the result is written back here.
+- The 13/11/9 question is answered when roll i-frames are tuned (2.7 §b when the 2.7 combat map calls for it); the result is written back here.
 - Decision 0019 sets the frame: DS1's whole system is the target, each behaviour a tuned mod or our build;
   nothing of the old project's combat (code, constants, animation choices) is inherited.
 - Burden tiers: Argonia's ratios (fast < 0.2, mid < 0.35, fat < 1, of carry capacity) define the tiers; DSR

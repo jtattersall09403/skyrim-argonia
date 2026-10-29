@@ -2,7 +2,7 @@
 
 **Status:** decided 2026-10-27 (owner: "I don't mind the idea of using Skyrim as host in theory", provided
 Argonia keeps Morrowind's soul; owner asked to get cracking with it). Confirmed or reversed by the 0.2
-gates (G1–G10 in [0.2](../phases/0-foundation/0.2-spikes.md)) and the owner's verdict after the core loop ([1.7](../phases/1-core-loop/1.7-verdict.md)).
+chunks 0.3 and 0.4 of [Part 0](../phases/0-foundation/README.md) and the owner's verdict after the core loop ([1.7](../phases/1-core-loop/1.7-verdict.md)).
 
 ## Context
 
@@ -43,10 +43,10 @@ Skyrim makes the body free and the soul a code problem.
    - **PrismaUI risk:** single author, restrictive licence. Pin its version early (0.3); every S3 screen keeps a
      fallback (an SWF of our own or the vanilla menu path, decision 0014 §7) so a PrismaUI failure degrades the
      look, never strands a quest.
-3. **Fallback trigger.** If gate G1 (SKSE plugin built on Linux, loading under Proton, bridge working)
-   or G4 (world sample generated without the Creation Kit, navmesh and faces solved) fails after the
-   spike's budget and its listed workarounds, stop and bring the owner a re-plan: Windows build/test
-   machine first, then the OpenMW fork per the fallback research.
+3. **Fallback trigger.** If 0.3 cannot load our own SKSE plugin on the pinned runtime, or 0.4 cannot build
+   and walk the Claywater block (navmesh and faces solved) after its listed fallbacks, stop and bring the
+   owner a re-plan **on Skyrim** (the owner ruled out OpenMW on 2026-10-28): a different runtime pin, a
+   different toolchain, or the Creation Kit as the generator.
 
 ## Consequences
 

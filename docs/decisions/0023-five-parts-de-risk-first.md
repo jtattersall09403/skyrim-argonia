@@ -2,7 +2,9 @@
 
 **Status:** decided 2026-10-28; adapted 2026-10-29 by [0027](0027-build-in-the-order-of-the-usps.md): Part 1 is the
 first place (people, talk, a quest, the sheet, rest and death, combat on the tuned stack), not the host-risky
-systems; the world track starts after G4 beside Part 1; the five parts and the gates stand. The owner asked for a critical review of the old project's four parts and of
+systems; the world track starts after 0.4 beside Part 1; the five parts and the gates stand. Adapted again by
+[0029](0029-part-0-is-one-sequence-not-spikes.md): Part 0 has no spikes (each proof is the first step of the chunk
+that builds the thing) and no time estimates; the cost paragraph below keeps its reasoning as history only. The owner asked for a critical review of the old project's four parts and of
 this repo's first plan (P0–P10), and for the best approach from here: "ok that's what we were *going* to do,
 what do I think we *should* do now".
 
@@ -18,7 +20,7 @@ studio, then the game shell, then a build-out in packets.
   - three polish queues, and a blocker is never polish.
 - **Wrong here:** world first. In three.js the world *was* the risk (a renderer, terrain, water and kits built
   from nothing). On Skyrim the engine renders, so the world is mostly data conversion. Its two hard parts,
-  navmesh and LOD, are tested on a sample by the 0.2 spike G4.
+  navmesh and LOD, are tested on a sample by 0.4's block.
 
 **This repo's first plan** (P0–P10, by system).
 - **Right:** go/no-go spikes up front, and the guardrails (nothing shipped, a pinned runtime, DSR as the combat
@@ -33,7 +35,7 @@ studio, then the game shell, then a build-out in packets.
     is cheap only before the world and systems exist.
   - **Porting the old rule code at all.** It planned to port the old project's rule code to C++. Decision 0026
     (2026-10-28) settles this the other way: the old code is goal evidence only, and each goal is met with
-    Skyrim's own systems first (0.2 G10's native map).
+    Skyrim's own systems first (1.1 §a's native map).
 
 ## Decision
 
@@ -95,7 +97,7 @@ It is not cheaper when nothing goes wrong; it is insurance, priced like this.
   cheaper, because less is built on them.
 - **How to keep the cost down:**
   - the thread holds only the host-risky systems; barter and quests went to Part 2;
-  - Claywater Station costs nothing extra, because G4 builds that block anyway;
+  - Claywater Station costs nothing extra, because 0.4 builds that block anyway;
   - the cheapest de-risk of all runs first, in 0.0: whether the game can be played through the stream at all,
     for a few dollars and days.
 - **What dominates total cost** is not the part order. It is the time per in-game check and the owner's
@@ -105,6 +107,5 @@ It is not cheaper when nothing goes wrong; it is insurance, priced like this.
 
 - The P0–P10 phase files are replaced by `docs/phases/0-foundation/` to `4-buildout/`. Every P-number
   reference is rewritten in place.
-- Spike G10 (where each rule lives, decision 0026) joins 0.2. Its native map sets how 1.1 builds ArgoniaCore.
-- The planner re-estimates the remaining parts from measured cycle times at 0.2 (G8), at Part 1's close, at Part 2's
-  close and at 4.1.
+- The native map (where each rule lives, decision 0026) is 1.1 §a's first step and sets how 1.1 builds ArgoniaCore.
+- The planner reads the measured cycle times at each part's close (no estimates, 0029 §6).

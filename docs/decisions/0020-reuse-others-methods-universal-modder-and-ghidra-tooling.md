@@ -41,7 +41,7 @@ people have figured a lot out already").
 4. **Read these field notes before the work they bear on** (each is cited in the matching chunk brief): Skyrim:
    `rebuilding-a-cut-gatekeeper-with-generated-plugin-records…` (2.5, 2.12 quests and dialogue); DSR:
    `porting-dark-souls-remastered-enemies-into-elden-ring` (2.7) and `portal-gun-prototype-via-dinput8-proxy-dll…`
-   (0.2 G6, DSR camera and proxy-DLL facts); techniques: `oracles-how-agents-know-a-mod-works`,
+   (2.7 §b, DSR camera and proxy-DLL facts); techniques: `oracles-how-agents-know-a-mod-works`,
    `prove-your-replay-bench-can-fail…`, `when-the-first-real-run-fails-suspect-the-oracle…`,
    `driving-a-game-from-a-mod-side-command-file…`, `driving-real-games-safely`,
    `a-force-quit-pc-game-relaunch-wedges-as-an-unkillable-zombie`, `recording-game-footage`,

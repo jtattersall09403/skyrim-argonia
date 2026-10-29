@@ -2,7 +2,7 @@
 
 **Status:** decided 2026-10-27, rewritten 2026-10-28; 2026-10-29 [0027](0027-build-in-the-order-of-the-usps.md) §5
 added the two-stage build (stage one in 1.2: the font, a paper theme, the dialogue window and the journal; stage
-two in 2.2, 3.1, 3.2: everything else) as G11's standing recommendation; the goals and the choice with the owner
+two in 2.2, 3.1, 3.2: everything else) as 1.2 §0's standing recommendation; the goals and the choice with the owner
 are unchanged. Earlier owner rulings: "our own new original UI…
 performing the same functions broadly as their Skyrim equivalents but looking completely different, like
 Morrowind versions but adapted for our game's theme"; "HUD I want to be our own new original version". On
@@ -36,7 +36,7 @@ These join the standing rules:
 
 ## Decision
 
-1. **The approach is chosen in spike G11 (0.2), with the owner.** The UI agent sets out the options, reasons
+1. **The approach is chosen in spike 1.2 §0 (0.2), with the owner.** The UI agent sets out the options, reasons
    over them against the goals, prototypes the hardest capability in game, and shows the owner mock-ups. The
    owner chooses. Candidates include, without limit:
    - **the old React design system in PrismaUI** (web views over Skyrim; the owner ruled the old dialogue UI a
@@ -47,7 +47,7 @@ These join the standing rules:
    - **OpenMW's window layouts and behaviour** as the structural model for any of these;
    - **hybrids**, such as web views for the windowed screens and native menus where the engine owns the job.
 
-   Until G11 chooses, the plan names PrismaUI views as the working assumption. If G11 chooses otherwise, the
+   Until 1.2 §0 chooses, the plan names PrismaUI views as the working assumption. If 1.2 §0 chooses otherwise, the
    planner rewrites the briefs that name PrismaUI. That is a change of method, applied without a further call.
 2. **The look is worked through with the owner in rounds** (1.2 §a). The rounds cover a study of modern Skyrim UI
    mods and current game UI; then mood boards; then the design language as tokens (type scale, colour, spacing,
@@ -71,15 +71,15 @@ These join the standing rules:
      (decision 0014).
    - The trim flourishes (`flourish-*.webp`, made by the owner with ChatGPT): our own art, import, with a
      sourcing-register row.
-6. **OpenMW is consulted for structure and behaviour, never art.** A research pass in G11 reads its window
+6. **OpenMW is consulted for structure and behaviour, never art.** A research pass in 1.2 §0 reads its window
    layouts and how its windows drag, resize and persist, along with Morrowind's own screens. It writes a gap
    analysis against the old UI. Mod frameworks (SkyUI, Infinity UI, TrueHUD and the rest) are used where they
    save engineering or carry the chosen approach.
 
 ## Consequences
 
-- 0.2 gains G11. G5 proves the dialogue *engine* (MorrowindRuntime first) behind a minimal window; the window's
-  final technology and look follow G11 and 1.2.
+- 0.2 gains G11. 1.3 §b proves the dialogue *engine* (MorrowindRuntime first) behind a minimal window; the window's
+  final technology and look follow 1.2 §0 and 1.2.
 - 1.2 builds the design system in the chosen approach, after the look rounds; 2.2 and 3.1 build from it.
 - The PrismaUI risk (0001 §2) stands while it is the working assumption: pin its version early and keep a
   fallback per screen.

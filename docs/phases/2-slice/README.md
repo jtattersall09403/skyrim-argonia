@@ -20,11 +20,11 @@ The wild between them gets its encounters. The places:
 | 2 | Jungle Root Hollow, Rose-Bone Waystation, Bog-Iron Workings, Upriver Hist Village, Naga Highway Camp, Pearl Lots, The Wamasu Shrine, Chasepoint, Teeth of Sithis, Voriplasm Vault, the Opening Work Camp | the rest, with the wave-1-proved recipe; the Opening Work Camp is ported here and made the opening with the owner in 3.3 |
 
 Helstrom (the old project paused it) and the cities wait for 4.1. The two studio fixtures (the proving ground and
-the booth) come from 0.4.
+the booth) come from 0.3 and 0.4.
 
 ## The two tracks
 
-The tracks run side by side because they load different machines, and the world track starts first (after 0.2 G4,
+The tracks run side by side because they load different machines, and the world track starts first (after 0.4,
 beside Part 1), because the world is the first priority and the longest track (decision 0027). The systems track
 runs in the order of the priorities: people, dialogue and quests first, then the sheet and items they need whole,
 then combat's map, progression, the UI's second stage, and the rest. The **world track** (2.W) is mostly generators
@@ -34,7 +34,7 @@ meet at the places: the systems that need people (2.4 onwards) wait for wave 1, 
 **How a systems brief is written.**
 - It fixes the **data shape at Morrowind scale first**: the record, its home table, its ids, and its joins to the
   world record set.
-- Then the rules (on the G10 host), then the game adapter, then the view, then the slice content.
+- Then the rules (on the 1.1 §a host), then the game adapter, then the view, then the slice content.
 - Then the gate that proves every slice instance is complete.
 - Each deepens the first rung Part 1 built. Anything the final game needs that is not in a brief is missing from
   the plan, not deferred: add it to the nearest brief and tell the planner.
@@ -50,7 +50,7 @@ meet at the places: the systems that need people (2.4 onwards) wait for wave 1, 
 
 | Id | Chunk | Depends on | Lane-able beside |
 |---|---|---|---|
-| 2.W1 | [Terrain, apron and edges](2.W1-terrain.md) | 0.2 G4 and 0.5 (it starts beside Part 1; decision 0027 §2) | Part 1, systems track |
+| 2.W1 | [Terrain, apron and edges](2.W1-terrain.md) | 0.4 and 0.5 (it starts beside Part 1; decision 0027 §2) | Part 1, systems track |
 | 2.W2 | [Water](2.W2-water.md) | 2.W1 | systems track |
 | 2.W3 | [Regions, weather, light, roads and the route graph](2.W3-regions-roads.md) | 2.W1 | 2.W2 |
 | 2.W4 | [Vegetation, navmesh and LOD](2.W4-vegetation-navmesh-lod.md) | 2.W2, 2.W3 | systems track |
@@ -77,7 +77,7 @@ meet at the places: the systems that need people (2.4 onwards) wait for wave 1, 
 Sub-chunks (`2.7a` and so on) are the lettered sections of a brief. The planner may run one as its own session.
 
 ## Part 2 exit (the owner signs)
-- **The coverage gate (2.17) is green.** Every system row has its plugin or DLL, a journey on both runners, a save
+- **The coverage gate (2.17) is green.** Every system row has its plugin or DLL, a journey, a save
   round trip, and a slice place where the owner met it.
 - **Immersion:** zero reachable `unreviewed` immersion rows. The full vanilla quarantine journey is green.
 - **The owner's playthrough found no blocker.** Every finding is a `P1`, `P2` or `P3` row with its tag justified.

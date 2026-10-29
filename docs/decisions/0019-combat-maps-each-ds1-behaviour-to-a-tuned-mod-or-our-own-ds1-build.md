@@ -74,7 +74,7 @@
 
 - 1.6 runs the tuned stack on the sheet, settings only (decision 0027 §3). 2.7 makes the combat map first, then
   reaches each row as the map decides (tuned, tweaked or built) for every class, archetype, boss and encounter.
-- G6 (measuring DSR) runs as soon as a map row needs DSR numbers. G9 (runtime timing control) runs as soon as a
+- 2.7 §b (measuring DSR) runs as soon as a map row needs DSR numbers. 2.7 §e (runtime timing control) runs as soon as a
   set window cannot be met by settings. The owner ruled on 2026-10-28 that they run only when needed.
 - `ArgoniaCombat` holds the built rows, and its scope is what the map sends to it.
 - Inherited rulings keep the old combat records Drop (as implementation) or Adapt (as intent only).

@@ -84,7 +84,7 @@ Agents file rows where the table says. The planner may move a row up, never down
 See [../loops.md](../loops.md) and decision [0021](../decisions/0021-fast-focused-loops-and-the-ladder.md):
 - the ladder L1–L6;
 - one lane testing a feature and its joins;
-- eyeless journeys on two runners;
+- journeys that read state and keep a still per step;
 - measure, diagnose, fix once, re-measure.
 
 Each brief's **Loops** section names its subsets and their levels, the joins it owns, its journeys, and any L5
@@ -96,10 +96,10 @@ reason.
 - 0.0 **can it be played?** vanilla Skyrim streamed to the phone and the Mac, with touch and a GameSir pad, and
   a stock souls-like feel probe (gate G0: if it fails, nothing else starts);
 - 0.1 the repo, the ways of working, the lean toolchain and the import;
-- 0.2 the go/no-go spikes G1–G5, G8, G10, G11 and the GPU box (G6 and G9 join 2.7; G7 joins 2.W2);
-- 0.3 the pinned stack, permissions and the installer;
-- 0.4 the bridge, the studio and the two runners;
-- 0.5 the record pipeline, the vanilla quarantine and the immersion inventory.
+- 0.2 our stack on the game machine, smoke-tested, with the frame-time and latency record;
+- 0.3 the agent's hands: the bridge (SkyLink AI first), our SKSE build, scenes, the journey runner, the deploy,
+  the timed loop;
+- 0.4 the pipeline, the quarantine, the immersion inventory and the Claywater block walked in game.
 
 **Part 1, [The first place](1-core-loop/README.md)**, Claywater Station and the proving ground:
 - 1.1 the game-state seam;
@@ -110,9 +110,9 @@ reason.
 - 1.6 fight on the tuned stack, wired to the sheet;
 - 1.7 the owner's verdict.
 
-**The world track** starts after 0.2 G4 and runs beside Part 1 and Part 2 as its own lane:
+**The world track** starts after 0.4 and runs beside Part 1 and Part 2 as its own lane:
 - 2.W1 terrain and apron;
-- 2.W2 water (with the stepped-river proof that was G7);
+- 2.W2 water (its first step the stepped-river proof);
 - 2.W3 regions, weather, light, roads and the route graph;
 - 2.W4 vegetation, navmesh and LOD with the map image;
 - 2.W5 the slice places, in two waves;
@@ -125,7 +125,7 @@ reason.
 - 2.3 items;
 - 2.1 the sheet whole;
 - 2.6 trade and services;
-- 2.7 combat: the map, DSR measured (G6), timing (G9), the built rows;
+- 2.7 combat: the map, DSR measured, timing, the built rows;
 - 2.8 progression, rest and death;
 - 2.2 the UI, stage two: the design system, the windows, the HUD, every screen;
 - 2.9 magic; 2.10 crafting; 2.11 stealth and crime; 2.13 swim and climb; 2.14 marsh specials; 2.15 boats;
@@ -152,7 +152,8 @@ reason.
 - **The chunk table.** A part README holds it: one row per chunk, the first cell its id and the second the
   linked brief, which `tooling/brief_template.py --chunk <id>` reads.
 - **What a brief carries:**
-  - its goal and a **Starting state** (what exists, what is red, what to keep);
+  - its goal and a **Starting state (dated)**: the tree as it is on the day the brief was last rewritten, never a
+    forecast; lines marked "Expected:" are what the chunk before has promised (decision 0029 §7);
   - **Re-check before starting** (versions and prices that may have moved) and **Read first**;
   - its deliverables with acceptance (runnable or a number) and its wide loads;
   - **Loops**;
@@ -173,18 +174,18 @@ reason.
   - its PROGRESS rows `done` with evidence;
   - the next part's Starting state written;
   - an owner check-in with costs;
-  - a re-estimate of the remaining parts from measured cycle times.
+  - the measured cycle times read (0.3's loop record), never an estimate.
 
 ## What depends on what
 
 | This | before | because |
 |---|---|---|
 | 0.0 G0 (it can be played through the stream) | everything else | if the stream or the controls fail, nothing else is worth building |
-| 0.2 G10 (the native map: where each rule lives) | 1.1 | it decides what Skyrim carries and what ArgoniaCore must (decision 0026) |
-| 0.2 G4 (Claywater built natively) | 2.W1 (the world track starts, beside Part 1) | the world is the first priority and the longest track (decision 0027) |
-| 0.4 studio and runners | every L4 check and owner check after Part 0 | nothing is tested through the new-game flow |
+| 0.2 the stack | 0.3, 0.4 §d | the game machine runs the profile every check uses |
+| 0.3 the bridge, scenes and the runner | every L4 check and owner check after Part 0 | nothing is tested through the new-game flow |
+| 0.4 the block (Claywater built natively) | 1.1 onwards and 2.W1 (the world track starts, beside Part 1) | the first place is built on it; the world is the first priority and the longest track (decision 0027) |
 | 0.1 §i the writing skills fitted to the import | 1.3 and 1.4 onwards (every line and quest) | all text is written through them (decision 0024) |
-| 0.5 pipeline | Part 1 and everything after | records are generated, never hand-made |
+| 0.4 §a the pipeline | Part 1 and everything after | records are generated, never hand-made |
 | 1.7 the owner's verdict | Part 2's systems track | the game is confirmed before the systems are built at scale; the world track does not wait |
 | 2.W5 wave 1 of the slice places | 2.4 people onwards | people, loot and quests live in those places |
 | 2.1 the sheet | 2.4 people, 2.7 combat, 3.2 character creation | every actor and formula reads it |

@@ -32,7 +32,7 @@ recorded in `world/IMPORTED_FROM.md`, never silently skipped.
 
 Read **in place** from the old repo, not imported: README credits (~lines 48–320), `tooling/asset-pipeline/mod-register.json`,
 the settlement kit sourcing log (`docs/research/placement-settlements/settlement-kit-sourcing-log.md`, for O-17's
-permission evidence), the old kit manifests used by the kit-id mapper (0.2 G4).
+permission evidence), the old kit manifests used by the kit-id mapper (0.4).
 
 ## 2. Design docs → `docs/design/` (unchanged copies with a source header)
 

@@ -41,23 +41,24 @@ composed once:
 | Level | What | Where | Example |
 |---|---|---|---|
 | L1 data | schemas, integrity, generated-record checks, Spriggit round trip, direction validator, CK load log | build VM | every NPC has a home cell |
-| L2 logic and the core runner | unit tests of the rules and tools; the core runner playing a journey against our systems with no game | build VM | a duel by time stream; a quest walked stage by stage |
+| L2 logic | unit tests of the rules and tools | build VM | a formula over five builds; a condition evaluator case |
 | L3 still (off-game) | PrismaUI views in headless Chrome against mock JSON; readers on stills | build VM | dialogue view shows hyperlinks at every viewport |
-| L4 in game, from a studio scene | a scene applied in the studio; the game runner's state reads and event timestamps; fixed-vantage stills read by readers | GPU box | roll i-frames within ±1 frame; a place's vantage stills |
+| L4 in game, from a scene | a scene applied on the base save; the journey runner's state reads, event timestamps and a still per step; fixed-vantage stills read by readers | game machine | roll i-frames within ±1 frame; a place's vantage stills |
 | L5 short clip | a 3–8 s clip (or side by side with DSR), read frame by frame, **only with a stated reason** | GPU box | a transition's feel |
-| L6 owner | the owner plays in the studio (Parts 0–2) or the real game (Parts 3–4) through the stream | owner | the slice playthrough |
+| L6 owner | the owner plays from a scene (Parts 0–2) or the real game (Parts 3–4) through the stream | owner | the slice playthrough |
 
-**The studio** (0022) is the real game with a dev panel that boots straight into any place from a scene file, and
-that only observes and teleports. Every L4 check and every owner check starts there; nothing is tested through the
-new-game flow. **Journeys are eyeless** (0021 §3): one script on the core runner and the game runner, state and
-events only, teleport between short steps, no stills, no clips, no agent playing by looking.
+**The studio** (0022) is the dev profile of the real game booted into any place from the base save by a scene
+(a console batch file, `bat <id>`); SkyLink AI and the console are the hands for agents and the owner alike, and
+there is no panel of ours. Every L4 check and every owner check starts there; nothing is tested through the
+new-game flow. **Journeys read state and keep stills** (0021 §3): one script, one runner, state and events decide,
+a still per step as evidence, teleport between short steps, no agent playing by looking.
 
 Rules (old 0149/0155/0156 and universal-modder's oracle rules): test the shipped path (no debug mode stands in
 for a game action); the running game is the oracle for behaviour; prove the screenshot oracle is live (two
 frames differ); stop after 3 identical failures and diagnose; never let the thing under test own the test; a
 crash is a failure, never "still running"; a check that cannot change a decision is not run.
 
-GPU-box time is the bottleneck: batch L4 checks per lane, start the box once per batch, stop it after. **Only
+Game-machine time is the bottleneck: batch L4 checks per lane, start the machine once per batch, stop it after. **Only
 one lane drives the game at a time** (universal-modder's one-game-worker rule): `job_guard.sh --gpu` takes a lock
 on the GPU box; other lanes queue. Each port (combat, climbing, boats, dialogue) keeps a journal file
 `docs/research/journals/<port>.md` (universal-modder's MODLOG): what was tried, measured and learned, so nothing
@@ -74,7 +75,7 @@ generated data is the commonest red: regenerate, never hand-edit generated files
 ## 5. Owner check-ins
 
 `tooling/owner_inbox.py --post` opens a GitHub issue labelled `owner-check-in`: plain English, one check per
-bullet, what to try and where (a studio scene or place by name), how to reply (comment on the issue; the
+bullet, what to try and where (a scene by `bat` name or a place by name), how to reply (comment on the issue; the
 owner may also reply in a Claude chat), the open owner calls, and the week's costs (AWS month-to-date, Claude
 usage). Nothing measurable is sent to the owner.
 

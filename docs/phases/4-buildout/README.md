@@ -56,6 +56,6 @@ Written by the agent that closes 3.5.
 
 ## Part 4 exit
 - M2 is reached, or the owner declares the content complete.
-- Every region walk is closed. Every quest completes on the core runner, and its main path on the game runner.
+- Every region walk is closed. Every quest's branches pass at L2 against the record, and its main path in game.
 - The `P3` queue is done, or marked `optional` by the owner.
 - The release is published.

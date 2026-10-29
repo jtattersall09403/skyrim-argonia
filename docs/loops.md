@@ -13,15 +13,15 @@ prove it**, and the composition is checked only for what composition can break.
 | Level | Harness here | Proves | Where | Cost |
 |---|---|---|---|---|
 | **L1 data** | schema and integrity checks, generated-record checks, Spriggit round trip, the direction validator, the CK load log | ids, references, counts, every socket filled, every promise met | build VM | seconds |
-| **L2 logic and the core runner** | unit tests of the pure C++ core and the Python tools; the **core runner** playing a script against our systems' rules with a world model and no game | the numbers, the rules, and joins between our own systems | build VM | seconds |
+| **L2 logic** | unit tests of the pure C++ core and the Python tools | the numbers and the rules | build VM | seconds |
 | **L3 still, off-game** | PrismaUI views in headless Chrome against mock JSON at the four viewports, read by readers | a screen, its states, focus order, readability | build VM | a minute |
-| **L4 in game, from the studio** | a scene applied in the studio (decision [0022](decisions/0022-the-studio-boots-into-any-place.md)), then the **game runner**: state reads, event timestamps (hits, animation events, stages, music), and **fixed-vantage stills** read by readers | that blocks join inside Skyrim (the engine, the frameworks and our plugins agree); a placed thing looks right | GPU box | seconds per check, batched |
+| **L4 in game, from a scene** | a scene applied on the base save (decision [0022](decisions/0022-the-studio-boots-into-any-place.md)), then the **journey runner**: state reads, event timestamps (hits, animation events, stages, music), a still per step, and **fixed-vantage stills** read by readers | that blocks join inside Skyrim (the engine, the frameworks and our plugins agree); a placed thing looks right | GPU box | seconds per check, batched |
 | **L5 short clip** | a 3–8 s clip from a fixed vantage (or side by side with a DSR reference), read frame by frame | only what no still or timestamp can show: a transition, the near-to-distance hand-off, feel | GPU box | minutes per pass |
-| **L6 the owner** | the owner plays in the studio (Parts 0–2) or the real game (Parts 3–4) through the stream | the whole, as a player | owner | the owner's time |
+| **L6 the owner** | the owner plays from a scene (Parts 0–2) or the real game (Parts 3–4) through the stream | the whole, as a player | owner | the owner's time |
 
 **What changed from the old ladder.** The old project could run its game headless in Node; Skyrim needs a GPU.
-- The old "headless play" level becomes **two runners of one script**: the core runner (L2, our systems, no
-  game, seconds) and the game runner (L4, the same script in Skyrim through the bridge, eyeless).
+- The old "headless play" level becomes the **journey runner** (L4, the script in Skyrim through the bridge,
+  state and events with a still per step); our own rules are unit tests (L2), not a second runner (0029).
 - The old "motion" level becomes L4 event timestamps for timing, with L5 clips only for how motion *looks*.
 - RunPod pods are replaced by the AWS GPU box (decision 0008), one game at a time.
 
@@ -42,14 +42,15 @@ prove it**, and the composition is checked only for what composition can break.
    - Every later state is reached by play: an input, or the activation call the input makes.
    - Scenes use the shipped plugins, data and systems through the setters the game itself calls. No stub
      stands in for a system.
-5. **Journeys are eyeless** (decision 0021 §3).
+5. **Journeys read state and keep stills** (decision 0021 §3).
    - **The script.** A journey is a script as data (`tests/journeys/<id>.yaml`).
-   - **The two runners.** The core runner (L2) and the game runner (L4) both play it. Both must be green.
-   - **What the game runner does.** It moves the player between steps by teleport. Each step is a short
-     action, and it reads state and events.
-   - **What a journey never uses.** No still, no clip, no reader, no agent looking at the screen.
-   - **When it runs.** A journey runs after its chunk's loops are green, loops until it passes, and then the
-     owner plays it in the studio (L6).
+   - **The runner.** `tools/run_journey.py` plays it in the game through the bridge (0.3 §d).
+   - **What it does.** It moves the player between steps by teleport. Each step is a short action; it reads
+     state and events, and takes a still it keeps with the run.
+   - **What decides.** State and events. A failing step's stills go to a reader; no agent pilots by looking;
+     no step is judged by pixels unless the brief names an L5 reason.
+   - **When it runs.** After its chunk's loops are green, until it passes; then the owner plays it from the
+     same scene (L6).
    - **The deployed build.** Nothing plays on a real place's long-lived state, or on the owner's save, as an
      agent gate.
 6. **A clip (L5) needs a reason no lower level can give**, written in the brief. A feature with no such join
@@ -93,10 +94,10 @@ prove it**, and the composition is checked only for what composition can break.
 | data shape, ids, references, counts, sockets, promises | integrity gate, record checks, Spriggit round trip, CK load log | L1 |
 | a rule or formula (stats, vastei, barter, detection, damage, poise) | C++ core and Python unit tests; the stats sim (every archetype × five builds) | L2 |
 | a fight, an AI choice, a combat window by time | the combat core driven by a time stream (no game) | L2 |
-| a quest, a dialogue walk, a crime response, a co-save round trip, a journey's rules | the core runner | L2 |
+| a quest's rules, a dialogue walk's conditions, a crime response, a co-save round trip | unit tests of the core and the tools | L2 |
 | a UI screen on every viewport, focus order, readability | the `ui/` harness: Playwright at 1920×1080, 1280×720, the Magic V5 folded (~21:9) and unfolded; readers | L3 |
 | that our plugin, the frameworks and Skyrim agree (a hit lands, a window opens on time, a stage fires, an NPC paths) | a studio scene and the game runner: state reads and event timestamps | L4 |
-| a journey inside the game | the game runner, eyeless | L4 |
+| a journey inside the game | the journey runner: state, events, a still per step | L4 |
 | a place, a kit piece, an item or creature up close | bridge vantage stills and booth sheets, read by readers | L4 |
 | a transition, the LOD hand-off, feel (including side by side with DSR) | short clips, read frame by frame | L5 |
 | frame cost on the composed world | bridge frame-time probes on the chosen GPU instance | L4 |
@@ -107,7 +108,7 @@ prove it**, and the composition is checked only for what composition can break.
 Each chunk brief's **Loops** section lists:
 - its subsets, each with its level;
 - the joins its lane owns;
-- its journeys (both runners);
+- its journeys;
 - for any L5 row, the reason.
 
 Chunks that build tooling (Part 0) run their acceptance commands and the gate, and prove each harness on a

@@ -61,7 +61,7 @@ of UI and art elements, an agentic approach that covers everything 100%; Fal all
 ## Consequences
 
 - The immersion audit is a cross-cutting track (T-IMM in [PLAN.md](../PLAN.md)), not one late phase: the
-  inventory exists from 0.5, every chunk's new elements enter it, the gate binds on every reachable row from
+  inventory exists from 0.4, every chunk's new elements enter it, the gate binds on every reachable row from
   the slice's close (2.17), 4.1 sets up verdicts at scale, and every content packet (4.2) passes it (decision
   0023 §6).
 - Vanilla Skyrim *systems* that are Nordic by nature (dragons, shouts, Dragonborn, Sovngarde, Helgen, the

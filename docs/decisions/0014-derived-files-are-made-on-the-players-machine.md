@@ -21,8 +21,8 @@ converted material from the user's own games") is the community precedent: toler
    variables, Payload Interpreter/AMR, animation-event-driven speed changes) and opens/closes our own timing
    windows from animation events, so DS1 timings are met without editing clips; (c) if a window cannot be met at
    runtime, an **install-time patcher** applies our annotation/timing deltas (a small diff we author) to the
-   player's own copy of the clip. Proven in gate G9 (0.2) on one roll, one attack and one parry.
-3. **FaceGen (0.2 G4, 2.4, 4.2).** Skyrim's engine does draw faces itself, but for NPCs it draws them from FaceGen files
+   player's own copy of the clip. Proven in gate 2.7 §e (0.2) on one roll, one attack and one parry.
+3. **FaceGen (0.4, 2.4, 4.2).** Skyrim's engine does draw faces itself, but for NPCs it draws them from FaceGen files
    the Creation Kit pre-bakes per NPC (a head mesh and a tint texture); an NPC without them gets the "dark face"
    bug. Only the player's face is built live (the race menu). So: (a) **template NPCs** (TPLT) that reuse the
    faces Skyrim and our dependency mods already ship (no new files: the default for most of Argonia's cast);

@@ -18,7 +18,7 @@ The old project had to build in three.js everything Skyrim already has: a render
 AI, detection, crime, magic, saves. Its rule packages (dialogue, narrative, stats, economy, crafting, crime,
 perception, scheduling and the rest) were written to make up for an engine that had none of these. They never
 reached a good enough standard against their goals. The earlier plan here asked whether to run that code inside
-Skyrim (spike G10, embedded JavaScript, against a C++ port). That would carry the old workarounds into an
+Skyrim (spike 1.1 §a, embedded JavaScript, against a C++ port). That would carry the old workarounds into an
 engine that already has native systems for most of them.
 
 ## Decision
@@ -78,22 +78,22 @@ engine that already has native systems for most of them.
    comes from one template NPC that supplies race, head parts, skin, weight and height together (TPLT with the
    traits flag), never a face alone. Each person gets a full-body still, and a reader checks it for neck seams
    and skin-tone mismatches.
-8. **The UI's approach is chosen with the owner** (decision 0017, spike G11). Adapting the old React UI in web
+8. **The UI's approach is chosen with the owner** (decision 0017, spike 1.2 §0). Adapting the old React UI in web
    views is one candidate among Skyrim's own menus, MorrowindRuntime's, OpenMW's layouts and hybrids.
 
 ## Consequences
 
-- **Spike G10 changes question.** It no longer asks whether to run the old TypeScript or port it to C++. It
+- **Spike 1.1 §a changes question.** It no longer asks whether to run the old TypeScript or port it to C++. It
   maps every system's goals onto Skyrim's native mechanisms and existing tools, proves the hardest mappings in
   game, and sizes the SKSE code left over. QuickJS and the embedded rule bundle are dropped.
 - **0.1 §f** imports the old rule packages read-only as goal evidence and writes **the goals list**,
   `docs/design/goals.md`: each system's goals, with sources. Every system brief reads its section.
-- 0.2 G4 builds the Claywater block natively; it is kept as Part 1's place. Its check is that every piece the
+- 0.4 builds the Claywater block natively; it is kept as Part 1's place. Its check is that every piece the
   design uses resolves to a base record (L1).
-- 0.5's kit-id mapper becomes a **piece resolver**: a lookup the builder uses, not a converter.
+- 0.4's kit-id mapper becomes a **piece resolver**: a lookup the builder uses, not a converter.
 - 2.W5 and 4.2 rebuild every place by the same recipe; the `world-builder` skill holds it.
 - 0018 still holds: records are written by code, and the CK is a scripted tool. Its jobs run on the Windows game
   machine rather than under Wine.
-- The core runner (L2) plays journeys against our own SKSE code's pure core and a world model. Behaviour that
-  native Skyrim systems own is checked at L4.
+- Unit tests (L2) prove our own SKSE code's pure core (decision 0029: no second runner). Behaviour that native
+  Skyrim systems own is checked at L4.
 - 0023's critique "wasted reuse" (not running the old rule code) is withdrawn by this ruling.
