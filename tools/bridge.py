@@ -12,7 +12,7 @@ dead process or a Crash Logger file written since this launch raises GameDown wi
     python3 tools/bridge.py player                     # {"pos": {...}, "cell": {...}, ...}
     python3 tools/bridge.py console player.getav health
     python3 tools/bridge.py save studio-a ; python3 tools/bridge.py load studio-a
-    python3 tools/bridge.py launch                     # kill any zombie, lay the DLL, start to the main menu
+    python3 tools/bridge.py launch [--fresh]           # kill any zombie, lay the DLL, start to the main menu
     python3 tools/bridge.py health | screenshot out.png | oracle | commands
     python3 tools/bridge.py pad 'LY=1:800 B:150'       # the virtual pad, at most 3 s
     python3 tools/bridge.py booth 0001A26F out/booth   # six stills of one base record
@@ -58,7 +58,7 @@ class NoReply(BridgeError):
 
 
 def _sh(args: list[str], timeout: float = 120.0, env: dict | None = None) -> str:
-    p = subprocess.run(args, capture_output=True, text=True, timeout=timeout, env=env)
+    p = subprocess.run(args, capture_output=True, text=True, errors="replace", timeout=timeout, env=env)
     if p.returncode != 0:
         raise BridgeError(f"{' '.join(args[:3])}: exit {p.returncode}: {(p.stderr or p.stdout).strip()[-600:]}")
     return p.stdout
@@ -88,7 +88,7 @@ class Machine:
         line = f"powershell -ExecutionPolicy Bypass -File {HELPER_REMOTE} -Cmd {cmd} {' '.join(args)}"
         # A helper that exits 1 still printed its JSON, so the exit code is not read here.
         p = subprocess.run([self.run, "ps", f"if (Test-Path {HELPER_REMOTE}) {{ {line} }} else {{ 'NO-HELPER' }}"],
-                           capture_output=True, text=True, timeout=timeout)
+                           capture_output=True, text=True, errors="replace", timeout=timeout)
         out = p.stdout + p.stderr
         if "NO-HELPER" in out:
             self.install()
@@ -200,14 +200,14 @@ class Bridge:
             raise GameDown(f"SkyrimSE {h['pid']} is not responding")
 
     # -- launch, screenshots ---------------------------------------------------------------------------------
-    def launch(self, wait: int = 300) -> dict:
+    def launch(self, wait: int = 420, fresh: bool = False) -> dict:
         """Kill any running or zombie game, lay ArgoniaBridge.dll over the profile, start to the main menu
         (0.2's stack.ps1 menu, kept running) and wait for the bridge's ping."""
         self.machine.install()
         killed = self.machine.helper("kill", timeout=90)
         if killed.get("survivors"):
             raise GameDown(f"processes survived the kill: {killed['survivors']}")
-        laid = self.machine.helper("prepare", timeout=600)
+        laid = self.machine.helper("prepare", *(["-Fresh"] if fresh else []), timeout=900)
         if not laid.get("laid"):
             raise BridgeError(f"the DLL was not laid: {laid}")
         out = self.machine.desktop(r"$env:ARGONIA_KEEP='1'; & C:\argonia\infra\stack.ps1 menu", wait=wait)
@@ -301,7 +301,7 @@ def main(argv: list[str]) -> int:
     b, cmd, args = Bridge(), argv[0], argv[1:]
     try:
         if cmd == "launch":
-            result = b.launch()
+            result = b.launch(fresh="--fresh" in args)
         elif cmd == "health":
             result = b.health()
         elif cmd == "kill":

@@ -219,6 +219,7 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--save", required=True)
     ap.add_argument("--no-launch", action="store_true")
+    ap.add_argument("--fresh", action="store_true", help="lay the profile again before the launch")
     ap.add_argument("--crash", action="store_true")
     ap.add_argument("--only", default="")
     a = ap.parse_args()
@@ -226,7 +227,7 @@ def main() -> int:
     b = Bridge()
     if not a.no_launch:
         t0 = time.monotonic()
-        r = b.launch()
+        r = b.launch(fresh=a.fresh)
         print(f"launched to the main menu in {time.monotonic() - t0:.0f} s; ping {r['ping']}")
     case("ping", "the plugin answers on the main thread", lambda: b.call("ping"), False)
     case("ping", "a bad token is refused", lambda: _bad_token(b), True)

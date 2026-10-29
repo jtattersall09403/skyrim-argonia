@@ -3,13 +3,13 @@
 #   bridge.ps1 token               the token ArgoniaBridge wrote at this launch (and its time)
 #   bridge.ps1 kill                end SkyrimSE and its loader; a zombie (not responding, or surviving a kill) is
 #                                  taskkilled with its tree, and the call fails if anything survives 20 s
-#   bridge.ps1 prepare             the profile on (stack.ps1 on, only if it is off), then ArgoniaBridge.dll copied from
+#   bridge.ps1 prepare [-Fresh]    the profile on (stack.ps1 on, only if it is off, or always with -Fresh), then ArgoniaBridge.dll copied from
 #                                  the dev-only MO2 folder into Data\SKSE\Plugins (a copy, not a link, so a rebuild
 #                                  never meets a locked file); stack.ps1 off removes it
 #   bridge.ps1 grab -Out <png>     one still of the desktop as the stream sees it (grab.ps1; run in the desktop session)
 # The launch itself is stack.ps1 menu with ARGONIA_KEEP=1 (0.2's), run by bridge.py after `kill` and `prepare`.
 param([Parameter(Mandatory)][ValidateSet('health', 'token', 'kill', 'prepare', 'grab')][string]$Cmd,
-      [string]$Out = 'C:\argonia\logs\bridge-grab.png')
+      [string]$Out = 'C:\argonia\logs\bridge-grab.png', [switch]$Fresh)
 $ErrorActionPreference = 'Stop'
 $Game = 'C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition'
 $Skse = "$env:USERPROFILE\Documents\My Games\Skyrim Special Edition\SKSE"
@@ -44,7 +44,8 @@ switch ($Cmd) {
   }
   'prepare' {
     if (Get-Process SkyrimSE -EA SilentlyContinue) { J @{ laid = $false; error = 'Skyrim is running: kill first' }; exit 1 }
-    if (-not (Test-Path C:\argonia\stack-state\mode-on)) { & C:\argonia\infra\stack.ps1 on | Out-Null }
+    # -Fresh lays the profile again (stack.ps1 on is off then on, and seeds the first-run settings).
+    if ($Fresh -or -not (Test-Path C:\argonia\stack-state\mode-on)) { & C:\argonia\infra\stack.ps1 on | Out-Null }
     $src = 'C:\argonia\MO2\mods\Argonia SKSE (dev only)\SKSE\Plugins\ArgoniaBridge.dll'
     $dst = "$Game\Data\SKSE\Plugins"
     if (-not (Test-Path $src)) { J @{ laid = $false; error = "no $src (skse_build.sh build windows-dev)" }; exit 1 }
