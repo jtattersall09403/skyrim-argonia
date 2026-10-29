@@ -19,7 +19,7 @@ multi-runtime as decision 0002 §1 asks, and GPL-3.0-or-later as our `LICENSE` i
 GG is the fallback if NG regresses on 1.7.104 (MIT, the same API). The vcpkg port in colorglass's registry is
 the old, unmaintained one (the NG README says so), so CommonLib comes by CMake FetchContent at the tag and the
 CMake refuses any other commit; its dependencies (spdlog, fmt, directxtk, directxmath, rapidcsv) come from our
-`skse/vcpkg.json` at NG's own baseline ee12231b.
+`skse/vcpkg.json` at the baseline the bundle was built with (see the second entry below).
 
 **The prebuilt bundle.** v15.2.0 publishes `commonlibsse-ng-prebuilt-v15.2.0-all-msvc-cmake.zip` (128 MB, sha256
 c0394512…599f verified); `COMMONLIB_PREBUILT=ON` links it instead of a ~16 min source build when the consumer's
@@ -39,3 +39,21 @@ the tools), then the §b acceptance: SKSE's log shows ArgoniaCore loading on 1.7
 answers through the bridge (compile `ArgoniaCore.psc` with the CK's compiler first); `SaveCount()` survives a
 save and load; `ArgoniaBridge/ping.ps1` returns ok and `-Token bad` fails. Address Library's
 `versionlib-1-7-104-0.bin` must be in the profile (0.2's core row).
+
+## 2026-10-29: the first MSVC build (game machine, 19:45 and 19:53 UTC)
+
+- **First run** (`skse_build.sh all windows-dev`; installed the tools): 15/16 steps compiled, then the link failed.
+  The error was `LNK2001: unresolved external symbol fmt::v12::detail::allocate(unsigned __int64)`, from
+  `API.cpp.obj` and `Trampoline.cpp.obj` in the prebuilt `CommonLibSSE.lib`, and it took down ArgoniaBridge.dll.
+- **Cause:** I had copied NG's `vcpkg.json` `builtin-baseline` ee12231b (fmt 12.1.0, spdlog 1.16.0). NG's
+  `vcpkg-configuration.json` overrides it with the default-registry baseline **00c57752** (fmt 12.2.0#1, spdlog
+  1.17.0, directxtk 2026-05-07, directxmath 2026-06-12, rapidcsv 8.99), and its prebuilt workflow keys on both
+  files. So the bundle's objects use fmt 12.2 symbols that 12.1 lacks. Versions read from
+  `versions/baseline.json` at both commits.
+- **Fix:** `skse/vcpkg.json` moves to baseline 00c57752 with those versions as minimums, so the bundle stays
+  usable (no ~16 min source build). Rule: our baseline is whatever CommonLib's `vcpkg-configuration.json` names
+  at the pinned tag, and it moves whenever the tag moves.
+- **Second run** (`skse_build.sh build windows-dev`): finished in 2 min 20 s with cl 19.51.36260 and CMake
+  4.3.1-msvc1. Under MSVC, ctest passed 2 of 2. Outputs: `ArgoniaCore.dll` 629,248 bytes (dist) and
+  `ArgoniaBridge.dll` 588,800 bytes (dev), copied into MO2 `mods\Argonia SKSE` and `mods\Argonia SKSE (dev only)`.
+  The game and Data were not touched.

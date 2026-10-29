@@ -42,9 +42,16 @@ tooling/job_guard.sh wait skse-build      # repeat until done; the first run ins
 Later builds: `infra/gpu-box/skse_build.sh build windows-dev`. Success prints `SKSE-BUILD OK windows-dev` and the
 paths of the DLLs. The log is `C:\argonia\logs\skse-build.log`.
 
+## MSVC build (19:45 and 19:53 UTC)
+- **First run:** the link failed (`fmt::v12::detail::allocate` unresolved in the prebuilt CommonLibSSE.lib), because
+  our vcpkg baseline ee12231b gave fmt 12.1.0 while the bundle was built at NG's `vcpkg-configuration.json`
+  baseline 00c57752 (fmt 12.2.0#1).
+- **Fix:** `skse/vcpkg.json` moved to baseline 00c57752.
+- **Second run:** `SKSE-BUILD OK windows-dev` in 2 min 20 s; ctest under MSVC passed 2 of 2;
+  `ArgoniaCore.dll` is 629,248 bytes and `ArgoniaBridge.dll` 588,800 bytes, both in their MO2 mod folders.
+
 ## Unverified, and the risks
-- No MSVC compile has run, so API slips in `ArgoniaCore/src/main.cpp` or `ArgoniaBridge/src/main.cpp` are possible.
-- `skse_build.ps1` has not been parsed by PowerShell, because no pwsh is on the VM.
+- Both DLLs link, but neither has loaded in the game yet: SKSE's log, the natives and the co-save round trip are untested.
 - If VS 2026's current cl is newer than 19.51, the build falls back to a CommonLib source build (~16 min).
 - `ArgoniaCore.psc` needs compiling to .pex with the CK's compiler before `Version()` can be called.
 - The MO2 profile must enable both mod folders.
