@@ -1,0 +1,2109 @@
+{
+ "_about": "Chunk 0.2: every mod the Argonia profile installs, in load order, grouped (core, combat, traversal, soul-ui, land, pipeline, dev). Files are downloaded to ~/.argonia/mods by infra/gpu-box/stack.py and never committed (decision 0003). profile: play (laid into Data), dev (laid only with --dev; never shipped), pipeline (fetched for the asset pipeline, never laid raw). set: a named alternative inside a group; the profile chooses one set per group (stack.py --set), with exact undo. sha256 is the downloaded archive's; stack.py verify checks it and the installed files' hashes.",
+ "game": "skyrimspecialedition",
+ "runtime": "1.7.104.0 (Steam build 24914197), SKSE 2.3.1",
+ "sets": {
+  "combat": [
+   "souls-0.0",
+   "dsc-b",
+   "dsc-b2"
+  ]
+ },
+ "mods": [
+  {
+   "id": "skse",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 30379,
+    "file": 795992
+   },
+   "name": "Skyrim Script Extender (SKSE64)",
+   "author": "SKSE Team",
+   "version": "2.3.1",
+   "archive": "Skyrim Script Extender (SKSE64) Steam 30379 2.3.1 2026-08-27T16-52Z s6Og0dG94.7z",
+   "size_kb": 930,
+   "why": "script extender every plugin needs",
+   "chunk": "0.2",
+   "required": true,
+   "profile": "play",
+   "install": "root",
+   "sha256": "7bad616ed360823a027f8828801d91e3a4aa2eacd952023af7f3e31adb2ae250"
+  },
+  {
+   "id": "address-library",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 32444,
+    "file": 795954
+   },
+   "name": "Address Library for SKSE Plugins",
+   "author": "meh321",
+   "version": "13",
+   "archive": "Address Library All in One (1.7.104.0) v13 32444 13 2026-08-27T15-29Z Ae46W7Fw2.zip",
+   "size_kb": 6484,
+   "why": "version-independent addresses for SKSE plugins",
+   "chunk": "0.2",
+   "required": true,
+   "profile": "play",
+   "sha256": "be0c7c07fb63fd1c1403690d4797c7a8fdf8799118acceb605f285d7b0ee055f",
+   "pick": [
+    "SKSE"
+   ]
+  },
+  {
+   "id": "crash-logger",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 59818,
+    "file": 825684
+   },
+   "name": "Crash Logger SSE AE VR - PDB support",
+   "author": "alandtse",
+   "version": "1.27.0",
+   "archive": "CrashLogger 59818 1.27.0 2026-10-25T06-21Z 31i7IoqRd.7z",
+   "size_kb": 7324,
+   "why": "crash reports read after every run",
+   "chunk": "0.3",
+   "required": true,
+   "profile": "play",
+   "sha256": "eb112aa69b4e4f595a0230e43f7f080dbdc533647d4986fc042692f461baaad3"
+  },
+  {
+   "id": "papyrusutil",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 13048,
+    "file": 797330
+   },
+   "name": "PapyrusUtil SE - Modders Scripting Utility Functions",
+   "author": "exiledviper meh321",
+   "version": "4.8",
+   "archive": "PapyrusUtil AE SE - Scripting Utility Functions 13048 4.8 2026-08-30T01-51Z OyYrPu3oN.zip",
+   "size_kb": 560,
+   "why": "Papyrus storage and file helpers several mods call",
+   "chunk": "0.2",
+   "required": true,
+   "profile": "play",
+   "sha256": "0ef140a204591491343749296d184d60837eb130928b4c0925f8bf949c0dd437"
+  },
+  {
+   "id": "po3-tweaks",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 51073,
+    "file": 794717
+   },
+   "name": "powerofthree's Tweaks",
+   "author": "powerofthree",
+   "version": "1.17.1",
+   "archive": "powerofthree's Tweaks 51073 1.17.1 2026-08-25T00-11Z zYsEpQvXg.7z",
+   "size_kb": 8354,
+   "why": "required by po3 Papyrus Extender; editor-ID lookups",
+   "chunk": "0.2",
+   "required": true,
+   "profile": "play",
+   "sha256": "5aeadd195dce06e3d72d7684373bab9116f8eadf3833af5cdf45c0d2ad4f9268"
+  },
+  {
+   "id": "po3-papyrus-extender",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 22854,
+    "file": 800720
+   },
+   "name": "powerofthree's Papyrus Extender",
+   "author": "powerofthree",
+   "version": "6.5.2",
+   "archive": "Papyrus Extender 22854 6.5.2 2026-09-05T12-53Z Sx9oEwOl7.7z",
+   "size_kb": 14911,
+   "why": "Papyrus functions the UI and traversal mods call",
+   "chunk": "0.2",
+   "required": true,
+   "profile": "play",
+   "sha256": "2ba01d7ea67826f4207cc667bbfb94f2787f0e02114cca4cda8c22c8750513e7"
+  },
+  {
+   "id": "consoleutil-extended",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 133569,
+    "file": 806726
+   },
+   "name": "ConsoleUtil Extended",
+   "author": "KrisV777",
+   "version": "1.1.1",
+   "archive": "ConsoleUtil Extended 133569 1.1.1 2026-09-17T18-07Z 4t2yDcWez.7z",
+   "size_kb": 5528,
+   "why": "console commands from Papyrus with output, for scenes",
+   "chunk": "0.3",
+   "required": true,
+   "profile": "play",
+   "sha256": "5f9e322e45313ffe289cb43cd3019dffcdbd36c37cdeaf04a0aa89bd69055860"
+  },
+  {
+   "id": "consoleutilsse-ng",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 76649,
+    "file": 793316
+   },
+   "name": "ConsoleUtilSSE NG",
+   "author": "Ryan---VersuchDrei",
+   "version": "1.6.1",
+   "archive": "ConsoleUtilSSE NG 76649 1.6.1 2026-08-22T12-59Z Yj6wQRl9M.zip",
+   "size_kb": 12604,
+   "why": "console from Papyrus; Sailable Ship requires it",
+   "chunk": "0.2",
+   "required": true,
+   "profile": "play",
+   "sha256": "df531d4f1061565b1b4225f4ac88473f2afc97d1f6ab6df6e9f1f7509c43d966"
+  },
+  {
+   "id": "fuz-ro-doh",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 15109,
+    "file": 814513
+   },
+   "name": "Fuz Ro D-oh - Silent Voice",
+   "author": "shadeMe",
+   "version": "2.6",
+   "archive": "Fuz Ro D'Oh 15109 2.6 2026-10-04T11-17Z eVtX7JAFs.7z",
+   "size_kb": 283,
+   "why": "silent voice timing for unvoiced lines (quarantine 0012)",
+   "chunk": "1.3",
+   "required": true,
+   "profile": "play",
+   "sha256": "9a3ed3a31713fb60b62fb87616aa60d9c24b0cd184c0c66dfd1aee29929e9c3f"
+  },
+  {
+   "id": "skyui",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 12604,
+    "file": 749043
+   },
+   "name": "SkyUI",
+   "author": "SkyUI Team",
+   "version": "6.11",
+   "archive": "SkyUI-12604-6-11-1778020881.zip",
+   "size_kb": 2630,
+   "why": "menus, MCM host; Dear Diary skins it",
+   "chunk": "0.2",
+   "required": true,
+   "profile": "play",
+   "sha256": "4eb0c9fc5241e5c3dd2fd773ee8a89627c924bf4445cf70373d3a4c7c4393ff1"
+  },
+  {
+   "id": "mcm-helper",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 53000,
+    "file": 795510
+   },
+   "name": "MCM Helper",
+   "author": "Parapets",
+   "version": "1.6.3",
+   "archive": "MCM Helper 53000 1.6.3 2026-08-26T18-07Z kATsMWjPO.7z",
+   "size_kb": 7995,
+   "why": "MCM menus for the combat mods",
+   "chunk": "0.2",
+   "required": true,
+   "profile": "play",
+   "sha256": "505af9c27062febd497be09b661d5df82e013ae4a205ffbec99698adf4503f52",
+   "pick": [
+    "Data/*",
+    "SkyrimSE/SKSE",
+    "ESL/MCMHelper.esp",
+    "Loose/*"
+   ]
+  },
+  {
+   "id": "pandora",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 133232,
+    "file": 813165
+   },
+   "name": "Pandora Behaviour Engine Plus",
+   "author": "Pandora Behaviour Engine Team",
+   "version": "5.0.0-beta",
+   "archive": "Pandora Behaviour Engine v5.0.0-beta 133232 5.0.0-beta 2026-10-01T16-11Z pQ0AZ3F4B.zip",
+   "size_kb": 81161,
+   "why": "behaviour engine run on the machine (decision 0014)",
+   "chunk": "0.2",
+   "required": true,
+   "profile": "play",
+   "install": "tool",
+   "sha256": "89c57c0d2f27afd038a68105acff9577ce49a34969ec2b0db75d5354cfe17688"
+  },
+  {
+   "id": "open-animation-replacer",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 92109,
+    "file": 798222
+   },
+   "name": "Open Animation Replacer",
+   "author": "Ersh",
+   "version": "3.2.1",
+   "archive": "Open Animation Replacer 92109 3.2.1 2026-08-31T16-32Z MWx0rveD6.7z",
+   "size_kb": 8094,
+   "why": "conditional animation replacement",
+   "chunk": "0.2",
+   "required": true,
+   "profile": "play",
+   "sha256": "970cb6c34045ee6a5ba7a5f0c598a8e398d0973cc81a9a6ee5dd303329907de8",
+   "pick": [
+    "SKSE"
+   ]
+  },
+  {
+   "id": "animation-queue-fix",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 82395,
+    "file": 798212
+   },
+   "name": "Animation Queue Fix",
+   "author": "Ersh",
+   "version": "1.0.2",
+   "archive": "Animation Queue Fix 82395 1.0.2 2026-08-31T16-18Z PuQ2UKIR4.7z",
+   "size_kb": 3605,
+   "why": "OAR's requirement",
+   "chunk": "0.2",
+   "required": true,
+   "profile": "play",
+   "sha256": "b2deff34aa462d5d439f56fe5ed86b32028e959ed02d361cacdc51504bab1b89",
+   "pick": [
+    "SKSE"
+   ]
+  },
+  {
+   "id": "amr",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 50258,
+    "file": 320113
+   },
+   "name": "Animation Motion Revolution",
+   "author": "alexsylex",
+   "version": "1.5.3",
+   "archive": "Animation Motion Revolution-50258-1-5-3-1664395662.rar",
+   "size_kb": 378,
+   "why": "Animation Motion Revolution: animation-driven motion (animmotion annotations) for rolls and traversal",
+   "chunk": "0.2",
+   "required": true,
+   "profile": "play",
+   "sha256": "986b11630b6c93c65ff9a6441a7eac442012f77fd0a7386bcf30075fafd199fd"
+  },
+  {
+   "id": "amr-1.7.104",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 191697,
+    "file": 805238
+   },
+   "name": "Animation Motion Revolution - Skyrim 1.7.104.0 Update",
+   "author": "DeadOnKeyboard",
+   "version": "1",
+   "archive": "AnimationMotionRevolution 1.5.4 Skyrim 1.7.104 191697 1 2026-09-14T20-08Z 4t2yDcWzW.zip",
+   "size_kb": 600,
+   "why": "AMR's DLL rebuilt for 1.7.104",
+   "chunk": "0.2",
+   "required": true,
+   "profile": "play",
+   "sha256": "13d01a2fb3219725568233da76ce30419c8630ee5c240113b45ea70bf6992f3f",
+   "pick": [
+    "SKSE"
+   ]
+  },
+  {
+   "id": "payload-interpreter",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 65089,
+    "file": 394150
+   },
+   "name": "Payload Interpreter",
+   "author": "dTry alexsylex",
+   "version": "1.1.0",
+   "archive": "Payload Interpreter-65089-1-1-0-1685672813.zip",
+   "size_kb": 244,
+   "why": "annotation payloads the combat clips use",
+   "chunk": "0.2",
+   "required": true,
+   "profile": "play",
+   "sha256": "e3705da4f0aaaf704d16382eccf8c07a12f16c64ea3a5877714a748c6196e246"
+  },
+  {
+   "id": "payload-interpreter-1.7.104",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 192679,
+    "file": 809282
+   },
+   "name": "Payload Interpreter - Skyrim 1.7.104.0 Update",
+   "author": "AT Mods",
+   "version": "2",
+   "archive": "PayloadInterpreter 1.7.104 Update 192679 2 2026-09-22T18-35Z izKcFpvAw.zip",
+   "size_kb": 305,
+   "why": "Payload Interpreter's DLL for 1.7.104",
+   "chunk": "0.2",
+   "required": true,
+   "profile": "play",
+   "sha256": "a7c335396b64a439af01843789fe4d5b51389334f17b2f77f43431f9004d1f6c"
+  },
+  {
+   "id": "behavior-data-injector",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 78159,
+    "file": 794609
+   },
+   "name": "Behavior Data Injector Universal Support",
+   "author": "doodlum",
+   "version": "v0.13.0.4",
+   "archive": "Behavior Data Injector Universal Support 78159 v0.13.0.4 2026-08-24T20-55Z 2Bej58obO.zip",
+   "size_kb": 6438,
+   "why": "behaviour variables for Rim Parry and the addon",
+   "chunk": "0.2",
+   "required": true,
+   "profile": "play",
+   "sha256": "4f718764e67c265b509fcabe6afc00ba85255a03f2140e2b1de2bb03511ecde4",
+   "pick": [
+    "SKSE"
+   ]
+  },
+  {
+   "id": "spid",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 36869,
+    "file": 795621
+   },
+   "name": "Spell Perk Item Distributor (SPID)",
+   "author": "powerofthree-sasnikol",
+   "version": "7.3.3",
+   "archive": "Spell Perk Item Distributor 36869 7.3.3 2026-08-26T21-53Z rvwm2B1Z2.7z",
+   "size_kb": 6241,
+   "why": "spell, perk and item distribution",
+   "chunk": "0.2",
+   "required": true,
+   "profile": "play",
+   "sha256": "b1a2f44f7a55062cf8999d5ae88fbeb4e7a985a371f9be01a358e8870b24ee71"
+  },
+  {
+   "id": "dtry-key-utils",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 69944,
+    "file": 292793
+   },
+   "name": "dTry's Key Utils",
+   "author": "dTry",
+   "version": "1.1",
+   "archive": "dTry's Key Utils AE-69944-1-1-1655790332.7z",
+   "size_kb": 250,
+   "why": "8-way dodge input for TK Dodge",
+   "chunk": "0.2",
+   "required": true,
+   "profile": "play",
+   "sha256": "ffab378da57131d71ebe2e7b33beeff0e1eb374a347125ac07a8a504663b8196"
+  },
+  {
+   "id": "dtry-key-utils-1.7.104",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 189573,
+    "file": 794857
+   },
+   "name": "DtryKeyUtil-1.7.104-Patch",
+   "author": "Fleikon",
+   "version": "1",
+   "archive": "DtryKeyUtil 1.7.99 Compatibility Patch 189573 1 2026-08-25T07-33Z 2Bej58oqy.zip",
+   "size_kb": 665,
+   "why": "its DLL for 1.7.104",
+   "chunk": "0.2",
+   "required": true,
+   "profile": "play",
+   "sha256": "6fe0cd8a0bde047a56e6205fb309a27f1f31f30445c69018de9e97e10eeff53a"
+  },
+  {
+   "id": "skse-menu-framework",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 120352,
+    "file": 806684
+   },
+   "name": "SKSE Menu Framework",
+   "author": "Thiago",
+   "version": "3.18",
+   "archive": "SKSE Menu Framework 120352 3.18 2026-09-17T16-36Z cE8hkAlOT.7z",
+   "size_kb": 10464,
+   "why": "in-game menus FreeClimb and the TK Dodge addon need",
+   "chunk": "0.2",
+   "required": true,
+   "profile": "play",
+   "sha256": "282a954bc52e376d7821ad615ab9ae99f0142d9aeba796c673725f86312524e5"
+  },
+  {
+   "id": "imgui-icons",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 114790,
+    "file": 690123
+   },
+   "name": "ImGui Icons",
+   "author": "powerofthree",
+   "version": "1.2.0",
+   "archive": "imGui Icons-114790-1-2-0-1763843695.7z",
+   "size_kb": 2990,
+   "why": "FreeClimb's requirement",
+   "chunk": "0.2",
+   "required": true,
+   "profile": "play",
+   "sha256": "af1ebf8be8fa0d2c44bece5bc8c2c5e56a28f875f96ca80befb203a39cf41086"
+  },
+  {
+   "id": "media-keys-fix",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 92948,
+    "file": 792882
+   },
+   "name": "Media Keys Fix SKSE",
+   "author": "epinter",
+   "version": "1.0.2",
+   "archive": "Media Keys Fix 92948 1.0.2 2026-08-21T18-58Z Yj6wQRo26.zip",
+   "size_kb": 5915,
+   "why": "PrismaUI's hard requirement",
+   "chunk": "1.2",
+   "required": true,
+   "profile": "play",
+   "sha256": "49918f7a8cfafa7aee2c93f9475744dbcb605985c7bb93eb99aafd62ee717ec6"
+  },
+  {
+   "id": "xpmsse",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 1988,
+    "file": 469854
+   },
+   "name": "XP32 Maximum Skeleton Special Extended - XPMSSE",
+   "author": "Team XPMSE",
+   "version": "5.06",
+   "archive": "XP32 Maximum Skeleton Special Extended-1988-5-06-1707663131.7z",
+   "size_kb": 2310,
+   "why": "skeleton the animation mods expect",
+   "chunk": "0.2",
+   "required": true,
+   "profile": "play",
+   "sha256": "62335bad563800402a4f47e410bf96b5a6b3b920a6b5ea606cd723d03973ed41",
+   "fomod": {
+    "Installation": [
+     "Basic"
+    ],
+    "Animation Rig Map": [
+     "XPMS(S)E Latest"
+    ],
+    "Character and Weapons": [
+     "None or other mods"
+    ]
+   }
+  },
+  {
+   "id": "pandora-xpmse-patch",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 176724,
+    "file": 788564
+   },
+   "name": "Auto Skeleton Patch - Universal Behaviour Runtime",
+   "author": "Monitor221hz",
+   "version": "1.0.0",
+   "archive": "Pandora XPMSE Behavior Patch 176724 1.0.0 2026-08-11T17-13Z N2AYL5CCn.7z",
+   "size_kb": 1,
+   "why": "Pandora's skeleton patch for XPMSSE",
+   "chunk": "0.2",
+   "required": true,
+   "profile": "play",
+   "sha256": "89fa609f0668deec01403cfe49c500647da5ec2ff946c681b3e6e5c2b6b919df"
+  },
+  {
+   "id": "ssedisplaytweaks",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 34705,
+    "file": 797175
+   },
+   "name": "SSE Display Tweaks",
+   "author": "SlavicPotato",
+   "version": "0.5.25",
+   "archive": "SSE Display Tweaks 34705 0.5.25 2026-08-29T20-20Z QRde31FV2.zip",
+   "size_kb": 182,
+   "why": "frame-rate cap and borderless window",
+   "chunk": "0.2",
+   "required": true,
+   "profile": "play",
+   "sha256": "4f7a4980955eec472f3e73219df487fb990c48fd5ad0020c101cd8082b6b2c8c",
+   "pick": [
+    "SKSE"
+   ]
+  },
+  {
+   "id": "precision",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 72347,
+    "file": 798533
+   },
+   "name": "Precision - Accurate Melee Collisions",
+   "author": "Ersh",
+   "version": "2.0.6",
+   "archive": "Precision 72347 2.0.6 2026-09-01T07-51Z pQ0AZ3jtL.7z",
+   "size_kb": 5676,
+   "why": "accurate melee collisions",
+   "chunk": "1.4",
+   "required": true,
+   "profile": "play",
+   "set": [
+    "souls-0.0",
+    "dsc-b",
+    "dsc-b2"
+   ],
+   "sha256": "9e5ee9957b012ed0ced0add274ee6477077dddb10d68bd20a2abb055e00d8e98",
+   "pick": [
+    "Interface",
+    "MCM",
+    "Meshes",
+    "Scripts",
+    "SKSE",
+    "Textures",
+    "Nemesis_Engine/mod/colis",
+    "Precision.esp"
+   ]
+  },
+  {
+   "id": "true-directional-movement",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 51614,
+    "file": 798770
+   },
+   "name": "True Directional Movement - Modernized Third Person Gameplay",
+   "author": "Ersh",
+   "version": "2.3.1",
+   "archive": "True Directional Movement 51614 2.3.1 2026-09-01T17-15Z PuQ2UKIMI.7z",
+   "size_kb": 5088,
+   "why": "lock-on (RS click) and 8-way movement",
+   "chunk": "1.4",
+   "required": true,
+   "profile": "play",
+   "set": [
+    "souls-0.0",
+    "dsc-b",
+    "dsc-b2"
+   ],
+   "sha256": "0593379072997689f3d1db2302b0bf060c0ddc116743ab9585feaf328bec0b0f",
+   "ini": [
+    {
+     "file": "mcm/config/truedirectionalmovement/settings.ini",
+     "section": "Keys",
+     "set": {
+      "uTargetLockKey": "273"
+     }
+    },
+    {
+     "file": "mcm/config/truedirectionalmovement/settings.ini",
+     "section": "TargetLock",
+     "set": {
+      "bTargetLockUsePOVSwitchGamepad": "0",
+      "bTargetLockUsePOVSwitchKeyboard": "1"
+     }
+    }
+   ]
+  },
+  {
+   "id": "truehud",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 62775,
+    "file": 798218
+   },
+   "name": "TrueHUD - HUD Additions",
+   "author": "Ersh",
+   "version": "1.1.10",
+   "archive": "TrueHUD 62775 1.1.10 2026-08-31T16-21Z 31i7IoHze.7z",
+   "size_kb": 4284,
+   "why": "lock-on reticle and boss bars",
+   "chunk": "1.4",
+   "required": true,
+   "profile": "play",
+   "set": [
+    "souls-0.0",
+    "dsc-b",
+    "dsc-b2"
+   ],
+   "sha256": "ad10182e0806c47998bc6bf7badd34b8160c9ff008b85b796245e031a77ceed5"
+  },
+  {
+   "id": "tk-dodge-se",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 15309,
+    "file": 315866
+   },
+   "name": "TK Dodge SE",
+   "author": "tktk",
+   "version": "3.18",
+   "archive": "TK Dodge For RE-15309-3-18-1663096096.7z",
+   "size_kb": 345,
+   "why": "dodge behaviour and clips TK Dodge RE drives",
+   "chunk": "1.4",
+   "required": true,
+   "profile": "play",
+   "set": [
+    "souls-0.0",
+    "dsc-b2"
+   ],
+   "sha256": "0ba17c40eaaeb32e54f77b910df1a4bb21c884be6c7e52ff0e1244ff263446f4"
+  },
+  {
+   "id": "tk-dodge-re",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 56956,
+    "file": 402680
+   },
+   "name": "TK Dodge RE - Script Free",
+   "author": "Maxsu and FBplus and Loop and Xing",
+   "version": "v0.55-rc3",
+   "archive": "TK Dodge RE-v0.55-rc3-56956-v0-55-rc3-1688194322.zip",
+   "size_kb": 2811,
+   "why": "roll on B",
+   "chunk": "1.4",
+   "required": true,
+   "profile": "play",
+   "set": [
+    "souls-0.0",
+    "dsc-b2"
+   ],
+   "sha256": "4809e8bbce01186468dc63760e0b347cb93e636c41a241047028be1245281e6f",
+   "pick": [
+    "TK dodge re v0.55-rc3 DLL/Main/*",
+    "TK dodge re v0.55-rc3 DLL/Sheathed Dodge/*",
+    "TK dodge re v0.55-rc3 DLL/Forward dodge movement fix/*",
+    "TK dodge re v0.55-rc3 DLL/Allow dodging when stagger - Directional Movement/*"
+   ]
+  },
+  {
+   "id": "tk-dodge-re-addon",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 125238,
+    "file": 800181
+   },
+   "name": "TK Dodge RE Addon",
+   "author": "Styyx",
+   "version": "3.3.0",
+   "archive": "TK Dodge RE Addon 125238 3.3.0 2026-09-04T14-46Z uhRBKsoPu.7z",
+   "size_kb": 3972,
+   "why": "TK Dodge RE's DLL for 1.7.x and its settings",
+   "chunk": "1.4",
+   "required": true,
+   "profile": "play",
+   "set": [
+    "souls-0.0",
+    "dsc-b2"
+   ],
+   "sha256": "223ba62d6dc57e17cc793d31a8a5dffff0c5eb88c213d3a621faf3cece6f4b45",
+   "ini": [
+    {
+     "file": "skse/plugins/tk-dodge.toml",
+     "section": "Settings",
+     "set": {
+      "bUseSprintKey": "true",
+      "uDodgeKey": "255"
+     }
+    }
+   ]
+  },
+  {
+   "id": "dynamic-dodge",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 79598,
+    "file": 429066
+   },
+   "name": "Dynamic Dodge Animation",
+   "author": "lSmoothl",
+   "version": "1.5",
+   "archive": "Dynamic Dodge-79598-1-5-1695708046.zip",
+   "size_kb": 9944,
+   "why": "8-way rolls, steps and the stationary backstep",
+   "chunk": "1.4",
+   "required": true,
+   "profile": "play",
+   "set": [
+    "souls-0.0",
+    "dsc-b2"
+   ],
+   "sha256": "831d95c3adde9702981298ba93b526b169751c41acf7704965b1b05aea87f058",
+   "pick": [
+    "Dynamic Dodge/Roll to cancel attack/Dynamic Dodge - TK Dodge RE-0.55-rc3/*"
+   ]
+  },
+  {
+   "id": "iframe-generator",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 82737,
+    "file": 794617
+   },
+   "name": "IFrame Generator RE AE Support",
+   "author": "doodlum",
+   "version": "v1.03.2",
+   "archive": "IFrame Generator RE AE Support 82737 v1.03.2 2026-08-24T20-58Z CmfxYj7pW.zip",
+   "size_kb": 5703,
+   "why": "roll invincibility frames",
+   "chunk": "1.4",
+   "required": true,
+   "profile": "play",
+   "set": [
+    "souls-0.0",
+    "dsc-b2"
+   ],
+   "sha256": "72e15b1e589e8c146b03727bc6a0f7bfab6cd4395723a9b963c503df70e0545f",
+   "pick": [
+    "SKSE"
+   ]
+  },
+  {
+   "id": "skysa",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 31390,
+    "file": 203059
+   },
+   "name": "(SGC) SkySA - Combat Behavior Compulsion",
+   "author": "BOTuser999 - Distar - EdenExile  - Khonraad - NickNack - Notnt - Shikyokira",
+   "version": "1.9.4",
+   "archive": "(SGC) SkySA - Combat Behavior Compulsion-31390-1-9-4-1620832514.7z",
+   "size_kb": 7819,
+   "why": "souls-like attack behaviour",
+   "chunk": "1.4",
+   "required": true,
+   "profile": "play",
+   "set": [
+    "souls-0.0",
+    "dsc-b",
+    "dsc-b2"
+   ],
+   "sha256": "bc48aa3900782734865eb7e1d4830f703dcb17d30e203503d68191d46164228f",
+   "pick": [
+    "data/*"
+   ]
+  },
+  {
+   "id": "elder-souls-sword",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 47191,
+    "file": 217554
+   },
+   "name": "Elder Souls - Sword 2.0 SE",
+   "author": "miken1ke",
+   "version": "2.1",
+   "archive": "Elder Souls - Sword 2.0 SE-47191-2-1-1627608626.7z",
+   "size_kb": 39,
+   "why": "DS1-like sword moveset for SkySA",
+   "chunk": "1.4",
+   "required": true,
+   "profile": "play",
+   "set": [
+    "souls-0.0",
+    "dsc-b",
+    "dsc-b2"
+   ],
+   "sha256": "ecfa464cb5cbeae38c7da28a3dd8421226e2512f233525221faf01caa0ed395f",
+   "pick": [
+    "Elder Souls - Sword SE v2.1/Elder Souls - Sword 2.0/*"
+   ]
+  },
+  {
+   "id": "one-click-power-attack",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 60878,
+    "file": 819249
+   },
+   "name": "One Click Power Attack NG",
+   "author": "Bingle",
+   "version": "1.2",
+   "archive": "One Click Power Attack AE 1.7 Test 60878 1.2 2026-10-13T06-25Z oPpNfUmNb.7z",
+   "size_kb": 209,
+   "why": "heavy attack on RT",
+   "chunk": "1.4",
+   "required": true,
+   "profile": "play",
+   "set": [
+    "souls-0.0",
+    "dsc-b",
+    "dsc-b2"
+   ],
+   "sha256": "87b97d07acdd9cbbe9cf37bc1b39e938f473dcadf1a19ba0c9b1eeed03851e99",
+   "ini": [
+    {
+     "file": "mcm/config/ocpa/settings.ini",
+     "section": "General",
+     "set": {
+      "iKeycode": "281",
+      "iLongPressMode": "0"
+     }
+    }
+   ]
+  },
+  {
+   "id": "oar-stamina-cost",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 179721,
+    "file": 751119
+   },
+   "name": "OAR-added Stamina Cost for Most Actions",
+   "author": "Oborowatabanost",
+   "version": "5",
+   "archive": "OAR Added Stamina Costs mostly working-179721-5-1778520417.zip",
+   "size_kb": 549,
+   "why": "stamina cost for blocks and staggers",
+   "chunk": "1.4",
+   "required": true,
+   "profile": "play",
+   "set": [
+    "souls-0.0",
+    "dsc-b",
+    "dsc-b2"
+   ],
+   "sha256": "176afacdd140716e5ad81d8b6b04949314e5348a235fe70cb0503f7b29f193f6"
+  },
+  {
+   "id": "elden-parry",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 70240,
+    "file": 304517
+   },
+   "name": "Elden Parry",
+   "author": "dTry",
+   "version": "1.3",
+   "archive": "Elden Parry AE-70240-1-3-1659616986.7z",
+   "size_kb": 379,
+   "why": "parry",
+   "chunk": "1.4",
+   "required": true,
+   "profile": "play",
+   "set": [
+    "souls-0.0",
+    "dsc-b2"
+   ],
+   "sha256": "d2432a29cb116c083ab30ef7a29b0704242a9b5a9b3f243684e159ea2d772a49",
+   "ini": [
+    {
+     "file": "*EldenParry.ini",
+     "section": null,
+     "set": {
+      "fParryWindow_Start": "0.02",
+      "fParryWindow_End": "0.2"
+     }
+    }
+   ]
+  },
+  {
+   "id": "elden-parry-1.7.99",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 85740,
+    "file": 793442
+   },
+   "name": "dTry Plugin Updates",
+   "author": "doodlum",
+   "version": "1.7.99",
+   "archive": "Elden Parry 85740 1.7.99 2026-08-22T19-12Z FpnkHZ2AJ.zip",
+   "size_kb": 295,
+   "why": "Elden Parry's DLL for 1.7.x",
+   "chunk": "1.4",
+   "required": true,
+   "profile": "play",
+   "set": [
+    "souls-0.0",
+    "dsc-b2"
+   ],
+   "sha256": "75b77081d9c7bac9937f52bab9ac234bdb434bbf19a492d0a440ef6f47053c7d"
+  },
+  {
+   "id": "elden-parry-precision-fix",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 188223,
+    "file": 789181
+   },
+   "name": "Elden Parry Precision Fix",
+   "author": "Laaaast",
+   "version": "1",
+   "archive": "EldenParryPrecisionFix 188223 1 2026-08-13T04-33Z qTl1SxRnL.zip",
+   "size_kb": 63,
+   "why": "Elden Parry with Precision",
+   "chunk": "1.4",
+   "required": true,
+   "profile": "play",
+   "set": [
+    "souls-0.0",
+    "dsc-b2"
+   ],
+   "sha256": "ade5e7c46d02f444b3bba7da0b0353d24c6acd35e658ad4e8973a26d05764155"
+  },
+  {
+   "id": "bdi-payload-patch",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 78146,
+    "file": 328880
+   },
+   "name": "Behavior Data Injector",
+   "author": "Maxsu and Dropkicker",
+   "version": "v1.0",
+   "archive": "Payload Interpreter - Nemesis Less Patch-78146-v1-0-1667564948.7z",
+   "size_kb": 1,
+   "why": "Payload Interpreter without Nemesis",
+   "chunk": "1.4",
+   "required": true,
+   "profile": "play",
+   "set": [
+    "souls-0.0",
+    "dsc-b2"
+   ],
+   "sha256": "8d7d0f8150ca3e0a9e078b8a2fc341048e447b819f9b1c40f85d6e0e46d3fee3"
+  },
+  {
+   "id": "rim-parry",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 114366,
+    "file": 499427
+   },
+   "name": "Rim Parry and Execution",
+   "author": "SHADOWPQ",
+   "version": "v1.1",
+   "archive": "00 Rim Parry Stand Alone - v1.1 Update-114366-v1-1-1715262891.zip",
+   "size_kb": 56293,
+   "why": "riposte and execution",
+   "chunk": "1.4",
+   "required": true,
+   "profile": "play",
+   "set": [
+    "souls-0.0",
+    "dsc-b2"
+   ],
+   "sha256": "b9cadb65f6a88ff272c6863695edfbab92e1e323f0ac5a8d1e26bc7faa8a0a60"
+  },
+  {
+   "id": "rim-parry-ctd-fix",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 143312,
+    "file": 600715
+   },
+   "name": "Rim Parry and Execution v1.1 CTD fix",
+   "author": "shadowPQ",
+   "version": "v1.1",
+   "archive": "Rim Parry and Execution v1.1 CTD fix-143312-v1-1-1740879051.rar",
+   "size_kb": 14,
+   "why": "Rim Parry crash fix",
+   "chunk": "1.4",
+   "required": true,
+   "profile": "play",
+   "set": [
+    "souls-0.0",
+    "dsc-b2"
+   ],
+   "sha256": "ba0da201ad4e3d06d8fbd401cbf58852dada18c7213240b72424273d49a46c5d"
+  },
+  {
+   "id": "rim-parry-elden-patch",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 114366,
+    "file": 499429
+   },
+   "name": "Rim Parry and Execution",
+   "author": "SHADOWPQ",
+   "version": "v1.1",
+   "archive": "02 Rim_Parry_Elden Parry_patch SA ver-114366-v1-1-1715262975.zip",
+   "size_kb": 3,
+   "why": "Rim Parry with Elden Parry",
+   "chunk": "1.4",
+   "required": true,
+   "profile": "play",
+   "set": [
+    "souls-0.0",
+    "dsc-b2"
+   ],
+   "sha256": "191abf0820eddc9367aa1eb3b0dcd5d2d28d384fa0d91ca3390fd9366f96f456"
+  },
+  {
+   "id": "rim-parry-one-parry",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 164526,
+    "file": 687622
+   },
+   "name": "Rim Parry and Execution - One Parry Patch",
+   "author": "SHADOWPQ",
+   "version": "1.0",
+   "archive": "Rim Parry and Execution - One Parry Patch-164526-1-0-1763198266.rar",
+   "size_kb": 10,
+   "why": "one parry window",
+   "chunk": "1.4",
+   "required": true,
+   "profile": "play",
+   "set": [
+    "souls-0.0",
+    "dsc-b2"
+   ],
+   "sha256": "736bfae3d417245f7763e219e7d8fef2b974fe3600ca95e163503a62ce5615f2"
+  },
+  {
+   "id": "modern-stagger-lock",
+   "group": "combat",
+   "source": {
+    "github": "SkyHorizon3/ModernStaggerLock",
+    "tag": "v1.07a-1.7.99+",
+    "asset": "Modern.Stagger.Lock.1.07a.7z"
+   },
+   "name": "modern-stagger-lock",
+   "author": "SkyHorizon3",
+   "why": "stagger lock",
+   "chunk": "1.4",
+   "required": true,
+   "profile": "play",
+   "set": [
+    "souls-0.0"
+   ],
+   "sha256": "9c2389d1171f23782d0b6185fc5d732c1593267524e272b15c4cb584d26e38c3"
+  },
+  {
+   "id": "maxsu-block-overhaul",
+   "group": "combat",
+   "source": {
+    "github": "max-su-2019/MaxuBlockOverhaul",
+    "tag": "v0.24",
+    "asset": "MaxsuBlockOverhaul-V0.24a.7z"
+   },
+   "name": "maxsu-block-overhaul",
+   "author": "max-su-2019",
+   "why": "block animations",
+   "chunk": "1.4",
+   "required": true,
+   "profile": "play",
+   "set": [
+    "souls-0.0",
+    "dsc-b",
+    "dsc-b2"
+   ],
+   "sha256": "39b9499501bbbb0457668a2a3e148a914605515b07ae0708dfd91114933129cf"
+  },
+  {
+   "id": "dark-souls-combat",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 28567,
+    "file": 104449
+   },
+   "name": "Dark Souls Combat System SE by TheDriedFinger",
+   "why": "combat group B candidate (owner, 2026-10-29); trialled in its own lane after 0.2",
+   "chunk": "2.7",
+   "required": false,
+   "profile": "play",
+   "set": [
+    "dsc-b",
+    "dsc-b2"
+   ],
+   "drop": [
+    "sound/fx/bb_dsc*"
+   ],
+   "sha256": "ca203060c0fdca2224d03042d34b2f2799cc50b1e4b5ee50fe3641bcffc1bbb7",
+   "author": "TheDriedFInger",
+   "version": "1.5.3",
+   "archive": "Dark Souls Combat by TheDriedFinger-28567-1-5-3-1566846932.rar",
+   "size_kb": 880
+  },
+  {
+   "id": "freeclimb",
+   "group": "traversal",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 193552,
+    "file": 817460
+   },
+   "name": "FreeClimb",
+   "author": "Epsilona11",
+   "version": "0.5.0",
+   "archive": "FreeClimb 193552 0.5.0 2026-10-10T12-21Z Sx9oEwy6h.zip",
+   "size_kb": 3866,
+   "why": "climbing walls and ladders",
+   "chunk": "2.8",
+   "required": true,
+   "profile": "play",
+   "sha256": "3c54c07a012820b81b26c4153b7df17876a7c790cd3d0a24053a2183161eb95a"
+  },
+  {
+   "id": "swimming-extensions",
+   "group": "traversal",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 189821,
+    "file": 819783
+   },
+   "name": "Swimming Extensions - Swimming Overhaul (Svimex)",
+   "author": "Tsptds - JellyFishInLoop",
+   "version": "1.1.3",
+   "archive": "Swimming Extensions (Svimex) 189821 1.1.3 2026-10-13T20-19Z eVtX7J8Tt.7z",
+   "size_kb": 4632,
+   "why": "swimming and diving",
+   "chunk": "2.8",
+   "required": true,
+   "profile": "play",
+   "sha256": "820da12804c1d3ff29f54a765c3beba2974a84d74dca2781273e7aa69e1c4e42"
+  },
+  {
+   "id": "sailable-ship",
+   "group": "traversal",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 72070,
+    "file": 449224
+   },
+   "name": "Sailable Ship VR and SE",
+   "author": "ziher",
+   "version": "1.12",
+   "archive": "Sailable Ship-72070-1-12-1701865811.zip",
+   "size_kb": 767241,
+   "why": "a boat the player sails",
+   "chunk": "2.8",
+   "required": true,
+   "profile": "play",
+   "sha256": "fb2a4cec21fa6b7b8ebd6d80e461b50f2187fff4acbc7348f606d0eb0da3c455"
+  },
+  {
+   "id": "evg-animated-traversal",
+   "group": "traversal",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 63232,
+    "file": 506136
+   },
+   "name": "EVG Animated Traversal",
+   "author": "Everglaid",
+   "version": "2.1",
+   "archive": "EVG Animated Traversal - Framework 2.1-63232-2-1-1716950619.7z",
+   "size_kb": 5291,
+   "why": "vaulting and ledge animations",
+   "chunk": "2.8",
+   "required": true,
+   "profile": "play",
+   "sha256": "a3302ab97bb07572af8ff6a8473756531a71b6d2888f34f954ff85596cee46b9"
+  },
+  {
+   "id": "custom-skills-framework",
+   "group": "soul-ui",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 41780,
+    "file": 799487
+   },
+   "name": "Custom Skills Framework",
+   "author": "meh321 and Parapets",
+   "version": "3.2.0",
+   "archive": "Custom Skills Framework 41780 3.2.0 2026-09-03T00-01Z 6XybdaK92.7z",
+   "size_kb": 3724,
+   "why": "27 skills as custom skills",
+   "chunk": "1.3",
+   "required": true,
+   "profile": "play",
+   "sha256": "b05958f94c531c71818cf3e0705dc7f2cc425b9e117171e95f964851c230e690"
+  },
+  {
+   "id": "prismaui",
+   "group": "soul-ui",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 148718,
+    "file": 808126
+   },
+   "name": "Prisma UI - Next-Gen Web UI Framework",
+   "author": "StarkMP",
+   "version": "1.5.1",
+   "archive": "Prisma UI 148718 1.5.1 2026-09-20T08-10Z HZCMOy8nO.zip",
+   "size_kb": 33036,
+   "why": "our own HTML views (pinned, unmodified)",
+   "chunk": "1.2",
+   "required": true,
+   "profile": "play",
+   "sha256": "ad16dfe478da1893d76d526f84acd3fe3704808cd98d4bf086402a21296c625d"
+  },
+  {
+   "id": "dear-diary",
+   "group": "soul-ui",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 23010,
+    "file": 238225
+   },
+   "name": "Dear Diary - Paper SkyUI Menus Replacer SE",
+   "author": "uranreactor",
+   "version": "3.0.6",
+   "archive": "Dear Diary-23010-3-0-6-1635701683.zip",
+   "size_kb": 18966,
+   "why": "paper SkyUI menus",
+   "chunk": "1.2",
+   "required": true,
+   "profile": "play",
+   "sha256": "660c47a174b5fa4dc786bfe5f677579206ba84389db97e4105f6ee1e899832d8",
+   "fomod": {
+    "Install MoreHUD I.E. replacer?": [
+     "No"
+    ],
+    "Install QuickLootRE replacer?": [
+     "No"
+    ],
+    "Install Wheel Menu replacer?": [
+     "No"
+    ],
+    "Install Main Menu background replacer?": [
+     "Yes"
+    ],
+    "Console Improvements": [
+     "60 FPS Vanilla Console"
+    ]
+   }
+  },
+  {
+   "id": "wood-and-paper",
+   "group": "soul-ui",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 44174,
+    "file": 210124
+   },
+   "name": "Wood and Paper - SkyUI - Dear Diary Skin",
+   "author": "uranreactor",
+   "version": "1.0.2",
+   "archive": "Wood and Paper - A Dear Diary Skin-44174-1-0-2-1624174536.zip",
+   "size_kb": 12908,
+   "why": "Dear Diary's wood and paper skin",
+   "chunk": "1.2",
+   "required": true,
+   "profile": "play",
+   "sha256": "cdff527f39a8736dd60e6b96447b7209db08fd0943368322a446ec98b4759b3c"
+  },
+  {
+   "id": "oblivion-loading-menu",
+   "group": "soul-ui",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 38708,
+    "file": 152357
+   },
+   "name": "Oblivion-like Loading Menu SE",
+   "author": "uranreactor",
+   "version": "1.0",
+   "archive": "Oblivion-like Loading Menu 16x9-38708-1-0-1595839522.7z",
+   "size_kb": 171210,
+   "why": "paper loading screen (16:9)",
+   "chunk": "1.2",
+   "required": true,
+   "profile": "play",
+   "sha256": "5e3ec2151cd8f6d88d3a92ef2cd17b3272e6d86625fc7e486d61ff77bc65679a",
+   "fomod": {
+    "Do you want to install custom load screens?": [
+     "No"
+    ]
+   }
+  },
+  {
+   "id": "flat-world-map",
+   "group": "soul-ui",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 29932,
+    "file": 793801
+   },
+   "name": "Flat World Map Framework (FWMF)",
+   "author": "Caites and shad0wshayd3",
+   "version": "1.9.990",
+   "archive": "Flat World Map Framework FOMOD Lite 29932 1.9.990 2026-08-23T10-16Z xDLPwGaj5.zip",
+   "size_kb": 114837,
+   "why": "flat world map (FOMOD Lite)",
+   "chunk": "2.10",
+   "required": true,
+   "profile": "play",
+   "sha256": "3b9eb3b3b8c2e8ce5fa15fccef57a06e644c85b27a35538cd2821a9520bbacf3"
+  },
+  {
+   "id": "no-google-maps",
+   "group": "soul-ui",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 147105,
+    "file": 818704
+   },
+   "name": "No Google Maps Skyrim",
+   "author": "SkyHorizon",
+   "version": "0.4.0",
+   "archive": "No Google Maps Skyrim 147105 0.4.0 2026-10-12T09-56Z IoFlhfrtb.7z",
+   "size_kb": 4236,
+   "why": "no player or quest markers",
+   "chunk": "2.10",
+   "required": true,
+   "profile": "play",
+   "sha256": "7cb4b9b0988d1845443d32d84e3ac9e0dbf991b4b4b71f6a7844ee256b65072a"
+  },
+  {
+   "id": "magic-expanded",
+   "group": "soul-ui",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 133435,
+    "file": 788301
+   },
+   "name": "Magic Expanded - Morrowind Oblivion Shout and New Spells",
+   "author": "Destructor36",
+   "version": "5.1",
+   "archive": "Magic 133435 5.1 2026-08-11T02-19Z 587RqTjYq.zip",
+   "size_kb": 1078,
+   "why": "Mark, Recall, Levitate-like effects (a check for 2.9)",
+   "chunk": "2.9",
+   "required": false,
+   "profile": "play",
+   "sha256": "fd504f807c98f37c980a0d5554ffe7d0997ef18ed9986f5a92f92efbc551eb52"
+  },
+  {
+   "id": "community-shaders",
+   "group": "soul-ui",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 86492,
+    "file": 810029
+   },
+   "name": "Community Shaders",
+   "author": "Community Shaders Team",
+   "version": "1.9.1",
+   "archive": "Community Shaders 86492 1.9.1 2026-09-24T12-49Z lNkz9LIZ8.zip",
+   "size_kb": 44085,
+   "why": "lighting, water and the features 2.W3 and 4.6 need",
+   "chunk": "2.W3",
+   "required": true,
+   "profile": "play",
+   "sha256": "21daeba464bcbc6ee90f5bbf6d8bd17a0ad2b024cc406ba8a6ee216fc7679fcb"
+  },
+  {
+   "id": "tropical-skyrim-sse",
+   "group": "land",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 78044,
+    "file": 328450
+   },
+   "name": "Tropical Skyrim conversion to SSE",
+   "author": "Soolie-Tron91-Kaegus1",
+   "version": "1.1",
+   "archive": "Tropical Skyrim for SE V1.1-78044-1-1-1667415678.rar",
+   "size_kb": 774366,
+   "why": "the land: tropical trees, grass and climate (decision 0028)",
+   "chunk": "2.W1",
+   "required": true,
+   "profile": "play",
+   "sha256": "6d58bb0018f8fed106cb3dc534f9eaac668595f7d59d0c4a689ba4774732e167"
+  },
+  {
+   "id": "xanmeer-tileset",
+   "group": "land",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 181193,
+    "file": 790547
+   },
+   "name": "Argonian Xanmeer Tileset - Modder's Resource",
+   "author": "DarthVitrial",
+   "version": "1.1",
+   "archive": "Xanmeer Resources 181193 1.1 2026-08-15T23-35Z tSBIcEWjI.7z",
+   "size_kb": 63357,
+   "why": "Argonian ruin pieces",
+   "chunk": "0.4",
+   "required": true,
+   "profile": "play",
+   "sha256": "29baf86a70d81a1b74bead256c6ce2ed2e607ff1a6b04331a651ba6a0e366e2e"
+  },
+  {
+   "id": "king-of-the-murkmire",
+   "group": "land",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 190459,
+    "file": 822292
+   },
+   "name": "King of the Murkmire",
+   "author": "pancake0723",
+   "version": "1.1.1",
+   "archive": "King of the Murkmire - Main 190459 1.1.1 2026-10-18T16-06Z N2AYL5DmV.7z",
+   "size_kb": 700308,
+   "why": "Saxhleel clothing, Murkmire buildings and props",
+   "chunk": "0.4",
+   "required": true,
+   "profile": "play",
+   "sha256": "00abb3b460ee395e0c2df62330aaa63f6a02d78eb9f5ad4e6497c346205746b0"
+  },
+  {
+   "id": "htbm",
+   "group": "land",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 35929,
+    "file": 576886
+   },
+   "name": "Here There Be Monsters SSE",
+   "author": "Araanim",
+   "version": "9.31",
+   "archive": "Here There Be Monsters SSE-35929-9-31-1735389344.7z",
+   "size_kb": 306335,
+   "why": "Here There Be Monsters: Sign of Cipactli's requirement",
+   "chunk": "0.4",
+   "required": true,
+   "profile": "play",
+   "sha256": "59058ce25da13590dcfc9cd578e4cca7107e05f75a96592efb9ea61912658f83"
+  },
+  {
+   "id": "htbm-cipactli",
+   "group": "land",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 35933,
+    "file": 207025
+   },
+   "name": "Here There Be Monsters - Sign of Cipactli SSE",
+   "author": "Araanim",
+   "version": "2.92",
+   "archive": "Here There Be Monsters - Sign of Cipactli SSE-35933-2-92-1622685794.7z",
+   "size_kb": 1537198,
+   "why": "Argonian architecture, armour and creatures",
+   "chunk": "0.4",
+   "required": true,
+   "profile": "play",
+   "sha256": "c44da49e52ae68d41df23fdf672b406d09ea72a9338e3e496b5be86784d0aed6"
+  },
+  {
+   "id": "mud-mother-grove",
+   "group": "land",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 146557,
+    "file": 612822
+   },
+   "name": "Mud Mother Grove - An Argonian Mud Hut",
+   "author": "geminivoid",
+   "version": "1.5.1",
+   "archive": "Mud Mother Grove - ESL File-146557-1-5-1-1743543511.rar",
+   "size_kb": 51745,
+   "why": "Argonian mud hut kit (ESL)",
+   "chunk": "0.4",
+   "required": true,
+   "profile": "play",
+   "sha256": "7ac552437eeac11ff87cf14a4d22e3d4769d16fb7dde6f3c0218c7a133e017f2"
+  },
+  {
+   "id": "xalfek",
+   "group": "land",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 55595,
+    "file": 228420
+   },
+   "name": "Xalfek - An Argonian Home",
+   "author": "DexMods",
+   "version": "1.0",
+   "archive": "Xalfek - An Argonian Home-55595-1-0-1631646100.zip",
+   "size_kb": 35721,
+   "why": "Argonian home props (ESL)",
+   "chunk": "0.4",
+   "required": true,
+   "profile": "play",
+   "sha256": "8f9a4b8682f156192e2718db758fc59b2b9b760b2b086bfccc2722f3592657ea",
+   "drop": [
+    "*.esp",
+    "*.esl"
+   ],
+   "note": "plugin needs USSEP (not in the stack): assets only; its BSAs load once 0.4 lists them in the archive list"
+  },
+  {
+   "id": "mw-imperial-keep",
+   "group": "land",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 133090,
+    "file": 558713
+   },
+   "name": "Morrowind Imperial Keep Set (Remodeled)",
+   "author": "Tesak1243",
+   "version": "1.0",
+   "archive": "Morrowind Imperial Keep Set-133090-1-0-1730675084.rar",
+   "size_kb": 45805,
+   "why": "Gideon's Imperial keep set",
+   "chunk": "0.4",
+   "required": true,
+   "profile": "play",
+   "sha256": "d22974919cdd3d6cea25f2b0b0851f2cb636a7569b7c3d1f8ae7b34c8584b9c0"
+  },
+  {
+   "id": "mw-hlaalu",
+   "group": "land",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 157997,
+    "file": 672522
+   },
+   "name": "Morrowind Hlaalu Architecture",
+   "author": "Angelio",
+   "version": "v2.0",
+   "archive": "Morrowind Hlaalu Architecture-157997-v2-0-1759663700.7z",
+   "size_kb": 29133,
+   "why": "Hlaalu architecture for Gideon's civic language",
+   "chunk": "0.4",
+   "required": true,
+   "profile": "play",
+   "sha256": "c32811d704f25d33fe421e20d1258a965232c6fafc530a2f99d95c1f74c8cad7"
+  },
+  {
+   "id": "drjacopo-grass",
+   "group": "land",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 80687,
+    "file": 689307
+   },
+   "name": "DrJacopo's - 3D Landscapes and Grass Library",
+   "author": "Dr Jacopo",
+   "version": "16.53",
+   "archive": "DrJacopo's - 3D Grass Library - Meshes-80687-16-53-1763626250.zip",
+   "size_kb": 11410,
+   "why": "3D grass and landscape meshes",
+   "chunk": "2.W1",
+   "required": true,
+   "profile": "play",
+   "sha256": "5026606faae2b72cc796242dbc2e3f13d0a22133f9afafe6e2a9a71ecb298c68"
+  },
+  {
+   "id": "seashells",
+   "group": "land",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 4492,
+    "file": 8702
+   },
+   "name": "Seashells",
+   "author": "Jokerine",
+   "version": "3.0",
+   "archive": "Seashells SSE-4492-3-0.7z",
+   "size_kb": 9573,
+   "why": "shore clutter",
+   "chunk": "0.4",
+   "required": true,
+   "profile": "play",
+   "sha256": "b561bd0a1ead01c007febb708b6279d80a37c7c8efa8655f800874fbc5c61c68",
+   "drop": [
+    "*.esp",
+    "*.esl"
+   ],
+   "note": "plugin needs USSEP (not in the stack): assets only; its BSAs load once 0.4 lists them in the archive list"
+  },
+  {
+   "id": "shores-of-skyrim-cc",
+   "group": "land",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 140081,
+    "file": 602219
+   },
+   "name": "Shores of Skyrim - Base Object Swapper",
+   "author": "FrankBlack",
+   "version": "1.4",
+   "archive": "b) Shores of Skyrim Part Two CC Attribution Files-140081-1-4-1741221118.rar",
+   "size_kb": 78414,
+   "why": "shore pieces (CC attribution files)",
+   "chunk": "0.4",
+   "required": true,
+   "profile": "play",
+   "sha256": "44307f926585bc24ffa7a5ef5b09b63e450edca87dd255c48e0ea59856ee6934"
+  },
+  {
+   "id": "base-object-swapper",
+   "group": "land",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 60805,
+    "file": 794962
+   },
+   "name": "Base Object Swapper",
+   "author": "powerofthree",
+   "version": "3.5.0",
+   "archive": "Base Object Swapper 60805 3.5.0 2026-08-25T12-33Z Ae46W7Fxr.7z",
+   "size_kb": 8750,
+   "why": "Shores of Skyrim's requirement",
+   "chunk": "0.4",
+   "required": true,
+   "profile": "play",
+   "sha256": "d1f21425b608775d9e324218ab1e1e2a7ba1e3fe55b911019572fe7c67898f66"
+  },
+  {
+   "id": "skyrim-ferries",
+   "group": "land",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 109843,
+    "file": 802393
+   },
+   "name": "Skyrim Ferries - Immersive Real-Time Water Travel",
+   "author": "Mharlek1",
+   "version": "1.6",
+   "archive": "Skyrim Ferries - Immersive Real-Time Water Travel 109843 1.6 2026-09-08T16-10Z Z3mWyIeYr.zip",
+   "size_kb": 65236,
+   "why": "plank ferries, rafts and poled craft",
+   "chunk": "2.8",
+   "required": true,
+   "profile": "play",
+   "sha256": "a053c715730207d9f52c76fb5425647ebeac006262e0ee1397da4da40b896387"
+  },
+  {
+   "id": "rowboats",
+   "group": "land",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 35341,
+    "file": 137136
+   },
+   "name": "Rowboats of skyrim",
+   "author": "PraedythXVI",
+   "version": "Final",
+   "archive": "RowBoats and Oars of Skyrim-35341-Final-1588245076.7z",
+   "size_kb": 5790,
+   "why": "rowboats and oars",
+   "chunk": "2.8",
+   "required": true,
+   "profile": "play",
+   "sha256": "9edfe3ebe786a00f6e05b188276d71f1bf00e45d32a21cf5835e6b38fe6ec878"
+  },
+  {
+   "id": "cc-ayleid-resources",
+   "group": "land",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 83999,
+    "file": 355319
+   },
+   "name": "Creation Club Ayleid Ruin Resources",
+   "author": "Sarthes Arai",
+   "version": "1.0",
+   "archive": "CC Ayleid Ruins Resources 1 0-83999-1-0-1675274373.zip",
+   "size_kb": 11210,
+   "why": "Ayleid ruin pieces",
+   "chunk": "0.4",
+   "required": true,
+   "profile": "play",
+   "sha256": "03f9203f14744f481e089901fa307fe190660f4bfad953d51b0f28743fed25be"
+  },
+  {
+   "id": "sleeping-hist-tree",
+   "group": "land",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 116792,
+    "file": 498345
+   },
+   "name": "Skyfall's Sleeping Hist Tree Overhaul",
+   "author": "Skyfall515 - ToosTruus - Clofas",
+   "version": "1.4",
+   "archive": "Skyfall Sleeping Hist Tree Overhaul-116792-1-4-1714968243.7z",
+   "size_kb": 32211,
+   "why": "Hist tree meshes",
+   "chunk": "0.4",
+   "required": true,
+   "profile": "play",
+   "sha256": "1b7f3e3149f2db8735403bb44ef849ee865063300e01dd5f188551dfaf2ea5cf"
+  },
+  {
+   "id": "ships-and-boats-of-tamriel",
+   "group": "land",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 41653,
+    "file": 406330
+   },
+   "name": "Ships and boats of Tamriel",
+   "author": "ThatShipGuy",
+   "version": "1.2",
+   "archive": "Ships and Boats of Tamriel 1.2-41653-1-2-1689133732.zip",
+   "size_kb": 206540,
+   "why": "ship and boat models",
+   "chunk": "2.8",
+   "required": true,
+   "profile": "play",
+   "sha256": "1bd5c3fac0d5c032ee0efbc085f0b2b9fec68bd0f44c4ec7b08be81926bddbaa"
+  },
+  {
+   "id": "depths-of-skyrim",
+   "group": "land",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 26913,
+    "file": 175564
+   },
+   "name": "Depths of Skyrim - An Underwater Overhaul SSE",
+   "author": "TheBlackpixel",
+   "version": "1.1.7",
+   "archive": "Depths of Skyrim-26913-1-1-7-1608572556.rar",
+   "size_kb": 105657,
+   "why": "underwater flora",
+   "chunk": "2.W2",
+   "required": true,
+   "profile": "play",
+   "sha256": "45256b8e537d48e12f1b9ae81512b6005478b86fb328e0dcdee3a2684ec2acd8"
+  },
+  {
+   "id": "sirenroot",
+   "group": "land",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 70917,
+    "file": 747488
+   },
+   "name": "SIRENROOT - Deluge of Deceit",
+   "author": "Everglaid",
+   "version": "1.30",
+   "archive": "SIRENROOT - Deluge of Deceit 1.30-70917-1-30-1777622316.zip",
+   "size_kb": 345903,
+   "why": "ruin blocks and caustics",
+   "chunk": "0.4",
+   "required": true,
+   "profile": "play",
+   "sha256": "c1ba1454928262e37fb2c01d75aefbc492c75964df65cc253cfdd75e5948578b"
+  },
+  {
+   "id": "sailboats-expanded-update",
+   "group": "land",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 40057,
+    "file": 205629
+   },
+   "name": "Sailboats - Script Free Sailing EXPANDED SSE",
+   "author": "ElstarTomas and DeviantKhaled and Araanim",
+   "version": "2.5",
+   "archive": "Script Free Ship Sailing SSE-40057-2-5-1622028859.7z",
+   "size_kb": 3458,
+   "why": "Script Free Ship Sailing SSE: the master Sailboats.esp needs",
+   "chunk": "2.8",
+   "required": true,
+   "profile": "play",
+   "sha256": "a1784ac8687e914871612c23169566ef58b687396ce02e9d4764cd6c51241544"
+  },
+  {
+   "id": "sailboats-expanded",
+   "group": "land",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 40057,
+    "file": 204643
+   },
+   "name": "Sailboats - Script Free Sailing EXPANDED SSE",
+   "author": "ElstarTomas and DeviantKhaled and Araanim",
+   "version": "2.0",
+   "archive": "Sailboats SSE-40057-2-0-1621552064.7z",
+   "size_kb": 59311,
+   "why": "sailboats",
+   "chunk": "2.8",
+   "required": true,
+   "profile": "play",
+   "sha256": "2e2919e5ff6b2d66cc4055efd305db11e5e920f465e95bf09b513e0892642d82"
+  },
+  {
+   "id": "boats-operational",
+   "group": "land",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 110882,
+    "file": 597296
+   },
+   "name": "Boats - Operational Animated Travel",
+   "author": "Enneal",
+   "version": "1.6.2",
+   "archive": "Boats - Operational Animated Travel-110882-1-6-2-1740141743.7z",
+   "size_kb": 5835,
+   "why": "boat-carrier meshes",
+   "chunk": "2.8",
+   "required": true,
+   "profile": "play",
+   "sha256": "07f7ebace706d0f8f169f5bc1b76435f297aa9631a3962a2781aa93e6ef64583",
+   "drop": [
+    "sskboat - extendedferrytravel.esp"
+   ]
+  },
+  {
+   "id": "bmv",
+   "group": "land",
+   "source": {
+    "vault": "bmv",
+    "origin": "https://www.moddb.com/mods/black-marsh-valenwood",
+    "manual": true
+   },
+   "name": "Black Marsh & Valenwood",
+   "why": "Black Marsh & Valenwood: buildings, props, creatures (ModDB, 9.6 GB; cached privately)",
+   "chunk": "0.4",
+   "required": true,
+   "profile": "play",
+   "sha256": "f236dc8d45c4bc714493b5319254d95838cefdb2d6081662d83cb7e4b7d845eb",
+   "nested": [
+    "Data1.rar",
+    "Data2.rar"
+   ],
+   "drop": [
+    "valenwood.esp",
+    "bosmerarmormaty743.esm",
+    "black marsh north.esp",
+    "lodsettings*"
+   ],
+   "note": "the vault part holds the ModDB download as Data1.rar and Data2.rar; Black Marsh.esm is laid for its records and assets, its worldspace is never lifted (0006); Valenwood and Black Marsh North are left out"
+  },
+  {
+   "id": "tropical-skyrim-le",
+   "group": "pipeline",
+   "source": {
+    "nexus": "skyrim",
+    "mod": 33017,
+    "file": 1000016188
+   },
+   "name": "Tropical Skyrim -- A Climate Overhaul",
+   "author": "Soolie",
+   "version": "1.0",
+   "archive": "Tropical Skyrim v1_0-33017-1-0.zip",
+   "size_kb": 897311,
+   "why": "original Tropical Skyrim tree meshes the registry names",
+   "chunk": "0.4",
+   "required": false,
+   "profile": "pipeline",
+   "sha256": "563649269c353bb2162461ee8cac69a04ffb3afebf01045ef9ab412bfdd17d7f"
+  },
+  {
+   "id": "hoddminir",
+   "group": "pipeline",
+   "source": {
+    "nexus": "skyrim",
+    "mod": 38651,
+    "file": 1000157350
+   },
+   "name": "Hoddminir Plants and Trees",
+   "author": "Elinen and Ztree",
+   "version": "3.0",
+   "archive": "Hoddminir Plants and trees 2048-38651-3-0.zip",
+   "size_kb": 351614,
+   "why": "plants and trees",
+   "chunk": "0.4",
+   "required": false,
+   "profile": "pipeline",
+   "sha256": "2cb202c4928069d49bf6050b3a38d3d2e1d7d8f7e2ae26c891f381b4892295dc"
+  },
+  {
+   "id": "darkwater-den",
+   "group": "pipeline",
+   "source": {
+    "nexus": "skyrim",
+    "mod": 52630,
+    "file": 1000104000
+   },
+   "name": "Darkwater Den - Argonian themed home",
+   "author": "Elianora",
+   "version": "1.2",
+   "archive": "Darkwater Den Update 2-52630-1-2.rar",
+   "size_kb": 76138,
+   "why": "Argonian home props",
+   "chunk": "0.4",
+   "required": false,
+   "profile": "pipeline",
+   "sha256": "60a2ec29e6348b136c4840fdfb9fdf1e7a3b338cced03a41110bcc27d0a9c390"
+  },
+  {
+   "id": "ayleid-building-kit",
+   "group": "pipeline",
+   "source": {
+    "nexus": "skyrim",
+    "mod": 90667,
+    "file": 1000271869
+   },
+   "name": "Ayleid Ruins Building Kit -Resources-",
+   "author": "Imperial Society",
+   "version": "001",
+   "archive": "Ayleid Building Kit-90667-001.zip",
+   "size_kb": 63587,
+   "why": "Ayleid kit",
+   "chunk": "0.4",
+   "required": false,
+   "profile": "pipeline",
+   "sha256": "5f465b70c2f04ccaa780f693dbe1a9da55cc572aea058d7b8f49ac1ebd75c3d2"
+  },
+  {
+   "id": "script-free-ship-sailing",
+   "group": "pipeline",
+   "source": {
+    "nexus": "skyrim",
+    "mod": 67727,
+    "file": 1000173736
+   },
+   "name": "Script free ship sailing",
+   "author": "ElstarTomas",
+   "version": "2.3",
+   "archive": " Script free ship sailing 2.3-67727-2-3.7z",
+   "size_kb": 4742,
+   "why": "canoe and oars",
+   "chunk": "2.8",
+   "required": false,
+   "profile": "pipeline",
+   "sha256": "f13d0875fcc258bfa4f3b9ab1acf105d744159b8bae7074584a8e91dc18237e6"
+  },
+  {
+   "id": "solitude-ferry",
+   "group": "pipeline",
+   "source": {
+    "nexus": "skyrim",
+    "mod": 89948,
+    "file": 1000302287
+   },
+   "name": "Solitude (ghost) Ferry",
+   "author": "Syntia",
+   "version": "1.1.00",
+   "archive": "SNT solitude Basic Ferry-89948-1-1-00-1564848313.zip",
+   "size_kb": 499,
+   "why": "poled ferry raft",
+   "chunk": "2.8",
+   "required": false,
+   "profile": "pipeline",
+   "sha256": "890c1d0fd0f909d4c67ab95cfc882da72c1d5010b25463165de4f7e4fc2764d5"
+  },
+  {
+   "id": "cyrodiil-ships",
+   "group": "pipeline",
+   "source": {
+    "nexus": "skyrim",
+    "mod": 59426,
+    "file": 1000132793
+   },
+   "name": "Cyrodiil Ship and boat resource",
+   "author": "Markus Liberty",
+   "version": "001",
+   "archive": "Imperial styled Ship and boats Resource-59426-001.zip",
+   "size_kb": 3294,
+   "why": "Imperial ship resource",
+   "chunk": "2.8",
+   "required": false,
+   "profile": "pipeline",
+   "sha256": "aca684ec9ef1a7825e17785f4ff119a7ae16bf1399f829074db78de9d04a3f29"
+  },
+  {
+   "id": "skylink-ai",
+   "group": "dev",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 175682,
+    "file": 735824
+   },
+   "name": "SkyLink AI",
+   "author": "JarvannDarr",
+   "version": "1.0.0",
+   "archive": "SkyLinkAI-175682-1-0-0-1774652074.zip",
+   "size_kb": 1910,
+   "why": "agent bridge (0.3): console, teleport, events, screenshots",
+   "chunk": "0.3",
+   "required": true,
+   "profile": "dev",
+   "sha256": "2d7538f2f9954a93e7a1f94b3d9a2ef196c1fc9b59dd8955c96279abcfe01c2e"
+  },
+  {
+   "id": "housecarl",
+   "group": "dev",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 181738,
+    "file": 824460
+   },
+   "name": "houseCARL - A Skyrim Modding MCP",
+   "author": "Aaronavich",
+   "version": "2.1.1",
+   "archive": "houseCARL 181738 2.1.1 2026-10-22T21-10Z JrECN2OGt.zip",
+   "size_kb": 12374,
+   "why": "load-order and conflict inspection for agents",
+   "chunk": "0.2",
+   "required": true,
+   "profile": "dev",
+   "sha256": "1cb9fda834590d367e9907c35e5053624be050c316424d1f917f74e004c4816c",
+   "install": "tool",
+   "note": "a Windows MCP server (.NET 10, Mutagen) reading the MO2 instance C:\\argonia\\MO2; laid under tools, never into Data"
+  }
+ ]
+}

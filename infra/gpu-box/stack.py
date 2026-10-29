@@ -337,6 +337,15 @@ def place(m, src, data, tools, root):
     if how == "tool":
         copy_into(src, tools / m["id"])
         return []
+    if m.get("nested"):  # archives inside the archive (the vault's BM&V part: Data1.rar, Data2.rar), unpacked into Data
+        base = data_root(src)
+        for name in m["nested"]:
+            inner = ci(base, name)
+            if inner is None:
+                raise SystemExit(f"{m['id']}: {name} not in the archive")
+            subprocess.run(["unrar", "x", "-o+", "-inul", str(inner), str(data) + "/"], check=True)
+            inner.unlink()
+        return []
     if m.get("pick"):  # archive-relative paths, "x/*" copies x's contents; fixed choices from 0.0
         for part in m["pick"]:
             p = ci(src, part[:-2] if part.endswith("/*") else part)
@@ -364,7 +373,7 @@ def prune(data, m):
         shutil.rmtree(d, ignore_errors=True)  # Rim Parry's unused sound backups
     for pat in m.get("drop", []):
         for f in list(data.rglob("*")):
-            if fnmatch.fnmatch(str(f.relative_to(data)).lower(), pat.lower()):
+            if f.exists() and fnmatch.fnmatch(str(f.relative_to(data)).lower(), pat.lower()):
                 shutil.rmtree(f) if f.is_dir() else f.unlink()
     for d in sorted((x for x in data.rglob("*") if x.is_dir()), key=lambda x: -len(x.parts)):
         if not any(d.iterdir()):
@@ -435,23 +444,34 @@ def cmd_stage(a):
     doc = manifest()
     rows = chosen(doc, dict(s.split("=", 1) for s in a.set), a.dev)
     mods, tools, root, work = MO2 / "mods", MO2 / "tools", MO2 / "root", STACK / "_unpacked"
-    for d in (mods, tools, root):
-        shutil.rmtree(d, ignore_errors=True)
-        d.mkdir(parents=True)
-    names, record = [], {}
+    keys = STACK / "staged"  # a row is re-staged only when its archive or its manifest entry changed
+    for d in (mods, tools, root, keys):
+        d.mkdir(parents=True, exist_ok=True)
+    names, record, ids = [], {}, {m["id"] for m in rows}
+    for d in list(mods.iterdir()):
+        if d.name not in ids and d.name != "pandora-output":
+            shutil.rmtree(d)
     for m in rows:
-        src = work / m["id"]
-        unpack(archive_path(m), src)
-        data = mods / m["id"]
-        data.mkdir()
-        taken = place(m, src, data, tools, root)
-        shutil.rmtree(src)
-        prune(data, m)
-        apply_ini(m, data)
-        if any(data.iterdir()):
+        data, key = mods / m["id"], hashlib.sha256(json.dumps(m, sort_keys=True).encode()).hexdigest()
+        kf = keys / f"{m['id']}.json"
+        if kf.exists() and json.loads(kf.read_text())["key"] == key and (data.exists() or m.get("install")):
+            taken = json.loads(kf.read_text())["fomod"]
+        else:
+            src = work / m["id"]
+            unpack(archive_path(m), src)
+            shutil.rmtree(data, ignore_errors=True)
+            data.mkdir()
+            if m.get("install") == "tool":
+                shutil.rmtree(tools / m["id"], ignore_errors=True)
+            taken = place(m, src, data, tools, root)
+            shutil.rmtree(src)
+            prune(data, m)
+            apply_ini(m, data)
+            kf.write_text(json.dumps({"key": key, "fomod": taken}))
+            print(f"staged {m['id']}" + (f" ({'; '.join(taken)})" if taken else ""))
+        if data.exists() and any(data.iterdir()):
             names.append(m["id"])
         record[m["id"]] = {"fomod": taken} if taken else {}
-        print(f"staged {m['id']}" + (f" ({'; '.join(taken)})" if taken else ""))
     shutil.rmtree(work, ignore_errors=True)
     names.append("pandora-output")  # filled when Pandora runs on the machine; highest priority
     (mods / "pandora-output").mkdir(exist_ok=True)
@@ -459,15 +479,17 @@ def cmd_stage(a):
     shutil.rmtree(prof, ignore_errors=True)
     prof.mkdir(parents=True)
     (prof / "modlist.txt").write_text("".join(f"+{n}\r\n" for n in reversed(names)))  # MO2 order: highest first
-    plugins, have = [], {p.lower() for p in vanilla_plugins()}
+    plugins, have, unmet = [], {p.lower() for p in vanilla_plugins()}, []
     for n in names:
         for f in sorted((mods / n).iterdir()):
             if f.suffix.lower() in PLUGIN_EXT and f.name.lower() not in have:
                 missing = [x for x in masters_of(f) if x.lower() not in have]
                 if missing:
-                    raise SystemExit(f"{n}: {f.name} needs masters not loaded before it: {missing}")
+                    unmet.append(f"{n}: {f.name} needs masters not loaded before it: {missing}")
                 plugins.append(f.name)
                 have.add(f.name.lower())
+    if unmet:
+        raise SystemExit("\n".join(unmet))
     (prof / "plugins.txt").write_text("".join(f"*{p}\r\n" for p in plugins))
     (prof / "loadorder.txt").write_text("".join(f"{p}\r\n" for p in vanilla_plugins() + plugins))
     files = {}
@@ -533,6 +555,16 @@ def cmd_push(a):
             sent.pop(n)
         (out / "sent.json").write_text(json.dumps(sent))
     run("put", str(STACK / "installed.json"), "C:/argonia/MO2/installed.json")
+    # a portable MO2 instance description, so houseCARL (which reads MO2 instances) sees this profile
+    ini = out / "ModOrganizer.ini"
+    ini.write_text("[General]\r\ngameName=Skyrim Special Edition\r\ngamePath=@ByteArray(C:\\\\Program Files (x86)"
+                   "\\\\Steam\\\\steamapps\\\\common\\\\Skyrim Special Edition)\r\n"
+                   f"selected_profile=@ByteArray({PROFILE})\r\n[Settings]\r\n")
+    run("put", str(ini), "C:/argonia/MO2/ModOrganizer.ini")
+    (out / "portable.txt").write_text("")
+    run("put", str(out / "portable.txt"), "C:/argonia/MO2/portable.txt")
+    for f in ("housecarl.ps1", "skylink.ps1", "pad.ps1"):
+        run("put", str(HERE / f), f"C:/argonia/infra/{f}")
     for f in ("stack.ps1", "grab.ps1", "splash.ps1", "display.ps1"):
         run("put", str(HERE / f), f"C:/argonia/infra/{f}")
     print(f"pushed {len(todo)} changed of {len(names)} mods")
@@ -540,8 +572,12 @@ def cmd_push(a):
 
 def cmd_menu(a):
     """Launch through SKSE in the desktop session; main menu = SKSE's data-loaded message plus a still."""
+    os.environ.setdefault("DESKTOP_WAIT", "600")
     out = run("desktop", r"& C:\argonia\infra\stack.ps1 menu", capture=True)
     print(out)
+    stills = STACK / "stills"
+    stills.mkdir(exist_ok=True)
+    run("get", "C:/argonia/logs/menu.png", str(stills / "menu.png"), check=False)
     if "MAIN-MENU OK" not in out:
         raise SystemExit("main menu not reached")
     loaded = [l for l in out.splitlines() if "loaded correctly" in l]
@@ -558,6 +594,7 @@ def cmd_install(a):
     cmd_stage(a)
     cmd_push(a)
     print(run("ps", r"& C:\argonia\infra\stack.ps1 off", capture=True))  # bare Data first
+    os.environ["DESKTOP_WAIT"] = "900"
     print(run("desktop", r"& C:\argonia\infra\stack.ps1 pandora", capture=True))
     cmd_menu(a)
 
