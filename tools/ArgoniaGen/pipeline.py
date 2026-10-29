@@ -31,8 +31,9 @@ GEN = PROJ / "bin" / "Release" / "net10.0" / "ArgoniaGen"
 SPRIGGIT = ("-p", "Spriggit.Yaml", "-v", "0.41.0")  # pinned in infra/build-vm/toolchain.lock
 HOME = Path.home()
 ENV = dict(os.environ, DOTNET_ROOT=str(HOME / ".dotnet"), DOTNET_CLI_TELEMETRY_OPTOUT="1", DOTNET_NOLOGO="1",
+           DOTNET_gcServer="0", DOTNET_GCHeapHardLimit="0xC0000000",  # workstation GC, 3 GB heap (memory guidance)
            PATH=f"{HOME / '.dotnet'}:{HOME / '.local/bin'}:{os.environ.get('PATH', '')}")
-CAP = ["systemd-run", "--user", "--scope", "-q", "-p", "MemoryMax=4G"] if shutil.which("systemd-run") else []
+CAP = ["systemd-run", "--user", "--scope", "-q", "-p", "MemoryMax=3G"] if shutil.which("systemd-run") else []
 
 
 def data_dir() -> Path:
