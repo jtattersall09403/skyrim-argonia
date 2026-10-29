@@ -1,0 +1,17 @@
+{"place_id":"place.dunmer-north.the-wamasu-shrine","groups_ord":0,"ord":0,"socket_id":"socket.the-wamasu-shrine.idle-headwoman-work","activity":"tend"}
+{"place_id":"place.hist-heartland.greenspring","groups_ord":5,"ord":0,"socket_id":"socket.greenspring.idle-spring-keeper-work","activity":"drink"}
+{"place_id":"place.hist-heartland.greenspring","groups_ord":6,"ord":0,"socket_id":"socket.greenspring.idle-root-steward-work","activity":"stand"}
+{"place_id":"place.imperial-penal-south.rose-bone-waystation","groups_ord":1,"ord":0,"socket_id":"socket.rose-bone-waystation.idle-wrapper","activity":"tend"}
+{"place_id":"place.imperial-penal-south.rose-bone-waystation","groups_ord":2,"ord":0,"socket_id":"socket.rose-bone-waystation.idle-family-waits","activity":"sit"}
+{"place_id":"place.mercantile-coast.lighter-flotilla","groups_ord":3,"ord":0,"socket_id":"socket.lighter-flotilla.station-trader","activity":"trade"}
+{"place_id":"place.pirate-freeholds.upriver-hist-village","groups_ord":3,"ord":0,"socket_id":"socket.upriver-hist-village.idle-trader-work","activity":"work-at"}
+{"place_id":"place.pirate-freeholds.upriver-hist-village","groups_ord":4,"ord":0,"socket_id":"socket.upriver-hist-village.idle-family-fish","activity":"work-at"}
+{"place_id":"place.pirate-freeholds.upriver-hist-village","groups_ord":5,"ord":0,"socket_id":"socket.upriver-hist-village.idle-trader-work","activity":"work-at"}
+{"place_id":"place.pirate-freeholds.upriver-hist-village","groups_ord":6,"ord":0,"socket_id":"socket.upriver-hist-village.idle-trader-work","activity":"work-at"}
+{"place_id":"place.saxhleel-coast.pearl-lots","groups_ord":0,"ord":0,"socket_id":"socket.pearl-lots.underwater-livelihood","activity":"dive"}
+{"place_id":"place.saxhleel-coast.pearl-lots","groups_ord":0,"ord":1,"socket_id":"socket.pearl-lots.scene-deep-lot-dive","activity":"dive"}
+{"place_id":"place.saxhleel-coast.pearl-lots","groups_ord":0,"ord":2,"socket_id":"socket.pearl-lots.idle-n1-work","activity":"work-at"}
+{"place_id":"place.saxhleel-coast.pearl-lots","groups_ord":0,"ord":3,"socket_id":"socket.pearl-lots.idle-n1-evening","activity":"cook"}
+{"place_id":"place.saxhleel-coast.pearl-lots","groups_ord":1,"ord":0,"socket_id":"socket.pearl-lots.idle-n2-work","activity":"fish"}
+{"place_id":"place.saxhleel-coast.pearl-lots","groups_ord":1,"ord":1,"socket_id":"socket.pearl-lots.tender-boat","activity":"tend"}
+{"place_id":"place.saxhleel-coast.pearl-lots","groups_ord":1,"ord":2,"socket_id":"socket.pearl-lots.idle-n1-evening","activity":"cook"}

@@ -1,0 +1,13 @@
+{"id":"apprentice","guardian":"mage","month":7}
+{"id":"atronach","guardian":"mage","month":11}
+{"id":"lady","guardian":"warrior","month":9}
+{"id":"lord","guardian":"warrior","month":3}
+{"id":"lover","guardian":"thief","month":2}
+{"id":"mage","guardian":"mage","month":4}
+{"id":"ritual","guardian":"mage","month":1}
+{"id":"serpent"}
+{"id":"shadow","guardian":"thief","month":5}
+{"id":"steed","guardian":"warrior","month":6}
+{"id":"thief","guardian":"thief","month":12}
+{"id":"tower","guardian":"thief","month":10}
+{"id":"warrior","guardian":"warrior","month":8}

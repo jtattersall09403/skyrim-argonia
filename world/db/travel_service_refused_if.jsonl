@@ -1,0 +1,2 @@
+{"travel_service_id":"ferry.imperial-penal-south.blackrose-lake","ord":0,"predicate":"owingAtLeast","region":"region.imperial-penal-south","value":500}
+{"travel_service_id":"ferry.saxhleel-coast.estuary-run","ord":0,"predicate":"weatherIs","is":"storm"}

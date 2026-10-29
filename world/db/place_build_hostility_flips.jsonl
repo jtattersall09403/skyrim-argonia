@@ -1,0 +1,9 @@
+{"place_id":"place.imperial-fringe.the-broke-column","ord":0,"to":"wary","when":"place_build_hostility_flips:place.imperial-fringe.the-broke-column|0:when","scope":"place"}
+{"place_id":"place.mercantile-coast.chasepoint","ord":0,"to":"hostile","when":"place_build_hostility_flips:place.mercantile-coast.chasepoint|0:when","scope":"occupantGroup"}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":0,"to":"friendly","when":"place_build_hostility_flips:place.mercantile-coast.lighter-flotilla|0:when","scope":"place"}
+{"place_id":"place.mercantile-coast.teeth-of-sithis","ord":0,"to":"sanctuary","when":"place_build_hostility_flips:place.mercantile-coast.teeth-of-sithis|0:when","scope":"place"}
+{"place_id":"place.mercantile-coast.teeth-of-sithis","ord":1,"to":"hostile","when":"place_build_hostility_flips:place.mercantile-coast.teeth-of-sithis|1:when","scope":"place"}
+{"place_id":"place.naga-kur-deeps.naga-highway-camp-active-north","ord":0,"to":"guarded","when":"place_build_hostility_flips:place.naga-kur-deeps.naga-highway-camp-active-north|0:when","scope":"place"}
+{"place_id":"place.naga-kur-deeps.naga-highway-camp-active-north","ord":1,"to":"neutral","when":"place_build_hostility_flips:place.naga-kur-deeps.naga-highway-camp-active-north|1:when","scope":"place"}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":0,"to":"friendly","when":"place_build_hostility_flips:place.pirate-freeholds.opening-work-camp|0:when","scope":"place"}
+{"place_id":"place.pirate-freeholds.upriver-hist-village","ord":0,"to":"friendly","when":"place_build_hostility_flips:place.pirate-freeholds.upriver-hist-village|0:when","scope":"place"}

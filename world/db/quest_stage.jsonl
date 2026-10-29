@@ -1,0 +1,130 @@
+{"quest_id":"quest.bc.bc05","ord":0,"id":10,"place":"place.imperial-penal-south.rose-bone-waystation","journal":"text.journal.bc05.10"}
+{"quest_id":"quest.bc.bc05","ord":1,"id":20,"place":"place.mercantile-coast.white-rose-prison","journal":"text.journal.bc05.20","outside_packet":"4.3"}
+{"quest_id":"quest.bc.bc05","ord":2,"id":90,"place":"place.imperial-penal-south.rose-bone-waystation","journal":"text.journal.bc05.90","ending":"failed"}
+{"quest_id":"quest.fg.fg07","ord":0,"id":10,"place":"place.imperial-fringe.the-broke-column","journal":"text.journal.fg07.10","entry":"clear"}
+{"quest_id":"quest.fg.fg07","ord":1,"id":20,"place":"place.imperial-fringe.the-broke-column","journal":"text.journal.fg07.20","on_enter":"quest_stage:quest.fg.fg07|1:on_enter","ending":"complete"}
+{"quest_id":"quest.local.ht01","ord":0,"id":10,"place":"place.dunmer-north.hissmir","outside_packet":"4.2.dunmer-north"}
+{"quest_id":"quest.local.ld65","ord":0,"id":10,"place":"place.dunmer-north.the-wamasu-shrine","journal":"text.journal.ld65.10","on_enter":"quest_stage:quest.local.ld65|0:on_enter"}
+{"quest_id":"quest.local.ld65","ord":1,"id":20,"place":"place.dunmer-north.the-wamasu-shrine","journal":"text.journal.ld65.20","on_enter":"quest_stage:quest.local.ld65|1:on_enter"}
+{"quest_id":"quest.local.ld65","ord":2,"id":30,"place":"place.dunmer-north.the-wamasu-shrine","journal":"text.journal.ld65.30","on_enter":"quest_stage:quest.local.ld65|2:on_enter","ending":"complete"}
+{"quest_id":"quest.local.ld65","ord":3,"id":90,"place":"place.dunmer-north.the-wamasu-shrine","journal":"text.journal.ld65.90","ending":"failed"}
+{"quest_id":"quest.local.lf21","ord":0,"id":10,"place":"place.imperial-fringe.the-broke-column","journal":"text.journal.lf21.10","on_enter":"quest_stage:quest.local.lf21|0:on_enter","entry":"outside"}
+{"quest_id":"quest.local.lf21","ord":1,"id":20,"place":"place.imperial-fringe.gideon","journal":"text.journal.lf21.20","outside_packet":"4.2.imperial-fringe"}
+{"quest_id":"quest.local.lf21","ord":2,"id":90,"place":"place.imperial-fringe.the-broke-column","journal":"text.journal.lf21.90","ending":"failed"}
+{"quest_id":"quest.local.lf67","ord":0,"id":10,"place":"place.imperial-fringe.bog-iron-workings","journal":"text.journal.lf67.10","on_enter":"quest_stage:quest.local.lf67|0:on_enter"}
+{"quest_id":"quest.local.lf67","ord":1,"id":20,"place":"place.imperial-fringe.bog-iron-workings","journal":"text.journal.lf67.20"}
+{"quest_id":"quest.local.lf67","ord":2,"id":30,"place":"place.imperial-fringe.swampmoth-town","journal":"text.journal.lf67.30","outside_packet":"4.2.imperial-fringe"}
+{"quest_id":"quest.local.lf83","ord":0,"id":10,"place":"place.imperial-fringe.claywater-station","journal":"text.journal.lf83.10","on_enter":"quest_stage:quest.local.lf83|0:on_enter"}
+{"quest_id":"quest.local.lf83","ord":1,"id":20,"place":"place.imperial-fringe.claywater-station","journal":"text.journal.lf83.20","on_enter":"quest_stage:quest.local.lf83|1:on_enter"}
+{"quest_id":"quest.local.lf83","ord":2,"id":30,"place":"place.imperial-fringe.claywater-station","journal":"text.journal.lf83.30","on_enter":"quest_stage:quest.local.lf83|2:on_enter","ending":"complete"}
+{"quest_id":"quest.local.lf83","ord":3,"id":90,"place":"place.imperial-fringe.claywater-station","journal":"text.journal.lf83.90","ending":"failed"}
+{"quest_id":"quest.local.lh07","ord":0,"id":10,"place":"place.hist-heartland.greenspring","journal":"text.journal.lh07.10","on_enter":"quest_stage:quest.local.lh07|0:on_enter"}
+{"quest_id":"quest.local.lh07","ord":1,"id":20,"place":"place.hist-heartland.helstrom","journal":"text.journal.lh07.20","outside_packet":"4.1b"}
+{"quest_id":"quest.local.lh07","ord":2,"id":90,"place":"place.hist-heartland.greenspring","journal":"text.journal.lh07.90","ending":"failed"}
+{"quest_id":"quest.local.lh37","ord":0,"id":10,"place":"place.hist-heartland.greenspring","journal":"text.journal.lh37.10","on_enter":"quest_stage:quest.local.lh37|0:on_enter"}
+{"quest_id":"quest.local.lh37","ord":1,"id":20,"place":"place.hist-heartland.greenspring","journal":"text.journal.lh37.20","on_enter":"quest_stage:quest.local.lh37|1:on_enter"}
+{"quest_id":"quest.local.lh37","ord":2,"id":30,"place":"place.hist-heartland.nine-trunks","journal":"text.journal.lh37.30","outside_packet":"4.2.hist-heartland"}
+{"quest_id":"quest.local.lh37","ord":3,"id":90,"place":"place.hist-heartland.greenspring","journal":"text.journal.lh37.90","ending":"failed"}
+{"quest_id":"quest.local.lh38","ord":0,"id":10,"place":"place.hist-heartland.greenspring","journal":"text.journal.lh38.10","on_enter":"quest_stage:quest.local.lh38|0:on_enter","journal_text":"Mee-Sei, who cooks at the fire stand in Greenspring, told me that guests at the lodge have been falling sick, and that people blame his food. I'm to find out what is making them ill.","directions":"The pool lies under the Hist, a few steps from the fire stand; the lodge, where the sick guests lie, faces it across the spring."}
+{"quest_id":"quest.local.lh38","ord":1,"id":20,"place":"place.hist-heartland.greenspring","journal":"text.journal.lh38.20","journal_text":"The guests at the Greenspring lodge sicken from the spring, not from Mee-Sei's food. Only Im-Moro, the spring-keeper, may go into the pool under the Hist. I'm to get into the pool, with her leave or without it at night.","directions":"The stone lip is on the lodge side of the pool; the Hist's roots go down into the water on the far side."}
+{"quest_id":"quest.local.lh38","ord":2,"id":30,"place":"place.hist-heartland.greenspring","journal":"text.journal.lh38.30","journal_text":"I have gone into the pool under the Hist at Greenspring. I'm to search the spring's throat between the roots, where the water comes up."}
+{"quest_id":"quest.local.lh38","ord":3,"id":40,"place":"place.hist-heartland.greenspring","journal":"text.journal.lh38.40","on_enter":"quest_stage:quest.local.lh38|3:on_enter","journal_text":"A dead man lies staked in the throat of the spring at Greenspring, his wrists tied with rope, the stake left blank. That is what sickens the guests. I'm to find out who he was and who killed him, before the killer leaves.","directions":"The lodge store is the locked room behind Haj-Tei's door; Reeh-Shaal sleeps in the lodge and goes to the stone lip after the lamps are out."}
+{"quest_id":"quest.local.lh38","ord":4,"id":50,"place":"place.hist-heartland.greenspring","journal":"text.journal.lh38.50","journal_text":"The courier who vanished from the Greenspring lodge twelve days ago lies in the spring, and what I have found points to Reeh-Shaal, the guest who says she waits for a boat to Helstrom. I'm to confront her with what I hold, and I need two things to make it stand."}
+{"quest_id":"quest.local.lh38","ord":5,"id":70,"place":"place.hist-heartland.greenspring","journal":"text.journal.lh38.70","ending":"complete","journal_text":"I named Reeh-Shaal before the people of Greenspring as the one who killed the Helstrom courier and staked him in the spring. Im-Moro has had the body raised and given to the Hist, and the root-herald holds Reeh-Shaal for Helstrom.","ending_id":"e-justice"}
+{"quest_id":"quest.local.lh38","ord":6,"id":71,"place":"place.hist-heartland.greenspring","journal":"text.journal.lh38.71","ending":"complete","journal_text":"Reeh-Shaal is dead by my hand at Greenspring. Im-Moro has had the courier's body raised from the spring, and the guests should mend.","ending_id":"e-fight"}
+{"quest_id":"quest.local.lh38","ord":7,"id":72,"place":"place.hist-heartland.greenspring","journal":"text.journal.lh38.72","ending":"complete","journal_text":"I took the sealed packet from Reeh-Shaal at Greenspring and let her go. Nobody there will learn who killed the courier.","ending_id":"e-deal"}
+{"quest_id":"quest.local.lh38","ord":8,"id":80,"place":"place.hist-heartland.greenspring","journal":"text.journal.lh38.80","ending":"failed","journal_text":"I accused Tsono-Ra of the courier's murder at Greenspring, and I was wrong. The village has closed ranks against me, and Reeh-Shaal has taken the boat.","ending_id":"e-wrong"}
+{"quest_id":"quest.local.lh38","ord":9,"id":90,"place":"place.hist-heartland.greenspring","journal":"text.journal.lh38.90","ending":"failed","journal_text":"Reeh-Shaal has left Greenspring on the Helstrom boat. Whoever killed the courier in the spring has gone, and the guests are still sick.","ending_id":"e-unsolved"}
+{"quest_id":"quest.local.lh51","ord":0,"id":10,"place":"place.hist-heartland.greenspring","journal":"text.journal.lh51.10","on_enter":"quest_stage:quest.local.lh51|0:on_enter"}
+{"quest_id":"quest.local.lh51","ord":1,"id":20,"place":"place.hist-heartland.nine-trunks","journal":"text.journal.lh51.20","outside_packet":"4.2.hist-heartland"}
+{"quest_id":"quest.local.lh51","ord":2,"id":90,"place":"place.hist-heartland.greenspring","journal":"text.journal.lh51.90","ending":"failed"}
+{"quest_id":"quest.local.lh63","ord":0,"id":10,"place":"place.hist-heartland.greenspring","journal":"text.journal.lh63.10","on_enter":"quest_stage:quest.local.lh63|0:on_enter"}
+{"quest_id":"quest.local.lh63","ord":1,"id":20,"place":"place.hist-heartland.greenspring","journal":"text.journal.lh63.20","on_enter":"quest_stage:quest.local.lh63|1:on_enter"}
+{"quest_id":"quest.local.lh63","ord":2,"id":30,"place":"place.hist-heartland.greenspring","journal":"text.journal.lh63.30","on_enter":"quest_stage:quest.local.lh63|2:on_enter","ending":"complete"}
+{"quest_id":"quest.local.lh63","ord":3,"id":90,"place":"place.hist-heartland.greenspring","journal":"text.journal.lh63.90","ending":"failed"}
+{"quest_id":"quest.local.lm08","ord":0,"id":10,"place":"place.mercantile-coast.lighter-flotilla","journal":"text.journal.lm08.10"}
+{"quest_id":"quest.local.lm08","ord":1,"id":20,"place":"place.mercantile-coast.lilmoth","journal":"text.journal.lm08.20","outside_packet":"4.2.mercantile-coast"}
+{"quest_id":"quest.local.lm08","ord":2,"id":90,"place":"place.mercantile-coast.lighter-flotilla","journal":"text.journal.lm08.90","ending":"failed"}
+{"quest_id":"quest.local.lm23","ord":0,"id":10,"place":"place.mercantile-coast.lighter-flotilla","journal":"text.journal.lm23.10"}
+{"quest_id":"quest.local.lm23","ord":1,"id":20,"place":"place.mercantile-coast.pusbottom-barge","journal":"text.journal.lm23.20","outside_packet":"4.2.mercantile-coast"}
+{"quest_id":"quest.local.lm23","ord":2,"id":90,"place":"place.mercantile-coast.lighter-flotilla","journal":"text.journal.lm23.90","ending":"failed"}
+{"quest_id":"quest.local.lm38","ord":0,"id":10,"place":"place.mercantile-coast.chasepoint","journal":"text.journal.lm38.10"}
+{"quest_id":"quest.local.lm38","ord":1,"id":20,"place":"place.mercantile-coast.soulrest","journal":"text.journal.lm38.20","outside_packet":"4.2.mercantile-coast"}
+{"quest_id":"quest.local.lm38","ord":2,"id":90,"place":"place.mercantile-coast.chasepoint","journal":"text.journal.lm38.90","ending":"failed"}
+{"quest_id":"quest.local.lm56","ord":0,"id":10,"place":"place.mercantile-coast.chasepoint","journal":"text.journal.lm56.10"}
+{"quest_id":"quest.local.lm56","ord":1,"id":20,"place":"place.mercantile-coast.white-rose-prison","journal":"text.journal.lm56.20","outside_packet":"4.2.mercantile-coast"}
+{"quest_id":"quest.local.lm56","ord":2,"id":90,"place":"place.mercantile-coast.chasepoint","journal":"text.journal.lm56.90","ending":"failed"}
+{"quest_id":"quest.local.lm57","ord":0,"id":10,"place":"place.mercantile-coast.chasepoint","journal":"text.journal.lm57.10"}
+{"quest_id":"quest.local.lm57","ord":1,"id":20,"place":"place.mercantile-coast.coast-road-stage","journal":"text.journal.lm57.20","outside_packet":"4.2.mercantile-coast"}
+{"quest_id":"quest.local.lm57","ord":2,"id":90,"place":"place.mercantile-coast.chasepoint","journal":"text.journal.lm57.90","ending":"failed"}
+{"quest_id":"quest.local.lm62","ord":0,"id":10,"place":"place.mercantile-coast.chasepoint","journal":"text.journal.lm62.10"}
+{"quest_id":"quest.local.lm62","ord":1,"id":20,"place":"place.mercantile-coast.long-bar-wreckers","journal":"text.journal.lm62.20","outside_packet":"4.2.mercantile-coast"}
+{"quest_id":"quest.local.lm62","ord":2,"id":90,"place":"place.mercantile-coast.chasepoint","journal":"text.journal.lm62.90","ending":"failed"}
+{"quest_id":"quest.local.ln07","ord":0,"id":10,"place":"place.naga-kur-deeps.naga-highway-camp-active-north","journal":"text.journal.ln07.10","on_enter":"quest_stage:quest.local.ln07|0:on_enter","entry":"outside"}
+{"quest_id":"quest.local.ln07","ord":1,"id":20,"place":"place.naga-kur-deeps.naga-village-settled","journal":"text.journal.ln07.20","outside_packet":"4.2.naga-kur-deeps"}
+{"quest_id":"quest.local.ln07","ord":2,"id":90,"place":"place.naga-kur-deeps.naga-highway-camp-active-north","journal":"text.journal.ln07.90","ending":"failed"}
+{"quest_id":"quest.local.lp13","ord":0,"id":10,"place":"place.pirate-freeholds.upriver-hist-village","journal":"text.journal.lp13.10","on_enter":"quest_stage:quest.local.lp13|0:on_enter"}
+{"quest_id":"quest.local.lp13","ord":1,"id":20,"place":"place.pirate-freeholds.alten-corimont","journal":"text.journal.lp13.20","outside_packet":"4.2.pirate-freeholds"}
+{"quest_id":"quest.local.lp13","ord":2,"id":90,"place":"place.pirate-freeholds.upriver-hist-village","journal":"text.journal.lp13.90","ending":"failed"}
+{"quest_id":"quest.local.lp14","ord":0,"id":10,"place":"place.pirate-freeholds.upriver-hist-village","journal":"text.journal.lp14.10","on_enter":"quest_stage:quest.local.lp14|0:on_enter"}
+{"quest_id":"quest.local.lp14","ord":1,"id":20,"place":"place.pirate-freeholds.upriver-hist-village","journal":"text.journal.lp14.20","on_enter":"quest_stage:quest.local.lp14|1:on_enter"}
+{"quest_id":"quest.local.lp14","ord":2,"id":30,"place":"place.pirate-freeholds.upriver-hist-village","journal":"text.journal.lp14.30","on_enter":"quest_stage:quest.local.lp14|2:on_enter","ending":"complete"}
+{"quest_id":"quest.local.lp14","ord":3,"id":90,"place":"place.pirate-freeholds.upriver-hist-village","journal":"text.journal.lp14.90","ending":"failed"}
+{"quest_id":"quest.local.lp19","ord":0,"id":10,"place":"place.pirate-freeholds.upriver-hist-village","journal":"text.journal.lp19.10","on_enter":"quest_stage:quest.local.lp19|0:on_enter"}
+{"quest_id":"quest.local.lp19","ord":1,"id":20,"place":"place.pirate-freeholds.corimont-hist-less-camp","journal":"text.journal.lp19.20","outside_packet":"4.2.pirate-freeholds"}
+{"quest_id":"quest.local.lp19","ord":2,"id":90,"place":"place.pirate-freeholds.upriver-hist-village","journal":"text.journal.lp19.90","ending":"failed"}
+{"quest_id":"quest.local.lq15","ord":0,"id":10,"place":"place.imperial-fringe.the-broke-column","journal":"text.journal.lq15.10","on_enter":"quest_stage:quest.local.lq15|0:on_enter","entry":"outside"}
+{"quest_id":"quest.local.lq15","ord":1,"id":20,"place":"place.imperial-fringe.cartwrights-cross","journal":"text.journal.lq15.20","on_enter":"quest_stage:quest.local.lq15|1:on_enter","outside_packet":"4.2.imperial-fringe"}
+{"quest_id":"quest.local.lq15","ord":2,"id":90,"place":"place.imperial-fringe.the-broke-column","journal":"text.journal.lq15.90","on_enter":"quest_stage:quest.local.lq15|2:on_enter","ending":"failed"}
+{"quest_id":"quest.local.lq29","ord":0,"id":10,"place":"place.mercantile-coast.chasepoint","journal":"text.journal.lq29.10"}
+{"quest_id":"quest.local.lq29","ord":1,"id":20,"place":"place.mercantile-coast.long-bar-wreckers","journal":"text.journal.lq29.20","outside_packet":"4.2.mercantile-coast"}
+{"quest_id":"quest.local.lq29","ord":2,"id":90,"place":"place.mercantile-coast.chasepoint","journal":"text.journal.lq29.90","ending":"failed"}
+{"quest_id":"quest.local.lr03","ord":0,"id":10,"place":"place.imperial-penal-south.rose-bone-waystation","journal":"text.journal.lr03.10","on_enter":"quest_stage:quest.local.lr03|0:on_enter"}
+{"quest_id":"quest.local.lr03","ord":1,"id":20,"place":"place.imperial-penal-south.blackrose-prison","journal":"text.journal.lr03.20","on_enter":"quest_stage:quest.local.lr03|1:on_enter","outside_packet":"4.2.imperial-penal-south"}
+{"quest_id":"quest.local.lr03","ord":2,"id":90,"place":"place.imperial-penal-south.rose-bone-waystation","journal":"text.journal.lr03.90","ending":"failed"}
+{"quest_id":"quest.local.lr24","ord":0,"id":10,"place":"place.imperial-penal-south.rose-bone-waystation","journal":"text.journal.lr24.10"}
+{"quest_id":"quest.local.lr24","ord":1,"id":20,"place":"place.imperial-penal-south.rose-bone-waystation","journal":"text.journal.lr24.20"}
+{"quest_id":"quest.local.lr24","ord":2,"id":30,"place":"place.imperial-penal-south.blackrose-prison","journal":"text.journal.lr24.30","outside_packet":"4.2.imperial-penal-south"}
+{"quest_id":"quest.local.lr24","ord":3,"id":90,"place":"place.imperial-penal-south.rose-bone-waystation","journal":"text.journal.lr24.90","ending":"failed"}
+{"quest_id":"quest.local.lr39","ord":0,"id":10,"place":"place.imperial-penal-south.rose-bone-waystation","journal":"text.journal.lr39.10"}
+{"quest_id":"quest.local.lr39","ord":1,"id":20,"place":"place.imperial-penal-south.rose-supply-town","journal":"text.journal.lr39.20","outside_packet":"4.2.imperial-penal-south"}
+{"quest_id":"quest.local.lr39","ord":2,"id":90,"place":"place.imperial-penal-south.rose-bone-waystation","journal":"text.journal.lr39.90","ending":"failed"}
+{"quest_id":"quest.local.lr52","ord":0,"id":10,"place":"place.imperial-penal-south.rose-supply-town","outside_packet":"4.2.imperial-penal-south"}
+{"quest_id":"quest.local.lv38","ord":0,"id":10,"place":"place.dunmer-north.riverwalk","journal":"text.journal.lv38.10","on_enter":"quest_stage:quest.local.lv38|0:on_enter"}
+{"quest_id":"quest.local.lv38","ord":1,"id":20,"place":"place.dunmer-north.riverwalk","journal":"text.journal.lv38.20","on_enter":"quest_stage:quest.local.lv38|1:on_enter"}
+{"quest_id":"quest.local.lv38","ord":2,"id":30,"place":"place.dunmer-north.riverwalk","journal":"text.journal.lv38.30","on_enter":"quest_stage:quest.local.lv38|2:on_enter","ending":"complete"}
+{"quest_id":"quest.local.lv38","ord":3,"id":90,"place":"place.dunmer-north.riverwalk","journal":"text.journal.lv38.90","ending":"failed"}
+{"quest_id":"quest.local.lv39","ord":0,"id":10,"place":"place.dunmer-north.riverwalk","journal":"text.journal.lv39.10","on_enter":"quest_stage:quest.local.lv39|0:on_enter"}
+{"quest_id":"quest.local.lv39","ord":1,"id":20,"place":"place.dunmer-north.the-pilots-rest","journal":"text.journal.lv39.20","outside_packet":"4.2.dunmer-north"}
+{"quest_id":"quest.local.lv39","ord":2,"id":90,"place":"place.dunmer-north.riverwalk","journal":"text.journal.lv39.90","ending":"failed"}
+{"quest_id":"quest.local.lv40","ord":0,"id":10,"place":"place.dunmer-north.riverwalk","journal":"text.journal.lv40.10","on_enter":"quest_stage:quest.local.lv40|0:on_enter"}
+{"quest_id":"quest.local.lv40","ord":1,"id":20,"place":"place.dunmer-north.riverwalk","journal":"text.journal.lv40.20","on_enter":"quest_stage:quest.local.lv40|1:on_enter"}
+{"quest_id":"quest.local.lv40","ord":2,"id":30,"place":"place.dunmer-north.riverwalk","journal":"text.journal.lv40.30","on_enter":"quest_stage:quest.local.lv40|2:on_enter","ending":"complete"}
+{"quest_id":"quest.local.lv40","ord":3,"id":90,"place":"place.dunmer-north.riverwalk","journal":"text.journal.lv40.90","ending":"failed"}
+{"quest_id":"quest.local.sx05","ord":0,"id":10,"place":"place.saxhleel-coast.pearl-lots","journal":"text.journal.sx05.10"}
+{"quest_id":"quest.local.sx05","ord":1,"id":20,"place":"place.saxhleel-coast.archon","journal":"text.journal.sx05.20","outside_packet":"4.2.saxhleel-coast"}
+{"quest_id":"quest.local.sx05","ord":2,"id":90,"place":"place.saxhleel-coast.pearl-lots","journal":"text.journal.sx05.90","ending":"failed"}
+{"quest_id":"quest.local.sx06","ord":0,"id":10,"place":"place.saxhleel-coast.pearl-lots","journal":"text.journal.sx06.10"}
+{"quest_id":"quest.local.sx06","ord":1,"id":20,"place":"place.saxhleel-coast.pearl-lots","journal":"text.journal.sx06.20","on_enter":"quest_stage:quest.local.sx06|1:on_enter"}
+{"quest_id":"quest.local.sx06","ord":2,"id":30,"place":"place.saxhleel-coast.archon","journal":"text.journal.sx06.30","on_enter":"quest_stage:quest.local.sx06|2:on_enter","outside_packet":"4.2.saxhleel-coast"}
+{"quest_id":"quest.local.sx06","ord":3,"id":90,"place":"place.saxhleel-coast.pearl-lots","journal":"text.journal.sx06.90","ending":"failed"}
+{"quest_id":"quest.local.sx08","ord":0,"id":10,"place":"place.saxhleel-coast.jungle-root-hollow","journal":"text.journal.sx08.10","entry":"clear"}
+{"quest_id":"quest.local.sx08","ord":1,"id":20,"place":"place.saxhleel-coast.owing-hiring-camp","journal":"text.journal.sx08.20","outside_packet":"4.2.saxhleel-coast"}
+{"quest_id":"quest.main.mq32","ord":0,"id":10,"place":"place.hist-heartland.helstrom","outside_packet":"4.3"}
+{"quest_id":"quest.mr.mr01","ord":0,"id":10,"place":"place.hist-heartland.greenspring","journal":"text.journal.mr01.10","on_enter":"quest_stage:quest.mr.mr01|0:on_enter","journal_text":"Root-Herald Ixo-Vaal of Greenspring asked me, for the Many-Root Conclave, to find out why the village's Hist is sickening. The village blames the salt works upstream. I'm to test the water before I believe them.","directions":"The fork lies a short walk upstream of the river landing; the herald's house, with the salt sack at its door, faces the Hist."}
+{"quest_id":"quest.mr.mr01","ord":1,"id":20,"place":"place.hist-heartland.root-gallery-drowned-stair","journal":"text.journal.mr01.20","outside_packet":"4.2.hist-heartland","journal_text":"The salt in Greenspring's spring is not coming down the river. The couriers say the Hist's roots run into the flooded galleries of the Drowned Stair. I'm to go down and take water at each landing.","directions":"From Greenspring take the road to the Gate-Side Camp outside Helstrom's gate; the guides there show the stair's mouth, where the deep water starts."}
+{"quest_id":"quest.mr.mr01","ord":2,"id":30,"place":"place.hist-heartland.root-gallery-drowned-stair","journal":"text.journal.mr01.30","outside_packet":"4.2.hist-heartland","journal_text":"The water in the Drowned Stair grows saltier the deeper I go. I'm to reach the deepest chamber, beyond one breath, and see where the salt comes in."}
+{"quest_id":"quest.mr.mr01","ord":3,"id":40,"place":"place.hist-heartland.greenspring","journal":"text.journal.mr01.40","on_enter":"quest_stage:quest.mr.mr01|3:on_enter","journal_text":"Deep in the Drowned Stair, a channel has been cut by hand into a brine seam, and the floods push the brine into Greenspring's roots. The cut is old. I'm to learn who made it, and Vees-Wai, the tree-minder, reads the old stakes."}
+{"quest_id":"quest.mr.mr01","ord":4,"id":50,"place":"place.hist-heartland.greenspring","journal":"text.journal.mr01.50","on_enter":"quest_stage:quest.mr.mr01|4:on_enter","journal_text":"Greenspring's founders cut the channel to kill a rival grove downstream, and their deed is killing their own Hist. Ixo-Vaal has called the office-holders to the Hist. I'm to put what I found before them and argue for a cure, and for whether the founders are named."}
+{"quest_id":"quest.mr.mr01","ord":5,"id":60,"place":"place.hist-heartland.greenspring","journal":"text.journal.mr01.60","ending":"complete","journal_text":"The office-holders of Greenspring sealed the founders' cut and named the deed at the Hist. The tree should mend, and Greenspring now owes the people of the dead grove an answer.","ending_id":"e-sealed-named"}
+{"quest_id":"quest.mr.mr01","ord":6,"id":61,"place":"place.hist-heartland.greenspring","journal":"text.journal.mr01.61","ending":"complete","journal_text":"The office-holders of Greenspring sealed the founders' cut and agreed to say nothing of who made it. The tree should mend.","ending_id":"e-sealed-silent"}
+{"quest_id":"quest.mr.mr01","ord":7,"id":62,"place":"place.hist-heartland.greenspring","journal":"text.journal.mr01.62","ending":"complete","journal_text":"Greenspring chose to reopen the founders' cut downstream. Their Hist is spared, and the dead grove's land will flood with brine again.","ending_id":"e-reopened"}
+{"quest_id":"quest.ni.ni05","ord":0,"id":10,"place":"place.mercantile-coast.teeth-of-sithis","journal":"text.journal.ni05.10","on_enter":"quest_stage:quest.ni.ni05|0:on_enter","entry":"outside"}
+{"quest_id":"quest.ni.ni05","ord":1,"id":20,"place":"place.mercantile-coast.teeth-of-sithis","journal":"text.journal.ni05.20","on_enter":"quest_stage:quest.ni.ni05|1:on_enter"}
+{"quest_id":"quest.ni.ni05","ord":2,"id":30,"place":"place.mercantile-coast.teeth-of-sithis","journal":"text.journal.ni05.30","on_enter":"quest_stage:quest.ni.ni05|2:on_enter","ending":"complete"}
+{"quest_id":"quest.ni.ni05","ord":3,"id":90,"place":"place.mercantile-coast.teeth-of-sithis","journal":"text.journal.ni05.90","on_enter":"quest_stage:quest.ni.ni05|3:on_enter","ending":"failed"}
+{"quest_id":"quest.tg.tg04","ord":0,"id":10,"place":"place.mercantile-coast.lighter-flotilla","journal":"text.journal.tg04.10"}
+{"quest_id":"quest.tg.tg04","ord":1,"id":20,"place":"place.mercantile-coast.lighter-flotilla","journal":"text.journal.tg04.20","on_enter":"quest_stage:quest.tg.tg04|1:on_enter"}
+{"quest_id":"quest.tg.tg04","ord":2,"id":30,"place":"place.mercantile-coast.lighter-flotilla","journal":"text.journal.tg04.30","on_enter":"quest_stage:quest.tg.tg04|2:on_enter","ending":"complete"}
+{"quest_id":"quest.tg.tg04","ord":3,"id":40,"place":"place.mercantile-coast.lighter-flotilla","journal":"text.journal.tg04.40","ending":"failed"}
+{"quest_id":"quest.tg.tg04","ord":4,"id":90,"place":"place.mercantile-coast.lighter-flotilla","journal":"text.journal.tg04.90","ending":"failed"}

@@ -1,0 +1,57 @@
+{"topic_id":"topic.chasepoint-living-cargo","ord":0,"value":"the station-keeper"}
+{"topic_id":"topic.chasepoint-road-survey","ord":0,"value":"the station-keeper"}
+{"topic_id":"topic.chasepoint-salvage-crew","ord":0,"value":"the salvage merchant"}
+{"topic_id":"topic.chasepoint-sea-lost","ord":0,"value":"the salvage merchant"}
+{"topic_id":"topic.chasepoint-unpaid-stage","ord":0,"value":"the station-keeper"}
+{"topic_id":"topic.claywater-two-charges","ord":0,"value":"the well-keeper"}
+{"topic_id":"topic.flotilla-floating-house","ord":0,"value":"the ship's purser"}
+{"topic_id":"topic.flotilla-licence-terms","ord":0,"value":"the flotilla speaker"}
+{"topic_id":"topic.flotilla-night-cargo","ord":0,"value":"the lighter's master"}
+{"topic_id":"topic.hearth-heal","ord":0,"value":"the spring-keeper"}
+{"topic_id":"topic.role-band","ord":0,"value":"the band"}
+{"topic_id":"topic.role-bearing-witness","ord":0,"value":"the witness"}
+{"topic_id":"topic.role-beds","ord":0,"value":"the bed-keeper"}
+{"topic_id":"topic.role-boat-work","ord":0,"value":"a boat crew"}
+{"topic_id":"topic.role-camps-orders","ord":0,"value":"the lieutenant"}
+{"topic_id":"topic.role-carrying-for-the-villages","ord":0,"value":"the villages' carrier"}
+{"topic_id":"topic.role-column","ord":0,"value":"a descendant of the column"}
+{"topic_id":"topic.role-digging-bog-iron","ord":0,"value":"the season's diggers"}
+{"topic_id":"topic.role-diving-the-lots","ord":0,"value":"the lot divers"}
+{"topic_id":"topic.role-dyeing","ord":0,"value":"the dyer"}
+{"topic_id":"topic.role-flotillas-business","ord":0,"value":"the flotilla speaker"}
+{"topic_id":"topic.role-gang-work","ord":0,"value":"a gang family"}
+{"topic_id":"topic.role-households-that-stayed","ord":0,"value":"a household left behind"}
+{"topic_id":"topic.role-journey-to-helstrom","ord":0,"value":"a traveller bound for Helstrom"}
+{"topic_id":"topic.role-keeping-the-clutch","ord":0,"value":"the clutch-keeper"}
+{"topic_id":"topic.role-keeping-the-spring","ord":0,"value":"the spring-keeper"}
+{"topic_id":"topic.role-keeping-the-teeth","ord":0,"value":"nisswo of the Teeth"}
+{"topic_id":"topic.role-life-in-the-rose","ord":0,"value":"a family from the Rose"}
+{"topic_id":"topic.role-lighter","ord":0,"value":"the lighter's master"}
+{"topic_id":"topic.role-lightering","ord":0,"value":"a lighter hand"}
+{"topic_id":"topic.role-long-house","ord":0,"value":"a long house household"}
+{"topic_id":"topic.role-minding-the-tree","ord":0,"value":"the tree-minder"}
+{"topic_id":"topic.role-net-mending","ord":0,"value":"a net mender"}
+{"topic_id":"topic.role-net-mending","ord":1,"value":"a net-mender"}
+{"topic_id":"topic.role-overseers","ord":0,"value":"a camp overseer"}
+{"topic_id":"topic.role-poling","ord":0,"value":"the landing's poler"}
+{"topic_id":"topic.role-priesthood","ord":0,"value":"a priest"}
+{"topic_id":"topic.role-purse","ord":0,"value":"the ship's purser"}
+{"topic_id":"topic.role-reed-cutting","ord":0,"value":"a reed cutter"}
+{"topic_id":"topic.role-road","ord":0,"value":"a road traveller"}
+{"topic_id":"topic.role-root-heralds","ord":0,"value":"the root-herald"}
+{"topic_id":"topic.role-salvage","ord":0,"value":"the salvage households"}
+{"topic_id":"topic.role-scrubbing-the-teeth","ord":0,"value":"the scrubber"}
+{"topic_id":"topic.role-selling-salvage","ord":0,"value":"the salvage merchant"}
+{"topic_id":"topic.role-serjeants-duty","ord":0,"value":"the serjeant"}
+{"topic_id":"topic.role-smithing","ord":0,"value":"the smith"}
+{"topic_id":"topic.role-spring-families","ord":0,"value":"a spring family"}
+{"topic_id":"topic.role-stage","ord":0,"value":"the stage-mistress"}
+{"topic_id":"topic.role-station","ord":0,"value":"the station-keeper"}
+{"topic_id":"topic.role-surface-line","ord":0,"value":"the surface tender"}
+{"topic_id":"topic.role-tags","ord":0,"value":"the tag-keeper"}
+{"topic_id":"topic.role-temple-duties","ord":0,"value":"rank-and-file"}
+{"topic_id":"topic.role-toll","ord":0,"value":"a toll hand"}
+{"topic_id":"topic.role-toll","ord":1,"value":"the toll-holder"}
+{"topic_id":"topic.role-two-halves","ord":0,"value":"a household of either half"}
+{"topic_id":"topic.role-village-matters","ord":0,"value":"the elder"}
+{"topic_id":"topic.role-well","ord":0,"value":"the well-keeper"}

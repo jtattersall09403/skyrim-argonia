@@ -13,3 +13,5 @@ world/sources/catalogue/places-mercantile-coast.json
 world/sources/sites/candidate-sites.json
 LICENSE
 LICENSE-content
+world/db/place.jsonl
+world/db/dialogue_line.jsonl

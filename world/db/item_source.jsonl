@@ -1,0 +1,825 @@
+{"item_id":"item.alto-wine","ord":0,"value":"Skyrim.esm:ALCH FoodWineAlto"}
+{"item_id":"item.alto-wine","ord":1,"value":"Skyrim.esm:ALCH FoodWineAltoA"}
+{"item_id":"item.an-wamasu-belted-robe","ord":0,"value":"King of the Murkmire.esp:ARMO AnWamasuRobe"}
+{"item_id":"item.an-wamasu-belted-robe","ord":1,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.baked-crocodile-tongue","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:125"}
+{"item_id":"item.basket","ord":0,"value":"Skyrim.esm:MISC Basket01"}
+{"item_id":"item.basket","ord":1,"value":"Skyrim.esm:MISC Basket02"}
+{"item_id":"item.basket","ord":2,"value":"Skyrim.esm:MISC Basket03"}
+{"item_id":"item.basket","ord":3,"value":"Skyrim.esm:MISC Basket04"}
+{"item_id":"item.basket","ord":4,"value":"Skyrim.esm:MISC Basket05"}
+{"item_id":"item.basket","ord":5,"value":"Skyrim.esm:MISC Basket06"}
+{"item_id":"item.basket","ord":6,"value":"Skyrim.esm:MISC BasketClosed01"}
+{"item_id":"item.bee","ord":0,"value":"Skyrim.esm:INGR CritterBeeIngredient"}
+{"item_id":"item.beehive-husk","ord":0,"value":"Skyrim.esm:INGR BeeHiveHusk"}
+{"item_id":"item.black-briar-mead","ord":0,"value":"Skyrim.esm:ALCH FoodBlackBriarMead"}
+{"item_id":"item.blades-sword","ord":0,"value":"world/sources/lore/topics/history-timeline.md:53"}
+{"item_id":"item.blades-sword","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:62"}
+{"item_id":"item.blue-dartwing","ord":0,"value":"Skyrim.esm:INGR DragonflyBlue"}
+{"item_id":"item.blue-jasper","ord":0,"value":"world/sources/lore/topics/material-culture.md:67"}
+{"item_id":"item.bog-dog-dung","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.bog-dog-dung","ord":1,"value":"Morrowind:Muck (UESP)"}
+{"item_id":"item.bog-iron","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"item_id":"item.bog-luck-concoction","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:82"}
+{"item_id":"item.bonded-store-slip","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:85"}
+{"item_id":"item.bone-meal","ord":0,"value":"world/sources/lore/topics/material-culture.md:65"}
+{"item_id":"item.bone-tag","ord":0,"value":"world/sources/lore/topics/prisons.md:86"}
+{"item_id":"item.bone-tag","ord":1,"value":"world/sources/placement/facts/place.imperial-penal-south.rose-bone-waystation.json"}
+{"item_id":"item.bone-talon-dagger","ord":0,"value":"world/sources/lore/topics/material-culture.md:75"}
+{"item_id":"item.book-a-shallow-pool","ord":0,"value":"King of the Murkmire.esp:BOOK KoTMBookAShallowPool"}
+{"item_id":"item.book-argonians-of-western-solstice","ord":0,"value":"King of the Murkmire.esp:BOOK KoTMBookWesternSolsticeArgonians"}
+{"item_id":"item.book-catalogue-of-armor-enchantments","ord":0,"value":"Skyrim.esm:BOOK SkillEnchanting5"}
+{"item_id":"item.book-chimes-of-silver","ord":0,"value":"King of the Murkmire.esp:BOOK KoTMBookChimesOfSilver"}
+{"item_id":"item.book-depth-sticks-and-buds","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md:49"}
+{"item_id":"item.book-depth-sticks-and-buds","ord":1,"value":"world/sources/lore/topics/ecology-encounters-loot.md:16"}
+{"item_id":"item.book-gift-of-the-lilmothiit","ord":0,"value":"King of the Murkmire.esp:BOOK KoTMBookGiftOfLilmothiit"}
+{"item_id":"item.book-gods-and-worship","ord":0,"value":"Skyrim.esm:BOOK Book2CommonOverviewofGodsandWorship"}
+{"item_id":"item.book-hej-xajhuthi-kroni","ord":0,"value":"King of the Murkmire.esp:BOOK KoTMBookBewareWitchlightsTale"}
+{"item_id":"item.book-how-hackwing-got-her-tail","ord":0,"value":"King of the Murkmire.esp:BOOK KoTMBookHowHackwingGotHerTail"}
+{"item_id":"item.book-keshu-travels-beyond-the-village-2","ord":0,"value":"King of the Murkmire.esp:BOOK KoTMBookKeshuTravels02"}
+{"item_id":"item.book-ku-vastei-the-needed-change","ord":0,"value":"King of the Murkmire.esp:BOOK KoTMBookKuVastei"}
+{"item_id":"item.book-lost-tales-of-the-famed-explorer-2","ord":0,"value":"King of the Murkmire.esp:BOOK KoTMBookLostTales02"}
+{"item_id":"item.book-miregaunts-of-the-marsh","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:74"}
+{"item_id":"item.book-miregaunts-of-the-marsh","ord":1,"value":"world/sources/lore/topics/guilds-and-orders.md:341"}
+{"item_id":"item.book-nords-of-skyrim","ord":0,"value":"Skyrim.esm:BOOK Book2CommonNordsOfSkyrim"}
+{"item_id":"item.book-rhymes-and-chimes","ord":0,"value":"King of the Murkmire.esp:BOOK KoTMBookRhymesAndChimes"}
+{"item_id":"item.book-the-amulet-of-kings","ord":0,"value":"Skyrim.esm:BOOK Book2ReligiousTheAmuletofKings"}
+{"item_id":"item.book-the-black-fin-comes-home","ord":0,"value":"King of the Murkmire.esp:BOOK KoTMBookKeshuForeignAdventures05"}
+{"item_id":"item.book-the-black-fin-foreign-adventures-3","ord":0,"value":"King of the Murkmire.esp:BOOK KoTMBookKeshuForeignAdventures03"}
+{"item_id":"item.book-the-book-of-daedra","ord":0,"value":"Skyrim.esm:BOOK Book2CommonBookofDaedra"}
+{"item_id":"item.book-the-firmament","ord":0,"value":"Skyrim.esm:BOOK Book2CommonTheFirmament"}
+{"item_id":"item.book-the-importance-of-where","ord":0,"value":"Skyrim.esm:BOOK SkillOneHanded1"}
+{"item_id":"item.book-the-madmen-of-the-reach","ord":0,"value":"Skyrim.esm:BOOK Book2CommonMadmenoftheReach"}
+{"item_id":"item.book-the-seasons-of-argonia","ord":0,"value":"King of the Murkmire.esp:BOOK KoTMBookSeasonofArgonia"}
+{"item_id":"item.book-the-talos-mistake","ord":0,"value":"Skyrim.esm:BOOK Book2ReligiousTalosWorship"}
+{"item_id":"item.book-the-three-mournings","ord":0,"value":"world/sources/lore/topics/material-culture.md:204"}
+{"item_id":"item.book-villagers-journal","ord":0,"value":"Here There Be Monsters - Curse of Cipactli.esp:BOOK CIPHTBMBookArgJournal1"}
+{"item_id":"item.bound-dagger","ord":0,"value":"lanes/2.9/b2-report.md"}
+{"item_id":"item.bound-dagger","ord":1,"value":"lanes/2.9x/h-report.md"}
+{"item_id":"item.bound-dagger","ord":2,"value":"item.iron-dagger"}
+{"item_id":"item.bowl","ord":0,"value":"Skyrim.esm:MISC GlazedBowl01"}
+{"item_id":"item.bread","ord":0,"value":"Skyrim.esm:ALCH FoodBread01B"}
+{"item_id":"item.broom","ord":0,"value":"Skyrim.esm:MISC Broom01"}
+{"item_id":"item.bucket","ord":0,"value":"world/sources/vocab/socket-vocabulary.json"}
+{"item_id":"item.canis-root","ord":0,"value":"Skyrim.esm:INGR CanisRoot01"}
+{"item_id":"item.carriage-charge-ledger","ord":0,"value":"world/sources/lore/topics/prisons.md:86"}
+{"item_id":"item.carriage-charge-ledger","ord":1,"value":"world/sources/lore/topics/prisons.md:125"}
+{"item_id":"item.carriage-charge-ledger","ord":2,"value":"world/sources/lore/topics/material-culture.md:300"}
+{"item_id":"item.cast-iron-pot","ord":0,"value":"Skyrim.esm:MISC CastIronPotMedium01"}
+{"item_id":"item.chaurus-chitin","ord":0,"value":"Skyrim.esm:MISC ChaurusChitin"}
+{"item_id":"item.chaurus-chitin","ord":1,"value":"world/sources/lore/topics/material-culture.md:60"}
+{"item_id":"item.chaurus-chitin","ord":2,"value":"world/sources/lore/topics/fauna-hazards.md:39"}
+{"item_id":"item.clay-jug","ord":0,"value":"world/sources/lore/topics/material-culture.md:71"}
+{"item_id":"item.clothes-iron","ord":0,"value":"Skyrim.esm:MISC ClothesIron"}
+{"item_id":"item.column-pay-book","ord":0,"value":"world/sources/lore/topics/history-timeline.md:73"}
+{"item_id":"item.column-pay-book","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:26"}
+{"item_id":"item.column-pay-book","ord":2,"value":"world/sources/lore/topics/sky-moons-calendar.md:25"}
+{"item_id":"item.common-soul-gem","ord":0,"value":"Skyrim.esm:SLGM SoulGemCommon"}
+{"item_id":"item.common-soul-gem-filled","ord":0,"value":"Skyrim.esm:SLGM SoulGemCommonFilled"}
+{"item_id":"item.corundum-ingot","ord":0,"value":"Skyrim.esm:MISC IngotCorundum"}
+{"item_id":"item.corundum-ore","ord":0,"value":"Skyrim.esm:MISC OreCorundum"}
+{"item_id":"item.crocodile-tooth","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:125"}
+{"item_id":"item.crocodile-tooth","ord":1,"value":"world/sources/lore/topics/material-culture.md:172"}
+{"item_id":"item.crow-feather","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.crow-feather","ord":1,"value":"Skyrim.esm:INGR HagravenFeathers (UESP Skyrim:Hagraven Feathers)"}
+{"item_id":"item.cup","ord":0,"value":"Skyrim.esm:MISC GlazedCup01"}
+{"item_id":"item.daedra-heart","ord":0,"value":"Skyrim.esm:INGR DaedraHeart"}
+{"item_id":"item.daedra-heart","ord":1,"value":"world/sources/lore/regions/shadowfen.md:72"}
+{"item_id":"item.daedra-heart","ord":2,"value":"world/sources/lore/thorn.md:44"}
+{"item_id":"item.daedric-blunt-arrow","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:102"}
+{"item_id":"item.daedric-blunt-arrow","ord":1,"value":"world/sources/lore/regions/shadowfen.md:72"}
+{"item_id":"item.daedric-boots","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:102"}
+{"item_id":"item.daedric-boots","ord":1,"value":"world/sources/lore/regions/shadowfen.md:72"}
+{"item_id":"item.daedric-cuirass","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:102"}
+{"item_id":"item.daedric-cuirass","ord":1,"value":"world/sources/lore/regions/shadowfen.md:72"}
+{"item_id":"item.daedric-flight-arrow","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:102"}
+{"item_id":"item.daedric-flight-arrow","ord":1,"value":"world/sources/lore/regions/shadowfen.md:72"}
+{"item_id":"item.daedric-gauntlets","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:102"}
+{"item_id":"item.daedric-gauntlets","ord":1,"value":"world/sources/lore/regions/shadowfen.md:72"}
+{"item_id":"item.daedric-greatsword","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:102"}
+{"item_id":"item.daedric-greatsword","ord":1,"value":"world/sources/lore/regions/shadowfen.md:72"}
+{"item_id":"item.daedric-helmet","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:102"}
+{"item_id":"item.daedric-helmet","ord":1,"value":"world/sources/lore/regions/shadowfen.md:72"}
+{"item_id":"item.daedric-hunting-arrow","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:102"}
+{"item_id":"item.daedric-hunting-arrow","ord":1,"value":"world/sources/lore/regions/shadowfen.md:72"}
+{"item_id":"item.daedric-sword","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:102"}
+{"item_id":"item.daedric-sword","ord":1,"value":"world/sources/lore/regions/shadowfen.md:72"}
+{"item_id":"item.daedric-war-arrow","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:102"}
+{"item_id":"item.daedric-war-arrow","ord":1,"value":"world/sources/lore/regions/shadowfen.md:72"}
+{"item_id":"item.daedric-warbow","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:102"}
+{"item_id":"item.daedric-warbow","ord":1,"value":"world/sources/lore/regions/shadowfen.md:72"}
+{"item_id":"item.daril","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.daril","ord":1,"value":"world/sources/lore/topics/material-culture.md#drugs-and-medicine"}
+{"item_id":"item.death-hopper-bile","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.death-hopper-bile","ord":1,"value":"Morrowind:Corkbulb Root (UESP)"}
+{"item_id":"item.deathbell","ord":0,"value":"Skyrim.esm:INGR deathBell"}
+{"item_id":"item.deep-lot-pearl","ord":0,"value":"world/sources/blueprints/pearl-lots.design.md:20"}
+{"item_id":"item.deep-lot-pearl","ord":1,"value":"world/sources/lore/topics/material-culture.md:61"}
+{"item_id":"item.depth-stick","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"item_id":"item.dragons-tongue","ord":0,"value":"Skyrim.esm:INGR DragonsTongue"}
+{"item_id":"item.dreugh-shell","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.dreugh-wax","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.dreugh-wax","ord":1,"value":"Morrowind:Dreugh Wax (UESP)"}
+{"item_id":"item.dried-flower-buds","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md:50"}
+{"item_id":"item.dried-flower-buds","ord":1,"value":"world/sources/lore/topics/material-culture.md:153"}
+{"item_id":"item.drum","ord":0,"value":"Skyrim.esm:MISC Drum"}
+{"item_id":"item.duty-roster","ord":0,"value":"world/sources/lore/topics/history-timeline.md:73"}
+{"item_id":"item.duty-roster","ord":1,"value":"world/sources/lore/topics/sky-moons-calendar.md:30"}
+{"item_id":"item.dwarven-battleaxe","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:39"}
+{"item_id":"item.dwarven-battleaxe","ord":1,"value":"UESP:Lore:Dwemer"}
+{"item_id":"item.dwarven-blunt-arrow","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:39"}
+{"item_id":"item.dwarven-blunt-arrow","ord":1,"value":"UESP:Lore:Dwemer"}
+{"item_id":"item.dwarven-boots","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:39"}
+{"item_id":"item.dwarven-boots","ord":1,"value":"UESP:Lore:Dwemer"}
+{"item_id":"item.dwarven-cuirass","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:39"}
+{"item_id":"item.dwarven-cuirass","ord":1,"value":"UESP:Lore:Dwemer"}
+{"item_id":"item.dwarven-flight-arrow","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:39"}
+{"item_id":"item.dwarven-flight-arrow","ord":1,"value":"UESP:Lore:Dwemer"}
+{"item_id":"item.dwarven-helmet","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:39"}
+{"item_id":"item.dwarven-helmet","ord":1,"value":"UESP:Lore:Dwemer"}
+{"item_id":"item.dwarven-hunting-arrow","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:39"}
+{"item_id":"item.dwarven-hunting-arrow","ord":1,"value":"UESP:Lore:Dwemer"}
+{"item_id":"item.dwarven-mace","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:39"}
+{"item_id":"item.dwarven-mace","ord":1,"value":"UESP:Lore:Dwemer"}
+{"item_id":"item.dwarven-metal-ingot","ord":0,"value":"Skyrim.esm:MISC IngotDwarven"}
+{"item_id":"item.dwarven-metal-ingot","ord":1,"value":"UESP:Lore:Dwemer"}
+{"item_id":"item.dwarven-shield","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:39"}
+{"item_id":"item.dwarven-shield","ord":1,"value":"UESP:Lore:Dwemer"}
+{"item_id":"item.dwarven-sword","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:39"}
+{"item_id":"item.dwarven-sword","ord":1,"value":"UESP:Lore:Dwemer"}
+{"item_id":"item.dwarven-war-arrow","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:39"}
+{"item_id":"item.dwarven-war-arrow","ord":1,"value":"UESP:Lore:Dwemer"}
+{"item_id":"item.dwarven-warbow","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:39"}
+{"item_id":"item.dwarven-warbow","ord":1,"value":"UESP:Lore:Dwemer"}
+{"item_id":"item.ebony-blunt-arrow","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:47"}
+{"item_id":"item.ebony-blunt-arrow","ord":1,"value":"UESP:Lore:Ebony"}
+{"item_id":"item.ebony-boots","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:47"}
+{"item_id":"item.ebony-boots","ord":1,"value":"UESP:Lore:Ebony"}
+{"item_id":"item.ebony-claw","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:47"}
+{"item_id":"item.ebony-claw","ord":1,"value":"UESP:Lore:Ebony"}
+{"item_id":"item.ebony-cuirass","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:47"}
+{"item_id":"item.ebony-cuirass","ord":1,"value":"UESP:Lore:Ebony"}
+{"item_id":"item.ebony-dagger","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:47"}
+{"item_id":"item.ebony-dagger","ord":1,"value":"UESP:Lore:Ebony"}
+{"item_id":"item.ebony-flight-arrow","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:47"}
+{"item_id":"item.ebony-flight-arrow","ord":1,"value":"UESP:Lore:Ebony"}
+{"item_id":"item.ebony-gauntlets","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:47"}
+{"item_id":"item.ebony-gauntlets","ord":1,"value":"UESP:Lore:Ebony"}
+{"item_id":"item.ebony-greatsword","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:47"}
+{"item_id":"item.ebony-greatsword","ord":1,"value":"UESP:Lore:Ebony"}
+{"item_id":"item.ebony-halberd","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:47"}
+{"item_id":"item.ebony-halberd","ord":1,"value":"UESP:Lore:Ebony"}
+{"item_id":"item.ebony-helmet","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:47"}
+{"item_id":"item.ebony-helmet","ord":1,"value":"UESP:Lore:Ebony"}
+{"item_id":"item.ebony-hunting-arrow","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:47"}
+{"item_id":"item.ebony-hunting-arrow","ord":1,"value":"UESP:Lore:Ebony"}
+{"item_id":"item.ebony-ingot","ord":0,"value":"Skyrim.esm:MISC IngotEbony"}
+{"item_id":"item.ebony-katana","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:47"}
+{"item_id":"item.ebony-katana","ord":1,"value":"UESP:Lore:Ebony"}
+{"item_id":"item.ebony-pike","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:47"}
+{"item_id":"item.ebony-pike","ord":1,"value":"UESP:Lore:Ebony"}
+{"item_id":"item.ebony-quarterstaff","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:47"}
+{"item_id":"item.ebony-quarterstaff","ord":1,"value":"UESP:Lore:Ebony"}
+{"item_id":"item.ebony-rapier","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:47"}
+{"item_id":"item.ebony-rapier","ord":1,"value":"UESP:Lore:Ebony"}
+{"item_id":"item.ebony-shield","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:47"}
+{"item_id":"item.ebony-shield","ord":1,"value":"UESP:Lore:Ebony"}
+{"item_id":"item.ebony-sword","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:47"}
+{"item_id":"item.ebony-sword","ord":1,"value":"UESP:Lore:Ebony"}
+{"item_id":"item.ebony-trident","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:47"}
+{"item_id":"item.ebony-trident","ord":1,"value":"UESP:Lore:Ebony"}
+{"item_id":"item.ebony-war-arrow","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:47"}
+{"item_id":"item.ebony-war-arrow","ord":1,"value":"UESP:Lore:Ebony"}
+{"item_id":"item.ebony-warbow","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:47"}
+{"item_id":"item.ebony-warbow","ord":1,"value":"UESP:Lore:Ebony"}
+{"item_id":"item.ectoplasm","ord":0,"value":"Skyrim.esm:INGR Ectoplasm"}
+{"item_id":"item.eel-slime","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.eel-slime","ord":1,"value":"Morrowind:Scrib Jelly (UESP)"}
+{"item_id":"item.eel-slime-reminder","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:80"}
+{"item_id":"item.eel-slime-salve","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:80"}
+{"item_id":"item.eidar-cheese-wheel","ord":0,"value":"Skyrim.esm:ALCH FoodCheeseWheel02A"}
+{"item_id":"item.elven-blunt-arrow","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:71"}
+{"item_id":"item.elven-blunt-arrow","ord":1,"value":"world/sources/lore/regions/waters.md:25"}
+{"item_id":"item.elven-boots","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:71"}
+{"item_id":"item.elven-boots","ord":1,"value":"world/sources/lore/regions/waters.md:25"}
+{"item_id":"item.elven-claw","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:71"}
+{"item_id":"item.elven-claw","ord":1,"value":"world/sources/lore/regions/waters.md:25"}
+{"item_id":"item.elven-cuirass","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:71"}
+{"item_id":"item.elven-cuirass","ord":1,"value":"world/sources/lore/regions/waters.md:25"}
+{"item_id":"item.elven-dagger","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:71"}
+{"item_id":"item.elven-dagger","ord":1,"value":"world/sources/lore/regions/waters.md:25"}
+{"item_id":"item.elven-flight-arrow","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:71"}
+{"item_id":"item.elven-flight-arrow","ord":1,"value":"world/sources/lore/regions/waters.md:25"}
+{"item_id":"item.elven-gauntlets","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:71"}
+{"item_id":"item.elven-gauntlets","ord":1,"value":"world/sources/lore/regions/waters.md:25"}
+{"item_id":"item.elven-greatsword","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:71"}
+{"item_id":"item.elven-greatsword","ord":1,"value":"world/sources/lore/regions/waters.md:25"}
+{"item_id":"item.elven-halberd","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:71"}
+{"item_id":"item.elven-halberd","ord":1,"value":"world/sources/lore/regions/waters.md:25"}
+{"item_id":"item.elven-helmet","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:71"}
+{"item_id":"item.elven-helmet","ord":1,"value":"world/sources/lore/regions/waters.md:25"}
+{"item_id":"item.elven-hunting-arrow","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:71"}
+{"item_id":"item.elven-hunting-arrow","ord":1,"value":"world/sources/lore/regions/waters.md:25"}
+{"item_id":"item.elven-katana","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:71"}
+{"item_id":"item.elven-katana","ord":1,"value":"world/sources/lore/regions/waters.md:25"}
+{"item_id":"item.elven-longbow","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:71"}
+{"item_id":"item.elven-longbow","ord":1,"value":"world/sources/lore/regions/waters.md:25"}
+{"item_id":"item.elven-pike","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:71"}
+{"item_id":"item.elven-pike","ord":1,"value":"world/sources/lore/regions/waters.md:25"}
+{"item_id":"item.elven-quarterstaff","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:71"}
+{"item_id":"item.elven-quarterstaff","ord":1,"value":"world/sources/lore/regions/waters.md:25"}
+{"item_id":"item.elven-rapier","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:71"}
+{"item_id":"item.elven-rapier","ord":1,"value":"world/sources/lore/regions/waters.md:25"}
+{"item_id":"item.elven-shield","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:71"}
+{"item_id":"item.elven-shield","ord":1,"value":"world/sources/lore/regions/waters.md:25"}
+{"item_id":"item.elven-spear","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:71"}
+{"item_id":"item.elven-spear","ord":1,"value":"world/sources/lore/regions/waters.md:25"}
+{"item_id":"item.elven-sword","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:71"}
+{"item_id":"item.elven-sword","ord":1,"value":"world/sources/lore/regions/waters.md:25"}
+{"item_id":"item.elven-trident","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:71"}
+{"item_id":"item.elven-trident","ord":1,"value":"world/sources/lore/regions/waters.md:25"}
+{"item_id":"item.elven-war-arrow","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:71"}
+{"item_id":"item.elven-war-arrow","ord":1,"value":"world/sources/lore/regions/waters.md:25"}
+{"item_id":"item.eye-of-the-root","ord":0,"value":"docs/quests/30-main-quest.md"}
+{"item_id":"item.falmer-blunt-arrow","ord":0,"value":"world/sources/lore/topics/material-culture.md:59"}
+{"item_id":"item.falmer-blunt-arrow","ord":1,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"item_id":"item.falmer-flight-arrow","ord":0,"value":"world/sources/lore/topics/material-culture.md:59"}
+{"item_id":"item.falmer-flight-arrow","ord":1,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"item_id":"item.falmer-hunting-arrow","ord":0,"value":"world/sources/lore/topics/material-culture.md:59"}
+{"item_id":"item.falmer-hunting-arrow","ord":1,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"item_id":"item.falmer-shortbow","ord":0,"value":"world/sources/lore/topics/material-culture.md:59"}
+{"item_id":"item.falmer-shortbow","ord":1,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"item_id":"item.falmer-war-arrow","ord":0,"value":"world/sources/lore/topics/material-culture.md:59"}
+{"item_id":"item.falmer-war-arrow","ord":1,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"item_id":"item.feather-serpent-plume","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.feather-serpent-plume","ord":1,"value":"Morrowind:Racer Plumes (UESP)"}
+{"item_id":"item.fellrunner-down","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.ferry-guide-note","ord":0,"value":"world/sources/lore/topics/material-culture.md:119"}
+{"item_id":"item.fine-boots","ord":0,"value":"Skyrim.esm:ARMO ClothesFineBoots01"}
+{"item_id":"item.fine-boots","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:13"}
+{"item_id":"item.fine-boots","ord":2,"value":"world/sources/lore/topics/morrowind-commerce-reference.md:25"}
+{"item_id":"item.fine-bowl","ord":0,"value":"Skyrim.esm:MISC GlazedBowl02"}
+{"item_id":"item.fine-clothes","ord":0,"value":"Skyrim.esm:ARMO ClothesFineClothes01"}
+{"item_id":"item.fine-clothes","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:13"}
+{"item_id":"item.fine-clothes","ord":2,"value":"world/sources/lore/topics/morrowind-commerce-reference.md:25"}
+{"item_id":"item.fine-coat","ord":0,"value":"Skyrim.esm:ARMO ClothesFineClothes02"}
+{"item_id":"item.fine-coat","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:13"}
+{"item_id":"item.fine-coat","ord":2,"value":"world/sources/lore/topics/morrowind-commerce-reference.md:25"}
+{"item_id":"item.fine-hat","ord":0,"value":"Skyrim.esm:ARMO ClothesFineHat02"}
+{"item_id":"item.fine-hat","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:13"}
+{"item_id":"item.fine-hat","ord":2,"value":"world/sources/lore/topics/morrowind-commerce-reference.md:25"}
+{"item_id":"item.fine-shoes","ord":0,"value":"Skyrim.esm:ARMO ClothesFineBoots02"}
+{"item_id":"item.fine-shoes","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:13"}
+{"item_id":"item.fine-shoes","ord":2,"value":"world/sources/lore/topics/morrowind-commerce-reference.md:25"}
+{"item_id":"item.fire-salts","ord":0,"value":"Skyrim.esm:INGR FireSalts"}
+{"item_id":"item.firebrand-wine","ord":0,"value":"Skyrim.esm:ALCH FirebrandWine"}
+{"item_id":"item.firewood","ord":0,"value":"world/sources/vocab/socket-vocabulary.json"}
+{"item_id":"item.fishing-pole","ord":0,"value":"world/sources/vocab/socket-vocabulary.json"}
+{"item_id":"item.flagon","ord":0,"value":"world/sources/vocab/socket-vocabulary.json"}
+{"item_id":"item.flawless-emerald","ord":0,"value":"Skyrim.esm:MISC GemEmeraldFlawless"}
+{"item_id":"item.fleshfly-husks","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.fleshfly-husks","ord":1,"value":"Morrowind:Kwama Cuttle (UESP)"}
+{"item_id":"item.flint-vine","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"item_id":"item.flotilla-hull-tally","ord":0,"value":"world/sources/placement/facts/place.mercantile-coast.lighter-flotilla.json"}
+{"item_id":"item.fly-amanita","ord":0,"value":"Skyrim.esm:INGR Mushroom01"}
+{"item_id":"item.fork","ord":0,"value":"Skyrim.esm:MISC BasicFork01"}
+{"item_id":"item.forsworn-blunt-arrow","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:124"}
+{"item_id":"item.forsworn-blunt-arrow","ord":1,"value":"world/sources/lore/topics/material-culture.md:167"}
+{"item_id":"item.forsworn-flight-arrow","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:124"}
+{"item_id":"item.forsworn-flight-arrow","ord":1,"value":"world/sources/lore/topics/material-culture.md:167"}
+{"item_id":"item.forsworn-hunting-arrow","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:124"}
+{"item_id":"item.forsworn-hunting-arrow","ord":1,"value":"world/sources/lore/topics/material-culture.md:167"}
+{"item_id":"item.forsworn-shortbow","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:124"}
+{"item_id":"item.forsworn-shortbow","ord":1,"value":"world/sources/lore/topics/material-culture.md:167"}
+{"item_id":"item.forsworn-war-arrow","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:124"}
+{"item_id":"item.forsworn-war-arrow","ord":1,"value":"world/sources/lore/topics/material-culture.md:167"}
+{"item_id":"item.fox-pelt","ord":0,"value":"Skyrim.esm:MISC FoxPelt"}
+{"item_id":"item.fried-frog-legs","ord":0,"value":"King of the Murkmire.esp:ALCH FrogLegCooked"}
+{"item_id":"item.frog-legs","ord":0,"value":"King of the Murkmire.esp:ALCH FrogLegRaw"}
+{"item_id":"item.frost-salts","ord":0,"value":"Skyrim.esm:INGR FrostSalts"}
+{"item_id":"item.gang-roll","ord":0,"value":"world/sources/lore/topics/labour-and-bondage.md:73"}
+{"item_id":"item.gang-roll","ord":1,"value":"world/sources/lore/topics/labour-and-bondage.md:90"}
+{"item_id":"item.gang-roll","ord":2,"value":"world/sources/lore/topics/labour-and-bondage.md:94"}
+{"item_id":"item.gang-roll","ord":3,"value":"world/sources/lore/topics/labour-and-bondage.md:97"}
+{"item_id":"item.garnet","ord":0,"value":"Skyrim.esm:MISC GemGarnet"}
+{"item_id":"item.giant-leech-blood","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.giant-leech-blood","ord":1,"value":"Morrowind:Chokeweed (UESP)"}
+{"item_id":"item.giant-lichen","ord":0,"value":"Skyrim.esm:INGR GiantLichen"}
+{"item_id":"item.glass-bead-strand","ord":0,"value":"world/sources/lore/topics/lost-peoples.md:30"}
+{"item_id":"item.glass-blunt-arrow","ord":0,"value":"world/sources/lore/topics/material-culture.md:61"}
+{"item_id":"item.glass-blunt-arrow","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:47"}
+{"item_id":"item.glass-boots","ord":0,"value":"world/sources/lore/topics/material-culture.md:61"}
+{"item_id":"item.glass-boots","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:47"}
+{"item_id":"item.glass-cuirass","ord":0,"value":"world/sources/lore/topics/material-culture.md:61"}
+{"item_id":"item.glass-cuirass","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:47"}
+{"item_id":"item.glass-flight-arrow","ord":0,"value":"world/sources/lore/topics/material-culture.md:61"}
+{"item_id":"item.glass-flight-arrow","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:47"}
+{"item_id":"item.glass-gauntlets","ord":0,"value":"world/sources/lore/topics/material-culture.md:61"}
+{"item_id":"item.glass-gauntlets","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:47"}
+{"item_id":"item.glass-helmet","ord":0,"value":"world/sources/lore/topics/material-culture.md:61"}
+{"item_id":"item.glass-helmet","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:47"}
+{"item_id":"item.glass-hunting-arrow","ord":0,"value":"world/sources/lore/topics/material-culture.md:61"}
+{"item_id":"item.glass-hunting-arrow","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:47"}
+{"item_id":"item.glass-longbow","ord":0,"value":"world/sources/lore/topics/material-culture.md:61"}
+{"item_id":"item.glass-longbow","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:47"}
+{"item_id":"item.glass-sword","ord":0,"value":"world/sources/lore/topics/material-culture.md:61"}
+{"item_id":"item.glass-sword","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:47"}
+{"item_id":"item.glass-war-arrow","ord":0,"value":"world/sources/lore/topics/material-culture.md:61"}
+{"item_id":"item.glass-war-arrow","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:47"}
+{"item_id":"item.glazed-urn","ord":0,"value":"Skyrim.esm:MISC Glazed02Urn01"}
+{"item_id":"item.glow-dust","ord":0,"value":"Skyrim.esm:INGR glowDust"}
+{"item_id":"item.goat-cheese-wedge","ord":0,"value":"Skyrim.esm:ALCH FoodCheeseWedge01"}
+{"item_id":"item.goblet","ord":0,"value":"Skyrim.esm:MISC SilverGoblet01"}
+{"item_id":"item.gold","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:85"}
+{"item_id":"item.gold-amulet","ord":0,"value":"Skyrim.esm:ARMO JewelryNecklaceGold"}
+{"item_id":"item.gold-amulet","ord":1,"value":"world/sources/lore/topics/material-culture.md:67"}
+{"item_id":"item.gold-amulet","ord":2,"value":"world/sources/lore/topics/material-culture.md:61"}
+{"item_id":"item.gold-ring","ord":0,"value":"Skyrim.esm:ARMO JewelryRingGold"}
+{"item_id":"item.gold-ring","ord":1,"value":"world/sources/lore/topics/material-culture.md:67"}
+{"item_id":"item.gold-ring","ord":2,"value":"world/sources/lore/topics/material-culture.md:61"}
+{"item_id":"item.grand-soul-gem","ord":0,"value":"Skyrim.esm:SLGM SoulGemGrand"}
+{"item_id":"item.grand-soul-gem-filled","ord":0,"value":"Skyrim.esm:SLGM SoulGemGrandFilled"}
+{"item_id":"item.grave-stake","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"item_id":"item.grave-stake","ord":1,"value":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
+{"item_id":"item.grave-stake","ord":2,"value":"Here There Be Monsters - Curse of Cipactli.esp:STAT CIPHTBMRuinsXanGraveStake1"}
+{"item_id":"item.grave-stake-essence","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.grave-stake-essence","ord":1,"value":"Morrowind:Gravedust (UESP)"}
+{"item_id":"item.greater-soul-gem","ord":0,"value":"Skyrim.esm:SLGM SoulGemGreater"}
+{"item_id":"item.greater-soul-gem-filled","ord":0,"value":"Skyrim.esm:SLGM SoulGemGreaterFilled"}
+{"item_id":"item.hackwing-plume","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.hackwing-plume","ord":1,"value":"Skyrim.esm:INGR HawkFeathers (UESP Skyrim:Hawk Feathers)"}
+{"item_id":"item.haj-mota-baby-shell","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.haj-mota-shell","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.hanging-moss","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md:99"}
+{"item_id":"item.healing-draught","ord":0,"value":"world/sources/lore/topics/material-culture.md:153"}
+{"item_id":"item.held-back-strongbox-key","ord":0,"value":"world/sources/blueprints/chasepoint.layout.json"}
+{"item_id":"item.hide","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:124"}
+{"item_id":"item.hissmir-fish-eye-rye","ord":0,"value":"world/sources/lore/topics/material-culture.md:137"}
+{"item_id":"item.hist-sap","ord":0,"value":"world/sources/lore/topics/hist-and-sap.md"}
+{"item_id":"item.hist-sap-rubber","ord":0,"value":"world/sources/lore/topics/hist-and-sap.md:49"}
+{"item_id":"item.hist-sap-rubber","ord":1,"value":"world/sources/lore/topics/loading-facts.md:43"}
+{"item_id":"item.hoarvor-blood-sac","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.hoarvor-blood-sac","ord":1,"value":"Morrowind:Hound Meat (UESP)"}
+{"item_id":"item.hoe","ord":0,"value":"world/sources/vocab/socket-vocabulary.json"}
+{"item_id":"item.honeycomb","ord":0,"value":"Skyrim.esm:INGR BeeHoneyComb"}
+{"item_id":"item.hunting-bow","ord":0,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.hunting-bow","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:111"}
+{"item_id":"item.imp-stool","ord":0,"value":"Skyrim.esm:INGR Mushroom04"}
+{"item_id":"item.imperial-boots","ord":0,"value":"Skyrim.esm:ARMO ArmorImperialBoots"}
+{"item_id":"item.imperial-boots","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:13"}
+{"item_id":"item.imperial-boots","ord":2,"value":"world/sources/lore/topics/guilds-and-orders.md:134"}
+{"item_id":"item.imperial-bow","ord":0,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.imperial-bow","ord":1,"value":"item.bog-iron"}
+{"item_id":"item.imperial-cuirass","ord":0,"value":"Skyrim.esm:ARMO ArmorImperialCuirass"}
+{"item_id":"item.imperial-cuirass","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:13"}
+{"item_id":"item.imperial-cuirass","ord":2,"value":"world/sources/lore/topics/guilds-and-orders.md:134"}
+{"item_id":"item.imperial-gauntlets","ord":0,"value":"Skyrim.esm:ARMO ArmorImperialGauntlets"}
+{"item_id":"item.imperial-gauntlets","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:13"}
+{"item_id":"item.imperial-gauntlets","ord":2,"value":"world/sources/lore/topics/guilds-and-orders.md:134"}
+{"item_id":"item.imperial-helmet","ord":0,"value":"Skyrim.esm:ARMO ArmorImperialHelmet"}
+{"item_id":"item.imperial-helmet","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:13"}
+{"item_id":"item.imperial-helmet","ord":2,"value":"world/sources/lore/topics/guilds-and-orders.md:134"}
+{"item_id":"item.imperial-light-boots","ord":0,"value":"Skyrim.esm:ARMO ArmorImperialLightBoots"}
+{"item_id":"item.imperial-light-boots","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:13"}
+{"item_id":"item.imperial-light-boots","ord":2,"value":"world/sources/lore/topics/guilds-and-orders.md:134"}
+{"item_id":"item.imperial-light-cuirass","ord":0,"value":"Skyrim.esm:ARMO ArmorImperialLightCuirass"}
+{"item_id":"item.imperial-light-cuirass","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:13"}
+{"item_id":"item.imperial-light-cuirass","ord":2,"value":"world/sources/lore/topics/guilds-and-orders.md:134"}
+{"item_id":"item.imperial-light-gauntlets","ord":0,"value":"Skyrim.esm:ARMO ArmorImperialLightGauntlets"}
+{"item_id":"item.imperial-light-gauntlets","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:13"}
+{"item_id":"item.imperial-light-gauntlets","ord":2,"value":"world/sources/lore/topics/guilds-and-orders.md:134"}
+{"item_id":"item.imperial-light-helmet","ord":0,"value":"Skyrim.esm:ARMO ArmorImperialLightHelmet"}
+{"item_id":"item.imperial-light-helmet","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:13"}
+{"item_id":"item.imperial-light-helmet","ord":2,"value":"world/sources/lore/topics/guilds-and-orders.md:134"}
+{"item_id":"item.imperial-sword","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:13"}
+{"item_id":"item.imperial-sword","ord":1,"value":"world/sources/lore/topics/guilds-and-orders.md:134"}
+{"item_id":"item.inkwell","ord":0,"value":"world/sources/vocab/socket-vocabulary.json"}
+{"item_id":"item.insulated-boots","ord":0,"value":"world/sources/lore/topics/hist-and-sap.md:49"}
+{"item_id":"item.insulated-boots","ord":1,"value":"world/sources/lore/topics/ecology-encounters-loot.md:71"}
+{"item_id":"item.insulated-boots","ord":2,"value":"world/sources/lore/topics/loading-facts.md:43"}
+{"item_id":"item.insulated-gloves","ord":0,"value":"world/sources/lore/topics/hist-and-sap.md:49"}
+{"item_id":"item.insulated-gloves","ord":1,"value":"world/sources/lore/topics/ecology-encounters-loot.md:71"}
+{"item_id":"item.insulated-gloves","ord":2,"value":"world/sources/lore/topics/loading-facts.md:43"}
+{"item_id":"item.iron-battleaxe","ord":0,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.iron-battleaxe","ord":1,"value":"item.bog-iron"}
+{"item_id":"item.iron-blunt-arrow","ord":0,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.iron-blunt-arrow","ord":1,"value":"item.bog-iron"}
+{"item_id":"item.iron-boots","ord":0,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.iron-boots","ord":1,"value":"item.bog-iron"}
+{"item_id":"item.iron-claw","ord":0,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.iron-claw","ord":1,"value":"item.bog-iron"}
+{"item_id":"item.iron-cuirass","ord":0,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.iron-cuirass","ord":1,"value":"item.bog-iron"}
+{"item_id":"item.iron-dagger","ord":0,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.iron-dagger","ord":1,"value":"item.bog-iron"}
+{"item_id":"item.iron-flight-arrow","ord":0,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.iron-flight-arrow","ord":1,"value":"item.bog-iron"}
+{"item_id":"item.iron-gauntlets","ord":0,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.iron-gauntlets","ord":1,"value":"item.bog-iron"}
+{"item_id":"item.iron-greatsword","ord":0,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.iron-greatsword","ord":1,"value":"item.bog-iron"}
+{"item_id":"item.iron-halberd","ord":0,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.iron-halberd","ord":1,"value":"item.bog-iron"}
+{"item_id":"item.iron-helmet","ord":0,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.iron-helmet","ord":1,"value":"item.bog-iron"}
+{"item_id":"item.iron-hunting-arrow","ord":0,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.iron-hunting-arrow","ord":1,"value":"item.bog-iron"}
+{"item_id":"item.iron-katana","ord":0,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.iron-katana","ord":1,"value":"item.bog-iron"}
+{"item_id":"item.iron-mace","ord":0,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.iron-mace","ord":1,"value":"item.bog-iron"}
+{"item_id":"item.iron-ore","ord":0,"value":"world/sources/vocab/socket-vocabulary.json"}
+{"item_id":"item.iron-pike","ord":0,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.iron-pike","ord":1,"value":"item.bog-iron"}
+{"item_id":"item.iron-quarterstaff","ord":0,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.iron-quarterstaff","ord":1,"value":"item.bog-iron"}
+{"item_id":"item.iron-rapier","ord":0,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.iron-rapier","ord":1,"value":"item.bog-iron"}
+{"item_id":"item.iron-shield","ord":0,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.iron-shield","ord":1,"value":"item.bog-iron"}
+{"item_id":"item.iron-shortspear","ord":0,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.iron-shortspear","ord":1,"value":"item.bog-iron"}
+{"item_id":"item.iron-spear","ord":0,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.iron-spear","ord":1,"value":"item.bog-iron"}
+{"item_id":"item.iron-sword","ord":0,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.iron-sword","ord":1,"value":"item.bog-iron"}
+{"item_id":"item.iron-trident","ord":0,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.iron-trident","ord":1,"value":"item.bog-iron"}
+{"item_id":"item.iron-war-arrow","ord":0,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.iron-war-arrow","ord":1,"value":"item.bog-iron"}
+{"item_id":"item.iron-waraxe","ord":0,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.iron-waraxe","ord":1,"value":"item.bog-iron"}
+{"item_id":"item.iron-warhammer","ord":0,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.iron-warhammer","ord":1,"value":"item.bog-iron"}
+{"item_id":"item.jadeflint","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"item_id":"item.jassa-red-slug-mucus","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.jassa-red-slug-mucus","ord":1,"value":"Morrowind:Scrib Jelly (UESP)"}
+{"item_id":"item.jazbay-grapes","ord":0,"value":"Skyrim.esm:INGR JazBay"}
+{"item_id":"item.jeel-sa","ord":0,"value":"King of the Murkmire.esp:ALCH JeelSa"}
+{"item_id":"item.jelly-feeler","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.jelly-feeler","ord":1,"value":"Morrowind:Kresh Fiber (UESP)"}
+{"item_id":"item.jelly-gas-bladder","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.jelly-gas-bladder","ord":1,"value":"world/sources/lore/topics/material-culture.md#drugs-and-medicine"}
+{"item_id":"item.kettle","ord":0,"value":"Skyrim.esm:MISC Kettle01"}
+{"item_id":"item.key-dunmer-north-riverwalk-1","ord":0,"value":"world/sources/registries/locks.json#lock.riverwalk.door-1"}
+{"item_id":"item.key-dunmer-north-riverwalk-2","ord":0,"value":"world/sources/registries/locks.json#lock.riverwalk.door-2"}
+{"item_id":"item.key-hist-heartland-greenspring-2","ord":0,"value":"world/sources/registries/locks.json#lock.greenspring.door-2"}
+{"item_id":"item.key-hist-heartland-greenspring-4","ord":0,"value":"world/sources/registries/locks.json#lock.greenspring.door-4"}
+{"item_id":"item.key-hist-heartland-greenspring-5","ord":0,"value":"world/sources/registries/locks.json#lock.greenspring.door-5"}
+{"item_id":"item.key-hist-heartland-greenspring-6","ord":0,"value":"world/sources/registries/locks.json#lock.greenspring.door-6"}
+{"item_id":"item.key-imperial-fringe-bog-iron-workings-1","ord":0,"value":"world/sources/registries/locks.json#lock.bog-iron-workings.door-1"}
+{"item_id":"item.key-imperial-fringe-claywater-station-2","ord":0,"value":"world/sources/registries/locks.json#lock.claywater-station.door-2"}
+{"item_id":"item.key-imperial-fringe-claywater-station-3","ord":0,"value":"world/sources/registries/locks.json#lock.claywater-station.door-3"}
+{"item_id":"item.key-imperial-fringe-the-broke-column-armour-chest","ord":0,"value":"world/sources/registries/locks.json#lock.the-broke-column.container-armour-chest"}
+{"item_id":"item.key-imperial-fringe-the-broke-column-arms-chest","ord":0,"value":"world/sources/registries/locks.json#lock.the-broke-column.container-arms-chest"}
+{"item_id":"item.key-imperial-penal-south-rose-bone-waystation-1","ord":0,"value":"world/sources/registries/locks.json#lock.rose-bone-waystation.door-1"}
+{"item_id":"item.key-mercantile-coast-chasepoint-1","ord":0,"value":"world/sources/registries/locks.json#lock.chasepoint.door-1"}
+{"item_id":"item.key-mercantile-coast-chasepoint-2","ord":0,"value":"world/sources/registries/locks.json#lock.chasepoint.door-2"}
+{"item_id":"item.key-mercantile-coast-chasepoint-3","ord":0,"value":"world/sources/registries/locks.json#lock.chasepoint.door-3"}
+{"item_id":"item.key-pirate-freeholds-opening-work-camp-1","ord":0,"value":"world/sources/registries/locks.json#lock.opening-work-camp.door-1"}
+{"item_id":"item.key-pirate-freeholds-upriver-hist-village-1","ord":0,"value":"world/sources/registries/locks.json#lock.upriver-hist-village.door-1"}
+{"item_id":"item.key-pirate-freeholds-upriver-hist-village-2","ord":0,"value":"world/sources/registries/locks.json#lock.upriver-hist-village.door-2"}
+{"item_id":"item.key-pirate-freeholds-upriver-hist-village-3","ord":0,"value":"world/sources/registries/locks.json#lock.upriver-hist-village.door-3"}
+{"item_id":"item.key-pirate-freeholds-upriver-hist-village-4","ord":0,"value":"world/sources/registries/locks.json#lock.upriver-hist-village.door-4"}
+{"item_id":"item.key-pirate-freeholds-upriver-hist-village-5","ord":0,"value":"world/sources/registries/locks.json#lock.upriver-hist-village.door-5"}
+{"item_id":"item.knife","ord":0,"value":"Skyrim.esm:MISC BasicKnife01"}
+{"item_id":"item.knife","ord":1,"value":"Skyrim.esm:WEAP weapBasicKnife01"}
+{"item_id":"item.kotu-gava-wings","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.kotu-gava-wings","ord":1,"value":"Morrowind:Scuttle (UESP)"}
+{"item_id":"item.lamia-scales","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.lamia-scales","ord":1,"value":"Morrowind:Scales (UESP)"}
+{"item_id":"item.lavender","ord":0,"value":"Skyrim.esm:INGR Lavender"}
+{"item_id":"item.leather","ord":0,"value":"Skyrim.esm:MISC Leather01"}
+{"item_id":"item.leather","ord":1,"value":"world/sources/lore/topics/ecology-encounters-loot.md:124"}
+{"item_id":"item.leather-strips","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:36"}
+{"item_id":"item.leek","ord":0,"value":"Skyrim.esm:ALCH FoodLeek"}
+{"item_id":"item.lesser-soul-gem","ord":0,"value":"Skyrim.esm:SLGM SoulGemLesser"}
+{"item_id":"item.lesser-soul-gem-filled","ord":0,"value":"Skyrim.esm:SLGM SoulGemLesserFilled"}
+{"item_id":"item.leviathan-bone","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"item_id":"item.leviathan-bone","ord":1,"value":"King of the Murkmire.esp:INGR SwampLeviathanClaws"}
+{"item_id":"item.leviathan-spine","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.leviathan-spine","ord":1,"value":"Tribunal:Lloramor Spines (UESP)"}
+{"item_id":"item.leviathan-tusk","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.leviathan-tusk","ord":1,"value":"Bloodmoon:Horker Tusk (UESP)"}
+{"item_id":"item.linen-wrap","ord":0,"value":"Skyrim.esm:MISC RuinsLinenPile01"}
+{"item_id":"item.lockpick","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:107"}
+{"item_id":"item.long-bow","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:124"}
+{"item_id":"item.long-bow","ord":1,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.lumberries","ord":0,"value":"world/sources/lore/topics/material-culture.md:136"}
+{"item_id":"item.malachite-ore","ord":0,"value":"Skyrim.esm:MISC OreMalachite"}
+{"item_id":"item.marsh-giant-blood","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.marsh-giant-blood","ord":1,"value":"Bloodmoon:Blood of an Innocent (UESP)"}
+{"item_id":"item.marsh-lantern","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md:14"}
+{"item_id":"item.marsh-lantern","ord":1,"value":"world/sources/lore/topics/ecology-encounters-loot.md:123"}
+{"item_id":"item.marsh-native-foot-wraps","ord":0,"value":"Here There Be Monsters - Curse of Cipactli.esp:ARMO CIPHTBMNativeBoots2"}
+{"item_id":"item.marsh-native-foot-wraps","ord":1,"value":"world/sources/lore/topics/material-culture.md:80"}
+{"item_id":"item.marsh-native-hat","ord":0,"value":"Here There Be Monsters - Curse of Cipactli.esp:ARMO CIPHTBMNativeHat1"}
+{"item_id":"item.marsh-native-hat","ord":1,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.marsh-native-kilt","ord":0,"value":"Here There Be Monsters - Curse of Cipactli.esp:ARMO CIPHTBMNativeClothes3"}
+{"item_id":"item.marsh-native-kilt","ord":1,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.marsh-native-kilt","ord":2,"value":"world/sources/lore/topics/material-culture.md:80"}
+{"item_id":"item.marsh-native-rags","ord":0,"value":"Here There Be Monsters - Curse of Cipactli.esp:ARMO CIPHTBMNativeClothes2"}
+{"item_id":"item.marsh-native-rags","ord":1,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.marsh-native-rags","ord":2,"value":"world/sources/lore/topics/material-culture.md:80"}
+{"item_id":"item.marsh-native-sandals","ord":0,"value":"Here There Be Monsters - Curse of Cipactli.esp:ARMO CIPHTBMNativeBoots1"}
+{"item_id":"item.marsh-native-sandals","ord":1,"value":"world/sources/lore/topics/material-culture.md:80"}
+{"item_id":"item.marsh-native-wrap","ord":0,"value":"Here There Be Monsters - Curse of Cipactli.esp:ARMO CIPHTBMNativeClothes1"}
+{"item_id":"item.marsh-native-wrap","ord":1,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.marsh-native-wrap","ord":2,"value":"world/sources/lore/topics/material-culture.md:80"}
+{"item_id":"item.marsh-rat-meat","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.marsh-rat-meat","ord":1,"value":"Morrowind:Rat Meat (UESP)"}
+{"item_id":"item.marshweed","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md:99"}
+{"item_id":"item.medusa-scales","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.medusa-scales","ord":1,"value":"Morrowind:Scales (UESP)"}
+{"item_id":"item.mnemic-egg","ord":0,"value":"UESP:Lore:Mnemic Egg"}
+{"item_id":"item.mnemic-egg","ord":1,"value":"King of the Murkmire.esp:STAT ArgonianEggBlack01"}
+{"item_id":"item.moon-adder-venom","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.moon-adder-venom","ord":1,"value":"world/sources/lore/topics/material-culture.md#drugs-and-medicine"}
+{"item_id":"item.moon-adder-venom","ord":2,"value":"Morrowind:Poison (UESP)"}
+{"item_id":"item.moon-sugar","ord":0,"value":"world/sources/lore/topics/material-culture.md:152"}
+{"item_id":"item.mouth-plover-feather","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.mudcrab-chitin","ord":0,"value":"Skyrim.esm:INGR MudcrabChitin"}
+{"item_id":"item.murkmire-stew","ord":0,"value":"King of the Murkmire.esp:ALCH MurkmireStew"}
+{"item_id":"item.neesak-of-scrying","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"item_id":"item.nirnroot","ord":0,"value":"Skyrim.esm:INGR Nirnroot"}
+{"item_id":"item.nisswo-coin","ord":0,"value":"King of the Murkmire.esp:MISC XanmeerNisswoCoin"}
+{"item_id":"item.nord-mead","ord":0,"value":"Skyrim.esm:ALCH FoodMead"}
+{"item_id":"item.note-adventurers-torn-note","ord":0,"value":"King of the Murkmire.esp:BOOK TOSAdventurerNote01"}
+{"item_id":"item.note-an-xileel-horticulturists-note","ord":0,"value":"King of the Murkmire.esp:BOOK TOSAlchemistNote"}
+{"item_id":"item.obsidian-warhammer","ord":0,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.obsidian-warhammer","ord":1,"value":"world/sources/lore/topics/ecology-encounters-loot.md:151"}
+{"item_id":"item.obverdian","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"item_id":"item.oliis-pearl","ord":0,"value":"world/sources/blueprints/pearl-lots.layout.json"}
+{"item_id":"item.oliis-pearl","ord":1,"value":"world/sources/lore/topics/material-culture.md:61"}
+{"item_id":"item.orange-dartwing","ord":0,"value":"Skyrim.esm:INGR DragonflyOrange"}
+{"item_id":"item.orcish-blunt-arrow","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:21"}
+{"item_id":"item.orcish-blunt-arrow","ord":1,"value":"UESP:Lore:Orsimer"}
+{"item_id":"item.orcish-boots","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:21"}
+{"item_id":"item.orcish-boots","ord":1,"value":"UESP:Lore:Orsimer"}
+{"item_id":"item.orcish-cuirass","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:21"}
+{"item_id":"item.orcish-cuirass","ord":1,"value":"UESP:Lore:Orsimer"}
+{"item_id":"item.orcish-flight-arrow","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:21"}
+{"item_id":"item.orcish-flight-arrow","ord":1,"value":"UESP:Lore:Orsimer"}
+{"item_id":"item.orcish-gauntlets","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:21"}
+{"item_id":"item.orcish-gauntlets","ord":1,"value":"UESP:Lore:Orsimer"}
+{"item_id":"item.orcish-helmet","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:21"}
+{"item_id":"item.orcish-helmet","ord":1,"value":"UESP:Lore:Orsimer"}
+{"item_id":"item.orcish-hunting-arrow","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:21"}
+{"item_id":"item.orcish-hunting-arrow","ord":1,"value":"UESP:Lore:Orsimer"}
+{"item_id":"item.orcish-shield","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:21"}
+{"item_id":"item.orcish-shield","ord":1,"value":"UESP:Lore:Orsimer"}
+{"item_id":"item.orcish-sword","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:21"}
+{"item_id":"item.orcish-sword","ord":1,"value":"UESP:Lore:Orsimer"}
+{"item_id":"item.orcish-war-arrow","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:21"}
+{"item_id":"item.orcish-war-arrow","ord":1,"value":"UESP:Lore:Orsimer"}
+{"item_id":"item.orcish-waraxe","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:21"}
+{"item_id":"item.orcish-waraxe","ord":1,"value":"UESP:Lore:Orsimer"}
+{"item_id":"item.orcish-warbow","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:21"}
+{"item_id":"item.orcish-warbow","ord":1,"value":"UESP:Lore:Orsimer"}
+{"item_id":"item.orcish-warhammer","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:21"}
+{"item_id":"item.orcish-warhammer","ord":1,"value":"UESP:Lore:Orsimer"}
+{"item_id":"item.orichalcum-ingot","ord":0,"value":"Skyrim.esm:MISC IngotOrichalcum"}
+{"item_id":"item.orichalcum-ingot","ord":1,"value":"UESP:Lore:Orsimer"}
+{"item_id":"item.osheeja-gar-flesh","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.osheeja-gar-flesh","ord":1,"value":"Morrowind:Crab Meat (UESP)"}
+{"item_id":"item.overseer-crate-key","ord":0,"value":"world/sources/blueprints/opening-work-camp.layout.json"}
+{"item_id":"item.pahnjee","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"item_id":"item.pelt","ord":0,"value":"world/sources/blueprints/naga-highway-camp-active-north.layout.json"}
+{"item_id":"item.petty-soul-gem","ord":0,"value":"Skyrim.esm:SLGM SoulGemPetty"}
+{"item_id":"item.petty-soul-gem-filled","ord":0,"value":"Skyrim.esm:SLGM SoulGemPettyFilled"}
+{"item_id":"item.pickaxe","ord":0,"value":"world/sources/vocab/socket-vocabulary.json"}
+{"item_id":"item.pitchfork","ord":0,"value":"world/sources/vocab/socket-vocabulary.json"}
+{"item_id":"item.plate","ord":0,"value":"Skyrim.esm:MISC GlazedPlate01"}
+{"item_id":"item.pot","ord":0,"value":"Skyrim.esm:MISC GlazedPot01"}
+{"item_id":"item.potato","ord":0,"value":"Skyrim.esm:ALCH FoodPotato"}
+{"item_id":"item.potion-of-minor-magicka","ord":0,"value":"Skyrim.esm:ALCH RestoreMagicka01"}
+{"item_id":"item.potion-of-regeneration","ord":0,"value":"Skyrim.esm:ALCH FortifyHealRate01"}
+{"item_id":"item.probe","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:107"}
+{"item_id":"item.quill","ord":0,"value":"world/sources/vocab/socket-vocabulary.json"}
+{"item_id":"item.rag","ord":0,"value":"world/sources/vocab/socket-vocabulary.json"}
+{"item_id":"item.refined-malachite","ord":0,"value":"Skyrim.esm:MISC IngotMalachite"}
+{"item_id":"item.refined-malachite","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:47"}
+{"item_id":"item.refined-moonstone","ord":0,"value":"Skyrim.esm:MISC IngotIMoonstone"}
+{"item_id":"item.refined-moonstone","ord":1,"value":"world/sources/lore/regions/waters.md:25"}
+{"item_id":"item.repair-hammer","ord":0,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.river-betty","ord":0,"value":"Skyrim.esm:INGR CritterPondFish03Ingredient"}
+{"item_id":"item.river-salt","ord":0,"value":"world/sources/blueprints/greenspring.layout.json"}
+{"item_id":"item.rock-warbler-egg","ord":0,"value":"Skyrim.esm:INGR BirdEgg01"}
+{"item_id":"item.roll-of-paper","ord":0,"value":"Skyrim.esm:MISC PaperRoll"}
+{"item_id":"item.rootland-mushroom","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:36"}
+{"item_id":"item.rootworm-mucus","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.rootworm-mucus","ord":1,"value":"Morrowind:Sload Soap (UESP)"}
+{"item_id":"item.saltrice-flatbread","ord":0,"value":"King of the Murkmire.esp:ALCH SaltriceFlatbread"}
+{"item_id":"item.saltrice-loaf","ord":0,"value":"world/sources/lore/topics/material-culture.md:139"}
+{"item_id":"item.saltrice-loaf","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:89"}
+{"item_id":"item.saltrice-noodles","ord":0,"value":"King of the Murkmire.esp:ALCH SaltriceNoodles"}
+{"item_id":"item.saw","ord":0,"value":"world/sources/vocab/socket-vocabulary.json"}
+{"item_id":"item.saxhleel-axe","ord":0,"value":"King of the Murkmire.esp:WEAP SaxhleelWarAxe"}
+{"item_id":"item.saxhleel-axe","ord":1,"value":"King of the Murkmire.esp:WEAP EnchSaxhleelWarAxeSparks04"}
+{"item_id":"item.saxhleel-dagger","ord":0,"value":"King of the Murkmire.esp:WEAP SaxhleelDagger"}
+{"item_id":"item.saxhleel-mace","ord":0,"value":"King of the Murkmire.esp:WEAP SaxhleelMace"}
+{"item_id":"item.saxhleel-pot","ord":0,"value":"King of the Murkmire.esp:MISC SaxhleelMetalPot01"}
+{"item_id":"item.saxhleel-sabre","ord":0,"value":"King of the Murkmire.esp:WEAP SaxhleelSword"}
+{"item_id":"item.saxhleel-tunic-long-blue","ord":0,"value":"King of the Murkmire.esp:ARMO SaxhleelTunicBlue01"}
+{"item_id":"item.saxhleel-tunic-long-blue","ord":1,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.saxhleel-tunic-long-green","ord":0,"value":"King of the Murkmire.esp:ARMO SaxhleelTunicGreen01"}
+{"item_id":"item.saxhleel-tunic-long-green","ord":1,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.saxhleel-tunic-long-grey","ord":0,"value":"King of the Murkmire.esp:ARMO SaxhleelTunicGrey01"}
+{"item_id":"item.saxhleel-tunic-long-grey","ord":1,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.saxhleel-tunic-short-blue","ord":0,"value":"King of the Murkmire.esp:ARMO SaxhleelTunicShortBlue"}
+{"item_id":"item.saxhleel-tunic-short-blue","ord":1,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.saxhleel-tunic-short-brown","ord":0,"value":"King of the Murkmire.esp:ARMO SaxhleelTunicShortBrown"}
+{"item_id":"item.saxhleel-tunic-short-brown","ord":1,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.saxhleel-tunic-short-green","ord":0,"value":"King of the Murkmire.esp:ARMO SaxhleelTunicShortGreen"}
+{"item_id":"item.saxhleel-tunic-short-green","ord":1,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.saxhleel-tunic-short-grey","ord":0,"value":"King of the Murkmire.esp:ARMO SaxhleelTunicShortGrey"}
+{"item_id":"item.saxhleel-tunic-short-grey","ord":1,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.saxhleel-tunic-short-orange","ord":0,"value":"King of the Murkmire.esp:ARMO SaxhleelTunicShortOrange"}
+{"item_id":"item.saxhleel-tunic-short-orange","ord":1,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.saxhleel-tunic-wrap-brown","ord":0,"value":"King of the Murkmire.esp:ARMO SaxhleelTunicBrown02"}
+{"item_id":"item.saxhleel-tunic-wrap-brown","ord":1,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.saxhleel-tunic-wrap-orange","ord":0,"value":"King of the Murkmire.esp:ARMO SaxhleelTunicOrange02"}
+{"item_id":"item.saxhleel-tunic-wrap-orange","ord":1,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.saxhleel-tunic-wrap-purple","ord":0,"value":"King of the Murkmire.esp:ARMO SaxhleelTunicPurple02"}
+{"item_id":"item.saxhleel-tunic-wrap-purple","ord":1,"value":"world/sources/lore/topics/material-culture.md:53"}
+{"item_id":"item.saxhleel-tusik","ord":0,"value":"King of the Murkmire.esp:WEAP SaxhleelGreatsword"}
+{"item_id":"item.scroll-of-bound-dagger","ord":0,"value":"Skyrim.esm:SCRL FireboltScroll"}
+{"item_id":"item.scroll-of-cure-common-disease","ord":0,"value":"Skyrim.esm:SCRL FireboltScroll"}
+{"item_id":"item.scroll-of-cure-wounds","ord":0,"value":"Skyrim.esm:SCRL CureWoundsScroll"}
+{"item_id":"item.scroll-of-fireball","ord":0,"value":"Skyrim.esm:SCRL FireboltScroll"}
+{"item_id":"item.scroll-of-firebolt","ord":0,"value":"Skyrim.esm:SCRL FireboltScroll"}
+{"item_id":"item.scroll-of-frostbite","ord":0,"value":"Skyrim.esm:SCRL FireboltScroll"}
+{"item_id":"item.scroll-of-hearth-heal","ord":0,"value":"Skyrim.esm:SCRL FireboltScroll"}
+{"item_id":"item.scroll-of-levitate","ord":0,"value":"Skyrim.esm:SCRL FireboltScroll"}
+{"item_id":"item.scroll-of-light","ord":0,"value":"Skyrim.esm:SCRL FireboltScroll"}
+{"item_id":"item.scroll-of-shield","ord":0,"value":"Skyrim.esm:SCRL FireboltScroll"}
+{"item_id":"item.scroll-of-shockball","ord":0,"value":"Skyrim.esm:SCRL FireboltScroll"}
+{"item_id":"item.scroll-of-soul-trap","ord":0,"value":"Skyrim.esm:SCRL FireboltScroll"}
+{"item_id":"item.sea-drake-tooth","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.seared-snails-foot","ord":0,"value":"King of the Murkmire.esp:ALCH SnailMeatCooked"}
+{"item_id":"item.seed-doll","ord":0,"value":"world/sources/lore/topics/material-culture.md:195"}
+{"item_id":"item.seed-doll","ord":1,"value":"King of the Murkmire.esp:MISC DollTurtle"}
+{"item_id":"item.shell","ord":0,"value":"King of the Murkmire.esp:MISC Shell01"}
+{"item_id":"item.shine-mote","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.shine-mote","ord":1,"value":"Morrowind:Ectoplasm (UESP)"}
+{"item_id":"item.shovel","ord":0,"value":"world/sources/vocab/socket-vocabulary.json"}
+{"item_id":"item.silver-amulet","ord":0,"value":"Skyrim.esm:ARMO JewelryNecklaceSilver"}
+{"item_id":"item.silver-amulet","ord":1,"value":"world/sources/lore/topics/material-culture.md:67"}
+{"item_id":"item.silver-amulet","ord":2,"value":"world/sources/lore/topics/material-culture.md:61"}
+{"item_id":"item.silver-bowl","ord":0,"value":"Skyrim.esm:MISC SilverBowl02"}
+{"item_id":"item.silver-ingot","ord":0,"value":"Skyrim.esm:MISC ingotSilver"}
+{"item_id":"item.silver-ingot","ord":1,"value":"world/sources/lore/topics/material-culture.md:61"}
+{"item_id":"item.silver-jagged-katana","ord":0,"value":"world/sources/lore/topics/material-culture.md:61"}
+{"item_id":"item.silver-ring","ord":0,"value":"Skyrim.esm:ARMO JewelryRingSilver"}
+{"item_id":"item.silver-ring","ord":1,"value":"world/sources/lore/topics/material-culture.md:67"}
+{"item_id":"item.silver-ring","ord":2,"value":"world/sources/lore/topics/material-culture.md:61"}
+{"item_id":"item.silver-slide-flute","ord":0,"value":"world/sources/lore/topics/material-culture.md:190"}
+{"item_id":"item.silver-sword","ord":0,"value":"world/sources/lore/topics/material-culture.md:61"}
+{"item_id":"item.skooma","ord":0,"value":"Skyrim.esm:ALCH Skooma"}
+{"item_id":"item.slaughterfish-egg","ord":0,"value":"Skyrim.esm:INGR SlaughterfishEgg01"}
+{"item_id":"item.slaughterfish-scales","ord":0,"value":"Skyrim.esm:INGR SlaughterfishScales"}
+{"item_id":"item.sliced-goat-cheese","ord":0,"value":"Skyrim.esm:ALCH FoodCheeseWheel01B"}
+{"item_id":"item.small-cast-iron-pot","ord":0,"value":"Skyrim.esm:MISC CastIronPotSmall01"}
+{"item_id":"item.small-pearl","ord":0,"value":"Skyrim.esm:INGR PearlSmall"}
+{"item_id":"item.smith-apron","ord":0,"value":"King of the Murkmire.esp:ARMO ClothesBlackSmithVariantAncArg"}
+{"item_id":"item.smith-apron","ord":1,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.smoked-slaughterfish","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:63"}
+{"item_id":"item.smoked-slaughterfish","ord":1,"value":"world/sources/blueprints/claywater-station.layout.json"}
+{"item_id":"item.snail-mucus","ord":0,"value":"King of the Murkmire.esp:INGR SnailSlimeIngredient"}
+{"item_id":"item.snails-foot","ord":0,"value":"King of the Murkmire.esp:ALCH SnailMeat"}
+{"item_id":"item.somnalius-frond","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md:98"}
+{"item_id":"item.spare-oar","ord":0,"value":"world/sources/lore/topics/material-culture.md:86"}
+{"item_id":"item.spine-balm","ord":0,"value":"world/sources/lore/topics/material-culture.md:156"}
+{"item_id":"item.spore-cloud-scroll","ord":0,"value":"world/sources/lore/topics/guilds-and-orders.md:28"}
+{"item_id":"item.spriggan-sap","ord":0,"value":"Skyrim.esm:INGR SprigganSap"}
+{"item_id":"item.spriggan-sap","ord":1,"value":"socket.KeebaHouseElder.0801AABE"}
+{"item_id":"item.stake-ward-tally","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:137"}
+{"item_id":"item.station-water-ledger","ord":0,"value":"world/sources/lore/topics/roads-and-routes-4e201.md:31"}
+{"item_id":"item.station-water-ledger","ord":1,"value":"world/sources/lore/topics/sky-moons-calendar.md:16"}
+{"item_id":"item.station-water-ledger","ord":2,"value":"world/sources/lore/topics/sky-moons-calendar.md:30"}
+{"item_id":"item.steel-battleaxe","ord":0,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.steel-battleaxe","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:111"}
+{"item_id":"item.steel-blunt-arrow","ord":0,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.steel-blunt-arrow","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:111"}
+{"item_id":"item.steel-boots","ord":0,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.steel-boots","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:111"}
+{"item_id":"item.steel-claw","ord":0,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.steel-claw","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:111"}
+{"item_id":"item.steel-cuirass","ord":0,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.steel-cuirass","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:111"}
+{"item_id":"item.steel-dagger","ord":0,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.steel-dagger","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:111"}
+{"item_id":"item.steel-dagger-of-chills","ord":0,"value":"Skyrim.esm:WEAP EnchSteelDaggerFrost01"}
+{"item_id":"item.steel-dagger-of-chills","ord":1,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.steel-dagger-of-chills","ord":2,"value":"world/sources/lore/topics/foreign-powers.md:111"}
+{"item_id":"item.steel-flight-arrow","ord":0,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.steel-flight-arrow","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:111"}
+{"item_id":"item.steel-gauntlets","ord":0,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.steel-gauntlets","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:111"}
+{"item_id":"item.steel-great-cleaver","ord":0,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.steel-great-cleaver","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:111"}
+{"item_id":"item.steel-greatsword","ord":0,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.steel-greatsword","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:111"}
+{"item_id":"item.steel-halberd","ord":0,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.steel-halberd","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:111"}
+{"item_id":"item.steel-helmet","ord":0,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.steel-helmet","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:111"}
+{"item_id":"item.steel-hunting-arrow","ord":0,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.steel-hunting-arrow","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:111"}
+{"item_id":"item.steel-ingot","ord":0,"value":"Skyrim.esm:MISC IngotSteel"}
+{"item_id":"item.steel-ingot","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:111"}
+{"item_id":"item.steel-katana","ord":0,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.steel-katana","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:111"}
+{"item_id":"item.steel-mace","ord":0,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.steel-mace","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:111"}
+{"item_id":"item.steel-pike","ord":0,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.steel-pike","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:111"}
+{"item_id":"item.steel-quarterstaff","ord":0,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.steel-quarterstaff","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:111"}
+{"item_id":"item.steel-rapier","ord":0,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.steel-rapier","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:111"}
+{"item_id":"item.steel-scimitar","ord":0,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.steel-scimitar","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:111"}
+{"item_id":"item.steel-shield","ord":0,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.steel-shield","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:111"}
+{"item_id":"item.steel-shortspear","ord":0,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.steel-shortspear","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:111"}
+{"item_id":"item.steel-spear","ord":0,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.steel-spear","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:111"}
+{"item_id":"item.steel-sword","ord":0,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.steel-sword","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:111"}
+{"item_id":"item.steel-war-arrow","ord":0,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.steel-war-arrow","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:111"}
+{"item_id":"item.steel-waraxe","ord":0,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.steel-waraxe","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:111"}
+{"item_id":"item.steel-warhammer","ord":0,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.steel-warhammer","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:111"}
+{"item_id":"item.still-word-scroll","ord":0,"value":"world/sources/lore/topics/guilds-and-orders.md:22"}
+{"item_id":"item.storm-crystal","ord":0,"value":"UESP:Lore:Stormhold Crystals"}
+{"item_id":"item.storm-crystal","ord":1,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"item_id":"item.stormhold-crystal","ord":0,"value":"UESP:Lore:Stormhold Crystals"}
+{"item_id":"item.stormhold-crystal","ord":1,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"item_id":"item.stormhold-crystal-common-filled","ord":0,"value":"UESP:Lore:Stormhold Crystals"}
+{"item_id":"item.stormhold-crystal-common-filled","ord":1,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"item_id":"item.stormhold-crystal-greater-filled","ord":0,"value":"UESP:Lore:Stormhold Crystals"}
+{"item_id":"item.stormhold-crystal-greater-filled","ord":1,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"item_id":"item.stormhold-crystal-lesser-filled","ord":0,"value":"UESP:Lore:Stormhold Crystals"}
+{"item_id":"item.stormhold-crystal-lesser-filled","ord":1,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"item_id":"item.studded-boots","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:124"}
+{"item_id":"item.studded-boots","ord":1,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.studded-cuirass","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:124"}
+{"item_id":"item.studded-cuirass","ord":1,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.studded-gauntlets","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:124"}
+{"item_id":"item.studded-gauntlets","ord":1,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.studded-helmet","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:124"}
+{"item_id":"item.studded-helmet","ord":1,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.swamp-fungal-pod","ord":0,"value":"UESP:Skyrim:Swamp Fungal Pod"}
+{"item_id":"item.swamp-fungal-pod","ord":1,"value":"world/sources/lore/topics/ecology-encounters-loot.md:36"}
+{"item_id":"item.tankard","ord":0,"value":"Skyrim.esm:MISC BasicTankard01"}
+{"item_id":"item.taproot","ord":0,"value":"Skyrim.esm:INGR Taproot"}
+{"item_id":"item.tee-lel","ord":0,"value":"King of the Murkmire.esp:ALCH TeeLel"}
+{"item_id":"item.thistle-branch","ord":0,"value":"Skyrim.esm:INGR Thistle01"}
+{"item_id":"item.toll-office-schedules","ord":0,"value":"world/sources/lore/topics/roads-and-routes-4e201.md:31"}
+{"item_id":"item.toll-office-schedules","ord":1,"value":"world/sources/lore/regions/blackwood-and-gloommire.md:13"}
+{"item_id":"item.toll-office-schedules","ord":2,"value":"world/sources/lore/topics/sky-moons-calendar.md:30"}
+{"item_id":"item.toll-tally","ord":0,"value":"world/sources/lore/regions/secondary-settlements.md:77"}
+{"item_id":"item.toll-urn-key","ord":0,"value":"world/sources/blueprints/riverwalk.layout.json"}
+{"item_id":"item.tongs","ord":0,"value":"world/sources/vocab/socket-vocabulary.json"}
+{"item_id":"item.torch","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"item_id":"item.torchbug-thorax","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.torchbug-thorax","ord":1,"value":"Skyrim.esm:INGR TorchbugThorax (UESP Skyrim:Torchbug Thorax)"}
+{"item_id":"item.trodh","ord":0,"value":"world/sources/lore/topics/material-culture.md:134"}
+{"item_id":"item.troll-fat","ord":0,"value":"Skyrim.esm:INGR TrollFat"}
+{"item_id":"item.tunic-with-sash","ord":0,"value":"King of the Murkmire.esp:ARMO SaxhleelTunicBlue01"}
+{"item_id":"item.tunic-with-sash","ord":1,"value":"King of the Murkmire.esp:ARMO SaxhleelTunicGreen01"}
+{"item_id":"item.tunic-with-sash","ord":2,"value":"King of the Murkmire.esp:ARMO SaxhleelTunicGrey01"}
+{"item_id":"item.tunic-with-sash","ord":3,"value":"King of the Murkmire.esp:ARMO SaxhleelTunicOrange02"}
+{"item_id":"item.tunic-with-sash","ord":4,"value":"King of the Murkmire.esp:ARMO SaxhleelTunicPurple02"}
+{"item_id":"item.tunic-with-sash","ord":5,"value":"King of the Murkmire.esp:ARMO SaxhleelTunicShortOrange"}
+{"item_id":"item.turtle-shell-bowl","ord":0,"value":"world/sources/lore/topics/material-culture.md:59"}
+{"item_id":"item.vakka-stone","ord":0,"value":"UESP:Lore:Vakka Stone"}
+{"item_id":"item.vakka-stone","ord":1,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"item_id":"item.vocal-sac","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.void-salts","ord":0,"value":"Skyrim.esm:INGR VoidSalts"}
+{"item_id":"item.voriplasm-bones","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.vossa-satl","ord":0,"value":"world/sources/lore/topics/material-culture.md"}
+{"item_id":"item.wamasu-bone","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"item_id":"item.wamasu-organ","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.wamasu-organ","ord":1,"value":"Skyrim.esm:INGR GlowDust (UESP Skyrim:Ingredients)"}
+{"item_id":"item.wamasu-prod","ord":0,"value":"world/sources/lore/topics/hist-and-sap.md:49"}
+{"item_id":"item.wamasu-prod","ord":1,"value":"world/sources/lore/topics/ecology-encounters-loot.md:71"}
+{"item_id":"item.wamasu-prod","ord":2,"value":"world/sources/lore/topics/loading-facts.md:43"}
+{"item_id":"item.wamasu-prod","ord":3,"value":"world/sources/lore/topics/fauna-hazards.md:14"}
+{"item_id":"item.wasp-sting","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
+{"item_id":"item.wasp-sting","ord":1,"value":"Skyrim.esm:INGR Bee (UESP Skyrim:Ingredients)"}
+{"item_id":"item.weak-magicka-poison","ord":0,"value":"Skyrim.esm:ALCH DamageMagicka01"}
+{"item_id":"item.weak-paralysis-poison","ord":0,"value":"Skyrim.esm:ALCH Paralyze01"}
+{"item_id":"item.white-cap","ord":0,"value":"Skyrim.esm:INGR Mushroom03"}
+{"item_id":"item.wild-honeycomb","ord":0,"value":"UESP:Skyrim:Honeycomb"}
+{"item_id":"item.wisp-wrappings","ord":0,"value":"Skyrim.esm:INGR WispWrappings"}
+{"item_id":"item.woodcutters-axe","ord":0,"value":"Skyrim.esm:WEAP Axe01"}
+{"item_id":"item.wooden-ball-club","ord":0,"value":"world/sources/lore/topics/material-culture.md:57"}
+{"item_id":"item.wooden-ball-club","ord":1,"value":"world/sources/lore/topics/history-timeline.md:19"}
+{"item_id":"item.wooden-ladle","ord":0,"value":"Skyrim.esm:MISC WoodenLadle01"}
+{"item_id":"item.wooden-plate","ord":0,"value":"Skyrim.esm:MISC BasicWoodenPlate01"}
+{"item_id":"item.work-roll","ord":0,"value":"docs/quests/30-main-quest.md"}

@@ -1,0 +1,14 @@
+{"travel_settings_id":"travel","vocabulary_key":"hopFollows","ord":0,"value":"lane"}
+{"travel_settings_id":"travel","vocabulary_key":"hopFollows","ord":1,"value":"reaches"}
+{"travel_settings_id":"travel","vocabulary_key":"hopFollows","ord":2,"value":"rootway"}
+{"travel_settings_id":"travel","vocabulary_key":"hopFollows","ord":3,"value":"road"}
+{"travel_settings_id":"travel","vocabulary_key":"kinds","ord":0,"value":"ferry"}
+{"travel_settings_id":"travel","vocabulary_key":"kinds","ord":1,"value":"boat"}
+{"travel_settings_id":"travel","vocabulary_key":"kinds","ord":2,"value":"canoe"}
+{"travel_settings_id":"travel","vocabulary_key":"kinds","ord":3,"value":"rootworm"}
+{"travel_settings_id":"travel","vocabulary_key":"kinds","ord":4,"value":"guide"}
+{"travel_settings_id":"travel","vocabulary_key":"kinds","ord":5,"value":"cart"}
+{"travel_settings_id":"travel","vocabulary_key":"kinds","ord":6,"value":"porter"}
+{"travel_settings_id":"travel","vocabulary_key":"stationKinds","ord":0,"value":"place"}
+{"travel_settings_id":"travel","vocabulary_key":"stationKinds","ord":1,"value":"ferry-landing"}
+{"travel_settings_id":"travel","vocabulary_key":"stationKinds","ord":2,"value":"root-node"}

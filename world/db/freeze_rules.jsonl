@@ -1,0 +1,1 @@
+{"id":"freeze","about":"Content hashes of the terrain arrays the province is built on. A chain stage refuses to overwrite a recorded array with different content unless ES_REFREEZE=1; see worldgen/freeze.py and decision 0059."}

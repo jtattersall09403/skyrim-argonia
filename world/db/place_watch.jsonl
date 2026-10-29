@@ -1,0 +1,5 @@
+{"place_id":"place.dunmer-north.riverwalk","answers_kind":"faction","answers_id":"faction.an-xileel","radius_m":115.0,"custody_post":"socket.riverwalk.idle-toll-holder-work","custody_light_fixture":"f-doorlamp","custody_light_at_x":7210.6,"custody_light_at_y":519.2,"region":"dunmer-north"}
+{"place_id":"place.imperial-fringe.the-broke-column","answers_kind":"faction","answers_id":"faction.imperial-legion-remnant","radius_m":45.0,"custody_post":"socket.the-broke-column.idle-n1-work","region":"imperial-fringe"}
+{"place_id":"place.mercantile-coast.lighter-flotilla","answers_kind":"faction","answers_id":"faction.reed-sail-compact","radius_m":78.0,"custody_post":"socket.lighter-flotilla.idle-speaker-work","region":"mercantile-coast"}
+{"place_id":"place.mercantile-coast.teeth-of-sithis","answers_kind":"faction","answers_id":"faction.nisswo","radius_m":45.0,"custody_post":"socket.teeth-of-sithis.idle-band-work","region":"mercantile-coast"}
+{"place_id":"place.pirate-freeholds.opening-work-camp","answers_kind":"faction","answers_id":"faction.dres-remnant","radius_m":45.0,"custody_post":"socket.opening-work-camp.idle-overseer-watch","region":"pirate-freeholds"}

@@ -1,0 +1,1331 @@
+{"place_id":"place.dunmer-north.andalen-plantation","ord":0,"value":"prime saltrice ground with a private landing"}
+{"place_id":"place.dunmer-north.andalen-plantation","ord":1,"value":"buildings intact"}
+{"place_id":"place.dunmer-north.bogmother","ord":0,"value":"at the end of a stone causeway"}
+{"place_id":"place.dunmer-north.bogmother","ord":1,"value":"ruined but maintained"}
+{"place_id":"place.dunmer-north.boom-keepers-lodge","ord":0,"value":"the one firm bank at a channel boom's anchor"}
+{"place_id":"place.dunmer-north.boom-keepers-lodge","ord":1,"value":"above the flood, with the boom chain reachable from the door"}
+{"place_id":"place.dunmer-north.boom-keepers-lodge","ord":2,"value":"on the road where it meets the boom"}
+{"place_id":"place.dunmer-north.branchmont","ord":0,"value":"prime saltrice ground"}
+{"place_id":"place.dunmer-north.branchmont","ord":1,"value":"an estate house with no occupant"}
+{"place_id":"place.dunmer-north.breathes-underneath","ord":0,"value":"a limestone void sealed by its own roof"}
+{"place_id":"place.dunmer-north.breathes-underneath","ord":1,"value":"one crawl entrance, no second exit"}
+{"place_id":"place.dunmer-north.buried-blades","ord":0,"value":"a dry gravel lens under a rise"}
+{"place_id":"place.dunmer-north.buried-blades","ord":1,"value":"undisturbed"}
+{"place_id":"place.dunmer-north.channel-cross-village","ord":0,"value":"a navigable channel junction"}
+{"place_id":"place.dunmer-north.climbs-to-see","ord":0,"value":"three braceable trunks on firm root mat"}
+{"place_id":"place.dunmer-north.climbs-to-see","ord":1,"value":"clearing the canopy"}
+{"place_id":"place.dunmer-north.crystalgate","ord":0,"value":"outside the city's jurisdiction"}
+{"place_id":"place.dunmer-north.crystalgate","ord":1,"value":"water for cutting"}
+{"place_id":"place.dunmer-north.cut-and-stack","ord":0,"value":"a raised bog with a cuttable face"}
+{"place_id":"place.dunmer-north.cut-and-stack","ord":1,"value":"dry stacking ground"}
+{"place_id":"place.dunmer-north.cut-in-the-wall","ord":0,"value":"a soft cuttable band in a ravine wall"}
+{"place_id":"place.dunmer-north.cut-in-the-wall","ord":1,"value":"above the wet-season torrent"}
+{"place_id":"place.dunmer-north.draws-the-herds","ord":0,"value":"spring-fed pools that survive the dry season, on the plain under the rim"}
+{"place_id":"place.dunmer-north.draws-the-herds","ord":1,"value":"tree cover on flat ground, with the hill country kept behind it"}
+{"place_id":"place.dunmer-north.dreams-by-the-ash","ord":0,"value":"a warm seep in an ash hollow"}
+{"place_id":"place.dunmer-north.dreams-by-the-ash","ord":1,"value":"dark and quiet within twenty paces"}
+{"place_id":"place.dunmer-north.dry-under-water","ord":0,"value":"a sound vault above the water line"}
+{"place_id":"place.dunmer-north.dry-under-water","ord":1,"value":"part of The Drowned Terrace, reachable only by diving"}
+{"place_id":"place.dunmer-north.feeds-the-north","ord":0,"value":"a deep scoured hole below a gravel shoulder"}
+{"place_id":"place.dunmer-north.feeds-the-north","ord":1,"value":"four villages within a morning's row"}
+{"place_id":"place.dunmer-north.gandranen-library","ord":0,"value":"part of Gandranen Ruins, its deepest dry chamber"}
+{"place_id":"place.dunmer-north.gandranen-ruins","ord":0,"value":"a fenlord's burial complex with its lower course under water"}
+{"place_id":"place.dunmer-north.gandranen-ruins","ord":1,"value":"undead guardians"}
+{"place_id":"place.dunmer-north.greylight-village","ord":0,"value":"a living Hist on firm ground"}
+{"place_id":"place.dunmer-north.hackwing-wall","ord":0,"value":"a ledged south-facing cliff above a boat channel"}
+{"place_id":"place.dunmer-north.hackwing-wall","ord":1,"value":"a village within carrying distance"}
+{"place_id":"place.dunmer-north.hatching-pools","ord":0,"value":"warm spring-fed shallow pools"}
+{"place_id":"place.dunmer-north.hatching-pools","ord":1,"value":"screened approaches"}
+{"place_id":"place.dunmer-north.hissmir","ord":0,"value":"landing on a pilgrim water route"}
+{"place_id":"place.dunmer-north.hissmir","ord":1,"value":"firm ground for a Hist and a trial ground"}
+{"place_id":"place.dunmer-north.hixinoag","ord":0,"value":"two or three fixed moorings on one route"}
+{"place_id":"place.dunmer-north.hixinoag","ord":1,"value":"no permanent structure"}
+{"place_id":"place.dunmer-north.hutan-tzel","ord":0,"value":"a speaking Hist"}
+{"place_id":"place.dunmer-north.hutan-tzel","ord":1,"value":"a rock shelf above the flood line"}
+{"place_id":"place.dunmer-north.hutan-tzel","ord":2,"value":"a totem perimeter with clear ground inside it"}
+{"place_id":"place.dunmer-north.keeps-the-second-island","ord":0,"value":"a second, smaller hammock with marsh on every side"}
+{"place_id":"place.dunmer-north.keeps-the-second-island","ord":1,"value":"beside Stands-On-The-Hammock, out of its line of sight"}
+{"place_id":"place.dunmer-north.let-upper-floor","ord":0,"value":"an existing occupied building with a separate outside stair"}
+{"place_id":"place.dunmer-north.let-upper-floor","ord":1,"value":"a sightline onto a weighbridge or toll"}
+{"place_id":"place.dunmer-north.loriasel-caverns","ord":0,"value":"beneath or beside a Barsaebic Ayleid ruin"}
+{"place_id":"place.dunmer-north.loriasel-caverns","ord":1,"value":"a flooded cavern system with a dry mouth"}
+{"place_id":"place.dunmer-north.mazzatun","ord":0,"value":"stone construction in progress"}
+{"place_id":"place.dunmer-north.mazzatun","ord":1,"value":"an enslaved Hist"}
+{"place_id":"place.dunmer-north.mazzatun-hist","ord":0,"value":"part of Mazzatun, at the city's centre"}
+{"place_id":"place.dunmer-north.murkwater","ord":0,"value":"a living Hist"}
+{"place_id":"place.dunmer-north.murkwater","ord":1,"value":"water approach on multiple sides"}
+{"place_id":"place.dunmer-north.murkwater-shadowscale-ground","ord":0,"value":"screened from a village, within an hour of it"}
+{"place_id":"place.dunmer-north.names-the-year","ord":0,"value":"a dry meadow equidistant from four villages"}
+{"place_id":"place.dunmer-north.names-the-year","ord":1,"value":"one landmark tree"}
+{"place_id":"place.dunmer-north.nine-fords","ord":0,"value":"a gravel-bottomed ford passable in the wet"}
+{"place_id":"place.dunmer-north.nine-fords","ord":1,"value":"several alternative fords nearby"}
+{"place_id":"place.dunmer-north.nine-marks","ord":0,"value":"nine erratic boulders inter-visible over two kilometres"}
+{"place_id":"place.dunmer-north.nine-stone-bench","ord":0,"value":"gem-bearing gravel"}
+{"place_id":"place.dunmer-north.nine-stone-bench","ord":1,"value":"clean water for a polishing wheel"}
+{"place_id":"place.dunmer-north.one-house-high","ord":0,"value":"a low rise on the flood plain, not a hill"}
+{"place_id":"place.dunmer-north.one-house-high","ord":1,"value":"on the pass road where it comes out onto the plain"}
+{"place_id":"place.dunmer-north.puts-down-the-cup","ord":0,"value":"two hours' walk from the nearest supply"}
+{"place_id":"place.dunmer-north.puts-down-the-cup","ord":1,"value":"on a road, not off it"}
+{"place_id":"place.dunmer-north.reedmoor-stilts","ord":0,"value":"a firm bed for piling"}
+{"place_id":"place.dunmer-north.reedmoor-stilts","ord":1,"value":"slow water"}
+{"place_id":"place.dunmer-north.rimfield","ord":0,"value":"a rim shelf above the fever line"}
+{"place_id":"place.dunmer-north.rimfield","ord":1,"value":"a spring at the back of the shelf"}
+{"place_id":"place.dunmer-north.riverwalk","ord":0,"value":"a sheltered cove with a boat landing"}
+{"place_id":"place.dunmer-north.saltmarch-village","ord":0,"value":"a rise inside the terrace system"}
+{"place_id":"place.dunmer-north.seam-chasers","ord":0,"value":"exposed country rock on the rim shoulder"}
+{"place_id":"place.dunmer-north.seam-chasers","ord":1,"value":"water within reach, licensed or not"}
+{"place_id":"place.dunmer-north.silyanorn-diggings","ord":0,"value":"exposed Ayleid galleries in a ravine wall"}
+{"place_id":"place.dunmer-north.silyanorn-diggings","ord":1,"value":"below a city"}
+{"place_id":"place.dunmer-north.sings-for-the-pipes","ord":0,"value":"multiple spring-fed ponds at differing temperatures"}
+{"place_id":"place.dunmer-north.sits-above-the-flood","ord":0,"value":"a gravel rise two metres above the plain, not a hill"}
+{"place_id":"place.dunmer-north.stands-on-the-island","ord":0,"value":"a hammock with standing marsh on every side in every season"}
+{"place_id":"place.dunmer-north.stands-on-the-island","ord":1,"value":"a metre of permanent soil inside the tree ring"}
+{"place_id":"place.dunmer-north.stillrise-village","ord":0,"value":"a soul-gem array"}
+{"place_id":"place.dunmer-north.stillrise-village","ord":1,"value":"a village that appears normal at distance"}
+{"place_id":"place.dunmer-north.stormhold","ord":0,"value":"mounds severed by ravines"}
+{"place_id":"place.dunmer-north.stormhold","ord":1,"value":"above a waterfall"}
+{"place_id":"place.dunmer-north.stormhold","ord":2,"value":"head of navigation"}
+{"place_id":"place.dunmer-north.stormhold-causeway","ord":0,"value":"shallow bog between two fixed points"}
+{"place_id":"place.dunmer-north.tear-road-stage","ord":0,"value":"last level ground before the pass"}
+{"place_id":"place.dunmer-north.tearmouth","ord":0,"value":"the head of deep-draught navigation"}
+{"place_id":"place.dunmer-north.tearmouth","ord":1,"value":"banks on both sides usable"}
+{"place_id":"place.dunmer-north.ten-maur-wolk","ord":0,"value":"off every route, in ground that carries no track"}
+{"place_id":"place.dunmer-north.ten-maur-wolk","ord":1,"value":"a maintained marker perimeter"}
+{"place_id":"place.dunmer-north.ten-thousand-nests","ord":0,"value":"dead standing timber over water"}
+{"place_id":"place.dunmer-north.ten-thousand-nests","ord":1,"value":"no land approach"}
+{"place_id":"place.dunmer-north.tenmar-wall","ord":0,"value":"a three-way road junction on firm ground"}
+{"place_id":"place.dunmer-north.the-ash-causeway","ord":0,"value":"a buried gravel ridge across sinking ground"}
+{"place_id":"place.dunmer-north.the-ash-holding","ord":0,"value":"upland grazing with a spring"}
+{"place_id":"place.dunmer-north.the-ash-holding","ord":1,"value":"within reach of the pass"}
+{"place_id":"place.dunmer-north.the-black-stage","ord":0,"value":"part of the Bogmother Causeway, at its last span"}
+{"place_id":"place.dunmer-north.the-black-stage","ord":1,"value":"the channel's narrowest point"}
+{"place_id":"place.dunmer-north.the-bone-stage-north","ord":0,"value":"first stage below the pass"}
+{"place_id":"place.dunmer-north.the-borrowed-tomb","ord":0,"value":"an emptied Velothi tomb on a road"}
+{"place_id":"place.dunmer-north.the-bound-urns","ord":0,"value":"a dry rock shelter"}
+{"place_id":"place.dunmer-north.the-causeway-hearth","ord":0,"value":"mid-point of an exposed crossing"}
+{"place_id":"place.dunmer-north.the-causeway-hearth","ord":1,"value":"always open"}
+{"place_id":"place.dunmer-north.the-causeway-lodge","ord":0,"value":"a widening on the causeway"}
+{"place_id":"place.dunmer-north.the-causeway-lodge","ord":1,"value":"stone shell present"}
+{"place_id":"place.dunmer-north.the-charge-pond","ord":0,"value":"deep still water fed from below, at least three metres"}
+{"place_id":"place.dunmer-north.the-charge-pond","ord":1,"value":"dead standing timber ringing the water"}
+{"place_id":"place.dunmer-north.the-charge-works","ord":0,"value":"downstream of settlement"}
+{"place_id":"place.dunmer-north.the-charge-works","ord":1,"value":"insulated working benches"}
+{"place_id":"place.dunmer-north.the-cold-holding","ord":0,"value":"a failed upland holding with a sealed tomb"}
+{"place_id":"place.dunmer-north.the-crown-terrace","ord":0,"value":"three trunks close enough to carry a terrace"}
+{"place_id":"place.dunmer-north.the-crown-terrace","ord":1,"value":"on the same hammock as the houses it serves"}
+{"place_id":"place.dunmer-north.the-crystal-prospectors","ord":0,"value":"on rim scree above a worked ravine, with one approach"}
+{"place_id":"place.dunmer-north.the-delta-byre","ord":0,"value":"brackish delta grazing on firm islands"}
+{"place_id":"place.dunmer-north.the-diggings-ladder","ord":0,"value":"a ravine wall above a working face"}
+{"place_id":"place.dunmer-north.the-divers-landing","ord":0,"value":"deep water close inshore"}
+{"place_id":"place.dunmer-north.the-divers-landing","ord":1,"value":"a firm bank"}
+{"place_id":"place.dunmer-north.the-drawdown-flats","ord":0,"value":"a shallow shelf on the lake's north side"}
+{"place_id":"place.dunmer-north.the-drawdown-flats","ord":1,"value":"part of the same lake basin as The Drowned Terrace"}
+{"place_id":"place.dunmer-north.the-dres-rows","ord":0,"value":"a Dres-built quarters row"}
+{"place_id":"place.dunmer-north.the-dres-rows","ord":1,"value":"adjacent saltrice ground"}
+{"place_id":"place.dunmer-north.the-drover-camp","ord":0,"value":"on the road's delta section, between two channels"}
+{"place_id":"place.dunmer-north.the-drover-camp","ord":1,"value":"screened from the road by reed"}
+{"place_id":"place.dunmer-north.the-drover-camp","ord":2,"value":"on the road, at a point the road cannot leave"}
+{"place_id":"place.dunmer-north.the-drowned-terrace","ord":0,"value":"a fully submerged xanmeer"}
+{"place_id":"place.dunmer-north.the-drowned-terrace","ord":1,"value":"divable depth"}
+{"place_id":"place.dunmer-north.the-empty-socket","ord":0,"value":"a rock knoll above the flood"}
+{"place_id":"place.dunmer-north.the-empty-socket","ord":1,"value":"a single-chamber Ayleid structure"}
+{"place_id":"place.dunmer-north.the-field-edge-hearth","ord":0,"value":"at the field country's edge on the court road"}
+{"place_id":"place.dunmer-north.the-field-edge-hearth","ord":1,"value":"always open"}
+{"place_id":"place.dunmer-north.the-field-gate-garrison","ord":0,"value":"the gap between the fields and the pass road"}
+{"place_id":"place.dunmer-north.the-first-count","ord":0,"value":"within sight of the city gate"}
+{"place_id":"place.dunmer-north.the-fish-boon-ground","ord":0,"value":"a gravel flat on slow water below Hissmir"}
+{"place_id":"place.dunmer-north.the-fish-boon-ground","ord":1,"value":"annually flooded"}
+{"place_id":"place.dunmer-north.the-flu-cordon","ord":0,"value":"a ring at a day's walk from the city"}
+{"place_id":"place.dunmer-north.the-freed-rows","ord":0,"value":"one day's walk from the pen yard"}
+{"place_id":"place.dunmer-north.the-gravel-six","ord":0,"value":"a longer, lower gravel rise on the same plain, not a hill"}
+{"place_id":"place.dunmer-north.the-guar-ground","ord":0,"value":"a basin holding water into the dry season"}
+{"place_id":"place.dunmer-north.the-guar-ground","ord":1,"value":"hard edges to hold a herd"}
+{"place_id":"place.dunmer-north.the-high-wrappings","ord":0,"value":"a natural high fork over the village"}
+{"place_id":"place.dunmer-north.the-high-wrappings","ord":1,"value":"part of Keeps-The-Second-Hammock"}
+{"place_id":"place.dunmer-north.the-last-landing","ord":0,"value":"a rock sill ending navigation"}
+{"place_id":"place.dunmer-north.the-last-stone-course","ord":0,"value":"a xanmeer stopped mid-construction"}
+{"place_id":"place.dunmer-north.the-level-line","ord":0,"value":"a knoll on the North Cut's line"}
+{"place_id":"place.dunmer-north.the-level-line","ord":1,"value":"inter-visible with the onward stations"}
+{"place_id":"place.dunmer-north.the-lightning-yard","ord":0,"value":"running water for flushing"}
+{"place_id":"place.dunmer-north.the-lightning-yard","ord":1,"value":"a rock face against which to work"}
+{"place_id":"place.dunmer-north.the-monsoon-boom","ord":0,"value":"on the road, at its lowest crossing of the terrace country"}
+{"place_id":"place.dunmer-north.the-moon-court","ord":0,"value":"no artificial light within four kilometres"}
+{"place_id":"place.dunmer-north.the-moon-court","ord":1,"value":"clear sky and a wind break"}
+{"place_id":"place.dunmer-north.the-ninth-chapel","ord":0,"value":"a stone footing on the north road"}
+{"place_id":"place.dunmer-north.the-north-border-post","ord":0,"value":"level ground below the pass"}
+{"place_id":"place.dunmer-north.the-north-cut","ord":0,"value":"a straight engineered formation ending in sink"}
+{"place_id":"place.dunmer-north.the-north-holding-pit","ord":0,"value":"a roofed pit inside a private yard"}
+{"place_id":"place.dunmer-north.the-north-relay","ord":0,"value":"equidistant from two cities"}
+{"place_id":"place.dunmer-north.the-north-relay","ord":1,"value":"unowned ground"}
+{"place_id":"place.dunmer-north.the-north-root-gallery","ord":0,"value":"roots over rock rather than mud"}
+{"place_id":"place.dunmer-north.the-north-vista","ord":0,"value":"a ledge above the haze line"}
+{"place_id":"place.dunmer-north.the-northern-rest","ord":0,"value":"on a pilgrim route"}
+{"place_id":"place.dunmer-north.the-northern-rest","ord":1,"value":"kept ready and empty"}
+{"place_id":"place.dunmer-north.the-opened-terrace","ord":0,"value":"a forced entrance"}
+{"place_id":"place.dunmer-north.the-opened-terrace","ord":1,"value":"current hostile occupants"}
+{"place_id":"place.dunmer-north.the-outer-silyanorn","ord":0,"value":"outside the city's dug area"}
+{"place_id":"place.dunmer-north.the-outer-silyanorn","ord":1,"value":"standing Ayleid surface work"}
+{"place_id":"place.dunmer-north.the-pass-station","ord":0,"value":"the road's high point"}
+{"place_id":"place.dunmer-north.the-pass-station","ord":1,"value":"on the road at its highest saddle"}
+{"place_id":"place.dunmer-north.the-pen-yard","ord":0,"value":"a holding yard with fixings"}
+{"place_id":"place.dunmer-north.the-pen-yard","ord":1,"value":"on the road below the pass"}
+{"place_id":"place.dunmer-north.the-permit-dig","ord":0,"value":"a licensed parcel beside a ruin"}
+{"place_id":"place.dunmer-north.the-pilots-rest","ord":0,"value":"a wide bend with alongside mooring"}
+{"place_id":"place.dunmer-north.the-quiet-landing","ord":0,"value":"on a side cut off the north channel, not on a route"}
+{"place_id":"place.dunmer-north.the-quiet-landing","ord":1,"value":"a dry cellar"}
+{"place_id":"place.dunmer-north.the-quiet-landing","ord":2,"value":"a second water exit"}
+{"place_id":"place.dunmer-north.the-rim-hermitage","ord":0,"value":"above the snowline"}
+{"place_id":"place.dunmer-north.the-rim-hermitage","ord":1,"value":"meltwater and an annual fuel carry"}
+{"place_id":"place.dunmer-north.the-rim-shelter","ord":0,"value":"a leeward notch on the col"}
+{"place_id":"place.dunmer-north.the-rim-shelter","ord":1,"value":"above the treeline"}
+{"place_id":"place.dunmer-north.the-salt-and-shell","ord":0,"value":"at a road junction in the field country"}
+{"place_id":"place.dunmer-north.the-salt-ledge","ord":0,"value":"a benched ledge line on the ravine wall, wide enough for a person and not a beast"}
+{"place_id":"place.dunmer-north.the-shell-ground","ord":0,"value":"a gravel bar over a mollusc bed"}
+{"place_id":"place.dunmer-north.the-shell-ground","ord":1,"value":"a drawdown window that exposes it"}
+{"place_id":"place.dunmer-north.the-shoal-bank","ord":0,"value":"on the tidal bank where the river silt meets salt water"}
+{"place_id":"place.dunmer-north.the-shut-village","ord":0,"value":"a rise reached by a single causeway across the reedbeds"}
+{"place_id":"place.dunmer-north.the-silyanorn-crown","ord":0,"value":"part of Outer Silyanorn, its high corner on the ravine rim"}
+{"place_id":"place.dunmer-north.the-slumped-hamlet","ord":0,"value":"visible subsidence"}
+{"place_id":"place.dunmer-north.the-slumped-hamlet","ord":1,"value":"a rebuilt hamlet in sight of it"}
+{"place_id":"place.dunmer-north.the-standing-bid","ord":0,"value":"moored in slack water off Stormhold's terraces"}
+{"place_id":"place.dunmer-north.the-standing-bid","ord":1,"value":"reachable by boat only"}
+{"place_id":"place.dunmer-north.the-standing-bid","ord":2,"value":"a mooring under the deck below the waterline"}
+{"place_id":"place.dunmer-north.the-stormhold-falls-chamber","ord":0,"value":"an undercut behind a major fall"}
+{"place_id":"place.dunmer-north.the-stormhold-falls-chamber","ord":1,"value":"a ledge approach"}
+{"place_id":"place.dunmer-north.the-stripped-village","ord":0,"value":"on Umbriel's recorded track"}
+{"place_id":"place.dunmer-north.the-stripped-village","ord":1,"value":"no remains"}
+{"place_id":"place.dunmer-north.the-stripped-village","ord":2,"value":"in the marsh on the recorded track, off the rim ground"}
+{"place_id":"place.dunmer-north.the-sump-hamlet","ord":0,"value":"an emptied hamlet on the old Dres road"}
+{"place_id":"place.dunmer-north.the-sump-hamlet","ord":1,"value":"a walled stock pen still standing"}
+{"place_id":"place.dunmer-north.the-tear-wreck","ord":0,"value":"aground on a bar"}
+{"place_id":"place.dunmer-north.the-tear-wreck","ord":1,"value":"upright and visible"}
+{"place_id":"place.dunmer-north.the-terrace-watch","ord":0,"value":"a knoll with sight of the whole terrace system"}
+{"place_id":"place.dunmer-north.the-thorn-bond","ord":0,"value":"a lockable quayside store"}
+{"place_id":"place.dunmer-north.the-thousand-birds","ord":0,"value":"low islets in the delta, none big enough for a house"}
+{"place_id":"place.dunmer-north.the-tide-fair","ord":0,"value":"a firm sand flat that the tide covers and uncovers"}
+{"place_id":"place.dunmer-north.the-turning-stone","ord":0,"value":"surface bedrock on a rise"}
+{"place_id":"place.dunmer-north.the-turning-stone","ord":1,"value":"undisturbed"}
+{"place_id":"place.dunmer-north.the-two-gate-bridge","ord":0,"value":"on the Tear road at a rock narrows with abutments on both banks"}
+{"place_id":"place.dunmer-north.the-two-hundred-roofs","ord":0,"value":"a large village footprint, unreoccupied"}
+{"place_id":"place.dunmer-north.the-veterans-ridge","ord":0,"value":"a ridge with a line to the pass"}
+{"place_id":"place.dunmer-north.the-wamasu-shrine","ord":0,"value":"above a wamasu pond at flood height"}
+{"place_id":"place.dunmer-north.the-whispers-dig","ord":0,"value":"out of sight of a licensed dig"}
+{"place_id":"place.dunmer-north.the-whispers-dig","ord":1,"value":"night working"}
+{"place_id":"place.dunmer-north.the-white-pans","ord":0,"value":"a flat tidal margin behind a bar"}
+{"place_id":"place.dunmer-north.the-wild-mouth","ord":0,"value":"root-bound soft ground"}
+{"place_id":"place.dunmer-north.the-wild-mouth","ord":1,"value":"near but not on the Waykeepers' line"}
+{"place_id":"place.dunmer-north.the-xanmeer-hold","ord":0,"value":"a standing xanmeer with working defences"}
+{"place_id":"place.dunmer-north.the-xanmeer-hold","ord":1,"value":"firm ground"}
+{"place_id":"place.dunmer-north.thorn","ord":0,"value":"temperate grassland for saltrice"}
+{"place_id":"place.dunmer-north.thorn","ord":1,"value":"on the Tear road"}
+{"place_id":"place.dunmer-north.thorn","ord":2,"value":"river access"}
+{"place_id":"place.dunmer-north.thorn-paddy-terraces","ord":0,"value":"a tilt of ground above brackish water"}
+{"place_id":"place.dunmer-north.thorn-paddy-terraces","ord":1,"value":"controllable salt admission"}
+{"place_id":"place.dunmer-north.three-ways-over-water","ord":0,"value":"one large living trunk in water at a three-way meeting"}
+{"place_id":"place.dunmer-north.ties-four-ways","ord":0,"value":"open water at the meeting of four walkway lines"}
+{"place_id":"place.dunmer-north.ties-four-ways","ord":1,"value":"no bank ownership"}
+{"place_id":"place.dunmer-north.tunnel-rat-gallery","ord":0,"value":"below a licensed working"}
+{"place_id":"place.dunmer-north.tunnel-rat-gallery","ord":1,"value":"a flood cycle"}
+{"place_id":"place.dunmer-north.waits-for-the-promise","ord":0,"value":"on a disputed boundary line"}
+{"place_id":"place.dunmer-north.waits-for-the-promise","ord":1,"value":"the disputed ground visible from it"}
+{"place_id":"place.dunmer-north.waits-for-the-trial","ord":0,"value":"the last dry ground on the pilgrim path"}
+{"place_id":"place.dunmer-north.went-down-slowly","ord":0,"value":"drying peat ground"}
+{"place_id":"place.dunmer-north.went-down-slowly","ord":1,"value":"a decade of measurable subsidence"}
+{"place_id":"place.dunmer-north.wolk-market","ord":0,"value":"on the road, at a crossing where the marsh tracks join the Tear road"}
+{"place_id":"place.dunmer-north.wolk-market","ord":1,"value":"firm ground above the flood line"}
+{"place_id":"place.dunmer-north.zuuk","ord":0,"value":"a Kothringi settlement footprint"}
+{"place_id":"place.dunmer-north.zuuk","ord":1,"value":"unreoccupied"}
+{"place_id":"place.hist-heartland.air-pocket-station-basin","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.alten-markmont","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.artisan-chime-makers","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.barsaebic-sub-city","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.beast-keeper-lizard-steed","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.beast-offering-flood-staying","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.bereaved-mnemic","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.bioluminescent-glowfen","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.blackguard-hideout-raw","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.boardwalk-branching-many-ways","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.bog-blight-ground-stakes","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.bone-waystation-interior","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.broken-xanmeer-subsumed","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.bubble-spire-collapsed","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.bubble-spire-open-helstrom","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.burn-scar-village-ash","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.canopy-crossing-root-high","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.canopy-crossing-rope-basin","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.climbable-ruin-roof-terrace","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.collapsing-pinnacle-interior","ord":0,"value":"stands clear of the canopy"}
+{"place_id":"place.hist-heartland.collapsing-pinnacle-interior","ord":1,"value":"a debris fan at the base"}
+{"place_id":"place.hist-heartland.cult-raid-camp-unbound","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.cut-and-carried","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.daril-fermentary-interior","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.dive-shaft-xanmeer-well","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.drawdown-flat-exposed","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.dream-wallow-sap-pool","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.dream-wallow-starblossom","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.drowning-narrows-current","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.duskfall-unmade-site","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.duskfall-unmade-site","ord":1,"value":"remote: at least a kilometre from Alten Corimont, far from the start water and its landings"}
+{"place_id":"place.hist-heartland.falling-mage-impact","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.fenlord-tomb-deep","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.flood-high-single-rise","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.greenspring","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.greenspring","ord":1,"value":"On the fork below The Panther Race."}
+{"place_id":"place.hist-heartland.guide-camp-far-shelter","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.guide-camp-gate-side","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.hackwing-roost-wild","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.hammock-crown-ancestor","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.hammock-tree-island-greenmoss","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.harmed-hist-tapped","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.helstrom","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.heretic-stone-restarted","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.hermit-hut-exile-warden","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.hermit-hut-mad-basin","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.hist-agaceph-needle","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.hist-first-rain-trunk","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.hist-less-refuge-wild","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.hist-paatru-lowcrown","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.hist-sarpa-highflower","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.insular-hereditary-watch","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.legendary-deep-medusa-wood","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.legendary-deep-medusa-wood","ord":1,"value":"remote: at least a kilometre from Alten Corimont, in water where no beginner would be"}
+{"place_id":"place.hist-heartland.lost-city","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.marsh-giant-ground-basin","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.mass-grave-flu-memorial","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.maturity-trial-chukka-sei","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.memorial-stone-personal-guide","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.miregaunt-ground-slow-ground","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.miregaunt-ground-slow-ground","ord":1,"value":"sunken masonry under deep mud"}
+{"place_id":"place.hist-heartland.miregaunt-ward-approach","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.miregaunt-ward-approach","ord":1,"value":"On the one dry approach, at the edge of Xal-Ussep."}
+{"place_id":"place.hist-heartland.mist-locked-hollow-basin","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.naga-lay-up-second-man","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.naga-lay-up-second-man","ord":1,"value":"a walked footpath within two hundred metres"}
+{"place_id":"place.hist-heartland.naga-lay-up-second-man","ord":2,"value":"dense cover above the path"}
+{"place_id":"place.hist-heartland.necropolis-dead-tenders","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.nightbound-lightless","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.nine-trunks","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.nisswo-rest-house-interior","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.officeholder-grave-singer-house","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.officeholder-tree-minder-house","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.pilgrim-camp-hist-tsoko","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.pilgrim-camp-sap-road","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.platform-ladder-tower-watch","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.poacher-camp-sap","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.porter-relay-poling","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.refuge-station-interior","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.root-gallery-collapsed-nine","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.root-gallery-cult-warren","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.root-gallery-deep-throat","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.root-gallery-drowned-stair","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.root-gallery-helstrom-underway","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.root-gallery-kept-light","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.root-gallery-kept-light","ord":1,"value":"a failed levee or a dropped hammock edge"}
+{"place_id":"place.hist-heartland.root-gallery-lantern-hollow","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.root-talk-ground","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.rootworm-burrow-dead","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.rootworm-burrow-live","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.rootworm-station-helstrom","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.sap-collection-facility-daedric","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.sap-tapping-licensed","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.sap-touched-miredancer","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.sap-touched-miredancer","ord":1,"value":"at least 1.5 km from the province edge"}
+{"place_id":"place.hist-heartland.sealed-xanmeer-living","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.serpent-ground-giant-snake","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.sinkhole-mouth-basin","ord":0,"value":"a collapse hollow with a standing rim"}
+{"place_id":"place.hist-heartland.sinkhole-mouth-basin","ord":1,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.sleeping-in-the-ring","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.squatted-ruin-home-hollow","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.standing-curiosity-unexplained","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.stilt-channel-edge-two-poles","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.stilt-channel-edge-uxaneet","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.stone-calendar-hist-tsoko","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.submerged-xanmeer-topmost","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.tended-xanmeer-clan-north","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.tended-xanmeer-pilgrim-way","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.the-cut-circle","ord":0,"value":"over deep still water on piles"}
+{"place_id":"place.hist-heartland.the-cut-circle","ord":1,"value":"one land approach only"}
+{"place_id":"place.hist-heartland.the-cut-circle","ord":2,"value":"within a day of place.hist-heartland.helstrom"}
+{"place_id":"place.hist-heartland.treasure-hunters-dead-camp","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.treasure-hunters-live-camp","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.umbriel-stripped-quiet","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.umpholo-mission","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.urn-vault-blasphemers","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.vista-ledge-canopy-break","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.voriplasm-chamber-sealed","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.waiting-vigil-village","ord":0,"value":"on the Umbriel corridor"}
+{"place_id":"place.hist-heartland.waiting-vigil-village","ord":1,"value":"ground defensible enough to have been chosen in a panic"}
+{"place_id":"place.hist-heartland.walkway-junction-high-crossroads","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.wamasu-pond-nest","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.wamasu-wallow-struck-ground","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.wamasu-wallow-struck-ground","ord":1,"value":"standing water with no outfall"}
+{"place_id":"place.hist-heartland.waterfall-chamber-root-fall","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.whitewater-reach-panther","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.wild-hist-mad-one","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.wild-hist-sleeper","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.wisp-lure-basin","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.xal-krona-making-ground","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.xal-krona-making-ground","ord":1,"value":"closed basin with no outflow"}
+{"place_id":"place.hist-heartland.xal-meeruth-station","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.hist-heartland.xanmeer-fort-defences-working","ord":0,"value":"culture zone: hist-heartland"}
+{"place_id":"place.imperial-fringe.ashen-tower","ord":0,"value":"a two-way sightline"}
+{"place_id":"place.imperial-fringe.bog-iron-workings","ord":0,"value":"an iron-rich seep"}
+{"place_id":"place.imperial-fringe.bog-iron-workings","ord":1,"value":"must sit below the rim break, in the lowland fringe, never in the border mountains"}
+{"place_id":"place.imperial-fringe.bonded-shed-of-the-onkobra","ord":0,"value":"a lockable riverside shed"}
+{"place_id":"place.imperial-fringe.bonded-shed-of-the-onkobra","ord":1,"value":"wharf access"}
+{"place_id":"place.imperial-fringe.bonded-shed-of-the-onkobra","ord":2,"value":"within a morning's cart of Gideon (under 900 m on the plot)"}
+{"place_id":"place.imperial-fringe.bone-road-waystation","ord":0,"value":"one day's carry from the next stage"}
+{"place_id":"place.imperial-fringe.burnt-field-village","ord":0,"value":"inside the old burn"}
+{"place_id":"place.imperial-fringe.burnt-field-village","ord":1,"value":"burnt-out mineral soil"}
+{"place_id":"place.imperial-fringe.cartwrights-cross","ord":0,"value":"on the road, at a crossing of the Blackwood Road with the north track"}
+{"place_id":"place.imperial-fringe.cartwrights-cross","ord":1,"value":"a crossing that cannot be bypassed"}
+{"place_id":"place.imperial-fringe.cassian-farm","ord":0,"value":"dry loam above flood line"}
+{"place_id":"place.imperial-fringe.cassian-farm","ord":1,"value":"within a morning's cart of Gideon (under 900 m on the plot)"}
+{"place_id":"place.imperial-fringe.castle-giovesse","ord":0,"value":"within sight of Gideon's north gate"}
+{"place_id":"place.imperial-fringe.castle-giovesse","ord":1,"value":"dry knoll"}
+{"place_id":"place.imperial-fringe.claywater-station","ord":0,"value":"a perennial spring on the road"}
+{"place_id":"place.imperial-fringe.claywater-station","ord":1,"value":"a boat channel"}
+{"place_id":"place.imperial-fringe.claywater-station","ord":2,"value":"must sit inside the Gideon fringe culture zone, not in the marsh interior"}
+{"place_id":"place.imperial-fringe.claywater-station","ord":3,"value":"must be within 60 m of a spring or channel"}
+{"place_id":"place.imperial-fringe.collections-dig","ord":0,"value":"below an excavatable ruin"}
+{"place_id":"place.imperial-fringe.collections-dig","ord":1,"value":"cart access"}
+{"place_id":"place.imperial-fringe.comes-back-slowly","ord":0,"value":"a short walk past the last houses of Gideon"}
+{"place_id":"place.imperial-fringe.comes-back-slowly","ord":1,"value":"its own clean water"}
+{"place_id":"place.imperial-fringe.comes-back-slowly","ord":2,"value":"must sit below the rim break, in the lowland fringe, never in the border mountains"}
+{"place_id":"place.imperial-fringe.dreams-in-mud","ord":0,"value":"a warm clay seep"}
+{"place_id":"place.imperial-fringe.dreams-in-mud","ord":1,"value":"a hollow that kills sound"}
+{"place_id":"place.imperial-fringe.fenmarch-village","ord":0,"value":"a living Hist"}
+{"place_id":"place.imperial-fringe.fenmarch-village","ord":1,"value":"firm hummock"}
+{"place_id":"place.imperial-fringe.fig-market","ord":0,"value":"boat and cart access to one quay"}
+{"place_id":"place.imperial-fringe.fig-market","ord":1,"value":"must sit inside the Gideon fringe culture zone, not in the marsh interior"}
+{"place_id":"place.imperial-fringe.fig-market","ord":2,"value":"must have a boat landing within 40 m"}
+{"place_id":"place.imperial-fringe.fort-greenditch","ord":0,"value":"a flooded defensive ditch"}
+{"place_id":"place.imperial-fringe.fort-greenditch","ord":1,"value":"standing curtain"}
+{"place_id":"place.imperial-fringe.fort-greenditch","ord":2,"value":"on a spur with at least 15 m of local relief over the marsh edge"}
+{"place_id":"place.imperial-fringe.fort-greenditch","ord":3,"value":"within 300 m of a named route"}
+{"place_id":"place.imperial-fringe.fort-swampmoth","ord":0,"value":"on the road, astride the border road where it comes down off the ridge"}
+{"place_id":"place.imperial-fringe.fort-swampmoth","ord":1,"value":"standing Imperial curtain wall"}
+{"place_id":"place.imperial-fringe.gideon","ord":0,"value":"on the Blackwood Road"}
+{"place_id":"place.imperial-fringe.gideon","ord":1,"value":"buildable saddle floor"}
+{"place_id":"place.imperial-fringe.gideon","ord":2,"value":"river landing for the Onkobra trade"}
+{"place_id":"place.imperial-fringe.gideon-rootworm-terminus","ord":0,"value":"root-layer breach"}
+{"place_id":"place.imperial-fringe.gideon-rootworm-terminus","ord":1,"value":"off the city's clay bank"}
+{"place_id":"place.imperial-fringe.gideon-synod-outstation","ord":0,"value":"within a day of a functioning archive"}
+{"place_id":"place.imperial-fringe.giovesse-lines","ord":0,"value":"firm ground within bowshot of Castle Giovesse"}
+{"place_id":"place.imperial-fringe.giovesse-lines","ord":1,"value":"earthworks preserved in profile"}
+{"place_id":"place.imperial-fringe.glenbridge","ord":0,"value":"a bridged crossing"}
+{"place_id":"place.imperial-fringe.glenbridge","ord":1,"value":"within sight of the sermon xanmeer"}
+{"place_id":"place.imperial-fringe.glenbridge-sermon-xanmeer","ord":0,"value":"above Glenbridge, visible from its square"}
+{"place_id":"place.imperial-fringe.glenbridge-sermon-xanmeer","ord":1,"value":"must sit below the rim break, in the lowland fringe, never in the border mountains"}
+{"place_id":"place.imperial-fringe.guar-holding-of-the-nine-bells","ord":0,"value":"rough grazing"}
+{"place_id":"place.imperial-fringe.guar-holding-of-the-nine-bells","ord":1,"value":"day's reach of the road"}
+{"place_id":"place.imperial-fringe.hangs-above-the-water","ord":0,"value":"a gorge wall above the flood line"}
+{"place_id":"place.imperial-fringe.hangs-above-the-water","ord":1,"value":"no land approach without climbing"}
+{"place_id":"place.imperial-fringe.hearth-house-of-the-burnt-field","ord":0,"value":"at the edge of the burn ground"}
+{"place_id":"place.imperial-fringe.highwater-hamlet","ord":0,"value":"a rise that has never flooded"}
+{"place_id":"place.imperial-fringe.highwater-hamlet","ord":1,"value":"must stand at least 6 m above the plain around it"}
+{"place_id":"place.imperial-fringe.hollow-arch-toll","ord":0,"value":"a single-span crossing"}
+{"place_id":"place.imperial-fringe.hollow-arch-toll","ord":1,"value":"rock abutments"}
+{"place_id":"place.imperial-fringe.hollow-arch-toll","ord":2,"value":"must bridge a river narrows, not stand on a lake shore"}
+{"place_id":"place.imperial-fringe.keepers-lodge-of-the-lower-onkobra","ord":0,"value":"on the river at a choke point"}
+{"place_id":"place.imperial-fringe.ladder-to-the-light","ord":0,"value":"a canopy-breaking tree on firm ground"}
+{"place_id":"place.imperial-fringe.ladder-to-the-light","ord":1,"value":"within sight of a route"}
+{"place_id":"place.imperial-fringe.ladder-to-the-light","ord":2,"value":"in the fringe country, not the marsh interior"}
+{"place_id":"place.imperial-fringe.long-causeway","ord":0,"value":"wide shallow water"}
+{"place_id":"place.imperial-fringe.long-causeway","ord":1,"value":"a bottom that will take driven piles"}
+{"place_id":"place.imperial-fringe.low-water-fair","ord":0,"value":"a river bed that dries"}
+{"place_id":"place.imperial-fringe.low-water-fair","ord":1,"value":"firm sand"}
+{"place_id":"place.imperial-fringe.lower-onkobra-paddies","ord":0,"value":"terraced flood plain"}
+{"place_id":"place.imperial-fringe.lower-onkobra-paddies","ord":1,"value":"a controllable inflow"}
+{"place_id":"place.imperial-fringe.lower-onkobra-paddies","ord":2,"value":"must sit inside the Gideon fringe culture zone, not in the marsh interior"}
+{"place_id":"place.imperial-fringe.lowmere-raft-town","ord":0,"value":"sheltered water"}
+{"place_id":"place.imperial-fringe.lowmere-raft-town","ord":1,"value":"no grounding at low level"}
+{"place_id":"place.imperial-fringe.lowmere-raft-town","ord":2,"value":"must sit inside the Gideon fringe culture zone, not in the marsh interior"}
+{"place_id":"place.imperial-fringe.lowmere-raft-town","ord":3,"value":"must be on standing water at least 2 m deep"}
+{"place_id":"place.imperial-fringe.marcians-terrace","ord":0,"value":"upland shelf above the flood and the fever line"}
+{"place_id":"place.imperial-fringe.marcians-terrace","ord":1,"value":"stored water for the dry months"}
+{"place_id":"place.imperial-fringe.mile-house-of-the-eagle","ord":0,"value":"on the Blackwood Road"}
+{"place_id":"place.imperial-fringe.mile-house-of-the-eagle","ord":1,"value":"a walled cart yard"}
+{"place_id":"place.imperial-fringe.moonmarch-ground","ord":0,"value":"a dry flat that does not flood"}
+{"place_id":"place.imperial-fringe.moonmarch-ground","ord":1,"value":"within a half-day of three villages"}
+{"place_id":"place.imperial-fringe.moonmarch-ground","ord":2,"value":"must sit below the rim break, in the lowland fringe, never in the border mountains"}
+{"place_id":"place.imperial-fringe.moonrack-calcinator","ord":0,"value":"a level shelf with an open eastern horizon"}
+{"place_id":"place.imperial-fringe.nine-arch-stage","ord":0,"value":"at a road viaduct"}
+{"place_id":"place.imperial-fringe.ninefold-station","ord":0,"value":"mid-way on a metalled road"}
+{"place_id":"place.imperial-fringe.ninefold-station","ord":1,"value":"on the road: the works sit astride the metalled stretch they were built to serve"}
+{"place_id":"place.imperial-fringe.ninth-milestone-house","ord":0,"value":"on the road at porter-stage distance"}
+{"place_id":"place.imperial-fringe.ninth-milestone-house","ord":1,"value":"must sit below the rim break, in the lowland fringe, never in the border mountains"}
+{"place_id":"place.imperial-fringe.onkobra-clay-pits","ord":0,"value":"exposed clay seam at a river bank"}
+{"place_id":"place.imperial-fringe.onkobra-clay-pits","ord":1,"value":"flat drying ground"}
+{"place_id":"place.imperial-fringe.onkobra-ferry","ord":0,"value":"slack water"}
+{"place_id":"place.imperial-fringe.onkobra-ferry","ord":1,"value":"shelving banks both sides"}
+{"place_id":"place.imperial-fringe.onkobra-ferry","ord":2,"value":"must be on a river reach wide enough to need a punt"}
+{"place_id":"place.imperial-fringe.onkobra-field-station","ord":0,"value":"a landable bank on the Onkobra"}
+{"place_id":"place.imperial-fringe.onkobra-field-station","ord":1,"value":"a licence-bearing structure"}
+{"place_id":"place.imperial-fringe.onkobra-kwama-mine","ord":0,"value":"dry gallery ground above the river"}
+{"place_id":"place.imperial-fringe.open-door-at-the-saddle","ord":0,"value":"at a junction of paths"}
+{"place_id":"place.imperial-fringe.open-door-at-the-saddle","ord":1,"value":"always unlocked"}
+{"place_id":"place.imperial-fringe.orma-tactile-ruin","ord":0,"value":"dry and enclosed"}
+{"place_id":"place.imperial-fringe.orma-tactile-ruin","ord":1,"value":"no natural light penetration"}
+{"place_id":"place.imperial-fringe.red-cart-yard","ord":0,"value":"the end of cart-passable ground"}
+{"place_id":"place.imperial-fringe.red-daub-relay","ord":0,"value":"where two path types meet"}
+{"place_id":"place.imperial-fringe.red-daub-relay","ord":1,"value":"must sit below the rim break, in the lowland fringe, never in the border mountains"}
+{"place_id":"place.imperial-fringe.reedcutters-toll","ord":0,"value":"slow shallow water"}
+{"place_id":"place.imperial-fringe.reedcutters-toll","ord":1,"value":"bottom firm enough to take driven piles"}
+{"place_id":"place.imperial-fringe.reedcutters-toll","ord":2,"value":"must span open water at least 1.5 m deep"}
+{"place_id":"place.imperial-fringe.ridge-runners-post","ord":0,"value":"a saddle with a line to the next saddle"}
+{"place_id":"place.imperial-fringe.ridge-runners-post","ord":1,"value":"on or beside a route out of the fringe"}
+{"place_id":"place.imperial-fringe.rockgrove","ord":0,"value":"concealed approach"}
+{"place_id":"place.imperial-fringe.rockgrove","ord":1,"value":"water for a war camp"}
+{"place_id":"place.imperial-fringe.rufios-landing","ord":0,"value":"deep water directly off the shelf"}
+{"place_id":"place.imperial-fringe.rufios-landing","ord":1,"value":"a cut slipway"}
+{"place_id":"place.imperial-fringe.sabinus-claim","ord":0,"value":"exposed country rock"}
+{"place_id":"place.imperial-fringe.sabinus-claim","ord":1,"value":"an unlicensed claim mark"}
+{"place_id":"place.imperial-fringe.saddle-fair","ord":0,"value":"level drained ground outside a city's jurisdiction"}
+{"place_id":"place.imperial-fringe.silver-mouth","ord":0,"value":"a stone quay at a river mouth"}
+{"place_id":"place.imperial-fringe.silverhand-cairns","ord":0,"value":"loose stone available on site"}
+{"place_id":"place.imperial-fringe.sink-field","ord":0,"value":"standing water on clay"}
+{"place_id":"place.imperial-fringe.sink-field","ord":1,"value":"no outfall"}
+{"place_id":"place.imperial-fringe.slough-point","ord":0,"value":"road meets navigable water"}
+{"place_id":"place.imperial-fringe.slough-point","ord":1,"value":"a place to hold carts overnight"}
+{"place_id":"place.imperial-fringe.slough-point-quarantine-shed","ord":0,"value":"at a landing, before the customs point"}
+{"place_id":"place.imperial-fringe.slough-point-quarantine-shed","ord":1,"value":"must stand on the landing itself, at the water's edge"}
+{"place_id":"place.imperial-fringe.sour-orchard","ord":0,"value":"planted rows gone wild"}
+{"place_id":"place.imperial-fringe.sour-orchard","ord":1,"value":"standing dead limbs"}
+{"place_id":"place.imperial-fringe.stonefoot-terrace-village","ord":0,"value":"a south-facing slope with a spring above"}
+{"place_id":"place.imperial-fringe.stonewastes","ord":0,"value":"firm ground in bog"}
+{"place_id":"place.imperial-fringe.stonewastes","ord":1,"value":"a standing xanmeer core"}
+{"place_id":"place.imperial-fringe.swampmoth-town","ord":0,"value":"below a held fort, within its protective arc"}
+{"place_id":"place.imperial-fringe.takes-the-field","ord":0,"value":"within 400 m of a live settlement"}
+{"place_id":"place.imperial-fringe.takes-the-field","ord":1,"value":"must overlook worked ground"}
+{"place_id":"place.imperial-fringe.the-abandoned-survey","ord":0,"value":"a knoll on a survey line"}
+{"place_id":"place.imperial-fringe.the-abandoned-survey","ord":1,"value":"undisturbed for forty years"}
+{"place_id":"place.imperial-fringe.the-abandoned-survey","ord":2,"value":"on the omitted corridor's line, starting within 600 m of place.imperial-fringe.the-vellum-estate's fields"}
+{"place_id":"place.imperial-fringe.the-art-and-ash-place","ord":0,"value":"a working floor the flood clears annually"}
+{"place_id":"place.imperial-fringe.the-back-kiln","ord":0,"value":"a disused kiln structure"}
+{"place_id":"place.imperial-fringe.the-back-kiln","ord":1,"value":"outside civic jurisdiction"}
+{"place_id":"place.imperial-fringe.the-black-tarn","ord":0,"value":"deep cold water in a closed basin"}
+{"place_id":"place.imperial-fringe.the-borrowed-house","ord":0,"value":"a roofed Imperial ruin"}
+{"place_id":"place.imperial-fringe.the-broke-column","ord":0,"value":"cover on the uphill side"}
+{"place_id":"place.imperial-fringe.the-broke-column","ord":1,"value":"off the road and out of sight of it"}
+{"place_id":"place.imperial-fringe.the-buried-spears","ord":0,"value":"dry sand above flood line"}
+{"place_id":"place.imperial-fringe.the-cold-forge","ord":0,"value":"downwind of settlement"}
+{"place_id":"place.imperial-fringe.the-cold-forge","ord":1,"value":"near an ore source"}
+{"place_id":"place.imperial-fringe.the-cold-lights","ord":0,"value":"still water fed by a cold spring"}
+{"place_id":"place.imperial-fringe.the-cold-lights","ord":1,"value":"must sit below the rim break, in the lowland fringe, never in the border mountains"}
+{"place_id":"place.imperial-fringe.the-cordon-stones","ord":0,"value":"a contour line of set stones"}
+{"place_id":"place.imperial-fringe.the-counted-dead","ord":0,"value":"on a road, on ground that takes bone"}
+{"place_id":"place.imperial-fringe.the-counted-dead","ord":1,"value":"must sit below the rim break, in the lowland fringe, never in the border mountains"}
+{"place_id":"place.imperial-fringe.the-drowned-furrow","ord":0,"value":"seasonally flooded arable"}
+{"place_id":"place.imperial-fringe.the-drowned-mule","ord":0,"value":"last firm ground before a seasonal closure"}
+{"place_id":"place.imperial-fringe.the-drowning-gate","ord":0,"value":"on the road, at its lowest cross-section of the plain"}
+{"place_id":"place.imperial-fringe.the-drowning-gate","ord":1,"value":"in the fringe country, not the marsh interior"}
+{"place_id":"place.imperial-fringe.the-eight-steps","ord":0,"value":"a confined reach with successive ledges"}
+{"place_id":"place.imperial-fringe.the-embankment-that-drowned","ord":0,"value":"a straight raised bank across drainage"}
+{"place_id":"place.imperial-fringe.the-embankment-that-drowned","ord":1,"value":"must cross seasonally flooded ground with standing water within 60 m"}
+{"place_id":"place.imperial-fringe.the-embankment-that-drowned","ord":2,"value":"must sit below the rim break, in the lowland fringe, never in the border mountains"}
+{"place_id":"place.imperial-fringe.the-empty-steading","ord":0,"value":"a defensible bank at a channel junction"}
+{"place_id":"place.imperial-fringe.the-empty-steading","ord":1,"value":"an intact roof and well"}
+{"place_id":"place.imperial-fringe.the-empty-steading","ord":2,"value":"must sit inside the Gideon fringe culture zone, not in the marsh interior"}
+{"place_id":"place.imperial-fringe.the-fig-and-ledger","ord":0,"value":"adjacent to a civic building"}
+{"place_id":"place.imperial-fringe.the-fig-poachers","ord":0,"value":"dense cover at a ravine head"}
+{"place_id":"place.imperial-fringe.the-fig-poachers","ord":1,"value":"multiple exits"}
+{"place_id":"place.imperial-fringe.the-glass-scar","ord":0,"value":"a sterile circle of fused ground"}
+{"place_id":"place.imperial-fringe.the-hackwing-scarp","ord":0,"value":"south-facing broken ledges with thermals"}
+{"place_id":"place.imperial-fringe.the-hackwing-scarp","ord":1,"value":"must be on a scarp visible from a route within 400 m"}
+{"place_id":"place.imperial-fringe.the-hollow-pass-station","ord":0,"value":"a saddle crossing with exposure"}
+{"place_id":"place.imperial-fringe.the-hollow-under-the-figs","ord":0,"value":"a live root roof over a drained void"}
+{"place_id":"place.imperial-fringe.the-hollow-under-the-figs","ord":1,"value":"must sit below the rim break, in the lowland fringe, never in the border mountains"}
+{"place_id":"place.imperial-fringe.the-kept-terrace","ord":0,"value":"above the flood line"}
+{"place_id":"place.imperial-fringe.the-kept-terrace","ord":1,"value":"a village within a day"}
+{"place_id":"place.imperial-fringe.the-kept-terrace","ord":2,"value":"must stand at least 8 m above the flood line"}
+{"place_id":"place.imperial-fringe.the-knapping-floor-of-the-high-scree","ord":0,"value":"a fine-grained lithic scree"}
+{"place_id":"place.imperial-fringe.the-lake-divers-yard","ord":0,"value":"water deep enough to work close inshore"}
+{"place_id":"place.imperial-fringe.the-lake-divers-yard","ord":1,"value":"a landing beach"}
+{"place_id":"place.imperial-fringe.the-lamp-at-the-ford","ord":0,"value":"at an unmarked ford"}
+{"place_id":"place.imperial-fringe.the-lamp-at-the-ford","ord":1,"value":"must stand at a ford on a river at least 2 m deep upstream and down"}
+{"place_id":"place.imperial-fringe.the-last-post","ord":0,"value":"on the road: the last cut of the Blackwood Road before the province edge"}
+{"place_id":"place.imperial-fringe.the-last-post","ord":1,"value":"the province edge"}
+{"place_id":"place.imperial-fringe.the-leaning-watch","ord":0,"value":"subsiding ground"}
+{"place_id":"place.imperial-fringe.the-leaning-watch","ord":1,"value":"visible lean"}
+{"place_id":"place.imperial-fringe.the-ledge-of-tallies","ord":0,"value":"a bench between a ravine and a saddle"}
+{"place_id":"place.imperial-fringe.the-ledge-of-tallies","ord":1,"value":"no cart access"}
+{"place_id":"place.imperial-fringe.the-marble-field","ord":0,"value":"a knoll outside a city wall"}
+{"place_id":"place.imperial-fringe.the-month-chapel","ord":0,"value":"off the road, on ground the wet season cuts off"}
+{"place_id":"place.imperial-fringe.the-month-chapel","ord":1,"value":"low ground the surveyors called firm"}
+{"place_id":"place.imperial-fringe.the-niben-crystal-workings","ord":0,"value":"an exposed seam in a ravine wall"}
+{"place_id":"place.imperial-fringe.the-old-office-house","ord":0,"value":"unclaimed ground between settlements"}
+{"place_id":"place.imperial-fringe.the-old-quarters","ord":0,"value":"a single long quarters row"}
+{"place_id":"place.imperial-fringe.the-old-quarters","ord":1,"value":"must sit inside the Gideon fringe culture zone, not in the marsh interior"}
+{"place_id":"place.imperial-fringe.the-pass-shelter","ord":0,"value":"a rock back with no run-off above it"}
+{"place_id":"place.imperial-fringe.the-pass-shelter","ord":1,"value":"on the pass itself"}
+{"place_id":"place.imperial-fringe.the-pass-shelter","ord":2,"value":"must sit in a saddle on the rim path, not on open hillside"}
+{"place_id":"place.imperial-fringe.the-quiet-pit","ord":0,"value":"a dry roofed pit"}
+{"place_id":"place.imperial-fringe.the-quiet-pit","ord":1,"value":"inside a private yard"}
+{"place_id":"place.imperial-fringe.the-ravine-doors","ord":0,"value":"a continuous bedding shelf on a gorge wall"}
+{"place_id":"place.imperial-fringe.the-ravine-doors","ord":1,"value":"must be on a gorge wall with at least 60 m of relief within 150 m"}
+{"place_id":"place.imperial-fringe.the-ring-of-nine-wells","ord":0,"value":"nine positions with mutual sightlines"}
+{"place_id":"place.imperial-fringe.the-ring-of-nine-wells","ord":1,"value":"high firm ground"}
+{"place_id":"place.imperial-fringe.the-road-nisswo-house","ord":0,"value":"half a day's walk from the shrine"}
+{"place_id":"place.imperial-fringe.the-second-empire-locks","ord":0,"value":"a fast-dropping reach"}
+{"place_id":"place.imperial-fringe.the-second-hearth","ord":0,"value":"no Hist within a day"}
+{"place_id":"place.imperial-fringe.the-sermon-road-camp","ord":0,"value":"a mile short of a pilgrimage site"}
+{"place_id":"place.imperial-fringe.the-sermon-road-camp","ord":1,"value":"water and fuel"}
+{"place_id":"place.imperial-fringe.the-sermon-road-camp","ord":2,"value":"must sit below the rim break, in the lowland fringe, never in the border mountains"}
+{"place_id":"place.imperial-fringe.the-shaking-house","ord":0,"value":"downwind and downstream of a settlement"}
+{"place_id":"place.imperial-fringe.the-shaking-house","ord":1,"value":"separated by water"}
+{"place_id":"place.imperial-fringe.the-shaking-house","ord":2,"value":"must sit below the rim break, in the lowland fringe, never in the border mountains"}
+{"place_id":"place.imperial-fringe.the-shut-door","ord":0,"value":"a sealed entrance"}
+{"place_id":"place.imperial-fringe.the-shut-door","ord":1,"value":"traps intact"}
+{"place_id":"place.imperial-fringe.the-silent-halls","ord":0,"value":"broken entrance"}
+{"place_id":"place.imperial-fringe.the-silent-halls","ord":1,"value":"a lower chamber below water table"}
+{"place_id":"place.imperial-fringe.the-snowline-cell","ord":0,"value":"above the snowline"}
+{"place_id":"place.imperial-fringe.the-snowline-cell","ord":1,"value":"no vegetation"}
+{"place_id":"place.imperial-fringe.the-standing-mist","ord":0,"value":"a closed hollow with a cold spring"}
+{"place_id":"place.imperial-fringe.the-standing-mist","ord":1,"value":"no through-draught"}
+{"place_id":"place.imperial-fringe.the-stone-drop","ord":0,"value":"screened from the road below"}
+{"place_id":"place.imperial-fringe.the-stone-drop","ord":1,"value":"two ways down onto the road"}
+{"place_id":"place.imperial-fringe.the-stone-talkers-watch","ord":0,"value":"firm ground clear of the vents"}
+{"place_id":"place.imperial-fringe.the-stone-talkers-watch","ord":1,"value":"line of sight to the xanmeer"}
+{"place_id":"place.imperial-fringe.the-sunk-lane","ord":0,"value":"an open collapse across an old cart lane"}
+{"place_id":"place.imperial-fringe.the-sunk-lane","ord":1,"value":"on ground with less than 40 m of relief within 150 m"}
+{"place_id":"place.imperial-fringe.the-turned-out","ord":0,"value":"on a public verge in sight of the lost holding"}
+{"place_id":"place.imperial-fringe.the-turned-out","ord":1,"value":"must sit below the rim break, in the lowland fringe, never in the border mountains"}
+{"place_id":"place.imperial-fringe.the-two-lamps-hermitage","ord":0,"value":"a bench reachable only by climbing"}
+{"place_id":"place.imperial-fringe.the-vellum-estate","ord":0,"value":"one undivided block of good land"}
+{"place_id":"place.imperial-fringe.the-vellum-estate","ord":1,"value":"an estate house with a strong room"}
+{"place_id":"place.imperial-fringe.the-white-throat","ord":0,"value":"an undercut behind a fall"}
+{"place_id":"place.imperial-fringe.treasure-hunters-camp-of-the-white-hill","ord":0,"value":"out of sight of a route"}
+{"place_id":"place.imperial-fringe.treasure-hunters-camp-of-the-white-hill","ord":1,"value":"within an hour of a robbable site"}
+{"place_id":"place.imperial-fringe.twyllbek-crown","ord":0,"value":"a standing ruin block with a failing climbable face"}
+{"place_id":"place.imperial-fringe.twyllbek-crown","ord":1,"value":"clear of the canopy"}
+{"place_id":"place.imperial-fringe.twyllbek-ruins","ord":0,"value":"dry terrace above a spring"}
+{"place_id":"place.imperial-fringe.unfinished-culvert-line","ord":0,"value":"a line of dressed but unlaid stone"}
+{"place_id":"place.imperial-fringe.vanins-signal","ord":0,"value":"a long view down a road"}
+{"place_id":"place.imperial-fringe.vanins-signal","ord":1,"value":"dry footing"}
+{"place_id":"place.imperial-fringe.watch-of-the-weighed-cart","ord":0,"value":"a fork in the road"}
+{"place_id":"place.imperial-fringe.watch-of-the-weighed-cart","ord":1,"value":"a rise with a view of both branches"}
+{"place_id":"place.imperial-fringe.westfield-village","ord":0,"value":"temperate grassland"}
+{"place_id":"place.imperial-fringe.westfield-village","ord":1,"value":"common field ground"}
+{"place_id":"place.imperial-fringe.whispers-house-of-the-low-fen","ord":0,"value":"no land approach"}
+{"place_id":"place.imperial-fringe.whispers-house-of-the-low-fen","ord":1,"value":"over standing water"}
+{"place_id":"place.imperial-fringe.whispers-house-of-the-low-fen","ord":2,"value":"must stand over standing water, reachable only by punt"}
+{"place_id":"place.imperial-fringe.xi-tsei-massacre-ground","ord":0,"value":"an open flat with two ridge flanks"}
+{"place_id":"place.imperial-fringe.xi-tsei-massacre-ground","ord":1,"value":"must sit below the rim break, in the lowland fringe, never in the border mountains"}
+{"place_id":"place.imperial-penal-south.akaviri-works","ord":0,"value":"commands an old strategic line"}
+{"place_id":"place.imperial-penal-south.basin-air-grotto","ord":0,"value":"submerged entrance"}
+{"place_id":"place.imperial-penal-south.basin-courier-relay","ord":0,"value":"on a route"}
+{"place_id":"place.imperial-penal-south.basin-curiosity","ord":0,"value":"varies"}
+{"place_id":"place.imperial-penal-south.basin-hearth-house","ord":0,"value":"on a route, with a landing"}
+{"place_id":"place.imperial-penal-south.basin-hermit","ord":0,"value":"deliberately awkward"}
+{"place_id":"place.imperial-penal-south.basin-sinkhole","ord":0,"value":"a stream that goes under and does not come back"}
+{"place_id":"place.imperial-penal-south.basin-sinkhole","ord":1,"value":"standing water at the base"}
+{"place_id":"place.imperial-penal-south.basin-squat","ord":0,"value":"whatever the ruin had"}
+{"place_id":"place.imperial-penal-south.basin-tradehouse","ord":0,"value":"on a route, with a landing"}
+{"place_id":"place.imperial-penal-south.blackrose","ord":0,"value":"island in standing water at a confluence"}
+{"place_id":"place.imperial-penal-south.blackrose-drowned-hist","ord":0,"value":"fully submerged"}
+{"place_id":"place.imperial-penal-south.blackrose-drowned-hist","ord":1,"value":"inland of the coast plain, on the Blackrose lake system"}
+{"place_id":"place.imperial-penal-south.blackrose-prison","ord":0,"value":"isolated and defensible"}
+{"place_id":"place.imperial-penal-south.blasphemer-urn-vault","ord":0,"value":"dry, sealed"}
+{"place_id":"place.imperial-penal-south.bog-iron-bloomery","ord":0,"value":"bog ore from standing water"}
+{"place_id":"place.imperial-penal-south.bramman-head","ord":0,"value":"where navigable water ends"}
+{"place_id":"place.imperial-penal-south.bramman-head","ord":1,"value":"at the head of a screened lagoon, hidden from the open water"}
+{"place_id":"place.imperial-penal-south.buoyant-causeway","ord":0,"value":"crosses standing or slow water"}
+{"place_id":"place.imperial-penal-south.cave-pool-glow","ord":0,"value":"still or tidal water, undisturbed"}
+{"place_id":"place.imperial-penal-south.chainbreaker-shelter","ord":0,"value":"escape route by water"}
+{"place_id":"place.imperial-penal-south.chainlink-watchtower","ord":0,"value":"commands a route or a channel"}
+{"place_id":"place.imperial-penal-south.cliff-vista-basin","ord":0,"value":"above everything"}
+{"place_id":"place.imperial-penal-south.cordon-cellars","ord":0,"value":"cut into a bank above the flood maximum"}
+{"place_id":"place.imperial-penal-south.cordon-cellars","ord":1,"value":"on the cordon line"}
+{"place_id":"place.imperial-penal-south.daril-den","ord":0,"value":"a mooring is half the type"}
+{"place_id":"place.imperial-penal-south.disputed-estate-village","ord":0,"value":"controls a crossing or a landing"}
+{"place_id":"place.imperial-penal-south.drawdown-flat","ord":0,"value":"lake bed, exposed seasonally"}
+{"place_id":"place.imperial-penal-south.drawdown-flat","ord":1,"value":"inland of the coast plain, on the Blackrose lake system"}
+{"place_id":"place.imperial-penal-south.drowned-gallery","ord":0,"value":"submerged"}
+{"place_id":"place.imperial-penal-south.drowned-gallery","ord":1,"value":"under a levee, running toward the Rose"}
+{"place_id":"place.imperial-penal-south.drowned-gallery","ord":2,"value":"running under the levee toward place.imperial-penal-south.blackrose-prison, its landward mouth outside the Rose's walls"}
+{"place_id":"place.imperial-penal-south.feeder-portage","ord":0,"value":"bypasses unnavigable water"}
+{"place_id":"place.imperial-penal-south.feeder-portage","ord":1,"value":"at a shoaling sill in a confined channel"}
+{"place_id":"place.imperial-penal-south.feeder-whitewater","ord":0,"value":"the water IS the hazard"}
+{"place_id":"place.imperial-penal-south.flu-mass-grave","ord":0,"value":"varies"}
+{"place_id":"place.imperial-penal-south.flu-quarantine-village","ord":0,"value":"on the road, at the last narrows on the Lake road west of Blackrose"}
+{"place_id":"place.imperial-penal-south.frog-pond-farm-basin","ord":0,"value":"still, warm, separated from the channel"}
+{"place_id":"place.imperial-penal-south.gar-pens-basin","ord":0,"value":"penned off a live channel"}
+{"place_id":"place.imperial-penal-south.imperial-farmstead-basin","ord":0,"value":"tried to be dry and failed"}
+{"place_id":"place.imperial-penal-south.imperial-survey-camp","ord":0,"value":"high ground for sightlines"}
+{"place_id":"place.imperial-penal-south.intact-fort","ord":0,"value":"commands something that no longer matters"}
+{"place_id":"place.imperial-penal-south.kothringi-ruin-basin","ord":0,"value":"coastal and riverine — they were sea-going"}
+{"place_id":"place.imperial-penal-south.lake-boardwalk-village","ord":0,"value":"crosses water rather than sitting beside it"}
+{"place_id":"place.imperial-penal-south.lake-divers-yard","ord":0,"value":"beside drowned ground"}
+{"place_id":"place.imperial-penal-south.lake-drowned-village","ord":0,"value":"submerged"}
+{"place_id":"place.imperial-penal-south.lake-ferry-stage","ord":0,"value":"on a boat lane, on firm shelving shore"}
+{"place_id":"place.imperial-penal-south.lake-raft-village","ord":0,"value":"floats; needs sheltered water and mooring points"}
+{"place_id":"place.imperial-penal-south.lake-stall-row","ord":0,"value":"a landing, because most goods come by water"}
+{"place_id":"place.imperial-penal-south.lake-submerged-xanmeer","ord":0,"value":"submerged"}
+{"place_id":"place.imperial-penal-south.ledgered-blackguards","ord":0,"value":"boat access, concealed"}
+{"place_id":"place.imperial-penal-south.lilmothiit-quarry","ord":0,"value":"exposed by erosion"}
+{"place_id":"place.imperial-penal-south.lilmothiit-quarry","ord":1,"value":"within 400 m of Blackrose — the city stands on it"}
+{"place_id":"place.imperial-penal-south.living-treasure-camp","ord":0,"value":"at a hard-to-reach place"}
+{"place_id":"place.imperial-penal-south.longmont","ord":0,"value":"built over water at the highest seasonal level, piled to the bed"}
+{"place_id":"place.imperial-penal-south.longmont","ord":1,"value":"inland of the coast plain, on the Blackrose lake system"}
+{"place_id":"place.imperial-penal-south.manned-toll-tower","ord":0,"value":"commands a channel or a road"}
+{"place_id":"place.imperial-penal-south.marsh-giant-ground-basin","ord":0,"value":"wallows and deep marsh"}
+{"place_id":"place.imperial-penal-south.murkwood-verge","ord":0,"value":"south-east of Blackrose, off every road"}
+{"place_id":"place.imperial-penal-south.murkwood-verge","ord":1,"value":"deep marsh, never firm lowland or coast"}
+{"place_id":"place.imperial-penal-south.natural-dive-shaft","ord":0,"value":"submerged entrance"}
+{"place_id":"place.imperial-penal-south.necromantic-dig","ord":0,"value":"at a ruin"}
+{"place_id":"place.imperial-penal-south.onkobra-clay-kiln","ord":0,"value":"river clay; needs water and fuel"}
+{"place_id":"place.imperial-penal-south.owing-camp-basin","ord":0,"value":"marginal ground"}
+{"place_id":"place.imperial-penal-south.plague-cordon","ord":0,"value":"uses water as part of the line where it can"}
+{"place_id":"place.imperial-penal-south.prison-born-refuge","ord":0,"value":"wherever they were allowed to stop"}
+{"place_id":"place.imperial-penal-south.raid-refugee-camp","ord":0,"value":"wherever they were allowed to stop"}
+{"place_id":"place.imperial-penal-south.rebellion-earthworks","ord":0,"value":"dry ground with a view of the target"}
+{"place_id":"place.imperial-penal-south.rebellion-memorial","ord":0,"value":"often facing water"}
+{"place_id":"place.imperial-penal-south.retired-arbiter-house","ord":0,"value":"near its village's water"}
+{"place_id":"place.imperial-penal-south.rockspring","ord":0,"value":"above the seasonal maximum, beside a channel"}
+{"place_id":"place.imperial-penal-south.rose-bone-waystation","ord":0,"value":"on a walked or poled route"}
+{"place_id":"place.imperial-penal-south.rose-flooded-passage","ord":0,"value":"part of place.imperial-penal-south.blackrose-prison"}
+{"place_id":"place.imperial-penal-south.rose-flooded-passage","ord":1,"value":"a flooded stair under the prison yard"}
+{"place_id":"place.imperial-penal-south.rose-outworks","ord":0,"value":"on the Rose causeway approach, 300–700 m outside the prison"}
+{"place_id":"place.imperial-penal-south.rose-supply-town","ord":0,"value":"at a crossing or a road"}
+{"place_id":"place.imperial-penal-south.saltrice-village","ord":0,"value":"flood-fed and drained, sluiced"}
+{"place_id":"place.imperial-penal-south.scandal-holding-pit","ord":0,"value":"drainage is the cruelty"}
+{"place_id":"place.imperial-penal-south.three-gate-toll","ord":0,"value":"at the confluence of the three western channels"}
+{"place_id":"place.imperial-penal-south.vampiric-cloud-ground","ord":0,"value":"where an army could deploy — rare here"}
+{"place_id":"place.imperial-penal-south.voriplasm-vault","ord":0,"value":"damp, enclosed"}
+{"place_id":"place.imperial-penal-south.voriplasm-vault","ord":1,"value":"under a ruined works"}
+{"place_id":"place.imperial-penal-south.west-market-town","ord":0,"value":"a junction of navigable waters, or a road crossing"}
+{"place_id":"place.imperial-penal-south.west-market-town","ord":1,"value":"inland of the coast plain, on the Blackrose lake system"}
+{"place_id":"place.imperial-penal-south.wisp-lure-basin","ord":0,"value":"open standing water on a night route"}
+{"place_id":"place.imperial-penal-south.xanmeer-span-bridge","ord":0,"value":"spans a channel at its narrowest"}
+{"place_id":"place.imperial-penal-south.yespest-site","ord":0,"value":"varies"}
+{"place_id":"place.mercantile-coast.alessian-hull","ord":0,"value":"on the reef line, in eight to fifteen metres of salt water"}
+{"place_id":"place.mercantile-coast.alessian-hull","ord":1,"value":"within a boat-hour of place.mercantile-coast.soulrest, on a wreck ground over which the salvage market has a live claim"}
+{"place_id":"place.mercantile-coast.alten-meerhleel","ord":0,"value":"sheltered navigable water off the legal lanes"}
+{"place_id":"place.mercantile-coast.ashfield","ord":0,"value":"flood-fed and drained, sluiced"}
+{"place_id":"place.mercantile-coast.ashfield-hearth","ord":0,"value":"on a route, with a landing"}
+{"place_id":"place.mercantile-coast.ashroot-village","ord":0,"value":"a rise around which the peat fire passed, with root-water below it"}
+{"place_id":"place.mercantile-coast.bereaved-village-murkmire","ord":0,"value":"as a hist-village"}
+{"place_id":"place.mercantile-coast.bog-blight-ground-murkmire","ord":0,"value":"soft ground, flood-disturbed"}
+{"place_id":"place.mercantile-coast.bog-blight-ground-murkmire","ord":1,"value":"on the pole-ground where the bereaved village of Sees-No-Root buries"}
+{"place_id":"place.mercantile-coast.bone-waystation","ord":0,"value":"on a walked or poled route"}
+{"place_id":"place.mercantile-coast.bramman-river-ferry","ord":0,"value":"across water too deep or wide to ford"}
+{"place_id":"place.mercantile-coast.bramman-river-ferry","ord":1,"value":"on the coast road, at the crossing itself"}
+{"place_id":"place.mercantile-coast.bramman-screen","ord":0,"value":"tidal; passable only at low water"}
+{"place_id":"place.mercantile-coast.bright-throat-village","ord":0,"value":"on the mangrove wall above a beach landing"}
+{"place_id":"place.mercantile-coast.burn-memorial","ord":0,"value":"varies"}
+{"place_id":"place.mercantile-coast.canopy-crossing-keel","ord":0,"value":"crosses water or a drop"}
+{"place_id":"place.mercantile-coast.chasepoint","ord":0,"value":"on the road, at water"}
+{"place_id":"place.mercantile-coast.chime-relay","ord":0,"value":"on a route"}
+{"place_id":"place.mercantile-coast.cinder-hermit","ord":0,"value":"deliberately awkward"}
+{"place_id":"place.mercantile-coast.cinderhome","ord":0,"value":"drained and burnt"}
+{"place_id":"place.mercantile-coast.clandestine-dig","ord":0,"value":"covert access, usually by boat"}
+{"place_id":"place.mercantile-coast.coast-nisswo-house","ord":0,"value":"on a route"}
+{"place_id":"place.mercantile-coast.coast-road-stage","ord":0,"value":"a well or a spring"}
+{"place_id":"place.mercantile-coast.coast-road-tradehouse","ord":0,"value":"on a route, with a landing"}
+{"place_id":"place.mercantile-coast.coast-toll-bridge","ord":0,"value":"spans a channel at its narrowest"}
+{"place_id":"place.mercantile-coast.cold-light","ord":0,"value":"commands an approach"}
+{"place_id":"place.mercantile-coast.collections-bond","ord":0,"value":"on a quay"}
+{"place_id":"place.mercantile-coast.collections-field-station","ord":0,"value":"near the subject"}
+{"place_id":"place.mercantile-coast.crocodile-pens","ord":0,"value":"penned off a live channel"}
+{"place_id":"place.mercantile-coast.drowned-byre","ord":0,"value":"landward or fully submerged"}
+{"place_id":"place.mercantile-coast.egg-poacher-camp","ord":0,"value":"a covert extraction route"}
+{"place_id":"place.mercantile-coast.expeditionary-fort","ord":0,"value":"commands something that no longer matters"}
+{"place_id":"place.mercantile-coast.flood-refugee-camp","ord":0,"value":"wherever they were allowed to stop"}
+{"place_id":"place.mercantile-coast.gar-keepers-village","ord":0,"value":"penned water separated from open channel"}
+{"place_id":"place.mercantile-coast.glowfen-murkmire","ord":0,"value":"still or tidal water, undisturbed"}
+{"place_id":"place.mercantile-coast.goldworks-concession","ord":0,"value":"a haul river, silted up"}
+{"place_id":"place.mercantile-coast.guide-camp-jungle","ord":0,"value":"defensible, on a channel"}
+{"place_id":"place.mercantile-coast.hajmota-shell-yard","ord":0,"value":"beside shallow water"}
+{"place_id":"place.mercantile-coast.hammock-crown-murkmire","ord":0,"value":"the crown of a raised hammock, with standing water inside 100 m"}
+{"place_id":"place.mercantile-coast.hammock-village-murkmire","ord":0,"value":"a wooded rise in permanent marsh, reached only by water"}
+{"place_id":"place.mercantile-coast.head-of-tide","ord":0,"value":"a gravel sill where the tide stops, firm banks both sides"}
+{"place_id":"place.mercantile-coast.head-of-tide","ord":1,"value":"south of Soulrest, inside the coast zone"}
+{"place_id":"place.mercantile-coast.hereguard-paddies","ord":0,"value":"flood-fed, sluice-drained"}
+{"place_id":"place.mercantile-coast.hereguard-plantation","ord":0,"value":"a river terrace that floods seasonally, with slack water at its foot"}
+{"place_id":"place.mercantile-coast.hestra-stone","ord":0,"value":"often facing water"}
+{"place_id":"place.mercantile-coast.hestras-lane","ord":0,"value":"on the shipping lane, sheltered from wind"}
+{"place_id":"place.mercantile-coast.high-junction","ord":0,"value":"over water throughout"}
+{"place_id":"place.mercantile-coast.hist-less-fringe","ord":0,"value":"wherever they were allowed to stop"}
+{"place_id":"place.mercantile-coast.hist-village-hammock","ord":0,"value":"channel bank or spring, always with a landing"}
+{"place_id":"place.mercantile-coast.hist-village-keel-sakka","ord":0,"value":"channel bank or spring, always with a landing"}
+{"place_id":"place.mercantile-coast.hull-hall","ord":0,"value":"on, in or beside water"}
+{"place_id":"place.mercantile-coast.illicit-sap-camp","ord":0,"value":"a covert extraction route"}
+{"place_id":"place.mercantile-coast.inhabited-meer-murkmire","ord":0,"value":"raised; often moated by marsh"}
+{"place_id":"place.mercantile-coast.inhabited-meer-murkmire","ord":1,"value":"within sight of the Soulrest–Blackrose road, not on it"}
+{"place_id":"place.mercantile-coast.insular-jungle-village","ord":0,"value":"defensible approach, often a single crossing"}
+{"place_id":"place.mercantile-coast.ixtaxh-xanmeer","ord":0,"value":"submerged"}
+{"place_id":"place.mercantile-coast.keel-sakka-falls","ord":0,"value":"behind falling water"}
+{"place_id":"place.mercantile-coast.keel-sakka-head","ord":0,"value":"where navigable water ends"}
+{"place_id":"place.mercantile-coast.keel-sakka-stilts","ord":0,"value":"built over water at the highest seasonal level, piled to the bed"}
+{"place_id":"place.mercantile-coast.keshu-grove","ord":0,"value":"spring or still water at the root"}
+{"place_id":"place.mercantile-coast.lagoon-rafts","ord":0,"value":"sheltered water shallow enough to drive piles, with mooring points"}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":0,"value":"sheltered saltwater with a reef or bar"}
+{"place_id":"place.mercantile-coast.lilmoth","ord":0,"value":"Firm shelf at the head of the estuary, with the lighter quay running out into shallow tidal water"}
+{"place_id":"place.mercantile-coast.lilmoth-beast-market","ord":0,"value":"a landing, because most goods come by water"}
+{"place_id":"place.mercantile-coast.lilmoth-canoe-yard","ord":0,"value":"a shelving landing"}
+{"place_id":"place.mercantile-coast.lilmoth-divers-yard","ord":0,"value":"beside drowned ground"}
+{"place_id":"place.mercantile-coast.lilmoth-quay-tradehouse","ord":0,"value":"on a route, with a landing"}
+{"place_id":"place.mercantile-coast.long-bar-wreckers","ord":0,"value":"on an open-sea bar"}
+{"place_id":"place.mercantile-coast.long-bar-wreckers","ord":1,"value":"no settlement in sight of the beach"}
+{"place_id":"place.mercantile-coast.mad-hermit-jungle","ord":0,"value":"deliberately awkward"}
+{"place_id":"place.mercantile-coast.mangrove-hide","ord":0,"value":"boat access, concealed"}
+{"place_id":"place.mercantile-coast.miregaunt-ward-murkmire","ord":0,"value":"saturated ground"}
+{"place_id":"place.mercantile-coast.mirtis-plantation","ord":0,"value":"a drainage system that failed"}
+{"place_id":"place.mercantile-coast.moonmarch","ord":0,"value":"a landing at the water’s edge, outside Lilmoth’s tariff line"}
+{"place_id":"place.mercantile-coast.mudfoot","ord":0,"value":"built over water at the highest seasonal level, piled to the bed"}
+{"place_id":"place.mercantile-coast.murkmire-hearth-house","ord":0,"value":"on a route, with a landing"}
+{"place_id":"place.mercantile-coast.naga-camp-north-road","ord":0,"value":"commands traffic and offers an escape"}
+{"place_id":"place.mercantile-coast.naga-village-oliis","ord":0,"value":"as a tribal village"}
+{"place_id":"place.mercantile-coast.necropolis-village-murkmire","ord":0,"value":"soft ground that holds a driven pole, downwind of everyone"}
+{"place_id":"place.mercantile-coast.oliis-air-station","ord":0,"value":"fully enclosed by water"}
+{"place_id":"place.mercantile-coast.oliis-boardwalk","ord":0,"value":"crosses water rather than sitting beside it"}
+{"place_id":"place.mercantile-coast.oliis-drake-deep","ord":0,"value":"deep standing salt water over a bay floor"}
+{"place_id":"place.mercantile-coast.oliis-drake-deep","ord":1,"value":"off the Oliis bay, within a morning's paddle of Breathing-Stone"}
+{"place_id":"place.mercantile-coast.oliis-ferry-stage","ord":0,"value":"at a water narrows the coast road must cross"}
+{"place_id":"place.mercantile-coast.oliis-narrows","ord":0,"value":"the hazard IS the water"}
+{"place_id":"place.mercantile-coast.oliis-reef-harvest","ord":0,"value":"clear water over a worked bed"}
+{"place_id":"place.mercantile-coast.oliis-tide-run","ord":0,"value":"tidal; passable only at low water"}
+{"place_id":"place.mercantile-coast.oliis-wreck","ord":0,"value":"aground on a tidal flat, dry at low water"}
+{"place_id":"place.mercantile-coast.owing-eviction-camp-west","ord":0,"value":"marginal ground"}
+{"place_id":"place.mercantile-coast.pilgrim-nisswo-house","ord":0,"value":"on a route"}
+{"place_id":"place.mercantile-coast.pilgrim-xanmeer","ord":0,"value":"raised above flood"}
+{"place_id":"place.mercantile-coast.pusbottom-barge","ord":0,"value":"a mooring is half the type"}
+{"place_id":"place.mercantile-coast.pusbottom-barge","ord":1,"value":"moored off Lilmoth's sunken quarter, on the water side of the stilts, reachable without entering the city"}
+{"place_id":"place.mercantile-coast.quinrawl-anchorage","ord":0,"value":"a deep lagoon cove behind a headland, with a second way out to the sea"}
+{"place_id":"place.mercantile-coast.quinrawl-anchorage","ord":1,"value":"fresh water at its head"}
+{"place_id":"place.mercantile-coast.rockpark","ord":0,"value":"as a living village"}
+{"place_id":"place.mercantile-coast.rockpark-dead-hist","ord":0,"value":"as a village hist"}
+{"place_id":"place.mercantile-coast.root-gallery-murkmire","ord":0,"value":"water at the gallery's low points; some branches fully flooded"}
+{"place_id":"place.mercantile-coast.sacked-customs-suburb","ord":0,"value":"in a port or a city"}
+{"place_id":"place.mercantile-coast.sacked-customs-suburb","ord":1,"value":"on the road out of Lilmoth’s north gate, at the gate itself"}
+{"place_id":"place.mercantile-coast.sap-withdrawal-house","ord":0,"value":"quiet, apart"}
+{"place_id":"place.mercantile-coast.screen-watch","ord":0,"value":"inside a mangrove system, tidal"}
+{"place_id":"place.mercantile-coast.screen-watch","ord":1,"value":"about a mile upriver of Bramman’s Screen, out of sight of the bay"}
+{"place_id":"place.mercantile-coast.sealed-meer-murkmire","ord":0,"value":"raised, often ringed by marsh"}
+{"place_id":"place.mercantile-coast.sealed-meer-west","ord":0,"value":"raised, often ringed by marsh"}
+{"place_id":"place.mercantile-coast.slaughter-memorial","ord":0,"value":"varies"}
+{"place_id":"place.mercantile-coast.smoulder-cuts","ord":0,"value":"drained bog"}
+{"place_id":"place.mercantile-coast.soulrest","ord":0,"value":"bay port at a concealed river's mouth"}
+{"place_id":"place.mercantile-coast.soulrest-breaking-yard","ord":0,"value":"a deep shelving launch"}
+{"place_id":"place.mercantile-coast.soulrest-broken-bond","ord":0,"value":"on a quay"}
+{"place_id":"place.mercantile-coast.soulrest-courier-relay","ord":0,"value":"on a route"}
+{"place_id":"place.mercantile-coast.soulrest-divers-yard","ord":0,"value":"beside drowned ground"}
+{"place_id":"place.mercantile-coast.soulrest-divers-yard","ord":1,"value":"on Soulrest's inner harbour, walking distance from the buyers' benches"}
+{"place_id":"place.mercantile-coast.soulrest-fair","ord":0,"value":"a landing, because most goods come by water"}
+{"place_id":"place.mercantile-coast.soulrest-foreign-graves","ord":0,"value":"tried to be dry"}
+{"place_id":"place.mercantile-coast.soulrest-quay-tradehouse","ord":0,"value":"on a route, with a landing"}
+{"place_id":"place.mercantile-coast.soulrest-quay-tradehouse","ord":1,"value":"on Soulrest’s quay, at the water’s edge"}
+{"place_id":"place.mercantile-coast.soulrest-synod-outstation","ord":0,"value":"needs sky and a road"}
+{"place_id":"place.mercantile-coast.soulrest-whispers-house","ord":0,"value":"a quiet way out by water"}
+{"place_id":"place.mercantile-coast.southern-sea-listening-post","ord":0,"value":"overlooks a road, a harbour or a border"}
+{"place_id":"place.mercantile-coast.stripped-village-north","ord":0,"value":"as a living village"}
+{"place_id":"place.mercantile-coast.stripped-village-quiet","ord":0,"value":"as a living village"}
+{"place_id":"place.mercantile-coast.subsumed-xanmeer","ord":0,"value":"often part-flooded at the base"}
+{"place_id":"place.mercantile-coast.sugar-barge","ord":0,"value":"a mooring is half the type"}
+{"place_id":"place.mercantile-coast.sugar-stack","ord":0,"value":"rises from open water"}
+{"place_id":"place.mercantile-coast.sunken-causeway","ord":0,"value":"crosses standing or slow water"}
+{"place_id":"place.mercantile-coast.sunkfoot","ord":0,"value":"submerged"}
+{"place_id":"place.mercantile-coast.tapped-hist-ashroot","ord":0,"value":"as a village hist"}
+{"place_id":"place.mercantile-coast.teeba-enoo-court","ord":0,"value":"level ground, near a settlement"}
+{"place_id":"place.mercantile-coast.teeth-of-sithis","ord":0,"value":"raised above water"}
+{"place_id":"place.mercantile-coast.tempering-ground","ord":0,"value":"concealed approach"}
+{"place_id":"place.mercantile-coast.tidewrack-stilts","ord":0,"value":"built over water at the highest seasonal level, piled to the bed"}
+{"place_id":"place.mercantile-coast.timber-concession","ord":0,"value":"a haul river, silted up"}
+{"place_id":"place.mercantile-coast.topal-careening-hard","ord":0,"value":"a shelving landing"}
+{"place_id":"place.mercantile-coast.topal-pearl-beds","ord":0,"value":"clear water over a worked bed"}
+{"place_id":"place.mercantile-coast.topal-salt-pans","ord":0,"value":"tidal salt water, sun and wind"}
+{"place_id":"place.mercantile-coast.tree-minder-house","ord":0,"value":"near its village's water"}
+{"place_id":"place.mercantile-coast.tunnel-rat-gallery","ord":0,"value":"drainage is the constant problem"}
+{"place_id":"place.mercantile-coast.uprising-battlefield","ord":0,"value":"where an army could deploy — rare here"}
+{"place_id":"place.mercantile-coast.varo-holding","ord":0,"value":"tried to be dry and failed"}
+{"place_id":"place.mercantile-coast.villa-cellars","ord":0,"value":"a submerged connection"}
+{"place_id":"place.mercantile-coast.vossa-satl-village","ord":0,"value":"landing plus access to its raw material"}
+{"place_id":"place.mercantile-coast.wallside-platforms","ord":0,"value":"inside a mangrove system, tidal"}
+{"place_id":"place.mercantile-coast.wamasu-nest-pond","ord":0,"value":"a held pond, still and avoided"}
+{"place_id":"place.mercantile-coast.white-rose-prison","ord":0,"value":"firm ground ringed by marsh water, with a single causeway"}
+{"place_id":"place.mercantile-coast.white-rose-prison","ord":1,"value":"within 400 m of the Bogmother causeway (route.road.helstrom-blackrose)"}
+{"place_id":"place.mercantile-coast.whitebone-reef","ord":0,"value":"submerged bar in navigable water"}
+{"place_id":"place.mercantile-coast.witness-vigil-camp","ord":0,"value":"minor"}
+{"place_id":"place.mercantile-coast.wraxu-frieze","ord":0,"value":"minor"}
+{"place_id":"place.mercantile-coast.wraxu-stacks","ord":0,"value":"sea stacks standing out of salt water"}
+{"place_id":"place.mercantile-coast.wraxu-xanmeer","ord":0,"value":"raised above flood"}
+{"place_id":"place.mercantile-coast.xanmeer-dive-shaft","ord":0,"value":"submerged entrance"}
+{"place_id":"place.mercantile-coast.xhon-mehl-shrine","ord":0,"value":"facing the creature’s water"}
+{"place_id":"place.mercantile-coast.xhon-mehl-shrine","ord":1,"value":"in standing water deep enough to dive the entrance"}
+{"place_id":"place.mercantile-coast.xinchei-konu","ord":0,"value":"needs sky, not water"}
+{"place_id":"place.naga-kur-deeps.air-pocket-station-deeps","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.air-pocket-station-deeps","ord":1,"value":"at least 12 km inland — this is the deep interior"}
+{"place_id":"place.naga-kur-deeps.air-pocket-station-deeps","ord":2,"value":"water at least 6 m deep within 100 m"}
+{"place_id":"place.naga-kur-deeps.art-and-destroy-site-deeps","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.art-and-destroy-site-deeps","ord":1,"value":"at least 12 km inland — this is the deep interior"}
+{"place_id":"place.naga-kur-deeps.beast-keeper-crocodile","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.beast-offering-hunt-shrine","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.bereaved-hist-less-since","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.bioluminescent-cave-pool","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.boardwalk-single-spine","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.bog-blight-ground-nine-stakes","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.bog-blight-ground-old-cordon","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.bone-carriers-camp-deeps","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.broken-xanmeer-collapsed-deeps","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.dead-water-village","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.dead-water-village","ord":1,"value":"at least 12 km inland — this is the deep interior"}
+{"place_id":"place.naga-kur-deeps.dead-water-village","ord":2,"value":"black standing water on three sides, one poling approach"}
+{"place_id":"place.naga-kur-deeps.deepmire-refuge","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.deepmire-refuge","ord":1,"value":"upland ground above the flood by 40m+"}
+{"place_id":"place.naga-kur-deeps.dive-shaft-natural-deeps","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.dive-shaft-natural-deeps","ord":1,"value":"at least 12 km inland — this is the deep interior"}
+{"place_id":"place.naga-kur-deeps.dive-shaft-natural-deeps","ord":2,"value":"standing water at least 8 m deep at the mouth"}
+{"place_id":"place.naga-kur-deeps.drawdown-flat-refilling-deeps","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.drifting-village-wet-mooring","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.drifting-village-wet-mooring","ord":1,"value":"at least 12 km inland — this is the deep interior"}
+{"place_id":"place.naga-kur-deeps.drifting-village-wet-mooring","ord":2,"value":"sited as a mooring SET (3-4 alternates), not a point — quests 20 fixed-alternative-mooring pattern"}
+{"place_id":"place.naga-kur-deeps.drifting-village-wet-mooring","ord":3,"value":"over or beside the leviathan bone field — the mooring's whole reason is the calm water above it"}
+{"place_id":"place.naga-kur-deeps.drowned-village-lake-deeps","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.drowned-village-lake-deeps","ord":1,"value":"at least 12 km inland — this is the deep interior"}
+{"place_id":"place.naga-kur-deeps.drowned-village-lake-deeps","ord":2,"value":"standing water at least 4 m deep over the roofs"}
+{"place_id":"place.naga-kur-deeps.drowning-narrows-tidal-gate","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.drowning-narrows-tidal-gate","ord":1,"value":"at least 12 km inland — this is the deep interior"}
+{"place_id":"place.naga-kur-deeps.drowning-narrows-tidal-gate","ord":2,"value":"the zone's single outflow pinch"}
+{"place_id":"place.naga-kur-deeps.ferry-stage-guide-hire","ord":0,"value":"on the outer edge of the naga-kur-deeps culture zone, on the side where outsiders arrive"}
+{"place_id":"place.naga-kur-deeps.ferry-stage-guide-hire","ord":1,"value":"the last landing reachable without a local poler"}
+{"place_id":"place.naga-kur-deeps.flood-high-levee-top","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.flooded-passage-tunnel-deeps","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.guide-camp-poling","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.guide-camp-poling","ord":1,"value":"at least 12 km inland — this is the deep interior"}
+{"place_id":"place.naga-kur-deeps.guide-camp-poling","ord":2,"value":"the one rise on the longest crossing"}
+{"place_id":"place.naga-kur-deeps.hammock-crown-clan-founder","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.harmed-hist-enslaved","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.harmed-hist-enslaved","ord":1,"value":"at least 12 km inland — this is the deep interior"}
+{"place_id":"place.naga-kur-deeps.harmed-hist-enslaved","ord":2,"value":"on a channel bank with a village on the opposite bank"}
+{"place_id":"place.naga-kur-deeps.hermit-hut-exile-deeps","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.horwalli-waterworks-deeps","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.horwalli-waterworks-deeps","ord":1,"value":"at least 12 km inland — this is the deep interior"}
+{"place_id":"place.naga-kur-deeps.horwalli-waterworks-deeps","ord":2,"value":"the zone's drainage pinch"}
+{"place_id":"place.naga-kur-deeps.insular-hostile-first","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.kothringi-ruin-village-deeps","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.legendary-deep-feather-serpent","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.legendary-deep-feather-serpent","ord":1,"value":"at least 12 km inland — this is the deep interior"}
+{"place_id":"place.naga-kur-deeps.legendary-deep-feather-serpent","ord":2,"value":"standing water at least 20 m deep — the deepest hole in the zone"}
+{"place_id":"place.naga-kur-deeps.leviathan-bone-field","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.leviathan-bone-field","ord":1,"value":"at least 12 km inland — this is the deep interior"}
+{"place_id":"place.naga-kur-deeps.leviathan-bone-field","ord":2,"value":"shallow water for a hull to work"}
+{"place_id":"place.naga-kur-deeps.leviathan-bone-field","ord":3,"value":"standing ribs that break the canopy line"}
+{"place_id":"place.naga-kur-deeps.mass-grave-burn-memorial","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.maturity-trial-kaju-kill","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.memorial-stone-war-deeps","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.miregaunt-ward-open","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.naga-highway-camp-abandoned","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.naga-highway-camp-active-north","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.naga-highway-camp-active-north","ord":1,"value":"at least 12 km inland — this is the deep interior"}
+{"place_id":"place.naga-kur-deeps.naga-highway-camp-active-north","ord":2,"value":"on a blind bend of a walked track"}
+{"place_id":"place.naga-kur-deeps.naga-highway-camp-active-north","ord":3,"value":"on firm ground above the track, within 40 m of it; the camp works foot traffic"}
+{"place_id":"place.naga-kur-deeps.naga-highway-camp-active-south","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.naga-highway-camp-active-south","ord":1,"value":"at least 12 km inland — this is the deep interior"}
+{"place_id":"place.naga-kur-deeps.naga-highway-camp-active-south","ord":2,"value":"a reed narrows with two exits"}
+{"place_id":"place.naga-kur-deeps.naga-highway-camp-active-south","ord":3,"value":"at least 3 km from The North Cut Camp"}
+{"place_id":"place.naga-kur-deeps.naga-highway-camp-active-south","ord":4,"value":"on the bank of the southern poling channel, water within 15 m — the reed gate is strung across the water"}
+{"place_id":"place.naga-kur-deeps.naga-highway-camp-walkway","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.naga-village-raiding","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.naga-village-raiding","ord":1,"value":"at least 12 km inland — this is the deep interior"}
+{"place_id":"place.naga-kur-deeps.naga-village-raiding","ord":2,"value":"a creek head with three poling routes inside an hour"}
+{"place_id":"place.naga-kur-deeps.naga-village-settled","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.naga-village-settled","ord":1,"value":"at least 12 km inland — this is the deep interior"}
+{"place_id":"place.naga-kur-deeps.naga-village-settled","ord":2,"value":"firm ground with a landing deep enough for laden craft"}
+{"place_id":"place.naga-kur-deeps.necropolis-nightbound","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.poacher-camp-egg","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.poacher-camp-egg","ord":1,"value":"at least 12 km inland — this is the deep interior"}
+{"place_id":"place.naga-kur-deeps.poacher-camp-egg","ord":2,"value":"inside an hour of three nesting grounds"}
+{"place_id":"place.naga-kur-deeps.portage-slipway-narrows-deeps","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.portage-slipway-narrows-deeps","ord":1,"value":"at least 12 km inland — this is the deep interior"}
+{"place_id":"place.naga-kur-deeps.portage-slipway-narrows-deeps","ord":2,"value":"a neck of firm ground under 300 m between two navigable channels"}
+{"place_id":"place.naga-kur-deeps.raft-village-lashed","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.refugee-camp-raid","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.root-gallery-blight-warren","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.root-gallery-blue-flood","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.root-gallery-drowned-lanes","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.root-whisper-village","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.root-whisper-village","ord":1,"value":"between two xanmeer sites"}
+{"place_id":"place.naga-kur-deeps.sealed-xanmeer-vakka-deeps","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.sealed-xanmeer-vakka-deeps","ord":1,"value":"at least 12 km inland — this is the deep interior"}
+{"place_id":"place.naga-kur-deeps.sealed-xanmeer-vakka-deeps","ord":2,"value":"a rise in black water with no approach the building does not command"}
+{"place_id":"place.naga-kur-deeps.serpent-ground-moon-adder","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.serpent-ground-moon-adder","ord":1,"value":"at least 12 km inland — this is the deep interior"}
+{"place_id":"place.naga-kur-deeps.serpent-ground-moon-adder","ord":2,"value":"open bank with a clear sky line — rare in this zone"}
+{"place_id":"place.naga-kur-deeps.sinkhole-mouth-deeps","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.sinkhole-mouth-deeps","ord":1,"value":"at least 12 km inland — this is the deep interior"}
+{"place_id":"place.naga-kur-deeps.sinkhole-mouth-deeps","ord":2,"value":"a round hole of open black water in a reed flat"}
+{"place_id":"place.naga-kur-deeps.sithis-temple-mass-sacrifice","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.sithis-temple-mass-sacrifice","ord":1,"value":"at least 12 km inland — this is the deep interior"}
+{"place_id":"place.naga-kur-deeps.sithis-temple-mass-sacrifice","ord":2,"value":"raised ground with one watched landing"}
+{"place_id":"place.naga-kur-deeps.squatted-ruin-home-block","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.standing-curiosity-mechanism-deeps","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.stilt-shallow-reed-stand","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.stilt-tidal-black-piles","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.submerged-xanmeer-fully","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.tended-xanmeer-pilgrim-deeps","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.treasure-hunters-living-deeps","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.umbriel-stripped-undead","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.umbriel-stripped-undead","ord":1,"value":"at least 12 km inland — this is the deep interior"}
+{"place_id":"place.naga-kur-deeps.umbriel-stripped-undead","ord":2,"value":"on the Umbriel corridor"}
+{"place_id":"place.naga-kur-deeps.urn-vault-sealed-deeps","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.voriplasm-chamber-breached","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.voriplasm-chamber-breached","ord":1,"value":"at least 12 km inland — this is the deep interior"}
+{"place_id":"place.naga-kur-deeps.voriplasm-chamber-breached","ord":2,"value":"beneath a broken xanmeer floor, concealed, remote from any village"}
+{"place_id":"place.naga-kur-deeps.wamasu-pond-adult","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.whitewater-logjam-reach","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.wild-hist-rogue-deeps","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.wreck-submerged-barge","ord":0,"value":"culture zone: naga-kur-deeps"}
+{"place_id":"place.naga-kur-deeps.wreck-submerged-barge","ord":1,"value":"at least 12 km inland — this is the deep interior"}
+{"place_id":"place.naga-kur-deeps.wreck-submerged-barge","ord":2,"value":"in navigable water at least 4 m deep, on the outside of a bend"}
+{"place_id":"place.pirate-freeholds.alten-corimont","ord":0,"value":"navigable water for a shallow-draft hull"}
+{"place_id":"place.pirate-freeholds.alten-corimont","ord":1,"value":"sheltered basin off the legal lanes"}
+{"place_id":"place.pirate-freeholds.alten-corimont","ord":2,"value":"firm bank for warehousing"}
+{"place_id":"place.pirate-freeholds.alten-corimont","ord":3,"value":"no Hist within the settlement — fixed by the lore"}
+{"place_id":"place.pirate-freeholds.bone-carriers-camp","ord":0,"value":"a day's walk from the waystation"}
+{"place_id":"place.pirate-freeholds.bone-carriers-camp","ord":1,"value":"dry firm ground"}
+{"place_id":"place.pirate-freeholds.bone-repatriation-waystation","ord":0,"value":"on the southbound route"}
+{"place_id":"place.pirate-freeholds.bone-repatriation-waystation","ord":1,"value":"a landing and a road"}
+{"place_id":"place.pirate-freeholds.careening-hard","ord":0,"value":"a shelving hard bottom"}
+{"place_id":"place.pirate-freeholds.careening-hard","ord":1,"value":"laid-over hull clearance"}
+{"place_id":"place.pirate-freeholds.channel-pirate-anchorage","ord":0,"value":"on navigable water"}
+{"place_id":"place.pirate-freeholds.channel-pirate-anchorage","ord":1,"value":"at least 500 m from Alten Corimont"}
+{"place_id":"place.pirate-freeholds.channel-pirate-anchorage","ord":2,"value":"out of sight of the free port"}
+{"place_id":"place.pirate-freeholds.chasecreek","ord":0,"value":"ground that stays above the flood"}
+{"place_id":"place.pirate-freeholds.chasecreek","ord":1,"value":"a creek under the rise with a beach on which a hull can be laid"}
+{"place_id":"place.pirate-freeholds.chasecreek","ord":2,"value":"the mooring screened from the main channel"}
+{"place_id":"place.pirate-freeholds.collapsing-pinnacle-rim","ord":0,"value":"standing rock above a used route"}
+{"place_id":"place.pirate-freeholds.collapsing-pinnacle-rim","ord":1,"value":"a debris fan reaching the path"}
+{"place_id":"place.pirate-freeholds.corimont-bonded-store","ord":0,"value":"on a quay"}
+{"place_id":"place.pirate-freeholds.corimont-bonded-store","ord":1,"value":"cargo-bearing ground"}
+{"place_id":"place.pirate-freeholds.corimont-crosstrees","ord":0,"value":"inside 180 m of Alten Corimont, on the port's own ground"}
+{"place_id":"place.pirate-freeholds.corimont-crosstrees","ord":1,"value":"a clear line north-west down the reach and west along the road"}
+{"place_id":"place.pirate-freeholds.corimont-gambling-house","ord":0,"value":"inside the free port"}
+{"place_id":"place.pirate-freeholds.corimont-gambling-house","ord":1,"value":"a mooring at the back"}
+{"place_id":"place.pirate-freeholds.corimont-head-of-navigation","ord":0,"value":"navigable water ends"}
+{"place_id":"place.pirate-freeholds.corimont-head-of-navigation","ord":1,"value":"landings both sides of the limit"}
+{"place_id":"place.pirate-freeholds.corimont-hiring-yard","ord":0,"value":"on the road out of a settlement"}
+{"place_id":"place.pirate-freeholds.corimont-hiring-yard","ord":1,"value":"a hard standing and a ledger office"}
+{"place_id":"place.pirate-freeholds.corimont-hist-less-camp","ord":0,"value":"outside the settlement's jurisdiction"}
+{"place_id":"place.pirate-freeholds.corimont-hist-less-camp","ord":1,"value":"no Hist within reach — fixed by the lore"}
+{"place_id":"place.pirate-freeholds.corimont-low-store","ord":0,"value":"150-400 m from the work barge"}
+{"place_id":"place.pirate-freeholds.corimont-low-store","ord":1,"value":"a cut bank on the channel"}
+{"place_id":"place.pirate-freeholds.corimont-low-store","ord":2,"value":"danger band 2 or lower"}
+{"place_id":"place.pirate-freeholds.corimont-tradehouse","ord":0,"value":"on a route, with a mooring"}
+{"place_id":"place.pirate-freeholds.dres-holding-pens","ord":0,"value":"a river landing built for loading"}
+{"place_id":"place.pirate-freeholds.dres-holding-pens","ord":1,"value":"hard standing"}
+{"place_id":"place.pirate-freeholds.dres-holding-pens","ord":2,"value":"unused ground"}
+{"place_id":"place.pirate-freeholds.dunmer-frontier-holding","ord":0,"value":"defensible shelf"}
+{"place_id":"place.pirate-freeholds.dunmer-frontier-holding","ord":1,"value":"own water supply"}
+{"place_id":"place.pirate-freeholds.dunmer-frontier-holding","ord":2,"value":"on the pass road"}
+{"place_id":"place.pirate-freeholds.floodplain-paddy-works","ord":0,"value":"annually flooded bunded ground"}
+{"place_id":"place.pirate-freeholds.floodplain-paddy-works","ord":1,"value":"a levee"}
+{"place_id":"place.pirate-freeholds.flu-cairn-field","ord":0,"value":"loose stone available"}
+{"place_id":"place.pirate-freeholds.flu-cairn-field","ord":1,"value":"above the settlement"}
+{"place_id":"place.pirate-freeholds.freed-worker-shelter","ord":0,"value":"unclaimed ground"}
+{"place_id":"place.pirate-freeholds.freed-worker-shelter","ord":1,"value":"defensible approach"}
+{"place_id":"place.pirate-freeholds.freehold-courier-relay","ord":0,"value":"chained — must reach its neighbours"}
+{"place_id":"place.pirate-freeholds.freehold-market","ord":0,"value":"level ground"}
+{"place_id":"place.pirate-freeholds.freehold-market","ord":1,"value":"inside the free port, under the list board"}
+{"place_id":"place.pirate-freeholds.freehold-naga-camp","ord":0,"value":"cover within a spear's throw of the rim track"}
+{"place_id":"place.pirate-freeholds.freehold-naga-camp","ord":1,"value":"at least 500 m from Alten Corimont"}
+{"place_id":"place.pirate-freeholds.freehold-naga-camp","ord":2,"value":"a point on the climb where the track cannot be left"}
+{"place_id":"place.pirate-freeholds.freehold-pest-house","ord":0,"value":"downwind and downstream of the settlement"}
+{"place_id":"place.pirate-freeholds.freehold-pest-house","ord":1,"value":"its own water"}
+{"place_id":"place.pirate-freeholds.freehold-smithy","ord":0,"value":"a permanent forge"}
+{"place_id":"place.pirate-freeholds.freehold-smithy","ord":1,"value":"fuel supply"}
+{"place_id":"place.pirate-freeholds.freehold-smithy","ord":2,"value":"inside Alten Corimont, within 250 m of the basin"}
+{"place_id":"place.pirate-freeholds.gorge-portage-slipway","ord":0,"value":"bypasses unnavigable water"}
+{"place_id":"place.pirate-freeholds.gorge-portage-slipway","ord":1,"value":"haulable gradient"}
+{"place_id":"place.pirate-freeholds.gorge-whitewater-reach","ord":0,"value":"the water is the hazard"}
+{"place_id":"place.pirate-freeholds.gorge-whitewater-reach","ord":1,"value":"forces boats to stop"}
+{"place_id":"place.pirate-freeholds.half-chartered-anchorage","ord":0,"value":"on navigable water deep enough for a laden hull"}
+{"place_id":"place.pirate-freeholds.half-chartered-anchorage","ord":1,"value":"600-1500 m from Alten Corimont"}
+{"place_id":"place.pirate-freeholds.kothringi-river-ruin","ord":0,"value":"a river bend with a landing"}
+{"place_id":"place.pirate-freeholds.kothringi-river-ruin","ord":1,"value":"unoccupied"}
+{"place_id":"place.pirate-freeholds.lake-drawdown-flat","ord":0,"value":"large seasonal water range"}
+{"place_id":"place.pirate-freeholds.lake-drawdown-flat","ord":1,"value":"soft exposed bed"}
+{"place_id":"place.pirate-freeholds.opening-work-barge","ord":0,"value":"moored on navigable water"}
+{"place_id":"place.pirate-freeholds.opening-work-barge","ord":1,"value":"inside 250 m of Alten Corimont"}
+{"place_id":"place.pirate-freeholds.opening-work-barge","ord":2,"value":"danger band 2 or lower"}
+{"place_id":"place.pirate-freeholds.opening-work-barge","ord":3,"value":"shallow water and reed cover on the far side for the escape"}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":0,"value":"on the bank opposite the work barge, within 200 m of it"}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":1,"value":"danger band 2 or lower"}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":2,"value":"dry ground for a hatching shed"}
+{"place_id":"place.pirate-freeholds.plague-cordon-line","ord":0,"value":"follows a natural boundary"}
+{"place_id":"place.pirate-freeholds.ravine-hermit-hut","ord":0,"value":"no path"}
+{"place_id":"place.pirate-freeholds.ravine-hermit-hut","ord":1,"value":"a spring"}
+{"place_id":"place.pirate-freeholds.ravine-hermit-hut","ord":2,"value":"one climbing approach"}
+{"place_id":"place.pirate-freeholds.reach-wreck","ord":0,"value":"submerged in still deep water"}
+{"place_id":"place.pirate-freeholds.reoccupied-fort","ord":0,"value":"commands the gorge reach of the Corimont–Stormhold trunk, where the road and the river lane share the water"}
+{"place_id":"place.pirate-freeholds.reoccupied-fort","ord":1,"value":"structurally intact"}
+{"place_id":"place.pirate-freeholds.rim-border-post","ord":0,"value":"on the pass road"}
+{"place_id":"place.pirate-freeholds.rim-border-post","ord":1,"value":"commands the approach"}
+{"place_id":"place.pirate-freeholds.rim-courier-relay","ord":0,"value":"a clear acoustic line to its neighbour"}
+{"place_id":"place.pirate-freeholds.rim-crystal-diggings","ord":0,"value":"a surface seam"}
+{"place_id":"place.pirate-freeholds.rim-crystal-diggings","ord":1,"value":"spoil ground"}
+{"place_id":"place.pirate-freeholds.rim-hearth-house","ord":0,"value":"on the pass road"}
+{"place_id":"place.pirate-freeholds.rim-hearth-house","ord":1,"value":"fuel within reach"}
+{"place_id":"place.pirate-freeholds.rim-hearth-house","ord":2,"value":"never floods"}
+{"place_id":"place.pirate-freeholds.rim-keystone-chamber","ord":0,"value":"a dry rock chamber"}
+{"place_id":"place.pirate-freeholds.rim-keystone-chamber","ord":1,"value":"above flood level"}
+{"place_id":"place.pirate-freeholds.rim-knapping-floor","ord":0,"value":"a dry working bench"}
+{"place_id":"place.pirate-freeholds.rim-knapping-floor","ord":1,"value":"stone source"}
+{"place_id":"place.pirate-freeholds.rim-pass-station","ord":0,"value":"at the lowest crossing of the rim"}
+{"place_id":"place.pirate-freeholds.rim-pass-station","ord":1,"value":"shelter against the weather"}
+{"place_id":"place.pirate-freeholds.rim-porter-yard","ord":0,"value":"last landing before the climb"}
+{"place_id":"place.pirate-freeholds.rim-porter-yard","ord":1,"value":"firm standing"}
+{"place_id":"place.pirate-freeholds.rim-second-empire-works","ord":0,"value":"on the rim crossing"}
+{"place_id":"place.pirate-freeholds.rim-second-empire-works","ord":1,"value":"cut stone works"}
+{"place_id":"place.pirate-freeholds.rim-smugglers-ledge-east","ord":0,"value":"a climb approach, no cart and no path"}
+{"place_id":"place.pirate-freeholds.rim-smugglers-ledge-north","ord":0,"value":"a rim ledge out of sight of the pass"}
+{"place_id":"place.pirate-freeholds.rim-smugglers-ledge-north","ord":1,"value":"no water — this is the dry route"}
+{"place_id":"place.pirate-freeholds.rim-smugglers-ledge-north","ord":2,"value":"reachable only by a traverse"}
+{"place_id":"place.pirate-freeholds.rim-snowline-hermitage","ord":0,"value":"above the snowline"}
+{"place_id":"place.pirate-freeholds.rim-snowline-hermitage","ord":1,"value":"a spring that does not freeze"}
+{"place_id":"place.pirate-freeholds.rim-snowline-hermitage","ord":2,"value":"a climb approach"}
+{"place_id":"place.pirate-freeholds.rim-snowline-hermitage","ord":3,"value":"on the rim above the Corimont pass, inside the freehold's own reach"}
+{"place_id":"place.pirate-freeholds.rim-vista-ledge","ord":0,"value":"a genuine long sightline"}
+{"place_id":"place.pirate-freeholds.rim-vista-ledge","ord":1,"value":"above the canopy"}
+{"place_id":"place.pirate-freeholds.river-bog-iron-bloomery","ord":0,"value":"ore bog and charcoal within reach"}
+{"place_id":"place.pirate-freeholds.river-salvage-yard","ord":0,"value":"beside drowned or wrecked ground"}
+{"place_id":"place.pirate-freeholds.rockpoint","ord":0,"value":"a standing landing and at least one roofed shell"}
+{"place_id":"place.pirate-freeholds.rockpoint","ord":1,"value":"unclaimed ground"}
+{"place_id":"place.pirate-freeholds.rockpoint","ord":2,"value":"frontage on the river below the free port"}
+{"place_id":"place.pirate-freeholds.rockpoint","ord":3,"value":"above the bar that closed it"}
+{"place_id":"place.pirate-freeholds.rockpoint","ord":4,"value":"on the river below the bar, one land approach"}
+{"place_id":"place.pirate-freeholds.trunk-ferry-stage","ord":0,"value":"too wide or deep to ford"}
+{"place_id":"place.pirate-freeholds.trunk-ferry-stage","ord":1,"value":"paired stage on the far bank"}
+{"place_id":"place.pirate-freeholds.trunk-hearth-house","ord":0,"value":"on a route"}
+{"place_id":"place.pirate-freeholds.trunk-hearth-house","ord":1,"value":"never floods"}
+{"place_id":"place.pirate-freeholds.trunk-hearth-house","ord":2,"value":"fire visible from the road at night"}
+{"place_id":"place.pirate-freeholds.trunk-road-tradehouse","ord":0,"value":"on the trunk at day-travel spacing"}
+{"place_id":"place.pirate-freeholds.trunk-road-tradehouse","ord":1,"value":"firm dry ground for a beast yard"}
+{"place_id":"place.pirate-freeholds.trunk-toll-bridge","ord":0,"value":"at the trunk's crossing of the channel"}
+{"place_id":"place.pirate-freeholds.trunk-toll-bridge","ord":1,"value":"on the Alten Corimont to Stormhold road"}
+{"place_id":"place.pirate-freeholds.upper-toll-bridge","ord":0,"value":"a stone span at a ravine pinch"}
+{"place_id":"place.pirate-freeholds.upper-toll-bridge","ord":1,"value":"on a real route"}
+{"place_id":"place.pirate-freeholds.upriver-bonded-store","ord":0,"value":"on a wharf"}
+{"place_id":"place.pirate-freeholds.upriver-bonded-store","ord":1,"value":"one sealed section intact"}
+{"place_id":"place.pirate-freeholds.upriver-hist-village","ord":0,"value":"on the trunk river above the salt wedge"}
+{"place_id":"place.pirate-freeholds.upriver-hist-village","ord":1,"value":"within a day's poling of place.pirate-freeholds.opening-work-camp"}
+{"place_id":"place.pirate-freeholds.upriver-hist-village","ord":2,"value":"danger band 2 or lower"}
+{"place_id":"place.pirate-freeholds.veterans-holding","ord":0,"value":"a view of the border crossing"}
+{"place_id":"place.pirate-freeholds.veterans-holding","ord":1,"value":"defensible ground above the road"}
+{"place_id":"place.pirate-freeholds.veterans-holding","ord":2,"value":"own water"}
+{"place_id":"place.saxhleel-coast.all-flags-memorial","ord":0,"value":"facing the shipping lane"}
+{"place_id":"place.saxhleel-coast.all-flags-memorial","ord":1,"value":"high contrast against vegetation"}
+{"place_id":"place.saxhleel-coast.archon","ord":0,"value":"deep water at the quay line at the highest seasonal level"}
+{"place_id":"place.saxhleel-coast.archon","ord":1,"value":"a landable stone shore"}
+{"place_id":"place.saxhleel-coast.archon","ord":2,"value":"navigable connection inland"}
+{"place_id":"place.saxhleel-coast.archon-bonded-row","ord":0,"value":"on the quay"}
+{"place_id":"place.saxhleel-coast.archon-bonded-row","ord":1,"value":"cargo-bearing ground"}
+{"place_id":"place.saxhleel-coast.archon-bonded-row","ord":2,"value":"inside Archon's cleared quay apron"}
+{"place_id":"place.saxhleel-coast.archon-glowgill-byre","ord":0,"value":"3-6 m water depth"}
+{"place_id":"place.saxhleel-coast.archon-glowgill-byre","ord":1,"value":"firm bottom for tethers"}
+{"place_id":"place.saxhleel-coast.archon-glowgill-byre","ord":2,"value":"boat-nav clearance above"}
+{"place_id":"place.saxhleel-coast.archon-harbour-hist","ord":0,"value":"fresh water at root depth"}
+{"place_id":"place.saxhleel-coast.archon-harbour-hist","ord":1,"value":"inside the settlement clearance mask"}
+{"place_id":"place.saxhleel-coast.archon-harbour-hist","ord":2,"value":"canopy-breaking height permitted"}
+{"place_id":"place.saxhleel-coast.archon-lighthouse","ord":0,"value":"commands the reef approach"}
+{"place_id":"place.saxhleel-coast.archon-lighthouse","ord":1,"value":"tallest thing within sight of the reef gap"}
+{"place_id":"place.saxhleel-coast.archon-quarantine-shed","ord":0,"value":"at the entry point"}
+{"place_id":"place.saxhleel-coast.archon-quarantine-shed","ord":1,"value":"a barrier across the way"}
+{"place_id":"place.saxhleel-coast.archon-sacked-quarter","ord":0,"value":"adjacent to the living settlement"}
+{"place_id":"place.saxhleel-coast.archon-sacked-quarter","ord":1,"value":"legible street grid preserved"}
+{"place_id":"place.saxhleel-coast.archon-sacked-quarter","ord":2,"value":"within 300 m of the quay, inside Archon's clearance apron"}
+{"place_id":"place.saxhleel-coast.archon-shadowscale-sanctuary","ord":0,"value":"concealed approach — no sightline from any route"}
+{"place_id":"place.saxhleel-coast.archon-shadowscale-sanctuary","ord":1,"value":"within 2 km of Archon"}
+{"place_id":"place.saxhleel-coast.archon-shadowscale-sanctuary","ord":2,"value":"one door, sealed"}
+{"place_id":"place.saxhleel-coast.archon-shipyard","ord":0,"value":"deep shelving launch"}
+{"place_id":"place.saxhleel-coast.archon-shipyard","ord":1,"value":"clear boat-nav approach"}
+{"place_id":"place.saxhleel-coast.archon-shipyard","ord":2,"value":"on the Archon estuary waterfront, inside the city's cleared apron"}
+{"place_id":"place.saxhleel-coast.archon-thalmor-post","ord":0,"value":"overlooks the harbour"}
+{"place_id":"place.saxhleel-coast.archon-thalmor-post","ord":1,"value":"never adjacent to its own side"}
+{"place_id":"place.saxhleel-coast.archon-trial-ground","ord":0,"value":"cleared level ground"}
+{"place_id":"place.saxhleel-coast.archon-trial-ground","ord":1,"value":"within a morning's walk of Archon"}
+{"place_id":"place.saxhleel-coast.archon-whispers-house","ord":0,"value":"inside a settlement"}
+{"place_id":"place.saxhleel-coast.archon-whispers-house","ord":1,"value":"a quiet water exit"}
+{"place_id":"place.saxhleel-coast.banner-stack","ord":0,"value":"rises from open water"}
+{"place_id":"place.saxhleel-coast.banner-stack","ord":1,"value":"climbable face"}
+{"place_id":"place.saxhleel-coast.banner-stack","ord":2,"value":"visible from the lane"}
+{"place_id":"place.saxhleel-coast.beached-hull-hall","ord":0,"value":"above the highest tide"}
+{"place_id":"place.saxhleel-coast.beached-hull-hall","ord":1,"value":"beside a settlement"}
+{"place_id":"place.saxhleel-coast.boardwalk-high-stage","ord":0,"value":"large seasonal water range"}
+{"place_id":"place.saxhleel-coast.boardwalk-high-stage","ord":1,"value":"anchorable to standing trees"}
+{"place_id":"place.saxhleel-coast.boardwalk-spine-north","ord":0,"value":"crosses water rather than sitting beside it"}
+{"place_id":"place.saxhleel-coast.boardwalk-spine-north","ord":1,"value":"load-bearing walkway to the bed"}
+{"place_id":"place.saxhleel-coast.broken-xanmeer-coast","ord":0,"value":"structure invisible from outside"}
+{"place_id":"place.saxhleel-coast.broken-xanmeer-coast","ord":1,"value":"breached entrance"}
+{"place_id":"place.saxhleel-coast.canopy-crossing-wall","ord":0,"value":"spans impassable ground"}
+{"place_id":"place.saxhleel-coast.canopy-crossing-wall","ord":1,"value":"anchorable both ends"}
+{"place_id":"place.saxhleel-coast.cantemir-foreign-graveyard","ord":0,"value":"above the highest water"}
+{"place_id":"place.saxhleel-coast.cantemir-foreign-graveyard","ord":1,"value":"near a landing"}
+{"place_id":"place.saxhleel-coast.cantemir-headland","ord":0,"value":"high ground on the eastern seaboard with open water in sight"}
+{"place_id":"place.saxhleel-coast.cantemir-headland","ord":1,"value":"a narrow neck that can be walled"}
+{"place_id":"place.saxhleel-coast.cantemir-headland","ord":2,"value":"fresh water on the summit"}
+{"place_id":"place.saxhleel-coast.climbable-terrace-roof","ord":0,"value":"climbable to a canopy-breaking top"}
+{"place_id":"place.saxhleel-coast.coast-courier-relay","ord":0,"value":"chained — must reach its neighbours"}
+{"place_id":"place.saxhleel-coast.coast-guide-camp","ord":0,"value":"firm dry ground"}
+{"place_id":"place.saxhleel-coast.coast-guide-camp","ord":1,"value":"a day's travel from the last shelter"}
+{"place_id":"place.saxhleel-coast.coast-hist-less-refuge","ord":0,"value":"outside a settlement's jurisdiction"}
+{"place_id":"place.saxhleel-coast.coast-hist-less-refuge","ord":1,"value":"firm ground"}
+{"place_id":"place.saxhleel-coast.coast-hist-less-refuge","ord":2,"value":"inside the Saxhleel coast culture zone"}
+{"place_id":"place.saxhleel-coast.coast-road-hearth-house","ord":0,"value":"on a route with a landing"}
+{"place_id":"place.saxhleel-coast.coast-road-hearth-house","ord":1,"value":"never floods"}
+{"place_id":"place.saxhleel-coast.coast-road-hearth-house","ord":2,"value":"fire visible from the route at night"}
+{"place_id":"place.saxhleel-coast.coast-road-tradehouse","ord":0,"value":"on the road at day-travel spacing"}
+{"place_id":"place.saxhleel-coast.coast-road-tradehouse","ord":1,"value":"a landing"}
+{"place_id":"place.saxhleel-coast.coast-root-hollow","ord":0,"value":"dry gallery above the water table"}
+{"place_id":"place.saxhleel-coast.coast-root-hollow","ord":1,"value":"two mouths"}
+{"place_id":"place.saxhleel-coast.coast-serpent-ground","ord":0,"value":"cover and a funnelling crossing"}
+{"place_id":"place.saxhleel-coast.coast-treasure-hunters-camp","ord":0,"value":"within 400 m of a ruin"}
+{"place_id":"place.saxhleel-coast.coast-treasure-hunters-camp","ord":1,"value":"firm camp ground"}
+{"place_id":"place.saxhleel-coast.contested-bank","ord":0,"value":"open productive water"}
+{"place_id":"place.saxhleel-coast.dance-barge-mooring","ord":0,"value":"a mooring is half the type"}
+{"place_id":"place.saxhleel-coast.dance-barge-mooring","ord":1,"value":"deep alongside"}
+{"place_id":"place.saxhleel-coast.dead-air-lane","ord":0,"value":"on the shipping lane"}
+{"place_id":"place.saxhleel-coast.dead-air-lane","ord":1,"value":"sheltered from the prevailing wind"}
+{"place_id":"place.saxhleel-coast.deep-bank","ord":0,"value":"deep open water"}
+{"place_id":"place.saxhleel-coast.deep-bank","ord":1,"value":"off a working boat lane, in deep open water"}
+{"place_id":"place.saxhleel-coast.delta-boatwright","ord":0,"value":"a shelving landing"}
+{"place_id":"place.saxhleel-coast.delta-drowning-narrows","ord":0,"value":"the hazard is the water itself"}
+{"place_id":"place.saxhleel-coast.delta-drowning-narrows","ord":1,"value":"on a boat lane"}
+{"place_id":"place.saxhleel-coast.derelict-timber-concession","ord":0,"value":"a cut valley with a hauling route to water"}
+{"place_id":"place.saxhleel-coast.drake-deep","ord":0,"value":"deep water"}
+{"place_id":"place.saxhleel-coast.drake-deep","ord":1,"value":"on a boat lane"}
+{"place_id":"place.saxhleel-coast.dusk-bird-colony","ord":0,"value":"island or stand surrounded by water"}
+{"place_id":"place.saxhleel-coast.dusk-bird-colony","ord":1,"value":"no land predators"}
+{"place_id":"place.saxhleel-coast.east-estuary-rootworm-station","ord":0,"value":"root layer reaches the surface"}
+{"place_id":"place.saxhleel-coast.east-estuary-rootworm-station","ord":1,"value":"firm ground for the stage"}
+{"place_id":"place.saxhleel-coast.east-estuary-rootworm-station","ord":2,"value":"within reach of a landing"}
+{"place_id":"place.saxhleel-coast.estuary-boom-tower","ord":0,"value":"at the estuary narrows"}
+{"place_id":"place.saxhleel-coast.estuary-boom-tower","ord":1,"value":"anchorable both banks"}
+{"place_id":"place.saxhleel-coast.estuary-boom-tower","ord":2,"value":"tallest structure locally"}
+{"place_id":"place.saxhleel-coast.estuary-ferry-stage","ord":0,"value":"water too deep or wide to ford"}
+{"place_id":"place.saxhleel-coast.estuary-ferry-stage","ord":1,"value":"landable both banks"}
+{"place_id":"place.saxhleel-coast.estuary-ferry-stage","ord":2,"value":"paired far stage"}
+{"place_id":"place.saxhleel-coast.estuary-keepers-lodge","ord":0,"value":"dry ground at the highest seasonal level"}
+{"place_id":"place.saxhleel-coast.estuary-keepers-lodge","ord":1,"value":"a landing on the estuary channel"}
+{"place_id":"place.saxhleel-coast.estuary-market-row","ord":0,"value":"level ground"}
+{"place_id":"place.saxhleel-coast.estuary-market-row","ord":1,"value":"a landing"}
+{"place_id":"place.saxhleel-coast.estuary-salt-pans","ord":0,"value":"tidal salt water"}
+{"place_id":"place.saxhleel-coast.estuary-salt-pans","ord":1,"value":"sun and wind exposure"}
+{"place_id":"place.saxhleel-coast.estuary-salt-pans","ord":2,"value":"flat ground"}
+{"place_id":"place.saxhleel-coast.gap-reef","ord":0,"value":"submerged bar in navigable water"}
+{"place_id":"place.saxhleel-coast.gap-reef","ord":1,"value":"on the port approach"}
+{"place_id":"place.saxhleel-coast.gull-stack","ord":0,"value":"rises from open water"}
+{"place_id":"place.saxhleel-coast.haj-mota-shell-yard","ord":0,"value":"beside shallow water"}
+{"place_id":"place.saxhleel-coast.haj-mota-shell-yard","ord":1,"value":"hard standing"}
+{"place_id":"place.saxhleel-coast.headland-storm-shelter","ord":0,"value":"exposed stretch with no settlement"}
+{"place_id":"place.saxhleel-coast.headland-storm-shelter","ord":1,"value":"back to the weather"}
+{"place_id":"place.saxhleel-coast.inland-fair-ground","ord":0,"value":"neutral ground between settlements"}
+{"place_id":"place.saxhleel-coast.inland-fair-ground","ord":1,"value":"a landing"}
+{"place_id":"place.saxhleel-coast.jungle-courier-relay","ord":0,"value":"acoustically favourable hollow"}
+{"place_id":"place.saxhleel-coast.jungle-courier-relay","ord":1,"value":"chained to its neighbours"}
+{"place_id":"place.saxhleel-coast.jungle-ferry-stage","ord":0,"value":"too deep to ford"}
+{"place_id":"place.saxhleel-coast.jungle-ferry-stage","ord":1,"value":"on the inland road"}
+{"place_id":"place.saxhleel-coast.jungle-root-hollow","ord":0,"value":"large dry void"}
+{"place_id":"place.saxhleel-coast.jungle-root-hollow","ord":1,"value":"one defensible mouth"}
+{"place_id":"place.saxhleel-coast.jungle-track-hearth-house","ord":0,"value":"on the route at the D3/D4 boundary"}
+{"place_id":"place.saxhleel-coast.jungle-track-hearth-house","ord":1,"value":"never floods"}
+{"place_id":"place.saxhleel-coast.ladder-tower-canopy","ord":0,"value":"breaks the canopy"}
+{"place_id":"place.saxhleel-coast.ladder-tower-canopy","ord":1,"value":"anchorable to standing trees"}
+{"place_id":"place.saxhleel-coast.lagoon-bioluminescence","ord":0,"value":"still brackish water"}
+{"place_id":"place.saxhleel-coast.lagoon-bioluminescence","ord":1,"value":"seasonal and tide-keyed"}
+{"place_id":"place.saxhleel-coast.lagoon-storm-shelter","ord":0,"value":"on an exposed crossing"}
+{"place_id":"place.saxhleel-coast.lagoon-storm-shelter","ord":1,"value":"firm standing"}
+{"place_id":"place.saxhleel-coast.lagoon-submerged-xanmeer","ord":0,"value":"fully submerged but for one chamber"}
+{"place_id":"place.saxhleel-coast.lagoon-submerged-xanmeer","ord":1,"value":"dive-reachable entrance"}
+{"place_id":"place.saxhleel-coast.lagoon-submerged-xanmeer","ord":2,"value":"clear enough water to read the geometry"}
+{"place_id":"place.saxhleel-coast.mangrove-air-pocket","ord":0,"value":"fully enclosed by water"}
+{"place_id":"place.saxhleel-coast.mangrove-air-pocket","ord":1,"value":"breathable air maintained"}
+{"place_id":"place.saxhleel-coast.mangrove-air-pocket","ord":2,"value":"at least 300 m from any road, track or boat lane"}
+{"place_id":"place.saxhleel-coast.mangrove-cut-village","ord":0,"value":"inside a mangrove system"}
+{"place_id":"place.saxhleel-coast.mangrove-cut-village","ord":1,"value":"not on any boat lane"}
+{"place_id":"place.saxhleel-coast.mangrove-cut-village","ord":2,"value":"tidal access only"}
+{"place_id":"place.saxhleel-coast.mangrove-reef","ord":0,"value":"shallow bar"}
+{"place_id":"place.saxhleel-coast.mangrove-reef","ord":1,"value":"tidal exposure"}
+{"place_id":"place.saxhleel-coast.mangrove-wall-village","ord":0,"value":"on the wall's seaward edge"}
+{"place_id":"place.saxhleel-coast.mangrove-wall-village","ord":1,"value":"alongside at any tide"}
+{"place_id":"place.saxhleel-coast.mangrove-wreck","ord":0,"value":"held above the mud by roots"}
+{"place_id":"place.saxhleel-coast.mangrove-wreck","ord":1,"value":"reachable by small boat"}
+{"place_id":"place.saxhleel-coast.oliis-coast-lay-by","ord":0,"value":"water deep enough for a keeled hull at any tide"}
+{"place_id":"place.saxhleel-coast.oliis-coast-lay-by","ord":1,"value":"no sightline from the Lilmoth-Archon lane"}
+{"place_id":"place.saxhleel-coast.outer-reef","ord":0,"value":"clear deep water"}
+{"place_id":"place.saxhleel-coast.outer-reef","ord":1,"value":"off the lane"}
+{"place_id":"place.saxhleel-coast.owing-hiring-camp","ord":0,"value":"on the margin of worked ground"}
+{"place_id":"place.saxhleel-coast.owing-hiring-camp","ord":1,"value":"near a hiring point"}
+{"place_id":"place.saxhleel-coast.padomaic-wrecker-beach","ord":0,"value":"a shelving beach that grounds a laden hull"}
+{"place_id":"place.saxhleel-coast.padomaic-wrecker-beach","ord":1,"value":"no settlement in line of sight of the fire"}
+{"place_id":"place.saxhleel-coast.padomaic-wrecker-beach","ord":2,"value":"on the open Padomaic shore, with the sea in front of it"}
+{"place_id":"place.saxhleel-coast.pearl-lots","ord":0,"value":"clear water over a worked bed"}
+{"place_id":"place.saxhleel-coast.pearl-lots","ord":1,"value":"6-12 m depth"}
+{"place_id":"place.saxhleel-coast.portdun-mont","ord":0,"value":"a bench above water with a landing below"}
+{"place_id":"place.saxhleel-coast.portdun-mont","ord":1,"value":"commands the estuary approach"}
+{"place_id":"place.saxhleel-coast.portdun-privateer-anchorage","ord":0,"value":"deep approach"}
+{"place_id":"place.saxhleel-coast.portdun-privateer-anchorage","ord":1,"value":"hidden from the lane by land"}
+{"place_id":"place.saxhleel-coast.portdun-privateer-anchorage","ord":2,"value":"a drying beach for careening"}
+{"place_id":"place.saxhleel-coast.quarantine-village-lagoon","ord":0,"value":"a cordon line still marked"}
+{"place_id":"place.saxhleel-coast.quarantine-village-lagoon","ord":1,"value":"an island with open water on every side and a single landing"}
+{"place_id":"place.saxhleel-coast.quay-flooded-cellar","ord":0,"value":"submerged connection between two dry places"}
+{"place_id":"place.saxhleel-coast.quay-tradehouse","ord":0,"value":"on a route with a landing"}
+{"place_id":"place.saxhleel-coast.reef-air-pocket","ord":0,"value":"submerged entrance"}
+{"place_id":"place.saxhleel-coast.reef-air-pocket","ord":1,"value":"breathable air inside"}
+{"place_id":"place.saxhleel-coast.reef-wreck","ord":0,"value":"submerged, upright, swimmable"}
+{"place_id":"place.saxhleel-coast.seafalls","ord":0,"value":"navigable water ends here"}
+{"place_id":"place.saxhleel-coast.seafalls","ord":1,"value":"landings above and below the drop"}
+{"place_id":"place.saxhleel-coast.seafalls","ord":2,"value":"firm transfer ground"}
+{"place_id":"place.saxhleel-coast.seafalls-chamber","ord":0,"value":"dry space behind falling water"}
+{"place_id":"place.saxhleel-coast.seafalls-chamber","ord":1,"value":"a traverse approach"}
+{"place_id":"place.saxhleel-coast.seafalls-porter-relay","ord":0,"value":"on the land route"}
+{"place_id":"place.saxhleel-coast.seafalls-porter-relay","ord":1,"value":"firm standing"}
+{"place_id":"place.saxhleel-coast.seafalls-reach","ord":0,"value":"the water is the hazard"}
+{"place_id":"place.saxhleel-coast.seafalls-reach","ord":1,"value":"forces every boat to stop"}
+{"place_id":"place.saxhleel-coast.seafalls-slipway","ord":0,"value":"bypasses unnavigable water"}
+{"place_id":"place.saxhleel-coast.seafalls-slipway","ord":1,"value":"haulable gradient"}
+{"place_id":"place.saxhleel-coast.sealed-xanmeer-wall","ord":0,"value":"no tending path"}
+{"place_id":"place.saxhleel-coast.sealed-xanmeer-wall","ord":1,"value":"sealed entrance"}
+{"place_id":"place.saxhleel-coast.sealed-xanmeer-wall","ord":2,"value":"canopy-breaking mass"}
+{"place_id":"place.saxhleel-coast.shell-beast-shallows","ord":0,"value":"shallow and muddy"}
+{"place_id":"place.saxhleel-coast.shell-beast-shallows","ord":1,"value":"inside the Saxhleel coast culture zone"}
+{"place_id":"place.saxhleel-coast.shell-bed-north","ord":0,"value":"shallow worked bed"}
+{"place_id":"place.saxhleel-coast.stilt-village-drowned-rise","ord":0,"value":"directly above or beside a drowned village"}
+{"place_id":"place.saxhleel-coast.stilt-village-drowned-rise","ord":1,"value":"above the highest seasonal water"}
+{"place_id":"place.saxhleel-coast.stilt-village-east","ord":0,"value":"built at the highest seasonal water level"}
+{"place_id":"place.saxhleel-coast.stilt-village-east","ord":1,"value":"piled to the bed"}
+{"place_id":"place.saxhleel-coast.stilt-village-east","ord":2,"value":"boat-nav clearance under the decks"}
+{"place_id":"place.saxhleel-coast.stilt-village-lagoon","ord":0,"value":"firm bed for piles"}
+{"place_id":"place.saxhleel-coast.stilt-village-lagoon","ord":1,"value":"direct water run to its fishing ground"}
+{"place_id":"place.saxhleel-coast.tended-xanmeer-coast","ord":0,"value":"canopy-breaking terrace stack"}
+{"place_id":"place.saxhleel-coast.tended-xanmeer-coast","ord":1,"value":"firm ground"}
+{"place_id":"place.saxhleel-coast.tended-xanmeer-coast","ord":2,"value":"a tending path kept clear"}
+{"place_id":"place.saxhleel-coast.terrace-village-ridge","ord":0,"value":"above the flood line"}
+{"place_id":"place.saxhleel-coast.terrace-village-ridge","ord":1,"value":"a spring above the village"}
+{"place_id":"place.saxhleel-coast.terrace-village-ridge","ord":2,"value":"single approach"}
+{"place_id":"place.saxhleel-coast.tide-run-channel","ord":0,"value":"tidal sill"}
+{"place_id":"place.saxhleel-coast.tide-run-channel","ord":1,"value":"boat-nav clearance only at high water"}
+{"place_id":"place.saxhleel-coast.tide-run-delta","ord":0,"value":"passable only at low water"}
+{"place_id":"place.saxhleel-coast.tide-run-delta","ord":1,"value":"firm bed under the marked line"}
+{"place_id":"place.saxhleel-coast.tide-street-salvage-yard","ord":0,"value":"beside drowned ground"}
+{"place_id":"place.saxhleel-coast.tide-street-village","ord":0,"value":"submerged street plan legible from above"}
+{"place_id":"place.saxhleel-coast.tide-street-village","ord":1,"value":"below a living settlement"}
+{"place_id":"place.saxhleel-coast.umbriel-shore-memorial","ord":0,"value":"ground that can be opened in quantity"}
+{"place_id":"place.saxhleel-coast.umbriel-shore-memorial","ord":1,"value":"above the highest seasonal water"}
+{"place_id":"place.saxhleel-coast.village-tradehouse-south","ord":0,"value":"inside an M3 settlement"}
+{"place_id":"place.saxhleel-coast.village-tradehouse-south","ord":1,"value":"a landing"}
+{"place_id":"place.saxhleel-coast.walkway-junction-east","ord":0,"value":"three or more walkway approaches"}
+{"place_id":"place.saxhleel-coast.walkway-junction-east","ord":1,"value":"anchorable root mass"}
+{"place_id":"place.saxhleel-coast.wall-hermit-hut","ord":0,"value":"no path"}
+{"place_id":"place.saxhleel-coast.wall-hermit-hut","ord":1,"value":"deliberately awkward approach"}
+{"place_id":"place.saxhleel-coast.wall-hermit-hut","ord":2,"value":"D4 surroundings"}
+{"place_id":"place.saxhleel-coast.wall-hist-village","ord":0,"value":"a living Hist with a canopy break"}
+{"place_id":"place.saxhleel-coast.wall-hist-village","ord":1,"value":"fresh water"}
+{"place_id":"place.saxhleel-coast.wall-hist-village","ord":2,"value":"firm ground above flood"}
+{"place_id":"place.saxhleel-coast.wall-poacher-camp","ord":0,"value":"concealed"}
+{"place_id":"place.saxhleel-coast.wall-poacher-camp","ord":1,"value":"near protected harvest ground"}
+{"place_id":"place.saxhleel-coast.wall-vista-ledge","ord":0,"value":"a genuine long sightline"}
+{"place_id":"place.saxhleel-coast.wall-vista-ledge","ord":1,"value":"above the canopy"}
+{"place_id":"place.saxhleel-coast.wild-rootworm-burrow","ord":0,"value":"soft root-bound ground"}
+{"place_id":"place.saxhleel-coast.xanmeer-dive-shaft","ord":0,"value":"submerged entrance"}
+{"place_id":"place.saxhleel-coast.xanmeer-dive-shaft","ord":1,"value":"vertical descent"}

@@ -1,0 +1,201 @@
+{"culture_sheet_id":"culture.faction.an-xileel","ord":0,"node":"culture.faction.veiled-reed","lean":2,"text":"The administration's own office.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.an-xileel","ord":1,"node":"culture.faction.unbound-root","lean":-2,"text":"The movement against the state.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.an-xileel","ord":2,"node":"culture.faction.dres-remnant","lean":-2,"text":"Slaving interests.","source":"world/sources/lore/topics/foreign-powers.md"}
+{"culture_sheet_id":"culture.faction.an-xileel","ord":3,"node":"culture.people.argonian-lukiul","lean":-1,"text":"Citizens the older hands still call lukiul.","source":"world/sources/lore/an-xileel.md"}
+{"culture_sheet_id":"culture.faction.blackguards","ord":0,"node":"culture.faction.an-xileel","lean":-2,"text":"Enemies.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.blackguards","ord":1,"node":"culture.faction.chainbreakers","lean":-1,"text":"Meddlers with our ledgers.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.bright-throat-tribe","ord":0,"node":"culture.faction.xit-xaht","lean":-1,"text":"The feared tribe.","source":"world/sources/lore/tribes.md"}
+{"culture_sheet_id":"culture.faction.bright-throat-tribe","ord":1,"node":"culture.faction.murkwater-tribe","lean":1,"text":"Neighbours.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.chainbreakers","ord":0,"node":"culture.faction.dres-remnant","lean":-2,"text":"Owing brokers.","source":"world/sources/lore/topics/labour-and-bondage.md"}
+{"culture_sheet_id":"culture.faction.chainbreakers","ord":1,"node":"culture.faction.blackguards","lean":-1,"text":"Ledgered and ledgering.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.college-of-whispers","ord":0,"node":"culture.faction.synod","lean":-2,"text":"Rivals.","source":"world/sources/lore/topics/guilds-and-orders.md"}
+{"culture_sheet_id":"culture.faction.college-of-whispers","ord":1,"node":"culture.faction.umbriel-witness-society","lean":-1,"text":"Sentimentalists.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.cyrodilic-collections","ord":0,"node":"culture.faction.sunken-archive","lean":0,"text":"Rivals for the same records.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.cyrodilic-collections","ord":1,"node":"culture.faction.root-whisper","lean":1,"text":"Old friends.","source":"world/sources/lore/topics/guilds-and-orders.md"}
+{"culture_sheet_id":"culture.faction.dres-remnant","ord":0,"node":"culture.faction.chainbreakers","lean":-2,"text":"Arsonists.","source":"world/sources/lore/topics/labour-and-bondage.md"}
+{"culture_sheet_id":"culture.faction.dres-remnant","ord":1,"node":"culture.faction.an-xileel","lean":-2,"text":"Usurpers.","source":"world/sources/lore/topics/foreign-powers.md"}
+{"culture_sheet_id":"culture.faction.imperial-legion-remnant","ord":0,"node":"culture.faction.an-xileel","lean":-1,"text":"Landlords.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
+{"culture_sheet_id":"culture.faction.imperial-legion-remnant","ord":1,"node":"culture.faction.morrowind-veterans","lean":-1,"text":"The other left-behinds.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.league-of-open-water","ord":0,"node":"culture.faction.reed-sail-compact","lean":-1,"text":"Monopolists.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.league-of-open-water","ord":1,"node":"culture.faction.night-reed-chapter","lean":-1,"text":"Criminals in our wards.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.league-of-open-water","ord":2,"node":"culture.people.argonian-lukiul","lean":2,"text":"Our core.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.many-root-conclave","ord":0,"node":"culture.faction.unbound-root","lean":-1,"text":"Supremacists.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.many-root-conclave","ord":1,"node":"culture.faction.sul-xan","lean":-2,"text":"Soul-takers.","source":"world/sources/lore/tribes.md"}
+{"culture_sheet_id":"culture.faction.many-root-conclave","ord":2,"node":"culture.faction.blackguards","lean":-1,"text":"Sap thieves.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.marsh-charter","ord":0,"node":"culture.faction.salt-teeth","lean":-1,"text":"Pirates our captains hunt.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.marsh-charter","ord":1,"node":"culture.faction.an-xileel","lean":1,"text":"A paying client.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.morrowind-veterans","ord":0,"node":"culture.faction.thorn-ash-reed-accord","lean":-1,"text":"Border memory.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.morrowind-veterans","ord":1,"node":"culture.faction.an-xileel","lean":-1,"text":"The old enemy.","source":"world/sources/lore/topics/foreign-powers.md"}
+{"culture_sheet_id":"culture.faction.murkwater-tribe","ord":0,"node":"culture.faction.bright-throat-tribe","lean":1,"text":"Neighbours.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.naga-kur","ord":0,"node":"culture.faction.tribeless-naga","lean":-2,"text":"Outside the discipline.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.naga-kur","ord":1,"node":"culture.faction.an-xileel","lean":-1,"text":"Far away.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.night-reed-chapter","ord":0,"node":"culture.faction.league-of-open-water","lean":-1,"text":"They want our districts.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.night-reed-chapter","ord":1,"node":"culture.faction.shadowscales","lean":-1,"text":"Old knives.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.nisswo","ord":0,"node":"culture.faction.shadowscales","lean":0,"text":"A necessary evil, ending.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
+{"culture_sheet_id":"culture.faction.nisswo","ord":1,"node":"culture.faction.unbound-root","lean":-1,"text":"Change turned to dogma.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.nisswo","ord":2,"node":"culture.faction.sul-xan","lean":-2,"text":"A Daedric heresy on Sithis.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
+{"culture_sheet_id":"culture.faction.reed-sail-compact","ord":0,"node":"culture.faction.league-of-open-water","lean":-1,"text":"Regulators.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.reed-sail-compact","ord":1,"node":"culture.faction.salt-teeth","lean":1,"text":"Our pirate cousins.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.root-whisper","ord":0,"node":"culture.faction.cyrodilic-collections","lean":1,"text":"They once helped us.","source":"world/sources/lore/topics/guilds-and-orders.md"}
+{"culture_sheet_id":"culture.faction.rootworm-waykeepers","ord":0,"node":"culture.faction.reed-sail-compact","lean":0,"text":"The surface routes.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.salt-teeth","ord":0,"node":"culture.faction.marsh-charter","lean":-1,"text":"Hunters.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.salt-teeth","ord":1,"node":"culture.faction.reed-sail-compact","lean":1,"text":"Family, embarrassed.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.shadowscales","ord":0,"node":"culture.faction.night-reed-chapter","lean":-1,"text":"Thieves who want our rooftops.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.shadowscales","ord":1,"node":"culture.faction.nisswo","lean":1,"text":"They urged us to drop the Brotherhood's god once trained.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
+{"culture_sheet_id":"culture.faction.stillrise","ord":0,"node":"culture.faction.college-of-whispers","lean":-2,"text":"Would take the array.","source":"world/sources/lore/topics/guilds-and-orders.md"}
+{"culture_sheet_id":"culture.faction.sul-xan","ord":0,"node":"culture.faction.many-root-conclave","lean":-2,"text":"Tree-tenders.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.sul-xan","ord":1,"node":"culture.faction.an-xileel","lean":-2,"text":"The state.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.sunken-archive","ord":0,"node":"culture.faction.synod","lean":-1,"text":"Artefact hunters.","source":"world/sources/lore/topics/guilds-and-orders.md"}
+{"culture_sheet_id":"culture.faction.sunken-archive","ord":1,"node":"culture.faction.college-of-whispers","lean":-1,"text":"Grave scholars.","source":"world/sources/lore/topics/guilds-and-orders.md"}
+{"culture_sheet_id":"culture.faction.synod","ord":0,"node":"culture.faction.college-of-whispers","lean":-2,"text":"Rivals.","source":"world/sources/lore/topics/guilds-and-orders.md"}
+{"culture_sheet_id":"culture.faction.synod","ord":1,"node":"culture.faction.sunken-archive","lean":-1,"text":"Local hoarders.","source":"world/sources/lore/topics/guilds-and-orders.md"}
+{"culture_sheet_id":"culture.faction.thorn-ash-reed-accord","ord":0,"node":"culture.faction.dres-remnant","lean":-2,"text":"Slaving claimants.","source":"world/sources/lore/topics/foreign-powers.md"}
+{"culture_sheet_id":"culture.faction.thorn-ash-reed-accord","ord":1,"node":"culture.faction.morrowind-veterans","lean":-1,"text":"Border memory, armed.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.tribeless-naga","ord":0,"node":"culture.faction.naga-kur","lean":-2,"text":"Masters we refused.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.umbriel-witness-society","ord":0,"node":"culture.faction.an-xileel","lean":-1,"text":"Heirs of the act.","source":"world/sources/lore/an-xileel.md"}
+{"culture_sheet_id":"culture.faction.umbriel-witness-society","ord":1,"node":"culture.faction.college-of-whispers","lean":-2,"text":"Grave scholars.","source":"world/sources/lore/topics/guilds-and-orders.md"}
+{"culture_sheet_id":"culture.faction.unbound-root","ord":0,"node":"culture.faction.veiled-reed","lean":-2,"text":"Abusers.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.unbound-root","ord":1,"node":"culture.faction.many-root-conclave","lean":-1,"text":"Talkers.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.unbound-root","ord":2,"node":"culture.faction.nisswo","lean":-1,"text":"Preachers of letting go.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.veiled-reed","ord":0,"node":"culture.faction.unbound-root","lean":-2,"text":"The quarry.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.veiled-reed","ord":1,"node":"culture.faction.an-xileel","lean":2,"text":"The master.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.xit-xaht","ord":0,"node":"culture.faction.bright-throat-tribe","lean":-1,"text":"Soft greeters.","source":"world/sources/lore/tribes.md"}
+{"culture_sheet_id":"culture.faction.xit-xaht","ord":1,"node":"culture.faction.nisswo","lean":-1,"text":"Teachers of letting go.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
+{"culture_sheet_id":"culture.group.chasepoint.salvage","ord":0,"node":"culture.group.chasepoint.stage","lean":-1,"text":"A title with no pay that still gives orders.","source":"inferred"}
+{"culture_sheet_id":"culture.group.chasepoint.stage","ord":0,"node":"culture.group.chasepoint.salvage","lean":0,"text":"Useful neighbours with a claim they cannot prove.","source":"inferred"}
+{"culture_sheet_id":"culture.group.chasepoint.stall","ord":0,"node":"culture.group.chasepoint.salvage","lean":1,"text":"The families bring the goods; the stall finds the buyers.","source":"inferred"}
+{"culture_sheet_id":"culture.group.claywater-station.landing-half","ord":0,"node":"culture.group.claywater-station.station-half","lean":0,"text":"Good customers; poor judges of water.","source":"inferred"}
+{"culture_sheet_id":"culture.group.claywater-station.station-half","ord":0,"node":"culture.group.claywater-station.landing-half","lean":0,"text":"They charge the same travellers twice and call it fair.","source":"inferred"}
+{"culture_sheet_id":"culture.group.lighter-flotilla.hands","ord":0,"node":"culture.group.lighter-flotilla.posts","lean":0,"text":"They hold the nod and the books; the hands hold the rope.","source":"inferred"}
+{"culture_sheet_id":"culture.group.lighter-flotilla.posts","ord":0,"node":"culture.group.lighter-flotilla.hands","lean":1,"text":"Good backs; quick to want a stoppage they will not have to settle.","source":"inferred"}
+{"culture_sheet_id":"culture.group.opening-work-camp.gang-families","ord":0,"node":"culture.group.opening-work-camp.overseers","lean":-1,"text":"They walk the doors at dusk and write down who is late.","source":"inferred"}
+{"culture_sheet_id":"culture.group.opening-work-camp.overseers","ord":0,"node":"culture.group.opening-work-camp.gang-families","lean":0,"text":"They will not run while the clutch is in the shed.","source":"inferred"}
+{"culture_sheet_id":"culture.group.rose-bone-waystation.villages-side","ord":0,"node":"culture.household.rose-bone-waystation.rose-family","lean":-1,"text":"Polite at the shelter; holders of the dead.","source":"inferred"}
+{"culture_sheet_id":"culture.group.teeth-of-sithis.band","ord":0,"node":"culture.group.teeth-of-sithis.keepers","lean":1,"text":"They hold the bell and the teaching; the band holds the stair.","source":"inferred"}
+{"culture_sheet_id":"culture.group.teeth-of-sithis.keepers","ord":0,"node":"culture.group.teeth-of-sithis.band","lean":1,"text":"Steady hands, slow to understand the teaching.","source":"inferred"}
+{"culture_sheet_id":"culture.group.the-broke-column.the-column","ord":0,"node":"culture.region.imperial-fringe","lean":-1,"text":"Gideon's governor will not pay to clear them, nor to pardon them.","source":"world/sources/catalogue/places-imperial-fringe.json#place.imperial-fringe.the-broke-column"}
+{"culture_sheet_id":"culture.household.rose-bone-waystation.rose-family","ord":0,"node":"culture.group.rose-bone-waystation.villages-side","lean":0,"text":"They need us as much as we need their coin.","source":"inferred"}
+{"culture_sheet_id":"culture.office.an-xileel.owing-assessor","ord":0,"node":"culture.faction.chainbreakers","lean":0,"text":"Reformers with matches.","source":"world/sources/lore/topics/labour-and-bondage.md"}
+{"culture_sheet_id":"culture.office.an-xileel.senior","ord":0,"node":"culture.faction.an-xileel","lean":2,"text":"Duty.","source":"inferred"}
+{"culture_sheet_id":"culture.office.blackguards.senior","ord":0,"node":"culture.faction.blackguards","lean":2,"text":"Theirs.","source":"inferred"}
+{"culture_sheet_id":"culture.office.bright-throat-tribe.senior","ord":0,"node":"culture.faction.bright-throat-tribe","lean":2,"text":"Theirs.","source":"inferred"}
+{"culture_sheet_id":"culture.office.chainbreakers.senior","ord":0,"node":"culture.faction.chainbreakers","lean":2,"text":"Theirs.","source":"inferred"}
+{"culture_sheet_id":"culture.office.college-of-whispers.senior","ord":0,"node":"culture.faction.college-of-whispers","lean":2,"text":"Theirs.","source":"inferred"}
+{"culture_sheet_id":"culture.office.cyrodilic-collections.senior","ord":0,"node":"culture.faction.cyrodilic-collections","lean":2,"text":"Theirs.","source":"inferred"}
+{"culture_sheet_id":"culture.office.dres-remnant.senior","ord":0,"node":"culture.faction.dres-remnant","lean":2,"text":"Theirs.","source":"inferred"}
+{"culture_sheet_id":"culture.office.imperial-legion-remnant.penal-warden","ord":0,"node":"culture.faction.chainbreakers","lean":-1,"text":"Agitators.","source":"world/sources/lore/topics/labour-and-bondage.md"}
+{"culture_sheet_id":"culture.office.imperial-legion-remnant.senior","ord":0,"node":"culture.faction.imperial-legion-remnant","lean":2,"text":"Theirs.","source":"inferred"}
+{"culture_sheet_id":"culture.office.league-of-open-water.senior","ord":0,"node":"culture.faction.league-of-open-water","lean":2,"text":"Theirs.","source":"inferred"}
+{"culture_sheet_id":"culture.office.many-root-conclave.egg-tender","ord":0,"node":"culture.faction.many-root-conclave","lean":2,"text":"Their own.","source":"inferred"}
+{"culture_sheet_id":"culture.office.many-root-conclave.senior","ord":0,"node":"culture.faction.unbound-root","lean":-1,"text":"They skip the council.","source":"inferred"}
+{"culture_sheet_id":"culture.office.many-root-conclave.tree-minder","ord":0,"node":"culture.faction.nisswo","lean":1,"text":"Fellow tenders of the people.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
+{"culture_sheet_id":"culture.office.marsh-charter.senior","ord":0,"node":"culture.faction.marsh-charter","lean":2,"text":"Theirs.","source":"inferred"}
+{"culture_sheet_id":"culture.office.morrowind-veterans.senior","ord":0,"node":"culture.faction.morrowind-veterans","lean":2,"text":"Theirs.","source":"inferred"}
+{"culture_sheet_id":"culture.office.murkwater-tribe.senior","ord":0,"node":"culture.faction.murkwater-tribe","lean":2,"text":"Theirs.","source":"inferred"}
+{"culture_sheet_id":"culture.office.naga-kur.senior","ord":0,"node":"culture.faction.naga-kur","lean":2,"text":"Theirs.","source":"inferred"}
+{"culture_sheet_id":"culture.office.night-reed-chapter.senior","ord":0,"node":"culture.faction.night-reed-chapter","lean":2,"text":"Theirs.","source":"inferred"}
+{"culture_sheet_id":"culture.office.nisswo.senior","ord":0,"node":"culture.faction.many-root-conclave","lean":1,"text":"Kin in care.","source":"inferred"}
+{"culture_sheet_id":"culture.office.reed-sail-compact.senior","ord":0,"node":"culture.faction.reed-sail-compact","lean":2,"text":"Theirs.","source":"inferred"}
+{"culture_sheet_id":"culture.office.root-whisper.senior","ord":0,"node":"culture.faction.root-whisper","lean":2,"text":"Theirs.","source":"inferred"}
+{"culture_sheet_id":"culture.office.rootworm-waykeepers.senior","ord":0,"node":"culture.faction.rootworm-waykeepers","lean":2,"text":"Theirs.","source":"inferred"}
+{"culture_sheet_id":"culture.office.salt-teeth.senior","ord":0,"node":"culture.faction.salt-teeth","lean":2,"text":"Theirs.","source":"inferred"}
+{"culture_sheet_id":"culture.office.shadowscales.senior","ord":0,"node":"culture.faction.shadowscales","lean":2,"text":"Theirs.","source":"inferred"}
+{"culture_sheet_id":"culture.office.stillrise.senior","ord":0,"node":"culture.faction.stillrise","lean":2,"text":"Theirs.","source":"inferred"}
+{"culture_sheet_id":"culture.office.sul-xan.senior","ord":0,"node":"culture.faction.sul-xan","lean":2,"text":"Theirs.","source":"inferred"}
+{"culture_sheet_id":"culture.office.sunken-archive.senior","ord":0,"node":"culture.faction.synod","lean":-1,"text":"Hunters.","source":"world/sources/lore/topics/guilds-and-orders.md"}
+{"culture_sheet_id":"culture.office.synod.senior","ord":0,"node":"culture.faction.synod","lean":2,"text":"Theirs.","source":"inferred"}
+{"culture_sheet_id":"culture.office.thorn-ash-reed-accord.senior","ord":0,"node":"culture.faction.thorn-ash-reed-accord","lean":2,"text":"Theirs.","source":"inferred"}
+{"culture_sheet_id":"culture.office.tribeless-naga.senior","ord":0,"node":"culture.faction.tribeless-naga","lean":1,"text":"The band.","source":"inferred"}
+{"culture_sheet_id":"culture.office.umbriel-witness-society.senior","ord":0,"node":"culture.faction.umbriel-witness-society","lean":2,"text":"Theirs.","source":"inferred"}
+{"culture_sheet_id":"culture.office.unbound-root.senior","ord":0,"node":"culture.faction.veiled-reed","lean":-2,"text":"Hunters.","source":"inferred"}
+{"culture_sheet_id":"culture.office.veiled-reed.senior","ord":0,"node":"culture.faction.unbound-root","lean":-2,"text":"The quarry.","source":"inferred"}
+{"culture_sheet_id":"culture.office.xit-xaht.senior","ord":0,"node":"culture.faction.xit-xaht","lean":2,"text":"Theirs.","source":"inferred"}
+{"culture_sheet_id":"culture.people.altmer-newcomer","ord":0,"node":"culture.faction.an-xileel","lean":0,"text":"A licensing office.","source":"inferred"}
+{"culture_sheet_id":"culture.people.argonian-freed","ord":0,"node":"culture.people.dunmer-dres-held","lean":-2,"text":"The families who held coffles now hold ledgers.","source":"world/sources/lore/topics/labour-and-bondage.md"}
+{"culture_sheet_id":"culture.people.argonian-freed","ord":1,"node":"culture.faction.chainbreakers","lean":2,"text":"They burn the books and carry the bones home.","source":"world/sources/lore/topics/labour-and-bondage.md"}
+{"culture_sheet_id":"culture.people.argonian-freed","ord":2,"node":"culture.people.argonian-tribal","lean":0,"text":"Their Owing ends. Ours did not.","source":"world/sources/lore/topics/labour-and-bondage.md"}
+{"culture_sheet_id":"culture.people.argonian-lukiul","ord":0,"node":"culture.people.argonian-tribal","lean":-1,"text":"They pity us and expect thanks for it.","source":"world/sources/lore/topics/hist-and-sap.md"}
+{"culture_sheet_id":"culture.people.argonian-lukiul","ord":1,"node":"culture.people.imperial-marsh-born","lean":1,"text":"Same streets, same courthouse.","source":"world/sources/lore/gideon.md"}
+{"culture_sheet_id":"culture.people.argonian-lukiul","ord":2,"node":"culture.faction.an-xileel","lean":-2,"text":"Inheritors of the purge.","source":"world/sources/lore/an-xileel.md"}
+{"culture_sheet_id":"culture.people.argonian-lukiul","ord":3,"node":"culture.faction.league-of-open-water","lean":2,"text":"The only body that argues for us as citizens.","source":"inferred"}
+{"culture_sheet_id":"culture.people.argonian-port","ord":0,"node":"culture.people.argonian-tribal","lean":0,"text":"Proud cousins who think a ledger is a curse.","source":"inferred"}
+{"culture_sheet_id":"culture.people.argonian-port","ord":1,"node":"culture.people.argonian-lukiul","lean":1,"text":"Neighbours on the quay; half the port is them.","source":"inferred"}
+{"culture_sheet_id":"culture.people.argonian-port","ord":2,"node":"culture.people.khajiit-marsh-born","lean":1,"text":"The other people of the Southern Sea trade.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
+{"culture_sheet_id":"culture.people.argonian-port","ord":3,"node":"culture.faction.reed-sail-compact","lean":1,"text":"The crews who make the routes work; they charge well.","source":"inferred"}
+{"culture_sheet_id":"culture.people.argonian-tribal","ord":0,"node":"culture.people.argonian-lukiul","lean":0,"text":"Pitied, not hated: they cannot hear the tree and it is not their fault.","source":"world/sources/lore/topics/hist-and-sap.md"}
+{"culture_sheet_id":"culture.people.argonian-tribal","ord":1,"node":"culture.people.argonian-port","lean":0,"text":"City cousins, quick-mouthed and worn smooth.","source":"inferred"}
+{"culture_sheet_id":"culture.people.argonian-tribal","ord":2,"node":"culture.faction.an-xileel","lean":-1,"text":"A city government that names the interior its constituency.","source":"world/sources/lore/topics/guilds-and-orders.md"}
+{"culture_sheet_id":"culture.people.argonian-tribal","ord":3,"node":"culture.faction.many-root-conclave","lean":1,"text":"Tree-minders talking to tree-minders; the right way to argue.","source":"inferred"}
+{"culture_sheet_id":"culture.people.bosmer-marsh-born","ord":0,"node":"culture.faction.chainbreakers","lean":0,"text":"They want our tallies.","source":"world/sources/lore/topics/labour-and-bondage.md"}
+{"culture_sheet_id":"culture.people.breton-marsh-born","ord":0,"node":"culture.faction.chainbreakers","lean":-1,"text":"Earnest people, dangerous to an estate.","source":"world/sources/lore/topics/labour-and-bondage.md"}
+{"culture_sheet_id":"culture.people.dunmer-dres-held","ord":0,"node":"culture.faction.dres-remnant","lean":2,"text":"Their own, still pressing the claim.","source":"world/sources/lore/topics/foreign-powers.md"}
+{"culture_sheet_id":"culture.people.dunmer-dres-held","ord":1,"node":"culture.faction.chainbreakers","lean":-2,"text":"Arsonists of lawful records.","source":"world/sources/lore/topics/labour-and-bondage.md"}
+{"culture_sheet_id":"culture.people.dunmer-dres-held","ord":2,"node":"culture.people.argonian-freed","lean":-1,"text":"Debtors.","source":"world/sources/lore/topics/labour-and-bondage.md"}
+{"culture_sheet_id":"culture.people.dunmer-marsh-born","ord":0,"node":"culture.people.dunmer-newcomer","lean":-1,"text":"Morrowind cousins who explain the marsh badly.","source":"inferred"}
+{"culture_sheet_id":"culture.people.dunmer-marsh-born","ord":1,"node":"culture.people.argonian-port","lean":1,"text":"Business partners and in-laws.","source":"inferred"}
+{"culture_sheet_id":"culture.people.dunmer-marsh-born","ord":2,"node":"culture.faction.thorn-ash-reed-accord","lean":1,"text":"Saltrice title argued in Jel, at last.","source":"inferred"}
+{"culture_sheet_id":"culture.people.dunmer-newcomer","ord":0,"node":"culture.people.dunmer-marsh-born","lean":-1,"text":"Speak Jel at home; embarrassing.","source":"inferred"}
+{"culture_sheet_id":"culture.people.dunmer-newcomer","ord":1,"node":"culture.faction.morrowind-veterans","lean":0,"text":"Old soldiers who should have gone home.","source":"inferred"}
+{"culture_sheet_id":"culture.people.imperial-legion-descended","ord":0,"node":"culture.faction.imperial-legion-remnant","lean":2,"text":"The column itself.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
+{"culture_sheet_id":"culture.people.imperial-legion-descended","ord":1,"node":"culture.faction.morrowind-veterans","lean":-1,"text":"The other side's left-behinds.","source":"inferred"}
+{"culture_sheet_id":"culture.people.imperial-legion-descended","ord":2,"node":"culture.faction.an-xileel","lean":-1,"text":"Landlords who tolerate us.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
+{"culture_sheet_id":"culture.people.imperial-marsh-born","ord":0,"node":"culture.people.argonian-lukiul","lean":1,"text":"Fellow citizens of Gideon.","source":"world/sources/lore/gideon.md"}
+{"culture_sheet_id":"culture.people.imperial-marsh-born","ord":1,"node":"culture.faction.imperial-legion-remnant","lean":1,"text":"Our garrison, unpaid and still standing.","source":"inferred"}
+{"culture_sheet_id":"culture.people.imperial-marsh-born","ord":2,"node":"culture.faction.cyrodilic-collections","lean":1,"text":"Respectable people with a museum to build.","source":"world/sources/lore/topics/guilds-and-orders.md"}
+{"culture_sheet_id":"culture.people.imperial-newcomer","ord":0,"node":"culture.people.imperial-marsh-born","lean":0,"text":"Provincials with odd habits.","source":"inferred"}
+{"culture_sheet_id":"culture.people.imperial-newcomer","ord":1,"node":"culture.faction.synod","lean":0,"text":"Employers, perhaps.","source":"world/sources/lore/topics/guilds-and-orders.md"}
+{"culture_sheet_id":"culture.people.imperial-newcomer","ord":2,"node":"culture.faction.cyrodilic-collections","lean":1,"text":"Colleagues.","source":"world/sources/lore/topics/guilds-and-orders.md"}
+{"culture_sheet_id":"culture.people.khajiit-marsh-born","ord":0,"node":"culture.people.argonian-port","lean":1,"text":"Fellow traders of the Southern Sea.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
+{"culture_sheet_id":"culture.people.khajiit-marsh-born","ord":1,"node":"culture.faction.reed-sail-compact","lean":0,"text":"They charge for the water.","source":"inferred"}
+{"culture_sheet_id":"culture.people.khajiit-newcomer","ord":0,"node":"culture.people.khajiit-marsh-born","lean":1,"text":"Settled cousins with a roof.","source":"inferred"}
+{"culture_sheet_id":"culture.people.khajiit-newcomer","ord":1,"node":"culture.faction.salt-teeth","lean":0,"text":"Work, sometimes.","source":"inferred"}
+{"culture_sheet_id":"culture.people.nord-marsh-born","ord":0,"node":"culture.faction.marsh-charter","lean":1,"text":"Fighting work, paid.","source":"inferred"}
+{"culture_sheet_id":"culture.people.nord-marsh-born","ord":1,"node":"culture.people.imperial-legion-descended","lean":1,"text":"The column's other sons.","source":"inferred"}
+{"culture_sheet_id":"culture.people.nord-newcomer","ord":0,"node":"culture.people.nord-marsh-born","lean":1,"text":"Kin who stayed too long.","source":"inferred"}
+{"culture_sheet_id":"culture.people.nord-newcomer","ord":1,"node":"culture.faction.marsh-charter","lean":1,"text":"The paymaster.","source":"inferred"}
+{"culture_sheet_id":"culture.people.orc-newcomer","ord":0,"node":"culture.people.imperial-marsh-born","lean":0,"text":"Customers.","source":"inferred"}
+{"culture_sheet_id":"culture.people.redguard-marsh-born","ord":0,"node":"culture.people.imperial-legion-descended","lean":1,"text":"Column kin.","source":"inferred"}
+{"culture_sheet_id":"culture.people.redguard-newcomer","ord":0,"node":"culture.faction.reed-sail-compact","lean":-1,"text":"The water's landlords.","source":"inferred"}
+{"culture_sheet_id":"culture.region.dunmer-north","ord":0,"node":"culture.region.hist-heartland","lean":1,"text":"The interior is where the trees are; northerners go there to pray, not to trade.","source":"world/sources/lore/regions/middle-argonia.md"}
+{"culture_sheet_id":"culture.region.dunmer-north","ord":1,"node":"culture.region.pirate-freeholds","lean":-1,"text":"The upriver camps sell labour by the roll; the north sold people once and knows the shape.","source":"world/sources/lore/topics/labour-and-bondage.md"}
+{"culture_sheet_id":"culture.region.dunmer-north","ord":2,"node":"culture.region.saxhleel-coast","lean":1,"text":"Archon is a short sail and a fair harbour; coast folk keep their word on a cargo.","source":"world/sources/lore/archon.md"}
+{"culture_sheet_id":"culture.region.dunmer-north","ord":3,"node":"culture.region.imperial-fringe","lean":0,"text":"Gideon's people talk like Cyrodiil and trade with Leyawiin; they are far off.","source":"world/sources/lore/gideon.md"}
+{"culture_sheet_id":"culture.region.hist-heartland","ord":0,"node":"culture.region.dunmer-north","lean":0,"text":"The north grows rice and argues over paper; it comes to the trees when it is frightened.","source":"world/sources/lore/regions/shadowfen.md"}
+{"culture_sheet_id":"culture.region.hist-heartland","ord":1,"node":"culture.region.imperial-fringe","lean":-1,"text":"Gideon's people have forgotten their trees and want roads instead.","source":"world/sources/lore/gideon.md"}
+{"culture_sheet_id":"culture.region.hist-heartland","ord":2,"node":"culture.region.pirate-freeholds","lean":-1,"text":"The river camps pull adults away from their trees and pay them in tallies.","source":"inferred"}
+{"culture_sheet_id":"culture.region.hist-heartland","ord":3,"node":"culture.region.naga-kur-deeps","lean":-1,"text":"The deeps keep a harder faith and their raiders work the southern tracks.","source":"world/sources/lore/tribes.md"}
+{"culture_sheet_id":"culture.region.hist-heartland","ord":4,"node":"culture.region.imperial-penal-south","lean":-1,"text":"Blackrose sends bodies and debts; neither is welcome.","source":"world/sources/lore/topics/prisons.md"}
+{"culture_sheet_id":"culture.region.hist-heartland","ord":5,"node":"culture.region.saxhleel-coast","lean":1,"text":"The coast tribes keep the old ways and come to Root Talk in good faith.","source":"inferred"}
+{"culture_sheet_id":"culture.region.imperial-fringe","ord":0,"node":"culture.region.hist-heartland","lean":-1,"text":"The interior folk think anyone who writes things down has lost their soul.","source":"world/sources/lore/regions/middle-argonia.md"}
+{"culture_sheet_id":"culture.region.imperial-fringe","ord":1,"node":"culture.region.imperial-penal-south","lean":-1,"text":"Blackrose is a day's ride and a different world; people go in and stay.","source":"world/sources/lore/topics/prisons.md"}
+{"culture_sheet_id":"culture.region.imperial-fringe","ord":2,"node":"culture.region.dunmer-north","lean":0,"text":"Shadowfen is a long way round. The Dunmer up there are not our business.","source":"world/sources/lore/regions/shadowfen.md"}
+{"culture_sheet_id":"culture.region.imperial-penal-south","ord":0,"node":"culture.region.imperial-fringe","lean":0,"text":"Gideon keeps better records and asks fewer questions about ours.","source":"world/sources/lore/gideon.md"}
+{"culture_sheet_id":"culture.region.imperial-penal-south","ord":1,"node":"culture.region.mercantile-coast","lean":0,"text":"Lilmoth's merchants buy what comes down the rivers without asking its origin.","source":"world/sources/lore/lilmoth.md"}
+{"culture_sheet_id":"culture.region.imperial-penal-south","ord":2,"node":"culture.region.naga-kur-deeps","lean":-2,"text":"The Naga-Kur country lies past the Rose. Travellers go round it.","source":"world/sources/lore/regions/murkmire.md"}
+{"culture_sheet_id":"culture.region.imperial-penal-south","ord":3,"node":"culture.region.hist-heartland","lean":0,"text":"The interior takes our dead and sends back nothing.","source":"inferred"}
+{"culture_sheet_id":"culture.region.mercantile-coast","ord":0,"node":"culture.region.imperial-penal-south","lean":-1,"text":"Blackrose sends cargo and debtors down the river in the same boat.","source":"world/sources/lore/topics/prisons.md"}
+{"culture_sheet_id":"culture.region.mercantile-coast","ord":1,"node":"culture.region.naga-kur-deeps","lean":-2,"text":"Raiders from the deeps work the inland tracks; coast merchants pay for quiet.","source":"world/sources/lore/tribes.md"}
+{"culture_sheet_id":"culture.region.mercantile-coast","ord":2,"node":"culture.region.saxhleel-coast","lean":1,"text":"Archon's harbour folk are rivals on the water and fair dealers ashore.","source":"world/sources/lore/archon.md"}
+{"culture_sheet_id":"culture.region.naga-kur-deeps","ord":0,"node":"culture.region.mercantile-coast","lean":-1,"text":"The coast sends ships and licences, but never a walker who can cross the deeps.","source":"inferred"}
+{"culture_sheet_id":"culture.region.naga-kur-deeps","ord":1,"node":"culture.region.imperial-penal-south","lean":-1,"text":"The Rose's walls stand empty now; its dead wander our edge.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
+{"culture_sheet_id":"culture.region.naga-kur-deeps","ord":2,"node":"culture.region.hist-heartland","lean":0,"text":"The heartland tribes pray softer and pay less.","source":"world/sources/lore/tribes.md"}
+{"culture_sheet_id":"culture.region.naga-kur-deeps","ord":3,"node":"culture.region.saxhleel-coast","lean":0,"text":"The coast tribes fish and stay out.","source":"inferred"}
+{"culture_sheet_id":"culture.region.pirate-freeholds","ord":0,"node":"culture.region.hist-heartland","lean":0,"text":"The interior folk look down on river work and buy what it brings.","source":"inferred"}
+{"culture_sheet_id":"culture.region.pirate-freeholds","ord":1,"node":"culture.region.dunmer-north","lean":0,"text":"Riverwalk and Thorn are the next stops down the trunk road; good custom, hard bargains.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
+{"culture_sheet_id":"culture.region.pirate-freeholds","ord":2,"node":"culture.region.saxhleel-coast","lean":1,"text":"Archon's sailors are the only ones who outswim ours.","source":"world/sources/lore/archon.md"}
+{"culture_sheet_id":"culture.region.saxhleel-coast","ord":0,"node":"culture.region.dunmer-north","lean":0,"text":"Tear and Thorn are a short sail; Dunmer cargo pays well and argues long.","source":"world/sources/lore/regions/thornmarsh-and-east.md"}
+{"culture_sheet_id":"culture.region.saxhleel-coast","ord":1,"node":"culture.region.mercantile-coast","lean":0,"text":"Lilmoth rebuilds and undercuts us on every run.","source":"world/sources/lore/lilmoth.md"}
+{"culture_sheet_id":"culture.region.saxhleel-coast","ord":2,"node":"culture.region.naga-kur-deeps","lean":-1,"text":"The deeps come down to the coast only to raid.","source":"world/sources/lore/tribes.md"}
+{"culture_sheet_id":"culture.region.saxhleel-coast","ord":3,"node":"culture.region.hist-heartland","lean":1,"text":"The heartland keeps the trees; the coast keeps the water.","source":"inferred"}
+{"culture_sheet_id":"culture.region.saxhleel-coast","ord":4,"node":"culture.region.pirate-freeholds","lean":-1,"text":"River crews come down to the coast looking for work and trouble.","source":"inferred"}
+{"culture_sheet_id":"culture.settlement.bog-iron-workings","ord":0,"node":"culture.region.imperial-fringe","lean":0,"text":"Road folk buy the iron and look away from those who dig it.","source":"inferred"}
+{"culture_sheet_id":"culture.settlement.claywater-station","ord":0,"node":"culture.region.hist-heartland","lean":-1,"text":"Tribe folk who come down the channel will not pay for a crossing.","source":"inferred"}
+{"culture_sheet_id":"culture.settlement.greenspring","ord":0,"node":"culture.faction.many-root-conclave","lean":1,"text":"The Conclave sent the village its tree-minder's office; the village keeps faith with it.","source":"inferred"}
+{"culture_sheet_id":"culture.settlement.lighter-flotilla","ord":0,"node":"culture.faction.reed-sail-compact","lean":1,"text":"The guild that holds the speaker's post and the right to stop the port.","source":"inferred"}
+{"culture_sheet_id":"culture.settlement.opening-work-camp","ord":0,"node":"culture.faction.dres-remnant","lean":-1,"text":"The house keeps the ledger and never comes to the camp itself.","source":"world/sources/lore/topics/labour-and-bondage.md"}
+{"culture_sheet_id":"culture.settlement.pearl-lots","ord":0,"node":"culture.region.saxhleel-coast","lean":0,"text":"Archon buys the pearls and never comes out to the lots.","source":"inferred"}
+{"culture_sheet_id":"culture.settlement.riverwalk","ord":0,"node":"culture.region.hist-heartland","lean":1,"text":"Pilgrims bound for Hissmir pass through and eat well first.","source":"inferred"}
+{"culture_sheet_id":"culture.settlement.rose-bone-waystation","ord":0,"node":"culture.region.hist-heartland","lean":1,"text":"The villages wait at home for what the carrier brings.","source":"inferred"}
+{"culture_sheet_id":"culture.settlement.teeth-of-sithis","ord":0,"node":"culture.faction.nisswo","lean":1,"text":"The order that holds the temple; the priests here keep its sermon in stone.","source":"inferred"}
+{"culture_sheet_id":"culture.settlement.the-broke-column","ord":0,"node":"culture.region.imperial-fringe","lean":-1,"text":"Road folk who pay the levy and curse it down the hill.","source":"inferred"}
+{"culture_sheet_id":"culture.settlement.upriver-hist-village","ord":0,"node":"culture.region.pirate-freeholds","lean":-1,"text":"The port and the gangs take the village's people and send back coin.","source":"world/sources/catalogue/places-pirate-freeholds.json#place.pirate-freeholds.upriver-hist-village"}

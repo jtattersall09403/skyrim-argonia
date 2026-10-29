@@ -1,0 +1,30 @@
+{"quest_id":"quest.local.lh38","section":"ladder","ord":0,"value":"day 0: two sick guests"}
+{"quest_id":"quest.local.lh38","section":"ladder","ord":1,"value":"after stage 20: a third guest sickens"}
+{"quest_id":"quest.local.lh38","section":"ladder","ord":2,"value":"after stage 40: travellers stop at Greenspring; Haj-Tei's beds are empty"}
+{"quest_id":"quest.local.lh38","section":"leads","ord":0,"from":"npc.hist-heartland.greenspring.n2"}
+{"quest_id":"quest.local.lh38","section":"leads","ord":1,"from":"thing.spring-throat"}
+{"quest_id":"quest.local.lh38","section":"leads","ord":2,"from":"the lodge"}
+{"quest_id":"quest.local.lh38","section":"lies","ord":0,"speaker":"npc.hist-heartland.greenspring.n1","says":"the courier left before dawn","refuted_by":"item.lh38.courier-bill"}
+{"quest_id":"quest.local.lh38","section":"lies","ord":1,"speaker":"npc.hist-heartland.greenspring.n3","says":"the fire stand's food is making the guests sick","refuted_by":"k12"}
+{"quest_id":"quest.local.lh38","section":"lies","ord":2,"speaker":"npc.hist-heartland.greenspring.n2-2","says":"he sold no rope that night","refuted_by":"item.lh38.knotted-rope"}
+{"quest_id":"quest.local.lh38","section":"nodes","ord":0,"value":"npc.hist-heartland.greenspring.n2"}
+{"quest_id":"quest.local.lh38","section":"nodes","ord":1,"value":"thing.spring-pool"}
+{"quest_id":"quest.local.lh38","section":"nodes","ord":2,"value":"thing.spring-throat"}
+{"quest_id":"quest.local.lh38","section":"nodes","ord":3,"value":"the lodge"}
+{"quest_id":"quest.local.lh38","section":"nodes","ord":4,"value":"npc.hist-heartland.greenspring.n2-2"}
+{"quest_id":"quest.local.lh38","section":"nodes","ord":5,"value":"npc.hist-heartland.greenspring.n3"}
+{"quest_id":"quest.local.lh38","section":"nodes","ord":6,"value":"npc.hist-heartland.greenspring.tree-minder"}
+{"quest_id":"quest.local.lh38","section":"openQuestions","ord":0,"value":"Why are the guests at Greenspring falling sick?"}
+{"quest_id":"quest.local.lh38","section":"openQuestions","ord":1,"value":"Who was the dead man in the spring?"}
+{"quest_id":"quest.local.lh38","section":"openQuestions","ord":2,"value":"___ killed the courier and staked him in the spring because ___."}
+{"quest_id":"quest.local.lh38","section":"redHerrings","ord":0,"refuted_by":"k12","suspect":"the fire stand's food"}
+{"quest_id":"quest.local.lh38","section":"redHerrings","ord":1,"refuted_by":"k8","suspect":"npc.hist-heartland.greenspring.n2-2"}
+{"quest_id":"quest.local.lh38","section":"timeline","ord":0,"value":"t1"}
+{"quest_id":"quest.local.lh38","section":"timeline","ord":1,"value":"t2"}
+{"quest_id":"quest.local.lh38","section":"timeline","ord":2,"value":"t3"}
+{"quest_id":"quest.local.lh38","section":"timeline","ord":3,"value":"t4"}
+{"quest_id":"quest.local.lh38","section":"timeline","ord":4,"value":"t6"}
+{"quest_id":"quest.local.lh38","section":"timeline","ord":5,"value":"t7"}
+{"quest_id":"quest.mr.mr01","section":"ladder","ord":0,"value":"day 0: leaves falling out of season"}
+{"quest_id":"quest.mr.mr01","section":"ladder","ord":1,"value":"after stage 20: the spring tastes of salt"}
+{"quest_id":"quest.mr.mr01","section":"ladder","ord":2,"value":"after stage 40: the sap stops at the naming bowl"}

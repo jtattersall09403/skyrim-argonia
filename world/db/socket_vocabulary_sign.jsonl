@@ -1,0 +1,3 @@
+{"socket_vocabulary_id":"socket-vocabulary","field":"pointsTo","value":"one route., track. or place. id per arm (a waymark)"}
+{"socket_vocabulary_id":"socket-vocabulary","field":"signPurpose","value":"one of signPurposes"}
+{"socket_vocabulary_id":"socket-vocabulary","field":"textKey","value":"a row of world/sources/placement/sign-text.json: the sign's words, in the text catalogue"}

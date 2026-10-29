@@ -1,0 +1,24 @@
+{"quest_id":"quest.local.lh38","cast_ord":0,"fact_id":"fact.lh38.food-blamed","value":"knows"}
+{"quest_id":"quest.local.lh38","cast_ord":0,"fact_id":"fact.lh38.pool-office","value":"knows"}
+{"quest_id":"quest.local.lh38","cast_ord":0,"fact_id":"fact.lh38.sickness","value":"knows"}
+{"quest_id":"quest.local.lh38","cast_ord":0,"fact_id":"fact.lh38.water-not-food","value":"suspects"}
+{"quest_id":"quest.local.lh38","cast_ord":1,"fact_id":"fact.lh38.rope-sold-late","value":"hides \"selling after the lodge closed breaks the price and hours the village agreed (culture.settlement.greenspring norms), and he suspects why she wanted it\""}
+{"quest_id":"quest.local.lh38","cast_ord":1,"fact_id":"fact.lh38.sickness","value":"knows"}
+{"quest_id":"quest.local.lh38","cast_ord":2,"fact_id":"fact.lh38.courier-missing","value":"believes \"the courier left before dawn without paying\""}
+{"quest_id":"quest.local.lh38","cast_ord":2,"fact_id":"fact.lh38.pack-unpaid","value":"hides \"a guest vanishing without paying is bad for the lodge's name\""}
+{"quest_id":"quest.local.lh38","cast_ord":3,"fact_id":"fact.lh38.body-in-throat","value":"hides \"she killed the courier\""}
+{"quest_id":"quest.local.lh38","cast_ord":3,"fact_id":"fact.lh38.food-blamed","value":"knows"}
+{"quest_id":"quest.local.lh38","cast_ord":3,"fact_id":"fact.lh38.night-watch","value":"hides \"it would give her away\""}
+{"quest_id":"quest.local.lh38","cast_ord":3,"fact_id":"fact.lh38.packet","value":"hides \"it is why she killed him\""}
+{"quest_id":"quest.local.lh38","cast_ord":3,"fact_id":"fact.lh38.reeh-waiting","value":"knows"}
+{"quest_id":"quest.local.lh38","cast_ord":4,"fact_id":"fact.lh38.pool-office","value":"knows"}
+{"quest_id":"quest.local.lh38","cast_ord":4,"fact_id":"fact.lh38.sickness","value":"believes \"it is the travellers' own food, not the water\""}
+{"quest_id":"quest.local.lh38","cast_ord":5,"fact_id":"fact.lh38.stake-blank","value":"ignorant"}
+{"quest_id":"quest.mr.mr01","cast_ord":0,"fact_id":"fact.greenspring.why-pressures-3","value":"knows"}
+{"quest_id":"quest.mr.mr01","cast_ord":0,"fact_id":"fact.mr01.consent","value":"knows"}
+{"quest_id":"quest.mr.mr01","cast_ord":0,"fact_id":"fact.mr01.works-closed","value":"knows"}
+{"quest_id":"quest.mr.mr01","cast_ord":1,"fact_id":"fact.mr01.founders-stakes","value":"hides \"the stakes are the tribe's story and not for an ojel\""}
+{"quest_id":"quest.mr.mr01","cast_ord":1,"fact_id":"fact.mr01.rival-grove","value":"suspects"}
+{"quest_id":"quest.mr.mr01","cast_ord":1,"fact_id":"fact.mr01.sap-thin","value":"knows"}
+{"quest_id":"quest.mr.mr01","cast_ord":2,"fact_id":"fact.greenspring.why-pressures-3","value":"believes \"the salt works foul the spring; nothing of ours does\""}
+{"quest_id":"quest.mr.mr01","cast_ord":2,"fact_id":"fact.mr01.founders-stakes","value":"knows"}

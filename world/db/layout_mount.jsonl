@@ -1,0 +1,145 @@
+{"place_id":"place.dunmer-north.riverwalk","ord":88,"op":"mount","child":"c-doorlamp","parent":"b-crews","unmined":"reader-approved r4","hang":true,"max_h":6.0}
+{"place_id":"place.dunmer-north.riverwalk","ord":198,"op":"mount","child":"w-net","parent":"wb01","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.dunmer-north.riverwalk","ord":199,"op":"mount","child":"w-bucket","parent":"wb01","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.dunmer-north.riverwalk","ord":211,"op":"mount","child":"f-doorlamp","parent":"b-family","unmined":"reader-approved r4","hang":true,"max_h":6.0}
+{"place_id":"place.dunmer-north.riverwalk","ord":215,"op":"mount","child":"rw-sign","parent":"b-crews","unmined":"reader-approved r12","hang":true,"max_h":3.2,"min_h":1.5}
+{"place_id":"place.dunmer-north.the-wamasu-shrine","ord":3,"op":"mount","child":"s-of-salt1","parent":"s-shelf","unmined":"reader-approved r1"}
+{"place_id":"place.dunmer-north.the-wamasu-shrine","ord":5,"op":"mount","child":"s-of-salt2","parent":"s-shelf","unmined":"reader-approved r1"}
+{"place_id":"place.dunmer-north.the-wamasu-shrine","ord":7,"op":"mount","child":"s-of-ingots","parent":"s-shelf","unmined":"reader-approved r1"}
+{"place_id":"place.dunmer-north.the-wamasu-shrine","ord":9,"op":"mount","child":"s-of-net","parent":"s-shelf","unmined":"reader-approved r1"}
+{"place_id":"place.dunmer-north.the-wamasu-shrine","ord":17,"op":"mount","child":"s-of-ingots2","parent":"s-shelf","unmined":"reader-approved r2"}
+{"place_id":"place.dunmer-north.the-wamasu-shrine","ord":19,"op":"mount","child":"s-of-salt3","parent":"s-shelf","unmined":"reader-approved r2"}
+{"place_id":"place.hist-heartland.greenspring","ord":102,"op":"mount","child":"sp-flower","parent":"hist","unmined":"reader-approved r13","hang":true,"max_h":12.0,"bearing":240.0,"along":6.0}
+{"place_id":"place.hist-heartland.greenspring","ord":103,"op":"mount","child":"sh-flower1","parent":"hist","unmined":"reader-approved r13","hang":true,"max_h":12.0,"bearing":340.0,"along":6.0}
+{"place_id":"place.hist-heartland.greenspring","ord":104,"op":"mount","child":"sh-flower2","parent":"hist","unmined":"reader-approved r13","hang":true,"max_h":12.0,"bearing":20.0,"along":4.0}
+{"place_id":"place.hist-heartland.greenspring","ord":105,"op":"mount","child":"sh-chime","parent":"hist","unmined":"reader-approved r34","hang":true,"max_h":12.0,"min_h":2.4}
+{"place_id":"place.hist-heartland.greenspring","ord":106,"op":"mount","child":"b-minder-flower","parent":"hist","unmined":"reader-approved r13","hang":true,"max_h":12.0,"bearing":80.0,"along":7.0}
+{"place_id":"place.hist-heartland.greenspring","ord":107,"op":"mount","child":"hist-lantern1","parent":"hist","unmined":"reader-approved r13","hang":true,"max_h":12.0,"bearing":0.0,"along":3.0}
+{"place_id":"place.hist-heartland.greenspring","ord":108,"op":"mount","child":"hist-lantern2","parent":"hist","unmined":"reader-approved r13","hang":true,"max_h":12.0,"bearing":40.0,"along":3.0}
+{"place_id":"place.hist-heartland.greenspring","ord":109,"op":"mount","child":"hist-lantern3","parent":"hist","unmined":"reader-approved r13","hang":true,"max_h":7.0,"bearing":20.0,"along":7.0}
+{"place_id":"place.imperial-fringe.bog-iron-workings","ord":4,"op":"mount","child":"b-hut-lamp","parent":"b-hut","unmined":"reader-approved r12","inside":true}
+{"place_id":"place.imperial-fringe.claywater-station","ord":29,"op":"mount","child":"isy-lamp","parent":"isy-barrel1","unmined":"reader-approved r17"}
+{"place_id":"place.imperial-fringe.claywater-station","ord":32,"op":"mount","child":"isy-flame","parent":"isy-fire"}
+{"place_id":"place.imperial-fringe.claywater-station","ord":39,"op":"mount","child":"b1-lamp","parent":"b1-post"}
+{"place_id":"place.imperial-fringe.claywater-station","ord":53,"op":"mount","child":"st-sign","parent":"st-signpost"}
+{"place_id":"place.imperial-fringe.claywater-station","ord":55,"op":"mount","child":"sh-sign","parent":"b1","like":"plugin-static:architecture/whiterun/wrbuildings/wrhousestores01.nif"}
+{"place_id":"place.imperial-fringe.claywater-station","ord":135,"op":"mount","child":"b2-lamp","parent":"b2-post"}
+{"place_id":"place.imperial-fringe.claywater-station","ord":142,"op":"mount","child":"p1-board","parent":"p1","height":2.27,"yaw":225.0}
+{"place_id":"place.imperial-fringe.claywater-station","ord":147,"op":"mount","child":"p1-board2","parent":"p1","height":1.69,"yaw":45.0}
+{"place_id":"place.imperial-fringe.the-broke-column","ord":12,"op":"mount","child":"bn1","parent":"bn1-pole"}
+{"place_id":"place.imperial-fringe.the-broke-column","ord":15,"op":"mount","child":"bn2","parent":"bn2-pole"}
+{"place_id":"place.imperial-fringe.the-broke-column","ord":70,"op":"mount","child":"s-board1","parent":"s-post","yaw":135.0}
+{"place_id":"place.imperial-fringe.the-broke-column","ord":72,"op":"mount","child":"s-board2","parent":"s-post","height":2.275,"yaw":306.0}
+{"place_id":"place.imperial-penal-south.rose-bone-waystation","ord":32,"op":"mount","child":"s-chime1","parent":"s-shelter","unmined":"reader-approved r2","hang":true,"max_h":4.0}
+{"place_id":"place.imperial-penal-south.rose-bone-waystation","ord":34,"op":"mount","child":"s-chime2","parent":"s-shelter","unmined":"reader-approved r2","hang":true,"max_h":4.0}
+{"place_id":"place.imperial-penal-south.rose-bone-waystation","ord":44,"op":"mount","child":"k-chimes","parent":"b-keeper","unmined":"reader-approved r2","hang":true,"max_h":4.0}
+{"place_id":"place.imperial-penal-south.rose-bone-waystation","ord":49,"op":"mount","child":"s-tagrack","parent":"s-shelter","unmined":"reader-approved r17","hang":true,"max_h":4.0,"bearing":80.0,"along":1.5}
+{"place_id":"place.imperial-penal-south.rose-bone-waystation","ord":52,"op":"mount","child":"k-tagrack","parent":"b-keeper","unmined":"reader-approved r17","hang":true,"max_h":4.0,"bearing":175.0,"along":3.2}
+{"place_id":"place.mercantile-coast.chasepoint","ord":4,"op":"mount","child":"shed-lamp","parent":"shed","unmined":"reader-approved r12","hang":true,"max_h":6.0,"bearing":0.0,"along":0.0}
+{"place_id":"place.mercantile-coast.chasepoint","ord":16,"op":"mount","child":"st-lamp","parent":"st-post"}
+{"place_id":"place.mercantile-coast.chasepoint","ord":207,"op":"mount","child":"rope-1","parent":"shed","unmined":"reader-approved r12","inside":true}
+{"place_id":"place.mercantile-coast.chasepoint","ord":208,"op":"mount","child":"rope-2","parent":"shed","unmined":"reader-approved r12","inside":true}
+{"place_id":"place.mercantile-coast.chasepoint","ord":209,"op":"mount","child":"net-3","parent":"shed","unmined":"reader-approved r12","inside":true}
+{"place_id":"place.mercantile-coast.chasepoint","ord":223,"op":"mount","child":"ha-lamp","parent":"home-a","unmined":"reader-approved r12","wall":true,"height":2.0}
+{"place_id":"place.mercantile-coast.chasepoint","ord":224,"op":"mount","child":"hb-lamp","parent":"home-b","unmined":"reader-approved r12","wall":true,"height":2.0}
+{"place_id":"place.mercantile-coast.chasepoint","ord":225,"op":"mount","child":"nl-lamp","parent":"loft","unmined":"reader-approved r12","wall":true,"height":2.0}
+{"place_id":"place.mercantile-coast.chasepoint","ord":228,"op":"mount","child":"st-sign","parent":"stall","unmined":"reader-approved r12","hang":true,"max_h":3.2,"min_h":1.8}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":58,"op":"mount","child":"ts-sign","parent":"tradeship","unmined":"reader-approved r3","hang":true,"max_h":4.0,"bearing":288.6,"along":11.2,"min_h":3.8,"bracket":true}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":62,"op":"mount","child":"ts-cargo-0","parent":"tradeship"}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":65,"op":"mount","child":"ts-cargo-1","parent":"tradeship"}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":68,"op":"mount","child":"ts-cargo-2","parent":"tradeship"}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":71,"op":"mount","child":"ts-cargo-3","parent":"tradeship"}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":74,"op":"mount","child":"ts-cargo-4","parent":"tradeship"}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":77,"op":"mount","child":"ts-cargo-5","parent":"tradeship"}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":80,"op":"mount","child":"ts-cargo-6","parent":"tradeship"}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":83,"op":"mount","child":"ts-cargo-7","parent":"tradeship"}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":86,"op":"mount","child":"ts-cargo-8","parent":"tradeship"}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":89,"op":"mount","child":"ts-cargo-9","parent":"tradeship"}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":92,"op":"mount","child":"mk-r00-0","parent":"r00","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":95,"op":"mount","child":"mk-r00-1","parent":"r00","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":98,"op":"mount","child":"mk-r00-2","parent":"r00","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":101,"op":"mount","child":"mk-r01-0","parent":"r01","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":104,"op":"mount","child":"mk-r01-1","parent":"r01","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":107,"op":"mount","child":"mk-r01-2","parent":"r01","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":110,"op":"mount","child":"mk-r02-0","parent":"r02","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":113,"op":"mount","child":"mk-r02-1","parent":"r02","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":116,"op":"mount","child":"mk-r02-2","parent":"r02","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":119,"op":"mount","child":"mk-r03-0","parent":"r03","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":122,"op":"mount","child":"mk-r03-1","parent":"r03","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":125,"op":"mount","child":"mk-r03-2","parent":"r03","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":164,"op":"mount","child":"h-n00-rope-post","parent":"pier-sol9","unmined":"reader-approved r4","moor":"h-n00"}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":167,"op":"mount","child":"h-s00-rope-post","parent":"pier-sol5","unmined":"reader-approved r4","moor":"h-s00"}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":170,"op":"mount","child":"h-s01-rope-post","parent":"pier-sol6","unmined":"reader-approved r4","moor":"h-s01"}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":173,"op":"mount","child":"h-n02-rope-post","parent":"pier-sol6","unmined":"reader-approved r4","moor":"h-n02"}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":176,"op":"mount","child":"lighter-rope-post","parent":"pier-sol10","unmined":"reader-approved r4","moor":"lighter"}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":180,"op":"mount","child":"tradeship-rope-post","parent":"pier-sol9","unmined":"reader-approved r4","moor":"tradeship","rope":"tradeship-rope"}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":184,"op":"mount","child":"r00-rope-post","parent":"pier-sol5","unmined":"reader-approved r4","moor":"r00"}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":187,"op":"mount","child":"r01-rope-post","parent":"pier-sol6","unmined":"reader-approved r4","moor":"r01"}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":190,"op":"mount","child":"r02-rope-post","parent":"pier-sol6","unmined":"reader-approved r4","moor":"r02"}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":193,"op":"mount","child":"r03-rope-post","parent":"pier-sol7","unmined":"reader-approved r4","moor":"r03"}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":196,"op":"mount","child":"ts-lamp-aft","parent":"tradeship","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":200,"op":"mount","child":"ts-lamp-mid","parent":"tradeship","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":204,"op":"mount","child":"ts-lamp-fore","parent":"tradeship","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":211,"op":"mount","child":"h-n01-rope-post","parent":"pier-sol5","unmined":"reader-approved r4","moor":"h-n01"}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":214,"op":"mount","child":"pier-lamp-e","parent":"pier-sol9","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":218,"op":"mount","child":"pier-lamp-m","parent":"pier-sol6","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":222,"op":"mount","child":"pier-lamp-w","parent":"pier-sol5","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":227,"op":"mount","child":"pier-lamp-foot","parent":"pier","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":231,"op":"mount","child":"pier-lamp-mid2","parent":"pier-sol3","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":244,"op":"mount","child":"pier-bench-e","parent":"pier-sol8","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":247,"op":"mount","child":"pier-bench-w","parent":"pier-sol4","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":250,"op":"mount","child":"pier-alchemy","parent":"pier-sol2","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":267,"op":"mount","child":"h-n02-tally-crate","parent":"h-n02","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.naga-kur-deeps.naga-highway-camp-active-north","ord":26,"op":"mount","child":"g-tally","parent":"w-watch","unmined":"reader-approved r3","hang":true,"max_h":3.2,"min_h":1.8}
+{"place_id":"place.naga-kur-deeps.naga-highway-camp-active-north","ord":28,"op":"mount","child":"b-lieut-board","parent":"b-lieut","unmined":"reader-approved r3","hang":true,"max_h":2.4,"min_h":1.2}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":22,"op":"mount","child":"h-lamp1","parent":"b-hatch","unmined":"reader-approved r1","hang":true,"max_h":4.0}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":24,"op":"mount","child":"h-lamp2","parent":"b-hatch","unmined":"reader-approved r1","hang":true,"max_h":4.0}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":29,"op":"mount","child":"t-lamp","parent":"s-shed2","unmined":"reader-approved r1","hang":true,"max_h":4.0}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":31,"op":"mount","child":"o-candle","parent":"b-over","unmined":"reader-approved r2","hang":true,"max_h":4.0}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":67,"op":"mount","child":"r-board1","parent":"r-post","height":2.269,"yaw":281.0}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":69,"op":"mount","child":"r-board2","parent":"r-post","yaw":90.0}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":114,"op":"mount","child":"g-crane","parent":"g-hull","unmined":"reader-approved r2","inside":true}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":116,"op":"mount","child":"g-planks1","parent":"g-hull","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":118,"op":"mount","child":"g-planks1b","parent":"g-hull","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":120,"op":"mount","child":"g-planks1c","parent":"g-hull","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":122,"op":"mount","child":"g-planks2","parent":"g-hull","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":124,"op":"mount","child":"g-planks2b","parent":"g-hull","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":134,"op":"mount","child":"g-gangway","parent":"g-hull","unmined":"reader-approved r1","plank_to":"bp-0"}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":136,"op":"mount","child":"g-gangway-in","parent":"g-hull","unmined":"reader-approved r1","plank_to":"g-gangway"}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":138,"op":"mount","child":"g-gangway-r","parent":"g-hull","unmined":"reader-approved r1","plank_to":"bp-0"}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":140,"op":"mount","child":"g-gangway-in-r","parent":"g-hull","unmined":"reader-approved r1","plank_to":"g-gangway-r"}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":195,"op":"mount","child":"g-broken1","parent":"g-hull","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":197,"op":"mount","child":"g-broken2","parent":"g-hull","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":199,"op":"mount","child":"g-broken3","parent":"g-hull","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":201,"op":"mount","child":"g-saw","parent":"g-hull","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":203,"op":"mount","child":"g-pick","parent":"g-hull","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":265,"op":"mount","child":"g-chest","parent":"g-hull","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":267,"op":"mount","child":"g-barrel1","parent":"g-hull","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":269,"op":"mount","child":"g-barrel2","parent":"g-hull","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":271,"op":"mount","child":"g-sack","parent":"g-hull","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":273,"op":"mount","child":"g-bargechest","parent":"g-hull","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":285,"op":"mount","child":"s-sign","parent":"s-shed1","unmined":"reader-approved r12","hang":true}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":390,"op":"mount","child":"bp-ladder","parent":"bp-sol","ladder":true}
+{"place_id":"place.pirate-freeholds.upriver-hist-village","ord":53,"op":"mount","child":"chime1","parent":"hist","unmined":"reader-approved r1","hang":true,"max_h":12.0,"bearing":120.0,"along":7.0}
+{"place_id":"place.pirate-freeholds.upriver-hist-village","ord":56,"op":"mount","child":"chime2","parent":"hist","unmined":"reader-approved r1","hang":true,"max_h":12.0,"bearing":155.0,"along":5.0}
+{"place_id":"place.pirate-freeholds.upriver-hist-village","ord":59,"op":"mount","child":"chime3","parent":"hist","unmined":"reader-approved r1","hang":true,"max_h":12.0,"bearing":175.0,"along":3.0}
+{"place_id":"place.pirate-freeholds.upriver-hist-village","ord":62,"op":"mount","child":"lantern1","parent":"hist","unmined":"reader-approved r1","hang":true,"max_h":12.0,"bearing":265.0,"along":7.0}
+{"place_id":"place.pirate-freeholds.upriver-hist-village","ord":65,"op":"mount","child":"lantern2","parent":"hist","unmined":"reader-approved r2","hang":true,"max_h":12.0,"bearing":190.0,"along":5.5}
+{"place_id":"place.pirate-freeholds.upriver-hist-village","ord":68,"op":"mount","child":"lantern3","parent":"hist","unmined":"reader-approved r1","hang":true,"max_h":12.0,"bearing":40.0,"along":6.0,"min_h":2.2}
+{"place_id":"place.pirate-freeholds.upriver-hist-village","ord":71,"op":"mount","child":"lantern4","parent":"hist","unmined":"reader-approved r1","hang":true,"max_h":12.0,"bearing":320.0,"along":6.5,"min_h":2.2}
+{"place_id":"place.pirate-freeholds.upriver-hist-village","ord":74,"op":"mount","child":"hfl1","parent":"hist","unmined":"reader-approved r13","hang":true,"max_h":12.0,"bearing":0.0,"along":5.0}
+{"place_id":"place.pirate-freeholds.upriver-hist-village","ord":76,"op":"mount","child":"hfl2","parent":"hist","unmined":"reader-approved r13","hang":true,"max_h":12.0,"bearing":85.0,"along":5.0}
+{"place_id":"place.pirate-freeholds.upriver-hist-village","ord":78,"op":"mount","child":"hfl3","parent":"hist","unmined":"reader-approved r13","hang":true,"max_h":12.0,"bearing":215.0,"along":5.5}
+{"place_id":"place.pirate-freeholds.upriver-hist-village","ord":80,"op":"mount","child":"hfl4","parent":"hist","unmined":"reader-approved r13","hang":true,"max_h":12.0,"bearing":290.0,"along":4.5}
+{"place_id":"place.pirate-freeholds.upriver-hist-village","ord":249,"op":"mount","child":"rh-reed-lamp","parent":"b-reed","unmined":"reader-approved r113","hang":true,"max_h":6.0,"bearing":240.0,"along":3.4}
+{"place_id":"place.pirate-freeholds.upriver-hist-village","ord":251,"op":"mount","child":"rh-net-lamp","parent":"b-net","unmined":"reader-approved r113","hang":true,"max_h":6.0}
+{"place_id":"place.pirate-freeholds.upriver-hist-village","ord":330,"op":"mount","child":"sign-elder","parent":"b-elder","unmined":"reader-approved r12","hang":true,"max_h":3.2,"bearing":110.0,"along":2.5,"min_h":2.4,"bracket":true}
+{"place_id":"place.pirate-freeholds.upriver-hist-village","ord":338,"op":"mount","child":"sign-trade","parent":"b-trade","unmined":"reader-approved r12","hang":true,"max_h":9.0,"bearing":129.81433023628614,"along":2.5,"min_h":2.0,"bracket":true}
+{"place_id":"place.saxhleel-coast.jungle-root-hollow","ord":33,"op":"mount","child":"d-dark","parent":"b-mouth","unmined":"reader-approved r40","inside":true}
+{"place_id":"place.saxhleel-coast.jungle-root-hollow","ord":38,"op":"mount","child":"d-dark-2","parent":"b-mouth","unmined":"reader-approved r40","inside":true}
+{"place_id":"place.saxhleel-coast.pearl-lots","ord":110,"op":"mount","child":"j-lamp","parent":"s-rack","unmined":"reader-approved r1","hang":true,"max_h":4.0,"min_h":1.4}
+{"place_id":"place.saxhleel-coast.pearl-lots","ord":111,"op":"mount","child":"t-raft-bask","parent":"t-raft","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.saxhleel-coast.pearl-lots","ord":112,"op":"mount","child":"t-raft-net","parent":"t-raft","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.saxhleel-coast.pearl-lots","ord":113,"op":"mount","child":"t-row-bask","parent":"t-row","unmined":"reader-approved r1","inside":true}
+{"place_id":"place.saxhleel-coast.pearl-lots","ord":114,"op":"mount","child":"s-tally","parent":"s-table","unmined":"reader-approved r13"}
+{"place_id":"place.saxhleel-coast.pearl-lots","ord":115,"op":"mount","child":"t-row-bucket","parent":"t-row","unmined":"reader-approved r1","inside":true}

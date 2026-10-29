@@ -1,0 +1,560 @@
+{"fact_id":"fact.alten-corimont.gangs","ord":0,"value":"dredging"}
+{"fact_id":"fact.alten-corimont.neutral","ord":0,"value":"no side"}
+{"fact_id":"fact.alten-corimont.port","ord":0,"value":"river port"}
+{"fact_id":"fact.alten-corimont.run","ord":0,"value":"smugglers"}
+{"fact_id":"fact.alten-meerhleel.built","ord":0,"value":"harbormaster"}
+{"fact_id":"fact.alten-meerhleel.court","ord":0,"value":"court"}
+{"fact_id":"fact.alten-meerhleel.floating","ord":0,"value":"floating village"}
+{"fact_id":"fact.anxileel.drove-empire","ord":0,"value":"drove"}
+{"fact_id":"fact.anxileel.government","ord":0,"value":"government"}
+{"fact_id":"fact.anxileel.nativist","ord":0,"value":"Imperial ways"}
+{"fact_id":"fact.anxileel.party","ord":0,"value":"party"}
+{"fact_id":"fact.archein.hated","ord":0,"value":"hate"}
+{"fact_id":"fact.archein.serf","ord":0,"value":"serf villages"}
+{"fact_id":"fact.archein.served","ord":0,"value":"served"}
+{"fact_id":"fact.archon.beaches","ord":0,"value":"beaches"}
+{"fact_id":"fact.archon.headland","ord":0,"value":"headland"}
+{"fact_id":"fact.archon.legal-harbour","ord":0,"value":"legal harbour"}
+{"fact_id":"fact.archon.pilots","ord":0,"value":"pilot*"}
+{"fact_id":"fact.argonia.marsh","ord":0,"value":"marsh country"}
+{"fact_id":"fact.argonia.renamed","ord":0,"value":"left the Empire"}
+{"fact_id":"fact.argonia.within","ord":0,"value":"inside"}
+{"fact_id":"fact.argonian.gift","ord":0,"value":"gift"}
+{"fact_id":"fact.argonian.lizard","ord":0,"value":"lizard-folk"}
+{"fact_id":"fact.argonian.saxhleel","ord":0,"value":"Saxhleel"}
+{"fact_id":"fact.argonian.tribes-differ","ord":0,"value":"different"}
+{"fact_id":"fact.band.hides","ord":0,"value":"hides"}
+{"fact_id":"fact.band.totems","ord":0,"value":"totems"}
+{"fact_id":"fact.band.turns","ord":0,"value":"turns"}
+{"fact_id":"fact.band.whistle","ord":0,"value":"whistles"}
+{"fact_id":"fact.battle-of-argonia.last","ord":0,"value":"last"}
+{"fact_id":"fact.battle-of-argonia.settled","ord":0,"value":"settled"}
+{"fact_id":"fact.battle-of-argonia.soldiers","ord":0,"value":"soldiers"}
+{"fact_id":"fact.blackguards.brigands","ord":0,"value":"brigands"}
+{"fact_id":"fact.blackguards.inmates","ord":0,"value":"inmates"}
+{"fact_id":"fact.blackguards.largest","ord":0,"value":"largest"}
+{"fact_id":"fact.blackrose.families","ord":0,"value":"families"}
+{"fact_id":"fact.blackrose.lake","ord":0,"value":"lake"}
+{"fact_id":"fact.blackrose.prison","ord":0,"value":"prison"}
+{"fact_id":"fact.blackrose.three-rivers","ord":0,"value":"three rivers"}
+{"fact_id":"fact.blackwood-road.carts","ord":0,"value":"carts"}
+{"fact_id":"fact.blackwood-road.monsoon","ord":0,"value":"monsoon"}
+{"fact_id":"fact.blackwood-road.name","ord":0,"value":"Blackwood"}
+{"fact_id":"fact.blackwood-road.stops","ord":0,"value":"Cartwright's Cross"}
+{"fact_id":"fact.blackwood.hills","ord":0,"value":"hilly country"}
+{"fact_id":"fact.blackwood.riddles","ord":0,"value":"riddle"}
+{"fact_id":"fact.blackwood.road","ord":0,"value":"Cyrodiil"}
+{"fact_id":"fact.boat-crew.poles","ord":0,"value":"poles"}
+{"fact_id":"fact.boat-crew.sleeps-at-landing","ord":0,"value":"landing"}
+{"fact_id":"fact.bog-iron-workings.below","ord":0,"value":"below the road"}
+{"fact_id":"fact.bog-iron-workings.crust","ord":0,"value":"crust"}
+{"fact_id":"fact.bog-iron-workings.deep-end-left","ord":0,"value":"deep end"}
+{"fact_id":"fact.bog-iron-workings.furnace","ord":0,"value":"clay furnace"}
+{"fact_id":"fact.bog-iron-workings.leech-den","ord":0,"value":"leech"}
+{"fact_id":"fact.bog-iron-workings.worked-out","ord":0,"value":"worked out"}
+{"fact_id":"fact.bogiron.cakes","ord":0,"value":"cakes"}
+{"fact_id":"fact.bogiron.furnace","ord":0,"value":"bloom"}
+{"fact_id":"fact.bogiron.home","ord":0,"value":"village"}
+{"fact_id":"fact.bogiron.stagnant","ord":0,"value":"stagnant"}
+{"fact_id":"fact.bones-and-tools.camp","ord":0,"value":"hiring camp"}
+{"fact_id":"fact.bones-and-tools.hollow","ord":0,"value":"hollow"}
+{"fact_id":"fact.bones-and-tools.lair","ord":0,"value":"lair"}
+{"fact_id":"fact.bones.can-go-home","ord":0,"value":"bones"}
+{"fact_id":"fact.bretic.human","ord":0,"value":"human"}
+{"fact_id":"fact.bretic.of","ord":0,"value":"Bretons"}
+{"fact_id":"fact.bretic.ojel","ord":0,"value":"ojel"}
+{"fact_id":"fact.bright-throat-tribe.bonding","ord":0,"value":"bonding ceremony"}
+{"fact_id":"fact.bright-throat-tribe.horse","ord":0,"value":"horse-lizards"}
+{"fact_id":"fact.bright-throat-tribe.welcome","ord":0,"value":"welcome"}
+{"fact_id":"fact.broke-column.bench","ord":0,"value":"bench"}
+{"fact_id":"fact.broke-column.column","ord":0,"value":"Legion column"}
+{"fact_id":"fact.broke-column.disband-terms","ord":0,"value":"pardon"}
+{"fact_id":"fact.broke-column.governor-wont-pay","ord":0,"value":"will not pay"}
+{"fact_id":"fact.broke-column.levy","ord":0,"value":"levy"}
+{"fact_id":"fact.broke-column.officers-use","ord":0,"value":"use the column"}
+{"fact_id":"fact.broke-column.unpaid","ord":0,"value":"never paid"}
+{"fact_id":"fact.broke-column.watches","ord":0,"value":"watch"}
+{"fact_id":"fact.camp.no-kill","ord":0,"value":"tribe"}
+{"fact_id":"fact.camp.orders","ord":0,"value":"orders"}
+{"fact_id":"fact.camp.returns","ord":0,"value":"season"}
+{"fact_id":"fact.camp.stick","ord":0,"value":"stick"}
+{"fact_id":"fact.camp.walker-free","ord":0,"value":"free"}
+{"fact_id":"fact.carriage.resented","ord":0,"value":"resented"}
+{"fact_id":"fact.carrier.takes-home","ord":0,"value":"carries"}
+{"fact_id":"fact.chainbreakers.abolitionists","ord":0,"value":"abolitionists"}
+{"fact_id":"fact.chainbreakers.audit","ord":0,"value":"audit"}
+{"fact_id":"fact.chainbreakers.bones","ord":0,"value":"bones"}
+{"fact_id":"fact.chainbreakers.burn","ord":0,"value":"burn"}
+{"fact_id":"fact.chainbreakers.far-from-hist","ord":0,"value":"far from"}
+{"fact_id":"fact.chainbreakers.one-work","ord":0,"value":"one work"}
+{"fact_id":"fact.chainbreakers.pay","ord":0,"value":"chainbreakers"}
+{"fact_id":"fact.chasepoint.fourth-stage-claim","ord":0,"value":"arrears"}
+{"fact_id":"fact.chasepoint.held-back","ord":0,"value":"held back"}
+{"fact_id":"fact.chasepoint.hereditary","ord":0,"value":"hereditary"}
+{"fact_id":"fact.chasepoint.imperial-stage","ord":0,"value":"Imperial"}
+{"fact_id":"fact.chasepoint.keeper-claim","ord":0,"value":"keeper"}
+{"fact_id":"fact.chasepoint.last-firm-ground","ord":0,"value":"firm ground"}
+{"fact_id":"fact.chasepoint.legion-built","ord":0,"value":"Legion"}
+{"fact_id":"fact.chasepoint.owners-soulrest","ord":0,"value":"counting house"}
+{"fact_id":"fact.chasepoint.rescue-debt","ord":0,"value":"rescue"}
+{"fact_id":"fact.chasepoint.salvage","ord":0,"value":"salvage"}
+{"fact_id":"fact.chasepoint.survey-route","ord":0,"value":"survey"}
+{"fact_id":"fact.chasepoint.unknowing-owners","ord":0,"value":"owners"}
+{"fact_id":"fact.chasepoint.unpaid-keeper","ord":0,"value":"paid"}
+{"fact_id":"fact.chasepoint.wreck-cargo","ord":0,"value":"below deck"}
+{"fact_id":"fact.claywater.each-bank-charges","ord":0,"value":"charges"}
+{"fact_id":"fact.claywater.landing-mud","ord":0,"value":"mud"}
+{"fact_id":"fact.claywater.landing-older","ord":0,"value":"older"}
+{"fact_id":"fact.claywater.landing-refuses-stone","ord":0,"value":"in stone"}
+{"fact_id":"fact.claywater.neither-holds","ord":0,"value":"neither"}
+{"fact_id":"fact.claywater.station-timber","ord":0,"value":"timber"}
+{"fact_id":"fact.claywater.stone-is-the-old-way","ord":0,"value":"gave up building in stone"}
+{"fact_id":"fact.claywater.two-halves","ord":0,"value":"two halves"}
+{"fact_id":"fact.claywater.well-cracking","ord":0,"value":"cracking"}
+{"fact_id":"fact.clutch-keeper.fire-low","ord":0,"value":"fire"}
+{"fact_id":"fact.clutch-keeper.nest-dry","ord":0,"value":"nest dry"}
+{"fact_id":"fact.clutch-keeper.reed","ord":0,"value":"reed"}
+{"fact_id":"fact.clutch.eggs","ord":0,"value":"eggs"}
+{"fact_id":"fact.college-of-whispers.daedra","ord":0,"value":"Daedra"}
+{"fact_id":"fact.college-of-whispers.discreet","ord":0,"value":"discreet"}
+{"fact_id":"fact.college-of-whispers.umbriel","ord":0,"value":"Umbriel"}
+{"fact_id":"fact.column.legion-soldiers","ord":0,"value":"soldiers"}
+{"fact_id":"fact.column.never-paid","ord":0,"value":"never paid"}
+{"fact_id":"fact.column.pardon-rumour","ord":0,"value":"pardon"}
+{"fact_id":"fact.column.recalled","ord":0,"value":"recalled"}
+{"fact_id":"fact.column.stayed","ord":0,"value":"march"}
+{"fact_id":"fact.column.unpaid","ord":0,"value":"owed"}
+{"fact_id":"fact.compact.boats","ord":0,"value":"boats"}
+{"fact_id":"fact.compact.guild","ord":0,"value":"guild"}
+{"fact_id":"fact.compact.monopoly","ord":0,"value":"monopoly"}
+{"fact_id":"fact.compact.salt-teeth","ord":0,"value":"Salt-Teeth"}
+{"fact_id":"fact.compact.shares","ord":0,"value":"share"}
+{"fact_id":"fact.compact.two-weeks","ord":0,"value":"two weeks"}
+{"fact_id":"fact.conclave.consent","ord":0,"value":"consent"}
+{"fact_id":"fact.conclave.keep-trees","ord":0,"value":"keep*"}
+{"fact_id":"fact.conclave.sends-minders","ord":0,"value":"send*"}
+{"fact_id":"fact.conclave.sends-minders","ord":1,"value":"sent"}
+{"fact_id":"fact.conclave.stewards","ord":0,"value":"stewards"}
+{"fact_id":"fact.cutcircle.helstrom","ord":0,"value":"Helstrom"}
+{"fact_id":"fact.cutcircle.piles","ord":0,"value":"piles"}
+{"fact_id":"fact.cutcircle.stilt-hall","ord":0,"value":"stilt hall"}
+{"fact_id":"fact.cutcircle.unbound-root","ord":0,"value":"Unbound Root"}
+{"fact_id":"fact.cyrodilic-collections.digs","ord":0,"value":"digs"}
+{"fact_id":"fact.cyrodilic-collections.museum","ord":0,"value":"museum"}
+{"fact_id":"fact.cyrodilic-collections.return","ord":0,"value":"return"}
+{"fact_id":"fact.dres.slaving-house","ord":0,"value":"slaving house"}
+{"fact_id":"fact.dunmer.dres","ord":0,"value":"House Dres"}
+{"fact_id":"fact.dunmer.elves","ord":0,"value":"dark elves"}
+{"fact_id":"fact.dunmer.ended","ord":0,"value":"ended"}
+{"fact_id":"fact.dyer.armful","ord":0,"value":"armful"}
+{"fact_id":"fact.dyer.cutters","ord":0,"value":"cutters"}
+{"fact_id":"fact.dyer.stains","ord":0,"value":"stains"}
+{"fact_id":"fact.dyer.vat","ord":0,"value":"vat"}
+{"fact_id":"fact.egg-tender.clutch","ord":0,"value":"clutch"}
+{"fact_id":"fact.egg-tender.depend","ord":0,"value":"depend"}
+{"fact_id":"fact.egg-tender.log","ord":0,"value":"star sign"}
+{"fact_id":"fact.egg-tender.tends","ord":0,"value":"egg-tender"}
+{"fact_id":"fact.elder.debts","ord":0,"value":"debts"}
+{"fact_id":"fact.elder.guest-stores","ord":0,"value":"guest stores"}
+{"fact_id":"fact.elder.offerings","ord":0,"value":"offerings"}
+{"fact_id":"fact.elder.strangers","ord":0,"value":"strangers"}
+{"fact_id":"fact.families.cook","ord":0,"value":"fire stands"}
+{"fact_id":"fact.families.jars","ord":0,"value":"jars"}
+{"fact_id":"fact.families.mend-rope","ord":0,"value":"mend*"}
+{"fact_id":"fact.families.quarrel","ord":0,"value":"quarrel"}
+{"fact_id":"fact.fish-eye-rye.liquor","ord":0,"value":"liquor"}
+{"fact_id":"fact.fish-eye-rye.plug","ord":0,"value":"plugs"}
+{"fact_id":"fact.flotilla.hidden-cache","ord":0,"value":"cache"}
+{"fact_id":"fact.flotilla.licence","ord":0,"value":"licen*"}
+{"fact_id":"fact.flotilla.stopped-port","ord":0,"value":"stop the port"}
+{"fact_id":"fact.ford.wade","ord":0,"value":"wade"}
+{"fact_id":"fact.gang-ground.camp","ord":0,"value":"dredging gang"}
+{"fact_id":"fact.gang-ground.ground","ord":0,"value":"Border road"}
+{"fact_id":"fact.gang-ground.shed","ord":0,"value":"hatching shed"}
+{"fact_id":"fact.gang.debt-grows","ord":0,"value":"debt"}
+{"fact_id":"fact.gang.dredges","ord":0,"value":"dredges"}
+{"fact_id":"fact.gang.owes","ord":0,"value":"owe"}
+{"fact_id":"fact.gang.sleeps-on-land","ord":0,"value":"sleeps on land"}
+{"fact_id":"fact.gideon.blackwood-road","ord":0,"value":"Blackwood Road"}
+{"fact_id":"fact.gideon.courts","ord":0,"value":"courts"}
+{"fact_id":"fact.gideon.frontier","ord":0,"value":"frontier"}
+{"fact_id":"fact.gideon.owing-paper","ord":0,"value":"contested"}
+{"fact_id":"fact.greenspring.beds-dear","ord":0,"value":"beds"}
+{"fact_id":"fact.greenspring.body-in-spring","ord":0,"value":"body"}
+{"fact_id":"fact.greenspring.cutters","ord":0,"value":"cutters"}
+{"fact_id":"fact.greenspring.delegations-lodge","ord":0,"value":"delegations"}
+{"fact_id":"fact.greenspring.hist-sickens","ord":0,"value":"sicken"}
+{"fact_id":"fact.greenspring.households-quiet","ord":0,"value":"households"}
+{"fact_id":"fact.greenspring.ledger","ord":0,"value":"ledger"}
+{"fact_id":"fact.greenspring.lodge-visitors","ord":0,"value":"lodge"}
+{"fact_id":"fact.greenspring.next-load","ord":0,"value":"next load"}
+{"fact_id":"fact.greenspring.salt","ord":0,"value":"salt"}
+{"fact_id":"fact.greenspring.salt-works","ord":0,"value":"upstream"}
+{"fact_id":"fact.greenspring.taste-first","ord":0,"value":"taste"}
+{"fact_id":"fact.greenspring.terms-unwritten","ord":0,"value":"written down"}
+{"fact_id":"fact.greenspring.water-free","ord":0,"value":"nothing for"}
+{"fact_id":"fact.helstrom.capital","ord":0,"value":"capital"}
+{"fact_id":"fact.helstrom.grove","ord":0,"value":"grove"}
+{"fact_id":"fact.helstrom.never-taken","ord":0,"value":"taken"}
+{"fact_id":"fact.helstrom.refuge","ord":0,"value":"withdrew"}
+{"fact_id":"fact.helstrom.south-west","ord":0,"value":"south-west"}
+{"fact_id":"fact.helstrom.spring-sours","ord":0,"value":"sour"}
+{"fact_id":"fact.herald.bargains","ord":0,"value":"bargain*"}
+{"fact_id":"fact.herald.envoy","ord":0,"value":"envoy"}
+{"fact_id":"fact.herald.news","ord":0,"value":"news"}
+{"fact_id":"fact.herald.no-state-rank","ord":0,"value":"no rank"}
+{"fact_id":"fact.hissmir.outsiders","ord":0,"value":"outsiders"}
+{"fact_id":"fact.hissmir.stewards","ord":0,"value":"Root Stewards"}
+{"fact_id":"fact.hissmir.trials","ord":0,"value":"trials"}
+{"fact_id":"fact.hissmir.xanmeer","ord":0,"value":"xanmeer"}
+{"fact_id":"fact.hist-sap.outsider","ord":0,"value":"bloodlust"}
+{"fact_id":"fact.hist-sap.poison","ord":0,"value":"poisons"}
+{"fact_id":"fact.hist-sap.rites","ord":0,"value":"coming of age"}
+{"fact_id":"fact.hist-sap.soul","ord":0,"value":"soul"}
+{"fact_id":"fact.hist.clutch","ord":0,"value":"clutch"}
+{"fact_id":"fact.hist.hatching","ord":0,"value":"hatch*"}
+{"fact_id":"fact.hist.mind","ord":0,"value":"mind"}
+{"fact_id":"fact.hist.mind","ord":1,"value":"minds"}
+{"fact_id":"fact.hist.minder-signs","ord":0,"value":"signs"}
+{"fact_id":"fact.hist.naming-sap","ord":0,"value":"naming day"}
+{"fact_id":"fact.hist.one-mind","ord":0,"value":"one mind"}
+{"fact_id":"fact.hist.sap","ord":0,"value":"sap"}
+{"fact_id":"fact.hist.sap-shapes","ord":0,"value":"shape*"}
+{"fact_id":"fact.hist.sap-soul","ord":0,"value":"soul*"}
+{"fact_id":"fact.hist.sap-soul","ord":1,"value":"blood"}
+{"fact_id":"fact.hist.silence-cause","ord":0,"value":"sick"}
+{"fact_id":"fact.hist.silent","ord":0,"value":"silent"}
+{"fact_id":"fact.house-dres-remnant.claimants","ord":0,"value":"claimants"}
+{"fact_id":"fact.house-dres-remnant.north","ord":0,"value":"north"}
+{"fact_id":"fact.house-dres-remnant.slaves","ord":0,"value":"slaves"}
+{"fact_id":"fact.imperial.built","ord":0,"value":"prisons"}
+{"fact_id":"fact.imperial.coasts","ord":0,"value":"deep marsh"}
+{"fact_id":"fact.imperial.withdrew","ord":0,"value":"withdrew"}
+{"fact_id":"fact.keeper.ladle","ord":0,"value":"ladle"}
+{"fact_id":"fact.league-of-open-water.citizenship","ord":0,"value":"citizenship"}
+{"fact_id":"fact.league-of-open-water.hall","ord":0,"value":"hall"}
+{"fact_id":"fact.league-of-open-water.standing","ord":0,"value":"standing"}
+{"fact_id":"fact.legion.heirs","ord":0,"value":"heirs"}
+{"fact_id":"fact.legion.stages","ord":0,"value":"stages"}
+{"fact_id":"fact.legion.stayed","ord":0,"value":"stayed"}
+{"fact_id":"fact.lighter-flotilla.hulls","ord":0,"value":"hulls"}
+{"fact_id":"fact.lighter-flotilla.pier","ord":0,"value":"pier"}
+{"fact_id":"fact.lighter-flotilla.rafts","ord":0,"value":"rafts"}
+{"fact_id":"fact.lighter.cargo-ashore","ord":0,"value":"hold"}
+{"fact_id":"fact.lighter.deep-water","ord":0,"value":"deep-water"}
+{"fact_id":"fact.lighter.master-casts-off","ord":0,"value":"casts off"}
+{"fact_id":"fact.lighter.passengers","ord":0,"value":"passengers"}
+{"fact_id":"fact.lightering.bails","ord":0,"value":"bails"}
+{"fact_id":"fact.lightering.bunk","ord":0,"value":"bunk"}
+{"fact_id":"fact.lightering.hauls","ord":0,"value":"hauls"}
+{"fact_id":"fact.lightering.no-dock","ord":0,"value":"dock"}
+{"fact_id":"fact.lilmoth.council","ord":0,"value":"council"}
+{"fact_id":"fact.lilmoth.destroyed","ord":0,"value":"destroyed"}
+{"fact_id":"fact.lilmoth.shallow","ord":0,"value":"shallow"}
+{"fact_id":"fact.lilmoth.umbriel","ord":0,"value":"Umbriel"}
+{"fact_id":"fact.lodge.bed-price","ord":0,"value":"price"}
+{"fact_id":"fact.lodge.inn","ord":0,"value":"inn"}
+{"fact_id":"fact.lodge.rope","ord":0,"value":"rope"}
+{"fact_id":"fact.long-house.household","ord":0,"value":"household"}
+{"fact_id":"fact.long-house.kept-long","ord":0,"value":"kept it"}
+{"fact_id":"fact.long-house.mattresses","ord":0,"value":"mattresses"}
+{"fact_id":"fact.long-house.piles","ord":0,"value":"piles"}
+{"fact_id":"fact.long-water-hold.kin","ord":0,"value":"tribeless"}
+{"fact_id":"fact.long-water-hold.route","ord":0,"value":"poling route"}
+{"fact_id":"fact.long-water-hold.settled","ord":0,"value":"settled Naga tribe"}
+{"fact_id":"fact.lot.family","ord":0,"value":"family"}
+{"fact_id":"fact.lot.grades","ord":0,"value":"grades"}
+{"fact_id":"fact.lot.numbered","ord":0,"value":"numbered"}
+{"fact_id":"fact.lot.tally","ord":0,"value":"tally"}
+{"fact_id":"fact.lots.deep","ord":0,"value":"deep lots"}
+{"fact_id":"fact.lots.drowned-basket","ord":0,"value":"basket"}
+{"fact_id":"fact.lots.heirless","ord":0,"value":"heir"}
+{"fact_id":"fact.lots.heirless","ord":1,"value":"heirs"}
+{"fact_id":"fact.lots.heirs-share","ord":0,"value":"share"}
+{"fact_id":"fact.lots.inheritance","ord":0,"value":"inheritance"}
+{"fact_id":"fact.lots.lot-four","ord":0,"value":"lot four"}
+{"fact_id":"fact.lots.numbered","ord":0,"value":"numbered"}
+{"fact_id":"fact.lots.tally","ord":0,"value":"tally book"}
+{"fact_id":"fact.lukiul.assimilated","ord":0,"value":"assimilated"}
+{"fact_id":"fact.lukiul.deaf","ord":0,"value":"cannot hear"}
+{"fact_id":"fact.lukiul.slur","ord":0,"value":"slur"}
+{"fact_id":"fact.lukiul.slur","ord":1,"value":"lukiul"}
+{"fact_id":"fact.marsh-charter.charter","ord":0,"value":"charter"}
+{"fact_id":"fact.marsh-charter.hire","ord":0,"value":"fighters for hire"}
+{"fact_id":"fact.marsh-charter.opposes","ord":0,"value":"opposes"}
+{"fact_id":"fact.minder.feels-trouble","ord":0,"value":"trouble"}
+{"fact_id":"fact.minder.leaves","ord":0,"value":"leaves"}
+{"fact_id":"fact.minder.reads-signs","ord":0,"value":"signs"}
+{"fact_id":"fact.minder.tends","ord":0,"value":"tends"}
+{"fact_id":"fact.morrowind-veterans.era","ord":0,"value":"Fourth Era"}
+{"fact_id":"fact.morrowind-veterans.home","ord":0,"value":"home"}
+{"fact_id":"fact.morrowind-veterans.soldiers","ord":0,"value":"Accession War"}
+{"fact_id":"fact.morrowind.border","ord":0,"value":"resented"}
+{"fact_id":"fact.morrowind.mournhold","ord":0,"value":"Mournhold"}
+{"fact_id":"fact.morrowind.north","ord":0,"value":"north"}
+{"fact_id":"fact.murkmire.bay","ord":0,"value":"Oliis Bay"}
+{"fact_id":"fact.murkmire.nagakur","ord":0,"value":"Naga-Kur"}
+{"fact_id":"fact.murkmire.tribes","ord":0,"value":"dozen tribes"}
+{"fact_id":"fact.murkwater.tribe","ord":0,"value":"trainers"}
+{"fact_id":"fact.murkwater.village","ord":0,"value":"village"}
+{"fact_id":"fact.naga-kur.bones","ord":0,"value":"bones"}
+{"fact_id":"fact.naga-kur.fear","ord":0,"value":"fear"}
+{"fact_id":"fact.naga-kur.rule","ord":0,"value":"inner swamps"}
+{"fact_id":"fact.naga.adder","ord":0,"value":"adder-like"}
+{"fact_id":"fact.naga.cutrope","ord":0,"value":"Cut-Rope"}
+{"fact_id":"fact.naga.deep","ord":0,"value":"deep parts"}
+{"fact_id":"fact.naga.not-all","ord":0,"value":"brigand"}
+{"fact_id":"fact.naga.tall","ord":0,"value":"seven or eight feet"}
+{"fact_id":"fact.naga.tracks","ord":0,"value":"tracks"}
+{"fact_id":"fact.naga.tribeless","ord":0,"value":"no tribe"}
+{"fact_id":"fact.naheesh.croaks","ord":0,"value":"croaks"}
+{"fact_id":"fact.naheesh.elder","ord":0,"value":"elder"}
+{"fact_id":"fact.naheesh.no-power","ord":0,"value":"no power"}
+{"fact_id":"fact.netmender.any-crew","ord":0,"value":"bring*"}
+{"fact_id":"fact.netmender.deck","ord":0,"value":"open"}
+{"fact_id":"fact.netmender.mends","ord":0,"value":"torn nets"}
+{"fact_id":"fact.night-reed-chapter.guild","ord":0,"value":"thieves' guild"}
+{"fact_id":"fact.night-reed-chapter.lookout","ord":0,"value":"lookout"}
+{"fact_id":"fact.night-reed-chapter.native","ord":0,"value":"canals"}
+{"fact_id":"fact.nine-bends.camp-a-day-down","ord":0,"value":"a day downriver"}
+{"fact_id":"fact.nine-bends.claims-old","ord":0,"value":"old enough"}
+{"fact_id":"fact.nine-bends.cut-at-landing","ord":0,"value":"our landing"}
+{"fact_id":"fact.nine-bends.cut-at-landing","ord":1,"value":"the landing"}
+{"fact_id":"fact.nine-bends.fresh","ord":0,"value":"fresh"}
+{"fact_id":"fact.nine-bends.naming-needs-pool","ord":0,"value":"hatchery pool"}
+{"fact_id":"fact.nine-bends.naming-offered","ord":0,"value":"offered"}
+{"fact_id":"fact.nine-bends.refuge-no-hist","ord":0,"value":"no Hist"}
+{"fact_id":"fact.nine-bends.roll","ord":0,"value":"roll"}
+{"fact_id":"fact.nine-bends.stopped-counting","ord":0,"value":"stopped counting"}
+{"fact_id":"fact.nine-bends.traps-at-port","ord":0,"value":"boats now load"}
+{"fact_id":"fact.nine-bends.tree","ord":0,"value":"nine bends"}
+{"fact_id":"fact.nine-bends.waterline-cut","ord":0,"value":"cut mark"}
+{"fact_id":"fact.nine-trunks.pitch-rent","ord":0,"value":"pitch"}
+{"fact_id":"fact.nisswo-of-the-turning-path.change","ord":0,"value":"endings"}
+{"fact_id":"fact.nisswo-of-the-turning-path.quarrels","ord":0,"value":"quarrels"}
+{"fact_id":"fact.nisswo-of-the-turning-path.teeth","ord":0,"value":"Teeth of Sithis"}
+{"fact_id":"fact.nisswo.asks-offering","ord":0,"value":"offering"}
+{"fact_id":"fact.nisswo.meets-pilgrims","ord":0,"value":"meets"}
+{"fact_id":"fact.nisswo.no-doctrine","ord":0,"value":"doctrine"}
+{"fact_id":"fact.nisswo.priests","ord":0,"value":"priests"}
+{"fact_id":"fact.nisswo.priests-of-sithis","ord":0,"value":"priests"}
+{"fact_id":"fact.nisswo.travel","ord":0,"value":"travel"}
+{"fact_id":"fact.north-cut-camp.hold-pays","ord":0,"value":"paying"}
+{"fact_id":"fact.north-cut-camp.sells-quiet","ord":0,"value":"keep the track quiet"}
+{"fact_id":"fact.north-cut-camp.tally-receipt","ord":0,"value":"tally-stick"}
+{"fact_id":"fact.north-cut.abandoned","ord":0,"value":"four kilometres"}
+{"fact_id":"fact.north-cut.drains","ord":0,"value":"drains"}
+{"fact_id":"fact.north-cut.quarry","ord":0,"value":"quarry"}
+{"fact_id":"fact.ojel.neutral","ord":0,"value":"plain word"}
+{"fact_id":"fact.ojel.neutral","ord":1,"value":"no insult"}
+{"fact_id":"fact.ojel.outsiders","ord":0,"value":"outsiders"}
+{"fact_id":"fact.onkobra.clay","ord":0,"value":"clay"}
+{"fact_id":"fact.onkobra.east","ord":0,"value":"east"}
+{"fact_id":"fact.onkobra.muddy","ord":0,"value":"muddy"}
+{"fact_id":"fact.overseers.doors","ord":0,"value":"door"}
+{"fact_id":"fact.overseers.ledger","ord":0,"value":"ledger"}
+{"fact_id":"fact.overseers.two","ord":0,"value":"Two overseers"}
+{"fact_id":"fact.owing.born","ord":0,"value":"born owing"}
+{"fact_id":"fact.owing.debt","ord":0,"value":"debt"}
+{"fact_id":"fact.owing.no-court","ord":0,"value":"court"}
+{"fact_id":"fact.owing.sold","ord":0,"value":"sold"}
+{"fact_id":"fact.padomaic.archon","ord":0,"value":"Archon"}
+{"fact_id":"fact.padomaic.ocean","ord":0,"value":"ocean"}
+{"fact_id":"fact.padomaic.sank","ord":0,"value":"sank"}
+{"fact_id":"fact.panther.fork","ord":0,"value":"forks"}
+{"fact_id":"fact.panther.frogs","ord":0,"value":"frogs"}
+{"fact_id":"fact.panther.pantherfish","ord":0,"value":"Pantherfish"}
+{"fact_id":"fact.panther.source","ord":0,"value":"Cyrodiil"}
+{"fact_id":"fact.poler.by-wheel","ord":0,"value":"wheel"}
+{"fact_id":"fact.poler.must-pay","ord":0,"value":"without paying"}
+{"fact_id":"fact.poler.raft","ord":0,"value":"raft"}
+{"fact_id":"fact.portdun.landing","ord":0,"value":"landing"}
+{"fact_id":"fact.portdun.monopoly","ord":0,"value":"monopoly"}
+{"fact_id":"fact.portdun.paid","ord":0,"value":"paid"}
+{"fact_id":"fact.portdun.pilots","ord":0,"value":"pilots"}
+{"fact_id":"fact.purser.books","ord":0,"value":"books"}
+{"fact_id":"fact.purser.bunks","ord":0,"value":"bunks"}
+{"fact_id":"fact.purser.untaxed","ord":0,"value":"untaxed"}
+{"fact_id":"fact.reed.bundled","ord":0,"value":"bundles"}
+{"fact_id":"fact.reed.buyers","ord":0,"value":"building"}
+{"fact_id":"fact.reed.cut-bank","ord":0,"value":"bank"}
+{"fact_id":"fact.reed.sold-armful","ord":0,"value":"armful"}
+{"fact_id":"fact.riverwalk.argued-nightly","ord":0,"value":"every night"}
+{"fact_id":"fact.riverwalk.cove","ord":0,"value":"cove"}
+{"fact_id":"fact.riverwalk.feeds-crews","ord":0,"value":"bunk"}
+{"fact_id":"fact.riverwalk.grows-no-food","ord":0,"value":"grows no food"}
+{"fact_id":"fact.riverwalk.lives-on-toll","ord":0,"value":"ferry stage"}
+{"fact_id":"fact.riverwalk.paying-takes-a-side","ord":0,"value":"taking that side"}
+{"fact_id":"fact.riverwalk.silt-bypass","ord":0,"value":"silted"}
+{"fact_id":"fact.riverwalk.slow-heron","ord":0,"value":"Slow Heron"}
+{"fact_id":"fact.riverwalk.sounded-way","ord":0,"value":"sound the way"}
+{"fact_id":"fact.road.imperial","ord":0,"value":"Imperial"}
+{"fact_id":"fact.road.old-names","ord":0,"value":"old names"}
+{"fact_id":"fact.road.tag-house","ord":0,"value":"Tag House"}
+{"fact_id":"fact.roll.list","ord":0,"value":"roll"}
+{"fact_id":"fact.roll.read-on-barge","ord":0,"value":"barge"}
+{"fact_id":"fact.root-talk.consensus","ord":0,"value":"consensus"}
+{"fact_id":"fact.root-talk.convocation","ord":0,"value":"convocation"}
+{"fact_id":"fact.root-talk.croaks","ord":0,"value":"croaks"}
+{"fact_id":"fact.root-whisper-tribe.collections","ord":0,"value":"Collections"}
+{"fact_id":"fact.root-whisper-tribe.plague","ord":0,"value":"plague"}
+{"fact_id":"fact.root-whisper-tribe.sleeps","ord":0,"value":"asleep"}
+{"fact_id":"fact.rootworm-waykeepers.air","ord":0,"value":"air"}
+{"fact_id":"fact.rootworm-waykeepers.secret","ord":0,"value":"secret"}
+{"fact_id":"fact.rootworm-waykeepers.station","ord":0,"value":"station"}
+{"fact_id":"fact.rose.generations","ord":0,"value":"generations"}
+{"fact_id":"fact.rose.not-prison","ord":0,"value":"will not call"}
+{"fact_id":"fact.rose.old-prison","ord":0,"value":"prison"}
+{"fact_id":"fact.rose.releases-dead","ord":0,"value":"releases"}
+{"fact_id":"fact.salt-teeth.pirates","ord":0,"value":"pirates"}
+{"fact_id":"fact.salt-teeth.raider","ord":0,"value":"raider"}
+{"fact_id":"fact.salvage.guarded-stretch","ord":0,"value":"guard*"}
+{"fact_id":"fact.salvage.hereditary","ord":0,"value":"hereditary"}
+{"fact_id":"fact.salvage.no-foreign-timber","ord":0,"value":"timber"}
+{"fact_id":"fact.salvage.wreckage","ord":0,"value":"Wreckage"}
+{"fact_id":"fact.scrubber.bucket","ord":0,"value":"bucket"}
+{"fact_id":"fact.scrubbing.no-touch-beneath","ord":0,"value":"beneath"}
+{"fact_id":"fact.scrubbing.ritual","ord":0,"value":"ritual"}
+{"fact_id":"fact.scrubbing.waterline","ord":0,"value":"waterline"}
+{"fact_id":"fact.sealed-vault.nailed","ord":0,"value":"nailed"}
+{"fact_id":"fact.sealed-vault.note","ord":0,"value":"note"}
+{"fact_id":"fact.sealed-vault.undercroft","ord":0,"value":"undercroft"}
+{"fact_id":"fact.serjeant.parley","ord":0,"value":"parleys"}
+{"fact_id":"fact.serjeant.pay-book","ord":0,"value":"pay book"}
+{"fact_id":"fact.serjeant.roster","ord":0,"value":"roster"}
+{"fact_id":"fact.serjeant.watch","ord":0,"value":"hour"}
+{"fact_id":"fact.shadowfen.borders","ord":0,"value":"borders"}
+{"fact_id":"fact.shadowfen.stormhold","ord":0,"value":"Stormhold"}
+{"fact_id":"fact.shadowfen.temples","ord":0,"value":"ruined temples"}
+{"fact_id":"fact.shadowscale.born","ord":0,"value":"born under"}
+{"fact_id":"fact.shadowscale.few","ord":0,"value":"few"}
+{"fact_id":"fact.shadowscale.rule","ord":0,"value":"may not kill"}
+{"fact_id":"fact.shells.bunk","ord":0,"value":"bunk"}
+{"fact_id":"fact.shells.crews","ord":0,"value":"crews"}
+{"fact_id":"fact.shells.reed-mat","ord":0,"value":"reed mat"}
+{"fact_id":"fact.sithis.death-change","ord":0,"value":"change"}
+{"fact_id":"fact.sithis.mourned","ord":0,"value":"mourned"}
+{"fact_id":"fact.sithis.void-god","ord":0,"value":"void god"}
+{"fact_id":"fact.smith.bloom","ord":0,"value":"bloom"}
+{"fact_id":"fact.smith.forge","ord":0,"value":"forge"}
+{"fact_id":"fact.smith.mends-tools","ord":0,"value":"tools"}
+{"fact_id":"fact.smith.paid","ord":0,"value":"coin"}
+{"fact_id":"fact.soulrest.bay","ord":0,"value":"Topal Bay"}
+{"fact_id":"fact.soulrest.capital","ord":0,"value":"capital"}
+{"fact_id":"fact.soulrest.contested","ord":0,"value":"contested"}
+{"fact_id":"fact.southern-sea.bays","ord":0,"value":"Topal Bay"}
+{"fact_id":"fact.southern-sea.cities","ord":0,"value":"only two cities"}
+{"fact_id":"fact.southern-sea.south","ord":0,"value":"south"}
+{"fact_id":"fact.speaker.for-crews","ord":0,"value":"speaks for"}
+{"fact_id":"fact.speaker.nod","ord":0,"value":"nod"}
+{"fact_id":"fact.speaker.vote","ord":0,"value":"vote*"}
+{"fact_id":"fact.spring.pool","ord":0,"value":"pool"}
+{"fact_id":"fact.spring.taste","ord":0,"value":"taste"}
+{"fact_id":"fact.spring.unboiled","ord":0,"value":"unboiled"}
+{"fact_id":"fact.spring.water-free","ord":0,"value":"free"}
+{"fact_id":"fact.stage.boats-moor","ord":0,"value":"moor"}
+{"fact_id":"fact.stage.crew-names","ord":0,"value":"name of its boat"}
+{"fact_id":"fact.stage.fares","ord":0,"value":"fares"}
+{"fact_id":"fact.stage.traveller-until-fed","ord":0,"value":"traveller"}
+{"fact_id":"fact.stall.bow-board","ord":0,"value":"bow-board"}
+{"fact_id":"fact.stall.counted","ord":0,"value":"counted"}
+{"fact_id":"fact.stall.no-nameless-lot","ord":0,"value":"name"}
+{"fact_id":"fact.stall.week","ord":0,"value":"salvage"}
+{"fact_id":"fact.station.inherited","ord":0,"value":"inherited"}
+{"fact_id":"fact.station.two-claims","ord":0,"value":"claim*"}
+{"fact_id":"fact.station.unpaid","ord":0,"value":"paid"}
+{"fact_id":"fact.stayed.fewer","ord":0,"value":"fewer"}
+{"fact_id":"fact.stayed.houses","ord":0,"value":"smokehouse"}
+{"fact_id":"fact.stayed.kin-house","ord":0,"value":"kin-house"}
+{"fact_id":"fact.stayed.roll","ord":0,"value":"roll"}
+{"fact_id":"fact.sul-xan.cult","ord":0,"value":"cult"}
+{"fact_id":"fact.sul-xan.fear","ord":0,"value":"fears"}
+{"fact_id":"fact.sul-xan.masks","ord":0,"value":"death masks"}
+{"fact_id":"fact.sunken-archive.custodians","ord":0,"value":"custodians"}
+{"fact_id":"fact.sunken-archive.folk","ord":0,"value":"folk skill"}
+{"fact_id":"fact.sunken-archive.owns","ord":0,"value":"owns"}
+{"fact_id":"fact.synod.artefacts","ord":0,"value":"artefacts"}
+{"fact_id":"fact.synod.guild","ord":0,"value":"Mages Guild"}
+{"fact_id":"fact.synod.necromancy","ord":0,"value":"necromancy"}
+{"fact_id":"fact.tag-house.dead-papers","ord":0,"value":"papers"}
+{"fact_id":"fact.tag-house.living-tags","ord":0,"value":"still alive"}
+{"fact_id":"fact.tag-house.prison-road","ord":0,"value":"Prison road"}
+{"fact_id":"fact.tag-house.returned-tag","ord":0,"value":"bone-tag"}
+{"fact_id":"fact.tag-house.tag-seventeen","ord":0,"value":"seventeen"}
+{"fact_id":"fact.tag-house.tag-seventeen","ord":1,"value":"no name"}
+{"fact_id":"fact.tag-house.vaunting-names","ord":0,"value":"Vaunting"}
+{"fact_id":"fact.tag-house.walked-out","ord":0,"value":"walked out"}
+{"fact_id":"fact.tag.carriage-charge","ord":0,"value":"carriage charge"}
+{"fact_id":"fact.tag.chainbreakers","ord":0,"value":"Chainbreakers"}
+{"fact_id":"fact.tag.release","ord":0,"value":"record"}
+{"fact_id":"fact.tags.basket","ord":0,"value":"basket"}
+{"fact_id":"fact.tags.charge-book","ord":0,"value":"charge"}
+{"fact_id":"fact.tags.no-tag","ord":0,"value":"without"}
+{"fact_id":"fact.tags.shelter","ord":0,"value":"shelter"}
+{"fact_id":"fact.tappers.draw-sap","ord":0,"value":"tappers"}
+{"fact_id":"fact.tear.road","ord":0,"value":"Tear road"}
+{"fact_id":"fact.tear.town","ord":0,"value":"border town"}
+{"fact_id":"fact.tear.trade","ord":0,"value":"slave trade"}
+{"fact_id":"fact.teeth-band.offerings","ord":0,"value":"offerings"}
+{"fact_id":"fact.teeth-band.shallows","ord":0,"value":"shallows"}
+{"fact_id":"fact.teeth-band.stair","ord":0,"value":"stair"}
+{"fact_id":"fact.teeth-band.watch","ord":0,"value":"watch"}
+{"fact_id":"fact.teeth-priest.bell","ord":0,"value":"bell"}
+{"fact_id":"fact.teeth-priest.teaching","ord":0,"value":"teaching"}
+{"fact_id":"fact.teeth.daily-rite","ord":0,"value":"daily rite"}
+{"fact_id":"fact.teeth.empty-handed","ord":0,"value":"empty-handed"}
+{"fact_id":"fact.teeth.loss-is-teaching","ord":0,"value":"teach the loss"}
+{"fact_id":"fact.teeth.lost-purpose-claimed","ord":0,"value":"lost first purpose"}
+{"fact_id":"fact.tender.lines","ord":0,"value":"lines"}
+{"fact_id":"fact.tender.moored","ord":0,"value":"moored"}
+{"fact_id":"fact.tender.never-enters","ord":0,"value":"enters"}
+{"fact_id":"fact.tender.shared","ord":0,"value":"share"}
+{"fact_id":"fact.the-empty-cradle.bid","ord":0,"value":"bid"}
+{"fact_id":"fact.the-empty-cradle.gone","ord":0,"value":"gone"}
+{"fact_id":"fact.the-empty-cradle.order","ord":0,"value":"order"}
+{"fact_id":"fact.the-wamasu-shrine.corroding","ord":0,"value":"corroding"}
+{"fact_id":"fact.the-wamasu-shrine.flood-worse","ord":0,"value":"flooding"}
+{"fact_id":"fact.the-wamasu-shrine.practical","ord":0,"value":"salt"}
+{"fact_id":"fact.the-wamasu-shrine.rotation","ord":0,"value":"rotation"}
+{"fact_id":"fact.the-wamasu-shrine.rotation","ord":1,"value":"turn"}
+{"fact_id":"fact.thorn-ash-reed-accord.floor","ord":0,"value":"counting floor"}
+{"fact_id":"fact.thorn-ash-reed-accord.memory","ord":0,"value":"remembers"}
+{"fact_id":"fact.thorn-ash-reed-accord.title","ord":0,"value":"title"}
+{"fact_id":"fact.thorn.accord","ord":0,"value":"Accord"}
+{"fact_id":"fact.thorn.border-city","ord":0,"value":"border"}
+{"fact_id":"fact.thorn.dres-raid","ord":0,"value":"raided"}
+{"fact_id":"fact.thorn.tear-road","ord":0,"value":"Tear road"}
+{"fact_id":"fact.toll.levy","ord":0,"value":"levy"}
+{"fact_id":"fact.toll.pilgrim-water","ord":0,"value":"pilgrim water"}
+{"fact_id":"fact.toll.slate","ord":0,"value":"slate"}
+{"fact_id":"fact.toll.two-claimants","ord":0,"value":"claim*"}
+{"fact_id":"fact.travellers.stop","ord":0,"value":"stop"}
+{"fact_id":"fact.umbriel-witness-society.archive","ord":0,"value":"archive"}
+{"fact_id":"fact.umbriel-witness-society.memorial","ord":0,"value":"memorial"}
+{"fact_id":"fact.umbriel-witness-society.remembered","ord":0,"value":"remembered"}
+{"fact_id":"fact.umbriel.flying","ord":0,"value":"flying city"}
+{"fact_id":"fact.umbriel.lilmoth","ord":0,"value":"Lilmoth"}
+{"fact_id":"fact.umbriel.south","ord":0,"value":"south"}
+{"fact_id":"fact.unbound-root-cutting.piece","ord":0,"value":"planted"}
+{"fact_id":"fact.unbound-root-cutting.takes","ord":0,"value":"Unbound Root"}
+{"fact_id":"fact.unbound-root.above","ord":0,"value":"above every law"}
+{"fact_id":"fact.unbound-root.mixed","ord":0,"value":"fanatics"}
+{"fact_id":"fact.unbound-root.sever","ord":0,"value":"sever"}
+{"fact_id":"fact.veiled-reed.covert","ord":0,"value":"covert"}
+{"fact_id":"fact.veiled-reed.factors","ord":0,"value":"factors"}
+{"fact_id":"fact.veiled-reed.guards","ord":0,"value":"secrecy"}
+{"fact_id":"fact.well.ask-keeper","ord":0,"value":"asks"}
+{"fact_id":"fact.well.imperial-stone","ord":0,"value":"stone"}
+{"fact_id":"fact.well.windlass","ord":0,"value":"windlass"}
+{"fact_id":"fact.white-rose.graves","ord":0,"value":"White Rose"}
+{"fact_id":"fact.witness.knows-names","ord":0,"value":"every name"}
+{"fact_id":"fact.witness.says-who-saw","ord":0,"value":"who saw"}
+{"fact_id":"fact.workcamp.barge","ord":0,"value":"barge"}
+{"fact_id":"fact.workcamp.downriver","ord":0,"value":"downriver"}
+{"fact_id":"fact.workcamp.roll","ord":0,"value":"roll"}
+{"fact_id":"fact.xanmeer.ruins","ord":0,"value":"ruins"}
+{"fact_id":"fact.xanmeer.stepped","ord":0,"value":"stepped"}
+{"fact_id":"fact.xanmeer.traps","ord":0,"value":"traps"}
+{"fact_id":"fact.xit-xaht.directs","ord":0,"value":"directs"}
+{"fact_id":"fact.xit-xaht.fear","ord":0,"value":"fear"}
+{"fact_id":"fact.xit-xaht.stone","ord":0,"value":"stone"}

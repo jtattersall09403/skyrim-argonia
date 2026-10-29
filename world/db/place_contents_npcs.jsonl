@@ -1,0 +1,895 @@
+{"place_id":"place.dunmer-north.andalen-plantation","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"single","named":false,"note":"D3 inside the house","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.bogmother","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 caretaker few","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.bogmother","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"single","named":false,"note":"D3 crocodiles inside the threshold","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.bogmother","ord":2,"slot_id":"n3","role":"rank-and-file","count":"few","named":false,"note":"pilgrims from Stormhold","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.boom-keepers-lodge","ord":0,"slot_id":"n1","role":"boss","danger":"D3","count":"single","named":true,"note":"the sergeant, who counts the arrears out loud"}
+{"place_id":"place.dunmer-north.boom-keepers-lodge","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"four who have nowhere to go"}
+{"place_id":"place.dunmer-north.branchmont","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 villagers working as their own masters"}
+{"place_id":"place.dunmer-north.branchmont","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"single","named":false,"note":"D2 hired watch on the boundary"}
+{"place_id":"place.dunmer-north.buried-blades","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"band","named":false,"where_in_interior":"main","faction":"faction.blackguards"}
+{"place_id":"place.dunmer-north.channel-cross-village","ord":0,"slot_id":"n1","role":"crew","danger":"D1","count":"few","named":false,"note":"D1 pilot households"}
+{"place_id":"place.dunmer-north.channel-cross-village","ord":1,"slot_id":"n2","role":"crew","danger":"D2","count":"few","named":false,"note":"D2 crews waiting on a pilot"}
+{"place_id":"place.dunmer-north.climbs-to-see","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 flood-watcher in season"}
+{"place_id":"place.dunmer-north.crystalgate","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 townsfolk"}
+{"place_id":"place.dunmer-north.crystalgate","ord":1,"slot_id":"n2","role":"family","danger":"D2","count":"few","named":false,"note":"D2 cutters and graders"}
+{"place_id":"place.dunmer-north.crystalgate","ord":2,"slot_id":"n3","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"one strong D3 grading-hall guard"}
+{"place_id":"place.dunmer-north.cut-and-stack","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 cutters from three villages"}
+{"place_id":"place.dunmer-north.cut-in-the-wall","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"single","named":false,"note":"D1 the neighbourhood"}
+{"place_id":"place.dunmer-north.draws-the-herds","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D4","count":"few","named":false,"note":"D4 predators that follow the herds","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.draws-the-herds","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"empty, ten months a year","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.dreams-by-the-ash","ord":0,"slot_id":"n1","role":"named-keeper","danger":"D1","count":"single","named":true,"note":"D1 the keeper"}
+{"place_id":"place.dunmer-north.dreams-by-the-ash","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 clients from both cultures"}
+{"place_id":"place.dunmer-north.dreams-by-the-ash","ord":2,"slot_id":"n3","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 on the ash flats"}
+{"place_id":"place.dunmer-north.dry-under-water","ord":0,"slot_id":"n1","role":"crew","danger":"D1","count":"few","named":false,"note":"D1 divers, intermittently","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.dry-under-water","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"single","named":false,"note":"D2 in the passage","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.feeds-the-north","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 fishers","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.feeds-the-north","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 in the deep hole","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.gandranen-library","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D4","count":"few","named":false,"note":"D4 whatever catalogues it"}
+{"place_id":"place.dunmer-north.gandranen-library","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"no other guardian"}
+{"place_id":"place.dunmer-north.gandranen-ruins","ord":0,"slot_id":"n1","role":"rank-and-file","count":"few","named":false,"note":"no living claimant","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.greylight-village","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 villagers","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.greylight-village","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 tree-minders","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.greylight-village","ord":2,"slot_id":"n3","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"one strong D3 speaker","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.hackwing-wall","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"single","named":false,"note":"D3 the roost","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.hackwing-wall","ord":1,"slot_id":"n2","role":"named-keeper","danger":"D1","count":"single","named":true,"note":"D1 the village's ledge-keeper","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.hatching-pools","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 egg-tenders","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.hatching-pools","ord":1,"slot_id":"n2","role":"named-keeper","danger":"D1","count":"single","named":true,"note":"disciplined D3 Keeper wardens","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.hatching-pools","ord":2,"slot_id":"n3","role":"named-keeper","danger":"D1","count":"single","named":true,"note":"one very strong D4 warden-mother","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.hixinoag","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 village households wherever it currently is"}
+{"place_id":"place.dunmer-north.hixinoag","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"just posts at the empty moorings"}
+{"place_id":"place.dunmer-north.hutan-tzel","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 villagers","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.hutan-tzel","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 totem-keepers","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.hutan-tzel","ord":2,"slot_id":"n3","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"a D3 thing that comes to a meddled totem","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.keeps-the-second-island","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 islanders"}
+{"place_id":"place.dunmer-north.let-upper-floor","ord":0,"slot_id":"n1","role":"rank-and-file","count":"few","named":false,"note":"one long-term tenant"}
+{"place_id":"place.dunmer-north.let-upper-floor","ord":1,"slot_id":"n2","role":"merchant","count":"few","named":false,"note":"the factor's household below, who are not part of it"}
+{"place_id":"place.dunmer-north.mazzatun","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 Xit-Xaht builders","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.mazzatun","ord":1,"slot_id":"n2","role":"family","danger":"D3","count":"few","named":false,"note":"D3 sap-driven labourers","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.mazzatun","ord":2,"slot_id":"n3","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"one very strong D4 shaper","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.mazzatun-hist","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 sap-tenders"}
+{"place_id":"place.dunmer-north.mazzatun-hist","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"the sap-tenders' watch, which the workers keep to their own kind"}
+{"place_id":"place.dunmer-north.murkwater","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 villagers","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.murkwater","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 tree-minders","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.murkwater","ord":2,"slot_id":"n3","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"one very strong D4 retired ku-vastei","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.murkwater-shadowscale-ground","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"single","named":false,"note":"D3 that has moved into the course"}
+{"place_id":"place.dunmer-north.names-the-year","ord":0,"slot_id":"n1","role":"official","count":"few","named":false,"note":"in season: four villages and a registrar"}
+{"place_id":"place.dunmer-north.nine-fords","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 townsfolk"}
+{"place_id":"place.dunmer-north.nine-fords","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 toll-keepers"}
+{"place_id":"place.dunmer-north.nine-fords","ord":2,"slot_id":"n3","role":"rank-and-file","danger":"D2","count":"single","named":false,"note":"D2 the two who move goods around the gate"}
+{"place_id":"place.dunmer-north.nine-marks","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 on the open plain"}
+{"place_id":"place.dunmer-north.nine-stone-bench","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 the cutter and two apprentices"}
+{"place_id":"place.dunmer-north.nine-stone-bench","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 on the terrace path"}
+{"place_id":"place.dunmer-north.one-house-high","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"single","named":false,"note":"D1 one household"}
+{"place_id":"place.dunmer-north.one-house-high","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"whatever the road has delivered tonight"}
+{"place_id":"place.dunmer-north.one-house-high","ord":2,"slot_id":"n3","role":"merchant","danger":"D3","count":"single","named":false,"note":"D3 on the plain outside the fence"}
+{"place_id":"place.dunmer-north.puts-down-the-cup","ord":0,"slot_id":"n1","role":"named-keeper","danger":"D1","count":"single","named":true,"note":"D1 the keeper"}
+{"place_id":"place.dunmer-north.puts-down-the-cup","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 residents"}
+{"place_id":"place.dunmer-north.puts-down-the-cup","ord":2,"slot_id":"n3","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 on the road below"}
+{"place_id":"place.dunmer-north.reedmoor-stilts","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 stilt households"}
+{"place_id":"place.dunmer-north.rimfield","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 terrace farmers"}
+{"place_id":"place.dunmer-north.rimfield","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 on the pass road below"}
+{"place_id":"place.dunmer-north.riverwalk","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 a household of herb-gatherers"}
+{"place_id":"place.dunmer-north.riverwalk","ord":1,"slot_id":"n2","role":"crew","danger":"D1","count":"few","named":false,"note":"D2 boat crews overnighting"}
+{"place_id":"place.dunmer-north.riverwalk","ord":2,"slot_id":"n3","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D2 toll hands"}
+{"place_id":"place.dunmer-north.saltmarch-village","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 mixed Argonian and Dunmer households"}
+{"place_id":"place.dunmer-north.saltmarch-village","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D2 harvest guards"}
+{"place_id":"place.dunmer-north.seam-chasers","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 four prospectors who defend claim marks the other three refuse to recognise","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.seam-chasers","ord":1,"slot_id":"n2","role":"named-keeper","danger":"D3","count":"single","named":true,"note":"D3 the one of the four who has actually found something","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.silyanorn-diggings","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 licensed diggers","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.silyanorn-diggings","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 in the unshored galleries","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.silyanorn-diggings","ord":2,"slot_id":"n3","role":"captive","count":"few","named":false,"note":"Owing-held hands","where_in_interior":"deep"}
+{"place_id":"place.dunmer-north.sings-for-the-pipes","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 the farming household"}
+{"place_id":"place.dunmer-north.sings-for-the-pipes","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 a pipe-maker's buyer, seasonally"}
+{"place_id":"place.dunmer-north.sits-above-the-flood","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 plain farmers"}
+{"place_id":"place.dunmer-north.sits-above-the-flood","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"in flood: twice as many people as houses"}
+{"place_id":"place.dunmer-north.stands-on-the-island","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 islanders"}
+{"place_id":"place.dunmer-north.stands-on-the-island","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"in flood: paying guests with nowhere else"}
+{"place_id":"place.dunmer-north.stillrise-village","ord":0,"slot_id":"n1","role":"family","danger":"D3","count":"few","named":false,"note":"D3 skeletal villagers under illusion","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.stillrise-village","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D4","count":"single","named":false,"note":"one D4 who maintains the array","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.stormhold","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D0","count":"few","named":false,"note":"D1 city population (Argonian majority, 22% Dunmer per module 92)"}
+{"place_id":"place.dunmer-north.stormhold","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D0","count":"few","named":false,"note":"D2 vicecanons' wardens"}
+{"place_id":"place.dunmer-north.stormhold","ord":2,"slot_id":"n3","role":"rank-and-file","danger":"D0","count":"few","named":false,"note":"one very strong D3 tunnel overseer"}
+{"place_id":"place.dunmer-north.stormhold-causeway","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 pilgrims and the maintenance gang"}
+{"place_id":"place.dunmer-north.tear-road-stage","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 stage family"}
+{"place_id":"place.dunmer-north.tear-road-stage","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 Dunmer caravan hands"}
+{"place_id":"place.dunmer-north.tear-road-stage","ord":2,"slot_id":"n3","role":"rank-and-file","count":"few","named":false,"note":"Argonian porters"}
+{"place_id":"place.dunmer-north.tearmouth","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 townsfolk and porters"}
+{"place_id":"place.dunmer-north.tearmouth","ord":1,"slot_id":"n2","role":"official","danger":"D2","count":"few","named":false,"note":"D2 customs clerks"}
+{"place_id":"place.dunmer-north.tearmouth","ord":2,"slot_id":"n3","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 the people who avoid them"}
+{"place_id":"place.dunmer-north.ten-maur-wolk","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D4","count":"few","named":false,"note":"D4 inside the marker line","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.ten-thousand-nests","ord":0,"slot_id":"n1","role":"official","danger":"D1","count":"single","named":false,"note":"D1 licensed collectors, one month","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.tenmar-wall","ord":0,"slot_id":"n1","role":"merchant","danger":"D1","count":"few","named":false,"note":"D1 townsfolk and brokers"}
+{"place_id":"place.dunmer-north.tenmar-wall","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 junction wardens"}
+{"place_id":"place.dunmer-north.tenmar-wall","ord":2,"slot_id":"n3","role":"merchant","count":"few","named":false,"note":"traders from three directions"}
+{"place_id":"place.dunmer-north.the-ash-causeway","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 traffic"}
+{"place_id":"place.dunmer-north.the-ash-causeway","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D3 in the sink either side"}
+{"place_id":"place.dunmer-north.the-black-stage","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 ferry family"}
+{"place_id":"place.dunmer-north.the-black-stage","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"pilgrims waiting"}
+{"place_id":"place.dunmer-north.the-bone-stage-north","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 waystation keepers","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-bone-stage-north","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"carriers coming down","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-borrowed-tomb","ord":0,"slot_id":"n1","role":"family","danger":"D2","count":"few","named":false,"note":"one D2 road family","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-borrowed-tomb","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"nothing behind the inner door, they hope","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-bound-urns","ord":0,"slot_id":"n1","role":"rank-and-file","count":"few","named":false,"note":"nothing living","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-bound-urns","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 in the newest urns","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-causeway-hearth","ord":0,"slot_id":"n1","role":"rank-and-file","count":"few","named":false,"note":"whoever is there"}
+{"place_id":"place.dunmer-north.the-causeway-hearth","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"nobody by default"}
+{"place_id":"place.dunmer-north.the-causeway-lodge","ord":0,"slot_id":"n1","role":"named-keeper","danger":"D1","count":"single","named":true,"note":"D1 the warden family"}
+{"place_id":"place.dunmer-north.the-causeway-lodge","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D3 in the sink either side"}
+{"place_id":"place.dunmer-north.the-charge-works","ord":0,"slot_id":"n1","role":"family","danger":"D2","count":"few","named":false,"note":"D2 works family"}
+{"place_id":"place.dunmer-north.the-charge-works","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"single","named":false,"note":"one D3 taker who goes to the ponds"}
+{"place_id":"place.dunmer-north.the-cold-holding","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"band","named":false,"where_in_interior":"main","faction":"faction.blackguards"}
+{"place_id":"place.dunmer-north.the-cold-holding","ord":1,"slot_id":"n2","role":"lieutenant","danger":"D3","count":"single","named":false,"where_in_interior":"deep","faction":"faction.blackguards"}
+{"place_id":"place.dunmer-north.the-crown-terrace","ord":0,"slot_id":"n1","role":"rank-and-file","count":"few","named":false,"note":"nobody living, except on duty"}
+{"place_id":"place.dunmer-north.the-crystal-prospectors","ord":0,"slot_id":"n1","role":"boss","danger":"D3","count":"single","named":true,"note":"the man who ran the licence-holders off"}
+{"place_id":"place.dunmer-north.the-crystal-prospectors","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"three who followed him up"}
+{"place_id":"place.dunmer-north.the-delta-byre","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 herders"}
+{"place_id":"place.dunmer-north.the-diggings-ladder","ord":0,"slot_id":"n1","role":"crew","danger":"D1","count":"few","named":false,"note":"D1 hoist crews"}
+{"place_id":"place.dunmer-north.the-diggings-ladder","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D2 diggings hands"}
+{"place_id":"place.dunmer-north.the-divers-landing","ord":0,"slot_id":"n1","role":"crew","danger":"D2","count":"few","named":false,"note":"D2 divers","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-divers-landing","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D3 in the deep water","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-drawdown-flats","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 gleaners in season","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-drawdown-flats","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 in the remaining pools","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-dres-rows","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 field households"}
+{"place_id":"place.dunmer-north.the-dres-rows","ord":1,"slot_id":"n2","role":"captive","danger":"D2","count":"few","named":false,"note":"D2 Owing assessors, seasonally"}
+{"place_id":"place.dunmer-north.the-drover-camp","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 Naga"}
+{"place_id":"place.dunmer-north.the-drover-camp","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"one strong D3"}
+{"place_id":"place.dunmer-north.the-drowned-terrace","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D4","count":"few","named":false,"note":"D4 in the flooded chambers","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-empty-socket","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 on the knoll approach","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-field-edge-hearth","ord":0,"slot_id":"n1","role":"rank-and-file","count":"few","named":false,"note":"whoever is there"}
+{"place_id":"place.dunmer-north.the-field-edge-hearth","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"often somebody"}
+{"place_id":"place.dunmer-north.the-field-gate-garrison","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 townsfolk"}
+{"place_id":"place.dunmer-north.the-field-gate-garrison","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D2 levy shellbacks"}
+{"place_id":"place.dunmer-north.the-field-gate-garrison","ord":2,"slot_id":"n3","role":"named-keeper","danger":"D1","count":"single","named":true,"note":"one strong D3 levy captain"}
+{"place_id":"place.dunmer-north.the-first-count","ord":0,"slot_id":"n1","role":"rank-and-file","count":"few","named":false,"note":"night maintenance","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-fish-boon-ground","ord":0,"slot_id":"n1","role":"rank-and-file","count":"single","named":false,"note":"empty most of the year"}
+{"place_id":"place.dunmer-north.the-fish-boon-ground","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"in season: the village and its pilgrims, more of both than the flat can feed"}
+{"place_id":"place.dunmer-north.the-flu-cordon","ord":0,"slot_id":"n1","role":"hermit","danger":"D1","count":"single","named":true,"note":"the marker-walker, present four nights a month","where_in_interior":"entrance"}
+{"place_id":"place.dunmer-north.the-freed-rows","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 arrivals"}
+{"place_id":"place.dunmer-north.the-freed-rows","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 shelter-holders"}
+{"place_id":"place.dunmer-north.the-freed-rows","ord":2,"slot_id":"n3","role":"rank-and-file","danger":"D2","count":"single","named":false,"note":"one strong D3 who watches the road"}
+{"place_id":"place.dunmer-north.the-gravel-six","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 saltrice farmers"}
+{"place_id":"place.dunmer-north.the-guar-ground","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 herders","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-guar-ground","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 holding guards","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-last-landing","ord":0,"slot_id":"n1","role":"crew","danger":"D1","count":"few","named":false,"note":"D1 porters and crews"}
+{"place_id":"place.dunmer-north.the-last-landing","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 yard hands"}
+{"place_id":"place.dunmer-north.the-last-landing","ord":2,"slot_id":"n3","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"one D3 landing-holder"}
+{"place_id":"place.dunmer-north.the-last-stone-course","ord":0,"slot_id":"n1","role":"rank-and-file","count":"few","named":false,"note":"visiting villages","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-last-stone-course","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 in the unfinished vaults","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-level-line","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"single","named":false,"note":"D2 on the approach"}
+{"place_id":"place.dunmer-north.the-lightning-yard","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 yard hands"}
+{"place_id":"place.dunmer-north.the-lightning-yard","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 the brother who runs it"}
+{"place_id":"place.dunmer-north.the-monsoon-boom","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 gate-holders in season"}
+{"place_id":"place.dunmer-north.the-moon-court","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 two resident alchemists"}
+{"place_id":"place.dunmer-north.the-moon-court","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 on the upland approach"}
+{"place_id":"place.dunmer-north.the-north-border-post","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 border keepers"}
+{"place_id":"place.dunmer-north.the-north-border-post","ord":1,"slot_id":"n2","role":"named-keeper","danger":"D2","count":"single","named":true,"note":"one strong D3 warden"}
+{"place_id":"place.dunmer-north.the-north-holding-pit","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 overseers","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-north-holding-pit","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"whoever is waiting","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-north-relay","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 relay runners"}
+{"place_id":"place.dunmer-north.the-north-root-gallery","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 in the lower chambers","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-north-root-gallery","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"single","named":false,"note":"D2 at the mouth","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-northern-rest","ord":0,"slot_id":"n1","role":"rank-and-file","count":"few","named":false,"note":"empty, three years running"}
+{"place_id":"place.dunmer-north.the-opened-terrace","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 river thieves","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-opened-terrace","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"one strong D3 leader","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-outer-silyanorn","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 in the sunken rooms","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-pass-station","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 keepers"}
+{"place_id":"place.dunmer-north.the-pass-station","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 on the road above the station in weather"}
+{"place_id":"place.dunmer-north.the-pen-yard","ord":0,"slot_id":"n1","role":"rank-and-file","count":"few","named":false,"note":"cattle"}
+{"place_id":"place.dunmer-north.the-permit-dig","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 local hands","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-permit-dig","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 Collections staff","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-permit-dig","ord":2,"slot_id":"n3","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"one D2 city observer","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-pilots-rest","ord":0,"slot_id":"n1","role":"crew","danger":"D1","count":"few","named":false,"note":"D1 boat crews"}
+{"place_id":"place.dunmer-north.the-pilots-rest","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 who came upriver for a reason"}
+{"place_id":"place.dunmer-north.the-quiet-landing","ord":0,"slot_id":"n1","role":"lieutenant","danger":"D3","count":"single","named":true,"note":"the cell lead, who will talk rather than die if taken alive","where_in_interior":"deep"}
+{"place_id":"place.dunmer-north.the-quiet-landing","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"the cell; every one of them was recruited out of a village on the northern road","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-rim-hermitage","ord":0,"slot_id":"n1","role":"priest","danger":"D1","count":"few","named":false,"note":"D1 one Nisswo"}
+{"place_id":"place.dunmer-north.the-rim-shelter","ord":0,"slot_id":"n1","role":"rank-and-file","count":"few","named":false,"note":"whoever is on the col tonight"}
+{"place_id":"place.dunmer-north.the-rim-shelter","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"single","named":false,"note":"D3 above the treeline"}
+{"place_id":"place.dunmer-north.the-salt-and-shell","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"where_in_interior":"main","faction":"faction.blackguards"}
+{"place_id":"place.dunmer-north.the-salt-and-shell","ord":1,"slot_id":"n2","role":"merchant","danger":"D2","count":"single","named":false,"where_in_interior":"entrance","faction":"faction.blackguards"}
+{"place_id":"place.dunmer-north.the-salt-ledge","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 carriers","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-salt-ledge","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 rim weather","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-shell-ground","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D4","count":"single","named":false,"note":"D4 the shell-beasts","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-shell-ground","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 gatherers, four hours at a time","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-shoal-bank","ord":0,"slot_id":"n1","role":"crew","danger":"D2","count":"few","named":false,"note":"D2 fishing crews","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-shoal-bank","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"single","named":false,"note":"D3 in the deeper water beyond the bank","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-shut-village","ord":0,"slot_id":"n1","role":"family","danger":"D2","count":"few","named":false,"note":"D2 villagers who do not come out"}
+{"place_id":"place.dunmer-north.the-shut-village","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"one D2 receiver at the outer post"}
+{"place_id":"place.dunmer-north.the-slumped-hamlet","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 in the tilted houses","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-standing-bid","ord":0,"slot_id":"n1","role":"merchant","danger":"D1","count":"pair","named":true,"note":"the auctioneer and her clerk, who keep two lot-books"}
+{"place_id":"place.dunmer-north.the-standing-bid","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"hired watch, paid out of the sale"}
+{"place_id":"place.dunmer-north.the-standing-bid","ord":2,"slot_id":"n3","role":"quest-giver","danger":"D1","count":"single","named":true,"note":"the buyer who wants the counterfeit for what is cut inside it"}
+{"place_id":"place.dunmer-north.the-stormhold-falls-chamber","ord":0,"slot_id":"n1","role":"rank-and-file","count":"single","named":false,"note":"empty most nights","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-stormhold-falls-chamber","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 in the ravine below","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-stripped-village","ord":0,"slot_id":"n1","role":"rank-and-file","count":"few","named":false,"note":"nothing at all","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-stripped-village","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 at the village edge after dark","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-sump-hamlet","ord":0,"slot_id":"n1","role":"boss","danger":"D3","count":"single","named":true,"note":"the factor, who will bargain before he fights"}
+{"place_id":"place.dunmer-north.the-sump-hamlet","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"the crew, mostly Dunmer, all overdue"}
+{"place_id":"place.dunmer-north.the-sump-hamlet","ord":2,"slot_id":"n3","role":"captive","danger":"D1","count":"pair","named":false,"note":"taken off the road within the week"}
+{"place_id":"place.dunmer-north.the-terrace-watch","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 rota watchers"}
+{"place_id":"place.dunmer-north.the-terrace-watch","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 field-owners' men out of season"}
+{"place_id":"place.dunmer-north.the-thorn-bond","ord":0,"slot_id":"n1","role":"official","danger":"D1","count":"few","named":false,"note":"D1 bond clerks"}
+{"place_id":"place.dunmer-north.the-thorn-bond","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D2 night watch"}
+{"place_id":"place.dunmer-north.the-thorn-bond","ord":2,"slot_id":"n3","role":"rank-and-file","danger":"D1","count":"single","named":false,"note":"one D3 who is not on the roll"}
+{"place_id":"place.dunmer-north.the-thousand-birds","ord":0,"slot_id":"n1","role":"rank-and-file","count":"few","named":false,"note":"a very large colony","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-thousand-birds","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 eggers in season","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-tide-fair","ord":0,"slot_id":"n1","role":"merchant","danger":"D1","count":"few","named":false,"note":"D1 traders for six hours"}
+{"place_id":"place.dunmer-north.the-tide-fair","ord":1,"slot_id":"n2","role":"rank-and-file","count":"single","named":false,"note":"open water for the rest"}
+{"place_id":"place.dunmer-north.the-turning-stone","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 on the approach after dark"}
+{"place_id":"place.dunmer-north.the-two-gate-bridge","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 toll hands at each end"}
+{"place_id":"place.dunmer-north.the-two-gate-bridge","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"one D2 bruiser per bank"}
+{"place_id":"place.dunmer-north.the-two-hundred-roofs","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 in the upper village","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-veterans-ridge","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 veterans' descendants"}
+{"place_id":"place.dunmer-north.the-veterans-ridge","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"one very strong D4 hall-holder"}
+{"place_id":"place.dunmer-north.the-wamasu-shrine","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 in the pond below"}
+{"place_id":"place.dunmer-north.the-whispers-dig","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 hired diggers","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-whispers-dig","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"single","named":false,"note":"one D3 overseer with the instructions","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-white-pans","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 pan families"}
+{"place_id":"place.dunmer-north.the-white-pans","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D2 at the bar in a high tide"}
+{"place_id":"place.dunmer-north.the-wild-mouth","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D4","count":"single","named":false,"note":"D4 the animal","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-wild-mouth","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"no handler, no rig","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-xanmeer-hold","ord":0,"slot_id":"n1","role":"family","danger":"D2","count":"few","named":false,"note":"D2 tribe households","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-xanmeer-hold","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"disciplined D3 gate wardens","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.the-xanmeer-hold","ord":2,"slot_id":"n3","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"one very strong D4 hold-holder","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.thorn","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D0","count":"few","named":false,"note":"D1 city population (Argonian majority, large Dunmer minority)"}
+{"place_id":"place.dunmer-north.thorn","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D0","count":"few","named":false,"note":"D2 city levy who look away"}
+{"place_id":"place.dunmer-north.thorn","ord":2,"slot_id":"n3","role":"rank-and-file","danger":"D0","count":"few","named":false,"note":"one strong D3 field-owner's house guard"}
+{"place_id":"place.dunmer-north.thorn-paddy-terraces","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 paddy villages"}
+{"place_id":"place.dunmer-north.thorn-paddy-terraces","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D2 gate-holders"}
+{"place_id":"place.dunmer-north.thorn-paddy-terraces","ord":2,"slot_id":"n3","role":"rank-and-file","count":"few","named":false,"note":"children on the drying floors"}
+{"place_id":"place.dunmer-north.three-ways-over-water","ord":0,"slot_id":"n1","role":"named-keeper","danger":"D1","count":"single","named":true,"note":"D1 the keeper"}
+{"place_id":"place.dunmer-north.ties-four-ways","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"single","named":false,"note":"D1 the stallholder"}
+{"place_id":"place.dunmer-north.ties-four-ways","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 traffic from four villages"}
+{"place_id":"place.dunmer-north.tunnel-rat-gallery","ord":0,"slot_id":"n1","role":"family","danger":"D2","count":"few","named":false,"note":"D2 tunnel workers","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.tunnel-rat-gallery","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"single","named":false,"note":"one D3 overseer at the hoist","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.tunnel-rat-gallery","ord":2,"slot_id":"n3","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 water","where_in_interior":"main"}
+{"place_id":"place.dunmer-north.waits-for-the-promise","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 claimant families"}
+{"place_id":"place.dunmer-north.waits-for-the-trial","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 pilgrims"}
+{"place_id":"place.dunmer-north.waits-for-the-trial","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 those who have waited too long"}
+{"place_id":"place.dunmer-north.wolk-market","ord":0,"slot_id":"n1","role":"merchant","danger":"D1","count":"few","named":false,"note":"D1 townsfolk and brokers"}
+{"place_id":"place.dunmer-north.wolk-market","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 junction wardens"}
+{"place_id":"place.dunmer-north.wolk-market","ord":2,"slot_id":"n3","role":"merchant","count":"few","named":false,"note":"traders from three directions"}
+{"place_id":"place.dunmer-north.zuuk","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"single","named":false,"note":"D3 in the houses","where_in_interior":"main"}
+{"place_id":"place.hist-heartland.alten-markmont","ord":0,"slot_id":"n1","role":"merchant","count":"single","named":false}
+{"place_id":"place.hist-heartland.alten-markmont","ord":1,"slot_id":"n2","role":"family","count":"band","named":false}
+{"place_id":"place.hist-heartland.artisan-chime-makers","ord":0,"slot_id":"n1","role":"merchant","count":"single","named":false}
+{"place_id":"place.hist-heartland.artisan-chime-makers","ord":1,"slot_id":"n2","role":"family","count":"band","named":false}
+{"place_id":"place.hist-heartland.beast-offering-flood-staying","ord":0,"slot_id":"n1","role":"priest","count":"single","named":false}
+{"place_id":"place.hist-heartland.bereaved-mnemic","ord":0,"slot_id":"n1","role":"named-keeper","count":"single","named":true,"faction":"faction.many-root-conclave"}
+{"place_id":"place.hist-heartland.bereaved-mnemic","ord":1,"slot_id":"n2","role":"family","count":"band","named":false}
+{"place_id":"place.hist-heartland.blackguard-hideout-raw","ord":0,"slot_id":"n1","role":"lieutenant","count":"single","named":true,"faction":"faction.blackguards"}
+{"place_id":"place.hist-heartland.blackguard-hideout-raw","ord":1,"slot_id":"n2","role":"rank-and-file","count":"band","named":false,"faction":"faction.blackguards"}
+{"place_id":"place.hist-heartland.boardwalk-branching-many-ways","ord":0,"slot_id":"n1","role":"merchant","count":"single","named":false}
+{"place_id":"place.hist-heartland.boardwalk-branching-many-ways","ord":1,"slot_id":"n2","role":"family","count":"band","named":false}
+{"place_id":"place.hist-heartland.bone-waystation-interior","ord":0,"slot_id":"n1","role":"priest","count":"single","named":false}
+{"place_id":"place.hist-heartland.climbable-ruin-roof-terrace","ord":0,"slot_id":"n1","role":"hermit","count":"single","named":false,"where_in_interior":"entrance"}
+{"place_id":"place.hist-heartland.cult-raid-camp-unbound","ord":0,"slot_id":"n1","role":"lieutenant","count":"single","named":true,"faction":"faction.unbound-root"}
+{"place_id":"place.hist-heartland.cult-raid-camp-unbound","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"faction":"faction.unbound-root"}
+{"place_id":"place.hist-heartland.cut-and-carried","ord":0,"slot_id":"n1","role":"merchant","count":"single","named":false}
+{"place_id":"place.hist-heartland.cut-and-carried","ord":1,"slot_id":"n2","role":"family","count":"band","named":false}
+{"place_id":"place.hist-heartland.daril-fermentary-interior","ord":0,"slot_id":"n1","role":"named-keeper","count":"single","named":true,"where_in_interior":"main","faction":"faction.blackguards"}
+{"place_id":"place.hist-heartland.dream-wallow-sap-pool","ord":0,"slot_id":"n1","role":"priest","count":"single","named":false}
+{"place_id":"place.hist-heartland.dream-wallow-starblossom","ord":0,"slot_id":"n1","role":"merchant","danger":"D3","count":"single","named":false}
+{"place_id":"place.hist-heartland.dream-wallow-starblossom","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D4","count":"few","named":false}
+{"place_id":"place.hist-heartland.flood-high-single-rise","ord":0,"slot_id":"n1","role":"merchant","count":"single","named":false}
+{"place_id":"place.hist-heartland.flood-high-single-rise","ord":1,"slot_id":"n2","role":"family","count":"band","named":false}
+{"place_id":"place.hist-heartland.greenspring","ord":0,"slot_id":"n1","role":"merchant","count":"single","named":false}
+{"place_id":"place.hist-heartland.greenspring","ord":1,"slot_id":"n2","role":"family","count":"band","named":false}
+{"place_id":"place.hist-heartland.guide-camp-far-shelter","ord":0,"slot_id":"n1","role":"rank-and-file","count":"few","named":false}
+{"place_id":"place.hist-heartland.guide-camp-gate-side","ord":0,"slot_id":"n1","role":"rank-and-file","count":"few","named":false}
+{"place_id":"place.hist-heartland.hammock-crown-ancestor","ord":0,"slot_id":"n1","role":"priest","count":"single","named":false,"where_in_interior":"main"}
+{"place_id":"place.hist-heartland.hammock-tree-island-greenmoss","ord":0,"slot_id":"n1","role":"merchant","count":"single","named":false}
+{"place_id":"place.hist-heartland.hammock-tree-island-greenmoss","ord":1,"slot_id":"n2","role":"family","count":"band","named":false}
+{"place_id":"place.hist-heartland.harmed-hist-tapped","ord":0,"slot_id":"n1","role":"priest","count":"single","named":false}
+{"place_id":"place.hist-heartland.harmed-hist-tapped","ord":1,"slot_id":"n2","role":"crew","danger":"D4","count":"few","named":false}
+{"place_id":"place.hist-heartland.harmed-hist-tapped","ord":2,"slot_id":"n3","role":"lieutenant","danger":"D4","count":"single","named":false}
+{"place_id":"place.hist-heartland.helstrom","ord":0,"slot_id":"n1","role":"official","count":"single","named":true,"faction":"faction.many-root-conclave"}
+{"place_id":"place.hist-heartland.helstrom","ord":1,"slot_id":"n2","role":"merchant","count":"few","named":false}
+{"place_id":"place.hist-heartland.helstrom","ord":2,"slot_id":"n3","role":"trainer","count":"pair","named":false}
+{"place_id":"place.hist-heartland.helstrom","ord":3,"slot_id":"n4","role":"quest-giver","count":"single","named":true}
+{"place_id":"place.hist-heartland.heretic-stone-restarted","ord":0,"slot_id":"n1","role":"merchant","count":"single","named":false}
+{"place_id":"place.hist-heartland.heretic-stone-restarted","ord":1,"slot_id":"n2","role":"family","count":"band","named":false}
+{"place_id":"place.hist-heartland.hermit-hut-exile-warden","ord":0,"slot_id":"n1","role":"hermit","count":"single","named":true}
+{"place_id":"place.hist-heartland.hermit-hut-mad-basin","ord":0,"slot_id":"n1","role":"hermit","count":"single","named":true}
+{"place_id":"place.hist-heartland.hist-agaceph-needle","ord":0,"slot_id":"n1","role":"priest","count":"single","named":false}
+{"place_id":"place.hist-heartland.hist-first-rain-trunk","ord":0,"slot_id":"n1","role":"priest","count":"single","named":false}
+{"place_id":"place.hist-heartland.hist-less-refuge-wild","ord":0,"slot_id":"n1","role":"merchant","count":"single","named":false}
+{"place_id":"place.hist-heartland.hist-less-refuge-wild","ord":1,"slot_id":"n2","role":"family","count":"band","named":false}
+{"place_id":"place.hist-heartland.hist-paatru-lowcrown","ord":0,"slot_id":"n1","role":"priest","count":"single","named":false}
+{"place_id":"place.hist-heartland.hist-sarpa-highflower","ord":0,"slot_id":"n1","role":"priest","count":"single","named":false}
+{"place_id":"place.hist-heartland.insular-hereditary-watch","ord":0,"slot_id":"n1","role":"merchant","count":"single","named":false}
+{"place_id":"place.hist-heartland.insular-hereditary-watch","ord":1,"slot_id":"n2","role":"family","count":"band","named":false}
+{"place_id":"place.hist-heartland.mass-grave-flu-memorial","ord":0,"slot_id":"n1","role":"priest","count":"single","named":false}
+{"place_id":"place.hist-heartland.memorial-stone-personal-guide","ord":0,"slot_id":"n1","role":"hermit","count":"single","named":false}
+{"place_id":"place.hist-heartland.naga-lay-up-second-man","ord":0,"slot_id":"n1","role":"lieutenant","danger":"D4","count":"single","named":false,"note":"the one who calls which walker is taken"}
+{"place_id":"place.hist-heartland.naga-lay-up-second-man","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"band","named":false,"note":"tribeless Naga, long off the roads"}
+{"place_id":"place.hist-heartland.necropolis-dead-tenders","ord":0,"slot_id":"n1","role":"merchant","count":"single","named":false,"where_in_interior":"entrance"}
+{"place_id":"place.hist-heartland.necropolis-dead-tenders","ord":1,"slot_id":"n2","role":"family","count":"band","named":false,"where_in_interior":"main"}
+{"place_id":"place.hist-heartland.nightbound-lightless","ord":0,"slot_id":"n1","role":"merchant","count":"single","named":false}
+{"place_id":"place.hist-heartland.nightbound-lightless","ord":1,"slot_id":"n2","role":"family","count":"band","named":false}
+{"place_id":"place.hist-heartland.nine-trunks","ord":0,"slot_id":"n1","role":"merchant","count":"single","named":false}
+{"place_id":"place.hist-heartland.nine-trunks","ord":1,"slot_id":"n2","role":"family","count":"band","named":false}
+{"place_id":"place.hist-heartland.nisswo-rest-house-interior","ord":0,"slot_id":"n1","role":"priest","count":"single","named":false}
+{"place_id":"place.hist-heartland.officeholder-grave-singer-house","ord":0,"slot_id":"n1","role":"hermit","count":"single","named":false}
+{"place_id":"place.hist-heartland.officeholder-tree-minder-house","ord":0,"slot_id":"n1","role":"hermit","count":"single","named":false}
+{"place_id":"place.hist-heartland.pilgrim-camp-hist-tsoko","ord":0,"slot_id":"n1","role":"rank-and-file","count":"few","named":false}
+{"place_id":"place.hist-heartland.pilgrim-camp-sap-road","ord":0,"slot_id":"n1","role":"rank-and-file","count":"few","named":false}
+{"place_id":"place.hist-heartland.poacher-camp-sap","ord":0,"slot_id":"n1","role":"lieutenant","count":"single","named":true,"faction":"faction.blackguards"}
+{"place_id":"place.hist-heartland.poacher-camp-sap","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"faction":"faction.blackguards"}
+{"place_id":"place.hist-heartland.porter-relay-poling","ord":0,"slot_id":"n1","role":"crew","count":"few","named":false,"where_in_interior":"main"}
+{"place_id":"place.hist-heartland.refuge-station-interior","ord":0,"slot_id":"n1","role":"named-keeper","count":"single","named":true,"faction":"faction.rootworm-waykeepers"}
+{"place_id":"place.hist-heartland.root-gallery-cult-warren","ord":0,"slot_id":"n1","role":"boss","count":"single","named":true,"where_in_interior":"boss","faction":"faction.unbound-root"}
+{"place_id":"place.hist-heartland.root-gallery-cult-warren","ord":1,"slot_id":"n2","role":"rank-and-file","count":"band","named":false,"where_in_interior":"main","faction":"faction.unbound-root"}
+{"place_id":"place.hist-heartland.root-gallery-lantern-hollow","ord":0,"slot_id":"n1","role":"merchant","count":"single","named":true,"where_in_interior":"entrance"}
+{"place_id":"place.hist-heartland.root-gallery-lantern-hollow","ord":1,"slot_id":"n2","role":"family","count":"band","named":false,"where_in_interior":"main"}
+{"place_id":"place.hist-heartland.root-talk-ground","ord":0,"slot_id":"n1","role":"priest","count":"single","named":false}
+{"place_id":"place.hist-heartland.sap-tapping-licensed","ord":0,"slot_id":"n1","role":"crew","count":"few","named":false}
+{"place_id":"place.hist-heartland.sinkhole-mouth-basin","ord":0,"slot_id":"n1","role":"hermit","count":"single","named":false,"where_in_interior":"entrance"}
+{"place_id":"place.hist-heartland.squatted-ruin-home-hollow","ord":0,"slot_id":"n1","role":"hermit","count":"single","named":false,"where_in_interior":"entrance"}
+{"place_id":"place.hist-heartland.stilt-channel-edge-two-poles","ord":0,"slot_id":"n1","role":"merchant","count":"single","named":false}
+{"place_id":"place.hist-heartland.stilt-channel-edge-two-poles","ord":1,"slot_id":"n2","role":"family","count":"band","named":false}
+{"place_id":"place.hist-heartland.stilt-channel-edge-uxaneet","ord":0,"slot_id":"n1","role":"merchant","count":"single","named":false}
+{"place_id":"place.hist-heartland.stilt-channel-edge-uxaneet","ord":1,"slot_id":"n2","role":"family","count":"band","named":false}
+{"place_id":"place.hist-heartland.stone-calendar-hist-tsoko","ord":0,"slot_id":"n1","role":"hermit","count":"single","named":false}
+{"place_id":"place.hist-heartland.the-cut-circle","ord":0,"slot_id":"n1","role":"boss","danger":"D3","count":"single","named":true,"note":"the Collector, seen close and unmasked for the first time"}
+{"place_id":"place.hist-heartland.the-cut-circle","ord":1,"slot_id":"n2","role":"priest","danger":"D3","count":"pair","named":false,"note":"the preachers, who believe the mild version"}
+{"place_id":"place.hist-heartland.the-cut-circle","ord":2,"slot_id":"n3","role":"rank-and-file","danger":"D2","count":"swarm","named":false,"note":"the congregation, who are not combatants"}
+{"place_id":"place.hist-heartland.treasure-hunters-live-camp","ord":0,"slot_id":"n1","role":"quest-giver","count":"single","named":true}
+{"place_id":"place.hist-heartland.treasure-hunters-live-camp","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false}
+{"place_id":"place.hist-heartland.urn-vault-blasphemers","ord":0,"slot_id":"n1","role":"priest","count":"single","named":false,"where_in_interior":"main"}
+{"place_id":"place.hist-heartland.vista-ledge-canopy-break","ord":0,"slot_id":"n1","role":"hermit","count":"single","named":false}
+{"place_id":"place.hist-heartland.waterfall-chamber-root-fall","ord":0,"slot_id":"n1","role":"hermit","count":"single","named":false,"where_in_interior":"entrance"}
+{"place_id":"place.hist-heartland.wild-hist-sleeper","ord":0,"slot_id":"n1","role":"priest","count":"single","named":false}
+{"place_id":"place.hist-heartland.xanmeer-fort-defences-working","ord":0,"slot_id":"n1","role":"patrol","count":"few","named":false}
+{"place_id":"place.hist-heartland.xanmeer-fort-defences-working","ord":1,"slot_id":"n2","role":"boss","count":"single","named":true}
+{"place_id":"place.imperial-fringe.ashen-tower","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 village watchers"}
+{"place_id":"place.imperial-fringe.bog-iron-workings","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 seasonal diggers"}
+{"place_id":"place.imperial-fringe.bonded-shed-of-the-onkobra","ord":0,"slot_id":"n1","role":"official","danger":"D1","count":"few","named":false,"note":"D1 bond clerk"}
+{"place_id":"place.imperial-fringe.bonded-shed-of-the-onkobra","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D2 night watch"}
+{"place_id":"place.imperial-fringe.bonded-shed-of-the-onkobra","ord":2,"slot_id":"n3","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"one D3 investigator when a seal is broken"}
+{"place_id":"place.imperial-fringe.bone-road-waystation","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 waystation keepers"}
+{"place_id":"place.imperial-fringe.bone-road-waystation","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"carriers passing"}
+{"place_id":"place.imperial-fringe.burnt-field-village","ord":0,"slot_id":"n1","role":"family","count":"few","named":false,"note":"the households who came back to the burn","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.burnt-field-village","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"few","named":false,"where_in_interior":"main","faction":"faction.blackguards"}
+{"place_id":"place.imperial-fringe.cartwrights-cross","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 townsfolk"}
+{"place_id":"place.imperial-fringe.cartwrights-cross","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D2 crossing wardens"}
+{"place_id":"place.imperial-fringe.cartwrights-cross","ord":2,"slot_id":"n3","role":"rank-and-file","count":"few","named":false,"note":"wheelwrights and farriers"}
+{"place_id":"place.imperial-fringe.cassian-farm","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"where_in_interior":"main","faction":"faction.blackguards"}
+{"place_id":"place.imperial-fringe.cassian-farm","ord":1,"slot_id":"n2","role":"lieutenant","danger":"D2","count":"single","named":false,"where_in_interior":"deep","faction":"faction.blackguards"}
+{"place_id":"place.imperial-fringe.castle-giovesse","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"band","named":false,"note":"squatter freebooters holding the gatehouse","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.claywater-station","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 households of both halves"}
+{"place_id":"place.imperial-fringe.claywater-station","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 road travellers"}
+{"place_id":"place.imperial-fringe.collections-dig","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 local dig hands","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.collections-dig","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 Collections staff","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.collections-dig","ord":2,"slot_id":"n3","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"one D3 site guard","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.comes-back-slowly","ord":0,"slot_id":"n1","role":"named-keeper","danger":"D1","count":"single","named":true,"note":"D1 the keeper"}
+{"place_id":"place.imperial-fringe.comes-back-slowly","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 residents in various states"}
+{"place_id":"place.imperial-fringe.comes-back-slowly","ord":2,"slot_id":"n3","role":"rank-and-file","count":"single","named":false,"note":"no armed presence, unusual for the fringe"}
+{"place_id":"place.imperial-fringe.dreams-in-mud","ord":0,"slot_id":"n1","role":"named-keeper","danger":"D1","count":"single","named":true,"note":"D1 the keeper"}
+{"place_id":"place.imperial-fringe.fenmarch-village","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 villagers","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.fenmarch-village","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 tree-minders","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.fenmarch-village","ord":2,"slot_id":"n3","role":"rank-and-file","danger":"D2","count":"single","named":false,"note":"one strong D3 who speaks for the tree","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.fig-market","ord":0,"slot_id":"n1","role":"merchant","danger":"D1","count":"few","named":false,"note":"D1 townsfolk and brokers"}
+{"place_id":"place.imperial-fringe.fig-market","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D2 quay hands"}
+{"place_id":"place.imperial-fringe.fig-market","ord":2,"slot_id":"n3","role":"merchant","danger":"D1","count":"few","named":false,"note":"one D3 broker-guild enforcer"}
+{"place_id":"place.imperial-fringe.fort-greenditch","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"deserters using the dry upper floor","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.fort-swampmoth","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 toll-company hands"}
+{"place_id":"place.imperial-fringe.fort-swampmoth","ord":1,"slot_id":"n2","role":"named-keeper","danger":"D2","count":"single","named":true,"note":"one strong D3 captain"}
+{"place_id":"place.imperial-fringe.fort-swampmoth","ord":2,"slot_id":"n3","role":"rank-and-file","count":"few","named":false,"note":"a clerk who is not a soldier"}
+{"place_id":"place.imperial-fringe.gideon","ord":0,"slot_id":"n1","role":"family","danger":"D0","count":"few","named":false,"note":"ordinary D1 townsfolk (Argonian majority, large Imperial minority)"}
+{"place_id":"place.imperial-fringe.gideon","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D0","count":"few","named":false,"note":"competent D2 council guard"}
+{"place_id":"place.imperial-fringe.gideon","ord":2,"slot_id":"n3","role":"named-keeper","danger":"D0","count":"single","named":true,"note":"one strong D3 magistrate's champion"}
+{"place_id":"place.imperial-fringe.gideon-rootworm-terminus","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 Rootworm Waykeepers in season","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.gideon-rootworm-terminus","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"closed out of season","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.gideon-synod-outstation","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D2 Synod adepts"}
+{"place_id":"place.imperial-fringe.gideon-synod-outstation","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"one D3 magister"}
+{"place_id":"place.imperial-fringe.gideon-synod-outstation","ord":2,"slot_id":"n3","role":"rank-and-file","count":"few","named":false,"note":"hired local guides"}
+{"place_id":"place.imperial-fringe.giovesse-lines","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"band","named":false,"where_in_interior":"main","faction":"faction.blackguards"}
+{"place_id":"place.imperial-fringe.glenbridge","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 townsfolk and innkeepers"}
+{"place_id":"place.imperial-fringe.glenbridge","ord":1,"slot_id":"n2","role":"priest","count":"few","named":false,"note":"Nisswo of the Turning Path"}
+{"place_id":"place.imperial-fringe.glenbridge","ord":2,"slot_id":"n3","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D2 pilgrim-road guards"}
+{"place_id":"place.imperial-fringe.glenbridge-sermon-xanmeer","ord":0,"slot_id":"n1","role":"priest","count":"few","named":false,"note":"Nisswo readers by day","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.guar-holding-of-the-nine-bells","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"band","named":false,"where_in_interior":"main","faction":"faction.blackguards"}
+{"place_id":"place.imperial-fringe.guar-holding-of-the-nine-bells","ord":1,"slot_id":"n2","role":"patrol","danger":"D2","count":"few","named":false,"where_in_interior":"threshold","faction":"faction.blackguards"}
+{"place_id":"place.imperial-fringe.hangs-above-the-water","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 gorge fishers"}
+{"place_id":"place.imperial-fringe.hangs-above-the-water","ord":1,"slot_id":"n2","role":"crew","danger":"D2","count":"few","named":false,"note":"D2 pilots"}
+{"place_id":"place.imperial-fringe.hangs-above-the-water","ord":2,"slot_id":"n3","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 whatever uses the gorge floor at night"}
+{"place_id":"place.imperial-fringe.hearth-house-of-the-burnt-field","ord":0,"slot_id":"n1","role":"rank-and-file","count":"few","named":false,"note":"occasionally a burn-country traveller"}
+{"place_id":"place.imperial-fringe.highwater-hamlet","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 hamlet households"}
+{"place_id":"place.imperial-fringe.highwater-hamlet","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 flood-season refugees"}
+{"place_id":"place.imperial-fringe.hollow-arch-toll","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 toll farmer's hands"}
+{"place_id":"place.imperial-fringe.hollow-arch-toll","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"a Reed writ-reader on quarter days"}
+{"place_id":"place.imperial-fringe.keepers-lodge-of-the-lower-onkobra","ord":0,"slot_id":"n1","role":"named-keeper","danger":"D2","count":"single","named":true,"note":"one D3 keeper"}
+{"place_id":"place.imperial-fringe.keepers-lodge-of-the-lower-onkobra","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"dogs"}
+{"place_id":"place.imperial-fringe.ladder-to-the-light","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 lookout in flood season"}
+{"place_id":"place.imperial-fringe.ladder-to-the-light","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 whatever nests in an unattended canopy platform"}
+{"place_id":"place.imperial-fringe.long-causeway","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 causeway walkers"}
+{"place_id":"place.imperial-fringe.low-water-fair","ord":0,"slot_id":"n1","role":"merchant","danger":"D1","count":"few","named":false,"note":"D1 village traders in season"}
+{"place_id":"place.imperial-fringe.lower-onkobra-paddies","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 paddy families"}
+{"place_id":"place.imperial-fringe.lowmere-raft-town","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 raft households"}
+{"place_id":"place.imperial-fringe.marcians-terrace","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 terrace farmers"}
+{"place_id":"place.imperial-fringe.marcians-terrace","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"single","named":false,"note":"D2 upland predators on the stair"}
+{"place_id":"place.imperial-fringe.mile-house-of-the-eagle","ord":0,"slot_id":"n1","role":"named-keeper","danger":"D1","count":"single","named":true,"note":"D1 keeper's household"}
+{"place_id":"place.imperial-fringe.mile-house-of-the-eagle","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"carters overnighting"}
+{"place_id":"place.imperial-fringe.moonmarch-ground","ord":0,"slot_id":"n1","role":"rank-and-file","count":"single","named":false,"note":"unoccupied for eleven months of the year"}
+{"place_id":"place.imperial-fringe.moonmarch-ground","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"in season: the road villages between Gideon and the Onkobra"}
+{"place_id":"place.imperial-fringe.moonrack-calcinator","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 folk alchemists"}
+{"place_id":"place.imperial-fringe.moonrack-calcinator","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"one apprentice who will not be taught"}
+{"place_id":"place.imperial-fringe.nine-arch-stage","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 stage family"}
+{"place_id":"place.imperial-fringe.nine-arch-stage","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 road wildlife at the silted arches"}
+{"place_id":"place.imperial-fringe.ninefold-station","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"band","named":false,"where_in_interior":"main","faction":"faction.blackguards"}
+{"place_id":"place.imperial-fringe.ninefold-station","ord":1,"slot_id":"n2","role":"lieutenant","danger":"D2","count":"single","named":false,"where_in_interior":"deep","faction":"faction.blackguards"}
+{"place_id":"place.imperial-fringe.ninth-milestone-house","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 family"}
+{"place_id":"place.imperial-fringe.ninth-milestone-house","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"porters and pilgrims"}
+{"place_id":"place.imperial-fringe.onkobra-clay-pits","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 potting families"}
+{"place_id":"place.imperial-fringe.onkobra-clay-pits","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"children on the drying floor"}
+{"place_id":"place.imperial-fringe.onkobra-ferry","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 ferry family"}
+{"place_id":"place.imperial-fringe.onkobra-field-station","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 scholars"}
+{"place_id":"place.imperial-fringe.onkobra-field-station","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 local collecting assistant"}
+{"place_id":"place.imperial-fringe.onkobra-field-station","ord":2,"slot_id":"n3","role":"rank-and-file","danger":"D2","count":"single","named":false,"note":"D2 river hazards on the approach"}
+{"place_id":"place.imperial-fringe.onkobra-kwama-mine","ord":0,"slot_id":"n1","role":"captive","danger":"D1","count":"few","named":false,"note":"D1 mine hands (Owing-held)","where_in_interior":"deep"}
+{"place_id":"place.imperial-fringe.onkobra-kwama-mine","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 egg-miners","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.onkobra-kwama-mine","ord":2,"slot_id":"n3","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D3 scrib swarms below the second gallery","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.open-door-at-the-saddle","ord":0,"slot_id":"n1","role":"rank-and-file","count":"few","named":false,"note":"whoever is there"}
+{"place_id":"place.imperial-fringe.open-door-at-the-saddle","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"nobody by default"}
+{"place_id":"place.imperial-fringe.red-cart-yard","ord":0,"slot_id":"n1","role":"captive","danger":"D1","count":"few","named":false,"note":"D1 Owing-held porters"}
+{"place_id":"place.imperial-fringe.red-cart-yard","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D2 yard hands"}
+{"place_id":"place.imperial-fringe.red-cart-yard","ord":2,"slot_id":"n3","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"one D3 enforcer"}
+{"place_id":"place.imperial-fringe.red-daub-relay","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 courier runners"}
+{"place_id":"place.imperial-fringe.reedcutters-toll","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 reed-cutter families"}
+{"place_id":"place.imperial-fringe.ridge-runners-post","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 runners passing"}
+{"place_id":"place.imperial-fringe.ridge-runners-post","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 rim wildlife"}
+{"place_id":"place.imperial-fringe.rockgrove","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 Sul-Xan raiders"}
+{"place_id":"place.imperial-fringe.rockgrove","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D4","count":"few","named":false,"note":"one D4 mask-bearer"}
+{"place_id":"place.imperial-fringe.rockgrove","ord":2,"slot_id":"n3","role":"captive","count":"few","named":false,"note":"soul-snared captives"}
+{"place_id":"place.imperial-fringe.sabinus-claim","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 Sabinus"}
+{"place_id":"place.imperial-fringe.sabinus-claim","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 two hired locals losing patience"}
+{"place_id":"place.imperial-fringe.saddle-fair","ord":0,"slot_id":"n1","role":"merchant","danger":"D1","count":"few","named":false,"note":"D1 traders and crowds in season"}
+{"place_id":"place.imperial-fringe.saddle-fair","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"empty grass out of it"}
+{"place_id":"place.imperial-fringe.silver-mouth","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 in the flooded lower streets","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.silverhand-cairns","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"pair","named":false,"note":"hill-camp diggers already inside","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.slough-point","ord":0,"slot_id":"n1","role":"official","danger":"D1","count":"few","named":false,"note":"D1 excise clerks and porters"}
+{"place_id":"place.imperial-fringe.slough-point","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"a bored D2 guard file"}
+{"place_id":"place.imperial-fringe.slough-point-quarantine-shed","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 inspectors"}
+{"place_id":"place.imperial-fringe.slough-point-quarantine-shed","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"detained travellers, rarely"}
+{"place_id":"place.imperial-fringe.stonefoot-terrace-village","ord":0,"slot_id":"n1","role":"family","danger":"D2","count":"few","named":false,"note":"D2 terrace households"}
+{"place_id":"place.imperial-fringe.stonefoot-terrace-village","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 rim wildlife above the top wall"}
+{"place_id":"place.imperial-fringe.stonewastes","ord":0,"slot_id":"n1","role":"family","danger":"D2","count":"few","named":false,"note":"D2 villagers"}
+{"place_id":"place.imperial-fringe.stonewastes","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"disciplined D3 Four Winds spearhands"}
+{"place_id":"place.imperial-fringe.stonewastes","ord":2,"slot_id":"n3","role":"named-keeper","danger":"D2","count":"single","named":true,"note":"one very strong D4 senior captain"}
+{"place_id":"place.imperial-fringe.swampmoth-town","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 townsfolk"}
+{"place_id":"place.imperial-fringe.swampmoth-town","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D2 off-duty toll hands"}
+{"place_id":"place.imperial-fringe.swampmoth-town","ord":2,"slot_id":"n3","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D2 self-appointed town watch"}
+{"place_id":"place.imperial-fringe.takes-the-field","ord":0,"slot_id":"n1","role":"official","danger":"D1","count":"single","named":true,"note":"the broker's clerk, who is decent but will not stop reading"}
+{"place_id":"place.imperial-fringe.takes-the-field","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"the hired field-holders"}
+{"place_id":"place.imperial-fringe.the-abandoned-survey","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 along the overgrown line"}
+{"place_id":"place.imperial-fringe.the-art-and-ash-place","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 pilgrims at work"}
+{"place_id":"place.imperial-fringe.the-art-and-ash-place","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"empty most days"}
+{"place_id":"place.imperial-fringe.the-back-kiln","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"where_in_interior":"main","faction":"faction.dres-remnant"}
+{"place_id":"place.imperial-fringe.the-back-kiln","ord":1,"slot_id":"n2","role":"named-keeper","danger":"D2","count":"single","named":false,"where_in_interior":"main","faction":"faction.dres-remnant"}
+{"place_id":"place.imperial-fringe.the-black-tarn","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D5","count":"few","named":false,"note":"D5 in the deep water","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.the-black-tarn","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"no fish rising","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.the-borrowed-house","ord":0,"slot_id":"n1","role":"family","danger":"D2","count":"few","named":false,"note":"one D2 family"}
+{"place_id":"place.imperial-fringe.the-borrowed-house","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 in the unused wings"}
+{"place_id":"place.imperial-fringe.the-broke-column","ord":0,"slot_id":"n1","role":"boss","danger":"D3","count":"single","named":true,"note":"the serjeant, who will parley before he fights"}
+{"place_id":"place.imperial-fringe.the-broke-column","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"band","named":false,"note":"what is left of the column"}
+{"place_id":"place.imperial-fringe.the-buried-spears","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"band","named":false,"where_in_interior":"main","faction":"faction.blackguards"}
+{"place_id":"place.imperial-fringe.the-cold-forge","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"one D3 smith"}
+{"place_id":"place.imperial-fringe.the-cold-forge","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"a striker who does not speak"}
+{"place_id":"place.imperial-fringe.the-counted-dead","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 the carrier on duty","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.the-counted-dead","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"mourners","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.the-counted-dead","ord":2,"slot_id":"n3","role":"rank-and-file","count":"few","named":false,"note":"no other traffic","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.the-drowned-mule","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 carters"}
+{"place_id":"place.imperial-fringe.the-drowned-mule","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 stranded strangers"}
+{"place_id":"place.imperial-fringe.the-drowned-mule","ord":2,"slot_id":"n3","role":"named-keeper","count":"single","named":true,"note":"one very calm keeper"}
+{"place_id":"place.imperial-fringe.the-drowning-gate","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 gatekeeper families in season"}
+{"place_id":"place.imperial-fringe.the-eight-steps","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 water"}
+{"place_id":"place.imperial-fringe.the-empty-steading","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"river thieves using the landing","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.the-fig-and-ledger","ord":0,"slot_id":"n1","role":"official","danger":"D1","count":"few","named":false,"note":"D1 advocates, clerks and fences"}
+{"place_id":"place.imperial-fringe.the-fig-and-ledger","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"one D2 house bruiser"}
+{"place_id":"place.imperial-fringe.the-fig-poachers","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 poachers"}
+{"place_id":"place.imperial-fringe.the-fig-poachers","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"dogs"}
+{"place_id":"place.imperial-fringe.the-hollow-pass-station","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 rota keepers"}
+{"place_id":"place.imperial-fringe.the-hollow-pass-station","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 on the pass itself in weather"}
+{"place_id":"place.imperial-fringe.the-hollow-under-the-figs","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 in the deeper chambers","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.the-hollow-under-the-figs","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"single","named":false,"note":"D2 at the mouth","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.the-kept-terrace","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 keepers by day","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.the-kept-terrace","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"unentered, by rule","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.the-knapping-floor-of-the-high-scree","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 knappers in season"}
+{"place_id":"place.imperial-fringe.the-knapping-floor-of-the-high-scree","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"empty the rest of the year"}
+{"place_id":"place.imperial-fringe.the-lake-divers-yard","ord":0,"slot_id":"n1","role":"crew","danger":"D2","count":"few","named":false,"note":"D2 divers","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.the-lake-divers-yard","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D3 in deep water","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.the-lamp-at-the-ford","ord":0,"slot_id":"n1","role":"named-keeper","danger":"D1","count":"single","named":true,"note":"D1 keeper's family"}
+{"place_id":"place.imperial-fringe.the-lamp-at-the-ford","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 travellers off the upland track"}
+{"place_id":"place.imperial-fringe.the-last-post","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 rota keepers"}
+{"place_id":"place.imperial-fringe.the-last-post","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"one strong D3 in the wet season"}
+{"place_id":"place.imperial-fringe.the-leaning-watch","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"band","named":false,"where_in_interior":"main","faction":"faction.blackguards"}
+{"place_id":"place.imperial-fringe.the-ledge-of-tallies","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 carriers","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.the-ledge-of-tallies","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 rim wildlife","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.the-marble-field","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 by day; the province does not raise its dead","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.the-month-chapel","ord":0,"slot_id":"n1","role":"rank-and-file","count":"few","named":false,"note":"no congregation"}
+{"place_id":"place.imperial-fringe.the-month-chapel","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"single","named":false,"note":"D3 in the crypt"}
+{"place_id":"place.imperial-fringe.the-niben-crystal-workings","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 crystal diggers","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.the-niben-crystal-workings","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 in the ravine after rain","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.the-old-office-house","ord":0,"slot_id":"n1","role":"family","danger":"D2","count":"few","named":false,"note":"one D2 officeholder household"}
+{"place_id":"place.imperial-fringe.the-old-quarters","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"band","named":false,"where_in_interior":"main","faction":"faction.blackguards"}
+{"place_id":"place.imperial-fringe.the-old-quarters","ord":1,"slot_id":"n2","role":"boss","danger":"D3","count":"single","named":false,"where_in_interior":"boss","faction":"faction.blackguards"}
+{"place_id":"place.imperial-fringe.the-pass-shelter","ord":0,"slot_id":"n1","role":"rank-and-file","count":"few","named":false,"note":"empty most days"}
+{"place_id":"place.imperial-fringe.the-pass-shelter","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"in storm: whoever is caught out, in any combination"}
+{"place_id":"place.imperial-fringe.the-quiet-pit","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 yard hands","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.the-quiet-pit","ord":1,"slot_id":"n2","role":"rank-and-file","count":"single","named":false,"note":"whoever is in the pit","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.the-ravine-doors","ord":0,"slot_id":"n1","role":"family","danger":"D2","count":"few","named":false,"note":"D2 shelf households"}
+{"place_id":"place.imperial-fringe.the-ravine-doors","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 in the gorge floor after dark"}
+{"place_id":"place.imperial-fringe.the-ring-of-nine-wells","ord":0,"slot_id":"n1","role":"rank-and-file","count":"few","named":false,"note":"empty by day","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.the-ring-of-nine-wells","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 after dark near the live stones","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.the-road-nisswo-house","ord":0,"slot_id":"n1","role":"priest","danger":"D1","count":"few","named":false,"note":"one D2 Nisswo"}
+{"place_id":"place.imperial-fringe.the-road-nisswo-house","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"travellers"}
+{"place_id":"place.imperial-fringe.the-second-empire-locks","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 in the lowest chamber","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.the-sermon-road-camp","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 pilgrims in season"}
+{"place_id":"place.imperial-fringe.the-sermon-road-camp","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"single","named":false,"note":"D2 opportunists at the edges"}
+{"place_id":"place.imperial-fringe.the-shaking-house","ord":0,"slot_id":"n1","role":"named-keeper","danger":"D2","count":"single","named":true,"note":"one D2 keeper"}
+{"place_id":"place.imperial-fringe.the-shaking-house","ord":1,"slot_id":"n2","role":"rank-and-file","count":"single","named":false,"note":"the sick"}
+{"place_id":"place.imperial-fringe.the-shut-door","ord":0,"slot_id":"n1","role":"rank-and-file","count":"few","named":false,"note":"no living occupant","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.the-shut-door","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D4","count":"few","named":false,"note":"D4 mechanisms and whatever they were set to stop","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.the-silent-halls","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D4","count":"few","named":false,"note":"D4 Sul-Xan wardens","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.the-silent-halls","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 trapped mechanisms","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.the-silent-halls","ord":2,"slot_id":"n3","role":"rank-and-file","count":"single","named":false,"note":"the soul-snared","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.the-snowline-cell","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"two D3 ascetics","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.the-stone-drop","ord":0,"slot_id":"n1","role":"boss","danger":"D3","count":"single","named":false,"note":"the clerk, who runs rather than fights"}
+{"place_id":"place.imperial-fringe.the-stone-drop","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"band","named":false,"note":"company hands off the roster"}
+{"place_id":"place.imperial-fringe.the-stone-talkers-watch","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 villagers"}
+{"place_id":"place.imperial-fringe.the-stone-talkers-watch","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 stone-talkers"}
+{"place_id":"place.imperial-fringe.the-stone-talkers-watch","ord":2,"slot_id":"n3","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D3 Sul-Xan raiders working the same ground"}
+{"place_id":"place.imperial-fringe.the-sunk-lane","ord":0,"slot_id":"n1","role":"rank-and-file","count":"few","named":false,"note":"empty at the rim","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.the-turned-out","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 evicted families"}
+{"place_id":"place.imperial-fringe.the-turned-out","ord":1,"slot_id":"n2","role":"rank-and-file","count":"single","named":false,"note":"no guards of any kind"}
+{"place_id":"place.imperial-fringe.the-two-lamps-hermitage","ord":0,"slot_id":"n1","role":"hermit","danger":"D3","count":"single","named":false,"note":"one D3 hermit"}
+{"place_id":"place.imperial-fringe.the-vellum-estate","ord":0,"slot_id":"n1","role":"captive","danger":"D1","count":"few","named":false,"note":"D1 Owing-held workers"}
+{"place_id":"place.imperial-fringe.the-vellum-estate","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D2 estate guards"}
+{"place_id":"place.imperial-fringe.the-vellum-estate","ord":2,"slot_id":"n3","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"one D3 steward"}
+{"place_id":"place.imperial-fringe.the-white-throat","ord":0,"slot_id":"n1","role":"rank-and-file","count":"few","named":false,"note":"no permanent residents","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.treasure-hunters-camp-of-the-white-hill","ord":0,"slot_id":"n1","role":"merchant","danger":"D3","count":"few","named":false,"note":"one D3 fence's runner"}
+{"place_id":"place.imperial-fringe.twyllbek-crown","ord":0,"slot_id":"n1","role":"rank-and-file","count":"few","named":false,"note":"no residents"}
+{"place_id":"place.imperial-fringe.twyllbek-crown","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 on the ruin field below after dark"}
+{"place_id":"place.imperial-fringe.twyllbek-ruins","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 licensed diggers by day","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.twyllbek-ruins","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"single","named":false,"note":"D3 wildlife in the undercroft","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.unfinished-culvert-line","ord":0,"slot_id":"n1","role":"lieutenant","danger":"D2","count":"single","named":true,"note":"the gang's tally-keeper","where_in_interior":"deep"}
+{"place_id":"place.imperial-fringe.unfinished-culvert-line","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"band","named":false,"note":"road thieves living in the dressed culverts","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.watch-of-the-weighed-cart","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 tower clerk and two guards"}
+{"place_id":"place.imperial-fringe.westfield-village","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 villagers"}
+{"place_id":"place.imperial-fringe.westfield-village","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D2 field-edge guards at harvest"}
+{"place_id":"place.imperial-fringe.xi-tsei-massacre-ground","ord":0,"slot_id":"n1","role":"priest","danger":"D3","count":"single","named":true,"note":"the Sul-Xan soul-keeper who tends the vault","where_in_interior":"main"}
+{"place_id":"place.imperial-fringe.xi-tsei-massacre-ground","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"her escort","where_in_interior":"main"}
+{"place_id":"place.imperial-penal-south.basin-hearth-house","ord":0,"slot_id":"n1","role":"hermit","count":"single","named":true}
+{"place_id":"place.imperial-penal-south.blackrose","ord":0,"slot_id":"n1","role":"official","count":"single","named":true,"faction":"faction.an-xileel"}
+{"place_id":"place.imperial-penal-south.blackrose","ord":1,"slot_id":"n2","role":"merchant","count":"single","named":false,"faction":"faction.dres-remnant"}
+{"place_id":"place.imperial-penal-south.blackrose","ord":2,"slot_id":"n3","role":"quest-giver","count":"single","named":true}
+{"place_id":"place.imperial-penal-south.blackrose-drowned-hist","ord":0,"slot_id":"n1","role":"priest","count":"single","named":true,"faction":"faction.many-root-conclave"}
+{"place_id":"place.imperial-penal-south.blackrose-drowned-hist","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"faction":"faction.many-root-conclave"}
+{"place_id":"place.imperial-penal-south.blackrose-prison","ord":0,"slot_id":"n1","role":"family","count":"band","named":true,"where_in_interior":"main","faction":"faction.chainbreakers"}
+{"place_id":"place.imperial-penal-south.blackrose-prison","ord":1,"slot_id":"n2","role":"named-keeper","count":"single","named":true,"where_in_interior":"main","faction":"faction.chainbreakers"}
+{"place_id":"place.imperial-penal-south.blackrose-prison","ord":2,"slot_id":"n3","role":"quest-giver","count":"single","named":true,"where_in_interior":"entrance","faction":"faction.chainbreakers"}
+{"place_id":"place.imperial-penal-south.blasphemer-urn-vault","ord":0,"slot_id":"n1","role":"named-keeper","count":"single","named":true,"where_in_interior":"main","faction":"faction.nisswo"}
+{"place_id":"place.imperial-penal-south.bramman-head","ord":0,"slot_id":"n1","role":"crew","count":"few","named":false,"faction":"faction.reed-sail-compact"}
+{"place_id":"place.imperial-penal-south.bramman-head","ord":1,"slot_id":"n2","role":"named-keeper","count":"single","named":true,"faction":"faction.reed-sail-compact"}
+{"place_id":"place.imperial-penal-south.chainbreaker-shelter","ord":0,"slot_id":"n1","role":"quest-giver","count":"single","named":true,"faction":"faction.chainbreakers"}
+{"place_id":"place.imperial-penal-south.chainbreaker-shelter","ord":1,"slot_id":"n2","role":"captive","count":"few","named":false}
+{"place_id":"place.imperial-penal-south.chainbreaker-shelter","ord":2,"slot_id":"n3","role":"named-keeper","count":"single","named":true,"faction":"faction.chainbreakers"}
+{"place_id":"place.imperial-penal-south.cordon-cellars","ord":0,"slot_id":"n1","role":"lieutenant","count":"single","named":true,"where_in_interior":"deep","faction":"faction.dres-remnant"}
+{"place_id":"place.imperial-penal-south.cordon-cellars","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"where_in_interior":"main","faction":"faction.dres-remnant"}
+{"place_id":"place.imperial-penal-south.feeder-portage","ord":0,"slot_id":"n1","role":"crew","count":"few","named":false,"faction":"faction.reed-sail-compact"}
+{"place_id":"place.imperial-penal-south.feeder-portage","ord":1,"slot_id":"n2","role":"merchant","count":"single","named":false}
+{"place_id":"place.imperial-penal-south.flu-mass-grave","ord":0,"slot_id":"n1","role":"priest","count":"pair","named":false,"where_in_interior":"main","faction":"faction.nisswo"}
+{"place_id":"place.imperial-penal-south.intact-fort","ord":0,"slot_id":"n1","role":"lieutenant","count":"single","named":true,"where_in_interior":"deep"}
+{"place_id":"place.imperial-penal-south.intact-fort","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"where_in_interior":"main"}
+{"place_id":"place.imperial-penal-south.lake-boardwalk-village","ord":0,"slot_id":"n1","role":"family","count":"band","named":false}
+{"place_id":"place.imperial-penal-south.lake-boardwalk-village","ord":1,"slot_id":"n2","role":"merchant","count":"single","named":false}
+{"place_id":"place.imperial-penal-south.lake-boardwalk-village","ord":2,"slot_id":"n3","role":"quest-giver","count":"single","named":true}
+{"place_id":"place.imperial-penal-south.lake-divers-yard","ord":0,"slot_id":"n1","role":"merchant","count":"single","named":false,"faction":"faction.unclaimed"}
+{"place_id":"place.imperial-penal-south.lake-divers-yard","ord":1,"slot_id":"n2","role":"trainer","count":"single","named":true,"faction":"faction.unclaimed"}
+{"place_id":"place.imperial-penal-south.lake-divers-yard","ord":2,"slot_id":"n3","role":"crew","count":"few","named":false,"faction":"faction.unclaimed"}
+{"place_id":"place.imperial-penal-south.lake-ferry-stage","ord":0,"slot_id":"n1","role":"crew","count":"few","named":false}
+{"place_id":"place.imperial-penal-south.lake-ferry-stage","ord":1,"slot_id":"n2","role":"official","count":"single","named":false,"faction":"faction.an-xileel"}
+{"place_id":"place.imperial-penal-south.ledgered-blackguards","ord":0,"slot_id":"n1","role":"boss","count":"single","named":true,"where_in_interior":"boss","faction":"faction.blackguards"}
+{"place_id":"place.imperial-penal-south.ledgered-blackguards","ord":1,"slot_id":"n2","role":"lieutenant","count":"pair","named":false,"where_in_interior":"deep","faction":"faction.blackguards"}
+{"place_id":"place.imperial-penal-south.ledgered-blackguards","ord":2,"slot_id":"n3","role":"rank-and-file","count":"band","named":false,"where_in_interior":"main","faction":"faction.blackguards"}
+{"place_id":"place.imperial-penal-south.longmont","ord":0,"slot_id":"n1","role":"merchant","count":"single","named":false}
+{"place_id":"place.imperial-penal-south.longmont","ord":1,"slot_id":"n2","role":"family","count":"band","named":false}
+{"place_id":"place.imperial-penal-south.longmont","ord":2,"slot_id":"n3","role":"hermit","count":"single","named":true}
+{"place_id":"place.imperial-penal-south.manned-toll-tower","ord":0,"slot_id":"n1","role":"official","count":"single","named":true,"faction":"faction.an-xileel"}
+{"place_id":"place.imperial-penal-south.manned-toll-tower","ord":1,"slot_id":"n2","role":"patrol","count":"pair","named":false,"faction":"faction.an-xileel"}
+{"place_id":"place.imperial-penal-south.necromantic-dig","ord":0,"slot_id":"n1","role":"boss","count":"single","named":true,"where_in_interior":"boss","faction":"faction.college-of-whispers"}
+{"place_id":"place.imperial-penal-south.necromantic-dig","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"where_in_interior":"main","faction":"faction.college-of-whispers"}
+{"place_id":"place.imperial-penal-south.prison-born-refuge","ord":0,"slot_id":"n1","role":"named-keeper","count":"single","named":true,"faction":"faction.chainbreakers"}
+{"place_id":"place.imperial-penal-south.prison-born-refuge","ord":1,"slot_id":"n2","role":"family","count":"band","named":false}
+{"place_id":"place.imperial-penal-south.prison-born-refuge","ord":2,"slot_id":"n3","role":"quest-giver","count":"single","named":true}
+{"place_id":"place.imperial-penal-south.rebellion-earthworks","ord":0,"slot_id":"n1","role":"crew","danger":"D1","count":"band","named":false}
+{"place_id":"place.imperial-penal-south.rebellion-earthworks","ord":1,"slot_id":"n2","role":"named-keeper","danger":"D1","count":"single","named":false}
+{"place_id":"place.imperial-penal-south.rockspring","ord":0,"slot_id":"n1","role":"family","count":"few","named":false}
+{"place_id":"place.imperial-penal-south.rockspring","ord":1,"slot_id":"n2","role":"merchant","count":"single","named":false}
+{"place_id":"place.imperial-penal-south.rose-outworks","ord":0,"slot_id":"n1","role":"boss","count":"single","named":true,"where_in_interior":"boss","faction":"faction.blackguards"}
+{"place_id":"place.imperial-penal-south.rose-outworks","ord":1,"slot_id":"n2","role":"rank-and-file","count":"band","named":false,"where_in_interior":"main","faction":"faction.blackguards"}
+{"place_id":"place.imperial-penal-south.rose-outworks","ord":2,"slot_id":"n3","role":"captive","count":"few","named":false,"where_in_interior":"deep"}
+{"place_id":"place.imperial-penal-south.rose-supply-town","ord":0,"slot_id":"n1","role":"merchant","count":"single","named":false}
+{"place_id":"place.imperial-penal-south.rose-supply-town","ord":1,"slot_id":"n2","role":"official","count":"single","named":true,"faction":"faction.imperial-legion-remnant"}
+{"place_id":"place.imperial-penal-south.rose-supply-town","ord":2,"slot_id":"n3","role":"trainer","count":"single","named":false}
+{"place_id":"place.imperial-penal-south.scandal-holding-pit","ord":0,"slot_id":"n1","role":"captive","count":"few","named":false}
+{"place_id":"place.imperial-penal-south.scandal-holding-pit","ord":1,"slot_id":"n2","role":"patrol","count":"pair","named":false,"faction":"faction.an-xileel"}
+{"place_id":"place.imperial-penal-south.three-gate-toll","ord":0,"slot_id":"n1","role":"official","count":"single","named":true,"faction":"faction.an-xileel"}
+{"place_id":"place.imperial-penal-south.three-gate-toll","ord":1,"slot_id":"n2","role":"patrol","count":"few","named":false,"faction":"faction.an-xileel"}
+{"place_id":"place.imperial-penal-south.west-market-town","ord":0,"slot_id":"n1","role":"merchant","count":"few","named":false}
+{"place_id":"place.imperial-penal-south.west-market-town","ord":1,"slot_id":"n2","role":"quest-giver","count":"single","named":true}
+{"place_id":"place.imperial-penal-south.west-market-town","ord":2,"slot_id":"n3","role":"official","count":"single","named":false,"faction":"faction.an-xileel"}
+{"place_id":"place.mercantile-coast.alten-meerhleel","ord":0,"slot_id":"n1","role":"merchant","count":"few","faction":"faction.marsh-charter"}
+{"place_id":"place.mercantile-coast.alten-meerhleel","ord":1,"slot_id":"n2","role":"official","count":"single","named":true}
+{"place_id":"place.mercantile-coast.alten-meerhleel","ord":2,"slot_id":"n3","role":"crew","count":"band"}
+{"place_id":"place.mercantile-coast.ashroot-village","ord":0,"slot_id":"n1","role":"priest","count":"single","named":true,"faction":"faction.unclaimed"}
+{"place_id":"place.mercantile-coast.ashroot-village","ord":1,"slot_id":"n2","role":"family","count":"band"}
+{"place_id":"place.mercantile-coast.bereaved-village-murkmire","ord":0,"slot_id":"n1","role":"named-keeper","count":"single","named":true,"faction":"faction.unclaimed"}
+{"place_id":"place.mercantile-coast.bereaved-village-murkmire","ord":1,"slot_id":"n2","role":"family","count":"band"}
+{"place_id":"place.mercantile-coast.bramman-river-ferry","ord":0,"slot_id":"n1","role":"family","count":"few","faction":"faction.reed-sail-compact"}
+{"place_id":"place.mercantile-coast.bramman-river-ferry","ord":1,"slot_id":"n2","role":"quest-giver","count":"single","named":true}
+{"place_id":"place.mercantile-coast.bright-throat-village","ord":0,"slot_id":"n1","role":"named-keeper","count":"single","named":true,"faction":"faction.bright-throat-tribe"}
+{"place_id":"place.mercantile-coast.bright-throat-village","ord":1,"slot_id":"n2","role":"merchant","count":"few"}
+{"place_id":"place.mercantile-coast.bright-throat-village","ord":2,"slot_id":"n3","role":"trainer","count":"single","faction":"faction.bright-throat-tribe"}
+{"place_id":"place.mercantile-coast.chasepoint","ord":0,"slot_id":"n1","role":"family","count":"band","faction":"faction.unclaimed"}
+{"place_id":"place.mercantile-coast.chasepoint","ord":1,"slot_id":"n2","role":"merchant","count":"single","named":true}
+{"place_id":"place.mercantile-coast.coast-road-stage","ord":0,"slot_id":"n1","role":"family","count":"few"}
+{"place_id":"place.mercantile-coast.coast-road-stage","ord":1,"slot_id":"n2","role":"merchant","count":"single"}
+{"place_id":"place.mercantile-coast.coast-toll-bridge","ord":0,"slot_id":"n1","role":"family","count":"few","faction":"faction.unclaimed"}
+{"place_id":"place.mercantile-coast.hammock-crown-murkmire","ord":0,"slot_id":"n1","role":"named-keeper","count":"single","named":true,"where_in_interior":"main","faction":"faction.unclaimed"}
+{"place_id":"place.mercantile-coast.head-of-tide","ord":0,"slot_id":"n1","role":"merchant","count":"few"}
+{"place_id":"place.mercantile-coast.head-of-tide","ord":1,"slot_id":"n2","role":"crew","count":"band","faction":"faction.league-of-open-water"}
+{"place_id":"place.mercantile-coast.hereguard-plantation","ord":0,"slot_id":"n1","role":"official","count":"single","named":true,"faction":"faction.unclaimed"}
+{"place_id":"place.mercantile-coast.hereguard-plantation","ord":1,"slot_id":"n2","role":"rank-and-file","count":"band"}
+{"place_id":"place.mercantile-coast.high-junction","ord":0,"slot_id":"n1","role":"crew","count":"few","faction":"faction.reed-sail-compact"}
+{"place_id":"place.mercantile-coast.high-junction","ord":1,"slot_id":"n2","role":"merchant","count":"single"}
+{"place_id":"place.mercantile-coast.hist-less-fringe","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"where_in_interior":"main","faction":"faction.blackguards"}
+{"place_id":"place.mercantile-coast.hist-less-fringe","ord":1,"slot_id":"n2","role":"lieutenant","danger":"D2","count":"single","named":false,"where_in_interior":"deep","faction":"faction.blackguards"}
+{"place_id":"place.mercantile-coast.hull-hall","ord":0,"slot_id":"n1","role":"family","count":"band"}
+{"place_id":"place.mercantile-coast.hull-hall","ord":1,"slot_id":"n2","role":"merchant","count":"single"}
+{"place_id":"place.mercantile-coast.inhabited-meer-murkmire","ord":0,"slot_id":"n1","role":"boss","count":"single","named":true,"where_in_interior":"boss","faction":"faction.bright-throat-tribe"}
+{"place_id":"place.mercantile-coast.inhabited-meer-murkmire","ord":1,"slot_id":"n2","role":"patrol","count":"band","where_in_interior":"threshold","faction":"faction.bright-throat-tribe"}
+{"place_id":"place.mercantile-coast.inhabited-meer-murkmire","ord":2,"slot_id":"n3","role":"priest","count":"single","where_in_interior":"main","faction":"faction.bright-throat-tribe"}
+{"place_id":"place.mercantile-coast.insular-jungle-village","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D4","count":"band","named":false,"where_in_interior":"main","faction":"faction.blackguards"}
+{"place_id":"place.mercantile-coast.insular-jungle-village","ord":1,"slot_id":"n2","role":"boss","danger":"D4","count":"single","named":false,"where_in_interior":"boss","faction":"faction.blackguards"}
+{"place_id":"place.mercantile-coast.keel-sakka-stilts","ord":0,"slot_id":"n1","role":"merchant","count":"single","faction":"faction.unclaimed"}
+{"place_id":"place.mercantile-coast.keel-sakka-stilts","ord":1,"slot_id":"n2","role":"family","count":"band"}
+{"place_id":"place.mercantile-coast.keel-sakka-stilts","ord":2,"slot_id":"n3","role":"crew","count":"few"}
+{"place_id":"place.mercantile-coast.keshu-grove","ord":0,"slot_id":"n1","role":"priest","count":"single","named":true,"faction":"faction.nisswo"}
+{"place_id":"place.mercantile-coast.keshu-grove","ord":1,"slot_id":"n2","role":"hermit","count":"single"}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":0,"slot_id":"n1","role":"crew","count":"band","faction":"faction.reed-sail-compact"}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":1,"slot_id":"n2","role":"quest-giver","count":"single","named":true,"faction":"faction.reed-sail-compact"}
+{"place_id":"place.mercantile-coast.lilmoth","ord":0,"slot_id":"n1","role":"official","count":"single","named":true,"faction":"faction.an-xileel"}
+{"place_id":"place.mercantile-coast.lilmoth","ord":1,"slot_id":"n2","role":"priest","count":"single","named":true,"faction":"faction.many-root-conclave"}
+{"place_id":"place.mercantile-coast.lilmoth","ord":2,"slot_id":"n3","role":"merchant","count":"few","faction":"faction.an-xileel"}
+{"place_id":"place.mercantile-coast.lilmoth","ord":3,"slot_id":"n4","role":"quest-giver","count":"single","named":true,"faction":"faction.an-xileel"}
+{"place_id":"place.mercantile-coast.lilmoth-divers-yard","ord":0,"slot_id":"n1","role":"merchant","count":"single","named":true,"faction":"faction.night-reed-chapter"}
+{"place_id":"place.mercantile-coast.lilmoth-divers-yard","ord":1,"slot_id":"n2","role":"crew","count":"few"}
+{"place_id":"place.mercantile-coast.lilmoth-divers-yard","ord":2,"slot_id":"n3","role":"trainer","count":"single","faction":"faction.night-reed-chapter"}
+{"place_id":"place.mercantile-coast.long-bar-wreckers","ord":0,"slot_id":"n1","role":"lieutenant","count":"single","named":true,"faction":"faction.salt-teeth"}
+{"place_id":"place.mercantile-coast.long-bar-wreckers","ord":1,"slot_id":"n2","role":"rank-and-file","count":"band","faction":"faction.salt-teeth"}
+{"place_id":"place.mercantile-coast.mangrove-hide","ord":0,"slot_id":"n1","role":"lieutenant","count":"single","named":true,"where_in_interior":"deep","faction":"faction.blackguards"}
+{"place_id":"place.mercantile-coast.mangrove-hide","ord":1,"slot_id":"n2","role":"rank-and-file","count":"band","where_in_interior":"main","faction":"faction.blackguards"}
+{"place_id":"place.mercantile-coast.mangrove-hide","ord":2,"slot_id":"n3","role":"captive","count":"single","where_in_interior":"deep"}
+{"place_id":"place.mercantile-coast.moonmarch","ord":0,"slot_id":"n1","role":"merchant","count":"single","named":true,"faction":"faction.salt-teeth"}
+{"place_id":"place.mercantile-coast.moonmarch","ord":1,"slot_id":"n2","role":"crew","count":"few"}
+{"place_id":"place.mercantile-coast.mudfoot","ord":0,"slot_id":"n1","role":"family","count":"band","faction":"faction.unclaimed"}
+{"place_id":"place.mercantile-coast.naga-village-oliis","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"band","named":false,"where_in_interior":"main","faction":"faction.tribeless-naga"}
+{"place_id":"place.mercantile-coast.naga-village-oliis","ord":1,"slot_id":"n2","role":"lieutenant","danger":"D3","count":"single","named":false,"where_in_interior":"deep","faction":"faction.tribeless-naga"}
+{"place_id":"place.mercantile-coast.necropolis-village-murkmire","ord":0,"slot_id":"n1","role":"priest","count":"single","named":true,"where_in_interior":"main","faction":"faction.unclaimed"}
+{"place_id":"place.mercantile-coast.necropolis-village-murkmire","ord":1,"slot_id":"n2","role":"family","count":"band","where_in_interior":"main"}
+{"place_id":"place.mercantile-coast.oliis-boardwalk","ord":0,"slot_id":"n1","role":"family","count":"band","faction":"faction.unclaimed"}
+{"place_id":"place.mercantile-coast.oliis-boardwalk","ord":1,"slot_id":"n2","role":"merchant","count":"single"}
+{"place_id":"place.mercantile-coast.oliis-ferry-stage","ord":0,"slot_id":"n1","role":"family","count":"few","faction":"faction.reed-sail-compact"}
+{"place_id":"place.mercantile-coast.oliis-reef-harvest","ord":0,"slot_id":"n1","role":"crew","count":"band"}
+{"place_id":"place.mercantile-coast.oliis-reef-harvest","ord":1,"slot_id":"n2","role":"merchant","count":"single","faction":"faction.an-xileel"}
+{"place_id":"place.mercantile-coast.pilgrim-xanmeer","ord":0,"slot_id":"n1","role":"priest","count":"single","where_in_interior":"main","faction":"faction.nisswo"}
+{"place_id":"place.mercantile-coast.pilgrim-xanmeer","ord":1,"slot_id":"n2","role":"hermit","count":"single","named":true,"where_in_interior":"entrance"}
+{"place_id":"place.mercantile-coast.quinrawl-anchorage","ord":0,"slot_id":"n1","role":"boss","count":"single","named":true,"faction":"faction.salt-teeth"}
+{"place_id":"place.mercantile-coast.quinrawl-anchorage","ord":1,"slot_id":"n2","role":"crew","count":"band","faction":"faction.salt-teeth"}
+{"place_id":"place.mercantile-coast.quinrawl-anchorage","ord":2,"slot_id":"n3","role":"merchant","count":"single","faction":"faction.salt-teeth"}
+{"place_id":"place.mercantile-coast.root-gallery-murkmire","ord":0,"slot_id":"n1","role":"lieutenant","count":"single","named":true,"where_in_interior":"deep","faction":"faction.night-reed-chapter"}
+{"place_id":"place.mercantile-coast.root-gallery-murkmire","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","where_in_interior":"main","faction":"faction.night-reed-chapter"}
+{"place_id":"place.mercantile-coast.screen-watch","ord":0,"slot_id":"n1","role":"named-keeper","count":"single","named":true,"faction":"faction.reed-sail-compact"}
+{"place_id":"place.mercantile-coast.screen-watch","ord":1,"slot_id":"n2","role":"family","count":"band"}
+{"place_id":"place.mercantile-coast.soulrest","ord":0,"slot_id":"n1","role":"official","count":"single","named":true,"faction":"faction.league-of-open-water"}
+{"place_id":"place.mercantile-coast.soulrest","ord":1,"slot_id":"n2","role":"merchant","count":"few"}
+{"place_id":"place.mercantile-coast.soulrest","ord":2,"slot_id":"n3","role":"quest-giver","count":"single","named":true}
+{"place_id":"place.mercantile-coast.soulrest","ord":3,"slot_id":"n4","role":"trainer","count":"single","faction":"faction.unclaimed"}
+{"place_id":"place.mercantile-coast.soulrest-breaking-yard","ord":0,"slot_id":"n1","role":"trainer","count":"single","named":true,"faction":"faction.unclaimed"}
+{"place_id":"place.mercantile-coast.soulrest-breaking-yard","ord":1,"slot_id":"n2","role":"crew","count":"band"}
+{"place_id":"place.mercantile-coast.soulrest-quay-tradehouse","ord":0,"slot_id":"n1","role":"merchant","count":"few","faction":"faction.league-of-open-water"}
+{"place_id":"place.mercantile-coast.soulrest-quay-tradehouse","ord":1,"slot_id":"n2","role":"quest-giver","count":"single","named":true}
+{"place_id":"place.mercantile-coast.sugar-stack","ord":0,"slot_id":"n1","role":"lieutenant","count":"single","named":true,"faction":"faction.salt-teeth"}
+{"place_id":"place.mercantile-coast.sugar-stack","ord":1,"slot_id":"n2","role":"crew","count":"few"}
+{"place_id":"place.mercantile-coast.sunkfoot","ord":0,"slot_id":"n1","role":"hermit","count":"single","named":true,"where_in_interior":"entrance"}
+{"place_id":"place.mercantile-coast.teeba-enoo-court","ord":0,"slot_id":"n1","role":"trainer","count":"single","named":true,"faction":"faction.unclaimed"}
+{"place_id":"place.mercantile-coast.teeba-enoo-court","ord":1,"slot_id":"n2","role":"family","count":"band"}
+{"place_id":"place.mercantile-coast.teeth-of-sithis","ord":0,"slot_id":"n1","role":"priest","count":"single","named":true,"where_in_interior":"main","faction":"faction.nisswo"}
+{"place_id":"place.mercantile-coast.teeth-of-sithis","ord":1,"slot_id":"n2","role":"rank-and-file","count":"band","where_in_interior":"main","faction":"faction.nisswo"}
+{"place_id":"place.mercantile-coast.tempering-ground","ord":0,"slot_id":"n1","role":"trainer","count":"single","named":true,"faction":"faction.shadowscales"}
+{"place_id":"place.mercantile-coast.tempering-ground","ord":1,"slot_id":"n2","role":"captive","count":"single"}
+{"place_id":"place.mercantile-coast.topal-salt-pans","ord":0,"slot_id":"n1","role":"official","count":"single","named":true,"faction":"faction.unclaimed"}
+{"place_id":"place.mercantile-coast.topal-salt-pans","ord":1,"slot_id":"n2","role":"rank-and-file","count":"band"}
+{"place_id":"place.mercantile-coast.tunnel-rat-gallery","ord":0,"slot_id":"n1","role":"hermit","count":"single","named":true,"where_in_interior":"entrance"}
+{"place_id":"place.mercantile-coast.wraxu-frieze","ord":0,"slot_id":"n1","role":"priest","count":"single","faction":"faction.nisswo"}
+{"place_id":"place.mercantile-coast.wraxu-frieze","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few"}
+{"place_id":"place.mercantile-coast.xinchei-konu","ord":0,"slot_id":"n1","role":"named-keeper","count":"single","named":true,"faction":"faction.unclaimed"}
+{"place_id":"place.naga-kur-deeps.air-pocket-station-deeps","ord":0,"slot_id":"n1","role":"crew","count":"pair","named":false,"note":"two polers waiting out a tide","where_in_interior":"main","faction":"faction.reed-sail-compact"}
+{"place_id":"place.naga-kur-deeps.art-and-destroy-site-deeps","ord":0,"slot_id":"n1","role":"priest","count":"single","named":true,"note":"the Nisswo who keeps the ledger of what was unmade","where_in_interior":"main","faction":"faction.nisswo"}
+{"place_id":"place.naga-kur-deeps.art-and-destroy-site-deeps","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"where_in_interior":"main","faction":"faction.nisswo"}
+{"place_id":"place.naga-kur-deeps.bereaved-hist-less-since","ord":0,"slot_id":"n1","role":"named-keeper","count":"single","named":true,"note":"the elder who kept the tribe from leaving","faction":"faction.naga-kur"}
+{"place_id":"place.naga-kur-deeps.bereaved-hist-less-since","ord":1,"slot_id":"n2","role":"family","count":"band","named":false,"faction":"faction.naga-kur"}
+{"place_id":"place.naga-kur-deeps.bog-blight-ground-nine-stakes","ord":0,"slot_id":"n1","role":"rank-and-file","count":"pair","named":false,"note":"stakers from the Staking Village, working and losing","where_in_interior":"main","faction":"faction.naga-kur"}
+{"place_id":"place.naga-kur-deeps.bone-carriers-camp-deeps","ord":0,"slot_id":"n1","role":"quest-giver","count":"single","named":true,"note":"a carrier one bundle short of a full walk","faction":"faction.nisswo"}
+{"place_id":"place.naga-kur-deeps.bone-carriers-camp-deeps","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"faction":"faction.nisswo"}
+{"place_id":"place.naga-kur-deeps.dead-water-village","ord":0,"slot_id":"n1","role":"named-keeper","count":"single","named":true,"note":"the Naga-Kur speaker who sets the toll","faction":"faction.naga-kur"}
+{"place_id":"place.naga-kur-deeps.dead-water-village","ord":1,"slot_id":"n2","role":"merchant","count":"pair","named":false,"note":"stake-wood, hide, poling hire","faction":"faction.naga-kur"}
+{"place_id":"place.naga-kur-deeps.dead-water-village","ord":2,"slot_id":"n3","role":"trainer","count":"single","named":false,"note":"teaches the poling and breath-holding on which the zone depends","faction":"faction.naga-kur"}
+{"place_id":"place.naga-kur-deeps.dead-water-village","ord":3,"slot_id":"n4","role":"patrol","count":"band","named":false,"faction":"faction.naga-kur"}
+{"place_id":"place.naga-kur-deeps.deepmire-refuge","ord":0,"slot_id":"n1","role":"named-keeper","count":"single","named":true,"note":"the caretaker whose season is turning the stores","where_in_interior":"main","faction":"faction.nisswo"}
+{"place_id":"place.naga-kur-deeps.deepmire-refuge","ord":1,"slot_id":"n2","role":"hermit","count":"few","named":false,"where_in_interior":"entrance","faction":"faction.nisswo"}
+{"place_id":"place.naga-kur-deeps.ferry-stage-guide-hire","ord":0,"slot_id":"n1","role":"official","count":"single","named":true,"note":"sets the crossing price","faction":"faction.reed-sail-compact"}
+{"place_id":"place.naga-kur-deeps.ferry-stage-guide-hire","ord":1,"slot_id":"n2","role":"crew","count":"band","named":false,"faction":"faction.reed-sail-compact"}
+{"place_id":"place.naga-kur-deeps.ferry-stage-guide-hire","ord":2,"slot_id":"n3","role":"merchant","count":"single","named":false,"note":"poles, tar, lamp oil, rope"}
+{"place_id":"place.naga-kur-deeps.guide-camp-poling","ord":0,"slot_id":"n1","role":"crew","count":"band","named":false,"note":"four craft and their crews, in arrival order","faction":"faction.reed-sail-compact"}
+{"place_id":"place.naga-kur-deeps.guide-camp-poling","ord":1,"slot_id":"n2","role":"quest-giver","count":"single","named":true,"note":"a poler short of a hand for the far leg","faction":"faction.reed-sail-compact"}
+{"place_id":"place.naga-kur-deeps.harmed-hist-enslaved","ord":0,"slot_id":"n1","role":"boss","count":"single","named":true,"note":"the crew captain, who keeps the tapping log","faction":"faction.blackguards"}
+{"place_id":"place.naga-kur-deeps.harmed-hist-enslaved","ord":1,"slot_id":"n2","role":"rank-and-file","count":"band","named":false,"faction":"faction.blackguards"}
+{"place_id":"place.naga-kur-deeps.harmed-hist-enslaved","ord":2,"slot_id":"n3","role":"captive","count":"pair","named":false,"note":"tribe members who would not leave the tree"}
+{"place_id":"place.naga-kur-deeps.leviathan-bone-field","ord":0,"slot_id":"n1","role":"merchant","count":"single","named":true,"note":"sells bone by the length, at a fixed rate","where_in_interior":"entrance","faction":"faction.unclaimed"}
+{"place_id":"place.naga-kur-deeps.leviathan-bone-field","ord":1,"slot_id":"n2","role":"crew","count":"few","named":false,"where_in_interior":"main","faction":"faction.unclaimed"}
+{"place_id":"place.naga-kur-deeps.maturity-trial-kaju-kill","ord":0,"slot_id":"n1","role":"priest","count":"single","named":true,"note":"the keeper who cuts the name into the skull","faction":"faction.naga-kur"}
+{"place_id":"place.naga-kur-deeps.maturity-trial-kaju-kill","ord":1,"slot_id":"n2","role":"family","count":"band","named":false,"note":"close enough to watch, too far to help","faction":"faction.naga-kur"}
+{"place_id":"place.naga-kur-deeps.naga-highway-camp-active-north","ord":0,"slot_id":"n1","role":"lieutenant","count":"single","named":true,"note":"writes the receipts","faction":"faction.tribeless-naga"}
+{"place_id":"place.naga-kur-deeps.naga-highway-camp-active-north","ord":1,"slot_id":"n2","role":"rank-and-file","count":"band","named":false,"faction":"faction.tribeless-naga"}
+{"place_id":"place.naga-kur-deeps.naga-highway-camp-active-south","ord":0,"slot_id":"n1","role":"lieutenant","count":"single","named":true,"note":"fell out with the northern camp and says so at length","faction":"faction.tribeless-naga"}
+{"place_id":"place.naga-kur-deeps.naga-highway-camp-active-south","ord":1,"slot_id":"n2","role":"rank-and-file","count":"band","named":false,"faction":"faction.tribeless-naga"}
+{"place_id":"place.naga-kur-deeps.naga-village-raiding","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"band","named":false,"where_in_interior":"main","faction":"faction.tribeless-naga"}
+{"place_id":"place.naga-kur-deeps.naga-village-raiding","ord":1,"slot_id":"n2","role":"boss","danger":"D3","count":"single","named":false,"where_in_interior":"boss","faction":"faction.tribeless-naga"}
+{"place_id":"place.naga-kur-deeps.naga-village-settled","ord":0,"slot_id":"n1","role":"named-keeper","count":"single","named":true,"note":"the tribe's speaker, who has tribeless cousins on the north cut","faction":"faction.naga-kur"}
+{"place_id":"place.naga-kur-deeps.naga-village-settled","ord":1,"slot_id":"n2","role":"merchant","count":"pair","named":false,"faction":"faction.naga-kur"}
+{"place_id":"place.naga-kur-deeps.naga-village-settled","ord":2,"slot_id":"n3","role":"trainer","count":"single","named":false,"note":"teaches the long-water poling stroke","faction":"faction.naga-kur"}
+{"place_id":"place.naga-kur-deeps.naga-village-settled","ord":3,"slot_id":"n4","role":"patrol","count":"few","named":false,"faction":"faction.naga-kur"}
+{"place_id":"place.naga-kur-deeps.necropolis-nightbound","ord":0,"slot_id":"n1","role":"named-keeper","count":"single","named":true,"note":"the stake-master who keeps the field ledger","where_in_interior":"main","faction":"faction.naga-kur"}
+{"place_id":"place.naga-kur-deeps.necropolis-nightbound","ord":1,"slot_id":"n2","role":"rank-and-file","count":"band","named":false,"note":"staking crews, asleep at noon","where_in_interior":"main","faction":"faction.naga-kur"}
+{"place_id":"place.naga-kur-deeps.necropolis-nightbound","ord":2,"slot_id":"n3","role":"merchant","count":"single","named":false,"note":"stakes, lamp shields, blight salve","where_in_interior":"entrance"}
+{"place_id":"place.naga-kur-deeps.poacher-camp-egg","ord":0,"slot_id":"n1","role":"lieutenant","count":"single","named":true,"faction":"faction.blackguards"}
+{"place_id":"place.naga-kur-deeps.poacher-camp-egg","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"faction":"faction.blackguards"}
+{"place_id":"place.naga-kur-deeps.portage-slipway-narrows-deeps","ord":0,"slot_id":"n1","role":"crew","count":"few","named":false,"note":"haulers who price your keel by eye","faction":"faction.reed-sail-compact"}
+{"place_id":"place.naga-kur-deeps.portage-slipway-narrows-deeps","ord":1,"slot_id":"n2","role":"merchant","count":"single","named":false,"note":"tar, rollers, replacement rope"}
+{"place_id":"place.naga-kur-deeps.refugee-camp-raid","ord":0,"slot_id":"n1","role":"quest-giver","count":"single","named":true,"note":"wants the village's stake-field re-driven so they can go home"}
+{"place_id":"place.naga-kur-deeps.refugee-camp-raid","ord":1,"slot_id":"n2","role":"family","count":"band","named":false}
+{"place_id":"place.naga-kur-deeps.refugee-camp-raid","ord":2,"slot_id":"n3","role":"captive","count":"single","named":false,"note":"a taken relative, ransomed back and not right since"}
+{"place_id":"place.naga-kur-deeps.root-whisper-village","ord":0,"slot_id":"n1","role":"named-keeper","count":"single","named":true,"note":"the tribe's speaker, who times the day around the two hours the tree speaks","where_in_interior":"main","faction":"faction.root-whisper"}
+{"place_id":"place.naga-kur-deeps.root-whisper-village","ord":1,"slot_id":"n2","role":"priest","count":"single","named":false,"where_in_interior":"main","faction":"faction.root-whisper"}
+{"place_id":"place.naga-kur-deeps.root-whisper-village","ord":2,"slot_id":"n3","role":"family","count":"band","named":false,"where_in_interior":"main","faction":"faction.root-whisper"}
+{"place_id":"place.naga-kur-deeps.root-whisper-village","ord":3,"slot_id":"n4","role":"quest-giver","count":"single","named":false,"note":"an outside scholar tolerated on sufferance","where_in_interior":"entrance","faction":"faction.cyrodilic-collections"}
+{"place_id":"place.naga-kur-deeps.sithis-temple-mass-sacrifice","ord":0,"slot_id":"n1","role":"priest","count":"single","named":true,"note":"explains the doctrine plainly to anyone who asks","where_in_interior":"main","faction":"faction.nisswo"}
+{"place_id":"place.naga-kur-deeps.sithis-temple-mass-sacrifice","ord":1,"slot_id":"n2","role":"rank-and-file","count":"band","named":false,"where_in_interior":"main","faction":"faction.nisswo"}
+{"place_id":"place.naga-kur-deeps.sithis-temple-mass-sacrifice","ord":2,"slot_id":"n3","role":"captive","count":"few","named":false,"note":"attendees who have not been told which rite this is","where_in_interior":"deep"}
+{"place_id":"place.naga-kur-deeps.wild-hist-rogue-deeps","ord":0,"slot_id":"n1","role":"hermit","count":"single","named":true,"note":"a sap-taster studying it from the far bank"}
+{"place_id":"place.pirate-freeholds.alten-corimont","ord":0,"slot_id":"n1","role":"crew","danger":"D1","count":"few","named":false,"note":"D2 freeholder crews"}
+{"place_id":"place.pirate-freeholds.alten-corimont","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 warehouse hands"}
+{"place_id":"place.pirate-freeholds.alten-corimont","ord":2,"slot_id":"n3","role":"merchant","count":"few","named":false,"note":"Dunmer factors (22% zone share)"}
+{"place_id":"place.pirate-freeholds.alten-corimont","ord":3,"slot_id":"n4","role":"rank-and-file","count":"few","named":false,"note":"Nord ship hands"}
+{"place_id":"place.pirate-freeholds.bone-repatriation-waystation","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 bone-carriers"}
+{"place_id":"place.pirate-freeholds.careening-hard","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"2-5 D2 boatwrights"}
+{"place_id":"place.pirate-freeholds.channel-pirate-anchorage","ord":0,"slot_id":"n1","role":"boss","danger":"D3","count":"single","named":true,"note":"the reach boss, who talks first to a visitor wearing Salt-Teeth marks","where_in_interior":"boss"}
+{"place_id":"place.pirate-freeholds.channel-pirate-anchorage","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"crew on the stage and in the hulls","where_in_interior":"main"}
+{"place_id":"place.pirate-freeholds.channel-pirate-anchorage","ord":2,"slot_id":"n3","role":"captive","danger":"D1","count":"pair","named":false,"note":"pressed hands with no stake in the fight","where_in_interior":"deep"}
+{"place_id":"place.pirate-freeholds.chasecreek","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 fisher households"}
+{"place_id":"place.pirate-freeholds.chasecreek","ord":1,"slot_id":"n2","role":"named-keeper","danger":"D2","count":"single","named":true,"note":"D2 lay-by keeper"}
+{"place_id":"place.pirate-freeholds.corimont-bonded-store","ord":0,"slot_id":"n1","role":"named-keeper","danger":"D2","count":"single","named":true,"note":"D2 port captain's men"}
+{"place_id":"place.pirate-freeholds.corimont-crosstrees","ord":0,"slot_id":"n1","role":"named-keeper","danger":"D1","count":"single","named":true,"note":"the port lookout, who names the view for a climber who brings her something to drink"}
+{"place_id":"place.pirate-freeholds.corimont-gambling-house","ord":0,"slot_id":"n1","role":"crew","danger":"D2","count":"few","named":false,"note":"4-15 D2 house crew and players"}
+{"place_id":"place.pirate-freeholds.corimont-head-of-navigation","ord":0,"slot_id":"n1","role":"crew","danger":"D1","count":"few","named":false,"note":"D1 transfer crews"}
+{"place_id":"place.pirate-freeholds.corimont-hiring-yard","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 owed households"}
+{"place_id":"place.pirate-freeholds.corimont-hiring-yard","ord":1,"slot_id":"n2","role":"merchant","danger":"D2","count":"few","named":false,"note":"D2 broker's clerk"}
+{"place_id":"place.pirate-freeholds.corimont-hiring-yard","ord":2,"slot_id":"n3","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 gang overseer"}
+{"place_id":"place.pirate-freeholds.corimont-hist-less-camp","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 Hist-less households"}
+{"place_id":"place.pirate-freeholds.corimont-low-store","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"three store-breakers, poorly armed, sleeping in the dry end","where_in_interior":"main"}
+{"place_id":"place.pirate-freeholds.corimont-tradehouse","ord":0,"slot_id":"n1","role":"named-keeper","danger":"D2","count":"single","named":true,"note":"the keeper, who lets rooms and asks nothing"}
+{"place_id":"place.pirate-freeholds.corimont-tradehouse","ord":1,"slot_id":"n2","role":"crew","danger":"D1","count":"band","named":false,"note":"lodgers and crews off four different hulls"}
+{"place_id":"place.pirate-freeholds.dunmer-frontier-holding","ord":0,"slot_id":"n1","role":"family","danger":"D2","count":"few","named":false,"note":"D2 Dunmer households"}
+{"place_id":"place.pirate-freeholds.dunmer-frontier-holding","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D3 house guard"}
+{"place_id":"place.pirate-freeholds.freed-worker-shelter","ord":0,"slot_id":"n1","role":"family","danger":"D2","count":"few","named":false,"note":"D2 ex-owed households"}
+{"place_id":"place.pirate-freeholds.freehold-courier-relay","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"1-4 D2 runners"}
+{"place_id":"place.pirate-freeholds.freehold-naga-camp","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"6-10 D3 Naga raiders"}
+{"place_id":"place.pirate-freeholds.freehold-naga-camp","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D4","count":"few","named":false,"note":"one D4 leader"}
+{"place_id":"place.pirate-freeholds.freehold-pest-house","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"1-3 D1 keepers"}
+{"place_id":"place.pirate-freeholds.freehold-smithy","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"1-2 D2 smiths"}
+{"place_id":"place.pirate-freeholds.gorge-portage-slipway","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"2-6 D2 haulers"}
+{"place_id":"place.pirate-freeholds.half-chartered-anchorage","ord":0,"slot_id":"n1","role":"merchant","danger":"D2","count":"single","named":true,"note":"the passage broker, who sells a berth to anywhere the water reaches"}
+{"place_id":"place.pirate-freeholds.half-chartered-anchorage","ord":1,"slot_id":"n2","role":"crew","danger":"D2","count":"band","named":false,"note":"crews refitting, who hire and who remember"}
+{"place_id":"place.pirate-freeholds.half-chartered-anchorage","ord":2,"slot_id":"n3","role":"boss","danger":"D2","count":"few","named":false,"note":"captains, one per hull, each with a different idea of what a charter is; the dangerous ones trade on reputation and rarely draw first"}
+{"place_id":"place.pirate-freeholds.opening-work-barge","ord":0,"slot_id":"n1","role":"official","danger":"D1","count":"single","named":true,"note":"the broker's clerk who reads the roll"}
+{"place_id":"place.pirate-freeholds.opening-work-barge","ord":1,"slot_id":"n2","role":"patrol","danger":"D1","count":"few","named":false,"note":"gang overseers, armed lightly as overseers of a work gang are"}
+{"place_id":"place.pirate-freeholds.opening-work-barge","ord":2,"slot_id":"n3","role":"captive","danger":"D1","count":"band","named":false,"note":"owed hands, two of them washed out"}
+{"place_id":"place.pirate-freeholds.opening-work-barge","ord":3,"slot_id":"n4","role":"quest-giver","danger":"D1","count":"single","named":true,"note":"the An-Xileel courier, whose satchel is the object of the raid"}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"band","named":false,"note":"gang families, who know every name on the roll"}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":1,"slot_id":"n3","role":"patrol","danger":"D1","count":"pair","named":false,"note":"the camp's two overseers"}
+{"place_id":"place.pirate-freeholds.ravine-hermit-hut","ord":0,"slot_id":"n1","role":"hermit","danger":"D2","count":"single","named":false,"note":"1 D2 hermit","where_in_interior":"entrance"}
+{"place_id":"place.pirate-freeholds.reoccupied-fort","ord":0,"slot_id":"n1","role":"boss","danger":"D3","count":"single","named":true,"note":"Gorrey, who bought a claim in a script which he cannot read and enforces it with thirty men","where_in_interior":"boss"}
+{"place_id":"place.pirate-freeholds.reoccupied-fort","ord":1,"slot_id":"n2","role":"patrol","danger":"D3","count":"band","named":false,"note":"hired garrison working the road and the gate","where_in_interior":"threshold"}
+{"place_id":"place.pirate-freeholds.reoccupied-fort","ord":2,"slot_id":"n3","role":"official","danger":"D2","count":"pair","named":false,"note":"toll-takers with a tariff board and a strongroom key","where_in_interior":"main"}
+{"place_id":"place.pirate-freeholds.rim-crystal-diggings","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 unlicensed gangs","where_in_interior":"main"}
+{"place_id":"place.pirate-freeholds.rim-pass-station","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"1-3 D2 keepers"}
+{"place_id":"place.pirate-freeholds.rim-porter-yard","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 porter gangs"}
+{"place_id":"place.pirate-freeholds.rim-porter-yard","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 gang speaker"}
+{"place_id":"place.pirate-freeholds.rim-smugglers-ledge-north","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"0-4 D3 carriers","where_in_interior":"main"}
+{"place_id":"place.pirate-freeholds.rim-snowline-hermitage","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"1-2 D2 ascetics","where_in_interior":"main"}
+{"place_id":"place.pirate-freeholds.river-salvage-yard","ord":0,"slot_id":"n1","role":"crew","danger":"D1","count":"few","named":false,"note":"2-5 D1 divers"}
+{"place_id":"place.pirate-freeholds.trunk-hearth-house","ord":0,"slot_id":"n1","role":"family","danger":"D0","count":"few","named":false,"note":"1-6 D0 household"}
+{"place_id":"place.pirate-freeholds.trunk-toll-bridge","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"1-4 D1 toll-takers"}
+{"place_id":"place.pirate-freeholds.upriver-hist-village","ord":0,"slot_id":"npc-opening-tree-minder","role":"priest","danger":"D1","count":"single","named":true,"note":"the tree-minder, who will say plainly what withdrawal means"}
+{"place_id":"place.pirate-freeholds.upriver-hist-village","ord":1,"slot_id":"n2","role":"family","danger":"D1","count":"band","named":false,"note":"the households whose adults are all downriver on a roll"}
+{"place_id":"place.pirate-freeholds.veterans-holding","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"few","named":false,"note":"D3 veterans","where_in_interior":"main"}
+{"place_id":"place.pirate-freeholds.veterans-holding","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 second generation","where_in_interior":"main"}
+{"place_id":"place.saxhleel-coast.archon","ord":0,"slot_id":"n1","role":"official","danger":"D0","count":"band","named":false,"note":"harbour clerks and customs scribes; the ledger desk runs the city"}
+{"place_id":"place.saxhleel-coast.archon","ord":1,"slot_id":"n2","role":"official","danger":"D0","count":"few","named":true,"note":"the customs vicecanon; signs or refuses a landing"}
+{"place_id":"place.saxhleel-coast.archon","ord":2,"slot_id":"n3","role":"merchant","count":"few","named":false,"note":"Dunmer factor households working the Morrowind trade"}
+{"place_id":"place.saxhleel-coast.archon","ord":3,"slot_id":"n4","role":"patrol","danger":"D0","count":"band","named":false,"note":"harbour enforcers; a threat only to the notorious"}
+{"place_id":"place.saxhleel-coast.archon-bonded-row","ord":0,"slot_id":"n1","role":"official","danger":"D1","count":"few","named":false,"note":"D1 clerks"}
+{"place_id":"place.saxhleel-coast.archon-bonded-row","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"a night watch of two"}
+{"place_id":"place.saxhleel-coast.archon-glowgill-byre","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"1-3 D1 drovers","where_in_interior":"main"}
+{"place_id":"place.saxhleel-coast.archon-harbour-hist","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D0","count":"few","named":false,"note":"D0 tree-minders","where_in_interior":"main"}
+{"place_id":"place.saxhleel-coast.archon-lighthouse","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"1-3 D1 keepers"}
+{"place_id":"place.saxhleel-coast.archon-quarantine-shed","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 inspectors"}
+{"place_id":"place.saxhleel-coast.archon-sacked-quarter","ord":0,"slot_id":"n1","role":"rank-and-file","count":"few","named":false,"note":"0-5 squatters","where_in_interior":"main"}
+{"place_id":"place.saxhleel-coast.archon-sacked-quarter","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 scavengers at night","where_in_interior":"main"}
+{"place_id":"place.saxhleel-coast.archon-shadowscale-sanctuary","ord":0,"slot_id":"n1","role":"named-keeper","danger":"D3","count":"single","named":true,"note":"one watcher outside who has been here longer than the closure","where_in_interior":"main"}
+{"place_id":"place.saxhleel-coast.archon-shadowscale-sanctuary","ord":1,"slot_id":"n2","role":"lieutenant","danger":"D3","count":"pair","named":false,"note":"Cheydinhal agents surveying the place for reopening","where_in_interior":"deep"}
+{"place_id":"place.saxhleel-coast.archon-shipyard","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"6-20 D1 shipwrights"}
+{"place_id":"place.saxhleel-coast.archon-shipyard","ord":1,"slot_id":"n2","role":"named-keeper","danger":"D1","count":"single","named":true,"note":"one D2 yard master"}
+{"place_id":"place.saxhleel-coast.archon-thalmor-post","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"1-4 D3 agents"}
+{"place_id":"place.saxhleel-coast.archon-trial-ground","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"D1 elders and tree-minders"}
+{"place_id":"place.saxhleel-coast.archon-trial-ground","ord":1,"slot_id":"n2","role":"family","count":"few","named":false,"note":"families in season"}
+{"place_id":"place.saxhleel-coast.archon-whispers-house","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"1-4 D3 scholars, magically capable","where_in_interior":"main"}
+{"place_id":"place.saxhleel-coast.banner-stack","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D3","count":"single","named":false,"note":"1 D3 occupant at the top"}
+{"place_id":"place.saxhleel-coast.coast-courier-relay","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"1-4 D1 runners"}
+{"place_id":"place.saxhleel-coast.coast-guide-camp","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 guides"}
+{"place_id":"place.saxhleel-coast.coast-hist-less-refuge","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 Hist-less households"}
+{"place_id":"place.saxhleel-coast.coast-road-hearth-house","ord":0,"slot_id":"n1","role":"family","danger":"D0","count":"few","named":false,"note":"1-6 D0 household"}
+{"place_id":"place.saxhleel-coast.contested-bank","ord":0,"slot_id":"n1","role":"crew","danger":"D2","count":"band","named":false,"note":"two rival boat crews working the same shelf"}
+{"place_id":"place.saxhleel-coast.contested-bank","ord":1,"slot_id":"n2","role":"named-keeper","danger":"D2","count":"single","named":true,"note":"the elder who set the two marks on one rope, from which the place takes its name"}
+{"place_id":"place.saxhleel-coast.dance-barge-mooring","ord":0,"slot_id":"n1","role":"crew","danger":"D2","count":"few","named":false,"note":"4-15 D2 house crew and players"}
+{"place_id":"place.saxhleel-coast.dead-air-lane","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D4","count":"few","named":false,"note":"0-10 D4 boarders"}
+{"place_id":"place.saxhleel-coast.dead-air-lane","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"what takes ships here"}
+{"place_id":"place.saxhleel-coast.delta-boatwright","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"2-5 D1 boatwrights"}
+{"place_id":"place.saxhleel-coast.east-estuary-rootworm-station","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 rootworm waykeepers","where_in_interior":"main"}
+{"place_id":"place.saxhleel-coast.estuary-boom-tower","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"2-4 D1 toll-takers"}
+{"place_id":"place.saxhleel-coast.estuary-ferry-stage","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"1-3 D1 ferrymen"}
+{"place_id":"place.saxhleel-coast.estuary-keepers-lodge","ord":0,"slot_id":"n1","role":"hermit","danger":"D1","count":"single","named":true,"note":"the keeper from whom the place takes its name; carves through every wet season"}
+{"place_id":"place.saxhleel-coast.estuary-salt-pans","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"2-4 D1 rakers"}
+{"place_id":"place.saxhleel-coast.haj-mota-shell-yard","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"1-3 D1 cutters"}
+{"place_id":"place.saxhleel-coast.lagoon-storm-shelter","ord":0,"slot_id":"n1","role":"crew","danger":"D1","count":"few","named":false,"note":"whoever the weather put here; a different crew each time"}
+{"place_id":"place.saxhleel-coast.mangrove-cut-village","ord":0,"slot_id":"n1","role":"family","danger":"D2","count":"few","named":false,"note":"D2 households"}
+{"place_id":"place.saxhleel-coast.oliis-coast-lay-by","ord":0,"slot_id":"n1","role":"named-keeper","danger":"D2","count":"single","named":true,"note":"the broker; keeps the stack and the tally, buying silence by the season","where_in_interior":"main"}
+{"place_id":"place.saxhleel-coast.oliis-coast-lay-by","ord":1,"slot_id":"n2","role":"crew","danger":"D2","count":"band","named":false,"note":"half-chartered crews; will talk before they fight, once","where_in_interior":"main"}
+{"place_id":"place.saxhleel-coast.oliis-coast-lay-by","ord":2,"slot_id":"n3","role":"rank-and-file","danger":"D2","count":"band","named":false,"where_in_interior":"main","faction":"faction.salt-teeth"}
+{"place_id":"place.saxhleel-coast.owing-hiring-camp","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 evicted households"}
+{"place_id":"place.saxhleel-coast.owing-hiring-camp","ord":1,"slot_id":"n2","role":"merchant","danger":"D2","count":"few","named":false,"note":"D2 broker's clerk"}
+{"place_id":"place.saxhleel-coast.padomaic-wrecker-beach","ord":0,"slot_id":"n1","role":"boss","danger":"D3","count":"single","named":true,"note":"the fire-keeper; knows where the cargo goes after the beach"}
+{"place_id":"place.saxhleel-coast.padomaic-wrecker-beach","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"band","named":false,"note":"shore gang, armed with what they took off hulls"}
+{"place_id":"place.saxhleel-coast.padomaic-wrecker-beach","ord":2,"slot_id":"n3","role":"captive","danger":"D0","count":"pair","named":false,"note":"survivors off the last wreck, held on the beach"}
+{"place_id":"place.saxhleel-coast.pearl-lots","ord":0,"slot_id":"n1","role":"crew","danger":"D1","count":"few","named":false,"note":"2-6 D1 divers"}
+{"place_id":"place.saxhleel-coast.pearl-lots","ord":1,"slot_id":"n2","role":"rank-and-file","count":"few","named":false,"note":"one surface tender"}
+{"place_id":"place.saxhleel-coast.portdun-mont","ord":0,"slot_id":"n1","role":"crew","danger":"D2","count":"band","named":false,"note":"pilot families; the trade is hereditary and closed"}
+{"place_id":"place.saxhleel-coast.portdun-mont","ord":1,"slot_id":"n2","role":"named-keeper","danger":"D2","count":"single","named":true,"note":"the headman, who decides which hulls get a pilot and which wait"}
+{"place_id":"place.saxhleel-coast.portdun-privateer-anchorage","ord":0,"slot_id":"n1","role":"crew","danger":"D3","count":"few","named":false,"note":"4-10 D3 crew","where_in_interior":"main"}
+{"place_id":"place.saxhleel-coast.portdun-privateer-anchorage","ord":1,"slot_id":"n2","role":"named-keeper","danger":"D3","count":"single","named":true,"note":"one D4 captain","where_in_interior":"main"}
+{"place_id":"place.saxhleel-coast.quarantine-village-lagoon","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 households"}
+{"place_id":"place.saxhleel-coast.quay-tradehouse","ord":0,"slot_id":"n1","role":"named-keeper","danger":"D1","count":"single","named":true,"note":"the keeper; sells rooms, trades information"}
+{"place_id":"place.saxhleel-coast.quay-tradehouse","ord":1,"slot_id":"n2","role":"crew","danger":"D2","count":"band","named":false,"note":"boat crews off the Oliis and Padomaic runs"}
+{"place_id":"place.saxhleel-coast.seafalls","ord":0,"slot_id":"n1","role":"crew","danger":"D1","count":"band","named":false,"note":"porters working the carry, paid by the load"}
+{"place_id":"place.saxhleel-coast.seafalls","ord":1,"slot_id":"n2","role":"official","danger":"D2","count":"few","named":false,"note":"transfer clerks who reconcile what went up against what came down"}
+{"place_id":"place.saxhleel-coast.seafalls","ord":2,"slot_id":"n3","role":"merchant","danger":"D1","count":"few","named":false,"note":"factors buying inland cargo before it reaches Archon customs"}
+{"place_id":"place.saxhleel-coast.seafalls-slipway","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D1","count":"few","named":false,"note":"2-6 D1 haulers"}
+{"place_id":"place.saxhleel-coast.stilt-village-east","ord":0,"slot_id":"n1","role":"family","danger":"D1","count":"few","named":false,"note":"D1 fisher households"}
+{"place_id":"place.saxhleel-coast.stilt-village-east","ord":1,"slot_id":"n2","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"one D2 headwoman"}
+{"place_id":"place.saxhleel-coast.tended-xanmeer-coast","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"D2 tending clan","where_in_interior":"main"}
+{"place_id":"place.saxhleel-coast.tide-street-salvage-yard","ord":0,"slot_id":"n1","role":"crew","danger":"D1","count":"few","named":false,"note":"2-5 D1 divers"}
+{"place_id":"place.saxhleel-coast.tide-street-village","ord":0,"slot_id":"n1","role":"rank-and-file","danger":"D2","count":"few","named":false,"note":"0-4 D2 salvagers above","where_in_interior":"main"}
+{"place_id":"place.saxhleel-coast.wall-hermit-hut","ord":0,"slot_id":"n1","role":"hermit","danger":"D3","count":"single","named":false,"note":"1 D3 hermit","where_in_interior":"entrance"}

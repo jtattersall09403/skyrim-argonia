@@ -1,0 +1,7 @@
+{"ord":0,"from":"root-node.east-estuary","to":"station.saxhleel-coast.archon","why":"64 m apart, within the 300 m walk"}
+{"ord":1,"from":"root-node.helstrom","to":"station.hist-heartland.helstrom","why":"167 m apart, within the 300 m walk"}
+{"ord":2,"from":"root-node.north-shadowfen","to":"station.dunmer-north.stormhold","why":"both stand at place.dunmer-north.stormhold"}
+{"ord":3,"from":"station.dunmer-north.hissmir","to":"station.dunmer-north.thorn","why":"724 m apart, within the 800 m walk to the canoe run canoe.dunmer-north.riverwalk-the-tide-fair"}
+{"ord":4,"from":"station.dunmer-north.hutan-tzel","to":"root-node.north-shadowfen","why":"430 m apart, within the 800 m walk to the canoe run canoe.dunmer-north.hutan-tzel-the-black-stage"}
+{"ord":5,"from":"station.mercantile-coast.quinrawl-anchorage","to":"station.mercantile-coast.soulrest","why":"354 m apart, within the 400 m walk to the canoe run canoe.imperial-fringe.slough-point-quinrawl-anchorage"}
+{"ord":6,"from":"station.saxhleel-coast.portdun-mont","to":"root-node.east-estuary","why":"473 m apart, within the 800 m walk to the canoe run canoe.hist-heartland.treasure-hunters-live-camp-portdun-mont"}

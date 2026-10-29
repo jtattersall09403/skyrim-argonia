@@ -1,0 +1,1 @@
+{"id":"faction-rules","reputation_range_x":-100,"reputation_range_y":100,"disposition_range_x":-100,"disposition_range_y":100,"expelled_disposition":-30,"reputation_weight":0.5,"crime_witnessed_multiplier":2,"killable":"everyone; a doom tier changes only the warning shown before the kill (40-factions §30b)"}

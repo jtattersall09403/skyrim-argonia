@@ -1,0 +1,14 @@
+{"item_id":"item.common-soul-gem","size":"common","capacity":150,"filled":false}
+{"item_id":"item.common-soul-gem-filled","size":"common","capacity":150,"filled":true}
+{"item_id":"item.grand-soul-gem","size":"grand","capacity":600,"filled":false}
+{"item_id":"item.grand-soul-gem-filled","size":"grand","capacity":600,"filled":true}
+{"item_id":"item.greater-soul-gem","size":"greater","capacity":300,"filled":false}
+{"item_id":"item.greater-soul-gem-filled","size":"greater","capacity":300,"filled":true}
+{"item_id":"item.lesser-soul-gem","size":"lesser","capacity":80,"filled":false}
+{"item_id":"item.lesser-soul-gem-filled","size":"lesser","capacity":80,"filled":true}
+{"item_id":"item.petty-soul-gem","size":"petty","capacity":30,"filled":false}
+{"item_id":"item.petty-soul-gem-filled","size":"petty","capacity":30,"filled":true}
+{"item_id":"item.stormhold-crystal","size":"common","capacity":150,"filled":false,"holds":"corruption"}
+{"item_id":"item.stormhold-crystal-common-filled","size":"common","capacity":150,"filled":true}
+{"item_id":"item.stormhold-crystal-greater-filled","size":"greater","capacity":300,"filled":true}
+{"item_id":"item.stormhold-crystal-lesser-filled","size":"lesser","capacity":80,"filled":true}

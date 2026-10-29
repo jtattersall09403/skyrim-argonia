@@ -1,0 +1,16 @@
+{"id":"armour","asset_source":"packages/game-core generated/arsenal.items.json (the arsenal items)","value_band":"moderate"}
+{"id":"book","asset_source":"vanilla:meshes/clutter/books (basicbook, journal)","value_band":"low","text_bearing":true}
+{"id":"coin","asset_source":"vanilla:meshes/clutter/coin01.nif","value_band":"low"}
+{"id":"drink","asset_source":"vanilla:meshes/clutter/wine","value_band":"trivial"}
+{"id":"fish","asset_source":"vanilla:meshes/clutter/deadanimals (deadpondfish, deadsalmon, salmonmeat)","value_band":"trivial"}
+{"id":"fishing-gear","asset_source":"vanilla:meshes/clutter/common (fishingpole, fishingpolecollection01)","value_band":"low"}
+{"id":"food","asset_source":"vanilla:meshes/clutter/food","value_band":"trivial"}
+{"id":"gem","asset_source":"vanilla:meshes/clutter/gemstones","value_band":"precious"}
+{"id":"ingredient","asset_source":"vanilla:meshes/clutter/ingredients","value_band":"low"}
+{"id":"material","asset_source":"vanilla:meshes/dungeons/mines/ore","value_band":"low"}
+{"id":"misc-household","asset_source":"vanilla:meshes/clutter/common (inkwell01, quill01, flagon01, rag01, broom)","value_band":"low"}
+{"id":"note","asset_source":"vanilla:meshes/clutter/books (note01..04, notetornpaper)","value_band":"trivial","text_bearing":true}
+{"id":"pelt","asset_source":"vanilla:meshes/clutter/wolfpelts","value_band":"low"}
+{"id":"potion","asset_source":"vanilla:meshes/clutter/potions","value_band":"moderate"}
+{"id":"tool","asset_source":"vanilla:meshes/clutter/common (hoe, pickaxe01, saw01, shovel01, pitchfork01) and clutter/blacksmith","value_band":"low"}
+{"id":"weapon","asset_source":"packages/game-core generated/arsenal.items.json (the arsenal items)","value_band":"moderate"}

@@ -1,0 +1,7 @@
+{"socket_vocabulary_id":"socket-vocabulary","field":"fills","value":"promise ids"}
+{"socket_vocabulary_id":"socket-vocabulary","field":"item","value":"item sockets: the item record id (item.<slug>) the socket places"}
+{"socket_vocabulary_id":"socket-vocabulary","field":"lock","value":"container sockets and doors: a lock id of world/sources/registries/locks.json, or null"}
+{"socket_vocabulary_id":"socket-vocabulary","field":"owner","value":"owner id or null"}
+{"socket_vocabulary_id":"socket-vocabulary","field":"plantClass","value":"plant sockets: a plantClasses key"}
+{"socket_vocabulary_id":"socket-vocabulary","field":"regrowDays","value":"plant sockets only: in-game days before the ingredient is back (defaults to the class's)"}
+{"socket_vocabulary_id":"socket-vocabulary","field":"valueTier","value":"required on container, item and plant sockets: one of valueBands (2.3c fills every socket; null only until then)"}

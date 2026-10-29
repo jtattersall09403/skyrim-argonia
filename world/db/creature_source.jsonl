@@ -1,0 +1,84 @@
+{"creature_id":"creature.alit","ord":0,"value":"UESP:Lore:Alit"}
+{"creature_id":"creature.alit","ord":1,"value":"world/sources/lore/topics/ecology-encounters-loot.md"}
+{"creature_id":"creature.alit","ord":2,"value":"docs/research/placement-settlements/king-of-the-murkmire-adoption-plan.md"}
+{"creature_id":"creature.bog-blight","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"creature_id":"creature.bog-blight","ord":1,"value":"world/sources/lore/topics/ecology-encounters-loot.md"}
+{"creature_id":"creature.bog-dog","ord":0,"value":"UESP:Lore:Bog Dog"}
+{"creature_id":"creature.bog-dog","ord":1,"value":"world/sources/lore/topics/ecology-encounters-loot.md"}
+{"creature_id":"creature.crocodile","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"creature_id":"creature.crocodile","ord":1,"value":"world/sources/lore/topics/ecology-encounters-loot.md"}
+{"creature_id":"creature.crow","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md"}
+{"creature_id":"creature.death-hopper","ord":0,"value":"UESP:Lore:Death Hopper"}
+{"creature_id":"creature.death-hopper","ord":1,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"creature_id":"creature.death-hopper","ord":2,"value":"world/sources/lore/topics/ecology-encounters-loot.md"}
+{"creature_id":"creature.dreugh","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md"}
+{"creature_id":"creature.feather-serpent","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"creature_id":"creature.feather-serpent","ord":1,"value":"world/sources/lore/topics/ecology-encounters-loot.md"}
+{"creature_id":"creature.fellrunner","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"creature_id":"creature.fellrunner","ord":1,"value":"world/sources/lore/topics/ecology-encounters-loot.md"}
+{"creature_id":"creature.fleshfly","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"creature_id":"creature.fleshfly","ord":1,"value":"world/sources/lore/topics/ecology-encounters-loot.md"}
+{"creature_id":"creature.giant-leech","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"creature_id":"creature.giant-wasp","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"creature_id":"creature.guar","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"creature_id":"creature.guar","ord":1,"value":"world/sources/lore/topics/ecology-encounters-loot.md"}
+{"creature_id":"creature.hackwing","ord":0,"value":"UESP:Lore:Hackwing"}
+{"creature_id":"creature.hackwing","ord":1,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"creature_id":"creature.hackwing","ord":2,"value":"world/sources/lore/topics/ecology-encounters-loot.md"}
+{"creature_id":"creature.haj-mota","ord":0,"value":"UESP:Lore:Haj Mota"}
+{"creature_id":"creature.haj-mota","ord":1,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"creature_id":"creature.haj-mota","ord":2,"value":"world/sources/lore/topics/ecology-encounters-loot.md"}
+{"creature_id":"creature.haynekhtnamet","ord":0,"value":"UESP:Lore:Haynekhtnamet"}
+{"creature_id":"creature.haynekhtnamet","ord":1,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"creature_id":"creature.hoarvor","ord":0,"value":"UESP:Lore:Hoarvor"}
+{"creature_id":"creature.hoarvor","ord":1,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"creature_id":"creature.jassa-red-slug","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"creature_id":"creature.jassa-red-slug","ord":1,"value":"world/sources/lore/topics/ecology-encounters-loot.md"}
+{"creature_id":"creature.kaj-thux","ord":0,"value":"UESP:Lore:Giant Snake"}
+{"creature_id":"creature.kaj-thux","ord":1,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"creature_id":"creature.kaj-thux","ord":2,"value":"world/sources/lore/topics/ecology-encounters-loot.md"}
+{"creature_id":"creature.kotu-gava","ord":0,"value":"UESP:Lore:Kotu Gava"}
+{"creature_id":"creature.kotu-gava","ord":1,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"creature_id":"creature.kotu-gava","ord":2,"value":"docs/research/placement-settlements/king-of-the-murkmire-adoption-plan.md"}
+{"creature_id":"creature.lamia","ord":0,"value":"UESP:Lore:Lamia"}
+{"creature_id":"creature.lamia","ord":1,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"creature_id":"creature.lamia","ord":2,"value":"world/sources/lore/topics/ecology-encounters-loot.md"}
+{"creature_id":"creature.lizard-steed","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"creature_id":"creature.marsh-giant","ord":0,"value":"UESP:Lore:Giant (Black Marsh)"}
+{"creature_id":"creature.marsh-giant","ord":1,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"creature_id":"creature.marsh-giant","ord":2,"value":"world/sources/lore/topics/ecology-encounters-loot.md"}
+{"creature_id":"creature.marsh-rat","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"creature_id":"creature.medusa","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"creature_id":"creature.miregaunt","ord":0,"value":"UESP:Lore:Miregaunt"}
+{"creature_id":"creature.miregaunt","ord":1,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"creature_id":"creature.miregaunt","ord":2,"value":"world/sources/lore/topics/ecology-encounters-loot.md"}
+{"creature_id":"creature.moon-adder","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md"}
+{"creature_id":"creature.mouth-plover","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"creature_id":"creature.osheeja-gar","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"creature_id":"creature.ripper-eel","ord":0,"value":"UESP:Lore:Ripper Eel"}
+{"creature_id":"creature.ripper-eel","ord":1,"value":"world/sources/lore/topics/ecology-encounters-loot.md"}
+{"creature_id":"creature.rootworm","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"creature_id":"creature.rootworm","ord":1,"value":"world/sources/lore/regions/middle-argonia.md"}
+{"creature_id":"creature.sea-drake","ord":0,"value":"UESP:Lore:Sea Drake"}
+{"creature_id":"creature.sea-drake","ord":1,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"creature_id":"creature.sea-drake","ord":2,"value":"world/sources/lore/topics/ecology-encounters-loot.md"}
+{"creature_id":"creature.shine","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"creature_id":"creature.slaughterfish","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md"}
+{"creature_id":"creature.swamp-jelly","ord":0,"value":"UESP:Lore:Swamp Jelly"}
+{"creature_id":"creature.swamp-jelly","ord":1,"value":"world/sources/lore/topics/ecology-encounters-loot.md"}
+{"creature_id":"creature.swamp-leviathan","ord":0,"value":"UESP:Lore:Swamp Leviathan"}
+{"creature_id":"creature.swamp-leviathan","ord":1,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"creature_id":"creature.swamp-leviathan","ord":2,"value":"world/sources/lore/topics/ecology-encounters-loot.md"}
+{"creature_id":"creature.torchbug","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"creature_id":"creature.voriplasm","ord":0,"value":"UESP:Lore:Voriplasm"}
+{"creature_id":"creature.voriplasm","ord":1,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"creature_id":"creature.voriplasm","ord":2,"value":"world/sources/lore/topics/ecology-encounters-loot.md"}
+{"creature_id":"creature.voriplasm","ord":3,"value":"docs/research/placement-settlements/king-of-the-murkmire-adoption-plan.md"}
+{"creature_id":"creature.wamasu","ord":0,"value":"UESP:Lore:Wamasu"}
+{"creature_id":"creature.wamasu","ord":1,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"creature_id":"creature.wamasu","ord":2,"value":"world/sources/lore/topics/ecology-encounters-loot.md"}
+{"creature_id":"creature.wisp","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"creature_id":"creature.wispmother","ord":0,"value":"UESP:Lore:Wispmother"}
+{"creature_id":"creature.wispmother","ord":1,"value":"world/sources/lore/topics/fauna-hazards.md"}
+{"creature_id":"creature.xal-krona","ord":0,"value":"UESP:Lore:Argonian Behemoth"}
+{"creature_id":"creature.xal-krona","ord":1,"value":"world/sources/lore/topics/fauna-hazards.md"}

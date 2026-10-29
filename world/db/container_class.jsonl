@@ -1,0 +1,9 @@
+{"id":"barrel","default_fill_rule":"blanket.household-barrel"}
+{"id":"basket","default_fill_rule":"blanket.fish-basket"}
+{"id":"beehive","default_fill_rule":"blanket.beehive"}
+{"id":"chest"}
+{"id":"crate","default_fill_rule":"blanket.storage-crate"}
+{"id":"hidden-cache","default_fill_rule":"blanket.hidden-cache-ledge-bundle","about":"A cache hidden where reaching it takes effort (2.3 c, world/20 §12.3b). Never derived from a model name: authored on a socket with `reach` and `effort`; effort 3 or more takes an authored lootTable (worldgen.exploration_rewards)."}
+{"id":"sack","default_fill_rule":"blanket.storage-crate"}
+{"id":"strongbox"}
+{"id":"urn","default_fill_rule":"blanket.household-urn"}

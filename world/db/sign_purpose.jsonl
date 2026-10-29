@@ -1,0 +1,5 @@
+{"id":"pilgrim-notice","about":"a carved stone or board at a shrine telling a visitor what is done there"}
+{"id":"place-name","about":"names the place at its edge or gate"}
+{"id":"service","about":"hangs at a service's door or stall and names the trade (smith, trader, inn)"}
+{"id":"warning","about":"warns of a danger: a predator in the water, bad ground, a closed way"}
+{"id":"waymark","about":"a road or track sign: one arm per route., track. or place. id; the arms read their names, so it needs no textKey"}

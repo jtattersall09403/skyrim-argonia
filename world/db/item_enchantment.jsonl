@@ -1,0 +1,4 @@
+{"item_id":"item.insulated-boots","effect_id":"resist-shock","magnitude":15,"duration":0,"charge_max":0}
+{"item_id":"item.insulated-gloves","effect_id":"resist-shock","magnitude":15,"duration":0,"charge_max":0}
+{"item_id":"item.steel-dagger-of-chills","effect_id":"frost-damage","magnitude":10,"duration":1,"charge_max":80}
+{"item_id":"item.wamasu-prod","effect_id":"resist-shock","magnitude":15,"duration":0,"charge_max":0}

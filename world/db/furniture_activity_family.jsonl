@@ -1,0 +1,12 @@
+{"furniture_activity_id":"cook","ord":0,"value":"oven"}
+{"furniture_activity_id":"cook","ord":1,"value":"cookingpot"}
+{"furniture_activity_id":"cook","ord":2,"value":"spitpot"}
+{"furniture_activity_id":"sit","ord":0,"value":"chair"}
+{"furniture_activity_id":"sit","ord":1,"value":"bench"}
+{"furniture_activity_id":"sit","ord":2,"value":"sofa"}
+{"furniture_activity_id":"sit","ord":3,"value":"stool"}
+{"furniture_activity_id":"sleep","ord":0,"value":"bed"}
+{"furniture_activity_id":"sleep","ord":1,"value":"bedroll"}
+{"furniture_activity_id":"work-at","ord":0,"value":"table"}
+{"furniture_activity_id":"work-at","ord":1,"value":"anvil"}
+{"furniture_activity_id":"work-at","ord":2,"value":"workbench"}

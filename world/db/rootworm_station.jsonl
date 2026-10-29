@@ -1,0 +1,4 @@
+{"id":"root-node.east-estuary","place_id":"place.saxhleel-coast.east-estuary-rootworm-station","kind":"station","why":"The placeholder node stood 1333 m from the east estuary rootworm station and is the same facility; the node is sited on the station at 5149.0, 4584.3."}
+{"id":"root-node.helstrom","place_id":"place.hist-heartland.rootworm-station-helstrom","kind":"hub","why":"The hub of the rootway network, sited on the Helstrom rootworm station at 3270.9, 2848.7."}
+{"id":"root-node.naga-deeps","place_id":"place.naga-kur-deeps.dead-water-village","kind":"station","why":"The southern terminus is Dead Water village, the terminus the dossiers name, with three roster slots. It stays placeholder: the village is re-sited by this round's pin, so the node takes its position when the chain sites the record."}
+{"id":"root-node.north-shadowfen","place_id":"place.dunmer-north.stormhold","kind":"station","why":"The northern terminus is Stormhold's own slot, at 2706.0, 781.0."}

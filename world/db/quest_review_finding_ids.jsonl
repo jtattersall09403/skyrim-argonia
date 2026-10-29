@@ -1,0 +1,20 @@
+{"quest_id":"quest.local.lh38","review_findings_ord":0,"ord":0,"value":"shapeData.misdiagnosis"}
+{"quest_id":"quest.local.lh38","review_findings_ord":0,"ord":1,"value":"fact.greenspring.why-pressures-3"}
+{"quest_id":"quest.local.lh38","review_findings_ord":0,"ord":2,"value":"quest.mr.mr01"}
+{"quest_id":"quest.local.lh38","review_findings_ord":1,"ord":0,"value":"cast"}
+{"quest_id":"quest.local.lh38","review_findings_ord":2,"ord":0,"value":"stages.10"}
+{"quest_id":"quest.local.lh38","review_findings_ord":2,"ord":1,"value":"stages.20"}
+{"quest_id":"quest.local.lh38","review_findings_ord":3,"ord":0,"value":"stages.90"}
+{"quest_id":"quest.local.lh38","review_findings_ord":4,"ord":0,"value":"endings"}
+{"quest_id":"quest.local.lh38","review_findings_ord":5,"ord":0,"value":"topic.lh38-accusation"}
+{"quest_id":"quest.local.lh38","review_findings_ord":5,"ord":1,"value":"stages.20 a-ask"}
+{"quest_id":"quest.local.lh38","review_findings_ord":6,"ord":0,"value":"fact.lh38.pool-office"}
+{"quest_id":"quest.mr.mr01","review_findings_ord":0,"ord":0,"value":"essentialTopics"}
+{"quest_id":"quest.mr.mr01","review_findings_ord":0,"ord":1,"value":"topic.greenspring-sick-root"}
+{"quest_id":"quest.mr.mr01","review_findings_ord":1,"ord":0,"value":"stages.20"}
+{"quest_id":"quest.mr.mr01","review_findings_ord":1,"ord":1,"value":"stages.30"}
+{"quest_id":"quest.mr.mr01","review_findings_ord":2,"ord":0,"value":"shapeData.misdiagnosis"}
+{"quest_id":"quest.mr.mr01","review_findings_ord":2,"ord":1,"value":"quest.local.lh38"}
+{"quest_id":"quest.mr.mr01","review_findings_ord":3,"ord":0,"value":"stages.50"}
+{"quest_id":"quest.mr.mr01","review_findings_ord":3,"ord":1,"value":"scene.mr01.council"}
+{"quest_id":"quest.mr.mr01","review_findings_ord":4,"ord":0,"value":"startWhen"}

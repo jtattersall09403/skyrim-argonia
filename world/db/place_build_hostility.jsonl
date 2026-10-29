@@ -1,0 +1,16 @@
+{"place_id":"place.dunmer-north.riverwalk","baseline":"wary","clearable":false,"respawn":"none"}
+{"place_id":"place.dunmer-north.the-wamasu-shrine","baseline":"sanctuary","clearable":false,"respawn":"none"}
+{"place_id":"place.hist-heartland.greenspring","baseline":"friendly","clearable":false,"respawn":"none"}
+{"place_id":"place.imperial-fringe.bog-iron-workings","baseline":"guarded","clearable":false,"respawn":"none"}
+{"place_id":"place.imperial-fringe.claywater-station","baseline":"guarded","clearable":false,"respawn":"none"}
+{"place_id":"place.imperial-fringe.the-broke-column","baseline":"hostile","owner":"faction.imperial-legion-remnant","clearable":true,"respawn":"slow"}
+{"place_id":"place.imperial-penal-south.rose-bone-waystation","baseline":"neutral","clearable":false,"respawn":"none"}
+{"place_id":"place.imperial-penal-south.voriplasm-vault","baseline":"hostile","clearable":true,"respawn":"none"}
+{"place_id":"place.mercantile-coast.chasepoint","baseline":"guarded","owner":"faction.unclaimed","clearable":false,"respawn":"none"}
+{"place_id":"place.mercantile-coast.lighter-flotilla","baseline":"wary","owner":"faction.reed-sail-compact","clearable":false,"respawn":"none"}
+{"place_id":"place.mercantile-coast.teeth-of-sithis","baseline":"hostile","owner":"faction.nisswo","clearable":true,"respawn":"faction-refills"}
+{"place_id":"place.naga-kur-deeps.naga-highway-camp-active-north","baseline":"hostile","owner":"faction.tribeless-naga","clearable":true,"respawn":"faction-refills"}
+{"place_id":"place.pirate-freeholds.opening-work-camp","baseline":"wary","owner":"faction.dres-remnant","clearable":false,"respawn":"none"}
+{"place_id":"place.pirate-freeholds.upriver-hist-village","baseline":"wary","clearable":false,"respawn":"none"}
+{"place_id":"place.saxhleel-coast.jungle-root-hollow","baseline":"hostile","clearable":true,"respawn":"slow"}
+{"place_id":"place.saxhleel-coast.pearl-lots","baseline":"neutral","clearable":false,"respawn":"none"}

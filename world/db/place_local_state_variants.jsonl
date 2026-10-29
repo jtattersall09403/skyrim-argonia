@@ -1,0 +1,277 @@
+{"place_id":"place.dunmer-north.andalen-plantation","ord":0,"value":"shut"}
+{"place_id":"place.dunmer-north.andalen-plantation","ord":1,"value":"In the opened state the house is open. In the opened state the arrangement is over."}
+{"place_id":"place.dunmer-north.boom-keepers-lodge","ord":0,"value":"boom open"}
+{"place_id":"place.dunmer-north.boom-keepers-lodge","ord":1,"value":"In the shut state the boom is closed. The horn sounds unanswered."}
+{"place_id":"place.dunmer-north.breathes-underneath","ord":0,"value":"slot open"}
+{"place_id":"place.dunmer-north.breathes-underneath","ord":1,"value":"In the silting state the slot is a tighter squeeze. In the silting state the sump is longer."}
+{"place_id":"place.dunmer-north.buried-blades","ord":0,"value":"buried"}
+{"place_id":"place.dunmer-north.buried-blades","ord":1,"value":"In the opened state the four villages' arrangement has ended."}
+{"place_id":"place.dunmer-north.climbs-to-see","ord":0,"value":"In the watched state the hoist runs and a flag flies."}
+{"place_id":"place.dunmer-north.climbs-to-see","ord":1,"value":"In the unwatched state a winged creature occupies the top cage."}
+{"place_id":"place.dunmer-north.crystalgate","ord":0,"value":"In cutting season every shed is lit and grades are called all day."}
+{"place_id":"place.dunmer-north.crystalgate","ord":1,"value":"In a seam scare the sheds sit idle and the grading hall is shut. The townsfolk argue."}
+{"place_id":"place.dunmer-north.cut-and-stack","ord":0,"value":"In cutting season the site holds stacks, spades and strips."}
+{"place_id":"place.dunmer-north.cut-and-stack","ord":1,"value":"In the underground-fire state smoke rises from a face that has no worker near it."}
+{"place_id":"place.dunmer-north.cut-in-the-wall","ord":0,"value":"outside the boundary"}
+{"place_id":"place.dunmer-north.cut-in-the-wall","ord":1,"value":"In the surveyed-in state rent collectors walk the ledges."}
+{"place_id":"place.dunmer-north.draws-the-herds","ord":0,"value":"In the wet season the site is three tree stands and open water."}
+{"place_id":"place.dunmer-north.draws-the-herds","ord":1,"value":"In the dry season the site is a herd ground. Four villages and their predators gather there."}
+{"place_id":"place.dunmer-north.dreams-by-the-ash","ord":0,"value":"In the open state, tokens hang on the rail."}
+{"place_id":"place.dunmer-north.dreams-by-the-ash","ord":1,"value":"In the closed state, the village has closed the wallow. The fence is down and the hut is shuttered."}
+{"place_id":"place.dunmer-north.dry-under-water","ord":0,"value":"stocked"}
+{"place_id":"place.dunmer-north.dry-under-water","ord":1,"value":"In the stripped state, the cache is emptied. The tally board still shows stock."}
+{"place_id":"place.dunmer-north.feeds-the-north","ord":0,"value":"rotation held"}
+{"place_id":"place.dunmer-north.feeds-the-north","ord":1,"value":"In the broken state, six boats work where two should. The crews ignore the notches."}
+{"place_id":"place.dunmer-north.hackwing-wall","ord":0,"value":"fed (the wall settled)"}
+{"place_id":"place.dunmer-north.hackwing-wall","ord":1,"value":"In the hungry state, the birds have come down on the road."}
+{"place_id":"place.dunmer-north.hissmir","ord":0,"value":"In one state the trials are running. Pilgrims are camped and the stewards are occupied."}
+{"place_id":"place.dunmer-north.hissmir","ord":1,"value":"In one state the trials are closed. The xanmeer is shut and one steward sits on the step."}
+{"place_id":"place.dunmer-north.hutan-tzel","ord":0,"value":"totem line intact"}
+{"place_id":"place.dunmer-north.hutan-tzel","ord":1,"value":"In one state a post shows signs of meddling. The basin goes quiet and a creature is out there."}
+{"place_id":"place.dunmer-north.keeps-the-second-island","ord":0,"value":"In one state the hammock is dry. The soil is visible below the houses."}
+{"place_id":"place.dunmer-north.keeps-the-second-island","ord":1,"value":"In one state the hammock is flooded. The graveyard is under water and the village asks for help."}
+{"place_id":"place.dunmer-north.let-upper-floor","ord":0,"value":"In one state the room is let. The tenant is in residence."}
+{"place_id":"place.dunmer-north.let-upper-floor","ord":1,"value":"In one state the room is given up. The tenant leaves an hour after the door was tried. Only a cold lamp and a good chair remain."}
+{"place_id":"place.dunmer-north.loriasel-caverns","ord":0,"value":"In the wet season the stair is drowned. In the wet season the cavern can only be dived."}
+{"place_id":"place.dunmer-north.loriasel-caverns","ord":1,"value":"In the dry season the first two chambers can be walked."}
+{"place_id":"place.dunmer-north.names-the-year","ord":0,"value":"empty meadow"}
+{"place_id":"place.dunmer-north.names-the-year","ord":1,"value":"On naming-day, four villages gather under one tree. A registrar attends whom the villages did not invite."}
+{"place_id":"place.dunmer-north.nine-fords","ord":0,"value":"In the wet season a single crossing is usable. The gate is full and the town is rich."}
+{"place_id":"place.dunmer-north.nine-fords","ord":1,"value":"In the dry season eight fords are usable. The gate is empty and the town is idle."}
+{"place_id":"place.dunmer-north.nine-marks","ord":0,"value":"nine as they stand"}
+{"place_id":"place.dunmer-north.nine-marks","ord":1,"value":"the ninth completed"}
+{"place_id":"place.dunmer-north.nine-stone-bench","ord":0,"value":"bench working"}
+{"place_id":"place.dunmer-north.nine-stone-bench","ord":1,"value":"In the idle state the wheel is stopped. A grading-house notice is nailed to the shed."}
+{"place_id":"place.dunmer-north.one-house-high","ord":0,"value":"On a quiet night only the yard and the household are present."}
+{"place_id":"place.dunmer-north.one-house-high","ord":1,"value":"In the full-yard state forty strangers share one fence and one door."}
+{"place_id":"place.dunmer-north.puts-down-the-cup","ord":0,"value":"levy paid"}
+{"place_id":"place.dunmer-north.puts-down-the-cup","ord":1,"value":"If the levy is withheld, the lamp goes out. The door is shut for the first time."}
+{"place_id":"place.dunmer-north.rimfield","ord":0,"value":"full village"}
+{"place_id":"place.dunmer-north.rimfield","ord":1,"value":"In the half-empty state, the houses are shuttered. The terraces are going back to grass."}
+{"place_id":"place.dunmer-north.seam-chasers","ord":0,"value":"four camps"}
+{"place_id":"place.dunmer-north.seam-chasers","ord":1,"value":"In the strike state, three camps are abandoned overnight. One camp is crowded."}
+{"place_id":"place.dunmer-north.sings-for-the-pipes","ord":0,"value":"in tune (six chords)"}
+{"place_id":"place.dunmer-north.sings-for-the-pipes","ord":1,"value":"In a hot year, two ponds have drifted. The farmer is not sleeping."}
+{"place_id":"place.dunmer-north.sits-above-the-flood","ord":0,"value":"In the dry season the hamlet has six houses and empty yards."}
+{"place_id":"place.dunmer-north.sits-above-the-flood","ord":1,"value":"In flood the hamlet is full and boats are tied to the eaves."}
+{"place_id":"place.dunmer-north.stands-on-the-island","ord":0,"value":"In the dry season the village is an ordinary village."}
+{"place_id":"place.dunmer-north.stands-on-the-island","ord":1,"value":"In flood the village rents out standing room. Its population is three times larger."}
+{"place_id":"place.dunmer-north.tearmouth","ord":0,"value":"transferring (both banks working)"}
+{"place_id":"place.dunmer-north.tearmouth","ord":1,"value":"In spate, the river stops all movement for six weeks. The town fills with stuck cargo."}
+{"place_id":"place.dunmer-north.ten-thousand-nests","ord":0,"value":"nesting (uninhabitable and loud)"}
+{"place_id":"place.dunmer-north.ten-thousand-nests","ord":1,"value":"Out of nesting, the stand is silent. The ground is workable."}
+{"place_id":"place.dunmer-north.the-ash-causeway","ord":0,"value":"decking sound"}
+{"place_id":"place.dunmer-north.the-ash-causeway","ord":1,"value":"With a gap open, the crossing is a four-kilometre detour or a swim."}
+{"place_id":"place.dunmer-north.the-causeway-lodge","ord":0,"value":"family in residence"}
+{"place_id":"place.dunmer-north.the-causeway-lodge","ord":1,"value":"In this variant the house is shut and the gaps are failing."}
+{"place_id":"place.dunmer-north.the-crown-terrace","ord":0,"value":"tended"}
+{"place_id":"place.dunmer-north.the-crown-terrace","ord":1,"value":"The neglected state applies when a household refused its duty. The islanders answered the refusal."}
+{"place_id":"place.dunmer-north.the-diggings-ladder","ord":0,"value":"hoist working"}
+{"place_id":"place.dunmer-north.the-diggings-ladder","ord":1,"value":"In the hoist-failed state the ladder is the sole working route. A queue forms at the ladder."}
+{"place_id":"place.dunmer-north.the-dres-rows","ord":0,"value":"harvest (the yard full)"}
+{"place_id":"place.dunmer-north.the-dres-rows","ord":1,"value":"In the assessment variant the assessor's table stands in the yard. In that variant all the residents stay silent."}
+{"place_id":"place.dunmer-north.the-empty-socket","ord":0,"value":"empty"}
+{"place_id":"place.dunmer-north.the-empty-socket","ord":1,"value":"In the filled variant the stone sits in the socket. In that variant the chamber works again."}
+{"place_id":"place.dunmer-north.the-field-gate-garrison","ord":0,"value":"open crossing"}
+{"place_id":"place.dunmer-north.the-field-gate-garrison","ord":1,"value":"In the closed-crossing variant the pact of the Accord is failing. In that variant traffic backs up on both sides."}
+{"place_id":"place.dunmer-north.the-fish-boon-ground","ord":0,"value":"Out of season the flat is clean with a weir footing."}
+{"place_id":"place.dunmer-north.the-fish-boon-ground","ord":1,"value":"During the Feast, the flat holds fires and a crowd. The Feast lasts three days."}
+{"place_id":"place.dunmer-north.the-gravel-six","ord":0,"value":"When the rise is dry the rope hangs slack. No crossing is made then."}
+{"place_id":"place.dunmer-north.the-gravel-six","ord":1,"value":"When the rise floods the hamlet decamps to its rival. The rope is in use then."}
+{"place_id":"place.dunmer-north.the-guar-ground","ord":0,"value":"In rotation the fence is up with the banners of one user."}
+{"place_id":"place.dunmer-north.the-guar-ground","ord":1,"value":"When overstocked two users arrive at once. An argument breaks out at the water."}
+{"place_id":"place.dunmer-north.the-high-wrappings","ord":0,"value":"standing"}
+{"place_id":"place.dunmer-north.the-high-wrappings","ord":1,"value":"The top of the tree has gone. The village has a problem that it refuses to name."}
+{"place_id":"place.dunmer-north.the-lightning-yard","ord":0,"value":"In one state the yard is working and the shed is lit."}
+{"place_id":"place.dunmer-north.the-lightning-yard","ord":1,"value":"In one state the yard is dark and has no stock. The boat channel is left without a landmark."}
+{"place_id":"place.dunmer-north.the-moon-court","ord":0,"value":"dark (the court working)"}
+{"place_id":"place.dunmer-north.the-moon-court","ord":1,"value":"In one state a lamp stands on the ridge. The whole purpose of the court is then in question."}
+{"place_id":"place.dunmer-north.the-ninth-chapel","ord":0,"value":"empty"}
+{"place_id":"place.dunmer-north.the-ninth-chapel","ord":1,"value":"In one state travellers occupy the chapel. Their identity is not yet known."}
+{"place_id":"place.dunmer-north.the-north-cut","ord":0,"value":"The survey pegs are visible in the dry season."}
+{"place_id":"place.dunmer-north.the-north-cut","ord":1,"value":"A kilometre of the cut lies under water in the wet season. The drainage is obvious."}
+{"place_id":"place.dunmer-north.the-quiet-landing","ord":0,"value":"In the active state, four cultists are aboard and the cellar is lit."}
+{"place_id":"place.dunmer-north.the-quiet-landing","ord":1,"value":"In the abandoned state, the cell has cleared out and burned the board. The shrine is left standing."}
+{"place_id":"place.dunmer-north.the-quiet-landing","ord":2,"value":"In the raided state, An-Xileel seals are on the door. One guard remains. The cellar is as found."}
+{"place_id":"place.dunmer-north.the-rim-hermitage","ord":0,"value":"occupied"}
+{"place_id":"place.dunmer-north.the-rim-hermitage","ord":1,"value":"In the empty state, the cell is intact and the fuel cache is untouched."}
+{"place_id":"place.dunmer-north.the-rim-shelter","ord":0,"value":"Stocked state: the shelter holds fuel, a stove and a night's rest."}
+{"place_id":"place.dunmer-north.the-rim-shelter","ord":1,"value":"Stripped state: the shelter is a bare stone room. The traveller must decide whether to continue."}
+{"place_id":"place.dunmer-north.the-shell-ground","ord":0,"value":"Drawdown state: the bar is exposed for four hours."}
+{"place_id":"place.dunmer-north.the-shell-ground","ord":1,"value":"Covered state: the water is deep and the animals are up on the bar."}
+{"place_id":"place.dunmer-north.the-silyanorn-crown","ord":0,"value":"route as known"}
+{"place_id":"place.dunmer-north.the-silyanorn-crown","ord":1,"value":"Hold-moved state: the hold has shifted and the last section is a genuine problem."}
+{"place_id":"place.dunmer-north.the-standing-bid","ord":0,"value":"Sale day state: the floor is full, bidding runs and the watch is doubled."}
+{"place_id":"place.dunmer-north.the-standing-bid","ord":1,"value":"Between-sales state: the lots are racked and four people are aboard."}
+{"place_id":"place.dunmer-north.the-turning-stone","ord":0,"value":"as last recorded"}
+{"place_id":"place.dunmer-north.the-turning-stone","ord":1,"value":"Turned state: the disc has turned and the marker posts are wrong again."}
+{"place_id":"place.dunmer-north.the-wild-mouth","ord":0,"value":"Worm-at-home state: the worm is working beneath the ground."}
+{"place_id":"place.dunmer-north.the-wild-mouth","ord":1,"value":"Worm-out state: the tunnel is open and a decision is pending."}
+{"place_id":"place.dunmer-north.thorn","ord":0,"value":"Accord-holding state: patrols are mixed. The ball court is in use."}
+{"place_id":"place.dunmer-north.thorn","ord":1,"value":"Accord-broken state: two quarters are guarded. The square is empty."}
+{"place_id":"place.dunmer-north.thorn-paddy-terraces","ord":0,"value":"Harvest state: every hand is in the fields. The floor is full."}
+{"place_id":"place.dunmer-north.thorn-paddy-terraces","ord":1,"value":"Standing-water state: the boundary is invisible. The argument is academic."}
+{"place_id":"place.dunmer-north.three-ways-over-water","ord":0,"value":"lamp lit"}
+{"place_id":"place.dunmer-north.three-ways-over-water","ord":1,"value":"Lamp-dark state: the arms cannot be found at night."}
+{"place_id":"place.dunmer-north.ties-four-ways","ord":0,"value":"all four arms sound"}
+{"place_id":"place.dunmer-north.ties-four-ways","ord":1,"value":"One-arm-failed state: a village is cut off. The argument is about whose job the repair was."}
+{"place_id":"place.dunmer-north.waits-for-the-promise","ord":0,"value":"waiting"}
+{"place_id":"place.dunmer-north.waits-for-the-promise","ord":1,"value":"Moved-on-the-ground state: the camp has crossed the bank. Everything has changed."}
+{"place_id":"place.dunmer-north.waits-for-the-trial","ord":0,"value":"orderly (the board honoured)"}
+{"place_id":"place.dunmer-north.waits-for-the-trial","ord":1,"value":"Broken-order state: a pilgrim has jumped the queue. The pilgrims in the camp are deciding what to do about it."}
+{"place_id":"place.dunmer-north.went-down-slowly","ord":0,"value":"Dry-season state: five tilted houses stand."}
+{"place_id":"place.dunmer-north.went-down-slowly","ord":1,"value":"Wet-season state: three of the houses are under water. One house is still dry."}
+{"place_id":"place.dunmer-north.wolk-market","ord":0,"value":"market-day"}
+{"place_id":"place.dunmer-north.wolk-market","ord":1,"value":"Closed-road state: one wedge of the square is empty. The other two wedges are doubled."}
+{"place_id":"place.hist-heartland.bereaved-mnemic","ord":0,"id":"state.mnemic.mourning","when":"default","what_changes":"The chamber is kept dark. The village is closed to visitors."}
+{"place_id":"place.hist-heartland.bereaved-mnemic","ord":1,"id":"state.mnemic.opened","when":"This state applies after the severance is proved.","what_changes":"The chamber is opened. The log is made available."}
+{"place_id":"place.hist-heartland.helstrom","ord":0,"id":"state.helstrom.assembly-open","when":"The state applies after the closed council admits an outsider.","what_changes":"The inner gallery becomes passable. The council chamber is lit."}
+{"place_id":"place.hist-heartland.helstrom","ord":1,"id":"state.helstrom.grove-withdrawn","when":"The state applies while the main-quest withdrawal is active.","what_changes":"The residents take down the chime lines. The lamps on the upper lanes go out. Traffic halts."}
+{"place_id":"place.hist-heartland.lost-city","ord":0,"id":"state.lost-city.sealed","when":"This state holds before the Eye opens the city.","what_changes":"The underwater entry is closed. The terraces are unlit."}
+{"place_id":"place.hist-heartland.lost-city","ord":1,"id":"state.lost-city.opened","when":"after MQ29 opens it","what_changes":"The entry is passable. The cult occupation is live. The sanctuary is reachable."}
+{"place_id":"place.hist-heartland.root-gallery-cult-warren","ord":0,"id":"state.warren.occupied","when":"This state applies before the cult is broken.","what_changes":"The warren is lit and guarded. The cut pattern is being extended."}
+{"place_id":"place.hist-heartland.root-gallery-cult-warren","ord":1,"id":"state.warren.emptied","when":"after","what_changes":"The warren is dark. The cultists abandoned it in haste. Evidence is still in place."}
+{"place_id":"place.hist-heartland.root-talk-ground","ord":0,"id":"state.root-talk.in-session","when":"The in-session state applies during Hist-Tsoko or a called convocation.","what_changes":"In session the ring is full. In session the floor is lit. In session travel to the ground is busy."}
+{"place_id":"place.hist-heartland.root-talk-ground","ord":1,"id":"state.root-talk.empty","when":"out of season","what_changes":"Out of season the worn floor is empty. One chime frame stands on the empty floor."}
+{"place_id":"place.hist-heartland.sealed-xanmeer-living","ord":0,"id":"state.xal-ussep.sealed","when":"default","what_changes":"In the sealed state, the stair-throat is shut. The hum is felt only outside."}
+{"place_id":"place.hist-heartland.sealed-xanmeer-living","ord":1,"id":"state.xal-ussep.opened","when":"This state applies after the chamber is opened.","what_changes":"In the opened state, the living tree can be reached. Its sap-glow lights the interior."}
+{"place_id":"place.hist-heartland.the-cut-circle","ord":0,"value":"In the gathering state the hall is full and a sermon is in progress. No weapons are drawn."}
+{"place_id":"place.hist-heartland.the-cut-circle","ord":1,"value":"The blown state has six hostiles. The congregation is gone. The hall is as they left it."}
+{"place_id":"place.hist-heartland.xal-krona-making-ground","ord":0,"id":"state.made-ground.unread","when":"default","what_changes":"The making record in the basin is unread. The Warden is hostile to the visitor on meeting."}
+{"place_id":"place.hist-heartland.xal-krona-making-ground","ord":1,"id":"state.made-ground.read","when":"This state applies after the making record is understood.","what_changes":"The Warden can be stood down at the Lost City. What is growing in the basin stays dormant."}
+{"place_id":"place.hist-heartland.xal-meeruth-station","ord":0,"id":"state.meeruth.derelict","when":"default","what_changes":"The station is roofless and unlit. The road head is silted."}
+{"place_id":"place.hist-heartland.xal-meeruth-station","ord":1,"id":"state.meeruth.claimed","when":"This state applies if the station is claimed and held as a stronghold.","what_changes":"The station is re-roofed and lit. The road head is cleared."}
+{"place_id":"place.imperial-fringe.comes-back-slowly","ord":0,"value":"In a good week the yard is raked and the house is quiet."}
+{"place_id":"place.imperial-fringe.comes-back-slowly","ord":1,"value":"In a bad week the yard is unraked. In a bad week the doors are barred from inside."}
+{"place_id":"place.imperial-fringe.dreams-in-mud","ord":0,"value":"When empty, the fence is open and the hut is shuttered."}
+{"place_id":"place.imperial-fringe.dreams-in-mud","ord":1,"value":"When in use, the fence is closed. The keeper sits out the night."}
+{"place_id":"place.imperial-fringe.fig-market","ord":0,"value":"When the market is open, the board is full and three buyers are present."}
+{"place_id":"place.imperial-fringe.fig-market","ord":1,"value":"In a glut, the board is blanked, the sheds overflow and tempers are short."}
+{"place_id":"place.imperial-fringe.giovesse-lines","ord":0,"value":"In the wet season the ditches are full and the banks are green."}
+{"place_id":"place.imperial-fringe.giovesse-lines","ord":1,"value":"In the dry season a herd stands in the cuts. In the dry season the profile is bare."}
+{"place_id":"place.imperial-fringe.hangs-above-the-water","ord":0,"value":"ladders down (day)"}
+{"place_id":"place.imperial-fringe.hangs-above-the-water","ord":1,"value":"With the ladders drawn up, it is night. The crew stays on the water."}
+{"place_id":"place.imperial-fringe.ladder-to-the-light","ord":0,"value":"Manned state: the bell rings, the lamp burns and the lookout calls the lanes."}
+{"place_id":"place.imperial-fringe.ladder-to-the-light","ord":1,"value":"Unmanned state: something else occupies the top platform."}
+{"place_id":"place.imperial-fringe.marcians-terrace","ord":0,"value":"Wet season state: the cisterns are full and the terraces are green."}
+{"place_id":"place.imperial-fringe.marcians-terrace","ord":1,"value":"Dry season state: the cisterns are rationed and a guard watches them."}
+{"place_id":"place.imperial-fringe.moonmarch-ground","ord":0,"value":"Out of season state: the ground holds post-holes and a stone."}
+{"place_id":"place.imperial-fringe.moonmarch-ground","ord":1,"value":"Moonmarch state: an awning town stands there with three drums and a bell."}
+{"place_id":"place.imperial-fringe.onkobra-field-station","ord":0,"value":"licence current"}
+{"place_id":"place.imperial-fringe.onkobra-field-station","ord":1,"value":"Licence lapsed state: the shutters are closed and the jars go cloudy."}
+{"place_id":"place.imperial-fringe.orma-tactile-ruin","ord":0,"value":"Unlit state: the halls stand as the Orma left them."}
+{"place_id":"place.imperial-fringe.orma-tactile-ruin","ord":1,"value":"Lit state: a scholars' camp lights the halls. The halls then become legible in the wrong way."}
+{"place_id":"place.imperial-fringe.sabinus-claim","ord":0,"value":"worked (hammer, three men)"}
+{"place_id":"place.imperial-fringe.sabinus-claim","ord":1,"value":"Walked away from state: the tents stand, the pile is abandoned and the stake is still legible."}
+{"place_id":"place.imperial-fringe.swampmoth-town","ord":0,"value":"garrison at strength"}
+{"place_id":"place.imperial-fringe.swampmoth-town","ord":1,"value":"In one state the garrison is drawn down. Half the billets are empty. The trade of the town falls with them."}
+{"place_id":"place.imperial-fringe.the-back-kiln","ord":0,"value":"In one state the kiln is cold. The den is open for business."}
+{"place_id":"place.imperial-fringe.the-back-kiln","ord":1,"value":"In the other state the kiln is fired. The den is closed. The room is in use for firing."}
+{"place_id":"place.imperial-fringe.the-pass-shelter","ord":0,"value":"empty and cold"}
+{"place_id":"place.imperial-fringe.the-pass-shelter","ord":1,"value":"The storm-full state has three parties, one fire and no door."}
+{"place_id":"place.imperial-fringe.the-stone-talkers-watch","ord":0,"value":"In one state the charge is kept. The clay seams are fresh. The Sul-Xan stay at a distance."}
+{"place_id":"place.imperial-fringe.the-stone-talkers-watch","ord":1,"value":"In one state the charge is failing. A new crack has been unpacked. Raiders stand on the terrace."}
+{"place_id":"place.imperial-fringe.twyllbek-crown","ord":0,"value":"route intact"}
+{"place_id":"place.imperial-fringe.twyllbek-crown","ord":1,"value":"In one state, a course has gone. The old route dead-ends. The visitor must find the new route."}
+{"place_id":"place.imperial-penal-south.blackrose","ord":0,"id":"state.blackrose.core-contested","description":"The island core has changed hands; the gates are shut and the boardwalk city is trading around them."}
+{"place_id":"place.imperial-penal-south.blackrose","ord":1,"id":"state.blackrose.high-lake","description":"Wet-season high water: the boardwalk city floats a metre higher and the lower gate is unusable."}
+{"place_id":"place.imperial-penal-south.blackrose-drowned-hist","ord":0,"id":"state.drowned-tree.lake-drawn-down","description":"Drawdown has put the crown within a metre of the surface and the whole district has come to see it."}
+{"place_id":"place.imperial-penal-south.blackrose-prison","ord":0,"id":"state.rose.stair-open","description":"The bricked stair is open; the yard has emptied and the families are camped on the causeway."}
+{"place_id":"place.imperial-penal-south.blackrose-prison","ord":1,"id":"state.rose.blockaded","description":"Blackrose is holding the causeway; nothing enters and the yard is rationing."}
+{"place_id":"place.imperial-penal-south.bramman-head","ord":0,"id":"state.brammans-head.screen-known","description":"The screen route is compromised; the lagoon is empty and the rings have no rope on them."}
+{"place_id":"place.imperial-penal-south.buoyant-causeway","ord":0,"id":"state.buoyant-causeway.wet","description":"Wet season: the water is a hand under the deck boards, the end ramps are steep and the low sections are planked over."}
+{"place_id":"place.imperial-penal-south.buoyant-causeway","ord":1,"id":"state.buoyant-causeway.dry","description":"Dry season: the piles stand clear of the mud to knee height and the end ramps lie almost flat."}
+{"place_id":"place.imperial-penal-south.chainbreaker-shelter","ord":0,"id":"state.open-house.raided","description":"The Owing brokers have found it; the doors are shut and the tag wall is stripped."}
+{"place_id":"place.imperial-penal-south.drawdown-flat","ord":0,"id":"state.bare-lake.drawn-down","description":"Six weeks a year the bed is dry; people walk and trade across it."}
+{"place_id":"place.imperial-penal-south.drawdown-flat","ord":1,"id":"state.bare-lake.refilled","description":"Open water, nothing above the surface; the market is a dive site."}
+{"place_id":"place.imperial-penal-south.lake-submerged-xanmeer","ord":0,"id":"state.lake-meer.drawn-down","description":"Drawdown puts the top terrace at two metres; every treasure-hunter in the basin is on it."}
+{"place_id":"place.imperial-penal-south.longmont","ord":0,"id":"state.longmont.freight-stop","description":"The village has stopped handling freight; a kilometre of loading deck stands empty and Blackrose is hurting."}
+{"place_id":"place.imperial-penal-south.murkwood-verge","ord":0,"id":"state.murkwood.moved","description":"Murkwood has moved: the verge is a kilometre away and the watch camp is standing in open marsh."}
+{"place_id":"place.imperial-penal-south.prison-born-refuge","ord":0,"id":"state.third-generation.tree-given","description":"A cutting has been granted; the enclosure has something in it and the settlement's whole posture changes."}
+{"place_id":"place.imperial-penal-south.rockspring","ord":0,"id":"state.rockspring.flood-over-levee","description":"A flood has topped the levee for the first time in memory and the single street is a channel."}
+{"place_id":"place.imperial-penal-south.rose-flooded-passage","ord":0,"id":"state.rose-lower.breached","description":"The seal is broken and the passage is draining into the prison's own water supply."}
+{"place_id":"place.imperial-penal-south.rose-supply-town","ord":0,"id":"state.vaunting.rose-emptied","description":"The Rose has been emptied; the town's whole economy is visibly ending."}
+{"place_id":"place.imperial-penal-south.three-gate-toll","ord":0,"id":"state.three-gates.compact-broken","description":"The compact has lost the gates to the city; the boards read differently and the queue is longer."}
+{"place_id":"place.imperial-penal-south.vampiric-cloud-ground","ord":0,"id":"state.given-field.staked","description":"Locals have finally driven the burial poles. Ranks of new poles break the grass pattern. A line of cairns runs along the ridge track."}
+{"place_id":"place.imperial-penal-south.west-market-town","ord":0,"id":"state.threewater.toll-enforced","description":"Blackrose has enforced a toll here; half the sheds are shut and the trade has gone back to the city."}
+{"place_id":"place.mercantile-coast.alten-meerhleel","ord":0,"id":"state.meerhleel.lilmoth-undercut","description":"Lilmoth has dropped its tariffs and Meerhleel's quay is empty."}
+{"place_id":"place.mercantile-coast.ashfield","ord":0,"id":"state.ashfield.second-burn","description":"Fire has come back into the burn country and the fields are being cut as breaks."}
+{"place_id":"place.mercantile-coast.bereaved-village-murkmire","ord":0,"id":"state.sees-no-root.cutting-planted","description":"A cutting has been planted in the enclosure and the recitation has stopped."}
+{"place_id":"place.mercantile-coast.bramman-screen","ord":0,"id":"state.brammans-screen.wrong-mouth","description":"The sill has shifted and the marked mouth is now the false one."}
+{"place_id":"place.mercantile-coast.cold-light","ord":0,"id":"state.cold-light.relit","description":"The lantern is burning again and every hull on the bay approach is behaving differently."}
+{"place_id":"place.mercantile-coast.glowfen-murkmire","ord":0,"id":"state.glowfen.dark","description":"The glow has failed for a season and the safe lanes cannot be read."}
+{"place_id":"place.mercantile-coast.high-junction","ord":0,"id":"state.high-junction.collapsed","description":"A deck has gone; the district's upper network is four dead ends."}
+{"place_id":"place.mercantile-coast.inhabited-meer-murkmire","ord":0,"id":"state.chuxeth.defences-fired","description":"The approach defences have been used; the causeway is scorched and the clan is not receiving."}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ord":0,"id":"state.lighter-flotilla.strike","description":"The crews have stopped lightering; laden hulls are lying off Lilmoth doing nothing."}
+{"place_id":"place.mercantile-coast.lilmoth","ord":0,"id":"state.lilmoth.tariff-war","description":"Council tariffs raised: Meerhleel and Moonmarch busy, Lilmoth quay half idle."}
+{"place_id":"place.mercantile-coast.lilmoth","ord":1,"id":"state.lilmoth.hist-silence","description":"The third Hist has not spoken for a season; the council rules are suspended and the city is tense."}
+{"place_id":"place.mercantile-coast.lilmoth","ord":2,"id":"state.lilmoth.flood-peak","description":"Wet-season peak: the lower walkways are closed and everything moves one tier up."}
+{"place_id":"place.mercantile-coast.lilmoth-divers-yard","ord":0,"id":"state.under-yard.council-raid","description":"The council has taken the valuation book; the floor is empty and the stair is chained."}
+{"place_id":"place.mercantile-coast.mudfoot","ord":0,"id":"state.mudfoot.low-water","description":"The flat is walkable and the whole village is out on it."}
+{"place_id":"place.mercantile-coast.mudfoot","ord":1,"id":"state.mudfoot.high-water","description":"The water stands two metres over the flat. The village is reached only by boat. The villagers have stopped work."}
+{"place_id":"place.mercantile-coast.oliis-tide-run","ord":0,"id":"state.half-day-flat.uncovered","description":"The flat is walkable and the bells are ringing."}
+{"place_id":"place.mercantile-coast.oliis-tide-run","ord":1,"id":"state.half-day-flat.covered","description":"Sailable water; the withies lean and the bells are silent."}
+{"place_id":"place.mercantile-coast.rockpark","ord":0,"id":"state.rockpark.looted","description":"A thief has broken the taboo. The shelves are stripped. The district knows who did it."}
+{"place_id":"place.mercantile-coast.sealed-meer-murkmire","ord":0,"id":"state.kept-chamber.opened","description":"The seal is broken; whatever was closed in is a district-wide problem."}
+{"place_id":"place.mercantile-coast.soulrest","ord":0,"id":"state.soulrest.claimant-ascendant","description":"One of the four claimants is briefly on top; the gates and the harbour office change hands with it."}
+{"place_id":"place.mercantile-coast.soulrest","ord":1,"id":"state.soulrest.mines-question","description":"A survey party is in town and the whole city is behaving as if the mines might reopen."}
+{"place_id":"place.mercantile-coast.stripped-village-north","ord":0,"id":"state.ganthils-rest.stakes-raised","description":"The poles have been driven again, but the figures do not keep the paths."}
+{"place_id":"place.mercantile-coast.sunken-causeway","ord":0,"id":"state.sunken-causeway.bridged","description":"Somebody has bridged the gaps; the fastest route in the region exists again, for a season."}
+{"place_id":"place.mercantile-coast.tempering-ground","ord":0,"id":"state.tempering-ground.struck","description":"The ground has been struck and raked; there is nothing here at all."}
+{"place_id":"place.mercantile-coast.topal-salt-pans","ord":0,"id":"state.white-fields.flooded","description":"The wet season has taken the pans; the bunds are gone and the works is under a metre of water."}
+{"place_id":"place.mercantile-coast.white-rose-prison","ord":0,"id":"state.white-rose.cleared","description":"The repatriation chain has finished here; the block is empty in a different way."}
+{"place_id":"place.mercantile-coast.wraxu-stacks","ord":0,"id":"state.wraxu-stacks.taking-season","description":"The rope ladder is up and the ledges are being worked in order."}
+{"place_id":"place.naga-kur-deeps.dead-water-village","ord":0,"id":"state.dead-water.hunt-out","when":"This variant applies while a Death Hunt is running.","what_changes":"The village is half-empty. The muster ground is struck."}
+{"place_id":"place.naga-kur-deeps.dead-water-village","ord":1,"id":"state.dead-water.hunt-home","when":"otherwise","what_changes":"The village is full. The drums answer. The landing is crowded."}
+{"place_id":"place.naga-kur-deeps.deepmire-refuge","ord":0,"id":"state.deepmire.kept","when":"default","what_changes":"Shelters are sound. Stores are turned. Caretakers are in residence."}
+{"place_id":"place.naga-kur-deeps.deepmire-refuge","ord":1,"id":"state.deepmire.in-use","when":"during a sheltering crisis","what_changes":"The shelters are full. The stores are broken open. The memorial line is moved aside."}
+{"place_id":"place.naga-kur-deeps.harmed-hist-enslaved","ord":0,"id":"state.held-tree.scaffolded","when":"default","what_changes":"The scaffold stands. The crew is present. The hum stutters."}
+{"place_id":"place.naga-kur-deeps.harmed-hist-enslaved","ord":1,"id":"state.held-tree.freed","when":"This variant applies after the crew is driven off.","what_changes":"The scaffold is down. The drums resume. The blue light steadies."}
+{"place_id":"place.naga-kur-deeps.root-whisper-village","ord":0,"id":"state.root-whisper.speaking","when":"This state applies during the tree's two speaking hours.","what_changes":"The whole village is present and silent. Villagers ask outsiders to wait outside the ring."}
+{"place_id":"place.naga-kur-deeps.root-whisper-village","ord":1,"id":"state.root-whisper.working","when":"This state applies for the rest of the day.","what_changes":"Village life is normal. The tree-minder will talk."}
+{"place_id":"place.naga-kur-deeps.umbriel-stripped-undead","ord":0,"id":"state.still-walking.contained","when":"default","what_changes":"The ring is maintained. The village is quiet by day."}
+{"place_id":"place.naga-kur-deeps.umbriel-stripped-undead","ord":1,"id":"state.still-walking.breached","when":"This variant applies if the ring is broken.","what_changes":"The walkers range beyond the pikes. The nearest camps strike."}
+{"place_id":"place.pirate-freeholds.alten-corimont","ord":0,"value":"In the neutral state the price list is up. Both halls are open. No flag flies."}
+{"place_id":"place.pirate-freeholds.alten-corimont","ord":1,"value":"In the leaned-on state one flag flies. The price list is painted out. The halls are shut."}
+{"place_id":"place.pirate-freeholds.bone-repatriation-waystation","ord":0,"value":"In the staged state the racks are full. The destinations are two weeks out. The carriers are waiting."}
+{"place_id":"place.pirate-freeholds.bone-repatriation-waystation","ord":1,"value":"In the stalled state the racks are full. The carriers are not carrying because the next leg has refused the bundles."}
+{"place_id":"place.pirate-freeholds.chasecreek","ord":0,"value":"In the dry season the flood gate is open. The hamlet trades downstream."}
+{"place_id":"place.pirate-freeholds.chasecreek","ord":1,"value":"In the flood the gate is shut. Each household carries its one expensive object upstairs."}
+{"place_id":"place.pirate-freeholds.corimont-hist-less-camp","ord":0,"value":"In the waiting state the planting circle is swept. The argument is unresolved."}
+{"place_id":"place.pirate-freeholds.corimont-hist-less-camp","ord":1,"value":"In the planted state something is in the circle. Half the camp will not look at it."}
+{"place_id":"place.pirate-freeholds.dres-holding-pens","ord":0,"value":"In the derelict state the ramp is rotting. The rails have been robbed for timber."}
+{"place_id":"place.pirate-freeholds.dres-holding-pens","ord":1,"value":"In the in-use state the ramp is regraded. The rails are sound. People in Corimont do not say so."}
+{"place_id":"place.pirate-freeholds.opening-work-barge","ord":0,"value":"In the orderly state, the roll is read and the shift goes out."}
+{"place_id":"place.pirate-freeholds.opening-work-barge","ord":1,"value":"In the attacked state, fire burns on the deck and the courier is down. The cell is already leaving."}
+{"place_id":"place.pirate-freeholds.opening-work-barge","ord":2,"value":"In the aftermath state, the barge lists at its mooring. The barge is left without an overseer."}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":0,"value":"In the orderly state, the shed is lit and the walkways are swept. The roll is read on the barge."}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":1,"value":"In the attacked state, the gang has gone to the barge. The families defend their doors."}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ord":2,"value":"In the aftermath state, the shed stands open and the lamp is out. Dead eggs lie in the nest. Two cairns stand on the bluff top."}
+{"place_id":"place.pirate-freeholds.rim-pass-station","ord":0,"value":"When the pass is open, the season board is green. The keeper is bored."}
+{"place_id":"place.pirate-freeholds.rim-pass-station","ord":1,"value":"When the pass is shut, the board is closed. People in the queue wait for the pass to open."}
+{"place_id":"place.pirate-freeholds.rockpoint","ord":0,"value":"In the unclaimed state the landing is silting. In the unclaimed state the mooring rings are green."}
+{"place_id":"place.pirate-freeholds.rockpoint","ord":1,"value":"In the claimed state the landing is dredged. In the claimed state a claimant's mark is on the gate."}
+{"place_id":"place.pirate-freeholds.trunk-toll-bridge","ord":0,"value":"In the tariffed state the board prices coin, goods and obligation. In the tariffed state the span is kept."}
+{"place_id":"place.pirate-freeholds.trunk-toll-bridge","ord":1,"value":"In the free state the board is painted out. In the free state the span is left unrepaired."}
+{"place_id":"place.pirate-freeholds.upriver-hist-village","ord":0,"value":"In the speaking state the tree chimes. In the speaking state the hatchery is lit. In the speaking state minders stand on the landing."}
+{"place_id":"place.pirate-freeholds.upriver-hist-village","ord":1,"value":"In the withdrawn state there are no chimes. In the withdrawn state the pool is covered. In the withdrawn state the village stays indoors."}
+{"place_id":"place.saxhleel-coast.archon","ord":0,"value":"In the harbour-open state customs is staffed. In the harbour-open state the boom is down. In the harbour-open state three currencies are on the board."}
+{"place_id":"place.saxhleel-coast.archon","ord":1,"value":"In the harbour-shut state the boom is up. In the harbour-shut state the bonded row is sealed. In the harbour-shut state the tide streets carry the trade."}
+{"place_id":"place.saxhleel-coast.archon-harbour-hist","ord":0,"value":"In the reachable state, the low branch is within an adult's arm. In that state the harbour treats the Hist as furniture."}
+{"place_id":"place.saxhleel-coast.archon-harbour-hist","ord":1,"value":"In the raised state, the branch is cut or grown out of reach. In that state the harbour argues about whose tree it is."}
+{"place_id":"place.saxhleel-coast.archon-shadowscale-sanctuary","ord":0,"value":"In the closed state, the 4E 187 order is still nailed up. In that state the sanctuary is empty inside."}
+{"place_id":"place.saxhleel-coast.archon-shadowscale-sanctuary","ord":1,"value":"In the answering state, the order is gone. In that state one lamp is lit. In that state a name is expected."}
+{"place_id":"place.saxhleel-coast.cantemir-headland","ord":0,"value":"In the quiet state the niches are empty. In the quiet state a house mark stays unclaimed."}
+{"place_id":"place.saxhleel-coast.cantemir-headland","ord":1,"value":"In the claimed state an unnamed party has begun filling the niches. The work is not Velothi."}
+{"place_id":"place.saxhleel-coast.east-estuary-rootworm-station","ord":0,"value":"Running state: a departure is carved on the board and the hole is warm."}
+{"place_id":"place.saxhleel-coast.east-estuary-rootworm-station","ord":1,"value":"Stopped state: the boarding stage is barred and the hole is cold."}
+{"place_id":"place.saxhleel-coast.lagoon-submerged-xanmeer","ord":0,"value":"In the state 'air held', the ceiling pockets are breathable. In that state the corner is standing."}
+{"place_id":"place.saxhleel-coast.lagoon-submerged-xanmeer","ord":1,"value":"In the state 'air lost', a settle has vented the chambers. In that state the dive takes one breath."}
+{"place_id":"place.saxhleel-coast.portdun-mont","ord":0,"value":"In the state where the stair is kept, the hauling gear is rigged. In that state the bench is lit."}
+{"place_id":"place.saxhleel-coast.portdun-mont","ord":1,"value":"In the state where the stair is cut, the village is provisioned from the water only."}
+{"place_id":"place.saxhleel-coast.seafalls","ord":0,"value":"In the navigable state, this season's limit board is painted high."}
+{"place_id":"place.saxhleel-coast.seafalls","ord":1,"value":"In the unrunnable state, the board is painted low. The porters' rates are doubled. The reach is jammed."}
+{"place_id":"place.saxhleel-coast.tide-run-delta","ord":0,"value":"The state is open. The board is chalked before dawn. The flat is walkable for two hours."}
+{"place_id":"place.saxhleel-coast.tide-run-delta","ord":1,"value":"The state is shut. The board is not chalked. Whoever went out on yesterday's timing is still out there."}
+{"place_id":"place.saxhleel-coast.umbriel-shore-memorial","ord":0,"value":"In the kept state, the mound is edged. The offerings are fresh."}
+{"place_id":"place.saxhleel-coast.umbriel-shore-memorial","ord":1,"value":"In the argued state, a second mound is started beside the first. People who count the year differently start it."}

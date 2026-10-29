@@ -1,0 +1,9 @@
+{"quest_id":"quest.local.lh38","source":"cultureSheets"}
+{"quest_id":"quest.local.lh38","source":"people","value":"world/sources/registries/npcs.json"}
+{"quest_id":"quest.local.lh38","source":"placeFacts","value":"world/sources/placement/facts/place.hist-heartland.greenspring.json"}
+{"quest_id":"quest.local.lh38","source":"stance","value":"world/sources/dialogue/stance/greenspring.json"}
+{"quest_id":"quest.mr.mr01","source":"catalogue","value":"world/sources/catalogue/places-hist-heartland.json#place.hist-heartland.root-gallery-drowned-stair"}
+{"quest_id":"quest.mr.mr01","source":"cultureSheets"}
+{"quest_id":"quest.mr.mr01","source":"placeFacts","value":"world/sources/placement/facts/place.hist-heartland.greenspring.json"}
+{"quest_id":"quest.mr.mr01","source":"roster","value":"docs/design/quests/36-cast-roster.md §56 (The Many-Root Conclave)"}
+{"quest_id":"quest.mr.mr01","source":"stance","value":"world/sources/dialogue/stance/greenspring.json"}

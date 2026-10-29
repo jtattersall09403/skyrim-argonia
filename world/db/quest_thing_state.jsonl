@@ -1,0 +1,22 @@
+{"quest_id":"quest.local.lh38","things_ord":0,"state":"all","value":"open; Im-Moro forbids entry"}
+{"quest_id":"quest.local.lh38","things_ord":1,"state":"all","value":"dark; the body inside until stage 70"}
+{"quest_id":"quest.local.lh38","things_ord":2,"state":"after-70","value":"raised and given to the Hist (disableRef)"}
+{"quest_id":"quest.local.lh38","things_ord":2,"state":"before-70","value":"staked, wrists tied"}
+{"quest_id":"quest.local.lh38","things_ord":3,"state":"all","value":"face uncarved"}
+{"quest_id":"quest.local.lh38","things_ord":4,"state":"all","value":"tied with Tsono-Ra's knot; can be taken"}
+{"quest_id":"quest.local.lh38","things_ord":5,"state":"all","value":"the courier's unpaid bill with his name"}
+{"quest_id":"quest.local.lh38","things_ord":6,"state":"all","value":"holds item.lh38.sealed-packet"}
+{"quest_id":"quest.local.lh38","things_ord":7,"state":"all","value":"sealed; unlisted in the courier's ledger"}
+{"quest_id":"quest.local.lh38","things_ord":8,"state":"after-70","value":"recovering"}
+{"quest_id":"quest.local.lh38","things_ord":8,"state":"before-70","value":"feverish; say they ate at the fire stand"}
+{"quest_id":"quest.local.lh38","things_ord":9,"state":"all","value":"Tsono-Ra's work spot"}
+{"quest_id":"quest.local.lh38","things_ord":10,"state":"all","value":"inZone; entering it unseen or with leave"}
+{"quest_id":"quest.mr.mr01","things_ord":0,"state":"all","value":"fresh water"}
+{"quest_id":"quest.mr.mr01","things_ord":1,"state":"all","value":"rock salt from upriver, not the works"}
+{"quest_id":"quest.mr.mr01","things_ord":2,"state":"all","value":"carved; read with Vees-Wai"}
+{"quest_id":"quest.mr.mr01","things_ord":3,"state":"all","value":"brackish"}
+{"quest_id":"quest.mr.mr01","things_ord":4,"state":"all","value":"salt"}
+{"quest_id":"quest.mr.mr01","things_ord":5,"state":"all","value":"brine"}
+{"quest_id":"quest.mr.mr01","things_ord":6,"state":"after-60","value":"per the chosen cure (variant.greenspring.cure)"}
+{"quest_id":"quest.mr.mr01","things_ord":6,"state":"before-60","value":"open cut with tool-marks"}
+{"quest_id":"quest.mr.mr01","things_ord":7,"state":"all","value":"vermin, band D3 in a D4 place"}

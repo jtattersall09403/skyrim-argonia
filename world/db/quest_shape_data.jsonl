@@ -1,0 +1,30 @@
+{"quest_id":"quest.local.lh38","section":"accusation","needed":2,"too_few":"Reeh-Shaal laughs it off and leaves on the next boat unless stopped"}
+{"quest_id":"quest.local.lh38","section":"cure","value":"raise the body; the water clears in three days"}
+{"quest_id":"quest.local.lh38","section":"endings","wrong":"e-wrong","right":"e-justice","partial":"e-fight","unsolved":"e-unsolved"}
+{"quest_id":"quest.local.lh38","section":"firstIllLastWell","value":"guests at the lodge first (they drink most), then the fire stand's customers; the office-holders, who drink from the far side of the pool, last"}
+{"quest_id":"quest.local.lh38","section":"ladder"}
+{"quest_id":"quest.local.lh38","section":"leads"}
+{"quest_id":"quest.local.lh38","section":"lies"}
+{"quest_id":"quest.local.lh38","section":"misdiagnosis","wrong":"the fire stand's food (Im-Moro believes it; Reeh-Shaal spreads it)","test":"alchemy: a sample of pool water clouds a test brew; food cooked in river water does not (k12)"}
+{"quest_id":"quest.local.lh38","section":"nodes"}
+{"quest_id":"quest.local.lh38","section":"openQuestions"}
+{"quest_id":"quest.local.lh38","section":"redHerrings"}
+{"quest_id":"quest.local.lh38","section":"sign","value":"fact.lh38.water-smell"}
+{"quest_id":"quest.local.lh38","section":"source","value":"ref.lh38.courier-body"}
+{"quest_id":"quest.local.lh38","section":"spread","value":"the spring water, drunk and used for cooking"}
+{"quest_id":"quest.local.lh38","section":"timeline"}
+{"quest_id":"quest.mr.mr01","section":"cure","value":"seal the cut (costs the roots it runs through), or reopen it downstream (floods the dead grove's land, where the founders' rival's descendants now fish)"}
+{"quest_id":"quest.mr.mr01","section":"firstIllLastWell","value":"the Hist's lowest roots first, then the spring, then the river landing last"}
+{"quest_id":"quest.mr.mr01","section":"gate","value":"the second landing is a full dive in the wet season"}
+{"quest_id":"quest.mr.mr01","section":"ladder"}
+{"quest_id":"quest.mr.mr01","section":"misdiagnosis","wrong":"salt from the salt works upstream","test":"taste the river above the fork (k1); the herald's ledger (k2)"}
+{"quest_id":"quest.mr.mr01","section":"nonLethalFailure","value":"out of breath, the player wakes at the first landing's air pocket with the sample lost (1.5 death rule applies elsewhere)"}
+{"quest_id":"quest.mr.mr01","section":"pointOfNoReturn","value":"the deepest chamber: the player must have breath or water-breathing to come back"}
+{"quest_id":"quest.mr.mr01","section":"prepHints","value":"the couriers at Gate-Side Camp say: four breaths, a light that burns under water, and fire for the swarms"}
+{"quest_id":"quest.mr.mr01","section":"prize","value":"the third sample and the sight of the breach"}
+{"quest_id":"quest.mr.mr01","section":"return","value":"back up the stair with the samples; the air pockets are the rests"}
+{"quest_id":"quest.mr.mr01","section":"route","value":"Greenspring -> Gate-Side Camp -> the drowned stair; or by boat round the surface route, a day longer"}
+{"quest_id":"quest.mr.mr01","section":"rumour","value":"the couriers' shortcut under the roots, four held breaths (catalogue why.occupantsMotive)"}
+{"quest_id":"quest.mr.mr01","section":"sign","value":"fact.mr01.sap-thin"}
+{"quest_id":"quest.mr.mr01","section":"source","value":"thing.breach"}
+{"quest_id":"quest.mr.mr01","section":"spread","value":"brine up the taproots from the drowned stair, worst after each flood"}

@@ -1,0 +1,10 @@
+{"item_id":"item.hist-sap-rubber","ord":0,"input_item_id":"item.hist-sap","count":1}
+{"item_id":"item.insulated-boots","ord":0,"input_item_id":"item.hist-sap-rubber","count":3}
+{"item_id":"item.insulated-boots","ord":1,"input_item_id":"item.hide","count":3}
+{"item_id":"item.insulated-boots","ord":2,"input_item_id":"item.leather-strips","count":2}
+{"item_id":"item.insulated-gloves","ord":0,"input_item_id":"item.hist-sap-rubber","count":2}
+{"item_id":"item.insulated-gloves","ord":1,"input_item_id":"item.hide","count":2}
+{"item_id":"item.insulated-gloves","ord":2,"input_item_id":"item.leather-strips","count":1}
+{"item_id":"item.wamasu-prod","ord":0,"input_item_id":"item.hist-sap-rubber","count":3}
+{"item_id":"item.wamasu-prod","ord":1,"input_item_id":"item.wamasu-bone","count":1}
+{"item_id":"item.wamasu-prod","ord":2,"input_item_id":"item.leather-strips","count":2}

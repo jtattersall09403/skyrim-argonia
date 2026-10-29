@@ -1,0 +1,14 @@
+{"junction_id":"junction.pin.blackrose-lilmoth.approach","ord":0,"value":"route.road.blackrose-lilmoth"}
+{"junction_id":"junction.pin.gideon-stormhold.mountain-foot-north","ord":0,"value":"route.road.gideon-stormhold"}
+{"junction_id":"junction.pin.gideon-stormhold.mountain-foot-south","ord":0,"value":"route.road.gideon-stormhold"}
+{"junction_id":"junction.pin.gideon-stormhold.stream-crossing","ord":0,"value":"route.road.gideon-stormhold"}
+{"junction_id":"junction.pin.soulrest.approach","ord":0,"value":"route.road.gideon-soulrest"}
+{"junction_id":"junction.pin.soulrest.approach","ord":1,"value":"route.road.soulrest-blackrose"}
+{"junction_id":"junction.pin.stormhold-thorn.east-coast","ord":0,"value":"route.road.stormhold-thorn"}
+{"junction_id":"junction.pin.stormhold-thorn.inlet-mouth","ord":0,"value":"route.road.stormhold-thorn"}
+{"junction_id":"junction.pin.stormhold-thorn.mountain-foot-east","ord":0,"value":"route.road.stormhold-thorn"}
+{"junction_id":"junction.pin.stormhold-thorn.river-crossing","ord":0,"value":"route.road.stormhold-thorn"}
+{"junction_id":"junction.pin.stormhold-thorn.south-bank-1","ord":0,"value":"route.road.stormhold-thorn"}
+{"junction_id":"junction.pin.stormhold-thorn.south-bank-2","ord":0,"value":"route.road.stormhold-thorn"}
+{"junction_id":"junction.pin.stormhold-thorn.south-of-the-lake","ord":0,"value":"route.road.stormhold-thorn"}
+{"junction_id":"junction.pin.stormhold-thorn.thorn-approach-south","ord":0,"value":"route.road.stormhold-thorn"}

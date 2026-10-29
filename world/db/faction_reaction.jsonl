@@ -1,0 +1,30 @@
+{"a":"faction.an-xileel","b":"faction.blackguards","disposition":-50,"symmetric":true,"why":""}
+{"a":"faction.an-xileel","b":"faction.dres-remnant","disposition":-60,"symmetric":true,"why":"abolition against the slaving interests"}
+{"a":"faction.an-xileel","b":"faction.imperial-legion-remnant","disposition":-40,"symmetric":true,"why":"nativist state against left-behind garrisons"}
+{"a":"faction.an-xileel","b":"faction.marsh-charter","disposition":20,"symmetric":true,"why":"the Charter's state-auxiliary branch (40 §29)"}
+{"a":"faction.an-xileel","b":"faction.morrowind-veterans","disposition":-40,"symmetric":true,"why":"accession-war enemies who never went home"}
+{"a":"faction.an-xileel","b":"faction.night-reed-chapter","disposition":-30,"symmetric":true,"why":""}
+{"a":"faction.an-xileel","b":"faction.salt-teeth","disposition":-50,"symmetric":true,"why":""}
+{"a":"faction.an-xileel","b":"faction.umbriel-witness-society","disposition":-20,"symmetric":true,"why":"the administration's predecessor brought Umbriel"}
+{"a":"faction.an-xileel","b":"faction.unbound-root","disposition":-60,"symmetric":true,"why":"the main quest's antagonist movement against the state"}
+{"a":"faction.an-xileel","b":"faction.veiled-reed","disposition":60,"symmetric":true,"why":"the Veiled Reed is the administration's own office"}
+{"a":"faction.bright-throat-tribe","b":"faction.xit-xaht","disposition":-30,"symmetric":true,"why":"the welcoming tribe and the feared one"}
+{"a":"faction.chainbreakers","b":"faction.blackguards","disposition":-20,"symmetric":true,"why":"ledgered Blackguards held under the Owing"}
+{"a":"faction.chainbreakers","b":"faction.dres-remnant","disposition":-80,"symmetric":true,"why":"abolitionists against the Owing brokers"}
+{"a":"faction.college-of-whispers","b":"faction.synod","disposition":-50,"symmetric":true,"why":"rival successor orders"}
+{"a":"faction.many-root-conclave","b":"faction.blackguards","disposition":-40,"symmetric":true,"why":"sap crews and poachers harm the Hist"}
+{"a":"faction.many-root-conclave","b":"faction.unbound-root","disposition":-40,"symmetric":true,"why":"consent against Hist supremacy"}
+{"a":"faction.marsh-charter","b":"faction.salt-teeth","disposition":-40,"symmetric":true,"why":"senior roles conflict (40 §29)"}
+{"a":"faction.naga-kur","b":"faction.tribeless-naga","disposition":-50,"symmetric":true,"why":"Naga outside the polity's discipline"}
+{"a":"faction.night-reed-chapter","b":"faction.league-of-open-water","disposition":-30,"symmetric":true,"why":"senior roles conflict (40 §29)"}
+{"a":"faction.nisswo","b":"faction.unbound-root","disposition":-20,"symmetric":true,"why":""}
+{"a":"faction.reed-sail-compact","b":"faction.league-of-open-water","disposition":-20,"symmetric":true,"why":"monopoly against the water regulator"}
+{"a":"faction.reed-sail-compact","b":"faction.salt-teeth","disposition":20,"symmetric":true,"why":"the Salt-Teeth are the Compact's pirate branch"}
+{"a":"faction.shadowscales","b":"faction.night-reed-chapter","disposition":-20,"symmetric":true,"why":"senior roles conflict (40 §29)"}
+{"a":"faction.sul-xan","b":"faction.an-xileel","disposition":-50,"symmetric":true,"why":""}
+{"a":"faction.sul-xan","b":"faction.many-root-conclave","disposition":-50,"symmetric":true,"why":"soul-takers against Hist stewards"}
+{"a":"faction.sunken-archive","b":"faction.synod","disposition":-20,"symmetric":true,"why":"the Archive contests who owns knowledge (40 §34)"}
+{"a":"faction.thorn-ash-reed-accord","b":"faction.dres-remnant","disposition":-40,"symmetric":true,"why":"saltrice title against the slaving claimants"}
+{"a":"faction.thorn-ash-reed-accord","b":"faction.morrowind-veterans","disposition":-30,"symmetric":true,"why":"border memory on the frontier"}
+{"a":"faction.unbound-root","b":"faction.veiled-reed","disposition":-100,"symmetric":false,"why":"the movement's victims of state abuse"}
+{"a":"faction.veiled-reed","b":"faction.unbound-root","disposition":-80,"symmetric":false,"why":"the office hunts the movement"}

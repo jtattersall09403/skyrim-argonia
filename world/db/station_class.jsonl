@@ -1,0 +1,10 @@
+{"id":"alchemy","kit":"works-v1","asset_source":"vanilla:furniture/workbenches/alchemyworkbench01","note":"the alchemy apparatus table (2.9b-e; register row source.vanilla-crafting-stations)"}
+{"id":"cooking-spit","kit":"interior-farmhouse-v1","asset_source":"vanilla:clutter/cookingspitfarmhouse01"}
+{"id":"enchanting","kit":"xanmeer-kotm-v1","asset_source":"vanilla:furniture/enchantingworkbench","note":"the enchanting table (2.9b-e): the shrine's station shelf"}
+{"id":"fish-rack","kit":"settlement-mud-v1","asset_source":"mudmother:gv_meshes/argoniannest/fishracksmall"}
+{"id":"forge","kit":"works-v1","asset_source":"vanilla:clutter/blacksmith/blacksmithforge01/blacksmithforge01","dressing_note":"the anvil set beside a forge (2.9b-e): settled furniture-like dressing a layer publish admits"}
+{"id":"grindstone","kit":"works-v1","asset_source":"vanilla:clutter/blacksmith/blacksmithsharpeningwheelstatic"}
+{"id":"shrine","kit":"ruin-monumental-v1","asset_source":"ayleidkit:igsresources/dungeons/ayleidruins/exterior/arblock01","note":"an altar or offering stone a pilgrim prays at (2.4i); the station socket names its host; this kit piece is the slice shrine's offering block"}
+{"id":"smelter","kit":"works-v1","asset_source":"vanilla:furniture/smeltermarker","note":"the bloomery's smelter: a work-at spot hosted on it is a metal-mending station (2.4i)"}
+{"id":"tanning-rack","kit":"works-v1","asset_source":"vanilla:clutter/common/tanningrack01"}
+{"id":"workbench","kit":"works-v1","asset_source":"vanilla:clutter/blacksmith/blacksmithworkbench01"}

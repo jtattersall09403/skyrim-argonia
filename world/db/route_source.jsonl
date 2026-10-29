@@ -1,0 +1,74 @@
+{"route_id":"route.boat.alten-corimont-helstrom","ord":0,"value":"uesp:Lore:Onkobra River"}
+{"route_id":"route.boat.alten-corimont-helstrom","ord":1,"value":"docs/quests/30-main-quest.md#MQ05"}
+{"route_id":"route.boat.archon-estuary","ord":0,"value":"uesp:Lore:Archon"}
+{"route_id":"route.boat.archon-thorn","ord":0,"value":"uesp:Lore:Padomaic Ocean"}
+{"route_id":"route.boat.archon-thorn","ord":1,"value":"uesp:Lore:Archon"}
+{"route_id":"route.boat.blackrose-lake-ferry","ord":0,"value":"world/sources/lore/blackrose.md"}
+{"route_id":"route.boat.blackrose-lilmoth","ord":0,"value":"uesp:Lore:Blackrose"}
+{"route_id":"route.boat.blackrose-lilmoth","ord":1,"value":"uesp:Lore:Oliis Bay"}
+{"route_id":"route.boat.deeps-inner-poling-line","ord":0,"value":"world/sources/catalogue/places-naga-kur-deeps.json (The Hire Stage, Dead-Water Village, The Polers' Camp)"}
+{"route_id":"route.boat.deeps-inner-poling-line","ord":1,"value":"uesp:Lore:Argonian (poling craft and guided marsh travel)"}
+{"route_id":"route.boat.gideon-onkobra","ord":0,"value":"uesp:Lore:Onkobra River"}
+{"route_id":"route.boat.lilmoth-anchorage","ord":0,"value":"uesp:Lore:Lilmoth"}
+{"route_id":"route.boat.lilmoth-anchorage","ord":1,"value":"world/sources/lore/lilmoth.md"}
+{"route_id":"route.boat.lilmoth-archon","ord":0,"value":"uesp:Lore:Oliis Bay"}
+{"route_id":"route.boat.lilmoth-archon","ord":1,"value":"uesp:Lore:Lilmoth"}
+{"route_id":"route.boat.lilmoth-keel-sakka","ord":0,"value":"uesp:Lore:Keel-Sakka River"}
+{"route_id":"route.boat.oliis-crossing","ord":0,"value":"world/sources/catalogue/places-mercantile-coast.json"}
+{"route_id":"route.boat.soulrest-blackrose","ord":0,"value":"uesp:Lore:Soulrest"}
+{"route_id":"route.boat.soulrest-blackrose","ord":1,"value":"uesp:Lore:Red Bramman"}
+{"route_id":"route.boat.soulrest-lilmoth","ord":0,"value":"uesp:Lore:Southern Sea"}
+{"route_id":"route.boat.soulrest-lilmoth","ord":1,"value":"uesp:Lore:Topal Bay"}
+{"route_id":"route.boat.stormhold-alten-corimont","ord":0,"value":"uesp:Lore:Shadowfen"}
+{"route_id":"route.boat.stormhold-alten-corimont","ord":1,"value":"uesp:Lore:Alten Corimont"}
+{"route_id":"route.road.alten-corimont-stormhold","ord":0,"value":"uesp:Lore:Alten Corimont"}
+{"route_id":"route.road.archon-gideon","ord":0,"value":"uesp:Lore:Archon"}
+{"route_id":"route.road.blackrose-lilmoth","ord":0,"value":"uesp:Lore:Blackrose"}
+{"route_id":"route.road.blackrose-lilmoth","ord":1,"value":"uesp:Lore:Lilmoth"}
+{"route_id":"route.road.bone-road-waystation-the-counted-dead","ord":0,"value":"uesp:Lore:Argonian (bones carried home)"}
+{"route_id":"route.road.bone-road-waystation-the-counted-dead","ord":1,"value":"world/sources/catalogue/places-imperial-fringe.json (bone-road-waystation)"}
+{"route_id":"route.road.cartwrights-cross-fig-market","ord":0,"value":"world/sources/catalogue/places-imperial-fringe.json (cartwrights-cross, fig-market)"}
+{"route_id":"route.road.deeps-narrows-drag","ord":0,"value":"world/sources/catalogue/places-naga-kur-deeps.json (The Drag, The Gate Narrows)"}
+{"route_id":"route.road.gideon-blackwood-road","ord":0,"value":"uesp:Lore:Gideon"}
+{"route_id":"route.road.gideon-blackwood-road","ord":1,"value":"uesp:Lore:Gideon"}
+{"route_id":"route.road.gideon-ridge-runners-post","ord":0,"value":"world/sources/catalogue/places-imperial-fringe.json (ridge-runners-post, the-hollow-pass-station)"}
+{"route_id":"route.road.gideon-soulrest","ord":0,"value":"uesp:Lore:Gideon"}
+{"route_id":"route.road.gideon-soulrest","ord":1,"value":"uesp:Lore:Soulrest"}
+{"route_id":"route.road.gideon-stormhold","ord":0,"value":"world/sources/lore/regions/blackwood-and-gloommire.md"}
+{"route_id":"route.road.glenbridge-the-road-nisswo-house","ord":0,"value":"uesp:Lore:Nisswo"}
+{"route_id":"route.road.glenbridge-the-road-nisswo-house","ord":1,"value":"world/sources/catalogue/places-imperial-fringe.json (glenbridge)"}
+{"route_id":"route.road.soulrest-blackrose","ord":0,"value":"uesp:Lore:Blackrose"}
+{"route_id":"route.road.stormhold-thorn","ord":0,"value":"uesp:Lore:Stormhold"}
+{"route_id":"route.road.stormhold-thorn","ord":1,"value":"uesp:Lore:Thorn"}
+{"route_id":"route.road.thorn-tear-road","ord":0,"value":"uesp:Lore:Thorn"}
+{"route_id":"route.road.thorn-tear-road","ord":1,"value":"uesp:Lore:Tear"}
+{"route_id":"route.track.blackrose-cordon-line","ord":0,"value":"uesp:Lore:Knahaten Flu"}
+{"route_id":"route.track.blackrose-cordon-line","ord":1,"value":"world/sources/lore/blackrose.md"}
+{"route_id":"route.track.bogmother-causeway","ord":0,"value":"world/sources/catalogue/places-dunmer-north.json"}
+{"route_id":"route.track.dres-slave-road","ord":0,"value":"world/sources/catalogue/places-dunmer-north.json"}
+{"route_id":"route.track.gravel-six-ferry","ord":0,"value":"world/sources/catalogue/places-dunmer-north.json"}
+{"route_id":"route.track.hissmir-pilgrim-water","ord":0,"value":"world/sources/catalogue/places-dunmer-north.json"}
+{"route_id":"route.track.hist-heartland.basin-guide-crossing","ord":0,"value":"world/sources/catalogue/places-hist-heartland.json"}
+{"route_id":"route.track.hist-heartland.helstrom-pilgrim-way","ord":0,"value":"uesp:Lore:Helstrom"}
+{"route_id":"route.track.hist-heartland.helstrom-pilgrim-way","ord":1,"value":"world/sources/catalogue/places-hist-heartland.json"}
+{"route_id":"route.track.hist-heartland.helstrom-underway","ord":0,"value":"world/sources/catalogue/places-hist-heartland.json"}
+{"route_id":"route.track.hist-heartland.helstrom-underway","ord":1,"value":"docs/world/70-interiors.md"}
+{"route_id":"route.track.hist-heartland.poling-stages","ord":0,"value":"world/sources/catalogue/places-hist-heartland.json"}
+{"route_id":"route.track.hist-heartland.poling-stages","ord":1,"value":"docs/world/50-hydrology-climate.md"}
+{"route_id":"route.track.hutan-tzel-totem-line","ord":0,"value":"world/sources/catalogue/places-dunmer-north.json"}
+{"route_id":"route.track.last-landing-carry","ord":0,"value":"world/sources/catalogue/places-dunmer-north.json"}
+{"route_id":"route.track.mercantile-coast.coast-road","ord":0,"value":"uesp:Lore:Soulrest"}
+{"route_id":"route.track.mercantile-coast.coast-road","ord":1,"value":"uesp:Lore:Lilmoth"}
+{"route_id":"route.track.mercantile-coast.coast-road","ord":2,"value":"world/sources/catalogue/places-mercantile-coast.json"}
+{"route_id":"route.track.mercantile-coast.lilmoth-north-gate","ord":0,"value":"uesp:Lore:Keel-Sakka River"}
+{"route_id":"route.track.mercantile-coast.lilmoth-north-gate","ord":1,"value":"world/sources/lore/lilmoth.md"}
+{"route_id":"route.track.mercantile-coast.nisswo-line","ord":0,"value":"uesp:Lore:Nisswo"}
+{"route_id":"route.track.mercantile-coast.nisswo-line","ord":1,"value":"world/sources/lore/topics"}
+{"route_id":"route.track.mercantile-coast.porters-carry","ord":0,"value":"world/sources/catalogue/places-mercantile-coast.json"}
+{"route_id":"route.track.north-shadowfen-rootworm-line","ord":0,"value":"world/sources/catalogue/places-dunmer-north.json"}
+{"route_id":"route.track.pirate-freeholds.gang-walk","ord":0,"value":"world/sources/catalogue/places-pirate-freeholds.json"}
+{"route_id":"route.track.pirate-freeholds.gang-walk","ord":1,"value":"docs/quests/30-main-quest.md MQ01"}
+{"route_id":"route.track.rim-ledge-crossing","ord":0,"value":"world/sources/catalogue/places-dunmer-north.json"}
+{"route_id":"route.track.rose-causeway","ord":0,"value":"uesp:Lore:Blackrose"}
+{"route_id":"route.track.rose-causeway","ord":1,"value":"world/sources/lore/blackrose.md"}
+{"route_id":"route.track.tear-pass-carry","ord":0,"value":"world/sources/catalogue/places-dunmer-north.json"}

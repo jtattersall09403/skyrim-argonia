@@ -1,0 +1,15 @@
+{"quest_id":"quest.local.lh38","stages_ord":0,"ord":0,"id":"a-talk"}
+{"quest_id":"quest.local.lh38","stages_ord":0,"ord":1,"id":"a-test"}
+{"quest_id":"quest.local.lh38","stages_ord":1,"ord":0,"id":"a-ask"}
+{"quest_id":"quest.local.lh38","stages_ord":1,"ord":1,"id":"a-night"}
+{"quest_id":"quest.local.lh38","stages_ord":3,"ord":0,"id":"a-store"}
+{"quest_id":"quest.local.lh38","stages_ord":3,"ord":1,"id":"a-watch"}
+{"quest_id":"quest.local.lh38","stages_ord":3,"ord":2,"id":"a-satchel"}
+{"quest_id":"quest.local.lh38","stages_ord":3,"ord":3,"id":"a-rope"}
+{"quest_id":"quest.local.lh38","stages_ord":4,"ord":0,"id":"a-accuse"}
+{"quest_id":"quest.local.lh38","stages_ord":4,"ord":1,"id":"a-fight"}
+{"quest_id":"quest.local.lh38","stages_ord":4,"ord":2,"id":"a-deal"}
+{"quest_id":"quest.mr.mr01","stages_ord":2,"ord":0,"id":"a-breath"}
+{"quest_id":"quest.mr.mr01","stages_ord":2,"ord":1,"id":"a-swarm"}
+{"quest_id":"quest.mr.mr01","stages_ord":4,"ord":0,"id":"a-evidence"}
+{"quest_id":"quest.mr.mr01","stages_ord":4,"ord":1,"id":"a-bargain"}

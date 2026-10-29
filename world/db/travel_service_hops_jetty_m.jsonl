@@ -1,0 +1,15 @@
+{"travel_service_id":"canoe.dunmer-north.hutan-tzel-the-black-stage","hops_ord":0,"station_dunmer_north_hutan_tzel":15.4,"station_dunmer_north_the_black_stage":137.0}
+{"travel_service_id":"canoe.dunmer-north.riverwalk-the-tide-fair","hops_ord":0,"station_dunmer_north_hissmir":227.4,"station_dunmer_north_riverwalk":27.4}
+{"travel_service_id":"canoe.dunmer-north.riverwalk-the-tide-fair","hops_ord":1,"station_dunmer_north_hissmir":227.4,"station_dunmer_north_murkwater":62.0}
+{"travel_service_id":"canoe.dunmer-north.riverwalk-the-tide-fair","hops_ord":2,"station_dunmer_north_murkwater":62.0,"station_dunmer_north_the_tide_fair":191.6}
+{"travel_service_id":"canoe.hist-heartland.treasure-hunters-live-camp-portdun-mont","hops_ord":0,"station_hist_heartland_treasure_hunters_live_camp":7.7,"station_saxhleel_coast_portdun_mont":39.1}
+{"travel_service_id":"canoe.imperial-fringe.slough-point-quinrawl-anchorage","hops_ord":0,"station_imperial_fringe_slough_point":216.3,"station_mercantile_coast_moonmarch":15.9}
+{"travel_service_id":"canoe.imperial-fringe.slough-point-quinrawl-anchorage","hops_ord":1,"station_mercantile_coast_moonmarch":15.9,"station_mercantile_coast_mudfoot":203.5}
+{"travel_service_id":"canoe.imperial-fringe.slough-point-quinrawl-anchorage","hops_ord":2,"station_mercantile_coast_mudfoot":203.5,"station_mercantile_coast_quinrawl_anchorage":150.6}
+{"travel_service_id":"canoe.imperial-penal-south.lake-divers-yard-lake-ferry-stage","hops_ord":0,"station_imperial_penal_south_lake_divers_yard":11.0,"station_imperial_penal_south_lake_ferry_stage":171.7}
+{"travel_service_id":"canoe.mercantile-coast.bright-throat-village-oliis-ferry-stage","hops_ord":0,"station_mercantile_coast_bright_throat_village":48.2,"station_mercantile_coast_screen_watch":35.0}
+{"travel_service_id":"canoe.mercantile-coast.bright-throat-village-oliis-ferry-stage","hops_ord":1,"station_mercantile_coast_screen_watch":35.0,"station_mercantile_coast_oliis_ferry_stage":10.9}
+{"travel_service_id":"ferry.imperial-penal-south.blackrose-lake","hops_ord":1,"station_imperial_penal_south_lake_ferry_stage":171.7,"station_imperial_penal_south_bramman_head":153.6}
+{"travel_service_id":"ferry.imperial-penal-south.blackrose-lake","hops_ord":2,"station_imperial_penal_south_lake_divers_yard":129.1,"station_imperial_penal_south_bramman_head":153.6}
+{"travel_service_id":"ferry.imperial-penal-south.blackrose-lake","hops_ord":3,"station_imperial_penal_south_lake_divers_yard":11.0,"station_imperial_penal_south_manned_toll_tower":5.5}
+{"travel_service_id":"ferry.mercantile-coast.bramman-oliis","hops_ord":0,"station_mercantile_coast_oliis_ferry_stage":10.9,"station_mercantile_coast_bramman_river_ferry":161.4}

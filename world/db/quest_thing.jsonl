@@ -1,0 +1,19 @@
+{"quest_id":"quest.local.lh38","ord":0,"id":"thing.spring-pool","kind":"pool","source":"existing: the spring (landmark sp-ring1)"}
+{"quest_id":"quest.local.lh38","ord":1,"id":"thing.spring-throat","kind":"underwater shaft","source":"new","where":"below thing.spring-pool between the Hist's roots; one breath deep (MR01's drowned stair is 536 m away and D4: keep them apart)"}
+{"quest_id":"quest.local.lh38","ord":2,"id":"ref.lh38.courier-body","kind":"corpse","source":"new","where":"thing.spring-throat"}
+{"quest_id":"quest.local.lh38","ord":3,"id":"ref.lh38.grave-stake","kind":"activator","source":"new","where":"ref.lh38.courier-body"}
+{"quest_id":"quest.local.lh38","ord":4,"id":"item.lh38.knotted-rope","kind":"item","source":"new","where":"ref.lh38.courier-body"}
+{"quest_id":"quest.local.lh38","ord":5,"id":"item.lh38.courier-bill","kind":"item","source":"new","where":"the courier's pack in the lodge store (locked container, level 20, owner Haj-Tei)"}
+{"quest_id":"quest.local.lh38","ord":6,"id":"item.lh38.satchel","kind":"item","source":"new","where":"Reeh-Shaal's inventory"}
+{"quest_id":"quest.local.lh38","ord":7,"id":"item.lh38.sealed-packet","kind":"item","source":"new","where":"item.lh38.satchel"}
+{"quest_id":"quest.local.lh38","ord":8,"id":"npc.lh38.sick-guests","kind":"two people (2.4 records)","source":"new","where":"lying on mats in the lodge"}
+{"quest_id":"quest.local.lh38","ord":9,"id":"thing.rope-coil-yard","kind":"place","source":"existing: behind the lodge (culture.group.greenspring.lodge)"}
+{"quest_id":"quest.local.lh38","ord":10,"id":"zone.greenspring.spring-pool","kind":"private volume","source":"new","where":"thing.spring-pool"}
+{"quest_id":"quest.mr.mr01","ord":0,"id":"thing.river-fork","kind":"place","source":"existing: the Panther Race above Greenspring's fork (fact.greenspring.why-founding-1)"}
+{"quest_id":"quest.mr.mr01","ord":1,"id":"thing.salt-sack","kind":"container","source":"existing: the herald's sack of upriver salt (blueprint b-herald)"}
+{"quest_id":"quest.mr.mr01","ord":2,"id":"thing.founders-stakes","kind":"activator group","source":"new","where":"the old grave-stakes beside the shrine at the Hist's foot"}
+{"quest_id":"quest.mr.mr01","ord":3,"id":"thing.sample-1","kind":"socket","source":"new","where":"place.hist-heartland.root-gallery-drowned-stair, first landing, air pocket"}
+{"quest_id":"quest.mr.mr01","ord":4,"id":"thing.sample-2","kind":"socket","source":"new","where":"the drowned stair, second landing under water in the wet season"}
+{"quest_id":"quest.mr.mr01","ord":5,"id":"thing.sample-3","kind":"socket","source":"new","where":"the deepest chamber, beyond one breath"}
+{"quest_id":"quest.mr.mr01","ord":6,"id":"thing.breach","kind":"dressing","source":"new","where":"the deepest chamber, beside thing.sample-3"}
+{"quest_id":"quest.mr.mr01","ord":7,"id":"thing.parasite-swarms","kind":"hostiles","source":"new","where":"between the landings of the drowned stair"}

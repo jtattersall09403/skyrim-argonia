@@ -1,0 +1,17 @@
+{"place_id":"place.dunmer-north.bogmother","ord":0,"value":"place.dunmer-north.the-black-stage"}
+{"place_id":"place.dunmer-north.the-pen-yard","ord":0,"value":"place.dunmer-north.the-dres-rows"}
+{"place_id":"place.dunmer-north.the-standing-bid","ord":0,"value":"place.dunmer-north.stormhold"}
+{"place_id":"place.dunmer-north.waits-for-the-trial","ord":0,"value":"place.dunmer-north.hissmir"}
+{"place_id":"place.imperial-fringe.castle-giovesse","ord":0,"value":"place.imperial-fringe.gideon"}
+{"place_id":"place.imperial-fringe.glenbridge","ord":0,"value":"place.imperial-fringe.glenbridge-sermon-xanmeer"}
+{"place_id":"place.imperial-fringe.glenbridge-sermon-xanmeer","ord":0,"value":"place.imperial-fringe.glenbridge"}
+{"place_id":"place.imperial-penal-south.ledgered-blackguards","ord":0,"value":"place.imperial-penal-south.manned-toll-tower"}
+{"place_id":"place.mercantile-coast.sacked-customs-suburb","ord":0,"value":"place.mercantile-coast.lilmoth"}
+{"place_id":"place.mercantile-coast.screen-watch","ord":0,"value":"place.mercantile-coast.bramman-screen"}
+{"place_id":"place.mercantile-coast.wraxu-stacks","ord":0,"value":"place.mercantile-coast.wraxu-frieze"}
+{"place_id":"place.pirate-freeholds.freehold-smithy","ord":0,"value":"place.pirate-freeholds.careening-hard"}
+{"place_id":"place.pirate-freeholds.veterans-holding","ord":0,"value":"place.pirate-freeholds.trunk-toll-bridge"}
+{"place_id":"place.saxhleel-coast.archon-lighthouse","ord":0,"value":"place.saxhleel-coast.padomaic-wrecker-beach"}
+{"place_id":"place.saxhleel-coast.archon-lighthouse","ord":1,"value":"place.saxhleel-coast.gap-reef"}
+{"place_id":"place.saxhleel-coast.gap-reef","ord":0,"value":"place.saxhleel-coast.archon-lighthouse"}
+{"place_id":"place.saxhleel-coast.padomaic-wrecker-beach","ord":0,"value":"place.saxhleel-coast.archon-lighthouse"}

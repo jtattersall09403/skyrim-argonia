@@ -1,0 +1,37 @@
+{"id":"ferry-landing.drowning-gate.east","kind":"ferry-landing","piece":"landing-argonian","position_m_x":311.8,"position_m_y":3026.1,"status":"active"}
+{"id":"ferry-landing.drowning-gate.west","kind":"ferry-landing","piece":"landing-argonian","position_m_x":312.6,"position_m_y":3041.8,"status":"active"}
+{"id":"root-node.east-estuary","kind":"root-node","position_m_x":5149.0,"position_m_y":4584.3,"status":"active","notes":"Toward Archon's estuary that feeds the provincial centre (Lore:Archon).","place_id":"place.saxhleel-coast.east-estuary-rootworm-station","root_kind":"station","why":"The placeholder node stood 1333 m from the east estuary rootworm station and is the same facility; the node is sited on the station at 5149.0, 4584.3."}
+{"id":"root-node.helstrom","kind":"root-node","position_m_x":3270.9,"position_m_y":2848.7,"status":"active","notes":"Hub beneath the heart city.","place_id":"place.hist-heartland.rootworm-station-helstrom","root_kind":"hub","why":"The hub of the rootway network, sited on the Helstrom rootworm station at 3270.9, 2848.7."}
+{"id":"root-node.naga-deeps","kind":"root-node","position_m_x":2991.3,"position_m_y":5870.1,"status":"active","notes":"Inner southern swamps, Naga-Kur country.","place_id":"place.naga-kur-deeps.dead-water-village","root_kind":"station","why":"The southern terminus is Dead Water village, the terminus the dossiers name, with three roster slots. It stays placeholder: the village is re-sited by this round's pin, so the node takes its position when the chain sites the record."}
+{"id":"root-node.north-shadowfen","kind":"root-node","position_m_x":2656.8,"position_m_y":737.5,"status":"active","notes":"Deep marsh between Helstrom and Alten Corimont; access-restricted Waykeeper station (not the MQ05 convoy route).","place_id":"place.dunmer-north.stormhold","root_kind":"station","why":"The northern terminus is Stormhold's own slot, at 2706.0, 781.0."}
+{"id":"station.dunmer-north.hissmir","kind":"place","position_m_x":6917.5,"position_m_y":595.0,"status":"active","place_id":"place.dunmer-north.hissmir"}
+{"id":"station.dunmer-north.hutan-tzel","kind":"place","position_m_x":2996.7,"position_m_y":1000.7,"status":"active","place_id":"place.dunmer-north.hutan-tzel"}
+{"id":"station.dunmer-north.murkwater","kind":"place","position_m_x":7032.6,"position_m_y":863.7,"status":"active","place_id":"place.dunmer-north.murkwater"}
+{"id":"station.dunmer-north.riverwalk","kind":"place","position_m_x":7197.1,"position_m_y":584.0,"status":"active","place_id":"place.dunmer-north.riverwalk"}
+{"id":"station.dunmer-north.stormhold","kind":"place","position_m_x":2656.8,"position_m_y":737.5,"status":"active","place_id":"place.dunmer-north.stormhold"}
+{"id":"station.dunmer-north.the-black-stage","kind":"place","position_m_x":2728.1,"position_m_y":1236.5,"status":"active","place_id":"place.dunmer-north.the-black-stage"}
+{"id":"station.dunmer-north.the-tide-fair","kind":"place","position_m_x":6818.8,"position_m_y":1417.5,"status":"active","place_id":"place.dunmer-north.the-tide-fair"}
+{"id":"station.dunmer-north.thorn","kind":"place","position_m_x":6193.6,"position_m_y":589.5,"status":"active","place_id":"place.dunmer-north.thorn"}
+{"id":"station.hist-heartland.helstrom","kind":"place","position_m_x":3419.0,"position_m_y":2771.9,"status":"active","place_id":"place.hist-heartland.helstrom"}
+{"id":"station.hist-heartland.treasure-hunters-live-camp","kind":"place","position_m_x":4438.9,"position_m_y":3610.9,"status":"active","place_id":"place.hist-heartland.treasure-hunters-live-camp"}
+{"id":"station.imperial-fringe.gideon","kind":"place","position_m_x":1417.5,"position_m_y":3095.4,"status":"active","place_id":"place.imperial-fringe.gideon"}
+{"id":"station.imperial-fringe.slough-point","kind":"place","position_m_x":529.2,"position_m_y":4762.4,"status":"active","place_id":"place.imperial-fringe.slough-point"}
+{"id":"station.imperial-penal-south.blackrose","kind":"place","position_m_x":2360.7,"position_m_y":6418.5,"status":"active","place_id":"place.imperial-penal-south.blackrose"}
+{"id":"station.imperial-penal-south.bramman-head","kind":"place","position_m_x":1806.8,"position_m_y":6434.9,"status":"active","place_id":"place.imperial-penal-south.bramman-head"}
+{"id":"station.imperial-penal-south.lake-divers-yard","kind":"place","position_m_x":2371.6,"position_m_y":6506.2,"status":"active","place_id":"place.imperial-penal-south.lake-divers-yard"}
+{"id":"station.imperial-penal-south.lake-ferry-stage","kind":"place","position_m_x":2634.8,"position_m_y":6489.7,"status":"active","place_id":"place.imperial-penal-south.lake-ferry-stage"}
+{"id":"station.imperial-penal-south.manned-toll-tower","kind":"place","position_m_x":2371.6,"position_m_y":6407.5,"status":"active","place_id":"place.imperial-penal-south.manned-toll-tower"}
+{"id":"station.mercantile-coast.bramman-river-ferry","kind":"place","position_m_x":918.5,"position_m_y":6922.9,"status":"active","place_id":"place.mercantile-coast.bramman-river-ferry"}
+{"id":"station.mercantile-coast.bright-throat-village","kind":"place","position_m_x":2856.3,"position_m_y":6542.4,"status":"active","place_id":"place.mercantile-coast.bright-throat-village"}
+{"id":"station.mercantile-coast.lighter-flotilla","kind":"place","position_m_x":3813.8,"position_m_y":5919.5,"status":"active","place_id":"place.mercantile-coast.lighter-flotilla"}
+{"id":"station.mercantile-coast.lilmoth","kind":"place","position_m_x":3610.9,"position_m_y":6385.6,"status":"active","place_id":"place.mercantile-coast.lilmoth"}
+{"id":"station.mercantile-coast.moonmarch","kind":"place","position_m_x":370.1,"position_m_y":5086.0,"status":"active","place_id":"place.mercantile-coast.moonmarch"}
+{"id":"station.mercantile-coast.mudfoot","kind":"place","position_m_x":435.9,"position_m_y":5771.4,"status":"active","place_id":"place.mercantile-coast.mudfoot"}
+{"id":"station.mercantile-coast.oliis-boardwalk","kind":"place","position_m_x":1066.5,"position_m_y":7054.5,"status":"active","place_id":"place.mercantile-coast.oliis-boardwalk"}
+{"id":"station.mercantile-coast.oliis-ferry-stage","kind":"place","position_m_x":3451.9,"position_m_y":6884.6,"status":"active","place_id":"place.mercantile-coast.oliis-ferry-stage"}
+{"id":"station.mercantile-coast.quinrawl-anchorage","kind":"place","position_m_x":315.3,"position_m_y":6243.0,"status":"active","place_id":"place.mercantile-coast.quinrawl-anchorage"}
+{"id":"station.mercantile-coast.screen-watch","kind":"place","position_m_x":3155.8,"position_m_y":6886.7,"status":"active","place_id":"place.mercantile-coast.screen-watch"}
+{"id":"station.mercantile-coast.soulrest","kind":"place","position_m_x":518.2,"position_m_y":6533.6,"status":"active","place_id":"place.mercantile-coast.soulrest"}
+{"id":"station.pirate-freeholds.alten-corimont","kind":"place","position_m_x":3912.5,"position_m_y":1115.9,"status":"active","place_id":"place.pirate-freeholds.alten-corimont"}
+{"id":"station.saxhleel-coast.archon","kind":"place","position_m_x":5162.7,"position_m_y":4647.3,"status":"active","place_id":"place.saxhleel-coast.archon"}
+{"id":"station.saxhleel-coast.portdun-mont","kind":"place","position_m_x":4819.9,"position_m_y":4244.3,"status":"active","place_id":"place.saxhleel-coast.portdun-mont","why":"Boards the canoe run canoe.hist-heartland.treasure-hunters-live-camp-portdun-mont (2026-09-20). Its two earlier ferry services, estuary-run and jungle-stage, were cut for want of a lane and a sited stage; the published minor channels are that lane."}

@@ -1,0 +1,49 @@
+{"item_class_id":"armour","kind":"helmet","value":"vanilla:meshes/armor/iron/male/helmet.nif"}
+{"item_class_id":"armour","kind":"shield","value":"vanilla:meshes/armor/iron/shield.nif"}
+{"item_class_id":"book","kind":"book","value":"vanilla:meshes/clutter/books/basicbook01.nif"}
+{"item_class_id":"book","kind":"journal","value":"vanilla:meshes/clutter/books/journallowpoly01.nif"}
+{"item_class_id":"coin","kind":"coin","value":"vanilla:meshes/clutter/coin01.nif"}
+{"item_class_id":"drink","kind":"ale","value":"vanilla:meshes/clutter/wine (alebottle)"}
+{"item_class_id":"drink","kind":"mead","value":"vanilla:meshes/clutter/wine (meadbottle)"}
+{"item_class_id":"drink","kind":"wine","value":"vanilla:meshes/clutter/wine (winebottle01a)"}
+{"item_class_id":"fish","kind":"fish","value":"vanilla:meshes/clutter/deadanimals (deadpondfish, deadsalmon)"}
+{"item_class_id":"fish","kind":"fish-meat","value":"vanilla:meshes/clutter/deadanimals (salmonmeat)"}
+{"item_class_id":"fishing-gear","kind":"fishing-pole","value":"vanilla:meshes/clutter/common (fishingpole)"}
+{"item_class_id":"fishing-gear","kind":"fishing-poles","value":"vanilla:meshes/clutter/common (fishingpolecollection01)"}
+{"item_class_id":"food","kind":"bread","value":"vanilla:meshes/clutter/food (bread01a)"}
+{"item_class_id":"food","kind":"cheese","value":"vanilla:meshes/clutter/food (cheesewheel01)"}
+{"item_class_id":"food","kind":"fruit","value":"vanilla:meshes/clutter/food (apple01)"}
+{"item_class_id":"food","kind":"meat","value":"vanilla:meshes/clutter/food (venisonraw)"}
+{"item_class_id":"food","kind":"salt","value":"vanilla:meshes/clutter/ingredients/saltpile.nif"}
+{"item_class_id":"food","kind":"vegetable","value":"vanilla:meshes/clutter/food (leek01, potato01)"}
+{"item_class_id":"gem","kind":"gem","value":"vanilla:meshes/clutter/gemstones"}
+{"item_class_id":"ingredient","kind":"herb","value":"vanilla:meshes/clutter/ingredients"}
+{"item_class_id":"ingredient","kind":"mushroom","value":"vanilla:meshes/clutter/ingredients"}
+{"item_class_id":"material","kind":"iron-ingot","value":"vanilla:meshes/dungeons/mines/ore/ingotiron01.nif"}
+{"item_class_id":"material","kind":"iron-ingot-stack","value":"vanilla:meshes/dungeons/mines/ore/ingotiron01.nif (vanilla has no stack mesh: one socket over several stacked ingot placements)"}
+{"item_class_id":"material","kind":"iron-ore","value":"vanilla:meshes/dungeons/mines/ore/mineoreiron01.nif"}
+{"item_class_id":"misc-household","kind":"broom","value":"vanilla:meshes/clutter/common (broom)"}
+{"item_class_id":"misc-household","kind":"bucket","value":"vanilla:meshes/clutter/bucket01.nif"}
+{"item_class_id":"misc-household","kind":"firewood","value":"vanilla:meshes/clutter/firewood/firewoodpilesmall01.nif"}
+{"item_class_id":"misc-household","kind":"flagon","value":"vanilla:meshes/clutter/common (flagon01)"}
+{"item_class_id":"misc-household","kind":"inkwell","value":"vanilla:meshes/clutter/common (inkwell01)"}
+{"item_class_id":"misc-household","kind":"lantern","value":"vanilla:meshes/clutter/common/candlelantern01.nif"}
+{"item_class_id":"misc-household","kind":"quill","value":"vanilla:meshes/clutter/common (quill01)"}
+{"item_class_id":"misc-household","kind":"rag","value":"vanilla:meshes/clutter/common (rag01)"}
+{"item_class_id":"note","kind":"note","value":"vanilla:meshes/clutter/books/note01.nif"}
+{"item_class_id":"pelt","kind":"goat-skin","value":"vanilla:meshes/clutter/goatskin"}
+{"item_class_id":"pelt","kind":"pelt","value":"vanilla:meshes/clutter/ingredients/deerpelt.nif"}
+{"item_class_id":"pelt","kind":"wolf-pelt","value":"vanilla:meshes/clutter/wolfpelts"}
+{"item_class_id":"potion","kind":"potion","value":"vanilla:meshes/clutter/potions"}
+{"item_class_id":"tool","kind":"hammer","value":"vanilla:meshes/clutter/blacksmith/blacksmithnovicehammer01.nif"}
+{"item_class_id":"tool","kind":"hoe","value":"vanilla:meshes/clutter/common (hoe)"}
+{"item_class_id":"tool","kind":"pickaxe","value":"vanilla:meshes/clutter/common (pickaxe01)"}
+{"item_class_id":"tool","kind":"pitchfork","value":"vanilla:meshes/clutter/common (pitchfork01)"}
+{"item_class_id":"tool","kind":"saw","value":"vanilla:meshes/clutter/common (saw01)"}
+{"item_class_id":"tool","kind":"shovel","value":"vanilla:meshes/clutter/common (shovel01)"}
+{"item_class_id":"tool","kind":"tongs","value":"vanilla:meshes/clutter/blacksmith/blacksmithnovicetongs01.nif"}
+{"item_class_id":"weapon","kind":"bow","value":"vanilla:meshes/weapons/iron/ironbow.nif"}
+{"item_class_id":"weapon","kind":"dagger","value":"vanilla:meshes/weapons/iron/irondagger.nif"}
+{"item_class_id":"weapon","kind":"mace","value":"vanilla:meshes/weapons/iron/ironmace.nif"}
+{"item_class_id":"weapon","kind":"sword","value":"vanilla:meshes/weapons/iron/longsword.nif"}
+{"item_class_id":"weapon","kind":"war-axe","value":"vanilla:meshes/weapons/iron/waraxe.nif"}

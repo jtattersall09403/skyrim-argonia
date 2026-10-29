@@ -1,0 +1,8 @@
+{"id":"archon","place_id":"place.saxhleel-coast.archon","station_id":"station.saxhleel-coast.archon","why":"the city's own quay"}
+{"id":"blackrose","place_id":"place.imperial-penal-south.blackrose","station_id":"station.imperial-penal-south.blackrose","why":"the city's own quay"}
+{"id":"gideon","place_id":"place.imperial-fringe.gideon","station_id":"station.imperial-fringe.gideon","why":"Gideon boards the Helstrom boat (boat.gideon-helstrom) at its own station. The Onkobra crossing below the town is a ford, not a ferry. The customs clerk of the Bonded Shed (place.imperial-fringe.bonded-shed-of-the-onkobra) checks what crosses it."}
+{"id":"helstrom","place_id":"place.hist-heartland.helstrom","station_id":"station.hist-heartland.helstrom","why":"the city's own quay"}
+{"id":"lilmoth","place_id":"place.mercantile-coast.lilmoth","station_id":"station.mercantile-coast.lilmoth","why":"The city's own socket dock.lilmoth.lighter-quay at 3902,6366 stands on body.ocean; the schema has no socket field, so the socket is named here."}
+{"id":"soulrest","place_id":"place.mercantile-coast.soulrest","station_id":"station.mercantile-coast.soulrest","why":"the city's own quay"}
+{"id":"stormhold","place_id":"place.dunmer-north.stormhold","station_id":"station.dunmer-north.stormhold","why":"the city's own quay"}
+{"id":"thorn","place_id":"place.dunmer-north.thorn","station_id":"station.dunmer-north.thorn","why":"the city's own quay"}

@@ -1,0 +1,78 @@
+{"place_id":"place.dunmer-north.riverwalk","ops_ord":0,"ord":0,"value":"tooling/.reports/16k/walk12/part2/lanes/W2-riverwalk.md builder 3 part B (15 yard pieces with no flat cell)"}
+{"place_id":"place.dunmer-north.riverwalk","ops_ord":0,"ord":1,"value":"planner call 2026-10-09: a levelled yard pad per house"}
+{"place_id":"place.dunmer-north.riverwalk","ops_ord":1,"ord":0,"value":"planner call 2026-10-09: crews house to [7206,504] yaw 0 on a levelled mound"}
+{"place_id":"place.dunmer-north.riverwalk","ops_ord":2,"ord":0,"value":"planner call 2026-10-09: family house south to about [7210,516]"}
+{"place_id":"place.dunmer-north.riverwalk","ops_ord":3,"ord":0,"value":"tooling/.reports/16k/walk12/part2/lanes/W2-riverwalk.md builder 3 part B"}
+{"place_id":"place.dunmer-north.riverwalk","ops_ord":3,"ord":1,"value":"planner call 2026-10-09: a levelled yard pad per house"}
+{"place_id":"place.dunmer-north.riverwalk","ops_ord":4,"ord":0,"value":"lanes/2.11-silt/report.md: the sounded way runs east from the raft (7235.5, 601.3) to the drop-off at x 7243-7249"}
+{"place_id":"place.imperial-fringe.bog-iron-workings","ops_ord":85,"ord":0,"value":"world/sources/blueprints/bog-iron-workings.design.md § Diggings"}
+{"place_id":"place.imperial-fringe.bog-iron-workings","ops_ord":86,"ord":0,"value":"world/sources/blueprints/bog-iron-workings.design.md § Diggings"}
+{"place_id":"place.imperial-fringe.bog-iron-workings","ops_ord":87,"ord":0,"value":"world/sources/blueprints/bog-iron-workings.design.md § Diggings"}
+{"place_id":"place.imperial-penal-south.rose-bone-waystation","ops_ord":85,"ord":0,"value":"tooling/.reports/places/place.imperial-penal-south.rose-bone-waystation/worklist.json"}
+{"place_id":"place.imperial-penal-south.rose-bone-waystation","ops_ord":86,"ord":0,"value":"tooling/.reports/places/place.imperial-penal-south.rose-bone-waystation/worklist.json"}
+{"place_id":"place.imperial-penal-south.voriplasm-vault","ops_ord":0,"ord":0,"value":"voriplasm-vault.design.md Brief m-berm"}
+{"place_id":"place.imperial-penal-south.voriplasm-vault","ops_ord":1,"ord":0,"value":"voriplasm-vault.design.md Brief m-hollow"}
+{"place_id":"place.imperial-penal-south.voriplasm-vault","ops_ord":1,"ord":1,"value":"wb.py map --heights 2026-10-14"}
+{"place_id":"place.imperial-penal-south.voriplasm-vault","ops_ord":3,"ord":0,"value":"voriplasm-vault.design.md Brief m-face-back"}
+{"place_id":"place.imperial-penal-south.voriplasm-vault","ops_ord":15,"ord":0,"value":"voriplasm-vault.design.md Brief m-stair"}
+{"place_id":"place.imperial-penal-south.voriplasm-vault","ops_ord":30,"ord":0,"value":"es.check k-1..k-4 pad fit 2026-10-14"}
+{"place_id":"place.imperial-penal-south.voriplasm-vault","ops_ord":31,"ord":0,"value":"voriplasm-vault.design.md Brief m-stair"}
+{"place_id":"place.imperial-penal-south.voriplasm-vault","ops_ord":172,"ord":0,"value":"voriplasm-vault.design.md Brief m-bank"}
+{"place_id":"place.imperial-penal-south.voriplasm-vault","ops_ord":172,"ord":1,"value":"road sightline rays from 1684.6,6675.6 (part 6)"}
+{"place_id":"place.imperial-penal-south.voriplasm-vault","ops_ord":174,"ord":0,"value":"voriplasm-vault.design.md Brief m-bank"}
+{"place_id":"place.imperial-penal-south.voriplasm-vault","ops_ord":174,"ord":1,"value":"junction stage shot, part 6"}
+{"place_id":"place.mercantile-coast.chasepoint","ops_ord":38,"ord":0,"value":"world/sources/blueprints/chasepoint.design.md"}
+{"place_id":"place.mercantile-coast.chasepoint","ops_ord":182,"ord":0,"value":"world/sources/blueprints/chasepoint.design.md"}
+{"place_id":"place.mercantile-coast.lighter-flotilla","ops_ord":225,"ord":0,"value":"world/sources/blueprints/lighter-flotilla.design.md"}
+{"place_id":"place.mercantile-coast.teeth-of-sithis","ops_ord":12,"ord":0,"value":"tmp/16k-user-instruction.md walk 12 Teeth of Sithis: doors set into a rock mass"}
+{"place_id":"place.mercantile-coast.teeth-of-sithis","ops_ord":13,"ord":0,"value":"tmp/16k-user-instruction.md walk 12 Teeth of Sithis: doors set into a rock mass"}
+{"place_id":"place.mercantile-coast.teeth-of-sithis","ops_ord":14,"ord":0,"value":"tmp/16k-user-instruction.md walk 12 Teeth of Sithis: doors set into a rock mass"}
+{"place_id":"place.mercantile-coast.teeth-of-sithis","ops_ord":15,"ord":0,"value":"tmp/16k-user-instruction.md walk 12 Teeth of Sithis: doors set into a rock mass"}
+{"place_id":"place.mercantile-coast.teeth-of-sithis","ops_ord":16,"ord":0,"value":"tmp/16k-user-instruction.md walk 12 Teeth of Sithis: the way down must be visible and walkable"}
+{"place_id":"place.mercantile-coast.teeth-of-sithis","ops_ord":17,"ord":0,"value":"tmp/16k-user-instruction.md walk 12 Teeth of Sithis: the way down must be visible and walkable"}
+{"place_id":"place.mercantile-coast.teeth-of-sithis","ops_ord":18,"ord":0,"value":"tmp/16k-user-instruction.md walk 12 Teeth of Sithis: doors set into a rock mass"}
+{"place_id":"place.mercantile-coast.teeth-of-sithis","ops_ord":19,"ord":0,"value":"tmp/16k-user-instruction.md walk 12 Teeth of Sithis: doors set into a rock mass"}
+{"place_id":"place.mercantile-coast.teeth-of-sithis","ops_ord":68,"ord":0,"value":"tmp/2-slice-so-far-fixes.md: the Teeth doorways embedded in the hillside, no gap behind"}
+{"place_id":"place.mercantile-coast.teeth-of-sithis","ops_ord":69,"ord":0,"value":"tmp/2-slice-so-far-fixes.md: the Teeth doorways embedded in the hillside, no gap behind"}
+{"place_id":"place.mercantile-coast.teeth-of-sithis","ops_ord":70,"ord":0,"value":"tmp/2-slice-so-far-fixes.md: the Teeth doorways embedded in the hillside, no gap behind"}
+{"place_id":"place.mercantile-coast.teeth-of-sithis","ops_ord":71,"ord":0,"value":"tmp/2-slice-so-far-fixes.md: the Teeth doorways embedded in the hillside, no gap behind"}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ops_ord":131,"ord":0,"value":"tooling/.reports/16k/walk11/places-a/gang-ground-c2c.md"}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ops_ord":295,"ord":0,"value":"tooling/.reports/places/place.pirate-freeholds.opening-work-camp/worklist.json"}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ops_ord":296,"ord":0,"value":"tooling/.reports/places/place.pirate-freeholds.opening-work-camp/worklist.json"}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ops_ord":297,"ord":0,"value":"tooling/.reports/places/place.pirate-freeholds.opening-work-camp/worklist.json"}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ops_ord":298,"ord":0,"value":"tooling/.reports/places/place.pirate-freeholds.opening-work-camp/worklist.json"}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ops_ord":299,"ord":0,"value":"tooling/.reports/places/place.pirate-freeholds.opening-work-camp/worklist.json"}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ops_ord":300,"ord":0,"value":"tooling/.reports/places/place.pirate-freeholds.opening-work-camp/worklist.json"}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ops_ord":301,"ord":0,"value":"parcel.opening-work-camp.hatching-shed"}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ops_ord":317,"ord":0,"value":"lanes/16x/diag/gang-ground.md"}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ops_ord":318,"ord":0,"value":"lanes/16x/diag/gang-ground.md"}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ops_ord":319,"ord":0,"value":"lanes/16x/diag/gang-ground.md"}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ops_ord":327,"ord":0,"value":"lanes/16x/gang-ground/way-down-diagnosis.md"}
+{"place_id":"place.pirate-freeholds.opening-work-camp","ops_ord":328,"ord":0,"value":"parcel.opening-work-camp.barge"}
+{"place_id":"place.pirate-freeholds.upriver-hist-village","ops_ord":234,"ord":0,"value":"frozen ground survey (wb.py bpy heights, walk 11 w3g): a dry flat hollow at 0 m, 1.5-2.5 m under the banks, x 3396-3407 z 1428-1450"}
+{"place_id":"place.saxhleel-coast.jungle-root-hollow","ops_ord":3,"ord":0,"value":"tooling/.reports/16k/walk11/places-a/cave-and-hall.md A1"}
+{"place_id":"place.saxhleel-coast.jungle-root-hollow","ops_ord":3,"ord":1,"value":"owner walk 11 reply, item 1 (a hillock behind the mouth)"}
+{"place_id":"place.saxhleel-coast.jungle-root-hollow","ops_ord":4,"ord":0,"value":"owner walk 11 reply, item 1 (a hillock behind the mouth)"}
+{"place_id":"place.saxhleel-coast.jungle-root-hollow","ops_ord":4,"ord":1,"value":"tooling/.reports/16k/walk11/places-a/root-hollow-2.md (round 3 reader: hard seam at the north flank, a flat-topped hill)"}
+{"place_id":"place.saxhleel-coast.jungle-root-hollow","ops_ord":5,"ord":0,"value":"tooling/.reports/16k/walk11/places-a/root-hollow-2.md (round 3 reader: a flat-topped hill with a squared lip)"}
+{"place_id":"place.saxhleel-coast.jungle-root-hollow","ops_ord":6,"ord":0,"value":"tooling/.reports/16k/walk11/places-a/rh4/rh4g-fill.py (variant V14: no raise in the walkable tunnel; the ground falls from 47 m to 40-41 m over x 3678-3686)"}
+{"place_id":"place.saxhleel-coast.jungle-root-hollow","ops_ord":6,"ord":1,"value":"tooling/.reports/16k/walk11/places-a/root-hollow-4g.md (round 1 readers: stepped pale terraces on the north flank)"}
+{"place_id":"place.saxhleel-coast.jungle-root-hollow","ops_ord":7,"ord":0,"value":"tooling/.reports/16k/walk11/places-a/root-hollow-4b.md (r4b reader: dark slot under the rock's back-left edge)"}
+{"place_id":"place.saxhleel-coast.jungle-root-hollow","ops_ord":8,"ord":0,"value":"tooling/.reports/16k/walk11/places-a/rh4/rh4f-fill.py (variant e: ground 49.0 to 50.5 m from z 4552 to 4557 at x 3672-3675, the rock top flush to 2 m under it on the low corner, 0.8 to 1.9 m above it further south; no raise in the tunnel)"}
+{"place_id":"place.saxhleel-coast.jungle-root-hollow","ops_ord":9,"ord":0,"value":"tooling/.reports/16k/walk11/places-a/rh4/rh4f-fill.py (variant e: ground 49.0 to 50.5 m from z 4552 to 4557 at x 3672-3675, the rock top flush to 2 m under it on the low corner, 0.8 to 1.9 m above it further south; no raise in the tunnel)"}
+{"place_id":"place.saxhleel-coast.jungle-root-hollow","ops_ord":10,"ord":0,"value":"tooling/.reports/16k/walk11/places-a/rh4/rh4f-fill.py (variant e: ground 49.0 to 50.5 m from z 4552 to 4557 at x 3672-3675, the rock top flush to 2 m under it on the low corner, 0.8 to 1.9 m above it further south; no raise in the tunnel)"}
+{"place_id":"place.saxhleel-coast.jungle-root-hollow","ops_ord":11,"ord":0,"value":"tooling/.reports/16k/walk11/places-a/root-hollow-4j.md"}
+{"place_id":"place.saxhleel-coast.jungle-root-hollow","ops_ord":11,"ord":1,"value":"tooling/.reports/16k/walk11/places-a/rh4/rh4k-apply.py"}
+{"place_id":"place.saxhleel-coast.jungle-root-hollow","ops_ord":12,"ord":0,"value":"tooling/.reports/16k/walk11/places-a/root-hollow-4j.md"}
+{"place_id":"place.saxhleel-coast.jungle-root-hollow","ops_ord":12,"ord":1,"value":"tooling/.reports/16k/walk11/places-a/rh4/rh4k-apply.py"}
+{"place_id":"place.saxhleel-coast.jungle-root-hollow","ops_ord":13,"ord":0,"value":"tooling/.reports/16k/walk11/places-a/root-hollow-4j.md"}
+{"place_id":"place.saxhleel-coast.jungle-root-hollow","ops_ord":13,"ord":1,"value":"tooling/.reports/16k/walk11/places-a/rh4/rh4k-apply.py"}
+{"place_id":"place.saxhleel-coast.jungle-root-hollow","ops_ord":14,"ord":0,"value":"tooling/.reports/16k/walk11/places-a/root-hollow-4j.md"}
+{"place_id":"place.saxhleel-coast.jungle-root-hollow","ops_ord":14,"ord":1,"value":"tooling/.reports/16k/walk11/places-a/rh4/rh4k-apply.py"}
+{"place_id":"place.saxhleel-coast.jungle-root-hollow","ops_ord":15,"ord":0,"value":"tooling/.reports/16k/walk11/places-a/root-hollow-4j.md"}
+{"place_id":"place.saxhleel-coast.jungle-root-hollow","ops_ord":15,"ord":1,"value":"tooling/.reports/16k/walk11/places-a/rh4/rh4k-apply.py"}
+{"place_id":"place.saxhleel-coast.jungle-root-hollow","ops_ord":16,"ord":0,"value":"mouthBackRule gapAt (mouth_rules.py), walk 12 owner point 1"}
+{"place_id":"place.saxhleel-coast.jungle-root-hollow","ops_ord":17,"ord":0,"value":"owner walk 12: a big tree with big roots on the hill top"}
+{"place_id":"place.saxhleel-coast.jungle-root-hollow","ops_ord":18,"ord":0,"value":"tooling/.reports/16k/walk11/places-a/root-hollow-4j.md"}
+{"place_id":"place.saxhleel-coast.jungle-root-hollow","ops_ord":18,"ord":1,"value":"tooling/.reports/16k/walk11/places-a/rh4/rh4k-apply.py"}
+{"place_id":"place.saxhleel-coast.jungle-root-hollow","ops_ord":222,"ord":0,"value":"lanes/16x/rotated-root/exterior-reds.md (mouthBackRule b-mouth)"}

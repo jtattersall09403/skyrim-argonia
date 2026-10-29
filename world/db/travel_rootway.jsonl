@@ -1,0 +1,3 @@
+{"id":"rootway.helstrom-east-estuary","from":"root-node.helstrom","status":"active","to":"root-node.east-estuary"}
+{"id":"rootway.helstrom-naga-deeps","from":"root-node.helstrom","status":"active","to":"root-node.naga-deeps"}
+{"id":"rootway.helstrom-north-shadowfen","from":"root-node.helstrom","status":"active","to":"root-node.north-shadowfen"}

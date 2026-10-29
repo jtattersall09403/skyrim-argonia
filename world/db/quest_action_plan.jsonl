@@ -1,0 +1,15 @@
+{"quest_id":"quest.local.lh38","ord":0,"skill":"alchemy","use":"test-a-sample","reason":"tells the spring from the food, which the misdiagnosis needs"}
+{"quest_id":"quest.local.lh38","ord":1,"skill":"speechcraft","use":"persuade","reason":"Im-Moro forbids the pool"}
+{"quest_id":"quest.local.lh38","ord":2,"skill":"sneak","use":"sneak-past","reason":"or enter the pool at night"}
+{"quest_id":"quest.local.lh38","ord":3,"skill":"athletics","use":"dive","reason":"the body is staked in the spring's throat"}
+{"quest_id":"quest.local.lh38","ord":4,"skill":"security","use":"pick-a-lock","reason":"the courier's pack in the lodge store"}
+{"quest_id":"quest.local.lh38","ord":5,"skill":"sneak","use":"spy","reason":"the killer watches the spring at night"}
+{"quest_id":"quest.local.lh38","ord":6,"skill":"sneak","use":"pickpocket","reason":"the satchel"}
+{"quest_id":"quest.local.lh38","ord":7,"skill":"speechcraft","use":"accuse","reason":"the close of a MURDER"}
+{"quest_id":"quest.local.lh38","ord":8,"skill":"any-weapon","use":"fight","reason":"if she runs for the landing"}
+{"quest_id":"quest.mr.mr01","ord":0,"skill":"alchemy","use":"test-a-sample","reason":"the diagnosis is samples; the river test refutes the salt works"}
+{"quest_id":"quest.mr.mr01","ord":1,"skill":"athletics","use":"dive","reason":"three sampling sites in the drowned stair"}
+{"quest_id":"quest.mr.mr01","ord":2,"skill":"alteration","use":"water-breathe","reason":"the deepest chamber is beyond one breath"}
+{"quest_id":"quest.mr.mr01","ord":3,"skill":"destruction","use":"burn-a-nest","reason":"parasite swarms between the sites"}
+{"quest_id":"quest.mr.mr01","ord":4,"skill":"spear","use":"fight","reason":"or fight through the swarms"}
+{"quest_id":"quest.mr.mr01","ord":5,"skill":"speechcraft","use":"present-evidence","reason":"the council payoff: discover in danger, decide in council"}

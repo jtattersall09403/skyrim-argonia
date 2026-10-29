@@ -1,0 +1,108 @@
+{"id":"addCounter","kind":"action","section":"B1","args":"counter, int"}
+{"id":"addJournalEntry","kind":"action","section":"B2","args":"quest, entry"}
+{"id":"addOwing","kind":"action","section":"B4","args":"region, int"}
+{"id":"all","kind":"combinator","section":"D","args":"conditions","reads":"every child holds"}
+{"id":"any","kind":"combinator","section":"D","args":"conditions","reads":"at least one child holds"}
+{"id":"applyLocalVariant","kind":"action","section":"B5","args":"location, variant"}
+{"id":"attributeAtLeast","kind":"predicate","section":"A4","args":"stat `id`, `int`","reads":"76's stat block. Used for *authored thresholds*, never rolls"}
+{"id":"calendarIs","kind":"predicate","section":"A6","args":"month `id` (the world-time month name, as `MONTHS[].name`: `Sun's Dawn`), optional day `int` (of the month, from 1), optional season `enum{dry,rain-onset,monsoon,flood-peak,recession}` (world-time `SeasonName`)","reads":"the canon calendar date, derived from the epoch minute (0157 item 9); festivals are data on this term"}
+{"id":"carriedValueAtLeast","kind":"predicate","section":"A4","args":"`int`","reads":"contraband and customs checks"}
+{"id":"changeDisposition","kind":"action","section":"B4","args":"npc, int"}
+{"id":"changeSettlementStanding","kind":"action","section":"B4","args":"settlement, int"}
+{"id":"changeStanding","kind":"action","section":"B4","args":"faction, int"}
+{"id":"clearLocalVariant","kind":"action","section":"B5","args":"location, variant"}
+{"id":"clearOwing","kind":"action","section":"B4","args":"region"}
+{"id":"completeQuest","kind":"action","section":"B1","args":"quest"}
+{"id":"counterAtLeast","kind":"predicate","section":"A2","args":"counter `id`, `int`","reads":"any authored counter"}
+{"id":"custody","kind":"predicate","section":"A3","args":"artifact `id`, `enum{player,reed,cult,hidden}`","reads":"the Eye custody invariant"}
+{"id":"dateAfter","kind":"predicate","section":"A6","args":"day `int` (the world-time absolute day number)","reads":"the canon calendar (strictly after / before that day)"}
+{"id":"dateBefore","kind":"predicate","section":"A6","args":"day `int` (the world-time absolute day number)","reads":"the canon calendar (strictly after / before that day)"}
+{"id":"daysSince","kind":"predicate","section":"A6","args":"event `id`, `int`","reads":"cooldowns, amnesty decay, reprisal timers"}
+{"id":"deedCountAtLeast","kind":"predicate","section":"A2","args":"faction `id`, deed class `id`, `int`","reads":"the silent-unlock counters adopted by 0039"}
+{"id":"detectedBy","kind":"predicate","section":"A7","args":"faction `id` *or* npc `id`","reads":"the one detection service (standard: never per-enemy checks)"}
+{"id":"disableRef","kind":"action","section":"B5","args":"ref"}
+{"id":"discovered","kind":"predicate","section":"A6","args":"poi `id`","reads":"discovery state"}
+{"id":"disguisedAs","kind":"predicate","section":"A7","args":"faction `id`","reads":"disguise-as-flag"}
+{"id":"dispositionAtLeast","kind":"predicate","section":"A5","args":"npc `id`, `int`","reads":"per-NPC disposition (76 §125)"}
+{"id":"enableRef","kind":"action","section":"B5","args":"ref"}
+{"id":"evidenceState","kind":"predicate","section":"A3","args":"evidence `id`, `enum{pristine,copied,altered,destroyed}`","reads":"tampering"}
+{"id":"expel","kind":"action","section":"B4","args":"faction"}
+{"id":"expelledFrom","kind":"predicate","section":"A5","args":"faction `id`","reads":"expulsion state"}
+{"id":"factionRankAtLeast","kind":"predicate","section":"A5","args":"faction `id`, rank `int`","reads":"rank ladder"}
+{"id":"factionStandingAtLeast","kind":"predicate","section":"A5","args":"faction `id`, `int`","reads":"disposition-style standing"}
+{"id":"failQuest","kind":"action","section":"B1","args":"quest"}
+{"id":"firstTime","kind":"predicate","section":"A2","args":"marker `id`","reads":"true exactly once, then latches false (for one-shot lines)"}
+{"id":"flag","kind":"predicate","section":"A2","args":"flag `id`, `bool`","reads":"a named world flag"}
+{"id":"giveGold","kind":"action","section":"B3","args":"int"}
+{"id":"giveItem","kind":"action","section":"B3","args":"item, count"}
+{"id":"goldAtLeast","kind":"predicate","section":"A4","args":"`int`","reads":"prices, bribes, tolls"}
+{"id":"grantAbility","kind":"action","section":"B3","args":"ability"}
+{"id":"grantGlossaryTerm","kind":"action","section":"B2","args":"term"}
+{"id":"grantHistStep","kind":"action","section":"B2","args":"step","reads":"`touched`, `heard` or `sap-speaker`, 0157 item 7: the one way a Hist-hearing step is granted; a step never lowers; saved as `hist-hearing`"}
+{"id":"grantMapMarker","kind":"action","section":"B3","args":"marker"}
+{"id":"grantServiceAccess","kind":"action","section":"B3","args":"service"}
+{"id":"grantTopic","kind":"action","section":"B2","args":"topic"}
+{"id":"hasEvidence","kind":"predicate","section":"A3","args":"evidence `id`","reads":"possession of an evidence item"}
+{"id":"hasItem","kind":"predicate","section":"A4","args":"item `id`, `int` count","reads":"inventory"}
+{"id":"histStepAtLeast","kind":"predicate","section":"A4","args":"`enum{touched,heard,sap-speaker}`","reads":"the player's Hist-hearing step (0157 item 7; the `hist-hearing` save); granted only by `grantHistStep`"}
+{"id":"inCell","kind":"predicate","section":"A6","args":"`id`","reads":"where the player is"}
+{"id":"inRegion","kind":"predicate","section":"A6","args":"`id`","reads":"where the player is"}
+{"id":"inSettlement","kind":"predicate","section":"A6","args":"`id`","reads":"where the player is"}
+{"id":"inZone","kind":"predicate","section":"A5","args":"zone `id`","reads":"the player stands in a place's private volume (0151; planned: 2.10)","planned":"2.10"}
+{"id":"knowsTopic","kind":"predicate","section":"A3","args":"topic `id`","reads":"the player's KnowledgeState"}
+{"id":"levelAtLeast","kind":"predicate","section":"A4","args":"`int`","reads":"discouraged — prefer a deed or skill gate (no level scaling, 0004)"}
+{"id":"localVariantActive","kind":"predicate","section":"A6","args":"location `id`, variant `id`","reads":"local world-state overlay"}
+{"id":"lockIs","kind":"predicate","section":"A5","args":"lock `id`, `enum` locked \\| unlocked \\| sprung","reads":"the lock state of a door or lid (planned: 2.10)","planned":"2.10"}
+{"id":"moveRef","kind":"action","section":"B5","args":"ref, mark"}
+{"id":"not","kind":"combinator","section":"D","args":"condition","reads":"the child fails"}
+{"id":"notorietyTier","kind":"predicate","section":"A5","args":"region `id`, `enum`","reads":"notoriety bands"}
+{"id":"npcAlive","kind":"predicate","section":"A7","args":"npc `id`","reads":"fail-forward successors depend on this"}
+{"id":"npcAtMark","kind":"predicate","section":"A7","args":"npc `id`, mark `id`","reads":"staged scenes that must survive a missed mark"}
+{"id":"npcInCustody","kind":"predicate","section":"A7","args":"npc `id`"}
+{"id":"objectiveComplete","kind":"predicate","section":"A1","args":"quest `id`, objective `id`","reads":"a single objective within a stage"}
+{"id":"offerTeach","kind":"action","section":"B5","args":"spell","reads":"2.9d: the host opens the teach service with that spell"}
+{"id":"owingAtLeast","kind":"predicate","section":"A5","args":"region `id`, `int`","reads":"the crime-as-Owing ledger, **per region** (0039)"}
+{"id":"owingHere","kind":"predicate","section":"A5","args":"none","reads":"an open Owing in the region the player stands in (the ledger, 0151; the owing greetings)"}
+{"id":"placeCleared","kind":"predicate","section":"A6","args":"place `id`","reads":"the catalogue's `hostility.clearable` state (Phase 11 v2, 2026-09-03)"}
+{"id":"placeStanceIs","kind":"predicate","section":"A6","args":"place `id`, `enum{hostile,guarded,wary,neutral,friendly,sanctuary}`","reads":"the place's current stance after any `hostility.flips` (same vocabulary as the catalogue's `hostility.baseline`)"}
+{"id":"promoteSuccessor","kind":"action","section":"B5","args":"role, npc"}
+{"id":"questStage","kind":"predicate","section":"A1","args":"quest `id`, `op`, stage `int`","reads":"the stage a quest is on (`op` ∈ `=  ≠  ≥  ≤  <  >`)"}
+{"id":"questState","kind":"predicate","section":"A1","args":"quest `id`, `enum{unstarted,active,complete,failed}`","reads":"coarse quest state"}
+{"id":"raceIs","kind":"predicate","section":"A4","args":"`id`","reads":"flavour and reactions only; **never gates completion** (race-neutral rule)"}
+{"id":"recordWitnessed","kind":"action","section":"B2","args":"event"}
+{"id":"removeTopic","kind":"action","section":"B2","args":"topic","reads":"tier-aware"}
+{"id":"rumourActive","kind":"predicate","section":"A3","args":"rumour `id`, region `id`","reads":"regional rumour pools"}
+{"id":"seasonIs","kind":"predicate","section":"A6","args":"`enum`","reads":"seasonal content"}
+{"id":"seedRumour","kind":"action","section":"B2","args":"rumour, region"}
+{"id":"seenBy","kind":"predicate","section":"A5","args":"npc `id` *or* faction `id`","reads":"whether that observer is past suspicious right now (the notice service, 0092; planned: 2.10)","planned":"2.10"}
+{"id":"sendCourier","kind":"action","section":"B5","args":"letter"}
+{"id":"setAmbience","kind":"action","section":"B5","args":"location, ambience"}
+{"id":"setDoorAccess","kind":"action","section":"B3","args":"door, enum"}
+{"id":"setFactionRank","kind":"action","section":"B4","args":"faction, rank"}
+{"id":"setFlag","kind":"action","section":"B1","args":"flag, bool"}
+{"id":"setMaterialFlag","kind":"action","section":"B5","args":"npc, flag","reads":"e.g. `washed-out`"}
+{"id":"setNotoriety","kind":"action","section":"B4","args":"region, tier"}
+{"id":"setPrice","kind":"action","section":"B3","args":"service, int"}
+{"id":"setSchedule","kind":"action","section":"B5","args":"npc, schedule"}
+{"id":"setStage","kind":"action","section":"B1","args":"quest, stage"}
+{"id":"setWeather","kind":"action","section":"B5","args":"location, weather","reads":"0157 item 9: a local request, `weather` a world-weather state or `auto`, which clears it; it holds until a later stage sets `auto`"}
+{"id":"settlementStandingAtLeast","kind":"predicate","section":"A5","args":"settlement `id`, `int`","reads":"the customs/favours ladder (0039)"}
+{"id":"sexIs","kind":"predicate","section":"A4","args":"`id`","reads":"flavour and reactions only; **never gates completion** (race-neutral rule)"}
+{"id":"signIs","kind":"predicate","section":"A4","args":"`id`","reads":"flavour and reactions only; **never gates completion** (race-neutral rule)"}
+{"id":"skillAtLeast","kind":"predicate","section":"A4","args":"stat `id`, `int`","reads":"76's stat block. Used for *authored thresholds*, never rolls"}
+{"id":"speakerCulture","kind":"predicate","section":"A7","args":"culture node `id`","reads":"the speaking NPC's culture chain holds the node (people, faction, office, settlement): how a pool line or greeting speaks for a people or faction"}
+{"id":"speakerDispositionAtLeast","kind":"predicate","section":"A7","args":"`int`","reads":"the speaking NPC's disposition toward the player, this conversation's persuasion included"}
+{"id":"stageEverReached","kind":"predicate","section":"A1","args":"quest `id`, stage `int`","reads":"whether a stage was ever passed, even if the quest moved on"}
+{"id":"startScene","kind":"action","section":"B5","args":"scene"}
+{"id":"startTimer","kind":"action","section":"B1","args":"event"}
+{"id":"successorActive","kind":"predicate","section":"A7","args":"role `id`, npc `id`","reads":"which NPC currently fills a role"}
+{"id":"takeGold","kind":"action","section":"B3","args":"int"}
+{"id":"takeItem","kind":"action","section":"B3","args":"item, count"}
+{"id":"tideState","kind":"predicate","section":"A6","args":"`enum{low,high}`","reads":"**flavour only** — tide gating is CUT (0042 §2)"}
+{"id":"tierProtected","kind":"predicate","section":"A8","args":"thing `id`","reads":"the `essential` data-flag tier (quests 40 §30b) — read by the runtime, not by authors, but listed so tier-aware topic *deletion* (DQ02) has a term"}
+{"id":"timeOfDay","kind":"predicate","section":"A6","args":"`enum{dawn,day,dusk,night}` *or* hour range","reads":"the world clock"}
+{"id":"topicHeardFrom","kind":"predicate","section":"A3","args":"topic `id`, npc `id`","reads":"who told them — the basis of catching a lie"}
+{"id":"wearing","kind":"predicate","section":"A4","args":"item `id` *or* slot `id` + tag `id`","reads":"worn gear — the basis of disguise"}
+{"id":"weatherIs","kind":"predicate","section":"A6","args":"`enum`","reads":"8c's published local weather"}
+{"id":"witnessed","kind":"predicate","section":"A3","args":"event `id`","reads":"the player personally saw it"}
+{"id":"worstCrimeIs","kind":"predicate","section":"A5","args":"region `id`, `enum{trespass,pickpocket,theft,assault,murder}`","reads":"the worst open crime on that region's ledger by the faction crime weights"}

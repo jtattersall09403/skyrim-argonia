@@ -1,0 +1,171 @@
+{"place_id":"place.dunmer-north.feeds-the-north","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.dunmer-north.feeds-the-north","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.dunmer-north.hackwing-wall","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.dunmer-north.hackwing-wall","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.dunmer-north.hutan-tzel","ord":0,"value":"entranceCount 1 -> 2"}
+{"place_id":"place.dunmer-north.murkwater","ord":0,"value":"entranceCount 1 -> 2"}
+{"place_id":"place.dunmer-north.seam-chasers","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.dunmer-north.seam-chasers","ord":1,"value":"exteriorShell -> False"}
+{"place_id":"place.dunmer-north.the-drawdown-flats","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.dunmer-north.the-first-count","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.dunmer-north.the-guar-ground","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.dunmer-north.the-guar-ground","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.dunmer-north.the-high-wrappings","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.dunmer-north.the-high-wrappings","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.dunmer-north.the-north-cut","ord":0,"value":"sizeBand S0 -> S1"}
+{"place_id":"place.dunmer-north.the-north-cut","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.dunmer-north.the-north-holding-pit","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.dunmer-north.the-permit-dig","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.dunmer-north.the-permit-dig","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.dunmer-north.the-salt-ledge","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.dunmer-north.the-salt-ledge","ord":1,"value":"exteriorShell -> False"}
+{"place_id":"place.dunmer-north.the-stormhold-falls-chamber","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.dunmer-north.the-stormhold-falls-chamber","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.dunmer-north.the-whispers-dig","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.dunmer-north.the-whispers-dig","ord":1,"value":"exteriorShell -> False"}
+{"place_id":"place.dunmer-north.the-wild-mouth","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.dunmer-north.the-wild-mouth","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.dunmer-north.went-down-slowly","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.dunmer-north.zuuk","ord":0,"value":"entranceCount 1 -> 2"}
+{"place_id":"place.dunmer-north.zuuk","ord":1,"value":"exteriorShell -> False"}
+{"place_id":"place.hist-heartland.bubble-spire-collapsed","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.hist-heartland.bubble-spire-collapsed","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.hist-heartland.burn-scar-village-ash","ord":0,"value":"sizeBand S0 -> S1"}
+{"place_id":"place.hist-heartland.burn-scar-village-ash","ord":1,"value":"exteriorShell -> False"}
+{"place_id":"place.hist-heartland.canopy-crossing-rope-basin","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.hist-heartland.canopy-crossing-rope-basin","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.hist-heartland.climbable-ruin-roof-terrace","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.hist-heartland.climbable-ruin-roof-terrace","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.hist-heartland.collapsing-pinnacle-interior","ord":0,"value":"entranceCount 1 -> 2"}
+{"place_id":"place.hist-heartland.collapsing-pinnacle-interior","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.hist-heartland.drowning-narrows-current","ord":0,"value":"sizeBand S0 -> S1"}
+{"place_id":"place.hist-heartland.drowning-narrows-current","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.hist-heartland.hackwing-roost-wild","ord":0,"value":"sizeBand S0 -> S1"}
+{"place_id":"place.hist-heartland.hackwing-roost-wild","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.hist-heartland.hammock-crown-ancestor","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.hist-heartland.hammock-crown-ancestor","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.hist-heartland.legendary-deep-medusa-wood","ord":0,"value":"entranceCount 1 -> 2"}
+{"place_id":"place.hist-heartland.legendary-deep-medusa-wood","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.hist-heartland.miregaunt-ward-approach","ord":0,"value":"sizeBand S0 -> S1"}
+{"place_id":"place.hist-heartland.miregaunt-ward-approach","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.hist-heartland.mist-locked-hollow-basin","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.hist-heartland.root-gallery-collapsed-nine","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.hist-heartland.root-gallery-collapsed-nine","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.hist-heartland.root-gallery-drowned-stair","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.hist-heartland.root-gallery-drowned-stair","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.hist-heartland.root-gallery-kept-light","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.hist-heartland.root-gallery-kept-light","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.hist-heartland.root-gallery-lantern-hollow","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.hist-heartland.root-gallery-lantern-hollow","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.hist-heartland.rootworm-burrow-dead","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.hist-heartland.rootworm-burrow-dead","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.hist-heartland.rootworm-burrow-live","ord":0,"value":"entranceCount 1 -> 2"}
+{"place_id":"place.hist-heartland.rootworm-burrow-live","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.hist-heartland.sap-touched-miredancer","ord":0,"value":"entranceCount 3 -> 4"}
+{"place_id":"place.hist-heartland.sap-touched-miredancer","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.hist-heartland.squatted-ruin-home-hollow","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.hist-heartland.squatted-ruin-home-hollow","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.hist-heartland.tended-xanmeer-pilgrim-way","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.hist-heartland.umpholo-mission","ord":0,"value":"entranceCount 2 -> 3"}
+{"place_id":"place.hist-heartland.umpholo-mission","ord":1,"value":"exteriorShell -> False"}
+{"place_id":"place.hist-heartland.voriplasm-chamber-sealed","ord":0,"value":"entranceCount 1 -> 2"}
+{"place_id":"place.hist-heartland.voriplasm-chamber-sealed","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.hist-heartland.waiting-vigil-village","ord":0,"value":"entranceCount 3 -> 4"}
+{"place_id":"place.hist-heartland.waiting-vigil-village","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.hist-heartland.wamasu-wallow-struck-ground","ord":0,"value":"sizeBand S0 -> S1"}
+{"place_id":"place.hist-heartland.wamasu-wallow-struck-ground","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.hist-heartland.whitewater-reach-panther","ord":0,"value":"sizeBand S0 -> S1"}
+{"place_id":"place.hist-heartland.whitewater-reach-panther","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.hist-heartland.wisp-lure-basin","ord":0,"value":"sizeBand S0 -> S1"}
+{"place_id":"place.hist-heartland.wisp-lure-basin","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.imperial-fringe.collections-dig","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.imperial-fringe.collections-dig","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.imperial-fringe.orma-tactile-ruin","ord":0,"value":"entranceCount 1 -> 2"}
+{"place_id":"place.imperial-fringe.orma-tactile-ruin","ord":1,"value":"exteriorShell -> False"}
+{"place_id":"place.imperial-fringe.rufios-landing","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.imperial-fringe.silver-mouth","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.imperial-fringe.silver-mouth","ord":1,"value":"exteriorShell -> False"}
+{"place_id":"place.imperial-fringe.sink-field","ord":0,"value":"sizeBand S0 -> S1"}
+{"place_id":"place.imperial-fringe.sink-field","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.imperial-fringe.the-cold-lights","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.imperial-fringe.the-cold-lights","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.imperial-fringe.the-drowned-furrow","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.imperial-fringe.the-drowned-furrow","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.imperial-fringe.the-empty-steading","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.imperial-fringe.the-empty-steading","ord":1,"value":"exteriorShell -> False"}
+{"place_id":"place.imperial-fringe.the-hollow-under-the-figs","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.imperial-fringe.the-leaning-watch","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.imperial-fringe.the-niben-crystal-workings","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.imperial-fringe.the-niben-crystal-workings","ord":1,"value":"exteriorShell -> False"}
+{"place_id":"place.imperial-fringe.the-old-quarters","ord":0,"value":"entranceCount 2 -> 3"}
+{"place_id":"place.imperial-fringe.the-old-quarters","ord":1,"value":"exteriorShell -> False"}
+{"place_id":"place.imperial-fringe.the-quiet-pit","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.imperial-fringe.the-second-empire-locks","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.imperial-fringe.the-white-throat","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.imperial-fringe.vanins-signal","ord":0,"value":"sizeBand S0 -> S1"}
+{"place_id":"place.imperial-penal-south.cordon-cellars","ord":0,"value":"entranceCount 2 -> 3"}
+{"place_id":"place.imperial-penal-south.cordon-cellars","ord":1,"value":"exteriorShell -> False"}
+{"place_id":"place.imperial-penal-south.drawdown-flat","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.imperial-penal-south.drawdown-flat","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.imperial-penal-south.flu-quarantine-village","ord":0,"value":"entranceCount 2 -> 3"}
+{"place_id":"place.imperial-penal-south.flu-quarantine-village","ord":1,"value":"exteriorShell -> False"}
+{"place_id":"place.imperial-penal-south.intact-fort","ord":0,"value":"entranceCount 2 -> 3"}
+{"place_id":"place.imperial-penal-south.intact-fort","ord":1,"value":"exteriorShell -> False"}
+{"place_id":"place.imperial-penal-south.kothringi-ruin-basin","ord":0,"value":"entranceCount 2 -> 3"}
+{"place_id":"place.imperial-penal-south.kothringi-ruin-basin","ord":1,"value":"exteriorShell -> False"}
+{"place_id":"place.imperial-penal-south.lilmothiit-quarry","ord":0,"value":"entranceCount 2 -> 3"}
+{"place_id":"place.imperial-penal-south.lilmothiit-quarry","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.imperial-penal-south.natural-dive-shaft","ord":0,"value":"entranceCount 2 -> 3"}
+{"place_id":"place.imperial-penal-south.natural-dive-shaft","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.imperial-penal-south.rose-outworks","ord":0,"value":"entranceCount 2 -> 3"}
+{"place_id":"place.imperial-penal-south.rose-outworks","ord":1,"value":"exteriorShell -> False"}
+{"place_id":"place.mercantile-coast.alessian-hull","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.mercantile-coast.alessian-hull","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.mercantile-coast.hammock-crown-murkmire","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.mercantile-coast.hammock-crown-murkmire","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.mercantile-coast.insular-jungle-village","ord":0,"value":"entranceCount 2 -> 3"}
+{"place_id":"place.mercantile-coast.insular-jungle-village","ord":1,"value":"exteriorShell -> False"}
+{"place_id":"place.mercantile-coast.naga-village-oliis","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.mercantile-coast.naga-village-oliis","ord":1,"value":"exteriorShell -> False"}
+{"place_id":"place.mercantile-coast.rockpark","ord":0,"value":"entranceCount 3 -> 4"}
+{"place_id":"place.mercantile-coast.rockpark","ord":1,"value":"exteriorShell -> False"}
+{"place_id":"place.mercantile-coast.root-gallery-murkmire","ord":0,"value":"entranceCount 3 -> 4"}
+{"place_id":"place.mercantile-coast.root-gallery-murkmire","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.mercantile-coast.sacked-customs-suburb","ord":0,"value":"entranceCount 2 -> 3"}
+{"place_id":"place.mercantile-coast.sacked-customs-suburb","ord":1,"value":"exteriorShell -> False"}
+{"place_id":"place.mercantile-coast.stripped-village-north","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.mercantile-coast.stripped-village-north","ord":1,"value":"exteriorShell -> False"}
+{"place_id":"place.mercantile-coast.whitebone-reef","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.mercantile-coast.whitebone-reef","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.naga-kur-deeps.air-pocket-station-deeps","ord":0,"value":"entranceCount 1 -> 2"}
+{"place_id":"place.naga-kur-deeps.air-pocket-station-deeps","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.naga-kur-deeps.art-and-destroy-site-deeps","ord":0,"value":"entranceCount 1 -> 2"}
+{"place_id":"place.naga-kur-deeps.drifting-village-wet-mooring","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.naga-kur-deeps.drifting-village-wet-mooring","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.naga-kur-deeps.drowning-narrows-tidal-gate","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.naga-kur-deeps.legendary-deep-feather-serpent","ord":0,"value":"entranceCount 1 -> 2"}
+{"place_id":"place.naga-kur-deeps.legendary-deep-feather-serpent","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.naga-kur-deeps.leviathan-bone-field","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.naga-kur-deeps.leviathan-bone-field","ord":1,"value":"exteriorShell -> False"}
+{"place_id":"place.naga-kur-deeps.miregaunt-ward-open","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.naga-kur-deeps.miregaunt-ward-open","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.naga-kur-deeps.raft-village-lashed","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.naga-kur-deeps.raft-village-lashed","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.naga-kur-deeps.root-whisper-village","ord":0,"value":"entranceCount 1 -> 2"}
+{"place_id":"place.naga-kur-deeps.sinkhole-mouth-deeps","ord":0,"value":"entranceCount 1 -> 2"}
+{"place_id":"place.naga-kur-deeps.sithis-temple-mass-sacrifice","ord":0,"value":"entranceCount 1 -> 2"}
+{"place_id":"place.naga-kur-deeps.sithis-temple-mass-sacrifice","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.naga-kur-deeps.wreck-submerged-barge","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.naga-kur-deeps.wreck-submerged-barge","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.pirate-freeholds.rim-snowline-hermitage","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.pirate-freeholds.rim-snowline-hermitage","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.saxhleel-coast.gap-reef","ord":0,"value":"entranceCount 2 -> 3"}
+{"place_id":"place.saxhleel-coast.gap-reef","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.saxhleel-coast.jungle-root-hollow","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.saxhleel-coast.jungle-root-hollow","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.saxhleel-coast.mangrove-air-pocket","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.saxhleel-coast.mangrove-air-pocket","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.saxhleel-coast.outer-reef","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.saxhleel-coast.outer-reef","ord":1,"value":"exteriorShell -> True"}
+{"place_id":"place.saxhleel-coast.terrace-village-ridge","ord":0,"value":"sizeBand S1 -> S2"}
+{"place_id":"place.saxhleel-coast.terrace-village-ridge","ord":1,"value":"exteriorShell -> False"}

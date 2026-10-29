@@ -1,0 +1,6 @@
+{"id":"dugout-canoe","kit":"watercraft-v1","piece_ref":"canoe:actors/sfss/canoe/canoe1","size_m_x":1.981,"size_m_y":6.762,"size_m_z":2.125}
+{"id":"landing-argonian","kit":"docks-v1","piece_ref":"htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_wooddock01","size_m_x":3.649,"size_m_y":1.823,"size_m_z":1.963,"mooring_post":"htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01"}
+{"id":"landing-steps","kit":"docks-v1","piece_ref":"bmv:sheogorad/dagon fel/dockssteps","size_m_x":2.453,"size_m_y":2.188,"size_m_z":2.22}
+{"id":"native-plank-ferry","kit":"watercraft-v1","piece_ref":"ferries:yamadori/ferries/plank_ferry_swamp_01","size_m_x":2.65,"size_m_y":3.557,"size_m_z":1.546}
+{"id":"native-poled-raft","kit":"watercraft-v1","piece_ref":"ferryraft:snt/ferry/ferryraft01","size_m_x":3.236,"size_m_y":4.104,"size_m_z":1.711,"gangplank":"ferryraft:snt/ferry/norbridgewoodplanks01"}
+{"id":"swamp-rowboat-ferry","kit":"watercraft-v1","piece_ref":"ferries:yamadori/ferries/rowboat_ferry_swamp_01","size_m_x":2.771,"size_m_y":9.624,"size_m_z":2.185}

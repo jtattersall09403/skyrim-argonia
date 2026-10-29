@@ -1,0 +1,8 @@
+{"quest_id":"quest.local.lh38","stages_ord":2,"ord":0,"skill":"athletics","use":"dive","setting":"in a flooded ruin, root-cave or under water","note":"one breath; alteration: water-breathe also serves"}
+{"quest_id":"quest.local.lh38","stages_ord":2,"ord":1,"skill":"illusion","use":"light-a-dark-place","note":"optional: a torch will not burn underwater"}
+{"quest_id":"quest.mr.mr01","stages_ord":0,"ord":0,"skill":"alchemy","use":"test-a-sample","setting":"open ground by day","note":"the river above the fork against the spring"}
+{"quest_id":"quest.mr.mr01","stages_ord":0,"ord":1,"use":"harvest-a-plant","system":"harvest"}
+{"quest_id":"quest.mr.mr01","stages_ord":1,"ord":0,"skill":"athletics","use":"dive","setting":"in a flooded ruin, root-cave or under water"}
+{"quest_id":"quest.mr.mr01","stages_ord":1,"ord":1,"skill":"destruction","use":"burn-a-nest","setting":"in a flooded ruin, root-cave or under water","target":"vermin: parasite swarms in a root-cave"}
+{"quest_id":"quest.mr.mr01","stages_ord":1,"ord":2,"use":"take-a-ferry","system":"travel"}
+{"quest_id":"quest.mr.mr01","stages_ord":3,"ord":0,"skill":"speechcraft","use":"persuade","note":"the stakes are the tribe's story; the tool-marks and the sample are the argument","target":"Vees-Wai"}
