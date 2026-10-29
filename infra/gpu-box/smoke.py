@@ -139,6 +139,27 @@ def cmd_pad(a):
     pad("RS:120 wait:800")
 
 
+def cmd_frametime(a):
+    """PresentMon over the running game for a.seconds (the player standing in the scene), then median and 1% low."""
+    csv = rf"C:\argonia\logs\presentmon-{a.label}.csv"
+    ps(rf"Remove-Item {csv} -EA SilentlyContinue; & C:\argonia\tools\presentmon\PresentMon.exe --process_name "
+       rf"SkyrimSE.exe --output_file {csv} --timed {a.seconds} --terminate_after_timed --no_console_stats --v1_metrics "
+       rf"| Out-Null", wait=a.seconds + 60)
+    OUT.mkdir(parents=True, exist_ok=True)
+    local = OUT / f"presentmon-{a.label}.csv"
+    subprocess.run([RUN, "get", csv.replace("\\", "/"), str(local)], check=True, capture_output=True)
+    rows = local.read_text().splitlines()
+    head = rows[0].split(",")
+    col = {n: head.index(n) for n in ("MsBetweenPresents", "msGPUActive", "MsUntilRenderComplete") if n in head}
+    ft = sorted(float(r.split(",")[col["MsBetweenPresents"]]) for r in rows[1:] if r.count(",") >= len(head) - 1)
+    gpu = sorted(float(r.split(",")[col["msGPUActive"]]) for r in rows[1:] if "msGPUActive" in col and r.count(",") >= len(head) - 1)
+    med, p99 = ft[len(ft) // 2], ft[int(len(ft) * 0.99)]
+    record(f"frametime-{a.label}", {"frames": len(ft), "median_ms": round(med, 2), "median_fps": round(1000 / med, 1),
+                                    "p99_ms": round(p99, 2), "low1_fps": round(1000 / p99, 1),
+                                    "gpu_active_median_ms": round(gpu[len(gpu) // 2], 2) if gpu else None,
+                                    "still": still(f"frametime-{a.label}")})
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -146,12 +167,15 @@ def main():
     sub.add_parser("dodge")
     sub.add_parser("pad")
     sub.add_parser("call").add_argument("calls")
+    f = sub.add_parser("frametime")
+    f.add_argument("--label", default="cs-on")
+    f.add_argument("--seconds", type=int, default=60)
     a = p.parse_args()
     if a.cmd == "call":
         for r in sk(*json.loads(a.calls)):
             print(json.dumps(r))
         return
-    {"launch": cmd_launch, "dodge": cmd_dodge, "pad": cmd_pad}[a.cmd](a)
+    {"launch": cmd_launch, "dodge": cmd_dodge, "pad": cmd_pad, "frametime": cmd_frametime}[a.cmd](a)
     print("results:", OUT / "results.json")
 
 

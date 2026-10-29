@@ -19,6 +19,11 @@ $State = "$Root\stack-state"
 $Prefs = "$env:LOCALAPPDATA\Skyrim Special Edition"
 New-Item -ItemType Directory -Force $State, $Prefs | Out-Null
 
+# Files the game or a mod writes into Data and must keep across off/on (else Community Shaders greets every launch
+# as a new install): saved under $State\keep by off, put back by on, never hashed by verify.
+$Keep = @('SKSE\Plugins\CommunityShaders\SettingsUser.json', 'SKSE\Plugins\CommunityShaders\SettingsDefault.json',
+          'SKSE\Plugins\CommunityShaders_ImGui.ini')
+
 function Get-Mode { if (Test-Path "$State\mode-on") { 'on' } else { 'off' } }
 
 # Skyrim fills the current desktop (sunshine-prep.ps1 sized it to the client) and keeps running without focus,
@@ -91,6 +96,16 @@ switch ($Cmd) {
       New-Item -ItemType Directory -Force "$Data\Interface\Controls\PC" | Out-Null
       Copy-Item "$Root\controls\controlmap.txt" "$Data\Interface\Controls\PC\controlmap.txt" -Force
     }
+    foreach ($k in $Keep) { if (Test-Path "$State\keep\$k") {
+      Remove-Item -LiteralPath "$Data\$k" -Force -EA SilentlyContinue   # never write through a hard link into a mod
+      New-Item -ItemType Directory -Force (Split-Path "$Data\$k") | Out-Null; Copy-Item "$State\keep\$k" "$Data\$k" -Force } }
+    # Community Shaders' first-run modal ("choose a hotkey ... Press Escape or Enter") takes no scripted key, so a
+    # fresh profile starts with its setup marked done (Menu.FirstTimeSetupCompleted, read over SettingsDefault.json)
+    $csUser = "$Data\SKSE\Plugins\CommunityShaders\SettingsUser.json"
+    if ((Test-Path "$Data\SKSE\Plugins\CommunityShaders.dll") -and -not (Test-Path $csUser)) {
+      New-Item -ItemType Directory -Force (Split-Path $csUser) | Out-Null
+      '{"Menu":{"FirstTimeSetupCompleted":true}}' | Set-Content $csUser -Encoding ASCII
+    }
     Copy-Item "$Profile\plugins.txt" "$Prefs\Plugins.txt" -Force
     New-Item -ItemType File -Force "$State\mode-on" | Out-Null
     "argonia profile on: $n files from $($order.Count) mods"
@@ -99,6 +114,8 @@ switch ($Cmd) {
     # Independent of any record: everything in Data that the vanilla install does not have goes (the game's own
     # shader cache stays). Vanilla Data has no loose files the mods replace, so nothing needs restoring.
     if (Get-Process SkyrimSE -EA SilentlyContinue) { throw 'Skyrim is running; quit it first' }
+    foreach ($k in $Keep) { if (Test-Path "$Data\$k") {
+      New-Item -ItemType Directory -Force (Split-Path "$State\keep\$k") | Out-Null; Copy-Item "$Data\$k" "$State\keep\$k" -Force } }
     $vanilla = @{}; Get-Content "$Root\infra\vanilla-data-files.txt" | % { $vanilla[$_.ToLower()] = 1 }
     $removed = 0
     # cmd's dir and the \\?\ form reach paths that ordinary Windows paths cannot (names ending in a dot or space).
@@ -174,7 +191,7 @@ switch ($Cmd) {
     $extra = 0
     foreach ($f in (cmd /c "dir /s /b /a-d `"\\?\$Data`"" 2>$null)) {
       $rel = $f.Substring($f.IndexOf('\Data\') + 6).ToLower()
-      if ($vanilla[$rel] -or $pandora[$rel] -or $inst.files.$rel -or $rel.StartsWith('shadercache\') -or $rel.StartsWith('mcm\settings\') -or $rel -eq 'interface\controls\pc\controlmap.txt') { continue }
+      if ($vanilla[$rel] -or $pandora[$rel] -or $inst.files.$rel -or $rel.StartsWith('shadercache\') -or $rel.StartsWith('mcm\settings\') -or $rel -eq 'interface\controls\pc\controlmap.txt' -or ($Keep | ? { $_.ToLower() -eq $rel })) { continue }
       "unrecorded: $rel"; $extra++
     }
     "$n recorded files checked, $bad bad, $extra unrecorded, $($pandora.Count) Pandora outputs"

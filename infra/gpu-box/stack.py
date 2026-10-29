@@ -566,7 +566,7 @@ def cmd_stage(a):
 # ---- the machine --------------------------------------------------------------------------------------------------
 
 def run(*args, check=True, capture=False):
-    r = subprocess.run([RUN, *args], text=True, capture_output=capture)
+    r = subprocess.run([RUN, *args], text=True, capture_output=capture, encoding="utf-8", errors="replace")
     if check and r.returncode != 0:
         raise SystemExit(f"run.sh {args[0]} failed: {(r.stderr or '')[-400:]}")
     return r.stdout if capture else ""
