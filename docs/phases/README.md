@@ -47,10 +47,12 @@ builds the real front door once the slice works.
 1. **Final-shaped from the first line.** Every system lives in what ships: `Argonia.esm`, our SKSE DLLs and our
    PrismaUI views. No mode, flag or switch stands in for a game action (0022 §4). Part 1's thin thread is each
    system's first rung at its final interface. Part 2 deepens it and never replaces it.
-2. **Scaled data shapes, thin content.** Every record type is designed for Morrowind-scale counts: one home
-   table, stable ids, references by id, an integrity gate. It joins the imported world record set
-   (`docs/design/world/98-data-model.md`) and is filled with only what the slice touches. A design that works
-   for ten NPCs and not a thousand is a defect.
+2. **One relational database, thin content** ([0030](../decisions/0030-one-relational-world-database.md)). Every
+   entity and relationship is a table in `world/schema.sql` (third normal form, primary and foreign keys, lookup
+   tables, constraints), committed as one JSONL file per table, loaded and written only through
+   `tools/argonia_world/db.py`; everything else is derived. A system's "data shape" step is a set of tables in
+   that schema, never a new file format, designed for Morrowind-scale counts and filled with only what the slice
+   touches. A design that works for ten NPCs and not a thousand is a defect.
 3. **What the player meets is complete.** A placed NPC has their whole dialogue and services. Every placed item
    is usable. Every socket in a slice place is filled. Thin means *few places*, never *half-done places*.
 
@@ -166,9 +168,35 @@ reason.
     owed and to whom);
   - rewrites the next chunk's Starting state and steps from what it learned;
   - files any owner ruling in the brief it settles, written as the current rule.
-- **Who does what.** One chunk per session. The planner plans and judges; `deliver` and `world-builder` build
-  (ways-of-working).
+- **Who does what.** One chunk per session, or one run through several when the owner says "deliver up to and
+  including <chunk>". The planner plans and judges; `deliver` and `world-builder` build (ways-of-working).
 - **The owner is hands-on** for every city and for the opening's places; no skill runs unattended on them.
+
+## Running unattended: "deliver up to and including <chunk>"
+
+The planner reads CLAUDE.md's session-start list, then runs the chunks in dependency order from PROGRESS's first
+`todo` row to the named chunk, delegating each chunk's sections to `deliver` lanes and running disjoint lanes in
+parallel as the part README's "runs beside" column says (the game machine takes one lane at a time, `job_guard.sh
+run --gpu`; the build VM takes several). At each chunk's close it writes the Outcome, rewrites the next Starting
+state, marks PROGRESS, commits by pathspec and pushes; at each part's close it posts the check-in. **It stops
+only at a blocking owner gate, a hard-to-reverse call, or a blocker it cannot clear after the brief's fallbacks.**
+
+| Owner moment | Blocks? | Where |
+|---|---|---|
+| Part 0's play check (`bat claywater`, the proving ground) | No: posted as a check-in; Part 1 starts | 0.4 |
+| The screen technology for our own screens, with mock-ups | No: the planner chooses on the probes and posts the recommendation; the owner may overrule, which is cheap at stage one | 1.2 §0 |
+| The design-language rounds | No: a side lane; stage two waits for them, stage one does not | 1.2 §f |
+| Reading the first quest's record and lines | No: posted with the record; the owner's notes feed 2.12 | 1.4 |
+| The runtime pin (O-3), permission replies (O-5), the old machine (O-1) | No | 0.2, 0.3 |
+| Steam's offline login expiring on the game machine | Yes, and unavoidable: the check-in says so and the run waits | any L4 |
+| **The first-place verdict** (combat, talk, quest, "is this the game") | **Yes** | 1.7 |
+| The slice playthrough; the first playable; the before-scale re-plan | Yes | 2.17, 3.5, 4.1 |
+| A hard-to-reverse call (an owner call in decisions/README) | Yes, for that call only; the run continues around it | any |
+
+So "deliver up to and including 1.7" runs Part 0 and Part 1 through to the verdict packet and stops there; that
+is the furthest an unattended run can go. The world track (2.W1 onwards) may be named too, since it needs no
+owner gate until 2.W5's walks.
+
 - **Closing a part.** A part closes with:
   - a routing audit of its folder (the `routing-audit` skill);
   - its PROGRESS rows `done` with evidence;

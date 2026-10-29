@@ -55,7 +55,8 @@ traced to where it is handled in [ACCOUNTING.md](ACCOUNTING.md).
 ## 3. Architecture
 
 ```
-world/ (imported JSON: places, NPCs, quests, dialogue, hydrology, routes, stats tables, lore)  ── 0.1 import
+world/ schema.sql (the relational world, 3NF, keys; decision 0030) + db/<table>.jsonl (one row per line) ── 0.4 §0
+       sources/ (the 0.1 import, read-only, shrinking as families migrate)
    │  tools/argonia_world  (Python: validate, plan, convert units, flatten dialogue, plan water, plan placement,
    │                        generate directions, emit intermediate JSON)
    ▼
@@ -75,7 +76,8 @@ skse/core/ the rules Skyrim's own systems cannot carry (1.1 §a's native map), p
 papyrus/   our scripts (quest fragments generated + hand-written systems glue)
 ui/        our own UI, one design system (`ui/DESIGN.md`), in the approach 1.2 §0 chose with the owner
            (decision 0017): HUD and every major screen; a mock harness runs them in headless Chrome
-data/      golden combat table, dependency manifest (pinned mods), immersion inventory, sourcing register,
+data/      golden combat table, dependency manifest (pinned mods), immersion inventory, sourcing register (each
+           a table of the world database where it refers to world rows),
            FormID allocator, parity tables
 installer/ modlist manifest + install/verify scripts; later a Wabbajack/Jackify list
 infra/     build VM and Windows game machine scripts, the stream client page, idle-stop, budgets, Steam setup

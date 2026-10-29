@@ -44,6 +44,6 @@ Only one lane drives the game machine at a time (`job_guard.sh run --gpu`).
 - 0.4: `make plugin && make check` green with the Spriggit round trip and no diff on a second run; the
   quarantine journey green at 1, 10 and 50 days; the inventory written; the Claywater block walked in game by
   the journey runner and by the owner.
-- **Owner check:** on the phone and the Mac, open the console, `bat claywater`, walk the road into the place and
-  into a house, `bat proving-ground`, climb a wall, swim, board the boat. Reply with what jarred. The check-in
-  carries the gate evidence and the costs; no estimate.
+- **Owner check (a check-in, not a gate; Part 1 starts meanwhile):** on the phone and the Mac, open the console,
+  `bat claywater`, walk the road into the place and into a house, `bat proving-ground`, climb a wall, swim, board
+  the boat. Reply with what jarred. The check-in carries the gate evidence and the costs; no estimate.

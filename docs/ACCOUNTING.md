@@ -85,6 +85,8 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | B44 | 2026-10-29 (#11 reply): traversal mods in the base stack from the start; Dear Diary permissive; our HUD and the parchment chart early; OpenMW analysed at stage two; licence agreed; corpus public; Nexus Premium held; R2 keys in | 0027 §4–5; 0.2; 1.2 §d–e; 2.2 §a; 2.12 §b; 2.W4 §c; 0015; decisions README (O-6, O-14, O-21 struck) |
 | B47 | 2026-10-29: the dodge rolls in place; install 79598 with 50258 and 92109 as intended; B only; LB block; RT heavy; RS lock-on | 0.2 §c |
 | B48 | 2026-10-29: Part 0 re-cut as one sequence, no spikes, no time budgets, no installer now, Starting state is now, SkyLink and the console as the studio, journeys keep stills | 0029; 0.2–0.4; 0021, 0022, 0001 §3, 0023; PLAN; phases/README; CLAUDE.md |
+| B49 | 2026-10-29: a relational world database from day one; quest skills to match | 0030; 0.4 §0; phases/README rule 2; PLAN §3; CLAUDE.md |
+| B50 | 2026-10-29: unattended runs "deliver up to and including 1.x"; which owner moments block | phases/README § Running unattended; 0.4, 1.2 §0, 1.4 owner checks made non-blocking |
 | B46 | 2026-10-29: a light Black Marsh retheme and an "Argonia" title in stage one; a custom desktop shortcut with our icon later | 1.2 §a; 3.4 §b |
 | B45 | 2026-10-29: the land is Tropical Skyrim through Skyrim's own systems; BM&V no longer the land; author data, the engine and the CK's generators do the rest | 0028; 0006 §8; 0026 §3; 0.4; 2.W1, 2.W3, 2.W4; PLAN §4 |
 | B18 | Holistic UI design; "eyes on" transitions in focused loops; no jarring vanilla screens (e.g. constellations) | 0017 §7; 2.2 §a (UI map), 2.2 (transition loop); 3.1; perk constellations hidden (2.1) |

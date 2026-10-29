@@ -41,10 +41,10 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 - De-risk first: prove each class of work on a real sample as the first step of the chunk that builds it, never a spike (0023, 0029).
 - Every system is built to its final interface; content can be thin, systems ship whole; what the player meets is complete.
 - Everything is built natively the Skyrim way: the old project gives goals and content, never machinery; Skyrim's own systems and tools first, used better ([0026](docs/decisions/0026-everything-is-built-natively-the-skyrim-way.md)).
-- World data lives in `world/` and is generated into records; Spriggit YAML in `plugin/` is reviewed, the ESM is a build output ([0009](docs/decisions/0009-world-content-is-imported-then-generated-into-plugins.md)).
-- Skyrim unit facts live only in the units module.
+- The world is one relational database (`world/schema.sql`, 3NF, keys; read and written only through `db.py`); records, YAML and the ESM are derived ([0030](docs/decisions/0030-one-relational-world-database.md), [0009](docs/decisions/0009-world-content-is-imported-then-generated-into-plugins.md)).
+- Skyrim unit facts live only in the units module .
 - New state lives in ArgoniaCore's versioned co-save families; rules live where 1.1's native map put them, unit-tested; logic stays out of Papyrus.
-- Record every dependency and asset in the sourcing register in the same commit that first uses it.
+- Record every dependency and asset in the sourcing register in the commit that first uses it.
 
 ## Agents and briefs
 
@@ -54,7 +54,7 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 - One deliverable per context; at the context marker commit what is green and write the hand-off note.
 - One builder per place, plugin module or UI view at a time; no swarms.
 - No `sleep` or polling; long jobs under `job_guard.sh` in the background; waits return within 270 s.
-- Return at most 25 lines; the full report goes to the brief's report path.
+- Return at most 25 lines; the full report goes to the report path.
 
 ## Testing and the gate
 
