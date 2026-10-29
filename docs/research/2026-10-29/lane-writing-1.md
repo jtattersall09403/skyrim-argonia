@@ -129,3 +129,43 @@ been run: it was left for the final commit, per the memory guidance.
 - **World data conflict:** the station ledger says "the poler's wife came for water", while the landing's culture
   sheet says the landing does not drink the well's water. The record uses the ledger: the station charges the
   landing nothing.
+
+## Round 2 review (arrived after hand-off; not yet applied: step 1 of the list is now "fix these", then round 3)
+
+High
+1. The crocodile fight may not be winnable in Part 1: `creature.crocodile` swims only (slaughterfish skeleton),
+   flees and sinks at 20 %, respawns on rest, rests at the den by day. Hand the planner a crocodile override (held at
+   the cut, flee 0, respawn held through the quest), prove the land fight at L4, latch the kill with a flag. (R3, R8
+   not accepted.)
+
+Medium
+2. e-landing needlessly passes through stage 30 (crocodile and basket): open topic.lf83-stop-charge at 20 once the
+   crack is known.
+3. Journal 20 names the basket before anyone tells the player: Takes says it lies at the cut (not that he ran).
+4. why-failing rests on one clue (the jar shows silt, not a crack): complete it when Livia admits the crack after
+   being shown any of k1, k3, k4.
+5. The rains timer starts before the player is told: put rains-close in the poler's and Takes's two-charges rows
+   and in journal 10; consider gating the start on `seasonIs`.
+6. Takes does not add up: her household's taboo forbids well water in the brine (and the record cites
+   `culture.household.claywater-station.drying-racks`, which does not exist; find the real id); her stance avoids the
+   well; she sends waders to the bend while fearing for them; she takes quarrels to the poler per the settlement
+   norm. Re-ground how she tastes the water, have her turn waders back, give her silence to the poler a reason.
+7. The settlement norm (each bank charges for its own half) is old custom; state the old charges (beds, carts by
+   the wheel) and what is new.
+8. Why the clay bend, and why nobody kills the crocodile: the bend is the only plaster-grade clay; Signs is the
+   landing's only spear-hand.
+9. Livia's motive in e-landing: the evidence shows stone cannot hold in that bank, so her charge buys nothing.
+10. e-station: Takes's disposition should not drop; takeGold 100 is in both the topic and the ending (keep one);
+    journal 41 states the crack even when the bribe comes at stage 10.
+
+Low
+11. topic.lf83-clay-bend (poler) both uses and hides basket-left (R12 not accepted).
+12. Reveal order: charges-answer arrives in the poler's first line; leverage[2] gives Takes's k8 to the poler.
+13. Missing rows: rumour_pool rows for rumour.lf83.*; the basket socket is owned by the poler (taking it is theft);
+    the ledger counts only if taken; the crocodile can kill the poler (stage 93) (R10 not accepted).
+14. Gaius Vibius is not placed in Part 1 yet argues the station's case and takes −15 in e-shared.
+15. Rewards have no named giver; the shortspear is untied to the story (free raft crossings, the crocodile's hide).
+16. Journal 10 says "I paid Livia" whatever the order; the ledger leaf has a stray "The roof shows it first." and
+    an unmeetable "poler's wife" (place lane).
+
+Accepted round-1 answers: R1, R2, R7, R9, R13; partly: R4, R5, R6, R11; not accepted: R3, R8, R10, R12.
