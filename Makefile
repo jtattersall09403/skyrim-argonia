@@ -6,7 +6,7 @@ PY := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/python) python3)
 # A failing part records its name, then fails.
 FAIL = || { echo $@ >> $(RED); exit 1; }
 
-.PHONY: check hooks plugin db $(PARTS)
+.PHONY: check hooks plugin db chart $(PARTS)
 
 check:
 	@rm -f $(RED)
@@ -57,3 +57,8 @@ plugin-check:
 
 hooks:
 	@bash tooling/guards/install_hooks.sh
+
+# The parchment chart (2.W4 §c): out/chart/ layers, copies, tiles, index and the L1 checks; not in the gate (~100 s,
+# ~1 GB); the gate's part is tools/chart/tests (the sample's pinned hash). Pelagiad: python -m tools.chart fetch-font.
+chart:
+	@$(PY) -m tools.chart render

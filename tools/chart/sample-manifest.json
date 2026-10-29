@@ -1,0 +1,5 @@
+{
+ "sample": "tools/chart/sample.py features() at 512^2 (base, ink, revealed pixels + the index)",
+ "sha256": "945a89f1c787c97b5a46ecff44b0ff7563793bd9a3f92cb6980185550f4d78ae",
+ "measured": "2026-10-29, Pillow 13.0.0 (FreeType 2.14.3), numpy 2.5.4; two in-process renders identical"
+}

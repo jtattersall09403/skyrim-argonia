@@ -52,5 +52,14 @@
     "used_by": "tools/argonia_world/terrain (2.W1 apron cells beyond the border)",
     "linked_or_forked_by": "data only; used at 1:1 beyond the border; credited",
     "notes": "credit line required in the README credits and the release notes"
+  },
+  {
+    "name": "Pelagiad (font)",
+    "source_url": "https://github.com/isaskar/Pelagiad (commit f981301916d0e5a7ea9ce39d2af4e56df09677ca)",
+    "version": "Pelagiad.ttf sha256 b282ea043af32e15bab8cf9e01d9625c0fa5032761ffbc57d7a5f939098a7d92 (pinned in tools/chart/render.py)",
+    "licence": "SIL OFL 1.1 (Copyright (c) 2015 Isak Larborn; Reserved Font Name \"Pelagiad.ttf\")",
+    "used_by": "tools/chart (2.W4 §c parchment chart labels); later the UI font library (1.2 §a)",
+    "linked_or_forked_by": "fetched by `python -m tools.chart fetch-font` into $ARGONIA_PRIVATE/fonts/pelagiad with its LICENSE.txt; not committed",
+    "notes": "OFL allows bundling with the licence file (3.4 ships it so); unmodified, so the Reserved Font Name stays"
   }
 ]

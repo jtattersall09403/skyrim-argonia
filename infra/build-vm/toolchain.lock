@@ -5,6 +5,7 @@ rtk=1.1.0 sha256=9454ad1b9489daa57ab0a9f4ebe2faaf4dc82b8a0f26c9e5135151abd7c9378
 spriggit-cli=0.41.0 sha256=146bf173ac145b8c00c96a9b84670388dcc8819c482151963821b160b4717b5b
 mutagen-bethesda-skyrim=0.54.4 sha256=n/a
 py:numpy=2.5.4 sha256=n/a
+py:pillow=13.0.0 sha256=n/a
 py:pydantic=2.14.1 sha256=n/a
 py:pytest=9.2.0 sha256=n/a
 py:ruff=0.17.3 sha256=n/a
