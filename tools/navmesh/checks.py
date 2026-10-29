@@ -2,6 +2,8 @@
 
     heights   every vertex within TOLERANCE_Z of the ground under it (the LAND's two triangulations of the quad
               bound it), or of the water surface; the triangles' centroids measured the same way (reported)
+    degenerate  no triangle with zero area in plan (a repeated corner, or three corners on one line): the engine
+              locates actors on the navmesh in plan, and a zero-area triangle has no inside and no normal
     links     every edge link has its reverse (the neighbour's triangle links back to this one), lands on a
               triangle that exists, and its two edges share both ends in plan
     islands   the walkable components across cells (triangle neighbours and edge links): every one apart from the
@@ -107,6 +109,13 @@ def plan_area_m2(v: np.ndarray, tv: np.ndarray) -> np.ndarray:
     return np.abs(cr) / 2 / su.UNITS_PER_METRE ** 2
 
 
+def degenerate_mask(v: np.ndarray, tv: np.ndarray) -> np.ndarray:
+    """Triangles with zero area in plan: a corner repeated, or the three corners on one line."""
+    a, b, c = v[tv[:, 0]], v[tv[:, 1]], v[tv[:, 2]]
+    cr = (b[:, 0] - a[:, 0]) * (c[:, 1] - a[:, 1]) - (b[:, 1] - a[:, 1]) * (c[:, 0] - a[:, 0])
+    return (tv[:, 0] == tv[:, 1]) | (tv[:, 1] == tv[:, 2]) | (tv[:, 0] == tv[:, 2]) | (cr == 0)
+
+
 def covered(points: np.ndarray, v: np.ndarray, tv: np.ndarray) -> np.ndarray:
     """Which plan points lie in some triangle (edges included, 0.5 unit slack)."""
     if len(points) == 0 or len(tv) == 0:
@@ -138,11 +147,15 @@ def run(out: Path) -> dict:
     road_n = road_in = 0
     walk = {"under_30": [0, 0], "30_to_40": [0, 0], "40_to_45": [0, 0]}
     max_slope_ground, steep_ground = 0.0, 0
+    degenerate, degenerate_at = 0, []
     for x, y, fk, n in stitch.read_navm(out):
         local = int(fk.split(":")[0], 16)
         v = n.verts.astype(np.float64)
         tv = n.tris["v"].astype(int)
         tri_count[local] = len(tv)
+        bad = degenerate_mask(v, tv)
+        degenerate += int(bad.sum())
+        degenerate_at += [[x, y, int(ti)] for ti in np.nonzero(bad)[0][:10 - len(degenerate_at)]]
         lo, hi = ras.ground_band(v[:, 0], v[:, 1])
         dg = _dist_band(v[:, 2], lo, hi)
         wl = ras.water_at(v[:, 0], v[:, 1])
@@ -154,7 +167,7 @@ def run(out: Path) -> dict:
         clo, chi = ras.ground_band(cen[:, 0], cen[:, 1])
         cdev.append(_dist_band(cen[:, 2], clo, chi))
         # slope of the ground triangles (neither water nor road)
-        g = (n.tris["flags"] & (nvnm.WATER | nvnm.PREFERRED)) == 0
+        g = ((n.tris["flags"] & (nvnm.WATER | nvnm.PREFERRED)) == 0) & ~bad
         if g.any():
             a, b, c = v[tv[g, 0]], v[tv[g, 1]], v[tv[g, 2]]
             nrm = np.cross(b - a, c - a)
@@ -250,6 +263,7 @@ def run(out: Path) -> dict:
                     "vertex_p99": round(float(np.percentile(vd, 99)), 2) if len(vd) else 0,
                     "centroid_p99": round(float(np.percentile(cd, 99)), 2) if len(cd) else 0,
                     "centroid_max": round(float(cd.max()), 2) if len(cd) else 0},
+        "degenerate": {"count": degenerate, "first": degenerate_at},
         "links": {"count": len(links), "asymmetric": len(asym), "bad_target": len(bad_target), "bad_geometry": len(bad_geom)},
         "islands": {"components": len(comps), "main_m2": round(comps[0], 1) if comps else 0,
                     "islands": len(islands), "islands_m2": round(sum(islands), 1),
@@ -261,7 +275,7 @@ def run(out: Path) -> dict:
         "ground_triangles_steeper_than_walkable": steep_ground,
         "max_ground_slope_deg": round(max_slope_ground, 1),
     }
-    res["green"] = (over == 0 and not asym and not bad_target and not bad_geom and not missing and not navi_err)
+    res["green"] = (over == 0 and degenerate == 0 and not asym and not bad_target and not bad_geom and not missing and not navi_err)
     return res
 
 

@@ -68,3 +68,67 @@ target went in with another lane's commit `d0d7cc8`, which swept up the Makefile
   - Wall time 9.8 s, peak 251 MB.
 - **Key finding:** at a 32-unit voxel, Recast's ledge filter cuts the walkable slope to atan(32/64) = 26.6°, which
   lost 42% of the walkable ground. At 16 units the cut is 45°.
+
+## Continuation (second context, 2026-10-29)
+
+**The province's first run was red.** `nav-province-1` ran for 23:32 and peaked at 856 MB. It failed on two counts.
+- **Degenerate triangles:** the `invalid value in divide` was 7 zero-area triangles out of 4,299,037: 6 with a
+  repeated corner and 1 with three corners on one line, in cells (-55,56), (28,-18) and (-15,-51). The cause was in
+  `stitch.split_open_edges`. Recast's detail mesh leaves slivers, where a corner lies within EPS (0.5 units) of the
+  opposite edge in plan. The T-junction repair split that open edge at the sliver's own corner.
+  - Fix 1: `drop_slivers` removes those triangles before the repair. The repair then splits the neighbours' edges at
+    the corner: 1,077 dropped on the province, 8 on Claywater.
+  - Fix 2: a split never uses the triangle's own corner, and uses each point once.
+  - Fix 3: the first rebuild (`nav-province-2`) still had 3 degenerate triangles, from split points a unit or two
+    from a corner that lay on the line to the far corner, in cells (-41,-8) and (6,-38). `fan_points` now leaves
+    out any split point that would make a fan triangle under `MIN_PLAN_AREA` (0.125 units²).
+  - **The L1 check:** `checks.degenerate` (a repeated corner, or zero plan area) is part of `green`. It **failed
+    once on purpose** on the pre-fix province (count 7), and again on `nav-province-2` (3). Unit tests: a test that
+    reproduces the province's pattern on the old `stitch.py` (2 degenerate), the sliver drop, the fan filter and the
+    mask (12 passed).
+- **Heights:** 57 vertices were 65–208 units above the ground, left unsnapped by `SNAP_MAX` 64. At a cliff edge,
+  Recast's detail mesh takes a vertex's height from the column beside it. The ground is the only collision so far,
+  so `SNAP_MAX` is now 256. Heights over tolerance: 0 (vertex max 30).
+
+**1. The province (`make navmesh`'s build, with every fix):**
+- Run: 12,083 NAVM, 4,298,892 triangles, 2,821,202 vertices, 303,494 links. Times: inputs 7.7 s, Recast 1,051 s,
+  stitch 335 s, check 119 s.
+- **L1 green:** degenerate 0; heights over 0 (centroid p99 20.0, max 363); links 0 asymmetric, 0 bad target, 0 bad
+  geometry; NAVI 12,083 entries, 0 missing, 0 errors.
+- Measured: road 98.4 % on the navmesh; walkable coverage 98.8 % under 30°, 72.1 % at 30–40°, 19.2 % at 40–45°.
+- Islands: 7,416 (1,337 over 100 m²; 2.36 M m² in all) against a main component of 33.3 M m². The largest island
+  is 1.14 M m².
+- `python -m tools.navmesh build --province` (`nav-province-2`): 21:03 wall, peak RSS 854 MB.
+
+**2. Determinism:**
+- Claywater: `45ad2a5f59690bbb…`, the same on four builds (two before the fan filter, two after; the filter did not
+  change it). Wall 7.5–17 s, peak 199–218 MB.
+- Sample: still `5eed6ffd…` (the manifest is unchanged).
+- Province: `31e0537c5eabbed8…` from `make navmesh` (4 threads), and `31e0537c5eabbed8…` again from `nav-province-3` (2 threads; 30:08 wall, peak 857 MB): identical.
+
+**3. `make navmesh` end to end:** 26:37 wall, **peak RSS 1.56 GB** (≤ 2 GB, so no streaming is needed). The plugin
+write alone, measured separately on `nav-province-2`, took 98 s at a 1.565 GB peak. ArgoniaWorld.esm is 195.6 MB,
+sha256 `0f7f0e2a…`. `verify_esm`: 12,083 of 12,083 NVNM byte-identical, 0 extra, NAVI 12,083.
+
+**4. `make check`:** CHECK GREEN in full, 1:58 wall, peak 635 MB (pytest 203 passed, ctest 21 of 21, plugin twice identical, Spriggit byte-identical, both sample hashes as the manifests).
+
+**The voxel width:** production `CELL_SIZE` is 16. On Claywater:
+
+| Voxel width | Walkable dry ground covered | Under 30° | 30–40° | 40–45° | Road | Main component |
+|---|---|---|---|---|---|---|
+| 16 | 83.2 % | 97.6 % | 77.5 % | 23.7 % | 97.5 % | 154,363 m² |
+| 32 | 58.3 % | 89.2 % | 7.1 % | 0.1 % | 91.4 % | 73,818 m² |
+
+At 32 there are also 232 islands (52 over 100 m²).
+
+**The islands:**
+- Claywater's 21 islands over 100 m² are all dry ground: 0 % water, 0 % road, and no roofs (the ground is the only
+  collision so far). They lie on the block's mountain rows, at z 4,500–12,200.
+- None joins the main component on the whole province.
+- 31–81 % of the ground around each one is steeper than 45°: these are real unreachable shelves.
+- Claywater Station itself is on the main component, so no fix is needed. Details are in the journal.
+
+**Still owed:** item 5 (L4: `tests/scenes/nav-claywater.json`, `tests/journeys/nav-*.yaml`, and whether the engine
+accepts our NAVI override) and item 6 (the CK comparison, `infra/gpu-box/navmesh_ck.ps1`). The drafts are kept. The
+province also has 7,416 islands, which have not been classified; Claywater's say they are mountain shelves, but
+that is not measured province-wide.

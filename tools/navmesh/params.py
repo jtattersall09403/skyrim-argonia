@@ -21,7 +21,10 @@ REGION_MERGE_SIZE = 20  # uRecastRegionMergeSize, spans
 VERTS_PER_POLY = 6  # Recast's default; the detail mesh triangulates every polygon
 DETAIL_SAMPLE_DIST = 6 * CELL_SIZE  # Recast's sample-demo default (6 voxels)
 DETAIL_SAMPLE_MAX_ERROR = 2 * CELL_HEIGHT  # the detail mesh keeps within two voxel heights of the ground
-SNAP_MAX = 64.0  # a vertex within this of the ground is put back on it (Recast heights are voxel tops)
+SNAP_MAX = 256.0  # a vertex within this of the ground is put back on it: Recast heights are voxel tops, and at a
+# cliff edge the detail mesh takes its height from the column beside it (measured on the province at 64: 57
+# vertices left 65-208 units above the ground). The ground is the only collision yet, so every vertex is ground;
+# placed objects, when they join, are told apart by their source, not by this distance
 WELD_Z = 16.0  # detail vertices at one plan position within this height are one vertex
 BORDER_SAMPLES = 2  # the ground read beyond each cell edge (256 units, 8 voxels), so erosion and ledges see across
 WATER_MAX_DEPTH = 1000.0  # deeper water has no navmesh: vanilla water triangles lie on the bed, 99% within 953

@@ -40,6 +40,7 @@ FORM_VERSION = 44  # the SSE Creation Kit's (Skyrim.esm's own records say 40)
 NAVM_FIRST = 0x600000
 WATER, ROAD = 1, 2  # ArgoniaNav's area ids (63 is ground)
 EPS = 0.5  # units: a vertex this close to an open edge in plan lies on it
+MIN_PLAN_AREA = EPS * EPS / 2  # units^2: a split never makes a triangle smaller than this in plan
 
 
 def fid(local: int) -> int:
@@ -111,6 +112,23 @@ def _on_segment(p, a, b) -> float | None:
     return s if qx * qx + qy * qy <= EPS * EPS else None
 
 
+def fan_points(m: Mesh, a: int, b: int, c: int, pts: list[tuple[float, int]]) -> list[tuple[float, int]]:
+    """The points (in order along a-b) to split at, leaving out any that would make a fan triangle (p, q, c) of
+    zero area in plan: a point within a unit or two of a corner can lie on the line to c (3 in the province)."""
+    v = m.verts
+
+    def ok(p, q):
+        return abs(plan_cross(v[p], v[q], v[c])) > 2 * MIN_PLAN_AREA
+    out, prev = [], a
+    for s, i in pts:
+        if ok(prev, i):
+            out.append((s, i))
+            prev = i
+    while out and not ok(out[-1][1], b):
+        out.pop()
+    return out
+
+
 def split_open_edges(m: Mesh, points_for) -> int:
     """Split open edges at the points `points_for(a, b)` returns ([(s, vertex index)]); repeat until none."""
     n = 0
@@ -122,8 +140,10 @@ def split_open_edges(m: Mesh, points_for) -> int:
             ti, k = uses[0]
             if ti in todo:
                 continue
-            a, b = m.tris[ti][k], m.tris[ti][(k + 1) % 3]
-            pts = points_for(m, a, b)
+            a, b, c = m.tris[ti][k], m.tris[ti][(k + 1) % 3], m.tris[ti][(k + 2) % 3]
+            # never the triangle's own corner (that makes a zero-area triangle), each point once
+            pts = sorted({v: s for s, v in points_for(m, a, b) if v not in (a, b, c)}.items(), key=lambda vs: (vs[1], vs[0]))
+            pts = fan_points(m, a, b, c, [(s, v) for v, s in pts])
             if pts:
                 todo[ti] = (k, pts)
         if not todo:
@@ -131,7 +151,7 @@ def split_open_edges(m: Mesh, points_for) -> int:
         for ti, (k, pts) in sorted(todo.items()):
             t = m.tris[ti]
             a, b, c = t[k], t[(k + 1) % 3], t[(k + 2) % 3]
-            chain = [a] + [v for _, v in sorted(pts)] + [b]
+            chain = [a] + [v for _, v in pts] + [b]
             new = [[chain[i], chain[i + 1], c] for i in range(len(chain) - 1)]
             m.tris[ti] = new[0]
             m.tris.extend(new[1:])
@@ -152,6 +172,26 @@ class VertexHash:
         for gx in range(int(min(a[0], b[0]) // s) - 1, int(max(a[0], b[0]) // s) + 2):
             for gy in range(int(min(a[1], b[1]) // s) - 1, int(max(a[1], b[1]) // s) + 2):
                 yield from self.b.get((gx, gy), ())
+
+
+def drop_slivers(m: Mesh) -> int:
+    """Remove every triangle whose corner lies on its opposite edge in plan (within EPS): Recast's detail mesh
+    leaves a few along long polygon edges (7 in the province's 4.3 M), and splitting their open edge at that corner
+    made zero-area triangles. Without them, the T-junction repair splits the neighbours' edges at the corner."""
+    keep = []
+    for t in m.tris:
+        p = [m.verts[i] for i in t]
+        keep.append(not any(_on_segment(p[k], p[(k + 1) % 3], p[(k + 2) % 3]) is not None for k in range(3))
+                    and plan_cross(*p) != 0)
+    n = len(keep) - sum(keep)
+    if n:
+        m.tris = [t for t, ok in zip(m.tris, keep) if ok]
+        m.area = [a for a, ok in zip(m.area, keep) if ok]
+    return n
+
+
+def plan_cross(a, b, c) -> float:
+    return (b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0])
 
 
 def repair_t_junctions(m: Mesh) -> int:
@@ -323,6 +363,7 @@ def run(out: Path, box, grid: Grid, world_local: int) -> dict:
         if cy not in rows and y0 <= cy <= y1:
             rows[cy] = {x: m for x, m in raw_row(raw, cy).items() if m.tris}
             for m in rows[cy].values():
+                tot["slivers_dropped"] += drop_slivers(m)
                 tot["t_junction_splits"] += repair_t_junctions(m)
             seam_pts[cy] = {x: {s: seam_points(m, s) for s in "WESN"} for x, m in rows[cy].items()}
 

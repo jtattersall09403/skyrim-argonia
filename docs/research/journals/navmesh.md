@@ -61,9 +61,29 @@ at a hand-off. The lane report is `docs/research/2026-10-29/lane-2.W4-navmesh.md
 - **The voxel width is 16, not 32.** Recast's ledge filter refuses a span whose reachable neighbours differ by more
   than the climb, a slope cut of atan(climb / 2 cs): 26.6 degrees at 32, which dropped 42 % of the walkable dry
   ground on Claywater; 45 degrees at 16, the walkable angle. Cost: 4x the voxels (120 ms a cell on one core).
-- **Heights back on the ground.** Recast heights are voxel tops (vertex p99 44 units above, max 60 at cs 32); every
-  vertex within 64 units of the ground is put back on it (the mean of the quad's two triangulations). After that
-  the vertex error is 0 except where a seam split interpolates (max 18).
+- **Heights back on the ground.** Recast heights are voxel tops (vertex p99 44 units above, max 60 at cs 32), and at
+  a cliff edge the detail mesh takes a vertex's height from the column beside it: on the province, at a snap limit
+  of 64, 57 vertices were left 65-208 units above the ground (20 of them in water polygons), which failed the
+  heights check. The ground is the only collision so far, so every vertex is ground: the limit is 256, and every
+  vertex goes back on the ground (the mean of the quad's two triangulations). Afterwards the vertex error is 0
+  except where a seam split interpolates (max 13.6 on the boxes re-measured). Placed objects, when they join, will
+  be told apart by their source, not by this distance.
+- **No zero-area triangles.** Recast's detail mesh leaves slivers along long polygon edges, where a corner lies
+  within half a unit of the opposite edge in plan. When that edge was open, the T-junction repair split it at the
+  sliver's own corner, which made a zero-area triangle pair: 7 in the province's 4,299,037 (6 with a repeated
+  corner, 1 with three corners on one line, in cells (-55,56), (28,-18) and (-15,-51)). They showed up as the
+  heights check's `invalid value in divide`, a zero-length normal. Fix (`stitch.drop_slivers`, before the repair):
+  remove every triangle with a corner on its opposite edge in plan, so the repair splits the neighbours' edges at
+  that corner. The split also never uses the triangle's own corner, and uses each point once. The L1 check
+  `degenerate` (a repeated corner, or zero plan area) is in `green`. It failed on the pre-fix province (7) and
+  passes on the rebuilt boxes and Claywater (8 slivers dropped there, 0 degenerate).
+- **Voxel width, measured on Claywater** (walkable dry ground, by ground slope; L1 `coverage`):
+
+  | cs | under 30 deg | 30-40 | 40-45 | all walkable | road | islands (over 100 m2) | main m2 |
+  |---|---|---|---|---|---|---|---|
+  | 16 (production) | 97.6 % | 77.5 % | 23.7 % | 83.2 % | 97.5 % | 113 (21) | 154,363 |
+  | 32 | 89.2 % | 7.1 % | 0.1 % | 58.3 % | 91.4 % | 232 (52) | 73,818 |
+
 - **Seams** (`stitch.py`): each cell's open seam edges are split at the neighbour's seam vertices, so both sides
   have the same segments; each pair with both ends within 64 units in height is one Portal link each way. Links
   are symmetric by construction, and the check proves it.
@@ -73,6 +93,23 @@ at a hand-off. The lane report is `docs/research/2026-10-29/lane-2.W4-navmesh.md
   is vanilla data about vanilla roads, and is not copied (decisions 0003, 0012).
 - **FormIDs:** NAVM `0x600000` + the cell's index in the terrain grid (row-major from the grid's south-west cell),
   under the contract's masters (`Skyrim.esm`, then the plugin itself); Mutagen remaps on write.
+
+- **Claywater's islands are real unreachable ground.** The block has 113 islands, 21 of them over 100 m2 (105 to
+  924 m2). All 21 are dry: 0 % water and 0 % road. None can be a roof, because the ground is the only collision so
+  far. All lie on the block's mountain rows (cells y 8-9 and 14-15, z 4,500-12,200 units). On the whole-province
+  build, none of the 21 joins the province's main component (33.3 M m2). Nine are larger there, because they run
+  on past the block's edge (the largest, at (-59, 8), is 67,470 m2). In a 2,048-unit square around each one,
+  31-81 % of the ground is steeper than 45 degrees (max 55-72), with 1.9-3.2 thousand units of relief: they are
+  shelves cut off by slopes the agent cannot walk. Claywater Station itself (-232,874, 47,914; cell -57, 11) is on
+  the main component (the nearest triangle is 85 units away). No fix is needed. Whether the engine should get
+  Ledge links down off them is a question for the CK comparison.
+
+- **The province (12,083 cells, L1 green):** 4,298,892 triangles; degenerate 0; heights over 0; links 303,494, all
+  symmetric; NAVI 12,083 entries; road 98.4 %; walkable coverage 98.8 / 72.1 / 19.2 % (under 30, 30-40, 40-45 deg);
+  7,416 islands against a main component of 33.3 M m2. The build takes about 21-30 min at a peak of 857 MB (Recast
+  about 17 min on 4 threads). The sha256 `31e0537c…` is the same on a 4-thread and a 2-thread build. `make navmesh`
+  takes 26:37 at a peak of 1.56 GB (the plugin write), and ArgoniaWorld.esm is 195.6 MB with every NVNM
+  byte-identical.
 
 ## Open (owed)
 

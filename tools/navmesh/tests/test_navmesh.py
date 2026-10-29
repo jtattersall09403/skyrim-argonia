@@ -5,7 +5,7 @@ import struct
 import numpy as np
 
 from tools.argonia_world import skyrim_units as su
-from tools.navmesh import esm, nvnm, stitch
+from tools.navmesh import checks, esm, nvnm, stitch
 
 
 def square_nvnm() -> nvnm.Nvnm:
@@ -114,3 +114,39 @@ def test_finish_flags_links_water_and_road():
     assert len(linked) == st["links"] == 2
     assert {int(x) & 0xFFFFFF for x in n.links["navm"]} == {g.local(1, 0)}
     assert struct.unpack_from("<I", mi)[0] == stitch.fid(g.local(0, 0))
+
+
+def sliver_mesh() -> stitch.Mesh:
+    """A sliver (corner 2 within 0.3 units of edge 0-1 in plan, the edge open) beside a fan that shares its corner."""
+    verts = [[0.0, 0.0, 0.0], [200.0, 0.0, 0.0], [12.8, 0.3, 0.0], [100.0, 100.0, 0.0]]
+    tris = [[0, 1, 2], [0, 2, 3], [2, 1, 3]]
+    return stitch.Mesh(0, 0, verts, tris, [63] * 3)
+
+
+def test_an_open_edge_is_never_split_at_its_own_corner():
+    m = sliver_mesh()
+    stitch.repair_t_junctions(m)  # without the sliver pass the corner lies on the open edge 0-1
+    v, tv = np.array(m.verts), np.array(m.tris)
+    assert not checks.degenerate_mask(v, tv).any()
+
+
+def test_slivers_are_dropped_and_the_neighbours_close_over_the_corner():
+    m = sliver_mesh()
+    assert stitch.drop_slivers(m) == 1 and len(m.tris) == 2
+    stitch.repair_t_junctions(m)
+    v, tv = np.array(m.verts), np.array(m.tris)
+    assert not checks.degenerate_mask(v, tv).any()
+
+
+def test_the_degenerate_check_finds_repeated_and_collinear_corners():
+    v = np.array([[0, 0, 0], [10, 0, 0], [20, 0, 5], [0, 10, 0]], float)
+    tv = np.array([[0, 1, 3], [0, 1, 1], [0, 1, 2]])
+    assert checks.degenerate_mask(v, tv).tolist() == [False, True, True]
+
+
+def test_a_split_point_on_the_line_to_the_far_corner_is_left_out():
+    # edge 0-1 open; vertex 3 lies on it (within EPS), one unit from corner 0, on the line from 0 to the far corner 2
+    verts = [[0.0, 0.0, 0.0], [100.0, 0.4, 0.0], [-100.0, -0.4, 0.0], [1.0, 0.004, 0.0]]
+    m = stitch.Mesh(0, 0, verts, [[0, 1, 2]], [63])
+    # 2, 0 and 3 are on one line: (0, 3, 2) would have zero area
+    assert stitch.fan_points(m, 0, 1, 2, [(0.01, 3)]) == []
