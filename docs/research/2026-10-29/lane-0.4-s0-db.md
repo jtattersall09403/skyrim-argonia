@@ -81,3 +81,72 @@ Writes are one transaction with foreign keys deferred to `save()`. Nothing else 
 The FormID table is `formid` in `world/schema.sql` (entity key -> FormID, append-only); the allocator writes it
 through `w.insert("formid", ...)` and `w.save()`.
 
+
+## Continuation (2026-10-29): steps 1–9
+
+**Commits:** e62a0e5 (migration written), 494c417 (named checks, world-reads check, promise keys), ef720d0 (23 late
+FKs), 32e0822 (formid carried over, fact.ord, stance.person_id, make db), 3f9a1c6 (migrator writes only OWNED tables,
+schema end marker), 9d32f9c (skills on db.py, quest_record, sources and readers deleted, world part in the gate,
+98 rewritten), c9e6222 (linear load at scale, scale.py).
+
+**Acceptance (0.4 §0).**
+- **FK load and a dangling key refused:** passes. `db check` reports 514 tables and 112,813 rows (the world-track
+  lanes' tables included), green in 1.8 s with a 61 MB peak. A dangling key is refused at load, at save and at
+  quest import (test_db, test_quest_record).
+- **World-reads grep in the gate, made to fail once:**
+  - Before steps 4 and 6 it reported 110 real hits.
+  - A path planted in `tools/zz_planted.py` turned `make world` red (rc 2). With the path removed it was clean
+    (rc 0).
+  - It is also proved in test_checks.
+- **Briefs match the baselines except the listed diffs:**
+  - The 88 place briefs, 88/88, are byte-identical.
+  - The 2 journal briefs are identical.
+  - 9 LH38/MR01 cast briefs and 216 `.rc` outputs differ, only in the expected ways listed below.
+- **Tenfold, outside the gate:** `scale.py --factor 10` gave 1,122,846 rows. Both runs below were under
+  `systemd-run --user --scope -p MemoryMax=3G /usr/bin/time -v`.
+  - `db check`: green in 10.5 s, peak RSS 296 MB.
+  - `ARGONIA_WORLD_ROOT=out/scale make check`: 49.5 s, peak RSS 532 MB (the dotnet plugin step).
+- **Default `make check`:** 24.4 s, peak 285 MB. The `world` part is green. Two other parts are red, `unit` and
+  `plugin-check`. Both reds come from 2.W1's uncommitted terrain work (`tools/argonia_world/terrain/__main__.py`,
+  `test_land_writer.py`), which imports numpy, and numpy is not installed on the system python. They are not §0
+  paths.
+  - At 10x, world-reads also flagged two uncommitted lines from other lanes: `tools/ArgoniaGen/pipeline.py:140`
+    and `terrain/migrate.py:6`. They are those lanes' to fix.
+- **Verdict:** every §0 acceptance check passes. `make check` is red only on other lanes' uncommitted work.
+
+**Expected brief diffs (each listed):**
+1. The Role line now reads `(npc)`; it used to say `(npcs.json)`.
+2. `Factions:` shows the faction id where the old reader printed the dict (`{'factionId': ..., 'rank': None}`, its bug).
+3. `before witnesses (a council` becomes the whole phrase. The YAML repair is now applied at import.
+4. Map entries are listed in key order: the thing `states` (`after-70` before `before-70`) and cast `knowledge`.
+   Maps are keyed rows with no `ord`.
+5. Helstrom's 216 people: the old reader crashed on a facts file with no `world` block, exiting 1 with empty
+   stdout. The new one exits 1 with "no place facts for place.hist-heartland.helstrom".
+
+**Decisions taken:**
+- **Migrator ownership:** the migrator writes only the tables it migrates (OWNED). It leaves every other
+  `world/db/*.jsonl` table untouched, and keeps schema blocks and everything below the end marker. Tested with a
+  foreign table.
+- **Promise keys:** they were migrated so `groundedIn` resolves. The promise files stay in place.
+- **Fact order:** `fact.ord` keeps each place's and quest's fact order.
+- **Stance key:** `stance` is keyed by `person_id`, with a foreign key to `npc`.
+- **Late foreign keys:** 23 were added on context columns. Some id columns still lack keys because their families
+  are not tables yet (98 names them).
+- **Bool arguments:** these are typed from the vocabulary shape. An untyped SQLite value stores `true` as 1.
+- **Empty lists:** an empty stage list is no rows. brief.py requires only `id`, `place` and `journal`.
+- **Arity defaults:** term arity allows a trailing `bool` or count to be left out. Every authored record writes
+  `flag(x)` and `hasItem(x)` this way; 85 should say so (not my path).
+- **Quest topic rule:** I dropped the "new but already a topic" check. It is not a stated rule, and MR01 trips it.
+- **World-reads exceptions:**
+  - Skill instructions may send agents to the two families that are not yet tables (`lore`, `blueprints`), read
+    only.
+  - Exports under `quest-write/examples/` are exempt, because their `world/sources` strings are provenance
+    values.
+- **Pointing tools at another world:** `ARGONIA_WORLD_ROOT` points db.py at another world root.
+- **Concurrent cache builds:** these collided in a 4-way run (disk I/O errors). The cache now builds through a
+  per-process temp file.
+
+**Owed:**
+- The /code-review pass: the planner runs it in a fresh context.
+- `dialogue-write` writing lines as rows: that is 2.5's importer.
+- 85-condition-vocabulary.md should become the guide to `condition_term`.
