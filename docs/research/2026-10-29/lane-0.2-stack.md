@@ -74,3 +74,49 @@ manifest rows when it lands. The game machine is running (skse-build lane on it 
 - Plugins needing USSEP (Xalfek, Seashells) are laid as assets only; Boats Operational's ferry ESP dropped (needs an
   ESP the FOMOD did not install); BM&V lays `Black Marsh.esm` and its loose data, not Valenwood or Black Marsh North.
 - SkyParkour, SSE Engine Fixes and USSEP are not in the stack (coexistence untested; Engine Fixes for 1.7.x is a beta).
+
+## Continuation (2026-10-29, 20:17 to 22:20 UTC; hand-off at the context mark)
+
+**Committed:** e49b091, 6167396, 84edddd, b7caa0d (not pushed). The details are in `docs/research/journals/stack.md`.
+
+**Done and measured:**
+- **Install from bare Data reaches the main menu.** `stack.py install --skip-fetch --dev`: off removed 68,927 files; Pandora wrote 29 behaviour files from 10 mods; data loaded in 46 s; MAIN-MENU OK; 34 DLLs "loaded correctly" and 0 not. With Engine Fixes the count is 35 of 35 (`stack.py menu`). Wall clock 4:21; build-VM peak RSS 111 MB.
+- **Archives:** 98 of 98 match their manifest sha256 (`verify`, first half).
+- **Manifest complete:** every row has licence, permission_summary, ai_clause (no unknown: 63 "not stated: ask the author", 1 restricts AI, KotM, permission held by the owner), permission_ask, runtime (from the SKSE log), conflicts (from houseCARL) and linked_or_forked_by. The top-level `plugins` list (35, in load order) is what 0.4 reads.
+- **houseCARL:** 0 missing masters, 0 parse failures, every native class paired, 6 contested DLLs all intended (1.7 builds over base rows). The 374 dangling refs are upstream leftovers inside KotM (336), Depths (22), HTBM (15) and EREP (1), recorded per row. Report: `~/.argonia/stack/housecarl/`.
+- **Masters on the build VM:** 36 plugins, 44 mesh lists and `argonia-plugins.txt` in `~/games/skyrimse/Data`. 2.W1 and 2.W3 were told; 2.W1 re-checked LTEX (900d433).
+- **Sourcing register:** 99 rows (every mod, PresentMon 2.5.1, the ViGEm client).
+- **Permission drafts:** `~/argonia-private/permission-drafts/0.2-permission-drafts.md`, 52 authors, 49 messages; 3 are HELD (Dear Diary family, DSC 28567, KotM). The secret gist was **refused by the permission classifier** ("Public Data-Sharing Upload"). The owner, or a rule, must allow `gh gist create`, or the planner hands over the file another way.
+- **Fixes:**
+  - SkyLink is dropped: it fails on 1.7.104 (Address Library format 5). 0.3's ArgoniaBridge replaces it (built, not yet proved).
+  - Engine Fixes 7.0.21 added; Community Shaders had disabled itself without it.
+  - The CS shader cache is compiled (3,484 shaders, about 30 min, kept in Data\ShaderCache).
+  - The CS first-run modal is skipped by a seeded SettingsUser.json.
+  - Push streams 1 GB parts with a 10 GB disk reserve; the S3 archive cache, `evict` and `prune` exist.
+  - Fixed: the Data/ wrapper, tool rows, the Ferries FOMOD and housecarl.ps1's path.
+- **Incident:** the build VM disk hit 100 % at about 20:25, from push's 21 GB local tar of BM&V. Fixed as above.
+
+**Running at hand-off:** `stack-verify` (job_guard, not --gpu). The archives passed; the machine side hashes 69k files serially and had printed nothing for more than 15 min. Read `~/.argonia/jobs/stack-verify.log` for `VERIFY OK` or the `differs:`/`unrecorded:` lines. The game is still running at the main menu (from cs-compile), showing the CS modal; it is killed by the next `on`/`menu`. No GPU lock is held. The machine stays running for 0.3.
+
+**Fix first (planner):** make `stack.ps1 verify` fast and visible:
+- Compare size and mtime against a record written at `on` before hashing, and hash only what differs.
+- Hash in parallel (`ForEach-Object -Parallel` needs PS 7; on 5.1 use a runspace pool or `[System.Threading.Tasks.Parallel]`).
+- Print progress every 500 files.
+- Run the full rehash as its own job (`verify --full`).
+
+**What 0.2 acceptance still needs, fewest game slots** (one GPU slot of about 45 min covers 2 to 5):
+1. `verify`: the running job's verdict. If it is red, fix it and re-run after the speed-up. No game slot is needed.
+2. **The pad checks (§c), measured through `tools/bridge.py`** (0.3's, pattern: `Bridge().call("player")["pos"]`, `console`, `load`, `pad`):
+   - Port `infra/gpu-box/smoke.py`'s `sk()`/`player()`/`console()` from SkyLink to Bridge. The sequences are written: `dodge` is 8 directions plus a backstep, against a walk-only baseline, using pad.ps1's new `+LX=..:ms`/`-:ms` held sticks; `pad` is RB against RT stamina and `IsPowerAttacking`, LB held with `IsBlocking`, RS with a still.
+   - Load `argoniariverwood`. If a roll's distance is 0 or no more than the walk, bisect: disable dynamic-dodge (its OAR folders), then AMR, re-run `dodge`.
+   - The controlmap is regenerated and on the machine (RT on Right Attack/Block).
+3. **The smoke scene twice (§c):** Riverwood and Embershard: walk, draw, swing, roll, block, parry, lock on, FreeClimb wall, swim and dive, ladder, Sailable Ship. Open every menu with a still each, for the paper-theme check by a `reader`. Crash Logger and the Papyrus log are read after. Not started.
+4. **Frame time (§d):** `bridge.py frametime 300`, or `smoke.py frametime --label cs-on`, in Riverwood. Then CS off (remove the CommunityShaders.dll link after `on`, relaunch, `--label cs-off`). Record median, 1 % low, GPU-active and whether CPU or GPU bound on g4dn.xlarge against the bar of 60/45.
+5. **Latency (§d):** `tooling/job_guard.sh run stream-e2e -- infra/stream-client/e2e/e2e.sh` with the game in world. It must be within 10 ms of 0.0's 37.9 ms keyboard median.
+6. Docs:
+   - Write the numbers into infra/README.md (a "Game stack" section: stack.py commands, the disk rules, the CS cache) and decision 0007.
+   - The 0.2 Outcome, 0.3's Starting state and PROGRESS 0.2.
+   - Delete `combat_test_stage.py` and `combat-test-mods.json`, and fix the two citations (1.6 brief:12, 0019:47).
+   - Run `make check`.
+- Not done and not gating: the S3 `evict` run (17 GB local archives, not yet cached except BM&V) and `prune` (needs verify green). Both free build-VM disk.
+- Also open: the AWS month-to-date overspend in the first hand-off ($357 against $100).
