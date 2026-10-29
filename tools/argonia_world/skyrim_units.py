@@ -2,7 +2,10 @@
 the units module"). Every other module converts through these names; a literal 70.03, 4096 or 0x800 elsewhere
 is a bug the gate's grep finds (tests/test_skyrim_units.py).
 
-World frame: metres, x east, y north, z up, yaw degrees clockwise from north (the imported records' frame).
+World frame: metres, x east, z up, yaw degrees clockwise from north (the imported records' frame). The imported
+province records' y runs SOUTH from the province's north-west corner (old 0003 "X east, Z south"; measured by 2.W1
+on 2026-10-29: route-grade profiles sit on the heightfield at row = y / sample, row 0 is the north edge), so an
+exterior position goes through `province_to_skyrim`, never `metres_to_units` on y alone.
 Skyrim frame: units, same axes, rotations in radians applied Z then Y then X (Euler ZYX, extrinsic).
 """
 from __future__ import annotations
@@ -82,3 +85,43 @@ SKYRIM_SKILLS = ("OneHanded", "TwoHanded", "Archery", "Block", "Smithing", "Heav
                  "Destruction", "Illusion", "Restoration", "Enchanting")
 CLAS_WEIGHT_MAJOR, CLAS_WEIGHT_MINOR = 3, 1  # CLAS skill weights: relative, levelled NPCs only
 CLAS_MAX_TRAINING = 50  # the CK's default training cap
+
+# --- the province grid and LAND (2.W1; measured against Skyrim.esm's Tamriel LAND on 2026-10-29) -------------
+# The frozen heightfield is 4033 x 4033 samples, row 0 the NORTH edge, column 0 the west edge, one sample per
+# LAND vertex. Its sample is 1.82784 m (the hydrology solution's `mpp`), 128 units on the grid: positions on the
+# province map to units through the grid (x_m / PROVINCE_SAMPLE_M * VERTEX_SPACING_UNITS), 70.028 units/m, so a
+# placed thing and the ground under it share one conversion; heights use UNITS_PER_METRE (the 0.003 % gap is
+# 0.2 m across the whole province, under any check).
+PROVINCE_SAMPLE_M = 1.82784
+PROVINCE_SAMPLES = 4033
+QUADS_PER_CELL = LAND_VERTS - 1  # 32
+PROVINCE_CELLS = (PROVINCE_SAMPLES - 1) // QUADS_PER_CELL  # 126
+PROVINCE_CELL_SW = (-62, -62)  # the province's south-west cell (the old ESP export's -62..63 range, centred)
+APRON_CELLS = 68  # the near apron ring beyond each border, in cells (the old apron-source-near pad of 2176 samples)
+# VHGT: a float offset then 33 x 33 signed bytes; every value is in VHGT_STEP_UNITS steps (the offset too:
+# 0 seams across 42 vanilla cell pairs with offset * 8, 973 units with offset * 1). Mutagen's HeightMap is
+# indexed [x, y]: x the column west->east, y the row south->north; [0, y] is relative to [0, y-1], [x, y] to
+# [x-1, y]. VNML is 33 x 33 signed-byte unit normals scaled by VNML_SCALE ([20, 14, 124] on vanilla 0,0), the same
+# [x, y]; VCLR 33 x 33 RGB, white = untinted.
+VHGT_DELTA_MAX = 127
+VNML_SCALE = 127
+# Texture layers: four quadrants of 17 x 17 vertices (Mutagen Quadrant BottomLeft, BottomRight, TopLeft, TopRight
+# = SW, SE, NW, NE); a VTXT position is x + 17 * y within the quadrant (shared quadrant edges agree to 0.003 mean
+# opacity over 3,157 vanilla cells read this way, 0.22 the other way); at most LAND_QUADRANT_LAYERS alpha layers
+# over one base layer per quadrant (vanilla's maximum, measured: 6).
+QUADRANT_VERTS = QUADS_PER_CELL // 2 + 1  # 17
+QUADRANTS = ("BottomLeft", "BottomRight", "TopLeft", "TopRight")
+
+
+def province_to_skyrim(x_m: float, y_south_m: float) -> tuple[float, float]:
+    """An imported province position (x east, y south from the north-west corner, metres) as Skyrim units."""
+    x0, y0 = PROVINCE_CELL_SW
+    span = (PROVINCE_SAMPLES - 1) * VERTEX_SPACING_UNITS
+    x = x0 * CELL_UNITS + x_m / PROVINCE_SAMPLE_M * VERTEX_SPACING_UNITS
+    y = y0 * CELL_UNITS + span - y_south_m / PROVINCE_SAMPLE_M * VERTEX_SPACING_UNITS
+    return x, y
+
+
+def height_to_steps(z_m):
+    """Metres above sea (scalar or numpy array) as VHGT steps, unrounded."""
+    return z_m * (UNITS_PER_METRE / VHGT_STEP_UNITS)
