@@ -25,7 +25,9 @@ TUNNEL = "argonia-play"
 ROUTES = {
     "play": ("http://localhost:8080", [("/argonia-metrics.*", "http://localhost:8091")]),
     "dcv": ("https://localhost:8443", []),
+    "sunshine": ("https://localhost:47990", []),   # Sunshine's own page: the PIN for pairing the Moonlight app
 }
+HOST_RECORD = "host"   # host.<domain>: the machine's public IP for the Moonlight app (DNS only; the Worker keeps it)
 
 
 def secrets():
@@ -129,7 +131,10 @@ def worker():
     meta = {"main_module": "play-switch.js", "compatibility_date": "2026-10-01", "bindings": [
         {"type": "secret_text", "name": "AWS_KEY_ID", "text": env["AWS_SWITCH_KEY_ID"]},
         {"type": "secret_text", "name": "AWS_SECRET", "text": env["AWS_SWITCH_SECRET"]},
-        {"type": "plain_text", "name": "NIGHT_STOP", "text": NIGHT_STOP}]}
+        {"type": "plain_text", "name": "NIGHT_STOP", "text": NIGHT_STOP},
+        {"type": "secret_text", "name": "CF_TOKEN", "text": env["CLOUDFLARE_API_TOKEN"]},
+        {"type": "plain_text", "name": "CF_ZONE", "text": zone_id()},
+        {"type": "plain_text", "name": "HOST_NAME", "text": f"{HOST_RECORD}.{DOMAIN}"}]}
     b = uuid.uuid4().hex
     body = (f"--{b}\r\nContent-Disposition: form-data; name=\"metadata\"\r\nContent-Type: application/json\r\n\r\n"
             f"{json.dumps(meta)}\r\n--{b}\r\nContent-Disposition: form-data; name=\"play-switch.js\"; "
@@ -146,7 +151,7 @@ def worker():
        [{"cron": "*/30 * * * *"}, {"cron": NIGHT_STOP}])
     zid = zone_id()
     have = {r["pattern"] for r in cf("GET", f"/zones/{zid}/workers/routes")}
-    for prefix in ROUTES:
+    for prefix in ("play", "dcv"):
         pattern = f"{prefix}.{DOMAIN}/*"
         if pattern not in have:
             cf("POST", f"/zones/{zid}/workers/routes", {"pattern": pattern, "script": "argonia-play-switch"})

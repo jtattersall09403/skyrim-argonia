@@ -5,7 +5,8 @@
 // - Cost backstops, independent of the machine (scheduled): stop it if it has run longer than MAX_HOURS, and
 //   stop it every night at the NIGHT_STOP cron.
 // Secrets (Worker bindings): AWS_KEY_ID, AWS_SECRET (an IAM user allowed only to describe, start and stop
-// Name=argonia-play). Deployed by infra/gpu-box/cloudflare_gate.py worker.
+// Name=argonia-play); CF_TOKEN, CF_ZONE, HOST_NAME keep host.<domain> (DNS only) on the machine's public IP for
+// the Moonlight app, whose address changes at every start. Deployed by infra/gpu-box/cloudflare_gate.py worker.
 
 const REGION = "eu-west-2"
 const NAME = "argonia-play"
@@ -14,7 +15,11 @@ const MAX_HOURS = 8
 export default {
   async fetch(request, env) {
     const url = new URL(request.url)
-    if (url.pathname === "/argonia/status") return json(await state(env))
+    if (url.pathname === "/argonia/status") {
+      const s = await state(env)
+      if (s.ip) await syncHost(env, s.ip)
+      return json(s)
+    }
     if (url.pathname === "/argonia/stop") {
       const s = await state(env)
       if (s.state === "running" || s.state === "pending") await ec2(env, { Action: "StopInstances", "InstanceId.1": s.id })
@@ -29,6 +34,7 @@ export default {
 
   async scheduled(event, env) {
     const s = await state(env)
+    if (s.ip) await syncHost(env, s.ip)
     if (s.state !== "running") return
     const hours = (Date.now() - Date.parse(s.launched)) / 3.6e6
     if (event.cron === env.NIGHT_STOP || hours > MAX_HOURS) await ec2(env, { Action: "StopInstances", "InstanceId.1": s.id })
@@ -37,6 +43,7 @@ export default {
 
 async function startPage(env) {
   const s = await state(env)
+  if (s.ip) await syncHost(env, s.ip)
   if (s.state === "stopped") {
     await ec2(env, { Action: "StartInstances", "InstanceId.1": s.id })
     return page("Starting the game machine", "Usually under a minute. This page turns into the stream as soon as it is ready.", true)
@@ -44,6 +51,17 @@ async function startPage(env) {
   if (s.state === "stopping") return page("The game machine is still switching off", "Give it a minute; this page will start it again.", true)
   if (s.state === "running") return page("The game machine is on; its desktop is starting", "Usually under two minutes.", true)
   return page("Starting the game machine", `It is ${s.state}. This page reloads into the stream when it is ready.`, true)
+}
+
+// host.<domain> follows the machine's public IP (an A record, not proxied: the Moonlight app needs the real address).
+async function syncHost(env, ip) {
+  if (!env.CF_TOKEN || !env.CF_ZONE || !env.HOST_NAME) return
+  const api = `https://api.cloudflare.com/client/v4/zones/${env.CF_ZONE}/dns_records`
+  const h = { authorization: `Bearer ${env.CF_TOKEN}`, "content-type": "application/json" }
+  const found = (await (await fetch(`${api}?type=A&name=${env.HOST_NAME}`, { headers: h })).json()).result?.[0]
+  if (found?.content === ip) return
+  const body = JSON.stringify({ type: "A", name: env.HOST_NAME, content: ip, ttl: 60, proxied: false })
+  await fetch(found ? `${api}/${found.id}` : api, { method: found ? "PUT" : "POST", headers: h, body })
 }
 
 function page(title, text, refresh) {
@@ -63,7 +81,8 @@ async function state(env) {
   const id = /<instanceId>(i-[0-9a-f]+)<\/instanceId>/.exec(items)?.[1]
   const st = /<instanceState>[\s\S]*?<name>([a-z-]+)<\/name>/.exec(items)?.[1] ?? "missing"
   const launched = /<launchTime>([^<]+)<\/launchTime>/.exec(items)?.[1] ?? null
-  return { id, state: st, launched }
+  const ip = /<ipAddress>([0-9.]+)<\/ipAddress>/.exec(items)?.[1] ?? null
+  return { id, state: st, launched, ip }
 }
 
 // EC2 Query API with Signature Version 4 (WebCrypto; no dependencies).
