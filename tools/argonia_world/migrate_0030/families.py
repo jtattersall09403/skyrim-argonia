@@ -174,8 +174,31 @@ def vocabulary_rows():
     return rows
 
 
+# References the family specs left as plain text (context columns, ids found by the post-migration audit): each
+# resolves in full on the migrated data. The id columns still without a key point at families not yet tabled
+# (sockets by id, water bodies, sites, slots, magic effects, assets); their chunks add the key with the table.
+LATE_FK = {
+    "culture_sheet.region_id": "region", "dialogue_line.place_id": "place", "fact.place_id": "place",
+    "fact.quest_id": "quest", "npc.home_place_id": "place", "npc_home_bed.place_id": "place",
+    "npc_territory.area_id": "place", "place_life_groups_spots.bed_place_id": "place",
+    "place_watch.answers_id": "faction", "place_zones.owner_id": "npc", "route_structure.way_id": "route",
+    "route_structure_exemplar.ends_east_place_id": "place", "route_structure_exemplar.ends_west_way_id": "route",
+    "route_structure_exemplar.ends_southeast_way_id": "route",
+    "route_structure_exemplar.ends_northwest_way_id": "route",
+    "route_structure_exemplar_structures.crossing_id": "water_crossing",
+    "route_structure_exemplar_structures.junction_id": "junction", "stance.place_id": "place",
+    "travel_road_edge.road_id": "route", "travel_service.operator_nearest_place_id": "place",
+    "travel_service.operator_socket_station_id": "travel_station",
+    "travel_station_operator.socket_station_id": "rootworm_station", "water_crossing.nearest_place_id": "place",
+}
+
+
 def finish(eng):
     eng.terms = vocabulary_rows()
+    for ref, target in LATE_FK.items():
+        t, c = ref.split(".")
+        if t in eng.tables and c in eng.tables[t].cols:
+            eng.tables[t].cols[c].fk = target
     # The promise family stays unmigrated (the place builds own it), but its keys come in now: a journal entry's
     # `groundedIn` names a fact or a promise, and the named check needs the promise ids to resolve. Read without
     # entering MIGRATED: the promise files stay in world/sources until their family migrates.

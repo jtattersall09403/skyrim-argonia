@@ -449,7 +449,7 @@ CREATE TABLE "npc" (
   "role" TEXT NOT NULL,
   "archetype" TEXT,
   "hostility" TEXT NOT NULL REFERENCES "hostility_stance"("id"),
-  "home_place_id" TEXT NOT NULL,
+  "home_place_id" TEXT NOT NULL REFERENCES "place"("id"),
   "home_slot_index" INTEGER,
   "home_home_socket_id" TEXT,
   "home_home_activity" TEXT,
@@ -526,7 +526,7 @@ CREATE TABLE "npc_home_bed" (
   "npc_id" TEXT NOT NULL,
   "socket_id" TEXT,
   "activity" TEXT NOT NULL,
-  "place_id" TEXT,
+  "place_id" TEXT REFERENCES "place"("id"),
   PRIMARY KEY ("npc_id"),
   FOREIGN KEY ("npc_id") REFERENCES "npc" ("id") ON DELETE CASCADE
 );
@@ -600,7 +600,7 @@ CREATE TABLE "npc_den" (
 -- Home of the optional block `territory` of each npc row (ordered by `ord` where it has one).
 CREATE TABLE "npc_territory" (
   "npc_id" TEXT NOT NULL,
-  "area_id" TEXT NOT NULL,
+  "area_id" TEXT NOT NULL REFERENCES "place"("id"),
   "radius_m" INTEGER NOT NULL,
   PRIMARY KEY ("npc_id"),
   FOREIGN KEY ("npc_id") REFERENCES "npc" ("id") ON DELETE CASCADE
@@ -1987,7 +1987,7 @@ CREATE TABLE "place_zones" (
   "ord" INTEGER NOT NULL,
   "id" TEXT NOT NULL,
   "owner_kind" TEXT NOT NULL,
-  "owner_id" TEXT NOT NULL,
+  "owner_id" TEXT NOT NULL REFERENCES "npc"("id"),
   "hours_x" REAL NOT NULL,
   "hours_y" REAL NOT NULL,
   "volume_kind" TEXT NOT NULL,
@@ -2000,7 +2000,7 @@ CREATE TABLE "place_zones" (
 CREATE TABLE "place_watch" (
   "place_id" TEXT NOT NULL,
   "answers_kind" TEXT NOT NULL,
-  "answers_id" TEXT NOT NULL,
+  "answers_id" TEXT NOT NULL REFERENCES "faction"("id"),
   "radius_m" REAL NOT NULL,
   "custody_post" TEXT NOT NULL,
   "custody_light_fixture" TEXT,
@@ -2070,7 +2070,7 @@ CREATE TABLE "place_life_groups_spots" (
   "home_activity" TEXT NOT NULL,
   "bed_socket_id" TEXT,
   "bed_activity" TEXT NOT NULL,
-  "bed_place_id" TEXT,
+  "bed_place_id" TEXT REFERENCES "place"("id"),
   PRIMARY KEY ("place_id", "groups_ord"),
   FOREIGN KEY ("place_id", "groups_ord") REFERENCES "place_life_groups" ("place_id", "ord") ON DELETE CASCADE
 );
@@ -3605,13 +3605,13 @@ CREATE TABLE "fact" (
   "kind" TEXT,
   "carrier_built_uid" TEXT,
   "carrier_built_type" TEXT,
-  "place_id" TEXT,
+  "place_id" TEXT REFERENCES "place"("id"),
   "carrier_queued_type" TEXT,
   "carrier_queued_ref" TEXT,
   "tag" TEXT,
   "provision" TEXT,
   "from_ref" TEXT,
-  "quest_id" TEXT,
+  "quest_id" TEXT REFERENCES "quest"("id"),
   PRIMARY KEY ("id")
 );
 
@@ -3945,7 +3945,7 @@ CREATE TABLE "dialogue_line" (
   "available" TEXT REFERENCES "condition"("id"),
   "variants_low" TEXT,
   "variants_high" TEXT,
-  "place_id" TEXT,
+  "place_id" TEXT REFERENCES "place"("id"),
   "pool" TEXT,
   "slot" TEXT,
   "keys_topic" TEXT REFERENCES "topic"("id"),
@@ -3993,7 +3993,7 @@ CREATE TABLE "culture_sheet" (
   "rank" TEXT,
   "race" TEXT REFERENCES "race"("id"),
   "upbringing" TEXT,
-  "region_id" TEXT,
+  "region_id" TEXT REFERENCES "region"("id"),
   "place_id" TEXT REFERENCES "place"("id"),
   PRIMARY KEY ("id")
 );
@@ -4067,7 +4067,7 @@ CREATE TABLE "stance" (
   "voice_address_term" TEXT NOT NULL,
   "voice_favourite_subject" TEXT NOT NULL,
   "reviewed" BOOLEAN NOT NULL CHECK ("reviewed" IN (0, 1)),
-  "place_id" TEXT NOT NULL,
+  "place_id" TEXT NOT NULL REFERENCES "place"("id"),
   PRIMARY KEY ("personId")
 );
 
@@ -4305,21 +4305,21 @@ CREATE TABLE "route_structure_exemplar" (
   "why_occupants_motive" TEXT NOT NULL,
   "why_pressures" TEXT NOT NULL,
   "why_would_change_if" TEXT NOT NULL,
-  "ends_east_place_id" TEXT,
+  "ends_east_place_id" TEXT REFERENCES "place"("id"),
   "ends_east_via" TEXT,
   "ends_east_at_m_x" REAL,
   "ends_east_at_m_y" REAL,
-  "ends_west_way_id" TEXT,
+  "ends_west_way_id" TEXT REFERENCES "route"("id"),
   "ends_west_towards" TEXT,
   "ends_west_at_m_x" REAL,
   "ends_west_at_m_y" REAL,
   "dressing_rules" TEXT NOT NULL,
   "dressing_evidence" TEXT NOT NULL,
-  "ends_southeast_way_id" TEXT,
+  "ends_southeast_way_id" TEXT REFERENCES "route"("id"),
   "ends_southeast_towards" TEXT,
   "ends_southeast_at_m_x" REAL,
   "ends_southeast_at_m_y" REAL,
-  "ends_northwest_way_id" TEXT,
+  "ends_northwest_way_id" TEXT REFERENCES "route"("id"),
   "ends_northwest_towards" TEXT,
   "ends_northwest_at_m_x" REAL,
   "ends_northwest_at_m_y" REAL,
@@ -4337,9 +4337,9 @@ CREATE TABLE "route_structure_exemplar_structures" (
   "ord" INTEGER NOT NULL,
   "kind" TEXT NOT NULL,
   "id" TEXT NOT NULL,
-  "crossing_id" TEXT,
+  "crossing_id" TEXT REFERENCES "water_crossing"("id"),
   "built_by" TEXT NOT NULL,
-  "junction_id" TEXT,
+  "junction_id" TEXT REFERENCES "junction"("id"),
   "status" TEXT,
   "pending_why" TEXT,
   PRIMARY KEY ("route_structure_exemplar_id", "ord"),
@@ -4407,7 +4407,7 @@ CREATE TABLE "route_structure" (
   "rise_m" REAL NOT NULL,
   "sourcing" TEXT NOT NULL,
   "to_m" REAL NOT NULL,
-  "way_id" TEXT NOT NULL,
+  "way_id" TEXT NOT NULL REFERENCES "route"("id"),
   "why" TEXT NOT NULL,
   "window_from_m" REAL NOT NULL,
   "window_to_m" REAL NOT NULL,
@@ -4468,7 +4468,7 @@ CREATE TABLE "travel_harbour_station" (
 CREATE TABLE "travel_road_edge" (
   "ord" INTEGER NOT NULL,
   "from" TEXT NOT NULL,
-  "road_id" TEXT NOT NULL,
+  "road_id" TEXT NOT NULL REFERENCES "route"("id"),
   "to" TEXT NOT NULL,
   "why" TEXT NOT NULL,
   PRIMARY KEY ("ord")
@@ -4493,10 +4493,10 @@ CREATE TABLE "travel_service" (
   "available" TEXT REFERENCES "condition"("id"),
   "fare_gold" INTEGER NOT NULL,
   "form" TEXT NOT NULL,
-  "operator_nearest_place_id" TEXT,
+  "operator_nearest_place_id" TEXT REFERENCES "place"("id"),
   "operator_role" TEXT NOT NULL,
   "operator_slot_id" TEXT NOT NULL,
-  "operator_socket_station_id" TEXT NOT NULL,
+  "operator_socket_station_id" TEXT NOT NULL REFERENCES "travel_station"("id"),
   "quest_use" TEXT,
   "service_kind" TEXT NOT NULL,
   "status" TEXT NOT NULL,
@@ -4710,7 +4710,7 @@ CREATE TABLE "travel_station_operator" (
   "travel_station_id" TEXT NOT NULL,
   "role" TEXT NOT NULL,
   "slot_id" TEXT NOT NULL,
-  "socket_station_id" TEXT NOT NULL,
+  "socket_station_id" TEXT NOT NULL REFERENCES "rootworm_station"("id"),
   PRIMARY KEY ("travel_station_id"),
   FOREIGN KEY ("travel_station_id") REFERENCES "travel_station" ("id") ON DELETE CASCADE
 );
@@ -4798,7 +4798,7 @@ CREATE TABLE "water_crossing" (
   "position_m_y" REAL NOT NULL,
   "span_m" REAL NOT NULL,
   "max_depth_m" REAL NOT NULL,
-  "nearest_place_id" TEXT NOT NULL,
+  "nearest_place_id" TEXT NOT NULL REFERENCES "place"("id"),
   "nearest_place_name" TEXT NOT NULL,
   "nearest_place_m" REAL NOT NULL,
   "band" TEXT NOT NULL,
