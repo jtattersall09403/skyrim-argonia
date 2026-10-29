@@ -35,8 +35,7 @@ want="$(ver node)"; ndir="$HOME/.argonia/node/$want"
 if [ ! -x "$ndir/bin/node" ]; then
   a="node-v$want-linux-x64.tar.xz"
   curl -fsSL "https://nodejs.org/dist/v$want/$a" -o "$tmp/$a"
-  curl -fsSL "https://nodejs.org/dist/v$want/SHASUMS256.txt" -o "$tmp/SHASUMS256.txt"
-  (cd "$tmp" && grep " $a\$" SHASUMS256.txt | sha256sum -c - >/dev/null)
+  echo "$(sha node)  $tmp/$a" | sha256sum -c - >/dev/null
   mkdir -p "$ndir"; tar -xJf "$tmp/$a" -C "$ndir" --strip-components=1
 fi
 mkdir -p "$HOME/.local/bin"; ln -sfn "$ndir/bin/node" "$HOME/.local/bin/node"
