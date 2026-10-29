@@ -2,3 +2,4 @@
 # Read by skse/CMakeLists.txt (a release build skips and refuses them), by infra/gpu-box/skse_build.ps1 (they
 # deploy into the dev-only mod folder, never the dist one), and by the release guard when 3.4 builds it.
 ArgoniaBridge.dll
+SkyrimMCPPlugin.dll

@@ -1,0 +1,83 @@
+diff --git a/SkyrimMCPPlugin/src/Helpers.h b/SkyrimMCPPlugin/src/Helpers.h
+index 503c84f..8e275d8 100644
+--- a/SkyrimMCPPlugin/src/Helpers.h
++++ b/SkyrimMCPPlugin/src/Helpers.h
+@@ -197,7 +197,7 @@ namespace SkyrimMCP::Helpers {
+         RE::COMPILER_NAME name, RE::TESObjectREFR* targetRef) {
+         using func_t = decltype(CompileAndRunImpl);
+         REL::Relocation<func_t> func{
+-            RELOCATION_ID(21416, REL::Module::get().version().patch() < 1130 ? 21890 : 441582)
++            RELOCATION_ID(21416, REL::Module::get().version() < SKSE::RUNTIME_SSE_1_6_1130 ? 21890 : 441582)  // Argonia: 1.7.x has patch < 1130 but takes the post-1130 id
+         };
+         return func(script, compiler, name, targetRef);
+     }
+diff --git a/SkyrimMCPPlugin/src/NPCManager.cpp b/SkyrimMCPPlugin/src/NPCManager.cpp
+index 9b166a2..74d8c87 100644
+--- a/SkyrimMCPPlugin/src/NPCManager.cpp
++++ b/SkyrimMCPPlugin/src/NPCManager.cpp
+@@ -380,7 +380,7 @@ namespace SkyrimMCP::NPCManager {
+         json result;
+ 
+         // Check for targeted object/actor
+-        auto targetHandle = pickData->target;
++        auto targetHandle = pickData->GetActiveTarget();  // Argonia: the field is per-runtime in this CommonLib
+         auto targetPtr = targetHandle.get();
+         if (targetPtr) {
+             auto* ref = targetPtr.get();
+diff --git a/SkyrimMCPPlugin/src/PapyrusBridge.cpp b/SkyrimMCPPlugin/src/PapyrusBridge.cpp
+index efbd083..f48c0e0 100644
+--- a/SkyrimMCPPlugin/src/PapyrusBridge.cpp
++++ b/SkyrimMCPPlugin/src/PapyrusBridge.cpp
+@@ -252,7 +252,7 @@ namespace SkyrimMCP::PapyrusBridge {
+                               const std::string& functionName,
+                               const json& args) {
+         auto* vm = RE::SkyrimVM::GetSingleton();
+-        if (!vm || !vm->impl) {
++        if (!vm || !vm->GetVMRuntimeData().impl) {
+             return {{"error", "Papyrus VM not available"}};
+         }
+ 
+@@ -301,7 +301,7 @@ namespace SkyrimMCP::PapyrusBridge {
+         auto future = callbackPtr->promise.get_future();
+ 
+         // Dispatch the call
+-        bool dispatched = vm->impl->DispatchStaticCall(
++        bool dispatched = vm->GetVMRuntimeData().impl->DispatchStaticCall(
+             RE::BSFixedString(className),
+             RE::BSFixedString(functionName),
+             funcArgs,
+diff --git a/SkyrimMCPPlugin/src/PlayerQueries.cpp b/SkyrimMCPPlugin/src/PlayerQueries.cpp
+index ee634a4..87e8598 100644
+--- a/SkyrimMCPPlugin/src/PlayerQueries.cpp
++++ b/SkyrimMCPPlugin/src/PlayerQueries.cpp
+@@ -209,7 +209,7 @@ namespace SkyrimMCP::PlayerQueries {
+             seen.insert(item->GetFormID());
+             json e;
+             e["slot"] = slotName;
+-            e["slotMask"] = static_cast<uint32_t>(item->GetSlotMask());
++            e["slotMask"] = item->GetSlotMask().underlying();  // Argonia: an EnumSet in this CommonLib
+             e["formId"] = std::format("{:08X}", item->GetFormID());
+             e["name"] = item->GetName();
+             equipped.push_back(e);
+diff --git a/SkyrimMCPPlugin/src/UtilityManager.cpp b/SkyrimMCPPlugin/src/UtilityManager.cpp
+index e686008..76c6e14 100644
+--- a/SkyrimMCPPlugin/src/UtilityManager.cpp
++++ b/SkyrimMCPPlugin/src/UtilityManager.cpp
+@@ -13,7 +13,7 @@ namespace SkyrimMCP::UtilityManager {
+     using json = nlohmann::json;
+ 
+     json ShowNotification(const std::string& message) {
+-        RE::DebugNotification(message.c_str());
++        RE::SendHUDMessage::ShowHUDMessage(message.c_str());
+         return {{"shown", true}, {"message", message}};
+     }
+ 
+@@ -347,7 +347,7 @@ namespace SkyrimMCP::UtilityManager {
+         }
+ 
+         saveLoadManager->Save(saveName.c_str());
+-        RE::DebugNotification("Game Saved");
++        RE::SendHUDMessage::ShowHUDMessage("Game Saved");
+         return {{"saved", true}, {"saveName", saveName}};
+     }
+ 

@@ -128,8 +128,9 @@ std::string teleport(const Request& req) {
     auto* script = factory ? factory->Create() : nullptr;
     if (!script) return reply_error("teleport", "no script factory");
     script->SetCommand("coc " + target);
-    script->CompileAndRun(p);
+    bool ran = compile_and_run_guarded(script, p);
     delete script;
+    if (!ran) return reply_error("teleport", "coc " + target + " faulted inside the game (caught)");
     return reply_ok("teleport", "true");
   });
   if (started.find("\"ok\":true") == std::string::npos) return started;

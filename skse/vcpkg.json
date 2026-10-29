@@ -26,6 +26,10 @@
     {
       "name": "rapidcsv",
       "version>=": "8.99"
+    },
+    {
+      "name": "nlohmann-json",
+      "version>=": "3.11.3"
     }
   ]
 }

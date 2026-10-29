@@ -17,6 +17,20 @@ struct Register {
 std::string on_main_thread(const std::string& cmd, std::function<std::string()> fn,
                            std::chrono::milliseconds timeout = 3s);
 
+// Runs a console line already set on `script` (SetCommand) under SEH, so a line that faults inside the game's
+// compiler or a command handler comes back as false (a refusal) instead of killing the game. The shape is
+// SkyLink AI's RunScriptSEH (github.com/jarvann/SkryimMCM, SkyrimMCPPlugin/src/Helpers.h; MIT by its README);
+// the call is CommonLib's CompileAndRun, whose relocation is right on 1.7 (SkyLink's own is not).
+// No C++ object lives in this frame, as __try requires.
+inline bool compile_and_run_guarded(RE::Script* script, RE::TESObjectREFR* target) noexcept {
+  __try {
+    script->CompileAndRun(target);
+    return true;
+  } __except (EXCEPTION_EXECUTE_HANDLER) {
+    return false;
+  }
+}
+
 // Game messages the endpoints wait on (SKSE's messaging interface), counted so a waiter sees only new ones.
 struct GameSignals {
   std::mutex m;

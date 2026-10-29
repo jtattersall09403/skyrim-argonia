@@ -970,5 +970,14 @@
     "used_by": "tools/chart/render.py: the parchment chart's city and place glyphs (2.W4 §c, 1.2 §e)",
     "linked_or_forked_by": "copied byte-identical to tools/chart/glyphs.json; provenance in tools/chart/glyphs-SOURCE.md",
     "notes": "UI art, the one exception to the no-new-art rule (0006); the sheet.png it was traced from is not imported"
+  },
+  {
+    "name": "SkyLink AI SKSE plugin (SkyrimMCPPlugin), rebuilt from source; dev only",
+    "source_url": "https://github.com/jarvann/SkryimMCM @ 82a0a80d31ae7d2254d40c129650d1e260da38a2 (Nexus SSE 175682, 1.0.0)",
+    "version": "1.0.0 (commit 2026-03-27); fetched at build, patched by skse/third_party/skylink/skylink-1.7.104.patch",
+    "licence": "MIT as declared in its README ('## License: MIT'); the repo has no LICENSE file. Credits ConsoleUtilSSE (VersuchDrei, MIT) for its console method",
+    "used_by": "the bridge comparison (docs/research/journals/bridge.md): its pipe endpoints tried beside ArgoniaBridge in a dev game slot",
+    "linked_or_forked_by": "FetchContent in skse/third_party/skylink/CMakeLists.txt (built only with ARGONIA_SKYLINK=1, by infra/gpu-box/skylink_build.ps1) into MO2 mod 'SkyLink (dev, rebuilt)'; nothing vendored",
+    "notes": "dev only, never ships (skse/dev-only.txt lists SkyrimMCPPlugin.dll); its .NET MCP server is not rebuilt (the pipe is spoken directly by infra/gpu-box/skylink.ps1)"
   }
 ]

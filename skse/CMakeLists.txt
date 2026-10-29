@@ -32,5 +32,11 @@ if(ARGONIA_PLUGINS)
   add_subdirectory(ArgoniaCore)
   if(NOT ARGONIA_RELEASE)
     add_subdirectory(ArgoniaBridge)
+    # SkyLink AI rebuilt from its source for 1.7.104, beside ArgoniaBridge for the bridge comparison (dev only).
+    # Off by default so the main build never fetches it; infra/gpu-box/skylink_build.ps1 sets ARGONIA_SKYLINK=1.
+    option(ARGONIA_SKYLINK "Build SkyLink AI's plugin from source (dev only)" "$ENV{ARGONIA_SKYLINK}")
+    if(ARGONIA_SKYLINK)
+      add_subdirectory(third_party/skylink)
+    endif()
   endif()
 endif()

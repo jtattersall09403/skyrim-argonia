@@ -51,8 +51,10 @@ std::string console(const Request& req) {
     if (!log || !script) return reply_error("console", "no console log or script factory yet");
     std::string before = log->buffer.c_str() ? log->buffer.c_str() : "";
     script->SetCommand(line);
-    script->CompileAndRun(RE::Console::GetSelectedRef().get());
+    auto selected = RE::Console::GetSelectedRef();
+    bool ran = compile_and_run_guarded(script, selected.get());
     delete script;
+    if (!ran) return reply_error("console", "`" + line + "` faulted inside the game (caught; the game runs on)");
     std::string after = log->buffer.c_str() ? log->buffer.c_str() : "";
     auto out = console_delta(before, after);
     if (console_refused(out)) return reply_error("console", "the console refused `" + line + "`: " + out);
