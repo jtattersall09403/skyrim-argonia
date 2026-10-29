@@ -91,3 +91,10 @@ resolver prefers the later plugin (0006 §8); composite cycles are unresolved, n
 aside and restores `Argonia.esm` and `CreationKitCustom.ini` in a `finally`; the start script moves the player
 from `OnUpdate`, so the early `OnInit` cannot spend the stage-10 guard. The rescan changed one shell: Update.esm's
 `MUSSpecialWordOfPower` adds `DoesNotQueue`.
+
+## Open conflict with the §0 lane
+
+The 0030 migrator rewrites every `world/db/*.jsonl`, and its run empties `formid.jsonl` (seen twice, last at
+20:01:19 UTC, after `7a41bde` committed the nine ids 0x800–0x808). HEAD is right; the working file is not, so
+`formids check` reads as nine removals and `make plugin` would re-allocate (the same ids while the order holds).
+Fix at source: the migrator carries `formid` over as it is (an append-only table it never rebuilds), or skips it.
