@@ -50,10 +50,10 @@ meet at the places: the systems that need people (2.4 onwards) wait for wave 1, 
 
 | Id | Chunk | Depends on | Lane-able beside |
 |---|---|---|---|
-| 2.W1 | [Terrain, apron and edges](2.W1-terrain.md) | 0.4 and 0.5 (it starts beside Part 1; decision 0027 §2) | Part 1, systems track |
-| 2.W2 | [Water](2.W2-water.md) | 2.W1 | systems track |
-| 2.W3 | [Regions, weather, light, roads and the route graph](2.W3-regions-roads.md) | 2.W1 | 2.W2 |
-| 2.W4 | [Vegetation, navmesh and LOD](2.W4-vegetation-navmesh-lod.md) | 2.W2, 2.W3 | systems track |
+| 2.W1 | [Terrain, apron and edges](../1-core-loop/2.W1-terrain.md) | 0.4 (it starts beside Part 1; decision 0027 §2) | Part 1, systems track |
+| 2.W2 | [Water](../1-core-loop/2.W2-water.md) | 2.W1 | systems track |
+| 2.W3 | [Regions, weather, light, roads and the route graph](../1-core-loop/2.W3-regions-roads.md) | 2.W1 | 2.W2 |
+| 2.W4 | [Vegetation, navmesh and LOD](../1-core-loop/2.W4-vegetation-navmesh-lod.md) | 2.W2, 2.W3 | systems track |
 | 2.W5 | [The slice places, in two waves](2.W5-slice-places.md) | 2.W1–2.W4 (navmesh at least, for wave 1) | systems track |
 | 2.W6 | [Performance and the world walk](2.W6-performance-walk.md) | 2.W5 wave 2 | systems track |
 | 2.4 | [People](2.4-people.md) | Part 1 exit, 2.W5 wave 1 | 2.1, 2.3 |

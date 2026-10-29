@@ -28,7 +28,7 @@ recorded in `world/IMPORTED_FROM.md`, never silently skipped.
 | The engine-neutral rule packages with their tests: `packages/dialogue`, `narrative`, `economy`, `crafting`, `save`, `magic`, `world-time`, `text-catalogue`, and `packages/game-core/src/{stats,crime,factions,inventory,equipment,scheduling,perception,traps,travel,encounters,people,rng,validation}` | goal evidence for the goals list (decision 0026) | `private/old-packages/` (read-only), never built | **never** `combat`, `ai`, `anim`, `movement`, `locomotion` or render folders (decision 0019); our own code, so no licence issue |
 | The old journey format and runners: `.claude/skills/journey-author/`, `journey.ts`, `seams-session.test.ts`, `apps/game/src/journey.test.tsx` | the journey script format, the starting point for the core runner | read in place by 0.4 | |
 | `docs/research/combat-and-systems/slice-systems-checklist.md` | the slice coverage checklist | `docs/design/slice-systems-checklist.md` (rewritten in 2.17) | |
-| `world/sources/blueprints/place.fixture.proving-ground*.json` | the studio's proving ground | regenerated through 0.5 in 0.4 | studio-only, never reachable in the game |
+| `world/sources/blueprints/place.fixture.proving-ground*.json` | the studio's proving ground | regenerated through the pipeline in 0.4 | studio-only, never reachable in the game |
 
 Read **in place** from the old repo, not imported: README credits (~lines 48–320), `tooling/asset-pipeline/mod-register.json`,
 the settlement kit sourcing log (`docs/research/placement-settlements/settlement-kit-sourcing-log.md`, for O-17's

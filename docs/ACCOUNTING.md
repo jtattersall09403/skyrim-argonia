@@ -48,7 +48,7 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | A35 | Free; no commercial use | In | owner-brief; legal §1; 3.4 |
 | A36 | Pelagiad font throughout | In | 0006 §4; 2.2 |
 | A37 | New music | In / Open | 0006 §5; 2.16; O-8 |
-| A38 | Full audit of UI and art; overhaul or tweak to fit Black Marsh; no Nordic elements | In | 0006; 0012; T-IMM; 0.5; 2.17 §b; 4.1 at scale |
+| A38 | Full audit of UI and art; overhaul or tweak to fit Black Marsh; no Nordic elements | In | 0006; 0012; T-IMM; 0.4 §c; 2.17 §b; 4.1 at scale |
 | A39 | Agentic approach to cover everything 100% | In | 0006 §1–3 (enumerated inventory, coverage gate); 4.1 |
 | A40 | Fal MCP for minor new art | In | 0006 §6–7; legal §4 |
 | A41 | New public repo; old repo untouched; may continue three.js separately | In | 0003; 0009 §1; source-map |
@@ -76,7 +76,7 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | B12 | Crossbows and thrown weapons back in | 0016 |
 | B13 | Our own original UI for major screens and our own HUD, like the old repo's; use mod-scene or OpenMW UI only if it saves work | 0017 (port of the old React design system; OpenMW as structural reference; no Morrowind UI exists in the Skyrim mod scene) |
 | B14 | The $100 cap is AWS infrastructure only | 0008 |
-| B16 | The owner can get the Creation Kit; "isn't that how mods normally get made?" | 0018 (CK as a scripted tool; records by code; Papyrus compiler and base scripts come from the CK); 0.1; 0.5; 2.W4 |
+| B16 | The owner can get the Creation Kit; "isn't that how mods normally get made?" | 0018 (CK as a scripted tool; records by code; Papyrus compiler and base scripts come from the CK); 0.1; 0.4; 2.W4 |
 | B17 | Study OpenMW's window layouts and contents to improve our UI | 0017 §8; 2.2 §a |
 | B40 | 2026-10-29: the order of importance (world and places; quests, story, people; combat; progression; UI) and licence to change the plan | 0027; PLAN §2, §5; phases/README; Part 1 re-cut (1.2, 1.4, 1.6, 1.7); 2.W1 after 0.4; 2-slice order |
 | B41 | 2026-10-29: critical review of the old ways of working; adopt rtk and some agent types; the cheaper 0.0 way of working | 0027 §7–9; ways-of-working §1, §6; CLAUDE.md; `.claude/settings.json` (rtk hook); 0.1 §b |
@@ -164,14 +164,14 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | D21 | Sailable Ship (scripted helm, issues: deck instability, unanimated sails, save at helm, 60 fps), Sailboats (mount race, restrictive), L.V.X Boats, Rowboats (CC BY-SA), rowboat spell, Animated Ships | In | 0.2; 2.15 |
 | D22 | PLANCK VR-only; XP32 True Ragdoll; Precision impulses; Skyrim Delirium unverified | In / Out | 2.7 §i (PLANCK Out: VR only) |
 | D23 | Pandora under Proton fragile; generate on the playing machine | In | 0.2; 0.3 risks |
-| D24 | Mutagen, Spriggit, Synthesis (not needed), xEdit under Wine (read-only), plugin2text (lossy) | In | 0.5; 0.1 |
+| D24 | Mutagen, Spriggit, Synthesis (not needed), xEdit under Wine (read-only), plugin2text (lossy) | In | 0.4 §a; 0.1 |
 | D25 | Terrain maps exactly (126×126 cells at one sample per vertex); VHGT re-basing; ≤6 layers per quadrant | In | 2.W1 |
 | D26 | Navmesh: no generator outside the CK; Recast→NVNM, CK under Wine macro, or Windows | In | 0.4; 2.W4 |
 | D27 | FaceGen for new NPCs (dark faces) | In | 0.4 options; 2.4; 4.2 |
 | D28 | xLODGen/DynDOLOD under Proton; Texconv random failure; 32–64 GB RAM | In | 2.W4 |
-| D29 | Papyrus compilers: CK PapyrusCompiler under Wine, Caprica (MSVC), russo-2025 compiler (V, MIT) | In | 0.5 |
+| D29 | Papyrus compilers: CK PapyrusCompiler under Wine, Caprica (MSVC), russo-2025 compiler (V, MIT) | In | 0.4 §a |
 | D30 | Lip generation not needed (unvoiced); silent voice files needed for text-only vanilla-path lines | In | 0012 §4 |
-| D31 | BSArch; no GLB conversion needed | In | 0.5; source-map §4 |
+| D31 | BSArch; no GLB conversion needed | In | 0.4 §a; source-map §4 |
 | D32 | CK under Proton: render works, linking/triggers crash; no headless | In | 0.4 fallback only |
 | D33 | SKSE from Linux: msvc-wine first, clang-cl + xwin second (link.exe export issue) | In | 0.3 |
 | D34 | Address Library names DB; no shared Ghidra/IDA databases; skyretk RTTI dumps | In | 0010 §4 |
@@ -281,7 +281,7 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | I15 | Steam re-login every couple of weeks | 0.2 S0 steam_check |
 | I16 | 0.2 list missing combat mods; Precision 1.7.x port | 0.2 union list |
 | I17 | River flowmaps need the CK | 2.W2; 2.W2 |
-| I18 | Kit-id → base record mapping | 0.4; 0.5 |
+| I18 | Kit-id → base record mapping | 0.4 |
 | I19 | Assembled interiors unproven | 2.W5 §d |
 | I20 | Owner-held permissions from 2026-09 | O-17; 0.3; legal §2 |
 | I21 | Phone aspect ratios and readability | 0.2 §d/S5; 1.2 |

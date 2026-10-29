@@ -21,7 +21,7 @@ quests and dialogue that way. The CK also ships things we need regardless of how
    the work reviewable, repeatable and agent-friendly. The CK is never the place where content is authored.
 3. **What the CK is used for** (each a scripted job, never hand work):
    - **Papyrus compiling:** the reference `PapyrusCompiler.exe` and the base script sources (`Scripts.zip`) ship
-     with the CK; our scripts compile against them (0.5). This alone makes the CK required.
+     with the CK; our scripts compile against them (0.4 §a). This alone makes the CK required.
    - **Checking our plugin:** loading `Argonia.esm` in the CK under Wine/Xvfb and reading its warnings log is an
      extra L1 check (data errors the CK reports at load).
    - **Navmesh** (0.4, 2.W4): the CK's generator, scripted on the Windows game machine, as the check on

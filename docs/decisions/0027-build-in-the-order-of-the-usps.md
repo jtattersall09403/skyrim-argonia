@@ -47,7 +47,7 @@ changed or were wrong:
 Some things are foundations because every piece of content is written against them. These stay at the front
 whatever their rank:
 
-- **The record pipeline and the data shapes** (0.5; one home table per type, stable ids, the FormID allocator):
+- **The record pipeline and the data shapes** (0.4 §0 and §a; one home table per type, stable ids, the FormID allocator):
   everything is generated from them.
 - **The sheet** (seven attributes, 27 skills, the formulas; 1.3 §a): every NPC, weapon, perk entry and formula
   reads it. Adding Medium Armor or Spear after a thousand records exist is a migration.
@@ -55,7 +55,7 @@ whatever their rank:
   every line is written to it, so its shape, not its look, is fixed first.
 - **The quest model and the journal as the only quest surface** (no markers, directions; 1.4): every quest is
   written to it.
-- **The vanilla quarantine** (0.5 §b) and the **save contract** (1.1): rest as the only save and the death loop
+- **The vanilla quarantine** (0.4 §b) and the **save contract** (1.1): rest as the only save and the death loop
   are additive once the co-save families and the suspend save exist from day one.
 - **The game-state seam** (1.1): the typed message schema and the menu router let the UI be replaced later
   without touching a rule.

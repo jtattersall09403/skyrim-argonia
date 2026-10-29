@@ -176,8 +176,8 @@ column is Part 1's thread; "whole" is the chunk that completes it.
 | Ragdolls (nice to have) | — | 2 | XP32 True Ragdoll, Precision impulses | — | 2.7 §i |
 | Graphics: lighting, fog, volumetrics | owner | 2 | Community Shaders, weather mods restyled | presets | 0.2 → 2.W3 → 4.6 |
 | Music, ambience, UI sound | owner | 1 + Fal/CC | — | music records | 2.16 |
-| Vanilla quarantine | 0012 | 1 + 4 | Fuz Ro D-oh (silent lines) | start quest, overrides | 0.5 → 2.17 → 3.3 |
-| Immersion inventory and gate | 0006 | tool | — | inventory generator | 0.5 → gate from 2.17 → 4.1 at scale |
+| Vanilla quarantine | 0012 | 1 + 4 | Fuz Ro D-oh (silent lines) | start quest, overrides | 0.4 §b → 2.17 → 3.3 |
+| Immersion inventory and gate | 0006 | tool | — | inventory generator | 0.4 §c → gate from 2.17 → 4.1 at scale |
 | Main menu, loading, settings, controls | 0017 | 6 | Infinity UI if needed | views, own SWF if any | 3.1 |
 | Character creation, the opening | 76, 0026 | 5 + 6 | RaceMenu only if needed | chargen view, opening quest | 3.2, 3.3 |
 | Install, pin, distribute | 0002, 0003 | — | SKSE, Address Library, Pandora, PrismaUI | installer, modlist | 0.2 (our own machine) → 3.4 (players) → 4.6 |
