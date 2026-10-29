@@ -5259,3 +5259,5 @@ CREATE TABLE "asset" (
 CREATE TABLE "culture_kit" (
   "id" TEXT NOT NULL PRIMARY KEY
 );
+
+-- == End of the 0030 migration's tables. A later chunk appends its own tables below this line. ==

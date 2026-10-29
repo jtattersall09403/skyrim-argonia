@@ -15,7 +15,43 @@ from tools.argonia_world.migrate_0030 import engine as E
 from tools.argonia_world.migrate_0030 import families as F
 
 REPO = db.REPO
-KEEP = {"formid"}   # tables other tools own (the §a allocator's FormIDs): carried over, never re-migrated
+# The migrator writes only the tables it migrates (OWNED: every table it fills from world/sources). Every other
+# world/db/*.jsonl (formid, the world track's tables, a table it does not know) is left untouched, and every other
+# table's CREATE block in schema.sql is taken from the live file, re-read right before the write.
+MARK = "-- == End of the 0030 migration's tables. A later chunk appends its own tables below this line. =="
+BLOCK = re.compile(r'(?ms)^((?:--[^\n]*\n)*)CREATE TABLE "(\w+)" \(.*?^\);\n')
+
+
+def owned(eng) -> set[str]:
+    return {name for name, rows in F.all_rows(eng) if rows}
+
+
+def merge_schema(sql: str, live: str, own: set[str]) -> str:
+    """The rendered schema, with every table it does not own taken from the live file and the live file's tail
+    (after MARK, or the tables the rendered schema does not have) kept at the end."""
+    live_blocks = {m.group(2): m.group(0) for m in BLOCK.finditer(live.split(MARK, 1)[0])}
+    rendered = {m.group(2) for m in BLOCK.finditer(sql)}
+
+    def swap(m):
+        name = m.group(2)
+        return live_blocks[name] if name not in own and name in live_blocks else m.group(0)
+    out = BLOCK.sub(swap, sql).rstrip("\n") + "\n\n" + MARK + "\n"
+    if MARK in live:
+        tail = live.split(MARK, 1)[1].lstrip("\n")
+    else:
+        tail = "\n".join(b for n, b in live_blocks.items() if n not in rendered)
+    return out + "\n" + tail if tail.strip() else out
+
+
+def seed(root: Path) -> None:
+    """A scratch root starts as a copy of the live world, so the write path runs exactly as it would on world/."""
+    (root / "world" / "db").mkdir(parents=True, exist_ok=True)
+    if not (root / db.SCHEMA).exists():
+        (root / db.SCHEMA).write_bytes((REPO / db.SCHEMA).read_bytes())
+    for f in (REPO / db.DB_DIR).glob("*.jsonl"):
+        dst = root / db.DB_DIR / f.name
+        if not dst.exists():
+            dst.write_bytes(f.read_bytes())
 
 
 def suggest_fks(eng: E.Engine) -> list[str]:
@@ -57,7 +93,8 @@ def suggest_lookups(eng: E.Engine) -> list[str]:
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--families", default="")
-    ap.add_argument("--no-write", action="store_true")
+    ap.add_argument("--no-write", action="store_true", help="write to out/migrate (a copy of the live world)")
+    ap.add_argument("--root", help="write to this root (seeded with a copy of the live world)")
     ap.add_argument("--suggest", action="store_true")
     a = ap.parse_args(argv)
     eng = E.Engine()
@@ -71,18 +108,18 @@ def main(argv=None) -> int:
     if a.suggest:
         print("\n".join(suggest_fks(eng)))
         print("\n".join(suggest_lookups(eng)))
-    out_root = REPO if not a.no_write else Path(REPO / "out" / "migrate")
-    (out_root / "world").mkdir(parents=True, exist_ok=True)
-    (out_root / "world" / "schema.sql").write_text(sql)
-    dbdir = out_root / "world" / "db"
-    dbdir.mkdir(parents=True, exist_ok=True)
-    for f in dbdir.glob("*.jsonl"):
-        if f.stem not in KEEP:
+    out_root = Path(a.root) if a.root else (REPO if not a.no_write else REPO / "out" / "migrate")
+    if out_root.resolve() != REPO.resolve():
+        seed(out_root)
+    own = owned(eng)
+    schema = out_root / db.SCHEMA
+    live = schema.read_text(encoding="utf-8") if schema.exists() else ""   # re-read right before the write
+    schema.write_text(merge_schema(sql, live, own), encoding="utf-8")
+    dbdir = out_root / db.DB_DIR
+    for name in own:
+        f = dbdir / f"{name}.jsonl"
+        if f.exists():
             f.unlink()
-    for name in KEEP:   # always the committed world's copy, byte for byte, whichever root is written
-        live = REPO / db.DB_DIR / f"{name}.jsonl"
-        if live.exists() and live.resolve() != (dbdir / f"{name}.jsonl").resolve():
-            (dbdir / f"{name}.jsonl").write_bytes(live.read_bytes())
     w = db.load(out_root)          # empty world on the new schema
     for name, rows in F.all_rows(eng):
         t = w.table(name)
@@ -120,7 +157,7 @@ def main(argv=None) -> int:
         for b in bad[:30]:
             print("  ", b)
         return 1
-    w.save(tables=[t for t in w.tables if t not in KEEP])
+    w.save(tables=sorted(own))
     print(f"migrated: {len(w.tables)} tables, {sum(db.counts(w).values())} rows -> {dbdir}")
     return 0
 
