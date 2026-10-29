@@ -69,3 +69,10 @@ at a hand-off. The lane reports are `docs/research/2026-10-29/lane-2.W1-terrain.
 - Before: the check fails on 8 forms (FieldGrass02, FallForestGrass01/02, SnowGrass01, RockGrassWater01,
   WaterCoralGrass01). Argonia.esm now overrides those 8 LTEX (winner's fields, our grass list); after: 0. The
   test also fails once on purpose (a SnowGrass01 left in a marsh list).
+
+## 2026-10-29: the vault's meta.json y-axis note is wrong
+
+`$ARGONIA_DATA/terrain/meta.json` says "row 0 is the southernmost sample". It is the frozen vault's own file (not
+ours to edit). Measured three ways, row 0 is the **north** edge: `terrain/grid.py`, the route-grade profiles
+(0.23 m median error this way, 21 m flipped) and the chart's mirror test (flipped, Thorn lands in the sea). Trust
+`grid.py` and `su.province_to_skyrim`, never that note.
