@@ -67,12 +67,12 @@
 {"list_id":"dialogue_line:pool.waterline-mark.start:on_delivered","ord":0,"arg_ord":1,"value":10}
 {"list_id":"dialogue_line:pool.white-rose-graves.start:on_delivered","ord":0,"arg_ord":0,"value":"quest.bc.bc05"}
 {"list_id":"dialogue_line:pool.white-rose-graves.start:on_delivered","ord":0,"arg_ord":1,"value":10}
-{"list_id":"quest_ending:quest.local.lf83|0:rewards","ord":0,"arg_ord":0,"value":"item.crocodile-tooth"}
-{"list_id":"quest_ending:quest.local.lf83|0:rewards","ord":0,"arg_ord":1,"value":2}
-{"list_id":"quest_ending:quest.local.lf83|0:rewards","ord":1,"arg_ord":0,"value":"service.claywater-station.ferry"}
-{"list_id":"quest_ending:quest.local.lf83|0:rewards","ord":1,"arg_ord":1,"value":0}
+{"list_id":"quest_ending:quest.local.lf83|0:rewards","ord":0,"arg_ord":0,"value":"ferry.imperial-fringe.drowning-gate"}
+{"list_id":"quest_ending:quest.local.lf83|0:rewards","ord":0,"arg_ord":1,"value":0}
+{"list_id":"quest_ending:quest.local.lf83|0:rewards","ord":1,"arg_ord":0,"value":"item.potion-of-regeneration"}
+{"list_id":"quest_ending:quest.local.lf83|0:rewards","ord":1,"arg_ord":1,"value":1}
 {"list_id":"quest_ending:quest.local.lf83|0:rewards","ord":2,"arg_ord":0,"value":"npc.imperial-fringe.claywater-station.well-keeper"}
-{"list_id":"quest_ending:quest.local.lf83|0:rewards","ord":2,"arg_ord":1,"value":15}
+{"list_id":"quest_ending:quest.local.lf83|0:rewards","ord":2,"arg_ord":1,"value":5}
 {"list_id":"quest_ending:quest.local.lf83|0:rewards","ord":3,"arg_ord":0,"value":"npc.imperial-fringe.claywater-station.landing-s-poler"}
 {"list_id":"quest_ending:quest.local.lf83|0:rewards","ord":3,"arg_ord":1,"value":15}
 {"list_id":"quest_ending:quest.local.lf83|0:rewards","ord":4,"arg_ord":0,"value":"npc.imperial-fringe.claywater-station.n1-3"}
@@ -95,7 +95,7 @@
 {"list_id":"quest_ending:quest.local.lf83|1:rewards","ord":3,"arg_ord":1,"value":-15}
 {"list_id":"quest_ending:quest.local.lf83|1:world","ord":0,"arg_ord":0,"value":"flag.lf83.terms-settled"}
 {"list_id":"quest_ending:quest.local.lf83|1:world","ord":0,"arg_ord":1,"value":1}
-{"list_id":"quest_ending:quest.local.lf83|2:rewards","ord":0,"arg_ord":0,"value":"service.claywater-station.ferry"}
+{"list_id":"quest_ending:quest.local.lf83|2:rewards","ord":0,"arg_ord":0,"value":"ferry.imperial-fringe.drowning-gate"}
 {"list_id":"quest_ending:quest.local.lf83|2:rewards","ord":0,"arg_ord":1,"value":0}
 {"list_id":"quest_ending:quest.local.lf83|2:rewards","ord":1,"arg_ord":0,"value":"npc.imperial-fringe.claywater-station.landing-s-poler"}
 {"list_id":"quest_ending:quest.local.lf83|2:rewards","ord":1,"arg_ord":1,"value":20}
@@ -107,6 +107,8 @@
 {"list_id":"quest_ending:quest.local.lf83|2:rewards","ord":4,"arg_ord":1,"value":-5}
 {"list_id":"quest_ending:quest.local.lf83|2:world","ord":0,"arg_ord":0,"value":"flag.lf83.terms-settled"}
 {"list_id":"quest_ending:quest.local.lf83|2:world","ord":0,"arg_ord":1,"value":1}
+{"list_id":"quest_ending:quest.local.lf83|2:world","ord":1,"arg_ord":0,"value":"flag.lf83.ford-charge-dropped"}
+{"list_id":"quest_ending:quest.local.lf83|2:world","ord":1,"arg_ord":1,"value":1}
 {"list_id":"quest_ending:quest.local.lf83|3:world","ord":0,"arg_ord":0,"value":"place.imperial-fringe.claywater-station"}
 {"list_id":"quest_ending:quest.local.lf83|3:world","ord":0,"arg_ord":1,"value":-5}
 {"list_id":"quest_ending:quest.local.lf83|4:world","ord":0,"arg_ord":0,"value":"place.imperial-fringe.claywater-station"}
@@ -164,10 +166,8 @@
 {"list_id":"quest_stage:quest.local.ld65|2:on_enter","ord":0,"arg_ord":1,"value":1}
 {"list_id":"quest_stage:quest.local.lf21|0:on_enter","ord":0,"arg_ord":0,"value":"topic.broke-column-terms"}
 {"list_id":"quest_stage:quest.local.lf67|0:on_enter","ord":0,"arg_ord":0,"value":"topic.bog-iron-leech-den"}
-{"list_id":"quest_stage:quest.local.lf83|0:on_enter","ord":0,"arg_ord":0,"value":"topic.claywater-two-charges"}
 {"list_id":"quest_stage:quest.local.lf83|1:on_enter","ord":0,"arg_ord":0,"value":"topic.claywater-landing-terms"}
-{"list_id":"quest_stage:quest.local.lf83|1:on_enter","ord":1,"arg_ord":0,"value":"topic.lf83-clay-bend"}
-{"list_id":"quest_stage:quest.local.lf83|1:on_enter","ord":2,"arg_ord":0,"value":"topic.lf83-cracked-well"}
+{"list_id":"quest_stage:quest.local.lf83|1:on_enter","ord":1,"arg_ord":0,"value":"topic.lf83-cracked-well"}
 {"list_id":"quest_stage:quest.local.lf83|2:on_enter","ord":0,"arg_ord":0,"value":"topic.lf83-one-charge"}
 {"list_id":"quest_stage:quest.local.lh07|0:on_enter","ord":0,"arg_ord":0,"value":"topic.helstrom-sour-water"}
 {"list_id":"quest_stage:quest.local.lh37|0:on_enter","ord":0,"arg_ord":0,"value":"topic.greenspring-spring-terms"}

@@ -3,7 +3,6 @@
 {"quest_id":"quest.local.lf83","clues_ord":1,"ord":1,"value":"fact.lf83.remortared"}
 {"quest_id":"quest.local.lf83","clues_ord":2,"ord":0,"value":"fact.lf83.ford-in-well"}
 {"quest_id":"quest.local.lf83","clues_ord":3,"ord":0,"value":"fact.lf83.cracked-lining"}
-{"quest_id":"quest.local.lf83","clues_ord":3,"ord":1,"value":"fact.lf83.charges-answer"}
 {"quest_id":"quest.local.lf83","clues_ord":4,"ord":0,"value":"fact.lf83.clay-holds"}
 {"quest_id":"quest.local.lf83","clues_ord":5,"ord":0,"value":"fact.claywater-station.vibe-condition-1"}
 {"quest_id":"quest.local.lf83","clues_ord":6,"ord":0,"value":"fact.lf83.clay-holds"}
@@ -19,6 +18,8 @@
 {"quest_id":"quest.local.lf83","clues_ord":12,"ord":0,"value":"fact.lf83.takes-doubts"}
 {"quest_id":"quest.local.lf83","clues_ord":13,"ord":0,"value":"fact.lf83.crocodile-bend"}
 {"quest_id":"quest.local.lf83","clues_ord":13,"ord":1,"value":"fact.lf83.clay-cut"}
+{"quest_id":"quest.local.lf83","clues_ord":14,"ord":0,"value":"fact.lf83.remortared"}
+{"quest_id":"quest.local.lf83","clues_ord":15,"ord":0,"value":"fact.lf83.remortared"}
 {"quest_id":"quest.local.lh38","clues_ord":0,"ord":0,"value":"fact.lh38.sickness"}
 {"quest_id":"quest.local.lh38","clues_ord":1,"ord":0,"value":"fact.lh38.sickness"}
 {"quest_id":"quest.local.lh38","clues_ord":2,"ord":0,"value":"fact.lh38.water-smell"}

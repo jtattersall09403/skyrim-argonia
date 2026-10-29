@@ -33,8 +33,8 @@
 {"list_id":"dialogue_line:pool.wamasu-shrine-turn.start:on_delivered","ord":0,"term":"setStage"}
 {"list_id":"dialogue_line:pool.waterline-mark.start:on_delivered","ord":0,"term":"setStage"}
 {"list_id":"dialogue_line:pool.white-rose-graves.start:on_delivered","ord":0,"term":"setStage"}
-{"list_id":"quest_ending:quest.local.lf83|0:rewards","ord":0,"term":"giveItem"}
-{"list_id":"quest_ending:quest.local.lf83|0:rewards","ord":1,"term":"setPrice"}
+{"list_id":"quest_ending:quest.local.lf83|0:rewards","ord":0,"term":"setPrice"}
+{"list_id":"quest_ending:quest.local.lf83|0:rewards","ord":1,"term":"giveItem"}
 {"list_id":"quest_ending:quest.local.lf83|0:rewards","ord":2,"term":"changeDisposition"}
 {"list_id":"quest_ending:quest.local.lf83|0:rewards","ord":3,"term":"changeDisposition"}
 {"list_id":"quest_ending:quest.local.lf83|0:rewards","ord":4,"term":"changeDisposition"}
@@ -53,6 +53,7 @@
 {"list_id":"quest_ending:quest.local.lf83|2:rewards","ord":3,"term":"changeDisposition"}
 {"list_id":"quest_ending:quest.local.lf83|2:rewards","ord":4,"term":"changeSettlementStanding"}
 {"list_id":"quest_ending:quest.local.lf83|2:world","ord":0,"term":"setFlag"}
+{"list_id":"quest_ending:quest.local.lf83|2:world","ord":1,"term":"setFlag"}
 {"list_id":"quest_ending:quest.local.lf83|3:world","ord":0,"term":"changeSettlementStanding"}
 {"list_id":"quest_ending:quest.local.lf83|4:world","ord":0,"term":"changeSettlementStanding"}
 {"list_id":"quest_ending:quest.local.lf83|5:world","ord":0,"term":"changeSettlementStanding"}
@@ -88,10 +89,8 @@
 {"list_id":"quest_stage:quest.local.ld65|2:on_enter","ord":0,"term":"setFlag"}
 {"list_id":"quest_stage:quest.local.lf21|0:on_enter","ord":0,"term":"grantTopic"}
 {"list_id":"quest_stage:quest.local.lf67|0:on_enter","ord":0,"term":"grantTopic"}
-{"list_id":"quest_stage:quest.local.lf83|0:on_enter","ord":0,"term":"grantTopic"}
 {"list_id":"quest_stage:quest.local.lf83|1:on_enter","ord":0,"term":"grantTopic"}
 {"list_id":"quest_stage:quest.local.lf83|1:on_enter","ord":1,"term":"grantTopic"}
-{"list_id":"quest_stage:quest.local.lf83|1:on_enter","ord":2,"term":"grantTopic"}
 {"list_id":"quest_stage:quest.local.lf83|2:on_enter","ord":0,"term":"grantTopic"}
 {"list_id":"quest_stage:quest.local.lh07|0:on_enter","ord":0,"term":"grantTopic"}
 {"list_id":"quest_stage:quest.local.lh37|0:on_enter","ord":0,"term":"grantTopic"}

@@ -32,6 +32,9 @@
 {"quest_id":"quest.local.lf83","ord":13,"id":"creature-at.imperial-fringe.claywater-station.eco-crocodile","access":"read"}
 {"quest_id":"quest.local.lf83","ord":14,"id":"item.station-water-ledger","access":"read"}
 {"quest_id":"quest.local.lf83","ord":15,"id":"place.imperial-fringe.claywater-station","access":"write"}
+{"quest_id":"quest.local.lf83","ord":16,"id":"flag.lf83.tub-seen","access":"write"}
+{"quest_id":"quest.local.lf83","ord":17,"id":"flag.lf83.mending-heard","access":"write"}
+{"quest_id":"quest.local.lf83","ord":18,"id":"flag.lf83.ford-charge-dropped","access":"write"}
 {"quest_id":"quest.local.lh07","ord":0,"id":"npc.hist-heartland.greenspring.n3","access":"read"}
 {"quest_id":"quest.local.lh07","ord":1,"id":"npc.hist-heartland.greenspring.spring-keeper","access":"read"}
 {"quest_id":"quest.local.lh07","ord":2,"id":"place.hist-heartland.greenspring","access":"read"}

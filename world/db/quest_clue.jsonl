@@ -12,6 +12,8 @@
 {"quest_id":"quest.local.lf83","ord":11,"id":"k12","form":"line","carrier":"npc.imperial-fringe.claywater-station.n1-3","kind":"lead"}
 {"quest_id":"quest.local.lf83","ord":12,"id":"k13","form":"line","carrier":"npc.imperial-fringe.claywater-station.landing-s-poler","kind":"lead"}
 {"quest_id":"quest.local.lf83","ord":13,"id":"k14","form":"line","carrier":"npc.imperial-fringe.claywater-station.n1-3","kind":"lead"}
+{"quest_id":"quest.local.lf83","ord":14,"id":"k15","form":"thing","carrier":"thing.lf83.mortar-tub","kind":"concept"}
+{"quest_id":"quest.local.lf83","ord":15,"id":"k16","form":"line","carrier":"npc.imperial-fringe.claywater-station.n1-3","kind":"concept"}
 {"quest_id":"quest.local.lh38","ord":0,"id":"k1","form":"line","carrier":"npc.hist-heartland.greenspring.n2"}
 {"quest_id":"quest.local.lh38","ord":1,"id":"k2","form":"behaviour","carrier":"npc.lh38.sick-guests"}
 {"quest_id":"quest.local.lh38","ord":2,"id":"k3","form":"thing","carrier":"thing.spring-pool"}

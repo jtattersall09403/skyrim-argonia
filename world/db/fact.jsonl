@@ -418,23 +418,27 @@
 {"id":"fact.legion.heirs","says":"The heirs of the garrisons count as Legion too."}
 {"id":"fact.legion.stages","says":"The Legion built the old road stages."}
 {"id":"fact.legion.stayed","says":"The Legion remnant is the garrisons that stayed when the Empire withdrew."}
+{"id":"fact.lf83.basket-at-cut","claim":"The landing's clay basket lies at the cut, where the crocodile came up.","ord":18,"from_ref":"t8","quest_id":"quest.local.lf83"}
 {"id":"fact.lf83.basket-left","claim":"Signs-For-The-Cargo dropped the landing's clay basket at the cut when the crocodile came up at him.","ord":12,"from_ref":"t8","quest_id":"quest.local.lf83"}
 {"id":"fact.lf83.charges-answer","claim":"The landing set its charge on walkers only after the station raised its charge on the stop.","ord":3,"from_ref":"t6","quest_id":"quest.local.lf83"}
 {"id":"fact.lf83.clay-cut","claim":"The landing digs its plaster clay at the cut where the river swings west below the ford, on the station bank.","ord":9,"from_ref":"t0","quest_id":"quest.local.lf83"}
-{"id":"fact.lf83.clay-holds","claim":"Clay pressed in behind stone set in the moving clay bank moves with the bank and holds.","ord":8,"from_ref":"culture.group.claywater-station.landing-half#norms","quest_id":"quest.local.lf83"}
-{"id":"fact.lf83.cracked-lining","claim":"The well's stone head has a new crack a finger wide on the side that faces the ford.","ord":5,"from_ref":"t2","quest_id":"quest.local.lf83"}
+{"id":"fact.lf83.clay-holds","claim":"Mortar cracks with the moving bank and lets the ford in; clay rammed behind the lining bends with the bank and keeps the ford out until it is renewed each dry season.","ord":8,"from_ref":"t0","quest_id":"quest.local.lf83"}
+{"id":"fact.lf83.cracked-lining","claim":"The well has a new crack a finger wide from the coping down the lining, on the side that faces the ford.","ord":5,"from_ref":"t2","quest_id":"quest.local.lf83"}
 {"id":"fact.lf83.crocodile-bend","claim":"A crocodile has taken the deep pool under the clay cut below the ford, where the landing digs its plaster clay.","ord":11,"from_ref":"t8","quest_id":"quest.local.lf83"}
 {"id":"fact.lf83.ford-charge","claim":"This season the landing began charging walkers who wade the ford one drake a head; before, only carts on the raft paid.","ord":2,"from_ref":"t6","quest_id":"quest.local.lf83"}
-{"id":"fact.lf83.ford-in-well","claim":"Ford water and silt come into the well through the crack, so the well water tastes of the ford.","ord":6,"from_ref":"t3","quest_id":"quest.local.lf83"}
-{"id":"fact.lf83.jar-kept","claim":"Livia Varinius keeps what the morning bucket brings up in a jar under the windlass cover, to show a mason.","ord":15,"from_ref":"t3","quest_id":"quest.local.lf83"}
+{"id":"fact.lf83.ford-in-well","claim":"Ford water and silt seep into the well through the cracked lining, so the well water tastes of the ford.","ord":6,"from_ref":"t3","quest_id":"quest.local.lf83"}
+{"id":"fact.lf83.jar-kept","claim":"Livia Varinius keeps what the morning bucket brings up in a jar under the windlass cover, to show a mason.","ord":15,"from_ref":"t10","quest_id":"quest.local.lf83"}
 {"id":"fact.lf83.landing-free","claim":"The well-keeper charges the landing's people nothing for water.","ord":1,"from_ref":"t5","quest_id":"quest.local.lf83"}
 {"id":"fact.lf83.ledger-kept","claim":"Livia Varinius writes everything at the well in the station ledger, in the old log's order.","ord":16,"from_ref":"t2","quest_id":"quest.local.lf83"}
-{"id":"fact.lf83.night-waders","claim":"Some travellers now wade the river at night at the swing below the ford, to dodge the landing's charge.","ord":10,"from_ref":"t7","quest_id":"quest.local.lf83"}
+{"id":"fact.lf83.lining-will-hold","claim":"Livia Varinius believes a mason's proper new lining will hold where her mortar did not.","ord":17,"from_ref":"t1","quest_id":"quest.local.lf83"}
+{"id":"fact.lf83.night-waders","claim":"Some travellers now wade the shallow tail of the river below the clay cut at night, to dodge the landing's charge.","ord":10,"from_ref":"t7","quest_id":"quest.local.lf83"}
 {"id":"fact.lf83.rains-close","claim":"The rains are close, and the landing must replaster its walls before them.","ord":13,"from_ref":"t9","quest_id":"quest.local.lf83"}
-{"id":"fact.lf83.remortared","claim":"The stone has cracked every year, and Livia Varinius has re-mortared it herself each dry season, so new stone would crack the same way.","ord":7,"from_ref":"t1","quest_id":"quest.local.lf83"}
+{"id":"fact.lf83.remortared","claim":"The well's lining has cracked every year, and Livia Varinius has re-mortared it herself each dry season.","ord":7,"from_ref":"t1","quest_id":"quest.local.lf83"}
 {"id":"fact.lf83.stone-refused","claim":"The landing refused to haul stone for a new lining, because it does not build in stone and does not drink the well's water.","ord":4,"from_ref":"t4","quest_id":"quest.local.lf83"}
 {"id":"fact.lf83.stop-charge","claim":"This season the well-keeper raised the station's charge on every traveller who stops from one drake to two, for the stop and its water, to pay a mason to re-line the well in stone.","ord":0,"from_ref":"t5","quest_id":"quest.local.lf83"}
 {"id":"fact.lf83.takes-doubts","claim":"Takes-The-Short-Weight told Signs-For-The-Cargo the walkers' charge is wrong and sends travellers to the crocodile, and he would not hear it.","ord":14,"from_ref":"t9","quest_id":"quest.local.lf83"}
+{"id":"fact.lf83.terms-figure","claim":"The one charge would be 2 drakes a stop, 1 to each bank, the landing's drake paying for its clay behind the lining, renewed each dry season.","ord":19,"from_ref":"t0","quest_id":"quest.local.lf83"}
+{"id":"fact.lf83.water-dipper","claim":"Livia Varinius gives a dipper of the well's water to any traveller who has paid the stop.","ord":20,"from_ref":"t3","quest_id":"quest.local.lf83"}
 {"id":"fact.lh38.body-in-throat","claim":"The courier's body is staked deep in the spring's throat under the Hist's roots.","ord":3,"from_ref":"t3","quest_id":"quest.local.lh38"}
 {"id":"fact.lh38.courier-missing","claim":"A Helstrom courier lodged at Greenspring twelve days ago and was not seen to leave.","ord":1,"from_ref":"t1","quest_id":"quest.local.lh38"}
 {"id":"fact.lh38.food-blamed","claim":"Reeh-Shaal tells the sick guests that the fire stand's food is making them ill.","ord":9,"from_ref":"t6","quest_id":"quest.local.lh38"}

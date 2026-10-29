@@ -35,18 +35,32 @@ ITEMS = [
          asset_availability_status="vanilla", asset_availability_via="meshes/clutter/basket01.nif",
          asset_availability_notes="Shares the model and icon built for item.basket (no new art).",
          quest=QUEST),
+    dict(id="item.lf83.well-water", status="derived", name="Dipper of Well Water", kind="quest", pocket="keyItems",
+         unique=True, verb="take", stackable=False, weight_kg=0.5, value=0, ladder_band="D1", ladder_position=0.0,
+         model="clutter/clay-jug.glb", icon="clutter-icons/clay-jug.png",
+         description="A clay dipper of water from the station well. It tastes faintly of the ford.",
+         why_here="Livia Varinius gives a dipper of the well's water to any traveller who has paid the stop.",
+         notes="LF83's taste-test sample for Takes-The-Short-Weight; the clay-jug model stands in, no new art.",
+         asset_availability_status="vanilla", asset_availability_via="meshes/clutter/glazedjugsmall01.nif",
+         asset_availability_notes="Shares the model and icon built for item.clay-jug (no new art).",
+         quest=QUEST),
 ]
 
 SOCKETS = [
     dict(id="socket.claywater-station.lf83-well-silt", kind="item", at_x=323.6, at_y=3061.2, zone="evidence",
-         why="LF83: Livia Varinius's jar of well silt, kept under the windlass cover to show a mason.",
+         why="LF83: Livia Varinius's jar of well silt, kept under the windlass cover to show a mason, beside her trowel and "
+             "mortar tub (thing.lf83.mortar-tub).",
          host="parcel.claywater-station.the-well", parcel="parcel.claywater-station.the-well", value_tier="trivial",
          owner=LIVIA, item_kind="quest", item="item.lf83.well-silt"),
-    dict(id="socket.claywater-station.lf83-clay-bend", kind="marker", at_x=281.5, at_y=3056.0, zone="evidence",
+    dict(id="socket.claywater-station.lf83-well-water", kind="item", at_x=324.4, at_y=3060.4, zone="evidence",
+         why="LF83: Livia Varinius's dipper of well water on the windlass; taken unasked it is theft if seen.",
+         host="parcel.claywater-station.the-well", parcel="parcel.claywater-station.the-well", value_tier="trivial",
+         owner=LIVIA, item_kind="quest", item="item.lf83.well-water"),
+    dict(id="socket.claywater-station.lf83-clay-bend", kind="marker", at_x=281.5, at_y=3058.5, zone="evidence",
          why="LF83: the clay cut, a bare clay bank on the station (south) bank where the river swings west below the "
              "ford (reach.169-1660 apex 280.2, 3049.4), the landing's clay since before the well; spade cuts and "
              "waders' prints in the clay. Needs a scour pool of 2.5 m or more and the crocodile den here (planner)."),
-    dict(id="socket.claywater-station.lf83-clay-basket", kind="item", at_x=282.0, at_y=3055.5, zone="evidence",
+    dict(id="socket.claywater-station.lf83-clay-basket", kind="item", at_x=282.0, at_y=3058.0, zone="evidence",
          why="LF83: the landing's clay basket, dropped at the cut.", value_tier="trivial", owner=SIGNS,
          item_kind="quest", item="item.lf83.clay-basket"),
 ]
@@ -54,8 +68,9 @@ SOCKETS = [
 
 VARIANTS = [
     dict(id="lf83-well-clayed", when="LF83 e-shared (stage 40)",
-         what_changes="thing.lf83.well-head: a band of fresh grey clay pressed in behind the coping on the ford side",
-         description="The landing has sealed the cracked well head with clay."),
+         what_changes="thing.lf83.well-head: a band of fresh grey clay rammed in behind the coping and down the lining "
+                      "on the ford side",
+         description="The landing has sealed the cracked well lining with clay."),
 ]
 DROPPED_VARIANTS = ["lf83-well-closed", "lf83-walls-unplastered"]   # cut to keep LF83 within tier M (review R2-M9)
 

@@ -1,5 +1,5 @@
 {"quest_id":"quest.local.lf83","section":"aftermath"}
-{"quest_id":"quest.local.lf83","section":"deadline","value":"the world's: the dry season's end. The quest starts only in the dry season (startWhen seasonIs dry) and fails to stage 90 when the season turns (not seasonIs dry); the rains are announced by Signs-For-The-Cargo and Takes-The-Short-Weight (fact.lf83.rains-close). The rains also close the roads to Gloommire and the station's trade with them, which raises Livia's stake"}
+{"quest_id":"quest.local.lf83","section":"deadline","value":"the world's: the wet season. The quest starts only in the dry season (startWhen seasonIs dry) and fails to stage 90 when the wet season comes (seasonIs wet); the rains are announced by Signs-For-The-Cargo and Takes-The-Short-Weight (fact.lf83.rains-close). The monsoon closes the road at the Drowning Gate, 87 m east along the road (place.imperial-fringe.the-drowning-gate), and with it the station's trade, which raises Livia's stake"}
 {"quest_id":"quest.local.lf83","section":"leverage"}
 {"quest_id":"quest.local.lf83","section":"objections"}
 {"quest_id":"quest.local.lf83","section":"revealOrder"}

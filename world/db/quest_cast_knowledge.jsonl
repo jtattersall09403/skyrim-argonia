@@ -1,3 +1,4 @@
+{"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.basket-at-cut","value":"suspects"}
 {"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.charges-answer","value":"hides \"it means her rise started the quarrel\""}
 {"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.clay-cut","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.clay-holds","value":"ignorant"}
@@ -7,10 +8,14 @@
 {"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.jar-kept","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.landing-free","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.ledger-kept","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.lining-will-hold","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.night-waders","value":"suspects"}
-{"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.remortared","value":"hides \"it would show the mason's stone cannot hold the well\""}
+{"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.remortared","value":"hides \"it would show stone cannot hold the well\""}
 {"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.stone-refused","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.stop-charge","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.terms-figure","value":"ignorant"}
+{"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.water-dipper","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.basket-at-cut","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.basket-left","value":"hides \"he ran from it, and the landing's poler does not run\""}
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.charges-answer","value":"hides \"he says so only when pressed\""}
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.clay-cut","value":"knows"}
@@ -19,12 +24,16 @@
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.crocodile-bend","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.ford-charge","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.landing-free","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.lining-will-hold","value":"ignorant"}
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.night-waders","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.rains-close","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.remortared","value":"ignorant"}
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.stone-refused","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.stop-charge","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.takes-doubts","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.terms-figure","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.water-dipper","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.basket-at-cut","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.charges-answer","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.clay-cut","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.clay-holds","value":"knows"}
@@ -37,8 +46,11 @@
 {"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.ledger-kept","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.night-waders","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.rains-close","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.remortared","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.stop-charge","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.takes-doubts","value":"hides \"she will not speak against her own bank to a stranger she distrusts\""}
+{"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.terms-figure","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.water-dipper","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":3,"fact_id":"fact.lf83.cracked-lining","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":3,"fact_id":"fact.lf83.ford-charge","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":3,"fact_id":"fact.lf83.stop-charge","value":"knows"}

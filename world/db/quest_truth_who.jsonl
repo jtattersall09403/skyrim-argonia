@@ -11,6 +11,8 @@
 {"quest_id":"quest.local.lf83","truth_ord":8,"ord":1,"value":"npc.imperial-fringe.claywater-station.landing-s-poler"}
 {"quest_id":"quest.local.lf83","truth_ord":9,"ord":0,"value":"npc.imperial-fringe.claywater-station.n1-3"}
 {"quest_id":"quest.local.lf83","truth_ord":9,"ord":1,"value":"npc.imperial-fringe.claywater-station.landing-s-poler"}
+{"quest_id":"quest.local.lf83","truth_ord":10,"ord":0,"value":"the poler's wife (invented, unnamed: for 2.4)"}
+{"quest_id":"quest.local.lf83","truth_ord":10,"ord":1,"value":"npc.imperial-fringe.claywater-station.n1-3"}
 {"quest_id":"quest.local.lh38","truth_ord":0,"ord":0,"value":"courier Ahzi-Tal"}
 {"quest_id":"quest.local.lh38","truth_ord":0,"ord":1,"value":"npc.hist-heartland.greenspring.n3"}
 {"quest_id":"quest.local.lh38","truth_ord":1,"ord":0,"value":"npc.hist-heartland.greenspring.n3"}

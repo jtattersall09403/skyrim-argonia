@@ -102,6 +102,48 @@
 {"quest_id":"quest.local.lf83","review_findings_ord":39,"ord":0,"value":"approach settings and uses"}
 {"quest_id":"quest.local.lf83","review_findings_ord":40,"ord":0,"value":"premise"}
 {"quest_id":"quest.local.lf83","review_findings_ord":41,"ord":0,"value":"stages.20/30 journalText"}
+{"quest_id":"quest.local.lf83","review_findings_ord":42,"ord":0,"value":"topic.claywater-two-charges"}
+{"quest_id":"quest.local.lf83","review_findings_ord":42,"ord":1,"value":"startWhen"}
+{"quest_id":"quest.local.lf83","review_findings_ord":43,"ord":0,"value":"stage 30"}
+{"quest_id":"quest.local.lf83","review_findings_ord":43,"ord":1,"value":"why-failing"}
+{"quest_id":"quest.local.lf83","review_findings_ord":44,"ord":0,"value":"item.station-water-ledger"}
+{"quest_id":"quest.local.lf83","review_findings_ord":44,"ord":1,"value":"a-evidence"}
+{"quest_id":"quest.local.lf83","review_findings_ord":45,"ord":0,"value":"fact.lf83.remortared"}
+{"quest_id":"quest.local.lf83","review_findings_ord":45,"ord":1,"value":"k2"}
+{"quest_id":"quest.local.lf83","review_findings_ord":45,"ord":2,"value":"Livia's admission"}
+{"quest_id":"quest.local.lf83","review_findings_ord":46,"ord":0,"value":"t2"}
+{"quest_id":"quest.local.lf83","review_findings_ord":46,"ord":1,"value":"t3"}
+{"quest_id":"quest.local.lf83","review_findings_ord":46,"ord":2,"value":"the well head"}
+{"quest_id":"quest.local.lf83","review_findings_ord":47,"ord":0,"value":"fact.lf83.clay-holds"}
+{"quest_id":"quest.local.lf83","review_findings_ord":48,"ord":0,"value":"n1-3 jar-kept"}
+{"quest_id":"quest.local.lf83","review_findings_ord":48,"ord":1,"value":"ledger-kept"}
+{"quest_id":"quest.local.lf83","review_findings_ord":49,"ord":0,"value":"item.bucket"}
+{"quest_id":"quest.local.lf83","review_findings_ord":50,"ord":0,"value":"hook rows"}
+{"quest_id":"quest.local.lf83","review_findings_ord":50,"ord":1,"value":"startWhen"}
+{"quest_id":"quest.local.lf83","review_findings_ord":50,"ord":2,"value":"t2"}
+{"quest_id":"quest.local.lf83","review_findings_ord":51,"ord":0,"value":"e-shared"}
+{"quest_id":"quest.local.lf83","review_findings_ord":52,"ord":0,"value":"journal 20"}
+{"quest_id":"quest.local.lf83","review_findings_ord":53,"ord":0,"value":"ford-mooring"}
+{"quest_id":"quest.local.lf83","review_findings_ord":54,"ord":0,"value":"stage 10 directions"}
+{"quest_id":"quest.local.lf83","review_findings_ord":55,"ord":0,"value":"respawn"}
+{"quest_id":"quest.local.lf83","review_findings_ord":56,"ord":0,"value":"numerals"}
+{"quest_id":"quest.local.lf83","review_findings_ord":57,"ord":0,"value":"Takes's rows"}
+{"quest_id":"quest.local.lf83","review_findings_ord":58,"ord":0,"value":"any-weapon"}
+{"quest_id":"quest.local.lf83","review_findings_ord":59,"ord":0,"value":"Takes's clay-bend"}
+{"quest_id":"quest.local.lf83","review_findings_ord":60,"ord":0,"value":"bookkeeping"}
+{"quest_id":"quest.local.lf83","review_findings_ord":61,"ord":0,"value":"e-landing"}
+{"quest_id":"quest.local.lf83","review_findings_ord":62,"ord":0,"value":"terms"}
+{"quest_id":"quest.local.lf83","review_findings_ord":63,"ord":0,"value":"aftermath"}
+{"quest_id":"quest.local.lf83","review_findings_ord":64,"ord":0,"value":"sockets"}
+{"quest_id":"quest.local.lf83","review_findings_ord":64,"ord":1,"value":"waders"}
+{"quest_id":"quest.local.lf83","review_findings_ord":65,"ord":0,"value":"t8"}
+{"quest_id":"quest.local.lf83","review_findings_ord":66,"ord":0,"value":"Takes's directions"}
+{"quest_id":"quest.local.lf83","review_findings_ord":67,"ord":0,"value":"deadline"}
+{"quest_id":"quest.local.lf83","review_findings_ord":68,"ord":0,"value":"takeGold 2"}
+{"quest_id":"quest.local.lf83","review_findings_ord":69,"ord":0,"value":"Gaius"}
+{"quest_id":"quest.local.lf83","review_findings_ord":70,"ord":0,"value":"threshold 50"}
+{"quest_id":"quest.local.lf83","review_findings_ord":71,"ord":0,"value":"M8 hand-off"}
+{"quest_id":"quest.local.lf83","review_findings_ord":72,"ord":0,"value":"journal 41"}
 {"quest_id":"quest.local.lh38","review_findings_ord":0,"ord":0,"value":"shapeData.misdiagnosis"}
 {"quest_id":"quest.local.lh38","review_findings_ord":0,"ord":1,"value":"fact.greenspring.why-pressures-3"}
 {"quest_id":"quest.local.lh38","review_findings_ord":0,"ord":2,"value":"quest.mr.mr01"}

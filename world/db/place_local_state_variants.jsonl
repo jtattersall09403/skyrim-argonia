@@ -141,7 +141,7 @@
 {"place_id":"place.hist-heartland.xal-krona-making-ground","ord":1,"id":"state.made-ground.read","when":"This state applies after the making record is understood.","what_changes":"The Warden can be stood down at the Lost City. What is growing in the basin stays dormant."}
 {"place_id":"place.hist-heartland.xal-meeruth-station","ord":0,"id":"state.meeruth.derelict","when":"default","what_changes":"The station is roofless and unlit. The road head is silted."}
 {"place_id":"place.hist-heartland.xal-meeruth-station","ord":1,"id":"state.meeruth.claimed","when":"This state applies if the station is claimed and held as a stronghold.","what_changes":"The station is re-roofed and lit. The road head is cleared."}
-{"place_id":"place.imperial-fringe.claywater-station","ord":0,"id":"lf83-well-clayed","when":"LF83 e-shared (stage 40)","what_changes":"thing.lf83.well-head: a band of fresh grey clay pressed in behind the coping on the ford side","description":"The landing has sealed the cracked well head with clay."}
+{"place_id":"place.imperial-fringe.claywater-station","ord":0,"id":"lf83-well-clayed","when":"LF83 e-shared (stage 40)","what_changes":"thing.lf83.well-head: a band of fresh grey clay rammed in behind the coping and down the lining on the ford side","description":"The landing has sealed the cracked well lining with clay."}
 {"place_id":"place.imperial-fringe.comes-back-slowly","ord":0,"value":"In a good week the yard is raked and the house is quiet."}
 {"place_id":"place.imperial-fringe.comes-back-slowly","ord":1,"value":"In a bad week the yard is unraked. In a bad week the doors are barred from inside."}
 {"place_id":"place.imperial-fringe.dreams-in-mud","ord":0,"value":"When empty, the fence is open and the hut is shuttered."}

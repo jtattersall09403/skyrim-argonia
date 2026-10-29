@@ -1,9 +1,9 @@
-{"quest_id":"quest.local.lf83","ord":0,"skill":"any-weapon","use":"hunt","reason":"a crocodile has taken the deep water under the clay cut below the ford, where the landing digs its plaster clay; the landing will not dig until it is dead"}
+{"quest_id":"quest.local.lf83","ord":0,"skill":"spear","use":"hunt","reason":"a crocodile has taken the deep pool under the clay cut below the ford, where the landing digs its plaster clay; the landing will not dig until it is dead"}
 {"quest_id":"quest.local.lf83","ord":1,"skill":"marksman","use":"snipe","reason":"or shoot it from the station's wall above the cut when it suns"}
 {"quest_id":"quest.local.lf83","ord":2,"skill":"speechcraft","use":"present-evidence","reason":"each keeper's objections are answered with what the player found (the cracked and re-mortared head, the silt, the ledger, the doubter's word) or by persuasion"}
-{"quest_id":"quest.local.lf83","ord":3,"skill":"speechcraft","use":"intimidate","reason":"press Livia Varinius to drop her charge rather than have it known that her mason's stone would crack like the old"}
+{"quest_id":"quest.local.lf83","ord":3,"skill":"speechcraft","use":"intimidate","reason":"press Livia Varinius to drop her rise rather than have it known that her well has cracked and been mended every year"}
 {"quest_id":"quest.local.lf83","ord":4,"skill":"sneak","use":"steal","reason":"Livia Varinius's jar of well silt, kept under the windlass cover"}
-{"quest_id":"quest.local.lf83","ord":5,"skill":"sneak","use":"search-unseen","reason":"the station ledger on the counter, unwatched in the morning"}
+{"quest_id":"quest.local.lf83","ord":5,"skill":"sneak","use":"search-unseen","reason":"the station ledger on the table inside the station house, unwatched in the morning"}
 {"quest_id":"quest.local.lf83","ord":6,"skill":"mercantile","use":"bribe","reason":"the obvious option: buy off the landing's new charge on walkers for the season"}
 {"quest_id":"quest.local.lh38","ord":0,"skill":"alchemy","use":"test-a-sample","reason":"tells the spring from the food, which the misdiagnosis needs"}
 {"quest_id":"quest.local.lh38","ord":1,"skill":"speechcraft","use":"persuade","reason":"Im-Moro forbids the pool"}
