@@ -1,15 +1,18 @@
-# Routing: each quest's primary shape (first in `shapes`) and line type pick the principle files to read and
+# Routing: each quest's primary shape (first in `shapes`) and its `group` pick the principle files to read and
 # the `shapeData` sections the record must hold. Secondary shapes add their files and sections too.
 # brief.py reads this file: a record missing a required section for its shapes is not whole.
 
 always: [principles/general.md, principles/actions.md]
 
-lines:
+lines:   # by the quest object's `group` (world/sources/quests/README.md); `byLine` adds files for one line id
   local: [principles/questlines.md]
   faction: [principles/questlines.md]
+  line: [principles/questlines.md]
   main: [principles/questlines.md]
   daedric: [principles/questlines.md, principles/otherworldly.md]
-  detectives: [principles/questlines.md, principles/investigation.md]
+  proposed: [principles/questlines.md]
+byLine:
+  quest.line.detectives: [principles/investigation.md]   # decision 0025; the line id is planned (2.4 §c, 4.1 §d)
 
 shapes:
   MURDER:        {read: [principles/investigation.md], require: [timeline, lies, nodes, leads, redHerrings, openQuestions, accusation, endings]}

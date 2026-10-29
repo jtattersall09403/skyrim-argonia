@@ -5,7 +5,7 @@ description: Write Morrowind-style topic dialogue for one Argonia NPC of any rac
 
 # Writing dialogue for one person
 
-Draft, in practice with the owner. The goal: lines that read as if they were Morrowind's, about our people
+The goal: lines that read as if they were Morrowind's, about our people
 and places. Every rule here came from an owner correction; add new bans to `bans.yaml`, new voice evidence
 to `voices.md`.
 
@@ -13,16 +13,24 @@ to `voices.md`.
 
 The writer works only from a brief built from a record, never from a hand-written summary:
 
-- **Quest topics:** `quest-write/brief.py` builds one brief per person from the quest record.
-- **Place topics** (greeting, my trade, the place, rumours, danger, work, directions): the same brief shape,
-  from the place record, the people registry and the culture sheets: `place_brief.py`, which picks the
-  sheets that apply (region by place, people by race and upbringing, faction and office by faction and rank,
-  settlement, group and household) and says when the talk can happen (a hostile place's flips).
+- **Quest topics and journal text:** `../quest-write/brief.py` builds one brief per person, and one journal brief,
+  from the quest record.
+- **Place topics** (the person's topics in the place record: the place, its work, people, danger,
+  directions, rumours, their role): `python3 .claude/skills/dialogue-write/place_brief.py --person <npc id>
+  --out BRIEF.md`. It reads only the imported world: the registry row
+  (`../../../world/sources/registries/npcs.json`), the stance row and its culture chain
+  (`../../../world/sources/dialogue/stance/`, `../../../world/sources/dialogue/cultures/`), the place facts
+  (`../../../world/sources/placement/facts/`) and the topic web (`../../../world/sources/dialogue/topics.json`),
+  and says when the talk can happen (a hostile place's flips).
 
-A brief holds: what the player can see (race, sex, place, pose, gear); what they cannot (role, household,
-faction, chattiness, friendliness, formality, backstory, wants, fears); the voice card; the others the player
-may be sent to; the things lines may name, by id; and per topic the intent, the facts it may state and hide,
-the speaker's knowledge, the links it grants, and what the player already knows.
+A brief holds: what the player can see (race, sex, look, outfit); what they cannot (role, services,
+factions, wants, fears); the voice card and the stance voice (chatter, contraction rate, address term, quirk,
+never-mentions); the culture chain; the others the player may be sent to; the things lines may name, by id;
+and per topic the intent or opinion, the facts it may state and hide, the speaker's knowledge, the links it
+grants, and what the player already knows.
+
+The imported written lines (`../../../world/sources/dialogue/lines/`, `../../../world/sources/dialogue/pool/`) are reference only and never
+models (decision 0024 §7); the facts (`../../../world/sources/dialogue/facts.json`), topics, glossary and culture sheets are the source.
 
 **Lines set up the action.** A quest brief lists what the player does at each topic's stages (the skill
 uses); the lines give what the player needs to do it: who, where, when, what danger, what they will need
@@ -58,7 +66,8 @@ and quote against the corpus before using it. Never paste Morrowind lines into t
   gives what the quest needs.
 - **Held-back information says so** (B09), so the player knows to raise disposition.
 - **Plain and explicit:** who did what and why, in plain clauses (B05); every quest line can be acted on.
-- **British English** spelling and punctuation, no serial comma (B08).
+- **British English** spelling and punctuation, no serial comma (B08); the style guide
+  (`../../../docs/design/standards/text/style-guide.md`) and its culture registers bind every line.
 - Text macros: `[player]`, `[player race]`, `[player rank]`, `[name]`.
 
 ## 5. Process
@@ -66,6 +75,6 @@ and quote against the corpus before using it. Never paste Morrowind lines into t
 1. Read the brief, `voices.md` and the whole of `bans.yaml`.
 2. Run the Find agents (section 3) and read their picks.
 3. Write each topic's bands and the listener variants it needs, modelling shape and cadence on the picks.
-4. Run `python3 .claude/skills/dialogue-write/lint.py LINES.txt --race <speaker race>`; fix every hit or note
-   why it stands; then check each `review` ban by id.
+4. Run `python3 .claude/skills/dialogue-write/lint.py LINES.txt --race <speaker race>` (required; exit 1 on
+   any hit, 0 when clean); fix every hit or note why it stands; then check each `review` ban by id.
 5. Return the lines with the fact ids each states, and any fact requests.

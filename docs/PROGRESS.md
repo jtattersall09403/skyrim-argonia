@@ -7,7 +7,7 @@ Status: `todo`, `in progress (lane)`, `done (commit)`, `blocked (why)`, `dropped
 | Part | Chunk | Title | Status |
 |---|---|---|---|
 | 0 | 0.0 | Can it be played? Vanilla Skyrim streamed, touch and GameSir controls, a feel probe (G0) | in progress (planner: waiting on the owner's play session; hand-off in the brief) |
-| 0 | 0.1 | Bootstrap: repo, ways of working, lean toolchain, import | done (2026-10-29; §i the writing-skills fit runs as a side lane before 1.3; see the brief's Outcome) |
+| 0 | 0.1 | Bootstrap: repo, ways of working, lean toolchain, import | done (2026-10-29; see the brief's Outcome; the R2 arrays and LICENSE wait on owner calls in #11) |
 | 0 | 0.2 | The GPU box and the go/no-go spikes | todo |
 | 0 | 0.2 G1 | SKSE from Linux + bridge under Proton | todo |
 | 0 | 0.2 G2 | Streaming, performance and measured latency | todo |

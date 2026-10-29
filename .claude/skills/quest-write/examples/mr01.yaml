@@ -1,0 +1,270 @@
+# Worked example (faction line): MR01 rebuilt from its imported row with the quest-write skill in 0.1 §i
+# (2026-10-29). Format: quest-record.md. The faction design is docs/design/quests/40-factions.md §36.
+
+# ---- the imported quest object (world/sources/quests/quests-factions.json, same id) ----
+id: quest.mr.mr01
+code: MR01
+title: The Sick Root
+line: quest.line.many-root
+group: faction
+tier: 2
+status: live
+shapes: [CONTAMINATION, EXPEDITION]
+region: hist-heartland
+settlement: place.hist-heartland.greenspring
+anchorPlaces: [place.hist-heartland.greenspring, place.hist-heartland.root-gallery-drowned-stair]
+premise: A Hist is dying, the village blames upstream salt, and the diagnosis has to be made underwater.
+costTier: L
+milestone: 1
+touches:
+  - {id: npc.hist-heartland.greenspring.tree-minder, access: read}
+  - {id: npc.hist-heartland.greenspring.spring-keeper, access: read}
+  - {id: npc.hist-heartland.greenspring.root-herald, access: read}
+  - {id: place.hist-heartland.greenspring, access: read}
+  - {id: place.hist-heartland.root-gallery-drowned-stair, access: read}
+  - {id: flag.mr01.founders-named, access: write}
+  - {id: variant.greenspring.cure, access: write}
+sources:
+  - docs/design/quests/40-factions.md
+  - docs/design/quests/36-cast-roster.md
+  - world/sources/blueprints/greenspring.design.md
+essentialTopics: [topic.greenspring-sick-root]
+startWhen: {all: [{factionRankAtLeast: [faction.many-root-conclave, 0]}, {inSettlement: place.hist-heartland.greenspring}]}
+start: 10
+
+# ---- the record's sections ----
+recordStatus: reviewed
+foundation: >-
+  40-factions §36 MR01 and the imported row: kept the premise, the dive into flooded root-caves with three
+  sampling sites at increasing depth, air pockets and parasite swarms, the hand-cut breach with the founders'
+  tool-marks, the remedies that favour different residents, and the council payoff that chooses the cure and
+  whether the founders are named. Changed: the imported row stopped at stage 20 ("outside", packet 4.2); the
+  record writes the whole graph, keeping stage 20 at the drowned stair; the patron is the root-herald Ixo-Vaal,
+  the line's first desk (36-cast-roster §56), who lives at Greenspring in the registry.
+recordSources:
+  placeFacts: world/sources/placement/facts/place.hist-heartland.greenspring.json
+  catalogue: world/sources/catalogue/places-hist-heartland.json#place.hist-heartland.root-gallery-drowned-stair
+  stance: world/sources/dialogue/stance/greenspring.json
+  cultureSheets: [culture.faction.many-root-conclave, culture.settlement.greenspring, culture.group.greenspring.office-holders]
+  roster: docs/design/quests/36-cast-roster.md §56 (The Many-Root Conclave)
+
+centrepiece: DIVE
+actionPlan:
+  # From action_plan.py --profile many-root --shapes CONTAMINATION,EXPEDITION, adapted to the 40-factions design.
+  - {skill: alchemy, use: test-a-sample, reason: "the diagnosis is samples; the river test refutes the salt works"}
+  - {skill: athletics, use: dive, reason: "three sampling sites in the drowned stair"}
+  - {skill: alteration, use: water-breathe, reason: "the deepest chamber is beyond one breath"}
+  - {skill: destruction, use: burn-a-nest, reason: "parasite swarms between the sites"}
+  - {skill: spear, use: fight, reason: "or fight through the swarms"}
+  - {skill: speechcraft, use: present-evidence, reason: "the council payoff: discover in danger, decide in council"}
+
+truth:
+  - {id: t1, when: about sixty years before, who: [Greenspring's founding families], where: thing.breach, what: "In a dry year the founders went down the root galleries and cut a channel from a brine seam toward the roots of a rival grove downstream, to sour its water and take its travellers. The rival grove withered; Greenspring grew."}
+  - {id: t2, when: about sixty years before, who: [Greenspring's founding families], where: the village, what: "The founders carved the descent on their own grave-stakes in the old way, as a deed done for the tribe, and never spoke of it to outsiders."}
+  - {id: t3, when: the last three wet seasons, who: [], where: thing.breach, what: "With the grove downstream dead, the channel silted on that side; each flood now pushes the brine back up the cut into Greenspring's own taproots."}
+  - {id: t4, when: this year, who: [npc.hist-heartland.greenspring.tree-minder], where: the Hist, what: "Vees-Wai finds the Hist's leaves falling out of season and the sap thin. The village tastes salt in the spring and blames the salt works upstream."}
+  - {id: t5, when: a year before, who: [npc.hist-heartland.greenspring.root-herald], where: the herald's house, what: "Ixo-Vaal stopped trading for salt-works salt when the works closed their landing; he now buys upriver rock salt, which he keeps in a sack at his door."}
+
+playerStart:
+  - fact.greenspring.why-founding-2
+  - fact.greenspring.why-pressures-1
+  - fact.greenspring.why-pressures-2
+  - fact.greenspring.why-pressures-3
+
+facts:
+  - {id: fact.mr01.river-fresh, claim: "The river above the fork tastes fresh; the salt is not coming down the river.", from: t3}
+  - {id: fact.mr01.works-closed, claim: "The salt works upstream closed their landing a year ago and ship nothing down the river.", from: t5}
+  - {id: fact.mr01.salt-rises, claim: "The water in the root galleries grows saltier the deeper it is.", from: t3}
+  - {id: fact.mr01.breach, claim: "In the deepest chamber of the drowned stair a channel has been cut by hand through the roots into a brine seam.", from: t1}
+  - {id: fact.mr01.tool-marks, claim: "The cut is old and bears the marks of bone adzes like the ones on the founders' stakes.", from: t1}
+  - {id: fact.mr01.founders-stakes, claim: "The founders' grave-stakes show a descent into the roots in a dry year, as a deed done for the tribe.", from: t2}
+  - {id: fact.mr01.rival-grove, claim: "A grove downstream withered in the founders' time, and its people left.", from: t1}
+  - {id: fact.mr01.brine-backflow, claim: "Each flood pushes brine back up the old cut into Greenspring's taproots.", from: t3}
+  - {id: fact.mr01.sap-thin, claim: "The Hist at Greenspring is dropping leaves out of season and its sap runs thin.", from: t4}
+  - {id: fact.mr01.consent, claim: "No Hist speaks for all the Hist, and one tree's will does not bind another's people.", from: "culture.faction.many-root-conclave#norms"}
+
+cast:
+  - id: npc.hist-heartland.greenspring.root-herald
+    wants: "a Conclave procedure for the cure, so the Many-Root line has its first case (36-cast-roster §56: a compact is the only protection)"
+    fears: that the village settles it alone and the Conclave is not needed
+    knowledge:
+      fact.mr01.works-closed: knows
+      fact.greenspring.why-pressures-3: knows
+      fact.mr01.consent: knows
+    changes:
+      - {atStage: 50, fact: fact.mr01.breach, to: knows}
+  - id: npc.hist-heartland.greenspring.tree-minder
+    wants: the Hist saved, whatever it costs the village's name (culture.group.greenspring.office-holders hist opinion)
+    fears: that the founders' deed is the cause (he reads the stakes)
+    knowledge:
+      fact.mr01.sap-thin: knows
+      fact.mr01.founders-stakes: hides "the stakes are the tribe's story and not for an ojel"
+      fact.mr01.rival-grove: suspects
+    changes:
+      - {atStage: 40, fact: fact.mr01.founders-stakes, to: knows}
+  - id: npc.hist-heartland.greenspring.spring-keeper
+    wants: the spring's good name kept (culture.settlement.greenspring dissent)
+    fears: that the spring could sour for good
+    knowledge:
+      fact.greenspring.why-pressures-3: believes "the salt works foul the spring; nothing of ours does"
+      fact.mr01.founders-stakes: knows
+    changes:
+      - {atStage: 50, fact: fact.mr01.breach, to: knows}
+
+things:
+  - {id: thing.river-fork, kind: place, source: "existing: the Panther Race above Greenspring's fork (fact.greenspring.why-founding-1)", states: {all: "fresh water"}}
+  - {id: thing.salt-sack, kind: container, source: "existing: the herald's sack of upriver salt (blueprint b-herald)", states: {all: "rock salt from upriver, not the works"}}
+  - {id: thing.founders-stakes, kind: activator group, source: new, where: "the old grave-stakes beside the shrine at the Hist's foot", states: {all: "carved; read with Vees-Wai"}}
+  - {id: thing.sample-1, kind: socket, source: new, where: "place.hist-heartland.root-gallery-drowned-stair, first landing, air pocket", states: {all: "brackish"}}
+  - {id: thing.sample-2, kind: socket, source: new, where: "the drowned stair, second landing under water in the wet season", states: {all: "salt"}}
+  - {id: thing.sample-3, kind: socket, source: new, where: "the deepest chamber, beyond one breath", states: {all: "brine"}}
+  - {id: thing.breach, kind: dressing, source: new, where: "the deepest chamber, beside thing.sample-3", states: {before-60: "open cut with tool-marks", after-60: "per the chosen cure (variant.greenspring.cure)"}}
+  - {id: thing.parasite-swarms, kind: hostiles, source: new, where: "between the landings of the drowned stair", states: {all: "vermin, band D3 in a D4 place"}}
+
+conclusions:
+  - {id: c1, statement: "The salt works are not the cause.", clues: [k1, k2, k3]}
+  - {id: c2, statement: "The salt comes up from a breach below the village.", clues: [k3, k4, k5]}
+  - {id: c3, statement: "The founders cut the breach to kill a rival grove.", clues: [k5, k6, k7]}
+
+clues:
+  - {id: k1, form: thing, carrier: thing.river-fork, gives: [fact.mr01.river-fresh], supports: [c1]}
+  - {id: k2, form: line, carrier: npc.hist-heartland.greenspring.root-herald, gives: [fact.mr01.works-closed], supports: [c1]}
+  - {id: k3, form: thing, carrier: thing.sample-2, gives: [fact.mr01.salt-rises], supports: [c1, c2]}
+  - {id: k4, form: thing, carrier: thing.sample-3, gives: [fact.mr01.brine-backflow], supports: [c2]}
+  - {id: k5, form: thing, carrier: thing.breach, gives: [fact.mr01.breach, fact.mr01.tool-marks], supports: [c2, c3]}
+  - {id: k6, form: thing, carrier: thing.founders-stakes, gives: [fact.mr01.founders-stakes], supports: [c3]}
+  - {id: k7, form: line, carrier: npc.hist-heartland.greenspring.tree-minder, gives: [fact.mr01.rival-grove], supports: [c3]}
+
+shapeData:
+  # CONTAMINATION
+  source: thing.breach
+  spread: "brine up the taproots from the drowned stair, worst after each flood"
+  sign: fact.mr01.sap-thin
+  cure: "seal the cut (costs the roots it runs through), or reopen it downstream (floods the dead grove's land, where the founders' rival's descendants now fish)"
+  firstIllLastWell: "the Hist's lowest roots first, then the spring, then the river landing last"
+  misdiagnosis: {wrong: "salt from the salt works upstream", test: "taste the river above the fork (k1); the herald's ledger (k2)"}
+  ladder: ["day 0: leaves falling out of season", "after stage 20: the spring tastes of salt", "after stage 40: the sap stops at the naming bowl"]
+  # EXPEDITION
+  rumour: "the couriers' shortcut under the roots, four held breaths (catalogue why.occupantsMotive)"
+  route: "Greenspring -> Gate-Side Camp -> the drowned stair; or by boat round the surface route, a day longer"
+  gate: "the second landing is a full dive in the wet season"
+  prize: "the third sample and the sight of the breach"
+  return: "back up the stair with the samples; the air pockets are the rests"
+  prepHints: "the couriers at Gate-Side Camp say: four breaths, a light that burns under water, and fire for the swarms"
+  pointOfNoReturn: "the deepest chamber: the player must have breath or water-breathing to come back"
+  nonLethalFailure: "out of breath, the player wakes at the first landing's air pocket with the sample lost (1.5 death rule applies elsewhere)"
+
+stages:
+  - id: 10
+    place: place.hist-heartland.greenspring
+    journal: text.journal.mr01.10
+    journalText: "Root-Herald Ixo-Vaal of Greenspring asked me, for the Many-Root Conclave, to find out why the village's Hist is sickening. The village blames the salt works upstream. I'm to test the water before I believe them."
+    onEnter: [{grantTopic: topic.greenspring-sick-root}]
+    objectives:
+      - {id: hear-keeper, text: text.objective.mr01.hear-keeper, completeWhen: {topicHeardFrom: [topic.greenspring-sick-root, npc.hist-heartland.greenspring.spring-keeper]}}
+    successors:
+      - {to: 20, when: {topicHeardFrom: [topic.greenspring-sick-root, npc.hist-heartland.greenspring.spring-keeper]}}
+    failForward:
+      - {to: 20, when: {not: {npcAlive: npc.hist-heartland.greenspring.spring-keeper}}}
+    actions:
+      - {skill: alchemy, use: test-a-sample, setting: open ground by day, note: "the river above the fork against the spring"}
+      - {system: harvest, use: harvest-a-plant}
+    learns: [fact.mr01.river-fresh, fact.mr01.works-closed, fact.mr01.sap-thin]
+    directions: "The fork lies a short walk upstream of the river landing; the herald's house, with the salt sack at its door, faces the Hist."
+  - id: 20
+    place: place.hist-heartland.root-gallery-drowned-stair
+    journal: text.journal.mr01.20
+    journalText: "The salt in Greenspring's spring is not coming down the river. The couriers say the Hist's roots run into the flooded galleries of the Drowned Stair. I'm to go down and take water at each landing."
+    onEnter: []
+    objectives:
+      - {id: sample-two, text: text.objective.mr01.sample-two, completeWhen: {hasItem: item.mr01.sample-2}}
+    successors:
+      - {to: 30, when: {hasItem: item.mr01.sample-2}}
+    actions:
+      - {skill: athletics, use: dive, setting: "in a flooded ruin, root-cave or under water"}
+      - {skill: destruction, use: burn-a-nest, target: "vermin: parasite swarms in a root-cave", setting: "in a flooded ruin, root-cave or under water"}
+      - {system: travel, use: take-a-ferry}
+    learns: [fact.mr01.salt-rises]
+    directions: "From Greenspring take the road to the Gate-Side Camp outside Helstrom's gate; the guides there show the stair's mouth, where the deep water starts."
+    outside: {packet: 4.2.hist-heartland}
+  - id: 30
+    place: place.hist-heartland.root-gallery-drowned-stair
+    journal: text.journal.mr01.30
+    journalText: "The water in the Drowned Stair grows saltier the deeper I go. I'm to reach the deepest chamber, beyond one breath, and see where the salt comes in."
+    onEnter: []
+    objectives:
+      - {id: see-breach, text: text.objective.mr01.see-breach, completeWhen: {hasItem: item.mr01.sample-3}}
+    successors:
+      - {to: 40, when: {hasItem: item.mr01.sample-3}}
+    approaches:
+      - {id: a-breath, actions: [{skill: alteration, use: water-breathe, setting: "in a flooded ruin, root-cave or under water"}]}
+      - {id: a-swarm, actions: [{skill: spear, use: fight, target: "vermin: parasite swarms in a root-cave", setting: "in a flooded ruin, root-cave or under water", note: "clears the air pocket on the way"}]}
+    learns: [fact.mr01.breach, fact.mr01.tool-marks, fact.mr01.brine-backflow]
+    outside: {packet: 4.2.hist-heartland}
+  - id: 40
+    place: place.hist-heartland.greenspring
+    journal: text.journal.mr01.40
+    journalText: "Deep in the Drowned Stair, a channel has been cut by hand into a brine seam, and the floods push the brine into Greenspring's roots. The cut is old. I'm to learn who made it, and Vees-Wai, the tree-minder, reads the old stakes."
+    onEnter: [{grantTopic: topic.mr01-the-cut}]
+    objectives:
+      - {id: read-stakes, text: text.objective.mr01.read-stakes, completeWhen: {topicHeardFrom: [topic.mr01-the-cut, npc.hist-heartland.greenspring.tree-minder]}}
+    successors:
+      - {to: 50, when: {topicHeardFrom: [topic.mr01-the-cut, npc.hist-heartland.greenspring.tree-minder]}}
+    failForward:
+      - {to: 50, when: {not: {npcAlive: npc.hist-heartland.greenspring.tree-minder}}}
+    actions:
+      - {skill: speechcraft, use: persuade, target: Vees-Wai, note: "the stakes are the tribe's story; the tool-marks and the sample are the argument"}
+    learns: [fact.mr01.founders-stakes, fact.mr01.rival-grove]
+  - id: 50
+    place: place.hist-heartland.greenspring
+    journal: text.journal.mr01.50
+    journalText: "Greenspring's founders cut the channel to kill a rival grove downstream, and their deed is killing their own Hist. Ixo-Vaal has called the office-holders to the Hist. I'm to put what I found before them and argue for a cure, and for whether the founders are named."
+    onEnter: [{startScene: scene.mr01.council}]
+    objectives:
+      - {id: council, text: text.objective.mr01.council, completeWhen: {any: [{flag: flag.mr01.cure-sealed}, {flag: flag.mr01.cure-reopened}]}}
+    successors:
+      - {to: 60, when: {all: [{flag: flag.mr01.cure-sealed}, {flag: flag.mr01.founders-named}]}}
+      - {to: 61, when: {all: [{flag: flag.mr01.cure-sealed}, {not: {flag: flag.mr01.founders-named}}]}}
+      - {to: 62, when: {flag: flag.mr01.cure-reopened}}
+    failForward:
+      - {to: 61, when: {not: {npcAlive: npc.hist-heartland.greenspring.root-herald}}}
+    approaches:
+      - {id: a-evidence, actions: [{skill: speechcraft, use: present-evidence, setting: before witnesses (a council, a hearing, a household), note: "the samples and the tool-marks against Im-Moro's belief"}]}
+      - {id: a-bargain, actions: [{skill: mercantile, use: bargain, target: Ixo-Vaal, note: "the herald pays for the sealing if the founders stay unnamed"}]}
+  - {id: 60, place: place.hist-heartland.greenspring, journal: text.journal.mr01.60, journalText: "The office-holders of Greenspring sealed the founders' cut and named the deed at the Hist. The tree should mend, and Greenspring now owes the people of the dead grove an answer.", onEnter: [], objectives: [], successors: [], ending: complete, endingId: e-sealed-named}
+  - {id: 61, place: place.hist-heartland.greenspring, journal: text.journal.mr01.61, journalText: "The office-holders of Greenspring sealed the founders' cut and agreed to say nothing of who made it. The tree should mend.", onEnter: [], objectives: [], successors: [], ending: complete, endingId: e-sealed-silent}
+  - {id: 62, place: place.hist-heartland.greenspring, journal: text.journal.mr01.62, journalText: "Greenspring chose to reopen the founders' cut downstream. Their Hist is spared, and the dead grove's land will flood with brine again.", onEnter: [], objectives: [], successors: [], ending: complete, endingId: e-reopened}
+
+endings:
+  - id: e-sealed-named
+    when: "the cut sealed and the founders named"
+    world: [{applyLocalVariant: [place.hist-heartland.greenspring, variant.greenspring.cure-sealed]}, {setFlag: [flag.mr01.founders-named, true]}, {seedRumour: [rumour.mr01.founders-named, hist-heartland]}]
+    seen: "new leaves on the Hist after a week; Im-Moro's greeting is cold; the stakes carry a new carving"
+    rewards: [{changeStanding: [faction.many-root-conclave, 10]}, {setFactionRank: [faction.many-root-conclave, 1]}]
+  - id: e-sealed-silent
+    when: "the cut sealed, the founders unnamed"
+    world: [{applyLocalVariant: [place.hist-heartland.greenspring, variant.greenspring.cure-sealed]}]
+    seen: "new leaves on the Hist; Im-Moro grateful; Vees-Wai will not speak of it"
+    rewards: [{changeStanding: [faction.many-root-conclave, 5]}, {giveGold: 100}, {changeDisposition: [npc.hist-heartland.greenspring.spring-keeper, 20]}]
+  - id: e-reopened
+    when: "the cut reopened downstream"
+    world: [{applyLocalVariant: [place.hist-heartland.greenspring, variant.greenspring.cure-reopened]}]
+    seen: "the Hist mends; at the river landing, fishers from downstream complain of brine"
+    rewards: [{giveGold: 200}, {changeStanding: [faction.many-root-conclave, -5]}]
+
+topics:
+  - {id: topic.greenspring-sick-root, new: true, label: the sick root, person: npc.hist-heartland.greenspring.root-herald, stages: [10], essential: true, intent: "the Conclave's commission: the Hist is sickening, the village blames the salt works; he stopped buying their salt a year ago", uses: [fact.mr01.sap-thin, fact.mr01.works-closed, fact.mr01.consent]}
+  - {id: topic.greenspring-sick-root, new: true, label: the sick root, person: npc.hist-heartland.greenspring.spring-keeper, stages: [10, 20], essential: true, intent: "the salt works foul her spring; nothing of Greenspring's does", uses: [fact.greenspring.why-pressures-3]}
+  - {id: topic.greenspring-sick-root, new: true, label: the sick root, person: npc.hist-heartland.greenspring.tree-minder, stages: [10, 20, 30], essential: true, intent: "the leaves and the sap; he will not guess the cause", uses: [fact.mr01.sap-thin], hides: [fact.mr01.founders-stakes]}
+  - {id: topic.mr01-the-cut, new: true, label: the cut in the roots, person: npc.hist-heartland.greenspring.tree-minder, stages: [40, 50], essential: true, intent: "shown the tool-marks he reads the founders' stakes aloud and names the dead grove", uses: [fact.mr01.founders-stakes, fact.mr01.rival-grove, fact.mr01.tool-marks]}
+  - {id: topic.mr01-the-cut, new: true, label: the cut in the roots, person: npc.hist-heartland.greenspring.root-herald, stages: [50], essential: true, intent: "the Conclave must hear it; he offers to pay for the sealing if the founders stay unnamed", uses: [fact.mr01.breach, fact.mr01.consent]}
+
+review:
+  reviewer: "fresh read by the 0.1 §i lane against quest-review, 2026-10-29"
+  findings:
+    - {id: R1, severity: high, ids: [essentialTopics, topic.greenspring-sick-root], finding: "The imported row names topic.greenspring-sick-root as essential, but topics.json has no such row.", answer: "marked new; 2.5 adds it to the topic web."}
+    - {id: R2, severity: high, ids: [stages.20, stages.30], finding: "The imported row stopped at stage 20 outside the slice (packet 4.2); a faction opener whose centre is out of the slice cannot be played in Part 2.", answer: "open, for the planner: either the drowned stair joins 2.W5 or MR01 is built in 4.2; the record holds the whole graph either way."}
+    - {id: R3, severity: medium, ids: [shapeData.misdiagnosis, quest.local.lh38], finding: "Same spring as LH38; both are CONTAMINATION.", answer: "LH38's misdiagnosis moved to the food (its R1); MR01 keeps the salt."}
+    - {id: R4, severity: medium, ids: [stages.50, scene.mr01.council], finding: "The council's choice sets flags no action sets; the council needs dialogue actions (setFlag on a topic choice).", answer: "the council's topics set the flags; 2.5's topic store carries onDelivered actions (85 §C)."}
+    - {id: R5, severity: low, ids: [startWhen], finding: "factionRankAtLeast rank 0 means any member; non-members never see the quest.", answer: "kept: a faction quest; Ixo-Vaal's join offer comes first (2.12)."}
+  checklist: "pass 1-7, 9-11, 13-18, 20-24; open: 16a (R2)"

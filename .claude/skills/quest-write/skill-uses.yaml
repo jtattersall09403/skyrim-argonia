@@ -1,95 +1,247 @@
-# The skill-use catalogue: what quests can ask the player to DO, by the game's own skills (decision 0005 C2:
-# Morrowind's 27; crossbows and thrown under Marksman, 0016). A quest's actions are drawn from here, so they
-# use and build the player's real skills. Variety comes from crossing a use with a target and a setting.
-# `needs` is what the world must hold for the use (it becomes `things` rows and, via 0.1 §i, engine features).
-# Draft 2026-10-28: 0.1 §i extends it from the old verb tags and the imported systems,
-# and maps every `needs` to its engine feature.
+# The skill-use catalogue: what quests ask the player to DO, by the game's own skills (decision 0005 C2:
+# Morrowind's 27; crossbows and thrown under Marksman, 0016) and every other system the player can use.
+# A quest's actions are drawn from here (decision 0024 §9), so they use and build the player's real skills.
+# Variety comes from crossing a use with a target and a setting.
+#
+#   skills:    skill -> family, uses, and `system` (the key in `systems` below that provides it in the engine)
+#   systems:   every system the player can use -> `needs`: the engine feature and the chunk that builds it.
+#              A system whose `needs` starts "DECISION" has no chunk yet: a quest may not lean on it until a
+#              decision gives it one (quest-record.md, "needs a decision").
+#   uses:      use -> `world`: what the world must hold for it (each becomes a `things` row or a provision)
+#   verbTags:  the old dramatic-centrepiece tags (docs/design/quests/00-overview.md §4, "Dramatic register")
+#              -> the uses that make a stage carry that tag. A record's `centrepiece` is one of these.
+#   supporting: acts the player performs that use no skill (reading, waiting, harvesting). A stage may list
+#              them as `{system: ..., use: ...}` beside its skill actions; they never stand alone.
 
-targets:   # who or what a combat, stealth or magic use is aimed at; danger band comes from the place
-  vermin: [rats in the meal sacks, mudcrabs on a landing, a nest of fleshflies]
-  beasts: [a hackwing flock, a wamasu, a swamp leviathan, a pack of nix-hounds, a giant snapping turtle]
-  people: [bandits on a road, a deserter, the town watch, an assassin, a rival crew, a duellist, pirates]
+targets:   # who or what a combat, stealth or magic use is aimed at; the danger band comes from the place
+  vermin: [rats in the meal sacks, mudcrabs on a landing, a nest of fleshflies, parasite swarms in a root-cave]
+  beasts: [a hackwing flock, a wamasu, a swamp leviathan, a pack of nix-hounds, a giant snapping turtle, ripper eels in a cistern]
+  people: [bandits on a road, a deserter, the town watch, an assassin, a rival crew, a duellist, pirates, Naga raiders, a broker's enforcers]
   undead-and-spirits: [a restless ancestor, a Kothringi revenant, a staked corpse that will not stay down]
   daedra: [a summoned scamp, a Daedric guardian, a bound servant gone loose]
   bosses: [a warlord, a creature that guards a ruin, a named antagonist]
-settings:   # where and how; pick one per use
-  - open ground by day
-  - at night
-  - in a flooded ruin or underwater
-  - from a boat or on a moving boat
-  - high up (a Hist, a cliff, a tower)
-  - in a crowd or a market
-  - inside someone's house or a guarded store
-  - against the clock (a tide, a ceremony, a departing boat)
-  - with an ally to keep alive
-  - outnumbered, or one against one
+
+settings:   # where and how; action_plan.py picks only settings a use allows (settingsFor)
+  open-ground: open ground by day
+  night: at night
+  underwater: in a flooded ruin, root-cave or under water
+  boat: from a boat or on a moving boat
+  height: high up (a Hist, a cliff, a tower, a roof)
+  crowd: in a crowd or a market
+  indoors: inside someone's house or a guarded store
+  clock: against the clock (a tide, a ceremony, a departing boat)
+  ally: with an ally to keep alive
+  odds: outnumbered, or one against one
+  hearing: before witnesses (a council, a hearing, a household)
 
 skills:
   # combat: weapons (each weapon skill takes the combat uses below with its own weapon)
-  long-blade:   {family: combat, uses: [fight, duel, defend, ambush, clear-a-place, hunt, protect]}
-  short-blade:  {family: combat, uses: [fight, ambush, assassinate, duel, clear-a-place]}
-  axe:          {family: combat, uses: [fight, defend, clear-a-place, hunt, break-through]}
-  blunt-weapon: {family: combat, uses: [fight, defend, clear-a-place, break-through, subdue]}
-  spear:        {family: combat, uses: [fight, hunt, defend, fish-or-spear-in-water]}
-  marksman:     {family: combat, uses: [snipe, hunt, defend-from-height, cut-a-rope-or-signal, shoot-from-a-boat]}
-  hand-to-hand: {family: combat, uses: [brawl, subdue, win-a-wager-fight]}
-  block:        {family: combat, uses: [hold-a-line, protect]}
+  long-blade:   {family: combat, system: melee, uses: [fight, duel, defend, ambush, clear-a-place, hunt, protect]}
+  short-blade:  {family: combat, system: melee, uses: [fight, ambush, assassinate, duel, clear-a-place]}
+  axe:          {family: combat, system: melee, uses: [fight, defend, clear-a-place, hunt, break-through]}
+  blunt-weapon: {family: combat, system: melee, uses: [fight, defend, clear-a-place, break-through, subdue]}
+  spear:        {family: combat, system: melee, uses: [fight, hunt, defend, fish-or-spear-in-water]}
+  marksman:     {family: combat, system: ranged, uses: [snipe, hunt, defend-from-height, cut-a-rope-or-signal, shoot-from-a-boat]}
+  hand-to-hand: {family: combat, system: melee, uses: [brawl, subdue, win-a-wager-fight]}
+  block:        {family: combat, system: melee, uses: [hold-a-line, protect]}
   # armour and endurance: a quest asks for them by where it sends the player
-  heavy-armor:  {family: endure, uses: [hold-a-line, walk-through-a-hazard]}
-  medium-armor: {family: endure, uses: [hold-a-line, long-march]}
-  light-armor:  {family: endure, uses: [run-a-gauntlet, swim-armoured]}
-  unarmored:    {family: endure, uses: [blend-in-unarmed, rite-without-iron]}
+  heavy-armor:  {family: endure, system: armour, uses: [hold-a-line, walk-through-a-hazard]}
+  medium-armor: {family: endure, system: armour, uses: [hold-a-line, long-march]}
+  light-armor:  {family: endure, system: armour, uses: [run-a-gauntlet, swim-armoured]}
+  unarmored:    {family: endure, system: armour, uses: [blend-in-unarmed, rite-without-iron]}
   # magic
-  destruction:  {family: magic, uses: [fight, burn-a-nest, break-a-barrier, kill-from-range]}
-  alteration:   {family: magic, uses: [water-breathe, water-walk, levitate-to-a-ledge, open-a-lock, feather-to-carry]}
-  illusion:     {family: magic, uses: [charm, calm, frenzy, become-invisible, light-a-dark-place]}
-  conjuration:  {family: magic, uses: [summon-help, bind-a-spirit, banish, raise-a-witness]}
-  mysticism:    {family: magic, uses: [detect-life, detect-enchantment, soul-trap, telekinesis, mark-and-recall]}
-  restoration:  {family: magic, uses: [heal-the-sick, cure-disease, cure-poison, keep-an-ally-alive]}
-  enchant:      {family: craft, uses: [make-an-item, recharge-a-relic, read-an-enchantment]}
-  alchemy:      {family: craft, uses: [brew-a-cure, brew-a-poison, identify-a-poison, gather-ingredients]}
-  armorer:      {family: craft, uses: [repair, smith-to-order, judge-a-weapon]}
+  destruction:  {family: magic, system: magic, uses: [fight, burn-a-nest, break-a-barrier, kill-from-range]}
+  alteration:   {family: magic, system: magic, uses: [water-breathe, water-walk, levitate-to-a-ledge, open-a-lock, feather-to-carry]}
+  illusion:     {family: magic, system: magic, uses: [charm, calm, frenzy, become-invisible, light-a-dark-place]}
+  conjuration:  {family: magic, system: magic, uses: [summon-help, bind-a-spirit, banish, raise-a-witness]}
+  mysticism:    {family: magic, system: magic, uses: [detect-life, detect-enchantment, soul-trap, telekinesis, mark-and-recall]}
+  restoration:  {family: magic, system: magic, uses: [heal-the-sick, cure-disease, cure-poison, keep-an-ally-alive]}
+  # craft
+  enchant:      {family: craft, system: enchanting, uses: [make-an-item, recharge-a-relic, read-an-enchantment]}
+  alchemy:      {family: craft, system: alchemy, uses: [brew-a-cure, brew-a-poison, identify-a-poison, gather-ingredients, test-a-sample]}
+  armorer:      {family: craft, system: smithing, uses: [repair, smith-to-order, judge-a-weapon]}
   # stealth
-  sneak:        {family: stealth, uses: [sneak-past, spy, follow, pickpocket, plant, steal]}
-  security:     {family: stealth, uses: [pick-a-lock, disarm-a-trap, open-a-strongbox, set-a-trap]}
-  acrobatics:   {family: traversal, uses: [jump-a-gap, fall-safely, reach-a-roof]}
-  athletics:    {family: traversal, uses: [swim, dive, climb, run-down, outrun, pole-or-sail-a-boat, cross-a-flood]}
+  sneak:        {family: stealth, system: sneak, uses: [sneak-past, spy, follow, pickpocket, plant, steal, search-unseen]}
+  security:     {family: stealth, system: locks, uses: [pick-a-lock, disarm-a-trap, open-a-strongbox, set-a-trap]}
+  # traversal
+  acrobatics:   {family: traversal, system: climb, uses: [jump-a-gap, fall-safely, reach-a-roof]}
+  athletics:    {family: traversal, system: swim, uses: [swim, dive, climb, run-down, outrun, cross-a-flood, pole-or-sail-a-boat]}
   # speech and trade
-  speechcraft:  {family: speech, uses: [persuade, intimidate, admire, taunt, lie, present-evidence, accuse, interrogate]}
-  mercantile:   {family: speech, uses: [bargain, bribe, buy-the-only-one, appraise, sell-a-forgery]}
+  speechcraft:  {family: speech, system: persuasion, uses: [persuade, intimidate, admire, taunt, lie, present-evidence, accuse, interrogate]}
+  mercantile:   {family: speech, system: barter, uses: [bargain, bribe, buy-the-only-one, appraise, sell-a-forgery, settle-an-owing]}
 
-uses:   # what a use asks of the world (becomes things rows); uses not listed need only a target or a person
-  fight: {needs: [hostile people or creatures of a stated band at a place]}
-  clear-a-place: {needs: [a dungeon, cave, ruin or camp with its hostiles and a cleared state]}
-  hunt: {needs: [a creature with a habit, territory and traces]}
-  assassinate: {needs: [a target with a routine, guards with bounded senses, an escape route]}
-  snipe: {needs: [a height or cover with sight of the target]}
-  sneak-past: {needs: [watchers with routines and senses, at least two routes]}
-  spy: {needs: [a person doing something at a place and time, cover to watch from]}
-  follow: {needs: [a person with a route, places to hide along it]}
-  pickpocket: {needs: [a person carrying the item]}
-  plant: {needs: [an item to place, a container or person to place it on]}
-  steal: {needs: [an item, its owner, where it is kept]}
-  pick-a-lock: {needs: [a lock of a stated level, a reason it is locked]}
-  disarm-a-trap: {needs: [a trap of a stated kind]}
-  swim: {needs: [water a route crosses]}
-  dive: {needs: [an underwater space reachable within a breath or with water-breathing]}
-  climb: {needs: [a climbable face with a top worth reaching]}
-  pole-or-sail-a-boat: {needs: [a boat the player can use, a water route]}
-  persuade: {needs: [a person with a stated objection the player can answer]}
-  present-evidence: {needs: [an item or learned topic, and a statement it refutes]}
-  accuse: {needs: [a suspect, the exhibits that convict]}
-  bargain: {needs: [a trader with something to sell or buy]}
-  bribe: {needs: [a person whose price is stated or findable]}
-  brew-a-cure: {needs: [a recipe or a person who knows it, ingredients in the world]}
-  identify-a-poison: {needs: [a poisoned thing, an alchemist or a test]}
-  heal-the-sick: {needs: [sick people]}
-  water-breathe: {needs: [a dive too long for one breath]}
-  levitate-to-a-ledge: {needs: [a ledge out of climbing reach]}
-  bind-a-spirit: {needs: [a spirit, a soul gem or a binding rite]}
-  detect-life: {needs: [hidden people or creatures]}
-  smith-to-order: {needs: [a forge, materials, a buyer]}
-  make-an-item: {needs: [an enchanting station or enchanter, a soul gem, an item]}
+# Where a use runs on a system other than its skill's (a boat use is athletics in the sheet, sailing in the
+# engine): use -> system. brief.py reports both.
+useSystem:
+  pole-or-sail-a-boat: boats
+  shoot-from-a-boat: boats
+  climb: climb
+  reach-a-roof: climb
+  dive: swim
+  swim-armoured: swim
+  disarm-a-trap: traps
+  set-a-trap: traps
+  pickpocket: pickpocket
+  steal: crime
+  plant: crime
+  bribe: persuasion
+  settle-an-owing: owing
+  present-evidence: evidence
+  accuse: evidence
+  interrogate: evidence
+  open-a-lock: locks
+  soul-trap: enchanting
+  hunt: harvest
+  outrun: movement
+  run-down: movement
+  long-march: movement
+  cross-a-flood: swim
+  jump-a-gap: climb
+  fall-safely: climb
+
+systems:   # every system the player can use; `needs` = the engine feature that provides it (chunk)
+  melee:       {needs: "souls-like melee on the tuned stack (1.6); the whole combat map (2.7)"}
+  ranged:      {needs: "bows, crossbows and thrown under Marksman (2.3 item classes, 2.7)"}
+  armour:      {needs: "Morrowind armour slots and condition (2.3); armour skills' use rules (2.8)"}
+  magic:       {needs: "spell catalogue, castability without failure, spellmaking (2.9)"}
+  alchemy:     {needs: "alchemy at stations and in the field, recipes, ingredients (2.10)"}
+  enchanting:  {needs: "enchanting and soul gems (2.10, 2.9)"}
+  smithing:    {needs: "repair, temper and forge at stations (2.10)"}
+  sneak:       {needs: "per-observer detection, four-state eye, sneak blows (2.11)"}
+  locks:       {needs: "threshold locks, keys and lockpick wear (2.11); lockIs predicate (planned 2.10 in 85, now 2.11)"}
+  traps:       {needs: "traps from traps.json (2.11)"}
+  pickpocket:  {needs: "pickpocket from pickpocket.json (2.11)"}
+  crime:       {needs: "crime only when seen; ownership; the region ledger (2.11)"}
+  owing:       {needs: "the Owing in place of bounty and jail: pay, serve custody, work it off (2.11); owingAtLeast, addOwing, clearOwing (2.5 evaluator)"}
+  persuasion:  {needs: "admire, intimidate, taunt, bribe with the no-dice thresholds; disposition (2.5)"}
+  evidence:    {needs: "DECISION: presenting an item or topic as evidence and making an accusation in the dialogue view (0025; 2.5 §a and 2.12 §a build it, see quest-record.md)"}
+  barter:      {needs: "barter, merchant purses and restock, prices by disposition (2.6)"}
+  training:    {needs: "training services (2.6)"}
+  travel:      {needs: "ferry, boat, canoe and rootworm services, no fast travel (2.6)"}
+  swim:        {needs: "swim, dive, breath, Argonian water breathing (2.13)"}
+  climb:       {needs: "free climbing on generated geometry, ladders, jump and safe fall (2.13)"}
+  boats:       {needs: "dugout and sea hull on one sailing system, moorings (2.15)"}
+  harvest:     {needs: "flora harvest and creature harvest (2.14), resource nodes (2.10)"}
+  hazards:     {needs: "hazard volumes, burning peat, shock through water, grave stakes (2.14)"}
+  movement:    {needs: "running, stamina and encumbrance (1.5; athletics use rules 2.8)"}
+  rest:        {needs: "rest versus wait, beds, the lamp clock (1.5); timeOfDay predicates (2.5)"}
+  reading:     {needs: "documents.json as readable items (2.3) granting topics (document -> topic -> stage join, 2.12)"}
+  dialogue:    {needs: "topics, hyperlinks, the condition evaluator (1.3 first rung, 2.5 whole)"}
+  hist:        {needs: "DECISION: drinking sap and the Hist-hearing step (grantHistStep, histStepAtLeast in 85) have no chunk in the plan"}
+  disguise:    {needs: "DECISION: disguise as a flag (wearing, disguisedAs in 85; 00-overview cheap patterns) has no chunk in the plan"}
+  fishing:     {needs: "DECISION: conditional on cheap clips (old 0039); no chunk"}
+
+supporting:   # acts with no skill: listed beside a stage's skill actions, never alone
+  read-a-document: {system: reading}
+  wait-for-a-time: {system: rest}
+  harvest-a-plant: {system: harvest}
+  take-a-ferry:    {system: travel}
+  give-a-gift:     {system: persuasion}
+  pay-for-training: {system: training}
+  drink-sap:       {system: hist}
+  wear-a-disguise: {system: disguise}
+
+verbTags:   # 00-overview §4; a quest's `centrepiece` must be one of these and one of its actions must carry it
+  COMBAT:      [fight, duel, defend, ambush, clear-a-place, hunt, protect, break-through, subdue, brawl, hold-a-line, snipe, kill-from-range, burn-a-nest, assassinate]
+  STEALTH:     [sneak-past, spy, follow, pickpocket, plant, steal, search-unseen, become-invisible, assassinate]
+  CHASE:       [run-down, follow, outrun]          # converted to pursuit by inference (00-overview, deliverability)
+  DIVE:        [dive, swim, water-breathe, cross-a-flood, swim-armoured, fish-or-spear-in-water]
+  CLIMB:       [climb, jump-a-gap, reach-a-roof, levitate-to-a-ledge, fall-safely]
+  HEIST:       [steal, pick-a-lock, open-a-strongbox, disarm-a-trap, plant, sell-a-forgery]
+  ESCAPE:      [outrun, sneak-past, become-invisible, run-a-gauntlet, pole-or-sail-a-boat]
+  SOCIAL:      [persuade, intimidate, admire, taunt, lie, bargain, bribe, settle-an-owing, charm]
+  INVESTIGATE: [present-evidence, accuse, interrogate, spy, identify-a-poison, test-a-sample, detect-life, detect-enchantment, read-an-enchantment, appraise, raise-a-witness]
+  SAIL:        [pole-or-sail-a-boat, shoot-from-a-boat]   # the system verb "sailing" (00-overview §4 dimension 7)
+
+uses:   # what a use asks of the world (`world`, becomes things rows); uses not listed need only a target or a person
+  fight: {world: [hostile people or creatures of a stated band at a place]}
+  clear-a-place: {world: [a dungeon, cave, ruin or camp with its hostiles and a cleared state (placeCleared)]}
+  hunt: {world: [a creature with a habit, territory and traces]}
+  assassinate: {world: [a target with a routine, guards with bounded senses, an escape route]}
+  snipe: {world: [a height or cover with sight of the target]}
+  sneak-past: {world: [watchers with routines and senses, at least two routes]}
+  spy: {world: [a person doing something at a place and time (a schedule row), cover to watch from]}
+  follow: {world: [a person with a route, places to hide along it]}
+  pickpocket: {world: [a person carrying the item]}
+  plant: {world: [an item to place, a container or person to place it on]}
+  steal: {world: [an item, its owner, where it is kept]}
+  search-unseen: {world: [a private room or container, its owner's hours away from it]}
+  pick-a-lock: {world: [a lock of a stated level (locks.json), a reason it is locked]}
+  open-a-strongbox: {world: [a strongbox with a lock level and an owner]}
+  disarm-a-trap: {world: [a trap of a stated kind (traps.json)]}
+  swim: {world: [water a route crosses]}
+  dive: {world: [an underwater space reachable within a breath or with water-breathing, air pockets if deeper]}
+  climb: {world: [a climbable face with a top worth reaching]}
+  pole-or-sail-a-boat: {world: [a boat the player can use, a water route, a mooring at each end]}
+  persuade: {world: [a person with a stated objection the player can answer]}
+  present-evidence: {world: [an item or learned topic, and a statement it refutes]}
+  accuse: {world: [a suspect, the exhibits that convict, a person with authority to hear it]}
+  interrogate: {world: [a person who holds a fact and a reason to hide it]}
+  bargain: {world: [a trader with something to sell or buy]}
+  bribe: {world: [a person whose price is stated or findable]}
+  settle-an-owing: {world: [an open Owing (owing.json) and its broker]}
+  brew-a-cure: {world: [a recipe or a person who knows it, ingredients in the world]}
+  test-a-sample: {world: [a sample to take (a thing row), an apparatus or an alchemist]}
+  identify-a-poison: {world: [a poisoned thing, an alchemist or a test]}
+  heal-the-sick: {world: [sick people]}
+  water-breathe: {world: [a dive too long for one breath]}
+  levitate-to-a-ledge: {world: [a ledge out of climbing reach]}
+  bind-a-spirit: {world: [a spirit, a soul gem or a binding rite]}
+  detect-life: {world: [hidden people or creatures]}
+  smith-to-order: {world: [a forge, materials, a buyer]}
+  make-an-item: {world: [an enchanting station or enchanter, a soul gem, an item]}
+  light-a-dark-place: {world: [a dark space where a torch will not serve]}
+
+settingsFor:   # which settings a use can take (keys of `settings`); uses not listed take any but underwater
+  dive: [underwater, clock]
+  swim: [underwater, night, clock, boat]
+  water-breathe: [underwater]
+  cross-a-flood: [night, clock, open-ground]
+  fish-or-spear-in-water: [open-ground, boat, night]
+  pole-or-sail-a-boat: [boat, night, clock]
+  shoot-from-a-boat: [boat]
+  climb: [height, night, clock]
+  reach-a-roof: [height, night]
+  levitate-to-a-ledge: [height]
+  jump-a-gap: [height, clock]
+  defend-from-height: [height]
+  snipe: [height, night, open-ground]
+  sneak-past: [night, indoors, crowd]
+  spy: [night, crowd, indoors, open-ground]
+  follow: [night, crowd, open-ground]
+  pickpocket: [crowd, indoors, night]
+  steal: [indoors, night, crowd]
+  search-unseen: [indoors, night]
+  plant: [indoors, crowd, night]
+  pick-a-lock: [indoors, night, clock, underwater]
+  open-a-strongbox: [indoors, underwater, clock]
+  disarm-a-trap: [indoors, underwater, height]
+  persuade: [hearing, indoors, crowd, clock]
+  intimidate: [indoors, crowd, night]
+  admire: [indoors, crowd, hearing]
+  taunt: [crowd, odds]
+  lie: [indoors, hearing, crowd]
+  present-evidence: [hearing, indoors]
+  accuse: [hearing, indoors, crowd]
+  interrogate: [indoors, night]
+  bargain: [crowd, indoors]
+  bribe: [indoors, night, crowd]
+  appraise: [crowd, indoors]
+  sell-a-forgery: [crowd, indoors]
+  settle-an-owing: [indoors, hearing]
+  buy-the-only-one: [crowd, clock]
+  brew-a-cure: [indoors, clock, ally]
+  test-a-sample: [indoors, open-ground]
+  heal-the-sick: [indoors, clock, ally]
+  cure-disease: [indoors, ally]
+  gather-ingredients: [open-ground, night, underwater]
+  light-a-dark-place: [underwater, night, indoors]
+  detect-life: [night, indoors, underwater]
+  assassinate: [night, indoors, crowd, height]
+  duel: [open-ground, odds, hearing]
+  protect: [ally, clock, open-ground, boat]
+  hold-a-line: [odds, clock, ally]
+  clear-a-place: [indoors, night, underwater, odds]
 
 targetsFor:   # which target groups a use can be aimed at; uses not listed take no target
   fight: [vermin, beasts, people, undead-and-spirits, daedra, bosses]
