@@ -25,7 +25,7 @@ def test_locks_are_per_machine(tmp_path):
     os.mkfifo(fifo)
     assert guard(tmp_path, "run", "--gpu=argonia-play-2", "hold", "--", "bash", "-c", f"read l < {fifo}").returncode == 0
     lock2 = jobs / "gpu-argonia-play-2.lock"
-    for _ in range(100):
+    for _ in range(300):  # up to 15 s: a loaded VM under make -j starts the job slowly
         if held(lock2):
             break
         time.sleep(0.05)
