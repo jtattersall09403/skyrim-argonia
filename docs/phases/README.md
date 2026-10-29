@@ -176,8 +176,8 @@ reason.
 
 The planner reads CLAUDE.md's session-start list, then runs the chunks in dependency order from PROGRESS's first
 `todo` row to the named chunk, delegating each chunk's sections to `deliver` lanes and running disjoint lanes in
-parallel as the part README's "runs beside" column says (the game machine takes one lane at a time, `job_guard.sh
-run --gpu`; the build VM takes several). At each chunk's close it writes the Outcome, rewrites the next Starting
+parallel as the part README's "runs beside" column says (each game machine takes one lane at a time, `job_guard.sh
+run --gpu=NAME`, and more are cloned when the queue is the bottleneck; the build VM takes several). At each chunk's close it writes the Outcome, rewrites the next Starting
 state, marks PROGRESS, commits by pathspec and pushes; at each part's close it posts the check-in. **It stops
 only at a blocking owner gate, a hard-to-reverse call, or a blocker it cannot clear after the brief's fallbacks.**
 
