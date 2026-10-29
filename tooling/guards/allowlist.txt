@@ -11,3 +11,5 @@ world/sources/registries/npcs.json
 world/sources/catalogue/places-hist-heartland.json
 world/sources/catalogue/places-mercantile-coast.json
 world/sources/sites/candidate-sites.json
+LICENSE
+LICENSE-content

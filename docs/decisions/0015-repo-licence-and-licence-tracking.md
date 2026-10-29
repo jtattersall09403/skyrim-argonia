@@ -1,6 +1,10 @@
 # 0015: The repo's licence is chosen in 0.1; every component's licence obligations are tracked
 
-**Status:** recommendation 2026-10-27; owner call **O-14** decides in 0.1.
+**Status:** recommendation 2026-10-27; **applied as the recommendation on 2026-10-29** (`LICENSE` GPL-3.0-or-later,
+`LICENSE-content` CC BY-NC-SA 4.0, a README section), so the public repo is not unlicensed; owner call **O-14**
+confirms or changes it (the owner is the sole author, so a change before any outside contribution is free).
+Noted from the reuse audit: Mutagen is GPL-3.0-only with no linking exception and FreeClimb GPL-3.0-only, both
+compatible with GPL-3.0-or-later code.
 
 ## Context
 

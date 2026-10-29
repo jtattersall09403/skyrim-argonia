@@ -54,7 +54,7 @@ recommendation; the answer is recorded in the named record (or a new one) and th
 | O-10 | The opening's scope (default: the Opening Work Camp near Stormhold / Alten Corimont, as in the old main quest) | 3.3 | Default |
 | O-11 | Voice: stay unvoiced text dialogue (old 0139/0143) | 1.7 | Yes |
 | O-12 | Old repo's GitHub Pages build exposes converted assets publicly (outside this repo's scope) | any time | Owner's choice; flagged only |
-| O-14 | Repo licence (decision 0015) | 0.1 | GPL-3.0-or-later code, CC BY-NC-SA 4.0 content |
+| O-14 | Repo licence (decision 0015): the recommendation is applied since 2026-10-29; confirm or change | 0.1 (asked in #11) | GPL-3.0-or-later code, CC BY-NC-SA 4.0 content |
 | ~~O-15~~ | ~~Crossbows and thrown weapons back in~~ | — | **Answered 2026-10-27: yes** (decision 0016) |
 | O-16 | Does one rest bank one pending level or all of them (left open by old 0147) | 1.7 | One per rest (the old 76 text) |
 | O-17 | Evidence of the permissions the owner already holds (old sourcing log, 2026-09-24: "permission is held from every mod author in the pool, KotM included"): do they cover a public dependency and AI use? | 0.3 | Share the evidence; send new requests only where it falls short |

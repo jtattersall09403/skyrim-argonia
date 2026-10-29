@@ -34,6 +34,14 @@ affiliated with Tamriel Rebuilt or Beyond Skyrim. Built largely with AI assistan
 | `tests/` | studio scenes and journeys and unit tests |
 | `tooling/` | guards and agent tooling |
 
+## Licence
+
+Code is **GPL-3.0-or-later** ([LICENSE](LICENSE)); the world data, design documents and written content are
+**CC BY-NC-SA 4.0** ([LICENSE-content](LICENSE-content)). Applied on 2026-10-29 as decision
+[0015](docs/decisions/0015-repo-licence-and-licence-tracking.md)'s recommendation, pending the owner's
+confirmation or change (owner call O-14). Third-party mods are player-downloaded dependencies under their
+own terms and are never redistributed here.
+
 ## Credits
 
 Credits are generated from `data/sourcing-register.json` once it exists (chunk 0.3). The plan already depends on
