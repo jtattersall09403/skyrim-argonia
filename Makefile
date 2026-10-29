@@ -1,6 +1,6 @@
 # The one gate. `make check` runs every target in parallel and ends with one list of the reds.
 RED := .git/check-red
-PARTS := guard lint unit budget links plugin-check skse immersion
+PARTS := guard lint unit budget links world plugin-check skse immersion
 # A failing part records its name, then fails.
 FAIL = || { echo $@ >> $(RED); exit 1; }
 

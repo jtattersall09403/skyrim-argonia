@@ -3,7 +3,7 @@
 
 The vault is the old project's snapshot bucket (`elder-souls-vault`, prefix `snapshot/v1/`): each part is one
 uncompressed tar of paths relative to the old dev root, with a `.files` sidecar listing its entries. This
-script reads `world/sources/terrain/freeze.json` for the file names and hashes it needs, finds which part
+script reads the world database's `frozen_array` table (decision 0030) for the file names and hashes it needs, finds which part
 holds each (from the sidecars), streams only those parts, extracts only those entries into `$ARGONIA_DATA`
 (default `~/.argonia/data`), and refuses any file whose sha256 differs from the freeze record.
 
@@ -24,7 +24,6 @@ import tarfile
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
-FREEZE = REPO / "world" / "sources" / "terrain" / "freeze.json"
 BUCKET, PREFIX = "elder-souls-vault", "snapshot/v1/"
 # the live manifest lists every part and its `.files` sidecar; the frozen arrays sit in the Tamriel Worldspaces
 # mod part's argonia-heightfield folder (found 2026-10-29), but the search reads the sidecars rather than assume
@@ -60,7 +59,9 @@ def sha256_of(path: Path) -> str:
 
 
 def wanted() -> dict[str, str]:
-    return {name: row["sha256"] for name, row in json.loads(FREEZE.read_text())["frozen"].items()}
+    sys.path.insert(0, str(REPO))
+    from tools.argonia_world import db
+    return {r.id: r.sha256 for r in db.open().rows("frozen_array")}
 
 
 def status(data: Path, want: dict[str, str]) -> dict[str, str]:

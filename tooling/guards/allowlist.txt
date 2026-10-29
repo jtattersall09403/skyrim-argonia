@@ -1,15 +1,10 @@
 # Paths (repo-relative, one per line) allowed to exceed 1 MB. Text only; no game or mod files.
 world/sources/assets/registry-vanilla.jsonl
 world/sources/assets/registry-bmv.jsonl
-world/sources/catalogue/places-dunmer-north.json
-world/sources/catalogue/places-imperial-fringe.json
 world/sources/flora/vegetation-patches.json
 world/sources/flora/palettes.json
 world/sources/hydrology/hydrology-graph.json
 world/sources/placement/exterior-interior-links.json
-world/sources/registries/npcs.json
-world/sources/catalogue/places-hist-heartland.json
-world/sources/catalogue/places-mercantile-coast.json
 world/sources/sites/candidate-sites.json
 LICENSE
 LICENSE-content

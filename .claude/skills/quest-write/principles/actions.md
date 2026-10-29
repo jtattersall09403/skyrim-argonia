@@ -35,7 +35,7 @@ at dawn), and quests combine skills creatively. A chain of plain conversations i
 
 ## Profiles
 
-`profiles.yaml` holds one profile per questline in `world/sources/quests/lines.json` (key = the line id's last
+`profiles.yaml` holds one profile per questline (`quest_line` row) (key = the line id's last
 part: `shadowscales`, `night-reed`, `marsh-charter`, `sunken-archive`, `nisswo`, `many-root`, `reed-sail`,
 `league-of-open-water`, `chainbreakers`, `thorn-ash-reed`, `umbriel-witness`, `rootworm-waykeepers`,
 `salt-teeth`, `main`, `daedric`, `local`) and the planned `detectives` (decision 0025). Each is read from the

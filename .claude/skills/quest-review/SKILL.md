@@ -12,14 +12,17 @@ builder); it judges whether the quest is good and believable.
 ## 1. Set-up
 
 - Run as a fresh agent given only the quest record, the world records it cites and this skill; never the
-  author's reasoning, so the reading is not anchored on it. The world records: the place facts
-  (`../../../world/sources/placement/facts/`), the people (`../../../world/sources/registries/npcs.json`), the
-  stance files and culture sheets (`../../../world/sources/dialogue/stance/`,
-  `../../../world/sources/dialogue/cultures/`), the quest data and the other quests at the place
-  (`../../../world/sources/quests/`), the lore (`../../../world/sources/lore/`).
+  author's reasoning, so the reading is not anchored on it. The record is rows in the world database (decision
+  0030): read its YAML view with `python3 -m tools.argonia_world.quest_record export <quest id>`. The world
+  records, read only through the database (`python3 -m tools.argonia_world.db query "SELECT ..."` or `db show
+  <table> <id>`; the tables are described in `../../../docs/design/world/98-data-model.md`): the place's facts
+  (`fact` by `place_id`), the people (`npc`, `npc_faction`), the stance and culture sheets (`stance`,
+  `stance_chain`, `stance_topic`, `culture_sheet`, `culture_entry`, `culture_opinion`), the other quests at the
+  place (`quest` by `settlement`, each exported as above). The lore is not yet a table: read it from the
+  import, read-only (`../../../world/sources/lore/`).
 - Also binding: the quest index rules and coverage (`../../../docs/design/quests/index/README.md` §47b–c,
   `../../../docs/design/quests/index/coverage.md`), 00-overview §4 (`../../../docs/design/quests/00-overview.md`), the condition
-  vocabulary (`../../../docs/design/quests/85-condition-vocabulary.md`) and the style guide's journal register
+  vocabulary (`condition_term` rows; `../../../docs/design/quests/85-condition-vocabulary.md` explains each term) and the style guide's journal register
   (`../../../docs/design/standards/text/style-guide.md`).
 - Read the principle files the record routes to (`../quest-write/shapes.yaml`: always
   `../quest-write/principles/general.md` and `../quest-write/principles/actions.md`, the group's file, each
@@ -81,7 +84,7 @@ Action and fit
 22. Is the quest built on its old design (`foundation`), and is each change from it an improvement?
 22b. Does it pass the novelty rule (index README §47c): no collision in primary shape with the same packet,
     line, reversal or resolution set; and does it share no reversal with another quest at the same place?
-22c. Do the cast match the registry (`../../../world/sources/registries/npcs.json`: race, sex, role) and the roster (36-cast-roster), with any
+22c. Do the cast match their `npc` rows (race, sex, role) and the roster (36-cast-roster), with any
     difference marked `invented`?
 
 Text

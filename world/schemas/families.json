@@ -8,17 +8,6 @@
    ],
    "homeOf": "promise."
   },
-  "layout": {
-   "schema": "layout.v1.schema.json",
-   "files": [
-    "world/sources/blueprints/*.layout.json"
-   ],
-   "homeOf": "socket."
-  },
-  "socket": {
-   "schema": "socket.v1.schema.json",
-   "within": "layout ops[op=socket]"
-  },
   "door": {
    "schema": "door.v1.schema.json",
    "within": "blueprint doors[]"
@@ -29,41 +18,6 @@
     "world/sources/blueprints/place.*.json"
    ],
    "homeOf": "door."
-  },
-  "travel-services": {
-   "schema": "travel-services.v1.schema.json",
-   "files": [
-    "world/sources/routes/travel-services.json"
-   ],
-   "homeOf": "travel services"
-  },
-  "socket-vocabulary": {
-   "schema": "socket-vocabulary.v1.schema.json",
-   "files": [
-    "world/sources/vocab/socket-vocabulary.json"
-   ]
-  },
-  "quests": {
-   "schema": "quests.v2.schema.json",
-   "files": [
-    "world/sources/quests/quests-*.json",
-    "world/sources/quests/local-*.json"
-   ],
-   "homeOf": "quest."
-  },
-  "items": {
-   "schema": "items.v2.schema.json",
-   "files": [
-    "world/sources/registries/items.json"
-   ],
-   "homeOf": "item."
-  },
-  "locks": {
-   "schema": "locks.v1.schema.json",
-   "files": [
-    "world/sources/registries/locks.json"
-   ],
-   "homeOf": "lock."
   },
   "physical-materials": {
    "schema": "physical-materials.v1.schema.json",
@@ -93,24 +47,6 @@
    ],
    "homeOf": "blanket."
   },
-  "culture-sheet": {
-   "schema": "culture-sheet.v1.schema.json",
-   "files": [
-    "world/sources/dialogue/cultures/**/*.json"
-   ],
-   "homeOf": "culture."
-  },
-  "stance": {
-   "schema": "stance.v1.schema.json",
-   "files": [
-    "world/sources/dialogue/stance/*.json"
-   ],
-   "homeOf": "stance rows by npc id"
-  },
-  "place-crime": {
-   "schema": "place-crime.v1.schema.json",
-   "within": "catalogue places[] (zones, watch)"
-  },
   "boat-classes": {
    "schema": "boat-classes.v1.schema.json",
    "files": [
@@ -131,9 +67,9 @@
     "packages/game-core/src/boats/data/navigable-reach.json"
    ]
   },
-  "owner-ref": {
-   "schema": "owner-ref.v1.schema.json",
-   "within": "locks entries[].owner, place zones[].owner and watch.answers"
+  "socket": {
+   "schema": "socket.v1.schema.json",
+   "within": "layout ops[op=socket] (layout migrated; kept for the loot rows other schemas reference)"
   }
  }
 }

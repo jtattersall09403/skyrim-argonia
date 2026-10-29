@@ -4,7 +4,7 @@
 
 always: [principles/general.md, principles/actions.md]
 
-lines:   # by the quest object's `group` (world/sources/quests/README.md); `byLine` adds files for one line id
+lines:   # by the quest row's `group`; `byLine` adds files for one line id
   local: [principles/questlines.md]
   faction: [principles/questlines.md]
   line: [principles/questlines.md]

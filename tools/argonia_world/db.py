@@ -35,6 +35,9 @@ REPO = Path(__file__).resolve().parents[2]
 SCHEMA = "world/schema.sql"
 DB_DIR = "world/db"
 OUT = "out/world.sqlite"
+# The world every tool loads by default: this repo's, or another root (a scale or scratch copy) named by the
+# environment, so a whole gate run can point at it: ARGONIA_WORLD_ROOT=out/scale make check
+WORLD_ROOT = Path(os.environ.get("ARGONIA_WORLD_ROOT") or REPO).resolve()
 
 PYTYPE = {"TEXT": str, "INTEGER": int, "REAL": float, "BOOLEAN": bool, "": object}
 
@@ -264,16 +267,21 @@ class World:
         self.dirty.clear()
         return names
 
-    def dump(self, out: Path) -> Path:
-        """The loaded world as one SQLite file (for DuckDB, pandas or the sqlite3 shell)."""
+    def dump(self, out: Path, meta: dict | None = None) -> Path:
+        """The loaded world as one SQLite file (for DuckDB, pandas or the sqlite3 shell), written to a temporary
+        file of this process and moved into place, so concurrent builds never see a half-written file."""
         out = Path(out)
         out.parent.mkdir(parents=True, exist_ok=True)
-        tmp = out.with_suffix(".tmp")
+        tmp = out.with_name(f"{out.name}.{os.getpid()}.tmp")
         if tmp.exists():
             tmp.unlink()
         self.con.commit()
         dst = sqlite3.connect(tmp)
         self.con.backup(dst)
+        if meta:
+            dst.execute("CREATE TABLE IF NOT EXISTS _built (key TEXT PRIMARY KEY, value)")
+            dst.executemany("INSERT OR REPLACE INTO _built VALUES (?, ?)", meta.items())
+            dst.commit()
         dst.close()
         os.replace(tmp, out)
         return out
@@ -315,7 +323,7 @@ def _connect(path: str = ":memory:") -> sqlite3.Connection:
 def load(root: Path | str | None = None, db_dir: Path | str | None = None, strict: bool = True) -> World:
     """Build the world in memory from schema.sql and world/db/*.jsonl. Every type, NOT NULL, CHECK, UNIQUE and
     foreign-key violation is collected and raised as one LoadError (strict) or left in w.load_errors."""
-    root = Path(root or REPO)
+    root = Path(root or WORLD_ROOT)
     con = _connect()
     con.executescript((root / SCHEMA).read_text(encoding="utf-8"))
     w = World(con, root)
@@ -389,7 +397,7 @@ def _meta(out: Path) -> dict:
 def open(root: Path | str | None = None, cache: bool = True) -> World:  # noqa: A001 - the module's verb
     """The world for a tool: a fresh out/world.sqlite copied into memory when it is newer than every table file
     and the schema, else a full load (which also refreshes the cache)."""
-    root = Path(root or REPO)
+    root = Path(root or WORLD_ROOT)
     out = root / OUT
     if cache and _fresh(root, out):
         src = sqlite3.connect(f"file:{out}?mode=ro", uri=True)
@@ -406,14 +414,7 @@ def open(root: Path | str | None = None, cache: bool = True) -> World:  # noqa: 
 
 
 def build(w: World, out: Path) -> Path:
-    n = len(list((w.root / DB_DIR).glob("*.jsonl")))
-    w.dump(out)
-    con = sqlite3.connect(out)
-    con.execute("CREATE TABLE IF NOT EXISTS _built (key TEXT PRIMARY KEY, value)")
-    con.execute("INSERT OR REPLACE INTO _built VALUES ('tables', ?)", (n,))
-    con.commit()
-    con.close()
-    return out
+    return w.dump(out, meta={"tables": len(list((w.root / DB_DIR).glob("*.jsonl")))})
 
 
 def counts(w: World) -> dict[str, int]:
@@ -439,8 +440,8 @@ def main(argv: list[str] | None = None) -> int:
         print(f"world does not load: {e}")
         return 1
     if a.cmd == "build":
-        out = build(w, REPO / a.out)
-        print(f"wrote {out.relative_to(REPO)}: {len(w.tables)} tables, {sum(counts(w).values())} rows")
+        out = build(w, WORLD_ROOT / a.out)
+        print(f"wrote {out}: {len(w.tables)} tables, {sum(counts(w).values())} rows")
     elif a.cmd == "check":
         errs = w.errors()
         if errs:

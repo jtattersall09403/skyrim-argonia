@@ -1,21 +1,25 @@
 # The quest record
 
-One YAML file per quest is the only source of truth for that quest (decision 0024 §1). It is **the imported
-quest object plus the record's sections**: the object's fields are exactly those of
-`world/sources/quests/README.md` (the rows in `quests-*.json` and `local-<region>.json`), and the record adds
-the sections below them. There is no second quest format: when the record is `reviewed`, its quest-object
-fields replace the row in the quest data file (same `id`), and the added sections stay in the record.
-Conditions and actions are written only in the condition vocabulary
-(`docs/design/quests/85-condition-vocabulary.md`); a term it lacks is added there first, never written in prose.
-Worked examples: [examples/lh38.yaml](examples/lh38.yaml) (local), [examples/mr01.yaml](examples/mr01.yaml)
-(faction).
+A quest's record is rows in the world database, the only source of truth for that quest (decisions 0024 §1,
+0030 §5): the `quest` row and its `quest_*` child tables, its facts as `fact` rows (`quest_id`, in `ord`
+order), its conditions and actions as `condition*` and `action*` rows. This file describes its **YAML view**,
+the form a writer edits: **the imported quest object plus the record's sections**. The object's fields are the
+`quest` row's (the import's names), and the record adds the sections below them. There is no second quest
+format and no second copy: `python3 -m tools.argonia_world.quest_record import QUEST.yaml` replaces the quest's
+record rows with the view's (refusing the whole record on any unknown field, wrong type, dangling key, unknown
+lookup value or failing named check), and `quest_record export <quest id>` rebuilds the view from the rows.
+Every YAML path maps to one column or child table (`tools/argonia_world/quest_view.json`). Conditions and actions
+are written only in the condition vocabulary (`condition_term` rows with their argument shapes;
+`docs/design/quests/85-condition-vocabulary.md` explains each); a term it lacks is added first, never written
+in prose. Worked examples, exported from the rows: [examples/lh38.yaml](examples/lh38.yaml) (local),
+[examples/mr01.yaml](examples/mr01.yaml) (faction).
 
 ## 1. The imported quest object (field names as in the import)
 
-| Field | Rule (from `world/sources/quests/README.md`) |
+| Field | Rule (the `quest` row and its child tables) |
 |---|---|
 | `id`, `code`, `title` | `quest.<line-slug>.<code-lower>`, never reused; two capitals two digits; working title |
-| `line`, `group`, `tier` | a `quest.line.*` id from `lines.json`; its group (`main`, `faction`, `line`, `local`, `daedric`, `proposed`); 0–3, a quest may not write what a lower tier owns (40-factions §30b) |
+| `line`, `group`, `tier` | a `quest_line` id; its group (`main`, `faction`, `line`, `local`, `daedric`, `proposed`); 0–3, a quest may not write what a lower tier owns (40-factions §30b) |
 | `status` | the import's `live`, `concept`, `skeleton`, `proposed`. The record's own progress is `recordStatus` (§2) |
 | `shapes` | primary first, up to two secondary, from the 16 (docs/design/quests/index/README.md §47b) |
 | `region`, `settlement`, `anchorPlaces` | catalogue region; a live settlement `place.` id, also in `anchorPlaces` |
@@ -50,13 +54,13 @@ Worked examples: [examples/lh38.yaml](examples/lh38.yaml) (local), [examples/mr0
 | 3 | `actionPlan`, `centrepiece` | the skill uses the quest is built round (`skill`, `use`, reason), from `action_plan.py`; `centrepiece`: one verb tag (`skill-uses.yaml` verbTags; 00-overview §4) | profile, place, shapes |
 | 4 | `truth` | numbered physical events: `id`, `when`, `who`, `where`, `what` (and why) | premise + cast motives |
 | 5 | `playerStart`, `facts` | facts any player has on arrival; the quest's new facts `{id, claim, from}`, `from` a truth event, a place fact or `culture.*#field` | truth |
-| 6 | `cast` | each person by registry id (`npcs.json`) with `wants`, `fears`, `knowledge` per fact (`knows`, `believes: <false version>`, `suspects`, `hides: <reason>`; absent = ignorant), `changes` per stage; `persona` only for what the registry and stance file lack, marked `invented` | npcs.json, stance, culture sheets, 36-cast-roster |
+| 6 | `cast` | each person by `npc` id with `wants`, `fears`, `knowledge` per fact (`knows`, `believes: <false version>`, `suspects`, `hides: <reason>`; absent = ignorant), `changes` per stage; `persona` only for what the registry and stance file lack, marked `invented` | `npc`, `stance`, culture sheets, 36-cast-roster |
 | 7 | `things` | every physical thing: `{id, kind, source: existing <id> | new, where, states}` | truth + clues |
 | 8 | `conclusions`, `clues` | each conclusion with three clues or more; each clue's `form` (line, thing, place, behaviour), `carrier`, `gives`, `supports` | cast knowledge + things |
 | 9 | `shapeData` | the sections each shape requires (`shapes.yaml`) | truth + clues |
 | 10 | `stages` | as §1, with actions, learns and directions | conclusions + clues |
 | 11 | `endings` | `{id, when, world (actions), seen, rewards (actions)}`: two or more with real costs | stages |
-| 12 | `topics` | `{id: topic.<slug>, label, person, stages, essential, intent, uses, hides, grants}`; the id is an existing `world/sources/dialogue/topics.json` row or `new` (2.5 adds it) | cast + stages |
+| 12 | `topics` | `{id: topic.<slug>, label, person, stages, essential, intent, uses, hides, grants}`; the id is an existing `topic` row or `new` (2.5 adds it) | cast + stages |
 | 13 | `review` | the `quest-review` findings and how each was answered | quest-review |
 
 A **line record** (faction, main, Daedric) comes before its quests: `principles/questlines.md` lists its sections.
@@ -72,10 +76,10 @@ A **line record** (faction, main, Daedric) comes before its quests: `principles/
 | any condition (`completeWhen`, `when`, `startWhen`, topic gates) | ArgoniaCore evaluator (1.3 first predicates, 2.5 whole) | 85 §A; native conditions where they exist |
 | `journal`, `journalText`, `objectiveText` | the journal (1.2 view, 1.4 entries, 2.12 §b) and the text catalogue (2.5 §b) | QUST log entries and our journal store by text key |
 | `stages[].directions` | the journal's directions (1.4 by hand, 2.12 §a generator and validator over 2.W3 routes) | `directionsId` on the entry |
-| `topics[]` (`id`, `label`, `person`, `stages`, `essential`) | topic store (1.3 first rung, 2.5 §a) | topic row in `topics.json` (`keys.quest`); availability = questStage condition |
+| `topics[]` (`id`, `label`, `person`, `stages`, `essential`) | topic store (1.3 first rung, 2.5 §a) | a `topic` row (`keys_quest`); availability = questStage condition |
 | topic lines (written by `dialogue-write`) | topic store (1.3, 2.5 §b) | lines by person and band, citing fact ids |
-| `facts[]` (`id`, `claim`) | dialogue facts (`world/sources/dialogue/facts.json`, 2.5 §b) | `says` from `claim`; cues added by 2.5 |
-| `cast[].persona`, `wants`, `fears` (invented rows) | people records (2.4) | written back to `npcs.json` / stance before generation |
+| `facts[]` (`id`, `claim`) | `fact` rows (`quest_id`; 2.5 §b) | `says` from `claim`; cues added by 2.5 |
+| `cast[].persona`, `wants`, `fears` (invented rows) | people records (2.4) | written back to the `npc` / `stance` rows before generation |
 | `cast[].changes` | topic store conditions (2.5) | a per-stage variant of the person's topic |
 | `things[]` with `source: new` | the world-builder (2.W5 slice, 4.2 packets, 4.4 interiors); by hand in 1.4 | a provision row placed at `where`; `states` → `enableRef`/`disableRef`/local variants |
 | `things[].states` | generator + local-state overlay (2.12 §a) | `applyLocalVariant` per stage |
@@ -122,7 +126,7 @@ as `journalText` in the record and moved to the text catalogue by 2.5.
 
 - **Truth before trail.** Every clue is a trace a truth event left; no truth event the player needs is left without clues.
 - **Nobody knows what they could not know.** Knowledge comes from truth events the person took part in or was told of.
-- **People come from the registry.** Race, sex, role and home are `npcs.json`'s; voice is the stance file's. A record
+- **People come from the registry.** Race, sex, role and home are the `npc` row's; voice is the `stance` row's. A record
   that needs a different value proposes it as `invented` for 2.4 to write back; it never silently differs.
 - **Motives cite the sheets.** Each `wants`, `fears` and hidden reason cites a culture-sheet or registry entry, or is flagged `invented`.
 - **The world is built from the record.** A `new` thing is a provision row; dialogue names a thing only by its id here.

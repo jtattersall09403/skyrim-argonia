@@ -13,15 +13,13 @@ to `voices.md`.
 
 The writer works only from a brief built from a record, never from a hand-written summary:
 
-- **Quest topics and journal text:** `../quest-write/brief.py` builds one brief per person, and one journal brief,
-  from the quest record.
+- **Quest topics and journal text:** `../quest-write/brief.py <quest id> OUT_DIR` builds one brief per person,
+  and one journal brief, from the quest record's rows.
 - **Place topics** (the person's topics in the place record: the place, its work, people, danger,
   directions, rumours, their role): `python3 .claude/skills/dialogue-write/place_brief.py --person <npc id>
-  --out BRIEF.md`. It reads only the imported world: the registry row
-  (`../../../world/sources/registries/npcs.json`), the stance row and its culture chain
-  (`../../../world/sources/dialogue/stance/`, `../../../world/sources/dialogue/cultures/`), the place facts
-  (`../../../world/sources/placement/facts/`) and the topic web (`../../../world/sources/dialogue/topics.json`),
-  and says when the talk can happen (a hostile place's flips).
+  --out BRIEF.md`. It reads only the world database (decision 0030): the person's `npc` row, the `stance` rows
+  and the culture sheets they chain, the place's `fact` rows and last build (`place_build`, `place_person`) and
+  the `topic` rows, and says when the talk can happen (a hostile place's flips).
 
 A brief holds: what the player can see (race, sex, look, outfit); what they cannot (role, services,
 factions, wants, fears); the voice card and the stance voice (chatter, contraction rate, address term, quirk,
@@ -29,8 +27,9 @@ never-mentions); the culture chain; the others the player may be sent to; the th
 and per topic the intent or opinion, the facts it may state and hide, the speaker's knowledge, the links it
 grants, and what the player already knows.
 
-The imported written lines (`../../../world/sources/dialogue/lines/`, `../../../world/sources/dialogue/pool/`) are reference only and never
-models (decision 0024 §7); the facts (`../../../world/sources/dialogue/facts.json`), topics, glossary and culture sheets are the source.
+The imported written lines (`dialogue_line` rows) are reference only and never models (decision 0024 §7); the
+facts (`fact`), topics (`topic`), glossary (`glossary_term`) and culture sheets are the source. Read them only
+through the database (`python3 -m tools.argonia_world.db query "SELECT ..."`).
 
 **Lines set up the action.** A quest brief lists what the player does at each topic's stages (the skill
 uses); the lines give what the player needs to do it: who, where, when, what danger, what they will need

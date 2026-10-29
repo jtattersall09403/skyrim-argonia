@@ -1,0 +1,2214 @@
+{
+ "table": "quest",
+ "pk": [
+  "id"
+ ],
+ "parent_cols": [],
+ "fields": [
+  [
+   "id",
+   [
+    "id"
+   ]
+  ],
+  [
+   "code",
+   [
+    "code"
+   ]
+  ],
+  [
+   "title",
+   [
+    "title"
+   ]
+  ],
+  [
+   "line",
+   [
+    "line"
+   ]
+  ],
+  [
+   "group",
+   [
+    "group"
+   ]
+  ],
+  [
+   "tier",
+   [
+    "tier"
+   ]
+  ],
+  [
+   "status",
+   [
+    "status"
+   ]
+  ],
+  [
+   "region",
+   [
+    "region"
+   ]
+  ],
+  [
+   "settlement",
+   [
+    "settlement"
+   ]
+  ],
+  [
+   "premise",
+   [
+    "premise"
+   ]
+  ],
+  [
+   "cost_tier",
+   [
+    "costTier"
+   ]
+  ],
+  [
+   "milestone",
+   [
+    "milestone"
+   ]
+  ],
+  [
+   "start",
+   [
+    "start"
+   ]
+  ],
+  [
+   "record_status",
+   [
+    "recordStatus"
+   ]
+  ],
+  [
+   "foundation",
+   [
+    "foundation"
+   ]
+  ],
+  [
+   "centrepiece",
+   [
+    "centrepiece"
+   ]
+  ],
+  [
+   "review_reviewer",
+   [
+    "review",
+    "reviewer"
+   ]
+  ],
+  [
+   "review_checklist",
+   [
+    "review",
+    "checklist"
+   ]
+  ],
+  [
+   "notes",
+   [
+    "notes"
+   ]
+  ],
+  [
+   "stand_in_for",
+   [
+    "standInFor"
+   ]
+  ]
+ ],
+ "conds": [
+  [
+   "start_when",
+   [
+    "startWhen"
+   ]
+  ]
+ ],
+ "acts": [],
+ "order": [
+  "id",
+  "code",
+  "title",
+  "line",
+  "group",
+  "tier",
+  "status",
+  "shapes",
+  "region",
+  "settlement",
+  "anchorPlaces",
+  "premise",
+  "costTier",
+  "milestone",
+  "touches",
+  "sources",
+  "essentialTopics",
+  "startWhen",
+  "start",
+  "recordStatus",
+  "foundation",
+  "recordSources",
+  "centrepiece",
+  "actionPlan",
+  "truth",
+  "playerStart",
+  "facts",
+  "cast",
+  "things",
+  "conclusions",
+  "clues",
+  "shapeData",
+  "stages",
+  "endings",
+  "topics",
+  "review"
+ ],
+ "children": [
+  {
+   "rel": [
+    "shapes"
+   ],
+   "mode": "list",
+   "key": null,
+   "node": {
+    "table": "quest_shape_of",
+    "pk": [
+     "quest_id",
+     "ord"
+    ],
+    "parent_cols": [
+     "quest_id"
+    ],
+    "fields": [
+     [
+      "value",
+      [
+       "<value>"
+      ]
+     ]
+    ],
+    "conds": [],
+    "acts": [],
+    "order": [],
+    "children": []
+   }
+  },
+  {
+   "rel": [
+    "anchorPlaces"
+   ],
+   "mode": "list",
+   "key": null,
+   "node": {
+    "table": "quest_anchor_place",
+    "pk": [
+     "quest_id",
+     "ord"
+    ],
+    "parent_cols": [
+     "quest_id"
+    ],
+    "fields": [
+     [
+      "value",
+      [
+       "<value>"
+      ]
+     ]
+    ],
+    "conds": [],
+    "acts": [],
+    "order": [],
+    "children": []
+   }
+  },
+  {
+   "rel": [
+    "touches"
+   ],
+   "mode": "list",
+   "key": null,
+   "node": {
+    "table": "quest_touch",
+    "pk": [
+     "quest_id",
+     "ord"
+    ],
+    "parent_cols": [
+     "quest_id"
+    ],
+    "fields": [
+     [
+      "id",
+      [
+       "id"
+      ]
+     ],
+     [
+      "access",
+      [
+       "access"
+      ]
+     ]
+    ],
+    "conds": [],
+    "acts": [],
+    "order": [
+     "id",
+     "access"
+    ],
+    "children": []
+   }
+  },
+  {
+   "rel": [
+    "sources"
+   ],
+   "mode": "list",
+   "key": null,
+   "node": {
+    "table": "quest_source",
+    "pk": [
+     "quest_id",
+     "ord"
+    ],
+    "parent_cols": [
+     "quest_id"
+    ],
+    "fields": [
+     [
+      "value",
+      [
+       "<value>"
+      ]
+     ]
+    ],
+    "conds": [],
+    "acts": [],
+    "order": [],
+    "children": []
+   }
+  },
+  {
+   "rel": [
+    "stages"
+   ],
+   "mode": "list",
+   "key": null,
+   "node": {
+    "table": "quest_stage",
+    "pk": [
+     "quest_id",
+     "ord"
+    ],
+    "parent_cols": [
+     "quest_id"
+    ],
+    "fields": [
+     [
+      "id",
+      [
+       "id"
+      ]
+     ],
+     [
+      "place",
+      [
+       "place"
+      ]
+     ],
+     [
+      "journal",
+      [
+       "journal"
+      ]
+     ],
+     [
+      "outside_packet",
+      [
+       "outside",
+       "packet"
+      ]
+     ],
+     [
+      "ending",
+      [
+       "ending"
+      ]
+     ],
+     [
+      "entry",
+      [
+       "entry"
+      ]
+     ],
+     [
+      "journal_text",
+      [
+       "journalText"
+      ]
+     ],
+     [
+      "directions",
+      [
+       "directions"
+      ]
+     ],
+     [
+      "ending_id",
+      [
+       "endingId"
+      ]
+     ]
+    ],
+    "conds": [],
+    "acts": [
+     [
+      "on_enter",
+      [
+       "onEnter"
+      ]
+     ]
+    ],
+    "order": [
+     "id",
+     "place",
+     "journal",
+     "journalText",
+     "onEnter",
+     "objectives",
+     "successors",
+     "failForward",
+     "approaches",
+     "learns",
+     "directions",
+     "actions",
+     "ending",
+     "endingId",
+     "outside"
+    ],
+    "children": [
+     {
+      "rel": [
+       "objectives"
+      ],
+      "mode": "list",
+      "key": null,
+      "node": {
+       "table": "quest_objective",
+       "pk": [
+        "quest_id",
+        "stages_ord",
+        "ord"
+       ],
+       "parent_cols": [
+        "quest_id",
+        "stages_ord"
+       ],
+       "fields": [
+        [
+         "id",
+         [
+          "id"
+         ]
+        ],
+        [
+         "text",
+         [
+          "text"
+         ]
+        ],
+        [
+         "where_ref",
+         [
+          "where",
+          "ref"
+         ]
+        ]
+       ],
+       "conds": [
+        [
+         "complete_when",
+         [
+          "completeWhen"
+         ]
+        ]
+       ],
+       "acts": [],
+       "order": [
+        "id",
+        "text",
+        "completeWhen"
+       ],
+       "children": []
+      }
+     },
+     {
+      "rel": [
+       "successors"
+      ],
+      "mode": "list",
+      "key": null,
+      "node": {
+       "table": "quest_successor",
+       "pk": [
+        "quest_id",
+        "stages_ord",
+        "ord"
+       ],
+       "parent_cols": [
+        "quest_id",
+        "stages_ord"
+       ],
+       "fields": [
+        [
+         "to",
+         [
+          "to"
+         ]
+        ]
+       ],
+       "conds": [
+        [
+         "when",
+         [
+          "when"
+         ]
+        ]
+       ],
+       "acts": [],
+       "order": [
+        "to",
+        "when"
+       ],
+       "children": []
+      }
+     },
+     {
+      "rel": [
+       "failForward"
+      ],
+      "mode": "list",
+      "key": null,
+      "node": {
+       "table": "quest_fail_forward",
+       "pk": [
+        "quest_id",
+        "stages_ord",
+        "ord"
+       ],
+       "parent_cols": [
+        "quest_id",
+        "stages_ord"
+       ],
+       "fields": [
+        [
+         "to",
+         [
+          "to"
+         ]
+        ]
+       ],
+       "conds": [
+        [
+         "when",
+         [
+          "when"
+         ]
+        ]
+       ],
+       "acts": [],
+       "order": [
+        "to",
+        "when"
+       ],
+       "children": []
+      }
+     },
+     {
+      "rel": [
+       "actions"
+      ],
+      "mode": "list",
+      "key": null,
+      "node": {
+       "table": "quest_action",
+       "pk": [
+        "quest_id",
+        "stages_ord",
+        "ord"
+       ],
+       "parent_cols": [
+        "quest_id",
+        "stages_ord"
+       ],
+       "fields": [
+        [
+         "skill",
+         [
+          "skill"
+         ]
+        ],
+        [
+         "use",
+         [
+          "use"
+         ]
+        ],
+        [
+         "setting",
+         [
+          "setting"
+         ]
+        ],
+        [
+         "note",
+         [
+          "note"
+         ]
+        ],
+        [
+         "system",
+         [
+          "system"
+         ]
+        ],
+        [
+         "target",
+         [
+          "target"
+         ]
+        ]
+       ],
+       "conds": [],
+       "acts": [],
+       "order": [
+        "skill",
+        "use",
+        "setting",
+        "note",
+        "system",
+        "target"
+       ],
+       "children": []
+      }
+     },
+     {
+      "rel": [
+       "learns"
+      ],
+      "mode": "list",
+      "key": null,
+      "node": {
+       "table": "quest_stage_learns",
+       "pk": [
+        "quest_id",
+        "stages_ord",
+        "ord"
+       ],
+       "parent_cols": [
+        "quest_id",
+        "stages_ord"
+       ],
+       "fields": [
+        [
+         "value",
+         [
+          "<value>"
+         ]
+        ]
+       ],
+       "conds": [],
+       "acts": [],
+       "order": [],
+       "children": []
+      }
+     },
+     {
+      "rel": [
+       "approaches"
+      ],
+      "mode": "list",
+      "key": null,
+      "node": {
+       "table": "quest_approach",
+       "pk": [
+        "quest_id",
+        "stages_ord",
+        "ord"
+       ],
+       "parent_cols": [
+        "quest_id",
+        "stages_ord"
+       ],
+       "fields": [
+        [
+         "id",
+         [
+          "id"
+         ]
+        ]
+       ],
+       "conds": [],
+       "acts": [],
+       "order": [
+        "id",
+        "actions"
+       ],
+       "children": [
+        {
+         "rel": [
+          "actions"
+         ],
+         "mode": "list",
+         "key": null,
+         "node": {
+          "table": "quest_approach_action",
+          "pk": [
+           "quest_id",
+           "stages_ord",
+           "approaches_ord",
+           "ord"
+          ],
+          "parent_cols": [
+           "quest_id",
+           "stages_ord",
+           "approaches_ord"
+          ],
+          "fields": [
+           [
+            "skill",
+            [
+             "skill"
+            ]
+           ],
+           [
+            "use",
+            [
+             "use"
+            ]
+           ],
+           [
+            "setting",
+            [
+             "setting"
+            ]
+           ],
+           [
+            "target",
+            [
+             "target"
+            ]
+           ],
+           [
+            "note",
+            [
+             "note"
+            ]
+           ]
+          ],
+          "conds": [],
+          "acts": [],
+          "order": [
+           "skill",
+           "use",
+           "target",
+           "note",
+           "setting"
+          ],
+          "children": []
+         }
+        }
+       ]
+      }
+     },
+     {
+      "rel": [
+       "directions"
+      ],
+      "mode": "list",
+      "key": null,
+      "node": {
+       "table": "quest_stage_directions",
+       "pk": [
+        "quest_id",
+        "stages_ord",
+        "ord"
+       ],
+       "parent_cols": [
+        "quest_id",
+        "stages_ord"
+       ],
+       "fields": [
+        [
+         "to",
+         [
+          "to"
+         ]
+        ],
+        [
+         "from",
+         [
+          "from"
+         ]
+        ]
+       ],
+       "conds": [],
+       "acts": [],
+       "order": [],
+       "children": []
+      }
+     }
+    ]
+   }
+  },
+  {
+   "rel": [
+    "essentialTopics"
+   ],
+   "mode": "list",
+   "key": null,
+   "node": {
+    "table": "quest_essential_topic",
+    "pk": [
+     "quest_id",
+     "ord"
+    ],
+    "parent_cols": [
+     "quest_id"
+    ],
+    "fields": [
+     [
+      "value",
+      [
+       "<value>"
+      ]
+     ]
+    ],
+    "conds": [],
+    "acts": [],
+    "order": [],
+    "children": []
+   }
+  },
+  {
+   "rel": [
+    "recordSources"
+   ],
+   "mode": "map",
+   "key": "source",
+   "node": {
+    "table": "quest_record_source",
+    "pk": [
+     "quest_id",
+     "source"
+    ],
+    "parent_cols": [
+     "quest_id"
+    ],
+    "fields": [
+     [
+      "value",
+      [
+       "<value>"
+      ]
+     ]
+    ],
+    "conds": [],
+    "acts": [],
+    "order": [],
+    "children": [
+     {
+      "rel": [
+       "<list>"
+      ],
+      "mode": "list",
+      "key": null,
+      "node": {
+       "table": "quest_record_source_items",
+       "pk": [
+        "quest_id",
+        "source",
+        "ord"
+       ],
+       "parent_cols": [
+        "quest_id",
+        "source"
+       ],
+       "fields": [
+        [
+         "value",
+         [
+          "<value>"
+         ]
+        ]
+       ],
+       "conds": [],
+       "acts": [],
+       "order": [],
+       "children": []
+      }
+     }
+    ]
+   }
+  },
+  {
+   "rel": [
+    "actionPlan"
+   ],
+   "mode": "list",
+   "key": null,
+   "node": {
+    "table": "quest_action_plan",
+    "pk": [
+     "quest_id",
+     "ord"
+    ],
+    "parent_cols": [
+     "quest_id"
+    ],
+    "fields": [
+     [
+      "skill",
+      [
+       "skill"
+      ]
+     ],
+     [
+      "use",
+      [
+       "use"
+      ]
+     ],
+     [
+      "reason",
+      [
+       "reason"
+      ]
+     ]
+    ],
+    "conds": [],
+    "acts": [],
+    "order": [
+     "skill",
+     "use",
+     "reason"
+    ],
+    "children": []
+   }
+  },
+  {
+   "rel": [
+    "truth"
+   ],
+   "mode": "list",
+   "key": null,
+   "node": {
+    "table": "quest_truth",
+    "pk": [
+     "quest_id",
+     "ord"
+    ],
+    "parent_cols": [
+     "quest_id"
+    ],
+    "fields": [
+     [
+      "id",
+      [
+       "id"
+      ]
+     ],
+     [
+      "when",
+      [
+       "when"
+      ]
+     ],
+     [
+      "where",
+      [
+       "where"
+      ]
+     ],
+     [
+      "what",
+      [
+       "what"
+      ]
+     ]
+    ],
+    "conds": [],
+    "acts": [],
+    "order": [
+     "id",
+     "when",
+     "who",
+     "where",
+     "what"
+    ],
+    "children": [
+     {
+      "rel": [
+       "who"
+      ],
+      "mode": "list",
+      "key": null,
+      "node": {
+       "table": "quest_truth_who",
+       "pk": [
+        "quest_id",
+        "truth_ord",
+        "ord"
+       ],
+       "parent_cols": [
+        "quest_id",
+        "truth_ord"
+       ],
+       "fields": [
+        [
+         "value",
+         [
+          "<value>"
+         ]
+        ]
+       ],
+       "conds": [],
+       "acts": [],
+       "order": [],
+       "children": []
+      }
+     }
+    ]
+   }
+  },
+  {
+   "rel": [
+    "playerStart"
+   ],
+   "mode": "list",
+   "key": null,
+   "node": {
+    "table": "quest_player_start",
+    "pk": [
+     "quest_id",
+     "ord"
+    ],
+    "parent_cols": [
+     "quest_id"
+    ],
+    "fields": [
+     [
+      "value",
+      [
+       "<value>"
+      ]
+     ]
+    ],
+    "conds": [],
+    "acts": [],
+    "order": [],
+    "children": []
+   }
+  },
+  {
+   "rel": [
+    "cast"
+   ],
+   "mode": "list",
+   "key": null,
+   "node": {
+    "table": "quest_cast",
+    "pk": [
+     "quest_id",
+     "ord"
+    ],
+    "parent_cols": [
+     "quest_id"
+    ],
+    "fields": [
+     [
+      "id",
+      [
+       "id"
+      ]
+     ],
+     [
+      "wants",
+      [
+       "wants"
+      ]
+     ],
+     [
+      "fears",
+      [
+       "fears"
+      ]
+     ],
+     [
+      "persona_backstory",
+      [
+       "persona",
+       "backstory"
+      ]
+     ]
+    ],
+    "conds": [],
+    "acts": [],
+    "order": [
+     "id",
+     "persona",
+     "wants",
+     "fears",
+     "knowledge",
+     "changes"
+    ],
+    "children": [
+     {
+      "rel": [
+       "knowledge"
+      ],
+      "mode": "map",
+      "key": "fact_id",
+      "node": {
+       "table": "quest_cast_knowledge",
+       "pk": [
+        "quest_id",
+        "cast_ord",
+        "fact_id"
+       ],
+       "parent_cols": [
+        "quest_id",
+        "cast_ord"
+       ],
+       "fields": [
+        [
+         "value",
+         [
+          "<value>"
+         ]
+        ]
+       ],
+       "conds": [],
+       "acts": [],
+       "order": [],
+       "children": []
+      }
+     },
+     {
+      "rel": [
+       "changes"
+      ],
+      "mode": "list",
+      "key": null,
+      "node": {
+       "table": "quest_cast_change",
+       "pk": [
+        "quest_id",
+        "cast_ord",
+        "ord"
+       ],
+       "parent_cols": [
+        "quest_id",
+        "cast_ord"
+       ],
+       "fields": [
+        [
+         "at_stage",
+         [
+          "atStage"
+         ]
+        ],
+        [
+         "fact",
+         [
+          "fact"
+         ]
+        ],
+        [
+         "to",
+         [
+          "to"
+         ]
+        ]
+       ],
+       "conds": [],
+       "acts": [],
+       "order": [
+        "atStage",
+        "fact",
+        "to"
+       ],
+       "children": []
+      }
+     },
+     {
+      "rel": [
+       "persona",
+       "invented"
+      ],
+      "mode": "list",
+      "key": null,
+      "node": {
+       "table": "quest_cast_persona_invented",
+       "pk": [
+        "quest_id",
+        "cast_ord",
+        "ord"
+       ],
+       "parent_cols": [
+        "quest_id",
+        "cast_ord"
+       ],
+       "fields": [
+        [
+         "value",
+         [
+          "<value>"
+         ]
+        ]
+       ],
+       "conds": [],
+       "acts": [],
+       "order": [],
+       "children": []
+      }
+     }
+    ]
+   }
+  },
+  {
+   "rel": [
+    "things"
+   ],
+   "mode": "list",
+   "key": null,
+   "node": {
+    "table": "quest_thing",
+    "pk": [
+     "quest_id",
+     "ord"
+    ],
+    "parent_cols": [
+     "quest_id"
+    ],
+    "fields": [
+     [
+      "id",
+      [
+       "id"
+      ]
+     ],
+     [
+      "kind",
+      [
+       "kind"
+      ]
+     ],
+     [
+      "source",
+      [
+       "source"
+      ]
+     ],
+     [
+      "where",
+      [
+       "where"
+      ]
+     ]
+    ],
+    "conds": [],
+    "acts": [],
+    "order": [
+     "id",
+     "kind",
+     "source",
+     "states",
+     "where"
+    ],
+    "children": [
+     {
+      "rel": [
+       "states"
+      ],
+      "mode": "map",
+      "key": "state",
+      "node": {
+       "table": "quest_thing_state",
+       "pk": [
+        "quest_id",
+        "things_ord",
+        "state"
+       ],
+       "parent_cols": [
+        "quest_id",
+        "things_ord"
+       ],
+       "fields": [
+        [
+         "value",
+         [
+          "<value>"
+         ]
+        ]
+       ],
+       "conds": [],
+       "acts": [],
+       "order": [],
+       "children": []
+      }
+     }
+    ]
+   }
+  },
+  {
+   "rel": [
+    "conclusions"
+   ],
+   "mode": "list",
+   "key": null,
+   "node": {
+    "table": "quest_conclusion",
+    "pk": [
+     "quest_id",
+     "ord"
+    ],
+    "parent_cols": [
+     "quest_id"
+    ],
+    "fields": [
+     [
+      "id",
+      [
+       "id"
+      ]
+     ],
+     [
+      "statement",
+      [
+       "statement"
+      ]
+     ]
+    ],
+    "conds": [],
+    "acts": [],
+    "order": [
+     "id",
+     "statement",
+     "clues"
+    ],
+    "children": [
+     {
+      "rel": [
+       "clues"
+      ],
+      "mode": "list",
+      "key": null,
+      "node": {
+       "table": "quest_conclusion_clue",
+       "pk": [
+        "quest_id",
+        "conclusions_ord",
+        "ord"
+       ],
+       "parent_cols": [
+        "quest_id",
+        "conclusions_ord"
+       ],
+       "fields": [
+        [
+         "value",
+         [
+          "<value>"
+         ]
+        ]
+       ],
+       "conds": [],
+       "acts": [],
+       "order": [],
+       "children": []
+      }
+     }
+    ]
+   }
+  },
+  {
+   "rel": [
+    "clues"
+   ],
+   "mode": "list",
+   "key": null,
+   "node": {
+    "table": "quest_clue",
+    "pk": [
+     "quest_id",
+     "ord"
+    ],
+    "parent_cols": [
+     "quest_id"
+    ],
+    "fields": [
+     [
+      "id",
+      [
+       "id"
+      ]
+     ],
+     [
+      "form",
+      [
+       "form"
+      ]
+     ],
+     [
+      "carrier",
+      [
+       "carrier"
+      ]
+     ]
+    ],
+    "conds": [],
+    "acts": [],
+    "order": [
+     "id",
+     "form",
+     "carrier",
+     "gives",
+     "supports"
+    ],
+    "children": [
+     {
+      "rel": [
+       "gives"
+      ],
+      "mode": "list",
+      "key": null,
+      "node": {
+       "table": "quest_clue_gives",
+       "pk": [
+        "quest_id",
+        "clues_ord",
+        "ord"
+       ],
+       "parent_cols": [
+        "quest_id",
+        "clues_ord"
+       ],
+       "fields": [
+        [
+         "value",
+         [
+          "<value>"
+         ]
+        ]
+       ],
+       "conds": [],
+       "acts": [],
+       "order": [],
+       "children": []
+      }
+     },
+     {
+      "rel": [
+       "supports"
+      ],
+      "mode": "list",
+      "key": null,
+      "node": {
+       "table": "quest_clue_supports",
+       "pk": [
+        "quest_id",
+        "clues_ord",
+        "ord"
+       ],
+       "parent_cols": [
+        "quest_id",
+        "clues_ord"
+       ],
+       "fields": [
+        [
+         "value",
+         [
+          "<value>"
+         ]
+        ]
+       ],
+       "conds": [],
+       "acts": [],
+       "order": [],
+       "children": []
+      }
+     }
+    ]
+   }
+  },
+  {
+   "rel": [
+    "shapeData"
+   ],
+   "mode": "map",
+   "key": "section",
+   "node": {
+    "table": "quest_shape_data",
+    "pk": [
+     "quest_id",
+     "section"
+    ],
+    "parent_cols": [
+     "quest_id"
+    ],
+    "fields": [
+     [
+      "value",
+      [
+       "<value>"
+      ]
+     ],
+     [
+      "wrong",
+      [
+       "wrong"
+      ]
+     ],
+     [
+      "test",
+      [
+       "test"
+      ]
+     ],
+     [
+      "needed",
+      [
+       "needed"
+      ]
+     ],
+     [
+      "too_few",
+      [
+       "tooFew"
+      ]
+     ],
+     [
+      "right",
+      [
+       "right"
+      ]
+     ],
+     [
+      "partial",
+      [
+       "partial"
+      ]
+     ],
+     [
+      "unsolved",
+      [
+       "unsolved"
+      ]
+     ]
+    ],
+    "conds": [],
+    "acts": [],
+    "order": [
+     "exhibits",
+     "needed",
+     "tooFew",
+     "closedRun",
+     "right",
+     "partial",
+     "wrong",
+     "unsolved",
+     "test"
+    ],
+    "children": [
+     {
+      "rel": [
+       "<list>"
+      ],
+      "mode": "list",
+      "key": null,
+      "node": {
+       "table": "quest_shape_data_items",
+       "pk": [
+        "quest_id",
+        "section",
+        "ord"
+       ],
+       "parent_cols": [
+        "quest_id",
+        "section"
+       ],
+       "fields": [
+        [
+         "value",
+         [
+          "<value>"
+         ]
+        ],
+        [
+         "speaker",
+         [
+          "speaker"
+         ]
+        ],
+        [
+         "says",
+         [
+          "says"
+         ]
+        ],
+        [
+         "refuted_by",
+         [
+          "refutedBy"
+         ]
+        ],
+        [
+         "from",
+         [
+          "from"
+         ]
+        ],
+        [
+         "suspect",
+         [
+          "suspect"
+         ]
+        ]
+       ],
+       "conds": [],
+       "acts": [],
+       "order": [
+        "speaker",
+        "says",
+        "refutedBy",
+        "from",
+        "to",
+        "suspect"
+       ],
+       "children": [
+        {
+         "rel": [
+          "to"
+         ],
+         "mode": "list",
+         "key": null,
+         "node": {
+          "table": "quest_shape_data_items_to",
+          "pk": [
+           "quest_id",
+           "section",
+           "items_ord",
+           "ord"
+          ],
+          "parent_cols": [
+           "quest_id",
+           "section",
+           "items_ord"
+          ],
+          "fields": [
+           [
+            "value",
+            [
+             "<value>"
+            ]
+           ]
+          ],
+          "conds": [],
+          "acts": [],
+          "order": [],
+          "children": []
+         }
+        }
+       ]
+      }
+     },
+     {
+      "rel": [
+       "exhibits"
+      ],
+      "mode": "list",
+      "key": null,
+      "node": {
+       "table": "quest_shape_data_exhibits",
+       "pk": [
+        "quest_id",
+        "section",
+        "ord"
+       ],
+       "parent_cols": [
+        "quest_id",
+        "section"
+       ],
+       "fields": [
+        [
+         "value",
+         [
+          "<value>"
+         ]
+        ]
+       ],
+       "conds": [],
+       "acts": [],
+       "order": [
+        "speaker",
+        "says",
+        "refutedBy",
+        "from",
+        "to",
+        "suspect"
+       ],
+       "children": []
+      }
+     },
+     {
+      "rel": [
+       "closedRun"
+      ],
+      "mode": "list",
+      "key": null,
+      "node": {
+       "table": "quest_shape_data_closed_run",
+       "pk": [
+        "quest_id",
+        "section",
+        "ord"
+       ],
+       "parent_cols": [
+        "quest_id",
+        "section"
+       ],
+       "fields": [
+        [
+         "value",
+         [
+          "<value>"
+         ]
+        ]
+       ],
+       "conds": [],
+       "acts": [],
+       "order": [
+        "speaker",
+        "says",
+        "refutedBy",
+        "from",
+        "to",
+        "suspect"
+       ],
+       "children": []
+      }
+     }
+    ]
+   }
+  },
+  {
+   "rel": [
+    "endings"
+   ],
+   "mode": "list",
+   "key": null,
+   "node": {
+    "table": "quest_ending",
+    "pk": [
+     "quest_id",
+     "ord"
+    ],
+    "parent_cols": [
+     "quest_id"
+    ],
+    "fields": [
+     [
+      "id",
+      [
+       "id"
+      ]
+     ],
+     [
+      "when",
+      [
+       "when"
+      ]
+     ],
+     [
+      "seen",
+      [
+       "seen"
+      ]
+     ]
+    ],
+    "conds": [],
+    "acts": [
+     [
+      "world",
+      [
+       "world"
+      ]
+     ],
+     [
+      "rewards",
+      [
+       "rewards"
+      ]
+     ]
+    ],
+    "order": [
+     "id",
+     "when",
+     "world",
+     "seen",
+     "rewards"
+    ],
+    "children": []
+   }
+  },
+  {
+   "rel": [
+    "topics"
+   ],
+   "mode": "list",
+   "key": null,
+   "node": {
+    "table": "quest_topic",
+    "pk": [
+     "quest_id",
+     "ord"
+    ],
+    "parent_cols": [
+     "quest_id"
+    ],
+    "fields": [
+     [
+      "id",
+      [
+       "id"
+      ]
+     ],
+     [
+      "new",
+      [
+       "new"
+      ]
+     ],
+     [
+      "label",
+      [
+       "label"
+      ]
+     ],
+     [
+      "person",
+      [
+       "person"
+      ]
+     ],
+     [
+      "essential",
+      [
+       "essential"
+      ]
+     ],
+     [
+      "intent",
+      [
+       "intent"
+      ]
+     ]
+    ],
+    "conds": [],
+    "acts": [],
+    "order": [
+     "id",
+     "label",
+     "person",
+     "stages",
+     "essential",
+     "intent",
+     "uses",
+     "grants",
+     "new",
+     "hides"
+    ],
+    "children": [
+     {
+      "rel": [
+       "stages"
+      ],
+      "mode": "list",
+      "key": null,
+      "node": {
+       "table": "quest_topic_stage",
+       "pk": [
+        "quest_id",
+        "topics_ord",
+        "ord"
+       ],
+       "parent_cols": [
+        "quest_id",
+        "topics_ord"
+       ],
+       "fields": [
+        [
+         "value",
+         [
+          "<value>"
+         ]
+        ]
+       ],
+       "conds": [],
+       "acts": [],
+       "order": [],
+       "children": []
+      }
+     },
+     {
+      "rel": [
+       "uses"
+      ],
+      "mode": "list",
+      "key": null,
+      "node": {
+       "table": "quest_topic_uses",
+       "pk": [
+        "quest_id",
+        "topics_ord",
+        "ord"
+       ],
+       "parent_cols": [
+        "quest_id",
+        "topics_ord"
+       ],
+       "fields": [
+        [
+         "value",
+         [
+          "<value>"
+         ]
+        ]
+       ],
+       "conds": [],
+       "acts": [],
+       "order": [],
+       "children": []
+      }
+     },
+     {
+      "rel": [
+       "hides"
+      ],
+      "mode": "list",
+      "key": null,
+      "node": {
+       "table": "quest_topic_hides",
+       "pk": [
+        "quest_id",
+        "topics_ord",
+        "ord"
+       ],
+       "parent_cols": [
+        "quest_id",
+        "topics_ord"
+       ],
+       "fields": [
+        [
+         "value",
+         [
+          "<value>"
+         ]
+        ]
+       ],
+       "conds": [],
+       "acts": [],
+       "order": [],
+       "children": []
+      }
+     },
+     {
+      "rel": [
+       "grants"
+      ],
+      "mode": "list",
+      "key": null,
+      "node": {
+       "table": "quest_topic_grants",
+       "pk": [
+        "quest_id",
+        "topics_ord",
+        "ord"
+       ],
+       "parent_cols": [
+        "quest_id",
+        "topics_ord"
+       ],
+       "fields": [
+        [
+         "value",
+         [
+          "<value>"
+         ]
+        ]
+       ],
+       "conds": [],
+       "acts": [],
+       "order": [],
+       "children": []
+      }
+     }
+    ]
+   }
+  },
+  {
+   "rel": [
+    "review",
+    "findings"
+   ],
+   "mode": "list",
+   "key": null,
+   "node": {
+    "table": "quest_review_finding",
+    "pk": [
+     "quest_id",
+     "ord"
+    ],
+    "parent_cols": [
+     "quest_id"
+    ],
+    "fields": [
+     [
+      "id",
+      [
+       "id"
+      ]
+     ],
+     [
+      "severity",
+      [
+       "severity"
+      ]
+     ],
+     [
+      "finding",
+      [
+       "finding"
+      ]
+     ],
+     [
+      "answer",
+      [
+       "answer"
+      ]
+     ]
+    ],
+    "conds": [],
+    "acts": [],
+    "order": [
+     "id",
+     "severity",
+     "ids",
+     "finding",
+     "answer"
+    ],
+    "children": [
+     {
+      "rel": [
+       "ids"
+      ],
+      "mode": "list",
+      "key": null,
+      "node": {
+       "table": "quest_review_finding_ids",
+       "pk": [
+        "quest_id",
+        "review_findings_ord",
+        "ord"
+       ],
+       "parent_cols": [
+        "quest_id",
+        "review_findings_ord"
+       ],
+       "fields": [
+        [
+         "value",
+         [
+          "<value>"
+         ]
+        ]
+       ],
+       "conds": [],
+       "acts": [],
+       "order": [],
+       "children": []
+      }
+     }
+    ]
+   }
+  },
+  {
+   "rel": [
+    "sockets"
+   ],
+   "mode": "list",
+   "key": null,
+   "node": {
+    "table": "quest_socket",
+    "pk": [
+     "quest_id",
+     "ord"
+    ],
+    "parent_cols": [
+     "quest_id"
+    ],
+    "fields": [
+     [
+      "value",
+      [
+       "<value>"
+      ]
+     ]
+    ],
+    "conds": [],
+    "acts": [],
+    "order": [],
+    "children": []
+   }
+  }
+ ],
+ "inline_order": {
+  ".startWhen": [
+   "topicHeardFrom",
+   "all"
+  ],
+  ".recordSources": [
+   "placeFacts",
+   "stance",
+   "cultureSheets",
+   "people",
+   "catalogue",
+   "roster"
+  ],
+  ".cast[].persona": [
+   "backstory",
+   "invented"
+  ],
+  ".cast[].knowledge": [
+   "fact.lh38.sickness",
+   "fact.lh38.pool-office",
+   "fact.lh38.food-blamed",
+   "fact.lh38.water-not-food",
+   "fact.lh38.rope-sold-late",
+   "fact.lh38.courier-missing",
+   "fact.lh38.pack-unpaid",
+   "fact.lh38.body-in-throat",
+   "fact.lh38.packet",
+   "fact.lh38.reeh-waiting",
+   "fact.lh38.night-watch",
+   "fact.lh38.stake-blank",
+   "fact.mr01.works-closed",
+   "fact.greenspring.why-pressures-3",
+   "fact.mr01.consent",
+   "fact.mr01.sap-thin",
+   "fact.mr01.founders-stakes",
+   "fact.mr01.rival-grove"
+  ],
+  ".things[].states": [
+   "all",
+   "before-70",
+   "after-70",
+   "before-60",
+   "after-60"
+  ],
+  ".shapeData": [
+   "timeline",
+   "lies",
+   "nodes",
+   "leads",
+   "redHerrings",
+   "openQuestions",
+   "accusation",
+   "endings",
+   "source",
+   "spread",
+   "sign",
+   "cure",
+   "firstIllLastWell",
+   "misdiagnosis",
+   "ladder",
+   "rumour",
+   "route",
+   "gate",
+   "prize",
+   "return",
+   "prepHints",
+   "pointOfNoReturn",
+   "nonLethalFailure"
+  ],
+  ".shapeData.accusation": [
+   "exhibits",
+   "needed",
+   "tooFew",
+   "closedRun"
+  ],
+  ".shapeData.endings": [
+   "right",
+   "partial",
+   "wrong",
+   "unsolved"
+  ],
+  ".shapeData.misdiagnosis": [
+   "wrong",
+   "test"
+  ],
+  ".stages[].objectives[].completeWhen": [
+   "topicHeardFrom",
+   "inZone",
+   "hasItem",
+   "any"
+  ],
+  ".stages[].successors[].when": [
+   "topicHeardFrom",
+   "inZone",
+   "hasItem",
+   "objectiveComplete",
+   "not",
+   "all",
+   "flag"
+  ],
+  ".stages[].failForward[].when": [
+   "not",
+   "daysSince"
+  ],
+  ".stages[].failForward[].when.not": [
+   "npcAlive"
+  ],
+  ".stages[].objectives[].completeWhen.any[].not": [
+   "npcAlive"
+  ],
+  ".stages[].successors[].when.not": [
+   "npcAlive"
+  ],
+  ".review": [
+   "reviewer",
+   "findings",
+   "checklist"
+  ],
+  ".stages[].outside": [
+   "packet"
+  ],
+  ".stages[].successors[].when.all[].not": [
+   "flag"
+  ]
+ }
+}

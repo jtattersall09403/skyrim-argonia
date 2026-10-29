@@ -65,5 +65,7 @@ def test_world_reads(tmp_path):
     (tmp_path / "tools").mkdir()
     (tmp_path / "tools" / "ok.py").write_text("from tools.argonia_world import db\n")
     assert check_world_reads.scan(tmp_path) == []
-    (tmp_path / "tools" / "bad.py").write_text('p = REPO / "world" / "sources" / "x.json"\nq = "world/db/npc.jsonl"\n')
+    w_ = "wor" + "ld"     # built, so this test is not itself a hit
+    (tmp_path / "tools" / "bad.py").write_text(f'p = REPO / "{w_}" / "sources" / "x.json"\nq = "{w_}/db/npc.jsonl"\n')
+    (tmp_path / "tools" / "ok.md").write_text(f"read the lore (`../{w_}/sources/lore/`) and tools/argonia_{w_}/db.py\n")
     assert [h.split(":")[1] for h in check_world_reads.scan(tmp_path)] == ["1", "2"]
