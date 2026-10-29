@@ -133,6 +133,11 @@ function Install-Stream {
     $s.Save()
   }
   Write-Host 'idle-stop and launchers: set'
+  # Host-side stream numbers for every client type (host-metrics.ps1), for comparing the three setups.
+  if (-not (Get-ScheduledTask -TaskName argonia-host-metrics -ErrorAction SilentlyContinue)) {
+    $a = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument "-ExecutionPolicy Bypass -WindowStyle Hidden -File $Root\infra\host-metrics.ps1"
+    Register-ScheduledTask -TaskName argonia-host-metrics -Action $a -Trigger (New-ScheduledTaskTrigger -AtStartup) -User SYSTEM -RunLevel Highest | Out-Null
+  }
 }
 
 function Install-Dcv {
@@ -142,14 +147,20 @@ function Install-Dcv {
     $msi = Get-File 'https://d1uj6qtbmh3dt5.cloudfront.net/nice-dcv-server-x64-Release.msi' 'dcv-server.msi'
     Start-Process msiexec.exe -ArgumentList '/i', $msi, 'ADDLOCAL=ALL', 'AUTOMATIC_SESSION_OWNER=Administrator', '/qn', '/norestart', "/l*v $Root\logs\dcv-install.log" -Wait
   }
-  # DCV keeps the desktop at 1920x1080 whatever the browser's size, and never locks it on disconnect (a locked
-  # desktop hides the input marker and blocks Sunshine's stream). Windows' own idle lock is off too.
-  $k = 'HKLM:\SOFTWARE\GSettings\com\nicesoftware\dcv'
+  # DCV (it reads its settings from the system account's hive, not HKLM): no resize to the browser, no lock on
+  # disconnect (a locked desktop hides the marker and blocks Sunshine), and no second sign-in: the Cloudflare
+  # Access gate is the only way in and already admits only the owner (owner, 2026-10-29).
+  New-PSDrive -Name HKU -PSProvider Registry -Root HKEY_USERS -ErrorAction SilentlyContinue | Out-Null
+  $k = 'HKU:\S-1-5-18\Software\GSettings\com\nicesoftware\dcv'
   New-Item -Path "$k\display", "$k\security" -Force | Out-Null
   New-ItemProperty -Path "$k\display" -Name enable-client-resize -PropertyType DWord -Value 0 -Force | Out-Null
-  New-ItemProperty -Path "$k\display" -Name console-session-default-layout -PropertyType String -Force `
-    -Value "[{'w':<int32 1920>, 'h':<int32 1080>, 'x':<int32 0>, 'y':<int32 0>}]" | Out-Null
   New-ItemProperty -Path "$k\security" -Name os-auto-lock -PropertyType DWord -Value 0 -Force | Out-Null
+  New-ItemProperty -Path "$k\security" -Name authentication -PropertyType String -Value 'none' -Force | Out-Null
+  $perm = 'C:\Program Files\NICE\DCV\Server\conf\default.perm'
+  $pl = @(Get-Content $perm)
+  if (-not ($pl | ? { $_ -match '^\s*%any%\s+allow' })) {
+    $i = [array]::IndexOf($pl, '[permissions]'); ($pl[0..$i] + '%any% allow builtin' + $pl[($i + 1)..($pl.Count - 1)]) | Set-Content $perm -Encoding ASCII
+  }
   New-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' -Name InactivityTimeoutSecs -PropertyType DWord -Value 0 -Force | Out-Null
   New-Item -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization' -Force | Out-Null
   New-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization' -Name NoLockScreen -PropertyType DWord -Value 1 -Force | Out-Null
