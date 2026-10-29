@@ -176,3 +176,43 @@ default. Whether `Reset` can override *Never Resets* does not matter here (a for
 | G16.3 | rest (P3 on camp spots and beds) → the router opens our sitting view; `sitting` prices and applies; vanilla `LevelUpMenu` never fires (P4); Skyrim's own level is a mirror only (how it is written is **UNVERIFIED**; nothing reads it once zones are fixed) | 1, 4, 5, 6 | fully | 1.5 | S16c |
 | G17.1 | Potions are ALCH (native). Death: the player's bleedout is caught (`TESEnterBleedoutEvent` `[CL T/TESEnterBleedoutEvent.h:9]`; the Respawn – Soulslike pattern [A §4]); `death` drops one pile ref, ArgoniaCore fades, moves the player to the last rest and restores, then resets `onRest` actors. Rest is the only save: `Game.SetInChargen(abDisableSaving)` [W:setinchargen] blocks player saves, ArgoniaCore writes the rest save with `BGSSaveLoadManager::Save` `[CL B/BGSSaveLoadManager.h:122]`, the router hides save entries | 1, 4, 5, 6 | loss: a frame of the bleedout kneel may show before the fade (fallback: catch lethal damage in `HandleHealthDamage` `[CL A/Actor.h:488]`, route 6); whether `SetInChargen` also blocks our own `Save` call is **UNVERIFIED** (S17a) | 1.5 → 2.8 | S17a |
 | G17.2 | all of 76 §120 and §126 in `progression`, `sitting`, `rest`, `death`, `respawn` from the first rung (no placeholder rules) | 5 | fully | 1.5 → 2.8 | S17b |
+
+### 3.6 Story and text
+
+| Goal | Mechanism | Routes | Fit, why | Proved by | Stub |
+|---|---|---|---|---|---|
+| G18.1 | Skyrim's DIAL/INFO menu cannot grow a topic list or hyperlink keywords, so Argonia speakers do not use it. **Intercept** by P3 (activate choice, *Replace Default*), fallback the audit's guarded slot swap [A §1.2]; **engine**: our `topics` store and `conditions` (route 5), or a fork of MorrowindRuntime's model half (route 3, about 6,500 lines, GPL-3, [A §1.1]); 1.3 §b picks on its prototype; **view**: PrismaUI (route 2 + 6) | 1, 3 or 5, 4, 6 | fully | 1.3 §b → 2.5 | S18a |
+| G18.2 | per-speaker answer variants in the topic records (written by the skills), first-match order picks the speaker's own | 1, 5 | fully | 1.3 → 2.5 | S18b |
+| G18.3 | disposition 0–100 in the `dispositions` family (Skyrim's `GetRelationshipRank` `[CL T/TESCondition.h:514]` is a −4…4 ladder, too coarse, not used); bands < 30, 30–69, ≥ 70 pick variants; *essential* topics carry a data flag and an L1 rule that no condition on them reads disposition | 1, 5 | fully | 1.3 → 2.5 | S18c |
+| G19.1 | quest rows → ArgoniaGen QUST (stages, log entries, objectives with no target, aliases) + generated Papyrus stage fragments (glue only); the universal-modder 1.7.104 field note as method [A §2] | 1, 4, T | fully | 1.4 → 2.12 | S19a |
+| G19.2 | the vocabulary's native terms as Skyrim conditions and actions (`SetStage`, items, faction rank), the rest evaluated in `conditions` and mirrored (P2); our actions called from fragments through ArgoniaCore natives | 1, 4, 5 | loss: mirrors are player-scoped and may be a frame late; per-NPC predicates (`topicHeardFrom`) need one generated global per referenced instance | 1.4 → 2.12 | S19b |
+| G19.3 | location packets as world DB rows, checked by the tools | T | fully | 2.12, 4.2 | — |
+| G20.1 | world DB → writing skills → records; no line typed into a plugin | T | fully | 1.3, 1.4 | S20 |
+| G20.2 | the `quest-write`, `dialogue-write`, `text-review` skills | T | fully | 2.5, 2.12 | — |
+| G20.3 | lore extrapolation docs read by the skills | T | fully | 2.5 → 4.3 | — |
+| G21.1 | FACT record, its quests and line record (0025) | 1, T | fully | 2.4 → 4.1 | — |
+| G21.2 | evidence items as records with keywords (one base record per tamper state); `knowledge` family for witnessed, heard-from, custody; mirrored by P2 | 1, 5 | fully | 2.12 | — |
+| G21.3 | QUST records and lines from the main-quest record | 1, 4, T | fully | 4.3 | — |
+| G22.1 | No Google Maps Skyrim (GPL-3, gates quest markers, removes the player marker [A §4]); objectives with no target; the compass hidden by 1.2; Skyrim's own map markers appear on discovery | 1, 2 | fully | 1.4 → 2.12 | S22a |
+| G22.2 | the directions generator over the route graph at build time; text goes into journal rows | T | fully | 2.12 | — |
+| G22.3 | journal text through `text-review`; our journal view over the `journal` family; vanilla `JournalMenu` replaced (P6) | 5, 6, T | fully | 1.4 → 2.12 | S22b |
+| G23.1 | Flat World Map Framework with our map image [A §4], markers by discovery, no player marker | 2, 6 | fully | 2.12 | — |
+| G23.2 | the map render made by the installer on the player's machine | T | fully | 2.12 → 3.4 | — |
+| G24.1 | the approach 1.2 §0 chose with the owner: PrismaUI views (pinned, unmodified [A §3]) over a Dear Diary paper theme, the Pelagiad font | 2, 6 | fully | 1.2 → 2.2 → 3.1 | S24 |
+
+### 3.7 Items and systems
+
+| Goal | Mechanism | Routes | Fit, why | Proved by | Stub |
+|---|---|---|---|---|---|
+| G25.1 | class keywords on WEAP records; P4 keeps One-handed and Two-handed at zero and `progression` credits the class skill from the hit's weapon keyword; crossbows from vanilla, thrown from Throwable Weapons SKSE [A §4] | 1, 2, 5 | fully | 1.3 §c → 2.3 | S25a |
+| G25.2 | Blocking is Skyrim's (Block AV, `ModPercentBlocked` `[CL B/BGSEntryPoint.h:54]`) with the stack's guard mods. Condition 0–100 per item instance in an `items` family; unusable at 0 by refusing the attack in ArgoniaCore; armour effectiveness by P1 on `ModArmorRating` `[CL B/BGSEntryPoint.h:100]`. Skill never touches i-frames or windows: nothing here reads skill for them | 1, 2, 5 | loss: Skyrim keeps no condition and its per-instance data is the tempering value; how to tell instances apart (unique-id extra data) is **UNVERIFIED** (S25b) | 1.3 §c → 2.3 | S25b |
+| G26.1 | coin by the barter menu; goods and favours by our service view, the favour paid by `completeQuest` | 1, 5, 6 | fully | 2.6 | — |
+| G26.2 | prices by P1 on `ModBuyPrices`/`ModSellPrices` `[CL B/BGSEntryPoint.h:23, 75]` with `fBarterMin`/`fBarterMax` neutralised [W:speech]; purses are Skyrim's vendor gold lists; restock every 48 h by the vendor-respawn setting (its name and default **UNVERIFIED**); training by our service view (Skyrim's trainer cap is the trainer's own, not the governing attribute); travel as ferry activators; crime: Skyrim's witnesses, crime factions and guard stop, with the bounty mirrored into the `owing` ledger and custody handled by ArgoniaCore | 1, 4, 5, 6 | fully (the purse timer and bounty mirror are **UNVERIFIED**) | 2.6, 2.11 | — |
+| G27.1 | Skyrim hands, dual cast and MGEF archetypes as the effect families; Magic Expanded for Morrowind effects (Mark, Recall, levitation [A §4]); castability `2×skill + Wil/5 ≥ cost` by a `CheckCast` hook `[CL P/PlayerCharacter.h:735]`; magnitude and cost by P1 on `ModSpellMagnitude`/`ModSpellCost` `[CL B/BGSEntryPoint.h:44, 53]`; folk sellers as data | 1, 2, 5 | fully; levitation's quality in Magic Expanded is **UNVERIFIED** | 2.9 | — |
+| G27.2 | seller stock picked at build time with the core's castability (P5) | 1, T | fully | 2.9 | — |
+| G27.3 | the rest of 76 §123: the 75 % cost-reduction cap in `magic`; enchanting budget by P1 on `ModEnchantmentPower` `[CL B/BGSEntryPoint.h:92]`; spellmaking in our view, making runtime spell forms | 1, 5, 6 | loss: see §1, runtime forms rebuilt from the co-save on load (**UNVERIFIED**); cast time has no entry point (**UNVERIFIED**) | 2.9 | — |
+| G28.1 | Skyrim crafting: COBJ recipes, stations, alchemy and enchanting menus | 1 | fully | 2.10 | — |
+| G28.2 | COBJ, INGR, ENCH records; soul tiers by conditions on `ModSoulGemEnchanting` `[CL B/BGSEntryPoint.h:94]` | 1 | fully | 2.10 | — |
+| G28.3 | alchemy potency by P1 on `ModAlchemyEffectiveness` `[CL B/BGSEntryPoint.h:81]`, effects visible at 15/30/45/60 by stepped `ModInitialIngredientEffectsLearned` rows; tempering by `ModTemperingHealth` `[CL B/BGSEntryPoint.h:91]`; material tier by COBJ conditions on a carrier; repair (Skyrim has none) in `smithing` behind our view | 1, 5, 6 | fully | 2.10 | — |
+| G29.1 | per-observer detection is Skyrim's (`RequestDetectionLevel` `[CL A/Actor.h:692]`), tuned by sneak settings and `ModDetectionSneakSkill`/`Light`/`Movement` `[CL B/BGSEntryPoint.h:62-63, 72]`; pickpocket chance is Skyrim's visible percentage via `ModPickpocketChance` `[CL B/BGSEntryPoint.h:71]`; locks by P3 on locked refs, `locks` deciding open or refuse and pick wear | 1, 4, 5 | loss: see §1 (the Elusiveness formula approximated); Skyrim's roll is not seeded | 2.11 | — |
+| G29.2 | Skyrim's detection levels and combat states (unaware, searching, in combat) mapped to the three; the HUD's eye shows them | 1, 6 | fully; the mapping is **UNVERIFIED** (2.11) | 2.11 | — |
