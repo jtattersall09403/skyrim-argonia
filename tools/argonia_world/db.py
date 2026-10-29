@@ -23,6 +23,7 @@ from __future__ import annotations
 import argparse
 import dataclasses
 import json
+import keyword
 import os
 import re
 import sqlite3
@@ -67,6 +68,11 @@ class Table:
         return [c.name for c in self.columns]
 
 
+def attr(column: str) -> str:
+    """A column's attribute name on a typed row: the column name, with `_` after a Python keyword (`from_`)."""
+    return column + "_" if keyword.iskeyword(column) else column
+
+
 def _schema_tables(con: sqlite3.Connection) -> dict[str, Table]:
     out = {}
     names = [r[0] for r in con.execute(
@@ -79,7 +85,7 @@ def _schema_tables(con: sqlite3.Connection) -> dict[str, Table]:
         t = Table(name, cols, pk, fks)
         t.row_type = dataclasses.make_dataclass(
             "".join(p.title() for p in name.split("_")),
-            [(c.name, PYTYPE.get(c.type, object) | None) for c in cols], frozen=True)
+            [(attr(c.name), PYTYPE.get(c.type, object) | None) for c in cols], frozen=True)
         out[name] = t
     return out
 
