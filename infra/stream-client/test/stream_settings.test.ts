@@ -1,6 +1,6 @@
 import { test } from "node:test"
 import assert from "node:assert/strict"
-import { streamSize, bitrateFor, fullScreenCss, MAX_EDGE, MAX_HEIGHT, MIN_KBPS, MAX_KBPS } from "../src/stream_settings.ts"
+import { streamSize, bitrateFor, fullScreenCss, videoBacklogged, MAX_EDGE, MAX_HEIGHT, MIN_KBPS, MAX_KBPS } from "../src/stream_settings.ts"
 
 test("the stream matches the screen's physical pixels", () => {
     assert.deepEqual(streamSize(1280, 800, 2), { width: 2560, height: 1600 })   // MacBook Air at 2x
@@ -38,4 +38,12 @@ test("the stream is sized to the whole screen in its current orientation", () =>
     // a browser that keeps portrait screen sizes while the device is landscape
     assert.deepEqual(fullScreenCss({ width: 724, height: 784 }, true), { width: 784, height: 724 })
     assert.deepEqual(fullScreenCss({ width: 784, height: 724 }, false), { width: 724, height: 784 })
+})
+
+test("the backlog guard fires only on a sustained video backlog", () => {
+    assert.equal(videoBacklogged([20, 30, 25, 40, 35]), false)                   // healthy
+    assert.equal(videoBacklogged([420, 1190, 3737, 11161, 18364]), false)        // still climbing past 1 s: not yet
+    assert.equal(videoBacklogged([1190, 3737, 11161, 18364, 7671]), true)       // the V5 session, 2026-10-29
+    assert.equal(videoBacklogged([5000, null, 5000, 5000, 5000]), false)        // a missing tick resets it
+    assert.equal(videoBacklogged([5000, 5000]), false)                          // too early to tell
 })

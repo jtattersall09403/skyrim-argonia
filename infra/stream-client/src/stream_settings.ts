@@ -40,9 +40,27 @@ export function fullScreenCss(scr: { width: number, height: number } = screen,
     return { width, height }
 }
 
-export function applyStreamSettings(storage: Storage = localStorage) {
+/** H.265 where the browser can receive it over WebRTC, else H.264 (upstream's default). On the unfolded Magic V5,
+ *  H.264 at 2340 x 2160 took 19-36 ms a frame to decode, so the video fell 12-20 s behind the sound; H.265 at the
+ *  same size kept 60 fps (owner, 2026-10-29). */
+export function preferredCodec(): "h265" | "h264" {
+    try {
+        const caps = (window as unknown as { RTCRtpReceiver?: { getCapabilities?: (k: string) => { codecs: { mimeType: string }[] } | null } })
+            .RTCRtpReceiver?.getCapabilities?.("video")
+        if (caps?.codecs.some((c) => /h265|hevc/i.test(c.mimeType))) return "h265"
+    } catch { /* no WebRTC capabilities: keep H.264 */ }
+    return "h264"
+}
+
+/** Set by the video-backlog guard (main.ts) before it reconnects: a smaller stream for this tab. */
+export const SCALE_KEY = "argoniaStreamScale"
+export const MIN_SCALE = 0.5
+
+export function applyStreamSettings(storage: Storage = localStorage, session: Storage | null = sessionStorage) {
     const scr = fullScreenCss()
-    const size = streamSize(scr.width, scr.height, window.devicePixelRatio || 1)
+    let scale = 1
+    try { scale = Math.max(MIN_SCALE, Math.min(1, Number(session?.getItem(SCALE_KEY) ?? 1) || 1)) } catch { /* none */ }
+    const size = streamSize(scr.width * scale, scr.height * scale, window.devicePixelRatio || 1)
     let s: Record<string, unknown> = {}
     try { s = JSON.parse(storage.getItem("mlSettings") ?? "{}") ?? {} } catch { s = {} }
     Object.assign(s, {
@@ -50,11 +68,19 @@ export function applyStreamSettings(storage: Storage = localStorage) {
         videoSizeCustom: size,
         bitrate: bitrateFor(size.width, size.height),
         fps: 60,
+        videoCodec: preferredCodec(),
         mouseMode: "relative",
         controllerConfig: { ...(s.controllerConfig as object ?? {}), invertAB: true, invertXY: true },
     })
     try { storage.setItem("mlSettings", JSON.stringify(s)) } catch { /* private mode: upstream defaults */ }
-    return size
+    return { ...size, scale }
+}
+
+/** True when the video has fallen behind: WebRTC's jitter buffer over a second on each of the last five ticks
+ *  (the stuck V5 session climbed from 0.4 s to 20 s; a healthy one stays in tens of ms). */
+export function videoBacklogged(jitterBufferMs: (number | null)[], limitMs = 1000, ticks = 5): boolean {
+    const last = jitterBufferMs.slice(-ticks)
+    return last.length === ticks && last.every((v) => v != null && v > limitMs)
 }
 
 /** Capture the pointer on the first click in the stream on a mouse device (relative mouse needs it). */

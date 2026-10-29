@@ -1,1 +1,1 @@
-[{"wait": 3000}, {"probe": "JSON.stringify(argonia.streamSize)"}]
+[{"wait": 3000}, {"probe": "JSON.stringify([argonia.streamSize, JSON.parse(localStorage.mlSettings).videoCodec])"}]
