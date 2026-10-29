@@ -134,3 +134,45 @@ Columns: goal · mechanism, cheapest route first · routes · fit and why · pro
 | G10.3 | world DB home tables; stable FormIDs from the allocator; records derived | 1, T | fully | 0.4 §0, 1.1 §e | S10c |
 | G11.1 | this map; every rule's home named above; `skse/core` only for §6's list | 1–6 | fully | 1.1 §a | S11a |
 | G11.2 | one table per number under `world/` or `data/`; GMSTs, perk rows, mod settings and `skse/core` constants all generated from it (P5) | 1, 5, T | fully | 1.1 → every chunk | S11b |
+
+### 3.3 People and the living world
+
+| Goal | Mechanism | Routes | Fit, why | Proved by | Stub |
+|---|---|---|---|---|---|
+| G12.1 | NPC_ records with one whole-body template (TPLT, traits flag, 0026 §7); FaceGen made on the player's machine; homes and work from the place record | 1, T | fully | 0.4 → 2.4 | — |
+| G12.2 | AI packages with time conditions (sleep, eat, work, sandbox) on the lamp clock; lamps switched by enable parents on a time rule | 1 (+5) | fully; the lamp switch needs a tiny time rule (Papyrus is not used for it) | 2.4 | — |
+| G12.3 | race shares applied by the build tools when people are made | T | fully | 2.4 | — |
+| G12.4 | FACT records with ranks; advancement conditions by P2 and quest stages | 1, 5 | fully | 2.4 | — |
+
+### 3.4 Fixed danger, bands, respawn
+
+| Goal | Mechanism | Routes | Fit, why | Proved by | Stub |
+|---|---|---|---|---|---|
+| G13.1 | ECZN with min = max level and *Never Resets* where wanted `[CL B/BGSEncounterZone.h:14-16]`; NPCs at static levels, never *PC Level Mult* `[CL T/TESActorBaseData.h:29]`; no levelled lists for hostiles or loot (an L1 rule) | 1 | fully | 1.6 (one zone) → 2.7 §j | S13a |
+| G13.2 | the ladder compiled to fixed NPC record numbers and per-actor abilities (P5) | 1, 5, T | fully | 1.6 (one D2 archetype) → 2.7 | S13b |
+| G13.3 | enemy factions and aggression in records; roaming bands as placed actors on patrol packages; answered violence through Skyrim's assist and crime responses | 1 | fully | 1.6 (attack on sight) → 2.7 §j | S13c |
+| G13.4 | capability gates authored as data (lock levels, climb heights, water depth, conditions by P2) | 1, T | fully | 2.W5, 2.12 | — |
+
+Respawn on rest (G17.1's death and 1.5) is mapped here: Skyrim respawns a cell on a timer and only on re-entry
+(`iHoursToRespawnCell` 240 h, `iHoursToRespawnCellCleared` 720 h [W:respawn]; cells reset only when re-entered
+[W:cellreset]). Ours: those timers set out of reach; on each rest (and wake from death) ArgoniaCore resurrects and
+returns the `onRest` actors the roster compiled (`Actor::Resurrect` `[CL A/Actor.h:399]`, then move to their
+editor location); `untilCleared` reads the location's cleared state `[CL B/BGSLocation.h:114]`; `never` is the
+default. Whether `Reset` can override *Never Resets* does not matter here (a forum report says it cannot,
+[W:respawn]); resurrecting refs in unloaded cells is **UNVERIFIED** (S17a kills the archetype, walks away, rests).
+
+### 3.5 Character
+
+| Goal | Mechanism | Routes | Fit, why | Proved by | Stub |
+|---|---|---|---|---|---|
+| G14.1 | Seven attributes canonical in the `stats` family, mirrored into seven reserved actor values (1.3 §a audit); derived values written as base AVs by `SetBaseActorValue` `[CL A/ActorValueOwner.h:19]`: Health, Stamina, Magicka, CarryWeight, SpeedMult, StaminaRate, MagickaRate, JumpingBonus `[CL A/ActorValues.h:36-40, 70]`; Strength's damage term and every score-and-curve job by P1 on `ModAttackDamage` and kin `[CL B/BGSEntryPoint.h:50]` | 1, 5 | loss: a score over two values cannot be a condition, so it is a carrier (P1) and depends on the AV budget; carry weight is in Skyrim units through the units module | 1.3 §a | S14a |
+| G14.2 | 14 vanilla skill AVs plus 13 Custom Skills Framework skills (the 1.3 table; CSF skills are globals [A §4]); growth by P4 + `progression`; One-handed, Two-handed, Pickpocket hidden by the views | 1, 2, 5 | loss: CSF skills are globals, so conditions and perk rows read them only as globals and only for the player; NPC values are compiled | 1.3 §a | S14b |
+| G14.3 | one schema: the compiler runs the core formulas for every actor (P5) and writes NPC_ skills and offsets plus one ability | 1, 5, T | fully | 1.6 (archetype) → 2.4, 2.7 | S14c |
+| G15.1 | our stats view over the `stats` family; vanilla `StatsMenu` and the perk constellation suppressed (P6) | 5, 6 | fully | 1.3 → 2.2 | S15a |
+| G15.2 | races (RACE) and birthsigns as permanent ability spells whose effects Skyrim has (resist poison, water breathing `[CL A/ActorValues.h:65]`); fields Skyrim lacks (our attributes, poise, block stability) as `StatEffect` entries in `effects`; one stack in the view; no standing stones (0012) | 1, 5 | fully | 1.3 (gear, a potion) → 2.1 | S15b |
+| G15.3 | our creation view; face sliders from the vanilla race menu or RaceMenu if 3.2 needs it, the menu itself hidden (P6) | 2, 6 | fully | 3.2 | — |
+| G16.1 | P4 stops vanilla gain; ArgoniaCore turns engine events (hit, damage taken, block, cast, unlock, brew, trade; `TESHitEvent` and kin, `AddSkillExperience` `[CL P/PlayerCharacter.h:731]` as the hook if an event is missing) into use events for `progression`, which applies Morrowind's rank cost, worthiness and vastei and writes skills back (AV or CSF API) | 1, 2, 5 | fully; that `useMult` = 0 covers every vanilla path is **UNVERIFIED** (S16a) | 1.5 | S16a |
+| G16.2 | `progression`'s ranks-per-level curve (1…8, then 8) and the 1 : 3 misc credit, from the curves table | 5 | fully | 1.5 | S16b |
+| G16.3 | rest (P3 on camp spots and beds) → the router opens our sitting view; `sitting` prices and applies; vanilla `LevelUpMenu` never fires (P4); Skyrim's own level is a mirror only (how it is written is **UNVERIFIED**; nothing reads it once zones are fixed) | 1, 4, 5, 6 | fully | 1.5 | S16c |
+| G17.1 | Potions are ALCH (native). Death: the player's bleedout is caught (`TESEnterBleedoutEvent` `[CL T/TESEnterBleedoutEvent.h:9]`; the Respawn – Soulslike pattern [A §4]); `death` drops one pile ref, ArgoniaCore fades, moves the player to the last rest and restores, then resets `onRest` actors. Rest is the only save: `Game.SetInChargen(abDisableSaving)` [W:setinchargen] blocks player saves, ArgoniaCore writes the rest save with `BGSSaveLoadManager::Save` `[CL B/BGSSaveLoadManager.h:122]`, the router hides save entries | 1, 4, 5, 6 | loss: a frame of the bleedout kneel may show before the fade (fallback: catch lethal damage in `HandleHealthDamage` `[CL A/Actor.h:488]`, route 6); whether `SetInChargen` also blocks our own `Save` call is **UNVERIFIED** (S17a) | 1.5 → 2.8 | S17a |
+| G17.2 | all of 76 §120 and §126 in `progression`, `sitting`, `rest`, `death`, `respawn` from the first rung (no placeholder rules) | 5 | fully | 1.5 → 2.8 | S17b |
