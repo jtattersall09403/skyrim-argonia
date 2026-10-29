@@ -28,7 +28,12 @@
    "required": true,
    "profile": "play",
    "install": "root",
-   "sha256": "7bad616ed360823a027f8828801d91e3a4aa2eacd952023af7f3e31adb2ae250"
+   "sha256": "7bad616ed360823a027f8828801d91e3a4aa2eacd952023af7f3e31adb2ae250",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; SKSE's own readme terms not read"
   },
   {
    "id": "address-library",
@@ -50,7 +55,12 @@
    "sha256": "be0c7c07fb63fd1c1403690d4797c7a8fdf8799118acceb605f285d7b0ee055f",
    "pick": [
     "SKSE"
-   ]
+   ],
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
   },
   {
    "id": "crash-logger",
@@ -69,7 +79,12 @@
    "chunk": "0.3",
    "required": true,
    "profile": "play",
-   "sha256": "eb112aa69b4e4f595a0230e43f7f080dbdc533647d4986fc042692f461baaad3"
+   "sha256": "eb112aa69b4e4f595a0230e43f7f080dbdc533647d4986fc042692f461baaad3",
+   "licence": "MIT (github alandtse/CrashLoggerSSE)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence MIT governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/alandtse/CrashLoggerSSE licence MIT; Nexus description states no AI clause"
   },
   {
    "id": "papyrusutil",
@@ -88,7 +103,12 @@
    "chunk": "0.2",
    "required": true,
    "profile": "play",
-   "sha256": "0ef140a204591491343749296d184d60837eb130928b4c0925f8bf949c0dd437"
+   "sha256": "0ef140a204591491343749296d184d60837eb130928b4c0925f8bf949c0dd437",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
   },
   {
    "id": "po3-tweaks",
@@ -107,7 +127,12 @@
    "chunk": "0.2",
    "required": true,
    "profile": "play",
-   "sha256": "5aeadd195dce06e3d72d7684373bab9116f8eadf3833af5cdf45c0d2ad4f9268"
+   "sha256": "5aeadd195dce06e3d72d7684373bab9116f8eadf3833af5cdf45c0d2ad4f9268",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; gh powerof3/Tweaks not found"
   },
   {
    "id": "po3-papyrus-extender",
@@ -126,7 +151,12 @@
    "chunk": "0.2",
    "required": true,
    "profile": "play",
-   "sha256": "2ba01d7ea67826f4207cc667bbfb94f2787f0e02114cca4cda8c22c8750513e7"
+   "sha256": "2ba01d7ea67826f4207cc667bbfb94f2787f0e02114cca4cda8c22c8750513e7",
+   "licence": "GPL-3.0 (github powerof3/PapyrusExtenderSSE)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/powerof3/PapyrusExtenderSSE licence GPL-3.0; Nexus description states no AI clause"
   },
   {
    "id": "consoleutil-extended",
@@ -145,7 +175,12 @@
    "chunk": "0.3",
    "required": true,
    "profile": "play",
-   "sha256": "5f9e322e45313ffe289cb43cd3019dffcdbd36c37cdeaf04a0aa89bd69055860"
+   "sha256": "5f9e322e45313ffe289cb43cd3019dffcdbd36c37cdeaf04a0aa89bd69055860",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; gh KrisV777/ConsoleUtilExtended not found"
   },
   {
    "id": "consoleutilsse-ng",
@@ -164,7 +199,12 @@
    "chunk": "0.2",
    "required": true,
    "profile": "play",
-   "sha256": "df531d4f1061565b1b4225f4ac88473f2afc97d1f6ab6df6e9f1f7509c43d966"
+   "sha256": "df531d4f1061565b1b4225f4ac88473f2afc97d1f6ab6df6e9f1f7509c43d966",
+   "licence": "GPL-3.0 (github VersuchDrei/ConsoleUtilSSE)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/VersuchDrei/ConsoleUtilSSE licence GPL-3.0; Nexus description states no AI clause"
   },
   {
    "id": "fuz-ro-doh",
@@ -183,7 +223,12 @@
    "chunk": "1.3",
    "required": true,
    "profile": "play",
-   "sha256": "9a3ed3a31713fb60b62fb87616aa60d9c24b0cd184c0c66dfd1aee29929e9c3f"
+   "sha256": "9a3ed3a31713fb60b62fb87616aa60d9c24b0cd184c0c66dfd1aee29929e9c3f",
+   "licence": "GPL-3.0 (github shadeMe/Fuz-Ro-D-oh, repo matched by name only)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "repo guessed from author name shadeMe; gh licence GPL-3.0; page text has no terms"
   },
   {
    "id": "skyui",
@@ -202,7 +247,12 @@
    "chunk": "0.2",
    "required": true,
    "profile": "play",
-   "sha256": "4eb0c9fc5241e5c3dd2fd773ee8a89627c924bf4445cf70373d3a4c7c4393ff1"
+   "sha256": "4eb0c9fc5241e5c3dd2fd773ee8a89627c924bf4445cf70373d3a4c7c4393ff1",
+   "licence": "none stated (github schlangster/skyui has no licence file)",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus description read; gh schlangster/skyui licence none; reuse-audit.md line 236 'source-visible, not open-licensed'"
   },
   {
    "id": "mcm-helper",
@@ -227,7 +277,12 @@
     "SkyrimSE/SKSE",
     "ESL/MCMHelper.esp",
     "Loose/*"
-   ]
+   ],
+   "licence": "MIT (github Exit-9B/MCM-Helper)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence MIT governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/Exit-9B/MCM-Helper licence MIT; Nexus description states no AI clause"
   },
   {
    "id": "pandora",
@@ -247,7 +302,12 @@
    "required": true,
    "profile": "play",
    "install": "tool",
-   "sha256": "89c57c0d2f27afd038a68105acff9577ce49a34969ec2b0db75d5354cfe17688"
+   "sha256": "89c57c0d2f27afd038a68105acff9577ce49a34969ec2b0db75d5354cfe17688",
+   "licence": "GPL-3.0 (github Monitor221hz/Pandora-Behaviour-Engine-Plus)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/Monitor221hz/Pandora-Behaviour-Engine-Plus licence GPL-3.0; Nexus description states no AI clause"
   },
   {
    "id": "open-animation-replacer",
@@ -269,7 +329,12 @@
    "sha256": "970cb6c34045ee6a5ba7a5f0c598a8e398d0973cc81a9a6ee5dd303329907de8",
    "pick": [
     "SKSE"
-   ]
+   ],
+   "licence": "GPL-3.0 (github Ersh1/OpenAnimationReplacer)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/Ersh1/OpenAnimationReplacer licence GPL-3.0; Nexus description states no AI clause"
   },
   {
    "id": "animation-queue-fix",
@@ -291,7 +356,12 @@
    "sha256": "b2deff34aa462d5d439f56fe5ed86b32028e959ed02d361cacdc51504bab1b89",
    "pick": [
     "SKSE"
-   ]
+   ],
+   "licence": "GPL-3.0 (github Ersh1/AnimationQueueFix)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/Ersh1/AnimationQueueFix licence GPL-3.0; Nexus description states no AI clause"
   },
   {
    "id": "amr",
@@ -310,7 +380,12 @@
    "chunk": "0.2",
    "required": true,
    "profile": "play",
-   "sha256": "986b11630b6c93c65ff9a6441a7eac442012f77fd0a7386bcf30075fafd199fd"
+   "sha256": "986b11630b6c93c65ff9a6441a7eac442012f77fd0a7386bcf30075fafd199fd",
+   "licence": "MIT (github alexsylex/AnimationMotionRevolution)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence MIT governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/alexsylex/AnimationMotionRevolution licence MIT; Nexus description states no AI clause"
   },
   {
    "id": "amr-1.7.104",
@@ -332,7 +407,12 @@
    "sha256": "13d01a2fb3219725568233da76ce30419c8630ee5c240113b45ea70bf6992f3f",
    "pick": [
     "SKSE"
-   ]
+   ],
+   "licence": "MIT (github alexsylex/AnimationMotionRevolution (upstream; 1.7.104 rebuild repo not found via gh))",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence MIT governs",
+   "permission_ask": false,
+   "permission_evidence": "Nexus description says original source by alexsylex; upstream gh MIT; rebuild repo's own licence not read"
   },
   {
    "id": "payload-interpreter",
@@ -351,7 +431,12 @@
    "chunk": "0.2",
    "required": true,
    "profile": "play",
-   "sha256": "e3705da4f0aaaf704d16382eccf8c07a12f16c64ea3a5877714a748c6196e246"
+   "sha256": "e3705da4f0aaaf704d16382eccf8c07a12f16c64ea3a5877714a748c6196e246",
+   "licence": "MIT (github D7ry/PayloadInterpreter)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence MIT governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/D7ry/PayloadInterpreter licence MIT; Nexus description states no AI clause"
   },
   {
    "id": "payload-interpreter-1.7.104",
@@ -370,7 +455,12 @@
    "chunk": "0.2",
    "required": true,
    "profile": "play",
-   "sha256": "a7c335396b64a439af01843789fe4d5b51389334f17b2f77f43431f9004d1f6c"
+   "sha256": "a7c335396b64a439af01843789fe4d5b51389334f17b2f77f43431f9004d1f6c",
+   "licence": "GPL-3.0-or-later (github AntonTissen-del/PayloadInterpreter)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0-or-later governs",
+   "permission_ask": false,
+   "permission_evidence": "Nexus description states relicensed GPL-3.0-or-later, D7ry MIT original preserved; gh GPL-3.0"
   },
   {
    "id": "behavior-data-injector",
@@ -392,7 +482,12 @@
    "sha256": "4f718764e67c265b509fcabe6afc00ba85255a03f2140e2b1de2bb03511ecde4",
    "pick": [
     "SKSE"
-   ]
+   ],
+   "licence": "GPL-3.0 (github doodlum/BehaviorDataInjector)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/doodlum/BehaviorDataInjector licence GPL-3.0; Nexus description states no AI clause"
   },
   {
    "id": "spid",
@@ -411,7 +506,12 @@
    "chunk": "0.2",
    "required": true,
    "profile": "play",
-   "sha256": "b1a2f44f7a55062cf8999d5ae88fbeb4e7a985a371f9be01a358e8870b24ee71"
+   "sha256": "b1a2f44f7a55062cf8999d5ae88fbeb4e7a985a371f9be01a358e8870b24ee71",
+   "licence": "MIT (github powerof3/Spell-Perk-Item-Distributor)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence MIT governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/powerof3/Spell-Perk-Item-Distributor licence MIT; Nexus description states no AI clause"
   },
   {
    "id": "dtry-key-utils",
@@ -430,7 +530,12 @@
    "chunk": "0.2",
    "required": true,
    "profile": "play",
-   "sha256": "ffab378da57131d71ebe2e7b33beeff0e1eb374a347125ac07a8a504663b8196"
+   "sha256": "ffab378da57131d71ebe2e7b33beeff0e1eb374a347125ac07a8a504663b8196",
+   "licence": "none (github D7ry/DtryKeyUtil has no licence file)",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "gh D7ry/DtryKeyUtil licence none; Nexus API v1 description read in full; no permission or AI text found"
   },
   {
    "id": "dtry-key-utils-1.7.104",
@@ -449,7 +554,12 @@
    "chunk": "0.2",
    "required": true,
    "profile": "play",
-   "sha256": "6fe0cd8a0bde047a56e6205fb309a27f1f31f30445c69018de9e97e10eeff53a"
+   "sha256": "6fe0cd8a0bde047a56e6205fb309a27f1f31f30445c69018de9e97e10eeff53a",
+   "licence": "GPL-3.0 (github Juan-MZ/DtryKeyUtil-1.7.99-Patch)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "gh licence GPL-3.0; description discloses the patch was made with AI assistance and relies on Dtry's modification grant; original D7ry/DtryKeyUtil has no licence file"
   },
   {
    "id": "skse-menu-framework",
@@ -468,7 +578,12 @@
    "chunk": "0.2",
    "required": true,
    "profile": "play",
-   "sha256": "282a954bc52e376d7821ad615ab9ae99f0142d9aeba796c673725f86312524e5"
+   "sha256": "282a954bc52e376d7821ad615ab9ae99f0142d9aeba796c673725f86312524e5",
+   "licence": "GPL-3.0 (github qtr-modding/skse-menu-framework-3)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/qtr-modding/skse-menu-framework-3 licence GPL-3.0; Nexus description states no AI clause"
   },
   {
    "id": "imgui-icons",
@@ -487,7 +602,12 @@
    "chunk": "0.2",
    "required": true,
    "profile": "play",
-   "sha256": "af1ebf8be8fa0d2c44bece5bc8c2c5e56a28f875f96ca80befb203a39cf41086"
+   "sha256": "af1ebf8be8fa0d2c44bece5bc8c2c5e56a28f875f96ca80befb203a39cf41086",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; credits Jost, Noto Sans JP, Font Awesome 5 icons without terms"
   },
   {
    "id": "media-keys-fix",
@@ -506,7 +626,12 @@
    "chunk": "1.2",
    "required": true,
    "profile": "play",
-   "sha256": "49918f7a8cfafa7aee2c93f9475744dbcb605985c7bb93eb99aafd62ee717ec6"
+   "sha256": "49918f7a8cfafa7aee2c93f9475744dbcb605985c7bb93eb99aafd62ee717ec6",
+   "licence": "LGPL-3.0 (github epinter/MediaKeysFix)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence LGPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/epinter/MediaKeysFix licence LGPL-3.0; Nexus description states no AI clause"
   },
   {
    "id": "xpmsse",
@@ -536,7 +661,12 @@
     "Character and Weapons": [
      "None or other mods"
     ]
-   }
+   },
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; skeleton/behaviour assets used as installed dependency"
   },
   {
    "id": "pandora-xpmse-patch",
@@ -555,7 +685,12 @@
    "chunk": "0.2",
    "required": true,
    "profile": "play",
-   "sha256": "89fa609f0668deec01403cfe49c500647da5ec2ff946c681b3e6e5c2b6b919df"
+   "sha256": "89fa609f0668deec01403cfe49c500647da5ec2ff946c681b3e6e5c2b6b919df",
+   "licence": "GPL-3.0 (github Monitor221hz/Skyrim-Skeleton-Auto-Patch)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/Monitor221hz/Skyrim-Skeleton-Auto-Patch licence GPL-3.0; Nexus description states no AI clause"
   },
   {
    "id": "ssedisplaytweaks",
@@ -577,7 +712,12 @@
    "sha256": "4f7a4980955eec472f3e73219df487fb990c48fd5ad0020c101cd8082b6b2c8c",
    "pick": [
     "SKSE"
-   ]
+   ],
+   "licence": "MIT (github SlavicPotato/SSEDisplayTweaks)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence MIT governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/SlavicPotato/SSEDisplayTweaks licence MIT; Nexus description states no AI clause"
   },
   {
    "id": "precision",
@@ -611,7 +751,12 @@
     "Textures",
     "Nemesis_Engine/mod/colis",
     "Precision.esp"
-   ]
+   ],
+   "licence": "GPL-3.0 (github Ersh1/Precision)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/Ersh1/Precision licence GPL-3.0; Nexus description states no AI clause"
   },
   {
    "id": "true-directional-movement",
@@ -652,7 +797,12 @@
       "bTargetLockUsePOVSwitchKeyboard": "1"
      }
     }
-   ]
+   ],
+   "licence": "GPL-3.0 (github Ersh1/TrueDirectionalMovement)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/Ersh1/TrueDirectionalMovement licence GPL-3.0; Nexus description states no AI clause"
   },
   {
    "id": "truehud",
@@ -676,7 +826,12 @@
     "dsc-b",
     "dsc-b2"
    ],
-   "sha256": "ad10182e0806c47998bc6bf7badd34b8160c9ff008b85b796245e031a77ceed5"
+   "sha256": "ad10182e0806c47998bc6bf7badd34b8160c9ff008b85b796245e031a77ceed5",
+   "licence": "GPL-3.0 (github Ersh1/TrueHUD)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/Ersh1/TrueHUD licence GPL-3.0; Nexus description states no AI clause"
   },
   {
    "id": "tk-dodge-se",
@@ -699,7 +854,12 @@
     "souls-0.0",
     "dsc-b2"
    ],
-   "sha256": "0ba17c40eaaeb32e54f77b910df1a4bb21c884be6c7e52ff0e1244ff263446f4"
+   "sha256": "0ba17c40eaaeb32e54f77b910df1a4bb21c884be6c7e52ff0e1244ff263446f4",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
   },
   {
    "id": "tk-dodge-re",
@@ -728,7 +888,12 @@
     "TK dodge re v0.55-rc3 DLL/Sheathed Dodge/*",
     "TK dodge re v0.55-rc3 DLL/Forward dodge movement fix/*",
     "TK dodge re v0.55-rc3 DLL/Allow dodging when stagger - Directional Movement/*"
-   ]
+   ],
+   "licence": "MIT (github max-su-2019/TK_Dodge_RE)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence MIT governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/max-su-2019/TK_Dodge_RE licence MIT; Nexus description states no AI clause"
   },
   {
    "id": "tk-dodge-re-addon",
@@ -761,7 +926,12 @@
       "uDodgeKey": "255"
      }
     }
-   ]
+   ],
+   "licence": "none named; page says source and permissions are open",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission. The page invites ports that honour the code licence, which it does not name.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus description: 'Source and permissions are open though and ports are welcome as long as they honor the license of the code'; no licence named"
   },
   {
    "id": "dynamic-dodge",
@@ -787,7 +957,12 @@
    "sha256": "831d95c3adde9702981298ba93b526b169751c41acf7704965b1b05aea87f058",
    "pick": [
     "Dynamic Dodge/Roll to cancel attack/Dynamic Dodge - TK Dodge RE-0.55-rc3/*"
-   ]
+   ],
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
   },
   {
    "id": "iframe-generator",
@@ -813,7 +988,12 @@
    "sha256": "72e15b1e589e8c146b03727bc6a0f7bfab6cd4395723a9b963c503df70e0545f",
    "pick": [
     "SKSE"
-   ]
+   ],
+   "licence": "GPL-3.0 (github doodlum/MaxsuIFrame-NG)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/doodlum/MaxsuIFrame-NG licence GPL-3.0; Nexus description states no AI clause"
   },
   {
    "id": "skysa",
@@ -840,7 +1020,12 @@
    "sha256": "bc48aa3900782734865eb7e1d4830f703dcb17d30e203503d68191d46164228f",
    "pick": [
     "data/*"
-   ]
+   ],
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus description is a video link only; reuse-audit.md line 267: no source or licence stated"
   },
   {
    "id": "elder-souls-sword",
@@ -867,7 +1052,12 @@
    "sha256": "ecfa464cb5cbeae38c7da28a3dd8421226e2512f233525221faf01caa0ed395f",
    "pick": [
     "Elder Souls - Sword SE v2.1/Elder Souls - Sword 2.0/*"
-   ]
+   ],
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
   },
   {
    "id": "one-click-power-attack",
@@ -901,7 +1091,12 @@
       "iLongPressMode": "0"
      }
     }
-   ]
+   ],
+   "licence": "none (github jarari/OneClickPowerAttack has no licence file)",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "gh jarari/OneClickPowerAttack licence none (reuse-audit.md line 273); Nexus API v1 description read in full; no permission or AI text found"
   },
   {
    "id": "oar-stamina-cost",
@@ -925,7 +1120,12 @@
     "dsc-b",
     "dsc-b2"
    ],
-   "sha256": "176afacdd140716e5ad81d8b6b04949314e5348a235fe70cb0503f7b29f193f6"
+   "sha256": "176afacdd140716e5ad81d8b6b04949314e5348a235fe70cb0503f7b29f193f6",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission. Page mentions an LLM only as an idea source.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; mod is an OAR animation folder (stamina-cost data), page credits a Gemini LLM for ideas only"
   },
   {
    "id": "elden-parry",
@@ -958,7 +1158,12 @@
       "fParryWindow_End": "0.2"
      }
     }
-   ]
+   ],
+   "licence": "none for D7ry original (github D7ry/EldenParry); GPL-3.0 only on the doodlum fork",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission. Using the GPL-3.0 doodlum fork would need no asking.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "gh D7ry/EldenParry licence none; doodlum fork GPL-3.0 (reuse-audit.md line 271)"
   },
   {
    "id": "elden-parry-1.7.99",
@@ -981,7 +1186,12 @@
     "souls-0.0",
     "dsc-b2"
    ],
-   "sha256": "75b77081d9c7bac9937f52bab9ac234bdb434bbf19a492d0a440ef6f47053c7d"
+   "sha256": "75b77081d9c7bac9937f52bab9ac234bdb434bbf19a492d0a440ef6f47053c7d",
+   "licence": "GPL-3.0 (github doodlum/EldenParry, doodlum/CombatMusicFix)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "gh licences GPL-3.0 for doodlum forks; base D7ry/DtryKeyUtil has no licence file"
   },
   {
    "id": "elden-parry-precision-fix",
@@ -1004,7 +1214,12 @@
     "souls-0.0",
     "dsc-b2"
    ],
-   "sha256": "ade5e7c46d02f444b3bba7da0b0353d24c6acd35e658ad4e8973a26d05764155"
+   "sha256": "ade5e7c46d02f444b3bba7da0b0353d24c6acd35e658ad4e8973a26d05764155",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
   },
   {
    "id": "bdi-payload-patch",
@@ -1027,7 +1242,12 @@
     "souls-0.0",
     "dsc-b2"
    ],
-   "sha256": "8d7d0f8150ca3e0a9e078b8a2fc341048e447b819f9b1c40f85d6e0e46d3fee3"
+   "sha256": "8d7d0f8150ca3e0a9e078b8a2fc341048e447b819f9b1c40f85d6e0e46d3fee3",
+   "licence": "MIT (github max-su-2019/BehaviorDataInjector)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence MIT governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/max-su-2019/BehaviorDataInjector licence MIT; Nexus description states no AI clause"
   },
   {
    "id": "rim-parry",
@@ -1050,7 +1270,12 @@
     "souls-0.0",
     "dsc-b2"
    ],
-   "sha256": "b9cadb65f6a88ff272c6863695edfbab92e1e323f0ac5a8d1e26bc7faa8a0a60"
+   "sha256": "b9cadb65f6a88ff272c6863695edfbab92e1e323f0ac5a8d1e26bc7faa8a0a60",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read 2026-10-29 (lane 0.2): no permission or AI text found"
   },
   {
    "id": "rim-parry-ctd-fix",
@@ -1073,7 +1298,12 @@
     "souls-0.0",
     "dsc-b2"
    ],
-   "sha256": "ba0da201ad4e3d06d8fbd401cbf58852dada18c7213240b72424273d49a46c5d"
+   "sha256": "ba0da201ad4e3d06d8fbd401cbf58852dada18c7213240b72424273d49a46c5d",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
   },
   {
    "id": "rim-parry-elden-patch",
@@ -1096,7 +1326,12 @@
     "souls-0.0",
     "dsc-b2"
    ],
-   "sha256": "191abf0820eddc9367aa1eb3b0dcd5d2d28d384fa0d91ca3390fd9366f96f456"
+   "sha256": "191abf0820eddc9367aa1eb3b0dcd5d2d28d384fa0d91ca3390fd9366f96f456",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus text credits only; reuse-audit.md line 272: source and licence unverified"
   },
   {
    "id": "rim-parry-one-parry",
@@ -1119,7 +1354,12 @@
     "souls-0.0",
     "dsc-b2"
    ],
-   "sha256": "736bfae3d417245f7763e219e7d8fef2b974fe3600ca95e163503a62ce5615f2"
+   "sha256": "736bfae3d417245f7763e219e7d8fef2b974fe3600ca95e163503a62ce5615f2",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
   },
   {
    "id": "modern-stagger-lock",
@@ -1138,7 +1378,12 @@
    "set": [
     "souls-0.0"
    ],
-   "sha256": "9c2389d1171f23782d0b6185fc5d732c1593267524e272b15c4cb584d26e38c3"
+   "sha256": "9c2389d1171f23782d0b6185fc5d732c1593267524e272b15c4cb584d26e38c3",
+   "licence": "MIT (github SkyHorizon3/ModernStaggerLock)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence MIT governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/SkyHorizon3/ModernStaggerLock licence MIT, pushed 2026-10-27; no AI clause in the licence"
   },
   {
    "id": "maxsu-block-overhaul",
@@ -1159,7 +1404,12 @@
     "dsc-b",
     "dsc-b2"
    ],
-   "sha256": "39b9499501bbbb0457668a2a3e148a914605515b07ae0708dfd91114933129cf"
+   "sha256": "39b9499501bbbb0457668a2a3e148a914605515b07ae0708dfd91114933129cf",
+   "licence": "MIT (github max-su-2019/MaxuBlockOverhaul)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence MIT governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/max-su-2019/MaxuBlockOverhaul licence MIT, pushed 2025-02-17; Nexus 114366 text links it"
   },
   {
    "id": "dark-souls-combat",
@@ -1185,7 +1435,12 @@
    "author": "TheDriedFInger",
    "version": "1.5.3",
    "archive": "Dark Souls Combat by TheDriedFinger-28567-1-5-3-1566846932.rar",
-   "size_kb": 880
+   "size_kb": 880,
+   "licence": "none stated beyond Permissions line",
+   "permission_summary": "Page says do not reupload, make derivatives or use its assets without permission; a pure player-download dependency is not covered, and the owner confirmed use on 2026-10-29.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus description: 'Please do not reupload, make a derivative work, or use assets from this mod without my permission'; combat-mod-28567.md line 29 owner-confirmed fine 2026-10-29; no AI text"
   },
   {
    "id": "freeclimb",
@@ -1204,7 +1459,12 @@
    "chunk": "2.8",
    "required": true,
    "profile": "play",
-   "sha256": "3c54c07a012820b81b26c4153b7df17876a7c790cd3d0a24053a2183161eb95a"
+   "sha256": "3c54c07a012820b81b26c4153b7df17876a7c790cd3d0a24053a2183161eb95a",
+   "licence": "GPL-3.0-only (github Eelta/FreeClimb)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. Its animation clips carry separate third-party notices we have not read.",
+   "ai_clause": "none: open licence GPL-3.0-only governs",
+   "permission_ask": false,
+   "permission_evidence": "Nexus description: code GPL-3.0 only; gh GPL-3.0; sourcing-register uses its clips (third-party animation licensing is in its THIRD-PARTY-NOTICES, not read)"
   },
   {
    "id": "swimming-extensions",
@@ -1223,7 +1483,12 @@
    "chunk": "2.8",
    "required": true,
    "profile": "play",
-   "sha256": "820da12804c1d3ff29f54a765c3beba2974a84d74dca2781273e7aa69e1c4e42"
+   "sha256": "820da12804c1d3ff29f54a765c3beba2974a84d74dca2781273e7aa69e1c4e42",
+   "licence": "AGPL-3.0 (github Tsptds/Skyrim-Svimex-SKSE)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. A derivative DLL must be rebranded; assets not separately licensed on the page.",
+   "ai_clause": "none: open licence AGPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "Nexus description: 'Svimex's source code is AGPLv3'; gh AGPL-3.0"
   },
   {
    "id": "sailable-ship",
@@ -1242,7 +1507,12 @@
    "chunk": "2.8",
    "required": true,
    "profile": "play",
-   "sha256": "fb2a4cec21fa6b7b8ebd6d80e461b50f2187fff4acbc7348f606d0eb0da3c455"
+   "sha256": "fb2a4cec21fa6b7b8ebd6d80e461b50f2187fff4acbc7348f606d0eb0da3c455",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; reuse-audit.md line 259: permissions unknown, fork only after permission is read"
   },
   {
    "id": "evg-animated-traversal",
@@ -1261,7 +1531,12 @@
    "chunk": "2.8",
    "required": true,
    "profile": "play",
-   "sha256": "a3302ab97bb07572af8ff6a8473756531a71b6d2888f34f954ff85596cee46b9"
+   "sha256": "a3302ab97bb07572af8ff6a8473756531a71b6d2888f34f954ff85596cee46b9",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission. We use its clips, so asking is needed.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; sourcing-register uses its wall-drop, failed-ledge and ladder clips"
   },
   {
    "id": "custom-skills-framework",
@@ -1280,7 +1555,12 @@
    "chunk": "1.3",
    "required": true,
    "profile": "play",
-   "sha256": "b05958f94c531c71818cf3e0705dc7f2cc425b9e117171e95f964851c230e690"
+   "sha256": "b05958f94c531c71818cf3e0705dc7f2cc425b9e117171e95f964851c230e690",
+   "licence": "MIT (github Exit-9B/CustomSkills)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence MIT governs",
+   "permission_ask": false,
+   "permission_evidence": "gh licence MIT; reuse-audit.md line 250"
   },
   {
    "id": "prismaui",
@@ -1299,7 +1579,12 @@
    "chunk": "1.2",
    "required": true,
    "profile": "play",
-   "sha256": "ad16dfe478da1893d76d526f84acd3fe3704808cd98d4bf086402a21296c625d"
+   "sha256": "ad16dfe478da1893d76d526f84acd3fe3704808cd98d4bf086402a21296c625d",
+   "licence": "Prisma UI License (custom; github PrismaUI-SKSE/PrismaUI NOASSERTION)",
+   "permission_summary": "Custom licence allows free use up to US$100k revenue and unmodified redistribution with the licence file; a project depending on it unmodified needs no permission, but publicly distributing a modified build needs written permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "reuse-audit.md line 232 (Prisma UI License: modified versions need written permission; no AI clause found, grep of LICENSE.md for AI/machine/artificial/train returned nothing); gh licence NOASSERTION"
   },
   {
    "id": "dear-diary",
@@ -1335,7 +1620,12 @@
     "Console Improvements": [
      "60 FPS Vanilla Console"
     ]
-   }
+   },
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus description read; reuse-audit.md line 233: permissions unknown; credits SureAI SWF 'used with permission'"
   },
   {
    "id": "wood-and-paper",
@@ -1354,7 +1644,12 @@
    "chunk": "1.2",
    "required": true,
    "profile": "play",
-   "sha256": "cdff527f39a8736dd60e6b96447b7209db08fd0943368322a446ec98b4759b3c"
+   "sha256": "cdff527f39a8736dd60e6b96447b7209db08fd0943368322a446ec98b4759b3c",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus description read; reuse-audit.md line 234: permissions unknown"
   },
   {
    "id": "oblivion-loading-menu",
@@ -1378,7 +1673,12 @@
     "Do you want to install custom load screens?": [
      "No"
     ]
-   }
+   },
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus description read; reuse-audit.md line 235: permissions unknown, reuses SureAI SWF with permission"
   },
   {
    "id": "flat-world-map",
@@ -1397,7 +1697,12 @@
    "chunk": "2.10",
    "required": true,
    "profile": "play",
-   "sha256": "3b9eb3b3b8c2e8ce5fa15fccef57a06e644c85b27a35538cd2821a9520bbacf3"
+   "sha256": "3b9eb3b3b8c2e8ce5fa15fccef57a06e644c85b27a35538cd2821a9520bbacf3",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus description read; reuse-audit.md line 255: permissions unknown; bundles a GPLv3 add-on 'with author's permission'"
   },
   {
    "id": "no-google-maps",
@@ -1416,7 +1721,12 @@
    "chunk": "2.10",
    "required": true,
    "profile": "play",
-   "sha256": "7cb4b9b0988d1845443d32d84e3ac9e0dbf991b4b4b71f6a7844ee256b65072a"
+   "sha256": "7cb4b9b0988d1845443d32d84e3ac9e0dbf991b4b4b71f6a7844ee256b65072a",
+   "licence": "GPL-3.0 (github SkyHorizon3/SSE-No-Google-Maps-Skyrim)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "gh licence GPL-3.0; reuse-audit.md line 254"
   },
   {
    "id": "magic-expanded",
@@ -1435,7 +1745,12 @@
    "chunk": "2.9",
    "required": false,
    "profile": "play",
-   "sha256": "fd504f807c98f37c980a0d5554ffe7d0997ef18ed9986f5a92f92efbc551eb52"
+   "sha256": "fd504f807c98f37c980a0d5554ffe7d0997ef18ed9986f5a92f92efbc551eb52",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
   },
   {
    "id": "community-shaders",
@@ -1454,7 +1769,12 @@
    "chunk": "2.W3",
    "required": true,
    "profile": "play",
-   "sha256": "21daeba464bcbc6ee90f5bbf6d8bd17a0ad2b024cc406ba8a6ee216fc7679fcb"
+   "sha256": "21daeba464bcbc6ee90f5bbf6d8bd17a0ad2b024cc406ba8a6ee216fc7679fcb",
+   "licence": "GPL-3.0 (github community-shaders/skyrim-community-shaders)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "Nexus description 'Open Source (GPL-3.0)'; gh GPL-3.0"
   },
   {
    "id": "tropical-skyrim-sse",
@@ -1473,7 +1793,12 @@
    "chunk": "2.W1",
    "required": true,
    "profile": "play",
-   "sha256": "6d58bb0018f8fed106cb3dc534f9eaac668595f7d59d0c4a689ba4774732e167"
+   "sha256": "6d58bb0018f8fed106cb3dc534f9eaac668595f7d59d0c4a689ba4774732e167",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission. It converts Soolie's mod, whose terms demand permission for use of contents.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus description: SSE conversion of Soolie's Tropical Skyrim by Tron91; no terms; inherits skyrim-33017's permission requirement (assets-creatures.md line 129)"
   },
   {
    "id": "xanmeer-tileset",
@@ -1492,7 +1817,12 @@
    "chunk": "0.4",
    "required": true,
    "profile": "play",
-   "sha256": "29baf86a70d81a1b74bead256c6ce2ed2e607ff1a6b04331a651ba6a0e366e2e"
+   "sha256": "29baf86a70d81a1b74bead256c6ce2ed2e607ff1a6b04331a651ba6a0e366e2e",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus description read: tileset 'purely the models/textures'; credits NorthWindBlue/Jonathan Morris; assets-creatures.md says 'available for this project' per audit-world.md line 53"
   },
   {
    "id": "king-of-the-murkmire",
@@ -1511,7 +1841,12 @@
    "chunk": "0.4",
    "required": true,
    "profile": "play",
-   "sha256": "00abb3b460ee395e0c2df62330aaa63f6a02d78eb9f5ad4e6497c346205746b0"
+   "sha256": "00abb3b460ee395e0c2df62330aaa63f6a02d78eb9f5ad4e6497c346205746b0",
+   "licence": "Author terms on page: free for free mods that do not use AI",
+   "permission_summary": "Page allows use of its assets in free mods that do not make use of AI; depending is fine, but our pipeline uses AI so the owner's permission held since 2026-09-24 is what covers our placement of its items.",
+   "ai_clause": "restricts AI: \"do not make use of AI\" (audit quote of page terms)",
+   "permission_ask": true,
+   "permission_evidence": "Nexus description: 'Lastly, if you want to make an addon, please don't make use of AI in it at all'; assets-creatures.md line 131: 'free for use in your mods if they are released for free and do not make use of AI'; sourcing-register: author permission held by owner 2026-09-24"
   },
   {
    "id": "htbm",
@@ -1530,7 +1865,12 @@
    "chunk": "0.4",
    "required": true,
    "profile": "play",
-   "sha256": "59058ce25da13590dcfc9cd578e4cca7107e05f75a96592efb9ea61912658f83"
+   "sha256": "59058ce25da13590dcfc9cd578e4cca7107e05f75a96592efb9ea61912658f83",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
   },
   {
    "id": "htbm-cipactli",
@@ -1549,7 +1889,12 @@
    "chunk": "0.4",
    "required": true,
    "profile": "play",
-   "sha256": "c44da49e52ae68d41df23fdf672b406d09ea72a9338e3e496b5be86784d0aed6"
+   "sha256": "c44da49e52ae68d41df23fdf672b406d09ea72a9338e3e496b5be86784d0aed6",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; sourcing-register uses its native clothing (modder's resource, use with credit)"
   },
   {
    "id": "mud-mother-grove",
@@ -1568,7 +1913,12 @@
    "chunk": "0.4",
    "required": true,
    "profile": "play",
-   "sha256": "7ac552437eeac11ff87cf14a4d22e3d4769d16fb7dde6f3c0218c7a133e017f2"
+   "sha256": "7ac552437eeac11ff87cf14a4d22e3d4769d16fb7dde6f3c0218c7a133e017f2",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
   },
   {
    "id": "xalfek",
@@ -1592,7 +1942,12 @@
     "*.esp",
     "*.esl"
    ],
-   "note": "plugin needs USSEP (not in the stack): assets only; its BSAs load once 0.4 lists them in the archive list"
+   "note": "plugin needs USSEP (not in the stack): assets only; its BSAs load once 0.4 lists them in the archive list",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
   },
   {
    "id": "mw-imperial-keep",
@@ -1611,7 +1966,12 @@
    "chunk": "0.4",
    "required": true,
    "profile": "play",
-   "sha256": "d22974919cdd3d6cea25f2b0b0851f2cb636a7569b7c3d1f8ae7b34c8584b9c0"
+   "sha256": "d22974919cdd3d6cea25f2b0b0851f2cb636a7569b7c3d1f8ae7b34c8584b9c0",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus description: models 'usable for the modding community'; no formal terms"
   },
   {
    "id": "mw-hlaalu",
@@ -1630,7 +1990,12 @@
    "chunk": "0.4",
    "required": true,
    "profile": "play",
-   "sha256": "c32811d704f25d33fe421e20d1258a965232c6fafc530a2f99d95c1f74c8cad7"
+   "sha256": "c32811d704f25d33fe421e20d1258a965232c6fafc530a2f99d95c1f74c8cad7",
+   "licence": "Nexus permissions box not readable; page says free to use in mods",
+   "permission_summary": "The page says the assets may be used freely in mods, and the audit notes a no-conversion-to-other-games flag; depending is fine, but placing its meshes in our plugin should be confirmed.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus description: 'You're free to use these assets in your mods'; assets-creatures.md line 132 notes a 'convert to other games: not allowed' flag on 157997"
   },
   {
    "id": "drjacopo-grass",
@@ -1649,7 +2014,12 @@
    "chunk": "2.W1",
    "required": true,
    "profile": "play",
-   "sha256": "5026606faae2b72cc796242dbc2e3f13d0a22133f9afafe6e2a9a71ecb298c68"
+   "sha256": "5026606faae2b72cc796242dbc2e3f13d0a22133f9afafe6e2a9a71ecb298c68",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
   },
   {
    "id": "seashells",
@@ -1673,7 +2043,12 @@
     "*.esp",
     "*.esl"
    ],
-   "note": "plugin needs USSEP (not in the stack): assets only; its BSAs load once 0.4 lists them in the archive list"
+   "note": "plugin needs USSEP (not in the stack): assets only; its BSAs load once 0.4 lists them in the archive list",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
   },
   {
    "id": "shores-of-skyrim-cc",
@@ -1692,7 +2067,12 @@
    "chunk": "0.4",
    "required": true,
    "profile": "play",
-   "sha256": "44307f926585bc24ffa7a5ef5b09b63e450edca87dd255c48e0ea59856ee6934"
+   "sha256": "44307f926585bc24ffa7a5ef5b09b63e450edca87dd255c48e0ea59856ee6934",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
   },
   {
    "id": "base-object-swapper",
@@ -1711,7 +2091,12 @@
    "chunk": "0.4",
    "required": true,
    "profile": "play",
-   "sha256": "d1f21425b608775d9e324218ab1e1e2a7ba1e3fe55b911019572fe7c67898f66"
+   "sha256": "d1f21425b608775d9e324218ab1e1e2a7ba1e3fe55b911019572fe7c67898f66",
+   "licence": "GPL-3.0 (github powerof3/BaseObjectSwapper)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/powerof3/BaseObjectSwapper licence GPL-3.0; Nexus description states no AI clause"
   },
   {
    "id": "skyrim-ferries",
@@ -1730,7 +2115,12 @@
    "chunk": "2.8",
    "required": true,
    "profile": "play",
-   "sha256": "a053c715730207d9f52c76fb5425647ebeac006262e0ee1397da4da40b896387"
+   "sha256": "a053c715730207d9f52c76fb5425647ebeac006262e0ee1397da4da40b896387",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
   },
   {
    "id": "rowboats",
@@ -1749,7 +2139,12 @@
    "chunk": "2.8",
    "required": true,
    "profile": "play",
-   "sha256": "9edfe3ebe786a00f6e05b188276d71f1bf00e45d32a21cf5835e6b38fe6ec878"
+   "sha256": "9edfe3ebe786a00f6e05b188276d71f1bf00e45d32a21cf5835e6b38fe6ec878",
+   "licence": "CC-BY (version not stated)",
+   "permission_summary": "Page says CC Attribution: free to share and adapt for any purpose including commercial with credit, so depending on or using the boat in our mod needs only attribution.",
+   "ai_clause": "none: open licence CC-BY governs",
+   "permission_ask": false,
+   "permission_evidence": "Nexus description 'License: CC Attribution'; no AI clause in text; version unspecified"
   },
   {
    "id": "cc-ayleid-resources",
@@ -1768,7 +2163,12 @@
    "chunk": "0.4",
    "required": true,
    "profile": "play",
-   "sha256": "03f9203f14744f481e089901fa307fe190660f4bfad953d51b0f28743fed25be"
+   "sha256": "03f9203f14744f481e089901fa307fe190660f4bfad953d51b0f28743fed25be",
+   "licence": "Author terms on page: free for unsold mods with credit",
+   "permission_summary": "Free to use in mods that are not sold, with credit; depending is fine and our free mod may use it with credit, but the page says nothing on AI.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus description: 'Feel free to use these assets in your mods as long as these are not being sold ... proper credit'"
   },
   {
    "id": "sleeping-hist-tree",
@@ -1787,7 +2187,12 @@
    "chunk": "0.4",
    "required": true,
    "profile": "play",
-   "sha256": "1b7f3e3149f2db8735403bb44ef849ee865063300e01dd5f188551dfaf2ea5cf"
+   "sha256": "1b7f3e3149f2db8735403bb44ef849ee865063300e01dd5f188551dfaf2ea5cf",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus description: author gives permission only to backport to LE ('You have my permission')"
   },
   {
    "id": "ships-and-boats-of-tamriel",
@@ -1806,7 +2211,12 @@
    "chunk": "2.8",
    "required": true,
    "profile": "play",
-   "sha256": "1bd5c3fac0d5c032ee0efbc085f0b2b9fec68bd0f44c4ec7b08be81926bddbaa"
+   "sha256": "1bd5c3fac0d5c032ee0efbc085f0b2b9fec68bd0f44c4ec7b08be81926bddbaa",
+   "licence": "Author terms on page: free for non-profit mods with credit",
+   "permission_summary": "Free to use in not-for-profit Skyrim mods with credit and no financial gain; depending is fine, and our free mod may use it with credit, but the page says nothing on AI or conversion.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus description Permissions: 'for anybody to use for their own not-for-profit Skyrim and SkyrimSE mods ... credit me'; no use for financial gain"
   },
   {
    "id": "depths-of-skyrim",
@@ -1825,7 +2235,12 @@
    "chunk": "2.W2",
    "required": true,
    "profile": "play",
-   "sha256": "45256b8e537d48e12f1b9ae81512b6005478b86fb328e0dcdee3a2684ec2acd8"
+   "sha256": "45256b8e537d48e12f1b9ae81512b6005478b86fb328e0dcdee3a2684ec2acd8",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
   },
   {
    "id": "sirenroot",
@@ -1844,7 +2259,12 @@
    "chunk": "0.4",
    "required": true,
    "profile": "play",
-   "sha256": "c1ba1454928262e37fb2c01d75aefbc492c75964df65cc253cfdd75e5948578b"
+   "sha256": "c1ba1454928262e37fb2c01d75aefbc492c75964df65cc253cfdd75e5948578b",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
   },
   {
    "id": "sailboats-expanded-update",
@@ -1863,7 +2283,12 @@
    "chunk": "2.8",
    "required": true,
    "profile": "play",
-   "sha256": "a1784ac8687e914871612c23169566ef58b687396ce02e9d4764cd6c51241544"
+   "sha256": "a1784ac8687e914871612c23169566ef58b687396ce02e9d4764cd6c51241544",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read 2026-10-29 (lane 0.2): no permission or AI text found"
   },
   {
    "id": "sailboats-expanded",
@@ -1882,7 +2307,12 @@
    "chunk": "2.8",
    "required": true,
    "profile": "play",
-   "sha256": "2e2919e5ff6b2d66cc4055efd305db11e5e920f465e95bf09b513e0892642d82"
+   "sha256": "2e2919e5ff6b2d66cc4055efd305db11e5e920f465e95bf09b513e0892642d82",
+   "licence": "Nexus permissions box (via register): no re-upload, no conversion, asset use needs permission",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission. Register says asset-use permission is not on file.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus description read; sourcing-register source.sailboats-expanded: Nexus box paraphrase no re-upload, no conversion to other games, asset use only with permission; some assets belong to other authors"
   },
   {
    "id": "boats-operational",
@@ -1904,7 +2334,12 @@
    "sha256": "07f7ebace706d0f8f169f5bc1b76435f297aa9631a3962a2781aa93e6ef64583",
    "drop": [
     "sskboat - extendedferrytravel.esp"
-   ]
+   ],
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; page credits Vicn and DeviantKaled permission to its own author only"
   },
   {
    "id": "bmv",
@@ -1930,7 +2365,12 @@
     "black marsh north.esp",
     "lodsettings*"
    ],
-   "note": "the vault part holds the ModDB download as Data1.rar and Data2.rar; Black Marsh.esm is laid for its records and assets, its worldspace is never lifted (0006); Valenwood and Black Marsh North are left out"
+   "note": "the vault part holds the ModDB download as Data1.rar and Data2.rar; Black Marsh.esm is laid for its records and assets, its worldspace is never lifted (0006); Valenwood and Black Marsh North are left out",
+   "licence": "none stated",
+   "permission_summary": "ModDB page states no permissions and no credits, and bundles third-party resources; the audit records it as 'available for this project', but using its contents in our mod without the author's written grant is unconfirmed.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "assets-creatures.md line 130 (ModDB page states no permissions or credits); audit-world.md line 53 ('available for this project')"
   },
   {
    "id": "tropical-skyrim-le",
@@ -1949,7 +2389,12 @@
    "chunk": "0.4",
    "required": false,
    "profile": "pipeline",
-   "sha256": "563649269c353bb2162461ee8cac69a04ffb3afebf01045ef9ab412bfdd17d7f"
+   "sha256": "563649269c353bb2162461ee8cac69a04ffb3afebf01045ef9ab412bfdd17d7f",
+   "licence": "Author permission required (Nexus description Licensing/Legal)",
+   "permission_summary": "The page requires contacting the author for permission before using its contents in another mod or re-uploading; a pure player-download dependency is not covered, but our generated plugin placing its trees is using its contents, so ask.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus description Licensing/Legal: 'you MUST contact me and obtain permission before uploading this mod to other sites or using its contents in your own mod'; assets-creatures.md line 129"
   },
   {
    "id": "hoddminir",
@@ -1968,7 +2413,12 @@
    "chunk": "0.4",
    "required": false,
    "profile": "pipeline",
-   "sha256": "2cb202c4928069d49bf6050b3a38d3d2e1d7d8f7e2ae26c891f381b4892295dc"
+   "sha256": "2cb202c4928069d49bf6050b3a38d3d2e1d7d8f7e2ae26c891f381b4892295dc",
+   "licence": "none formal; resource pack, no pay-for-mods",
+   "permission_summary": "Described as a resource others may use in their own mods and retexture, but not in pay-for-mods; depending on the download is fine, and permission to place it in our generated plugin is implied but unwritten as a licence.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus description: resource pack 'you can use yourself', 'Feel free to change any texture', models not for pay-for-mods"
   },
   {
    "id": "darkwater-den",
@@ -1987,7 +2437,12 @@
    "chunk": "0.4",
    "required": false,
    "profile": "pipeline",
-   "sha256": "60a2ec29e6348b136c4840fdfb9fdf1e7a3b338cced03a41110bcc27d0a9c390"
+   "sha256": "60a2ec29e6348b136c4840fdfb9fdf1e7a3b338cced03a41110bcc27d0a9c390",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; credits many third-party resource authors"
   },
   {
    "id": "ayleid-building-kit",
@@ -2006,7 +2461,12 @@
    "chunk": "0.4",
    "required": false,
    "profile": "pipeline",
-   "sha256": "5f465b70c2f04ccaa780f693dbe1a9da55cc572aea058d7b8f49ac1ebd75c3d2"
+   "sha256": "5f465b70c2f04ccaa780f693dbe1a9da55cc572aea058d7b8f49ac1ebd75c3d2",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus description: modder's resource made with credited permission from Varlaisaran; no stated terms to us"
   },
   {
    "id": "script-free-ship-sailing",
@@ -2025,7 +2485,12 @@
    "chunk": "2.8",
    "required": false,
    "profile": "pipeline",
-   "sha256": "f13d0875fcc258bfa4f3b9ab1acf105d744159b8bae7074584a8e91dc18237e6"
+   "sha256": "f13d0875fcc258bfa4f3b9ab1acf105d744159b8bae7074584a8e91dc18237e6",
+   "licence": "Nexus permissions box (via register): no re-upload; asset use needs permission",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission. The register's note says asset-use permission is not on file.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus description read; sourcing-register source.sfss-canoe: Nexus box paraphrase says no re-upload, asset use and modification only with author's permission, canoe needs FrankFamily's permission"
   },
   {
    "id": "solitude-ferry",
@@ -2044,7 +2509,12 @@
    "chunk": "2.8",
    "required": false,
    "profile": "pipeline",
-   "sha256": "890c1d0fd0f909d4c67ab95cfc882da72c1d5010b25463165de4f7e4fc2764d5"
+   "sha256": "890c1d0fd0f909d4c67ab95cfc882da72c1d5010b25463165de4f7e4fc2764d5",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus description: 'If anyone knows how and wants to convert ferry for SE, go right ahead'; no other terms"
   },
   {
    "id": "cyrodiil-ships",
@@ -2063,7 +2533,12 @@
    "chunk": "2.8",
    "required": false,
    "profile": "pipeline",
-   "sha256": "aca684ec9ef1a7825e17785f4ff119a7ae16bf1399f829074db78de9d04a3f29"
+   "sha256": "aca684ec9ef1a7825e17785f4ff119a7ae16bf1399f829074db78de9d04a3f29",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; Beyond Skyrim resource, all assets by Markus Liberty"
   },
   {
    "id": "skylink-ai",
@@ -2082,7 +2557,12 @@
    "chunk": "0.3",
    "required": true,
    "profile": "dev",
-   "sha256": "2d7538f2f9954a93e7a1f94b3d9a2ef196c1fc9b59dd8955c96279abcfe01c2e"
+   "sha256": "2d7538f2f9954a93e7a1f94b3d9a2ef196c1fc9b59dd8955c96279abcfe01c2e",
+   "licence": "none (github jarvann/SkryimMCM has no licence file)",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "gh jarvann/SkryimMCM licence none; Nexus text only describes it as an AI-assistant MCP plugin, no AI-use clause on terms; reuse-audit.md line 224"
   },
   {
    "id": "housecarl",
@@ -2103,7 +2583,12 @@
    "profile": "dev",
    "sha256": "1cb9fda834590d367e9907c35e5053624be050c316424d1f917f74e004c4816c",
    "install": "tool",
-   "note": "a Windows MCP server (.NET 10, Mutagen) reading the MO2 instance C:\\argonia\\MO2; laid under tools, never into Data"
+   "note": "a Windows MCP server (.NET 10, Mutagen) reading the MO2 instance C:\\argonia\\MO2; laid under tools, never into Data",
+   "licence": "GPL-3.0-only (github Avick3110/houseCARL)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0-only governs",
+   "permission_ask": false,
+   "permission_evidence": "Nexus description: 'GPL-3.0-only, as required by Mutagen'; gh licence GPL-3.0"
   }
  ]
 }
