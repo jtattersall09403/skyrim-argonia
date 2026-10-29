@@ -109,17 +109,32 @@ def apply():
             "session_duration": "720h"}
     pid = cf("PUT", f"/accounts/{ACCT}/access/policies/{pol['id']}", body)["id"] if pol \
         else cf("POST", f"/accounts/{ACCT}/access/policies", body)["id"]
+    # The play switch reads the machine's heartbeat (/argonia-metrics/activity) on its schedule, with no person
+    # signed in: an Access service token, allowed on play. only. Its secret is shown once and kept in secrets.env.
+    tokens = cf("GET", f"/accounts/{ACCT}/access/service_tokens")
+    tok = next((x for x in tokens if x["name"] == "argonia-heartbeat"), None)
+    if not tok or "CF_HEARTBEAT_ID" not in secrets():
+        if tok:
+            cf("DELETE", f"/accounts/{ACCT}/access/service_tokens/{tok['id']}")
+        tok = cf("POST", f"/accounts/{ACCT}/access/service_tokens", {"name": "argonia-heartbeat", "duration": "8760h"})
+        save_secret("CF_HEARTBEAT_ID", tok["client_id"])
+        save_secret("CF_HEARTBEAT_SECRET", tok["client_secret"])
+    hb = next((p for p in policies if p["name"] == "argonia-heartbeat"), None)
+    body = {"name": "argonia-heartbeat", "decision": "non_identity", "include": [{"service_token": {"token_id": tok["id"]}}]}
+    hbid = cf("PUT", f"/accounts/{ACCT}/access/policies/{hb['id']}", body)["id"] if hb \
+        else cf("POST", f"/accounts/{ACCT}/access/policies", body)["id"]
     apps = cf("GET", f"/accounts/{ACCT}/access/apps")
     for prefix in ROUTES:
         host = f"{prefix}.{DOMAIN}"
         app = next((a for a in apps if a.get("domain") == host), None)
+        allow = [{"id": pid, "precedence": 1}] + ([{"id": hbid, "precedence": 2}] if prefix == "play" else [])
         body = {"name": f"argonia {prefix}", "domain": host, "type": "self_hosted", "session_duration": "720h",
-                "policies": [{"id": pid, "precedence": 1}], "app_launcher_visible": False}
+                "policies": allow, "app_launcher_visible": False}
         if app:
             cf("PUT", f"/accounts/{ACCT}/access/apps/{app['id']}", body)
         else:
             cf("POST", f"/accounts/{ACCT}/access/apps", body)
-    print("access: only the owner's email may sign in, sessions last 30 days")
+    print("access: only the owner's email may sign in, sessions last 30 days; the heartbeat token reads play.")
 
 
 NIGHT_STOP = "0 3 * * *"  # 03:00 UTC: 03:00 UK in winter, 04:00 in summer
@@ -134,7 +149,10 @@ def worker():
         {"type": "plain_text", "name": "NIGHT_STOP", "text": NIGHT_STOP},
         {"type": "secret_text", "name": "CF_TOKEN", "text": env["CLOUDFLARE_API_TOKEN"]},
         {"type": "plain_text", "name": "CF_ZONE", "text": zone_id()},
-        {"type": "plain_text", "name": "HOST_NAME", "text": f"{HOST_RECORD}.{DOMAIN}"}]}
+        {"type": "plain_text", "name": "HOST_NAME", "text": f"{HOST_RECORD}.{DOMAIN}"},
+        {"type": "secret_text", "name": "CF_ACCESS_ID", "text": env["CF_HEARTBEAT_ID"]},
+        {"type": "secret_text", "name": "CF_ACCESS_SECRET", "text": env["CF_HEARTBEAT_SECRET"]},
+        {"type": "plain_text", "name": "ACTIVITY_URL", "text": f"https://play.{DOMAIN}/argonia-metrics/activity"}]}
     b = uuid.uuid4().hex
     body = (f"--{b}\r\nContent-Disposition: form-data; name=\"metadata\"\r\nContent-Type: application/json\r\n\r\n"
             f"{json.dumps(meta)}\r\n--{b}\r\nContent-Disposition: form-data; name=\"play-switch.js\"; "
@@ -148,14 +166,14 @@ def worker():
     except urllib.error.HTTPError as e:
         raise SystemExit(f"worker upload: {e.code} {e.read().decode()[:400]}")
     cf("PUT", f"/accounts/{ACCT}/workers/scripts/argonia-play-switch/schedules",
-       [{"cron": "*/30 * * * *"}, {"cron": NIGHT_STOP}])
+       [{"cron": "*/10 * * * *"}, {"cron": NIGHT_STOP}])
     zid = zone_id()
     have = {r["pattern"] for r in cf("GET", f"/zones/{zid}/workers/routes")}
     for prefix in ("play", "dcv"):
         pattern = f"{prefix}.{DOMAIN}/*"
         if pattern not in have:
             cf("POST", f"/zones/{zid}/workers/routes", {"pattern": pattern, "script": "argonia-play-switch"})
-    print("play switch deployed on", ", ".join(f"{p}.{DOMAIN}" for p in ROUTES), "with schedules every 30 min and", NIGHT_STOP)
+    print("play switch deployed on", ", ".join(f"{p}.{DOMAIN}" for p in ROUTES), "with schedules every 10 min and", NIGHT_STOP)
 
 
 if __name__ == "__main__":

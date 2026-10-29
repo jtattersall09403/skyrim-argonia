@@ -14,6 +14,11 @@ if ($act.streaming) { $why += "stream ($(($act.clients + "$($act.outKbps) kbps")
 if ($tcp | ? { $_.LocalPort -eq 22 }) { $why += 'agent ssh' }
 if ((Test-Path "$State\busy") -and ((Get-Item "$State\busy").LastWriteTime -gt (Get-Date).AddMinutes(-$IdleMinutes))) { $why += 'agent job' }
 $now = Get-Date
+# The heartbeat the play switch reads through the tunnel (/argonia-metrics/activity): if it goes stale, the
+# Worker stops the machine (Windows hung, or this task broken). It replaces the traffic alarm, which counted
+# quiet minutes from before a stop and stopped the next start within minutes (2026-10-29).
+@{ utc = $now.ToUniversalTime().ToString('o'); active = [bool]$why; why = $why } | ConvertTo-Json -Compress |
+  Set-Content "$State\activity.json" -Encoding ASCII
 if ($why) {
   Set-Content "$State\last-active" $now.ToString('o')
   if ($Status) { "active: $($why -join ', ')" }

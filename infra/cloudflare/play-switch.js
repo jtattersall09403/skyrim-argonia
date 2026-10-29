@@ -2,15 +2,27 @@
 // - Machine on: requests pass straight through the tunnel to the stream pages.
 // - Machine off (the tunnel answers 530): the Worker starts argonia-play and shows a page that reloads into the
 //   stream once it is up. /argonia/stop stops it; /argonia/status reports it.
-// - Cost backstops, independent of the machine (scheduled): stop it if it has run longer than MAX_HOURS, and
-//   stop it every night at the NIGHT_STOP cron.
+// - Cost backstops, independent of the machine (scheduled every 10 min): stop it if it has run longer than
+//   MAX_HOURS, if its heartbeat (idle-stop.ps1, served at /argonia-metrics/activity) has been missing or stale for
+//   STALE_MINUTES while it has been up that long (Windows hung, or idle-stop broken), and every night at the
+//   NIGHT_STOP cron. Idle with a live heartbeat is the machine's own idle-stop's job.
 // Secrets (Worker bindings): AWS_KEY_ID, AWS_SECRET (an IAM user allowed only to describe, start and stop
 // Name=argonia-play); CF_TOKEN, CF_ZONE, HOST_NAME keep host.<domain> (DNS only) on the machine's public IP for
-// the Moonlight app, whose address changes at every start. Deployed by infra/gpu-box/cloudflare_gate.py worker.
+// the Moonlight app, whose address changes at every start; CF_ACCESS_ID, CF_ACCESS_SECRET (an Access service
+// token) let the heartbeat read pass the sign-in gate. Deployed by infra/gpu-box/cloudflare_gate.py worker.
 
 const REGION = "eu-west-2"
 const NAME = "argonia-play"
 const MAX_HOURS = 8
+const STALE_MINUTES = 30
+
+/** Stop for a dead heartbeat? Only once the machine has been up STALE_MINUTES, so a boot is never cut short, and
+ *  only on time since this start: the old traffic alarm counted quiet minutes from before a stop. */
+export function heartbeatStop(launchedMs, nowMs, beatUtc) {
+  if (!launchedMs || nowMs - launchedMs < STALE_MINUTES * 60e3) return false
+  const beat = beatUtc ? Date.parse(beatUtc) : NaN
+  return !(beat > nowMs - STALE_MINUTES * 60e3)
+}
 
 export default {
   async fetch(request, env) {
@@ -48,8 +60,19 @@ export default {
     if (s.ip) await syncHost(env, s.ip)
     if (s.state !== "running") return
     const hours = (Date.now() - Date.parse(s.launched)) / 3.6e6
-    if (event.cron === env.NIGHT_STOP || hours > MAX_HOURS) await ec2(env, { Action: "StopInstances", "InstanceId.1": s.id })
+    const beat = await heartbeat(env)
+    if (event.cron === env.NIGHT_STOP || hours > MAX_HOURS || heartbeatStop(Date.parse(s.launched), Date.now(), beat?.utc))
+      await ec2(env, { Action: "StopInstances", "InstanceId.1": s.id })
   },
+}
+
+// The machine's heartbeat through the tunnel, past Access with the service token; null if it does not answer.
+async function heartbeat(env) {
+  if (!env.CF_ACCESS_ID || !env.ACTIVITY_URL) return { utc: new Date().toISOString() }   // not configured: never stop on it
+  try {
+    const r = await fetch(env.ACTIVITY_URL, { headers: { "CF-Access-Client-Id": env.CF_ACCESS_ID, "CF-Access-Client-Secret": env.CF_ACCESS_SECRET } })
+    return r.ok ? await r.json() : null
+  } catch { return null }
 }
 
 async function startPage(env) {

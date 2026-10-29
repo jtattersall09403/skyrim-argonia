@@ -15,6 +15,7 @@ static class Collector
 {
     const string Root = @"C:\argonia\logs\stream-metrics";
     const string Geometry = @"C:\argonia\logs\marker\geometry.json";
+    const string Activity = @"C:\argonia\state\activity.json";   // idle-stop.ps1's heartbeat
     const int MaxBody = 4 * 1024 * 1024;
     const int MaxLine = 64 * 1024;
     static long lines;
@@ -68,6 +69,12 @@ static class Collector
         if (q.HttpMethod == "GET" && sub == "/health")
         {
             Reply(ctx.Response, 200, "application/json", "{\"ok\":true,\"lines\":" + lines + ",\"utc\":\"" + DateTime.UtcNow.ToString("o") + "\"}");
+            return;
+        }
+        if (q.HttpMethod == "GET" && sub == "/activity")   // idle-stop.ps1's heartbeat, for the play switch
+        {
+            if (File.Exists(Activity)) Reply(ctx.Response, 200, "application/json", File.ReadAllText(Activity).Trim());
+            else Reply(ctx.Response, 404, "application/json", "{\"error\":\"no heartbeat yet\"}");
             return;
         }
         if (q.HttpMethod == "GET" && sub == "/marker")

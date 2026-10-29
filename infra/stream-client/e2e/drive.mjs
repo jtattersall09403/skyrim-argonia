@@ -24,6 +24,16 @@ const log = (...a) => console.log(new Date().toISOString().slice(11, 19), ...a)
 const wait = (ms) => new Promise((r) => setTimeout(r, ms))
 
 const ip = execFileSync(path.join(here, "../../gpu-box/run.sh"), ["ip"], { encoding: "utf8" }).trim()
+// Never cut into the owner's session: a drive restarts the game and takes Sunshine's one stream. Stop if anyone
+// is streaming (Sunshine, DCV or traffic; stream-activity.ps1), unless ARGONIA_FORCE=1.
+if (!process.env.ARGONIA_FORCE) {
+    const act = JSON.parse(execFileSync(path.join(here, "../../gpu-box/run.sh"),
+        ["ps", ". C:\\argonia\\infra\\stream-activity.ps1; Get-StreamActivity | ConvertTo-Json -Compress"], { encoding: "utf8" }).trim())
+    if (act.streaming) {
+        console.log(`someone is streaming (${(act.clients ?? []).join(", ") || "traffic"}, ${act.outKbps} kbps): not driving; ARGONIA_FORCE=1 overrides`)
+        process.exit(3)
+    }
+}
 const fwd = spawn("ssh", ["-i", path.join(os.homedir(), ".argonia/keys/argonia-play"), "-o", "BatchMode=yes", "-o", "ExitOnForwardFailure=yes", "-N",
     "-L", "18081:127.0.0.1:8080", "-L", "18091:127.0.0.1:8091", `Administrator@${ip}`], { stdio: "inherit" })
 let gate, browser
