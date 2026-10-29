@@ -121,8 +121,10 @@ def term_arity(w) -> list[str]:
     shapes = {r["id"]: (r["kind"], arity(r["args"]) if r["kind"] != "combinator" else (0, 0))
               for r in w.query("SELECT id, kind, args FROM condition_term")}
     out = []
-    for r in w.query("SELECT c.id, c.term, (SELECT count(*) FROM condition_arg a WHERE a.condition_id = c.id), "
-                     "(SELECT count(*) FROM condition k WHERE k.parent_id = c.id) FROM condition c ORDER BY c.id"):
+    for r in w.query("SELECT c.id, c.term, coalesce(a.n, 0), coalesce(k.n, 0) FROM condition c "
+                     "LEFT JOIN (SELECT condition_id, count(*) n FROM condition_arg GROUP BY 1) a ON a.condition_id = c.id "
+                     "LEFT JOIN (SELECT parent_id, count(*) n FROM condition WHERE parent_id IS NOT NULL GROUP BY 1) k "
+                     "ON k.parent_id = c.id ORDER BY c.id"):
         cid, term, n, kids = r
         kind, (lo, hi) = shapes[term]
         if kind == "action":
@@ -133,8 +135,9 @@ def term_arity(w) -> list[str]:
             out.append(f"condition {cid}: {term} has {kids} child condition(s)")
         if kind != "combinator" and kids:
             out.append(f"condition {cid}: predicate {term} has {kids} child condition(s)")
-    for r in w.query("SELECT a.list_id, a.ord, a.term, (SELECT count(*) FROM action_arg x WHERE x.list_id = a.list_id "
-                     "AND x.ord = a.ord) FROM action a ORDER BY 1, 2"):
+    for r in w.query("SELECT a.list_id, a.ord, a.term, coalesce(x.n, 0) FROM action a LEFT JOIN "
+                     "(SELECT list_id, ord, count(*) n FROM action_arg GROUP BY 1, 2) x "
+                     "ON x.list_id = a.list_id AND x.ord = a.ord ORDER BY 1, 2"):
         lid, ord_, term, n = r
         kind, (lo, hi) = shapes[term]
         if kind != "action":

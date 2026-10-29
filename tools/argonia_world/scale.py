@@ -2,9 +2,10 @@
 """The scale measurement (decision 0030 §7): the world with every table duplicated N-fold, for timing the load and
 the gate outside the default gate.
 
-Every row is copied N-1 times with each key suffixed `~k`: every TEXT primary-key column and every TEXT column
+Every row (but the vocabularies': lookups and condition_term, copied once) is copied N-1 times with each key suffixed `~k`: every TEXT primary-key column and every TEXT column
 that is a foreign key (to a table's key, so the copies reference each other's copies). Other columns are copied
-as they are; an INTEGER column under a UNIQUE constraint (formid's form_id) is offset per copy. The result is a
+as they are; an INTEGER column under a UNIQUE constraint (formid's form_id), is offset per copy; a
+table keyed by integers only (a raster's cells, a root list) is copied once. The result is a
 world root a tool can be pointed at:
 
     python3 -m tools.argonia_world.scale --factor 10 --out out/scale
@@ -22,13 +23,13 @@ from pathlib import Path
 from tools.argonia_world import db
 
 
-def unique_int_columns(w, table: str) -> set[str]:
+def unique_columns(w, table: str) -> set[str]:
     out = set()
     for idx in w.con.execute(f'PRAGMA index_list("{table}")'):
         if idx[2] and idx[3] == "u":
             cols = [r[2] for r in w.con.execute(f'PRAGMA index_info("{idx[1]}")')]
             t = w.table(table)
-            out |= {c.name for c in t.columns if c.name in cols and c.type == "INTEGER"}
+            out |= {c.name for c in t.columns if c.name in cols and c.type in ("INTEGER", "TEXT")}
     return out
 
 
@@ -44,15 +45,29 @@ def main(argv=None) -> int:
         f.unlink()
     (root / db.SCHEMA).write_text((db.REPO / db.SCHEMA).read_text(encoding="utf-8"), encoding="utf-8")
     rows = 0
+    # Vocabularies do not grow with the world: the lookups (id, about) and the condition vocabulary are copied once
+    # and every copy references them unchanged.
+    vocab = {n for n, t in w.tables.items() if t.names == ["id", "about"]} | {"condition_term"}
     for name, t in w.tables.items():
-        keyed = {c.name for c in t.columns if c.type == "TEXT" and c.name in t.pk}
-        keyed |= {col for col, _, _ in t.fks if next(c for c in t.columns if c.name == col).type in ("TEXT", "")}
-        uniq = unique_int_columns(w, name) - set(t.pk)
+        if name in vocab:
+            keyed, factor = set(), 1
+        else:
+            to_vocab = {col for col, parent, _ in t.fks if parent in vocab}
+            keyed = {c.name for c in t.columns if c.type == "TEXT" and c.name in t.pk} - to_vocab
+            factor = a.factor
+            keyed |= {col for col, parent, _ in t.fks if parent not in vocab
+                      and next(c for c in t.columns if c.name == col).type in ("TEXT", "")}
+        uq = unique_columns(w, name) - set(t.pk)
+        if factor > 1:
+            keyed |= {c.name for c in t.columns if c.name in uq and c.type == "TEXT"} - to_vocab
+        uniq = {c.name for c in t.columns if c.name in uq and c.type == "INTEGER"}
+        if t.pk and not keyed & set(t.pk):   # a key of integers only (a raster's cells, a root list): copied once
+            factor = 1
         cols = t.names
         with (root / db.DB_DIR / f"{name}.jsonl").open("w", encoding="utf-8") as fh:
             for r in w.con.execute(f'SELECT {", ".join(chr(34) + c + chr(34) for c in cols)} FROM "{name}"'):
                 base = dict(zip(cols, r))
-                for k in range(a.factor):
+                for k in range(factor):
                     row = {}
                     for c, v in base.items():
                         if v is None:
