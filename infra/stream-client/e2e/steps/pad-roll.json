@@ -1,3 +1,3 @@
 [{"wait": 50000}, {"probe": "__fakePad.press(0, 250)"}, {"wait": 2500}, {"probe": "__fakePad.press(0, 250)"}, {"wait": 2500}, {"probe": "__fakePad.press(0, 250)"}, {"wait": 40000},
- {"probe": "__fakePad.axis(0, -1)"}, {"wait": 1200}, {"probe": "__fakePad.press(1, 150)"}, {"shots": ["roll", 6, 100]},
- {"probe": "__fakePad.axis(0, 0)"}, {"wait": 1500}, {"probe": "__fakePad.press(5, 150)"}, {"shots": ["r1", 4, 150]}]
+ {"shot": "roll-before"}, {"probe": "__fakePad.axis(1, -1)"}, {"wait": 1200}, {"shot": "roll-walk"}, {"probe": "__fakePad.press(1, 120)"}, {"shots": ["roll", 8, 80]},
+ {"probe": "__fakePad.axis(1, 0)"}, {"wait": 1500}, {"probe": "__fakePad.press(2, 150)"}, {"wait": 2000}, {"probe": "__fakePad.axis(0, 1)"}, {"wait": 600}, {"probe": "__fakePad.press(1, 120)"}, {"shots": ["drawn", 8, 80]}, {"probe": "__fakePad.axis(0, 0)"}]

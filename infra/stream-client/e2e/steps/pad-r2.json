@@ -1,0 +1,2 @@
+[{"wait": 50000}, {"probe": "__fakePad.press(0, 250)"}, {"wait": 2500}, {"probe": "__fakePad.press(0, 250)"}, {"wait": 2500}, {"probe": "__fakePad.press(0, 250)"}, {"wait": 40000},
+ {"probe": "__fakePad.press(2, 150)"}, {"wait": 2500}, {"shot": "r2-before"}, {"probe": "__fakePad.press(7, 120)"}, {"shots": ["r2", 8, 100]}]
