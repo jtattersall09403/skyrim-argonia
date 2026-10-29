@@ -7,7 +7,7 @@ Status: `todo`, `in progress (lane)`, `done (commit)`, `blocked (why)`, `dropped
 | Part | Chunk | Title | Status |
 |---|---|---|---|
 | 0 | 0.0 | Can it be played? Vanilla Skyrim streamed, touch and GameSir controls, a feel probe (G0) | in progress (planner: waiting on the owner's play session; hand-off in the brief) |
-| 0 | 0.1 | Bootstrap: repo, ways of working, lean toolchain, import | done (2026-10-29; see the brief's Outcome; the R2 arrays and LICENSE wait on owner calls in #11) |
+| 0 | 0.1 | Bootstrap: repo, ways of working, lean toolchain, import | done (2026-10-29; see the brief's Outcome; the owner answered #11 the same day and the arrays are pulled) |
 | 0 | 0.2 | The GPU box and the go/no-go spikes | todo |
 | 0 | 0.2 G1 | SKSE from Linux + bridge under Proton | todo |
 | 0 | 0.2 G2 | Streaming, performance and measured latency | todo |
@@ -24,7 +24,7 @@ Status: `todo`, `in progress (lane)`, `done (commit)`, `blocked (why)`, `dropped
 | 0 | 0.4 | The bridge, the studio and the two runners | todo |
 | 0 | 0.5 | The record pipeline, the quarantine and the immersion inventory | todo |
 | 1 | 1.1 | The game-state seam | todo |
-| 1 | 1.2 | The UI, stage one: Pelagiad, the paper theme, the dialogue window and the journal | todo |
+| 1 | 1.2 | The UI, stage one: Pelagiad, the paper theme, the dialogue window, the journal, our HUD and the chart | todo |
 | 1 | 1.3 | Talk and carry, on the sheet | todo |
 | 1 | 1.4 | One quest through the journal | todo |
 | 1 | 1.5 | Grow, die, rest, save | todo |

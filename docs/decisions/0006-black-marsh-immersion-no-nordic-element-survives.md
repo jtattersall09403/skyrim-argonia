@@ -49,9 +49,11 @@ of UI and art elements, an agentic approach that covers everything 100%; Fal all
    base-Skyrim asset: wherever a generator or builder would pick a vanilla Skyrim tree, plant, grass, rock,
    landscape texture, ground cover, weather texture or other base asset, it picks Tropical Skyrim's
    replacement or addition instead. A vanilla asset is used only where Tropical Skyrim has no equivalent, and
-   then only with a `keep` verdict in the inventory. Asset selection order: Black Marsh–specific mods (Black
-   Marsh & Valenwood, Xanmeer, King of the Murkmire, Sign of Cipactli…) → **Tropical Skyrim** → other permitted
-   mods → vanilla Skyrim. Because Tropical Skyrim replaces vanilla files in place, it also removes many Nordic
+   then only with a `keep` verdict in the inventory. Asset selection order (rewritten by [0028](0028-the-land-is-tropical-skyrim-through-skyrims-own-systems.md),
+   owner 2026-10-29): **for the land** (terrain textures, grass, trees, shrubs, rocks, scatter, weather, sky)
+   Tropical Skyrim → vanilla forms Tropical Skyrim replaces, nothing else; **for buildings, props and creatures**
+   Black Marsh–specific mods (Black Marsh & Valenwood, Xanmeer, King of the Murkmire, Sign of Cipactli…) →
+   Tropical Skyrim → other permitted mods → vanilla Skyrim. Because Tropical Skyrim replaces vanilla files in place, it also removes many Nordic
    tells at source; the inventory still checks each one. Permissions: the original requires contacting Soolie,
    and it bundles GKB, Muppetpuppet, Tamira, Birds of Skyrim and lookout21 assets with their own terms; the SSE
    port's author is asked too (O-5).

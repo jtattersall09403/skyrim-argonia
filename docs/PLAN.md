@@ -138,10 +138,10 @@ column is Part 1's thread; "whole" is the chunk that completes it.
 | Rivers, lakes, waterfalls, sea | hydrology graph, 0064 waterfalls vanilla kit | 1 (+5 if needed) | vanilla water records/meshes | water planner | 2.W2 (its first step is the stepped-river proof) |
 | Navmesh | the world's own collision (0026 §4) | 1 (+CK check and fallback) | DotRecast + Mutagen; tes4skyrim as the binary spec | navmesh job | 0.2 G4 → 2.W4 |
 | LOD, distant terrain, the map image | — | 1 | xLODGen, DynDOLOD (on the game machine) | lod job | 2.W4 |
-| Regions, weather, climate, sky | climate/weather-states, star catalogue | 1 | — | ArgoniaGen | 2.W3 |
+| Regions, weather, climate, sky | climate/weather-states, star catalogue; 0028 | 1 | Tropical Skyrim's weathers; Community Shaders | ArgoniaGen (REGN, WTHR, CLMT) | 2.W3 |
 | Roads, routes, the route graph | routes/*.json | 1 | — | route generator | 2.W3 |
 | Places, interiors, doors | blueprints, 0114 interior manifest | 1 | BM&V, Xanmeer, KotM, others; **Tropical Skyrim SSE** for any base-Skyrim asset | piece resolver, `world-builder`, rebuilt natively (0026) | 0.2 G4 → 2.W5 → 4.2, 4.4 |
-| Vegetation | flora rules, groundcover rules | 1 | BM&V, **Tropical Skyrim SSE (78044)** (0006 §8) | scatter converter | 2.W4 |
+| Vegetation | flora rules as region object lists (0028) | 1 | **Tropical Skyrim SSE (78044)** over the vanilla forms; the CK's region generator | region records; the generator job | 2.W3 → 2.W4 |
 | The studio, scenes, the two runners | old 0149, 0155, 0156 | 5 + 6 | PrismaUI | ArgoniaBridge, ArgoniaStudio, `tools/run_journey.py` | 0.4 |
 | Game state, co-save, message schema, menu router | old 2.1 seam | 5 | — | ArgoniaCore | 1.1 |
 | Where each rule lives | the goals list (old designs as goals, 0026) | 1 → 5 | Skyrim's native systems, tes4skyrim's runtimes, PLAN §4 mods | the native map, `skse/core/` for what is left | 0.2 G10 → 1.1 |
@@ -169,7 +169,7 @@ column is Part 1's thread; "whole" is the chunk that completes it.
 | Enemy AI, bosses | DSR AI shape, 0142 | 2 + 5 | SCAR, CPR and Modern Stagger Lock (the 2026 SkyHorizon3 forks, GPL-3; the MIT originals are stale), UND, Wait Your Turn | AI config; boss phases | 2.7 → 4.3 |
 | Ranged (shoulder aim, recoverable arrows), thrown | 76 §121.1 | 1 + 2 | Skyrim archery, TDM aim, Throwable Weapons SKSE | tuning | 2.7 §i |
 | Climbing, ladders | 0152 BotW | 2 (+3) | FreeClimb (GPL), SkyParkour, EVG Animated Traversal | rule tuning | 0.2 G3 (loads and runs) → 2.13 |
-| Swimming, diving, breath | 76 §122 | 1 + 2 | Underwater NG | breath formula | 0.2 G3 → 2.13 |
+| Swimming, diving, breath | 76 §122 | 1 + 2 | Swimming Extensions (189821); Underwater NG if needed | breath formula | 0.2 G3 → 2.13 |
 | Boats: sail, own, moor, recover | 0158, 0159 | 3 + 5 | Sailable Ship (modify with credit), Sailboats (pattern), Rowboats (CC BY-SA) | ArgoniaBoats | 0.2 G3 → 2.15 |
 | Marsh specials: hazards, harvests, effect arrows, materials | 0157, old registries | 1 + 4 + 5 | — | data + ArgoniaCore | 2.14 |
 | Ragdolls (nice to have) | — | 2 | XP32 True Ragdoll, Precision impulses | — | 2.7 §i |

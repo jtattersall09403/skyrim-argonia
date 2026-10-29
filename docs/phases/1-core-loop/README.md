@@ -23,9 +23,10 @@ family, the real view and the real formulas (decision 0023 §2):
 | save | rest is the only save; the suspend save; a save/load round trip of every family | 2.17 |
 | fight | the 0.0 stack wired to the sheet, the DS1 pad layout, lock-on, one archetype at fixed danger | 2.7 (the combat map) |
 
-**What is left out on purpose.** Barter (2.6); the combat map and anything built from DS1 (2.7); climbing,
-swimming and boats (proved as dependencies in 0.2 G3, built whole in 2.13 and 2.15); every UI screen beyond the
-dialogue window, the journal and the theme (2.2); magic, crafting, stealth (Part 2). A gap found here that needs
+**What is left out on purpose.** Barter (2.6); the combat map and anything built from DS1 (2.7); our rules for
+climbing, swimming and boats (the mods are in the stack from the start, owner 2026-10-29, so the player can climb,
+swim and sail at the first place as the mods ship; 2.13 and 2.15 build the rules); every UI screen beyond the
+dialogue window, the journal, our HUD, the chart and the theme (2.2); magic, crafting, stealth (Part 2). A gap found here that needs
 a whole system is noted in that system's Part 2 brief, never built now.
 
 **The world track runs beside this part.** 2.W1–2.W4 start as soon as 0.2 G4 passes and load the build VM;
@@ -40,7 +41,7 @@ Written by the agent that closes Part 0.
 | Id | Chunk | Depends on | Lane-able beside |
 |---|---|---|---|
 | 1.1 | [The game-state seam](1.1-game-state-seam.md) | Part 0 | 1.2 §a |
-| 1.2 | [The UI, stage one: Pelagiad, the paper theme, the dialogue window and the journal](1.2-ui-foundation.md) | 1.1 schema | 1.3 §a |
+| 1.2 | [The UI, stage one: Pelagiad, the paper theme, the dialogue window, the journal, our HUD and the chart](1.2-ui-foundation.md) | 1.1 schema | 1.3 §a |
 | 1.3 | [Talk and carry, on the sheet](1.3-talk-and-carry.md) | 1.1, 1.2 dialogue window | 1.6 (wiring draft) |
 | 1.4 | [One quest through the journal](1.4-one-quest.md) | 1.3, 1.2 journal, 0.1 §i | 1.5 |
 | 1.5 | [Grow, die, rest, save](1.5-grow-die-rest-save.md) | 1.3 | 1.4 |

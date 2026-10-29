@@ -49,7 +49,9 @@ engine that already has native systems for most of them.
      carries its own ground and is edited in place by its own layer).
    - **Buildings and props** are ordinary placed references (REFRs) of the source plugins' base records, resolved
      by mesh path from plugin data. Load doors link to their interiors (old 0114).
-   - **Trees, rocks and scatter** are placed by region rules, as the CK's region generator places them.
+   - **Trees, rocks and scatter** are placed by the CK's region generator from region records, never by hand
+     outside a place; grass follows the painted land texture by itself; the land is Tropical Skyrim's
+     ([0028](0028-the-land-is-tropical-skyrim-through-skyrims-own-systems.md)).
    - **Then navmesh (§4), then distant LOD.**
    - **The design is the specification; the old layout is a guide.** The agent rebuilds the place from its design
      note, using the old positions as a reference. It judges vantage stills against the design and fixes until

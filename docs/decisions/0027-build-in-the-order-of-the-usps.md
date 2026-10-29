@@ -80,18 +80,22 @@ window and the journal, because they are the surfaces the content is written for
    fixed danger, is Part 1's combat (1.6). The combat map, the measured DSR numbers (G6), runtime timing (G9) and
    the built rows are 2.7. 0019 is unchanged in substance: DS1's whole system stays the target and the map
    decides row by row; only when the map is made moves.
-4. **Traversal is proved in the stack smoke test** (0.2 G3: climb a wall, swim and dive, board a boat) and built
-   whole in 2.13 and 2.15. 1.6 no longer exists as a traversal chunk.
+4. **Traversal is in the base stack from the start** (owner, 2026-10-29: FreeClimb 193552, Swimming Extensions
+   189821, Sailable Ship VR and SE 72070 as the MVP boat): proved in the stack smoke test (0.2 G3: climb a wall,
+   swim and dive, board and sail a boat), usable at the first place as installed, and built to our rules in 2.13
+   and 2.15. 1.6 no longer exists as a traversal chunk.
 5. **The UI is built in two stages** ([0017](0017-one-coherent-argonian-ui-approach-chosen-with-the-owner.md)
    stands; G11 still chooses the approach with the owner, with this as the recommendation):
    - **Stage one (1.2):** Pelagiad everywhere (the font library and `fontconfig.txt`); a paper theme over the
      vanilla and SkyUI menus from an existing permissive skin family where its permissions allow (the Dear Diary
      paper menus, their Wood and Paper skin and the Oblivion-like loading menu are the candidates the owner
-     named; their permissions are checked in the reuse audit before any is depended on); the compass and quest
-     markers gone; and **our own two screens that content is written for**, the dialogue window and the journal,
-     in the chosen approach. Morrowind-style magic as a dependency (Magic Expanded, 133435) is checked here too.
+     named; the owner confirmed on 2026-10-29 that Dear Diary's permissions allow it); the compass and quest
+     markers gone; **our own dialogue window and journal** (content is written for them); and, by the owner's
+     2026-10-29 reply, **our own HUD and the parchment chart** (a sketch of the province, its roads and seven cities
+     always visible, detail revealed by exploring), in the chosen approach. Morrowind-style magic as a dependency (Magic Expanded, 133435) is checked here too.
    - **Stage two (2.2, 3.1, 3.2):** the whole design system, the Morrowind pause-menu windows (draggable,
-     resizable, remembered), the HUD, every remaining screen, chargen, the main menu.
+     resizable, remembered), every remaining screen, chargen, the main menu; it opens with the OpenMW analysis
+     (what to use or be inspired by), as the owner asked.
    The seam (1.1) makes stage two a replacement of views, never of rules. The soul contract's C10 and C11 are met
    at stage two.
 6. **Quests enter the core loop.** 1.4 writes one Claywater quest through the writing skills, generates it into

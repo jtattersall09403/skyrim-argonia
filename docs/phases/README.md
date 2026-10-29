@@ -103,7 +103,7 @@ reason.
 
 **Part 1, [The first place](1-core-loop/README.md)**, Claywater Station and the proving ground:
 - 1.1 the game-state seam;
-- 1.2 the UI, stage one: Pelagiad, the paper theme, the dialogue window and the journal;
+- 1.2 the UI, stage one: Pelagiad, the paper theme, the dialogue window, the journal, our HUD and the chart;
 - 1.3 talk and carry, on the sheet;
 - 1.4 one quest through the journal;
 - 1.5 grow, die, rest, save;

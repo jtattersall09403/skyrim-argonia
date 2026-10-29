@@ -82,6 +82,9 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | B41 | 2026-10-29: critical review of the old ways of working; adopt rtk and some agent types; the cheaper 0.0 way of working | 0027 §7–9; ways-of-working §1, §6; CLAUDE.md; `.claude/settings.json` (rtk hook); 0.1 §b |
 | B42 | 2026-10-29: Morrowind-like mods welcome (Magic Expanded 133435); permissive UI mods as a foundation (Dear Diary 23010, Wood and Paper 44174, Oblivion-like Loading Menu 38708); an easy early UI, the big overhaul later | 0027 §5; 1.2 §a; 0.2 G3, G11; the reuse audit (0.1 §j) |
 | B43 | 2026-10-29: October's AWS overspend explained; the $100 cap binds from November | 0008 note; owner-brief |
+| B44 | 2026-10-29 (#11 reply): traversal mods in the base stack from the start; Dear Diary permissive; our HUD and the parchment chart early; OpenMW analysed at stage two; licence agreed; corpus public; Nexus Premium held; R2 keys in | 0027 §4–5; 0.2 G3; 1.2 §d–e; 2.2 §a; 2.12 §b; 2.W4 §c; 0015; decisions README (O-6, O-14, O-21 struck) |
+| B46 | 2026-10-29: a light Black Marsh retheme and an "Argonia" title in stage one; a custom desktop shortcut with our icon later | 1.2 §a; 3.4 §b |
+| B45 | 2026-10-29: the land is Tropical Skyrim through Skyrim's own systems; BM&V no longer the land; author data, the engine and the CK's generators do the rest | 0028; 0006 §8; 0026 §3; 0.2 G4; 2.W1, 2.W3, 2.W4; PLAN §4 |
 | B18 | Holistic UI design; "eyes on" transitions in focused loops; no jarring vanilla screens (e.g. constellations) | 0017 §7; 2.2 §a (UI map), 2.2 (transition loop); 3.1; perk constellations hidden (2.1) |
 | B19 | Load Skyrim's own symbols (sneak eye) from the player's files | 0017 §5; 0014 §8; 1.2 |
 | B20 | Trim flourishes are the owner's ChatGPT art | 0017 §5; sourcing register |

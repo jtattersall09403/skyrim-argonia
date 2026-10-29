@@ -26,8 +26,8 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[1]
 FREEZE = REPO / "world" / "sources" / "terrain" / "freeze.json"
 BUCKET, PREFIX = "elder-souls-vault", "snapshot/v1/"
-# the parts that can hold world-generation output, searched in this order (the sidecars decide)
-CANDIDATE_PARTS = ("repo-wg-products", "vault-output", "vault-extra")
+# the live manifest lists every part and its `.files` sidecar; the frozen arrays sit in the Tamriel Worldspaces
+# mod part's argonia-heightfield folder (found 2026-10-29), but the search reads the sidecars rather than assume
 
 
 def secrets() -> dict:
@@ -44,10 +44,18 @@ def secrets() -> dict:
 
 
 def sha256_of(path: Path) -> str:
+    """The freeze record's content hash: the array's bytes for an .npy, every array of an .npz in key order
+    (so a re-save with new zip timestamps is not drift). Same rule as the old project's worldgen.freeze."""
+    import numpy as np  # in the toolchain venv
+
     h = hashlib.sha256()
-    with path.open("rb") as f:
-        for chunk in iter(lambda: f.read(1 << 20), b""):
-            h.update(chunk)
+    if path.suffix == ".npz":
+        z = np.load(path, allow_pickle=False)
+        for key in sorted(z.files):
+            h.update(key.encode("utf-8"))
+            h.update(np.ascontiguousarray(z[key]).tobytes())
+        return h.hexdigest()
+    h.update(np.ascontiguousarray(np.load(path, mmap_mode="r")).tobytes())
     return h.hexdigest()
 
 
@@ -72,25 +80,25 @@ def client(env):
 
 
 def locate(s3, names: set[str]) -> dict[str, list[str]]:
-    """part id -> the tar entry names (full paths inside the tar) that end in a wanted file name."""
+    """part object key -> the tar entry names (full paths inside the tar) that end in a wanted file name,
+    read from each part's `.files` sidecar as the live manifest lists them."""
     found: dict[str, list[str]] = {}
-    for part in CANDIDATE_PARTS:
-        try:
-            body = s3.get_object(Bucket=BUCKET, Key=f"{PREFIX}{part}.files")["Body"].read().decode()
-        except Exception:  # a part this snapshot does not have
+    manifest = json.loads(s3.get_object(Bucket=BUCKET, Key=f"{PREFIX}manifest.json")["Body"].read())
+    for part in manifest["parts"]:
+        sidecar = part.get("filesObject")
+        if not sidecar or not names:
             continue
+        body = s3.get_object(Bucket=BUCKET, Key=sidecar)["Body"].read().decode(errors="ignore")
         hits = [e for e in body.splitlines() if e.rsplit("/", 1)[-1] in names]
         if hits:
-            found[part] = hits
+            found[part["object"]] = hits
             names -= {e.rsplit("/", 1)[-1] for e in hits}
-        if not names:
-            break
     return found
 
 
 def fetch(s3, part: str, entries: list[str], data: Path, want: dict[str, str]) -> list[str]:
-    """Stream one part's tar and extract only the listed entries; return the names verified."""
-    stream = s3.get_object(Bucket=BUCKET, Key=f"{PREFIX}{part}.tar")["Body"]
+    """Stream one part's tar (by object key) and extract only the listed entries; return the names verified."""
+    stream = s3.get_object(Bucket=BUCKET, Key=part)["Body"]
     done = []
     with tarfile.open(fileobj=io.BufferedReader(stream, buffer_size=1 << 22), mode="r|") as tar:
         for member in tar:
@@ -137,7 +145,7 @@ def main() -> int:
         print(f"NOT IN VAULT {n}: no snapshot part lists it (owner call: re-derive or find the old disk)")
     got = []
     for part, entries in where.items():
-        print(f"fetching {len(entries)} file(s) from {part}.tar")
+        print(f"fetching {len(entries)} file(s) from {part}")
         got += fetch(s3, part, entries, data, want)
     left = todo - set(got)
     return 0 if not left else 1

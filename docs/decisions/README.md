@@ -33,6 +33,7 @@ Rulings inherited from elder-souls-argonia are listed (carry / adapt / drop) in
 - [0024](0024-content-is-written-from-one-source-of-truth.md) Quests, dialogue and text are written from one source of truth, through generated briefs and the quest-write, quest-review and dialogue-write skills; old written lines are not used
 - [0025](0025-a-detectives-faction.md) A detectives' faction, rival to the Shadowscales and the Night-Reed Chapter, escalating to a grand murder-mystery finale
 - [0026](0026-everything-is-built-natively-the-skyrim-way.md) Places are rebuilt natively, the Skyrim way: the old project gives content (heightfield, designs, people), never machinery; navmesh by tes4skyrim's method; whole-body NPC templates
+- [0028](0028-the-land-is-tropical-skyrim-through-skyrims-own-systems.md) The land is Tropical Skyrim through Skyrim's own systems: we author LAND, LTEX paint, regions (object and weather lists) and water; the engine does grass, weather and fog; the CK's region generator places trees, rocks and scatter once; BM&V and the Black Marsh mods are for buildings, props and creatures only
 - [0027](0027-build-in-the-order-of-the-usps.md) Build in the order of what makes Argonia worth playing: world and places, then story and people; combat rides the tuned stack until its map (2.7); the UI in two stages; the world track starts after G4; tools just in time
 
 ## Open owner calls
@@ -42,19 +43,19 @@ recommendation; the answer is recorded in the named record (or a new one) and th
 
 | Id | Call | Needed by | Recommendation |
 |---|---|---|---|
-| O-1 | Fate of the old elder-souls-argonia EC2 machine (stopped; ~$23/month for its 250 GiB disk) | 0.1 (asked 2026-10-29) | Snapshot the disk to S3, then delete the volume; keep the R2 vault |
+| O-1 | Fate of the old elder-souls-argonia EC2 machine (stopped; ~$23/month for its 250 GiB disk); the R2 keys are already copied (2026-10-29) and the frozen arrays pulled | 0.2 | Snapshot the disk to S3, then delete the volume; keep the R2 vault |
 | O-2 | Subscription: 5x now, 20x from Part 4 (or Part 2's two tracks, if measured) | 0.1, 1.7, 2.17, 4.1 | 0013 |
 | O-3 | Confirm the pinned runtime chosen in 0.2 | 0.2 end | 0002 rule |
 | O-4 | Perks: invisible engine layer only, or a visible Morrowind-flavoured perk layer merged with vastei | 2.1 (asked in 1.7) | Invisible layer (0005 C4) |
 | O-5 | Send permission requests to mod authors (drafted by agents, sent from the owner's Nexus/ModDB account): Black Marsh & Valenwood (dalecallen1987), MihailMods, Tropical Skyrim (Soolie) and its SSE port (78044), King of the Murkmire (pancake0723; AI clause), Xanmeer tileset (NorthwindBlue, DarthVitrial), Sign of Cipactli (URL unknown), Tamriel Worldspaces – Argonia (118678) | 0.3 | Send all in one batch early; build only on cleared mods |
-| O-6 | Nexus Premium (needed for scripted API downloads; otherwise each download is a manual click) | 0.2 | Use Premium for the build and GPU machines if already held; otherwise one manual download session, cached to S3/R2 |
+| ~~O-6~~ | ~~Nexus Premium~~ | — | **Answered 2026-10-29: held; the key is `NEXUS_API_KEY` in the secrets file** |
 | O-7 | Steam login on the GPU box (Steam Guard approval on the owner's phone, once) | 0.0 | Owner logs in through the stream once; then offline mode |
 | O-8 | Music source: CC-licensed, commissioned, or Fal-generated (AI clause interactions) | 2.16 | CC-licensed first, Fal for gaps |
 | O-9 | Split pauldrons/gauntlets if no sourced split meshes exist | 2.3 (asked in 1.7) | Accept paired pieces in separate slots |
 | O-10 | The opening's scope (default: the Opening Work Camp near Stormhold / Alten Corimont, as in the old main quest) | 3.3 | Default |
 | O-11 | Voice: stay unvoiced text dialogue (old 0139/0143) | 1.7 | Yes |
 | O-12 | Old repo's GitHub Pages build exposes converted assets publicly (outside this repo's scope) | any time | Owner's choice; flagged only |
-| O-14 | Repo licence (decision 0015): the recommendation is applied since 2026-10-29; confirm or change | 0.1 (asked in #11) | GPL-3.0-or-later code, CC BY-NC-SA 4.0 content |
+| ~~O-14~~ | ~~Repo licence~~ | — | **Answered 2026-10-29: the recommendation stands** (GPL-3.0-or-later code, CC BY-NC-SA 4.0 content; decision 0015) |
 | ~~O-15~~ | ~~Crossbows and thrown weapons back in~~ | — | **Answered 2026-10-27: yes** (decision 0016) |
 | O-16 | Does one rest bank one pending level or all of them (left open by old 0147) | 1.7 | One per rest (the old 76 text) |
 | O-17 | Evidence of the permissions the owner already holds (old sourcing log, 2026-09-24: "permission is held from every mod author in the pool, KotM included"): do they cover a public dependency and AI use? | 0.3 | Share the evidence; send new requests only where it falls short |
@@ -62,4 +63,4 @@ recommendation; the answer is recorded in the named record (or a new one) and th
 | O-19 | Contribute our working ports back to universal-modder's knowledge base as scrubbed field notes (decision 0020 §7) | 2.7 onward | Yes, after the owner sees each note |
 | O-13 | Public name: "Argonia" overlaps Tamriel Rebuilt's planned territory and the dormant Beyond Skyrim: Argonia; release title and Nexus wording must not imply either | 3.4 | "Elder Souls: Argonia" or similar, with a "not affiliated" line |
 | O-20 | Publish the slice as early access once the stranger's install is clean | 3.5 | Yes: real players find install problems no test machine does |
-| O-21 | Keep a private, never-committed copy of the Morrowind dialogue corpus (a UESP pull held in the old repo) as `dialogue-write`'s style models, now that Morrowind is not owned on Steam (decision 0024 §6) | 0.1 | Yes: private only, cited by id, never quoted in the repo, a brief, a report or an issue |
+| ~~O-21~~ | ~~The Morrowind dialogue corpus~~ | — | **Answered 2026-10-29: the owner rules it need not be private (it was pulled from UESP, a public site).** Applied as: the skills read it from `$ARGONIA_PRIVATE/dialogue/morrowind/` on the build VM (staged, 17 topic groups); it still stays out of the public repo and out of lines, briefs and issues, because the text is Bethesda's whatever site hosts it (0003); the owner may overrule that last point |
