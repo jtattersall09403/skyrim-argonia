@@ -34,6 +34,21 @@ target went in with another lane's commit `d0d7cc8`, which swept up the Makefile
 
 **Reds:** none known in the committed tree. The open edge: Claywater's islands (see below) are reported, not fixed.
 
+## Province result (job `nav-province-1`, after the hand-off was written)
+
+- **The build: done.** 23 min 32 s wall time. Peak RSS was 856 MB, under the 2 GB bar. Inputs took 17 s, Recast
+  1,031 s, the stitch 270 s and the checks 94 s. It wrote 12,083 NAVM: 4,299,037 triangles, 303,494 edge links,
+  745,814 water triangles and 37,155 road triangles. Records sha256 `b90943f471c1…`.
+- **L1: RED (exit 1)**, on one check.
+  - Heights: 57 vertices over 32 units, max 46. The likely cause is seam-split interpolation in steep cells, not
+    yet diagnosed.
+  - Links: 303,494, with 0 asymmetric, 0 bad targets and 0 bad geometry.
+  - NAVI: 12,083 of 12,083, with 0 errors.
+  - Road samples on the navmesh: 98.4%.
+- **Islands:** 7,390 apart from the main component (33.3 km²), 2.36 km² in all. 1,335 are over 100 m²; the largest
+  is 1.14 km². These are reported, as the brief allows.
+- **Next step:** snap seam-split vertices to the ground, or measure them against the band, then re-run.
+
 ## Numbers
 
 - **Vanilla (Skyrim.esm, read only):** the codec decodes and re-encodes 14,447 of 14,447 NVNMs byte-identical.
