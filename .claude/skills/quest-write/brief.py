@@ -85,6 +85,11 @@ def main() -> int:
     except KeyError as e:
         print(f"{e.args[0]}; import the record first (python3 -m tools.argonia_world.quest_record import ...)")
         return 1
+    # The export leaves out a list with no rows; the record's lists are read as empty, not as a crash.
+    for k in ("cast", "things", "truth", "clues", "conclusions", "topics", "endings", "facts", "stages"):
+        q.setdefault(k, [])
+    for c in q["cast"]:
+        c.setdefault("knowledge", {})
     npcs, claims, stance, sheets, topic_rows = load_world(w, q, a.place_facts)
     preds, verbs = records.vocabulary(w)
     routing = yaml.safe_load((HERE / "shapes.yaml").read_text())

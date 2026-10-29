@@ -50,3 +50,19 @@ def test_dangling_key_refused_at_save(w):
     with pytest.raises(db.LoadError) as e:
         w.save()
     assert "npc.nobody" in str(e.value)
+
+
+def test_a_list_where_one_value_belongs_is_refused(w):
+    q = copy.deepcopy(Q.export(w, QUESTS[0]))
+    q["foundation"] = ["a", "b"]
+    errs = Q.import_record(w, q)
+    assert errs and "foundation: one value is expected" in errs[0]
+
+
+def test_a_bad_value_leaves_the_quest_as_it_was(w):
+    before = snapshot(w, QUESTS[0])
+    q = copy.deepcopy(Q.export(w, QUESTS[0]))
+    q["stages"][0]["journal"] = 1990                  # an int in a TEXT column, refused at insert
+    errs = Q.import_record(w, q)
+    assert errs and "journal" in errs[0]
+    assert snapshot(w, QUESTS[0]) == before

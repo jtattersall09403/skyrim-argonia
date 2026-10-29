@@ -69,3 +69,24 @@ def test_world_reads(tmp_path):
     (tmp_path / "tools" / "bad.py").write_text(f'p = REPO / "{w_}" / "sources" / "x.json"\nq = "{w_}/db/npc.jsonl"\n')
     (tmp_path / "tools" / "ok.md").write_text(f"read the lore (`../{w_}/sources/lore/`) and tools/argonia_{w_}/db.py\n")
     assert [h.split(":")[1] for h in check_world_reads.scan(tmp_path)] == ["1", "2"]
+
+
+def test_every_named_check_runs_on_the_real_schema(world):
+    """run() skips a check whose tables are missing (a test's small schema); on the real world none may skip, or a
+    renamed table would turn its check off with the gate still green."""
+    assert {n: t for n, (_, t) in checks.CHECKS.items() if not set(t) <= set(world.tables)} == {}
+
+
+@pytest.mark.parametrize("table,col,bad", [("stance", "voice_contraction_rate", 1.5), ("stance", "voice_chatter", "loud"),
+                                           ("stance_topic", "lean", 3), ("stance_answer_length", "max", 200)])
+def test_old_schema_ranges_are_checks(w, table, col, bad):
+    """The old JSON schemas' ranges and enums (stance.v1, culture-sheet.v1) are CHECKs in schema.sql."""
+    key = w.query(f'SELECT {", ".join(w.table(table).pk)} FROM "{table}" LIMIT 1')[0]
+    with pytest.raises(db.sqlite3.IntegrityError):
+        w.update(table, *key, **{col: bad})
+
+
+def test_stage_ids_are_unique_in_a_quest(w):
+    s = w.query("SELECT quest_id, id FROM quest_stage WHERE quest_id = 'quest.local.lh38' ORDER BY ord LIMIT 2")
+    with pytest.raises(db.sqlite3.IntegrityError):
+        w.update("quest_stage", "quest.local.lh38", 1, id=s[0]["id"])

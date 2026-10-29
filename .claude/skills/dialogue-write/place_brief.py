@@ -70,9 +70,13 @@ def main() -> int:
         return 1
     facts = records.place_facts(w, place_id)
 
-    uid = "npc-" + a.person.rsplit(".", 1)[-1]
+    slot = a.person.rsplit(".", 1)[-1]
+    # A fact names its carrier by the person's id, its roster uid (npc-<slot>) or the place's npc socket for the
+    # person's roster slot (socket.<place>.npc-<slot>, whose roster_slot_id is the slot).
+    carriers = {a.person, "npc-" + slot} | set(w.values(
+        "SELECT id FROM socket WHERE place_id = ? AND kind = 'npc' AND roster_slot_id = ?", place_id, slot))
 
-    mine = [f for f in facts if (f["carrier_built_uid"] or f["carrier_queued_ref"]) in (uid, a.person)]
+    mine = [f for f in facts if (f["carrier_built_uid"] or f["carrier_queued_ref"]) in carriers]
     seen = [f for f in facts if f["carrier_built_type"] in ("piece-set", "visual-cue")]
     v = stance["voice"]
     facs = ", ".join(me["factions"]) or "none"

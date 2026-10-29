@@ -15,6 +15,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import sqlite3
 import sys
 from pathlib import Path
 
@@ -230,9 +231,13 @@ def _flatten(out: Rows, node, obj, key: dict, path: str):
     else:
         obj_children = []
         out.errors += _unknown(obj, node, path, extra=("facts",) if t == "quest" else ())
+    poly = {tuple(ch["rel"]) for ch in node["children"]}   # a field that may also be a list (stage directions)
     for c, rel in node["fields"]:
         v = _getp(obj, rel)
-        if v is not None and not isinstance(v, (dict, list)):
+        if isinstance(v, (dict, list)):
+            if tuple(rel) not in poly:
+                out.errors.append(f"{path}.{'.'.join(rel)}: one value is expected, not a {type(v).__name__}")
+        elif v is not None:
             row[c] = v
     for c, rel in node["conds"]:
         v = _getp(obj, rel)
@@ -272,6 +277,9 @@ def to_rows(q: dict) -> Rows:
         return out
     _flatten(out, VIEW, {k: v for k, v in q.items() if k != "facts"}, {"id": q["id"]}, q["id"])
     for i, f in enumerate(q.get("facts") or []):
+        if not isinstance(f, dict):
+            out.errors.append(f"facts[{i}]: {f!r} is not a fact")
+            continue
         bad = set(f) - set(FACT_KEYS)
         if bad:
             out.errors.append(f"facts[{i}]: unknown key(s) {sorted(bad)}")
@@ -299,6 +307,20 @@ def import_record(w: db.World, q: dict) -> list[str]:
     if out.errors:
         return out.errors
     qid = q["id"]
+    w._begin()
+    w.con.execute("SAVEPOINT import_record")
+    try:
+        _replace(w, qid, out)
+    except (ValueError, KeyError, sqlite3.IntegrityError) as e:
+        # a value of the wrong type, a NOT NULL, CHECK or duplicate key: the quest's old rows come back
+        w.con.execute("ROLLBACK TO import_record")
+        w.con.execute("RELEASE import_record")
+        return [f"{qid}: {e.args[0] if e.args else e}"]
+    w.con.execute("RELEASE import_record")
+    return []
+
+
+def _replace(w: db.World, qid: str, out: Rows) -> None:
     existing = w.get("quest", qid)
     conds, lists = _owned(w, qid)
     for node in reversed(list(_tables())[1:]):
@@ -321,7 +343,6 @@ def import_record(w: db.World, q: dict) -> list[str]:
     w.insert_many("action_arg", out.aargs)
     for t, rows in out.rows.items():
         w.insert_many(t, rows)
-    return []
 
 
 def main(argv: list[str] | None = None) -> int:

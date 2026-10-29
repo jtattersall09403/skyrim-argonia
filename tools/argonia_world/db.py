@@ -24,6 +24,7 @@ import argparse
 import dataclasses
 import json
 import keyword
+import math
 import os
 import re
 import sqlite3
@@ -40,6 +41,29 @@ OUT = "out/world.sqlite"
 WORLD_ROOT = Path(os.environ.get("ARGONIA_WORLD_ROOT") or REPO).resolve()
 
 PYTYPE = {"TEXT": str, "INTEGER": int, "REAL": float, "BOOLEAN": bool, "": object}
+# PRAGMAs query() runs with an argument: introspection only (`PRAGMA foreign_keys = OFF` is a write).
+READ_PRAGMAS = {"table_info", "table_xinfo", "table_list", "index_list", "index_info", "index_xinfo",
+                "foreign_key_list", "foreign_key_check", "integrity_check", "quick_check"}
+_READ_ACTIONS = {sqlite3.SQLITE_SELECT, sqlite3.SQLITE_READ, sqlite3.SQLITE_FUNCTION, sqlite3.SQLITE_RECURSIVE}
+
+
+def _read_only(action, a1, a2, _db, _trigger):
+    if action in _READ_ACTIONS or (action == sqlite3.SQLITE_PRAGMA and (a2 is None or a1 in READ_PRAGMAS)):
+        return sqlite3.SQLITE_OK
+    return sqlite3.SQLITE_DENY
+
+
+def signature(root: Path) -> dict[str, list[int]]:
+    """Each source file's (mtime_ns, size): the schema and every table file. Taken before a load reads them, it
+    names the files the world was built from; a cache or a save compares it with the files now."""
+    out = {}
+    for p in [root / SCHEMA, *sorted((root / DB_DIR).glob("*.jsonl"))]:
+        try:
+            st = p.stat()
+        except FileNotFoundError:
+            continue
+        out[p.name] = [st.st_mtime_ns, st.st_size]
+    return out
 
 
 class LoadError(Exception):
@@ -108,10 +132,10 @@ def _check_value(col: Column, v: Any) -> Any:
         if isinstance(v, int) and not isinstance(v, bool):
             return v
     elif t == "REAL":
-        if isinstance(v, (int, float)) and not isinstance(v, bool):
+        if isinstance(v, (int, float)) and not isinstance(v, bool) and math.isfinite(v):
             return float(v)
     elif t == "":
-        if isinstance(v, (str, int, float, bool)):
+        if isinstance(v, (str, int, bool)) or (isinstance(v, float) and math.isfinite(v)):
             return v
     raise ValueError(f"{col.name}: {v!r} is not {t or 'a scalar'}")
 
@@ -132,6 +156,7 @@ class World:
         self.root = root
         self.tables = _schema_tables(con)
         self.dirty: set[str] = set()
+        self.signature: dict | None = None   # the source files this world was loaded from (see signature())
 
     # -- reading ---------------------------------------------------------------------------------------------
     def table(self, name: str) -> Table:
@@ -172,7 +197,15 @@ class World:
             raise ValueError("query() reads; write through insert/update/delete")
         cur = self.con.cursor()
         cur.row_factory = sqlite3.Row
-        return cur.execute(sql, params).fetchall()
+        self.con.set_authorizer(_read_only)    # a WITH ... DELETE or a setting PRAGMA is refused, not run
+        try:
+            return cur.execute(sql, params).fetchall()
+        except sqlite3.DatabaseError as e:
+            if "not authorized" in str(e):
+                raise ValueError("query() reads; write through insert/update/delete") from None
+            raise
+        finally:
+            self.con.set_authorizer(None)
 
     def values(self, sql: str, *params) -> list:
         """The first column of every row of a query."""
@@ -236,6 +269,8 @@ class World:
     def delete(self, table: str, *key, **where) -> int:
         """Delete by primary key, or every row matching `where` (columns equal)."""
         t = self.table(table)
+        if key and len(key) != len(t.pk):
+            raise KeyError(f"{table}'s key is {t.pk}, got {key!r}; use where= for a partial match")
         cond = dict(zip(t.pk, key)) if key else where
         if not cond:
             raise ValueError("delete needs a key or a where")
@@ -256,15 +291,21 @@ class World:
         """Write the changed tables (or `tables`) back to world/db, sorted by key, after the FK and named checks.
         Nothing is written while any check fails; the errors are raised."""
         errs = self.errors()
+        names = sorted(set(tables) if tables is not None else self.dirty)
+        d = self.root / DB_DIR
+        if self.signature is not None:   # another process wrote one of these tables since this world was loaded
+            now = signature(self.root)
+            errs += [f"{n}.jsonl changed on disk since this world was loaded (another writer); reload and redo"
+                     for n in names if now.get(f"{n}.jsonl") != self.signature.get(f"{n}.jsonl")]
         if errs:
             raise LoadError(errs)
         self.con.commit()
-        names = sorted(set(tables) if tables is not None else self.dirty)
-        d = self.root / DB_DIR
         d.mkdir(parents=True, exist_ok=True)
         for name in names:
             write_table(self, name, d / f"{name}.jsonl")
-        self.dirty.clear()
+        if self.signature is not None:
+            self.signature.update({k: v for k, v in signature(self.root).items() if k[:-6] in names})
+        self.dirty -= set(names)     # a table left out of `tables` stays dirty for the next save
         return names
 
     def dump(self, out: Path, meta: dict | None = None) -> Path:
@@ -295,7 +336,7 @@ def write_table(w: World, name: str, path: Path) -> None:
     for r in w.con.execute(f'SELECT {", ".join(chr(34) + n + chr(34) for n in t.names)} FROM "{name}" ORDER BY {order}'):
         obj = {c.name: _to_json(c, v) for c, v in zip(cols, r) if v is not None}
         lines.append(json.dumps(obj, ensure_ascii=False, separators=(",", ":")))
-    tmp = path.with_suffix(".jsonl.tmp")
+    tmp = path.with_name(f"{path.name}.{os.getpid()}.tmp")
     tmp.write_text("".join(x + "\n" for x in lines), encoding="utf-8")
     os.replace(tmp, path)
 
@@ -324,9 +365,11 @@ def load(root: Path | str | None = None, db_dir: Path | str | None = None, stric
     """Build the world in memory from schema.sql and world/db/*.jsonl. Every type, NOT NULL, CHECK, UNIQUE and
     foreign-key violation is collected and raised as one LoadError (strict) or left in w.load_errors."""
     root = Path(root or WORLD_ROOT)
+    sig = signature(root)        # before reading: a file written during the load makes the cache stale, not fresh
     con = _connect()
     con.executescript((root / SCHEMA).read_text(encoding="utf-8"))
     w = World(con, root)
+    w.signature = sig
     d = Path(db_dir) if db_dir else root / DB_DIR
     errs: list[str] = []
     known = set(w.tables)
@@ -351,15 +394,22 @@ def load(root: Path | str | None = None, db_dir: Path | str | None = None, stric
                     continue
                 try:
                     obj = json.loads(line)
+                    if not isinstance(obj, dict):
+                        raise ValueError(f"a row is a JSON object, not {type(obj).__name__}")
                     bad = set(obj) - set(names)
                     if bad:
                         raise ValueError(f"unknown column(s) {sorted(bad)}")
                     batch.append([_check_value(by[n], obj.get(n)) for n in names])
                 except ValueError as e:
                     errs.append(f"{name}.jsonl:{i}: {e}")
+        con.execute("SAVEPOINT load_table")
         try:
             con.executemany(sql, batch)
+            con.execute("RELEASE load_table")
         except sqlite3.IntegrityError:
+            # undo the rows before the bad one, or the retry reports each of them as a duplicate key
+            con.execute("ROLLBACK TO load_table")
+            con.execute("RELEASE load_table")
             for row in batch:  # find each offending row
                 try:
                     con.execute(sql, row)
@@ -378,20 +428,17 @@ def load(root: Path | str | None = None, db_dir: Path | str | None = None, stric
 
 
 def _fresh(root: Path, out: Path) -> bool:
-    if not out.exists():
-        return False
-    t = out.stat().st_mtime
-    srcs = [root / SCHEMA, *(root / DB_DIR).glob("*.jsonl")]
-    return all(p.stat().st_mtime <= t for p in srcs if p.exists()) and \
-        len(list((root / DB_DIR).glob("*.jsonl"))) == int(_meta(out).get("tables", -1))
+    """The cache was built from exactly the files there now (each one's mtime and size, taken before the load
+    read them), so a table another process saved during that load is never hidden behind a newer cache."""
+    return out.exists() and _meta(out).get("signature") == json.dumps(signature(root), sort_keys=True)
 
 
 def _meta(out: Path) -> dict:
     try:
         con = sqlite3.connect(f"file:{out}?mode=ro", uri=True)
-        r = con.execute("SELECT value FROM _built WHERE key = 'tables'").fetchone()
+        got = dict(con.execute("SELECT key, value FROM _built").fetchall())
         con.close()
-        return {"tables": r[0]} if r else {}
+        return got
     except sqlite3.Error:
         return {}
 
@@ -401,14 +448,18 @@ def open(root: Path | str | None = None, cache: bool = True) -> World:  # noqa: 
     and the schema, else a full load (which also refreshes the cache)."""
     root = Path(root or WORLD_ROOT)
     out = root / OUT
-    if cache and _fresh(root, out):
+    sig = signature(root)
+    if cache and out.exists() and _meta(out).get("signature") == json.dumps(sig, sort_keys=True):
         src = sqlite3.connect(f"file:{out}?mode=ro", uri=True)
         con = _connect()
         src.backup(con)
         src.close()
         con.execute("DROP TABLE IF EXISTS _built")
+        con.commit()
         con.execute("PRAGMA foreign_keys = ON")
-        return World(con, root)
+        w = World(con, root)
+        w.signature = sig
+        return w
     w = load(root)
     if cache:
         build(w, out)
@@ -416,7 +467,9 @@ def open(root: Path | str | None = None, cache: bool = True) -> World:  # noqa: 
 
 
 def build(w: World, out: Path) -> Path:
-    return w.dump(out, meta={"tables": len(list((w.root / DB_DIR).glob("*.jsonl")))})
+    return w.dump(out, meta={"tables": len(list((w.root / DB_DIR).glob("*.jsonl"))),
+                             "signature": json.dumps(w.signature if w.signature is not None
+                                                     else signature(w.root), sort_keys=True)})
 
 
 def counts(w: World) -> dict[str, int]:

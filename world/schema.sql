@@ -3098,6 +3098,7 @@ CREATE TABLE "quest_stage" (
   "directions" TEXT,
   "ending_id" TEXT,
   PRIMARY KEY ("quest_id", "ord"),
+  UNIQUE ("quest_id", "id"),
   FOREIGN KEY ("quest_id") REFERENCES "quest" ("id") ON DELETE CASCADE
 );
 
@@ -3992,7 +3993,7 @@ CREATE TABLE "culture_sheet" (
   "faction_id" TEXT REFERENCES "faction"("id"),
   "speech_formality" TEXT NOT NULL REFERENCES "formality"("id"),
   "speech_register_ref" TEXT,
-  "deviation_rate" REAL NOT NULL,
+  "deviation_rate" REAL NOT NULL CHECK ("deviation_rate" BETWEEN 0 AND 0.5),
   "file" TEXT NOT NULL,
   "rank" TEXT,
   "race" TEXT REFERENCES "race"("id"),
@@ -4018,7 +4019,7 @@ CREATE TABLE "culture_entry" (
 CREATE TABLE "culture_opinion" (
   "culture_sheet_id" TEXT NOT NULL,
   "opinion_class" TEXT NOT NULL REFERENCES "opinion_class"("id"),
-  "lean" INTEGER NOT NULL,
+  "lean" INTEGER NOT NULL CHECK ("lean" BETWEEN -2 AND 2),
   "text" TEXT NOT NULL,
   "source" TEXT NOT NULL,
   PRIMARY KEY ("culture_sheet_id", "opinion_class"),
@@ -4030,7 +4031,7 @@ CREATE TABLE "culture_view" (
   "culture_sheet_id" TEXT NOT NULL,
   "ord" INTEGER NOT NULL,
   "node" TEXT NOT NULL REFERENCES "culture_sheet"("id"),
-  "lean" INTEGER NOT NULL,
+  "lean" INTEGER NOT NULL CHECK ("lean" BETWEEN -2 AND 2),
   "text" TEXT NOT NULL,
   "source" TEXT NOT NULL,
   PRIMARY KEY ("culture_sheet_id", "ord"),
@@ -4052,7 +4053,7 @@ CREATE TABLE "culture_dissent" (
   "ord" INTEGER NOT NULL,
   "person_id" TEXT NOT NULL REFERENCES "npc"("id"),
   "topic" TEXT NOT NULL,
-  "lean" INTEGER NOT NULL,
+  "lean" INTEGER NOT NULL CHECK ("lean" BETWEEN -2 AND 2),
   "text" TEXT NOT NULL,
   "source" TEXT NOT NULL,
   PRIMARY KEY ("culture_sheet_id", "ord"),
@@ -4066,8 +4067,8 @@ CREATE TABLE "culture_dissent" (
 CREATE TABLE "stance" (
   "person_id" TEXT NOT NULL REFERENCES "npc"("id"),
   "voice_quirk" TEXT NOT NULL,
-  "voice_chatter" TEXT NOT NULL,
-  "voice_contraction_rate" REAL NOT NULL,
+  "voice_chatter" TEXT NOT NULL CHECK ("voice_chatter" IN ('terse', 'plain', 'chatty', 'rambling')),
+  "voice_contraction_rate" REAL NOT NULL CHECK ("voice_contraction_rate" BETWEEN 0 AND 1),
   "voice_address_term" TEXT NOT NULL,
   "voice_favourite_subject" TEXT NOT NULL,
   "reviewed" BOOLEAN NOT NULL CHECK ("reviewed" IN (0, 1)),
@@ -4088,9 +4089,9 @@ CREATE TABLE "stance_chain" (
 CREATE TABLE "stance_topic" (
   "person_id" TEXT NOT NULL,
   "opinion_class" TEXT NOT NULL REFERENCES "opinion_class"("id"),
-  "lean" INTEGER NOT NULL,
+  "lean" INTEGER NOT NULL CHECK ("lean" BETWEEN -2 AND 2),
   "from" TEXT NOT NULL REFERENCES "culture_sheet"("id"),
-  "deviation_lean" INTEGER,
+  "deviation_lean" INTEGER CHECK ("deviation_lean" BETWEEN -2 AND 2),
   "deviation_reason" TEXT,
   PRIMARY KEY ("person_id", "opinion_class"),
   FOREIGN KEY ("person_id") REFERENCES "stance" ("person_id") ON DELETE CASCADE
@@ -4100,8 +4101,8 @@ CREATE TABLE "stance_topic" (
 CREATE TABLE "stance_answer_length" (
   "person_id" TEXT NOT NULL,
   "length_class" TEXT NOT NULL,
-  "min" INTEGER NOT NULL,
-  "max" INTEGER NOT NULL,
+  "min" INTEGER NOT NULL CHECK ("min" BETWEEN 6 AND 60),
+  "max" INTEGER NOT NULL CHECK ("max" BETWEEN 10 AND 80),
   PRIMARY KEY ("person_id", "length_class"),
   FOREIGN KEY ("person_id") REFERENCES "stance" ("person_id") ON DELETE CASCADE
 );
@@ -5470,6 +5471,47 @@ CREATE TABLE "hydrology_setting" (
   "value" TEXT NOT NULL
 );
 
+-- The water plan's plane budget (2.W2; the planner's ruling of 2026-10-29), written by
+-- `python -m tools.argonia_world.water plan --write-db` (budget.py) and checked equal to the plan by every plan run.
+-- Home of a cell that was over the plane budget: what it held, what it holds, and how it was brought under.
+CREATE TABLE "water_budget_cell" (
+  "cx" INTEGER NOT NULL,
+  "cy" INTEGER NOT NULL,
+  "budget" INTEGER NOT NULL,
+  "planes_before" INTEGER NOT NULL,
+  "planes_after" INTEGER NOT NULL,
+  "outcome" TEXT NOT NULL CHECK ("outcome" IN ('merged', 'fallback')),
+  "level_m" REAL,
+  "ring_cut_vertices" INTEGER,
+  PRIMARY KEY ("cx", "cy")
+);
+
+-- Home of one loss of the budget: an entity's water in one cell moved, dried or flooded by a kind of reduction.
+-- entity_id is a hydrology_body or hydrology_reach id, or `source:<raster|sea|shore|hollow>` for water no body
+-- owns; kind is snap, step-merge, dried, flooded, fallback-raised, fallback-lowered, fallback-dried,
+-- fallback-flooded, or buried (a body whose patched ground stands above its level everywhere).
+CREATE TABLE "water_loss" (
+  "entity_id" TEXT NOT NULL,
+  "cx" INTEGER NOT NULL,
+  "cy" INTEGER NOT NULL,
+  "kind" TEXT NOT NULL CHECK ("kind" IN ('snap', 'step-merge', 'dried', 'flooded', 'fallback-raised',
+    'fallback-lowered', 'fallback-dried', 'fallback-flooded', 'buried')),
+  "samples" INTEGER NOT NULL,
+  "max_cm" INTEGER NOT NULL,
+  "mean_cm" REAL NOT NULL,
+  PRIMARY KEY ("entity_id", "cx", "cy", "kind")
+);
+
+-- Home of one regraded ground vertex: the floor a fallback cell's border stands at (terrain/water_regrade.py).
+CREATE TABLE "water_regrade" (
+  "x" INTEGER NOT NULL,
+  "y" INTEGER NOT NULL,
+  "floor_m" REAL NOT NULL,
+  "cx" INTEGER NOT NULL,
+  "cy" INTEGER NOT NULL,
+  PRIMARY KEY ("x", "y")
+);
+
 -- == Regions, weather, light, roads and the route graph (2.W3; decision 0028: regions are the unit of authorship) ==
 -- Read and written through db.py by tools/argonia_world/regions and tools/argonia_world/routes; the migration of
 -- climate/weather-states.json, regions/authored-overrides.json and the per-class role totals of flora/palettes.json is
@@ -5833,4 +5875,158 @@ CREATE TABLE "terrain_patch_outcome" (
   "samples_changed" INTEGER,
   "max_abs_delta_m" REAL,
   "receipt" TEXT NOT NULL REFERENCES "terrain_input"("name")
+);
+
+-- == The core rules' numbers (lane 1.1-core-rules; 76 §116–§127, 85 §A, goal G11.2) ==
+-- Every number a skse/core rule reads, so none is typed into C++. tools/argonia_world/core_tables.py reads these
+-- (and attribute, skill, skill_bands, sheet_rules, class_rules, condition_term) and writes skse/core/generated/.
+
+-- Lookup: the skse/core module a constant belongs to (its C++ namespace in the generated header).
+CREATE TABLE "core_module" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "header" TEXT NOT NULL CHECK ("header" IN ('sheet', 'progression', 'conditions'))
+);
+
+-- Home of every scalar constant of the core rules: its module, value and the design section it comes from.
+CREATE TABLE "core_constant" (
+  "id" TEXT NOT NULL PRIMARY KEY CHECK ("id" GLOB '[a-z]*' AND "id" NOT GLOB '*[^a-z0-9_]*'),
+  "module" TEXT NOT NULL REFERENCES "core_module"("id"),
+  "value" REAL NOT NULL,
+  "design_ref" TEXT NOT NULL
+);
+
+-- Home of the burden tiers (76 §122, §121.2, §122.1), lightest first: the ratio a tier ends below (NULL for the last),
+-- the stamina cost multiplier, the climbing drain multiplier (NULL: cannot climb) and the roll (NULL: no roll).
+CREATE TABLE "core_burden_tier" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "ord" INTEGER NOT NULL UNIQUE,
+  "below_ratio" REAL,
+  "stamina_mult" REAL NOT NULL,
+  "climb_drain_mult" REAL,
+  "roll_distance" REAL,
+  "roll_recovery" REAL,
+  "iframe_scale" REAL,
+  "can_run" BOOLEAN NOT NULL CHECK ("can_run" IN (0, 1)),
+  "design_ref" TEXT NOT NULL
+);
+
+-- Home of each armour skill's class numbers (76 §121.4, §120.2): the class rating multiplier (NULL for Unarmored,
+-- which rates by its own formula) and the kill and hit weights of armour accrual.
+CREATE TABLE "core_armour_skill" (
+  "skill" TEXT NOT NULL PRIMARY KEY REFERENCES "skill"("id"),
+  "rating_mult" REAL,
+  "win_weight" REAL NOT NULL,
+  "hit_weight" REAL NOT NULL
+);
+
+-- Home of the skill classes of a character's class (76 §120.1, §120.4): the rank cost factor and how many ranks of
+-- the class make one counted rank toward a level (1 counts in full; 3 is the 1 : 3 credit).
+CREATE TABLE "core_skill_class" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "ord" INTEGER NOT NULL UNIQUE,
+  "xp_factor" REAL NOT NULL,
+  "ranks_per_credit" INTEGER NOT NULL CHECK ("ranks_per_credit" >= 1)
+);
+
+-- Home of every qualifying use (76 §120.1): its canon points, what one unit is, and whether worthiness scales it.
+CREATE TABLE "core_use" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "points" REAL NOT NULL,
+  "unit" TEXT NOT NULL CHECK ("unit" IN ('use', 'second', 'metre', 'percent')),
+  "scaled" BOOLEAN NOT NULL CHECK ("scaled" IN (0, 1))
+);
+
+-- Home of a skill's own points for a use where they differ from the use's (76 §120.1: axe 1.2, short blade 0.75).
+CREATE TABLE "core_use_skill_points" (
+  "use" TEXT NOT NULL REFERENCES "core_use"("id"),
+  "skill" TEXT NOT NULL REFERENCES "skill"("id"),
+  "points" REAL NOT NULL,
+  PRIMARY KEY ("use", "skill")
+);
+
+-- Home of the ranks-per-level curve (76 §120.5, old 0147): entry `level` takes that level to the next; every level
+-- past the last row asks the last row's ranks.
+CREATE TABLE "core_ranks_per_level" (
+  "level" INTEGER NOT NULL PRIMARY KEY CHECK ("level" >= 1),
+  "ranks" INTEGER NOT NULL CHECK ("ranks" >= 1)
+);
+
+-- Home of the rest tiers (76 §126, decision 0144): camp < rented bed < owned bed, the skill experience multiplier of
+-- the rested entry and its game hours (0: no entry).
+CREATE TABLE "core_bed_tier" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "ord" INTEGER NOT NULL UNIQUE,
+  "xp_mult" REAL NOT NULL,
+  "hours" REAL NOT NULL
+);
+
+-- Home of the disposition bands (76 §125, 1.3 §b): each band starts at `min` and runs to the next band's.
+CREATE TABLE "core_disposition_band" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "ord" INTEGER NOT NULL UNIQUE,
+  "min" INTEGER NOT NULL
+);
+
+-- Home of the respawn classes (76 §126, decision 0031): whether a rest resets the actor, and whether a cleared place
+-- stops it.
+CREATE TABLE "core_respawn_class" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "on_rest" BOOLEAN NOT NULL CHECK ("on_rest" IN (0, 1)),
+  "until_cleared" BOOLEAN NOT NULL CHECK ("until_cleared" IN (0, 1))
+);
+
+-- Home of the ways an item wears (item_condition.wear's values; 76 §121.6): what one unit of wear is measured in.
+CREATE TABLE "core_wear_kind" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "per" TEXT NOT NULL CHECK ("per" IN ('damage', 'use', 'second'))
+);
+
+-- Home of the effect stack's operations (76 §127).
+CREATE TABLE "core_effect_op" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "ord" INTEGER NOT NULL UNIQUE
+);
+
+-- Home of the effect stack's fields beyond the attributes and skills (76 §127, §121.3, §121.6, §123), and how
+-- entries on each combine: pool (added), resist (added, capped at the resist cap), factor (multiplied),
+-- per_int (added to the magicka-per-Intelligence coefficient), flag (on when any entry is).
+CREATE TABLE "core_stat_field" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "kind" TEXT NOT NULL CHECK ("kind" IN ('pool', 'resist', 'factor', 'per_int', 'flag'))
+);
+
+-- Home of each predicate's and combinator's evaluation shape (85 §A, §D): how skse/core/conditions evaluates it
+-- over the Facts ArgoniaCore supplies, and the Skyrim condition function that carries it natively (P2 of the
+-- native map; NULL: evaluated in the core and mirrored into a global).
+CREATE TABLE "condition_shape" (
+  "term" TEXT NOT NULL PRIMARY KEY REFERENCES "condition_term"("id"),
+  "shape" TEXT NOT NULL CHECK ("shape" IN ('all', 'any', 'not', 'truth', 'flag', 'at_least', 'compare', 'is',
+                                           'rank_at_least', 'after', 'before', 'calendar', 'time_of_day')),
+  "native" TEXT
+);
+
+-- Home of a predicate's arguments in order (85 §A): the kind of each and whether it may be left out.
+CREATE TABLE "condition_shape_arg" (
+  "term" TEXT NOT NULL REFERENCES "condition_shape"("term"),
+  "ord" INTEGER NOT NULL,
+  "kind" TEXT NOT NULL CHECK ("kind" IN ('id', 'int', 'op', 'enum', 'bool')),
+  "optional" BOOLEAN NOT NULL CHECK ("optional" IN (0, 1)),
+  PRIMARY KEY ("term", "ord")
+);
+
+-- Home of the closed value set of a predicate's enum argument where 85 lists one, in its order (the order is the
+-- rank for rank_at_least).
+CREATE TABLE "condition_shape_value" (
+  "term" TEXT NOT NULL REFERENCES "condition_shape"("term"),
+  "value" TEXT NOT NULL,
+  "ord" INTEGER NOT NULL,
+  PRIMARY KEY ("term", "value"),
+  UNIQUE ("term", "ord")
+);
+
+-- Home of the comparison operators an `op` argument takes (85 §A1: questStage), with a C++ name for each.
+CREATE TABLE "condition_op" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "name" TEXT NOT NULL UNIQUE,
+  "ord" INTEGER NOT NULL UNIQUE
 );
