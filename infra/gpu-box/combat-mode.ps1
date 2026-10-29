@@ -3,9 +3,10 @@
 #   combat-mode.ps1 on|off         lay the overlay over Data (recording every file and backing up any it replaces),
 #                                  or take it off again exactly; sets Plugins.txt to match
 #   combat-mode.ps1 pandora        with the overlay on, run Pandora and add its behaviour output to the overlay
-#   combat-mode.ps1 play-vanilla | play-modded    switch, then launch (the owner's desktop shortcuts)
+#   combat-mode.ps1 play-vanilla | play-modded [-Wait]   switch, then launch (the owner's desktop shortcuts);
+#                                  -Wait stays until Skyrim exits, so Sunshine knows when the game is open
 # Replaces MO2 for this throwaway test: MO2 2.5 would not take a scripted portable instance unattended.
-param([Parameter(Mandatory)][string]$Cmd)
+param([Parameter(Mandatory)][string]$Cmd, [switch]$Wait)
 $ErrorActionPreference = 'Stop'
 $Game = 'C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition'
 $Data = "$Game\Data"
@@ -20,8 +21,11 @@ function Get-Mode { if (Test-Path "$State\files.txt") { 'on' } else { 'off' } }
 # Skyrim fills the current desktop (sunshine-prep.ps1 sized it to the client) and keeps running without focus,
 # so a reconnect or a click elsewhere never pauses it.
 function Set-GameWindow {
+  # The display's real pixels (Screen.Bounds is DPI-scaled), from the mode sunshine-prep.ps1 set.
+  . C:\argonia\infra\display.ps1 -Cmd modes
   Add-Type -AssemblyName System.Windows.Forms
-  $b = [System.Windows.Forms.Screen]::PrimaryScreen.Bounds
+  $cur = Get-CurrentMode ([System.Windows.Forms.Screen]::AllScreens | ? Primary).DeviceName
+  $b = @{ Width = $cur.W; Height = $cur.H }
   $docs = "$env:USERPROFILE\Documents\My Games\Skyrim Special Edition"
   $set = {
     param($file, $section, $values)
@@ -106,10 +110,18 @@ switch ($Cmd) {
   }
   { $_ -in 'play-vanilla', 'play-modded' } {
     # Already running (a reconnect, or the other card): bring it to the front; never start a second copy.
-    if (Focus-Skyrim) { 'Skyrim already running: brought to the front'; break }
+    if (Focus-Skyrim) {
+      'Skyrim already running: brought to the front'
+      if ($Wait) { while (Get-Process SkyrimSE -EA SilentlyContinue) { Start-Sleep 2 } }
+      break
+    }
     Set-GameWindow
     if ($Cmd -eq 'play-vanilla') { & $PSCommandPath off; Start-Process "$Game\SkyrimSE.exe" -WorkingDirectory $Game }
     else { & $PSCommandPath on; Start-Process "$Game\skse64_loader.exe" -WorkingDirectory $Game }
+    if ($Wait) {
+      for ($i = 0; $i -lt 60 -and -not (Get-Process SkyrimSE -EA SilentlyContinue); $i++) { Start-Sleep 1 }
+      while (Get-Process SkyrimSE -EA SilentlyContinue) { Start-Sleep 2 }
+    }
   }
   default { throw "unknown command $Cmd" }
 }

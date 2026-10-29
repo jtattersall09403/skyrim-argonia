@@ -24,6 +24,10 @@ function Get-Modes([string]$Device) {
     $i++
   }
 }
+function Get-CurrentMode([string]$Device) {
+  $m = New-Mode; [void][Disp]::EnumDisplaySettings($Device, -1, [ref]$m)
+  [pscustomobject]@{ W = $m.dmPelsWidth; H = $m.dmPelsHeight; Hz = $m.dmDisplayFrequency }
+}
 if ($Cmd -eq 'modes') { return }
 if ($Cmd -eq 'pin') {
   Add-Type -AssemblyName System.Windows.Forms

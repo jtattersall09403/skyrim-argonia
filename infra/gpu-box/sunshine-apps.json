@@ -3,19 +3,41 @@
   "apps": [
     {
       "name": "Skyrim",
-      "prep-cmd": [{"do": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\sunshine-prep.ps1", "undo": "", "elevated": false}],
-      "detached": ["powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\combat-mode.ps1 play-vanilla"],
-      "image-path": "C:\\argonia\\cards\\skyrim.png"
+      "prep-cmd": [
+        {
+          "do": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\sunshine-prep.ps1",
+          "undo": "",
+          "elevated": false
+        }
+      ],
+      "image-path": "C:\\argonia\\cards\\skyrim.png",
+      "cmd": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\combat-mode.ps1 play-vanilla -Wait",
+      "auto-detach": false,
+      "wait-all": true
     },
     {
       "name": "Skyrim (souls-like mods)",
-      "prep-cmd": [{"do": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\sunshine-prep.ps1", "undo": "", "elevated": false}],
-      "detached": ["powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\combat-mode.ps1 play-modded"],
-      "image-path": "C:\\argonia\\cards\\skyrim-souls.png"
+      "prep-cmd": [
+        {
+          "do": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\sunshine-prep.ps1",
+          "undo": "",
+          "elevated": false
+        }
+      ],
+      "image-path": "C:\\argonia\\cards\\skyrim-souls.png",
+      "cmd": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\combat-mode.ps1 play-modded -Wait",
+      "auto-detach": false,
+      "wait-all": true
     },
     {
       "name": "Desktop",
-      "prep-cmd": [{"do": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\sunshine-prep.ps1", "undo": "", "elevated": false}],
+      "prep-cmd": [
+        {
+          "do": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\sunshine-prep.ps1",
+          "undo": "",
+          "elevated": false
+        }
+      ],
       "image-path": "C:\\argonia\\cards\\desktop.png"
     }
   ]
