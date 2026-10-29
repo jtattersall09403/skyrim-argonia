@@ -43,6 +43,15 @@ static class Generate
             }
         }
 
+        // Interior cell blocks and sub-blocks in number order (the canonical order the round trip compares).
+        var blocks = mod.Cells.Records.OrderBy(b => b.BlockNumber).ToList();
+        mod.Cells.Records.Clear();
+        foreach (var b in blocks)
+        {
+            var subs = b.SubBlocks.OrderBy(x => x.BlockNumber).ToList();
+            b.SubBlocks.Clear(); b.SubBlocks.AddRange(subs);
+            mod.Cells.Records.Add(b);
+        }
         Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(outPath))!);
         mod.BeginWrite
             .ToPath(outPath)
@@ -221,7 +230,7 @@ static class Generate
         var c = new Class(Key(r), Rel)
         {
             EditorID = S(r, "edid"),
-            Name = Text(r, "name"),
+            Name = Text(r, "name") ?? new TranslatedString(Language.English, ""),
             Description = Text(r, "description") ?? new TranslatedString(Language.English, ""),
             Teaches = Enum.Parse<Skill>(S(r, "teaches")),
             MaxTrainingLevel = (byte)I(r, "maxTrainingLevel"),

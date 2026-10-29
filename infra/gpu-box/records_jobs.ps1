@@ -37,6 +37,11 @@ switch ($Stage) {
   'ckload' {
     $ck = "$Game\CreationKit.exe"; Need $ck 'the Creation Kit'
     Need "$In\Argonia.esm" 'the plugin'
+    # Whatever stood in Data and the CK's custom ini is set aside and put back, whatever happens.
+    $keep = "$Root\kept"; New-Item -ItemType Directory -Force $keep | Out-Null
+    foreach ($f in "$Data\Argonia.esm", "$Game\CreationKitCustom.ini") { if (Test-Path $f) { Move-Item $f $keep -Force } }
+    $p = $null
+    try {
     Copy-Item "$In\Argonia.esm" "$Data\Argonia.esm" -Force
     $log = "$Out\ck-warnings.log"; Remove-Item $log -EA SilentlyContinue
     # CreationKitCustom.ini overrides CreationKit.ini; file logging writes every load warning.
@@ -50,9 +55,9 @@ switch ($Stage) {
       Start-Sleep 2
       $dlg = $A::RootElement.FindFirst('Children', (New-Object System.Windows.Automation.PropertyCondition($A::NameProperty, 'Data')))
     }
-    if (-not $dlg) { Stop-Process $p -Force; throw 'ckload: the Data dialog never opened' }
+    if (-not $dlg) { throw 'ckload: the Data dialog never opened' }
     $item = $dlg.FindFirst('Descendants', (New-Object System.Windows.Automation.PropertyCondition($A::NameProperty, 'Argonia.esm')))
-    if (-not $item) { Stop-Process $p -Force; throw 'ckload: Argonia.esm not listed in the Data dialog' }
+    if (-not $item) { throw 'ckload: Argonia.esm not listed in the Data dialog' }
     $item.SetFocus(); [System.Windows.Forms.SendKeys]::SendWait(' ')        # tick it
     $ok = $dlg.FindFirst('Descendants', (New-Object System.Windows.Automation.PropertyCondition($A::NameProperty, 'OK')))
     $ok.GetCurrentPattern([System.Windows.Automation.InvokePattern]::Pattern).Invoke()
@@ -62,8 +67,12 @@ switch ($Stage) {
       Start-Sleep 2; $len = (Get-Item $log -EA SilentlyContinue).Length
       if ($len -eq $last) { $still++ } else { $still = 0; $last = $len }
     }
-    Stop-Process $p -Force -EA SilentlyContinue
-    Remove-Item "$Data\Argonia.esm", "$Game\CreationKitCustom.ini" -Force -EA SilentlyContinue
+    } finally {
+      if ($p) { Stop-Process $p -Force -EA SilentlyContinue }
+      Remove-Item "$Data\Argonia.esm", "$Game\CreationKitCustom.ini" -Force -EA SilentlyContinue
+      if (Test-Path "$keep\Argonia.esm") { Move-Item "$keep\Argonia.esm" $Data -Force }
+      if (Test-Path "$keep\CreationKitCustom.ini") { Move-Item "$keep\CreationKitCustom.ini" $Game -Force }
+    }
     "ckload: $(@(Get-Content $log -EA SilentlyContinue).Count) log lines"
   }
   'bsarch' {

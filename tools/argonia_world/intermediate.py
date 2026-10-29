@@ -87,8 +87,8 @@ def quarantine_layers(alloc: Allocator, scan: dict, resolver: Resolver) -> list[
     q, cell = start["quest"], start["cell"]
     never = start["never"]
     records: list[dict] = [
-        {"type": "GLOB", "edid": never["edid"], "formKey": fk(never["edid"]), "value": never["value"]},
-        {"type": "MUSC", "edid": start["music"]["edid"], "formKey": fk(start["music"]["edid"]), "flags": []},
+        {"type": "GLOB", "edid": never["edid"], "formKey": fk(never["edid"], "GLOB"), "value": never["value"]},
+        {"type": "MUSC", "edid": start["music"]["edid"], "formKey": fk(start["music"]["edid"], "MUSC"), "flags": []},
     ]
     m, fl = cell["marker"], cell["floor"]
     floor = resolver.resolve(fl["piece"])
@@ -96,21 +96,21 @@ def quarantine_layers(alloc: Allocator, scan: dict, resolver: Resolver) -> list[
         raise ValueError(f"holding-cell floor {fl['piece']}: {floor[0].why if floor else 'no member'}")
     floor_base = floor[0].form_key
     if floor[0].kind == "new-stat":
-        floor_base = fk(floor[0].edid)
+        floor_base = fk(floor[0].edid, "STAT", floor[0].mesh)
         records.append({"type": "STAT", "edid": floor[0].edid, "formKey": floor_base, "model": floor[0].mesh})
     records.append({
-        "type": "CELL", "edid": cell["edid"], "formKey": fk(cell["edid"]),
+        "type": "CELL", "edid": cell["edid"], "formKey": fk(cell["edid"], "CELL"),
         "flags": ["IsInteriorCell", "CantTravelFromHere"], "music": fk(start["music"]["edid"]),
         "lighting": cell["lighting"],
         "refs": [
-            {"edid": m["edid"], "formKey": fk(m["edid"]), "base": su.ENGINE_MARKER_HEADING,
+            {"edid": m["edid"], "formKey": fk(m["edid"], "REFR"), "base": su.ENGINE_MARKER_HEADING,
              "pos": _pos(m["atM"]), "rot": _rot(m["yaw"]), "persistent": True},
-            {"edid": fl["edid"], "formKey": fk(fl["edid"]), "base": floor_base,
+            {"edid": fl["edid"], "formKey": fk(fl["edid"], "REFR"), "base": floor_base,
              "pos": _pos(fl["atM"]), "rot": _rot(fl["yaw"])},
         ],
     })
     records.append({
-        "type": "QUST", "edid": q["edid"], "formKey": fk(q["edid"]),
+        "type": "QUST", "edid": q["edid"], "formKey": fk(q["edid"], "QUST"),
         "flags": ["StartGameEnabled", "RunOnce"], "priority": q["priority"],
         "stages": [{"index": 0}, {"index": 10}],
         "scripts": [{"name": q["script"], "properties": [{"name": "HoldingMarker", "object": fk(m["edid"])}]}],
@@ -133,6 +133,36 @@ def quarantine_layers(alloc: Allocator, scan: dict, resolver: Resolver) -> list[
     return [starter, Layer("patch:quarantine", list(shells.values()))]
 
 
+# --- the studio character's sheet records (0.4 §a; 2.1 fills the rest) ------------------------------------
+def sheet_layer(alloc: Allocator, world, studio: dict) -> Layer:
+    """One race package, class and birthsign from the world's sheet tables. Their meaning (attributes, skill
+    bonuses, effects) is ArgoniaCore's; these records give each a stable Skyrim identity the scenes and the
+    co-save name. No player-visible text: the sheet's screens are ours."""
+    race, cls, sign = studio["race"], studio["class"], studio["birthsign"]
+    if world.get("race", race) is None or world.get("class", cls) is None or world.get("birthsign", sign) is None:
+        raise ValueError(f"studio sheet {studio}: a race, class or birthsign is not in the world database")
+    weights = dict.fromkeys(su.SKYRIM_SKILLS, 0)
+    majors = [r.value for r in world.rows("class_majors", class_id=cls)]
+    for table, w in (("class_majors", su.CLAS_WEIGHT_MAJOR), ("class_minors", su.CLAS_WEIGHT_MINOR)):
+        for r in world.rows(table, class_id=cls):
+            if su.SKILL_AV.get(r.value):
+                weights[su.SKILL_AV[r.value]] += w
+    teaches = next((su.SKILL_AV[m] for m in majors if su.SKILL_AV.get(m)), "OneHanded")
+
+    def ability(edid, key):
+        return {"type": "SPEL", "edid": edid, "formKey": alloc.form_key(edid, "SPEL", key),
+                "spellType": "Ability", "castType": "ConstantEffect", "targetType": "Self", "flags": []}
+    slug = {k: v.replace("-", "_") for k, v in studio.items()}
+    edid_c = f"ARG_Class_{slug['class']}"
+    return Layer("base:sheet", [
+        {"type": "CLAS", "edid": edid_c, "formKey": alloc.form_key(edid_c, "CLAS", f"class.{cls}"),
+         "teaches": teaches, "maxTrainingLevel": su.CLAS_MAX_TRAINING, "skillWeights": weights,
+         "statWeights": {"Health": 1, "Magicka": 1, "Stamina": 1}},
+        ability(f"ARG_Race_{slug['race']}", f"race.{race}"),
+        ability(f"ARG_Sign_{slug['birthsign']}", f"birthsign.{sign}"),
+    ])
+
+
 # --- the load order --------------------------------------------------------------------------------------
 def load_order(data: Path) -> list[str]:
     """The runtime's masters present in Data, then its Creation Club masters, then the dependency plugins."""
@@ -153,7 +183,8 @@ def load_order(data: Path) -> list[str]:
 
 def build(data: Path, scan: dict, index: Index, alloc: Allocator, extra: list[Layer] = ()) -> dict:
     resolver = Resolver(index)
-    layers = quarantine_layers(alloc, scan, resolver) + list(extra)
+    studio = json.loads((QUARANTINE / "start.json").read_text(encoding="utf-8"))["studio"]
+    layers = quarantine_layers(alloc, scan, resolver) + [sheet_layer(alloc, alloc.world, studio)] + list(extra)
     order = load_order(data)
     return {
         "schema": 1,

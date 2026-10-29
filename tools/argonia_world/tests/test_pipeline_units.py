@@ -5,6 +5,7 @@ import re
 import subprocess
 import sys
 from pathlib import Path
+from types import SimpleNamespace
 
 import pytest
 
@@ -48,16 +49,34 @@ def test_unit_facts_live_only_in_the_units_module():
 
 
 # --- FormIDs -------------------------------------------------------------------------------------------------
-def test_allocator_is_stable_and_append_only(tmp_path):
-    t = tmp_path / "formids.json"
-    a = Allocator(t)
-    assert a.form_key("ARG_A") == "000800:Argonia.esm" and a.get("ARG_B") == 0x801 and a.get("ARG_A") == 0x800
-    assert a.save() and not a.save()
-    b = Allocator(t)
+class FakeWorld:
+    """The two db.World calls the allocator makes, over a list (the real table is tested by db.py's own tests)."""
+
+    def __init__(self):
+        self.table, self.saved = [], 0
+
+    def rows(self, table, plugin):
+        return [SimpleNamespace(**r) for r in self.table if r["plugin"] == plugin]
+
+    def insert(self, table, **row):
+        self.table.append(row)
+
+    def save(self, tables):
+        self.saved += 1
+
+
+def test_allocator_is_stable_and_append_only():
+    w = FakeWorld()
+    a = Allocator(w)
+    assert a.form_key("ARG_A", "GLOB") == "000800:Argonia.esm" and a.get("ARG_B") == 0x801 and a.get("ARG_A") == 0x800
+    assert a.save() and not a.save() and w.saved == 1
+    assert w.table[0] == {"editor_id": "ARG_A", "plugin": "Argonia.esm", "form_id": 0x800, "record_type": "GLOB",
+                          "entity_key": None}
+    b = Allocator(w)
     assert b.ids == {"ARG_A": 0x800, "ARG_B": 0x801} and b.get("ARG_C") == 0x802
     assert check_append_only(a.ids, b.ids) == []
     with pytest.raises(KeyError):
-        Allocator(t, frozen=True).get("ARG_NEW")
+        Allocator(w, frozen=True).get("ARG_NEW")
     with pytest.raises(ValueError):
         a.get("MQ101")
 
@@ -75,16 +94,19 @@ def test_committed_table_is_valid():
 
 
 # --- pieces --------------------------------------------------------------------------------------------------
-def test_resolver_prefers_load_order_then_lowest_formid():
+def test_resolver_prefers_the_later_plugin_then_lowest_formid():
     res = Resolver(Index(INDEX), {"vanilla:a/floor": "meshes/a/floor.nif"})
     [r] = res.resolve("Meshes\\A\\Floor.NIF")
-    assert (r.kind, r.form_key) == ("base", "03CB89:Skyrim.esm")
-    assert res.resolve("vanilla:a/floor")[0].form_key == "03CB89:Skyrim.esm"
+    assert (r.kind, r.form_key) == ("base", "000900:BM.esp")  # a Black Marsh mod before vanilla (0006 §8)
+    vanilla = Resolver(Index({**INDEX, "records": INDEX["records"][1:]}))
+    assert vanilla.resolve("meshes/a/floor.nif")[0].form_key == "03CB89:Skyrim.esm"  # not the ice variant
 
 
 def test_resolver_new_stat_composite_and_unresolved():
     res = Resolver(Index(INDEX), composites={"composite:x": ["meshes/a/door.nif", "meshes/a/bare.nif"]})
     kinds = [r.kind for r in res.resolve("composite:x")]
+    loop = Resolver(Index(INDEX), composites={"composite:a": ["composite:b"], "composite:b": ["composite:a"]})
+    assert loop.resolve("composite:a")[0].why == "composite contains itself"
     assert kinds == ["base", "new-stat"]
     assert res.resolve("meshes/a/bare.nif")[0].edid == stat_edid("meshes/a/bare.nif") == "ARG_STAT_a_bare"
     assert [r.piece for r in res.unresolved(["meshes/a/door.nif", "bmv:no/such", "composite:none", "meshes/x.nif"])] \
@@ -129,3 +151,20 @@ def test_records_sort_by_type_then_raw_formid():
         {"type": "QUST", "override": True, "edid": "Y", "formKey": "0FFFFF:Skyrim.esm"},
         {"type": "GLOB", "edid": "ARG_G", "formKey": "000800:Argonia.esm"}])], ["Skyrim.esm", "Dawnguard.esm"])
     assert [r["edid"] for r in recs] == ["ARG_G", "Y", "Z"]
+
+
+def test_asset_ids_follow_the_registry_rule():
+    from tools.argonia_world.pieces import asset_mesh
+    assert asset_mesh("vanilla:architecture/riften/rtstables01") == "meshes/architecture/riften/rtstables01.nif"
+    assert asset_mesh("composite:farmhouse/x") == "" and asset_mesh("nocolon") == ""
+
+
+def test_sheet_layer_reads_the_world():
+    from tools.argonia_world import db
+    from tools.argonia_world.intermediate import sheet_layer
+    w = db.open()
+    lay = sheet_layer(Allocator(w, frozen=True), w, {"race": "argonian", "class": "marsh-guide", "birthsign": "serpent"})
+    clas = next(r for r in lay.records if r["type"] == "CLAS")
+    assert clas["skillWeights"]["Archery"] == 3 and sum(clas["skillWeights"].values()) > 0
+    with pytest.raises(ValueError):
+        sheet_layer(Allocator(w, frozen=True), w, {"race": "no-such-race", "class": "marsh-guide", "birthsign": "serpent"})

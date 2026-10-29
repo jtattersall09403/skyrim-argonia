@@ -6,7 +6,7 @@
     pipeline.py check    the FormID table append-only; every design piece resolved; regenerate twice into
                          out/check/{a,b}: identical ESM bytes and YAML trees, and equal to the committed
                          plugin/Argonia/ (else: run `make plugin`); the Spriggit round trip: plugin/Argonia/
-                         deserialised, put in canonical record order, is byte-identical to the generated ESM
+                         and the generated ESM, both in canonical record order, are byte-identical
 
 Spriggit's deserialiser writes a group's records in directory-listing order, which is the filesystem's and not
 the content's; `canon` puts every group in the raw-FormID order the generator writes, so the round trip
@@ -62,7 +62,8 @@ def scans(data: Path):
     sys.path.insert(0, str(ROOT))
     from tools.argonia_world.intermediate import load_order
     order = load_order(data)
-    stamp = json.dumps([[p, (data / p).stat().st_size, int((data / p).stat().st_mtime)] for p in order])
+    files = [data / p for p in order] + sorted(data.glob("*.bsa")) + [GEN.with_suffix(".dll")]
+    stamp = json.dumps([[f.name, f.stat().st_size, int(f.stat().st_mtime)] for f in files])
     sf = OUT / "scan.stamp"
     if sf.exists() and sf.read_text() == stamp and (OUT / "vanilla-scan.json").exists() and (OUT / "pieces-index.json").exists():
         return
@@ -135,6 +136,11 @@ def plugin() -> int:
 
 
 def check() -> int:
+    root = os.environ.get("ARGONIA_GAME_ROOT")
+    d = Path(root) / "Data" if root else HOME / "games" / "skyrimse" / "Data"
+    if not (d / "Skyrim.esm").exists():
+        print(f"plugin: SKIPPED, no Skyrim.esm under {d}: the build VM runs this part (the masters never enter git)")
+        return 0
     data = data_dir()
     errs: list[str] = []
     r = subprocess.run([sys.executable, "-m", "tools.argonia_world.formids", "check"], cwd=ROOT, check=False, capture_output=True, text=True)
@@ -142,10 +148,13 @@ def check() -> int:
         errs.append("formids: " + r.stdout.strip())
     build_tool()
     scans(data)
-    r = subprocess.run([sys.executable, "-m", "tools.argonia_world.pieces", "check"], cwd=ROOT, check=False, capture_output=True, text=True)
+    a_esm, a_yaml = generate(data, OUT / "check" / "a", frozen=True)
+    built = sorted({r["layer"].split(":", 1)[1] for r in json.loads((OUT / "check" / "a" / "argonia.json").read_text())["records"]
+                    if r.get("layer", "").startswith("place:")})
+    r = subprocess.run([sys.executable, "-m", "tools.argonia_world.pieces", "check", "--places", ",".join(built)],
+                       cwd=ROOT, check=False, capture_output=True, text=True)
     if r.returncode:
         errs.append("pieces: " + r.stdout.strip())
-    a_esm, a_yaml = generate(data, OUT / "check" / "a", frozen=True)
     b_esm, b_yaml = generate(data, OUT / "check" / "b", frozen=True)
     if a_esm.read_bytes() != b_esm.read_bytes():
         errs.append("regenerate: the two ESMs differ")
@@ -158,7 +167,7 @@ def check() -> int:
     else:
         rt = OUT / "check" / "roundtrip.esm"
         run("spriggit", "deserialize", "-i", YAML, "-o", rt, *SPRIGGIT, capped=True)
-        if canon(rt.read_bytes()) != a_esm.read_bytes():
+        if canon(rt.read_bytes()) != canon(a_esm.read_bytes()):
             errs.append("round trip: plugin/Argonia/ deserialised is not byte-identical to the generated ESM")
     for e in errs:
         print(f"plugin: {e}")

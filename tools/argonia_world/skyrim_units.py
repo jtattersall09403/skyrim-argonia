@@ -63,3 +63,22 @@ EDITOR_ID_MAX = 99  # the CK's limit; voice paths take only the first 25 (gotcha
 # Skyrim.ccc for those present, then the dependency plugins (data/dependencies.json), then ours.
 OFFICIAL_MASTERS = ("Skyrim.esm", "Update.esm", "Dawnguard.esm", "HearthFires.esm", "Dragonborn.esm")
 ENGINE_MARKER_HEADING = "000034:Skyrim.esm"  # XMarkerHeading: the engine's own heading marker
+
+# --- skills -----------------------------------------------------------------------------------------------
+# Our 27 skills (the world's `skill` table) onto Skyrim's 18 skill actor values (Mutagen's Skill names), for the
+# engine-side records that need one (CLAS weights, NPC levelling). None: no Skyrim skill carries it; ArgoniaCore
+# holds the real value (1.3).
+SKILL_AV = {
+    "longBlade": "OneHanded", "shortBlade": "OneHanded", "axe": "OneHanded", "blunt": "OneHanded",
+    "spear": "TwoHanded", "marksman": "Archery", "block": "Block", "smithing": "Smithing",
+    "heavyArmor": "HeavyArmor", "lightArmor": "LightArmor", "mediumArmor": None, "unarmored": None,
+    "handToHand": None, "athletics": None, "acrobatics": None, "security": "Lockpicking", "sneak": "Sneak",
+    "mercantile": "Speech", "speechcraft": "Speech", "alchemy": "Alchemy", "enchant": "Enchanting",
+    "alteration": "Alteration", "conjuration": "Conjuration", "destruction": "Destruction",
+    "illusion": "Illusion", "restoration": "Restoration", "mysticism": None,
+}
+SKYRIM_SKILLS = ("OneHanded", "TwoHanded", "Archery", "Block", "Smithing", "HeavyArmor", "LightArmor",
+                 "Pickpocket", "Lockpicking", "Sneak", "Alchemy", "Speech", "Alteration", "Conjuration",
+                 "Destruction", "Illusion", "Restoration", "Enchanting")
+CLAS_WEIGHT_MAJOR, CLAS_WEIGHT_MINOR = 3, 1  # CLAS skill weights: relative, levelled NPCs only
+CLAS_MAX_TRAINING = 50  # the CK's default training cap

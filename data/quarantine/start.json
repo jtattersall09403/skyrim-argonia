@@ -1,13 +1,66 @@
 {
  "schema": 1,
  "about": "Our start quest and the holding cell it moves the player to (decision 0012 §1). The cell joins Claywater's block when 0.4 §d builds it; 3.3 replaces the hold with the opening.",
- "quest": {"edid": "ARG_StartQuest", "priority": 90, "script": "ARG_StartQuestScript"},
- "never": {"edid": "ARG_QuarantineNever", "value": 0},
- "music": {"edid": "ARG_MusicSilence"},
+ "quest": {
+  "edid": "ARG_StartQuest",
+  "priority": 90,
+  "script": "ARG_StartQuestScript"
+ },
+ "never": {
+  "edid": "ARG_QuarantineNever",
+  "value": 0
+ },
+ "music": {
+  "edid": "ARG_MusicSilence"
+ },
  "cell": {
   "edid": "ARG_HoldingCell",
-  "lighting": {"ambient": [0, 0, 0], "directional": [0, 0, 0], "fogNear": [0, 0, 0], "fogFar": [0, 0, 0]},
-  "marker": {"edid": "ARG_HoldingMarker", "atM": [0.0, 0.0, 0.2], "yaw": 0.0},
-  "floor": {"edid": "ARG_HoldingFloor", "piece": "meshes/dungeons/imperial/clutterkits/impfloormid01.nif", "atM": [0.0, 0.0, 0.0], "yaw": 0.0}
+  "lighting": {
+   "ambient": [
+    0,
+    0,
+    0
+   ],
+   "directional": [
+    0,
+    0,
+    0
+   ],
+   "fogNear": [
+    0,
+    0,
+    0
+   ],
+   "fogFar": [
+    0,
+    0,
+    0
+   ]
+  },
+  "marker": {
+   "edid": "ARG_HoldingMarker",
+   "atM": [
+    0.0,
+    0.0,
+    0.2
+   ],
+   "yaw": 0.0
+  },
+  "floor": {
+   "edid": "ARG_HoldingFloor",
+   "piece": "meshes/dungeons/imperial/clutterkits/impfloormid01.nif",
+   "atM": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "yaw": 0.0
+  }
+ },
+ "studio": {
+  "race": "argonian",
+  "class": "marsh-guide",
+  "birthsign": "serpent",
+  "why": "the studio character of decision 0022, fixed answers (3.2 later builds it through its own flow); scenes may name any other"
  }
 }

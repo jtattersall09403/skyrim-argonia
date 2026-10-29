@@ -1,77 +1,74 @@
 """The FormID allocator (decision 0009 §3): every record of ours keeps one FormID for good.
 
-The table maps an EditorID (``ARG_`` plus the world id) to the object id it was first given. It is append-only:
-an entry never changes and is never removed (a retired record's id is never reused, because the next id is
-always past the highest ever given). ``check_append_only`` proves that against git's HEAD in the gate.
-
-Storage: ``data/formids.json`` until db.py's FormID table lands (decision 0030), then that table through db.py;
-the interface below stays.
+The world database's ``formid`` table (decision 0030, read and written only through db.py) maps an EditorID
+(``ARG_`` plus the world id) to the object id it was first given in its plugin. It is append-only: a row never
+changes and is never removed (a retired record's id is never reused, because the next id is always past the
+highest ever given). ``check_append_only`` proves that against git's HEAD in the gate.
 
     python3 -m tools.argonia_world.formids check     append-only against HEAD, ids in range and unique
 """
 from __future__ import annotations
 
-import json
 import re
 import subprocess
 import sys
+import tarfile
+import tempfile
+from io import BytesIO
 from pathlib import Path
 
+from tools.argonia_world import db
 from tools.argonia_world import skyrim_units as su
 
 ROOT = Path(__file__).resolve().parents[2]
-TABLE = ROOT / "data" / "formids.json"
 MOD = "Argonia.esm"
 EDID = re.compile(r"^ARG_[A-Za-z0-9_]+$")
 
 
-class Allocator:
-    """Hands out object ids for EditorIDs; ``save`` writes only when something new was allocated."""
+def read_ids(world, mod: str = MOD) -> dict[str, int]:
+    return {r.editor_id: r.form_id for r in world.rows("formid", plugin=mod)}
 
-    def __init__(self, path: Path = TABLE, mod: str = MOD, frozen: bool = False):
-        self.path, self.mod, self.frozen = Path(path), mod, frozen
-        self.ids: dict[str, int] = {}
-        if self.path.exists():
-            doc = json.loads(self.path.read_text(encoding="utf-8"))
-            if doc.get("mod", mod) != mod:
-                raise ValueError(f"{self.path}: table is for {doc['mod']}, not {mod}")
-            self.ids = {k: int(v, 16) for k, v in doc["ids"].items()}
+
+class Allocator:
+    """Hands out object ids for EditorIDs; ``save`` writes the formid table only when something was allocated.
+
+    ``world`` is a db.World (default: ``db.open()``); ``frozen`` refuses to allocate (the gate's regeneration)."""
+
+    def __init__(self, world=None, mod: str = MOD, frozen: bool = False):
+        self.world = world if world is not None else db.open()
+        self.mod, self.frozen = mod, frozen
+        self.ids = read_ids(self.world, mod)
         self.dirty = False
 
     def next_id(self) -> int:
         return max(self.ids.values(), default=su.FORMID_FIRST - 1) + 1
 
-    def get(self, edid: str) -> int:
+    def get(self, edid: str, record_type: str | None = None, entity_key: str | None = None) -> int:
         if edid in self.ids:
             return self.ids[edid]
         if not EDID.match(edid) or len(edid) > su.EDITOR_ID_MAX:
             raise ValueError(f"not an Argonia EditorID: {edid!r}")
         if self.frozen:
-            raise KeyError(f"{edid}: no FormID yet; run `make plugin` and commit data/formids.json")
+            raise KeyError(f"{edid}: no FormID yet; run `make plugin` and commit the formid table")
         new = self.next_id()
         if new > su.FORMID_LAST:
             raise OverflowError("FormID space exhausted: split by kind into ESL-flagged helpers (0.4 §a)")
+        self.world.insert("formid", editor_id=edid, plugin=self.mod, form_id=new, record_type=record_type,
+                          entity_key=entity_key)
         self.ids[edid] = new
         self.dirty = True
         return new
 
-    def form_key(self, edid: str) -> str:
+    def form_key(self, edid: str, record_type: str | None = None, entity_key: str | None = None) -> str:
         """Mutagen's FormKey spelling, ``000800:Argonia.esm``."""
-        return f"{self.get(edid):06X}:{self.mod}"
+        return f"{self.get(edid, record_type, entity_key):06X}:{self.mod}"
 
     def save(self) -> bool:
         if not self.dirty:
             return False
-        self.path.parent.mkdir(parents=True, exist_ok=True)
-        self.path.write_text(dumps(self.mod, self.ids), encoding="utf-8")
+        self.world.save(["formid"])
         self.dirty = False
         return True
-
-
-def dumps(mod: str, ids: dict[str, int]) -> str:
-    """One entry per line, in allocation order, so a new id is a one-line diff at the end."""
-    body = ",\n".join(f'  {json.dumps(k)}: "{v:06X}"' for k, v in sorted(ids.items(), key=lambda kv: kv[1]))
-    return f'{{\n "schema": 1,\n "mod": {json.dumps(mod)},\n "ids": {{\n{body}\n }}\n}}\n'
 
 
 def check_append_only(old: dict[str, int], new: dict[str, int]) -> list[str]:
@@ -91,19 +88,25 @@ def check_append_only(old: dict[str, int], new: dict[str, int]) -> list[str]:
     return errs
 
 
-def _head_table() -> dict[str, int]:
-    rel = TABLE.relative_to(ROOT).as_posix()
-    r = subprocess.run(["git", "show", f"HEAD:{rel}"], cwd=ROOT, check=False, capture_output=True, text=True)
+def head_ids(mod: str = MOD) -> dict[str, int]:
+    """The formid table as HEAD has it: HEAD's schema and tables loaded through db.py in a scratch root."""
+    r = subprocess.run(["git", "archive", "HEAD", db.SCHEMA, db.DB_DIR], cwd=ROOT, capture_output=True, check=False)
     if r.returncode != 0:
         return {}  # not committed yet
-    return {k: int(v, 16) for k, v in json.loads(r.stdout)["ids"].items()}
+    with tempfile.TemporaryDirectory() as tmp:
+        with tarfile.open(fileobj=BytesIO(r.stdout)) as t:
+            t.extractall(tmp, filter="data")
+        try:
+            return read_ids(db.load(tmp, strict=False), mod)
+        except Exception:  # HEAD predates the formid table  # noqa: BLE001
+            return {}
 
 
 def main(argv: list[str]) -> int:
     if argv[:1] != ["check"]:
         print(__doc__)
         return 2
-    errs = check_append_only(_head_table(), Allocator().ids)
+    errs = check_append_only(head_ids(), read_ids(db.open()))
     for e in errs:
         print(f"formids: {e}")
     return 1 if errs else 0

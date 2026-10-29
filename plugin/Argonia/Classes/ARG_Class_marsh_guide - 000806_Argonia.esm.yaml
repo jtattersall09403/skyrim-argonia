@@ -1,0 +1,54 @@
+FormKey: 000806:Argonia.esm
+EditorID: ARG_Class_marsh_guide
+Name:
+  TargetLanguage: English
+  Value: ''
+Description:
+  TargetLanguage: English
+  Value: ''
+Teaches: TwoHanded
+MaxTrainingLevel: 50
+SkillWeights:
+- Key: OneHanded
+  Value: 0
+- Key: TwoHanded
+  Value: 3
+- Key: Archery
+  Value: 3
+- Key: Block
+  Value: 1
+- Key: Smithing
+  Value: 0
+- Key: HeavyArmor
+  Value: 0
+- Key: LightArmor
+  Value: 0
+- Key: Pickpocket
+  Value: 0
+- Key: Lockpicking
+  Value: 1
+- Key: Sneak
+  Value: 1
+- Key: Alchemy
+  Value: 1
+- Key: Speech
+  Value: 0
+- Key: Alteration
+  Value: 0
+- Key: Conjuration
+  Value: 0
+- Key: Destruction
+  Value: 0
+- Key: Illusion
+  Value: 0
+- Key: Restoration
+  Value: 1
+- Key: Enchanting
+  Value: 0
+StatWeights:
+- Key: Health
+  Value: 1
+- Key: Magicka
+  Value: 1
+- Key: Stamina
+  Value: 1

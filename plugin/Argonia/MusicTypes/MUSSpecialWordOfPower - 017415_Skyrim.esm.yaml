@@ -3,3 +3,4 @@ EditorID: MUSSpecialWordOfPower
 Flags:
 - PlaysOneSelection
 - DucksCurrentTrack
+- DoesNotQueue

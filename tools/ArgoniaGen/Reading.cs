@@ -51,30 +51,38 @@ static class PieceIndex
     // Every base record with a model, by normalised mesh path, and every mesh in the plugins' archives.
     public static int Run(string data, string[] plugins, string outPath)
     {
-        var records = new List<Dictionary<string, string>>();
+        // The winning record per FormKey: an override later in the load order replaces its master's model.
+        var won = new Dictionary<FormKey, Dictionary<string, string>>();
         var meshes = new SortedSet<string>(StringComparer.Ordinal);
         foreach (var plugin in plugins)
         {
             using var mod = Load.Open(data, plugin);
             foreach (var r in mod.EnumerateMajorRecords())
             {
-                if (r.FormKey.ModKey != mod.ModKey) continue; // overrides of a master's record are the master's
                 if (r is not IModeledGetter m || string.IsNullOrEmpty(m.Model?.File.DataRelativePath.Path)) continue;
-                records.Add(new()
+                won[r.FormKey] = new()
                 {
                     ["mesh"] = Norm(m.Model!.File.DataRelativePath.Path),
-                    ["plugin"] = plugin,
+                    ["plugin"] = plugin, // the plugin whose copy wins
                     ["formKey"] = Load.Key(r.FormKey),
                     ["type"] = r.Registration.ClassType.Name,
                     ["edid"] = r.EditorID ?? "",
-                });
+                };
             }
-            foreach (var bsa in Directory.EnumerateFiles(data, Path.GetFileNameWithoutExtension(plugin) + "*.bsa"))
-                AddArchive(bsa, meshes);
+            // Only mesh-bearing archives: "<plugin>.bsa" and "<plugin> - Meshes*.bsa" (the vanilla split).
+            var stem = Path.GetFileNameWithoutExtension(plugin);
+            foreach (var bsa in Directory.EnumerateFiles(data, stem + "*.bsa"))
+            {
+                var n = Path.GetFileNameWithoutExtension(bsa);
+                if (n.Equals(stem, StringComparison.OrdinalIgnoreCase) || n.Contains("Meshes", StringComparison.OrdinalIgnoreCase))
+                    AddArchive(bsa, meshes);
+            }
         }
-        foreach (var bsa in Directory.EnumerateFiles(data, "Skyrim - Meshes*.bsa")) AddArchive(bsa, meshes);
-        foreach (var f in Directory.EnumerateFiles(Path.Combine(data), "*.nif", SearchOption.AllDirectories))
-            meshes.Add(Norm(Path.GetRelativePath(data, f)));
+        var loose = Path.Combine(data, "meshes");
+        if (Directory.Exists(loose))
+            foreach (var f in Directory.EnumerateFiles(loose, "*.nif", SearchOption.AllDirectories))
+                meshes.Add(Norm(Path.GetRelativePath(data, f)));
+        var records = won.Values.ToList();
         records.Sort((a, b) => string.CompareOrdinal(a["mesh"] + a["formKey"], b["mesh"] + b["formKey"]));
         Load.WriteJson(outPath, new { plugins, records, meshes });
         Console.WriteLine($"index: {records.Count} modelled base records, {meshes.Count} meshes -> {outPath}");
@@ -102,36 +110,33 @@ static class QuestScan
     // generator can shell them (decision 0012).
     public static int Run(string data, string[] plugins, string outPath)
     {
+        // One pass per plugin; the winning copy of each quest, story-manager node and music type decides.
+        var quests = new Dictionary<FormKey, (string Edid, int Flags)>();
+        var nodes = new Dictionary<FormKey, FormKey[]>();
+        var musics = new Dictionary<FormKey, (string Edid, string[] Flags, int Tracks)>();
+        foreach (var plugin in plugins)
+        {
+            using var mod = Load.Open(data, plugin);
+            foreach (var q in mod.Quests) quests[q.FormKey] = (q.EditorID ?? "", (int)q.Flags);
+            foreach (var node in mod.StoryManagerQuestNodes) nodes[node.FormKey] = node.Quests.Select(n => n.Quest.FormKey).ToArray();
+            foreach (var m in mod.MusicTypes)
+                musics[m.FormKey] = (m.EditorID ?? "", m.Flags.ToString().Split(", ", StringSplitOptions.RemoveEmptyEntries)
+                                                         .Where(f => f != "0").ToArray(), m.Tracks?.Count ?? 0);
+        }
         var started = new Dictionary<FormKey, SortedSet<string>>();
-        var info = new Dictionary<FormKey, (string Edid, string Plugin, int Flags)>();
-        foreach (var plugin in plugins)
-        {
-            using var mod = Load.Open(data, plugin);
-            foreach (var q in mod.Quests)
-            {
-                info[q.FormKey] = (q.EditorID ?? "", q.FormKey.ModKey.FileName, (int)q.Flags);
-                if (q.Flags.HasFlag(Quest.Flag.StartGameEnabled)) Mark(started, q.FormKey, "start-game-enabled");
-            }
-            foreach (var node in mod.StoryManagerQuestNodes)
-                foreach (var nq in node.Quests)
-                    Mark(started, nq.Quest.FormKey, "story-manager");
-        }
+        foreach (var (k, q) in quests)
+            if (((Quest.Flag)q.Flags).HasFlag(Quest.Flag.StartGameEnabled)) Mark(started, k, "start-game-enabled");
+        foreach (var list in nodes.Values) foreach (var k in list) Mark(started, k, "story-manager");
         var rows = started.Keys
-            .Where(info.ContainsKey)
+            .Where(quests.ContainsKey)
             .OrderBy(k => k.ModKey.FileName.String, StringComparer.Ordinal).ThenBy(k => k.ID)
-            .Select(k => new { formKey = Load.Key(k), edid = info[k].Edid, plugin = info[k].Plugin,
-                               flags = info[k].Flags, why = started[k].ToArray() })
+            .Select(k => new { formKey = Load.Key(k), edid = quests[k].Edid, plugin = k.ModKey.FileName.String,
+                               flags = quests[k].Flags, why = started[k].ToArray() })
             .ToList();
-        var music = new List<object>();
-        foreach (var plugin in plugins)
-        {
-            using var mod = Load.Open(data, plugin);
-            foreach (var m in mod.MusicTypes.Where(m => m.FormKey.ModKey == mod.ModKey).OrderBy(m => m.FormKey.ID))
-                music.Add(new { formKey = Load.Key(m.FormKey), edid = m.EditorID ?? "", plugin,
-                                flags = m.Flags.ToString().Split(", ", StringSplitOptions.RemoveEmptyEntries)
-                                         .Where(f => f != "0").ToArray(),
-                                tracks = m.Tracks?.Count ?? 0 });
-        }
+        var music = musics.OrderBy(kv => kv.Key.ModKey.FileName.String, StringComparer.Ordinal).ThenBy(kv => kv.Key.ID)
+            .Select(kv => (object)new { formKey = Load.Key(kv.Key), edid = kv.Value.Edid, plugin = kv.Key.ModKey.FileName.String,
+                                        flags = kv.Value.Flags, tracks = kv.Value.Tracks })
+            .ToList();
         Load.WriteJson(outPath, new { plugins, quests = rows, musicTypes = music });
         Console.WriteLine($"quests: {rows.Count} self-starting vanilla quests, {music.Count} music types -> {outPath}");
         return 0;

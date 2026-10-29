@@ -4,7 +4,12 @@ Scriptname ARG_StartQuestScript extends Quest
 ObjectReference Property HoldingMarker Auto
 
 Event OnInit()
-	; A start-game-enabled quest can see OnInit twice; stage 10 marks the move as done.
+	; A start-game-enabled quest can see OnInit twice, the first before the player is in the world. An update
+	; runs only in game mode, so the move waits for it; stage 10 marks the move as done.
+	RegisterForSingleUpdate(0.1)
+EndEvent
+
+Event OnUpdate()
 	If GetStageDone(10)
 		Return
 	EndIf
