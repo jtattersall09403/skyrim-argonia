@@ -1,0 +1,2 @@
+[{"wait": 25000}, {"probe": "JSON.stringify((t => ({ codec: t.codec, res: t.resolution, fps: t.fpsPresented, decodeMs: t.decodeMs, jbufMs: t.jitterBufferMs, kbps: t.bitrateKbps, transport: t.transport }))(argonia.metrics.ticks.at(-1)))"},
+ {"wait": 20000}, {"probe": "JSON.stringify(argonia.metrics.ticks.slice(-20).map(t => [t.fpsPresented, t.decodeMs, t.jitterBufferMs]))"}, {"shot": "codec"}]

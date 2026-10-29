@@ -35,9 +35,13 @@ if (!process.env.ARGONIA_FORCE) {
     }
 }
 const fwd = spawn("ssh", ["-i", path.join(os.homedir(), ".argonia/keys/argonia-play"), "-o", "BatchMode=yes", "-o", "ExitOnForwardFailure=yes", "-N",
-    "-L", "18081:127.0.0.1:8080", "-L", "18091:127.0.0.1:8091", `Administrator@${ip}`], { stdio: "inherit" })
+    "-L", "18081:127.0.0.1:8080", "-L", "18091:127.0.0.1:8091",
+    // ARGONIA_BROWSER=box: drive the game machine's own headless Chrome (start-test-chrome.ps1), which decodes on
+    // the T4 like a phone decodes in hardware; it reaches this VM's gate stand-in through the reverse tunnel.
+    ...(process.env.ARGONIA_BROWSER === "box" ? ["-L", "19222:127.0.0.1:9222", "-R", "18080:127.0.0.1:18080"] : []),
+    `Administrator@${ip}`], { stdio: "inherit" })
 let gate, browser
-const cleanup = async () => { try { await browser?.close() } catch { } gate?.close(); fwd.kill() }
+const cleanup = async () => { try { if (process.env.ARGONIA_BROWSER === "box") browser?.disconnect(); else await browser?.close() } catch { } gate?.close(); fwd.kill() }
 process.on("exit", () => fwd.kill())
 
 try {
@@ -47,12 +51,20 @@ try {
         await wait(250)
     }
     gate = await startGate({ port: 18080, web: 18081, collector: 18091 })
-    browser = await puppeteer.launch({
-        headless: process.env.ARGONIA_HEADFUL ? false : true,
-        defaultViewport: null,
-        args: ["--autoplay-policy=no-user-gesture-required", "--no-sandbox", "--disable-features=WebRtcHideLocalIpsWithMdns", "--enable-gpu-rasterization", "--ignore-gpu-blocklist"],
-    })
-    const page = await browser.newPage()
+    let page
+    if (process.env.ARGONIA_BROWSER === "box") {
+        browser = await puppeteer.connect({ browserURL: "http://127.0.0.1:19222", defaultViewport: null })
+        const ctx = await browser.createBrowserContext()   // fresh storage each drive
+        page = await ctx.newPage()
+        log("browser on the game machine:", await browser.version())
+    } else {
+        browser = await puppeteer.launch({
+            headless: process.env.ARGONIA_HEADFUL ? false : true,
+            defaultViewport: null,
+            args: ["--autoplay-policy=no-user-gesture-required", "--no-sandbox", "--disable-features=WebRtcHideLocalIpsWithMdns", "--enable-gpu-rasterization", "--ignore-gpu-blocklist"],
+        })
+        page = await browser.newPage()
+    }
     const consoleLog = fs.createWriteStream(path.join(out, `console-${transport}.log`))
     page.on("console", (m) => consoleLog.write(`[${m.type()}] ${m.text()}\n`))
     page.on("pageerror", (e) => consoleLog.write(`[pageerror] ${e.message}\n`))

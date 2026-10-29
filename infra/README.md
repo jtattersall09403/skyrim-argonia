@@ -35,8 +35,10 @@ capacity was); traffic between them crosses AZs at about $0.01/GB.
 - The sign-in gate: Cloudflare (owner's account), domain bought 2026-10-28 (~$10/year, outside the AWS budget);
   a named tunnel `argonia-play` behind Access, owner's email only. Token and tunnel token in `secrets.env`.
 - The play switch: Cloudflare Worker `argonia-play-switch` on `play.`/`dcv.` (behind Access; workers.dev off),
-  schedules every 30 min and 03:00 UTC; IAM user `argonia-play-switch` (describe, start and stop `argonia-play`
-  only; key in `secrets.env`). AWS alarm `argonia-play-no-stream` stops the machine with no stream for 30 minutes.
+  schedules every 10 min and 03:00 UTC; IAM user `argonia-play-switch` (describe, start and stop `argonia-play`
+  only; key in `secrets.env`). It stops the machine when its heartbeat (`/argonia-metrics/activity`, read with
+  the Access service token `argonia-heartbeat`) is missing for 30 minutes after a start. The AWS alarm
+  `argonia-play-no-stream` is kept with its actions off; the build role may manage that one alarm.
 - The machine role `argonia-play-ssm`: SSM core plus S3 read of `nvidia-gaming` and `dcv-license.eu-west-2`.
 
 ## Setup scripts
