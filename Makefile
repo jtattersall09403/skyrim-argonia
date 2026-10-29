@@ -47,12 +47,13 @@ immersion:
 	@python3 tools/immersion/inventory.py --gate $(FAIL)
 
 # Records (0.4 §a): world -> intermediate JSON -> ArgoniaGen (Mutagen) -> out/Argonia.esm -> Spriggit plugin/Argonia/.
+# One build at a time: two lanes' parallel builds raced on out/ (2026-10-29); the second waits for the lock.
 plugin:
-	@python3 tools/ArgoniaGen/pipeline.py plugin
+	@mkdir -p out && flock out/.plugin.lock $(PY) tools/ArgoniaGen/pipeline.py plugin
 
 # FormIDs append-only, pieces resolved, regenerate twice identical, plugin/ current, Spriggit round trip byte-identical.
 plugin-check:
-	@$(PY) tools/ArgoniaGen/pipeline.py check $(FAIL)
+	@mkdir -p out && flock out/.plugin.lock $(PY) tools/ArgoniaGen/pipeline.py check $(FAIL)
 
 hooks:
 	@bash tooling/guards/install_hooks.sh
