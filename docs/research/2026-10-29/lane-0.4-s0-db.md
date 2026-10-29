@@ -15,7 +15,7 @@
 resolves, every source object rebuilds from the loaded tables (the lossless proof), 6.9 s, peak RSS 168 MB.
 The vocabulary table's 62 predicates and 43 verbs equal the set brief.py parsed from 85.
 
-**Pre-migration briefs captured** (needed for the byte-match): scratchpad
+**Pre-migration briefs captured** (needed for the byte-match): `out/pre-migration-briefs/` (gitignored), copied from
 `/tmp/claude-1000/-home-ubuntu-skyrim-argonia/00aec70d-9f88-4179-b6de-7faca8084fef/scratchpad/pre/` (lh38/, mr01/,
 place/ with 88 place briefs plus each person's exit code and stdout as `.rc`). If /tmp was cleared, regenerate them
 from the commit before the sources are deleted: `git show ca31b48:...` of brief.py/place_brief.py and world/sources.
