@@ -334,7 +334,7 @@ Weather:
     Global: 00082C:Argonia.esm
   - Weather: 10A242:Skyrim.esm
     Chance: 29
-    Global: 00082D:Argonia.esm
+    Global: 000837:Argonia.esm
   - Weather: 000811:Argonia.esm
     Chance: 16
     Global: 00082E:Argonia.esm
