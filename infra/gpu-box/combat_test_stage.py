@@ -186,6 +186,16 @@ def main():
         toml = tomls[-1]
         toml.write_text(re.sub(r"^bUseSprintKey\s*=.*$", "bUseSprintKey = true", toml.read_text(), flags=re.M))
         print("tk dodge on the sprint key in", toml.relative_to(mo2))
+    # One Click Power Attack: R2 (gamepad RT, code 281) power-attacks at once, as DS1's R2 (owner, 2026-10-29);
+    # holding attack still power-attacks (vanilla long press), so a keyboard keeps its heavy too.
+    ocpa = [f for n in names for f in (mo2 / "mods" / n).rglob("MCM/Config/OCPA/settings.ini")]
+    if ocpa:
+        text = ocpa[-1].read_text()
+        general, rest = text.split("[DualAttack]", 1)
+        general = re.sub(r"^iKeycode=.*$", "iKeycode=281", general, flags=re.M)
+        general = re.sub(r"^iLongPressMode=.*$", "iLongPressMode=0", general, flags=re.M)
+        ocpa[-1].write_text(general + "[DualAttack]" + rest)
+        print("one click power attack on R2 in", ocpa[-1].relative_to(mo2))
     plugins = []
     for n in names:  # later mods may ship the same plugin (Rim Parry's CTD fix): list each once, first place
         for f in sorted((mo2 / "mods" / n).iterdir()):

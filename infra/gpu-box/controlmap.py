@@ -18,7 +18,7 @@ START, BACK, LS, RS, LB, RB = 0x0010, 0x0020, 0x0040, 0x0080, 0x0100, 0x0200
 A, B, X, Y, LT, RT = 0x1000, 0x2000, 0x4000, 0x8000, 0x0009, 0x000A
 
 GAMEPLAY = {
-    "Right Attack/Block": [RB, RT],   # R1 light (hold for heavy), R2 the same until a separate heavy exists
+    "Right Attack/Block": [RB],       # R1 light (hold for heavy); R2 is One Click Power Attack's heavy (code 281)
     "Left Attack/Block": [LB, LT],    # L1 block; L1/L2 + R1 bashes, which Elden Parry turns into a parry
     "Sprint": [B],                    # the right button: tap rolls (Dodge Framework), hold runs
     "Activate": [A],                  # the bottom button: interact
