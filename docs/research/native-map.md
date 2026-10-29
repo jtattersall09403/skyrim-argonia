@@ -260,3 +260,56 @@ reports.
 | G45.1 | our creation view (G15.3) | 2, 6 | fully | 3.2 | — |
 | G45.2 | the opening quest's content | 1, 4, T | fully | 3.3 | — |
 | G46.1 | the installer and modlist; the no-assets guard | T | fully | 0.2 → 3.4 → 4.6 | — |
+
+## 4. What this map changes
+
+- **The dialogue intercept has a route-1 option the audit did not list:** P3's activate choice with *Replace
+  Default*. 1.3 §b's prototype tries it before the slot swap. If it holds, no 1.7.104 offsets are needed for the
+  intercept.
+- **Vanilla progression is switched off by data (P4), not by hooks.** The 1.1 router's "level-up and XP
+  suppression" becomes a check that `LevelUpMenu` never opens, plus a hook only if S16a finds a gain path that
+  ignores `useMult`.
+- **One carrier per hand, not one per skill (P1).** This keeps the actor-value budget small enough for the 1.3 §a
+  audit to fit.
+- **The ladder compiler links `skse/core` (P5).** The formulas are not written twice, in Python and C++.
+
+## 5. The Part 1 L4 stubs
+
+Each stub starts from a scene on the base save (0022), reads state through SkyLink and the bridge, keeps a still
+per step (0021), and fails if any read differs. "Core value" means the `skse/core` function run at L2 on the same
+inputs. Scene names are proposals for the 1.1 build lane.
+
+| Stub | Goal | Scene | Steps and the read that fails |
+|---|---|---|---|
+| S10a | G10.1 | `bat claywater-block` | List ArgoniaCore's registered families and hooks: every Part 1 family named in §6 is there. Register one hook id twice: the second is refused and logged |
+| S10b | G10.2 | `bat claywater-block` | Write a marker value into each family, rest (the rest save), quit, load: every value reads back equal. Load a save made with family version 1 into version 2: the migration ran (version reads 2, value converted) |
+| S10c | G10.3 | `bat claywater-block` | For the three Claywater people and the archetype, the form at the allocator's FormID has the editor id of its world DB row |
+| S11a | G11.1 | any | ArgoniaCore's load log of installed hooks and event sinks equals §6's hook list; one not in the list fails |
+| S11b | G11.2 | any | `fXPPerSkillRank`, ten perk-row multipliers and the reference character's base Health read in game equal the data table's values |
+| S13a | G13.1 | `bat claywater-ambush` | Read the archetype's level and max health with the player at level 1, then at level 20 (set through ArgoniaCore): equal both times |
+| S13b | G13.2 | `bat claywater-ambush` | The archetype's health, light-hit damage and armour rating equal the compiler's D2 output for its position |
+| S13c | G13.3 | `bat claywater-ambush` | Teleport the player 15 m from the archetype in its view: within 5 s it is in combat targeting the player; a Claywater person in the same view is not |
+| S14a | G14.1 | `bat sheet-1` … `bat sheet-5` | For five characters set through ArgoniaCore, read base Health, Stamina, Magicka, CarryWeight, SpeedMult, StaminaRate, MagickaRate, JumpingBonus: each equals the core value. At level 10 raise Endurance 50 → 70: Health 100 → 130 with no reload. Two identical blows on a training target with Strength 0 and 100: damage ratio 0.5 : 1.5 (P1 applied) |
+| S14b | G14.2 | `bat sheet-1` | All 27 skills read (14 AVs, 13 CSF globals) equal the co-save; the stats view lists 27 and a reader finds no One-handed, Two-handed or Pickpocket on any player screen |
+| S14c | G14.3 | `bat claywater-block` | The archetype's and one Claywater person's skills, health, stamina and carrier values equal the compile CLI's output for their rows |
+| S15a | G15.1 | any | The stats key opens our sheet view (still); `MenuOpenCloseEvent` never reports `StatsMenu` open |
+| S15b | G15.2 | `bat sheet-1` | Equip the cuirass, drink a Fortify Long Blade 10 potion: the stack lists both entries with sources; effective Long Blade = base + 10, back to base after 60 s game time |
+| S16a | G16.1 | `bat duel-ring` | Long Blade 15 (major, specialised): ten connecting blows of ≥ 15 % target health on a hostile → Long Blade 16; vastei equals the core value; vanilla One-handed XP (PlayerSkills) unchanged. Repeat one use of each Part 1 class (block, hit taken, cast, unlock): vanilla XP unchanged each time. A blow on a `trainingDummy` target adds 0 |
+| S16b | G16.2 | `bat sheet-1` | At level 1, one counted rank → one pending level; three misc ranks → one counted rank |
+| S16c | G16.3 | `bat camp` | With one pending level: activate the camp spot → our sitting view opens and `LevelUpMenu` never does; buy one Endurance point: vastei drops by `cost(End, 1, level)`, level +1, Health recomputed. Activate a bed spot inside the settlement bounds: refused, wait only |
+| S17a | G17.1 | `bat camp` then `bat claywater-ambush` | Rest at the camp, kill the archetype, carry 120 vastei, take lethal damage: the player wakes within 2 m of the camp marker, no save is loaded (a container moved before death stays moved), one pile ref at the death spot holds 120, carried is 0, the archetype is alive again. Teleport 1.5 m from the pile, activate: carried 120. Die twice: one pile, the second amount. The quicksave key and the journal's save entry write no file (save-folder count unchanged); one rest writes exactly one |
+| S17b | G17.2 | 1.5's journey | Fight to a pending level, die, wake, retrieve, rest, spend, load the rest save: every step's read passes |
+| S18a | G18.1 | `bat claywater-block` | Activate a Claywater person: our dialogue view opens and `DialogueMenu` never reports open; the view's greeting equals the record; clicking a hyperlinked keyword adds that topic to the `topics` family. The time from activation to the view's first frame is measured and recorded (no budget) |
+| S18b | G18.2 | `bat claywater-block` | Learn a topic from person A, ask person B: B answers, and B's text is B's record line, not A's |
+| S18c | G18.3 | `bat claywater-block` | Set B's disposition to 20, then 80: the topic's variant text differs and each equals its band's record; at 0, an essential topic still answers |
+| S19a | G19.1 | `bat quest-board` | Start the quest in dialogue: `GetStage` reads the start stage, its fragment's native call is logged, the journal family holds the entry |
+| S19b | G19.2 | `bat quest-board` | With `knowsTopic(T)` false the gated line is absent; grant T through ArgoniaCore: the generated global reads 1 on the next frame and the line appears. The negated condition does the reverse |
+| S20 | G20.1 | `bat claywater-block` | The greeting and two answers as the view received them (message log) equal the world DB rows byte for byte |
+| S22a | G22.1 | `bat quest-board` | Stills at three steps of the quest show no compass and no quest marker; the target's map marker is undiscovered before arrival and discovered after |
+| S22b | G22.3 | `bat quest-board` | The journal view's entry text equals the record and carries the game date |
+| S24 | G24.1 | `bat claywater-block` | Open the dialogue window, journal, HUD and chart: each is a PrismaUI view (still; a reader confirms Pelagiad and the theme); `DialogueMenu` and `JournalMenu` never report open |
+| S25a | G25.1 | `bat duel-ring` | A straight-sword hit adds Long Blade progress and no One-handed XP; a dagger hit adds Short Blade |
+| S25b | G25.2 | `bat duel-ring` | 30 blocks lower the shield's condition by the core value; two identical shields in one stack keep separate conditions (or the loss is recorded); a weapon at 0 refuses the attack with "Your weapon is broken" and spends no stamina; damage at condition 1 equals damage at 100 |
+| S30a | G30.1 | `bat duel-ring` | Draw, lock on, roll through a swing, guard, parry, riposte: each action's event or graph variable from the stack reads in order |
+| S30b | G30.2 | `bat duel-ring` | A blow of known listed damage on the reference armour removes the health the wiring draft predicts, within the Part 1 approximation it records; a light attack's stamina cost equals the spec × the burden multiplier at each tier |
+| S31 | G31.1 | any | Every game setting and mod setting in the wiring draft reads back in game equal to the table |
