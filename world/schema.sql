@@ -3596,7 +3596,8 @@ CREATE TABLE "journal_entry_grounding" (
 
 -- Home of every fact (decision 0030: facts): what is true, as the place states it (`claim`) and as a person says it
 -- (`says`), with the cues that name it; a place fact carries its place and carrier, a quest fact its quest and where
--- it comes from (`from_ref`: a truth event, a place fact or a culture-sheet entry).
+-- it comes from (`from_ref`: a truth event, a place fact or a culture-sheet entry); `ord` is its position in its
+-- place's or quest's list (the order they state it in).
 CREATE TABLE "fact" (
   "id" TEXT NOT NULL,
   "says" TEXT,
@@ -3606,13 +3607,16 @@ CREATE TABLE "fact" (
   "carrier_built_uid" TEXT,
   "carrier_built_type" TEXT,
   "place_id" TEXT REFERENCES "place"("id"),
+  "ord" INTEGER,
   "carrier_queued_type" TEXT,
   "carrier_queued_ref" TEXT,
   "tag" TEXT,
   "provision" TEXT,
   "from_ref" TEXT,
   "quest_id" TEXT REFERENCES "quest"("id"),
-  PRIMARY KEY ("id")
+  PRIMARY KEY ("id"),
+  UNIQUE ("place_id", "ord"),
+  UNIQUE ("quest_id", "ord")
 );
 
 -- Home of one row per element of `cues` of each fact row (ordered by `ord` where it has one).
@@ -4060,7 +4064,7 @@ CREATE TABLE "culture_dissent" (
 -- Home of each person's stance and voice (decision 0030: culture): the culture chain they speak from, per topic class
 -- their lean and where it comes from and any deviation, and their voice.
 CREATE TABLE "stance" (
-  "personId" TEXT NOT NULL,
+  "person_id" TEXT NOT NULL REFERENCES "npc"("id"),
   "voice_quirk" TEXT NOT NULL,
   "voice_chatter" TEXT NOT NULL,
   "voice_contraction_rate" REAL NOT NULL,
@@ -4068,56 +4072,56 @@ CREATE TABLE "stance" (
   "voice_favourite_subject" TEXT NOT NULL,
   "reviewed" BOOLEAN NOT NULL CHECK ("reviewed" IN (0, 1)),
   "place_id" TEXT NOT NULL REFERENCES "place"("id"),
-  PRIMARY KEY ("personId")
+  PRIMARY KEY ("person_id")
 );
 
 -- Home of one row per element of `chain` of each stance row (ordered by `ord` where it has one).
 CREATE TABLE "stance_chain" (
-  "personId" TEXT NOT NULL,
+  "person_id" TEXT NOT NULL,
   "ord" INTEGER NOT NULL,
   "value" TEXT NOT NULL REFERENCES "culture_sheet"("id"),
-  PRIMARY KEY ("personId", "ord"),
-  FOREIGN KEY ("personId") REFERENCES "stance" ("personId") ON DELETE CASCADE
+  PRIMARY KEY ("person_id", "ord"),
+  FOREIGN KEY ("person_id") REFERENCES "stance" ("person_id") ON DELETE CASCADE
 );
 
 -- Home of one row per key of `topics` of each stance row (ordered by `ord` where it has one).
 CREATE TABLE "stance_topic" (
-  "personId" TEXT NOT NULL,
+  "person_id" TEXT NOT NULL,
   "opinion_class" TEXT NOT NULL REFERENCES "opinion_class"("id"),
   "lean" INTEGER NOT NULL,
   "from" TEXT NOT NULL REFERENCES "culture_sheet"("id"),
   "deviation_lean" INTEGER,
   "deviation_reason" TEXT,
-  PRIMARY KEY ("personId", "opinion_class"),
-  FOREIGN KEY ("personId") REFERENCES "stance" ("personId") ON DELETE CASCADE
+  PRIMARY KEY ("person_id", "opinion_class"),
+  FOREIGN KEY ("person_id") REFERENCES "stance" ("person_id") ON DELETE CASCADE
 );
 
 -- Home of one row per key of `voice.answerLength` of each stance row (ordered by `ord` where it has one).
 CREATE TABLE "stance_answer_length" (
-  "personId" TEXT NOT NULL,
+  "person_id" TEXT NOT NULL,
   "length_class" TEXT NOT NULL,
   "min" INTEGER NOT NULL,
   "max" INTEGER NOT NULL,
-  PRIMARY KEY ("personId", "length_class"),
-  FOREIGN KEY ("personId") REFERENCES "stance" ("personId") ON DELETE CASCADE
+  PRIMARY KEY ("person_id", "length_class"),
+  FOREIGN KEY ("person_id") REFERENCES "stance" ("person_id") ON DELETE CASCADE
 );
 
 -- Home of one row per element of `voice.neverMentions` of each stance row (ordered by `ord` where it has one).
 CREATE TABLE "stance_never_mentions" (
-  "personId" TEXT NOT NULL,
+  "person_id" TEXT NOT NULL,
   "ord" INTEGER NOT NULL,
   "value" TEXT NOT NULL,
-  PRIMARY KEY ("personId", "ord"),
-  FOREIGN KEY ("personId") REFERENCES "stance" ("personId") ON DELETE CASCADE
+  PRIMARY KEY ("person_id", "ord"),
+  FOREIGN KEY ("person_id") REFERENCES "stance" ("person_id") ON DELETE CASCADE
 );
 
 -- Home of one row per element of `voice.explainerOf` of each stance row (ordered by `ord` where it has one).
 CREATE TABLE "stance_explainer_of" (
-  "personId" TEXT NOT NULL,
+  "person_id" TEXT NOT NULL,
   "ord" INTEGER NOT NULL,
   "value" TEXT NOT NULL REFERENCES "topic"("id"),
-  PRIMARY KEY ("personId", "ord"),
-  FOREIGN KEY ("personId") REFERENCES "stance" ("personId") ON DELETE CASCADE
+  PRIMARY KEY ("person_id", "ord"),
+  FOREIGN KEY ("person_id") REFERENCES "stance" ("person_id") ON DELETE CASCADE
 );
 
 -- == route ==

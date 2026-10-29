@@ -15,6 +15,7 @@ from tools.argonia_world.migrate_0030 import engine as E
 from tools.argonia_world.migrate_0030 import families as F
 
 REPO = db.REPO
+KEEP = {"formid"}   # tables other tools own (the §a allocator's FormIDs): carried over, never re-migrated
 
 
 def suggest_fks(eng: E.Engine) -> list[str]:
@@ -76,7 +77,12 @@ def main(argv=None) -> int:
     dbdir = out_root / "world" / "db"
     dbdir.mkdir(parents=True, exist_ok=True)
     for f in dbdir.glob("*.jsonl"):
-        f.unlink()
+        if f.stem not in KEEP:
+            f.unlink()
+    for name in KEEP:   # always the committed world's copy, byte for byte, whichever root is written
+        live = REPO / db.DB_DIR / f"{name}.jsonl"
+        if live.exists() and live.resolve() != (dbdir / f"{name}.jsonl").resolve():
+            (dbdir / f"{name}.jsonl").write_bytes(live.read_bytes())
     w = db.load(out_root)          # empty world on the new schema
     for name, rows in F.all_rows(eng):
         t = w.table(name)
@@ -114,7 +120,7 @@ def main(argv=None) -> int:
         for b in bad[:30]:
             print("  ", b)
         return 1
-    w.save(tables=[t for t in w.tables])
+    w.save(tables=[t for t in w.tables if t not in KEEP])
     print(f"migrated: {len(w.tables)} tables, {sum(db.counts(w).values())} rows -> {dbdir}")
     return 0
 

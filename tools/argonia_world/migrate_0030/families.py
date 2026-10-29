@@ -179,7 +179,7 @@ def vocabulary_rows():
 # (sockets by id, water bodies, sites, slots, magic effects, assets); their chunks add the key with the table.
 LATE_FK = {
     "culture_sheet.region_id": "region", "dialogue_line.place_id": "place", "fact.place_id": "place",
-    "fact.quest_id": "quest", "npc.home_place_id": "place", "npc_home_bed.place_id": "place",
+    "fact.quest_id": "quest", "npc.home_place_id": "place", "stance.person_id": "npc", "npc_home_bed.place_id": "place",
     "npc_territory.area_id": "place", "place_life_groups_spots.bed_place_id": "place",
     "place_watch.answers_id": "faction", "place_zones.owner_id": "npc", "route_structure.way_id": "route",
     "route_structure_exemplar.ends_east_place_id": "place", "route_structure_exemplar.ends_west_way_id": "route",
@@ -195,6 +195,7 @@ LATE_FK = {
 
 def finish(eng):
     eng.terms = vocabulary_rows()
+    eng.tables["fact"].cols["ord"].declared = "INTEGER"     # a context column: its type is not inferred
     for ref, target in LATE_FK.items():
         t, c = ref.split(".")
         if t in eng.tables and c in eng.tables[t].cols:
@@ -412,8 +413,8 @@ def facts(eng):
     rows = {}
     builds = []
     for f, d in srcglob("placement/facts/*.json"):
-        for x in d["facts"]:
-            rows[x["id"]] = ({"place_id": d["placeId"]}, dict(x))
+        for i, x in enumerate(d["facts"]):
+            rows[x["id"]] = ({"place_id": d["placeId"], "ord": i}, dict(x))
         if d.get("world"):
             builds.append(({"place_id": d["placeId"]}, {k: v for k, v in d["world"].items()}))
     for x in src("dialogue/facts.json")["entries"]:
@@ -422,13 +423,14 @@ def facts(eng):
         else:
             rows[x["id"]] = ({}, dict(x))
     for q in QUEST_RECORDS:
-        for x in q["facts"]:
-            rows[x["id"]] = ({"quest_id": q["id"]}, dict(x))
+        for i, x in enumerate(q["facts"]):
+            rows[x["id"]] = ({"quest_id": q["id"], "ord": i}, dict(x))
     eng.fact_ids = set(rows)
     yield Spec("fact", "Home of every fact (decision 0030: facts): what is true, as the place states it (`claim`) "
                "and as a person says it (`says`), with the cues that name it; a place fact carries its place and "
                "carrier, a quest fact its quest and where it comes from (`from_ref`: a truth event, a place fact or "
-               "a culture-sheet entry).", sorted(rows.values(), key=lambda r: r[1]["id"]),
+               "a culture-sheet entry); `ord` is its position in its place's or quest's list (the order they state "
+               "it in).", sorted(rows.values(), key=lambda r: r[1]["id"]), unique=[["place_id", "ord"], ["quest_id", "ord"]],
                rename={"from": "from_ref"}, inline={"carrier"},
                fk={"place_id": "place", "quest_id": "quest"},
                tables={"cues": "fact_cue"})
@@ -595,10 +597,11 @@ def dialogue(eng):
                        "dissent": "culture_dissent"})
     st = []
     for f, d in srcglob("dialogue/stance/*.json"):
-        st += entries(d, {"place_id": d["placeId"]})
+        st += [(ctx, {("person_id" if k == "personId" else k): v for k, v in e.items()})
+               for ctx, e in entries(d, {"place_id": d["placeId"]})]
     yield Spec("stance", "Home of each person's stance and voice (decision 0030: culture): the culture chain they "
                "speak from, per topic class their lean and where it comes from and any deviation, and their voice.",
-               st, pk=["personId"], drop=drops(), fk={"personId": "npc", "chain[]": "culture_sheet",
+               st, pk=["person_id"], drop=drops(), fk={ "chain[]": "culture_sheet",
                                                       "topics{*}.from": "culture_sheet", "place_id": "place",
                                                       "voice.explainerOf[]": "topic"},
                maps={"topics": "opinion_class", "voice.answerLength": "length_class"}, inline={"voice"},

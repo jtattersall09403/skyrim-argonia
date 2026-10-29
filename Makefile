@@ -4,7 +4,7 @@ PARTS := guard lint unit budget links plugin-check skse immersion
 # A failing part records its name, then fails.
 FAIL = || { echo $@ >> $(RED); exit 1; }
 
-.PHONY: check hooks plugin $(PARTS)
+.PHONY: check hooks plugin db $(PARTS)
 
 check:
 	@rm -f $(RED)
@@ -27,6 +27,14 @@ budget:
 
 links:
 	@python3 tooling/check_links.py $(FAIL)
+
+# The world database (decision 0030): the load with every constraint and the named checks; no tool reads world/ itself.
+world:
+	@python3 -m tools.argonia_world.db check && python3 tools/argonia_world/check_world_reads.py $(FAIL)
+
+# out/world.sqlite for DuckDB, pandas or the sqlite3 shell.
+db:
+	@python3 -m tools.argonia_world.db build
 
 # skse/core and the bridge protocol: pure C++ unit tests built natively on the build VM (0.3 §b).
 skse:
