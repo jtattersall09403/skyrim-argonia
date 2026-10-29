@@ -167,7 +167,9 @@ class World:
         """Any read-only SQL; rows support r["col"] and r[0]."""
         if not re.match(r"\s*(SELECT|WITH|PRAGMA)\b", sql, re.I):
             raise ValueError("query() reads; write through insert/update/delete")
-        return self.con.execute(sql, params).fetchall()
+        cur = self.con.cursor()
+        cur.row_factory = sqlite3.Row
+        return cur.execute(sql, params).fetchall()
 
     def values(self, sql: str, *params) -> list:
         """The first column of every row of a query."""

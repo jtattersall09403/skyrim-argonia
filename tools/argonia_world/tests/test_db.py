@@ -15,10 +15,10 @@ CREATE TABLE npc_faction (npc_id TEXT NOT NULL REFERENCES npc(id) ON DELETE CASC
 
 
 def world(tmp_path, tables):
-    (tmp_path / "world" / "db").mkdir(parents=True)
-    (tmp_path / "world" / "schema.sql").write_text(SCHEMA)
+    (tmp_path / db.DB_DIR).mkdir(parents=True)
+    (tmp_path / db.SCHEMA).write_text(SCHEMA)
     for name, rows in tables.items():
-        (tmp_path / "world" / "db" / f"{name}.jsonl").write_text("".join(json.dumps(r) + "\n" for r in rows))
+        (tmp_path / db.DB_DIR / f"{name}.jsonl").write_text("".join(json.dumps(r) + "\n" for r in rows))
     return tmp_path
 
 
@@ -49,7 +49,7 @@ def test_write_path_refuses_dangling_and_writes_sorted(tmp_path):
         w.save()
     w.delete("npc_faction", "npc.a", 0)
     w.save()
-    lines = (tmp_path / "world/db/npc.jsonl").read_text().splitlines()
+    lines = (tmp_path / db.DB_DIR / "npc.jsonl").read_text().splitlines()
     assert [json.loads(x)["id"] for x in lines] == ["npc.a", "npc.b"]
     assert json.loads(lines[1]) == {"id": "npc.b", "name": "B", "fight": 30, "essential": True, "weight": 1.0}
 

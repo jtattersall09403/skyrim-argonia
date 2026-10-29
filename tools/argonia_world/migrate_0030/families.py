@@ -176,6 +176,12 @@ def vocabulary_rows():
 
 def finish(eng):
     eng.terms = vocabulary_rows()
+    # The promise family stays unmigrated (the place builds own it), but its keys come in now: a journal entry's
+    # `groundedIn` names a fact or a promise, and the named check needs the promise ids to resolve. Read without
+    # entering MIGRATED: the promise files stay in world/sources until their family migrates.
+    eng.promise_keys = sorted(({"id": r["id"], "place_id": d["placeId"]}
+                               for d in (jload(f) for f in sorted(glob.glob(str(SRC / "placement/promises/*.json"))))
+                               for r in d.get("promises") or []), key=lambda r: r["id"])
 
 
 def render(eng) -> str:
@@ -270,6 +276,7 @@ def all_rows(eng):
     yield "action_list", eng.act_lists
     yield "action", eng.act_rows
     yield "action_arg", eng.act_args
+    yield "promise", eng.promise_keys
 
 
 def registry(table, rel, comment, **kw):
