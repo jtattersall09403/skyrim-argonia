@@ -2,7 +2,8 @@
 # the real buttons the owner presses (0.2 §c). Run in the desktop session (run.sh desktop); Skyrim reads it by XInput.
 #   pad.ps1 -Seq 'B:150 wait:900 LB:1200 RT:150 RS:150 LX=-1:800 LY=1,LX=1:700'
 # Steps: BUTTON:ms presses and releases (A B X Y LB RB LS RS START BACK UP DOWN LEFT RIGHT), LT/RT:ms pull a trigger,
-# AXIS=v[,AXIS=v]:ms holds sticks (LX LY RX RY, -1..1), wait:ms pauses. Each step prints a timestamped line, the
+# AXIS=v[,AXIS=v]:ms holds sticks (LX LY RX RY, -1..1) then centres them, +AXIS=v[,...]:ms sets them and keeps them
+# set through the next steps, -:ms centres them, wait:ms pauses. Each step prints a timestamped line, the
 # journey's event record. The client DLL is Nefarius.ViGEm.Client (MIT, NuGet 1.21.256) in C:\argonia\tools\vigem.
 param([Parameter(Mandatory)][string]$Seq, [int]$Settle = 1500)
 $ErrorActionPreference = 'Stop'
@@ -25,6 +26,11 @@ try {
     if ($what -in 'LT', 'RT') {
       $s = if ($what -eq 'LT') { $sl::LeftTrigger } else { $sl::RightTrigger }
       $pad.SetSliderValue($s, 255); Start-Sleep -Milliseconds $ms; $pad.SetSliderValue($s, 0); continue
+    }
+    if ($what -eq '-') { foreach ($k in $axes.Keys) { $pad.SetAxisValue($axes[$k], 0) }; Start-Sleep -Milliseconds $ms; continue }
+    if ($what.StartsWith('+')) {   # sticks held across the following steps (a roll's direction while B is tapped)
+      foreach ($a in ($what.Substring(1) -split ',')) { $k, $v = $a -split '='; $pad.SetAxisValue($axes[$k], [int16]([double]$v * 32767)) }
+      Start-Sleep -Milliseconds $ms; continue
     }
     if ($what -match '=') {
       $set = $what -split ','

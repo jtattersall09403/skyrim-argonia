@@ -51,6 +51,14 @@ DATA_DIRS = {"meshes", "textures", "scripts", "skse", "interface", "sound", "mus
              "pandora_engine", "mcm", "source", "strings", "video", "lodsettings", "grass", "shadersfx", "calientetools",
              "netscriptframework", "dyndolod", "materials", "platform"}
 PLUGIN_EXT = (".esp", ".esm", ".esl")
+RESERVE = 10 << 30  # the build VM's disk is shared by every lane: no write over 2 GB may leave less than this free
+
+
+def room(need, what):
+    """Refuse a write of `need` bytes that would leave under RESERVE free on the build VM (planner, 2026-10-29)."""
+    free = shutil.disk_usage(HOME).free
+    if need > (2 << 30) and free - need < RESERVE:
+        raise SystemExit(f"{what}: needs {need >> 30} GB, {free >> 30} GB free; would leave under {RESERVE >> 30} GB")
 
 
 # ---- manifest -----------------------------------------------------------------------------------------------------
@@ -69,7 +77,7 @@ def chosen(doc, sets, dev):
     pick.update(sets)
     out = []
     for m in doc["mods"]:
-        if m["profile"] == "pipeline" or (m["profile"] == "dev" and not dev):
+        if m["profile"] == "pipeline" or (m["profile"] == "dev" and not dev) or m.get("dropped"):
             continue
         sets = m.get("set")  # one name or a list: a row shared by several sets stays one row
         if sets and pick.get(m["group"]) not in ([sets] if isinstance(sets, str) else sets):
@@ -124,6 +132,9 @@ def fetch_one(m, key):
     if dest.exists() and dest.stat().st_size > 0:
         return dest, "have"
     s = m["source"]
+    room(m.get("size_kb", 0) * 1024, f"fetch {m['id']}")
+    if s3("cp", f"s3://{CACHE_BUCKET}/mods/{dest.name}", str(dest)).returncode == 0:
+        return dest, "cache"  # the private cache holds every archive once fetched (evict deletes local copies)
     if "nexus" in s:
         link = json.load(urllib.request.urlopen(urllib.request.Request(
             f"{API}/games/{s['nexus']}/mods/{s['mod']}/files/{s['file']}/download_link.json",
@@ -132,17 +143,43 @@ def fetch_one(m, key):
     elif "github" in s:
         download(f"https://github.com/{s['github']}/releases/download/{urllib.parse.quote(s['tag'], safe='')}/"
                  f"{urllib.parse.quote(s['asset'])}", dest)
-    else:  # a manual download (ModDB): the private S3 cache first, then the old vault (R2)
-        if s3("cp", f"s3://{CACHE_BUCKET}/mods/{dest.name}", str(dest)).returncode != 0:
-            sys.path.insert(0, str(REPO / "tools"))
-            import fetch_vault as fv  # noqa: E402 (needs boto3: the toolchain venv)
-            body = fv.client(fv.secrets()).get_object(Bucket=fv.BUCKET, Key=f"{fv.PREFIX}{s['vault']}.tar")["Body"]
-            tmp = dest.with_name(dest.name + ".part")
-            with open(tmp, "wb") as f:
-                while c := body.read(8 << 20):
-                    f.write(c)
-            tmp.rename(dest)
+    else:  # a manual download (ModDB): the old vault (R2)
+        sys.path.insert(0, str(REPO / "tools"))
+        import fetch_vault as fv  # noqa: E402 (needs boto3: the toolchain venv)
+        body = fv.client(fv.secrets()).get_object(Bucket=fv.BUCKET, Key=f"{fv.PREFIX}{s['vault']}.tar")["Body"]
+        tmp = dest.with_name(dest.name + ".part")
+        with open(tmp, "wb") as f:
+            while c := body.read(8 << 20):
+                f.write(c)
+        tmp.rename(dest)
     return dest, "got"
+
+
+def cached_sha(name):
+    """The sha256 the private cache recorded for an archive (object metadata), or None if it is not cached."""
+    r = subprocess.run(["aws", "s3api", "head-object", "--bucket", CACHE_BUCKET, "--key", f"mods/{name}", "--region",
+                        "eu-west-2", "--query", "Metadata.sha256", "--output", "text"], capture_output=True, text=True)
+    return r.stdout.strip() if r.returncode == 0 and r.stdout.strip() not in ("", "None") else None
+
+
+def cache(path, h):
+    """The archive into s3://<cache>/mods/ with its sha256, unless it is already there with that hash."""
+    if cached_sha(path.name) != h:
+        r = s3("cp", str(path), f"s3://{CACHE_BUCKET}/mods/{path.name}", "--metadata", f"sha256={h}")
+        if r.returncode != 0:
+            raise SystemExit(f"cache {path.name}: {r.stderr[-300:]}")
+
+
+def cmd_evict(a):
+    """Delete each local archive once the private cache holds it with the manifest's sha256 (stage refetches)."""
+    freed = 0
+    for m in manifest()["mods"]:
+        p = archive_path(m)
+        if p.exists():
+            cache(p, m["sha256"])
+            freed += p.stat().st_size
+            p.unlink()
+    print(f"evicted {freed >> 20} MB of archives; s3://{CACHE_BUCKET}/mods/ holds them")
 
 
 def cmd_fetch(a):
@@ -167,8 +204,8 @@ def cmd_fetch(a):
             bad.append(m["id"])
         else:
             print(f"{how:5} {m['id']}: ok")
-        if "vault" in m["source"] and s3("ls", f"s3://{CACHE_BUCKET}/mods/{path.name}").returncode != 0:
-            s3("cp", str(path), f"s3://{CACHE_BUCKET}/mods/{path.name}")  # the private cache (0.2 §b)
+        if m["sha256"] == h:
+            cache(path, h)
     if changed:
         save_manifest(doc)
     if bad:
@@ -227,14 +264,16 @@ def data_root(src):
     while True:
         items = [f for f in root.iterdir() if not f.name.startswith(".")]
         dirs = [f for f in items if f.is_dir()]
-        if len(items) == 1 and dirs and dirs[0].name.lower() == "data":
-            return dirs[0]
+        loose = [f for f in items if f.is_file() and f.suffix.lower() in DOC_EXT]  # an example config, a readme
+        if len(dirs) == 1 and len(items) - len(loose) == 1 and dirs[0].name.lower() == "data":
+            return dirs[0]  # SkyLink AI: Data/ beside claude_desktop_config_example.json
         if len(items) == 1 and dirs and dirs[0].name.lower() not in DATA_DIRS:
             root = dirs[0]
         else:
             return root
 
 
+DOC_EXT = (".txt", ".md", ".pdf", ".jpg", ".png", ".url", ".json", ".docx")
 SKIP_TOP = ("docs", "fomod", "meta.ini", "readme", "license", "licence", "copying", "changes", "exceptions", "credits",
             "changelog")
 
@@ -440,6 +479,11 @@ def vanilla_plugins():
     return [n for n in (HERE / "vanilla-data-files.txt").read_text().split() if n.endswith(PLUGIN_EXT)]
 
 
+# manifest fields that describe a row without changing what is laid
+DOC_FIELDS = {"licence", "permission_summary", "ai_clause", "permission_ask", "permission_evidence", "runtime",
+              "conflicts", "linked_or_forked_by", "plugins"}
+
+
 def cmd_stage(a):
     doc = manifest()
     rows = chosen(doc, dict(s.split("=", 1) for s in a.set), a.dev)
@@ -447,29 +491,38 @@ def cmd_stage(a):
     keys = STACK / "staged"  # a row is re-staged only when its archive or its manifest entry changed
     for d in (mods, tools, root, keys):
         d.mkdir(parents=True, exist_ok=True)
-    names, record, ids = [], {}, {m["id"] for m in rows}
+    names, record, ids, pruned, restaged = [], {}, {m["id"] for m in rows}, set(), {"pandora-output"}
+    prev = json.loads((STACK / "installed.json").read_text())["files"] if (STACK / "installed.json").exists() else {}
     for d in list(mods.iterdir()):
         if d.name not in ids and d.name != "pandora-output":
             shutil.rmtree(d)
     for m in rows:
-        data, key = mods / m["id"], hashlib.sha256(json.dumps(m, sort_keys=True).encode()).hexdigest()
+        laid = {k: v for k, v in m.items() if k not in DOC_FIELDS}  # a permission or note edit does not re-stage
+        data, key = mods / m["id"], hashlib.sha256(json.dumps(laid, sort_keys=True).encode()).hexdigest()
         kf = keys / f"{m['id']}.json"
-        if kf.exists() and json.loads(kf.read_text())["key"] == key and (data.exists() or m.get("install")):
+        laid_ok = (tools / m["id"]).exists() if m.get("install") == "tool" else (data.exists() or m.get("install"))
+        if kf.exists() and json.loads(kf.read_text())["key"] == key and laid_ok:
             taken = json.loads(kf.read_text())["fomod"]
+            if json.loads(kf.read_text()).get("pruned"):
+                pruned.add(m["id"])
         else:
             src = work / m["id"]
+            if not archive_path(m).exists():
+                fetch_one(m, secret("NEXUS_API_KEY"))
+            room(archive_path(m).stat().st_size * 3, f"unpack {m['id']}")  # unpacked plus staged copy
             unpack(archive_path(m), src)
             shutil.rmtree(data, ignore_errors=True)
             data.mkdir()
-            if m.get("install") == "tool":
+            if m.get("install") == "tool":  # a tool is never a mod: nothing of it reaches Data
                 shutil.rmtree(tools / m["id"], ignore_errors=True)
             taken = place(m, src, data, tools, root)
             shutil.rmtree(src)
             prune(data, m)
             apply_ini(m, data)
             kf.write_text(json.dumps({"key": key, "fomod": taken}))
+            restaged.add(m["id"])
             print(f"staged {m['id']}" + (f" ({'; '.join(taken)})" if taken else ""))
-        if data.exists() and any(data.iterdir()):
+        if m["id"] in pruned or (data.exists() and any(data.iterdir())):
             names.append(m["id"])
         record[m["id"]] = {"fomod": taken} if taken else {}
     shutil.rmtree(work, ignore_errors=True)
@@ -493,10 +546,16 @@ def cmd_stage(a):
     (prof / "plugins.txt").write_text("".join(f"*{p}\r\n" for p in plugins))
     (prof / "loadorder.txt").write_text("".join(f"{p}\r\n" for p in vanilla_plugins() + plugins))
     files = {}
-    for n in names:
-        for f in sorted((mods / n).rglob("*")):
-            if f.is_file():
-                files[str(f.relative_to(mods / n)).replace("/", "\\").lower()] = [n, sha256(f)]  # later mods win
+    for n in names:  # later mods win
+        hf = keys / f"{n}.files.json"  # the row's own file hashes, kept with its key: a skipped row is not re-hashed
+        if n in restaged or not hf.exists():
+            if n in pruned:  # pushed, verified on the machine and cut to its plugins here: its record stands
+                own = {k: v[1] for k, v in prev.items() if v[0] == n}
+            else:
+                own = {str(f.relative_to(mods / n)).replace("/", "\\").lower(): sha256(f)
+                       for f in sorted((mods / n).rglob("*")) if f.is_file()}
+            hf.write_text(json.dumps(own, indent=0))
+        files.update((k, [n, h]) for k, h in json.loads(hf.read_text()).items())
     for f in sorted(root.rglob("*")):
         if f.is_file():
             files["..\\" + f.name.lower()] = ["skse", sha256(f)]
@@ -511,6 +570,28 @@ def run(*args, check=True, capture=False):
     if check and r.returncode != 0:
         raise SystemExit(f"run.sh {args[0]} failed: {(r.stderr or '')[-400:]}")
     return r.stdout if capture else ""
+
+
+PART = 1 << 30  # a mod's tar goes over in 1 GB parts, one on the build VM's disk at a time (BM&V is 21 GB)
+
+
+def send_tar(src, out, n):
+    """tar `src` as C:/argonia/MO2/push/<n>.tar.NNN parts, never the whole tar on the build VM's disk."""
+    put = f"{RUN} put \"$FILE\" C:/argonia/MO2/push/ >/dev/null && rm \"$FILE\""
+    tar = subprocess.Popen(["tar", "-cf", "-", "-C", str(src), "."], stdout=subprocess.PIPE)
+    subprocess.run(["split", "-b", str(PART), "-d", "-a", "3", f"--filter=cat > \"$FILE\" && {put}", "-",
+                    str(out / f"{n}.tar.")], stdin=tar.stdout, check=True)
+    tar.stdout.close()
+    if tar.wait():
+        raise SystemExit(f"tar of {src} failed")
+
+
+def join_parts(n):
+    """PowerShell that joins <n>.tar.NNN (in name order) into <n>.tar and removes the parts."""
+    p = rf"C:\argonia\MO2\push\{n}.tar"
+    return (rf"$o = [IO.File]::Create('{p}'); Get-ChildItem -LiteralPath C:\argonia\MO2\push -Filter '{n}.tar.*' | "
+            rf"? {{ $_.Name -ne '{n}.tar' }} | Sort-Object Name | % {{ $i = [IO.File]::OpenRead($_.FullName); $i.CopyTo($o); $i.Close(); "
+            rf"Remove-Item -LiteralPath $_.FullName }}; $o.Close(); ")
 
 
 def cmd_push(a):
@@ -529,11 +610,10 @@ def cmd_push(a):
     batch = [todo[i:i + 12] for i in range(0, len(todo), 12)]
     for group in batch:
         for n in group:
-            subprocess.run(["tar", "-cf", str(out / f"{n}.tar"), "-C", str(MO2 / "mods" / n), "."], check=True)
-            run("put", str(out / f"{n}.tar"), f"C:/argonia/MO2/push/{n}.tar")
-            (out / f"{n}.tar").unlink()
+            send_tar(MO2 / "mods" / n, out, n)
         script = "; ".join(rf"Remove-Item -Recurse -Force -LiteralPath 'C:\argonia\MO2\mods\{n}' -EA SilentlyContinue; "
                            rf"New-Item -ItemType Directory -Force 'C:\argonia\MO2\mods\{n}' | Out-Null; "
+                           + join_parts(n) +
                            rf"tar -xf 'C:\argonia\MO2\push\{n}.tar' -C 'C:\argonia\MO2\mods\{n}'; "
                            rf"Remove-Item 'C:\argonia\MO2\push\{n}.tar'" for n in group)
         run("ps", script)
@@ -581,7 +661,8 @@ def cmd_menu(a):
     if "MAIN-MENU OK" not in out:
         raise SystemExit("main menu not reached")
     loaded = [l for l in out.splitlines() if "loaded correctly" in l]
-    failed = [l for l in out.splitlines() if l.startswith("plugin ") and "loaded correctly" not in l
+    # SKSE logs one "plugin <name>.dll (...)" line per DLL it finds; msdia140.dll (Crash Logger's helper) is no plugin
+    failed = [l for l in out.splitlines() if re.match(r"plugin \S.*\.dll \(", l, re.I) and "loaded correctly" not in l
               and "no version data" not in l]
     print(f"{len(loaded)} DLLs loaded, {len(failed)} not")
     if failed:
@@ -604,7 +685,8 @@ def cmd_verify(a):
     for m in doc["mods"]:
         p = archive_path(m)
         if not p.exists():
-            bad.append(f"{m['id']}: archive missing")
+            if cached_sha(p.name) != m.get("sha256"):
+                bad.append(f"{m['id']}: archive neither here nor in the cache with the manifest's sha256")
         elif m.get("sha256") != sha256(p):
             bad.append(f"{m['id']}: archive sha256 differs from the manifest")
     print(f"archives: {len(doc['mods']) - len(bad)} of {len(doc['mods'])} match")
@@ -614,6 +696,28 @@ def cmd_verify(a):
         bad.append("installed files differ (above)")
     if bad:
         raise SystemExit("\n".join(bad))
+
+
+def cmd_prune(a):
+    """After the machine's verify passes: masters first, then each staged mod cut to its plugins (the build VM
+    keeps only what ArgoniaGen masters; the machine holds the mod, installed.json its hashes)."""
+    out = run("ps", r"& C:\argonia\infra\stack.ps1 on | Out-Null; & C:\argonia\infra\stack.ps1 verify", capture=True)
+    print(out.strip()[-600:])
+    if "VERIFY OK" not in out:
+        raise SystemExit("the machine does not match installed.json: nothing pruned")
+    cmd_masters(a)
+    freed = 0
+    for mod in sorted((MO2 / "mods").iterdir()):
+        for f in sorted(mod.rglob("*"), key=lambda x: -len(x.parts)):
+            if f.is_file() and not (f.parent == mod and f.suffix.lower() in PLUGIN_EXT):
+                freed += f.stat().st_size
+                f.unlink()
+            elif f.is_dir() and not any(f.iterdir()):
+                f.rmdir()
+        kf = STACK / "staged" / f"{mod.name}.json"
+        if kf.exists():
+            kf.write_text(json.dumps({**json.loads(kf.read_text()), "pruned": True}))
+    print(f"pruned {freed >> 20} MB of staged files")
 
 
 def bsa_names(path):
@@ -644,7 +748,15 @@ def cmd_masters(a):
     lists.mkdir(parents=True, exist_ok=True)
     inst = json.loads((STACK / "installed.json").read_text())
     n = 0
+    keys = STACK / "staged"
     for mod in sorted((MO2 / "mods").iterdir()):
+        kf = keys / f"{mod.name}.json"
+        if kf.exists() and json.loads(kf.read_text()).get("pruned"):
+            for f in mod.iterdir():
+                if f.suffix.lower() in PLUGIN_EXT:
+                    shutil.copy2(f, data / f.name)
+                    n += 1
+            continue  # its mesh list was written before the prune
         meshes = [k for k, v in inst["files"].items() if v[0] == mod.name and k.startswith("meshes\\")]
         for f in mod.iterdir():
             if f.suffix.lower() in PLUGIN_EXT:
@@ -670,11 +782,11 @@ def main():
         s.add_argument("--dev", action="store_true", help="lay the dev rows too (SkyLink AI, houseCARL)")
         if name == "install":
             s.add_argument("--skip-fetch", action="store_true")
-    for name in ("push", "menu", "verify", "masters"):
+    for name in ("push", "menu", "verify", "masters", "prune", "evict"):
         sub.add_parser(name)
     a = p.parse_args()
     {"fetch": cmd_fetch, "stage": cmd_stage, "push": cmd_push, "install": cmd_install, "menu": cmd_menu,
-     "verify": cmd_verify, "masters": cmd_masters}[a.cmd](a)
+     "verify": cmd_verify, "masters": cmd_masters, "prune": cmd_prune, "evict": cmd_evict}[a.cmd](a)
 
 
 if __name__ == "__main__":

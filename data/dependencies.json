@@ -9,6 +9,148 @@
    "dsc-b2"
   ]
  },
+ "plugins": [
+  {
+   "file": "SkyUI_SE.esp",
+   "mod": "skyui"
+  },
+  {
+   "file": "MCMHelper.esp",
+   "mod": "mcm-helper"
+  },
+  {
+   "file": "Keytrace.esp",
+   "mod": "dtry-key-utils"
+  },
+  {
+   "file": "XPMSE.esp",
+   "mod": "xpmsse"
+  },
+  {
+   "file": "Precision.esp",
+   "mod": "precision"
+  },
+  {
+   "file": "TrueDirectionalMovement.esp",
+   "mod": "true-directional-movement"
+  },
+  {
+   "file": "TrueHUD.esl",
+   "mod": "truehud"
+  },
+  {
+   "file": "TKDodgeAddon.esp",
+   "mod": "tk-dodge-re-addon"
+  },
+  {
+   "file": "(SGC) SkySA.esp",
+   "mod": "skysa"
+  },
+  {
+   "file": "OCPA.esl",
+   "mod": "one-click-power-attack"
+  },
+  {
+   "file": "EldenParry.esp",
+   "mod": "elden-parry"
+  },
+  {
+   "file": "RimExecutionHitSA.esp",
+   "mod": "rim-parry-ctd-fix"
+  },
+  {
+   "file": "EREP_patchSA.esp",
+   "mod": "rim-parry-elden-patch"
+  },
+  {
+   "file": "FreeClimb.esp",
+   "mod": "freeclimb"
+  },
+  {
+   "file": "SwimmingExtensions.esp",
+   "mod": "swimming-extensions"
+  },
+  {
+   "file": "Sailable Ship.esm",
+   "mod": "sailable-ship"
+  },
+  {
+   "file": "EVGAnimatedTraversal.esl",
+   "mod": "evg-animated-traversal"
+  },
+  {
+   "file": "FWMF for Fantasy Paper Maps.esp",
+   "mod": "flat-world-map"
+  },
+  {
+   "file": "Magic.esp",
+   "mod": "magic-expanded"
+  },
+  {
+   "file": "Tropical Skyrim -- Birds.esp",
+   "mod": "tropical-skyrim-sse"
+  },
+  {
+   "file": "Tropical Skyrim.esp",
+   "mod": "tropical-skyrim-sse"
+  },
+  {
+   "file": "XanmeerResources.esp",
+   "mod": "xanmeer-tileset"
+  },
+  {
+   "file": "King of the Murkmire.esp",
+   "mod": "king-of-the-murkmire"
+  },
+  {
+   "file": "Here There Be Monsters.esp",
+   "mod": "htbm"
+  },
+  {
+   "file": "Here There Be Monsters - Curse of Cipactli.esp",
+   "mod": "htbm-cipactli"
+  },
+  {
+   "file": "ArgonianLakeHouse.esl",
+   "mod": "mud-mother-grove"
+  },
+  {
+   "file": "Ferries.esp",
+   "mod": "skyrim-ferries"
+  },
+  {
+   "file": "CCAyliedRuinsResources.esp",
+   "mod": "cc-ayleid-resources"
+  },
+  {
+   "file": "Skyfall Sleeping Tree Overhaul.esp",
+   "mod": "sleeping-hist-tree"
+  },
+  {
+   "file": "DepthsOfSkyrim.esp",
+   "mod": "depths-of-skyrim"
+  },
+  {
+   "file": "evgSIRENROOT.esm",
+   "mod": "sirenroot"
+  },
+  {
+   "file": "Scriptfreeshipsailing.esp",
+   "mod": "sailboats-expanded-update"
+  },
+  {
+   "file": "Sailboats.esp",
+   "mod": "sailboats-expanded"
+  },
+  {
+   "file": "SSKMovingBoats.esp",
+   "mod": "boats-operational"
+  },
+  {
+   "file": "Black Marsh.esm",
+   "mod": "bmv"
+  }
+ ],
  "mods": [
   {
    "id": "skse",
@@ -252,7 +394,10 @@
    "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus description read; gh schlangster/skyui licence none; reuse-audit.md line 236 'source-visible, not open-licensed'"
+   "permission_evidence": "Nexus description read; gh schlangster/skyui licence none; reuse-audit.md line 236 'source-visible, not open-licensed'",
+   "plugins": [
+    "SkyUI_SE.esp"
+   ]
   },
   {
    "id": "mcm-helper",
@@ -282,7 +427,10 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
    "ai_clause": "none: open licence MIT governs",
    "permission_ask": false,
-   "permission_evidence": "gh api repos/Exit-9B/MCM-Helper licence MIT; Nexus description states no AI clause"
+   "permission_evidence": "gh api repos/Exit-9B/MCM-Helper licence MIT; Nexus description states no AI clause",
+   "plugins": [
+    "MCMHelper.esp"
+   ]
   },
   {
    "id": "pandora",
@@ -535,7 +683,10 @@
    "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "gh D7ry/DtryKeyUtil licence none; Nexus API v1 description read in full; no permission or AI text found"
+   "permission_evidence": "gh D7ry/DtryKeyUtil licence none; Nexus API v1 description read in full; no permission or AI text found",
+   "plugins": [
+    "Keytrace.esp"
+   ]
   },
   {
    "id": "dtry-key-utils-1.7.104",
@@ -666,7 +817,10 @@
    "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; skeleton/behaviour assets used as installed dependency"
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; skeleton/behaviour assets used as installed dependency",
+   "plugins": [
+    "XPMSE.esp"
+   ]
   },
   {
    "id": "pandora-xpmse-patch",
@@ -756,7 +910,10 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
    "ai_clause": "none: open licence GPL-3.0 governs",
    "permission_ask": false,
-   "permission_evidence": "gh api repos/Ersh1/Precision licence GPL-3.0; Nexus description states no AI clause"
+   "permission_evidence": "gh api repos/Ersh1/Precision licence GPL-3.0; Nexus description states no AI clause",
+   "plugins": [
+    "Precision.esp"
+   ]
   },
   {
    "id": "true-directional-movement",
@@ -802,7 +959,10 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
    "ai_clause": "none: open licence GPL-3.0 governs",
    "permission_ask": false,
-   "permission_evidence": "gh api repos/Ersh1/TrueDirectionalMovement licence GPL-3.0; Nexus description states no AI clause"
+   "permission_evidence": "gh api repos/Ersh1/TrueDirectionalMovement licence GPL-3.0; Nexus description states no AI clause",
+   "plugins": [
+    "TrueDirectionalMovement.esp"
+   ]
   },
   {
    "id": "truehud",
@@ -831,7 +991,10 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
    "ai_clause": "none: open licence GPL-3.0 governs",
    "permission_ask": false,
-   "permission_evidence": "gh api repos/Ersh1/TrueHUD licence GPL-3.0; Nexus description states no AI clause"
+   "permission_evidence": "gh api repos/Ersh1/TrueHUD licence GPL-3.0; Nexus description states no AI clause",
+   "plugins": [
+    "TrueHUD.esl"
+   ]
   },
   {
    "id": "tk-dodge-se",
@@ -931,7 +1094,10 @@
    "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission. The page invites ports that honour the code licence, which it does not name.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus description: 'Source and permissions are open though and ports are welcome as long as they honor the license of the code'; no licence named"
+   "permission_evidence": "Nexus description: 'Source and permissions are open though and ports are welcome as long as they honor the license of the code'; no licence named",
+   "plugins": [
+    "TKDodgeAddon.esp"
+   ]
   },
   {
    "id": "dynamic-dodge",
@@ -1025,7 +1191,10 @@
    "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus description is a video link only; reuse-audit.md line 267: no source or licence stated"
+   "permission_evidence": "Nexus description is a video link only; reuse-audit.md line 267: no source or licence stated",
+   "plugins": [
+    "(SGC) SkySA.esp"
+   ]
   },
   {
    "id": "elder-souls-sword",
@@ -1096,7 +1265,10 @@
    "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "gh jarari/OneClickPowerAttack licence none (reuse-audit.md line 273); Nexus API v1 description read in full; no permission or AI text found"
+   "permission_evidence": "gh jarari/OneClickPowerAttack licence none (reuse-audit.md line 273); Nexus API v1 description read in full; no permission or AI text found",
+   "plugins": [
+    "OCPA.esl"
+   ]
   },
   {
    "id": "oar-stamina-cost",
@@ -1163,7 +1335,10 @@
    "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission. Using the GPL-3.0 doodlum fork would need no asking.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "gh D7ry/EldenParry licence none; doodlum fork GPL-3.0 (reuse-audit.md line 271)"
+   "permission_evidence": "gh D7ry/EldenParry licence none; doodlum fork GPL-3.0 (reuse-audit.md line 271)",
+   "plugins": [
+    "EldenParry.esp"
+   ]
   },
   {
    "id": "elden-parry-1.7.99",
@@ -1275,7 +1450,10 @@
    "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus API v1 description read 2026-10-29 (lane 0.2): no permission or AI text found"
+   "permission_evidence": "Nexus API v1 description read 2026-10-29 (lane 0.2): no permission or AI text found",
+   "plugins": [
+    "RimExecutionHitSA.esp"
+   ]
   },
   {
    "id": "rim-parry-ctd-fix",
@@ -1303,7 +1481,10 @@
    "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
+   "plugins": [
+    "RimExecutionHitSA.esp"
+   ]
   },
   {
    "id": "rim-parry-elden-patch",
@@ -1331,7 +1512,10 @@
    "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus text credits only; reuse-audit.md line 272: source and licence unverified"
+   "permission_evidence": "Nexus text credits only; reuse-audit.md line 272: source and licence unverified",
+   "plugins": [
+    "EREP_patchSA.esp"
+   ]
   },
   {
    "id": "rim-parry-one-parry",
@@ -1464,7 +1648,10 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. Its animation clips carry separate third-party notices we have not read.",
    "ai_clause": "none: open licence GPL-3.0-only governs",
    "permission_ask": false,
-   "permission_evidence": "Nexus description: code GPL-3.0 only; gh GPL-3.0; sourcing-register uses its clips (third-party animation licensing is in its THIRD-PARTY-NOTICES, not read)"
+   "permission_evidence": "Nexus description: code GPL-3.0 only; gh GPL-3.0; sourcing-register uses its clips (third-party animation licensing is in its THIRD-PARTY-NOTICES, not read)",
+   "plugins": [
+    "FreeClimb.esp"
+   ]
   },
   {
    "id": "swimming-extensions",
@@ -1488,7 +1675,10 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. A derivative DLL must be rebranded; assets not separately licensed on the page.",
    "ai_clause": "none: open licence AGPL-3.0 governs",
    "permission_ask": false,
-   "permission_evidence": "Nexus description: 'Svimex's source code is AGPLv3'; gh AGPL-3.0"
+   "permission_evidence": "Nexus description: 'Svimex's source code is AGPLv3'; gh AGPL-3.0",
+   "plugins": [
+    "SwimmingExtensions.esp"
+   ]
   },
   {
    "id": "sailable-ship",
@@ -1512,7 +1702,10 @@
    "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; reuse-audit.md line 259: permissions unknown, fork only after permission is read"
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; reuse-audit.md line 259: permissions unknown, fork only after permission is read",
+   "plugins": [
+    "Sailable Ship.esm"
+   ]
   },
   {
    "id": "evg-animated-traversal",
@@ -1536,7 +1729,10 @@
    "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission. We use its clips, so asking is needed.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; sourcing-register uses its wall-drop, failed-ledge and ladder clips"
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; sourcing-register uses its wall-drop, failed-ledge and ladder clips",
+   "plugins": [
+    "EVGAnimatedTraversal.esl"
+   ]
   },
   {
    "id": "custom-skills-framework",
@@ -1702,7 +1898,10 @@
    "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus description read; reuse-audit.md line 255: permissions unknown; bundles a GPLv3 add-on 'with author's permission'"
+   "permission_evidence": "Nexus description read; reuse-audit.md line 255: permissions unknown; bundles a GPLv3 add-on 'with author's permission'",
+   "plugins": [
+    "FWMF for Fantasy Paper Maps.esp"
+   ]
   },
   {
    "id": "no-google-maps",
@@ -1750,7 +1949,10 @@
    "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
+   "plugins": [
+    "Magic.esp"
+   ]
   },
   {
    "id": "community-shaders",
@@ -1798,7 +2000,11 @@
    "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission. It converts Soolie's mod, whose terms demand permission for use of contents.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus description: SSE conversion of Soolie's Tropical Skyrim by Tron91; no terms; inherits skyrim-33017's permission requirement (assets-creatures.md line 129)"
+   "permission_evidence": "Nexus description: SSE conversion of Soolie's Tropical Skyrim by Tron91; no terms; inherits skyrim-33017's permission requirement (assets-creatures.md line 129)",
+   "plugins": [
+    "Tropical Skyrim -- Birds.esp",
+    "Tropical Skyrim.esp"
+   ]
   },
   {
    "id": "xanmeer-tileset",
@@ -1822,7 +2028,10 @@
    "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus description read: tileset 'purely the models/textures'; credits NorthWindBlue/Jonathan Morris; assets-creatures.md says 'available for this project' per audit-world.md line 53"
+   "permission_evidence": "Nexus description read: tileset 'purely the models/textures'; credits NorthWindBlue/Jonathan Morris; assets-creatures.md says 'available for this project' per audit-world.md line 53",
+   "plugins": [
+    "XanmeerResources.esp"
+   ]
   },
   {
    "id": "king-of-the-murkmire",
@@ -1846,7 +2055,10 @@
    "permission_summary": "Page allows use of its assets in free mods that do not make use of AI; depending is fine, but our pipeline uses AI so the owner's permission held since 2026-09-24 is what covers our placement of its items.",
    "ai_clause": "restricts AI: \"do not make use of AI\" (audit quote of page terms)",
    "permission_ask": true,
-   "permission_evidence": "Nexus description: 'Lastly, if you want to make an addon, please don't make use of AI in it at all'; assets-creatures.md line 131: 'free for use in your mods if they are released for free and do not make use of AI'; sourcing-register: author permission held by owner 2026-09-24"
+   "permission_evidence": "Nexus description: 'Lastly, if you want to make an addon, please don't make use of AI in it at all'; assets-creatures.md line 131: 'free for use in your mods if they are released for free and do not make use of AI'; sourcing-register: author permission held by owner 2026-09-24",
+   "plugins": [
+    "King of the Murkmire.esp"
+   ]
   },
   {
    "id": "htbm",
@@ -1870,7 +2082,10 @@
    "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
+   "plugins": [
+    "Here There Be Monsters.esp"
+   ]
   },
   {
    "id": "htbm-cipactli",
@@ -1894,7 +2109,10 @@
    "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; sourcing-register uses its native clothing (modder's resource, use with credit)"
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; sourcing-register uses its native clothing (modder's resource, use with credit)",
+   "plugins": [
+    "Here There Be Monsters - Curse of Cipactli.esp"
+   ]
   },
   {
    "id": "mud-mother-grove",
@@ -1918,7 +2136,10 @@
    "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
+   "plugins": [
+    "ArgonianLakeHouse.esl"
+   ]
   },
   {
    "id": "xalfek",
@@ -2120,7 +2341,15 @@
    "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
+   "fomod": {
+    "Ferries": [
+     "Main"
+    ]
+   },
+   "plugins": [
+    "Ferries.esp"
+   ]
   },
   {
    "id": "rowboats",
@@ -2168,7 +2397,10 @@
    "permission_summary": "Free to use in mods that are not sold, with credit; depending is fine and our free mod may use it with credit, but the page says nothing on AI.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus description: 'Feel free to use these assets in your mods as long as these are not being sold ... proper credit'"
+   "permission_evidence": "Nexus description: 'Feel free to use these assets in your mods as long as these are not being sold ... proper credit'",
+   "plugins": [
+    "CCAyliedRuinsResources.esp"
+   ]
   },
   {
    "id": "sleeping-hist-tree",
@@ -2192,7 +2424,10 @@
    "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus description: author gives permission only to backport to LE ('You have my permission')"
+   "permission_evidence": "Nexus description: author gives permission only to backport to LE ('You have my permission')",
+   "plugins": [
+    "Skyfall Sleeping Tree Overhaul.esp"
+   ]
   },
   {
    "id": "ships-and-boats-of-tamriel",
@@ -2240,7 +2475,10 @@
    "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
+   "plugins": [
+    "DepthsOfSkyrim.esp"
+   ]
   },
   {
    "id": "sirenroot",
@@ -2264,7 +2502,10 @@
    "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
+   "plugins": [
+    "evgSIRENROOT.esm"
+   ]
   },
   {
    "id": "sailboats-expanded-update",
@@ -2288,7 +2529,10 @@
    "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus API v1 description read 2026-10-29 (lane 0.2): no permission or AI text found"
+   "permission_evidence": "Nexus API v1 description read 2026-10-29 (lane 0.2): no permission or AI text found",
+   "plugins": [
+    "Scriptfreeshipsailing.esp"
+   ]
   },
   {
    "id": "sailboats-expanded",
@@ -2312,7 +2556,10 @@
    "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission. Register says asset-use permission is not on file.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus description read; sourcing-register source.sailboats-expanded: Nexus box paraphrase no re-upload, no conversion to other games, asset use only with permission; some assets belong to other authors"
+   "permission_evidence": "Nexus description read; sourcing-register source.sailboats-expanded: Nexus box paraphrase no re-upload, no conversion to other games, asset use only with permission; some assets belong to other authors",
+   "plugins": [
+    "Sailboats.esp"
+   ]
   },
   {
    "id": "boats-operational",
@@ -2339,7 +2586,10 @@
    "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; page credits Vicn and DeviantKaled permission to its own author only"
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; page credits Vicn and DeviantKaled permission to its own author only",
+   "plugins": [
+    "SSKMovingBoats.esp"
+   ]
   },
   {
    "id": "bmv",
@@ -2370,7 +2620,10 @@
    "permission_summary": "ModDB page states no permissions and no credits, and bundles third-party resources; the audit records it as 'available for this project', but using its contents in our mod without the author's written grant is unconfirmed.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "assets-creatures.md line 130 (ModDB page states no permissions or credits); audit-world.md line 53 ('available for this project')"
+   "permission_evidence": "assets-creatures.md line 130 (ModDB page states no permissions or credits); audit-world.md line 53 ('available for this project')",
+   "plugins": [
+    "Black Marsh.esm"
+   ]
   },
   {
    "id": "tropical-skyrim-le",
@@ -2562,7 +2815,9 @@
    "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "gh jarvann/SkryimMCM licence none; Nexus text only describes it as an AI-assistant MCP plugin, no AI-use clause on terms; reuse-audit.md line 224"
+   "permission_evidence": "gh jarvann/SkryimMCM licence none; Nexus text only describes it as an AI-assistant MCP plugin, no AI-use clause on terms; reuse-audit.md line 224",
+   "dropped": "2026-10-29: does not load on 1.7.104 (SKSE log: 'failed to open address library file'; its CommonLib predates Address Library format 5, and the modal blocks start-up); 0.3's ArgoniaBridge takes its reads",
+   "runtime": "fails on 1.7.104.0"
   },
   {
    "id": "housecarl",
