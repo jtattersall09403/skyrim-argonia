@@ -5139,9 +5139,67 @@ CREATE TABLE "terrain_patch" (
   "id" TEXT NOT NULL PRIMARY KEY
 );
 
--- Home of a water body (lake, river reach, marsh) of the graph. Migrated by 2.W2 from world/sources/hydrology/*.json; until then a key only.
+-- Migrated by 2.W2 (tools/argonia_world/water/migrate.py); the rest of the family is below the 0030 marker.
+-- Home of a standing water body of the graph (ocean, lagoon, lake, tarn, pond, pool, plunge pool, marsh family); levelM is the high-water line (old 0063); its extent is the connected water of the frozen body-level raster around deepest_x/y (full-res samples, y south).
 CREATE TABLE "hydrology_body" (
-  "id" TEXT NOT NULL PRIMARY KEY
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "kind" TEXT,
+  "origin" TEXT,
+  "level_m" REAL,
+  "altitude_band" TEXT,
+  "area_m2" REAL,
+  "max_depth_m" REAL,
+  "sheet" BOOLEAN,
+  "season" TEXT,
+  "season_response" REAL,
+  "wet_season_level_m" REAL,
+  "dry_season_level_m" REAL,
+  "deepest_x" INTEGER,
+  "deepest_y" INTEGER,
+  "bbox_x0" INTEGER,
+  "bbox_y0" INTEGER,
+  "bbox_x1" INTEGER,
+  "bbox_y1" INTEGER,
+  "region" INTEGER,
+  "mean_depth_m" REAL,
+  "outflow_reach_id" TEXT REFERENCES "hydrology_reach"("id"),
+  "terrain_precondition_kind" TEXT,
+  "terrain_precondition_level_m" REAL,
+  "terrain_precondition_floor_max_m" REAL,
+  "terrain_precondition_spill_m" REAL,
+  "approved_id" TEXT,
+  "approved_kind" TEXT,
+  "approved_level_m" REAL,
+  "approved_area_m2" REAL,
+  "approved_measured_kind" TEXT,
+  "approved_overlap_of_approved" REAL,
+  "approved_part" INTEGER,
+  "sink" BOOLEAN,
+  "approved_unreviewed" BOOLEAN,
+  "terrain_precondition_channel_level_m" REAL,
+  "captured" BOOLEAN,
+  "pre_carve_level_m" REAL,
+  "pre_carve_area_m2" REAL,
+  "pre_carve_spill_m" REAL,
+  "lost_at_carve" BOOLEAN,
+  "caused_by_fall_reach_id" TEXT REFERENCES "hydrology_reach"("id"),
+  "joined_sea" BOOLEAN,
+  "declared_by" TEXT,
+  "terrain_precondition_depth_m" REAL,
+  "terrain_precondition_radius_m" REAL,
+  "terrain_precondition_throw_m" REAL,
+  "terrain_precondition_hold_m" REAL,
+  "terrain_precondition_law" TEXT,
+  "name" TEXT,
+  "lore" TEXT,
+  "terrain_precondition_bed_m" REAL,
+  "terrain_precondition_shoreline" TEXT,
+  "terrain_precondition_island_radius_m" REAL,
+  "terrain_precondition_island_top_m" REAL,
+  "terrain_precondition_island_note" TEXT,
+  "realised_by" TEXT,
+  "caused_by_stage" TEXT,
+  "caused_by_why" TEXT
 );
 
 -- Home of a flow edge between two bodies. Migrated by 2.W2 from world/sources/hydrology/hydrology-graph.json; until then a key only.
@@ -5261,3 +5319,518 @@ CREATE TABLE "culture_kit" (
 );
 
 -- == End of the 0030 migration's tables. A later chunk appends its own tables below this line. ==
+
+-- == The hydrology family (2.W2; migrated from the old hydrology graph, decision 0030 §6) ==
+-- Read through db.py by tools/argonia_world/water; the migration is tools/argonia_world/water/migrate.py.
+-- Frame: east/south metres from the province's north-west corner; x = column (east), y = row (south)
+-- of the 4033^2 full-res samples; levels in metres above sea.
+
+-- Home of a river: one stem from headwater to mouth (old 0058; the graph's README).
+CREATE TABLE "hydrology_river" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "name" TEXT,
+  "strahler" INTEGER,
+  "mouth_kind" TEXT,
+  "mouth_body_id" TEXT REFERENCES "hydrology_body"("id"),
+  "mouth_form" TEXT,
+  "water" TEXT,
+  "accum_km2" REAL,
+  "length_m" REAL,
+  "source_east_m" REAL,
+  "source_south_m" REAL,
+  "mouth_east_m" REAL,
+  "mouth_south_m" REAL,
+  "mouth_through_body_id" TEXT REFERENCES "hydrology_body"("id"),
+  "tributary_of_river_id" TEXT REFERENCES "hydrology_river"("id"),
+  "tributary_of_junction_id" TEXT REFERENCES "hydrology_junction"("id"),
+  "mouth_river_id" TEXT REFERENCES "hydrology_river"("id"),
+  "mouth_junction_id" TEXT REFERENCES "hydrology_junction"("id")
+);
+
+-- Home of a junction: a source, confluence or mouth of the river network.
+CREATE TABLE "hydrology_junction" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "east_m" REAL,
+  "south_m" REAL,
+  "level_m" REAL,
+  "kind" TEXT,
+  "outflow_reach_id" TEXT REFERENCES "hydrology_reach"("id")
+);
+
+-- Home of a reach: a stretch of one river with one kind and one surface; levels in metres above sea.
+CREATE TABLE "hydrology_reach" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "river_id" TEXT REFERENCES "hydrology_river"("id"),
+  "kind" TEXT,
+  "surface" TEXT,
+  "band" INTEGER,
+  "plunge_pool" BOOLEAN,
+  "downstream_reach_id" TEXT REFERENCES "hydrology_reach"("id"),
+  "from_junction_id" TEXT REFERENCES "hydrology_junction"("id"),
+  "to_junction_id" TEXT REFERENCES "hydrology_junction"("id"),
+  "accum_km2" REAL,
+  "slope" REAL,
+  "slope_max" REAL,
+  "width_m" REAL,
+  "depth_m" REAL,
+  "length_m" REAL,
+  "level_from_m" REAL,
+  "level_to_m" REAL,
+  "speed_ms" REAL,
+  "season" TEXT,
+  "tidal" BOOLEAN,
+  "terrain_precondition_kind" TEXT,
+  "terrain_precondition_bed_level_from_m" REAL,
+  "terrain_precondition_bed_level_to_m" REAL,
+  "terrain_precondition_bed_max_m" REAL,
+  "terrain_precondition_width_m" REAL,
+  "terrain_precondition_width_max_m" REAL,
+  "terrain_precondition_shoulder_crest_m" REAL,
+  "terrain_precondition_seal_cap_m" REAL,
+  "water" TEXT,
+  "body_id" TEXT REFERENCES "hydrology_body"("id"),
+  "terrain_precondition_body_id" TEXT REFERENCES "hydrology_body"("id"),
+  "terrain_precondition_level_m" REAL,
+  "fall_drop_m" REAL,
+  "fall_lip_level_m" REAL,
+  "fall_plunge_level_m" REAL,
+  "fall_plunge_body_id" TEXT REFERENCES "hydrology_body"("id"),
+  "fall_lip_speed_ms" REAL,
+  "fall_origin" TEXT,
+  "terrain_precondition_lip_level_m" REAL,
+  "terrain_precondition_plunge_level_m" REAL,
+  "terrain_precondition_drop_m" REAL,
+  "terrain_precondition_face_min_slope" REAL,
+  "terrain_precondition_lip_notch" BOOLEAN,
+  "origin" TEXT,
+  "feeder" TEXT
+);
+
+-- Home of a river's reaches, headwater (ord 0) to mouth.
+CREATE TABLE "hydrology_river_reach" (
+  "river_id" TEXT NOT NULL REFERENCES "hydrology_river"("id"),
+  "ord" INTEGER NOT NULL,
+  "reach_id" TEXT NOT NULL REFERENCES "hydrology_reach"("id"),
+  PRIMARY KEY ("river_id", "ord")
+);
+
+-- Home of a reach's upstream reaches.
+CREATE TABLE "hydrology_reach_upstream" (
+  "reach_id" TEXT NOT NULL REFERENCES "hydrology_reach"("id"),
+  "ord" INTEGER NOT NULL,
+  "upstream_reach_id" TEXT NOT NULL REFERENCES "hydrology_reach"("id"),
+  PRIMARY KEY ("reach_id", "ord")
+);
+
+-- Home of a reach's centreline, [east, south] metres from the province's north-west corner every ~5.5 m, headwater
+-- first.
+CREATE TABLE "hydrology_reach_point" (
+  "reach_id" TEXT NOT NULL REFERENCES "hydrology_reach"("id"),
+  "ord" INTEGER NOT NULL,
+  "east_m" REAL NOT NULL,
+  "south_m" REAL NOT NULL,
+  PRIMARY KEY ("reach_id", "ord")
+);
+
+-- Home of a junction's inflowing reaches.
+CREATE TABLE "hydrology_junction_inflow" (
+  "junction_id" TEXT NOT NULL REFERENCES "hydrology_junction"("id"),
+  "ord" INTEGER NOT NULL,
+  "reach_id" TEXT NOT NULL REFERENCES "hydrology_reach"("id"),
+  PRIMARY KEY ("junction_id", "ord")
+);
+
+-- Home of a body's inflowing reaches.
+CREATE TABLE "hydrology_body_inflow" (
+  "body_id" TEXT NOT NULL REFERENCES "hydrology_body"("id"),
+  "ord" INTEGER NOT NULL,
+  "reach_id" TEXT NOT NULL REFERENCES "hydrology_reach"("id"),
+  PRIMARY KEY ("body_id", "ord")
+);
+
+-- Home of the approved (16a) bodies merged into a body's approved match.
+CREATE TABLE "hydrology_body_approved_merged" (
+  "body_id" TEXT NOT NULL REFERENCES "hydrology_body"("id"),
+  "ord" INTEGER NOT NULL,
+  "merged_body_id" TEXT NOT NULL,
+  PRIMARY KEY ("body_id", "ord")
+);
+
+-- Home of an authored bowl's radii (the Blackrose lake).
+CREATE TABLE "hydrology_body_radius" (
+  "body_id" TEXT NOT NULL REFERENCES "hydrology_body"("id"),
+  "ord" INTEGER NOT NULL,
+  "radius_m" REAL NOT NULL,
+  PRIMARY KEY ("body_id", "ord")
+);
+
+-- Home of one setting of the hydrology graph (thresholds, grid, vocabulary, source hashes), its value as JSON text.
+CREATE TABLE "hydrology_setting" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "value" TEXT NOT NULL
+);
+
+-- == Regions, weather, light, roads and the route graph (2.W3; decision 0028: regions are the unit of authorship) ==
+-- Read and written through db.py by tools/argonia_world/regions and tools/argonia_world/routes; the migration of
+-- climate/weather-states.json, regions/authored-overrides.json and the per-class role totals of flora/palettes.json is
+-- tools/argonia_world/regions/migrate.py (flora/palettes.json stays for 2.W4's flora_rule). Positions: metres east and
+-- SOUTH from the province's north-west corner (the imported frame); cells are Skyrim grid coordinates.
+
+-- Home of an ecological class of 20-province-design §16 (the 11 classes): what weather group and mist it carries.
+CREATE TABLE "eco_class" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "name" TEXT NOT NULL,
+  "weather_group_id" TEXT NOT NULL REFERENCES "weather_group"("id"),
+  "misty" BOOLEAN NOT NULL CHECK ("misty" IN (0, 1)),
+  "exterior" BOOLEAN NOT NULL CHECK ("exterior" IN (0, 1)),
+  "about" TEXT
+);
+
+-- Home of an old region-raster class (region_class's detail): its raster id and the ecological class it belongs to.
+CREATE TABLE "region_class_profile" (
+  "region_class_id" TEXT NOT NULL PRIMARY KEY REFERENCES "region_class"("id"),
+  "raster_id" INTEGER NOT NULL UNIQUE,
+  "name" TEXT NOT NULL,
+  "eco_class_id" TEXT NOT NULL REFERENCES "eco_class"("id"),
+  "about" TEXT
+);
+
+-- Home of a packet's exception to region_class_profile.eco_class_id (firm ground in the north is northern transition).
+CREATE TABLE "region_class_eco_override" (
+  "region_class_id" TEXT NOT NULL REFERENCES "region_class"("id"),
+  "region_id" TEXT NOT NULL REFERENCES "region"("id"),
+  "eco_class_id" TEXT NOT NULL REFERENCES "eco_class"("id"),
+  PRIMARY KEY ("region_class_id", "region_id")
+);
+
+-- Home of an owner-authored macro override polygon (u, v fractions of the province) over listed source classes.
+CREATE TABLE "region_class_override" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "region_class_id" TEXT NOT NULL REFERENCES "region_class"("id"),
+  "confidence" TEXT NOT NULL,
+  "notes" TEXT
+);
+CREATE TABLE "region_class_override_point" (
+  "override_id" TEXT NOT NULL REFERENCES "region_class_override"("id") ON DELETE CASCADE,
+  "ord" INTEGER NOT NULL,
+  "u" REAL NOT NULL,
+  "v" REAL NOT NULL,
+  PRIMARY KEY ("override_id", "ord")
+);
+CREATE TABLE "region_class_override_applies" (
+  "override_id" TEXT NOT NULL REFERENCES "region_class_override"("id") ON DELETE CASCADE,
+  "region_class_id" TEXT NOT NULL REFERENCES "region_class"("id"),
+  PRIMARY KEY ("override_id", "region_class_id")
+);
+
+-- Home of a placement role (canopy, understorey, rock...) the region object lists fill from.
+CREATE TABLE "object_role" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "about" TEXT NOT NULL
+);
+
+-- Home of a region class's total per role from the imported flora palette (stems per hectare, banding, clumping).
+CREATE TABLE "region_class_role" (
+  "region_class_id" TEXT NOT NULL REFERENCES "region_class"("id"),
+  "role_id" TEXT NOT NULL REFERENCES "object_role"("id"),
+  "per_ha" REAL NOT NULL CHECK ("per_ha" >= 0),
+  "clump_median" REAL,
+  "clump_radius_m" REAL,
+  "slope_max_deg" REAL,
+  "water_min_m" REAL,
+  "water_max_m" REAL,
+  "layers" INTEGER NOT NULL,
+  PRIMARY KEY ("region_class_id", "role_id")
+);
+
+-- Home of a vanilla base form an object list may name: the vanilla record Tropical Skyrim (SSE 78044) replaces in
+-- place, what it becomes there, and its quarantine review (decision 0012).
+CREATE TABLE "object_form" (
+  "form_key" TEXT NOT NULL PRIMARY KEY,
+  "edid" TEXT NOT NULL,
+  "record_type" TEXT NOT NULL CHECK ("record_type" IN ('TREE', 'STAT')),
+  "role_id" TEXT NOT NULL REFERENCES "object_role"("id"),
+  "ts_model" TEXT,
+  "review" TEXT NOT NULL
+);
+
+-- Home of a weather group of the imported regionFrequencies (coastal, marsh, jungle, uplands, firm lowland).
+CREATE TABLE "weather_group" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "label" TEXT NOT NULL
+);
+
+-- Home of a weather state's detail (weather_state holds the key).
+CREATE TABLE "weather_state_profile" (
+  "weather_state_id" TEXT NOT NULL PRIMARY KEY REFERENCES "weather_state"("id"),
+  "name" TEXT NOT NULL,
+  "visibility_factor" REAL NOT NULL,
+  "wetness" REAL NOT NULL,
+  "notes" TEXT
+);
+
+-- Home of a group's relative weight for a state (the imported regionFrequencies).
+CREATE TABLE "weather_group_weight" (
+  "weather_group_id" TEXT NOT NULL REFERENCES "weather_group"("id"),
+  "weather_state_id" TEXT NOT NULL REFERENCES "weather_state"("id"),
+  "weight" INTEGER NOT NULL CHECK ("weight" > 0),
+  PRIMARY KEY ("weather_group_id", "weather_state_id")
+);
+
+-- Home of a season of the calendar and its share of the year.
+CREATE TABLE "season" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "name" TEXT NOT NULL,
+  "share" REAL NOT NULL CHECK ("share" > 0 AND "share" <= 1),
+  "effects" TEXT
+);
+
+-- Home of a season's factor on a state's weight (wet: monsoon and storm x2; dry haze only in the dry season).
+CREATE TABLE "season_factor" (
+  "season_id" TEXT NOT NULL REFERENCES "season"("id"),
+  "weather_state_id" TEXT NOT NULL REFERENCES "weather_state"("id"),
+  "factor" REAL NOT NULL CHECK ("factor" >= 0),
+  PRIMARY KEY ("season_id", "weather_state_id")
+);
+
+-- Home of an image space of ours (IMGS): the humid green-gold marsh light, as cinematic and tint values.
+CREATE TABLE "image_space" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "edid" TEXT NOT NULL UNIQUE,
+  "template_form_key" TEXT NOT NULL,
+  "saturation" REAL NOT NULL,
+  "brightness" REAL NOT NULL,
+  "contrast" REAL NOT NULL,
+  "tint" TEXT NOT NULL CHECK (length("tint") = 6),
+  "tint_amount" REAL NOT NULL CHECK ("tint_amount" BETWEEN 0 AND 1),
+  "why" TEXT NOT NULL
+);
+
+-- Home of a weather a region may draw: a vanilla WTHR that Tropical Skyrim restyles (form_key), or one of ours
+-- (template_form_key duplicated, then fog and image spaces set here).
+CREATE TABLE "weather" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "edid" TEXT NOT NULL UNIQUE,
+  "form_key" TEXT,
+  "template_form_key" TEXT,
+  "weather_state_id" TEXT NOT NULL REFERENCES "weather_state"("id"),
+  "fog_day_near_m" REAL,
+  "fog_day_far_m" REAL,
+  "fog_night_near_m" REAL,
+  "fog_night_far_m" REAL,
+  "fog_tint" TEXT CHECK ("fog_tint" IS NULL OR length("fog_tint") = 6),
+  "image_day_id" TEXT REFERENCES "image_space"("id"),
+  "image_dawn_id" TEXT REFERENCES "image_space"("id"),
+  "image_night_id" TEXT REFERENCES "image_space"("id"),
+  "why" TEXT NOT NULL,
+  CHECK (("form_key" IS NULL) <> ("template_form_key" IS NULL))
+);
+
+-- Home of which weathers realise a state in a group, and each one's share of the state's weight.
+CREATE TABLE "weather_realisation" (
+  "weather_group_id" TEXT NOT NULL REFERENCES "weather_group"("id"),
+  "weather_state_id" TEXT NOT NULL REFERENCES "weather_state"("id"),
+  "weather_id" TEXT NOT NULL REFERENCES "weather"("id"),
+  "share" REAL NOT NULL CHECK ("share" > 0),
+  PRIMARY KEY ("weather_group_id", "weather_state_id", "weather_id")
+);
+
+-- Home of the province's climate (CLMT): sun times in minutes after midnight, volatility, moon phase, time scale.
+CREATE TABLE "climate" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "edid" TEXT NOT NULL UNIQUE,
+  "template_form_key" TEXT NOT NULL,
+  "sunrise_begin_min" INTEGER NOT NULL,
+  "sunrise_end_min" INTEGER NOT NULL,
+  "sunset_begin_min" INTEGER NOT NULL,
+  "sunset_end_min" INTEGER NOT NULL,
+  "volatility" INTEGER NOT NULL CHECK ("volatility" BETWEEN 0 AND 255),
+  "moon_phase_days" INTEGER NOT NULL,
+  "timescale" INTEGER NOT NULL CHECK ("timescale" > 0),
+  "weather_group_id" TEXT NOT NULL REFERENCES "weather_group"("id"),
+  "why" TEXT NOT NULL,
+  CHECK ("sunrise_begin_min" < "sunrise_end_min" AND "sunrise_end_min" < "sunset_begin_min"
+         AND "sunset_begin_min" < "sunset_end_min")
+);
+
+-- Home of a region record (REGN): one per catalogue packet and ecological class present, plus the closed border.
+CREATE TABLE "land_region" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "edid" TEXT NOT NULL UNIQUE,
+  "region_id" TEXT REFERENCES "region"("id"),
+  "eco_class_id" TEXT REFERENCES "eco_class"("id"),
+  "map_name" TEXT,
+  "border" BOOLEAN NOT NULL CHECK ("border" IN (0, 1)),
+  "cells" INTEGER NOT NULL CHECK ("cells" >= 0),
+  UNIQUE ("region_id", "eco_class_id"),
+  CHECK ("border" = 1 OR ("region_id" IS NOT NULL AND "eco_class_id" IS NOT NULL))
+);
+
+-- Home of the cells of a region as runs along a cell row (cy, cx0..cx1 inclusive); the runs tile the province once.
+CREATE TABLE "cell_region_run" (
+  "cy" INTEGER NOT NULL,
+  "cx0" INTEGER NOT NULL,
+  "cx1" INTEGER NOT NULL,
+  "land_region_id" TEXT NOT NULL REFERENCES "land_region"("id"),
+  PRIMARY KEY ("cy", "cx0"),
+  CHECK ("cx0" <= "cx1")
+);
+
+-- Home of how many of a region's cells each old raster class makes up (reconstructed; the object list's mix).
+CREATE TABLE "land_region_class_share" (
+  "land_region_id" TEXT NOT NULL REFERENCES "land_region"("id"),
+  "region_class_id" TEXT NOT NULL REFERENCES "region_class"("id"),
+  "cells" INTEGER NOT NULL CHECK ("cells" > 0),
+  PRIMARY KEY ("land_region_id", "region_class_id")
+);
+
+-- Home of a region's weather list entry (RDWT): the weather, its chance, and the global a season sets.
+CREATE TABLE "land_region_weather" (
+  "land_region_id" TEXT NOT NULL REFERENCES "land_region"("id"),
+  "weather_id" TEXT NOT NULL REFERENCES "weather"("id"),
+  "chance" INTEGER NOT NULL CHECK ("chance" BETWEEN 1 AND 100),
+  "season_global" TEXT,
+  PRIMARY KEY ("land_region_id", "weather_id")
+);
+
+-- Home of a region's object list entry (RDOT) for the CK region generator (2.W4 runs it): density per hectare,
+-- clustering, slope and height bands; water_min/max_m keep the imported water posture the CK cannot express.
+CREATE TABLE "land_region_object" (
+  "land_region_id" TEXT NOT NULL REFERENCES "land_region"("id"),
+  "form_key" TEXT NOT NULL REFERENCES "object_form"("form_key"),
+  "density_per_ha" REAL NOT NULL CHECK ("density_per_ha" > 0),
+  "clustering" INTEGER NOT NULL CHECK ("clustering" BETWEEN 1 AND 255),
+  "min_slope_deg" INTEGER NOT NULL,
+  "max_slope_deg" INTEGER NOT NULL,
+  "min_height_m" REAL,
+  "max_height_m" REAL,
+  "radius_m" REAL NOT NULL,
+  "water_min_m" REAL,
+  "water_max_m" REAL,
+  "conform" BOOLEAN NOT NULL CHECK ("conform" IN (0, 1)),
+  PRIMARY KEY ("land_region_id", "form_key"),
+  CHECK ("min_slope_deg" <= "max_slope_deg")
+);
+
+-- Home of a road leg's surface (old 0069's six legs and two exits): the land cover it paints and its width.
+CREATE TABLE "road" (
+  "route_id" TEXT NOT NULL PRIMARY KEY REFERENCES "route"("id"),
+  "surface_cover" INTEGER NOT NULL,
+  "flat_width_m" REAL NOT NULL CHECK ("flat_width_m" > 0),
+  "shoulder_m" REAL NOT NULL CHECK ("shoulder_m" >= 0),
+  "length_m" REAL NOT NULL,
+  "length_3d_m" REAL NOT NULL,
+  "reference_length_m" REAL,
+  "why" TEXT NOT NULL
+);
+CREATE TABLE "road_point" (
+  "route_id" TEXT NOT NULL REFERENCES "road"("route_id") ON DELETE CASCADE,
+  "ord" INTEGER NOT NULL,
+  "x_m" REAL NOT NULL,
+  "y_m" REAL NOT NULL,
+  PRIMARY KEY ("route_id", "ord")
+);
+
+-- Home of a structure window on a road (bridge, boardwalk, steps, landing) from the old route-structure compile; the
+-- kit piece is chosen at review (the old pieces were vanilla Whiterun stone, a Nordic tell, decision 0012).
+CREATE TABLE "road_structure" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "route_id" TEXT NOT NULL REFERENCES "road"("route_id"),
+  "role" TEXT NOT NULL,
+  "from_m" REAL NOT NULL,
+  "to_m" REAL NOT NULL,
+  "x_m" REAL NOT NULL,
+  "y_m" REAL NOT NULL,
+  "z_m" REAL NOT NULL,
+  "yaw_deg" REAL NOT NULL,
+  "old_piece" TEXT NOT NULL
+);
+
+-- Home of a node of the route graph the directions generator reads (2.12): a place, junction, station or exit.
+CREATE TABLE "route_node" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "kind" TEXT NOT NULL CHECK ("kind" IN ('place', 'junction', 'station', 'exit')),
+  "place_id" TEXT REFERENCES "place"("id"),
+  "station_id" TEXT REFERENCES "travel_station"("id"),
+  "x_m" REAL NOT NULL,
+  "y_m" REAL NOT NULL
+);
+
+-- Home of an edge of the route graph: one leg of a route between two nodes, its length on the ground (3D over the
+-- 2.W1 heights for land legs, straight for water and root legs).
+CREATE TABLE "route_edge" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "route_id" TEXT NOT NULL REFERENCES "route"("id"),
+  "from_node_id" TEXT NOT NULL REFERENCES "route_node"("id"),
+  "to_node_id" TEXT NOT NULL REFERENCES "route_node"("id"),
+  "mode" TEXT NOT NULL REFERENCES "route_mode"("id"),
+  "length_m" REAL NOT NULL CHECK ("length_m" > 0),
+  "from_chain_m" REAL,
+  "to_chain_m" REAL,
+  CHECK ("from_node_id" <> "to_node_id")
+);
+
+-- Home of a landmark along an edge: a place within sight of the leg, at its chainage.
+CREATE TABLE "route_edge_landmark" (
+  "edge_id" TEXT NOT NULL REFERENCES "route_edge"("id") ON DELETE CASCADE,
+  "place_id" TEXT NOT NULL REFERENCES "place"("id"),
+  "at_m" REAL NOT NULL,
+  PRIMARY KEY ("edge_id", "place_id")
+);
+
+-- Home of a signpost at a road node; each arm names a destination node (the arm reads that place's name, so a sign
+-- carries no text of its own: sign_purpose 'waymark').
+CREATE TABLE "signpost" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "node_id" TEXT NOT NULL REFERENCES "route_node"("id"),
+  "x_m" REAL NOT NULL,
+  "y_m" REAL NOT NULL,
+  "yaw_deg" REAL NOT NULL
+);
+CREATE TABLE "signpost_arm" (
+  "signpost_id" TEXT NOT NULL REFERENCES "signpost"("id") ON DELETE CASCADE,
+  "ord" INTEGER NOT NULL,
+  "to_node_id" TEXT NOT NULL REFERENCES "route_node"("id"),
+  "bearing_deg" REAL NOT NULL,
+  PRIMARY KEY ("signpost_id", "ord")
+);
+
+-- == The terrain family (2.W1; tools/argonia_world/terrain, rows by tools/argonia_world/terrain/migrate.py) ==
+-- The generated ground is ArgoniaWorld.esm (decision 0031); these rows are what the generator reads or proves
+-- against. The arrays themselves live in $ARGONIA_DATA/terrain/, identified here by sha256, never in git.
+
+-- Home of a terrain input file: an array or receipt the generator reads, pinned by the sha256 of its bytes.
+CREATE TABLE "terrain_input" (
+  "name" TEXT NOT NULL PRIMARY KEY,
+  "sha256" TEXT NOT NULL,
+  "role" TEXT NOT NULL,
+  "source" TEXT NOT NULL
+);
+
+-- Home of a land-cover class: the id the land-cover raster stores per sample (old 0011's micro layer).
+CREATE TABLE "land_cover" (
+  "id" INTEGER NOT NULL PRIMARY KEY,
+  "name" TEXT NOT NULL UNIQUE,
+  "bare" BOOLEAN NOT NULL
+);
+
+-- The vanilla LTEX a class paints (decision 0028): a Skyrim.esm form Tropical Skyrim replaces in place.
+CREATE TABLE "land_cover_ltex" (
+  "land_cover_id" INTEGER NOT NULL PRIMARY KEY REFERENCES "land_cover"("id"),
+  "ltex_form_key" TEXT NOT NULL,
+  "ltex_edid" TEXT NOT NULL,
+  "tropical_skyrim_replaces" BOOLEAN NOT NULL,
+  "why" TEXT NOT NULL
+);
+
+-- What the old chain did with a terrain patch (its receipts): applied or refused, and how much ground it moved.
+CREATE TABLE "terrain_patch_outcome" (
+  "terrain_patch_id" TEXT NOT NULL PRIMARY KEY REFERENCES "terrain_patch"("id"),
+  "chain" TEXT NOT NULL CHECK ("chain" IN ('terrain', 'route-grade')),
+  "kind" TEXT,
+  "status" TEXT NOT NULL CHECK ("status" IN ('applied', 'refused')),
+  "reason" TEXT,
+  "samples_changed" INTEGER,
+  "max_abs_delta_m" REAL,
+  "receipt" TEXT NOT NULL REFERENCES "terrain_input"("name")
+);

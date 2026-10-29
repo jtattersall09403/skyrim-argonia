@@ -10,3 +10,4 @@ LICENSE
 LICENSE-content
 world/db/place.jsonl
 world/db/dialogue_line.jsonl
+world/db/hydrology_body.jsonl
