@@ -22,9 +22,14 @@ int main() {
     if (wet[i].global == "ARG_WChance_coastal_rain") CHECK(wet[i].value > dry[i].value);
   }
   // a day in the same season writes nothing; the turn of a season writes the full set
-  const DayChange first = on_day(0, 1, std::nullopt);
-  CHECK(first.season == Season::dry && first.write.size() == gen::kWeatherChances.size());
-  CHECK(on_day(0, 2, Season::dry).write.empty());
-  CHECK(on_day(11, 31, Season::dry).season == Season::wet && !on_day(11, 31, Season::dry).write.empty());
+  const auto first = on_day(0, 1, std::nullopt);
+  CHECK(first && first->season == Season::dry && first->write.size() == gen::kWeatherChances.size());
+  CHECK(on_day(0, 2, Season::dry)->write.empty());
+  CHECK(on_day(11, 31, Season::dry)->season == Season::wet && !on_day(11, 31, Season::dry)->write.empty());
+  // a date the calendar lacks is refused, never read as the first day (which would write the dry chances)
+  CHECK(on_day(12, 1, Season::wet).error() == DateError::bad_month);
+  CHECK(on_day(-1, 1, std::nullopt).error() == DateError::bad_month);
+  CHECK(on_day(1, 29, Season::wet).error() == DateError::bad_day);
+  CHECK(on_day(0, 0, std::nullopt).error() == DateError::bad_day);
   return argonia::test::failures;
 }

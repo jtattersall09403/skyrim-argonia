@@ -73,6 +73,7 @@ GROUPS = {
     "uplands & mountains": ("uplands", "uplands and mountains"),
     "firm lowland & floodplain": ("lowland", "firm lowland and floodplain"),
 }
+YEAR_ORDER = ("dry", "hatching", "wet")  # the seasons from the year's first day (a reversible design choice)
 SEASON_FACTOR = {  # from each season's `effects` text
     "wet": {"monsoon-downpour": 2.0, "storm": 2.0, "dry-haze": 0.0},
     "dry": {"monsoon-downpour": 0.5},
@@ -222,7 +223,10 @@ def rows_from(weather: dict, overrides: dict, palettes: dict) -> dict[str, list[
         for st, w in weather["regionFrequencies"][key].items():
             out["weather_group_weight"].append({"weather_group_id": gid, "weather_state_id": st, "weight": w})
     for s in weather["seasons"]:
-        out["season"].append({"id": s["id"], "name": s["name"], "share": s["share"], "effects": s["effects"]})
+        out["season"].append({"id": s["id"], "name": s["name"], "share": s["share"], "effects": s["effects"],
+                              "year_ord": YEAR_ORDER.index(s["id"])})
+        out["condition_shape_season"].append({"term": "calendarIs", "season_id": s["id"],
+                                              "ord": YEAR_ORDER.index(s["id"])})
         for st, f in SEASON_FACTOR.get(s["id"], {}).items():
             out["season_factor"].append({"season_id": s["id"], "weather_state_id": st, "factor": f})
     for i, name, wg, misty, ext, about in ECO:
@@ -297,6 +301,7 @@ def rows_from(weather: dict, overrides: dict, palettes: dict) -> dict[str, list[
 
 
 ORDER = ("weather_state", "weather_state_profile", "weather_group", "weather_group_weight", "season",
+         "condition_shape_season",
          "season_factor", "eco_class", "region_class", "region_class_profile", "region_class_eco_override",
          "region_class_override", "region_class_override_point", "region_class_override_applies", "object_role",
          "region_class_role", "object_form", "image_space", "weather", "weather_realisation", "climate")

@@ -5,8 +5,8 @@ globals (RDWT's global), so setting them when the season turns is what makes the
 Each global is one weather of one weather group. Its chance in a season is the group's state weight, times the
 season's factor on that state (season_factor, 1 where unlisted), times the weather's share of the state. That is then
 normalised to 100 over the group's weathers in that season, so a state a season rules out (dry haze in the wet)
-gets 0. The year runs SEASON_ORDER from the first day, each season taking its `share` of the days. This is a
-reversible design choice: the imported seasons have shares but no months.
+gets 0. The year runs the seasons in `season.year_ord` order from the first day, each taking its `share` of the
+days. That order is a reversible design choice: the imported seasons have shares but no months.
 
     python3 -m tools.argonia_world.regions.season [--check]   write (or diff) skse/core/generated/.../tables_weather.h
 """
@@ -22,19 +22,20 @@ from tools.argonia_world import skyrim_units as su
 
 ROOT = Path(__file__).resolve().parents[3]
 OUT = ROOT / "skse" / "core" / "generated" / "argonia" / "core" / "tables_weather.h"
-SEASON_ORDER = ("dry", "hatching", "wet")  # from the year's first day
+def order(w) -> list[str]:
+    """The seasons in the year's order from day 0 (season.year_ord)."""
+    return w.values("SELECT id FROM season ORDER BY year_ord")
 
 
 def windows(w) -> list[tuple[str, int, int]]:
-    """(season, first day, end day) over the year's days (0-based), in SEASON_ORDER, covering the year once."""
+    """(season, first day, end day) over the year's days (0-based), in year order, covering the year once."""
     share = {r["id"]: r["share"] for r in w.query("SELECT id, share FROM season")}
-    if set(share) != set(SEASON_ORDER):
-        raise ValueError(f"seasons {sorted(share)} are not SEASON_ORDER {SEASON_ORDER}")
+    seasons = order(w)
     days = sum(su.MONTH_DAYS)
     out, acc, start = [], 0.0, 0
-    for s in SEASON_ORDER:
+    for s in seasons:
         acc += share[s] / sum(share.values())
-        end = days if s == SEASON_ORDER[-1] else round(acc * days)
+        end = days if s == seasons[-1] else round(acc * days)
         out.append((s, start, end))
         start = end
     return out
@@ -51,7 +52,7 @@ def chances(w) -> dict[str, dict[str, int]]:
         rows = w.query("SELECT r.weather_state_id st, r.weather_id wid, r.share, gw.weight FROM weather_realisation r "
                        "JOIN weather_group_weight gw ON gw.weather_group_id = r.weather_group_id AND "
                        "gw.weather_state_id = r.weather_state_id WHERE r.weather_group_id = ? ORDER BY r.weather_id", g)
-        for s in SEASON_ORDER:
+        for s in order(w):
             raw = defaultdict(float)
             for r in rows:
                 raw[r["wid"]] += r["weight"] * fac.get((s, r["st"]), 1.0) * r["share"]
@@ -72,15 +73,15 @@ def render(w) -> str:
              "// (decision 0030). Data only. Do not edit: change the rows through db.py and regenerate.",
              "#pragma once", "#include <array>", "#include <cstdint>", "#include <string_view>", "",
              "namespace argonia::core::gen {", "",
-             f"enum class Season : std::uint8_t {{ {', '.join(s for s in SEASON_ORDER)} }};",
-             f"inline constexpr std::size_t kSeasons = {len(SEASON_ORDER)};",
+             f"enum class Season : std::uint8_t {{ {', '.join(s.replace('-', '_') for s in order(w))} }};",
+             f"inline constexpr std::size_t kSeasons = {len(order(w))};",
              f"inline constexpr std::array<std::uint8_t, 12> kMonthDays{{{', '.join(map(str, su.MONTH_DAYS))}}};",
              "struct SeasonWindow { Season season; std::uint16_t first_day, end_day; };",
              f"inline constexpr std::array<SeasonWindow, {len(win)}> kSeasonWindows{{{{",
              *[f"    {{Season::{s}, {a}, {b}}}," for s, a, b in win], "}};",
              "struct WeatherChance { std::string_view global; std::array<std::uint8_t, kSeasons> chance; };",
              f"inline constexpr std::array<WeatherChance, {len(ch)}> kWeatherChances{{{{",
-             *[f"    {{\"{g}\", {{{', '.join(str(v[s]) for s in SEASON_ORDER)}}}}}," for g, v in ch.items()],
+             *[f"    {{\"{g}\", {{{', '.join(str(v[s]) for s in order(w))}}}}}," for g, v in ch.items()],
              "}};", "", "}  // namespace argonia::core::gen", ""]
     return "\n".join(lines)
 

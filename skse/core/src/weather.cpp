@@ -23,10 +23,13 @@ std::vector<Setting> settings(Season s) {
   return out;
 }
 
-DayChange on_day(int month, int day, std::optional<Season> last) {
-  const Season s = season_of(day_of_year(month, day).value_or(0));
-  if (last && *last == s) return {s, {}};
-  return {s, settings(s)};
+std::expected<DayChange, DateError> on_day(int month, int day, std::optional<Season> last) {
+  if (month < 0 || month >= static_cast<int>(gen::kMonthDays.size())) return std::unexpected(DateError::bad_month);
+  const auto d = day_of_year(month, day);
+  if (!d) return std::unexpected(DateError::bad_day);
+  const Season s = season_of(*d);
+  if (last && *last == s) return DayChange{s, {}};
+  return DayChange{s, settings(s)};
 }
 
 }  // namespace argonia::core::weather

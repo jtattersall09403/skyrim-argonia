@@ -5619,12 +5619,26 @@ CREATE TABLE "weather_group_weight" (
   PRIMARY KEY ("weather_group_id", "weather_state_id")
 );
 
--- Home of a season of the calendar and its share of the year.
+-- Home of a season of the calendar: the one season vocabulary (the weather rule, regions/season.py, and the
+-- condition vocabulary's calendarIs both read it), its share of the year and its place in the year from day 0.
+-- The imported climate design (climate/weather-states.json) has these three; 85's finer five (rain-onset, monsoon,
+-- flood-peak, recession) have no shares or factors in any imported climate data, so they are not seasons here.
 CREATE TABLE "season" (
   "id" TEXT NOT NULL PRIMARY KEY,
   "name" TEXT NOT NULL,
   "share" REAL NOT NULL CHECK ("share" > 0 AND "share" <= 1),
-  "effects" TEXT
+  "effects" TEXT,
+  "year_ord" INTEGER NOT NULL UNIQUE
+);
+
+-- The seasons an enum argument of a condition term takes (85 §A6 calendarIs), in rank order; the season table is
+-- their home, so a season named in a condition is always one the weather rule knows.
+CREATE TABLE "condition_shape_season" (
+  "term" TEXT NOT NULL REFERENCES "condition_shape"("term"),
+  "season_id" TEXT NOT NULL REFERENCES "season"("id"),
+  "ord" INTEGER NOT NULL,
+  PRIMARY KEY ("term", "season_id"),
+  UNIQUE ("term", "ord")
 );
 
 -- Home of a season's factor on a state's weight (wet: monsoon and storm x2; dry haze only in the dry season).

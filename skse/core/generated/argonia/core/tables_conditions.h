@@ -24,68 +24,68 @@ inline constexpr std::array<TermRow, 65> kTerms{{
     {Shape::all, "", 0, 0, 0, 0},  // all
     {Shape::any, "", 0, 0, 0, 0},  // any
     {Shape::at_least, "GetActorValue", 0, 2, 0, 0},  // attributeAtLeast
-    {Shape::calendar, "", 2, 3, 0, 5},  // calendarIs
-    {Shape::at_least, "", 5, 1, 5, 0},  // carriedValueAtLeast
-    {Shape::at_least, "", 6, 2, 5, 0},  // counterAtLeast
-    {Shape::is, "", 8, 2, 5, 4},  // custody
-    {Shape::after, "", 10, 1, 9, 0},  // dateAfter
-    {Shape::before, "", 11, 1, 9, 0},  // dateBefore
-    {Shape::at_least, "", 12, 2, 9, 0},  // daysSince
-    {Shape::at_least, "", 14, 3, 9, 0},  // deedCountAtLeast
-    {Shape::truth, "", 17, 1, 9, 0},  // detectedBy
-    {Shape::truth, "", 18, 1, 9, 0},  // discovered
-    {Shape::truth, "", 19, 1, 9, 0},  // disguisedAs
-    {Shape::at_least, "", 20, 2, 9, 0},  // dispositionAtLeast
-    {Shape::is, "", 22, 2, 9, 4},  // evidenceState
-    {Shape::truth, "", 24, 1, 13, 0},  // expelledFrom
-    {Shape::at_least, "GetFactionRank", 25, 2, 13, 0},  // factionRankAtLeast
-    {Shape::at_least, "", 27, 2, 13, 0},  // factionStandingAtLeast
-    {Shape::truth, "", 29, 1, 13, 0},  // firstTime
-    {Shape::flag, "", 30, 2, 13, 0},  // flag
-    {Shape::at_least, "", 32, 1, 13, 0},  // goldAtLeast
-    {Shape::truth, "", 33, 1, 13, 0},  // hasEvidence
-    {Shape::at_least, "GetItemCount", 34, 2, 13, 0},  // hasItem
-    {Shape::rank_at_least, "", 36, 1, 13, 3},  // histStepAtLeast
-    {Shape::truth, "", 37, 1, 16, 0},  // inCell
-    {Shape::truth, "", 38, 1, 16, 0},  // inRegion
-    {Shape::truth, "", 39, 1, 16, 0},  // inSettlement
-    {Shape::truth, "", 40, 1, 16, 0},  // inZone
-    {Shape::truth, "", 41, 1, 16, 0},  // knowsTopic
-    {Shape::at_least, "", 42, 1, 16, 0},  // levelAtLeast
-    {Shape::truth, "", 43, 2, 16, 0},  // localVariantActive
-    {Shape::is, "", 45, 2, 16, 3},  // lockIs
-    {Shape::not_, "", 47, 0, 19, 0},  // not
-    {Shape::is, "", 47, 2, 19, 0},  // notorietyTier
-    {Shape::truth, "", 49, 1, 19, 0},  // npcAlive
-    {Shape::truth, "", 50, 2, 19, 0},  // npcAtMark
-    {Shape::truth, "", 52, 1, 19, 0},  // npcInCustody
-    {Shape::truth, "", 53, 2, 19, 0},  // objectiveComplete
-    {Shape::at_least, "", 55, 2, 19, 0},  // owingAtLeast
-    {Shape::truth, "", 57, 0, 19, 0},  // owingHere
-    {Shape::truth, "", 57, 1, 19, 0},  // placeCleared
-    {Shape::is, "", 58, 2, 19, 6},  // placeStanceIs
-    {Shape::compare, "GetStage", 60, 3, 25, 0},  // questStage
-    {Shape::is, "", 63, 2, 25, 4},  // questState
-    {Shape::is, "GetIsRace", 65, 1, 29, 0},  // raceIs
-    {Shape::truth, "", 66, 2, 29, 0},  // rumourActive
-    {Shape::is, "", 68, 1, 29, 0},  // seasonIs
-    {Shape::truth, "", 69, 1, 29, 0},  // seenBy
-    {Shape::at_least, "", 70, 2, 29, 0},  // settlementStandingAtLeast
-    {Shape::is, "", 72, 1, 29, 0},  // sexIs
-    {Shape::is, "", 73, 1, 29, 0},  // signIs
-    {Shape::at_least, "", 74, 2, 29, 0},  // skillAtLeast
-    {Shape::truth, "", 76, 1, 29, 0},  // speakerCulture
-    {Shape::at_least, "", 77, 1, 29, 0},  // speakerDispositionAtLeast
-    {Shape::truth, "GetStageDone", 78, 2, 29, 0},  // stageEverReached
-    {Shape::truth, "", 80, 2, 29, 0},  // successorActive
-    {Shape::is, "", 82, 1, 29, 2},  // tideState
-    {Shape::truth, "", 83, 1, 31, 0},  // tierProtected
-    {Shape::time_of_day, "", 84, 1, 31, 4},  // timeOfDay
-    {Shape::truth, "", 85, 2, 35, 0},  // topicHeardFrom
-    {Shape::truth, "", 87, 2, 35, 0},  // wearing
-    {Shape::is, "", 89, 1, 35, 0},  // weatherIs
-    {Shape::truth, "", 90, 1, 35, 0},  // witnessed
-    {Shape::is, "", 91, 2, 35, 5},  // worstCrimeIs
+    {Shape::calendar, "", 2, 3, 0, 3},  // calendarIs
+    {Shape::at_least, "", 5, 1, 3, 0},  // carriedValueAtLeast
+    {Shape::at_least, "", 6, 2, 3, 0},  // counterAtLeast
+    {Shape::is, "", 8, 2, 3, 4},  // custody
+    {Shape::after, "", 10, 1, 7, 0},  // dateAfter
+    {Shape::before, "", 11, 1, 7, 0},  // dateBefore
+    {Shape::at_least, "", 12, 2, 7, 0},  // daysSince
+    {Shape::at_least, "", 14, 3, 7, 0},  // deedCountAtLeast
+    {Shape::truth, "", 17, 1, 7, 0},  // detectedBy
+    {Shape::truth, "", 18, 1, 7, 0},  // discovered
+    {Shape::truth, "", 19, 1, 7, 0},  // disguisedAs
+    {Shape::at_least, "", 20, 2, 7, 0},  // dispositionAtLeast
+    {Shape::is, "", 22, 2, 7, 4},  // evidenceState
+    {Shape::truth, "", 24, 1, 11, 0},  // expelledFrom
+    {Shape::at_least, "GetFactionRank", 25, 2, 11, 0},  // factionRankAtLeast
+    {Shape::at_least, "", 27, 2, 11, 0},  // factionStandingAtLeast
+    {Shape::truth, "", 29, 1, 11, 0},  // firstTime
+    {Shape::flag, "", 30, 2, 11, 0},  // flag
+    {Shape::at_least, "", 32, 1, 11, 0},  // goldAtLeast
+    {Shape::truth, "", 33, 1, 11, 0},  // hasEvidence
+    {Shape::at_least, "GetItemCount", 34, 2, 11, 0},  // hasItem
+    {Shape::rank_at_least, "", 36, 1, 11, 3},  // histStepAtLeast
+    {Shape::truth, "", 37, 1, 14, 0},  // inCell
+    {Shape::truth, "", 38, 1, 14, 0},  // inRegion
+    {Shape::truth, "", 39, 1, 14, 0},  // inSettlement
+    {Shape::truth, "", 40, 1, 14, 0},  // inZone
+    {Shape::truth, "", 41, 1, 14, 0},  // knowsTopic
+    {Shape::at_least, "", 42, 1, 14, 0},  // levelAtLeast
+    {Shape::truth, "", 43, 2, 14, 0},  // localVariantActive
+    {Shape::is, "", 45, 2, 14, 3},  // lockIs
+    {Shape::not_, "", 47, 0, 17, 0},  // not
+    {Shape::is, "", 47, 2, 17, 0},  // notorietyTier
+    {Shape::truth, "", 49, 1, 17, 0},  // npcAlive
+    {Shape::truth, "", 50, 2, 17, 0},  // npcAtMark
+    {Shape::truth, "", 52, 1, 17, 0},  // npcInCustody
+    {Shape::truth, "", 53, 2, 17, 0},  // objectiveComplete
+    {Shape::at_least, "", 55, 2, 17, 0},  // owingAtLeast
+    {Shape::truth, "", 57, 0, 17, 0},  // owingHere
+    {Shape::truth, "", 57, 1, 17, 0},  // placeCleared
+    {Shape::is, "", 58, 2, 17, 6},  // placeStanceIs
+    {Shape::compare, "GetStage", 60, 3, 23, 0},  // questStage
+    {Shape::is, "", 63, 2, 23, 4},  // questState
+    {Shape::is, "GetIsRace", 65, 1, 27, 0},  // raceIs
+    {Shape::truth, "", 66, 2, 27, 0},  // rumourActive
+    {Shape::is, "", 68, 1, 27, 0},  // seasonIs
+    {Shape::truth, "", 69, 1, 27, 0},  // seenBy
+    {Shape::at_least, "", 70, 2, 27, 0},  // settlementStandingAtLeast
+    {Shape::is, "", 72, 1, 27, 0},  // sexIs
+    {Shape::is, "", 73, 1, 27, 0},  // signIs
+    {Shape::at_least, "", 74, 2, 27, 0},  // skillAtLeast
+    {Shape::truth, "", 76, 1, 27, 0},  // speakerCulture
+    {Shape::at_least, "", 77, 1, 27, 0},  // speakerDispositionAtLeast
+    {Shape::truth, "GetStageDone", 78, 2, 27, 0},  // stageEverReached
+    {Shape::truth, "", 80, 2, 27, 0},  // successorActive
+    {Shape::is, "", 82, 1, 27, 2},  // tideState
+    {Shape::truth, "", 83, 1, 29, 0},  // tierProtected
+    {Shape::time_of_day, "", 84, 1, 29, 4},  // timeOfDay
+    {Shape::truth, "", 85, 2, 33, 0},  // topicHeardFrom
+    {Shape::truth, "", 87, 2, 33, 0},  // wearing
+    {Shape::is, "", 89, 1, 33, 0},  // weatherIs
+    {Shape::truth, "", 90, 1, 33, 0},  // witnessed
+    {Shape::is, "", 91, 2, 33, 5},  // worstCrimeIs
 }};
 inline constexpr std::array<ArgSpec, 93> kArgSpecs{{
     ArgSpec{ArgKind::id, false},
@@ -182,12 +182,12 @@ inline constexpr std::array<ArgSpec, 93> kArgSpecs{{
     ArgSpec{ArgKind::id, false},
     ArgSpec{ArgKind::enum_, false},
 }};
-inline constexpr std::array<std::string_view, 40> kValues{
-    "dry", "rain-onset", "monsoon", "flood-peak", "recession", "player", "reed", "cult",
-    "hidden", "pristine", "copied", "altered", "destroyed", "touched", "heard", "sap-speaker",
-    "locked", "unlocked", "sprung", "hostile", "guarded", "wary", "neutral", "friendly",
-    "sanctuary", "unstarted", "active", "complete", "failed", "low", "high", "dawn",
-    "day", "dusk", "night", "trespass", "pickpocket", "theft", "assault", "murder",
+inline constexpr std::array<std::string_view, 38> kValues{
+    "dry", "hatching", "wet", "player", "reed", "cult", "hidden", "pristine",
+    "copied", "altered", "destroyed", "touched", "heard", "sap-speaker", "locked", "unlocked",
+    "sprung", "hostile", "guarded", "wary", "neutral", "friendly", "sanctuary", "unstarted",
+    "active", "complete", "failed", "low", "high", "dawn", "day", "dusk",
+    "night", "trespass", "pickpocket", "theft", "assault", "murder",
 };
 
 enum class Op : std::uint8_t { eq, ne, ge, le, lt, gt };

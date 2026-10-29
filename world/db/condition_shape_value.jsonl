@@ -1,8 +1,3 @@
-{"term":"calendarIs","value":"dry","ord":0}
-{"term":"calendarIs","value":"flood-peak","ord":3}
-{"term":"calendarIs","value":"monsoon","ord":2}
-{"term":"calendarIs","value":"rain-onset","ord":1}
-{"term":"calendarIs","value":"recession","ord":4}
 {"term":"custody","value":"cult","ord":2}
 {"term":"custody","value":"hidden","ord":3}
 {"term":"custody","value":"player","ord":0}

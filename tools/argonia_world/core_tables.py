@@ -204,7 +204,8 @@ def conditions(w: db.World) -> str:
     kind = {"id": "id", "int": "int_", "op": "op", "enum": "enum_", "bool": "bool_"}
     for t in terms:
         a = w.query("SELECT kind, optional FROM condition_shape_arg WHERE term = ? ORDER BY ord", t["id"])
-        v = w.values("SELECT value FROM condition_shape_value WHERE term = ? ORDER BY ord", t["id"])
+        v = w.values("SELECT value FROM condition_shape_value WHERE term = ? ORDER BY ord", t["id"]) + w.values(
+            "SELECT season_id FROM condition_shape_season WHERE term = ? ORDER BY ord", t["id"])  # the season table
         rows.append(f"    {{Shape::{ident(t['shape'])}, {sv(t['native'])}, {len(specs)}, {len(a)}, {len(values)}, "
                     f"{len(v)}}},  // {t['id']}")
         specs += [f"ArgSpec{{ArgKind::{kind[r['kind']]}, {'true' if r['optional'] else 'false'}}}" for r in a]

@@ -105,7 +105,7 @@ game and prose conditions habitually forget it.
 | `localVariantActive` | location `id`, variant `id` | local world-state overlay |
 | `timeOfDay` | `enum{dawn,day,dusk,night}` *or* hour range | the world clock |
 | `dateAfter` / `dateBefore` | day `int` (the world-time absolute day number) | the canon calendar (strictly after / before that day) |
-| `calendarIs` | month `id` (the world-time month name, as `MONTHS[].name`: `Sun's Dawn`), optional day `int` (of the month, from 1), optional season `enum{dry,rain-onset,monsoon,flood-peak,recession}` (world-time `SeasonName`) | the canon calendar date, derived from the epoch minute (0157 item 9); festivals are data on this term |
+| `calendarIs` | month `id` (the world-time month name, as `MONTHS[].name`: `Sun's Dawn`), optional day `int` (of the month, from 1), optional season `enum` (a `season` row of the world database: dry, hatching, wet; the one season vocabulary, shared with the weather rule) | the canon calendar date, derived from the epoch minute (0157 item 9); festivals are data on this term |
 | `daysSince` | event `id`, `int` | cooldowns, amnesty decay, reprisal timers |
 | `seasonIs` | `enum` | seasonal content |
 | `weatherIs` | `enum` | 8c's published local weather |

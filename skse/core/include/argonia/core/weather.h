@@ -4,6 +4,7 @@
 #pragma once
 #include "argonia/core/tables_weather.h"
 
+#include <expected>
 #include <optional>
 #include <string_view>
 #include <vector>
@@ -22,8 +23,10 @@ struct Setting { std::string_view global; std::uint8_t value; };
 std::vector<Setting> settings(Season s);
 
 // The day changed: the season it is now, and the settings to write when the season differs from `last`
-// (none when it is the same season: the globals already hold it).
+// (none when it is the same season: the globals already hold it). A date the calendar does not have is refused:
+// the globals keep what they hold, and the adapter logs it.
 struct DayChange { Season season; std::vector<Setting> write; };
-DayChange on_day(int month, int day, std::optional<Season> last);
+enum class DateError { bad_month, bad_day };
+std::expected<DayChange, DateError> on_day(int month, int day, std::optional<Season> last);
 
 }  // namespace argonia::core::weather
