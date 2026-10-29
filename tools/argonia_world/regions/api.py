@@ -292,19 +292,26 @@ def wrld_record() -> dict:
     return tw.wrld(Sources(ground=g, apron=None, cover=None, tint=None, pad=PAD).cell_range)
 
 
-def layers(alloc, world, wrld: dict | None = None) -> list:
+def layers(alloc, world, wrld: dict | None = None, resolver=None) -> list:
     """The Argonia.esm layers of the region family. ``wrld`` is ArgoniaWorld.esm's WRLD intermediate record
-    (terrain/world.py), which the override repeats with the climate set (an override replaces the whole record)."""
+    (terrain/world.py), which the override repeats with the climate set (an override replaces the whole record);
+    with a piece ``resolver``, the gates and landings (routes/infra.py) ride in its persistent cell."""
     from tools.argonia_world.intermediate import Layer
     c = world.query("SELECT * FROM climate ORDER BY id")[0]
     images, by_id = _image_records(alloc, world)
     recs = images + _weather_records(alloc, world, by_id) + [climate_record(alloc, world)]
     recs += season_globals(alloc, world)
-    recs.append({"type": "GLOB", "override": True, "edid": "TimeScale", "formKey": TIMESCALE,  # a short in Skyrim.esm (measured)
+    recs.append({"type": "GLOB", "override": True, "edid": "TimeScale", "formKey": TIMESCALE,  # a short (measured)
                  "value": c["timescale"]})
     if wrld is not None:
         recs += region_records(alloc, world, wrld["formKey"])
         over = dict(wrld, override=True, climate=climate_form_key(alloc))
         over.pop("layer", None)
+        if resolver is not None:
+            from tools.argonia_world.routes import infra
+            from tools.argonia_world.routes.build import Ground
+            refs, stats, _ = infra.refs(alloc, world, resolver, Ground().z)
+            over["persistentRefs"] = refs
+            recs += stats
         recs.append(over)
     return [Layer("base:regions", recs)]

@@ -56,6 +56,10 @@ def rounded(v: float, places: int = 4) -> float:
     return 0.0 if r == 0 else r  # no -0.0
 
 
+# --- calendar ---------------------------------------------------------------------------------------------------
+MONTH_DAYS = (31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)  # Skyrim's calendar (GameMonth 0..11), no leap years
+
+
 # --- FormIDs and plugins --------------------------------------------------------------------------------------
 FORMID_FIRST = 0x800  # the first object id a plugin may allocate (lower ids are the engine's)
 FORMID_LAST = 0xFFFFFF  # the last for a full (non-light) master

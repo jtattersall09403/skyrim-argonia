@@ -258,6 +258,19 @@ static class RegionWriters
         var ws = LandWorld.World(r);  // the same mapping as the master's record, so only the links differ
         if (Os(r, "climate") is { } cl) ws.Climate.SetTo(FK(cl));
         if (Os(r, "music") is { } mu) ws.Music.SetTo(FK(mu));
+        foreach (var p in A(r, "persistentRefs"))  // the gates and landings (routes/infra.py), placed by position
+        {
+            var a = p.GetProperty("pos").EnumerateArray().Select(x => x.GetSingle()).ToArray();
+            var o = p.GetProperty("rot").EnumerateArray().Select(x => x.GetSingle()).ToArray();
+            var refr = new PlacedObject(FK(S(p, "formKey")), Rel)
+            {
+                EditorID = Os(p, "edid"),
+                Placement = new Placement { Position = new P3Float(a[0], a[1], a[2]), Rotation = new P3Float(o[0], o[1], o[2]) },
+            };
+            refr.Base.SetTo(FK(S(p, "base")));
+            refr.MajorRecordFlagsRaw |= (int)PlacedObject.DefaultMajorFlag.Persistent;
+            ws.TopCell!.Persistent.Add(refr);
+        }
         return ws;
     }
 }

@@ -51,3 +51,11 @@ def test_paint_lays_the_road_within_half_its_width_and_spares_water():
     win = np.zeros((6, 6), dtype=np.int16)
     P.override_classes(win, 8, 4, segs=segs)
     assert win[2, 0] == P.ROAD
+
+
+def test_gate_walks_back_from_the_border_and_faces_out():
+    from tools.argonia_world.routes import infra as I
+    pts = [(100.0, 50.0), (100.0, 10.0), (100.0, 0.0)]  # north to the border (y south: north is -y)
+    (x, y), yaw = I.walk_back(pts, 20.0)
+    assert (x, y) == (100.0, 20.0) and yaw == 0.0
+    assert I.heading((0, 0), (-1, 0)) == 270.0 and I.heading((0, 0), (0, 1)) == 180.0

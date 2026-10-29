@@ -197,7 +197,7 @@ def build(data: Path, scan: dict, index: Index, alloc: Allocator, extra: list[La
     resolver = Resolver(index)
     studio = json.loads((QUARANTINE / "start.json").read_text(encoding="utf-8"))["studio"]
     layers = quarantine_layers(alloc, scan, resolver) + [sheet_layer(alloc, alloc.world, studio)] + list(extra)
-    layers += regions_api.layers(alloc, alloc.world, regions_api.wrld_record())  # 2.W3: regions, weather, climate
+    layers += regions_api.layers(alloc, alloc.world, regions_api.wrld_record(), resolver)  # 2.W3: regions, weather, climate
     order = load_order(data) + [regions_api.LAND_PLUGIN]  # ArgoniaWorld.esm, the generated ground (decision 0031)
     return {
         "schema": 1,

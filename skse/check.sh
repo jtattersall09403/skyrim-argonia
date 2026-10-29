@@ -6,7 +6,7 @@ set -euo pipefail
 here=$(cd "$(dirname "$0")" && pwd)
 # The generated core tables must match the world database (G11.2): regenerate in memory and diff.
 py=$(command -v "$HOME/.argonia/venv/bin/python" || command -v python3)
-(cd "$here/.." && "$py" -m tools.argonia_world.core_tables --check)
+(cd "$here/.." && "$py" -m tools.argonia_world.core_tables --check && "$py" -m tools.argonia_world.regions.season --check)
 export PATH="$PATH:$HOME/.argonia/buildtools/bin"
 if command -v cmake >/dev/null && command -v ninja >/dev/null; then
   cd "$here"
