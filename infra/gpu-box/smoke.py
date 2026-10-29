@@ -1,97 +1,65 @@
 #!/usr/bin/env python3
-"""The 0.2 smoke checks on the game machine, driven from the build VM (chunk 0.2 §c): the real pad buttons by
-pad.ps1 (a virtual Xbox 360 pad), state read by skylink.ps1 (SkyLink AI's pipe), a still per step by grab.ps1.
-Every result and still goes to ~/.argonia/stack/smoke/<stamp>/ (results.json); 0.3 turns this into the runner.
+"""The 0.2 smoke checks on the game machine, driven from the build VM (chunk 0.2 §c), through tools/bridge.py
+(0.3's ArgoniaBridge): the real pad by pad.ps1 (a virtual Xbox 360 pad), real keys by the bridge's `input`, state
+and events read by the bridge, a still per step. Results and stills go to ~/.argonia/stack/smoke/<stamp>/.
 
-    smoke.py launch [--save ArgoniaRiverwood]   start Skyrim through SKSE (kept running) and load the save
+    smoke.py launch [--save argoniariverwood] [--fresh]   kill any zombie, start to the main menu, load the save
     smoke.py dodge                              a roll in 8 directions and a backstep: distance by position
-    smoke.py pad                                RT power attack, LB block, RS lock-on
-    smoke.py call '<json list of SkyLink calls>'
+    smoke.py pad                                RT power attack, LB block, RS lock-on (TDM)
+    smoke.py menus                              every menu opened by its key, a still each (the paper-theme check)
+    smoke.py scene [--save ...]                 the smoke scene: load, walk, draw, swing, roll, block, lock on, swim,
+                                                the menus; the crash and Papyrus logs read after
+    smoke.py frametime [--label cs-on] [--seconds 60]   PresentMon over the running game, and the bridge's frame times
 """
 import argparse
-import base64
 import json
 import math
-import os
 import pathlib
 import subprocess
 import sys
+import threading
 import time
 
-HERE = pathlib.Path(__file__).resolve().parent
-RUN = str(HERE / "run.sh")
+REPO = pathlib.Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(REPO))
+from tools.bridge import Bridge, BridgeError  # noqa: E402
+
+RUN = str(REPO / "infra" / "gpu-box" / "run.sh")
 OUT = pathlib.Path.home() / ".argonia" / "stack" / "smoke" / time.strftime("%Y%m%dT%H%M%S")
 RESULTS = {}
-
-
-def ps(cmd, desktop=False, wait=240):
-    env = {**os.environ, "DESKTOP_WAIT": str(wait)}
-    r = subprocess.run([RUN, "desktop" if desktop else "ps", cmd], text=True, capture_output=True, env=env)
-    if r.returncode:
-        raise SystemExit(f"run.sh failed: {r.stderr[-400:]}")
-    return r.stdout
-
-
-def sk(*calls, timeout_ms=8000):
-    """SkyLink calls, one response each ({"success", "data"|"error"})."""
-    b64 = base64.b64encode(json.dumps(list(calls)).encode()).decode()
-    out = ps(rf"& C:\argonia\infra\skylink.ps1 -TimeoutMs {timeout_ms} -Calls ([Text.Encoding]::UTF8.GetString("
-             rf"[Convert]::FromBase64String('{b64}')))")
-    return [json.loads(l) for l in out.splitlines() if l.startswith("{")]
-
-
-def console(cmd):
-    (r,) = sk({"action": "execute_command", "params": {"command": cmd}})
-    return r
-
-
-def pad(seq):
-    return ps(rf"& C:\argonia\infra\pad.ps1 -Seq '{seq}'")
+B = Bridge()
 
 
 def player():
-    (r,) = sk({"action": "get_player_info"})
-    if not r.get("success"):
-        raise SystemExit(f"get_player_info: {r}")
-    return r["data"]
+    return B.call("player")
+
+
+def console(cmd):
+    return B.call("console", cmd)["output"].strip()
 
 
 def still(name):
-    OUT.mkdir(parents=True, exist_ok=True)
-    ps(rf"& C:\argonia\infra\grab.ps1 C:\argonia\logs\smoke-{name}.png | Out-Null", desktop=True, wait=60)
-    subprocess.run([RUN, "get", f"C:/argonia/logs/smoke-{name}.png", str(OUT / f"{name}.png")], capture_output=True)
-    return str(OUT / f"{name}.png")
+    return str(B.screenshot(OUT / f"{name}.png"))
 
 
 def record(key, value):
     RESULTS[key] = value
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / "results.json").write_text(json.dumps(RESULTS, indent=1))
-    print(key, json.dumps(value))
+    print(key, json.dumps(value), flush=True)
 
 
-def settle(cond, what, tries=60):
-    """Wait on a game condition (a load, a menu), one SkyLink read a second, bounded."""
-    for _ in range(tries):
-        try:
-            v = cond()
-            if v:
-                return v
-        except (SystemExit, json.JSONDecodeError):
-            pass
-        time.sleep(1)
-    raise SystemExit(f"{what}: not reached in {tries} s")
+def flat(p0, p1):
+    dx, dy = p1["pos"]["x"] - p0["pos"]["x"], p1["pos"]["y"] - p0["pos"]["y"]
+    return round(math.hypot(dx, dy), 1), round(math.degrees(math.atan2(dx, dy)) % 360)
 
 
 def cmd_launch(a):
-    out = ps(r"$env:ARGONIA_KEEP = '1'; & C:\argonia\infra\stack.ps1 menu", desktop=True, wait=600)
-    if "MAIN-MENU OK" not in out:
-        raise SystemExit(out[-1500:])
-    settle(lambda: sk({"action": "ping"})[0].get("success"), "SkyLink's pipe")
-    print(sk({"action": "load_save", "params": {"saveName": a.save}}))
-    p = settle(lambda: (lambda d: d if d.get("cellName") not in (None, "unknown") else None)(player()), "the save loaded")
-    time.sleep(5)  # the load screen fades
-    record("launch", {"save": a.save, "cell": p.get("cellName"), "world": p.get("worldspaceName"),
+    r = B.launch(fresh=a.fresh)
+    B.call("load", a.save)
+    time.sleep(4)  # the load screen fades
+    p = player()
+    record("launch", {"save": a.save, "cell": p["cell"], "world": p["worldspace"], "ping": r["ping"],
                       "still": still("launch")})
 
 
@@ -99,83 +67,192 @@ DIRS = {"N": (0, 1), "NE": (0.7, 0.7), "E": (1, 0), "SE": (0.7, -0.7), "S": (0, 
         "W": (-1, 0), "NW": (-0.7, 0.7)}
 
 
-def moved(seq, name):
+def moved(seq, name, home):
+    B.call("teleport", "pos", home["x"], home["y"], home["z"] + 8)  # every run from the same flat spot
+    time.sleep(0.8)
     p0 = player()
-    pad(seq)
+    since = B.call("events")["last"]
+    B.pad(seq)
     time.sleep(0.3)
     p1 = player()
-    dx, dy = p1["posX"] - p0["posX"], p1["posY"] - p0["posY"]
-    return {"units": round(math.hypot(dx, dy), 1), "heading_deg": round(math.degrees(math.atan2(dx, dy)) % 360),
-            "stamina": [round(p0["stamina"], 1), round(p1["stamina"], 1)], "still": still(name)}
+    units, heading = flat(p0, p1)
+    tags = [e["data"]["tag"] for e in B.call("events", since, "anim")["events"]]
+    return {"units": units, "heading_deg": heading, "stamina": [round(p0["stamina"]["current"], 1),
+            round(p1["stamina"]["current"], 1)], "dodge_tags": sorted({t for t in tags if "odge" in t or "oll" in t}),
+            "still": still(name)}
 
 
 def cmd_dodge(a):
+    home = player()["pos"]
     # the walk alone over the same stick time is the baseline a roll must clearly beat
-    record("walk-N", moved("+LX=0,LY=1:220 -:1500", "walk-N"))
+    record("walk-N", moved("+LX=0,LY=1:220 -:1500", "walk-N", home))
     for d, (x, y) in DIRS.items():
-        record(f"roll-{d}", moved(f"+LX={x},LY={y}:120 B:100 -:1500", f"roll-{d}"))
-    record("backstep", moved("wait:300 B:100 wait:1500", "backstep"))
+        record(f"roll-{d}", moved(f"+LX={x},LY={y}:120 B:100 -:1500", f"roll-{d}", home))
+    record("backstep", moved("wait:300 B:100 wait:1500", "backstep", home))
+    walk = RESULTS["walk-N"]["units"]
+    rolls = {k: v["units"] for k, v in RESULTS.items() if k.startswith("roll-")}
+    record("dodge-verdict", {"walk": walk, "rolls": rolls, "backstep": RESULTS["backstep"]["units"],
+                             "all_rolls_beat_walk": all(u > walk + 50 for u in rolls.values()),
+                             "backstep_moves": RESULTS["backstep"]["units"] > 30})
+
+
+def during(seq, probe, every=0.25):
+    """Play a pad sequence and run `probe` repeatedly while it plays (the desktop job starts it some seconds
+    after the call); the probe's results in order."""
+    seen, done = [], threading.Event()
+
+    def play():
+        try:
+            B.pad(seq)
+        finally:
+            done.set()
+    t = threading.Thread(target=play)
+    t.start()
+    while not done.is_set():
+        try:
+            seen.append(probe())
+        except BridgeError as e:
+            seen.append(f"error: {e}")
+        time.sleep(every)
+    t.join()
+    return seen
 
 
 def cmd_pad(a):
-    for name, seq in (("light-RB", "RB:120 wait:1500"), ("heavy-RT", "RT:120 wait:2000")):
+    console("player.setav stamina 300")  # setup only: enough stamina for several attacks
+    console("player.restoreav stamina 300")
+    for name, seq, want in (("light-RB", "RB:120 wait:1800", "light"), ("heavy-RT", "RT:450 wait:2000", "power")):
         p0 = player()
-        pad(seq.split()[0])  # the press alone, then read the attack in flight
-        idle = sk({"action": "get_current_idle", "params": {"refId": "14"}})[0]
-        power = console("player.IsPowerAttacking")
-        attacking = console("player.IsAttacking")
-        time.sleep(1.5)
+        since = B.call("events")["last"]
+        power = during(seq, lambda: console("player.IsPowerAttacking"))
         p1 = player()
-        record(name, {"idle": idle.get("data"), "IsPowerAttacking": power, "IsAttacking": attacking,
-                      "stamina": [round(p0["stamina"], 1), round(p1["stamina"], 1)], "still": still(name)})
-    # LB held: blocking is read while it is held (pad.ps1 runs the hold in the background of this read)
-    holder = subprocess.Popen([RUN, "ps", r"& C:\argonia\infra\pad.ps1 -Seq 'LB:4000'"], stdout=subprocess.DEVNULL)
-    time.sleep(3.0)
-    record("block-LB", {"IsBlocking": console("player.IsBlocking"), "still": still("block-LB")})
-    holder.wait()
-    record("block-released", {"IsBlocking": console("player.IsBlocking")})
-    pad("RS:120 wait:800")
-    record("lockon-RS", {"combat": sk({"action": "get_combat_state"})[0].get("data"), "still": still("lockon-RS")})
-    pad("RS:120 wait:800")
+        tags = [e["data"]["tag"] for e in B.call("events", since, "anim")["events"]]
+        record(name, {"IsPowerAttacking_seen": any(">> 1" in str(s) for s in power),
+                      "attack_tags": sorted({t for t in tags if "ttack" in t or "eapon" in t}),
+                      "stamina": [round(p0["stamina"]["current"], 1), round(p1["stamina"]["current"], 1)],
+                      "still": still(name)})
+    since = B.call("events")["last"]
+    blocking = during("LB:2600", lambda: console("player.IsBlocking"))
+    tags = [e["data"]["tag"] for e in B.call("events", since, "anim")["events"]]
+    record("block-LB", {"IsBlocking_seen": any(">> 1" in str(s) for s in blocking),
+                        "block_tags": sorted({t for t in tags if "lock" in t}),
+                        "released": console("player.IsBlocking")})
+    # lock-on needs a target: a bandit placed ahead (setup), then RS; TDM's lock shows its reticle
+    console("player.placeatme 0001E7D9 1")  # Skyrim.esm EncBandit01Melee1HNordM (a leveled bandit)
+    console("tai")  # AI off for the target while the lock is read (setup); toggled back below
+    time.sleep(1.0)
+    B.pad("RX=0:100 RS:120 wait:900")
+    record("lockon-RS", {"still": still("lockon-RS")})
+    B.pad("RS:120 wait:600")
+    console("tai")
+    console("killall")
+
+
+MENUS = [  # key, the menu the bridge's menu events name, the key that closes it
+    ("I", "InventoryMenu", "I"), ("P", "MagicMenu", "P"), ("J", "Journal Menu", "J"), ("M", "MapMenu", "M"),
+    ("TAB", "TweenMenu", "TAB"), ("SLASH", "StatsMenu", "ESC")]
+
+
+def cmd_menus(a, tag=""):
+    for key, menu, close in MENUS:
+        since = B.call("events")["last"]
+        B.call("input", "key", key, 120)
+        try:
+            B.call("wait_event", "menu", menu, 4000, since)
+            opened = True
+        except BridgeError:
+            opened = False
+        time.sleep(1.2)  # the menu's open animation
+        record(f"menu-{menu}{tag}", {"opened": opened, "still": still(f"menu-{menu.replace(' ', '')}{tag}")})
+        B.call("input", "key", close, 120)
+        time.sleep(1.0)
+        if menu == "StatsMenu":
+            B.call("input", "key", "ESC", 120)  # the stats menu returns to the tween menu
+            time.sleep(0.8)
+
+
+def logs_after():
+    out = subprocess.run([RUN, "ps", r"$s=\"$env:USERPROFILE\Documents\My Games\Skyrim Special Edition\"; "
+                          r"$p = Get-ChildItem \"$s\Logs\Script\Papyrus.0.log\" -EA SilentlyContinue; "
+                          r"if ($p) { 'papyrus errors: ' + @(Select-String -Path $p.FullName -Pattern 'error' ).Count } "
+                          r"else { 'papyrus: no log (logging off)' }; "
+                          r"@(Get-ChildItem \"$s\SKSE\crash-*.log\" | ? LastWriteTime -gt (Get-Date).AddMinutes(-30)).Count"],
+                         capture_output=True, text=True)
+    return out.stdout.strip().splitlines()
+
+
+def cmd_scene(a, run=1):
+    t0 = time.monotonic()
+    B.call("load", a.save)
+    time.sleep(4)
+    p = player()
+    home = p["pos"]
+    record(f"scene{run}-load", {"cell": p["cell"]["editor_id"], "still": still(f"scene{run}-load")})
+    B.pad("LY=1:1500")
+    record(f"scene{run}-walk", {"units": flat(p, player())[0], "still": still(f"scene{run}-walk")})
+    since = B.call("events")["last"]
+    B.pad("RIGHT:120 wait:1500")  # draw (the d-pad's favourite, else the weapon readied below)
+    console("player.setav stamina 300")
+    console("player.restoreav stamina 300")
+    if console("player.IsWeaponOut").endswith("0.00") or ">> 0" in console("player.IsWeaponOut"):
+        B.pad("RB:120 wait:1500")  # RB on sheathed draws in Skyrim
+    record(f"scene{run}-draw", {"weapon_out": console("player.IsWeaponOut"), "still": still(f"scene{run}-draw")})
+    B.pad("RB:120 wait:1200")
+    tags = [e["data"]["tag"] for e in B.call("events", since, "anim")["events"]]
+    record(f"scene{run}-swing", {"attack_tags": sorted({t for t in tags if "ttack" in t})[:10]})
+    r = moved("+LX=0,LY=1:120 B:100 -:1500", f"scene{run}-roll", home)
+    record(f"scene{run}-roll", r)
+    blocking = during("LB:1800", lambda: console("player.IsBlocking"))
+    record(f"scene{run}-block", {"IsBlocking_seen": any(">> 1" in str(s) for s in blocking)})
+    cmd_menus(a, tag=f"-scene{run}")
+    record(f"scene{run}-logs", {"logs": logs_after(), "alive": B.health(), "seconds": round(time.monotonic() - t0)})
+
+
+def cmd_scene2(a):
+    for run in (1, 2):
+        cmd_scene(a, run)
 
 
 def cmd_frametime(a):
-    """PresentMon over the running game for a.seconds (the player standing in the scene), then median and 1% low."""
+    """PresentMon over the running game for a.seconds (the player standing in the scene), then median and 1% low;
+    the bridge's own per-frame Update intervals beside it."""
     csv = rf"C:\argonia\logs\presentmon-{a.label}.csv"
-    ps(rf"Remove-Item {csv} -EA SilentlyContinue; & C:\argonia\tools\presentmon\PresentMon.exe --process_name "
-       rf"SkyrimSE.exe --output_file {csv} --timed {a.seconds} --terminate_after_timed --no_console_stats --v1_metrics "
-       rf"| Out-Null", wait=a.seconds + 60)
+    subprocess.run([RUN, "ps", rf"Remove-Item {csv} -EA SilentlyContinue; & C:\argonia\tools\presentmon\PresentMon.exe "
+                    rf"--process_name SkyrimSE.exe --output_file {csv} --timed {a.seconds} --terminate_after_timed "
+                    rf"--no_console_stats --v1_metrics | Out-Null"], capture_output=True, text=True, check=True)
     OUT.mkdir(parents=True, exist_ok=True)
     local = OUT / f"presentmon-{a.label}.csv"
     subprocess.run([RUN, "get", csv.replace("\\", "/"), str(local)], check=True, capture_output=True)
     rows = local.read_text().splitlines()
     head = rows[0].split(",")
-    col = {n: head.index(n) for n in ("MsBetweenPresents", "msGPUActive", "MsUntilRenderComplete") if n in head}
-    ft = sorted(float(r.split(",")[col["MsBetweenPresents"]]) for r in rows[1:] if r.count(",") >= len(head) - 1)
-    gpu = sorted(float(r.split(",")[col["msGPUActive"]]) for r in rows[1:] if "msGPUActive" in col and r.count(",") >= len(head) - 1)
+    col = {n: head.index(n) for n in ("MsBetweenPresents", "msGPUActive") if n in head}
+    good = [r.split(",") for r in rows[1:] if r.count(",") >= len(head) - 1]
+    ft = sorted(float(r[col["MsBetweenPresents"]]) for r in good)
+    gpu = sorted(float(r[col["msGPUActive"]]) for r in good) if "msGPUActive" in col else []
     med, p99 = ft[len(ft) // 2], ft[int(len(ft) * 0.99)]
     record(f"frametime-{a.label}", {"frames": len(ft), "median_ms": round(med, 2), "median_fps": round(1000 / med, 1),
                                     "p99_ms": round(p99, 2), "low1_fps": round(1000 / p99, 1),
                                     "gpu_active_median_ms": round(gpu[len(gpu) // 2], 2) if gpu else None,
-                                    "still": still(f"frametime-{a.label}")})
+                                    "bridge": B.call("frametime", 600), "still": still(f"frametime-{a.label}")})
 
 
 def main():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = p.add_subparsers(dest="cmd", required=True)
-    sub.add_parser("launch").add_argument("--save", default="ArgoniaRiverwood")
+    s = sub.add_parser("launch")
+    s.add_argument("--save", default="argoniariverwood")
+    s.add_argument("--fresh", action="store_true")
     sub.add_parser("dodge")
     sub.add_parser("pad")
-    sub.add_parser("call").add_argument("calls")
+    sub.add_parser("menus")
+    s = sub.add_parser("scene")
+    s.add_argument("--save", default="argoniariverwood")
     f = sub.add_parser("frametime")
     f.add_argument("--label", default="cs-on")
     f.add_argument("--seconds", type=int, default=60)
     a = p.parse_args()
-    if a.cmd == "call":
-        for r in sk(*json.loads(a.calls)):
-            print(json.dumps(r))
-        return
-    {"launch": cmd_launch, "dodge": cmd_dodge, "pad": cmd_pad, "frametime": cmd_frametime}[a.cmd](a)
+    {"launch": cmd_launch, "dodge": cmd_dodge, "pad": cmd_pad, "menus": cmd_menus, "scene": cmd_scene2,
+     "frametime": cmd_frametime}[a.cmd](a)
     print("results:", OUT / "results.json")
 
 

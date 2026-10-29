@@ -4,7 +4,7 @@ the game machine, with exact undo (chunk 0.2 §b; grew from 0.0's combat_test_st
 
   stack.py fetch [--record] [--only ID ...]   download each row to ~/.argonia/mods (Nexus API, GitHub, the private
                                               cache in S3, the old vault); check sha256; --record writes new hashes
-  stack.py stage [--set GROUP=SET] [--dev]    unpack and place each row into ~/.argonia/stack/MO2/mods/<id>/, apply
+  stack.py stage [--set G=S] [--dev] [--through CHUNK]  unpack and place each row into ~/.argonia/stack/MO2/mods/<id>/, apply
                                               the recorded FOMOD choices and ini settings, write the profile
                                               (modlist, plugins.txt, loadorder.txt) and installed.json (every file's hash)
   stack.py push                               send changed mod folders and the profile to C:\\argonia\\MO2 on the machine
@@ -81,13 +81,31 @@ def save_manifest(doc):
     MANIFEST.write_text(json.dumps(doc, indent=1, ensure_ascii=False) + "\n")
 
 
-def chosen(doc, sets, dev):
-    """The rows the profile lays, in load order: play rows (dev rows with --dev), one set per group."""
+CURRENT_PART = "0"  # stack.py --through's default: the rows of every chunk of the part being built
+
+
+def started(chunk, through):
+    """Has `chunk` (a row's `from`, e.g. "2.W5" or "2.7") started by `through` (a part "1" or a chunk "2.7")? A
+    chunk of an earlier part has; within the part, a whole part takes all, else the same track (main or W) up to
+    `through`'s number (0027: the world track runs beside the main one)."""
+    def key(c):
+        part, _, rest = c.partition(".")
+        track = "W" if rest.startswith("W") else ""
+        return int(part), track, float(rest.lstrip("W") or "inf")
+    (p, t, n), (tp, tt, tn) = key(chunk), key(through)
+    return p < tp or (p == tp and (tn == float("inf") or (t == tt and n <= tn)))
+
+
+def chosen(doc, sets, dev, through=CURRENT_PART):
+    """The rows the profile lays, in load order: play rows (dev rows with --dev), one set per group, and only the
+    rows whose `from` chunk has started by `through` (deferred rows arrive with their first-use chunk)."""
     pick = {g: names[0] for g, names in doc.get("sets", {}).items()}
     pick.update(sets)
     out = []
     for m in doc["mods"]:
         if m["profile"] == "pipeline" or (m["profile"] == "dev" and not dev) or m.get("dropped"):
+            continue
+        if m.get("from") and not started(m["from"], through):
             continue
         sets = m.get("set")  # one name or a list: a row shared by several sets stays one row
         if sets and pick.get(m["group"]) not in ([sets] if isinstance(sets, str) else sets):
@@ -424,12 +442,37 @@ def prune(data, m):
         for f in list(data.rglob("*")):
             if f.exists() and fnmatch.fnmatch(str(f.relative_to(data)).lower(), pat.lower()):
                 shutil.rmtree(f) if f.is_dir() else f.unlink()
+    if m.get("keep"):
+        keep_subset(data, m["keep"])
     for d in sorted((x for x in data.rglob("*") if x.is_dir()), key=lambda x: -len(x.parts)):
         if not any(d.iterdir()):
             d.rmdir()
     too_long = [f for f in data.rglob("*") if f.is_file() and len(GAME_DATA) + len(str(f.relative_to(data))) > MAX_PATH]
     if too_long:
         raise SystemExit(f"paths too long for Skyrim in {m['id']}: {too_long[0].relative_to(data)}")
+
+
+DDS = re.compile(rb"[\x20-\x7e]{3,200}?\.dds", re.I)
+
+
+def keep_subset(data, globs):
+    """A row's `keep`: only the Data paths the world references (globs, lower case), the row's plugins, and every
+    texture a kept mesh names (read from the nif's strings) stay; the rest of the row is removed (BM&V, 9.6 GB, of
+    which the world references 24 meshes: dependency audit 2026-10-29)."""
+    files = {str(f.relative_to(data)).lower().replace("\\", "/"): f for f in data.rglob("*") if f.is_file()}
+    kept = {r for r in files if any(fnmatch.fnmatch(r, g) for g in globs)
+            or (r.count("/") == 0 and pathlib.Path(r).suffix in PLUGIN_EXT)}
+    for r in [r for r in kept if r.endswith(".nif")]:
+        for t in DDS.findall(files[r].read_bytes()):
+            t = t.decode().lower().replace("\\", "/")
+            t = t[t.find("textures/"):] if "textures/" in t else t.lstrip("/")  # a length byte may precede it
+            t = t if t.startswith("textures/") else "textures/" + t
+            if t in files:
+                kept.add(t)
+    for r, f in files.items():
+        if r not in kept:
+            f.unlink()
+    print(f"  keep: {len(kept)} of {len(files)} files")
 
 
 def set_ini(text, section, key, value):
@@ -496,7 +539,7 @@ DOC_FIELDS = {"licence", "permission_summary", "ai_clause", "permission_ask", "p
 
 def cmd_stage(a):
     doc = manifest()
-    rows = chosen(doc, dict(s.split("=", 1) for s in a.set), a.dev)
+    rows = chosen(doc, dict(s.split("=", 1) for s in a.set), a.dev, a.through)
     mods, tools, root, work = MO2 / "mods", MO2 / "tools", MO2 / "root", STACK / "_unpacked"
     keys = STACK / "staged"  # a row is re-staged only when its archive or its manifest entry changed
     for d in (mods, tools, root, keys):
@@ -519,9 +562,9 @@ def cmd_stage(a):
             src = work / m["id"]
             if not archive_path(m).exists():
                 fetch_one(m, secret("NEXUS_API_KEY"))
+            shutil.rmtree(data, ignore_errors=True)  # the old staged copy first: BM&V's is 21 GB on a 116 GB disk
             room(archive_path(m).stat().st_size * 3, f"unpack {m['id']}")  # unpacked plus staged copy
             unpack(archive_path(m), src)
-            shutil.rmtree(data, ignore_errors=True)
             data.mkdir()
             if m.get("install") == "tool":  # a tool is never a mod: nothing of it reaches Data
                 shutil.rmtree(tools / m["id"], ignore_errors=True)
@@ -599,7 +642,9 @@ PART = 1 << 30  # a mod's tar goes over in 1 GB parts, one on the build VM's dis
 
 def send_tar(src, out, n):
     """tar `src` as C:/argonia/MO2/push/<n>.tar.NNN parts, never the whole tar on the build VM's disk."""
-    put = f"{RUN} put \"$FILE\" C:/argonia/MO2/push/ >/dev/null && rm \"$FILE\""
+    # three tries: one scp of a 1 GB part dropped with exit 255 while the machine was busy (2026-10-29)
+    put = (f"for i in 1 2 3; do {RUN} put \"$FILE\" C:/argonia/MO2/push/ >/dev/null && break; [ $i = 3 ] && exit 1; "
+           f"done && rm \"$FILE\"")
     # pax: names go as UTF-8 in pax headers; in GNU format Windows tar reads the raw bytes as cp437 and lays
     # `°` as `┬░` (2026-10-29: 64 files of BM&V, Rim Parry and Modern Stagger Lock)
     tar = subprocess.Popen(["tar", "--format=pax", "-cf", "-", "-C", str(src), "."], stdout=subprocess.PIPE)
@@ -699,7 +744,9 @@ def cmd_install(a):
         cmd_fetch(argparse.Namespace(record=False, only=None))
     cmd_stage(a)
     cmd_push(a)
-    print(run("ps", r"& C:\argonia\infra\stack.ps1 off", capture=True))  # bare Data first
+    # bare Data first, the game quit (a bridge launch keeps it running)
+    print(run("ps", r"Get-Process SkyrimSE,skse64_loader -EA SilentlyContinue | Stop-Process -Force; Start-Sleep 3; "
+                    r"& C:\argonia\infra\stack.ps1 off", capture=True))
     os.environ["DESKTOP_WAIT"] = "900"
     print(run("desktop", r"& C:\argonia\infra\stack.ps1 pandora", capture=True))
     cmd_menu(a)
@@ -806,6 +853,8 @@ def main():
         s = sub.add_parser(name)
         s.add_argument("--set", action="append", default=[], help="GROUP=SET, e.g. combat=souls-0.0")
         s.add_argument("--dev", action="store_true", help="lay the dev rows too (SkyLink AI, houseCARL)")
+        s.add_argument("--through", default=CURRENT_PART,
+                       help="lay deferred rows whose `from` chunk has started by this part or chunk (default: the current part)")
         if name == "install":
             s.add_argument("--skip-fetch", action="store_true")
     for name in ("push", "menu", "masters", "prune", "evict"):

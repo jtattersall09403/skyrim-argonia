@@ -1,5 +1,5 @@
 {
- "_about": "Chunk 0.2: every mod the Argonia profile installs, in load order, grouped (core, combat, traversal, soul-ui, land, pipeline, dev). Files are downloaded to ~/.argonia/mods by infra/gpu-box/stack.py and never committed (decision 0003). profile: play (laid into Data), dev (laid only with --dev; never shipped), pipeline (fetched for the asset pipeline, never laid raw). set: a named alternative inside a group; the profile chooses one set per group (stack.py --set), with exact undo. sha256 is the downloaded archive's; stack.py verify checks it and the installed files' hashes.",
+ "_about": "Chunk 0.2: every mod the Argonia profile installs, in load order, grouped (core, combat, traversal, soul-ui, land, pipeline, dev). Files are downloaded to ~/.argonia/mods by infra/gpu-box/stack.py and never committed (decision 0003). profile: play (laid into Data), dev (laid only with --dev; never shipped), pipeline (fetched for the asset pipeline, never laid raw). set: a named alternative inside a group; the profile chooses one set per group (stack.py --set), with exact undo. sha256 is the downloaded archive's; stack.py verify checks it and the installed files' hashes. from: the chunk a deferred row first lays with (stack.py --through, default the current part). dropped: the reason a row is not laid.",
  "game": "skyrimspecialedition",
  "runtime": "1.7.104.0 (Steam build 24914197), SKSE 2.3.1",
  "sets": {
@@ -293,7 +293,8 @@
    "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
    "runtime": "loads on 1.7.104.0 (PapyrusUtil.dll: SKSE 'loaded correctly', 2026-10-29)",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "dropped": "no consumer: no scanned script or DLL calls StorageUtil/JsonUtil/MiscUtil (only the dropped SkyLink and the tool houseCARL); proved by removal in the 0.2 smoke run (dependency audit 2026-10-29 (docs/research/2026-10-29/dependency-audit.md), owner ruling to slim the list)"
   },
   {
    "id": "po3-tweaks",
@@ -320,7 +321,8 @@
    "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; gh powerof3/Tweaks not found",
    "runtime": "loads on 1.7.104.0 (po3_Tweaks.dll: SKSE 'loaded correctly', 2026-10-29)",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "dropped": "its only consumer was po3-papyrus-extender; proved by removal in the 0.2 smoke run (dependency audit 2026-10-29 (docs/research/2026-10-29/dependency-audit.md), owner ruling to slim the list)"
   },
   {
    "id": "po3-papyrus-extender",
@@ -347,7 +349,8 @@
    "permission_evidence": "gh api repos/powerof3/PapyrusExtenderSSE licence GPL-3.0; Nexus description states no AI clause",
    "runtime": "loads on 1.7.104.0 (po3_PapyrusExtender.dll: SKSE 'loaded correctly', 2026-10-29)",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "dropped": "no scanned mod calls PO3_SKSEFunctions or PO3_Events; proved by removal in the 0.2 smoke run (dependency audit 2026-10-29 (docs/research/2026-10-29/dependency-audit.md), owner ruling to slim the list)"
   },
   {
    "id": "consoleutil-extended",
@@ -374,7 +377,8 @@
    "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; gh KrisV777/ConsoleUtilExtended not found",
    "runtime": "its ConsoleUtilSSE.dll is replaced by consoleutilsse-ng's 1.7 build (intended)",
    "conflicts": "ConsoleUtilSSE.dll overridden by consoleutilsse-ng (resolved: the later row is the 1.7 build)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "dropped": "redundant: ArgoniaBridge `console` returns the output, and row consoleutilsse-ng supplies the DLL Sailable Ship calls (dependency audit 2026-10-29 (docs/research/2026-10-29/dependency-audit.md), owner ruling to slim the list)"
   },
   {
    "id": "consoleutilsse-ng",
@@ -417,7 +421,7 @@
    "archive": "Fuz Ro D'Oh 15109 2.6 2026-10-04T11-17Z eVtX7JAFs.7z",
    "size_kb": 283,
    "why": "silent voice timing for unvoiced lines (quarantine 0012)",
-   "chunk": "1.3",
+   "chunk": "2.5",
    "required": true,
    "profile": "play",
    "sha256": "9a3ed3a31713fb60b62fb87616aa60d9c24b0cd184c0c66dfd1aee29929e9c3f",
@@ -428,7 +432,8 @@
    "permission_evidence": "repo guessed from author name shadeMe; gh licence GPL-3.0; page text has no terms",
    "runtime": "loads on 1.7.104.0 (Fuz Ro D'oh.dll: SKSE 'loaded correctly', 2026-10-29)",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "from": "2.5"
   },
   {
    "id": "skyui",
@@ -739,7 +744,7 @@
    "archive": "Spell Perk Item Distributor 36869 7.3.3 2026-08-26T21-53Z rvwm2B1Z2.7z",
    "size_kb": 6241,
    "why": "spell, perk and item distribution",
-   "chunk": "0.2",
+   "chunk": "2.7",
    "required": true,
    "profile": "play",
    "sha256": "b1a2f44f7a55062cf8999d5ae88fbeb4e7a985a371f9be01a358e8870b24ee71",
@@ -750,7 +755,8 @@
    "permission_evidence": "gh api repos/powerof3/Spell-Perk-Item-Distributor licence MIT; Nexus description states no AI clause",
    "runtime": "loads on 1.7.104.0 (po3_SpellPerkItemDistributor.dll: SKSE 'loaded correctly', 2026-10-29)",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "from": "2.7"
   },
   {
    "id": "dtry-key-utils",
@@ -1002,7 +1008,7 @@
    "archive": "Precision 72347 2.0.6 2026-09-01T07-51Z pQ0AZ3jtL.7z",
    "size_kb": 5676,
    "why": "accurate melee collisions",
-   "chunk": "1.4",
+   "chunk": "1.6",
    "required": true,
    "profile": "play",
    "set": [
@@ -1047,7 +1053,7 @@
    "archive": "True Directional Movement 51614 2.3.1 2026-09-01T17-15Z PuQ2UKIMI.7z",
    "size_kb": 5088,
    "why": "lock-on (RS click) and 8-way movement",
-   "chunk": "1.4",
+   "chunk": "1.6",
    "required": true,
    "profile": "play",
    "set": [
@@ -1099,7 +1105,7 @@
    "archive": "TrueHUD 62775 1.1.10 2026-08-31T16-21Z 31i7IoHze.7z",
    "size_kb": 4284,
    "why": "lock-on reticle and boss bars",
-   "chunk": "1.4",
+   "chunk": "1.6",
    "required": true,
    "profile": "play",
    "set": [
@@ -1134,7 +1140,7 @@
    "archive": "TK Dodge For RE-15309-3-18-1663096096.7z",
    "size_kb": 345,
    "why": "dodge behaviour and clips TK Dodge RE drives",
-   "chunk": "1.4",
+   "chunk": "1.6",
    "required": true,
    "profile": "play",
    "set": [
@@ -1165,7 +1171,7 @@
    "archive": "TK Dodge RE-v0.55-rc3-56956-v0-55-rc3-1688194322.zip",
    "size_kb": 2811,
    "why": "roll on B",
-   "chunk": "1.4",
+   "chunk": "1.6",
    "required": true,
    "profile": "play",
    "set": [
@@ -1202,7 +1208,7 @@
    "archive": "TK Dodge RE Addon 125238 3.3.0 2026-09-04T14-46Z uhRBKsoPu.7z",
    "size_kb": 3972,
    "why": "TK Dodge RE's DLL for 1.7.x and its settings",
-   "chunk": "1.4",
+   "chunk": "1.6",
    "required": true,
    "profile": "play",
    "set": [
@@ -1246,7 +1252,7 @@
    "archive": "Dynamic Dodge-79598-1-5-1695708046.zip",
    "size_kb": 9944,
    "why": "8-way rolls, steps and the stationary backstep",
-   "chunk": "1.4",
+   "chunk": "1.6",
    "required": true,
    "profile": "play",
    "set": [
@@ -1280,7 +1286,7 @@
    "archive": "IFrame Generator RE AE Support 82737 v1.03.2 2026-08-24T20-58Z CmfxYj7pW.zip",
    "size_kb": 5703,
    "why": "roll invincibility frames",
-   "chunk": "1.4",
+   "chunk": "1.6",
    "required": true,
    "profile": "play",
    "set": [
@@ -1314,7 +1320,7 @@
    "archive": "(SGC) SkySA - Combat Behavior Compulsion-31390-1-9-4-1620832514.7z",
    "size_kb": 7819,
    "why": "souls-like attack behaviour",
-   "chunk": "1.4",
+   "chunk": "1.6",
    "required": true,
    "profile": "play",
    "set": [
@@ -1352,7 +1358,7 @@
    "archive": "Elder Souls - Sword 2.0 SE-47191-2-1-1627608626.7z",
    "size_kb": 39,
    "why": "DS1-like sword moveset for SkySA",
-   "chunk": "1.4",
+   "chunk": "1.6",
    "required": true,
    "profile": "play",
    "set": [
@@ -1387,7 +1393,7 @@
    "archive": "One Click Power Attack AE 1.7 Test 60878 1.2 2026-10-13T06-25Z oPpNfUmNb.7z",
    "size_kb": 209,
    "why": "heavy attack on RT",
-   "chunk": "1.4",
+   "chunk": "1.6",
    "required": true,
    "profile": "play",
    "set": [
@@ -1432,7 +1438,7 @@
    "archive": "OAR Added Stamina Costs mostly working-179721-5-1778520417.zip",
    "size_kb": 549,
    "why": "stamina cost for blocks and staggers",
-   "chunk": "1.4",
+   "chunk": "1.6",
    "required": true,
    "profile": "play",
    "set": [
@@ -1464,7 +1470,7 @@
    "archive": "Elden Parry AE-70240-1-3-1659616986.7z",
    "size_kb": 379,
    "why": "parry",
-   "chunk": "1.4",
+   "chunk": "1.6",
    "required": true,
    "profile": "play",
    "set": [
@@ -1508,7 +1514,7 @@
    "archive": "Elden Parry 85740 1.7.99 2026-08-22T19-12Z FpnkHZ2AJ.zip",
    "size_kb": 295,
    "why": "Elden Parry's DLL for 1.7.x",
-   "chunk": "1.4",
+   "chunk": "1.6",
    "required": true,
    "profile": "play",
    "set": [
@@ -1539,7 +1545,7 @@
    "archive": "EldenParryPrecisionFix 188223 1 2026-08-13T04-33Z qTl1SxRnL.zip",
    "size_kb": 63,
    "why": "Elden Parry with Precision",
-   "chunk": "1.4",
+   "chunk": "1.6",
    "required": true,
    "profile": "play",
    "set": [
@@ -1570,7 +1576,7 @@
    "archive": "Payload Interpreter - Nemesis Less Patch-78146-v1-0-1667564948.7z",
    "size_kb": 1,
    "why": "Payload Interpreter without Nemesis",
-   "chunk": "1.4",
+   "chunk": "1.6",
    "required": true,
    "profile": "play",
    "set": [
@@ -1601,7 +1607,7 @@
    "archive": "00 Rim Parry Stand Alone - v1.1 Update-114366-v1-1-1715262891.zip",
    "size_kb": 56293,
    "why": "riposte and execution",
-   "chunk": "1.4",
+   "chunk": "1.6",
    "required": true,
    "profile": "play",
    "set": [
@@ -1635,7 +1641,7 @@
    "archive": "Rim Parry and Execution v1.1 CTD fix-143312-v1-1-1740879051.rar",
    "size_kb": 14,
    "why": "Rim Parry crash fix",
-   "chunk": "1.4",
+   "chunk": "1.6",
    "required": true,
    "profile": "play",
    "set": [
@@ -1669,7 +1675,7 @@
    "archive": "02 Rim_Parry_Elden Parry_patch SA ver-114366-v1-1-1715262975.zip",
    "size_kb": 3,
    "why": "Rim Parry with Elden Parry",
-   "chunk": "1.4",
+   "chunk": "1.6",
    "required": true,
    "profile": "play",
    "set": [
@@ -1703,7 +1709,7 @@
    "archive": "Rim Parry and Execution - One Parry Patch-164526-1-0-1763198266.rar",
    "size_kb": 10,
    "why": "one parry window",
-   "chunk": "1.4",
+   "chunk": "1.6",
    "required": true,
    "profile": "play",
    "set": [
@@ -1731,7 +1737,7 @@
    "name": "modern-stagger-lock",
    "author": "SkyHorizon3",
    "why": "stagger lock",
-   "chunk": "1.4",
+   "chunk": "1.6",
    "required": true,
    "profile": "play",
    "set": [
@@ -1758,7 +1764,7 @@
    "name": "maxsu-block-overhaul",
    "author": "max-su-2019",
    "why": "block animations",
-   "chunk": "1.4",
+   "chunk": "1.6",
    "required": true,
    "profile": "play",
    "set": [
@@ -1808,7 +1814,8 @@
    "permission_evidence": "Nexus description: 'Please do not reupload, make a derivative work, or use assets from this mod without my permission'; combat-mod-28567.md line 29 owner-confirmed fine 2026-10-29; no AI text",
    "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "from": "2.7"
   },
   {
    "id": "freeclimb",
@@ -1824,7 +1831,7 @@
    "archive": "FreeClimb 193552 0.5.0 2026-10-10T12-21Z Sx9oEwy6h.zip",
    "size_kb": 3866,
    "why": "climbing walls and ladders",
-   "chunk": "2.8",
+   "chunk": "0.2",
    "required": true,
    "profile": "play",
    "sha256": "3c54c07a012820b81b26c4153b7df17876a7c790cd3d0a24053a2183161eb95a",
@@ -1854,7 +1861,7 @@
    "archive": "Swimming Extensions (Svimex) 189821 1.1.3 2026-10-13T20-19Z eVtX7J8Tt.7z",
    "size_kb": 4632,
    "why": "swimming and diving",
-   "chunk": "2.8",
+   "chunk": "0.2",
    "required": true,
    "profile": "play",
    "sha256": "820da12804c1d3ff29f54a765c3beba2974a84d74dca2781273e7aa69e1c4e42",
@@ -1884,7 +1891,7 @@
    "archive": "Sailable Ship-72070-1-12-1701865811.zip",
    "size_kb": 767241,
    "why": "a boat the player sails",
-   "chunk": "2.8",
+   "chunk": "0.2",
    "required": true,
    "profile": "play",
    "sha256": "fb2a4cec21fa6b7b8ebd6d80e461b50f2187fff4acbc7348f606d0eb0da3c455",
@@ -1914,7 +1921,7 @@
    "archive": "EVG Animated Traversal - Framework 2.1-63232-2-1-1716950619.7z",
    "size_kb": 5291,
    "why": "vaulting and ledge animations",
-   "chunk": "2.8",
+   "chunk": "0.2",
    "required": true,
    "profile": "play",
    "sha256": "a3302ab97bb07572af8ff6a8473756531a71b6d2888f34f954ff85596cee46b9",
@@ -2101,7 +2108,7 @@
    "archive": "Flat World Map Framework FOMOD Lite 29932 1.9.990 2026-08-23T10-16Z xDLPwGaj5.zip",
    "size_kb": 114837,
    "why": "flat world map (FOMOD Lite)",
-   "chunk": "2.10",
+   "chunk": "2.12",
    "required": true,
    "profile": "play",
    "sha256": "3b9eb3b3b8c2e8ce5fa15fccef57a06e644c85b27a35538cd2821a9520bbacf3",
@@ -2115,7 +2122,8 @@
    ],
    "runtime": "loads on 1.7.104.0 (FlatMapMarkersSSE.dll: SKSE 'loaded correctly', 2026-10-29)",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "from": "2.12"
   },
   {
    "id": "no-google-maps",
@@ -2131,7 +2139,7 @@
    "archive": "No Google Maps Skyrim 147105 0.4.0 2026-10-12T09-56Z IoFlhfrtb.7z",
    "size_kb": 4236,
    "why": "no player or quest markers",
-   "chunk": "2.10",
+   "chunk": "1.4",
    "required": true,
    "profile": "play",
    "sha256": "7cb4b9b0988d1845443d32d84e3ac9e0dbf991b4b4b71f6a7844ee256b65072a",
@@ -2172,7 +2180,8 @@
    ],
    "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "from": "2.9"
   },
   {
    "id": "community-shaders",
@@ -2260,7 +2269,8 @@
    ],
    "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "from": "2.W5"
   },
   {
    "id": "king-of-the-murkmire",
@@ -2412,7 +2422,8 @@
    "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
    "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "dropped": "0 world references; its plugin was already dropped (dependency audit 2026-10-29 (docs/research/2026-10-29/dependency-audit.md), owner ruling to slim the list)"
   },
   {
    "id": "mw-imperial-keep",
@@ -2439,7 +2450,8 @@
    "permission_evidence": "Nexus description: models 'usable for the modding community'; no formal terms",
    "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "from": "2.W5"
   },
   {
    "id": "mw-hlaalu",
@@ -2466,7 +2478,8 @@
    "permission_evidence": "Nexus description: 'You're free to use these assets in your mods'; assets-creatures.md line 132 notes a 'convert to other games: not allowed' flag on 157997",
    "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "from": "2.W5"
   },
   {
    "id": "drjacopo-grass",
@@ -2493,7 +2506,8 @@
    "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
    "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "dropped": "0 world references (only the Cathedral plugins, not in the stack, name its meshes) (dependency audit 2026-10-29 (docs/research/2026-10-29/dependency-audit.md), owner ruling to slim the list)"
   },
   {
    "id": "seashells",
@@ -2525,7 +2539,8 @@
    "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
    "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "from": "2.W5"
   },
   {
    "id": "shores-of-skyrim-cc",
@@ -2552,7 +2567,8 @@
    "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
    "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "from": "2.W5"
   },
   {
    "id": "base-object-swapper",
@@ -2579,7 +2595,8 @@
    "permission_evidence": "gh api repos/powerof3/BaseObjectSwapper licence GPL-3.0; Nexus description states no AI clause",
    "runtime": "loads on 1.7.104.0 (po3_BaseObjectSwapper.dll: SKSE 'loaded correctly', 2026-10-29)",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "dropped": "a requirement of the Shores of Skyrim plugin, which is not laid (dependency audit 2026-10-29 (docs/research/2026-10-29/dependency-audit.md), owner ruling to slim the list)"
   },
   {
    "id": "skyrim-ferries",
@@ -2595,7 +2612,7 @@
    "archive": "Skyrim Ferries - Immersive Real-Time Water Travel 109843 1.6 2026-09-08T16-10Z Z3mWyIeYr.zip",
    "size_kb": 65236,
    "why": "plank ferries, rafts and poled craft",
-   "chunk": "2.8",
+   "chunk": "0.4",
    "required": true,
    "profile": "play",
    "sha256": "a053c715730207d9f52c76fb5425647ebeac006262e0ee1397da4da40b896387",
@@ -2641,7 +2658,8 @@
    "permission_evidence": "Nexus description 'License: CC Attribution'; no AI clause in text; version unspecified",
    "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "from": "2.W5"
   },
   {
    "id": "cc-ayleid-resources",
@@ -2671,7 +2689,8 @@
    ],
    "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "from": "2.W5"
   },
   {
    "id": "sleeping-hist-tree",
@@ -2701,7 +2720,8 @@
    ],
    "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "from": "2.W5"
   },
   {
    "id": "ships-and-boats-of-tamriel",
@@ -2728,7 +2748,8 @@
    "permission_evidence": "Nexus description Permissions: 'for anybody to use for their own not-for-profit Skyrim and SkyrimSE mods ... credit me'; no use for financial gain",
    "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "from": "2.W5"
   },
   {
    "id": "depths-of-skyrim",
@@ -2744,7 +2765,7 @@
    "archive": "Depths of Skyrim-26913-1-1-7-1608572556.rar",
    "size_kb": 105657,
    "why": "underwater flora",
-   "chunk": "2.W2",
+   "chunk": "2.W5",
    "required": true,
    "profile": "play",
    "sha256": "45256b8e537d48e12f1b9ae81512b6005478b86fb328e0dcdee3a2684ec2acd8",
@@ -2758,7 +2779,8 @@
    ],
    "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
    "conflicts": "22 dangling refs inside DepthsOfSkyrim.esp's own records (upstream leftovers; no missing master; houseCARL check 2026-10-29)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "from": "2.W5"
   },
   {
    "id": "sirenroot",
@@ -2788,7 +2810,8 @@
    ],
    "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "from": "2.W5"
   },
   {
    "id": "sailboats-expanded-update",
@@ -2804,7 +2827,7 @@
    "archive": "Script Free Ship Sailing SSE-40057-2-5-1622028859.7z",
    "size_kb": 3458,
    "why": "Script Free Ship Sailing SSE: the master Sailboats.esp needs",
-   "chunk": "2.8",
+   "chunk": "0.4",
    "required": true,
    "profile": "play",
    "sha256": "a1784ac8687e914871612c23169566ef58b687396ce02e9d4764cd6c51241544",
@@ -2848,7 +2871,8 @@
    ],
    "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "from": "2.W5"
   },
   {
    "id": "boats-operational",
@@ -2881,7 +2905,8 @@
    ],
    "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "dropped": "0 world references (dependency audit 2026-10-29 (docs/research/2026-10-29/dependency-audit.md), owner ruling to slim the list)"
   },
   {
    "id": "bmv",
@@ -2918,7 +2943,17 @@
    ],
    "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "keep": [
+    "meshes/advertising_board.nif",
+    "meshes/architecture/phitt/aldredanyia/signpost.nif",
+    "meshes/roadsignmedium01l.nif",
+    "meshes/roadsignmedium01r.nif",
+    "meshes/sheogorad/dagon fel/cleat.nif",
+    "meshes/trdata/mushrooms/tr_oth_tallmush01.nif",
+    "meshes/landscape/trees/reedsmall2.nif"
+   ],
+   "keep_note": "only the meshes the world references outside flora (16 refs of props and signs across the 18 places, plus Claywater's reedsmall2) and the textures they name; flora is Tropical Skyrim's (0028); the 136 other flora refs in the layouts are a 2.W5 question (audit recommendation 5)"
   },
   {
    "id": "tropical-skyrim-le",
@@ -2944,7 +2979,8 @@
    "permission_ask": true,
    "permission_evidence": "Nexus description Licensing/Legal: 'you MUST contact me and obtain permission before uploading this mod to other sites or using its contents in your own mod'; assets-creatures.md line 129",
    "runtime": "not laid (pipeline source)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "dropped": "covered by tropical-skyrim-sse (869 of 869 registry paths in the SSE archive) (dependency audit 2026-10-29 (docs/research/2026-10-29/dependency-audit.md), owner ruling to slim the list)"
   },
   {
    "id": "hoddminir",
@@ -2970,7 +3006,8 @@
    "permission_ask": true,
    "permission_evidence": "Nexus description: resource pack 'you can use yourself', 'Feel free to change any texture', models not for pay-for-mods",
    "runtime": "not laid (pipeline source)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "dropped": "0 world references; flora is Tropical Skyrim (0028) (dependency audit 2026-10-29 (docs/research/2026-10-29/dependency-audit.md), owner ruling to slim the list)"
   },
   {
    "id": "darkwater-den",
@@ -2996,7 +3033,8 @@
    "permission_ask": true,
    "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; credits many third-party resource authors",
    "runtime": "not laid (pipeline source)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "dropped": "0 world references; props covered by mud-mother-grove (dependency audit 2026-10-29 (docs/research/2026-10-29/dependency-audit.md), owner ruling to slim the list)"
   },
   {
    "id": "ayleid-building-kit",
@@ -3022,7 +3060,8 @@
    "permission_ask": true,
    "permission_evidence": "Nexus description: modder's resource made with credited permission from Varlaisaran; no stated terms to us",
    "runtime": "not laid (pipeline source)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "from": "2.W5"
   },
   {
    "id": "script-free-ship-sailing",
@@ -3048,7 +3087,8 @@
    "permission_ask": true,
    "permission_evidence": "Nexus description read; sourcing-register source.sfss-canoe: Nexus box paraphrase says no re-upload, asset use and modification only with author's permission, canoe needs FrankFamily's permission",
    "runtime": "not laid (pipeline source)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "dropped": "covered by sailboats-expanded-update (11 of 11 canoe paths) (dependency audit 2026-10-29 (docs/research/2026-10-29/dependency-audit.md), owner ruling to slim the list)"
   },
   {
    "id": "solitude-ferry",
@@ -3064,7 +3104,7 @@
    "archive": "SNT solitude Basic Ferry-89948-1-1-00-1564848313.zip",
    "size_kb": 499,
    "why": "poled ferry raft",
-   "chunk": "2.8",
+   "chunk": "0.4",
    "required": false,
    "profile": "pipeline",
    "sha256": "890c1d0fd0f909d4c67ab95cfc882da72c1d5010b25463165de4f7e4fc2764d5",
@@ -3100,7 +3140,8 @@
    "permission_ask": true,
    "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; Beyond Skyrim resource, all assets by Markus Liberty",
    "runtime": "not laid (pipeline source)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "dropped": "0 world references; ships-and-boats-of-tamriel is the boat source (dependency audit 2026-10-29 (docs/research/2026-10-29/dependency-audit.md), owner ruling to slim the list)"
   },
   {
    "id": "skylink-ai",
@@ -3125,7 +3166,7 @@
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
    "permission_evidence": "gh jarvann/SkryimMCM licence none; Nexus text only describes it as an AI-assistant MCP plugin, no AI-use clause on terms; reuse-audit.md line 224",
-   "dropped": "2026-10-29: does not load on 1.7.104 (SKSE log: 'failed to open address library file'; its CommonLib predates Address Library format 5, and the modal blocks start-up); 0.3's ArgoniaBridge takes its reads",
+   "dropped": "does not load on 1.7.104 (Address Library format 5); ArgoniaBridge replaced it (dependency audit 2026-10-29 (docs/research/2026-10-29/dependency-audit.md), owner ruling to slim the list)",
    "runtime": "fails on 1.7.104.0"
   },
   {
