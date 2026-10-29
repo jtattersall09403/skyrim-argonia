@@ -3,8 +3,15 @@
 {"quest_id":"quest.local.ld65","stages_ord":1,"ord":0,"to":90,"when":"quest_fail_forward:quest.local.ld65|1|0:when"}
 {"quest_id":"quest.local.lf21","stages_ord":0,"ord":0,"to":90,"when":"quest_fail_forward:quest.local.lf21|0|0:when"}
 {"quest_id":"quest.local.lf67","stages_ord":1,"ord":0,"to":30,"when":"quest_fail_forward:quest.local.lf67|1|0:when"}
-{"quest_id":"quest.local.lf83","stages_ord":0,"ord":0,"to":90,"when":"quest_fail_forward:quest.local.lf83|0|0:when"}
-{"quest_id":"quest.local.lf83","stages_ord":1,"ord":0,"to":90,"when":"quest_fail_forward:quest.local.lf83|1|0:when"}
+{"quest_id":"quest.local.lf83","stages_ord":0,"ord":0,"to":92,"when":"quest_fail_forward:quest.local.lf83|0|0:when"}
+{"quest_id":"quest.local.lf83","stages_ord":0,"ord":1,"to":93,"when":"quest_fail_forward:quest.local.lf83|0|1:when"}
+{"quest_id":"quest.local.lf83","stages_ord":0,"ord":2,"to":90,"when":"quest_fail_forward:quest.local.lf83|0|2:when"}
+{"quest_id":"quest.local.lf83","stages_ord":1,"ord":0,"to":92,"when":"quest_fail_forward:quest.local.lf83|1|0:when"}
+{"quest_id":"quest.local.lf83","stages_ord":1,"ord":1,"to":93,"when":"quest_fail_forward:quest.local.lf83|1|1:when"}
+{"quest_id":"quest.local.lf83","stages_ord":1,"ord":2,"to":90,"when":"quest_fail_forward:quest.local.lf83|1|2:when"}
+{"quest_id":"quest.local.lf83","stages_ord":2,"ord":0,"to":92,"when":"quest_fail_forward:quest.local.lf83|2|0:when"}
+{"quest_id":"quest.local.lf83","stages_ord":2,"ord":1,"to":93,"when":"quest_fail_forward:quest.local.lf83|2|1:when"}
+{"quest_id":"quest.local.lf83","stages_ord":2,"ord":2,"to":90,"when":"quest_fail_forward:quest.local.lf83|2|2:when"}
 {"quest_id":"quest.local.lh07","stages_ord":0,"ord":0,"to":90,"when":"quest_fail_forward:quest.local.lh07|0|0:when"}
 {"quest_id":"quest.local.lh37","stages_ord":0,"ord":0,"to":90,"when":"quest_fail_forward:quest.local.lh37|0|0:when"}
 {"quest_id":"quest.local.lh37","stages_ord":1,"ord":0,"to":90,"when":"quest_fail_forward:quest.local.lh37|1|0:when"}

@@ -192,6 +192,11 @@
 {"id":"topic.jungle-root-hollow-people","topic_class":"local","label":"the people of Bones-And-Tools","keys_place":"place.saxhleel-coast.jungle-root-hollow","keys_aspect":"people"}
 {"id":"topic.jungle-root-hollow-work","topic_class":"local","label":"work at Bones-And-Tools","keys_place":"place.saxhleel-coast.jungle-root-hollow","keys_aspect":"work"}
 {"id":"topic.latest-rumours","topic_class":"rumour","label":"latest rumours"}
+{"id":"topic.lf83-clay-bend","topic_class":"quest","label":"the clay bend","keys_quest":"quest.local.lf83"}
+{"id":"topic.lf83-cracked-well","topic_class":"quest","label":"the failing well","keys_quest":"quest.local.lf83"}
+{"id":"topic.lf83-ford-charge","topic_class":"quest","label":"the ford charge","keys_quest":"quest.local.lf83"}
+{"id":"topic.lf83-one-charge","topic_class":"quest","label":"one charge for the stop","keys_quest":"quest.local.lf83"}
+{"id":"topic.lf83-stop-charge","topic_class":"quest","label":"the station's charge","keys_quest":"quest.local.lf83"}
 {"id":"topic.lighter-flotilla","topic_class":"local","label":"the Lighter Flotilla","keys_place":"place.mercantile-coast.lighter-flotilla","keys_aspect":"place"}
 {"id":"topic.lighter-flotilla-danger","topic_class":"local","label":"danger near the Lighter Flotilla","keys_place":"place.mercantile-coast.lighter-flotilla","keys_aspect":"danger"}
 {"id":"topic.lighter-flotilla-directions","topic_class":"local","label":"the way from the Lighter Flotilla","keys_place":"place.mercantile-coast.lighter-flotilla","keys_aspect":"directions"}

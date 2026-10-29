@@ -1,3 +1,13 @@
+{"quest_id":"quest.local.lf83","ord":0,"id":"k1","form":"line","carrier":"npc.imperial-fringe.claywater-station.n1-3"}
+{"quest_id":"quest.local.lf83","ord":1,"id":"k2","form":"thing","carrier":"thing.lf83.well-head"}
+{"quest_id":"quest.local.lf83","ord":2,"id":"k3","form":"thing","carrier":"item.lf83.well-silt"}
+{"quest_id":"quest.local.lf83","ord":3,"id":"k4","form":"thing","carrier":"item.station-water-ledger"}
+{"quest_id":"quest.local.lf83","ord":4,"id":"k5","form":"line","carrier":"npc.imperial-fringe.claywater-station.landing-s-poler"}
+{"quest_id":"quest.local.lf83","ord":5,"id":"k6","form":"thing","carrier":"thing.lf83.landing-walls"}
+{"quest_id":"quest.local.lf83","ord":6,"id":"k7","form":"line","carrier":"npc.imperial-fringe.claywater-station.n1-3"}
+{"quest_id":"quest.local.lf83","ord":7,"id":"k8","form":"line","carrier":"npc.imperial-fringe.claywater-station.n1-3"}
+{"quest_id":"quest.local.lf83","ord":8,"id":"k9","form":"thing","carrier":"thing.lf83.clay-bend"}
+{"quest_id":"quest.local.lf83","ord":9,"id":"k10","form":"line","carrier":"npc.imperial-fringe.claywater-station.landing-s-poler"}
 {"quest_id":"quest.local.lh38","ord":0,"id":"k1","form":"line","carrier":"npc.hist-heartland.greenspring.n2"}
 {"quest_id":"quest.local.lh38","ord":1,"id":"k2","form":"behaviour","carrier":"npc.lh38.sick-guests"}
 {"quest_id":"quest.local.lh38","ord":2,"id":"k3","form":"thing","carrier":"thing.spring-pool"}

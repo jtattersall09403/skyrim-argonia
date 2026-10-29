@@ -33,6 +33,15 @@
 {"id":"dialogue_line:pool.wamasu-shrine-turn.start:on_delivered"}
 {"id":"dialogue_line:pool.waterline-mark.start:on_delivered"}
 {"id":"dialogue_line:pool.white-rose-graves.start:on_delivered"}
+{"id":"quest_ending:quest.local.lf83|0:rewards"}
+{"id":"quest_ending:quest.local.lf83|0:world"}
+{"id":"quest_ending:quest.local.lf83|1:rewards"}
+{"id":"quest_ending:quest.local.lf83|1:world"}
+{"id":"quest_ending:quest.local.lf83|2:rewards"}
+{"id":"quest_ending:quest.local.lf83|2:world"}
+{"id":"quest_ending:quest.local.lf83|3:world"}
+{"id":"quest_ending:quest.local.lf83|4:world"}
+{"id":"quest_ending:quest.local.lf83|5:world"}
 {"id":"quest_ending:quest.local.lh38|0:rewards"}
 {"id":"quest_ending:quest.local.lh38|0:world"}
 {"id":"quest_ending:quest.local.lh38|1:rewards"}
@@ -55,7 +64,6 @@
 {"id":"quest_stage:quest.local.lf67|0:on_enter"}
 {"id":"quest_stage:quest.local.lf83|0:on_enter"}
 {"id":"quest_stage:quest.local.lf83|1:on_enter"}
-{"id":"quest_stage:quest.local.lf83|2:on_enter"}
 {"id":"quest_stage:quest.local.lh07|0:on_enter"}
 {"id":"quest_stage:quest.local.lh37|0:on_enter"}
 {"id":"quest_stage:quest.local.lh37|1:on_enter"}

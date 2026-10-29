@@ -1,3 +1,8 @@
+{"quest_id":"quest.local.lf83","source":"cultureSheets","ord":0,"value":"culture.settlement.claywater-station"}
+{"quest_id":"quest.local.lf83","source":"cultureSheets","ord":1,"value":"culture.group.claywater-station.station-half"}
+{"quest_id":"quest.local.lf83","source":"cultureSheets","ord":2,"value":"culture.group.claywater-station.landing-half"}
+{"quest_id":"quest.local.lf83","source":"cultureSheets","ord":3,"value":"culture.household.claywater-station.drying-racks"}
+{"quest_id":"quest.local.lf83","source":"cultureSheets","ord":4,"value":"culture.group.claywater-station.travellers"}
 {"quest_id":"quest.local.lh38","source":"cultureSheets","ord":0,"value":"culture.settlement.greenspring"}
 {"quest_id":"quest.local.lh38","source":"cultureSheets","ord":1,"value":"culture.group.greenspring.lodge"}
 {"quest_id":"quest.local.lh38","source":"cultureSheets","ord":2,"value":"culture.group.greenspring.road-guests"}

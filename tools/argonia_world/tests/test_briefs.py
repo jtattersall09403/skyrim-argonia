@@ -41,3 +41,14 @@ def test_quest_brief_reads_a_quest_with_no_clues(w, monkeypatch, tmp_path):
     w.delete("quest_conclusion", quest_id="quest.local.lh38")
     assert run("quest-write/brief.py", monkeypatch, "quest.local.lh38", str(tmp_path)) == 0
     assert (tmp_path / "lh38-journal.md").exists()
+
+
+def test_quest_brief_refuses_once_a_cited_fact_is_deleted(w, monkeypatch, tmp_path, capsys):
+    """1.4: brief.py builds LF83's briefs, and refuses (writing nothing) once a fact the record cites is gone."""
+    assert run("quest-write/brief.py", monkeypatch, "quest.local.lf83", str(tmp_path / "ok")) == 0
+    w.delete("fact", "fact.claywater-station.vibe-condition-1")     # clue k6's fact: the landing's walls
+    capsys.readouterr()
+    assert run("quest-write/brief.py", monkeypatch, "quest.local.lf83", str(tmp_path / "bad")) not in (0, None)
+    out = capsys.readouterr().out
+    assert "record is not whole" in out and "fact.claywater-station.vibe-condition-1" in out
+    assert not (tmp_path / "bad").exists() or not any((tmp_path / "bad").iterdir())

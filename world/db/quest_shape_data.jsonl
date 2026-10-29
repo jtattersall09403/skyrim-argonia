@@ -1,3 +1,9 @@
+{"quest_id":"quest.local.lf83","section":"aftermath"}
+{"quest_id":"quest.local.lf83","section":"deadline","value":"event.lf83.rains-coming, started at stage 10; seven days (fact.lf83.rains-close), announced by Signs-For-The-Cargo and Takes-The-Short-Weight; then stage 90, where the rain comes (setWeather)"}
+{"quest_id":"quest.local.lf83","section":"leverage"}
+{"quest_id":"quest.local.lf83","section":"objections"}
+{"quest_id":"quest.local.lf83","section":"revealOrder"}
+{"quest_id":"quest.local.lf83","section":"sides"}
 {"quest_id":"quest.local.lh38","section":"accusation","needed":2,"too_few":"Reeh-Shaal laughs it off and leaves on the next boat unless stopped"}
 {"quest_id":"quest.local.lh38","section":"cure","value":"raise the body; the water clears in three days"}
 {"quest_id":"quest.local.lh38","section":"endings","wrong":"e-wrong","right":"e-justice","partial":"e-fight","unsolved":"e-unsolved"}

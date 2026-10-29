@@ -1,3 +1,36 @@
+{"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.charges-answer","value":"hides \"it means her charge started the quarrel\""}
+{"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.cracked-lining","value":"hides \"the station half never says the well should be left to fall\""}
+{"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.ford-charge","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.ford-in-well","value":"hides \"she says the water is only low after a dry season\""}
+{"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.landing-free","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.night-waders","value":"suspects"}
+{"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.remortared","value":"hides \"it would show stone cannot hold the well\""}
+{"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.stone-cracks","value":"ignorant"}
+{"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.stone-refused","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.stop-charge","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.basket-left","value":"hides \"he ran from it, and the landing's poler does not run\""}
+{"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.charges-answer","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.cracked-lining","value":"ignorant"}
+{"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.crocodile-bend","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.ford-charge","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.landing-free","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.night-waders","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.rains-close","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.stone-cracks","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.stone-refused","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.stop-charge","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.charges-answer","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.crocodile-bend","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.ford-charge","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.ford-in-well","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.landing-free","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.night-waders","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.rains-close","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.stone-cracks","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.stop-charge","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.takes-doubts","value":"hides \"she will not speak against her own bank to a stranger she distrusts\""}
+{"quest_id":"quest.local.lf83","cast_ord":3,"fact_id":"fact.lf83.ford-charge","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":3,"fact_id":"fact.lf83.stop-charge","value":"knows"}
 {"quest_id":"quest.local.lh38","cast_ord":0,"fact_id":"fact.lh38.food-blamed","value":"knows"}
 {"quest_id":"quest.local.lh38","cast_ord":0,"fact_id":"fact.lh38.pool-office","value":"knows"}
 {"quest_id":"quest.local.lh38","cast_ord":0,"fact_id":"fact.lh38.sickness","value":"knows"}

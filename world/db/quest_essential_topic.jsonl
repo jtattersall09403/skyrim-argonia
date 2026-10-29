@@ -8,6 +8,9 @@
 {"quest_id":"quest.local.lf67","ord":1,"value":"topic.bog-iron-leech-den"}
 {"quest_id":"quest.local.lf83","ord":0,"value":"topic.claywater-two-charges"}
 {"quest_id":"quest.local.lf83","ord":1,"value":"topic.claywater-landing-terms"}
+{"quest_id":"quest.local.lf83","ord":2,"value":"topic.lf83-cracked-well"}
+{"quest_id":"quest.local.lf83","ord":3,"value":"topic.lf83-clay-bend"}
+{"quest_id":"quest.local.lf83","ord":4,"value":"topic.lf83-one-charge"}
 {"quest_id":"quest.local.lh07","ord":0,"value":"topic.helstrom-sour-water"}
 {"quest_id":"quest.local.lh37","ord":0,"value":"topic.greenspring-spring-terms"}
 {"quest_id":"quest.local.lh37","ord":1,"value":"topic.greenspring-written-terms"}

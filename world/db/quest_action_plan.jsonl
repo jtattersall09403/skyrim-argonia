@@ -1,3 +1,9 @@
+{"quest_id":"quest.local.lf83","ord":0,"skill":"any-weapon","use":"hunt","reason":"a crocodile has taken the clay bend below the raft, where the landing digs its plaster clay; the landing will not dig until it is dead"}
+{"quest_id":"quest.local.lf83","ord":1,"skill":"marksman","use":"snipe","reason":"or kill it from the end of the landing stage, out of its reach"}
+{"quest_id":"quest.local.lf83","ord":2,"skill":"speechcraft","use":"persuade","reason":"each keeper has objections the player answers with things from the world; the doubter speaks against her own bank only to someone she does not distrust"}
+{"quest_id":"quest.local.lf83","ord":3,"skill":"sneak","use":"steal","reason":"Livia Varinius's jar of well silt on the coping, taken unseen"}
+{"quest_id":"quest.local.lf83","ord":4,"skill":"sneak","use":"search-unseen","reason":"the station ledger in the station house, which records the new crack"}
+{"quest_id":"quest.local.lf83","ord":5,"skill":"mercantile","use":"bribe","reason":"the obvious option: buy off the landing's ford charge for the season"}
 {"quest_id":"quest.local.lh38","ord":0,"skill":"alchemy","use":"test-a-sample","reason":"tells the spring from the food, which the misdiagnosis needs"}
 {"quest_id":"quest.local.lh38","ord":1,"skill":"speechcraft","use":"persuade","reason":"Im-Moro forbids the pool"}
 {"quest_id":"quest.local.lh38","ord":2,"skill":"sneak","use":"sneak-past","reason":"or enter the pool at night"}

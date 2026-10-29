@@ -5,7 +5,7 @@ import pytest
 
 from tools.argonia_world import db, quest_record as Q
 
-QUESTS = ["quest.local.lh38", "quest.mr.mr01"]
+QUESTS = ["quest.local.lh38", "quest.mr.mr01", "quest.local.lf83"]
 
 
 @pytest.fixture
