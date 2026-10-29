@@ -1,0 +1,9 @@
+{"editor_id":"ARG_Class_marsh_guide","plugin":"Argonia.esm","form_id":2054,"record_type":"CLAS","entity_key":"class.marsh-guide"}
+{"editor_id":"ARG_HoldingCell","plugin":"Argonia.esm","form_id":2050,"record_type":"CELL"}
+{"editor_id":"ARG_HoldingFloor","plugin":"Argonia.esm","form_id":2052,"record_type":"REFR"}
+{"editor_id":"ARG_HoldingMarker","plugin":"Argonia.esm","form_id":2051,"record_type":"REFR"}
+{"editor_id":"ARG_MusicSilence","plugin":"Argonia.esm","form_id":2049,"record_type":"MUSC"}
+{"editor_id":"ARG_QuarantineNever","plugin":"Argonia.esm","form_id":2048,"record_type":"GLOB"}
+{"editor_id":"ARG_Race_argonian","plugin":"Argonia.esm","form_id":2055,"record_type":"SPEL","entity_key":"race.argonian"}
+{"editor_id":"ARG_Sign_serpent","plugin":"Argonia.esm","form_id":2056,"record_type":"SPEL","entity_key":"birthsign.serpent"}
+{"editor_id":"ARG_StartQuest","plugin":"Argonia.esm","form_id":2053,"record_type":"QUST"}
