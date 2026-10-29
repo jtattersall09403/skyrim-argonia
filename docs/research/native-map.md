@@ -88,3 +88,49 @@ any that its L4 stub turns into "none" becomes an owner call at once.
 - **P7 Canonical state in the co-save.** Our values live in ArgoniaCore's families; the actor values, globals and
   records above are mirrors written from them, never read back as truth.
 
+## 3. The map
+
+Columns: goal · mechanism, cheapest route first · routes · fit and why · proved by · Part 1 stub.
+
+### 3.1 World and land
+
+| Goal | Mechanism | Routes | Fit, why | Proved by | Stub |
+|---|---|---|---|---|---|
+| G01.1 | WRLD + LAND (heights, normals, LTEX paint) written by ArgoniaGen from the heightfield, the records the CK's heightmap import makes (0026 §3) | 1, T | fully; the 126×126-cell physics size is **UNVERIFIED** (tes4skyrim's `havok_world_size` is the re-check, [A §1.6]) | 0.4 → 2.W1 | — |
+| G01.2 | the apron as LAND at 1:1 plus worldspace default water as the sea; far land through LOD | 1, T | fully | 2.W1, 2.W4 | — |
+| G01.3 | terrain and water planned together by our build tools; Skyrim only receives the result | T | fully: a build-time goal | 2.W1, 2.W2 | — |
+| G02.1 | WATR records, cell water height, placed water planes; body semantics stay rows in the world DB | 1 | loss: one water height per exterior cell, so stepped rivers need placed planes (2.W2's first step proves them) | 2.W2 | — |
+| G02.2 | placed refs of the vanilla falls and rapids kit (Tropical Skyrim's textures) | 1 | fully: it is the goal's own wording | 2.W2 | — |
+| G02.3 | flood stages as enable-parented water planes and dressing, switched by the season from ArgoniaCore's calendar rule | 1, 5 | loss: stepped stages, not a continuous rise; runtime change of a cell's water height is **UNVERIFIED** | 2.W2 | — |
+| G03.1 | NAVM from our collision (DotRecast job, tes4skyrim as the binary spec [A §1.5]), each person's walk proved by a journey | 1, T | fully | 0.4 → 2.W4 | — |
+| G03.2 | NAVM + Skyrim's AI packages (PACK); rich AI is not built | 1 | fully | 2.4, 2.W4 | — |
+| G03.3 | Skyrim's own actor processing: unloaded actors advance their packages without pathing, loaded ones walk | 1 | fully; the exact low-process behaviour is **UNVERIFIED** (a still pair before and after a cell load in 2.4) | 2.4 | — |
+| G04.1 | xLODGen, DynDOLOD, FaceGen and the map render run by the installer on the player's machine (0014) | 2, T | fully | 2.W4 → 3.4 | — |
+| G04.2 | WTHR fog distances and colours from the climate fields, Community Shaders volumetrics | 1, 2 | fully | 2.W3 | — |
+| G04.3 | object and terrain LOD of the apron | 1, T | fully | 2.W4 | — |
+| G05.1 | WTHR and CLMT generated from the climate fields (sun, sky colours, fog, moons) | 1, T | loss: the star field is the sky's texture, not a catalogue; new star art is outside 0006 | 2.W3 | — |
+| G05.2 | Skyrim's calendar (12 months, `GameYear`/`GameMonth`/`GameDay` globals `[CL C/Calendar.h:43-91]`) set to 4E 201; moons from CLMT phase length `[CL T/TESClimate.h:67]` | 1 (+5) | loss: see §1, 28 nights may need our override (**UNVERIFIED**) | 2.W3 | — |
+| G05.3 | REGN weather lists per region, the province timeline forcing the current weather from a small ArgoniaCore rule | 1, 5 | fully if forcing holds; Skyrim's weather choice is otherwise a per-region chance; the forcing call is **UNVERIFIED** | 2.W3 | — |
+| G05.4 | REGN records from the region table | 1 | fully | 2.W3 | — |
+| G06.1 | the route generator over hydrology at build time | T | fully | 2.W3 | — |
+| G06.2 | the approach rule checked by the route generator and the place builder | T | fully | 2.W3, 2.W5 | — |
+| G07.1 | a place row's reason in the world DB, checked at L1 | T | fully | 0.4 → 2.W5 | — |
+| G07.2 | the `world-builder` recipe placing REFRs of source plugins' base records (0026 §3) | 1, T | fully | 2.W5 | — |
+| G07.3 | load doors (XTEL) on the plugin's own door refs | 1 | fully: native | 0.4 | — |
+| G07.4 | interior CELLs built with their place by the same recipe | 1, T | fully | 2.W5 → 4.4 | — |
+| G08.1 | Skyrim's four tiers: grass (GRAS on LTEX), placed TREE/STAT refs, object LOD, tree LOD | 1, 2 | fully | 2.W3 → 2.W4 | — |
+| G08.2 | the CK's region generator once from REGN object lists (0028); wind is the engine's | 1, T | fully; whether the CK generator is repeatable for a seed is **UNVERIFIED** (the generator job records its output; 2.W4) | 2.W4 | — |
+| G08.3 | Tropical Skyrim SSE and the Black Marsh mods as dependencies, the piece resolver choosing them first | 2, T | fully | 0.4 | — |
+
+### 3.2 Tools and state
+
+| Goal | Mechanism | Routes | Fit, why | Proved by | Stub |
+|---|---|---|---|---|---|
+| G09.1 | SkyLink AI and the console as the hands; ArgoniaBridge only for what SkyLink lacks (dev only) | 2, 5 | fully | 0.3 | — |
+| G09.2 | scenes = a base save plus console batch files; `tools/run_journey.py` | 1, T | fully | 0.3 | — |
+| G09.3 | the ladder L1–L6 (0021) | T | fully: method | 0.3 onward | — |
+| G10.1 | ArgoniaCore: one plugin owns the families, calls `skse/core`, installs the hooks once, talks to the views by the message schema | 5 | fully | 1.1 | S10a |
+| G10.2 | SKSE co-save families (id, version, save, load, migrate, reset) through the SKSE serialization interface | 5 | fully | 1.1 §b | S10b |
+| G10.3 | world DB home tables; stable FormIDs from the allocator; records derived | 1, T | fully | 0.4 §0, 1.1 §e | S10c |
+| G11.1 | this map; every rule's home named above; `skse/core` only for §6's list | 1–6 | fully | 1.1 §a | S11a |
+| G11.2 | one table per number under `world/` or `data/`; GMSTs, perk rows, mod settings and `skse/core` constants all generated from it (P5) | 1, 5, T | fully | 1.1 → every chunk | S11b |
