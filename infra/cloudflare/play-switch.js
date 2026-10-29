@@ -52,6 +52,9 @@ export default {
     let res
     try { res = await fetch(req) } catch (e) { res = null }
     if (res && res.status !== 530 && res.status !== 502 && res.status !== 1033) return res
+    // Only a page load starts the machine: the heartbeat read and a stale tab's metrics posts must not
+    // (a heartbeat check through the gate started it, 2026-10-29).
+    if (url.pathname.startsWith("/argonia-metrics")) return json({ error: "the game machine is off" }, 503)
     return startPage(env)
   },
 
@@ -107,7 +110,7 @@ main{max-width:30em;text-align:center}a{color:#c9b67a}.stop{display:inline-block
   return new Response(html, { status: 503, headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store", "retry-after": "4" } })
 }
 
-function json(o) { return new Response(JSON.stringify(o), { headers: { "content-type": "application/json", "cache-control": "no-store" } }) }
+function json(o, status = 200) { return new Response(JSON.stringify(o), { status, headers: { "content-type": "application/json", "cache-control": "no-store" } }) }
 
 async function state(env) {
   const xml = await ec2(env, { Action: "DescribeInstances", "Filter.1.Name": "tag:Name", "Filter.1.Value.1": NAME })
