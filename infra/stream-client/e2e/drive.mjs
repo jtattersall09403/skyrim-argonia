@@ -4,7 +4,8 @@
 //   node drive.mjs <outDir> webrtc <steps.json>        ARGONIA_DEVICE=desktop|mac|v5-unfolded|v5-folded|matepad
 // Run headful under xvfb-run (drive.sh does): pointer lock and Chrome's mobile mode need a real window. Phone and
 // tablet profiles use Chrome's mobile emulation, so taps are real touch events (Input.dispatchTouchEvent), not clicks.
-// steps: [{"key": "Backquote"} | {"text": "coc riverwood"} | {"wait": ms} | {"shot": "name"} | {"viewport": [w, h]} | {"tap": [x, y]} | {"click": "css"}]
+// steps: [{"key": "Backquote"} | {"text": "coc riverwood"} | {"wait": ms} | {"shot": "name"} | {"viewport": [w, h]} | {"tap": [x, y]} | {"click": "css"}
+//          | {"down": key} | {"up": key} | {"shots": [name, count, ms]}]
 import fs from "node:fs"
 import os from "node:os"
 import path from "node:path"
@@ -48,15 +49,31 @@ try {
     const DEVICES = {
         desktop: { width: 1600, height: 900, deviceScaleFactor: 1, isMobile: false, hasTouch: false },
         mac: { width: 1470, height: 836, deviceScaleFactor: 2, isMobile: false, hasTouch: false },
-        "v5-unfolded": { width: 1006, height: 929, deviceScaleFactor: 2.33, isMobile: true, hasTouch: true },
+        "v5-unfolded": { width: 784, height: 724, deviceScaleFactor: 3, isMobile: true, hasTouch: true },   // the owner's, landscape (metrics log 2026-10-29)
         "v5-folded": { width: 970, height: 432, deviceScaleFactor: 2.45, isMobile: true, hasTouch: true },
         matepad: { width: 1400, height: 920, deviceScaleFactor: 2, isMobile: true, hasTouch: true },
     }
     const device = process.env.ARGONIA_DEVICE ?? "v5-folded"
-    const profile = DEVICES[device]
-    if (!profile) throw new Error("unknown ARGONIA_DEVICE " + device)
+    const profile = { ...DEVICES[device] }
+    if (process.env.ARGONIA_VIEWPORT) {   // "w,h,dpr": a size to try on the device's profile
+        const [w, h, d] = process.env.ARGONIA_VIEWPORT.split(",").map(Number)
+        Object.assign(profile, { width: w, height: h, deviceScaleFactor: d })
+    }
+    if (!DEVICES[device]) throw new Error("unknown ARGONIA_DEVICE " + device)
     if (profile.isMobile) await page.setUserAgent("Mozilla/5.0 (Linux; Android 15; PLA-AN00) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36")
     await page.setViewport(profile)
+    // ARGONIA_FAKEPAD=1: a real-looking pad the browser has no standard mapping for (mapping "", like the owner's
+    // GameSir X2s), connected 3 s after load; steps press it with {"probe": "__fakePad.press(0, 150)"}
+    if (process.env.ARGONIA_FAKEPAD) await page.evaluateOnNewDocument(() => {
+        const buttons = Array.from({ length: 17 }, () => ({ pressed: false, touched: false, value: 0 }))
+        const pad = { id: "GameSir-X2s (Vendor: 3537 Product: 1010)", index: 0, connected: false, mapping: "", timestamp: 0, axes: [0, 0, 0, 0], buttons, vibrationActuator: null }
+        Object.defineProperty(navigator, "getGamepads", { configurable: true, writable: true, value: () => [pad.connected ? { ...pad, buttons: buttons.map((b) => ({ ...b })), axes: pad.axes.slice() } : null] })
+        window.__fakePad = {
+            press(i, ms) { buttons[i] = { pressed: true, touched: true, value: 1 }; pad.timestamp = performance.now(); setTimeout(() => { buttons[i] = { pressed: false, touched: false, value: 0 }; pad.timestamp = performance.now() }, ms); return i },
+            axis(i, v) { pad.axes[i] = v; pad.timestamp = performance.now(); return v },
+        }
+        setTimeout(() => { pad.connected = true; const ev = new Event("gamepadconnected"); Object.defineProperty(ev, "gamepad", { value: { ...pad } }); window.dispatchEvent(ev) }, 3000)
+    })
     log("device", device, JSON.stringify(profile))
     const base = "http://localhost:18080"
     await page.goto(base + "/", { waitUntil: "domcontentloaded" })
@@ -105,6 +122,9 @@ try {
     await page.focus("#input").catch(() => { })
     for (const s of steps) {
         if (s.key) { await page.keyboard.down(s.key); await wait(80); await page.keyboard.up(s.key); await wait(250) }
+        else if (s.down) { await page.keyboard.down(s.down) }
+        else if (s.up) { await page.keyboard.up(s.up) }
+        else if (s.shots) { for (let i = 0; i < s.shots[1]; i++) { await page.screenshot({ path: path.join(out, `drive-${s.shots[0]}-${i}.png`) }); await wait(s.shots[2] ?? 150) } }
         else if (s.text) { for (const ch of s.text) { await page.keyboard.type(ch); await wait(90) } }
         else if (s.wait) await wait(s.wait)
         else if (s.tap) {   // a real touch tap: on an element (css) or at [x, y]

@@ -1,0 +1,4 @@
+[{"wait": 5000}, {"probe": "argonia.pad.unmappedPads"}, {"probe": "JSON.stringify(argonia.streamSize)"},
+ {"wait": 40000}, {"shot": "pad-menu-before"},
+ {"probe": "__fakePad.press(13, 200)"}, {"wait": 1200}, {"probe": "__fakePad.press(13, 200)"}, {"wait": 1200}, {"shot": "pad-menu-down"},
+ {"probe": "__fakePad.press(0, 200)"}, {"wait": 4000}, {"shot": "pad-menu-a"}]

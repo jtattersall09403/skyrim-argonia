@@ -22,6 +22,7 @@ function boot() {
         onActivity: () => metrics.inputs.active("touch"),
     })
     metrics.touchShown = () => layer.isShown()
+    metrics.unmappedPads = () => pad.unmappedPads
     metrics.start()
     w.argonia = { version: CLIENT_VERSION, pad, layer, metrics, streamSize }
 }

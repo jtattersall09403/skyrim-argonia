@@ -4,6 +4,11 @@
 // sendController) and drops it on "gamepaddisconnected". So the touch pad joins there: getGamepads() is wrapped to
 // return our standard-mapping pad in a free slot, and the two events are dispatched for it. Upstream then sends it
 // exactly as a real pad, and Sunshine shows Skyrim an Xbox 360 controller.
+// A real pad the browser does not recognise (mapping "", the GameSir X2s on the owner's Magic V5, 2026-10-29) is
+// added by upstream but never read ("Unable to read values of gamepad with mapping"), and as Sunshine's first
+// controller it shadows the touch pad too, so Skyrim saw neither. Such pads are passed through as "standard": the
+// browser's raw button and axis order, which for Android pads follows the standard layout; each one's raw layout is
+// kept for the metrics log (unmappedPads) in case a pad's buttons land wrongly.
 
 import { PadModel } from "./touch_model.ts"
 
@@ -27,13 +32,26 @@ export class VirtualPad {
         const native = navigator.getGamepads ? navigator.getGamepads.bind(navigator) : () => []
         this.nativeGetGamepads = () => Array.from(native() ?? [])
         Object.defineProperty(navigator, "getGamepads", { configurable: true, writable: true, value: () => this.getGamepads() })
+        // upstream reads the event's own pad for its mapping check, so non-standard pads arrive as standard
+        window.addEventListener("gamepadconnected", (e) => {
+            const g = (e as GamepadEvent).gamepad
+            if (!g || g.mapping === "standard" || isVirtual(g) || (e as { argoniaWrapped?: boolean }).argoniaWrapped) return
+            e.stopImmediatePropagation()
+            this.unmappedPads.push({ id: g.id, mapping: g.mapping, buttons: g.buttons.length, axes: g.axes.length })
+            const ev = new Event("gamepadconnected")
+            Object.defineProperties(ev, { gamepad: { value: asStandard(g) }, argoniaWrapped: { value: true } })
+            window.dispatchEvent(ev)
+        }, { capture: true })
     }
+
+    /** Real pads the browser had no standard mapping for, as first seen: for the metrics log. */
+    readonly unmappedPads: { id: string, mapping: string, buttons: number, axes: number }[] = []
 
     /** Real pads only (the GameSir X2s on the phone, an Xbox pad on a desktop). */
     realPads(): Gamepad[] { return this.nativeGetGamepads().filter((g): g is Gamepad => !!g && g.connected !== false) }
 
     getGamepads(): (Gamepad | null)[] {
-        const list = this.nativeGetGamepads()
+        const list = this.nativeGetGamepads().map((g) => (g && g.mapping !== "standard" ? asStandard(g) : g))
         if (!this.connected) return list
         this.model.tick(performance.now())
         while (list.length <= this.index) list.push(null)
@@ -95,4 +113,12 @@ export class VirtualPad {
         if (this.vibrating && navigator.vibrate) navigator.vibrate(0)
         this.vibrating = false
     }
+}
+
+/** A real pad with no standard mapping, presented as one: same buttons and axes in the browser's raw order. */
+export function asStandard(g: Gamepad): Gamepad {
+    return {
+        id: g.id, index: g.index, connected: g.connected, mapping: "standard", timestamp: g.timestamp,
+        axes: g.axes, buttons: g.buttons, vibrationActuator: g.vibrationActuator,
+    } as unknown as Gamepad
 }

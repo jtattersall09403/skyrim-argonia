@@ -234,6 +234,7 @@ export class Metrics {
     private started = Date.now()
     private setup: string
     touchShown = () => false
+    unmappedPads = (): unknown[] => []
 
     constructor() {
         const q = new URLSearchParams(location.search)
@@ -330,6 +331,7 @@ export class Metrics {
             p2sMs: summarize(this.probe.samples.map((s) => s.ms)),
             p2sBySource: Object.fromEntries(["touch", "gamepad", "keyboard", "mouse"].map((k) => [k, summarize(this.probe.samples.filter((s) => s.source === k).map((s) => s.ms))])),
             resolution: t.at(-1)?.resolution ?? null, codec: t.at(-1)?.codec ?? null, candidate: t.at(-1)?.candidate ?? null,
+            unmappedPads: this.unmappedPads(),
         })
         if (final) void this.sink.flush()
     }

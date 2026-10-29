@@ -1,0 +1,2 @@
+[{"wait": 6000}, {"probe": "__fakePad.press(12, 200)"}, {"wait": 1500}, {"probe": "__fakePad.press(12, 200)"}, {"wait": 1500}, {"shot": "pad-up"},
+ {"probe": "__fakePad.press(0, 600)"}, {"wait": 8000}, {"shot": "pad-a-1"}, {"probe": "JSON.stringify(navigator.getGamepads().filter(Boolean).map(g => [g.id, g.mapping, g.index]))"}]

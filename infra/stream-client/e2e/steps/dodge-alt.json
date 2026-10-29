@@ -1,0 +1,5 @@
+[{"wait": 4000}, {"click": "video.video-stream"}, {"wait": 800},
+ {"key": "Enter"}, {"wait": 3000}, {"key": "Enter"}, {"wait": 3000}, {"key": "Enter"}, {"wait": 45000},
+ {"shot": "dodge-before"},
+ {"down": "KeyW"}, {"wait": 1200}, {"key": "AltLeft"}, {"shots": ["dodge", 6, 120]}, {"up": "KeyW"}, {"wait": 1500},
+ {"key": "AltLeft"}, {"shots": ["dodge-still", 4, 150]}]
