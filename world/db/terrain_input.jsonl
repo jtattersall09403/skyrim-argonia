@@ -1,0 +1,6 @@
+{"name":"apron-source-near.npy","sha256":"c85efe550401b0de2db0f440d0dc8579ea04e3fb2b24822ece6c45df3b9ad77a","role":"the near apron's heights","source":"Transbot9 All-Tamriel heightmap, CC BY-NC 4.0, credited"}
+{"name":"ground-tint.png","sha256":"637e903c8ea3e8428ff765a0e39a02926cf6dcb3cb76eb6ecb5f748585811259","role":"vertex colour tint","source":"the old project's studio (ours)"}
+{"name":"landcover-i16.npy","sha256":"10f20595069b49e96d8f0da59afcad942a044bb07fe71583078fc16da0c17b17","role":"land-cover class per sample","source":"the old project's ground control (ours)"}
+{"name":"refined-height-f32.npy","sha256":"b253c5ff89ddb6964227b5db1f7c9d92981c69c234e98501dbb43c7adeba71e8","role":"province ground after every applied patch","source":"the old project's chain (ours)"}
+{"name":"route-grade-applied.json","sha256":"f4c488ee57b3806ebb3c849d20ced0eb6f00c09766a8dbf1b7796ce52b5e6a30","role":"route-grade patch receipts","source":"the old project's chain (ours)"}
+{"name":"terrain-patches-applied.json","sha256":"9b200feaab74bd3b265ff01fe5188addb1bbc84cf9647a1e3a7ff10e1b63cc79","role":"terrain patch receipts","source":"the old project's chain (ours)"}

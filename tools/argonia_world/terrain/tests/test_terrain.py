@@ -55,3 +55,32 @@ def test_layers_composite_to_the_weights():
 
 def test_seed_covers_every_class_once():
     assert len({c.id for c in SEED}) == len(SEED) == 37
+
+
+def test_limit_spreads_a_cliff_locally():
+    s = np.zeros((12, 20), np.int64); s[:, 10:] = 1000
+    lim = quantize.limit(s)
+    assert quantize.overflow_pairs(lim) == 0
+    moved = np.abs(lim - s).max(axis=0)
+    assert moved[:5].max() == 0 and moved[15:].max() == 0  # 5 samples from the cliff on either side: untouched
+    assert np.abs(lim - s).max() <= (1000 - quantize.L) // 2 + 1
+    rng = np.random.default_rng(3)  # rough ground with cliffs: never worse than the L-infinity midpoint
+    h = np.cumsum(rng.integers(-40, 41, (40, 40)), axis=1) + np.where(rng.random((40, 40)) < 0.05, 600, 0)
+    m = (quantize._minorant(h) + quantize._majorant(h)) // 2
+    f = quantize.limit(h)
+    assert quantize.overflow_pairs(f) == 0 and (np.abs(f - h) <= np.abs(m - h)).all()
+
+
+def test_the_database_holds_the_seed_classes():
+    from tools.argonia_world import db
+    assert table(db.open()) == {c.id: c for c in SEED}
+
+
+def test_game_heights_equal_the_cells(tmp_path):
+    s = src()
+    build.build(s, table(), tmp_path, cells=(-62, -62, -61, -61))
+    c = {(c["x"], c["y"]): c for c in build.read_cells(tmp_path)}[(-61, -62)]
+    north, south = s.cell_rows(-62)
+    a, b = s.cell_cols(-61)
+    g = build.game_heights_m(s, north, south + 1, a, b + 1)[::-1]
+    assert np.allclose(g, quantize.decode(c["offset"], build.unpack(c)["vhgt"]) * su.VHGT_STEP_UNITS / su.UNITS_PER_METRE)

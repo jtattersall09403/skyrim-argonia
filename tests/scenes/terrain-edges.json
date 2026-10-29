@@ -1,0 +1,8 @@
+{
+ "id": "terrain-edges",
+ "status": "draft (2.W1): owed L4, with 2.W3 (the border REGN and the two gates are theirs)",
+ "checks": "2.W1 §b: the player cannot leave the province",
+ "base": "the base save, ArgoniaWorld.esm and Argonia.esm loaded",
+ "step0": ["cow ArgoniaWorld at each border segment's start (nothing about the edge is set)"],
+ "journey": "tests/journeys/terrain-border-push.json"
+}

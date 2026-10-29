@@ -71,8 +71,19 @@ def compose(layers: list[Layer], masters: list[str] = ()) -> list[dict]:
     return sorted(out.values(), key=lambda r: (TYPE_ORDER.index(r["type"]), raw(r["formKey"])))
 
 
-def _pos(at_m) -> list[float]:
-    return [su.rounded(su.metres_to_units(v), 2) for v in at_m]
+# Imported and authored positions run x east, y SOUTH (old 0003; measured by 2.W1 on the route-grade profiles),
+# z up, in metres; Skyrim's y runs north. A straight metres_to_units on y mirrored every layout north-south.
+def _pos_exterior(at_m) -> list[float]:
+    """A province position (metres from the NW corner, y south) as worldspace units: through the grid."""
+    x, y = su.province_to_skyrim(at_m[0], at_m[1])
+    return [su.rounded(x, 2), su.rounded(y, 2), su.rounded(su.metres_to_units(at_m[2]), 2)]
+
+
+def _pos_interior(at_m) -> list[float]:
+    """An interior position (metres from the cell's origin, y south) as cell units: y negated, no grid."""
+    x, y, z = at_m
+    return [su.rounded(su.metres_to_units(x), 2), su.rounded(-su.metres_to_units(y), 2),
+            su.rounded(su.metres_to_units(z), 2)]
 
 
 def _rot(yaw) -> list[float]:
@@ -104,9 +115,9 @@ def quarantine_layers(alloc: Allocator, scan: dict, resolver: Resolver) -> list[
         "lighting": cell["lighting"],
         "refs": [
             {"edid": m["edid"], "formKey": fk(m["edid"], "REFR"), "base": su.ENGINE_MARKER_HEADING,
-             "pos": _pos(m["atM"]), "rot": _rot(m["yaw"]), "persistent": True},
+             "pos": _pos_interior(m["atM"]), "rot": _rot(m["yaw"]), "persistent": True},
             {"edid": fl["edid"], "formKey": fk(fl["edid"], "REFR"), "base": floor_base,
-             "pos": _pos(fl["atM"]), "rot": _rot(fl["yaw"])},
+             "pos": _pos_interior(fl["atM"]), "rot": _rot(fl["yaw"])},
         ],
     })
     records.append({

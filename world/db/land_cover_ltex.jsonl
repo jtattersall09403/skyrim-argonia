@@ -1,0 +1,37 @@
+{"land_cover_id":0,"ltex_form_key":"0132E9:Skyrim.esm","ltex_edid":"LRiverMud01","tropical_skyrim_replaces":true,"why":"wet fine sediment at the waterline; river mud with water kelp"}
+{"land_cover_id":1,"ltex_form_key":"0132E9:Skyrim.esm","ltex_edid":"LRiverMud01","tropical_skyrim_replaces":true,"why":"the channel bed"}
+{"land_cover_id":2,"ltex_form_key":"01301F:Skyrim.esm","ltex_edid":"LRiverbedEdge01","tropical_skyrim_replaces":true,"why":"the wet bank grade between bed and ground"}
+{"land_cover_id":3,"ltex_form_key":"0132E9:Skyrim.esm","ltex_edid":"LRiverMud01","tropical_skyrim_replaces":true,"why":"stagnant water over mud (73% under water)"}
+{"land_cover_id":4,"ltex_form_key":"098E6C:Skyrim.esm","ltex_edid":"LRiverMud01NoGrass","tropical_skyrim_replaces":true,"why":"the wettest black mud, bare"}
+{"land_cover_id":5,"ltex_form_key":"098E6C:Skyrim.esm","ltex_edid":"LRiverMud01NoGrass","tropical_skyrim_replaces":true,"why":"pooled water on mud"}
+{"land_cover_id":6,"ltex_form_key":"021711:Skyrim.esm","ltex_edid":"LReachDirt01","tropical_skyrim_replaces":true,"why":"red-brown clay banks"}
+{"land_cover_id":7,"ltex_form_key":"075069:Skyrim.esm","ltex_edid":"LFrozenMarshLichen01","tropical_skyrim_replaces":true,"why":"marsh muck; the marsh family Tropical Skyrim turns to swamp"}
+{"land_cover_id":8,"ltex_form_key":"075069:Skyrim.esm","ltex_edid":"LFrozenMarshLichen01","tropical_skyrim_replaces":true,"why":"Bitter Coast style mud flat"}
+{"land_cover_id":9,"ltex_form_key":"057DCF:Skyrim.esm","ltex_edid":"LFallForestDirt01","tropical_skyrim_replaces":true,"why":"dark peat ground"}
+{"land_cover_id":10,"ltex_form_key":"057DC7:Skyrim.esm","ltex_edid":"LFallForestLeaves01","tropical_skyrim_replaces":true,"why":"mud under leaf fall"}
+{"land_cover_id":11,"ltex_form_key":"075067:Skyrim.esm","ltex_edid":"LFrozenMarshGrass01","tropical_skyrim_replaces":true,"why":"marsh grass"}
+{"land_cover_id":12,"ltex_form_key":"013876:Skyrim.esm","ltex_edid":"LPineForest03","tropical_skyrim_replaces":true,"why":"forest floor with ferns"}
+{"land_cover_id":13,"ltex_form_key":"01CC43:Skyrim.esm","ltex_edid":"LReachMoss01","tropical_skyrim_replaces":true,"why":"moss mat"}
+{"land_cover_id":14,"ltex_form_key":"01CC43:Skyrim.esm","ltex_edid":"LReachMoss01","tropical_skyrim_replaces":true,"why":"moss mat"}
+{"land_cover_id":15,"ltex_form_key":"075067:Skyrim.esm","ltex_edid":"LFrozenMarshGrass01","tropical_skyrim_replaces":true,"why":"swamp grass"}
+{"land_cover_id":16,"ltex_form_key":"01342A:Skyrim.esm","ltex_edid":"LFieldGrass02","tropical_skyrim_replaces":true,"why":"open tropical grass"}
+{"land_cover_id":17,"ltex_form_key":"013428:Skyrim.esm","ltex_edid":"LFieldGrass01","tropical_skyrim_replaces":true,"why":"grass over dirt"}
+{"land_cover_id":18,"ltex_form_key":"024E30:Skyrim.esm","ltex_edid":"LTundra01","tropical_skyrim_replaces":true,"why":"scrubland"}
+{"land_cover_id":19,"ltex_form_key":"0137CC:Skyrim.esm","ltex_edid":"LPineForest02","tropical_skyrim_replaces":true,"why":"jungle floor with forest grass and fern"}
+{"land_cover_id":20,"ltex_form_key":"058606:Skyrim.esm","ltex_edid":"LFallForestGrass01","tropical_skyrim_replaces":true,"why":"forest floor"}
+{"land_cover_id":21,"ltex_form_key":"057DC7:Skyrim.esm","ltex_edid":"LFallForestLeaves01","tropical_skyrim_replaces":true,"why":"leaf litter"}
+{"land_cover_id":23,"ltex_form_key":"01CC45:Skyrim.esm","ltex_edid":"LReachMossyRocks01","tropical_skyrim_replaces":true,"why":"mossy rock"}
+{"land_cover_id":24,"ltex_form_key":"06B3CF:Skyrim.esm","ltex_edid":"LCoastBeach01","tropical_skyrim_replaces":true,"why":"inland sand"}
+{"land_cover_id":25,"ltex_form_key":"06B3D1:Skyrim.esm","ltex_edid":"LCoastBeach02","tropical_skyrim_replaces":true,"why":"salt pan, bare and pale"}
+{"land_cover_id":26,"ltex_form_key":"021711:Skyrim.esm","ltex_edid":"LReachDirt01","tropical_skyrim_replaces":true,"why":"dry clay"}
+{"land_cover_id":27,"ltex_form_key":"0B424C:Skyrim.esm","ltex_edid":"LDirtPath01","tropical_skyrim_replaces":true,"why":"a worn path"}
+{"land_cover_id":28,"ltex_form_key":"075070:Skyrim.esm","ltex_edid":"LFrozenMarshDirtSlopes01","tropical_skyrim_replaces":true,"why":"peat on a slope"}
+{"land_cover_id":29,"ltex_form_key":"000C16:Skyrim.esm","ltex_edid":"LDirt02","tropical_skyrim_replaces":true,"why":"a churned track"}
+{"land_cover_id":30,"ltex_form_key":"0B424C:Skyrim.esm","ltex_edid":"LDirtPath01","tropical_skyrim_replaces":true,"why":"the built road until 2.W3's road surface"}
+{"land_cover_id":31,"ltex_form_key":"000AE4:Skyrim.esm","ltex_edid":"LRocks01","tropical_skyrim_replaces":true,"why":"upland rock"}
+{"land_cover_id":32,"ltex_form_key":"06DD55:Skyrim.esm","ltex_edid":"LCoastBeachGrass01","tropical_skyrim_replaces":true,"why":"beach with beach grass"}
+{"land_cover_id":33,"ltex_form_key":"06B3CF:Skyrim.esm","ltex_edid":"LCoastBeach01","tropical_skyrim_replaces":true,"why":"shallow sea sand"}
+{"land_cover_id":34,"ltex_form_key":"013184:Skyrim.esm","ltex_edid":"LRiverBottom01","tropical_skyrim_replaces":true,"why":"pebble beds of upland streams"}
+{"land_cover_id":35,"ltex_form_key":"06B4C6:Skyrim.esm","ltex_edid":"LCoastOceanFloor01","tropical_skyrim_replaces":true,"why":"the sea floor with kelp and coral"}
+{"land_cover_id":36,"ltex_form_key":"000C14:Skyrim.esm","ltex_edid":"LDirt01","tropical_skyrim_replaces":true,"why":"steep bare dirt"}
+{"land_cover_id":37,"ltex_form_key":"02C6C6:Skyrim.esm","ltex_edid":"LTundraRocks01","tropical_skyrim_replaces":true,"why":"scree"}

@@ -1,0 +1,10 @@
+{
+ "id": "terrain-border-push",
+ "status": "draft (2.W1): owed L4",
+ "scene": "terrain-edges",
+ "segments": "the border polygon (tools/argonia_world/terrain/edges.py border_polygon) cut every 4 cells: 126 per side, 504 in all; plus the two exit gates (edges.gates)",
+ "per_segment": ["teleport 30 m inside the border, facing out", "push outward with short forward inputs for 10 s (SkyLink input, no mode or switch)", "read the player position each second", "read any message shown"],
+ "pass": "the position never crosses the border polygon; at a gate the closed-road message shows",
+ "still": "one at the farthest point reached",
+ "fails_if": "a crossing; a fall through the ground; the game crashes"
+}

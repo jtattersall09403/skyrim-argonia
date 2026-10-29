@@ -2,11 +2,14 @@
 """The record pipeline end to end (0.4 §a): `make plugin` and the gate's `plugin` part.
 
     pipeline.py plugin   scan the masters, index the pieces, write the intermediate JSON, generate Argonia.esm
-                         (out/), serialise it with Spriggit into plugin/Argonia/
+                         (out/), serialise it with Spriggit into plugin/Argonia/; build the generated ground,
+                         out/ArgoniaWorld.esm (decision 0031: never serialised; the terrain is rebuilt only when its
+                         code or inputs change) and print its sha256
     pipeline.py check    the FormID table append-only; every design piece resolved; regenerate twice into
                          out/check/{a,b}: identical ESM bytes and YAML trees, and equal to the committed
                          plugin/Argonia/ (else: run `make plugin`); the Spriggit round trip: plugin/Argonia/
-                         and the generated ESM, both in canonical record order, are byte-identical
+                         and the generated ESM, both in canonical record order, are byte-identical;
+                         ArgoniaWorld.esm's fixed cell sample rebuilt and its sha256 equal to the committed manifest
 
 Spriggit's deserialiser writes a group's records in directory-listing order, which is the filesystem's and not
 the content's; `canon` puts every group in the raw-FormID order the generator writes, so the round trip
@@ -122,6 +125,55 @@ def trees_equal(a: Path, b: Path) -> list[str]:
     return diff
 
 
+# --- ArgoniaWorld.esm, the generated ground (decision 0031) ----------------------------------------------------
+TERRAIN = ROOT / "tools" / "argonia_world" / "terrain"
+WORLD_ESM = "ArgoniaWorld.esm"
+WORLD_ENV = {"DOTNET_GCHeapHardLimit": "0x60000000", "DOTNET_GCConserveMemory": "9"}  # 1.1 GB peak measured
+
+
+def _terrain_stamp() -> str:
+    """The terrain's code, the world tables it reads and its inputs (by size and time): a change rebuilds."""
+    import hashlib
+    sys.path.insert(0, str(ROOT))
+    from tools.argonia_world import db
+    from tools.argonia_world.terrain import vault
+    from tools.argonia_world.terrain.landcover import table
+    h = hashlib.sha256(repr(sorted(table(db.open()).items())).encode())
+    for f in sorted(TERRAIN.glob("*.py")):
+        h.update(f.name.encode() + f.read_bytes())
+    for n in sorted(vault.FILES):
+        f = vault.data_dir() / n
+        h.update(f"{n}:{f.stat().st_size}:{int(f.stat().st_mtime)}".encode() if f.exists() else n.encode())
+    return h.hexdigest()
+
+
+def world(data: Path, into: Path, sample: bool) -> Path:
+    """terrain cells -> world.json -> ArgoniaWorld.esm under `into`; the full grid's cells are reused while the
+    stamp holds."""
+    into.mkdir(parents=True, exist_ok=True)
+    stamp = into / "terrain.stamp"
+    now = _terrain_stamp()
+    if sample or not (stamp.exists() and stamp.read_text() == now and (into / "land").is_dir()):
+        run(sys.executable, "-m", "tools.argonia_world.terrain", "build", "--out", into,
+            *(["--sample"] if sample else []), capped=True)
+        if not sample:
+            stamp.write_text(now)
+    run(sys.executable, "-m", "tools.argonia_world.terrain", "world", "--out", into)
+    esm = into / "esm" / WORLD_ESM
+    esm.parent.mkdir(parents=True, exist_ok=True)
+    full = (CAP if CAP else []) + [str(GEN), "world", "--in", str(into / "world.json"), "--land", str(into / "land"),
+                                   "--data", str(data), "--out", str(esm)]
+    r = subprocess.run(full, cwd=ROOT, env=dict(ENV, **WORLD_ENV), capture_output=True, text=True, check=False)
+    if r.returncode:
+        raise SystemExit(f"plugin: ArgoniaWorld.esm failed\n{(r.stdout + r.stderr)[-3000:]}")
+    return esm
+
+
+def sha256(p: Path) -> str:
+    import hashlib
+    return hashlib.sha256(p.read_bytes()).hexdigest()
+
+
 def plugin() -> int:
     data = data_dir()
     build_tool()
@@ -132,6 +184,9 @@ def plugin() -> int:
     shutil.copytree(yaml, YAML)
     n = sum(1 for _ in YAML.rglob("*.yaml"))
     print(f"plugin: out/Argonia.esm ({esm.stat().st_size} bytes), {n} YAML files in plugin/Argonia/")
+    wesm = world(data, OUT / "terrain", sample=False)
+    shutil.copyfile(wesm, OUT / WORLD_ESM)
+    print(f"plugin: out/{WORLD_ESM} ({wesm.stat().st_size} bytes) sha256 {sha256(wesm)}")
     return 0
 
 
@@ -169,10 +224,19 @@ def check() -> int:
         run("spriggit", "deserialize", "-i", YAML, "-o", rt, *SPRIGGIT, capped=True)
         if canon(rt.read_bytes()) != canon(a_esm.read_bytes()):
             errs.append("round trip: plugin/Argonia/ deserialised is not byte-identical to the generated ESM")
+    try:
+        got = sha256(world(data, OUT / "check" / "world", sample=True))
+        want = json.loads((TERRAIN / "sample-manifest.json").read_text())["sha256"]
+        if got != want:
+            errs.append(f"{WORLD_ESM}: the fixed cell sample hashes {got[:12]}, the manifest says {want[:12]} "
+                        "(a deliberate change: update tools/argonia_world/terrain/sample-manifest.json)")
+    except SystemExit as e:
+        errs.append(str(e))
     for e in errs:
         print(f"plugin: {e}")
     if not errs:
-        print("plugin: regenerate twice identical; plugin/Argonia/ current; Spriggit round trip byte-identical")
+        print("plugin: regenerate twice identical; plugin/Argonia/ current; Spriggit round trip byte-identical; "
+              f"{WORLD_ESM} sample hash as the manifest")
     return 1 if errs else 0
 
 

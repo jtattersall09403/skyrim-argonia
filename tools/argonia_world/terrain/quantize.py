@@ -4,12 +4,20 @@ VHGT stores one float offset per cell and 33 x 33 signed-byte deltas: [0, y] rel
 start, carried north), [x, y] relative to [x-1, y]. A cell holds a single offset, so a row cannot be re-based on
 its own; a step steeper than 127 x 8 units over 128 (82.9 degrees) cannot be stored at all. The cure is on the
 heights, once, for the whole grid: the quantised heights H (integer steps) are replaced by the L-infinity-closest
-heights whose 4-neighbour steps are all within +-127 (the mean of the greatest 127-Lipschitz minorant and the
-least majorant under the grid's L1 distance; separable, exact). Where no step overflows the result is H itself.
+heights whose 4-neighbour steps are all within +-127, spread locally:
+
+1. m = the mean of the greatest 127-Lipschitz minorant and the least majorant under the grid's L1 distance
+   (separable, exact): the L-infinity-closest limited heights. Alone it spreads a cliff at half the allowed slope,
+   twice as far as needed (a 1000-step jump moved vertices 5 samples away by 182 steps).
+2. The cliff vertices (both ends of every overflowing pair) are pinned to m; every other vertex keeps H, clamped
+   into the cone those pins allow: f = clamp(H, max_c(m_c - L d), min_c(m_c + L d)). The ramp then runs at the
+   full slope, centred on the cliff, and stops as soon as it meets the ground; f is 127-Lipschitz on every edge
+   (an overflowing edge has both ends pinned; any other edge is a clamp of L-Lipschitz pieces) and
+   |f - H| <= |m - H| at every vertex. Where no step overflows the result is H itself.
 Every cell then reads its 33 x 33 from that one grid, so shared edge vertices are equal by construction (no seam).
 
-The minorant at a vertex depends only on vertices within (max H - min H) / 127 samples, so a window with a halo
-of that many rows and columns gives the global answer for its interior (HALO covers 1,100 m of relief).
+m at a vertex depends only on vertices within (max H - min H) / 127 samples, so a window with a halo of that many
+rows and columns gives the global answer for its interior (HALO covers 930 m of relief).
 """
 from __future__ import annotations
 
@@ -32,15 +40,44 @@ def _sweep(a: np.ndarray, op, axis: int) -> np.ndarray:
     return np.moveaxis(a, 0, axis)
 
 
+FAR = 1 << 40  # beyond any height in steps: "no pin here"
+
+
+def _minorant(a: np.ndarray) -> np.ndarray:
+    """min over j of a_j + L * d1(i, j)."""
+    a = a.copy()
+    _sweep(a, np.minimum, 1)
+    return _sweep(a, np.minimum, 0)
+
+
+def _majorant(a: np.ndarray) -> np.ndarray:
+    """max over j of a_j - L * d1(i, j)."""
+    a = a.copy()
+    _sweep(a, np.maximum, 1)
+    return _sweep(a, np.maximum, 0)
+
+
+def cliff_mask(steps: np.ndarray) -> np.ndarray:
+    """Both ends of every 4-neighbour pair whose step does not fit a signed byte."""
+    m = np.zeros(steps.shape, dtype=bool)
+    dx = np.abs(np.diff(steps, axis=1)) > L
+    dy = np.abs(np.diff(steps, axis=0)) > L
+    m[:, 1:] |= dx
+    m[:, :-1] |= dx
+    m[1:, :] |= dy
+    m[:-1, :] |= dy
+    return m
+
+
 def limit(steps: np.ndarray) -> np.ndarray:
-    """Integer steps (int64 array) -> the closest array whose 4-neighbour differences are all within +-L."""
-    lo = steps.copy()  # greatest minorant: min over j of H_j + L * d1(i, j)
-    _sweep(lo, np.minimum, 1)
-    _sweep(lo, np.minimum, 0)
-    hi = steps.copy()  # least majorant: max over j of H_j - L * d1(i, j)
-    _sweep(hi, np.maximum, 1)
-    _sweep(hi, np.maximum, 0)
-    return (lo + hi) // 2
+    """Integer steps (int64 array) -> limited steps: every 4-neighbour difference within +-L, moved locally."""
+    pins = cliff_mask(steps)
+    if not pins.any():
+        return steps.copy()
+    m = (_minorant(steps) + _majorant(steps)) // 2
+    lo = _majorant(np.where(pins, m, -FAR))
+    hi = _minorant(np.where(pins, m, FAR))
+    return np.minimum(np.maximum(steps, lo), hi)
 
 
 def overflow_pairs(steps: np.ndarray) -> int:

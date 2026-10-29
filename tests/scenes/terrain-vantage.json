@@ -1,0 +1,11 @@
+{
+ "id": "terrain-vantage",
+ "status": "draft (2.W1): owed L4",
+ "checks": "2.W1 §a: a reader's look at 20 vantage stills finds no texture tiling flagged obvious; §b: views from the coast show the apron through haze with no hard edge",
+ "base": "the base save, ArgoniaWorld.esm and Argonia.esm loaded, Tropical Skyrim installed (its LTEX replacements)",
+ "step0": ["tgm, tcai (the camera only); weather fixed to clear, 12:00"],
+ "vantages": "20 cells chosen by the lane from the land-cover classes (one per common class, the six-layer quadrants, the cliff cell -19,58 and the limiter ramps at -58,-17) and 4 coastal views outward over the apron (N, S, E, W)",
+ "per_vantage": ["teleport to the vantage pos and heading", "wait for the cell and LOD to load", "take a still at the play camera"],
+ "reader": "the reader agent: tiling, banding at the 6-layer limit, seams, a hard apron edge, any Nordic or snow texture",
+ "fails_if": "a still flagged obvious; snow or a vanilla Nordic ground texture visible"
+}
