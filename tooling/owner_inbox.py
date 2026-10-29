@@ -152,7 +152,7 @@ def hook():
     """Claude Code PostToolUse hook: remind the working agent of the owner's new words (throttled, never fails)."""
     stamp = READ_MARK.parent / "inbox-hook-checked"
     try:
-        if stamp.exists() and time.time() - stamp.stat().st_mtime < 240:
+        if stamp.exists() and time.time() - stamp.stat().st_mtime < 60:
             return
         stamp.parent.mkdir(parents=True, exist_ok=True)
         stamp.touch()
