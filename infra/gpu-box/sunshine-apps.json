@@ -11,12 +11,12 @@
         }
       ],
       "image-path": "C:\\argonia\\cards\\skyrim.png",
-      "cmd": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\combat-mode.ps1 play-vanilla -Wait",
+      "cmd": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\stack.ps1 play-vanilla -Wait",
       "auto-detach": false,
       "wait-all": true
     },
     {
-      "name": "Skyrim (souls-like mods)",
+      "name": "Skyrim (Argonia stack)",
       "prep-cmd": [
         {
           "do": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\sunshine-prep.ps1",
@@ -25,7 +25,7 @@
         }
       ],
       "image-path": "C:\\argonia\\cards\\skyrim-souls.png",
-      "cmd": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\combat-mode.ps1 play-modded -Wait",
+      "cmd": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\stack.ps1 play-modded -Wait",
       "auto-detach": false,
       "wait-all": true
     }

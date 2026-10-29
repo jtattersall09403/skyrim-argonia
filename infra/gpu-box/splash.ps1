@@ -1,5 +1,5 @@
 # A black full-screen "Starting Skyrim..." cover while the game launches, so the stream never shows the Windows
-# desktop first (owner, 2026-10-29). Closes when Skyrim's window appears, or after 90 s. Started by combat-mode.ps1.
+# desktop first (owner, 2026-10-29). Closes when Skyrim's window appears, or after 90 s. Started by stack.ps1.
 Add-Type -AssemblyName System.Windows.Forms, System.Drawing
 $f = New-Object System.Windows.Forms.Form
 $f.FormBorderStyle = 'None'; $f.WindowState = 'Maximized'; $f.TopMost = $true; $f.ShowInTaskbar = $false

@@ -4,7 +4,7 @@ on nintendo switch", by position; Skyrim's own menu, journal and wait kept on sp
 
 Reads Skyrim's own PC controlmap from the player's `Skyrim - Interface.bsa` (an uncompressed v105 archive) and
 writes it with the gameplay gamepad column changed, for `C:\argonia\controls\controlmap.txt` on the game machine;
-`combat-mode.ps1 on` lays it loose in Data, which Skyrim reads over its archive. Keyboard, mouse and menu bindings are untouched. Neither the archive nor
+`stack.ps1 on` lays it loose in Data, which Skyrim reads over its archive. Keyboard, mouse and menu bindings are untouched. Neither the archive nor
 the output is committed (decision 0003).
 
     controlmap.py <Skyrim - Interface.bsa> <controlmap.txt>
@@ -18,9 +18,11 @@ START, BACK, LS, RS, LB, RB = 0x0010, 0x0020, 0x0040, 0x0080, 0x0100, 0x0200
 A, B, X, Y, LT, RT = 0x1000, 0x2000, 0x4000, 0x8000, 0x0009, 0x000A
 
 GAMEPLAY = {
-    "Right Attack/Block": [RB],       # R1 light (hold for heavy); R2 is One Click Power Attack's heavy (code 281)
+    # R1 light (hold for heavy). R2 also sits here because One Click Power Attack reads its key (281, RT) only
+    # inside the attack handler, which sees only buttons bound to an attack: unbound, RT never fired (0.2 §c)
+    "Right Attack/Block": [RB, RT],
     "Left Attack/Block": [LB, LT],    # L1 block; L1/L2 + R1 bashes, which Elden Parry turns into a parry
-    "Sprint": [B],                    # the right button: tap rolls (Dodge Framework), hold runs
+    "Sprint": [B],                    # the right button: a tap rolls (TK Dodge's sprint-key dodge), a hold runs
     "Activate": [A],                  # the bottom button: interact
     "Jump": [Y],                      # DS1 jumps from a run; Skyrim needs its own button: the top one
     "Ready Weapon": [X],              # DS1's use-item position; attacking draws the weapon anyway
@@ -31,7 +33,7 @@ GAMEPLAY = {
     "Favorites": [DPAD_UP],
     "Hotkey1": [DPAD_LEFT],           # DS1 switches the left and right weapons here
     "Hotkey2": [DPAD_RIGHT],
-    "Toggle POV": [RS],               # TDM: a tap locks on (DS1's R3), a hold changes the view
+    "Toggle POV": [],                 # R3 is TDM's lock-on (its own hotkey, 273); the view stays third person
     "Sneak": [LS],
 }
 

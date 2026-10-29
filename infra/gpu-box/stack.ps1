@@ -1,18 +1,21 @@
-# Switch the game machine's Skyrim between vanilla and the 0.0 combat-test mods (§d), and launch it.
-#   combat-mode.ps1 build          merge the staged mods (C:\argonia\MO2\mods, list order) into C:\argonia\combat-overlay
-#   combat-mode.ps1 on|off         off: Data back to the vanilla install exactly (every file not in
-#                                  vanilla-data-files.txt removed, Plugins.txt cleared); on: off, then the overlay
-#   combat-mode.ps1 pandora        with the overlay on, run Pandora and add its behaviour output to the overlay
-#   combat-mode.ps1 play-vanilla | play-modded [-Wait]   switch, then launch (the owner's desktop shortcuts);
-#                                  -Wait stays until Skyrim exits, so Sunshine knows when the game is open
-# Replaces MO2 for this throwaway test: MO2 2.5 would not take a scripted portable instance unattended.
+# The Argonia profile on the game machine (chunk 0.2 §b), laid over Data and taken off exactly. stack.py stages and
+# pushes C:\argonia\MO2\mods\<id>\ and the profile; this script does the machine's half.
+#   stack.ps1 off                  Data back to the vanilla install exactly (every file not in vanilla-data-files.txt
+#                                  removed, Plugins.txt cleared)
+#   stack.ps1 on                   off, then every mod in the profile's modlist hard-linked into Data, lowest priority
+#                                  first (a later mod's file replaces an earlier one), the controlmap, Plugins.txt
+#   stack.ps1 pandora              on, Pandora run on that Data into the pandora-output mod, then on again (desktop session)
+#   stack.ps1 menu                 launch through SKSE, wait for the main menu, keep a still, print SKSE's plugin lines
+#   stack.ps1 verify               every laid file's hash against installed.json
+#   stack.ps1 play-vanilla | play-modded [-Wait]   switch, then launch (the owner's stream cards)
 param([Parameter(Mandatory)][string]$Cmd, [switch]$Wait)
 $ErrorActionPreference = 'Stop'
 $Game = 'C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition'
 $Data = "$Game\Data"
 $Root = 'C:\argonia'
-$Overlay = "$Root\combat-overlay"
-$State = "$Root\combat-state"
+$Mo2 = "$Root\MO2"
+$Profile = "$Mo2\profiles\Argonia"
+$State = "$Root\stack-state"
 $Prefs = "$env:LOCALAPPDATA\Skyrim Special Edition"
 New-Item -ItemType Directory -Force $State, $Prefs | Out-Null
 
@@ -60,30 +63,37 @@ public static class Fg { [DllImport("user32.dll")] public static extern bool Set
 }
 
 switch ($Cmd) {
-  'build' {
-    $order = Get-Content "$Root\MO2\profiles\Default\modlist.txt" | ? { $_ -like '+*' } | % { $_.Substring(1) }
-    [array]::Reverse($order)  # modlist.txt lists the highest priority first; copy lowest first
-    Remove-Item $Overlay -Recurse -Force -EA SilentlyContinue
-    foreach ($m in $order) {
-      $src = "$Root\MO2\mods\$m"
-      if (Test-Path $src) { robocopy $src $Overlay /E /NFL /NDL /NJH /NJS /NP | Out-Null }
-    }
-    Copy-Item "$Root\MO2\profiles\Default\plugins.txt" "$State\plugins-modded.txt" -Force
-    "overlay: $((Get-ChildItem $Overlay -Recurse -File).Count) files"
-  }
   'on' {
     if (Get-Process SkyrimSE -EA SilentlyContinue) { throw 'Skyrim is running; quit it first' }
     & $PSCommandPath off | Out-Null
-    robocopy $Overlay $Data /E /NFL /NDL /NJH /NJS /NP | Out-Null
-    # the gamepad in DS1's layout (controlmap.py makes it from the player's own Interface archive): loose in
-    # Data, which Skyrim reads over its archive; ControlMap_Custom.txt in My Games was not read (2026-10-29)
+    Add-Type -TypeDefinition 'using System; using System.Runtime.InteropServices; public static class HL {
+      [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+      public static extern bool CreateHardLink(string link, string target, IntPtr sa); }'
+    $order = @(Get-Content "$Profile\modlist.txt" | ? { $_ -like '+*' } | % { $_.Substring(1) })
+    [array]::Reverse($order)  # modlist.txt lists the highest priority first; lay the lowest first
+    $n = 0
+    foreach ($m in $order) {
+      $src = "$Mo2\mods\$m"
+      if (-not (Test-Path $src)) { continue }
+      foreach ($f in [IO.Directory]::EnumerateFiles($src, '*', 'AllDirectories')) {
+        $dst = "\\?\$Data" + $f.Substring($src.Length)
+        [void][IO.Directory]::CreateDirectory([IO.Path]::GetDirectoryName($dst))
+        if ([IO.File]::Exists($dst)) { [IO.File]::Delete($dst) }
+        if (-not [HL]::CreateHardLink($dst, "\\?\$f", [IntPtr]::Zero)) { throw "link failed: $f" }
+        $n++
+      }
+    }
+    # SKSE's loader and DLLs beside the game (inert unless launched through skse64_loader.exe)
+    if (Test-Path "$Mo2\root") { Copy-Item "$Mo2\root\*" $Game -Force }
+    # the gamepad layout (controlmap.py makes it from the player's own Interface archive): loose in Data, which
+    # Skyrim reads over its archive; ControlMap_Custom.txt in My Games was not read (2026-10-29)
     if (Test-Path "$Root\controls\controlmap.txt") {
       New-Item -ItemType Directory -Force "$Data\Interface\Controls\PC" | Out-Null
       Copy-Item "$Root\controls\controlmap.txt" "$Data\Interface\Controls\PC\controlmap.txt" -Force
     }
-    Copy-Item "$State\plugins-modded.txt" "$Prefs\Plugins.txt" -Force
+    Copy-Item "$Profile\plugins.txt" "$Prefs\Plugins.txt" -Force
     New-Item -ItemType File -Force "$State\mode-on" | Out-Null
-    "combat mods on: $((Get-ChildItem $Overlay -Recurse -File).Count) files"
+    "argonia profile on: $n files from $($order.Count) mods"
   }
   'off' {
     # Independent of any record: everything in Data that the vanilla install does not have goes (the game's own
@@ -100,27 +110,75 @@ switch ($Cmd) {
     Get-ChildItem $Data -Recurse -Directory | Sort { $_.FullName.Length } -Descending |
       ? { -not (Get-ChildItem -LiteralPath $_.FullName -Force) } | % { Remove-Item -LiteralPath ("\\?\" + $_.FullName) -Force }
     Remove-Item "$Prefs\Plugins.txt", "$State\mode-on" -Force -EA SilentlyContinue
-    "combat mods off (vanilla): $removed files removed"
+    "argonia profile off (vanilla): $removed files removed"
   }
   'pandora' {
     # Pandora (a GUI app: run in the desktop session) writes to the outputPath in its Settings.json and, with
     # --auto_run, patches the mods cached in <output>\Pandora_Engine\ActiveMods.json (code, active, priority).
-    & $PSCommandPath on | Out-Null   # always: Data must be the overlay just built, not an older 'on'
-    $out = "$Root\pandora-out"; Remove-Item $out -Recurse -Force -EA SilentlyContinue
+    $out = "$Mo2\mods\pandora-output"; Remove-Item $out -Recurse -Force -EA SilentlyContinue
+    & $PSCommandPath on | Out-Null   # Data must be this profile without an older output
     New-Item -ItemType Directory -Force "$out\Pandora_Engine" | Out-Null
-    $tool = "$Root\MO2\tools\Pandora"
+    $tool = "$Mo2\tools\pandora"
     $settings = @{ app = @{ theme = 0 }; games = @{ SkyrimSE = @{ gameDataPath = $Data; outputPath = $out } } }
     $settings | ConvertTo-Json -Depth 5 | Set-Content "$tool\Settings.json" -Encoding ASCII
     $codes = @(Get-ChildItem "$Data\Nemesis_Engine\mod", "$Data\Pandora_Engine\mod" -Directory -EA SilentlyContinue | % Name)
     $i = 0; $entries = foreach ($c in $codes) { [ordered]@{ code = $c; active = $true; priority = ++$i } }
     ConvertTo-Json @($entries) | Set-Content "$out\Pandora_Engine\ActiveMods.json" -Encoding ASCII
-    $p = Start-Process "$tool\Pandora Behaviour Engine+.exe" -WorkingDirectory $tool -ArgumentList "--tesv:`"$Game`" --auto_run --auto_close" -PassThru
-    if (-not $p.WaitForExit(240000)) { $p.Kill(); throw 'Pandora did not finish in 240 s' }
+    $exe = Get-ChildItem $tool -Recurse -Filter 'Pandora Behaviour Engine+.exe' | Select -First 1
+    $p = Start-Process $exe.FullName -WorkingDirectory $exe.DirectoryName -ArgumentList "--tesv:`"$Game`" --auto_run --auto_close" -PassThru
+    if (-not $p.WaitForExit(600000)) { $p.Kill(); throw 'Pandora did not finish in 600 s' }
     $n = (Get-ChildItem "$out\meshes" -Recurse -File -EA SilentlyContinue).Count
     if ($n -eq 0) { throw "Pandora wrote no behaviours (exit $($p.ExitCode)); see $out\Engine.log" }
-    robocopy $out $Overlay /E /XD Pandora_Engine /XF Engine.log /NFL /NDL /NJH /NJS /NP | Out-Null
+    Remove-Item "$out\Pandora_Engine" -Recurse -Force -EA SilentlyContinue
+    Move-Item "$out\Engine.log" "$Root\logs\pandora-engine.log" -Force -EA SilentlyContinue
     & $PSCommandPath on | Out-Null
     "pandora: $n behaviour files from $($codes.Count) mods ($($codes -join ', '))"
+  }
+  'menu' {
+    if (Get-Process SkyrimSE -EA SilentlyContinue) { Stop-Process -Name SkyrimSE -Force; Start-Sleep 3 }
+    if (-not (Test-Path "$State\mode-on")) { & $PSCommandPath on | Out-Null }
+    $skse = "$env:USERPROFILE\Documents\My Games\Skyrim Special Edition\SKSE"
+    Remove-Item "$skse\skse64.log" -EA SilentlyContinue
+    $crashes = @(Get-ChildItem "$skse\crash-*.log" -EA SilentlyContinue).Count
+    Set-GameWindow
+    $t0 = Get-Date
+    Start-Process "$Game\skse64_loader.exe" -WorkingDirectory $Game
+    $ok = $false
+    for ($i = 0; $i -lt 300; $i++) {
+      Start-Sleep 1
+      if ((Test-Path "$skse\skse64.log") -and (Select-String -Path "$skse\skse64.log" -Pattern 'dispatch message \(8\)' -Quiet)) { $ok = $true; break }
+      if ($i -gt 30 -and -not (Get-Process SkyrimSE -EA SilentlyContinue)) { break }
+    }
+    if ($ok) { Start-Sleep 15; & C:\argonia\infra\grab.ps1 C:\argonia\logs\menu.png | Out-Null }
+    $alive = [bool](Get-Process SkyrimSE -EA SilentlyContinue)
+    "data loaded after $([int]((Get-Date) - $t0).TotalSeconds) s; running: $alive"
+    Get-Content "$skse\skse64.log" -EA SilentlyContinue | ? { $_ -match '^plugin ' }
+    $new = @(Get-ChildItem "$skse\crash-*.log" -EA SilentlyContinue | Sort LastWriteTime)
+    if ($new.Count -gt $crashes) { "CRASH: $($new[-1].Name)"; Get-Content $new[-1].FullName -TotalCount 40 }
+    elseif ($ok -and $alive) { 'MAIN-MENU OK' }
+    if (-not $env:ARGONIA_KEEP) { Stop-Process -Name SkyrimSE -Force -EA SilentlyContinue }
+  }
+  'verify' {
+    $inst = Get-Content "$Mo2\installed.json" -Raw | ConvertFrom-Json
+    $bad = 0; $n = 0
+    foreach ($p in $inst.files.PSObject.Properties) {
+      if ($p.Name.StartsWith('..\')) { $f = "$Game\" + $p.Name.Substring(3) } else { $f = "\\?\$Data\" + $p.Name }
+      $n++
+      if (-not (Test-Path -LiteralPath $f)) { "missing: $($p.Name)"; $bad++; continue }
+      $h = (Get-FileHash -LiteralPath $f -Algorithm SHA256).Hash.ToLower()
+      if ($h -ne $p.Value[1]) { "differs: $($p.Name) ($($p.Value[0]))"; $bad++ }
+    }
+    $vanilla = @{}; Get-Content "$Root\infra\vanilla-data-files.txt" | % { $vanilla[$_.ToLower()] = 1 }
+    $pandora = @{}; if (Test-Path "$Mo2\mods\pandora-output") {
+      Get-ChildItem "$Mo2\mods\pandora-output" -Recurse -File | % { $pandora[$_.FullName.Substring("$Mo2\mods\pandora-output\".Length).ToLower()] = 1 } }
+    $extra = 0
+    foreach ($f in (cmd /c "dir /s /b /a-d `"\\?\$Data`"" 2>$null)) {
+      $rel = $f.Substring($f.IndexOf('\Data\') + 6).ToLower()
+      if ($vanilla[$rel] -or $pandora[$rel] -or $inst.files.$rel -or $rel.StartsWith('shadercache\') -or $rel.StartsWith('mcm\settings\') -or $rel -eq 'interface\controls\pc\controlmap.txt') { continue }
+      "unrecorded: $rel"; $extra++
+    }
+    "$n recorded files checked, $bad bad, $extra unrecorded, $($pandora.Count) Pandora outputs"
+    if ($bad -eq 0 -and $extra -eq 0) { 'VERIFY OK' }
   }
   { $_ -in 'play-vanilla', 'play-modded' } {
     # Already running (a reconnect, or the other card): bring it to the front; never start a second copy.

@@ -4,6 +4,7 @@
 #   run.sh ps '<powershell>'        run a command
 #   run.sh setup [stage]            copy infra/gpu-box/*.ps1 over and run setup.ps1, rebooting when it asks
 #   run.sh put <local> <remote>     copy a file or directory to the machine
+#   run.sh get <remote> <local>     copy a file or directory back
 #   run.sh desktop '<powershell>'   run in the logged-in desktop session (GUI apps, display settings); waits
 #   run.sh start | stop             start or stop the instance
 #   run.sh up                       start it whatever its state: waits out a stop still in progress first
@@ -45,6 +46,7 @@ Register-ScheduledTask -TaskName argonia-desktop-job -Action $a -User Administra
 Start-ScheduledTask argonia-desktop-job
 for ($i=0; $i -lt '"${DESKTOP_WAIT:-240}"' -and -not (Test-Path C:\argonia\logs\desktop-job.done); $i++) { Start-Sleep 1 }
 Get-Content $o -EA SilentlyContinue' ;;
+  get) scp "${SSH_OPTS[@]}" -r "Administrator@$(ip):$2" "$3" ;;
   put) scp "${SSH_OPTS[@]}" -r "$2" "Administrator@$(ip):$3" ;;
   setup)
     stage="${2:-all}"
@@ -72,6 +74,6 @@ Get-Content $o -EA SilentlyContinue' ;;
     done
     wait_ssh; echo "running at $(ip)" ;;
   start) aws ec2 start-instances --region $R --instance-ids "$(id)" >/dev/null; wait_ssh; echo "running at $(ip)" ;;
-  stop) aws ec2 stop-instances --region $R --instance-ids "$(id)" >/dev/null; echo stopping ;;
+  stop) "$here/saves.sh" backup || echo "saves backup failed" >&2; aws ec2 stop-instances --region $R --instance-ids "$(id)" >/dev/null; echo stopping ;;
   *) sed -n '2,8p' "$0"; exit 2 ;;
 esac
