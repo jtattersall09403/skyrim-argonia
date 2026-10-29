@@ -1,0 +1,575 @@
+{
+ "screen": "hud",
+ "doc": "Mock data for 1.2's L3 harness (HUD): one state per HUD element.",
+ "states": {
+  "play": {
+   "type": "hud.state",
+   "v": 1,
+   "body": {
+    "visible": true,
+    "bars": [
+     {
+      "kind": "health",
+      "current": 96.0,
+      "max": 120,
+      "shown": true
+     },
+     {
+      "kind": "stamina",
+      "current": 95,
+      "max": 110,
+      "shown": true
+     },
+     {
+      "kind": "magicka",
+      "current": 40,
+      "max": 80,
+      "shown": true
+     },
+     {
+      "kind": "breath",
+      "current": 20,
+      "max": 20,
+      "shown": false
+     },
+     {
+      "kind": "climb",
+      "current": 0,
+      "max": 60,
+      "shown": false
+     }
+    ],
+    "sneak": {
+     "sneaking": false,
+     "eye": 0
+    },
+    "effects": [],
+    "vastei": {
+     "carried": 120
+    },
+    "notices": []
+   }
+  },
+  "sneaking": {
+   "type": "hud.state",
+   "v": 1,
+   "body": {
+    "visible": true,
+    "bars": [
+     {
+      "kind": "health",
+      "current": 96.0,
+      "max": 120,
+      "shown": true
+     },
+     {
+      "kind": "stamina",
+      "current": 95,
+      "max": 110,
+      "shown": true
+     },
+     {
+      "kind": "magicka",
+      "current": 40,
+      "max": 80,
+      "shown": true
+     },
+     {
+      "kind": "breath",
+      "current": 20,
+      "max": 20,
+      "shown": false
+     },
+     {
+      "kind": "climb",
+      "current": 0,
+      "max": 60,
+      "shown": false
+     }
+    ],
+    "sneak": {
+     "sneaking": true,
+     "eye": 0.35
+    },
+    "effects": [],
+    "vastei": {
+     "carried": 120
+    },
+    "notices": []
+   }
+  },
+  "swimming": {
+   "type": "hud.state",
+   "v": 1,
+   "body": {
+    "visible": true,
+    "bars": [
+     {
+      "kind": "health",
+      "current": 96.0,
+      "max": 120,
+      "shown": true
+     },
+     {
+      "kind": "stamina",
+      "current": 95,
+      "max": 110,
+      "shown": true
+     },
+     {
+      "kind": "magicka",
+      "current": 40,
+      "max": 80,
+      "shown": true
+     },
+     {
+      "kind": "breath",
+      "current": 7,
+      "max": 20,
+      "shown": true
+     },
+     {
+      "kind": "climb",
+      "current": 0,
+      "max": 60,
+      "shown": false
+     }
+    ],
+    "sneak": {
+     "sneaking": false,
+     "eye": 0
+    },
+    "effects": [],
+    "vastei": {
+     "carried": 120
+    },
+    "notices": []
+   }
+  },
+  "climbing": {
+   "type": "hud.state",
+   "v": 1,
+   "body": {
+    "visible": true,
+    "bars": [
+     {
+      "kind": "health",
+      "current": 96.0,
+      "max": 120,
+      "shown": true
+     },
+     {
+      "kind": "stamina",
+      "current": 95,
+      "max": 110,
+      "shown": true
+     },
+     {
+      "kind": "magicka",
+      "current": 40,
+      "max": 80,
+      "shown": true
+     },
+     {
+      "kind": "breath",
+      "current": 20,
+      "max": 20,
+      "shown": false
+     },
+     {
+      "kind": "climb",
+      "current": 42,
+      "max": 60,
+      "shown": true
+     }
+    ],
+    "sneak": {
+     "sneaking": false,
+     "eye": 0
+    },
+    "effects": [],
+    "vastei": {
+     "carried": 120
+    },
+    "notices": []
+   }
+  },
+  "effects": {
+   "type": "hud.state",
+   "v": 1,
+   "body": {
+    "visible": true,
+    "bars": [
+     {
+      "kind": "health",
+      "current": 96.0,
+      "max": 120,
+      "shown": true
+     },
+     {
+      "kind": "stamina",
+      "current": 95,
+      "max": 110,
+      "shown": true
+     },
+     {
+      "kind": "magicka",
+      "current": 40,
+      "max": 80,
+      "shown": true
+     },
+     {
+      "kind": "breath",
+      "current": 20,
+      "max": 20,
+      "shown": false
+     },
+     {
+      "kind": "climb",
+      "current": 0,
+      "max": 60,
+      "shown": false
+     }
+    ],
+    "sneak": {
+     "sneaking": false,
+     "eye": 0
+    },
+    "effects": [
+     {
+      "id": "fx.1",
+      "label": "Fortify Long Blade",
+      "glyph": "status.fortify",
+      "polarity": "boon",
+      "remaining": 45.5
+     },
+     {
+      "id": "fx.2",
+      "label": "Swamp Fever",
+      "glyph": "status.disease",
+      "polarity": "bane"
+     }
+    ],
+    "vastei": {
+     "carried": 120
+    },
+    "notices": []
+   }
+  },
+  "vasteiGain": {
+   "type": "hud.state",
+   "v": 1,
+   "body": {
+    "visible": true,
+    "bars": [
+     {
+      "kind": "health",
+      "current": 96.0,
+      "max": 120,
+      "shown": true
+     },
+     {
+      "kind": "stamina",
+      "current": 95,
+      "max": 110,
+      "shown": true
+     },
+     {
+      "kind": "magicka",
+      "current": 40,
+      "max": 80,
+      "shown": true
+     },
+     {
+      "kind": "breath",
+      "current": 20,
+      "max": 20,
+      "shown": false
+     },
+     {
+      "kind": "climb",
+      "current": 0,
+      "max": 60,
+      "shown": false
+     }
+    ],
+    "sneak": {
+     "sneaking": false,
+     "eye": 0
+    },
+    "effects": [],
+    "vastei": {
+     "carried": 180,
+     "gained": 60
+    },
+    "notices": []
+   }
+  },
+  "banner": {
+   "type": "hud.state",
+   "v": 1,
+   "body": {
+    "visible": true,
+    "bars": [
+     {
+      "kind": "health",
+      "current": 96.0,
+      "max": 120,
+      "shown": true
+     },
+     {
+      "kind": "stamina",
+      "current": 95,
+      "max": 110,
+      "shown": true
+     },
+     {
+      "kind": "magicka",
+      "current": 40,
+      "max": 80,
+      "shown": true
+     },
+     {
+      "kind": "breath",
+      "current": 20,
+      "max": 20,
+      "shown": false
+     },
+     {
+      "kind": "climb",
+      "current": 0,
+      "max": 60,
+      "shown": false
+     }
+    ],
+    "sneak": {
+     "sneaking": false,
+     "eye": 0
+    },
+    "effects": [],
+    "vastei": {
+     "carried": 120
+    },
+    "notices": [],
+    "banner": {
+     "place": "place.imperial-fringe.claywater-station",
+     "name": "Claywater Station",
+     "region": "the Imperial fringe",
+     "firstVisit": true
+    }
+   }
+  },
+  "prompt": {
+   "type": "hud.state",
+   "v": 1,
+   "body": {
+    "visible": true,
+    "bars": [
+     {
+      "kind": "health",
+      "current": 96.0,
+      "max": 120,
+      "shown": true
+     },
+     {
+      "kind": "stamina",
+      "current": 95,
+      "max": 110,
+      "shown": true
+     },
+     {
+      "kind": "magicka",
+      "current": 40,
+      "max": 80,
+      "shown": true
+     },
+     {
+      "kind": "breath",
+      "current": 20,
+      "max": 20,
+      "shown": false
+     },
+     {
+      "kind": "climb",
+      "current": 0,
+      "max": 60,
+      "shown": false
+     }
+    ],
+    "sneak": {
+     "sneaking": false,
+     "eye": 0
+    },
+    "effects": [],
+    "vastei": {
+     "carried": 120
+    },
+    "notices": [],
+    "prompt": {
+     "verb": "Talk",
+     "target": "Signs-For-The-Cargo",
+     "inputs": [
+      {
+       "device": "keyboard",
+       "glyph": "key.E"
+      },
+      {
+       "device": "gamepad",
+       "glyph": "pad.A"
+      },
+      {
+       "device": "touch",
+       "glyph": "touch.tap"
+      }
+     ]
+    }
+   }
+  },
+  "notices": {
+   "type": "hud.state",
+   "v": 1,
+   "body": {
+    "visible": true,
+    "bars": [
+     {
+      "kind": "health",
+      "current": 96.0,
+      "max": 120,
+      "shown": true
+     },
+     {
+      "kind": "stamina",
+      "current": 95,
+      "max": 110,
+      "shown": true
+     },
+     {
+      "kind": "magicka",
+      "current": 40,
+      "max": 80,
+      "shown": true
+     },
+     {
+      "kind": "breath",
+      "current": 20,
+      "max": 20,
+      "shown": false
+     },
+     {
+      "kind": "climb",
+      "current": 0,
+      "max": 60,
+      "shown": false
+     }
+    ],
+    "sneak": {
+     "sneaking": false,
+     "eye": 0
+    },
+    "effects": [],
+    "vastei": {
+     "carried": 120
+    },
+    "notices": [
+     {
+      "id": "n.1",
+      "kind": "journal",
+      "text": "Your journal has been updated."
+     },
+     {
+      "id": "n.2",
+      "kind": "warning",
+      "text": "You cannot rest here."
+     }
+    ]
+   }
+  },
+  "hidden": {
+   "type": "hud.state",
+   "v": 1,
+   "body": {
+    "visible": false,
+    "bars": [
+     {
+      "kind": "health",
+      "current": 96.0,
+      "max": 120,
+      "shown": true
+     },
+     {
+      "kind": "stamina",
+      "current": 95,
+      "max": 110,
+      "shown": true
+     },
+     {
+      "kind": "magicka",
+      "current": 40,
+      "max": 80,
+      "shown": true
+     },
+     {
+      "kind": "breath",
+      "current": 20,
+      "max": 20,
+      "shown": false
+     },
+     {
+      "kind": "climb",
+      "current": 0,
+      "max": 60,
+      "shown": false
+     }
+    ],
+    "sneak": {
+     "sneaking": false,
+     "eye": 0
+    },
+    "effects": [],
+    "vastei": {
+     "carried": 120
+    },
+    "notices": []
+   }
+  },
+  "bars": {
+   "type": "hud.bars",
+   "v": 1,
+   "body": {
+    "bars": [
+     {
+      "kind": "health",
+      "current": 30.0,
+      "max": 120,
+      "shown": true
+     },
+     {
+      "kind": "stamina",
+      "current": 95,
+      "max": 110,
+      "shown": true
+     },
+     {
+      "kind": "magicka",
+      "current": 40,
+      "max": 80,
+      "shown": true
+     },
+     {
+      "kind": "breath",
+      "current": 20,
+      "max": 20,
+      "shown": false
+     },
+     {
+      "kind": "climb",
+      "current": 0,
+      "max": 60,
+      "shown": false
+     }
+    ]
+   }
+  }
+ },
+ "intents": {}
+}

@@ -7,6 +7,9 @@ here=$(cd "$(dirname "$0")" && pwd)
 # The generated core tables must match the world database (G11.2): regenerate in memory and diff.
 py=$(command -v "$HOME/.argonia/venv/bin/python" || command -v python3)
 (cd "$here/.." && "$py" -m tools.argonia_world.core_tables --check && "$py" -m tools.argonia_world.regions.season --check)
+# The schema twins (1.1 §b-§d: messages, family layouts, the router table) must match their sources: regenerate, diff.
+node=$(command -v node || echo "$HOME/.local/bin/node")
+(cd "$here/.." && "$node" --experimental-strip-types --disable-warning=ExperimentalWarning tools/schema_gen/gen.ts --check)
 export PATH="$PATH:$HOME/.argonia/buildtools/bin"
 if command -v cmake >/dev/null && command -v ninja >/dev/null; then
   cd "$here"

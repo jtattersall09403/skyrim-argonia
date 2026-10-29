@@ -1,0 +1,199 @@
+{
+ "screen": "chart",
+ "doc": "Mock data for 1.2's L3 harness (parchment chart). Claywater Station's id is the world db's; the other places' ids are mock and their positions rough.",
+ "states": {
+  "claywater": {
+   "type": "chart.state",
+   "v": 1,
+   "body": {
+    "worldspace": "argonia",
+    "sketch": "chart.sketch",
+    "revealed": [
+     {
+      "x": -3,
+      "y": -2
+     },
+     {
+      "x": -3,
+      "y": -1
+     },
+     {
+      "x": -3,
+      "y": 0
+     },
+     {
+      "x": -3,
+      "y": 1
+     },
+     {
+      "x": -3,
+      "y": 2
+     },
+     {
+      "x": -2,
+      "y": -2
+     },
+     {
+      "x": -2,
+      "y": -1
+     },
+     {
+      "x": -2,
+      "y": 0
+     },
+     {
+      "x": -2,
+      "y": 1
+     },
+     {
+      "x": -2,
+      "y": 2
+     },
+     {
+      "x": -1,
+      "y": -2
+     },
+     {
+      "x": -1,
+      "y": -1
+     },
+     {
+      "x": -1,
+      "y": 0
+     },
+     {
+      "x": -1,
+      "y": 1
+     },
+     {
+      "x": -1,
+      "y": 2
+     },
+     {
+      "x": 0,
+      "y": -2
+     },
+     {
+      "x": 0,
+      "y": -1
+     },
+     {
+      "x": 0,
+      "y": 0
+     },
+     {
+      "x": 0,
+      "y": 1
+     },
+     {
+      "x": 0,
+      "y": 2
+     },
+     {
+      "x": 1,
+      "y": -2
+     },
+     {
+      "x": 1,
+      "y": -1
+     },
+     {
+      "x": 1,
+      "y": 0
+     },
+     {
+      "x": 1,
+      "y": 1
+     },
+     {
+      "x": 1,
+      "y": 2
+     }
+    ],
+    "places": [
+     {
+      "id": "place.imperial-fringe.claywater-station",
+      "name": "Claywater Station",
+      "kind": "settlement",
+      "x": -0.5,
+      "y": 0.25,
+      "discovered": true
+     },
+     {
+      "id": "place.mock.gideon",
+      "name": "Gideon",
+      "kind": "settlement",
+      "x": 40,
+      "y": -12,
+      "discovered": false
+     },
+     {
+      "id": "place.mock.lilmoth",
+      "name": "Lilmoth",
+      "kind": "settlement",
+      "x": 55,
+      "y": -60,
+      "discovered": false
+     }
+    ],
+    "view": {
+     "centreX": -0.5,
+     "centreY": 0.25,
+     "zoom": 4
+    }
+   }
+  },
+  "unexplored": {
+   "type": "chart.state",
+   "v": 1,
+   "body": {
+    "worldspace": "argonia",
+    "sketch": "chart.sketch",
+    "revealed": [],
+    "places": [
+     {
+      "id": "place.mock.gideon",
+      "name": "Gideon",
+      "kind": "settlement",
+      "x": 40,
+      "y": -12,
+      "discovered": false
+     },
+     {
+      "id": "place.mock.lilmoth",
+      "name": "Lilmoth",
+      "kind": "settlement",
+      "x": 55,
+      "y": -60,
+      "discovered": false
+     }
+    ],
+    "view": {
+     "centreX": 30,
+     "centreY": -30,
+     "zoom": 1
+    }
+   }
+  }
+ },
+ "intents": {
+  "pan": {
+   "type": "chart.pan",
+   "v": 1,
+   "body": {
+    "view": {
+     "centreX": 3,
+     "centreY": -1.5,
+     "zoom": 2
+    }
+   }
+  },
+  "close": {
+   "type": "view.close",
+   "v": 1,
+   "body": {
+    "view": "chart"
+   }
+  }
+ }
+}

@@ -1,6 +1,6 @@
 # The one gate. `make check` runs every target in parallel and ends with one list of the reds.
 RED := .git/check-red
-PARTS := guard lint unit budget links world plugin-check skse immersion
+PARTS := guard lint unit budget links world plugin-check skse immersion ui
 # The build VM's pinned venv (infra/build-vm/toolchain.lock) when present: numpy, pytest, pyyaml.
 PY := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/python) python3)
 # A failing part records its name, then fails.
@@ -42,6 +42,11 @@ db:
 # skse/core and the bridge protocol: pure C++ unit tests built natively on the build VM (0.3 §b).
 skse:
 	@bash skse/check.sh $(FAIL)
+
+# The views' side of the message schema and its generator (1.1 §c): the TS validator's refusals, the fixtures.
+NODE := $(firstword $(shell command -v node) $(HOME)/.local/bin/node)
+ui:
+	@$(NODE) --experimental-strip-types --disable-warning=ExperimentalWarning --test --test-reporter=dot 'ui/schema/tests/*.test.ts' 'tools/schema_gen/tests/*.test.ts' $(FAIL)
 
 # The immersion inventory's counts (decision 0006 §2); binding from 2.17 with IMMERSION_BIND=1.
 immersion:

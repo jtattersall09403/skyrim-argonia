@@ -1,0 +1,501 @@
+{
+ "doc": "The menu router's registry (1.1 §d, native map P6): every vanilla surface Argonia takes over and what replaces it. One row per surface; a surface's hook is installed once by ArgoniaCore and each system registers one handler. replacement: view (our view, named in `by`), suppressed (never shown; `by` names the flow that runs instead, if any), restyled (the vanilla behaviour kept under our theme). `menu` is the CommonLibSSE-NG menu name (re-checked against the pinned CommonLib at S10a/S11a); `inventory` the immersion inventory row. Generated into skse/core/generated/argonia/core/router_table.h by tools/schema_gen; read by the 2.2 UI map and the immersion inventory.",
+ "kinds": [
+  "menu",
+  "dialogue",
+  "death",
+  "levelUp",
+  "hud",
+  "notification"
+ ],
+ "replacements": [
+  "view",
+  "suppressed",
+  "restyled"
+ ],
+ "hooks": [
+  {
+   "id": "menuOpenClose",
+   "mechanism": "MenuOpenCloseEvent sink; a blocked menu is closed through the UI message queue the frame it opens",
+   "chunk": "1.1 §d"
+  },
+  {
+   "id": "dialogueIntercept",
+   "mechanism": "P3: a player perk's Activate entry point (Run Immediately, Replace Default) on Argonia speakers calls ArgoniaCore's open-dialogue native; fallback the guarded activate-slot swap (route 6); Dialogue Menu blocked by menuOpenClose as the backstop",
+   "chunk": "1.3 §b"
+  },
+  {
+   "id": "deathIntercept",
+   "mechanism": "the Respawn - Soulslike pattern: the player kept essential, a TESEnterBleedoutEvent sink runs our respawn instead of the death camera and the load of the last save",
+   "chunk": "1.5"
+  },
+  {
+   "id": "progressionOff",
+   "mechanism": "P4: vanilla skill gain and character XP off by data (AVSK useMult 0, fXPPerSkillRank 0); the router only checks LevelUp Menu never opens, a hook only if S16a finds a gain path",
+   "chunk": "1.5"
+  },
+  {
+   "id": "hudElements",
+   "mechanism": "the vanilla HUD's elements hidden: bShowCompass and bShowQuestMarkers by setting, the rest through the HUD movie's element visibility (UNVERIFIED)",
+   "chunk": "1.2 §d"
+  },
+  {
+   "id": "notifications",
+   "mechanism": "the HUD's notification queue intercepted (quest, discovery, skill and one-line engine messages) and re-sent as our notices (mechanism UNVERIFIED)",
+   "chunk": "1.2 §d"
+  }
+ ],
+ "surfaces": [
+  {
+   "id": "dialogueMenu",
+   "kind": "dialogue",
+   "menu": "Dialogue Menu",
+   "inventory": "interface/dialoguemenu.swf",
+   "replacement": "view",
+   "by": "dialogue",
+   "hook": "dialogueIntercept",
+   "chunk": "1.3 §b",
+   "note": "never opens on an Argonia NPC (1.2 acceptance, S18a)"
+  },
+  {
+   "id": "journalMenu",
+   "kind": "menu",
+   "menu": "Journal Menu",
+   "inventory": "interface/quest_journal.swf",
+   "replacement": "view",
+   "by": "journal",
+   "hook": "menuOpenClose",
+   "chunk": "1.2 §c",
+   "note": "its System tab (save, settings, quit) needs a path from our views until the pause menu (3.1)"
+  },
+  {
+   "id": "mapMenu",
+   "kind": "menu",
+   "menu": "MapMenu",
+   "inventory": "interface/map.swf",
+   "replacement": "view",
+   "by": "chart",
+   "hook": "menuOpenClose",
+   "chunk": "1.2 §e",
+   "note": "the parchment chart; no player marker (C9)"
+  },
+  {
+   "id": "statsMenu",
+   "kind": "menu",
+   "menu": "StatsMenu",
+   "inventory": "interface/statsmenu.swf",
+   "replacement": "view",
+   "by": "stats",
+   "hook": "menuOpenClose",
+   "chunk": "1.3",
+   "note": "our sheet view; the perk constellation never shows (S15a)"
+  },
+  {
+   "id": "sleepWaitMenu",
+   "kind": "menu",
+   "menu": "Sleep/Wait Menu",
+   "inventory": "interface/sleepwaitmenu.swf",
+   "replacement": "view",
+   "by": "rest",
+   "hook": "menuOpenClose",
+   "chunk": "1.5",
+   "note": "rest and the sitting (G16.3); wait-only where rest is refused"
+  },
+  {
+   "id": "tutorialMenu",
+   "kind": "menu",
+   "menu": "Tutorial Menu",
+   "inventory": "interface/tutorialmenu.swf",
+   "replacement": "suppressed",
+   "by": "",
+   "hook": "menuOpenClose",
+   "chunk": "1.2 §a",
+   "note": "Skyrim's tutorials never show"
+  },
+  {
+   "id": "creationClubMenu",
+   "kind": "menu",
+   "menu": "Creation Club Menu",
+   "inventory": "interface/creationclubmenu.swf",
+   "replacement": "suppressed",
+   "by": "",
+   "hook": "menuOpenClose",
+   "chunk": "1.2 §a",
+   "note": "not part of Argonia"
+  },
+  {
+   "id": "modManagerMenu",
+   "kind": "menu",
+   "menu": "Mod Manager Menu",
+   "inventory": "interface/modmanager.swf",
+   "replacement": "suppressed",
+   "by": "",
+   "hook": "menuOpenClose",
+   "chunk": "1.2 §a",
+   "note": "not part of Argonia"
+  },
+  {
+   "id": "levelUpMenu",
+   "kind": "levelUp",
+   "menu": "LevelUp Menu",
+   "inventory": "interface/levelupmenu.swf",
+   "replacement": "suppressed",
+   "by": "",
+   "hook": "progressionOff",
+   "chunk": "1.5",
+   "note": "a sighting is a failure (S16c)"
+  },
+  {
+   "id": "levelUpNotice",
+   "kind": "levelUp",
+   "menu": "",
+   "inventory": "",
+   "replacement": "suppressed",
+   "by": "",
+   "hook": "notifications",
+   "chunk": "1.5",
+   "note": "the rest-and-meditate notice and the level meter"
+  },
+  {
+   "id": "playerDeath",
+   "kind": "death",
+   "menu": "",
+   "inventory": "",
+   "replacement": "suppressed",
+   "by": "respawn",
+   "hook": "deathIntercept",
+   "chunk": "1.5",
+   "note": "wake at the last rest, the vastei pile at the death spot (G17.1)"
+  },
+  {
+   "id": "hudMenu",
+   "kind": "hud",
+   "menu": "HUD Menu",
+   "inventory": "interface/hudmenu.swf",
+   "replacement": "restyled",
+   "by": "hud",
+   "hook": "hudElements",
+   "chunk": "1.2 §d",
+   "note": "the movie stays (crosshair, subtitles); its elements are the rows below"
+  },
+  {
+   "id": "hudCompass",
+   "kind": "hud",
+   "menu": "",
+   "inventory": "",
+   "replacement": "suppressed",
+   "by": "",
+   "hook": "hudElements",
+   "chunk": "1.2 §a",
+   "note": "no compass, ever"
+  },
+  {
+   "id": "hudQuestMarkers",
+   "kind": "hud",
+   "menu": "",
+   "inventory": "",
+   "replacement": "suppressed",
+   "by": "",
+   "hook": "hudElements",
+   "chunk": "1.2 §a",
+   "note": "no quest marker, ever"
+  },
+  {
+   "id": "hudBars",
+   "kind": "hud",
+   "menu": "",
+   "inventory": "",
+   "replacement": "view",
+   "by": "hud",
+   "hook": "hudElements",
+   "chunk": "1.2 §d",
+   "note": "health, stamina, magicka; breath and climb are ours alone"
+  },
+  {
+   "id": "hudSneakEye",
+   "kind": "hud",
+   "menu": "",
+   "inventory": "",
+   "replacement": "view",
+   "by": "hud",
+   "hook": "hudElements",
+   "chunk": "1.2 §d",
+   "note": ""
+  },
+  {
+   "id": "hudPrompt",
+   "kind": "hud",
+   "menu": "",
+   "inventory": "",
+   "replacement": "view",
+   "by": "hud",
+   "hook": "hudElements",
+   "chunk": "1.2 §d",
+   "note": "the activation prompt with input glyphs"
+  },
+  {
+   "id": "hudEnemyHealth",
+   "kind": "hud",
+   "menu": "",
+   "inventory": "",
+   "replacement": "suppressed",
+   "by": "",
+   "hook": "hudElements",
+   "chunk": "1.2 §d",
+   "note": "enemy and boss bars are ours from 2.7"
+  },
+  {
+   "id": "hudCrosshair",
+   "kind": "hud",
+   "menu": "",
+   "inventory": "",
+   "replacement": "restyled",
+   "by": "pelagiad",
+   "hook": "hudElements",
+   "chunk": "1.2 §a",
+   "note": ""
+  },
+  {
+   "id": "hudSubtitles",
+   "kind": "hud",
+   "menu": "",
+   "inventory": "",
+   "replacement": "restyled",
+   "by": "pelagiad",
+   "hook": "hudElements",
+   "chunk": "1.2 §a",
+   "note": "Pelagiad"
+  },
+  {
+   "id": "questNotice",
+   "kind": "notification",
+   "menu": "",
+   "inventory": "",
+   "replacement": "view",
+   "by": "hud",
+   "hook": "notifications",
+   "chunk": "1.2 §d",
+   "note": "quest started, updated, done: our journal notice"
+  },
+  {
+   "id": "discoveryNotice",
+   "kind": "notification",
+   "menu": "",
+   "inventory": "",
+   "replacement": "view",
+   "by": "hud",
+   "hook": "notifications",
+   "chunk": "1.2 §d",
+   "note": "location discovered: our place banner"
+  },
+  {
+   "id": "skillNotice",
+   "kind": "notification",
+   "menu": "",
+   "inventory": "",
+   "replacement": "suppressed",
+   "by": "",
+   "hook": "notifications",
+   "chunk": "1.3",
+   "note": "vanilla skill increases never happen (P4); ours are 1.3's"
+  },
+  {
+   "id": "engineMessage",
+   "kind": "notification",
+   "menu": "",
+   "inventory": "",
+   "replacement": "view",
+   "by": "hud",
+   "hook": "notifications",
+   "chunk": "1.2 §d",
+   "note": "one-line engine messages (you cannot sleep now) as our notices"
+  },
+  {
+   "id": "inventoryMenu",
+   "kind": "menu",
+   "menu": "InventoryMenu",
+   "inventory": "interface/inventorymenu.swf",
+   "replacement": "restyled",
+   "by": "dearDiary",
+   "hook": "menuOpenClose",
+   "chunk": "1.2 §a",
+   "note": "ours in 3.1 (paperdoll)"
+  },
+  {
+   "id": "magicMenu",
+   "kind": "menu",
+   "menu": "MagicMenu",
+   "inventory": "interface/magicmenu.swf",
+   "replacement": "restyled",
+   "by": "dearDiary",
+   "hook": "menuOpenClose",
+   "chunk": "1.2 §a",
+   "note": ""
+  },
+  {
+   "id": "containerMenu",
+   "kind": "menu",
+   "menu": "Container Menu",
+   "inventory": "interface/containermenu.swf",
+   "replacement": "restyled",
+   "by": "dearDiary",
+   "hook": "menuOpenClose",
+   "chunk": "1.2 §a",
+   "note": ""
+  },
+  {
+   "id": "barterMenu",
+   "kind": "menu",
+   "menu": "Barter Menu",
+   "inventory": "interface/bartermenu.swf",
+   "replacement": "restyled",
+   "by": "dearDiary",
+   "hook": "menuOpenClose",
+   "chunk": "1.2 §a",
+   "note": ""
+  },
+  {
+   "id": "giftMenu",
+   "kind": "menu",
+   "menu": "GiftMenu",
+   "inventory": "interface/giftmenu.swf",
+   "replacement": "restyled",
+   "by": "dearDiary",
+   "hook": "menuOpenClose",
+   "chunk": "1.2 §a",
+   "note": ""
+  },
+  {
+   "id": "bookMenu",
+   "kind": "menu",
+   "menu": "Book Menu",
+   "inventory": "interface/bookmenu.swf",
+   "replacement": "restyled",
+   "by": "dearDiary",
+   "hook": "menuOpenClose",
+   "chunk": "1.2 §a",
+   "note": ""
+  },
+  {
+   "id": "favoritesMenu",
+   "kind": "menu",
+   "menu": "FavoritesMenu",
+   "inventory": "interface/favoritesmenu.swf",
+   "replacement": "restyled",
+   "by": "dearDiary",
+   "hook": "menuOpenClose",
+   "chunk": "1.2 §a",
+   "note": ""
+  },
+  {
+   "id": "tweenMenu",
+   "kind": "menu",
+   "menu": "TweenMenu",
+   "inventory": "interface/tweenmenu.swf",
+   "replacement": "restyled",
+   "by": "dearDiary",
+   "hook": "menuOpenClose",
+   "chunk": "1.2 §a",
+   "note": "the pause hub until the Morrowind pause menu (2.2, 3.1)"
+  },
+  {
+   "id": "craftingMenu",
+   "kind": "menu",
+   "menu": "Crafting Menu",
+   "inventory": "interface/craftingmenu.swf",
+   "replacement": "restyled",
+   "by": "dearDiary",
+   "hook": "menuOpenClose",
+   "chunk": "1.2 §a",
+   "note": "2.10 decides"
+  },
+  {
+   "id": "lockpickingMenu",
+   "kind": "menu",
+   "menu": "Lockpicking Menu",
+   "inventory": "interface/lockpickingmenu.swf",
+   "replacement": "restyled",
+   "by": "dearDiary",
+   "hook": "menuOpenClose",
+   "chunk": "1.2 §a",
+   "note": "2.11 decides"
+  },
+  {
+   "id": "trainingMenu",
+   "kind": "menu",
+   "menu": "Training Menu",
+   "inventory": "interface/trainingmenu.swf",
+   "replacement": "restyled",
+   "by": "dearDiary",
+   "hook": "menuOpenClose",
+   "chunk": "1.2 §a",
+   "note": "2.6 decides"
+  },
+  {
+   "id": "messageBoxMenu",
+   "kind": "menu",
+   "menu": "MessageBoxMenu",
+   "inventory": "interface/messagebox.swf",
+   "replacement": "restyled",
+   "by": "dearDiary",
+   "hook": "menuOpenClose",
+   "chunk": "1.2 §a",
+   "note": ""
+  },
+  {
+   "id": "quantityMenu",
+   "kind": "menu",
+   "menu": "Quantity Menu",
+   "inventory": "",
+   "replacement": "restyled",
+   "by": "dearDiary",
+   "hook": "menuOpenClose",
+   "chunk": "1.2 §a",
+   "note": ""
+  },
+  {
+   "id": "loadingMenu",
+   "kind": "menu",
+   "menu": "Loading Menu",
+   "inventory": "interface/loadingmenu.swf",
+   "replacement": "restyled",
+   "by": "oblivionLoading",
+   "hook": "menuOpenClose",
+   "chunk": "1.2 §a",
+   "note": "the Oblivion-like Loading Menu (38708) in our palette"
+  },
+  {
+   "id": "mainMenu",
+   "kind": "menu",
+   "menu": "Main Menu",
+   "inventory": "interface/startmenu.swf",
+   "replacement": "restyled",
+   "by": "dearDiary",
+   "hook": "menuOpenClose",
+   "chunk": "1.2 §a",
+   "note": "the Argonia title replaces the logo"
+  },
+  {
+   "id": "raceSexMenu",
+   "kind": "menu",
+   "menu": "RaceSex Menu",
+   "inventory": "interface/racesex_menu.swf",
+   "replacement": "restyled",
+   "by": "dearDiary",
+   "hook": "menuOpenClose",
+   "chunk": "1.2 §a",
+   "note": "chargen is 3.2's"
+  },
+  {
+   "id": "console",
+   "kind": "menu",
+   "menu": "Console",
+   "inventory": "interface/console.swf",
+   "replacement": "restyled",
+   "by": "pelagiad",
+   "hook": "menuOpenClose",
+   "chunk": "1.2 §a",
+   "note": "the studio's hands use it; whether release disables it is 3.1's call"
+  }
+ ]
+}

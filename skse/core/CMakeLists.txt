@@ -4,7 +4,7 @@
 configure_file(include/argonia/core/version.h.in "${CMAKE_CURRENT_BINARY_DIR}/generated/argonia/core/version.h" @ONLY)
 
 set(ARGONIA_CORE_MODULES curve sheet effects carriers progression sitting rest death respawn conditions disposition
-    journal items families weather)
+    journal items families weather json router roundtrip)
 set(ARGONIA_CORE_SOURCES src/cosave.cpp)
 foreach(m IN LISTS ARGONIA_CORE_MODULES)
   list(APPEND ARGONIA_CORE_SOURCES src/${m}.cpp)
@@ -14,8 +14,8 @@ add_library(argonia_core STATIC ${ARGONIA_CORE_SOURCES})
 target_include_directories(argonia_core PUBLIC include generated "${CMAKE_CURRENT_BINARY_DIR}/generated")
 target_compile_options(argonia_core PRIVATE ${ARGONIA_WARNINGS})
 
-# One test executable per module (ctest core.<module>), plus the co-save contract.
-foreach(m IN ITEMS cosave ${ARGONIA_CORE_MODULES})
+# One test executable per module (ctest core.<module>), plus the co-save contract and the generated message twin.
+foreach(m IN ITEMS cosave messages ${ARGONIA_CORE_MODULES})
   add_executable(argonia_core_test_${m} tests/test_${m}.cpp)
   target_link_libraries(argonia_core_test_${m} PRIVATE argonia_core)
   target_include_directories(argonia_core_test_${m} PRIVATE tests)

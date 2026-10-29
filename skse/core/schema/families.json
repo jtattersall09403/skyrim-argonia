@@ -1,0 +1,57 @@
+{
+ "doc": "The payload layout of every co-save family (1.1 §b), per version. tools/schema_gen generates generated/argonia/core/family_layouts.h from it, and tests/test_roundtrip.cpp proves each registered family against it with roundtrip::check (save -> load -> compare on sampled payloads, truncation and padding refused, the reset state, each older version migrated or refused as `migrates` says). A family is added here in the commit that registers it; a version is appended, never edited. Item: {<kind>: name, min?, max?} with kind u8|u32|u64|i32|f64|str, or {repeat|list|flag: name, of: [items]} with `count` (repeat, list maximum) and `keyed` (a list whose first fields rise: a map). A bound or count may be a C++ expression over the generated tables.",
+ "families": [
+  {"id": "META", "module": "cosave", "include": "argonia/core/cosave.h", "versions": [
+   {"version": 1, "layout": [{"u32": "save_count"}, {"u32": "written_by"}]}
+  ]},
+  {"id": "STAT", "module": "progression", "include": "argonia/core/progression.h", "versions": [
+   {"version": 1, "layout": [
+    {"repeat": "attributes", "count": "gen::kAttrIdCount", "of": [{"f64": "value", "min": 0, "max": 255}]},
+    {"repeat": "skills", "count": "gen::kSkillIdCount", "of": [{"f64": "value", "min": 0, "max": 255}]},
+    {"i32": "level", "min": 1, "max": 255},
+    {"repeat": "classes", "count": "gen::kSkillIdCount", "of": [{"u8": "class", "max": "gen::kSkillClassCount - 1"}]},
+    {"u8": "specialisation", "max": "gen::kSpecialisationCount - 1"},
+    {"list": "favoured", "count": "gen::kAttrIdCount", "of": [{"u8": "attribute", "max": "gen::kAttrIdCount - 1"}]},
+    {"repeat": "xp", "count": "gen::kSkillIdCount", "of": [{"f64": "points", "min": 0, "max": 10000}]},
+    {"f64": "vastei", "min": 0, "max": 1e9},
+    {"i32": "credit", "min": 0, "max": 1000},
+    {"i32": "pending_levels", "min": 0, "max": 255},
+    {"f64": "athletics_s", "min": 0, "max": 1e6}
+   ]}
+  ]},
+  {"id": "DISP", "module": "disposition", "include": "argonia/core/disposition.h", "versions": [
+   {"version": 1, "layout": [
+    {"list": "people", "count": 100000, "keyed": true, "of": [
+     {"u32": "npc"}, {"i32": "disposition", "min": "gen::disposition::disposition_min", "max": "gen::disposition::disposition_max"}]}
+   ]}
+  ]},
+  {"id": "JRNL", "module": "journal", "include": "argonia/core/journal.h", "versions": [
+   {"version": 1, "layout": [
+    {"list": "entries", "count": 100000, "of": [
+     {"u32": "quest"}, {"u32": "entry"}, {"i32": "year"}, {"i32": "month", "min": 1, "max": 12},
+     {"i32": "day", "min": 1, "max": 31}, {"f64": "hour", "min": 0, "max": 24}, {"u8": "kind", "max": 2}]}
+   ]}
+  ]},
+  {"id": "ITEM", "module": "items", "include": "argonia/core/items.h", "versions": [
+   {"version": 1, "layout": [
+    {"list": "instances", "count": 100000, "keyed": true, "of": [
+     {"u64": "id"}, {"f64": "condition", "min": 0, "max": 50}, {"f64": "max", "min": 50, "max": 1000},
+     {"flag": "wear_per_use", "of": [{"f64": "per_use", "min": 0, "max": 100}]}]}
+   ]}
+  ]},
+  {"id": "DETH", "module": "death", "include": "argonia/core/death.h", "versions": [
+   {"version": 1, "layout": [
+    {"flag": "pile", "of": [{"f64": "x"}, {"f64": "y"}, {"f64": "z"}, {"u32": "cell"}, {"f64": "vastei", "min": 0, "max": 1e9}]},
+    {"flag": "wake", "of": [{"f64": "x"}, {"f64": "y"}, {"f64": "z"}, {"u32": "cell"}]}
+   ]}
+  ]},
+  {"id": "TEST", "module": "test", "test": true, "versions": [
+   {"version": 1, "migrates": true, "layout": [{"u32": "a"}]},
+   {"version": 2, "layout": [{"u32": "a"}, {"u32": "b"}]}
+  ]},
+  {"id": "TSTN", "module": "test", "test": true, "versions": [
+   {"version": 1, "migrates": false, "layout": [{"str": "name"}]},
+   {"version": 2, "layout": [{"str": "name"}, {"i32": "count"}]}
+  ]}
+ ]
+}

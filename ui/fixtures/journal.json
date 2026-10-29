@@ -1,0 +1,239 @@
+{
+ "screen": "journal",
+ "doc": "Mock data for 1.2's L3 harness (journal). Quest ids from the world db; entry text is mock, not a record.",
+ "states": {
+  "entries": {
+   "type": "journal.state",
+   "v": 1,
+   "body": {
+    "tab": "entries",
+    "page": 0,
+    "pageCount": 2,
+    "entries": [
+     {
+      "quest": "quest.local.lf83",
+      "questName": "The Well and the Landing",
+      "date": {
+       "year": 201,
+       "month": 8,
+       "day": 16,
+       "hour": 9.5,
+       "text": "16th of the Eighth Month, 201"
+      },
+      "kind": "progress",
+      "runs": [
+       {
+        "text": "Mock entry: the well-keeper and the poler at "
+       },
+       {
+        "text": "Claywater Station",
+        "topic": "topic.claywater-station"
+       },
+       {
+        "text": " each want the ford's fee."
+       }
+      ]
+     },
+     {
+      "quest": "quest.local.lf83",
+      "questName": "The Well and the Landing",
+      "date": {
+       "year": 201,
+       "month": 8,
+       "day": 17,
+       "hour": 14.25,
+       "text": "17th of the Eighth Month, 201"
+      },
+      "kind": "progress",
+      "runs": [
+       {
+        "text": "Mock entry: I should hear the landing's terms before I choose a side."
+       }
+      ]
+     }
+    ],
+    "quests": [
+     {
+      "id": "quest.local.lf83",
+      "name": "The Well and the Landing",
+      "status": "active",
+      "started": {
+       "year": 201,
+       "month": 8,
+       "day": 16,
+       "hour": 9.5,
+       "text": "16th of the Eighth Month, 201"
+      },
+      "directions": "Mock directions: the landing is on the east bank of the ford, below the station house."
+     },
+     {
+      "id": "quest.mock.done",
+      "name": "A Finished Errand",
+      "status": "complete",
+      "started": {
+       "year": 201,
+       "month": 8,
+       "day": 2,
+       "hour": 8,
+       "text": "2nd of the Eighth Month, 201"
+      }
+     }
+    ]
+   }
+  },
+  "filtered": {
+   "type": "journal.state",
+   "v": 1,
+   "body": {
+    "tab": "entries",
+    "page": 0,
+    "pageCount": 1,
+    "questFilter": "quest.local.lf83",
+    "entries": [
+     {
+      "quest": "quest.local.lf83",
+      "questName": "The Well and the Landing",
+      "date": {
+       "year": 201,
+       "month": 8,
+       "day": 16,
+       "hour": 9.5,
+       "text": "16th of the Eighth Month, 201"
+      },
+      "kind": "progress",
+      "runs": [
+       {
+        "text": "Mock entry: the well-keeper and the poler at "
+       },
+       {
+        "text": "Claywater Station",
+        "topic": "topic.claywater-station"
+       },
+       {
+        "text": " each want the ford's fee."
+       }
+      ]
+     },
+     {
+      "quest": "quest.local.lf83",
+      "questName": "The Well and the Landing",
+      "date": {
+       "year": 201,
+       "month": 8,
+       "day": 17,
+       "hour": 14.25,
+       "text": "17th of the Eighth Month, 201"
+      },
+      "kind": "progress",
+      "runs": [
+       {
+        "text": "Mock entry: I should hear the landing's terms before I choose a side."
+       }
+      ]
+     }
+    ],
+    "quests": [
+     {
+      "id": "quest.local.lf83",
+      "name": "The Well and the Landing",
+      "status": "active",
+      "started": {
+       "year": 201,
+       "month": 8,
+       "day": 16,
+       "hour": 9.5,
+       "text": "16th of the Eighth Month, 201"
+      },
+      "directions": "Mock directions: the landing is on the east bank of the ford, below the station house."
+     },
+     {
+      "id": "quest.mock.done",
+      "name": "A Finished Errand",
+      "status": "complete",
+      "started": {
+       "year": 201,
+       "month": 8,
+       "day": 2,
+       "hour": 8,
+       "text": "2nd of the Eighth Month, 201"
+      }
+     }
+    ]
+   }
+  },
+  "questIndex": {
+   "type": "journal.state",
+   "v": 1,
+   "body": {
+    "tab": "quests",
+    "page": 0,
+    "pageCount": 1,
+    "entries": [],
+    "quests": [
+     {
+      "id": "quest.local.lf83",
+      "name": "The Well and the Landing",
+      "status": "active",
+      "started": {
+       "year": 201,
+       "month": 8,
+       "day": 16,
+       "hour": 9.5,
+       "text": "16th of the Eighth Month, 201"
+      },
+      "directions": "Mock directions: the landing is on the east bank of the ford, below the station house."
+     },
+     {
+      "id": "quest.mock.done",
+      "name": "A Finished Errand",
+      "status": "complete",
+      "started": {
+       "year": 201,
+       "month": 8,
+       "day": 2,
+       "hour": 8,
+       "text": "2nd of the Eighth Month, 201"
+      }
+     }
+    ]
+   }
+  },
+  "empty": {
+   "type": "journal.state",
+   "v": 1,
+   "body": {
+    "tab": "entries",
+    "page": 0,
+    "pageCount": 1,
+    "entries": [],
+    "quests": []
+   }
+  }
+ },
+ "intents": {
+  "nextPage": {
+   "type": "journal.page",
+   "v": 1,
+   "body": {
+    "tab": "entries",
+    "page": 1
+   }
+  },
+  "pickQuest": {
+   "type": "journal.page",
+   "v": 1,
+   "body": {
+    "tab": "entries",
+    "page": 0,
+    "questFilter": "quest.local.lf83"
+   }
+  },
+  "close": {
+   "type": "view.close",
+   "v": 1,
+   "body": {
+    "view": "journal"
+   }
+  }
+ }
+}

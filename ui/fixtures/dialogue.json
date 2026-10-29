@@ -1,0 +1,1617 @@
+{
+ "screen": "dialogue",
+ "doc": "Mock data for 1.2's L3 harness (dialogue window). Lines and ids from the world db where they exist; 'mock' ids are not records.",
+ "states": {
+  "greeting": {
+   "type": "dialogue.state",
+   "v": 1,
+   "body": {
+    "speaker": {
+     "id": "npc.imperial-fringe.claywater-station.landing-s-poler",
+     "name": "Signs-For-The-Cargo"
+    },
+    "entries": [
+     {
+      "kind": "greeting",
+      "runs": [
+       {
+        "text": "Cart, or only feet? Water keep you."
+       }
+      ]
+     }
+    ],
+    "topics": [
+     {
+      "id": "topic.about-blackwood",
+      "label": "Where does the road go?"
+     },
+     {
+      "id": "topic.claywater-station",
+      "label": "Claywater Station"
+     },
+     {
+      "id": "topic.claywater-station-people",
+      "label": "the people of Claywater Station"
+     },
+     {
+      "id": "topic.claywater-station-work",
+      "label": "work at Claywater Station"
+     },
+     {
+      "id": "topic.claywater-landing-terms",
+      "label": "the landing's terms"
+     },
+     {
+      "id": "topic.little-advice",
+      "label": "little advice"
+     }
+    ],
+    "disposition": {
+     "value": 52,
+     "band": "mid"
+    },
+    "persuasion": {
+     "available": true,
+     "options": [
+      {
+       "id": "admire",
+       "label": "Admire",
+       "enabled": true
+      },
+      {
+       "id": "intimidate",
+       "label": "Intimidate",
+       "enabled": true
+      },
+      {
+       "id": "taunt",
+       "label": "Taunt",
+       "enabled": true
+      },
+      {
+       "id": "bribe10",
+       "label": "Bribe 10",
+       "enabled": true,
+       "cost": 10
+      },
+      {
+       "id": "bribe100",
+       "label": "Bribe 100",
+       "enabled": false,
+       "cost": 100
+      }
+     ]
+    },
+    "canLeave": true
+   }
+  },
+  "answer": {
+   "type": "dialogue.state",
+   "v": 1,
+   "body": {
+    "speaker": {
+     "id": "npc.imperial-fringe.claywater-station.landing-s-poler",
+     "name": "Signs-For-The-Cargo"
+    },
+    "entries": [
+     {
+      "kind": "greeting",
+      "runs": [
+       {
+        "text": "Cart, or only feet? Water keep you."
+       }
+      ]
+     },
+     {
+      "kind": "answer",
+      "heading": "Where does the road go?",
+      "runs": [
+       {
+        "text": "Blackwood",
+        "topic": "topic.about-blackwood"
+       },
+       {
+        "text": " is hill country, far over in the west. The road climbs up through it to Cyrodiil. I've never been up there. The hill people stay near the roots of their own tree, the carters tell me. They pay little mind to strangers. A riddle they do like."
+       }
+      ]
+     }
+    ],
+    "topics": [
+     {
+      "id": "topic.about-blackwood",
+      "label": "Where does the road go?"
+     },
+     {
+      "id": "topic.claywater-station",
+      "label": "Claywater Station"
+     },
+     {
+      "id": "topic.claywater-station-people",
+      "label": "the people of Claywater Station"
+     },
+     {
+      "id": "topic.claywater-station-work",
+      "label": "work at Claywater Station"
+     },
+     {
+      "id": "topic.claywater-landing-terms",
+      "label": "the landing's terms"
+     },
+     {
+      "id": "topic.little-advice",
+      "label": "little advice"
+     }
+    ],
+    "disposition": {
+     "value": 52,
+     "band": "mid"
+    },
+    "persuasion": {
+     "available": true,
+     "options": [
+      {
+       "id": "admire",
+       "label": "Admire",
+       "enabled": true
+      },
+      {
+       "id": "intimidate",
+       "label": "Intimidate",
+       "enabled": true
+      },
+      {
+       "id": "taunt",
+       "label": "Taunt",
+       "enabled": true
+      },
+      {
+       "id": "bribe10",
+       "label": "Bribe 10",
+       "enabled": true,
+       "cost": 10
+      },
+      {
+       "id": "bribe100",
+       "label": "Bribe 100",
+       "enabled": false,
+       "cost": 100
+      }
+     ]
+    },
+    "canLeave": true
+   }
+  },
+  "lowDisposition": {
+   "type": "dialogue.state",
+   "v": 1,
+   "body": {
+    "speaker": {
+     "id": "npc.imperial-fringe.claywater-station.landing-s-poler",
+     "name": "Signs-For-The-Cargo"
+    },
+    "entries": [
+     {
+      "kind": "greeting",
+      "runs": [
+       {
+        "text": "Feet or cart. Choose."
+       }
+      ]
+     }
+    ],
+    "topics": [
+     {
+      "id": "topic.about-blackwood",
+      "label": "Where does the road go?"
+     },
+     {
+      "id": "topic.claywater-station",
+      "label": "Claywater Station"
+     },
+     {
+      "id": "topic.claywater-station-people",
+      "label": "the people of Claywater Station"
+     },
+     {
+      "id": "topic.claywater-station-work",
+      "label": "work at Claywater Station"
+     },
+     {
+      "id": "topic.claywater-landing-terms",
+      "label": "the landing's terms"
+     },
+     {
+      "id": "topic.little-advice",
+      "label": "little advice"
+     }
+    ],
+    "disposition": {
+     "value": 18,
+     "band": "low"
+    },
+    "persuasion": {
+     "available": true,
+     "options": [
+      {
+       "id": "admire",
+       "label": "Admire",
+       "enabled": true
+      },
+      {
+       "id": "intimidate",
+       "label": "Intimidate",
+       "enabled": true
+      },
+      {
+       "id": "taunt",
+       "label": "Taunt",
+       "enabled": true
+      },
+      {
+       "id": "bribe10",
+       "label": "Bribe 10",
+       "enabled": true,
+       "cost": 10
+      },
+      {
+       "id": "bribe100",
+       "label": "Bribe 100",
+       "enabled": false,
+       "cost": 100
+      }
+     ]
+    },
+    "canLeave": true
+   }
+  },
+  "forced": {
+   "type": "dialogue.state",
+   "v": 1,
+   "body": {
+    "speaker": {
+     "id": "npc.imperial-fringe.claywater-station.landing-s-poler",
+     "name": "Signs-For-The-Cargo"
+    },
+    "entries": [
+     {
+      "kind": "greeting",
+      "runs": [
+       {
+        "text": "Cart, or only feet? Water keep you."
+       }
+      ]
+     }
+    ],
+    "topics": [
+     {
+      "id": "topic.about-blackwood",
+      "label": "Where does the road go?"
+     },
+     {
+      "id": "topic.claywater-station",
+      "label": "Claywater Station"
+     },
+     {
+      "id": "topic.claywater-station-people",
+      "label": "the people of Claywater Station"
+     },
+     {
+      "id": "topic.claywater-station-work",
+      "label": "work at Claywater Station"
+     },
+     {
+      "id": "topic.claywater-landing-terms",
+      "label": "the landing's terms"
+     },
+     {
+      "id": "topic.little-advice",
+      "label": "little advice"
+     }
+    ],
+    "disposition": {
+     "value": 52,
+     "band": "mid"
+    },
+    "persuasion": {
+     "available": false,
+     "options": []
+    },
+    "canLeave": false
+   }
+  },
+  "threeHundredTopics": {
+   "type": "dialogue.state",
+   "v": 1,
+   "body": {
+    "speaker": {
+     "id": "npc.imperial-fringe.claywater-station.landing-s-poler",
+     "name": "Signs-For-The-Cargo"
+    },
+    "entries": [
+     {
+      "kind": "greeting",
+      "runs": [
+       {
+        "text": "Cart, or only feet? Water keep you."
+       }
+      ]
+     }
+    ],
+    "topics": [
+     {
+      "id": "topic.mock-000",
+      "label": "mock topic 000"
+     },
+     {
+      "id": "topic.mock-001",
+      "label": "mock topic 001"
+     },
+     {
+      "id": "topic.mock-002",
+      "label": "mock topic 002"
+     },
+     {
+      "id": "topic.mock-003",
+      "label": "mock topic 003"
+     },
+     {
+      "id": "topic.mock-004",
+      "label": "mock topic 004"
+     },
+     {
+      "id": "topic.mock-005",
+      "label": "mock topic 005"
+     },
+     {
+      "id": "topic.mock-006",
+      "label": "mock topic 006"
+     },
+     {
+      "id": "topic.mock-007",
+      "label": "mock topic 007"
+     },
+     {
+      "id": "topic.mock-008",
+      "label": "mock topic 008"
+     },
+     {
+      "id": "topic.mock-009",
+      "label": "mock topic 009"
+     },
+     {
+      "id": "topic.mock-010",
+      "label": "mock topic 010"
+     },
+     {
+      "id": "topic.mock-011",
+      "label": "mock topic 011"
+     },
+     {
+      "id": "topic.mock-012",
+      "label": "mock topic 012"
+     },
+     {
+      "id": "topic.mock-013",
+      "label": "mock topic 013"
+     },
+     {
+      "id": "topic.mock-014",
+      "label": "mock topic 014"
+     },
+     {
+      "id": "topic.mock-015",
+      "label": "mock topic 015"
+     },
+     {
+      "id": "topic.mock-016",
+      "label": "mock topic 016"
+     },
+     {
+      "id": "topic.mock-017",
+      "label": "mock topic 017"
+     },
+     {
+      "id": "topic.mock-018",
+      "label": "mock topic 018"
+     },
+     {
+      "id": "topic.mock-019",
+      "label": "mock topic 019"
+     },
+     {
+      "id": "topic.mock-020",
+      "label": "mock topic 020"
+     },
+     {
+      "id": "topic.mock-021",
+      "label": "mock topic 021"
+     },
+     {
+      "id": "topic.mock-022",
+      "label": "mock topic 022"
+     },
+     {
+      "id": "topic.mock-023",
+      "label": "mock topic 023"
+     },
+     {
+      "id": "topic.mock-024",
+      "label": "mock topic 024"
+     },
+     {
+      "id": "topic.mock-025",
+      "label": "mock topic 025"
+     },
+     {
+      "id": "topic.mock-026",
+      "label": "mock topic 026"
+     },
+     {
+      "id": "topic.mock-027",
+      "label": "mock topic 027"
+     },
+     {
+      "id": "topic.mock-028",
+      "label": "mock topic 028"
+     },
+     {
+      "id": "topic.mock-029",
+      "label": "mock topic 029"
+     },
+     {
+      "id": "topic.mock-030",
+      "label": "mock topic 030"
+     },
+     {
+      "id": "topic.mock-031",
+      "label": "mock topic 031"
+     },
+     {
+      "id": "topic.mock-032",
+      "label": "mock topic 032"
+     },
+     {
+      "id": "topic.mock-033",
+      "label": "mock topic 033"
+     },
+     {
+      "id": "topic.mock-034",
+      "label": "mock topic 034"
+     },
+     {
+      "id": "topic.mock-035",
+      "label": "mock topic 035"
+     },
+     {
+      "id": "topic.mock-036",
+      "label": "mock topic 036"
+     },
+     {
+      "id": "topic.mock-037",
+      "label": "mock topic 037"
+     },
+     {
+      "id": "topic.mock-038",
+      "label": "mock topic 038"
+     },
+     {
+      "id": "topic.mock-039",
+      "label": "mock topic 039"
+     },
+     {
+      "id": "topic.mock-040",
+      "label": "mock topic 040"
+     },
+     {
+      "id": "topic.mock-041",
+      "label": "mock topic 041"
+     },
+     {
+      "id": "topic.mock-042",
+      "label": "mock topic 042"
+     },
+     {
+      "id": "topic.mock-043",
+      "label": "mock topic 043"
+     },
+     {
+      "id": "topic.mock-044",
+      "label": "mock topic 044"
+     },
+     {
+      "id": "topic.mock-045",
+      "label": "mock topic 045"
+     },
+     {
+      "id": "topic.mock-046",
+      "label": "mock topic 046"
+     },
+     {
+      "id": "topic.mock-047",
+      "label": "mock topic 047"
+     },
+     {
+      "id": "topic.mock-048",
+      "label": "mock topic 048"
+     },
+     {
+      "id": "topic.mock-049",
+      "label": "mock topic 049"
+     },
+     {
+      "id": "topic.mock-050",
+      "label": "mock topic 050"
+     },
+     {
+      "id": "topic.mock-051",
+      "label": "mock topic 051"
+     },
+     {
+      "id": "topic.mock-052",
+      "label": "mock topic 052"
+     },
+     {
+      "id": "topic.mock-053",
+      "label": "mock topic 053"
+     },
+     {
+      "id": "topic.mock-054",
+      "label": "mock topic 054"
+     },
+     {
+      "id": "topic.mock-055",
+      "label": "mock topic 055"
+     },
+     {
+      "id": "topic.mock-056",
+      "label": "mock topic 056"
+     },
+     {
+      "id": "topic.mock-057",
+      "label": "mock topic 057"
+     },
+     {
+      "id": "topic.mock-058",
+      "label": "mock topic 058"
+     },
+     {
+      "id": "topic.mock-059",
+      "label": "mock topic 059"
+     },
+     {
+      "id": "topic.mock-060",
+      "label": "mock topic 060"
+     },
+     {
+      "id": "topic.mock-061",
+      "label": "mock topic 061"
+     },
+     {
+      "id": "topic.mock-062",
+      "label": "mock topic 062"
+     },
+     {
+      "id": "topic.mock-063",
+      "label": "mock topic 063"
+     },
+     {
+      "id": "topic.mock-064",
+      "label": "mock topic 064"
+     },
+     {
+      "id": "topic.mock-065",
+      "label": "mock topic 065"
+     },
+     {
+      "id": "topic.mock-066",
+      "label": "mock topic 066"
+     },
+     {
+      "id": "topic.mock-067",
+      "label": "mock topic 067"
+     },
+     {
+      "id": "topic.mock-068",
+      "label": "mock topic 068"
+     },
+     {
+      "id": "topic.mock-069",
+      "label": "mock topic 069"
+     },
+     {
+      "id": "topic.mock-070",
+      "label": "mock topic 070"
+     },
+     {
+      "id": "topic.mock-071",
+      "label": "mock topic 071"
+     },
+     {
+      "id": "topic.mock-072",
+      "label": "mock topic 072"
+     },
+     {
+      "id": "topic.mock-073",
+      "label": "mock topic 073"
+     },
+     {
+      "id": "topic.mock-074",
+      "label": "mock topic 074"
+     },
+     {
+      "id": "topic.mock-075",
+      "label": "mock topic 075"
+     },
+     {
+      "id": "topic.mock-076",
+      "label": "mock topic 076"
+     },
+     {
+      "id": "topic.mock-077",
+      "label": "mock topic 077"
+     },
+     {
+      "id": "topic.mock-078",
+      "label": "mock topic 078"
+     },
+     {
+      "id": "topic.mock-079",
+      "label": "mock topic 079"
+     },
+     {
+      "id": "topic.mock-080",
+      "label": "mock topic 080"
+     },
+     {
+      "id": "topic.mock-081",
+      "label": "mock topic 081"
+     },
+     {
+      "id": "topic.mock-082",
+      "label": "mock topic 082"
+     },
+     {
+      "id": "topic.mock-083",
+      "label": "mock topic 083"
+     },
+     {
+      "id": "topic.mock-084",
+      "label": "mock topic 084"
+     },
+     {
+      "id": "topic.mock-085",
+      "label": "mock topic 085"
+     },
+     {
+      "id": "topic.mock-086",
+      "label": "mock topic 086"
+     },
+     {
+      "id": "topic.mock-087",
+      "label": "mock topic 087"
+     },
+     {
+      "id": "topic.mock-088",
+      "label": "mock topic 088"
+     },
+     {
+      "id": "topic.mock-089",
+      "label": "mock topic 089"
+     },
+     {
+      "id": "topic.mock-090",
+      "label": "mock topic 090"
+     },
+     {
+      "id": "topic.mock-091",
+      "label": "mock topic 091"
+     },
+     {
+      "id": "topic.mock-092",
+      "label": "mock topic 092"
+     },
+     {
+      "id": "topic.mock-093",
+      "label": "mock topic 093"
+     },
+     {
+      "id": "topic.mock-094",
+      "label": "mock topic 094"
+     },
+     {
+      "id": "topic.mock-095",
+      "label": "mock topic 095"
+     },
+     {
+      "id": "topic.mock-096",
+      "label": "mock topic 096"
+     },
+     {
+      "id": "topic.mock-097",
+      "label": "mock topic 097"
+     },
+     {
+      "id": "topic.mock-098",
+      "label": "mock topic 098"
+     },
+     {
+      "id": "topic.mock-099",
+      "label": "mock topic 099"
+     },
+     {
+      "id": "topic.mock-100",
+      "label": "mock topic 100"
+     },
+     {
+      "id": "topic.mock-101",
+      "label": "mock topic 101"
+     },
+     {
+      "id": "topic.mock-102",
+      "label": "mock topic 102"
+     },
+     {
+      "id": "topic.mock-103",
+      "label": "mock topic 103"
+     },
+     {
+      "id": "topic.mock-104",
+      "label": "mock topic 104"
+     },
+     {
+      "id": "topic.mock-105",
+      "label": "mock topic 105"
+     },
+     {
+      "id": "topic.mock-106",
+      "label": "mock topic 106"
+     },
+     {
+      "id": "topic.mock-107",
+      "label": "mock topic 107"
+     },
+     {
+      "id": "topic.mock-108",
+      "label": "mock topic 108"
+     },
+     {
+      "id": "topic.mock-109",
+      "label": "mock topic 109"
+     },
+     {
+      "id": "topic.mock-110",
+      "label": "mock topic 110"
+     },
+     {
+      "id": "topic.mock-111",
+      "label": "mock topic 111"
+     },
+     {
+      "id": "topic.mock-112",
+      "label": "mock topic 112"
+     },
+     {
+      "id": "topic.mock-113",
+      "label": "mock topic 113"
+     },
+     {
+      "id": "topic.mock-114",
+      "label": "mock topic 114"
+     },
+     {
+      "id": "topic.mock-115",
+      "label": "mock topic 115"
+     },
+     {
+      "id": "topic.mock-116",
+      "label": "mock topic 116"
+     },
+     {
+      "id": "topic.mock-117",
+      "label": "mock topic 117"
+     },
+     {
+      "id": "topic.mock-118",
+      "label": "mock topic 118"
+     },
+     {
+      "id": "topic.mock-119",
+      "label": "mock topic 119"
+     },
+     {
+      "id": "topic.mock-120",
+      "label": "mock topic 120"
+     },
+     {
+      "id": "topic.mock-121",
+      "label": "mock topic 121"
+     },
+     {
+      "id": "topic.mock-122",
+      "label": "mock topic 122"
+     },
+     {
+      "id": "topic.mock-123",
+      "label": "mock topic 123"
+     },
+     {
+      "id": "topic.mock-124",
+      "label": "mock topic 124"
+     },
+     {
+      "id": "topic.mock-125",
+      "label": "mock topic 125"
+     },
+     {
+      "id": "topic.mock-126",
+      "label": "mock topic 126"
+     },
+     {
+      "id": "topic.mock-127",
+      "label": "mock topic 127"
+     },
+     {
+      "id": "topic.mock-128",
+      "label": "mock topic 128"
+     },
+     {
+      "id": "topic.mock-129",
+      "label": "mock topic 129"
+     },
+     {
+      "id": "topic.mock-130",
+      "label": "mock topic 130"
+     },
+     {
+      "id": "topic.mock-131",
+      "label": "mock topic 131"
+     },
+     {
+      "id": "topic.mock-132",
+      "label": "mock topic 132"
+     },
+     {
+      "id": "topic.mock-133",
+      "label": "mock topic 133"
+     },
+     {
+      "id": "topic.mock-134",
+      "label": "mock topic 134"
+     },
+     {
+      "id": "topic.mock-135",
+      "label": "mock topic 135"
+     },
+     {
+      "id": "topic.mock-136",
+      "label": "mock topic 136"
+     },
+     {
+      "id": "topic.mock-137",
+      "label": "mock topic 137"
+     },
+     {
+      "id": "topic.mock-138",
+      "label": "mock topic 138"
+     },
+     {
+      "id": "topic.mock-139",
+      "label": "mock topic 139"
+     },
+     {
+      "id": "topic.mock-140",
+      "label": "mock topic 140"
+     },
+     {
+      "id": "topic.mock-141",
+      "label": "mock topic 141"
+     },
+     {
+      "id": "topic.mock-142",
+      "label": "mock topic 142"
+     },
+     {
+      "id": "topic.mock-143",
+      "label": "mock topic 143"
+     },
+     {
+      "id": "topic.mock-144",
+      "label": "mock topic 144"
+     },
+     {
+      "id": "topic.mock-145",
+      "label": "mock topic 145"
+     },
+     {
+      "id": "topic.mock-146",
+      "label": "mock topic 146"
+     },
+     {
+      "id": "topic.mock-147",
+      "label": "mock topic 147"
+     },
+     {
+      "id": "topic.mock-148",
+      "label": "mock topic 148"
+     },
+     {
+      "id": "topic.mock-149",
+      "label": "mock topic 149"
+     },
+     {
+      "id": "topic.mock-150",
+      "label": "mock topic 150"
+     },
+     {
+      "id": "topic.mock-151",
+      "label": "mock topic 151"
+     },
+     {
+      "id": "topic.mock-152",
+      "label": "mock topic 152"
+     },
+     {
+      "id": "topic.mock-153",
+      "label": "mock topic 153"
+     },
+     {
+      "id": "topic.mock-154",
+      "label": "mock topic 154"
+     },
+     {
+      "id": "topic.mock-155",
+      "label": "mock topic 155"
+     },
+     {
+      "id": "topic.mock-156",
+      "label": "mock topic 156"
+     },
+     {
+      "id": "topic.mock-157",
+      "label": "mock topic 157"
+     },
+     {
+      "id": "topic.mock-158",
+      "label": "mock topic 158"
+     },
+     {
+      "id": "topic.mock-159",
+      "label": "mock topic 159"
+     },
+     {
+      "id": "topic.mock-160",
+      "label": "mock topic 160"
+     },
+     {
+      "id": "topic.mock-161",
+      "label": "mock topic 161"
+     },
+     {
+      "id": "topic.mock-162",
+      "label": "mock topic 162"
+     },
+     {
+      "id": "topic.mock-163",
+      "label": "mock topic 163"
+     },
+     {
+      "id": "topic.mock-164",
+      "label": "mock topic 164"
+     },
+     {
+      "id": "topic.mock-165",
+      "label": "mock topic 165"
+     },
+     {
+      "id": "topic.mock-166",
+      "label": "mock topic 166"
+     },
+     {
+      "id": "topic.mock-167",
+      "label": "mock topic 167"
+     },
+     {
+      "id": "topic.mock-168",
+      "label": "mock topic 168"
+     },
+     {
+      "id": "topic.mock-169",
+      "label": "mock topic 169"
+     },
+     {
+      "id": "topic.mock-170",
+      "label": "mock topic 170"
+     },
+     {
+      "id": "topic.mock-171",
+      "label": "mock topic 171"
+     },
+     {
+      "id": "topic.mock-172",
+      "label": "mock topic 172"
+     },
+     {
+      "id": "topic.mock-173",
+      "label": "mock topic 173"
+     },
+     {
+      "id": "topic.mock-174",
+      "label": "mock topic 174"
+     },
+     {
+      "id": "topic.mock-175",
+      "label": "mock topic 175"
+     },
+     {
+      "id": "topic.mock-176",
+      "label": "mock topic 176"
+     },
+     {
+      "id": "topic.mock-177",
+      "label": "mock topic 177"
+     },
+     {
+      "id": "topic.mock-178",
+      "label": "mock topic 178"
+     },
+     {
+      "id": "topic.mock-179",
+      "label": "mock topic 179"
+     },
+     {
+      "id": "topic.mock-180",
+      "label": "mock topic 180"
+     },
+     {
+      "id": "topic.mock-181",
+      "label": "mock topic 181"
+     },
+     {
+      "id": "topic.mock-182",
+      "label": "mock topic 182"
+     },
+     {
+      "id": "topic.mock-183",
+      "label": "mock topic 183"
+     },
+     {
+      "id": "topic.mock-184",
+      "label": "mock topic 184"
+     },
+     {
+      "id": "topic.mock-185",
+      "label": "mock topic 185"
+     },
+     {
+      "id": "topic.mock-186",
+      "label": "mock topic 186"
+     },
+     {
+      "id": "topic.mock-187",
+      "label": "mock topic 187"
+     },
+     {
+      "id": "topic.mock-188",
+      "label": "mock topic 188"
+     },
+     {
+      "id": "topic.mock-189",
+      "label": "mock topic 189"
+     },
+     {
+      "id": "topic.mock-190",
+      "label": "mock topic 190"
+     },
+     {
+      "id": "topic.mock-191",
+      "label": "mock topic 191"
+     },
+     {
+      "id": "topic.mock-192",
+      "label": "mock topic 192"
+     },
+     {
+      "id": "topic.mock-193",
+      "label": "mock topic 193"
+     },
+     {
+      "id": "topic.mock-194",
+      "label": "mock topic 194"
+     },
+     {
+      "id": "topic.mock-195",
+      "label": "mock topic 195"
+     },
+     {
+      "id": "topic.mock-196",
+      "label": "mock topic 196"
+     },
+     {
+      "id": "topic.mock-197",
+      "label": "mock topic 197"
+     },
+     {
+      "id": "topic.mock-198",
+      "label": "mock topic 198"
+     },
+     {
+      "id": "topic.mock-199",
+      "label": "mock topic 199"
+     },
+     {
+      "id": "topic.mock-200",
+      "label": "mock topic 200"
+     },
+     {
+      "id": "topic.mock-201",
+      "label": "mock topic 201"
+     },
+     {
+      "id": "topic.mock-202",
+      "label": "mock topic 202"
+     },
+     {
+      "id": "topic.mock-203",
+      "label": "mock topic 203"
+     },
+     {
+      "id": "topic.mock-204",
+      "label": "mock topic 204"
+     },
+     {
+      "id": "topic.mock-205",
+      "label": "mock topic 205"
+     },
+     {
+      "id": "topic.mock-206",
+      "label": "mock topic 206"
+     },
+     {
+      "id": "topic.mock-207",
+      "label": "mock topic 207"
+     },
+     {
+      "id": "topic.mock-208",
+      "label": "mock topic 208"
+     },
+     {
+      "id": "topic.mock-209",
+      "label": "mock topic 209"
+     },
+     {
+      "id": "topic.mock-210",
+      "label": "mock topic 210"
+     },
+     {
+      "id": "topic.mock-211",
+      "label": "mock topic 211"
+     },
+     {
+      "id": "topic.mock-212",
+      "label": "mock topic 212"
+     },
+     {
+      "id": "topic.mock-213",
+      "label": "mock topic 213"
+     },
+     {
+      "id": "topic.mock-214",
+      "label": "mock topic 214"
+     },
+     {
+      "id": "topic.mock-215",
+      "label": "mock topic 215"
+     },
+     {
+      "id": "topic.mock-216",
+      "label": "mock topic 216"
+     },
+     {
+      "id": "topic.mock-217",
+      "label": "mock topic 217"
+     },
+     {
+      "id": "topic.mock-218",
+      "label": "mock topic 218"
+     },
+     {
+      "id": "topic.mock-219",
+      "label": "mock topic 219"
+     },
+     {
+      "id": "topic.mock-220",
+      "label": "mock topic 220"
+     },
+     {
+      "id": "topic.mock-221",
+      "label": "mock topic 221"
+     },
+     {
+      "id": "topic.mock-222",
+      "label": "mock topic 222"
+     },
+     {
+      "id": "topic.mock-223",
+      "label": "mock topic 223"
+     },
+     {
+      "id": "topic.mock-224",
+      "label": "mock topic 224"
+     },
+     {
+      "id": "topic.mock-225",
+      "label": "mock topic 225"
+     },
+     {
+      "id": "topic.mock-226",
+      "label": "mock topic 226"
+     },
+     {
+      "id": "topic.mock-227",
+      "label": "mock topic 227"
+     },
+     {
+      "id": "topic.mock-228",
+      "label": "mock topic 228"
+     },
+     {
+      "id": "topic.mock-229",
+      "label": "mock topic 229"
+     },
+     {
+      "id": "topic.mock-230",
+      "label": "mock topic 230"
+     },
+     {
+      "id": "topic.mock-231",
+      "label": "mock topic 231"
+     },
+     {
+      "id": "topic.mock-232",
+      "label": "mock topic 232"
+     },
+     {
+      "id": "topic.mock-233",
+      "label": "mock topic 233"
+     },
+     {
+      "id": "topic.mock-234",
+      "label": "mock topic 234"
+     },
+     {
+      "id": "topic.mock-235",
+      "label": "mock topic 235"
+     },
+     {
+      "id": "topic.mock-236",
+      "label": "mock topic 236"
+     },
+     {
+      "id": "topic.mock-237",
+      "label": "mock topic 237"
+     },
+     {
+      "id": "topic.mock-238",
+      "label": "mock topic 238"
+     },
+     {
+      "id": "topic.mock-239",
+      "label": "mock topic 239"
+     },
+     {
+      "id": "topic.mock-240",
+      "label": "mock topic 240"
+     },
+     {
+      "id": "topic.mock-241",
+      "label": "mock topic 241"
+     },
+     {
+      "id": "topic.mock-242",
+      "label": "mock topic 242"
+     },
+     {
+      "id": "topic.mock-243",
+      "label": "mock topic 243"
+     },
+     {
+      "id": "topic.mock-244",
+      "label": "mock topic 244"
+     },
+     {
+      "id": "topic.mock-245",
+      "label": "mock topic 245"
+     },
+     {
+      "id": "topic.mock-246",
+      "label": "mock topic 246"
+     },
+     {
+      "id": "topic.mock-247",
+      "label": "mock topic 247"
+     },
+     {
+      "id": "topic.mock-248",
+      "label": "mock topic 248"
+     },
+     {
+      "id": "topic.mock-249",
+      "label": "mock topic 249"
+     },
+     {
+      "id": "topic.mock-250",
+      "label": "mock topic 250"
+     },
+     {
+      "id": "topic.mock-251",
+      "label": "mock topic 251"
+     },
+     {
+      "id": "topic.mock-252",
+      "label": "mock topic 252"
+     },
+     {
+      "id": "topic.mock-253",
+      "label": "mock topic 253"
+     },
+     {
+      "id": "topic.mock-254",
+      "label": "mock topic 254"
+     },
+     {
+      "id": "topic.mock-255",
+      "label": "mock topic 255"
+     },
+     {
+      "id": "topic.mock-256",
+      "label": "mock topic 256"
+     },
+     {
+      "id": "topic.mock-257",
+      "label": "mock topic 257"
+     },
+     {
+      "id": "topic.mock-258",
+      "label": "mock topic 258"
+     },
+     {
+      "id": "topic.mock-259",
+      "label": "mock topic 259"
+     },
+     {
+      "id": "topic.mock-260",
+      "label": "mock topic 260"
+     },
+     {
+      "id": "topic.mock-261",
+      "label": "mock topic 261"
+     },
+     {
+      "id": "topic.mock-262",
+      "label": "mock topic 262"
+     },
+     {
+      "id": "topic.mock-263",
+      "label": "mock topic 263"
+     },
+     {
+      "id": "topic.mock-264",
+      "label": "mock topic 264"
+     },
+     {
+      "id": "topic.mock-265",
+      "label": "mock topic 265"
+     },
+     {
+      "id": "topic.mock-266",
+      "label": "mock topic 266"
+     },
+     {
+      "id": "topic.mock-267",
+      "label": "mock topic 267"
+     },
+     {
+      "id": "topic.mock-268",
+      "label": "mock topic 268"
+     },
+     {
+      "id": "topic.mock-269",
+      "label": "mock topic 269"
+     },
+     {
+      "id": "topic.mock-270",
+      "label": "mock topic 270"
+     },
+     {
+      "id": "topic.mock-271",
+      "label": "mock topic 271"
+     },
+     {
+      "id": "topic.mock-272",
+      "label": "mock topic 272"
+     },
+     {
+      "id": "topic.mock-273",
+      "label": "mock topic 273"
+     },
+     {
+      "id": "topic.mock-274",
+      "label": "mock topic 274"
+     },
+     {
+      "id": "topic.mock-275",
+      "label": "mock topic 275"
+     },
+     {
+      "id": "topic.mock-276",
+      "label": "mock topic 276"
+     },
+     {
+      "id": "topic.mock-277",
+      "label": "mock topic 277"
+     },
+     {
+      "id": "topic.mock-278",
+      "label": "mock topic 278"
+     },
+     {
+      "id": "topic.mock-279",
+      "label": "mock topic 279"
+     },
+     {
+      "id": "topic.mock-280",
+      "label": "mock topic 280"
+     },
+     {
+      "id": "topic.mock-281",
+      "label": "mock topic 281"
+     },
+     {
+      "id": "topic.mock-282",
+      "label": "mock topic 282"
+     },
+     {
+      "id": "topic.mock-283",
+      "label": "mock topic 283"
+     },
+     {
+      "id": "topic.mock-284",
+      "label": "mock topic 284"
+     },
+     {
+      "id": "topic.mock-285",
+      "label": "mock topic 285"
+     },
+     {
+      "id": "topic.mock-286",
+      "label": "mock topic 286"
+     },
+     {
+      "id": "topic.mock-287",
+      "label": "mock topic 287"
+     },
+     {
+      "id": "topic.mock-288",
+      "label": "mock topic 288"
+     },
+     {
+      "id": "topic.mock-289",
+      "label": "mock topic 289"
+     },
+     {
+      "id": "topic.mock-290",
+      "label": "mock topic 290"
+     },
+     {
+      "id": "topic.mock-291",
+      "label": "mock topic 291"
+     },
+     {
+      "id": "topic.mock-292",
+      "label": "mock topic 292"
+     },
+     {
+      "id": "topic.mock-293",
+      "label": "mock topic 293"
+     },
+     {
+      "id": "topic.mock-294",
+      "label": "mock topic 294"
+     },
+     {
+      "id": "topic.mock-295",
+      "label": "mock topic 295"
+     },
+     {
+      "id": "topic.mock-296",
+      "label": "mock topic 296"
+     },
+     {
+      "id": "topic.mock-297",
+      "label": "mock topic 297"
+     },
+     {
+      "id": "topic.mock-298",
+      "label": "mock topic 298"
+     },
+     {
+      "id": "topic.mock-299",
+      "label": "mock topic 299"
+     }
+    ],
+    "disposition": {
+     "value": 52,
+     "band": "mid"
+    },
+    "persuasion": {
+     "available": true,
+     "options": [
+      {
+       "id": "admire",
+       "label": "Admire",
+       "enabled": true
+      },
+      {
+       "id": "intimidate",
+       "label": "Intimidate",
+       "enabled": true
+      },
+      {
+       "id": "taunt",
+       "label": "Taunt",
+       "enabled": true
+      },
+      {
+       "id": "bribe10",
+       "label": "Bribe 10",
+       "enabled": true,
+       "cost": 10
+      },
+      {
+       "id": "bribe100",
+       "label": "Bribe 100",
+       "enabled": false,
+       "cost": 100
+      }
+     ]
+    },
+    "canLeave": true
+   }
+  }
+ },
+ "intents": {
+  "topic": {
+   "type": "dialogue.topic",
+   "v": 1,
+   "body": {
+    "topic": "topic.claywater-station"
+   }
+  },
+  "keyword": {
+   "type": "dialogue.keyword",
+   "v": 1,
+   "body": {
+    "topic": "topic.about-blackwood"
+   }
+  },
+  "persuade": {
+   "type": "dialogue.persuade",
+   "v": 1,
+   "body": {
+    "option": "admire"
+   }
+  },
+  "goodbye": {
+   "type": "dialogue.goodbye",
+   "v": 1,
+   "body": {}
+  },
+  "close": {
+   "type": "view.close",
+   "v": 1,
+   "body": {
+    "view": "dialogue"
+   }
+  }
+ }
+}
