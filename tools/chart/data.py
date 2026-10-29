@@ -35,6 +35,9 @@ SEA = (33, 35)  # SEABED_SAND, OCEAN_FLOOR
 MARSH = (3, 4, 5, 7, 8, 11, 15)  # SCUM, BLACK_MUD, PUDDLE, MUCK, BC_MUD, MARSH_GRASS, SWAMP_GRASS
 FOREST = (10, 12, 19, 20, 21)  # MUD_LEAVES, UNDERGROWTH, JUNGLE, FOREST_FLOOR, LITTER
 ROCK = (23, 31, 34, 36, 37)  # BC_ROCK, MOUNTAIN_ROCK, PEBBLES, DIRT_CLIFF, SCREE
+# How wooded a cover class reads on the chart (0..1), for the tree crowns and stipple: we have no canopy raster, so
+# the forest floors are full wood, peat, moss and scrub half, the grasses a scatter.
+CANOPY = {c: 1.0 for c in FOREST} | {9: 0.6, 13: 0.6, 14: 0.6, 18: 0.5, 16: 0.25, 17: 0.25, 11: 0.2, 15: 0.2}
 
 
 @dataclass
@@ -43,6 +46,7 @@ class Line:
     pts: np.ndarray  # (n, 2) metres (x east, y south)
     major: bool
     weight: float  # rivers: strahler; roads: 2 trunk, 1.5 road, 1 track, 0.7 path
+    cls: str = ""  # roads: the route class (trunk, road, track, footpath, boardwalk, causeway); rivers: ""
 
 
 @dataclass
@@ -99,7 +103,8 @@ class Features:
             pts = [(p["x_m"], p["y_m"]) for p in w.query(
                 "SELECT x_m, y_m FROM road_point WHERE route_id = ? ORDER BY ord", r["id"])]
             if len(pts) >= 2:
-                roads.append(Line(r["id"], _dedup(pts), r["class"] in MAJOR_ROAD_CLASSES, weight.get(r["class"], 1.0)))
+                roads.append(Line(r["id"], _dedup(pts), r["class"] in MAJOR_ROAD_CLASSES, weight.get(r["class"], 1.0),
+                              r["class"]))
         places = []
         for r in w.query("SELECT id, name, classification_class k, classification_magnitude m, position_m_x x, "
                          "position_m_y y FROM place WHERE position_m_x IS NOT NULL ORDER BY id"):

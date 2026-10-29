@@ -961,5 +961,14 @@
     "used_by": "infra/gpu-box/pad.ps1: a virtual Xbox 360 pad for checks (0.2 §c), dev only",
     "linked_or_forked_by": "none: loaded by PowerShell Add-Type",
     "notes": "C:\\argonia\\tools\\vigem; ViGEmBus came with Sunshine"
+  },
+  {
+    "name": "Argonia map place glyphs (old project, our own art)",
+    "source_url": "jtattersall09403/elder-souls-argonia (private) @ b581910f0f87d8da88eaa9876d238cdc5d709e78: packages/ui/src/map/icons/argonia/glyphs.json",
+    "version": "glyphs.json sha256 b15c6042aa3df64826af0e1fbc3164a36ee0b71dc8e071b4c92b5c4dbebeb240 (12 traced vector glyphs)",
+    "licence": "ours (Fal-generated UI art, fal-ai/nano-banana-pro/edit request 01a14974-5fe0-7090-bb61-c59b233a6be4, traced by the old trace.py)",
+    "used_by": "tools/chart/render.py: the parchment chart's city and place glyphs (2.W4 §c, 1.2 §e)",
+    "linked_or_forked_by": "copied byte-identical to tools/chart/glyphs.json; provenance in tools/chart/glyphs-SOURCE.md",
+    "notes": "UI art, the one exception to the no-new-art rule (0006); the sheet.png it was traced from is not imported"
   }
 ]

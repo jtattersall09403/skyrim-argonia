@@ -1,47 +1,62 @@
 """The parchment chart (2.W4 §c, 1.2 §e): a deterministic renderer from our own data, no game asset (0003, 0006 §UI).
 
+The look is the old project's "chart" map treatment, which the owner liked (ruling 2026-10-29; the elements and
+where each lives in the old repo are in docs/research/journals/chart.md): bone paper; water the lightest ground,
+washed pale blue-grey at the shore with three fading ripples; one olive-black ink for the coast, its hachure on the
+land side, the tree crowns, the stipple and the marsh tufts; slate water ink for rivers; red-brown lane ink for
+roads over a paper casing; explored land a warm tint with contours; Pelagiad labels on a paper glow; the Argonia
+place glyphs. Only the look is reused (0026): this renderer is ours, over our own data.
+
 Three layers on one canvas (the master is MASTER^2 px, 2^12; the province fills [M, size - M) at one pixel per terrain sample):
-- base      opaque: the paper, the sea's wash;
-- ink       RGBA: the sketch, always shown: the coast with its water lines, the marsh hatching, the major rivers
-            and roads, the province's land border, the frame, the seven cities drawn and labelled;
-- revealed  RGBA: what exploring fills in, masked per cell by the view: the relief (hillshade and contours), the
-            land cover's wash, the minor rivers and tracks, every other place drawn and labelled.
+- base      opaque: the paper, and the sea's wash and ripples (water the lightest ground);
+- ink       RGBA: the sketch, always shown: the coast and its hachure, the major rivers and roads, the province's
+            land border, a compass rose, the seven cities drawn and labelled;
+- revealed  RGBA: what exploring fills in, masked per cell by the view: the land's warm tint, relief and 50 m
+            contours, the woods (crowns and stipple), the marsh tufts, the minor rivers and tracks, every other
+            place drawn and labelled (as the old chart showed land only where it was explored).
 The view stacks base, revealed (masked), ink. There is no player-position marker (C9).
 
-Every stroke is drawn at twice the size into 8-bit masks and box-reduced (antialiasing); every random choice comes
-from a generator seeded by a fixed string, so two runs give the same pixels.
+Ink weights are set for the 2048 copy (a desktop view) to match the old chart's screen weights: a master pixel is
+half an old css pixel. Every stroke is drawn at twice the size into 8-bit masks and box-reduced (antialiasing);
+every random choice comes from a generator seeded by a fixed string, so two runs give the same pixels.
 
     render(features, size) -> Chart      the layers as uint8 arrays, the masks the checks read, the index
 """
 from __future__ import annotations
 
 import hashlib
+import json
 import os
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
 
 import numpy as np
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
-from tools.chart.data import FOREST, MARSH, ROCK, SEA, Features
+from tools.chart.data import CANOPY as CANOPY_OF, MARSH, SEA, Features
 
 MASTER = 1 << 12  # the master chart, pixels a side (a pixel count, not a Skyrim unit)
 MARGIN = 32  # master pixels round the province: one cell
 SS = 2  # supersampling of the stroke masks
 
-# Colours (sRGB). The ink is sepia and the water ink a grey-green, never the Nordic grey-blue of the vanilla map.
-PAPER = (232, 216, 178)
-PAPER_EDGE = (168, 128, 78)
-INK = (52, 36, 22)
-WATER_INK = (22, 78, 84)
-BORDER_INK = (128, 62, 30)
-MARSH_INK = (84, 86, 44)
-SEA_WASH = (150, 168, 146)
-SHADE = (92, 64, 38)
-LIGHT = (246, 236, 208)
-FOREST_WASH = (88, 104, 52)
-MARSH_WASH = (124, 128, 66)
-ROCK_WASH = (120, 104, 86)
+# Colours (sRGB): the old chart's tokens (old repo packages/ui/src/tokens/map.ts MAP_CHART @ b581910f).
+PAPER = (222, 210, 172)
+PAPER_DARK = (196, 182, 140)
+LAND = (204, 186, 138)
+CANOPY = (170, 170, 118)
+WATER_OPEN = (238, 234, 214)
+WATER_WASH = (198, 212, 204)
+INK = (43, 46, 28)
+WATER_INK = (40, 62, 60)
+LANE_INK = (92, 46, 28)
+SHADOW = (40, 34, 20)  # the hillshade's darkening (the old chart scaled the land tint by 0.8-1.06)
+
+GLYPHS = Path(__file__).with_name("glyphs.json")  # the old map's Argonia place glyphs (see glyphs-SOURCE.md)
+# A place kind's glyph (old repo packages/ui/src/map/pins.ts PIN; cities are pin-city).
+PIN = {"settlement": "pin-settlement", "ruin": "pin-ruin", "lair": "pin-cave", "sacred": "pin-shrine",
+       "transit": "pin-docks", "works": "pin-mine", "camp": "pin-camp", "lone": "pin-farm", "martial": "pin-fort",
+       "civic": "pin-landmark"}
 
 FONT_SHA256 = "b282ea043af32e15bab8cf9e01d9625c0fa5032761ffbc57d7a5f939098a7d92"
 FONT_URL = "https://raw.githubusercontent.com/isaskar/Pelagiad/f981301916d0e5a7ea9ce39d2af4e56df09677ca/Pelagiad.ttf"
@@ -120,6 +135,11 @@ def iso_line(f: np.ndarray, t, half_w: float) -> np.ndarray:
     return np.clip(half_w + 0.5 - d, 0, 1).astype(np.float32)
 
 
+def smooth(a: float, b: float, v):
+    t = np.clip((v - a) / (b - a), 0, 1)
+    return t * t * (3 - 2 * t)
+
+
 def to_u8(a: np.ndarray) -> np.ndarray:
     return np.clip(np.rint(a * 255), 0, 255).astype(np.uint8)
 
@@ -175,16 +195,11 @@ def wobble(pts: np.ndarray, rng: np.random.Generator, step: float, amp: float, w
     return p
 
 
-def stroke(pen: Pen, p: np.ndarray, width: float, rng: np.random.Generator, vary: float = 0.25,
-           fill: int = 255, chunk: int = 7) -> None:
-    """A pen stroke along p (canvas px) whose width swells and thins along its length."""
-    q = p * SS
-    for i in range(0, len(q) - 1, chunk - 1):
-        c = q[i:i + chunk]
-        if len(c) < 2:
-            break
-        w = max(1, round(width * SS * (1 + vary * rng.uniform(-1, 1))))
-        pen.d.line([tuple(map(float, x)) for x in c], fill=fill, width=w, joint="curve")
+def line(pen: Pen, p: np.ndarray, width: float) -> None:
+    """One even stroke along p (canvas px), round-jointed."""
+    if len(p) >= 2:
+        pen.d.line([(float(x) * SS, float(y) * SS) for x, y in p], fill=255, width=max(1, round(width * SS)),
+                   joint="curve")
 
 
 def dashes(p: np.ndarray, pattern: tuple[float, ...]) -> list[np.ndarray]:
@@ -197,14 +212,45 @@ def dashes(p: np.ndarray, pattern: tuple[float, ...]) -> list[np.ndarray]:
     while pos < s[-1]:
         ln = pattern[k % len(pattern)]
         if k % 2 == 0:
-            sel = (s >= pos) & (s <= pos + ln)
-            if sel.sum() >= 2:
-                out.append(p[sel])
+            a, b = pos, min(pos + ln, s[-1])
+            sel = (s > a) & (s < b)
+            piece = np.concatenate([[[np.interp(a, s, p[:, 0]), np.interp(a, s, p[:, 1])]], p[sel],
+                                    [[np.interp(b, s, p[:, 0]), np.interp(b, s, p[:, 1])]]])
+            if b > a:
+                out.append(piece)
         pos += ln
         k += 1
         if period <= 0:
             break
     return out
+
+
+_GLYPH_RINGS: dict[str, list[np.ndarray]] = {}
+
+
+def glyph_rings(name: str) -> list[np.ndarray]:
+    """The rings of one old-map glyph (a 100-unit box, one even-odd path of M...Z polygons)."""
+    if not _GLYPH_RINGS:
+        for k, v in json.loads(GLYPHS.read_text()).items():
+            _GLYPH_RINGS[k] = [np.array(list(map(float, ring.split())), np.float64).reshape(-1, 2) / 100
+                               for ring in re.findall(r"M([^MZ]*)Z", v["d"])]
+    return _GLYPH_RINGS.get(name) or _GLYPH_RINGS["pin-landmark"]
+
+
+_GLYPH_IM: dict[tuple[str, int], Image.Image] = {}
+
+
+def glyph_image(name: str, side: int) -> Image.Image:
+    """The glyph filled even-odd into a side x side 8-bit image (supersampled px)."""
+    key = (name, side)
+    if key not in _GLYPH_IM:
+        acc = np.zeros((side, side), bool)
+        for ring in glyph_rings(name):
+            im = Image.new("L", (side, side), 0)
+            ImageDraw.Draw(im).polygon([tuple(q) for q in ring * side], fill=255)
+            acc ^= np.asarray(im) > 127
+        _GLYPH_IM[key] = Image.fromarray((acc * 255).astype(np.uint8))
+    return _GLYPH_IM[key]
 
 
 # ---- the chart -------------------------------------------------------------------------------------------------
@@ -287,15 +333,20 @@ class Renderer:
         inside[m:s - m, m:s - m] = True
         self.inside = inside
         marsh = np.isin(cover, MARSH)
-        forest = np.isin(cover, FOREST)
-        rock = np.isin(cover, ROCK)
+        wood = np.zeros(cover.shape, np.float32)
+        for k, v in CANOPY_OF.items():
+            wood[cover == k] = v
+        forest = wood
         del cover
 
-        base = self.paper(land, inside)
-        ink_layers, masks = self.sketch(land, inside, marsh)
+        fields = self.shore(land, inside)
+        base = self.paper(fields)
+        ink_layers, masks = self.sketch(land, inside, fields)
         ground = self._sample(self.f.ground, np.float32)
-        rev_layers = self.relief(ground, land, inside, forest, marsh, rock)
-        del ground, forest, rock, marsh
+        rev_layers = self.relief(ground, fields, forest)
+        del ground
+        rev_layers += self.woods(fields, forest, marsh)
+        del forest, marsh
         rev_layers += self.minor_lines()
         place_layers, places = self.places()
         rev_layers += place_layers
@@ -306,12 +357,15 @@ class Renderer:
         chart.index = self.make_index(places)
         return chart
 
-    # -- base --
+    # -- noise --
+    def _grid(self, cells: int, name: str) -> np.ndarray:
+        return seed(name).random((cells + 2, cells + 2)).astype(np.float32) * 2 - 1
+
     def noise(self, cells: int, name: str, r0: int, r1: int) -> np.ndarray:
         """Smooth value noise in [-1, 1] for canvas rows [r0, r1): a `cells`-across random grid, smoothstep-blended,
         so any band is the same as the whole."""
         s = self.size
-        g = seed(name).random((cells + 2, cells + 2)).astype(np.float32) * 2 - 1
+        g = self._grid(cells, name)
 
         def axis(lo, hi):
             x = (np.arange(lo, hi, dtype=np.float32) + 0.5) / s * cells
@@ -323,6 +377,17 @@ class Renderer:
         cols = g[:, ci] * (1 - ct) + g[:, ci + 1] * ct  # (cells + 2, s)
         ri, rt = axis(r0, r1)
         return cols[ri] * (1 - rt[:, None]) + cols[ri + 1] * rt[:, None]
+
+    def noise_at(self, cells: int, name: str, x: np.ndarray, y: np.ndarray) -> np.ndarray:
+        """The same noise as `noise`, at points (canvas px)."""
+        g = self._grid(cells, name)
+        fx, fy = (x + 0.5) / self.size * cells, (y + 0.5) / self.size * cells
+        ix, iy = np.floor(fx).astype(np.int64), np.floor(fy).astype(np.int64)
+        tx, ty = fx - ix, fy - iy
+        tx, ty = tx * tx * (3 - 2 * tx), ty * ty * (3 - 2 * ty)
+        a = g[iy, ix] * (1 - tx) + g[iy, ix + 1] * tx
+        b = g[iy + 1, ix] * (1 - tx) + g[iy + 1, ix + 1] * tx
+        return a * (1 - ty) + b * ty
 
     def banded(self, pad: int, fn, names: tuple[str, ...], band: int = 512) -> dict:
         """fn(e0, e1) -> {name: float array for rows [e0, e1)} over bands padded by `pad` rows; uint8 results."""
@@ -336,47 +401,20 @@ class Renderer:
                 out[k][r0:r1] = to_u8(res[k][r0 - e0:r1 - e0])
         return out
 
-    # -- base --
-    def paper(self, land: np.ndarray, inside: np.ndarray) -> np.ndarray:
-        s, u = self.size, self.u
-        rw = max(1, int(3 * u))
-        rng = seed("paper.stains")
-        stains = [(rng.uniform(0.1, 0.9) * s, rng.uniform(0.1, 0.9) * s, rng.uniform(0.04, 0.12) * s)
-                  for _ in range(5)]
-        sea = ((~land) & inside)
-        x = np.arange(s, dtype=np.float32) / (s - 1) * 2 - 1
-        out = np.empty((s, s, 3), np.uint8)
-        pad, band = 2 * (rw + 1) + 2, 512
-        for r0 in range(0, s, band):
-            r1 = min(s, r0 + band)
-            tone = 1 + 0.035 * self.noise(12, "paper.coarse", r0, r1) + 0.02 * self.noise(96, "paper.mid", r0, r1)
-            tone += 0.012 * self.noise(max(16, int(700 * u)), "paper.fine", r0, r1)
-            y = (np.arange(r0, r1, dtype=np.float32) / (s - 1) * 2 - 1)[:, None]
-            edge = np.maximum(np.abs(x)[None, :], np.abs(y)) + 0.02 * self.noise(40, "paper.edge", r0, r1)
-            burn = (np.clip((edge - 0.86) / 0.14, 0, 1) ** 2.2)[..., None]
-            rgb = np.asarray(PAPER, np.float32) * tone[..., None]
-            rgb = rgb * (1 - 0.55 * burn) + np.asarray(PAPER_EDGE, np.float32) * 0.55 * burn
-            del tone, edge, burn
-            yy = np.arange(r0, r1, dtype=np.float32)[:, None]
-            for k, (cx, cy, r) in enumerate(stains):  # a few faint tea-dark blots
-                if cy + r * 1.2 < r0 or cy - r * 1.2 > r1:
-                    continue
-                d = np.hypot(yy - cy, np.arange(s, dtype=np.float32)[None, :] - cx) / r
-                d = d + 0.35 * self.noise(max(6, int(s / r * 3)), f"paper.stain.{k}", r0, r1)
-                rgb *= 1 - (np.clip(1 - d, 0, 1) ** 0.7 * 0.03)[..., None]
-            e0, e1 = max(0, r0 - pad), min(s, r1 + pad)  # the sea's wash, on the paper under the ink
-            wash = (blur(sea[e0:e1].astype(np.float32), rw, 2) * 0.28)[r0 - e0:r1 - e0, :, None]
-            rgb = rgb * (1 - wash) + np.asarray(SEA_WASH, np.float32) * wash
-            out[r0:r1] = np.clip(np.rint(rgb), 0, 255).astype(np.uint8)
-        return out
+    def soft(self, mask: np.ndarray, r: float, gain: float = 1.6) -> np.ndarray:
+        """A glow: the mask blurred by r px and lifted (the old labels' paper text-shadow)."""
+        k = max(1, round(r))
+        return self.banded(2 * (k + 1) + 2, lambda e0, e1: {"m": np.clip(
+            blur(mask[e0:e1].astype(np.float32) / 255, k, 1) * gain, 0, 1)}, ("m",))["m"]
 
-    # -- the sketch --
-    def sketch(self, land, inside, marsh):
-        s, u = self.size, self.u
-        layers, masks = [], {}
+    def at(self, a: np.ndarray, x: np.ndarray, y: np.ndarray) -> np.ndarray:
+        s = self.size
+        return a[np.clip(y.astype(np.int64), 0, s - 1), np.clip(x.astype(np.int64), 0, s - 1)]
 
-        # the water lines' field: distance from the shore out to sea, measured at a quarter resolution
-        q = 4
+    # -- the shore: one wobbled land field for the coast, the land tint and the sea's wash --
+    def shore(self, land, inside) -> dict:
+        s, u = self.size, self.u
+        q = 4  # the sea-distance field, measured at a quarter resolution
         lq = land[::q, ::q].copy()
         dist = np.full(lq.shape, 255, np.uint8)
         dist[lq] = 0
@@ -384,88 +422,116 @@ class Renderer:
         for k in range(1, 40):
             cur = dilate(cur, diag=k % 2 == 0)
             dist[cur & (dist == 255)] = k
-        dist = dist.astype(np.float32) * (q / u)  # master pixels from shore
-        dq_cols = lerp(dist, s, axis=1)  # (s / q, s)
+        dq_cols = lerp(dist.astype(np.float32) * (q / u), s, axis=1)  # master px from shore, (s / q, s)
         del dist, lq, cur
         rc, rd = max(1, int(3 * u)), max(1, int(2 * u))
-        sea_in = (~land) & inside
-
-        def coast_band(e0, e1):
-            # the coast: the blurred land's half level, nudged by slow noise, drawn twice like a sketching hand
+        pad = 2 * (rc + 1) + rd + 4
+        out = {k: np.empty((s, s), np.uint8) for k in ("coast", "landf", "wash", "ripple")}
+        seeds = []  # hachure ticks: (x, y, nx, ny), the normal pointing inland
+        step = max(2, round(8 * u))  # the old hachure's 4 css px
+        for r0 in range(0, s, 512):
+            r1 = min(s, r0 + 512)
+            e0, e1 = max(0, r0 - pad), min(s, r1 + pad)
             f = blur(land[e0:e1].astype(np.float32), rc, 2) + 0.22 * self.noise(max(8, int(160 * u)), "coast.wobble", e0, e1)
+            gy, gx = np.gradient(f)
+            g = np.maximum(np.hypot(gx, gy), 1e-6)
+            sd = (f - 0.5) / g  # signed px from the coast, + inland
             ins = inside[e0:e1]
-            coast = iso_line(f, 0.5, 1.1 * u) * ins
-            f += 0.18 * self.noise(max(8, int(300 * u)), "coast.second", e0, e1)
-            coast = np.maximum(coast, iso_line(f, 0.5, 0.55 * u) * ins * 0.7)
-            del f
-            dq = lerp(dq_cols, s, axis=0, lo=e0, hi=e1)
-            dq = blur(dq, rd, 1) + 3.0 * self.noise(max(8, int(120 * u)), "waterlines.wobble", e0, e1)
-            water = np.zeros(dq.shape, np.float32)
-            for t, a in ((11, 0.8), (24, 0.6), (40, 0.42), (62, 0.26)):
-                water = np.maximum(water, iso_line(dq, t, 0.6 * u) * a)
-            return {"coast": coast, "water": water * sea_in[e0:e1]}
+            res = {"coast": np.clip(1.6 * u + 0.5 - np.abs(sd), 0, 1) * ins,
+                   "landf": np.clip(sd / (1.5 * u) + 0.5, 0, 1)}
+            dq = blur(lerp(dq_cols, s, axis=0, lo=e0, hi=e1), rd, 1) + 2.0 * self.noise(max(8, int(120 * u)), "waterlines.wobble", e0, e1)
+            dq = np.maximum(dq, 0)
+            res["wash"] = np.exp(-dq / (30 * u))
+            # three ripples fading from the shore (the old chart's 2.4, 5 and 8 pack px), broken like a raster's
+            rip = np.zeros(dq.shape, np.float32)
+            for d0, peak in ((14, 0.42), (30, 0.26), (48, 0.14)):
+                rip = np.maximum(rip, np.clip(peak - np.abs(dq - d0 * u) * peak / (3.2 * u), 0, None))
+            rip *= np.clip(0.55 + 1.6 * self.noise(max(16, int(380 * u)), "waterlines.break", e0, e1), 0, 1)
+            res["ripple"] = rip
+            del dq
+            core = slice(r0 - e0, r1 - e0)
+            on = (res["coast"][core] > 0.7)
+            yy, xx = np.nonzero(on)
+            if len(yy):
+                key = (yy + r0) // step * (s // step + 1) + xx // step
+                _, first = np.unique(key, return_index=True)
+                yy, xx = yy[first], xx[first]
+                nx_, ny_ = gx[core][yy, xx] / g[core][yy, xx], gy[core][yy, xx] / g[core][yy, xx]
+                seeds.append(np.stack([xx + 0.5, yy + r0 + 0.5, nx_, ny_], 1))
+            for k in out:
+                out[k][r0:r1] = to_u8(res[k][core])
+            del f, gx, gy, g, sd, res, rip
+        out["seeds"] = np.concatenate(seeds) if seeds else np.zeros((0, 4))
+        return out
 
-        got = self.banded(2 * (rc + 1) + rd + 4, coast_band, ("coast", "water"))
-        masks["coast"] = got["coast"]
-        layers.append((got["water"], WATER_INK, 0.85))
-        del got
+    # -- base --
+    def paper(self, fields) -> np.ndarray:
+        """Bone paper mottled toward its dark tone; the sea the lightest ground, washed and rippled near the shore."""
+        s, u = self.size, self.u
+        out = np.empty((s, s, 3), np.uint8)
+        P, PD = np.asarray(PAPER, np.float32), np.asarray(PAPER_DARK, np.float32)
+        WO, WW, WI = (np.asarray(c, np.float32) for c in (WATER_OPEN, WATER_WASH, WATER_INK))
+        for r0 in range(0, s, 512):
+            r1 = min(s, r0 + 512)
+            fine = 0.5 + 0.5 * self.noise(max(16, int(512 * u)), "paper.fine", r0, r1)
+            mid = 0.5 + 0.5 * self.noise(max(8, int(140 * u)), "paper.mid", r0, r1)
+            v = fine * 0.6 + mid * 0.4
+            coarse = 0.5 + 0.5 * self.noise(24, "paper.coarse", r0, r1)
+            t = (smooth(0.25, 0.95, coarse) * 0.35 + v * 0.25)[..., None]
+            rgb = P * (1 - t) + PD * t
+            wash = (fields["wash"][r0:r1].astype(np.float32) / 255 * (0.75 + v * 0.25))[..., None]
+            water = WO * (1 - wash) + WW * wash
+            rip = (fields["ripple"][r0:r1].astype(np.float32) / 255)[..., None]
+            water = water * (1 - rip) + WI * rip
+            lf = (fields["landf"][r0:r1].astype(np.float32) / 255)[..., None]
+            out[r0:r1] = np.clip(np.rint(rgb * lf + water * (1 - lf)), 0, 255).astype(np.uint8)
+        return out
 
-        # the marsh: the cartographer's tufts on short level strokes, where the marsh is dense
+    # -- the sketch --
+    def sketch(self, land, inside, fields):
+        s, u = self.size, self.u
+        layers, masks = [], {}
+
+        # the coast's hachure: short ticks every 4 old px from the shore into the land
         pen = Pen(s)
-        rng = seed("marsh.hatch")
-        dens = blur(marsh[::8, ::8].astype(np.float32), 2, 2)
-        sp = 34 * u
-        nx = int(s / sp)
-        for j in range(nx):
-            for i in range(nx):
-                x = (i + 0.5) * sp + rng.uniform(-0.3, 0.3) * sp
-                y = (j + 0.5) * sp + rng.uniform(-0.3, 0.3) * sp
-                ix, iy = int(x), int(y)
-                r = rng.random()
-                if not (0 <= ix < s and 0 <= iy < s) or not inside[iy, ix] or not land[iy, ix]:
-                    continue
-                d = dens[min(iy // 8, dens.shape[0] - 1), min(ix // 8, dens.shape[1] - 1)]
-                if d < 0.3 or r > d * 1.25:
-                    continue
-                self.tuft(pen, x, y, rng)
-        hatch = pen.done()
-        layers.append((hatch, MARSH_INK, 0.8))
-        del pen, dens
+        rng = seed("coast.hachure")
+        sd = fields["seeds"]
+        k = 0.55 + rng.random(len(sd)) * 0.45
+        L = 8.8 * u * k
+        w = max(1, round(1.6 * u * SS))
+        for (x, y, nx, ny), ln in zip(sd, L):
+            pen.d.line([(x * SS, y * SS), ((x + nx * ln) * SS, (y + ny * ln) * SS)], fill=255, width=w)
+        layers.append((pen.done(), INK, 0.5))
+        del pen
 
-        # the major rivers: tapering from source to mouth
+        # the major rivers: slate water ink, widening a little toward the mouth
         pen = Pen(s)
         for r in self.f.rivers:
             if r.major:
-                p = wobble(self.line_px(r.pts), seed(r.id), 3 * u + 0.5, 2.6 * u, 70 * u)
-                self.river(pen, p, (3.0 + 1.6 * (r.weight - 1)) * u, seed(r.id + ".w"))
+                p = wobble(self.line_px(r.pts), seed(r.id), 3 * u + 0.5, 1.6 * u, 70 * u)
+                self.river(pen, p, min(9.0, 6.0 + 1.0 * (r.weight - 2)) * u)
         masks["rivers"] = pen.done()
-        layers.append((masks["rivers"], WATER_INK, 0.95))
+        layers.append((masks["rivers"], WATER_INK, 0.9))
 
-        # the major roads: long dashes of sepia, a second faint hand beside
-        pen = Pen(s)
+        # the major roads: red-brown lane ink over a paper casing
+        casing, pen = Pen(s), Pen(s)
         for r in self.f.roads:
             if r.major:
-                p = wobble(self.line_px(r.pts), seed(r.id), 3 * u + 0.5, 2.4 * u, 80 * u)
-                rng = seed(r.id + ".w")
-                off = (3.2 + 0.8 * r.weight) * u
-                tx, ty = np.gradient(p[:, 0]), np.gradient(p[:, 1])
-                nn = np.stack([-ty, tx], 1) / (np.hypot(tx, ty)[:, None] + 1e-9)
-                for side in (-1, 1):
-                    stroke(pen, p + side * off * nn, 2.1 * u, rng, 0.35)
+                p = wobble(self.line_px(r.pts), seed(r.id), 3 * u + 0.5, 1.2 * u, 80 * u)
+                main = (5.4 if r.cls == "trunk" else 4.6) * u
+                line(casing, p, main + 4 * u)
+                line(pen, p, main)
+        layers.append((casing.done(), PAPER, 0.85))
         masks["roads"] = pen.done()
-        layers.append((masks["roads"], INK, 1.0))
+        layers.append((masks["roads"], LANE_INK, 0.9))
+        del casing, pen
 
-        layers.append((masks["coast"], INK, 0.95))
+        masks["coast"] = fields["coast"]
+        layers.append((masks["coast"], INK, 0.92))
 
-        # the frame and the land border (dash-dot along the province's edge where it meets land)
+        # the land border (a lane-ink dash along the province's edge where it meets land)
         pen = Pen(s)
         rng = seed("frame")
-        for inset, w in ((12, 2.2), (20, 1.0)):
-            a, b = inset * u, s - inset * u
-            for p in ([(a, a), (b, a)], [(b, a), (b, b)], [(b, b), (a, b)], [(a, b), (a, a)]):
-                stroke(pen, wobble(np.array(p), rng, 6 * u + 1, 0.6 * u, 200 * u, 1), w * u, rng, 0.15)
-        frame = pen.done()
-        pen = Pen(s)
         m, P = self.m, self.P
         ins = 14 * u
         edges = (  # (start, end, the land test along it)
@@ -478,94 +544,101 @@ class Renderer:
             p = wobble(np.array([a, b], float), seed(f"border.{k}"), 3 * u + 0.5, 0.8 * u, 160 * u, 1)
             t = np.clip(((np.arange(len(p)) / max(1, len(p) - 1)) * (len(on) - 1)).astype(int), 0, len(on) - 1)
             keep = on[t]
-            for piece in dashes(p, (30 * u, 12 * u)):
-                idx = [int(np.argmin(np.hypot(*(p - piece[0]).T)))]
-                if keep[idx[0]]:
-                    stroke(pen, piece, 4.4 * u, rng, 0.15)
+            for piece in dashes(p, (24 * u, 10 * u)):
+                if keep[int(np.argmin(np.hypot(*(p - piece[0]).T)))]:
+                    line(pen, piece, 3.2 * u)
         border = pen.done()
-        rb = max(1, int(14 * u))
+        rb = max(1, int(12 * u))
         band = self.banded(2 * (rb + 1) + 2, lambda e0, e1: {"b": np.clip(blur(
             border[e0:e1].astype(np.float32) / 255, rb, 2) * 4, 0, 1) * (land[e0:e1] & inside[e0:e1])}, ("b",))["b"]
-        layers.append((band, BORDER_INK, 0.3))
-        layers.append((frame, INK, 0.85))
-        layers.append((border, BORDER_INK, 1.0))
+        layers.append((band, LANE_INK, 0.14))
+        layers.append((border, LANE_INK, 0.9))
+        del pen, band
 
-        # the seven cities
+        # a small inked rose in a hairline ring on a paper disc, in an open-sea corner
+        layers += self.compass(land)
+
+        # the seven cities: the pin-city glyph on a paper glow, the name in spaced capitals-and-lower
         halo, glyph, text = Pen(s), Pen(s), Pen(s)
         cities = [p for p in self.f.places if p.city]
         self.city_px = {}
+        R = 32 * u
         for c in cities:
             x, y = self.px(c.x_m, c.y_m)
             self.city_px[c.id] = (x, y)
-            R = 42 * u
             self.boxes.append((x - R, y - R, x + R, y + R))
-            self.city_glyph(glyph, halo, x, y, R, seed(c.id))
+            self.glyph(glyph, halo, "pin-city", x, y, 2 * R, 5 * u)
         self.label_ring = {}
         for c in cities:
             x, y = self.city_px[c.id]
-            self.label_ring[c.id] = self.label(text, halo, c.name, x, y, 92, 50 * u, seed(c.id + ".label"),
-                                               halo_w=7)
+            self.label_ring[c.id] = self.label(text, halo, c.name, x, y, 64, R + 6 * u, track=0.12, halo_w=6)
         masks["cities"] = glyph.done()
-        layers.append((halo.done(), PAPER, 0.72))
+        layers.append((self.soft(halo.done(), 3 * u), PAPER, 0.8))
         layers.append((masks["cities"], INK, 1.0))
         layers.append((text.done(), INK, 1.0))
         return layers, masks
 
-    def tuft(self, pen: Pen, x: float, y: float, rng: np.random.Generator) -> None:
-        u = self.u * SS
-        L = rng.uniform(11, 16) * u
-        tilt = rng.uniform(-0.06, 0.06)
-        X, Y = x * SS, y * SS
-        w = max(1, round(1.9 * u))
-        pen.d.line([(X - L, Y - tilt * L), (X + L, Y + tilt * L)], fill=255, width=w)
-        for dx, lean in ((-0.5, -0.35), (0.0, 0.0), (0.5, 0.35)):
-            h = rng.uniform(7, 12) * u
-            bx = X + dx * L * 0.9
-            pen.d.line([(bx, Y - 1 * u), (bx + lean * h + rng.uniform(-1, 1) * u, Y - h)], fill=255, width=w)
-        if rng.random() < 0.45:
-            l2 = L * rng.uniform(0.35, 0.6)
-            ox = rng.uniform(-0.4, 0.4) * L
-            pen.d.line([(X + ox - l2, Y + 5 * u), (X + ox + l2, Y + 5 * u)], fill=255, width=w)
+    def compass(self, land):
+        s, u = self.size, self.u
+        R = 64 * u
+        m = self.m + 40 * u
+        spots = [(s - m - R, m + R), (m + R, m + R), (s - m - R, s - m - R), (m + R, s - m - R)]
+        cx, cy = spots[0]
+        for x, y in spots:
+            if not land[int(y - R):int(y + R), int(x - R):int(x + R)].any():
+                cx, cy = x, y
+                break
+        disc, pen = Pen(s), Pen(s)
+        X, Y = cx * SS, cy * SS
+        r = R * SS
+        disc.d.ellipse([X - r * 1.12, Y - r * 1.12, X + r * 1.12, Y + r * 1.12], fill=255)
+        w = max(1, round(1.4 * u * SS))
+        pen.d.ellipse([X - r, Y - r, X + r, Y + r], outline=255, width=w)
+        for k in range(8):
+            a = k * np.pi / 4 - np.pi / 2
+            ln = r * (0.86 if k % 2 == 0 else 0.5)
+            side = r * (0.13 if k % 2 == 0 else 0.09)
+            tip = (X + ln * np.cos(a), Y + ln * np.sin(a))
+            lft = (X + side * np.cos(a - np.pi / 2), Y + side * np.sin(a - np.pi / 2))
+            rgt = (X + side * np.cos(a + np.pi / 2), Y + side * np.sin(a + np.pi / 2))
+            pen.d.polygon([tip, lft, (X, Y)], fill=255)  # one half filled, one half outlined
+            pen.d.line([tip, rgt, (X, Y)], fill=255, width=w)
+        fnt = self.font(26)
+        l, t, rr, b = fnt.getbbox("N")
+        pen.d.text((X - (rr - l) / 2 - l, Y - r * 0.98 - (b - t) - t - 4 * u * SS), "N", font=fnt, fill=255)
+        self.boxes.append((cx - R * 1.3, cy - R * 1.5, cx + R * 1.3, cy + R * 1.3))
+        return [(disc.done(), PAPER, 0.85), (pen.done(), INK, 0.85)]
 
-    def river(self, pen: Pen, p: np.ndarray, width: float, rng) -> None:
-        """Rivers run source to mouth: the line thickens toward the mouth."""
+    def river(self, pen: Pen, p: np.ndarray, width: float) -> None:
+        """Rivers run source to mouth: the line widens a little toward the mouth."""
         q = p * SS
         n = len(q)
         for i in range(0, n - 1, 5):
             c = q[i:i + 6]
             if len(c) < 2:
                 break
-            t = i / max(1, n - 1)
-            w = width * SS * (0.55 + 0.75 * t) * (1 + 0.15 * rng.uniform(-1, 1))
+            w = width * SS * (0.75 + 0.25 * i / max(1, n - 1))
             pen.d.line([tuple(map(float, x)) for x in c], fill=255, width=max(1, round(w)), joint="curve")
 
-    def city_glyph(self, glyph: Pen, halo: Pen, x, y, R, rng) -> None:
-        """A rough ring round three domed stilt-houses: drawn, not stamped."""
-        X, Y, r = x * SS, y * SS, R * SS
-        halo.d.ellipse([X - r * 1.15, Y - r * 1.15, X + r * 1.15, Y + r * 1.15], fill=255)
-        a0 = rng.uniform(0, 2 * np.pi)
-        a = np.linspace(a0, a0 + 2 * np.pi + 0.35, 90)
-        rad = r * (1 + 0.05 * np.sin(3 * a + rng.uniform(0, 6)) + 0.02 * rng.normal(size=a.size).cumsum() / 9)
-        pts = np.stack([X + rad * np.cos(a), Y + rad * np.sin(a)], 1)
-        w = max(1, round(2.8 * self.u * SS))
-        glyph.d.line([tuple(map(float, q)) for q in pts], fill=255, width=w, joint="curve")
-        a = np.linspace(a0 + 1.0, a0 + 2.6, 30)
-        pts = np.stack([X + r * 0.82 * np.cos(a), Y + r * 0.82 * np.sin(a)], 1)
-        glyph.d.line([tuple(map(float, q)) for q in pts], fill=255, width=max(1, w // 2), joint="curve")
-        k = self.u * SS
-        wh = max(1, round(1.8 * self.u * SS))
-        for hx, hy, sc in ((-11, 4, 1.0), (11, 5, 0.9), (0, -9, 1.15)):
-            cx, cy, h = X + hx * k + rng.uniform(-1, 1) * k, Y + hy * k, 8 * k * sc
-            glyph.d.arc([cx - h, cy - h, cx + h, cy + h * 0.6], 180, 360, fill=255, width=wh)
-            glyph.d.line([(cx - h * 1.15, cy - h * 0.2), (cx + h * 1.15, cy - h * 0.2)], fill=255, width=wh)
-            for lx in (-0.7, 0.7):
-                glyph.d.line([(cx + lx * h, cy - h * 0.2), (cx + lx * h, cy + h * 0.6)], fill=255, width=wh)
+    def glyph(self, glyph: Pen, halo: Pen, name: str, x, y, side_px, halo_px) -> None:
+        """An old-map place glyph centred on (x, y), side_px across, with a paper halo round its shape."""
+        side = max(4, round(side_px * SS))
+        im = glyph_image(name, side)
+        ox, oy = round(x * SS - side / 2), round(y * SS - side / 2)
+        glyph.im.paste(255, (ox, oy), im)
+        k = max(3, round(halo_px * SS) | 1)
+        big = Image.new("L", (side + 2 * k, side + 2 * k), 0)
+        big.paste(im, (k, k))
+        halo.im.paste(255, (ox - k, oy - k), big.filter(ImageFilter.MaxFilter(k)))
 
-    def label(self, text: Pen, halo: Pen, name: str, x, y, size_px, gap, rng, halo_w=5, required=True):
-        """Place a label beside its point where it overlaps nothing placed; returns its box or None."""
+    def label(self, text: Pen, halo: Pen, name: str, x, y, size_px, gap, track=0.0, halo_w=4, required=True):
+        """Place a label beside its point where it overlaps nothing placed; returns its box or None.
+        `track` spaces the letters (em), as the old chart set its city names."""
         fnt = self.font(size_px)
         l, t, r, b = fnt.getbbox(name)
-        w, h = (r - l) / SS, (b - t) / SS
+        sp = track * fnt.size
+        adv = [fnt.getlength(ch) for ch in name]
+        w, h = (r - l + sp * (len(name) - 1)) / SS, (b - t) / SS
         s, edge = self.size, self.m + 4 * self.u
         cands = [(x + gap, y - h / 2), (x - gap - w, y - h / 2), (x - w / 2, y - gap - h), (x - w / 2, y + gap),
                  (x + gap * 0.8, y - gap * 0.8 - h), (x - gap * 0.8 - w, y - gap * 0.8 - h),
@@ -588,25 +661,34 @@ class Renderer:
         self.boxes.append(pick)
         ox, oy = pick[0] * SS - l, pick[1] * SS - t
         sw = max(1, round(halo_w * self.u * SS))
-        halo.d.text((ox, oy), name, font=fnt, fill=255, stroke_width=sw, stroke_fill=255)
-        text.d.text((ox, oy), name, font=fnt, fill=255)
+        if sp:
+            cx = ox
+            for ch, a in zip(name, adv):
+                halo.d.text((cx, oy), ch, font=fnt, fill=255, stroke_width=sw, stroke_fill=255)
+                text.d.text((cx, oy), ch, font=fnt, fill=255)
+                cx += a + sp
+        else:
+            halo.d.text((ox, oy), name, font=fnt, fill=255, stroke_width=sw, stroke_fill=255)
+            text.d.text((ox, oy), name, font=fnt, fill=255)
         return [round(v, 1) for v in pick]
 
     # -- the revealed layer --
-    def relief(self, ground, land, inside, forest, marsh, rock):
-        """Hillshade lit from the north-west (up-left), the land cover's washes and 20 m contours (every fifth
-        bolder), on land only; banded, so the memory is a few bands, not the canvas."""
-        u = self.u
+    def relief(self, ground, fields, forest):
+        """The explored land's warm tint and canopy tint, a north-west hillshade folded into the tint as the old
+        chart did, and 50 m contours (every fourth bolder); banded, so the memory is a few bands, not the canvas."""
+        u, s = self.u, self.size
         mpp = 1 / self.scale  # metres per canvas pixel
         sea = self.f.sea_level_m
         alt = np.radians(45)
         c = np.cos(alt) / np.sqrt(2)
         lx, ly, lz = -c, -c, np.sin(alt)  # towards the light: west (-x) and north (-y)
-        r1_, r4, r5 = max(1, int(2 * u)), max(1, int(4 * u)), max(1, int(5 * u))
+        q = 4
+        self.canopy_q = blur(forest[::q, ::q], max(1, int(3 * u)), 2)
+        cq_cols = lerp(self.canopy_q, s, axis=1)
+        r1_, r5 = max(1, int(2 * u)), max(1, int(5 * u))
 
         def band(e0, e1):
-            lnd = land[e0:e1] & inside[e0:e1]
-            on = blur(lnd.astype(np.float32), r1_, 1)
+            lf = fields["landf"][e0:e1].astype(np.float32) / 255 * self.inside[e0:e1]
             g = ground[e0:e1]
             h = blur(g, r1_, 1)
             gy, gx = np.gradient(h, mpp)
@@ -614,38 +696,105 @@ class Renderer:
             shade = (-gx * lx - gy * ly + lz) / np.sqrt(gx * gx + gy * gy + 1)
             del gx, gy
             d = shade - lz
-            res = {"dark": np.tanh(np.clip(-d, 0, None) * 2.0) * 0.55 * on,
-                   "light": np.tanh(np.clip(d, 0, None) * 1.6) * 0.4 * on}
+            res = {"tint": lf, "canopy": smooth(0.1, 0.9, lerp(cq_cols, s, axis=0, lo=e0, hi=e1)) * lf,
+                   "dark": np.tanh(np.clip(-d, 0, None) * 6.0) * lf,
+                   "light": np.tanh(np.clip(d, 0, None) * 5.0) * lf}
             del d, shade
-            for k, m_ in (("forest", forest), ("marsh", marsh), ("rock", rock)):
-                res[k] = blur(m_[e0:e1].astype(np.float32), r4, 2) * on
             hs = blur(g, r5, 2)
-            k20 = np.rint(hs / 20)
-            cl = iso_line(hs, k20 * 20, 0.45 * u) * ((hs > sea + 1) & lnd)
-            res["contour"] = cl * np.where(np.abs(k20) % 5 == 0, 1.0, 0.55)
+            k50 = np.rint(hs / 50)
+            cl = iso_line(hs, k50 * 50, 0.6 * u) * ((hs > sea + 1) & (lf > 0.5))
+            res["contour"] = cl * np.where(np.abs(k50) % 4 == 0, 1.0, 0.56)
             return res
 
-        got = self.banded(2 * (r5 + 1) + 4, band, ("dark", "light", "forest", "marsh", "rock", "contour"))
-        return [(got["forest"], FOREST_WASH, 0.20), (got["marsh"], MARSH_WASH, 0.16), (got["rock"], ROCK_WASH, 0.22),
-                (got["light"], LIGHT, 0.8), (got["dark"], SHADE, 0.8), (got["contour"], SHADE, 0.6)]
+        got = self.banded(2 * (r5 + 1) + 4, band, ("tint", "canopy", "dark", "light", "contour"))
+        return [(got["tint"], LAND, 0.72), (got["canopy"], CANOPY, 0.45), (got["light"], WATER_OPEN, 0.06),
+                (got["dark"], SHADOW, 0.2), (got["contour"], INK, 0.5)]
+
+    def woods(self, fields, forest, marsh):
+        """The old chart's tree cover (clumped two-lobed crowns on a stem, a dot stipple thinning into the
+        clearings) and its brushed marsh tufts (a base stroke and three blades)."""
+        s, u = self.size, self.u
+        lf = fields["landf"]
+        layers = []
+        rng = seed("woods")
+        sp = 24 * u
+        n = int(s / sp) + 1
+        gy, gx = np.mgrid[0:n, 0:n].astype(np.float64)
+        x = (gx + rng.random(gx.shape)) * sp
+        y = (gy + rng.random(gy.shape)) * sp
+        x, y = x.ravel(), y.ravel()
+        ok = (x < s - 1) & (y < s - 1)
+        x, y = x[ok], y[ok]
+        cq = self.canopy_q
+        c = cq[np.clip((y / 4).astype(int), 0, cq.shape[0] - 1), np.clip((x / 4).astype(int), 0, cq.shape[1] - 1)]
+        on = (self.at(lf, x, y) > 200) & self.at(self.inside, x, y) & (c >= 0.08)
+        x, y, c = x[on], y[on], c[on]
+        clump = (0.5 + 0.5 * self.noise_at(max(4, int(s / (96 * u))), "woods.clump", x, y)) * 0.65 + \
+                (0.5 + 0.5 * self.noise_at(max(4, int(s / (30 * u))), "woods.clump2", x, y)) * 0.35
+        roll = rng.random(len(x))
+        crown = (c > 0.25) & (roll < smooth(0.3, 0.55, clump + (c - 0.5) * 0.6))
+        dot = ~crown & (roll < smooth(0.08, 0.6, c) * 0.85)
+        pen, dots = Pen(s), Pen(s)
+        w = max(1, round(1.8 * u * SS))
+        for X, Y, cc in zip(x[crown] * SS, y[crown] * SS, c[crown]):
+            r = 7.0 * u * SS * (0.7 + cc * 0.6)
+            pen.d.arc([X - r * 1.05, Y - r * 1.15, X + r * 0.15, Y + r * 0.05], 171, 315, fill=255, width=w)
+            pen.d.arc([X - r * 0.15, Y - r * 1.15, X + r * 1.05, Y + r * 0.05], 225, 369, fill=255, width=w)
+            pen.d.line([(X, Y - r * 0.2), (X, Y + r * 0.7)], fill=255, width=w)
+        for X, Y, cc in zip(x[dot] * SS, y[dot] * SS, c[dot]):
+            d = (1.1 + 0.9 * cc) * u * SS / 2
+            dots.d.rectangle([X - d, Y - d, X + d, Y + d], fill=255)
+        layers += [(dots.done(), INK, 0.45), (pen.done(), INK, 0.66)]
+        del pen, dots
+
+        rng = seed("marsh.tufts")
+        sp = 42 * u
+        n = int(s / sp) + 1
+        gy, gx = np.mgrid[0:n, 0:n].astype(np.float64)
+        x = ((gx + rng.random(gx.shape)) * sp).ravel()
+        y = ((gy + rng.random(gy.shape)) * sp).ravel()
+        lean = (rng.random(x.shape) - 0.5) * 0.3
+        ok = (x < s - 1) & (y < s - 1)
+        x, y, lean = x[ok], y[ok], lean[ok]
+        on = self.at(marsh, x, y) & (self.at(lf, x, y) > 200) & self.at(self.inside, x, y)
+        pen = Pen(s)
+        S = 14 * u * SS
+        w = max(1, round(1.8 * u * SS))
+        for X, Y, j in zip(x[on] * SS, y[on] * SS, lean[on]):
+            pen.d.line([(X - S * 0.55, Y), (X + S * 0.55, Y)], fill=255, width=w)
+            pen.d.line([(X, Y), (X + j * S, Y - S * 0.75)], fill=255, width=w)
+            pen.d.line([(X - S * 0.3, Y), (X - S * 0.45, Y - S * 0.5)], fill=255, width=w)
+            pen.d.line([(X + S * 0.3, Y), (X + S * 0.45, Y - S * 0.5)], fill=255, width=w)
+        layers.append((pen.done(), INK, 0.7))
+        return layers
 
     def minor_lines(self):
+        """Minor rivers in water ink; tracks dashed, footpaths dotted, boardwalks and causeways a hairline crossed
+        by rungs, all in the one lane ink (old draw.ts CHART_ROADS)."""
         s, u = self.size, self.u
         layers = []
         pen = Pen(s)
         for r in self.f.rivers:
             if not r.major:
                 p = wobble(self.line_px(r.pts), seed(r.id), 3 * u + 0.5, 1.0 * u, 80 * u)
-                self.river(pen, p, 0.9 * u, seed(r.id + ".w"))
-        layers.append((pen.done(), WATER_INK, 0.85))
+                self.river(pen, p, 3.4 * u)
+        layers.append((pen.done(), WATER_INK, 0.9))
         pen = Pen(s)
         for r in self.f.roads:
-            if not r.major:
-                p = wobble(self.line_px(r.pts), seed(r.id), 3 * u + 0.5, 1.2 * u, 90 * u)
-                rng = seed(r.id + ".w")
-                for d in dashes(p, (5 * u, 6 * u)):
-                    stroke(pen, d, 1.6 * u * r.weight, rng, 0.15)
-        layers.append((pen.done(), INK, 0.75))
+            if r.major:
+                continue
+            p = wobble(self.line_px(r.pts), seed(r.id), 1.5 * u + 0.25, 1.2 * u, 90 * u, smooth=9)
+            if r.cls in ("boardwalk", "causeway"):
+                line(pen, p, 1.3 * u)
+                for d in dashes(p, (2 * u, 5 * u)):
+                    line(pen, d, 5.5 * u)
+            elif r.cls == "footpath":
+                for d in dashes(p, (3 * u, 6 * u)):
+                    line(pen, d, 1.8 * u)
+            else:
+                for d in dashes(p, (10 * u, 6 * u)):
+                    line(pen, d, 2.2 * u)
+        layers.append((pen.done(), LANE_INK, 0.9))
         return layers
 
     def places(self):
@@ -655,44 +804,23 @@ class Renderer:
         others = sorted((p for p in self.f.places if not p.city), key=lambda p: (-p.magnitude, p.kind, p.id))
         for p in others:
             x, y = self.px(p.x_m, p.y_m)
-            r = (5 + 1.2 * p.magnitude) * u
-            self.place_glyph(glyph, halo, p.kind, x, y, r, seed(p.id))
+            r = (12 + 1.5 * p.magnitude) * u
+            self.glyph(glyph, halo, PIN.get(p.kind, "pin-landmark"), x, y, 2 * r, 3 * u)
             self.boxes.append((x - r, y - r, x + r, y + r))
         for p in others:
             x, y = self.px(p.x_m, p.y_m)
-            r = (5 + 1.2 * p.magnitude) * u
-            lab = self.label(text, halo, p.name, x, y, 22 + 3 * p.magnitude, r + 5 * u, seed(p.id + ".label"),
-                             halo_w=4, required=False)
+            r = (12 + 1.5 * p.magnitude) * u
+            # names for the places of magnitude 2 and up, where there is room (the rest carry the glyph; the view
+            # names them on demand from index.places)
+            lab = None if p.magnitude < 2 else self.label(text, halo, p.name, x, y, 22 + 3 * p.magnitude, r + 4 * u,
+                                                          halo_w=4, required=False)
             out[p.id] = (p, x, y, lab)
         for p in self.f.places:
             if p.city:
                 x, y = self.city_px[p.id]
                 out[p.id] = (p, x, y, self.label_ring[p.id])
-        layers = [(halo.done(), PAPER, 0.6), (glyph.done(), INK, 0.95), (text.done(), INK, 0.95)]
+        layers = [(self.soft(halo.done(), 2 * u), PAPER, 0.75), (glyph.done(), INK, 0.95), (text.done(), INK, 0.95)]
         return layers, out
-
-    def place_glyph(self, glyph: Pen, halo: Pen, kind: str, x, y, r, rng) -> None:
-        X, Y, R = x * SS, y * SS, r * SS
-        w = max(1, round(1.6 * self.u * SS))
-        halo.d.ellipse([X - R * 1.4, Y - R * 1.4, X + R * 1.4, Y + R * 1.4], fill=255)
-        j = lambda: rng.uniform(-0.12, 0.12) * R
-        if kind == "settlement" or kind == "civic":
-            glyph.d.ellipse([X - R + j(), Y - R + j(), X + R + j(), Y + R + j()], outline=255, width=w)
-            glyph.d.ellipse([X - R * 0.3, Y - R * 0.3, X + R * 0.3, Y + R * 0.3], fill=255)
-        elif kind == "ruin":
-            glyph.d.line([(X - R, Y + R * 0.7), (X - R * 0.2 + j(), Y - R)], fill=255, width=w)
-            glyph.d.line([(X - R * 0.2, Y - R), (X + R * 0.4 + j(), Y - R * 0.2)], fill=255, width=w)
-            glyph.d.line([(X - R, Y + R * 0.7), (X + R, Y + R * 0.7 + j())], fill=255, width=w)
-        elif kind == "camp":
-            glyph.d.line([(X - R, Y + R * 0.7), (X + j(), Y - R), (X + R, Y + R * 0.7)], fill=255, width=w,
-                         joint="curve")
-        elif kind == "lair":
-            glyph.d.line([(X - R * 0.8, Y - R * 0.8), (X + R * 0.8 + j(), Y + R * 0.8)], fill=255, width=w)
-            glyph.d.line([(X + R * 0.8, Y - R * 0.8), (X - R * 0.8 + j(), Y + R * 0.8)], fill=255, width=w)
-        elif kind == "martial":
-            glyph.d.rectangle([X - R * 0.8 + j(), Y - R * 0.8, X + R * 0.8, Y + R * 0.8 + j()], outline=255, width=w)
-        else:
-            glyph.d.ellipse([X - R * 0.45, Y - R * 0.45, X + R * 0.45, Y + R * 0.45], fill=255)
 
     # -- the index --
     def make_index(self, places: dict) -> dict:

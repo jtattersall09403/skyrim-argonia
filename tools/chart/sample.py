@@ -22,11 +22,13 @@ def features(n: int = 126) -> Features:
     cover = np.full(ground.shape, 17, np.int16)
     cover[ground < 0] = 35
     cover[(ground >= 0) & (ground < 12)] = 7  # a marsh fringe
+    cover[(ground >= 30) & (xx > 0.42)] = 20  # a wood on the east slope
     span = n * s
     rivers = [Line("river.a", np.array([[0.3, 0.3], [0.45, 0.5], [0.6, 0.7], [0.72, 0.86]]) * span, True, 3.0),
               Line("river.b", np.array([[0.2, 0.5], [0.3, 0.6], [0.45, 0.62]]) * span, False, 1.0)]
-    roads = [Line("route.road.a", np.array([[0.2, 0.3], [0.5, 0.35], [0.7, 0.5]]) * span, True, 2.0),
-             Line("route.road.b", np.array([[0.5, 0.35], [0.45, 0.6]]) * span, False, 1.0)]
+    roads = [Line("route.road.a", np.array([[0.2, 0.3], [0.5, 0.35], [0.7, 0.5]]) * span, True, 2.0, "trunk"),
+             Line("route.road.b", np.array([[0.5, 0.35], [0.45, 0.6]]) * span, False, 1.0, "track"),
+             Line("route.path.c", np.array([[0.33, 0.5], [0.25, 0.4]]) * span, False, 0.7, "footpath")]
     names = ["Gideon", "Soulrest", "Lilmoth", "Blackrose", "Archon", "Stormhold", "Thorn"]
     spots = [(0.3, 0.42), (0.15, 0.6), (0.5, 0.7), (0.38, 0.68), (0.65, 0.45), (0.4, 0.2), (0.62, 0.22)]
     places = [Place(pid, nm, x * span, y * span, "settlement", 5, True) for pid, nm, (x, y) in zip(CITIES, names, spots)]

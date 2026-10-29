@@ -94,7 +94,7 @@ def write(chart: render.Chart, out: Path) -> dict:
 
 
 def demo_reveal(chart: render.Chart, name: str, radius_cells: int = 9) -> np.ndarray | None:
-    pl = [p for p in chart.index["places"].values() if p["name"] == name]
+    pl = sorted((p for p in chart.index["places"].values() if p["name"].startswith(name)), key=lambda p: p["name"])
     if not pl:
         return None
     cx, cy = pl[0]["cell"]
@@ -103,7 +103,7 @@ def demo_reveal(chart: render.Chart, name: str, radius_cells: int = 9) -> np.nda
         a, b = map(int, key.split(","))
         if (a - cx) ** 2 + (b - cy) ** 2 <= radius_cells ** 2:
             mask[int(y):int(np.ceil(y + h)), int(x):int(np.ceil(x + w))] = 1
-    mask = render.blur(mask, max(1, int(8 * chart.size / render.MASTER)), 2)
+    mask = render.blur(mask, max(1, int(20 * chart.size / render.MASTER)), 2)  # the old chart's long, gradual fade
     rev = chart.revealed.copy()
     rev[..., 3] = np.rint(rev[..., 3] * mask).astype(np.uint8)
     return flatten(chart.base, rev, chart.ink)
