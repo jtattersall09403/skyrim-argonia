@@ -45,6 +45,63 @@
 {"quest_id":"quest.local.lf83","review_findings_ord":11,"ord":3,"value":"endings"}
 {"quest_id":"quest.local.lf83","review_findings_ord":12,"ord":0,"value":"stages.10.directions"}
 {"quest_id":"quest.local.lf83","review_findings_ord":12,"ord":1,"value":"stages.20.directions"}
+{"quest_id":"quest.local.lf83","review_findings_ord":13,"ord":0,"value":"cast.well-keeper"}
+{"quest_id":"quest.local.lf83","review_findings_ord":13,"ord":1,"value":"t2"}
+{"quest_id":"quest.local.lf83","review_findings_ord":13,"ord":2,"value":"leverage[0]"}
+{"quest_id":"quest.local.lf83","review_findings_ord":13,"ord":3,"value":"e-landing"}
+{"quest_id":"quest.local.lf83","review_findings_ord":14,"ord":0,"value":"thing.lf83.clay-bend"}
+{"quest_id":"quest.local.lf83","review_findings_ord":14,"ord":1,"value":"the crocodile"}
+{"quest_id":"quest.local.lf83","review_findings_ord":14,"ord":2,"value":"stages.20.directions"}
+{"quest_id":"quest.local.lf83","review_findings_ord":15,"ord":0,"value":"topic.lf83-one-charge"}
+{"quest_id":"quest.local.lf83","review_findings_ord":15,"ord":1,"value":"lf83-stop-charge"}
+{"quest_id":"quest.local.lf83","review_findings_ord":15,"ord":2,"value":"lf83-ford-charge"}
+{"quest_id":"quest.local.lf83","review_findings_ord":16,"ord":0,"value":"n1-3"}
+{"quest_id":"quest.local.lf83","review_findings_ord":16,"ord":1,"value":"t9"}
+{"quest_id":"quest.local.lf83","review_findings_ord":16,"ord":2,"value":"k1"}
+{"quest_id":"quest.local.lf83","review_findings_ord":17,"ord":0,"value":"e-station"}
+{"quest_id":"quest.local.lf83","review_findings_ord":17,"ord":1,"value":"lf83-walls-unplastered"}
+{"quest_id":"quest.local.lf83","review_findings_ord":18,"ord":0,"value":"stages.20.directions"}
+{"quest_id":"quest.local.lf83","review_findings_ord":18,"ord":1,"value":"why-failing"}
+{"quest_id":"quest.local.lf83","review_findings_ord":19,"ord":0,"value":"stage 30"}
+{"quest_id":"quest.local.lf83","review_findings_ord":19,"ord":1,"value":"shapeData.objections"}
+{"quest_id":"quest.local.lf83","review_findings_ord":20,"ord":0,"value":"shapeData.sides"}
+{"quest_id":"quest.local.lf83","review_findings_ord":20,"ord":1,"value":"cast.n1"}
+{"quest_id":"quest.local.lf83","review_findings_ord":21,"ord":0,"value":"revealOrder"}
+{"quest_id":"quest.local.lf83","review_findings_ord":21,"ord":1,"value":"leverage[2]"}
+{"quest_id":"quest.local.lf83","review_findings_ord":21,"ord":2,"value":"stage 10 learns"}
+{"quest_id":"quest.local.lf83","review_findings_ord":22,"ord":0,"value":"deadline"}
+{"quest_id":"quest.local.lf83","review_findings_ord":22,"ord":1,"value":"startWhen"}
+{"quest_id":"quest.local.lf83","review_findings_ord":22,"ord":2,"value":"t2"}
+{"quest_id":"quest.local.lf83","review_findings_ord":22,"ord":3,"value":"t9"}
+{"quest_id":"quest.local.lf83","review_findings_ord":23,"ord":0,"value":"t5"}
+{"quest_id":"quest.local.lf83","review_findings_ord":23,"ord":1,"value":"t6"}
+{"quest_id":"quest.local.lf83","review_findings_ord":23,"ord":2,"value":"settlement norm 0"}
+{"quest_id":"quest.local.lf83","review_findings_ord":24,"ord":0,"value":"startWhen"}
+{"quest_id":"quest.local.lf83","review_findings_ord":24,"ord":1,"value":"objectives"}
+{"quest_id":"quest.local.lf83","review_findings_ord":24,"ord":2,"value":"failForward"}
+{"quest_id":"quest.local.lf83","review_findings_ord":25,"ord":0,"value":"costTier M"}
+{"quest_id":"quest.local.lf83","review_findings_ord":25,"ord":1,"value":"variants"}
+{"quest_id":"quest.local.lf83","review_findings_ord":25,"ord":2,"value":"approaches"}
+{"quest_id":"quest.local.lf83","review_findings_ord":26,"ord":0,"value":"rewards"}
+{"quest_id":"quest.local.lf83","review_findings_ord":27,"ord":0,"value":"topic.lf83-clay-bend (Signs)"}
+{"quest_id":"quest.local.lf83","review_findings_ord":28,"ord":0,"value":"stages.10.journalText"}
+{"quest_id":"quest.local.lf83","review_findings_ord":29,"ord":0,"value":"stages.20"}
+{"quest_id":"quest.local.lf83","review_findings_ord":30,"ord":0,"value":"directions"}
+{"quest_id":"quest.local.lf83","review_findings_ord":30,"ord":1,"value":"schedules"}
+{"quest_id":"quest.local.lf83","review_findings_ord":31,"ord":0,"value":"the crocodile"}
+{"quest_id":"quest.local.lf83","review_findings_ord":32,"ord":0,"value":"recordSources"}
+{"quest_id":"quest.local.lf83","review_findings_ord":32,"ord":1,"value":"rumours"}
+{"quest_id":"quest.local.lf83","review_findings_ord":32,"ord":2,"value":"ford-mooring"}
+{"quest_id":"quest.local.lf83","review_findings_ord":33,"ord":0,"value":"item.lf83.well-silt"}
+{"quest_id":"quest.local.lf83","review_findings_ord":34,"ord":0,"value":"cast.well-keeper"}
+{"quest_id":"quest.local.lf83","review_findings_ord":35,"ord":0,"value":"ledger page"}
+{"quest_id":"quest.local.lf83","review_findings_ord":35,"ord":1,"value":"the poler's wife"}
+{"quest_id":"quest.local.lf83","review_findings_ord":36,"ord":0,"value":"foundation"}
+{"quest_id":"quest.local.lf83","review_findings_ord":37,"ord":0,"value":"socket.claywater-station.item-station-ledger"}
+{"quest_id":"quest.local.lf83","review_findings_ord":38,"ord":0,"value":"stages.10.directions"}
+{"quest_id":"quest.local.lf83","review_findings_ord":39,"ord":0,"value":"approach settings and uses"}
+{"quest_id":"quest.local.lf83","review_findings_ord":40,"ord":0,"value":"premise"}
+{"quest_id":"quest.local.lf83","review_findings_ord":41,"ord":0,"value":"stages.20/30 journalText"}
 {"quest_id":"quest.local.lh38","review_findings_ord":0,"ord":0,"value":"shapeData.misdiagnosis"}
 {"quest_id":"quest.local.lh38","review_findings_ord":0,"ord":1,"value":"fact.greenspring.why-pressures-3"}
 {"quest_id":"quest.local.lh38","review_findings_ord":0,"ord":2,"value":"quest.mr.mr01"}

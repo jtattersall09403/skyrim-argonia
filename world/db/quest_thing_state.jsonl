@@ -1,18 +1,16 @@
 {"quest_id":"quest.local.lf83","things_ord":0,"state":"after-40","value":"a band of fresh grey clay pressed in behind the coping (place_local_state_variants lf83-well-clayed)"}
-{"quest_id":"quest.local.lf83","things_ord":0,"state":"after-92","value":"a board over the windlass (lf83-well-closed)"}
-{"quest_id":"quest.local.lf83","things_ord":0,"state":"before-40","value":"a new crack a finger wide down the coping on the ford side, old mortar lines beside it"}
+{"quest_id":"quest.local.lf83","things_ord":0,"state":"before-40","value":"a new crack a finger wide down the coping on the ford side, with old mortar lines of earlier mending beside it; examining it sets flag.lf83.crack-seen (an activator: handed to the planner, 16b)"}
 {"quest_id":"quest.local.lf83","things_ord":1,"state":"before-40","value":"a small clay jar of fine grey-brown silt, owned by Livia Varinius; taking it is theft if seen"}
-{"quest_id":"quest.local.lf83","things_ord":2,"state":"all","value":"the page for 3 to 6 Rain's Hand: buckets drawn, beds let, the poler's wife charged nothing, a new crack in the well head a finger wide, travellers asking why the landing charges them again"}
-{"quest_id":"quest.local.lf83","things_ord":3,"state":"all","value":"Signs-For-The-Cargo works it by day"}
-{"quest_id":"quest.local.lf83","things_ord":4,"state":"after-41","value":"unplastered before the rains (lf83-walls-unplastered)"}
-{"quest_id":"quest.local.lf83","things_ord":4,"state":"after-90","value":"unplastered before the rains (lf83-walls-unplastered)"}
-{"quest_id":"quest.local.lf83","things_ord":4,"state":"before-40","value":"replastered last year; the mud walls stand on the same clay bank without a crack"}
-{"quest_id":"quest.local.lf83","things_ord":5,"state":"after-40","value":"fresh spade cuts; no prints"}
-{"quest_id":"quest.local.lf83","things_ord":5,"state":"before-40","value":"a bare clay cut over deep water; old spade cuts; waders' prints in the clay"}
-{"quest_id":"quest.local.lf83","things_ord":6,"state":"after-30","value":"given to Signs-For-The-Cargo (takeItem)"}
-{"quest_id":"quest.local.lf83","things_ord":6,"state":"before-30","value":"a reed basket half full of dug clay, lying at the cut; can be taken"}
-{"quest_id":"quest.local.lf83","things_ord":7,"state":"alive","value":"lies in the deep water under the bend; comes up at anyone on the cut, day or night"}
-{"quest_id":"quest.local.lf83","things_ord":7,"state":"dead","value":"its body on the cut; no respawn for this quest's den until stage 40 or later"}
+{"quest_id":"quest.local.lf83","things_ord":2,"state":"all","value":"the page for 3 to 6 Rain's Hand: buckets drawn, beds let, the poler's wife charged nothing for wash water, a new crack in the well head a finger wide, travellers asking why the landing charges them again; reading it where it lies sets flag.lf83.ledger-read (a document-read hook: handed to the planner, 16b)"}
+{"quest_id":"quest.local.lf83","things_ord":3,"state":"all","value":"stands by the well; the player may carry water in it to Takes-The-Short-Weight"}
+{"quest_id":"quest.local.lf83","things_ord":4,"state":"all","value":"Signs-For-The-Cargo poles it in the morning and is at the drying racks behind it in the afternoon"}
+{"quest_id":"quest.local.lf83","things_ord":5,"state":"all","value":"replastered last year; the mud walls stand on the same clay bank without a crack (fact.claywater-station.vibe-condition-1)"}
+{"quest_id":"quest.local.lf83","things_ord":6,"state":"after-40","value":"fresh spade cuts; no prints"}
+{"quest_id":"quest.local.lf83","things_ord":6,"state":"before-40","value":"a bare clay cut over a deep dark pool; old spade cuts; waders' prints in the clay"}
+{"quest_id":"quest.local.lf83","things_ord":7,"state":"after-30","value":"given to Signs-For-The-Cargo (takeItem)"}
+{"quest_id":"quest.local.lf83","things_ord":7,"state":"before-30","value":"a reed basket half full of dug clay, lying at the cut; can be taken"}
+{"quest_id":"quest.local.lf83","things_ord":8,"state":"alive","value":"lies in the pool under the cut and suns on it at midday; comes up at anyone on the cut, day or night; badly hurt, it sinks into the pool and comes up again at the cut"}
+{"quest_id":"quest.local.lf83","things_ord":8,"state":"dead","value":"its body on the cut; the den never respawns once the quest has ended (a respawn rule: handed to the planner, 16b)"}
 {"quest_id":"quest.local.lh38","things_ord":0,"state":"all","value":"open; Im-Moro forbids entry"}
 {"quest_id":"quest.local.lh38","things_ord":1,"state":"all","value":"dark; the body inside until stage 70"}
 {"quest_id":"quest.local.lh38","things_ord":2,"state":"after-70","value":"raised and given to the Hist (disableRef)"}

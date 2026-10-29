@@ -121,8 +121,12 @@
 {"id":"text.objective.lf21.hear-terms","quest_id":"quest.local.lf21","surface":"journal","text":"Hear the column's terms from Gnaeus Martius below the camp"}
 {"id":"text.objective.lf67.find-den","quest_id":"quest.local.lf67","surface":"journal","text":"Look past the deep end of the seep"}
 {"id":"text.objective.lf67.tell-diggers","quest_id":"quest.local.lf67","surface":"journal","text":"Tell Meets-Every-Tide about the leech den"}
-{"id":"text.objective.lf83.carry-terms","quest_id":"quest.local.lf83","surface":"journal","text":"Take the landing's terms to Livia Varinius at the well"}
-{"id":"text.objective.lf83.hear-landing","quest_id":"quest.local.lf83","surface":"journal","text":"Ask Signs-For-The-Cargo across the ford about the two charges"}
+{"id":"text.objective.lf83.clear-bend","quest_id":"quest.local.lf83","surface":"journal","text":"Kill the crocodile at the clay cut below the ford."}
+{"id":"text.objective.lf83.get-clay","quest_id":"quest.local.lf83","surface":"journal","text":"Bring the landing's clay basket back from the cut."}
+{"id":"text.objective.lf83.hear-landing","quest_id":"quest.local.lf83","surface":"journal","text":"Hear Signs-For-The-Cargo's side at the raft."}
+{"id":"text.objective.lf83.hear-station","quest_id":"quest.local.lf83","surface":"journal","text":"Hear Livia Varinius's side at the well."}
+{"id":"text.objective.lf83.terms","quest_id":"quest.local.lf83","surface":"journal","text":"Put terms to Livia Varinius and Signs-For-The-Cargo before the rains."}
+{"id":"text.objective.lf83.why-failing","quest_id":"quest.local.lf83","surface":"journal","text":"Find out why the well at Claywater Station keeps failing."}
 {"id":"text.objective.lh07.hear-keeper","quest_id":"quest.local.lh07","surface":"journal","text":"Ask Im-Moro how she tells when water is turning"}
 {"id":"text.objective.lh37.ask-herald","quest_id":"quest.local.lh37","surface":"journal","text":"Ask Root-Herald Ixo-Vaal to set the spring terms down"}
 {"id":"text.objective.lh37.hear-keeper","quest_id":"quest.local.lh37","surface":"journal","text":"Ask Im-Moro on what terms the spring is kept"}

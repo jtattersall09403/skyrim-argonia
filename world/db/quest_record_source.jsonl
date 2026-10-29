@@ -1,10 +1,10 @@
 {"quest_id":"quest.local.lf83","source":"cultureSheets"}
 {"quest_id":"quest.local.lf83","source":"document","value":"document.station-water-ledger (its leaf as written)"}
-{"quest_id":"quest.local.lf83","source":"layout","value":"socket and place_build_landmarks rows of place.imperial-fringe.claywater-station"}
+{"quest_id":"quest.local.lf83","source":"layout","value":"socket, socket_schedule and place_build_landmarks rows of place.imperial-fringe.claywater-station; hydrology_reach_point rows of reach.169-1660 and reach.183-1646"}
 {"quest_id":"quest.local.lf83","source":"people","value":"npc rows npc.imperial-fringe.claywater-station.*"}
 {"quest_id":"quest.local.lf83","source":"placeFacts","value":"fact where place_id = place.imperial-fringe.claywater-station"}
-{"quest_id":"quest.local.lf83","source":"routes","value":"route_edge edge.route.road.gideon-blackwood-road.1087, route_edge_landmark, signpost sign.road.gideon-blackwood-road.1087"}
-{"quest_id":"quest.local.lf83","source":"stance","value":"stance rows of the three cast people"}
+{"quest_id":"quest.local.lf83","source":"routes","value":"route_edge edge.route.road.gideon-blackwood-road.1087, route_edge_landmark (the Drowning Gate at 497.4 m), signpost sign.road.gideon-blackwood-road.1087"}
+{"quest_id":"quest.local.lf83","source":"stance","value":"stance rows of the three cast people and Gaius Vibius"}
 {"quest_id":"quest.local.lh38","source":"cultureSheets"}
 {"quest_id":"quest.local.lh38","source":"people","value":"world/sources/registries/npcs.json"}
 {"quest_id":"quest.local.lh38","source":"placeFacts","value":"world/sources/placement/facts/place.hist-heartland.greenspring.json"}

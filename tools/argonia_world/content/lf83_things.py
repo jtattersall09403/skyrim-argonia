@@ -1,11 +1,11 @@
 """LF83's `new` things as world rows (decision 0024 §4, 0030): two quest items, three place sockets, three local
-state variants and the quest's new topics at Claywater Station, which the block's place layer reads (the `socket` layout program) for hand placement in 0.4 §d / 1.4.
+state variant, the quest's new topics and its objective text rows at Claywater Station, which the block's place layer reads (the `socket` layout program) for hand placement in 0.4 §d / 1.4.
 
 Idempotent: re-running upserts the same rows.  python3 -m tools.argonia_world.content.lf83_things
 Positions are metres in the place frame (east, south from the province's north-west corner), read from the
 layout's own sockets: the well head (socket.claywater-station.evidence-the-cracked-well, 323.95, 3060.79) and the
-crocodile den (socket.claywater-station.den-crocodile, 398.5, 3013.7). The clay cut is on the landing (north) bank
-beside the den; its exact spot is confirmed by hand in game.
+river's first swing below the ford (hydrology_reach_point reach.169-1660). The clay cut is on the station bank
+there; its exact spot is confirmed by hand in game.
 """
 from __future__ import annotations
 
@@ -39,13 +39,14 @@ ITEMS = [
 
 SOCKETS = [
     dict(id="socket.claywater-station.lf83-well-silt", kind="item", at_x=323.6, at_y=3061.2, zone="evidence",
-         why="LF83: Livia Varinius's jar of well silt on the coping, on the ford side.",
+         why="LF83: Livia Varinius's jar of well silt, kept under the windlass cover to show a mason.",
          host="parcel.claywater-station.the-well", parcel="parcel.claywater-station.the-well", value_tier="trivial",
          owner=LIVIA, item_kind="quest", item="item.lf83.well-silt"),
-    dict(id="socket.claywater-station.lf83-clay-bend", kind="marker", at_x=396.0, at_y=3006.0, zone="evidence",
-         why="LF83: the clay bend, a bare clay cut over deep water on the landing bank below the raft, beside the "
-             "crocodile's den; spade cuts and waders' prints in the clay."),
-    dict(id="socket.claywater-station.lf83-clay-basket", kind="item", at_x=395.0, at_y=3006.5, zone="evidence",
+    dict(id="socket.claywater-station.lf83-clay-bend", kind="marker", at_x=281.5, at_y=3056.0, zone="evidence",
+         why="LF83: the clay cut, a bare clay bank on the station (south) bank where the river swings west below the "
+             "ford (reach.169-1660 apex 280.2, 3049.4), the landing's clay since before the well; spade cuts and "
+             "waders' prints in the clay. Needs a scour pool of 2.5 m or more and the crocodile den here (planner)."),
+    dict(id="socket.claywater-station.lf83-clay-basket", kind="item", at_x=282.0, at_y=3055.5, zone="evidence",
          why="LF83: the landing's clay basket, dropped at the cut.", value_tier="trivial", owner=SIGNS,
          item_kind="quest", item="item.lf83.clay-basket"),
 ]
@@ -55,14 +56,8 @@ VARIANTS = [
     dict(id="lf83-well-clayed", when="LF83 e-shared (stage 40)",
          what_changes="thing.lf83.well-head: a band of fresh grey clay pressed in behind the coping on the ford side",
          description="The landing has sealed the cracked well head with clay."),
-    dict(id="lf83-well-closed", when="LF83 e-keeper-dead (stage 92)",
-         what_changes="thing.lf83.well-head: a board over the windlass; the bucket gone",
-         description="The well is boarded over; nobody keeps it."),
-    dict(id="lf83-walls-unplastered", when="LF83 e-station (stage 41) or e-rains (stage 90)",
-         what_changes="thing.lf83.landing-walls: the mud huts on the landing bank go unplastered, the old plaster "
-                      "cracked and streaked",
-         description="The landing had no clay to replaster before the rains."),
 ]
+DROPPED_VARIANTS = ["lf83-well-closed", "lf83-walls-unplastered"]   # cut to keep LF83 within tier M (review R2-M9)
 
 TOPICS = [   # LF83's new topics (the record's `new: true` rows; quest_record.md: 2.5 adds them, here the first rung)
     ("topic.lf83-cracked-well", "the failing well"),
@@ -73,11 +68,31 @@ TOPICS = [   # LF83's new topics (the record's `new: true` rows; quest_record.md
 ]
 
 
+STALE_TEXT = ["text.objective.lf83.carry-terms"]   # the imported objective the rebuilt record dropped
+
+
+def objective_entries(w: db.World) -> None:
+    """The objective text keys' journal rows, from the record's own words (quest_objective.objective_text): the
+    record is the one source, these rows are what the generator reads by key."""
+    for k in STALE_TEXT:
+        if w.get("journal_entry", k) is not None:
+            w.delete("journal_entry_fact", journal_entry_id=k)
+            w.delete("journal_entry_grounding", journal_entry_id=k)
+            w.delete("journal_entry", k)
+    for r in w.query("SELECT text, objective_text FROM quest_objective WHERE quest_id = ? ORDER BY stages_ord, ord",
+                     QUEST):
+        if r["objective_text"]:
+            w.upsert("journal_entry", dict(id=r["text"], quest_id=QUEST, surface="journal", text=r["objective_text"]))
+
+
 def apply(w: db.World) -> None:
     for tid, label in TOPICS:
         w.upsert("topic", dict(id=tid, topic_class="quest", label=label, keys_quest=QUEST))
     if w.get("line_type", "goodbye") is None:
         w.insert("line_type", id="goodbye")
+    for r in w.rows("place_local_state_variants", place_id=PLACE):
+        if r.id in DROPPED_VARIANTS:
+            w.delete("place_local_state_variants", PLACE, r.ord)
     have_v = {r.id: r.ord for r in w.rows("place_local_state_variants", place_id=PLACE) if r.id}
     nxt_v = max([r.ord for r in w.rows("place_local_state_variants", place_id=PLACE)], default=-1) + 1
     for v in VARIANTS:
@@ -94,6 +109,7 @@ def apply(w: db.World) -> None:
         if ord_ is None:
             ord_, nxt = nxt, nxt + 1
         w.upsert("socket", dict(place_id=PLACE, ord=ord_, op="socket", **s))
+    objective_entries(w)
 
 
 def main() -> int:

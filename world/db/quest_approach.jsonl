@@ -1,14 +1,9 @@
 {"quest_id":"quest.local.lf83","stages_ord":0,"ord":0,"id":"a-hear"}
 {"quest_id":"quest.local.lf83","stages_ord":0,"ord":1,"id":"a-bribe"}
 {"quest_id":"quest.local.lf83","stages_ord":1,"ord":0,"id":"a-hunt"}
-{"quest_id":"quest.local.lf83","stages_ord":1,"ord":1,"id":"a-snipe"}
-{"quest_id":"quest.local.lf83","stages_ord":1,"ord":2,"id":"a-doubter"}
-{"quest_id":"quest.local.lf83","stages_ord":1,"ord":3,"id":"a-jar"}
-{"quest_id":"quest.local.lf83","stages_ord":1,"ord":4,"id":"a-ledger"}
-{"quest_id":"quest.local.lf83","stages_ord":1,"ord":5,"id":"a-bribe"}
+{"quest_id":"quest.local.lf83","stages_ord":1,"ord":1,"id":"a-evidence"}
 {"quest_id":"quest.local.lf83","stages_ord":2,"ord":0,"id":"a-one-charge"}
-{"quest_id":"quest.local.lf83","stages_ord":2,"ord":1,"id":"a-landing"}
-{"quest_id":"quest.local.lf83","stages_ord":2,"ord":2,"id":"a-station"}
+{"quest_id":"quest.local.lf83","stages_ord":2,"ord":1,"id":"a-press"}
 {"quest_id":"quest.local.lh38","stages_ord":0,"ord":0,"id":"a-talk"}
 {"quest_id":"quest.local.lh38","stages_ord":0,"ord":1,"id":"a-test"}
 {"quest_id":"quest.local.lh38","stages_ord":1,"ord":0,"id":"a-ask"}

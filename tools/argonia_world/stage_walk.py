@@ -29,11 +29,16 @@ class State:
     days: dict = dataclasses.field(default_factory=dict)        # event -> days since
     done: set = dataclasses.field(default_factory=set)          # (quest, objective)
     disposition: dict = dataclasses.field(default_factory=dict)
+    season: str | None = None                                   # None: the dry season, where quests start
 
     def merged(self, other: "State") -> "State":
         return State(self.heard | other.heard, self.known | other.known, {**self.items, **other.items},
                      {**self.flags, **other.flags}, self.dead | other.dead, {**self.days, **other.days},
-                     self.done | other.done, {**self.disposition, **other.disposition})
+                     self.done | other.done, {**self.disposition, **other.disposition},
+                     other.season or self.season)
+
+
+SEASONS = ("dry", "hatching", "wet")   # the `season` rows, in order
 
 
 class Unsupported(Exception):
@@ -64,6 +69,8 @@ def holds(c, s: State, objectives: dict) -> bool:
         return s.days.get(args[0], -1) >= args[1]
     if term == "dispositionAtLeast":
         return s.disposition.get(args[0], 50) >= args[1]
+    if term == "seasonIs":
+        return (s.season or "dry") == args[0]
     if term == "objectiveComplete":
         key = (args[0], args[1])
         return key in s.done or (key in objectives and holds(objectives[key], s, objectives))
@@ -85,6 +92,8 @@ def witnesses(c, objectives: dict) -> list[State]:
         (t2, a2), = a.items()
         if t2 == "npcAlive":
             return [State(dead={a2 if not isinstance(a2, list) else a2[0]})]
+        if t2 == "seasonIs":
+            return [State(season=next(x for x in SEASONS if x != (a2 if not isinstance(a2, list) else a2[0])))]
         raise Unsupported(f"not {t2}")
     if term == "topicHeardFrom":
         return [State(heard={(args[0], args[1])})]
@@ -100,6 +109,8 @@ def witnesses(c, objectives: dict) -> list[State]:
         return [State(days={args[0]: args[1]})]
     if term == "dispositionAtLeast":
         return [State(disposition={args[0]: args[1]})]
+    if term == "seasonIs":
+        return [State(season=args[0])]
     if term == "objectiveComplete":
         key = (args[0], args[1])
         if key not in objectives:
