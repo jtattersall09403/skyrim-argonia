@@ -13,6 +13,18 @@ try {
   . C:\argonia\infra\display.ps1 -Cmd modes   # defines Get-Modes (and its own $W/$H: names here differ)
   Add-Type -AssemblyName System.Windows.Forms
   $dev = ([System.Windows.Forms.Screen]::AllScreens | ? Primary).DeviceName
+  # The Virtual Display Driver (loaded once per boot with a fine grid of sizes, vdd-boot.ps1): the closest of its
+  # modes in shape, then in size, within the stream budget; it stays the sole primary display.
+  $vdd = Get-VddDevice
+  if ($vdd) {
+    $want = $reqW / $reqH
+    $best = @(Get-Modes $vdd | ? { $_.Hz -ge 59 -and $_.W * $_.H -le 2560 * 1600 * 1.4 }) |
+      Sort-Object { [math]::Round([math]::Abs([math]::Log(($_.W / $_.H) / $want)), 3) }, { [math]::Abs($_.W * $_.H - $reqW * $reqH) } |
+      Select -First 1
+    $r = [Disp]::SoleDisplay($vdd, $best.W, $best.H, 60)
+    Add-Content $log "$(Get-Date -Format o) ${reqW}x$reqH requested; virtual display $vdd set to $($best.W)x$($best.H) ($r)"
+    exit 0
+  }
   $want = $reqW / $reqH
   # Near the requested size and within the T4's stream budget (2560x1600), so a small screen never gets a 4K desktop.
   $limit = [math]::Max($reqW * $reqH * 1.3, 1280 * 720)

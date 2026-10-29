@@ -13,6 +13,48 @@ public class Disp {
     public int dmICMMethod, dmICMIntent, dmMediaType, dmDitherType, dmReserved1, dmReserved2, dmPanningWidth, dmPanningHeight; }
   [DllImport("user32.dll")] public static extern bool EnumDisplaySettings(string dev, int mode, ref DEVMODE dm);
   [DllImport("user32.dll")] public static extern int ChangeDisplaySettingsEx(string dev, ref DEVMODE dm, IntPtr hwnd, int flags, IntPtr lParam);
+  [StructLayout(LayoutKind.Sequential, CharSet=CharSet.Ansi)] public struct DISPLAY_DEVICE { public int cb;
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst=32)] public string DeviceName; [MarshalAs(UnmanagedType.ByValTStr, SizeConst=128)] public string DeviceString;
+    public int StateFlags; [MarshalAs(UnmanagedType.ByValTStr, SizeConst=128)] public string DeviceID; [MarshalAs(UnmanagedType.ByValTStr, SizeConst=128)] public string DeviceKey; }
+  [DllImport("user32.dll", CharSet=CharSet.Ansi)] public static extern bool EnumDisplayDevices(string dev, int i, ref DISPLAY_DEVICE dd, int flags);
+  public static string FindDevice(string match) {   // the \\.\DISPLAYn whose adapter description contains match
+    for (int i = 0; i < 64; i++) {
+      var d = new DISPLAY_DEVICE(); d.cb = Marshal.SizeOf(typeof(DISPLAY_DEVICE));
+      if (!EnumDisplayDevices(null, i, ref d, 0)) break;
+      if (d.DeviceString != null && d.DeviceString.IndexOf(match, StringComparison.OrdinalIgnoreCase) >= 0) return d.DeviceName;
+    }
+    return null;
+  }
+  [DllImport("user32.dll", EntryPoint="ChangeDisplaySettingsExA")] public static extern int ApplyAll(string dev, IntPtr dm, IntPtr hwnd, int flags, IntPtr lParam);
+  /// Make dev the only attached display, primary at w x h @ hz: detach every other display, then apply at once.
+  public static int SoleDisplay(string dev, int w, int h, int hz) {
+    const int UPDATEREGISTRY = 0x1, SET_PRIMARY = 0x10, NORESET = 0x10000000;
+    // the target first, as primary (Windows will not detach the current primary before there is a new one)
+    var m = new DEVMODE(); m.dmSize = (short)Marshal.SizeOf(typeof(DEVMODE));
+    EnumDisplaySettings(dev, -1, ref m);
+    m.dmPelsWidth = w; m.dmPelsHeight = h; m.dmDisplayFrequency = hz; m.dmPositionX = 0; m.dmPositionY = 0;
+    m.dmFields = 0x20 | 0x80000 | 0x100000 | 0x400000;
+    int r = ChangeDisplaySettingsEx(dev, ref m, IntPtr.Zero, UPDATEREGISTRY | SET_PRIMARY | NORESET, IntPtr.Zero);
+    for (int i = 0; i < 64; i++) {   // then every other attached display off
+      var d = new DISPLAY_DEVICE(); d.cb = Marshal.SizeOf(typeof(DISPLAY_DEVICE));
+      if (!EnumDisplayDevices(null, i, ref d, 0)) break;
+      if ((d.StateFlags & 1) == 0 || d.DeviceName == dev) continue;
+      var off = new DEVMODE(); off.dmSize = (short)Marshal.SizeOf(typeof(DEVMODE));
+      off.dmFields = 0x20 | 0x80000 | 0x100000;
+      ChangeDisplaySettingsEx(d.DeviceName, ref off, IntPtr.Zero, UPDATEREGISTRY | NORESET, IntPtr.Zero);
+    }
+    int a = ApplyAll(null, IntPtr.Zero, IntPtr.Zero, 0, IntPtr.Zero);
+    return r != 0 ? r : a;
+  }
+  public static string ListDevices() {
+    var s = new System.Text.StringBuilder();
+    for (int i = 0; i < 64; i++) {
+      var d = new DISPLAY_DEVICE(); d.cb = Marshal.SizeOf(typeof(DISPLAY_DEVICE));
+      if (!EnumDisplayDevices(null, i, ref d, 0)) break;
+      s.AppendLine(d.DeviceName + " [" + d.DeviceString + "] flags=" + d.StateFlags);
+    }
+    return s.ToString();
+  }
 }
 '@
 function New-Mode { $m = New-Object Disp+DEVMODE; $m.dmSize = [Runtime.InteropServices.Marshal]::SizeOf($m); $m }
@@ -28,6 +70,7 @@ function Get-CurrentMode([string]$Device) {
   $m = New-Mode; [void][Disp]::EnumDisplaySettings($Device, -1, [ref]$m)
   [pscustomobject]@{ W = $m.dmPelsWidth; H = $m.dmPelsHeight; Hz = $m.dmDisplayFrequency }
 }
+function Get-VddDevice { [Disp]::FindDevice('Virtual Display') }   # its \\.\DISPLAYn, or $null
 if ($Cmd -eq 'modes') { return }
 if ($Cmd -eq 'pin') {
   Add-Type -AssemblyName System.Windows.Forms

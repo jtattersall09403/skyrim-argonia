@@ -110,6 +110,13 @@ function Install-Stream {
     Register-ScheduledTask -TaskName argonia-display -Action $a -Trigger (New-ScheduledTaskTrigger -AtLogOn -User Administrator) -User Administrator -RunLevel Highest | Out-Null
   }
   Write-Host 'display: pinned at logon'
+  # With the Virtual Display Driver installed, it is loaded with every screen shape at logon (vdd-boot.ps1).
+  if ((Get-PnpDevice -Class Display -EA SilentlyContinue | ? { $_.FriendlyName -eq 'Virtual Display Driver' }) -and
+      -not (Get-ScheduledTask -TaskName argonia-vdd -ErrorAction SilentlyContinue)) {
+    $a = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument "-ExecutionPolicy Bypass -WindowStyle Hidden -File $Root\infra\vdd-boot.ps1"
+    Register-ScheduledTask -TaskName argonia-vdd -Action $a -Trigger (New-ScheduledTaskTrigger -AtLogOn -User Administrator) -User Administrator -RunLevel Highest | Out-Null
+    Disable-ScheduledTask -TaskName argonia-display | Out-Null   # the virtual display replaces the T4 head pin
+  }
   # The machine stops itself after 15 minutes with no stream client and no agent (idle-stop.ps1).
   if (-not (Get-ScheduledTask -TaskName argonia-idle-stop -ErrorAction SilentlyContinue)) {
     $a = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument "-ExecutionPolicy Bypass -WindowStyle Hidden -File $Root\infra\idle-stop.ps1"

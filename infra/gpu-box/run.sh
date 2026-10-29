@@ -23,7 +23,8 @@ id() {
     --query 'Reservations[0].Instances[0].InstanceId' --output text
 }
 SSH_OPTS=(-i "$KEY" -o StrictHostKeyChecking=accept-new -o ConnectTimeout=8 -o BatchMode=yes -o ServerAliveInterval=30)
-ps() { ssh "${SSH_OPTS[@]}" "Administrator@$(ip)" "$@"; }
+# Every command refreshes the machine's busy flag, so idle-stop.ps1 never stops it between an agent's commands.
+ps() { ssh "${SSH_OPTS[@]}" "Administrator@$(ip)" "New-Item -ItemType File -Force C:\argonia\state\busy | Out-Null; $*"; }
 wait_ssh() {
   local i; for i in $(seq 1 24); do ps 'hostname' >/dev/null 2>&1 && return 0; read -t 10 < /dev/zero 2>/dev/null || true; done
   echo "no SSH after 4 minutes" >&2; return 1

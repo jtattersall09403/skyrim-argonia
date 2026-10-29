@@ -11,6 +11,7 @@ repeatable. This is a throwaway test install (0.0 §d); the real stack is pinned
 """
 import argparse
 import pathlib
+import re
 import shutil
 import subprocess
 
@@ -28,7 +29,10 @@ SKSE_ONLY = {32444, 34705, 78159, 82395, 82737, 92109, 191697}
 
 def unpack(archive, dest):
     dest.mkdir(parents=True, exist_ok=True)
-    subprocess.run(["7z", "x", "-y", f"-o{dest}", str(archive)], check=True, capture_output=True)
+    if archive.suffix.lower() == ".rar":  # RAR5: p7zip cannot decode it
+        subprocess.run(["unrar", "x", "-o+", "-inul", str(archive), str(dest) + "/"], check=True, capture_output=True)
+    else:
+        subprocess.run(["7z", "x", "-y", f"-o{dest}", str(archive)], check=True, capture_output=True)
     # Some zips store Windows paths ("Interface\\x.txt") as flat names; turn them into folders.
     for f in sorted(dest.rglob("*"), key=lambda x: -len(x.parts)):
         if "\\" in f.name:
@@ -50,8 +54,12 @@ MAX_PATH = 259
 def prune(data):
     """Drop OAR "put your <clip> file here.txt" placeholders (instructions, no function) and fail on long paths."""
     for f in list(data.rglob("*")):
-        if f.is_file() and f.name.lower().startswith("put your ") and f.suffix.lower() == ".txt":
+        if f.is_file() and (f.name.lower().startswith("put your ") and f.suffix.lower() == ".txt"
+                            or f.suffix.lower() in (".bat", ".pdb")):
             f.unlink()
+    for d in sorted((x for x in data.rglob("*") if x.is_dir() and (x.name in ("BEIFEN",) or not x.name.isascii())),
+                    key=lambda x: -len(x.parts)):
+        shutil.rmtree(d, ignore_errors=True)  # Rim Parry's unused sound backups ("新建文件夹", "BEIFEN")
     for d in sorted((x for x in data.rglob("*") if x.is_dir()), key=lambda x: -len(x.parts)):
         if not any(d.iterdir()):
             d.rmdir()
@@ -66,6 +74,25 @@ def copy_into(src, dst):
     else:
         dst.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(src, dst)
+
+
+DATA_DIRS = {"meshes", "textures", "scripts", "skse", "interface", "sound", "music", "seq", "nemesis_engine",
+             "pandora_engine", "mcm", "source", "strings", "video", "lodsettings", "grass", "shadersfx"}
+
+
+def data_root(src):
+    """Descend through single wrapper folders ("Payload Interpretor/", "Modern Stagger Lock/") to the data root."""
+    root = src
+    while True:
+        items = [f for f in root.iterdir() if not f.name.startswith(".")]
+        dirs = [f for f in items if f.is_dir()]
+        if (len(items) == 1 and dirs and dirs[0].name.lower() not in DATA_DIRS
+                and dirs[0].name.lower() != "data"):
+            root = dirs[0]
+        elif len(items) == 1 and dirs and dirs[0].name.lower() == "data":
+            return dirs[0]
+        else:
+            return root
 
 
 def place(mod, src, data, root, tools):
@@ -99,8 +126,9 @@ def place(mod, src, data, root, tools):
     elif mod == 47191:
         copy_into(src / "Elder Souls - Sword SE v2.1" / "Elder Souls - Sword 2.0", data)
     else:
-        for f in src.iterdir():
-            if f.name.lower() not in ("docs", "fomod"):
+        root = data_root(src)
+        for f in root.iterdir():
+            if f.name.lower() not in ("docs", "fomod", "meta.ini") and not f.name.upper().startswith(("COPYING", "LICENSE", "CHANGES", "EXCEPTIONS", "README")):
                 copy_into(f, data / f.name)
 
 
@@ -117,14 +145,16 @@ def main():
     tools = mo2 / "tools"
     names = []
     for m in spec["mods"]:
-        (archive,) = pathlib.Path(a.mods).glob(f"{m['mod']}-{m['file']}-*")
-        src = work / str(m["mod"])
+        pattern = f"gh-{m['github'].replace('/', '_')}-{m['asset']}" if "github" in m else f"{m['mod']}-{m['file']}-*"
+        (archive,) = pathlib.Path(a.mods).glob(pattern)
+        key = m.get("mod") or m["github"].replace("/", "_")
+        src = work / f"{key}-{m.get('file', 'gh')}"
         unpack(archive, src)
         data = mo2 / "mods" / m["name"]
         data.mkdir(parents=True, exist_ok=True)
-        place(m["mod"], src, data, root, tools)
+        place(m.get("mod"), src, data, root, tools)
         prune(data)
-        if m["mod"] not in (30379, 133232) or any(data.iterdir()):
+        if m.get("mod") not in (30379, 133232) or any(data.iterdir()):
             names.append(m["name"])
         print(f"staged {m['name']}")
     shutil.rmtree(work)
@@ -134,8 +164,21 @@ def main():
     prof.mkdir(parents=True)
     # MO2's modlist.txt lists the highest priority first.
     (prof / "modlist.txt").write_text("".join(f"+{n}\r\n" for n in reversed(names)))
-    plugins = [f.name for n in names for f in sorted((mo2 / "mods" / n).iterdir())
-               if f.suffix.lower() in (".esp", ".esl", ".esm")]
+    # Elden Parry's window: Rim Parry needs a start above 0; its author's 0.02-0.2 s (stock, for the feel test).
+    inis = [f for n in names for f in (mo2 / "mods" / n).rglob("EldenParry.ini")]
+    if inis:
+        ini = inis[-1]
+        text = ini.read_text(errors="ignore")
+        for k, v in (("fParryWindow_Start", "0.02"), ("fParryWindow_End", "0.2")):
+            text = re.sub(rf"^{k}\s*=.*$", f"{k} = {v}", text, flags=re.M) if re.search(rf"^{k}\s*=", text, re.M) \
+                else text + f"\n{k} = {v}\n"
+        ini.write_text(text)
+        print("elden parry window set in", ini.relative_to(mo2))
+    plugins = []
+    for n in names:  # later mods may ship the same plugin (Rim Parry's CTD fix): list each once, first place
+        for f in sorted((mo2 / "mods" / n).iterdir()):
+            if f.suffix.lower() in (".esp", ".esl", ".esm") and f.name not in plugins:
+                plugins.append(f.name)
     (prof / "plugins.txt").write_text("".join(f"*{n}\r\n" for n in plugins))
     (prof / "loadorder.txt").write_text("".join(f"{n}\r\n" for n in plugins))
     (mo2 / "portable.txt").write_text("")

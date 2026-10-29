@@ -1,5 +1,5 @@
 {
-  "_about": "Chunk 0.0 \u00a7d: the stock souls-like stack for the one combat test, in install order. Nexus SSE mod and file ids only; the files are downloaded to ~/.argonia/mods and never committed (decision 0003). Chosen in docs/research/2026-10-28/stream-and-combat-stack.md \u00a72.2.",
+  "_about": "Chunk 0.0 \u00a7d: the stock souls-like stack for the one combat test, in install order. Nexus SSE mod and file ids only; the files are downloaded to ~/.argonia/mods and never committed (decision 0003). Chosen in docs/research/2026-10-28/stream-and-combat-stack.md \u00a72.2. Parry, riposte and backstab (owner, 2026-10-29): Rim Parry and Execution with Elden Parry, per docs/research/2026-10-29/parry-riposte-backstab.md; GitHub-only items carry github/tag/asset.",
   "game": "skyrimspecialedition",
   "runtime": "1.7.104.0 (Steam build 24914197)",
   "mods": [
@@ -99,6 +99,83 @@
       "name": "SSE Display Tweaks",
       "mod": 34705,
       "file": 797175
+    },
+    {
+      "name": "Elden Parry",
+      "mod": 70240,
+      "file": 304517
+    },
+    {
+      "name": "Elden Parry 1.7.99 DLL",
+      "mod": 85740,
+      "file": 793442
+    },
+    {
+      "name": "Elden Parry Precision Fix",
+      "mod": 188223,
+      "file": 789181
+    },
+    {
+      "name": "Payload Interpreter",
+      "mod": 65089,
+      "file": 394150
+    },
+    {
+      "name": "Payload Interpreter 1.7.104 DLL",
+      "mod": 192679,
+      "file": 809282
+    },
+    {
+      "name": "BDI Payload Interpreter patch",
+      "mod": 78146,
+      "file": 328880
+    },
+    {
+      "name": "dTry Key Utils",
+      "mod": 69944,
+      "file": 292793
+    },
+    {
+      "name": "dTry Key Utils 1.7.104 DLL",
+      "mod": 189573,
+      "file": 794857
+    },
+    {
+      "name": "SPID",
+      "mod": 36869,
+      "file": 795621
+    },
+    {
+      "name": "Modern Stagger Lock",
+      "github": "SkyHorizon3/ModernStaggerLock",
+      "tag": "v1.07a-1.7.99+",
+      "asset": "Modern.Stagger.Lock.1.07a.7z"
+    },
+    {
+      "name": "MaxsuBlockOverhaul",
+      "github": "max-su-2019/MaxuBlockOverhaul",
+      "tag": "v0.24",
+      "asset": "MaxsuBlockOverhaul-V0.24a.7z"
+    },
+    {
+      "name": "Rim Parry and Execution",
+      "mod": 114366,
+      "file": 499427
+    },
+    {
+      "name": "Rim Parry CTD fix",
+      "mod": 143312,
+      "file": 600715
+    },
+    {
+      "name": "Rim Parry Elden Parry patch",
+      "mod": 114366,
+      "file": 499429
+    },
+    {
+      "name": "Rim Parry One Parry Patch",
+      "mod": 164526,
+      "file": 687622
     },
     {
       "name": "Crash Logger",
