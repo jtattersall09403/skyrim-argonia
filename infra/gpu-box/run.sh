@@ -64,7 +64,13 @@ Get-Content $o -EA SilentlyContinue' ;;
       [ "$s" = stopped ] && break
       read -t 10 < /dev/zero 2>/dev/null || true
     done
-    aws ec2 start-instances --region $R --instance-ids "$(id)" >/dev/null; wait_ssh; echo "running at $(ip)" ;;
+    # A spot instance reads "stopped" a few seconds before its spot request settles; a start in that gap fails
+    # with IncorrectSpotRequestState (seen 2026-10-29), so retry for a minute.
+    for i in $(seq 1 12); do
+      aws ec2 start-instances --region $R --instance-ids "$(id)" >/dev/null 2>&1 && break
+      read -t 5 < /dev/zero 2>/dev/null || true
+    done
+    wait_ssh; echo "running at $(ip)" ;;
   start) aws ec2 start-instances --region $R --instance-ids "$(id)" >/dev/null; wait_ssh; echo "running at $(ip)" ;;
   stop) aws ec2 stop-instances --region $R --instance-ids "$(id)" >/dev/null; echo stopping ;;
   *) sed -n '2,8p' "$0"; exit 2 ;;
