@@ -48,7 +48,7 @@ composed once:
 | L6 owner | the owner plays from a scene (Parts 0–2) or the real game (Parts 3–4) through the stream | owner | the slice playthrough |
 
 **The studio** (0022) is the dev profile of the real game booted into any place from the base save by a scene
-(a console batch file, `bat <id>`); SkyLink AI and the console are the hands for agents and the owner alike, and
+(a console batch file, `bat <id>`); our dev-only bridge (`ArgoniaBridge` through `tools/bridge.py`) and the console are the hands for agents and the owner alike, and
 there is no panel of ours. Every L4 check and every owner check starts there; nothing is tested through the
 new-game flow. **Journeys read state and keep stills** (0021 §3): one script, one runner, state and events decide,
 a still per step as evidence, teleport between short steps, no agent playing by looking.

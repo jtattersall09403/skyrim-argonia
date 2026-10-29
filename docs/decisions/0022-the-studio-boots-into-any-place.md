@@ -1,6 +1,6 @@
-# 0022: The studio is the real game booted into any place by a saved game and a scene file; SkyLink and the console are its hands
+# 0022: The studio is the real game booted into any place by a saved game and a scene file; a thin dev bridge and the console are its hands
 
-**Status:** decided 2026-10-28; rewritten 2026-10-29 by [0029](0029-part-0-is-one-sequence-not-spikes.md) §3
+**Status:** decided 2026-10-28; rewritten 2026-10-29 by [0029](0029-part-0-is-one-sequence-not-spikes.md) §3; the bridge amended 2026-10-29 (0.2 measured that SkyLink AI 1.0.0 does not load on 1.7.104, so `ArgoniaBridge` carries the whole list, SkyLink's design as the method)
 (owner: the studio "may be stale: didn't I subsequently decide we can just use the SkyLink AI tools for things
 that we had intended to build 'the studio' for?"; reuse existing tools rather than build redundant harness).
 The owner's original ask stands: "some studio mode… designed for agents to be able to easily drive headless and
@@ -18,8 +18,8 @@ quests, inventory, events, screenshots, save and load. So the studio is those th
 ## Decision
 
 1. **The studio is the dev profile of the real game** on the game machine: same Skyrim, same pinned stack, same
-   `Argonia.esm`, plugins and views, plus the dev-only bridge (SkyLink, and `ArgoniaBridge` for what it lacks;
-   0.3 §a), which never ships (0003's release guard checks the DLL list). There is no `ArgoniaStudio` DLL and no
+   `Argonia.esm`, plugins and views, plus the dev-only bridge (`ArgoniaBridge`, the whole list, since SkyLink
+   AI does not load on the pin; 0.3 §a), which never ships (0003's release guard checks the DLL list). There is no `ArgoniaStudio` DLL and no
    dev panel.
 2. **Boot to a scene, never through the new game.** After each deploy the profile makes the **base save**: a new
    game through the quarantine start (0.4 §b), the **studio character** (built from real records: a race, class,

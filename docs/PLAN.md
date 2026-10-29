@@ -46,8 +46,8 @@ traced to where it is handled in [ACCOUNTING.md](ACCOUNTING.md).
    never ship others' files, and never copy decompiled code.
 3. **The running game is the oracle; a scene is how we reach it.** Nothing is done until it passes in game
    with a check that can fail. Every in-game check and owner check starts from a scene applied to the dev
-   profile's base save ([0022](decisions/0022-the-studio-boots-into-any-place.md): SkyLink and the console are
-   the hands; no panel of ours), never through the new-game flow. Existing tools before our own harness
+   profile's base save ([0022](decisions/0022-the-studio-boots-into-any-place.md): our dev-only bridge and the
+   console are the hands; no panel of ours), never through the new-game flow. Existing tools before our own harness
    ([0029](decisions/0029-part-0-is-one-sequence-not-spikes.md)).
 4. **Systems whole, content thin, what the player meets complete.** Build each piece to its final interface even
    when the slice uses only a corner of it (old 0134/0144).
@@ -71,8 +71,8 @@ skse/core/ the rules Skyrim's own systems cannot carry (1.1 §a's native map), p
    ArgoniaCombat  the combat map's "build from DS1" rows (decision 0019): DS1's state machine, windows, poise,
                   i-frames by load and the like where a mod cannot carry them, over the mods' APIs
    ArgoniaBoats   helm sailing (Wind Waker model), boat ownership/moorings/recovery
-   ArgoniaBridge  DEV ONLY: only what SkyLink AI lacks (input, frametime, nav, booth, our reads); SkyLink is the
-                  bridge (0.3 §a, decision 0029)
+   ArgoniaBridge  DEV ONLY: the bridge (reads, console, save/load, teleport, events, input, frametime, nav,
+                  booth); SkyLink AI does not load on the pin (0.3 §a, decision 0029)
 papyrus/   our scripts (quest fragments generated + hand-written systems glue)
 ui/        our own UI, one design system (`ui/DESIGN.md`), in the approach 1.2 §0 chose with the owner
            (decision 0017): HUD and every major screen; a mock harness runs them in headless Chrome
@@ -100,7 +100,7 @@ FaceGen, flowmaps); records are written by code ([0018](decisions/0018-the-creat
   and Spriggit) and the L1–L3 checks. Tools arrive at first use (decision 0027 §7).
 - **The game machine** (`argonia-play`, a Windows spot GPU instance started on demand; owner ruling 2026-10-28)
   runs Skyrim natively with the pinned stack, every Windows-only tool (MSVC for our SKSE plugins, Pandora, the
-  Creation Kit, xEdit, DynDOLOD), the dev profile with SkyLink and ArgoniaBridge, and the stream (Sunshine and Moonlight-Web behind the
+  Creation Kit, xEdit, DynDOLOD), the dev profile with ArgoniaBridge, and the stream (Sunshine and Moonlight-Web behind the
   owner's sign-in gate; 0.0), and the L4–L6 checks, including the game runner. The build VM drives it over SSH.
 
 **Loops and the ladder** ([loops.md](loops.md), [0021](decisions/0021-fast-focused-loops-and-the-ladder.md)):
@@ -246,7 +246,7 @@ From the old project:
 - **Build the game, not the tools.** The old 2.10 spent most of its sessions on a filming rig. Here, journeys
   read state, keep a still per step as evidence, and a clip needs a written reason (0021).
 - **Checks start from a known state in seconds.** A scene (a console batch file on the base save) instead of
-  replaying the game; SkyLink and the console are the hands, not a harness of ours (0029).
+  replaying the game; our thin bridge and the console are the hands, not a harness of ours (0029).
 - **Find everything, fix once.** One survey, one diagnosis, one batch, re-measure (loops.md rule 7).
 - **The owner plays; the owner never does QA.**
 - **Tools and process cost more than they look.** The old project's 18,000 lines of hooks, watchers, review gates
