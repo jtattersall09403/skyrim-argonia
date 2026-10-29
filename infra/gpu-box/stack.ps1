@@ -6,9 +6,9 @@
 #                                  first (a later mod's file replaces an earlier one), the controlmap, Plugins.txt
 #   stack.ps1 pandora              on, Pandora run on that Data into the pandora-output mod, then on again (desktop session)
 #   stack.ps1 menu                 launch through SKSE, wait for the main menu, keep a still, print SKSE's plugin lines
-#   stack.ps1 verify               every laid file's hash against installed.json
+#   stack.ps1 verify [-Full]       every laid file's hash against installed.json (cached by size and mtime; -Full rehashes)
 #   stack.ps1 play-vanilla | play-modded [-Wait]   switch, then launch (the owner's stream cards)
-param([Parameter(Mandatory)][string]$Cmd, [switch]$Wait)
+param([Parameter(Mandatory)][string]$Cmd, [switch]$Wait, [switch]$Full)
 $ErrorActionPreference = 'Stop'
 $Game = 'C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition'
 $Data = "$Game\Data"
@@ -118,11 +118,12 @@ switch ($Cmd) {
       New-Item -ItemType Directory -Force (Split-Path "$State\keep\$k") | Out-Null; Copy-Item "$Data\$k" "$State\keep\$k" -Force } }
     $vanilla = @{}; Get-Content "$Root\infra\vanilla-data-files.txt" | % { $vanilla[$_.ToLower()] = 1 }
     $removed = 0
-    # cmd's dir and the \\?\ form reach paths that ordinary Windows paths cannot (names ending in a dot or space).
-    foreach ($f in (cmd /c "dir /s /b /a-d `"\\?\$Data`"" 2>$null)) {
+    # The \\?\ form reaches paths that ordinary Windows paths cannot (names ending in a dot or space); .NET's
+    # enumeration, not cmd's dir, whose OEM code page mangled non-ASCII names so they were never removed (2026-10-29).
+    foreach ($f in @([IO.Directory]::EnumerateFiles("\\?\$Data", '*', 'AllDirectories'))) {
       $rel = $f.Substring($f.IndexOf('\Data\') + 6).ToLower()
       if ($vanilla[$rel] -or $rel.StartsWith('shadercache\')) { continue }
-      Remove-Item -LiteralPath $f -Force -EA SilentlyContinue; $removed++
+      try { [IO.File]::SetAttributes($f, 'Normal'); [IO.File]::Delete($f); $removed++ } catch { "not removed: $rel ($($_.Exception.Message))" }
     }
     Get-ChildItem $Data -Recurse -Directory | Sort { $_.FullName.Length } -Descending |
       ? { -not (Get-ChildItem -LiteralPath $_.FullName -Force) } | % { Remove-Item -LiteralPath ("\\?\" + $_.FullName) -Force }
@@ -176,25 +177,71 @@ switch ($Cmd) {
     if (-not $env:ARGONIA_KEEP) { Stop-Process -Name SkyrimSE -Force -EA SilentlyContinue }
   }
   'verify' {
-    $inst = Get-Content "$Mo2\installed.json" -Raw | ConvertFrom-Json
-    $bad = 0; $n = 0
-    foreach ($p in $inst.files.PSObject.Properties) {
-      if ($p.Name.StartsWith('..\')) { $f = "$Game\" + $p.Name.Substring(3) } else { $f = "\\?\$Data\" + $p.Name }
-      $n++
-      if (-not (Test-Path -LiteralPath $f)) { "missing: $($p.Name)"; $bad++; continue }
-      $h = (Get-FileHash -LiteralPath $f -Algorithm SHA256).Hash.ToLower()
-      if ($h -ne $p.Value[1]) { "differs: $($p.Name) ($($p.Value[0]))"; $bad++ }
-    }
-    $vanilla = @{}; Get-Content "$Root\infra\vanilla-data-files.txt" | % { $vanilla[$_.ToLower()] = 1 }
+    # Fast and visible (2026-10-29: the serial pass printed nothing for 17 min over 69k files). A file whose size
+    # and mtime match the hash cache of the last pass takes its cached hash (a hard link shares both with its mod
+    # file, so the cache holds across off/on); the rest are hashed on every core, with progress every 500.
+    # -Full ignores the cache.
+    $t0 = Get-Date
+    $inst = Get-Content "$Mo2\installed.json" -Raw -Encoding UTF8 | ConvertFrom-Json  # 5.1 reads ANSI otherwise
+    $rec = @{}; foreach ($p in $inst.files.PSObject.Properties) { $rec[$p.Name.ToLower()] = $p.Value }
+    $cacheFile = "$State\hashcache.tsv"; $cache = @{}
+    if (-not $Full -and (Test-Path $cacheFile)) {
+      foreach ($l in [IO.File]::ReadLines($cacheFile)) { $c = $l.Split("`t"); if ($c.Count -eq 4) { $cache[$c[0]] = $c } } }
+    Add-Type -TypeDefinition @'
+using System; using System.IO; using System.Security.Cryptography; using System.Threading; using System.Threading.Tasks;
+public static class ParHash {
+  public static string[] Run(string[] paths, int every) {
+    var res = new string[paths.Length]; int done = 0;
+    Parallel.For(0, paths.Length, new ParallelOptions { MaxDegreeOfParallelism = 8 }, i => {
+      try {
+        using (var s = new FileStream(paths[i], FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete, 1 << 20))
+        using (var h = SHA256.Create()) res[i] = BitConverter.ToString(h.ComputeHash(s)).Replace("-", "").ToLower();
+      } catch (Exception e) { res[i] = "error: " + e.Message; }
+      int d = Interlocked.Increment(ref done);
+      if (d % every == 0) Console.WriteLine("hashed " + d + " of " + paths.Length);
+    });
+    return res;
+  }
+}
+'@
+    # Pandora's outputs replace some mods' behaviour files in Data: those paths hold Pandora's file, not the mod's
     $pandora = @{}; if (Test-Path "$Mo2\mods\pandora-output") {
       Get-ChildItem "$Mo2\mods\pandora-output" -Recurse -File | % { $pandora[$_.FullName.Substring("$Mo2\mods\pandora-output\".Length).ToLower()] = 1 } }
+    $bad = 0; $n = 0; $todo = New-Object System.Collections.Generic.List[object]; $hits = 0
+    $out = New-Object System.Collections.Generic.List[string]
+    foreach ($k in $rec.Keys) {
+      if ($k.StartsWith('..\')) { $f = "\\?\$Game\" + $k.Substring(3) } else { $f = "\\?\$Data\" + $k }
+      $n++
+      if ($pandora[$k]) { continue }
+      $fi = New-Object IO.FileInfo $f
+      if (-not $fi.Exists) { "missing: $k"; $bad++; continue }
+      $c = $cache[$k]
+      if ($c -and $c[1] -eq "$($fi.Length)" -and $c[2] -eq "$($fi.LastWriteTimeUtc.Ticks)") {
+        $hits++; if ($c[3] -ne $rec[$k][1]) { "differs: $k ($($rec[$k][0]))"; $bad++ }
+        $out.Add(($c -join "`t")); continue }
+      $todo.Add(@($k, $f, $fi.Length, $fi.LastWriteTimeUtc.Ticks))
+    }
+    "$n recorded: $hits from the cache, $($todo.Count) to hash ($([int]((Get-Date) - $t0).TotalSeconds) s)"
+    if ($todo.Count) {
+      $hs = [ParHash]::Run([string[]]($todo | % { $_[1] }), 500)
+      for ($i = 0; $i -lt $todo.Count; $i++) {
+        $k = $todo[$i][0]
+        if ($hs[$i] -ne $rec[$k][1]) { "differs: $k ($($rec[$k][0])) $($hs[$i])"; $bad++ }
+        if (-not $hs[$i].StartsWith('error')) { $out.Add("$k`t$($todo[$i][2])`t$($todo[$i][3])`t$($hs[$i])") }
+      }
+      [IO.File]::WriteAllLines($cacheFile, $out)  # UTF-8, as ReadLines reads it
+    }
+    $vanilla = @{}; Get-Content "$Root\infra\vanilla-data-files.txt" | % { $vanilla[$_.ToLower()] = 1 }
+    $keepSet = @{}; $Keep | % { $keepSet[$_.ToLower()] = 1 }
     $extra = 0
-    foreach ($f in (cmd /c "dir /s /b /a-d `"\\?\$Data`"" 2>$null)) {
+    # .NET's enumeration, not cmd's dir: dir prints in the OEM code page, which mangles non-ASCII names
+    foreach ($f in [IO.Directory]::EnumerateFiles("\\?\$Data", '*', 'AllDirectories')) {
       $rel = $f.Substring($f.IndexOf('\Data\') + 6).ToLower()
-      if ($vanilla[$rel] -or $pandora[$rel] -or $inst.files.$rel -or $rel.StartsWith('shadercache\') -or $rel.StartsWith('mcm\settings\') -or $rel -eq 'interface\controls\pc\controlmap.txt' -or ($Keep | ? { $_.ToLower() -eq $rel })) { continue }
+      if ($vanilla[$rel] -or $pandora[$rel] -or $rec[$rel] -or $keepSet[$rel] -or $rel.StartsWith('shadercache\') -or $rel.StartsWith('mcm\settings\') -or $rel -eq 'interface\controls\pc\controlmap.txt' -or $rel -eq 'skse\plugins\argoniabridge.dll' -or
+          ($rel -match '^skse\\(plugins\\[^\\]+\.ini|[^\\]+\.log)$')) { continue }  # inis and logs the plugins write at first run
       "unrecorded: $rel"; $extra++
     }
-    "$n recorded files checked, $bad bad, $extra unrecorded, $($pandora.Count) Pandora outputs"
+    "$n recorded files checked, $bad bad, $extra unrecorded, $($pandora.Count) Pandora outputs, $([int]((Get-Date) - $t0).TotalSeconds) s"
     if ($bad -eq 0 -and $extra -eq 0) { 'VERIFY OK' }
   }
   { $_ -in 'play-vanilla', 'play-modded' } {

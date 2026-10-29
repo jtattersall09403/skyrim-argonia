@@ -11,7 +11,8 @@ the game machine, with exact undo (chunk 0.2 §b; grew from 0.0's combat_test_st
   stack.py install [--set ...] [--dev]        fetch, stage, push, then on the machine: stack.ps1 on (bare Data first),
                                               Pandora, and the main-menu check
   stack.py menu                               launch through SKSE, wait for the main menu, keep a still, list each DLL's load
-  stack.py verify                             archives against the manifest; every laid file in Data against installed.json
+  stack.py verify [--full]                    archives against the manifest; every laid file in Data against installed.json
+                                              (hashes cached by size and mtime on the machine; --full rehashes all)
   stack.py masters                            plugins (ESM/ESP/ESL) and mesh path lists to $ARGONIA_GAME_ROOT/Data (0.4)
 
 Sets: a group may hold alternative sets (row "set"); the profile takes one per group (default: the manifest's first),
@@ -572,13 +573,27 @@ def run(*args, check=True, capture=False):
     return r.stdout if capture else ""
 
 
+def stream(*args):
+    """run.sh with its output printed line by line as it comes (a long machine job stays visible); returns it."""
+    r = subprocess.Popen([RUN, *args], text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+                         encoding="utf-8", errors="replace")
+    lines = []
+    for line in r.stdout:
+        print(line, end="", flush=True)
+        lines.append(line)
+    r.wait()
+    return "".join(lines)
+
+
 PART = 1 << 30  # a mod's tar goes over in 1 GB parts, one on the build VM's disk at a time (BM&V is 21 GB)
 
 
 def send_tar(src, out, n):
     """tar `src` as C:/argonia/MO2/push/<n>.tar.NNN parts, never the whole tar on the build VM's disk."""
     put = f"{RUN} put \"$FILE\" C:/argonia/MO2/push/ >/dev/null && rm \"$FILE\""
-    tar = subprocess.Popen(["tar", "-cf", "-", "-C", str(src), "."], stdout=subprocess.PIPE)
+    # pax: names go as UTF-8 in pax headers; in GNU format Windows tar reads the raw bytes as cp437 and lays
+    # `°` as `┬░` (2026-10-29: 64 files of BM&V, Rim Parry and Modern Stagger Lock)
+    tar = subprocess.Popen(["tar", "--format=pax", "-cf", "-", "-C", str(src), "."], stdout=subprocess.PIPE)
     subprocess.run(["split", "-b", str(PART), "-d", "-a", "3", f"--filter=cat > \"$FILE\" && {put}", "-",
                     str(out / f"{n}.tar.")], stdin=tar.stdout, check=True)
     tar.stdout.close()
@@ -691,8 +706,8 @@ def cmd_verify(a):
         elif m.get("sha256") != sha256(p):
             bad.append(f"{m['id']}: archive sha256 differs from the manifest")
     print(f"archives: {len(doc['mods']) - len(bad)} of {len(doc['mods'])} match")
-    out = run("ps", r"& C:\argonia\infra\stack.ps1 verify", capture=True)
-    print(out.strip()[-2000:])
+    run("put", str(HERE / "stack.ps1"), "C:/argonia/infra/stack.ps1")
+    out = stream("ps", r"& C:\argonia\infra\stack.ps1 verify" + (" -Full" if getattr(a, "full", False) else ""))
     if "VERIFY OK" not in out:
         bad.append("installed files differ (above)")
     if bad:
@@ -783,8 +798,9 @@ def main():
         s.add_argument("--dev", action="store_true", help="lay the dev rows too (SkyLink AI, houseCARL)")
         if name == "install":
             s.add_argument("--skip-fetch", action="store_true")
-    for name in ("push", "menu", "verify", "masters", "prune", "evict"):
+    for name in ("push", "menu", "masters", "prune", "evict"):
         sub.add_parser(name)
+    sub.add_parser("verify").add_argument("--full", action="store_true", help="rehash every file (no cache)")
     a = p.parse_args()
     {"fetch": cmd_fetch, "stage": cmd_stage, "push": cmd_push, "install": cmd_install, "menu": cmd_menu,
      "verify": cmd_verify, "masters": cmd_masters, "prune": cmd_prune, "evict": cmd_evict}[a.cmd](a)
