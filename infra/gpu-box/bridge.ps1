@@ -6,9 +6,10 @@
 #   bridge.ps1 prepare [-Fresh]    the profile on (stack.ps1 on, only if it is off, or always with -Fresh), then ArgoniaBridge.dll copied from
 #                                  the dev-only MO2 folder into Data\SKSE\Plugins (a copy, not a link, so a rebuild
 #                                  never meets a locked file); stack.ps1 off removes it
+#   bridge.ps1 hang                suspends SkyrimSE (NtSuspendProcess): a zombie on purpose, for the relaunch check
 #   bridge.ps1 grab -Out <png>     one still of the desktop as the stream sees it (grab.ps1; run in the desktop session)
 # The launch itself is stack.ps1 menu with ARGONIA_KEEP=1 (0.2's), run by bridge.py after `kill` and `prepare`.
-param([Parameter(Mandatory)][ValidateSet('health', 'token', 'kill', 'prepare', 'grab')][string]$Cmd,
+param([Parameter(Mandatory)][ValidateSet('health', 'token', 'kill', 'prepare', 'grab', 'hang')][string]$Cmd,
       [string]$Out = 'C:\argonia\logs\bridge-grab.png', [switch]$Fresh)
 $ErrorActionPreference = 'Stop'
 $Game = 'C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition'
@@ -23,7 +24,10 @@ switch ($Cmd) {
     $crash = Get-ChildItem "$Skse\crash-*.log" -EA SilentlyContinue | ? { $_.LastWriteTime -ge $since } |
       Sort LastWriteTime | Select -Last 1
     $head = if ($crash) { (Get-Content $crash.FullName -TotalCount 12) -join "`n" } else { '' }
-    J ([ordered]@{ alive = [bool]$p; pid = $(if ($p) { $p.Id } else { 0 }); responding = $(if ($p) { $p.Responding } else { $false })
+    # Responding reads the window from this (SSH) session, which may not see it; a process whose every thread is
+    # suspended is hung whatever the window says.
+    $susp = if ($p) { @($p.Threads | ? { $_.ThreadState -eq 'Wait' -and $_.WaitReason -eq 'Suspended' }).Count -eq $p.Threads.Count } else { $false }
+    J ([ordered]@{ alive = [bool]$p; pid = $(if ($p) { $p.Id } else { 0 }); responding = $(if ($p) { $p.Responding -and -not $susp } else { $false })
                    launched = $since.ToString('o'); crash_log = $(if ($crash) { $crash.Name } else { '' }); crash_head = $head })
   }
   'token' {
@@ -53,6 +57,14 @@ switch ($Cmd) {
     Copy-Item $src "$dst\ArgoniaBridge.dll" -Force
     $h = (Get-FileHash "$dst\ArgoniaBridge.dll" -Algorithm SHA256).Hash.ToLower()
     J ([ordered]@{ laid = $true; file = "$dst\ArgoniaBridge.dll"; sha256 = $h; bytes = (Get-Item $src).Length })
+  }
+  'hang' {
+    $p = Get-Process SkyrimSE -EA SilentlyContinue | Select -First 1
+    if (-not $p) { J @{ hung = $false; error = 'SkyrimSE is not running' }; exit 1 }
+    Add-Type 'using System; using System.Runtime.InteropServices; public static class Nt {
+      [DllImport("ntdll.dll")] public static extern int NtSuspendProcess(IntPtr h); }'
+    $rc = [Nt]::NtSuspendProcess($p.Handle)
+    J ([ordered]@{ hung = ($rc -eq 0); pid = $p.Id; status = $rc })
   }
   'grab' {
     Remove-Item $Out -EA SilentlyContinue

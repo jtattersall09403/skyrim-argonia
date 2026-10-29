@@ -13,6 +13,15 @@ RE::TESForm* find_form(std::string_view s) {
   return RE::TESForm::LookupByEditorID(s);
 }
 
+RE::TESObjectCELL* find_interior(const std::string& edid) {
+  if (auto* f = RE::TESForm::LookupByEditorID(edid); f && f->Is(RE::FormType::Cell)) return static_cast<RE::TESObjectCELL*>(f);
+  auto* dh = RE::TESDataHandler::GetSingleton();
+  if (!dh) return nullptr;
+  for (auto* c : dh->interiorCells)
+    if (c && _stricmp(c->GetFormEditorID(), edid.c_str()) == 0) return c;
+  return nullptr;
+}
+
 std::string form_ref(const RE::TESForm* f) {
   if (!f) return "null";
   return JsonObject().hex("id", f->GetFormID()).str("editor_id", f->GetFormEditorID()).str("name", f->GetName()).done();
@@ -110,7 +119,11 @@ std::string teleport(const Request& req) {
       p->MoveTo(r);
       return reply_ok("teleport", "true");
     }
-    // coc, as the console does it; an unknown cell starts no load, which wait_arrival reports in 5 s.
+    // An unknown name is refused before coc: coc searches every plugin's cells for it on the main thread, which
+    // held the task queue past 3 s with this load order (live, 2026-10-29). Interior cells only (they stay in
+    // memory with their editor ids); an exterior is reached by `teleport pos` or `ref`.
+    if (!find_interior(target)) return reply_error("teleport", "no interior cell " + target + " (exteriors: teleport pos or ref)");
+    // coc, as the console does it.
     auto* factory = RE::IFormFactory::GetConcreteFormFactoryByType<RE::Script>();
     auto* script = factory ? factory->Create() : nullptr;
     if (!script) return reply_error("teleport", "no script factory");
@@ -224,7 +237,10 @@ std::string av(const Request& req) {
   if (req.args.empty()) return reply_error("av", "usage: av <name> [player | <ref id>]");
   return on_main_thread("av", [req] {
     auto v = RE::ActorValueList::LookupActorValueByName(req.args[0].c_str());
-    if (v == RE::ActorValue::kNone) return reply_error("av", "no actor value " + req.args[0]);
+    // The lookup answers an unknown name with a real value (0 for NoSuchValueZZ, live 2026-10-29), so the
+    // name must come back from the value it found.
+    const char* back = v == RE::ActorValue::kNone || v >= RE::ActorValue::kTotal ? nullptr : RE::ActorValueList::GetActorValueName(v);
+    if (!back || _stricmp(back, req.args[0].c_str()) != 0) return reply_error("av", "no actor value " + req.args[0]);
     std::string err;
     auto* a = actor_arg(req, 1, err);
     if (!a) return reply_error("av", err);

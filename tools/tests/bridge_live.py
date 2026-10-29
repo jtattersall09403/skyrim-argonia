@@ -23,7 +23,8 @@ STORM = "000C8220"         # Skyrim.esm: SkyrimStormRain
 GAME_HOUR = "00000038"     # Skyrim.esm: the GameHour global
 MQ101 = "0003372B"         # Skyrim.esm: Unbound
 IRON_SWORD = "00012EB7"    # Skyrim.esm: a base record for the booth
-TAMRIEL = "0000003C"       # a worldspace: not a bound object, not a quest, not a weather
+TAMRIEL = "0000003C"
+WOLF = "00023ABE"          # Skyrim.esm: Wolf (an actor base), placed to bite the player for a hit event       # a worldspace: not a bound object, not a quest, not a weather
 
 results: list[dict] = []
 
@@ -116,20 +117,24 @@ def outdoors_weather(b: Bridge, cell: str) -> None:
     b.call("weather", SKYRIM_CLEAR)
 
 
-def events_and_input(b: Bridge) -> None:
+def events_and_input(b: Bridge, save: str) -> None:
+    # back to the base save's exterior: QASmoke (world()) streams every item of the game and held the main
+    # thread past 3 s while the input cases ran there (live, 2026-10-29)
+    b.call("load", save)
+    time.sleep(3)
     last = b.call("events")["last"]
 
     def hit():
+        # A spell the player casts on itself raised no hit, and the console takes no `<form id>.` prefix (live,
+        # 2026-10-29): a wolf placed beside the player (setup) bites it; the hit is the real game path.
         since = b.call("events")["last"]
-        b.call("console", f"player.cast {FLAMES} player")
-        return b.call("wait_event", "hit", "00000014", 5000, since)
-    case("events", "a hit on the player (Flames cast on self)", hit, False)
+        b.call("console", f"player.placeatme {WOLF} 1")
+        try:
+            return b.call("wait_event", "hit", "00000014", 15000, since)
+        finally:
+            b.call("console", "killall")
+    case("events", "a hit on the player (a placed wolf bites)", hit, False)
 
-    def stage():
-        since = b.call("events")["last"]
-        b.call("console", f"setstage {MQ101} 5")
-        return b.call("wait_event", "quest", MQ101, 5000, since)
-    case("events", "a quest stage (setstage MQ101 5)", stage, False)
 
     def walk():
         since = b.call("events")["last"]
@@ -142,6 +147,12 @@ def events_and_input(b: Bridge) -> None:
         check(len(ev) > 0, "no animation events while walking")
         return {"input": r, "moved": round(moved), "anim_events": len(ev), "tags": sorted({e["data"]["tag"] for e in ev})[:12]}
     case("input", "key W 1.2 s walks, with animation events", walk, False)
+    # after the walk: MQ101's stage 5 starts the opening's scripts, which held the main thread past 3 s (live)
+    def stage():
+        since = b.call("events")["last"]
+        b.call("console", f"setstage {MQ101} 5")
+        return b.call("wait_event", "quest", MQ101, 5000, since)
+    case("events", "a quest stage (setstage MQ101 5)", stage, False)
     case("input", "a 3.5 s hold (over the cap)", lambda: b.call("input", "key", "W", 3500), True)
     case("input", "a key that does not exist", lambda: b.call("input", "key", "NOPE", 100), True)
     case("events", "wait for an animation tag that never comes", lambda: b.call("wait_event", "anim", "NoSuchTagZZ", 800), True)
@@ -199,20 +210,50 @@ def oracle(b: Bridge) -> None:
 def crash(b: Bridge) -> None:
     b.call("crash", "yes-really")
     t0 = time.monotonic()
-    try:
-        b.call("player", timeout=90)
-        said, ok = "the game still answered", False
-    except GameDown as e:
-        said, ok = str(e)[:400], True
+    said, ok = "the game still answered", False
+    while time.monotonic() - t0 < 90:  # a dead main thread answers "did not run the task" until the health sees it
+        try:
+            b.call("player", timeout=90)
+            break
+        except GameDown as e:
+            said, ok = str(e)[:400], True
+            break
+        except BridgeError:
+            time.sleep(2)
     secs = time.monotonic() - t0
     results.append({"endpoint": "crash", "case": "forced crash reported", "pass": ok and secs <= 60,
                     "ms": round(secs * 1000), "said": said})
     print(("PASS " if ok and secs <= 60 else "FAIL ") + f"crash      reported in {secs:.1f} s: {said[:200]}")
     t1 = time.monotonic()
     r = b.launch()
-    results.append({"endpoint": "crash", "case": "relaunch kills the zombie", "pass": bool(r.get("ping")),
+    results.append({"endpoint": "crash", "case": "relaunch after the crash", "pass": bool(r.get("ping")),
                     "ms": round((time.monotonic() - t1) * 1000), "said": _short(r["killed"])})
     print(f"relaunch after the crash: {r['killed']} in {time.monotonic() - t1:.0f} s")
+    # A zombie: Crash Logger's process exits by itself, so a hung game is made on purpose (its threads
+    # suspended); it must be reported as down, and the relaunch must kill it.
+    b.machine.helper("hang")
+    t2 = time.monotonic()
+    said, ok = "the hung game still answered", False
+    while time.monotonic() - t2 < 90:
+        try:
+            b.call("ping", timeout=30)
+            time.sleep(2)
+        except GameDown as e:
+            said, ok = str(e)[:200], True
+            break
+        except BridgeError:
+            time.sleep(2)
+    secs = time.monotonic() - t2
+    results.append({"endpoint": "crash", "case": "a hung game reported", "pass": ok and secs <= 60,
+                    "ms": round(secs * 1000), "said": said})
+    print(("PASS " if ok and secs <= 60 else "FAIL ") + f"hung game reported in {secs:.1f} s: {said}")
+    t3 = time.monotonic()
+    r = b.launch()
+    killed = r["killed"]
+    zombie = bool(killed.get("killed")) and not killed.get("survivors")
+    results.append({"endpoint": "crash", "case": "relaunch kills the zombie", "pass": zombie and bool(r.get("ping")),
+                    "ms": round((time.monotonic() - t3) * 1000), "said": _short(killed)})
+    print(f"relaunch over the hung game: {killed} in {time.monotonic() - t3:.0f} s")
 
 
 def main() -> int:
@@ -232,7 +273,7 @@ def main() -> int:
     case("ping", "the plugin answers on the main thread", lambda: b.call("ping"), False)
     case("ping", "a bad token is refused", lambda: _bad_token(b), True)
     groups = {"menu": lambda: at_main_menu(b, a.save), "state": lambda: state(b), "world": lambda: world(b),
-              "events": lambda: events_and_input(b), "frames": lambda: frames_nav_booth(b),
+              "events": lambda: events_and_input(b, a.save), "frames": lambda: frames_nav_booth(b),
               "oracle": lambda: oracle(b)}
     only = set(a.only.split(",")) if a.only else set(groups)
     try:

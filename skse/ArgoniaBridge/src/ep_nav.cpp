@@ -143,13 +143,23 @@ std::string booth(const Request& req) {
         g_free_asked = true;
         return reply_error("booth", "the free camera is starting; ask for the view again");
       }
+      // Frame where the object is now: a placed weapon or clutter falls under physics after `place`, so its 3D's
+      // world bound replaces the centre taken at placement (the first live booth aimed above the fallen sword).
+      if (auto ref = g_booth.get()) {
+        if (auto* obj = ref->Get3D(); obj && obj->worldBound.radius > 0) {
+          g_centre = obj->worldBound.center;
+          g_radius = (std::max)(32.0f, obj->worldBound.radius);
+        }
+      }
       auto* fc = static_cast<RE::FreeCameraState*>(cam->currentState.get());
       if (!fc) return reply_error("booth", "no free camera state");
       // yaw around the object (0 front = looking north from the south), and pitch; top looks straight down.
       constexpr float pi = 3.14159265f;
       const float yaws[6] = {0, -pi / 2, pi, pi / 2, 0, pi / 4};
-      const float pitches[6] = {0.1f, 0.1f, 0.1f, 0.1f, pi / 2 - 0.05f, 0.45f};
-      float d = g_radius * 2.6f, yaw = yaws[view], pitch = pitches[view];
+      // A little above the object (a placed object lies on the floor) and never nearer than 160 units: the first
+      // live views at 0.1 rad and 2.6 radii sat in the grass beside the sword.
+      const float pitches[6] = {0.3f, 0.3f, 0.3f, 0.3f, pi / 2 - 0.05f, 0.6f};
+      float d = (std::max)(160.0f, g_radius * 3.0f), yaw = yaws[view], pitch = pitches[view];
       RE::NiPoint3 eye = g_centre + RE::NiPoint3{-std::sin(yaw) * std::cos(pitch) * d, -std::cos(yaw) * std::cos(pitch) * d,
                                                  std::sin(pitch) * d};
       fc->translation = eye;

@@ -168,7 +168,9 @@ void on_message(SKSE::MessagingInterface::Message* m) {
     case SKSE::MessagingInterface::kPostLoadGame: {
       std::scoped_lock l(s.m);
       ++s.loads;
-      s.last_load_ok = m->data && m->dataLen >= 1 && *static_cast<bool*>(m->data);
+      // SKSE passes the load's success as the pointer value itself ((void*)success), not a pointer to a bool:
+      // dereferencing it read address 0x1 and crashed the first live load (2026-10-29).
+      s.last_load_ok = reinterpret_cast<std::uintptr_t>(m->data) != 0;
       events_on_game_loaded();
       break;
     }
