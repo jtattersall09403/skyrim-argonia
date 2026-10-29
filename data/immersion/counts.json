@@ -1,0 +1,92 @@
+{
+ "counts": {
+  "by_kind": {
+   "menu": 53,
+   "record": 189022,
+   "string": 861
+  },
+  "by_reach": {
+   "engine": 3244,
+   "unreached": 186687,
+   "world": 5
+  },
+  "by_type": {
+   "ACTI": 2695,
+   "ALCH": 472,
+   "AMMO": 66,
+   "ARMO": 3755,
+   "ASPC": 52,
+   "BOOK": 1129,
+   "CELL": 73726,
+   "CLAS": 159,
+   "CLMT": 9,
+   "CONT": 616,
+   "DIAL": 19757,
+   "DOOR": 327,
+   "ENCH": 757,
+   "FACT": 1417,
+   "FLOR": 114,
+   "FURN": 515,
+   "GMST": 1650,
+   "GRAS": 33,
+   "IMGS": 294,
+   "INFO": 40928,
+   "INGR": 180,
+   "KEYM": 381,
+   "LCTN": 766,
+   "LIGH": 504,
+   "LSCR": 371,
+   "LTEX": 115,
+   "MESG": 1051,
+   "MGEF": 1731,
+   "MISC": 1057,
+   "MSTT": 836,
+   "MUSC": 65,
+   "MUST": 309,
+   "NPC_": 6462,
+   "PERK": 483,
+   "QUST": 2339,
+   "RACE": 171,
+   "REGN": 362,
+   "SCRL": 104,
+   "SHOU": 117,
+   "SLGM": 20,
+   "SNCT": 18,
+   "SNDR": 3186,
+   "SOUN": 1191,
+   "SPEL": 1452,
+   "STAT": 12432,
+   "SWF": 53,
+   "TREE": 284,
+   "TXST": 789,
+   "UI_STRING": 861,
+   "VTYP": 183,
+   "WEAP": 3328,
+   "WOOP": 107,
+   "WRLD": 49,
+   "WTHR": 108
+  },
+  "by_verdict": {
+   "unreviewed": 189936
+  },
+  "reachable": 3249,
+  "reachable_unreviewed": 3249,
+  "rows": 189936
+ },
+ "load_order": [
+  "Skyrim.esm",
+  "Update.esm",
+  "Dawnguard.esm",
+  "HearthFires.esm",
+  "Dragonborn.esm",
+  "ccBGSSSE001-Fish.esm",
+  "ccQDRSSE001-SurvivalMode.esl",
+  "ccBGSSSE037-Curios.esl",
+  "ccBGSSSE025-AdvDSGS.esm",
+  "_ResourcePack.esl"
+ ],
+ "menu_swfs_per_archive": {
+  "Skyrim - Interface.bsa": 53
+ },
+ "root": "Argonia.esm"
+}

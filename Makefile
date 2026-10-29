@@ -1,6 +1,6 @@
 # The one gate. `make check` runs every target in parallel and ends with one list of the reds.
 RED := .git/check-red
-PARTS := guard lint unit budget links plugin-check skse
+PARTS := guard lint unit budget links plugin-check skse immersion
 # A failing part records its name, then fails.
 FAIL = || { echo $@ >> $(RED); exit 1; }
 
@@ -31,6 +31,10 @@ links:
 # skse/core and the bridge protocol: pure C++ unit tests built natively on the build VM (0.3 §b).
 skse:
 	@bash skse/check.sh $(FAIL)
+
+# The immersion inventory's counts (decision 0006 §2); binding from 2.17 with IMMERSION_BIND=1.
+immersion:
+	@python3 tools/immersion/inventory.py --gate $(FAIL)
 
 # Records (0.4 §a): world -> intermediate JSON -> ArgoniaGen (Mutagen) -> out/Argonia.esm -> Spriggit plugin/Argonia/.
 plugin:
