@@ -156,3 +156,5 @@ Something they can **play**, that is:
 | 2026-10-28 | Nearly every quest has "action" (use of the player's skills), varied and creatively combined, led by faction profile; no talk-to-X-then-Y quests. Skill output must fit what the engine needs, settled at the right point in the plan. The old repo's main quest, factions and quest system are the foundation, improved not replaced (0024 §8–9, 0.1 §i). |
 | 2026-10-27 | Add a detectives' faction, rival to the assassins and thieves, its line escalating from petty crime to a grand murder-mystery finale, grounded in lore and the lore extrapolation; planned now, built at the right point (0025). |
 | 2026-10-28 | The writing skills made on a side branch are brought in (0.1) and their use is built into the chunks that write quests and dialogue (1.3, 2.5, 2.12, 3.3, 4.1–4.3). |
+| 2026-10-29 | **The owner plays entirely in third person.** The souls-like test and Argonia's combat, camera and HUD are designed and tested for the third-person camera. |
+| 2026-10-29 | **Parry, riposte and backstab are required** for anything called souls-like, the 0.0 combat test included (Rim Parry and Execution, Nexus 114366, as before). |

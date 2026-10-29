@@ -35,6 +35,8 @@ function Set-GameWindow {
   }
   & $set "$docs\SkyrimPrefs.ini" 'Display' @{ 'iSize W' = $b.Width; 'iSize H' = $b.Height; 'bFull Screen' = 0; 'bBorderless' = 1 }
   & $set "$docs\Skyrim.ini" 'General' @{ 'bAlwaysActive' = 1 }
+  # Third person only (owner, 2026-10-29): scrolling in stops before first person.
+  & $set "$docs\Skyrim.ini" 'Camera' @{ 'fMinCurrentZoom' = '0.1' }
 }
 
 function Focus-Skyrim {
