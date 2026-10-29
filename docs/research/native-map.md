@@ -216,3 +216,47 @@ default. Whether `Reset` can override *Never Resets* does not matter here (a for
 | G28.3 | alchemy potency by P1 on `ModAlchemyEffectiveness` `[CL B/BGSEntryPoint.h:81]`, effects visible at 15/30/45/60 by stepped `ModInitialIngredientEffectsLearned` rows; tempering by `ModTemperingHealth` `[CL B/BGSEntryPoint.h:91]`; material tier by COBJ conditions on a carrier; repair (Skyrim has none) in `smithing` behind our view | 1, 5, 6 | fully | 2.10 | — |
 | G29.1 | per-observer detection is Skyrim's (`RequestDetectionLevel` `[CL A/Actor.h:692]`), tuned by sneak settings and `ModDetectionSneakSkill`/`Light`/`Movement` `[CL B/BGSEntryPoint.h:62-63, 72]`; pickpocket chance is Skyrim's visible percentage via `ModPickpocketChance` `[CL B/BGSEntryPoint.h:71]`; locks by P3 on locked refs, `locks` deciding open or refuse and pick wear | 1, 4, 5 | loss: see §1 (the Elusiveness formula approximated); Skyrim's roll is not seeded | 2.11 | — |
 | G29.2 | Skyrim's detection levels and combat states (unaware, searching, in combat) mapped to the three; the HUD's eye shows them | 1, 6 | fully; the mapping is **UNVERIFIED** (2.11) | 2.11 | — |
+
+### 3.8 Combat and traversal
+
+The owner added a candidate on 2026-10-29: **Nexus mod 28567**, a DS-style combat overhaul with poise, roll bands,
+bash-parry, riposte, backstab and backstep, trialled as an alternative combat route; the planner's research lane is
+evaluating it. Its licence, runtime support on 1.7.104 and source are **UNVERIFIED** here (not read by this lane).
+It enters the combat map (2.7 §0) as a candidate on the rows it claims; it changes no route below until that lane
+reports.
+
+| Goal | Mechanism | Routes | Fit, why | Proved by | Stub |
+|---|---|---|---|---|---|
+| G30.1 | the combat map (2.7 §0) per DS1 behaviour: the 0.0 stack tuned (route 2), tweaked (route 3 or a shim), or built in ArgoniaCombat (route 5); candidates BFCO, SCAR, CPR and **Nexus 28567** (owner addition, under evaluation) | 1, 2, 3, 5 | fully: the map is the mechanism and records its own losses | 1.6 (tuned stack) → 2.7 | S30a |
+| G30.2 | damage by P1 on `ModAttackDamage` (damage position and the Strength term per hand); stamina costs by mod settings and `ModPowerAttackStamina` `[CL B/BGSEntryPoint.h:42]`; poise by Modern Stagger Lock, the stack, **Nexus 28567** (candidate) or ArgoniaCombat, with `ModIncomingStagger`/`ModTargetStagger` `[CL B/BGSEntryPoint.h:48-49]`; defence: `AR/(AR + 135.6 + 0.6 × damage)` depends on the blow, which Skyrim's armour settings cannot express | 1, 2, 5 | loss in Part 1: mitigation approximated by armour settings (1.6 records the error); fully from 2.7 if the map moves it into a damage hook (`HandleHealthDamage` `[CL A/Actor.h:488]`) | 1.6 → 2.7 §a | S30b |
+| G31.1 | the wiring spec (2.7 §a): every number reaches a mod by settings or perk rows generated from the sheet's tables (P1, P5) | 1, 5, T | fully | 1.6 draft → 2.7 §a | S31 |
+| G32.1 | permitted Skyrim movesets through OAR and AMR (route 2), timing corrected at run time (0014 §2) when a window needs it; **Nexus 28567**'s own clips, if it has any, are checked against 0019 §6 by the research lane | 2, 5 | fully | 2.7 §e | — |
+| G32.2 | hostile places and roaming bands placed as data (G13.3) | 1, T | fully | 2.7 §j, 4.2 | — |
+| G33.1 | compiled ladder numbers (P5); AI by SCAR, CPR and the rest of the stack | 1, 2 | fully | 2.7 | — |
+| G33.2 | encounter sockets placed from ecology and motive rows by the place builder | T | fully | 2.W5, 4.2 | — |
+| G34.1 | recovery by `ModRecoverArrowChance` `[CL B/BGSEntryPoint.h:36]` rows per arrow keyword; impact response by material through Skyrim's impact data sets | 1 | fully | 2.7 §i | — |
+| G34.2 | Skyrim archery and TDM aim; delivered-damage position by P1 for bows, no Strength carrier applied to bows (a weapon-type condition) | 1, 2 | fully | 2.7 §i | — |
+| G35.1 | FreeClimb (GPL-3.0-only; README lists 1.7.104 [A §4]); our Acrobatics bands written into its settings, fork (route 3) only if a rule needs code | 2 (3) | fully if its settings reach speed and stamina drain (**UNVERIFIED**) | 0.2 → 2.13 | — |
+| G35.2 | surface semantics as climbable flags or keywords on our pieces' collision as FreeClimb reads them (**UNVERIFIED** what it reads) | 1, 2 | fully if FreeClimb's test is data-driven, else a fork | 2.13 | — |
+| G36.1 | Swimming Extensions (189821) and, if needed, Underwater NG for diving; breath `25 + 0.35×Athletics + 0.25×End` by the breath setting plus Argonian water breathing; swim speed by P1 | 1, 2 | loss: see §1, the underwater layer is the mods' | 0.2 → 2.13 | — |
+| G36.2 | swimming creatures by race flags; underwater pursuit by the diving mods' AI support (**UNVERIFIED**) | 1, 2 | loss: Skyrim actors swim at the surface unless a mod adds diving AI | 2.13 | — |
+| G37.1 | Sailable Ship (modified with credit after permission, route 3) plus ArgoniaBoats' helm and wind model (route 5) | 3, 5 | loss: see §1, a moved reference, no vehicle physics | 0.2 → 2.15 | — |
+| G37.2 | ownership, moorings and recovery in an ArgoniaBoats family; routes and ferries as data | 1, 5 | fully | 2.15 | — |
+| G38.1 | hazards (HAZD), spells, effect shaders and triggers authored from the marsh rows | 1 | fully | 2.14 | — |
+| G38.2 | one hazard table → placed hazard refs or trigger volumes applying a magic effect; volume entry seen by ArgoniaCore rather than a Papyrus `OnTriggerEnter` | 1, 5 | fully | 2.14 | — |
+| G38.3 | creature attack spells and projectiles as records (the wamasu's shock spit) | 1 | fully | 2.14 | — |
+| G39.1 | XP32 ragdolls, Precision impulses | 2 | fully (nice to have) | 2.7 §i | — |
+
+### 3.9 Look, sound and release
+
+| Goal | Mechanism | Routes | Fit, why | Proved by | Stub |
+|---|---|---|---|---|---|
+| G40.1 | Community Shaders features and our weathers and lighting templates | 1, 2 | fully | 0.2 → 2.W3 → 4.6 | — |
+| G41.1 | SOUN, SNDR, MUSC and acoustic spaces per region and cell | 1 | fully | 2.16 | — |
+| G42.1 | our start quest, start-enabled flags off in overrides, story-manager branches gated (0012); strings ours; silent lines (Fuz Ro D-oh pattern) if any line goes through the vanilla path; the running-quest allow-list read through the bridge | 1, 2 | fully | 0.4 §b → 2.17 → 3.3 | — |
+| G42.2 | Tropical Skyrim SSE first in the piece resolver and the land (0028) | 2, T | fully | 0.4 | — |
+| G43.1 | the immersion inventory and its gate | T | fully | 0.4 §c → 2.17 → 4.1 | — |
+| G44.1 | our shell views; the main menu and loading screens as Scaleform restyles if PrismaUI is not up before the main menu (**UNVERIFIED**) | 2, 6 | fully | 3.1 | — |
+| G45.1 | our creation view (G15.3) | 2, 6 | fully | 3.2 | — |
+| G45.2 | the opening quest's content | 1, 4, T | fully | 3.3 | — |
+| G46.1 | the installer and modlist; the no-assets guard | T | fully | 0.2 → 3.4 → 4.6 | — |
