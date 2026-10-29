@@ -2,6 +2,7 @@
 #include "bridge_protocol.h"
 #include "check.h"
 
+#include <limits>
 #include <string>
 
 using namespace argonia::bridge;
@@ -42,9 +43,83 @@ void replies_are_one_json_line() {
   CHECK(reply_error("x\"y", "a\nb") == "{\"ok\":false,\"cmd\":\"x\\\"y\",\"error\":\"a\\nb\"}\n");
   CHECK(json_escape(std::string(1, '\x01')) == "\\u0001");
 }
+void rest_keeps_the_line() {
+  auto r = std::get<Request>(parse(kToken + " console player.setav  health 50", kToken));
+  CHECK(rest(r) == "player.setav  health 50");
+  CHECK(rest(r, 1) == " health 50");
+  CHECK(rest(Request{"x", {}}).empty());
+}
+
+void numbers_and_form_ids() {
+  CHECK(to_number("-12.5") == -12.5);
+  CHECK(to_number("+3") == 3.0);
+  CHECK(!to_number(""));
+  CHECK(!to_number("1e999"));  // not finite: refused
+  CHECK(!to_number("12abc"));
+  CHECK(!to_number("nan"));
+  CHECK(to_form_id("0001A26F") == 0x0001A26Fu);
+  CHECK(to_form_id("0x14") == 0x14u);
+  CHECK(!to_form_id("0x"));
+  CHECK(!to_form_id("123456789"));
+  CHECK(!to_form_id("xyz"));
+}
+
+void json_objects() {
+  JsonObject o;
+  o.str("a", "q\"").num("b", 1.5).integer("c", -2).boolean("d", false).raw("e", "[1]").hex("f", 0x14);
+  CHECK(o.done() == "{\"a\":\"q\\\"\",\"b\":1.5,\"c\":-2,\"d\":false,\"e\":[1],\"f\":\"00000014\"}");
+  CHECK(JsonObject().done() == "{}");
+  CHECK(json_number(std::numeric_limits<double>::infinity()) == "null");
+  CHECK(json_number(-0.25) == "-0.25");
+}
+
+void console_text() {
+  CHECK(console_delta("a\nb\n", "a\nb\nc\n") == "c\n");
+  CHECK(console_delta("", "x\n") == "x\n");
+  CHECK(console_delta("old\nlast\n", "last\nnew\n") == "new\n");  // the front was trimmed
+  CHECK(console_delta("a\nb\n", "a\nb\n").empty());               // printed nothing
+  CHECK(console_refused("Script command \"notacommand\" not found.\n"));
+  CHECK(console_refused("Missing parameter Actor Value Name\n"));
+  CHECK(!console_refused("GetPos: X >> 1024.00\n"));
+  CHECK(!console_refused(""));
+}
+
+void save_names() {
+  CHECK(valid_save_name("argonia-base"));
+  CHECK(valid_save_name("Studio 1_a"));
+  CHECK(!valid_save_name(""));
+  CHECK(!valid_save_name("..\\x"));
+  CHECK(!valid_save_name("a/b"));
+  CHECK(!valid_save_name("a.ess"));
+  CHECK(!valid_save_name(" lead"));
+  CHECK(!valid_save_name(std::string(65, 'a')));
+}
+void input_keys_and_frames() {
+  CHECK(scancode("W") == 0x11);
+  CHECK(!scancode("w"));
+  CHECK(!scancode(""));
+  auto c = chord("W+LSHIFT");
+  CHECK(c && c->size() == 2 && (*c)[1] == 0x2A);
+  CHECK(!chord("W+"));
+  CHECK(!chord("W+NOPE"));
+  CHECK(!chord("W+A+S+D+E"));  // five keys: refused
+  auto f = frame_stats({16, 17, 15, 100, 16});
+  CHECK(f.frames == 5 && f.max == 100 && f.p50 == 16);
+  CHECK_NEAR(f.mean, 32.8, 1e-9);
+  CHECK(frame_stats({}).frames == 0);
+}
 }  // namespace
 
+void nav_tests();
+
 int main() {
+  input_keys_and_frames();
+  nav_tests();
+  rest_keeps_the_line();
+  numbers_and_form_ids();
+  json_objects();
+  console_text();
+  save_names();
   ping_parses();
   args_are_kept();
   bad_tokens_are_refused();

@@ -29,7 +29,7 @@ else
     "$out/$name"; n=$((n + 1))
   done
   echo "core: $n test executables passed"
-  c++ "${f[@]}" -I"$here/ArgoniaBridge/protocol" "$here/ArgoniaBridge/protocol/bridge_protocol.cpp" \
-    "$here/ArgoniaBridge/tests/test_protocol.cpp" -o "$out/protocol_tests"
+  c++ "${f[@]}" -I"$here/ArgoniaBridge/protocol" "$here"/ArgoniaBridge/protocol/*.cpp \
+    "$here"/ArgoniaBridge/tests/test_*.cpp -o "$out/protocol_tests"
   "$out/protocol_tests"
 fi

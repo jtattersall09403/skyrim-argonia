@@ -143,7 +143,7 @@ column is Part 1's thread; "whole" is the chunk that completes it.
 | Roads, routes, the route graph | routes/*.json | 1 | — | route generator | 2.W3 |
 | Places, interiors, doors | blueprints, 0114 interior manifest | 1 | BM&V, Xanmeer, KotM, others; **Tropical Skyrim SSE** for any base-Skyrim asset | piece resolver, `world-builder`, rebuilt natively (0026) | 0.4 → 2.W5 → 4.2, 4.4 |
 | Vegetation | flora rules as region object lists (0028) | 1 | **Tropical Skyrim SSE (78044)** over the vanilla forms; the CK's region generator | region records; the generator job | 2.W3 → 2.W4 |
-| The studio: scenes, the bridge, the journey runner | old 0149, 0155, 0156; 0022, 0029 | 2 (+5) | SkyLink AI (dev only), the console | `tools/bridge.py`, `ArgoniaBridge` for what SkyLink lacks, `tools/run_journey.py` | 0.3 |
+| The studio: scenes, the bridge, the journey runner | old 0149, 0155, 0156; 0022, 0029 | 5 | the console, SkyLink AI's design as the method (its plugin does not load on 1.7.104) | `tools/bridge.py`, `ArgoniaBridge` (dev only) carrying the whole endpoint list, `tools/run_journey.py` | 0.3 |
 | Game state, co-save, message schema, menu router | old 2.1 seam | 5 | — | ArgoniaCore | 1.1 |
 | Where each rule lives | the goals list (old designs as goals, 0026) | 1 → 5 | Skyrim's native systems, tes4skyrim's runtimes, PLAN §4 mods | the native map, `skse/core/` for what is left | 1.1 §a |
 | NPCs, whole-body templates, schedules, factions | the old people carried over (0026 §6), 0138 lamp clock, 0028 | 1 (+FaceGen for unique faces) | — | ArgoniaGen, AI packages | 0.4 → 2.4 |
