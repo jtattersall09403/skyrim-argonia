@@ -1,0 +1,8 @@
+FormKey: 063B3C:Skyrim.esm
+EditorID: DialogueKarthwastenRagnarBelchimac02
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

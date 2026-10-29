@@ -1,0 +1,11 @@
+{
+ "schema": 1,
+ "about": "Decision 0012 §2: the quests that may be running after a new game and after 1, 10 and 50 in-game days. Every other self-starting vanilla quest (start-game-enabled or started by the story manager, listed from the masters by ArgoniaGen quests) is generated as an inert shell override; the journey (0.4 §b) compares the running list with 'running'.",
+ "running": [
+  {"edid": "ARG_StartQuest", "why": "our start: new game to the holding cell (0.4 §b)"}
+ ],
+ "keepVanilla": [],
+ "prevent": [
+  {"edid": "MQ101", "formKey": "03372B:Skyrim.esm", "why": "the Helgen intro; the new-game flow starts it, no flag does"}
+ ]
+}

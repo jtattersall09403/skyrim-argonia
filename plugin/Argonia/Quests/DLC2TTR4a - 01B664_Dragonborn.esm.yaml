@@ -1,0 +1,8 @@
+FormKey: 01B664:Dragonborn.esm
+EditorID: DLC2TTR4a
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

@@ -1,0 +1,8 @@
+FormKey: 025F08:Skyrim.esm
+EditorID: DialogueMarkarthHagsCureSceneMuiriBothela02
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

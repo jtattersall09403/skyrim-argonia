@@ -1,0 +1,8 @@
+FormKey: 026E52:Skyrim.esm
+EditorID: DialogueRiverwoodFamilyScene2
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

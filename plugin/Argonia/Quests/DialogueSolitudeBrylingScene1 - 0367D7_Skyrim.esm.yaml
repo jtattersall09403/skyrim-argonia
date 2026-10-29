@@ -1,0 +1,8 @@
+FormKey: 0367D7:Skyrim.esm
+EditorID: DialogueSolitudeBrylingScene1
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

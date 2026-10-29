@@ -1,0 +1,8 @@
+FormKey: 05A82C:Skyrim.esm
+EditorID: CWMissionCatchEventTopA
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

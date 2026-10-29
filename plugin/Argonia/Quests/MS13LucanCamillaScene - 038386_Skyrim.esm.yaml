@@ -1,0 +1,8 @@
+FormKey: 038386:Skyrim.esm
+EditorID: MS13LucanCamillaScene
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

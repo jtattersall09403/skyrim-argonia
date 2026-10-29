@@ -1,0 +1,8 @@
+FormKey: 105A60:Skyrim.esm
+EditorID: TutorialEnchanting
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

@@ -1,0 +1,8 @@
+FormKey: 01EA5C:Skyrim.esm
+EditorID: DarkBrotherhood
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

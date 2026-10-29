@@ -1,0 +1,8 @@
+FormKey: 043A12:Skyrim.esm
+EditorID: DialogueCidhnaMineDuachOdvan01
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

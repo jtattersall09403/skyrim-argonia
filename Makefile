@@ -1,10 +1,10 @@
 # The one gate. `make check` runs every target in parallel and ends with one list of the reds.
 RED := .git/check-red
-PARTS := guard lint unit budget links skse
+PARTS := guard lint unit budget links plugin-check skse
 # A failing part records its name, then fails.
 FAIL = || { echo $@ >> $(RED); exit 1; }
 
-.PHONY: check hooks $(PARTS)
+.PHONY: check hooks plugin $(PARTS)
 
 check:
 	@rm -f $(RED)
@@ -31,6 +31,14 @@ links:
 # skse/core and the bridge protocol: pure C++ unit tests built natively on the build VM (0.3 §b).
 skse:
 	@bash skse/check.sh $(FAIL)
+
+# Records (0.4 §a): world -> intermediate JSON -> ArgoniaGen (Mutagen) -> out/Argonia.esm -> Spriggit plugin/Argonia/.
+plugin:
+	@python3 tools/ArgoniaGen/pipeline.py plugin
+
+# FormIDs append-only, pieces resolved, regenerate twice identical, plugin/ current, Spriggit round trip byte-identical.
+plugin-check:
+	@python3 tools/ArgoniaGen/pipeline.py check $(FAIL)
 
 hooks:
 	@bash tooling/guards/install_hooks.sh

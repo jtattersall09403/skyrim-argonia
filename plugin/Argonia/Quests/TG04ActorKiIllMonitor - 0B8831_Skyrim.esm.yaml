@@ -1,0 +1,8 @@
+FormKey: 0B8831:Skyrim.esm
+EditorID: TG04ActorKiIllMonitor
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

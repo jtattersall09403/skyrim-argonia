@@ -1,0 +1,8 @@
+FormKey: 0C1796:Skyrim.esm
+EditorID: DialogueWhiterunDagnyFrothar1
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

@@ -1,0 +1,8 @@
+FormKey: 037FBD:Skyrim.esm
+EditorID: WIAssaultRememberDialogue
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

@@ -1,0 +1,7 @@
+FormKey: 0950D0:Skyrim.esm
+EditorID: MUSStinger
+Flags:
+- PlaysOneSelection
+- AbruptTransition
+- CycleTracks
+- DucksCurrentTrack

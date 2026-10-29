@@ -1,0 +1,6 @@
+FormKey: 0ABDA4:Skyrim.esm
+EditorID: MUSDiscoveryDungeon
+Flags:
+- PlaysOneSelection
+- CycleTracks
+- DucksCurrentTrack

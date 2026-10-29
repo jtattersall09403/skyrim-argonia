@@ -1,0 +1,8 @@
+FormKey: 046ED0:Skyrim.esm
+EditorID: CreatureDialogueDragonPriest
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

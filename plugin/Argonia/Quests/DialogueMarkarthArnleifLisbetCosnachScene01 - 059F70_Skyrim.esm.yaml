@@ -1,0 +1,8 @@
+FormKey: 059F70:Skyrim.esm
+EditorID: DialogueMarkarthArnleifLisbetCosnachScene01
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

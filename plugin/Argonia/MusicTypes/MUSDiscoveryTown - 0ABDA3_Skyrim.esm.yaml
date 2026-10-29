@@ -1,0 +1,6 @@
+FormKey: 0ABDA3:Skyrim.esm
+EditorID: MUSDiscoveryTown
+Flags:
+- PlaysOneSelection
+- CycleTracks
+- DucksCurrentTrack

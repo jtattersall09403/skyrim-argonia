@@ -1,0 +1,8 @@
+FormKey: 005E58:Dawnguard.esm
+EditorID: DLC1RH03
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

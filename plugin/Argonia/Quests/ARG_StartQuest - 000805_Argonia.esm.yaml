@@ -1,0 +1,17 @@
+FormKey: 000805:Argonia.esm
+EditorID: ARG_StartQuest
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_StartQuestScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HoldingMarker
+      Object: 000803:Argonia.esm
+  FileName: ''
+Flags:
+- StartGameEnabled
+- RunOnce
+Priority: 90
+Stages:
+- {}
+- Index: 10

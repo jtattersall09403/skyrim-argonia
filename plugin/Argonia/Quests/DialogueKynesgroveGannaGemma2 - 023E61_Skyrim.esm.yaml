@@ -1,0 +1,8 @@
+FormKey: 023E61:Skyrim.esm
+EditorID: DialogueKynesgroveGannaGemma2
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

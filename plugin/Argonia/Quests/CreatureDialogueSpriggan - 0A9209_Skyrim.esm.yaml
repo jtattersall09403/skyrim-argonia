@@ -1,0 +1,8 @@
+FormKey: 0A9209:Skyrim.esm
+EditorID: CreatureDialogueSpriggan
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

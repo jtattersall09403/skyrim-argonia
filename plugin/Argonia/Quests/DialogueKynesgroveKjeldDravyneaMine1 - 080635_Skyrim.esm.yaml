@@ -1,0 +1,8 @@
+FormKey: 080635:Skyrim.esm
+EditorID: DialogueKynesgroveKjeldDravyneaMine1
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

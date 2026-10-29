@@ -1,0 +1,6 @@
+FormKey: 05221E:Skyrim.esm
+EditorID: MUSReveal
+Flags:
+- PlaysOneSelection
+- CycleTracks
+- DucksCurrentTrack

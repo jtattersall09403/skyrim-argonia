@@ -1,0 +1,8 @@
+FormKey: 05D32C:Skyrim.esm
+EditorID: DialogueWinterholdCollegeDormitoryScene04
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

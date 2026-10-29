@@ -1,0 +1,8 @@
+FormKey: 03A9AA:Skyrim.esm
+EditorID: DialogueWindhelmPalaceScene2
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

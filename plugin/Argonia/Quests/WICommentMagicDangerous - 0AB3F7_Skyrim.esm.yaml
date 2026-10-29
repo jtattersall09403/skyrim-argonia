@@ -1,0 +1,8 @@
+FormKey: 0AB3F7:Skyrim.esm
+EditorID: WICommentMagicDangerous
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

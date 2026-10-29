@@ -1,0 +1,8 @@
+FormKey: 025EFF:Skyrim.esm
+EditorID: DialogueMarkarthInnYngvarKlepprScene01
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

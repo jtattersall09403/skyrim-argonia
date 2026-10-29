@@ -1,0 +1,8 @@
+FormKey: 0A31DE:Skyrim.esm
+EditorID: RoriksteadSceneRorikReldith1
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

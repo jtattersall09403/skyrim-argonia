@@ -1,0 +1,8 @@
+FormKey: 0A0D26:Skyrim.esm
+EditorID: DA11DialogueReachcliff
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

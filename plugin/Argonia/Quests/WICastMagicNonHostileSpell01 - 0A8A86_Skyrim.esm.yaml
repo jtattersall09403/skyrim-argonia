@@ -1,0 +1,8 @@
+FormKey: 0A8A86:Skyrim.esm
+EditorID: WICastMagicNonHostileSpell01
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

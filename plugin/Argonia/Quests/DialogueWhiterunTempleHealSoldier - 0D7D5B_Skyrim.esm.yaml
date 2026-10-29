@@ -1,0 +1,8 @@
+FormKey: 0D7D5B:Skyrim.esm
+EditorID: DialogueWhiterunTempleHealSoldier
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

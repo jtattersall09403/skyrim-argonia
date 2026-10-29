@@ -1,0 +1,8 @@
+FormKey: 03D204:Skyrim.esm
+EditorID: DialogueDawnstarWhiteHallSkaldBulfrek02
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

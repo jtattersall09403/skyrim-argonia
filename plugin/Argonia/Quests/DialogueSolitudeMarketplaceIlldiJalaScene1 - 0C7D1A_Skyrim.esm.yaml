@@ -1,0 +1,8 @@
+FormKey: 0C7D1A:Skyrim.esm
+EditorID: DialogueSolitudeMarketplaceIlldiJalaScene1
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

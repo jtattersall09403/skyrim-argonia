@@ -1,0 +1,8 @@
+FormKey: 07404E:Skyrim.esm
+EditorID: RelationshipMarriageWedding
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

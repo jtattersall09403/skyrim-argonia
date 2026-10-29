@@ -1,0 +1,8 @@
+FormKey: 07120C:Skyrim.esm
+EditorID: DialogueRiftenKeepScene03Alternate
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

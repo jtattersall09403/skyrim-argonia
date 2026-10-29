@@ -1,0 +1,8 @@
+FormKey: 010A44:HearthFires.esm
+EditorID: BYOHHouseSkeeverInfestation
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

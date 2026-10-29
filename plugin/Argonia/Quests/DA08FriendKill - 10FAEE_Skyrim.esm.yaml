@@ -1,0 +1,8 @@
+FormKey: 10FAEE:Skyrim.esm
+EditorID: DA08FriendKill
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

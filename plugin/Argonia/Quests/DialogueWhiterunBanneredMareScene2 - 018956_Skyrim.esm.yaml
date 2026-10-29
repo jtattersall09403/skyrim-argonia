@@ -1,0 +1,8 @@
+FormKey: 018956:Skyrim.esm
+EditorID: DialogueWhiterunBanneredMareScene2
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

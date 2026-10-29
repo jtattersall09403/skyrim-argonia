@@ -1,0 +1,8 @@
+FormKey: 087105:Skyrim.esm
+EditorID: TG06_dunMarkarthWizardsQuartersQST
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

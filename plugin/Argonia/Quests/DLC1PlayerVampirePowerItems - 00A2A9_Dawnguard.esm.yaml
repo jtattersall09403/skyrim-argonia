@@ -1,0 +1,8 @@
+FormKey: 00A2A9:Dawnguard.esm
+EditorID: DLC1PlayerVampirePowerItems
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

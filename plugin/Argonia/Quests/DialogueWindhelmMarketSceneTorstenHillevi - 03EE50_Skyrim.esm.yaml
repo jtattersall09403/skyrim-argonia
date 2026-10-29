@@ -1,0 +1,8 @@
+FormKey: 03EE50:Skyrim.esm
+EditorID: DialogueWindhelmMarketSceneTorstenHillevi
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

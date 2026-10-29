@@ -1,0 +1,8 @@
+FormKey: 055BFD:Skyrim.esm
+EditorID: MS08ArgueQuest
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

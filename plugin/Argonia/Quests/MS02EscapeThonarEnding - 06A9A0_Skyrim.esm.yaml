@@ -1,0 +1,8 @@
+FormKey: 06A9A0:Skyrim.esm
+EditorID: MS02EscapeThonarEnding
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

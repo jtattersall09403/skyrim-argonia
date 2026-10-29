@@ -1,0 +1,6 @@
+FormKey: 013686:Skyrim.esm
+EditorID: MUSSpecialDeath
+Flags:
+- PlaysOneSelection
+- AbruptTransition
+- CycleTracks

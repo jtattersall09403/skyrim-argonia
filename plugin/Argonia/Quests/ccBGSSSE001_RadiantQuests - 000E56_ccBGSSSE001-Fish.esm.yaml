@@ -1,0 +1,8 @@
+FormKey: 000E56:ccBGSSSE001-Fish.esm
+EditorID: ccBGSSSE001_RadiantQuests
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

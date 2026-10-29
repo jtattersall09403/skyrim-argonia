@@ -1,0 +1,8 @@
+FormKey: 02F21F:Skyrim.esm
+EditorID: DialogueStonehillsMineScene04
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

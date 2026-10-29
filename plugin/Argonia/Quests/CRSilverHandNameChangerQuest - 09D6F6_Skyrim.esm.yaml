@@ -1,0 +1,8 @@
+FormKey: 09D6F6:Skyrim.esm
+EditorID: CRSilverHandNameChangerQuest
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

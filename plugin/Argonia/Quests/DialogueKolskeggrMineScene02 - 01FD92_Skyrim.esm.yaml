@@ -1,0 +1,8 @@
+FormKey: 01FD92:Skyrim.esm
+EditorID: DialogueKolskeggrMineScene02
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

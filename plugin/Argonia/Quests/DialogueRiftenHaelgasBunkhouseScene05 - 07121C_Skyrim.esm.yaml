@@ -1,0 +1,8 @@
+FormKey: 07121C:Skyrim.esm
+EditorID: DialogueRiftenHaelgasBunkhouseScene05
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

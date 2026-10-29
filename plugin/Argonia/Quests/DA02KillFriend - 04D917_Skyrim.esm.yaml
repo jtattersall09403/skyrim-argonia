@@ -1,0 +1,8 @@
+FormKey: 04D917:Skyrim.esm
+EditorID: DA02KillFriend
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

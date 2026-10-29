@@ -1,0 +1,8 @@
+FormKey: 1092D3:Skyrim.esm
+EditorID: MQSkyHavenSparring
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

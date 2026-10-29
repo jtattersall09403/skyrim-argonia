@@ -1,0 +1,8 @@
+FormKey: 05FB1C:Skyrim.esm
+EditorID: DialogueRiftenGrandPlazaScene11
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1
