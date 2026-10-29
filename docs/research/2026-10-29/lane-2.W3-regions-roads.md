@@ -187,3 +187,10 @@ they do not gate.
 - The RDOT density unit (2.W4).
 - The slope-cost re-trace above.
 - The Tear Road Stage position check.
+
+**Review fixes (e279217).**
+- One season vocabulary: the `season` table (dry, hatching, wet; `year_ord`). 85's `calendarIs` reads it through
+  `condition_shape_season`. Its five finer seasons had no shares or factors in any imported climate data, so they
+  were dropped.
+- `weather::on_day` returns `std::expected` and refuses a bad month or day. Before, a bad date was read as day 0
+  and wrote the dry chances.
