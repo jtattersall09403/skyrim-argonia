@@ -63,6 +63,8 @@ struct Verdict {
 
 Verdict evaluate(const Pred& p, const Facts& f);
 bool eval(const Pred& p, const Facts& f);  // evaluate(...).holds(); an invalid tree never holds
+// The hot path: evaluates a tree already validated by make() or check(), skipping the validation walk.
+Verdict evaluate_valid(const Pred& p, const Facts& f);
 
 // P2: one key per predicate instance that Skyrim cannot test natively, so ArgoniaCore publishes it as a global.
 struct MirrorKey {

@@ -86,6 +86,12 @@ double armour_kill_value(SkillId armour_skill, double victim_max_health, double 
 
 double worthiness(const UseEvent& ev) {
   if (ev.amount <= 0) return 0;
+  const double w = situational_worth(ev);
+  // A use the table does not scale counts in full or not at all (76 §120.2: no chip-damage equivalent).
+  return row(ev.kind).scaled ? w : (w > 0 ? 1.0 : 0.0);
+}
+
+double situational_worth(const UseEvent& ev) {
   switch (ev.kind) {
     case UseKind::weaponConnect:
       return target_counts(ev) && ev.damage > 0 ? fraction_worth(ev.damage, ev.target_max_health) : 0;
@@ -122,7 +128,7 @@ Outcome apply(const Progress& p, const Sheet& sh, const Effective& e, const UseE
   const double w = worthiness(ev);
   if (w <= 0) return o;
   double amount = ev.amount;
-  if (ev.kind == UseKind::run || ev.kind == UseKind::swim) {
+  if (ev.skill == SkillId::athletics && row(ev.kind).unit == gen::UseUnit::second) {  // the per-rest travel cap
     amount = std::min(amount, std::max(0.0, c::athletics_seconds_per_rest - p.athletics_s));
     o.progress.athletics_s += amount;
     if (amount <= 0) return o;

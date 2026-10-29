@@ -55,6 +55,9 @@ struct Outcome {
 
 // The worthiness of a use (76 §120.2): 0 when it does not count, else the factor that scales its canon value.
 double worthiness(const UseEvent& ev);
+// Whether the situation lets the use count, and its damage fraction for the scaled uses; worthiness() then applies
+// the use row's `scaled` flag.
+double situational_worth(const UseEvent& ev);
 // Canon points of one unit of the use for the skill (76 §120.1), before worthiness.
 double use_points(UseKind kind, SkillId skill);
 // Points to the next rank: (skill + 1) x class factor x specialisation factor (76 §120.1).

@@ -130,6 +130,14 @@ void unknowns_never_hold() {
   CHECK(!eval(any({}), f));   // any of nothing does not
   CHECK(!eval(Pred{Term::not_, {}, {}}, f));  // an invalid tree never holds
   CHECK(evaluate(Pred{Term::not_, {}, {}}, f).unanswered[0].rfind("invalid", 0) == 0);
+  CHECK(check(Pred{Term(200), {}, {}}).value_or("").find("not a term") != std::string::npos);  // no read past the table
+  Stub g;
+  g.states["histStepAtLeast()"] = "renamed-step";  // a value outside the closed set is not an answer
+  Verdict r = evaluate(P("histStepAtLeast", {std::string("touched")}), g);
+  CHECK(r.value == Tri::unknown && r.unanswered.size() == 1);
+  CHECK(evaluate(negate(P("histStepAtLeast", {std::string("touched")})), g).value == Tri::unknown);
+  CHECK(evaluate_valid(all({yes, unknown}), f).value == Tri::unknown);
+  CHECK(evaluate_valid(yes, f).holds());
 }
 
 void mirrors_for_p2() {

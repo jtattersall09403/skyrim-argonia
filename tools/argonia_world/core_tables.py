@@ -109,7 +109,10 @@ def sheet(w: db.World) -> str:
           for r in rows]
     b += ["}};", ""]
     for table in ("sheet_rules", "class_rules"):
-        r = w.query(f'SELECT * FROM "{table}"')[0]
+        rows = w.query(f'SELECT * FROM "{table}" ORDER BY id')
+        if len(rows) != 1:
+            raise SystemExit(f"{table}: the generator expects exactly one row, found {len(rows)}")
+        r = rows[0]
         b.append(f"namespace {table} {{")
         b += [f"inline constexpr double {ident(k)} = {num(r[k])};" for k in r.keys()
               if k not in ("id", "design_ref") and isinstance(r[k], (int, float))]

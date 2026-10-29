@@ -22,6 +22,7 @@
 {"id":"full_use_damage_fraction","module":"progression","value":0.15,"design_ref":"docs/design/world/76-stats-progression.md §120.2"}
 {"id":"health_attr_coefficient","module":"sheet","value":0.5,"design_ref":"docs/design/world/76-stats-progression.md §117.2"}
 {"id":"health_level_end_divisor","module":"sheet","value":10.0,"design_ref":"docs/design/world/76-stats-progression.md §117.2"}
+{"id":"hour_range_args","module":"conditions","value":2.0,"design_ref":"docs/design/quests/85-condition-vocabulary.md §A6 (timeOfDay: an enum or an hour range, from and to)"}
 {"id":"jump_acrobatics_base","module":"sheet","value":0.8,"design_ref":"docs/design/world/76-stats-progression.md §122"}
 {"id":"jump_acrobatics_divisor","module":"sheet","value":125.0,"design_ref":"docs/design/world/76-stats-progression.md §122"}
 {"id":"jump_apex_base_m","module":"sheet","value":1.378,"design_ref":"docs/design/world/76-stats-progression.md §122"}

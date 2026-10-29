@@ -20,6 +20,7 @@ else
     "$here/core/include/argonia/core/version.h.in" > "$out/generated/argonia/core/version.h"
   f=(-std=c++23 -Wall -Wextra -Wpedantic -Werror -I"$here/core/include" -I"$here/core/generated" -I"$out/generated"
      -I"$here/core/tests")
+  rm -f "$out"/*.o  # a renamed or deleted module leaves no object behind
   for src in "$here"/core/src/*.cpp; do c++ "${f[@]}" -c "$src" -o "$out/$(basename "$src" .cpp).o"; done
   n=0
   for t in "$here"/core/tests/test_*.cpp; do

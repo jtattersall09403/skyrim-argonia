@@ -41,9 +41,6 @@ bool compare(double lhs, Op op, double rhs) {
 
 namespace {
 
-// Argument positions (a predicate's first, second and third argument), named so no bare number reads as a constant.
-enum At : std::size_t { first, second, third };
-
 std::span<const gen::ArgSpec> specs(Term t) {
   const auto& r = row(t);
   return std::span<const gen::ArgSpec>(gen::kArgSpecs).subspan(r.first_arg, r.arg_count);
@@ -52,6 +49,14 @@ std::span<const gen::ArgSpec> specs(Term t) {
 std::span<const std::string_view> values(Term t) {
   const auto& r = row(t);
   return std::span<const std::string_view>(gen::kValues).subspan(r.first_value, r.value_count);
+}
+
+// The position of a term's first argument of a kind, from its spec rows; none when it has no such argument.
+std::optional<std::size_t> pos(Term t, ArgKind k) {
+  auto sp = specs(t);
+  for (std::size_t i = 0; i < sp.size(); ++i)
+    if (sp[i].kind == k) return i;
+  return std::nullopt;
 }
 
 std::optional<std::size_t> rank(Term t, std::string_view v) {
@@ -79,7 +84,8 @@ bool integral(const Arg& a) {
 
 // An hour-range form of timeOfDay: two integral hours.
 bool hour_range(const Pred& p) {
-  return p.term == Term::timeOfDay && p.args.size() == third && integral(p.args[first]) && integral(p.args[second]);
+  return p.term == Term::timeOfDay && p.args.size() == std::size_t(gen::conditions::hour_range_args) &&
+         std::all_of(p.args.begin(), p.args.end(), integral);
 }
 
 std::optional<std::string> check_args(const Pred& p) {
@@ -119,8 +125,8 @@ std::optional<std::string> check_args(const Pred& p) {
 }
 
 std::optional<std::string> check_at(const Pred& p, const std::string& path) {
+  if (std::size_t(p.term) >= gen::kTermCount) return (path.empty() ? "" : path + "/") + "?: not a term";
   const std::string here = path.empty() ? std::string(name(p.term)) : path + "/" + std::string(name(p.term));
-  if (std::size_t(p.term) >= gen::kTermCount) return here + ": not a term";
   if (is_combinator(p.term)) {
     if (!p.args.empty()) return here + ": a combinator takes no arguments";
     if (row(p.term).shape == Shape::not_ && p.children.size() != 1) return here + ": takes exactly one condition";
@@ -156,9 +162,10 @@ struct Eval {
       }
       case Shape::flag: {
         auto keys = args.first(1);
-        bool want = args.size() <= second ? true
-                                    : (std::holds_alternative<bool>(args[1]) ? std::get<bool>(args[1])
-                                                                             : std::get<double>(args[1]) != 0);
+        const std::size_t at = *pos(p.term, ArgKind::bool_);
+        bool want = args.size() <= at ? true
+                                      : (std::holds_alternative<bool>(args[at]) ? std::get<bool>(args[at])
+                                                                                : std::get<double>(args[at]) != 0);
         auto v = ask(f.truth(p.term, keys), p);
         return v ? tri(*v == want) : Tri::unknown;
       }
@@ -173,7 +180,9 @@ struct Eval {
       case Shape::compare: {
         auto v = ask(f.number(p.term, args.first(1)), p);
         if (!v) return Tri::unknown;
-        return tri(compare(*v, *op_named(std::get<std::string>(args[second])), std::get<double>(args[third])));
+        const Arg& op = args[*pos(p.term, ArgKind::op)];
+        const Arg& rhs = args[*pos(p.term, ArgKind::int_)];
+        return tri(compare(*v, *op_named(std::get<std::string>(op)), std::get<double>(rhs)));
       }
       case Shape::is: {
         auto v = ask(f.state(p.term, keys_but_last), p);
@@ -184,7 +193,11 @@ struct Eval {
         if (!v) return Tri::unknown;
         auto have = rank(p.term, *v);
         auto want = rank(p.term, std::get<std::string>(args.back()));
-        return have && want ? tri(*have >= *want) : Tri::no;
+        if (!have || !want) {  // a value outside the closed set is not an answer
+          unanswered.push_back(describe(p.term, p.args) + " = " + *v);
+          return Tri::unknown;
+        }
+        return tri(*have >= *want);
       }
       case Shape::after:
       case Shape::before: {
@@ -199,15 +212,16 @@ struct Eval {
         auto m = ask(f.state(p.term, month), p);
         if (!m) return Tri::unknown;
         if (*m != std::get<std::string>(args[0])) return Tri::no;
-        if (args.size() > 1) {
+        const std::size_t day_at = *pos(p.term, ArgKind::int_), season_at = *pos(p.term, ArgKind::enum_);
+        if (args.size() > day_at) {
           auto d = ask(f.number(p.term, day), p);
           if (!d) return Tri::unknown;
-          if (*d != std::get<double>(args[1])) return Tri::no;
+          if (*d != std::get<double>(args[day_at])) return Tri::no;
         }
-        if (args.size() > third) {
+        if (args.size() > season_at) {
           auto s = ask(f.state(p.term, season), p);
           if (!s) return Tri::unknown;
-          if (*s != std::get<std::string>(args[third])) return Tri::no;
+          if (*s != std::get<std::string>(args[season_at])) return Tri::no;
         }
         return Tri::yes;
       }
@@ -215,7 +229,7 @@ struct Eval {
         if (hour_range(p)) {
           auto h = ask(f.number(p.term, {}), p);
           if (!h) return Tri::unknown;
-          const double from = std::get<double>(args[0]), to = std::get<double>(args[1]);
+          const double from = std::get<double>(args.front()), to = std::get<double>(args.back());
           return tri(from <= to ? (*h >= from && *h < to) : (*h >= from || *h < to));  // a range may wrap midnight
         }
         auto v = ask(f.state(p.term, {}), p);
@@ -293,6 +307,13 @@ Verdict evaluate(const Pred& p, const Facts& f) {
     v.unanswered.push_back("invalid: " + *e);
     return v;
   }
+  Eval ev{f, v.unanswered};
+  v.value = ev.node(p);
+  return v;
+}
+
+Verdict evaluate_valid(const Pred& p, const Facts& f) {
+  Verdict v{Tri::unknown, {}};
   Eval ev{f, v.unanswered};
   v.value = ev.node(p);
   return v;

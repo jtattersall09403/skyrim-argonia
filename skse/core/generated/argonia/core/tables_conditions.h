@@ -198,6 +198,9 @@ inline constexpr std::size_t kDispositionBandCount = 3;
 inline constexpr std::array<std::string_view, 3> kDispositionBandNames{"low", "mid", "high"};
 inline constexpr std::array<double, 3> kDispositionBandMin{0.0, 30.0, 70.0};
 
+namespace conditions {
+inline constexpr double hour_range_args = 2.0;  // docs/design/quests/85-condition-vocabulary.md §A6 (timeOfDay: an enum or an hour range, from and to)
+}  // namespace conditions
 namespace disposition {
 inline constexpr double disposition_max = 100.0;  // docs/design/world/76-stats-progression.md §125, native map G18.3
 inline constexpr double disposition_min = 0.0;  // docs/design/world/76-stats-progression.md §125, native map G18.3

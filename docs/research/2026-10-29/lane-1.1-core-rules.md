@@ -95,3 +95,32 @@ and the shapes from 85. Tables: `core_module`, `core_constant` (80 constants, ea
 - `docs/design/world/98-data-model.md` needs the new tables (1.1 §e). That file is outside this lane's paths.
 - The adapters in ArgoniaCore (P1, P2, P7) and the L4 stubs named in native map §5 belong to 1.1 and 1.3–1.5.
 - `topics` waits on 1.3 §b's route decision.
+
+## Code review (one /code-review pass, medium; 10 findings)
+
+Fixed:
+1. `conditions::check` read `kTermNames` before its bounds check. The bounds check is now first, with a test
+   for `Term(200)`.
+2. `rank_at_least` returned "no" for a state outside the closed set. It now returns unknown and records the fact
+   (tested under `not`).
+3. `check.sh`'s fallback linked stale objects. It now clears `build/skse/plain/*.o` first.
+4. `core_use.scaled` and `unit` were generated but never read. `worthiness` now applies `scaled` (an unscaled use
+   counts in full or not at all), and the Athletics cap keys on `unit = second`.
+5. Argument positions were named only to get past the literal scan. They now come from the spec rows (`pos(term,
+   kind)`), and the hour-range arity is a constant (`hour_range_args`, 85 §A6).
+6. `sheet_rules` and `class_rules` were read as `[0]` with no order. They are now ordered, and the generator
+   refuses anything but exactly one row.
+7. `evaluate` validated on every call. `evaluate_valid` is the hot path for trees `make()` has already checked.
+
+Not changed:
+- `families` sits beside `cosave::upgrade`, so there are two lift chains. This is kept so that ArgoniaCore's
+  `main.cpp` (not this lane's path) builds unchanged. META should move onto `families::Registry` when 1.1 wires
+  the adapters; then `FamilySpec` and `upgrade` can go.
+- **For 2.W3 (`skse/core/weather`, commit 95069d6):**
+  - 85's `calendarIs` season set is {dry, rain-onset, monsoon, flood-peak, recession}, but `weather`'s Season is
+    {dry, hatching, wet}. One vocabulary must win, and the `condition_shape_value` rows for `calendarIs` follow it.
+  - `weather::on_day` turns a bad month or day into day 0 (`value_or(0)`) and writes the dry chances instead of
+    refusing.
+
+After the fixes: `100% tests passed out of 17` (the 17th is 2.W3's `core.weather`) and `test_core_tables` 6
+passed.
