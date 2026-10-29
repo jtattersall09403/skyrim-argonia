@@ -25,7 +25,7 @@ import numpy as np
 
 from tools.argonia_world.water import field as wfield
 from tools.argonia_world.water import oriented, plan, steps
-from tools.argonia_world.water.plan import CX0, CY0, DRYC, Q
+from tools.argonia_world.water.plan import DRYC, Q
 
 BUDGET = 32
 SNAP_TOL_M = 0.25  # interleaved levels this close may merge (kept under 2 x STEP_MAX_M: no river step snaps)

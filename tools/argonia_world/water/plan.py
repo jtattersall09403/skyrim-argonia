@@ -259,6 +259,7 @@ def plan_cells(f: Field, ground: np.ndarray, oplanes: list | None = None,
                     continue
             cp = out.setdefault((cx, cy), CellPlan(cx, cy, "planes"))
             wt = f.wtype[r0:r1, c0:c1]
+            best, best_k = [], float("inf")
             for greedy in (False, True):
                 planes = []
                 for code in (int(v) for v in levels):
@@ -337,7 +338,6 @@ def check_bodies(g: Graph, f: Field, R: np.ndarray, ground: np.ndarray, tol_m: f
     a cell water height or a plane, at its level within the snap (the ocean: the worldspace default water at 0).
     A body whose every sample is above its level on the terrain lane's ground (patched since the graph was
     solved) has no water to show: it is listed as `buried`, and counted uncovered."""
-    lv = f.level.ravel()
     sh = f.shown.ravel()
     Rr = R.ravel()
     gr = ground.reshape(-1)

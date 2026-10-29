@@ -6,7 +6,7 @@ PY := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/python) python3)
 # A failing part records its name, then fails.
 FAIL = || { echo $@ >> $(RED); exit 1; }
 
-.PHONY: check hooks plugin db chart $(PARTS)
+.PHONY: check hooks plugin db chart navmesh $(PARTS)
 
 check:
 	@rm -f $(RED)
@@ -17,7 +17,8 @@ guard:
 	@python3 tooling/guards/no_assets.py --tree $(FAIL)
 
 lint:
-	@if command -v ruff >/dev/null; then ruff check tooling tools; \
+	@if [ -x $(HOME)/.argonia/venv/bin/ruff ]; then $(HOME)/.argonia/venv/bin/ruff check -q tooling tools; \
+	elif command -v ruff >/dev/null; then ruff check -q tooling tools; \
 	elif python3 -m pyflakes --version >/dev/null 2>&1; then python3 -m pyflakes tooling tools; \
 	else python3 -m compileall -q tooling tools >/dev/null; fi $(FAIL)
 
@@ -62,3 +63,8 @@ hooks:
 # ~1 GB); the gate's part is tools/chart/tests (the sample's pinned hash). Pelagiad: python -m tools.chart fetch-font.
 chart:
 	@$(PY) -m tools.chart render
+
+# The navmesh (2.W4 §b): the province's NAVM and NAVI (tools/navmesh, DotRecast), then out/ArgoniaWorld.esm with
+# them, verified byte for byte; not in the gate (tens of minutes); the gate's part is plugin-check's four-cell hash.
+navmesh:
+	@mkdir -p out && flock out/.plugin.lock $(PY) tools/ArgoniaGen/pipeline.py navmesh

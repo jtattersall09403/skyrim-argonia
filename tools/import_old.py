@@ -344,7 +344,7 @@ class Importer:
         for o, n, _ in self.rows:
             key = o.rsplit("/", 1)[0] if "/" in o else o
             by_top.setdefault(key, [0, 0])[0] += 1
-        L = [f"# Imported from elder-souls-argonia",
+        L = ["# Imported from elder-souls-argonia",
              "",
              f"Commit `{self.sha}` of the owner's private repo (read-only source). Written by `tools/import_old.py`; "
              "do not edit by hand. Data files are byte-identical; each design doc under `docs/design/` carries a "
