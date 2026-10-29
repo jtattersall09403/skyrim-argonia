@@ -6,6 +6,7 @@
 #   run.sh put <local> <remote>     copy a file or directory to the machine
 #   run.sh desktop '<powershell>'   run in the logged-in desktop session (GUI apps, display settings); waits
 #   run.sh start | stop             start or stop the instance
+#   run.sh up                       start it whatever its state: waits out a stop still in progress first
 set -euo pipefail
 export PATH="$HOME/.local/bin:$PATH"
 here=$(cd "$(dirname "$0")" && pwd)
@@ -56,6 +57,14 @@ Get-Content $o -EA SilentlyContinue' ;;
       echo "rebooting (pass $pass)"; ps 'Restart-Computer -Force' >/dev/null 2>&1 || true
       read -t 45 < /dev/zero 2>/dev/null || true; wait_ssh
     done ;;
+  up)
+    for i in $(seq 1 60); do
+      s=$(aws ec2 describe-instances --region $R --instance-ids "$(id)" --query 'Reservations[0].Instances[0].State.Name' --output text)
+      [ "$s" = running ] && { wait_ssh; echo "running at $(ip)"; exit 0; }
+      [ "$s" = stopped ] && break
+      read -t 10 < /dev/zero 2>/dev/null || true
+    done
+    aws ec2 start-instances --region $R --instance-ids "$(id)" >/dev/null; wait_ssh; echo "running at $(ip)" ;;
   start) aws ec2 start-instances --region $R --instance-ids "$(id)" >/dev/null; wait_ssh; echo "running at $(ip)" ;;
   stop) aws ec2 stop-instances --region $R --instance-ids "$(id)" >/dev/null; echo stopping ;;
   *) sed -n '2,8p' "$0"; exit 2 ;;
