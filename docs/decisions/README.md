@@ -10,7 +10,7 @@ Rulings inherited from elder-souls-argonia are listed (carry / adapt / drop) in
 - [0001](0001-skyrim-se-is-the-host-engine.md) Skyrim SE is the host engine; S2 plugins carry the systems; HTML screens carry the Morrowind UI
 - [0002](0002-one-pinned-skyrim-runtime.md) One pinned Skyrim runtime
 - [0003](0003-nothing-shipped-that-players-do-not-own.md) The repo is public and ships only our own code and data
-- [0004](0004-ds1-remastered-is-the-combat-oracle.md) Dark Souls Remastered is the combat oracle; match DS1 timings; knowledge only
+- [0004](0004-ds1-remastered-is-the-combat-oracle.md) Dark Souls Remastered is the combat yardstick; match DS1 timings where we set them; knowledge only
 - [0005](0005-the-morrowind-soul-contract.md) The Morrowind soul contract (C1–C15)
 - [0006](0006-black-marsh-immersion-no-nordic-element-survives.md) Black Marsh immersion: no Nordic element survives; Pelagiad, new music, 100% audit, Fal for minor art
 - [0007](0007-the-owner-plays-by-browser-streaming.md) The owner plays by browser streaming from an AWS GPU machine
@@ -24,7 +24,7 @@ Rulings inherited from elder-souls-argonia are listed (carry / adapt / drop) in
 - [0015](0015-repo-licence-and-licence-tracking.md) Repo licence (GPL-3.0 code, CC BY-NC-SA content, recommended) and licence tracking
 - [0016](0016-weapon-classes-follow-morrowind.md) Weapon classes follow Morrowind, including crossbows and thrown
 - [0017](0017-one-coherent-argonian-ui-approach-chosen-with-the-owner.md) One coherent Argonian UI, Morrowind in spirit and good by today's standards: Morrowind dialogue and pause-menu windows (draggable, resizable, remembered); the approach chosen with the owner in G11
-- [0019](0019-combat-is-rebuilt-from-ds1-not-ported-from-the-old-project.md) Combat is rebuilt from Dark Souls Remastered (whole system, wired to our stats), not ported from the old project
+- [0019](0019-combat-is-existing-mods-tuned-built-only-where-they-fall-short.md) Combat is existing mods, tuned (a deep dive and a gap register first); we build only where they fall short; nothing from the old project's combat
 - [0020](0020-reuse-others-methods-universal-modder-and-ghidra-tooling.md) Reuse others' methods: universal-modder's skills, agents and field notes; agent-ready Ghidra tooling (ReVa, pyghidra-mcp)
 - [0021](0021-fast-focused-loops-and-the-ladder.md) Fast focused loops with eyes on the cheapest rung of the ladder; one lane tests a feature and its joins; journeys are eyeless on two runners
 - [0022](0022-the-studio-boots-into-any-place.md) The studio: a dev build of the game that boots into any place, for agents and the owner; it only observes and teleports

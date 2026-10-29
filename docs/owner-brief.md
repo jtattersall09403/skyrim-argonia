@@ -29,7 +29,8 @@ Something they can **play**, that is:
 3. **Dark Souls combat**, "hooked up to" the Morrowind-based stats and progression model ("we've already done a
    lot of the thinking on that in the argonia repo"). Source: originally DS3 (because ds3-open-re looked like
    relevant tooling); the owner **prefers Dark Souls 1 Remastered**, which they own. **Ruling: match DS1 for
-   timings.**
+   timings.** **2026-10-29: build it from existing mods, tuned and lightly tweaked; build our own only
+   where they genuinely fall short** (decision 0019).
 4. **Free climbing and traversal**: "anything that's broadly like free climbing would be fine" (reference: the
    Mirror's Edge parkour-in-Skyrim video).
 5. **Player-controlled boats** (research the best source).
@@ -158,3 +159,5 @@ Something they can **play**, that is:
 | 2026-10-28 | The writing skills made on a side branch are brought in (0.1) and their use is built into the chunks that write quests and dialogue (1.3, 2.5, 2.12, 3.3, 4.1–4.3). |
 | 2026-10-29 | **The owner plays entirely in third person.** The souls-like test and Argonia's combat, camera and HUD are designed and tested for the third-person camera. |
 | 2026-10-29 | **Parry, riposte and backstab are required** for anything called souls-like, the 0.0 combat test included (Rim Parry and Execution, Nexus 114366, as before). |
+| 2026-10-29 | **Combat is existing mods, tuned, not DS1's system rebuilt.** "We shouldn't build it unless we *need* to": the combat part is a deep dive into how far existing mods get with slight tweaks (e.g. the backstab on a single press, not block-then-attack), and only what genuinely needs building is built (decision 0019 revised). |
+| 2026-10-29 | **The gamepad follows DS1 Remastered on Switch, by button position:** roll on the right button, R1/R2 light and heavy, L1 block, L2 parry (L1 + R1 is fine while the parry mod needs it), with Skyrim's menu, journal and wait adapted onto spare buttons. |

@@ -1,7 +1,9 @@
-# 0004: Dark Souls Remastered is the combat oracle; we match DS1 timings; knowledge only
+# 0004: Dark Souls Remastered is the combat yardstick; we match DS1 timings; knowledge only
 
 **Status:** decided 2026-10-27 (owner: "we should match DS1 for timings"; prefers DS1 Remastered, owns it;
-DS3 only came up because ds3-open-re looked like tooling, which it is not: it is netcode).
+DS3 only came up because ds3-open-re looked like tooling, which it is not: it is netcode). Scoped 2026-10-29 by
+decision 0019's revision: combat is existing mods, tuned, so DSR is measured where a gap or a tuning question
+needs a number, not as a whole system to rebuild.
 
 ## Context
 
@@ -13,8 +15,9 @@ live (since Nov 2022) though it has no client anti-cheat.
 
 ## Decision
 
-1. **Timings and combat numbers come from measuring DS1 Remastered.** Where the old design's numbers differ
-   from DSR, **DSR wins** (owner ruling). Stats-driven damage, mitigation and attribute effects still come from
+1. **Where a combat number or timing is set, it comes from measuring DS1 Remastered**, and only the numbers
+   the gap register (decision 0019 §2) or a tuning question needs are measured. Where the old design's numbers
+   differ from DSR, **DSR wins** (owner ruling). Stats-driven damage, mitigation and attribute effects still come from
    Argonia's own Morrowind-based model (decision 0005): DS1 supplies the *feel* (windows, frames, poise
    behaviour, stamina rhythm, AI shape), Argonia supplies the *character sheet*.
 2. **Knowledge only.** We record derived numbers in our own golden table
@@ -32,16 +35,16 @@ live (since Nov 2022) though it has no client anti-cheat.
    by the mechanism in decision 0014 §2 (runtime speed and window control first; an install-time patcher of the
    player's own clips only if needed), never by shipping edited clips. No
    FromSoftware-derived movesets (several Nexus packs are DS3/ER rips: excluded whatever their Nexus page says).
-6. **Verification:** every window edge in game is within ±1 DS1 frame (33 ms, aim 16 ms) of the golden table,
+6. **Verification:** every window we set or tune is within ±1 DS1 frame (33 ms, aim 16 ms) of the golden table,
    checked by the scripted test dummy at capped 30 and 60 fps (1.4, 2.7 §f).
 
 ## Consequences
 
-- The 13/11/9 question is first answered by gate G6 (0.2) and confirmed (with the full table) in 2.7 §b; the
-  result is written back here.
-- Decision 0019 widens this record: DSR specifies the whole combat system, not only timings; nothing of the old
-  project's combat (code, constants, animation choices) is inherited.
+- The 13/11/9 question is answered when roll i-frames are tuned (G6 if the gap register calls for it, else
+  1.4); the result is written back here.
+- Decision 0019 sets the frame: existing mods are the combat system and DSR is the yardstick for their gaps;
+  nothing of the old project's combat (code, constants, animation choices) is inherited.
 - Burden tiers: Argonia's ratios (fast < 0.2, mid < 0.35, fat < 1, of carry capacity) define the tiers; DSR
   supplies the i-frames and recovery per tier (DSR's own 25%/50% thresholds do not bind).
-- Combat feel depends on Skyrim animations matching DS1 windows; timing is fixed on the animation side through
-  decision 0014 §2, never by bending the numbers.
+- Combat feel depends on Skyrim animations matching DS1 windows; where a measured window is missed, timing is
+  fixed on the animation side through decision 0014 §2, never by bending the numbers.

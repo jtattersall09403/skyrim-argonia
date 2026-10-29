@@ -64,7 +64,7 @@ decisions or a later owner ruling change them. A row's verdict changes only by a
 | 0083 | planners never hand off for cost | Carry | |
 | 0085, 0086 | kit truth mined from placement evidence; kit skills | Adapt | "read what goes with what from plugin data" carries; kit skills not copied |
 | 0087 | Opus decides when delegated (superseded in part) | Drop | |
-| 0088, 0089 | stats model and combat runtime as packages | Adapt | ArgoniaCore/ArgoniaCombat with a pure core library |
+| 0088, 0089 | stats model and combat runtime as packages | Adapt | ArgoniaCore with a pure core library; ArgoniaCombat only for the combat gaps the mods leave (0019) |
 | 0090 | arrow damage calibrated to the band ladder | Adapt | intent only; ranged damage comes from the wiring spec (0019) |
 | 0091 | off hand holds shield, weapon or light | Carry | native |
 | 0092 | stealth is a detection service | Adapt | Skyrim detection tuned (2.11) |

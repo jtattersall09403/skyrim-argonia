@@ -33,7 +33,7 @@ Skyrim makes the body free and the soul a code problem.
      here.
    - **S2, our own SKSE plugins** (CommonLibSSE-NG + Address Library) hooking the unmodified executable.
      The core of the project: stats/vastei/topics/conditions (ArgoniaCore), combat numbers
-     (ArgoniaCombat), boats (ArgoniaBoats), the dev-only agent bridge (ArgoniaBridge).
+     (ArgoniaCombat, only for the combat gaps the mods leave: decision 0019), boats (ArgoniaBoats), the dev-only agent bridge (ArgoniaBridge).
    - **S3, targeted deep hooks**: only where S2 cannot deliver the soul: the Morrowind dialogue window,
      the topic-index journal, the local map, the sitting/persuasion/chargen screens and the HUD, drawn as
      HTML through PrismaUI. Raw-offset patches of SkyrimSE.exe are a last resort and need a decision record.
