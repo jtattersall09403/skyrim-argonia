@@ -1,0 +1,71 @@
+FormKey: 08000D:ArgoniaWorld.esm
+EditorID: ARG_Region_imperial_fringe_coastal_lagoon
+Worldspace: 000800:ArgoniaWorld.esm
+RegionAreas:
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -249856, -61440
+  - -245760, -61440
+  - -245760, -57344
+  - -249856, -57344
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -253952, -57344
+  - -249856, -57344
+  - -249856, -53248
+  - -253952, -53248
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -86016, 90112
+  - -81920, 90112
+  - -81920, 94208
+  - -86016, 94208
+Objects:
+  Priority: 50
+  Objects:
+  - Object: 04FF0F:Skyrim.esm
+    Density: 1
+    Clustering: 2
+    MaxSlope: 35
+    Radius: 840
+    Unknown2: 0x000000000000
+  - Object: 0B8A75:Skyrim.esm
+    Density: 1
+    Clustering: 2
+    MaxSlope: 35
+    Flags:
+    - Tree
+    Radius: 840
+    Unknown2: 0x000000000000
+Weather:
+  Priority: 50
+  Weathers:
+  - Weather: 10A234:Skyrim.esm
+    Chance: 15
+    Global: 000814:Argonia.esm
+  - Weather: 10A236:Skyrim.esm
+    Chance: 15
+    Global: 000815:Argonia.esm
+  - Weather: 10A235:Skyrim.esm
+    Chance: 5
+    Global: 000816:Argonia.esm
+  - Weather: 00080F:Argonia.esm
+    Chance: 5
+    Global: 000817:Argonia.esm
+  - Weather: 0C821F:Skyrim.esm
+    Chance: 26
+    Global: 000818:Argonia.esm
+  - Weather: 000810:Argonia.esm
+    Chance: 20
+    Global: 000819:Argonia.esm
+  - Weather: 000811:Argonia.esm
+    Chance: 7
+    Global: 00081A:Argonia.esm
+  - Weather: 0C8220:Skyrim.esm
+    Chance: 7
+    Global: 00081B:Argonia.esm
+Map:
+  Priority: 50
+  Name:
+    TargetLanguage: English
+    Value: Blackwood

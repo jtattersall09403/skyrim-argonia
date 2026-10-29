@@ -1,0 +1,939 @@
+FormKey: 080006:ArgoniaWorld.esm
+EditorID: ARG_Region_hist_heartland_coastal_lagoon
+Worldspace: 000800:ArgoniaWorld.esm
+RegionAreas:
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 110592, 0
+  - 122880, 0
+  - 122880, 8192
+  - 110592, 8192
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 110592, 8192
+  - 126976, 8192
+  - 126976, 12288
+  - 110592, 12288
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 106496, 12288
+  - 126976, 12288
+  - 126976, 20480
+  - 106496, 20480
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 106496, 20480
+  - 122880, 20480
+  - 122880, 24576
+  - 106496, 24576
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 106496, 24576
+  - 118784, 24576
+  - 118784, 28672
+  - 106496, 28672
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 131072, 24576
+  - 135168, 24576
+  - 135168, 28672
+  - 131072, 28672
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -45056, 28672
+  - -40960, 28672
+  - -40960, 32768
+  - -45056, 32768
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 106496, 28672
+  - 114688, 28672
+  - 114688, 32768
+  - 106496, 32768
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 126976, 28672
+  - 139264, 28672
+  - 139264, 32768
+  - 126976, 32768
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -49152, 32768
+  - -24576, 32768
+  - -24576, 36864
+  - -49152, 36864
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 106496, 32768
+  - 110592, 32768
+  - 110592, 36864
+  - 106496, 36864
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 122880, 32768
+  - 143360, 32768
+  - 143360, 36864
+  - 122880, 36864
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -61440, 36864
+  - -36864, 36864
+  - -36864, 40960
+  - -61440, 40960
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -32768, 36864
+  - -12288, 36864
+  - -12288, 40960
+  - -32768, 40960
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 106496, 36864
+  - 114688, 36864
+  - 114688, 40960
+  - 106496, 40960
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 118784, 36864
+  - 155648, 36864
+  - 155648, 40960
+  - 118784, 40960
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -73728, 40960
+  - -57344, 40960
+  - -57344, 45056
+  - -73728, 45056
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -28672, 40960
+  - 16384, 40960
+  - 16384, 45056
+  - -28672, 45056
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 106496, 40960
+  - 118784, 40960
+  - 118784, 45056
+  - 106496, 45056
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 122880, 40960
+  - 163840, 40960
+  - 163840, 45056
+  - 122880, 45056
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -90112, 45056
+  - -69632, 45056
+  - -69632, 49152
+  - -90112, 49152
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -65536, 45056
+  - -61440, 45056
+  - -61440, 53248
+  - -65536, 53248
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -40960, 45056
+  - -36864, 45056
+  - -36864, 49152
+  - -40960, 49152
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -12288, 45056
+  - 20480, 45056
+  - 20480, 49152
+  - -12288, 49152
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 126976, 45056
+  - 167936, 45056
+  - 167936, 49152
+  - 126976, 49152
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 172032, 45056
+  - 217088, 45056
+  - 217088, 49152
+  - 172032, 49152
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -45056, 49152
+  - -40960, 49152
+  - -40960, 53248
+  - -45056, 53248
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -4096, 49152
+  - 8192, 49152
+  - 8192, 53248
+  - -4096, 53248
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 12288, 49152
+  - 24576, 49152
+  - 24576, 53248
+  - 12288, 53248
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 53248, 49152
+  - 57344, 49152
+  - 57344, 53248
+  - 53248, 53248
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 126976, 49152
+  - 217088, 49152
+  - 217088, 53248
+  - 126976, 53248
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -81920, 53248
+  - -77824, 53248
+  - -77824, 57344
+  - -81920, 57344
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -69632, 53248
+  - -65536, 53248
+  - -65536, 57344
+  - -69632, 57344
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -61440, 53248
+  - -57344, 53248
+  - -57344, 57344
+  - -61440, 57344
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -49152, 53248
+  - -45056, 53248
+  - -45056, 57344
+  - -49152, 57344
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -4096, 53248
+  - 4096, 53248
+  - 4096, 57344
+  - -4096, 57344
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 16384, 53248
+  - 28672, 53248
+  - 28672, 57344
+  - 16384, 57344
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 40960, 53248
+  - 65536, 53248
+  - 65536, 57344
+  - 40960, 57344
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 131072, 53248
+  - 212992, 53248
+  - 212992, 61440
+  - 131072, 61440
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -86016, 57344
+  - -61440, 57344
+  - -61440, 61440
+  - -86016, 61440
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -57344, 57344
+  - -49152, 57344
+  - -49152, 65536
+  - -57344, 65536
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -12288, 57344
+  - -4096, 57344
+  - -4096, 65536
+  - -12288, 65536
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 0, 57344
+  - 4096, 57344
+  - 4096, 61440
+  - 0, 61440
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 20480, 57344
+  - 32768, 57344
+  - 32768, 61440
+  - 20480, 61440
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 36864, 57344
+  - 69632, 57344
+  - 69632, 61440
+  - 36864, 61440
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 90112, 57344
+  - 94208, 57344
+  - 94208, 61440
+  - 90112, 61440
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -77824, 61440
+  - -61440, 61440
+  - -61440, 65536
+  - -77824, 65536
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 0, 61440
+  - 8192, 61440
+  - 8192, 65536
+  - 0, 65536
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 16384, 61440
+  - 49152, 61440
+  - 49152, 65536
+  - 16384, 65536
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 57344, 61440
+  - 73728, 61440
+  - 73728, 65536
+  - 57344, 65536
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 86016, 61440
+  - 90112, 61440
+  - 90112, 65536
+  - 86016, 65536
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 126976, 61440
+  - 208896, 61440
+  - 208896, 65536
+  - 126976, 65536
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -73728, 65536
+  - -61440, 65536
+  - -61440, 69632
+  - -73728, 69632
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -57344, 65536
+  - -53248, 65536
+  - -53248, 69632
+  - -57344, 69632
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 0, 65536
+  - 20480, 65536
+  - 20480, 73728
+  - 0, 73728
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 28672, 65536
+  - 53248, 65536
+  - 53248, 69632
+  - 28672, 69632
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 57344, 65536
+  - 77824, 65536
+  - 77824, 69632
+  - 57344, 69632
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 118784, 65536
+  - 200704, 65536
+  - 200704, 69632
+  - 118784, 69632
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -73728, 69632
+  - -57344, 69632
+  - -57344, 73728
+  - -73728, 73728
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 45056, 69632
+  - 81920, 69632
+  - 81920, 73728
+  - 45056, 73728
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 94208, 69632
+  - 192512, 69632
+  - 192512, 73728
+  - 94208, 73728
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -73728, 73728
+  - -69632, 73728
+  - -69632, 81920
+  - -73728, 81920
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -61440, 73728
+  - -57344, 73728
+  - -57344, 77824
+  - -61440, 77824
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -4096, 73728
+  - 4096, 73728
+  - 4096, 77824
+  - -4096, 77824
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 8192, 73728
+  - 16384, 73728
+  - 16384, 77824
+  - 8192, 77824
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 53248, 73728
+  - 77824, 73728
+  - 77824, 77824
+  - 53248, 77824
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 81920, 73728
+  - 188416, 73728
+  - 188416, 77824
+  - 81920, 77824
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -65536, 77824
+  - -57344, 77824
+  - -57344, 81920
+  - -65536, 81920
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -24576, 77824
+  - 0, 77824
+  - 0, 81920
+  - -24576, 81920
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 8192, 77824
+  - 12288, 77824
+  - 12288, 81920
+  - 8192, 81920
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 57344, 77824
+  - 73728, 77824
+  - 73728, 86016
+  - 57344, 86016
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 90112, 77824
+  - 118784, 77824
+  - 118784, 81920
+  - 90112, 81920
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 126976, 77824
+  - 192512, 77824
+  - 192512, 81920
+  - 126976, 81920
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -77824, 81920
+  - -65536, 81920
+  - -65536, 86016
+  - -77824, 86016
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -16384, 81920
+  - -8192, 81920
+  - -8192, 90112
+  - -16384, 90112
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -4096, 81920
+  - 12288, 81920
+  - 12288, 86016
+  - -4096, 86016
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 94208, 81920
+  - 188416, 81920
+  - 188416, 86016
+  - 94208, 86016
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -86016, 86016
+  - -77824, 86016
+  - -77824, 90112
+  - -86016, 90112
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -73728, 86016
+  - -69632, 86016
+  - -69632, 90112
+  - -73728, 90112
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -61440, 86016
+  - -57344, 86016
+  - -57344, 94208
+  - -61440, 94208
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 8192, 86016
+  - 12288, 86016
+  - 12288, 90112
+  - 8192, 90112
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 65536, 86016
+  - 77824, 86016
+  - 77824, 94208
+  - 65536, 94208
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 126976, 86016
+  - 188416, 86016
+  - 188416, 90112
+  - 126976, 90112
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -81920, 90112
+  - -69632, 90112
+  - -69632, 94208
+  - -81920, 94208
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -4096, 90112
+  - 0, 90112
+  - 0, 98304
+  - -4096, 98304
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 12288, 90112
+  - 16384, 90112
+  - 16384, 94208
+  - 12288, 94208
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 126976, 90112
+  - 184320, 90112
+  - 184320, 94208
+  - 126976, 94208
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -65536, 94208
+  - -61440, 94208
+  - -61440, 98304
+  - -65536, 98304
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 12288, 94208
+  - 24576, 94208
+  - 24576, 98304
+  - 12288, 98304
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 69632, 94208
+  - 77824, 94208
+  - 77824, 98304
+  - 69632, 98304
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 126976, 94208
+  - 180224, 94208
+  - 180224, 98304
+  - 126976, 98304
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 20480, 98304
+  - 28672, 98304
+  - 28672, 102400
+  - 20480, 102400
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 32768, 98304
+  - 40960, 98304
+  - 40960, 102400
+  - 32768, 102400
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 65536, 98304
+  - 77824, 98304
+  - 77824, 102400
+  - 65536, 102400
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 126976, 98304
+  - 176128, 98304
+  - 176128, 102400
+  - 126976, 102400
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 24576, 102400
+  - 45056, 102400
+  - 45056, 106496
+  - 24576, 106496
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 53248, 102400
+  - 73728, 102400
+  - 73728, 106496
+  - 53248, 106496
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 126976, 102400
+  - 172032, 102400
+  - 172032, 106496
+  - 126976, 106496
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 40960, 106496
+  - 65536, 106496
+  - 65536, 110592
+  - 40960, 110592
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 131072, 106496
+  - 167936, 106496
+  - 167936, 110592
+  - 131072, 110592
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 40960, 110592
+  - 57344, 110592
+  - 57344, 114688
+  - 40960, 114688
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 131072, 110592
+  - 163840, 110592
+  - 163840, 114688
+  - 131072, 114688
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 36864, 114688
+  - 53248, 114688
+  - 53248, 118784
+  - 36864, 118784
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 126976, 114688
+  - 139264, 114688
+  - 139264, 118784
+  - 126976, 118784
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 143360, 114688
+  - 159744, 114688
+  - 159744, 122880
+  - 143360, 122880
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 24576, 118784
+  - 53248, 118784
+  - 53248, 122880
+  - 24576, 122880
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 131072, 118784
+  - 139264, 118784
+  - 139264, 122880
+  - 131072, 122880
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 16384, 122880
+  - 24576, 122880
+  - 24576, 131072
+  - 16384, 131072
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 40960, 122880
+  - 61440, 122880
+  - 61440, 126976
+  - 40960, 126976
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 131072, 122880
+  - 159744, 122880
+  - 159744, 126976
+  - 131072, 126976
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 45056, 126976
+  - 69632, 126976
+  - 69632, 131072
+  - 45056, 131072
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 131072, 126976
+  - 135168, 126976
+  - 135168, 131072
+  - 131072, 131072
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 151552, 126976
+  - 159744, 126976
+  - 159744, 131072
+  - 151552, 131072
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 57344, 131072
+  - 73728, 131072
+  - 73728, 135168
+  - 57344, 135168
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 73728, 135168
+  - 77824, 135168
+  - 77824, 143360
+  - 73728, 143360
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 69632, 143360
+  - 77824, 143360
+  - 77824, 147456
+  - 69632, 147456
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 57344, 147456
+  - 77824, 147456
+  - 77824, 151552
+  - 57344, 151552
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 49152, 151552
+  - 69632, 151552
+  - 69632, 155648
+  - 49152, 155648
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 73728, 151552
+  - 77824, 151552
+  - 77824, 159744
+  - 73728, 159744
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 49152, 155648
+  - 65536, 155648
+  - 65536, 159744
+  - 49152, 159744
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 49152, 159744
+  - 61440, 159744
+  - 61440, 163840
+  - 49152, 163840
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 73728, 159744
+  - 81920, 159744
+  - 81920, 167936
+  - 73728, 167936
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 45056, 163840
+  - 57344, 163840
+  - 57344, 167936
+  - 45056, 167936
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 40960, 167936
+  - 53248, 167936
+  - 53248, 172032
+  - 40960, 172032
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 73728, 167936
+  - 77824, 167936
+  - 77824, 176128
+  - 73728, 176128
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 40960, 172032
+  - 49152, 172032
+  - 49152, 176128
+  - 40960, 176128
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 40960, 176128
+  - 45056, 176128
+  - 45056, 180224
+  - 40960, 180224
+Objects:
+  Priority: 50
+  Objects:
+  - Object: 01306D:Skyrim.esm
+    Density: 1.2108
+    Clustering: 5
+    MaxSlope: 28
+    Flags:
+    - Tree
+    Radius: 735
+    MaxHeight: 280.12
+    Unknown2: 0x000000000000
+  - Object: 018A02:Skyrim.esm
+    Density: 0.2378
+    Clustering: 4
+    MaxSlope: 38
+    Flags:
+    - Tree
+    Radius: 980
+    Unknown2: 0x000000000000
+  - Object: 04FF0F:Skyrim.esm
+    Density: 1
+    Clustering: 2
+    MaxSlope: 35
+    Radius: 840
+    Unknown2: 0x000000000000
+  - Object: 0A7312:Skyrim.esm
+    Density: 1.3574
+    Clustering: 5
+    MaxSlope: 40
+    Flags:
+    - Tree
+    Radius: 535
+    Unknown2: 0x000000000000
+  - Object: 0A731C:Skyrim.esm
+    Density: 0.2378
+    Clustering: 4
+    MaxSlope: 38
+    Flags:
+    - Tree
+    Radius: 980
+    Unknown2: 0x000000000000
+  - Object: 0A7329:Skyrim.esm
+    Density: 1.3574
+    Clustering: 5
+    MaxSlope: 40
+    Flags:
+    - Tree
+    Radius: 535
+    Unknown2: 0x000000000000
+  - Object: 0AAE8D:Skyrim.esm
+    Density: 0.2378
+    Clustering: 4
+    MaxSlope: 38
+    Flags:
+    - Tree
+    Radius: 980
+    Unknown2: 0x000000000000
+  - Object: 0AAE8F:Skyrim.esm
+    Density: 1.3574
+    Clustering: 5
+    MaxSlope: 40
+    Flags:
+    - Tree
+    Radius: 535
+    Unknown2: 0x000000000000
+  - Object: 0AAE90:Skyrim.esm
+    Density: 0.2378
+    Clustering: 4
+    MaxSlope: 38
+    Flags:
+    - Tree
+    Radius: 980
+    Unknown2: 0x000000000000
+  - Object: 0B8A57:Skyrim.esm
+    Density: 1.3574
+    Clustering: 5
+    MaxSlope: 40
+    Flags:
+    - Tree
+    Radius: 535
+    Unknown2: 0x000000000000
+  - Object: 0B8A64:Skyrim.esm
+    Density: 1.3574
+    Clustering: 5
+    MaxSlope: 40
+    Flags:
+    - Tree
+    Radius: 535
+    Unknown2: 0x000000000000
+  - Object: 0B8A65:Skyrim.esm
+    Density: 1.3574
+    Clustering: 5
+    MaxSlope: 40
+    Flags:
+    - Tree
+    Radius: 535
+    Unknown2: 0x000000000000
+  - Object: 0B8A75:Skyrim.esm
+    Density: 1
+    Clustering: 2
+    MaxSlope: 35
+    Flags:
+    - Tree
+    Radius: 840
+    Unknown2: 0x000000000000
+  - Object: 0B91F0:Skyrim.esm
+    Density: 1.3574
+    Clustering: 5
+    MaxSlope: 40
+    Flags:
+    - Tree
+    Radius: 535
+    Unknown2: 0x000000000000
+  - Object: 0B927C:Skyrim.esm
+    Density: 1.2108
+    Clustering: 5
+    MaxSlope: 28
+    Flags:
+    - Tree
+    Radius: 735
+    MaxHeight: 280.12
+    Unknown2: 0x000000000000
+  - Object: 0B927D:Skyrim.esm
+    Density: 1.2108
+    Clustering: 5
+    MaxSlope: 28
+    Flags:
+    - Tree
+    Radius: 735
+    MaxHeight: 280.12
+    Unknown2: 0x000000000000
+  - Object: 0B927E:Skyrim.esm
+    Density: 1.2108
+    Clustering: 5
+    MaxSlope: 28
+    Flags:
+    - Tree
+    Radius: 735
+    MaxHeight: 280.12
+    Unknown2: 0x000000000000
+Weather:
+  Priority: 50
+  Weathers:
+  - Weather: 10A234:Skyrim.esm
+    Chance: 15
+    Global: 000814:Argonia.esm
+  - Weather: 10A236:Skyrim.esm
+    Chance: 15
+    Global: 000815:Argonia.esm
+  - Weather: 10A235:Skyrim.esm
+    Chance: 5
+    Global: 000816:Argonia.esm
+  - Weather: 00080F:Argonia.esm
+    Chance: 5
+    Global: 000817:Argonia.esm
+  - Weather: 0C821F:Skyrim.esm
+    Chance: 26
+    Global: 000818:Argonia.esm
+  - Weather: 000810:Argonia.esm
+    Chance: 20
+    Global: 000819:Argonia.esm
+  - Weather: 000811:Argonia.esm
+    Chance: 7
+    Global: 00081A:Argonia.esm
+  - Weather: 0C8220:Skyrim.esm
+    Chance: 7
+    Global: 00081B:Argonia.esm
+Map:
+  Priority: 50
+  Name:
+    TargetLanguage: English
+    Value: Middle Argonia

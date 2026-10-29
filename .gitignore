@@ -35,3 +35,5 @@ tmp/
 *.btr
 *.bto
 *.psc.bak
+# Spriggit names a record directory "<EditorID> - <id>_<Plugin>.esm" (a worldspace override): not a plugin file
+!plugin/Argonia/**/*.esm/

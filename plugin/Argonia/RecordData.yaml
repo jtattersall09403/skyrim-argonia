@@ -29,3 +29,5 @@ ModHeader:
     FileSize: 0
   - Master: _ResourcePack.esl
     FileSize: 0
+  - Master: ArgoniaWorld.esm
+    FileSize: 0

@@ -141,6 +141,10 @@ def _terrain_stamp() -> str:
     h = hashlib.sha256(repr(sorted(table(db.open()).items())).encode())
     for f in sorted(TERRAIN.glob("*.py")):
         h.update(f.name.encode() + f.read_bytes())
+    roads = ROOT / "tools" / "argonia_world" / "routes" / "paint.py"  # 2.W3's road paint and the rows it reads
+    h.update(roads.read_bytes() + repr(db.open().values(
+        "SELECT group_concat(v, ';') FROM (SELECT route_id || surface_cover || flat_width_m || x_m || y_m v "
+        "FROM road JOIN road_point USING (route_id) ORDER BY route_id, ord)")).encode())
     for n in sorted(vault.FILES):
         f = vault.data_dir() / n
         h.update(f"{n}:{f.stat().st_size}:{int(f.stat().st_mtime)}".encode() if f.exists() else n.encode())

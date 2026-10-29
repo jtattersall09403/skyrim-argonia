@@ -22,6 +22,7 @@ from tools.argonia_world import skyrim_units as su
 
 ROOT = Path(__file__).resolve().parents[2]
 MOD = "Argonia.esm"
+LAND_MOD = "ArgoniaWorld.esm"
 EDID = re.compile(r"^ARG_[A-Za-z0-9_]+$")
 
 
@@ -106,7 +107,10 @@ def main(argv: list[str]) -> int:
     if argv[:1] != ["check"]:
         print(__doc__)
         return 2
-    errs = check_append_only(head_ids(), read_ids(db.open()))
+    w = db.open()
+    errs = check_append_only(head_ids(), read_ids(w))
+    # ArgoniaWorld.esm's allocated ids (the REGN shells, regions/api.py); its other ids are computed from the grid
+    errs += [f"{LAND_MOD}: {e}" for e in check_append_only(head_ids(LAND_MOD), read_ids(w, LAND_MOD))]
     for e in errs:
         print(f"formids: {e}")
     return 1 if errs else 0

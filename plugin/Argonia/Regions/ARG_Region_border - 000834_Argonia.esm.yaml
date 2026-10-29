@@ -1,0 +1,20 @@
+FormKey: 000834:Argonia.esm
+MajorRecordFlagsRaw: 64
+EditorID: ARG_Region_border
+SkyrimMajorRecordFlags:
+- 0x40
+Worldspace: 000800:ArgoniaWorld.esm
+RegionAreas:
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -253952, -253952
+  - 262144, -253952
+  - 262144, 262144
+  - -253952, 262144
+Map:
+  Priority: 50
+  Name:
+    TargetLanguage: English
+    Value: ''
+MajorFlags:
+- BorderRegion

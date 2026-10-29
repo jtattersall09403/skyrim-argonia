@@ -1,0 +1,38 @@
+FormKey: 000802:Argonia.esm
+EditorID: ARG_HoldingCell
+Flags:
+- IsInteriorCell
+- CantTravelFromHere
+Lighting:
+  AmbientColor: '#00000000'
+  DirectionalColor: '#00000000'
+  FogNearColor: '#00000000'
+  DirectionalFade: 1
+  FogPower: 1
+  AmbientColors:
+    DirectionalXPlus: '#00000000'
+    DirectionalXMinus: '#00000000'
+    DirectionalYPlus: '#00000000'
+    DirectionalYMinus: '#00000000'
+    DirectionalZPlus: '#00000000'
+    DirectionalZMinus: '#00000000'
+    Specular: '#00000000'
+  FogFarColor: '#00000000'
+  FogMax: 1
+Music: 000801:Argonia.esm
+Persistent:
+- MutagenObjectType: PlacedObject
+  FormKey: 000803:Argonia.esm
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_HoldingMarker
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 000034:Skyrim.esm
+  Placement:
+    Position: 0, 0, 14.01
+Temporary:
+- MutagenObjectType: PlacedObject
+  FormKey: 000804:Argonia.esm
+  EditorID: ARG_HoldingFloor
+  Base: 03CB89:Skyrim.esm
+  Placement: {}

@@ -43,6 +43,13 @@ static class LandWorld
             throw new InvalidDataException("the world intermediate holds exactly one record, the WRLD");
         var ws = World(records[0]);
         mod.Worldspaces.Add(ws);
+        // the REGN shells and each cell's XCLR (regions/api.py: Argonia.esm overrides the shells with the authored part)
+        foreach (var g in root.TryGetProperty("regions", out var rg) ? rg.EnumerateArray() : Enumerable.Empty<JsonElement>())
+            mod.Regions.Add(RegionWriters.Shell(g, ws.FormKey));
+        var xclr = new Dictionary<(int, int), FormKey>();
+        foreach (var run in root.TryGetProperty("cellRegions", out var cr) ? cr.EnumerateArray() : Enumerable.Empty<JsonElement>())
+            for (var cx = run.GetProperty("cx0").GetInt32(); cx <= run.GetProperty("cx1").GetInt32(); cx++)
+                xclr[(cx, run.GetProperty("cy").GetInt32())] = FK(S(run, "region"));
 
         // block (32 x 32 cells) -> sub-block (8 x 8) -> cells, all in number order: the bytes never depend on the
         // order the shards were read in
@@ -57,6 +64,7 @@ static class LandWorld
             {
                 using var cd = JsonDocument.Parse(line);
                 var c = ExteriorCell(cd.RootElement, out var x, out var y);
+                if (xclr.TryGetValue((x, y), out var reg)) c.Regions = new ExtendedList<IFormLinkGetter<IRegionGetter>> { new FormLink<IRegionGetter>(reg) };
                 int bx = x >> 5, by = y >> 5, sx = x >> 3, sy = y >> 3;  // floor division, as the engine's blocks
                 if (!blocks.TryGetValue((bx, by), out var subs)) blocks[(bx, by)] = subs = new();
                 if (!subs.TryGetValue((sx, sy), out var cells)) subs[(sx, sy)] = cells = new();
@@ -82,11 +90,11 @@ static class LandWorld
             .WithDataFolder(data)
             .SingleThread()  // the parallel writer buffers every block in memory: 3.2 GB peak against 0.95 GB here
             .Write();
-        Console.WriteLine($"world: {outPath}: 1 WRLD, {n} cells with LAND");
+        Console.WriteLine($"world: {outPath}: 1 WRLD, {mod.Regions.Count} REGN shells, {n} cells with LAND");
         return 0;
     }
 
-    static Worldspace World(JsonElement r)
+    internal static Worldspace World(JsonElement r)
     {
         var ws = new Worldspace(FK(S(r, "formKey")), Rel)
         {

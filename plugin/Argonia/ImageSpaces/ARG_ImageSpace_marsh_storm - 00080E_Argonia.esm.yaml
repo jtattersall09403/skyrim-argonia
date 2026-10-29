@@ -1,0 +1,20 @@
+FormKey: 00080E:Argonia.esm
+EditorID: ARG_ImageSpace_marsh_storm
+Hdr:
+  EyeAdaptSpeed: 1
+  BloomBlurRadius: 4
+  BloomThreshold: 0.7
+  BloomScale: 0.4
+  ReceiveBloomThreshold: 0.6
+  White: 4
+  SunlightScale: 1.6
+  SkyScale: 1.6
+  EyeAdaptStrength: 0.3
+Cinematic:
+  Saturation: 0.85
+  Brightness: 0.9
+  Contrast: 1.08
+Tint:
+  Amount: 0.14
+  Color: '#006A7A5A'
+DepthOfField: {}

@@ -1,0 +1,177 @@
+FormKey: 080004:ArgoniaWorld.esm
+EditorID: ARG_Region_dunmer_north_rootland
+Worldspace: 000800:ArgoniaWorld.esm
+RegionAreas:
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -45056, 139264
+  - -40960, 139264
+  - -40960, 143360
+  - -45056, 143360
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -45056, 143360
+  - -36864, 143360
+  - -36864, 147456
+  - -45056, 147456
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -40960, 147456
+  - -36864, 147456
+  - -36864, 151552
+  - -40960, 151552
+Objects:
+  Priority: 50
+  Objects:
+  - Object: 04B016:Skyrim.esm
+    Density: 8.4708
+    Clustering: 4
+    MaxSlope: 38
+    Flags:
+    - Tree
+    Radius: 1030
+    Unknown2: 0x000000000000
+  - Object: 04FBB0:Skyrim.esm
+    Density: 3.328
+    Clustering: 1
+    MaxSlope: 34
+    Flags:
+    - Tree
+    Radius: 690
+    Unknown2: 0x000000000000
+  - Object: 04FF0F:Skyrim.esm
+    Density: 1
+    Clustering: 2
+    MaxSlope: 35
+    Radius: 840
+    Unknown2: 0x000000000000
+  - Object: 051126:Skyrim.esm
+    Density: 8.4708
+    Clustering: 4
+    MaxSlope: 38
+    Flags:
+    - Tree
+    Radius: 1030
+    Unknown2: 0x000000000000
+  - Object: 0A7312:Skyrim.esm
+    Density: 20.4286
+    Clustering: 5
+    MaxSlope: 40
+    Flags:
+    - Tree
+    Radius: 497
+    Unknown2: 0x000000000000
+  - Object: 0A7329:Skyrim.esm
+    Density: 20.4286
+    Clustering: 5
+    MaxSlope: 40
+    Flags:
+    - Tree
+    Radius: 497
+    Unknown2: 0x000000000000
+  - Object: 0AAE8E:Skyrim.esm
+    Density: 8.4708
+    Clustering: 4
+    MaxSlope: 38
+    Flags:
+    - Tree
+    Radius: 1030
+    Unknown2: 0x000000000000
+  - Object: 0AAE8F:Skyrim.esm
+    Density: 20.4286
+    Clustering: 5
+    MaxSlope: 40
+    Flags:
+    - Tree
+    Radius: 497
+    Unknown2: 0x000000000000
+  - Object: 0B8A57:Skyrim.esm
+    Density: 20.4286
+    Clustering: 5
+    MaxSlope: 40
+    Flags:
+    - Tree
+    Radius: 497
+    Unknown2: 0x000000000000
+  - Object: 0B8A64:Skyrim.esm
+    Density: 20.4286
+    Clustering: 5
+    MaxSlope: 40
+    Flags:
+    - Tree
+    Radius: 497
+    Unknown2: 0x000000000000
+  - Object: 0B8A65:Skyrim.esm
+    Density: 20.4286
+    Clustering: 5
+    MaxSlope: 40
+    Flags:
+    - Tree
+    Radius: 497
+    Unknown2: 0x000000000000
+  - Object: 0B8A69:Skyrim.esm
+    Density: 8.4708
+    Clustering: 4
+    MaxSlope: 38
+    Flags:
+    - Tree
+    Radius: 1030
+    Unknown2: 0x000000000000
+  - Object: 0B8A73:Skyrim.esm
+    Density: 8.4708
+    Clustering: 4
+    MaxSlope: 38
+    Flags:
+    - Tree
+    Radius: 1030
+    Unknown2: 0x000000000000
+  - Object: 0B8A75:Skyrim.esm
+    Density: 1
+    Clustering: 2
+    MaxSlope: 35
+    Flags:
+    - Tree
+    Radius: 840
+    Unknown2: 0x000000000000
+  - Object: 0B91F0:Skyrim.esm
+    Density: 20.4286
+    Clustering: 5
+    MaxSlope: 40
+    Flags:
+    - Tree
+    Radius: 497
+    Unknown2: 0x000000000000
+  - Object: 0EF5A5:Skyrim.esm
+    Density: 8.4708
+    Clustering: 4
+    MaxSlope: 38
+    Flags:
+    - Tree
+    Radius: 1030
+    Unknown2: 0x000000000000
+Weather:
+  Priority: 50
+  Weathers:
+  - Weather: 10A230:Skyrim.esm
+    Chance: 11
+    Global: 000829:Argonia.esm
+  - Weather: 10A233:Skyrim.esm
+    Chance: 11
+    Global: 00082A:Argonia.esm
+  - Weather: 10A232:Skyrim.esm
+    Chance: 16
+    Global: 00082B:Argonia.esm
+  - Weather: 00080F:Argonia.esm
+    Chance: 16
+    Global: 00082C:Argonia.esm
+  - Weather: 10A231:Skyrim.esm
+    Chance: 29
+    Global: 00082D:Argonia.esm
+  - Weather: 000811:Argonia.esm
+    Chance: 16
+    Global: 00082E:Argonia.esm
+Map:
+  Priority: 50
+  Name:
+    TargetLanguage: English
+    Value: Shadowfen

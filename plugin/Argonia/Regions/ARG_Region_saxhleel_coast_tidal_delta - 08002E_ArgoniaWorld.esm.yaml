@@ -1,0 +1,285 @@
+FormKey: 08002E:ArgoniaWorld.esm
+EditorID: ARG_Region_saxhleel_coast_tidal_delta
+Worldspace: 000800:ArgoniaWorld.esm
+RegionAreas:
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 77824, -98304
+  - 86016, -98304
+  - 86016, -94208
+  - 77824, -94208
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 81920, -94208
+  - 86016, -94208
+  - 86016, -77824
+  - 81920, -77824
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 65536, -90112
+  - 73728, -90112
+  - 73728, -86016
+  - 65536, -86016
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 65536, -86016
+  - 69632, -86016
+  - 69632, -81920
+  - 65536, -81920
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 73728, -86016
+  - 77824, -86016
+  - 77824, -81920
+  - 73728, -81920
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 106496, -65536
+  - 110592, -65536
+  - 110592, -57344
+  - 106496, -57344
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 102400, -57344
+  - 106496, -57344
+  - 106496, -53248
+  - 102400, -53248
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 110592, -53248
+  - 114688, -53248
+  - 114688, -49152
+  - 110592, -49152
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 102400, -49152
+  - 110592, -49152
+  - 110592, -45056
+  - 102400, -45056
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 106496, -45056
+  - 110592, -45056
+  - 110592, -40960
+  - 106496, -40960
+Objects:
+  Priority: 50
+  Objects:
+  - Object: 01306D:Skyrim.esm
+    Density: 162.421
+    Clustering: 5
+    MaxSlope: 28
+    Flags:
+    - Tree
+    Radius: 770
+    MaxHeight: 280.12
+    Unknown2: 0x000000000000
+  - Object: 018A02:Skyrim.esm
+    Density: 23.203
+    Clustering: 4
+    MaxSlope: 20
+    Flags:
+    - Tree
+    Radius: 980
+    Unknown2: 0x000000000000
+  - Object: 04B016:Skyrim.esm
+    Density: 50.2732
+    Clustering: 5
+    MaxSlope: 14
+    Flags:
+    - Tree
+    Radius: 700
+    Unknown2: 0x000000000000
+  - Object: 04FF0F:Skyrim.esm
+    Density: 1
+    Clustering: 2
+    MaxSlope: 35
+    Radius: 840
+    Unknown2: 0x000000000000
+  - Object: 051126:Skyrim.esm
+    Density: 50.2732
+    Clustering: 5
+    MaxSlope: 14
+    Flags:
+    - Tree
+    Radius: 700
+    Unknown2: 0x000000000000
+  - Object: 0A7312:Skyrim.esm
+    Density: 9.7143
+    Clustering: 5
+    MaxSlope: 40
+    Flags:
+    - Tree
+    Radius: 514
+    Unknown2: 0x000000000000
+  - Object: 0A731C:Skyrim.esm
+    Density: 23.203
+    Clustering: 4
+    MaxSlope: 20
+    Flags:
+    - Tree
+    Radius: 980
+    Unknown2: 0x000000000000
+  - Object: 0A7329:Skyrim.esm
+    Density: 9.7143
+    Clustering: 5
+    MaxSlope: 40
+    Flags:
+    - Tree
+    Radius: 514
+    Unknown2: 0x000000000000
+  - Object: 0AAE8D:Skyrim.esm
+    Density: 23.203
+    Clustering: 4
+    MaxSlope: 20
+    Flags:
+    - Tree
+    Radius: 980
+    Unknown2: 0x000000000000
+  - Object: 0AAE8E:Skyrim.esm
+    Density: 50.2732
+    Clustering: 5
+    MaxSlope: 14
+    Flags:
+    - Tree
+    Radius: 700
+    Unknown2: 0x000000000000
+  - Object: 0AAE8F:Skyrim.esm
+    Density: 9.7143
+    Clustering: 5
+    MaxSlope: 40
+    Flags:
+    - Tree
+    Radius: 514
+    Unknown2: 0x000000000000
+  - Object: 0AAE90:Skyrim.esm
+    Density: 23.203
+    Clustering: 4
+    MaxSlope: 20
+    Flags:
+    - Tree
+    Radius: 980
+    Unknown2: 0x000000000000
+  - Object: 0B8A57:Skyrim.esm
+    Density: 9.7143
+    Clustering: 5
+    MaxSlope: 40
+    Flags:
+    - Tree
+    Radius: 514
+    Unknown2: 0x000000000000
+  - Object: 0B8A64:Skyrim.esm
+    Density: 9.7143
+    Clustering: 5
+    MaxSlope: 40
+    Flags:
+    - Tree
+    Radius: 514
+    Unknown2: 0x000000000000
+  - Object: 0B8A65:Skyrim.esm
+    Density: 9.7143
+    Clustering: 5
+    MaxSlope: 40
+    Flags:
+    - Tree
+    Radius: 514
+    Unknown2: 0x000000000000
+  - Object: 0B8A69:Skyrim.esm
+    Density: 50.2732
+    Clustering: 5
+    MaxSlope: 14
+    Flags:
+    - Tree
+    Radius: 700
+    Unknown2: 0x000000000000
+  - Object: 0B8A73:Skyrim.esm
+    Density: 50.2732
+    Clustering: 5
+    MaxSlope: 14
+    Flags:
+    - Tree
+    Radius: 700
+    Unknown2: 0x000000000000
+  - Object: 0B8A75:Skyrim.esm
+    Density: 1
+    Clustering: 2
+    MaxSlope: 35
+    Flags:
+    - Tree
+    Radius: 840
+    Unknown2: 0x000000000000
+  - Object: 0B91F0:Skyrim.esm
+    Density: 9.7143
+    Clustering: 5
+    MaxSlope: 40
+    Flags:
+    - Tree
+    Radius: 514
+    Unknown2: 0x000000000000
+  - Object: 0B927C:Skyrim.esm
+    Density: 162.421
+    Clustering: 5
+    MaxSlope: 28
+    Flags:
+    - Tree
+    Radius: 770
+    MaxHeight: 280.12
+    Unknown2: 0x000000000000
+  - Object: 0B927D:Skyrim.esm
+    Density: 162.421
+    Clustering: 5
+    MaxSlope: 28
+    Flags:
+    - Tree
+    Radius: 770
+    MaxHeight: 280.12
+    Unknown2: 0x000000000000
+  - Object: 0B927E:Skyrim.esm
+    Density: 162.421
+    Clustering: 5
+    MaxSlope: 28
+    Flags:
+    - Tree
+    Radius: 770
+    MaxHeight: 280.12
+    Unknown2: 0x000000000000
+  - Object: 0EF5A5:Skyrim.esm
+    Density: 50.2732
+    Clustering: 5
+    MaxSlope: 14
+    Flags:
+    - Tree
+    Radius: 700
+    Unknown2: 0x000000000000
+Weather:
+  Priority: 50
+  Weathers:
+  - Weather: 10A234:Skyrim.esm
+    Chance: 15
+    Global: 000814:Argonia.esm
+  - Weather: 10A236:Skyrim.esm
+    Chance: 15
+    Global: 000815:Argonia.esm
+  - Weather: 10A235:Skyrim.esm
+    Chance: 5
+    Global: 000816:Argonia.esm
+  - Weather: 00080F:Argonia.esm
+    Chance: 5
+    Global: 000817:Argonia.esm
+  - Weather: 0C821F:Skyrim.esm
+    Chance: 26
+    Global: 000818:Argonia.esm
+  - Weather: 000810:Argonia.esm
+    Chance: 20
+    Global: 000819:Argonia.esm
+  - Weather: 000811:Argonia.esm
+    Chance: 7
+    Global: 00081A:Argonia.esm
+  - Weather: 0C8220:Skyrim.esm
+    Chance: 7
+    Global: 00081B:Argonia.esm
+Map:
+  Priority: 50
+  Name:
+    TargetLanguage: English
+    Value: Archon Coast

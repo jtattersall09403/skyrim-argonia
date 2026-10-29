@@ -1,0 +1,189 @@
+FormKey: 080025:ArgoniaWorld.esm
+EditorID: ARG_Region_pirate_freeholds_deep_sink_basin
+Worldspace: 000800:ArgoniaWorld.esm
+RegionAreas:
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -8192, 135168
+  - 8192, 135168
+  - 8192, 139264
+  - -8192, 139264
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -4096, 139264
+  - 4096, 139264
+  - 4096, 143360
+  - -4096, 143360
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -32768, 143360
+  - -28672, 143360
+  - -28672, 147456
+  - -32768, 147456
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -20480, 172032
+  - -16384, 172032
+  - -16384, 176128
+  - -20480, 176128
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -12288, 172032
+  - -4096, 172032
+  - -4096, 176128
+  - -12288, 176128
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -20480, 176128
+  - -8192, 176128
+  - -8192, 180224
+  - -20480, 180224
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -4096, 184320
+  - 4096, 184320
+  - 4096, 188416
+  - -4096, 188416
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -12288, 188416
+  - -8192, 188416
+  - -8192, 196608
+  - -12288, 196608
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -20480, 200704
+  - -12288, 200704
+  - -12288, 212992
+  - -20480, 212992
+Objects:
+  Priority: 50
+  Objects:
+  - Object: 04FF0F:Skyrim.esm
+    Density: 1
+    Clustering: 2
+    MaxSlope: 35
+    Radius: 840
+    Unknown2: 0x000000000000
+  - Object: 06C9D4:Skyrim.esm
+    Density: 1.248
+    Clustering: 2
+    MaxSlope: 26
+    Flags:
+    - Tree
+    Radius: 735
+    Unknown2: 0x000000000000
+  - Object: 07614A:Skyrim.esm
+    Density: 1.248
+    Clustering: 2
+    MaxSlope: 26
+    Flags:
+    - Tree
+    Radius: 735
+    Unknown2: 0x000000000000
+  - Object: 07614B:Skyrim.esm
+    Density: 1.248
+    Clustering: 2
+    MaxSlope: 26
+    Flags:
+    - Tree
+    Radius: 735
+    Unknown2: 0x000000000000
+  - Object: 0A7312:Skyrim.esm
+    Density: 3.5714
+    Clustering: 6
+    MaxSlope: 35
+    Flags:
+    - Tree
+    Radius: 420
+    Unknown2: 0x000000000000
+  - Object: 0A7329:Skyrim.esm
+    Density: 3.5714
+    Clustering: 6
+    MaxSlope: 35
+    Flags:
+    - Tree
+    Radius: 420
+    Unknown2: 0x000000000000
+  - Object: 0AAE8F:Skyrim.esm
+    Density: 3.5714
+    Clustering: 6
+    MaxSlope: 35
+    Flags:
+    - Tree
+    Radius: 420
+    Unknown2: 0x000000000000
+  - Object: 0B73C2:Skyrim.esm
+    Density: 1.248
+    Clustering: 2
+    MaxSlope: 26
+    Flags:
+    - Tree
+    Radius: 735
+    Unknown2: 0x000000000000
+  - Object: 0B8A57:Skyrim.esm
+    Density: 3.5714
+    Clustering: 6
+    MaxSlope: 35
+    Flags:
+    - Tree
+    Radius: 420
+    Unknown2: 0x000000000000
+  - Object: 0B8A64:Skyrim.esm
+    Density: 3.5714
+    Clustering: 6
+    MaxSlope: 35
+    Flags:
+    - Tree
+    Radius: 420
+    Unknown2: 0x000000000000
+  - Object: 0B8A65:Skyrim.esm
+    Density: 3.5714
+    Clustering: 6
+    MaxSlope: 35
+    Flags:
+    - Tree
+    Radius: 420
+    Unknown2: 0x000000000000
+  - Object: 0B8A75:Skyrim.esm
+    Density: 1
+    Clustering: 2
+    MaxSlope: 35
+    Flags:
+    - Tree
+    Radius: 840
+    Unknown2: 0x000000000000
+  - Object: 0B91F0:Skyrim.esm
+    Density: 3.5714
+    Clustering: 6
+    MaxSlope: 35
+    Flags:
+    - Tree
+    Radius: 420
+    Unknown2: 0x000000000000
+Weather:
+  Priority: 50
+  Weathers:
+  - Weather: 10A230:Skyrim.esm
+    Chance: 11
+    Global: 000829:Argonia.esm
+  - Weather: 10A233:Skyrim.esm
+    Chance: 11
+    Global: 00082A:Argonia.esm
+  - Weather: 10A232:Skyrim.esm
+    Chance: 16
+    Global: 00082B:Argonia.esm
+  - Weather: 00080F:Argonia.esm
+    Chance: 16
+    Global: 00082C:Argonia.esm
+  - Weather: 10A231:Skyrim.esm
+    Chance: 29
+    Global: 00082D:Argonia.esm
+  - Weather: 000811:Argonia.esm
+    Chance: 16
+    Global: 00082E:Argonia.esm
+Map:
+  Priority: 50
+  Name:
+    TargetLanguage: English
+    Value: Alten Corimont

@@ -1,0 +1,201 @@
+FormKey: 08002B:ArgoniaWorld.esm
+EditorID: ARG_Region_saxhleel_coast_deep_sink_basin
+Worldspace: 000800:ArgoniaWorld.esm
+RegionAreas:
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 61440, -122880
+  - 65536, -122880
+  - 65536, -118784
+  - 61440, -118784
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 57344, -118784
+  - 69632, -118784
+  - 69632, -114688
+  - 57344, -114688
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 57344, -90112
+  - 61440, -90112
+  - 61440, -86016
+  - 57344, -86016
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 57344, -86016
+  - 65536, -86016
+  - 65536, -81920
+  - 57344, -81920
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 57344, -81920
+  - 73728, -81920
+  - 73728, -77824
+  - 57344, -77824
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 90112, -73728
+  - 94208, -73728
+  - 94208, -65536
+  - 90112, -65536
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 65536, -32768
+  - 73728, -32768
+  - 73728, -28672
+  - 65536, -28672
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 61440, -28672
+  - 65536, -28672
+  - 65536, -20480
+  - 61440, -20480
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 73728, -28672
+  - 77824, -28672
+  - 77824, -24576
+  - 73728, -24576
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 69632, -12288
+  - 81920, -12288
+  - 81920, -8192
+  - 69632, -8192
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 77824, -8192
+  - 81920, -8192
+  - 81920, -4096
+  - 77824, -4096
+Objects:
+  Priority: 50
+  Objects:
+  - Object: 04FF0F:Skyrim.esm
+    Density: 1
+    Clustering: 2
+    MaxSlope: 35
+    Radius: 840
+    Unknown2: 0x000000000000
+  - Object: 06C9D4:Skyrim.esm
+    Density: 1.248
+    Clustering: 2
+    MaxSlope: 26
+    Flags:
+    - Tree
+    Radius: 735
+    Unknown2: 0x000000000000
+  - Object: 07614A:Skyrim.esm
+    Density: 1.248
+    Clustering: 2
+    MaxSlope: 26
+    Flags:
+    - Tree
+    Radius: 735
+    Unknown2: 0x000000000000
+  - Object: 07614B:Skyrim.esm
+    Density: 1.248
+    Clustering: 2
+    MaxSlope: 26
+    Flags:
+    - Tree
+    Radius: 735
+    Unknown2: 0x000000000000
+  - Object: 0A7312:Skyrim.esm
+    Density: 3.5714
+    Clustering: 6
+    MaxSlope: 35
+    Flags:
+    - Tree
+    Radius: 420
+    Unknown2: 0x000000000000
+  - Object: 0A7329:Skyrim.esm
+    Density: 3.5714
+    Clustering: 6
+    MaxSlope: 35
+    Flags:
+    - Tree
+    Radius: 420
+    Unknown2: 0x000000000000
+  - Object: 0AAE8F:Skyrim.esm
+    Density: 3.5714
+    Clustering: 6
+    MaxSlope: 35
+    Flags:
+    - Tree
+    Radius: 420
+    Unknown2: 0x000000000000
+  - Object: 0B73C2:Skyrim.esm
+    Density: 1.248
+    Clustering: 2
+    MaxSlope: 26
+    Flags:
+    - Tree
+    Radius: 735
+    Unknown2: 0x000000000000
+  - Object: 0B8A57:Skyrim.esm
+    Density: 3.5714
+    Clustering: 6
+    MaxSlope: 35
+    Flags:
+    - Tree
+    Radius: 420
+    Unknown2: 0x000000000000
+  - Object: 0B8A64:Skyrim.esm
+    Density: 3.5714
+    Clustering: 6
+    MaxSlope: 35
+    Flags:
+    - Tree
+    Radius: 420
+    Unknown2: 0x000000000000
+  - Object: 0B8A65:Skyrim.esm
+    Density: 3.5714
+    Clustering: 6
+    MaxSlope: 35
+    Flags:
+    - Tree
+    Radius: 420
+    Unknown2: 0x000000000000
+  - Object: 0B8A75:Skyrim.esm
+    Density: 1
+    Clustering: 2
+    MaxSlope: 35
+    Flags:
+    - Tree
+    Radius: 840
+    Unknown2: 0x000000000000
+  - Object: 0B91F0:Skyrim.esm
+    Density: 3.5714
+    Clustering: 6
+    MaxSlope: 35
+    Flags:
+    - Tree
+    Radius: 420
+    Unknown2: 0x000000000000
+Weather:
+  Priority: 50
+  Weathers:
+  - Weather: 10A230:Skyrim.esm
+    Chance: 11
+    Global: 000829:Argonia.esm
+  - Weather: 10A233:Skyrim.esm
+    Chance: 11
+    Global: 00082A:Argonia.esm
+  - Weather: 10A232:Skyrim.esm
+    Chance: 16
+    Global: 00082B:Argonia.esm
+  - Weather: 00080F:Argonia.esm
+    Chance: 16
+    Global: 00082C:Argonia.esm
+  - Weather: 10A231:Skyrim.esm
+    Chance: 29
+    Global: 00082D:Argonia.esm
+  - Weather: 000811:Argonia.esm
+    Chance: 16
+    Global: 00082E:Argonia.esm
+Map:
+  Priority: 50
+  Name:
+    TargetLanguage: English
+    Value: Archon Coast

@@ -1,5 +1,5 @@
 {
  "cells": "world.SAMPLE",
- "sha256": "e8ccae70bb90880bf45067afad097bdd8afd8e7d3a66db55de922bd9d382c4ff",
- "measured": "2026-10-29, two builds identical; the sample cell lines equal the full build's"
+ "sha256": "a0245b90f930ac43ee98b5d3f2d364731891d236329efc0fe6fbba71ede1a00d",
+ "measured": "2026-10-29, two builds identical; 2.W3 added the REGN shells and each cell's XCLR (regions/api.py) and the road paint (routes/paint.py); built with the 2.W2 water regrade in the tree"
 }

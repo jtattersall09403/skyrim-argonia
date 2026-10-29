@@ -10,7 +10,8 @@ dependant).
      "records": [{"type": "WRLD", "formKey", "edid", "name", "defaultLandHeight", "defaultWaterHeight" (units),
                   "boundsMin", "boundsMax" (cells), "map": {"usable", "nw", "se", "cameraMin", "cameraMax",
                   "cameraPitch"}, "topCell": {"formKey"}}],
-     "land": the shard directory build.py wrote}
+     "land": the shard directory build.py wrote,
+     "regions": [{"type": "REGN", "formKey", "edid"}] the shells, "cellRegions": [{"cy", "cx0", "cx1", "region"}]}
 """
 from __future__ import annotations
 
@@ -49,11 +50,17 @@ def wrld(cell_range: tuple[int, int, int, int]) -> dict:
     }
 
 
-def document(cell_range: tuple[int, int, int, int], land_dir: Path) -> dict:
+def document(cell_range: tuple[int, int, int, int], land_dir: Path, world=None) -> dict:
+    """The WRLD intermediate, the REGN shells and the cells' region runs (XCLR; 2.W3's regions/api.py)."""
+    from tools.argonia_world import db
+    from tools.argonia_world.regions import api as regions
+
+    w = world if world is not None else db.open()
     return {"schema": 1, "mod": LAND_PLUGIN, "author": "Elder Souls: Argonia",
             "description": "The generated ground of Black Marsh: the worldspace, every exterior cell and its LAND "
                            "(decision 0031). Built, never edited.",
-            "loadOrder": LOAD_ORDER, "records": [wrld(cell_range)], "land": str(land_dir)}
+            "loadOrder": LOAD_ORDER, "records": [wrld(cell_range)], "land": str(land_dir),
+            "regions": regions.shell_records(w), "cellRegions": regions.cell_region_runs(w)}
 
 
 def write(path: Path, cell_range: tuple[int, int, int, int], land_dir: Path) -> Path:

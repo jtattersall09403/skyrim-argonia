@@ -22,6 +22,7 @@ from pathlib import Path
 import numpy as np
 
 from tools.argonia_world import skyrim_units as su
+from tools.argonia_world.routes import paint as road_paint
 from tools.argonia_world.terrain import paint, quantize
 from tools.argonia_world.terrain.grid import Sources
 from tools.argonia_world.terrain.landcover import Cover
@@ -30,6 +31,7 @@ V = su.LAND_VERTS
 QV = su.QUADRANT_VERTS
 APRON_MIN_M = -2.0  # an apron cell entirely deeper than this is open sea under the default water: no LAND
 LAND_PLUGIN = "ArgoniaWorld.esm"  # the generated ground's own master (decision 0031)
+ROAD_NEVER_OVER = frozenset({33, 35})  # SEABED_SAND, OCEAN_FLOOR: a road is never painted under the sea
 LIMIT_BUCKETS_M = (0.5, 2.0, 5.0, 10.0)  # the overflow survey's histogram of limiter moves
 
 
@@ -111,6 +113,7 @@ class Builder:
         k0, k1 = max(north - 1, 0), min(south + 2, size)
         j0, j1 = max(c_lo - 1, 0), min(c_hi + 2, size)
         cls = src.classes(k0, k1, j0, j1, h[k0 - r0:k1 - r0, j0 - c0:j1 - c0])
+        road_paint.override_classes(cls, k0, j0, ROAD_NEVER_OVER)  # 2.W3: the traced roads, unbroken
         lt = self.lut[cls]
         if (lt < 0).any():
             bad = sorted(set(cls[lt < 0].tolist()))

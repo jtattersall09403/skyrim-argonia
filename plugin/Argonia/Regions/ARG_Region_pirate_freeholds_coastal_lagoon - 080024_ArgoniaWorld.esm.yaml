@@ -1,0 +1,239 @@
+FormKey: 080024:ArgoniaWorld.esm
+EditorID: ARG_Region_pirate_freeholds_coastal_lagoon
+Worldspace: 000800:ArgoniaWorld.esm
+RegionAreas:
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 20480, 131072
+  - 24576, 131072
+  - 24576, 135168
+  - 20480, 135168
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 24576, 135168
+  - 28672, 135168
+  - 28672, 147456
+  - 24576, 147456
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 45056, 139264
+  - 49152, 139264
+  - 49152, 143360
+  - 45056, 143360
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 32768, 143360
+  - 45056, 143360
+  - 45056, 147456
+  - 32768, 147456
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 49152, 143360
+  - 53248, 143360
+  - 53248, 147456
+  - 49152, 147456
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 40960, 147456
+  - 57344, 147456
+  - 57344, 151552
+  - 40960, 151552
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -16384, 155648
+  - -12288, 155648
+  - -12288, 159744
+  - -16384, 159744
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -12288, 159744
+  - -8192, 159744
+  - -8192, 163840
+  - -12288, 163840
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -16384, 163840
+  - 0, 163840
+  - 0, 172032
+  - -16384, 172032
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 4096, 163840
+  - 12288, 163840
+  - 12288, 167936
+  - 4096, 167936
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 8192, 167936
+  - 12288, 167936
+  - 12288, 172032
+  - 8192, 172032
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 16384, 167936
+  - 20480, 167936
+  - 20480, 172032
+  - 16384, 172032
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 24576, 167936
+  - 36864, 167936
+  - 36864, 172032
+  - 24576, 172032
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 12288, 172032
+  - 16384, 172032
+  - 16384, 180224
+  - 12288, 180224
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 32768, 172032
+  - 40960, 172032
+  - 40960, 180224
+  - 32768, 180224
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 32768, 180224
+  - 45056, 180224
+  - 45056, 184320
+  - 32768, 184320
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 12288, 184320
+  - 16384, 184320
+  - 16384, 188416
+  - 12288, 188416
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 28672, 184320
+  - 40960, 184320
+  - 40960, 188416
+  - 28672, 188416
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 8192, 188416
+  - 12288, 188416
+  - 12288, 192512
+  - 8192, 192512
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 24576, 188416
+  - 36864, 188416
+  - 36864, 192512
+  - 24576, 192512
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 0, 192512
+  - 8192, 192512
+  - 8192, 196608
+  - 0, 196608
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 24576, 192512
+  - 32768, 192512
+  - 32768, 196608
+  - 24576, 196608
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 0, 196608
+  - 4096, 196608
+  - 4096, 200704
+  - 0, 200704
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 24576, 196608
+  - 28672, 196608
+  - 28672, 200704
+  - 24576, 200704
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 20480, 200704
+  - 28672, 200704
+  - 28672, 208896
+  - 20480, 208896
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -4096, 204800
+  - 0, 204800
+  - 0, 212992
+  - -4096, 212992
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 16384, 208896
+  - 24576, 208896
+  - 24576, 212992
+  - 16384, 212992
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 0, 212992
+  - 4096, 212992
+  - 4096, 217088
+  - 0, 217088
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 12288, 212992
+  - 20480, 212992
+  - 20480, 217088
+  - 12288, 217088
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 8192, 217088
+  - 20480, 217088
+  - 20480, 221184
+  - 8192, 221184
+- EdgeFallOff: 0
+  RegionPointListData:
+  - 4096, 221184
+  - 12288, 221184
+  - 12288, 229376
+  - 4096, 229376
+Objects:
+  Priority: 50
+  Objects:
+  - Object: 04FF0F:Skyrim.esm
+    Density: 1
+    Clustering: 2
+    MaxSlope: 35
+    Radius: 840
+    Unknown2: 0x000000000000
+  - Object: 0B8A75:Skyrim.esm
+    Density: 1
+    Clustering: 2
+    MaxSlope: 35
+    Flags:
+    - Tree
+    Radius: 840
+    Unknown2: 0x000000000000
+Weather:
+  Priority: 50
+  Weathers:
+  - Weather: 10A234:Skyrim.esm
+    Chance: 15
+    Global: 000814:Argonia.esm
+  - Weather: 10A236:Skyrim.esm
+    Chance: 15
+    Global: 000815:Argonia.esm
+  - Weather: 10A235:Skyrim.esm
+    Chance: 5
+    Global: 000816:Argonia.esm
+  - Weather: 00080F:Argonia.esm
+    Chance: 5
+    Global: 000817:Argonia.esm
+  - Weather: 0C821F:Skyrim.esm
+    Chance: 26
+    Global: 000818:Argonia.esm
+  - Weather: 000810:Argonia.esm
+    Chance: 20
+    Global: 000819:Argonia.esm
+  - Weather: 000811:Argonia.esm
+    Chance: 7
+    Global: 00081A:Argonia.esm
+  - Weather: 0C8220:Skyrim.esm
+    Chance: 7
+    Global: 00081B:Argonia.esm
+Map:
+  Priority: 50
+  Name:
+    TargetLanguage: English
+    Value: Alten Corimont

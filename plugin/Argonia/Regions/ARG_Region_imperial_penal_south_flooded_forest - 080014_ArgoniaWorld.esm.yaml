@@ -1,0 +1,412 @@
+FormKey: 080014:ArgoniaWorld.esm
+EditorID: ARG_Region_imperial_penal_south_flooded_forest
+Worldspace: 000800:ArgoniaWorld.esm
+RegionAreas:
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -147456, -229376
+  - -139264, -229376
+  - -139264, -225280
+  - -147456, -225280
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -135168, -229376
+  - -114688, -229376
+  - -114688, -225280
+  - -135168, -225280
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -131072, -225280
+  - -114688, -225280
+  - -114688, -221184
+  - -131072, -221184
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -131072, -221184
+  - -118784, -221184
+  - -118784, -217088
+  - -131072, -217088
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -65536, -221184
+  - -61440, -221184
+  - -61440, -217088
+  - -65536, -217088
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -57344, -221184
+  - -53248, -221184
+  - -53248, -217088
+  - -57344, -217088
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -131072, -217088
+  - -126976, -217088
+  - -126976, -212992
+  - -131072, -212992
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -122880, -217088
+  - -118784, -217088
+  - -118784, -212992
+  - -122880, -212992
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -65536, -217088
+  - -57344, -217088
+  - -57344, -212992
+  - -65536, -212992
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -98304, -204800
+  - -77824, -204800
+  - -77824, -200704
+  - -98304, -200704
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -73728, -204800
+  - -69632, -204800
+  - -69632, -200704
+  - -73728, -200704
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -106496, -200704
+  - -65536, -200704
+  - -65536, -196608
+  - -106496, -196608
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -167936, -196608
+  - -159744, -196608
+  - -159744, -192512
+  - -167936, -192512
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -106496, -196608
+  - -73728, -196608
+  - -73728, -192512
+  - -106496, -192512
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -110592, -192512
+  - -106496, -192512
+  - -106496, -184320
+  - -110592, -184320
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -98304, -192512
+  - -94208, -192512
+  - -94208, -188416
+  - -98304, -188416
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -81920, -192512
+  - -73728, -192512
+  - -73728, -184320
+  - -81920, -184320
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -163840, -188416
+  - -155648, -188416
+  - -155648, -184320
+  - -163840, -184320
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -102400, -188416
+  - -94208, -188416
+  - -94208, -184320
+  - -102400, -184320
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -163840, -184320
+  - -159744, -184320
+  - -159744, -180224
+  - -163840, -180224
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -131072, -184320
+  - -126976, -184320
+  - -126976, -180224
+  - -131072, -180224
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -114688, -184320
+  - -110592, -184320
+  - -110592, -180224
+  - -114688, -180224
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -106496, -184320
+  - -98304, -184320
+  - -98304, -180224
+  - -106496, -180224
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -126976, -180224
+  - -122880, -180224
+  - -122880, -172032
+  - -126976, -172032
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -110592, -180224
+  - -106496, -180224
+  - -106496, -176128
+  - -110592, -176128
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -143360, -176128
+  - -139264, -176128
+  - -139264, -172032
+  - -143360, -172032
+- EdgeFallOff: 0
+  RegionPointListData:
+  - -143360, -172032
+  - -135168, -172032
+  - -135168, -167936
+  - -143360, -167936
+Objects:
+  Priority: 50
+  Objects:
+  - Object: 018199:Skyrim.esm
+    Density: 1.4003
+    Clustering: 3
+    MaxSlope: 52
+    Flags:
+    - ConformToSlope
+    Radius: 611
+    Unknown2: 0x000000000000
+  - Object: 018A02:Skyrim.esm
+    Density: 0.7265
+    Clustering: 2
+    MaxSlope: 38
+    Flags:
+    - Tree
+    Radius: 840
+    Unknown2: 0x000000000000
+  - Object: 024E4A:Skyrim.esm
+    Density: 1.4003
+    Clustering: 3
+    MaxSlope: 52
+    Flags:
+    - ConformToSlope
+    Radius: 611
+    Unknown2: 0x000000000000
+  - Object: 04B016:Skyrim.esm
+    Density: 8.3138
+    Clustering: 4
+    MaxSlope: 38
+    Flags:
+    - Tree
+    Radius: 1244
+    Unknown2: 0x000000000000
+  - Object: 04FBB0:Skyrim.esm
+    Density: 0.484
+    Clustering: 2
+    MaxSlope: 30
+    Flags:
+    - Tree
+    Radius: 980
+    Unknown2: 0x000000000000
+  - Object: 04FF0F:Skyrim.esm
+    Density: 1
+    Clustering: 2
+    MaxSlope: 35
+    Radius: 840
+    Unknown2: 0x000000000000
+  - Object: 051126:Skyrim.esm
+    Density: 8.3138
+    Clustering: 4
+    MaxSlope: 38
+    Flags:
+    - Tree
+    Radius: 1244
+    Unknown2: 0x000000000000
+  - Object: 06C9D4:Skyrim.esm
+    Density: 61.25
+    Clustering: 5
+    MaxSlope: 40
+    Flags:
+    - Tree
+    Radius: 420
+    Unknown2: 0x000000000000
+  - Object: 07614A:Skyrim.esm
+    Density: 61.25
+    Clustering: 5
+    MaxSlope: 40
+    Flags:
+    - Tree
+    Radius: 420
+    Unknown2: 0x000000000000
+  - Object: 07614B:Skyrim.esm
+    Density: 61.25
+    Clustering: 5
+    MaxSlope: 40
+    Flags:
+    - Tree
+    Radius: 420
+    Unknown2: 0x000000000000
+  - Object: 0A7312:Skyrim.esm
+    Density: 52.1429
+    Clustering: 6
+    MaxSlope: 40
+    Flags:
+    - Tree
+    Radius: 477
+    Unknown2: 0x000000000000
+  - Object: 0A731C:Skyrim.esm
+    Density: 0.7265
+    Clustering: 2
+    MaxSlope: 38
+    Flags:
+    - Tree
+    Radius: 840
+    Unknown2: 0x000000000000
+  - Object: 0A7329:Skyrim.esm
+    Density: 52.1429
+    Clustering: 6
+    MaxSlope: 40
+    Flags:
+    - Tree
+    Radius: 477
+    Unknown2: 0x000000000000
+  - Object: 0AAE8D:Skyrim.esm
+    Density: 0.7265
+    Clustering: 2
+    MaxSlope: 38
+    Flags:
+    - Tree
+    Radius: 840
+    Unknown2: 0x000000000000
+  - Object: 0AAE8E:Skyrim.esm
+    Density: 8.3138
+    Clustering: 4
+    MaxSlope: 38
+    Flags:
+    - Tree
+    Radius: 1244
+    Unknown2: 0x000000000000
+  - Object: 0AAE8F:Skyrim.esm
+    Density: 52.1429
+    Clustering: 6
+    MaxSlope: 40
+    Flags:
+    - Tree
+    Radius: 477
+    Unknown2: 0x000000000000
+  - Object: 0AAE90:Skyrim.esm
+    Density: 0.7265
+    Clustering: 2
+    MaxSlope: 38
+    Flags:
+    - Tree
+    Radius: 840
+    Unknown2: 0x000000000000
+  - Object: 0B73C2:Skyrim.esm
+    Density: 61.25
+    Clustering: 5
+    MaxSlope: 40
+    Flags:
+    - Tree
+    Radius: 420
+    Unknown2: 0x000000000000
+  - Object: 0B8A57:Skyrim.esm
+    Density: 52.1429
+    Clustering: 6
+    MaxSlope: 40
+    Flags:
+    - Tree
+    Radius: 477
+    Unknown2: 0x000000000000
+  - Object: 0B8A64:Skyrim.esm
+    Density: 52.1429
+    Clustering: 6
+    MaxSlope: 40
+    Flags:
+    - Tree
+    Radius: 477
+    Unknown2: 0x000000000000
+  - Object: 0B8A65:Skyrim.esm
+    Density: 52.1429
+    Clustering: 6
+    MaxSlope: 40
+    Flags:
+    - Tree
+    Radius: 477
+    Unknown2: 0x000000000000
+  - Object: 0B8A69:Skyrim.esm
+    Density: 8.3138
+    Clustering: 4
+    MaxSlope: 38
+    Flags:
+    - Tree
+    Radius: 1244
+    Unknown2: 0x000000000000
+  - Object: 0B8A73:Skyrim.esm
+    Density: 8.3138
+    Clustering: 4
+    MaxSlope: 38
+    Flags:
+    - Tree
+    Radius: 1244
+    Unknown2: 0x000000000000
+  - Object: 0B8A75:Skyrim.esm
+    Density: 1
+    Clustering: 2
+    MaxSlope: 35
+    Flags:
+    - Tree
+    Radius: 840
+    Unknown2: 0x000000000000
+  - Object: 0B91F0:Skyrim.esm
+    Density: 52.1429
+    Clustering: 6
+    MaxSlope: 40
+    Flags:
+    - Tree
+    Radius: 477
+    Unknown2: 0x000000000000
+  - Object: 0BB8BC:Skyrim.esm
+    Density: 1.4003
+    Clustering: 3
+    MaxSlope: 52
+    Flags:
+    - ConformToSlope
+    Radius: 611
+    Unknown2: 0x000000000000
+  - Object: 0EF5A5:Skyrim.esm
+    Density: 8.3138
+    Clustering: 4
+    MaxSlope: 38
+    Flags:
+    - Tree
+    Radius: 1244
+    Unknown2: 0x000000000000
+Weather:
+  Priority: 50
+  Weathers:
+  - Weather: 00081A:Skyrim.esm
+    Chance: 11
+    Global: 00081C:Argonia.esm
+  - Weather: 012F89:Skyrim.esm
+    Chance: 11
+    Global: 00081D:Argonia.esm
+  - Weather: 0C821E:Skyrim.esm
+    Chance: 11
+    Global: 00081E:Argonia.esm
+  - Weather: 00080F:Argonia.esm
+    Chance: 11
+    Global: 00081F:Argonia.esm
+  - Weather: 0C821F:Skyrim.esm
+    Chance: 42
+    Global: 000820:Argonia.esm
+  - Weather: 000811:Argonia.esm
+    Chance: 8
+    Global: 000821:Argonia.esm
+  - Weather: 0C8220:Skyrim.esm
+    Chance: 8
+    Global: 000822:Argonia.esm
+Map:
+  Priority: 50
+  Name:
+    TargetLanguage: English
+    Value: Blackrose

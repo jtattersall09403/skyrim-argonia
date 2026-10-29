@@ -1,0 +1,20 @@
+FormKey: 00080B:Argonia.esm
+EditorID: ARG_ImageSpace_marsh_haze
+Hdr:
+  EyeAdaptSpeed: 1
+  BloomBlurRadius: 4
+  BloomThreshold: 0.7
+  BloomScale: 0.4
+  ReceiveBloomThreshold: 0.6
+  White: 4
+  SunlightScale: 1.6
+  SkyScale: 1.6
+  EyeAdaptStrength: 0.3
+Cinematic:
+  Saturation: 1
+  Brightness: 1.02
+  Contrast: 0.98
+Tint:
+  Amount: 0.18
+  Color: '#00B89A58'
+DepthOfField: {}
