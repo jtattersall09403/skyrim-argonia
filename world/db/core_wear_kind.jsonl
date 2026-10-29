@@ -1,0 +1,4 @@
+{"id":"burn","per":"second"}
+{"id":"hit","per":"damage"}
+{"id":"struck","per":"damage"}
+{"id":"use","per":"use"}

@@ -1,0 +1,3 @@
+{"id":"major","ord":0,"xp_factor":0.75,"ranks_per_credit":1}
+{"id":"minor","ord":1,"xp_factor":1.0,"ranks_per_credit":1}
+{"id":"misc","ord":2,"xp_factor":1.25,"ranks_per_credit":3}

@@ -1,0 +1,4 @@
+{"id":"fast","ord":0,"below_ratio":0.2,"stamina_mult":1.0,"climb_drain_mult":0.85,"roll_distance":1.1,"roll_recovery":0.9,"iframe_scale":1.15,"can_run":true,"design_ref":"docs/design/world/76-stats-progression.md §122, §121.2, §122.1"}
+{"id":"fat","ord":2,"below_ratio":1.0,"stamina_mult":1.2,"climb_drain_mult":1.35,"roll_distance":0.8,"roll_recovery":1.25,"iframe_scale":0.8,"can_run":true,"design_ref":"docs/design/world/76-stats-progression.md §122, §121.2, §122.1"}
+{"id":"mid","ord":1,"below_ratio":0.35,"stamina_mult":1.08,"climb_drain_mult":1.0,"roll_distance":1.0,"roll_recovery":1.0,"iframe_scale":1.0,"can_run":true,"design_ref":"docs/design/world/76-stats-progression.md §122, §121.2, §122.1"}
+{"id":"overloaded","ord":3,"stamina_mult":1.35,"can_run":false,"design_ref":"docs/design/world/76-stats-progression.md §122 (no roll, no run, no climb); stamina ×1.35 from the old curves table"}

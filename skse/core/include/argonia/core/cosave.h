@@ -8,6 +8,7 @@
 #include <cstdint>
 #include <optional>
 #include <span>
+#include <string>
 #include <string_view>
 #include <vector>
 
@@ -43,7 +44,12 @@ const char* to_string(LoadResult r);
 // Little-endian field writer and reader, so a payload never depends on a struct's layout.
 class Writer {
  public:
+  void u8(std::uint8_t v);
   void u32(std::uint32_t v);
+  void u64(std::uint64_t v);
+  void i32(std::int32_t v);
+  void f64(double v);
+  void str(std::string_view s);  // a u32 length, then the bytes
   Bytes take() { return std::move(bytes_); }
 
  private:
@@ -53,7 +59,12 @@ class Writer {
 class Reader {
  public:
   explicit Reader(std::span<const std::uint8_t> b) : bytes_(b) {}
+  std::optional<std::uint8_t> u8();
   std::optional<std::uint32_t> u32();
+  std::optional<std::uint64_t> u64();
+  std::optional<std::int32_t> i32();
+  std::optional<double> f64();
+  std::optional<std::string> str();
   bool done() const { return pos_ == bytes_.size(); }
 
  private:

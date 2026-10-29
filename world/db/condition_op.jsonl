@@ -1,0 +1,6 @@
+{"id":"<","name":"lt","ord":4}
+{"id":"=","name":"eq","ord":0}
+{"id":">","name":"gt","ord":5}
+{"id":"≠","name":"ne","ord":1}
+{"id":"≤","name":"le","ord":3}
+{"id":"≥","name":"ge","ord":2}
