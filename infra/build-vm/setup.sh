@@ -18,8 +18,8 @@ if [ ${#need[@]} -gt 0 ]; then sudo apt-get update -qq && sudo apt-get install -
 # python venv
 if [ ! -x "$VENV/bin/python" ]; then python3 -m venv "$VENV"; fi
 pins=(); while IFS= read -r l; do n="${l#py:}"; n="${n%%=*}"; pins+=("$n==$(ver "py:$n")"); done < <(grep '^py:' "$LOCK")
-if ! "$VENV/bin/pip" freeze 2>/dev/null | grep -qx "$(printf '%s\n' "${pins[@]}" | head -1)" \
-   || [ -n "$("$VENV/bin/pip" install --dry-run -q "${pins[@]}" 2>&1 | grep -i 'would install' || true)" ]; then
+# every py: pin in the lock (pillow, pyyaml, ruff included) is installed; the dry run says whether any is missing or off-version
+if [ -n "$("$VENV/bin/pip" install --dry-run -q "${pins[@]}" 2>&1 | grep -i 'would install' || true)" ]; then
   "$VENV/bin/pip" install -q "${pins[@]}"
 fi
 
@@ -29,6 +29,17 @@ if ! { command -v dotnet >/dev/null && dotnet --list-sdks | grep -q '^10\.';  };
   echo "$(sha dotnet-install.sh)  $tmp/dotnet-install.sh" | sha256sum -c - >/dev/null
   bash "$tmp/dotnet-install.sh" --channel "$(ver dotnet-sdk)" --install-dir "$HOME/.dotnet" --no-path
 fi
+
+# Node (the pinned version; runs tools/schema_gen with --experimental-strip-types), user-local, hash checked
+want="$(ver node)"; ndir="$HOME/.argonia/node/$want"
+if [ ! -x "$ndir/bin/node" ]; then
+  a="node-v$want-linux-x64.tar.xz"
+  curl -fsSL "https://nodejs.org/dist/v$want/$a" -o "$tmp/$a"
+  curl -fsSL "https://nodejs.org/dist/v$want/SHASUMS256.txt" -o "$tmp/SHASUMS256.txt"
+  (cd "$tmp" && grep " $a\$" SHASUMS256.txt | sha256sum -c - >/dev/null)
+  mkdir -p "$ndir"; tar -xJf "$tmp/$a" -C "$ndir" --strip-components=1
+fi
+mkdir -p "$HOME/.local/bin"; ln -sfn "$ndir/bin/node" "$HOME/.local/bin/node"
 
 # Spriggit CLI: the Spriggit.CLI NuGet tool package is not installable as a global tool; use the GitHub release zip
 want="$(ver spriggit-cli)"; sdir="$HOME/.argonia/spriggit/$want"
