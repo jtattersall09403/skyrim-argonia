@@ -64,6 +64,11 @@ void fixture(const char* screen) {
 }
 
 void every_screen_has_a_fixture() {
+  // The game machine builds a tree holding only skse/; the fixtures live in ui/ and are checked by the Linux gate.
+  if (!std::filesystem::exists(kRepo / "ui" / "fixtures")) {
+    std::puts("skip: ui/fixtures not in this tree (the build VM's make check runs them)");
+    return;
+  }
   for (const char* s : {"dialogue", "journal", "hud", "chart"}) fixture(s);
   CHECK(fixtures_checked >= 30);
   // Every message type in the schema appears in some fixture.
