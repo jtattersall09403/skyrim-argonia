@@ -49,3 +49,28 @@ is lost at a hand-off. The lane reports are `docs/research/2026-10-29/lane-2.W2-
 - **A bug 2.W3 caught:** the regrade's `apply` was pasted into `grid.Sources.classes` too, because the anchor text
   occurs twice, and wrote height floors (92 m) into the land-cover class ids. Fixed; the regrade test asserts
   classes are unchanged.
+
+## 2026-10-29: the designed model (lane water-design; hand-off, not green)
+
+- **The 259 fallback cells by cause:** steep reach 75, marsh 73 (large 50, small 13, interleaved 10), unowned
+  raster water 46, junction 44, diagonal reach 9, ponds 7, other 5. Map: `out/water/fallback-causes.png`. Walls
+  (water beside lower dry ground) were 7,465 samples, all at the shore fill's limit.
+- **Steep rapids hold no water as planned.** The game ground stands 1 to 5 m above the step levels
+  (reach.113-2459), so a step-and-pool design must carve beds (`bed` ceilings), not only raise banks.
+- **What worked:**
+  - basins, at one level each (2,557, of which 1,941 dropped as puddles under `pondMinM2`, films, ribbons and
+    fragments);
+  - a river kept in its corridor with raised banks, and berms on other shores (walls down to 1,530);
+  - 16 m pools;
+  - turned tiles (643).
+  - Plane refs fell from 32,214 to 25,225, with no fallback.
+- **What did not:**
+  - 141 cells are still over 32 (max 127). Axis squares staircase where two waters at different levels meet on a
+    diagonal.
+  - The carve cut a stub's bed below the marsh beside it, which blocks a cell water height under the higher
+    planes.
+  - Tiles fail at junctions and mouths, and where the bed is beyond the 6 m carve cap.
+  - Even unconditionally, a cell height at the lowest level would fix only 66 of 141 cells.
+- The work is on the ref `wip/water-design` (b50f2ab); the shared tree stayed at HEAD. The next steps are in
+  `docs/research/2026-10-29/lane-water-design.md` §5. The first is to measure whether 32 is the right budget
+  (an L4 frame time) before designing further.
