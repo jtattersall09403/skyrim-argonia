@@ -46,3 +46,15 @@ at a hand-off. The lane reports are `docs/research/2026-10-29/lane-2.W1-terrain.
 - **Border region.** Skyrim.esm's BorderRegionSkyrim (0C5859) has the BorderRegion major flag, one area with
   falloff 0 and 173 points, and a Map entry. Ours is one area over the province square; 2.W3 writes it in
   Argonia.esm.
+
+## 2026-10-29: Tropical Skyrim SE re-check, records half (0.2 synced the masters)
+
+- `Tropical Skyrim.esp` (SE, master Skyrim.esm only) overrides **22 LTEX** (their grass lists; the TXST links
+  are unchanged) and 14 GRAS, and has no TXST. `Tropical Skyrim -- Birds.esp` has no LTEX.
+- **13 of our 27 seed LTEX** get Tropical Skyrim's grass through these overrides: LCoastBeachGrass01 (an empty
+  list), LDirt02, LFallForestDirt01, LFallForestGrass01, LFallForestLeaves01, LFieldGrass01, LFieldGrass02,
+  LFrozenMarshDirtSlopes01, LPineForest02, LPineForest03, LReachDirt01, LReachMoss01 and LTundra01. The other
+  14 keep vanilla Skyrim.esm's grass list.
+- **Owed: the texture half.** Tropical Skyrim's texture files are not on the build VM: only the plugins and the
+  mesh lists were synced, with no loose `textures/landscape` and no Tropical Skyrim BSA. The "replaces 66 of 68
+  by file" finding still rests on the LE file list. The vantage stills (L4, on the game machine) settle it.
