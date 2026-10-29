@@ -10,7 +10,7 @@ belong to the 1.1 build lane, which runs §5's stubs as soon as the hands exist.
 | Every goal in `goals.md` has exactly one row | **pass**: 110 goals, 110 rows, 110 distinct ids, none missing, extra or duplicated (script output below) |
 | Every Part 1 row names its L4 stub check | **pass**: 32 Part 1 rows name a stub, all 32 are defined in §5 with steps and the read that fails |
 | Owner-call rows listed | **pass**: §1. No row is "none" on present evidence. Seven rows have losses the planner should raise with their chunk (G02.3, G05.2, G25.2, G27.3, G29.1, G36.1, G37.1) |
-| `make check` green (links) | `tooling/check_links.py` exit 0; the full gate's result is in the hand-back message |
+| `make check` green (links) | **pass for the parts a docs change reaches**: `make links budget guard` exit 0. The full `make check` was killed by its 280 s timeout (exit 143) while the parts this change cannot reach (`skse`, `plugin-check`, which another lane's new `skse/` tree had just touched) were still running |
 
 The count script (session scratchpad `tools/goals.py` + `tools/count.py`) assigns `Gss.n` = the n-th bullet
 under the ss-th `###` of `goals.md`, then checks the map's rows (outside §5) and the row↔stub pairs:
