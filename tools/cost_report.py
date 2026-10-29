@@ -11,7 +11,7 @@ def aws() -> None:
         import boto3
         from botocore.exceptions import BotoCoreError, ClientError
     except ImportError:
-        print("AWS cost: boto3 missing (run tooling/toolchain/setup.sh)")
+        print("AWS cost: boto3 missing (run infra/build-vm/setup.sh)")
         return
     today = dt.date.today()
     start = today.replace(day=1)

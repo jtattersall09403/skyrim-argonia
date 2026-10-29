@@ -135,7 +135,7 @@ column is Part 1's thread; "whole" is the chunk that completes it.
 | System | Design source | Route | Deps / references | Our component | First rung → whole |
 |---|---|---|---|---|---|
 | Worldspace terrain (126×126 cells) + apron | old heightfield, 0067 apron | 1 | — | tools + ArgoniaGen | 0.2 G4 → 2.W1 |
-| Rivers, lakes, waterfalls, sea | hydrology graph, 0064 waterfalls vanilla kit | 1 (+5 if needed) | vanilla water records/meshes | water planner | 0.2 G7 → 2.W2 |
+| Rivers, lakes, waterfalls, sea | hydrology graph, 0064 waterfalls vanilla kit | 1 (+5 if needed) | vanilla water records/meshes | water planner | 2.W2 (its first step is the stepped-river proof) |
 | Navmesh | the world's own collision (0026 §4) | 1 (+CK check and fallback) | DotRecast + Mutagen; tes4skyrim as the binary spec | navmesh job | 0.2 G4 → 2.W4 |
 | LOD, distant terrain, the map image | — | 1 | xLODGen, DynDOLOD (on the game machine) | lod job | 2.W4 |
 | Regions, weather, climate, sky | climate/weather-states, star catalogue | 1 | — | ArgoniaGen | 2.W3 |

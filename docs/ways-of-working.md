@@ -93,7 +93,7 @@ owner's AWS console). Costs may be summarised.
 
 - **rtk in front of every shell command.** The `rtk hook claude` PreToolUse hook in `.claude/settings.json`
   rewrites Bash calls so git, test, grep and listing output reaches the model trimmed (rtk 1.1.0, pinned in
-  `tooling/toolchain/toolchain.lock`; Apache-2.0 CLI). `rtk gain` shows what it saved.
+  `infra/build-vm/toolchain.lock`; Apache-2.0 CLI). `rtk gain` shows what it saved.
 - **What is deliberately not here** (the old project's 18,000 lines of process tooling were most of its bill):
   no review gate (a lane past 1,500 changed lines runs `/code-review` once, by hand), no lane watchers, keepalives
   or memory watchdogs, no scheduled check-ins, no `Workflow` fan-outs by default, no reader panels (one `reader`
