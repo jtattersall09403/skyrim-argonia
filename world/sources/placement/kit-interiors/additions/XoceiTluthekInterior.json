@@ -1,0 +1,90 @@
+{
+ "schemaVersion": 2,
+ "cellId": "XoceiTluthekInterior",
+ "additions": [
+  {
+   "id": "XoceiTluthekInterior:add:work-argoniancandle",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    -3.357,
+    10.953,
+    7.494
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the dark floor of this Xanmeer room."
+  },
+  {
+   "id": "XoceiTluthekInterior:add:work-argoniancandle-2",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    -3.132,
+    11.093,
+    8.185
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the dark floor of this Xanmeer room."
+  },
+  {
+   "id": "XoceiTluthekInterior:add:work-argoniancandle-3",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    -8.844,
+    12.256,
+    7.211
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the dark floor of this Xanmeer room."
+  },
+  {
+   "id": "XoceiTluthekInterior:add:work-argoniancandle-4",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    -7.141,
+    11.341,
+    8.053
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the dark floor of this Xanmeer room."
+  },
+  {
+   "id": "XoceiTluthekInterior:add:work-argoniancandle-5",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    -11.21,
+    13.492,
+    7.709
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the dark floor of this Xanmeer room."
+  },
+  {
+   "id": "XoceiTluthekInterior:add:work-argoniancandle-6",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    -17.959,
+    14.594,
+    7.37
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the dark floor of this Xanmeer room."
+  },
+  {
+   "id": "XoceiTluthekInterior:add:work-argoniancandle-7",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    -14.904,
+    14.697,
+    7.863
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the dark floor of this Xanmeer room."
+  }
+ ]
+}

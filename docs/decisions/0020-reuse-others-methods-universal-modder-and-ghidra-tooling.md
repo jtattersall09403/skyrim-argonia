@@ -23,8 +23,8 @@ people have figured a lot out already").
    | `share-field-notes` | **search the knowledge base before any system work** (the field notes are prior art) | every WP |
    | `game-recon` | fingerprinting Skyrim's install, loaders, saves; DSR's install and offline safety | 0.1, 0.2 |
    | `game-research-websearch` | archive-aware research of mods, tools and dead forum threads | all research |
-   | `reverse-engineering` | DSR data and targeted native questions; Skyrim questions CommonLib does not answer; file formats | 0.2 G6/G7, 1.4, 2.7 |
-   | `game-automation` | launching and driving Skyrim and DSR, screenshots, input, recording | 0.2, 0.4, 1.4, 2.7 |
+   | `reverse-engineering` | DSR data and targeted native questions; Skyrim questions CommonLib does not answer; file formats | 2.W2, 2.7 |
+   | `game-automation` | launching and driving Skyrim and DSR, screenshots, input, recording | 0.2, 0.4, 2.7 |
    | `mod-any-game` | the overall loop (cheapest route, journal, slice, verify in the real game, record) | every system |
    | `mashup-mods` | cross-game rules: transplant a mechanic, parity documents, list every substitution | 2.7, 2.13, 2.15 |
    | `port-a-mod` | porting open-licence mods we fork (FreeClimb, Chocolate Poise reference, Sailable Ship) | 2.7, 2.13, 2.15 |

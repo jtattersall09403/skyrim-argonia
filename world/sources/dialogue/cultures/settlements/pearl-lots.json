@@ -1,0 +1,128 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "entries": [
+  {
+   "id": "culture.settlement.pearl-lots",
+   "level": "settlement",
+   "name": "The Counted Lots",
+   "parent": "culture.region.saxhleel-coast",
+   "placeId": "place.saxhleel-coast.pearl-lots",
+   "norms": [
+    {
+     "text": "Each lot is numbered and passes down one diver family.",
+     "source": "inferred"
+    },
+    {
+     "text": "The families share the tenders moored over the lots.",
+     "source": "inferred"
+    },
+    {
+     "text": "The takings and the drownings go into the same tally book.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Diving another family's lot.",
+     "source": "inferred"
+    },
+    {
+     "text": "Teaching an outsider to work the lots.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "A long breath and a full net.",
+     "source": "inferred"
+    },
+    {
+     "text": "A tally kept straight.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Outsiders who think a pearl lies loose on the sand.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "place": {
+     "lean": 1,
+     "text": "Numbered lots inside the offshore bar, worked from tenders.",
+     "source": "inferred"
+    },
+    "work": {
+     "lean": 1,
+     "text": "The deep lots pay best and kill divers.",
+     "source": "inferred"
+    },
+    "people": {
+     "lean": 0,
+     "text": "Diver families from Archon, each on its own lot.",
+     "source": "inferred"
+    },
+    "danger": {
+     "lean": -1,
+     "text": "The deep lots drown divers; jellies drift over the beds.",
+     "source": "inferred"
+    },
+    "directions": {
+     "lean": 1,
+     "text": "Ways are given by the shore: the spit, the landing below Portdun Mont, then Archon.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Neighbours by lot number or name; strangers plainly.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [
+     {
+      "text": "Long breath to you.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "How many a family has lost on its lot.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "A lot with no living heir waits to be reassigned.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": []
+   },
+   "views": [
+    {
+     "node": "culture.region.saxhleel-coast",
+     "lean": 0,
+     "text": "Archon buys the pearls and never comes out to the lots.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.25,
+   "dissent": [
+    {
+     "personId": "npc.saxhleel-coast.pearl-lots.n1-3",
+     "topic": "work",
+     "lean": -1,
+     "text": "She brings the day's net up from the deep lot herself (record notes) and knows what the deep lot costs.",
+     "source": "inferred"
+    }
+   ]
+  }
+ ]
+}

@@ -17,7 +17,7 @@ converted material from the user's own games") is the community precedent: toler
    dependency mod that does it at runtime); (b) author our own original file from scratch (allowlisted, our
    copyright); (c) generate it on the player's machine with the installer from their own files; never (d) ship
    a derived file.
-2. **Animation timing (1.4, 2.7):** (a) runtime: our SKSE plugin scales playback speed inside measured windows (graph
+2. **Animation timing (2.7):** (a) runtime: our SKSE plugin scales playback speed inside measured windows (graph
    variables, Payload Interpreter/AMR, animation-event-driven speed changes) and opens/closes our own timing
    windows from animation events, so DS1 timings are met without editing clips; (c) if a window cannot be met at
    runtime, an **install-time patcher** applies our annotation/timing deltas (a small diff we author) to the

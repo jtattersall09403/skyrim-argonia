@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "domain": "dialogue-pool",
+  "topicClass": "newcomer",
+  "_": "Walker and gate fixture (2.5b4).",
+  "entries": [
+    {"schemaVersion": 1, "id": "pool.fixture-hist.default", "type": "dialogue", "speaker": null, "keys": {"topic": "topic.fixture-hist"}, "words": "The Hist is the old tree at the heart of the village.", "available": [], "onDelivered": [], "factIds": ["fact.fixture.hist-tree"], "links": []},
+    {"schemaVersion": 1, "id": "pool.fallback.newcomer", "type": "dialogue", "speaker": null, "keys": {}, "fallbackFor": "newcomer", "words": "Ask at the shrine.", "available": [], "onDelivered": [], "factIds": [], "links": []}
+  ]
+}

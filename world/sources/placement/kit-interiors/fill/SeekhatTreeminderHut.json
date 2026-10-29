@@ -1,0 +1,183 @@
+{
+ "cellId": "SeekhatTreeminderHut",
+ "sockets": {
+  "socket.SeekhatTreeminderHut.08198D04": {
+   "owner": "parcel.upriver-hist-village.minders-house",
+   "fillRule": "blanket.cook-shelf",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.river-salt",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.baked-crocodile-tongue",
+      "count": 1
+     },
+     {
+      "item": "item.lumberries",
+      "count": 3
+     },
+     {
+      "item": "item.turtle-shell-bowl",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.cook-shelf"
+   }
+  },
+  "socket.SeekhatTreeminderHut.08198D05": {
+   "owner": "parcel.upriver-hist-village.minders-house",
+   "fillRule": "blanket.household-chest",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.rag",
+      "count": 2
+     },
+     {
+      "item": "item.spine-balm",
+      "count": 1
+     },
+     {
+      "item": "item.gold",
+      "count": 6
+     }
+    ],
+    "frozenFrom": "blanket.household-chest"
+   }
+  },
+  "socket.SeekhatTreeminderHut.08198D3D": {
+   "owner": "parcel.upriver-hist-village.minders-house",
+   "valueTier": "low",
+   "item": "item.rootland-mushroom"
+  },
+  "socket.SeekhatTreeminderHut.08198D3F": {
+   "owner": "parcel.upriver-hist-village.minders-house",
+   "valueTier": "trivial",
+   "item": "item.wooden-plate"
+  },
+  "socket.SeekhatTreeminderHut.08198D40": {
+   "owner": "parcel.upriver-hist-village.minders-house",
+   "valueTier": "trivial",
+   "item": "item.turtle-shell-bowl"
+  },
+  "socket.SeekhatTreeminderHut.08198D42": {
+   "owner": "parcel.upriver-hist-village.minders-house",
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.SeekhatTreeminderHut.08198D43": {
+   "owner": "parcel.upriver-hist-village.minders-house",
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.SeekhatTreeminderHut.08198D44": {
+   "owner": "parcel.upriver-hist-village.minders-house",
+   "valueTier": "moderate",
+   "item": "item.fly-amanita"
+  },
+  "socket.SeekhatTreeminderHut.08198D45": {
+   "owner": "parcel.upriver-hist-village.minders-house",
+   "valueTier": "low",
+   "item": "item.rootland-mushroom"
+  },
+  "socket.SeekhatTreeminderHut.08198D47": {
+   "owner": "parcel.upriver-hist-village.minders-house",
+   "valueTier": "moderate",
+   "item": "item.imp-stool"
+  },
+  "socket.SeekhatTreeminderHut.08198D49": {
+   "owner": "parcel.upriver-hist-village.minders-house",
+   "valueTier": "low",
+   "item": "item.honeycomb"
+  },
+  "socket.SeekhatTreeminderHut.08198D4A": {
+   "owner": "parcel.upriver-hist-village.minders-house",
+   "valueTier": "moderate",
+   "item": "item.canis-root"
+  },
+  "socket.SeekhatTreeminderHut.08198D4B": {
+   "owner": "parcel.upriver-hist-village.minders-house",
+   "valueTier": "moderate",
+   "item": "item.canis-root"
+  },
+  "socket.SeekhatTreeminderHut.08198D4C": {
+   "owner": "parcel.upriver-hist-village.minders-house",
+   "valueTier": "moderate",
+   "item": "item.canis-root"
+  },
+  "socket.SeekhatTreeminderHut.08198D51": {
+   "owner": "parcel.upriver-hist-village.minders-house",
+   "valueTier": "low",
+   "item": "item.dragons-tongue"
+  },
+  "socket.SeekhatTreeminderHut.08198D52": {
+   "owner": "parcel.upriver-hist-village.minders-house",
+   "valueTier": "low",
+   "item": "item.lavender"
+  },
+  "socket.SeekhatTreeminderHut.08198D53": {
+   "owner": "parcel.upriver-hist-village.minders-house",
+   "valueTier": "low",
+   "item": "item.bone-meal"
+  },
+  "socket.SeekhatTreeminderHut.08198D54": {
+   "owner": "parcel.upriver-hist-village.minders-house",
+   "valueTier": "low",
+   "item": "item.void-salts"
+  },
+  "socket.SeekhatTreeminderHut.08198D55": {
+   "owner": "parcel.upriver-hist-village.minders-house",
+   "valueTier": "moderate",
+   "item": "item.wisp-wrappings"
+  },
+  "socket.SeekhatTreeminderHut.08198D56": {
+   "owner": "parcel.upriver-hist-village.minders-house",
+   "valueTier": "low",
+   "item": "item.taproot"
+  },
+  "socket.SeekhatTreeminderHut.08198D57": {
+   "owner": "parcel.upriver-hist-village.minders-house",
+   "valueTier": "low",
+   "item": "item.oliis-pearl"
+  },
+  "socket.SeekhatTreeminderHut.08198D59": {
+   "owner": "parcel.upriver-hist-village.minders-house",
+   "valueTier": "low",
+   "item": "item.small-pearl"
+  },
+  "socket.SeekhatTreeminderHut.08198D5A": {
+   "owner": "parcel.upriver-hist-village.minders-house",
+   "valueTier": "low",
+   "item": "item.small-pearl"
+  },
+  "socket.SeekhatTreeminderHut.08198D5C": {
+   "owner": "parcel.upriver-hist-village.minders-house",
+   "valueTier": "moderate",
+   "item": "item.nirnroot"
+  },
+  "socket.SeekhatTreeminderHut.081A845A": {
+   "owner": "parcel.upriver-hist-village.minders-house",
+   "valueTier": "low",
+   "item": "item.honeycomb"
+  },
+  "socket.SeekhatTreeminderHut.085C3085": {
+   "owner": "parcel.upriver-hist-village.minders-house",
+   "valueTier": "low",
+   "item": "item.trodh"
+  },
+  "socket.SeekhatTreeminderHut.085C3086": {
+   "owner": "parcel.upriver-hist-village.minders-house",
+   "valueTier": "low",
+   "item": "item.trodh"
+  }
+ },
+ "schemaVersion": 1
+}

@@ -1,0 +1,3250 @@
+{
+ "schemaVersion": 1,
+ "placeId": "place.saxhleel-coast.pearl-lots",
+ "window": {
+  "centreKm": [
+   5.43,
+   4.35
+  ],
+  "halfM": 140.0
+ },
+ "ops": [
+  {
+   "op": "place",
+   "uid": "s-rack",
+   "asset": "vanilla:clutter/deadanimals/fishrack01",
+   "at": [
+    5395.0,
+    4297.2
+   ],
+   "yaw": 90.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-fire",
+   "asset": "vanilla:clutter/woodfires/campfire01burning",
+   "at": [
+    5375.5,
+    4299.5
+   ],
+   "yaw": 0.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-table",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/wickertable01",
+   "at": [
+    5388.5,
+    4299.5
+   ],
+   "yaw": 0.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-bask1",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/wickerbasket01",
+   "at": [
+    5386.0,
+    4297.6
+   ],
+   "yaw": 20.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-bask2",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/wickerbasket01",
+   "at": [
+    5391.2,
+    4297.8
+   ],
+   "yaw": 200.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-bask3",
+   "asset": "kotm:argonia/clutter/basket01",
+   "at": [
+    5390.2,
+    4301.6
+   ],
+   "yaw": 0.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-bucket",
+   "asset": "vanilla:clutter/bucket01",
+   "at": [
+    5386.4,
+    4301.8
+   ],
+   "yaw": 0.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-barrel",
+   "asset": "vanilla:clutter/barrel01",
+   "at": [
+    5378.6,
+    4301.6
+   ],
+   "yaw": 0.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-net",
+   "asset": "shores:shoresofskyrim/fishnet01",
+   "at": [
+    5379.4,
+    4298.6
+   ],
+   "yaw": 40.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-heap1",
+   "asset": "jokerine:_seaside/clam_large",
+   "at": [
+    5385.0,
+    4296.5
+   ],
+   "yaw": 30.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-heap2",
+   "asset": "jokerine:_seaside/scallop_slate",
+   "at": [
+    5385.7,
+    4295.9
+   ],
+   "yaw": 110.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-heap3",
+   "asset": "jokerine:_seaside/scallop_greenwhite",
+   "at": [
+    5392.3,
+    4296.4
+   ],
+   "yaw": 250.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-heap4",
+   "asset": "jokerine:_seaside/clam_large",
+   "at": [
+    5392.9,
+    4297.3
+   ],
+   "yaw": 300.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "dk-1",
+   "asset": "vanilla:architecture/docks/dockstrsol01",
+   "at": [
+    5403.9,
+    4294.2
+   ],
+   "yaw": 90.0,
+   "walkable": true,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "dk-2",
+   "asset": "vanilla:architecture/docks/dockstrsol01",
+   "at": [
+    5411.18,
+    4294.2
+   ],
+   "yaw": 90.0,
+   "walkable": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "dk-3",
+   "asset": "vanilla:architecture/docks/dockstrsol01",
+   "at": [
+    5418.46,
+    4294.2
+   ],
+   "yaw": 90.0,
+   "walkable": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "dk-4",
+   "asset": "vanilla:architecture/docks/dockstrsol01",
+   "at": [
+    5425.74,
+    4294.2
+   ],
+   "yaw": 90.0,
+   "walkable": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "h-canoe",
+   "asset": "canoe:actors/sfss/canoe/canoe1",
+   "at": [
+    5433.1,
+    4294.2
+   ],
+   "yaw": 90.0,
+   "settle": true,
+   "wet": true,
+   "tether": "seabed"
+  },
+  {
+   "op": "place",
+   "uid": "j-lamp",
+   "asset": "mudmother:gv_meshes/argoniannest/argonianlanterns04",
+   "at": [
+    5395.0,
+    4297.2
+   ],
+   "yaw": 0.0
+  },
+  {
+   "op": "place",
+   "uid": "t-raft",
+   "asset": "ferries:yamadori/ferries/plank_ferry_swamp_01",
+   "at": [
+    5470.0,
+    4333.0
+   ],
+   "yaw": 30.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "t-raft-bask",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/wickerbasket01",
+   "at": [
+    5469.4,
+    4333.25
+   ],
+   "yaw": 0.0,
+   "y": 1.5
+  },
+  {
+   "op": "place",
+   "uid": "t-raft-net",
+   "asset": "shores:shoresofskyrim/fishnet01",
+   "at": [
+    5469.4,
+    4332.4
+   ],
+   "yaw": 0.0,
+   "y": 1.5
+  },
+  {
+   "op": "place",
+   "uid": "t-row",
+   "asset": "ferries:yamadori/ferries/rowboat_ferry_swamp_01",
+   "at": [
+    5478.0,
+    4405.0
+   ],
+   "yaw": 160.0,
+   "settle": true,
+   "wet": true,
+   "tether": "seabed"
+  },
+  {
+   "op": "place",
+   "uid": "t-row-bask",
+   "asset": "vanilla:clutter/basket01",
+   "at": [
+    5478.3,
+    4404.0
+   ],
+   "yaw": 0.0,
+   "y": 1.5
+  },
+  {
+   "op": "place",
+   "uid": "t-row-bucket",
+   "asset": "vanilla:clutter/bucket01",
+   "at": [
+    5477.6,
+    4406.2
+   ],
+   "yaw": 0.0,
+   "y": 1.5
+  },
+  {
+   "op": "place",
+   "uid": "c-a",
+   "asset": "vanilla:landscape/rocks/cairns/rockcairn02",
+   "at": [
+    5460.0,
+    4326.0
+   ],
+   "yaw": 15.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "la-clam1",
+   "asset": "vanilla:plants/clam01",
+   "at": [
+    5466.8,
+    4336.6
+   ],
+   "yaw": 0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "la-clam2",
+   "asset": "vanilla:plants/clamlarge01",
+   "at": [
+    5468.8,
+    4337.2
+   ],
+   "yaw": 37,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "la-clam3",
+   "asset": "vanilla:plants/clamthin01",
+   "at": [
+    5469.4,
+    4335.3
+   ],
+   "yaw": 74,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "la-clam4",
+   "asset": "vanilla:plants/clam01",
+   "at": [
+    5467.7,
+    4334.6
+   ],
+   "yaw": 111,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "la-clam5",
+   "asset": "jokerine:_seaside/clam_large",
+   "at": [
+    5470.1,
+    4336.8
+   ],
+   "yaw": 148,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "la-clam6",
+   "asset": "vanilla:plants/clam01",
+   "at": [
+    5466.1,
+    4335.2
+   ],
+   "yaw": 185,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "c-b",
+   "asset": "vanilla:landscape/rocks/cairns/rockcairn02",
+   "at": [
+    5487.0,
+    4327.0
+   ],
+   "yaw": 55.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "lb-clam1",
+   "asset": "vanilla:plants/clam01",
+   "at": [
+    5499.4,
+    4340.7
+   ],
+   "yaw": 90,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "lb-clam2",
+   "asset": "vanilla:plants/clamlarge01",
+   "at": [
+    5501.3,
+    4341.3
+   ],
+   "yaw": 127,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "lb-clam3",
+   "asset": "vanilla:plants/clamthin01",
+   "at": [
+    5501.9,
+    4339.4
+   ],
+   "yaw": 164,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "lb-clam4",
+   "asset": "vanilla:plants/clam01",
+   "at": [
+    5500.2,
+    4338.7
+   ],
+   "yaw": 201,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "lb-clam5",
+   "asset": "jokerine:_seaside/clam_large",
+   "at": [
+    5502.7,
+    4340.9
+   ],
+   "yaw": 238,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "c-c",
+   "asset": "vanilla:landscape/rocks/cairns/rockcairn03",
+   "at": [
+    5487.0,
+    4372.0
+   ],
+   "yaw": 95.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "lc-clam1",
+   "asset": "vanilla:plants/clam01",
+   "at": [
+    5499.1,
+    4385.9
+   ],
+   "yaw": 180,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "lc-clam2",
+   "asset": "vanilla:plants/clamlarge01",
+   "at": [
+    5501.0,
+    4386.5
+   ],
+   "yaw": 217,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "lc-clam3",
+   "asset": "vanilla:plants/clamthin01",
+   "at": [
+    5501.6,
+    4384.6
+   ],
+   "yaw": 254,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "lc-clam4",
+   "asset": "vanilla:plants/clam01",
+   "at": [
+    5499.9,
+    4383.9
+   ],
+   "yaw": 291,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "lc-clam5",
+   "asset": "jokerine:_seaside/clam_large",
+   "at": [
+    5502.4,
+    4386.1
+   ],
+   "yaw": 328,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "c-d",
+   "asset": "vanilla:landscape/rocks/cairns/rockcairn04",
+   "at": [
+    5462.0,
+    4397.0
+   ],
+   "yaw": 135.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "b-a",
+   "asset": "vanilla:clutter/barrel01-keg-buoy",
+   "at": [
+    5461.6,
+    4327.2
+   ],
+   "yaw": 10.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "b-b",
+   "asset": "vanilla:clutter/barrel01-keg-buoy",
+   "at": [
+    5488.6,
+    4328.2
+   ],
+   "yaw": 70.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "b-c",
+   "asset": "vanilla:clutter/barrel01-keg-buoy",
+   "at": [
+    5488.6,
+    4373.2
+   ],
+   "yaw": 130.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "b-d",
+   "asset": "vanilla:clutter/barrel01-keg-buoy",
+   "at": [
+    5463.6,
+    4398.2
+   ],
+   "yaw": 200.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "s-tally",
+   "asset": "vanilla:clutter/books/book01/character assets/journalbasic",
+   "at": [
+    5388.3,
+    4299.6
+   ],
+   "yaw": 18.0,
+   "y": 1.5
+  },
+  {
+   "op": "place",
+   "uid": "ld-clam1",
+   "asset": "vanilla:plants/clam01",
+   "at": [
+    5483.0,
+    4417.7
+   ],
+   "yaw": 270,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "ld-clam2",
+   "asset": "vanilla:plants/clamlarge01",
+   "at": [
+    5484.9,
+    4418.3
+   ],
+   "yaw": 307,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "ld-clam3",
+   "asset": "vanilla:plants/clamthin01",
+   "at": [
+    5485.6,
+    4416.5
+   ],
+   "yaw": 344,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "ld-clam4",
+   "asset": "vanilla:plants/clam01",
+   "at": [
+    5483.8,
+    4415.8
+   ],
+   "yaw": 21,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "ld-clam5",
+   "asset": "jokerine:_seaside/clam_large",
+   "at": [
+    5486.3,
+    4418.0
+   ],
+   "yaw": 58,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "ld-clam6",
+   "asset": "vanilla:plants/clam01",
+   "at": [
+    5482.3,
+    4416.4
+   ],
+   "yaw": 95,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "la-scal1",
+   "asset": "jokerine:_seaside/scallop_blue",
+   "at": [
+    5467.0,
+    4334.9
+   ],
+   "yaw": 0.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "lb-scal1",
+   "asset": "jokerine:_seaside/scallop_red",
+   "at": [
+    5503.0,
+    4338.5
+   ],
+   "yaw": 60.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "lc-scal1",
+   "asset": "jokerine:_seaside/scallop_yellow",
+   "at": [
+    5499.0,
+    4386.3
+   ],
+   "yaw": 120.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "la-basket",
+   "asset": "vanilla:clutter/basket01",
+   "at": [
+    5472.0,
+    4338.6
+   ],
+   "yaw": 25.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "la-weight",
+   "asset": "canoe:weapons/sfss/anchor",
+   "at": [
+    5473.3,
+    4338.9
+   ],
+   "yaw": 70.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "ld-skull",
+   "asset": "vanilla:clutter/bones/humanskull",
+   "at": [
+    5488.9,
+    4417.8
+   ],
+   "yaw": 200.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "ld-barnacle",
+   "asset": "vanilla:plants/nordicbarnaclecluster01",
+   "at": [
+    5473.0,
+    4407.6
+   ],
+   "yaw": 0.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "k-1",
+   "asset": "depths:landscape/grass/waterkelptall02",
+   "at": [
+    5452.0,
+    4340.0
+   ],
+   "yaw": 0.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "k-2",
+   "asset": "depths:landscape/grass/waterkelptall03",
+   "at": [
+    5455.0,
+    4352.0
+   ],
+   "yaw": 45.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "k-3",
+   "asset": "depths:landscape/grass/waterkelptall02",
+   "at": [
+    5516.0,
+    4332.0
+   ],
+   "yaw": 90.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "k-4",
+   "asset": "depths:landscape/grass/waterkelptall03",
+   "at": [
+    5517.0,
+    4372.0
+   ],
+   "yaw": 135.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "k-5",
+   "asset": "depths:landscape/grass/waterkelptall02",
+   "at": [
+    5458.0,
+    4398.0
+   ],
+   "yaw": 180.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "k-6",
+   "asset": "depths:landscape/grass/waterkelptall03",
+   "at": [
+    5492.0,
+    4422.0
+   ],
+   "yaw": 225.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "r-1",
+   "asset": "shores:shoresofskyrim/shorerock03",
+   "at": [
+    5542.0,
+    4352.0
+   ],
+   "yaw": 0.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "r-2",
+   "asset": "shores:shoresofskyrim/shorerock07",
+   "at": [
+    5548.0,
+    4377.0
+   ],
+   "yaw": 60.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "r-3",
+   "asset": "shores:shoresofskyrim/shorerock05",
+   "at": [
+    5538.0,
+    4396.0
+   ],
+   "yaw": 120.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "s-bask4",
+   "asset": "mudmother:gv_meshes/argoniannest/basketfull",
+   "at": [
+    5386.0,
+    4303.2
+   ],
+   "yaw": 0.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-bask5",
+   "asset": "kotm:argonia/clutter/basket01",
+   "at": [
+    5386.9,
+    4303.7
+   ],
+   "yaw": 12.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-bask6",
+   "asset": "mudmother:gv_meshes/argoniannest/basketfull",
+   "at": [
+    5387.8,
+    4303.2
+   ],
+   "yaw": 352.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-bask7",
+   "asset": "mudmother:gv_meshes/argoniannest/basketfull",
+   "at": [
+    5388.8,
+    4303.7
+   ],
+   "yaw": 5.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-heap5",
+   "asset": "jokerine:_seaside/scallop_slate",
+   "at": [
+    5384.4,
+    4295.9
+   ],
+   "yaw": 160.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-heap6",
+   "asset": "jokerine:_seaside/clam_large",
+   "at": [
+    5393.6,
+    4296.8
+   ],
+   "yaw": 80.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "c-a2",
+   "asset": "vanilla:landscape/rocks/cairns/rockcairn01",
+   "at": [
+    5477.0,
+    4343.0
+   ],
+   "yaw": 200.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "c-b2",
+   "asset": "vanilla:landscape/rocks/cairns/rockcairn03",
+   "at": [
+    5508.0,
+    4346.0
+   ],
+   "yaw": 250.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "c-c2",
+   "asset": "vanilla:landscape/rocks/cairns/rockcairn04",
+   "at": [
+    5508.0,
+    4391.0
+   ],
+   "yaw": 300.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "c-d2",
+   "asset": "vanilla:landscape/rocks/cairns/rockcairn04",
+   "at": [
+    5490.0,
+    4418.5
+   ],
+   "yaw": 20.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "ka-1",
+   "asset": "depths:landscape/grass/waterkelptall03",
+   "at": [
+    5463.0,
+    4341.0
+   ],
+   "yaw": 0.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "ka-2",
+   "asset": "depths:landscape/grass/tbp_seaweed06var1",
+   "scale": 0.5,
+   "at": [
+    5474.0,
+    4332.0
+   ],
+   "yaw": 70.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "kb-1",
+   "asset": "depths:landscape/grass/waterkelptall02",
+   "at": [
+    5495.0,
+    4345.0
+   ],
+   "yaw": 140.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "kb-2",
+   "asset": "vanilla:plants/nordicbarnaclecluster01",
+   "at": [
+    5506.0,
+    4336.0
+   ],
+   "yaw": 210.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "kc-1",
+   "asset": "depths:landscape/grass/tbp_seaweed06var1",
+   "scale": 0.5,
+   "at": [
+    5495.0,
+    4380.0
+   ],
+   "yaw": 280.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "kc-2",
+   "asset": "depths:landscape/grass/waterkelptall03",
+   "at": [
+    5506.0,
+    4390.0
+   ],
+   "yaw": 350.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "kd-1",
+   "asset": "vanilla:plants/nordicbarnaclecluster01",
+   "at": [
+    5479.0,
+    4421.0
+   ],
+   "yaw": 60.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "kd-2",
+   "asset": "depths:landscape/grass/tbp_seaweed06var1",
+   "scale": 0.5,
+   "at": [
+    5489.0,
+    4413.0
+   ],
+   "yaw": 130.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "la-clam7",
+   "asset": "vanilla:plants/clam01",
+   "at": [
+    5468.0,
+    4335.8
+   ],
+   "yaw": 222.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "lb-clam6",
+   "asset": "vanilla:plants/clam01",
+   "at": [
+    5500.7,
+    4340.0
+   ],
+   "yaw": 15.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "lc-clam6",
+   "asset": "vanilla:plants/clam01",
+   "at": [
+    5500.4,
+    4385.0
+   ],
+   "yaw": 100.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "ld-clam7",
+   "asset": "vanilla:plants/clam01",
+   "at": [
+    5484.1,
+    4417.4
+   ],
+   "yaw": 190.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "la-rim1",
+   "asset": "shores:shoresofskyrim/shorerock05",
+   "scale": 0.5,
+   "at": [
+    5471.0,
+    4334.0
+   ],
+   "yaw": 30.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "la-rim2",
+   "asset": "shores:shoresofskyrim/shorerock03",
+   "scale": 0.5,
+   "at": [
+    5466.0,
+    4333.0
+   ],
+   "yaw": 110.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "la-rub",
+   "asset": "vanilla:plants/nordicbarnaclecluster01",
+   "at": [
+    5470.5,
+    4339.5
+   ],
+   "yaw": 15.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "la-edge",
+   "asset": "depths:landscape/grass/waterkelptall02",
+   "at": [
+    5465.5,
+    4338.5
+   ],
+   "yaw": 200.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "lb-rim1",
+   "asset": "shores:shoresofskyrim/shorerock07",
+   "scale": 0.5,
+   "at": [
+    5504.0,
+    4338.0
+   ],
+   "yaw": 70.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "lb-rim2",
+   "asset": "shores:shoresofskyrim/shorerock05",
+   "scale": 0.5,
+   "at": [
+    5499.0,
+    4337.0
+   ],
+   "yaw": 160.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "lb-rub",
+   "asset": "vanilla:plants/nordicbarnaclecluster01",
+   "at": [
+    5504.0,
+    4343.0
+   ],
+   "yaw": 95.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "lb-edge",
+   "asset": "depths:landscape/grass/tbp_seaweed06var1",
+   "scale": 0.5,
+   "at": [
+    5499.5,
+    4346.5
+   ],
+   "yaw": 20.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "lc-rim1",
+   "asset": "shores:shoresofskyrim/shorerock03",
+   "scale": 0.5,
+   "at": [
+    5503.0,
+    4383.0
+   ],
+   "yaw": 240.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "lc-rim2",
+   "asset": "shores:shoresofskyrim/shorerock07",
+   "scale": 0.5,
+   "at": [
+    5498.0,
+    4382.0
+   ],
+   "yaw": 330.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "lc-rub",
+   "asset": "vanilla:plants/nordicbarnaclecluster01",
+   "at": [
+    5502.0,
+    4387.0
+   ],
+   "yaw": 180.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "lc-edge",
+   "asset": "depths:landscape/grass/waterkelptall02",
+   "at": [
+    5496.0,
+    4389.5
+   ],
+   "yaw": 50.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "ld-rim1",
+   "asset": "shores:shoresofskyrim/shorerock05",
+   "scale": 0.5,
+   "at": [
+    5487.0,
+    4415.0
+   ],
+   "yaw": 290.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "ld-rim2",
+   "asset": "shores:shoresofskyrim/shorerock03",
+   "scale": 0.5,
+   "at": [
+    5482.0,
+    4414.0
+   ],
+   "yaw": 10.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "ld-rub",
+   "asset": "vanilla:plants/nordicbarnaclecluster01",
+   "at": [
+    5485.5,
+    4419.0
+   ],
+   "yaw": 250.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "ld-edge",
+   "asset": "depths:landscape/grass/waterkelptall03",
+   "at": [
+    5481.5,
+    4419.5
+   ],
+   "yaw": 140.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "mount",
+   "child": "j-lamp",
+   "parent": "s-rack",
+   "hang": true,
+   "unmined": "reader-approved r1",
+   "max_h": 4.0,
+   "min_h": 1.4
+  },
+  {
+   "op": "mount",
+   "child": "t-raft-bask",
+   "parent": "t-raft",
+   "unmined": "reader-approved r1",
+   "inside": true
+  },
+  {
+   "op": "mount",
+   "child": "t-raft-net",
+   "parent": "t-raft",
+   "unmined": "reader-approved r1",
+   "inside": true
+  },
+  {
+   "op": "mount",
+   "child": "t-row-bask",
+   "parent": "t-row",
+   "unmined": "reader-approved r1",
+   "inside": true
+  },
+  {
+   "op": "mount",
+   "child": "s-tally",
+   "parent": "s-table",
+   "unmined": "reader-approved r13"
+  },
+  {
+   "op": "mount",
+   "child": "t-row-bucket",
+   "parent": "t-row",
+   "unmined": "reader-approved r1",
+   "inside": true
+  },
+  {
+   "op": "bind",
+   "uid": "s-rack",
+   "kind": "parcel",
+   "id": "parcel.pearl-lots.grading-ground"
+  },
+  {
+   "op": "bind",
+   "uid": "s-fire",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "light",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-table",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-bask1",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-bask2",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-bask3",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-bucket",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-barrel",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-net",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-heap1",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-heap2",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-heap3",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-heap4",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "dk-1",
+   "kind": "run",
+   "id": "parcel.pearl-lots.jetty",
+   "index": 0
+  },
+  {
+   "op": "bind",
+   "uid": "dk-2",
+   "kind": "run",
+   "id": "parcel.pearl-lots.jetty",
+   "index": 1
+  },
+  {
+   "op": "bind",
+   "uid": "dk-3",
+   "kind": "run",
+   "id": "parcel.pearl-lots.jetty",
+   "index": 2
+  },
+  {
+   "op": "bind",
+   "uid": "dk-4",
+   "kind": "run",
+   "id": "parcel.pearl-lots.jetty",
+   "index": 3
+  },
+  {
+   "op": "bind",
+   "uid": "j-lamp",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "light",
+   "on": "parent",
+   "evidence": "measured",
+   "host": "s-rack"
+  },
+  {
+   "op": "bind",
+   "uid": "h-canoe",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "t-raft",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "t-row",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "t-raft-bask",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "measured",
+   "host": "t-raft"
+  },
+  {
+   "op": "bind",
+   "uid": "t-raft-net",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "measured",
+   "host": "t-raft"
+  },
+  {
+   "op": "bind",
+   "uid": "t-row-bask",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "measured",
+   "host": "t-row"
+  },
+  {
+   "op": "bind",
+   "uid": "t-row-bucket",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "measured",
+   "host": "t-row"
+  },
+  {
+   "op": "bind",
+   "uid": "c-a",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "la-clam1",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "la-clam2",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "la-clam3",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "la-clam4",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "la-clam5",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "la-clam6",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "c-b",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "lb-clam1",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "lb-clam2",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "lb-clam3",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "lb-clam4",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "lb-clam5",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "c-c",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "lc-clam1",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "lc-clam2",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "lc-clam3",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "lc-clam4",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "lc-clam5",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "c-d",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "ld-clam1",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "ld-clam2",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "ld-clam3",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "ld-clam4",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "ld-clam5",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "ld-clam6",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "la-scal1",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "lb-scal1",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "lc-scal1",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "la-basket",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "la-weight",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "ld-skull",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "ld-barnacle",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "k-1",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "k-2",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "k-3",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "k-4",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "k-5",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "k-6",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "r-1",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "r-2",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "r-3",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-bask4",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-bask5",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-bask6",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-bask7",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-heap5",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-heap6",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "c-a2",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "c-b2",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "c-c2",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "c-d2",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "b-a",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "b-b",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "b-c",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "b-d",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-tally",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "measured",
+   "host": "s-table"
+  },
+  {
+   "op": "bind",
+   "uid": "ka-1",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "ka-2",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "kb-1",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "kb-2",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "kc-1",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "kc-2",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "kd-1",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "kd-2",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "la-clam7",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "lb-clam6",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "lc-clam6",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "ld-clam7",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "la-rim1",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "la-rim2",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "la-rub",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "la-edge",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "lb-rim1",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "lb-rim2",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "lb-rub",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "lb-edge",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "lc-rim1",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "lc-rim2",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "lc-rub",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "lc-edge",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "ld-rim1",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "ld-rim2",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "ld-rub",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "ld-edge",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "note",
+   "uid": "la-rim1",
+   "text": "Walk 12: each lot bed has a low rock rim to seaward and barnacle rubble beside its clams. Kelp or weed edges the far side (owner point: lot-bed composition)."
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.pearl-lots.the-street",
+   "points": [
+    [
+     5300.5,
+     4320.0
+    ],
+    [
+     5312.0,
+     4312.0
+    ],
+    [
+     5334.0,
+     4299.0
+    ],
+    [
+     5352.0,
+     4294.2
+    ],
+    [
+     5372.0,
+     4294.2
+    ],
+    [
+     5390.0,
+     4293.6
+    ],
+    [
+     5402.0,
+     4294.0
+    ]
+   ],
+   "width": 2.0,
+   "kind": "footpath"
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.pearl-lots.rack-path",
+   "points": [
+    [
+     5395.0,
+     4294.0
+    ],
+    [
+     5395.0,
+     4295.9
+    ]
+   ],
+   "width": 1.2,
+   "kind": "footpath"
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.idle-n1-work",
+   "kind": "idle",
+   "host": "s-bask1",
+   "activity": "work-at",
+   "parcel": "parcel.pearl-lots.grading-ground",
+   "why": "The divers open and grade their catch into the baskets by size."
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.idle-n1-evening",
+   "kind": "idle",
+   "host": "s-fire",
+   "activity": "cook",
+   "parcel": "parcel.pearl-lots.grading-ground",
+   "why": "The crew cooks at the fire when the light goes off the water."
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.idle-n1-home",
+   "kind": "idle",
+   "at": [
+    5394.0,
+    4295.6
+   ],
+   "activity": "stand",
+   "parcel": "parcel.pearl-lots.grading-ground",
+   "why": "The jetty foot, where the divers leave for home in Archon at night; the walk home is the later schedule system's."
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.idle-n2-work",
+   "kind": "idle",
+   "at": [
+    5428.0,
+    4294.2
+   ],
+   "activity": "fish",
+   "parcel": "parcel.pearl-lots.jetty",
+   "why": "The tender works the lines and the canoe at the jetty's end."
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.idle-n2-home",
+   "kind": "idle",
+   "at": [
+    5393.7,
+    4290.6
+   ],
+   "activity": "stand",
+   "parcel": "parcel.pearl-lots.grading-ground",
+   "why": "The jetty foot, where the tender ties up the canoe and leaves for home in Archon at night."
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.npc-n1",
+   "kind": "npc",
+   "at": [
+    5381.5,
+    4298.8
+   ],
+   "rosterSlotId": "n1",
+   "role": "the lot divers",
+   "parcel": "parcel.pearl-lots.grading-ground",
+   "why": "Two to six divers from the lot-holding families work the bed and grade the catch.",
+   "fills": [
+    "promise.pearl-lots.occupant-n1"
+   ],
+   "schedule": [
+    {
+     "dayPhase": "morning",
+     "socketId": "socket.pearl-lots.idle-n1-work",
+     "purpose": "work"
+    },
+    {
+     "dayPhase": "afternoon",
+     "socketId": "socket.pearl-lots.idle-n1-work",
+     "purpose": "work"
+    },
+    {
+     "dayPhase": "dusk",
+     "socketId": "socket.pearl-lots.idle-n1-evening",
+     "purpose": "evening"
+    },
+    {
+     "dayPhase": "night",
+     "socketId": "socket.pearl-lots.idle-n1-home",
+     "purpose": "home"
+    }
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.npc-n2",
+   "kind": "npc",
+   "at": [
+    5429.0,
+    4293.0
+   ],
+   "rosterSlotId": "n2",
+   "role": "the surface tender",
+   "parcel": "parcel.pearl-lots.grading-ground",
+   "why": "The tender hauls the baskets up, minds the boats and the lines.",
+   "fills": [
+    "promise.pearl-lots.occupant-n2"
+   ],
+   "schedule": [
+    {
+     "dayPhase": "morning",
+     "socketId": "socket.pearl-lots.idle-n2-work",
+     "purpose": "work"
+    },
+    {
+     "dayPhase": "afternoon",
+     "socketId": "socket.pearl-lots.idle-n2-work",
+     "purpose": "work"
+    },
+    {
+     "dayPhase": "dusk",
+     "socketId": "socket.pearl-lots.idle-n1-evening",
+     "purpose": "evening"
+    },
+    {
+     "dayPhase": "night",
+     "socketId": "socket.pearl-lots.idle-n2-home",
+     "purpose": "home"
+    }
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.evidence-lot-tally",
+   "kind": "marker",
+   "host": "s-tally",
+   "zone": "evidence",
+   "parcel": "parcel.pearl-lots.grading-ground",
+   "why": "The tally of the lots on the grading table, the deep lots entered in a second hand.",
+   "fills": [
+    "promise.pearl-lots.evidence-pearl-lot-tally"
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.container-shell-stock",
+   "kind": "container",
+   "host": "s-barrel",
+   "containerClass": "barrel",
+   "fillRule": "authored",
+   "parcel": "parcel.pearl-lots.grading-ground",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.fishing-pole",
+      "count": 1
+     },
+     {
+      "item": "item.bucket",
+      "count": 1
+     },
+     {
+      "item": "item.turtle-shell-bowl",
+      "count": 1
+     }
+    ],
+    "storyNote": "Spare poles, a bucket and a shell bowl the families share at the grading."
+   },
+   "valueTier": "low",
+   "owner": "parcel.pearl-lots.grading-ground"
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.container-deep-lot-pearl",
+   "kind": "container",
+   "host": "s-bask4",
+   "containerClass": "basket",
+   "fillRule": "authored",
+   "parcel": "parcel.pearl-lots.grading-ground",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.oliis-pearl",
+      "count": 1
+     }
+    ],
+    "storyNote": "The best pearl of the season from the deep lots, kept back from the grading."
+   },
+   "valueTier": "high",
+   "owner": "parcel.pearl-lots.grading-ground"
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.underwater-livelihood",
+   "kind": "marker",
+   "at": [
+    5470.0,
+    4336.0
+   ],
+   "zone": "work",
+   "parcel": "parcel.pearl-lots.grading-ground",
+   "why": "Lot one on the bed under the raft, where a diver works her family's lot: the quests' underwater livelihood.",
+   "fills": [
+    "promise.pearl-lots.provision-underwater-livelihood",
+    "promise.pearl-lots.underwater-access"
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.tender-boat",
+   "kind": "marker",
+   "host": "t-raft",
+   "zone": "work",
+   "parcel": "parcel.pearl-lots.grading-ground",
+   "why": "The surface tender's raft over lot one, the boat that shows a passer-by where the place is.",
+   "fills": [
+    "promise.pearl-lots.thing-boat"
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.scene-deep-lot-dive",
+   "kind": "marker",
+   "at": [
+    5475.0,
+    4410.0
+   ],
+   "zone": "scene",
+   "parcel": "parcel.pearl-lots.grading-ground",
+   "why": "The deep lot under the rowboat, where the divers stay down longest.",
+   "fills": [
+    "promise.pearl-lots.scene-pearl-deep-lot-dive"
+   ]
+  },
+  {
+   "op": "note",
+   "uid": "h-canoe",
+   "text": "16x: afloat, not on a pad. A buoyant hull seats at its float line (keel at waterLevelM - draughtM, upright in its kit rest pose) and ships from watercraft-v1, scoped water-zero; the pad policy fitted it to the bed (owner: canoe upended, half sunk). Held 0.93 m off the jetty end by an anchor line to the bed (tether seabed): the jetty is a run piece no rope can name. An untethered hull drifts."
+  },
+  {
+   "op": "note",
+   "uid": "b-a",
+   "text": "16x: a keg buoy seats at its float line (keel at waterLevelM - draughtM) so it rides its seabed rope at rest, not 0.38 m under (gate water.buoyantRest)."
+  },
+  {
+   "op": "note",
+   "uid": "b-b",
+   "text": "16x: a keg buoy seats at its float line (keel at waterLevelM - draughtM) so it rides its seabed rope at rest, not 0.38 m under (gate water.buoyantRest)."
+  },
+  {
+   "op": "note",
+   "uid": "b-c",
+   "text": "16x: a keg buoy seats at its float line (keel at waterLevelM - draughtM) so it rides its seabed rope at rest, not 0.38 m under (gate water.buoyantRest)."
+  },
+  {
+   "op": "note",
+   "uid": "b-d",
+   "text": "16x: a keg buoy seats at its float line (keel at waterLevelM - draughtM) so it rides its seabed rope at rest, not 0.38 m under (gate water.buoyantRest)."
+  },
+  {
+   "op": "note",
+   "uid": "j-lamp",
+   "text": "16x craft: re-hung on the rack's lower crossbar (min_h 1.4). The 2.03 m seat put the lantern 0.10 m inside the rack (host clearance); the rack offers no clear seat from 1.6 m up."
+  },
+  {
+   "op": "note",
+   "uid": "t-row",
+   "text": "16x craft: the working rowboat floats on an anchor line to the bed (tether seabed): untethered it drifted off. Its basket and bucket ride it."
+  },
+  {
+   "op": "note",
+   "uid": "t-raft",
+   "text": "16x craft: the grading raft floats (ferry-raft, watercraft-v1 water-zero) on a seabed anchor line sized depth plus the measured wave crest; its basket and net ride it."
+  },
+  {
+   "op": "socket",
+   "id": "fill.s-bask6",
+   "kind": "container",
+   "host": "place.saxhleel-coast.pearl-lots.parcel.pearl-lots.grading-ground.assembly.s-bask6",
+   "containerClass": "basket",
+   "fillRule": "blanket.pearl-diver-stores",
+   "why": "placed container mudmother:gv_meshes/argoniannest/basketfull: class default fill",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.turtle-shell-bowl",
+      "count": 1
+     },
+     {
+      "item": "item.fishing-pole",
+      "count": 1
+     },
+     {
+      "item": "item.bucket",
+      "count": 1
+     },
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     }
+    ],
+    "frozenFrom": "blanket.pearl-diver-stores"
+   },
+   "valueTier": "moderate",
+   "owner": "parcel.pearl-lots.grading-ground"
+  },
+  {
+   "op": "socket",
+   "id": "fill.s-bask7",
+   "kind": "container",
+   "host": "place.saxhleel-coast.pearl-lots.parcel.pearl-lots.grading-ground.assembly.s-bask7",
+   "containerClass": "basket",
+   "fillRule": "blanket.fish-basket",
+   "why": "placed container mudmother:gv_meshes/argoniannest/basketfull: class default fill",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.trodh",
+      "count": 4
+     },
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     },
+     {
+      "item": "item.fishing-pole",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.fish-basket"
+   },
+   "valueTier": "trivial",
+   "owner": "parcel.pearl-lots.grading-ground"
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.plant-1",
+   "host": "parcel.pearl-lots.grading-ground.assembly.s-heap6",
+   "kind": "plant",
+   "plantClass": "pearl-clam",
+   "valueTier": "high",
+   "owner": "parcel.pearl-lots.grading-ground",
+   "why": "A clam of the shallows. One in many holds a pearl. It grows a new one. (jokerine:_seaside/clam_large, place.saxhleel-coast.pearl-lots.parcel.pearl-lots.grading-ground.assembly.s-heap6)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.plant-2",
+   "host": "parcel.pearl-lots.grading-ground.assembly.s-heap1",
+   "kind": "plant",
+   "plantClass": "pearl-clam",
+   "valueTier": "high",
+   "owner": "parcel.pearl-lots.grading-ground",
+   "why": "A clam of the shallows. One in many holds a pearl. It grows a new one. (jokerine:_seaside/clam_large, place.saxhleel-coast.pearl-lots.parcel.pearl-lots.grading-ground.assembly.s-heap1)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.plant-3",
+   "at": [
+    5363.75,
+    4287.4
+   ],
+   "kind": "plant",
+   "plantClass": "hanging-moss",
+   "valueTier": "trivial",
+   "owner": null,
+   "why": "Hanging moss on the trees here; a forager cuts it and it grows back. (bmv:landscape/plants/florahangingmoss02aaa, chunk_11_9_vegetation.bin#26:63)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.den-osheeja-gar",
+   "kind": "fauna",
+   "at": [
+    5493.5,
+    4323.3
+   ],
+   "zone": "den",
+   "species": "creature.osheeja-gar",
+   "headcount": 6,
+   "why": "Osheeja Gar den over the shell beds. A slow river pool rich in small fish.",
+   "dangerBand": "D1"
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.den-swamp-jelly",
+   "kind": "fauna",
+   "at": [
+    5330.4,
+    4281.6
+   ],
+   "zone": "den",
+   "species": "creature.swamp-jelly",
+   "headcount": 3,
+   "why": "Swamp Jelly den over the buoys. Still sheltered water where it drifts low.",
+   "dangerBand": "D1"
+  },
+  {
+   "op": "place",
+   "uid": "x-cache",
+   "asset": "mudmother:gv_meshes/argoniannest/basketfull",
+   "at": [
+    5472.0,
+    4421.0
+   ],
+   "yaw": 110.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "bind",
+   "uid": "x-cache",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.cache-deep-lot",
+   "kind": "container",
+   "host": "x-cache",
+   "containerClass": "hidden-cache",
+   "fillRule": "authored",
+   "owner": null,
+   "parcel": "parcel.pearl-lots.grading-ground",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.deep-lot-pearl",
+      "count": 1
+     },
+     {
+      "item": "item.small-pearl",
+      "count": 4
+     }
+    ],
+    "storyNote": "A deep-lot diver kept her best pearl out of the tally. She weighted the basket on the bed by the fourth lot to fetch it later. She drowned on the deep lots that season. The basket is still there."
+   },
+   "valueTier": "high",
+   "reach": "dive",
+   "effort": 3,
+   "reachVia": "ld-edge",
+   "cue": {
+    "placement": "ld-skull",
+    "text": "A human skull lies among the clams by the fourth lot's cairn. The basket rests on the bed a short swim west of it, 8 m down."
+   },
+   "why": "The flat bed just west of the fourth and deepest lot, 8 m down past the drop-off: only a diver reaches it."
+  },
+  {
+   "op": "place",
+   "uid": "g-chair-e",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/wickerchair01",
+   "at": [
+    5390.0,
+    4299.5
+   ],
+   "yaw": 270.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "g-chair-e",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "g-chair-n",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/wickerchair01",
+   "at": [
+    5387.7,
+    4297.9
+   ],
+   "yaw": 180.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "g-chair-n",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "g-chair-s",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/wickerchair01",
+   "at": [
+    5388.5,
+    4301.299
+   ],
+   "yaw": 0.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "g-chair-s",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "g-chair-w",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/wickerchair01",
+   "at": [
+    5387.0,
+    4300.6
+   ],
+   "yaw": 90.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "g-chair-w",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "note",
+   "uid": "g-chair-n",
+   "text": "north of the table, 1.6 m off and 0.8 m west of centre, facing it; nearer or east the seated body met the table or walked out through g-chair-e (spot_solids)"
+  },
+  {
+   "op": "place",
+   "uid": "s-grind",
+   "asset": "vanilla:clutter/blacksmith/blacksmithsharpeningwheelstatic",
+   "at": [
+    5397.7,
+    4297.4
+   ],
+   "yaw": 0.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "s-grind",
+   "kind": "assembly",
+   "id": "parcel.pearl-lots.grading-ground",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "note",
+   "uid": "s-grind",
+   "text": "2.9b station: the divers keep their shell knives keen at a wheel beside the drying rack, where the catch is opened and graded; east of the rack, clear of the jetty footpath to the south."
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.station-grindstone",
+   "kind": "station",
+   "stationClass": "grindstone",
+   "host": "s-grind",
+   "parcel": "parcel.pearl-lots.grading-ground",
+   "why": "A diver whets the shell knife here before opening the day's catch."
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.idle-seat-g-chair-e",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "g-chair-e",
+   "parcel": "parcel.pearl-lots.grading-ground",
+   "seatHeightM": 0.35,
+   "why": "A seat at a chair where people take the midday meal."
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.idle-seat-g-chair-n",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "g-chair-n",
+   "parcel": "parcel.pearl-lots.grading-ground",
+   "seatHeightM": 0.35,
+   "why": "A seat at a chair where people take the midday meal."
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.idle-seat-g-chair-s",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "g-chair-s",
+   "parcel": "parcel.pearl-lots.grading-ground",
+   "seatHeightM": 0.35,
+   "why": "A seat at a chair where people take the midday meal."
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.idle-seat-g-chair-w",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "g-chair-w",
+   "parcel": "parcel.pearl-lots.grading-ground",
+   "seatHeightM": 0.35,
+   "why": "A seat at a chair where people take the midday meal."
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.plant-marshweed-1",
+   "at": [
+    5398.75,
+    4301.55
+   ],
+   "kind": "plant",
+   "plantClass": "marshweed",
+   "valueTier": "trivial",
+   "owner": null,
+   "why": "2.9b-p: Marshweed grows in a tuft at the water's edge; a forager cuts a stalk to smoke and it grows back. (bmv:landscape/trees/reedsmall2, chunk_11_9_vegetation.bin#74:114; fauna-hazards.md:99)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.plant-hanging-moss-1",
+   "at": [
+    5394.93,
+    4284.28
+   ],
+   "kind": "plant",
+   "plantClass": "hanging-moss",
+   "valueTier": "trivial",
+   "owner": null,
+   "why": "2.9b-p: Blue moss hangs here from the canopy; a forager pulls a strand and it grows back. (bmv:landscape/plants/florahangingmoss02aaa, chunk_11_9_vegetation.bin#26:19; fauna-hazards.md:99)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.plant-hanging-moss-2",
+   "at": [
+    5375.38,
+    4284.88
+   ],
+   "kind": "plant",
+   "plantClass": "hanging-moss",
+   "valueTier": "trivial",
+   "owner": null,
+   "why": "2.9b-p: Blue moss hangs here from the canopy; a forager pulls a strand and it grows back. (bmv:landscape/plants/florahangingmoss02aaa, chunk_11_9_vegetation.bin#26:65; fauna-hazards.md:99)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.plant-marshweed-2",
+   "at": [
+    5345.56,
+    4327.55
+   ],
+   "kind": "plant",
+   "plantClass": "marshweed",
+   "valueTier": "trivial",
+   "owner": null,
+   "why": "2.9b-p: Marshweed grows in a tuft at the water's edge; a forager cuts a stalk to smoke and it grows back. (bmv:landscape/trees/reedsmall2, chunk_11_9_vegetation.bin#74:117; fauna-hazards.md:99)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.plant-somnalius-fern-1",
+   "at": [
+    5346.0,
+    4316.62
+   ],
+   "kind": "plant",
+   "plantClass": "somnalius-fern",
+   "valueTier": "trivial",
+   "owner": null,
+   "why": "2.9b-p: A somnalius fern grows here in the marsh shade; a forager cuts a frond and it grows back. (bmv:landscape/plants/fern01, chunk_11_9_vegetation.bin#24:6; fauna-hazards.md:98)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.plant-somnalius-fern-2",
+   "at": [
+    5420.37,
+    4253.42
+   ],
+   "kind": "plant",
+   "plantClass": "somnalius-fern",
+   "valueTier": "trivial",
+   "owner": null,
+   "why": "2.9b-p: A somnalius fern grows here in the marsh shade; a forager cuts a frond and it grows back. (bmv:landscape/plants/braken, chunk_11_9_vegetation.bin#9:8; fauna-hazards.md:98)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.plant-marshweed-3",
+   "at": [
+    5326.48,
+    4344.86
+   ],
+   "kind": "plant",
+   "plantClass": "marshweed",
+   "valueTier": "trivial",
+   "owner": null,
+   "why": "2.9b-p: Marshweed grows in a tuft at the water's edge; a forager cuts a stalk to smoke and it grows back. (bmv:landscape/trees/reedsmall2, chunk_11_9_vegetation.bin#74:127; fauna-hazards.md:99)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.plant-somnalius-fern-3",
+   "at": [
+    5420.99,
+    4217.29
+   ],
+   "kind": "plant",
+   "plantClass": "somnalius-fern",
+   "valueTier": "trivial",
+   "owner": null,
+   "why": "2.9b-p: A somnalius fern grows here in the marsh shade; a forager cuts a frond and it grows back. (bmv:landscape/plants/braken, chunk_11_9_vegetation.bin#9:35; fauna-hazards.md:98)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.lot-jetty",
+   "kind": "mooring",
+   "mooringKind": "landing",
+   "accepts": [
+    "dugout",
+    "skiff"
+   ],
+   "capacity": 2,
+   "at": [
+    5425.74,
+    4297.2
+   ],
+   "why": "The lot divers' jetty, where the boats come in from the numbered beds.",
+   "serviceLink": null,
+   "minDepthDryM": 1.44,
+   "waterId": "body.ocean"
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.lot-mooring-1",
+   "kind": "mooring",
+   "mooringKind": "mooring",
+   "accepts": [
+    "skiff"
+   ],
+   "capacity": 1,
+   "at": [
+    5403.9,
+    4299.2
+   ],
+   "why": "The diving boats lie at the lot holders' ties along the jetty.",
+   "owner": "npc.saxhleel-coast.pearl-lots.n2",
+   "serviceLink": null,
+   "minDepthDryM": 2.04,
+   "waterId": "body.ocean"
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.lot-mooring-2",
+   "kind": "mooring",
+   "mooringKind": "mooring",
+   "accepts": [
+    "skiff"
+   ],
+   "capacity": 1,
+   "at": [
+    5411.18,
+    4297.2
+   ],
+   "why": "The diving boats lie at the lot holders' ties along the jetty.",
+   "owner": "npc.saxhleel-coast.pearl-lots.n2",
+   "serviceLink": null,
+   "minDepthDryM": 0.24,
+   "waterId": "body.ocean"
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.lot-mooring-3",
+   "kind": "mooring",
+   "mooringKind": "mooring",
+   "accepts": [
+    "skiff"
+   ],
+   "capacity": 1,
+   "at": [
+    5418.46,
+    4297.2
+   ],
+   "why": "The diving boats lie at the lot holders' ties along the jetty.",
+   "owner": "npc.saxhleel-coast.pearl-lots.n2",
+   "serviceLink": null,
+   "minDepthDryM": 1.08,
+   "waterId": "body.ocean"
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.lot-mooring-4",
+   "kind": "mooring",
+   "mooringKind": "mooring",
+   "accepts": [
+    "skiff"
+   ],
+   "capacity": 1,
+   "at": [
+    5433.1,
+    4297.2
+   ],
+   "why": "The diving boats lie at the lot holders' ties along the jetty.",
+   "owner": "npc.saxhleel-coast.pearl-lots.n2",
+   "serviceLink": null,
+   "minDepthDryM": 1.56,
+   "waterId": "body.ocean"
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.lot-beach",
+   "kind": "mooring",
+   "mooringKind": "beach",
+   "accepts": [
+    "dugout"
+   ],
+   "capacity": 1,
+   "at": [
+    5393.55,
+    4315.77
+   ],
+   "why": "Divers pull their canoes up on the bar's inner shore.",
+   "serviceLink": null,
+   "minDepthDryM": 0.96,
+   "waterId": "body.ocean"
+  },
+  {
+   "op": "socket",
+   "id": "socket.pearl-lots.sea-hull-mooring",
+   "kind": "mooring",
+   "mooringKind": "mooring",
+   "accepts": [
+    "sea-hull"
+   ],
+   "capacity": 1,
+   "at": [
+    5437.8,
+    4337.5
+   ],
+   "why": "Clear deep water inside the offshore bar, where a sea hull lies at anchor over the lots.",
+   "owner": "npc.saxhleel-coast.pearl-lots.n2",
+   "serviceLink": null,
+   "minDepthDryM": 4.44,
+   "waterId": "body.ocean"
+  }
+ ]
+}

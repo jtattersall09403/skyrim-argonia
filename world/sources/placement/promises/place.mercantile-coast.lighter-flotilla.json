@@ -1,0 +1,464 @@
+{
+ "schemaVersion": 1,
+ "placeId": "place.mercantile-coast.lighter-flotilla",
+ "generator": "python3 -m worldgen.blueprint_promises --id <place-id> --write (decision 0104); never hand-edit a row but its `unfilled`, `filledBy` or `confirmed` block",
+ "derivedFrom": [
+  {
+   "file": "world/sources/catalogue/places-mercantile-coast.json",
+   "sha256": "49c35a53bc86ae909fb0fdb02f18fc13cf83d179936017ad2a304c0e5366b857"
+  },
+  {
+   "file": "world/sources/quests/local-mercantile-coast.json",
+   "sha256": "296d8045914f6019cf6c5cb825888c601b37b3d922a0cfa3ab3f534077e3d19f"
+  },
+  {
+   "file": "world/sources/quests/quests-factions.json",
+   "sha256": "19b0494ee4daed3b000b61705331ce51a620045356a14a9895a5c79287050bc1"
+  }
+ ],
+ "promises": [
+  {
+   "id": "promise.lighter-flotilla.marks-crew-standing",
+   "kind": "socketBucket",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.lighter-flotilla].sockets.marks[marks.lighter-flotilla.crew-standing]"
+   },
+   "text": "Lighter Flotilla has the marks socket marks.lighter-flotilla.crew-standing.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.lighter-flotilla.occupant-flotilla-speaker",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.lighter-flotilla].notableNpcSlots[flotilla-speaker]"
+   },
+   "text": "Flotilla speaker lives and works at Lighter Flotilla.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.lighter-flotilla.occupant-n1",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.lighter-flotilla].contents.npcs[n1]"
+   },
+   "text": "Lighter Flotilla has band crew occupants.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.lighter-flotilla.occupant-n2",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.lighter-flotilla].contents.npcs[n2]"
+   },
+   "text": "Lighter Flotilla has single quest-giver occupants.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.lighter-flotilla.post-hire",
+   "kind": "socketBucket",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.lighter-flotilla].sockets.post[post.lighter-flotilla.hire]"
+   },
+   "text": "Lighter Flotilla has the post socket post.lighter-flotilla.hire.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.lighter-flotilla.prose-playerpurpose-hook",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.lighter-flotilla].playerPurpose.hook"
+   },
+   "text": "The crews who move every cargo in the bay live aboard these hulls. Their living comes from the tariff, and they will talk about it.",
+   "confirmed": {
+    "sha": "8341d21a13df",
+    "note": "Four crew hulls moored along the pier are the homes; post.lighter-flotilla.hire and the speaker's boat h-n02 carry the talk."
+   }
+  },
+  {
+   "id": "promise.lighter-flotilla.prose-questhooks-opportunity",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.lighter-flotilla].questHooks.opportunity"
+   },
+   "text": "A courier can carry the licensing offer between the council and the crews. The crews can stop the port.",
+   "confirmed": {
+    "sha": "5e7aed85726b",
+    "note": "Speaker on h-n02 (quest-giver socket) and the pier the courier walks between bank and hulls."
+   }
+  },
+  {
+   "id": "promise.lighter-flotilla.prose-vibe-approach",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.lighter-flotilla].vibe.approach"
+   },
+   "text": "From the bank the flotilla looks like a moored fleet. A timber pier runs between the bows and the market rafts.",
+   "confirmed": {
+    "sha": "783535ae6784",
+    "note": "Approach on the landing stage shows the pier with hull bows on one side and the market rafts on the other.",
+    "ids": [
+     "pier-sol2",
+     "h-s00",
+     "r00",
+     "land"
+    ]
+   }
+  },
+  {
+   "id": "promise.lighter-flotilla.prose-vibe-condition",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.lighter-flotilla].vibe.condition"
+   },
+   "text": "Every hull is afloat and in use. Few of the hulls would pass a sea survey. The moorings have not shifted in years.",
+   "confirmed": {
+    "sha": "aae01ab1694c",
+    "note": "Every hull is a wet buoyant water piece moored to the pier; old vanilla tarred hulls."
+   }
+  },
+  {
+   "id": "promise.lighter-flotilla.prose-vibe-materials",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.lighter-flotilla].vibe.materials"
+   },
+   "text": "A timber pier on piles runs out from the bank. Tarred working hulls lie bow-in along its south side, some with their sails furled on the yards. Plank ferries are moored singly along its north side. A short landing stage runs from the end of the Lilmoth track over the reed shallows to the pier foot.",
+   "confirmed": {
+    "sha": "a724396589e6",
+    "note": "Pier on piles; hulls bow-in on the south side; rafts singly along the pier edge, afloat and stepped down onto; landing stage over the reed shallows.",
+    "ids": [
+     "pier-sol2",
+     "h-s00",
+     "r00",
+     "land"
+    ]
+   }
+  },
+  {
+   "id": "promise.lighter-flotilla.prose-vibe-mood",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.lighter-flotilla].vibe.mood"
+   },
+   "text": "Independent and orderly.",
+   "confirmed": {
+    "sha": "fea1423f3b06",
+    "note": "Two straight rows at even spacing, one street between them: orderly; independence is the why block's tariff story."
+   }
+  },
+  {
+   "id": "promise.lighter-flotilla.prose-vibe-palette",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.lighter-flotilla].vibe.palette"
+   },
+   "text": "The colours of the flotilla are tarred hulls, pale furled canvas and brown estuary water.",
+   "confirmed": {
+    "sha": "07edb11f584b",
+    "note": "Vanilla tarred hull textures, furled sail meshes, estuary water shader."
+   }
+  },
+  {
+   "id": "promise.lighter-flotilla.prose-vibe-senses",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.lighter-flotilla].vibe.senses"
+   },
+   "text": "Gangplanks and gear knock all night. Rigging creaks. Crews cook on deck. The air smells of tar, bilge and estuary.",
+   "confirmed": {
+    "sha": "d24612bc2383",
+    "note": "Planks pl-r* knock on the rafts; hulls rigging; cookfire props on deck; ambience is a later phase sound system."
+   }
+  },
+  {
+   "id": "promise.lighter-flotilla.prose-vibe-signaturefeature",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.lighter-flotilla].vibe.signatureFeature"
+   },
+   "text": "Four working hulls are moored as houses along one timber pier. The market is held on four plank-ferry rafts on the other side of the pier. The Alten Meerhleel trade ship lies alongside the pier head. A lighter lies alongside the pier's north side.",
+   "confirmed": {
+    "sha": "2ed6b75284f6",
+    "note": "Four hulls (h-n00, h-n02, h-s00, h-s01), rafts r00-r03, tradeship at the pier head, lighter alongside pier-sol10 on the north side.",
+    "ids": [
+     "h-n00",
+     "h-n02",
+     "h-s00",
+     "h-s01",
+     "r00",
+     "tradeship",
+     "lighter"
+    ]
+   }
+  },
+  {
+   "id": "promise.lighter-flotilla.prose-vibe-silhouette",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.lighter-flotilla].vibe.silhouette"
+   },
+   "text": "The flotilla is a timber pier off the east bank of Lilmoth's ground, with a line of masts along its south side. The tall trade ship lies alongside the pier head.",
+   "confirmed": {
+    "sha": "2da3391789c3",
+    "note": "The pier and the landing stage carry the dock silhouette.",
+    "ids": [
+     "pier-sol2",
+     "land"
+    ]
+   }
+  },
+  {
+   "id": "promise.lighter-flotilla.prose-why-founding",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.lighter-flotilla].why.founding"
+   },
+   "text": "Lilmoth stands on firm ground near shallow water, so large ships cannot dock. Crews lighter goods ashore from the large ships. The lighter crews live aboard their boats at permanent moorings. The moorings lie beside the lighter quay, on the way out to the anchorage.",
+   "confirmed": {
+    "sha": "6831aa335579",
+    "note": "Hulls and the lighter lie alongside the pier, reached from the landing stage.",
+    "ids": [
+     "h-n00",
+     "lighter",
+     "pier-sol2",
+     "land"
+    ]
+   }
+  },
+  {
+   "id": "promise.lighter-flotilla.prose-why-occupantsmotive",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.lighter-flotilla].why.occupantsMotive"
+   },
+   "text": "The lighter crews control the link between deep-water hulls and the city. The crews know what that link is worth.",
+   "confirmed": {
+    "sha": "89f564724d99",
+    "note": "The pier is the only link between the tradeship/lighter and the Lilmoth track."
+   }
+  },
+  {
+   "id": "promise.lighter-flotilla.prose-why-pressures",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.lighter-flotilla].why.pressures"
+   },
+   "text": "The council tried to license lightering. The attempt caused a two-week stoppage. Neither the council nor the crews want to repeat the stoppage.",
+   "confirmed": {
+    "sha": "cb0eb5b7dd72",
+    "note": "Backstory for LM08; carried by the speaker socket and post.lighter-flotilla.hire."
+   }
+  },
+  {
+   "id": "promise.lighter-flotilla.prose-why-siteadvantages",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.lighter-flotilla].why.siteAdvantages"
+   },
+   "text": "The moorings lie in sheltered estuary water off the east bank of Lilmoth's ground, beside the lighter quay. The moorings are out of the tariff line.",
+   "confirmed": {
+    "sha": "91ca95884a18",
+    "note": "The pier reaches the deep berths.",
+    "ids": [
+     "pier-sol2"
+    ]
+   }
+  },
+  {
+   "id": "promise.lighter-flotilla.prose-why-wouldchangeif",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.lighter-flotilla].why.wouldChangeIf"
+   },
+   "text": "A dredged deep-water channel would end the flotilla. The channel would also end the city's hold on its own trade.",
+   "confirmed": {
+    "sha": "033e187947df",
+    "note": "Counterfactual; the shallow bed that keeps ships off (tradeship and lighter alongside the pier) is built."
+   }
+  },
+  {
+   "id": "promise.lighter-flotilla.provision-tg04-anchor",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.lighter-flotilla].questHooks.provisions[quest.provision.tg04-anchor]"
+   },
+   "text": "Lighter Flotilla holds what quest provision quest.provision.tg04-anchor needs.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.lighter-flotilla.quest-lm08",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-mercantile-coast.json",
+    "path": "quest[LM08]"
+   },
+   "text": "LM08 Licensing the Lighters: The council wants the lighter crews licensed. The lighter crews want the tariff opened. Each side wants its offer carried to the other.",
+   "confirmed": {
+    "sha": "8d8e4fde040f",
+    "note": "Speaker socket on h-n02 and hire post carry the two offers."
+   }
+  },
+  {
+   "id": "promise.lighter-flotilla.quest-lm23",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-mercantile-coast.json",
+    "path": "quest[LM23]"
+   },
+   "text": "LM23 Cargo Off the Ledger: Cargo is lightered ashore at night. The cargo is settled at the dice tables, not at the quay.",
+   "confirmed": {
+    "sha": "e7d1a78d88f1",
+    "note": "Lighter alongside the pier's north side and rafts with goods carry the night cargo."
+   }
+  },
+  {
+   "id": "promise.lighter-flotilla.quest-tg04",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/quests-factions.json",
+    "path": "quest[TG04]"
+   },
+   "text": "TG04 The House That Floats: A wealthy home moves between moorings. The burglary depends on navigation and timing.",
+   "confirmed": {
+    "sha": "6e8374dec969",
+    "note": "Four moored hulls incl. h-n02 the wealthy home; quest.provision.tg04-anchor filled."
+   }
+  },
+  {
+   "id": "promise.lighter-flotilla.safe-interior",
+   "kind": "safeInterior",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.lighter-flotilla].classification.class"
+   },
+   "text": "Lighter Flotilla has one safe interior (danger D0, quests 20 section 12).",
+   "unfilled": null
+  },
+  {
+   "id": "promise.lighter-flotilla.scene-crew-vote",
+   "kind": "socketBucket",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.lighter-flotilla].sockets.scene[scene.lighter-flotilla.crew-vote]"
+   },
+   "text": "Lighter Flotilla has the scene socket scene.lighter-flotilla.crew-vote.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.lighter-flotilla.service-ferry",
+   "kind": "service",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.lighter-flotilla].services[ferry]"
+   },
+   "text": "Lighter Flotilla offers the ferry service.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.lighter-flotilla.service-lodging",
+   "kind": "service",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.lighter-flotilla].services[lodging]"
+   },
+   "text": "Lighter Flotilla offers the lodging service.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.lighter-flotilla.service-trader",
+   "kind": "service",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.lighter-flotilla].services[trader]"
+   },
+   "text": "Lighter Flotilla offers the trader service.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.lighter-flotilla.thing-boat",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.lighter-flotilla].why.founding"
+   },
+   "text": "Lighter Flotilla shows the boat its record names.",
+   "unfilled": null,
+   "filledBy": [
+    "h-n00",
+    "h-n02",
+    "h-s00",
+    "h-s01",
+    "tradeship",
+    "lighter"
+   ]
+  },
+  {
+   "id": "promise.lighter-flotilla.thing-dock",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.lighter-flotilla].why.founding"
+   },
+   "text": "Lighter Flotilla shows the dock its record names.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.lighter-flotilla.thing-ferry",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.lighter-flotilla].vibe.materials"
+   },
+   "text": "Lighter Flotilla shows the ferry its record names.",
+   "unfilled": null,
+   "filledBy": [
+    "r00",
+    "r01",
+    "r02",
+    "r03",
+    "lighter"
+   ]
+  },
+  {
+   "id": "promise.lighter-flotilla.thing-plank-crossing",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.lighter-flotilla].vibe.materials"
+   },
+   "text": "Lighter Flotilla shows the plank crossing its record names.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.lighter-flotilla.travel-station",
+   "kind": "travelStation",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.lighter-flotilla].travelStation"
+   },
+   "text": "Lighter Flotilla is a travel station (lighter, boat) to 2 destinations.",
+   "unfilled": null
+  }
+ ]
+}

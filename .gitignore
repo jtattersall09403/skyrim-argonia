@@ -1,0 +1,37 @@
+# build outputs and private material (decisions 0003, 0014)
+out/
+build/
+private/
+.venv/
+node_modules/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+bin/
+obj/
+*.wine/
+tmp/
+# game and mod files never enter the repo (decision 0003); the no-assets guard is the gate, this is the first net
+*.esm
+*.esp
+*.esl
+*.bsa
+*.ba2
+*.nif
+*.dds
+*.hkx
+*.tri
+*.fuz
+*.xwm
+*.wav
+*.fsb
+*.swf
+*.gfx
+*.pex
+*.seq
+*.npy
+*.lip
+*.btr
+*.bto
+*.psc.bak

@@ -1,0 +1,38 @@
+{
+ "schemaVersion": 1,
+ "domain": "dialogue-pool",
+ "topicClass": "service",
+ "entries": [
+  {
+   "schemaVersion": 1,
+   "id": "pool.fallback.service",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {},
+   "fallbackFor": "service",
+   "words": "I cannot help you with that.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.hearth-heal.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.hearth-heal"
+   },
+   "words": "Hearth Heal is a small mending that closes cuts and eases bruises. The spring-keeper teaches it for a price.",
+   "available": [],
+   "onDelivered": [
+    {
+     "offerTeach": "hearth-heal"
+    }
+   ],
+   "factIds": [],
+   "links": []
+  }
+ ]
+}

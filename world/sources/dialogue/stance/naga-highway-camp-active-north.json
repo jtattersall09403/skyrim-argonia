@@ -1,0 +1,593 @@
+{
+ "schemaVersion": 1,
+ "domain": "stance",
+ "_": "First-draft stance and voice sheets composed down the culture chain; the place review sets each row and marks it reviewed.",
+ "placeId": "place.naga-kur-deeps.naga-highway-camp-active-north",
+ "generator": "worldgen.dialogue_compose",
+ "derivedFrom": [
+  "world/sources/dialogue/cultures/",
+  "world/sources/registries/npcs.json"
+ ],
+ "entries": [
+  {
+   "personId": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+   "chain": [
+    "culture.province.black-marsh",
+    "culture.region.naga-kur-deeps",
+    "culture.people.argonian-tribal",
+    "culture.faction.tribeless-naga",
+    "culture.settlement.naga-highway-camp-active-north"
+   ],
+   "topics": {
+    "place": {
+     "lean": 1,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": null
+    },
+    "work": {
+     "lean": 1,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": null
+    },
+    "people": {
+     "lean": -1,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "faction": {
+     "lean": -1,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": null
+    },
+    "hist": {
+     "lean": 2,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "empire": {
+     "lean": -1,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "trade": {
+     "lean": 1,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": {
+      "lean": 2,
+      "reason": "She cuts a stick for every load and keeps the count; the camp lives on what the sticks say it took."
+     }
+    },
+    "danger": {
+     "lean": 0,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": null
+    },
+    "rumour": {
+     "lean": 0,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": null
+    },
+    "directions": {
+     "lean": 0,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": null
+    }
+   },
+   "voice": {
+    "quirk": "Counts in notches: says how many notches a thing is worth before she answers.",
+    "chatter": "rambling",
+    "answerLength": {
+     "topic": {
+      "min": 6,
+      "max": 80
+     },
+     "newcomer": {
+      "min": 6,
+      "max": 80
+     },
+     "rumour": {
+      "min": 12,
+      "max": 80
+     }
+    },
+    "contractionRate": 0.4,
+    "addressTerm": "walker",
+    "favouriteSubject": "work",
+    "neverMentions": [
+     "Who among the neighbours took the An-Xileel's side in 4E 48.",
+     "That a family was once owned, or once owned others.",
+     "The price of a season's quiet.",
+     "Where the dead are taken.",
+     "The Chukka-Sei naming secrets."
+    ]
+   },
+   "reviewed": true
+  },
+  {
+   "personId": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+   "chain": [
+    "culture.province.black-marsh",
+    "culture.region.naga-kur-deeps",
+    "culture.people.argonian-tribal",
+    "culture.faction.tribeless-naga",
+    "culture.settlement.naga-highway-camp-active-north",
+    "culture.group.naga-highway-camp-active-north.band",
+    "culture.household.naga-highway-camp-active-north.hide-tent"
+   ],
+   "topics": {
+    "place": {
+     "lean": 1,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": null
+    },
+    "work": {
+     "lean": 0,
+     "from": "culture.group.naga-highway-camp-active-north.band",
+     "deviation": null
+    },
+    "people": {
+     "lean": -1,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "faction": {
+     "lean": -1,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": null
+    },
+    "hist": {
+     "lean": 2,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "empire": {
+     "lean": -1,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "trade": {
+     "lean": 1,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": null
+    },
+    "danger": {
+     "lean": 0,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": null
+    },
+    "rumour": {
+     "lean": 0,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": {
+      "lean": -1,
+      "reason": "She keeps the gate at night and has watched good loads pass on stretches the camp does not work. She wants every stretch worked and is wrong about why it is not."
+     }
+    },
+    "directions": {
+     "lean": 0,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": null
+    }
+   },
+   "voice": {
+    "quirk": "Talks to the two gate totems as if they were on watch with her.",
+    "chatter": "chatty",
+    "answerLength": {
+     "topic": {
+      "min": 6,
+      "max": 70
+     },
+     "newcomer": {
+      "min": 6,
+      "max": 75
+     },
+     "rumour": {
+      "min": 10,
+      "max": 70
+     }
+    },
+    "contractionRate": 0.5,
+    "addressTerm": "guest",
+    "favouriteSubject": "place",
+    "neverMentions": [
+     "Who among the neighbours took the An-Xileel's side in 4E 48.",
+     "That a family was once owned, or once owned others.",
+     "The price of a season's quiet.",
+     "Where the dead are taken.",
+     "The Chukka-Sei naming secrets."
+    ]
+   },
+   "reviewed": true
+  },
+  {
+   "personId": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+   "chain": [
+    "culture.province.black-marsh",
+    "culture.region.naga-kur-deeps",
+    "culture.people.argonian-tribal",
+    "culture.faction.tribeless-naga",
+    "culture.settlement.naga-highway-camp-active-north",
+    "culture.group.naga-highway-camp-active-north.band",
+    "culture.household.naga-highway-camp-active-north.hide-tent"
+   ],
+   "topics": {
+    "place": {
+     "lean": 1,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": null
+    },
+    "work": {
+     "lean": 0,
+     "from": "culture.group.naga-highway-camp-active-north.band",
+     "deviation": null
+    },
+    "people": {
+     "lean": -1,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "faction": {
+     "lean": -1,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": null
+    },
+    "hist": {
+     "lean": 2,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "empire": {
+     "lean": -1,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "trade": {
+     "lean": 1,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": {
+      "lean": 2,
+      "reason": "He smokes the hides and keeps the best for trade; he is the camp's seller."
+     }
+    },
+    "danger": {
+     "lean": 0,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": null
+    },
+    "rumour": {
+     "lean": 0,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": {
+      "lean": 1,
+      "reason": "A quiet stretch means more days at the racks. He likes that."
+     }
+    },
+    "directions": {
+     "lean": 0,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": null
+    }
+   },
+   "voice": {
+    "quirk": "Grades everything like a hide: thick, thin, cured, spoiled.",
+    "chatter": "rambling",
+    "answerLength": {
+     "topic": {
+      "min": 6,
+      "max": 80
+     },
+     "newcomer": {
+      "min": 6,
+      "max": 80
+     },
+     "rumour": {
+      "min": 12,
+      "max": 80
+     }
+    },
+    "contractionRate": 0.4,
+    "addressTerm": "buyer",
+    "favouriteSubject": "trade",
+    "neverMentions": [
+     "Who among the neighbours took the An-Xileel's side in 4E 48.",
+     "That a family was once owned, or once owned others.",
+     "The price of a season's quiet.",
+     "Where the dead are taken.",
+     "The Chukka-Sei naming secrets."
+    ]
+   },
+   "reviewed": true
+  },
+  {
+   "personId": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+   "chain": [
+    "culture.province.black-marsh",
+    "culture.region.naga-kur-deeps",
+    "culture.people.argonian-tribal",
+    "culture.faction.tribeless-naga",
+    "culture.settlement.naga-highway-camp-active-north",
+    "culture.group.naga-highway-camp-active-north.band",
+    "culture.household.naga-highway-camp-active-north.hide-tent"
+   ],
+   "topics": {
+    "place": {
+     "lean": 1,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": {
+      "lean": -1,
+      "reason": "He sleeps in turns in the hide tent, which fills with rack smoke. He likes the camp least of the band."
+     }
+    },
+    "work": {
+     "lean": 0,
+     "from": "culture.group.naga-highway-camp-active-north.band",
+     "deviation": null
+    },
+    "people": {
+     "lean": -1,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "faction": {
+     "lean": -1,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": null
+    },
+    "hist": {
+     "lean": 2,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "empire": {
+     "lean": -1,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "trade": {
+     "lean": 1,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": null
+    },
+    "danger": {
+     "lean": 0,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": null
+    },
+    "rumour": {
+     "lean": 0,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": null
+    },
+    "directions": {
+     "lean": 0,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": null
+    }
+   },
+   "voice": {
+    "quirk": "Always says how long he slept, or how long he did not.",
+    "chatter": "chatty",
+    "answerLength": {
+     "topic": {
+      "min": 6,
+      "max": 70
+     },
+     "newcomer": {
+      "min": 6,
+      "max": 75
+     },
+     "rumour": {
+      "min": 10,
+      "max": 70
+     }
+    },
+    "contractionRate": 0.5,
+    "addressTerm": "guest",
+    "favouriteSubject": "place",
+    "neverMentions": [
+     "Who among the neighbours took the An-Xileel's side in 4E 48.",
+     "That a family was once owned, or once owned others.",
+     "The price of a season's quiet.",
+     "Where the dead are taken.",
+     "The Chukka-Sei naming secrets."
+    ]
+   },
+   "reviewed": true
+  },
+  {
+   "personId": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+   "chain": [
+    "culture.province.black-marsh",
+    "culture.region.naga-kur-deeps",
+    "culture.people.argonian-tribal",
+    "culture.faction.tribeless-naga",
+    "culture.settlement.naga-highway-camp-active-north",
+    "culture.group.naga-highway-camp-active-north.band",
+    "culture.household.naga-highway-camp-active-north.hide-tent"
+   ],
+   "topics": {
+    "place": {
+     "lean": 1,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": null
+    },
+    "work": {
+     "lean": 0,
+     "from": "culture.group.naga-highway-camp-active-north.band",
+     "deviation": null
+    },
+    "people": {
+     "lean": -1,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "faction": {
+     "lean": -1,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": null
+    },
+    "hist": {
+     "lean": 2,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "empire": {
+     "lean": -1,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "trade": {
+     "lean": 1,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": null
+    },
+    "danger": {
+     "lean": 0,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": {
+      "lean": -1,
+      "reason": "She holds the bend by day and knaps flint there; from it she has found walkers Cut-Rope killed on the same tracks. The camp gets the blame. She is right to worry."
+     }
+    },
+    "rumour": {
+     "lean": 0,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": null
+    },
+    "directions": {
+     "lean": 0,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": null
+    }
+   },
+   "voice": {
+    "quirk": "Tests every blade with her thumb before she will speak of it.",
+    "chatter": "plain",
+    "answerLength": {
+     "topic": {
+      "min": 6,
+      "max": 55
+     },
+     "newcomer": {
+      "min": 6,
+      "max": 60
+     },
+     "rumour": {
+      "min": 8,
+      "max": 55
+     }
+    },
+    "contractionRate": 0.0,
+    "addressTerm": "ojel",
+    "favouriteSubject": "danger",
+    "neverMentions": [
+     "Who among the neighbours took the An-Xileel's side in 4E 48.",
+     "That a family was once owned, or once owned others.",
+     "The price of a season's quiet.",
+     "Where the dead are taken.",
+     "The Chukka-Sei naming secrets."
+    ]
+   },
+   "reviewed": true
+  },
+  {
+   "personId": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+   "chain": [
+    "culture.province.black-marsh",
+    "culture.region.naga-kur-deeps",
+    "culture.people.argonian-tribal",
+    "culture.faction.tribeless-naga",
+    "culture.settlement.naga-highway-camp-active-north",
+    "culture.group.naga-highway-camp-active-north.band",
+    "culture.household.naga-highway-camp-active-north.hide-tent"
+   ],
+   "topics": {
+    "place": {
+     "lean": 1,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": {
+      "lean": 2,
+      "reason": "The bend is his watch. He thinks it the best post in the deeps."
+     }
+    },
+    "work": {
+     "lean": 0,
+     "from": "culture.group.naga-highway-camp-active-north.band",
+     "deviation": null
+    },
+    "people": {
+     "lean": -1,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "faction": {
+     "lean": -1,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": null
+    },
+    "hist": {
+     "lean": 2,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "empire": {
+     "lean": -1,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "trade": {
+     "lean": 1,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": null
+    },
+    "danger": {
+     "lean": 0,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": {
+      "lean": 1,
+      "reason": "Nothing rounds the bend that he has not whistled first, so he shrugs at danger; Guul-Teeba's finds say otherwise."
+     }
+    },
+    "rumour": {
+     "lean": 0,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": null
+    },
+    "directions": {
+     "lean": 0,
+     "from": "culture.settlement.naga-highway-camp-active-north",
+     "deviation": null
+    }
+   },
+   "voice": {
+    "quirk": "Says how far off he first saw a walker.",
+    "chatter": "plain",
+    "answerLength": {
+     "topic": {
+      "min": 6,
+      "max": 55
+     },
+     "newcomer": {
+      "min": 6,
+      "max": 60
+     },
+     "rumour": {
+      "min": 8,
+      "max": 55
+     }
+    },
+    "contractionRate": 0.0,
+    "addressTerm": "walker",
+    "favouriteSubject": "place",
+    "neverMentions": [
+     "Who among the neighbours took the An-Xileel's side in 4E 48.",
+     "That a family was once owned, or once owned others.",
+     "The price of a season's quiet.",
+     "Where the dead are taken.",
+     "The Chukka-Sei naming secrets."
+    ]
+   },
+   "reviewed": true
+  }
+ ]
+}

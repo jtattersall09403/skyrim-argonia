@@ -1,0 +1,16 @@
+{
+ "schemaVersion": 2,
+ "cellId": "CIPHTBMHutInterior07",
+ "additions": [
+  {"id": "CIPHTBMHutInterior07:add:door-argoniancandle-01", "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01", "pos": [-1.9, 0.086, -0.8], "rotZDeg": 0, "zone": "door", "why": "Lights the floor inside the door."},
+  {"id": "CIPHTBMHutInterior07:add:store-argoniancandle-01", "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01", "pos": [-1.9, 0.086, 0.7], "rotZDeg": 0, "zone": "store", "why": "Lights the stores along the west wall."},
+  {"id": "CIPHTBMHutInterior07:add:work-argoniancandle-01", "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01", "pos": [0.6, 0.086, -1.6], "rotZDeg": 0, "zone": "work", "why": "Lights the work corner by the front wall."},
+  {"id": "CIPHTBMHutInterior07:add:hearth-argoniancandle-01", "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01", "pos": [0.9, 0.086, 0.3], "rotZDeg": 0, "zone": "hearth", "why": "Lights the middle of the room."},
+  {"id": "CIPHTBMHutInterior07:add:bed-argoniancandle-01", "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01", "pos": [1.1, 0.086, 1.0], "rotZDeg": 0, "zone": "bed", "why": "Lights the sleeping place at the back."},
+  {"id": "CIPHTBMHutInterior07:add:work-spinningwheel-01", "assetId": "kotm:argonia/clutter/spinningwheel", "pos": [1.4, 0.062, -0.9], "rotZDeg": 0, "zone": "work", "why": "The wheel that twists split cane into cord."},
+  {"id": "CIPHTBMHutInterior07:add:store-basketsmall-01", "assetId": "mudmother:gv_meshes/argoniannest/basketsmall01", "pos": [-1.6, 0.057, 0.4], "rotZDeg": 0, "zone": "store", "why": "Split cane waiting to be spun."},
+  {"id": "CIPHTBMHutInterior07:add:hearth-bone-01", "assetId": "mudmother:gv_meshes/argoniannest/argonianbone01", "pos": [1.2, 0.098, -0.4], "rotZDeg": 0, "zone": "hearth", "why": "A bone scraper used to strip the cane."},
+  {"id": "CIPHTBMHutInterior07:add:store-potterycup-01", "assetId": "mudmother:gv_meshes/argoniannest/potterycup", "pos": [-1.5, 0.057, -0.5], "rotZDeg": 0, "zone": "store", "why": "A water cup for wetting the cane."},
+  {"id": "CIPHTBMHutInterior07:add:bed-pillow-01", "assetId": "mudmother:gv_meshes/argoniannest/argonianpillow01", "pos": [1.3, 0.103, 1.2], "rotZDeg": 0, "zone": "bed", "why": "The cane-cutter's pillow on the sleeping place."}
+ ]
+}

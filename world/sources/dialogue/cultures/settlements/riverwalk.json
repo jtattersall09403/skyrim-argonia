@@ -1,0 +1,151 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "_": "Settlement sheet for Riverwalk (2.5c), from its place record.",
+ "entries": [
+  {
+   "id": "culture.settlement.riverwalk",
+   "level": "settlement",
+   "name": "Riverwalk",
+   "parent": "culture.region.dunmer-north",
+   "placeId": "place.dunmer-north.riverwalk",
+   "norms": [
+    {
+     "text": "The way across the cove is sounded with a pole every morning, before the first boat.",
+     "source": "world/sources/lore/extrapolation/settlement-register.md"
+    },
+    {
+     "text": "Boat crews are fed and given a bunk; the village grows no food of its own.",
+     "source": "world/sources/lore/extrapolation/settlement-register.md"
+    },
+    {
+     "text": "Boards on the plank walk are replaced one at a time, when they go soft.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Paying the toll to Thorn's or Hissmir's agent directly; it counts as taking a side.",
+     "source": "inferred"
+    },
+    {
+     "text": "Mooring across the stage when a canoe is due out.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "A full table for whoever lands, crew or passenger.",
+     "source": "inferred"
+    },
+    {
+     "text": "Sheltered water, which nothing else on this coast offers.",
+     "source": "world/sources/lore/extrapolation/settlement-register.md"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Crews who leave without settling for their bunk.",
+     "source": "inferred"
+    },
+    {
+     "text": "Agents from Thorn who walk out to the spit to argue the toll.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "place": {
+     "lean": 1,
+     "text": "A small cove with the only safe water on the coast; the boats have to come here.",
+     "source": "world/sources/lore/extrapolation/settlement-register.md"
+    },
+    "work": {
+     "lean": 1,
+     "text": "Feeding crews and taking fares is steady work while the boats keep coming.",
+     "source": "inferred"
+    },
+    "trade": {
+     "lean": 1,
+     "text": "Every boat off the Padomaic run leaves coin at the stage.",
+     "source": "world/sources/lore/extrapolation/settlement-register.md"
+    },
+    "danger": {
+     "lean": 0,
+     "text": "The cove itself is safe water; silt is the worry. We sound the way every morning.",
+     "source": "world/sources/lore/extrapolation/settlement-register.md"
+    },
+    "directions": {
+     "lean": 1,
+     "text": "Thorn is up the Tear road; Hissmir is up the pilgrim water by canoe.",
+     "source": "world/sources/lore/extrapolation/settlement-register.md"
+    },
+    "faction": {
+     "lean": -1,
+     "text": "Thorn and Hissmir both want the toll. The village sits caught between them.",
+     "source": "world/sources/lore/extrapolation/settlement-register.md"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Crews are called by their boat; passengers are 'traveller' until fed.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [
+     {
+      "text": "By the sounding pole.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "Which side the toll-holder favours.",
+      "source": "inferred"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#region-dunmer-north"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Thorn's field-owners and Hissmir's stewards each say the toll is theirs.",
+      "source": "world/sources/lore/extrapolation/settlement-register.md"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "The toll argument at the spit grows louder each night.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.region.hist-heartland",
+     "lean": 1,
+     "text": "Pilgrims bound for Hissmir pass through and eat well first.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.2,
+   "dissent": [
+    {
+     "personId": "npc.dunmer-north.riverwalk.n2",
+     "topic": "faction",
+     "lean": -2,
+     "text": "Poles the raft through the toll every crossing; the toll comes out of the crew's share.",
+     "source": "inferred"
+    },
+    {
+     "personId": "npc.dunmer-north.riverwalk.toll-holder",
+     "topic": "trade",
+     "lean": 0,
+     "text": "Writes each boat in two columns and knows the levy funds a quarrel as much as the state.",
+     "source": "inferred"
+    }
+   ]
+  }
+ ]
+}

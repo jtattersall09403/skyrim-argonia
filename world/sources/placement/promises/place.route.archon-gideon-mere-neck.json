@@ -1,0 +1,98 @@
+{
+ "schemaVersion": 1,
+ "placeId": "place.route.archon-gideon-mere-neck",
+ "generator": "python3 -m worldgen.blueprint_promises --id <place-id> --write (decision 0104); never hand-edit a row but its `unfilled`, `filledBy` or `confirmed` block",
+ "derivedFrom": [
+  {
+   "file": "world/sources/routes/route-structure-exemplars.json",
+   "sha256": "038fbaba89f7e8eb8c99a16d8b29fa1e97e024d4139762b62daddb877311003a"
+  }
+ ],
+ "promises": [
+  {
+   "id": "promise.archon-gideon-mere-neck.prose-why-founding",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/routes/route-structure-exemplars.json",
+    "path": "places[place.route.archon-gideon-mere-neck].why.founding"
+   },
+   "text": "The Long road from Archon to Gideon crosses Middle Argonia on what firm ground it can find. Here that is a strip of ground between two meres, barely higher than the water.",
+   "confirmed": {
+    "sha": "5af29b17db4d",
+    "note": "The road runs on a mud strip 15-25 m wide between the mere and the marsh pond; the layout stands on that strip.",
+    "ids": [
+     "parcel.archon-gideon-mere-neck.east-wade-head",
+     "parcel.archon-gideon-mere-neck.west-wade-head"
+    ]
+   }
+  },
+  {
+   "id": "promise.archon-gideon-mere-neck.prose-why-occupantsmotive",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/routes/route-structure-exemplars.json",
+    "path": "places[place.route.archon-gideon-mere-neck].why.occupantsMotive"
+   },
+   "text": "Nobody lives on the neck. Travellers drove poles into both verges so that a walker can keep to the causeway when the water covers it.",
+   "confirmed": {
+    "sha": "3732b3d937c3",
+    "note": "No dwelling or bed on the neck; 22 driven poles stand on both verges of the wade, bound to the two wade-head parcels.",
+    "ids": [
+     "parcel.archon-gideon-mere-neck.east-wade-head",
+     "parcel.archon-gideon-mere-neck.west-wade-head"
+    ]
+   }
+  },
+  {
+   "id": "promise.archon-gideon-mere-neck.prose-why-pressures",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/routes/route-structure-exemplars.json",
+    "path": "places[place.route.archon-gideon-mere-neck].why.pressures"
+   },
+   "text": "The poles rot in the mud and lean. A walker who strays off the causeway between them goes into deeper water.",
+   "confirmed": {
+    "sha": "bfb8f606585a",
+    "note": "The poles stand on both verges of the wade at their own yaws; off the causeway the water is deeper than the 0.1-1.28 m on the road line.",
+    "ids": [
+     "parcel.archon-gideon-mere-neck.east-wade-head",
+     "parcel.archon-gideon-mere-neck.west-wade-head"
+    ]
+   }
+  },
+  {
+   "id": "promise.archon-gideon-mere-neck.prose-why-siteadvantages",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/routes/route-structure-exemplars.json",
+    "path": "places[place.route.archon-gideon-mere-neck].why.siteAdvantages"
+   },
+   "text": "The neck is the only dry line between the meres for a long way. For about fifty metres the mere covers the north half of the road, knee-deep and in places to the waist.",
+   "confirmed": {
+    "sha": "322494ef4f9f",
+    "note": "From x 4787 to 4736 the north verge poles stand in 0.26-0.83 m of water and the road line in 0.1-1.28 m (chunk ground); the south verge is dry; cairns mark both dry ends.",
+    "ids": [
+     "parcel.archon-gideon-mere-neck.east-wade-head",
+     "parcel.archon-gideon-mere-neck.west-wade-head"
+    ]
+   }
+  },
+  {
+   "id": "promise.archon-gideon-mere-neck.prose-why-wouldchangeif",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/routes/route-structure-exemplars.json",
+    "path": "places[place.route.archon-gideon-mere-neck].why.wouldChangeIf"
+   },
+   "text": "If the meres dried back, the poles would be left standing on dry ground. Nobody would replace them.",
+   "confirmed": {
+    "sha": "c2f9085a8dae",
+    "note": "The poles stand in the water along the wade, where only the wet ground explains them.",
+    "ids": [
+     "parcel.archon-gideon-mere-neck.east-wade-head",
+     "parcel.archon-gideon-mere-neck.west-wade-head"
+    ]
+   }
+  }
+ ]
+}

@@ -20,6 +20,36 @@
           }
         ]
       }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "rtk hook claude 2>/dev/null || true"
+          },
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR\"/tooling/shell_guard.py"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "startup|resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR\"/tooling/session_tokens.py --brief 2>/dev/null || true"
+          },
+          {
+            "type": "command",
+            "command": "grep -n \"in progress\" \"$CLAUDE_PROJECT_DIR\"/docs/PROGRESS.md || true"
+          }
+        ]
+      }
     ]
   }
 }

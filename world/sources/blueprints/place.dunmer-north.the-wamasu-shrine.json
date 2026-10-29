@@ -1,0 +1,3104 @@
+{
+  "schemaVersion": 1,
+  "blueprint": {
+    "id": "place.dunmer-north.the-wamasu-shrine",
+    "seed": "place.dunmer-north.the-wamasu-shrine",
+    "causalModel": {
+      "founding": "Villagers hold that a wamasu of Shadowfen lives in the black pond below the bank. The villages leave offerings for the wamasu to keep the seasonal flood back.",
+      "siteAdvantages": "The shrine stands on the bank above the pond where the wamasu is held to live. The bank is at the highest point that the flood reaches.",
+      "occupantsMotive": "Four villages bring the offering in turn each wet season. Each village sets the offering on the stone and leaves quickly.",
+      "pressures": "The offerings have become practical. They now consist of tools and salt. The older villagers find this embarrassing.",
+      "wouldChangeIf": "A flood that came over the bank despite the offerings would end the rotation."
+    },
+    "boundary": [
+      [
+        0.63782,
+        0.1245
+      ],
+      [
+        0.64324,
+        0.1245
+      ],
+      [
+        0.64324,
+        0.12993
+      ],
+      [
+        0.63782,
+        0.12993
+      ]
+    ],
+    "districts": [
+      {
+        "id": "district.the-wamasu-shrine.the-bank",
+        "kind": "shrine",
+        "cultureKit": "argonian-stone",
+        "wealth": "poor",
+        "boundary": [
+          [
+            0.63970254,
+            0.127064456
+          ],
+          [
+            0.639820399,
+            0.127504094
+          ],
+          [
+            0.640524364,
+            0.12791053
+          ],
+          [
+            0.640964002,
+            0.127792671
+          ],
+          [
+            0.641370438,
+            0.127088706
+          ],
+          [
+            0.641252579,
+            0.126649068
+          ],
+          [
+            0.640548614,
+            0.126242632
+          ],
+          [
+            0.640108976,
+            0.126360491
+          ]
+        ],
+        "why": {
+          "what": "The district is the strip of bank. It holds the offering shelf and the tally stones.",
+          "whyHere": "The bank stands at the highest point that the flood reaches. It lies above the pond where the wamasu is said to live.",
+          "whySpot": "The bank is firm ground half a metre above black water. A steep rock face rises above it.",
+          "whyNeighbours": "The four villages that bring the offerings lie at a distance from the bank. The bank has no residents.",
+          "playerPurpose": "The district holds the offering shelf, the season's sack and the scorched stone.",
+          "microGeography": "The bank is firm ground half a metre above black water. A steep rock face rises above it."
+        }
+      }
+    ],
+    "travelServices": [],
+    "occupants": [
+      {
+        "slotId": "n1",
+        "ladderRef": "hostile-d3 rank-and-file",
+        "kind": "creature",
+        "cultureRole": "The wamasu said to live in the pond below",
+        "worksAt": "parcel.the-wamasu-shrine.the-bank",
+        "livesAt": "parcel.the-wamasu-shrine.the-bank"
+      },
+      {
+        "slotId": "headwoman",
+        "ladderRef": "modest-d1 villager",
+        "cultureRole": "the headwoman whose village has this year's turn at the shelf",
+        "worksAt": "parcel.the-wamasu-shrine.the-bank",
+        "livesAt": "parcel.the-wamasu-shrine.the-bank"
+      }
+    ],
+    "approaches": [
+      {
+        "id": "approach.the-wamasu-shrine.along-the-bank",
+        "mode": "walk",
+        "firstSeen": "parcel.the-wamasu-shrine.the-bank",
+        "viaUV": [
+          [
+            0.64197,
+            0.1283
+          ]
+        ],
+        "sequence": "The approach runs south-west along the bank. The black pond opens on the right. Then a single dressed stone comes into view on the bank ahead.",
+        "wayfinding": "No path reaches the shrine. The carriers follow the bank between the mountain face and the water.",
+        "fromDirection": "north-east"
+      }
+    ],
+    "networkTerminals": [],
+    "parcels": [
+      {
+        "id": "parcel.the-wamasu-shrine.the-bank",
+        "districtId": "district.the-wamasu-shrine.the-bank",
+        "use": "shrine",
+        "buildingFamily": "htbm-xanmeer",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "The shelf stands broadside to the line of approach along the bank. Carriers can set offerings on it from the bank side.",
+        "why": {
+          "what": "The offering shelf is a single old dressed stone. It is loaded with salt, iron and a net.",
+          "whyHere": "The villages leave their offerings here to keep the flood back.",
+          "whySpot": "The shelf stands on the level bank at the water's edge. The flood stops there.",
+          "whyNeighbours": "The tally stones run along the bank to the north-west. The pond lies in front of the shelf.",
+          "playerPurpose": "Villagers leave the offerings on the shelf. Scorch marks show that the creature has answered.",
+          "microGeography": "The ground of the bank is trodden flat beside green-black water. The ground at the water end is burnt."
+        },
+        "playerPurpose": [
+          {
+            "kind": "lore-fragment",
+            "tier": "low",
+            "note": "Practical offerings to a wamasu, left to keep the flood back."
+          },
+          {
+            "kind": "quest-stage",
+            "tier": "major",
+            "socketRef": "socket.the-wamasu-shrine.the-bank",
+            "note": "In Offerings Against the Flood the player comes to this bank, where the season's offering sits on the shelf. The flood rose higher this year all the same."
+          }
+        ],
+        "assetRef": "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arblock01",
+        "centreUV": [
+          0.640536489,
+          0.127076581
+        ],
+        "yawDeg": 30.0,
+        "pad": {
+          "datumM": 158.589,
+          "apronM": 2.5,
+          "batter": true
+        },
+        "yMeasured": 158.989,
+        "footprint": [
+          [
+            0.640466447,
+            0.126826297
+          ],
+          [
+            0.640472005,
+            0.126824807
+          ],
+          [
+            0.640786773,
+            0.127006539
+          ],
+          [
+            0.640788263,
+            0.127012097
+          ],
+          [
+            0.640606531,
+            0.127326865
+          ],
+          [
+            0.640600973,
+            0.127328355
+          ],
+          [
+            0.640286205,
+            0.127146623
+          ],
+          [
+            0.640284715,
+            0.127141065
+          ]
+        ],
+        "assembly": [
+          {
+            "id": "h-bone1",
+            "asset": "vanilla:clutter/bones/bloodybone",
+            "atM": [
+              36.892,
+              28.6989
+            ],
+            "yaw": 45.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 153.8797
+          },
+          {
+            "id": "h-leg1",
+            "asset": "vanilla:clutter/bones/bloodyleg",
+            "atM": [
+              37.3452,
+              28.7837
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 153.8337
+          },
+          {
+            "id": "h-scales1",
+            "asset": "htbm:here there be monsters - curse of cipactli/clutter/wamasuscales",
+            "atM": [
+              37.3688,
+              29.9247
+            ],
+            "yaw": 10.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 153.9633
+          },
+          {
+            "id": "h-scales2",
+            "asset": "htbm:here there be monsters - curse of cipactli/clutter/wamasustormscales",
+            "atM": [
+              38.2885,
+              30.3176
+            ],
+            "yaw": 130.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 153.9543
+          },
+          {
+            "id": "h-skull1",
+            "asset": "vanilla:clutter/bones/deerskullprop",
+            "atM": [
+              37.4992,
+              31.3506
+            ],
+            "yaw": 180.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 154.0892
+          },
+          {
+            "id": "n-hanging-moss",
+            "asset": "bmv:landscape/plants/florahangingmoss03aaa",
+            "atM": [
+              10.305,
+              2.2488
+            ],
+            "yaw": 10.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 160.19
+          },
+          {
+            "id": "n-moss-root",
+            "asset": "htbm:here there be monsters - curse of cipactli/trees/treeroots03",
+            "atM": [
+              6.4945,
+              4.4488
+            ],
+            "yaw": 150.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 158.8791
+          },
+          {
+            "id": "s-enchant-table",
+            "asset": "vanilla:furniture/enchantingworkbench",
+            "atM": [
+              5.8569,
+              0.5445
+            ],
+            "yaw": 180.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 158.538
+          },
+          {
+            "id": "s-leave-bone1",
+            "asset": "vanilla:clutter/bones/bloodybone",
+            "atM": [
+              -0.7938,
+              -2.7749
+            ],
+            "yaw": 80.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 158.596
+          },
+          {
+            "id": "s-leave-scales1",
+            "asset": "htbm:here there be monsters - curse of cipactli/clutter/wamasuscales",
+            "atM": [
+              -7.5292,
+              -0.0409
+            ],
+            "yaw": 30.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 157.8889
+          },
+          {
+            "id": "s-leave-scales2",
+            "asset": "htbm:here there be monsters - curse of cipactli/clutter/wamasustormscales",
+            "atM": [
+              -4.6311,
+              -1.0213
+            ],
+            "yaw": 170.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 158.4241
+          },
+          {
+            "id": "s-notice-stone",
+            "asset": "kotm:argonia/xanmeer/exterior/obelisk",
+            "atM": [
+              2.7141,
+              -3.299
+            ],
+            "yaw": 180.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 158.259
+          },
+          {
+            "id": "s-of-candle",
+            "asset": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+            "atM": [
+              2.4517,
+              -0.9536
+            ],
+            "yaw": 330.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 158.5878
+          },
+          {
+            "id": "s-of-candle2",
+            "asset": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+            "atM": [
+              -1.7651,
+              1.9428
+            ],
+            "yaw": 10.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 158.5878
+          },
+          {
+            "id": "s-of-ingots",
+            "asset": "kotm:oaristys/forge/ingotsiron01",
+            "atM": [
+              0.3634,
+              0.8294
+            ],
+            "yaw": 0.0,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "s-shelf",
+              "unmined": "reader-approved r1"
+            },
+            "upM": 0.4697
+          },
+          {
+            "id": "s-of-ingots2",
+            "asset": "kotm:oaristys/forge/ingotsiron01",
+            "atM": [
+              0.908,
+              0.5727
+            ],
+            "yaw": 90.0,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "s-shelf",
+              "unmined": "reader-approved r2"
+            },
+            "upM": 0.4697
+          },
+          {
+            "id": "s-of-net",
+            "asset": "shores:shoresofskyrim/fishnet01",
+            "atM": [
+              -0.1402,
+              -0.8428
+            ],
+            "yaw": 90.0,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "s-shelf",
+              "unmined": "reader-approved r1"
+            },
+            "upM": 0.4467
+          },
+          {
+            "id": "s-of-salt1",
+            "asset": "vanilla:clutter/ingredients/saltpile",
+            "atM": [
+              0.8196,
+              0.2196
+            ],
+            "yaw": 340.0,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "s-shelf",
+              "unmined": "reader-approved r1"
+            },
+            "upM": 0.5097
+          },
+          {
+            "id": "s-of-salt2",
+            "asset": "vanilla:clutter/ingredients/saltpile",
+            "atM": [
+              0.816,
+              -0.5866
+            ],
+            "yaw": 40.0,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "s-shelf",
+              "unmined": "reader-approved r1"
+            },
+            "upM": 0.5097
+          },
+          {
+            "id": "s-of-salt3",
+            "asset": "vanilla:clutter/ingredients/saltpile",
+            "atM": [
+              -0.3062,
+              0.8696
+            ],
+            "yaw": 170.0,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "s-shelf",
+              "unmined": "reader-approved r2"
+            },
+            "upM": 0.5097
+          },
+          {
+            "id": "s-pool-arm1",
+            "asset": "vanilla:clutter/bones/humanarmleft",
+            "atM": [
+              -3.6069,
+              3.3526
+            ],
+            "yaw": 220.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 158.6055
+          },
+          {
+            "id": "s-pool-ribs1",
+            "asset": "vanilla:clutter/bones/humanribcage",
+            "atM": [
+              -3.2026,
+              -3.3471
+            ],
+            "yaw": 345.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 158.7056
+          },
+          {
+            "id": "s-pool-skull1",
+            "asset": "vanilla:clutter/bones/humanskull",
+            "atM": [
+              -8.2603,
+              5.6928
+            ],
+            "yaw": 110.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 158.519
+          },
+          {
+            "id": "s-pool-skull2",
+            "asset": "vanilla:clutter/bones/humanskull",
+            "atM": [
+              -3.7696,
+              -5.3292
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 158.5134
+          },
+          {
+            "id": "s-pool-skull3",
+            "asset": "vanilla:clutter/bones/humanskull",
+            "atM": [
+              -9.9387,
+              7.5856
+            ],
+            "yaw": 350.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 158.3721
+          },
+          {
+            "id": "s-pool-skull4",
+            "asset": "vanilla:clutter/bones/humanskull",
+            "atM": [
+              -8.4593,
+              8.3481
+            ],
+            "yaw": 170.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 158.692
+          },
+          {
+            "id": "s-pool-spine1",
+            "asset": "vanilla:clutter/bones/humanspine",
+            "atM": [
+              -3.1691,
+              -2.7891
+            ],
+            "yaw": 50.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 158.6492
+          },
+          {
+            "id": "s-ring-arm2",
+            "asset": "vanilla:clutter/bones/humanarmleft",
+            "atM": [
+              -7.9588,
+              -10.1851
+            ],
+            "yaw": 350.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 157.8759
+          },
+          {
+            "id": "s-ring-bone3",
+            "asset": "vanilla:clutter/bones/bloodybone",
+            "atM": [
+              -7.9464,
+              -12.9636
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 157.4811
+          },
+          {
+            "id": "s-ring-ribs2",
+            "asset": "vanilla:clutter/bones/humanribcage",
+            "atM": [
+              -17.2715,
+              7.0849
+            ],
+            "yaw": 130.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 157.1735
+          },
+          {
+            "id": "s-ring-ribs3",
+            "asset": "vanilla:clutter/bones/humanribcage",
+            "atM": [
+              -5.6804,
+              -11.0387
+            ],
+            "yaw": 50.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 158.2028
+          },
+          {
+            "id": "s-ring-ribs4",
+            "asset": "vanilla:clutter/bones/humanribcage",
+            "atM": [
+              -21.8937,
+              2.479
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 157.1753
+          },
+          {
+            "id": "s-ring-skull10",
+            "asset": "vanilla:clutter/bones/humanskull",
+            "atM": [
+              -20.1375,
+              4.1208
+            ],
+            "yaw": 40.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 156.9634
+          },
+          {
+            "id": "s-ring-skull11",
+            "asset": "vanilla:clutter/bones/humanskull",
+            "atM": [
+              -23.1669,
+              0.6737
+            ],
+            "yaw": 150.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 156.954
+          },
+          {
+            "id": "s-ring-skull12",
+            "asset": "vanilla:clutter/bones/humanskull",
+            "atM": [
+              -5.0402,
+              -9.3299
+            ],
+            "yaw": 190.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 158.2447
+          },
+          {
+            "id": "s-ring-skull13",
+            "asset": "vanilla:clutter/bones/humanskull",
+            "atM": [
+              -9.3196,
+              -14.942
+            ],
+            "yaw": 90.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 157.4897
+          },
+          {
+            "id": "s-ring-skull14",
+            "asset": "vanilla:clutter/bones/humanskull",
+            "atM": [
+              -14.1688,
+              10.2588
+            ],
+            "yaw": 10.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 157.073
+          },
+          {
+            "id": "s-ring-skull5",
+            "asset": "vanilla:clutter/bones/humanskull",
+            "atM": [
+              -15.9234,
+              3.4199
+            ],
+            "yaw": 40.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 156.4843
+          },
+          {
+            "id": "s-ring-skull6",
+            "asset": "vanilla:clutter/bones/humanskull",
+            "atM": [
+              -13.9296,
+              8.2732
+            ],
+            "yaw": 280.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 157.2832
+          },
+          {
+            "id": "s-ring-skull7",
+            "asset": "vanilla:clutter/bones/bloodybone",
+            "atM": [
+              -3.5801,
+              3.799
+            ],
+            "yaw": 170.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 158.597
+          },
+          {
+            "id": "s-ring-skull8",
+            "asset": "vanilla:clutter/bones/humanskull",
+            "atM": [
+              -5.2785,
+              -4.3426
+            ],
+            "yaw": 60.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 158.2811
+          },
+          {
+            "id": "s-ring-skull9",
+            "asset": "vanilla:clutter/bones/humanskull",
+            "atM": [
+              -6.3856,
+              -7.8603
+            ],
+            "yaw": 220.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 157.9335
+          },
+          {
+            "id": "s-ring-spine2",
+            "asset": "vanilla:clutter/bones/humanspine",
+            "atM": [
+              -3.2445,
+              1.1804
+            ],
+            "yaw": 100.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 158.6492
+          },
+          {
+            "id": "s-ring-spine3",
+            "asset": "vanilla:clutter/bones/humanspine",
+            "atM": [
+              -3.5036,
+              -6.8684
+            ],
+            "yaw": 340.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 158.6885
+          },
+          {
+            "id": "s-sack",
+            "asset": "mudmother:gv_meshes/argoniannest/paintedurn01",
+            "atM": [
+              2.5124,
+              1.5517
+            ],
+            "yaw": 195.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 158.5603
+          },
+          {
+            "id": "s-scorch-ash",
+            "asset": "vanilla:effects/ashpile01",
+            "atM": [
+              -2.2544,
+              -2.1048
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 158.5564
+          },
+          {
+            "id": "s-tally1",
+            "asset": "shores:shoresofskyrim/shorerock06",
+            "atM": [
+              -5.2667,
+              1.0778
+            ],
+            "yaw": 355.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 158.411
+          },
+          {
+            "id": "s-tally1b",
+            "asset": "shores:shoresofskyrim/shorerock01",
+            "atM": [
+              -5.1868,
+              0.9162
+            ],
+            "yaw": 50.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 158.4491
+          },
+          {
+            "id": "s-tally1c",
+            "asset": "shores:shoresofskyrim/shorerock07",
+            "atM": [
+              -5.235,
+              1.2327
+            ],
+            "yaw": 120.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 158.4565
+          },
+          {
+            "id": "s-tally2",
+            "asset": "shores:shoresofskyrim/shorerock06",
+            "atM": [
+              -6.6426,
+              1.2947
+            ],
+            "yaw": 80.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 158.1478
+          },
+          {
+            "id": "s-tally2b",
+            "asset": "shores:shoresofskyrim/shorerock07",
+            "atM": [
+              -6.4877,
+              1.263
+            ],
+            "yaw": 350.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 158.1963
+          },
+          {
+            "id": "s-tally3",
+            "asset": "shores:shoresofskyrim/shorerock06",
+            "atM": [
+              -6.8818,
+              3.2804
+            ],
+            "yaw": 170.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 158.3582
+          },
+          {
+            "id": "s-tally3b",
+            "asset": "shores:shoresofskyrim/shorerock01",
+            "atM": [
+              -6.7769,
+              3.1621
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 158.3705
+          },
+          {
+            "id": "s-tally3c",
+            "asset": "shores:shoresofskyrim/shorerock07",
+            "atM": [
+              -6.8501,
+              3.4353
+            ],
+            "yaw": 10.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 158.4028
+          },
+          {
+            "id": "s-tally4",
+            "asset": "shores:shoresofskyrim/shorerock06",
+            "atM": [
+              -8.7942,
+              2.7679
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 158.0864
+          },
+          {
+            "id": "s-tally4b",
+            "asset": "shores:shoresofskyrim/shorerock01",
+            "atM": [
+              -8.6143,
+              2.7796
+            ],
+            "yaw": 180.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 158.1453
+          },
+          {
+            "id": "s-tally5",
+            "asset": "shores:shoresofskyrim/shorerock06",
+            "atM": [
+              -9.8335,
+              3.3679
+            ],
+            "yaw": 45.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 157.9738
+          },
+          {
+            "id": "s-tally5b",
+            "asset": "shores:shoresofskyrim/shorerock01",
+            "atM": [
+              -9.7286,
+              3.2496
+            ],
+            "yaw": 90.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 158.0101
+          },
+          {
+            "id": "s-tally5c",
+            "asset": "shores:shoresofskyrim/shorerock07",
+            "atM": [
+              -9.8018,
+              3.5229
+            ],
+            "yaw": 300.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 158.0256
+          },
+          {
+            "id": "s-tool-fork",
+            "asset": "vanilla:clutter/common/pitchfork01",
+            "atM": [
+              1.9954,
+              -0.3438
+            ],
+            "yaw": 30.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 159.188
+          },
+          {
+            "id": "s-tool-shovel",
+            "asset": "vanilla:clutter/common/shovel01",
+            "atM": [
+              1.8517,
+              -1.9928
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 159.0986
+          },
+          {
+            "id": "x-sunk",
+            "asset": "kotm:oaristys/forge/ingotsiron01",
+            "atM": [
+              -7.6631,
+              -2.2729
+            ],
+            "yaw": 95.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 157.7325
+          }
+        ]
+      }
+    ],
+    "authoredOn": {
+      "wbSchemaVersion": 1,
+      "ground": {
+        "centreM": [
+          4725.0,
+          935.0
+        ],
+        "halfM": 50.0,
+        "chunks": {
+          "chunk_9_1": "43767b947595f219c4a687f2e5c0292ff2d01dde56bac5be6e6617288f6fc3e8",
+          "chunk_10_1": "02e676fb077c5388bdb649debffeda8a2c1c0b1e39d19b0c28309a7553607017",
+          "chunk_9_2": "e573da00243ed6024c7776c478f9efb3e5bd1e2551506511c210930b31210e45",
+          "chunk_10_2": "a7186d241f8956c23f12a5d33f0c794a934217d0b82ca6de5b6d296f158b7b77"
+        },
+        "sha256": "470c51f9d01fd581e9c4a158b598721f6860c69bce8b75641da614530d7254fc"
+      },
+      "kits": {
+        "dungeon-root-v1": "d7442b1671412bc0d2513aa553b057a6fe60559f195b0709c1e2b305289bf359",
+        "flora-province-v1": "0ef937d974ac29e0c20057d560413bb7d248a7c78c48d734bf30c9b0b99c6003",
+        "interior-farmhouse-v1": "55298394d5ba20ad0cc7f9f221d5a173fcbf4748b4cf0e6ed4e25e7db40c8bb1",
+        "interior-kotm-v1": "393f62b4193f8974d307688f488d6b4b9066b764b854c48fb0462f028f66f3f6",
+        "mudmother-hut-int": "c93688f1dbeea6f5ef17417545b3d9c73e7aa10472529013467ff090aa4724fe",
+        "ruin-monumental-v1": "b81b149ca8855a74eaf249008887beebf51fcce252381c642de651eb23aa76ef",
+        "settlement-mud-v1": "cb24bf064b13aba569691f990ea4c4822555bcd8561ddfb9e3db820437d25cd1",
+        "settlement-root-v1": "a15ce9b1d2315d5feb18b58723fe0e229e59ea3a048ac77252a43b2c05df9d86",
+        "underwater-v1": "ecfbfae4be34613de40fd7f2e2ce4e7cd7520a1de157d3ec60027910e0fe180a",
+        "works-v1": "4b58f4e275990e607d60415c3fc7c1146d5c60b4229f08041fedb898d4be0975",
+        "xanmeer-kotm-v1": "c5843c2a6eb911ccefbf1cf2926e829de1795a020042c8116a566f303d840e27"
+      },
+      "layout": {
+        "path": "world/sources/blueprints/the-wamasu-shrine.layout.json",
+        "sha256": "c43e5297a155d319f04fd0625df1113b598f2807cdd7e7b11e62bf07b304c8f0",
+        "uidSha256": {
+          "h-bone1": "635f8b194e838bfe0ebb71c2faab582955eecb99c1f4546422552e1d96a412d3",
+          "h-leg1": "df02956a9718f6402667104739ff33a50bbc6053527f6ba79f640334e0e45540",
+          "h-scales1": "145bbf2ce90ffde7b3c2af98447529cbed1c769740c7d54c06aaf68a521686c8",
+          "h-scales2": "366a06a0daf228e458128e7582ef6dbc02e0e66e11dbd9f5f772b520e7ad22c4",
+          "h-skull1": "ac4f3ff7997870123027ed707057cb02cb8f26942b44875e2bc1f100f31b47fa",
+          "n-hanging-moss": "c8d4f3d6100931807a741854eb4aac8cc93f3ad8bca5182431e204eb2b8202ea",
+          "n-moss-root": "40f554d4783cf52dea86e1970ffffc491d5b5e8bfc8a7643460967e91a60ad27",
+          "parcel.the-wamasu-shrine.the-bank": "3e1c5eb99e627e34ed22909c56161f05c5805b48b1b520dc128b30d78daeaa0b",
+          "route.the-wamasu-shrine.haul-out-drag": "b32934625886ce59bb1b43ec0a17bed115b0df735e327531f7afe5154c05b915",
+          "s-enchant-table": "d34134792574a81b2943c8a5100169de09db749794c225c69205848b4cdcd8f2",
+          "s-leave-bone1": "96003dd43f5cfc775c4257e52f36bb56e1148770ed55387900b1d98bc5211db9",
+          "s-leave-scales1": "2cacf947efc788b94cf5f9982740b6e7f950e84458e443b915559af75ce6db9e",
+          "s-leave-scales2": "ba6f6e300beb4b1c38f09ab0c299399c873db2715034092132ba78e2e290b5c5",
+          "s-notice-stone": "c1e0be2d71768cbcdb18fc3395962b987608eabf0767b007215f7d1f615e140a",
+          "s-of-candle": "1f754c7b41a27af25303d6a21c7aed0a5b54474484a2b42a8e6b45123764c5dd",
+          "s-of-candle2": "d2474583432b6a6be06e39e15c80a59609e3f7faa812690ce5418d616b9e5db3",
+          "s-of-ingots": "e2055909c837a4b7a85f04ae0ce4c297325885e2725e4e41d12e65a12a7b40ce",
+          "s-of-ingots2": "0918a68699dc55bbd2d11f929dd07f1fb582969350e0df29e1c39e6b4f5e9f27",
+          "s-of-net": "73faec18a0c590e852089b218bf5aa0168187d5734501c8676348c54fa5ffa27",
+          "s-of-salt1": "b430a7e96eb8c01c8d6914d176900a15e8535fe4fc97d4d7c9512d4f35e001a7",
+          "s-of-salt2": "c282e70fee949af09c6ca77856d5af6d0c4d39cab22a6f2dc0cc594482734b49",
+          "s-of-salt3": "69490075196b990291b193cdc2429b3e58f174d27e9f9c9611f9a37eca64f46d",
+          "s-pool-arm1": "1e71ae886aeaf839a5a72c0eae55a00f71b974a32ea0e1e9bf8c7976e3d15ac8",
+          "s-pool-ribs1": "e6db1eb7631cf8e8d442bd68c9a9101fa017e5df807af1638c1e77f62e741818",
+          "s-pool-skull1": "59a497411cd42ffc530cde85ed35ce0c81710f75d625352c5b7597e0a83983b8",
+          "s-pool-skull2": "988982a5bf4b3516b2ceec77618c0afa42fec4b5bf7803e450dd089217c74cd8",
+          "s-pool-skull3": "e4451e65fa4d0c2f93862757265e2262ccf9db6b07103261e1286cf9f5e7485c",
+          "s-pool-skull4": "2a6e3ed2e9d30d5226bb781d90ac2df13da252682bf737ad081c605a815f479f",
+          "s-pool-spine1": "ce1d5ded5b3c1b798cf966a76bb02c770cc0508231889e94d295eeee6dc91a62",
+          "s-ring-arm2": "fb9532ac87e8ccf4aaaa713fcd66d1a5751696bf2fb8a3c32d6817ad3da6e403",
+          "s-ring-bone3": "6ca3c44a6522ad782f0705f2f0941bdc1a4f1f64f7ac9cf9cadb3b87276d3f4f",
+          "s-ring-ribs2": "806978d9fe631424efb87a8a9f7144980636e2ec2d4cebba96bb270c5079880f",
+          "s-ring-ribs3": "81be07e00a49689d5ad302daa7fb337f7ece2861f921747eebd48ab8a33f0a50",
+          "s-ring-ribs4": "0d597e489cf4209b05a2495ed2dc7ad5edba5ef56527344df1751d44546d0ce9",
+          "s-ring-skull10": "3bee5030fe558a4f60cf34ec823d0fd8b6299f947a0e4af66d5291e29c348822",
+          "s-ring-skull11": "4732021d8a0c465e343b057b89ad047e619b2b0fbd5e3c4e27129ede58ee48c6",
+          "s-ring-skull12": "d5eb6bbe1a6c1495e1475e0cbd2198a864bb1c320e43b467e153ff9d848c26d3",
+          "s-ring-skull13": "e3c9d410ffe7ad3ad79e251cefaf4e83f76240fc1c948fa88b9ce4c6bac285a7",
+          "s-ring-skull14": "876db7c737f82a0e35a22ceeac5028551565eea982384cb84db1961154425d5a",
+          "s-ring-skull5": "5f9171972b733044ad5381dc8fea30951ad4c4e17fcfb3a43fd8837d7d5f50ed",
+          "s-ring-skull6": "f127be4736b022b7f3b10b0c3b2914f831eda7301bbdc08865de3269342f03cd",
+          "s-ring-skull7": "0fcdd7b2960240b6175d8387711d49e3239bb75552ae60c7bc7d9fba869d7425",
+          "s-ring-skull8": "279cc3379f5cc8f193e0adb53b8e1c7542bb897381a0d57100056fc847b3e3bc",
+          "s-ring-skull9": "cb8507659f1e410baefac654872a313ceb318e7d5b0c5a46abc1ed744f1da29b",
+          "s-ring-spine2": "5a95f643b4f74d84260045b7aefb2035be215634c736bd50f0a077ce9daaaaa7",
+          "s-ring-spine3": "af21ee36ed1701cecfed75d4cf33c30d826becadb66ca11afaced918013d1019",
+          "s-sack": "4b74c5f58e579190afa863f28ab8363885c7ebf5fe7e4d6d5cfa3cca68ebea52",
+          "s-scorch-ash": "66ea5786152ce3b32eac463da3e92ce9fee8b2f75dad08b5a596602260de8556",
+          "s-shelf": "b8df6df28081bd8463f55629b5c09eec5af8382f7a61e2d14ab0006b36ab41a2",
+          "s-tally1": "b3b7befa162586c42e08b178bd7d09439e0dc9093b245621a9ab126e08cfd4ac",
+          "s-tally1b": "6aebb486161220cb4553b966dcbce1e2599dbe3f88351807de7126396a30c0e3",
+          "s-tally1c": "636ab72dd8a9f0f6942647420cf5ea13a37449e4ce911f492063c3df403e919d",
+          "s-tally2": "d76d4a00be930407b4bf6cc88d1f41c5460781858d830a5ca36d7e3491d69424",
+          "s-tally2b": "53bc76adbeb316959a7f6360218dd5fd2e6605278fd8efe7717e2a94805ab929",
+          "s-tally3": "7e9bf61987ea2e15622135bf58d2b8793251e7dad3f3830c30f2882791ae0348",
+          "s-tally3b": "c493fae09e921219c3a609e0f04a1828011355195744c4f139cca04877607fed",
+          "s-tally3c": "d2126e2aa69f10548456160669a2d9ba345f476ff9eb3013be1c4972527ddebd",
+          "s-tally4": "fa17341fe570d61705442548f3de6dbaeb4cf5256829f74cd76573c1aa1551dd",
+          "s-tally4b": "3cbdbb2ac43d5f30a88a53060b010d0d9a1c1b2bd0eb8a7006109bc836e643fd",
+          "s-tally5": "a5d9f09c6b255fc5c4e1d63d09632a5b4c7e44a52dc11cb8552e217efd824478",
+          "s-tally5b": "2344e65dcd656276142cb1328aa90d025a3fc34fed7cb419198faae83feee882",
+          "s-tally5c": "ed2092c21806705a4c9303f6bd69ae8fc5270287ce441384f348c4502f24f984",
+          "s-tool-fork": "c19798e94b4a8bdb68e4ba081db76b00eaea9e3d810d8a07d9476a1c64f51bab",
+          "s-tool-shovel": "c3afb842ca8125fe73899ad7f42ae8e0adf2c4b29e43e23e9b6a71cbaa050ce8",
+          "x-sunk": "d52fd5175c0a784275386977e2c2513d828b7dd0e7815a456b9709327886e720"
+        },
+        "geometrySha256": "3bb60797c5413e4a74d8418d7a81b86e30e6cfdd2d5424437e1d082bf194aeba"
+      }
+    },
+    "walkRoutes": {
+      "schemaVersion": 1,
+      "cellM": 0.5,
+      "stepM": 0.45,
+      "slopeMaxDeg": 30.0,
+      "wadeMaxM": 0.7,
+      "routes": {
+        "opening:s-shelf": {
+          "points": [
+            [
+              4733.43,
+              157.72,
+              945.79
+            ],
+            [
+              4732.93,
+              157.91,
+              945.79
+            ],
+            [
+              4732.43,
+              158.09,
+              945.79
+            ],
+            [
+              4731.93,
+              158.25,
+              945.79
+            ],
+            [
+              4731.43,
+              158.39,
+              945.79
+            ],
+            [
+              4730.43,
+              158.65,
+              945.79
+            ],
+            [
+              4729.93,
+              158.79,
+              945.29
+            ],
+            [
+              4729.43,
+              158.84,
+              945.29
+            ],
+            [
+              4728.43,
+              158.96,
+              945.29
+            ],
+            [
+              4727.93,
+              158.96,
+              945.29
+            ],
+            [
+              4726.93,
+              158.98,
+              945.29
+            ],
+            [
+              4725.93,
+              158.98,
+              945.29
+            ],
+            [
+              4725.43,
+              158.94,
+              944.79
+            ],
+            [
+              4724.93,
+              158.85,
+              944.29
+            ],
+            [
+              4724.43,
+              158.75,
+              943.79
+            ],
+            [
+              4723.93,
+              158.68,
+              943.29
+            ],
+            [
+              4723.43,
+              158.65,
+              942.79
+            ],
+            [
+              4723.43,
+              158.58,
+              942.29
+            ],
+            [
+              4723.43,
+              158.56,
+              941.79
+            ],
+            [
+              4723.43,
+              158.56,
+              939.79
+            ]
+          ],
+          "routeM": 14.43,
+          "steepestDeg": 20.0,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0,
+          "parcelId": "parcel.the-wamasu-shrine.the-bank"
+        },
+        "socket:socket.the-wamasu-shrine.idle-wamasu-hunt": {
+          "points": [
+            [
+              4733.43,
+              157.72,
+              945.79
+            ],
+            [
+              4733.43,
+              157.58,
+              946.79
+            ],
+            [
+              4733.43,
+              157.48,
+              947.29
+            ],
+            [
+              4733.43,
+              157.12,
+              948.79
+            ],
+            [
+              4733.43,
+              157.01,
+              949.29
+            ],
+            [
+              4733.43,
+              156.89,
+              949.79
+            ],
+            [
+              4733.43,
+              156.76,
+              950.29
+            ],
+            [
+              4733.43,
+              156.52,
+              951.29
+            ],
+            [
+              4733.43,
+              156.0,
+              953.29
+            ],
+            [
+              4733.43,
+              155.86,
+              953.79
+            ],
+            [
+              4733.43,
+              155.73,
+              954.29
+            ],
+            [
+              4733.43,
+              155.62,
+              954.79
+            ],
+            [
+              4733.43,
+              155.52,
+              955.29
+            ],
+            [
+              4733.43,
+              155.41,
+              955.79
+            ],
+            [
+              4733.43,
+              155.32,
+              956.29
+            ],
+            [
+              4733.43,
+              155.25,
+              956.79
+            ],
+            [
+              4733.43,
+              155.15,
+              957.79
+            ],
+            [
+              4733.43,
+              155.11,
+              958.29
+            ],
+            [
+              4733.43,
+              155.09,
+              958.79
+            ],
+            [
+              4733.43,
+              155.09,
+              959.29
+            ],
+            [
+              4733.43,
+              155.1,
+              959.79
+            ],
+            [
+              4733.43,
+              155.13,
+              960.29
+            ],
+            [
+              4733.43,
+              155.15,
+              960.79
+            ],
+            [
+              4733.43,
+              155.16,
+              961.29
+            ],
+            [
+              4733.93,
+              155.04,
+              961.79
+            ],
+            [
+              4733.93,
+              155.07,
+              962.29
+            ],
+            [
+              4733.93,
+              155.09,
+              962.79
+            ],
+            [
+              4733.93,
+              155.12,
+              963.29
+            ],
+            [
+              4733.93,
+              155.13,
+              963.79
+            ],
+            [
+              4733.93,
+              155.13,
+              964.79
+            ],
+            [
+              4733.93,
+              155.11,
+              965.29
+            ],
+            [
+              4733.93,
+              155.02,
+              965.79
+            ],
+            [
+              4733.93,
+              154.92,
+              966.29
+            ],
+            [
+              4733.93,
+              154.83,
+              966.79
+            ],
+            [
+              4733.93,
+              154.72,
+              967.29
+            ],
+            [
+              4733.93,
+              154.6,
+              967.79
+            ],
+            [
+              4733.93,
+              154.47,
+              968.29
+            ],
+            [
+              4733.93,
+              154.35,
+              968.79
+            ],
+            [
+              4733.93,
+              154.27,
+              969.29
+            ],
+            [
+              4733.93,
+              154.23,
+              969.79
+            ],
+            [
+              4733.93,
+              154.2,
+              970.29
+            ],
+            [
+              4733.93,
+              154.21,
+              970.79
+            ],
+            [
+              4733.93,
+              154.29,
+              971.29
+            ],
+            [
+              4733.93,
+              154.35,
+              971.79
+            ],
+            [
+              4733.93,
+              154.49,
+              972.79
+            ],
+            [
+              4734.43,
+              154.39,
+              973.29
+            ],
+            [
+              4734.93,
+              154.33,
+              973.79
+            ],
+            [
+              4735.43,
+              154.35,
+              974.29
+            ],
+            [
+              4735.93,
+              154.35,
+              974.79
+            ],
+            [
+              4736.43,
+              154.31,
+              975.29
+            ],
+            [
+              4736.93,
+              154.3,
+              975.79
+            ],
+            [
+              4737.43,
+              154.28,
+              976.29
+            ],
+            [
+              4737.93,
+              154.24,
+              976.79
+            ],
+            [
+              4738.43,
+              154.16,
+              977.29
+            ],
+            [
+              4738.93,
+              154.13,
+              977.79
+            ],
+            [
+              4738.93,
+              154.16,
+              978.29
+            ],
+            [
+              4738.93,
+              154.18,
+              978.79
+            ],
+            [
+              4739.43,
+              154.13,
+              979.29
+            ],
+            [
+              4739.43,
+              154.18,
+              979.79
+            ],
+            [
+              4739.43,
+              154.16,
+              980.29
+            ],
+            [
+              4739.43,
+              154.16,
+              980.79
+            ]
+          ],
+          "routeM": 37.92,
+          "steepestDeg": 15.2,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.the-wamasu-shrine.idle-wamasu-home": {
+          "points": [
+            [
+              4733.43,
+              157.72,
+              945.79
+            ],
+            [
+              4733.93,
+              157.55,
+              945.79
+            ],
+            [
+              4735.43,
+              156.98,
+              945.79
+            ],
+            [
+              4736.43,
+              156.62,
+              945.79
+            ],
+            [
+              4736.93,
+              156.45,
+              945.79
+            ],
+            [
+              4737.43,
+              156.27,
+              945.79
+            ],
+            [
+              4737.93,
+              156.1,
+              945.79
+            ],
+            [
+              4738.43,
+              155.91,
+              945.79
+            ],
+            [
+              4738.93,
+              155.73,
+              945.79
+            ],
+            [
+              4739.43,
+              155.56,
+              945.79
+            ],
+            [
+              4739.93,
+              155.35,
+              945.79
+            ],
+            [
+              4740.43,
+              155.17,
+              945.29
+            ],
+            [
+              4740.93,
+              154.97,
+              944.79
+            ],
+            [
+              4741.43,
+              154.74,
+              944.29
+            ],
+            [
+              4741.93,
+              154.52,
+              943.79
+            ],
+            [
+              4742.43,
+              154.29,
+              943.79
+            ],
+            [
+              4742.93,
+              154.07,
+              943.29
+            ],
+            [
+              4743.43,
+              153.89,
+              943.29
+            ],
+            [
+              4744.93,
+              153.71,
+              943.29
+            ],
+            [
+              4745.43,
+              153.68,
+              943.29
+            ],
+            [
+              4746.43,
+              153.68,
+              943.29
+            ],
+            [
+              4746.93,
+              153.67,
+              943.29
+            ],
+            [
+              4747.43,
+              153.64,
+              943.29
+            ],
+            [
+              4747.93,
+              153.62,
+              943.29
+            ],
+            [
+              4748.93,
+              153.56,
+              943.29
+            ],
+            [
+              4749.43,
+              153.56,
+              943.29
+            ],
+            [
+              4749.93,
+              153.55,
+              943.29
+            ],
+            [
+              4750.43,
+              153.55,
+              943.29
+            ],
+            [
+              4750.93,
+              153.61,
+              943.29
+            ],
+            [
+              4751.43,
+              153.71,
+              943.29
+            ],
+            [
+              4751.93,
+              153.58,
+              943.79
+            ],
+            [
+              4752.43,
+              153.5,
+              944.29
+            ],
+            [
+              4752.93,
+              153.49,
+              944.79
+            ],
+            [
+              4753.43,
+              153.61,
+              945.29
+            ],
+            [
+              4753.93,
+              153.79,
+              945.79
+            ],
+            [
+              4753.93,
+              153.73,
+              946.29
+            ],
+            [
+              4753.93,
+              153.68,
+              946.79
+            ],
+            [
+              4753.93,
+              153.66,
+              947.79
+            ],
+            [
+              4753.93,
+              153.66,
+              948.29
+            ],
+            [
+              4753.93,
+              153.65,
+              948.79
+            ],
+            [
+              4753.93,
+              153.67,
+              949.29
+            ],
+            [
+              4753.93,
+              153.68,
+              949.79
+            ],
+            [
+              4753.93,
+              153.7,
+              950.29
+            ],
+            [
+              4753.93,
+              153.67,
+              950.79
+            ],
+            [
+              4753.93,
+              153.52,
+              952.29
+            ],
+            [
+              4754.43,
+              153.6,
+              952.79
+            ],
+            [
+              4754.93,
+              153.62,
+              953.29
+            ],
+            [
+              4755.93,
+              153.76,
+              954.29
+            ],
+            [
+              4756.43,
+              153.73,
+              954.79
+            ],
+            [
+              4756.93,
+              153.69,
+              955.29
+            ],
+            [
+              4757.43,
+              153.77,
+              955.79
+            ],
+            [
+              4757.93,
+              153.83,
+              956.29
+            ],
+            [
+              4758.43,
+              153.81,
+              956.79
+            ],
+            [
+              4758.93,
+              153.84,
+              957.29
+            ],
+            [
+              4758.93,
+              153.74,
+              957.79
+            ],
+            [
+              4758.93,
+              153.66,
+              958.29
+            ],
+            [
+              4758.93,
+              153.59,
+              958.79
+            ],
+            [
+              4758.93,
+              153.56,
+              959.29
+            ],
+            [
+              4758.93,
+              153.54,
+              959.79
+            ],
+            [
+              4758.93,
+              153.62,
+              960.79
+            ],
+            [
+              4758.93,
+              153.67,
+              961.29
+            ],
+            [
+              4758.93,
+              153.74,
+              961.79
+            ],
+            [
+              4758.93,
+              153.83,
+              962.29
+            ],
+            [
+              4758.93,
+              153.93,
+              962.79
+            ],
+            [
+              4758.93,
+              154.04,
+              963.29
+            ],
+            [
+              4758.93,
+              154.19,
+              963.79
+            ],
+            [
+              4758.93,
+              154.36,
+              964.29
+            ],
+            [
+              4758.93,
+              154.54,
+              964.79
+            ],
+            [
+              4758.93,
+              154.73,
+              965.29
+            ],
+            [
+              4758.93,
+              155.57,
+              967.29
+            ],
+            [
+              4758.43,
+              155.49,
+              967.79
+            ],
+            [
+              4758.43,
+              155.7,
+              968.29
+            ],
+            [
+              4758.43,
+              155.88,
+              968.79
+            ]
+          ],
+          "routeM": 49.05,
+          "steepestDeg": 24.5,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.635
+        },
+        "socket:socket.the-wamasu-shrine.npc-wamasu": {
+          "points": [
+            [
+              4733.43,
+              157.72,
+              945.79
+            ],
+            [
+              4733.43,
+              157.58,
+              946.79
+            ],
+            [
+              4733.43,
+              157.48,
+              947.29
+            ],
+            [
+              4733.43,
+              157.12,
+              948.79
+            ],
+            [
+              4733.43,
+              157.01,
+              949.29
+            ],
+            [
+              4733.43,
+              156.89,
+              949.79
+            ],
+            [
+              4733.43,
+              156.76,
+              950.29
+            ],
+            [
+              4733.43,
+              156.52,
+              951.29
+            ],
+            [
+              4733.43,
+              156.0,
+              953.29
+            ],
+            [
+              4733.43,
+              155.86,
+              953.79
+            ],
+            [
+              4733.43,
+              155.73,
+              954.29
+            ],
+            [
+              4733.43,
+              155.62,
+              954.79
+            ],
+            [
+              4733.43,
+              155.52,
+              955.29
+            ],
+            [
+              4733.43,
+              155.41,
+              955.79
+            ],
+            [
+              4733.43,
+              155.32,
+              956.29
+            ],
+            [
+              4733.43,
+              155.25,
+              956.79
+            ],
+            [
+              4733.43,
+              155.15,
+              957.79
+            ],
+            [
+              4733.43,
+              155.11,
+              958.29
+            ],
+            [
+              4733.43,
+              155.09,
+              958.79
+            ],
+            [
+              4733.43,
+              155.09,
+              959.29
+            ],
+            [
+              4733.43,
+              155.1,
+              959.79
+            ],
+            [
+              4733.43,
+              155.13,
+              960.29
+            ],
+            [
+              4733.43,
+              155.15,
+              960.79
+            ],
+            [
+              4733.43,
+              155.16,
+              961.29
+            ],
+            [
+              4733.93,
+              155.04,
+              961.79
+            ],
+            [
+              4733.93,
+              155.07,
+              962.29
+            ],
+            [
+              4733.93,
+              155.09,
+              962.79
+            ],
+            [
+              4733.93,
+              155.12,
+              963.29
+            ],
+            [
+              4733.93,
+              155.13,
+              963.79
+            ],
+            [
+              4733.93,
+              155.13,
+              964.79
+            ],
+            [
+              4733.93,
+              155.11,
+              965.29
+            ],
+            [
+              4733.93,
+              155.02,
+              965.79
+            ],
+            [
+              4733.93,
+              154.92,
+              966.29
+            ],
+            [
+              4733.93,
+              154.83,
+              966.79
+            ],
+            [
+              4733.93,
+              154.72,
+              967.29
+            ],
+            [
+              4733.93,
+              154.6,
+              967.79
+            ],
+            [
+              4733.93,
+              154.47,
+              968.29
+            ],
+            [
+              4733.93,
+              154.35,
+              968.79
+            ],
+            [
+              4733.93,
+              154.27,
+              969.29
+            ],
+            [
+              4733.93,
+              154.23,
+              969.79
+            ],
+            [
+              4733.93,
+              154.2,
+              970.29
+            ],
+            [
+              4733.93,
+              154.21,
+              970.79
+            ],
+            [
+              4734.43,
+              154.1,
+              971.29
+            ],
+            [
+              4734.43,
+              154.17,
+              971.79
+            ],
+            [
+              4735.43,
+              154.01,
+              972.79
+            ],
+            [
+              4735.93,
+              154.01,
+              973.29
+            ],
+            [
+              4736.43,
+              153.95,
+              973.79
+            ],
+            [
+              4736.93,
+              153.94,
+              974.29
+            ],
+            [
+              4737.43,
+              153.9,
+              974.79
+            ],
+            [
+              4737.93,
+              153.9,
+              975.29
+            ],
+            [
+              4738.43,
+              153.87,
+              975.79
+            ],
+            [
+              4739.93,
+              153.69,
+              977.29
+            ],
+            [
+              4740.43,
+              153.58,
+              977.79
+            ],
+            [
+              4740.43,
+              153.65,
+              978.29
+            ],
+            [
+              4740.43,
+              153.7,
+              978.79
+            ],
+            [
+              4740.93,
+              153.62,
+              979.29
+            ],
+            [
+              4741.43,
+              153.55,
+              979.79
+            ],
+            [
+              4741.93,
+              153.52,
+              980.29
+            ],
+            [
+              4742.43,
+              153.5,
+              980.79
+            ],
+            [
+              4742.93,
+              153.56,
+              981.29
+            ],
+            [
+              4743.43,
+              153.65,
+              981.79
+            ],
+            [
+              4744.93,
+              153.68,
+              981.79
+            ],
+            [
+              4745.93,
+              153.76,
+              981.79
+            ],
+            [
+              4746.43,
+              153.81,
+              981.79
+            ],
+            [
+              4746.93,
+              153.85,
+              981.79
+            ],
+            [
+              4747.43,
+              153.99,
+              981.79
+            ],
+            [
+              4747.93,
+              154.14,
+              981.79
+            ],
+            [
+              4748.43,
+              154.28,
+              981.79
+            ],
+            [
+              4748.93,
+              154.45,
+              981.79
+            ],
+            [
+              4749.43,
+              154.73,
+              981.79
+            ],
+            [
+              4749.93,
+              154.96,
+              981.29
+            ],
+            [
+              4750.43,
+              155.25,
+              981.29
+            ],
+            [
+              4750.93,
+              155.5,
+              980.79
+            ]
+          ],
+          "routeM": 48.85,
+          "steepestDeg": 30.0,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.618
+        },
+        "socket:socket.the-wamasu-shrine.container-offering-sack": {
+          "points": [
+            [
+              4733.43,
+              157.72,
+              945.79
+            ],
+            [
+              4732.93,
+              157.91,
+              945.79
+            ],
+            [
+              4732.43,
+              158.09,
+              945.79
+            ],
+            [
+              4731.93,
+              158.25,
+              945.79
+            ],
+            [
+              4731.43,
+              158.39,
+              945.79
+            ],
+            [
+              4730.43,
+              158.65,
+              945.79
+            ],
+            [
+              4729.93,
+              158.79,
+              945.29
+            ],
+            [
+              4729.43,
+              158.84,
+              945.29
+            ],
+            [
+              4728.43,
+              158.96,
+              945.29
+            ],
+            [
+              4727.93,
+              158.96,
+              945.29
+            ],
+            [
+              4726.93,
+              158.98,
+              945.29
+            ],
+            [
+              4725.93,
+              158.98,
+              945.29
+            ],
+            [
+              4725.43,
+              158.94,
+              944.79
+            ],
+            [
+              4725.43,
+              158.86,
+              944.29
+            ],
+            [
+              4725.43,
+              158.77,
+              943.79
+            ],
+            [
+              4725.43,
+              158.7,
+              943.29
+            ],
+            [
+              4725.43,
+              158.64,
+              942.79
+            ],
+            [
+              4725.43,
+              158.6,
+              942.29
+            ],
+            [
+              4725.43,
+              158.56,
+              941.29
+            ],
+            [
+              4725.43,
+              158.56,
+              940.79
+            ]
+          ],
+          "routeM": 12.61,
+          "steepestDeg": 20.0,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.the-wamasu-shrine.cache-sunk-offerings": {
+          "points": [
+            [
+              4733.43,
+              157.72,
+              945.79
+            ],
+            [
+              4732.93,
+              157.91,
+              945.79
+            ],
+            [
+              4732.43,
+              158.09,
+              945.79
+            ],
+            [
+              4731.93,
+              158.25,
+              945.79
+            ],
+            [
+              4731.43,
+              158.39,
+              945.79
+            ],
+            [
+              4730.43,
+              158.65,
+              945.79
+            ],
+            [
+              4729.93,
+              158.79,
+              945.29
+            ],
+            [
+              4729.43,
+              158.84,
+              945.29
+            ],
+            [
+              4728.43,
+              158.96,
+              945.29
+            ],
+            [
+              4727.93,
+              158.96,
+              945.29
+            ],
+            [
+              4726.93,
+              158.98,
+              945.29
+            ],
+            [
+              4725.93,
+              158.98,
+              945.29
+            ],
+            [
+              4725.43,
+              158.94,
+              944.79
+            ],
+            [
+              4724.93,
+              158.85,
+              944.29
+            ],
+            [
+              4724.43,
+              158.75,
+              943.79
+            ],
+            [
+              4723.93,
+              158.68,
+              943.29
+            ],
+            [
+              4723.43,
+              158.65,
+              942.79
+            ],
+            [
+              4722.93,
+              158.61,
+              942.29
+            ],
+            [
+              4721.93,
+              158.57,
+              941.29
+            ],
+            [
+              4721.43,
+              158.56,
+              940.79
+            ],
+            [
+              4720.43,
+              158.56,
+              939.79
+            ],
+            [
+              4720.43,
+              158.56,
+              938.79
+            ],
+            [
+              4719.43,
+              158.56,
+              937.79
+            ],
+            [
+              4719.43,
+              158.56,
+              936.79
+            ],
+            [
+              4718.93,
+              158.56,
+              936.29
+            ],
+            [
+              4718.93,
+              158.56,
+              935.79
+            ],
+            [
+              4718.93,
+              158.54,
+              935.29
+            ],
+            [
+              4718.43,
+              158.45,
+              934.79
+            ],
+            [
+              4718.43,
+              158.27,
+              933.79
+            ],
+            [
+              4718.43,
+              158.03,
+              932.79
+            ],
+            [
+              4718.43,
+              157.9,
+              932.29
+            ]
+          ],
+          "routeM": 24.07,
+          "steepestDeg": 20.0,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.the-wamasu-shrine.idle-headwoman-work": {
+          "points": [
+            [
+              4733.43,
+              157.72,
+              945.79
+            ],
+            [
+              4732.93,
+              157.91,
+              945.79
+            ],
+            [
+              4732.43,
+              158.09,
+              945.79
+            ],
+            [
+              4731.93,
+              158.25,
+              945.79
+            ],
+            [
+              4731.43,
+              158.39,
+              945.79
+            ],
+            [
+              4730.43,
+              158.65,
+              945.79
+            ],
+            [
+              4729.93,
+              158.79,
+              945.29
+            ],
+            [
+              4729.43,
+              158.84,
+              945.29
+            ],
+            [
+              4728.43,
+              158.96,
+              945.29
+            ],
+            [
+              4727.93,
+              158.96,
+              945.29
+            ],
+            [
+              4726.93,
+              158.98,
+              945.29
+            ],
+            [
+              4725.93,
+              158.98,
+              945.29
+            ],
+            [
+              4725.43,
+              158.94,
+              944.79
+            ],
+            [
+              4725.43,
+              158.86,
+              944.29
+            ],
+            [
+              4725.43,
+              158.77,
+              943.79
+            ],
+            [
+              4725.43,
+              158.7,
+              943.29
+            ],
+            [
+              4725.43,
+              158.64,
+              942.79
+            ],
+            [
+              4725.43,
+              158.6,
+              942.29
+            ],
+            [
+              4725.43,
+              158.56,
+              941.29
+            ],
+            [
+              4725.43,
+              158.56,
+              940.29
+            ]
+          ],
+          "routeM": 13.11,
+          "steepestDeg": 20.0,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.the-wamasu-shrine.idle-headwoman-home": {
+          "points": [
+            [
+              4733.43,
+              157.72,
+              945.79
+            ],
+            [
+              4733.93,
+              157.62,
+              945.29
+            ],
+            [
+              4734.43,
+              157.48,
+              944.79
+            ],
+            [
+              4734.93,
+              157.29,
+              944.29
+            ],
+            [
+              4735.93,
+              156.93,
+              943.29
+            ],
+            [
+              4735.93,
+              156.95,
+              942.29
+            ],
+            [
+              4735.43,
+              157.18,
+              941.79
+            ],
+            [
+              4734.93,
+              157.4,
+              941.29
+            ],
+            [
+              4734.43,
+              157.59,
+              940.79
+            ],
+            [
+              4733.93,
+              157.71,
+              940.29
+            ],
+            [
+              4733.43,
+              157.79,
+              939.79
+            ],
+            [
+              4732.93,
+              157.85,
+              939.29
+            ],
+            [
+              4732.43,
+              157.87,
+              938.79
+            ],
+            [
+              4731.93,
+              157.86,
+              938.29
+            ],
+            [
+              4730.43,
+              158.07,
+              938.29
+            ],
+            [
+              4729.93,
+              158.07,
+              937.79
+            ],
+            [
+              4729.43,
+              158.2,
+              937.29
+            ]
+          ],
+          "routeM": 13.34,
+          "steepestDeg": 17.8,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.the-wamasu-shrine.npc-headwoman": {
+          "points": [
+            [
+              4733.43,
+              157.72,
+              945.79
+            ],
+            [
+              4732.93,
+              157.91,
+              945.79
+            ],
+            [
+              4732.43,
+              158.09,
+              945.79
+            ],
+            [
+              4731.93,
+              158.25,
+              945.79
+            ],
+            [
+              4731.43,
+              158.39,
+              945.79
+            ],
+            [
+              4730.43,
+              158.65,
+              945.79
+            ],
+            [
+              4729.93,
+              158.79,
+              945.29
+            ],
+            [
+              4729.43,
+              158.84,
+              945.29
+            ],
+            [
+              4728.43,
+              158.96,
+              945.29
+            ],
+            [
+              4727.93,
+              158.96,
+              945.29
+            ],
+            [
+              4726.93,
+              158.98,
+              945.29
+            ],
+            [
+              4725.93,
+              158.98,
+              945.29
+            ],
+            [
+              4725.43,
+              158.94,
+              944.79
+            ],
+            [
+              4725.43,
+              158.86,
+              944.29
+            ],
+            [
+              4725.43,
+              158.77,
+              943.79
+            ],
+            [
+              4725.43,
+              158.7,
+              943.29
+            ],
+            [
+              4725.43,
+              158.64,
+              942.79
+            ],
+            [
+              4725.43,
+              158.6,
+              942.29
+            ],
+            [
+              4725.43,
+              158.56,
+              941.29
+            ],
+            [
+              4725.43,
+              158.56,
+              939.29
+            ]
+          ],
+          "routeM": 14.11,
+          "steepestDeg": 20.0,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        }
+      }
+    },
+    "doors": [],
+    "clearance": {
+      "hardClear": [],
+      "thinned": [],
+      "kept": []
+    },
+    "variants": [
+      {
+        "id": "variant.the-wamasu-shrine.base",
+        "changedRefs": [],
+        "serviceOverrides": {},
+        "ambience": "shrine"
+      }
+    ],
+    "budget": {
+      "maxInstances": 80,
+      "maxUniqueMaterials": 60,
+      "maxTextureMB": 32,
+      "maxColliders": 60
+    },
+    "scaleGrounding": {
+      "loreSource": "The catalogue record Shrine of Haynekhtnamet describes an offering shrine. The shrine has no living residents. UESP Lore:Haynekhtnamet is a source for the record. UESP Lore:Wamasu is a second source.",
+      "population": "0",
+      "households": 0,
+      "buildingsPlanned": 0,
+      "npcsPlanned": 0,
+      "why": "The shrine has no residents. Carriers from four villages come in turn and leave quickly. The wamasu in the pond is a creature. It is not a resident."
+    },
+    "combatSpaces": [
+      {
+        "id": "combat.the-wamasu-shrine.the-bank",
+        "aroundIds": [
+          "parcel.the-wamasu-shrine.the-bank"
+        ],
+        "clearanceClass": "open",
+        "why": "Open bank lies on both sides of the shelf. The pond lies in front of the shelf. A creature that comes out of the water arrives there.",
+        "boundary": [
+          [
+            0.63970254,
+            0.127064456
+          ],
+          [
+            0.639820399,
+            0.127504094
+          ],
+          [
+            0.640524364,
+            0.12791053
+          ],
+          [
+            0.640964002,
+            0.127792671
+          ],
+          [
+            0.641370438,
+            0.127088706
+          ],
+          [
+            0.641252579,
+            0.126649068
+          ],
+          [
+            0.640548614,
+            0.126242632
+          ],
+          [
+            0.640108976,
+            0.126360491
+          ]
+        ]
+      }
+    ],
+    "siting": {
+      "dossier": "world/sources/sites/dossiers/the-wamasu-shrine.json",
+      "candidates": [
+        {
+          "id": "candidate.the-wamasu-shrine.the-bank",
+          "positionM": [
+            4727.0,
+            938.0
+          ],
+          "chosen": true,
+          "why": "The chosen site is the level bank above the black pond that the record names. It stands at the height that the flood reaches. The bank lies off every registered route. The nearest route is a boat line 613 m away."
+        },
+        {
+          "id": "candidate.the-wamasu-shrine.record-point",
+          "positionM": [
+            4735.0,
+            825.0
+          ],
+          "rejectedBecause": "The record's own point is on a mountain face that slopes at 42 degrees. All water lies more than 20 m from it.",
+          "why": "The record's plotted point lies 115 m north of the pond."
+        }
+      ]
+    },
+    "macroEvidence": [
+      {
+        "sourcePaths": [
+          "assetPlan",
+          "classification",
+          "contents",
+          "deedCounterKeys",
+          "discovery",
+          "eraLayers",
+          "hostility",
+          "occupants",
+          "playerPurpose",
+          "questHooks",
+          "relations",
+          "lootTable",
+          "rumourPoolKey",
+          "season",
+          "sitingPrefs",
+          "status",
+          "traversalModes",
+          "underwaterAccess",
+          "vibe"
+        ],
+        "evidenceRefs": [
+          "parcel.the-wamasu-shrine.the-bank",
+          "approach.the-wamasu-shrine.along-the-bank"
+        ]
+      },
+      {
+        "sourcePaths": [
+          "sockets"
+        ],
+        "evidenceRefs": [
+          "socket.the-wamasu-shrine.the-scorched-shelf",
+          "socket.the-wamasu-shrine.the-bank",
+          "parcel.the-wamasu-shrine.the-bank"
+        ]
+      }
+    ],
+    "questSockets": [
+      {
+        "id": "socket.the-wamasu-shrine.the-scorched-shelf",
+        "kind": "evidence",
+        "socketRef": "evidence.the-wamasu-shrine.the-scorched-shelf",
+        "position": [
+          0.640536,
+          0.127077
+        ],
+        "parcel": "parcel.the-wamasu-shrine.the-bank",
+        "fills": [
+          "promise.the-wamasu-shrine.evidence-the-scorched-shelf"
+        ],
+        "why": "The socket is the water-side end of the shelf. The offerings there are burnt black."
+      },
+      {
+        "id": "socket.the-wamasu-shrine.the-bank",
+        "kind": "scene",
+        "socketRef": "scene.the-wamasu-shrine.the-bank",
+        "position": [
+          0.640944,
+          0.127416
+        ],
+        "parcel": "parcel.the-wamasu-shrine.the-bank",
+        "fills": [
+          "promise.the-wamasu-shrine.scene-the-bank"
+        ],
+        "why": "The socket is the bank in front of the shelf. The carriers of one village set down the season's offering there."
+      }
+    ],
+    "proseRefs": [
+      {
+        "sourcePath": "parcels[0].playerPurpose[1].note",
+        "questRef": "quest.local.ld65"
+      }
+    ],
+    "routes": [
+      {
+        "id": "route.the-wamasu-shrine.haul-out-drag",
+        "routing": "straight",
+        "via": [
+          [
+            0.64330315,
+            0.133016766
+          ],
+          [
+            0.643113282,
+            0.133084577
+          ],
+          [
+            0.642923413,
+            0.133165949
+          ],
+          [
+            0.642733544,
+            0.133247322
+          ],
+          [
+            0.642557237,
+            0.133328694
+          ]
+        ],
+        "kind": "drag",
+        "widthM": 1.6,
+        "why": "The wamasu drags itself out of the east pool here to eat. Its belly has worn a wet mud strip from the water up to the bones and shed scales it leaves.",
+        "points": [
+          [
+            0.64330315,
+            0.133016766
+          ],
+          [
+            0.642557237,
+            0.133328694
+          ]
+        ]
+      }
+    ]
+  }
+}

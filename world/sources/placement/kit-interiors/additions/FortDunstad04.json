@@ -1,0 +1,55 @@
+{
+ "schemaVersion": 2,
+ "cellId": "FortDunstad04",
+ "additions": [
+  {
+   "id": "FortDunstad04:add:door-candlelantern-01",
+   "assetId": "vanilla:clutter/common/candlelanternwithcandle01",
+   "pos": [1.946, 12.08, -5.662],
+   "rotZDeg": 0,
+   "zone": "door",
+   "why": "A lantern hung inside the door, so the keeper can see the stair down to the held-back salvage."
+  },
+  {
+   "id": "FortDunstad04:add:hearth-candlelantern-01",
+   "assetId": "vanilla:clutter/common/candlelanternwithcandle01",
+   "pos": [5.587, 12.08, -6.316],
+   "rotZDeg": 0,
+   "zone": "hearth",
+   "why": "A lantern hung over the middle of the room."
+  },
+  {
+   "id": "FortDunstad04:add:lower-argoniancandle-01",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [3.0, 9.591, -6.5],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Lights the lower floor where the held-back salvage is stacked."
+  },
+  {
+   "id": "FortDunstad04:add:lower-east-argoniancandle-01",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [8.0, 9.619, -4.0],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Lights the east end of the lower floor by the stair foot."
+  },
+  {
+   "id": "FortDunstad04:add:upper-west-argoniancandle-01",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [1.0, 13.005, -8.0],
+   "rotZDeg": 0,
+   "zone": "hearth",
+   "why": "Lights the far west corner of the upper floor."
+  },
+  {
+   "id": "FortDunstad04:add:bed-bedroll-keeper",
+   "assetId": "vanilla:furniture/bedroll/bedroll01",
+   "pos": [3.1, 12.99, -7.8],
+   "rotZDeg": 90,
+   "zone": "bed",
+   "why": "The station-keeper's bedroll by the hearth: the plugin's beds stand against the end wall and down the cellar, where no stair reaches.",
+   "activity": "sleep"
+  }
+ ]
+}

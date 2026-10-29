@@ -1,0 +1,198 @@
+{
+ "id": "seam-searcher",
+ "start": {
+  "query": "?view=character&x=2.2236&z=4.4883&t=23:00&d=7-28",
+  "kit": "start",
+  "skills": {
+   "sneak": 30,
+   "marksman": 30
+  },
+  "seed": 1,
+  "grant": [
+   {
+    "item": "imperial-bow",
+    "count": 1
+   }
+  ],
+  "level": 20
+ },
+ "steps": [
+  {
+   "name": "equip-bow",
+   "transition": "the iron longbow into the hands (a lead-in, unfilmed)",
+   "do": {
+    "action": "equip",
+    "item": "imperial-bow",
+    "hand": "mainHand"
+   },
+   "keys": [
+    {
+     "press": "Escape"
+    },
+    {
+     "wait_s": 0.4
+    },
+    {
+     "click": "[data-es-bag] [data-es-item=\"imperial-bow\"]"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": "[data-es-actions] [data-es-act=\"equip\"]"
+    },
+    {
+     "press": "Escape"
+    }
+   ],
+   "hold_s": 0.6,
+   "expect": {
+    "mainHand": "imperial-bow"
+   },
+   "stage": {
+    "at": {
+     "x": 2313.6,
+     "z": 4556,
+     "yaw": 3.1416
+    },
+    "hour": 23,
+    "place": "place.naga-kur-deeps.naga-highway-camp-active-north",
+    "stance": "crouch",
+    "near": [
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "m": 13.8,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "m": 9.3,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "m": 11.4,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "m": 14.6,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "m": 23.9,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "m": 26.4,
+      "facing": false
+     }
+    ]
+   },
+   "lead": true
+  },
+  {
+   "name": "crouch-and-draw",
+   "transition": "crouched 14 m from two wardens, the bow raised -> the aim camera",
+   "do": {
+    "action": "bow-draw",
+    "near": [
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "m": 13.8,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "m": 9.3,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "m": 11.4,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "m": 14.6,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "m": 23.9,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "m": 26.4,
+      "facing": false
+     }
+    ],
+    "seconds": 2
+   },
+   "keys": [
+    {
+     "wait_s": 5
+    },
+    {
+     "aim": 180,
+     "pitch": -19.5
+    },
+    {
+     "press": "Tab"
+    },
+    {
+     "wait_s": 2.5
+    },
+    {
+     "down": "MouseLeft"
+    },
+    {
+     "wait_s": 0.6
+    },
+    {
+     "up": "MouseLeft"
+    },
+    {
+     "wait_s": 0.6
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "sneaking": true,
+    "view": "aim"
+   }
+  },
+  {
+   "name": "the-miss",
+   "transition": "an arrow a metre past the warden -> he hears it, turns and walks to where it fell, searching",
+   "do": {
+    "action": "shoot",
+    "target": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+    "missM": 1,
+    "seconds": 4
+   },
+   "keys": [
+    {
+     "wait_s": 1
+    },
+    {
+     "looseAt": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+     "pastM": 1
+    },
+    {
+     "wait_s": 6
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "searching": {
+     "npc.naga-kur-deeps.naga-highway-camp-active-north.n2": true
+    },
+    "eye": "danger"
+   }
+  }
+ ]
+}

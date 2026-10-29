@@ -1,0 +1,331 @@
+{
+ "id": "crafting-smithing",
+ "start": {
+  "query": "?view=character&x=4.7789&z=1.9&t=10:00&d=8-17",
+  "kit": "start"
+ },
+ "steps": [
+  {
+   "name": "buy-bog-iron",
+   "transition": "talking to the Upriver smith -> three bog iron (two to forge, one to temper) counted onto the offer, Offer: bought for coin",
+   "do": {
+    "action": "buyItem",
+    "npc": "npc.pirate-freeholds.upriver-hist-village.hh-smith",
+    "item": "bog-iron",
+    "count": 3
+   },
+   "keys": [
+    {
+     "wait_s": 5.0
+    },
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 1.0
+    },
+    {
+     "click": "[data-service=\"barter\"]"
+    },
+    {
+     "wait_s": 0.6
+    },
+    {
+     "click": "[data-side=\"wares\"] [data-es-item=\"bog-iron\"]"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": "[data-detail-act=\"buy\"]"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": "[data-count-picker] input"
+    },
+    {
+     "press": "Backspace"
+    },
+    {
+     "press": "Digit3"
+    },
+    {
+     "wait_s": 0.2
+    },
+    {
+     "click": "[data-count-ok]"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": "[data-act=\"offer\"]"
+    },
+    {
+     "wait_s": 0.6
+    },
+    {
+     "press": "Escape"
+    }
+   ],
+   "hold_s": 0.6,
+   "expect": {
+    "paid": true,
+    "has": {
+     "bog-iron": 3
+    }
+   },
+   "teleport": {
+    "x": 3405.0,
+    "z": 1450.7,
+    "actor": "npc.pirate-freeholds.upriver-hist-village.hh-smith",
+    "near_m": 1.0
+   }
+  },
+  {
+   "name": "buy-leather-strips",
+   "transition": "the smith's trade -> leather strips onto the offer, Offer: bought for coin",
+   "do": {
+    "action": "buyItem",
+    "npc": "npc.pirate-freeholds.upriver-hist-village.hh-smith",
+    "item": "leather-strips",
+    "count": 1
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 1.0
+    },
+    {
+     "click": "[data-service=\"barter\"]"
+    },
+    {
+     "wait_s": 0.6
+    },
+    {
+     "click": "[data-side=\"wares\"] [data-es-item=\"leather-strips\"]"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": "[data-detail-act=\"buy\"]"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": "[data-count-ok]"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": "[data-act=\"offer\"]"
+    },
+    {
+     "wait_s": 0.6
+    },
+    {
+     "press": "Escape"
+    },
+    {
+     "wait_s": 0.6
+    },
+    {
+     "press": "Escape"
+    }
+   ],
+   "hold_s": 0.6,
+   "expect": {
+    "paid": true,
+    "has": {
+     "leather-strips": 1
+    }
+   }
+  },
+  {
+   "name": "open-forge",
+   "transition": "walking at Bog Iron -> the forge's window",
+   "do": {
+    "action": "openStation",
+    "place": "place.imperial-fringe.bog-iron-workings",
+    "station": "forge"
+   },
+   "keys": [
+    {
+     "wait_s": 5.0
+    },
+    {
+     "press": "KeyE"
+    }
+   ],
+   "hold_s": 0.8,
+   "expect": {
+    "screen": "smithing",
+    "stationVerbs": [
+     "forge",
+     "mend"
+    ]
+   },
+   "teleport": {
+    "x": 1991.73,
+    "z": 2549.39,
+    "yaw": -1.83
+   }
+  },
+  {
+   "name": "forge-iron-sword",
+   "transition": "forge tab -> the tier 1 iron sword row pressed: forged, the inputs spent",
+   "do": {
+    "action": "forge",
+    "recipe": "recipe.iron-sword"
+   },
+   "keys": [
+    {
+     "click": ".es-smithing [data-es-row=\"recipe.iron-sword\"]"
+    }
+   ],
+   "hold_s": 1.0,
+   "expect": {
+    "has": {
+     "iron-sword": 1,
+     "bog-iron": 1,
+     "leather-strips": 0
+    }
+   }
+  },
+  {
+   "name": "close-forge",
+   "transition": "forge window -> walking",
+   "do": {
+    "action": "closeScreen"
+   },
+   "keys": [
+    {
+     "press": "Escape"
+    }
+   ],
+   "hold_s": 0.4,
+   "expect": {
+    "screen": null
+   }
+  },
+  {
+   "name": "open-inventory",
+   "transition": "walking -> inventory open",
+   "do": {
+    "action": "openInventory"
+   },
+   "keys": [
+    {
+     "press": "Escape"
+    }
+   ],
+   "hold_s": 0.5,
+   "expect": {
+    "screen": "inventory"
+   }
+  },
+  {
+   "name": "equip-iron-sword",
+   "transition": "inventory -> the forged sword in the right hand",
+   "do": {
+    "action": "equip",
+    "item": "iron-sword",
+    "hand": "mainHand"
+   },
+   "keys": [
+    {
+     "click": "[data-es-bag] [data-es-item=\"iron-sword\"]"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": "[data-es-actions] [data-hand=\"main\"], [data-es-actions] [data-es-act=\"equip\"]"
+    }
+   ],
+   "hold_s": 0.5,
+   "expect": {
+    "mainHand": "iron-sword"
+   }
+  },
+  {
+   "name": "close-inventory",
+   "transition": "inventory open -> walking",
+   "do": {
+    "action": "closeScreen"
+   },
+   "keys": [
+    {
+     "click": "[data-es-close]"
+    }
+   ],
+   "hold_s": 0.4,
+   "expect": {
+    "screen": null
+   }
+  },
+  {
+   "name": "open-grindstone",
+   "transition": "walking -> the grindstone's window",
+   "do": {
+    "action": "openStation",
+    "place": "place.imperial-fringe.bog-iron-workings",
+    "station": "grindstone"
+   },
+   "keys": [
+    {
+     "wait_s": 5.0
+    },
+    {
+     "press": "KeyE"
+    }
+   ],
+   "hold_s": 0.8,
+   "expect": {
+    "screen": "smithing",
+    "stationVerbs": [
+     "temper",
+     "mend"
+    ]
+   },
+   "teleport": {
+    "x": 1996.3,
+    "z": 2553.1
+   }
+  },
+  {
+   "name": "temper-grade-1",
+   "transition": "temper tab -> the iron sword's row pressed: tempered to grade 1; the sheet shows Smithing rise",
+   "do": {
+    "action": "temper",
+    "item": "iron-sword"
+   },
+   "keys": [
+    {
+     "click": ".es-smithing .es-tab:has-text(\"Temper\")"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": ".es-smithing [data-es-row^=\"iron-sword\"]"
+    }
+   ],
+   "hold_s": 1.0,
+   "expect": {
+    "temperGrade": 1,
+    "skillRose": "smithing",
+    "has": {
+     "bog-iron": 0
+    }
+   }
+  }
+ ]
+}

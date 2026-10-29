@@ -1,0 +1,194 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "_": "Faction and office sheets for The Xit-Xaht (lane 2.5a2). Ranks: the registry ladder (associate, member, senior); named offices beyond it are listed by their own rank slug.",
+ "entries": [
+  {
+   "id": "culture.faction.xit-xaht",
+   "level": "faction",
+   "name": "The Xit-Xaht",
+   "parent": "culture.province.black-marsh",
+   "factionId": "faction.xit-xaht",
+   "norms": [
+    {
+     "text": "Build in stone, forever.",
+     "source": "world/sources/lore/tribes.md"
+    },
+    {
+     "text": "The tree commands growth and war.",
+     "source": "world/sources/lore/tribes.md"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Leaving stone unfinished.",
+     "source": "world/sources/lore/tribes.md"
+    }
+   ],
+   "values": [
+    {
+     "text": "Strength.",
+     "source": "world/sources/lore/tribes.md"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "The soft tribes who let go.",
+     "source": "world/sources/lore/tribes.md"
+    }
+   ],
+   "opinions": {
+    "hist": {
+     "lean": 2,
+     "text": "Our tree speaks and we build.",
+     "source": "world/sources/lore/tribes.md"
+    },
+    "people": {
+     "lean": -2,
+     "text": "Others are labour or prey.",
+     "source": "world/sources/lore/tribes.md"
+    },
+    "danger": {
+     "lean": 1,
+     "text": "We are feared and right to be.",
+     "source": "world/sources/lore/tribes.md"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Stone-kin; reed-folk, to others.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "ceremonial",
+    "oaths": [
+     {
+      "text": "By the stone.",
+      "source": "world/sources/lore/tribes.md"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "What Amber Plasm costs.",
+      "source": "world/sources/lore/tribes.md"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Other tribes call us mad.",
+      "source": "world/sources/lore/tribes.md"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "The tree at Vakka-Bur stirs.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.bright-throat-tribe",
+     "lean": -1,
+     "text": "Soft greeters.",
+     "source": "world/sources/lore/tribes.md"
+    },
+    {
+     "node": "culture.faction.nisswo",
+     "lean": -1,
+     "text": "Teachers of letting go.",
+     "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+    }
+   ],
+   "deviationRate": 0.1
+  },
+  {
+   "id": "culture.office.xit-xaht.senior",
+   "level": "office",
+   "name": "Xit-Xaht tree-minder",
+   "parent": "culture.faction.xit-xaht",
+   "factionId": "faction.xit-xaht",
+   "rank": "senior",
+   "norms": [
+    {
+     "text": "Gives the tree's will as command.",
+     "source": "world/sources/lore/tribes.md"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Doubt.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "The stone.",
+     "source": "world/sources/lore/tribes.md"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Weakness.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "hist": {
+     "lean": 2,
+     "text": "Command.",
+     "source": "world/sources/lore/tribes.md"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Stone-kin.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "ceremonial",
+    "oaths": [
+     {
+      "text": "By the stone.",
+      "source": "world/sources/lore/tribes.md"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "The plasm.",
+      "source": "world/sources/lore/tribes.md"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Few walls finished.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "Raids planned.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.xit-xaht",
+     "lean": 2,
+     "text": "Theirs.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.1
+  }
+ ]
+}

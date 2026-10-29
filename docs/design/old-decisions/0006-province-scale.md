@@ -1,0 +1,37 @@
+<!-- imported unchanged from elder-souls-argonia docs/decisions/0006-province-scale.md @ b581910f0f87d8da88eaa9876d238cdc5d709e78 (0.1 §f) -->
+# 0006 — Provisional province scale: ×3 horizontal
+
+**Date:** 2026-08-22 · **Status:** SUPERSEDED by
+[0015](0015-province-rescale-and-mountain-relief.md) (2026-08-24: horizontal
+×1, vertical ×1, drama moves into the height data; note 0015's correction of
+the Skyrim-area comparison below)
+
+The raw heightfield extent is 7.37 km × 7.37 km (Skyrim map scale). Chosen
+horizontal multiplier: **×3 → ~22 km × 22 km**, giving:
+
+- roughly 4–5× Skyrim's playable area — reads as a province, supports fixed
+  regional danger zones with real travel commitment, boats/rootworm transit
+  become meaningfully faster than walking;
+- still tractable for browser streaming and for detailed build-out of one
+  reference watershed;
+- walking pace ~1.4 m/s → ~4.5 h to cross on foot naively, comparable to
+  Morrowind's exploratory feel with faster travel unlocking over time.
+
+Mechanics: horizontal only (heights stay in true metres; slopes flatten by ×3,
+appropriate for marsh). Implemented as `metresPerSample` metadata scaling in
+generated outputs — no resampling, no code constants. Vertical exaggeration for
+*visual* relief in previews stays a renderer concern.
+
+Confirmed at the flyover gate; revisit only if Phase 6+ streaming budgets force it.
+
+**Vertical scale: ×4 (DECIDED at the Phase 6 basin gate, 2026-08-23).** The
+owner judged ×4 correct on the refined basin (net ×4/3 ≈ 1.33 slope
+exaggeration vs the raw Skyrim-scale source — modest and conventional).
+Convention: world data stays in TRUE metres; the ×4 vertical scale is a
+geometry transform applied wherever terrain becomes mesh/collision (studio
+flyover default slider = 4 = canonical; production terrain compilers apply it
+at Phase 6 pass 2+). Water surfaces scale with heights (sea stays y=0).
+
+**The canonical vertical scale is ×5**, confirmed by the owner after flying:
+the studio default slider is 5 and the compilers bake ×5 wherever terrain
+becomes geometry or collision. Data stays true metres.

@@ -1,0 +1,6 @@
+{
+  "schemaVersion": 1,
+  "domain": "grave-stake",
+  "_": "The home of every grave-stake (xul-vaat): its place, the dead person it carries and the catalogue text key of the carved life story (0157 item 10). graveStakeDocument(id) in packages/narrative reads a row into the book reader's document shape. No row yet: rows are seeded from the lore dossiers when a place that holds a burial ground is built.",
+  "entries": []
+}

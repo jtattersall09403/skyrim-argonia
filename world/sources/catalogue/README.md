@@ -1,0 +1,271 @@
+# The place catalogue (Phase 11, decision 0041 Part 2)
+
+The province's **permanent place registry**. Every place — city to grave —
+gets one record here before anything is sited or built. Stable IDs in this
+catalogue are what quests, the map, saves, courier letters and deed counters
+will reference for the life of the game.
+
+**Binding rules** (decision 0041, forward-compatibility block):
+
+- **IDs are permanent.** `place.<region>.<slug>` (engineering standard 2).
+  Never delete or rename a committed ID — a cut place sets
+  `status: "cut"` and stays. Validators enforce uniqueness province-wide.
+- **Per-region files**: `places-<region>.json`, each
+  `{ "schemaVersion": 2, "region": "<region>", "seed": "...", "places": [...] }`.
+  Deterministically ordered by ID; regeneration must reproduce byte-identical
+  files (standard 6).
+- **Taxonomy** lives in `taxonomy.json` (class → family → type → variant);
+  every record's classification must resolve against it. The taxonomy grows —
+  adding is cheap, renaming is a migration.
+- **Build-out keys are present from v1** even where empty: `discovery`,
+  `rumourPoolKey`, `deedCounterKeys`, `sockets` — the build-out systems key on
+  them (game-buildout-register.md).
+
+**Field reference** is the docstring of
+`tooling/world-generation/worldgen/catalogue.py` — the validator is the
+schema's source of truth (`python -m worldgen.catalogue --check` from
+`tooling/world-generation/`; also runs in `npm test` via pytest).
+
+**Registration**: the directory is in `tooling/repo-standards/data-registry.json`
+(standard 7). Each new `places-<region>.json` must ALSO be added as a source in
+`tooling/repo-standards/id-registry.json` (standard 2) in the same commit, so
+`npm test` enforces ID shape/uniqueness/retirement mechanically.
+
+Workflow status ladder: `derived → plotted → authored → frozen` — each rung
+adds required fields (see the validator). A dot without a plotted `why` is a
+validation failure, per 0041 Part 3.
+
+**Plotted fields (Part 3, written by `worldgen.macro_plot` — never by hand):**
+`position {u,v}` (fractions of the province extent, u east, v south),
+`positionM [x,z]` (metres, same frame), `scourSiteId` (when a terrain-scour
+site won), `candidatesConsidered` (the runners-up and why each lost),
+`whySiteWon` (one generated sentence: landform, region, danger band, route
+distance, the scoring terms that carried it, and whether it came from the
+homeless batch), `plotFacts` (the land under the dot). Positions are
+approximate; the place's compile (the `place` skill) sites the footprint on real terrain. To move a
+place, change its `sitingPrefs` or a scoring weight and re-run the plot.
+Typed siting in `sitingPrefs`: `boundTo {place, maxM}`, `sightlineTo [ids]`, `nearWater {entityId, maxM}` (a hydrology-graph river, reach or body id; a reach counts as its river; maxM 10-1500) `minDepthM` (0.3-40 m of recorded water within 150 m) and `nearPoint {x, z, maxM}` (a point in metres the place must stand near) — the plot reads all five as hard gates, so a tie written only as prose is a tie nothing honours.
+A record the plot cannot site is homeless and fails a seeded run, unless it is
+listed in `world/sources/sites/plot-homeless-accepted.json` (the accepted
+register, one owner call per row with the reason and what would resolve it).
+
+## `lootTable.valueTier` — the one scale (0041 enrichment, 2026-09-02)
+
+Neither [quests 85](../../../docs/quests/85-condition-vocabulary.md) nor
+[world 76](../../../docs/world/76-stats-progression.md) defines a reward/value
+scale (76's D0–D5 is *danger*), so the catalogue defines its own. **Five bands,
+written `tier-1` … `tier-5`**, approximately proportionate to effort per
+[module 20 §12.3b](../../../docs/world/20-province-design.md):
+
+| tier | what it pays |
+|---|---|
+| `tier-1` | incidental — shelter, a little salvage, rumour, a service you could get anywhere |
+| `tier-2` | a normal reason to make the trip: trade, supplies, reagents, a small cache, faction contact |
+| `tier-3` | worth a detour and a risk: a dungeon's worth of loot, a real quest hook, a unique service |
+| `tier-4` | a landmark payoff — a boss and its hoard, an artefact, a faction unlocked |
+| `tier-5` | province-unique: one-of-a-kind artefact, main-quest object, a place that changes the map |
+
+Four incompatible vocabularies were converted in one pass (`tier-N`,
+bare integers, `TN`, and the interior's three-band `low/medium/high/unique`).
+The word scale maps `low→tier-1, medium→tier-2, high→tier-3, unique→tier-5`:
+rank-preserving, but a 3-band file cannot express `tier-4`, so the interior
+currently has none — promoting specific interior sites to `tier-4` is a
+reward-pass call, not a rename. `"tier-2 hub"` collapsed to `tier-2`.
+
+## `relations` — conventions
+
+- `dependsOn` / `supplies` / `rivals` / `patrols` / `visibleFrom` — **place IDs
+  only**, and directional: `A.supplies = [B]` means goods/labour/authority flow
+  A → B.
+- `tolls` — the place ID that levies on this place (or that this place levies).
+- `reachedVia` — place IDs of the node a traveller sets out from or arrives
+  through. Every record carries at least one.
+- `travelServiceEdges` — service strings, **not** IDs:
+  `"<mode>:<a>-<b>"`, mode ∈ boat / ferry / road / cart / porter / lighter /
+  guide / portage / rootworm / pilot; or `"service:<id>"`, a `travel-services.json`
+  service id (checked by gate `record.coherence`).
+- `visibleFrom` stays near-empty until Part 3: the scour found the province has
+  almost no long sightlines, so a claimed sightline needs a canopy-breaking
+  landmark and, ideally, plotted positions.
+- Cross-region links are the point — the derivation agents could not see each
+  other. Only reference IDs that exist; the validator and `npm test` check.
+
+## schemaVersion 2 — purpose, stance, interior, contents (2026-09-03)
+
+Owner feedback at touchpoint ② (decision 0041 Part 4 step 2): the records said
+*why a place exists* but not *why the player should go*, who starts a fight
+there, what is inside, or what you find. Four typed blocks were added to every
+record (vocabularies in `catalogue.py`; design and the reference-game research
+in [docs/research/placement-settlements/place-purpose-hostility-and-dungeon-balance.md](../../../docs/research/placement-settlements/place-purpose-hostility-and-dungeon-balance.md)):
+
+| block | what it answers | key fields |
+|---|---|---|
+| `playerPurpose` | why going here changes the player's experience | `primary` (16 purposes), `secondary[]`, `impact` mild/real/major/province-changing, `hook` (one plain sentence), `reviewed` |
+| `hostility` | who starts it | `baseline` hostile/guarded/wary/neutral/friendly/sanctuary, `owner`, `flips[]` ({to, when} in the quests-85 vocabulary), `clearable`, `respawn` |
+| `interior` | the Phase 12 placeholder | `kind` none/building/delve/dungeon/complex/warren, `family` (module 70 §47), `sizeBand` S0–S4, `wetFraction`, `entranceCount`, `exteriorShell`, `programRef` |
+| `contents` | what you find (Phase 13 placeholder) | ≤4 `creatures` / `npcs` / `loot` slots, each `{slotId, role, registerRef: null, …}` |
+
+`lootTable.kinds` is now the 20-value `REWARD_KINDS` list (was ~130
+free-text labels). `dangerTier` (how lethal) and `hostility.baseline` (who
+starts it) are orthogonal — a D4 leviathan pool is `neutral`; a D1 toll gate is
+`guarded`. The migration (`worldgen.migrate_catalogue_v2`) filled every block
+heuristically and set `playerPurpose.reviewed: false`; the per-region review
+pass flips it as it corrects each record.
+
+**Routes and travel.** Route references (`relations.patrols`/`tolls`,
+`travelServiceEdges`) must resolve in the **route registry**
+`world/sources/routes/registry.json` (`worldgen.route_registry`; ids
+`route.road.*`, `route.boat.*`, `route.track.*`; legacy spellings are aliases).
+A record that sells passage carries `travelStation {modes[], destinations[]}` —
+the Morrowind-style pay-and-go network; destinations must be live records that
+are stations themselves.
+Each major city boards a boat at one harbour, resolved from
+`world/sources/routes/harbour-stations.json`, whose rows carry the `stationId`
+of the station a traveller actually boards at.
+
+## schemaVersion 2 record fields added by 16g
+
+Nine fields, added to the same schemaVersion 2 records by
+`worldgen.migrate_catalogue_16g`. The validator in `worldgen/catalogue.py` is
+still the source of truth; this is the one-line index.
+
+- `schemaVersion` — required on every record. The file-level number is the
+  maximum over its records, so a file can never claim a shape none of its
+  records has.
+- `designGroup` — `group.<slug>`, a row in `design-groups.json`: places that
+  are one design, blueprinted and built together.
+- `coSitedWith[]` — `{place, relation, measurement}` for a pair designed
+  together; `worldgen.co_siting --check` measures every row on the ground.
+- `ownerGuided` / `vasteiTutorialScene` — the owner is hands-on here; the
+  tutorial flag is only valid on an owner-guided record.
+- `reservedFor` — ground held for one purpose (`player-stronghold`), at most
+  one live record per value.
+- `heroHist.status` — `hero` or `reserve`, and `reserve` exactly when
+  `powerSlot` is null. Ten live records hold a power slot.
+- `footprintRadiusM` / `footprintSource` — the ground the place occupies, on
+  every record with a `positionM`. `band` is the type recipe's radius,
+  `blueprint` a measured build, `polygon` a drawn shape.
+- `footprintPolygon` — `[[x, z], ...]` in metres for an M4 or M5 record whose
+  shape matters; it must contain the record's own dot.
+- `cityLayout` — `{gate, centre, way, source}` for an M5 record: where you
+  come in, where you are going, and the street between them.
+- `underwaterAccessDetail` — how you get into a place whose way in is under
+  water: the gating, where you surface, whether there is air, how deep.
+
+`design-groups.json` carries `{schemaVersion, groups: [{id, anchor, members,
+loreReason, maxSpreadM}]}`, where `maxSpreadM` is how far each member may
+stand from the group's anchor. A row is the reason two records may stand inside
+each other's footprint: one agent blueprints and builds them together. It is
+registered in both `tooling/repo-standards` registries.
+
+## interior promises (schemaVersion 3, 16g)
+
+What must be *inside* a dungeon-kind place, promised with the place. The design
+statement is
+[docs/world/70-dungeons-interiors.md](../../../docs/world/70-dungeons-interiors.md)
+§48 and the binding schema is `worldgen/catalogue.py`; the two never disagree.
+Filled by `worldgen.migrate_interior_promises` from fields the record already
+carries, then `worldgen.quest_promises` adds the pins the quest plan asks for.
+
+| field | what it promises |
+|---|---|
+| `interior.verticalRelationship` | below / behind / within / above-and-below / across-water — on every record with an interior, buildings included |
+| `interior.roomFunctions[]` | the ordered reveal, from the closed room list; at least `entrance` plus one, and what the family needs, never a menu |
+| `interior.loop` | none / shortcut-back / second-entrance / vertical-return / water-loop; a second entrance implies second-entrance |
+| `interior.traversal` | `{swimM, diveM, climbM, breathGated, current, darkFraction}` — what the body must do, so a capability profile can answer "can I" |
+| `interior.combatSpaces[]` | ≤ 3 `{scale, footing, clearance}` intents; Phase 12 compiles the §49 blueprint from them |
+| `interior.anchorSockets[]` | `{id, kind, whereInInterior, provision?}` — the pins the quest and loot compilers address; a `provision` must already be on `questHooks.provisions` |
+| `interior.light` | daylit / torchlit / bioluminescent / dark / mixed |
+| `interior.lock` | none / simple / hard / unpickable-key / quest-sealed |
+| `contents.*[].whereInInterior` | entrance / threshold / main / deep / boss / hidden / flooded / above, on every slot |
+
+`interior.factsVariedForVariety` records the facts the sameness pass changed
+on a record (one size band, one more entrance, the exterior shell) so the pass
+is idempotent and the review can see which places were made different on
+purpose. `worldgen.migrate_interior_promises --refresh <ids|all>` re-derives
+every promise from the facts after one of them changes; run
+`worldgen.quest_promises --apply` after it, because a refresh rebuilds the
+socket list.
+
+Every family maps to a realisation recipe in
+[`interior-recipes.json`](interior-recipes.json) backed by a kit that exists in
+`apps/world-studio/public/kits/` or `tooling/asset-pipeline/output/kits/`; a
+family with no recipe is re-typed or sourced, never promised. Two live
+dungeon-kind records of one family within 2 km may not agree on more than three
+of the seven promise axes — `test_catalogue` is the gate.
+
+## `services[]` — which services, not "services" (2026-09-05)
+
+`lootTable.kinds: ["services"]` said a place had some; it never said which,
+so nothing could check that the blueprint built any. Every live
+settlement/civic record and every service-hub now carries `services[]` from the
+closed `catalogue.SERVICES` vocabulary. **It is derived, never hand-authored**:
+`python3 -m worldgen.derive_services --apply` writes it from magnitude, culture,
+player purpose, travel station and NPC roles. That module's docstring is the
+rule table. `worldgen.blueprint_promises` then checks the blueprint delivers
+each one (module 97 E9). Changing what a place offers means changing the record
+fields that the rules read, or the rules themselves, not the list.
+
+**Siting rationale never goes in the prose.** When the sources put a canon
+subject somewhere else, or say nothing, the reason we placed it where we did
+goes in `sitingNote` (or in `sources`), not in `why.founding`. Provenance voice
+("Canon:", "canon says", "we place it here deliberately") is banned inside world
+text by [quests 60 §45e.1](../../../docs/quests/60-writing-and-lore.md); state the
+fact in the record and put the citation in `sources`.
+
+**Reserved edges.** Any relation whose target is deferred or cut lives in
+`relationsReserved` (same shape as `relations`), never in `relations` — the
+validator fails on a live edge to a non-live record. Promote the target and
+move the edge back.
+
+## Per-region naming register and signature asset pool
+
+The variety critique's finding was that a reader could not tell one region's
+records from another's by name or by kit — every region reached for the same
+few families, and "The …" did the work of a register. Each region now has a
+**naming register** (the grammar its names obey) and a **signature pool** (the
+two or three asset families that are *disproportionately* its own, on top of
+the province-common base). Names follow the **region's dominant naming culture** while *speech* follows the
+layered speaker model in [docs/standards/text/culture-registers.md](../../../docs/standards/text/culture-registers.md)
+(race + upbringing + region + faction), so a Khajiit in a verb-clause-named town
+still speaks as a Khajiit. Both are descriptive of what the eight files now
+contain — check against this table before adding a record, and if a new record
+needs a name or a kit outside its region's row, say why in `why.founding`.
+
+**Province-common base**, used everywhere and therefore signifying nothing:
+`clutter`, `stockade-scaffold`, `lights-general`, `market-tents`,
+`mud-mother-grove`, `fences-wattle`.
+
+| region | naming register | signature pool (beyond the base) | avoid |
+|---|---|---|---|
+| `hist-heartland` | the settlement-root idiom: the definite-article abstract noun, naming a *condition* rather than a thing — "The Held Breath", "The Staying Stone", "The Lit Fen"; hyphenated verb-names for people-places ("Keeps-the-Egg") | `totems-ritual`, `argonian-lights`, `argonian-props`, `xanmeer-tileset`, `hist-tree` | Imperial anything; stone; reed |
+| `naga-kur-deeps` | the same definite-article idiom pulled harsh and physical — "The Unmaking Yard", "Teeth-Pens", "Nine-Stakes Field"; counts and stakes instead of virtues | `xanmeer-tileset`, `submerged-blocks`, `submerged-ruins`, `argonian-props` | anything dressed, painted or bright; Imperial signage |
+| `saxhleel-coast` | the hyphenated-verb register at its purest — over half the names are a clause: "Reaches-The-Low-Branch", "Two-Marks-One-Rope", "Speaks-Below-The-Water" | `docks-piers`, `submerged-ruins`, `fishing-props`, `passerelles-walkway` | Dunmer; farmhouse; fort |
+| `mercantile-coast` | trade-register: exonyms and compass compounds a foreign clerk could write down — "Alten Meerhleel", "Chasepoint", "Ashfield" — with the hyphenated-verb names surviving in the Argonian quarter | `docks-piers`, `boats-keeled`, `signage-blank`, `vanilla-shackkit` | "The …" (5 uses; keep it that way) |
+| `pirate-freeholds` | sailor's shorthand: the shortest thing that can be shouted across water — "Bundle Racks", "No-Tree", "Five-Sixty Field", "The Quay Room" | `bmv-fort`, `signage-blank`, `boats-keeled`, `vanilla-farmhouse` | ceremony; long names; hyphenated verb-clauses |
+| `imperial-penal-south` | administrative register — the name a *long-dead* cordon or ledger gave a place (the prison bureaucracy is history, not live; its names survive it): "Holding Fields, Cordon Three", "The Windlass Reckoning", "Open House" | `bmv-fort`, `docks-piers`, `submerged-ruins`, `vanilla-farmhouse` | Argonian verb-names outside the Argonian records (2 of 21, correctly) |
+| `imperial-fringe` | two registers side by side, and the seam is the point: Colovian possessives and plain descriptors ("Cartwright's Cross", "Cassian's Holding", "Burnt Field") against Argonian verb-names ("Carries-Them-Home") | `imperial-keep` (civic/military), `hlaalu-domestic` (Imperial domestic), `landmark-civic`, `signage-blank`, `bridges`; `vanilla-farmhouse` now only on mixed/Argonian records | mixing the two registers *within* one name |
+| `dunmer-north` | Velothi/House names on the Morrowind side ("Andalen Plantation", "Gandranen Ruins", "Greylight"), Argonian verb-names on the marsh side, and English-compound road names on the road itself ("Channel Cross", "Nine Fords") | `dunmer-telvanni`, `vanilla-farmhouse`, `landmark-civic`, `guar-pens` | Imperial civic kit; anything coastal |
+
+## `questHooks` — the join with the quest plan (co-design pass, 2026-09-04)
+
+`questHooks` is `{ provisions, tags, opportunity, tierOwnership }`:
+
+- **`provisions`** — `quest.provision.<slug>` ids. Each one answers a *World-generation
+  provision* declared in [docs/quests/30](../../../docs/quests/30-main-quest.md),
+  [40](../../../docs/quests/40-factions.md) or [50](../../../docs/quests/50-side-quests.md):
+  the §11 tag is dropped and dots/underscores become dashes, so
+  `LOC helstrom.archive` → `quest.provision.helstrom-archive`. Canon-supplied
+  places from quests 20 §12b use `quest.provision.canon.<slug>`; a line or local
+  quest with no named `LOC` uses `quest.provision.<qid>-anchor`.
+- **`tags`** — the quests-20 §11 vocabulary (`LOC`, `APP`, `WATER`, `STEALTH`…).
+- **`opportunity`** — one line of prose from the region agent: what a quest
+  *could* do here. This is the places → quests direction and nothing else
+  records it; keep it when you edit a record.
+- **`tierOwnership`** — `"<quest or line id> · tier-N"`, semicolon-joined,
+  lowest tier first. A place owned by tier 0 or 1 may not be written by a lower
+  tier (quests 40 §30b).
+
+**The full map, the gaps and the standing rules are
+[docs/quests/25-quest-place-map.md](../../../docs/quests/25-quest-place-map.md)** —
+read it before adding, moving or cutting a record.

@@ -1,0 +1,475 @@
+{
+ "schemaVersion": 1,
+ "domain": "detection",
+ "_": "The detection home table (2.10a, decision 0151; contract lanes/2.10/briefs/rules.md). `entries` are the profiles a person and each enemy archetype own whole; a creature's sense ranges (cone, sight, hearing, scent) stay in its creatures.json `notice` (their one home) and `defaults` add its spot, alarm radius and search timeout. `tables` hold the noise, light, sneak-attack, eye and searching rows. Every number names its passage in `valueSources`; `blockers` lists what the design does not carry yet. `worldgen.stealth_views` validates this and writes packages/game-core/src/perception/data/detection.json.",
+ "defaults": {
+  "spot": {
+   "person": 40,
+   "archetype": 40,
+   "creature": 30
+  },
+  "alarmRadius": "hearingM",
+  "searchTimeoutS": 6
+ },
+ "tables": {
+  "noise": {
+   "gait": {
+    "still": 0,
+    "sneak": 0.05,
+    "walk": 0.25,
+    "run": 0.45
+   },
+   "armourClass": {
+    "none": 1,
+    "light": 1.61,
+    "medium": 1.88,
+    "heavy": 2.01
+   },
+   "surface": {
+    "material.soil": 1,
+    "material.peat": 1,
+    "material.mud": 1,
+    "material.wood": 1,
+    "material.bark": 1,
+    "material.bone": 1,
+    "material.stone": 1,
+    "material.metal": 1,
+    "material.ceramic": 1,
+    "material.foliage": 1,
+    "material.water": 1,
+    "material.flesh": 1,
+    "material.glass": 1,
+    "material.fungus": 1,
+    "material.heart-mud": 1
+   }
+  },
+  "light": [
+   {
+    "below": 0.25,
+    "factor": 0.5625
+   },
+   {
+    "below": 0.5,
+    "factor": 0.6875
+   },
+   {
+    "below": 0.75,
+    "factor": 0.8125
+   },
+   {
+    "below": 1.0001,
+    "factor": 0.9375
+   }
+  ],
+  "sneakAttack": {
+   "bands": [
+    {
+     "skillAtLeast": 0,
+     "byClass": {
+      "dagger": 3,
+      "shortBlade": 2.5,
+      "oneHanded": 2,
+      "twoHanded": 2,
+      "bow": 2,
+      "unarmed": 2,
+      "spell": 1.5
+     }
+    },
+    {
+     "skillAtLeast": 20,
+     "byClass": {
+      "dagger": 5,
+      "shortBlade": 3.5,
+      "oneHanded": 2.5,
+      "twoHanded": 2.5,
+      "bow": 3,
+      "unarmed": 2.5,
+      "spell": 2
+     }
+    },
+    {
+     "skillAtLeast": 40,
+     "byClass": {
+      "dagger": 7,
+      "shortBlade": 4.5,
+      "oneHanded": 3,
+      "twoHanded": 3,
+      "bow": 4,
+      "unarmed": 3,
+      "spell": 2.5
+     }
+    },
+    {
+     "skillAtLeast": 60,
+     "byClass": {
+      "dagger": 10,
+      "shortBlade": 6,
+      "oneHanded": 4,
+      "twoHanded": 3.5,
+      "bow": 5,
+      "unarmed": 3.5,
+      "spell": 3
+     }
+    },
+    {
+     "skillAtLeast": 80,
+     "byClass": {
+      "dagger": 13,
+      "shortBlade": 7,
+      "oneHanded": 5,
+      "twoHanded": 4,
+      "bow": 6.5,
+      "unarmed": 4,
+      "spell": 3.5
+     }
+    },
+    {
+     "skillAtLeast": 100,
+     "byClass": {
+      "dagger": 15,
+      "shortBlade": 8,
+      "oneHanded": 6,
+      "twoHanded": 5,
+      "bow": 8,
+      "unarmed": 4.5,
+      "spell": 4
+     }
+    }
+   ],
+   "withheldWhen": [
+    "aware",
+    "boss",
+    "warded"
+   ]
+  },
+  "eye": {
+   "unaware": "hidden",
+   "suspiciousRising": "caution",
+   "suspiciousNearThreshold": "danger",
+   "searching": "danger",
+   "engaged": "detected",
+   "nearThresholdFraction": 0.65
+  },
+  "searching": {
+   "sneakAttackMul": 1
+  },
+  "water": {
+   "sneakStance": false,
+   "submergedSplash": 0,
+   "sightFromAboveWhenSubmerged": false
+  },
+  "scent": {
+   "_": "The scent of the one actor the user controls (0157 ruling 11). A row lowers the share of that scent a nose receives: `factor` against every nose, `against` replacing it for the named creatures. A `coat` is a timed `ability` entry on the effect stack (field `scentMultiplier`, source id = the row id); coats share the one field, so the coat put on last sets it. The `against` of every worn coat and carried ward holds. The `state` row multiplies the stack's value. `ground` is the physical-materials ids where a coat is taken by crouching still (the wallow); `item` is the item row that gives the coat or is the carried ward; `airOnly` rows do not touch a nose that is itself in the water.",
+   "rows": [
+    {
+     "id": "scent.submerged",
+     "name": "Submerged",
+     "kind": "state",
+     "factor": 0.3,
+     "against": {},
+     "airOnly": true
+    },
+    {
+     "id": "scent.mud-wallow",
+     "name": "Mud wallow",
+     "kind": "coat",
+     "factor": 0.3,
+     "against": {},
+     "ground": [
+      "material.mud",
+      "material.heart-mud"
+     ],
+     "durationSeconds": 34.0
+    },
+    {
+     "id": "scent.eel-slime",
+     "name": "Eel slime",
+     "kind": "coat",
+     "factor": 0.3,
+     "against": {
+      "creature.ripper-eel": 0
+     },
+     "item": "item.eel-slime-salve",
+     "durationSeconds": 34.0
+    },
+    {
+     "id": "scent.pahnjee",
+     "name": "Pahnjee",
+     "kind": "carried",
+     "factor": 1,
+     "against": {
+      "creature.bog-blight": 0
+     },
+     "item": "item.pahnjee"
+    }
+   ]
+  }
+ },
+ "valueSources": {
+  "profiles": "person and archetype cone, sight, scent: detection.ts:217 NOTICE_PROFILES.humanoid and enemyArchetypes.ts:81 PLACEHOLDER_PERCEPTION (today's numbers); hearing 20: the creature rows' common figure (notice-profiles.json, 2.7b1)",
+  "defaults.spot": "detection.ts:217-218 spotScore (humanoid 40, beast 30): today's code numbers, carried unchanged; see blockers",
+  "defaults.alarmRadius": "lore topics/skyrim-sneak-detection.md section 1: combat pulls in faction mates 'within hearing/range' (EXTRAPOLATED): the alarm reaches as far as the observer hears",
+  "defaults.searchTimeoutS": "decision 0092 section 2: engaged falls back to suspicious after 6 s unseen",
+  "noise.gait": "packages/game-core/src/perception/noise.ts NOISE_LOUDNESS (0092 section 3): walkSneaking 0.05, walk 0.25, run 0.45; still 0 from skyrim-sneak-detection.md section 2 ('Zero when not moving')",
+  "noise.armourClass": "skyrim-sneak-detection.md section 2: sound = 12 + armour weight x 0.5; factor = (12 + W/2)/12 for the mean full-set weight W of items.json sets (no shield): light (weightScale < 0.9, materials.ts:80) studded/elven/glass 14.6 kg -> 1.61; heavy daedric/dwarven/ebony/iron/orcish/steel 24.2 kg -> 2.01; medium (materials.ts has two classes; kept for the contract) the mean of every set 21.0 kg -> 1.88",
+  "noise.surface": "no passage carries a surface factor; every material 1 (no surface term) until one does: blocker",
+  "light": "decision 0092 section 1 and world/76 section 118: light x0.5 dark -> x1 lit (detection.ts lightFactor = 0.5 + 0.5 x level); a band's factor is the formula at its midpoint",
+  "sneakAttack.bands": "world/76 section 121.5, the Sneak-skill band table verbatim",
+  "sneakAttack.withheldWhen": "world/76 section 121.5 and 0151's first ruling (owner ruling 2.10b): the multiplier is withheld from an aware, boss or warded target; there is neither a one-shot rule nor a band cap, the blow deals multiplier x damage and kills only when that is lethal",
+  "eye": "lanes/2.10/briefs/rules.md contract and skyrim-sneak-detection.md section 1 (four states, worst wins); nearThresholdFraction 0.65 is the midpoint of suspiciousAt 0.3 and engaged 1 (a reading threshold for the eye, not gameplay; planner ruling)",
+  "searching.sneakAttackMul": "skyrim-sneak-detection.md section 3: 'A second sneak attack is possible if the eye is not yet fully open': a searching observer still takes the whole table",
+  "water.sneakStance": "docs/phases/2-slice/2.12-swim-and-climb.md section d: no sneak stance in water (Morrowind and Skyrim both stand a swimmer up; the stroke is the gait). A surface stroke is heard as gait x armour class x the noise.surface material.water row, the stroke's splash: a slow stroke reads the walk gait, sprint-swim the run gait",
+  "water.submergedSplash": "2.12 section d: under the surface the stroke breaks no water, so the splash is multiplied by 0 while the head is under (the still gait's 0, skyrim-sneak-detection.md section 2 'Zero when not moving', applied to the surface the observers hear through)",
+  "water.sightFromAboveWhenSubmerged": "2.12 section d: a submerged body breaks the line of sight from an observer whose eyes are above the surface, at any distance (a deck, the bank); an observer under the surface looks as on land. The broken line is the notice service's own blocked-line rule (detection.ts NOTICE_TUNING.blockedLineOfSight)",
+  "scent.submerged": "A body under the surface has water between it and an air-breathing nose, as a blocked line of sight has between it and an eye: it keeps the share the notice service already gives a stimulus past a barrier, NOTICE_TUNING.blockedLineOfSight 0.3 (cross-check §4; detection.ts, held equal by scent.test.ts). `airOnly`: a nose in the water smells the water around the swimmer, so a submerged swimmer keeps full scent against it. Water-vibration is a separate sense and is unchanged.",
+  "scent.mud-wallow": "lore topics/loading-facts.md:139 (`fact.wallowing`, Lore:Argonian CANON_EXPLICIT): marsh-born Argonians wallow in cool mud, which coats the scales. The coat is a barrier between skin and air: the same blocked-stimulus share, 0.3. Taken by crouching still on mud ground (`ground`); the duration is one potion-tier span, 34.0 s, the salve's own (ingredients-alchemy.md:64).",
+  "scent.eel-slime": "lore topics/ecology-encounters-loot.md:80 (Lore:Ripper Eel CANON_EXPLICIT): ripper eels 'do not attack people who have rubbed themselves with eel-slime', so the eels' own row is 0. Against any other nose the slime is a coat like the wallow's: 0.3. Duration 34.0 s: the salve's chameleon effect (ingredients-alchemy.md:64).",
+  "scent.pahnjee": "lore topics/fauna-hazards.md:25 and loading-facts.md:147 (`fact.pahnjees`, Lore:Argonian CANON_EXPLICIT): pahnjees are racks of oily spoiled meat that mask a living person's scent from bog blights; the blights' row is 0 while one is carried. It is a ward against the blights only: every other nose keeps full scent (factor 1)."
+ },
+ "blockers": [
+  "spot per archetype and creature: world/76 section 118 defines spot as the observer's Sneak + Agility/5 and section 128 gives every actor one shared character schema, but compileCharacter does not grow skills with band level (a D5 warrior compiles Sneak 5) and creatures carry no Sneak (Morrowind's creature Stealth skill has no row); the code numbers 40/30 stand until section 128 carries actor skills by band",
+  "surface factor by physical material: no passage in world/76, 0092 or the dossiers"
+ ],
+ "entries": [
+  {
+   "id": "detection.person",
+   "name": "A person's senses",
+   "kind": "detection-profile",
+   "status": "derived",
+   "of": "person",
+   "sources": [
+    "packages/game-core/src/perception/detection.ts:217",
+    "docs/decisions/0092-stealth-is-a-detection-service-the-runtime-feeds.md"
+   ],
+   "notes": "Folded from notice-profiles.json notice.person (2.7b1); sight, cone and scent are NOTICE_PROFILES.humanoid, hearing 20 the creature rows' common figure.",
+   "coneDeg": 120,
+   "sightM": 30,
+   "hearingM": 20,
+   "scentM": 0,
+   "senses": [
+    "sight",
+    "hearing"
+   ]
+  },
+  {
+   "id": "detection.hollow-warden",
+   "name": "The hollow warden's senses",
+   "kind": "detection-profile",
+   "status": "derived",
+   "of": "hollow-warden",
+   "sources": [
+    "packages/game-core/src/actors/enemyArchetypes.ts:81",
+    "docs/decisions/0092-stealth-is-a-detection-service-the-runtime-feeds.md"
+   ],
+   "notes": "An enemy archetype: PLACEHOLDER_PERCEPTION's cone (half-angle 60) and range; hearing as a person's.",
+   "coneDeg": 120,
+   "sightM": 30,
+   "hearingM": 20,
+   "scentM": 0,
+   "senses": [
+    "sight",
+    "hearing"
+   ]
+  },
+  {
+   "id": "detection.dagger-warden",
+   "name": "The dagger warden's senses",
+   "kind": "detection-profile",
+   "status": "derived",
+   "of": "dagger-warden",
+   "sources": [
+    "packages/game-core/src/actors/enemyArchetypes.ts:81",
+    "docs/decisions/0092-stealth-is-a-detection-service-the-runtime-feeds.md"
+   ],
+   "notes": "An enemy archetype: PLACEHOLDER_PERCEPTION's cone (half-angle 60) and range; hearing as a person's.",
+   "coneDeg": 120,
+   "sightM": 30,
+   "hearingM": 20,
+   "scentM": 0,
+   "senses": [
+    "sight",
+    "hearing"
+   ]
+  },
+  {
+   "id": "detection.shield-warden",
+   "name": "The shield warden's senses",
+   "kind": "detection-profile",
+   "status": "derived",
+   "of": "shield-warden",
+   "sources": [
+    "packages/game-core/src/actors/enemyArchetypes.ts:81",
+    "docs/decisions/0092-stealth-is-a-detection-service-the-runtime-feeds.md"
+   ],
+   "notes": "An enemy archetype: PLACEHOLDER_PERCEPTION's cone (half-angle 60) and range; hearing as a person's.",
+   "coneDeg": 120,
+   "sightM": 30,
+   "hearingM": 20,
+   "scentM": 0,
+   "senses": [
+    "sight",
+    "hearing"
+   ]
+  },
+  {
+   "id": "detection.greatsword-warden",
+   "name": "The greatsword warden's senses",
+   "kind": "detection-profile",
+   "status": "derived",
+   "of": "greatsword-warden",
+   "sources": [
+    "packages/game-core/src/actors/enemyArchetypes.ts:81",
+    "docs/decisions/0092-stealth-is-a-detection-service-the-runtime-feeds.md"
+   ],
+   "notes": "An enemy archetype: PLACEHOLDER_PERCEPTION's cone (half-angle 60) and range; hearing as a person's.",
+   "coneDeg": 120,
+   "sightM": 30,
+   "hearingM": 20,
+   "scentM": 0,
+   "senses": [
+    "sight",
+    "hearing"
+   ]
+  },
+  {
+   "id": "detection.battleaxe-warden",
+   "name": "The battleaxe warden's senses",
+   "kind": "detection-profile",
+   "status": "derived",
+   "of": "battleaxe-warden",
+   "sources": [
+    "packages/game-core/src/actors/enemyArchetypes.ts:81",
+    "docs/decisions/0092-stealth-is-a-detection-service-the-runtime-feeds.md"
+   ],
+   "notes": "An enemy archetype: PLACEHOLDER_PERCEPTION's cone (half-angle 60) and range; hearing as a person's.",
+   "coneDeg": 120,
+   "sightM": 30,
+   "hearingM": 20,
+   "scentM": 0,
+   "senses": [
+    "sight",
+    "hearing"
+   ]
+  },
+  {
+   "id": "detection.warhammer-warden",
+   "name": "The warhammer warden's senses",
+   "kind": "detection-profile",
+   "status": "derived",
+   "of": "warhammer-warden",
+   "sources": [
+    "packages/game-core/src/actors/enemyArchetypes.ts:81",
+    "docs/decisions/0092-stealth-is-a-detection-service-the-runtime-feeds.md"
+   ],
+   "notes": "An enemy archetype: PLACEHOLDER_PERCEPTION's cone (half-angle 60) and range; hearing as a person's.",
+   "coneDeg": 120,
+   "sightM": 30,
+   "hearingM": 20,
+   "scentM": 0,
+   "senses": [
+    "sight",
+    "hearing"
+   ]
+  },
+  {
+   "id": "detection.pike-warden",
+   "name": "The pike warden's senses",
+   "kind": "detection-profile",
+   "status": "derived",
+   "of": "pike-warden",
+   "sources": [
+    "packages/game-core/src/actors/enemyArchetypes.ts:81",
+    "docs/decisions/0092-stealth-is-a-detection-service-the-runtime-feeds.md"
+   ],
+   "notes": "An enemy archetype: PLACEHOLDER_PERCEPTION's cone (half-angle 60) and range; hearing as a person's.",
+   "coneDeg": 120,
+   "sightM": 30,
+   "hearingM": 20,
+   "scentM": 0,
+   "senses": [
+    "sight",
+    "hearing"
+   ]
+  },
+  {
+   "id": "detection.halberd-warden",
+   "name": "The halberd warden's senses",
+   "kind": "detection-profile",
+   "status": "derived",
+   "of": "halberd-warden",
+   "sources": [
+    "packages/game-core/src/actors/enemyArchetypes.ts:81",
+    "docs/decisions/0092-stealth-is-a-detection-service-the-runtime-feeds.md"
+   ],
+   "notes": "An enemy archetype: PLACEHOLDER_PERCEPTION's cone (half-angle 60) and range; hearing as a person's.",
+   "coneDeg": 120,
+   "sightM": 30,
+   "hearingM": 20,
+   "scentM": 0,
+   "senses": [
+    "sight",
+    "hearing"
+   ]
+  },
+  {
+   "id": "detection.rapier-warden",
+   "name": "The rapier warden's senses",
+   "kind": "detection-profile",
+   "status": "derived",
+   "of": "rapier-warden",
+   "sources": [
+    "packages/game-core/src/actors/enemyArchetypes.ts:81",
+    "docs/decisions/0092-stealth-is-a-detection-service-the-runtime-feeds.md"
+   ],
+   "notes": "An enemy archetype: PLACEHOLDER_PERCEPTION's cone (half-angle 60) and range; hearing as a person's.",
+   "coneDeg": 120,
+   "sightM": 30,
+   "hearingM": 20,
+   "scentM": 0,
+   "senses": [
+    "sight",
+    "hearing"
+   ]
+  },
+  {
+   "id": "detection.claw-warden",
+   "name": "The claw warden's senses",
+   "kind": "detection-profile",
+   "status": "derived",
+   "of": "claw-warden",
+   "sources": [
+    "packages/game-core/src/actors/enemyArchetypes.ts:81",
+    "docs/decisions/0092-stealth-is-a-detection-service-the-runtime-feeds.md"
+   ],
+   "notes": "An enemy archetype: PLACEHOLDER_PERCEPTION's cone (half-angle 60) and range; hearing as a person's.",
+   "coneDeg": 120,
+   "sightM": 30,
+   "hearingM": 20,
+   "scentM": 0,
+   "senses": [
+    "sight",
+    "hearing"
+   ]
+  },
+  {
+   "id": "detection.archer-warden",
+   "name": "The archer warden's senses",
+   "kind": "detection-profile",
+   "status": "derived",
+   "of": "archer-warden",
+   "sources": [
+    "packages/game-core/src/actors/enemyArchetypes.ts:81",
+    "docs/decisions/0092-stealth-is-a-detection-service-the-runtime-feeds.md"
+   ],
+   "notes": "An enemy archetype: PLACEHOLDER_PERCEPTION's cone (half-angle 60) and range with the archer's 45 m; hearing as a person's.",
+   "coneDeg": 120,
+   "sightM": 45,
+   "hearingM": 20,
+   "scentM": 0,
+   "senses": [
+    "sight",
+    "hearing"
+   ]
+  }
+ ]
+}

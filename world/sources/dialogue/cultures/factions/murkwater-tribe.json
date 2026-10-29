@@ -1,0 +1,184 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "_": "Faction and office sheets for The Murkwater tribe (lane 2.5a2). Ranks: the registry ladder (associate, member, senior); named offices beyond it are listed by their own rank slug.",
+ "entries": [
+  {
+   "id": "culture.faction.murkwater-tribe",
+   "level": "faction",
+   "name": "The Murkwater tribe",
+   "parent": "culture.province.black-marsh",
+   "factionId": "faction.murkwater-tribe",
+   "norms": [
+    {
+     "text": "Hunters and trainers; a beast is judged by its work.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Killing a trained beast.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "The hunt.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Poachers.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "work": {
+     "lean": 1,
+     "text": "Hunting and training.",
+     "source": "inferred"
+    },
+    "danger": {
+     "lean": 0,
+     "text": "Beasts are dangerous only to the untrained.",
+     "source": "inferred"
+    },
+    "hist": {
+     "lean": 2,
+     "text": "The tree.",
+     "source": "world/sources/lore/topics/hist-and-sap.md"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Hunter.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [
+     {
+      "text": "By the clean kill.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "Their trails.",
+      "source": "inferred"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Poachers in the deep marsh.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "A wamasu was seen near the village.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.bright-throat-tribe",
+     "lean": 1,
+     "text": "Neighbours.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.15
+  },
+  {
+   "id": "culture.office.murkwater-tribe.senior",
+   "level": "office",
+   "name": "Murkwater kaal",
+   "parent": "culture.faction.murkwater-tribe",
+   "factionId": "faction.murkwater-tribe",
+   "rank": "senior",
+   "norms": [
+    {
+     "text": "Speaks of fights as hunts.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Boasting.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "The clean kill.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Waste.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "danger": {
+     "lean": 0,
+     "text": "Prey.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Hunter.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [
+     {
+      "text": "Clean kill.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "Trails.",
+      "source": "inferred"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Poachers.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "A wamasu.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.murkwater-tribe",
+     "lean": 2,
+     "text": "Theirs.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.1
+  }
+ ]
+}

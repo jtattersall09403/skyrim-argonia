@@ -1,0 +1,180 @@
+{
+ "cellId": "AltenDockmasterHouse",
+ "sockets": {
+  "socket.AltenDockmasterHouse.080FCE0A": {
+   "owner": "parcel.chasepoint.home-salvager",
+   "fillRule": "blanket.cook-shelf",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.river-salt",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.lumberries",
+      "count": 3
+     },
+     {
+      "item": "item.hissmir-fish-eye-rye",
+      "count": 1
+     },
+     {
+      "item": "item.turtle-shell-bowl",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.cook-shelf"
+   }
+  },
+  "socket.AltenDockmasterHouse.080FCE0B": {
+   "owner": "parcel.chasepoint.home-salvager",
+   "fillRule": "blanket.household-chest",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.leather-strips",
+      "count": 1
+     },
+     {
+      "item": "item.spine-balm",
+      "count": 1
+     },
+     {
+      "item": "item.gold",
+      "count": 6
+     }
+    ],
+    "frozenFrom": "blanket.household-chest"
+   }
+  },
+  "socket.AltenDockmasterHouse.080FCE2A": {
+   "owner": "parcel.chasepoint.home-salvager",
+   "fillRule": "blanket.fish-basket",
+   "valueTier": "trivial",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.trodh",
+      "count": 4
+     },
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     },
+     {
+      "item": "item.fishing-pole",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.fish-basket"
+   }
+  },
+  "socket.AltenDockmasterHouse.080FCE2B": {
+   "owner": "parcel.chasepoint.home-salvager",
+   "fillRule": "blanket.cook-shelf",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.river-salt",
+      "count": 2
+     },
+     {
+      "item": "item.baked-crocodile-tongue",
+      "count": 1
+     },
+     {
+      "item": "item.lumberries",
+      "count": 3
+     },
+     {
+      "item": "item.hissmir-fish-eye-rye",
+      "count": 1
+     },
+     {
+      "item": "item.turtle-shell-bowl",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.cook-shelf"
+   }
+  },
+  "socket.AltenDockmasterHouse.080FCE2D": {
+   "owner": "parcel.chasepoint.home-salvager",
+   "valueTier": "trivial",
+   "item": "item.saltrice-flatbread"
+  },
+  "socket.AltenDockmasterHouse.080FCE2E": {
+   "owner": "parcel.chasepoint.home-salvager",
+   "valueTier": "trivial",
+   "item": "item.turtle-shell-bowl"
+  },
+  "socket.AltenDockmasterHouse.080FCE2F": {
+   "owner": "parcel.chasepoint.home-salvager",
+   "valueTier": "moderate",
+   "item": "item.slaughterfish-egg"
+  },
+  "socket.AltenDockmasterHouse.080FCE30": {
+   "owner": "parcel.chasepoint.home-salvager",
+   "valueTier": "moderate",
+   "item": "item.slaughterfish-egg"
+  },
+  "socket.AltenDockmasterHouse.080FCE31": {
+   "owner": "parcel.chasepoint.home-salvager",
+   "valueTier": "moderate",
+   "item": "item.slaughterfish-egg"
+  },
+  "socket.AltenDockmasterHouse.080FCE32": {
+   "owner": "parcel.chasepoint.home-salvager",
+   "valueTier": "trivial",
+   "item": "item.snails-foot"
+  },
+  "socket.AltenDockmasterHouse.080FCE3A": {
+   "owner": "parcel.chasepoint.home-salvager",
+   "valueTier": "trivial",
+   "item": "item.cup"
+  },
+  "socket.AltenDockmasterHouse.080FCE3B": {
+   "owner": "parcel.chasepoint.home-salvager",
+   "valueTier": "trivial",
+   "item": "item.bowl"
+  },
+  "socket.AltenDockmasterHouse.080FCE3C": {
+   "owner": "parcel.chasepoint.home-salvager",
+   "valueTier": "trivial",
+   "item": "item.plate"
+  },
+  "socket.AltenDockmasterHouse.080FCE3D": {
+   "owner": "parcel.chasepoint.home-salvager",
+   "valueTier": "trivial",
+   "item": "item.plate"
+  },
+  "socket.AltenDockmasterHouse.080FCE3E": {
+   "owner": "parcel.chasepoint.home-salvager",
+   "valueTier": "trivial",
+   "item": "item.cup"
+  },
+  "socket.AltenDockmasterHouse.080FCE3F": {
+   "owner": "parcel.chasepoint.home-salvager",
+   "valueTier": "trivial",
+   "item": "item.cup"
+  },
+  "socket.AltenDockmasterHouse.080FCE40": {
+   "owner": "parcel.chasepoint.home-salvager",
+   "valueTier": "trivial",
+   "item": "item.clay-jug"
+  },
+  "socket.AltenDockmasterHouse.080FCE42": {
+   "owner": "parcel.chasepoint.home-salvager",
+   "valueTier": "trivial",
+   "item": "item.broom"
+  }
+ },
+ "schemaVersion": 1
+}

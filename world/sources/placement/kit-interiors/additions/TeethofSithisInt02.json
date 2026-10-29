@@ -1,0 +1,174 @@
+{
+ "schemaVersion": 2,
+ "cellId": "TeethofSithisInt02",
+ "additions": [
+  {
+   "id": "TeethofSithisInt02:add:door-candlehorn-01",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    -18.743,
+    3.285,
+    -19.797
+   ],
+   "rotZDeg": 0,
+   "zone": "door",
+   "why": "Lights the floor just inside the door."
+  },
+  {
+   "id": "TeethofSithisInt02:add:floor-candlehorn-02",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    19.757,
+    2.276,
+    -53.797
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "Lights a dark stretch of the temple floor so worshippers can see their way."
+  },
+  {
+   "id": "TeethofSithisInt02:add:floor-candlehorn-03",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    16.257,
+    -1.138,
+    40.703
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "Lights a dark stretch of the temple floor so worshippers can see their way."
+  },
+  {
+   "id": "TeethofSithisInt02:add:floor-candlehorn-04",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    6.257,
+    2.393,
+    -20.797
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "Lights a dark stretch of the temple floor so worshippers can see their way."
+  },
+  {
+   "id": "TeethofSithisInt02:add:floor-candlehorn-05",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    15.757,
+    2.731,
+    -19.297
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "Lights a dark stretch of the temple floor so worshippers can see their way."
+  },
+  {
+   "id": "TeethofSithisInt02:add:floor-candlehorn-06",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    9.757,
+    2.731,
+    -51.797
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "Lights a dark stretch of the temple floor so worshippers can see their way."
+  },
+  {
+   "id": "TeethofSithisInt02:add:floor-candlehorn-07",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    8.257,
+    2.731,
+    -10.797
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "Lights a dark stretch of the temple floor so worshippers can see their way."
+  },
+  {
+   "id": "TeethofSithisInt02:add:floor-candlehorn-08",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    6.757,
+    2.74,
+    -30.297
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "Lights a dark stretch of the temple floor so worshippers can see their way."
+  },
+  {
+   "id": "TeethofSithisInt02:add:floor-candlehorn-09",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    26.257,
+    2.747,
+    -18.797
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "Lights a dark stretch of the temple floor so worshippers can see their way."
+  },
+  {
+   "id": "TeethofSithisInt02:add:floor-candlehorn-10",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    -3.243,
+    2.921,
+    -18.297
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "Lights a dark stretch of the temple floor so worshippers can see their way."
+  },
+  {
+   "id": "TeethofSithisInt02:add:floor-candlehorn-11",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    7.257,
+    -0.91,
+    39.203
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "Lights a dark stretch of the temple floor so worshippers can see their way."
+  },
+  {
+   "id": "TeethofSithisInt02:add:floor-candlehorn-12",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    6.757,
+    -0.91,
+    -75.797
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "Lights a dark stretch of the temple floor so worshippers can see their way."
+  },
+  {
+   "id": "TeethofSithisInt02:add:floor-candlehorn-13",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    7.757,
+    0.049,
+    -65.297
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "Lights a dark stretch of the temple floor so worshippers can see their way."
+  },
+  {
+   "id": "TeethofSithisInt02:add:floor-candlehorn-14",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    -16.743,
+    3.494,
+    -26.797
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "Lights a dark stretch of the temple floor so worshippers can see their way."
+  }
+ ]
+}

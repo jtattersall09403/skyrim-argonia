@@ -12,24 +12,29 @@ records why it differs from both the old four parts and this repo's first P0–P
 
 ## The principle
 
-We **de-risk** before we scale. Each class of work is proved on a real, fully realised sample until the owner
-is confident the rest is leg-work; then the leg-work is done sideways. The parts run in the order of remaining
-uncertainty:
+We **de-risk** before we scale, and we build in the order of what makes the game worth playing (decision
+[0027](../decisions/0027-build-in-the-order-of-the-usps.md)): the world and its places first, then the story and
+its people, then combat closer to DS1, then the progression model, then the UI. The foundations every piece of
+content is written against (the record pipeline, the sheet, the dialogue and quest models, the quarantine, the
+save contract and the seam) come first whatever their rank. Each class of work is proved on a real, fully
+realised sample until the owner is confident the rest is leg-work; then the leg-work is done sideways.
 
 | Part | De-risks | Ends when the owner can say |
 |---|---|---|
 | [0 Foundation](0-foundation/README.md) | first, that Skyrim streamed from AWS can be played on the phone and Mac at all; then that agents can build and test it; the go/no-go spikes | "I dropped into the studio on my phone and teleported around" |
-| [1 The core loop](1-core-loop/README.md) | that the risky systems can join on this host, and that DS1 combat feels right through the stream | "this is the game I want; it is worth building" |
+| [1 The first place](1-core-loop/README.md) | that one place can be complete on this host: people who talk, a quest through the journal, the sheet, rest and death, combat on the tuned stack; the world track starts beside it | "this is the game I want; it is worth building" |
 | [2 The slice](2-slice/README.md) | that the province can be generated and every system exists whole on the slice places | "I played the slice in the studio; every system is real; the world is leg-work" |
 | [3 The game shell](3-shell/README.md) | that a player installs, starts a new game and lands in the slice | "I started a new game and reached the open world; a stranger installed it" |
 | [4 Build out sideways](4-buildout/README.md) | nothing new: packets scale what is proven | "the whole province is populated, every quest completes, and it is released" |
 
-**Part 1's exit is the last cheap moment to change host** (decision 0001's fallback is OpenMW). Its owner
-verdict is about four things:
-- combat feel through the stream;
-- the dialogue window;
-- whether the UI holds together;
+**Part 1's exit is the owner's first verdict on the game itself.** It is about four things:
+- the place: does Claywater Station feel like Black Marsh;
+- the talk: does the dialogue window feel like Morrowind;
+- the quest: can a quest be followed from the journal alone;
 - "is this the game".
+
+Combat is judged only as "good enough to carry on with" (the tuned stack; its map is 2.7). A "no" is a re-plan
+on Skyrim (the owner ruled out OpenMW on 2026-10-28).
 
 Thin content is expected and is not part of the verdict.
 
@@ -90,47 +95,42 @@ reason.
 **Part 0, [Foundation](0-foundation/README.md).**
 - 0.0 **can it be played?** vanilla Skyrim streamed to the phone and the Mac, with touch and a GameSir pad, and
   a stock souls-like feel probe (gate G0: if it fails, nothing else starts);
-- 0.1 the repo, the ways of working, the build VM and the import;
-- 0.2 the go/no-go spikes G1–G11 and the GPU box;
+- 0.1 the repo, the ways of working, the lean toolchain and the import;
+- 0.2 the go/no-go spikes G1–G5, G8, G10, G11 and the GPU box (G6 and G9 join 2.7; G7 joins 2.W2);
 - 0.3 the pinned stack, permissions and the installer;
 - 0.4 the bridge, the studio and the two runners;
 - 0.5 the record pipeline, the vanilla quarantine and the immersion inventory.
 
-**Part 1, [The core loop](1-core-loop/README.md)**, on Claywater Station and the proving ground:
+**Part 1, [The first place](1-core-loop/README.md)**, Claywater Station and the proving ground:
 - 1.1 the game-state seam;
-- 1.2 the UI foundation;
-- 1.3 talk and carry;
-- 1.4 fight;
+- 1.2 the UI, stage one: Pelagiad, the paper theme, the dialogue window and the journal;
+- 1.3 talk and carry, on the sheet;
+- 1.4 one quest through the journal;
 - 1.5 grow, die, rest, save;
-- 1.6 move: climb, swim, sail;
+- 1.6 fight on the tuned stack, wired to the sheet;
 - 1.7 the owner's verdict.
 
-**Part 2, [The slice](2-slice/README.md)**, in two tracks side by side.
-- **World track:**
-  - 2.W1 terrain and apron;
-  - 2.W2 water;
-  - 2.W3 regions, weather, light, roads and the route graph;
-  - 2.W4 vegetation, navmesh and LOD with the map image;
-  - 2.W5 the slice places, in two waves;
-  - 2.W6 performance and the world walk.
-- **Systems track:**
-  - 2.1 the sheet;
-  - 2.2 the UI whole;
-  - 2.3 items;
-  - 2.4 people;
-  - 2.5 dialogue;
-  - 2.6 trade and services;
-  - 2.7 combat;
-  - 2.8 progression, rest and death;
-  - 2.9 magic;
-  - 2.10 crafting;
-  - 2.11 stealth and crime;
-  - 2.12 quests, journal and map;
-  - 2.13 swim and climb;
-  - 2.14 marsh specials;
-  - 2.15 boats;
-  - 2.16 sound and music;
-  - 2.17 persistence and the playthrough.
+**The world track** starts after 0.2 G4 and runs beside Part 1 and Part 2 as its own lane:
+- 2.W1 terrain and apron;
+- 2.W2 water (with the stepped-river proof that was G7);
+- 2.W3 regions, weather, light, roads and the route graph;
+- 2.W4 vegetation, navmesh and LOD with the map image;
+- 2.W5 the slice places, in two waves;
+- 2.W6 performance and the world walk.
+
+**Part 2, [The slice](2-slice/README.md)**, the systems track in the order of the priorities:
+- 2.4 people;
+- 2.5 dialogue;
+- 2.12 quests, journal and map;
+- 2.3 items;
+- 2.1 the sheet whole;
+- 2.6 trade and services;
+- 2.7 combat: the map, DSR measured (G6), timing (G9), the built rows;
+- 2.8 progression, rest and death;
+- 2.2 the UI, stage two: the design system, the windows, the HUD, every screen;
+- 2.9 magic; 2.10 crafting; 2.11 stealth and crime; 2.13 swim and climb; 2.14 marsh specials; 2.15 boats;
+  2.16 sound and music;
+- 2.17 persistence and the playthrough.
 
 **Part 3, [The game shell](3-shell/README.md).**
 - 3.1 boot, main menu, loading, settings and controls;
@@ -181,15 +181,17 @@ reason.
 |---|---|---|
 | 0.0 G0 (it can be played through the stream) | everything else | if the stream or the controls fail, nothing else is worth building |
 | 0.2 G10 (the native map: where each rule lives) | 1.1 | it decides what Skyrim carries and what ArgoniaCore must (decision 0026) |
+| 0.2 G4 (Claywater built natively) | 2.W1 (the world track starts, beside Part 1) | the world is the first priority and the longest track (decision 0027) |
 | 0.4 studio and runners | every L4 check and owner check after Part 0 | nothing is tested through the new-game flow |
-| 0.1 §i the writing skills fitted to the import | 1.3 onwards (every line and quest) | all text is written through them (decision 0024) |
+| 0.1 §i the writing skills fitted to the import | 1.3 and 1.4 onwards (every line and quest) | all text is written through them (decision 0024) |
 | 0.5 pipeline | Part 1 and everything after | records are generated, never hand-made |
-| 1.7 the owner's verdict | Part 2 | the host is confirmed before the world and systems are built at scale |
+| 1.7 the owner's verdict | Part 2's systems track | the game is confirmed before the systems are built at scale; the world track does not wait |
 | 2.W5 wave 1 of the slice places | 2.4 people onwards | people, loot and quests live in those places |
 | 2.1 the sheet | 2.4 people, 2.7 combat, 3.2 character creation | every actor and formula reads it |
 | 2.3 items | 2.6 trade, 2.7 loot, 2.11 theft | they move items |
 | 2.4 people | 2.5 onwards | each one talks to, trades with, fights, robs or questions an NPC |
-| 2.7 combat | 2.8 death and respawn, 2.9 cast interrupts, 2.11 sneak blows | they read combat state |
+| 2.7 combat (the map) | 2.8 death and respawn, 2.9 cast interrupts, 2.11 sneak blows | they read combat state |
+| 1.1 the seam | 2.2 the UI stage two | views are replaced over the schema, rules untouched (decision 0027 §5) |
 | 2.17 save round trip | Part 3 | the continue flow loads what the slice saves |
 | 3.4 installer | 3.5 the stranger's install | a first playable that only the owner's box can run is not de-risked |
 | 4.1 world-builder proved, packet template written | 4.2 packets | a packet runs the proven skill unattended on minor types |

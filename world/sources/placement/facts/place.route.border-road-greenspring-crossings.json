@@ -1,0 +1,836 @@
+{
+ "schemaVersion": 1,
+ "placeId": "place.route.border-road-greenspring-crossings",
+ "facts": [
+  {
+   "id": "fact.border-road-greenspring-crossings.why-founding-1",
+   "claim": "The Border road was laid on a Dunmer line from Stormhold to Thorn.",
+   "sourceField": "why.founding",
+   "kind": "history",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.hist-heartland.greenspring.n2"
+    }
+   }
+  },
+  {
+   "id": "fact.border-road-greenspring-crossings.why-founding-2",
+   "claim": "West of the Greenspring track the road drops off the ridge into the river marsh.",
+   "sourceField": "why.founding",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.hist-heartland.greenspring.n2"
+    }
+   }
+  },
+  {
+   "id": "fact.border-road-greenspring-crossings.why-siteAdvantages-1",
+   "claim": "The road keeps to the dry strip at the mountain foot.",
+   "sourceField": "why.siteAdvantages",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.hist-heartland.greenspring.n2"
+    }
+   }
+  },
+  {
+   "id": "fact.border-road-greenspring-crossings.why-siteAdvantages-2",
+   "claim": "The road crosses two reaches of the river marsh, where the water stands up to a metre and a quarter deep.",
+   "sourceField": "why.siteAdvantages",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "ib-03",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.border-road-greenspring-crossings.why-occupantsMotive-1",
+   "claim": "The people of Greenspring keep the planks in repair because their trade goes out along this road.",
+   "sourceField": "why.occupantsMotive",
+   "kind": "activity",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.hist-heartland.greenspring.n1"
+    }
+   }
+  },
+  {
+   "id": "fact.border-road-greenspring-crossings.why-pressures-1",
+   "claim": "The marsh rots the piles in a few seasons. Greenspring has to move the station.",
+   "sourceField": "why.pressures",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.hist-heartland.greenspring.n2"
+    }
+   }
+  },
+  {
+   "id": "fact.border-road-greenspring-crossings.why-wouldChangeIf-1",
+   "claim": "A stone causeway would replace the planks if anyone paid for one.",
+   "sourceField": "why.wouldChangeIf",
+   "kind": "activity",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.hist-heartland.greenspring.n2"
+    }
+   }
+  }
+ ],
+ "world": {
+  "schemaVersion": 1,
+  "name": "the Border road crossings below Greenspring",
+  "positionM": [
+   4620.0,
+   1690.0
+  ],
+  "footprintRadiusM": 190,
+  "boundaryM": [
+   [
+    4440.0,
+    1505.0
+   ],
+   [
+    4810.0,
+    1505.0
+   ],
+   [
+    4810.0,
+    1830.0
+   ],
+   [
+    4440.0,
+    1830.0
+   ]
+  ],
+  "extentM": [
+   [
+    4440.0,
+    1505.0
+   ],
+   [
+    4810.0,
+    1505.0
+   ],
+   [
+    4810.0,
+    1830.0
+   ],
+   [
+    4440.0,
+    1830.0
+   ]
+  ],
+  "extentRadiusM": 265.2,
+  "route": {
+   "lineId": "track.hist-heartland.greenspring",
+   "kind": "footpath",
+   "name": null,
+   "from": "place.hist-heartland.greenspring",
+   "to": "network",
+   "vertexM": [
+    4806.31,
+    1828.75
+   ],
+   "offExtentM": 3.9,
+   "alongM": 82.6,
+   "lengthM": 128.8
+  },
+  "stands": [
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.bank-road.assembly.cn-deck-w-0",
+    "assetId": "vanilla:landscape/rocks/cairns/rockcairn04",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4640.6,
+     2.41,
+     1779.61
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.bank-road.assembly.cn-deck-w-1",
+    "assetId": "vanilla:landscape/rocks/rockm01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4636.91,
+     2.37,
+     1778.76
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.bank-road.assembly.cn-deck-w-2",
+    "assetId": "vanilla:landscape/rocks/rocks01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4639.99,
+     2.22,
+     1782.01
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.bank-road.assembly.po-bend-1",
+    "assetId": "vanilla:landscape/rocks/rocks02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4627.15,
+     3.92,
+     1742.48
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.bank-road.assembly.po-bend-2",
+    "assetId": "vanilla:landscape/rocks/rocks03",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4630.54,
+     3.84,
+     1744.47
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.bank-road.assembly.rk-bend-bank-0",
+    "assetId": "vanilla:landscape/rocks/rockl04",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4529.92,
+     8.16,
+     1702.1
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.bank-road.assembly.rk-bend-bank-1",
+    "assetId": "vanilla:landscape/rocks/rockm03",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4555.11,
+     6.24,
+     1704.0
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.bank-road.assembly.rk-bend-bank-2",
+    "assetId": "vanilla:landscape/rocks/rocks03",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4530.52,
+     8.24,
+     1691.62
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.bank-road.assembly.rk-bend-east-0",
+    "assetId": "vanilla:landscape/rocks/rockm04",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4582.56,
+     4.84,
+     1767.26
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.bank-road.assembly.rk-bend-east-1",
+    "assetId": "vanilla:landscape/rocks/rocks02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4572.53,
+     6.05,
+     1749.83
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.bank-road.assembly.rk-bend-east-2",
+    "assetId": "vanilla:landscape/rocks/rockpiles03",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4591.84,
+     4.71,
+     1742.21
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.bank-road.assembly.rk-verge-a-0",
+    "assetId": "vanilla:landscape/rocks/rocks01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4561.34,
+     6.3,
+     1733.23
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.bank-road.assembly.rk-verge2-0",
+    "assetId": "vanilla:landscape/rocks/rocks03",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4622.49,
+     3.1,
+     1774.01
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.bank-road.assembly.rk-verge2-1",
+    "assetId": "vanilla:landscape/rocks/rockpiles01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4609.86,
+     3.99,
+     1773.42
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.bank-road.building",
+    "assetId": "vanilla:clutter/woodfires/campfire01landoff",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     4630.0,
+     4.31,
+     1739.0
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.bank-stair.piece.1",
+    "assetId": "kotm:argonia/mudhuts/stairs02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     4475.44,
+     2.31,
+     1624.41
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.bank-stair.piece.2",
+    "assetId": "kotm:argonia/mudhuts/stairs02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     4475.49,
+     5.23,
+     1626.88
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.bank-stair.piece.3",
+    "assetId": "kotm:argonia/mudhuts/stairs02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     4475.54,
+     8.15,
+     1629.35
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.inlet-deck.piece.1",
+    "assetId": "vanilla:architecture/docks/dockstrent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     4660.99,
+     1.74,
+     1787.68
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.inlet-deck.piece.2",
+    "assetId": "vanilla:architecture/docks/dockstrent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     4667.59,
+     1.74,
+     1790.76
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.inlet-deck.piece.3",
+    "assetId": "vanilla:architecture/docks/dockstrent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     4674.18,
+     1.74,
+     1793.84
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.inlet-deck.piece.4",
+    "assetId": "vanilla:architecture/docks/dockstrent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     4680.78,
+     1.74,
+     1796.92
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.inlet-deck.piece.5",
+    "assetId": "vanilla:architecture/docks/dockstrent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     4687.38,
+     1.74,
+     1800.0
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.inlet-deck.piece.6",
+    "assetId": "vanilla:architecture/docks/dockstrent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     4693.97,
+     1.74,
+     1803.08
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.inlet-deck.piece.7",
+    "assetId": "vanilla:architecture/docks/dockstrsol01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     4700.6,
+     1.69,
+     1806.09
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.inlet-deck.piece.8",
+    "assetId": "vanilla:architecture/docks/dockstepsdown01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     4707.03,
+     -0.1,
+     1809.22
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.river-bridge.piece.1",
+    "assetId": "vanilla:architecture/docks/dockstrent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     4474.05,
+     0.15,
+     1561.44
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.river-bridge.piece.2",
+    "assetId": "vanilla:architecture/docks/dockstrent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     4474.21,
+     0.15,
+     1568.72
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.river-bridge.piece.3",
+    "assetId": "vanilla:architecture/docks/dockstrent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     4474.37,
+     0.15,
+     1576.0
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.river-bridge.piece.4",
+    "assetId": "vanilla:architecture/docks/dockstrent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     4474.53,
+     0.15,
+     1583.28
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.river-bridge.piece.5",
+    "assetId": "vanilla:architecture/docks/dockstrent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     4474.7,
+     0.15,
+     1590.56
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.river-bridge.piece.6",
+    "assetId": "vanilla:architecture/docks/dockstrent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     4474.86,
+     0.15,
+     1597.83
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.river-bridge.piece.7",
+    "assetId": "vanilla:architecture/docks/dockstrent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     4475.02,
+     0.15,
+     1605.11
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.river-bridge.piece.8",
+    "assetId": "vanilla:architecture/docks/dockstrent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     4475.18,
+     0.15,
+     1612.39
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.river-bridge.piece.9",
+    "assetId": "vanilla:architecture/docks/dockstrent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     4475.34,
+     0.15,
+     1619.67
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.river-crossing-head.assembly.cn-bridge-n-1",
+    "assetId": "vanilla:landscape/rocks/wetrocks/rockm02wet",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4476.59,
+     -0.52,
+     1550.85
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.river-crossing-head.assembly.cn-bridge-n-2",
+    "assetId": "vanilla:landscape/rocks/rockpiles01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4482.78,
+     -0.14,
+     1549.64
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.river-crossing-head.assembly.gr-verge1-0",
+    "assetId": "vanilla:clutter/burialcairn/burialcairn02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4487.0,
+     -0.07,
+     1556.0
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.river-crossing-head.assembly.rk-bridge-s-0",
+    "assetId": "vanilla:landscape/rocks/wetrocks/rockm02wet",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4481.26,
+     -0.52,
+     1618.54
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.river-crossing-head.assembly.rk-bridge-s-1",
+    "assetId": "vanilla:landscape/rocks/rocks03",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4483.85,
+     -0.26,
+     1616.68
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.river-crossing-head.building",
+    "assetId": "vanilla:landscape/rocks/cairns/rockcairn01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     4472.11,
+     -0.44,
+     1552.22
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.track-head-marks.assembly.rk-deck-e-0",
+    "assetId": "vanilla:landscape/rocks/rockm01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4726.0,
+     -0.54,
+     1793.5
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.track-head-marks.assembly.rk-deck-e-1",
+    "assetId": "vanilla:landscape/rocks/rocks02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4717.28,
+     -0.29,
+     1793.68
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.track-head-marks.assembly.rk-spur-0",
+    "assetId": "vanilla:landscape/rocks/rockl01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4762.83,
+     5.52,
+     1689.54
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.track-head-marks.assembly.rk-verge3-0",
+    "assetId": "vanilla:landscape/rocks/rockm02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4743.99,
+     -0.45,
+     1757.51
+    ]
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.track-head-marks.building",
+    "assetId": "vanilla:landscape/rocks/cairns/rockcairn02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     4806.36,
+     7.9,
+     1778.09
+    ]
+   }
+  ],
+  "sockets": [
+   {
+    "id": "socket.border-road-greenspring-crossings.den-fellrunner",
+    "kind": "fauna",
+    "area": "open",
+    "positionM": [
+     4466.4,
+     11.83,
+     1818.2
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.border-road-greenspring-crossings.den-giant-leech",
+    "kind": "encounter",
+    "area": "open",
+    "positionM": [
+     4467.3,
+     -1.27,
+     1506.8
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.border-road-greenspring-crossings.den-giant-wasp",
+    "kind": "encounter",
+    "area": "open",
+    "positionM": [
+     4747.2,
+     3.23,
+     1790.4
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.border-road-greenspring-crossings.den-moon-adder",
+    "kind": "fauna",
+    "area": "open",
+    "positionM": [
+     4441.6,
+     18.34,
+     1692.8
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.border-road-greenspring-crossings.scene-inlet-planks",
+    "kind": "marker",
+    "area": "parcel.border-road-greenspring-crossings.inlet-deck",
+    "positionM": [
+     4689.2,
+     1.74,
+     1800.83
+    ],
+    "fills": [
+     "promise.border-road-greenspring-crossings.thing-plank-crossing"
+    ]
+   },
+   {
+    "id": "socket.border-road-greenspring-crossings.scene-river-planks",
+    "kind": "marker",
+    "area": "parcel.border-road-greenspring-crossings.river-bridge",
+    "positionM": [
+     4474.77,
+     0.15,
+     1592.76
+    ],
+    "fills": [
+     "promise.border-road-greenspring-crossings.thing-plank-crossing"
+    ]
+   }
+  ],
+  "landmarks": [
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.inlet-deck.piece.1",
+    "what": "plank crossing",
+    "via": "promise.border-road-greenspring-crossings.thing-plank-crossing",
+    "positionM": [
+     4660.99,
+     1.74,
+     1787.68
+    ],
+    "inSight": {
+     "places": [],
+     "here": [
+      "socket.border-road-greenspring-crossings.den-fellrunner"
+     ]
+    }
+   },
+   {
+    "id": "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.river-bridge.piece.1",
+    "what": "plank crossing",
+    "via": "promise.border-road-greenspring-crossings.thing-plank-crossing",
+    "positionM": [
+     4474.05,
+     0.15,
+     1561.44
+    ],
+    "inSight": {
+     "places": [],
+     "here": [
+      "socket.border-road-greenspring-crossings.den-giant-leech"
+     ]
+    }
+   },
+   {
+    "id": "socket.border-road-greenspring-crossings.scene-inlet-planks",
+    "what": "inlet planks",
+    "via": "scene socket",
+    "positionM": [
+     4689.2,
+     1.74,
+     1800.83
+    ],
+    "inSight": {
+     "places": [],
+     "here": [
+      "socket.border-road-greenspring-crossings.den-giant-wasp"
+     ]
+    }
+   },
+   {
+    "id": "socket.border-road-greenspring-crossings.scene-river-planks",
+    "what": "river planks",
+    "via": "scene socket",
+    "positionM": [
+     4474.77,
+     0.15,
+     1592.76
+    ],
+    "inSight": {
+     "places": [],
+     "here": [
+      "socket.border-road-greenspring-crossings.den-moon-adder"
+     ]
+    }
+   }
+  ],
+  "people": [],
+  "counts": {
+   "open": {
+    "nodes": 0,
+    "plants": 0,
+    "items": 0,
+    "containers": 0,
+    "occupants": 0,
+    "byItem": {},
+    "byPlant": {},
+    "creatures": {
+     "creature.fellrunner": 5,
+     "creature.giant-leech": 4,
+     "creature.giant-wasp": 2,
+     "creature.moon-adder": 2
+    }
+   },
+   "parcel.border-road-greenspring-crossings.inlet-deck": {
+    "nodes": 0,
+    "plants": 0,
+    "items": 0,
+    "containers": 0,
+    "occupants": 0,
+    "byItem": {},
+    "byPlant": {},
+    "creatures": {}
+   },
+   "parcel.border-road-greenspring-crossings.river-bridge": {
+    "nodes": 0,
+    "plants": 0,
+    "items": 0,
+    "containers": 0,
+    "occupants": 0,
+    "byItem": {},
+    "byPlant": {},
+    "creatures": {}
+   }
+  },
+  "services": [],
+  "hostility": null
+ }
+}

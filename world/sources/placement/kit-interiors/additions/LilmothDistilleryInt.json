@@ -1,0 +1,138 @@
+{
+ "schemaVersion": 2,
+ "cellId": "LilmothDistilleryInt",
+ "additions": [
+  {
+   "id": "LilmothDistilleryInt:add:work-argoniancandle",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    109.091,
+    81.501,
+    63.871
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the still floor where the distillers tend the vats."
+  },
+  {
+   "id": "LilmothDistilleryInt:add:work-argoniancandle-2",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    111.446,
+    81.501,
+    56.675
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the still floor where the distillers tend the vats."
+  },
+  {
+   "id": "LilmothDistilleryInt:add:work-impbrazier",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    104.457,
+    81.479,
+    65.217
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Brazier lights the dark distillery floor where the spirit is made."
+  },
+  {
+   "id": "LilmothDistilleryInt:add:work-impbrazier-2",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    106.992,
+    81.472,
+    62.031
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Brazier lights the dark distillery floor where the spirit is made."
+  },
+  {
+   "id": "LilmothDistilleryInt:add:work-impbrazier-3",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    108.86,
+    81.472,
+    56.045
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Brazier lights the dark distillery floor where the spirit is made."
+  },
+  {
+   "id": "LilmothDistilleryInt:add:work-impbrazier-4",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    107.827,
+    81.479,
+    72.704
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Brazier lights the dark distillery floor where the spirit is made."
+  },
+  {
+   "id": "LilmothDistilleryInt:add:work-impbrazier-5",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    105.799,
+    81.472,
+    57.884
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Brazier lights the dark distillery floor where the spirit is made."
+  },
+  {
+   "id": "LilmothDistilleryInt:add:work-impbrazier-6",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    109.091,
+    81.472,
+    58.976
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Brazier lights the dark distillery floor where the spirit is made."
+  },
+  {
+   "id": "LilmothDistilleryInt:add:work-impbrazier-7",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    100.61,
+    82.328,
+    55.987
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Brazier lights the dark distillery floor where the spirit is made."
+  },
+  {
+   "id": "LilmothDistilleryInt:add:work-impbrazier-8",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    109.091,
+    81.472,
+    63.871
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Brazier lights the dark distillery floor where the spirit is made."
+  },
+  {
+   "id": "LilmothDistilleryInt:add:work-impbrazier-9",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    111.446,
+    81.472,
+    56.675
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Brazier lights the dark distillery floor where the spirit is made."
+  }
+ ]
+}

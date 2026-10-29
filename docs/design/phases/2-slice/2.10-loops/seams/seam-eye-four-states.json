@@ -1,0 +1,441 @@
+{
+ "id": "seam-eye-four-states",
+ "start": {
+  "query": "?view=character&x=2.2236&z=4.4883&t=23:00&d=7-28",
+  "kit": "start",
+  "skills": {
+   "sneak": 30
+  },
+  "seed": 1
+ },
+ "steps": [
+  {
+   "name": "crouched",
+   "transition": "crouched in the dark 25 m north of the camp on clear ground (no tent, log or fire between), facing n2-5, which looks this way -> hidden",
+   "do": {
+    "action": "crouch",
+    "near": [
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "m": 25.1,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "m": 30.1,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "m": 33.9,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "m": 31,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "m": 33.4,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "m": 39.7,
+      "facing": false
+     }
+    ],
+    "seconds": 3
+   },
+   "keys": [
+    {
+     "wait_s": 5
+    }
+   ],
+   "hold_s": 1.5,
+   "expect": {
+    "sneaking": true,
+    "eye": "hidden"
+   },
+   "stage": {
+    "at": {
+     "x": 2309.98,
+     "z": 4603.16,
+     "yaw": 0
+    },
+    "hour": 23,
+    "place": "place.naga-kur-deeps.naga-highway-camp-active-north",
+    "stance": "crouch"
+   }
+  },
+  {
+   "name": "stand-up",
+   "transition": "stands a moment where n2-5 looks -> standing, no eye on the HUD",
+   "do": {
+    "action": "crouch",
+    "on": false,
+    "near": [
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "m": 25.1,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "m": 30.1,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "m": 33.9,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "m": 31,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "m": 33.4,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "m": 39.7,
+      "facing": false
+     }
+    ],
+    "seconds": 0.1
+   },
+   "keys": [
+    {
+     "press": "KeyC"
+    },
+    {
+     "wait_s": 0.1
+    }
+   ],
+   "hold_s": 0.1,
+   "expect": {
+    "sneaking": false
+   }
+  },
+  {
+   "name": "danger",
+   "transition": "crouches again at once -> danger: n2-5 glimpsed him, the pupil shows",
+   "do": {
+    "action": "crouch",
+    "near": [
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "m": 25.1,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "m": 30.1,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "m": 33.9,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "m": 31,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "m": 33.4,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "m": 39.7,
+      "facing": false
+     }
+    ],
+    "seconds": 0.1
+   },
+   "keys": [
+    {
+     "press": "KeyC"
+    },
+    {
+     "wait_s": 0.1
+    }
+   ],
+   "hold_s": 0.1,
+   "expect": {
+    "sneaking": true,
+    "eye": "danger"
+   }
+  },
+  {
+   "name": "lost",
+   "transition": "holds still crouched -> hidden: n2-5 loses him",
+   "do": {
+    "action": "crouch",
+    "near": [
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "m": 25.1,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "m": 30.1,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "m": 33.9,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "m": 31,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "m": 33.4,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "m": 39.7,
+      "facing": false
+     }
+    ],
+    "seconds": 7
+   },
+   "keys": [
+    {
+     "wait_s": 7
+    }
+   ],
+   "hold_s": 0.1,
+   "expect": {
+    "sneaking": true,
+    "eye": "hidden"
+   }
+  },
+  {
+   "name": "stand-again",
+   "transition": "stands a moment where n2-5 looks -> standing, no eye on the HUD",
+   "do": {
+    "action": "crouch",
+    "on": false,
+    "near": [
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "m": 25.1,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "m": 30.1,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "m": 33.9,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "m": 31,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "m": 33.4,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "m": 39.7,
+      "facing": false
+     }
+    ],
+    "seconds": 0.1
+   },
+   "keys": [
+    {
+     "press": "KeyC"
+    },
+    {
+     "wait_s": 0.3
+    }
+   ],
+   "hold_s": 0.1,
+   "expect": {
+    "sneaking": false
+   }
+  },
+  {
+   "name": "caution",
+   "transition": "crouches again -> caution: n2-5 half-saw him, the eye opens",
+   "do": {
+    "action": "crouch",
+    "near": [
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "m": 25.1,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "m": 30.1,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "m": 33.9,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "m": 31,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "m": 33.4,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "m": 39.7,
+      "facing": false
+     }
+    ],
+    "seconds": 0.1
+   },
+   "keys": [
+    {
+     "press": "KeyC"
+    },
+    {
+     "wait_s": 0.1
+    }
+   ],
+   "hold_s": 0.1,
+   "expect": {
+    "sneaking": true,
+    "eye": "caution"
+   }
+  },
+  {
+   "name": "stand-last",
+   "transition": "stands a moment where n2-5 looks -> standing, no eye on the HUD",
+   "do": {
+    "action": "crouch",
+    "on": false,
+    "near": [
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "m": 25.1,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "m": 30.1,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "m": 33.9,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "m": 31,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "m": 33.4,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "m": 39.7,
+      "facing": false
+     }
+    ],
+    "seconds": 1.2
+   },
+   "keys": [
+    {
+     "press": "KeyC"
+    },
+    {
+     "wait_s": 5
+    }
+   ],
+   "hold_s": 0.1,
+   "expect": {
+    "sneaking": false
+   }
+  },
+  {
+   "name": "detected",
+   "transition": "crouches after a longer look -> detected: n2-5 has seen the player",
+   "do": {
+    "action": "crouch",
+    "near": [
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "m": 25.1,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "m": 30.1,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "m": 33.9,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "m": 31,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "m": 33.4,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "m": 39.7,
+      "facing": false
+     }
+    ],
+    "seconds": 0.1
+   },
+   "keys": [
+    {
+     "press": "KeyC"
+    },
+    {
+     "wait_s": 0.1
+    }
+   ],
+   "hold_s": 0.1,
+   "expect": {
+    "sneaking": true,
+    "eye": "detected"
+   }
+  }
+ ]
+}

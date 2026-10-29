@@ -1,0 +1,221 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "_": "Faction and office sheets for The Nisswo of the Turning Path (lane 2.5a2). Ranks: the registry ladder (associate, member, senior); named offices beyond it are listed by their own rank slug.",
+ "entries": [
+  {
+   "id": "culture.faction.nisswo",
+   "level": "faction",
+   "name": "The Nisswo of the Turning Path",
+   "parent": "culture.province.black-marsh",
+   "factionId": "faction.nisswo",
+   "norms": [
+    {
+     "text": "Travel so each village hears many interpretations.",
+     "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+    },
+    {
+     "text": "Teach letting go: make the art, then break it.",
+     "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Treating Sithis as evil.",
+     "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+    },
+    {
+     "text": "Holding a grievance past its season.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    }
+   ],
+   "values": [
+    {
+     "text": "Vastei, change.",
+     "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+    },
+    {
+     "text": "Mercy.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Dogma, including their own.",
+     "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+    },
+    {
+     "text": "The Brotherhood's single untruth.",
+     "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+    }
+   ],
+   "opinions": {
+    "hist": {
+     "lean": 1,
+     "text": "The Hist and Sithis do not compete.",
+     "source": "inferred"
+    },
+    "faction": {
+     "lean": 0,
+     "text": "Every faction holds something too tightly.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    "work": {
+     "lean": 0,
+     "text": "An Owing that outlives its cause is shunatei; so is a grudge against the holders.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    "danger": {
+     "lean": 0,
+     "text": "Death is a change, mourned and released.",
+     "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Seeker; friend of the turning.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "formal",
+    "oaths": [
+     {
+      "text": "Raj-Sithis turns.",
+      "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "One true reading.",
+      "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Asked to be judges with no law behind them.",
+      "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "An old ku-vastei is dying in Lilmoth.",
+      "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.shadowscales",
+     "lean": 0,
+     "text": "A necessary evil, ending.",
+     "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+    },
+    {
+     "node": "culture.faction.unbound-root",
+     "lean": -1,
+     "text": "Change turned to dogma.",
+     "source": "inferred"
+    },
+    {
+     "node": "culture.faction.sul-xan",
+     "lean": -2,
+     "text": "A Daedric heresy on Sithis.",
+     "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+    }
+   ],
+   "deviationRate": 0.2
+  },
+  {
+   "id": "culture.office.nisswo.senior",
+   "level": "office",
+   "name": "Nisswo interpreter on the road",
+   "parent": "culture.faction.nisswo",
+   "factionId": "faction.nisswo",
+   "rank": "senior",
+   "norms": [
+    {
+     "text": "Preaches with a numbered sermon and one fixed formula, every time.",
+     "source": "inferred"
+    },
+    {
+     "text": "Says both sides of the Owing in one sermon.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Refusing a village.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    }
+   ],
+   "values": [
+    {
+     "text": "Plural truth.",
+     "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Fixed doctrine.",
+     "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+    }
+   ],
+   "opinions": {
+    "hist": {
+     "lean": 1,
+     "text": "The tree and the turning.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Child of change.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "ceremonial",
+    "oaths": [
+     {
+      "text": "Raj-Sithis, First Creator and Final Destroyer, turns.",
+      "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "That they are certain.",
+      "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Villages want verdicts.",
+      "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "A hut was burned and let go at Glenbridge.",
+      "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.many-root-conclave",
+     "lean": 1,
+     "text": "Kin in care.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.1
+  }
+ ]
+}

@@ -1,0 +1,432 @@
+{
+ "schemaVersion": 1,
+ "placeId": "place.saxhleel-coast.pearl-lots",
+ "generator": "python3 -m worldgen.blueprint_promises --id <place-id> --write (decision 0104); never hand-edit a row but its `unfilled`, `filledBy` or `confirmed` block",
+ "derivedFrom": [
+  {
+   "file": "world/sources/catalogue/places-saxhleel-coast.json",
+   "sha256": "a3141392d89062070009a6aa580cc96f3a8d40c8188fd5301b6388bbed0f9712"
+  },
+  {
+   "file": "world/sources/quests/local-saxhleel-coast.json",
+   "sha256": "d4458fd78e0105b8520d9d91d5a6b3eedd51f2bc7e0afa0e102b56cafbd650fb"
+  }
+ ],
+ "promises": [
+  {
+   "id": "promise.pearl-lots.evidence-pearl-lot-tally",
+   "kind": "socketBucket",
+   "source": {
+    "file": "world/sources/catalogue/places-saxhleel-coast.json",
+    "path": "places[place.saxhleel-coast.pearl-lots].sockets.evidence[evidence.pearl.lot-tally]"
+   },
+   "text": "The Counted Lots has the evidence socket evidence.pearl.lot-tally.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.pearl-lots.occupant-n1",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-saxhleel-coast.json",
+    "path": "places[place.saxhleel-coast.pearl-lots].contents.npcs[n1]"
+   },
+   "text": "The Counted Lots has few crew occupants.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.pearl-lots.occupant-n2",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-saxhleel-coast.json",
+    "path": "places[place.saxhleel-coast.pearl-lots].contents.npcs[n2]"
+   },
+   "text": "The Counted Lots has few rank-and-file occupants.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.pearl-lots.prose-playerpurpose-hook",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-saxhleel-coast.json",
+    "path": "places[place.saxhleel-coast.pearl-lots].playerPurpose.hook"
+   },
+   "text": "Numbered pearl lots held by inheritance, with a tally book that records the drownings as well as the takings.",
+   "confirmed": {
+    "sha": "32d0a37b26ee",
+    "note": "Four lots on the bed, each bounded by two cairns and buoyed; the tally book lies on the grading table. The drownings it records are its text (later-phase books system).",
+    "ids": [
+     "c-a",
+     "c-b",
+     "c-c",
+     "c-d",
+     "s-tally",
+     "ld-skull"
+    ]
+   }
+  },
+  {
+   "id": "promise.pearl-lots.prose-questhooks-opportunity",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-saxhleel-coast.json",
+    "path": "places[place.saxhleel-coast.pearl-lots].questHooks.opportunity"
+   },
+   "text": "A lot with no living heir has to be reassigned. The claimants settle it in the water.",
+   "confirmed": {
+    "sha": "b524be2637a7",
+    "note": "Four bounded lots 6 to 9 m down; the claimants' contest is SX06's scene in the water over them (later-phase quest system).",
+    "ids": [
+     "c-a",
+     "c-b",
+     "c-c",
+     "c-d"
+    ]
+   }
+  },
+  {
+   "id": "promise.pearl-lots.prose-vibe-approach",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-saxhleel-coast.json",
+    "path": "places[place.saxhleel-coast.pearl-lots].vibe.approach"
+   },
+   "text": "found by spotting the tender boat",
+   "confirmed": {
+    "sha": "c78bcc32174f",
+    "note": "The raft and the rowboat are moored over the lots, seen from the spit and from the sea before anything on the bed.",
+    "ids": [
+     "t-raft",
+     "t-row"
+    ]
+   }
+  },
+  {
+   "id": "promise.pearl-lots.prose-vibe-condition",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-saxhleel-coast.json",
+    "path": "places[place.saxhleel-coast.pearl-lots].vibe.condition"
+   },
+   "text": "worked daily",
+   "confirmed": {
+    "sha": "d714d865e9b2",
+    "note": "Fresh shell heaps, full grading baskets, a burning fire and catch on the drying rack.",
+    "ids": [
+     "s-heap1",
+     "s-bask4",
+     "s-fire"
+    ]
+   }
+  },
+  {
+   "id": "promise.pearl-lots.prose-vibe-materials",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-saxhleel-coast.json",
+    "path": "places[place.saxhleel-coast.pearl-lots].vibe.materials"
+   },
+   "text": "keg buoys, grading baskets, stone lot cairns",
+   "confirmed": {
+    "sha": "9805f1c553be",
+    "note": "Four keg buoys over the lots, the grading baskets in a row behind the table, two stone cairns per lot.",
+    "ids": [
+     "b-a",
+     "b-b",
+     "b-c",
+     "b-d",
+     "s-bask4",
+     "s-bask5",
+     "c-a",
+     "c-b",
+     "c-c",
+     "c-d"
+    ]
+   }
+  },
+  {
+   "id": "promise.pearl-lots.prose-vibe-mood",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-saxhleel-coast.json",
+    "path": "places[place.saxhleel-coast.pearl-lots].vibe.mood"
+   },
+   "text": "businesslike about a dangerous trade",
+   "confirmed": {
+    "sha": "b3a1289c0f54",
+    "note": "A tally table and its book beside the grading baskets; a skull at the foot of the deep lot's cairn.",
+    "ids": [
+     "s-table",
+     "s-tally",
+     "ld-skull"
+    ]
+   }
+  },
+  {
+   "id": "promise.pearl-lots.prose-vibe-palette",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-saxhleel-coast.json",
+    "path": "places[place.saxhleel-coast.pearl-lots].vibe.palette"
+   },
+   "text": "grey-brown keg buoys, green water, silver shell",
+   "confirmed": {
+    "sha": "756fd2656128",
+    "note": "Grey-brown keg buoys on the sea, clam and scallop shells on the bed; the green is the sea water itself.",
+    "ids": [
+     "b-a",
+     "b-b",
+     "b-c",
+     "b-d",
+     "la-clam1",
+     "la-scal1"
+    ]
+   }
+  },
+  {
+   "id": "promise.pearl-lots.prose-vibe-senses",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-saxhleel-coast.json",
+    "path": "places[place.saxhleel-coast.pearl-lots].vibe.senses"
+   },
+   "text": "rope creak above; the click of shell into a basket below",
+   "confirmed": {
+    "sha": "f6dfe2cb3685",
+    "note": "Sound is a later-phase system (0102); its sources are built: the moored tenders' ropes and the diver's basket on the bed.",
+    "ids": [
+     "t-raft",
+     "t-row",
+     "la-basket"
+    ]
+   }
+  },
+  {
+   "id": "promise.pearl-lots.prose-vibe-signaturefeature",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-saxhleel-coast.json",
+    "path": "places[place.saxhleel-coast.pearl-lots].vibe.signatureFeature"
+   },
+   "text": "a diver's tally of lots worked, the deep lots entered in a second hand",
+   "confirmed": {
+    "sha": "03bcf70e308c",
+    "note": "The tally book on the grading table (evidence socket); the second hand is the book's text (later-phase books system).",
+    "ids": [
+     "s-tally"
+    ]
+   }
+  },
+  {
+   "id": "promise.pearl-lots.prose-vibe-silhouette",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-saxhleel-coast.json",
+    "path": "places[place.saxhleel-coast.pearl-lots].vibe.silhouette"
+   },
+   "text": "marker buoys and a tender boat over water with no bed in sight",
+   "confirmed": {
+    "sha": "727054c120db",
+    "note": "Four buoys and two tenders on open water; the bed is 6 to 9 m down and unseen from the surface.",
+    "ids": [
+     "b-a",
+     "b-b",
+     "b-c",
+     "b-d",
+     "t-raft",
+     "t-row"
+    ]
+   }
+  },
+  {
+   "id": "promise.pearl-lots.prose-why-founding",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-saxhleel-coast.json",
+    "path": "places[place.saxhleel-coast.pearl-lots].why.founding"
+   },
+   "text": "An amphibious people with a port to sell into will work a pearl bed. These beds were divided into numbered lots as soon as the trade began to pay.",
+   "confirmed": {
+    "sha": "cf6f67c2dc40",
+    "note": "Numbered lots on a bed 600 m from Archon, the port that buys the catch.",
+    "ids": [
+     "c-a",
+     "c-b",
+     "c-c",
+     "c-d"
+    ]
+   }
+  },
+  {
+   "id": "promise.pearl-lots.prose-why-occupantsmotive",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-saxhleel-coast.json",
+    "path": "places[place.saxhleel-coast.pearl-lots].why.occupantsMotive"
+   },
+   "text": "Diver families holding numbered lots by inheritance. The families share the tenders moored over the lots.",
+   "confirmed": {
+    "sha": "028f8c6e2615",
+    "note": "Four bounded lots and the two tenders moored over them.",
+    "ids": [
+     "c-a",
+     "c-b",
+     "c-c",
+     "c-d",
+     "t-raft",
+     "t-row"
+    ]
+   }
+  },
+  {
+   "id": "promise.pearl-lots.prose-why-pressures",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-saxhleel-coast.json",
+    "path": "places[place.saxhleel-coast.pearl-lots].why.pressures"
+   },
+   "text": "The deep lots pay best and they kill divers. Both are entered in the tally book.",
+   "confirmed": {
+    "sha": "4045b24f011d",
+    "note": "The deep lot (lot four, 7.5 to 9 m) has the skull at its cairn's foot; the tally book is on the table.",
+    "ids": [
+     "c-d",
+     "ld-skull",
+     "s-tally"
+    ]
+   }
+  },
+  {
+   "id": "promise.pearl-lots.prose-why-siteadvantages",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-saxhleel-coast.json",
+    "path": "places[place.saxhleel-coast.pearl-lots].why.siteAdvantages"
+   },
+   "text": "Clear water over a firm bed inside an offshore bar, six to nine metres down; deeper than an outsider can casually work.",
+   "confirmed": {
+    "sha": "4e630c52a9dd",
+    "note": "The lots lie 6 to 9 m down on a flat bed, sheltered by the 3 to 6 m bar east of them.",
+    "ids": [
+     "c-a",
+     "c-b",
+     "c-c",
+     "c-d"
+    ]
+   }
+  },
+  {
+   "id": "promise.pearl-lots.prose-why-wouldchangeif",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-saxhleel-coast.json",
+    "path": "places[place.saxhleel-coast.pearl-lots].why.wouldChangeIf"
+   },
+   "text": "If foreigners learned to dive here the lot system collapses. The diver families teach their own.",
+   "confirmed": {
+    "sha": "fd39adda776e",
+    "note": "The lot system is the four bounded lots; who dives them is the families' (no outsider gear is placed).",
+    "ids": [
+     "c-a",
+     "c-b",
+     "c-c",
+     "c-d"
+    ]
+   }
+  },
+  {
+   "id": "promise.pearl-lots.provision-underwater-livelihood",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-saxhleel-coast.json",
+    "path": "places[place.saxhleel-coast.pearl-lots].questHooks.provisions[quest.provision.underwater-livelihood]"
+   },
+   "text": "The Counted Lots holds what quest provision quest.provision.underwater-livelihood needs.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.pearl-lots.quest-sx05",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-saxhleel-coast.json",
+    "path": "quest[SX05]"
+   },
+   "text": "SX05 Lot Four: A diver came up dead on a lot she had no right to be working.",
+   "confirmed": {
+    "sha": "c4d5b1535157",
+    "note": "Lot four is the deep lot, with a skull at its cairn's foot; the diver's basket lies on lot one.",
+    "ids": [
+     "c-d",
+     "ld-skull",
+     "la-basket"
+    ]
+   }
+  },
+  {
+   "id": "promise.pearl-lots.quest-sx06",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-saxhleel-coast.json",
+    "path": "quest[SX06]"
+   },
+   "text": "SX06 The Unwritten Lot: A pearl lot has outlived its last heir, so four families are diving it to establish a claim.",
+   "confirmed": {
+    "sha": "daf11ee23a9c",
+    "note": "Four bounded lots under the tenders; the dive for a claim is SX06's scene socket over the deep lot.",
+    "ids": [
+     "c-a",
+     "c-b",
+     "c-c",
+     "c-d",
+     "t-raft",
+     "t-row"
+    ]
+   }
+  },
+  {
+   "id": "promise.pearl-lots.scene-pearl-deep-lot-dive",
+   "kind": "socketBucket",
+   "source": {
+    "file": "world/sources/catalogue/places-saxhleel-coast.json",
+    "path": "places[place.saxhleel-coast.pearl-lots].sockets.scene[scene.pearl.deep-lot-dive]"
+   },
+   "text": "The Counted Lots has the scene socket scene.pearl.deep-lot-dive.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.pearl-lots.thing-boat",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-saxhleel-coast.json",
+    "path": "places[place.saxhleel-coast.pearl-lots].vibe.silhouette"
+   },
+   "text": "The Counted Lots shows the boat its record names.",
+   "unfilled": null,
+   "filledBy": [
+    "t-row"
+   ]
+  },
+  {
+   "id": "promise.pearl-lots.thing-dock",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-saxhleel-coast.json",
+    "path": "places[place.saxhleel-coast.pearl-lots].assetPlan[0]"
+   },
+   "text": "The Counted Lots shows the dock its record names.",
+   "unfilled": null,
+   "filledBy": [
+    "parcel.pearl-lots.jetty.piece.1"
+   ]
+  },
+  {
+   "id": "promise.pearl-lots.underwater-access",
+   "kind": "underwaterAccess",
+   "source": {
+    "file": "world/sources/catalogue/places-saxhleel-coast.json",
+    "path": "places[place.saxhleel-coast.pearl-lots].underwaterAccess"
+   },
+   "text": "The Counted Lots can be entered from under the water (deep-dive).",
+   "unfilled": null
+  }
+ ]
+}

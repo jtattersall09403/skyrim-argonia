@@ -1,0 +1,273 @@
+{
+ "cellId": "KeebaHouseCrafter",
+ "sockets": {
+  "socket.KeebaHouseCrafter.0809B559": {
+   "fillRule": "blanket.household-chest",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.leather-strips",
+      "count": 1
+     },
+     {
+      "item": "item.gold",
+      "count": 6
+     },
+     {
+      "item": "item.glass-bead-strand",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.household-chest"
+   }
+  },
+  "socket.KeebaHouseCrafter.0809B55A": {
+   "fillRule": "blanket.household-chest",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.rag",
+      "count": 2
+     },
+     {
+      "item": "item.leather-strips",
+      "count": 1
+     },
+     {
+      "item": "item.gold",
+      "count": 6
+     }
+    ],
+    "frozenFrom": "blanket.household-chest"
+   }
+  },
+  "socket.KeebaHouseCrafter.0809B565": {
+   "fillRule": "blanket.household-chest",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.rag",
+      "count": 2
+     },
+     {
+      "item": "item.leather-strips",
+      "count": 1
+     },
+     {
+      "item": "item.spine-balm",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.household-chest"
+   }
+  },
+  "socket.KeebaHouseCrafter.0809B583": {
+   "fillRule": "blanket.cook-shelf",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.river-salt",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.baked-crocodile-tongue",
+      "count": 1
+     },
+     {
+      "item": "item.lumberries",
+      "count": 3
+     },
+     {
+      "item": "item.hissmir-fish-eye-rye",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.cook-shelf"
+   }
+  },
+  "socket.KeebaHouseCrafter.0809B584": {
+   "fillRule": "blanket.fish-basket",
+   "valueTier": "trivial",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.trodh",
+      "count": 4
+     },
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     },
+     {
+      "item": "item.fishing-pole",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.fish-basket"
+   }
+  },
+  "socket.KeebaHouseCrafter.080A0838": {
+   "fillRule": "blanket.cook-shelf",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.baked-crocodile-tongue",
+      "count": 1
+     },
+     {
+      "item": "item.lumberries",
+      "count": 3
+     },
+     {
+      "item": "item.hissmir-fish-eye-rye",
+      "count": 1
+     },
+     {
+      "item": "item.turtle-shell-bowl",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.cook-shelf"
+   }
+  },
+  "socket.KeebaHouseCrafter.080A0839": {
+   "fillRule": "blanket.farmer-seed-bin",
+   "valueTier": "trivial",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.saltrice-loaf",
+      "count": 3
+     },
+     {
+      "item": "item.lumberries",
+      "count": 2
+     },
+     {
+      "item": "item.hoe",
+      "count": 1
+     },
+     {
+      "item": "item.bucket",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.farmer-seed-bin"
+   }
+  },
+  "socket.KeebaHouseCrafter.080A083A": {
+   "valueTier": "trivial",
+   "item": "item.snails-foot"
+  },
+  "socket.KeebaHouseCrafter.080A083B": {
+   "valueTier": "trivial",
+   "item": "item.frog-legs"
+  },
+  "socket.KeebaHouseCrafter.080A083C": {
+   "valueTier": "trivial",
+   "item": "item.wooden-plate"
+  },
+  "socket.KeebaHouseCrafter.080A083D": {
+   "valueTier": "trivial",
+   "item": "item.turtle-shell-bowl"
+  },
+  "socket.KeebaHouseCrafter.080A083E": {
+   "valueTier": "trivial",
+   "item": "item.wooden-plate"
+  },
+  "socket.KeebaHouseCrafter.080A083F": {
+   "valueTier": "moderate",
+   "item": "item.slaughterfish-egg"
+  },
+  "socket.KeebaHouseCrafter.080A0840": {
+   "valueTier": "moderate",
+   "item": "item.slaughterfish-egg"
+  },
+  "socket.KeebaHouseCrafter.080A0841": {
+   "valueTier": "moderate",
+   "item": "item.slaughterfish-egg"
+  },
+  "socket.KeebaHouseCrafter.080A0845": {
+   "valueTier": "moderate",
+   "item": "item.river-salt"
+  },
+  "socket.KeebaHouseCrafter.080A0846": {
+   "valueTier": "moderate",
+   "item": "item.river-salt"
+  },
+  "socket.KeebaHouseCrafter.080A0848": {
+   "valueTier": "trivial",
+   "item": "item.turtle-shell-bowl"
+  },
+  "socket.KeebaHouseCrafter.080A0849": {
+   "valueTier": "trivial",
+   "item": "item.wooden-plate"
+  },
+  "socket.KeebaHouseCrafter.080A084A": {
+   "valueTier": "trivial",
+   "item": "item.wooden-plate"
+  },
+  "socket.KeebaHouseCrafter.080A084C": {
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.KeebaHouseCrafter.080A084D": {
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.KeebaHouseCrafter.080A084E": {
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.KeebaHouseCrafter.080A084F": {
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.KeebaHouseCrafter.080A0850": {
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.KeebaHouseCrafter.080A0877": {
+   "valueTier": "trivial",
+   "item": "item.saltrice-flatbread"
+  },
+  "socket.KeebaHouseCrafter.08989BF9": {
+   "valueTier": "trivial",
+   "item": "item.book-keshu-travels-beyond-the-village-2"
+  },
+  "socket.KeebaHouseCrafter.08989BFB": {
+   "valueTier": "trivial",
+   "item": "item.book-rhymes-and-chimes"
+  },
+  "socket.KeebaHouseCrafter.08989BFC": {
+   "valueTier": "low",
+   "item": "item.book-gift-of-the-lilmothiit"
+  },
+  "socket.KeebaHouseCrafter.08989BFD": {
+   "valueTier": "trivial",
+   "item": "item.book-hej-xajhuthi-kroni"
+  },
+  "socket.KeebaHouseCrafter.08989BFE": {
+   "valueTier": "low",
+   "item": "item.book-lost-tales-of-the-famed-explorer-2"
+  },
+  "socket.KeebaHouseCrafter.08AA3221": {
+   "valueTier": "trivial",
+   "item": "item.book-the-black-fin-comes-home"
+  }
+ },
+ "schemaVersion": 1
+}

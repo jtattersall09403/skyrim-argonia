@@ -1,0 +1,8272 @@
+{
+  "schemaVersion": 1,
+  "blueprint": {
+    "id": "place.imperial-fringe.bog-iron-workings",
+    "seed": "place.imperial-fringe.bog-iron-workings",
+    "causalModel": {
+      "founding": "Bog iron forms in the ground here. Nails, tyres and tools wear out fast on the road. The road crews buy replacement iron from the diggers here.",
+      "siteAdvantages": "The seep is stagnant and rich in iron. The diggers lift the ore from the mud in cakes.",
+      "occupantsMotive": "The diggers come from three villages for one season a year. The diggers consider the work shameful.",
+      "pressures": "The seep is being worked out. Each season's cakes are smaller. Each season's cakes also lie further from the path.",
+      "wouldChangeIf": "The diggers would abandon the workings without ceremony."
+    },
+    "boundary": [
+      [
+        0.267443988,
+        0.339729812
+      ],
+      [
+        0.274225022,
+        0.339729812
+      ],
+      [
+        0.274225022,
+        0.354241225
+      ],
+      [
+        0.271241367,
+        0.354241225
+      ],
+      [
+        0.271241367,
+        0.346239605
+      ],
+      [
+        0.267443988,
+        0.346239605
+      ]
+    ],
+    "districts": [
+      {
+        "id": "district.bog-iron-workings.the-bench",
+        "kind": "works",
+        "cultureKit": "argonian-plank",
+        "wealth": "poor",
+        "boundary": [
+          [
+            0.268432662,
+            0.343590246
+          ],
+          [
+            0.268432662,
+            0.344048052
+          ],
+          [
+            0.26845771,
+            0.344545853
+          ],
+          [
+            0.268478141,
+            0.34462759
+          ],
+          [
+            0.268973999,
+            0.346239605
+          ],
+          [
+            0.271241367,
+            0.346239605
+          ],
+          [
+            0.271241367,
+            0.353610739
+          ],
+          [
+            0.271410275,
+            0.354159853
+          ],
+          [
+            0.273522521,
+            0.354159853
+          ],
+          [
+            0.274225022,
+            0.353479123
+          ],
+          [
+            0.274225022,
+            0.345269717
+          ],
+          [
+            0.273597969,
+            0.344184718
+          ],
+          [
+            0.272997392,
+            0.343326753
+          ],
+          [
+            0.270050325,
+            0.342521943
+          ],
+          [
+            0.269975868,
+            0.342509535
+          ],
+          [
+            0.269478298,
+            0.342484964
+          ],
+          [
+            0.268980728,
+            0.342509535
+          ],
+          [
+            0.268812209,
+            0.342537618
+          ],
+          [
+            0.268603311,
+            0.342683845
+          ],
+          [
+            0.268494201,
+            0.3428657
+          ],
+          [
+            0.268457195,
+            0.343013741
+          ]
+        ],
+        "notes": "One plank hut and a furnace floor on the level bench above the seep's north end.",
+        "why": {
+          "what": "The bench above the seep holds the diggers' hut and the furnace floor. The way down from the road crosses the bench.",
+          "whyHere": "The diggers carry the seep's ore up to the first level ground. A furnace can stand dry on that ground.",
+          "whySpot": "The bench is the last firm ground before the bank drops to the seep.",
+          "whyNeighbours": "The keeper's lodge of the lower Onkobra is 95 m west. The porter yard at Red Cart is 200 m north-west.",
+          "playerPurpose": "The bench is a place to take bog iron. The way down leads to the seep where LF67 starts.",
+          "microGeography": "The bench is firm and level to within a degree. It falls east to a steep bank and the seep."
+        }
+      }
+    ],
+    "parcels": [
+      {
+        "id": "parcel.bog-iron-workings.diggers-hut",
+        "districtId": "district.bog-iron-workings.the-bench",
+        "use": "dwelling",
+        "buildingFamily": "kotm-plank-house",
+        "interior": {
+          "kind": "dwelling"
+        },
+        "fills": [
+          "promise.bog-iron-workings.occupant-n1"
+        ],
+        "orientationWhy": "The hut's door turns east toward the furnace floor. The door also faces the way from the road.",
+        "why": {
+          "what": "The diggers' hut is a small plank house. Its posts are sunk in the bench. The crew's headman sleeps in the hut.",
+          "whyHere": "The diggers come for one season. During that season the diggers need a roof near the furnace.",
+          "whySpot": "The hut stands on the flattest part of the bench. It lies west of the furnace floor and clear of the road.",
+          "whyNeighbours": "The furnace floor is 15 m east of the hut. The way from the seep track ends at the hut's door.",
+          "playerPurpose": "The hut is a shut room with beds. The crew keeps its stores in the hut.",
+          "microGeography": "The plank house stands on a levelled pad on the bench. Its door is a step up from the ground."
+        },
+        "playerPurpose": [
+          {
+            "kind": "witness",
+            "tier": "medium",
+            "note": "The season's crew know which end of the seep they stopped working. They also know what took the last digger who went there (LF67)."
+          },
+          {
+            "kind": "quest-stage",
+            "tier": "major",
+            "socketRef": "socket.bog-iron-workings.q-evidence-the-stained-boots",
+            "note": "The stained boots in the hut are a clue to why the diggers stopped working the deep end of the seep."
+          }
+        ],
+        "assetRef": "composite:plank/house1-with-door",
+        "centreUV": [
+          0.269478298,
+          0.343798433
+        ],
+        "yawDeg": 90.0,
+        "pad": {
+          "datumM": 20.654,
+          "apronM": 3.0,
+          "batter": true
+        },
+        "yMeasured": 19.454,
+        "assembly": [
+          {
+            "id": "b-hut-lamp",
+            "asset": "kotm:argonia/clutter/townlantern04",
+            "atM": [
+              -1.7,
+              -3.6
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "light",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "b-hut",
+              "unmined": "reader-approved r12"
+            },
+            "yMeasured": 20.7947
+          },
+          {
+            "id": "y5-cs-basket",
+            "asset": "mudmother:gv_meshes/argoniannest/basketfull",
+            "atM": [
+              -5.4,
+              -6.2
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 20.6594
+          },
+          {
+            "id": "y5-cs-crate",
+            "asset": "vanilla:clutter/common/cratesmall01",
+            "atM": [
+              -3.5,
+              -6.8
+            ],
+            "yaw": 285.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 20.9246
+          },
+          {
+            "id": "y5-cs-pail",
+            "asset": "vanilla:clutter/bucket01",
+            "atM": [
+              1.9,
+              -7.4
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 20.6304
+          },
+          {
+            "id": "y5-cs-sack",
+            "asset": "vanilla:clutter/containers/miscsacklarge",
+            "atM": [
+              -4.7,
+              -7.5
+            ],
+            "yaw": 210.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 20.7994
+          },
+          {
+            "id": "y5-cs-urn1",
+            "asset": "mudmother:gv_meshes/argoniannest/paintedurn01",
+            "atM": [
+              -6.5,
+              -7.1
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 20.6225
+          },
+          {
+            "id": "y5-cs-urn2",
+            "asset": "mudmother:gv_meshes/argoniannest/paintedurn01",
+            "atM": [
+              -6.8,
+              -5.6
+            ],
+            "yaw": 310.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 20.6253
+          },
+          {
+            "id": "y5-cs-wood",
+            "asset": "vanilla:clutter/firewood/firewoodpilesmall01",
+            "atM": [
+              -8.2,
+              -3.9
+            ],
+            "yaw": 290.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 20.588
+          }
+        ],
+        "footprint": [
+          [
+            0.269478298,
+            0.343028108
+          ],
+          [
+            0.269917709,
+            0.343049807
+          ],
+          [
+            0.269933983,
+            0.343052519
+          ],
+          [
+            0.269947546,
+            0.343062013
+          ],
+          [
+            0.269955683,
+            0.343075575
+          ],
+          [
+            0.269959751,
+            0.343091849
+          ],
+          [
+            0.269981451,
+            0.343601783
+          ],
+          [
+            0.269981451,
+            0.344034413
+          ],
+          [
+            0.269959751,
+            0.344465687
+          ],
+          [
+            0.269955683,
+            0.344481961
+          ],
+          [
+            0.269947546,
+            0.344495523
+          ],
+          [
+            0.269933983,
+            0.344503661
+          ],
+          [
+            0.269917709,
+            0.344507729
+          ],
+          [
+            0.269478298,
+            0.344528072
+          ],
+          [
+            0.269038887,
+            0.344507729
+          ],
+          [
+            0.269022613,
+            0.344503661
+          ],
+          [
+            0.26900905,
+            0.344495523
+          ],
+          [
+            0.269000913,
+            0.344481961
+          ],
+          [
+            0.268996845,
+            0.344465687
+          ],
+          [
+            0.268975145,
+            0.344034413
+          ],
+          [
+            0.268975145,
+            0.343601783
+          ],
+          [
+            0.268996845,
+            0.343091849
+          ],
+          [
+            0.269000913,
+            0.343075575
+          ],
+          [
+            0.26900905,
+            0.343062013
+          ],
+          [
+            0.269022613,
+            0.343052519
+          ],
+          [
+            0.269038887,
+            0.343049807
+          ]
+        ]
+      },
+      {
+        "id": "parcel.bog-iron-workings.the-bloomery",
+        "districtId": "district.bog-iron-workings.the-bench",
+        "use": "work",
+        "buildingFamily": "vanilla-smelter",
+        "interior": {
+          "kind": "none"
+        },
+        "fills": [
+          "promise.bog-iron-workings.scene-the-mound"
+        ],
+        "orientationWhy": "The furnace mouth faces west-south-west. Its charcoal bed also faces west-south-west. Both face the hut and the path in from the way.",
+        "playerPurpose": [
+          {
+            "kind": "quest-stage",
+            "tier": "major",
+            "socketRef": "socket.bog-iron-workings.q-post-ore-digger",
+            "note": "An ore digger works the furnace floor. The crew have stopped working the deep end of the seep. The reason for the stop is not stated."
+          },
+          {
+            "kind": "quest-stage",
+            "tier": "major",
+            "socketRef": "socket.bog-iron-workings.q-scene-the-mound",
+            "note": "Part of a quest takes place at the mound beside the furnace floor."
+          }
+        ],
+        "why": {
+          "what": "The furnace floor holds Skyrim's smelter, a crafting station. The smelter's kind is a pinned prop. Its 6.7 m plan is the furnace with its charcoal bed and slag bucket spread round it. The floor also holds bellows, fuel, ore and an ore cart.",
+          "whyHere": "The diggers smelt ore where it is dug. Only iron is carried to the road.",
+          "whySpot": "The furnace floor lies at the east end of the bench. It sits at the head of the bank above the seep.",
+          "whyNeighbours": "The diggers' hut is just west of the furnace floor. The seep lies below the bank to the east.",
+          "playerPurpose": "The furnace floor offers bog iron to take. The diggers break the furnace open each season to free the bloom.",
+          "microGeography": "The furnace floor is levelled trodden earth on the bench. It falls away on the east to the bank over the seep."
+        },
+        "assetRef": "vanilla:furniture/smeltermarker",
+        "centreUV": [
+          0.272326333,
+          0.344612157
+        ],
+        "yawDeg": 90.0,
+        "pad": {
+          "datumM": 19.489,
+          "apronM": 5.0,
+          "batter": true
+        },
+        "yMeasured": 19.4968,
+        "assembly": [
+          {
+            "id": "bl-charcoal-bed",
+            "asset": "kotm:oaristys/forge/coalpile",
+            "atM": [
+              4.6,
+              -0.6
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 19.459
+          },
+          {
+            "id": "bl-iron-bars-1",
+            "asset": "kotm:oaristys/forge/ingotsiron01",
+            "atM": [
+              -2.4,
+              2.7
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 19.4612
+          },
+          {
+            "id": "bl-iron-bars-2",
+            "asset": "kotm:oaristys/forge/ingotsiron01",
+            "atM": [
+              -1.85,
+              2.65
+            ],
+            "yaw": 355.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 19.4612
+          },
+          {
+            "id": "bl-iron-bars-3",
+            "asset": "kotm:oaristys/forge/ingotsiron02",
+            "atM": [
+              -3.0,
+              2.1
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 19.4588
+          },
+          {
+            "id": "bl-meal-bench-s",
+            "asset": "vanilla:furniture/farm/farmbench01",
+            "atM": [
+              5.5,
+              3.5
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 19.452
+          },
+          {
+            "id": "bl-meal-bench-sw",
+            "asset": "vanilla:furniture/farm/farmbench01",
+            "atM": [
+              6.0,
+              7.0
+            ],
+            "yaw": 45.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 19.452
+          },
+          {
+            "id": "dw-plank1",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank02",
+            "atM": [
+              44.6,
+              -31.6
+            ],
+            "yaw": 288.4,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 15.511
+          },
+          {
+            "id": "dw-plank10",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank02",
+            "atM": [
+              45.66,
+              -34.55
+            ],
+            "yaw": 291.4,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 15.362
+          },
+          {
+            "id": "dw-plank11",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank03",
+            "atM": [
+              45.78,
+              -34.87
+            ],
+            "yaw": 288.4,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 15.2975
+          },
+          {
+            "id": "dw-plank12",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank04",
+            "atM": [
+              45.91,
+              -35.17
+            ],
+            "yaw": 291.4,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 15.29
+          },
+          {
+            "id": "dw-plank13",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank02",
+            "atM": [
+              46.03,
+              -35.47
+            ],
+            "yaw": 288.4,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 15.334
+          },
+          {
+            "id": "dw-plank14",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank03",
+            "atM": [
+              46.15,
+              -35.75
+            ],
+            "yaw": 291.4,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 15.29
+          },
+          {
+            "id": "dw-plank2",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank03",
+            "atM": [
+              44.72,
+              -31.93
+            ],
+            "yaw": 291.4,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 15.467
+          },
+          {
+            "id": "dw-plank3",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank04",
+            "atM": [
+              44.84,
+              -32.25
+            ],
+            "yaw": 288.4,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 15.467
+          },
+          {
+            "id": "dw-plank4",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank02",
+            "atM": [
+              44.95,
+              -32.58
+            ],
+            "yaw": 291.4,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 15.5091
+          },
+          {
+            "id": "dw-plank5",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank03",
+            "atM": [
+              45.07,
+              -32.91
+            ],
+            "yaw": 288.4,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 15.4566
+          },
+          {
+            "id": "dw-plank6",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank04",
+            "atM": [
+              45.19,
+              -33.24
+            ],
+            "yaw": 291.4,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 15.4379
+          },
+          {
+            "id": "dw-plank7",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank02",
+            "atM": [
+              45.31,
+              -33.56
+            ],
+            "yaw": 288.4,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 15.4528
+          },
+          {
+            "id": "dw-plank8",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank03",
+            "atM": [
+              45.43,
+              -33.89
+            ],
+            "yaw": 291.4,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 15.3752
+          },
+          {
+            "id": "dw-plank9",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank04",
+            "atM": [
+              45.55,
+              -34.22
+            ],
+            "yaw": 288.4,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 15.3452
+          },
+          {
+            "id": "n-marshweed",
+            "asset": "bmv:landscape/trees/reedsmall2",
+            "atM": [
+              42.0,
+              -33.2
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 15.3996
+          },
+          {
+            "id": "n-somnalius-fern",
+            "asset": "bmv:landscape/plants/fern01",
+            "atM": [
+              50.0,
+              5.4
+            ],
+            "yaw": 300.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 14.9953
+          },
+          {
+            "id": "sd-basket",
+            "asset": "mudmother:gv_meshes/argoniannest/basketfull",
+            "atM": [
+              48.7,
+              -27.2
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 15.4254
+          },
+          {
+            "id": "sd-cart",
+            "asset": "vanilla:clutter/carts/handcart01",
+            "atM": [
+              45.0,
+              -30.0
+            ],
+            "yaw": 10.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 15.7877,
+            "pad": {
+              "datumM": 15.487,
+              "apronM": 0.5
+            }
+          },
+          {
+            "id": "sd-ore1",
+            "asset": "kotm:oaristys/forge/orestack_iron",
+            "atM": [
+              46.5,
+              -25.8
+            ],
+            "yaw": 310.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 15.3919
+          },
+          {
+            "id": "sd-ore2",
+            "asset": "kotm:oaristys/forge/orestack_iron",
+            "atM": [
+              47.9,
+              -25.6
+            ],
+            "yaw": 70.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 15.3919
+          },
+          {
+            "id": "sd-orebucket",
+            "asset": "kotm:oaristys/forge/orebucket_iron",
+            "atM": [
+              47.0,
+              -27.0
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 15.392,
+            "pad": {
+              "datumM": 15.42,
+              "apronM": 2.0
+            }
+          },
+          {
+            "id": "sd-shovel",
+            "asset": "vanilla:clutter/common/shovel01",
+            "atM": [
+              47.4,
+              -28.6
+            ],
+            "yaw": 290.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 15.9649
+          },
+          {
+            "id": "sd-spoil",
+            "asset": "vanilla:dungeons/mines/rocks/minecdirtmound02",
+            "atM": [
+              51.6,
+              -28.6
+            ],
+            "yaw": 285.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 14.7535
+          },
+          {
+            "id": "sd-spoil2",
+            "asset": "vanilla:dungeons/mines/rocks/minecdirtmound02",
+            "atM": [
+              51.0,
+              -24.8
+            ],
+            "yaw": 345.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 15.1646
+          },
+          {
+            "id": "sm-anvil",
+            "asset": "vanilla:clutter/blacksmith/blacksmithanvil01",
+            "atM": [
+              9.0,
+              11.2
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 20.5934
+          },
+          {
+            "id": "sm-forge",
+            "asset": "vanilla:clutter/blacksmith/blacksmithforge01/blacksmithforge01",
+            "atM": [
+              9.0,
+              14.0
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 20.5139
+          },
+          {
+            "id": "sm-grindstone",
+            "asset": "vanilla:clutter/blacksmith/blacksmithsharpeningwheelstatic",
+            "atM": [
+              11.25,
+              12.5
+            ],
+            "yaw": 117.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 20.493
+          },
+          {
+            "id": "sm-workbench",
+            "asset": "vanilla:clutter/blacksmith/blacksmithworkbench01",
+            "atM": [
+              7.15,
+              11.6
+            ],
+            "yaw": 231.4,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 20.6201
+          },
+          {
+            "id": "y1-bl-bellows",
+            "asset": "vanilla:clutter/blacksmith/blacksmithnovicebellows01",
+            "atM": [
+              -3.4,
+              1.0
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 19.5291
+          },
+          {
+            "id": "y1-bl-chop",
+            "asset": "vanilla:clutter/chopping block/choppingblock01",
+            "atM": [
+              6.0,
+              -3.0
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 19.4466
+          },
+          {
+            "id": "y1-bl-ingots",
+            "asset": "kotm:oaristys/forge/ingotsiron01",
+            "atM": [
+              4.6,
+              -0.6
+            ],
+            "yaw": 300.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 19.4612
+          },
+          {
+            "id": "y1-bl-wood",
+            "asset": "vanilla:clutter/firewood/firewoodpilelarge01",
+            "atM": [
+              3.3,
+              -3.6
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 19.3852
+          },
+          {
+            "id": "y3-cf-fire",
+            "asset": "vanilla:clutter/woodfires/campfire01burning",
+            "atM": [
+              0.6,
+              4.4
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "light",
+            "evidence": "measured",
+            "yMeasured": 19.459
+          },
+          {
+            "id": "y3-cf-pot",
+            "asset": "kotm:argonia/clutter/saxhleelmetalpot01",
+            "atM": [
+              -0.4,
+              5.7
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 19.5583
+          },
+          {
+            "id": "y3-cf-urn",
+            "asset": "mudmother:gv_meshes/argoniannest/paintedurn01",
+            "atM": [
+              2.0,
+              5.5
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 19.4603
+          },
+          {
+            "id": "y4-oc-bask1",
+            "asset": "mudmother:gv_meshes/argoniannest/basketfull",
+            "atM": [
+              1.6,
+              -4.6
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 19.4944
+          },
+          {
+            "id": "y4-oc-bask2",
+            "asset": "kotm:argonia/clutter/basket02",
+            "atM": [
+              2.5,
+              -5.6
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 19.4727
+          },
+          {
+            "id": "y4-oc-cart",
+            "asset": "vanilla:clutter/carts/handcart02",
+            "atM": [
+              -0.4,
+              -3.3
+            ],
+            "yaw": 300.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 19.8299
+          },
+          {
+            "id": "y4-oc-ore1",
+            "asset": "kotm:oaristys/forge/orestack_iron",
+            "atM": [
+              0.2,
+              -6.2
+            ],
+            "yaw": 280.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 19.4609
+          },
+          {
+            "id": "y4-oc-ore2",
+            "asset": "kotm:oaristys/forge/orestack_iron",
+            "atM": [
+              1.2,
+              -6.9
+            ],
+            "yaw": 110.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 19.4609
+          },
+          {
+            "id": "y4-oc-orebucket",
+            "asset": "kotm:oaristys/forge/orebucket_iron",
+            "atM": [
+              0.4,
+              -4.7
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 19.459
+          },
+          {
+            "id": "y4-oc-pail",
+            "asset": "vanilla:clutter/bucket01",
+            "atM": [
+              1.8,
+              -2.6
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 19.459
+          }
+        ],
+        "footprint": [
+          [
+            0.272569094,
+            0.344170034
+          ],
+          [
+            0.272596218,
+            0.344170034
+          ],
+          [
+            0.272650466,
+            0.344187664
+          ],
+          [
+            0.272678947,
+            0.344208007
+          ],
+          [
+            0.272703359,
+            0.344225638
+          ],
+          [
+            0.272722345,
+            0.34425005
+          ],
+          [
+            0.27274947,
+            0.344301586
+          ],
+          [
+            0.272754894,
+            0.344320573
+          ],
+          [
+            0.272758963,
+            0.344359903
+          ],
+          [
+            0.272757607,
+            0.344392451
+          ],
+          [
+            0.272638261,
+            0.344930866
+          ],
+          [
+            0.272615205,
+            0.344978333
+          ],
+          [
+            0.272589437,
+            0.345016307
+          ],
+          [
+            0.27250264,
+            0.345046143
+          ],
+          [
+            0.272268016,
+            0.345084117
+          ],
+          [
+            0.272139176,
+            0.345016307
+          ],
+          [
+            0.272107984,
+            0.344979689
+          ],
+          [
+            0.272083572,
+            0.344932222
+          ],
+          [
+            0.272083572,
+            0.344886111
+          ],
+          [
+            0.27209849,
+            0.344797957
+          ],
+          [
+            0.272110696,
+            0.344751846
+          ],
+          [
+            0.272342607,
+            0.344321929
+          ],
+          [
+            0.272417199,
+            0.344247337
+          ],
+          [
+            0.272459241,
+            0.344206651
+          ],
+          [
+            0.272483653,
+            0.34418902
+          ],
+          [
+            0.272510777,
+            0.344176815
+          ],
+          [
+            0.27251349,
+            0.344176815
+          ]
+        ],
+        "kind": "prop"
+      }
+    ],
+    "doors": [
+      {
+        "id": "door.imperial-fringe.bog-iron-workings.1",
+        "parcelId": "parcel.bog-iron-workings.diggers-hut",
+        "doorType": "load",
+        "fills": [
+          "promise.bog-iron-workings.interior-principal"
+        ],
+        "thresholdUV": [
+          0.269859392,
+          0.343810639
+        ],
+        "facingDeg": 91.8,
+        "interiorClaim": {
+          "interiorRef": "interior-kotm-v1",
+          "sizeClass": "medium",
+          "culture": "argonian",
+          "tier": "A",
+          "cellId": "LilmothApothecaryHouse",
+          "plugin": "King of the Murkmire.esp",
+          "interiorLoadDoorRef": "088933E1",
+          "arrivalMarker": {
+            "positionM": [
+              123.8057,
+              81.2446,
+              73.7372
+            ],
+            "yawDeg": 180.0
+          },
+          "why": "1 of 3 cells plugins link to kotm:argonia/blackwood/house1 (the base shell of composite:plank/house1-with-door) pass; LilmothApothecaryHouse is a dwelling serving use:dwelling, 1 exterior load door"
+        }
+      }
+    ],
+    "routes": [
+      {
+        "id": "route.bog-iron-workings.the-way",
+        "kind": "track",
+        "routing": "straight",
+        "widthM": 2.5,
+        "endsAt": [
+          "parcel.bog-iron-workings.diggers-hut"
+        ],
+        "why": "The route starts at the track on the seep's west shore. It climbs the bench past the furnace floor. It ends at the hut door.",
+        "via": [
+          [
+            0.271810974,
+            0.35361737
+          ],
+          [
+            0.273302802,
+            0.35361737
+          ],
+          [
+            0.27375035,
+            0.353169822
+          ],
+          [
+            0.273479108,
+            0.350579467
+          ],
+          [
+            0.273411298,
+            0.347867053
+          ],
+          [
+            0.273316364,
+            0.345697122
+          ],
+          [
+            0.273140057,
+            0.344476536
+          ],
+          [
+            0.272665384,
+            0.343798433
+          ],
+          [
+            0.27178385,
+            0.343635688
+          ],
+          [
+            0.271200681,
+            0.344598595
+          ],
+          [
+            0.270427643,
+            0.343852681
+          ],
+          [
+            0.269952971,
+            0.343811995
+          ]
+        ],
+        "points": [
+          [
+            0.271810974,
+            0.35361737
+          ],
+          [
+            0.273302802,
+            0.35361737
+          ],
+          [
+            0.27375035,
+            0.353169822
+          ],
+          [
+            0.273479108,
+            0.350579467
+          ],
+          [
+            0.273316364,
+            0.345697122
+          ],
+          [
+            0.273140057,
+            0.344476536
+          ],
+          [
+            0.272665384,
+            0.343798433
+          ],
+          [
+            0.27178385,
+            0.343635688
+          ],
+          [
+            0.271200681,
+            0.344598595
+          ],
+          [
+            0.270427643,
+            0.343852681
+          ],
+          [
+            0.269859392,
+            0.343810639
+          ]
+        ]
+      },
+      {
+        "id": "route.bog-iron-workings.furnace-path",
+        "kind": "footpath",
+        "routing": "straight",
+        "widthM": 1.2,
+        "endsAt": [
+          "parcel.bog-iron-workings.the-bloomery"
+        ],
+        "why": "The route runs from the way across the furnace floor. It ends at the furnace mouth.",
+        "via": [
+          [
+            0.271550582,
+            0.344020851
+          ],
+          [
+            0.27210934,
+            0.34450366
+          ]
+        ],
+        "points": [
+          [
+            0.271550582,
+            0.344020851
+          ],
+          [
+            0.272214094,
+            0.344560167
+          ]
+        ]
+      },
+      {
+        "id": "route.bog-iron-workings.dig-track",
+        "kind": "footpath",
+        "routing": "straight",
+        "widthM": 2.0,
+        "endsAt": [
+          "parcel.bog-iron-workings.the-bloomery"
+        ],
+        "why": "The route runs from the way along the seep's south margin. It reaches the diggings, where the duckboards start.",
+        "via": [
+          [
+            0.273479108,
+            0.350579467
+          ],
+          [
+            0.274699695,
+            0.350525219
+          ],
+          [
+            0.27571685,
+            0.35047097
+          ],
+          [
+            0.276584822,
+            0.350437065
+          ]
+        ],
+        "points": [
+          [
+            0.273479108,
+            0.350579467
+          ],
+          [
+            0.276584822,
+            0.350437065
+          ]
+        ]
+      }
+    ],
+    "canals": [],
+    "boardwalks": [],
+    "fences": [],
+    "docks": [],
+    "landmarks": [],
+    "questSockets": [
+      {
+        "id": "socket.bog-iron-workings.q-scene-the-mound",
+        "kind": "scene",
+        "socketRef": "scene.bog-iron-workings.the-mound",
+        "position": [
+          0.272326333,
+          0.344612157
+        ],
+        "parcel": "parcel.bog-iron-workings.the-bloomery"
+      },
+      {
+        "id": "socket.bog-iron-workings.q-evidence-the-stained-boots",
+        "kind": "evidence",
+        "socketRef": "evidence.bog-iron-workings.the-stained-boots",
+        "position": [
+          0.270820943,
+          0.344557909
+        ],
+        "parcel": "parcel.bog-iron-workings.diggers-hut"
+      },
+      {
+        "id": "socket.bog-iron-workings.q-post-ore-digger",
+        "kind": "post",
+        "socketRef": "post.bog-iron-workings.ore-digger",
+        "position": [
+          0.273479108,
+          0.343866243
+        ],
+        "parcel": "parcel.bog-iron-workings.the-bloomery"
+      }
+    ],
+    "travelServices": [],
+    "occupants": [
+      {
+        "slotId": "n1",
+        "ladderRef": "poor-d2 labourer",
+        "kind": "group",
+        "cultureRole": "the season's diggers",
+        "worksAt": "parcel.bog-iron-workings.the-bloomery",
+        "livesAt": "parcel.bog-iron-workings.diggers-hut"
+      }
+    ],
+    "approaches": [
+      {
+        "id": "approach.bog-iron-workings.from-the-seep-track",
+        "mode": "walk",
+        "fromRouteId": "track.road.glenbridge-the-road-nisswo-house",
+        "firstSeen": "parcel.bog-iron-workings.the-bloomery",
+        "viaUV": [
+          [
+            0.275823604,
+            0.351841244
+          ]
+        ],
+        "sequence": "The way leaves the track on the seep's west shore. It climbs north beside the water. The furnace shows first at the top of the rise. The hut shows beyond the furnace.",
+        "wayfinding": "One way runs north from the track along the shore and up the bench. It passes the furnace floor. It ends at the hut door."
+      }
+    ],
+    "networkTerminals": [
+      {
+        "id": "terminal.bog-iron-workings.seep-track",
+        "routeId": "track.road.glenbridge-the-road-nisswo-house",
+        "entryUV": [
+          0.271810974,
+          0.35361737
+        ],
+        "wayId": "route.bog-iron-workings.the-way",
+        "kind": "footpath",
+        "why": "The way leaves the track along the seep's west shore. It climbs north up the bench to the furnace floor and the hut."
+      }
+    ],
+    "combatSpaces": [
+      {
+        "id": "combat.bog-iron-workings.the-furnace-floor",
+        "aroundIds": [
+          "parcel.bog-iron-workings.the-bloomery"
+        ],
+        "clearanceClass": "open",
+        "why": "The levelled furnace floor is the one open footing between the hut and the bank.",
+        "boundary": [
+          [
+            0.271541089,
+            0.344840534
+          ],
+          [
+            0.271541089,
+            0.345063545
+          ],
+          [
+            0.271654288,
+            0.34528365
+          ],
+          [
+            0.271794002,
+            0.345447669
+          ],
+          [
+            0.272175758,
+            0.345648591
+          ],
+          [
+            0.272635112,
+            0.345574244
+          ],
+          [
+            0.272936793,
+            0.345470543
+          ],
+          [
+            0.273086071,
+            0.345250553
+          ],
+          [
+            0.273154088,
+            0.345110523
+          ],
+          [
+            0.273297622,
+            0.344462989
+          ],
+          [
+            0.273302612,
+            0.344343193
+          ],
+          [
+            0.273289595,
+            0.344217365
+          ],
+          [
+            0.273255666,
+            0.344098598
+          ],
+          [
+            0.273180036,
+            0.343954904
+          ],
+          [
+            0.273083916,
+            0.343831315
+          ],
+          [
+            0.272995412,
+            0.343767394
+          ],
+          [
+            0.272897696,
+            0.343697599
+          ],
+          [
+            0.272682156,
+            0.343627551
+          ],
+          [
+            0.27253766,
+            0.343627551
+          ],
+          [
+            0.272364731,
+            0.343647659
+          ],
+          [
+            0.272210749,
+            0.343716947
+          ],
+          [
+            0.272110008,
+            0.343789704
+          ],
+          [
+            0.272036749,
+            0.3438606
+          ],
+          [
+            0.271902862,
+            0.343994488
+          ],
+          [
+            0.271602727,
+            0.344550878
+          ],
+          [
+            0.271567739,
+            0.344683051
+          ]
+        ]
+      }
+    ],
+    "clearance": {
+      "hardClear": [],
+      "thinned": [],
+      "kept": []
+    },
+    "variants": [
+      {
+        "id": "variant.bog-iron-workings.base",
+        "changedRefs": [],
+        "serviceOverrides": {},
+        "ambience": "works"
+      }
+    ],
+    "scaleGrounding": {
+      "loreSource": "The catalogue record is Bog Iron Workings. The record's class is works, magnitude M1. The occupants are D2 seasonal diggers, few. The interior is a dwelling S1 with one door.",
+      "population": "3-6",
+      "households": 0,
+      "buildingsPlanned": 1,
+      "npcsPlanned": 1,
+      "why": "A season's crew is three to six diggers from three villages. The workings are one sleeping hut with a furnace floor beside it."
+    },
+    "siting": {
+      "dossier": "world/sources/sites/dossiers/bog-iron-workings.json",
+      "candidates": [
+        {
+          "id": "candidate.bog-iron-workings.the-bench",
+          "positionM": [
+            1998.0,
+            2538.0
+          ],
+          "chosen": true,
+          "why": "The candidate is a level bench, firm and dry. It lies at the head of the bank above the seep's north end. It lies 25 m south of the road."
+        },
+        {
+          "id": "candidate.bog-iron-workings.plotted-anchor",
+          "positionM": [
+            2004.2,
+            2598.7
+          ],
+          "why": "The candidate is the plotted anchor. It lies 60 m south on the seep's west shore.",
+          "rejectedBecause": "The ground falls 6-8 degrees. It has no level cell for a hut pad. It lies 0.23 m over the water table."
+        }
+      ]
+    },
+    "macroEvidence": [
+      {
+        "sourcePaths": [
+          "assetPlan",
+          "contents",
+          "discovery",
+          "eraLayers",
+          "hostility",
+          "interior",
+          "playerPurpose",
+          "questHooks",
+          "relations",
+          "lootTable",
+          "season",
+          "sitingPrefs",
+          "status",
+          "traversalModes",
+          "underwaterAccess",
+          "vibe",
+          "why"
+        ],
+        "evidenceRefs": [
+          "parcel.bog-iron-workings.diggers-hut",
+          "parcel.bog-iron-workings.the-bloomery",
+          "approach.bog-iron-workings.from-the-seep-track"
+        ]
+      },
+      {
+        "sourcePaths": [
+          "entrance"
+        ],
+        "evidenceRefs": [
+          "door.imperial-fringe.bog-iron-workings.1",
+          "parcel.bog-iron-workings.diggers-hut"
+        ]
+      }
+    ],
+    "budget": {
+      "maxInstances": 80,
+      "maxUniqueMaterials": 80,
+      "maxTextureMB": 32,
+      "maxColliders": 60
+    },
+    "assetConstraints": [],
+    "proseRefs": [
+      {
+        "sourcePath": "causalModel.founding",
+        "itemRef": "item.bog-iron"
+      },
+      {
+        "sourcePath": "districts[0].why.playerPurpose",
+        "itemRef": "item.bog-iron"
+      },
+      {
+        "sourcePath": "parcels[1].why.playerPurpose",
+        "itemRef": "item.bog-iron"
+      }
+    ],
+    "authoredOn": {
+      "wbSchemaVersion": 1,
+      "ground": {
+        "centreM": [
+          2008.0,
+          2565.0
+        ],
+        "halfM": 75.0,
+        "chunks": {
+          "chunk_4_5": "87daf5f7235d21309472b3cf0c27852c6539fefdf9e02edf9451bcd360ee8c1d"
+        },
+        "sha256": "63479b4e0b4ec20b4ebcd818b2bcd4fcee9218c0428b859044b51c336466a9df"
+      },
+      "kits": {
+        "docks-v1": "9d40f599649d99cc809f30c077d650fe5b3f9265e67ce2932dd15fdb30ab9213",
+        "flora-province-v1": "0ef937d974ac29e0c20057d560413bb7d248a7c78c48d734bf30c9b0b99c6003",
+        "interior-kotm-v1": "4911d600175285cbadb2c32d58d105998c1d5573e70501b828aacfdf3e9e8a70",
+        "mudmother-hut-int": "495d9aaad681abc92d8c75eb75ec785050a92e756790389e56322ff93af4daa7",
+        "settlement-imperial-v1": "5f3e1c22df6143bf317e3c805bf5609060846fe7ed128db269584a5aacc6dac8",
+        "settlement-plank-v1": "333c7624d9e6682710fc737dea748647167b44587c4b99f805dd1c2a77b5752a",
+        "settlement-root-v1": "71e3df7b247a1ad31db15ba7179f46134fe0d49a711ca890af89815f3a31d12f",
+        "works-v1": "5878e867a195125408f4525f6bc74c03f20a1035f3da79972dded433be81717a"
+      },
+      "layout": {
+        "path": "world/sources/blueprints/bog-iron-workings.layout.json",
+        "sha256": "10c651fd32556d7a1750934065fa6798ae7e5f646c658f47b9d0fa1d5d08f918",
+        "uidSha256": {
+          "LilmothApothecaryHouse.088933A3": "db2c37e65427fd0ea9a00e22066ba9497720312a3aafd40e6f61c4bcf5a514a8",
+          "LilmothApothecaryHouse.088933BE": "dc2998dd0ad3ca6e322b188027f3ba85f629bed2ed3d3f7b44289e15d14e5093",
+          "b-hut": "daceb14d3dcc4be449418e9fb4561e00062a302cbdd997c68e8fe8ad1dc6a5de",
+          "b-hut-lamp": "00c72bc5070185db04fcd79300591b921843fc4f70ee5031d8529074cd67218c",
+          "bl-charcoal-bed": "8449982c531bae11ad7211c95743e938f855c1f85cd5ec9ebeee263b0077e947",
+          "bl-furnace": "469fe4b43fa34df2a8f7dce2287d68f981cb15c401c273724fb2fb3279a780b5",
+          "bl-iron-bars-1": "973a8f0792c779698d4de37ad3fa304f84a3081b2dfd8ca3db699b0b0215dc63",
+          "bl-iron-bars-2": "7786cd9361b7c9cf770c17daacedfbadef520012adac5d1efdb6abda8cb1f0c0",
+          "bl-iron-bars-3": "140917347422d41734b1b6fc08be0e2ea53a72b667218163efa243ffdfcc1bcd",
+          "bl-meal-bench-s": "b8226f2391e90edbcf93a2c3b879290d4b1979a9e09206506912eb293af53832",
+          "bl-meal-bench-sw": "a0852e3317a91c5ce7a867ac1e33959f827f7d6a709ae433a7788b882848c147",
+          "dw-plank1": "6e63422133a0ff8a47a726a976e2e15339a1301c9d2e05ddc236712b74126b45",
+          "dw-plank10": "1d5cc79facdae7449fccc371685f78b9ceb5f98f2b5fe8fe3ff927a651c0691d",
+          "dw-plank11": "b4c3df7dff21726e705f9a85f1d10255d57a79f39f1098ea309a4f51985fa086",
+          "dw-plank12": "ea71ff4dc84e0581f95b76869e85b8fdbe89adec397a335de706d32c146369f1",
+          "dw-plank13": "45954746d70a9b6bd79300a794ff3f9c0d613fc4a70be487642c3309ae7f4a80",
+          "dw-plank14": "e951fb885882bf4a8ac6add3fb5a34111dc2ba418f1783711a06480efd2e4b11",
+          "dw-plank2": "e7238450fbe0483ebae670d01724694ac3656e96326dfe588fb637cba25bf9f1",
+          "dw-plank3": "4fba4699476c6343227b10e43bfe85f3b8ea75a7daed31718cb22613a109749d",
+          "dw-plank4": "129c970cbfb94a98a4251de5fca18fec13e3522e3087731709b5dd04f6b42166",
+          "dw-plank5": "c34ba76ca4256eef80eebe84f8237283fb79daf325fb51ff31986af08a0d82db",
+          "dw-plank6": "8e2c72032cb337d3c5e490b4f8337a580b181e3aeca113b09874f668407998e4",
+          "dw-plank7": "33d7851a4bf6cf4f45456dbf939f84d63496bae55c24d5ecc215f0c918a0b8e4",
+          "dw-plank8": "26f2dd0936071195817d88080a3ecf7bd956de8b491744be33469c213dbedb2c",
+          "dw-plank9": "8c376d2a19505ba48dee99d9eba1c2218e8a2f1d1573ebefd2ac528a20e0420b",
+          "n-marshweed": "5d54b44cc4cb43dc8e5f5536589ee34143ac8bdb2b98fef1515e6b5937546a9e",
+          "n-somnalius-fern": "32a31799690ddb380f5ca14ee87a96486a690b6daf90ba411410b1e045f9e7fc",
+          "parcel.bog-iron-workings.the-bloomery": "59c092c94e8367d42d51e0fcfc482742414e06e848fa604141cae4f1e186ab5f",
+          "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.sd-basket": "767a7c3ffb86ccfc69c91ba10b32edcc6061f3a338625e8806d3f7f54cf9a5e7",
+          "route.bog-iron-workings.dig-track": "e7582e4137dc739452be18f1b957fba33e7f34717125b5899ae2afcc2cbbde92",
+          "route.bog-iron-workings.furnace-path": "fe6077cb4fc826264935aecdc72271bc9c982f97d6802a0d9c558911a1480a37",
+          "route.bog-iron-workings.the-way": "0e90f1eca10a30b249a4366a8eee015470ea1a7784c64080702598f486e68242",
+          "sd-basket": "f3ab4c52912ec7ca6a5586b9c4926b73544d8f28f8cac2fe8ce8386723367233",
+          "sd-cart": "665a8dbaf5f232f8b41105133261c4cde64a479f736d350e1c1059142879eadd",
+          "sd-ore1": "a9cc3940c95a008c49ad8a67ff625698fdfa49bff5ba4eef35ba5b3849f920e0",
+          "sd-ore2": "d510f10cfe787808c962f6c22ecdb050eaf56f8abd4ea90ac78ed98cbf884442",
+          "sd-orebucket": "e91ef3c7cf3c2cdfd821a62dd30484da2ee8cb457e12f2687568091e6b4cc30f",
+          "sd-shovel": "3f059b2e3c94780b146c2f42610c35219b6d9a01348c307a3410c8aac2799d0d",
+          "sd-spoil": "ae0771312da34046f7173184472534696ff29697d3d0be7fc7cde195f51d62b7",
+          "sd-spoil2": "330bebcce563425d0ba0b774525b5224d78b6fb603ed049791b203120fd7748b",
+          "seep-pit-1": "1003b273fc72e1f3eac3ed138f24b3b84084db7b3af2e5ba867fe4633112520a",
+          "seep-pit-2": "74b5132c0b6b60b7547371b8be3b2df3bee4680c99cfe4b6f6fc362649951d47",
+          "seep-pit-3": "ec68e3bfc62fdeb4341a17254fd832c21a66e3ee0f94a06be62eb67925bf98a9",
+          "sm-anvil": "61894a6b6c7139239615479b4309da978401a658b075e3d90e6eec281175af76",
+          "sm-forge": "1ff353e1a80d9ef56fc71315e70af9344bf30d90f8355f2126c5539d4c8f16cd",
+          "sm-grindstone": "7b7ada5a8ecc07cb03d4f627a94c84e477a95bef5ea470546750fed8c9c77552",
+          "sm-workbench": "44ae1d050944e960209773222cdd4aeb1d1ef3e1a1d2912de8c45e97445490bf",
+          "spoil-bank-1": "d51d7142339a9184c8605c4121472c3acbbfb55b25f9ee2116e67c499f92d003",
+          "spoil-bank-2": "b71144db7268426b62493c9a2c20fb55777f2021885e5ea114b0c06d13db0ff6",
+          "spoil-bank-3": "96f581bd347bbb318f60edee7c8e840814c67bc97c63aacb45c13c621f45e5c1",
+          "y1-bl-bellows": "66aebef5280986169c91b0006a353ee96e011e4cac1a7b7c19a1472e5a3d3577",
+          "y1-bl-chop": "586f9ccfc7e2c7928b7ecbc4acdb6b03351717a2751f5f3f7d39df13cb7078df",
+          "y1-bl-ingots": "de4a45c3490d9ca625c5ed568d2291f7d48b4342a220626348ac7a90cfe3c06a",
+          "y1-bl-wood": "d7ffba6ec28a4ea81e2e9e80b8b6d8c8278e8141126dd0a5f82b9a1e11b3f6b5",
+          "y3-cf-fire": "50e92cf773da9383b7afb1b360086d78fff340a06ae0cb1243fe9da727f49fb1",
+          "y3-cf-pot": "23d7403e1e168b3316679594bcfb12987bd6c1c6001adf0abe6ce17bc1e72879",
+          "y3-cf-urn": "81ba66730b9a9a1c3fc64ed01af2781dcaa45c6eed37e32191753d9cc8851cbb",
+          "y4-oc-bask1": "017995a3f750698dc0ac4d577a78fedfeb3f9767e345e164f5b4cacc87132877",
+          "y4-oc-bask2": "048fa60d53a0f0312dfb5ca9b99fbe73985930e6ebaa0fffddf8c72378917c0a",
+          "y4-oc-cart": "b8141f3b843897c28ea4915561ec1f24c051c4772205bf47b01974a41a202181",
+          "y4-oc-ore1": "2a12cfa178d7a28dece1f3c73e3a61c6fa1689b2949027338a1c22f32469c941",
+          "y4-oc-ore2": "90b897fcfa261a197c23e5284e3e57182aa106f0240bc8bd8fdd678e20e5a270",
+          "y4-oc-orebucket": "6239a801b4eadf85efec0dcfbeae55c5ccbfad7560441908ef9d4150b2ba87e0",
+          "y4-oc-pail": "7285e75ad031c4f6b23a75d034bed5c4433c121d8b100176a120aaf461a12bc2",
+          "y5-cs-basket": "491e08448e9180dd74fdd1508c1552091fd9821c8f55c6f3f950287aee8c6604",
+          "y5-cs-basket2": "be44d616dbfbe78e29219b339fbfbe5948064932c512560e1314b9ad578efaca",
+          "y5-cs-crate": "af799b1169d72e02c57f2de95faa3b770bf75af1e751ecc10f8c5f483f71a606",
+          "y5-cs-pail": "72a18e19e68b6bf3e2c92e09cb5afb928a7573b263157143af8c480c0cfa5548",
+          "y5-cs-sack": "41b7bcdacacae9c9234ee5396abd3414a72427ec9d7034e3258f75c95ebf2455",
+          "y5-cs-urn1": "63a6ff1fce7ec373cc6fcb3673087608a70aca90d1379903d3d29c114ed6ffa9",
+          "y5-cs-urn2": "148eb7fbaad920610c9d6cc2ba94d5ec56032d8460da0e61c14503662d1ce92e",
+          "y5-cs-wood": "bb102885af8dc75dad4a912e444e1c78b137ec431b8944a5ee0e66adf3e287d4"
+        },
+        "geometrySha256": "70bfa31a9aa4558e990d31265143cd9108c62dec4a8a8db2654444f3ab0e6ef1"
+      }
+    },
+    "walkRoutes": {
+      "schemaVersion": 1,
+      "cellM": 0.5,
+      "stepM": 0.45,
+      "slopeMaxDeg": 30.0,
+      "wadeMaxM": 0.7,
+      "routes": {
+        "door:b-hut": {
+          "points": [
+            [
+              2004.29,
+              14.56,
+              2607.22
+            ],
+            [
+              2004.29,
+              14.61,
+              2606.72
+            ],
+            [
+              2004.29,
+              14.67,
+              2606.22
+            ],
+            [
+              2004.29,
+              14.82,
+              2604.72
+            ],
+            [
+              2004.29,
+              14.85,
+              2604.22
+            ],
+            [
+              2004.29,
+              14.89,
+              2603.72
+            ],
+            [
+              2004.29,
+              14.95,
+              2602.72
+            ],
+            [
+              2004.29,
+              14.96,
+              2602.22
+            ],
+            [
+              2004.29,
+              15.02,
+              2600.72
+            ],
+            [
+              2004.29,
+              15.05,
+              2600.22
+            ],
+            [
+              2004.29,
+              15.07,
+              2599.72
+            ],
+            [
+              2004.29,
+              15.1,
+              2599.22
+            ],
+            [
+              2004.29,
+              15.14,
+              2598.72
+            ],
+            [
+              2004.29,
+              15.29,
+              2597.22
+            ],
+            [
+              2003.79,
+              15.33,
+              2596.72
+            ],
+            [
+              2003.29,
+              15.38,
+              2596.22
+            ],
+            [
+              2002.79,
+              15.44,
+              2595.72
+            ],
+            [
+              2002.29,
+              15.51,
+              2595.22
+            ],
+            [
+              2001.79,
+              15.57,
+              2594.72
+            ],
+            [
+              2001.29,
+              15.64,
+              2594.22
+            ],
+            [
+              2000.79,
+              15.73,
+              2593.72
+            ],
+            [
+              2000.29,
+              15.8,
+              2593.22
+            ],
+            [
+              1999.79,
+              15.86,
+              2592.72
+            ],
+            [
+              1999.79,
+              15.96,
+              2591.72
+            ],
+            [
+              1999.79,
+              16.05,
+              2590.22
+            ],
+            [
+              1999.79,
+              16.1,
+              2589.72
+            ],
+            [
+              1999.79,
+              16.14,
+              2589.22
+            ],
+            [
+              1999.79,
+              16.29,
+              2587.72
+            ],
+            [
+              1999.79,
+              16.35,
+              2587.22
+            ],
+            [
+              1999.79,
+              16.6,
+              2584.72
+            ],
+            [
+              1999.79,
+              16.66,
+              2584.22
+            ],
+            [
+              1999.79,
+              16.87,
+              2582.72
+            ],
+            [
+              1999.79,
+              16.93,
+              2582.22
+            ],
+            [
+              1999.79,
+              17.0,
+              2581.72
+            ],
+            [
+              1999.79,
+              17.12,
+              2580.72
+            ],
+            [
+              1999.79,
+              17.2,
+              2579.72
+            ],
+            [
+              1999.79,
+              17.3,
+              2578.72
+            ],
+            [
+              1999.79,
+              17.48,
+              2577.22
+            ],
+            [
+              1997.79,
+              17.84,
+              2575.22
+            ],
+            [
+              1996.79,
+              18.0,
+              2574.22
+            ],
+            [
+              1996.29,
+              18.07,
+              2573.72
+            ],
+            [
+              1995.79,
+              18.15,
+              2573.22
+            ],
+            [
+              1995.29,
+              18.21,
+              2572.72
+            ],
+            [
+              1994.79,
+              18.29,
+              2572.22
+            ],
+            [
+              1994.29,
+              18.35,
+              2571.72
+            ],
+            [
+              1994.29,
+              18.63,
+              2569.72
+            ],
+            [
+              1994.29,
+              18.87,
+              2568.22
+            ],
+            [
+              1994.29,
+              18.93,
+              2567.72
+            ],
+            [
+              1994.29,
+              18.98,
+              2567.22
+            ],
+            [
+              1994.29,
+              19.1,
+              2566.22
+            ],
+            [
+              1994.29,
+              19.18,
+              2565.22
+            ],
+            [
+              1994.29,
+              19.23,
+              2564.72
+            ],
+            [
+              1994.29,
+              19.26,
+              2564.22
+            ],
+            [
+              1993.79,
+              19.37,
+              2563.72
+            ],
+            [
+              1993.29,
+              19.47,
+              2563.22
+            ],
+            [
+              1993.29,
+              19.51,
+              2562.72
+            ],
+            [
+              1993.29,
+              19.63,
+              2560.72
+            ],
+            [
+              1993.29,
+              19.73,
+              2559.72
+            ],
+            [
+              1992.79,
+              19.82,
+              2559.22
+            ],
+            [
+              1992.79,
+              19.94,
+              2558.22
+            ],
+            [
+              1992.79,
+              19.98,
+              2557.72
+            ],
+            [
+              1992.29,
+              20.06,
+              2557.22
+            ],
+            [
+              1991.29,
+              20.18,
+              2556.22
+            ],
+            [
+              1991.29,
+              20.21,
+              2555.72
+            ],
+            [
+              1991.29,
+              20.33,
+              2554.22
+            ],
+            [
+              1991.29,
+              20.36,
+              2553.72
+            ],
+            [
+              1991.29,
+              20.4,
+              2553.22
+            ],
+            [
+              1991.29,
+              20.42,
+              2552.72
+            ],
+            [
+              1991.29,
+              20.45,
+              2552.22
+            ],
+            [
+              1991.29,
+              20.47,
+              2551.72
+            ],
+            [
+              1991.29,
+              20.51,
+              2549.72
+            ],
+            [
+              1991.29,
+              20.51,
+              2549.22
+            ],
+            [
+              1991.29,
+              20.5,
+              2548.72
+            ],
+            [
+              1991.29,
+              20.5,
+              2548.22
+            ],
+            [
+              1991.29,
+              20.49,
+              2547.72
+            ],
+            [
+              1991.29,
+              20.47,
+              2547.22
+            ],
+            [
+              1991.29,
+              20.45,
+              2546.22
+            ],
+            [
+              1991.29,
+              20.45,
+              2545.72
+            ],
+            [
+              1991.29,
+              20.48,
+              2545.22
+            ],
+            [
+              1991.29,
+              20.58,
+              2544.22
+            ],
+            [
+              1991.29,
+              20.62,
+              2543.72
+            ],
+            [
+              1991.29,
+              20.62,
+              2535.22
+            ]
+          ],
+          "routeM": 77.7,
+          "steepestDeg": 9.1,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0,
+          "parcelId": "parcel.bog-iron-workings.diggers-hut",
+          "doorIds": [
+            "door.imperial-fringe.bog-iron-workings.1"
+          ]
+        },
+        "opening:bl-furnace": {
+          "points": [
+            [
+              2004.29,
+              14.56,
+              2607.22
+            ],
+            [
+              2004.29,
+              14.61,
+              2606.72
+            ],
+            [
+              2004.29,
+              14.67,
+              2606.22
+            ],
+            [
+              2004.29,
+              14.82,
+              2604.72
+            ],
+            [
+              2004.29,
+              14.85,
+              2604.22
+            ],
+            [
+              2004.29,
+              14.89,
+              2603.72
+            ],
+            [
+              2004.29,
+              14.95,
+              2602.72
+            ],
+            [
+              2004.29,
+              14.96,
+              2602.22
+            ],
+            [
+              2005.29,
+              15.04,
+              2601.22
+            ],
+            [
+              2005.29,
+              15.07,
+              2600.72
+            ],
+            [
+              2005.29,
+              15.09,
+              2600.22
+            ],
+            [
+              2005.29,
+              15.12,
+              2599.72
+            ],
+            [
+              2005.29,
+              15.14,
+              2599.22
+            ],
+            [
+              2005.29,
+              15.18,
+              2598.72
+            ],
+            [
+              2005.29,
+              15.33,
+              2597.22
+            ],
+            [
+              2005.29,
+              15.39,
+              2596.72
+            ],
+            [
+              2005.29,
+              15.46,
+              2596.22
+            ],
+            [
+              2005.29,
+              15.58,
+              2595.22
+            ],
+            [
+              2005.29,
+              15.79,
+              2593.72
+            ],
+            [
+              2005.29,
+              16.27,
+              2589.72
+            ],
+            [
+              2005.29,
+              16.34,
+              2589.22
+            ],
+            [
+              2005.29,
+              16.52,
+              2587.72
+            ],
+            [
+              2005.29,
+              16.59,
+              2587.22
+            ],
+            [
+              2005.29,
+              16.77,
+              2585.72
+            ],
+            [
+              2005.29,
+              16.84,
+              2585.22
+            ],
+            [
+              2005.29,
+              16.9,
+              2584.72
+            ],
+            [
+              2005.29,
+              17.1,
+              2582.72
+            ],
+            [
+              2005.29,
+              17.22,
+              2580.72
+            ],
+            [
+              2005.29,
+              17.26,
+              2580.22
+            ],
+            [
+              2005.29,
+              17.29,
+              2579.72
+            ],
+            [
+              2005.29,
+              17.33,
+              2579.22
+            ],
+            [
+              2005.29,
+              17.36,
+              2578.72
+            ],
+            [
+              2005.29,
+              17.4,
+              2578.22
+            ],
+            [
+              2005.29,
+              17.43,
+              2577.72
+            ],
+            [
+              2005.29,
+              17.75,
+              2573.72
+            ],
+            [
+              2005.29,
+              17.85,
+              2571.22
+            ],
+            [
+              2005.29,
+              17.86,
+              2570.72
+            ],
+            [
+              2005.29,
+              17.88,
+              2570.22
+            ],
+            [
+              2005.29,
+              17.91,
+              2569.72
+            ],
+            [
+              2005.29,
+              18.03,
+              2568.22
+            ],
+            [
+              2005.29,
+              18.08,
+              2567.72
+            ],
+            [
+              2005.29,
+              18.14,
+              2567.22
+            ],
+            [
+              2005.29,
+              18.19,
+              2566.72
+            ],
+            [
+              2005.29,
+              18.25,
+              2566.22
+            ],
+            [
+              2005.29,
+              18.3,
+              2565.72
+            ],
+            [
+              2005.29,
+              18.36,
+              2565.22
+            ],
+            [
+              2005.29,
+              18.51,
+              2563.72
+            ],
+            [
+              2005.29,
+              18.55,
+              2563.22
+            ],
+            [
+              2005.29,
+              18.8,
+              2560.72
+            ],
+            [
+              2005.29,
+              18.86,
+              2560.22
+            ],
+            [
+              2005.29,
+              18.93,
+              2559.72
+            ],
+            [
+              2005.29,
+              18.99,
+              2559.22
+            ],
+            [
+              2005.29,
+              19.04,
+              2558.72
+            ],
+            [
+              2005.29,
+              19.16,
+              2557.22
+            ],
+            [
+              2005.29,
+              19.16,
+              2554.72
+            ],
+            [
+              2005.29,
+              19.17,
+              2554.22
+            ],
+            [
+              2005.29,
+              19.17,
+              2553.72
+            ],
+            [
+              2005.29,
+              19.21,
+              2552.72
+            ],
+            [
+              2005.29,
+              19.27,
+              2551.72
+            ],
+            [
+              2005.29,
+              19.33,
+              2551.22
+            ],
+            [
+              2005.79,
+              19.37,
+              2550.72
+            ],
+            [
+              2005.79,
+              19.42,
+              2550.22
+            ],
+            [
+              2005.79,
+              19.45,
+              2549.72
+            ],
+            [
+              2005.79,
+              19.46,
+              2549.22
+            ],
+            [
+              2005.79,
+              19.46,
+              2544.72
+            ]
+          ],
+          "routeM": 63.36,
+          "steepestDeg": 7.8,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0,
+          "parcelId": "parcel.bog-iron-workings.the-bloomery"
+        },
+        "socket:socket.bog-iron-workings.container-iron-stock": {
+          "points": [
+            [
+              2004.29,
+              14.56,
+              2607.22
+            ],
+            [
+              2004.29,
+              14.61,
+              2606.72
+            ],
+            [
+              2004.29,
+              14.67,
+              2606.22
+            ],
+            [
+              2004.29,
+              14.82,
+              2604.72
+            ],
+            [
+              2004.29,
+              14.85,
+              2604.22
+            ],
+            [
+              2004.29,
+              14.89,
+              2603.72
+            ],
+            [
+              2004.29,
+              14.95,
+              2602.72
+            ],
+            [
+              2004.29,
+              14.96,
+              2602.22
+            ],
+            [
+              2004.29,
+              15.02,
+              2600.72
+            ],
+            [
+              2004.29,
+              15.05,
+              2600.22
+            ],
+            [
+              2004.29,
+              15.07,
+              2599.72
+            ],
+            [
+              2004.29,
+              15.1,
+              2599.22
+            ],
+            [
+              2004.29,
+              15.14,
+              2598.72
+            ],
+            [
+              2004.29,
+              15.29,
+              2597.22
+            ],
+            [
+              2003.79,
+              15.33,
+              2596.72
+            ],
+            [
+              2003.29,
+              15.38,
+              2596.22
+            ],
+            [
+              2002.79,
+              15.44,
+              2595.72
+            ],
+            [
+              2002.29,
+              15.51,
+              2595.22
+            ],
+            [
+              2001.79,
+              15.57,
+              2594.72
+            ],
+            [
+              2001.29,
+              15.64,
+              2594.22
+            ],
+            [
+              2000.79,
+              15.73,
+              2593.72
+            ],
+            [
+              2000.29,
+              15.8,
+              2593.22
+            ],
+            [
+              1999.79,
+              15.86,
+              2592.72
+            ],
+            [
+              1999.79,
+              15.96,
+              2591.72
+            ],
+            [
+              1999.79,
+              16.05,
+              2590.22
+            ],
+            [
+              1999.79,
+              16.1,
+              2589.72
+            ],
+            [
+              1999.79,
+              16.14,
+              2589.22
+            ],
+            [
+              1999.79,
+              16.29,
+              2587.72
+            ],
+            [
+              1999.79,
+              16.35,
+              2587.22
+            ],
+            [
+              1999.79,
+              16.6,
+              2584.72
+            ],
+            [
+              1999.79,
+              16.66,
+              2584.22
+            ],
+            [
+              1999.79,
+              16.87,
+              2582.72
+            ],
+            [
+              1999.79,
+              16.93,
+              2582.22
+            ],
+            [
+              1999.79,
+              17.0,
+              2581.72
+            ],
+            [
+              1999.79,
+              17.12,
+              2580.72
+            ],
+            [
+              1999.79,
+              17.2,
+              2579.72
+            ],
+            [
+              1999.79,
+              17.3,
+              2578.72
+            ],
+            [
+              1999.79,
+              17.48,
+              2577.22
+            ],
+            [
+              1999.79,
+              17.55,
+              2576.72
+            ],
+            [
+              1999.79,
+              17.63,
+              2576.22
+            ],
+            [
+              1999.79,
+              17.7,
+              2575.72
+            ],
+            [
+              1999.79,
+              18.02,
+              2573.72
+            ],
+            [
+              1999.79,
+              18.07,
+              2573.22
+            ],
+            [
+              1999.79,
+              18.13,
+              2572.72
+            ],
+            [
+              1999.79,
+              18.23,
+              2571.72
+            ],
+            [
+              1999.79,
+              18.25,
+              2571.22
+            ],
+            [
+              1999.79,
+              18.28,
+              2569.72
+            ],
+            [
+              1999.79,
+              18.28,
+              2568.22
+            ],
+            [
+              1999.79,
+              18.32,
+              2566.22
+            ],
+            [
+              1999.79,
+              18.41,
+              2564.72
+            ],
+            [
+              1999.79,
+              18.45,
+              2564.22
+            ],
+            [
+              1999.79,
+              18.6,
+              2562.72
+            ],
+            [
+              1999.79,
+              18.88,
+              2560.72
+            ],
+            [
+              1999.79,
+              18.96,
+              2560.22
+            ],
+            [
+              1999.79,
+              19.14,
+              2559.22
+            ],
+            [
+              1999.79,
+              19.3,
+              2558.22
+            ],
+            [
+              1999.79,
+              19.39,
+              2557.72
+            ],
+            [
+              1999.79,
+              20.03,
+              2553.72
+            ],
+            [
+              1999.79,
+              20.1,
+              2553.22
+            ],
+            [
+              1999.79,
+              20.15,
+              2552.72
+            ],
+            [
+              1999.79,
+              20.27,
+              2551.72
+            ],
+            [
+              1999.79,
+              20.29,
+              2551.22
+            ],
+            [
+              1999.79,
+              20.3,
+              2550.72
+            ],
+            [
+              1999.29,
+              20.3,
+              2550.22
+            ],
+            [
+              1998.79,
+              20.28,
+              2549.72
+            ],
+            [
+              1998.29,
+              20.32,
+              2549.22
+            ],
+            [
+              1997.79,
+              20.45,
+              2548.72
+            ],
+            [
+              1997.79,
+              20.41,
+              2548.22
+            ],
+            [
+              1997.79,
+              20.41,
+              2547.72
+            ],
+            [
+              1997.79,
+              20.45,
+              2547.22
+            ],
+            [
+              1997.79,
+              20.55,
+              2546.22
+            ],
+            [
+              1997.79,
+              20.57,
+              2545.72
+            ],
+            [
+              1997.29,
+              20.62,
+              2545.22
+            ],
+            [
+              1996.79,
+              20.59,
+              2544.72
+            ],
+            [
+              1996.29,
+              20.55,
+              2544.22
+            ],
+            [
+              1995.79,
+              20.5,
+              2543.72
+            ],
+            [
+              1995.29,
+              20.49,
+              2543.22
+            ],
+            [
+              1995.29,
+              20.49,
+              2542.22
+            ],
+            [
+              1995.29,
+              20.51,
+              2541.72
+            ],
+            [
+              1995.29,
+              20.52,
+              2541.22
+            ],
+            [
+              1995.29,
+              20.54,
+              2540.72
+            ],
+            [
+              1995.29,
+              20.56,
+              2539.72
+            ],
+            [
+              1995.29,
+              20.6,
+              2538.72
+            ],
+            [
+              1995.29,
+              20.61,
+              2538.22
+            ],
+            [
+              1995.29,
+              20.61,
+              2537.72
+            ],
+            [
+              1995.29,
+              20.59,
+              2536.72
+            ],
+            [
+              1995.29,
+              20.6,
+              2536.22
+            ],
+            [
+              1995.29,
+              20.6,
+              2535.72
+            ],
+            [
+              1995.29,
+              20.61,
+              2535.22
+            ],
+            [
+              1995.29,
+              20.61,
+              2534.22
+            ],
+            [
+              1994.79,
+              20.61,
+              2533.72
+            ],
+            [
+              1994.29,
+              20.62,
+              2533.22
+            ]
+          ],
+          "routeM": 78.51,
+          "steepestDeg": 10.4,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.bog-iron-workings.idle-n1-work": {
+          "points": [
+            [
+              2004.29,
+              14.56,
+              2607.22
+            ],
+            [
+              2004.29,
+              14.61,
+              2606.72
+            ],
+            [
+              2004.29,
+              14.67,
+              2606.22
+            ],
+            [
+              2004.29,
+              14.82,
+              2604.72
+            ],
+            [
+              2004.29,
+              14.85,
+              2604.22
+            ],
+            [
+              2004.29,
+              14.89,
+              2603.72
+            ],
+            [
+              2004.29,
+              14.95,
+              2602.72
+            ],
+            [
+              2004.29,
+              14.96,
+              2602.22
+            ],
+            [
+              2005.29,
+              15.04,
+              2601.22
+            ],
+            [
+              2005.29,
+              15.07,
+              2600.72
+            ],
+            [
+              2005.29,
+              15.09,
+              2600.22
+            ],
+            [
+              2005.29,
+              15.12,
+              2599.72
+            ],
+            [
+              2005.29,
+              15.14,
+              2599.22
+            ],
+            [
+              2005.29,
+              15.18,
+              2598.72
+            ],
+            [
+              2005.29,
+              15.33,
+              2597.22
+            ],
+            [
+              2005.29,
+              15.39,
+              2596.72
+            ],
+            [
+              2005.29,
+              15.46,
+              2596.22
+            ],
+            [
+              2005.29,
+              15.58,
+              2595.22
+            ],
+            [
+              2005.29,
+              15.79,
+              2593.72
+            ],
+            [
+              2005.29,
+              16.27,
+              2589.72
+            ],
+            [
+              2005.29,
+              16.34,
+              2589.22
+            ],
+            [
+              2005.29,
+              16.52,
+              2587.72
+            ],
+            [
+              2005.29,
+              16.59,
+              2587.22
+            ],
+            [
+              2005.29,
+              16.77,
+              2585.72
+            ],
+            [
+              2005.29,
+              16.84,
+              2585.22
+            ],
+            [
+              2005.29,
+              16.9,
+              2584.72
+            ],
+            [
+              2005.29,
+              17.1,
+              2582.72
+            ],
+            [
+              2005.29,
+              17.22,
+              2580.72
+            ],
+            [
+              2005.29,
+              17.26,
+              2580.22
+            ],
+            [
+              2005.29,
+              17.29,
+              2579.72
+            ],
+            [
+              2005.29,
+              17.33,
+              2579.22
+            ],
+            [
+              2005.29,
+              17.36,
+              2578.72
+            ],
+            [
+              2005.29,
+              17.4,
+              2578.22
+            ],
+            [
+              2005.29,
+              17.43,
+              2577.72
+            ],
+            [
+              2005.29,
+              17.75,
+              2573.72
+            ],
+            [
+              2005.29,
+              17.85,
+              2571.22
+            ],
+            [
+              2005.29,
+              17.86,
+              2570.72
+            ],
+            [
+              2005.29,
+              17.88,
+              2570.22
+            ],
+            [
+              2005.29,
+              17.91,
+              2569.72
+            ],
+            [
+              2005.29,
+              18.03,
+              2568.22
+            ],
+            [
+              2005.29,
+              18.08,
+              2567.72
+            ],
+            [
+              2005.29,
+              18.14,
+              2567.22
+            ],
+            [
+              2005.29,
+              18.19,
+              2566.72
+            ],
+            [
+              2005.29,
+              18.25,
+              2566.22
+            ],
+            [
+              2005.29,
+              18.3,
+              2565.72
+            ],
+            [
+              2005.29,
+              18.36,
+              2565.22
+            ],
+            [
+              2005.29,
+              18.51,
+              2563.72
+            ],
+            [
+              2005.29,
+              18.55,
+              2563.22
+            ],
+            [
+              2005.29,
+              18.8,
+              2560.72
+            ],
+            [
+              2005.29,
+              18.86,
+              2560.22
+            ],
+            [
+              2005.29,
+              18.93,
+              2559.72
+            ],
+            [
+              2005.29,
+              18.99,
+              2559.22
+            ],
+            [
+              2005.29,
+              19.04,
+              2558.72
+            ],
+            [
+              2005.29,
+              19.16,
+              2557.22
+            ],
+            [
+              2005.29,
+              19.16,
+              2554.72
+            ],
+            [
+              2005.29,
+              19.17,
+              2554.22
+            ],
+            [
+              2005.29,
+              19.17,
+              2553.72
+            ],
+            [
+              2005.29,
+              19.21,
+              2552.72
+            ],
+            [
+              2005.29,
+              19.27,
+              2551.72
+            ],
+            [
+              2005.29,
+              19.33,
+              2551.22
+            ],
+            [
+              2005.79,
+              19.37,
+              2550.72
+            ],
+            [
+              2005.79,
+              19.42,
+              2550.22
+            ],
+            [
+              2005.79,
+              19.45,
+              2549.72
+            ],
+            [
+              2005.79,
+              19.46,
+              2549.22
+            ],
+            [
+              2005.79,
+              19.46,
+              2544.72
+            ]
+          ],
+          "routeM": 63.36,
+          "steepestDeg": 7.8,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.bog-iron-workings.idle-n1-cook": {
+          "points": [
+            [
+              2004.29,
+              14.56,
+              2607.22
+            ],
+            [
+              2004.29,
+              14.61,
+              2606.72
+            ],
+            [
+              2004.29,
+              14.67,
+              2606.22
+            ],
+            [
+              2004.29,
+              14.82,
+              2604.72
+            ],
+            [
+              2004.29,
+              14.85,
+              2604.22
+            ],
+            [
+              2004.29,
+              14.89,
+              2603.72
+            ],
+            [
+              2004.29,
+              14.95,
+              2602.72
+            ],
+            [
+              2004.29,
+              14.96,
+              2602.22
+            ],
+            [
+              2005.29,
+              15.04,
+              2601.22
+            ],
+            [
+              2005.29,
+              15.07,
+              2600.72
+            ],
+            [
+              2005.29,
+              15.09,
+              2600.22
+            ],
+            [
+              2005.29,
+              15.12,
+              2599.72
+            ],
+            [
+              2005.29,
+              15.14,
+              2599.22
+            ],
+            [
+              2005.29,
+              15.18,
+              2598.72
+            ],
+            [
+              2005.29,
+              15.33,
+              2597.22
+            ],
+            [
+              2005.29,
+              15.39,
+              2596.72
+            ],
+            [
+              2005.29,
+              15.46,
+              2596.22
+            ],
+            [
+              2005.29,
+              15.58,
+              2595.22
+            ],
+            [
+              2005.29,
+              15.79,
+              2593.72
+            ],
+            [
+              2005.29,
+              16.27,
+              2589.72
+            ],
+            [
+              2005.29,
+              16.34,
+              2589.22
+            ],
+            [
+              2005.29,
+              16.52,
+              2587.72
+            ],
+            [
+              2005.29,
+              16.59,
+              2587.22
+            ],
+            [
+              2005.29,
+              16.77,
+              2585.72
+            ],
+            [
+              2005.29,
+              16.84,
+              2585.22
+            ],
+            [
+              2005.29,
+              16.9,
+              2584.72
+            ],
+            [
+              2005.29,
+              17.1,
+              2582.72
+            ],
+            [
+              2005.29,
+              17.22,
+              2580.72
+            ],
+            [
+              2005.29,
+              17.26,
+              2580.22
+            ],
+            [
+              2005.29,
+              17.29,
+              2579.72
+            ],
+            [
+              2005.29,
+              17.33,
+              2579.22
+            ],
+            [
+              2005.29,
+              17.36,
+              2578.72
+            ],
+            [
+              2005.29,
+              17.4,
+              2578.22
+            ],
+            [
+              2005.29,
+              17.43,
+              2577.72
+            ],
+            [
+              2005.29,
+              17.75,
+              2573.72
+            ],
+            [
+              2005.29,
+              17.85,
+              2571.22
+            ],
+            [
+              2005.29,
+              17.86,
+              2570.72
+            ],
+            [
+              2005.29,
+              17.88,
+              2570.22
+            ],
+            [
+              2005.29,
+              17.91,
+              2569.72
+            ],
+            [
+              2005.29,
+              18.03,
+              2568.22
+            ],
+            [
+              2005.29,
+              18.08,
+              2567.72
+            ],
+            [
+              2005.29,
+              18.14,
+              2567.22
+            ],
+            [
+              2005.29,
+              18.19,
+              2566.72
+            ],
+            [
+              2005.29,
+              18.25,
+              2566.22
+            ],
+            [
+              2005.29,
+              18.3,
+              2565.72
+            ],
+            [
+              2005.29,
+              18.36,
+              2565.22
+            ],
+            [
+              2005.29,
+              18.51,
+              2563.72
+            ],
+            [
+              2005.29,
+              18.55,
+              2563.22
+            ],
+            [
+              2005.29,
+              18.8,
+              2560.72
+            ],
+            [
+              2005.29,
+              18.86,
+              2560.22
+            ],
+            [
+              2005.29,
+              18.93,
+              2559.72
+            ],
+            [
+              2005.29,
+              18.99,
+              2559.22
+            ],
+            [
+              2005.29,
+              19.04,
+              2558.72
+            ],
+            [
+              2005.29,
+              19.16,
+              2557.22
+            ],
+            [
+              2005.29,
+              19.16,
+              2556.22
+            ],
+            [
+              2004.79,
+              19.19,
+              2555.72
+            ],
+            [
+              2004.79,
+              19.21,
+              2555.22
+            ],
+            [
+              2004.79,
+              19.22,
+              2554.72
+            ],
+            [
+              2004.79,
+              19.22,
+              2554.22
+            ],
+            [
+              2004.79,
+              19.23,
+              2553.72
+            ],
+            [
+              2004.79,
+              19.29,
+              2552.72
+            ],
+            [
+              2004.79,
+              19.31,
+              2552.22
+            ],
+            [
+              2004.79,
+              19.43,
+              2550.72
+            ],
+            [
+              2004.79,
+              19.46,
+              2550.22
+            ],
+            [
+              2004.79,
+              19.46,
+              2549.22
+            ],
+            [
+              2004.29,
+              19.46,
+              2548.72
+            ],
+            [
+              2004.29,
+              19.46,
+              2547.72
+            ],
+            [
+              2003.29,
+              19.46,
+              2546.72
+            ],
+            [
+              2003.29,
+              19.46,
+              2544.22
+            ]
+          ],
+          "routeM": 64.48,
+          "steepestDeg": 7.8,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.bog-iron-workings.npc-n1": {
+          "points": [
+            [
+              2004.29,
+              14.56,
+              2607.22
+            ],
+            [
+              2004.29,
+              14.61,
+              2606.72
+            ],
+            [
+              2004.29,
+              14.67,
+              2606.22
+            ],
+            [
+              2004.29,
+              14.82,
+              2604.72
+            ],
+            [
+              2004.29,
+              14.85,
+              2604.22
+            ],
+            [
+              2004.29,
+              14.89,
+              2603.72
+            ],
+            [
+              2004.29,
+              14.95,
+              2602.72
+            ],
+            [
+              2004.29,
+              14.96,
+              2602.22
+            ],
+            [
+              2005.29,
+              15.04,
+              2601.22
+            ],
+            [
+              2005.29,
+              15.07,
+              2600.72
+            ],
+            [
+              2005.29,
+              15.09,
+              2600.22
+            ],
+            [
+              2005.29,
+              15.12,
+              2599.72
+            ],
+            [
+              2005.29,
+              15.14,
+              2599.22
+            ],
+            [
+              2005.29,
+              15.18,
+              2598.72
+            ],
+            [
+              2005.29,
+              15.33,
+              2597.22
+            ],
+            [
+              2005.29,
+              15.39,
+              2596.72
+            ],
+            [
+              2005.29,
+              15.46,
+              2596.22
+            ],
+            [
+              2005.29,
+              15.58,
+              2595.22
+            ],
+            [
+              2005.29,
+              15.79,
+              2593.72
+            ],
+            [
+              2005.29,
+              16.27,
+              2589.72
+            ],
+            [
+              2005.29,
+              16.34,
+              2589.22
+            ],
+            [
+              2005.29,
+              16.52,
+              2587.72
+            ],
+            [
+              2005.29,
+              16.59,
+              2587.22
+            ],
+            [
+              2005.29,
+              16.77,
+              2585.72
+            ],
+            [
+              2005.29,
+              16.84,
+              2585.22
+            ],
+            [
+              2005.29,
+              16.9,
+              2584.72
+            ],
+            [
+              2005.29,
+              17.1,
+              2582.72
+            ],
+            [
+              2005.29,
+              17.22,
+              2580.72
+            ],
+            [
+              2005.29,
+              17.26,
+              2580.22
+            ],
+            [
+              2005.29,
+              17.29,
+              2579.72
+            ],
+            [
+              2005.29,
+              17.33,
+              2579.22
+            ],
+            [
+              2005.29,
+              17.36,
+              2578.72
+            ],
+            [
+              2005.29,
+              17.4,
+              2578.22
+            ],
+            [
+              2005.29,
+              17.43,
+              2577.72
+            ],
+            [
+              2005.29,
+              17.75,
+              2573.72
+            ],
+            [
+              2005.29,
+              17.85,
+              2571.22
+            ],
+            [
+              2005.29,
+              17.86,
+              2570.72
+            ],
+            [
+              2005.29,
+              17.88,
+              2570.22
+            ],
+            [
+              2005.29,
+              17.91,
+              2569.72
+            ],
+            [
+              2005.29,
+              18.03,
+              2568.22
+            ],
+            [
+              2005.29,
+              18.08,
+              2567.72
+            ],
+            [
+              2005.29,
+              18.14,
+              2567.22
+            ],
+            [
+              2005.29,
+              18.19,
+              2566.72
+            ],
+            [
+              2005.29,
+              18.25,
+              2566.22
+            ],
+            [
+              2005.29,
+              18.3,
+              2565.72
+            ],
+            [
+              2005.29,
+              18.36,
+              2565.22
+            ],
+            [
+              2005.29,
+              18.51,
+              2563.72
+            ],
+            [
+              2005.29,
+              18.55,
+              2563.22
+            ],
+            [
+              2005.29,
+              18.8,
+              2560.72
+            ],
+            [
+              2005.29,
+              18.86,
+              2560.22
+            ],
+            [
+              2005.29,
+              18.93,
+              2559.72
+            ],
+            [
+              2005.29,
+              18.99,
+              2559.22
+            ],
+            [
+              2005.29,
+              19.04,
+              2558.72
+            ],
+            [
+              2005.29,
+              19.16,
+              2557.22
+            ],
+            [
+              2005.29,
+              19.16,
+              2554.72
+            ],
+            [
+              2005.29,
+              19.17,
+              2554.22
+            ],
+            [
+              2005.29,
+              19.17,
+              2553.72
+            ],
+            [
+              2005.29,
+              19.21,
+              2552.72
+            ],
+            [
+              2005.29,
+              19.27,
+              2551.72
+            ],
+            [
+              2005.29,
+              19.33,
+              2551.22
+            ],
+            [
+              2005.79,
+              19.37,
+              2550.72
+            ],
+            [
+              2005.79,
+              19.42,
+              2550.22
+            ],
+            [
+              2005.79,
+              19.45,
+              2549.72
+            ],
+            [
+              2005.79,
+              19.46,
+              2549.22
+            ],
+            [
+              2005.79,
+              19.46,
+              2544.72
+            ],
+            [
+              2005.29,
+              19.46,
+              2544.22
+            ]
+          ],
+          "routeM": 64.07,
+          "steepestDeg": 7.8,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:fill.sd-basket": {
+          "points": [
+            [
+              2004.29,
+              14.56,
+              2607.22
+            ],
+            [
+              2004.79,
+              14.58,
+              2607.22
+            ],
+            [
+              2005.29,
+              14.59,
+              2607.22
+            ],
+            [
+              2005.79,
+              14.58,
+              2607.22
+            ],
+            [
+              2006.79,
+              14.58,
+              2607.22
+            ],
+            [
+              2007.79,
+              14.56,
+              2607.22
+            ],
+            [
+              2008.29,
+              14.56,
+              2607.22
+            ],
+            [
+              2008.79,
+              14.55,
+              2607.22
+            ],
+            [
+              2011.79,
+              14.61,
+              2607.22
+            ],
+            [
+              2012.29,
+              14.63,
+              2607.22
+            ],
+            [
+              2013.79,
+              14.66,
+              2607.22
+            ],
+            [
+              2014.29,
+              14.68,
+              2607.22
+            ],
+            [
+              2014.79,
+              14.67,
+              2607.22
+            ],
+            [
+              2016.29,
+              14.73,
+              2605.72
+            ],
+            [
+              2016.79,
+              14.73,
+              2605.22
+            ],
+            [
+              2017.79,
+              14.75,
+              2604.22
+            ],
+            [
+              2018.29,
+              14.77,
+              2603.72
+            ],
+            [
+              2018.79,
+              14.78,
+              2603.22
+            ],
+            [
+              2019.29,
+              14.8,
+              2602.72
+            ],
+            [
+              2020.79,
+              14.89,
+              2601.22
+            ],
+            [
+              2022.79,
+              15.05,
+              2599.22
+            ],
+            [
+              2023.79,
+              15.05,
+              2598.22
+            ],
+            [
+              2024.29,
+              15.06,
+              2597.72
+            ],
+            [
+              2024.79,
+              15.09,
+              2597.22
+            ],
+            [
+              2025.29,
+              15.14,
+              2596.72
+            ],
+            [
+              2026.79,
+              15.32,
+              2595.22
+            ],
+            [
+              2027.29,
+              15.39,
+              2594.72
+            ],
+            [
+              2027.79,
+              15.45,
+              2594.22
+            ],
+            [
+              2028.29,
+              15.52,
+              2593.72
+            ],
+            [
+              2028.79,
+              15.57,
+              2593.22
+            ],
+            [
+              2029.79,
+              15.63,
+              2592.22
+            ],
+            [
+              2030.29,
+              15.65,
+              2591.72
+            ],
+            [
+              2030.79,
+              15.6,
+              2591.22
+            ],
+            [
+              2031.29,
+              15.5,
+              2590.72
+            ],
+            [
+              2031.79,
+              15.42,
+              2590.22
+            ],
+            [
+              2032.29,
+              15.39,
+              2589.72
+            ],
+            [
+              2033.79,
+              15.39,
+              2589.72
+            ]
+          ],
+          "routeM": 36.8,
+          "steepestDeg": 8.2,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:yard.y3-cf-urn": {
+          "points": [
+            [
+              2004.29,
+              14.56,
+              2607.22
+            ],
+            [
+              2004.29,
+              14.61,
+              2606.72
+            ],
+            [
+              2004.29,
+              14.67,
+              2606.22
+            ],
+            [
+              2004.29,
+              14.82,
+              2604.72
+            ],
+            [
+              2004.29,
+              14.85,
+              2604.22
+            ],
+            [
+              2004.29,
+              14.89,
+              2603.72
+            ],
+            [
+              2004.29,
+              14.95,
+              2602.72
+            ],
+            [
+              2004.29,
+              14.96,
+              2602.22
+            ],
+            [
+              2005.29,
+              15.04,
+              2601.22
+            ],
+            [
+              2005.29,
+              15.07,
+              2600.72
+            ],
+            [
+              2005.29,
+              15.09,
+              2600.22
+            ],
+            [
+              2005.29,
+              15.12,
+              2599.72
+            ],
+            [
+              2005.29,
+              15.14,
+              2599.22
+            ],
+            [
+              2005.29,
+              15.18,
+              2598.72
+            ],
+            [
+              2005.29,
+              15.33,
+              2597.22
+            ],
+            [
+              2005.29,
+              15.39,
+              2596.72
+            ],
+            [
+              2005.29,
+              15.46,
+              2596.22
+            ],
+            [
+              2005.29,
+              15.58,
+              2595.22
+            ],
+            [
+              2005.29,
+              15.79,
+              2593.72
+            ],
+            [
+              2005.29,
+              16.27,
+              2589.72
+            ],
+            [
+              2005.29,
+              16.34,
+              2589.22
+            ],
+            [
+              2005.29,
+              16.52,
+              2587.72
+            ],
+            [
+              2005.29,
+              16.59,
+              2587.22
+            ],
+            [
+              2005.29,
+              16.77,
+              2585.72
+            ],
+            [
+              2005.29,
+              16.84,
+              2585.22
+            ],
+            [
+              2005.29,
+              16.9,
+              2584.72
+            ],
+            [
+              2005.29,
+              17.1,
+              2582.72
+            ],
+            [
+              2005.29,
+              17.22,
+              2580.72
+            ],
+            [
+              2005.29,
+              17.26,
+              2580.22
+            ],
+            [
+              2005.29,
+              17.29,
+              2579.72
+            ],
+            [
+              2005.29,
+              17.33,
+              2579.22
+            ],
+            [
+              2005.29,
+              17.36,
+              2578.72
+            ],
+            [
+              2005.29,
+              17.4,
+              2578.22
+            ],
+            [
+              2005.29,
+              17.43,
+              2577.72
+            ],
+            [
+              2005.29,
+              17.75,
+              2573.72
+            ],
+            [
+              2005.29,
+              17.85,
+              2571.22
+            ],
+            [
+              2005.29,
+              17.86,
+              2570.72
+            ],
+            [
+              2005.29,
+              17.88,
+              2570.22
+            ],
+            [
+              2005.29,
+              17.91,
+              2569.72
+            ],
+            [
+              2005.29,
+              18.03,
+              2568.22
+            ],
+            [
+              2005.29,
+              18.08,
+              2567.72
+            ],
+            [
+              2005.29,
+              18.14,
+              2567.22
+            ],
+            [
+              2005.29,
+              18.19,
+              2566.72
+            ],
+            [
+              2005.29,
+              18.25,
+              2566.22
+            ],
+            [
+              2005.29,
+              18.3,
+              2565.72
+            ],
+            [
+              2005.29,
+              18.36,
+              2565.22
+            ],
+            [
+              2005.29,
+              18.51,
+              2563.72
+            ],
+            [
+              2005.29,
+              18.55,
+              2563.22
+            ],
+            [
+              2005.29,
+              18.8,
+              2560.72
+            ],
+            [
+              2005.29,
+              18.86,
+              2560.22
+            ],
+            [
+              2005.29,
+              18.93,
+              2559.72
+            ],
+            [
+              2005.29,
+              18.99,
+              2559.22
+            ],
+            [
+              2005.29,
+              19.04,
+              2558.72
+            ],
+            [
+              2005.29,
+              19.16,
+              2557.22
+            ],
+            [
+              2005.29,
+              19.16,
+              2556.22
+            ],
+            [
+              2004.79,
+              19.19,
+              2555.72
+            ],
+            [
+              2004.79,
+              19.21,
+              2555.22
+            ],
+            [
+              2004.79,
+              19.22,
+              2554.72
+            ],
+            [
+              2004.79,
+              19.22,
+              2554.22
+            ],
+            [
+              2004.79,
+              19.23,
+              2553.72
+            ],
+            [
+              2004.79,
+              19.29,
+              2552.72
+            ],
+            [
+              2004.79,
+              19.31,
+              2552.22
+            ],
+            [
+              2004.79,
+              19.43,
+              2550.72
+            ],
+            [
+              2004.79,
+              19.46,
+              2550.22
+            ],
+            [
+              2004.79,
+              19.46,
+              2549.22
+            ],
+            [
+              2004.29,
+              19.46,
+              2548.72
+            ],
+            [
+              2004.29,
+              19.46,
+              2547.72
+            ],
+            [
+              2003.29,
+              19.46,
+              2546.72
+            ],
+            [
+              2003.29,
+              19.46,
+              2544.22
+            ]
+          ],
+          "routeM": 64.48,
+          "steepestDeg": 7.8,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:yard.y4-oc-bask1": {
+          "points": [
+            [
+              2004.29,
+              14.56,
+              2607.22
+            ],
+            [
+              2004.79,
+              14.64,
+              2606.72
+            ],
+            [
+              2005.29,
+              14.71,
+              2606.22
+            ],
+            [
+              2005.79,
+              14.75,
+              2605.72
+            ],
+            [
+              2006.79,
+              14.85,
+              2604.72
+            ],
+            [
+              2006.79,
+              14.9,
+              2604.22
+            ],
+            [
+              2006.79,
+              14.94,
+              2603.72
+            ],
+            [
+              2006.79,
+              14.99,
+              2603.22
+            ],
+            [
+              2006.79,
+              15.03,
+              2602.72
+            ],
+            [
+              2006.79,
+              15.15,
+              2600.72
+            ],
+            [
+              2006.79,
+              15.23,
+              2599.72
+            ],
+            [
+              2006.79,
+              15.26,
+              2599.22
+            ],
+            [
+              2006.79,
+              15.34,
+              2598.22
+            ],
+            [
+              2006.79,
+              15.37,
+              2597.72
+            ],
+            [
+              2006.79,
+              15.47,
+              2596.72
+            ],
+            [
+              2006.79,
+              15.53,
+              2596.22
+            ],
+            [
+              2006.79,
+              15.58,
+              2595.72
+            ],
+            [
+              2006.79,
+              15.7,
+              2594.72
+            ],
+            [
+              2006.79,
+              15.75,
+              2594.22
+            ],
+            [
+              2006.79,
+              15.81,
+              2593.72
+            ],
+            [
+              2006.79,
+              15.96,
+              2592.22
+            ],
+            [
+              2006.79,
+              16.26,
+              2589.72
+            ],
+            [
+              2006.79,
+              16.34,
+              2589.22
+            ],
+            [
+              2006.79,
+              16.55,
+              2587.72
+            ],
+            [
+              2006.79,
+              16.61,
+              2587.22
+            ],
+            [
+              2006.79,
+              16.75,
+              2586.22
+            ],
+            [
+              2006.79,
+              16.8,
+              2585.72
+            ],
+            [
+              2006.79,
+              16.92,
+              2584.72
+            ],
+            [
+              2006.79,
+              17.0,
+              2583.72
+            ],
+            [
+              2006.79,
+              17.03,
+              2583.22
+            ],
+            [
+              2006.79,
+              17.07,
+              2582.72
+            ],
+            [
+              2006.79,
+              17.08,
+              2582.22
+            ],
+            [
+              2006.79,
+              17.12,
+              2581.22
+            ],
+            [
+              2006.79,
+              17.15,
+              2580.72
+            ],
+            [
+              2006.79,
+              17.17,
+              2580.22
+            ],
+            [
+              2006.79,
+              17.29,
+              2578.22
+            ],
+            [
+              2006.79,
+              17.33,
+              2577.72
+            ],
+            [
+              2006.79,
+              17.36,
+              2577.22
+            ],
+            [
+              2006.79,
+              17.41,
+              2576.72
+            ],
+            [
+              2006.79,
+              17.45,
+              2576.22
+            ],
+            [
+              2006.79,
+              17.5,
+              2575.72
+            ],
+            [
+              2006.79,
+              17.54,
+              2575.22
+            ],
+            [
+              2006.79,
+              17.64,
+              2574.22
+            ],
+            [
+              2006.79,
+              17.68,
+              2573.72
+            ],
+            [
+              2006.79,
+              17.74,
+              2572.72
+            ],
+            [
+              2006.79,
+              17.76,
+              2572.22
+            ],
+            [
+              2006.79,
+              17.79,
+              2571.72
+            ],
+            [
+              2006.79,
+              17.8,
+              2571.22
+            ],
+            [
+              2006.79,
+              17.84,
+              2570.22
+            ],
+            [
+              2006.79,
+              17.87,
+              2569.72
+            ],
+            [
+              2006.79,
+              17.91,
+              2569.22
+            ],
+            [
+              2006.79,
+              17.94,
+              2568.72
+            ],
+            [
+              2006.79,
+              17.98,
+              2568.22
+            ],
+            [
+              2006.79,
+              18.03,
+              2567.72
+            ],
+            [
+              2006.79,
+              18.09,
+              2567.22
+            ],
+            [
+              2006.79,
+              18.14,
+              2566.72
+            ],
+            [
+              2006.79,
+              18.32,
+              2565.22
+            ],
+            [
+              2006.79,
+              18.39,
+              2564.72
+            ],
+            [
+              2006.79,
+              18.44,
+              2564.22
+            ],
+            [
+              2006.79,
+              18.5,
+              2563.72
+            ],
+            [
+              2006.79,
+              18.7,
+              2561.72
+            ],
+            [
+              2006.79,
+              18.74,
+              2561.22
+            ],
+            [
+              2006.79,
+              18.84,
+              2560.22
+            ],
+            [
+              2006.79,
+              18.9,
+              2559.72
+            ],
+            [
+              2006.79,
+              19.0,
+              2558.72
+            ],
+            [
+              2006.79,
+              19.02,
+              2558.22
+            ],
+            [
+              2006.79,
+              19.08,
+              2557.22
+            ],
+            [
+              2006.79,
+              19.01,
+              2553.72
+            ],
+            [
+              2006.79,
+              19.02,
+              2553.22
+            ],
+            [
+              2006.79,
+              19.04,
+              2552.72
+            ],
+            [
+              2006.79,
+              19.07,
+              2552.22
+            ],
+            [
+              2007.29,
+              19.12,
+              2551.72
+            ],
+            [
+              2007.79,
+              19.25,
+              2551.22
+            ],
+            [
+              2008.29,
+              19.37,
+              2550.72
+            ],
+            [
+              2008.79,
+              19.45,
+              2550.22
+            ],
+            [
+              2009.29,
+              19.46,
+              2549.72
+            ],
+            [
+              2011.79,
+              19.46,
+              2547.22
+            ],
+            [
+              2011.79,
+              19.46,
+              2546.72
+            ],
+            [
+              2012.79,
+              19.46,
+              2545.72
+            ],
+            [
+              2012.79,
+              19.46,
+              2543.72
+            ]
+          ],
+          "routeM": 67.27,
+          "steepestDeg": 9.9,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:yard.y5-cs-basket": {
+          "points": [
+            [
+              2004.29,
+              14.56,
+              2607.22
+            ],
+            [
+              2004.29,
+              14.61,
+              2606.72
+            ],
+            [
+              2004.29,
+              14.67,
+              2606.22
+            ],
+            [
+              2004.29,
+              14.82,
+              2604.72
+            ],
+            [
+              2004.29,
+              14.85,
+              2604.22
+            ],
+            [
+              2004.29,
+              14.89,
+              2603.72
+            ],
+            [
+              2004.29,
+              14.95,
+              2602.72
+            ],
+            [
+              2004.29,
+              14.96,
+              2602.22
+            ],
+            [
+              2004.29,
+              15.02,
+              2600.72
+            ],
+            [
+              2004.29,
+              15.05,
+              2600.22
+            ],
+            [
+              2004.29,
+              15.07,
+              2599.72
+            ],
+            [
+              2004.29,
+              15.1,
+              2599.22
+            ],
+            [
+              2004.29,
+              15.14,
+              2598.72
+            ],
+            [
+              2004.29,
+              15.29,
+              2597.22
+            ],
+            [
+              2003.79,
+              15.33,
+              2596.72
+            ],
+            [
+              2003.29,
+              15.38,
+              2596.22
+            ],
+            [
+              2002.79,
+              15.44,
+              2595.72
+            ],
+            [
+              2002.29,
+              15.51,
+              2595.22
+            ],
+            [
+              2001.79,
+              15.57,
+              2594.72
+            ],
+            [
+              2001.29,
+              15.64,
+              2594.22
+            ],
+            [
+              2000.79,
+              15.73,
+              2593.72
+            ],
+            [
+              2000.29,
+              15.8,
+              2593.22
+            ],
+            [
+              1999.79,
+              15.86,
+              2592.72
+            ],
+            [
+              1999.79,
+              15.96,
+              2591.72
+            ],
+            [
+              1999.79,
+              16.05,
+              2590.22
+            ],
+            [
+              1999.79,
+              16.1,
+              2589.72
+            ],
+            [
+              1999.79,
+              16.14,
+              2589.22
+            ],
+            [
+              1999.79,
+              16.29,
+              2587.72
+            ],
+            [
+              1999.79,
+              16.35,
+              2587.22
+            ],
+            [
+              1999.79,
+              16.6,
+              2584.72
+            ],
+            [
+              1999.79,
+              16.66,
+              2584.22
+            ],
+            [
+              1999.79,
+              16.87,
+              2582.72
+            ],
+            [
+              1999.79,
+              16.93,
+              2582.22
+            ],
+            [
+              1999.79,
+              17.0,
+              2581.72
+            ],
+            [
+              1999.79,
+              17.12,
+              2580.72
+            ],
+            [
+              1999.79,
+              17.2,
+              2579.72
+            ],
+            [
+              1999.79,
+              17.3,
+              2578.72
+            ],
+            [
+              1999.79,
+              17.48,
+              2577.22
+            ],
+            [
+              1999.79,
+              17.55,
+              2576.72
+            ],
+            [
+              1999.79,
+              17.63,
+              2576.22
+            ],
+            [
+              1999.79,
+              17.7,
+              2575.72
+            ],
+            [
+              1999.79,
+              18.02,
+              2573.72
+            ],
+            [
+              1999.79,
+              18.07,
+              2573.22
+            ],
+            [
+              1999.79,
+              18.13,
+              2572.72
+            ],
+            [
+              1999.79,
+              18.23,
+              2571.72
+            ],
+            [
+              1999.79,
+              18.25,
+              2571.22
+            ],
+            [
+              1999.79,
+              18.28,
+              2569.72
+            ],
+            [
+              1999.79,
+              18.28,
+              2568.22
+            ],
+            [
+              1999.79,
+              18.32,
+              2566.22
+            ],
+            [
+              1999.79,
+              18.41,
+              2564.72
+            ],
+            [
+              1999.79,
+              18.45,
+              2564.22
+            ],
+            [
+              1999.79,
+              18.6,
+              2562.72
+            ],
+            [
+              1999.79,
+              18.88,
+              2560.72
+            ],
+            [
+              1999.79,
+              18.96,
+              2560.22
+            ],
+            [
+              1999.79,
+              19.14,
+              2559.22
+            ],
+            [
+              1999.79,
+              19.3,
+              2558.22
+            ],
+            [
+              1999.79,
+              19.39,
+              2557.72
+            ],
+            [
+              1999.79,
+              20.03,
+              2553.72
+            ],
+            [
+              1999.79,
+              20.1,
+              2553.22
+            ],
+            [
+              1999.79,
+              20.15,
+              2552.72
+            ],
+            [
+              1999.79,
+              20.27,
+              2551.72
+            ],
+            [
+              1999.79,
+              20.29,
+              2551.22
+            ],
+            [
+              1999.79,
+              20.3,
+              2550.72
+            ],
+            [
+              1999.29,
+              20.3,
+              2550.22
+            ],
+            [
+              1998.79,
+              20.28,
+              2549.72
+            ],
+            [
+              1998.29,
+              20.32,
+              2549.22
+            ],
+            [
+              1997.79,
+              20.45,
+              2548.72
+            ],
+            [
+              1997.79,
+              20.41,
+              2548.22
+            ],
+            [
+              1997.79,
+              20.41,
+              2547.72
+            ],
+            [
+              1997.79,
+              20.45,
+              2547.22
+            ],
+            [
+              1997.79,
+              20.55,
+              2546.22
+            ],
+            [
+              1997.79,
+              20.57,
+              2545.72
+            ],
+            [
+              1997.29,
+              20.62,
+              2545.22
+            ],
+            [
+              1996.79,
+              20.59,
+              2544.72
+            ],
+            [
+              1996.29,
+              20.55,
+              2544.22
+            ],
+            [
+              1995.79,
+              20.5,
+              2543.72
+            ],
+            [
+              1995.29,
+              20.49,
+              2543.22
+            ],
+            [
+              1995.29,
+              20.49,
+              2542.22
+            ],
+            [
+              1995.29,
+              20.51,
+              2541.72
+            ],
+            [
+              1995.29,
+              20.52,
+              2541.22
+            ],
+            [
+              1995.29,
+              20.54,
+              2540.72
+            ],
+            [
+              1995.29,
+              20.56,
+              2539.72
+            ],
+            [
+              1995.29,
+              20.6,
+              2538.72
+            ],
+            [
+              1995.29,
+              20.61,
+              2538.22
+            ],
+            [
+              1995.29,
+              20.61,
+              2537.72
+            ],
+            [
+              1995.29,
+              20.59,
+              2536.72
+            ],
+            [
+              1995.29,
+              20.6,
+              2536.22
+            ],
+            [
+              1995.29,
+              20.6,
+              2535.72
+            ],
+            [
+              1995.29,
+              20.61,
+              2535.22
+            ],
+            [
+              1995.29,
+              20.61,
+              2534.72
+            ],
+            [
+              1994.79,
+              20.62,
+              2534.22
+            ],
+            [
+              1992.79,
+              20.62,
+              2532.22
+            ],
+            [
+              1992.79,
+              20.62,
+              2530.72
+            ]
+          ],
+          "routeM": 81.63,
+          "steepestDeg": 10.4,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:yard.y5-cs-sack": {
+          "points": [
+            [
+              2004.29,
+              14.56,
+              2607.22
+            ],
+            [
+              2004.29,
+              14.61,
+              2606.72
+            ],
+            [
+              2004.29,
+              14.67,
+              2606.22
+            ],
+            [
+              2004.29,
+              14.82,
+              2604.72
+            ],
+            [
+              2004.29,
+              14.85,
+              2604.22
+            ],
+            [
+              2004.29,
+              14.89,
+              2603.72
+            ],
+            [
+              2004.29,
+              14.95,
+              2602.72
+            ],
+            [
+              2004.29,
+              14.96,
+              2602.22
+            ],
+            [
+              2004.29,
+              15.02,
+              2600.72
+            ],
+            [
+              2004.29,
+              15.05,
+              2600.22
+            ],
+            [
+              2004.29,
+              15.07,
+              2599.72
+            ],
+            [
+              2004.29,
+              15.1,
+              2599.22
+            ],
+            [
+              2004.29,
+              15.14,
+              2598.72
+            ],
+            [
+              2004.29,
+              15.29,
+              2597.22
+            ],
+            [
+              2003.79,
+              15.33,
+              2596.72
+            ],
+            [
+              2003.29,
+              15.38,
+              2596.22
+            ],
+            [
+              2002.79,
+              15.44,
+              2595.72
+            ],
+            [
+              2002.29,
+              15.51,
+              2595.22
+            ],
+            [
+              2001.79,
+              15.57,
+              2594.72
+            ],
+            [
+              2001.29,
+              15.64,
+              2594.22
+            ],
+            [
+              2000.79,
+              15.73,
+              2593.72
+            ],
+            [
+              2000.29,
+              15.8,
+              2593.22
+            ],
+            [
+              1999.79,
+              15.86,
+              2592.72
+            ],
+            [
+              1999.79,
+              15.96,
+              2591.72
+            ],
+            [
+              1999.79,
+              16.05,
+              2590.22
+            ],
+            [
+              1999.79,
+              16.1,
+              2589.72
+            ],
+            [
+              1999.79,
+              16.14,
+              2589.22
+            ],
+            [
+              1999.79,
+              16.29,
+              2587.72
+            ],
+            [
+              1999.79,
+              16.35,
+              2587.22
+            ],
+            [
+              1999.79,
+              16.6,
+              2584.72
+            ],
+            [
+              1999.79,
+              16.66,
+              2584.22
+            ],
+            [
+              1999.79,
+              16.87,
+              2582.72
+            ],
+            [
+              1999.79,
+              16.93,
+              2582.22
+            ],
+            [
+              1999.79,
+              17.0,
+              2581.72
+            ],
+            [
+              1999.79,
+              17.12,
+              2580.72
+            ],
+            [
+              1999.79,
+              17.2,
+              2579.72
+            ],
+            [
+              1999.79,
+              17.3,
+              2578.72
+            ],
+            [
+              1999.79,
+              17.48,
+              2577.22
+            ],
+            [
+              1999.79,
+              17.55,
+              2576.72
+            ],
+            [
+              1999.79,
+              17.63,
+              2576.22
+            ],
+            [
+              1999.79,
+              17.7,
+              2575.72
+            ],
+            [
+              1999.79,
+              18.02,
+              2573.72
+            ],
+            [
+              1999.79,
+              18.07,
+              2573.22
+            ],
+            [
+              1999.79,
+              18.13,
+              2572.72
+            ],
+            [
+              1999.79,
+              18.23,
+              2571.72
+            ],
+            [
+              1999.79,
+              18.25,
+              2571.22
+            ],
+            [
+              1999.79,
+              18.28,
+              2569.72
+            ],
+            [
+              1999.79,
+              18.28,
+              2568.22
+            ],
+            [
+              1999.79,
+              18.32,
+              2566.22
+            ],
+            [
+              1999.79,
+              18.41,
+              2564.72
+            ],
+            [
+              1999.79,
+              18.45,
+              2564.22
+            ],
+            [
+              1999.79,
+              18.6,
+              2562.72
+            ],
+            [
+              1999.79,
+              18.88,
+              2560.72
+            ],
+            [
+              1999.79,
+              18.96,
+              2560.22
+            ],
+            [
+              1999.79,
+              19.14,
+              2559.22
+            ],
+            [
+              1999.79,
+              19.3,
+              2558.22
+            ],
+            [
+              1999.79,
+              19.39,
+              2557.72
+            ],
+            [
+              1999.79,
+              20.03,
+              2553.72
+            ],
+            [
+              1999.79,
+              20.1,
+              2553.22
+            ],
+            [
+              1999.79,
+              20.15,
+              2552.72
+            ],
+            [
+              1999.79,
+              20.27,
+              2551.72
+            ],
+            [
+              1999.79,
+              20.29,
+              2551.22
+            ],
+            [
+              1999.79,
+              20.3,
+              2550.72
+            ],
+            [
+              1999.29,
+              20.3,
+              2550.22
+            ],
+            [
+              1998.79,
+              20.28,
+              2549.72
+            ],
+            [
+              1998.29,
+              20.32,
+              2549.22
+            ],
+            [
+              1997.79,
+              20.45,
+              2548.72
+            ],
+            [
+              1997.79,
+              20.41,
+              2548.22
+            ],
+            [
+              1997.79,
+              20.41,
+              2547.72
+            ],
+            [
+              1997.79,
+              20.45,
+              2547.22
+            ],
+            [
+              1997.79,
+              20.55,
+              2546.22
+            ],
+            [
+              1997.79,
+              20.57,
+              2545.72
+            ],
+            [
+              1997.29,
+              20.62,
+              2545.22
+            ],
+            [
+              1996.79,
+              20.59,
+              2544.72
+            ],
+            [
+              1996.29,
+              20.55,
+              2544.22
+            ],
+            [
+              1995.79,
+              20.5,
+              2543.72
+            ],
+            [
+              1995.29,
+              20.49,
+              2543.22
+            ],
+            [
+              1995.29,
+              20.49,
+              2542.22
+            ],
+            [
+              1995.29,
+              20.51,
+              2541.72
+            ],
+            [
+              1995.29,
+              20.52,
+              2541.22
+            ],
+            [
+              1995.29,
+              20.54,
+              2540.72
+            ],
+            [
+              1995.29,
+              20.56,
+              2539.72
+            ],
+            [
+              1995.29,
+              20.6,
+              2538.72
+            ],
+            [
+              1995.29,
+              20.61,
+              2538.22
+            ],
+            [
+              1995.29,
+              20.61,
+              2537.72
+            ],
+            [
+              1995.29,
+              20.59,
+              2536.72
+            ],
+            [
+              1995.29,
+              20.6,
+              2536.22
+            ],
+            [
+              1995.29,
+              20.6,
+              2535.72
+            ],
+            [
+              1995.29,
+              20.61,
+              2535.22
+            ],
+            [
+              1995.29,
+              20.61,
+              2533.72
+            ],
+            [
+              1995.29,
+              20.6,
+              2533.22
+            ],
+            [
+              1995.29,
+              20.6,
+              2532.22
+            ],
+            [
+              1995.29,
+              20.59,
+              2531.72
+            ]
+          ],
+          "routeM": 79.6,
+          "steepestDeg": 10.4,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:yard.y5-cs-urn1": {
+          "points": [
+            [
+              2004.29,
+              14.56,
+              2607.22
+            ],
+            [
+              2004.29,
+              14.61,
+              2606.72
+            ],
+            [
+              2004.29,
+              14.67,
+              2606.22
+            ],
+            [
+              2004.29,
+              14.82,
+              2604.72
+            ],
+            [
+              2004.29,
+              14.85,
+              2604.22
+            ],
+            [
+              2004.29,
+              14.89,
+              2603.72
+            ],
+            [
+              2004.29,
+              14.95,
+              2602.72
+            ],
+            [
+              2004.29,
+              14.96,
+              2602.22
+            ],
+            [
+              2004.29,
+              15.02,
+              2600.72
+            ],
+            [
+              2004.29,
+              15.05,
+              2600.22
+            ],
+            [
+              2004.29,
+              15.07,
+              2599.72
+            ],
+            [
+              2004.29,
+              15.1,
+              2599.22
+            ],
+            [
+              2004.29,
+              15.14,
+              2598.72
+            ],
+            [
+              2004.29,
+              15.29,
+              2597.22
+            ],
+            [
+              2003.79,
+              15.33,
+              2596.72
+            ],
+            [
+              2003.29,
+              15.38,
+              2596.22
+            ],
+            [
+              2002.79,
+              15.44,
+              2595.72
+            ],
+            [
+              2002.29,
+              15.51,
+              2595.22
+            ],
+            [
+              2001.79,
+              15.57,
+              2594.72
+            ],
+            [
+              2001.29,
+              15.64,
+              2594.22
+            ],
+            [
+              2000.79,
+              15.73,
+              2593.72
+            ],
+            [
+              2000.29,
+              15.8,
+              2593.22
+            ],
+            [
+              1999.79,
+              15.86,
+              2592.72
+            ],
+            [
+              1999.79,
+              15.96,
+              2591.72
+            ],
+            [
+              1999.79,
+              16.05,
+              2590.22
+            ],
+            [
+              1999.79,
+              16.1,
+              2589.72
+            ],
+            [
+              1999.79,
+              16.14,
+              2589.22
+            ],
+            [
+              1999.79,
+              16.29,
+              2587.72
+            ],
+            [
+              1999.79,
+              16.35,
+              2587.22
+            ],
+            [
+              1999.79,
+              16.6,
+              2584.72
+            ],
+            [
+              1999.79,
+              16.66,
+              2584.22
+            ],
+            [
+              1999.79,
+              16.87,
+              2582.72
+            ],
+            [
+              1999.79,
+              16.93,
+              2582.22
+            ],
+            [
+              1999.79,
+              17.0,
+              2581.72
+            ],
+            [
+              1999.79,
+              17.12,
+              2580.72
+            ],
+            [
+              1999.79,
+              17.2,
+              2579.72
+            ],
+            [
+              1999.79,
+              17.3,
+              2578.72
+            ],
+            [
+              1999.79,
+              17.48,
+              2577.22
+            ],
+            [
+              1999.79,
+              17.55,
+              2576.72
+            ],
+            [
+              1999.79,
+              17.63,
+              2576.22
+            ],
+            [
+              1999.79,
+              17.7,
+              2575.72
+            ],
+            [
+              1999.79,
+              18.02,
+              2573.72
+            ],
+            [
+              1999.79,
+              18.07,
+              2573.22
+            ],
+            [
+              1999.79,
+              18.13,
+              2572.72
+            ],
+            [
+              1999.79,
+              18.23,
+              2571.72
+            ],
+            [
+              1999.79,
+              18.25,
+              2571.22
+            ],
+            [
+              1999.79,
+              18.28,
+              2569.72
+            ],
+            [
+              1999.79,
+              18.28,
+              2568.22
+            ],
+            [
+              1999.79,
+              18.32,
+              2566.22
+            ],
+            [
+              1999.79,
+              18.41,
+              2564.72
+            ],
+            [
+              1999.79,
+              18.45,
+              2564.22
+            ],
+            [
+              1999.79,
+              18.6,
+              2562.72
+            ],
+            [
+              1999.79,
+              18.88,
+              2560.72
+            ],
+            [
+              1999.79,
+              18.96,
+              2560.22
+            ],
+            [
+              1999.79,
+              19.14,
+              2559.22
+            ],
+            [
+              1999.79,
+              19.3,
+              2558.22
+            ],
+            [
+              1999.79,
+              19.39,
+              2557.72
+            ],
+            [
+              1999.79,
+              20.03,
+              2553.72
+            ],
+            [
+              1999.79,
+              20.1,
+              2553.22
+            ],
+            [
+              1999.79,
+              20.15,
+              2552.72
+            ],
+            [
+              1999.79,
+              20.27,
+              2551.72
+            ],
+            [
+              1999.79,
+              20.29,
+              2551.22
+            ],
+            [
+              1999.79,
+              20.3,
+              2550.72
+            ],
+            [
+              1999.29,
+              20.3,
+              2550.22
+            ],
+            [
+              1998.79,
+              20.28,
+              2549.72
+            ],
+            [
+              1998.29,
+              20.32,
+              2549.22
+            ],
+            [
+              1997.79,
+              20.45,
+              2548.72
+            ],
+            [
+              1997.79,
+              20.41,
+              2548.22
+            ],
+            [
+              1997.79,
+              20.41,
+              2547.72
+            ],
+            [
+              1997.79,
+              20.45,
+              2547.22
+            ],
+            [
+              1997.79,
+              20.55,
+              2546.22
+            ],
+            [
+              1997.79,
+              20.57,
+              2545.72
+            ],
+            [
+              1997.29,
+              20.62,
+              2545.22
+            ],
+            [
+              1996.79,
+              20.59,
+              2544.72
+            ],
+            [
+              1996.29,
+              20.55,
+              2544.22
+            ],
+            [
+              1995.79,
+              20.5,
+              2543.72
+            ],
+            [
+              1995.29,
+              20.49,
+              2543.22
+            ],
+            [
+              1995.29,
+              20.49,
+              2542.22
+            ],
+            [
+              1995.29,
+              20.51,
+              2541.72
+            ],
+            [
+              1995.29,
+              20.52,
+              2541.22
+            ],
+            [
+              1995.29,
+              20.54,
+              2540.72
+            ],
+            [
+              1995.29,
+              20.56,
+              2539.72
+            ],
+            [
+              1995.29,
+              20.6,
+              2538.72
+            ],
+            [
+              1995.29,
+              20.61,
+              2538.22
+            ],
+            [
+              1995.29,
+              20.61,
+              2537.72
+            ],
+            [
+              1995.29,
+              20.59,
+              2536.72
+            ],
+            [
+              1995.29,
+              20.6,
+              2536.22
+            ],
+            [
+              1995.29,
+              20.6,
+              2535.72
+            ],
+            [
+              1995.29,
+              20.61,
+              2535.22
+            ],
+            [
+              1995.29,
+              20.61,
+              2533.72
+            ],
+            [
+              1995.29,
+              20.6,
+              2533.22
+            ],
+            [
+              1995.29,
+              20.6,
+              2532.22
+            ],
+            [
+              1995.29,
+              20.59,
+              2531.72
+            ],
+            [
+              1995.29,
+              20.59,
+              2530.72
+            ],
+            [
+              1995.29,
+              20.58,
+              2530.22
+            ],
+            [
+              1994.79,
+              20.6,
+              2529.72
+            ]
+          ],
+          "routeM": 81.8,
+          "steepestDeg": 10.4,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:yard.y5-cs-urn2": {
+          "points": [
+            [
+              2004.29,
+              14.56,
+              2607.22
+            ],
+            [
+              2004.29,
+              14.61,
+              2606.72
+            ],
+            [
+              2004.29,
+              14.67,
+              2606.22
+            ],
+            [
+              2004.29,
+              14.82,
+              2604.72
+            ],
+            [
+              2004.29,
+              14.85,
+              2604.22
+            ],
+            [
+              2004.29,
+              14.89,
+              2603.72
+            ],
+            [
+              2004.29,
+              14.95,
+              2602.72
+            ],
+            [
+              2004.29,
+              14.96,
+              2602.22
+            ],
+            [
+              2004.29,
+              15.02,
+              2600.72
+            ],
+            [
+              2004.29,
+              15.05,
+              2600.22
+            ],
+            [
+              2004.29,
+              15.07,
+              2599.72
+            ],
+            [
+              2004.29,
+              15.1,
+              2599.22
+            ],
+            [
+              2004.29,
+              15.14,
+              2598.72
+            ],
+            [
+              2004.29,
+              15.29,
+              2597.22
+            ],
+            [
+              2003.79,
+              15.33,
+              2596.72
+            ],
+            [
+              2003.29,
+              15.38,
+              2596.22
+            ],
+            [
+              2002.79,
+              15.44,
+              2595.72
+            ],
+            [
+              2002.29,
+              15.51,
+              2595.22
+            ],
+            [
+              2001.79,
+              15.57,
+              2594.72
+            ],
+            [
+              2001.29,
+              15.64,
+              2594.22
+            ],
+            [
+              2000.79,
+              15.73,
+              2593.72
+            ],
+            [
+              2000.29,
+              15.8,
+              2593.22
+            ],
+            [
+              1999.79,
+              15.86,
+              2592.72
+            ],
+            [
+              1999.79,
+              15.96,
+              2591.72
+            ],
+            [
+              1999.79,
+              16.05,
+              2590.22
+            ],
+            [
+              1999.79,
+              16.1,
+              2589.72
+            ],
+            [
+              1999.79,
+              16.14,
+              2589.22
+            ],
+            [
+              1999.79,
+              16.29,
+              2587.72
+            ],
+            [
+              1999.79,
+              16.35,
+              2587.22
+            ],
+            [
+              1999.79,
+              16.6,
+              2584.72
+            ],
+            [
+              1999.79,
+              16.66,
+              2584.22
+            ],
+            [
+              1999.79,
+              16.87,
+              2582.72
+            ],
+            [
+              1999.79,
+              16.93,
+              2582.22
+            ],
+            [
+              1999.79,
+              17.0,
+              2581.72
+            ],
+            [
+              1999.79,
+              17.12,
+              2580.72
+            ],
+            [
+              1999.79,
+              17.2,
+              2579.72
+            ],
+            [
+              1999.79,
+              17.3,
+              2578.72
+            ],
+            [
+              1999.79,
+              17.48,
+              2577.22
+            ],
+            [
+              1999.79,
+              17.55,
+              2576.72
+            ],
+            [
+              1999.79,
+              17.63,
+              2576.22
+            ],
+            [
+              1999.79,
+              17.7,
+              2575.72
+            ],
+            [
+              1999.79,
+              18.02,
+              2573.72
+            ],
+            [
+              1999.79,
+              18.07,
+              2573.22
+            ],
+            [
+              1999.79,
+              18.13,
+              2572.72
+            ],
+            [
+              1999.79,
+              18.23,
+              2571.72
+            ],
+            [
+              1999.79,
+              18.25,
+              2571.22
+            ],
+            [
+              1999.79,
+              18.28,
+              2569.72
+            ],
+            [
+              1999.79,
+              18.28,
+              2568.22
+            ],
+            [
+              1999.79,
+              18.32,
+              2566.22
+            ],
+            [
+              1999.79,
+              18.41,
+              2564.72
+            ],
+            [
+              1999.79,
+              18.45,
+              2564.22
+            ],
+            [
+              1999.79,
+              18.6,
+              2562.72
+            ],
+            [
+              1999.79,
+              18.88,
+              2560.72
+            ],
+            [
+              1999.79,
+              18.96,
+              2560.22
+            ],
+            [
+              1999.79,
+              19.14,
+              2559.22
+            ],
+            [
+              1999.79,
+              19.3,
+              2558.22
+            ],
+            [
+              1999.79,
+              19.39,
+              2557.72
+            ],
+            [
+              1999.79,
+              20.03,
+              2553.72
+            ],
+            [
+              1999.79,
+              20.1,
+              2553.22
+            ],
+            [
+              1999.79,
+              20.15,
+              2552.72
+            ],
+            [
+              1999.79,
+              20.27,
+              2551.72
+            ],
+            [
+              1999.79,
+              20.29,
+              2551.22
+            ],
+            [
+              1999.79,
+              20.3,
+              2550.72
+            ],
+            [
+              1999.29,
+              20.3,
+              2550.22
+            ],
+            [
+              1998.79,
+              20.28,
+              2549.72
+            ],
+            [
+              1998.29,
+              20.32,
+              2549.22
+            ],
+            [
+              1997.79,
+              20.45,
+              2548.72
+            ],
+            [
+              1997.79,
+              20.41,
+              2548.22
+            ],
+            [
+              1997.79,
+              20.41,
+              2547.72
+            ],
+            [
+              1997.79,
+              20.45,
+              2547.22
+            ],
+            [
+              1997.79,
+              20.55,
+              2546.22
+            ],
+            [
+              1997.79,
+              20.57,
+              2545.72
+            ],
+            [
+              1997.29,
+              20.62,
+              2545.22
+            ],
+            [
+              1996.79,
+              20.59,
+              2544.72
+            ],
+            [
+              1996.29,
+              20.55,
+              2544.22
+            ],
+            [
+              1995.79,
+              20.5,
+              2543.72
+            ],
+            [
+              1995.29,
+              20.49,
+              2543.22
+            ],
+            [
+              1995.29,
+              20.49,
+              2542.22
+            ],
+            [
+              1995.29,
+              20.51,
+              2541.72
+            ],
+            [
+              1995.29,
+              20.52,
+              2541.22
+            ],
+            [
+              1995.29,
+              20.54,
+              2540.72
+            ],
+            [
+              1995.29,
+              20.56,
+              2539.72
+            ],
+            [
+              1995.29,
+              20.6,
+              2538.72
+            ],
+            [
+              1995.29,
+              20.61,
+              2538.22
+            ],
+            [
+              1995.29,
+              20.61,
+              2537.72
+            ],
+            [
+              1995.29,
+              20.59,
+              2536.72
+            ],
+            [
+              1995.29,
+              20.6,
+              2536.22
+            ],
+            [
+              1995.29,
+              20.6,
+              2535.72
+            ],
+            [
+              1995.29,
+              20.61,
+              2535.22
+            ],
+            [
+              1995.29,
+              20.61,
+              2534.72
+            ],
+            [
+              1994.79,
+              20.62,
+              2534.22
+            ],
+            [
+              1992.79,
+              20.62,
+              2532.22
+            ],
+            [
+              1992.79,
+              20.62,
+              2530.22
+            ],
+            [
+              1992.29,
+              20.62,
+              2529.72
+            ]
+          ],
+          "routeM": 82.84,
+          "steepestDeg": 10.4,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.bog-iron-workings.idle-seat-bl-meal-bench-s-1": {
+          "points": [
+            [
+              2004.29,
+              14.56,
+              2607.22
+            ],
+            [
+              2004.29,
+              14.61,
+              2606.72
+            ],
+            [
+              2004.29,
+              14.67,
+              2606.22
+            ],
+            [
+              2004.29,
+              14.82,
+              2604.72
+            ],
+            [
+              2004.29,
+              14.85,
+              2604.22
+            ],
+            [
+              2004.29,
+              14.89,
+              2603.72
+            ],
+            [
+              2004.29,
+              14.95,
+              2602.72
+            ],
+            [
+              2004.29,
+              14.96,
+              2602.22
+            ],
+            [
+              2005.29,
+              15.04,
+              2601.22
+            ],
+            [
+              2005.29,
+              15.07,
+              2600.72
+            ],
+            [
+              2005.29,
+              15.09,
+              2600.22
+            ],
+            [
+              2005.29,
+              15.12,
+              2599.72
+            ],
+            [
+              2005.29,
+              15.14,
+              2599.22
+            ],
+            [
+              2005.29,
+              15.18,
+              2598.72
+            ],
+            [
+              2005.29,
+              15.33,
+              2597.22
+            ],
+            [
+              2005.29,
+              15.39,
+              2596.72
+            ],
+            [
+              2005.29,
+              15.46,
+              2596.22
+            ],
+            [
+              2005.29,
+              15.58,
+              2595.22
+            ],
+            [
+              2005.29,
+              15.79,
+              2593.72
+            ],
+            [
+              2005.29,
+              16.27,
+              2589.72
+            ],
+            [
+              2005.29,
+              16.34,
+              2589.22
+            ],
+            [
+              2005.29,
+              16.52,
+              2587.72
+            ],
+            [
+              2005.29,
+              16.59,
+              2587.22
+            ],
+            [
+              2005.29,
+              16.77,
+              2585.72
+            ],
+            [
+              2005.29,
+              16.84,
+              2585.22
+            ],
+            [
+              2005.29,
+              16.9,
+              2584.72
+            ],
+            [
+              2005.29,
+              17.1,
+              2582.72
+            ],
+            [
+              2005.29,
+              17.22,
+              2580.72
+            ],
+            [
+              2005.29,
+              17.26,
+              2580.22
+            ],
+            [
+              2005.29,
+              17.29,
+              2579.72
+            ],
+            [
+              2005.29,
+              17.33,
+              2579.22
+            ],
+            [
+              2005.29,
+              17.36,
+              2578.72
+            ],
+            [
+              2005.29,
+              17.4,
+              2578.22
+            ],
+            [
+              2005.29,
+              17.43,
+              2577.72
+            ],
+            [
+              2005.29,
+              17.75,
+              2573.72
+            ],
+            [
+              2005.29,
+              17.85,
+              2571.22
+            ],
+            [
+              2005.29,
+              17.86,
+              2570.72
+            ],
+            [
+              2005.29,
+              17.88,
+              2570.22
+            ],
+            [
+              2005.29,
+              17.91,
+              2569.72
+            ],
+            [
+              2005.29,
+              18.03,
+              2568.22
+            ],
+            [
+              2005.29,
+              18.08,
+              2567.72
+            ],
+            [
+              2005.29,
+              18.14,
+              2567.22
+            ],
+            [
+              2005.29,
+              18.19,
+              2566.72
+            ],
+            [
+              2005.29,
+              18.25,
+              2566.22
+            ],
+            [
+              2005.29,
+              18.3,
+              2565.72
+            ],
+            [
+              2005.29,
+              18.36,
+              2565.22
+            ],
+            [
+              2005.29,
+              18.51,
+              2563.72
+            ],
+            [
+              2005.29,
+              18.55,
+              2563.22
+            ],
+            [
+              2005.29,
+              18.8,
+              2560.72
+            ],
+            [
+              2005.29,
+              18.86,
+              2560.22
+            ],
+            [
+              2005.29,
+              18.93,
+              2559.72
+            ],
+            [
+              2005.29,
+              18.99,
+              2559.22
+            ],
+            [
+              2005.29,
+              19.04,
+              2558.72
+            ],
+            [
+              2005.29,
+              19.16,
+              2557.22
+            ],
+            [
+              2005.29,
+              19.16,
+              2554.72
+            ],
+            [
+              2005.29,
+              19.17,
+              2554.22
+            ],
+            [
+              2005.29,
+              19.17,
+              2553.72
+            ],
+            [
+              2005.29,
+              19.21,
+              2552.72
+            ],
+            [
+              2005.29,
+              19.27,
+              2551.72
+            ],
+            [
+              2005.29,
+              19.39,
+              2550.72
+            ],
+            [
+              2005.29,
+              19.43,
+              2550.22
+            ],
+            [
+              2005.29,
+              19.45,
+              2549.72
+            ],
+            [
+              2005.29,
+              19.46,
+              2549.22
+            ],
+            [
+              2005.29,
+              19.46,
+              2547.72
+            ]
+          ],
+          "routeM": 60.16,
+          "steepestDeg": 7.8,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.bog-iron-workings.idle-seat-bl-meal-bench-s-2": {
+          "points": [
+            [
+              2004.29,
+              14.56,
+              2607.22
+            ],
+            [
+              2004.29,
+              14.61,
+              2606.72
+            ],
+            [
+              2004.29,
+              14.67,
+              2606.22
+            ],
+            [
+              2004.29,
+              14.82,
+              2604.72
+            ],
+            [
+              2004.29,
+              14.85,
+              2604.22
+            ],
+            [
+              2004.29,
+              14.89,
+              2603.72
+            ],
+            [
+              2004.29,
+              14.95,
+              2602.72
+            ],
+            [
+              2004.29,
+              14.96,
+              2602.22
+            ],
+            [
+              2005.29,
+              15.04,
+              2601.22
+            ],
+            [
+              2005.29,
+              15.07,
+              2600.72
+            ],
+            [
+              2005.29,
+              15.09,
+              2600.22
+            ],
+            [
+              2005.29,
+              15.12,
+              2599.72
+            ],
+            [
+              2005.29,
+              15.14,
+              2599.22
+            ],
+            [
+              2005.29,
+              15.18,
+              2598.72
+            ],
+            [
+              2005.29,
+              15.33,
+              2597.22
+            ],
+            [
+              2005.29,
+              15.39,
+              2596.72
+            ],
+            [
+              2005.29,
+              15.46,
+              2596.22
+            ],
+            [
+              2005.29,
+              15.58,
+              2595.22
+            ],
+            [
+              2005.29,
+              15.79,
+              2593.72
+            ],
+            [
+              2005.29,
+              16.27,
+              2589.72
+            ],
+            [
+              2005.29,
+              16.34,
+              2589.22
+            ],
+            [
+              2005.29,
+              16.52,
+              2587.72
+            ],
+            [
+              2005.29,
+              16.59,
+              2587.22
+            ],
+            [
+              2005.29,
+              16.77,
+              2585.72
+            ],
+            [
+              2005.29,
+              16.84,
+              2585.22
+            ],
+            [
+              2005.29,
+              16.9,
+              2584.72
+            ],
+            [
+              2005.29,
+              17.1,
+              2582.72
+            ],
+            [
+              2005.29,
+              17.22,
+              2580.72
+            ],
+            [
+              2005.29,
+              17.26,
+              2580.22
+            ],
+            [
+              2005.29,
+              17.29,
+              2579.72
+            ],
+            [
+              2005.29,
+              17.33,
+              2579.22
+            ],
+            [
+              2005.29,
+              17.36,
+              2578.72
+            ],
+            [
+              2005.29,
+              17.4,
+              2578.22
+            ],
+            [
+              2005.29,
+              17.43,
+              2577.72
+            ],
+            [
+              2005.29,
+              17.75,
+              2573.72
+            ],
+            [
+              2005.29,
+              17.85,
+              2571.22
+            ],
+            [
+              2005.29,
+              17.86,
+              2570.72
+            ],
+            [
+              2005.29,
+              17.88,
+              2570.22
+            ],
+            [
+              2005.29,
+              17.91,
+              2569.72
+            ],
+            [
+              2005.29,
+              18.03,
+              2568.22
+            ],
+            [
+              2005.29,
+              18.08,
+              2567.72
+            ],
+            [
+              2005.29,
+              18.14,
+              2567.22
+            ],
+            [
+              2005.29,
+              18.19,
+              2566.72
+            ],
+            [
+              2005.29,
+              18.25,
+              2566.22
+            ],
+            [
+              2005.29,
+              18.3,
+              2565.72
+            ],
+            [
+              2005.29,
+              18.36,
+              2565.22
+            ],
+            [
+              2005.29,
+              18.51,
+              2563.72
+            ],
+            [
+              2005.29,
+              18.55,
+              2563.22
+            ],
+            [
+              2005.29,
+              18.8,
+              2560.72
+            ],
+            [
+              2005.29,
+              18.86,
+              2560.22
+            ],
+            [
+              2005.29,
+              18.93,
+              2559.72
+            ],
+            [
+              2005.29,
+              18.99,
+              2559.22
+            ],
+            [
+              2005.29,
+              19.04,
+              2558.72
+            ],
+            [
+              2005.29,
+              19.16,
+              2557.22
+            ],
+            [
+              2005.29,
+              19.16,
+              2554.72
+            ],
+            [
+              2005.29,
+              19.17,
+              2554.22
+            ],
+            [
+              2005.29,
+              19.17,
+              2553.72
+            ],
+            [
+              2005.29,
+              19.21,
+              2552.72
+            ],
+            [
+              2005.29,
+              19.27,
+              2551.72
+            ],
+            [
+              2005.29,
+              19.39,
+              2550.72
+            ],
+            [
+              2005.29,
+              19.43,
+              2550.22
+            ],
+            [
+              2005.29,
+              19.45,
+              2549.72
+            ],
+            [
+              2005.29,
+              19.46,
+              2549.22
+            ],
+            [
+              2005.29,
+              19.46,
+              2547.72
+            ]
+          ],
+          "routeM": 60.16,
+          "steepestDeg": 7.8,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.bog-iron-workings.idle-seat-bl-meal-bench-sw-1": {
+          "points": [
+            [
+              2004.29,
+              14.56,
+              2607.22
+            ],
+            [
+              2004.29,
+              14.61,
+              2606.72
+            ],
+            [
+              2004.29,
+              14.67,
+              2606.22
+            ],
+            [
+              2004.29,
+              14.82,
+              2604.72
+            ],
+            [
+              2004.29,
+              14.85,
+              2604.22
+            ],
+            [
+              2004.29,
+              14.89,
+              2603.72
+            ],
+            [
+              2004.29,
+              14.95,
+              2602.72
+            ],
+            [
+              2004.29,
+              14.96,
+              2602.22
+            ],
+            [
+              2004.29,
+              15.02,
+              2600.72
+            ],
+            [
+              2004.29,
+              15.05,
+              2600.22
+            ],
+            [
+              2004.29,
+              15.07,
+              2599.72
+            ],
+            [
+              2004.29,
+              15.1,
+              2599.22
+            ],
+            [
+              2004.29,
+              15.14,
+              2598.72
+            ],
+            [
+              2004.29,
+              15.29,
+              2597.22
+            ],
+            [
+              2003.79,
+              15.33,
+              2596.72
+            ],
+            [
+              2003.29,
+              15.38,
+              2596.22
+            ],
+            [
+              2002.79,
+              15.44,
+              2595.72
+            ],
+            [
+              2002.29,
+              15.51,
+              2595.22
+            ],
+            [
+              2001.79,
+              15.57,
+              2594.72
+            ],
+            [
+              2001.29,
+              15.64,
+              2594.22
+            ],
+            [
+              2000.79,
+              15.73,
+              2593.72
+            ],
+            [
+              2000.29,
+              15.8,
+              2593.22
+            ],
+            [
+              1999.79,
+              15.86,
+              2592.72
+            ],
+            [
+              1999.79,
+              15.96,
+              2591.72
+            ],
+            [
+              1999.79,
+              16.05,
+              2590.22
+            ],
+            [
+              1999.79,
+              16.1,
+              2589.72
+            ],
+            [
+              1999.79,
+              16.14,
+              2589.22
+            ],
+            [
+              1999.79,
+              16.29,
+              2587.72
+            ],
+            [
+              1999.79,
+              16.35,
+              2587.22
+            ],
+            [
+              1999.79,
+              16.6,
+              2584.72
+            ],
+            [
+              1999.79,
+              16.66,
+              2584.22
+            ],
+            [
+              1999.79,
+              16.87,
+              2582.72
+            ],
+            [
+              1999.79,
+              16.93,
+              2582.22
+            ],
+            [
+              1999.79,
+              17.0,
+              2581.72
+            ],
+            [
+              1999.79,
+              17.12,
+              2580.72
+            ],
+            [
+              1999.79,
+              17.2,
+              2579.72
+            ],
+            [
+              1999.79,
+              17.3,
+              2578.72
+            ],
+            [
+              1999.79,
+              17.48,
+              2577.22
+            ],
+            [
+              1999.79,
+              17.55,
+              2576.72
+            ],
+            [
+              1999.79,
+              17.63,
+              2576.22
+            ],
+            [
+              1999.79,
+              17.7,
+              2575.72
+            ],
+            [
+              1999.79,
+              18.02,
+              2573.72
+            ],
+            [
+              1999.79,
+              18.07,
+              2573.22
+            ],
+            [
+              1999.79,
+              18.13,
+              2572.72
+            ],
+            [
+              1999.79,
+              18.23,
+              2571.72
+            ],
+            [
+              1999.79,
+              18.25,
+              2571.22
+            ],
+            [
+              1999.79,
+              18.28,
+              2569.72
+            ],
+            [
+              1999.79,
+              18.28,
+              2568.22
+            ],
+            [
+              1999.79,
+              18.32,
+              2566.22
+            ],
+            [
+              1999.79,
+              18.41,
+              2564.72
+            ],
+            [
+              1999.79,
+              18.45,
+              2564.22
+            ],
+            [
+              1999.79,
+              18.6,
+              2562.72
+            ],
+            [
+              1999.79,
+              18.88,
+              2560.72
+            ],
+            [
+              1999.79,
+              18.96,
+              2560.22
+            ],
+            [
+              1999.79,
+              19.14,
+              2559.22
+            ],
+            [
+              1999.79,
+              19.3,
+              2558.22
+            ],
+            [
+              1999.79,
+              19.39,
+              2557.72
+            ],
+            [
+              1999.79,
+              20.03,
+              2553.72
+            ],
+            [
+              1999.79,
+              20.1,
+              2553.22
+            ],
+            [
+              1999.79,
+              20.15,
+              2552.72
+            ],
+            [
+              1999.79,
+              20.27,
+              2551.72
+            ],
+            [
+              1999.79,
+              20.29,
+              2551.22
+            ],
+            [
+              1999.79,
+              20.3,
+              2550.72
+            ],
+            [
+              1999.79,
+              20.21,
+              2550.22
+            ],
+            [
+              1999.79,
+              20.04,
+              2549.72
+            ],
+            [
+              1999.79,
+              19.83,
+              2549.22
+            ],
+            [
+              1999.79,
+              19.63,
+              2548.72
+            ]
+          ],
+          "routeM": 60.82,
+          "steepestDeg": 22.9,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.bog-iron-workings.idle-seat-bl-meal-bench-sw-2": {
+          "points": [
+            [
+              2004.29,
+              14.56,
+              2607.22
+            ],
+            [
+              2004.29,
+              14.61,
+              2606.72
+            ],
+            [
+              2004.29,
+              14.67,
+              2606.22
+            ],
+            [
+              2004.29,
+              14.82,
+              2604.72
+            ],
+            [
+              2004.29,
+              14.85,
+              2604.22
+            ],
+            [
+              2004.29,
+              14.89,
+              2603.72
+            ],
+            [
+              2004.29,
+              14.95,
+              2602.72
+            ],
+            [
+              2004.29,
+              14.96,
+              2602.22
+            ],
+            [
+              2004.29,
+              15.02,
+              2600.72
+            ],
+            [
+              2004.29,
+              15.05,
+              2600.22
+            ],
+            [
+              2004.29,
+              15.07,
+              2599.72
+            ],
+            [
+              2004.29,
+              15.1,
+              2599.22
+            ],
+            [
+              2004.29,
+              15.14,
+              2598.72
+            ],
+            [
+              2004.29,
+              15.29,
+              2597.22
+            ],
+            [
+              2003.79,
+              15.33,
+              2596.72
+            ],
+            [
+              2003.29,
+              15.38,
+              2596.22
+            ],
+            [
+              2002.79,
+              15.44,
+              2595.72
+            ],
+            [
+              2002.29,
+              15.51,
+              2595.22
+            ],
+            [
+              2001.79,
+              15.57,
+              2594.72
+            ],
+            [
+              2001.29,
+              15.64,
+              2594.22
+            ],
+            [
+              2000.79,
+              15.73,
+              2593.72
+            ],
+            [
+              2000.29,
+              15.8,
+              2593.22
+            ],
+            [
+              1999.79,
+              15.86,
+              2592.72
+            ],
+            [
+              1999.79,
+              15.96,
+              2591.72
+            ],
+            [
+              1999.79,
+              16.05,
+              2590.22
+            ],
+            [
+              1999.79,
+              16.1,
+              2589.72
+            ],
+            [
+              1999.79,
+              16.14,
+              2589.22
+            ],
+            [
+              1999.79,
+              16.29,
+              2587.72
+            ],
+            [
+              1999.79,
+              16.35,
+              2587.22
+            ],
+            [
+              1999.79,
+              16.6,
+              2584.72
+            ],
+            [
+              1999.79,
+              16.66,
+              2584.22
+            ],
+            [
+              1999.79,
+              16.87,
+              2582.72
+            ],
+            [
+              1999.79,
+              16.93,
+              2582.22
+            ],
+            [
+              1999.79,
+              17.0,
+              2581.72
+            ],
+            [
+              1999.79,
+              17.12,
+              2580.72
+            ],
+            [
+              1999.79,
+              17.2,
+              2579.72
+            ],
+            [
+              1999.79,
+              17.3,
+              2578.72
+            ],
+            [
+              1999.79,
+              17.48,
+              2577.22
+            ],
+            [
+              1999.79,
+              17.55,
+              2576.72
+            ],
+            [
+              1999.79,
+              17.63,
+              2576.22
+            ],
+            [
+              1999.79,
+              17.7,
+              2575.72
+            ],
+            [
+              1999.79,
+              18.02,
+              2573.72
+            ],
+            [
+              1999.79,
+              18.07,
+              2573.22
+            ],
+            [
+              1999.79,
+              18.13,
+              2572.72
+            ],
+            [
+              1999.79,
+              18.23,
+              2571.72
+            ],
+            [
+              1999.79,
+              18.25,
+              2571.22
+            ],
+            [
+              1999.79,
+              18.28,
+              2569.72
+            ],
+            [
+              1999.79,
+              18.28,
+              2568.22
+            ],
+            [
+              1999.79,
+              18.32,
+              2566.22
+            ],
+            [
+              1999.79,
+              18.41,
+              2564.72
+            ],
+            [
+              1999.79,
+              18.45,
+              2564.22
+            ],
+            [
+              1999.79,
+              18.6,
+              2562.72
+            ],
+            [
+              1999.79,
+              18.88,
+              2560.72
+            ],
+            [
+              1999.79,
+              18.96,
+              2560.22
+            ],
+            [
+              1999.79,
+              19.14,
+              2559.22
+            ],
+            [
+              1999.79,
+              19.3,
+              2558.22
+            ],
+            [
+              1999.79,
+              19.39,
+              2557.72
+            ],
+            [
+              1999.79,
+              20.03,
+              2553.72
+            ],
+            [
+              1999.79,
+              20.1,
+              2553.22
+            ],
+            [
+              1999.79,
+              20.15,
+              2552.72
+            ],
+            [
+              1999.79,
+              20.27,
+              2551.72
+            ],
+            [
+              1999.79,
+              20.29,
+              2551.22
+            ],
+            [
+              1999.79,
+              20.3,
+              2550.72
+            ],
+            [
+              1999.79,
+              20.21,
+              2550.22
+            ],
+            [
+              1999.79,
+              20.04,
+              2549.72
+            ],
+            [
+              1999.79,
+              19.83,
+              2549.22
+            ],
+            [
+              1999.79,
+              19.63,
+              2548.72
+            ]
+          ],
+          "routeM": 60.82,
+          "steepestDeg": 22.9,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        }
+      }
+    }
+  }
+}

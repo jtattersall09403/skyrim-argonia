@@ -1,0 +1,221 @@
+{
+ "schemaVersion": 1,
+ "placeId": "place.imperial-penal-south.voriplasm-vault",
+ "generator": "python3 -m worldgen.blueprint_promises --id <place-id> --write (decision 0104); never hand-edit a row but its `unfilled`, `filledBy` or `confirmed` block",
+ "derivedFrom": [
+  {
+   "file": "world/sources/catalogue/places-imperial-penal-south.json",
+   "sha256": "a2b797368703784fa69e43a230b8099d5b9f278abfd8bfc05fdb44614092bf8e"
+  },
+  {
+   "file": "world/sources/quests/local-imperial-penal-south.json",
+   "sha256": "d1c7db5b8fb894e4eb43966e6560f79887381d704c53e59a4ae57761d43b7b75"
+  }
+ ],
+ "promises": [
+  {
+   "id": "promise.voriplasm-vault.entrance",
+   "kind": "entrance",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-penal-south.json",
+    "path": "places[place.imperial-penal-south.voriplasm-vault].entrance[stair-throat]"
+   },
+   "text": "The Sealed Vault is entered by a stair-throat.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.voriplasm-vault.evidence-sealed-vault-warning-board",
+   "kind": "socketBucket",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-penal-south.json",
+    "path": "places[place.imperial-penal-south.voriplasm-vault].sockets.evidence[evidence.sealed-vault.warning-board]"
+   },
+   "text": "The Sealed Vault has the evidence socket evidence.sealed-vault.warning-board.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.voriplasm-vault.interior-principal",
+   "kind": "interior",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-penal-south.json",
+    "path": "places[place.imperial-penal-south.voriplasm-vault].interior"
+   },
+   "text": "The Sealed Vault's principal interior is a sinkhole-ruin (S2); its buildings carry 1 load door in all.",
+   "unfilled": {
+    "reason": "later-phase-system",
+    "note": "The one load door is built and claims IxtaxhXanmeerInterior, reserved in the kotm pool: its bundle needs 96 meshes no published kit carries yet. The Phase 12 interior fit-out kits them and fills this row (decision 0102)."
+   }
+  },
+  {
+   "id": "promise.voriplasm-vault.prose-playerpurpose-hook",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-penal-south.json",
+    "path": "places[place.imperial-penal-south.voriplasm-vault].playerPurpose.hook"
+   },
+   "text": "The party that sealed the door nailed a board to the door. The board says what is inside the vault. The board is still legible.",
+   "confirmed": {
+    "sha": "9cf75eb489a1",
+    "note": "n-board, a plank board nailed on the doorway hood over the door, faces the stair down the hollow; the sealing-note sign socket carries its text.",
+    "ids": [
+     "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.n-board"
+    ]
+   }
+  },
+  {
+   "id": "promise.voriplasm-vault.prose-questhooks-opportunity",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-penal-south.json",
+    "path": "places[place.imperial-penal-south.voriplasm-vault].questHooks.opportunity"
+   },
+   "text": "A quest can establish what has been fed to the sealed vault. The same quest can establish on whose orders it was fed.",
+   "confirmed": {
+    "sha": "14c38b345221",
+    "note": "A quest hook, no placed thing: the evidence socket on the warning board and the bone and tool scatters at the door give LR52 its clues."
+   }
+  },
+  {
+   "id": "promise.voriplasm-vault.prose-vibe-mood",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-penal-south.json",
+    "path": "places[place.imperial-penal-south.voriplasm-vault].vibe.mood"
+   },
+   "text": "Sealed and posted.",
+   "confirmed": {
+    "sha": "0c16a881392d",
+    "note": "The stair door is shut and the board is nailed above it; readers of round 12 call the door sealed."
+   }
+  },
+  {
+   "id": "promise.voriplasm-vault.prose-vibe-palette",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-penal-south.json",
+    "path": "places[place.imperial-penal-south.voriplasm-vault].vibe.palette"
+   },
+   "text": "The rust is red, the stone grey and the board faded.",
+   "confirmed": {
+    "sha": "e3e745b10af5",
+    "note": "Grey Imperial ashlar of the vault face and doorhole, the rust-stained iron bands of the old door, the faded plank board.",
+    "ids": [
+     "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-face.piece.1",
+     "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.v-hole-door",
+     "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.n-board"
+    ]
+   }
+  },
+  {
+   "id": "promise.voriplasm-vault.prose-vibe-signaturefeature",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-penal-south.json",
+    "path": "places[place.imperial-penal-south.voriplasm-vault].vibe.signatureFeature"
+   },
+   "text": "Rusted iron bands hold the vault's old wooden door. A board is nailed to the door. The message on the board is legible after two hundred years.",
+   "confirmed": {
+    "sha": "c28314efaf76",
+    "note": "v-hole-door, Skyrim's iron-banded Imperial wooden door at its plugin pose in the doorhole, with n-board nailed above it facing the stair.",
+    "ids": [
+     "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.v-hole-door",
+     "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.n-board"
+    ]
+   }
+  },
+  {
+   "id": "promise.voriplasm-vault.prose-why-founding",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-penal-south.json",
+    "path": "places[place.imperial-penal-south.voriplasm-vault].why.founding"
+   },
+   "text": "A vault lies under a ruined works. The people who found what had grown in it sealed it. They nailed the door shut.",
+   "confirmed": {
+    "sha": "6ae367a8c1aa",
+    "note": "The ruin court of the works stands over the vault; the vault face is dug out under the berm, and the door is boarded.",
+    "ids": [
+     "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-face.piece.1",
+     "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.building",
+     "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.n-board"
+    ]
+   }
+  },
+  {
+   "id": "promise.voriplasm-vault.prose-why-occupantsmotive",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-penal-south.json",
+    "path": "places[place.imperial-penal-south.voriplasm-vault].why.occupantsMotive"
+   },
+   "text": "The voriplasm lives in the vault. It has been sealed in the vault for two hundred years.",
+   "confirmed": {
+    "sha": "a6844cc3a782",
+    "note": "No placed thing: the creature is inside the vault interior; outside, only the bones at the door say something lives there."
+   }
+  },
+  {
+   "id": "promise.voriplasm-vault.prose-why-pressures",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-penal-south.json",
+    "path": "places[place.imperial-penal-south.voriplasm-vault].why.pressures"
+   },
+   "text": "The note of the sealing party is still nailed to the door. The note names the contents of the vault.",
+   "confirmed": {
+    "sha": "27b8d2f70002",
+    "note": "n-board on the door hood; its sealing-note sign text names what is inside.",
+    "ids": [
+     "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.n-board"
+    ]
+   }
+  },
+  {
+   "id": "promise.voriplasm-vault.prose-why-siteadvantages",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-penal-south.json",
+    "path": "places[place.imperial-penal-south.voriplasm-vault].why.siteAdvantages"
+   },
+   "text": "The vault is a stone undercroft with one door and no other opening.",
+   "confirmed": {
+    "sha": "1045766c99ad",
+    "note": "The vault face is one closed stone wall with the single doorhole and its load door; the claimed interior is reached only through it.",
+    "ids": [
+     "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-face.piece.1",
+     "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.building"
+    ]
+   }
+  },
+  {
+   "id": "promise.voriplasm-vault.prose-why-wouldchangeif",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-penal-south.json",
+    "path": "places[place.imperial-penal-south.voriplasm-vault].why.wouldChangeIf"
+   },
+   "text": "If the vault were opened, a creature would be released. The province has a specific and unhappy history with that creature.",
+   "confirmed": {
+    "sha": "2790c9be84e6",
+    "note": "A history line, no placed thing: kept by the sealed door and the board's warning."
+   }
+  },
+  {
+   "id": "promise.voriplasm-vault.quest-lr52",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-imperial-penal-south.json",
+    "path": "quest[LR52]"
+   },
+   "text": "LR52 The Sealed Vault: Something in a sealed western vault consumes whatever is placed before it. It then falls silent.",
+   "confirmed": {
+    "sha": "9d6a766abb63",
+    "note": "The sealed vault door at the foot of the hollow, the warning board and the evidence socket give LR52 its site; the bones at the door are what it consumed.",
+    "ids": [
+     "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.v-hole-door",
+     "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.n-board"
+    ]
+   }
+  }
+ ]
+}

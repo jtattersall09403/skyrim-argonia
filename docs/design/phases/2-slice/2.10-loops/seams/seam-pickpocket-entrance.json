@@ -1,0 +1,113 @@
+{
+ "id": "seam-pickpocket-entrance",
+ "start": {
+  "query": "?view=character&x=7.2032&z=0.5204&t=14:00&d=8-17",
+  "kit": "start",
+  "skills": {
+   "sneak": 80
+  },
+  "seed": 1
+ },
+ "steps": [
+  {
+   "name": "crouch-behind",
+   "transition": "Riverwalk at 14:00, 1.5 m behind a crewman -> crouched and unseen: the prompt on him is the pickpocket one, not talk",
+   "do": {
+    "action": "crouch",
+    "near": [
+     {
+      "id": "npc.dunmer-north.riverwalk.n1",
+      "m": 2.0,
+      "facing": false
+     },
+     {
+      "id": "npc.dunmer-north.riverwalk.n1-3",
+      "m": 2.4,
+      "facing": true
+     },
+     {
+      "id": "npc.dunmer-north.riverwalk.n1-2",
+      "m": 3.0,
+      "facing": true
+     },
+     {
+      "id": "npc.dunmer-north.riverwalk.toll-holder",
+      "m": 24.1,
+      "facing": false
+     }
+    ],
+    "seconds": 2
+   },
+   "keys": [
+    {
+     "wait_s": 1
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "sneaking": true,
+    "eye": "hidden",
+    "notice": {
+     "npc.dunmer-north.riverwalk.n1-2": "unaware",
+     "npc.dunmer-north.riverwalk.n1-3": "unaware"
+    }
+   },
+   "stage": {
+    "at": {
+     "x": 7226.9,
+     "z": 516.0,
+     "yaw": 0.12
+    },
+    "hour": 14,
+    "place": "place.dunmer-north.riverwalk",
+    "stance": "crouch"
+   }
+  },
+  {
+   "name": "the-prompt",
+   "transition": "crouched still behind him -> the prompt holds on him; he works on, unaware",
+   "do": {
+    "action": "approach",
+    "seconds": 1
+   },
+   "keys": [
+    {
+     "wait_s": 1.5
+    }
+   ],
+   "hold_s": 0.5,
+   "expect": {
+    "sneaking": true,
+    "notice": {
+     "npc.dunmer-north.riverwalk.n1": "unaware"
+    }
+   }
+  },
+  {
+   "name": "the-sheet",
+   "transition": "E on him, crouched and unseen -> the pickpocket sheet opens on his things, each with its percent",
+   "do": {
+    "action": "pickpocket",
+    "npc": "npc.dunmer-north.riverwalk.n1"
+   },
+   "keys": [
+    {
+     "wait_s": 7
+    },
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 0.6
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "screen": "pickpocket",
+    "percent": {
+     "key-dunmer-north-riverwalk-1": 76
+    }
+   }
+  }
+ ]
+}

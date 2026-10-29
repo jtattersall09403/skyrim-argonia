@@ -1,0 +1,27 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "world-schema/grave-stakes.v1",
+ "title": "Grave-stake records (0157 item 10): the carved life of one dead Argonian, read as a document at the stake",
+ "type": "object",
+ "required": ["schemaVersion", "domain", "entries"],
+ "additionalProperties": true,
+ "properties": {
+  "schemaVersion": { "const": 1 },
+  "domain": { "const": "grave-stake" },
+  "entries": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": ["id", "place", "person", "textRef"],
+    "additionalProperties": false,
+    "properties": {
+     "id": { "type": "string", "pattern": "^stake\\.[a-z0-9]+(-[a-z0-9]+)*\\.[a-z0-9]+(-[a-z0-9]+)*$" },
+     "place": { "type": "string", "pattern": "^place\\." },
+     "person": { "type": "string", "minLength": 1 },
+     "textRef": { "type": "string", "pattern": "^text\\.stake\\." },
+     "name": { "type": "string", "minLength": 1 }
+    }
+   }
+  }
+ }
+}

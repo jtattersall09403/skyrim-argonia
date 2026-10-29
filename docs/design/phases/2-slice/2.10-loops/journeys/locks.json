@@ -1,0 +1,197 @@
+{
+ "id": "locks",
+ "start": {
+  "query": "?view=character&x=0.6575&z=6.0890&t=12:00&d=8-17",
+  "kit": "start",
+  "skills": {
+   "security": 50
+  },
+  "seed": 1,
+  "grant": [
+   {
+    "item": "probe",
+    "count": 2
+   }
+  ],
+  "known": [
+   "open"
+  ]
+ },
+ "steps": [
+  {
+   "name": "press-held-back",
+   "transition": "Chasepoint's held-back strongbox -> the lock screen: hard, trapped unknown",
+   "stage": {
+    "at": {
+     "x": 658.3,
+     "z": 6090.3,
+     "yaw": -2.36
+    },
+    "hour": 12,
+    "place": "place.mercantile-coast.chasepoint"
+   },
+   "do": {
+    "action": "approach"
+   },
+   "keys": [],
+   "hold_s": 0.2,
+   "expect": {}
+  },
+  {
+   "name": "probe-held-back",
+   "transition": "the probe -> the shock trap found and disarmed",
+   "do": {
+    "action": "probe",
+    "lock": "lock.chasepoint.held-back",
+    "tool": "probe"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 0.6
+    },
+    {
+     "click": ".es-sheet--lock [data-lock-act=\"probe\"]"
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "screen": "lock",
+    "trapped": "disarmed",
+    "lockState": {
+     "lock.chasepoint.held-back": "disarmed"
+    },
+    "trapFired": null
+   }
+  },
+  {
+   "name": "pick-held-back",
+   "transition": "the pick -> it gives with no trap: the strongbox opens",
+   "do": {
+    "action": "pick",
+    "lock": "lock.chasepoint.held-back",
+    "tool": "lockpick"
+   },
+   "keys": [
+    {
+     "click": ".es-sheet--lock [data-lock-act=\"pick\"]"
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "lockState": {
+     "lock.chasepoint.held-back": "unlocked"
+    },
+    "trapFired": null,
+    "flinch": false,
+    "screen": "container"
+   }
+  },
+  {
+   "name": "unpickable",
+   "transition": "the sunk offerings' cache -> the lock screen says only its key opens it; the pick refused",
+   "do": {
+    "action": "pick",
+    "lock": "lock.the-wamasu-shrine.cache-sunk-offerings",
+    "tool": "lockpick",
+    "place": "place.dunmer-north.the-wamasu-shrine",
+    "hour": 12
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 0.6
+    },
+    {
+     "click": ".es-sheet--lock [data-lock-act=\"pick\"]"
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "screen": "lock",
+    "line": "text.ui.lock.needs-key",
+    "lockState": {
+     "lock.the-wamasu-shrine.cache-sunk-offerings": "locked"
+    }
+   },
+   "teleport": {
+    "x": 4718.53,
+    "z": 932.23,
+    "yaw": 0.79
+   }
+  },
+  {
+   "name": "open-spell",
+   "transition": "the screen closed, the Open spell readied in the right hand and cast on the cache in focus -> the cache opens; the shrine owns nothing, nothing is filed",
+   "do": {
+    "action": "castOpen",
+    "lock": "lock.the-wamasu-shrine.cache-sunk-offerings"
+   },
+   "keys": [
+    {
+     "press": "Escape"
+    },
+    {
+     "until": "no-screen"
+    },
+    {
+     "wait_s": 0.4
+    },
+    {
+     "press": "Escape"
+    },
+    {
+     "wait_s": 0.6
+    },
+    {
+     "click": ".es-magic [data-es-row=\"open\"]"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": ".es-magic [data-ready=\"main\"]"
+    },
+    {
+     "press": "Escape"
+    },
+    {
+     "until": "no-screen"
+    },
+    {
+     "wait_s": 0.8
+    },
+    {
+     "mouse": "left",
+     "hold_s": 1.5
+    }
+   ],
+   "hold_s": 1.5,
+   "expect": {
+    "lockState": {
+     "lock.the-wamasu-shrine.cache-sunk-offerings": "unlocked"
+    },
+    "filed": null
+   }
+  },
+  {
+   "name": "save",
+   "transition": "a state read, no player act (saving is the rest-save, 2.8; no cue is filmed): the lock states and the stack round-trip equal through the save families",
+   "do": {
+    "action": "save"
+   },
+   "keys": [],
+   "hold_s": 0.4,
+   "expect": {
+    "saved": [
+     "locks",
+     "inventory"
+    ]
+   }
+  }
+ ]
+}

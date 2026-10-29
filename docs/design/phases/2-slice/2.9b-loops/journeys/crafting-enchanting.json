@@ -1,0 +1,354 @@
+{
+ "id": "crafting-enchanting",
+ "start": {
+  "query": "?view=character&x=4.7789&z=1.9&t=10:00&d=8-17",
+  "kit": "start",
+  "grant": [
+   {
+    "item": "petty-soul-gem",
+    "count": 1
+   },
+   {
+    "item": "lesser-soul-gem-filled",
+    "count": 1
+   },
+   {
+    "item": "iron-dagger",
+    "count": 1
+   },
+   {
+    "item": "steel-dagger-of-chills",
+    "count": 1
+   }
+  ]
+ },
+ "steps": [
+  {
+   "name": "soul-trap-leech",
+   "transition": "Soul Trap on a giant leech, then the kill -> the petty gem filled",
+   "do": {
+    "action": "soulTrap",
+    "target": "creature-at.dunmer-north.the-wamasu-shrine.eco-giant-leech"
+   },
+   "keys": [
+    {
+     "wait_s": 5.0
+    },
+    {
+     "press": "KeyQ"
+    },
+    {
+     "mouse": "right",
+     "hold_s": 1.5
+    },
+    {
+     "wait_s": 0.5
+    },
+    {
+     "press": "Tab"
+    },
+    {
+     "mouse": "left",
+     "hold_s": 0.1
+    },
+    {
+     "mouse": "left",
+     "hold_s": 0.1
+    }
+   ],
+   "hold_s": 1.5,
+   "expect": {
+    "has": {
+     "petty-soul-gem-filled": 1,
+     "petty-soul-gem": 0
+    }
+   },
+   "teleport": {
+    "x": 4729.5,
+    "z": 941.5
+   }
+  },
+  {
+   "name": "open-enchanting",
+   "transition": "walking at the Wamasu Shrine -> the enchanting table's window",
+   "do": {
+    "action": "openStation",
+    "place": "place.dunmer-north.the-wamasu-shrine",
+    "station": "enchanting"
+   },
+   "keys": [
+    {
+     "wait_s": 5.0
+    },
+    {
+     "press": "KeyE"
+    }
+   ],
+   "hold_s": 0.8,
+   "expect": {
+    "screen": "enchanting",
+    "stationVerbs": [
+     "enchant",
+     "disenchant",
+     "recharge"
+    ]
+   },
+   "teleport": {
+    "x": 4729.5,
+    "z": 941.5
+   }
+  },
+  {
+   "name": "disenchant-chills",
+   "transition": "disenchant tab -> the dagger of chills' row pressed: destroyed, Frost Damage learned",
+   "do": {
+    "action": "disenchant",
+    "item": "steel-dagger-of-chills"
+   },
+   "keys": [
+    {
+     "click": ".es-enchanting .es-tab:nth-child(2)"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": ".es-enchanting .es-craft__row:has-text(\"Steel Dagger of Chills\")"
+    }
+   ],
+   "hold_s": 1.0,
+   "expect": {
+    "has": {
+     "steel-dagger-of-chills": 0
+    },
+    "learned": [
+     "frost-damage"
+    ]
+   }
+  },
+  {
+   "name": "enchant-dagger",
+   "transition": "enchant tab -> the iron dagger, the just-learned Frost Damage and the filled petty gem chosen, Enchant",
+   "do": {
+    "action": "enchant",
+    "item": "iron-dagger",
+    "effect": "frost-damage",
+    "magnitude": 5,
+    "duration": 1,
+    "gem": "petty-soul-gem-filled"
+   },
+   "keys": [
+    {
+     "click": ".es-enchanting .es-tab:nth-child(1)"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": ".es-enchanting [data-es-row]:has-text(\"Iron Dagger\")"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": ".es-enchanting [data-es-effect=\"frost-damage\"]"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": ".es-enchanting [data-es-gem]:has-text(\"Petty Soul Gem (filled)\")"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": ".es-craft-sheet [data-es-act=\"enchant\"]"
+    }
+   ],
+   "hold_s": 1.0,
+   "expect": {
+    "has": {
+     "petty-soul-gem-filled": 0
+    }
+   }
+  },
+  {
+   "name": "close-enchanting",
+   "transition": "enchanting window -> walking",
+   "do": {
+    "action": "closeScreen"
+   },
+   "keys": [
+    {
+     "press": "Escape"
+    }
+   ],
+   "hold_s": 0.4,
+   "expect": {
+    "screen": null
+   }
+  },
+  {
+   "name": "open-inventory",
+   "transition": "walking -> inventory open",
+   "do": {
+    "action": "openInventory"
+   },
+   "keys": [
+    {
+     "press": "Escape"
+    }
+   ],
+   "hold_s": 0.5,
+   "expect": {
+    "screen": "inventory"
+   }
+  },
+  {
+   "name": "equip-dagger",
+   "transition": "inventory -> the enchanted dagger in the right hand, charge full",
+   "do": {
+    "action": "equip",
+    "item": "iron-dagger",
+    "hand": "mainHand"
+   },
+   "keys": [
+    {
+     "click": "[data-es-bag] [data-es-item=\"iron-dagger\"]"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": "[data-es-actions] [data-hand=\"main\"], [data-es-actions] [data-es-act=\"equip\"]"
+    }
+   ],
+   "hold_s": 0.5,
+   "expect": {
+    "mainHand": "iron-dagger",
+    "enchanted": {
+     "effect": "frost-damage",
+     "full": true
+    }
+   }
+  },
+  {
+   "name": "close-inventory",
+   "transition": "inventory open -> walking",
+   "do": {
+    "action": "closeScreen"
+   },
+   "keys": [
+    {
+     "click": "[data-es-close]"
+    }
+   ],
+   "hold_s": 0.4,
+   "expect": {
+    "screen": null
+   }
+  },
+  {
+   "name": "strike-enchanted",
+   "transition": "the dagger drawn -> a hit on a crocodile burns it; the charge drops",
+   "do": {
+    "action": "useCharged",
+    "target": "creature-at.dunmer-north.the-wamasu-shrine.eco-crocodile"
+   },
+   "keys": [
+    {
+     "wait_s": 4.0
+    },
+    {
+     "press": "Tab"
+    },
+    {
+     "wait_s": 0.8
+    },
+    {
+     "press": "KeyQ"
+    },
+    {
+     "mouse": "left",
+     "hold_s": 0.1
+    }
+   ],
+   "hold_s": 1.5,
+   "expect": {
+    "victim": [
+     "frost-damage"
+    ],
+    "enchanted": {
+     "effect": "frost-damage",
+     "full": false
+    }
+   },
+   "teleport": {
+    "x": 4711.0,
+    "z": 923.0
+   }
+  },
+  {
+   "name": "open-enchanting-again",
+   "transition": "walking -> the enchanting table's window",
+   "do": {
+    "action": "openStation",
+    "place": "place.dunmer-north.the-wamasu-shrine",
+    "station": "enchanting"
+   },
+   "keys": [
+    {
+     "wait_s": 5.0
+    },
+    {
+     "press": "KeyE"
+    }
+   ],
+   "hold_s": 0.8,
+   "expect": {
+    "screen": "enchanting"
+   },
+   "teleport": {
+    "x": 4729.5,
+    "z": 941.5
+   }
+  },
+  {
+   "name": "recharge-dagger",
+   "transition": "recharge tab -> the lesser gem chosen, the dagger's row pressed: its charge full again, the gem spent",
+   "do": {
+    "action": "recharge",
+    "item": "iron-dagger",
+    "gem": "lesser-soul-gem-filled"
+   },
+   "keys": [
+    {
+     "click": ".es-enchanting .es-tab:nth-child(3)"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": ".es-enchanting [data-es-gem]:has-text(\"Lesser Soul Gem (filled)\")"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": ".es-enchanting .es-craft__row:has-text(\"Iron Dagger\")"
+    }
+   ],
+   "hold_s": 1.0,
+   "expect": {
+    "enchanted": {
+     "effect": "frost-damage",
+     "full": true
+    },
+    "has": {
+     "lesser-soul-gem-filled": 0
+    }
+   }
+  }
+ ]
+}

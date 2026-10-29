@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "cellId": "TeethofSithisInt03",
+  "plugin": "King of the Murkmire.esp",
+  "rule": "Stand-ins for the cell's missing Creation Club, Dawnguard and Hearthfire clutter (as KeebaHouseFisher). Each stand-in is a published piece of the same object class and near size, drawn at the missing reference's transform by worldgen/export_interior_bundle.py.",
+  "substitutions": [
+    {
+      "refId": "084EA914",
+      "standInAsset": "kotm:architecture/xanmeer/furniture/xanmeer_murkmire_chair",
+      "why": "A Saxhleel throne stands here; a carved Xanmeer chair takes its place."
+    },
+    {
+      "refId": "084F4DB4",
+      "standInAsset": "kotm:argonia/clutter/amberbee",
+      "why": "A lump of raw amber lies here; a lump of amber takes its place."
+    },
+    {
+      "refId": "084F4DB5",
+      "standInAsset": "kotm:argonia/clutter/amberbee",
+      "why": "A lump of raw amber lies here; a lump of amber takes its place."
+    },
+    {
+      "refId": "084F4DBB",
+      "standInAsset": "vanilla:clutter/ingredients/scalypholiotabits01",
+      "why": "A bungler's bane cap lies here; a pinch of dried fungus takes its place."
+    },
+    {
+      "refId": "084F4DBC",
+      "standInAsset": "vanilla:clutter/ingredients/scalypholiotabits01",
+      "why": "A bungler's bane cap lies here; a pinch of dried fungus takes its place."
+    },
+    {
+      "refId": "084F4DC0",
+      "standInAsset": "vanilla:clutter/potions/poisondamagemagicka01",
+      "why": "A vial of magicka poison stands here; a smaller vial of the same poison takes its place."
+    },
+    {
+      "refId": "088406FA",
+      "standInAsset": "kotm:argonia/furniture/beddouble01",
+      "why": "A covered double bed stands here; a double bed takes its place."
+    }
+  ],
+  "removalRule": "Owner ruling 2026-10-04 (R113): no missing piece ships as a gap. A missing piece takes a same-class stand-in from a published kit where one exists (substitutions[]); a decorative piece whose class no published kit or vault archive holds is taken out of the fit-out (removals[], reason decorative-no-same-class, its search recorded), and the spot is simply empty. A placed piece whose only support was a removed piece is removed with it (reason rests-on-a-removal, restsOn naming that row).",
+  "removals": [
+    {
+      "refId": "084E0494",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A handful of nails lies here; no kit holds any, so the spot stays bare."
+    },
+    {
+      "refId": "084E0496",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A handful of nails lies here; no kit holds any, so the spot stays bare."
+    },
+    {
+      "refId": "084E0497",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A handful of nails lies here; no kit holds any, so the spot stays bare."
+    }
+  ]
+}

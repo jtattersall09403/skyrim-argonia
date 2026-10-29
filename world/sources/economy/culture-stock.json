@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "_": "Culture stock weights (lane 2.6c1): per place culture, item ids or id prefixes a trader there favours (weight 3) or never shelves. Every catalogue culture has a row. Read by worldgen.trade_tables.",
+  "global": {
+    "neverKinds": [
+      "quest",
+      "key",
+      "note"
+    ],
+    "neverIds": [
+      "gold",
+      "nisswo-coin",
+      "skooma"
+    ],
+    "neverPrefixes": [
+      "daedric-",
+      "falmer-",
+      "forsworn-"
+    ]
+  },
+  "cultures": [
+    {
+      "id": "argonian",
+      "why": "Saxhleel cloth, marsh food and craft; Hist sap at its own villages (world/76; the marsh native kit).",
+      "favour": [
+        "saxhleel-",
+        "marsh-native-",
+        "jeel-sa",
+        "tee-lel",
+        "trodh",
+        "murkmire-stew",
+        "frog-legs",
+        "fried-frog-legs",
+        "swamp-fungal-pod",
+        "river-betty",
+        "hist-sap",
+        "depth-stick",
+        "pahnjee",
+        "turtle-shell-bowl",
+        "basket",
+        "hide",
+        "river-salt",
+        "hissmir-fish-eye-rye",
+        "smoked-slaughterfish"
+      ],
+      "avoid": [
+        "nord-mead",
+        "black-briar-mead",
+        "eidar-cheese-wheel",
+        "firebrand-wine",
+        "blades-sword",
+        "alto-wine",
+        "inkwell",
+        "quill",
+        "clothes-iron",
+        "fork",
+        "goblet",
+        "silver-bowl",
+        "fine-bowl",
+        "tankard"
+      ]
+    },
+    {
+      "id": "imperial",
+      "why": "Imperial goods carried south: wine, bread, cheese, Legion steel.",
+      "favour": [
+        "imperial-sword",
+        "steel-",
+        "iron-",
+        "alto-wine",
+        "bread",
+        "goat-cheese-wedge",
+        "sliced-goat-cheese",
+        "potato",
+        "leek",
+        "tunic-with-sash",
+        "torch",
+        "marsh-lantern"
+      ],
+      "avoid": [
+        "hist-sap",
+        "bone-talon-dagger"
+      ]
+    },
+    {
+      "id": "mixed",
+      "why": "A mixed port shelves a bit of everything; no favour.",
+      "favour": [],
+      "avoid": []
+    },
+    {
+      "id": "dunmer",
+      "why": "Dunmer traders of the north: saltrice, Stormhold crystal, obsidian.",
+      "favour": [
+        "saltrice-",
+        "stormhold-crystal",
+        "stormhold-crystal-",
+        "obsidian-",
+        "elven-"
+      ],
+      "avoid": [
+        "hist-sap"
+      ]
+    },
+    {
+      "id": "khajiit",
+      "why": "Khajiiti coin and goods of the south-west.",
+      "favour": [
+        "moon-sugar",
+        "steel-scimitar",
+        "jazbay-grapes"
+      ],
+      "avoid": []
+    },
+    {
+      "id": "lost-peoples",
+      "why": "Shell, pearl and bone among the old peoples.",
+      "favour": [
+        "shell",
+        "small-pearl",
+        "bone-talon-dagger",
+        "crocodile-tooth"
+      ],
+      "avoid": [
+        "imperial-sword",
+        "alto-wine"
+      ]
+    },
+    {
+      "id": "outsider",
+      "why": "Outsiders shelve imported goods.",
+      "favour": [
+        "steel-",
+        "alto-wine",
+        "bread"
+      ],
+      "avoid": []
+    },
+    {
+      "id": "altmer",
+      "why": "Altmer goods: elven make.",
+      "favour": [
+        "elven-",
+        "alto-wine"
+      ],
+      "avoid": []
+    }
+  ]
+}

@@ -1,0 +1,824 @@
+{
+ "schemaVersion": 1,
+ "placeId": "place.route.archon-gideon-mere-neck",
+ "window": {
+  "centreKm": [
+   4.755,
+   3.542
+  ],
+  "halfM": 110.0
+ },
+ "ops": [
+  {
+   "op": "place",
+   "uid": "pl-n00",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+   "at": [
+    4787.76,
+    3544.74
+   ],
+   "yaw": 358.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "pl-s00",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+   "at": [
+    4781.76,
+    3562.24
+   ],
+   "yaw": 198.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "pl-n01",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+   "at": [
+    4781.76,
+    3546.4
+   ],
+   "yaw": 85.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "pl-s01",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+   "at": [
+    4777.03,
+    3562.0
+   ],
+   "yaw": 289.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "pl-n02",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+   "at": [
+    4775.99,
+    3548.2
+   ],
+   "yaw": 273.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "pl-s02",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+   "at": [
+    4772.27,
+    3560.45
+   ],
+   "yaw": 111.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "pl-n03",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+   "at": [
+    4771.67,
+    3545.22
+   ],
+   "yaw": 192.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "pl-s03",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+   "at": [
+    4768.19,
+    3556.7
+   ],
+   "yaw": 221.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "pl-n04",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+   "at": [
+    4766.62,
+    3544.63
+   ],
+   "yaw": 269.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "pl-s04",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+   "at": [
+    4762.94,
+    3556.78
+   ],
+   "yaw": 65.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "pl-n05",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+   "at": [
+    4761.3,
+    3542.7
+   ],
+   "yaw": 314.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "pl-s05",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+   "at": [
+    4761.3,
+    3556.8
+   ],
+   "yaw": 319.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "pl-n06",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+   "at": [
+    4756.3,
+    3541.0
+   ],
+   "yaw": 86.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "pl-s06",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+   "at": [
+    4756.3,
+    3556.7
+   ],
+   "yaw": 246.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "pl-n07",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+   "at": [
+    4751.3,
+    3541.2
+   ],
+   "yaw": 204.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "pl-s07",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+   "at": [
+    4751.3,
+    3556.5
+   ],
+   "yaw": 238.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "pl-n08",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+   "at": [
+    4746.3,
+    3542.8
+   ],
+   "yaw": 146.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "pl-s08",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+   "at": [
+    4746.3,
+    3556.7
+   ],
+   "yaw": 158.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "pl-n09",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+   "at": [
+    4741.99,
+    3542.95
+   ],
+   "yaw": 270.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "pl-s09",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+   "at": [
+    4738.31,
+    3552.89
+   ],
+   "yaw": 66.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "pl-n10",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+   "at": [
+    4737.41,
+    3540.93
+   ],
+   "yaw": 5.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "pl-s10",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+   "at": [
+    4734.53,
+    3548.72
+   ],
+   "yaw": 329.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "cn-east-0",
+   "asset": "vanilla:landscape/rocks/cairns/rockcairn01",
+   "at": [
+    4793.54,
+    3563.47
+   ],
+   "yaw": 92.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "cn-east-1",
+   "asset": "vanilla:landscape/rocks/wetrocks/rockm02wet",
+   "at": [
+    4787.7,
+    3563.3
+   ],
+   "yaw": 2.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "cn-west-0",
+   "asset": "vanilla:landscape/rocks/cairns/rockcairn04",
+   "at": [
+    4723.64,
+    3535.54
+   ],
+   "yaw": 10.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "cn-west-1",
+   "asset": "vanilla:landscape/rocks/wetrocks/rockm02wet",
+   "at": [
+    4735.48,
+    3537.44
+   ],
+   "yaw": 217.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "cn-track-0",
+   "asset": "vanilla:landscape/rocks/cairns/rockcairn02",
+   "at": [
+    4710.2,
+    3522.82
+   ],
+   "yaw": 196.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "cn-track-1",
+   "asset": "vanilla:landscape/rocks/rockm01",
+   "at": [
+    4712.12,
+    3518.98
+   ],
+   "yaw": 277.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "cn-track-2",
+   "asset": "vanilla:landscape/rocks/rocks02",
+   "at": [
+    4713.47,
+    3523.46
+   ],
+   "yaw": 175.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "fr-crest-0",
+   "asset": "vanilla:clutter/woodfires/campfire01landoff",
+   "at": [
+    4790.0,
+    3567.0
+   ],
+   "yaw": 281.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "fr-crest-1",
+   "asset": "vanilla:landscape/rocks/rocks03",
+   "at": [
+    4785.5,
+    3567.0
+   ],
+   "yaw": 182.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "rk-bend-0",
+   "asset": "vanilla:landscape/rocks/rockm04",
+   "at": [
+    4715.43,
+    3516.61
+   ],
+   "yaw": 134.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "rk-bend-1",
+   "asset": "vanilla:landscape/rocks/rockpiles01",
+   "at": [
+    4721.5,
+    3518.0
+   ],
+   "yaw": 312.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "cn-east-0",
+   "kind": "parcel",
+   "id": "parcel.archon-gideon-mere-neck.east-wade-head"
+  },
+  {
+   "op": "bind",
+   "uid": "cn-west-0",
+   "kind": "parcel",
+   "id": "parcel.archon-gideon-mere-neck.west-wade-head"
+  },
+  {
+   "op": "bind",
+   "uid": "cn-track-0",
+   "kind": "parcel",
+   "id": "parcel.archon-gideon-mere-neck.track-head"
+  },
+  {
+   "op": "bind",
+   "uid": "fr-crest-0",
+   "kind": "parcel",
+   "id": "parcel.archon-gideon-mere-neck.drying-fire"
+  },
+  {
+   "op": "bind",
+   "uid": "pl-n00",
+   "kind": "assembly",
+   "id": "parcel.archon-gideon-mere-neck.east-wade-head",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "dug-in"
+  },
+  {
+   "op": "bind",
+   "uid": "pl-s00",
+   "kind": "assembly",
+   "id": "parcel.archon-gideon-mere-neck.east-wade-head",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "dug-in"
+  },
+  {
+   "op": "bind",
+   "uid": "pl-n01",
+   "kind": "assembly",
+   "id": "parcel.archon-gideon-mere-neck.east-wade-head",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "dug-in"
+  },
+  {
+   "op": "bind",
+   "uid": "pl-s01",
+   "kind": "assembly",
+   "id": "parcel.archon-gideon-mere-neck.east-wade-head",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "dug-in"
+  },
+  {
+   "op": "bind",
+   "uid": "pl-n02",
+   "kind": "assembly",
+   "id": "parcel.archon-gideon-mere-neck.east-wade-head",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "dug-in"
+  },
+  {
+   "op": "bind",
+   "uid": "pl-s02",
+   "kind": "assembly",
+   "id": "parcel.archon-gideon-mere-neck.east-wade-head",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "dug-in"
+  },
+  {
+   "op": "bind",
+   "uid": "pl-n03",
+   "kind": "assembly",
+   "id": "parcel.archon-gideon-mere-neck.east-wade-head",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "dug-in"
+  },
+  {
+   "op": "bind",
+   "uid": "pl-s03",
+   "kind": "assembly",
+   "id": "parcel.archon-gideon-mere-neck.east-wade-head",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "dug-in"
+  },
+  {
+   "op": "bind",
+   "uid": "pl-n04",
+   "kind": "assembly",
+   "id": "parcel.archon-gideon-mere-neck.east-wade-head",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "dug-in"
+  },
+  {
+   "op": "bind",
+   "uid": "pl-s04",
+   "kind": "assembly",
+   "id": "parcel.archon-gideon-mere-neck.east-wade-head",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "dug-in"
+  },
+  {
+   "op": "bind",
+   "uid": "pl-n05",
+   "kind": "assembly",
+   "id": "parcel.archon-gideon-mere-neck.west-wade-head",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "dug-in"
+  },
+  {
+   "op": "bind",
+   "uid": "pl-s05",
+   "kind": "assembly",
+   "id": "parcel.archon-gideon-mere-neck.west-wade-head",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "dug-in"
+  },
+  {
+   "op": "bind",
+   "uid": "pl-n06",
+   "kind": "assembly",
+   "id": "parcel.archon-gideon-mere-neck.west-wade-head",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "dug-in"
+  },
+  {
+   "op": "bind",
+   "uid": "pl-s06",
+   "kind": "assembly",
+   "id": "parcel.archon-gideon-mere-neck.west-wade-head",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "dug-in"
+  },
+  {
+   "op": "bind",
+   "uid": "pl-n07",
+   "kind": "assembly",
+   "id": "parcel.archon-gideon-mere-neck.west-wade-head",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "dug-in"
+  },
+  {
+   "op": "bind",
+   "uid": "pl-s07",
+   "kind": "assembly",
+   "id": "parcel.archon-gideon-mere-neck.west-wade-head",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "dug-in"
+  },
+  {
+   "op": "bind",
+   "uid": "pl-n08",
+   "kind": "assembly",
+   "id": "parcel.archon-gideon-mere-neck.west-wade-head",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "dug-in"
+  },
+  {
+   "op": "bind",
+   "uid": "pl-s08",
+   "kind": "assembly",
+   "id": "parcel.archon-gideon-mere-neck.west-wade-head",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "dug-in"
+  },
+  {
+   "op": "bind",
+   "uid": "pl-n09",
+   "kind": "assembly",
+   "id": "parcel.archon-gideon-mere-neck.west-wade-head",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "dug-in"
+  },
+  {
+   "op": "bind",
+   "uid": "pl-s09",
+   "kind": "assembly",
+   "id": "parcel.archon-gideon-mere-neck.west-wade-head",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "dug-in"
+  },
+  {
+   "op": "bind",
+   "uid": "pl-n10",
+   "kind": "assembly",
+   "id": "parcel.archon-gideon-mere-neck.west-wade-head",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "dug-in"
+  },
+  {
+   "op": "bind",
+   "uid": "pl-s10",
+   "kind": "assembly",
+   "id": "parcel.archon-gideon-mere-neck.west-wade-head",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "dug-in"
+  },
+  {
+   "op": "bind",
+   "uid": "cn-east-1",
+   "kind": "assembly",
+   "id": "parcel.archon-gideon-mere-neck.east-wade-head",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "dug-in"
+  },
+  {
+   "op": "bind",
+   "uid": "cn-west-1",
+   "kind": "assembly",
+   "id": "parcel.archon-gideon-mere-neck.west-wade-head",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "dug-in"
+  },
+  {
+   "op": "bind",
+   "uid": "cn-track-1",
+   "kind": "assembly",
+   "id": "parcel.archon-gideon-mere-neck.track-head",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "dug-in"
+  },
+  {
+   "op": "bind",
+   "uid": "cn-track-2",
+   "kind": "assembly",
+   "id": "parcel.archon-gideon-mere-neck.track-head",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "dug-in"
+  },
+  {
+   "op": "bind",
+   "uid": "fr-crest-1",
+   "kind": "assembly",
+   "id": "parcel.archon-gideon-mere-neck.drying-fire",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "dug-in"
+  },
+  {
+   "op": "bind",
+   "uid": "rk-bend-0",
+   "kind": "assembly",
+   "id": "parcel.archon-gideon-mere-neck.track-head",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "dug-in"
+  },
+  {
+   "op": "bind",
+   "uid": "rk-bend-1",
+   "kind": "assembly",
+   "id": "parcel.archon-gideon-mere-neck.track-head",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "dug-in"
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.archon-gideon-mere-neck.east-wade-head-path",
+   "points": [
+    [
+     4794.25,
+     3560.74
+    ],
+    [
+     4794.06,
+     3561.45
+    ]
+   ],
+   "width": 1.5,
+   "kind": "footpath"
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.archon-gideon-mere-neck.west-wade-head-path",
+   "points": [
+    [
+     4726.63,
+     3536.98
+    ],
+    [
+     4725.13,
+     3536.26
+    ]
+   ],
+   "width": 1.5,
+   "kind": "footpath"
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.archon-gideon-mere-neck.track-head-path",
+   "points": [
+    [
+     4715.67,
+     3520.53
+    ],
+    [
+     4712.39,
+     3521.9
+    ]
+   ],
+   "width": 1.5,
+   "kind": "footpath"
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.archon-gideon-mere-neck.drying-fire-path",
+   "points": [
+    [
+     4790.59,
+     3560.74
+    ],
+    [
+     4790.29,
+     3563.88
+    ]
+   ],
+   "width": 1.5,
+   "kind": "footpath"
+  },
+  {
+   "op": "socket",
+   "id": "socket.archon-gideon-mere-neck.den-kaj-thux",
+   "kind": "encounter",
+   "at": [
+    4823.1,
+    3530
+   ],
+   "zone": "den",
+   "species": "creature.kaj-thux",
+   "headcount": 1,
+   "why": "Giant Snake den at the reedbed of the east mere, off the wade. Dense reedbed by water with abundant prey and no competing hunter.",
+   "dangerBand": "D3"
+  },
+  {
+   "op": "socket",
+   "id": "socket.archon-gideon-mere-neck.den-giant-leech",
+   "kind": "encounter",
+   "at": [
+    4793.1,
+    3502.6
+   ],
+   "zone": "den",
+   "species": "creature.giant-leech",
+   "headcount": 3,
+   "why": "Giant Leech den at the deep end of the wade. Dark still water with a steady trickle of scraps and swimmers.",
+   "dangerBand": "D2"
+  },
+  {
+   "op": "socket",
+   "id": "socket.archon-gideon-mere-neck.den-fleshfly",
+   "kind": "ambience",
+   "at": [
+    4775.3,
+    3569.5
+   ],
+   "zone": "den",
+   "species": "creature.fleshfly",
+   "headcount": 1,
+   "why": "Fleshfly Swarm den at the marsh pond west of the strip. Stagnant water beside carrion; the flies gather more thickly inland."
+  },
+  {
+   "op": "socket",
+   "id": "socket.archon-gideon-mere-neck.den-torchbug",
+   "kind": "fauna",
+   "at": [
+    4759.1,
+    3566.6
+   ],
+   "zone": "den",
+   "species": "creature.torchbug",
+   "headcount": 6,
+   "why": "Torchbug den at the reeds by the track-head cairn. Flowering fern and reed grow here.",
+   "dangerBand": "D1"
+  }
+ ]
+}

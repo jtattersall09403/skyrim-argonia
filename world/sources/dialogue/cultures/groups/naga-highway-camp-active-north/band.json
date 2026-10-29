@@ -1,0 +1,72 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "entries": [
+  {
+   "norms": [
+    {
+     "text": "The watch is kept in turns, day and night.",
+     "source": "world/sources/catalogue/places-naga-kur-deeps.json#place.naga-kur-deeps.naga-highway-camp-active-north"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Sleeping on watch at the bend.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "A fair share of the hides.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Walkers who argue with a spear.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "work": {
+     "lean": 0,
+     "text": "The gate, the fire and the bend, in turns.",
+     "source": "world/sources/catalogue/places-naga-kur-deeps.json#place.naga-kur-deeps.naga-highway-camp-active-north"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Walker.",
+      "source": "world/sources/catalogue/places-naga-kur-deeps.json#place.naga-kur-deeps.naga-highway-camp-active-north"
+     }
+    ],
+    "formality": "low",
+    "oaths": [],
+    "neverSaid": []
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "The lieutenant cuts a stick for every load, even a sack of reed-meal.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": []
+   },
+   "views": [],
+   "deviationRate": 0.3,
+   "id": "culture.group.naga-highway-camp-active-north.band",
+   "level": "group",
+   "name": "The band",
+   "parent": "culture.settlement.naga-highway-camp-active-north",
+   "members": [
+    "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+    "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+    "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+    "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+    "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "schemaVersion": 2,
+ "cellId": "LilmothShipwrightInt",
+ "additions": [
+  {
+   "id": "LilmothShipwrightInt:add:table-candlehornfloor",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    111.471,
+    82.813,
+    63.854
+   ],
+   "rotZDeg": 0,
+   "zone": "table",
+   "why": "Lights the dark floor of the shipwright's room at night."
+  },
+  {
+   "id": "LilmothShipwrightInt:add:table-candlehornfloor-2",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    105.436,
+    81.472,
+    64.476
+   ],
+   "rotZDeg": 0,
+   "zone": "table",
+   "why": "Lights the dark floor of the shipwright's room at night."
+  }
+ ]
+}

@@ -1,0 +1,4761 @@
+{
+  "schemaVersion": 1,
+  "blueprint": {
+    "id": "place.imperial-fringe.the-broke-column",
+    "seed": "place.imperial-fringe.the-broke-column",
+    "causalModel": {
+      "founding": "A Legion column was left unpaid at the recall. The column never marched home. The column's sons and grandsons keep the duty roster and the colours as an inheritance.",
+      "siteAdvantages": "The camp stands on a bench on the hill above a junction of two tracks. The bench is out of sight of the Gideon road. A stream runs below the bench.",
+      "occupantsMotive": "The men keep watches and wear the Legion colours. They take tolls from travellers and call each toll a levy.",
+      "pressures": "Gideon's governor will not pay to clear the camp. The toll company's officers would use the men for their own ends.",
+      "wouldChangeIf": "If Gideon offered the men a pardon and a wage, they would disband."
+    },
+    "boundary": [
+      [
+        0.158405,
+        0.415271
+      ],
+      [
+        0.166271,
+        0.415271
+      ],
+      [
+        0.166271,
+        0.421238
+      ],
+      [
+        0.158405,
+        0.421238
+      ]
+    ],
+    "districts": [
+      {
+        "id": "district.the-broke-column.the-line",
+        "kind": "camp",
+        "cultureKit": "imperial-camp",
+        "wealth": "poor",
+        "boundary": [
+          [
+            0.159887722,
+            0.418637792
+          ],
+          [
+            0.159902759,
+            0.419311488
+          ],
+          [
+            0.159921412,
+            0.419516624
+          ],
+          [
+            0.160193854,
+            0.419870787
+          ],
+          [
+            0.160494459,
+            0.419870787
+          ],
+          [
+            0.161087462,
+            0.419859831
+          ],
+          [
+            0.163211415,
+            0.419814669
+          ],
+          [
+            0.163414784,
+            0.41974688
+          ],
+          [
+            0.163597323,
+            0.419564475
+          ],
+          [
+            0.163664413,
+            0.419363181
+          ],
+          [
+            0.163669401,
+            0.419253436
+          ],
+          [
+            0.16367111,
+            0.419193655
+          ],
+          [
+            0.16367111,
+            0.418949476
+          ],
+          [
+            0.163666073,
+            0.415889387
+          ],
+          [
+            0.160720121,
+            0.416128249
+          ],
+          [
+            0.159940431,
+            0.418389191
+          ],
+          [
+            0.159926229,
+            0.418431793
+          ],
+          [
+            0.159902915,
+            0.418539036
+          ]
+        ],
+        "notes": "Four Legion tents in one dressed line on a hillside bench, a fire in front of them and a barricade on the track below.",
+        "why": {
+          "what": "The camp holds the tent line, its fire and the levy post. The levy post stands on the track.",
+          "whyHere": "The column holds a track junction off the Gideon road, which lies 165 m east of the camp. Carts for Mile House of the Eagle must pass the junction. Carts for Swampmoth Town to the north must pass it too.",
+          "whySpot": "The camp stands on the level bench on the hillside. The bench lies above the junction.",
+          "whyNeighbours": "The track bends away to the west. The hill rises to the south-west. The tents are out of sight of every neighbouring place.",
+          "playerPurpose": "The camp is hostile. The men ask for a levy on the track. The serjeant parleys before he fights.",
+          "microGeography": "The camp stands on a narrow level bench on a hillside. The ground falls away to the stream and the track below."
+        }
+      }
+    ],
+    "parcels": [
+      {
+        "id": "parcel.the-broke-column.command-tent",
+        "districtId": "district.the-broke-column.the-line",
+        "use": "command",
+        "buildingFamily": "vanilla-legion-tent",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "The command tent heads the tent line. Its open long side faces north, toward the brazier and the track below.",
+        "playerPurpose": [
+          {
+            "kind": "quest-stage",
+            "tier": "major",
+            "socketRef": "socket.the-broke-column.q-scene-the-roster-tree",
+            "note": "The serjeant keeps a Legion duty roster in this tent. Men who still keep it are offered a pardon, if the wording allows one."
+          },
+          {
+            "kind": "quest-stage",
+            "tier": "major",
+            "socketRef": "socket.the-broke-column.q-lq15-anchor-schedules",
+            "note": "The toll office's boat schedules are kept in this tent. The bandits use them to choose which boats to rob."
+          },
+          {
+            "kind": "quest-stage",
+            "tier": "major",
+            "socketRef": "socket.the-broke-column.q-fg07-anchor-pay-book",
+            "note": "The pay book lies on the campaign table, where a quest asks the player to read it."
+          }
+        ],
+        "why": {
+          "what": "This is the serjeant's command tent. A campaign table stands in it. The pay book lies on the table.",
+          "whyHere": "The column keeps its orders, roster and accounts as the Legion taught. The serjeant keeps them in the command tent.",
+          "whySpot": "The tent stands at the west end of the bench, at the head of the line.",
+          "whyNeighbours": "The three sleeping tents stand in line beside the command tent. A brazier burns at the mouth of the command tent.",
+          "playerPurpose": "The serjeant's tent holds the pay book. It also holds the toll office's schedules.",
+          "microGeography": "The tent stands at the west end of the bench. The ground there is levelled for the tent and its brazier."
+        },
+        "assetRef": "vanilla:architecture/tents/largeimperialtent01",
+        "centreUV": [
+          0.16077832,
+          0.418932292
+        ],
+        "yawDeg": 90.0,
+        "pad": {
+          "datumM": 79.258,
+          "apronM": 2.0,
+          "batter": true
+        },
+        "yMeasured": 78.6784,
+        "assembly": [
+          {
+            "id": "bn1",
+            "asset": "vanilla:clutter/civilwar/civilwarbannerimp01",
+            "atM": [
+              0.0436,
+              0.0101
+            ],
+            "yaw": 179.34,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "mined",
+            "mountPair": {
+              "kind": "band",
+              "mountedOn": "bn1-pole",
+              "n": 8
+            },
+            "upM": 3.6285,
+            "host": "bn1-pole",
+            "scale": 1.000025
+          },
+          {
+            "id": "bn1-pole",
+            "asset": "vanilla:clutter/civilwar/civilwarbanner01",
+            "atM": [
+              -1.5,
+              5.5
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "scale": 0.65,
+            "yMeasured": 79.0146
+          },
+          {
+            "id": "c-brazier",
+            "asset": "vanilla:clutter/imperial/impbrazier01",
+            "atM": [
+              -3.9,
+              1.9
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "light",
+            "evidence": "measured",
+            "yMeasured": 79.1921
+          },
+          {
+            "id": "cf-bench",
+            "asset": "vanilla:furniture/farm/farmbench01",
+            "atM": [
+              -3.9,
+              3.6
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 79.221
+          },
+          {
+            "id": "cf-wood",
+            "asset": "vanilla:clutter/firewood/firewoodpilemedium01",
+            "atM": [
+              -0.0,
+              4.1
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 79.1553
+          },
+          {
+            "id": "cmd-chest-armour",
+            "asset": "vanilla:clutter/containers/chest01/chest01",
+            "atM": [
+              1.6,
+              -1.55
+            ],
+            "yaw": 180.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 79.13
+          },
+          {
+            "id": "cmd-chest-arms",
+            "asset": "vanilla:clutter/containers/chest01/chest01",
+            "atM": [
+              1.6,
+              1.65
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 79.13
+          },
+          {
+            "id": "pk-b1",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              5.6,
+              5.3
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 78.2875
+          },
+          {
+            "id": "pk-b2",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              5.6,
+              4.0
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 78.21
+          },
+          {
+            "id": "pk-b3",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              5.6,
+              2.7
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 78.2332
+          },
+          {
+            "id": "pk-b4",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              5.6,
+              1.4
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 78.2414
+          },
+          {
+            "id": "pk-b5",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              5.6,
+              0.1
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 78.2434
+          },
+          {
+            "id": "pk-b6",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              5.6,
+              -1.2
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 78.2375
+          },
+          {
+            "id": "pk-b7",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              5.6,
+              -2.5
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 78.2211
+          },
+          {
+            "id": "pk-b8",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              5.6,
+              -3.8
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 78.2115
+          },
+          {
+            "id": "pk-s1",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              -8.3,
+              6.6
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 76.8702
+          },
+          {
+            "id": "pk-s10",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              3.4,
+              6.6
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 77.8682
+          },
+          {
+            "id": "pk-s11",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              4.7,
+              6.6
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 78.0834
+          },
+          {
+            "id": "pk-s2",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              -7.0,
+              6.6
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 76.8844
+          },
+          {
+            "id": "pk-s3",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              -5.7,
+              6.6
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 77.133
+          },
+          {
+            "id": "pk-s4",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              -4.4,
+              6.6
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 77.3443
+          },
+          {
+            "id": "pk-s5",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              -3.1,
+              6.6
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 77.4522
+          },
+          {
+            "id": "pk-s6",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              -1.8,
+              6.6
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 77.5249
+          },
+          {
+            "id": "pk-s7",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              -0.5,
+              6.6
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 77.5865
+          },
+          {
+            "id": "pk-s8",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              0.8,
+              6.6
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 77.6446
+          },
+          {
+            "id": "pk-s9",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              2.1,
+              6.6
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 77.7054
+          },
+          {
+            "id": "pk-w0",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              -9.6,
+              5.3
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 77.2755
+          },
+          {
+            "id": "sc-shrub1",
+            "asset": "bmv:landscape/plants/bigshrub-b(colorful)",
+            "atM": [
+              11.5,
+              -2.0
+            ],
+            "yaw": 190.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 80.7601
+          }
+        ],
+        "footprint": [
+          [
+            0.160467749,
+            0.418559335
+          ],
+          [
+            0.161059055,
+            0.418563404
+          ],
+          [
+            0.161084823,
+            0.41856476
+          ],
+          [
+            0.161098385,
+            0.418570185
+          ],
+          [
+            0.161102453,
+            0.418576966
+          ],
+          [
+            0.161111947,
+            0.418595953
+          ],
+          [
+            0.161118728,
+            0.418681394
+          ],
+          [
+            0.161113303,
+            0.419288974
+          ],
+          [
+            0.161106522,
+            0.419307961
+          ],
+          [
+            0.161083467,
+            0.419316099
+          ],
+          [
+            0.161076686,
+            0.419317455
+          ],
+          [
+            0.160489448,
+            0.419328304
+          ],
+          [
+            0.160460968,
+            0.419328304
+          ],
+          [
+            0.160447406,
+            0.419310674
+          ],
+          [
+            0.160444693,
+            0.419280837
+          ],
+          [
+            0.160431131,
+            0.418673256
+          ],
+          [
+            0.160436556,
+            0.418637995
+          ],
+          [
+            0.160450118,
+            0.418576966
+          ],
+          [
+            0.160450118,
+            0.41857561
+          ],
+          [
+            0.160454187,
+            0.418563404
+          ]
+        ],
+        "worksWith": [
+          "parcel.the-broke-column.tent-1"
+        ],
+        "worksWithWhy": "The command tent heads the line. The first squad's tent stands at its side, within call. Legion camps in Skyrim use the same spacing.",
+        "scale": 1.0
+      },
+      {
+        "id": "parcel.the-broke-column.tent-1",
+        "districtId": "district.the-broke-column.the-line",
+        "use": "barracks",
+        "buildingFamily": "vanilla-legion-tent",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "The first sleeping tent's open gable faces north, toward the line walk. It is dressed on the command tent.",
+        "why": {
+          "what": "This is the first sleeping tent of the line. It stands next to the serjeant's tent.",
+          "whyHere": "The column sleeps under issue canvas. Each squad has one tent, as the Legion taught.",
+          "whySpot": "The tent stands beside the command tent on the bench. The men levelled this ground first.",
+          "whyNeighbours": "The command tent heads the line. The brazier stands beyond the command tent.",
+          "playerPurpose": "The first squad of the column keeps its kit here. The first squad of the column keeps its kit here.",
+          "microGeography": "The tent has a levelled canvas floor. It stands on the bench beside the command tent."
+        },
+        "assetRef": "vanilla:architecture/tents/smallimperialtent",
+        "centreUV": [
+          0.161795476,
+          0.419067912
+        ],
+        "yawDeg": 90.0,
+        "pad": {
+          "datumM": 79.403,
+          "apronM": 0.8,
+          "batter": true
+        },
+        "yMeasured": 78.923,
+        "footprint": [
+          [
+            0.161965002,
+            0.418861769
+          ],
+          [
+            0.16196907,
+            0.418863125
+          ],
+          [
+            0.161970427,
+            0.418864481
+          ],
+          [
+            0.161971783,
+            0.418871262
+          ],
+          [
+            0.161974495,
+            0.41888618
+          ],
+          [
+            0.161974495,
+            0.418891605
+          ],
+          [
+            0.161975852,
+            0.418949922
+          ],
+          [
+            0.161975852,
+            0.419185902
+          ],
+          [
+            0.161974495,
+            0.419233369
+          ],
+          [
+            0.161973139,
+            0.419263206
+          ],
+          [
+            0.161970427,
+            0.419271343
+          ],
+          [
+            0.16196907,
+            0.419272699
+          ],
+          [
+            0.161965002,
+            0.419274055
+          ],
+          [
+            0.161628663,
+            0.419269987
+          ],
+          [
+            0.161621882,
+            0.419267274
+          ],
+          [
+            0.161621882,
+            0.419267274
+          ],
+          [
+            0.161619169,
+            0.419264562
+          ],
+          [
+            0.161616457,
+            0.419249644
+          ],
+          [
+            0.161616457,
+            0.419244219
+          ],
+          [
+            0.161616457,
+            0.418953991
+          ],
+          [
+            0.161617813,
+            0.418920085
+          ],
+          [
+            0.161617813,
+            0.418891605
+          ],
+          [
+            0.161617813,
+            0.418872618
+          ],
+          [
+            0.161620525,
+            0.418867193
+          ],
+          [
+            0.161621882,
+            0.418867193
+          ],
+          [
+            0.161630019,
+            0.418865837
+          ]
+        ],
+        "worksWith": [
+          "parcel.the-broke-column.command-tent",
+          "parcel.the-broke-column.tent-2"
+        ],
+        "worksWithWhy": "The tent is pitched beside the command tent and the middle tent. All three stand in one dressed line, as Legion camps in Skyrim are pitched. The mined line template is vanilla:t0224. The template sets small tents 4.13 m apart at one yaw.",
+        "assembly": [
+          {
+            "id": "pk-b10",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              4.6,
+              1.1
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 78.3768
+          },
+          {
+            "id": "pk-b11",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              4.6,
+              -0.2
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 78.4628
+          },
+          {
+            "id": "pk-b12",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              4.6,
+              -1.5
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 78.4887
+          },
+          {
+            "id": "pk-b9",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              4.6,
+              2.4
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 78.2313
+          },
+          {
+            "id": "pk-w1",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              -10.6,
+              11.5
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 77.6115
+          },
+          {
+            "id": "pk-w10",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              -10.6,
+              -0.2
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 76.2664
+          },
+          {
+            "id": "pk-w11",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              -10.6,
+              -1.5
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 76.115
+          },
+          {
+            "id": "pk-w12",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              -10.6,
+              -2.8
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 75.9764
+          },
+          {
+            "id": "pk-w2",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              -10.6,
+              10.2
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 77.8845
+          },
+          {
+            "id": "pk-w3",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              -10.6,
+              8.9
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 78.1281
+          },
+          {
+            "id": "pk-w4",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              -10.6,
+              7.6
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 77.7279
+          },
+          {
+            "id": "pk-w5",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              -10.6,
+              6.3
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 77.5325
+          },
+          {
+            "id": "pk-w6",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              -10.6,
+              5.0
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 77.4415
+          },
+          {
+            "id": "pk-w7",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              -10.6,
+              3.7
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 77.0347
+          },
+          {
+            "id": "pk-w8",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              -10.6,
+              2.4
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 76.6017
+          },
+          {
+            "id": "pk-w9",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              -10.6,
+              1.1
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 76.4291
+          },
+          {
+            "id": "sc-gorse1",
+            "asset": "bmv:landscape/trees/ztgorsebush02lightyellow",
+            "atM": [
+              11.5,
+              -1.0
+            ],
+            "yaw": 290.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 79.7311
+          },
+          {
+            "id": "sc-shrub7",
+            "asset": "bmv:landscape/plants/bigshrub-b(colorful)",
+            "atM": [
+              17.0,
+              1.5
+            ],
+            "yaw": 110.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 81.6144
+          },
+          {
+            "id": "t1-lantern",
+            "asset": "vanilla:clutter/common/candlelanternwithcandle01",
+            "atM": [
+              -2.75,
+              1.05
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "light",
+            "evidence": "measured",
+            "yMeasured": 79.2783
+          },
+          {
+            "id": "t1-sack",
+            "asset": "vanilla:clutter/containers/miscsacklarge",
+            "atM": [
+              -2.0,
+              -2.3
+            ],
+            "yaw": 290.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 79.6329
+          }
+        ],
+        "scale": 1.0
+      },
+      {
+        "id": "parcel.the-broke-column.tent-2",
+        "districtId": "district.the-broke-column.the-line",
+        "use": "barracks",
+        "buildingFamily": "vanilla-legion-tent",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "The middle tent's open gable faces north. It stands square to the camp path that ends at it.",
+        "why": {
+          "what": "This is the middle sleeping tent. It stands at the head of the camp path.",
+          "whyHere": "This is the second squad's canvas. It is pitched to the same line and the same yaw as the first tent.",
+          "whySpot": "The tent stands in the middle of the bench. The camp path comes up from the track at this point.",
+          "whyNeighbours": "Tents stand on either side of it. The camp path lies in front of it.",
+          "playerPurpose": "This sleeping tent stands at the head of the camp path. It is the first tent that a player reaches.",
+          "microGeography": "The tent has a levelled canvas floor. It stands in the middle of the line."
+        },
+        "assetRef": "vanilla:architecture/tents/smallimperialtent",
+        "centreUV": [
+          0.162405769,
+          0.419067912
+        ],
+        "yawDeg": 90.0,
+        "pad": {
+          "datumM": 79.477,
+          "apronM": 0.8,
+          "batter": true
+        },
+        "yMeasured": 78.997,
+        "footprint": [
+          [
+            0.162575295,
+            0.418861769
+          ],
+          [
+            0.162579363,
+            0.418863125
+          ],
+          [
+            0.16258072,
+            0.418864481
+          ],
+          [
+            0.162582076,
+            0.418871262
+          ],
+          [
+            0.162584788,
+            0.41888618
+          ],
+          [
+            0.162584788,
+            0.418891605
+          ],
+          [
+            0.162586145,
+            0.418949922
+          ],
+          [
+            0.162586145,
+            0.419185902
+          ],
+          [
+            0.162584788,
+            0.419233369
+          ],
+          [
+            0.162583432,
+            0.419263206
+          ],
+          [
+            0.16258072,
+            0.419271343
+          ],
+          [
+            0.162579363,
+            0.419272699
+          ],
+          [
+            0.162575295,
+            0.419274055
+          ],
+          [
+            0.162238956,
+            0.419269987
+          ],
+          [
+            0.162232175,
+            0.419267274
+          ],
+          [
+            0.162232175,
+            0.419267274
+          ],
+          [
+            0.162229462,
+            0.419264562
+          ],
+          [
+            0.16222675,
+            0.419249644
+          ],
+          [
+            0.16222675,
+            0.419244219
+          ],
+          [
+            0.16222675,
+            0.418953991
+          ],
+          [
+            0.162228106,
+            0.418920085
+          ],
+          [
+            0.162228106,
+            0.418891605
+          ],
+          [
+            0.162228106,
+            0.418872618
+          ],
+          [
+            0.162230818,
+            0.418867193
+          ],
+          [
+            0.162232175,
+            0.418867193
+          ],
+          [
+            0.162240312,
+            0.418865837
+          ]
+        ],
+        "worksWith": [
+          "parcel.the-broke-column.tent-1",
+          "parcel.the-broke-column.tent-3"
+        ],
+        "worksWithWhy": "The tent stands in the middle of the dressed line. It is a tent's width from its neighbours on either side. Legion camps in Skyrim use the same spacing.",
+        "assembly": [
+          {
+            "id": "pk-b13",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              4.6,
+              1.7
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 78.5561
+          },
+          {
+            "id": "pk-b14",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              4.6,
+              0.4
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 78.6283
+          },
+          {
+            "id": "pk-b15",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              4.6,
+              -0.9
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 78.5633
+          },
+          {
+            "id": "pk-g1",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              -10.4,
+              -0.1
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 75.8614
+          },
+          {
+            "id": "sc-gorse4",
+            "asset": "bmv:landscape/trees/ztgorsebush02lightyellow",
+            "atM": [
+              16.5,
+              0.0
+            ],
+            "yaw": 345.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 78.5012
+          },
+          {
+            "id": "sc-shrub2",
+            "asset": "bmv:landscape/plants/bigshrub-b(colorful)",
+            "atM": [
+              10.0,
+              -3.0
+            ],
+            "yaw": 305.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 79.3927
+          },
+          {
+            "id": "t2-barrel",
+            "asset": "vanilla:clutter/barrel01",
+            "atM": [
+              -2.0,
+              -2.0
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 79.5407
+          },
+          {
+            "id": "t2-lantern",
+            "asset": "vanilla:clutter/common/candlelanternwithcandle01",
+            "atM": [
+              -2.75,
+              1.05
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "light",
+            "evidence": "measured",
+            "yMeasured": 79.3584
+          }
+        ],
+        "scale": 1.0
+      },
+      {
+        "id": "parcel.the-broke-column.tent-3",
+        "districtId": "district.the-broke-column.the-line",
+        "use": "barracks",
+        "buildingFamily": "vanilla-legion-tent",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "The last tent's open gable faces north, toward the barricade below. It is the last of the line.",
+        "why": {
+          "what": "This is the last sleeping tent. It stands at the east end of the line, by the banner.",
+          "whyHere": "This is the third squad's canvas. The line ends here because the bench ends here.",
+          "whySpot": "The tent stands at the east end of the bench. The ground starts to fall to the stream there.",
+          "whyNeighbours": "The banner stands beyond the tent. The levy post stands below on the track.",
+          "playerPurpose": "This is the last sleeping tent, nearest the barricade. The men sleep here after their turn on watch.",
+          "microGeography": "The tent has a levelled canvas floor. It stands at the east end of the bench, above the camp path."
+        },
+        "assetRef": "vanilla:architecture/tents/smallimperialtent",
+        "centreUV": [
+          0.162948251,
+          0.419067912
+        ],
+        "yawDeg": 90.0,
+        "pad": {
+          "datumM": 79.576,
+          "apronM": 0.8,
+          "batter": true
+        },
+        "yMeasured": 79.096,
+        "footprint": [
+          [
+            0.163117777,
+            0.418861769
+          ],
+          [
+            0.163121845,
+            0.418863125
+          ],
+          [
+            0.163123202,
+            0.418864481
+          ],
+          [
+            0.163124558,
+            0.418871262
+          ],
+          [
+            0.16312727,
+            0.41888618
+          ],
+          [
+            0.16312727,
+            0.418891605
+          ],
+          [
+            0.163128627,
+            0.418949922
+          ],
+          [
+            0.163128627,
+            0.419185902
+          ],
+          [
+            0.16312727,
+            0.419233369
+          ],
+          [
+            0.163125914,
+            0.419263206
+          ],
+          [
+            0.163123202,
+            0.419271343
+          ],
+          [
+            0.163121845,
+            0.419272699
+          ],
+          [
+            0.163117777,
+            0.419274055
+          ],
+          [
+            0.162781438,
+            0.419269987
+          ],
+          [
+            0.162774657,
+            0.419267274
+          ],
+          [
+            0.162774657,
+            0.419267274
+          ],
+          [
+            0.162771944,
+            0.419264562
+          ],
+          [
+            0.162769232,
+            0.419249644
+          ],
+          [
+            0.162769232,
+            0.419244219
+          ],
+          [
+            0.162769232,
+            0.418953991
+          ],
+          [
+            0.162770588,
+            0.418920085
+          ],
+          [
+            0.162770588,
+            0.418891605
+          ],
+          [
+            0.162770588,
+            0.418872618
+          ],
+          [
+            0.1627733,
+            0.418867193
+          ],
+          [
+            0.162774657,
+            0.418867193
+          ],
+          [
+            0.162782794,
+            0.418865837
+          ]
+        ],
+        "worksWith": [
+          "parcel.the-broke-column.tent-2"
+        ],
+        "worksWithWhy": "The tent ends the dressed line. It is pitched at the line's spacing from the middle tent. The bench ends a few steps further east.",
+        "assembly": [
+          {
+            "id": "bn2",
+            "asset": "vanilla:clutter/civilwar/civilwarbannerimp01",
+            "atM": [
+              0.0436,
+              0.0101
+            ],
+            "yaw": 179.34,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "mined",
+            "mountPair": {
+              "kind": "band",
+              "mountedOn": "bn2-pole",
+              "n": 8
+            },
+            "upM": 3.6285,
+            "host": "bn2-pole",
+            "scale": 1.000025
+          },
+          {
+            "id": "bn2-pole",
+            "asset": "vanilla:clutter/civilwar/civilwarbanner01",
+            "atM": [
+              -3.4,
+              -3.5
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "scale": 0.65,
+            "yMeasured": 79.5794
+          },
+          {
+            "id": "lv-barricade",
+            "asset": "vanilla:clutter/stockade/stockadebarricade/stockadebarricade01",
+            "atM": [
+              -16.0,
+              -10.3
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 73.732
+          },
+          {
+            "id": "pk-b16",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              4.6,
+              1.8
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 78.4658
+          },
+          {
+            "id": "pk-b17",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              4.6,
+              0.5
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 78.2891
+          },
+          {
+            "id": "pk-b18",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              4.6,
+              -0.8
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 78.0271
+          },
+          {
+            "id": "pk-b19",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              4.6,
+              -2.1
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 77.753
+          },
+          {
+            "id": "pk-b20",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              4.6,
+              -3.4
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 77.439
+          },
+          {
+            "id": "pk-b21",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              4.6,
+              -4.7
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 77.2784
+          },
+          {
+            "id": "pk-b22",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              4.6,
+              -6.0
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 77.1846
+          },
+          {
+            "id": "pk-e1",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              -9.6,
+              -0.9
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 75.7613
+          },
+          {
+            "id": "pk-e2",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              -9.6,
+              -2.2
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 75.7039
+          },
+          {
+            "id": "pk-e3",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              -9.6,
+              -3.5
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 75.6593
+          },
+          {
+            "id": "pk-e4",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              -9.6,
+              -4.8
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 75.6304
+          },
+          {
+            "id": "pk-e5",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              -9.6,
+              -6.1
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 75.6178
+          },
+          {
+            "id": "pk-e6",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              -9.6,
+              -7.4
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 75.6175
+          },
+          {
+            "id": "pk-n1",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              -8.3,
+              -7.4
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 76.0095
+          },
+          {
+            "id": "pk-n10",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              3.4,
+              -7.4
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 77.2195
+          },
+          {
+            "id": "pk-n2",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              -7.0,
+              -7.4
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 76.399
+          },
+          {
+            "id": "pk-n3",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              -5.7,
+              -7.4
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 77.1791
+          },
+          {
+            "id": "pk-n4",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              -4.4,
+              -7.4
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 78.4273
+          },
+          {
+            "id": "pk-n5",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              -3.1,
+              -7.4
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 78.2083
+          },
+          {
+            "id": "pk-n6",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              -1.8,
+              -7.4
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 77.998
+          },
+          {
+            "id": "pk-n7",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              -0.5,
+              -7.4
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 77.7667
+          },
+          {
+            "id": "pk-n8",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              0.8,
+              -7.4
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 77.6072
+          },
+          {
+            "id": "pk-n9",
+            "asset": "vanilla:clutter/stockade/stockadepike01",
+            "atM": [
+              2.1,
+              -7.4
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 77.4056
+          },
+          {
+            "id": "s-board1",
+            "asset": "bmv:roadsignmedium01l",
+            "atM": [
+              0.0,
+              0.0
+            ],
+            "yaw": 135.0,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "points",
+              "mountedOn": "s-post",
+              "n": 2
+            },
+            "upM": 1.922,
+            "host": "s-post"
+          },
+          {
+            "id": "s-board2",
+            "asset": "bmv:roadsignmedium01r",
+            "atM": [
+              0.0,
+              0.0
+            ],
+            "yaw": 306.0,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "points",
+              "mountedOn": "s-post",
+              "n": 1
+            },
+            "upM": 2.5099,
+            "host": "s-post"
+          },
+          {
+            "id": "s-post",
+            "asset": "vanilla:clutter/signage/roadsigns/roadsignpost",
+            "atM": [
+              -21.75,
+              -21.75
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 71.9911,
+            "pad": {
+              "datumM": 72.286,
+              "apronM": 0.6
+            }
+          },
+          {
+            "id": "sc-gorse2",
+            "asset": "bmv:landscape/trees/ztgorsebush02lightyellow",
+            "atM": [
+              8.0,
+              -5.3
+            ],
+            "yaw": 50.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 76.7703
+          },
+          {
+            "id": "sc-gorse3",
+            "asset": "bmv:landscape/trees/ztgorsebush02lightyellow",
+            "atM": [
+              -1.5,
+              -12.5
+            ],
+            "yaw": 160.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 77.3908
+          },
+          {
+            "id": "sc-gorse5",
+            "asset": "bmv:landscape/trees/ztgorsebush02lightyellow",
+            "atM": [
+              15.0,
+              -4.0
+            ],
+            "yaw": 220.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 75.8952
+          },
+          {
+            "id": "sc-gorse6",
+            "asset": "bmv:landscape/trees/ztgorsebush02lightyellow",
+            "atM": [
+              -11.0,
+              -19.0
+            ],
+            "yaw": 310.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 73.8525
+          },
+          {
+            "id": "sc-gorse7",
+            "asset": "bmv:landscape/trees/ztgorsebush02lightyellow",
+            "atM": [
+              11.5,
+              -9.5
+            ],
+            "yaw": 200.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 76.2207
+          },
+          {
+            "id": "sc-gorse8",
+            "asset": "bmv:landscape/trees/ztgorsebush02lightyellow",
+            "atM": [
+              9.0,
+              -16.0
+            ],
+            "yaw": 80.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 75.0664
+          },
+          {
+            "id": "sc-shrub10",
+            "asset": "bmv:landscape/plants/bigshrub-b(colorful)",
+            "atM": [
+              7.5,
+              -17.0
+            ],
+            "yaw": 20.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 75.7007
+          },
+          {
+            "id": "sc-shrub11",
+            "asset": "bmv:landscape/plants/bigshrub-b(colorful)",
+            "atM": [
+              11.0,
+              -15.0
+            ],
+            "yaw": 67.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 76.0631
+          },
+          {
+            "id": "sc-shrub12",
+            "asset": "bmv:landscape/plants/bigshrub-b(colorful)",
+            "atM": [
+              13.0,
+              -9.5
+            ],
+            "yaw": 114.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 76.9569
+          },
+          {
+            "id": "sc-shrub13",
+            "asset": "bmv:landscape/plants/bigshrub-b(colorful)",
+            "atM": [
+              14.0,
+              0.0
+            ],
+            "yaw": 161.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 78.6818
+          },
+          {
+            "id": "sc-shrub14",
+            "asset": "bmv:landscape/plants/bigshrub-b(colorful)",
+            "atM": [
+              15.0,
+              9.5
+            ],
+            "yaw": 208.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 81.6383
+          },
+          {
+            "id": "sc-shrub15",
+            "asset": "bmv:landscape/plants/bigshrub-b(colorful)",
+            "atM": [
+              13.5,
+              17.5
+            ],
+            "yaw": 255.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 80.8876
+          },
+          {
+            "id": "sc-shrub16",
+            "asset": "bmv:landscape/plants/bigshrub-b(colorful)",
+            "atM": [
+              -2.0,
+              -21.0
+            ],
+            "yaw": 302.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 75.8069
+          },
+          {
+            "id": "sc-shrub17",
+            "asset": "bmv:landscape/plants/bigshrub-b(colorful)",
+            "atM": [
+              1.5,
+              -15.0
+            ],
+            "yaw": 349.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 77.0035
+          },
+          {
+            "id": "sc-shrub18",
+            "asset": "bmv:landscape/plants/bigshrub-b(colorful)",
+            "atM": [
+              10.5,
+              -8.0
+            ],
+            "yaw": 36.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 77.5748
+          },
+          {
+            "id": "sc-shrub19",
+            "asset": "bmv:landscape/plants/bigshrub-b(colorful)",
+            "atM": [
+              11.0,
+              11.5
+            ],
+            "yaw": 83.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 81.6553
+          },
+          {
+            "id": "sc-shrub20",
+            "asset": "bmv:landscape/plants/bigshrub-b(colorful)",
+            "atM": [
+              -15.5,
+              -17.5
+            ],
+            "yaw": 250.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 74.313
+          },
+          {
+            "id": "sc-shrub21",
+            "asset": "bmv:landscape/plants/bigshrub-b(colorful)",
+            "atM": [
+              -11.5,
+              -21.0
+            ],
+            "yaw": 303.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 74.0457
+          },
+          {
+            "id": "sc-shrub22",
+            "asset": "bmv:landscape/plants/bigshrub-b(colorful)",
+            "atM": [
+              -20.0,
+              -15.5
+            ],
+            "yaw": 356.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 73.4926
+          },
+          {
+            "id": "sc-shrub23",
+            "asset": "bmv:landscape/plants/bigshrub-b(colorful)",
+            "atM": [
+              -6.5,
+              -22.0
+            ],
+            "yaw": 49.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 74.8961
+          },
+          {
+            "id": "sc-shrub24",
+            "asset": "bmv:landscape/plants/bigshrub-b(colorful)",
+            "atM": [
+              -21.0,
+              -19.5
+            ],
+            "yaw": 102.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 72.757
+          },
+          {
+            "id": "sc-shrub3",
+            "asset": "bmv:landscape/plants/bigshrub-b(colorful)",
+            "atM": [
+              5.0,
+              -11.5
+            ],
+            "yaw": 70.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 77.6023
+          },
+          {
+            "id": "sc-shrub4",
+            "asset": "bmv:landscape/plants/bigshrub-b(colorful)",
+            "atM": [
+              -7.5,
+              -12.0
+            ],
+            "yaw": 5.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 77.9175
+          },
+          {
+            "id": "sc-shrub5",
+            "asset": "bmv:landscape/plants/bigshrub-b(colorful)",
+            "atM": [
+              2.0,
+              -18.5
+            ],
+            "yaw": 130.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 76.2029
+          },
+          {
+            "id": "sc-shrub6",
+            "asset": "bmv:landscape/plants/bigshrub-b(colorful)",
+            "atM": [
+              -4.0,
+              -20.5
+            ],
+            "yaw": 40.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 75.9584
+          },
+          {
+            "id": "sc-shrub8",
+            "asset": "bmv:landscape/plants/bigshrub-b(colorful)",
+            "atM": [
+              -10.0,
+              -16.5
+            ],
+            "yaw": 286.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 77.1776
+          },
+          {
+            "id": "sc-shrub9",
+            "asset": "bmv:landscape/plants/bigshrub-b(colorful)",
+            "atM": [
+              -4.5,
+              -17.5
+            ],
+            "yaw": 333.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 77.302
+          },
+          {
+            "id": "t3-lantern",
+            "asset": "vanilla:clutter/common/candlelanternwithcandle01",
+            "atM": [
+              -2.75,
+              -1.05
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "light",
+            "evidence": "measured",
+            "yMeasured": 79.4714
+          }
+        ],
+        "scale": 1.0
+      }
+    ],
+    "doors": [],
+    "routes": [
+      {
+        "id": "route.the-broke-column.camp-path",
+        "kind": "track",
+        "routing": "straight",
+        "widthM": 2.5,
+        "endsAt": [
+          "parcel.the-broke-column.tent-3"
+        ],
+        "why": "A trodden way climbs from the Mile House track to the end of the tent line. Travellers must use this path to enter the camp.",
+        "via": [
+          [
+            0.161117372,
+            0.416640302
+          ],
+          [
+            0.163124558,
+            0.416477557
+          ],
+          [
+            0.162812631,
+            0.417643895
+          ],
+          [
+            0.162880441,
+            0.418118567
+          ],
+          [
+            0.162948251,
+            0.418769547
+          ]
+        ],
+        "points": [
+          [
+            0.161117372,
+            0.416640302
+          ],
+          [
+            0.163124558,
+            0.416477557
+          ],
+          [
+            0.162812631,
+            0.417643895
+          ],
+          [
+            0.162949396,
+            0.418863814
+          ]
+        ]
+      },
+      {
+        "id": "route.the-broke-column.line-walk",
+        "kind": "footpath",
+        "routing": "straight",
+        "widthM": 1.2,
+        "endsAt": [
+          "parcel.the-broke-column.tent-3",
+          "parcel.the-broke-column.tent-2",
+          "parcel.the-broke-column.tent-1",
+          "parcel.the-broke-column.command-tent"
+        ],
+        "why": "The line walk runs along the front of the tent line. It runs from the camp path to the mouth of the command tent.",
+        "via": [
+          [
+            0.162948251,
+            0.41866105
+          ],
+          [
+            0.162405769,
+            0.41859324
+          ],
+          [
+            0.161795476,
+            0.41859324
+          ],
+          [
+            0.161334365,
+            0.41852543
+          ],
+          [
+            0.161036,
+            0.418308436
+          ],
+          [
+            0.160927503,
+            0.418471181
+          ]
+        ],
+        "points": [
+          [
+            0.162950713,
+            0.418863798
+          ],
+          [
+            0.162405769,
+            0.41859324
+          ],
+          [
+            0.161334365,
+            0.41852543
+          ],
+          [
+            0.161036,
+            0.418308436
+          ],
+          [
+            0.162228106,
+            0.418872618
+          ]
+        ]
+      },
+      {
+        "id": "route.the-broke-column.tent-1-step",
+        "kind": "footpath",
+        "routing": "straight",
+        "widthM": 1.2,
+        "endsAt": [
+          "parcel.the-broke-column.tent-1"
+        ],
+        "why": "A short step leaves the line walk. It leads to the mouth of the first sleeping tent.",
+        "via": [
+          [
+            0.161795476,
+            0.41859324
+          ],
+          [
+            0.161795476,
+            0.418769547
+          ]
+        ],
+        "points": [
+          [
+            0.161795476,
+            0.41859324
+          ],
+          [
+            0.161796621,
+            0.418863814
+          ]
+        ]
+      },
+      {
+        "id": "route.the-broke-column.tent-2-step",
+        "kind": "footpath",
+        "routing": "straight",
+        "widthM": 1.2,
+        "endsAt": [
+          "parcel.the-broke-column.tent-2"
+        ],
+        "why": "A short step leaves the line walk. It leads to the mouth of the middle sleeping tent.",
+        "via": [
+          [
+            0.162405769,
+            0.41859324
+          ],
+          [
+            0.162405769,
+            0.418769547
+          ]
+        ],
+        "points": [
+          [
+            0.162405769,
+            0.41859324
+          ],
+          [
+            0.162406914,
+            0.418863814
+          ]
+        ]
+      }
+    ],
+    "canals": [],
+    "boardwalks": [],
+    "fences": [],
+    "docks": [],
+    "landmarks": [],
+    "questSockets": [
+      {
+        "id": "socket.the-broke-column.q-scene-the-roster-tree",
+        "kind": "scene",
+        "socketRef": "scene.the-broke-column.the-roster-tree",
+        "position": [
+          0.162568513,
+          0.41787445
+        ],
+        "parcel": "parcel.the-broke-column.command-tent"
+      },
+      {
+        "id": "socket.the-broke-column.q-fg07-anchor-pay-book",
+        "kind": "evidence",
+        "socketRef": "evidence.the-broke-column.the-pay-book",
+        "position": [
+          0.16077832,
+          0.418932292
+        ],
+        "parcel": "parcel.the-broke-column.command-tent"
+      },
+      {
+        "id": "socket.the-broke-column.q-lq15-anchor-schedules",
+        "kind": "evidence",
+        "socketRef": "evidence.the-broke-column.the-pay-book",
+        "position": [
+          0.16071051,
+          0.41898654
+        ],
+        "parcel": "parcel.the-broke-column.command-tent"
+      }
+    ],
+    "travelServices": [],
+    "occupants": [
+      {
+        "slotId": "n1",
+        "ladderRef": "hostile-d3 boss",
+        "cultureRole": "The serjeant parleys before he fights.",
+        "worksAt": "parcel.the-broke-column.command-tent",
+        "livesAt": "parcel.the-broke-column.command-tent",
+        "ownerFaction": "faction.imperial-legion-remnant"
+      },
+      {
+        "slotId": "n2",
+        "ladderRef": "hostile-d2 rank-and-file",
+        "cultureRole": "The band are the column's surviving descendants.",
+        "worksAt": "parcel.the-broke-column.tent-3",
+        "livesAt": "parcel.the-broke-column.tent-1",
+        "ownerFaction": "faction.imperial-legion-remnant"
+      }
+    ],
+    "approaches": [
+      {
+        "id": "approach.the-broke-column.from-mile-house",
+        "mode": "walk",
+        "firstSeen": "parcel.the-broke-column.command-tent",
+        "viaUV": [
+          [
+            0.161117,
+            0.41664
+          ]
+        ],
+        "sequence": "A traveller coming east along the track sees the banners on the hill first. Next the tent line comes into view. Last comes the barricade, which blocks half the track below the tents.",
+        "wayfinding": "The track runs under the bench. A footpath climbs from the barricade to the fire.",
+        "fromDirection": "west"
+      },
+      {
+        "id": "approach.the-broke-column.from-swampmoth",
+        "mode": "walk",
+        "firstSeen": "parcel.the-broke-column.tent-3",
+        "viaUV": [
+          [
+            0.166134,
+            0.415891
+          ]
+        ],
+        "sequence": "A traveller coming down the track from the north reaches the stream. The barricade stands at the junction ahead. The tents stand above it on the right.",
+        "wayfinding": "The junction lies at the stream. The barricade stands a few steps west of the junction.",
+        "fromDirection": "north"
+      }
+    ],
+    "networkTerminals": [
+      {
+        "id": "terminal.the-broke-column.mile-house-track",
+        "routeId": "track.imperial-fringe.mile-house-of-the-eagle",
+        "entryUV": [
+          0.161117372,
+          0.416640302
+        ],
+        "wayId": "route.the-broke-column.camp-path",
+        "kind": "footpath",
+        "why": "The camp path leaves the Mile House track below the bench. It runs east along the track to the end of the barricade. It then climbs through the gap in the stakes to the tent line."
+      }
+    ],
+    "combatSpaces": [
+      {
+        "id": "combat.the-broke-column.the-fire",
+        "aroundIds": [
+          "parcel.the-broke-column.command-tent",
+          "parcel.the-broke-column.tent-1",
+          "parcel.the-broke-column.tent-2",
+          "parcel.the-broke-column.tent-3"
+        ],
+        "clearanceClass": "open",
+        "why": "The trodden ground lies between the tent line and the fire. The level ground on the hillside lies here.",
+        "boundary": [
+          [
+            0.159887722,
+            0.418637792
+          ],
+          [
+            0.159902759,
+            0.419311488
+          ],
+          [
+            0.159921412,
+            0.419516624
+          ],
+          [
+            0.160193854,
+            0.419870787
+          ],
+          [
+            0.160494459,
+            0.419870787
+          ],
+          [
+            0.161087462,
+            0.419859831
+          ],
+          [
+            0.163211415,
+            0.419814669
+          ],
+          [
+            0.163414784,
+            0.41974688
+          ],
+          [
+            0.163597323,
+            0.419564475
+          ],
+          [
+            0.163664413,
+            0.419363181
+          ],
+          [
+            0.163669401,
+            0.419253436
+          ],
+          [
+            0.16367111,
+            0.419193655
+          ],
+          [
+            0.16367111,
+            0.418944148
+          ],
+          [
+            0.163668713,
+            0.418831549
+          ],
+          [
+            0.163657442,
+            0.418769552
+          ],
+          [
+            0.163622922,
+            0.418596929
+          ],
+          [
+            0.163414784,
+            0.418388944
+          ],
+          [
+            0.163243743,
+            0.418331931
+          ],
+          [
+            0.161138403,
+            0.418024346
+          ],
+          [
+            0.161075184,
+            0.418021019
+          ],
+          [
+            0.160389949,
+            0.418016304
+          ],
+          [
+            0.160028595,
+            0.418124721
+          ],
+          [
+            0.159926229,
+            0.418431793
+          ],
+          [
+            0.159902915,
+            0.418539036
+          ]
+        ]
+      }
+    ],
+    "clearance": {
+      "hardClear": [],
+      "thinned": [],
+      "kept": []
+    },
+    "variants": [
+      {
+        "id": "variant.the-broke-column.base",
+        "changedRefs": [],
+        "serviceOverrides": {},
+        "ambience": "camp"
+      },
+      {
+        "id": "variant.the-broke-column.toll-watch",
+        "changedRefs": [],
+        "serviceOverrides": {},
+        "scheduleOverrides": {
+          "npc.imperial-fringe.the-broke-column.n1": "socket.the-broke-column.q-watch-toll-road"
+        },
+        "ambience": "camp"
+      }
+    ],
+    "scaleGrounding": {
+      "loreSource": "The source is the catalogue record The Broke Column (camp, M1). The record gives four Legion tents pitched in a line.",
+      "population": "8-12",
+      "households": 0,
+      "buildingsPlanned": 4,
+      "npcsPlanned": 2,
+      "why": "One command tent and three sleeping tents make up the camp. They house a serjeant and what is left of a column."
+    },
+    "siting": {
+      "dossier": "world/sources/sites/dossiers/the-broke-column.json",
+      "candidates": [
+        {
+          "id": "candidate.the-broke-column.the-bench",
+          "positionM": [
+            1195.0,
+            3088.0
+          ],
+          "chosen": true,
+          "why": "A bench stands on the hillside above the track junction. An 8 m pad there cuts and fills at most half a metre."
+        },
+        {
+          "id": "candidate.the-broke-column.plotted-anchor",
+          "positionM": [
+            1231.1,
+            3073.5
+          ],
+          "why": "This candidate is the plotted anchor. It lies on the stream at the track junction.",
+          "rejectedBecause": "The builder rejected it. It lies on the stream at the track junction. The ground is wet and poorly drained."
+        }
+      ]
+    },
+    "macroEvidence": [
+      {
+        "sourcePaths": [
+          "assetPlan",
+          "contents",
+          "contents.npcs[n1]",
+          "contents.npcs[n2]",
+          "discovery",
+          "eraLayers",
+          "hostility",
+          "ownerFaction",
+          "playerPurpose",
+          "questHooks",
+          "relations",
+          "lootTable",
+          "season",
+          "sitingPrefs",
+          "status",
+          "traversalModes",
+          "underwaterAccess",
+          "vibe",
+          "why"
+        ],
+        "evidenceRefs": [
+          "parcel.the-broke-column.command-tent",
+          "parcel.the-broke-column.tent-1",
+          "parcel.the-broke-column.tent-2",
+          "parcel.the-broke-column.tent-3",
+          "approach.the-broke-column.from-mile-house",
+          "approach.the-broke-column.from-swampmoth"
+        ]
+      },
+      {
+        "sourcePaths": [
+          "sockets",
+          "sockets.scene",
+          "sockets.evidence",
+          "questHooks.provisions"
+        ],
+        "evidenceRefs": [
+          "socket.the-broke-column.q-scene-the-roster-tree",
+          "socket.the-broke-column.q-fg07-anchor-pay-book",
+          "socket.the-broke-column.q-lq15-anchor-schedules"
+        ]
+      }
+    ],
+    "budget": {
+      "maxInstances": 120,
+      "maxUniqueMaterials": 60,
+      "maxTextureMB": 32,
+      "maxColliders": 80
+    },
+    "assetConstraints": [],
+    "proseRefs": [
+      {
+        "sourcePath": "causalModel.pressures",
+        "placeRef": "place.imperial-fringe.gideon"
+      },
+      {
+        "sourcePath": "causalModel.siteAdvantages",
+        "placeRef": "place.imperial-fringe.gideon"
+      },
+      {
+        "sourcePath": "causalModel.wouldChangeIf",
+        "placeRef": "place.imperial-fringe.gideon"
+      },
+      {
+        "sourcePath": "districts[0].why.whyHere",
+        "placeRef": "place.imperial-fringe.gideon"
+      },
+      {
+        "sourcePath": "districts[0].why.whyHere",
+        "placeRef": "place.imperial-fringe.mile-house-of-the-eagle"
+      },
+      {
+        "sourcePath": "districts[0].why.whyHere",
+        "placeRef": "place.imperial-fringe.swampmoth-town"
+      }
+    ],
+    "authoredOn": {
+      "wbSchemaVersion": 1,
+      "ground": {
+        "centreM": [
+          1198.0,
+          3084.0
+        ],
+        "halfM": 90.0,
+        "chunks": {
+          "chunk_2_6": "c402ce016241118c4aaf12f5e717db898aed4f02d4a10ad930501e3b94bf1330"
+        },
+        "sha256": "d3745fd7ad9237d5705b7e5bafaa46671244b8575ac347934946561a6091727b"
+      },
+      "kits": {
+        "bmv-treehouse-int": "a3bde3749e75d2bade14e3f57992d5e0c7224fe745f707f6c4f178c64f00b1f8",
+        "camp-v1": "5b75f6f460ed0cdf0908786f5fdbddb85c4ebb3e9fb4bd09be57862cfd387fa0",
+        "enclosure-v1": "ed5e9f5322d895850e616c0af5ed46cbadb51e08b5c636af1ff28c47df2e0fdd",
+        "flora-province-v1": "0ef937d974ac29e0c20057d560413bb7d248a7c78c48d734bf30c9b0b99c6003",
+        "htbm-hut-int": "cdac8da23cedb18893fd4407f97c8dd84df8ccd206888327c791e05776970e2d",
+        "interior-farmhouse-v1": "55298394d5ba20ad0cc7f9f221d5a173fcbf4748b4cf0e6ed4e25e7db40c8bb1",
+        "mudmother-hut-int": "c93688f1dbeea6f5ef17417545b3d9c73e7aa10472529013467ff090aa4724fe",
+        "settlement-imperial-v1": "8c5d34570634e96f1111d3e278ddae66792135a9aa5c6430ebc794f6669d4513",
+        "works-v1": "4b58f4e275990e607d60415c3fc7c1146d5c60b4229f08041fedb898d4be0975"
+      },
+      "layout": {
+        "path": "world/sources/blueprints/the-broke-column.layout.json",
+        "sha256": "ce4f81753bdeda3e86d9331290c5e44c8d3b442a31bd6900c2c396cb2acb3b29",
+        "uidSha256": {
+          "b-command": "2a56a9d6c7b28261c3a0ceb083ffd04b3f72fe116c0437fa1d203c3e92753c58",
+          "b-tent1": "7ed54513e430a7d6b7f5d3f70ed3888f0bdc8f138d1fe79a14c531f922a21796",
+          "b-tent2": "c49546f876d7dbc1c0a41557ae605ef5b9c145e0a39d02ea2a63b5b2639089f0",
+          "b-tent3": "a34b5716c70053b587a8031ce6824f469f62fda9bf8c466e711314e009e86cd5",
+          "bn1": "44abd83d05dcd5f8d2af99743504d35a600b0c832377af60f2a9e53d93e188c8",
+          "bn1-pole": "8fa69dc05f61136f8bafe724d2a64e354c45afff799c9eb27c92d8268bf93d52",
+          "bn2": "b989c722aac510972ff571c599b23b7dca84039bab72805270a954431692de29",
+          "bn2-pole": "c6e5496d13f0efd73f1064ae1df6b8a889af4c6d4825469ff0000a1a5dbd1734",
+          "c-brazier": "8e363e47966c0f9da713f78d429388beb065829fcc4d46121faf25a3a62b6535",
+          "cf-bench": "7807da095e0aef0723a4b00f970ccd9678169b1c7450f52eb92834435bdf877c",
+          "cf-wood": "b892ffa9ba5edb00d22034655823f1a96078e7f26d0481f4d4a56396da0b68f9",
+          "cmd-chest-armour": "6e22842110d05cfa90ddb9d63ecde5d0854748f10c40eaa2bdb72021ab126c2f",
+          "cmd-chest-arms": "9d915ace20a96537794077d740fa45b0b7f0e994b020b2e0a50ecad9dd08720e",
+          "lv-barricade": "76c25b7dd902709975749e92a7e610a174cbb9221e5039535dab28128dae8a18",
+          "pk-b1": "8c047c63f5b32c47969a06ea617937501b37665973e215b1c950669832fffdf4",
+          "pk-b10": "8f627dc00fd007f1acc79413b9b506b4ad5433c7edc9f6bb33226e774ed598b3",
+          "pk-b11": "69d3780b81877b988836d539a741093712f2e2e4d75c8307fd5b20ac8127d2cd",
+          "pk-b12": "6526fa81413eddcf19c281fe83ea7e169855861a444a3c37149032bd01900d78",
+          "pk-b13": "942c67cab29d9c0c8860ce55f9bf6657bd327f01323ecbb7f2021e611aa16a1a",
+          "pk-b14": "069c905e04ed28ce7e543bc25628546aa9edebdef225a55917cf4dc1e26ca173",
+          "pk-b15": "653fd3a94299110ae68f520f10da70222fddcb22805bf19a3b5d30da58d2bf05",
+          "pk-b16": "89c7457913020f9143d62aa8e3d83d720ba4d25c6d0b8ecc616cba754be21d66",
+          "pk-b17": "4ddf277318758b502e668db53d8339fdf404f09724275e3f1eb97773ad91b796",
+          "pk-b18": "5735c9add413c887e6107fbe694d8ba50af00faaa18b32216416d44e8cb66f32",
+          "pk-b19": "d5a72f3b38fec2bc4501a08c47c2cb07f7574c4923a922b27c297ce1d1b83c7a",
+          "pk-b2": "4853f3c7ec3024d82b7c89681e8d1155305f32041b80018a770c3d6af02c07ce",
+          "pk-b20": "87b09fb7dd870d8c7e370dfd7f72954f8c9e9c4b2ffe71b2be725f8887d77c34",
+          "pk-b21": "3116657fc29bb3475775e0f95f4b374c140bc2f40109fef8bb79ee1735b41ebe",
+          "pk-b22": "222c7d52f2f80fd5c21f796a413c613b748647c27a52fe239feb772261690a14",
+          "pk-b3": "e1a78a955dc56686bbbfa9855fcf7e9add930eecb4bac682ceb1c07e11615f9e",
+          "pk-b4": "9a00f81168e07b09776d026018f873a60613afb7fea33726106c3966e4c1817c",
+          "pk-b5": "d9af45bd8f2a3e41a530afecbe3003ae0aa8bdee8d1d9cf52274ae46df1438b2",
+          "pk-b6": "4286b99d9990c70ebb932658bead4ff0230796c942eb0499bb2e661fcddd989f",
+          "pk-b7": "e0a0d61b0cd7b4f53693eea3f192fe6cdd6b866e0cd129198a7af37103bd33a8",
+          "pk-b8": "e94731768c9a21a9ad32b98751f0cdbd7b41217a88b31e85cfe05829162f7589",
+          "pk-b9": "e9275abb3687c00784c4cbd9a365e6ff8afdb6041b02cf4740eecc3026bf8a07",
+          "pk-e1": "0877414f7b7891b2a49e09920b3a7a1d6fd102fe96b975b3dc52f79ca1540a3f",
+          "pk-e2": "f1a40915de24403501ec4ea5352a0a493b126b159a649232fb1d06ed87d21df5",
+          "pk-e3": "708d6b7888f91b3e9bba1f7cef6a28cd74a0a32bf989bdea293a56df097bd5c6",
+          "pk-e4": "d7e788b328295ac91d001f5f43efa186b52152118cc4df351ee7205271090a54",
+          "pk-e5": "59415ef312e78a6f977248b6fa68805542b84665dc207d498dee75a623ced300",
+          "pk-e6": "8e0cb67fe506474aac183801c46d13ea657e1620c07a4992b424255ee5102b89",
+          "pk-g1": "fe0fc6a28899c4deabcfcc3b21be7438ea624df58f211d878e4ac253e3c112e0",
+          "pk-n1": "4f07004c5937e42ddfa91e0e20a8e9785c793b94aa099e49a71af2b531cd20bb",
+          "pk-n10": "5bdc0ef1339fbb96307914e0c0e6e2c60fc6cf9a5ffdf734b483da3a77ab18a6",
+          "pk-n2": "7e495e17b895c2bca8f3d29b515fac9e0d486e4328a4c3f3492d0cae267072c3",
+          "pk-n3": "a202d746a4ebdd0f91c25c77b09013b5a8d0ce0f9ff6efcacc001c4f7f4b519b",
+          "pk-n4": "4cdd7f3a0900b88b8167a782def1e5f2151458ad0f3ab3b4f484fe518f91cb46",
+          "pk-n5": "b676627638f08c9ff3a584c73a497f984a8f544d5cdc78f06c9f052f575a8da2",
+          "pk-n6": "e9c40da516e5666956f650408fb524ff93325856fb526eb0dabe356ac0a4031e",
+          "pk-n7": "58cae43ee0f1ae413a31bcf08d5e5a96c9bbdeb63fd2949144138eceac72e83a",
+          "pk-n8": "efa735356578c73a7dc80169a0a28a1b90d596d4336a70361d7e60f58527160f",
+          "pk-n9": "dcab5b3daa13781981955c98e1df5048183b549fcd5df4181c11bbd3a49c92aa",
+          "pk-s1": "2a82f15120c8f366743ebc924d254da90b5dd428e22ac50bfe83c3c53d7ef1b4",
+          "pk-s10": "09d16847f04f1cd1e4e2e6b7d80c80a94daf99e10a5c9b74e37a724c97b098df",
+          "pk-s11": "d2b605dea3c90a0bd1b69efb492acfc9ea923f7b32785e053a9cd0656d3b1d07",
+          "pk-s2": "65e37ed2e451fded95b55652fc41497348fc8fdcef59b4de04d6074243194328",
+          "pk-s3": "0871589f71e00d3a5ca3f577cf94a74aebea869c72c17b3ef2e7aecf7c6d9fbb",
+          "pk-s4": "805bdee839b9ef62ee2548dffae581c3e074d7e576cf08916c34fe22bc2d82a7",
+          "pk-s5": "108aa0a11b6ef5781a3b52973af23b6bdecfc5a834b9f3cea0907c6099268cce",
+          "pk-s6": "00f295449323be8a6ab6c5ea11ce8472e5b8e5f67fde456ad3468cb3e33b792d",
+          "pk-s7": "15cbcedd7ea356f916bf02e6ffffaa9234202516a7d624234f42b14bba831a09",
+          "pk-s8": "2aa24d9809ea2027d03015c35e3d46f207b0ea9022b41a137a68961cd97d7a84",
+          "pk-s9": "472b3096d521c28b587c4a455acec897a93d27b1fe746719c2cc6883308ab259",
+          "pk-w0": "a1f3b8c72562a7f8b5b36b0b31e24a27f7c9927bd5dc86e567262ecbe86b810c",
+          "pk-w1": "34e7406e30d608ecc7d73ad0c252d423a91b6f9e2f5a72b510748b5d6e37d391",
+          "pk-w10": "00a7f3cc2a092d7772f9b963be21f91f851ff3011e36363db6cdb71f69c6fc7f",
+          "pk-w11": "3e6b54a10744301d0c78c3c001da7632ffb6f72b06cbcdf3791a822923ba8b4f",
+          "pk-w12": "189870e765605392fcf29c0da8bfc1bf28d550371eee5859c6a850fae8bf2c92",
+          "pk-w2": "084a21026ea6572870e98408c942a52e7c369359c5773fa8deb89c836f3da809",
+          "pk-w3": "f76630e5478071d5e10578a071c73e09badfbbd63d57a257307803abc3528a48",
+          "pk-w4": "c7cf86aa1cb1cde7ff4bacea9f0a8bded556305b111f75fdd41acbedbcb9cac1",
+          "pk-w5": "241bba7cb625bb688a07e33974dc57318555159b171139a1aff616fc0415b71d",
+          "pk-w6": "b87375db394c973ddba301abea690835bf342d11ffe670589eb4f4a87aa10e01",
+          "pk-w7": "1c9cdde2b3209b8bb4f680ae08baa808ac4210020d9f156e668f4d7310c6920f",
+          "pk-w8": "7f1659eecd57bcccd5581458f9fa73a57be732b188732f43fb9fd9775eef3a21",
+          "pk-w9": "c81f9751f92d607541381fa9993a1ecbe09cc2e3714b374316f31b8f2f737f61",
+          "route.the-broke-column.camp-path": "07d85f3b264e3e863fe0effc63f30810a184a669fcbaacb64aea297025cb48dd",
+          "route.the-broke-column.line-walk": "3acf3cd4be0ba4ad2b774702edba2f7204c17d4cfd426bc50dec9f37d5023132",
+          "route.the-broke-column.tent-1-step": "44f1a2cd420ad3977b10c1fe067145b67d6ede206470e9fb0a97cb21269c3564",
+          "route.the-broke-column.tent-2-step": "0244c92d32c77091db8a371aa5fab833f6990433b8bc40de90f421f01a5e6359",
+          "s-board1": "31d892e1aec261d2aee84650c983c238494d0cd380d2ad949948d78e72d4c799",
+          "s-board2": "312be99248de4360e7a5328019b6be01a5c6f8034ff6fce27b5cb413127d7b49",
+          "s-post": "9d1a1691a281cdee70119f21a56fdb03b53e04d3e2bad3ec034b85973431e986",
+          "sc-gorse1": "607b3b0ec9b957953973e27ef9b5a5259d6ddf5d516f741038cf671059bd44f4",
+          "sc-gorse2": "9e13dbe3fe7893e560d2bbfc462df21d21635c3f48c9efdb38342eeacecb3025",
+          "sc-gorse3": "64289865061fb974bf36074def80971609689762f3a1b44b4e57a2fafc46c595",
+          "sc-gorse4": "b346e27c44b1d720b6667d491e15215291ddb1ea7b4d14f956f53ac27754275a",
+          "sc-gorse5": "376c7adfe931f501731c53e8ac55aea9d9b427c507466ca87a21534252a0fdd6",
+          "sc-gorse6": "1fc71c905bb66820c66301f285f37b561422adbe937a31f7e3d8cc71beff7321",
+          "sc-gorse7": "baadbfeb8eed9457f0dfddaeef3273452d9923073508f7a9449168c0a857a7e0",
+          "sc-gorse8": "1c64be5a36facd4fbfcc5f72f6c8f509ebefc5742e523126a6408c2492b1b308",
+          "sc-shrub1": "6099959c8a323123712d5b1b1aa33f5e90ef6b38785d233f40e9e7d8e7191734",
+          "sc-shrub10": "e077dff2327fefb256edae03757785897af3cd70267dc6fcd2f173e9caf5c685",
+          "sc-shrub11": "5efcf782a7f2cdd15ecfd18988c13bd794758a32148902f561df05f953382937",
+          "sc-shrub12": "11555ca39299bd9a232daa86b3e3837221cd10cb264c2b033aca3e292c00238e",
+          "sc-shrub13": "33107b8b66f980e1b3645c1900c4ad69bfa5a2618d20f8509a5d03c7c64fae64",
+          "sc-shrub14": "48b09e8ba818439ce191663c96a1fe3f352d363e40176b26fad414c7b2c93f17",
+          "sc-shrub15": "3cae01cf6d14d1958b4a3f1ebb1f20cd02a495b26bcb8a9fcb3ab91d6e69f55b",
+          "sc-shrub16": "6ad370d4bf0ebffb9552572d04d5e0ec928680efb67b2e3beee5f940e803e79d",
+          "sc-shrub17": "6b37498c9ea89aa8a716edb293245e9c66677854c37b0dbaa8e0cdf87be94c9a",
+          "sc-shrub18": "a0e8e4a4f4b827bd2eaebbf52fb90f62dea2ba2f5ceeca0c560131e4b39d182a",
+          "sc-shrub19": "29e0aa14c410676d605b5054b7b01e9711b4bef0900561a3a6dbd5d5a539724e",
+          "sc-shrub2": "77057e35ad02e1203ea9b5f7c461d2b6a563d27663ec324ebdd2f1f9b2cad295",
+          "sc-shrub20": "ba0c840e29fff76ddf352b6d7c7e10752e28b0254c9ab1821645e15f15eab578",
+          "sc-shrub21": "de464f45f03a8549afc3655af53b0d5cc3b0fe92c3870f36522ae3e61a1ab3f9",
+          "sc-shrub22": "9a649a99e929eba83f276e99239506182e5c3fc1f342c369c9c2810452553266",
+          "sc-shrub23": "35bdaf8882708a9ba464bbb09f9fd1ac8a185a180c1c32ec66321c129835b50f",
+          "sc-shrub24": "867404342322c6e98fcdc24bc734a0735d59a758721232c43fd4039f7cbb3ee3",
+          "sc-shrub3": "4ee04de7f533cc2a249b60a210407acebc7d88c05a497471405e70ea6cc2dba0",
+          "sc-shrub4": "12318e5396ed0a30ec37b1e91d3299aee5e1c7b76210dad1c8864e77c5ac6ffc",
+          "sc-shrub5": "6e47a989cc563241f60df2ad63eced3ea57b91e6fc55abd4da0ff3e76356755d",
+          "sc-shrub6": "53db93523c0361d875dd6f1488b7e5ac642ba53120ed3a83f1786695b5008823",
+          "sc-shrub7": "66da4ef5ddded2d1b51b14fa40952affd65f6e22a508de6b21094077e5b4e1e4",
+          "sc-shrub8": "bc09e184d4f09ea75b5f617e10c059af1111b3537e5bb06b94f78b3e3015e26b",
+          "sc-shrub9": "5874793ac9714d4ff48a99587a2e67439380c48ba41c662107087702e49652e2",
+          "t1-lantern": "344604116595b61a6b3955256e077d2b1e313ee4540c048482980a9b83deeee7",
+          "t1-sack": "0bf24304223c93c3b154e93d350436d7da9066f38d0f86fc6c527a723ccf535e",
+          "t2-barrel": "ae9618783a43928a1e8b5746f7c2dc064247cfcee8872d778e66a10d3d636d84",
+          "t2-lantern": "4444578ead3798d1721bf8da76ae7cbb2d5b831b74d431f24e05eee149a65e3c",
+          "t3-lantern": "edc19f08399ff974baae24b17b3be9045cfcac234a25428d73c3199e78e5d8b0"
+        },
+        "geometrySha256": "00f68905f69e5e4f82ca2f8b8cb72951a72ad510b73eedaee9f11f6de8cd0164"
+      }
+    },
+    "walkRoutes": {
+      "schemaVersion": 1,
+      "cellM": 0.5,
+      "stepM": 0.45,
+      "slopeMaxDeg": 30.0,
+      "wadeMaxM": 0.7,
+      "routes": {
+        "door:b-command.0": {
+          "points": [
+            [
+              1188.23,
+              76.29,
+              3072.27
+            ],
+            [
+              1188.23,
+              76.53,
+              3073.27
+            ],
+            [
+              1188.23,
+              76.66,
+              3073.77
+            ],
+            [
+              1188.23,
+              76.9,
+              3074.77
+            ],
+            [
+              1188.23,
+              77.03,
+              3075.27
+            ],
+            [
+              1188.23,
+              77.15,
+              3075.77
+            ],
+            [
+              1188.23,
+              77.28,
+              3076.27
+            ],
+            [
+              1188.23,
+              77.4,
+              3076.77
+            ],
+            [
+              1187.23,
+              77.82,
+              3077.77
+            ],
+            [
+              1187.23,
+              77.99,
+              3078.27
+            ],
+            [
+              1186.23,
+              78.71,
+              3079.27
+            ],
+            [
+              1186.23,
+              78.99,
+              3079.77
+            ],
+            [
+              1186.23,
+              79.1,
+              3080.27
+            ],
+            [
+              1186.23,
+              79.11,
+              3080.77
+            ],
+            [
+              1186.23,
+              79.11,
+              3081.27
+            ],
+            [
+              1186.23,
+              79.12,
+              3081.77
+            ],
+            [
+              1186.23,
+              79.16,
+              3082.77
+            ],
+            [
+              1186.23,
+              79.19,
+              3083.27
+            ],
+            [
+              1185.73,
+              79.22,
+              3083.77
+            ],
+            [
+              1185.23,
+              79.23,
+              3084.27
+            ],
+            [
+              1185.23,
+              79.23,
+              3085.27
+            ],
+            [
+              1184.73,
+              79.23,
+              3085.77
+            ]
+          ],
+          "routeM": 15.44,
+          "steepestDeg": 29.5,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "door:b-command": {
+          "points": [
+            [
+              1188.23,
+              76.29,
+              3072.27
+            ],
+            [
+              1188.23,
+              76.53,
+              3073.27
+            ],
+            [
+              1188.23,
+              76.66,
+              3073.77
+            ],
+            [
+              1188.23,
+              76.9,
+              3074.77
+            ],
+            [
+              1188.23,
+              77.03,
+              3075.27
+            ],
+            [
+              1188.23,
+              77.15,
+              3075.77
+            ],
+            [
+              1188.23,
+              77.28,
+              3076.27
+            ],
+            [
+              1188.23,
+              77.4,
+              3076.77
+            ],
+            [
+              1187.23,
+              77.82,
+              3077.77
+            ],
+            [
+              1187.23,
+              77.99,
+              3078.27
+            ],
+            [
+              1186.23,
+              78.71,
+              3079.27
+            ],
+            [
+              1186.23,
+              78.99,
+              3079.77
+            ],
+            [
+              1186.23,
+              79.1,
+              3080.27
+            ],
+            [
+              1186.23,
+              79.11,
+              3080.77
+            ],
+            [
+              1186.23,
+              79.11,
+              3081.27
+            ],
+            [
+              1186.23,
+              79.12,
+              3081.77
+            ],
+            [
+              1186.23,
+              79.16,
+              3082.77
+            ],
+            [
+              1186.23,
+              79.22,
+              3083.77
+            ],
+            [
+              1186.23,
+              79.23,
+              3084.27
+            ],
+            [
+              1186.23,
+              79.23,
+              3085.77
+            ]
+          ],
+          "routeM": 14.81,
+          "steepestDeg": 29.5,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0,
+          "parcelId": "parcel.the-broke-column.command-tent"
+        },
+        "opening:b-tent1": {
+          "points": [
+            [
+              1188.23,
+              76.29,
+              3072.27
+            ],
+            [
+              1188.23,
+              76.53,
+              3073.27
+            ],
+            [
+              1188.23,
+              76.66,
+              3073.77
+            ],
+            [
+              1188.23,
+              76.9,
+              3074.77
+            ],
+            [
+              1188.23,
+              77.03,
+              3075.27
+            ],
+            [
+              1188.23,
+              77.15,
+              3075.77
+            ],
+            [
+              1188.23,
+              77.28,
+              3076.27
+            ],
+            [
+              1188.73,
+              77.33,
+              3076.77
+            ],
+            [
+              1189.23,
+              77.37,
+              3077.27
+            ],
+            [
+              1191.23,
+              77.61,
+              3079.27
+            ],
+            [
+              1191.23,
+              77.75,
+              3079.77
+            ],
+            [
+              1191.73,
+              77.92,
+              3080.27
+            ],
+            [
+              1192.23,
+              78.19,
+              3080.77
+            ],
+            [
+              1192.73,
+              78.31,
+              3081.27
+            ],
+            [
+              1192.73,
+              78.45,
+              3081.77
+            ],
+            [
+              1192.73,
+              78.43,
+              3082.27
+            ],
+            [
+              1192.73,
+              78.43,
+              3082.77
+            ],
+            [
+              1192.73,
+              78.68,
+              3083.27
+            ],
+            [
+              1192.73,
+              78.84,
+              3083.77
+            ],
+            [
+              1192.73,
+              78.78,
+              3084.77
+            ],
+            [
+              1192.73,
+              78.82,
+              3085.27
+            ],
+            [
+              1192.73,
+              79.01,
+              3085.77
+            ],
+            [
+              1192.73,
+              79.21,
+              3086.27
+            ],
+            [
+              1192.73,
+              79.33,
+              3086.77
+            ],
+            [
+              1192.73,
+              79.37,
+              3087.27
+            ]
+          ],
+          "routeM": 17.29,
+          "steepestDeg": 26.2,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0,
+          "parcelId": "parcel.the-broke-column.tent-1"
+        },
+        "opening:b-tent2": {
+          "points": [
+            [
+              1188.23,
+              76.29,
+              3072.27
+            ],
+            [
+              1188.23,
+              76.53,
+              3073.27
+            ],
+            [
+              1188.23,
+              76.66,
+              3073.77
+            ],
+            [
+              1188.23,
+              76.9,
+              3074.77
+            ],
+            [
+              1188.23,
+              77.03,
+              3075.27
+            ],
+            [
+              1188.23,
+              77.15,
+              3075.77
+            ],
+            [
+              1188.23,
+              77.28,
+              3076.27
+            ],
+            [
+              1188.73,
+              77.33,
+              3076.77
+            ],
+            [
+              1189.23,
+              77.37,
+              3077.27
+            ],
+            [
+              1191.23,
+              77.61,
+              3079.27
+            ],
+            [
+              1191.23,
+              77.75,
+              3079.77
+            ],
+            [
+              1191.73,
+              77.92,
+              3080.27
+            ],
+            [
+              1192.23,
+              78.19,
+              3080.77
+            ],
+            [
+              1192.73,
+              78.31,
+              3081.27
+            ],
+            [
+              1192.73,
+              78.45,
+              3081.77
+            ],
+            [
+              1192.73,
+              78.43,
+              3082.27
+            ],
+            [
+              1192.73,
+              78.43,
+              3082.77
+            ],
+            [
+              1193.23,
+              78.7,
+              3083.27
+            ],
+            [
+              1193.73,
+              78.92,
+              3083.77
+            ],
+            [
+              1194.23,
+              79.04,
+              3084.27
+            ],
+            [
+              1194.73,
+              79.18,
+              3084.77
+            ],
+            [
+              1195.23,
+              79.36,
+              3085.27
+            ],
+            [
+              1195.73,
+              79.43,
+              3085.77
+            ],
+            [
+              1196.73,
+              79.45,
+              3086.77
+            ],
+            [
+              1197.23,
+              79.47,
+              3087.27
+            ]
+          ],
+          "routeM": 19.11,
+          "steepestDeg": 21.0,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0,
+          "parcelId": "parcel.the-broke-column.tent-2"
+        },
+        "opening:b-tent3": {
+          "points": [
+            [
+              1188.23,
+              76.29,
+              3072.27
+            ],
+            [
+              1188.23,
+              76.53,
+              3073.27
+            ],
+            [
+              1188.23,
+              76.66,
+              3073.77
+            ],
+            [
+              1188.73,
+              76.69,
+              3074.27
+            ],
+            [
+              1189.23,
+              76.74,
+              3074.77
+            ],
+            [
+              1189.73,
+              76.78,
+              3075.27
+            ],
+            [
+              1190.23,
+              76.83,
+              3075.77
+            ],
+            [
+              1191.73,
+              77.01,
+              3077.27
+            ],
+            [
+              1193.23,
+              77.22,
+              3078.77
+            ],
+            [
+              1193.73,
+              77.3,
+              3079.27
+            ],
+            [
+              1193.73,
+              77.43,
+              3079.77
+            ],
+            [
+              1194.23,
+              77.52,
+              3080.27
+            ],
+            [
+              1194.73,
+              77.6,
+              3080.77
+            ],
+            [
+              1195.73,
+              77.78,
+              3081.77
+            ],
+            [
+              1196.23,
+              78.16,
+              3082.27
+            ],
+            [
+              1196.73,
+              78.32,
+              3082.77
+            ],
+            [
+              1196.73,
+              78.46,
+              3083.27
+            ],
+            [
+              1196.73,
+              78.56,
+              3083.77
+            ],
+            [
+              1196.73,
+              78.62,
+              3084.27
+            ],
+            [
+              1197.23,
+              79.0,
+              3084.77
+            ],
+            [
+              1197.73,
+              79.36,
+              3085.27
+            ],
+            [
+              1198.23,
+              79.38,
+              3085.27
+            ],
+            [
+              1198.73,
+              79.52,
+              3085.77
+            ],
+            [
+              1199.23,
+              79.52,
+              3086.27
+            ],
+            [
+              1200.23,
+              79.54,
+              3087.27
+            ]
+          ],
+          "routeM": 20.72,
+          "steepestDeg": 28.5,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0,
+          "parcelId": "parcel.the-broke-column.tent-3"
+        },
+        "socket:socket.the-broke-column.idle-n1-work": {
+          "points": [
+            [
+              1188.23,
+              76.29,
+              3072.27
+            ],
+            [
+              1188.23,
+              76.53,
+              3073.27
+            ],
+            [
+              1188.23,
+              76.66,
+              3073.77
+            ],
+            [
+              1188.23,
+              76.9,
+              3074.77
+            ],
+            [
+              1188.23,
+              77.03,
+              3075.27
+            ],
+            [
+              1188.23,
+              77.15,
+              3075.77
+            ],
+            [
+              1188.23,
+              77.28,
+              3076.27
+            ],
+            [
+              1188.23,
+              77.4,
+              3076.77
+            ],
+            [
+              1187.23,
+              77.82,
+              3077.77
+            ],
+            [
+              1187.23,
+              77.99,
+              3078.27
+            ],
+            [
+              1186.23,
+              78.71,
+              3079.27
+            ],
+            [
+              1186.23,
+              78.99,
+              3079.77
+            ],
+            [
+              1186.23,
+              79.1,
+              3080.27
+            ],
+            [
+              1186.23,
+              79.11,
+              3080.77
+            ],
+            [
+              1186.23,
+              79.11,
+              3081.27
+            ],
+            [
+              1186.23,
+              79.12,
+              3081.77
+            ],
+            [
+              1186.23,
+              79.16,
+              3082.77
+            ],
+            [
+              1186.23,
+              79.22,
+              3083.77
+            ]
+          ],
+          "routeM": 12.81,
+          "steepestDeg": 29.5,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.the-broke-column.idle-n1-home": {
+          "points": [
+            [
+              1188.23,
+              76.29,
+              3072.27
+            ],
+            [
+              1188.23,
+              76.53,
+              3073.27
+            ],
+            [
+              1188.23,
+              76.66,
+              3073.77
+            ],
+            [
+              1188.23,
+              76.9,
+              3074.77
+            ],
+            [
+              1188.23,
+              77.03,
+              3075.27
+            ],
+            [
+              1188.23,
+              77.15,
+              3075.77
+            ],
+            [
+              1188.23,
+              77.28,
+              3076.27
+            ],
+            [
+              1188.23,
+              77.4,
+              3076.77
+            ],
+            [
+              1187.23,
+              77.82,
+              3077.77
+            ],
+            [
+              1187.23,
+              77.99,
+              3078.27
+            ],
+            [
+              1186.23,
+              78.71,
+              3079.27
+            ],
+            [
+              1186.23,
+              78.99,
+              3079.77
+            ],
+            [
+              1186.23,
+              79.1,
+              3080.27
+            ],
+            [
+              1186.23,
+              79.11,
+              3080.77
+            ],
+            [
+              1186.23,
+              79.11,
+              3081.27
+            ],
+            [
+              1186.23,
+              79.12,
+              3081.77
+            ],
+            [
+              1186.23,
+              79.14,
+              3082.27
+            ],
+            [
+              1185.73,
+              79.19,
+              3082.77
+            ],
+            [
+              1185.23,
+              79.22,
+              3083.27
+            ]
+          ],
+          "routeM": 12.73,
+          "steepestDeg": 29.5,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.the-broke-column.npc-n1": {
+          "points": [
+            [
+              1188.23,
+              76.29,
+              3072.27
+            ],
+            [
+              1188.23,
+              76.53,
+              3073.27
+            ],
+            [
+              1188.23,
+              76.66,
+              3073.77
+            ],
+            [
+              1188.23,
+              76.9,
+              3074.77
+            ],
+            [
+              1188.23,
+              77.03,
+              3075.27
+            ],
+            [
+              1188.23,
+              77.15,
+              3075.77
+            ],
+            [
+              1188.23,
+              77.28,
+              3076.27
+            ],
+            [
+              1188.23,
+              77.4,
+              3076.77
+            ],
+            [
+              1187.23,
+              77.82,
+              3077.77
+            ],
+            [
+              1187.23,
+              77.99,
+              3078.27
+            ],
+            [
+              1186.23,
+              78.71,
+              3079.27
+            ],
+            [
+              1186.23,
+              78.99,
+              3079.77
+            ],
+            [
+              1186.23,
+              79.1,
+              3080.27
+            ],
+            [
+              1186.23,
+              79.11,
+              3080.77
+            ],
+            [
+              1186.23,
+              79.11,
+              3081.27
+            ],
+            [
+              1186.23,
+              79.12,
+              3081.77
+            ],
+            [
+              1186.23,
+              79.16,
+              3082.77
+            ],
+            [
+              1186.23,
+              79.19,
+              3083.27
+            ]
+          ],
+          "routeM": 12.31,
+          "steepestDeg": 29.5,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.the-broke-column.idle-n2-levy": {
+          "points": [
+            [
+              1188.23,
+              76.29,
+              3072.27
+            ],
+            [
+              1188.73,
+              76.33,
+              3072.77
+            ],
+            [
+              1189.23,
+              76.36,
+              3073.27
+            ],
+            [
+              1189.73,
+              76.4,
+              3073.77
+            ],
+            [
+              1190.73,
+              76.5,
+              3074.77
+            ],
+            [
+              1191.23,
+              76.56,
+              3075.27
+            ],
+            [
+              1191.73,
+              76.61,
+              3075.77
+            ],
+            [
+              1192.23,
+              76.68,
+              3076.27
+            ],
+            [
+              1192.73,
+              76.74,
+              3076.77
+            ],
+            [
+              1193.73,
+              76.88,
+              3077.77
+            ],
+            [
+              1194.23,
+              76.96,
+              3078.27
+            ],
+            [
+              1194.73,
+              76.91,
+              3078.27
+            ],
+            [
+              1195.23,
+              76.85,
+              3078.27
+            ],
+            [
+              1195.73,
+              76.8,
+              3078.27
+            ],
+            [
+              1196.23,
+              76.74,
+              3078.27
+            ],
+            [
+              1197.23,
+              76.64,
+              3078.27
+            ],
+            [
+              1198.23,
+              76.56,
+              3078.27
+            ],
+            [
+              1198.73,
+              76.51,
+              3078.27
+            ]
+          ],
+          "routeM": 13.04,
+          "steepestDeg": 6.6,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.the-broke-column.idle-n2-cook": {
+          "points": [
+            [
+              1188.23,
+              76.29,
+              3072.27
+            ],
+            [
+              1188.23,
+              76.53,
+              3073.27
+            ],
+            [
+              1188.23,
+              76.66,
+              3073.77
+            ],
+            [
+              1188.23,
+              76.9,
+              3074.77
+            ],
+            [
+              1188.23,
+              77.03,
+              3075.27
+            ],
+            [
+              1188.23,
+              77.15,
+              3075.77
+            ],
+            [
+              1188.23,
+              77.28,
+              3076.27
+            ],
+            [
+              1188.23,
+              77.4,
+              3076.77
+            ],
+            [
+              1187.23,
+              77.82,
+              3077.77
+            ],
+            [
+              1187.23,
+              77.99,
+              3078.27
+            ],
+            [
+              1186.23,
+              78.71,
+              3079.27
+            ],
+            [
+              1186.23,
+              78.99,
+              3079.77
+            ],
+            [
+              1186.23,
+              79.1,
+              3080.27
+            ],
+            [
+              1186.23,
+              79.11,
+              3080.77
+            ],
+            [
+              1186.23,
+              79.11,
+              3081.27
+            ],
+            [
+              1186.23,
+              79.12,
+              3081.77
+            ],
+            [
+              1186.23,
+              79.14,
+              3082.27
+            ],
+            [
+              1185.73,
+              79.19,
+              3082.77
+            ],
+            [
+              1185.23,
+              79.22,
+              3083.27
+            ],
+            [
+              1184.73,
+              79.23,
+              3083.77
+            ]
+          ],
+          "routeM": 13.44,
+          "steepestDeg": 29.5,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.the-broke-column.idle-n2-home": {
+          "points": [
+            [
+              1188.23,
+              76.29,
+              3072.27
+            ],
+            [
+              1188.23,
+              76.53,
+              3073.27
+            ],
+            [
+              1188.23,
+              76.66,
+              3073.77
+            ],
+            [
+              1188.23,
+              76.9,
+              3074.77
+            ],
+            [
+              1188.23,
+              77.03,
+              3075.27
+            ],
+            [
+              1188.23,
+              77.15,
+              3075.77
+            ],
+            [
+              1188.23,
+              77.28,
+              3076.27
+            ],
+            [
+              1188.23,
+              77.4,
+              3076.77
+            ],
+            [
+              1187.23,
+              77.82,
+              3077.77
+            ],
+            [
+              1187.23,
+              77.99,
+              3078.27
+            ],
+            [
+              1185.73,
+              79.07,
+              3079.77
+            ],
+            [
+              1185.73,
+              79.17,
+              3080.27
+            ],
+            [
+              1185.23,
+              79.22,
+              3080.77
+            ],
+            [
+              1184.73,
+              79.28,
+              3081.27
+            ],
+            [
+              1184.23,
+              79.3,
+              3081.77
+            ],
+            [
+              1183.23,
+              79.28,
+              3082.77
+            ],
+            [
+              1182.73,
+              79.26,
+              3083.27
+            ]
+          ],
+          "routeM": 13.78,
+          "steepestDeg": 27.2,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.the-broke-column.npc-n2": {
+          "points": [
+            [
+              1188.23,
+              76.29,
+              3072.27
+            ],
+            [
+              1188.73,
+              76.33,
+              3072.77
+            ],
+            [
+              1189.23,
+              76.36,
+              3073.27
+            ],
+            [
+              1189.73,
+              76.4,
+              3073.77
+            ],
+            [
+              1190.73,
+              76.5,
+              3074.77
+            ],
+            [
+              1191.23,
+              76.56,
+              3075.27
+            ],
+            [
+              1191.73,
+              76.61,
+              3075.77
+            ],
+            [
+              1192.23,
+              76.68,
+              3076.27
+            ],
+            [
+              1192.73,
+              76.74,
+              3076.77
+            ],
+            [
+              1193.73,
+              76.88,
+              3077.77
+            ],
+            [
+              1194.73,
+              77.04,
+              3078.77
+            ],
+            [
+              1195.23,
+              77.13,
+              3079.27
+            ],
+            [
+              1195.23,
+              77.41,
+              3080.27
+            ],
+            [
+              1196.23,
+              77.59,
+              3081.27
+            ],
+            [
+              1196.73,
+              77.69,
+              3081.77
+            ],
+            [
+              1197.23,
+              77.83,
+              3082.27
+            ],
+            [
+              1197.23,
+              77.98,
+              3082.77
+            ],
+            [
+              1197.23,
+              78.12,
+              3083.27
+            ],
+            [
+              1197.23,
+              78.27,
+              3083.77
+            ],
+            [
+              1197.73,
+              78.61,
+              3084.27
+            ],
+            [
+              1198.23,
+              78.96,
+              3084.77
+            ]
+          ],
+          "routeM": 16.97,
+          "steepestDeg": 26.3,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.the-broke-column.container-sack": {
+          "points": [
+            [
+              1188.23,
+              76.29,
+              3072.27
+            ],
+            [
+              1188.23,
+              76.53,
+              3073.27
+            ],
+            [
+              1188.23,
+              76.66,
+              3073.77
+            ],
+            [
+              1188.23,
+              76.9,
+              3074.77
+            ],
+            [
+              1188.23,
+              77.03,
+              3075.27
+            ],
+            [
+              1188.23,
+              77.15,
+              3075.77
+            ],
+            [
+              1188.23,
+              77.28,
+              3076.27
+            ],
+            [
+              1188.73,
+              77.33,
+              3076.77
+            ],
+            [
+              1189.23,
+              77.37,
+              3077.27
+            ],
+            [
+              1191.23,
+              77.61,
+              3079.27
+            ],
+            [
+              1191.23,
+              77.75,
+              3079.77
+            ],
+            [
+              1191.73,
+              77.92,
+              3080.27
+            ],
+            [
+              1192.23,
+              78.19,
+              3080.77
+            ],
+            [
+              1192.73,
+              78.31,
+              3081.27
+            ],
+            [
+              1192.73,
+              78.45,
+              3081.77
+            ],
+            [
+              1192.73,
+              78.43,
+              3082.27
+            ],
+            [
+              1192.73,
+              78.43,
+              3082.77
+            ],
+            [
+              1193.23,
+              78.7,
+              3083.27
+            ],
+            [
+              1193.23,
+              78.87,
+              3083.77
+            ],
+            [
+              1193.73,
+              78.9,
+              3084.27
+            ],
+            [
+              1194.23,
+              79.02,
+              3084.77
+            ],
+            [
+              1194.23,
+              79.07,
+              3085.27
+            ],
+            [
+              1194.23,
+              79.23,
+              3085.77
+            ],
+            [
+              1194.23,
+              79.36,
+              3086.27
+            ],
+            [
+              1194.23,
+              79.41,
+              3086.77
+            ]
+          ],
+          "routeM": 17.37,
+          "steepestDeg": 21.0,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.the-broke-column.container-barrel": {
+          "points": [
+            [
+              1188.23,
+              76.29,
+              3072.27
+            ],
+            [
+              1188.23,
+              76.53,
+              3073.27
+            ],
+            [
+              1188.23,
+              76.66,
+              3073.77
+            ],
+            [
+              1188.73,
+              76.69,
+              3074.27
+            ],
+            [
+              1189.23,
+              76.74,
+              3074.77
+            ],
+            [
+              1189.73,
+              76.78,
+              3075.27
+            ],
+            [
+              1190.23,
+              76.83,
+              3075.77
+            ],
+            [
+              1191.73,
+              77.01,
+              3077.27
+            ],
+            [
+              1193.23,
+              77.22,
+              3078.77
+            ],
+            [
+              1193.73,
+              77.3,
+              3079.27
+            ],
+            [
+              1193.73,
+              77.43,
+              3079.77
+            ],
+            [
+              1194.23,
+              77.52,
+              3080.27
+            ],
+            [
+              1194.73,
+              77.6,
+              3080.77
+            ],
+            [
+              1195.73,
+              77.78,
+              3081.77
+            ],
+            [
+              1196.23,
+              78.16,
+              3082.27
+            ],
+            [
+              1196.73,
+              78.32,
+              3082.77
+            ],
+            [
+              1196.73,
+              78.46,
+              3083.27
+            ],
+            [
+              1196.73,
+              78.56,
+              3083.77
+            ],
+            [
+              1196.73,
+              78.62,
+              3084.27
+            ],
+            [
+              1197.23,
+              79.0,
+              3084.77
+            ],
+            [
+              1197.73,
+              79.36,
+              3085.27
+            ],
+            [
+              1198.23,
+              79.51,
+              3085.77
+            ],
+            [
+              1198.73,
+              79.52,
+              3086.27
+            ],
+            [
+              1198.73,
+              79.52,
+              3086.77
+            ]
+          ],
+          "routeM": 19.3,
+          "steepestDeg": 28.5,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.the-broke-column.container-arms-chest": {
+          "points": [
+            [
+              1188.23,
+              76.29,
+              3072.27
+            ],
+            [
+              1188.23,
+              76.53,
+              3073.27
+            ],
+            [
+              1188.23,
+              76.66,
+              3073.77
+            ],
+            [
+              1188.23,
+              76.9,
+              3074.77
+            ],
+            [
+              1188.23,
+              77.03,
+              3075.27
+            ],
+            [
+              1188.23,
+              77.15,
+              3075.77
+            ],
+            [
+              1188.23,
+              77.28,
+              3076.27
+            ],
+            [
+              1188.23,
+              77.4,
+              3076.77
+            ],
+            [
+              1187.23,
+              77.82,
+              3077.77
+            ],
+            [
+              1187.23,
+              77.99,
+              3078.27
+            ],
+            [
+              1186.23,
+              78.71,
+              3079.27
+            ],
+            [
+              1186.23,
+              78.99,
+              3079.77
+            ],
+            [
+              1186.23,
+              79.1,
+              3080.27
+            ],
+            [
+              1185.73,
+              79.16,
+              3080.77
+            ],
+            [
+              1185.73,
+              79.16,
+              3081.27
+            ],
+            [
+              1185.73,
+              79.17,
+              3081.77
+            ],
+            [
+              1185.23,
+              79.22,
+              3082.27
+            ],
+            [
+              1184.73,
+              79.24,
+              3082.77
+            ],
+            [
+              1184.23,
+              79.24,
+              3083.27
+            ],
+            [
+              1183.73,
+              79.23,
+              3083.77
+            ],
+            [
+              1182.73,
+              79.23,
+              3084.77
+            ],
+            [
+              1182.73,
+              79.23,
+              3086.27
+            ],
+            [
+              1182.23,
+              79.23,
+              3086.77
+            ],
+            [
+              1182.23,
+              79.23,
+              3089.77
+            ]
+          ],
+          "routeM": 20.47,
+          "steepestDeg": 29.5,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.the-broke-column.container-armour-chest": {
+          "points": [
+            [
+              1188.23,
+              76.29,
+              3072.27
+            ],
+            [
+              1188.23,
+              76.53,
+              3073.27
+            ],
+            [
+              1188.23,
+              76.66,
+              3073.77
+            ],
+            [
+              1188.23,
+              76.9,
+              3074.77
+            ],
+            [
+              1188.23,
+              77.03,
+              3075.27
+            ],
+            [
+              1188.23,
+              77.15,
+              3075.77
+            ],
+            [
+              1188.23,
+              77.28,
+              3076.27
+            ],
+            [
+              1188.23,
+              77.4,
+              3076.77
+            ],
+            [
+              1188.23,
+              77.53,
+              3077.27
+            ],
+            [
+              1187.73,
+              77.74,
+              3077.77
+            ],
+            [
+              1187.73,
+              77.9,
+              3078.27
+            ],
+            [
+              1188.23,
+              78.19,
+              3078.77
+            ],
+            [
+              1188.73,
+              78.46,
+              3079.27
+            ],
+            [
+              1188.73,
+              78.65,
+              3079.77
+            ],
+            [
+              1188.73,
+              78.69,
+              3080.27
+            ],
+            [
+              1188.23,
+              78.95,
+              3080.77
+            ],
+            [
+              1188.23,
+              78.93,
+              3081.27
+            ],
+            [
+              1188.23,
+              78.96,
+              3081.77
+            ],
+            [
+              1188.23,
+              79.01,
+              3082.27
+            ],
+            [
+              1188.23,
+              79.07,
+              3082.77
+            ],
+            [
+              1188.73,
+              79.15,
+              3083.27
+            ],
+            [
+              1188.73,
+              79.21,
+              3083.77
+            ],
+            [
+              1188.73,
+              79.23,
+              3084.27
+            ],
+            [
+              1188.73,
+              79.23,
+              3085.77
+            ],
+            [
+              1188.73,
+              79.25,
+              3086.77
+            ],
+            [
+              1188.73,
+              79.25,
+              3087.27
+            ],
+            [
+              1188.73,
+              79.26,
+              3087.77
+            ],
+            [
+              1188.73,
+              79.26,
+              3091.77
+            ],
+            [
+              1188.23,
+              79.23,
+              3092.27
+            ],
+            [
+              1187.73,
+              79.23,
+              3092.27
+            ]
+          ],
+          "routeM": 22.16,
+          "steepestDeg": 21.8,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        }
+      }
+    }
+  }
+}

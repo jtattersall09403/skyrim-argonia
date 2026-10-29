@@ -1,0 +1,77 @@
+{
+ "schemaVersion": 1,
+ "decision": "docs/decisions/0159-boats-are-wind-waker-sailing-dugout-and-sea-hull-first.md",
+ "about": "Every boat class (standard 18 home table). Two are built to ride (dugout, sea-hull); skiff and river-boat are typed and priced only until a later phase builds them (0159). Sizes from apps/world-studio/public/kits/watercraft-v1.footprints.json; cruise, wave limit and price from docs/phases/2-slice/2.15-boats research section 4.1. draughtM is derived, not authored: the depth at which the class hull cut convex body (game-core settlement/buoyantHull.ts over the published watercraft-v1 mesh, hullAssetIds[0]) displaces its water-motion class massKg of fresh water (rowboat 250 kg for dugout and skiff, barge 1500 kg for river-boat and sea-hull), rounded to 1 cm; game-core boats/draught.test.ts recomputes it and fails past 2 cm. A mooring socket's accepts[] and every Boat record's classId name an id here.",
+ "recovery": {
+  "about": "A lost or adrift boat returns to its last tied mooring after a rest, or a boat-keeper brings it for a fee of ceil(percent of price), never under minGold (0159).",
+  "percent": 10,
+  "minGold": 5
+ },
+ "mooringMarginM": 0.05,
+ "classes": [
+  {
+   "id": "dugout",
+   "built": true,
+   "waterBands": ["channel", "river", "lake", "lagoon", "coast-calm"],
+   "lengthM": 6.77,
+   "beamM": 1.98,
+   "draughtM": 0.2,
+   "cruiseMS": 1.8,
+   "maxWaveHeightM": 0.35,
+   "rapids": "down-only",
+   "seats": 1,
+   "crewPose": "seated-paddle",
+   "hullAssetIds": ["canoe:actors/sfss/canoe/canoe1"],
+   "priceGold": 150,
+   "sellerKinds": ["boat"]
+  },
+  {
+   "id": "skiff",
+   "built": false,
+   "waterBands": ["river", "lake", "lagoon", "coast-calm"],
+   "lengthM": 5.75,
+   "beamM": 2.1,
+   "draughtM": 0.14,
+   "cruiseMS": 2.0,
+   "maxWaveHeightM": 0.5,
+   "rapids": "none",
+   "seats": 2,
+   "crewPose": "seated-row",
+   "hullAssetIds": ["sailboats:sailboats/rowboatnord", "ferries:yamadori/ferries/rowboat_ferry_swamp_01"],
+   "priceGold": 400,
+   "sellerKinds": ["boat"]
+  },
+  {
+   "id": "river-boat",
+   "built": false,
+   "waterBands": ["river", "lake", "lagoon", "coast-calm"],
+   "lengthM": 6.49,
+   "beamM": 2.7,
+   "draughtM": 0.32,
+   "cruiseMS": 2.5,
+   "maxWaveHeightM": 0.8,
+   "rapids": "none",
+   "seats": 3,
+   "crewPose": "standing-helm",
+   "hullAssetIds": ["sailboats:sailboats/sailboat"],
+   "priceGold": 900,
+   "sellerKinds": ["boat"]
+  },
+  {
+   "id": "sea-hull",
+   "built": true,
+   "waterBands": ["lagoon", "coast-calm", "sea"],
+   "lengthM": 8.84,
+   "beamM": 4.62,
+   "draughtM": 0.37,
+   "cruiseMS": 3.0,
+   "maxWaveHeightM": 1.5,
+   "rapids": "none",
+   "seats": 4,
+   "crewPose": "standing-helm",
+   "hullAssetIds": ["sailboats:sailboats/longboat"],
+   "priceGold": 2400,
+   "sellerKinds": ["boat"]
+  }
+ ]
+}

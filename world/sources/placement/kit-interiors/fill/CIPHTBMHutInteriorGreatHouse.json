@@ -1,0 +1,131 @@
+{
+ "cellId": "CIPHTBMHutInteriorGreatHouse",
+ "sockets": {
+  "socket.CIPHTBMHutInteriorGreatHouse.06256DFE": {
+   "fillRule": "blanket.fish-basket",
+   "valueTier": "trivial",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.trodh",
+      "count": 4
+     },
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     },
+     {
+      "item": "item.fishing-pole",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.fish-basket"
+   }
+  },
+  "socket.CIPHTBMHutInteriorGreatHouse.06256DFF": {
+   "fillRule": "blanket.water-barrel",
+   "valueTier": "trivial",
+   "lootTable": {
+    "items": [],
+    "frozenFrom": "blanket.water-barrel"
+   }
+  },
+  "socket.CIPHTBMHutInteriorGreatHouse.06256E00": {
+   "fillRule": "blanket.fish-basket",
+   "valueTier": "trivial",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.trodh",
+      "count": 4
+     },
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     },
+     {
+      "item": "item.fishing-pole",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.fish-basket"
+   }
+  },
+  "socket.CIPHTBMHutInteriorGreatHouse.06468B68": {
+   "fillRule": "blanket.household-urn",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 1
+     },
+     {
+      "item": "item.trodh",
+      "count": 3
+     },
+     {
+      "item": "item.clay-jug",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.household-urn"
+   }
+  },
+  "socket.CIPHTBMHutInteriorGreatHouse.06468B6A": {
+   "fillRule": "blanket.household-urn",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 1
+     },
+     {
+      "item": "item.trodh",
+      "count": 3
+     },
+     {
+      "item": "item.clay-jug",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.household-urn"
+   }
+  },
+  "socket.CIPHTBMHutInteriorGreatHouse.06468B6B": {
+   "fillRule": "blanket.household-urn",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 1
+     },
+     {
+      "item": "item.trodh",
+      "count": 3
+     },
+     {
+      "item": "item.clay-jug",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.household-urn"
+   }
+  }
+ },
+ "schemaVersion": 1
+}

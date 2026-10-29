@@ -1,0 +1,63 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "entries": [
+  {
+   "id": "culture.household.claywater-station.landing-racks",
+   "level": "household",
+   "name": "The household at the drying racks",
+   "parent": "culture.group.claywater-station.landing-half",
+   "members": [
+    "npc.imperial-fringe.claywater-station.n1-2",
+    "npc.imperial-fringe.claywater-station.n1-3"
+   ],
+   "norms": [
+    {
+     "text": "Ford water stands in a bucket by the door.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Using well water in the fish brine.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "Every fish counted in or out.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "The station counter's measures.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {},
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Stranger, until a traveller has bought fish.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "low",
+    "oaths": [],
+    "neverSaid": []
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "The station counter sells short measures.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": []
+   },
+   "views": [],
+   "deviationRate": 0.2
+  }
+ ]
+}

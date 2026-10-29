@@ -1,6 +1,9 @@
 # 0017: One coherent Argonian UI, Morrowind in spirit and good by today's standards; the approach is chosen with the owner
 
-**Status:** decided 2026-10-27, rewritten 2026-10-28. Earlier owner rulings: "our own new original UI…
+**Status:** decided 2026-10-27, rewritten 2026-10-28; 2026-10-29 [0027](0027-build-in-the-order-of-the-usps.md) §5
+added the two-stage build (stage one in 1.2: the font, a paper theme, the dialogue window and the journal; stage
+two in 2.2, 3.1, 3.2: everything else) as G11's standing recommendation; the goals and the choice with the owner
+are unchanged. Earlier owner rulings: "our own new original UI…
 performing the same functions broadly as their Skyrim equivalents but looking completely different, like
 Morrowind versions but adapted for our game's theme"; "HUD I want to be our own new original version". On
 2026-10-28 the owner opened the approach: "I am open to either adapting the threejs work or adapting skyrim's UI

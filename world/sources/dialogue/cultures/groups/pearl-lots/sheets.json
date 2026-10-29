@@ -1,0 +1,128 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "entries": [
+  {
+   "id": "culture.group.pearl-lots.divers",
+   "level": "group",
+   "name": "The lot divers",
+   "parent": "culture.settlement.pearl-lots",
+   "members": [
+    "npc.saxhleel-coast.pearl-lots.n1",
+    "npc.saxhleel-coast.pearl-lots.n1-2",
+    "npc.saxhleel-coast.pearl-lots.n1-3",
+    "npc.saxhleel-coast.pearl-lots.n1-4"
+   ],
+   "norms": [
+    {
+     "text": "Shells are graded by size before anything is opened.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Surfacing without the day's net.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "Staying down longer than the next diver.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "A diver who comes up early from fear.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "work": {
+     "lean": 1,
+     "text": "Dive, surface, grade, open; the deep lot last.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "By name among themselves.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [
+     {
+      "text": "Shell and breath.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "That the tender has the easy part.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Who will dive for the heirless lot.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": []
+   },
+   "views": [],
+   "deviationRate": 0.25
+  },
+  {
+   "id": "culture.household.pearl-lots.raft-lot",
+   "level": "household",
+   "name": "The family on the raft lot",
+   "parent": "culture.group.pearl-lots.divers",
+   "members": [
+    "npc.saxhleel-coast.pearl-lots.n1",
+    "npc.saxhleel-coast.pearl-lots.n1-4"
+   ],
+   "norms": [
+    {
+     "text": "The family's lot is the one under the raft.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Opening a shell before it is graded.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "The family's lot kept for the next heir.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [],
+   "opinions": {},
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "By name.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [],
+    "neverSaid": []
+   },
+   "talk": {
+    "grievances": [],
+    "rumours": []
+   },
+   "views": [],
+   "deviationRate": 0.25
+  }
+ ]
+}

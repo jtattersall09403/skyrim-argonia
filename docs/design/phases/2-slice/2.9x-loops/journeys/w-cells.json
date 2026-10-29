@@ -1,0 +1,268 @@
+{
+ "id": "w-cells",
+ "start": {
+  "query": "?view=character&x=4.7789&z=1.9&t=12:00&d=8-17",
+  "kit": "mage",
+  "drawn": false
+ },
+ "steps": [
+  {
+   "name": "draw",
+   "transition": "sheathed -> drawn, the mage's dagger in hand",
+   "do": {
+    "action": "draw"
+   },
+   "keys": [
+    {
+     "press": "Tab"
+    }
+   ],
+   "hold_s": 1.0,
+   "expect": {
+    "drawn": true,
+    "mainHand": "steel-dagger",
+    "intent": "equipPressed",
+    "clip": "EQUIP"
+   }
+  },
+  {
+   "name": "open-magic",
+   "transition": "walking -> the magic window",
+   "do": {
+    "action": "openInventory"
+   },
+   "keys": [
+    {
+     "press": "Escape"
+    }
+   ],
+   "hold_s": 0.5,
+   "expect": {
+    "screen": "inventory"
+   }
+  },
+  {
+   "name": "ready-bound-dagger",
+   "transition": "magic window -> bound dagger readied in the right hand",
+   "do": {
+    "action": "equipSpell",
+    "spell": "bound-dagger",
+    "hand": "main"
+   },
+   "keys": [
+    {
+     "click": ".es-magic [data-es-row=\"bound-dagger\"]"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": ".es-magic [data-ready=\"main\"]"
+    }
+   ],
+   "hold_s": 0.5,
+   "expect": {}
+  },
+  {
+   "name": "close-magic",
+   "transition": "magic window -> walking",
+   "do": {
+    "action": "closeScreen"
+   },
+   "keys": [
+    {
+     "press": "Escape"
+    }
+   ],
+   "hold_s": 0.4,
+   "expect": {
+    "screen": null
+   }
+  },
+  {
+   "name": "cast-bound-dagger",
+   "transition": "spell in the right hand -> the conjured blade drawn in hand",
+   "do": {
+    "action": "cast",
+    "hand": "main"
+   },
+   "keys": [
+    {
+     "mouse": "left",
+     "hold_s": 1.5
+    }
+   ],
+   "hold_s": 2.0,
+   "expect": {
+    "drawn": true,
+    "mainHand": "bound-dagger",
+    "effects": [
+     "bound-dagger"
+    ]
+   }
+  },
+  {
+   "name": "hold-bound-dagger",
+   "transition": "the conjured blade held, no input",
+   "do": {
+    "action": "observe"
+   },
+   "keys": [],
+   "hold_s": 2.0,
+   "expect": {
+    "drawn": true,
+    "mainHand": "bound-dagger"
+   }
+  },
+  {
+   "name": "open-magic-for-off",
+   "transition": "walking -> the magic window",
+   "do": {
+    "action": "openInventory"
+   },
+   "keys": [
+    {
+     "press": "Escape"
+    }
+   ],
+   "hold_s": 0.4,
+   "expect": {
+    "screen": "inventory"
+   }
+  },
+  {
+   "name": "fireball-to-off-hand",
+   "transition": "magic window -> fireball in the left hand",
+   "do": {
+    "action": "equipSpell",
+    "spell": "fireball",
+    "hand": "off"
+   },
+   "keys": [
+    {
+     "click": ".es-magic [data-es-row=\"fireball\"]"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": ".es-magic [data-ready=\"off\"]"
+    }
+   ],
+   "hold_s": 0.5,
+   "expect": {
+    "offHand": "fireball"
+   }
+  },
+  {
+   "name": "close-magic-off",
+   "transition": "magic window -> walking",
+   "do": {
+    "action": "closeScreen"
+   },
+   "keys": [
+    {
+     "press": "Escape"
+    }
+   ],
+   "hold_s": 0.4,
+   "expect": {
+    "screen": null
+   }
+  },
+  {
+   "name": "cast-off-hand",
+   "transition": "fireball in the left hand -> cast, the effect filmed",
+   "do": {
+    "action": "cast",
+    "hand": "off"
+   },
+   "keys": [
+    {
+     "mouse": "right",
+     "hold_s": 1.2
+    }
+   ],
+   "hold_s": 2.5,
+   "expect": {
+    "intent": "castOffHeld",
+    "clip": "CAST_AIMED_RELEASE_L"
+   }
+  },
+  {
+   "name": "open-magic-for-main",
+   "transition": "walking -> the magic window",
+   "do": {
+    "action": "openInventory"
+   },
+   "keys": [
+    {
+     "press": "Escape"
+    }
+   ],
+   "hold_s": 0.4,
+   "expect": {
+    "screen": "inventory"
+   }
+  },
+  {
+   "name": "fireball-to-main-hand",
+   "transition": "magic window -> fireball in the right hand",
+   "do": {
+    "action": "equipSpell",
+    "spell": "fireball",
+    "hand": "main"
+   },
+   "keys": [
+    {
+     "click": ".es-magic [data-es-row=\"fireball\"]"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": ".es-magic [data-ready=\"main\"]"
+    }
+   ],
+   "hold_s": 0.5,
+   "expect": {
+    "mainHand": "fireball"
+   }
+  },
+  {
+   "name": "close-magic-main",
+   "transition": "magic window -> walking",
+   "do": {
+    "action": "closeScreen"
+   },
+   "keys": [
+    {
+     "press": "Escape"
+    }
+   ],
+   "hold_s": 0.4,
+   "expect": {
+    "screen": null
+   }
+  },
+  {
+   "name": "cast-main-hand",
+   "transition": "fireball in the right hand -> cast, the effect filmed",
+   "do": {
+    "action": "cast",
+    "hand": "main"
+   },
+   "keys": [
+    {
+     "mouse": "left",
+     "hold_s": 1.2
+    }
+   ],
+   "hold_s": 2.5,
+   "expect": {
+    "intent": "castMainHeld",
+    "clip": "CAST_AIMED_RELEASE_R"
+   }
+  }
+ ]
+}

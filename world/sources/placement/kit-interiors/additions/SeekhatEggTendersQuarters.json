@@ -1,0 +1,42 @@
+{
+ "schemaVersion": 2,
+ "cellId": "SeekhatEggTendersQuarters",
+ "additions": [
+  {
+   "id": "SeekhatEggTendersQuarters:add:door-candlehornfloor",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    116.56,
+    95.949,
+    58.652
+   ],
+   "rotZDeg": 0,
+   "zone": "door",
+   "why": "Lights the floor inside the door."
+  },
+  {
+   "id": "SeekhatEggTendersQuarters:add:bed-candlehornfloor",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    109.528,
+    95.949,
+    56.635
+   ],
+   "rotZDeg": 0,
+   "zone": "bed",
+   "why": "Lights the tenders' sleeping and work places between egg watches."
+  },
+  {
+   "id": "SeekhatEggTendersQuarters:add:bed-candlehornfloor-2",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    120.666,
+    96.486,
+    58.519
+   ],
+   "rotZDeg": 0,
+   "zone": "bed",
+   "why": "Lights the tenders' sleeping and work places between egg watches."
+  }
+ ]
+}

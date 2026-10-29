@@ -1,0 +1,315 @@
+{
+ "schemaVersion": 1,
+ "domain": "stance",
+ "_": "First-draft stance and voice sheets composed down the culture chain; the place review sets each row and marks it reviewed.",
+ "placeId": "place.imperial-fringe.bog-iron-workings",
+ "generator": "worldgen.dialogue_compose",
+ "derivedFrom": [
+  "world/sources/dialogue/cultures/",
+  "world/sources/registries/npcs.json"
+ ],
+ "entries": [
+  {
+   "personId": "npc.imperial-fringe.bog-iron-workings.n1",
+   "chain": [
+    "culture.province.black-marsh",
+    "culture.region.imperial-fringe",
+    "culture.people.argonian-tribal",
+    "culture.settlement.bog-iron-workings",
+    "culture.group.bog-iron-workings.crew"
+   ],
+   "topics": {
+    "place": {
+     "lean": -1,
+     "from": "culture.settlement.bog-iron-workings",
+     "deviation": null
+    },
+    "work": {
+     "lean": 0,
+     "from": "culture.settlement.bog-iron-workings",
+     "deviation": {
+      "lean": 1,
+      "reason": "He has charge of the crew and is paid by the stacked cake; to him the work is a count, not a shame (record: sleeps by the stacked cakes)."
+     }
+    },
+    "people": {
+     "lean": 0,
+     "from": "culture.group.bog-iron-workings.crew",
+     "deviation": null
+    },
+    "faction": {
+     "lean": -1,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "hist": {
+     "lean": 2,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "empire": {
+     "lean": -1,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "trade": {
+     "lean": 1,
+     "from": "culture.group.bog-iron-workings.crew",
+     "deviation": {
+      "lean": 2,
+      "reason": "He sells every cake to the road crews himself and prices scraps for the smith in the west (record: supplies the Cold Forge)."
+     }
+    },
+    "danger": {
+     "lean": -2,
+     "from": "culture.settlement.bog-iron-workings",
+     "deviation": {
+      "lean": -1,
+      "reason": "He weighs the deep end against the season's pay and has not yet decided it costs more than it brings."
+     }
+    },
+    "rumour": {
+     "lean": 0,
+     "from": "culture.settlement.bog-iron-workings",
+     "deviation": null
+    },
+    "directions": {
+     "lean": 0,
+     "from": "culture.settlement.bog-iron-workings",
+     "deviation": null
+    }
+   },
+   "voice": {
+    "quirk": "Puts a price on everything he mentions, down to a cracked bowl.",
+    "chatter": "plain",
+    "answerLength": {
+     "topic": {
+      "min": 6,
+      "max": 55
+     },
+     "newcomer": {
+      "min": 6,
+      "max": 60
+     },
+     "rumour": {
+      "min": 8,
+      "max": 55
+     }
+    },
+    "contractionRate": 0.05,
+    "addressTerm": "buyer",
+    "favouriteSubject": "trade",
+    "neverMentions": [
+     "Who among the neighbours took the An-Xileel's side in 4E 48.",
+     "That a family was once owned, or once owned others.",
+     "That the Archein serfdoms were worse than what came after.",
+     "What the Legion did to the tribes before the withdrawal.",
+     "The Chukka-Sei naming secrets."
+    ]
+   },
+   "reviewed": true
+  },
+  {
+   "personId": "npc.imperial-fringe.bog-iron-workings.n1-2",
+   "chain": [
+    "culture.province.black-marsh",
+    "culture.region.imperial-fringe",
+    "culture.people.argonian-tribal",
+    "culture.settlement.bog-iron-workings",
+    "culture.group.bog-iron-workings.crew",
+    "culture.household.bog-iron-workings.timber-house"
+   ],
+   "topics": {
+    "place": {
+     "lean": -1,
+     "from": "culture.settlement.bog-iron-workings",
+     "deviation": null
+    },
+    "work": {
+     "lean": 0,
+     "from": "culture.settlement.bog-iron-workings",
+     "deviation": {
+      "lean": -1,
+      "reason": "She works the bellows from first light and feels the shame of the work most; she says so (record notes)."
+     }
+    },
+    "people": {
+     "lean": 0,
+     "from": "culture.group.bog-iron-workings.crew",
+     "deviation": null
+    },
+    "faction": {
+     "lean": -1,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "hist": {
+     "lean": 2,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "empire": {
+     "lean": -1,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "trade": {
+     "lean": 1,
+     "from": "culture.group.bog-iron-workings.crew",
+     "deviation": null
+    },
+    "danger": {
+     "lean": -2,
+     "from": "culture.settlement.bog-iron-workings",
+     "deviation": {
+      "lean": -2,
+      "reason": "From the bellows she hears what moves in the deep end at dusk; she is the one who is right about it."
+     }
+    },
+    "rumour": {
+     "lean": 0,
+     "from": "culture.settlement.bog-iron-workings",
+     "deviation": null
+    },
+    "directions": {
+     "lean": 0,
+     "from": "culture.settlement.bog-iron-workings",
+     "deviation": {
+      "lean": -1,
+      "reason": "She stays at the furnace all day and knows the road only as far as the path's top."
+     }
+    }
+   },
+   "voice": {
+    "quirk": "Opens every answer by disagreeing with the question.",
+    "chatter": "rambling",
+    "answerLength": {
+     "topic": {
+      "min": 6,
+      "max": 80
+     },
+     "newcomer": {
+      "min": 6,
+      "max": 80
+     },
+     "rumour": {
+      "min": 12,
+      "max": 80
+     }
+    },
+    "contractionRate": 0.4,
+    "addressTerm": "visitor",
+    "favouriteSubject": "danger",
+    "neverMentions": [
+     "Who among the neighbours took the An-Xileel's side in 4E 48.",
+     "That a family was once owned, or once owned others.",
+     "That the Archein serfdoms were worse than what came after.",
+     "What the Legion did to the tribes before the withdrawal.",
+     "The Chukka-Sei naming secrets."
+    ]
+   },
+   "reviewed": true
+  },
+  {
+   "personId": "npc.imperial-fringe.bog-iron-workings.n1-3",
+   "chain": [
+    "culture.province.black-marsh",
+    "culture.region.imperial-fringe",
+    "culture.people.argonian-tribal",
+    "culture.settlement.bog-iron-workings",
+    "culture.group.bog-iron-workings.crew",
+    "culture.household.bog-iron-workings.timber-house"
+   ],
+   "topics": {
+    "place": {
+     "lean": -1,
+     "from": "culture.settlement.bog-iron-workings",
+     "deviation": null
+    },
+    "work": {
+     "lean": 0,
+     "from": "culture.settlement.bog-iron-workings",
+     "deviation": null
+    },
+    "people": {
+     "lean": 0,
+     "from": "culture.group.bog-iron-workings.crew",
+     "deviation": {
+      "lean": -1,
+      "reason": "She lifts alone in the mud while the others stay dry at the furnace and the stack."
+     }
+    },
+    "faction": {
+     "lean": -1,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "hist": {
+     "lean": 2,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "empire": {
+     "lean": -1,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "trade": {
+     "lean": 1,
+     "from": "culture.group.bog-iron-workings.crew",
+     "deviation": null
+    },
+    "danger": {
+     "lean": -2,
+     "from": "culture.settlement.bog-iron-workings",
+     "deviation": {
+      "lean": 0,
+      "reason": "She lifts the cakes and sees the near mud is worked out; she would dig the deep end and calls the thing a frog (record: pressures)."
+     }
+    },
+    "rumour": {
+     "lean": 0,
+     "from": "culture.settlement.bog-iron-workings",
+     "deviation": {
+      "lean": 1,
+      "reason": "She knows better than anyone that each season's cakes are smaller. She tells it."
+     }
+    },
+    "directions": {
+     "lean": 0,
+     "from": "culture.settlement.bog-iron-workings",
+     "deviation": null
+    }
+   },
+   "voice": {
+    "quirk": "Counts the days left in the season out loud.",
+    "chatter": "plain",
+    "answerLength": {
+     "topic": {
+      "min": 6,
+      "max": 55
+     },
+     "newcomer": {
+      "min": 6,
+      "max": 60
+     },
+     "rumour": {
+      "min": 8,
+      "max": 55
+     }
+    },
+    "contractionRate": 0.05,
+    "addressTerm": "visitor",
+    "favouriteSubject": "work",
+    "neverMentions": [
+     "Who among the neighbours took the An-Xileel's side in 4E 48.",
+     "That a family was once owned, or once owned others.",
+     "That the Archein serfdoms were worse than what came after.",
+     "What the Legion did to the tribes before the withdrawal.",
+     "The Chukka-Sei naming secrets."
+    ]
+   },
+   "reviewed": true
+  }
+ ]
+}

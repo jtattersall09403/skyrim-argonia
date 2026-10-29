@@ -1,0 +1,244 @@
+{
+  "schemaVersion": 1,
+  "domain": "dialogue-lines",
+  "placeId": "place.fixture.dialogue-walk",
+  "_": "Walker and gate fixture (2.5b4, f1): three people, eleven lines, six barks. A real place lists no people: they come from world/sources/registries/npcs.json.",
+  "people": [
+    {
+      "id": "npc.fixture.ferry-keeper",
+      "name": "Wades-Twice",
+      "role": "ferry-keeper",
+      "services": [
+        "ferry",
+        "lodging"
+      ],
+      "topics": [
+        "topic.fixture-ford",
+        "topic.fixture-ferry"
+      ]
+    },
+    {
+      "id": "npc.fixture.smith",
+      "name": "Varo Bellis",
+      "role": "smith",
+      "services": [
+        "trade",
+        "train"
+      ],
+      "topics": [
+        "topic.fixture-ford",
+        "topic.fixture-smithing"
+      ]
+    },
+    {
+      "id": "npc.fixture.elder",
+      "name": "Old Meeka",
+      "role": "elder",
+      "services": [],
+      "topics": [
+        "topic.fixture-ford"
+      ]
+    }
+  ],
+  "entries": [
+    {
+      "schemaVersion": 1,
+      "id": "greeting.fixture-ferry-keeper",
+      "type": "greeting",
+      "speaker": "npc.fixture.ferry-keeper",
+      "words": "Raft leaves when it is full.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.fixture-smith",
+      "type": "greeting",
+      "speaker": "npc.fixture.smith",
+      "words": "Mind the sparks.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.fixture-elder",
+      "type": "greeting",
+      "speaker": "npc.fixture.elder",
+      "words": "The frogs are loud tonight.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.fixture-elder-fond",
+      "type": "greeting",
+      "speaker": "npc.fixture.elder",
+      "words": "Sit by me, child; the reeds are kind today.",
+      "available": [
+        {
+          "speakerDispositionAtLeast": 70
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.fixture-ferry-keeper.fixture-ford",
+      "type": "dialogue",
+      "speaker": "npc.fixture.ferry-keeper",
+      "keys": {
+        "topic": "topic.fixture-ford"
+      },
+      "words": "Waist-deep at low water. I pole the carts over.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.fixture-ford.default",
+        "hash": "db85cac9"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.fixture-ferry-keeper.fixture-ferry",
+      "type": "dialogue",
+      "speaker": "npc.fixture.ferry-keeper",
+      "keys": {
+        "topic": "topic.fixture-ferry"
+      },
+      "words": "Twice a day, five drakes a head, goats free.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.fixture-ferry.default",
+        "hash": "cbbe9d48"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.fixture-smith.fixture-ford",
+      "type": "dialogue",
+      "speaker": "npc.fixture.smith",
+      "keys": {
+        "topic": "topic.fixture-ford"
+      },
+      "words": "My ore comes over it on Wades-Twice's raft.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.fixture-ford.default",
+        "hash": "db85cac9"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.fixture-smith.fixture-smithing",
+      "type": "dialogue",
+      "speaker": "npc.fixture.smith",
+      "keys": {
+        "topic": "topic.fixture-smithing"
+      },
+      "words": "Bog iron. Soft as cheese until I fold it.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.fixture-smithing.default",
+        "hash": "b0fda847"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.fixture-elder.fixture-ford",
+      "type": "dialogue",
+      "speaker": "npc.fixture.elder",
+      "keys": {
+        "topic": "topic.fixture-ford"
+      },
+      "words": "My grandmother crossed it to reach the Hist.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.fixture-ford.default",
+        "hash": "db85cac9"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.fixture-elder.fixture-hist",
+      "type": "dialogue",
+      "speaker": "npc.fixture.elder",
+      "keys": {
+        "topic": "topic.fixture-hist"
+      },
+      "words": "We drink from the Hist, as my mother did.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.fixture-hist.default",
+        "hash": "fbb37939"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.fixture-elder.fixture-goats",
+      "type": "dialogue",
+      "speaker": "npc.fixture.elder",
+      "keys": {
+        "topic": "topic.fixture-goats"
+      },
+      "words": "Two of mine. Something in the reeds has grown bold.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.fixture-goats.default",
+        "hash": "cb44acd6"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.fixture-ferry-keeper.passing",
+      "type": "bark",
+      "speaker": "npc.fixture.ferry-keeper",
+      "slot": "passing",
+      "words": "Keep your boots out of the bilge.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.fixture-ferry-keeper.at-work",
+      "type": "bark",
+      "speaker": "npc.fixture.ferry-keeper",
+      "slot": "at-work",
+      "words": "Pole down, then push again.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.fixture-smith.passing",
+      "type": "bark",
+      "speaker": "npc.fixture.smith",
+      "slot": "passing",
+      "words": "Watch the quench barrel.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.fixture-smith.at-work",
+      "type": "bark",
+      "speaker": "npc.fixture.smith",
+      "slot": "at-work",
+      "words": "This edge wants another heat.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.fixture-elder.passing",
+      "type": "bark",
+      "speaker": "npc.fixture.elder",
+      "slot": "passing",
+      "words": "The water was higher when I hatched.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.fixture-elder.at-work",
+      "type": "bark",
+      "speaker": "npc.fixture.elder",
+      "slot": "at-work",
+      "words": "Hand me those reeds, slowly.",
+      "available": []
+    }
+  ]
+}

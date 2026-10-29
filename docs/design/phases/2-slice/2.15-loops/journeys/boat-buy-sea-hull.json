@@ -1,0 +1,135 @@
+{
+ "id": "boat-buy-sea-hull",
+ "start": {
+  "query": "?view=character&x=3903.5&z=6358.2&t=10:00&d=8-17",
+  "kit": "start",
+  "grant": [
+   {
+    "item": "gold",
+    "count": 2400
+   }
+  ]
+ },
+ "notes": "The Lighter Flotilla by day. The lighterman Xal-Jei (npc.mercantile-coast.lighter-flotilla.lighterman, 3905.0, 6357.6 at 10:00, his work socket at the quay end) sells his longboat, the one sea hull on this water (boat.lighter-flotilla.longboat, 2400 gold, moored at socket.lighter-flotilla.sea-hull-mooring 3865.9, 6364.77). He stands on the quay deck over the lighter berth. Staged on the deck 1.5 m off his west side (stage.at with his actor id; the scene tests the buy, not the walk along the quay), the camera aimed at him so the aim ray, not the nearest crewman, wins E (arbiter.ts aimedCandidate); then E, the boat window, Buy on the sea hull, the confirm naming the price against the purse, Buy pays; then the pause map with the longboat's pin as the player's. Who is near: the purser 6.3 m, the flotilla speaker 24.4 m; no hostile. Lit: the sky at 10:00.",
+ "steps": [
+  {
+   "name": "beside-the-seller",
+   "transition": "Staged on the deck beside the lighterman, turned to face him",
+   "stage": {
+    "at": {
+     "x": 3903.5,
+     "z": 6358.2,
+     "yaw": 0,
+     "actor": "npc.mercantile-coast.lighter-flotilla.lighterman",
+     "near_m": 1.5
+    },
+    "hour": 10,
+    "place": "place.mercantile-coast.lighter-flotilla",
+    "near": [
+     {
+      "id": "npc.mercantile-coast.lighter-flotilla.lighterman",
+      "m": 1.5,
+      "facing": false
+     },
+     {
+      "id": "npc.mercantile-coast.lighter-flotilla.purser",
+      "m": 6.3,
+      "facing": false
+     },
+     {
+      "id": "npc.mercantile-coast.lighter-flotilla.flotilla-speaker",
+      "m": 24.4,
+      "facing": false
+     }
+    ]
+   },
+   "do": {
+    "action": "observe"
+   },
+   "keys": [
+    {
+     "wait_s": 1.0
+    },
+    {
+     "aimAt": "npc.mercantile-coast.lighter-flotilla.lighterman"
+    },
+    {
+     "wait_s": 0.6
+    }
+   ],
+   "expect": {}
+  },
+  {
+   "name": "buy-the-sea-hull",
+   "transition": "E: the lighterman's talk; his boat window; Buy on the sea hull; the confirm shows 2400 against the purse; Buy pays",
+   "do": {
+    "action": "boat",
+    "op": "buy",
+    "seller": "npc.mercantile-coast.lighter-flotilla.lighterman",
+    "classId": "sea-hull"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 1.2
+    },
+    {
+     "click": "[data-service=\"boat\"]"
+    },
+    {
+     "wait_s": 1.0
+    },
+    {
+     "click": "[data-boat-buy=\"sea-hull\"]"
+    },
+    {
+     "wait_s": 1.2
+    },
+    {
+     "click": "[data-confirm=\"deal\"] [data-es-act=\"accept\"]"
+    },
+    {
+     "wait_s": 1.2
+    },
+    {
+     "press": "Escape"
+    },
+    {
+     "wait_s": 0.6
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.lighter-flotilla.longboat",
+     "owner": "player",
+     "event": "bought",
+     "spent": 2400
+    }
+   }
+  },
+  {
+   "name": "yours-on-the-map",
+   "transition": "Esc: the pause deck opens with the map; the longboat's pin is marked as the player's boat",
+   "do": {
+    "action": "observe"
+   },
+   "keys": [
+    {
+     "press": "Escape"
+    },
+    {
+     "wait_s": 1.5
+    }
+   ],
+   "hold_s": 1.5,
+   "expect": {
+    "boat": {
+     "id": "boat.lighter-flotilla.longboat",
+     "owner": "player"
+    }
+   }
+  }
+ ]
+}

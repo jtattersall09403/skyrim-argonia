@@ -1,0 +1,86 @@
+{
+ "schemaVersion": 2,
+ "cellId": "CIPHTBMHutInterior01",
+ "additions": [
+  {
+   "id": "CIPHTBMHutInterior01:add:door-argoniancandle-01",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    -1.9,
+    0.086,
+    -0.8
+   ],
+   "rotZDeg": 0,
+   "zone": "door",
+   "why": "Lights the door, so whoever brings a body in can see the floor."
+  },
+  {
+   "id": "CIPHTBMHutInterior01:add:store-argoniancandle-01",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    -1.9,
+    0.086,
+    0.7
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Lights the barrels along the west wall."
+  },
+  {
+   "id": "CIPHTBMHutInterior01:add:work-argoniancandle-01",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    0.6,
+    0.086,
+    -1.6
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the basket and the hay by the front wall."
+  },
+  {
+   "id": "CIPHTBMHutInterior01:add:hearth-argoniancandle-01",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    0.9,
+    0.091,
+    0.3
+   ],
+   "rotZDeg": 0,
+   "zone": "hearth",
+   "why": "Lights the middle of the room beside the brazier."
+  },
+  {
+   "id": "CIPHTBMHutInterior01:add:table-argoniancandle-01",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    1.1,
+    0.091,
+    1.0
+   ],
+   "rotZDeg": 0,
+   "zone": "table",
+   "why": "Lights the table where the fish are gutted."
+  },
+  {
+   "id": "CIPHTBMHutInterior01:add:bed-bedrollhay",
+   "assetId": "vanilla:furniture/bedroll/bedrollhay01",
+   "pos": [-1.1, 0.25, 1.9],
+   "rotZDeg": 90,
+   "scale": 0.65,
+   "zone": "bed",
+   "why": "A hay nest along the back wall, where the dyer, the net-menders and the smith sleep.",
+   "activity": "sleep"
+  },
+  {
+   "id": "CIPHTBMHutInterior01:add:bed-bedrollhay-2",
+   "assetId": "vanilla:furniture/bedroll/bedrollhay01",
+   "pos": [1.5, 0.25, -1.0],
+   "rotZDeg": 0,
+   "scale": 0.65,
+   "zone": "bed",
+   "why": "A hay nest by the east wall, where the reed-cutters and the trader sleep.",
+   "activity": "sleep"
+  }
+ ]
+}

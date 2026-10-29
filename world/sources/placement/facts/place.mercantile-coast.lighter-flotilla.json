@@ -1,0 +1,2381 @@
+{
+ "schemaVersion": 1,
+ "placeId": "place.mercantile-coast.lighter-flotilla",
+ "facts": [
+  {
+   "id": "fact.lighter-flotilla.tag-service-hub",
+   "claim": "Lighter Flotilla sells goods and services to travellers.",
+   "sourceField": "playerPurpose.primary",
+   "tag": "service-hub",
+   "kind": "service",
+   "carrier": {
+    "built": {
+     "uid": "socket.lighter-flotilla.npc-purser",
+     "type": "npc"
+    }
+   }
+  },
+  {
+   "id": "fact.lighter-flotilla.tag-safe-rest",
+   "claim": "A traveller can rest safely at Lighter Flotilla.",
+   "sourceField": "playerPurpose.secondary",
+   "tag": "safe-rest",
+   "kind": "service",
+   "carrier": {
+    "built": {
+     "uid": "socket.lighter-flotilla.npc-crew",
+     "type": "npc"
+    }
+   }
+  },
+  {
+   "id": "fact.lighter-flotilla.tag-social-drama",
+   "claim": "The people of Lighter Flotilla are caught in a quarrel the player can see.",
+   "sourceField": "playerPurpose.secondary",
+   "tag": "social-drama",
+   "kind": "activity",
+   "carrier": {
+    "built": {
+     "uid": "socket.lighter-flotilla.npc-speaker",
+     "type": "npc"
+    }
+   }
+  },
+  {
+   "id": "fact.lighter-flotilla.tag-services",
+   "claim": "Lighter Flotilla offers services to travellers.",
+   "sourceField": "lootTable.kinds",
+   "tag": "services",
+   "kind": "service",
+   "carrier": {
+    "built": {
+     "uid": "socket.lighter-flotilla.npc-lighterman",
+     "type": "npc"
+    }
+   }
+  },
+  {
+   "id": "fact.lighter-flotilla.tag-trade-access",
+   "claim": "A player can buy and sell at Lighter Flotilla.",
+   "sourceField": "lootTable.kinds",
+   "tag": "trade-access",
+   "kind": "service",
+   "carrier": {
+    "built": {
+     "uid": "socket.lighter-flotilla.npc-purser",
+     "type": "npc"
+    }
+   }
+  },
+  {
+   "id": "fact.lighter-flotilla.tag-rest-shelter",
+   "claim": "Lighter Flotilla gives shelter for the night.",
+   "sourceField": "lootTable.kinds",
+   "tag": "rest-shelter",
+   "kind": "service",
+   "carrier": {
+    "built": {
+     "uid": "socket.lighter-flotilla.npc-crew",
+     "type": "npc"
+    }
+   }
+  },
+  {
+   "id": "fact.lighter-flotilla.why-founding-1",
+   "claim": "The lighter crews live aboard their boats at permanent moorings beside the lighter quay.",
+   "sourceField": "why.founding",
+   "kind": "activity",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.mercantile-coast.lighter-flotilla.lighterman"
+    }
+   }
+  },
+  {
+   "id": "fact.lighter-flotilla.why-founding-2",
+   "claim": "The crews lighter goods ashore from the large ships that cannot dock at Lilmoth.",
+   "sourceField": "why.founding",
+   "kind": "activity",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.mercantile-coast.lighter-flotilla.n1"
+    }
+   }
+  },
+  {
+   "id": "fact.lighter-flotilla.why-siteAdvantages-1",
+   "claim": "The moorings lie in sheltered estuary water off Lilmoth's east bank.",
+   "sourceField": "why.siteAdvantages",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "pier-sol2",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.lighter-flotilla.why-pressures-1",
+   "claim": "A council attempt to license lightering caused a two-week stoppage.",
+   "sourceField": "why.pressures",
+   "kind": "history",
+   "carrier": {
+    "queued": {
+     "type": "quest-beat",
+     "ref": "quest.local.lm08"
+    }
+   }
+  },
+  {
+   "id": "fact.lighter-flotilla.vibe-silhouette-1",
+   "claim": "A line of masts stands along the south side of the pier.",
+   "sourceField": "vibe.silhouette",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "h-s00",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.lighter-flotilla.vibe-silhouette-2",
+   "claim": "The tall trade ship lies alongside the pier head.",
+   "sourceField": "vibe.silhouette",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "tradeship",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.lighter-flotilla.vibe-materials-1",
+   "claim": "Some hulls have their sails furled on the yards.",
+   "sourceField": "vibe.materials",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "h-n00",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.lighter-flotilla.vibe-materials-2",
+   "claim": "Plank ferries are moored singly along the north side of the pier.",
+   "sourceField": "vibe.materials",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "r00",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.lighter-flotilla.vibe-materials-3",
+   "claim": "A short landing stage runs over the reed shallows to the pier foot.",
+   "sourceField": "vibe.materials",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "land",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.lighter-flotilla.vibe-signatureFeature-1",
+   "claim": "Five working hulls are moored as houses along one timber pier.",
+   "sourceField": "vibe.signatureFeature",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "h-n02",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.lighter-flotilla.vibe-signatureFeature-2",
+   "claim": "The Alten Meerhleel trade ship lies alongside the pier head.",
+   "sourceField": "vibe.signatureFeature",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "tradeship",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.lighter-flotilla.vibe-signatureFeature-3",
+   "claim": "A lighter lies alongside the pier's north side.",
+   "sourceField": "vibe.signatureFeature",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "lighter",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.lighter-flotilla.playerPurpose-hook-1",
+   "claim": "The crews who move every cargo in the bay live aboard these hulls.",
+   "sourceField": "playerPurpose.hook",
+   "kind": "activity",
+   "carrier": {
+    "built": {
+     "uid": "socket.lighter-flotilla.npc-crew",
+     "type": "npc"
+    }
+   }
+  },
+  {
+   "id": "fact.lighter-flotilla.questHooks-opportunity-1",
+   "claim": "The player can carry the licensing offer between the council and the crews.",
+   "sourceField": "questHooks.opportunity",
+   "kind": "activity",
+   "carrier": {
+    "built": {
+     "uid": "socket.lighter-flotilla.npc-speaker",
+     "type": "npc"
+    }
+   }
+  },
+  {
+   "id": "fact.lighter-flotilla.contents-loot-l1-1",
+   "claim": "A hidden cache holds cargo landed off a hull that never reached the quay.",
+   "sourceField": "contents.loot.l1",
+   "kind": "cache",
+   "carrier": {
+    "queued": {
+     "type": "quest-beat",
+     "ref": "quest.local.lm23"
+    }
+   }
+  },
+  {
+   "id": "fact.lighter-flotilla.vibe-approach-1",
+   "claim": "From the bank the flotilla looks like a moored fleet.",
+   "sourceField": "vibe.approach",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.raft-r00.building",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.lighter-flotilla.vibe-approach-2",
+   "claim": "A timber pier runs between the bows and the market rafts.",
+   "sourceField": "vibe.approach",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.raft-r00.building",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.lighter-flotilla.vibe-condition-1",
+   "claim": "Every hull is afloat and in use.",
+   "sourceField": "vibe.condition",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.hull-s00.building",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.lighter-flotilla.vibe-condition-2",
+   "claim": "Few of the hulls would pass a sea survey.",
+   "sourceField": "vibe.condition",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.mercantile-coast.lighter-flotilla.purser"
+    }
+   }
+  },
+  {
+   "id": "fact.lighter-flotilla.vibe-condition-3",
+   "claim": "The moorings have not shifted in years.",
+   "sourceField": "vibe.condition",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.mercantile-coast.lighter-flotilla.lighterman"
+    }
+   }
+  },
+  {
+   "id": "fact.lighter-flotilla.vibe-mood-1",
+   "claim": "The mood is independent and orderly.",
+   "sourceField": "vibe.mood",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.mercantile-coast.lighter-flotilla.flotilla-speaker"
+    }
+   }
+  },
+  {
+   "id": "fact.lighter-flotilla.vibe-palette-1",
+   "claim": "The colours are tarred hulls, pale furled canvas and brown estuary water.",
+   "sourceField": "vibe.palette",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.hull-n00.building",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.lighter-flotilla.vibe-senses-1",
+   "claim": "Gangplanks and gear knock all night, and rigging creaks.",
+   "sourceField": "vibe.senses",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.mercantile-coast.lighter-flotilla.lighterman"
+    }
+   }
+  },
+  {
+   "id": "fact.lighter-flotilla.vibe-senses-2",
+   "claim": "Crews cook on deck.",
+   "sourceField": "vibe.senses",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.mercantile-coast.lighter-flotilla.lighterman"
+    }
+   }
+  },
+  {
+   "id": "fact.lighter-flotilla.vibe-senses-3",
+   "claim": "The air smells of tar, bilge and estuary.",
+   "sourceField": "vibe.senses",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.mercantile-coast.lighter-flotilla.lighterman"
+    }
+   }
+  },
+  {
+   "id": "fact.lighter-flotilla.why-occupantsMotive-1",
+   "claim": "The lighter crews control the link between deep-water hulls and the city.",
+   "sourceField": "why.occupantsMotive",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.mercantile-coast.lighter-flotilla.flotilla-speaker"
+    }
+   }
+  },
+  {
+   "id": "fact.lighter-flotilla.why-occupantsMotive-2",
+   "claim": "The crews know what that link is worth.",
+   "sourceField": "why.occupantsMotive",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.mercantile-coast.lighter-flotilla.flotilla-speaker"
+    }
+   }
+  },
+  {
+   "id": "fact.lighter-flotilla.why-wouldChangeIf-1",
+   "claim": "A dredged deep-water channel would end the flotilla.",
+   "sourceField": "why.wouldChangeIf",
+   "kind": "activity",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.mercantile-coast.lighter-flotilla.flotilla-speaker"
+    }
+   }
+  },
+  {
+   "id": "fact.lighter-flotilla.why-wouldChangeIf-2",
+   "claim": "The channel would also end the city's hold on its own trade.",
+   "sourceField": "why.wouldChangeIf",
+   "kind": "activity",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.mercantile-coast.lighter-flotilla.flotilla-speaker"
+    }
+   }
+  }
+ ],
+ "world": {
+  "schemaVersion": 1,
+  "name": "Lighter Flotilla",
+  "positionM": [
+   3828.0,
+   6356.0
+  ],
+  "footprintRadiusM": 78.0,
+  "boundaryM": [
+   [
+    3904.34,
+    6340.23
+   ],
+   [
+    3870.91,
+    6340.96
+   ],
+   [
+    3831.6,
+    6344.0
+   ],
+   [
+    3824.58,
+    6344.63
+   ],
+   [
+    3818.13,
+    6351.6
+   ],
+   [
+    3818.13,
+    6360.6
+   ],
+   [
+    3810.63,
+    6361.86
+   ],
+   [
+    3810.63,
+    6394.31
+   ],
+   [
+    3823.16,
+    6394.31
+   ],
+   [
+    3826.62,
+    6370.68
+   ],
+   [
+    3864.69,
+    6381.77
+   ],
+   [
+    3866.45,
+    6381.81
+   ],
+   [
+    3872.98,
+    6381.81
+   ],
+   [
+    3897.01,
+    6379.45
+   ],
+   [
+    3899.26,
+    6379.2
+   ],
+   [
+    3902.38,
+    6378.55
+   ],
+   [
+    3905.38,
+    6377.64
+   ],
+   [
+    3911.36,
+    6374.68
+   ],
+   [
+    3922.57,
+    6359.31
+   ],
+   [
+    3924.22,
+    6349.39
+   ],
+   [
+    3917.99,
+    6344.54
+   ],
+   [
+    3916.53,
+    6343.64
+   ],
+   [
+    3914.82,
+    6342.81
+   ],
+   [
+    3914.34,
+    6342.62
+   ],
+   [
+    3912.69,
+    6341.96
+   ],
+   [
+    3906.06,
+    6340.23
+   ]
+  ],
+  "extentM": [
+   [
+    3810.63,
+    6361.86
+   ],
+   [
+    3818.13,
+    6351.6
+   ],
+   [
+    3824.58,
+    6344.63
+   ],
+   [
+    3831.6,
+    6344.0
+   ],
+   [
+    3870.91,
+    6340.96
+   ],
+   [
+    3904.34,
+    6340.23
+   ],
+   [
+    3906.06,
+    6340.23
+   ],
+   [
+    3912.69,
+    6341.96
+   ],
+   [
+    3914.34,
+    6342.62
+   ],
+   [
+    3914.82,
+    6342.81
+   ],
+   [
+    3916.53,
+    6343.64
+   ],
+   [
+    3917.99,
+    6344.54
+   ],
+   [
+    3924.22,
+    6349.39
+   ],
+   [
+    3922.57,
+    6359.31
+   ],
+   [
+    3911.36,
+    6374.68
+   ],
+   [
+    3905.38,
+    6377.64
+   ],
+   [
+    3902.38,
+    6378.55
+   ],
+   [
+    3899.26,
+    6379.2
+   ],
+   [
+    3823.16,
+    6394.31
+   ],
+   [
+    3810.63,
+    6394.31
+   ]
+  ],
+  "extentRadiusM": 96.5,
+  "route": {
+   "lineId": "track.mercantile-coast.lighter-flotilla",
+   "kind": "footpath",
+   "name": null,
+   "from": "place.mercantile-coast.lighter-flotilla",
+   "to": "network",
+   "vertexM": [
+    3813.79,
+    6396.53
+   ],
+   "offExtentM": 3.9,
+   "alongM": 11.0,
+   "lengthM": 210.9
+  },
+  "stands": [
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.hull-n00.assembly.h-n00-rope-post",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3898.83,
+     0.32,
+     6356.96
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.hull-n00.building",
+    "assetId": "sailboats:sailboats/sailboatfurled",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     3898.41,
+     -0.31,
+     6354.4
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.hull-n01.assembly.h-n01-rope-post",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3872.03,
+     0.32,
+     6359.21
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.hull-n01.building",
+    "assetId": "ferries:yamadori/ferries/volkihar_ferry_01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     3871.8,
+     -0.36,
+     6365.22
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.hull-n02.assembly.h-n02-rope-post",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3879.34,
+     0.32,
+     6359.37
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.hull-n02.building",
+    "assetId": "ferries:yamadori/ferries/river_ferry_rift_01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     3880.1,
+     0.11,
+     6364.6
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.hull-s00.assembly.h-s00-rope-post",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3866.32,
+     0.32,
+     6359.22
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.hull-s00.assembly.shore-marshweed",
+    "assetId": "bmv:landscape/trees/reedsmall2",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3820.4,
+     -0.06,
+     6359.4
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.hull-s00.building",
+    "assetId": "sailboats:sailboats/longboatfurled",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     3865.9,
+     -0.19,
+     6364.77
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.hull-s01.assembly.h-s01-rope-post",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3875.43,
+     0.32,
+     6359.29
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.hull-s01.building",
+    "assetId": "sailboats:sailboats/sailboatfurled",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     3876.15,
+     -0.31,
+     6364.28
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.lighter-berth.assembly.lighter-rope-post",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3903.01,
+     0.32,
+     6356.87
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.lighter-berth.building",
+    "assetId": "ferries:yamadori/ferries/volkihar_ferry_01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     3905.7,
+     -0.36,
+     6353.45
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.raft-r00.assembly.mk-r00-0",
+    "assetId": "vanilla:clutter/common/cratesmall01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3870.65,
+     0.66,
+     6354.2
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.raft-r00.assembly.mk-r00-1",
+    "assetId": "vanilla:clutter/barrel02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3872.85,
+     0.27,
+     6354.98
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.raft-r00.assembly.mk-r00-2",
+    "assetId": "vanilla:clutter/common/cratesmall02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3872.6,
+     0.62,
+     6354.1
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.raft-r00.assembly.r00-rope-post",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3869.32,
+     0.32,
+     6356.62
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.raft-r00.building",
+    "assetId": "ferries:yamadori/ferries/plank_ferry_swamp_01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     3871.55,
+     0.2,
+     6355.09
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.raft-r01.assembly.mk-r01-0",
+    "assetId": "vanilla:clutter/common/cratesmall02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3873.9,
+     0.59,
+     6354.98
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.raft-r01.assembly.mk-r01-1",
+    "assetId": "vanilla:clutter/barrel02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3876.5,
+     0.27,
+     6354.98
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.raft-r01.assembly.mk-r01-2",
+    "assetId": "vanilla:clutter/common/candlelanternwithcandle01",
+    "kind": "settlement",
+    "layer": "light",
+    "positionM": [
+     3873.95,
+     0.32,
+     6354.23
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.raft-r01.assembly.r01-rope-post",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3877.07,
+     0.32,
+     6356.62
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.raft-r01.building",
+    "assetId": "ferries:yamadori/ferries/plank_ferry_swamp_01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     3875.2,
+     0.2,
+     6355.09
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.raft-r02.assembly.mk-r02-0",
+    "assetId": "vanilla:clutter/common/cratesmall01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3878.1,
+     0.66,
+     6354.2
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.raft-r02.assembly.mk-r02-1",
+    "assetId": "vanilla:clutter/barrel02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3880.15,
+     0.27,
+     6354.98
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.raft-r02.assembly.mk-r02-2",
+    "assetId": "vanilla:clutter/common/cratesmall02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3879.9,
+     0.62,
+     6354.1
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.raft-r02.assembly.r02-rope-post",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3876.6,
+     0.32,
+     6356.62
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.raft-r02.building",
+    "assetId": "ferries:yamadori/ferries/plank_ferry_swamp_01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     3878.85,
+     0.2,
+     6355.09
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.raft-r03.assembly.mk-r03-0",
+    "assetId": "vanilla:clutter/carts/handcartcrate",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3883.8,
+     0.17,
+     6354.78
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.raft-r03.assembly.mk-r03-1",
+    "assetId": "vanilla:clutter/barrel02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3881.35,
+     0.27,
+     6354.98
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.raft-r03.assembly.mk-r03-2",
+    "assetId": "vanilla:clutter/common/candlelanternwithcandle01",
+    "kind": "settlement",
+    "layer": "light",
+    "positionM": [
+     3881.4,
+     0.32,
+     6354.23
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.raft-r03.assembly.r03-rope-post",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3884.35,
+     0.32,
+     6356.62
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.raft-r03.building",
+    "assetId": "ferries:yamadori/ferries/plank_ferry_swamp_01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     3882.65,
+     0.2,
+     6355.09
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.ship-stairs.piece.1",
+    "assetId": "kotm:argonia/mudhuts/stairs01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     3895.29,
+     1.44,
+     6359.35
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.ship-stairs.piece.2",
+    "assetId": "kotm:argonia/mudhuts/stairs01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     3895.24,
+     1.91,
+     6361.78
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.the-landing.piece.1",
+    "assetId": "vanilla:architecture/docks/dockstrent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     3825.79,
+     0.32,
+     6360.84
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.the-landing.piece.2",
+    "assetId": "vanilla:architecture/docks/dockstrsol01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     3823.06,
+     0.32,
+     6367.59
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.the-landing.piece.3",
+    "assetId": "vanilla:architecture/docks/dockstrsol01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     3820.33,
+     0.32,
+     6374.34
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.the-landing.piece.4",
+    "assetId": "vanilla:architecture/docks/dockstrsol01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     3817.61,
+     0.32,
+     6381.09
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.the-landing.piece.5",
+    "assetId": "vanilla:architecture/docks/dockstrsol01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     3814.88,
+     0.32,
+     6387.84
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.the-street.assembly.pier-alchemy",
+    "assetId": "vanilla:furniture/workbenches/alchemyworkbench01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3848.0,
+     0.32,
+     6356.95
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.the-street.assembly.pier-bench-e",
+    "assetId": "vanilla:furniture/farm/farmbench01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3891.5,
+     0.32,
+     6357.5
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.the-street.assembly.pier-bench-w",
+    "assetId": "vanilla:furniture/farm/farmbench01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3861.0,
+     0.32,
+     6357.5
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.the-street.assembly.pier-lamp-e",
+    "assetId": "vanilla:clutter/common/candlelanternwithcandle01",
+    "kind": "settlement",
+    "layer": "light",
+    "positionM": [
+     3901.0,
+     0.34,
+     6356.9
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.the-street.assembly.pier-lamp-foot",
+    "assetId": "vanilla:clutter/common/candlelanternwithcandle01",
+    "kind": "settlement",
+    "layer": "light",
+    "positionM": [
+     3834.0,
+     0.34,
+     6356.9
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.the-street.assembly.pier-lamp-m",
+    "assetId": "vanilla:clutter/common/candlelanternwithcandle01",
+    "kind": "settlement",
+    "layer": "light",
+    "positionM": [
+     3877.5,
+     0.34,
+     6359.3
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.the-street.assembly.pier-lamp-mid2",
+    "assetId": "vanilla:clutter/common/candlelanternwithcandle01",
+    "kind": "settlement",
+    "layer": "light",
+    "positionM": [
+     3855.0,
+     0.34,
+     6356.9
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.the-street.assembly.pier-lamp-w",
+    "assetId": "vanilla:clutter/common/candlelanternwithcandle01",
+    "kind": "settlement",
+    "layer": "light",
+    "positionM": [
+     3868.0,
+     0.34,
+     6359.2
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.the-street.piece.1",
+    "assetId": "vanilla:architecture/docks/dockstrent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     3832.8,
+     0.32,
+     6358.0
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.the-street.piece.10",
+    "assetId": "vanilla:architecture/docks/dockstrsol01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     3898.32,
+     0.32,
+     6358.0
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.the-street.piece.11",
+    "assetId": "vanilla:architecture/docks/dockstrsol01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     3905.6,
+     0.32,
+     6358.0
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.the-street.piece.2",
+    "assetId": "vanilla:architecture/docks/dockstrsol01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     3840.08,
+     0.32,
+     6358.0
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.the-street.piece.3",
+    "assetId": "vanilla:architecture/docks/dockstrsol01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     3847.36,
+     0.32,
+     6358.0
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.the-street.piece.4",
+    "assetId": "vanilla:architecture/docks/dockstrsol01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     3854.64,
+     0.32,
+     6358.0
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.the-street.piece.5",
+    "assetId": "vanilla:architecture/docks/dockstrsol01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     3861.92,
+     0.32,
+     6358.0
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.the-street.piece.6",
+    "assetId": "vanilla:architecture/docks/dockstrsol01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     3869.2,
+     0.32,
+     6358.0
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.the-street.piece.7",
+    "assetId": "vanilla:architecture/docks/dockstrsol01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     3876.48,
+     0.32,
+     6358.0
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.the-street.piece.8",
+    "assetId": "vanilla:architecture/docks/dockstrsol01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     3883.76,
+     0.32,
+     6358.0
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.the-street.piece.9",
+    "assetId": "vanilla:architecture/docks/dockstrsol01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     3891.04,
+     0.32,
+     6358.0
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.tradeship.assembly.tradeship-rope",
+    "assetId": "vanilla:architecture/docks/dockropestr01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3895.85,
+     0.95,
+     6359.39
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.tradeship.assembly.tradeship-rope-post",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3897.1,
+     0.32,
+     6359.58
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.tradeship.assembly.ts-cargo-0",
+    "assetId": "vanilla:clutter/barrel02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3896.89,
+     1.56,
+     6366.22
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.tradeship.assembly.ts-cargo-1",
+    "assetId": "vanilla:clutter/barrel02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3897.68,
+     1.58,
+     6366.23
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.tradeship.assembly.ts-cargo-2",
+    "assetId": "vanilla:clutter/barrel02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3898.49,
+     1.58,
+     6366.34
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.tradeship.assembly.ts-cargo-3",
+    "assetId": "vanilla:clutter/brewerycasklargeclosed02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3898.47,
+     2.83,
+     6364.47
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.tradeship.assembly.ts-cargo-4",
+    "assetId": "vanilla:clutter/common/cratesmall02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3897.08,
+     1.89,
+     6361.39
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.tradeship.assembly.ts-cargo-5",
+    "assetId": "vanilla:clutter/common/cratesmalllong01eeco",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3895.39,
+     1.93,
+     6364.02
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.tradeship.assembly.ts-cargo-6",
+    "assetId": "vanilla:clutter/common/cratesmalllong02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3895.87,
+     2.55,
+     6365.4
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.tradeship.assembly.ts-cargo-7",
+    "assetId": "vanilla:clutter/common/cratesmalllong02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3894.97,
+     2.55,
+     6364.53
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.tradeship.assembly.ts-cargo-8",
+    "assetId": "vanilla:clutter/common/cratesmalllong03",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3895.96,
+     1.93,
+     6365.44
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.tradeship.assembly.ts-cargo-9",
+    "assetId": "vanilla:clutter/common/cratesmalllong04eeco",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3894.89,
+     1.93,
+     6365.41
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.tradeship.assembly.ts-lamp-aft",
+    "assetId": "vanilla:clutter/common/candlelanternwithcandle01",
+    "kind": "settlement",
+    "layer": "light",
+    "positionM": [
+     3889.0,
+     3.12,
+     6365.07
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.tradeship.assembly.ts-lamp-fore",
+    "assetId": "vanilla:clutter/common/candlelanternwithcandle01",
+    "kind": "settlement",
+    "layer": "light",
+    "positionM": [
+     3903.0,
+     3.69,
+     6365.07
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.tradeship.assembly.ts-lamp-mid",
+    "assetId": "vanilla:clutter/common/candlelanternwithcandle01",
+    "kind": "settlement",
+    "layer": "light",
+    "positionM": [
+     3893.2,
+     1.62,
+     6363.6
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.tradeship.assembly.ts-sign",
+    "assetId": "kotm:argonia/blackwood/sign",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3884.99,
+     3.8,
+     6361.51
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.tradeship.building",
+    "assetId": "composite:ship/eec-tradeship-with-door",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     3895.6,
+     0.0,
+     6365.07
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.hull-n02.assembly.h-n02-tally-crate",
+    "assetId": "vanilla:clutter/common/cratesmall02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3879.7,
+     1.14,
+     6367.9
+    ]
+   }
+  ],
+  "sockets": [
+   {
+    "id": "socket.lighter-flotilla.container-speaker-tally",
+    "kind": "container",
+    "area": "parcel.lighter-flotilla.hull-n02",
+    "positionM": [
+     3879.7,
+     1.14,
+     6367.9
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.lighter-flotilla.crew-mooring-1",
+    "kind": "mooring",
+    "area": "open",
+    "positionM": [
+     3898.41,
+     -0.31,
+     6354.4
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.lighter-flotilla.crew-mooring-2",
+    "kind": "mooring",
+    "area": "open",
+    "positionM": [
+     3876.15,
+     -0.31,
+     6364.28
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.lighter-flotilla.crew-mooring-3",
+    "kind": "mooring",
+    "area": "open",
+    "positionM": [
+     3880.1,
+     0.11,
+     6364.6
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.lighter-flotilla.crew-mooring-4",
+    "kind": "mooring",
+    "area": "open",
+    "positionM": [
+     3871.8,
+     -0.36,
+     6365.22
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.lighter-flotilla.crew-mooring-5",
+    "kind": "mooring",
+    "area": "open",
+    "positionM": [
+     3871.55,
+     0.2,
+     6355.09
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.lighter-flotilla.crew-mooring-6",
+    "kind": "mooring",
+    "area": "open",
+    "positionM": [
+     3882.65,
+     0.2,
+     6355.09
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.lighter-flotilla.den-osheeja-gar",
+    "kind": "fauna",
+    "area": "open",
+    "positionM": [
+     3842.8,
+     -1.01,
+     6382.7
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.lighter-flotilla.den-slaughterfish",
+    "kind": "encounter",
+    "area": "open",
+    "positionM": [
+     3865.3,
+     -3.69,
+     6401.6
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.lighter-flotilla.idle-lighterman-work",
+    "kind": "idle",
+    "area": "parcel.lighter-flotilla.lighter-berth",
+    "positionM": [
+     3905.0,
+     0.32,
+     6357.6
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.lighter-flotilla.idle-n1-home",
+    "kind": "idle",
+    "area": "parcel.lighter-flotilla.hull-n02",
+    "positionM": [
+     3880.1,
+     0.11,
+     6364.6
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.lighter-flotilla.idle-n1-work",
+    "kind": "idle",
+    "area": "parcel.lighter-flotilla.lighter-berth",
+    "positionM": [
+     3905.7,
+     -0.36,
+     6353.45
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.lighter-flotilla.idle-n2-home",
+    "kind": "idle",
+    "area": "parcel.lighter-flotilla.hull-s01",
+    "positionM": [
+     3876.15,
+     -0.31,
+     6364.28
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.lighter-flotilla.idle-n2-work",
+    "kind": "idle",
+    "area": "parcel.lighter-flotilla.hull-s01",
+    "positionM": [
+     3876.15,
+     -0.31,
+     6364.28
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.lighter-flotilla.idle-seat-pier-bench-e-1",
+    "kind": "idle",
+    "area": "parcel.lighter-flotilla.the-street",
+    "positionM": [
+     3891.5,
+     0.32,
+     6357.1
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.lighter-flotilla.idle-seat-pier-bench-e-2",
+    "kind": "idle",
+    "area": "parcel.lighter-flotilla.the-street",
+    "positionM": [
+     3891.5,
+     0.32,
+     6357.94
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.lighter-flotilla.idle-seat-pier-bench-w-1",
+    "kind": "idle",
+    "area": "parcel.lighter-flotilla.the-street",
+    "positionM": [
+     3861.0,
+     0.32,
+     6357.1
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.lighter-flotilla.idle-seat-pier-bench-w-2",
+    "kind": "idle",
+    "area": "parcel.lighter-flotilla.the-street",
+    "positionM": [
+     3861.0,
+     0.32,
+     6357.94
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.lighter-flotilla.idle-speaker-home",
+    "kind": "idle",
+    "area": "parcel.lighter-flotilla.hull-n02",
+    "positionM": [
+     3880.1,
+     0.11,
+     6364.6
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.lighter-flotilla.idle-speaker-work",
+    "kind": "idle",
+    "area": "parcel.lighter-flotilla.hull-n02",
+    "positionM": [
+     3880.1,
+     0.11,
+     6364.6
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.lighter-flotilla.marker-crew-standing",
+    "kind": "marker",
+    "area": "parcel.lighter-flotilla.hull-n02",
+    "positionM": [
+     3880.1,
+     0.11,
+     6364.6
+    ],
+    "fills": [
+     "promise.lighter-flotilla.marks-crew-standing"
+    ]
+   },
+   {
+    "id": "socket.lighter-flotilla.marker-crew-vote",
+    "kind": "marker",
+    "area": "parcel.lighter-flotilla.hull-n02",
+    "positionM": [
+     3880.1,
+     0.11,
+     6364.6
+    ],
+    "fills": [
+     "promise.lighter-flotilla.scene-crew-vote"
+    ]
+   },
+   {
+    "id": "socket.lighter-flotilla.marker-hire",
+    "kind": "marker",
+    "area": "parcel.lighter-flotilla.hull-n02",
+    "positionM": [
+     3880.1,
+     0.11,
+     6364.6
+    ],
+    "fills": [
+     "promise.lighter-flotilla.post-hire"
+    ]
+   },
+   {
+    "id": "socket.lighter-flotilla.marker-tg04-anchor",
+    "kind": "marker",
+    "area": "parcel.lighter-flotilla.hull-n02",
+    "positionM": [
+     3880.1,
+     0.11,
+     6364.6
+    ],
+    "fills": [
+     "promise.lighter-flotilla.provision-tg04-anchor"
+    ]
+   },
+   {
+    "id": "socket.lighter-flotilla.npc-crew",
+    "kind": "npc",
+    "area": "parcel.lighter-flotilla.hull-n02",
+    "positionM": [
+     3880.1,
+     0.11,
+     6364.6
+    ],
+    "fills": [
+     "promise.lighter-flotilla.occupant-n1"
+    ],
+    "slot": "n1"
+   },
+   {
+    "id": "socket.lighter-flotilla.npc-lighterman",
+    "kind": "npc",
+    "area": "parcel.lighter-flotilla.lighter-berth",
+    "positionM": [
+     3905.0,
+     0.32,
+     6357.6
+    ],
+    "fills": [
+     "promise.lighter-flotilla.service-ferry",
+     "promise.lighter-flotilla.travel-station",
+     "promise.lighter-flotilla.thing-boat"
+    ],
+    "slot": "lighterman"
+   },
+   {
+    "id": "socket.lighter-flotilla.npc-n2",
+    "kind": "npc",
+    "area": "parcel.lighter-flotilla.hull-s01",
+    "positionM": [
+     3876.15,
+     -0.31,
+     6364.28
+    ],
+    "fills": [
+     "promise.lighter-flotilla.occupant-n2"
+    ],
+    "slot": "n2"
+   },
+   {
+    "id": "socket.lighter-flotilla.npc-purser",
+    "kind": "npc",
+    "area": "MurkmireTravelShipAltenMeerhleel",
+    "positionM": [
+     129.2,
+     90.21,
+     61.44
+    ],
+    "fills": [
+     "promise.lighter-flotilla.safe-interior"
+    ],
+    "slot": "purser"
+   },
+   {
+    "id": "socket.lighter-flotilla.npc-speaker",
+    "kind": "npc",
+    "area": "parcel.lighter-flotilla.hull-n02",
+    "positionM": [
+     3880.1,
+     0.11,
+     6364.6
+    ],
+    "fills": [
+     "promise.lighter-flotilla.occupant-flotilla-speaker"
+    ],
+    "slot": "flotilla-speaker"
+   },
+   {
+    "id": "socket.lighter-flotilla.plant-1",
+    "kind": "plant",
+    "area": "open",
+    "positionM": [
+     3843.29,
+     -0.28,
+     6362.07
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.lighter-flotilla.plant-2",
+    "kind": "plant",
+    "area": "open",
+    "positionM": [
+     3857.38,
+     -1.38,
+     6373.48
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.lighter-flotilla.plant-3",
+    "kind": "plant",
+    "area": "open",
+    "positionM": [
+     3852.06,
+     -1.11,
+     6373.84
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.lighter-flotilla.plant-marshweed-1",
+    "kind": "plant",
+    "area": "open",
+    "positionM": [
+     3825.45,
+     -0.37,
+     6394.9
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.lighter-flotilla.plant-somnalius-fern-1",
+    "kind": "plant",
+    "area": "open",
+    "positionM": [
+     3831.31,
+     3.09,
+     6330.15
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.lighter-flotilla.plant-somnalius-fern-2",
+    "kind": "plant",
+    "area": "open",
+    "positionM": [
+     3832.55,
+     3.39,
+     6325.9
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.lighter-flotilla.plant-somnalius-fern-3",
+    "kind": "plant",
+    "area": "open",
+    "positionM": [
+     3852.19,
+     4.55,
+     6311.51
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.lighter-flotilla.quay-landing-1",
+    "kind": "mooring",
+    "area": "open",
+    "positionM": [
+     3865.9,
+     -0.19,
+     6360.77
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.lighter-flotilla.sea-hull-mooring",
+    "kind": "mooring",
+    "area": "open",
+    "positionM": [
+     3865.9,
+     -0.19,
+     6364.77
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.lighter-flotilla.station-alchemy",
+    "kind": "station",
+    "area": "parcel.lighter-flotilla.the-street",
+    "positionM": [
+     3848.0,
+     0.32,
+     6356.95
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.lighter-flotilla.station-bunks",
+    "kind": "idle",
+    "area": "MurkmireTravelShipAltenMeerhleel",
+    "positionM": [
+     126.54,
+     90.22,
+     52.12
+    ],
+    "fills": [
+     "promise.lighter-flotilla.service-lodging"
+    ]
+   },
+   {
+    "id": "socket.lighter-flotilla.station-lighter-berth",
+    "kind": "marker",
+    "area": "parcel.lighter-flotilla.lighter-berth",
+    "positionM": [
+     3905.7,
+     -0.36,
+     6353.45
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.lighter-flotilla.station-trader",
+    "kind": "marker",
+    "area": "MurkmireTravelShipAltenMeerhleel",
+    "positionM": [
+     129.09,
+     90.21,
+     58.07
+    ],
+    "fills": [
+     "promise.lighter-flotilla.service-trader"
+    ]
+   }
+  ],
+  "landmarks": [
+   {
+    "id": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.tradeship.building",
+    "what": "boat",
+    "via": "promise.lighter-flotilla.thing-boat",
+    "positionM": [
+     3895.6,
+     0.0,
+     6365.07
+    ],
+    "inSight": {
+     "places": [],
+     "here": [
+      "socket.lighter-flotilla.container-speaker-tally",
+      "socket.lighter-flotilla.crew-mooring-2",
+      "socket.lighter-flotilla.crew-mooring-3",
+      "socket.lighter-flotilla.crew-mooring-4",
+      "socket.lighter-flotilla.crew-mooring-5",
+      "socket.lighter-flotilla.crew-mooring-6",
+      "socket.lighter-flotilla.den-osheeja-gar",
+      "socket.lighter-flotilla.den-slaughterfish",
+      "socket.lighter-flotilla.idle-n1-home",
+      "socket.lighter-flotilla.idle-n2-home",
+      "socket.lighter-flotilla.idle-n2-work",
+      "socket.lighter-flotilla.idle-seat-pier-bench-e-1",
+      "socket.lighter-flotilla.idle-seat-pier-bench-e-2",
+      "socket.lighter-flotilla.idle-seat-pier-bench-w-1",
+      "socket.lighter-flotilla.idle-seat-pier-bench-w-2",
+      "socket.lighter-flotilla.idle-speaker-home",
+      "socket.lighter-flotilla.idle-speaker-work",
+      "socket.lighter-flotilla.marker-crew-standing",
+      "socket.lighter-flotilla.marker-crew-vote",
+      "socket.lighter-flotilla.marker-hire",
+      "socket.lighter-flotilla.marker-tg04-anchor",
+      "socket.lighter-flotilla.npc-crew",
+      "socket.lighter-flotilla.npc-n2",
+      "socket.lighter-flotilla.npc-speaker",
+      "socket.lighter-flotilla.plant-1",
+      "socket.lighter-flotilla.plant-2",
+      "socket.lighter-flotilla.plant-3",
+      "socket.lighter-flotilla.plant-marshweed-1",
+      "socket.lighter-flotilla.plant-somnalius-fern-1",
+      "socket.lighter-flotilla.plant-somnalius-fern-2",
+      "socket.lighter-flotilla.plant-somnalius-fern-3",
+      "socket.lighter-flotilla.quay-landing-1",
+      "socket.lighter-flotilla.sea-hull-mooring",
+      "socket.lighter-flotilla.station-alchemy"
+     ]
+    }
+   },
+   {
+    "id": "socket.lighter-flotilla.npc-lighterman",
+    "what": "boat",
+    "via": "promise.lighter-flotilla.thing-boat",
+    "positionM": [
+     3905.0,
+     0.32,
+     6357.6
+    ],
+    "inSight": {
+     "places": [],
+     "here": [
+      "socket.lighter-flotilla.crew-mooring-1",
+      "socket.lighter-flotilla.idle-lighterman-work",
+      "socket.lighter-flotilla.idle-n1-work",
+      "socket.lighter-flotilla.station-lighter-berth"
+     ]
+    }
+   }
+  ],
+  "people": [
+   {
+    "id": "npc.mercantile-coast.lighter-flotilla.flotilla-speaker",
+    "name": "Opens-The-Books",
+    "role": "the flotilla speaker",
+    "post": "socket.lighter-flotilla.npc-speaker",
+    "services": [
+     "trade"
+    ],
+    "hostility": "guarded",
+    "topics": [
+     "topic.about-lighter-flotilla",
+     "topic.about-lilmoth",
+     "topic.about-reed-sail-compact",
+     "topic.faction-reed-sail-compact",
+     "topic.flotilla-licence-terms",
+     "topic.lighter-flotilla",
+     "topic.lighter-flotilla-danger",
+     "topic.lighter-flotilla-directions",
+     "topic.lighter-flotilla-people",
+     "topic.lighter-flotilla-work",
+     "topic.role-flotillas-business"
+    ]
+   },
+   {
+    "id": "npc.mercantile-coast.lighter-flotilla.lighterman",
+    "name": "Xal-Jei",
+    "role": "the lighter's master",
+    "post": "socket.lighter-flotilla.npc-lighterman",
+    "services": [
+     "ferry",
+     "spells",
+     "boat"
+    ],
+    "hostility": "guarded",
+    "topics": [
+     "topic.about-lighter-flotilla",
+     "topic.about-lilmoth",
+     "topic.faction-reed-sail-compact",
+     "topic.flotilla-licence-terms",
+     "topic.flotilla-night-cargo",
+     "topic.lighter-flotilla",
+     "topic.lighter-flotilla-danger",
+     "topic.lighter-flotilla-directions",
+     "topic.lighter-flotilla-people",
+     "topic.lighter-flotilla-work",
+     "topic.role-lighter"
+    ]
+   },
+   {
+    "id": "npc.mercantile-coast.lighter-flotilla.n1",
+    "name": "Dry-Foot",
+    "role": "a lighter hand",
+    "post": "socket.lighter-flotilla.npc-crew",
+    "services": [],
+    "hostility": "guarded",
+    "topics": [
+     "topic.about-lighter-flotilla",
+     "topic.about-lilmoth",
+     "topic.lighter-flotilla",
+     "topic.lighter-flotilla-danger",
+     "topic.lighter-flotilla-directions",
+     "topic.lighter-flotilla-people",
+     "topic.lighter-flotilla-work",
+     "topic.role-lightering"
+    ]
+   },
+   {
+    "id": "npc.mercantile-coast.lighter-flotilla.n1-2",
+    "name": "Chain-Mark",
+    "role": "a lighter hand",
+    "post": "socket.lighter-flotilla.npc-crew",
+    "services": [],
+    "hostility": "guarded",
+    "topics": [
+     "topic.about-lighter-flotilla",
+     "topic.about-lilmoth",
+     "topic.lighter-flotilla",
+     "topic.lighter-flotilla-danger",
+     "topic.lighter-flotilla-directions",
+     "topic.lighter-flotilla-people",
+     "topic.lighter-flotilla-work",
+     "topic.role-lightering"
+    ]
+   },
+   {
+    "id": "npc.mercantile-coast.lighter-flotilla.n1-3",
+    "name": "Teeb-Rekh",
+    "role": "a lighter hand",
+    "post": "socket.lighter-flotilla.npc-crew",
+    "services": [],
+    "hostility": "guarded",
+    "topics": [
+     "topic.about-lighter-flotilla",
+     "topic.about-lilmoth",
+     "topic.about-ojel",
+     "topic.lighter-flotilla",
+     "topic.lighter-flotilla-danger",
+     "topic.lighter-flotilla-directions",
+     "topic.lighter-flotilla-people",
+     "topic.lighter-flotilla-work",
+     "topic.role-lightering"
+    ]
+   },
+   {
+    "id": "npc.mercantile-coast.lighter-flotilla.n1-4",
+    "name": "Cold Nakka",
+    "role": "a lighter hand",
+    "post": "socket.lighter-flotilla.npc-crew",
+    "services": [],
+    "hostility": "guarded",
+    "topics": [
+     "topic.about-lighter-flotilla",
+     "topic.about-lilmoth",
+     "topic.about-ojel",
+     "topic.lighter-flotilla",
+     "topic.lighter-flotilla-danger",
+     "topic.lighter-flotilla-directions",
+     "topic.lighter-flotilla-people",
+     "topic.lighter-flotilla-work",
+     "topic.role-lightering"
+    ]
+   },
+   {
+    "id": "npc.mercantile-coast.lighter-flotilla.n2",
+    "name": "Reeh-Tei",
+    "role": "a net-mender",
+    "post": "socket.lighter-flotilla.npc-n2",
+    "services": [],
+    "hostility": "guarded",
+    "topics": [
+     "topic.about-lighter-flotilla",
+     "topic.about-lilmoth",
+     "topic.about-ojel",
+     "topic.flotilla-night-cargo",
+     "topic.lighter-flotilla",
+     "topic.lighter-flotilla-danger",
+     "topic.lighter-flotilla-directions",
+     "topic.lighter-flotilla-people",
+     "topic.lighter-flotilla-work",
+     "topic.role-net-mending"
+    ]
+   },
+   {
+    "id": "npc.mercantile-coast.lighter-flotilla.purser",
+    "name": "Ninx-Ossa",
+    "role": "the ship's purser",
+    "post": "socket.lighter-flotilla.npc-purser",
+    "services": [
+     "trade",
+     "beds"
+    ],
+    "hostility": "guarded",
+    "topics": [
+     "topic.about-lighter-flotilla",
+     "topic.about-lilmoth",
+     "topic.about-reed-sail-compact",
+     "topic.faction-reed-sail-compact",
+     "topic.flotilla-floating-house",
+     "topic.flotilla-tally-handover",
+     "topic.lighter-flotilla",
+     "topic.lighter-flotilla-danger",
+     "topic.lighter-flotilla-directions",
+     "topic.lighter-flotilla-people",
+     "topic.lighter-flotilla-work",
+     "topic.role-purse"
+    ]
+   }
+  ],
+  "counts": {
+   "MurkmireTravelShipAltenMeerhleel": {
+    "nodes": 0,
+    "plants": 0,
+    "items": 0,
+    "containers": 0,
+    "occupants": 1,
+    "byItem": {},
+    "byPlant": {},
+    "creatures": {}
+   },
+   "open": {
+    "nodes": 4,
+    "plants": 7,
+    "items": 0,
+    "containers": 0,
+    "occupants": 0,
+    "byItem": {
+     "item.marshweed": 1,
+     "item.oliis-pearl": 3,
+     "item.somnalius-frond": 3
+    },
+    "byPlant": {
+     "marshweed": 1,
+     "pearl-clam": 3,
+     "somnalius-fern": 3
+    },
+    "creatures": {
+     "creature.osheeja-gar": 4,
+     "creature.slaughterfish": 3
+    }
+   },
+   "parcel.lighter-flotilla.hull-n02": {
+    "nodes": 0,
+    "plants": 0,
+    "items": 1,
+    "containers": 1,
+    "occupants": 2,
+    "byItem": {
+     "item.flotilla-hull-tally": 1
+    },
+    "byPlant": {},
+    "creatures": {}
+   },
+   "parcel.lighter-flotilla.hull-s01": {
+    "nodes": 0,
+    "plants": 0,
+    "items": 0,
+    "containers": 0,
+    "occupants": 1,
+    "byItem": {},
+    "byPlant": {},
+    "creatures": {}
+   },
+   "parcel.lighter-flotilla.lighter-berth": {
+    "nodes": 0,
+    "plants": 0,
+    "items": 0,
+    "containers": 0,
+    "occupants": 1,
+    "byItem": {},
+    "byPlant": {},
+    "creatures": {}
+   },
+   "parcel.lighter-flotilla.the-street": {
+    "nodes": 0,
+    "plants": 0,
+    "items": 0,
+    "containers": 0,
+    "occupants": 0,
+    "byItem": {},
+    "byPlant": {},
+    "creatures": {}
+   }
+  },
+  "services": [
+   {
+    "kind": "ferry",
+    "promised": true,
+    "by": [
+     "npc.mercantile-coast.lighter-flotilla.lighterman"
+    ],
+    "filledBy": [
+     "socket.lighter-flotilla.npc-lighterman"
+    ]
+   },
+   {
+    "kind": "lodging",
+    "promised": true,
+    "by": [],
+    "filledBy": [
+     "socket.lighter-flotilla.station-bunks"
+    ]
+   },
+   {
+    "kind": "trader",
+    "promised": true,
+    "by": [],
+    "filledBy": [
+     "socket.lighter-flotilla.station-trader"
+    ]
+   },
+   {
+    "kind": "trade",
+    "promised": false,
+    "by": [
+     "npc.mercantile-coast.lighter-flotilla.flotilla-speaker",
+     "npc.mercantile-coast.lighter-flotilla.purser"
+    ],
+    "filledBy": [
+     "socket.lighter-flotilla.station-trader"
+    ]
+   },
+   {
+    "kind": "spells",
+    "promised": false,
+    "by": [
+     "npc.mercantile-coast.lighter-flotilla.lighterman"
+    ],
+    "filledBy": []
+   },
+   {
+    "kind": "boat",
+    "promised": false,
+    "by": [
+     "npc.mercantile-coast.lighter-flotilla.lighterman"
+    ],
+    "filledBy": []
+   },
+   {
+    "kind": "beds",
+    "promised": false,
+    "by": [
+     "npc.mercantile-coast.lighter-flotilla.purser"
+    ],
+    "filledBy": []
+   }
+  ],
+  "hostility": {
+   "baseline": "wary",
+   "owner": "faction.reed-sail-compact",
+   "flips": [
+    {
+     "to": "friendly",
+     "when": {
+      "factionRankAtLeast": [
+       "faction.reed-sail-compact",
+       1
+      ]
+     },
+     "scope": "place"
+    }
+   ],
+   "clearable": false,
+   "respawn": "none"
+  }
+ }
+}

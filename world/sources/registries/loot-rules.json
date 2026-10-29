@@ -1,0 +1,2184 @@
+{
+ "schemaVersion": 1,
+ "domain": "blanket",
+ "_": "The blanket loot rules (2.3a, decision 11): one rule for each kind of place that keeps a container, each a fixed list of item ids and counts. Rules run at authoring time (00-core rule 9). worldgen.loot_fill expands a rule for one socket, the same list for the same socket id. The fill freezes the result on the socket. Nothing rolls at play time.",
+ "entries": [
+  {
+   "id": "blanket.household-barrel",
+   "name": "A hut's staple barrel",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a hut's staple barrel",
+   "sources": [
+    "world/sources/lore/topics/material-culture.md:130-141"
+   ],
+   "notes": "household stores",
+   "valueTier": "low",
+   "roles": [
+    "food"
+   ],
+   "contents": [
+    {
+     "item": "item.river-salt",
+     "count": 2
+    },
+    {
+     "item": "item.saltrice-loaf",
+     "count": 2
+    },
+    {
+     "item": "item.lumberries",
+     "count": 3
+    },
+    {
+     "item": "item.hissmir-fish-eye-rye",
+     "count": 1
+    },
+    {
+     "item": "item.flagon",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.household-urn",
+   "name": "A family's dried-food urn",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a family's dried-food urn",
+   "sources": [
+    "world/sources/blueprints/claywater-station.layout.json:2681"
+   ],
+   "notes": "a family's dried-food urn",
+   "valueTier": "low",
+   "roles": [
+    "food"
+   ],
+   "contents": [
+    {
+     "item": "item.smoked-slaughterfish",
+     "count": 2
+    },
+    {
+     "item": "item.saltrice-loaf",
+     "count": 1
+    },
+    {
+     "item": "item.trodh",
+     "count": 3
+    },
+    {
+     "item": "item.clay-jug",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.storage-crate",
+   "name": "A yard's mixed crate",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a yard's mixed crate",
+   "sources": [
+    "world/sources/blueprints/bog-iron-workings.layout.json",
+    "world/sources/blueprints/opening-work-camp.layout.json"
+   ],
+   "notes": "work yards keep a mixed crate of food and tools",
+   "valueTier": "low",
+   "roles": [
+    "food"
+   ],
+   "pick": 4,
+   "contents": [
+    {
+     "item": "item.saltrice-loaf",
+     "count": 2
+    },
+    {
+     "item": "item.smoked-slaughterfish",
+     "count": 1
+    },
+    {
+     "item": "item.shovel",
+     "count": 1
+    },
+    {
+     "item": "item.bucket",
+     "count": 1
+    },
+    {
+     "item": "item.rag",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "id": "blanket.fish-basket",
+   "name": "A fisher's basket",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a fisher's basket",
+   "sources": [
+    "world/sources/lore/topics/material-culture.md:105-112"
+   ],
+   "notes": "a fisher's basket",
+   "valueTier": "trivial",
+   "roles": [
+    "food"
+   ],
+   "pick": 3,
+   "contents": [
+    {
+     "item": "item.trodh",
+     "count": 4
+    },
+    {
+     "item": "item.smoked-slaughterfish",
+     "count": 2
+    },
+    {
+     "item": "item.fishing-pole",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.water-barrel",
+   "name": "Rain or spring barrel",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "rain or spring barrel",
+   "sources": [
+    "world/sources/lore/topics/fauna-hazards.md:49"
+   ],
+   "notes": "water is undrinkable ground water",
+   "valueTier": "trivial",
+   "roles": [],
+   "contents": [],
+   "pick": 0
+  },
+  {
+   "id": "blanket.beehive",
+   "name": "A wild or kept hive",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a wild or kept hive",
+   "sources": [
+    "UESP Ingredient: Honeycomb"
+   ],
+   "notes": "honey",
+   "valueTier": "trivial",
+   "roles": [
+    "food"
+   ],
+   "contents": [
+    {
+     "item": "item.wild-honeycomb",
+     "count": 3
+    }
+   ]
+  },
+  {
+   "id": "blanket.hunter-cache",
+   "name": "A hunter's tree cache",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a hunter's tree cache",
+   "sources": [
+    "world/sources/lore/topics/ecology-encounters-loot.md:124"
+   ],
+   "notes": "hackwing hunters",
+   "valueTier": "low",
+   "roles": [
+    "weapon",
+    "jewel",
+    "material",
+    "food"
+   ],
+   "pick": 5,
+   "contents": [
+    {
+     "item": "item.iron-war-arrow",
+     "count": 6
+    },
+    {
+     "item": "item.hide",
+     "count": 1
+    },
+    {
+     "item": "item.pelt",
+     "count": 2
+    },
+    {
+     "item": "item.crocodile-tooth",
+     "count": 2
+    },
+    {
+     "item": "item.baked-crocodile-tongue",
+     "count": 2
+    },
+    {
+     "item": "item.torch",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.trapper-sack",
+   "name": "A trapper's sack",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a trapper's sack",
+   "sources": [
+    "world/sources/blueprints/naga-highway-camp-active-north.layout.json:1157"
+   ],
+   "notes": "pelts",
+   "valueTier": "low",
+   "roles": [
+    "jewel",
+    "material"
+   ],
+   "contents": [
+    {
+     "item": "item.pelt",
+     "count": 3
+    },
+    {
+     "item": "item.hide",
+     "count": 1
+    },
+    {
+     "item": "item.leather-strips",
+     "count": 3
+    },
+    {
+     "item": "item.crocodile-tooth",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.shrine-bowl",
+   "name": "A bowl at a Hist or vakka shrine",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a bowl at a Hist or vakka shrine",
+   "sources": [
+    "world/sources/lore/topics/material-culture.md:248-249",
+    "world/sources/lore/topics/hist-and-sap.md"
+   ],
+   "notes": "vakka-bok \"bowl of the sun\" ; Hist ritual",
+   "valueTier": "low",
+   "roles": [
+    "jewel",
+    "food",
+    "potion"
+   ],
+   "pick": 3,
+   "contents": [
+    {
+     "item": "item.lumberries",
+     "count": 4
+    },
+    {
+     "item": "item.dried-flower-buds",
+     "count": 3
+    },
+    {
+     "item": "item.seed-doll",
+     "count": 1
+    },
+    {
+     "item": "item.hist-sap",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.wamasu-offering",
+   "name": "The wamasu shrine's offering sack",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "the wamasu shrine's offering sack",
+   "sources": [
+    "world/sources/lore/topics/fauna-hazards.md:14",
+    "world/sources/blueprints/the-wamasu-shrine.layout.json"
+   ],
+   "notes": "offerings to Haynekhtnamet ;  offering sack",
+   "valueTier": "low",
+   "roles": [
+    "jewel",
+    "food"
+   ],
+   "contents": [
+    {
+     "item": "item.smoked-slaughterfish",
+     "count": 3
+    },
+    {
+     "item": "item.lumberries",
+     "count": 3
+    },
+    {
+     "item": "item.saltrice-loaf",
+     "count": 2
+    },
+    {
+     "item": "item.seed-doll",
+     "count": 1
+    },
+    {
+     "item": "item.crocodile-tooth",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.smuggler-crate",
+   "name": "A smuggler's false-bottomed crate",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a smuggler's false-bottomed crate",
+   "sources": [
+    "world/sources/lore/topics/material-culture.md:152",
+    "world/sources/lore/topics/ecology-encounters-loot.md:133"
+   ],
+   "notes": "moon sugar and Hist contraband",
+   "valueTier": "high",
+   "roles": [
+    "gold",
+    "food",
+    "potion",
+    "book"
+   ],
+   "pick": 4,
+   "contents": [
+    {
+     "item": "item.moon-sugar",
+     "count": 4
+    },
+    {
+     "item": "item.hist-sap",
+     "count": 1
+    },
+    {
+     "item": "item.lockpick",
+     "count": 2
+    },
+    {
+     "item": "item.bonded-store-slip",
+     "count": 1
+    },
+    {
+     "item": "item.gold",
+     "count": 60
+    },
+    {
+     "item": "item.torch",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.cook-shelf",
+   "name": "A cook's shelf",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a cook's shelf",
+   "sources": [
+    "world/sources/lore/topics/material-culture.md:130-141"
+   ],
+   "notes": "a cook's shelf",
+   "valueTier": "low",
+   "roles": [
+    "food"
+   ],
+   "pick": 5,
+   "contents": [
+    {
+     "item": "item.river-salt",
+     "count": 2
+    },
+    {
+     "item": "item.saltrice-loaf",
+     "count": 2
+    },
+    {
+     "item": "item.baked-crocodile-tongue",
+     "count": 1
+    },
+    {
+     "item": "item.lumberries",
+     "count": 3
+    },
+    {
+     "item": "item.hissmir-fish-eye-rye",
+     "count": 1
+    },
+    {
+     "item": "item.turtle-shell-bowl",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.tanner-bin",
+   "name": "A tanner's bin",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a tanner's bin",
+   "sources": [
+    "world/sources/lore/topics/ecology-encounters-loot.md:36-45"
+   ],
+   "notes": "harvest P3",
+   "valueTier": "low",
+   "roles": [
+    "jewel",
+    "material"
+   ],
+   "pick": 4,
+   "contents": [
+    {
+     "item": "item.hide",
+     "count": 3
+    },
+    {
+     "item": "item.pelt",
+     "count": 2
+    },
+    {
+     "item": "item.leather-strips",
+     "count": 4
+    },
+    {
+     "item": "item.crocodile-tooth",
+     "count": 1
+    },
+    {
+     "item": "item.bone-meal",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.scribe-desk",
+   "name": "A scribe's or ledger-keeper's desk",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a scribe's or ledger-keeper's desk",
+   "sources": [
+    "world/sources/lore/topics/guilds-and-orders.md:227-262",
+    "world/sources/lore/topics/material-culture.md:235"
+   ],
+   "notes": "Collections and Vicecanon clerks",
+   "valueTier": "moderate",
+   "roles": [
+    "scroll",
+    "book"
+   ],
+   "pick": 4,
+   "contents": [
+    {
+     "item": "item.inkwell",
+     "count": 1
+    },
+    {
+     "item": "item.quill",
+     "count": 2
+    },
+    {
+     "item": "item.ferry-guide-note",
+     "count": 1
+    },
+    {
+     "item": "item.bonded-store-slip",
+     "count": 1
+    },
+    {
+     "item": "item.book-depth-sticks-and-buds",
+     "count": 1
+    },
+    {
+     "item": "item.still-word-scroll",
+     "count": 1
+    },
+    {
+     "item": "item.scroll-of-light",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.guard-footlocker",
+   "name": "A shellback levy's footlocker",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a shellback levy's footlocker",
+   "sources": [
+    "world/sources/lore/topics/guilds-and-orders.md:134"
+   ],
+   "notes": "levies replaced the Fighters Guild",
+   "valueTier": "moderate",
+   "roles": [
+    "weapon",
+    "armour",
+    "food",
+    "potion"
+   ],
+   "pick": 5,
+   "contents": [
+    {
+     "item": "item.iron-dagger",
+     "count": 1
+    },
+    {
+     "item": "item.studded-helmet",
+     "count": 1
+    },
+    {
+     "item": "item.healing-draught",
+     "count": 2
+    },
+    {
+     "item": "item.lockpick",
+     "count": 1
+    },
+    {
+     "item": "item.torch",
+     "count": 2
+    },
+    {
+     "item": "item.smoked-slaughterfish",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "id": "blanket.healer-satchel",
+   "name": "A healer's satchel",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a healer's satchel",
+   "sources": [
+    "world/sources/lore/topics/material-culture.md:153-155"
+   ],
+   "notes": "dried buds, emollient, bark",
+   "valueTier": "moderate",
+   "roles": [
+    "food",
+    "potion",
+    "scroll"
+   ],
+   "contents": [
+    {
+     "item": "item.healing-draught",
+     "count": 2
+    },
+    {
+     "item": "item.eel-slime-salve",
+     "count": 1
+    },
+    {
+     "item": "item.dried-flower-buds",
+     "count": 3
+    },
+    {
+     "item": "item.swamp-fungal-pod",
+     "count": 2
+    },
+    {
+     "item": "item.rag",
+     "count": 3
+    },
+    {
+     "item": "item.scroll-of-cure-common-disease",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.boat-locker",
+   "name": "A boat's stern locker",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a boat's stern locker",
+   "sources": [
+    "world/sources/lore/topics/material-culture.md:86-96"
+   ],
+   "notes": "small-draft boats",
+   "valueTier": "low",
+   "roles": [
+    "food",
+    "potion"
+   ],
+   "pick": 4,
+   "contents": [
+    {
+     "item": "item.spare-oar",
+     "count": 1
+    },
+    {
+     "item": "item.bucket",
+     "count": 1
+    },
+    {
+     "item": "item.fishing-pole",
+     "count": 1
+    },
+    {
+     "item": "item.torch",
+     "count": 1
+    },
+    {
+     "item": "item.smoked-slaughterfish",
+     "count": 2
+    },
+    {
+     "item": "item.eel-slime-salve",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.ferry-guide-pack",
+   "name": "A raft guide's pack",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a raft guide's pack",
+   "sources": [
+    "world/sources/lore/topics/material-culture.md:119-122"
+   ],
+   "notes": "guided river travel",
+   "valueTier": "moderate",
+   "roles": [
+    "food",
+    "potion",
+    "book"
+   ],
+   "pick": 5,
+   "contents": [
+    {
+     "item": "item.ferry-guide-note",
+     "count": 1
+    },
+    {
+     "item": "item.dried-flower-buds",
+     "count": 3
+    },
+    {
+     "item": "item.eel-slime-salve",
+     "count": 1
+    },
+    {
+     "item": "item.torch",
+     "count": 2
+    },
+    {
+     "item": "item.smoked-slaughterfish",
+     "count": 2
+    },
+    {
+     "item": "item.healing-draught",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.grave-singer-bundle",
+   "name": "A grave-singer's bundle",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a grave-singer's bundle",
+   "sources": [
+    "world/sources/lore/topics/ecology-encounters-loot.md:137-143",
+    "world/sources/lore/topics/material-culture.md:75-78"
+   ],
+   "notes": "the stake is the artefact",
+   "valueTier": "low",
+   "roles": [
+    "jewel",
+    "gem",
+    "material",
+    "book"
+   ],
+   "contents": [
+    {
+     "item": "item.crocodile-tooth",
+     "count": 2
+    },
+    {
+     "item": "item.bone-meal",
+     "count": 2
+    },
+    {
+     "item": "item.seed-doll",
+     "count": 1
+    },
+    {
+     "item": "item.blue-jasper",
+     "count": 1
+    },
+    {
+     "item": "item.stake-ward-tally",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.bone-worker-bench",
+   "name": "A bone-worker's bench",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a bone-worker's bench",
+   "sources": [
+    "world/sources/lore/topics/material-culture.md:65-66"
+   ],
+   "notes": "bronze tools for bone, horn, chitin",
+   "valueTier": "moderate",
+   "roles": [
+    "weapon",
+    "jewel",
+    "material"
+   ],
+   "contents": [
+    {
+     "item": "item.bone-talon-dagger",
+     "count": 1
+    },
+    {
+     "item": "item.crocodile-tooth",
+     "count": 3
+    },
+    {
+     "item": "item.bone-meal",
+     "count": 2
+    },
+    {
+     "item": "item.leather-strips",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "id": "blanket.alchemist-shelf",
+   "name": "An alchemist's shelf",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "an alchemist's shelf",
+   "sources": [
+    "world/sources/lore/topics/material-culture.md:73-74"
+   ],
+   "notes": "calcinators by moon phase",
+   "valueTier": "moderate",
+   "roles": [
+    "food",
+    "potion"
+   ],
+   "pick": 6,
+   "contents": [
+    {
+     "item": "item.swamp-fungal-pod",
+     "count": 3
+    },
+    {
+     "item": "item.hanging-moss",
+     "count": 2
+    },
+    {
+     "item": "item.dried-flower-buds",
+     "count": 2
+    },
+    {
+     "item": "item.rootland-mushroom",
+     "count": 2
+    },
+    {
+     "item": "item.eel-slime-salve",
+     "count": 1
+    },
+    {
+     "item": "item.bog-luck-concoction",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.grooming-kit",
+   "name": "A scale-and-spine grooming chest",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a scale-and-spine grooming chest",
+   "sources": [
+    "world/sources/lore/topics/material-culture.md:156-162"
+   ],
+   "notes": "a scale-and-spine grooming chest",
+   "valueTier": "low",
+   "roles": [
+    "food"
+   ],
+   "contents": [
+    {
+     "item": "item.spine-balm",
+     "count": 2
+    },
+    {
+     "item": "item.rag",
+     "count": 2
+    },
+    {
+     "item": "item.river-salt",
+     "count": 1
+    },
+    {
+     "item": "item.flagon",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.household-chest",
+   "name": "A family's clothes chest or cupboard",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a family's clothes chest, wardrobe, dresser or end table",
+   "sources": [
+    "world/sources/lore/topics/material-culture.md:156-162"
+   ],
+   "notes": "the interior fill (2.3c2): the chests, wardrobes and dressers a home's cell author placed",
+   "valueTier": "low",
+   "roles": [
+    "jewel",
+    "material",
+    "gold"
+   ],
+   "pick": 3,
+   "contents": [
+    {
+     "item": "item.rag",
+     "count": 2
+    },
+    {
+     "item": "item.leather-strips",
+     "count": 1
+    },
+    {
+     "item": "item.spine-balm",
+     "count": 1
+    },
+    {
+     "item": "item.gold",
+     "count": 6
+    },
+    {
+     "item": "item.glass-bead-strand",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.musician-case",
+   "name": "A travelling player's case",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a travelling player's case",
+   "sources": [
+    "world/sources/lore/topics/material-culture.md:176-181,190"
+   ],
+   "notes": "vossa-satl, silver slide flute",
+   "valueTier": "moderate",
+   "roles": [
+    "jewel",
+    "food"
+   ],
+   "contents": [
+    {
+     "item": "item.silver-slide-flute",
+     "count": 1
+    },
+    {
+     "item": "item.rag",
+     "count": 1
+    },
+    {
+     "item": "item.hissmir-fish-eye-rye",
+     "count": 1
+    },
+    {
+     "item": "item.seed-doll",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.potter-shelf",
+   "name": "A potter's drying shelf",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a potter's drying shelf",
+   "sources": [
+    "world/sources/lore/topics/material-culture.md:71-72"
+   ],
+   "notes": "red Onkobra clay",
+   "valueTier": "low",
+   "roles": [],
+   "contents": [
+    {
+     "item": "item.clay-jug",
+     "count": 3
+    },
+    {
+     "item": "item.turtle-shell-bowl",
+     "count": 2
+    },
+    {
+     "item": "item.bucket",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.pearl-diver-stores",
+   "name": "Pearl-lot shell barrel",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "pearl-lot shell barrel",
+   "sources": [
+    "world/sources/blueprints/pearl-lots.layout.json:2568",
+    "world/sources/lore/topics/material-culture.md:61"
+   ],
+   "notes": "pearl-lot shell barrel",
+   "valueTier": "moderate",
+   "roles": [
+    "gem",
+    "food"
+   ],
+   "pick": 4,
+   "contents": [
+    {
+     "item": "item.oliis-pearl",
+     "count": 1
+    },
+    {
+     "item": "item.turtle-shell-bowl",
+     "count": 1
+    },
+    {
+     "item": "item.fishing-pole",
+     "count": 1
+    },
+    {
+     "item": "item.bucket",
+     "count": 1
+    },
+    {
+     "item": "item.smoked-slaughterfish",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "id": "blanket.woodcutter-lean-to",
+   "name": "A woodcutter's lean-to",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a woodcutter's lean-to",
+   "sources": [
+    "world/sources/lore/topics/material-culture.md:57"
+   ],
+   "notes": "timber is the tool trade",
+   "valueTier": "trivial",
+   "roles": [
+    "food"
+   ],
+   "contents": [
+    {
+     "item": "item.saw",
+     "count": 1
+    },
+    {
+     "item": "item.firewood",
+     "count": 4
+    },
+    {
+     "item": "item.bucket",
+     "count": 1
+    },
+    {
+     "item": "item.smoked-slaughterfish",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.farmer-seed-bin",
+   "name": "A field hut's bin",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a field hut's bin",
+   "sources": [
+    "world/sources/lore/topics/foreign-powers.md:20-25"
+   ],
+   "notes": "saltrice and subsistence farming",
+   "valueTier": "trivial",
+   "roles": [
+    "food"
+   ],
+   "pick": 4,
+   "contents": [
+    {
+     "item": "item.saltrice-loaf",
+     "count": 3
+    },
+    {
+     "item": "item.lumberries",
+     "count": 2
+    },
+    {
+     "item": "item.hoe",
+     "count": 1
+    },
+    {
+     "item": "item.shovel",
+     "count": 1
+    },
+    {
+     "item": "item.bucket",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.bog-iron-stock",
+   "name": "A bog-iron works rack",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a bog-iron works rack",
+   "sources": [
+    "world/sources/blueprints/bog-iron-workings.layout.json"
+   ],
+   "notes": "crate",
+   "valueTier": "low",
+   "roles": [
+    "material"
+   ],
+   "contents": [
+    {
+     "item": "item.bog-iron",
+     "count": 4
+    },
+    {
+     "item": "item.pickaxe",
+     "count": 1
+    },
+    {
+     "item": "item.tongs",
+     "count": 1
+    },
+    {
+     "item": "item.repair-hammer",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.smith-rack",
+   "name": "A smith's wall rack",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a smith's wall rack",
+   "sources": [
+    "world/sources/lore/topics/material-culture.md:53-57"
+   ],
+   "notes": "a smith's wall rack",
+   "valueTier": "moderate",
+   "roles": [
+    "weapon",
+    "material"
+   ],
+   "pick": 4,
+   "contents": [
+    {
+     "item": "item.repair-hammer",
+     "count": 1
+    },
+    {
+     "item": "item.tongs",
+     "count": 1
+    },
+    {
+     "item": "item.bog-iron",
+     "count": 2
+    },
+    {
+     "item": "item.iron-waraxe",
+     "count": 1
+    },
+    {
+     "item": "item.iron-war-arrow",
+     "count": 8
+    }
+   ]
+  },
+  {
+   "id": "blanket.prisoner-bundle",
+   "name": "A bound hand's bundle",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a bound hand's bundle",
+   "sources": [
+    "world/sources/blueprints/opening-work-camp.layout.json:2200"
+   ],
+   "notes": "\"a blanket, a bowl, a carved charm\"",
+   "valueTier": "trivial",
+   "roles": [
+    "jewel"
+   ],
+   "pick": 3,
+   "contents": [
+    {
+     "item": "item.rag",
+     "count": 2
+    },
+    {
+     "item": "item.turtle-shell-bowl",
+     "count": 1
+    },
+    {
+     "item": "item.seed-doll",
+     "count": 1
+    },
+    {
+     "item": "item.crocodile-tooth",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.overseer-stores",
+   "name": "An overseer's stores",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "an overseer's stores",
+   "sources": [
+    "world/sources/blueprints/opening-work-camp.layout.json:2169"
+   ],
+   "notes": "owner locked by overseer-crate-key",
+   "valueTier": "low",
+   "roles": [
+    "food"
+   ],
+   "pick": 4,
+   "contents": [
+    {
+     "item": "item.smoked-slaughterfish",
+     "count": 2
+    },
+    {
+     "item": "item.saltrice-loaf",
+     "count": 2
+    },
+    {
+     "item": "item.inkwell",
+     "count": 1
+    },
+    {
+     "item": "item.shovel",
+     "count": 1
+    },
+    {
+     "item": "item.lockpick",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.toll-strongbox",
+   "name": "A toll-keeper's urn or box",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a toll-keeper's urn or box",
+   "sources": [
+    "world/sources/blueprints/riverwalk.layout.json:1731"
+   ],
+   "notes": "a toll-keeper's urn or box",
+   "valueTier": "moderate",
+   "roles": [
+    "gold",
+    "book"
+   ],
+   "pick": 2,
+   "contents": [
+    {
+     "item": "item.gold",
+     "count": 70
+    },
+    {
+     "item": "item.bonded-store-slip",
+     "count": 1
+    },
+    {
+     "item": "item.toll-urn-key",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.wrecker-salvage",
+   "name": "The wreck families' held-back chest",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "the wreck families' held-back chest",
+   "sources": [
+    "world/sources/blueprints/chasepoint.layout.json:2226",
+    "world/sources/lore/topics/foreign-powers.md:107-111"
+   ],
+   "notes": "the wreck families' held-back chest",
+   "valueTier": "high",
+   "roles": [
+    "weapon",
+    "jewel",
+    "gem",
+    "material",
+    "gold"
+   ],
+   "pick": 5,
+   "contents": [
+    {
+     "item": "item.steel-dagger",
+     "count": 1
+    },
+    {
+     "item": "item.imperial-sword",
+     "count": 1
+    },
+    {
+     "item": "item.bog-iron",
+     "count": 3
+    },
+    {
+     "item": "item.gold",
+     "count": 90
+    },
+    {
+     "item": "item.blue-jasper",
+     "count": 1
+    },
+    {
+     "item": "item.silver-slide-flute",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.pirate-locker",
+   "name": "A pirate captain's locker",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a pirate captain's locker",
+   "sources": [
+    "world/sources/lore/topics/foreign-powers.md:111-113"
+   ],
+   "notes": "Alten Corimont and Topal Bay pirates",
+   "valueTier": "high",
+   "roles": [
+    "weapon",
+    "gold",
+    "food"
+   ],
+   "pick": 5,
+   "contents": [
+    {
+     "item": "item.steel-sword",
+     "count": 1
+    },
+    {
+     "item": "item.gold",
+     "count": 110
+    },
+    {
+     "item": "item.hissmir-fish-eye-rye",
+     "count": 2
+    },
+    {
+     "item": "item.moon-sugar",
+     "count": 1
+    },
+    {
+     "item": "item.lockpick",
+     "count": 2
+    },
+    {
+     "item": "item.silver-sword",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.legion-leavings",
+   "name": "A deserted Legion kit chest",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a deserted Legion kit chest",
+   "sources": [
+    "world/sources/lore/topics/foreign-powers.md:26-35"
+   ],
+   "notes": "Fort Swampmoth",
+   "valueTier": "moderate",
+   "roles": [
+    "weapon",
+    "armour",
+    "potion"
+   ],
+   "pick": 5,
+   "contents": [
+    {
+     "item": "item.imperial-sword",
+     "count": 1
+    },
+    {
+     "item": "item.iron-shield",
+     "count": 1
+    },
+    {
+     "item": "item.healing-draught",
+     "count": 2
+    },
+    {
+     "item": "item.torch",
+     "count": 2
+    },
+    {
+     "item": "item.lockpick",
+     "count": 1
+    },
+    {
+     "item": "item.steel-war-arrow",
+     "count": 6
+    }
+   ]
+  },
+  {
+   "id": "blanket.dunmer-estate-chest",
+   "name": "An abandoned Dunmer estate chest",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "an abandoned Dunmer estate chest",
+   "sources": [
+    "world/sources/lore/regions/thornmarsh-and-east.md:94",
+    "world/sources/lore/topics/foreign-powers.md:39-47"
+   ],
+   "notes": "an abandoned Dunmer estate chest",
+   "valueTier": "high",
+   "roles": [
+    "weapon",
+    "jewel",
+    "gold",
+    "food"
+   ],
+   "pick": 4,
+   "contents": [
+    {
+     "item": "item.dwarven-sword",
+     "count": 1
+    },
+    {
+     "item": "item.elven-dagger",
+     "count": 1
+    },
+    {
+     "item": "item.glass-bead-strand",
+     "count": 1
+    },
+    {
+     "item": "item.gold",
+     "count": 180
+    },
+    {
+     "item": "item.saltrice-loaf",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "id": "blanket.eec-bonded-crate",
+   "name": "An old East Empire Company store crate",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "an old East Empire Company store crate",
+   "sources": [
+    "world/sources/lore/topics/foreign-powers.md:85-94"
+   ],
+   "notes": "an old East Empire Company store crate",
+   "valueTier": "moderate",
+   "roles": [
+    "material",
+    "gold",
+    "food",
+    "book"
+   ],
+   "pick": 4,
+   "contents": [
+    {
+     "item": "item.river-salt",
+     "count": 4
+    },
+    {
+     "item": "item.moon-sugar",
+     "count": 2
+    },
+    {
+     "item": "item.bog-iron",
+     "count": 2
+    },
+    {
+     "item": "item.bonded-store-slip",
+     "count": 1
+    },
+    {
+     "item": "item.gold",
+     "count": 60
+    }
+   ]
+  },
+  {
+   "id": "blanket.sunken-villa-chest",
+   "name": "A drowned Imperial villa chest",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a drowned Imperial villa chest",
+   "sources": [
+    "world/sources/lore/topics/ecology-encounters-loot.md:176"
+   ],
+   "notes": "a drowned Imperial villa chest",
+   "valueTier": "high",
+   "roles": [
+    "weapon",
+    "gem",
+    "gold"
+   ],
+   "pick": 4,
+   "contents": [
+    {
+     "item": "item.gold",
+     "count": 150
+    },
+    {
+     "item": "item.oliis-pearl",
+     "count": 1
+    },
+    {
+     "item": "item.blue-jasper",
+     "count": 2
+    },
+    {
+     "item": "item.imperial-sword",
+     "count": 1
+    },
+    {
+     "item": "item.elven-dagger",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.kothringi-cairn",
+   "name": "A Kothringi cairn niche",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a Kothringi cairn niche",
+   "sources": [
+    "world/sources/lore/topics/lost-peoples.md:30,34"
+   ],
+   "notes": "glass beads and moonstone",
+   "valueTier": "moderate",
+   "roles": [
+    "jewel",
+    "material"
+   ],
+   "contents": [
+    {
+     "item": "item.glass-bead-strand",
+     "count": 2
+    },
+    {
+     "item": "item.bone-meal",
+     "count": 1
+    },
+    {
+     "item": "item.seed-doll",
+     "count": 1
+    },
+    {
+     "item": "item.silver-slide-flute",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.xanmeer-niche",
+   "name": "A pre-Duskfall xanmeer niche",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a pre-Duskfall xanmeer niche",
+   "sources": [
+    "world/sources/lore/topics/ecology-encounters-loot.md:151"
+   ],
+   "notes": "volcanic glass, jewels, bronze, gold",
+   "valueTier": "precious",
+   "roles": [
+    "weapon",
+    "gem",
+    "gold"
+   ],
+   "pick": 3,
+   "contents": [
+    {
+     "item": "item.obsidian-warhammer",
+     "count": 1
+    },
+    {
+     "item": "item.blue-jasper",
+     "count": 2
+    },
+    {
+     "item": "item.gold",
+     "count": 150
+    },
+    {
+     "item": "item.oliis-pearl",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.miregaunt-cavity",
+   "name": "A miregaunt's midsection cavity",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a miregaunt's midsection cavity",
+   "sources": [
+    "world/sources/lore/topics/ecology-encounters-loot.md:74"
+   ],
+   "notes": "rubble, gem, relic or a creature",
+   "valueTier": "high",
+   "roles": [
+    "jewel",
+    "gem",
+    "gold",
+    "potion"
+   ],
+   "pick": 1,
+   "contents": [
+    {
+     "item": "item.blue-jasper",
+     "count": 1
+    },
+    {
+     "item": "item.oliis-pearl",
+     "count": 1
+    },
+    {
+     "item": "item.hist-sap",
+     "count": 1
+    },
+    {
+     "item": "item.seed-doll",
+     "count": 1
+    },
+    {
+     "item": "item.gold",
+     "count": 80
+    }
+   ]
+  },
+  {
+   "id": "blanket.highwayman-bundle",
+   "name": "A tribeless Naga highwayman's haul",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a tribeless Naga highwayman's haul",
+   "sources": [
+    "world/sources/lore/topics/ecology-encounters-loot.md:101",
+    "world/sources/lore/topics/foreign-powers.md:115"
+   ],
+   "notes": "a tribeless Naga highwayman's haul",
+   "valueTier": "moderate",
+   "roles": [
+    "material",
+    "gold",
+    "food",
+    "potion",
+    "book"
+   ],
+   "pick": 4,
+   "contents": [
+    {
+     "item": "item.pelt",
+     "count": 2
+    },
+    {
+     "item": "item.moon-sugar",
+     "count": 1
+    },
+    {
+     "item": "item.gold",
+     "count": 40
+    },
+    {
+     "item": "item.healing-draught",
+     "count": 1
+    },
+    {
+     "item": "item.ferry-guide-note",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.abandoned-table",
+   "name": "A laid table after a depopulation",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a laid table after a depopulation",
+   "sources": [
+    "world/sources/lore/topics/ecology-encounters-loot.md:156-164"
+   ],
+   "notes": "S4",
+   "valueTier": "trivial",
+   "roles": [
+    "food"
+   ],
+   "contents": [
+    {
+     "item": "item.saltrice-loaf",
+     "count": 1
+    },
+    {
+     "item": "item.hissmir-fish-eye-rye",
+     "count": 1
+    },
+    {
+     "item": "item.turtle-shell-bowl",
+     "count": 2
+    },
+    {
+     "item": "item.rag",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.hidden-cache-diver-stash",
+   "name": "A diver's stash",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a diver's stash weighted on a shallow bed, kept back from the tally",
+   "sources": [
+    "docs/world/20-province-design.md:91-98",
+    "world/sources/lore/topics/material-culture.md:61"
+   ],
+   "notes": "hidden-cache family (2.3 c): effort 1 or 2 only",
+   "valueTier": "low",
+   "roles": [
+    "jewel",
+    "food"
+   ],
+   "pick": 3,
+   "contents": [
+    {
+     "item": "item.small-pearl",
+     "count": 3
+    },
+    {
+     "item": "item.river-salt",
+     "count": 1
+    },
+    {
+     "item": "item.smoked-slaughterfish",
+     "count": 1
+    },
+    {
+     "item": "item.glass-bead-strand",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.hidden-cache-ledge-bundle",
+   "name": "A climber's ledge bundle",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a bundle wedged on a ledge by a climber who meant to come back for it",
+   "sources": [
+    "docs/world/20-province-design.md:91-98"
+   ],
+   "notes": "hidden-cache family (2.3 c): effort 1 or 2 only; the class default of hidden-cache",
+   "valueTier": "low",
+   "roles": [
+    "material",
+    "food"
+   ],
+   "pick": 3,
+   "contents": [
+    {
+     "item": "item.leather-strips",
+     "count": 2
+    },
+    {
+     "item": "item.torch",
+     "count": 1
+    },
+    {
+     "item": "item.saltrice-loaf",
+     "count": 1
+    },
+    {
+     "item": "item.lockpick",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "id": "blanket.hidden-cache-wreck-box",
+   "name": "A wreck's sealed box",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a sealed box that rode a wreck down and kept its contents dry",
+   "sources": [
+    "docs/world/20-province-design.md:91-98",
+    "world/sources/lore/topics/ecology-encounters-loot.md:156-164"
+   ],
+   "notes": "hidden-cache family (2.3 c): effort 1 or 2 only",
+   "valueTier": "low",
+   "roles": [
+    "weapon",
+    "jewel",
+    "food"
+   ],
+   "pick": 3,
+   "contents": [
+    {
+     "item": "item.crocodile-tooth",
+     "count": 1
+    },
+    {
+     "item": "item.iron-dagger",
+     "count": 1
+    },
+    {
+     "item": "item.flagon",
+     "count": 1
+    },
+    {
+     "item": "item.river-salt",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "id": "blanket.pirate-treasure",
+   "name": "A pirate crew's treasure chest",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a pirate or smuggler crew's treasure chest, aboard a sunken or beached ship or in its hideout: coin and jewels taken off Topal Bay shipping",
+   "sources": [
+    "world/sources/lore/topics/foreign-powers.md:111-113",
+    "world/sources/lore/topics/material-culture.md:123-125",
+    "world/sources/lore/alten-corimont.md:40-48"
+   ],
+   "notes": "found at several bands: the richer the crew that guards it, the richer the chest (2.9b c11)",
+   "roles": [
+    "jewel",
+    "gem",
+    "gold"
+   ],
+   "contents": [],
+   "byBand": {
+    "D2": {
+     "valueTier": "moderate",
+     "contents": [
+      {
+       "item": "item.gold",
+       "count": 150
+      },
+      {
+       "item": "item.blue-jasper",
+       "count": 1
+      },
+      {
+       "item": "item.glass-bead-strand",
+       "count": 1
+      }
+     ]
+    },
+    "D3": {
+     "valueTier": "high",
+     "contents": [
+      {
+       "item": "item.gold",
+       "count": 250
+      },
+      {
+       "item": "item.oliis-pearl",
+       "count": 1
+      },
+      {
+       "item": "item.blue-jasper",
+       "count": 1
+      }
+     ]
+    },
+    "D4": {
+     "valueTier": "high",
+     "contents": [
+      {
+       "item": "item.gold",
+       "count": 350
+      },
+      {
+       "item": "item.oliis-pearl",
+       "count": 2
+      },
+      {
+       "item": "item.garnet",
+       "count": 1
+      }
+     ]
+    },
+    "D5": {
+     "valueTier": "precious",
+     "contents": [
+      {
+       "item": "item.gold",
+       "count": 300
+      },
+      {
+       "item": "item.flawless-emerald",
+       "count": 1
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "blanket.clothier-wardrobe",
+   "name": "A clothier's wardrobe",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "the stock wardrobe of a clothier who sells only clothing: the best-made tunics and robes of the house",
+   "sources": [
+    "world/sources/lore/topics/morrowind-commerce-reference.md:25-26",
+    "world/sources/lore/topics/material-culture.md:165-172"
+   ],
+   "notes": "Imperial fine clothes (Skyrim's fine-clothes set, 2.9b-c11-source) beside the best Saxhleel tunic",
+   "valueTier": "moderate",
+   "roles": [
+    "clothing"
+   ],
+   "contents": [
+    {
+     "item": "item.fine-clothes",
+     "count": 1
+    },
+    {
+     "item": "item.fine-coat",
+     "count": 1
+    },
+    {
+     "item": "item.fine-boots",
+     "count": 1
+    },
+    {
+     "item": "item.fine-shoes",
+     "count": 1
+    },
+    {
+     "item": "item.fine-hat",
+     "count": 1
+    },
+    {
+     "item": "item.tunic-with-sash",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "blanket.legion-armoury",
+   "name": "A Legion armour chest",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "a Legion company's armour chest, kept beside its weapons chest (legion-leavings) by a remnant or deserter garrison",
+   "sources": [
+    "world/sources/lore/topics/foreign-powers.md:26-35"
+   ],
+   "notes": "Fort Swampmoth's leavings: the Legion's own issue, Imperial light and heavy (Skyrim's Imperial sets, 2.9b-c11-source), with the steel of its veterans at D4",
+   "roles": [
+    "armour"
+   ],
+   "contents": [],
+   "byBand": {
+    "D3": {
+     "valueTier": "high",
+     "contents": [
+      {
+       "item": "item.imperial-cuirass",
+       "count": 1
+      },
+      {
+       "item": "item.imperial-light-cuirass",
+       "count": 1
+      },
+      {
+       "item": "item.imperial-helmet",
+       "count": 1
+      },
+      {
+       "item": "item.iron-shield",
+       "count": 1
+      },
+      {
+       "item": "item.imperial-boots",
+       "count": 1
+      },
+      {
+       "item": "item.imperial-gauntlets",
+       "count": 1
+      },
+      {
+       "item": "item.imperial-light-helmet",
+       "count": 1
+      },
+      {
+       "item": "item.imperial-light-boots",
+       "count": 1
+      }
+     ]
+    },
+    "D4": {
+     "valueTier": "high",
+     "contents": [
+      {
+       "item": "item.steel-cuirass",
+       "count": 1
+      },
+      {
+       "item": "item.imperial-cuirass",
+       "count": 1
+      },
+      {
+       "item": "item.imperial-helmet",
+       "count": 1
+      },
+      {
+       "item": "item.steel-shield",
+       "count": 1
+      },
+      {
+       "item": "item.imperial-boots",
+       "count": 1
+      },
+      {
+       "item": "item.imperial-gauntlets",
+       "count": 1
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "blanket.cult-cache",
+   "name": "A cult's offering cache",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "what a Sithis cult keeps at its altar: offerings of coin and stones, the soul gems of its snares and, in a Sul-Xan hall, a blade with a spell on it",
+   "sources": [
+    "world/sources/lore/topics/sithis-nisswo-shadowscales.md:19",
+    "world/sources/lore/topics/sithis-nisswo-shadowscales.md:45-56",
+    "world/sources/lore/topics/ecology-encounters-loot.md:102"
+   ],
+   "notes": "a Nisswo shrine at D3; a Sul-Xan hall at D4-D5 (soul snares)",
+   "roles": [
+    "weapon",
+    "jewel",
+    "gem",
+    "material",
+    "soul-gem",
+    "gold"
+   ],
+   "contents": [],
+   "byBand": {
+    "D3": {
+     "valueTier": "high",
+     "contents": [
+      {
+       "item": "item.gold",
+       "count": 150
+      },
+      {
+       "item": "item.blue-jasper",
+       "count": 1
+      },
+      {
+       "item": "item.garnet",
+       "count": 1
+      },
+      {
+       "item": "item.lesser-soul-gem-filled",
+       "count": 1
+      },
+      {
+       "item": "item.silver-amulet",
+       "count": 1
+      }
+     ]
+    },
+    "D4": {
+     "valueTier": "high",
+     "contents": [
+      {
+       "item": "item.gold",
+       "count": 250
+      },
+      {
+       "item": "item.garnet",
+       "count": 1
+      },
+      {
+       "item": "item.oliis-pearl",
+       "count": 1
+      },
+      {
+       "item": "item.common-soul-gem-filled",
+       "count": 1
+      },
+      {
+       "item": "item.steel-dagger-of-chills",
+       "count": 1
+      },
+      {
+       "item": "item.gold-ring",
+       "count": 1
+      }
+     ]
+    },
+    "D5": {
+     "valueTier": "precious",
+     "contents": [
+      {
+       "item": "item.gold",
+       "count": 150
+      },
+      {
+       "item": "item.vakka-stone",
+       "count": 1
+      },
+      {
+       "item": "item.garnet",
+       "count": 1
+      },
+      {
+       "item": "item.grand-soul-gem-filled",
+       "count": 1
+      },
+      {
+       "item": "item.ebony-ingot",
+       "count": 1
+      },
+      {
+       "item": "item.steel-dagger-of-chills",
+       "count": 1
+      },
+      {
+       "item": "item.gold-amulet",
+       "count": 1
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "blanket.naga-cache",
+   "name": "A Naga band's road cache",
+   "kind": "blanket-loot",
+   "status": "derived",
+   "belongs": "what a tribeless Naga band holds back from the road: merchants' coin, cut stones and moon sugar for the smugglers",
+   "sources": [
+    "world/sources/lore/topics/foreign-powers.md:114-116",
+    "world/sources/lore/topics/ecology-encounters-loot.md:101"
+   ],
+   "notes": "the highwaymen's own hoard at D4-D5",
+   "roles": [
+    "jewel",
+    "gem",
+    "material",
+    "gold",
+    "food"
+   ],
+   "contents": [],
+   "byBand": {
+    "D4": {
+     "valueTier": "high",
+     "contents": [
+      {
+       "item": "item.gold",
+       "count": 200
+      },
+      {
+       "item": "item.pelt",
+       "count": 2
+      },
+      {
+       "item": "item.glass-bead-strand",
+       "count": 1
+      },
+      {
+       "item": "item.garnet",
+       "count": 1
+      },
+      {
+       "item": "item.moon-sugar",
+       "count": 1
+      },
+      {
+       "item": "item.wamasu-bone",
+       "count": 1
+      },
+      {
+       "item": "item.silver-ring",
+       "count": 1
+      }
+     ]
+    },
+    "D5": {
+     "valueTier": "precious",
+     "contents": [
+      {
+       "item": "item.gold",
+       "count": 250
+      },
+      {
+       "item": "item.flawless-emerald",
+       "count": 1
+      },
+      {
+       "item": "item.moon-sugar",
+       "count": 1
+      },
+      {
+       "item": "item.gold-ring",
+       "count": 1
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "effortBands": {
+  "_": "2.3 c (world/20 §12.3b): the lowest valueTier a container or item socket may carry at each effort to reach. Effort 3 or more takes an authored lootTable with a storyNote, never a blanket rule (worldgen.loot_fill refuses one; worldgen.exploration_rewards gates it).",
+  "1": "trivial",
+  "2": "low",
+  "3": "moderate",
+  "4": "high",
+  "5": "precious"
+ }
+}

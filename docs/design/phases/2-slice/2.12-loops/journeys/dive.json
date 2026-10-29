@@ -1,0 +1,16 @@
+{
+ "id": "dive",
+ "start": { "query": "?view=character&x=5404&z=4318&t=23:00&d=7-28", "kit": "start" },
+ "notes": "Pearl-lots at 23:00 (journey-spot.mjs --place place.saxhleel-coast.pearl-lots --hour 23 --target socket.pearl-lots.cache-deep-lot --at 5404,4318): the start is the dry shallows 116 m south-west of the deep lot, light 0 (argonianlanterns04 22.1 m), E picks nothing, nobody in sight; the divers sleep on the jetty foot (5394, 4295.6). The cache socket.pearl-lots.cache-deep-lot lies 8.07 m down at (5472, 4421), reach 1.6 m. Taking the cache goes through the interact arbiter at the swimmer's own x, z (takeAt).",
+ "steps": [
+  { "name": "wade-out", "transition": "W from the shallows towards the deep lot: wading turns to swimming where the water deepens", "stage": { "at": { "x": 5404, "z": 4318, "yaw": -2.56 }, "hour": 23, "place": "place.saxhleel-coast.pearl-lots" },
+    "do": { "action": "swim" }, "keys": [ { "down": "KeyW" }, { "wait_s": 40 }, { "up": "KeyW" } ], "expect": { "moveMode": "swim" } },
+  { "name": "dive-to-the-lot", "transition": "a downward look and W: the head goes under, the breath bar falls", "do": { "action": "dive", "look": "down" },
+    "keys": [ { "down": "KeyW" }, { "wait_s": 5 }, { "up": "KeyW" } ], "expect": { "headUnder": true, "breathFell": true, "hurtBy": null } },
+  { "name": "surface", "transition": "an upward look and W: back up into the night air before the breath runs out", "do": { "action": "surface", "look": "up" },
+    "keys": [ { "down": "KeyW" }, { "wait_s": 6 }, { "up": "KeyW" } ], "expect": { "headUnder": false, "hurtBy": null } },
+  { "name": "take-the-cache", "transition": "E at the deep lot: the arbiter picks the cache from where the swimmer is and the press takes it", "teleport": { "x": 5471, "z": 4421, "yaw": 0 },
+    "do": { "action": "take", "socket": "socket.pearl-lots.cache-deep-lot" }, "keys": [ { "down": "KeyE" }, { "wait_s": 0.2 }, { "up": "KeyE" } ], "expect": { "lifted": true } },
+  { "name": "save-and-load", "transition": "save mid-swim and load: the swim, the breath and the skills come back equal", "do": { "action": "reload" }, "keys": [], "expect": { "saved": ["traversal", "progression"] } }
+ ]
+}

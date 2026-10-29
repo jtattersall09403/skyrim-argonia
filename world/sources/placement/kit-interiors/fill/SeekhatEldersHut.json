@@ -1,0 +1,120 @@
+{
+ "cellId": "SeekhatEldersHut",
+ "sockets": {
+  "socket.SeekhatEldersHut.081C6F26": {
+   "fillRule": "blanket.cook-shelf",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.river-salt",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.baked-crocodile-tongue",
+      "count": 1
+     },
+     {
+      "item": "item.lumberries",
+      "count": 3
+     },
+     {
+      "item": "item.hissmir-fish-eye-rye",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.cook-shelf"
+   }
+  },
+  "socket.SeekhatEldersHut.081C6F34": {
+   "fillRule": "blanket.fish-basket",
+   "valueTier": "trivial",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.trodh",
+      "count": 4
+     },
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     },
+     {
+      "item": "item.fishing-pole",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.fish-basket"
+   }
+  },
+  "socket.SeekhatEldersHut.081C6F35": {
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.SeekhatEldersHut.081C6F36": {
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.SeekhatEldersHut.081C6F37": {
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.SeekhatEldersHut.081C6F3A": {
+   "valueTier": "moderate",
+   "item": "item.tunic-with-sash"
+  },
+  "socket.SeekhatEldersHut.081C6F3B": {
+   "valueTier": "moderate",
+   "item": "item.tunic-with-sash"
+  },
+  "socket.SeekhatEldersHut.081C6F48": {
+   "valueTier": "trivial",
+   "item": "item.wooden-plate"
+  },
+  "socket.SeekhatEldersHut.081C6F49": {
+   "valueTier": "trivial",
+   "item": "item.wooden-plate"
+  },
+  "socket.SeekhatEldersHut.081C6F4A": {
+   "valueTier": "trivial",
+   "item": "item.wooden-plate"
+  },
+  "socket.SeekhatEldersHut.081C6F4B": {
+   "valueTier": "trivial",
+   "item": "item.turtle-shell-bowl"
+  },
+  "socket.SeekhatEldersHut.081C6F4C": {
+   "valueTier": "trivial",
+   "item": "item.turtle-shell-bowl"
+  },
+  "socket.SeekhatEldersHut.081C6F4F": {
+   "valueTier": "trivial",
+   "item": "item.saltrice-flatbread"
+  },
+  "socket.SeekhatEldersHut.081C6F55": {
+   "valueTier": "trivial",
+   "item": "item.tee-lel"
+  },
+  "socket.SeekhatEldersHut.08989C14": {
+   "valueTier": "trivial",
+   "item": "item.book-the-seasons-of-argonia"
+  },
+  "socket.SeekhatEldersHut.08989C16": {
+   "valueTier": "trivial",
+   "item": "item.book-a-shallow-pool"
+  },
+  "socket.SeekhatEldersHut.08AA321E": {
+   "valueTier": "trivial",
+   "item": "item.jeel-sa"
+  },
+  "socket.SeekhatEldersHut.08AA321F": {
+   "valueTier": "trivial",
+   "item": "item.tee-lel"
+  }
+ },
+ "schemaVersion": 1
+}

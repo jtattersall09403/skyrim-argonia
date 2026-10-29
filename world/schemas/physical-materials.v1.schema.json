@@ -1,0 +1,225 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "world-schema/physical-materials.v1",
+ "title": "Physical-material records (2.7a2, module 75 \u00a754-55)",
+ "type": "object",
+ "required": [
+  "schemaVersion",
+  "domain",
+  "entries"
+ ],
+ "properties": {
+  "schemaVersion": {
+   "const": 1
+  },
+  "domain": {
+   "const": "material"
+  },
+  "entries": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "id",
+     "sources",
+     "projectileResponse",
+     "climb"
+    ],
+    "properties": {
+     "id": {
+      "type": "string",
+      "pattern": "^material\\.[a-z-]+$"
+     },
+     "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+       "type": "string"
+      }
+     },
+     "projectileResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+       "canPenetrate",
+       "penetrationDepthM",
+       "stickProbability",
+       "ricochetProbability",
+       "breakProbability",
+       "passThroughProbability",
+       "waterDrag",
+       "recoverable",
+       "minImpactSpeedMps",
+       "ricochetRetention",
+       "passThroughRetention"
+      ],
+      "properties": {
+       "canPenetrate": {
+        "type": "boolean"
+       },
+       "penetrationDepthM": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 2,
+        "items": {
+         "type": "number",
+         "minimum": 0
+        }
+       },
+       "stickProbability": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+       },
+       "ricochetProbability": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+       },
+       "breakProbability": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+       },
+       "passThroughProbability": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+       },
+       "ricochetRetention": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+       },
+       "passThroughRetention": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+       },
+       "waterDrag": {
+        "type": "number",
+        "minimum": 0
+       },
+       "recoverable": {
+        "type": "boolean"
+       },
+       "minImpactSpeedMps": {
+        "type": "number",
+        "minimum": 0
+       },
+       "decalId": {
+        "type": "string"
+       }
+      }
+     },
+     "climb": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+       "grip",
+       "wetGripMultiplier",
+       "fallbackCategories"
+      ],
+      "properties": {
+       "grip": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+       },
+       "wetGripMultiplier": {
+        "type": "number",
+        "exclusiveMinimum": 0,
+        "maximum": 1
+       },
+       "fallbackCategories": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        },
+        "uniqueItems": true
+       },
+       "variants": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+         "stoneDressed": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+           "grip",
+           "wetGripMultiplier"
+          ],
+          "properties": {
+           "grip": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+           },
+           "wetGripMultiplier": {
+            "type": "number",
+            "exclusiveMinimum": 0,
+            "maximum": 1
+           }
+          }
+         },
+         "thatch": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+           "grip",
+           "wetGripMultiplier"
+          ],
+          "properties": {
+           "grip": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+           },
+           "wetGripMultiplier": {
+            "type": "number",
+            "exclusiveMinimum": 0,
+            "maximum": 1
+           }
+          }
+         }
+        }
+       }
+      },
+      "description": "Grip on a climb (2.12, botw-climbing-system.md \u00a711a.5)."
+     },
+     "ground": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+       "landCover",
+       "speedMultiplier",
+       "sprintAllowed",
+       "derivation"
+      ],
+      "properties": {
+       "landCover": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+         "type": "string"
+        }
+       },
+       "speedMultiplier": {
+        "type": "number",
+        "exclusiveMinimum": 0,
+        "maximum": 1
+       },
+       "sprintAllowed": {
+        "type": "boolean"
+       },
+       "derivation": {
+        "type": "string"
+       }
+      },
+      "description": "Terrain-only ground the feet read (2.9c f, 0157 ruling 11): the land covers it is, a speed share on every ground speed, whether a sprint is allowed."
+     }
+    }
+   }
+  }
+ }
+}

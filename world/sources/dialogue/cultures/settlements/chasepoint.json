@@ -1,0 +1,133 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "_": "Settlement sheet for Chasepoint (lane 2.5c).",
+ "entries": [
+  {
+   "id": "culture.settlement.chasepoint",
+   "level": "settlement",
+   "name": "Chasepoint",
+   "parent": "culture.region.mercantile-coast",
+   "placeId": "place.mercantile-coast.chasepoint",
+   "norms": [
+    {
+     "text": "Salvage rights pass down the family and are guarded closely.",
+     "source": "world/sources/catalogue/places-mercantile-coast.json#place.mercantile-coast.chasepoint"
+    },
+    {
+     "text": "Each lot is counted at the stall before it is sold.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Taking timber from another family's stretch of shore.",
+     "source": "inferred"
+    },
+    {
+     "text": "Asking a family what it holds back from the count.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "Thrift: nothing the sea gives up is wasted.",
+     "source": "world/sources/catalogue/places-mercantile-coast.json#place.mercantile-coast.chasepoint"
+    },
+    {
+     "text": "A clean hereditary claim.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Buyers who haggle a lot below its price.",
+     "source": "inferred"
+    },
+    {
+     "text": "Talk of paying the stage-keeper again.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "place": {
+     "lean": 1,
+     "text": "An Imperial stage the families keep now, under their own reed roof.",
+     "source": "world/sources/catalogue/places-mercantile-coast.json#place.mercantile-coast.chasepoint"
+    },
+    "work": {
+     "lean": 1,
+     "text": "Salvage from the south shore feeds the stall and the stall feeds the families.",
+     "source": "world/sources/catalogue/places-mercantile-coast.json#place.mercantile-coast.chasepoint"
+    },
+    "people": {
+     "lean": 0,
+     "text": "Two families claim the keeper's office; neither gives way.",
+     "source": "world/sources/catalogue/places-mercantile-coast.json#place.mercantile-coast.chasepoint"
+    },
+    "faction": {
+     "lean": 0,
+     "text": "No guild holds the stage; the households answer to themselves.",
+     "source": "world/sources/catalogue/places-mercantile-coast.json#place.mercantile-coast.chasepoint"
+    },
+    "danger": {
+     "lean": -1,
+     "text": "Fellrunners and marsh rats in the scrub; the wet coast plaster.",
+     "source": "world/sources/catalogue/places-mercantile-coast.json#place.mercantile-coast.chasepoint"
+    },
+    "directions": {
+     "lean": 1,
+     "text": "The town is a short walk west; Fourth Stage lies east along the coast road.",
+     "source": "world/sources/catalogue/places-mercantile-coast.json#place.mercantile-coast.chasepoint"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Traveller, for anyone off the road.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [
+     {
+      "text": "By the tideline.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "What lies in the second shed.",
+      "source": "inferred"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "No stage-keeper has been paid in two centuries.",
+      "source": "world/sources/catalogue/places-mercantile-coast.json#place.mercantile-coast.chasepoint"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "A salvage lot can be traced to its ship. The owners do not know it sank.",
+      "source": "world/sources/catalogue/places-mercantile-coast.json#place.mercantile-coast.chasepoint"
+     }
+    ]
+   },
+   "views": [],
+   "deviationRate": 0.25,
+   "dissent": [
+    {
+     "personId": "npc.mercantile-coast.chasepoint.n1",
+     "topic": "trade",
+     "lean": -1,
+     "text": "Disputes the tally the stall writes for every lot his family brings in.",
+     "source": "inferred"
+    }
+   ]
+  }
+ ]
+}

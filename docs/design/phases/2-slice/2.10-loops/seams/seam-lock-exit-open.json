@@ -1,0 +1,80 @@
+{
+ "id": "seam-lock-exit-open",
+ "start": {
+  "query": "?view=character&x=0.6575&z=6.089&t=12:00&d=8-17",
+  "kit": "start",
+  "skills": {
+   "security": 50
+  },
+  "seed": 1,
+  "grant": [
+   {
+    "item": "probe",
+    "count": 2
+   }
+  ]
+ },
+ "steps": [
+  {
+   "name": "probe-first",
+   "transition": "at the strongbox, E and a probe -> the trap found and disarmed",
+   "do": {
+    "action": "probe",
+    "lock": "lock.chasepoint.held-back",
+    "tool": "probe"
+   },
+   "keys": [
+    {
+     "wait_s": 5
+    },
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 0.8
+    },
+    {
+     "click": ".es-sheet--lock [data-lock-act=\"probe\"]"
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "screen": "lock",
+    "trapped": "disarmed"
+   },
+   "stage": {
+    "at": {
+     "x": 658.3,
+     "z": 6090.3,
+     "yaw": -2.36
+    },
+    "hour": 12,
+    "place": "place.mercantile-coast.chasepoint"
+   },
+   "lead": true
+  },
+  {
+   "name": "the-pick-gives",
+   "transition": "the pick -> it gives: the screen closes and the strongbox opens on its contents",
+   "do": {
+    "action": "pick",
+    "lock": "lock.chasepoint.held-back",
+    "tool": "lockpick"
+   },
+   "keys": [
+    {
+     "click": ".es-sheet--lock [data-lock-act=\"pick\"]"
+    }
+   ],
+   "hold_s": 2,
+   "expect": {
+    "lockState": {
+     "lock.chasepoint.held-back": "unlocked"
+    },
+    "trapFired": null,
+    "flinch": false,
+    "screen": "container"
+   }
+  }
+ ]
+}

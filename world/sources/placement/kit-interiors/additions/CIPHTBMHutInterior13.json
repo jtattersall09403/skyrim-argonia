@@ -1,0 +1,42 @@
+{
+ "schemaVersion": 2,
+ "cellId": "CIPHTBMHutInterior13",
+ "additions": [
+  {
+   "id": "CIPHTBMHutInterior13:add:hearth-impbrazier",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    1.662,
+    0.062,
+    0.733
+   ],
+   "rotZDeg": 0,
+   "zone": "hearth",
+   "why": "Lights the dark part of the hut at night."
+  },
+  {
+   "id": "CIPHTBMHutInterior13:add:hearth-impbrazier-2",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    0.9,
+    0.062,
+    0.733
+   ],
+   "rotZDeg": 0,
+   "zone": "hearth",
+   "why": "Lights the dark part of the hut at night."
+  },
+  {
+   "id": "CIPHTBMHutInterior13:add:hearth-impbrazier-3",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    2.4,
+    0.028,
+    0.733
+   ],
+   "rotZDeg": 0,
+   "zone": "hearth",
+   "why": "Lights the dark part of the hut at night."
+  }
+ ]
+}

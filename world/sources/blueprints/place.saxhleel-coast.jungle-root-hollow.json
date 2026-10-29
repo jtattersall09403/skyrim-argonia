@@ -1,0 +1,1899 @@
+{
+  "schemaVersion": 1,
+  "blueprint": {
+    "id": "place.saxhleel-coast.jungle-root-hollow",
+    "seed": "place.saxhleel-coast.jungle-root-hollow",
+    "causalModel": {
+      "founding": "A void opened where the root layer lifted the ground deep in the jungle. An occupant moved into the void.",
+      "siteAdvantages": "The void is dry and root-walled, with one defensible mouth.",
+      "occupantsMotive": "The occupant has made a lair of the void. The occupant drags in what it has taken.",
+      "pressures": "Evicted families at the hiring camp, 895 m east, no longer forage this way. Any of the families will tell a stranger why, at length.",
+      "wouldChangeIf": "If the lair were cleared, the foraging range of the hiring camp would double."
+    },
+    "boundary": [
+      [
+        0.495015,
+        0.614362
+      ],
+      [
+        0.505865,
+        0.614362
+      ],
+      [
+        0.505865,
+        0.623855
+      ],
+      [
+        0.495015,
+        0.623855
+      ]
+    ],
+    "districts": [
+      {
+        "id": "district.jungle-root-hollow.the-mouth",
+        "kind": "lair",
+        "cultureKit": "argonian-root",
+        "wealth": "none",
+        "boundary": [
+          [
+            0.497857428,
+            0.618852435
+          ],
+          [
+            0.500573193,
+            0.620587527
+          ],
+          [
+            0.501339398,
+            0.620097969
+          ],
+          [
+            0.501631285,
+            0.619498164
+          ],
+          [
+            0.501752471,
+            0.618821371
+          ],
+          [
+            0.501501297,
+            0.618082242
+          ],
+          [
+            0.500776682,
+            0.617349397
+          ],
+          [
+            0.498787577,
+            0.61827249
+          ]
+        ],
+        "notes": "A Hist root mouth against a mossy rock bank, with a scatter of bones and tools in front of it.",
+        "why": {
+          "what": "The district is the mouth of the hollow, its rock bank and the scatter in front of it.",
+          "whyHere": "The root layer lifted the ground here and left a dry void under it.",
+          "whySpot": "The spot is a level pocket on the jungle floor. The roots come down to the ground against rock there.",
+          "whyNeighbours": "No settlement lies within a valley of the place. The hiring camp is nearly a kilometre east, 895 m away.",
+          "playerPurpose": "The district is the way into the lair. It holds the evidence of what the occupant has taken.",
+          "microGeography": "The ground is dark leaf litter on firm ground. A closed canopy covers it."
+        }
+      }
+    ],
+    "parcels": [
+      {
+        "id": "parcel.jungle-root-hollow.the-cave-mouth",
+        "districtId": "district.jungle-root-hollow.the-mouth",
+        "use": "lair",
+        "buildingFamily": "vanilla-cave-entrance",
+        "interior": {
+          "kind": "shell"
+        },
+        "orientationWhy": "The mouth faces east, toward the hiring camp. The hiring camp is the home of the lost foragers.",
+        "why": {
+          "what": "The parcel is the mouth, a rock arch collared with Hist root. The way down lies inside the arch.",
+          "whyHere": "The roots hold up the roof of the void. The arch is the single opening of the void.",
+          "whySpot": "The parcel stands against the rock bank. It stands on the level pocket in front of the bank.",
+          "whyNeighbours": "The bank closes the mouth on the west. The scatter spreads east of the mouth.",
+          "playerPurpose": "The mouth is the way down into the lair. It is also the sole way out of the lair.",
+          "microGeography": "The mouth is rock and living root over a dark opening. Trodden earth lies at the threshold."
+        },
+        "playerPurpose": [
+          {
+            "kind": "cache",
+            "tier": "medium",
+            "note": "Everything the occupant has taken, piled deep in the hollow."
+          },
+          {
+            "kind": "unique-item",
+            "tier": "major",
+            "note": "One thing in the den worth the fight."
+          },
+          {
+            "kind": "quest-stage",
+            "tier": "major",
+            "socketRef": "socket.jungle-root-hollow.q-evidence-the-tools",
+            "note": "Takes The Tools ends here. The missing foragers' tools lie at the cave mouth. A creature in the hollow took the foragers. It waits below."
+          }
+        ],
+        "assetRef": "vanilla:landscape/rocks/rockcaveentrance02",
+        "centreUV": [
+          0.499355357,
+          0.6189728
+        ],
+        "yawDeg": 350.0,
+        "yMeasured": 37.193,
+        "assembly": [
+          {
+            "id": "d-basket",
+            "asset": "mudmother:gv_meshes/argoniannest/basketsmall01",
+            "atM": [
+              18.6062,
+              -3.0149
+            ],
+            "yaw": 50.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 38.031
+          },
+          {
+            "id": "d-dark",
+            "asset": "vanilla:markers/blackplane01",
+            "atM": [
+              0.2319,
+              1.564
+            ],
+            "yaw": 106.0,
+            "on": "parent",
+            "layer": "wear",
+            "evidence": "plugin: King of the Murkmire 0x8835b10 BlackPlane01 in its cave mouth",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "b-mouth",
+              "unmined": "reader-approved r40"
+            },
+            "upM": 3.4799,
+            "pitch": -90.0,
+            "scale": 1.2
+          },
+          {
+            "id": "d-dark-2",
+            "asset": "vanilla:markers/blackplane01",
+            "atM": [
+              -1.3316,
+              5.2485
+            ],
+            "yaw": 110.0,
+            "on": "parent",
+            "layer": "wear",
+            "evidence": "plugin: King of the Murkmire 0x8835b10 BlackPlane01 in its cave mouth",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "b-mouth",
+              "unmined": "reader-approved r40"
+            },
+            "upM": 4.0865,
+            "pitch": -90.0
+          },
+          {
+            "id": "d-totem",
+            "asset": "mudmother:gv_meshes/argoniannest/argoniantotem01",
+            "atM": [
+              9.7848,
+              4.9747
+            ],
+            "yaw": 106.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 37.729
+          },
+          {
+            "id": "g-cover-b2",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              -14.7874,
+              -8.3344
+            ],
+            "yaw": 217.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 0.75,
+            "yMeasured": 50.4875
+          },
+          {
+            "id": "g-cover-b3",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              -15.6248,
+              -6.5223
+            ],
+            "yaw": 198.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 1.2,
+            "yMeasured": 51.5545
+          },
+          {
+            "id": "g-cover-b4",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              -17.253,
+              -5.2355
+            ],
+            "yaw": 42.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 0.75,
+            "yMeasured": 51.9781
+          },
+          {
+            "id": "g-cover-b8",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              -16.6216,
+              2.4712
+            ],
+            "yaw": 52.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 0.75,
+            "yMeasured": 51.9781
+          },
+          {
+            "id": "g-cover-e1",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              6.0259,
+              9.5921
+            ],
+            "yaw": 125.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "yMeasured": 38.0259
+          },
+          {
+            "id": "g-cover-e2",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              7.1263,
+              7.9584
+            ],
+            "yaw": 262.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 0.75,
+            "yMeasured": 37.6818
+          },
+          {
+            "id": "g-cover-e3",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              11.2603,
+              -6.8487
+            ],
+            "yaw": 51.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "yMeasured": 37.9639
+          },
+          {
+            "id": "g-cover-e4",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              10.2701,
+              -4.6878
+            ],
+            "yaw": 148.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 0.75,
+            "yMeasured": 38.0495
+          },
+          {
+            "id": "g-cover-e5",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              9.5636,
+              -2.9846
+            ],
+            "yaw": 245.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 0.75,
+            "yMeasured": 38.029
+          },
+          {
+            "id": "g-cover-h1",
+            "asset": "bmv:landscape/plants/espfernbrakencluster01",
+            "atM": [
+              -7.3882,
+              -16.8388
+            ],
+            "yaw": 40.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "yMeasured": 47.0909
+          },
+          {
+            "id": "g-cover-h2",
+            "asset": "bmv:landscape/plants/espfernbraken01st",
+            "atM": [
+              -10.9273,
+              -14.6196
+            ],
+            "yaw": 260.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "yMeasured": 49.3563
+          },
+          {
+            "id": "g-cover-h3",
+            "asset": "bmv:landscape/plants/espfernbraken05st",
+            "atM": [
+              -14.9096,
+              -12.4786
+            ],
+            "yaw": 130.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "yMeasured": 49.7506
+          },
+          {
+            "id": "g-cover-j1",
+            "asset": "bmv:landscape/plants/espfernbraken05st",
+            "atM": [
+              1.9972,
+              11.0751
+            ],
+            "yaw": 30.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "yMeasured": 38.9827
+          },
+          {
+            "id": "g-cover-j2",
+            "asset": "bmv:landscape/plants/espfernbraken06st",
+            "atM": [
+              3.9464,
+              10.4439
+            ],
+            "yaw": 150.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "yMeasured": 38.2163
+          },
+          {
+            "id": "g-cover-j3",
+            "asset": "bmv:landscape/plants/espfernbraken04st",
+            "atM": [
+              5.6148,
+              11.3474
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "yMeasured": 38.2308
+          },
+          {
+            "id": "g-cover-j4",
+            "asset": "bmv:landscape/plants/espfernbrakencluster02",
+            "atM": [
+              -0.9767,
+              12.4495
+            ],
+            "yaw": 85.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 0.6,
+            "yMeasured": 41.183
+          },
+          {
+            "id": "g-cover-j5",
+            "asset": "bmv:landscape/plants/espfernbraken03st",
+            "atM": [
+              3.0835,
+              12.1703
+            ],
+            "yaw": 320.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "yMeasured": 39.3287
+          },
+          {
+            "id": "g-cover-k1",
+            "asset": "bmv:landscape/plants/espfernbraken02st",
+            "atM": [
+              5.3106,
+              -10.5379
+            ],
+            "yaw": 70.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "yMeasured": 43.1944
+          },
+          {
+            "id": "g-cover-k3",
+            "asset": "bmv:landscape/plants/espfernbraken06st",
+            "atM": [
+              -1.0443,
+              -11.3538
+            ],
+            "yaw": 210.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "yMeasured": 47.1471
+          },
+          {
+            "id": "g-cover-n1",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              -13.6778,
+              -14.8
+            ],
+            "yaw": 147.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 1.2,
+            "yMeasured": 49.4549
+          },
+          {
+            "id": "g-cover-n10",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              3.2815,
+              -13.485
+            ],
+            "yaw": 148.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 0.75,
+            "yMeasured": 45.6059
+          },
+          {
+            "id": "g-cover-n11",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              4.8168,
+              -12.2294
+            ],
+            "yaw": 129.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 1.2,
+            "yMeasured": 43.9814
+          },
+          {
+            "id": "g-cover-n12",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              6.5751,
+              -10.9141
+            ],
+            "yaw": 110.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 0.75,
+            "yMeasured": 41.8007
+          },
+          {
+            "id": "g-cover-n13",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              8.4636,
+              -10.51
+            ],
+            "yaw": 91.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 1.2,
+            "yMeasured": 39.8479
+          },
+          {
+            "id": "g-cover-n4",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              -6.9034,
+              -13.1384
+            ],
+            "yaw": 90.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 0.75,
+            "yMeasured": 48.8781
+          },
+          {
+            "id": "g-cover-n5",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              -5.0143,
+              -12.4499
+            ],
+            "yaw": 71.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 1.2,
+            "yMeasured": 48.8361
+          },
+          {
+            "id": "g-cover-n6",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              -3.8177,
+              -13.9956
+            ],
+            "yaw": 326.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 0.75,
+            "yMeasured": 48.907
+          },
+          {
+            "id": "g-cover-n7",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              -2.2804,
+              -15.2273
+            ],
+            "yaw": 342.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 1.2,
+            "yMeasured": 46.8912
+          },
+          {
+            "id": "g-cover-n8",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              -0.6234,
+              -13.1074
+            ],
+            "yaw": 323.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 0.75,
+            "yMeasured": 47.3027
+          },
+          {
+            "id": "g-cover-n9",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              1.4504,
+              -13.351
+            ],
+            "yaw": 304.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 1.2,
+            "yMeasured": 46.4937
+          },
+          {
+            "id": "g-cover-no1",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              -4.9579,
+              -14.9582
+            ],
+            "yaw": 72.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 0.75,
+            "yMeasured": 47.7345
+          },
+          {
+            "id": "g-cover-no2",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              -0.5775,
+              -16.2471
+            ],
+            "yaw": 117.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 1.2,
+            "yMeasured": 46.8048
+          },
+          {
+            "id": "g-cover-no3",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              1.124,
+              -15.0129
+            ],
+            "yaw": 286.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 0.75,
+            "yMeasured": 46.7162
+          },
+          {
+            "id": "g-cover-no4",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              3.5037,
+              -15.4361
+            ],
+            "yaw": 181.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 1.2,
+            "yMeasured": 45.5635
+          },
+          {
+            "id": "g-cover-no5",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              5.039,
+              -14.1804
+            ],
+            "yaw": 350.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 0.75,
+            "yMeasured": 44.1043
+          },
+          {
+            "id": "g-cover-no6",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              7.7037,
+              -13.8019
+            ],
+            "yaw": 175.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 1.2,
+            "yMeasured": 40.9994
+          },
+          {
+            "id": "g-cover-no7",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              10.4219,
+              -12.2869
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 0.75,
+            "yMeasured": 38.787
+          },
+          {
+            "id": "g-cover-s1",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              -16.1266,
+              5.0768
+            ],
+            "yaw": 102.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 1.2,
+            "yMeasured": 51.7519
+          },
+          {
+            "id": "g-cover-s10",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              -3.859,
+              13.5355
+            ],
+            "yaw": 170.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 0.75,
+            "yMeasured": 45.443
+          },
+          {
+            "id": "g-cover-s11",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              -2.007,
+              13.8012
+            ],
+            "yaw": 151.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 1.2,
+            "yMeasured": 43.6081
+          },
+          {
+            "id": "g-cover-s12",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              -0.0132,
+              13.4927
+            ],
+            "yaw": 132.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 0.75,
+            "yMeasured": 39.8947
+          },
+          {
+            "id": "g-cover-s13",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              1.9471,
+              13.0869
+            ],
+            "yaw": 113.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 1.2,
+            "yMeasured": 39.5254
+          },
+          {
+            "id": "g-cover-s14",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              4.1958,
+              12.6
+            ],
+            "yaw": 317.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 0.75,
+            "yMeasured": 39.2504
+          },
+          {
+            "id": "g-cover-s2",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              -14.157,
+              5.4241
+            ],
+            "yaw": 83.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 0.75,
+            "yMeasured": 51.7565
+          },
+          {
+            "id": "g-cover-s3",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              -12.2394,
+              6.0668
+            ],
+            "yaw": 64.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 1.2,
+            "yMeasured": 50.7119
+          },
+          {
+            "id": "g-cover-s4",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              -10.2177,
+              6.1187
+            ],
+            "yaw": 45.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 0.75,
+            "yMeasured": 50.3781
+          },
+          {
+            "id": "g-cover-s5",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              -9.0589,
+              8.0695
+            ],
+            "yaw": 230.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 1.2,
+            "yMeasured": 49.8203
+          },
+          {
+            "id": "g-cover-s6",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              -9.2312,
+              10.659
+            ],
+            "yaw": 211.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 0.75,
+            "yMeasured": 49.496
+          },
+          {
+            "id": "g-cover-s7",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              -9.2477,
+              12.2503
+            ],
+            "yaw": 278.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 1.2,
+            "yMeasured": 49.2409
+          },
+          {
+            "id": "g-cover-s8",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              -7.2224,
+              12.9729
+            ],
+            "yaw": 259.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 0.75,
+            "yMeasured": 47.8301
+          },
+          {
+            "id": "g-cover-s9",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              -5.7277,
+              14.3433
+            ],
+            "yaw": 189.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 1.2,
+            "yMeasured": 46.5599
+          },
+          {
+            "id": "g-cover-so1",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              -10.9393,
+              7.5044
+            ],
+            "yaw": 330.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 0.75,
+            "yMeasured": 50.344
+          },
+          {
+            "id": "g-cover-so2",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              -11.8143,
+              9.4724
+            ],
+            "yaw": 53.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 1.2,
+            "yMeasured": 50.3866
+          },
+          {
+            "id": "g-cover-so3",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              -9.113,
+              14.3658
+            ],
+            "yaw": 254.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 0.75,
+            "yMeasured": 48.9641
+          },
+          {
+            "id": "g-cover-so4",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              -5.177,
+              16.979
+            ],
+            "yaw": 114.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 1.2,
+            "yMeasured": 45.8599
+          },
+          {
+            "id": "g-cover-so5",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              -3.4672,
+              15.4019
+            ],
+            "yaw": 283.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 0.75,
+            "yMeasured": 44.946
+          },
+          {
+            "id": "g-cover-so6",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              -1.5005,
+              15.8807
+            ],
+            "yaw": 6.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 1.2,
+            "yMeasured": 41.6322
+          },
+          {
+            "id": "g-cover-so7",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              0.4846,
+              14.7584
+            ],
+            "yaw": 175.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 0.75,
+            "yMeasured": 40.3589
+          },
+          {
+            "id": "g-cover-so8",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              4.6381,
+              14.6987
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 1.2,
+            "yMeasured": 39.7832
+          },
+          {
+            "id": "g-cover-so9",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              5.9239,
+              13.1078
+            ],
+            "yaw": 83.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 0.75,
+            "yMeasured": 39.159
+          },
+          {
+            "id": "g-cover-t1",
+            "asset": "bmv:landscape/plants/espfernbrakencluster04",
+            "atM": [
+              -7.2978,
+              8.5628
+            ],
+            "yaw": 200.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "scale": 0.6,
+            "yMeasured": 48.6451
+          },
+          {
+            "id": "g-cover-v91",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              2.6671,
+              17.1233
+            ],
+            "yaw": 17.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "yMeasured": 40.8837
+          },
+          {
+            "id": "g-cover-w1",
+            "asset": "bmv:landscape/trees/tropicalshrub01",
+            "atM": [
+              -16.9684,
+              -8.5768
+            ],
+            "yaw": 189.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "yMeasured": 50.8794
+          },
+          {
+            "id": "g-tfern-n",
+            "asset": "tropical:plants/tropical/manfern",
+            "atM": [
+              10.771,
+              -26.5327
+            ],
+            "yaw": 30.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "yMeasured": 39.832
+          },
+          {
+            "id": "l-candle-n",
+            "asset": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+            "atM": [
+              3.0006,
+              -0.8925
+            ],
+            "yaw": 106.0,
+            "on": "ground",
+            "layer": "light",
+            "evidence": "measured",
+            "yMeasured": 38.0336
+          },
+          {
+            "id": "l-candle-s",
+            "asset": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+            "atM": [
+              2.4449,
+              2.2589
+            ],
+            "yaw": 106.0,
+            "on": "ground",
+            "layer": "light",
+            "evidence": "measured",
+            "yMeasured": 38.071
+          },
+          {
+            "id": "r-mouth-n",
+            "asset": "htbm:here there be monsters - curse of cipactli/trees/histroots03",
+            "atM": [
+              8.3126,
+              -1.0728
+            ],
+            "yaw": 180.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "scale": 1.5,
+            "yMeasured": 38.1765
+          },
+          {
+            "id": "r-mouth-s",
+            "asset": "htbm:here there be monsters - curse of cipactli/trees/histroots03",
+            "atM": [
+              5.2725,
+              7.53
+            ],
+            "yaw": 205.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "scale": 1.5,
+            "yMeasured": 37.9701
+          },
+          {
+            "id": "r-root-e1",
+            "asset": "htbm:here there be monsters - curse of cipactli/trees/histroots03",
+            "atM": [
+              -29.5442,
+              -5.2094
+            ],
+            "yaw": 250.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 51.9488
+          },
+          {
+            "id": "r-root-n",
+            "asset": "htbm:here there be monsters - curse of cipactli/trees/histroots03",
+            "atM": [
+              -30.0081,
+              -8.3375
+            ],
+            "yaw": 100.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 51.95
+          },
+          {
+            "id": "r-root-ne",
+            "asset": "htbm:here there be monsters - curse of cipactli/trees/histroots03",
+            "atM": [
+              -29.0233,
+              -8.1639
+            ],
+            "yaw": 160.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 51.95
+          },
+          {
+            "id": "r-root-w",
+            "asset": "htbm:here there be monsters - curse of cipactli/trees/histroots03",
+            "atM": [
+              -29.3706,
+              -6.1943
+            ],
+            "yaw": 10.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 51.95
+          },
+          {
+            "id": "s1-lb-arm",
+            "asset": "vanilla:clutter/bones/humanarmleft",
+            "atM": [
+              15.2855,
+              -2.6761
+            ],
+            "yaw": 246.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 38.2813
+          },
+          {
+            "id": "s1-lb-arm2",
+            "asset": "vanilla:clutter/bones/humanarmleft",
+            "atM": [
+              16.5634,
+              -3.1419
+            ],
+            "yaw": 356.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 38.2016
+          },
+          {
+            "id": "s1-lb-fresh",
+            "asset": "vanilla:clutter/bones/bloodyribs",
+            "atM": [
+              14.9392,
+              0.3455
+            ],
+            "yaw": 306.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 38.1203
+          },
+          {
+            "id": "s1-lb-leg",
+            "asset": "vanilla:clutter/bones/humanlegleft",
+            "atM": [
+              16.2171,
+              -0.1203
+            ],
+            "yaw": 131.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 38.0443
+          },
+          {
+            "id": "s1-lb-ribs",
+            "asset": "vanilla:clutter/bones/humanribcage",
+            "atM": [
+              15.9301,
+              -1.659
+            ],
+            "yaw": 106.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 38.263
+          },
+          {
+            "id": "s1-lb-scrap",
+            "asset": "vanilla:clutter/bones/bloodybone",
+            "atM": [
+              14.1171,
+              -1.8667
+            ],
+            "yaw": 201.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 38.2647
+          },
+          {
+            "id": "s1-lb-skull",
+            "asset": "kotm:issgard/clutter/bones/issgard_boneargonianskullfull",
+            "atM": [
+              15.1053,
+              -0.9592
+            ],
+            "yaw": 176.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 38.2004
+          },
+          {
+            "id": "s1-lb-spine",
+            "asset": "vanilla:clutter/bones/humanspine",
+            "atM": [
+              17.0977,
+              -1.7403
+            ],
+            "yaw": 46.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 38.1557
+          },
+          {
+            "id": "s1-lt-basket",
+            "asset": "vanilla:clutter/basket01",
+            "atM": [
+              18.8835,
+              -3.6051
+            ],
+            "yaw": 200.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 38.0227
+          },
+          {
+            "id": "s1-lt-net",
+            "asset": "shores:shoresofskyrim/fishnet01",
+            "atM": [
+              18.6827,
+              -1.0322
+            ],
+            "yaw": 325.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 37.9417
+          },
+          {
+            "id": "s1-lt-shovel",
+            "asset": "vanilla:clutter/common/shovel01",
+            "atM": [
+              18.9944,
+              -2.3372
+            ],
+            "yaw": 310.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 38.5585
+          },
+          {
+            "id": "t-crown-giant",
+            "asset": "composite:jungle/anvil-canopy-tree",
+            "atM": [
+              -30.3554,
+              -6.3679
+            ],
+            "yaw": 50.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "scale": 0.8,
+            "groundFit": "dug-in",
+            "yMeasured": 48.8115
+          }
+        ],
+        "footprint": [
+          [
+            0.498873782,
+            0.618858031
+          ],
+          [
+            0.499046243,
+            0.618750502
+          ],
+          [
+            0.500659087,
+            0.618002022
+          ],
+          [
+            0.50102781,
+            0.618374933
+          ],
+          [
+            0.501193824,
+            0.618863461
+          ],
+          [
+            0.501110561,
+            0.619328463
+          ],
+          [
+            0.500918498,
+            0.619723137
+          ],
+          [
+            0.500573183,
+            0.619943772
+          ]
+        ]
+      }
+    ],
+    "doors": [
+      {
+        "id": "door.saxhleel-coast.jungle-root-hollow.1",
+        "parcelId": "parcel.jungle-root-hollow.the-cave-mouth",
+        "doorType": "load",
+        "fills": [
+          "promise.jungle-root-hollow.interior-principal"
+        ],
+        "preferCell": {
+          "cellId": "MugsumpHollowInt01",
+          "why": "The record describes the lair as a dry root cave with bones on its floor and a beast's den. The cell is the AutoLoadDoor01 of King of the Murkmire. The AutoLoadDoor01 in this rock loads that cell."
+        },
+        "interiorClaim": {
+          "culture": "argonian",
+          "interiorRef": "vanilla-imperial-int",
+          "sizeClass": "large",
+          "tier": "A",
+          "cellId": "MugsumpHollowInt01",
+          "plugin": "King of the Murkmire.esp",
+          "interiorLoadDoorRef": "085706AB",
+          "arrivalMarker": {
+            "positionM": [
+              -64.3026,
+              93.8454,
+              -15.3091
+            ],
+            "yawDeg": 180.0
+          },
+          "why": "1 of 31 cells plugins link to vanilla:landscape/rocks/rockcaveentrance02 pass; MugsumpHollowInt01 is a storage, 1 exterior load door; chosen for this door: The record's lair: a dry root cave with bones on its floor and a beast's den, the cell King of the Murkmire's AutoLoadDoor01 in this rock loads."
+        },
+        "thresholdUV": [
+          0.499552956,
+          0.618995584
+        ],
+        "facingDeg": 96.6
+      }
+    ],
+    "routes": [
+      {
+        "id": "route.jungle-root-hollow.searchers-trodden",
+        "routing": "straight",
+        "via": [
+          [
+            0.49957235,
+            0.619135545
+          ],
+          [
+            0.500304702,
+            0.619189793
+          ],
+          [
+            0.500914995,
+            0.619244041
+          ],
+          [
+            0.501525288,
+            0.619135545
+          ],
+          [
+            0.502203391,
+            0.618945676
+          ],
+          [
+            0.502813684,
+            0.618837179
+          ]
+        ],
+        "kind": "trodden",
+        "widthM": 1.5,
+        "why": "The hiring camp's searchers walk out to the mouth with candles and come back the same way; their feet wore this ground bare toward the camp's track.",
+        "points": [
+          [
+            0.49957235,
+            0.619135545
+          ],
+          [
+            0.500914995,
+            0.619244041
+          ],
+          [
+            0.502813684,
+            0.618837179
+          ]
+        ]
+      }
+    ],
+    "canals": [],
+    "boardwalks": [],
+    "fences": [],
+    "docks": [],
+    "landmarks": [],
+    "questSockets": [
+      {
+        "id": "socket.jungle-root-hollow.q-evidence-the-tools",
+        "kind": "evidence",
+        "socketRef": "evidence.jungle-root-hollow.the-tools",
+        "position": [
+          0.50015,
+          0.61871
+        ],
+        "parcel": "parcel.jungle-root-hollow.the-cave-mouth"
+      }
+    ],
+    "travelServices": [],
+    "occupants": [],
+    "approaches": [
+      {
+        "id": "approach.jungle-root-hollow.from-the-camp",
+        "mode": "walk",
+        "firstSeen": "parcel.jungle-root-hollow.the-cave-mouth",
+        "viaUV": [
+          [
+            0.505187,
+            0.617752
+          ]
+        ],
+        "sequence": "A visitor comes west through the trees from the hiring camp. The rock bank shows first. The root mass against the bank shows next. The dark mouth between them shows last.",
+        "wayfinding": "A trodden path runs west from the hiring camp's side to the mouth. The bank is the sole patch of grey rock among the trees.",
+        "fromDirection": "east"
+      }
+    ],
+    "networkTerminals": [
+      {
+        "id": "terminal.jungle-root-hollow.searchers-path",
+        "routeId": "track.saxhleel-coast.jungle-root-hollow",
+        "entryUV": [
+          0.502691416,
+          0.618686697
+        ],
+        "wayId": "route.jungle-root-hollow.searchers-trodden",
+        "kind": "footpath",
+        "why": "The hiring camp's searchers walk out to the mouth with their candles and walk back. Their feet wore a path east toward the camp's track."
+      }
+    ],
+    "combatSpaces": [
+      {
+        "id": "combat.jungle-root-hollow.the-threshold",
+        "aroundIds": [
+          "parcel.jungle-root-hollow.the-cave-mouth"
+        ],
+        "clearanceClass": "open",
+        "why": "The level pocket in front of the mouth is the sole open footing under the trees.",
+        "boundary": [
+          [
+            0.497857428,
+            0.618852435
+          ],
+          [
+            0.500573193,
+            0.620587527
+          ],
+          [
+            0.501339398,
+            0.620097969
+          ],
+          [
+            0.501631285,
+            0.619498164
+          ],
+          [
+            0.501752471,
+            0.618821371
+          ],
+          [
+            0.501501297,
+            0.618082242
+          ],
+          [
+            0.500776682,
+            0.617349397
+          ],
+          [
+            0.498787577,
+            0.61827249
+          ]
+        ]
+      }
+    ],
+    "clearance": {
+      "hardClear": [],
+      "thinned": [],
+      "kept": []
+    },
+    "variants": [
+      {
+        "id": "variant.jungle-root-hollow.base",
+        "changedRefs": [],
+        "serviceOverrides": {},
+        "ambience": "lair"
+      }
+    ],
+    "scaleGrounding": {
+      "loreSource": "catalogue record Takes-The-Tools (lair, M1, one mouth); interior MugsumpHollowInt01, the cell King of the Murkmire links to the hist_vines01 root mouth",
+      "population": "0",
+      "households": 0,
+      "buildingsPlanned": 1,
+      "npcsPlanned": 0,
+      "why": "The place is one mouth, its rock bank and the scatter in front of it. The lair itself is the cell below."
+    },
+    "siting": {
+      "dossier": "world/sources/sites/dossiers/jungle-root-hollow.json",
+      "candidates": [
+        {
+          "id": "candidate.jungle-root-hollow.the-pocket",
+          "positionM": [
+            3690.0,
+            4562.0
+          ],
+          "chosen": true,
+          "why": "The pocket lies 10 m south-east of the plotted anchor. The pocket is firm and dry. The ground rises on the west side of the pocket for the bank."
+        },
+        {
+          "id": "candidate.jungle-root-hollow.plotted-anchor",
+          "positionM": [
+            3682.2,
+            4554.1
+          ],
+          "why": "The plotted anchor lies 12 m north-west of the chosen pocket.",
+          "rejectedBecause": "The east side of the anchor drops into a hummock. The mouth would face into rising ground."
+        }
+      ]
+    },
+    "macroEvidence": [
+      {
+        "sourcePaths": [
+          "assetPlan",
+          "contents",
+          "discovery",
+          "eraLayers",
+          "hostility",
+          "interior",
+          "playerPurpose",
+          "questHooks",
+          "relations",
+          "lootTable",
+          "season",
+          "sitingPrefs",
+          "status",
+          "traversalModes",
+          "underwaterAccess",
+          "vibe",
+          "why"
+        ],
+        "evidenceRefs": [
+          "parcel.jungle-root-hollow.the-cave-mouth",
+          "approach.jungle-root-hollow.from-the-camp"
+        ]
+      },
+      {
+        "sourcePaths": [
+          "entrance"
+        ],
+        "evidenceRefs": [
+          "door.saxhleel-coast.jungle-root-hollow.1",
+          "parcel.jungle-root-hollow.the-cave-mouth"
+        ]
+      },
+      {
+        "sourcePaths": [
+          "rumourPoolKey"
+        ],
+        "evidenceRefs": [
+          "socket.jungle-root-hollow.q-evidence-the-tools"
+        ]
+      }
+    ],
+    "budget": {
+      "maxInstances": 90,
+      "maxUniqueMaterials": 60,
+      "maxTextureMB": 32,
+      "maxColliders": 40
+    },
+    "assetConstraints": [],
+    "proseRefs": [
+      {
+        "sourcePath": "parcels[0].playerPurpose[2].note",
+        "questRef": "quest.local.sx08"
+      }
+    ],
+    "authoredOn": {
+      "wbSchemaVersion": 1,
+      "ground": {
+        "centreM": [
+          3690.0,
+          4562.0
+        ],
+        "halfM": 60.0,
+        "chunks": {
+          "chunk_7_9": "cce6dfec20b1922685d81d3a0f678980dc0d65151883d82fc58c5ed89882248c",
+          "chunk_8_9": "8e0b66e97df9a7cf66a15898a9929d72aaca6ebcb72c7394a2fb7b4c0aa86671"
+        },
+        "sha256": "ef03739d429b1ad5c00359983ea0bd86bdcb58ade9bccaa503a29b2fc3c77ce8"
+      },
+      "kits": {
+        "dungeon-root-v1": "d7442b1671412bc0d2513aa553b057a6fe60559f195b0709c1e2b305289bf359",
+        "flora-province-v1": "0ef937d974ac29e0c20057d560413bb7d248a7c78c48d734bf30c9b0b99c6003",
+        "mudmother-hut-int": "c93688f1dbeea6f5ef17417545b3d9c73e7aa10472529013467ff090aa4724fe",
+        "settlement-mud-v1": "cb24bf064b13aba569691f990ea4c4822555bcd8561ddfb9e3db820437d25cd1",
+        "settlement-root-v1": "a15ce9b1d2315d5feb18b58723fe0e229e59ea3a048ac77252a43b2c05df9d86"
+      },
+      "layout": {
+        "path": "world/sources/blueprints/jungle-root-hollow.layout.json",
+        "sha256": "014102c9a562f7e9d80a820696c765ff7fed85b882fc8c46b03ada4fac9b2215",
+        "uidSha256": {
+          "MugsumpHollowInt01.08570749": "8fd0a03ef2a37ce167aa77fc0506ba2329c406813fb93267e8c0e27ced106b4e",
+          "MugsumpHollowInt01.08570750": "92da6ffeb12cf01c6574fa6a9c6357ab844471b18757d19fdfa87382faa03252",
+          "b-mouth": "bb65b346a1bff1eedf0f2dd2eec363c84f41ba2bbf9a660a5834b115350f0be0",
+          "d-basket": "e8985c24b65fe4254e7be43c381da51a4479fd0068fadde1900bf61498de6e8a",
+          "d-dark": "94e2ab48e2de3830bc5d492731ba068be8d2bb8e38a5f89a77fd82b50329b04b",
+          "d-dark-2": "60c539ee986c7dd3d913b0aaaca976b7ca95d25fe737c848f576f16f4a2743f7",
+          "d-totem": "0a2ea5b7c36093a76c4d6fd12d51189ba10259c9f2804a658dd3613c76ab4f8c",
+          "g-cover-b1": "fef51992122a4b48931ddb0779f3f9c61ff06273d47e19ed9b7125509c495ff7",
+          "g-cover-b2": "6d020477f88a08f354b491ca11ac7d1df64a1fe486e3344d9154a31ba7f90977",
+          "g-cover-b3": "95fa88b045de00b09f1fd0f4fe5c9a860a694c375a03a81769c518d3a1c174d2",
+          "g-cover-b4": "7eac9fe9017c414b20476932a4c7750aaac1240ba6d8a2fe21bebf7fc90a90c2",
+          "g-cover-b5": "5ea56b5d9a801ee0663771497b86be5e38e108ce4f1db27d9f8fea44afc34da2",
+          "g-cover-b6": "a6e7de284b444f53a42ebf064243dcb30e8979da9bfbeca4a95e44a13ff18ea3",
+          "g-cover-b7": "0f57028e9c263918e06c2a12e0220cdd6014a147aa277b0aa50799ae1374ee35",
+          "g-cover-b8": "dfa39e8109ef286607b7c0a192107df6ab4c18b6c2720ff21f2c8db7576757ae",
+          "g-cover-e1": "cd177a3a8e106a1dc185dc5aa3f1e0c23d7888cb791ffb2a3143b5125bebad11",
+          "g-cover-e2": "0de6713a822c0d4b486b9df32b6799c8ebd9a1f706962b98eac13ab94e419594",
+          "g-cover-e3": "e3ebb3bf38c7a598ee14db582800309ddb0cdd365880d914814b539e4c6e25e9",
+          "g-cover-e4": "d27971aac41930143443ff0c8e8f4837cecbe09a25166ff957bd6438925b6bca",
+          "g-cover-e5": "13114f158bce24299c04a139e804048f17fd3ac78fa7ff24d39a8973e4c3c2c6",
+          "g-cover-f1": "669bd4a521d71bac010f01d2c78a6a02804265b6bdef2b79e7d3b4009dbe67dc",
+          "g-cover-h1": "fdb9785fcfa026a466856c041a3da123005bb313bada6d8b099fdf30627d4833",
+          "g-cover-h2": "5575e04f4659f37c8f57cbc4cc9a5213700a810ddd08b2935f7e3ce0441f879d",
+          "g-cover-h3": "27e51de6051f2dc48e5d7f22bd1b53a7f1e1461fa500e4ce00b03fbd33594c46",
+          "g-cover-j1": "e9a4cf9b566273817de6aefdd1de0fedeb13614afa03d88a466726eb1e5f7b6b",
+          "g-cover-j2": "804239ba3ef99b067ec0360930da9b81262676eec68bc23000705fb10c3f0b3a",
+          "g-cover-j3": "a407b4cecc0811898d37e852b88a2960a4e4dace0c20b5d8c70a3f1a98b02d1f",
+          "g-cover-j4": "e3ddeb78b0745399aad07bae01e948560de8e11acb38a74365542bcc0331ca6d",
+          "g-cover-j5": "12088b0bed1a70eb43176c65f9195a7fe0dcc6d3706c13aa2b585b2d8f6b6433",
+          "g-cover-k1": "509f041a26002c19aa2e79025e1c356800ec490e0a47ef5e72f0b36a19634e46",
+          "g-cover-k3": "6fef3b04a8795b8cea53dad4231cd97719fb9e782862ed2a45fa67ce6c4ca43e",
+          "g-cover-n1": "754a88509d1bd320867a8ca7dd475e276e9f3193a14a9ce63097b604967c6661",
+          "g-cover-n10": "ceba4db8438f9f7e3c9f8046f877b3f767edace9040e147e607a1fe83c24c90a",
+          "g-cover-n11": "ba69f2516fbf6eec25b81dea18be8d1f0c569d3b9221cc5c2993cb2eb2a99c84",
+          "g-cover-n12": "ec41d9d5cb8509e139707751324d2302495cb095fb78e7b1400926e2c9434571",
+          "g-cover-n13": "99a3b6c031f64c7c38c371462bb1d41ca0d049dfba19df875456ce4a131a04cc",
+          "g-cover-n4": "4146eceb6da8be743a477a3be617e20dbab5ba52739965f8f41198b413c3aa97",
+          "g-cover-n5": "611efc1104d24ee9ead8d0d29e84ff08b8c42f105064c69f0fb5f5b80ec2bddd",
+          "g-cover-n6": "27c31479ecd08d561711fd164f5b5f54ef91b09a485b6cd79cc910b835e8ba1e",
+          "g-cover-n7": "fc8375d525efef426a9fb5409d7e12857bb34114cd242955bc1c51ab3f53cbe8",
+          "g-cover-n8": "bfa1bd3e6b412c828f1439cdcef46c2ad52e31aaca204411ca6105885df69c5d",
+          "g-cover-n9": "2ed2efa1d5454c2253734c5be28eca371fa37601f5882641b324b63aee77194e",
+          "g-cover-no1": "476f12ea68abce4c5733cb4b384138730d947e3bef2357c4c9dbf8e164eb26f1",
+          "g-cover-no2": "cccae0decfe583f55a4a15465fd51c316a3cf1b8f846cf02a0f8edc2f0129e9f",
+          "g-cover-no3": "7119ac88a3185cc8c86f6175267952000512089bf9b68db8e6e86cf0561991ed",
+          "g-cover-no4": "06e04ad3491d4347488645d841913ebd618807d348796688dd20d804c778f1da",
+          "g-cover-no5": "fe208311b270cdd13c759ee2da09ac803773c0c834f069113770d7b69cf85e90",
+          "g-cover-no6": "a530ce69748df8b7102cf124bc6af6bade36673c6906ed42de88edb745fabaf2",
+          "g-cover-no7": "d77e103d4f10f3a8a1d96bf7498cf06d7de1864c5d0138c00608bc538cfca079",
+          "g-cover-s1": "7403a326d45b86a836a8cd4b331b847471990b6d3448d3c9afefa5afc73ac4fc",
+          "g-cover-s10": "78656d385b9808c6012317ea7911072923239d56cd438063197752590cb26f41",
+          "g-cover-s11": "d68c1d6c614b1fea587ac0f71c133298766bd750176e94c611f7289c15ae8675",
+          "g-cover-s12": "e472e03b275c028376dae6a5a183e20fabd93871cd98d799b4bcd3d92d6524e3",
+          "g-cover-s13": "cc8281932bcc3bd65f471acf9f24da77ec113715409556c344175e16d1c6bf8d",
+          "g-cover-s14": "68290ce60b292e9b733c597602afb99b103ca2485491e2bafd8cb9d5d833f433",
+          "g-cover-s2": "db94b567d4d770ca02fe8b1a1dd411dab2496b41d6e5f91993e95569b4c6d667",
+          "g-cover-s3": "d6b686b7c63aa9a9efa4f17d08f1d418dbfbf974c5e73ed0d5b71f3adbc3da19",
+          "g-cover-s4": "5895df004c596ad6d3b618c9215cfe949f4574ceab2e4cba8eb1700101a928a5",
+          "g-cover-s5": "a28517425e45cbe4bbfaf995172dbacbdae3c695930c6dedb0c5d0e0565f1ce9",
+          "g-cover-s6": "76800f4a41fc796b32f0f18f95e26080fa54ea2277287a92085d38876e9f6f35",
+          "g-cover-s7": "c48c756bef4b279603f5f1a0113c07ec17389b1931a8670271af372a93352d8e",
+          "g-cover-s8": "223b7fdf31ea55229519d01ffbee913b253bd25320707ef8d3e74a733becc8c0",
+          "g-cover-s9": "833d0ad8a7de04a54963bfa2e26fea216c13ba20b092fe234ef28dc09f208e1c",
+          "g-cover-so1": "a61524d1a931b4c4161ad4cb74f03a025b4ebf29c777e3aed1dc068e69af705e",
+          "g-cover-so2": "d8d5506d663d594245cadbc3f55ae3dd48c827ac131e2d8cfcbce3960fe35ca9",
+          "g-cover-so3": "8b04d99432a0f1b4a349fcedf18a376030b6e33283193c8aa52553bb234f9575",
+          "g-cover-so4": "c7c23748841e4c694f8585e601f381c01bdf45470bd4f4a799944d91238adfe5",
+          "g-cover-so5": "11870fdf8aa7c76930b737bc8f35d3ac80c574fb8440e396b4719e1b39505f2a",
+          "g-cover-so6": "df9cb01c401c4d69835076de4ce8cc7e72ce1302fa742aacc6cade461da05ea3",
+          "g-cover-so7": "76a68dd5275427a5a35cb52a94e7f387d88266a297044fe4726c0cfd809eea53",
+          "g-cover-so8": "a8463042b3c1fab6637d8e6e56f16ab8e6d3fcabc2c0c826f66ced41b2cae0c8",
+          "g-cover-so9": "acaf5d29bd76339f05bf0c47b2008a06f37a809f38e906deb526512dcbbce584",
+          "g-cover-t1": "52362813847f76049e134d2e45b1d4fe6701654b4825274da7bfc807dd19dc5b",
+          "g-cover-v91": "958906d54d13de1dc16cb2fa69796db080124166b0970e4ce3ae06cc84ba1a8c",
+          "g-cover-w1": "fa71321befe3fe4047df791855b3e1aeaec62d77c8f216f2f3338ddb4c61debc",
+          "g-cover-w3": "6ea8d00756cec8b223be514d3c874179da22b16d1881e06697509105d057a91c",
+          "g-tfern-n": "a4402d9d7025ec259a5f8fa7747824b8634bb976d04eb667694cb8999e99fc90",
+          "l-candle-n": "950445077887de74ed3b4340be680d61c31b41c36d08173043d3337f6f3efc5b",
+          "l-candle-s": "8007afc5dafdb1a1d2c3370f062b01f437ab9ff47af8598be0830266826c2208",
+          "m-base": "a25e72ce34bdcda14baa1eab22b1a745d0ab1d29dc2609096688f9d57055f161",
+          "m-base-s": "a5c8b19b30972084c9964c7a7ebe8a18b28254fb403e253adb52db6e125d4716",
+          "m-giant-seat": "2fd81e83b26b77c05b3b575a36145df873c31b6e75f37129afd2771111b60f3f",
+          "m-hill": "653f0afec9491f92265f484e0ecbb272e9f4532ade2ba3c5a772770a4e7075bf",
+          "m-hill-apron-n": "36bfa6c7b1875461fabfc33b8819ae831ff3608ff0e6c8f361b5f38ba8e2dc20",
+          "m-hill-back": "f72463ab08d1de87c007505788e3ca7e991ca22f51b952542d61fa42741f7e06",
+          "m-hill-back-n": "357f72e092471a1554c6101e1c0ff8eec8be186b91ce3776f7c335d899225ecd",
+          "m-hill-back-ne": "d5fbdff9681888e76841ec447a01303af61c6596c7ae30a412f43602fc5e8f5c",
+          "m-hill-back-ne2": "e5870f54d5fe1c55e3fc32b8e40533ffdec8f1d9d2d132e754050bbc8e194d46",
+          "m-hill-back-ne3": "6fc040b27ae03c848d481b56ed7bc7234758d3485cb5640ec6ca894daf58ae6f",
+          "m-hill-back-nw": "d3b502e8446ca594052b2b764d0ed8920d822a1768f90d622f8ae4c14e84c536",
+          "m-hill-back-w": "db8182acbac0315bfd266b00cc60b79941b8ebfa975f7606b16712415c964bab",
+          "m-hill-crown": "82a7cc2c9ea9c57718e8cd2e0e64d175269829aba1a5129feb57b07ecc0558b7",
+          "m-ramp-n": "809f6125521b20eb30c0ef19135514f99571158cdd07c082c0c575f78106b443",
+          "m-ramp-nc": "28f32a5f6008e3261b3ddc708112649836efee58d97b944e5a44b086d6486694",
+          "m-ramp-s": "2843b17bcd4a0511c8570ef49fe0e17eb44bb0c048096f6ddac90804df3445b5",
+          "m-ramp-sj": "7c21f1660de3e9409e81d971fd5ce411a377de519b8809a9e44e0f0eb8d2a4bb",
+          "r-mouth-n": "053e315da565643eaf5c5ff0a98f7f875b3bc5d05faee0d5754cadff95e3a4bc",
+          "r-mouth-s": "50f3eaa74dd48eae28d91042916013d2763d00237534300dc532ac1c2a54ddb3",
+          "r-root-e1": "b5393871a301038ea235f4da938931926e5727dfbf6382f4102f32d38f788f7d",
+          "r-root-n": "e31c8fea37641604e9903f007d77b29eed409a7f763c6f59fdb2f68e3276b0e4",
+          "r-root-ne": "8cb586d18a25a337f2a724fab152930654f5ab93395206691e21499dd4e83bf8",
+          "r-root-w": "9fbca55f7afbbe8d092256e4cce30f35d430658a83521d8e2f60d3766c9a3b0f",
+          "route.jungle-root-hollow.searchers-trodden": "e30e2a3595d7839aa36d97057bc5284730d96b6dae42943c85e7fcefc53a31e2",
+          "s1-lb-arm": "1e1b89c76c552c53ec60162ec98f7f94c211b99a9b4ebcbd84120db5ad36f111",
+          "s1-lb-arm2": "073f89f0279665cdd9ea433937eb9565677025ca18fad95e58f3482f49f08010",
+          "s1-lb-fresh": "d9b76e78edcb292103ad025b8451420112e5f66b1893da2b4e704490f0dc8e43",
+          "s1-lb-leg": "c057d3a5653990a044aeba4dc7925040f29929a898e4d1777462a7288afdf02d",
+          "s1-lb-ribs": "3bcd637661779d8236b93659ace98ddbd9a11ea9d7d34253dd958f6f6f607586",
+          "s1-lb-scrap": "c644bd8ed5c77f944173cfc73f569237afb2c3e5d9b2e5bf1e656a8879dea481",
+          "s1-lb-skull": "c7f13ddde087297c3080293f7ddc910705921025f6c5f808f43853819b048de2",
+          "s1-lb-spine": "41947eecca59b998bac36681bb4f835a19e7d8c1a55fc76b57ac1ae8014a9ff8",
+          "s1-lt-basket": "540b632b93d747d9ed4f2ad07b7a31eb5fd29247a14ccc88cd1de88d91ccea5e",
+          "s1-lt-net": "45ce58cd72e2de050d7c500dd03b27d2b6537a25042dd1908f29b0934f25336b",
+          "s1-lt-shovel": "267547634d22d6e0ff786ce2de3dc8ac65893719a4e311adacabec9dd96d355d",
+          "t-crown-giant": "4c3ca4a92d45178378c6056b337d4a510744ff1ecf5428cc2558b6e222ce143c"
+        },
+        "geometrySha256": "2bd8d0b093c42dc0acc87912a3091c7878ceb2a1b31175bdee55c5e930afce89"
+      }
+    },
+    "walkRoutes": {
+      "schemaVersion": 1,
+      "cellM": 0.5,
+      "stepM": 0.45,
+      "slopeMaxDeg": 30.0,
+      "wadeMaxM": 0.7,
+      "routes": {
+        "door:b-mouth": {
+          "points": [
+            [
+              3706.5,
+              36.1,
+              4561.99
+            ],
+            [
+              3706.0,
+              36.24,
+              4561.99
+            ],
+            [
+              3705.5,
+              36.37,
+              4561.99
+            ],
+            [
+              3705.0,
+              36.53,
+              4561.99
+            ],
+            [
+              3704.0,
+              36.69,
+              4562.99
+            ],
+            [
+              3703.5,
+              36.78,
+              4563.49
+            ],
+            [
+              3703.0,
+              36.82,
+              4563.99
+            ],
+            [
+              3702.5,
+              36.92,
+              4564.49
+            ],
+            [
+              3702.0,
+              37.06,
+              4564.99
+            ],
+            [
+              3701.5,
+              37.19,
+              4565.49
+            ],
+            [
+              3700.0,
+              37.52,
+              4565.49
+            ],
+            [
+              3699.5,
+              37.61,
+              4565.49
+            ],
+            [
+              3698.0,
+              37.79,
+              4565.49
+            ],
+            [
+              3697.5,
+              37.83,
+              4565.49
+            ],
+            [
+              3696.0,
+              37.92,
+              4565.49
+            ],
+            [
+              3695.5,
+              37.92,
+              4565.49
+            ]
+          ],
+          "routeM": 12.62,
+          "steepestDeg": 17.0,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0,
+          "parcelId": "parcel.jungle-root-hollow.the-cave-mouth",
+          "doorIds": [
+            "door.saxhleel-coast.jungle-root-hollow.1"
+          ]
+        }
+      }
+    }
+  }
+}

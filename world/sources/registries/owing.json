@@ -1,0 +1,232 @@
+{
+ "schemaVersion": 1,
+ "domain": "owing",
+ "_": "The Owing per region (2.10a; world/76 section 124, decision 0151 item 2, 0039's 72-hour amnesty): who assesses (a factions.json id), the rate per crime kind in nushmeekos (trespass, theft {perValue, min}, pickpocket, assault, murder), custody hours per nushmeeko and the amnesty. `region` is a catalogue region (world/sources/catalogue/places-<region>.json). Rates are provisional (planner ruling) until the owner's call. `assessor` null needs an `assessorReason` from the lore; a row with a gap names it in `blockers` or is red; `worldgen.stealth_views` writes complete rows to the view.",
+ "entries": [
+  {
+   "id": "owing.dunmer-north",
+   "name": "The Owing in dunmer north",
+   "kind": "owing-region",
+   "status": "provisional",
+   "sources": [
+    "world/sources/lore/topics/labour-and-bondage.md",
+    "docs/world/76-stats-progression.md"
+   ],
+   "notes": "Thorn and Branchmont saltrice country: the field managers who kept the accounts assess (labour-and-bondage.md section 3)",
+   "region": "dunmer-north",
+   "regionName": "Shadowfen",
+   "regionNameSource": "world/sources/lore/regions/shadowfen.md (Stormhold's fen); black-marsh-province.md, Dunmer-facing north",
+   "assessor": "faction.thorn-ash-reed-accord",
+   "rates": {
+    "trespass": 5,
+    "theft": {
+     "perValue": 1,
+     "min": 5
+    },
+    "pickpocket": 25,
+    "assault": 40,
+    "murder": 1000
+   },
+   "custodyHoursPerNushmeeko": 0.24,
+   "amnestyHours": 72,
+   "rateNote": "Morrowind's bounty table at our price scale, one custody day per 100 (planner ruling, lanes/2.10/briefs/rules.md); awaits the owner's call."
+  },
+  {
+   "id": "owing.pirate-freeholds",
+   "name": "The Owing in pirate freeholds",
+   "kind": "owing-region",
+   "status": "provisional",
+   "sources": [
+    "world/sources/lore/topics/labour-and-bondage.md",
+    "docs/world/76-stats-progression.md"
+   ],
+   "notes": "the hiring yards and work camps; the Dres remnant holds the opening work camp (labour-and-bondage.md section 2 drift 1; the camp's ownerFaction)",
+   "region": "pirate-freeholds",
+   "regionName": "Alten Corimont",
+   "regionNameSource": "world/sources/lore/alten-corimont.md (the pirate river-port freehold)",
+   "assessor": "faction.dres-remnant",
+   "rates": {
+    "trespass": 5,
+    "theft": {
+     "perValue": 1,
+     "min": 5
+    },
+    "pickpocket": 25,
+    "assault": 40,
+    "murder": 1000
+   },
+   "custodyHoursPerNushmeeko": 0.24,
+   "amnestyHours": 72,
+   "rateNote": "Morrowind's bounty table at our price scale, one custody day per 100 (planner ruling, lanes/2.10/briefs/rules.md); awaits the owner's call."
+  },
+  {
+   "id": "owing.mercantile-coast",
+   "name": "The Owing in mercantile coast",
+   "kind": "owing-region",
+   "status": "provisional",
+   "sources": [
+    "world/sources/lore/topics/labour-and-bondage.md",
+    "docs/world/76-stats-progression.md"
+   ],
+   "notes": "Soulrest and Archon docks: indentured crews, the harbour calls it hiring (labour-and-bondage.md section 3)",
+   "region": "mercantile-coast",
+   "regionName": "Oliis Bay",
+   "regionNameSource": "world/sources/lore/regions/waters.md (Lilmoth at the bay's mouth); inferred: the bay stands for the trading coast",
+   "assessor": "faction.reed-sail-compact",
+   "rates": {
+    "trespass": 5,
+    "theft": {
+     "perValue": 1,
+     "min": 5
+    },
+    "pickpocket": 25,
+    "assault": 40,
+    "murder": 1000
+   },
+   "custodyHoursPerNushmeeko": 0.24,
+   "amnestyHours": 72,
+   "rateNote": "Morrowind's bounty table at our price scale, one custody day per 100 (planner ruling, lanes/2.10/briefs/rules.md); awaits the owner's call."
+  },
+  {
+   "id": "owing.imperial-fringe",
+   "name": "The Owing in imperial fringe",
+   "kind": "owing-region",
+   "status": "provisional",
+   "sources": [
+    "world/sources/lore/topics/labour-and-bondage.md",
+    "docs/world/76-stats-progression.md"
+   ],
+   "notes": "Gideon and the Blackwood Road: brokered, filed, contestable in a courthouse (labour-and-bondage.md section 3)",
+   "region": "imperial-fringe",
+   "regionName": "Blackwood",
+   "regionNameSource": "world/sources/lore/regions/blackwood-and-gloommire.md; gideon.md (the flooded hillscape of Blackwood)",
+   "assessor": "faction.imperial-legion-remnant",
+   "rates": {
+    "trespass": 5,
+    "theft": {
+     "perValue": 1,
+     "min": 5
+    },
+    "pickpocket": 25,
+    "assault": 40,
+    "murder": 1000
+   },
+   "custodyHoursPerNushmeeko": 0.24,
+   "amnestyHours": 72,
+   "rateNote": "Morrowind's bounty table at our price scale, one custody day per 100 (planner ruling, lanes/2.10/briefs/rules.md); awaits the owner's call."
+  },
+  {
+   "id": "owing.hist-heartland",
+   "name": "The Owing in hist heartland",
+   "kind": "owing-region",
+   "status": "provisional",
+   "sources": [
+    "world/sources/lore/topics/labour-and-bondage.md",
+    "docs/world/76-stats-progression.md"
+   ],
+   "notes": "Helstrom: the assembly assesses its own (labour-and-bondage.md section 3)",
+   "region": "hist-heartland",
+   "regionName": "Middle Argonia",
+   "regionNameSource": "world/sources/lore/regions/middle-argonia.md (the interior)",
+   "assessor": "faction.an-xileel",
+   "rates": {
+    "trespass": 5,
+    "theft": {
+     "perValue": 1,
+     "min": 5
+    },
+    "pickpocket": 25,
+    "assault": 40,
+    "murder": 1000
+   },
+   "custodyHoursPerNushmeeko": 0.24,
+   "amnestyHours": 72,
+   "rateNote": "Morrowind's bounty table at our price scale, one custody day per 100 (planner ruling, lanes/2.10/briefs/rules.md); awaits the owner's call."
+  },
+  {
+   "id": "owing.saxhleel-coast",
+   "name": "The Owing in saxhleel coast",
+   "kind": "owing-region",
+   "status": "provisional",
+   "sources": [
+    "world/sources/lore/topics/labour-and-bondage.md",
+    "docs/world/76-stats-progression.md"
+   ],
+   "notes": "tribal villages: a mutually chosen arbitrator, working as intended (labour-and-bondage.md sections 1 and 3)",
+   "region": "saxhleel-coast",
+   "regionName": "Archon Coast",
+   "regionNameSource": "world/sources/lore/regions/thornmarsh-and-east.md (Archon's coast); regions/waters.md",
+   "assessor": "faction.nisswo",
+   "rates": {
+    "trespass": 5,
+    "theft": {
+     "perValue": 1,
+     "min": 5
+    },
+    "pickpocket": 25,
+    "assault": 40,
+    "murder": 1000
+   },
+   "custodyHoursPerNushmeeko": 0.24,
+   "amnestyHours": 72,
+   "rateNote": "Morrowind's bounty table at our price scale, one custody day per 100 (planner ruling, lanes/2.10/briefs/rules.md); awaits the owner's call."
+  },
+  {
+   "id": "owing.naga-kur-deeps",
+   "name": "The Owing in naga kur deeps",
+   "kind": "owing-region",
+   "status": "provisional",
+   "sources": [
+    "world/sources/lore/topics/labour-and-bondage.md",
+    "docs/world/76-stats-progression.md"
+   ],
+   "notes": "the deep interior under the Naga-Kur (labour-and-bondage.md section 3, deep interior)",
+   "region": "naga-kur-deeps",
+   "regionName": "Dead-Water",
+   "regionNameSource": "world/sources/lore/tribes.md (Naga-Kur, the Dead-Water tribe); regions/murkmire.md (Dead-Water Village)",
+   "assessor": "faction.naga-kur",
+   "rates": {
+    "trespass": 5,
+    "theft": {
+     "perValue": 1,
+     "min": 5
+    },
+    "pickpocket": 25,
+    "assault": 40,
+    "murder": 1000
+   },
+   "custodyHoursPerNushmeeko": 0.24,
+   "amnestyHours": 72,
+   "rateNote": "Morrowind's bounty table at our price scale, one custody day per 100 (planner ruling, lanes/2.10/briefs/rules.md); awaits the owner's call."
+  },
+  {
+   "id": "owing.imperial-penal-south",
+   "name": "The Owing in imperial penal south",
+   "kind": "owing-region",
+   "status": "provisional",
+   "sources": [
+    "world/sources/lore/topics/labour-and-bondage.md",
+    "docs/world/76-stats-progression.md"
+   ],
+   "notes": "the Rose keeps its own ledger by families born owing (labour-and-bondage.md section 3); no faction row carries it",
+   "region": "imperial-penal-south",
+   "regionName": "Blackrose",
+   "regionNameSource": "world/sources/lore/blackrose.md; regions/murkmire.md (Blackrose Prison); inferred: the prison names the penal south",
+   "assessor": null,
+   "rates": {
+    "trespass": 5,
+    "theft": {
+     "perValue": 1,
+     "min": 5
+    },
+    "pickpocket": 25,
+    "assault": 40,
+    "murder": 1000
+   },
+   "custodyHoursPerNushmeeko": 0.24,
+   "amnestyHours": 72,
+   "rateNote": "Morrowind's bounty table at our price scale, one custody day per 100 (planner ruling, lanes/2.10/briefs/rules.md); awaits the owner's call.",
+   "assessorReason": "No Imperial penal authority stands in 4E 201: Blackrose Prison is a ruin reoccupied by the Blackguards' heirs (lore blackrose.md, gap-register G3.5) and the Rose keeps its own ledger by families born owing (labour-and-bondage.md section 3)."
+  }
+ ]
+}

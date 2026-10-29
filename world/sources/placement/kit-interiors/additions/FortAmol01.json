@@ -1,0 +1,480 @@
+{
+ "schemaVersion": 2,
+ "cellId": "FortAmol01",
+ "additions": [
+  {
+   "id": "FortAmol01:add:door-glowingmushroom",
+   "assetId": "vanilla:plants/glowingmushroom01",
+   "pos": [
+    16.022,
+    -3.533,
+    6.348
+   ],
+   "rotZDeg": 0,
+   "zone": "door",
+   "why": "Glow fungus grows in the damp by the sealed door, the first light inside."
+  },
+  {
+   "id": "FortAmol01:add:door-glowingmushroomclust",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    24.022,
+    -3.738,
+    6.348
+   ],
+   "rotZDeg": 0,
+   "zone": "door",
+   "why": "Glow fungus grows in the damp by the sealed door, the first light inside."
+  },
+  {
+   "id": "FortAmol01:add:door-histflower",
+   "assetId": "kotm:argonia/trees/hist trees/histflower01",
+   "pos": [
+    27.522,
+    -9.95,
+    6.348
+   ],
+   "rotZDeg": 0,
+   "zone": "door",
+   "why": "Hist sap blooms where a root has broken through the vault wall; it grows in the damp by the sealed door, the first light inside."
+  },
+  {
+   "id": "FortAmol01:add:store-glowingmushroomclust",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    23.022,
+    -3.675,
+    6.348
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Glow fungus grows in the damp along the hall, where the ooze has fed the stone."
+  },
+  {
+   "id": "FortAmol01:add:store-glowingmushroomclust-3",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    10.022,
+    -3.869,
+    -2.152
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Glow fungus grows in the damp along the hall, where the ooze has fed the stone."
+  },
+  {
+   "id": "FortAmol01:add:store-histflower",
+   "assetId": "kotm:argonia/trees/hist trees/histflower01",
+   "pos": [
+    8.022,
+    -9.826,
+    -8.652
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Hist sap blooms where a root has broken through the vault wall; it grows in the damp along the hall, where the ooze has fed the stone."
+  },
+  {
+   "id": "FortAmol01:add:hearth-glowingmushroomclust-2",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    29.022,
+    -3.856,
+    -4.652
+   ],
+   "rotZDeg": 0,
+   "zone": "hearth",
+   "why": "Glow fungus grows over the rubble of the great room, the beast's feeding ground."
+  },
+  {
+   "id": "FortAmol01:add:hearth-glowingmushroom-2",
+   "assetId": "vanilla:plants/glowingmushroom01",
+   "pos": [
+    34.522,
+    -4.143,
+    -5.652
+   ],
+   "rotZDeg": 0,
+   "zone": "hearth",
+   "why": "Glow fungus grows over the rubble of the great room, the beast's feeding ground."
+  },
+  {
+   "id": "FortAmol01:add:hearth-histflower02",
+   "assetId": "kotm:argonia/trees/hist trees/histflower02",
+   "pos": [
+    34.522,
+    -10.22,
+    -12.652
+   ],
+   "rotZDeg": 0,
+   "zone": "hearth",
+   "why": "Hist sap blooms where a root has broken through the vault wall; it grows over the rubble of the great room, the beast's feeding ground."
+  },
+  {
+   "id": "FortAmol01:add:store-glowingmushroomclust-4",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    32.022,
+    -3.772,
+    -14.652
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Glow fungus grows at the foot of the stair, where the damp pools."
+  },
+  {
+   "id": "FortAmol01:add:work-glowingmushroom",
+   "assetId": "vanilla:plants/glowingmushroom01",
+   "pos": [
+    31.522,
+    0.947,
+    -16.652
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Glow fungus grows on the rotted fittings of the upper floor."
+  },
+  {
+   "id": "FortAmol01:add:work-glowingmushroomclust",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    21.522,
+    2.205,
+    -11.152
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Glow fungus grows on the rotted fittings of the upper floor."
+  },
+  {
+   "id": "FortAmol01:add:bed-glowingmushroomclust-2",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    10.022,
+    2.259,
+    -12.152
+   ],
+   "rotZDeg": 0,
+   "zone": "bed",
+   "why": "Glow fungus grows thickest in the deepest room, the ooze's den."
+  },
+  {
+   "id": "FortAmol01:add:bed-glowingmushroomclust-3",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    7.022,
+    2.19,
+    -14.652
+   ],
+   "rotZDeg": 0,
+   "zone": "bed",
+   "why": "Glow fungus grows thickest in the deepest room, the ooze's den."
+  },
+  {
+   "id": "FortAmol01:add:bed-glowingmushroomclust-4",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    8.022,
+    2.208,
+    -8.152
+   ],
+   "rotZDeg": 0,
+   "zone": "bed",
+   "why": "Glow fungus grows thickest in the deepest room, the ooze's den."
+  },
+  {
+   "id": "FortAmol01:add:door-glowingmushroomclust-2",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    19.4,
+    -3.726,
+    7.2
+   ],
+   "rotZDeg": 0,
+   "zone": "door",
+   "why": "Glow fungus grows in the damp inside the sealed door, the first light inside."
+  },
+  {
+   "id": "FortAmol01:add:door-glowingmushroomclust-3",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    22.4,
+    -4.194,
+    7.2
+   ],
+   "rotZDeg": 0,
+   "zone": "door",
+   "why": "Glow fungus grows in the damp inside the sealed door, the first light inside."
+  },
+  {
+   "id": "FortAmol01:add:store-glowingmushroomclust-5",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    7.022,
+    -2.858,
+    -0.652
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Glow fungus spreads over the damp floor where the ooze has passed."
+  },
+  {
+   "id": "FortAmol01:add:store-glowingmushroomclust-6",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    10.022,
+    -3.298,
+    -13.152
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Glow fungus spreads over the damp floor where the ooze has passed."
+  },
+  {
+   "id": "FortAmol01:add:store-glowingmushroomclust-7",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    28.522,
+    -3.56,
+    2.348
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Glow fungus spreads over the damp floor where the ooze has passed."
+  },
+  {
+   "id": "FortAmol01:add:hearth-glowingmushroomclust-4",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    33.522,
+    -3.843,
+    -6.652
+   ],
+   "rotZDeg": 0,
+   "zone": "hearth",
+   "why": "Glow fungus spreads over the damp floor where the ooze has passed."
+  },
+  {
+   "id": "FortAmol01:add:hearth-glowingmushroomclust-5",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    30.022,
+    -3.728,
+    -9.652
+   ],
+   "rotZDeg": 0,
+   "zone": "hearth",
+   "why": "Glow fungus spreads over the damp floor where the ooze has passed."
+  },
+  {
+   "id": "FortAmol01:add:store-glowingmushroomclust-11",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    7.522,
+    -3.94,
+    -5.152
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Glow fungus spreads over the damp floor where the ooze has passed."
+  },
+  {
+   "id": "FortAmol01:add:store-glowingmushroomclust-12",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    9.522,
+    -3.875,
+    -10.152
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Glow fungus spreads over the damp floor where the ooze has passed."
+  },
+  {
+   "id": "FortAmol01:add:store-glowingmushroomclust-13",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    20.522,
+    -3.922,
+    3.348
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Glow fungus spreads over the damp floor where the ooze has passed."
+  },
+  {
+   "id": "FortAmol01:add:store-glowingmushroomclust-15",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    13.522,
+    -3.81,
+    -9.152
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Glow fungus spreads over the damp floor where the ooze has passed."
+  },
+  {
+   "id": "FortAmol01:add:hearth-glowingmushroomclust-8",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    30.022,
+    -2.292,
+    -11.652
+   ],
+   "rotZDeg": 0,
+   "zone": "hearth",
+   "why": "Glow fungus spreads over the damp floor where the ooze has passed."
+  },
+  {
+   "id": "FortAmol01:add:store-glowingmushroomclust-17",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    6.522,
+    -2.093,
+    -10.652
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Glow fungus spreads over the damp floor where the ooze has passed."
+  },
+  {
+   "id": "FortAmol01:add:upper-glowingmushroomclust-a",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    27.94,
+    1.62,
+    -14.24
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Glow fungus grows along the rotted boards of the upper floor. It shows blue in the dark along the way across."
+  },
+  {
+   "id": "FortAmol01:add:upper-glowingmushroom-b",
+   "assetId": "vanilla:plants/glowingmushroom01",
+   "pos": [
+    24.15,
+    1.96,
+    -9.48
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Glow fungus grows along the rotted boards of the upper floor. It shows blue in the dark along the way across."
+  },
+  {
+   "id": "FortAmol01:add:upper-glowingmushroomclust-c",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    23.9,
+    1.96,
+    -13.8
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Glow fungus grows along the rotted boards of the upper floor. It shows blue in the dark along the way across."
+  },
+  {
+   "id": "FortAmol01:add:upper-glowingmushroomclust-e",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    24.7,
+    1.98,
+    -16.69
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Glow fungus grows along the rotted boards of the upper floor. It shows blue in the dark along the way across."
+  },
+  {
+   "id": "FortAmol01:add:store-glowingmushroomclust-2",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    8.5,
+    -3.053,
+    -2.8
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Glow fungus crowds the damp north end of the west hall: one pool of light with dark floor between it and the next."
+  },
+  {
+   "id": "FortAmol01:add:hearth-glowingmushroomclust",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    31.5,
+    -4.086,
+    -7.8
+   ],
+   "rotZDeg": 0,
+   "zone": "hearth",
+   "why": "Glow fungus thick in the east hall beyond the great room, where water seeps down the wall."
+  },
+  {
+   "id": "FortAmol01:add:store-glowingmushroomclust-8",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    9.3,
+    -3.904,
+    -11.0
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Glow fungus crowds the damp south end of the west hall, a second pool across the dark."
+  },
+  {
+   "id": "FortAmol01:add:store-glowingmushroomclust-14",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    25.522,
+    -3.827,
+    1.848
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Glow fungus spreads over the damp floor where the ooze has passed."
+  },
+  {
+   "id": "FortAmol01:add:upper-glowingmushroom-d",
+   "assetId": "vanilla:plants/glowingmushroom01",
+   "pos": [
+    16.91,
+    2.35,
+    -13.37
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Glow fungus grows along the rotted boards of the upper floor. It shows blue in the dark along the way across."
+  },
+  {
+   "id": "FortAmol01:add:upper-glowingmushroom-f",
+   "assetId": "vanilla:plants/glowingmushroom01",
+   "pos": [
+    12.73,
+    2.17,
+    -13.09
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Glow fungus grows along the rotted boards of the upper floor. It shows blue in the dark along the way across."
+  }
+ ],
+ "lights": [
+  {
+   "id": "FortAmol01:light:voriplasm-glow",
+   "positionM": [
+    21.8,
+    -4.0,
+    -6.2
+   ],
+   "radiusM": 7.0,
+   "colorRGB": [
+    110,
+    200,
+    60
+   ],
+   "fixtureKind": "creature-glow",
+   "why": "The voriplasm gives off a green glow, the only light of the great room (contents c1) where it lies: no fungus grows within reach of it, so the room is lit by the beast alone."
+  }
+ ]
+}

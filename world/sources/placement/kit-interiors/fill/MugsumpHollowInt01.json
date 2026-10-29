@@ -1,0 +1,39 @@
+{
+ "schemaVersion": 1,
+ "cellId": "MugsumpHollowInt01",
+ "sockets": {
+  "socket.MugsumpHollowInt01.0857075E": {
+   "fillRule": "authored",
+   "valueTier": "high",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.pickaxe",
+      "count": 1
+     },
+     {
+      "item": "item.saw",
+      "count": 1
+     },
+     {
+      "item": "item.shovel",
+      "count": 1
+     },
+     {
+      "item": "item.repair-hammer",
+      "count": 1
+     },
+     {
+      "item": "item.corundum-ingot",
+      "count": 1
+     },
+     {
+      "item": "item.gold",
+      "count": 420
+     }
+    ],
+    "storyNote": "Takes-The-Tools drags stolen tools into the hollow. The pile holds a work gang's picks and saws, a bar of their corundum and the pay box it pulled off their cart: a season's wages, never paid out."
+   }
+  }
+ }
+}

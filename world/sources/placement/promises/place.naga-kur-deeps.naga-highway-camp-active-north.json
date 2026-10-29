@@ -1,0 +1,332 @@
+{
+ "schemaVersion": 1,
+ "placeId": "place.naga-kur-deeps.naga-highway-camp-active-north",
+ "generator": "python3 -m worldgen.blueprint_promises --id <place-id> --write (decision 0104); never hand-edit a row but its `unfilled`, `filledBy` or `confirmed` block",
+ "derivedFrom": [
+  {
+   "file": "world/sources/catalogue/places-naga-kur-deeps.json",
+   "sha256": "efb839be74e460bad2b3f00be0aa019a3603832c37a10ea5aab1857c5ae3ebab"
+  },
+  {
+   "file": "world/sources/quests/local-naga-kur-deeps.json",
+   "sha256": "5082bb69b690d06c848275572765c2db0d25c71774b32c4b0f9bade23cf11f32"
+  }
+ ],
+ "promises": [
+  {
+   "id": "promise.naga-highway-camp-active-north.occupant-n1",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-naga-kur-deeps.json",
+    "path": "places[place.naga-kur-deeps.naga-highway-camp-active-north].contents.npcs[n1]"
+   },
+   "text": "The North Cut Camp has single lieutenant occupants.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.naga-highway-camp-active-north.occupant-n2",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-naga-kur-deeps.json",
+    "path": "places[place.naga-kur-deeps.naga-highway-camp-active-north].contents.npcs[n2]"
+   },
+   "text": "The North Cut Camp has band rank-and-file occupants.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.naga-highway-camp-active-north.prose-playerpurpose-hook",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-naga-kur-deeps.json",
+    "path": "places[place.naga-kur-deeps.naga-highway-camp-active-north].playerPurpose.hook"
+   },
+   "text": "A cane gate under a watch where the track bends. They issue a scratched tally-stick receipt for whatever they take.",
+   "confirmed": {
+    "sha": "d3906f302791",
+    "note": "Built: a woven cane gate leaf hangs on the second of two totems where the path leaves the track below the watch, cane wings butted to each totem; the tally board hangs under the watch platform.",
+    "ids": [
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.watch.assembly.g-totem",
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.watch.assembly.g-totem2",
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.watch.assembly.g-gate",
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.watch.assembly.g-wing1",
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.watch.assembly.g-wing2",
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.watch.building",
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.watch.assembly.g-tally"
+    ]
+   }
+  },
+  {
+   "id": "promise.naga-highway-camp-active-north.prose-questhooks-opportunity",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-naga-kur-deeps.json",
+    "path": "places[place.naga-kur-deeps.naga-highway-camp-active-north].questHooks.opportunity"
+   },
+   "text": "The camp sells quiet by the season; the buyers would be ruined if the sale were named",
+   "confirmed": {
+    "sha": "b8c9c025a519",
+    "note": "Kept: the quiet the camp sells is LN07's premise; the held cargo and the tally board are where the sale shows.",
+    "ids": [
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.watch.assembly.g-tally"
+    ]
+   }
+  },
+  {
+   "id": "promise.naga-highway-camp-active-north.prose-vibe-approach",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-naga-kur-deeps.json",
+    "path": "places[place.naga-kur-deeps.naga-highway-camp-active-north].vibe.approach"
+   },
+   "text": "A cane gate between two totems where the path leaves the track, under the watch.",
+   "confirmed": {
+    "sha": "abdacd0ce144",
+    "note": "Built: two totems flank the path where it leaves the track, a cane gate leaf swung open on one and cane wings closing the ground beside them, and the watch stands above it.",
+    "ids": [
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.watch.assembly.g-totem",
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.watch.assembly.g-totem2",
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.watch.assembly.g-gate",
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.watch.assembly.g-wing1",
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.watch.assembly.g-wing2",
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.watch.building"
+    ]
+   }
+  },
+  {
+   "id": "promise.naga-highway-camp-active-north.prose-vibe-condition",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-naga-kur-deeps.json",
+    "path": "places[place.naga-kur-deeps.naga-highway-camp-active-north].vibe.condition"
+   },
+   "text": "well-found; hard to reach on purpose",
+   "confirmed": {
+    "sha": "1de84bc71ef8",
+    "note": "Built: the camp holds a dry bench reached only by the one path from the bend of the track, through the gate under the watch; it is stocked with held cargo, water and smoked hides.",
+    "ids": [
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.watch.building",
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.lieutenants-tent.assembly.c-crate2"
+    ]
+   }
+  },
+  {
+   "id": "promise.naga-highway-camp-active-north.prose-vibe-materials",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-naga-kur-deeps.json",
+    "path": "places[place.naga-kur-deeps.naga-highway-camp-active-north].vibe.materials"
+   },
+   "text": "cane cut this week and lashed the same hour; hide thongs tied wet and left to shrink; smoked hide, black and stiff; grave-cairns stepped up the bank, one course a death",
+   "confirmed": {
+    "sha": "4adb3445d7f3",
+    "note": "Built: Mud Mother hide-and-cane tents, two hide racks by the fire, fresh-cut wood at the chopping block, and four grave cairns stepped down the bank behind the camp.",
+    "ids": [
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.lieutenants-tent.building",
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.band-tent.building",
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.lieutenants-tent.assembly.h-rack1",
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.band-tent.assembly.h-rack2",
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.band-tent.assembly.y-chop",
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.lieutenants-tent.assembly.k-cairn1",
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.lieutenants-tent.assembly.k-cairn4"
+    ]
+   }
+  },
+  {
+   "id": "promise.naga-highway-camp-active-north.prose-vibe-mood",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-naga-kur-deeps.json",
+    "path": "places[place.naga-kur-deeps.naga-highway-camp-active-north].vibe.mood"
+   },
+   "text": "businesslike banditry",
+   "confirmed": {
+    "sha": "68442d212ad3",
+    "note": "Built: the tally board under the watch, the held cargo stacked and sorted behind the lieutenant's tent and one fire keep it a business, not a lair.",
+    "ids": [
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.watch.assembly.g-tally",
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.lieutenants-tent.assembly.c-crate1"
+    ]
+   }
+  },
+  {
+   "id": "promise.naga-highway-camp-active-north.prose-vibe-palette",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-naga-kur-deeps.json",
+    "path": "places[place.naga-kur-deeps.naga-highway-camp-active-north].vibe.palette"
+   },
+   "text": "smoke-black above, dark peat and fern below, hides stretched on racks by the fire",
+   "confirmed": {
+    "sha": "a273986b429b",
+    "note": "Built: the fire's smoke over the bench, two hide tents, the hide racks, and the bench's own peat and fern ground cover kept under the camp.",
+    "ids": [
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.band-tent.assembly.y-fire",
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.lieutenants-tent.building",
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.band-tent.building",
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.lieutenants-tent.assembly.h-rack1",
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.band-tent.assembly.h-rack2"
+    ]
+   }
+  },
+  {
+   "id": "promise.naga-highway-camp-active-north.prose-vibe-senses",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-naga-kur-deeps.json",
+    "path": "places[place.naga-kur-deeps.naga-highway-camp-active-north].vibe.senses"
+   },
+   "text": "a drum-signal carrying flat across the pond; tar and burnt cane; hides smoking over the fire",
+   "confirmed": {
+    "sha": "7e218fe52d1d",
+    "note": "Built: the pond lies below the bend, the tar barrel stands with the held cargo and the hide racks stand by the fire; the drum signal is a sound cue for the audio phase.",
+    "ids": [
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.lieutenants-tent.assembly.c-barrel",
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.lieutenants-tent.assembly.h-rack1",
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.band-tent.assembly.h-rack2",
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.band-tent.assembly.y-fire"
+    ]
+   }
+  },
+  {
+   "id": "promise.naga-highway-camp-active-north.prose-vibe-signaturefeature",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-naga-kur-deeps.json",
+    "path": "places[place.naga-kur-deeps.naga-highway-camp-active-north].vibe.signatureFeature"
+   },
+   "text": "They issue a scratched tally-stick receipt for what they take.",
+   "confirmed": {
+    "sha": "8a117ab0a587",
+    "note": "Built: the tally board hangs under the watch platform where the lieutenant stands at work (socket idle-n1-tally); the tally sticks themselves are inventory items for Phase 13.",
+    "ids": [
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.watch.assembly.g-tally"
+    ]
+   }
+  },
+  {
+   "id": "promise.naga-highway-camp-active-north.prose-vibe-silhouette",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-naga-kur-deeps.json",
+    "path": "places[place.naga-kur-deeps.naga-highway-camp-active-north].vibe.silhouette"
+   },
+   "text": "a smoke plume above a cut bank, with a watch platform over the bend of the track",
+   "confirmed": {
+    "sha": "f42762df2802",
+    "note": "Built: the fire's smoke rises over the bench above the bank, and the watch scaffold stands on the bench corner over the bend.",
+    "ids": [
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.band-tent.assembly.y-fire",
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.watch.building"
+    ]
+   }
+  },
+  {
+   "id": "promise.naga-highway-camp-active-north.prose-why-founding",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-naga-kur-deeps.json",
+    "path": "places[place.naga-kur-deeps.naga-highway-camp-active-north].why.founding"
+   },
+   "text": "A tribeless Naga camp working the walked track where it bends round a pond below the bench.",
+   "confirmed": {
+    "sha": "64cbc23664e6",
+    "note": "Built: the camp stands on the bench above the track's bend round the pond, reached by the one path from the track's end.",
+    "ids": [
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.band-tent.assembly.y-fire",
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.watch.building"
+    ]
+   }
+  },
+  {
+   "id": "promise.naga-highway-camp-active-north.prose-why-occupantsmotive",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-naga-kur-deeps.json",
+    "path": "places[place.naga-kur-deeps.naga-highway-camp-active-north].why.occupantsMotive"
+   },
+   "text": "Tribeless Naga who take cargo and rarely kill. A robbed walker comes back next season; kill one and his tribe comes for the camp.",
+   "confirmed": {
+    "sha": "498631a2b7ec",
+    "note": "Kept: the taken cargo is the held cache behind the lieutenant's tent; the camp has no killing ground.",
+    "ids": [
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.lieutenants-tent.assembly.c-crate1"
+    ]
+   }
+  },
+  {
+   "id": "promise.naga-highway-camp-active-north.prose-why-pressures",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-naga-kur-deeps.json",
+    "path": "places[place.naga-kur-deeps.naga-highway-camp-active-north].why.pressures"
+   },
+   "text": "The settled tribes are blamed for them. Cut-Rope's raiders work the same tracks. Long-Water Hold has begun paying the camp not to work its stretch, which would ruin the hold if it were known.",
+   "confirmed": {
+    "sha": "abec886be1d2",
+    "note": "Kept: a story line with no physical claim; Cut-Rope and Long-Water Hold are both in relations.rivals and both name the camp back."
+   }
+  },
+  {
+   "id": "promise.naga-highway-camp-active-north.prose-why-siteadvantages",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-naga-kur-deeps.json",
+    "path": "places[place.naga-kur-deeps.naga-highway-camp-active-north].why.siteAdvantages"
+   },
+   "text": "A blind bend where walkers come into view below the bench before they can see the camp.",
+   "confirmed": {
+    "sha": "d5056509de77",
+    "note": "Built: the watch on the bench corner sees both arms of the track before a walker can see the camp.",
+    "ids": [
+     "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.watch.building"
+    ]
+   }
+  },
+  {
+   "id": "promise.naga-highway-camp-active-north.prose-why-wouldchangeif",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-naga-kur-deeps.json",
+    "path": "places[place.naga-kur-deeps.naga-highway-camp-active-north].why.wouldChangeIf"
+   },
+   "text": "A peace between the settled tribes and the tribeless would end the camp. Long-Water Hold would stop paying for quiet.",
+   "confirmed": {
+    "sha": "c33abec0ecbc",
+    "note": "Kept: a story line with no physical claim."
+   }
+  },
+  {
+   "id": "promise.naga-highway-camp-active-north.quest-ln07",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-naga-kur-deeps.json",
+    "path": "quest[LN07]"
+   },
+   "text": "LN07 Ledgered as Hire: The hold's accounts record a boat hire every season for craft it does not own, because the money buys quiet from the north camp",
+   "confirmed": {
+    "sha": "13faa0ceac40",
+    "note": "Kept: LN07 needs no placement beyond the camp itself; the hold's ledger lives at the hold."
+   }
+  },
+  {
+   "id": "promise.naga-highway-camp-active-north.thing-fire",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-naga-kur-deeps.json",
+    "path": "places[place.naga-kur-deeps.naga-highway-camp-active-north].vibe.palette"
+   },
+   "text": "The North Cut Camp shows the fire its record names.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.naga-highway-camp-active-north.thing-sign",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-naga-kur-deeps.json",
+    "path": "places[place.naga-kur-deeps.naga-highway-camp-active-north].assetPlan[5]"
+   },
+   "text": "The North Cut Camp shows the sign its record names.",
+   "unfilled": null
+  }
+ ]
+}

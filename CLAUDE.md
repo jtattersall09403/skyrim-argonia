@@ -14,8 +14,7 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
   [the schedule](docs/phases/README.md), the current part's README and chunk brief, then the
   [decisions index](docs/decisions/README.md) line for anything it touches.
 - Subagents read what their brief routes.
-- Work starts at chunk [0.0](docs/phases/0-foundation/0.0-can-it-be-played.md) (can it be played through the stream?); parts run in order, chunks by the
-  chunk table's dependencies ([0023](docs/decisions/0023-five-parts-de-risk-first.md)).
+- Parts run in order, chunks by their dependencies ([0023](docs/decisions/0023-five-parts-de-risk-first.md)); after the foundations, the owner's ranking: world and places, story and people, combat, progression, UI ([0027](docs/decisions/0027-build-in-the-order-of-the-usps.md)); the world track runs beside everything from 0.2 G4.
 
 ## Never
 
@@ -29,13 +28,14 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 - Never retune measured combat numbers for feel; fix timing on the animation side by runtime control or the install-time patcher ([0014](docs/decisions/0014-derived-files-are-made-on-the-players-machine.md)).
 - Never ship a derived file (FaceGen, LOD, behaviours, edited clips or menus): the installer makes it on the player's machine (0014).
 - Never update the pinned Skyrim runtime outside a decision record ([0002](docs/decisions/0002-one-pinned-skyrim-runtime.md)).
+- Never run a Windows-only tool under Wine or Proton; the Windows game machine runs them (0.2).
 
 ## How we build
 
 - Reuse first, in route order: data → dependency mod → open-mod fork → Papyrus → our SKSE → our deep hook or
   HTML screen → ask the owner ([0010](docs/decisions/0010-reuse-first-and-the-running-game-is-the-oracle.md)).
 - Base-Skyrim assets come from Tropical Skyrim SSE before vanilla; Black Marsh mods before both (0006 §8).
-- Study before building: search universal-modder's field notes and skills first, then owned games, mod source, OpenMW's source, reference ports; record findings in `docs/research/` ([0020](docs/decisions/0020-reuse-others-methods-universal-modder-and-ghidra-tooling.md)).
+- Study before building: universal-modder's field notes, owned games, mod source, OpenMW, reference ports; findings go to `docs/research/` ([0020](docs/decisions/0020-reuse-others-methods-universal-modder-and-ghidra-tooling.md)).
 - The running game is the oracle: behaviour closes only on an in-game check that can fail (L4+).
 - Ghidra is a scalpel: targeted headless scripts for a named question; output stays in `$ARGONIA_PRIVATE`.
 - De-risk first: prove each class of work on a real sample before scaling it; Part 1's thread joins every system before any is built wide (0023).
@@ -50,6 +50,7 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 
 - Model and effort live only in `.claude/agents/` frontmatter ([ways of working](docs/ways-of-working.md)).
 - Briefs come from `tooling/brief_template.py --write`: Lane, Paths, Acceptance (runnable or measured), Report path, Test level, Route, Prior art.
+- Shell commands run through rtk (the hook rewrites them); a tool, hook or gate is added only after the incident it would have prevented ([0011](docs/decisions/0011-ways-of-working-are-inherited-lean.md), 0027).
 - One deliverable per context; at the context marker commit what is green and write the hand-off note.
 - One builder per place, plugin module or UI view at a time; no swarms.
 - No `sleep` or polling; long jobs under `job_guard.sh` in the background; waits return within 270 s.

@@ -1,0 +1,68 @@
+{
+ "schemaVersion": 2,
+ "cellId": "SeekhatFishersHut",
+ "additions": [
+  {
+   "id": "SeekhatFishersHut:add:bed-glazedcandles-01",
+   "assetId": "vanilla:clutter/glazedcandles01",
+   "pos": [123.5, 96.554, 45.7],
+   "rotZDeg": 0,
+   "zone": "bed",
+   "why": "Lights the floor beside the two sleeping mats by the east wall."
+  },
+  {
+   "id": "SeekhatFishersHut:add:table-glazedcandles-02",
+   "assetId": "vanilla:clutter/glazedcandles01",
+   "pos": [116.8, 96.547, 48.6],
+   "rotZDeg": 0,
+   "zone": "table",
+   "why": "Lights the floor by the table where the fishers eat."
+  },
+  {
+   "id": "SeekhatFishersHut:add:work-glazedcandles-03",
+   "assetId": "vanilla:clutter/glazedcandles01",
+   "pos": [120.2, 96.554, 45.6],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the work table where the catch is gutted."
+  },
+  {
+   "id": "SeekhatFishersHut:add:bed-glazedcandles-04",
+   "assetId": "vanilla:clutter/glazedcandles01",
+   "pos": [116.8, 96.554, 44.8],
+   "rotZDeg": 0,
+   "zone": "bed",
+   "why": "Lights the floor beside the sleeping mat by the west wall."
+  },
+  {
+   "id": "SeekhatFishersHut:add:door-argoniancandle-05",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [118.9, 96.571, 49.3],
+   "rotZDeg": 0,
+   "zone": "door",
+   "why": "Lights the floor just inside the door."
+  },
+  {
+   "id": "SeekhatFishersHut:add:store-argoniancandle-06",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [121.5, 96.554, 48.8],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Lights the nets and stores by the front wall."
+  },
+  {"id": "SeekhatFishersHut:add:store-glazedcandles-13", "assetId": "vanilla:clutter/glazedcandles01", "pos": [124.17, 96.547, 49.1], "rotZDeg": 0, "zone": "store", "why": "Lights the floor at the east end where the nets are stacked."},
+  {"id": "SeekhatFishersHut:add:bed-glazedcandles-14", "assetId": "vanilla:clutter/glazedcandles01", "pos": [124.24, 97.083, 46.99], "rotZDeg": 0, "zone": "bed", "why": "Lights the raised floor at the east end by the sleeping mats."},
+  {"id": "SeekhatFishersHut:add:table-plate-10", "assetId": "mudmother:gv_meshes/argoniannest/potteryplate02", "pos": [117.4, 96.547, 48.0], "rotZDeg": 0, "zone": "table", "why": "A plate left by the table after the meal."}
+ ],
+ "perDoor": {
+  "door.pirate-freeholds.upriver-hist-village.5": [
+   {"id": "SeekhatFishersHut:add:store-fishrack-07", "assetId": "mudmother:gv_meshes/argoniannest/fishracksmall", "pos": [121.0, 96.319, 48.2], "rotZDeg": 0, "zone": "store", "why": "The day's catch drying by the front wall."},
+   {"id": "SeekhatFishersHut:add:work-clam-08", "assetId": "mudmother:gv_meshes/argoniannest/clam01", "pos": [119.8, 96.663, 45.4], "rotZDeg": 0, "zone": "work", "why": "River clams waiting to be opened."},
+   {"id": "SeekhatFishersHut:add:store-basketfull-09", "assetId": "mudmother:gv_meshes/argoniannest/basketfull", "pos": [122.4, 96.59, 48.6], "rotZDeg": 0, "zone": "store", "why": "A basket of floats and line."}
+  ],
+  "door.pirate-freeholds.upriver-hist-village.10": [
+   {"id": "SeekhatFishersHut:add:store-basketsmall-11", "assetId": "mudmother:gv_meshes/argoniannest/basketsmall01", "pos": [121.0, 96.554, 48.2], "rotZDeg": 0, "zone": "store", "why": "Pegs and cane cord for lashing a hull."},
+   {"id": "SeekhatFishersHut:add:store-basketfull-12", "assetId": "mudmother:gv_meshes/argoniannest/basketfull", "pos": [122.4, 96.59, 48.6], "rotZDeg": 0, "zone": "store", "why": "Pitch-soaked moss for caulking seams."}
+  ]
+ }
+}

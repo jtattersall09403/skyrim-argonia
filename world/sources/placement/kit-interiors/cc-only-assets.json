@@ -1,0 +1,273 @@
+{
+ "schemaVersion": 1,
+ "source": "build_kit 'unresolved diffuse' refusals over interior-kotm-v1's gap meshes (walk 11, tooling/.reports/16k/walk11/places-b/interior-kit.md); each texture sits only in a Creation Club or AE _ResourcePack archive the vault lacks, or (doll_turtle) is a source-mod texture its own BSA never shipped",
+ "rule": "decision 0127: export_interior_bundle drops a cosmetic reference to one of these meshes as 'cc-texture'; a functional base (DOOR, FURN, CONT, ACTI, LIGH) is never dropped; a texture absent from the source mod's own BSA file table is listed the same way",
+ "assets": {
+  "meshes/argonia/clutter/cypresslogpile.nif": {
+   "ccPath": "textures/baldcypressbark01_d.dds",
+   "cells": [
+    "LilmothLumberworks"
+   ]
+  },
+  "meshes/argonia/clutter/doll_turtle.nif": {
+   "ccPath": "textures/argonia/curse of immortals/turtle-shell-nor.dds",
+   "cells": [
+    "SeekhatEggTendersQuarters",
+    "SeekhatCarpenterHut"
+   ]
+  },
+  "meshes/argonia/clutter/incenseburnerbowl.nif": {
+   "ccPath": "textures/volcanic_ash_01.dds",
+   "cells": [
+    "SeekhatTreeminderHut"
+   ]
+  },
+  "meshes/argonia/clutter/milllogpile.nif": {
+   "ccPath": "textures/baldcypressbark01_d.dds",
+   "cells": [
+    "LilmothLumberworks"
+   ]
+  },
+  "meshes/argonia/food/marshmerrowstew.nif": {
+   "ccPath": "textures/marshmerrow_d.dds",
+   "cells": [
+    "SeekhatSmithyHut"
+   ]
+  },
+  "meshes/argonia/furniture/smeltermarker.nif": {
+   "ccPath": "textures/desertcracked02_d.dds",
+   "cells": [
+    "LilmothLumberworks"
+   ]
+  },
+  "meshes/argonia/trees/ctq_treepalm02.nif": {
+   "ccPath": "textures/palmtreetall01.dds",
+   "cells": [
+    "TeethofSithisInt02"
+   ]
+  },
+  "meshes/argonia/trees/ctq_treepalm03.nif": {
+   "ccPath": "textures/palmtreetall01.dds",
+   "cells": [
+    "RootWhisperHouseBeekeeper"
+   ]
+  },
+  "meshes/argonia/trees/ctq_treepalm04.nif": {
+   "ccPath": "textures/palmtreetall01.dds",
+   "cells": [
+    "RootWhisperHouseBeekeeper",
+    "RootWhisperHouseCarpenter"
+   ]
+  },
+  "meshes/argonia/trees/ctq_treepalm05.nif": {
+   "ccPath": "textures/palmtreetall01.dds",
+   "cells": [
+    "RootWhisperHouseBeekeeper"
+   ]
+  },
+  "meshes/argonia/trees/datepalm3.nif": {
+   "ccPath": "textures/madagascarpalm01_d.dds",
+   "cells": [
+    "SeekhatFishersHut"
+   ]
+  },
+  "meshes/argonia/trees/greguire/bottleplant01.nif": {
+   "ccPath": "textures/madagascarpalm01_d.dds",
+   "cells": [
+    "TeethofSithisInt01",
+    "TeethofSithisInt02"
+   ]
+  },
+  "meshes/argonia/trees/greguire/bottleplant02.nif": {
+   "ccPath": "textures/madagascarpalm01_d.dds",
+   "cells": [
+    "TeethofSithisInt01"
+   ]
+  },
+  "meshes/argonia/trees/greguire/bottleplant03.nif": {
+   "ccPath": "textures/madagascarpalm01_d.dds",
+   "cells": [
+    "TeethofSithisInt01",
+    "TeethofSithisInt02"
+   ]
+  },
+  "meshes/argonia/trees/greguire/eruttree04.nif": {
+   "ccPath": "textures/snowgumbark01_n.dds",
+   "cells": [
+    "SeekhatEldersHut"
+   ]
+  },
+  "meshes/argonia/trees/greguire/jungleplant01.nif": {
+   "ccPath": "textures/madagascarpalm01_d.dds",
+   "cells": [
+    "TeethofSithisInt01",
+    "TeethofSithisInt02"
+   ]
+  },
+  "meshes/argonia/trees/greguire/jungletree01.nif": {
+   "ccPath": "textures/snowgumbranches01_d.dds",
+   "cells": [
+    "SeekhatCarpenterHut",
+    "SeekhatSmithyHut"
+   ]
+  },
+  "meshes/argonia/trees/greguire/jungletree02.nif": {
+   "ccPath": "textures/snowgumbranches01_d.dds",
+   "cells": [
+    "SeekhatEldersHut",
+    "SeekhatFishersHut"
+   ]
+  },
+  "meshes/argonia/trees/greguire/jungletree03.nif": {
+   "ccPath": "textures/snowgumbranches01_d.dds",
+   "cells": [
+    "SeekhatEldersHut"
+   ]
+  },
+  "meshes/argonia/trees/greguire/jungletree04.nif": {
+   "ccPath": "textures/snowgumbranches01_d.dds",
+   "cells": [
+    "RootWhisperHouseFisher",
+    "RootWhisperHouseSapSpeaker",
+    "SeekhatTreeminderHut"
+   ]
+  },
+  "meshes/argonia/trees/greguire/jungletree05.nif": {
+   "ccPath": "textures/snowgumbranches01_d.dds",
+   "cells": [
+    "RootWhisperHouseBeekeeper",
+    "RootWhisperHouseCarpenter",
+    "RootWhisperHouseHunter",
+    "RootWhisperHouseTreeminder",
+    "SeekhatSmithyHut"
+   ]
+  },
+  "meshes/argonia/trees/greguire/jungletree06.nif": {
+   "ccPath": "textures/snowgumbranches01_d.dds",
+   "cells": [
+    "RootWhisperHouseCarpenter",
+    "RootWhisperHouseHunter",
+    "RootWhisperHouseSapSpeaker",
+    "RootWhisperHouseTreeminder",
+    "SeekhatEldersHut",
+    "SeekhatFishersHut"
+   ]
+  },
+  "meshes/argonia/trees/greguire/sejupalm02.nif": {
+   "ccPath": "textures/palmtreeshortbark01.dds",
+   "cells": [
+    "SeekhatEldersHut"
+   ]
+  },
+  "meshes/argonia/trees/greguire/sejupalm03.nif": {
+   "ccPath": "textures/palmtreeshortbark01.dds",
+   "cells": [
+    "SeekhatSmithyHut"
+   ]
+  },
+  "meshes/argonia/trees/greguire/sejupalm04.nif": {
+   "ccPath": "textures/palmtreeshortbark01.dds",
+   "cells": [
+    "SeekhatEldersHut"
+   ]
+  },
+  "meshes/argonia/trees/greguire/sejupalmsaplings01.nif": {
+   "ccPath": "textures/palmtreeshortbark01.dds",
+   "cells": [
+    "SeekhatSmithyHut"
+   ]
+  },
+  "meshes/argonia/trees/greguire/swamptreetall01.nif": {
+   "ccPath": "textures/snowgumbranches01_d.dds",
+   "cells": [
+    "SeekhatCarpenterHut"
+   ]
+  },
+  "meshes/argonia/trees/greguire/swamptreetall02.nif": {
+   "ccPath": "textures/snowgumbranches01_d.dds",
+   "cells": [
+    "SeekhatCarpenterHut",
+    "SeekhatFishersHut",
+    "SeekhatSmithyHut"
+   ]
+  },
+  "meshes/argonia/trees/greguire/swamptreetallyoung01.nif": {
+   "ccPath": "textures/snowgumbranches01_d.dds",
+   "cells": [
+    "SeekhatCarpenterHut"
+   ]
+  },
+  "meshes/argonia/trees/hist trees/histgland03.nif": {
+   "ccPath": "textures/telinsideblob01.dds",
+   "cells": [
+    "RootWhisperHouseSapSpeaker",
+    "SeekhatTreeminderHut"
+   ]
+  },
+  "meshes/argonia/trees/rainforesttree02.nif": {
+   "ccPath": "textures/snowgumbark01_d.dds",
+   "cells": [
+    "RootWhisperHouseBeekeeper"
+   ]
+  },
+  "meshes/argonia/trees/willow03.nif": {
+   "ccPath": "textures/weepingwillowbark01_d.dds",
+   "cells": [
+    "RootWhisperHouseSapSpeaker"
+   ]
+  },
+  "meshes/argonia/trees/willow04.nif": {
+   "ccPath": "textures/weepingwillowbark01_d.dds",
+   "cells": [
+    "RootWhisperHouseFisher",
+    "RootWhisperHouseHunter"
+   ]
+  },
+  "meshes/argonianweapons/argonianspearsquiver.nif": {
+   "ccPath": "textures/fangofhaynekhtnamet.dds",
+   "cells": [
+    "RootWhisperHouseBeekeeper",
+    "RootWhisperHouseFisher",
+    "SeekhatFishersHut"
+   ]
+  },
+  "meshes/argonianweapons/argonianspearsword.nif": {
+   "ccPath": "textures/fangofhaynekhtnamet.dds",
+   "cells": [
+    "SeekhatFishersHut"
+   ]
+  },
+  "meshes/caen/mounted fish/mounted catfish.nif": {
+   "ccPath": "textures/fishcuckoocatfish01_d.dds",
+   "cells": [
+    "SeekhatFishersHut"
+   ]
+  },
+  "meshes/caen/mounted fish/mounted direfish.nif": {
+   "ccPath": "textures/fishdagon01_d.dds",
+   "cells": [
+    "SeekhatFishersHut"
+   ]
+  },
+  "meshes/caen/mounted fish/mounted vampirefish.nif": {
+   "ccPath": "textures/fishvampire01_d.dds",
+   "cells": [
+    "RootWhisperHouseHunter",
+    "SeekhatFishersHut"
+   ]
+  },
+  "meshes/prvti/argonian/argbonedagger.nif": {
+   "ccPath": "textures/fishingrod_argonian01.dds",
+   "cells": [
+    "RootWhisperHouseSapSpeaker"
+   ]
+  },
+  "meshes/prvti/argonian/argknife.nif": {
+   "ccPath": "textures/fishingrod_argonian01.dds",
+   "cells": [
+    "RootWhisperHouseBeekeeper",
+    "RootWhisperHouseFisher"
+   ]
+  }
+ }
+}

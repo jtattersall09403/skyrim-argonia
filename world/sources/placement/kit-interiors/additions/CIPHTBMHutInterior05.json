@@ -1,0 +1,16 @@
+{
+ "schemaVersion": 2,
+ "cellId": "CIPHTBMHutInterior05",
+ "additions": [
+  {"id": "CIPHTBMHutInterior05:add:door-glazedcandles-01", "assetId": "vanilla:clutter/glazedcandles01", "pos": [-1.9, 0.057, -0.8], "rotZDeg": 0, "zone": "door", "why": "Lights the floor inside the door."},
+  {"id": "CIPHTBMHutInterior05:add:store-glazedcandles-01", "assetId": "vanilla:clutter/glazedcandles01", "pos": [-1.9, 0.057, 0.7], "rotZDeg": 0, "zone": "store", "why": "Lights the stores along the west wall."},
+  {"id": "CIPHTBMHutInterior05:add:work-glazedcandles-01", "assetId": "vanilla:clutter/glazedcandles01", "pos": [0.6, 0.057, -1.6], "rotZDeg": 0, "zone": "work", "why": "Lights the work corner by the front wall."},
+  {"id": "CIPHTBMHutInterior05:add:hearth-glazedcandles-01", "assetId": "vanilla:clutter/glazedcandles01", "pos": [0.9, 0.057, 0.3], "rotZDeg": 0, "zone": "hearth", "why": "Lights the middle of the room."},
+  {"id": "CIPHTBMHutInterior05:add:bed-glazedcandles-01", "assetId": "vanilla:clutter/glazedcandles01", "pos": [1.1, 0.057, 1.0], "rotZDeg": 0, "zone": "bed", "why": "Lights the sleeping place at the back."},
+  {"id": "CIPHTBMHutInterior05:add:store-urn-01", "assetId": "kotm:argonia/clutter/urn01", "pos": [-1.6, 0.059, 0.3], "rotZDeg": 0, "zone": "store", "why": "Trade oil kept sealed along the west wall."},
+  {"id": "CIPHTBMHutInterior05:add:store-vase-01", "assetId": "kotm:argonia/clutter/vase03", "pos": [-1.6, 0.064, 1.0], "rotZDeg": 0, "zone": "store", "why": "A jar of resin taken in barter."},
+  {"id": "CIPHTBMHutInterior05:add:work-paintedurn-01", "assetId": "mudmother:gv_meshes/argoniannest/paintedurn01", "pos": [1.2, 0.058, -1.3], "rotZDeg": 0, "zone": "work", "why": "A painted urn kept back from the boats to sell."},
+  {"id": "CIPHTBMHutInterior05:add:store-basketsmall-01", "assetId": "mudmother:gv_meshes/argoniannest/basketsmall01", "pos": [-1.5, 0.057, -0.4], "rotZDeg": 0, "zone": "store", "why": "Small goods sorted for the next boat downriver."},
+  {"id": "CIPHTBMHutInterior05:add:hearth-rug-01", "assetId": "kotm:oaristys/clutter/rugs", "pos": [0.6, 0.065, 0.2], "rotZDeg": 0, "zone": "hearth", "why": "A traded rug where buyers sit to bargain."}
+ ]
+}

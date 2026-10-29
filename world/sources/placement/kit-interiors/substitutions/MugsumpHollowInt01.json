@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "cellId": "MugsumpHollowInt01",
+  "plugin": "King of the Murkmire.esp",
+  "rule": "Stand-ins for a missing clutter or furniture piece of this cell (same object, R48); none are needed here.",
+  "substitutions": [],
+  "removals": [
+    {
+      "refId": "0857059A",
+      "reason": "decorative-no-same-class",
+      "search": "Base form Dragonborn.esm:0003D5DC lives in a master the project never sources (absent-master-classes.json rule; planner ruling 2026-09-27); the vault Data folder holds only Skyrim.esm and Update.esm (listing, 16k walk 9, 2026-10-01). With no base record the object cannot be named, so no same-object stand-in can be chosen (R48).",
+      "note": "A small loose piece from the Dragonborn add-on lay here; that add-on is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "08570703",
+      "reason": "decorative-no-same-class",
+      "search": "Base form Dawnguard.esm:0000EFB3 lives in a master the project never sources (absent-master-classes.json rule; planner ruling 2026-09-27); the vault Data folder holds only Skyrim.esm and Update.esm (listing, 16k walk 9, 2026-10-01). With no base record the object cannot be named, so no same-object stand-in can be chosen (R48).",
+      "note": "A small loose piece from the Dawnguard add-on lay here; that add-on is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "08570707",
+      "reason": "decorative-no-same-class",
+      "search": "Base form Dawnguard.esm:0000EFB8 lives in a master the project never sources (absent-master-classes.json rule; planner ruling 2026-09-27); the vault Data folder holds only Skyrim.esm and Update.esm (listing, 16k walk 9, 2026-10-01). With no base record the object cannot be named, so no same-object stand-in can be chosen (R48).",
+      "note": "A small loose piece from the Dawnguard add-on lay here; that add-on is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "08570708",
+      "reason": "decorative-no-same-class",
+      "search": "Base form Dawnguard.esm:0000EFB8 lives in a master the project never sources (absent-master-classes.json rule; planner ruling 2026-09-27); the vault Data folder holds only Skyrim.esm and Update.esm (listing, 16k walk 9, 2026-10-01). With no base record the object cannot be named, so no same-object stand-in can be chosen (R48).",
+      "note": "A small loose piece from the Dawnguard add-on lay here; that add-on is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "08570709",
+      "reason": "decorative-no-same-class",
+      "search": "Base form Dawnguard.esm:0000EFB3 lives in a master the project never sources (absent-master-classes.json rule; planner ruling 2026-09-27); the vault Data folder holds only Skyrim.esm and Update.esm (listing, 16k walk 9, 2026-10-01). With no base record the object cannot be named, so no same-object stand-in can be chosen (R48).",
+      "note": "A small loose piece from the Dawnguard add-on lay here; that add-on is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "0857070A",
+      "reason": "decorative-no-same-class",
+      "search": "Base form Dawnguard.esm:0000EFB3 lives in a master the project never sources (absent-master-classes.json rule; planner ruling 2026-09-27); the vault Data folder holds only Skyrim.esm and Update.esm (listing, 16k walk 9, 2026-10-01). With no base record the object cannot be named, so no same-object stand-in can be chosen (R48).",
+      "note": "A small loose piece from the Dawnguard add-on lay here; that add-on is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "0857070B",
+      "reason": "decorative-no-same-class",
+      "search": "Base form Dawnguard.esm:0000EFB8 lives in a master the project never sources (absent-master-classes.json rule; planner ruling 2026-09-27); the vault Data folder holds only Skyrim.esm and Update.esm (listing, 16k walk 9, 2026-10-01). With no base record the object cannot be named, so no same-object stand-in can be chosen (R48).",
+      "note": "A small loose piece from the Dawnguard add-on lay here; that add-on is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "0857070C",
+      "reason": "decorative-no-same-class",
+      "search": "Base form Dawnguard.esm:0000EFB8 lives in a master the project never sources (absent-master-classes.json rule; planner ruling 2026-09-27); the vault Data folder holds only Skyrim.esm and Update.esm (listing, 16k walk 9, 2026-10-01). With no base record the object cannot be named, so no same-object stand-in can be chosen (R48).",
+      "note": "A small loose piece from the Dawnguard add-on lay here; that add-on is not ours, so the spot stays bare."
+    }
+  ],
+  "removalRule": "Owner ruling 2026-10-04 (R113): no missing piece ships as a gap. A missing piece takes a same-class stand-in from a published kit where one exists (substitutions[]); a decorative piece whose class no published kit or vault archive holds is taken out of the fit-out (removals[], reason decorative-no-same-class, its search recorded), and the spot is simply empty. A placed piece whose only support was a removed piece is removed with it (reason rests-on-a-removal, restsOn naming that row)."
+}

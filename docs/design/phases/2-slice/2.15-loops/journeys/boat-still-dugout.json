@@ -1,0 +1,111 @@
+{
+ "id": "boat-still-dugout",
+ "start": {
+  "query": "?view=character&x=7247&z=641&t=10:00&d=8-17",
+  "kit": "start"
+ },
+ "notes": "The pod still of the player paddling: the stage-mistress's dugout at her landing (Riverwalk, by day); E boards, E casts off, W held paddles. The still is the reader's (hands on the paddle, seated, no limb through the hull).",
+ "steps": [
+  {
+   "name": "board",
+   "transition": "E at the hull: the player climbs aboard",
+   "do": {
+    "action": "boat",
+    "op": "press"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "aboard": "boat.riverwalk.stage-canoe"
+    }
+   },
+   "stage": {
+    "at": {
+     "x": 7247,
+     "z": 641,
+     "yaw": -2.4
+    },
+    "hour": 10,
+    "place": "place.dunmer-north.riverwalk",
+    "near": [
+     {
+      "id": "npc.dunmer-north.riverwalk.stage-mistress",
+      "m": 20.2,
+      "facing": true
+     }
+    ]
+   }
+  },
+  {
+   "name": "cast-off",
+   "transition": "E aboard: the hull casts off",
+   "do": {
+    "action": "boat",
+    "op": "press"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "event": "castOff",
+     "state": "aboard"
+    }
+   }
+  },
+  {
+   "name": "underway",
+   "transition": "W held: the player at the paddle or the helm, the hull under way; the still is taken with W still held",
+   "do": {
+    "action": "observe"
+   },
+   "keys": [
+    {
+     "down": "KeyW"
+    },
+    {
+     "wait_s": 3
+    },
+    { "closeUp": "player", "bearing": 90, "dist_m": 1.6, "up_m": 0.8, "target": "hands" },
+    { "wait_s": 0.6 },
+    { "closeUp": "player", "bearing": 270, "dist_m": 1.6, "up_m": 0.8, "target": "hands" },
+    { "wait_s": 0.6 },
+    { "closeUp": false }
+   ],
+   "hold_s": 0.5,
+   "expect": {
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "aboard": "boat.riverwalk.stage-canoe",
+     "underway": true
+    }
+   }
+  },
+  {
+   "name": "let-go",
+   "transition": "W released",
+   "do": {
+    "action": "observe"
+   },
+   "keys": [
+    {
+     "up": "KeyW"
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "aboard": "boat.riverwalk.stage-canoe"
+    }
+   }
+  }
+ ]
+}

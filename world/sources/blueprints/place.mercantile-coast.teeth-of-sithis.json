@@ -1,0 +1,5171 @@
+{
+  "schemaVersion": 1,
+  "blueprint": {
+    "id": "place.mercantile-coast.teeth-of-sithis",
+    "seed": "place.mercantile-coast.teeth-of-sithis",
+    "causalModel": {
+      "founding": "The Teeth of Sithis is the largest Sithis temple in Murkmire. The Clutch of Nisswo tends the temple. The temple no longer serves its original purpose.",
+      "siteAdvantages": "The temple stands at the end of a pilgrim route. It stands on the fringe marsh by the coast, 35 m from the open sea. Six black stone teeth stand in the shallows there. The temple was built to frame them.",
+      "occupantsMotive": "The Clutch maintain the temple precisely. They preach that the loss of its purpose is itself the teaching.",
+      "pressures": "The temple's original purpose is lost. At least one faction claims to have found the purpose out.",
+      "wouldChangeIf": "A rediscovery of the temple's function would split the Clutch."
+    },
+    "boundary": [
+      [
+        0.491082495,
+        0.912049097
+      ],
+      [
+        0.499423167,
+        0.912049097
+      ],
+      [
+        0.499423167,
+        0.922736007
+      ],
+      [
+        0.491082495,
+        0.922736007
+      ]
+    ],
+    "districts": [
+      {
+        "id": "district.teeth-of-sithis.teeth-of-sithis",
+        "kind": "sacred",
+        "cultureKit": "argonian-stone",
+        "wealth": "modest",
+        "boundary": [
+          [
+            0.493081543,
+            0.915777572
+          ],
+          [
+            0.493081543,
+            0.917271588
+          ],
+          [
+            0.493543243,
+            0.917728892
+          ],
+          [
+            0.493957475,
+            0.917728892
+          ],
+          [
+            0.496126793,
+            0.917006289
+          ],
+          [
+            0.498975511,
+            0.913752923
+          ],
+          [
+            0.497612222,
+            0.912607854
+          ],
+          [
+            0.497127827,
+            0.912607854
+          ],
+          [
+            0.493409281,
+            0.915452955
+          ]
+        ],
+        "notes": "The sacred ground of the Clutch of Nisswo: the bank above the colonnade and the two scaffold doors into the temple.",
+        "why": {
+          "what": "The district is the tended ground of the largest Sithis temple in Murkmire. The Clutch of Nisswo keep the ground.",
+          "whyHere": "The temple was built to frame the teeth. The teeth stand at the end of the pilgrims' track down the coast.",
+          "whyNeighbours": "Five other places lie within 200 m of the temple, at 91 to 182 m away. Of the tracks nearby, the pilgrim track from Lilmoth alone ends at the temple. Lilmoth lies about 410 m away.",
+          "playerPurpose": "The district is the end of a pilgrimage. The Clutch hold their rite here. Two ways lead down into the temple's drowned rooms.",
+          "microGeography": "The bank falls south-west at about ten degrees to brown sea water. The top of the bank stands 5 m above the tide."
+        }
+      }
+    ],
+    "parcels": [
+      {
+        "id": "parcel.teeth-of-sithis.west-stair",
+        "districtId": "district.teeth-of-sithis.teeth-of-sithis",
+        "groundFit": "dug-in",
+        "groundFitWhy": "The door is set into the hillside: the bank stands against the back of its portico, so the ground climbs from the sill to the hill under its footprint and the sill sits at the lowest ground.",
+        "use": "temple-door",
+        "service": "temple",
+        "buildingFamily": "kotm-stockadescaffoldbase1sided",
+        "interior": {
+          "kind": "dwelling"
+        },
+        "orientationWhy": "The west scaffold turns its door east. The door faces the track that the pilgrims come down.",
+        "why": {
+          "what": "The parcel holds the Clutch's west scrubbing scaffold. The scaffold stands over the first door down into the temple.",
+          "whyHere": "King of the Murkmire set the temple's first door here. The Clutch's frame stands over that door.",
+          "whySpot": "The parcel lies west of the track's last stretch. It stands on firm bank, so the frame needs no stilts in water.",
+          "whyNeighbours": "The west scaffold answers the east scaffold across the track. A pilgrim passes between the two scaffolds.",
+          "playerPurpose": "The parcel holds the first way into the lower temple. The temple's loop to the east door begins here.",
+          "microGeography": "The parcel stands on the upper bank, 3 m above the water. The ground falls gently toward the sea."
+        },
+        "assetRef": "composite:ruin/xanmeer-door2load-portico",
+        "centreUV": [
+          0.493293112,
+          0.91652458
+        ],
+        "yawDeg": 90.0,
+        "footprint": [
+          [
+            0.4938695,
+            0.915862751
+          ],
+          [
+            0.494010545,
+            0.916003797
+          ],
+          [
+            0.494010545,
+            0.917045363
+          ],
+          [
+            0.4938695,
+            0.917186409
+          ],
+          [
+            0.493766428,
+            0.917186409
+          ],
+          [
+            0.493624026,
+            0.917045363
+          ],
+          [
+            0.493624026,
+            0.916003797
+          ],
+          [
+            0.493766428,
+            0.915862751
+          ]
+        ],
+        "yMeasured": 1.828,
+        "assembly": [
+          {
+            "id": "t-bench-e",
+            "asset": "vanilla:furniture/farm/farmbench01",
+            "atM": [
+              11.0,
+              -23.2
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 0.3892
+          },
+          {
+            "id": "t-bench-w",
+            "asset": "vanilla:furniture/farm/farmbench01",
+            "atM": [
+              11.0,
+              -14.7
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 0.9344
+          },
+          {
+            "id": "t-candle-w",
+            "asset": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+            "atM": [
+              4.0,
+              -7.2
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "pad",
+            "yMeasured": 1.6288
+          },
+          {
+            "id": "t-lantern-w",
+            "asset": "vanilla:clutter/common/candlelantern01",
+            "atM": [
+              -1.1,
+              -5.1
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "light",
+            "evidence": "measured",
+            "groundFit": "direct",
+            "yMeasured": 1.6
+          },
+          {
+            "id": "t-rock-wn1",
+            "asset": "vanilla:landscape/rocks/rocks02",
+            "atM": [
+              4.6,
+              0.3
+            ],
+            "yaw": 125.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 8.6518
+          },
+          {
+            "id": "t-rock-ws1",
+            "asset": "vanilla:landscape/rocks/rocks02",
+            "atM": [
+              -4.6,
+              0.3
+            ],
+            "yaw": 30.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 8.6343
+          }
+        ],
+        "playerPurpose": [
+          {
+            "kind": "usable-fixture",
+            "tier": "medium",
+            "note": "The first way down into the temple: a scaffold door that opens onto the stair."
+          },
+          {
+            "kind": "quest-stage",
+            "tier": "major",
+            "socketRef": "socket.teeth-of-sithis.q-murkmire-teeth-of-sithis",
+            "note": "The pilgrims land, the rite is held on the colonnade and the scrubbing is checked here, so every stage of the Teeth quest is staged at this stair."
+          }
+        ]
+      },
+      {
+        "id": "parcel.teeth-of-sithis.east-stair",
+        "districtId": "district.teeth-of-sithis.teeth-of-sithis",
+        "groundFit": "dug-in",
+        "groundFitWhy": "The door is set into the hillside: the bank stands against the back of its portico, so the ground climbs from the sill to the hill under its footprint and the sill sits at the lowest ground.",
+        "use": "temple-door",
+        "buildingFamily": "kotm-stockadescaffoldbase1sided",
+        "interior": {
+          "kind": "dwelling"
+        },
+        "orientationWhy": "The east scaffold turns its door west. The door faces the track and the band's watch post.",
+        "why": {
+          "what": "The parcel holds the Clutch's east scrubbing scaffold. The scaffold stands over the second door into the temple.",
+          "whyHere": "The temple's second door is here in the plugin. The band of the Clutch keep this door.",
+          "whySpot": "The east scaffold stands east of the track. It stands on the bank's shoulder, where the band can see the whole colonnade.",
+          "whyNeighbours": "The east scaffold answers the west scaffold across the track. The way runs to the water between the two scaffolds.",
+          "playerPurpose": "The parcel holds the second way into the temple. The band sleeps here. The temple's loop comes out here.",
+          "microGeography": "The parcel stands on the bank's east shoulder, 2.6 m above the water. The ground falls south to the sea."
+        },
+        "assetRef": "composite:ruin/xanmeer-door2load-portico",
+        "centreUV": [
+          0.496838237,
+          0.913812166
+        ],
+        "yawDeg": 90.0,
+        "footprint": [
+          [
+            0.497414625,
+            0.913150337
+          ],
+          [
+            0.49755567,
+            0.913291383
+          ],
+          [
+            0.49755567,
+            0.914332949
+          ],
+          [
+            0.497414625,
+            0.914473995
+          ],
+          [
+            0.497311553,
+            0.914473995
+          ],
+          [
+            0.497169151,
+            0.914332949
+          ],
+          [
+            0.497169151,
+            0.913291383
+          ],
+          [
+            0.497311553,
+            0.913150337
+          ]
+        ],
+        "yMeasured": 2.028,
+        "assembly": [
+          {
+            "id": "t-lantern-e",
+            "asset": "vanilla:clutter/common/candlelantern01",
+            "atM": [
+              -1.1,
+              -5.11
+            ],
+            "yaw": 180.0,
+            "on": "ground",
+            "layer": "light",
+            "evidence": "measured",
+            "groundFit": "direct",
+            "yMeasured": 1.8
+          },
+          {
+            "id": "t-rock-en1",
+            "asset": "vanilla:landscape/rocks/rocks02",
+            "atM": [
+              3.6,
+              1.04
+            ],
+            "yaw": 305.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 9.0386
+          }
+        ],
+        "playerPurpose": [
+          {
+            "kind": "usable-fixture",
+            "tier": "medium",
+            "note": "The second way down into the temple, where the loop comes out."
+          }
+        ]
+      }
+    ],
+    "doors": [
+      {
+        "id": "door.mercantile-coast.teeth-of-sithis.1",
+        "parcelId": "parcel.teeth-of-sithis.west-stair",
+        "doorType": "load",
+        "interiorClaim": {
+          "culture": "argonian",
+          "interiorRef": "interior-kotm-v1",
+          "sizeClass": "small",
+          "tier": "A",
+          "cellId": "TeethofSithisInt01",
+          "plugin": "King of the Murkmire.esp",
+          "interiorLoadDoorRef": "083B94AA",
+          "arrivalMarker": {
+            "positionM": [
+              -20.7309,
+              3.3939,
+              -18.7326
+            ],
+            "yawDeg": 90.0
+          },
+          "why": "2 of 2 cells plugins link to kotm:argonia/stockades/stockadescaffoldbase1sided01 pass; TeethofSithisInt01 is a storage, 2 exterior load doors (one entrance, paired to the lowest of 2 exterior load doors; 1 load door(s) left closed); ties broken on the plugin's most-used cell (2 door links), then cell id"
+        },
+        "facingDeg": 90.0,
+        "thresholdUV": [
+          0.49394816,
+          0.916527292
+        ]
+      },
+      {
+        "id": "door.mercantile-coast.teeth-of-sithis.2",
+        "parcelId": "parcel.teeth-of-sithis.east-stair",
+        "doorType": "load",
+        "interiorClaim": {
+          "culture": "argonian",
+          "interiorRef": "interior-kotm-v1",
+          "sizeClass": "small",
+          "tier": "A",
+          "cellId": "TeethofSithisInt02",
+          "plugin": "King of the Murkmire.esp",
+          "interiorLoadDoorRef": "083B9995",
+          "arrivalMarker": {
+            "positionM": [
+              -20.7101,
+              3.3926,
+              -18.4343
+            ],
+            "yawDeg": 90.0
+          },
+          "why": "2 of 2 cells plugins link to kotm:argonia/stockades/stockadescaffoldbase1sided01 pass; TeethofSithisInt02 is a smithy, 2 exterior load doors (one entrance, paired to the lowest of 2 exterior load doors; 1 load door(s) left closed); TeethofSithisInt01 already furnished another building here"
+        },
+        "facingDeg": 90.0,
+        "thresholdUV": [
+          0.497493285,
+          0.913814878
+        ]
+      }
+    ],
+    "routes": [
+      {
+        "id": "route.teeth-of-sithis.the-street",
+        "kind": "footpath",
+        "routing": "straight",
+        "widthM": 3.0,
+        "endsAt": [],
+        "why": "The pilgrim track runs from Lilmoth to the north. It runs down the bank to the water opposite the gap in the teeth.",
+        "via": [
+          [
+            0.495652912,
+            0.912862821
+          ],
+          [
+            0.498202581,
+            0.912930631
+          ],
+          [
+            0.498202581,
+            0.9146937
+          ],
+          [
+            0.496642943,
+            0.915710855
+          ],
+          [
+            0.495815657,
+            0.916538142
+          ]
+        ],
+        "points": [
+          [
+            0.495652912,
+            0.912862821
+          ],
+          [
+            0.498202581,
+            0.912930631
+          ],
+          [
+            0.498202581,
+            0.9146937
+          ],
+          [
+            0.496642943,
+            0.915710855
+          ],
+          [
+            0.495815657,
+            0.916538142
+          ]
+        ]
+      },
+      {
+        "id": "route.teeth-of-sithis.west-stair",
+        "kind": "footpath",
+        "routing": "straight",
+        "widthM": 3.0,
+        "endsAt": [
+          "route.teeth-of-sithis.the-street",
+          "parcel.teeth-of-sithis.west-stair"
+        ],
+        "why": "A spur leaves the track and crosses the bank. The spur ends at the west scaffold's door into the temple.",
+        "via": [
+          [
+            0.495815657,
+            0.916538142
+          ],
+          [
+            0.494744254,
+            0.916551704
+          ],
+          [
+            0.493944092,
+            0.91652458
+          ]
+        ],
+        "points": [
+          [
+            0.495815657,
+            0.916538142
+          ],
+          [
+            0.49394816,
+            0.916527292
+          ]
+        ]
+      },
+      {
+        "id": "route.teeth-of-sithis.east-stair",
+        "kind": "footpath",
+        "routing": "straight",
+        "widthM": 3.0,
+        "endsAt": [
+          "route.teeth-of-sithis.the-street",
+          "parcel.teeth-of-sithis.east-stair"
+        ],
+        "why": "A short spur leaves the track for the east scaffold. The band keeps its watch at the east scaffold.",
+        "via": [
+          [
+            0.498202581,
+            0.913812166
+          ],
+          [
+            0.497497354,
+            0.913812166
+          ]
+        ],
+        "points": [
+          [
+            0.498202581,
+            0.913812166
+          ],
+          [
+            0.497493285,
+            0.913814878
+          ]
+        ]
+      }
+    ],
+    "canals": [],
+    "boardwalks": [],
+    "fences": [],
+    "docks": [],
+    "landmarks": [
+      {
+        "id": "landmark.teeth-of-sithis.the-colonnade",
+        "kind": "monument",
+        "assetRef": "kotm:argonia/xanmeer/exterior/obelisk",
+        "position": [
+          0.497524478,
+          0.919508235
+        ],
+        "notes": "Six black teeth in a row in knee-deep water, each scrubbed white to the waterline.",
+        "why": {
+          "what": "Six black stone teeth stand in a row in the shallows. The teeth are scrubbed white down to the water.",
+          "whyHere": "The temple was built to frame the teeth. Pilgrims come to see them.",
+          "whySpot": "The teeth stand in about a metre of water off the bank. A gap between the middle pair faces the track.",
+          "whyNeighbours": "The two scaffolds on the bank stand behind the teeth. The teeth are the only structure in the water.",
+          "playerPurpose": "The teeth are seen from the last bend of the track. The Clutch hold their rite at the teeth.",
+          "microGeography": "The water is brown standing sea water, 0.9 to 1.1 m deep. The teeth stand 10 m out from the last dry ground."
+        },
+        "yawDeg": 290.0,
+        "yMeasured": -1.4523,
+        "scale": 1.35
+      },
+      {
+        "id": "landmark.teeth-of-sithis.the-colonnade-tooth-1",
+        "kind": "monument",
+        "why": {
+          "what": "One of the six black stone teeth in the shallows, scrubbed white down to the water.",
+          "whyHere": "The temple was built to frame the teeth. Pilgrims come to see them.",
+          "whySpot": "It is the westmost tooth, nearest the last bend.",
+          "whyNeighbours": "The other five teeth stand in the same row. The two scaffolds on the bank stand behind them.",
+          "playerPurpose": "The row is seen from the last bend of the track. The Clutch hold their rite at the teeth.",
+          "microGeography": "The water is brown standing sea water, about a metre deep, 10 m out from the last dry ground."
+        },
+        "assetRef": "kotm:argonia/xanmeer/exterior/obelisk",
+        "position": [
+          0.49393053,
+          0.920050717
+        ],
+        "yawDeg": 12.0,
+        "yMeasured": -1.7613,
+        "scale": 1.4
+      },
+      {
+        "id": "landmark.teeth-of-sithis.the-colonnade-tooth-2",
+        "kind": "monument",
+        "why": {
+          "what": "One of the six black stone teeth in the shallows, scrubbed white down to the water.",
+          "whyHere": "The temple was built to frame the teeth. Pilgrims come to see them.",
+          "whySpot": "It is the second tooth from the west, beside the westmost.",
+          "whyNeighbours": "The other five teeth stand in the same row. The two scaffolds on the bank stand behind them.",
+          "playerPurpose": "The row is seen from the last bend of the track. The Clutch hold their rite at the teeth.",
+          "microGeography": "The water is brown standing sea water, about a metre deep, 10 m out from the last dry ground."
+        },
+        "assetRef": "kotm:argonia/xanmeer/exterior/obelisk",
+        "position": [
+          0.494540823,
+          0.919915097
+        ],
+        "yawDeg": 340.0,
+        "yMeasured": -1.4216,
+        "scale": 1.55
+      },
+      {
+        "id": "landmark.teeth-of-sithis.the-colonnade-tooth-3",
+        "kind": "monument",
+        "why": {
+          "what": "One of the six black stone teeth in the shallows, scrubbed white down to the water.",
+          "whyHere": "The temple was built to frame the teeth. Pilgrims come to see them.",
+          "whySpot": "It stands west of the gap that faces the track.",
+          "whyNeighbours": "The other five teeth stand in the same row. The two scaffolds on the bank stand behind them.",
+          "playerPurpose": "The row is seen from the last bend of the track. The Clutch hold their rite at the teeth.",
+          "microGeography": "The water is brown standing sea water, about a metre deep, 10 m out from the last dry ground."
+        },
+        "assetRef": "kotm:argonia/xanmeer/exterior/obelisk",
+        "position": [
+          0.495151116,
+          0.919779476
+        ],
+        "yawDeg": 25.0,
+        "yMeasured": -1.3205,
+        "scale": 1.65
+      },
+      {
+        "id": "landmark.teeth-of-sithis.the-colonnade-tooth-4",
+        "kind": "monument",
+        "why": {
+          "what": "One of the six black stone teeth in the shallows, scrubbed white down to the water.",
+          "whyHere": "The temple was built to frame the teeth. Pilgrims come to see them.",
+          "whySpot": "It stands east of the gap that faces the track.",
+          "whyNeighbours": "The other five teeth stand in the same row. The two scaffolds on the bank stand behind them.",
+          "playerPurpose": "The row is seen from the last bend of the track. The Clutch hold their rite at the teeth.",
+          "microGeography": "The water is brown standing sea water, about a metre deep, 10 m out from the last dry ground."
+        },
+        "assetRef": "kotm:argonia/xanmeer/exterior/obelisk",
+        "position": [
+          0.496303892,
+          0.919508235
+        ],
+        "yawDeg": 195.0,
+        "yMeasured": -1.3554,
+        "scale": 1.6
+      },
+      {
+        "id": "landmark.teeth-of-sithis.the-colonnade-tooth-5",
+        "kind": "monument",
+        "why": {
+          "what": "One of the six black stone teeth in the shallows, scrubbed white down to the water.",
+          "whyHere": "The temple was built to frame the teeth. Pilgrims come to see them.",
+          "whySpot": "It is the second tooth from the east, beside the eastmost.",
+          "whyNeighbours": "The other five teeth stand in the same row. The two scaffolds on the bank stand behind them.",
+          "playerPurpose": "The row is seen from the last bend of the track. The Clutch hold their rite at the teeth.",
+          "microGeography": "The water is brown standing sea water, about a metre deep, 10 m out from the last dry ground."
+        },
+        "assetRef": "kotm:argonia/xanmeer/exterior/obelisk",
+        "position": [
+          0.496914185,
+          0.919508235
+        ],
+        "yawDeg": 100.0,
+        "yMeasured": -1.3724,
+        "scale": 1.45
+      }
+    ],
+    "questSockets": [
+      {
+        "id": "socket.teeth-of-sithis.q-evidence-scrub-line-rule",
+        "kind": "evidence",
+        "socketRef": "evidence.teeth.scrub-line-rule",
+        "position": [
+          0.495666474,
+          0.912862821
+        ],
+        "parcel": "parcel.teeth-of-sithis.west-stair"
+      },
+      {
+        "id": "socket.teeth-of-sithis.q-mark-rite-witnessed",
+        "kind": "mark",
+        "socketRef": "marks.teeth.rite-witnessed",
+        "position": [
+          0.495666474,
+          0.912862821
+        ],
+        "parcel": "parcel.teeth-of-sithis.west-stair"
+      },
+      {
+        "id": "socket.teeth-of-sithis.q-post-pilgrim-landing",
+        "kind": "post",
+        "socketRef": "post.teeth.pilgrim-landing",
+        "position": [
+          0.495666474,
+          0.912862821
+        ],
+        "parcel": "parcel.teeth-of-sithis.west-stair"
+      },
+      {
+        "id": "socket.teeth-of-sithis.q-scene-colonnade-rite",
+        "kind": "scene",
+        "socketRef": "scene.teeth.colonnade-rite",
+        "position": [
+          0.495666474,
+          0.912862821
+        ],
+        "parcel": "parcel.teeth-of-sithis.west-stair"
+      },
+      {
+        "id": "socket.teeth-of-sithis.q-murkmire-teeth-of-sithis",
+        "kind": "scene",
+        "position": [
+          0.495666474,
+          0.912862821
+        ],
+        "parcel": "parcel.teeth-of-sithis.west-stair"
+      }
+    ],
+    "travelServices": [],
+    "occupants": [
+      {
+        "slotId": "nisswo-teeth",
+        "ladderRef": "capable-d1 priest",
+        "cultureRole": "nisswo of the Teeth",
+        "worksAt": "parcel.teeth-of-sithis.west-stair",
+        "livesAt": "parcel.teeth-of-sithis.west-stair",
+        "ownerFaction": "faction.nisswo"
+      },
+      {
+        "slotId": "the-one",
+        "ladderRef": "modest-d1 keeper",
+        "cultureRole": "The scrubber cleans the teeth down to the waterline.",
+        "worksAt": "parcel.teeth-of-sithis.west-stair",
+        "livesAt": "parcel.teeth-of-sithis.west-stair",
+        "ownerFaction": "faction.nisswo"
+      },
+      {
+        "slotId": "n1",
+        "ladderRef": "capable-d1 priest",
+        "cultureRole": "priest",
+        "worksAt": "parcel.teeth-of-sithis.west-stair",
+        "livesAt": "parcel.teeth-of-sithis.west-stair",
+        "ownerFaction": "faction.nisswo"
+      },
+      {
+        "slotId": "n2",
+        "ladderRef": "modest-d2 guard",
+        "cultureRole": "rank-and-file",
+        "worksAt": "parcel.teeth-of-sithis.west-stair",
+        "livesAt": "parcel.teeth-of-sithis.west-stair",
+        "ownerFaction": "faction.nisswo"
+      }
+    ],
+    "approaches": [
+      {
+        "id": "approach.teeth-of-sithis.arrival",
+        "mode": "walk",
+        "fromRouteId": "track.track.mercantile-coast.nisswo-line",
+        "firstSeen": "parcel.teeth-of-sithis.west-stair",
+        "viaUV": [
+          [
+            0.485250372,
+            0.913609321
+          ],
+          [
+            0.49563935,
+            0.912865642
+          ]
+        ],
+        "sequence": "The priests' track comes along the bank from the west. The track ends at the head of the pilgrim way. The way runs south between the two scaffolds to the water.",
+        "wayfinding": "From the track's end the teeth show in a row out in the water. A stone door frame stands on the bank on each side of the way."
+      }
+    ],
+    "networkTerminals": [
+      {
+        "id": "terminal.teeth-of-sithis.nisswo-line",
+        "routeId": "track.track.mercantile-coast.nisswo-line",
+        "entryUV": [
+          0.49563935,
+          0.912865642
+        ],
+        "wayId": "route.teeth-of-sithis.the-street",
+        "kind": "footpath",
+        "why": "The priests' track along the coast ends here. It ends at the head of the pilgrim way down to the water."
+      }
+    ],
+    "combatSpaces": [
+      {
+        "id": "combat.teeth-of-sithis.teeth-of-sithis",
+        "aroundIds": [
+          "parcel.teeth-of-sithis.west-stair",
+          "parcel.teeth-of-sithis.east-stair"
+        ],
+        "clearanceClass": "open",
+        "why": "In NI05 the splinter sect may turn on the Clutch here. The fight happens on the open bank between the two doors.",
+        "boundary": [
+          [
+            0.493081543,
+            0.915777572
+          ],
+          [
+            0.493081543,
+            0.917271588
+          ],
+          [
+            0.493543243,
+            0.917728892
+          ],
+          [
+            0.494053226,
+            0.917728892
+          ],
+          [
+            0.497772808,
+            0.914882999
+          ],
+          [
+            0.498098153,
+            0.914557652
+          ],
+          [
+            0.498098153,
+            0.91306668
+          ],
+          [
+            0.49763933,
+            0.912607854
+          ],
+          [
+            0.497127827,
+            0.912607854
+          ],
+          [
+            0.493409281,
+            0.915452955
+          ]
+        ]
+      }
+    ],
+    "clearance": {
+      "hardClear": [],
+      "thinned": [],
+      "kept": []
+    },
+    "variants": [
+      {
+        "id": "variant.teeth-of-sithis.base",
+        "changedRefs": [],
+        "serviceOverrides": {},
+        "ambience": "wild"
+      },
+      {
+        "id": "variant.teeth-of-sithis.offering-at-the-bend",
+        "changedRefs": [],
+        "serviceOverrides": {},
+        "scheduleOverrides": {
+          "npc.mercantile-coast.teeth-of-sithis.nisswo-teeth": "socket.teeth-of-sithis.q-post-last-bend"
+        }
+      }
+    ],
+    "scaleGrounding": {
+      "loreSource": "catalogue record The Teeth of Sithis (sithis-temple, M1)",
+      "population": "4",
+      "households": 2,
+      "buildingsPlanned": 2,
+      "npcsPlanned": 4,
+      "why": "A priest, a scrubber and a small band keep the temple. The record names no keepers beyond these. The bank holds no houses."
+    },
+    "siting": {
+      "dossier": "world/sources/sites/dossiers/teeth-of-sithis.json",
+      "candidates": [
+        {
+          "id": "candidate.teeth-of-sithis.chosen",
+          "positionM": [
+            3654.8,
+            6731.0
+          ],
+          "chosen": true,
+          "why": "The record sets the temple at the end of the pilgrim water. The bank meets the formation at that spot."
+        },
+        {
+          "id": "candidate.teeth-of-sithis.second",
+          "positionM": [
+            3700.0,
+            6740.0
+          ],
+          "why": "The next stretch of the same bank lies 45 m east. That stretch also falls to open water.",
+          "rejectedBecause": "The plugin's two doors and the formation sit at the chosen spot. East of the chosen spot the bank has no teeth to frame."
+        }
+      ]
+    },
+    "budget": {
+      "maxInstances": 120,
+      "maxUniqueMaterials": 120,
+      "maxTextureMB": 32,
+      "maxColliders": 60
+    },
+    "assetConstraints": [],
+    "macroEvidence": [
+      {
+        "sourcePaths": [
+          "notableNpcSlots[nisswo-teeth]"
+        ],
+        "evidenceRefs": [
+          "nisswo-teeth",
+          "parcel.teeth-of-sithis.west-stair"
+        ]
+      },
+      {
+        "sourcePaths": [
+          "notableNpcSlots[the-one]"
+        ],
+        "evidenceRefs": [
+          "parcel.teeth-of-sithis.west-stair",
+          "the-one"
+        ]
+      },
+      {
+        "sourcePaths": [
+          "contents.npcs[n1]"
+        ],
+        "evidenceRefs": [
+          "n1",
+          "parcel.teeth-of-sithis.west-stair"
+        ]
+      },
+      {
+        "sourcePaths": [
+          "contents.npcs[n2]"
+        ],
+        "evidenceRefs": [
+          "n2",
+          "parcel.teeth-of-sithis.west-stair"
+        ]
+      },
+      {
+        "sourcePaths": [
+          "contents.loot[l1]"
+        ],
+        "evidenceRefs": [
+          "parcel.teeth-of-sithis.west-stair"
+        ]
+      },
+      {
+        "sourcePaths": [
+          "ownerFaction"
+        ],
+        "evidenceRefs": [
+          "nisswo-teeth",
+          "the-one",
+          "n1",
+          "n2"
+        ]
+      },
+      {
+        "sourcePaths": [
+          "assetPlan",
+          "contents",
+          "discovery",
+          "eraLayers",
+          "hostility",
+          "notableNpcSlots",
+          "playerPurpose",
+          "questHooks",
+          "relations",
+          "lootTable",
+          "season",
+          "sitingPrefs",
+          "status",
+          "traversalModes",
+          "underwaterAccess",
+          "vibe"
+        ],
+        "evidenceRefs": [
+          "parcel.teeth-of-sithis.west-stair",
+          "parcel.teeth-of-sithis.east-stair",
+          "approach.teeth-of-sithis.arrival"
+        ]
+      },
+      {
+        "sourcePaths": [
+          "entrance",
+          "interior"
+        ],
+        "evidenceRefs": [
+          "door.mercantile-coast.teeth-of-sithis.1",
+          "door.mercantile-coast.teeth-of-sithis.2"
+        ]
+      }
+    ],
+    "proseRefs": [
+      {
+        "sourcePath": "districts[0].why.whyNeighbours",
+        "placeRef": "place.mercantile-coast.lilmoth"
+      },
+      {
+        "sourcePath": "routes[0].why",
+        "placeRef": "place.mercantile-coast.lilmoth"
+      }
+    ],
+    "authoredOn": {
+      "wbSchemaVersion": 1,
+      "ground": {
+        "centreM": [
+          3655.0,
+          6755.0
+        ],
+        "halfM": 60.0,
+        "chunks": {
+          "chunk_7_14": "1a7756e25dcf4ad670eb0ae00a222bab10767b2bc87c5e83d839d0369f2840a4"
+        },
+        "sha256": "e529d2346f67bcd0d1f591e3bfaf04773c344f3eb64b4f686afb5a883bdf2284"
+      },
+      "kits": {
+        "flora-province-v1": "0ef937d974ac29e0c20057d560413bb7d248a7c78c48d734bf30c9b0b99c6003",
+        "settlement-imperial-v1": "8c5d34570634e96f1111d3e278ddae66792135a9aa5c6430ebc794f6669d4513",
+        "settlement-mud-v1": "cb24bf064b13aba569691f990ea4c4822555bcd8561ddfb9e3db820437d25cd1",
+        "xanmeer-kotm-v1": "c5843c2a6eb911ccefbf1cf2926e829de1795a020042c8116a566f303d840e27"
+      },
+      "layout": {
+        "path": "world/sources/blueprints/teeth-of-sithis.layout.json",
+        "sha256": "3baa88442f72a3f1263ee70cbcfb113b923d662e2d915a282a80ee9020d8e7d7",
+        "uidSha256": {
+          "TeethofSithisInt02.08482067": "27b69912272da842c6a988e5f6f69e67e9a8edab53a496b14901e3810b9305fe",
+          "TeethofSithisInt02.08491A7E": "01b9e5e895cdbb6e6244c5452378e8ded75ba49cc36d5407645cdf610647dbaa",
+          "TeethofSithisInt02.08491A80": "0ad263c52517141aa84386cd50bc2bf916cf03b9cd2816954881cfbfbf97eec5",
+          "TeethofSithisInt02.08491A88": "042d662af476792dc9de2b0e3da54e1ca9e632dd187a703bc6be1a12748f16f8",
+          "TeethofSithisInt02.08491A8D": "b581b994effb17e3cb79b6b1e0625071686dbcb60728e3aec3a81b0fe09b659d",
+          "TeethofSithisInt02.08491A8E": "415d600ba466995a61fdfa2630ec31da15b4d631f55321f236bc106ee2406bf4",
+          "TeethofSithisInt02.084C00C1": "a7dd9b79af04e334ad9a4f59aa8fb044322f2782b9717bb8ff75f3aeedb79762",
+          "TeethofSithisInt02.084C538C": "53b3f23ed7bef30c24672e20d3ab4369a8b1f0b2e0a76947e8fabc476006d0e6",
+          "TeethofSithisInt02.084C538E": "72ec639a921d8715ecc7150cfdfa9fab013b72a41bf2bc99a63ec58468281a56",
+          "TeethofSithisInt02.084C54DA": "e22fe906780d08e51a11549388d71eb6d6bcce4c3def7693434a5997250c1610",
+          "TeethofSithisInt02.0879BC0D": "dcdb86989ab310c821e45543af69bf86df651d8eaaf0fac6e8702b6272041b4b",
+          "TeethofSithisInt02.0879BCD5": "de71deb8e9f50a974e9530a8d4631fd2a9999c06c51b64fcfbf0c8037266d75e",
+          "TeethofSithisInt02.087AB6D8": "eada788631d65c8909314d3fa14cccc6098d5b4edd8e46e26355840712b49939",
+          "m-a-hill-e": "e9085f6edd3f557710de0f0d2c7277d48c85b2688bdab1d042001bb77190a668",
+          "m-a-hill-w": "fcedc803a85c917fdc6953ed1b1b76768342e97c265a56a4bc8d3e25d3745999",
+          "m-b-cut-e": "a8108bfb6fcb3b3c3b40d4973454bf7fbb23e5596db4cbd77bdb56a476392d46",
+          "m-b-cut-w": "1ccc7aac1ac4005b3338e1e6c190aae2bba8b7ac8230ba89fddc2b70541a0dc8",
+          "m-c-ramp-e": "fe27af85514012a4ec18907905ddc25bca94354656e9eb4d841e9df11687b215",
+          "m-c-ramp-w": "26d25cf544e647ed514eb722533c80fa727b3c707bb465b5b2a625a5fb5c8e51",
+          "m-d-back-e": "fb12eeda9a1440f95130aa383fe2e88ad5891e49af2050d6ccca362d5e85665f",
+          "m-d-back-w": "2feaedf14127c6a5a8b15ac3d7ef60b73b0b052cdc1b863ba8141e3496cac5d8",
+          "m-e-lintel-e": "9d10521030a8b1840c3529cba935c8aecf2d11a1cd8e6419155f574f71d4bda2",
+          "m-e-lintel-w": "18e7f34c72f74c4bb9efa0167202667413f1e3ccdb39bac908987ea73012908a",
+          "m-f-floor-e": "e3ae7f8567a7706f12d529a816c6078490493a64f16e64fd283714a80de53918",
+          "m-f-floor-w": "41099263489630d09045a145be2b940cefff58823727560c6012b27c3cbc80dc",
+          "route.teeth-of-sithis.east-stair": "afd78bc3bd80408e8553f977aa6f3148802aaffcb0ae1411c6782aa7e3c53c96",
+          "route.teeth-of-sithis.the-street": "ccb8789e34811155cb8391798b953013f015ef504e8d7994bacb697ecf48fb21",
+          "route.teeth-of-sithis.west-stair": "2b22648f446200e9d1d7ce71d516898e4c5a91f9f2cfb3e6df858c6ebc7f964e",
+          "t-bench-e": "bdd052de0657fdcafd0d5f23a2f1964c52dfb6b4442ec2844d8dbf634e5451cd",
+          "t-bench-w": "fe3d597e71148d296803bde1375eecbb07fc91293008c6e02ad5b55859679ae1",
+          "t-candle-w": "a11a8236cc25c661cb200166dd511025e468c914a54464266c51b4bdbf9c901f",
+          "t-door-e": "1bbb427eaf28117c143b56633fa2039f63623019a66634b5aa0ddaf1dd43cfee",
+          "t-door-w": "e26182c0e8e1c1693690cbc87d8dc81113a100ce71f42c466c8f8de60287c872",
+          "t-lantern-e": "ff772833647f5bca85a1f1a5f54053b33ed00bceb8a29284e01710743c7e427d",
+          "t-lantern-w": "1cc200a154017322c3afa333da4e63be217d417238fa07efbf18d3be28bfde3b",
+          "t-rock-en1": "13e048e7ccd32a14a3531108a3602a227d496aa9fa79c5237f2eaa0b58fc13e7",
+          "t-rock-wn1": "18d437f9e1533bb4fae759632954990fab6835438d027c38843966ec54547d80",
+          "t-rock-ws1": "f4c5c6e807e528beeaa44d4cc94b40deb4b67f79600384a42823d12ef1159dda",
+          "t-tooth1": "ab2e79e6e99edae889c9cb747e453ea88e402096ca7514dafbfc3ba064c0316e",
+          "t-tooth2": "32a3165ec9a74b35aa79c0680d8dc24dd0dc9f41f1a6225156aa00b99d6d08be",
+          "t-tooth3": "9b6d062296285a138c42a173e9be68109391e781bc10e34cacd392a3877c0868",
+          "t-tooth4": "5e7ec994d782eb637082f8c7513bf05e888c85b3b6863b17167c1c255510c3d3",
+          "t-tooth5": "f2c2c99a1a6f56bb0b4c14c097fd3ee2f73ce1771cd239a7bcc36e79176c4266",
+          "t-tooth6": "aa081c712cb067106bd34223ef3dd3eee8667391ba101a20b0f94a067b01ff65"
+        },
+        "geometrySha256": "01dd2b0d306310d845b4b777ca19c9a1299df888f874831443bbebef84faa01f"
+      }
+    },
+    "walkRoutes": {
+      "schemaVersion": 1,
+      "cellM": 0.5,
+      "stepM": 0.45,
+      "slopeMaxDeg": 30.0,
+      "wadeMaxM": 0.7,
+      "routes": {
+        "opening:t-door-w": {
+          "points": [
+            [
+              3654.5,
+              4.44,
+              6731.0
+            ],
+            [
+              3654.0,
+              4.48,
+              6731.0
+            ],
+            [
+              3653.0,
+              4.54,
+              6731.0
+            ],
+            [
+              3652.5,
+              4.56,
+              6731.0
+            ],
+            [
+              3652.0,
+              4.61,
+              6731.0
+            ],
+            [
+              3651.5,
+              4.68,
+              6731.5
+            ],
+            [
+              3651.0,
+              4.82,
+              6731.5
+            ],
+            [
+              3650.5,
+              4.89,
+              6732.0
+            ],
+            [
+              3650.0,
+              4.96,
+              6732.0
+            ],
+            [
+              3649.5,
+              4.97,
+              6732.0
+            ],
+            [
+              3649.0,
+              4.97,
+              6732.0
+            ],
+            [
+              3648.5,
+              4.98,
+              6732.0
+            ],
+            [
+              3647.0,
+              4.95,
+              6732.0
+            ],
+            [
+              3646.5,
+              4.93,
+              6732.0
+            ],
+            [
+              3645.0,
+              4.69,
+              6732.0
+            ],
+            [
+              3644.5,
+              4.65,
+              6732.0
+            ],
+            [
+              3644.0,
+              4.76,
+              6732.5
+            ],
+            [
+              3643.5,
+              4.96,
+              6733.0
+            ],
+            [
+              3643.0,
+              4.92,
+              6733.5
+            ],
+            [
+              3642.5,
+              4.6,
+              6734.0
+            ],
+            [
+              3642.0,
+              4.34,
+              6734.5
+            ],
+            [
+              3642.0,
+              4.21,
+              6735.0
+            ],
+            [
+              3642.0,
+              4.07,
+              6735.5
+            ],
+            [
+              3642.0,
+              3.92,
+              6736.0
+            ],
+            [
+              3642.0,
+              3.76,
+              6736.5
+            ],
+            [
+              3642.0,
+              3.48,
+              6737.5
+            ],
+            [
+              3642.0,
+              3.36,
+              6738.0
+            ],
+            [
+              3642.0,
+              3.25,
+              6738.5
+            ],
+            [
+              3642.0,
+              3.15,
+              6739.0
+            ],
+            [
+              3642.0,
+              3.09,
+              6739.5
+            ],
+            [
+              3642.0,
+              3.04,
+              6740.0
+            ],
+            [
+              3642.0,
+              3.01,
+              6740.5
+            ],
+            [
+              3642.0,
+              3.0,
+              6741.0
+            ],
+            [
+              3642.0,
+              3.0,
+              6748.0
+            ],
+            [
+              3642.0,
+              2.96,
+              6748.5
+            ],
+            [
+              3642.0,
+              2.86,
+              6749.0
+            ],
+            [
+              3642.0,
+              2.7,
+              6749.5
+            ],
+            [
+              3642.0,
+              2.51,
+              6750.0
+            ],
+            [
+              3642.0,
+              2.07,
+              6751.0
+            ],
+            [
+              3642.0,
+              1.87,
+              6751.5
+            ],
+            [
+              3642.0,
+              1.73,
+              6752.0
+            ]
+          ],
+          "routeM": 32.05,
+          "steepestDeg": 24.1,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0,
+          "parcelId": "parcel.teeth-of-sithis.west-stair",
+          "doorIds": [
+            "door.mercantile-coast.teeth-of-sithis.1"
+          ]
+        },
+        "opening:t-door-e": {
+          "points": [
+            [
+              3654.5,
+              4.44,
+              6731.0
+            ],
+            [
+              3655.0,
+              4.39,
+              6731.0
+            ],
+            [
+              3656.0,
+              4.31,
+              6731.0
+            ],
+            [
+              3658.0,
+              4.11,
+              6731.0
+            ],
+            [
+              3658.5,
+              4.07,
+              6731.0
+            ],
+            [
+              3659.0,
+              4.02,
+              6731.0
+            ],
+            [
+              3659.5,
+              3.94,
+              6731.0
+            ],
+            [
+              3660.0,
+              3.82,
+              6731.0
+            ],
+            [
+              3660.5,
+              3.67,
+              6731.0
+            ],
+            [
+              3661.0,
+              3.49,
+              6731.0
+            ],
+            [
+              3661.5,
+              3.3,
+              6731.0
+            ],
+            [
+              3662.5,
+              2.9,
+              6731.0
+            ],
+            [
+              3663.0,
+              2.71,
+              6731.0
+            ],
+            [
+              3663.5,
+              2.53,
+              6731.0
+            ],
+            [
+              3664.0,
+              2.37,
+              6731.0
+            ],
+            [
+              3664.5,
+              2.25,
+              6731.0
+            ],
+            [
+              3665.0,
+              2.16,
+              6731.0
+            ],
+            [
+              3665.5,
+              2.1,
+              6731.0
+            ],
+            [
+              3666.0,
+              2.09,
+              6731.0
+            ],
+            [
+              3666.5,
+              2.09,
+              6731.0
+            ],
+            [
+              3667.0,
+              2.0,
+              6731.5
+            ],
+            [
+              3667.5,
+              1.93,
+              6732.0
+            ]
+          ],
+          "routeM": 13.75,
+          "steepestDeg": 21.6,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0,
+          "parcelId": "parcel.teeth-of-sithis.east-stair",
+          "doorIds": [
+            "door.mercantile-coast.teeth-of-sithis.2"
+          ]
+        },
+        "socket:socket.teeth-of-sithis.idle-priest-work": {
+          "points": [
+            [
+              3654.5,
+              4.44,
+              6731.0
+            ],
+            [
+              3654.0,
+              4.48,
+              6731.0
+            ],
+            [
+              3653.0,
+              4.54,
+              6731.0
+            ],
+            [
+              3652.5,
+              4.56,
+              6731.0
+            ],
+            [
+              3652.0,
+              4.61,
+              6731.0
+            ],
+            [
+              3651.5,
+              4.68,
+              6731.5
+            ],
+            [
+              3651.0,
+              4.82,
+              6731.5
+            ],
+            [
+              3650.5,
+              4.89,
+              6732.0
+            ],
+            [
+              3650.0,
+              4.96,
+              6732.0
+            ],
+            [
+              3649.5,
+              4.97,
+              6732.0
+            ],
+            [
+              3649.0,
+              4.97,
+              6732.0
+            ],
+            [
+              3648.5,
+              4.98,
+              6732.0
+            ],
+            [
+              3647.0,
+              4.95,
+              6732.0
+            ],
+            [
+              3646.5,
+              4.93,
+              6732.0
+            ],
+            [
+              3645.0,
+              4.69,
+              6732.0
+            ],
+            [
+              3644.5,
+              4.65,
+              6732.0
+            ],
+            [
+              3644.0,
+              4.76,
+              6732.5
+            ],
+            [
+              3643.5,
+              4.96,
+              6733.0
+            ],
+            [
+              3643.0,
+              4.92,
+              6733.5
+            ],
+            [
+              3642.5,
+              4.6,
+              6734.0
+            ],
+            [
+              3642.0,
+              4.34,
+              6734.5
+            ],
+            [
+              3642.0,
+              4.21,
+              6735.0
+            ],
+            [
+              3642.0,
+              4.07,
+              6735.5
+            ],
+            [
+              3642.0,
+              3.92,
+              6736.0
+            ],
+            [
+              3642.0,
+              3.76,
+              6736.5
+            ],
+            [
+              3642.0,
+              3.48,
+              6737.5
+            ],
+            [
+              3642.0,
+              3.36,
+              6738.0
+            ],
+            [
+              3642.0,
+              3.25,
+              6738.5
+            ],
+            [
+              3642.0,
+              3.15,
+              6739.0
+            ],
+            [
+              3642.0,
+              3.09,
+              6739.5
+            ],
+            [
+              3642.0,
+              3.04,
+              6740.0
+            ],
+            [
+              3642.0,
+              3.01,
+              6740.5
+            ],
+            [
+              3642.0,
+              3.0,
+              6741.0
+            ],
+            [
+              3642.0,
+              3.0,
+              6748.0
+            ],
+            [
+              3642.0,
+              2.96,
+              6748.5
+            ],
+            [
+              3642.0,
+              2.86,
+              6749.0
+            ],
+            [
+              3642.0,
+              2.7,
+              6749.5
+            ],
+            [
+              3642.0,
+              2.51,
+              6750.0
+            ],
+            [
+              3642.5,
+              2.25,
+              6750.5
+            ],
+            [
+              3643.0,
+              1.97,
+              6751.0
+            ],
+            [
+              3643.5,
+              1.76,
+              6751.5
+            ],
+            [
+              3643.5,
+              1.67,
+              6752.0
+            ],
+            [
+              3644.0,
+              1.61,
+              6752.5
+            ],
+            [
+              3644.5,
+              1.6,
+              6753.0
+            ],
+            [
+              3645.0,
+              1.6,
+              6753.5
+            ],
+            [
+              3645.0,
+              1.6,
+              6758.5
+            ],
+            [
+              3647.5,
+              1.6,
+              6761.0
+            ],
+            [
+              3648.0,
+              1.62,
+              6761.5
+            ],
+            [
+              3648.5,
+              1.65,
+              6762.0
+            ],
+            [
+              3649.0,
+              1.71,
+              6762.5
+            ],
+            [
+              3649.0,
+              1.71,
+              6763.0
+            ],
+            [
+              3649.0,
+              1.75,
+              6764.0
+            ],
+            [
+              3649.0,
+              1.78,
+              6764.5
+            ],
+            [
+              3649.5,
+              1.83,
+              6765.0
+            ],
+            [
+              3650.0,
+              1.8,
+              6765.5
+            ],
+            [
+              3650.5,
+              1.68,
+              6766.0
+            ],
+            [
+              3651.0,
+              1.49,
+              6766.5
+            ],
+            [
+              3651.5,
+              1.29,
+              6767.0
+            ],
+            [
+              3652.0,
+              1.14,
+              6767.5
+            ],
+            [
+              3652.5,
+              1.02,
+              6768.0
+            ],
+            [
+              3653.0,
+              0.91,
+              6768.5
+            ],
+            [
+              3653.5,
+              0.81,
+              6769.0
+            ],
+            [
+              3653.5,
+              0.69,
+              6770.0
+            ],
+            [
+              3653.5,
+              0.64,
+              6770.5
+            ],
+            [
+              3654.0,
+              0.56,
+              6771.0
+            ],
+            [
+              3654.0,
+              0.51,
+              6771.5
+            ],
+            [
+              3654.0,
+              0.47,
+              6772.0
+            ],
+            [
+              3654.5,
+              0.41,
+              6772.5
+            ],
+            [
+              3656.0,
+              0.26,
+              6774.0
+            ]
+          ],
+          "routeM": 59.97,
+          "steepestDeg": 24.0,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.teeth-of-sithis.idle-scrubber-work": {
+          "points": [
+            [
+              3654.5,
+              4.44,
+              6731.0
+            ],
+            [
+              3654.0,
+              4.48,
+              6731.0
+            ],
+            [
+              3653.0,
+              4.54,
+              6731.0
+            ],
+            [
+              3652.5,
+              4.56,
+              6731.0
+            ],
+            [
+              3652.0,
+              4.61,
+              6731.0
+            ],
+            [
+              3651.5,
+              4.68,
+              6731.5
+            ],
+            [
+              3651.0,
+              4.82,
+              6731.5
+            ],
+            [
+              3650.5,
+              4.89,
+              6732.0
+            ],
+            [
+              3650.0,
+              4.96,
+              6732.0
+            ],
+            [
+              3649.5,
+              4.97,
+              6732.0
+            ],
+            [
+              3649.0,
+              4.97,
+              6732.0
+            ],
+            [
+              3648.5,
+              4.98,
+              6732.0
+            ],
+            [
+              3647.0,
+              4.95,
+              6732.0
+            ],
+            [
+              3646.5,
+              4.93,
+              6732.0
+            ],
+            [
+              3645.0,
+              4.69,
+              6732.0
+            ],
+            [
+              3644.5,
+              4.65,
+              6732.0
+            ],
+            [
+              3644.0,
+              4.76,
+              6732.5
+            ],
+            [
+              3643.5,
+              4.96,
+              6733.0
+            ],
+            [
+              3643.0,
+              4.92,
+              6733.5
+            ],
+            [
+              3642.5,
+              4.6,
+              6734.0
+            ],
+            [
+              3642.0,
+              4.34,
+              6734.5
+            ],
+            [
+              3642.0,
+              4.21,
+              6735.0
+            ],
+            [
+              3642.0,
+              4.07,
+              6735.5
+            ],
+            [
+              3642.0,
+              3.92,
+              6736.0
+            ],
+            [
+              3642.0,
+              3.76,
+              6736.5
+            ],
+            [
+              3642.0,
+              3.48,
+              6737.5
+            ],
+            [
+              3642.0,
+              3.36,
+              6738.0
+            ],
+            [
+              3642.0,
+              3.25,
+              6738.5
+            ],
+            [
+              3642.0,
+              3.15,
+              6739.0
+            ],
+            [
+              3642.0,
+              3.09,
+              6739.5
+            ],
+            [
+              3642.0,
+              3.04,
+              6740.0
+            ],
+            [
+              3642.0,
+              3.01,
+              6740.5
+            ],
+            [
+              3642.0,
+              3.0,
+              6741.0
+            ],
+            [
+              3642.0,
+              3.0,
+              6748.0
+            ],
+            [
+              3642.0,
+              2.96,
+              6748.5
+            ],
+            [
+              3642.0,
+              2.86,
+              6749.0
+            ],
+            [
+              3642.0,
+              2.7,
+              6749.5
+            ],
+            [
+              3642.0,
+              2.51,
+              6750.0
+            ],
+            [
+              3642.5,
+              2.25,
+              6750.5
+            ],
+            [
+              3643.0,
+              1.97,
+              6751.0
+            ],
+            [
+              3643.5,
+              1.76,
+              6751.5
+            ],
+            [
+              3643.5,
+              1.67,
+              6752.0
+            ],
+            [
+              3644.0,
+              1.61,
+              6752.5
+            ],
+            [
+              3644.5,
+              1.6,
+              6753.0
+            ],
+            [
+              3645.0,
+              1.6,
+              6753.5
+            ],
+            [
+              3645.0,
+              1.6,
+              6761.5
+            ],
+            [
+              3646.5,
+              1.6,
+              6763.0
+            ],
+            [
+              3646.5,
+              1.6,
+              6763.5
+            ],
+            [
+              3646.5,
+              1.62,
+              6764.0
+            ],
+            [
+              3646.5,
+              1.65,
+              6764.5
+            ],
+            [
+              3647.0,
+              1.73,
+              6765.0
+            ],
+            [
+              3647.5,
+              1.79,
+              6765.5
+            ],
+            [
+              3647.5,
+              1.85,
+              6766.0
+            ],
+            [
+              3647.5,
+              1.87,
+              6766.5
+            ],
+            [
+              3647.5,
+              1.86,
+              6767.0
+            ],
+            [
+              3647.5,
+              1.83,
+              6767.5
+            ],
+            [
+              3647.5,
+              1.63,
+              6769.5
+            ],
+            [
+              3647.5,
+              1.56,
+              6770.0
+            ],
+            [
+              3647.5,
+              1.48,
+              6770.5
+            ],
+            [
+              3647.5,
+              1.39,
+              6771.0
+            ],
+            [
+              3647.5,
+              1.29,
+              6771.5
+            ],
+            [
+              3647.5,
+              1.18,
+              6772.0
+            ],
+            [
+              3647.5,
+              0.82,
+              6773.5
+            ],
+            [
+              3647.5,
+              0.71,
+              6774.0
+            ]
+          ],
+          "routeM": 56.43,
+          "steepestDeg": 24.0,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.teeth-of-sithis.idle-band-work": {
+          "points": [
+            [
+              3654.5,
+              4.44,
+              6731.0
+            ],
+            [
+              3655.0,
+              4.39,
+              6731.0
+            ],
+            [
+              3656.0,
+              4.31,
+              6731.0
+            ],
+            [
+              3658.0,
+              4.11,
+              6731.0
+            ],
+            [
+              3658.5,
+              4.07,
+              6731.0
+            ],
+            [
+              3659.0,
+              4.02,
+              6731.0
+            ],
+            [
+              3659.5,
+              3.94,
+              6731.0
+            ],
+            [
+              3660.0,
+              3.82,
+              6731.0
+            ],
+            [
+              3660.5,
+              3.67,
+              6731.0
+            ],
+            [
+              3661.0,
+              3.49,
+              6731.0
+            ],
+            [
+              3661.5,
+              3.3,
+              6731.0
+            ],
+            [
+              3662.5,
+              2.9,
+              6731.0
+            ],
+            [
+              3663.0,
+              2.71,
+              6731.0
+            ],
+            [
+              3663.5,
+              2.53,
+              6731.0
+            ],
+            [
+              3664.0,
+              2.37,
+              6731.0
+            ],
+            [
+              3664.5,
+              2.25,
+              6731.0
+            ],
+            [
+              3665.0,
+              2.16,
+              6731.0
+            ],
+            [
+              3665.5,
+              2.1,
+              6731.0
+            ],
+            [
+              3666.0,
+              2.09,
+              6731.0
+            ],
+            [
+              3666.5,
+              2.09,
+              6731.0
+            ],
+            [
+              3667.0,
+              2.0,
+              6731.5
+            ],
+            [
+              3667.5,
+              1.93,
+              6732.0
+            ],
+            [
+              3668.0,
+              1.8,
+              6732.5
+            ],
+            [
+              3668.5,
+              1.8,
+              6733.0
+            ],
+            [
+              3668.5,
+              1.8,
+              6733.5
+            ],
+            [
+              3669.5,
+              1.8,
+              6734.5
+            ],
+            [
+              3669.5,
+              1.8,
+              6735.0
+            ]
+          ],
+          "routeM": 17.59,
+          "steepestDeg": 21.6,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.teeth-of-sithis.npc-nisswo": {
+          "points": [
+            [
+              3654.5,
+              4.44,
+              6731.0
+            ],
+            [
+              3654.0,
+              4.48,
+              6731.0
+            ],
+            [
+              3653.0,
+              4.54,
+              6731.0
+            ],
+            [
+              3652.5,
+              4.56,
+              6731.0
+            ],
+            [
+              3652.0,
+              4.61,
+              6731.0
+            ],
+            [
+              3651.5,
+              4.68,
+              6731.5
+            ],
+            [
+              3651.0,
+              4.82,
+              6731.5
+            ],
+            [
+              3650.5,
+              4.89,
+              6732.0
+            ],
+            [
+              3650.0,
+              4.96,
+              6732.0
+            ],
+            [
+              3649.5,
+              4.97,
+              6732.0
+            ],
+            [
+              3649.0,
+              4.97,
+              6732.0
+            ],
+            [
+              3648.5,
+              4.98,
+              6732.0
+            ],
+            [
+              3647.0,
+              4.95,
+              6732.0
+            ],
+            [
+              3646.5,
+              4.93,
+              6732.0
+            ],
+            [
+              3645.0,
+              4.69,
+              6732.0
+            ],
+            [
+              3644.5,
+              4.65,
+              6732.0
+            ],
+            [
+              3644.0,
+              4.76,
+              6732.5
+            ],
+            [
+              3643.5,
+              4.96,
+              6733.0
+            ],
+            [
+              3643.0,
+              4.92,
+              6733.5
+            ],
+            [
+              3642.5,
+              4.6,
+              6734.0
+            ],
+            [
+              3642.0,
+              4.34,
+              6734.5
+            ],
+            [
+              3642.0,
+              4.21,
+              6735.0
+            ],
+            [
+              3642.0,
+              4.07,
+              6735.5
+            ],
+            [
+              3642.0,
+              3.92,
+              6736.0
+            ],
+            [
+              3642.0,
+              3.76,
+              6736.5
+            ],
+            [
+              3642.0,
+              3.48,
+              6737.5
+            ],
+            [
+              3642.0,
+              3.36,
+              6738.0
+            ],
+            [
+              3642.0,
+              3.25,
+              6738.5
+            ],
+            [
+              3642.0,
+              3.15,
+              6739.0
+            ],
+            [
+              3642.0,
+              3.09,
+              6739.5
+            ],
+            [
+              3642.0,
+              3.04,
+              6740.0
+            ],
+            [
+              3642.0,
+              3.01,
+              6740.5
+            ],
+            [
+              3642.0,
+              3.0,
+              6741.0
+            ],
+            [
+              3642.0,
+              3.0,
+              6748.0
+            ],
+            [
+              3642.0,
+              2.96,
+              6748.5
+            ],
+            [
+              3642.0,
+              2.86,
+              6749.0
+            ],
+            [
+              3642.0,
+              2.7,
+              6749.5
+            ],
+            [
+              3642.0,
+              2.51,
+              6750.0
+            ],
+            [
+              3642.5,
+              2.25,
+              6750.5
+            ],
+            [
+              3643.0,
+              1.97,
+              6751.0
+            ],
+            [
+              3643.5,
+              1.76,
+              6751.5
+            ],
+            [
+              3643.5,
+              1.67,
+              6752.0
+            ],
+            [
+              3644.0,
+              1.61,
+              6752.5
+            ],
+            [
+              3644.5,
+              1.6,
+              6753.0
+            ],
+            [
+              3645.0,
+              1.6,
+              6753.5
+            ],
+            [
+              3645.0,
+              1.6,
+              6758.5
+            ],
+            [
+              3647.5,
+              1.6,
+              6761.0
+            ],
+            [
+              3648.0,
+              1.62,
+              6761.5
+            ],
+            [
+              3648.5,
+              1.65,
+              6762.0
+            ],
+            [
+              3649.0,
+              1.71,
+              6762.5
+            ],
+            [
+              3649.0,
+              1.71,
+              6763.0
+            ],
+            [
+              3649.0,
+              1.75,
+              6764.0
+            ],
+            [
+              3649.0,
+              1.78,
+              6764.5
+            ],
+            [
+              3649.5,
+              1.83,
+              6765.0
+            ],
+            [
+              3650.0,
+              1.8,
+              6765.5
+            ],
+            [
+              3650.5,
+              1.68,
+              6766.0
+            ],
+            [
+              3651.0,
+              1.49,
+              6766.5
+            ],
+            [
+              3651.5,
+              1.29,
+              6767.0
+            ],
+            [
+              3652.0,
+              1.14,
+              6767.5
+            ],
+            [
+              3652.5,
+              1.02,
+              6768.0
+            ],
+            [
+              3653.0,
+              0.91,
+              6768.5
+            ],
+            [
+              3653.5,
+              0.81,
+              6769.0
+            ],
+            [
+              3653.5,
+              0.69,
+              6770.0
+            ],
+            [
+              3653.5,
+              0.64,
+              6770.5
+            ],
+            [
+              3654.0,
+              0.56,
+              6771.0
+            ],
+            [
+              3654.0,
+              0.51,
+              6771.5
+            ],
+            [
+              3654.0,
+              0.47,
+              6772.0
+            ],
+            [
+              3654.5,
+              0.41,
+              6772.5
+            ],
+            [
+              3656.0,
+              0.26,
+              6774.0
+            ]
+          ],
+          "routeM": 59.97,
+          "steepestDeg": 24.0,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.teeth-of-sithis.idle-keeper-work": {
+          "points": [
+            [
+              3654.5,
+              4.44,
+              6731.0
+            ],
+            [
+              3655.0,
+              4.39,
+              6731.0
+            ],
+            [
+              3656.0,
+              4.31,
+              6731.0
+            ],
+            [
+              3658.0,
+              4.11,
+              6731.0
+            ],
+            [
+              3658.5,
+              4.07,
+              6731.0
+            ],
+            [
+              3659.0,
+              4.02,
+              6731.0
+            ],
+            [
+              3659.5,
+              3.94,
+              6731.0
+            ],
+            [
+              3660.0,
+              3.82,
+              6731.0
+            ],
+            [
+              3660.5,
+              3.67,
+              6731.0
+            ],
+            [
+              3661.0,
+              3.49,
+              6731.0
+            ],
+            [
+              3661.5,
+              3.3,
+              6731.0
+            ],
+            [
+              3662.5,
+              2.9,
+              6731.0
+            ],
+            [
+              3663.0,
+              2.71,
+              6731.0
+            ],
+            [
+              3663.5,
+              2.53,
+              6731.0
+            ],
+            [
+              3664.0,
+              2.37,
+              6731.0
+            ],
+            [
+              3664.5,
+              2.25,
+              6731.0
+            ],
+            [
+              3665.0,
+              2.16,
+              6731.0
+            ],
+            [
+              3665.5,
+              2.1,
+              6731.0
+            ],
+            [
+              3666.0,
+              2.09,
+              6731.0
+            ],
+            [
+              3666.5,
+              2.09,
+              6731.0
+            ],
+            [
+              3667.0,
+              2.0,
+              6731.5
+            ],
+            [
+              3667.5,
+              1.93,
+              6732.0
+            ],
+            [
+              3668.0,
+              1.8,
+              6732.5
+            ],
+            [
+              3668.5,
+              1.8,
+              6733.0
+            ],
+            [
+              3668.5,
+              1.8,
+              6733.5
+            ],
+            [
+              3669.5,
+              1.8,
+              6734.5
+            ],
+            [
+              3669.5,
+              1.8,
+              6738.0
+            ],
+            [
+              3670.0,
+              1.8,
+              6738.5
+            ]
+          ],
+          "routeM": 21.29,
+          "steepestDeg": 21.6,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.teeth-of-sithis.npc-keeper": {
+          "points": [
+            [
+              3654.5,
+              4.44,
+              6731.0
+            ],
+            [
+              3655.0,
+              4.39,
+              6731.0
+            ],
+            [
+              3656.0,
+              4.31,
+              6731.0
+            ],
+            [
+              3658.0,
+              4.11,
+              6731.0
+            ],
+            [
+              3658.5,
+              4.07,
+              6731.0
+            ],
+            [
+              3659.0,
+              4.02,
+              6731.0
+            ],
+            [
+              3659.5,
+              3.94,
+              6731.0
+            ],
+            [
+              3660.0,
+              3.82,
+              6731.0
+            ],
+            [
+              3660.5,
+              3.67,
+              6731.0
+            ],
+            [
+              3661.0,
+              3.49,
+              6731.0
+            ],
+            [
+              3661.5,
+              3.3,
+              6731.0
+            ],
+            [
+              3662.5,
+              2.9,
+              6731.0
+            ],
+            [
+              3663.0,
+              2.71,
+              6731.0
+            ],
+            [
+              3663.5,
+              2.53,
+              6731.0
+            ],
+            [
+              3664.0,
+              2.37,
+              6731.0
+            ],
+            [
+              3664.5,
+              2.25,
+              6731.0
+            ],
+            [
+              3665.0,
+              2.16,
+              6731.0
+            ],
+            [
+              3665.5,
+              2.1,
+              6731.0
+            ],
+            [
+              3666.0,
+              2.09,
+              6731.0
+            ],
+            [
+              3666.5,
+              2.09,
+              6731.0
+            ],
+            [
+              3667.0,
+              2.0,
+              6731.5
+            ],
+            [
+              3667.5,
+              1.93,
+              6732.0
+            ],
+            [
+              3668.0,
+              1.8,
+              6732.5
+            ],
+            [
+              3668.5,
+              1.8,
+              6733.0
+            ],
+            [
+              3668.5,
+              1.8,
+              6733.5
+            ],
+            [
+              3669.5,
+              1.8,
+              6734.5
+            ],
+            [
+              3669.5,
+              1.8,
+              6738.0
+            ],
+            [
+              3670.0,
+              1.8,
+              6738.5
+            ]
+          ],
+          "routeM": 21.29,
+          "steepestDeg": 21.6,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.teeth-of-sithis.npc-scrubber": {
+          "points": [
+            [
+              3654.5,
+              4.44,
+              6731.0
+            ],
+            [
+              3654.0,
+              4.48,
+              6731.0
+            ],
+            [
+              3653.0,
+              4.54,
+              6731.0
+            ],
+            [
+              3652.5,
+              4.56,
+              6731.0
+            ],
+            [
+              3652.0,
+              4.61,
+              6731.0
+            ],
+            [
+              3651.5,
+              4.68,
+              6731.5
+            ],
+            [
+              3651.0,
+              4.82,
+              6731.5
+            ],
+            [
+              3650.5,
+              4.89,
+              6732.0
+            ],
+            [
+              3650.0,
+              4.96,
+              6732.0
+            ],
+            [
+              3649.5,
+              4.97,
+              6732.0
+            ],
+            [
+              3649.0,
+              4.97,
+              6732.0
+            ],
+            [
+              3648.5,
+              4.98,
+              6732.0
+            ],
+            [
+              3647.0,
+              4.95,
+              6732.0
+            ],
+            [
+              3646.5,
+              4.93,
+              6732.0
+            ],
+            [
+              3645.0,
+              4.69,
+              6732.0
+            ],
+            [
+              3644.5,
+              4.65,
+              6732.0
+            ],
+            [
+              3644.0,
+              4.76,
+              6732.5
+            ],
+            [
+              3643.5,
+              4.96,
+              6733.0
+            ],
+            [
+              3643.0,
+              4.92,
+              6733.5
+            ],
+            [
+              3642.5,
+              4.6,
+              6734.0
+            ],
+            [
+              3642.0,
+              4.34,
+              6734.5
+            ],
+            [
+              3642.0,
+              4.21,
+              6735.0
+            ],
+            [
+              3642.0,
+              4.07,
+              6735.5
+            ],
+            [
+              3642.0,
+              3.92,
+              6736.0
+            ],
+            [
+              3642.0,
+              3.76,
+              6736.5
+            ],
+            [
+              3642.0,
+              3.48,
+              6737.5
+            ],
+            [
+              3642.0,
+              3.36,
+              6738.0
+            ],
+            [
+              3642.0,
+              3.25,
+              6738.5
+            ],
+            [
+              3642.0,
+              3.15,
+              6739.0
+            ],
+            [
+              3642.0,
+              3.09,
+              6739.5
+            ],
+            [
+              3642.0,
+              3.04,
+              6740.0
+            ],
+            [
+              3642.0,
+              3.01,
+              6740.5
+            ],
+            [
+              3642.0,
+              3.0,
+              6741.0
+            ],
+            [
+              3642.0,
+              3.0,
+              6748.0
+            ],
+            [
+              3642.0,
+              2.96,
+              6748.5
+            ],
+            [
+              3642.0,
+              2.86,
+              6749.0
+            ],
+            [
+              3642.0,
+              2.7,
+              6749.5
+            ],
+            [
+              3642.0,
+              2.51,
+              6750.0
+            ],
+            [
+              3642.5,
+              2.25,
+              6750.5
+            ],
+            [
+              3643.0,
+              1.97,
+              6751.0
+            ],
+            [
+              3643.5,
+              1.76,
+              6751.5
+            ],
+            [
+              3643.5,
+              1.67,
+              6752.0
+            ],
+            [
+              3644.0,
+              1.61,
+              6752.5
+            ],
+            [
+              3644.5,
+              1.6,
+              6753.0
+            ],
+            [
+              3645.0,
+              1.6,
+              6753.5
+            ],
+            [
+              3645.0,
+              1.6,
+              6761.5
+            ],
+            [
+              3646.5,
+              1.6,
+              6763.0
+            ],
+            [
+              3646.5,
+              1.6,
+              6763.5
+            ],
+            [
+              3646.5,
+              1.62,
+              6764.0
+            ],
+            [
+              3646.5,
+              1.65,
+              6764.5
+            ],
+            [
+              3647.0,
+              1.73,
+              6765.0
+            ],
+            [
+              3647.5,
+              1.79,
+              6765.5
+            ],
+            [
+              3647.5,
+              1.85,
+              6766.0
+            ],
+            [
+              3647.5,
+              1.87,
+              6766.5
+            ],
+            [
+              3647.5,
+              1.86,
+              6767.0
+            ],
+            [
+              3647.5,
+              1.83,
+              6767.5
+            ],
+            [
+              3647.5,
+              1.63,
+              6769.5
+            ],
+            [
+              3647.5,
+              1.56,
+              6770.0
+            ],
+            [
+              3647.5,
+              1.48,
+              6770.5
+            ],
+            [
+              3647.5,
+              1.39,
+              6771.0
+            ],
+            [
+              3647.5,
+              1.29,
+              6771.5
+            ],
+            [
+              3647.5,
+              1.18,
+              6772.0
+            ],
+            [
+              3647.5,
+              0.82,
+              6773.5
+            ],
+            [
+              3647.5,
+              0.71,
+              6774.0
+            ]
+          ],
+          "routeM": 56.43,
+          "steepestDeg": 24.0,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.teeth-of-sithis.npc-band": {
+          "points": [
+            [
+              3654.5,
+              4.44,
+              6731.0
+            ],
+            [
+              3655.0,
+              4.39,
+              6731.0
+            ],
+            [
+              3656.0,
+              4.31,
+              6731.0
+            ],
+            [
+              3658.0,
+              4.11,
+              6731.0
+            ],
+            [
+              3658.5,
+              4.07,
+              6731.0
+            ],
+            [
+              3659.0,
+              4.02,
+              6731.0
+            ],
+            [
+              3659.5,
+              3.94,
+              6731.0
+            ],
+            [
+              3660.0,
+              3.82,
+              6731.0
+            ],
+            [
+              3660.5,
+              3.67,
+              6731.0
+            ],
+            [
+              3661.0,
+              3.49,
+              6731.0
+            ],
+            [
+              3661.5,
+              3.3,
+              6731.0
+            ],
+            [
+              3662.5,
+              2.9,
+              6731.0
+            ],
+            [
+              3663.0,
+              2.71,
+              6731.0
+            ],
+            [
+              3663.5,
+              2.53,
+              6731.0
+            ],
+            [
+              3664.0,
+              2.37,
+              6731.0
+            ],
+            [
+              3664.5,
+              2.25,
+              6731.0
+            ],
+            [
+              3665.0,
+              2.16,
+              6731.0
+            ],
+            [
+              3665.5,
+              2.1,
+              6731.0
+            ],
+            [
+              3666.0,
+              2.09,
+              6731.0
+            ],
+            [
+              3666.5,
+              2.09,
+              6731.0
+            ],
+            [
+              3667.0,
+              2.0,
+              6731.5
+            ],
+            [
+              3667.5,
+              1.93,
+              6732.0
+            ],
+            [
+              3668.0,
+              1.8,
+              6732.5
+            ],
+            [
+              3668.5,
+              1.8,
+              6733.0
+            ],
+            [
+              3668.5,
+              1.8,
+              6733.5
+            ],
+            [
+              3669.5,
+              1.8,
+              6734.5
+            ],
+            [
+              3669.5,
+              1.8,
+              6735.0
+            ]
+          ],
+          "routeM": 17.59,
+          "steepestDeg": 21.6,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.teeth-of-sithis.idle-seat-t-bench-w-1": {
+          "points": [
+            [
+              3654.5,
+              4.44,
+              6731.0
+            ],
+            [
+              3654.0,
+              4.48,
+              6731.0
+            ],
+            [
+              3653.0,
+              4.54,
+              6731.0
+            ],
+            [
+              3652.5,
+              4.56,
+              6731.0
+            ],
+            [
+              3652.0,
+              4.61,
+              6731.0
+            ],
+            [
+              3651.5,
+              4.68,
+              6731.5
+            ],
+            [
+              3651.0,
+              4.82,
+              6731.5
+            ],
+            [
+              3650.5,
+              4.89,
+              6732.0
+            ],
+            [
+              3650.0,
+              4.96,
+              6732.0
+            ],
+            [
+              3649.5,
+              4.97,
+              6732.0
+            ],
+            [
+              3649.0,
+              4.97,
+              6732.0
+            ],
+            [
+              3648.5,
+              4.98,
+              6732.0
+            ],
+            [
+              3647.0,
+              4.95,
+              6732.0
+            ],
+            [
+              3646.5,
+              4.93,
+              6732.0
+            ],
+            [
+              3645.0,
+              4.69,
+              6732.0
+            ],
+            [
+              3644.5,
+              4.65,
+              6732.0
+            ],
+            [
+              3644.0,
+              4.76,
+              6732.5
+            ],
+            [
+              3643.5,
+              4.96,
+              6733.0
+            ],
+            [
+              3643.0,
+              4.92,
+              6733.5
+            ],
+            [
+              3642.5,
+              4.6,
+              6734.0
+            ],
+            [
+              3642.0,
+              4.34,
+              6734.5
+            ],
+            [
+              3642.0,
+              4.21,
+              6735.0
+            ],
+            [
+              3642.0,
+              4.07,
+              6735.5
+            ],
+            [
+              3642.0,
+              3.92,
+              6736.0
+            ],
+            [
+              3642.0,
+              3.76,
+              6736.5
+            ],
+            [
+              3642.0,
+              3.48,
+              6737.5
+            ],
+            [
+              3642.0,
+              3.36,
+              6738.0
+            ],
+            [
+              3642.0,
+              3.25,
+              6738.5
+            ],
+            [
+              3642.0,
+              3.15,
+              6739.0
+            ],
+            [
+              3642.0,
+              3.09,
+              6739.5
+            ],
+            [
+              3642.0,
+              3.04,
+              6740.0
+            ],
+            [
+              3642.0,
+              3.01,
+              6740.5
+            ],
+            [
+              3642.0,
+              3.0,
+              6741.0
+            ],
+            [
+              3642.0,
+              3.0,
+              6748.0
+            ],
+            [
+              3642.0,
+              2.96,
+              6748.5
+            ],
+            [
+              3642.0,
+              2.86,
+              6749.0
+            ],
+            [
+              3642.0,
+              2.7,
+              6749.5
+            ],
+            [
+              3642.0,
+              2.51,
+              6750.0
+            ],
+            [
+              3642.5,
+              2.25,
+              6750.5
+            ],
+            [
+              3643.0,
+              1.97,
+              6751.0
+            ],
+            [
+              3643.5,
+              1.76,
+              6751.5
+            ],
+            [
+              3643.5,
+              1.67,
+              6752.0
+            ],
+            [
+              3644.0,
+              1.61,
+              6752.5
+            ],
+            [
+              3644.5,
+              1.6,
+              6753.0
+            ],
+            [
+              3645.0,
+              1.6,
+              6753.5
+            ],
+            [
+              3645.0,
+              1.6,
+              6759.0
+            ],
+            [
+              3647.5,
+              1.6,
+              6761.5
+            ],
+            [
+              3648.0,
+              1.62,
+              6762.0
+            ],
+            [
+              3648.5,
+              1.65,
+              6762.5
+            ],
+            [
+              3648.5,
+              1.67,
+              6763.5
+            ],
+            [
+              3648.5,
+              1.76,
+              6765.0
+            ],
+            [
+              3649.0,
+              1.78,
+              6765.5
+            ],
+            [
+              3649.5,
+              1.7,
+              6766.0
+            ],
+            [
+              3650.0,
+              1.54,
+              6766.5
+            ],
+            [
+              3650.5,
+              1.36,
+              6767.0
+            ],
+            [
+              3651.0,
+              1.22,
+              6767.5
+            ]
+          ],
+          "routeM": 51.33,
+          "steepestDeg": 24.0,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.teeth-of-sithis.idle-seat-t-bench-w-2": {
+          "points": [
+            [
+              3654.5,
+              4.44,
+              6731.0
+            ],
+            [
+              3654.0,
+              4.48,
+              6731.0
+            ],
+            [
+              3653.0,
+              4.54,
+              6731.0
+            ],
+            [
+              3652.5,
+              4.56,
+              6731.0
+            ],
+            [
+              3652.0,
+              4.61,
+              6731.0
+            ],
+            [
+              3651.5,
+              4.68,
+              6731.5
+            ],
+            [
+              3651.0,
+              4.82,
+              6731.5
+            ],
+            [
+              3650.5,
+              4.89,
+              6732.0
+            ],
+            [
+              3650.0,
+              4.96,
+              6732.0
+            ],
+            [
+              3649.5,
+              4.97,
+              6732.0
+            ],
+            [
+              3649.0,
+              4.97,
+              6732.0
+            ],
+            [
+              3648.5,
+              4.98,
+              6732.0
+            ],
+            [
+              3647.0,
+              4.95,
+              6732.0
+            ],
+            [
+              3646.5,
+              4.93,
+              6732.0
+            ],
+            [
+              3645.0,
+              4.69,
+              6732.0
+            ],
+            [
+              3644.5,
+              4.65,
+              6732.0
+            ],
+            [
+              3644.0,
+              4.76,
+              6732.5
+            ],
+            [
+              3643.5,
+              4.96,
+              6733.0
+            ],
+            [
+              3643.0,
+              4.92,
+              6733.5
+            ],
+            [
+              3642.5,
+              4.6,
+              6734.0
+            ],
+            [
+              3642.0,
+              4.34,
+              6734.5
+            ],
+            [
+              3642.0,
+              4.21,
+              6735.0
+            ],
+            [
+              3642.0,
+              4.07,
+              6735.5
+            ],
+            [
+              3642.0,
+              3.92,
+              6736.0
+            ],
+            [
+              3642.0,
+              3.76,
+              6736.5
+            ],
+            [
+              3642.0,
+              3.48,
+              6737.5
+            ],
+            [
+              3642.0,
+              3.36,
+              6738.0
+            ],
+            [
+              3642.0,
+              3.25,
+              6738.5
+            ],
+            [
+              3642.0,
+              3.15,
+              6739.0
+            ],
+            [
+              3642.0,
+              3.09,
+              6739.5
+            ],
+            [
+              3642.0,
+              3.04,
+              6740.0
+            ],
+            [
+              3642.0,
+              3.01,
+              6740.5
+            ],
+            [
+              3642.0,
+              3.0,
+              6741.0
+            ],
+            [
+              3642.0,
+              3.0,
+              6748.0
+            ],
+            [
+              3642.0,
+              2.96,
+              6748.5
+            ],
+            [
+              3642.0,
+              2.86,
+              6749.0
+            ],
+            [
+              3642.0,
+              2.7,
+              6749.5
+            ],
+            [
+              3642.0,
+              2.51,
+              6750.0
+            ],
+            [
+              3642.5,
+              2.25,
+              6750.5
+            ],
+            [
+              3643.0,
+              1.97,
+              6751.0
+            ],
+            [
+              3643.5,
+              1.76,
+              6751.5
+            ],
+            [
+              3643.5,
+              1.67,
+              6752.0
+            ],
+            [
+              3644.0,
+              1.61,
+              6752.5
+            ],
+            [
+              3644.5,
+              1.6,
+              6753.0
+            ],
+            [
+              3645.0,
+              1.6,
+              6753.5
+            ],
+            [
+              3645.0,
+              1.6,
+              6759.0
+            ],
+            [
+              3647.5,
+              1.6,
+              6761.5
+            ],
+            [
+              3648.0,
+              1.62,
+              6762.0
+            ],
+            [
+              3648.5,
+              1.65,
+              6762.5
+            ],
+            [
+              3648.5,
+              1.67,
+              6763.5
+            ],
+            [
+              3648.5,
+              1.76,
+              6765.0
+            ],
+            [
+              3649.0,
+              1.78,
+              6765.5
+            ],
+            [
+              3649.5,
+              1.7,
+              6766.0
+            ],
+            [
+              3650.0,
+              1.54,
+              6766.5
+            ],
+            [
+              3650.5,
+              1.36,
+              6767.0
+            ],
+            [
+              3651.0,
+              1.22,
+              6767.5
+            ]
+          ],
+          "routeM": 51.33,
+          "steepestDeg": 24.0,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.teeth-of-sithis.idle-seat-t-bench-e-1": {
+          "points": [
+            [
+              3654.5,
+              4.44,
+              6731.0
+            ],
+            [
+              3655.0,
+              4.39,
+              6731.0
+            ],
+            [
+              3656.0,
+              4.31,
+              6731.0
+            ],
+            [
+              3658.0,
+              4.11,
+              6731.0
+            ],
+            [
+              3658.5,
+              4.07,
+              6731.0
+            ],
+            [
+              3659.0,
+              4.02,
+              6731.0
+            ],
+            [
+              3659.5,
+              3.94,
+              6731.0
+            ],
+            [
+              3660.0,
+              3.82,
+              6731.0
+            ],
+            [
+              3660.5,
+              3.67,
+              6731.0
+            ],
+            [
+              3661.0,
+              3.49,
+              6731.0
+            ],
+            [
+              3661.5,
+              3.3,
+              6731.0
+            ],
+            [
+              3662.5,
+              2.9,
+              6731.0
+            ],
+            [
+              3663.0,
+              2.71,
+              6731.0
+            ],
+            [
+              3663.5,
+              2.53,
+              6731.0
+            ],
+            [
+              3664.0,
+              2.37,
+              6731.0
+            ],
+            [
+              3664.5,
+              2.25,
+              6731.0
+            ],
+            [
+              3665.0,
+              2.16,
+              6731.0
+            ],
+            [
+              3665.5,
+              2.1,
+              6731.0
+            ],
+            [
+              3666.0,
+              2.09,
+              6731.0
+            ],
+            [
+              3666.5,
+              2.09,
+              6731.0
+            ],
+            [
+              3667.0,
+              2.0,
+              6731.5
+            ],
+            [
+              3667.5,
+              1.93,
+              6732.0
+            ],
+            [
+              3668.0,
+              1.8,
+              6732.5
+            ],
+            [
+              3668.5,
+              1.8,
+              6733.0
+            ],
+            [
+              3668.5,
+              1.8,
+              6733.5
+            ],
+            [
+              3669.5,
+              1.8,
+              6734.5
+            ],
+            [
+              3669.5,
+              1.8,
+              6743.5
+            ],
+            [
+              3669.5,
+              1.81,
+              6744.0
+            ],
+            [
+              3669.5,
+              1.84,
+              6744.5
+            ],
+            [
+              3669.5,
+              1.93,
+              6745.0
+            ],
+            [
+              3669.5,
+              2.07,
+              6745.5
+            ],
+            [
+              3669.0,
+              2.3,
+              6746.0
+            ],
+            [
+              3668.5,
+              2.56,
+              6746.5
+            ],
+            [
+              3668.0,
+              2.76,
+              6747.0
+            ],
+            [
+              3668.0,
+              2.94,
+              6747.5
+            ],
+            [
+              3668.0,
+              3.1,
+              6748.0
+            ],
+            [
+              3668.0,
+              3.17,
+              6748.5
+            ],
+            [
+              3668.0,
+              3.06,
+              6749.0
+            ],
+            [
+              3667.5,
+              2.88,
+              6749.5
+            ],
+            [
+              3667.0,
+              2.69,
+              6750.0
+            ],
+            [
+              3666.5,
+              2.61,
+              6750.5
+            ],
+            [
+              3666.0,
+              2.48,
+              6751.0
+            ],
+            [
+              3666.0,
+              2.4,
+              6752.0
+            ],
+            [
+              3666.0,
+              2.25,
+              6753.5
+            ],
+            [
+              3665.5,
+              2.22,
+              6754.0
+            ],
+            [
+              3665.0,
+              2.04,
+              6754.5
+            ],
+            [
+              3664.5,
+              1.85,
+              6755.0
+            ],
+            [
+              3664.0,
+              1.65,
+              6755.5
+            ],
+            [
+              3663.5,
+              1.56,
+              6756.0
+            ],
+            [
+              3663.5,
+              1.44,
+              6757.0
+            ],
+            [
+              3663.0,
+              1.44,
+              6757.5
+            ],
+            [
+              3663.0,
+              1.32,
+              6758.5
+            ],
+            [
+              3663.0,
+              1.27,
+              6759.0
+            ],
+            [
+              3663.0,
+              1.21,
+              6759.5
+            ],
+            [
+              3662.5,
+              1.21,
+              6760.0
+            ],
+            [
+              3662.0,
+              1.22,
+              6760.5
+            ],
+            [
+              3661.5,
+              1.22,
+              6761.0
+            ],
+            [
+              3661.5,
+              1.2,
+              6761.5
+            ],
+            [
+              3661.5,
+              1.08,
+              6762.5
+            ],
+            [
+              3661.5,
+              1.01,
+              6763.0
+            ],
+            [
+              3661.5,
+              0.83,
+              6764.5
+            ],
+            [
+              3661.5,
+              0.78,
+              6765.0
+            ],
+            [
+              3661.5,
+              0.62,
+              6766.0
+            ],
+            [
+              3661.5,
+              0.56,
+              6766.5
+            ],
+            [
+              3661.5,
+              0.54,
+              6767.0
+            ],
+            [
+              3661.5,
+              0.5,
+              6767.5
+            ]
+          ],
+          "routeM": 53.83,
+          "steepestDeg": 21.6,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.teeth-of-sithis.idle-seat-t-bench-e-2": {
+          "points": [
+            [
+              3654.5,
+              4.44,
+              6731.0
+            ],
+            [
+              3655.0,
+              4.39,
+              6731.0
+            ],
+            [
+              3656.0,
+              4.31,
+              6731.0
+            ],
+            [
+              3658.0,
+              4.11,
+              6731.0
+            ],
+            [
+              3658.5,
+              4.07,
+              6731.0
+            ],
+            [
+              3659.0,
+              4.02,
+              6731.0
+            ],
+            [
+              3659.5,
+              3.94,
+              6731.0
+            ],
+            [
+              3660.0,
+              3.82,
+              6731.0
+            ],
+            [
+              3660.5,
+              3.67,
+              6731.0
+            ],
+            [
+              3661.0,
+              3.49,
+              6731.0
+            ],
+            [
+              3661.5,
+              3.3,
+              6731.0
+            ],
+            [
+              3662.5,
+              2.9,
+              6731.0
+            ],
+            [
+              3663.0,
+              2.71,
+              6731.0
+            ],
+            [
+              3663.5,
+              2.53,
+              6731.0
+            ],
+            [
+              3664.0,
+              2.37,
+              6731.0
+            ],
+            [
+              3664.5,
+              2.25,
+              6731.0
+            ],
+            [
+              3665.0,
+              2.16,
+              6731.0
+            ],
+            [
+              3665.5,
+              2.1,
+              6731.0
+            ],
+            [
+              3666.0,
+              2.09,
+              6731.0
+            ],
+            [
+              3666.5,
+              2.09,
+              6731.0
+            ],
+            [
+              3667.0,
+              2.0,
+              6731.5
+            ],
+            [
+              3667.5,
+              1.93,
+              6732.0
+            ],
+            [
+              3668.0,
+              1.8,
+              6732.5
+            ],
+            [
+              3668.5,
+              1.8,
+              6733.0
+            ],
+            [
+              3668.5,
+              1.8,
+              6733.5
+            ],
+            [
+              3669.5,
+              1.8,
+              6734.5
+            ],
+            [
+              3669.5,
+              1.8,
+              6743.5
+            ],
+            [
+              3669.5,
+              1.81,
+              6744.0
+            ],
+            [
+              3669.5,
+              1.84,
+              6744.5
+            ],
+            [
+              3669.5,
+              1.93,
+              6745.0
+            ],
+            [
+              3669.5,
+              2.07,
+              6745.5
+            ],
+            [
+              3669.0,
+              2.3,
+              6746.0
+            ],
+            [
+              3668.5,
+              2.56,
+              6746.5
+            ],
+            [
+              3668.0,
+              2.76,
+              6747.0
+            ],
+            [
+              3668.0,
+              2.94,
+              6747.5
+            ],
+            [
+              3668.0,
+              3.1,
+              6748.0
+            ],
+            [
+              3668.0,
+              3.17,
+              6748.5
+            ],
+            [
+              3668.0,
+              3.06,
+              6749.0
+            ],
+            [
+              3667.5,
+              2.88,
+              6749.5
+            ],
+            [
+              3667.0,
+              2.69,
+              6750.0
+            ],
+            [
+              3666.5,
+              2.61,
+              6750.5
+            ],
+            [
+              3666.0,
+              2.48,
+              6751.0
+            ],
+            [
+              3666.0,
+              2.4,
+              6752.0
+            ],
+            [
+              3666.0,
+              2.25,
+              6753.5
+            ],
+            [
+              3665.5,
+              2.22,
+              6754.0
+            ],
+            [
+              3665.0,
+              2.04,
+              6754.5
+            ],
+            [
+              3664.5,
+              1.85,
+              6755.0
+            ],
+            [
+              3664.0,
+              1.65,
+              6755.5
+            ],
+            [
+              3663.5,
+              1.56,
+              6756.0
+            ],
+            [
+              3663.5,
+              1.44,
+              6757.0
+            ],
+            [
+              3663.0,
+              1.44,
+              6757.5
+            ],
+            [
+              3663.0,
+              1.32,
+              6758.5
+            ],
+            [
+              3663.0,
+              1.27,
+              6759.0
+            ],
+            [
+              3663.0,
+              1.21,
+              6759.5
+            ],
+            [
+              3662.5,
+              1.21,
+              6760.0
+            ],
+            [
+              3662.0,
+              1.22,
+              6760.5
+            ],
+            [
+              3661.5,
+              1.22,
+              6761.0
+            ],
+            [
+              3661.5,
+              1.2,
+              6761.5
+            ],
+            [
+              3661.5,
+              1.08,
+              6762.5
+            ],
+            [
+              3661.5,
+              1.01,
+              6763.0
+            ],
+            [
+              3661.5,
+              0.83,
+              6764.5
+            ],
+            [
+              3661.5,
+              0.78,
+              6765.0
+            ],
+            [
+              3661.5,
+              0.62,
+              6766.0
+            ],
+            [
+              3661.5,
+              0.56,
+              6766.5
+            ],
+            [
+              3661.5,
+              0.54,
+              6767.0
+            ],
+            [
+              3661.5,
+              0.5,
+              6767.5
+            ]
+          ],
+          "routeM": 53.83,
+          "steepestDeg": 21.6,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.teeth-of-sithis.idle-priest-last-bend": {
+          "points": [
+            [
+              3654.5,
+              4.44,
+              6731.0
+            ],
+            [
+              3654.0,
+              4.48,
+              6731.0
+            ],
+            [
+              3653.0,
+              4.54,
+              6731.0
+            ],
+            [
+              3652.5,
+              4.56,
+              6731.0
+            ],
+            [
+              3652.0,
+              4.61,
+              6731.0
+            ],
+            [
+              3651.5,
+              4.68,
+              6731.5
+            ],
+            [
+              3651.0,
+              4.82,
+              6731.5
+            ],
+            [
+              3650.5,
+              4.89,
+              6732.0
+            ],
+            [
+              3650.0,
+              4.96,
+              6732.0
+            ],
+            [
+              3649.5,
+              4.97,
+              6732.0
+            ],
+            [
+              3649.0,
+              4.97,
+              6732.0
+            ],
+            [
+              3648.5,
+              4.98,
+              6732.0
+            ],
+            [
+              3647.0,
+              4.95,
+              6732.0
+            ],
+            [
+              3646.5,
+              4.93,
+              6732.0
+            ],
+            [
+              3645.0,
+              4.69,
+              6732.0
+            ],
+            [
+              3644.5,
+              4.65,
+              6732.0
+            ],
+            [
+              3644.0,
+              4.76,
+              6732.5
+            ],
+            [
+              3643.5,
+              4.96,
+              6733.0
+            ],
+            [
+              3643.0,
+              4.92,
+              6733.5
+            ],
+            [
+              3642.5,
+              4.6,
+              6734.0
+            ],
+            [
+              3642.0,
+              4.34,
+              6734.5
+            ],
+            [
+              3642.0,
+              4.21,
+              6735.0
+            ],
+            [
+              3642.0,
+              4.07,
+              6735.5
+            ],
+            [
+              3642.0,
+              3.92,
+              6736.0
+            ],
+            [
+              3642.0,
+              3.76,
+              6736.5
+            ],
+            [
+              3642.0,
+              3.48,
+              6737.5
+            ],
+            [
+              3642.0,
+              3.36,
+              6738.0
+            ],
+            [
+              3642.0,
+              3.25,
+              6738.5
+            ],
+            [
+              3642.0,
+              3.15,
+              6739.0
+            ],
+            [
+              3642.0,
+              3.09,
+              6739.5
+            ],
+            [
+              3642.0,
+              3.04,
+              6740.0
+            ],
+            [
+              3642.0,
+              3.01,
+              6740.5
+            ],
+            [
+              3642.0,
+              3.0,
+              6741.0
+            ],
+            [
+              3642.0,
+              3.0,
+              6748.0
+            ],
+            [
+              3642.0,
+              2.96,
+              6748.5
+            ],
+            [
+              3642.0,
+              2.86,
+              6749.0
+            ],
+            [
+              3642.0,
+              2.7,
+              6749.5
+            ],
+            [
+              3642.0,
+              2.51,
+              6750.0
+            ],
+            [
+              3642.5,
+              2.25,
+              6750.5
+            ],
+            [
+              3643.0,
+              1.97,
+              6751.0
+            ],
+            [
+              3643.0,
+              1.8,
+              6751.5
+            ],
+            [
+              3643.0,
+              1.69,
+              6752.0
+            ],
+            [
+              3643.0,
+              1.63,
+              6752.5
+            ],
+            [
+              3643.0,
+              1.6,
+              6753.0
+            ],
+            [
+              3643.0,
+              1.6,
+              6763.0
+            ],
+            [
+              3643.0,
+              1.63,
+              6763.5
+            ],
+            [
+              3643.0,
+              1.69,
+              6764.0
+            ],
+            [
+              3643.0,
+              1.8,
+              6764.5
+            ],
+            [
+              3643.0,
+              1.97,
+              6765.0
+            ],
+            [
+              3642.5,
+              2.25,
+              6765.5
+            ],
+            [
+              3642.0,
+              2.51,
+              6766.0
+            ],
+            [
+              3642.0,
+              2.7,
+              6766.5
+            ],
+            [
+              3642.0,
+              2.86,
+              6767.0
+            ],
+            [
+              3642.0,
+              2.96,
+              6767.5
+            ],
+            [
+              3642.0,
+              3.0,
+              6768.0
+            ],
+            [
+              3642.0,
+              3.0,
+              6769.0
+            ],
+            [
+              3642.0,
+              2.98,
+              6769.5
+            ],
+            [
+              3642.0,
+              2.93,
+              6770.0
+            ],
+            [
+              3642.0,
+              2.85,
+              6770.5
+            ],
+            [
+              3642.0,
+              2.74,
+              6771.0
+            ],
+            [
+              3641.5,
+              3.11,
+              6771.5
+            ],
+            [
+              3641.0,
+              3.35,
+              6772.0
+            ],
+            [
+              3640.5,
+              3.44,
+              6772.5
+            ],
+            [
+              3640.0,
+              3.39,
+              6773.0
+            ],
+            [
+              3639.5,
+              3.22,
+              6773.5
+            ],
+            [
+              3639.0,
+              2.94,
+              6774.0
+            ],
+            [
+              3638.5,
+              2.59,
+              6774.5
+            ],
+            [
+              3637.5,
+              1.79,
+              6775.5
+            ],
+            [
+              3637.0,
+              1.43,
+              6776.0
+            ],
+            [
+              3636.5,
+              1.21,
+              6776.5
+            ],
+            [
+              3636.0,
+              1.17,
+              6777.0
+            ],
+            [
+              3635.5,
+              1.19,
+              6777.0
+            ],
+            [
+              3635.0,
+              1.16,
+              6777.0
+            ],
+            [
+              3634.5,
+              1.12,
+              6777.0
+            ],
+            [
+              3634.0,
+              1.09,
+              6777.5
+            ],
+            [
+              3631.5,
+              1.19,
+              6777.5
+            ],
+            [
+              3631.0,
+              1.2,
+              6777.5
+            ],
+            [
+              3630.5,
+              1.22,
+              6777.5
+            ],
+            [
+              3628.5,
+              1.26,
+              6777.5
+            ],
+            [
+              3626.5,
+              1.26,
+              6777.5
+            ],
+            [
+              3626.0,
+              1.25,
+              6777.5
+            ],
+            [
+              3625.5,
+              1.25,
+              6777.5
+            ],
+            [
+              3625.0,
+              1.24,
+              6777.5
+            ],
+            [
+              3624.5,
+              1.21,
+              6778.0
+            ],
+            [
+              3623.0,
+              1.18,
+              6779.5
+            ],
+            [
+              3622.0,
+              1.14,
+              6780.5
+            ],
+            [
+              3621.5,
+              1.13,
+              6781.0
+            ],
+            [
+              3621.0,
+              1.11,
+              6781.5
+            ],
+            [
+              3620.0,
+              0.99,
+              6782.5
+            ],
+            [
+              3619.0,
+              0.89,
+              6783.5
+            ],
+            [
+              3617.0,
+              0.93,
+              6783.5
+            ],
+            [
+              3615.5,
+              0.81,
+              6785.0
+            ],
+            [
+              3614.0,
+              0.72,
+              6786.5
+            ],
+            [
+              3613.5,
+              0.7,
+              6787.0
+            ],
+            [
+              3613.0,
+              0.69,
+              6787.5
+            ],
+            [
+              3612.5,
+              0.69,
+              6788.0
+            ],
+            [
+              3612.0,
+              0.68,
+              6788.5
+            ],
+            [
+              3610.5,
+              0.68,
+              6790.0
+            ],
+            [
+              3610.0,
+              0.69,
+              6790.5
+            ],
+            [
+              3609.0,
+              0.65,
+              6791.5
+            ],
+            [
+              3608.5,
+              0.64,
+              6792.0
+            ],
+            [
+              3608.0,
+              0.64,
+              6792.5
+            ],
+            [
+              3606.5,
+              0.76,
+              6794.0
+            ],
+            [
+              3606.0,
+              0.75,
+              6794.5
+            ],
+            [
+              3605.5,
+              0.71,
+              6795.0
+            ],
+            [
+              3604.5,
+              0.65,
+              6796.0
+            ],
+            [
+              3604.0,
+              0.61,
+              6796.5
+            ],
+            [
+              3603.5,
+              0.58,
+              6797.0
+            ],
+            [
+              3603.0,
+              0.54,
+              6797.5
+            ],
+            [
+              3602.5,
+              0.51,
+              6798.0
+            ],
+            [
+              3602.0,
+              0.47,
+              6798.5
+            ],
+            [
+              3601.5,
+              0.44,
+              6799.0
+            ],
+            [
+              3601.0,
+              0.4,
+              6799.5
+            ]
+          ],
+          "routeM": 105.57,
+          "steepestDeg": 29.9,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        }
+      }
+    }
+  }
+}

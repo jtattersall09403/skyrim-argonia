@@ -1,0 +1,60 @@
+{
+ "schemaVersion": 1,
+ "about": "The words on every placed sign: the home table (standard 18) a sign socket's textKey names (decision 0103 decision 5; 16k walk 12). One row per sign: textKey text.sign.<place slug>.<socket slug>, placeId, the text as the player reads it, and a note saying what the sign is and where it stands. `python3 -m worldgen.place_text --emit-text` writes the rows into packages/text-catalogue/src/generated/sign-text.ts; a waymark's arms read their place and route names and need no row. Write against docs/standards/text/style-guide.md and run the text-review skill before commit.",
+ "signs": [
+  {
+   "textKey": "text.sign.helstrom.rootworm-station",
+   "placeId": "place.hist-heartland.helstrom",
+   "text": "Rootworm station, Helstrom. The Waykeepers keep this line. Board only when a Waykeeper says so. Rootworms run north to Stormhold, east to the estuary station and down to Dead Water.",
+   "note": "A board at the head of the ramp into the Rootworm bowl, above the drilled tunnel mouth where travellers drop to the boarding cavern."
+  },
+  {
+   "textKey": "text.sign.chasepoint.stage",
+   "placeId": "place.mercantile-coast.chasepoint",
+   "text": "Chasepoint Stage. Built by the Legion for the coast road, east of Soulrest. No keeper has been paid for two hundred years. Salvage is sold at the stall.",
+   "note": "A blackwood board hanging from the salvage stall's post beside the old Imperial road stage at Chasepoint."
+  },
+  {
+   "textKey": "text.sign.naga-highway-camp-active-north.tally",
+   "placeId": "place.naga-kur-deeps.naga-highway-camp-active-north",
+   "text": "North Cut toll. Every carter pays at the tower. The lieutenant chalks each paid toll here. The band takes the goods of any cart that has not paid.",
+   "note": "The tally board hung under the watch tower's platform at the Naga camp on the north road, where the lieutenant chalks each toll that has been paid."
+  },
+  {
+   "textKey": "text.sign.the-wamasu-shrine.carving",
+   "placeId": "place.dunmer-north.the-wamasu-shrine",
+   "text": "Haynekhtnamet keeps this pond. Lay a gift on the shelf before you pray. Then the water stays in its bed. The four villages take turns, one each wet season. Take nothing from the shelf, or Haynekhtnamet comes up out of the pond.",
+   "note": "Words cut into the landward face of the offering shelf at the Wamasu Shrine, for the villagers who carry the offering up the bank."
+  },
+  {
+   "textKey": "text.sign.opening-work-camp.rest",
+   "placeId": "place.pirate-freeholds.opening-work-camp",
+   "text": "Dry floor under the west shed. A stranger may sleep here.",
+   "note": "A blackwood board on its post by the open side of the west sleeping shed at Gang Ground."
+  },
+  {
+   "textKey": "text.sign.greenspring.lodge",
+   "placeId": "place.hist-heartland.greenspring",
+   "text": "Lodge. A mat for anyone on the road. Goods bought and sold at the door.",
+   "note": "A standing notice board beside the door of the domed lodge at Greenspring."
+  },
+  {
+   "textKey": "text.sign.upriver-hist-village.elder-lodging",
+   "placeId": "place.pirate-freeholds.upriver-hist-village",
+   "text": "The elder's house. A stranger from downriver is given a bed.",
+   "note": "A blackwood board hung from the eave of the elder's house at Nine Bends, beside its door."
+  },
+  {
+   "textKey": "text.sign.upriver-hist-village.trade-house",
+   "placeId": "place.pirate-freeholds.upriver-hist-village",
+   "text": "Trade house. Cut cane, cord and smoked fish, sold and bartered at the door.",
+   "note": "A blackwood board hung from the trade house at Nine Bends, beside its door."
+  },
+  {
+   "textKey": "text.sign.voriplasm-vault.sealing-note",
+   "placeId": "place.imperial-penal-south.voriplasm-vault",
+   "text": "By order of the Legion, this vault was sealed. Voriplasm was shut in below. The seal has since been broken.",
+   "note": "A plank board nailed across the vault door at the top of its short stair in the sunken court, left by the Imperial party that sealed it."
+  }
+ ]
+}

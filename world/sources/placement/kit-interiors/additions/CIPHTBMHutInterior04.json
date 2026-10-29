@@ -1,0 +1,46 @@
+{
+ "schemaVersion": 2,
+ "cellId": "CIPHTBMHutInterior04",
+ "additions": [
+  {
+   "id": "CIPHTBMHutInterior04:add:door-townlantern04-01",
+   "assetId": "kotm:argonia/clutter/townlantern04",
+   "pos": [-1.9, 0.086, -0.8],
+   "rotZDeg": 0,
+   "zone": "door",
+   "why": "Lights the floor inside the door."
+  },
+  {
+   "id": "CIPHTBMHutInterior04:add:store-argoniancandle-01",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [-1.9, 0.086, 0.7],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Lights the stores along the west wall."
+  },
+  {
+   "id": "CIPHTBMHutInterior04:add:work-argoniancandle-01",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [0.6, 0.086, -1.6],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the work corner by the front wall."
+  },
+  {
+   "id": "CIPHTBMHutInterior04:add:hearth-townlantern04-01",
+   "assetId": "kotm:argonia/clutter/townlantern04",
+   "pos": [0.9, 0.091, 0.3],
+   "rotZDeg": 0,
+   "zone": "hearth",
+   "why": "Lights the middle of the room."
+  },
+  {
+   "id": "CIPHTBMHutInterior04:add:table-argoniancandle-01",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [1.1, 0.091, 1.0],
+   "rotZDeg": 0,
+   "zone": "table",
+   "why": "Lights the back of the room."
+  }
+ ]
+}

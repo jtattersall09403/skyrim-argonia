@@ -1,0 +1,7890 @@
+{
+  "schemaVersion": 1,
+  "blueprint": {
+    "id": "place.mercantile-coast.lighter-flotilla",
+    "seed": "place.mercantile-coast.lighter-flotilla",
+    "causalModel": {
+      "founding": "Lilmoth stands on firm ground near shallow water. Large ships cannot dock at Lilmoth. Lighter crews carry goods ashore from the large ships. The lighter crews live aboard at permanent moorings. The moorings lie beside the lighter quay, on the way out to the anchorage.",
+      "siteAdvantages": "The moorings are a permanent moored ground in sheltered water. The site lies about 460 m from Lilmoth. The site lies outside the tariff line.",
+      "occupantsMotive": "The crews control the link between deep-water hulls and the city. The crews know what that link is worth.",
+      "pressures": "The council tried to license lightering. The attempt caused a two-week stoppage. Neither the council nor the crews want to repeat it.",
+      "wouldChangeIf": "A dredged deep-water channel would end the flotilla. It would also end the city's hold on its own trade."
+    },
+    "boundary": [
+      [
+        0.529509394,
+        0.859866327
+      ],
+      [
+        0.524974873,
+        0.859965346
+      ],
+      [
+        0.519644634,
+        0.860377788
+      ],
+      [
+        0.518691971,
+        0.86046292
+      ],
+      [
+        0.517817429,
+        0.861408512
+      ],
+      [
+        0.517817376,
+        0.862628757
+      ],
+      [
+        0.5168,
+        0.8628
+      ],
+      [
+        0.5168,
+        0.8672
+      ],
+      [
+        0.5185,
+        0.8672
+      ],
+      [
+        0.518968787,
+        0.863996101
+      ],
+      [
+        0.524131442,
+        0.865499387
+      ],
+      [
+        0.524370879,
+        0.865505485
+      ],
+      [
+        0.525255979,
+        0.865506001
+      ],
+      [
+        0.528514792,
+        0.865185947
+      ],
+      [
+        0.52881987,
+        0.865151625
+      ],
+      [
+        0.529243244,
+        0.86506282
+      ],
+      [
+        0.529650008,
+        0.864939478
+      ],
+      [
+        0.530461095,
+        0.864538899
+      ],
+      [
+        0.53198188,
+        0.862453232
+      ],
+      [
+        0.532205973,
+        0.861108345
+      ],
+      [
+        0.53136075,
+        0.860450988
+      ],
+      [
+        0.531163176,
+        0.860328171
+      ],
+      [
+        0.530929824,
+        0.860216043
+      ],
+      [
+        0.530865307,
+        0.860190235
+      ],
+      [
+        0.530641572,
+        0.86010074
+      ],
+      [
+        0.529742648,
+        0.859866327
+      ]
+    ],
+    "districts": [
+      {
+        "id": "district.lighter-flotilla.lighter-flotilla",
+        "kind": "settlement",
+        "cultureKit": "argonian-plank",
+        "wealth": "modest",
+        "boundary": [
+          [
+            0.5168,
+            0.865485206
+          ],
+          [
+            0.5168,
+            0.8672
+          ],
+          [
+            0.518304347,
+            0.8672
+          ],
+          [
+            0.518508949,
+            0.86713884
+          ],
+          [
+            0.518968787,
+            0.863996101
+          ],
+          [
+            0.52406158,
+            0.865479044
+          ],
+          [
+            0.528995687,
+            0.864004138
+          ],
+          [
+            0.529249673,
+            0.863927122
+          ],
+          [
+            0.529685216,
+            0.863712017
+          ],
+          [
+            0.530534636,
+            0.862971159
+          ],
+          [
+            0.530681355,
+            0.862812528
+          ],
+          [
+            0.530909181,
+            0.861424886
+          ],
+          [
+            0.530619992,
+            0.861199975
+          ],
+          [
+            0.530520681,
+            0.861138241
+          ],
+          [
+            0.530373278,
+            0.861067412
+          ],
+          [
+            0.530342731,
+            0.861055193
+          ],
+          [
+            0.53018226,
+            0.860991004
+          ],
+          [
+            0.529483894,
+            0.86080889
+          ],
+          [
+            0.529392594,
+            0.86080889
+          ],
+          [
+            0.525019608,
+            0.861050093
+          ],
+          [
+            0.519734773,
+            0.861459022
+          ],
+          [
+            0.519411983,
+            0.861487867
+          ],
+          [
+            0.518808798,
+            0.861543775
+          ],
+          [
+            0.518143447,
+            0.862263969
+          ],
+          [
+            0.517906958,
+            0.862742698
+          ],
+          [
+            0.517890207,
+            0.862784168
+          ]
+        ],
+        "notes": "",
+        "why": {
+          "what": "Five working hulls are moored bow-in along the south side of a timber pier. Four plank-ferry rafts are moored singly along its north side.",
+          "whyHere": "Deep water lies close under the lagoon shore here. The site lies below the Lilmoth road.",
+          "whyNeighbours": "The road to Lilmoth passes on the bank. The anchorage lies out on the open water.",
+          "playerPurpose": "A traveller can hire a lighter to the anchorage here. Work, trade and a place to sleep are available at the flotilla.",
+          "microGeography": "A flat bank lies at water level. Beyond the bank, 1.6 to 2.3 m of water lies under the hulls."
+        },
+        "routing": "straight"
+      }
+    ],
+    "parcels": [
+      {
+        "id": "parcel.lighter-flotilla.hull-n00",
+        "districtId": "district.lighter-flotilla.lighter-flotilla",
+        "use": "dwelling",
+        "buildingFamily": "sailboats-sailboatfurled",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "Each hull is moored bow-in to the pier. The crew steps off the bow onto the pier.",
+        "why": {
+          "what": "The hull is a lighter crew's working boat. The hull is moored for good and is the home of its crew.",
+          "whyHere": "The crews live where the work is. The work lies between the anchorage and the road.",
+          "whySpot": "The hull lies in the row along the south side of the pier, where the water is deepest.",
+          "whyNeighbours": "The hull is moored beside the other crew boats. The hulls lie as close as their shapes allow.",
+          "playerPurpose": "The hull adds ambience. The crews who work the lighters live here.",
+          "microGeography": "Deep water lies under the hull. The pier lies off the bow."
+        },
+        "assetRef": "sailboats:sailboats/sailboatfurled",
+        "centreUV": [
+          0.528705029,
+          0.861788072
+        ],
+        "yawDeg": 270.0,
+        "yMeasured": -0.307,
+        "footprint": [
+          [
+            0.528538216,
+            0.861975229
+          ],
+          [
+            0.528429719,
+            0.861952173
+          ],
+          [
+            0.528393101,
+            0.861935899
+          ],
+          [
+            0.528352415,
+            0.861912843
+          ],
+          [
+            0.528311729,
+            0.861876225
+          ],
+          [
+            0.528309017,
+            0.861872157
+          ],
+          [
+            0.528266974,
+            0.86181384
+          ],
+          [
+            0.528258837,
+            0.861797565
+          ],
+          [
+            0.528258837,
+            0.861778579
+          ],
+          [
+            0.528322579,
+            0.861683644
+          ],
+          [
+            0.528337497,
+            0.861663301
+          ],
+          [
+            0.528429719,
+            0.861623971
+          ],
+          [
+            0.528474474,
+            0.861615834
+          ],
+          [
+            0.528557202,
+            0.861607696
+          ],
+          [
+            0.52860467,
+            0.861604984
+          ],
+          [
+            0.528650781,
+            0.861603628
+          ],
+          [
+            0.52880132,
+            0.861604984
+          ],
+          [
+            0.528950502,
+            0.861626683
+          ],
+          [
+            0.5290156,
+            0.861657876
+          ],
+          [
+            0.529019669,
+            0.861660589
+          ],
+          [
+            0.5290373,
+            0.861672794
+          ],
+          [
+            0.529056287,
+            0.861686356
+          ],
+          [
+            0.529107822,
+            0.861727043
+          ],
+          [
+            0.529139015,
+            0.861782647
+          ],
+          [
+            0.529139015,
+            0.861793497
+          ],
+          [
+            0.529107822,
+            0.861849101
+          ],
+          [
+            0.529056287,
+            0.861889788
+          ],
+          [
+            0.5290373,
+            0.86190335
+          ],
+          [
+            0.529019669,
+            0.861915555
+          ],
+          [
+            0.5290156,
+            0.861918268
+          ],
+          [
+            0.528950502,
+            0.861949461
+          ],
+          [
+            0.52880132,
+            0.86197116
+          ],
+          [
+            0.528667055,
+            0.861973872
+          ]
+        ],
+        "motion": {
+          "kind": "buoyant",
+          "massKg": 1500,
+          "draughtM": 0.4,
+          "linDamp": 0.8,
+          "angDamp": 1.5,
+          "tether": {
+            "to": "h-n00-rope-post",
+            "lengthM": 3.168
+          }
+        },
+        "assembly": [
+          {
+            "id": "h-n00-rope-post",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+            "atM": [
+              -2.5588,
+              0.4237
+            ],
+            "yaw": 151.081,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "pier-sol9",
+              "unmined": "reader-approved r4"
+            },
+            "scale": 0.75,
+            "yMeasured": 0.32
+          }
+        ]
+      },
+      {
+        "id": "parcel.lighter-flotilla.hull-n01",
+        "districtId": "district.lighter-flotilla.lighter-flotilla",
+        "use": "dwelling",
+        "buildingFamily": "sailboats-longboatfurled",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "Each hull is moored bow-in to the pier. The crew steps off the bow onto the pier.",
+        "why": {
+          "what": "The hull is a lighter crew's working boat. The hull is moored for good and is the home of its crew.",
+          "whyHere": "The crews live where the work is. The work lies between the anchorage and the road.",
+          "whySpot": "The hull lies in the row along the south side of the pier, where the water is deepest.",
+          "whyNeighbours": "The hull is moored beside the other crew boats. The hulls lie as close as their shapes allow.",
+          "playerPurpose": "The hull adds ambience. The crews who work the lighters live here.",
+          "microGeography": "Deep water lies under the hull. The pier lies off the bow."
+        },
+        "assetRef": "ferries:yamadori/ferries/volkihar_ferry_01",
+        "centreUV": [
+          0.525096163,
+          0.863255487
+        ],
+        "yawDeg": 173.0,
+        "yMeasured": -0.364,
+        "footprint": [
+          [
+            0.525367018,
+            0.862935288
+          ],
+          [
+            0.52536768,
+            0.862940672
+          ],
+          [
+            0.525285767,
+            0.863553309
+          ],
+          [
+            0.525250317,
+            0.863687469
+          ],
+          [
+            0.525246585,
+            0.863701591
+          ],
+          [
+            0.525209506,
+            0.863811356
+          ],
+          [
+            0.525184661,
+            0.863864963
+          ],
+          [
+            0.525176726,
+            0.863878234
+          ],
+          [
+            0.525168484,
+            0.86387788
+          ],
+          [
+            0.525157739,
+            0.863868268
+          ],
+          [
+            0.525058958,
+            0.86373146
+          ],
+          [
+            0.524994631,
+            0.863608185
+          ],
+          [
+            0.524971702,
+            0.863554978
+          ],
+          [
+            0.524946836,
+            0.86346375
+          ],
+          [
+            0.524927827,
+            0.863386834
+          ],
+          [
+            0.524912644,
+            0.863329943
+          ],
+          [
+            0.524901524,
+            0.863183738
+          ],
+          [
+            0.524901052,
+            0.863168766
+          ],
+          [
+            0.524899001,
+            0.863029646
+          ],
+          [
+            0.524906559,
+            0.862957665
+          ],
+          [
+            0.524963266,
+            0.862718416
+          ],
+          [
+            0.525002896,
+            0.86259604
+          ],
+          [
+            0.525028471,
+            0.8625929
+          ],
+          [
+            0.525365011,
+            0.862930069
+          ],
+          [
+            0.525366853,
+            0.862933942
+          ]
+        ],
+        "motion": {
+          "kind": "buoyant",
+          "massKg": 1500,
+          "draughtM": 0.4,
+          "linDamp": 0.8,
+          "angDamp": 1.5,
+          "tether": {
+            "to": "h-n01-rope-post",
+            "lengthM": 6.549
+          }
+        },
+        "assembly": [
+          {
+            "id": "h-n01-rope-post",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+            "atM": [
+              -0.9599,
+              5.9335
+            ],
+            "yaw": 135.023,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "pier-sol5",
+              "unmined": "reader-approved r4"
+            },
+            "scale": 0.75,
+            "yMeasured": 0.32
+          }
+        ]
+      },
+      {
+        "id": "parcel.lighter-flotilla.hull-n02",
+        "districtId": "district.lighter-flotilla.lighter-flotilla",
+        "use": "dwelling",
+        "buildingFamily": "sailboats-sailboat",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "Each hull is moored bow-in to the pier. The crew steps off the bow onto the pier.",
+        "why": {
+          "what": "The hull is the flotilla speaker's boat and the largest of the crew boats. Its cabin is where the crews meet.",
+          "whyHere": "The crews live where the work is. The work lies between the anchorage and the road.",
+          "whySpot": "The hull lies in the row along the south side of the pier, where the water is deepest.",
+          "whyNeighbours": "The hull is moored beside the other crew boats. The hulls lie as close as their shapes allow.",
+          "playerPurpose": "The flotilla speaker lives here. Work and quarrels among the crews come to this boat.",
+          "microGeography": "Deep water lies under the hull. The pier lies off the bow."
+        },
+        "assetRef": "ferries:yamadori/ferries/river_ferry_rift_01",
+        "centreUV": [
+          0.526221814,
+          0.863170996
+        ],
+        "yawDeg": 180.0,
+        "yMeasured": 0.107,
+        "footprint": [
+          [
+            0.526539166,
+            0.863651093
+          ],
+          [
+            0.52653781,
+            0.863724328
+          ],
+          [
+            0.526486274,
+            0.863746028
+          ],
+          [
+            0.525957354,
+            0.863746028
+          ],
+          [
+            0.525915311,
+            0.863724328
+          ],
+          [
+            0.52590853,
+            0.863377139
+          ],
+          [
+            0.52590853,
+            0.863377139
+          ],
+          [
+            0.52590853,
+            0.863307973
+          ],
+          [
+            0.525909886,
+            0.862758709
+          ],
+          [
+            0.525911243,
+            0.862690899
+          ],
+          [
+            0.525915311,
+            0.862617664
+          ],
+          [
+            0.525957354,
+            0.862595964
+          ],
+          [
+            0.526486274,
+            0.862595964
+          ],
+          [
+            0.526526961,
+            0.862617664
+          ],
+          [
+            0.526536454,
+            0.863238806
+          ],
+          [
+            0.526539166,
+            0.863651093
+          ]
+        ],
+        "motion": {
+          "kind": "buoyant",
+          "massKg": 1500,
+          "draughtM": 0.4,
+          "linDamp": 0.8,
+          "angDamp": 1.5,
+          "tether": {
+            "to": "h-n02-rope-post",
+            "lengthM": 5.789
+          }
+        },
+        "playerPurpose": [
+          {
+            "kind": "quest-giver",
+            "tier": "medium",
+            "note": "The flotilla speaker hires and settles disputes here.",
+            "socketRef": "socket.lighter-flotilla.q-post-hire"
+          }
+        ],
+        "assembly": [
+          {
+            "id": "h-n02-rope-post",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+            "atM": [
+              0.7606,
+              5.2298
+            ],
+            "yaw": 95.577,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "pier-sol6",
+              "unmined": "reader-approved r4"
+            },
+            "scale": 0.75,
+            "yMeasured": 0.32
+          },
+          {
+            "id": "h-n02-tally-crate",
+            "asset": "vanilla:clutter/common/cratesmall02",
+            "atM": [
+              0.4,
+              -3.303
+            ],
+            "yaw": 270.0,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "h-n02",
+              "unmined": "reader-approved r1"
+            },
+            "upM": 1.03
+          }
+        ]
+      },
+      {
+        "id": "parcel.lighter-flotilla.hull-s00",
+        "districtId": "district.lighter-flotilla.lighter-flotilla",
+        "use": "dwelling",
+        "buildingFamily": "sailboats-sailboat",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "Each hull is moored bow-in to the pier. The crew steps off the bow onto the pier.",
+        "why": {
+          "what": "The hull is a lighter crew's working boat. The hull is moored for good and is the home of its crew.",
+          "whyHere": "The crews live where the work is. The work lies between the anchorage and the road.",
+          "whySpot": "The hull lies in the row along the south side of the pier, where the water is deepest.",
+          "whyNeighbours": "The hull is moored beside the other crew boats. The hulls lie as close as their shapes allow.",
+          "playerPurpose": "The hull adds ambience. The crews who work the lighters live here.",
+          "microGeography": "Deep water lies under the hull. The pier lies off the bow."
+        },
+        "assetRef": "sailboats:sailboats/longboatfurled",
+        "centreUV": [
+          0.524296001,
+          0.863194458
+        ],
+        "yawDeg": 172.0,
+        "yMeasured": -0.186,
+        "footprint": [
+          [
+            0.524496668,
+            0.863258015
+          ],
+          [
+            0.524504951,
+            0.863326697
+          ],
+          [
+            0.524507594,
+            0.863345499
+          ],
+          [
+            0.524511659,
+            0.863413405
+          ],
+          [
+            0.524511616,
+            0.863432584
+          ],
+          [
+            0.524503427,
+            0.863491256
+          ],
+          [
+            0.524499354,
+            0.863511001
+          ],
+          [
+            0.524495471,
+            0.86353209
+          ],
+          [
+            0.524484429,
+            0.863580206
+          ],
+          [
+            0.524470868,
+            0.863639633
+          ],
+          [
+            0.524461191,
+            0.86367797
+          ],
+          [
+            0.524401097,
+            0.863874042
+          ],
+          [
+            0.524395914,
+            0.86387614
+          ],
+          [
+            0.524392073,
+            0.863878049
+          ],
+          [
+            0.524387856,
+            0.863877272
+          ],
+          [
+            0.524383827,
+            0.863877839
+          ],
+          [
+            0.524382295,
+            0.863876684
+          ],
+          [
+            0.524270484,
+            0.863704772
+          ],
+          [
+            0.524250615,
+            0.863670587
+          ],
+          [
+            0.524221199,
+            0.863617201
+          ],
+          [
+            0.524197323,
+            0.863573992
+          ],
+          [
+            0.524187776,
+            0.863554791
+          ],
+          [
+            0.524178419,
+            0.863536932
+          ],
+          [
+            0.524160481,
+            0.863496998
+          ],
+          [
+            0.524148481,
+            0.863460337
+          ],
+          [
+            0.524139377,
+            0.863415053
+          ],
+          [
+            0.52413084,
+            0.863373797
+          ],
+          [
+            0.524120626,
+            0.863310864
+          ],
+          [
+            0.524112154,
+            0.863240839
+          ],
+          [
+            0.524109512,
+            0.863222037
+          ],
+          [
+            0.524105635,
+            0.863155475
+          ],
+          [
+            0.524105679,
+            0.863136295
+          ],
+          [
+            0.524137301,
+            0.862893552
+          ],
+          [
+            0.524170695,
+            0.862799839
+          ],
+          [
+            0.524216197,
+            0.862694837
+          ],
+          [
+            0.524216008,
+            0.862693494
+          ],
+          [
+            0.524221192,
+            0.862691396
+          ],
+          [
+            0.524225221,
+            0.86269083
+          ],
+          [
+            0.52422925,
+            0.862690264
+          ],
+          [
+            0.524233467,
+            0.86269104
+          ],
+          [
+            0.52423481,
+            0.862690852
+          ],
+          [
+            0.524234999,
+            0.862692195
+          ],
+          [
+            0.524365612,
+            0.862861464
+          ],
+          [
+            0.524456814,
+            0.863071881
+          ],
+          [
+            0.524477728,
+            0.863152483
+          ],
+          [
+            0.524486454,
+            0.863195082
+          ]
+        ],
+        "motion": {
+          "kind": "buoyant",
+          "massKg": 1500,
+          "draughtM": 0.4,
+          "linDamp": 0.8,
+          "angDamp": 1.5,
+          "tether": {
+            "to": "h-s00-rope-post",
+            "lengthM": 6.087
+          }
+        },
+        "assembly": [
+          {
+            "id": "h-s00-rope-post",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+            "atM": [
+              -1.1838,
+              5.4366
+            ],
+            "yaw": 124.055,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "pier-sol5",
+              "unmined": "reader-approved r4"
+            },
+            "scale": 0.75,
+            "yMeasured": 0.32
+          },
+          {
+            "id": "shore-marshweed",
+            "asset": "bmv:landscape/trees/reedsmall2",
+            "atM": [
+              44.3098,
+              11.6501
+            ],
+            "yaw": 228.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": -0.0571
+          }
+        ]
+      },
+      {
+        "id": "parcel.lighter-flotilla.hull-s01",
+        "districtId": "district.lighter-flotilla.lighter-flotilla",
+        "use": "dwelling",
+        "buildingFamily": "sailboats-sailboatfurled",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "Each hull is moored bow-in to the pier. The crew steps off the bow onto the pier.",
+        "why": {
+          "what": "The hull is the working boat of a lighter crew. The boat is moored for good. The crew lives aboard it.",
+          "whyHere": "The lighter crews live where their work is. The hulls lie between the anchorage and the road.",
+          "whySpot": "The hull lies in the row along the south side of the pier, where the water is deepest.",
+          "whyNeighbours": "The hull is moored beside the other crew boats. The hulls lie as close as their shapes allow.",
+          "playerPurpose": "The hull is ambience. The crews who work the lighters live here.",
+          "microGeography": "Deep water lies under the hull. The pier lies off the bow."
+        },
+        "assetRef": "sailboats:sailboats/sailboatfurled",
+        "centreUV": [
+          0.525686113,
+          0.863128411
+        ],
+        "yawDeg": 184.0,
+        "yMeasured": -0.307,
+        "footprint": [
+          [
+            0.525861177,
+            0.863307873
+          ],
+          [
+            0.52583061,
+            0.863414497
+          ],
+          [
+            0.52581182,
+            0.863449891
+          ],
+          [
+            0.525785983,
+            0.863488869
+          ],
+          [
+            0.525746616,
+            0.863526902
+          ],
+          [
+            0.525742369,
+            0.863529324
+          ],
+          [
+            0.525681261,
+            0.863567196
+          ],
+          [
+            0.525664459,
+            0.863574178
+          ],
+          [
+            0.525645518,
+            0.863572854
+          ],
+          [
+            0.525555261,
+            0.863502645
+          ],
+          [
+            0.525536008,
+            0.863486344
+          ],
+          [
+            0.525503207,
+            0.863391603
+          ],
+          [
+            0.525498212,
+            0.86334639
+          ],
+          [
+            0.525495865,
+            0.863263295
+          ],
+          [
+            0.52549647,
+            0.863215754
+          ],
+          [
+            0.525498334,
+            0.863169661
+          ],
+          [
+            0.525510188,
+            0.863019583
+          ],
+          [
+            0.525542241,
+            0.862872278
+          ],
+          [
+            0.525577899,
+            0.862809514
+          ],
+          [
+            0.525580888,
+            0.862805645
+          ],
+          [
+            0.525594294,
+            0.862788908
+          ],
+          [
+            0.525609148,
+            0.862770914
+          ],
+          [
+            0.52565333,
+            0.862722342
+          ],
+          [
+            0.525710975,
+            0.862695104
+          ],
+          [
+            0.525721798,
+            0.86269586
+          ],
+          [
+            0.525775091,
+            0.862730856
+          ],
+          [
+            0.525812083,
+            0.862785104
+          ],
+          [
+            0.525824288,
+            0.862804991
+          ],
+          [
+            0.525835234,
+            0.86282343
+          ],
+          [
+            0.525837656,
+            0.862827678
+          ],
+          [
+            0.525864232,
+            0.862894793
+          ],
+          [
+            0.525875472,
+            0.863045126
+          ],
+          [
+            0.525868812,
+            0.863179253
+          ]
+        ],
+        "motion": {
+          "kind": "buoyant",
+          "massKg": 1500,
+          "draughtM": 0.4,
+          "linDamp": 0.8,
+          "angDamp": 1.5,
+          "tether": {
+            "to": "h-s01-rope-post",
+            "lengthM": 5.581
+          }
+        },
+        "assembly": [
+          {
+            "id": "h-s01-rope-post",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+            "atM": [
+              1.0622,
+              4.9294
+            ],
+            "yaw": 59.403,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "pier-sol6",
+              "unmined": "reader-approved r4"
+            },
+            "scale": 0.75,
+            "yMeasured": 0.32
+          }
+        ]
+      },
+      {
+        "id": "parcel.lighter-flotilla.lighter-berth",
+        "districtId": "district.lighter-flotilla.lighter-flotilla",
+        "use": "ferry-berth",
+        "buildingFamily": "sailboats-longboat",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "The lighter lies off the end of the pier. Its bow points toward the anchorage.",
+        "why": {
+          "what": "The lighter carries passengers and cargo out to the anchorage.",
+          "whyHere": "The end of the pier has the deepest water in the moorings.",
+          "whySpot": "The lighter lies off the pier head, clear of the moored hulls.",
+          "whyNeighbours": "The trade ship lies alongside the pier head beside the lighter.",
+          "playerPurpose": "The lighter is the boat to the Lilmoth anchorage.",
+          "microGeography": "There is over 2 m of water off the end of the pier."
+        },
+        "assetRef": "ferries:yamadori/ferries/volkihar_ferry_01",
+        "centreUV": [
+          0.529693704,
+          0.861659232
+        ],
+        "yawDeg": 90.0,
+        "services": [
+          "ferry"
+        ],
+        "yMeasured": -0.364,
+        "footprint": [
+          [
+            0.529408901,
+            0.861351373
+          ],
+          [
+            0.529414325,
+            0.861351373
+          ],
+          [
+            0.530012413,
+            0.861507337
+          ],
+          [
+            0.530141252,
+            0.861558873
+          ],
+          [
+            0.530154814,
+            0.861564298
+          ],
+          [
+            0.530259242,
+            0.861614477
+          ],
+          [
+            0.530309422,
+            0.86164567
+          ],
+          [
+            0.530321628,
+            0.861655163
+          ],
+          [
+            0.530320272,
+            0.861663301
+          ],
+          [
+            0.530309422,
+            0.861672794
+          ],
+          [
+            0.530161595,
+            0.861754166
+          ],
+          [
+            0.5300314,
+            0.86180299
+          ],
+          [
+            0.529975795,
+            0.861819264
+          ],
+          [
+            0.529882217,
+            0.861832826
+          ],
+          [
+            0.529803557,
+            0.86184232
+          ],
+          [
+            0.52974524,
+            0.861850457
+          ],
+          [
+            0.52959877,
+            0.861843676
+          ],
+          [
+            0.529583851,
+            0.86184232
+          ],
+          [
+            0.529445518,
+            0.861827402
+          ],
+          [
+            0.529374995,
+            0.861811127
+          ],
+          [
+            0.52914444,
+            0.861725686
+          ],
+          [
+            0.529027806,
+            0.861671438
+          ],
+          [
+            0.529027806,
+            0.86164567
+          ],
+          [
+            0.529403476,
+            0.861352729
+          ],
+          [
+            0.529407544,
+            0.861351373
+          ]
+        ],
+        "motion": {
+          "kind": "buoyant",
+          "massKg": 1500,
+          "draughtM": 0.4,
+          "linDamp": 0.8,
+          "angDamp": 1.5,
+          "tether": {
+            "to": "lighter-rope-post",
+            "lengthM": 4.902
+          }
+        },
+        "assembly": [
+          {
+            "id": "lighter-rope-post",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+            "atM": [
+              3.4163,
+              2.6898
+            ],
+            "yaw": 35.572,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "pier-sol10",
+              "unmined": "reader-approved r4"
+            },
+            "scale": 0.75,
+            "yMeasured": 0.32
+          }
+        ]
+      },
+      {
+        "id": "parcel.lighter-flotilla.the-street",
+        "districtId": "district.lighter-flotilla.lighter-flotilla",
+        "use": "quay",
+        "buildingFamily": "vanilla-dockstrsol",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "The pier runs straight out east from the bank into deep water.",
+        "why": {
+          "what": "The street is a timber pier on piles, running from the bank out to the trade ship.",
+          "whyHere": "The street is the only dry way from the bank out to the hulls.",
+          "whySpot": "The pier starts on dry ground where the bank rises above the water.",
+          "whyNeighbours": "The crew boats lie bow-in along its south side. The market rafts lie along its north side.",
+          "playerPurpose": "The pier is the walk from the track to every boat, the market rafts and the lighter.",
+          "microGeography": "The pier stands on piles over water 1 to 4 m deep."
+        },
+        "pieces": [
+          {
+            "asset": "vanilla:architecture/docks/dockstrent02",
+            "atM": [
+              -0.0,
+              0.0
+            ],
+            "yaw": 0.0,
+            "yMeasured": 0.32
+          },
+          {
+            "asset": "vanilla:architecture/docks/dockstrsol01",
+            "atM": [
+              -0.0,
+              7.28
+            ],
+            "yaw": 0.0,
+            "yMeasured": 0.32
+          },
+          {
+            "asset": "vanilla:architecture/docks/dockstrsol01",
+            "atM": [
+              -0.0,
+              14.56
+            ],
+            "yaw": 0.0,
+            "yMeasured": 0.32
+          },
+          {
+            "asset": "vanilla:architecture/docks/dockstrsol01",
+            "atM": [
+              -0.0,
+              21.84
+            ],
+            "yaw": 0.0,
+            "yMeasured": 0.32
+          },
+          {
+            "asset": "vanilla:architecture/docks/dockstrsol01",
+            "atM": [
+              -0.0,
+              29.12
+            ],
+            "yaw": 0.0,
+            "yMeasured": 0.32
+          },
+          {
+            "asset": "vanilla:architecture/docks/dockstrsol01",
+            "atM": [
+              -0.0,
+              36.4
+            ],
+            "yaw": 0.0,
+            "yMeasured": 0.32
+          },
+          {
+            "asset": "vanilla:architecture/docks/dockstrsol01",
+            "atM": [
+              -0.0,
+              43.68
+            ],
+            "yaw": 0.0,
+            "yMeasured": 0.32
+          },
+          {
+            "asset": "vanilla:architecture/docks/dockstrsol01",
+            "atM": [
+              -0.0,
+              50.96
+            ],
+            "yaw": 0.0,
+            "yMeasured": 0.32
+          },
+          {
+            "asset": "vanilla:architecture/docks/dockstrsol01",
+            "atM": [
+              -0.0,
+              58.24
+            ],
+            "yaw": 0.0,
+            "yMeasured": 0.32
+          },
+          {
+            "asset": "vanilla:architecture/docks/dockstrsol01",
+            "atM": [
+              -0.0,
+              65.52
+            ],
+            "yaw": 0.0,
+            "yMeasured": 0.32
+          },
+          {
+            "asset": "vanilla:architecture/docks/dockstrsol01",
+            "atM": [
+              -0.0,
+              72.8
+            ],
+            "yaw": 0.0,
+            "yMeasured": 0.32
+          }
+        ],
+        "centreUV": [
+          0.519806956,
+          0.862276306
+        ],
+        "yawDeg": 270.0,
+        "footprint": [
+          [
+            0.520432167,
+            0.862025441
+          ],
+          [
+            0.520432169,
+            0.862535341
+          ],
+          [
+            0.520448475,
+            0.862551619
+          ],
+          [
+            0.520767121,
+            0.862580094
+          ],
+          [
+            0.521270327,
+            0.862581427
+          ],
+          [
+            0.521286578,
+            0.86256379
+          ],
+          [
+            0.521286578,
+            0.862025441
+          ],
+          [
+            0.521419486,
+            0.862025441
+          ],
+          [
+            0.521419488,
+            0.862535341
+          ],
+          [
+            0.521435794,
+            0.862551619
+          ],
+          [
+            0.52175444,
+            0.862580094
+          ],
+          [
+            0.522257645,
+            0.862581427
+          ],
+          [
+            0.522273896,
+            0.86256379
+          ],
+          [
+            0.522273896,
+            0.862025441
+          ],
+          [
+            0.522406805,
+            0.862025441
+          ],
+          [
+            0.522406806,
+            0.862535341
+          ],
+          [
+            0.522423113,
+            0.862551619
+          ],
+          [
+            0.522741758,
+            0.862580094
+          ],
+          [
+            0.523244964,
+            0.862581427
+          ],
+          [
+            0.523261215,
+            0.86256379
+          ],
+          [
+            0.523261215,
+            0.862025441
+          ],
+          [
+            0.523394123,
+            0.862025441
+          ],
+          [
+            0.523394125,
+            0.862535341
+          ],
+          [
+            0.523410431,
+            0.862551619
+          ],
+          [
+            0.523729077,
+            0.862580094
+          ],
+          [
+            0.524232283,
+            0.862581427
+          ],
+          [
+            0.524248533,
+            0.86256379
+          ],
+          [
+            0.524248533,
+            0.862025441
+          ],
+          [
+            0.524381442,
+            0.862025441
+          ],
+          [
+            0.524381442,
+            0.862535308
+          ],
+          [
+            0.52439775,
+            0.862551619
+          ],
+          [
+            0.524716454,
+            0.862580096
+          ],
+          [
+            0.525219577,
+            0.862581451
+          ],
+          [
+            0.525235852,
+            0.86256379
+          ],
+          [
+            0.525235852,
+            0.862025441
+          ],
+          [
+            0.52536876,
+            0.862025441
+          ],
+          [
+            0.52536876,
+            0.862535308
+          ],
+          [
+            0.525385035,
+            0.862551614
+          ],
+          [
+            0.525703773,
+            0.862580096
+          ],
+          [
+            0.526206895,
+            0.862581451
+          ],
+          [
+            0.526223171,
+            0.86256379
+          ],
+          [
+            0.526223171,
+            0.862025441
+          ],
+          [
+            0.526356079,
+            0.862025441
+          ],
+          [
+            0.526356079,
+            0.862535308
+          ],
+          [
+            0.526372354,
+            0.862551614
+          ],
+          [
+            0.526691091,
+            0.862580096
+          ],
+          [
+            0.527194214,
+            0.862581451
+          ],
+          [
+            0.527210489,
+            0.86256379
+          ],
+          [
+            0.527210489,
+            0.862025441
+          ],
+          [
+            0.527343397,
+            0.862025441
+          ],
+          [
+            0.527343397,
+            0.862535308
+          ],
+          [
+            0.527359673,
+            0.862551614
+          ],
+          [
+            0.52767841,
+            0.862580096
+          ],
+          [
+            0.528181532,
+            0.862581451
+          ],
+          [
+            0.528197808,
+            0.86256379
+          ],
+          [
+            0.528197808,
+            0.862025441
+          ],
+          [
+            0.528330716,
+            0.862025441
+          ],
+          [
+            0.528330716,
+            0.862535308
+          ],
+          [
+            0.528346991,
+            0.862551614
+          ],
+          [
+            0.528665728,
+            0.862580096
+          ],
+          [
+            0.529168851,
+            0.862581451
+          ],
+          [
+            0.529185126,
+            0.86256379
+          ],
+          [
+            0.529185126,
+            0.862025441
+          ],
+          [
+            0.529318035,
+            0.862025441
+          ],
+          [
+            0.529318035,
+            0.862535308
+          ],
+          [
+            0.52933431,
+            0.862551614
+          ],
+          [
+            0.529653047,
+            0.862580096
+          ],
+          [
+            0.530156135,
+            0.862581453
+          ],
+          [
+            0.530172443,
+            0.862563821
+          ],
+          [
+            0.530172445,
+            0.861988822
+          ],
+          [
+            0.530156135,
+            0.861971159
+          ],
+          [
+            0.529652986,
+            0.861971162
+          ],
+          [
+            0.529334342,
+            0.862000993
+          ],
+          [
+            0.529319391,
+            0.862015914
+          ],
+          [
+            0.529318167,
+            0.862009173
+          ],
+          [
+            0.529185126,
+            0.862009167
+          ],
+          [
+            0.529185125,
+            0.861988791
+          ],
+          [
+            0.529168817,
+            0.861971159
+          ],
+          [
+            0.528665668,
+            0.861971162
+          ],
+          [
+            0.528347024,
+            0.862000993
+          ],
+          [
+            0.528332072,
+            0.862015914
+          ],
+          [
+            0.528330849,
+            0.862009173
+          ],
+          [
+            0.528197808,
+            0.862009167
+          ],
+          [
+            0.528197806,
+            0.861988791
+          ],
+          [
+            0.528181498,
+            0.861971159
+          ],
+          [
+            0.527678349,
+            0.861971162
+          ],
+          [
+            0.527359705,
+            0.862000993
+          ],
+          [
+            0.527344754,
+            0.862015914
+          ],
+          [
+            0.52734353,
+            0.862009173
+          ],
+          [
+            0.527210489,
+            0.862009167
+          ],
+          [
+            0.527210488,
+            0.861988791
+          ],
+          [
+            0.52719418,
+            0.861971159
+          ],
+          [
+            0.52669103,
+            0.861971162
+          ],
+          [
+            0.526372387,
+            0.862000993
+          ],
+          [
+            0.526357435,
+            0.862015914
+          ],
+          [
+            0.526356212,
+            0.862009173
+          ],
+          [
+            0.526223171,
+            0.862009167
+          ],
+          [
+            0.526223169,
+            0.861988791
+          ],
+          [
+            0.526206861,
+            0.861971159
+          ],
+          [
+            0.525703712,
+            0.861971162
+          ],
+          [
+            0.525385068,
+            0.862000993
+          ],
+          [
+            0.525370116,
+            0.862015914
+          ],
+          [
+            0.525368893,
+            0.862009173
+          ],
+          [
+            0.525235852,
+            0.862009167
+          ],
+          [
+            0.525235851,
+            0.861988791
+          ],
+          [
+            0.525219542,
+            0.861971159
+          ],
+          [
+            0.524716393,
+            0.861971162
+          ],
+          [
+            0.52439775,
+            0.862000993
+          ],
+          [
+            0.524382798,
+            0.862015914
+          ],
+          [
+            0.524381575,
+            0.862009173
+          ],
+          [
+            0.524248533,
+            0.862009167
+          ],
+          [
+            0.524248532,
+            0.861988791
+          ],
+          [
+            0.524232224,
+            0.861971159
+          ],
+          [
+            0.523729075,
+            0.861971162
+          ],
+          [
+            0.523410431,
+            0.862000993
+          ],
+          [
+            0.523395479,
+            0.862015914
+          ],
+          [
+            0.523394256,
+            0.862009173
+          ],
+          [
+            0.523261215,
+            0.862009167
+          ],
+          [
+            0.523261213,
+            0.861988791
+          ],
+          [
+            0.523244905,
+            0.861971159
+          ],
+          [
+            0.522741756,
+            0.861971162
+          ],
+          [
+            0.522423112,
+            0.862000993
+          ],
+          [
+            0.522408161,
+            0.862015914
+          ],
+          [
+            0.522406937,
+            0.862009173
+          ],
+          [
+            0.522273896,
+            0.862009167
+          ],
+          [
+            0.522273895,
+            0.861988791
+          ],
+          [
+            0.522257621,
+            0.861971161
+          ],
+          [
+            0.521754501,
+            0.861971159
+          ],
+          [
+            0.521435794,
+            0.862000993
+          ],
+          [
+            0.521420842,
+            0.862015914
+          ],
+          [
+            0.521419619,
+            0.862009173
+          ],
+          [
+            0.521286578,
+            0.862009167
+          ],
+          [
+            0.521286576,
+            0.861988791
+          ],
+          [
+            0.521270268,
+            0.861971159
+          ],
+          [
+            0.520767119,
+            0.861971162
+          ],
+          [
+            0.520448475,
+            0.862000993
+          ],
+          [
+            0.520433524,
+            0.862015914
+          ],
+          [
+            0.5204323,
+            0.862009173
+          ],
+          [
+            0.520299259,
+            0.862009167
+          ],
+          [
+            0.520299258,
+            0.861988791
+          ],
+          [
+            0.520282984,
+            0.861971161
+          ],
+          [
+            0.520258593,
+            0.861971159
+          ],
+          [
+            0.519779842,
+            0.861999639
+          ],
+          [
+            0.519461159,
+            0.862028117
+          ],
+          [
+            0.51944485,
+            0.862045751
+          ],
+          [
+            0.519444849,
+            0.862068774
+          ],
+          [
+            0.51980693,
+            0.862532596
+          ],
+          [
+            0.519824587,
+            0.862550258
+          ],
+          [
+            0.520258548,
+            0.862582807
+          ],
+          [
+            0.520282951,
+            0.862582809
+          ],
+          [
+            0.520299259,
+            0.862566501
+          ],
+          [
+            0.520299259,
+            0.862025441
+          ]
+        ],
+        "assembly": [
+          {
+            "id": "pier-alchemy",
+            "asset": "vanilla:furniture/workbenches/alchemyworkbench01",
+            "atM": [
+              1.05,
+              0.64
+            ],
+            "yaw": 90.0,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "pier-sol2",
+              "unmined": "reader-approved r1"
+            },
+            "upM": 0.0,
+            "hostPiece": 2
+          },
+          {
+            "id": "pier-bench-e",
+            "asset": "vanilla:furniture/farm/farmbench01",
+            "atM": [
+              0.5,
+              0.46
+            ],
+            "yaw": 90.0,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "pier-sol8",
+              "unmined": "reader-approved r1"
+            },
+            "upM": -0.0002,
+            "hostPiece": 8
+          },
+          {
+            "id": "pier-bench-w",
+            "asset": "vanilla:furniture/farm/farmbench01",
+            "atM": [
+              0.5,
+              -0.92
+            ],
+            "yaw": 90.0,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "pier-sol4",
+              "unmined": "reader-approved r1"
+            },
+            "upM": -0.0002,
+            "hostPiece": 4
+          },
+          {
+            "id": "pier-lamp-e",
+            "asset": "vanilla:clutter/common/candlelanternwithcandle01",
+            "atM": [
+              1.1,
+              2.68
+            ],
+            "yaw": 90.0,
+            "on": "parent",
+            "layer": "light",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "pier-sol9",
+              "unmined": "reader-approved r1"
+            },
+            "upM": 0.0236,
+            "hostPiece": 9
+          },
+          {
+            "id": "pier-lamp-foot",
+            "asset": "vanilla:clutter/common/candlelanternwithcandle01",
+            "atM": [
+              1.1,
+              1.2
+            ],
+            "yaw": 90.0,
+            "on": "parent",
+            "layer": "light",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "pier",
+              "unmined": "reader-approved r1"
+            },
+            "upM": 0.0236,
+            "hostPiece": 0
+          },
+          {
+            "id": "pier-lamp-m",
+            "asset": "vanilla:clutter/common/candlelanternwithcandle01",
+            "atM": [
+              -1.3,
+              1.02
+            ],
+            "yaw": 90.0,
+            "on": "parent",
+            "layer": "light",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "pier-sol6",
+              "unmined": "reader-approved r1"
+            },
+            "upM": 0.0236,
+            "hostPiece": 6
+          },
+          {
+            "id": "pier-lamp-mid2",
+            "asset": "vanilla:clutter/common/candlelanternwithcandle01",
+            "atM": [
+              1.1,
+              0.36
+            ],
+            "yaw": 90.0,
+            "on": "parent",
+            "layer": "light",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "pier-sol3",
+              "unmined": "reader-approved r1"
+            },
+            "upM": 0.0236,
+            "hostPiece": 3
+          },
+          {
+            "id": "pier-lamp-w",
+            "asset": "vanilla:clutter/common/candlelanternwithcandle01",
+            "atM": [
+              -1.2,
+              -1.2
+            ],
+            "yaw": 90.0,
+            "on": "parent",
+            "layer": "light",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "pier-sol5",
+              "unmined": "reader-approved r1"
+            },
+            "upM": 0.0236,
+            "hostPiece": 5
+          }
+        ]
+      },
+      {
+        "id": "parcel.lighter-flotilla.tradeship",
+        "districtId": "district.lighter-flotilla.lighter-flotilla",
+        "use": "lodging",
+        "buildingFamily": "composite-eec-tradeship-with-door",
+        "interior": {
+          "kind": "dwelling"
+        },
+        "orientationWhy": "The trade ship lies alongside the pier head. Two stairs from the pier cross her rail to the waist.",
+        "why": {
+          "what": "The ship is the Alten Meerhleel trade ship. She is moored at the flotilla between runs. She has bunks to let and a purser's stores below.",
+          "whyHere": "Large ships cannot reach the quays of Lilmoth through its shallow water. The lighters bring the cargo of the trade ship out to her here.",
+          "whySpot": "She lies alongside the pier head, where the water is deep enough for her keel.",
+          "whyNeighbours": "The crews' boats moor beside the trade ship. The lighters work her cargo to and from the city.",
+          "playerPurpose": "The trade ship offers a bed, a trader and the boat to Alten Meerhleel.",
+          "microGeography": "The deepest water lies off the pier head. She lies afloat there at low water."
+        },
+        "assetRef": "composite:ship/eec-tradeship-with-door",
+        "centreUV": [
+          0.528323935,
+          0.863235144
+        ],
+        "yawDeg": 270.0,
+        "services": [
+          "lodging",
+          "trader"
+        ],
+        "playerPurpose": [
+          {
+            "kind": "service-station",
+            "tier": "major",
+            "note": "The boat to Alten Meerhleel boards here."
+          },
+          {
+            "kind": "bed",
+            "tier": "medium",
+            "note": "Spare bunks below decks, let to passengers."
+          },
+          {
+            "kind": "trade",
+            "tier": "medium",
+            "note": "The purser sells from the ship's stores."
+          }
+        ],
+        "yMeasured": 0.0,
+        "footprint": [
+          [
+            0.528083886,
+            0.863585045
+          ],
+          [
+            0.527842482,
+            0.863578264
+          ],
+          [
+            0.527658037,
+            0.863563346
+          ],
+          [
+            0.527411208,
+            0.863498248
+          ],
+          [
+            0.526506618,
+            0.863256843
+          ],
+          [
+            0.526506618,
+            0.863213445
+          ],
+          [
+            0.527411208,
+            0.86297204
+          ],
+          [
+            0.527658037,
+            0.862906942
+          ],
+          [
+            0.527842482,
+            0.862892024
+          ],
+          [
+            0.528083886,
+            0.862885243
+          ],
+          [
+            0.528344278,
+            0.862902873
+          ],
+          [
+            0.528561271,
+            0.862927285
+          ],
+          [
+            0.528839294,
+            0.862985602
+          ],
+          [
+            0.529049506,
+            0.863049344
+          ],
+          [
+            0.529381776,
+            0.863213445
+          ],
+          [
+            0.529381776,
+            0.863256843
+          ],
+          [
+            0.529049506,
+            0.863420944
+          ],
+          [
+            0.528839294,
+            0.863484686
+          ],
+          [
+            0.528561271,
+            0.863543003
+          ],
+          [
+            0.528344278,
+            0.863567415
+          ]
+        ],
+        "assembly": [
+          {
+            "id": "tradeship-rope",
+            "asset": "vanilla:architecture/docks/dockropestr01",
+            "atM": [
+              5.6849,
+              0.2464
+            ],
+            "yaw": 337.529,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "tradeship",
+              "unmined": "reader-approved r4"
+            },
+            "upM": 0.9493,
+            "pitch": 39.946,
+            "scale": 0.3751
+          },
+          {
+            "id": "tradeship-rope-post",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+            "atM": [
+              5.4872,
+              1.5006
+            ],
+            "yaw": 67.529,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "pier-sol9",
+              "unmined": "reader-approved r4"
+            },
+            "scale": 0.75,
+            "yMeasured": 0.32
+          },
+          {
+            "id": "ts-cargo-0",
+            "asset": "vanilla:clutter/barrel02",
+            "atM": [
+              -1.148,
+              1.286
+            ],
+            "yaw": 91.7,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "plugin",
+            "mountPair": {
+              "kind": "points",
+              "mountedOn": "tradeship",
+              "n": 3
+            },
+            "upM": 1.564
+          },
+          {
+            "id": "ts-cargo-1",
+            "asset": "vanilla:clutter/barrel02",
+            "atM": [
+              -1.163,
+              2.083
+            ],
+            "yaw": 200.5,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "plugin",
+            "mountPair": {
+              "kind": "points",
+              "mountedOn": "tradeship",
+              "n": 3
+            },
+            "upM": 1.578
+          },
+          {
+            "id": "ts-cargo-2",
+            "asset": "vanilla:clutter/barrel02",
+            "atM": [
+              -1.273,
+              2.891
+            ],
+            "yaw": 126.1,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "plugin",
+            "mountPair": {
+              "kind": "points",
+              "mountedOn": "tradeship",
+              "n": 3
+            },
+            "upM": 1.583
+          },
+          {
+            "id": "ts-cargo-3",
+            "asset": "vanilla:clutter/brewerycasklargeclosed02",
+            "atM": [
+              0.599,
+              2.87
+            ],
+            "yaw": 0.0,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "plugin",
+            "mountPair": {
+              "kind": "points",
+              "mountedOn": "tradeship",
+              "n": 1
+            },
+            "upM": 2.83
+          },
+          {
+            "id": "ts-cargo-4",
+            "asset": "vanilla:clutter/common/cratesmall02",
+            "atM": [
+              3.68,
+              1.478
+            ],
+            "yaw": 11.5,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "plugin",
+            "mountPair": {
+              "kind": "points",
+              "mountedOn": "tradeship",
+              "n": 1
+            },
+            "upM": 1.888
+          },
+          {
+            "id": "ts-cargo-5",
+            "asset": "vanilla:clutter/common/cratesmalllong01eeco",
+            "atM": [
+              1.05,
+              -0.215
+            ],
+            "yaw": 177.6,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "plugin",
+            "mountPair": {
+              "kind": "points",
+              "mountedOn": "tradeship",
+              "n": 1
+            },
+            "upM": 1.929
+          },
+          {
+            "id": "ts-cargo-6",
+            "asset": "vanilla:clutter/common/cratesmalllong02",
+            "atM": [
+              -0.33,
+              0.271
+            ],
+            "yaw": 263.6,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "plugin",
+            "mountPair": {
+              "kind": "points",
+              "mountedOn": "tradeship",
+              "n": 2
+            },
+            "upM": 2.548
+          },
+          {
+            "id": "ts-cargo-7",
+            "asset": "vanilla:clutter/common/cratesmalllong02",
+            "atM": [
+              0.542,
+              -0.628
+            ],
+            "yaw": 85.9,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "plugin",
+            "mountPair": {
+              "kind": "points",
+              "mountedOn": "tradeship",
+              "n": 2
+            },
+            "upM": 2.548
+          },
+          {
+            "id": "ts-cargo-8",
+            "asset": "vanilla:clutter/common/cratesmalllong03",
+            "atM": [
+              -0.37,
+              0.359
+            ],
+            "yaw": 91.7,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "plugin",
+            "mountPair": {
+              "kind": "points",
+              "mountedOn": "tradeship",
+              "n": 1
+            },
+            "upM": 1.929
+          },
+          {
+            "id": "ts-cargo-9",
+            "asset": "vanilla:clutter/common/cratesmalllong04eeco",
+            "atM": [
+              -0.339,
+              -0.708
+            ],
+            "yaw": 268.3,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "plugin",
+            "mountPair": {
+              "kind": "points",
+              "mountedOn": "tradeship",
+              "n": 1
+            },
+            "upM": 1.929
+          },
+          {
+            "id": "ts-lamp-aft",
+            "asset": "vanilla:clutter/common/candlelanternwithcandle01",
+            "atM": [
+              0.0,
+              -6.6
+            ],
+            "yaw": 90.0,
+            "on": "parent",
+            "layer": "light",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "tradeship",
+              "unmined": "reader-approved r1"
+            },
+            "upM": 3.1169
+          },
+          {
+            "id": "ts-lamp-fore",
+            "asset": "vanilla:clutter/common/candlelanternwithcandle01",
+            "atM": [
+              -0.0,
+              7.4
+            ],
+            "yaw": 90.0,
+            "on": "parent",
+            "layer": "light",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "tradeship",
+              "unmined": "reader-approved r1"
+            },
+            "upM": 3.6907
+          },
+          {
+            "id": "ts-lamp-mid",
+            "asset": "vanilla:clutter/common/candlelanternwithcandle01",
+            "atM": [
+              1.47,
+              -2.4
+            ],
+            "yaw": 90.0,
+            "on": "parent",
+            "layer": "light",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "tradeship",
+              "unmined": "reader-approved r1"
+            },
+            "upM": 1.6159
+          },
+          {
+            "id": "ts-sign",
+            "asset": "kotm:argonia/blackwood/sign",
+            "atM": [
+              3.558,
+              -10.6111
+            ],
+            "yaw": 75.0,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "tradeship",
+              "unmined": "reader-approved r3"
+            },
+            "upM": 3.8
+          }
+        ]
+      },
+      {
+        "id": "parcel.lighter-flotilla.ship-stairs",
+        "districtId": "district.lighter-flotilla.lighter-flotilla",
+        "use": "quay",
+        "buildingFamily": "kotm-stairs",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "The stairs climb from the pier over the trade ship's rail. They go down to her waist.",
+        "why": {
+          "what": "The stairs are two short wooden stairs over the trade ship's rail.",
+          "whyHere": "The ship's side has no opening. The way aboard climbs over the rail.",
+          "whySpot": "The stairs stand amidships, beside the pier head.",
+          "whyNeighbours": "The pier lies at the foot of the stairs. The waist and the cabin door lie beyond.",
+          "playerPurpose": "The stairs are the way aboard the trade ship.",
+          "microGeography": "The stairs cross the gap between the pier and the hull."
+        },
+        "groundFit": "direct",
+        "groundFitWhy": "The stairs stand on the pier and the ship's deck. They never stand on the lagoon bed.",
+        "pieces": [
+          {
+            "asset": "kotm:argonia/mudhuts/stairs01",
+            "atM": [
+              -0.0,
+              0.0
+            ],
+            "yaw": 0.0,
+            "yMeasured": 1.44
+          },
+          {
+            "asset": "kotm:argonia/mudhuts/stairs01",
+            "atM": [
+              -2.43,
+              -0.053
+            ],
+            "yaw": -177.4,
+            "yMeasured": 1.906
+          }
+        ],
+        "centreUV": [
+          0.528282164,
+          0.862459801
+        ],
+        "yawDeg": 270.0,
+        "footprint": [
+          [
+            0.528421821,
+            0.862537105
+          ],
+          [
+            0.528429988,
+            0.862450351
+          ],
+          [
+            0.528424567,
+            0.862345912
+          ],
+          [
+            0.528406934,
+            0.862292989
+          ],
+          [
+            0.528161463,
+            0.862292989
+          ],
+          [
+            0.528138408,
+            0.86234588
+          ],
+          [
+            0.528132981,
+            0.862396096
+          ],
+          [
+            0.528135657,
+            0.862535749
+          ],
+          [
+            0.528130833,
+            0.862537105
+          ],
+          [
+            0.528130833,
+            0.8627058
+          ],
+          [
+            0.52813871,
+            0.862707156
+          ],
+          [
+            0.528126876,
+            0.862792093
+          ],
+          [
+            0.528127554,
+            0.862896671
+          ],
+          [
+            0.528142768,
+            0.86295034
+          ],
+          [
+            0.528387986,
+            0.862961475
+          ],
+          [
+            0.528413417,
+            0.862909684
+          ],
+          [
+            0.528421108,
+            0.862859839
+          ],
+          [
+            0.528424802,
+            0.862718812
+          ],
+          [
+            0.528147056,
+            0.862706167
+          ],
+          [
+            0.528147107,
+            0.862537105
+          ]
+        ],
+        "stacksOn": "parcel.lighter-flotilla.tradeship"
+      },
+      {
+        "id": "parcel.lighter-flotilla.raft-r00",
+        "districtId": "district.lighter-flotilla.lighter-flotilla",
+        "use": "",
+        "buildingFamily": "ferries-plank_ferry_swamp",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "The raft is moored with its long side to the pier, so one plank reaches it from the pier edge.",
+        "why": {
+          "what": "The raft is a plank ferry moored for good as a market stall.",
+          "whyHere": "Lilmoth traders walk out along the pier to buy off the boats.",
+          "whySpot": "The raft lies on the shallow south side of the pier, where the hulls cannot float.",
+          "whyNeighbours": "Three other market rafts lie along the same side of the pier.",
+          "playerPurpose": "The player can buy food and gear from the crews here.",
+          "microGeography": "The raft rests in shallow water off the pier edge."
+        },
+        "assetRef": "ferries:yamadori/ferries/plank_ferry_swamp_01",
+        "centreUV": [
+          0.525062257,
+          0.86188165
+        ],
+        "yawDeg": 90.0,
+        "yMeasured": 0.195,
+        "motion": {
+          "kind": "buoyant",
+          "massKg": 1800,
+          "draughtM": 0.569,
+          "linDamp": 0.8,
+          "angDamp": 1.5,
+          "tether": {
+            "to": "r00-rope-post",
+            "lengthM": 3.21
+          }
+        },
+        "assembly": [
+          {
+            "id": "mk-r00-0",
+            "asset": "vanilla:clutter/common/cratesmall01",
+            "atM": [
+              -0.89,
+              0.9
+            ],
+            "yaw": 270.0,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "r00",
+              "unmined": "reader-approved r1"
+            },
+            "upM": 0.4673
+          },
+          {
+            "id": "mk-r00-1",
+            "asset": "vanilla:clutter/barrel02",
+            "atM": [
+              -0.11,
+              -1.3
+            ],
+            "yaw": 307.0,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "r00",
+              "unmined": "reader-approved r1"
+            },
+            "upM": 0.0775
+          },
+          {
+            "id": "mk-r00-2",
+            "asset": "vanilla:clutter/common/cratesmall02",
+            "atM": [
+              -0.99,
+              -1.05
+            ],
+            "yaw": 344.0,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "r00",
+              "unmined": "reader-approved r1"
+            },
+            "upM": 0.4254
+          },
+          {
+            "id": "r00-rope-post",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+            "atM": [
+              1.5332,
+              2.2313
+            ],
+            "yaw": 55.328,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "pier-sol5",
+              "unmined": "reader-approved r4"
+            },
+            "scale": 0.75,
+            "yMeasured": 0.32
+          }
+        ],
+        "footprint": [
+          [
+            0.525055476,
+            0.861591422
+          ],
+          [
+            0.525058188,
+            0.861591422
+          ],
+          [
+            0.525283319,
+            0.861676863
+          ],
+          [
+            0.525303662,
+            0.861771797
+          ],
+          [
+            0.525303662,
+            0.861906062
+          ],
+          [
+            0.525294168,
+            0.861950817
+          ],
+          [
+            0.5252684,
+            0.861950817
+          ],
+          [
+            0.525074463,
+            0.861950817
+          ],
+          [
+            0.524841195,
+            0.861948104
+          ],
+          [
+            0.524820852,
+            0.861851813
+          ],
+          [
+            0.524820852,
+            0.861717549
+          ],
+          [
+            0.524830346,
+            0.86167415
+          ],
+          [
+            0.525045983,
+            0.861594134
+          ]
+        ],
+        "playerPurpose": [
+          {
+            "kind": "trade",
+            "tier": "minor",
+            "note": "Crew families sell food, baskets and gear from the raft."
+          }
+        ]
+      },
+      {
+        "id": "parcel.lighter-flotilla.raft-r01",
+        "districtId": "district.lighter-flotilla.lighter-flotilla",
+        "use": "",
+        "buildingFamily": "ferries-plank_ferry_swamp",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "The raft is moored with its long side to the pier, so one plank reaches it from the pier edge.",
+        "why": {
+          "what": "The raft is a plank ferry moored for good as a market stall.",
+          "whyHere": "Lilmoth traders walk out along the pier to buy off the boats.",
+          "whySpot": "The raft lies on the shallow south side of the pier, where the hulls cannot float.",
+          "whyNeighbours": "Three other market rafts lie along the same side of the pier.",
+          "playerPurpose": "The player can buy food and gear from the crews here.",
+          "microGeography": "The raft rests in shallow water off the pier edge."
+        },
+        "assetRef": "ferries:yamadori/ferries/plank_ferry_swamp_01",
+        "centreUV": [
+          0.525557273,
+          0.86188165
+        ],
+        "yawDeg": 90.0,
+        "yMeasured": 0.195,
+        "motion": {
+          "kind": "buoyant",
+          "massKg": 1800,
+          "draughtM": 0.569,
+          "linDamp": 0.8,
+          "angDamp": 1.5,
+          "tether": {
+            "to": "r01-rope-post",
+            "lengthM": 2.92
+          }
+        },
+        "assembly": [
+          {
+            "id": "mk-r01-0",
+            "asset": "vanilla:clutter/common/cratesmall02",
+            "atM": [
+              -0.11,
+              1.3
+            ],
+            "yaw": 21.0,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "r01",
+              "unmined": "reader-approved r1"
+            },
+            "upM": 0.3922
+          },
+          {
+            "id": "mk-r01-1",
+            "asset": "vanilla:clutter/barrel02",
+            "atM": [
+              -0.11,
+              -1.3
+            ],
+            "yaw": 58.0,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "r01",
+              "unmined": "reader-approved r1"
+            },
+            "upM": 0.0775
+          },
+          {
+            "id": "mk-r01-2",
+            "asset": "vanilla:clutter/common/candlelanternwithcandle01",
+            "atM": [
+              -0.86,
+              1.25
+            ],
+            "yaw": 323.0,
+            "on": "parent",
+            "layer": "light",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "r01",
+              "unmined": "reader-approved r1"
+            },
+            "upM": 0.1273
+          },
+          {
+            "id": "r01-rope-post",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+            "atM": [
+              1.5288,
+              -1.8721
+            ],
+            "yaw": 312.417,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "pier-sol6",
+              "unmined": "reader-approved r4"
+            },
+            "scale": 0.75,
+            "yMeasured": 0.32
+          }
+        ],
+        "footprint": [
+          [
+            0.525550492,
+            0.861591422
+          ],
+          [
+            0.525553204,
+            0.861591422
+          ],
+          [
+            0.525778335,
+            0.861676863
+          ],
+          [
+            0.525798678,
+            0.861771797
+          ],
+          [
+            0.525798678,
+            0.861906062
+          ],
+          [
+            0.525789184,
+            0.861950817
+          ],
+          [
+            0.525763416,
+            0.861950817
+          ],
+          [
+            0.525569479,
+            0.861950817
+          ],
+          [
+            0.525336211,
+            0.861948104
+          ],
+          [
+            0.525315868,
+            0.861851813
+          ],
+          [
+            0.525315868,
+            0.861717549
+          ],
+          [
+            0.525325362,
+            0.86167415
+          ],
+          [
+            0.525540999,
+            0.861594134
+          ]
+        ],
+        "playerPurpose": [
+          {
+            "kind": "trade",
+            "tier": "minor",
+            "note": "Crew families sell food, baskets and gear from the raft."
+          }
+        ]
+      },
+      {
+        "id": "parcel.lighter-flotilla.raft-r02",
+        "districtId": "district.lighter-flotilla.lighter-flotilla",
+        "use": "",
+        "buildingFamily": "ferries-plank_ferry_swamp",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "The raft is moored with its long side to the pier, so one plank reaches it from the pier edge.",
+        "why": {
+          "what": "The raft is a plank ferry moored for good as a market stall.",
+          "whyHere": "Lilmoth traders walk out along the pier to buy off the boats.",
+          "whySpot": "The raft lies on the shallow south side of the pier, where the hulls cannot float.",
+          "whyNeighbours": "Three other market rafts lie along the same side of the pier.",
+          "playerPurpose": "The player can buy food and gear from the crews here.",
+          "microGeography": "The raft rests in shallow water off the pier edge."
+        },
+        "assetRef": "ferries:yamadori/ferries/plank_ferry_swamp_01",
+        "centreUV": [
+          0.526052288,
+          0.86188165
+        ],
+        "yawDeg": 90.0,
+        "yMeasured": 0.195,
+        "motion": {
+          "kind": "buoyant",
+          "massKg": 1800,
+          "draughtM": 0.569,
+          "linDamp": 0.8,
+          "angDamp": 1.5,
+          "tether": {
+            "to": "r02-rope-post",
+            "lengthM": 3.227
+          }
+        },
+        "assembly": [
+          {
+            "id": "mk-r02-0",
+            "asset": "vanilla:clutter/common/cratesmall01",
+            "atM": [
+              -0.89,
+              0.75
+            ],
+            "yaw": 95.0,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "r02",
+              "unmined": "reader-approved r1"
+            },
+            "upM": 0.4685
+          },
+          {
+            "id": "mk-r02-1",
+            "asset": "vanilla:clutter/barrel02",
+            "atM": [
+              -0.11,
+              -1.3
+            ],
+            "yaw": 132.0,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "r02",
+              "unmined": "reader-approved r1"
+            },
+            "upM": 0.0774
+          },
+          {
+            "id": "mk-r02-2",
+            "asset": "vanilla:clutter/common/cratesmall02",
+            "atM": [
+              -0.99,
+              -1.05
+            ],
+            "yaw": 169.0,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "r02",
+              "unmined": "reader-approved r1"
+            },
+            "upM": 0.4302
+          },
+          {
+            "id": "r02-rope-post",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+            "atM": [
+              1.5332,
+              2.2513
+            ],
+            "yaw": 55.496,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "pier-sol6",
+              "unmined": "reader-approved r4"
+            },
+            "scale": 0.75,
+            "yMeasured": 0.32
+          }
+        ],
+        "footprint": [
+          [
+            0.526045507,
+            0.861591422
+          ],
+          [
+            0.526048219,
+            0.861591422
+          ],
+          [
+            0.52627335,
+            0.861676863
+          ],
+          [
+            0.526293693,
+            0.861771797
+          ],
+          [
+            0.526293693,
+            0.861906062
+          ],
+          [
+            0.526284199,
+            0.861950817
+          ],
+          [
+            0.526258431,
+            0.861950817
+          ],
+          [
+            0.526064494,
+            0.861950817
+          ],
+          [
+            0.525831226,
+            0.861948104
+          ],
+          [
+            0.525810883,
+            0.861851813
+          ],
+          [
+            0.525810883,
+            0.861717549
+          ],
+          [
+            0.525820377,
+            0.86167415
+          ],
+          [
+            0.526036014,
+            0.861594134
+          ]
+        ],
+        "playerPurpose": [
+          {
+            "kind": "trade",
+            "tier": "minor",
+            "note": "Crew families sell food, baskets and gear from the raft."
+          }
+        ]
+      },
+      {
+        "id": "parcel.lighter-flotilla.raft-r03",
+        "districtId": "district.lighter-flotilla.lighter-flotilla",
+        "use": "",
+        "buildingFamily": "ferries-plank_ferry_swamp",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "The raft is moored with its long side to the pier, so one plank reaches it from the pier edge.",
+        "why": {
+          "what": "The raft is a plank ferry moored for good as a market stall.",
+          "whyHere": "Lilmoth traders walk out along the pier to buy off the boats.",
+          "whySpot": "The raft lies on the shallow south side of the pier, where the hulls cannot float.",
+          "whyNeighbours": "Three other market rafts lie along the same side of the pier.",
+          "playerPurpose": "The player can buy food and gear from the crews here.",
+          "microGeography": "The raft rests in shallow water off the pier edge."
+        },
+        "assetRef": "ferries:yamadori/ferries/plank_ferry_swamp_01",
+        "centreUV": [
+          0.526567647,
+          0.86188165
+        ],
+        "yawDeg": 90.0,
+        "yMeasured": 0.195,
+        "motion": {
+          "kind": "buoyant",
+          "massKg": 1800,
+          "draughtM": 0.569,
+          "linDamp": 0.8,
+          "angDamp": 1.5,
+          "tether": {
+            "to": "r03-rope-post",
+            "lengthM": 2.791
+          }
+        },
+        "assembly": [
+          {
+            "id": "mk-r03-0",
+            "asset": "vanilla:clutter/carts/handcartcrate",
+            "atM": [
+              -0.31,
+              -1.15
+            ],
+            "yaw": 0.0,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "r03",
+              "unmined": "reader-approved r1"
+            },
+            "upM": -0.0301
+          },
+          {
+            "id": "mk-r03-1",
+            "asset": "vanilla:clutter/barrel02",
+            "atM": [
+              -0.11,
+              1.3
+            ],
+            "yaw": 206.0,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "r03",
+              "unmined": "reader-approved r1"
+            },
+            "upM": 0.0774
+          },
+          {
+            "id": "mk-r03-2",
+            "asset": "vanilla:clutter/common/candlelanternwithcandle01",
+            "atM": [
+              -0.86,
+              1.25
+            ],
+            "yaw": 69.0,
+            "on": "parent",
+            "layer": "light",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "r03",
+              "unmined": "reader-approved r1"
+            },
+            "upM": 0.1269
+          },
+          {
+            "id": "r03-rope-post",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+            "atM": [
+              1.5288,
+              -1.7021
+            ],
+            "yaw": 314.287,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "pier-sol7",
+              "unmined": "reader-approved r4"
+            },
+            "scale": 0.75,
+            "yMeasured": 0.32
+          }
+        ],
+        "footprint": [
+          [
+            0.526560866,
+            0.861591422
+          ],
+          [
+            0.526563578,
+            0.861591422
+          ],
+          [
+            0.526788709,
+            0.861676863
+          ],
+          [
+            0.526809052,
+            0.861771797
+          ],
+          [
+            0.526809052,
+            0.861906062
+          ],
+          [
+            0.526799558,
+            0.861950817
+          ],
+          [
+            0.52677379,
+            0.861950817
+          ],
+          [
+            0.526579853,
+            0.861950817
+          ],
+          [
+            0.526346585,
+            0.861948104
+          ],
+          [
+            0.526326242,
+            0.861851813
+          ],
+          [
+            0.526326242,
+            0.861717549
+          ],
+          [
+            0.526335736,
+            0.86167415
+          ],
+          [
+            0.526551373,
+            0.861594134
+          ]
+        ],
+        "playerPurpose": [
+          {
+            "kind": "trade",
+            "tier": "minor",
+            "note": "Crew families sell food, baskets and gear from the raft."
+          }
+        ]
+      },
+      {
+        "id": "parcel.lighter-flotilla.the-landing",
+        "districtId": "district.lighter-flotilla.lighter-flotilla",
+        "use": "quay",
+        "buildingFamily": "vanilla-dockstrent",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "The stage runs on the line of the Lilmoth track, so a walker steps off the track onto the planks without turning.",
+        "why": {
+          "what": "A short timber landing stage on piles across the reed shallows.",
+          "whyHere": "The track from Lilmoth ends in ankle-deep marsh water. Carters will not drag barrows through mud.",
+          "whySpot": "The stage starts where the track meets the water and ends on the firm bank beside the pier foot.",
+          "whyNeighbours": "The main pier starts a few steps east of the stage's landward end.",
+          "playerPurpose": "The dry way in from Lilmoth to the moorings.",
+          "microGeography": "Reed shallows about a hand deep, with the bank rising to the south."
+        },
+        "pieces": [
+          {
+            "asset": "vanilla:architecture/docks/dockstrent02",
+            "atM": [
+              0.0,
+              0.0
+            ],
+            "yaw": 0.0,
+            "yMeasured": 0.32
+          },
+          {
+            "asset": "vanilla:architecture/docks/dockstrsol01",
+            "atM": [
+              0.0,
+              7.28
+            ],
+            "yaw": 0.0,
+            "yMeasured": 0.32
+          },
+          {
+            "asset": "vanilla:architecture/docks/dockstrsol01",
+            "atM": [
+              0.0,
+              14.56
+            ],
+            "yaw": 0.0,
+            "yMeasured": 0.32
+          },
+          {
+            "asset": "vanilla:architecture/docks/dockstrsol01",
+            "atM": [
+              0.0,
+              21.84
+            ],
+            "yaw": 0.0,
+            "yMeasured": 0.32
+          },
+          {
+            "asset": "vanilla:architecture/docks/dockstrsol01",
+            "atM": [
+              0.0,
+              29.12
+            ],
+            "yaw": 0.0,
+            "yMeasured": 0.32
+          }
+        ],
+        "centreUV": [
+          0.518855713,
+          0.862660791
+        ],
+        "yawDeg": 22.0,
+        "footprint": [
+          [
+            0.518402229,
+            0.863008538
+          ],
+          [
+            0.51842361,
+            0.863017176
+          ],
+          [
+            0.518373778,
+            0.863140531
+          ],
+          [
+            0.518379571,
+            0.86314419
+          ],
+          [
+            0.518360135,
+            0.863152464
+          ],
+          [
+            0.518214367,
+            0.86343724
+          ],
+          [
+            0.518024625,
+            0.863903241
+          ],
+          [
+            0.518034863,
+            0.863924966
+          ],
+          [
+            0.518053747,
+            0.863932597
+          ],
+          [
+            0.518003914,
+            0.864055957
+          ],
+          [
+            0.518009706,
+            0.864059616
+          ],
+          [
+            0.51799027,
+            0.86406789
+          ],
+          [
+            0.517844502,
+            0.864352666
+          ],
+          [
+            0.51765476,
+            0.864818667
+          ],
+          [
+            0.517664998,
+            0.864840392
+          ],
+          [
+            0.517683894,
+            0.864848028
+          ],
+          [
+            0.517634063,
+            0.864971383
+          ],
+          [
+            0.517639855,
+            0.864975042
+          ],
+          [
+            0.517620419,
+            0.864983316
+          ],
+          [
+            0.517474651,
+            0.865268092
+          ],
+          [
+            0.517284909,
+            0.865734093
+          ],
+          [
+            0.517295147,
+            0.865755818
+          ],
+          [
+            0.517314043,
+            0.865763454
+          ],
+          [
+            0.517264211,
+            0.865886809
+          ],
+          [
+            0.517270003,
+            0.865890468
+          ],
+          [
+            0.517250568,
+            0.865898742
+          ],
+          [
+            0.517104799,
+            0.866183518
+          ],
+          [
+            0.516915046,
+            0.866649551
+          ],
+          [
+            0.516925324,
+            0.866671257
+          ],
+          [
+            0.517458455,
+            0.866886654
+          ],
+          [
+            0.517480911,
+            0.866878139
+          ],
+          [
+            0.517669371,
+            0.866411685
+          ],
+          [
+            0.517761107,
+            0.866104978
+          ],
+          [
+            0.517752085,
+            0.866083779
+          ],
+          [
+            0.517279345,
+            0.86589278
+          ],
+          [
+            0.517329132,
+            0.865769551
+          ],
+          [
+            0.517828277,
+            0.865971218
+          ],
+          [
+            0.517850748,
+            0.865962744
+          ],
+          [
+            0.518039222,
+            0.865496259
+          ],
+          [
+            0.518130958,
+            0.865189552
+          ],
+          [
+            0.518121936,
+            0.865168353
+          ],
+          [
+            0.517649196,
+            0.864977354
+          ],
+          [
+            0.517698983,
+            0.864854125
+          ],
+          [
+            0.518198128,
+            0.865055792
+          ],
+          [
+            0.518220599,
+            0.865047318
+          ],
+          [
+            0.518409073,
+            0.864580833
+          ],
+          [
+            0.51850081,
+            0.864274126
+          ],
+          [
+            0.518491788,
+            0.864252927
+          ],
+          [
+            0.518019047,
+            0.864061927
+          ],
+          [
+            0.518068837,
+            0.863938694
+          ],
+          [
+            0.518567993,
+            0.864140366
+          ],
+          [
+            0.518590464,
+            0.864131892
+          ],
+          [
+            0.518778938,
+            0.863665407
+          ],
+          [
+            0.518870674,
+            0.8633587
+          ],
+          [
+            0.518861652,
+            0.863337501
+          ],
+          [
+            0.518388912,
+            0.863146501
+          ],
+          [
+            0.518438699,
+            0.863023273
+          ],
+          [
+            0.518937844,
+            0.86322494
+          ],
+          [
+            0.518960315,
+            0.863216466
+          ],
+          [
+            0.518969468,
+            0.863193814
+          ],
+          [
+            0.519122397,
+            0.862739273
+          ],
+          [
+            0.519215368,
+            0.862433147
+          ],
+          [
+            0.519205127,
+            0.86241142
+          ],
+          [
+            0.51918372,
+            0.862402791
+          ],
+          [
+            0.518618094,
+            0.862564759
+          ],
+          [
+            0.518595104,
+            0.862574514
+          ],
+          [
+            0.51840234,
+            0.862964728
+          ],
+          [
+            0.518393207,
+            0.862987339
+          ]
+        ]
+      }
+    ],
+    "doors": [
+      {
+        "id": "door.mercantile-coast.lighter-flotilla.1",
+        "parcelId": "parcel.lighter-flotilla.tradeship",
+        "doorType": "load",
+        "interiorClaim": {
+          "interiorRef": "interior-kotm-v1",
+          "sizeClass": "large",
+          "culture": "argonian",
+          "tier": "A",
+          "cellId": "MurkmireTravelShipAltenMeerhleel",
+          "plugin": "King of the Murkmire.esp",
+          "interiorLoadDoorRef": "0891E079",
+          "arrivalMarker": {
+            "positionM": [
+              128.4066,
+              93.1348,
+              47.2233
+            ],
+            "yawDeg": 0.0
+          },
+          "why": "2 of 2 cells plugins link to kotm:argonia/tradeship/shipeectradeship01 (the base shell of composite:ship/eec-tradeship-with-door) pass; MurkmireTravelShipAltenMeerhleel is a barracks, 1 exterior load door; ties broken on the plugin's most-used cell (2 door links), then cell id"
+        },
+        "thresholdUV": [
+          0.527631049,
+          0.863312313
+        ],
+        "facingDeg": 90.0
+      }
+    ],
+    "routes": [
+      {
+        "id": "route.lighter-flotilla.the-street",
+        "kind": "footpath",
+        "routing": "straight",
+        "widthM": 1.6,
+        "endsAt": [
+          "parcel.lighter-flotilla.the-landing",
+          "parcel.lighter-flotilla.tradeship"
+        ],
+        "why": "The way in runs from the road along the stage and gangway to the street.",
+        "points": [
+          [
+            0.517344808,
+            0.865586982
+          ],
+          [
+            0.51906606,
+            0.862064738
+          ],
+          [
+            0.519400094,
+            0.862276306
+          ],
+          [
+            0.52827918,
+            0.862276306
+          ],
+          [
+            0.52827918,
+            0.863312448
+          ],
+          [
+            0.527631049,
+            0.863312313
+          ]
+        ],
+        "via": [
+          [
+            0.51747428,
+            0.865639699
+          ],
+          [
+            0.51906606,
+            0.862064738
+          ],
+          [
+            0.519400094,
+            0.862276306
+          ],
+          [
+            0.519806956,
+            0.862276306
+          ],
+          [
+            0.52827918,
+            0.862276306
+          ],
+          [
+            0.52827918,
+            0.863312448
+          ],
+          [
+            0.527630913,
+            0.863312448
+          ]
+        ]
+      }
+    ],
+    "canals": [],
+    "boardwalks": [],
+    "fences": [],
+    "docks": [],
+    "landmarks": [],
+    "questSockets": [
+      {
+        "id": "socket.lighter-flotilla.q-mark-crew-standing",
+        "kind": "mark",
+        "socketRef": "marks.lighter-flotilla.crew-standing",
+        "position": [
+          0.526222424,
+          0.863172629
+        ],
+        "parcel": "parcel.lighter-flotilla.hull-n02"
+      },
+      {
+        "id": "socket.lighter-flotilla.q-post-hire",
+        "kind": "post",
+        "socketRef": "post.lighter-flotilla.hire",
+        "position": [
+          0.526222424,
+          0.863172629
+        ],
+        "parcel": "parcel.lighter-flotilla.hull-n02"
+      },
+      {
+        "id": "socket.lighter-flotilla.q-scene-crew-vote",
+        "kind": "scene",
+        "socketRef": "scene.lighter-flotilla.crew-vote",
+        "position": [
+          0.526222424,
+          0.863172629
+        ],
+        "parcel": "parcel.lighter-flotilla.hull-n02"
+      },
+      {
+        "id": "socket.lighter-flotilla.q-tg04-anchor",
+        "kind": "scene",
+        "position": [
+          0.526222424,
+          0.863172629
+        ],
+        "parcel": "parcel.lighter-flotilla.hull-n02"
+      }
+    ],
+    "travelServices": [
+      {
+        "id": "travel.lighter-flotilla.lighter-lilmoth",
+        "kind": "ferry",
+        "mode": "lighter",
+        "toPlaceId": "place.mercantile-coast.lilmoth",
+        "parcel": "parcel.lighter-flotilla.lighter-berth"
+      },
+      {
+        "id": "travel.lighter-flotilla.boat-alten-meerhleel",
+        "kind": "boat",
+        "mode": "boat",
+        "toPlaceId": "place.mercantile-coast.alten-meerhleel",
+        "parcel": "parcel.lighter-flotilla.tradeship"
+      }
+    ],
+    "occupants": [
+      {
+        "slotId": "flotilla-speaker",
+        "ladderRef": "ladder.settlement-common",
+        "cultureRole": "flotilla speaker",
+        "worksAt": "parcel.lighter-flotilla.hull-n02",
+        "livesAt": "parcel.lighter-flotilla.hull-n02",
+        "ownerFaction": "faction.reed-sail-compact"
+      },
+      {
+        "slotId": "n1",
+        "ladderRef": "ladder.settlement-common",
+        "cultureRole": "crew",
+        "worksAt": "parcel.lighter-flotilla.hull-n02",
+        "livesAt": "parcel.lighter-flotilla.hull-n02",
+        "ownerFaction": "faction.reed-sail-compact"
+      },
+      {
+        "slotId": "n2",
+        "ladderRef": "ladder.settlement-common",
+        "cultureRole": "quest-giver",
+        "worksAt": "parcel.lighter-flotilla.hull-n02",
+        "livesAt": "parcel.lighter-flotilla.hull-n02",
+        "ownerFaction": "faction.reed-sail-compact"
+      }
+    ],
+    "approaches": [
+      {
+        "id": "approach.lighter-flotilla.arrival",
+        "mode": "walk",
+        "fromDirection": "east",
+        "firstSeen": "parcel.lighter-flotilla.hull-n00",
+        "sequence": "From the road the masts stand in a line over the lagoon. A plank stage runs out from the bank to the rafts.",
+        "wayfinding": "Walkers go out along the stage and the gangway to the street.",
+        "fromRouteId": "track.mercantile-coast.lighter-flotilla",
+        "viaUV": [
+          [
+            0.516351425,
+            0.869865729
+          ]
+        ]
+      },
+      {
+        "id": "approach.lighter-flotilla.from-the-blackrose-road",
+        "mode": "walk",
+        "fromRouteId": "track.mercantile-coast.lighter-flotilla",
+        "fromDirection": "west",
+        "firstSeen": "parcel.lighter-flotilla.tradeship",
+        "viaUV": [
+          [
+            0.516351425,
+            0.869865729
+          ]
+        ],
+        "sequence": "Travellers coming east along the road see the trade ship's masts first over the low line of boats. The plank stage at the end of the bank comes next.",
+        "wayfinding": "Walkers keep to the road until the stage. They then walk out along the stage and the gangway to the street."
+      }
+    ],
+    "networkTerminals": [
+      {
+        "id": "terminal.lighter-flotilla.the-road",
+        "routeId": "track.mercantile-coast.lighter-flotilla",
+        "entryUV": [
+          0.517471,
+          0.865644
+        ],
+        "wayId": "route.lighter-flotilla.the-street",
+        "kind": "footpath",
+        "why": "The track down from the Lilmoth road ends at the stage. The way out to the moorings starts at the stage."
+      }
+    ],
+    "combatSpaces": [
+      {
+        "id": "combat.lighter-flotilla.lighter-flotilla",
+        "aroundIds": [
+          "parcel.lighter-flotilla.the-street",
+          "parcel.lighter-flotilla.raft-r00",
+          "parcel.lighter-flotilla.raft-r01",
+          "parcel.lighter-flotilla.raft-r02",
+          "parcel.lighter-flotilla.raft-r03"
+        ],
+        "clearanceClass": "open",
+        "why": "The pier is open water on both sides. The rafts moored off it are no wider. A fight on the pier ends in the lagoon.",
+        "boundary": [
+          [
+            0.518902358,
+            0.862255435
+          ],
+          [
+            0.519399775,
+            0.862892621
+          ],
+          [
+            0.519583267,
+            0.863076164
+          ],
+          [
+            0.52023821,
+            0.863125288
+          ],
+          [
+            0.520282907,
+            0.863125292
+          ],
+          [
+            0.530393362,
+            0.863123903
+          ],
+          [
+            0.530714925,
+            0.862776233
+          ],
+          [
+            0.530714928,
+            0.861776666
+          ],
+          [
+            0.530416186,
+            0.861453142
+          ],
+          [
+            0.526592169,
+            0.861048939
+          ],
+          [
+            0.525034519,
+            0.861048939
+          ],
+          [
+            0.519734773,
+            0.861459022
+          ],
+          [
+            0.519204763,
+            0.861506385
+          ],
+          [
+            0.518902376,
+            0.861833338
+          ]
+        ]
+      }
+    ],
+    "clearance": {
+      "hardClear": [],
+      "thinned": [],
+      "kept": []
+    },
+    "variants": [
+      {
+        "id": "variant.lighter-flotilla.base",
+        "changedRefs": [],
+        "serviceOverrides": {},
+        "ambience": "village"
+      }
+    ],
+    "scaleGrounding": {
+      "loreSource": "The lore source is the catalogue record Lighter Flotilla (houseboat-flotilla, M2).",
+      "population": "3",
+      "households": 0,
+      "buildingsPlanned": 9,
+      "npcsPlanned": 3,
+      "why": "The crews live along one street on seventeen moored hulls, the lighter and a trade ship. These crews are named in the catalogue record."
+    },
+    "siting": {
+      "dossier": "world/sources/sites/dossiers/lighter-flotilla.json",
+      "candidates": [
+        {
+          "id": "candidate.lighter-flotilla.chosen",
+          "positionM": [
+            3813.8,
+            5919.5
+          ],
+          "chosen": true,
+          "why": "The chosen site has deep water under the hulls. A dry bank below the road lies within reach of a plank stage."
+        },
+        {
+          "id": "candidate.lighter-flotilla.second",
+          "positionM": [
+            3760.0,
+            5930.0
+          ],
+          "why": "The second candidate lies further west along the same shore, nearer the open lagoon.",
+          "rejectedBecause": "The bank at the second candidate is wet to the road. A stage could start on dry ground at no point there."
+        }
+      ]
+    },
+    "budget": {
+      "maxInstances": 200,
+      "maxUniqueMaterials": 120,
+      "maxTextureMB": 48,
+      "maxColliders": 160
+    },
+    "assetConstraints": [],
+    "macroEvidence": [
+      {
+        "sourcePaths": [
+          "notableNpcSlots[flotilla-speaker]"
+        ],
+        "evidenceRefs": [
+          "flotilla-speaker",
+          "parcel.lighter-flotilla.hull-n00"
+        ]
+      },
+      {
+        "sourcePaths": [
+          "contents.npcs[n1]"
+        ],
+        "evidenceRefs": [
+          "n1",
+          "parcel.lighter-flotilla.hull-n00"
+        ]
+      },
+      {
+        "sourcePaths": [
+          "contents.npcs[n2]"
+        ],
+        "evidenceRefs": [
+          "n2",
+          "parcel.lighter-flotilla.hull-n00"
+        ]
+      },
+      {
+        "sourcePaths": [
+          "contents.loot[l1]"
+        ],
+        "evidenceRefs": [
+          "parcel.lighter-flotilla.hull-n00"
+        ]
+      },
+      {
+        "sourcePaths": [
+          "ownerFaction"
+        ],
+        "evidenceRefs": [
+          "flotilla-speaker",
+          "n1",
+          "n2"
+        ]
+      },
+      {
+        "sourcePaths": [
+          "assetPlan",
+          "contents",
+          "discovery",
+          "eraLayers",
+          "hostility",
+          "notableNpcSlots",
+          "playerPurpose",
+          "questHooks",
+          "relations",
+          "lootTable",
+          "season",
+          "sitingPrefs",
+          "status",
+          "traversalModes",
+          "underwaterAccess",
+          "vibe"
+        ],
+        "evidenceRefs": [
+          "parcel.lighter-flotilla.hull-n00",
+          "parcel.lighter-flotilla.hull-n01",
+          "parcel.lighter-flotilla.hull-n02",
+          "parcel.lighter-flotilla.hull-n02",
+          "parcel.lighter-flotilla.hull-s00",
+          "parcel.lighter-flotilla.hull-s01",
+          "parcel.lighter-flotilla.lighter-berth",
+          "parcel.lighter-flotilla.the-street",
+          "approach.lighter-flotilla.arrival",
+          "parcel.lighter-flotilla.tradeship"
+        ]
+      }
+    ],
+    "proseRefs": [
+      {
+        "sourcePath": "parcels[7].why.playerPurpose",
+        "serviceRef": "trader"
+      }
+    ],
+    "authoredOn": {
+      "wbSchemaVersion": 1,
+      "ground": {
+        "centreM": [
+          3875.0,
+          6370.0
+        ],
+        "halfM": 75.0,
+        "chunks": {
+          "chunk_8_13": "fc70dc034b0612ede5873be6eae42d89048a6103fe2a43324aa0c759712d89e5"
+        },
+        "sha256": "bf177c637d777fa797396967f3320163d1edc094e3c6b798d081f263a9c8f863"
+      },
+      "kits": {
+        "docks-v1": "92a28b9dbab69e48aa98fcf900b12817942f7d7f04add453b4383689b9d24d87",
+        "flora-province-v1": "0ef937d974ac29e0c20057d560413bb7d248a7c78c48d734bf30c9b0b99c6003",
+        "interior-farmhouse-v1": "55298394d5ba20ad0cc7f9f221d5a173fcbf4748b4cf0e6ed4e25e7db40c8bb1",
+        "interior-kotm-v1": "393f62b4193f8974d307688f488d6b4b9066b764b854c48fb0462f028f66f3f6",
+        "settlement-imperial-v1": "8c5d34570634e96f1111d3e278ddae66792135a9aa5c6430ebc794f6669d4513",
+        "settlement-mud-v1": "cb24bf064b13aba569691f990ea4c4822555bcd8561ddfb9e3db820437d25cd1",
+        "watercraft-v1": "9fe7114d5e8e7116ae43e979c4bae1d6cbcb5cf9a0cc12e9e980c33995516648",
+        "works-v1": "4b58f4e275990e607d60415c3fc7c1146d5c60b4229f08041fedb898d4be0975"
+      },
+      "layout": {
+        "path": "world/sources/blueprints/lighter-flotilla.layout.json",
+        "sha256": "2c7e94af78203ecdc367aafd9b1c43c784664922dfd6a924fe61b6042dab4840",
+        "uidSha256": {
+          "MurkmireTravelShipAltenMeerhleel.0891E07A": "3509dbc6d8fc77d619f15c72605a32c980d03e3ea8c65b9fe3067f00250d17be",
+          "MurkmireTravelShipAltenMeerhleel.0891E07C": "72bf3a028eb23611abbf0bac9a1e4e68dd0adeda79917987e6c7a9144896f9ec",
+          "MurkmireTravelShipAltenMeerhleel.0891E07E": "e8e01da116bfaf550c94f570e87042bb04670a30282a46709ea6a58ad58b3220",
+          "h-n00": "8e685eb6aebb29df1b52b7d4c7317a2f6992ab10c3bdba6f9c7368c7a95c9d33",
+          "h-n00-rope-post": "0152ef15784c2cfbc8752ef70d3cb0fbf03a33540548105d2261153bbd5546a3",
+          "h-n01": "b84e71930ce43f318261990f58c1a3730b8a6c31362c4cd88b25199232ff61a3",
+          "h-n01-rope-post": "fafcf8a95c3644bd269218eaca1bf1bf2995f0ff70759cddaa75ce6410d758a3",
+          "h-n02": "1571c830e11eaaa09f40ac5f1f9d37b4a69a657e5d04549e20afd9c2b2904975",
+          "h-n02-rope-post": "adc6eacc79a7ca9455fe93725b208136a8103e8c540025fee27ebd5dbe5db0b2",
+          "h-n02-tally-crate": "640ddcabc110a5761980b3a4743997539cb2cb5f16b04b47665e97843e02b1a2",
+          "h-s00": "119fa2549665241075d676a2b28ac7ef222e02443851b738477c564ce6e1450c",
+          "h-s00-rope-post": "f166f2c6b577f3618f591238c30ce09614393d93b6566c8abcf1b30c2f1f0533",
+          "h-s01": "7bc8db597a21e7bb49f992f10b8cdf3926614bb59c0022d892f0d588a1223d0a",
+          "h-s01-rope-post": "22f9263f0f410cc8468bfd2958a61502a2b1639a23b6ae5c4e04ba18339385cb",
+          "land": "a17a2f197f4377009eb7059c44e37eafa53f67dfb237d675bfb28bae16db6223",
+          "land-sol1": "cc37eb678e72517138130558400809d6c18bfa41f5268e2c1a03ca49a5fd078e",
+          "land-sol2": "1dfbca2ae0f5c510edbacd2f51ce9e545e1aa15426f916f55fff3eff531e6fcd",
+          "land-sol3": "0def60c85163f8b1a1f5a5ece0b3db82878ec957539b7e59d9b1c0a03773e3ef",
+          "land-sol4": "eb8c9f7debc77ebd3e647f8189014a2b3e6a2dcfad6061825f383a09dfc54763",
+          "lighter": "0b78e7f85f0eb4c91d88809e8cc4e37eb5a7c5b8b0d72452fac22068b310f98d",
+          "lighter-rope-post": "249b37528854e355f65e20d19566dac14812f74451f0abd39454835c19d98b25",
+          "mk-r00-0": "70bec6f69d157c6ceb0ffb822780b88c63f2f6fdb77dbdce72206907b6dbd0ad",
+          "mk-r00-1": "208911773fef00da9f84dfa8c604e27dce5cf4f5f95f70e8c747b9c736b58459",
+          "mk-r00-2": "d298c47e572da940fd002033d0fca951f2efa6b8ca2bf4799be374e26d447c11",
+          "mk-r01-0": "a31ab1b6de9f157842ae70c88795d1b877d44f358bf1edded51e5559144bdcdc",
+          "mk-r01-1": "e77101df7f484ee621438bf748391b1100c8b22b1aebb948bbc8b803b8105438",
+          "mk-r01-2": "c6161b5be9fb60b815e05b5c76f008fd7c22c1b10f63b121dae6cca114cd08ce",
+          "mk-r02-0": "0cf7c6145e202ac898ce61348ab8516eb02ccf6abedbd67b66f22c9e45471f87",
+          "mk-r02-1": "342f4d2c3fce6f7254f78d9d266b82d99e140e81921b43f517182b829728e027",
+          "mk-r02-2": "ac6e6dfe4730666cdfdcf19722b7246e526351dc53bf1eb74a25c0a085a9f642",
+          "mk-r03-0": "e596e2e74a14b418195da89048bd2a352546144b4d754648db7dadd6921091b1",
+          "mk-r03-1": "c6d83dc02977a35c11a78dca317d965d61303d5b71a240bd24b7ca616e17c72c",
+          "mk-r03-2": "3d93b579835844801e1119f7b656037eefdf7f925b516ee971bcae1771a49cba",
+          "parcel.lighter-flotilla.hull-n02": "db7764b3c56e1ba30b55b6f8eb8b0a32bb006a512e913822434444359fcb2a42",
+          "parcel.lighter-flotilla.hull-s01": "901889b7a759396305c853c76950880f49ad20a5d584f4f231d2358d00fb998d",
+          "parcel.lighter-flotilla.lighter-berth": "c70953c162fec774d701c8ba4730d7f2a1467c31dc879a46e0f3fe7e3fd276b3",
+          "pier": "9d4f9a3505c4c0f35bc9004a7f298ded57a3203c04bd9d9029736598afabccd9",
+          "pier-alchemy": "1601fef7b54b0c0760647cd66b7a2df3fdcbe3fa88a982f1c85e1e6d2dbd1017",
+          "pier-bench-e": "4f3b67fec922a1cc6305c38a3eccc8a0efdaac45bd4f78526d9b5e487acf15b8",
+          "pier-bench-w": "7570c525067b8717f8576087247d42d32b0735afe3bf04c5ffd22223d84c72f1",
+          "pier-foot-bed": "7b5a55813d04d62068e6af090480eecac6aee7d41bb65c305252f3717f983519",
+          "pier-lamp-e": "9d1a0e868194ca38dabfb907481d3ebff9993defb6ae97d09ef0ca50a4746d8b",
+          "pier-lamp-foot": "70d31caa7143785f559e29d4a86f3f41d67e5b7089db5a426286cdc9ac9a597c",
+          "pier-lamp-m": "4887f0515d9a6461a147479bbae70736656f5bdeffd331a55de49433700e0ff2",
+          "pier-lamp-mid2": "3bbfd6bd0156dc963a0d6f1b5b354888474e86ee04031c6faa1e22fee6557074",
+          "pier-lamp-w": "688777c26648c5619bcc8af5dac6ff279489be587979048c4a836b2b0164ad1f",
+          "pier-sol": "039238b969ed110eb7d2ca1a6a8d9da0dbca2c8f00231af6d3d3bea088f2c3bb",
+          "pier-sol10": "2df1451c28382cd3a32f8f038944039c0d1f8f1da75f8cb0a2b8df1847edff41",
+          "pier-sol2": "56feeca969641a4c78380b567ce75259db589f5f574f3517e373e4610eeb2394",
+          "pier-sol3": "e28c9e0cea6c64eeb0d81a6dd727a21ebd5cb2767b8a68a7737772de62e736eb",
+          "pier-sol4": "2b2b38617234bdbff6d3f59cda7aaf10e29d2f390c0eea09976ddf3c75b38628",
+          "pier-sol5": "964054096f156b4083bcaec0a8df3e0b420e13f103b8524987551200bbbd8dfc",
+          "pier-sol6": "da5df9754b95eee9a1bbcb58d7f70648127c4887386ee32e9a7962edc6c7127f",
+          "pier-sol7": "c095eac49a5c4437d6be18fe1267bc118fa21d58eeea78d2d997630c40e0aa49",
+          "pier-sol8": "f5e98281731193534be11cbc2e5d18ea6ee9a40ddcd6d02cbefa126f3e04ace6",
+          "pier-sol9": "350b6ce1808b3edcc7080090f97a696fd81ce7b053d5edea4eea54e0a513d1a6",
+          "r00": "b80a25453fb22309b5154e93100b8ce05ad524ba22db7281f440f689547b7ab3",
+          "r00-rope-post": "15c110617200e6dd1499988d1141872fd457d8efa9d532fc39df5a31ae19b334",
+          "r01": "4862c10778cc52118d11bdb2f851bca29cb2c39798c326426a9ed7cd27f7c33f",
+          "r01-rope-post": "292887a181366992e2b3c75598e40e457e8f842a29d8c8079a20698043c0d974",
+          "r02": "0328febd1407ea3159a499f012ab7f2b49f3809b3ff359e3c3528a6d223649ef",
+          "r02-rope-post": "30598fdc795fa229dbd77dbbca0dfe8a908f0b84e748ea15b4501abc068be955",
+          "r03": "d93834fd103472b570319b513daaca6a8324382e9086bd46c1295e7ea5d75e8e",
+          "r03-rope-post": "523ecc1d4b536b8ae5b42304f9a9b7d1dd25af508cd128d72023648f7df6edc4",
+          "route.lighter-flotilla.the-street": "98ea58af4d26f695c4513256f0bee37abc61c33921753f5cf4779fd06f06ffa3",
+          "shore-marshweed": "c3cc2fd1c4795450e58fcf6a782c98f3962fa3dd1dc6b523a290da05c7f18259",
+          "tradeship": "855a5ee6cc0385561b948b51f4cbe34a1c412822e9a46292273fabc4d692029d",
+          "tradeship-rope": "5a86a3f50efb78c6c724689f4ce24d12ca9988116c3907905209ca19e7814b04",
+          "tradeship-rope-post": "d5f5b842c24dd5f08fefb1ece88ef1c2f1b4e56cf347c970fd4ad845e70e120d",
+          "ts-cargo-0": "fc0ef15b232e4520730a779063cafaaf6ab6186475241a6770ec420f08237a5d",
+          "ts-cargo-1": "6a63056917de3a27e15d4c3432537f38d7d530a1cacaf1f52484fa77bbbefe6b",
+          "ts-cargo-2": "b4d8002202df83695b80b04692ab48ebcf04da4969150ad3c7ffe24940e1d60b",
+          "ts-cargo-3": "670f6b3d0edf9cb8f9b9e80a7815bef4628b234468c98661e1c09f7bc60fa9c3",
+          "ts-cargo-4": "da340e191872c36aeec20282953b316463789e78d23aef9d4496f1b62a5dd389",
+          "ts-cargo-5": "5afde4e04c8632909ca7d2a543805ab71ae7eb2c6f94e616b1536099b0b9a3b5",
+          "ts-cargo-6": "10db30ca5a6a2688447af98ac9b5d7eca17741a016990086d75fb83f78eb9b0f",
+          "ts-cargo-7": "afc21f4a4296106306c347cefb6bfb2e8e0db849c09e2907aba9d45b68a44b16",
+          "ts-cargo-8": "c4703b02dadcaa7a6f814563fc5cc550dfab5e0448d6301d8cdae8992df7f356",
+          "ts-cargo-9": "7df4f57cd8b259e339c821a1471d464ad0d08a90e612795c7a319ed7e67c031c",
+          "ts-lamp-aft": "8c66a4afb46a9a7cf9e22ad13b68ad730153645cc4812904516cbfdfd6c19a03",
+          "ts-lamp-fore": "40194a6ffad9e143586bea03f9e975748dd021d28ab800bdcb559aec1d21a815",
+          "ts-lamp-mid": "f1f8fed95c2f9a9784523a860ccc1524487d309a984944b099d6e6b9b955dcd2",
+          "ts-sign": "206d254e65560f6670a5e4affb0fbd753e7e2cdca43f535b952b0f2f9172f6e0",
+          "ts-stair-in": "b6a4c8e4c61bc963181718f1ddf23dfbeed19af1ec03d58a69883e1318dd800b",
+          "ts-stair-out": "45b361744cf4bfb5d8e3668d948e0ddb7f3dc545fd6e89783aea2d80bd321be1"
+        },
+        "geometrySha256": "ab5675606e116b6edc896c7dd46ebd677e1ca6aa307dde64d2c1eab4bc9da795"
+      }
+    },
+    "walkRoutes": {
+      "schemaVersion": 1,
+      "cellM": 0.5,
+      "stepM": 0.45,
+      "slopeMaxDeg": 30.0,
+      "wadeMaxM": 0.7,
+      "routes": {
+        "berth:r00": {
+          "points": [
+            [
+              3817.48,
+              0.32,
+              6381.18
+            ],
+            [
+              3817.48,
+              0.32,
+              6378.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6377.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6373.68
+            ],
+            [
+              3818.98,
+              0.32,
+              6373.18
+            ],
+            [
+              3818.98,
+              0.32,
+              6371.68
+            ],
+            [
+              3819.48,
+              0.32,
+              6371.18
+            ],
+            [
+              3819.48,
+              0.32,
+              6370.18
+            ],
+            [
+              3827.48,
+              0.32,
+              6362.18
+            ],
+            [
+              3827.98,
+              0.05,
+              6361.68
+            ],
+            [
+              3828.48,
+              0.15,
+              6361.68
+            ],
+            [
+              3829.48,
+              0.37,
+              6361.68
+            ],
+            [
+              3829.98,
+              0.41,
+              6361.18
+            ],
+            [
+              3830.48,
+              0.34,
+              6361.18
+            ],
+            [
+              3830.98,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.48,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.98,
+              0.28,
+              6360.68
+            ],
+            [
+              3837.48,
+              0.32,
+              6360.18
+            ],
+            [
+              3861.98,
+              0.32,
+              6360.18
+            ],
+            [
+              3865.98,
+              0.32,
+              6356.18
+            ],
+            [
+              3868.98,
+              0.32,
+              6356.18
+            ]
+          ],
+          "routeM": 67.22,
+          "steepestDeg": 21.2,
+          "largestStepM": 0.274,
+          "deepestWadeM": 0.0
+        },
+        "berth:r01": {
+          "points": [
+            [
+              3817.48,
+              0.32,
+              6381.18
+            ],
+            [
+              3817.48,
+              0.32,
+              6378.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6377.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6373.68
+            ],
+            [
+              3818.98,
+              0.32,
+              6373.18
+            ],
+            [
+              3818.98,
+              0.32,
+              6371.68
+            ],
+            [
+              3819.48,
+              0.32,
+              6371.18
+            ],
+            [
+              3819.48,
+              0.32,
+              6370.18
+            ],
+            [
+              3827.48,
+              0.32,
+              6362.18
+            ],
+            [
+              3827.98,
+              0.05,
+              6361.68
+            ],
+            [
+              3828.48,
+              0.15,
+              6361.68
+            ],
+            [
+              3829.48,
+              0.37,
+              6361.68
+            ],
+            [
+              3829.98,
+              0.41,
+              6361.18
+            ],
+            [
+              3830.48,
+              0.34,
+              6361.18
+            ],
+            [
+              3830.98,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.48,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.98,
+              0.28,
+              6360.68
+            ],
+            [
+              3837.48,
+              0.32,
+              6360.18
+            ],
+            [
+              3861.98,
+              0.32,
+              6360.18
+            ],
+            [
+              3865.98,
+              0.32,
+              6356.18
+            ],
+            [
+              3872.48,
+              0.32,
+              6356.18
+            ]
+          ],
+          "routeM": 70.72,
+          "steepestDeg": 21.2,
+          "largestStepM": 0.274,
+          "deepestWadeM": 0.0
+        },
+        "berth:r02": {
+          "points": [
+            [
+              3817.48,
+              0.32,
+              6381.18
+            ],
+            [
+              3817.48,
+              0.32,
+              6378.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6377.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6373.68
+            ],
+            [
+              3818.98,
+              0.32,
+              6373.18
+            ],
+            [
+              3818.98,
+              0.32,
+              6371.68
+            ],
+            [
+              3819.48,
+              0.32,
+              6371.18
+            ],
+            [
+              3819.48,
+              0.32,
+              6370.18
+            ],
+            [
+              3827.48,
+              0.32,
+              6362.18
+            ],
+            [
+              3827.98,
+              0.05,
+              6361.68
+            ],
+            [
+              3828.48,
+              0.15,
+              6361.68
+            ],
+            [
+              3829.48,
+              0.37,
+              6361.68
+            ],
+            [
+              3829.98,
+              0.41,
+              6361.18
+            ],
+            [
+              3830.48,
+              0.34,
+              6361.18
+            ],
+            [
+              3830.98,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.48,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.98,
+              0.28,
+              6360.68
+            ],
+            [
+              3837.48,
+              0.32,
+              6360.18
+            ],
+            [
+              3861.98,
+              0.32,
+              6360.18
+            ],
+            [
+              3865.98,
+              0.32,
+              6356.18
+            ],
+            [
+              3876.48,
+              0.32,
+              6356.18
+            ]
+          ],
+          "routeM": 74.72,
+          "steepestDeg": 21.2,
+          "largestStepM": 0.274,
+          "deepestWadeM": 0.0
+        },
+        "berth:r03": {
+          "points": [
+            [
+              3817.48,
+              0.32,
+              6381.18
+            ],
+            [
+              3817.48,
+              0.32,
+              6378.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6377.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6373.68
+            ],
+            [
+              3818.98,
+              0.32,
+              6373.18
+            ],
+            [
+              3818.98,
+              0.32,
+              6371.68
+            ],
+            [
+              3819.48,
+              0.32,
+              6371.18
+            ],
+            [
+              3819.48,
+              0.32,
+              6370.18
+            ],
+            [
+              3827.48,
+              0.32,
+              6362.18
+            ],
+            [
+              3827.98,
+              0.05,
+              6361.68
+            ],
+            [
+              3828.48,
+              0.15,
+              6361.68
+            ],
+            [
+              3829.48,
+              0.37,
+              6361.68
+            ],
+            [
+              3829.98,
+              0.41,
+              6361.18
+            ],
+            [
+              3830.48,
+              0.34,
+              6361.18
+            ],
+            [
+              3830.98,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.48,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.98,
+              0.28,
+              6360.68
+            ],
+            [
+              3837.48,
+              0.32,
+              6360.18
+            ],
+            [
+              3861.98,
+              0.32,
+              6360.18
+            ],
+            [
+              3865.98,
+              0.32,
+              6356.18
+            ],
+            [
+              3879.98,
+              0.32,
+              6356.18
+            ]
+          ],
+          "routeM": 78.22,
+          "steepestDeg": 21.2,
+          "largestStepM": 0.274,
+          "deepestWadeM": 0.0
+        },
+        "berth:h-n00": {
+          "points": [
+            [
+              3817.48,
+              0.32,
+              6381.18
+            ],
+            [
+              3817.48,
+              0.32,
+              6378.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6377.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6373.68
+            ],
+            [
+              3818.98,
+              0.32,
+              6373.18
+            ],
+            [
+              3818.98,
+              0.32,
+              6371.68
+            ],
+            [
+              3819.48,
+              0.32,
+              6371.18
+            ],
+            [
+              3819.48,
+              0.32,
+              6370.18
+            ],
+            [
+              3827.48,
+              0.32,
+              6362.18
+            ],
+            [
+              3827.98,
+              0.05,
+              6361.68
+            ],
+            [
+              3828.48,
+              0.15,
+              6361.68
+            ],
+            [
+              3829.48,
+              0.37,
+              6361.68
+            ],
+            [
+              3829.98,
+              0.41,
+              6361.18
+            ],
+            [
+              3830.48,
+              0.34,
+              6361.18
+            ],
+            [
+              3830.98,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.48,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.98,
+              0.28,
+              6360.68
+            ],
+            [
+              3837.48,
+              0.32,
+              6360.18
+            ],
+            [
+              3861.98,
+              0.32,
+              6360.18
+            ],
+            [
+              3865.98,
+              0.32,
+              6356.18
+            ],
+            [
+              3894.98,
+              0.32,
+              6356.18
+            ]
+          ],
+          "routeM": 93.22,
+          "steepestDeg": 21.2,
+          "largestStepM": 0.274,
+          "deepestWadeM": 0.0
+        },
+        "berth:h-s00": {
+          "points": [
+            [
+              3817.48,
+              0.32,
+              6381.18
+            ],
+            [
+              3817.48,
+              0.32,
+              6378.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6377.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6373.68
+            ],
+            [
+              3818.98,
+              0.32,
+              6373.18
+            ],
+            [
+              3818.98,
+              0.32,
+              6371.68
+            ],
+            [
+              3819.48,
+              0.32,
+              6371.18
+            ],
+            [
+              3819.48,
+              0.32,
+              6370.18
+            ],
+            [
+              3827.48,
+              0.32,
+              6362.18
+            ],
+            [
+              3827.98,
+              0.05,
+              6361.68
+            ],
+            [
+              3828.48,
+              0.15,
+              6361.68
+            ],
+            [
+              3829.48,
+              0.37,
+              6361.68
+            ],
+            [
+              3829.98,
+              0.41,
+              6361.18
+            ],
+            [
+              3830.48,
+              0.34,
+              6361.18
+            ],
+            [
+              3830.98,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.48,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.98,
+              0.28,
+              6360.68
+            ],
+            [
+              3837.48,
+              0.32,
+              6360.18
+            ],
+            [
+              3864.48,
+              0.32,
+              6360.18
+            ]
+          ],
+          "routeM": 61.07,
+          "steepestDeg": 21.2,
+          "largestStepM": 0.274,
+          "deepestWadeM": 0.0
+        },
+        "berth:h-s01": {
+          "points": [
+            [
+              3817.48,
+              0.32,
+              6381.18
+            ],
+            [
+              3817.48,
+              0.32,
+              6378.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6377.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6373.68
+            ],
+            [
+              3818.98,
+              0.32,
+              6373.18
+            ],
+            [
+              3818.98,
+              0.32,
+              6371.68
+            ],
+            [
+              3819.48,
+              0.32,
+              6371.18
+            ],
+            [
+              3819.48,
+              0.32,
+              6370.18
+            ],
+            [
+              3827.48,
+              0.32,
+              6362.18
+            ],
+            [
+              3827.98,
+              0.05,
+              6361.68
+            ],
+            [
+              3828.48,
+              0.15,
+              6361.68
+            ],
+            [
+              3829.48,
+              0.37,
+              6361.68
+            ],
+            [
+              3829.98,
+              0.41,
+              6361.18
+            ],
+            [
+              3830.48,
+              0.34,
+              6361.18
+            ],
+            [
+              3830.98,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.48,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.98,
+              0.28,
+              6360.68
+            ],
+            [
+              3837.48,
+              0.32,
+              6360.18
+            ],
+            [
+              3875.48,
+              0.32,
+              6360.18
+            ]
+          ],
+          "routeM": 72.07,
+          "steepestDeg": 21.2,
+          "largestStepM": 0.274,
+          "deepestWadeM": 0.0
+        },
+        "berth:h-n02": {
+          "points": [
+            [
+              3817.48,
+              0.32,
+              6381.18
+            ],
+            [
+              3817.48,
+              0.32,
+              6378.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6377.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6373.68
+            ],
+            [
+              3818.98,
+              0.32,
+              6373.18
+            ],
+            [
+              3818.98,
+              0.32,
+              6371.68
+            ],
+            [
+              3819.48,
+              0.32,
+              6371.18
+            ],
+            [
+              3819.48,
+              0.32,
+              6370.18
+            ],
+            [
+              3827.48,
+              0.32,
+              6362.18
+            ],
+            [
+              3827.98,
+              0.05,
+              6361.68
+            ],
+            [
+              3828.48,
+              0.15,
+              6361.68
+            ],
+            [
+              3829.48,
+              0.37,
+              6361.68
+            ],
+            [
+              3829.98,
+              0.41,
+              6361.18
+            ],
+            [
+              3830.48,
+              0.34,
+              6361.18
+            ],
+            [
+              3830.98,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.48,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.98,
+              0.28,
+              6360.68
+            ],
+            [
+              3837.48,
+              0.32,
+              6360.18
+            ],
+            [
+              3876.98,
+              0.32,
+              6360.18
+            ]
+          ],
+          "routeM": 73.57,
+          "steepestDeg": 21.2,
+          "largestStepM": 0.274,
+          "deepestWadeM": 0.0
+        },
+        "berth:lighter": {
+          "points": [
+            [
+              3817.48,
+              0.32,
+              6381.18
+            ],
+            [
+              3817.48,
+              0.32,
+              6378.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6377.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6373.68
+            ],
+            [
+              3818.98,
+              0.32,
+              6373.18
+            ],
+            [
+              3818.98,
+              0.32,
+              6371.68
+            ],
+            [
+              3819.48,
+              0.32,
+              6371.18
+            ],
+            [
+              3819.48,
+              0.32,
+              6370.18
+            ],
+            [
+              3827.48,
+              0.32,
+              6362.18
+            ],
+            [
+              3827.98,
+              0.05,
+              6361.68
+            ],
+            [
+              3828.48,
+              0.15,
+              6361.68
+            ],
+            [
+              3829.48,
+              0.37,
+              6361.68
+            ],
+            [
+              3829.98,
+              0.41,
+              6361.18
+            ],
+            [
+              3830.48,
+              0.34,
+              6361.18
+            ],
+            [
+              3830.98,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.48,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.98,
+              0.28,
+              6360.68
+            ],
+            [
+              3837.48,
+              0.32,
+              6360.18
+            ],
+            [
+              3861.98,
+              0.32,
+              6360.18
+            ],
+            [
+              3865.98,
+              0.32,
+              6356.18
+            ],
+            [
+              3896.98,
+              0.32,
+              6356.18
+            ],
+            [
+              3897.48,
+              0.69,
+              6355.68
+            ],
+            [
+              3897.98,
+              0.4,
+              6355.18
+            ],
+            [
+              3898.48,
+              0.37,
+              6354.68
+            ],
+            [
+              3898.98,
+              0.37,
+              6354.18
+            ],
+            [
+              3899.48,
+              0.44,
+              6353.68
+            ]
+          ],
+          "routeM": 98.91,
+          "steepestDeg": 27.4,
+          "largestStepM": 0.366,
+          "deepestWadeM": 0.0
+        },
+        "berth:tradeship": {
+          "points": [
+            [
+              3817.48,
+              0.32,
+              6381.18
+            ],
+            [
+              3817.48,
+              0.32,
+              6378.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6377.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6373.68
+            ],
+            [
+              3818.98,
+              0.32,
+              6373.18
+            ],
+            [
+              3818.98,
+              0.32,
+              6371.68
+            ],
+            [
+              3819.48,
+              0.32,
+              6371.18
+            ],
+            [
+              3819.48,
+              0.32,
+              6370.18
+            ],
+            [
+              3827.48,
+              0.32,
+              6362.18
+            ],
+            [
+              3827.98,
+              0.05,
+              6361.68
+            ],
+            [
+              3828.48,
+              0.15,
+              6361.68
+            ],
+            [
+              3829.48,
+              0.37,
+              6361.68
+            ],
+            [
+              3829.98,
+              0.41,
+              6361.18
+            ],
+            [
+              3830.48,
+              0.34,
+              6361.18
+            ],
+            [
+              3830.98,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.48,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.98,
+              0.28,
+              6360.68
+            ],
+            [
+              3837.48,
+              0.32,
+              6360.18
+            ],
+            [
+              3884.98,
+              0.32,
+              6360.18
+            ]
+          ],
+          "routeM": 81.57,
+          "steepestDeg": 21.2,
+          "largestStepM": 0.274,
+          "deepestWadeM": 0.0
+        },
+        "berth:h-n01": {
+          "points": [
+            [
+              3817.48,
+              0.32,
+              6381.18
+            ],
+            [
+              3817.48,
+              0.32,
+              6378.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6377.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6373.68
+            ],
+            [
+              3818.98,
+              0.32,
+              6373.18
+            ],
+            [
+              3818.98,
+              0.32,
+              6371.68
+            ],
+            [
+              3819.48,
+              0.32,
+              6371.18
+            ],
+            [
+              3819.48,
+              0.32,
+              6370.18
+            ],
+            [
+              3827.48,
+              0.32,
+              6362.18
+            ],
+            [
+              3827.98,
+              0.05,
+              6361.68
+            ],
+            [
+              3828.48,
+              0.15,
+              6361.68
+            ],
+            [
+              3829.48,
+              0.37,
+              6361.68
+            ],
+            [
+              3829.98,
+              0.41,
+              6361.18
+            ],
+            [
+              3830.48,
+              0.34,
+              6361.18
+            ],
+            [
+              3830.98,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.48,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.98,
+              0.28,
+              6360.68
+            ],
+            [
+              3837.48,
+              0.32,
+              6360.18
+            ],
+            [
+              3869.98,
+              0.32,
+              6360.18
+            ]
+          ],
+          "routeM": 66.57,
+          "steepestDeg": 21.2,
+          "largestStepM": 0.274,
+          "deepestWadeM": 0.0
+        },
+        "door:tradeship": {
+          "points": [
+            [
+              3814.48,
+              -0.16,
+              6382.18
+            ],
+            [
+              3814.48,
+              -0.16,
+              6381.18
+            ],
+            [
+              3814.48,
+              -0.17,
+              6380.68
+            ],
+            [
+              3814.48,
+              -0.17,
+              6378.68
+            ],
+            [
+              3814.48,
+              -0.18,
+              6378.18
+            ],
+            [
+              3814.48,
+              -0.18,
+              6375.68
+            ],
+            [
+              3814.48,
+              -0.19,
+              6375.18
+            ],
+            [
+              3814.48,
+              -0.19,
+              6373.68
+            ],
+            [
+              3814.98,
+              -0.2,
+              6373.18
+            ],
+            [
+              3816.48,
+              -0.2,
+              6371.68
+            ],
+            [
+              3816.98,
+              -0.21,
+              6371.18
+            ],
+            [
+              3817.48,
+              -0.21,
+              6370.68
+            ],
+            [
+              3817.98,
+              -0.22,
+              6370.18
+            ],
+            [
+              3819.48,
+              -0.22,
+              6368.68
+            ],
+            [
+              3819.98,
+              -0.23,
+              6368.18
+            ],
+            [
+              3819.98,
+              -0.23,
+              6367.18
+            ],
+            [
+              3820.48,
+              -0.23,
+              6366.68
+            ],
+            [
+              3820.98,
+              -0.22,
+              6366.18
+            ],
+            [
+              3820.98,
+              -0.22,
+              6365.68
+            ],
+            [
+              3820.98,
+              -0.21,
+              6365.18
+            ],
+            [
+              3821.48,
+              -0.21,
+              6364.68
+            ],
+            [
+              3821.48,
+              -0.19,
+              6364.18
+            ],
+            [
+              3821.48,
+              -0.18,
+              6363.68
+            ],
+            [
+              3821.48,
+              -0.16,
+              6363.18
+            ],
+            [
+              3821.98,
+              -0.14,
+              6362.68
+            ],
+            [
+              3822.48,
+              -0.11,
+              6362.18
+            ],
+            [
+              3822.98,
+              0.32,
+              6361.68
+            ],
+            [
+              3826.48,
+              0.32,
+              6361.68
+            ],
+            [
+              3828.48,
+              0.32,
+              6359.68
+            ],
+            [
+              3876.48,
+              0.32,
+              6359.68
+            ],
+            [
+              3877.48,
+              0.32,
+              6358.68
+            ],
+            [
+              3893.98,
+              0.32,
+              6358.68
+            ],
+            [
+              3894.48,
+              0.38,
+              6358.18
+            ],
+            [
+              3894.48,
+              2.38,
+              6360.18
+            ],
+            [
+              3894.48,
+              2.94,
+              6360.68
+            ],
+            [
+              3894.48,
+              2.47,
+              6361.18
+            ],
+            [
+              3894.48,
+              1.89,
+              6361.68
+            ],
+            [
+              3894.48,
+              1.52,
+              6362.18
+            ],
+            [
+              3893.98,
+              1.59,
+              6362.68
+            ],
+            [
+              3893.48,
+              1.59,
+              6363.18
+            ],
+            [
+              3892.98,
+              1.59,
+              6363.18
+            ],
+            [
+              3892.48,
+              1.36,
+              6363.68
+            ],
+            [
+              3891.98,
+              0.89,
+              6363.68
+            ],
+            [
+              3891.48,
+              0.66,
+              6364.18
+            ],
+            [
+              3890.98,
+              0.66,
+              6364.68
+            ],
+            [
+              3890.98,
+              0.66,
+              6365.68
+            ]
+          ],
+          "routeM": 108.55,
+          "steepestDeg": 49.0,
+          "largestStepM": 0.562,
+          "deepestWadeM": 0.229,
+          "parcelId": "parcel.lighter-flotilla.tradeship",
+          "doorIds": [
+            "door.mercantile-coast.lighter-flotilla.1"
+          ]
+        },
+        "socket:socket.lighter-flotilla.npc-speaker": {
+          "points": [
+            [
+              3817.48,
+              0.32,
+              6381.18
+            ],
+            [
+              3817.48,
+              0.32,
+              6378.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6377.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6373.68
+            ],
+            [
+              3818.98,
+              0.32,
+              6373.18
+            ],
+            [
+              3818.98,
+              0.32,
+              6371.68
+            ],
+            [
+              3819.48,
+              0.32,
+              6371.18
+            ],
+            [
+              3819.48,
+              0.32,
+              6370.18
+            ],
+            [
+              3827.48,
+              0.32,
+              6362.18
+            ],
+            [
+              3827.98,
+              0.05,
+              6361.68
+            ],
+            [
+              3828.48,
+              0.15,
+              6361.68
+            ],
+            [
+              3829.48,
+              0.37,
+              6361.68
+            ],
+            [
+              3829.98,
+              0.41,
+              6361.18
+            ],
+            [
+              3830.48,
+              0.34,
+              6361.18
+            ],
+            [
+              3830.98,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.48,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.98,
+              0.28,
+              6360.68
+            ],
+            [
+              3837.48,
+              0.32,
+              6360.18
+            ],
+            [
+              3876.98,
+              0.32,
+              6360.18
+            ]
+          ],
+          "routeM": 73.57,
+          "steepestDeg": 21.2,
+          "largestStepM": 0.274,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.lighter-flotilla.npc-crew": {
+          "points": [
+            [
+              3817.48,
+              0.32,
+              6381.18
+            ],
+            [
+              3817.48,
+              0.32,
+              6378.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6377.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6373.68
+            ],
+            [
+              3818.98,
+              0.32,
+              6373.18
+            ],
+            [
+              3818.98,
+              0.32,
+              6371.68
+            ],
+            [
+              3819.48,
+              0.32,
+              6371.18
+            ],
+            [
+              3819.48,
+              0.32,
+              6370.18
+            ],
+            [
+              3827.48,
+              0.32,
+              6362.18
+            ],
+            [
+              3827.98,
+              0.05,
+              6361.68
+            ],
+            [
+              3828.48,
+              0.15,
+              6361.68
+            ],
+            [
+              3829.48,
+              0.37,
+              6361.68
+            ],
+            [
+              3829.98,
+              0.41,
+              6361.18
+            ],
+            [
+              3830.48,
+              0.34,
+              6361.18
+            ],
+            [
+              3830.98,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.48,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.98,
+              0.28,
+              6360.68
+            ],
+            [
+              3837.48,
+              0.32,
+              6360.18
+            ],
+            [
+              3876.98,
+              0.32,
+              6360.18
+            ]
+          ],
+          "routeM": 73.57,
+          "steepestDeg": 21.2,
+          "largestStepM": 0.274,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.lighter-flotilla.npc-n2": {
+          "points": [
+            [
+              3817.48,
+              0.32,
+              6381.18
+            ],
+            [
+              3817.48,
+              0.32,
+              6378.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6377.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6373.68
+            ],
+            [
+              3818.98,
+              0.32,
+              6373.18
+            ],
+            [
+              3818.98,
+              0.32,
+              6371.68
+            ],
+            [
+              3819.48,
+              0.32,
+              6371.18
+            ],
+            [
+              3819.48,
+              0.32,
+              6370.18
+            ],
+            [
+              3827.48,
+              0.32,
+              6362.18
+            ],
+            [
+              3827.98,
+              0.05,
+              6361.68
+            ],
+            [
+              3828.48,
+              0.15,
+              6361.68
+            ],
+            [
+              3829.48,
+              0.37,
+              6361.68
+            ],
+            [
+              3829.98,
+              0.41,
+              6361.18
+            ],
+            [
+              3830.48,
+              0.34,
+              6361.18
+            ],
+            [
+              3830.98,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.48,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.98,
+              0.28,
+              6360.68
+            ],
+            [
+              3837.48,
+              0.32,
+              6360.18
+            ],
+            [
+              3875.48,
+              0.32,
+              6360.18
+            ]
+          ],
+          "routeM": 72.07,
+          "steepestDeg": 21.2,
+          "largestStepM": 0.274,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.lighter-flotilla.idle-speaker-work": {
+          "points": [
+            [
+              3817.48,
+              0.32,
+              6381.18
+            ],
+            [
+              3817.48,
+              0.32,
+              6378.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6377.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6373.68
+            ],
+            [
+              3818.98,
+              0.32,
+              6373.18
+            ],
+            [
+              3818.98,
+              0.32,
+              6371.68
+            ],
+            [
+              3819.48,
+              0.32,
+              6371.18
+            ],
+            [
+              3819.48,
+              0.32,
+              6370.18
+            ],
+            [
+              3827.48,
+              0.32,
+              6362.18
+            ],
+            [
+              3827.98,
+              0.05,
+              6361.68
+            ],
+            [
+              3828.48,
+              0.15,
+              6361.68
+            ],
+            [
+              3829.48,
+              0.37,
+              6361.68
+            ],
+            [
+              3829.98,
+              0.41,
+              6361.18
+            ],
+            [
+              3830.48,
+              0.34,
+              6361.18
+            ],
+            [
+              3830.98,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.48,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.98,
+              0.28,
+              6360.68
+            ],
+            [
+              3837.48,
+              0.32,
+              6360.18
+            ],
+            [
+              3876.98,
+              0.32,
+              6360.18
+            ]
+          ],
+          "routeM": 73.57,
+          "steepestDeg": 21.2,
+          "largestStepM": 0.274,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.lighter-flotilla.idle-speaker-home": {
+          "points": [
+            [
+              3817.48,
+              0.32,
+              6381.18
+            ],
+            [
+              3817.48,
+              0.32,
+              6378.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6377.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6373.68
+            ],
+            [
+              3818.98,
+              0.32,
+              6373.18
+            ],
+            [
+              3818.98,
+              0.32,
+              6371.68
+            ],
+            [
+              3819.48,
+              0.32,
+              6371.18
+            ],
+            [
+              3819.48,
+              0.32,
+              6370.18
+            ],
+            [
+              3827.48,
+              0.32,
+              6362.18
+            ],
+            [
+              3827.98,
+              0.05,
+              6361.68
+            ],
+            [
+              3828.48,
+              0.15,
+              6361.68
+            ],
+            [
+              3829.48,
+              0.37,
+              6361.68
+            ],
+            [
+              3829.98,
+              0.41,
+              6361.18
+            ],
+            [
+              3830.48,
+              0.34,
+              6361.18
+            ],
+            [
+              3830.98,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.48,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.98,
+              0.28,
+              6360.68
+            ],
+            [
+              3837.48,
+              0.32,
+              6360.18
+            ],
+            [
+              3876.98,
+              0.32,
+              6360.18
+            ]
+          ],
+          "routeM": 73.57,
+          "steepestDeg": 21.2,
+          "largestStepM": 0.274,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.lighter-flotilla.idle-n1-work": {
+          "points": [
+            [
+              3817.48,
+              0.32,
+              6381.18
+            ],
+            [
+              3817.48,
+              0.32,
+              6378.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6377.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6373.68
+            ],
+            [
+              3818.98,
+              0.32,
+              6373.18
+            ],
+            [
+              3818.98,
+              0.32,
+              6371.68
+            ],
+            [
+              3819.48,
+              0.32,
+              6371.18
+            ],
+            [
+              3819.48,
+              0.32,
+              6370.18
+            ],
+            [
+              3827.48,
+              0.32,
+              6362.18
+            ],
+            [
+              3827.98,
+              0.05,
+              6361.68
+            ],
+            [
+              3828.48,
+              0.15,
+              6361.68
+            ],
+            [
+              3829.48,
+              0.37,
+              6361.68
+            ],
+            [
+              3829.98,
+              0.41,
+              6361.18
+            ],
+            [
+              3830.48,
+              0.34,
+              6361.18
+            ],
+            [
+              3830.98,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.48,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.98,
+              0.28,
+              6360.68
+            ],
+            [
+              3837.48,
+              0.32,
+              6360.18
+            ],
+            [
+              3861.98,
+              0.32,
+              6360.18
+            ],
+            [
+              3865.98,
+              0.32,
+              6356.18
+            ],
+            [
+              3896.98,
+              0.32,
+              6356.18
+            ],
+            [
+              3897.48,
+              0.69,
+              6355.68
+            ],
+            [
+              3897.98,
+              0.4,
+              6355.18
+            ],
+            [
+              3898.48,
+              0.37,
+              6354.68
+            ],
+            [
+              3898.98,
+              0.37,
+              6354.18
+            ],
+            [
+              3899.48,
+              0.44,
+              6353.68
+            ]
+          ],
+          "routeM": 98.91,
+          "steepestDeg": 27.4,
+          "largestStepM": 0.366,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.lighter-flotilla.idle-n1-home": {
+          "points": [
+            [
+              3817.48,
+              0.32,
+              6381.18
+            ],
+            [
+              3817.48,
+              0.32,
+              6378.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6377.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6373.68
+            ],
+            [
+              3818.98,
+              0.32,
+              6373.18
+            ],
+            [
+              3818.98,
+              0.32,
+              6371.68
+            ],
+            [
+              3819.48,
+              0.32,
+              6371.18
+            ],
+            [
+              3819.48,
+              0.32,
+              6370.18
+            ],
+            [
+              3827.48,
+              0.32,
+              6362.18
+            ],
+            [
+              3827.98,
+              0.05,
+              6361.68
+            ],
+            [
+              3828.48,
+              0.15,
+              6361.68
+            ],
+            [
+              3829.48,
+              0.37,
+              6361.68
+            ],
+            [
+              3829.98,
+              0.41,
+              6361.18
+            ],
+            [
+              3830.48,
+              0.34,
+              6361.18
+            ],
+            [
+              3830.98,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.48,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.98,
+              0.28,
+              6360.68
+            ],
+            [
+              3837.48,
+              0.32,
+              6360.18
+            ],
+            [
+              3876.98,
+              0.32,
+              6360.18
+            ]
+          ],
+          "routeM": 73.57,
+          "steepestDeg": 21.2,
+          "largestStepM": 0.274,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.lighter-flotilla.idle-n2-work": {
+          "points": [
+            [
+              3817.48,
+              0.32,
+              6381.18
+            ],
+            [
+              3817.48,
+              0.32,
+              6378.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6377.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6373.68
+            ],
+            [
+              3818.98,
+              0.32,
+              6373.18
+            ],
+            [
+              3818.98,
+              0.32,
+              6371.68
+            ],
+            [
+              3819.48,
+              0.32,
+              6371.18
+            ],
+            [
+              3819.48,
+              0.32,
+              6370.18
+            ],
+            [
+              3827.48,
+              0.32,
+              6362.18
+            ],
+            [
+              3827.98,
+              0.05,
+              6361.68
+            ],
+            [
+              3828.48,
+              0.15,
+              6361.68
+            ],
+            [
+              3829.48,
+              0.37,
+              6361.68
+            ],
+            [
+              3829.98,
+              0.41,
+              6361.18
+            ],
+            [
+              3830.48,
+              0.34,
+              6361.18
+            ],
+            [
+              3830.98,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.48,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.98,
+              0.28,
+              6360.68
+            ],
+            [
+              3837.48,
+              0.32,
+              6360.18
+            ],
+            [
+              3875.48,
+              0.32,
+              6360.18
+            ]
+          ],
+          "routeM": 72.07,
+          "steepestDeg": 21.2,
+          "largestStepM": 0.274,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.lighter-flotilla.idle-n2-home": {
+          "points": [
+            [
+              3817.48,
+              0.32,
+              6381.18
+            ],
+            [
+              3817.48,
+              0.32,
+              6378.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6377.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6373.68
+            ],
+            [
+              3818.98,
+              0.32,
+              6373.18
+            ],
+            [
+              3818.98,
+              0.32,
+              6371.68
+            ],
+            [
+              3819.48,
+              0.32,
+              6371.18
+            ],
+            [
+              3819.48,
+              0.32,
+              6370.18
+            ],
+            [
+              3827.48,
+              0.32,
+              6362.18
+            ],
+            [
+              3827.98,
+              0.05,
+              6361.68
+            ],
+            [
+              3828.48,
+              0.15,
+              6361.68
+            ],
+            [
+              3829.48,
+              0.37,
+              6361.68
+            ],
+            [
+              3829.98,
+              0.41,
+              6361.18
+            ],
+            [
+              3830.48,
+              0.34,
+              6361.18
+            ],
+            [
+              3830.98,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.48,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.98,
+              0.28,
+              6360.68
+            ],
+            [
+              3837.48,
+              0.32,
+              6360.18
+            ],
+            [
+              3875.48,
+              0.32,
+              6360.18
+            ]
+          ],
+          "routeM": 72.07,
+          "steepestDeg": 21.2,
+          "largestStepM": 0.274,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.lighter-flotilla.npc-lighterman": {
+          "points": [
+            [
+              3817.48,
+              0.32,
+              6381.18
+            ],
+            [
+              3817.48,
+              0.32,
+              6378.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6377.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6373.68
+            ],
+            [
+              3818.98,
+              0.32,
+              6373.18
+            ],
+            [
+              3818.98,
+              0.32,
+              6371.68
+            ],
+            [
+              3819.48,
+              0.32,
+              6371.18
+            ],
+            [
+              3819.48,
+              0.32,
+              6370.18
+            ],
+            [
+              3827.48,
+              0.32,
+              6362.18
+            ],
+            [
+              3827.98,
+              0.05,
+              6361.68
+            ],
+            [
+              3828.48,
+              0.15,
+              6361.68
+            ],
+            [
+              3829.48,
+              0.37,
+              6361.68
+            ],
+            [
+              3829.98,
+              0.41,
+              6361.18
+            ],
+            [
+              3830.48,
+              0.34,
+              6361.18
+            ],
+            [
+              3830.98,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.48,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.98,
+              0.28,
+              6360.68
+            ],
+            [
+              3837.48,
+              0.32,
+              6360.18
+            ],
+            [
+              3861.98,
+              0.32,
+              6360.18
+            ],
+            [
+              3865.98,
+              0.32,
+              6356.18
+            ],
+            [
+              3896.98,
+              0.32,
+              6356.18
+            ],
+            [
+              3897.48,
+              0.69,
+              6355.68
+            ],
+            [
+              3897.98,
+              0.4,
+              6355.18
+            ],
+            [
+              3898.48,
+              0.37,
+              6354.68
+            ],
+            [
+              3898.98,
+              0.37,
+              6354.18
+            ],
+            [
+              3899.48,
+              0.44,
+              6353.68
+            ]
+          ],
+          "routeM": 98.91,
+          "steepestDeg": 27.4,
+          "largestStepM": 0.366,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.lighter-flotilla.idle-seat-pier-bench-e-1": {
+          "points": [
+            [
+              3814.48,
+              -0.16,
+              6382.18
+            ],
+            [
+              3814.48,
+              -0.16,
+              6381.18
+            ],
+            [
+              3814.48,
+              -0.17,
+              6380.68
+            ],
+            [
+              3814.48,
+              -0.17,
+              6378.68
+            ],
+            [
+              3814.48,
+              -0.18,
+              6378.18
+            ],
+            [
+              3814.48,
+              -0.18,
+              6375.68
+            ],
+            [
+              3814.48,
+              -0.19,
+              6375.18
+            ],
+            [
+              3814.48,
+              -0.19,
+              6373.68
+            ],
+            [
+              3814.98,
+              -0.2,
+              6373.18
+            ],
+            [
+              3816.48,
+              -0.2,
+              6371.68
+            ],
+            [
+              3816.98,
+              -0.21,
+              6371.18
+            ],
+            [
+              3817.48,
+              -0.21,
+              6370.68
+            ],
+            [
+              3817.98,
+              -0.22,
+              6370.18
+            ],
+            [
+              3819.48,
+              -0.22,
+              6368.68
+            ],
+            [
+              3819.98,
+              -0.23,
+              6368.18
+            ],
+            [
+              3819.98,
+              -0.23,
+              6367.18
+            ],
+            [
+              3820.48,
+              -0.23,
+              6366.68
+            ],
+            [
+              3820.98,
+              -0.22,
+              6366.18
+            ],
+            [
+              3820.98,
+              -0.22,
+              6365.68
+            ],
+            [
+              3820.98,
+              -0.21,
+              6365.18
+            ],
+            [
+              3821.48,
+              -0.21,
+              6364.68
+            ],
+            [
+              3821.48,
+              -0.19,
+              6364.18
+            ],
+            [
+              3821.48,
+              -0.18,
+              6363.68
+            ],
+            [
+              3821.48,
+              -0.16,
+              6363.18
+            ],
+            [
+              3821.98,
+              -0.14,
+              6362.68
+            ],
+            [
+              3822.48,
+              -0.11,
+              6362.18
+            ],
+            [
+              3822.98,
+              0.32,
+              6361.68
+            ],
+            [
+              3826.48,
+              0.32,
+              6361.68
+            ],
+            [
+              3828.48,
+              0.32,
+              6359.68
+            ],
+            [
+              3860.48,
+              0.32,
+              6359.68
+            ],
+            [
+              3861.98,
+              0.32,
+              6358.18
+            ],
+            [
+              3889.48,
+              0.32,
+              6358.18
+            ]
+          ],
+          "routeM": 92.09,
+          "steepestDeg": 31.4,
+          "largestStepM": 0.431,
+          "deepestWadeM": 0.229
+        },
+        "socket:socket.lighter-flotilla.idle-seat-pier-bench-e-2": {
+          "points": [
+            [
+              3814.48,
+              -0.16,
+              6382.18
+            ],
+            [
+              3814.48,
+              -0.16,
+              6381.18
+            ],
+            [
+              3814.48,
+              -0.17,
+              6380.68
+            ],
+            [
+              3814.48,
+              -0.17,
+              6378.68
+            ],
+            [
+              3814.48,
+              -0.18,
+              6378.18
+            ],
+            [
+              3814.48,
+              -0.18,
+              6375.68
+            ],
+            [
+              3814.48,
+              -0.19,
+              6375.18
+            ],
+            [
+              3814.48,
+              -0.19,
+              6373.68
+            ],
+            [
+              3814.98,
+              -0.2,
+              6373.18
+            ],
+            [
+              3816.48,
+              -0.2,
+              6371.68
+            ],
+            [
+              3816.98,
+              -0.21,
+              6371.18
+            ],
+            [
+              3817.48,
+              -0.21,
+              6370.68
+            ],
+            [
+              3817.98,
+              -0.22,
+              6370.18
+            ],
+            [
+              3819.48,
+              -0.22,
+              6368.68
+            ],
+            [
+              3819.98,
+              -0.23,
+              6368.18
+            ],
+            [
+              3819.98,
+              -0.23,
+              6367.18
+            ],
+            [
+              3820.48,
+              -0.23,
+              6366.68
+            ],
+            [
+              3820.98,
+              -0.22,
+              6366.18
+            ],
+            [
+              3820.98,
+              -0.22,
+              6365.68
+            ],
+            [
+              3820.98,
+              -0.21,
+              6365.18
+            ],
+            [
+              3821.48,
+              -0.21,
+              6364.68
+            ],
+            [
+              3821.48,
+              -0.19,
+              6364.18
+            ],
+            [
+              3821.48,
+              -0.18,
+              6363.68
+            ],
+            [
+              3821.48,
+              -0.16,
+              6363.18
+            ],
+            [
+              3821.98,
+              -0.14,
+              6362.68
+            ],
+            [
+              3822.48,
+              -0.11,
+              6362.18
+            ],
+            [
+              3822.98,
+              0.32,
+              6361.68
+            ],
+            [
+              3826.48,
+              0.32,
+              6361.68
+            ],
+            [
+              3828.48,
+              0.32,
+              6359.68
+            ],
+            [
+              3860.48,
+              0.32,
+              6359.68
+            ],
+            [
+              3861.98,
+              0.32,
+              6358.18
+            ],
+            [
+              3889.48,
+              0.32,
+              6358.18
+            ]
+          ],
+          "routeM": 92.09,
+          "steepestDeg": 31.4,
+          "largestStepM": 0.431,
+          "deepestWadeM": 0.229
+        },
+        "socket:socket.lighter-flotilla.idle-seat-pier-bench-w-1": {
+          "points": [
+            [
+              3814.48,
+              -0.16,
+              6382.18
+            ],
+            [
+              3814.48,
+              -0.16,
+              6381.18
+            ],
+            [
+              3814.48,
+              -0.17,
+              6380.68
+            ],
+            [
+              3814.48,
+              -0.17,
+              6378.68
+            ],
+            [
+              3814.48,
+              -0.18,
+              6378.18
+            ],
+            [
+              3814.48,
+              -0.18,
+              6375.68
+            ],
+            [
+              3814.48,
+              -0.19,
+              6375.18
+            ],
+            [
+              3814.48,
+              -0.19,
+              6373.68
+            ],
+            [
+              3814.98,
+              -0.2,
+              6373.18
+            ],
+            [
+              3816.48,
+              -0.2,
+              6371.68
+            ],
+            [
+              3816.98,
+              -0.21,
+              6371.18
+            ],
+            [
+              3817.48,
+              -0.21,
+              6370.68
+            ],
+            [
+              3817.98,
+              -0.22,
+              6370.18
+            ],
+            [
+              3819.48,
+              -0.22,
+              6368.68
+            ],
+            [
+              3819.98,
+              -0.23,
+              6368.18
+            ],
+            [
+              3819.98,
+              -0.23,
+              6367.18
+            ],
+            [
+              3820.48,
+              -0.23,
+              6366.68
+            ],
+            [
+              3820.98,
+              -0.22,
+              6366.18
+            ],
+            [
+              3820.98,
+              -0.22,
+              6365.68
+            ],
+            [
+              3820.98,
+              -0.21,
+              6365.18
+            ],
+            [
+              3821.48,
+              -0.21,
+              6364.68
+            ],
+            [
+              3821.48,
+              -0.19,
+              6364.18
+            ],
+            [
+              3821.48,
+              -0.18,
+              6363.68
+            ],
+            [
+              3821.48,
+              -0.16,
+              6363.18
+            ],
+            [
+              3821.98,
+              -0.14,
+              6362.68
+            ],
+            [
+              3822.48,
+              -0.11,
+              6362.18
+            ],
+            [
+              3822.98,
+              0.32,
+              6361.68
+            ],
+            [
+              3826.48,
+              0.32,
+              6361.68
+            ],
+            [
+              3828.48,
+              0.32,
+              6359.68
+            ],
+            [
+              3857.48,
+              0.32,
+              6359.68
+            ],
+            [
+              3858.98,
+              0.32,
+              6358.18
+            ]
+          ],
+          "routeM": 61.59,
+          "steepestDeg": 31.4,
+          "largestStepM": 0.431,
+          "deepestWadeM": 0.229
+        },
+        "socket:socket.lighter-flotilla.idle-seat-pier-bench-w-2": {
+          "points": [
+            [
+              3814.48,
+              -0.16,
+              6382.18
+            ],
+            [
+              3814.48,
+              -0.16,
+              6381.18
+            ],
+            [
+              3814.48,
+              -0.17,
+              6380.68
+            ],
+            [
+              3814.48,
+              -0.17,
+              6378.68
+            ],
+            [
+              3814.48,
+              -0.18,
+              6378.18
+            ],
+            [
+              3814.48,
+              -0.18,
+              6375.68
+            ],
+            [
+              3814.48,
+              -0.19,
+              6375.18
+            ],
+            [
+              3814.48,
+              -0.19,
+              6373.68
+            ],
+            [
+              3814.98,
+              -0.2,
+              6373.18
+            ],
+            [
+              3816.48,
+              -0.2,
+              6371.68
+            ],
+            [
+              3816.98,
+              -0.21,
+              6371.18
+            ],
+            [
+              3817.48,
+              -0.21,
+              6370.68
+            ],
+            [
+              3817.98,
+              -0.22,
+              6370.18
+            ],
+            [
+              3819.48,
+              -0.22,
+              6368.68
+            ],
+            [
+              3819.98,
+              -0.23,
+              6368.18
+            ],
+            [
+              3819.98,
+              -0.23,
+              6367.18
+            ],
+            [
+              3820.48,
+              -0.23,
+              6366.68
+            ],
+            [
+              3820.98,
+              -0.22,
+              6366.18
+            ],
+            [
+              3820.98,
+              -0.22,
+              6365.68
+            ],
+            [
+              3820.98,
+              -0.21,
+              6365.18
+            ],
+            [
+              3821.48,
+              -0.21,
+              6364.68
+            ],
+            [
+              3821.48,
+              -0.19,
+              6364.18
+            ],
+            [
+              3821.48,
+              -0.18,
+              6363.68
+            ],
+            [
+              3821.48,
+              -0.16,
+              6363.18
+            ],
+            [
+              3821.98,
+              -0.14,
+              6362.68
+            ],
+            [
+              3822.48,
+              -0.11,
+              6362.18
+            ],
+            [
+              3822.98,
+              0.32,
+              6361.68
+            ],
+            [
+              3826.48,
+              0.32,
+              6361.68
+            ],
+            [
+              3828.48,
+              0.32,
+              6359.68
+            ],
+            [
+              3857.48,
+              0.32,
+              6359.68
+            ],
+            [
+              3858.98,
+              0.32,
+              6358.18
+            ]
+          ],
+          "routeM": 61.59,
+          "steepestDeg": 31.4,
+          "largestStepM": 0.431,
+          "deepestWadeM": 0.229
+        },
+        "socket:socket.lighter-flotilla.container-speaker-tally": {
+          "points": [
+            [
+              3817.48,
+              0.32,
+              6381.18
+            ],
+            [
+              3817.48,
+              0.32,
+              6378.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6377.18
+            ],
+            [
+              3818.48,
+              0.32,
+              6373.68
+            ],
+            [
+              3818.98,
+              0.32,
+              6373.18
+            ],
+            [
+              3818.98,
+              0.32,
+              6371.68
+            ],
+            [
+              3819.48,
+              0.32,
+              6371.18
+            ],
+            [
+              3819.48,
+              0.32,
+              6370.18
+            ],
+            [
+              3827.48,
+              0.32,
+              6362.18
+            ],
+            [
+              3827.98,
+              0.05,
+              6361.68
+            ],
+            [
+              3828.48,
+              0.15,
+              6361.68
+            ],
+            [
+              3829.48,
+              0.37,
+              6361.68
+            ],
+            [
+              3829.98,
+              0.41,
+              6361.18
+            ],
+            [
+              3830.48,
+              0.34,
+              6361.18
+            ],
+            [
+              3830.98,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.48,
+              0.31,
+              6361.18
+            ],
+            [
+              3836.98,
+              0.28,
+              6360.68
+            ],
+            [
+              3837.48,
+              0.32,
+              6360.18
+            ],
+            [
+              3876.98,
+              0.32,
+              6360.18
+            ]
+          ],
+          "routeM": 73.57,
+          "steepestDeg": 21.2,
+          "largestStepM": 0.274,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.lighter-flotilla.idle-lighterman-work": {
+          "points": [
+            [
+              3814.48,
+              -0.16,
+              6382.18
+            ],
+            [
+              3814.48,
+              -0.16,
+              6381.18
+            ],
+            [
+              3814.48,
+              -0.17,
+              6380.68
+            ],
+            [
+              3814.48,
+              -0.17,
+              6378.68
+            ],
+            [
+              3814.48,
+              -0.18,
+              6378.18
+            ],
+            [
+              3814.48,
+              -0.18,
+              6375.68
+            ],
+            [
+              3814.48,
+              -0.19,
+              6375.18
+            ],
+            [
+              3814.48,
+              -0.19,
+              6373.68
+            ],
+            [
+              3814.98,
+              -0.2,
+              6373.18
+            ],
+            [
+              3816.48,
+              -0.2,
+              6371.68
+            ],
+            [
+              3816.98,
+              -0.21,
+              6371.18
+            ],
+            [
+              3817.48,
+              -0.21,
+              6370.68
+            ],
+            [
+              3817.98,
+              -0.22,
+              6370.18
+            ],
+            [
+              3819.48,
+              -0.22,
+              6368.68
+            ],
+            [
+              3819.98,
+              -0.23,
+              6368.18
+            ],
+            [
+              3819.98,
+              -0.23,
+              6367.18
+            ],
+            [
+              3820.48,
+              -0.23,
+              6366.68
+            ],
+            [
+              3820.98,
+              -0.22,
+              6366.18
+            ],
+            [
+              3820.98,
+              -0.22,
+              6365.68
+            ],
+            [
+              3820.98,
+              -0.21,
+              6365.18
+            ],
+            [
+              3821.48,
+              -0.21,
+              6364.68
+            ],
+            [
+              3821.48,
+              -0.19,
+              6364.18
+            ],
+            [
+              3821.48,
+              -0.18,
+              6363.68
+            ],
+            [
+              3821.48,
+              -0.16,
+              6363.18
+            ],
+            [
+              3821.98,
+              -0.14,
+              6362.68
+            ],
+            [
+              3822.48,
+              -0.11,
+              6362.18
+            ],
+            [
+              3822.98,
+              0.32,
+              6361.68
+            ],
+            [
+              3826.48,
+              0.32,
+              6361.68
+            ],
+            [
+              3828.48,
+              0.32,
+              6359.68
+            ],
+            [
+              3860.48,
+              0.32,
+              6359.68
+            ],
+            [
+              3861.98,
+              0.32,
+              6358.18
+            ],
+            [
+              3893.98,
+              0.32,
+              6358.18
+            ],
+            [
+              3894.48,
+              0.32,
+              6357.68
+            ],
+            [
+              3901.98,
+              0.32,
+              6357.68
+            ]
+          ],
+          "routeM": 104.8,
+          "steepestDeg": 31.4,
+          "largestStepM": 0.431,
+          "deepestWadeM": 0.229
+        }
+      }
+    }
+  }
+}

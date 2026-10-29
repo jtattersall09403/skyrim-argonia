@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "_": "Per-person stock overrides (lane 2.6c1): what one merchant adds to or strikes from their class-and-culture stock. Ids stock-override.<person slug>; personId references npcs.json.",
+  "entries": [
+    {"id": "stock-override.chasepoint.n2", "personId": "npc.mercantile-coast.chasepoint.n2", "why": "Sells salvage off wrecks: always an oar or two off a lost boat.", "add": [{"itemId": "spare-oar", "count": 2}], "remove": []},
+    {"id": "stock-override.greenspring.n1", "personId": "npc.hist-heartland.greenspring.n1", "why": "Sells beds and rope at the village's agreed price: rope is the lodge's line.", "add": [{"itemId": "leather-strips", "count": 6}], "remove": []}
+  ]
+}

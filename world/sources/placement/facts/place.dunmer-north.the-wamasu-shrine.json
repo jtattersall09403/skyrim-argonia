@@ -1,0 +1,1584 @@
+{
+ "schemaVersion": 1,
+ "placeId": "place.dunmer-north.the-wamasu-shrine",
+ "facts": [
+  {
+   "id": "fact.the-wamasu-shrine.tag-lore-reveal",
+   "claim": "Shrine of Haynekhtnamet tells part of the province's past.",
+   "sourceField": "playerPurpose.primary",
+   "tag": "lore-reveal",
+   "kind": "history",
+   "carrier": {
+    "built": {
+     "uid": "socket.the-wamasu-shrine.sign-carving",
+     "type": "sign"
+    }
+   }
+  },
+  {
+   "id": "fact.the-wamasu-shrine.tag-lore-fragment",
+   "claim": "Something at Shrine of Haynekhtnamet records its past.",
+   "sourceField": "lootTable.kinds",
+   "tag": "lore-fragment",
+   "kind": "history",
+   "carrier": {
+    "built": {
+     "uid": "socket.the-wamasu-shrine.sign-carving",
+     "type": "sign"
+    }
+   }
+  },
+  {
+   "id": "fact.the-wamasu-shrine.tag-materials",
+   "claim": "Materials are gathered or stacked at Shrine of Haynekhtnamet.",
+   "sourceField": "lootTable.kinds",
+   "tag": "materials",
+   "kind": "activity",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "rumour.shadowfen"
+    }
+   }
+  },
+  {
+   "id": "fact.the-wamasu-shrine.tag-quest-hook",
+   "claim": "Someone at Shrine of Haynekhtnamet has work for the player.",
+   "sourceField": "lootTable.kinds",
+   "tag": "quest-hook",
+   "kind": "activity",
+   "carrier": {
+    "queued": {
+     "type": "quest-beat",
+     "ref": "quest.local.ld65"
+    }
+   }
+  },
+  {
+   "id": "fact.the-wamasu-shrine.why-founding-1",
+   "claim": "A wamasu of Shadowfen received offerings to stop the seasonal flooding.",
+   "sourceField": "why.founding",
+   "kind": "history",
+   "carrier": {
+    "built": {
+     "uid": "socket.the-wamasu-shrine.sign-carving",
+     "type": "sign"
+    }
+   }
+  },
+  {
+   "id": "fact.the-wamasu-shrine.why-founding-2",
+   "claim": "The offerings were left on a stone shelf on the bank.",
+   "sourceField": "why.founding",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "s-shelf",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.the-wamasu-shrine.why-siteAdvantages-1",
+   "claim": "The shrine stands on the bank above the pond the wamasu is held to inhabit.",
+   "sourceField": "why.siteAdvantages",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "s-shelf",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.the-wamasu-shrine.why-siteAdvantages-2",
+   "claim": "The shrine stands at the highest point reached by the flood.",
+   "sourceField": "why.siteAdvantages",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "rumour.shadowfen"
+    }
+   }
+  },
+  {
+   "id": "fact.the-wamasu-shrine.why-occupantsMotive-1",
+   "claim": "Four villages send offerings each wet season, in rotation.",
+   "sourceField": "why.occupantsMotive",
+   "kind": "activity",
+   "carrier": {
+    "built": {
+     "uid": "socket.the-wamasu-shrine.sign-carving",
+     "type": "sign"
+    }
+   }
+  },
+  {
+   "id": "fact.the-wamasu-shrine.why-occupantsMotive-2",
+   "claim": "A headwoman asked why will say it is her turn.",
+   "sourceField": "why.occupantsMotive",
+   "kind": "activity",
+   "carrier": {
+    "built": {
+     "uid": "npc-headwoman",
+     "type": "npc"
+    }
+   }
+  },
+  {
+   "id": "fact.the-wamasu-shrine.why-pressures-1",
+   "claim": "The offerings are increasingly practical: tools and salt, not symbols.",
+   "sourceField": "why.pressures",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "rumour.shadowfen"
+    }
+   }
+  },
+  {
+   "id": "fact.the-wamasu-shrine.why-pressures-2",
+   "claim": "The older villagers find the practical offerings embarrassing.",
+   "sourceField": "why.pressures",
+   "kind": "history",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "rumour.shadowfen"
+    }
+   }
+  },
+  {
+   "id": "fact.the-wamasu-shrine.vibe-silhouette-1",
+   "claim": "Cord lies among the offerings on the shelf.",
+   "sourceField": "vibe.silhouette",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "rumour.shadowfen"
+    }
+   }
+  },
+  {
+   "id": "fact.the-wamasu-shrine.vibe-silhouette-2",
+   "claim": "The offerings on the shelf are slowly corroding.",
+   "sourceField": "vibe.silhouette",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "rumour.shadowfen"
+    }
+   }
+  },
+  {
+   "id": "fact.the-wamasu-shrine.vibe-materials-1",
+   "claim": "The shelf is one dressed stone and the shrine has nothing else built.",
+   "sourceField": "vibe.materials",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "s-shelf",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.the-wamasu-shrine.vibe-signatureFeature-1",
+   "claim": "Scorch marks cover the shelf.",
+   "sourceField": "vibe.signatureFeature",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "rumour.shadowfen"
+    }
+   }
+  },
+  {
+   "id": "fact.the-wamasu-shrine.vibe-signatureFeature-2",
+   "claim": "The shelf gets struck.",
+   "sourceField": "vibe.signatureFeature",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "rumour.shadowfen"
+    }
+   }
+  },
+  {
+   "id": "fact.the-wamasu-shrine.vibe-signatureFeature-3",
+   "claim": "The offerings nearest the water are the most burnt.",
+   "sourceField": "vibe.signatureFeature",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "rumour.shadowfen"
+    }
+   }
+  },
+  {
+   "id": "fact.the-wamasu-shrine.vibe-condition-1",
+   "claim": "The shelf is older than the villages that use it.",
+   "sourceField": "vibe.condition",
+   "kind": "history",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "rumour.shadowfen"
+    }
+   }
+  },
+  {
+   "id": "fact.the-wamasu-shrine.vibe-condition-2",
+   "claim": "Most of what lies on the shelf is from this year or last.",
+   "sourceField": "vibe.condition",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "rumour.shadowfen"
+    }
+   }
+  },
+  {
+   "id": "fact.the-wamasu-shrine.playerPurpose-hook-1",
+   "claim": "The wamasu is named Haynekhtnamet.",
+   "sourceField": "playerPurpose.hook",
+   "kind": "history",
+   "carrier": {
+    "built": {
+     "uid": "socket.the-wamasu-shrine.sign-carving",
+     "type": "sign"
+    }
+   }
+  },
+  {
+   "id": "fact.the-wamasu-shrine.questHooks-opportunity-1",
+   "claim": "This year the flooding got worse.",
+   "sourceField": "questHooks.opportunity",
+   "kind": "history",
+   "carrier": {
+    "queued": {
+     "type": "quest-beat",
+     "ref": "quest.local.ld65"
+    }
+   }
+  },
+  {
+   "id": "fact.the-wamasu-shrine.contents-loot-l1-1",
+   "claim": "A lore fragment can be found at the shrine.",
+   "sourceField": "contents.loot.l1",
+   "kind": "cache",
+   "carrier": {
+    "built": {
+     "uid": "socket.the-wamasu-shrine.container-offering-sack",
+     "type": "container"
+    }
+   }
+  },
+  {
+   "id": "fact.the-wamasu-shrine.contents-loot-l2-1",
+   "claim": "Workshop stock, as materials, can be found at the shrine.",
+   "sourceField": "contents.loot.l2",
+   "kind": "cache",
+   "carrier": {
+    "built": {
+     "uid": "socket.the-wamasu-shrine.container-offering-sack",
+     "type": "container"
+    }
+   }
+  },
+  {
+   "id": "fact.the-wamasu-shrine.vibe-approach-1",
+   "claim": "Ozone is noticeable before the water comes into sight.",
+   "sourceField": "vibe.approach",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "rumour.shadowfen"
+    }
+   }
+  },
+  {
+   "id": "fact.the-wamasu-shrine.vibe-mood-1",
+   "claim": "The mood is practical and superstitious, and nervous.",
+   "sourceField": "vibe.mood",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "rumour.shadowfen"
+    }
+   }
+  },
+  {
+   "id": "fact.the-wamasu-shrine.vibe-palette-1",
+   "claim": "The water is green-black and the iron is corroded.",
+   "sourceField": "vibe.palette",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "rumour.shadowfen"
+    }
+   }
+  },
+  {
+   "id": "fact.the-wamasu-shrine.vibe-palette-2",
+   "claim": "The shelf is salt white, with scorch marks on it.",
+   "sourceField": "vibe.palette",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-scorch-ash",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.the-wamasu-shrine.vibe-senses-1",
+   "claim": "There is water, and a dry crackle with no flame behind it.",
+   "sourceField": "vibe.senses",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "rumour.shadowfen"
+    }
+   }
+  },
+  {
+   "id": "fact.the-wamasu-shrine.vibe-senses-2",
+   "claim": "Hair stands up.",
+   "sourceField": "vibe.senses",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "rumour.shadowfen"
+    }
+   }
+  },
+  {
+   "id": "fact.the-wamasu-shrine.why-wouldChangeIf-1",
+   "claim": "The shrine would be abandoned in a dry decade.",
+   "sourceField": "why.wouldChangeIf",
+   "kind": "activity",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "rumour.shadowfen"
+    }
+   }
+  },
+  {
+   "id": "fact.the-wamasu-shrine.why-wouldChangeIf-2",
+   "claim": "The shrine would be set up again after the next bad flood.",
+   "sourceField": "why.wouldChangeIf",
+   "kind": "activity",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "rumour.shadowfen"
+    }
+   }
+  }
+ ],
+ "world": {
+  "schemaVersion": 1,
+  "name": "Shrine of Haynekhtnamet",
+  "positionM": [
+   4723.0,
+   937.0
+  ],
+  "footprintRadiusM": 20.0,
+  "boundaryM": [
+   [
+    4702.97,
+    918.0
+   ],
+   [
+    4742.93,
+    918.0
+   ],
+   [
+    4742.93,
+    958.04
+   ],
+   [
+    4702.97,
+    958.04
+   ]
+  ],
+  "extentM": [
+   [
+    4702.6,
+    926.0
+   ],
+   [
+    4702.97,
+    918.0
+   ],
+   [
+    4742.93,
+    918.0
+   ],
+   [
+    4742.93,
+    958.04
+   ],
+   [
+    4741.0,
+    982.4
+   ],
+   [
+    4739.8,
+    982.9
+   ],
+   [
+    4702.97,
+    958.04
+   ]
+  ],
+  "extentRadiusM": 48.9,
+  "route": {
+   "lineId": "track.pirate-freeholds.veterans-holding",
+   "kind": "track",
+   "name": null,
+   "from": "place.pirate-freeholds.veterans-holding",
+   "to": "network",
+   "vertexM": [
+    4740.5,
+    984.29
+   ],
+   "offExtentM": 1.6,
+   "alongM": 1310.2,
+   "lengthM": 3140.5
+  },
+  "stands": [
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.n-hanging-moss",
+    "assetId": "bmv:landscape/plants/florahangingmoss03aaa",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4730.8,
+     160.19,
+     944.1
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.n-moss-root",
+    "assetId": "htbm:here there be monsters - curse of cipactli/trees/treeroots03",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4726.4,
+     158.88,
+     944.1
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-enchant-table",
+    "assetId": "vanilla:furniture/enchantingworkbench",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4727.8,
+     158.54,
+     940.4
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-leave-bone1",
+    "assetId": "vanilla:clutter/bones/bloodybone",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4723.7,
+     158.6,
+     934.2
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-leave-scales1",
+    "assetId": "htbm:here there be monsters - curse of cipactli/clutter/wamasuscales",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4716.5,
+     157.89,
+     933.2
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-leave-scales2",
+    "assetId": "htbm:here there be monsters - curse of cipactli/clutter/wamasustormscales",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4719.5,
+     158.42,
+     933.8
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-notice-stone",
+    "assetId": "kotm:argonia/xanmeer/exterior/obelisk",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4727.0,
+     158.26,
+     935.5
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-of-candle",
+    "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4725.6,
+     158.59,
+     937.4
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-of-candle2",
+    "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4720.5,
+     158.59,
+     937.8
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-of-ingots",
+    "assetId": "kotm:oaristys/forge/ingotsiron01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4722.9,
+     159.46,
+     937.9
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-of-ingots2",
+    "assetId": "kotm:oaristys/forge/ingotsiron01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4723.5,
+     159.46,
+     937.95
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-of-net",
+    "assetId": "shores:shoresofskyrim/fishnet01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4723.3,
+     159.44,
+     936.2
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-of-salt1",
+    "assetId": "vanilla:clutter/ingredients/saltpile",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4723.6,
+     159.5,
+     937.6
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-of-salt2",
+    "assetId": "vanilla:clutter/ingredients/saltpile",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4724.0,
+     159.5,
+     936.9
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-of-salt3",
+    "assetId": "vanilla:clutter/ingredients/saltpile",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4722.3,
+     159.5,
+     937.6
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-pool-arm1",
+    "assetId": "vanilla:clutter/bones/humanarmleft",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4718.2,
+     158.61,
+     938.1
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-pool-ribs1",
+    "assetId": "vanilla:clutter/bones/humanribcage",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4721.9,
+     158.71,
+     932.5
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-pool-skull1",
+    "assetId": "vanilla:clutter/bones/humanskull",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4713.0,
+     158.52,
+     937.8
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-pool-skull2",
+    "assetId": "vanilla:clutter/bones/humanskull",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4722.4,
+     158.51,
+     930.5
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-pool-skull3",
+    "assetId": "vanilla:clutter/bones/humanskull",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4710.6,
+     158.37,
+     938.6
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-pool-skull4",
+    "assetId": "vanilla:clutter/bones/humanskull",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4711.5,
+     158.69,
+     940.0
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-pool-spine1",
+    "assetId": "vanilla:clutter/bones/humanspine",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4721.65,
+     158.65,
+     933.0
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-ring-arm2",
+    "assetId": "vanilla:clutter/bones/humanarmleft",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4721.2,
+     157.88,
+     924.2
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-ring-bone3",
+    "assetId": "vanilla:clutter/bones/bloodybone",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4722.6,
+     157.48,
+     921.8
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-ring-ribs2",
+    "assetId": "vanilla:clutter/bones/humanribcage",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4704.5,
+     157.17,
+     934.5
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-ring-ribs3",
+    "assetId": "vanilla:clutter/bones/humanribcage",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4723.6,
+     158.2,
+     924.6
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-ring-ribs4",
+    "assetId": "vanilla:clutter/bones/humanribcage",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4702.8,
+     157.18,
+     928.2
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-ring-skull10",
+    "assetId": "vanilla:clutter/bones/humanskull",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4703.5,
+     156.96,
+     930.5
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-ring-skull11",
+    "assetId": "vanilla:clutter/bones/humanskull",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4702.6,
+     156.95,
+     926.0
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-ring-skull12",
+    "assetId": "vanilla:clutter/bones/humanskull",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4723.3,
+     158.24,
+     926.4
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-ring-skull13",
+    "assetId": "vanilla:clutter/bones/humanskull",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4722.4,
+     157.49,
+     919.4
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-ring-skull14",
+    "assetId": "vanilla:clutter/bones/humanskull",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4705.6,
+     157.07,
+     938.8
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-ring-skull5",
+    "assetId": "vanilla:clutter/bones/humanskull",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4707.5,
+     156.48,
+     932.0
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-ring-skull6",
+    "assetId": "vanilla:clutter/bones/humanskull",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4706.8,
+     157.28,
+     937.2
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-ring-skull7",
+    "assetId": "vanilla:clutter/bones/bloodybone",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4718.0,
+     158.6,
+     938.5
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-ring-skull8",
+    "assetId": "vanilla:clutter/bones/humanskull",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4720.6,
+     158.28,
+     930.6
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-ring-skull9",
+    "assetId": "vanilla:clutter/bones/humanskull",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4721.4,
+     157.93,
+     927.0
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-ring-spine2",
+    "assetId": "vanilla:clutter/bones/humanspine",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4719.6,
+     158.65,
+     936.4
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-ring-spine3",
+    "assetId": "vanilla:clutter/bones/humanspine",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4723.4,
+     158.69,
+     929.3
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-sack",
+    "assetId": "mudmother:gv_meshes/argoniannest/paintedurn01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4724.4,
+     158.56,
+     939.6
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-scorch-ash",
+    "assetId": "vanilla:effects/ashpile01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4722.1,
+     158.56,
+     934.05
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-tally1",
+    "assetId": "shores:shoresofskyrim/shorerock06",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4717.9,
+     158.41,
+     935.3
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-tally1b",
+    "assetId": "shores:shoresofskyrim/shorerock01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4718.05,
+     158.45,
+     935.2
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-tally1c",
+    "assetId": "shores:shoresofskyrim/shorerock07",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4717.85,
+     158.46,
+     935.45
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-tally2",
+    "assetId": "shores:shoresofskyrim/shorerock06",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4716.6,
+     158.15,
+     934.8
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-tally2b",
+    "assetId": "shores:shoresofskyrim/shorerock07",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4716.75,
+     158.2,
+     934.85
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-tally3",
+    "assetId": "shores:shoresofskyrim/shorerock06",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4715.4,
+     158.36,
+     936.4
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-tally3b",
+    "assetId": "shores:shoresofskyrim/shorerock01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4715.55,
+     158.37,
+     936.35
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-tally3c",
+    "assetId": "shores:shoresofskyrim/shorerock07",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4715.35,
+     158.4,
+     936.55
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-tally4",
+    "assetId": "shores:shoresofskyrim/shorerock06",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4714.0,
+     158.09,
+     935.0
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-tally4b",
+    "assetId": "shores:shoresofskyrim/shorerock01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4714.15,
+     158.15,
+     935.1
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-tally5",
+    "assetId": "shores:shoresofskyrim/shorerock06",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4712.8,
+     157.97,
+     935.0
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-tally5b",
+    "assetId": "shores:shoresofskyrim/shorerock01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4712.95,
+     158.01,
+     934.95
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-tally5c",
+    "assetId": "shores:shoresofskyrim/shorerock07",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4712.75,
+     158.03,
+     935.15
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-tool-fork",
+    "assetId": "vanilla:clutter/common/pitchfork01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4724.9,
+     159.19,
+     937.7
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.s-tool-shovel",
+    "assetId": "vanilla:clutter/common/shovel01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4725.6,
+     159.1,
+     936.2
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.x-sunk",
+    "assetId": "kotm:oaristys/forge/ingotsiron01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4717.5,
+     157.73,
+     931.2
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.building",
+    "assetId": "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arblock01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     4723.0,
+     158.99,
+     937.0
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.h-bone1",
+    "assetId": "vanilla:clutter/bones/bloodybone",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4740.6,
+     153.88,
+     980.3
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.h-leg1",
+    "assetId": "vanilla:clutter/bones/bloodyleg",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4740.95,
+     153.83,
+     980.6
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.h-scales1",
+    "assetId": "htbm:here there be monsters - curse of cipactli/clutter/wamasuscales",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4740.4,
+     153.96,
+     981.6
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.h-scales2",
+    "assetId": "htbm:here there be monsters - curse of cipactli/clutter/wamasustormscales",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4741.0,
+     153.95,
+     982.4
+    ]
+   },
+   {
+    "id": "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.assembly.h-skull1",
+    "assetId": "vanilla:clutter/bones/deerskullprop",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     4739.8,
+     154.09,
+     982.9
+    ]
+   }
+  ],
+  "sockets": [
+   {
+    "id": "socket.the-wamasu-shrine.cache-sunk-offerings",
+    "kind": "container",
+    "area": "parcel.the-wamasu-shrine.the-bank",
+    "positionM": [
+     4717.5,
+     157.73,
+     931.2
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.the-wamasu-shrine.container-offering-sack",
+    "kind": "container",
+    "area": "parcel.the-wamasu-shrine.the-bank",
+    "positionM": [
+     4724.4,
+     158.56,
+     939.6
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.the-wamasu-shrine.den-crocodile",
+    "kind": "encounter",
+    "area": "open",
+    "positionM": [
+     4748.0,
+     155.04,
+     988.0
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.the-wamasu-shrine.den-death-hopper",
+    "kind": "encounter",
+    "area": "open",
+    "positionM": [
+     4699.0,
+     156.82,
+     911.0
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.the-wamasu-shrine.den-fleshfly",
+    "kind": "ambience",
+    "area": "open",
+    "positionM": [
+     4748.2,
+     155.87,
+     938.0
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.the-wamasu-shrine.den-giant-leech",
+    "kind": "encounter",
+    "area": "open",
+    "positionM": [
+     4746.0,
+     152.81,
+     979.0
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.the-wamasu-shrine.idle-headwoman-home",
+    "kind": "idle",
+    "area": "parcel.the-wamasu-shrine.the-bank",
+    "positionM": [
+     4728.4,
+     158.54,
+     936.8
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.the-wamasu-shrine.idle-headwoman-work",
+    "kind": "idle",
+    "area": "parcel.the-wamasu-shrine.the-bank",
+    "positionM": [
+     4726.4,
+     158.56,
+     939.4
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.the-wamasu-shrine.idle-wamasu-home",
+    "kind": "idle",
+    "area": "parcel.the-wamasu-shrine.the-bank",
+    "positionM": [
+     4758.0,
+     154.44,
+     970.0
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.the-wamasu-shrine.idle-wamasu-hunt",
+    "kind": "idle",
+    "area": "parcel.the-wamasu-shrine.the-bank",
+    "positionM": [
+     4740.0,
+     154.39,
+     982.0
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.the-wamasu-shrine.item-offering-ingots-1",
+    "kind": "item",
+    "area": "parcel.the-wamasu-shrine.the-bank",
+    "positionM": [
+     4722.9,
+     159.69,
+     937.9
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.the-wamasu-shrine.item-offering-ingots-2",
+    "kind": "item",
+    "area": "parcel.the-wamasu-shrine.the-bank",
+    "positionM": [
+     4723.5,
+     159.69,
+     937.95
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.the-wamasu-shrine.item-offering-salt-1",
+    "kind": "item",
+    "area": "parcel.the-wamasu-shrine.the-bank",
+    "positionM": [
+     4723.6,
+     159.5,
+     937.6
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.the-wamasu-shrine.item-offering-salt-2",
+    "kind": "item",
+    "area": "parcel.the-wamasu-shrine.the-bank",
+    "positionM": [
+     4724.0,
+     159.5,
+     936.9
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.the-wamasu-shrine.item-offering-salt-3",
+    "kind": "item",
+    "area": "parcel.the-wamasu-shrine.the-bank",
+    "positionM": [
+     4722.3,
+     159.5,
+     937.6
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.the-wamasu-shrine.npc-headwoman",
+    "kind": "npc",
+    "area": "parcel.the-wamasu-shrine.the-bank",
+    "positionM": [
+     4726.0,
+     158.56,
+     938.2
+    ],
+    "fills": [],
+    "slot": "headwoman"
+   },
+   {
+    "id": "socket.the-wamasu-shrine.npc-wamasu",
+    "kind": "npc",
+    "area": "parcel.the-wamasu-shrine.the-bank",
+    "positionM": [
+     4752.0,
+     154.31,
+     980.0
+    ],
+    "fills": [
+     "promise.the-wamasu-shrine.occupant-n1"
+    ],
+    "slot": "n1"
+   },
+   {
+    "id": "socket.the-wamasu-shrine.plant-fern",
+    "kind": "plant",
+    "area": "open",
+    "positionM": [
+     4731.16,
+     158.21,
+     942.86
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.the-wamasu-shrine.plant-somnalius-fern-1",
+    "kind": "plant",
+    "area": "open",
+    "positionM": [
+     4726.51,
+     158.97,
+     945.76
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.the-wamasu-shrine.plant-somnalius-fern-2",
+    "kind": "plant",
+    "area": "open",
+    "positionM": [
+     4732.45,
+     157.86,
+     938.54
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.the-wamasu-shrine.plant-somnalius-fern-3",
+    "kind": "plant",
+    "area": "open",
+    "positionM": [
+     4737.94,
+     157.41,
+     926.92
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.the-wamasu-shrine.sign-carving",
+    "kind": "sign",
+    "area": "parcel.the-wamasu-shrine.the-bank",
+    "positionM": [
+     4727.0,
+     158.26,
+     935.5
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.the-wamasu-shrine.station-enchanting",
+    "kind": "station",
+    "area": "parcel.the-wamasu-shrine.the-bank",
+    "positionM": [
+     4727.8,
+     158.54,
+     940.4
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.the-wamasu-shrine.station-shelf",
+    "kind": "station",
+    "area": "parcel.the-wamasu-shrine.the-bank",
+    "positionM": [
+     4724.0,
+     158.99,
+     935.27
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.the-wamasu-shrine.the-bank",
+    "kind": "marker",
+    "area": "parcel.the-wamasu-shrine.the-bank",
+    "positionM": [
+     4726.0,
+     158.56,
+     939.5
+    ],
+    "fills": [
+     "promise.the-wamasu-shrine.scene-the-bank"
+    ]
+   },
+   {
+    "id": "socket.the-wamasu-shrine.the-scorched-shelf",
+    "kind": "marker",
+    "area": "parcel.the-wamasu-shrine.the-bank",
+    "positionM": [
+     4724.0,
+     158.99,
+     935.27
+    ],
+    "fills": [
+     "promise.the-wamasu-shrine.evidence-the-scorched-shelf"
+    ]
+   }
+  ],
+  "landmarks": [
+   {
+    "id": "socket.the-wamasu-shrine.the-bank",
+    "what": "the bank",
+    "via": "scene socket",
+    "positionM": [
+     4726.0,
+     158.56,
+     939.5
+    ],
+    "inSight": {
+     "places": [],
+     "here": [
+      "socket.the-wamasu-shrine.container-offering-sack",
+      "socket.the-wamasu-shrine.den-crocodile",
+      "socket.the-wamasu-shrine.den-fleshfly",
+      "socket.the-wamasu-shrine.den-giant-leech",
+      "socket.the-wamasu-shrine.idle-headwoman-home",
+      "socket.the-wamasu-shrine.idle-headwoman-work",
+      "socket.the-wamasu-shrine.idle-wamasu-home",
+      "socket.the-wamasu-shrine.idle-wamasu-hunt",
+      "socket.the-wamasu-shrine.npc-headwoman",
+      "socket.the-wamasu-shrine.npc-wamasu",
+      "socket.the-wamasu-shrine.plant-fern",
+      "socket.the-wamasu-shrine.plant-somnalius-fern-1",
+      "socket.the-wamasu-shrine.plant-somnalius-fern-2",
+      "socket.the-wamasu-shrine.station-enchanting"
+     ]
+    }
+   },
+   {
+    "id": "socket.the-wamasu-shrine.the-scorched-shelf",
+    "what": "the scorched shelf",
+    "via": "evidence socket",
+    "positionM": [
+     4724.0,
+     158.99,
+     935.27
+    ],
+    "inSight": {
+     "places": [],
+     "here": [
+      "socket.the-wamasu-shrine.cache-sunk-offerings",
+      "socket.the-wamasu-shrine.den-death-hopper",
+      "socket.the-wamasu-shrine.item-offering-ingots-1",
+      "socket.the-wamasu-shrine.item-offering-ingots-2",
+      "socket.the-wamasu-shrine.item-offering-salt-1",
+      "socket.the-wamasu-shrine.item-offering-salt-2",
+      "socket.the-wamasu-shrine.item-offering-salt-3",
+      "socket.the-wamasu-shrine.plant-somnalius-fern-3",
+      "socket.the-wamasu-shrine.sign-carving",
+      "socket.the-wamasu-shrine.station-shelf"
+     ]
+    }
+   }
+  ],
+  "people": [
+   {
+    "id": "npc.dunmer-north.the-wamasu-shrine.headwoman",
+    "name": "Hassk-Kaya",
+    "role": "the headwoman whose village has this year's turn at the shelf",
+    "post": "socket.the-wamasu-shrine.npc-headwoman",
+    "services": [
+     "blessing"
+    ],
+    "hostility": "friendly",
+    "topics": [
+     "topic.wamasu-shelf-upkeep"
+    ]
+   }
+  ],
+  "counts": {
+   "open": {
+    "nodes": 4,
+    "plants": 4,
+    "items": 0,
+    "containers": 0,
+    "occupants": 0,
+    "byItem": {
+     "item.somnalius-frond": 4
+    },
+    "byPlant": {
+     "somnalius-fern": 4
+    },
+    "creatures": {
+     "creature.crocodile": 2,
+     "creature.death-hopper": 3,
+     "creature.giant-leech": 3
+    }
+   },
+   "parcel.the-wamasu-shrine.the-bank": {
+    "nodes": 0,
+    "plants": 0,
+    "items": 16,
+    "containers": 2,
+    "occupants": 2,
+    "byItem": {
+     "item.bog-iron": 2,
+     "item.corundum-ingot": 2,
+     "item.ebony-ingot": 1,
+     "item.iron-ore": 3,
+     "item.lumberries": 2,
+     "item.river-salt": 3,
+     "item.seed-doll": 1,
+     "item.smoked-slaughterfish": 2
+    },
+    "byPlant": {},
+    "creatures": {}
+   }
+  },
+  "services": [
+   {
+    "kind": "blessing",
+    "promised": false,
+    "by": [
+     "npc.dunmer-north.the-wamasu-shrine.headwoman"
+    ],
+    "filledBy": []
+   }
+  ],
+  "hostility": {
+   "baseline": "sanctuary",
+   "owner": null,
+   "flips": [],
+   "clearable": false,
+   "respawn": "none"
+  }
+ }
+}

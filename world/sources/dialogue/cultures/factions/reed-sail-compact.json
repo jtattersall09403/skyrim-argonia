@@ -1,0 +1,194 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "_": "Faction and office sheets for The Reed-Sail Compact (lane 2.5a2). Ranks: the registry ladder (associate, member, senior); named offices beyond it are listed by their own rank slug.",
+ "entries": [
+  {
+   "id": "culture.faction.reed-sail-compact",
+   "level": "faction",
+   "name": "The Reed-Sail Compact",
+   "parent": "culture.province.black-marsh",
+   "factionId": "faction.reed-sail-compact",
+   "norms": [
+    {
+     "text": "The route is shared; the share is fixed.",
+     "source": "inferred"
+    },
+    {
+     "text": "A pilot's word on the water is law.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Piloting without a route-mark.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "Mobility and the crew.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Regulators from the League.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "trade": {
+     "lean": 1,
+     "text": "Every cargo on our water pays the Compact.",
+     "source": "inferred"
+    },
+    "directions": {
+     "lean": 1,
+     "text": "Routes are ours to give.",
+     "source": "world/sources/lore/topics/roads-and-routes-4e201.md"
+    },
+    "faction": {
+     "lean": 0,
+     "text": "The Salt-Teeth are cousins, not friends.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Deckhand; pilot.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "low",
+    "oaths": [
+     {
+      "text": "Fair water.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "The Salt-Teeth share.",
+      "source": "inferred"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "The League wants to license the water.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "A new channel opened past Blackrose.",
+      "source": "world/sources/lore/blackrose.md"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.league-of-open-water",
+     "lean": -1,
+     "text": "Regulators.",
+     "source": "inferred"
+    },
+    {
+     "node": "culture.faction.salt-teeth",
+     "lean": 1,
+     "text": "Our pirate cousins.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.2
+  },
+  {
+   "id": "culture.office.reed-sail-compact.senior",
+   "level": "office",
+   "name": "Route-keeper",
+   "parent": "culture.faction.reed-sail-compact",
+   "factionId": "faction.reed-sail-compact",
+   "rank": "senior",
+   "norms": [
+    {
+     "text": "States the route fee before the route.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Free passage.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "The route.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Free riders.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "trade": {
+     "lean": 1,
+     "text": "Fees keep the routes.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Deckhand.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [
+     {
+      "text": "Fair water.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "The monopoly.",
+      "source": "inferred"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "The League.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "A pilot sold a route-mark.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.reed-sail-compact",
+     "lean": 2,
+     "text": "Theirs.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.1
+  }
+ ]
+}

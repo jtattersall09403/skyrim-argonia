@@ -1,0 +1,523 @@
+{
+ "cellId": "DawnstarBrinasHouse",
+ "sockets": {
+  "socket.DawnstarBrinasHouse.0004D7E5": {
+   "owner": "parcel.claywater-station.station-house",
+   "fillRule": "blanket.highwayman-bundle",
+   "valueTier": "moderate",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.pelt",
+      "count": 2
+     },
+     {
+      "item": "item.moon-sugar",
+      "count": 1
+     },
+     {
+      "item": "item.gold",
+      "count": 40
+     },
+     {
+      "item": "item.healing-draught",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.highwayman-bundle"
+   }
+  },
+  "socket.DawnstarBrinasHouse.000E03FD": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.bread"
+  },
+  "socket.DawnstarBrinasHouse.000E03FE": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.saltrice-loaf"
+  },
+  "socket.DawnstarBrinasHouse.000E0400": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.DawnstarBrinasHouse.000E0401": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.DawnstarBrinasHouse.000E0406": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.wooden-ladle"
+  },
+  "socket.DawnstarBrinasHouse.000E0407": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.knife"
+  },
+  "socket.DawnstarBrinasHouse.000E0408": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.fork"
+  },
+  "socket.DawnstarBrinasHouse.000E040A": {
+   "owner": "parcel.claywater-station.station-house",
+   "fillRule": "blanket.household-chest",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.rag",
+      "count": 2
+     },
+     {
+      "item": "item.gold",
+      "count": 6
+     },
+     {
+      "item": "item.glass-bead-strand",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.household-chest"
+   }
+  },
+  "socket.DawnstarBrinasHouse.000E040D": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.kettle"
+  },
+  "socket.DawnstarBrinasHouse.000E040E": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.bucket"
+  },
+  "socket.DawnstarBrinasHouse.000E040F": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.DawnstarBrinasHouse.000E0410": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.DawnstarBrinasHouse.000E0411": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.DawnstarBrinasHouse.000E0412": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.DawnstarBrinasHouse.000E0413": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.bucket"
+  },
+  "socket.DawnstarBrinasHouse.000E0414": {
+   "owner": "parcel.claywater-station.station-house",
+   "fillRule": "blanket.household-barrel",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.river-salt",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.lumberries",
+      "count": 3
+     },
+     {
+      "item": "item.hissmir-fish-eye-rye",
+      "count": 1
+     },
+     {
+      "item": "item.flagon",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.household-barrel"
+   }
+  },
+  "socket.DawnstarBrinasHouse.000E0415": {
+   "owner": "parcel.claywater-station.station-house",
+   "fillRule": "blanket.household-barrel",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.river-salt",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.lumberries",
+      "count": 3
+     },
+     {
+      "item": "item.hissmir-fish-eye-rye",
+      "count": 1
+     },
+     {
+      "item": "item.flagon",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.household-barrel"
+   }
+  },
+  "socket.DawnstarBrinasHouse.000E041A": {
+   "owner": "parcel.claywater-station.station-house",
+   "fillRule": "blanket.household-chest",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.rag",
+      "count": 2
+     },
+     {
+      "item": "item.spine-balm",
+      "count": 1
+     },
+     {
+      "item": "item.glass-bead-strand",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.household-chest"
+   }
+  },
+  "socket.DawnstarBrinasHouse.000E041B": {
+   "owner": "parcel.claywater-station.station-house",
+   "fillRule": "blanket.cook-shelf",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.river-salt",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.lumberries",
+      "count": 3
+     },
+     {
+      "item": "item.hissmir-fish-eye-rye",
+      "count": 1
+     },
+     {
+      "item": "item.turtle-shell-bowl",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.cook-shelf"
+   }
+  },
+  "socket.DawnstarBrinasHouse.000E041C": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.DawnstarBrinasHouse.000E041D": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.small-cast-iron-pot"
+  },
+  "socket.DawnstarBrinasHouse.000E041E": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.cast-iron-pot"
+  },
+  "socket.DawnstarBrinasHouse.000E041F": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.wooden-ladle"
+  },
+  "socket.DawnstarBrinasHouse.000E0420": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.DawnstarBrinasHouse.000E0421": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.DawnstarBrinasHouse.000E0422": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.DawnstarBrinasHouse.000E0423": {
+   "owner": "parcel.claywater-station.station-house",
+   "fillRule": "blanket.household-chest",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.leather-strips",
+      "count": 1
+     },
+     {
+      "item": "item.spine-balm",
+      "count": 1
+     },
+     {
+      "item": "item.glass-bead-strand",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.household-chest"
+   }
+  },
+  "socket.DawnstarBrinasHouse.000E0424": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.bucket"
+  },
+  "socket.DawnstarBrinasHouse.000E0425": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.DawnstarBrinasHouse.000E0426": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.DawnstarBrinasHouse.000E0427": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.DawnstarBrinasHouse.000E0428": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.DawnstarBrinasHouse.000E042F": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "low",
+   "item": "item.alto-wine"
+  },
+  "socket.DawnstarBrinasHouse.000E0430": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "low",
+   "item": "item.alto-wine"
+  },
+  "socket.DawnstarBrinasHouse.000E0432": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "moderate",
+   "item": "item.steel-mace"
+  },
+  "socket.DawnstarBrinasHouse.000E0433": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.cast-iron-pot"
+  },
+  "socket.DawnstarBrinasHouse.000E0435": {
+   "owner": "parcel.claywater-station.station-house",
+   "fillRule": "blanket.household-barrel",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.river-salt",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.lumberries",
+      "count": 3
+     },
+     {
+      "item": "item.hissmir-fish-eye-rye",
+      "count": 1
+     },
+     {
+      "item": "item.flagon",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.household-barrel"
+   }
+  },
+  "socket.DawnstarBrinasHouse.000E0445": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.fork"
+  },
+  "socket.DawnstarBrinasHouse.000E0446": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.fork"
+  },
+  "socket.DawnstarBrinasHouse.000E0447": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.knife"
+  },
+  "socket.DawnstarBrinasHouse.000E0448": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.knife"
+  },
+  "socket.DawnstarBrinasHouse.000E0449": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.hissmir-fish-eye-rye"
+  },
+  "socket.DawnstarBrinasHouse.000E044A": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.hissmir-fish-eye-rye"
+  },
+  "socket.DawnstarBrinasHouse.000E044B": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.hissmir-fish-eye-rye"
+  },
+  "socket.DawnstarBrinasHouse.000E044C": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "low",
+   "item": "item.alto-wine"
+  },
+  "socket.DawnstarBrinasHouse.000E044D": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "low",
+   "item": "item.alto-wine"
+  },
+  "socket.DawnstarBrinasHouse.000E044E": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.leek"
+  },
+  "socket.DawnstarBrinasHouse.000E044F": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.leek"
+  },
+  "socket.DawnstarBrinasHouse.000E0452": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.DawnstarBrinasHouse.000E0453": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.nord-mead"
+  },
+  "socket.DawnstarBrinasHouse.000E0454": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "low",
+   "item": "item.alto-wine"
+  },
+  "socket.DawnstarBrinasHouse.000E0455": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.hissmir-fish-eye-rye"
+  },
+  "socket.DawnstarBrinasHouse.000E0456": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "low",
+   "item": "item.alto-wine"
+  },
+  "socket.DawnstarBrinasHouse.000E0457": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.nord-mead"
+  },
+  "socket.DawnstarBrinasHouse.000E045A": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.DawnstarBrinasHouse.000E045B": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.DawnstarBrinasHouse.000E045C": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.DawnstarBrinasHouse.000E045E": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.kettle"
+  },
+  "socket.DawnstarBrinasHouse.000E0466": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.hissmir-fish-eye-rye"
+  },
+  "socket.DawnstarBrinasHouse.000E0467": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "low",
+   "item": "item.alto-wine"
+  },
+  "socket.DawnstarBrinasHouse.000E0468": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "low",
+   "item": "item.alto-wine"
+  },
+  "socket.DawnstarBrinasHouse.000E0469": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.hissmir-fish-eye-rye"
+  },
+  "socket.DawnstarBrinasHouse.000E046A": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.hissmir-fish-eye-rye"
+  },
+  "socket.DawnstarBrinasHouse.000E046B": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.hissmir-fish-eye-rye"
+  },
+  "socket.DawnstarBrinasHouse.000E046C": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.hissmir-fish-eye-rye"
+  },
+  "socket.DawnstarBrinasHouse.000E046E": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "low",
+   "item": "item.alto-wine"
+  },
+  "socket.DawnstarBrinasHouse.000E0471": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "trivial",
+   "item": "item.broom"
+  },
+  "socket.DawnstarBrinasHouse.0010859A": {
+   "owner": "parcel.claywater-station.station-house",
+   "valueTier": "moderate",
+   "item": "item.book-the-importance-of-where"
+  }
+ },
+ "schemaVersion": 1
+}

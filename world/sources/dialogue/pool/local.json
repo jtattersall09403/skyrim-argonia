@@ -1,0 +1,1115 @@
+{
+ "schemaVersion": 1,
+ "domain": "dialogue-pool",
+ "topicClass": "local",
+ "entries": [
+  {
+   "schemaVersion": 1,
+   "id": "pool.fallback.local",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {},
+   "fallbackFor": "local",
+   "words": "That is past what I know of this place.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.riverwalk.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.riverwalk"
+   },
+   "words": "This is a halt in a sheltered sea cove at the mouth of the pilgrim water. A plank walk runs from the shore houses across the cove to the ferry stage.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.riverwalk-work",
+    "topic.riverwalk-directions"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.riverwalk-work.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.riverwalk-work"
+   },
+   "words": "The village lives on the ferry stage and on the toll on boats entering the pilgrim water. The crews are fed and lodged here, since the village grows no food.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.riverwalk-people"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.riverwalk-people.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.riverwalk-people"
+   },
+   "words": "A household of herb-gatherers keeps the long house. Boat crews sleep in the crews' house on the spit. The toll-holder and two toll hands keep the toll post.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.role-toll"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.riverwalk-danger.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.riverwalk-danger"
+   },
+   "words": "The cove is the only sheltered water on this coast. If it silted up, the boats would put in elsewhere. The way across the cove is sounded every morning.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.riverwalk-directions.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.riverwalk-directions"
+   },
+   "words": "Thorn is a short walk away by the Tear road. Canoes leave the ferry stage for Hissmir, Murkwater and the Tide Fair.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.about-thorn",
+    "topic.about-hissmir"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.teeth-of-sithis.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.teeth-of-sithis"
+   },
+   "words": "The Teeth of Sithis is the largest Sithis temple in Murkmire. The Clutch of Nisswo still tends it, though the purpose it was built for is lost.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.about-teeth-of-sithis"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.teeth-of-sithis-work.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.teeth-of-sithis-work"
+   },
+   "words": "The Clutch scrub the black stone teeth clean down to the waterline as a rite. They make no repair and add nothing.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.teeth-of-sithis-people.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.teeth-of-sithis-people"
+   },
+   "words": "Priests of the Clutch keep the temple, with a band of four under them. They take an outsider in for the right offering.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.teeth-of-sithis-danger.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.teeth-of-sithis-danger"
+   },
+   "words": "A voriplasm lies in the flooded deep room and strips anything that falls into the water there. Leeches and swamp jellies keep to the shallows.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.teeth-of-sithis-directions.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.teeth-of-sithis-directions"
+   },
+   "words": "Fourth Stage, the old road stage, lies a short walk north of the temple.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.claywater-station.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.claywater-station"
+   },
+   "words": "Claywater Station stands where the road crosses the Claywater ford. A well and a station house stand on one bank. An Argonian landing, older than the station, stands on the other.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.claywater-station-people"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.claywater-station-work.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.claywater-station-work"
+   },
+   "words": "The station bank keeps the well, the counter, the beds and a stable. The landing bank keeps a plank raft that takes carts over the ford. Each bank charges a traveller for the same stop.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.role-poling",
+    "topic.role-well"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.claywater-station-people.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.claywater-station-people"
+   },
+   "words": "Imperial households live on the station bank. Argonian households live on the landing bank. Both take their quarrels to the well-keeper and the poler.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.role-two-halves"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.claywater-station-danger.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.claywater-station-danger"
+   },
+   "words": "Bog dogs hunt the banks at dawn and at dusk. A crocodile keeps to the channel.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.claywater-station-directions.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.claywater-station-directions"
+   },
+   "words": "The road runs from the ford to Cartwright's Cross, then to the Mile House of the Eagle, then to Gideon.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.about-gideon"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.greenspring.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.greenspring"
+   },
+   "words": "Greenspring is a Hist village beside the fork of the Panther Race. The tribe's Hist grows over a spring of clean water.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.greenspring-work",
+    "topic.greenspring-people",
+    "topic.greenspring-directions"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.greenspring-work.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.greenspring-work"
+   },
+   "words": "The tribe serves travellers bound for Helstrom. Water from the spring is free. Beds and rope cost a great deal.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.greenspring-people"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.greenspring-people.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.greenspring-people"
+   },
+   "words": "The tree-minder tends the Hist and the spring-keeper keeps the spring. The root-herald trades for the tribe. The spring families cook, fetch water and mend rope.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.greenspring-danger"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.greenspring-danger.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.greenspring-danger"
+   },
+   "words": "Salt is reaching the spring from upstream. The village blames the salt works. The Hist over the spring has begun to sicken. Giant wasps nest near the huts.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.greenspring-directions"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.greenspring-directions.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.greenspring-directions"
+   },
+   "words": "Helstrom lies south-west, past Ux-Aneet and Cut-and-Carried. The road and the river landing are each a short walk from the spring.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.chasepoint.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.chasepoint"
+   },
+   "words": "Chasepoint is an Imperial road stage the Legion built. The wreck-salvage families keep it now, under a reed roof on the old walls.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.chasepoint-work.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.chasepoint-work"
+   },
+   "words": "The families drag wreck timber off the south shore at low water and dry the rope in the old stable. The stall sells the past week's finds.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.role-salvage"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.chasepoint-people.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.chasepoint-people"
+   },
+   "words": "Salvage rights here pass down the families. Two families each claim the stage-keeper's office, which has carried no pay in two centuries.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.role-station"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.chasepoint-danger.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.chasepoint-danger"
+   },
+   "words": "Fellrunners and marsh rats keep to the scrub around the stage.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.chasepoint-directions.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.chasepoint-directions"
+   },
+   "words": "The old capital is a short walk west. The coast road runs east to Fourth Stage. The sea lies two fields south.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.lighter-flotilla.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.lighter-flotilla"
+   },
+   "words": "The Lighter Flotilla is four working hulls moored as houses along one timber pier off Lilmoth's east bank. Market rafts lie along the other side of the pier. A trade ship lies at its head.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.lighter-flotilla.hulls",
+    "fact.lighter-flotilla.pier",
+    "fact.lighter-flotilla.rafts"
+   ],
+   "links": [
+    "topic.lighter-flotilla-people"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.lighter-flotilla-work.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.lighter-flotilla-work"
+   },
+   "words": "Large ships cannot dock at Lilmoth, so they anchor out in deep water. The lighter crews carry every cargo from the anchorage to the quay. Their moorings lie outside the tariff line.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.lightering.no-dock",
+    "fact.lighter.cargo-ashore"
+   ],
+   "links": [
+    "topic.role-lightering",
+    "topic.role-lighter"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.lighter-flotilla-people.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.lighter-flotilla-people"
+   },
+   "words": "The lighter crews live aboard their hulls. The Reed-Sail Compact holds the posts of speaker, lighter's master and purser. The council once tried to license lightering. The crews stopped the port for two weeks.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.flotilla.stopped-port"
+   ],
+   "links": [
+    "topic.faction-reed-sail-compact",
+    "topic.role-flotillas-business"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.lighter-flotilla-danger.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.lighter-flotilla-danger"
+   },
+   "words": "Slaughterfish and osheeja gar hunt the water under the hulls.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.lighter-flotilla-directions.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.lighter-flotilla-directions"
+   },
+   "words": "A landing stage runs from the pier foot to the Lilmoth track. Boats leave the pier for the anchorage and for Archon.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.about-lilmoth"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.bog-iron-workings.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.bog-iron-workings"
+   },
+   "words": "This is a bog iron working below the road. Iron lifts out of the seep in cakes. A clay furnace on the bench smelts it.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.bog-iron-workings-work",
+    "topic.bog-iron-workings-directions"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.bog-iron-workings-work.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.bog-iron-workings-work"
+   },
+   "words": "Cakes of iron are lifted from the mud and dried on the bank. The furnace is built new each season and broken open for the bloom. Road crews buy the iron for nails, tyres and tools. A visitor may carry off what cakes they can lift.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.bog-iron-workings-people"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.bog-iron-workings-people.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.bog-iron-workings-people"
+   },
+   "words": "Three diggers work the season, hired from three villages. One has charge of the crew, one works the bellows, one lifts the cakes. They count the work shameful and go home when the season ends.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.role-digging-bog-iron"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.bog-iron-workings-danger.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.bog-iron-workings-danger"
+   },
+   "words": "Leeches lie in the seep. The diggers have stopped working the deep end, where something sits in the pools. The near mud is worked out: each season's cakes are smaller and lie further from the path.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.bog-iron-workings-directions.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.bog-iron-workings-directions"
+   },
+   "words": "A path climbs from the bench to the road. West along the road lies the Mile House of the Eagle. Cartwright's Cross lies beyond it.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.pearl-lots.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.pearl-lots"
+   },
+   "words": "The Counted Lots are pearl beds inside an offshore bar east of Archon. Buoys mark each numbered lot.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.pearl-lots-people",
+    "topic.about-archon"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.pearl-lots-work.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.pearl-lots-work"
+   },
+   "words": "Divers work the lots from tenders moored above them. The beds lie three to four fathoms down. The deep lots pay best and drown the most divers.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.role-diving-the-lots",
+    "topic.role-surface-line"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.pearl-lots-people.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.pearl-lots-people"
+   },
+   "words": "Diver families from Archon hold the lots by inheritance and share the tenders. A tally book records the takings and the drownings.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.pearl-lots-danger.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.pearl-lots-danger"
+   },
+   "words": "The deep lots drown divers. Gar fish school over the beds. Swamp jellies drift among the buoys.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.pearl-lots-directions.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.pearl-lots-directions"
+   },
+   "words": "The lots lie off a low sand spit. The beach landing below Portdun Mont is west along the shore. Archon lies beyond it.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.about-portdun-mont",
+    "topic.about-archon"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.rose-bone-waystation.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.rose-bone-waystation"
+   },
+   "words": "This is a handover shelter on a dry rise beside the Prison road. The Rose's families bring their dead here. The villages' carrier takes them home.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.rose-bone-waystation-work",
+    "topic.rose-bone-waystation-directions"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.rose-bone-waystation-work.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.rose-bone-waystation-work"
+   },
+   "words": "The Rose's families release a body here for a carriage charge. The Chainbreakers pay the charge and write every payment in a book. The carrier wraps the bundle for the road.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.rose-bone-waystation-people.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.rose-bone-waystation-people"
+   },
+   "words": "A Chainbreaker tag-keeper keeps the hut beside the shelter. A carrier from the villages wraps the dead. A family from the Rose waits in the doorway until the charge is paid.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.rose-bone-waystation-danger.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.rose-bone-waystation-danger"
+   },
+   "words": "Death hoppers hunt the wet ground below the rise. A wisp comes out after dark.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.rose-bone-waystation-directions.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.rose-bone-waystation-directions"
+   },
+   "words": "The Prison road runs past the rise. The Rose lies one way along it. The villages lie the other way.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.upriver-hist-village.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.upriver-hist-village"
+   },
+   "words": "Nine Bends is a tribe's village built round one tree, nine bends of river above the port. The water there is still fresh enough to drink. The gang families of the lower channel were hatched under the tree. Their camp a day downriver has no claim on it.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.upriver-hist-village-people"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.upriver-hist-village-work.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.upriver-hist-village-work"
+   },
+   "words": "No income reaches the village but its own people, hired out downriver on the roll to the gangs of the lower channel. Those who stay cut reed, mend nets, smoke fish and dye. They also keep the trade-house and the hatchery.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.role-households-that-stayed",
+    "topic.role-minding-the-tree"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.upriver-hist-village-people.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.upriver-hist-village-people"
+   },
+   "words": "Every year more of the village's adults are on the downriver roll. The tree shows the strain. The households left behind are short of hands. The elder settles their quarrels and debts.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.role-village-matters"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.upriver-hist-village-danger.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.upriver-hist-village-danger"
+   },
+   "words": "River predators lurk on the approach below the village. Swamp jellies drift in the shallows by the landing. A moon adder keeps to the bank.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.upriver-hist-village-directions.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.upriver-hist-village-directions"
+   },
+   "words": "The gang camp is a day's poling downriver. The port lies beyond it. No road comes within sight of the village.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.the-broke-column.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.the-broke-column"
+   },
+   "words": "The Broke Column is a camp of four Legion tents on a level bench in the hills above the Mile House track. A spring tarn lies behind it. The men there are the sons and grandsons of a column that the Legion left unpaid when it was recalled.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.the-broke-column-people",
+    "topic.role-column"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.the-broke-column-work.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.the-broke-column-work"
+   },
+   "words": "The men keep watches, called on the hour. They take money from every traveller on the track and call it a levy. The levy buys their food.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.role-serjeants-duty"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.the-broke-column-people.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.the-broke-column-people"
+   },
+   "words": "Six names are on the duty roster: the serjeant and five descendants of the column. Their forebears were levied from every province. They wear the Legion colours as an inheritance.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.role-column"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.the-broke-column-danger.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.the-broke-column-danger"
+   },
+   "words": "Hackwings nest on the hill above the camp. Marsh rats come out at night.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.the-broke-column-directions.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.the-broke-column-directions"
+   },
+   "words": "The track runs down from the camp to the Mile House of the Eagle and to Cartwright's Cross. Both stand on the Gideon road.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.about-gideon",
+    "topic.about-prison-road"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.naga-highway-camp-active-north.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.naga-highway-camp-active-north"
+   },
+   "words": "The North Cut Camp is a raiders' camp on a bench above a pond, where the walked track bends. Walkers come into view below it before they can see the camp.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.naga-highway-camp-active-north-work",
+    "topic.naga-highway-camp-active-north-people"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.naga-highway-camp-active-north-work.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.naga-highway-camp-active-north-work"
+   },
+   "words": "The camp's nagas stop walkers on the track and relieve them of cargo, then let them go. For every load, the lieutenant cuts a notched tally stick and hands it over as a receipt. The nagas smoke hides over the fire. They set the best aside for trade.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.role-camps-orders"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.naga-highway-camp-active-north-people.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.naga-highway-camp-active-north-people"
+   },
+   "words": "Six live at the camp. The lieutenant cuts the receipts. A band of five keeps the gate, the fire and the bend in turns and sleeps in the hide tent.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.role-band"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.naga-highway-camp-active-north-danger.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.naga-highway-camp-active-north-danger"
+   },
+   "words": "The camp's nagas rarely kill a walker on the track, since his tribe would come for the camp, so they take cargo instead. Cut-Rope's raiders work the same tracks. A crocodile, death hoppers and hackwings den round the pond.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.about-tribeless-naga"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.naga-highway-camp-active-north-directions.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.naga-highway-camp-active-north-directions"
+   },
+   "words": "The camp's path leaves the track at a cane gate between two totems. The track runs on to the Polers' Camp. Guides there pole travellers to Dead-Water Village.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.opening-work-camp.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.opening-work-camp"
+   },
+   "words": "Gang Ground is the camp of the dredging gang's families. It stands on a slope of firm ground between the Border road and the marsh. A warm hatching shed on the top terrace holds the gang's egg clutch.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.opening-work-camp-people",
+    "topic.role-keeping-the-clutch"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.opening-work-camp-work.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.opening-work-camp-work"
+   },
+   "words": "The gang works the free port's channel from the barge below the camp. Its names and debts are read from the roll at the top of every shift. The families keep the camp, the water and the hatching shed.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.role-gang-work",
+    "topic.role-overseers"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.opening-work-camp-people.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.opening-work-camp-people"
+   },
+   "words": "The families of the hands on the roll live here, Argonian and Khajiit. A clutch-keeper tends the shed. Two overseers keep the gang's debts for the house that holds the camp.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.role-overseers",
+    "topic.role-bearing-witness"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.opening-work-camp-danger.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.opening-work-camp-danger"
+   },
+   "words": "Little hunts the slope. Slugs, gar and torchbugs keep to the shallows and the reeds. The danger is the debt, which grows with every broken tool.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.opening-work-camp-directions.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.opening-work-camp-directions"
+   },
+   "words": "The way up leads from the hatching shed to the Border road. The way down leads to the landing and the barge pier. The gang walk runs to Alten Corimont. A root route climbs out along the two Hist roots on the west bank.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.the-wamasu-shrine.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.the-wamasu-shrine"
+   },
+   "words": "This is a stone shelf on a bank above a black pond. Villagers leave offerings on it for Haynekhtnamet, a wamasu said to live in the water, to hold back the seasonal flooding.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.the-wamasu-shrine-work",
+    "topic.the-wamasu-shrine-directions"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.the-wamasu-shrine-work.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.the-wamasu-shrine-work"
+   },
+   "words": "Four villages send offerings to the shelf each wet season, in rotation. Tools and salt lie on it now. The offerings have become more practical over the years.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.the-wamasu-shrine-people"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.the-wamasu-shrine-people.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.the-wamasu-shrine-people"
+   },
+   "words": "A headwoman from one of the villages is at the shelf. Asked why, she says it is her village's turn. The older villagers are embarrassed that the offerings are now tools and salt.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": [
+    "topic.the-wamasu-shrine-danger"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.the-wamasu-shrine-danger.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.the-wamasu-shrine-danger"
+   },
+   "words": "Creatures live in the pond below the bank. Scorch marks cover the shelf, and the offerings nearest the water are the most burnt. A dry crackle sounds here with no flame behind it.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.the-wamasu-shrine-directions.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.the-wamasu-shrine-directions"
+   },
+   "words": "The Tear road stage is the way to and from the shelf.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": []
+  }
+ ]
+}

@@ -1,0 +1,467 @@
+{
+ "schemaVersion": 1,
+ "placeId": "place.imperial-fringe.claywater-station",
+ "generator": "python3 -m worldgen.blueprint_promises --id <place-id> --write (decision 0104); never hand-edit a row but its `unfilled`, `filledBy` or `confirmed` block",
+ "derivedFrom": [
+  {
+   "file": "world/sources/catalogue/places-imperial-fringe.json",
+   "sha256": "478508945cff4fe92021306e20c40974eba6ea374ecdeb6e287d35f85d587810"
+  },
+  {
+   "file": "world/sources/quests/local-imperial-fringe.json",
+   "sha256": "a40a6aeeacb814d4726e854dd0ddbb03d6862783db50c2f72c9db180c64ace62"
+  },
+  {
+   "file": "world/sources/routes/travel-services.json",
+   "sha256": "6c1eddfd74419aad9df0e294540afdcdbe82974321ea205f697534285b239522"
+  }
+ ],
+ "promises": [
+  {
+   "id": "promise.claywater-station.evidence-the-cracked-well",
+   "kind": "socketBucket",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.claywater-station].sockets.evidence[evidence.claywater-station.the-cracked-well]"
+   },
+   "text": "Claywater Station has the evidence socket evidence.claywater-station.the-cracked-well.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.claywater-station.interior-principal",
+   "kind": "interior",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.claywater-station].interior"
+   },
+   "text": "Claywater Station's principal interior is a dwelling (S1); its buildings carry 4 load doors in all.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.claywater-station.occupant-landing-s-poler",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.claywater-station].notableNpcSlots[landing-s-poler]"
+   },
+   "text": "The landing's poler lives and works at Claywater Station.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.claywater-station.occupant-n1",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.claywater-station].contents.npcs[n1]"
+   },
+   "text": "Claywater Station has few family occupants.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.claywater-station.occupant-n2",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.claywater-station].contents.npcs[n2]"
+   },
+   "text": "Claywater Station has few rank-and-file occupants.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.claywater-station.occupant-well-keeper",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.claywater-station].notableNpcSlots[well-keeper]"
+   },
+   "text": "Well-keeper who keeps the station house counter, the station house beds and the stable lives and works at Claywater Station.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.claywater-station.operator-ferry-imperial-fringe-drowning-gate",
+   "kind": "operator",
+   "source": {
+    "file": "world/sources/routes/travel-services.json",
+    "path": "services[ferry.imperial-fringe.drowning-gate].operator"
+   },
+   "text": "The landing poler runs the ferry service from Claywater Station.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.claywater-station.post-poler",
+   "kind": "socketBucket",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.claywater-station].sockets.post[post.claywater-station.poler]"
+   },
+   "text": "Claywater Station has the post socket post.claywater-station.poler.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.claywater-station.post-well-keeper",
+   "kind": "socketBucket",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.claywater-station].sockets.post[post.claywater-station.well-keeper]"
+   },
+   "text": "Claywater Station has the post socket post.claywater-station.well-keeper.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.claywater-station.prose-playerpurpose-hook",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.claywater-station].playerPurpose.hook"
+   },
+   "text": "The village is the road's water point at the ford. It has a well, a landing and a plank ferry for carts.",
+   "confirmed": {
+    "sha": "a8ca6748bfd7",
+    "note": "genericwell01 well parcel, Keeba landing huts, plank ferry and ferry raft at the ford crossing (312.6,3033.7).",
+    "ids": [
+     "place.imperial-fringe.claywater-station.parcel.claywater-station.ferry-raft.building",
+     "place.imperial-fringe.claywater-station.parcel.claywater-station.polers-hut.assembly.plank"
+    ]
+   }
+  },
+  {
+   "id": "promise.claywater-station.prose-questhooks-opportunity",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.claywater-station].questHooks.opportunity"
+   },
+   "text": "Travellers are charged separately at the well and at the landing for the same stop. The poler's plank ferry is the only way a cart crosses the ford.",
+   "confirmed": {
+    "sha": "12881cbeaf83",
+    "note": "Well parcel and poler's landing built; ferry.imperial-fringe.drowning-gate run by this place's poler, sole cart crossing.",
+    "ids": [
+     "place.imperial-fringe.claywater-station.parcel.claywater-station.ferry-raft.building",
+     "place.imperial-fringe.claywater-station.parcel.claywater-station.polers-hut.assembly.plank",
+     "place.imperial-fringe.claywater-station.parcel.claywater-station.the-well.building"
+    ]
+   }
+  },
+  {
+   "id": "promise.claywater-station.prose-vibe-approach",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.claywater-station].vibe.approach"
+   },
+   "text": "The station house roof shows first to an arriving traveller. Across the ford the huts sit low by the water.",
+   "confirmed": {
+    "sha": "8ddcb6340d21",
+    "note": "DawnstarBrinasHouse station house on one bank; Keeba huts low by the ford on the other."
+   }
+  },
+  {
+   "id": "promise.claywater-station.prose-vibe-condition",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.claywater-station].vibe.condition"
+   },
+   "text": "The well is cracking. The mud half of the village was replastered last year.",
+   "confirmed": {
+    "sha": "47e1899fb2a2",
+    "note": "Carried by the well and the pods as built; no placed thing contradicts it.",
+    "ids": [
+     "place.imperial-fringe.claywater-station.parcel.claywater-station.the-well.building"
+    ]
+   }
+  },
+  {
+   "id": "promise.claywater-station.prose-vibe-materials",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.claywater-station].vibe.materials"
+   },
+   "text": "The station half uses Imperial timber framing and well masonry. The landing half uses Argonian mud walls and thatch.",
+   "confirmed": {
+    "sha": "f806f7ab88f8",
+    "note": "Vanilla farmhouse timber and the stone well; KotM mud pods with thatch.",
+    "ids": [
+     "place.imperial-fringe.claywater-station.parcel.claywater-station.the-well.building"
+    ]
+   }
+  },
+  {
+   "id": "promise.claywater-station.prose-vibe-mood",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.claywater-station].vibe.mood"
+   },
+   "text": "Neighbourly and wary.",
+   "confirmed": {
+    "sha": "1f898572f601",
+    "note": "The two halves face each other across the road."
+   }
+  },
+  {
+   "id": "promise.claywater-station.prose-vibe-palette",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.claywater-station].vibe.palette"
+   },
+   "text": "The station half is wet stone grey and weathered timber. The landing half is mud brown and thatch gold. The two halves do not share a colour.",
+   "confirmed": {
+    "sha": "6036a0eb1d2d",
+    "note": "Stone well and farmhouse timber against the mud pods."
+   }
+  },
+  {
+   "id": "promise.claywater-station.prose-vibe-senses",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.claywater-station].vibe.senses"
+   },
+   "text": "A bucket stands by the well. Water is poured at the well. Two languages are spoken, one from each bank.",
+   "confirmed": {
+    "sha": "b7fe393181bd",
+    "note": "the well parcel's isy-bucket assembly stands at the well; the landing poler and well-keeper speak for the two banks",
+    "ids": [
+     "place.imperial-fringe.claywater-station.parcel.claywater-station.the-well.assembly.isy-bucket"
+    ]
+   }
+  },
+  {
+   "id": "promise.claywater-station.prose-vibe-signaturefeature",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.claywater-station].vibe.signatureFeature"
+   },
+   "text": "The ford divides the station half from the landing half. The two halves face each other over the water.",
+   "confirmed": {
+    "sha": "8f099c78152e",
+    "note": "Imperial half and Argonian half on opposite banks of the 15 m ford channel."
+   }
+  },
+  {
+   "id": "promise.claywater-station.prose-vibe-silhouette",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.claywater-station].vibe.silhouette"
+   },
+   "text": "A timber station house and a stone well stand on one bank of the ford. Low round mud huts stand on the other bank.",
+   "confirmed": {
+    "sha": "0f3b1be4f09f",
+    "note": "Station house and genericwell01 on one bank; three Keeba mud huts on the other.",
+    "ids": [
+     "place.imperial-fringe.claywater-station.parcel.claywater-station.the-well.building"
+    ]
+   }
+  },
+  {
+   "id": "promise.claywater-station.prose-why-founding",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.claywater-station].why.founding"
+   },
+   "text": "Claywater Station is a mixed village where the road crosses the Claywater ford. An Imperial well and station house stand on one bank of the ford. An Argonian landing stands on the other bank. The landing is older than the station. Argonian polers worked the ford before the Imperials dug the well. A poler's canoe lies pulled up on the bank.",
+   "confirmed": {
+    "sha": "4cab7b8862dc",
+    "note": "Station house and stone well on one bank, the mud huts and the landing stage on the other, one canoe beached by the polers' hut.",
+    "ids": [
+     "place.imperial-fringe.claywater-station.parcel.claywater-station.polers-hut.assembly.canoe"
+    ]
+   }
+  },
+  {
+   "id": "promise.claywater-station.prose-why-occupantsmotive",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.claywater-station].why.occupantsMotive"
+   },
+   "text": "Two communities share the village because neither can hold the other's half.",
+   "confirmed": {
+    "sha": "2e3c59874c48",
+    "note": "Two halves built as two groups of buildings across the ford."
+   }
+  },
+  {
+   "id": "promise.claywater-station.prose-why-pressures",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.claywater-station].why.pressures"
+   },
+   "text": "The Imperial-built well is failing. The Argonian half of the village will not help to repair the well in stone.",
+   "confirmed": {
+    "sha": "15cd41991861",
+    "note": "The well is built in stone; the pods are mud; no placed thing contradicts it.",
+    "ids": [
+     "place.imperial-fringe.claywater-station.parcel.claywater-station.the-well.building"
+    ]
+   }
+  },
+  {
+   "id": "promise.claywater-station.prose-why-siteadvantages",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.claywater-station].why.siteAdvantages"
+   },
+   "text": "The ford is shallow and stony, so a walker can wade it and a cart cannot. Firm ground on each bank holds the well on one side and the landing on the other.",
+   "confirmed": {
+    "sha": "506df6ed9b78",
+    "note": "Ford measured 0.65 m deep, 14.1 m span (water-crossings.json); carts need the ferry.",
+    "ids": [
+     "place.imperial-fringe.claywater-station.parcel.claywater-station.the-well.building"
+    ]
+   }
+  },
+  {
+   "id": "promise.claywater-station.prose-why-wouldchangeif",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.claywater-station].why.wouldChangeIf"
+   },
+   "text": "The village would become one community or two villages within a generation.",
+   "confirmed": {
+    "sha": "d62e36717e32",
+    "note": "A prediction; no placed thing contradicts it."
+   }
+  },
+  {
+   "id": "promise.claywater-station.quest-lf83",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-imperial-fringe.json",
+    "path": "quest[LF83]"
+   },
+   "text": "LF83 The Well and the Landing: The Imperial well and the Argonian landing serve the same travellers. The well and the landing collect payment under two sets of charges.",
+   "confirmed": {
+    "sha": "114ff69e2689",
+    "note": "The well and the landing stage both stand, each with its keeper's post."
+   }
+  },
+  {
+   "id": "promise.claywater-station.safe-interior",
+   "kind": "safeInterior",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.claywater-station].classification.class"
+   },
+   "text": "Claywater Station has one safe interior (danger D0, quests 20 section 12).",
+   "unfilled": null
+  },
+  {
+   "id": "promise.claywater-station.scene-the-street",
+   "kind": "socketBucket",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.claywater-station].sockets.scene[scene.claywater-station.the-street]"
+   },
+   "text": "Claywater Station has the scene socket scene.claywater-station.the-street.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.claywater-station.service-ferry",
+   "kind": "service",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.claywater-station].services[ferry]"
+   },
+   "text": "Claywater Station offers the ferry service.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.claywater-station.service-lodging",
+   "kind": "service",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.claywater-station].services[lodging]"
+   },
+   "text": "Claywater Station offers the lodging service.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.claywater-station.thing-boat",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.claywater-station].why.founding"
+   },
+   "text": "Claywater Station shows the boat its record names.",
+   "unfilled": null,
+   "filledBy": [
+    "place.imperial-fringe.claywater-station.parcel.claywater-station.polers-hut.assembly.canoe"
+   ]
+  },
+  {
+   "id": "promise.claywater-station.thing-farmhouse",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.claywater-station].assetPlan[0]"
+   },
+   "text": "Claywater Station shows the farmhouse its record names.",
+   "unfilled": null,
+   "filledBy": [
+    "place.imperial-fringe.claywater-station.parcel.claywater-station.station-house.building"
+   ]
+  },
+  {
+   "id": "promise.claywater-station.thing-ferry",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.claywater-station].playerPurpose.hook"
+   },
+   "text": "Claywater Station shows the ferry its record names.",
+   "unfilled": null,
+   "filledBy": [
+    "place.imperial-fringe.claywater-station.parcel.claywater-station.ferry-raft.building"
+   ]
+  },
+  {
+   "id": "promise.claywater-station.thing-plank-crossing",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.claywater-station].playerPurpose.hook"
+   },
+   "text": "Claywater Station shows the plank crossing its record names.",
+   "unfilled": null,
+   "filledBy": [
+    "place.imperial-fringe.claywater-station.parcel.claywater-station.polers-hut.assembly.plank"
+   ]
+  },
+  {
+   "id": "promise.claywater-station.thing-sign",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.claywater-station].assetPlan[2]"
+   },
+   "text": "Claywater Station shows the sign its record names.",
+   "unfilled": null,
+   "filledBy": [
+    "place.imperial-fringe.claywater-station.parcel.claywater-station.stable.assembly.st-sign"
+   ]
+  },
+  {
+   "id": "promise.claywater-station.thing-well",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.claywater-station].why.founding"
+   },
+   "text": "Claywater Station shows the well its record names.",
+   "unfilled": null,
+   "filledBy": [
+    "place.imperial-fringe.claywater-station.parcel.claywater-station.the-well.building"
+   ]
+  }
+ ]
+}

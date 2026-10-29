@@ -1,0 +1,960 @@
+{
+ "schemaVersion": 1,
+ "cellId": "FortAmol01",
+ "sockets": {
+  "socket.FortAmol01.0005BE09": {
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.FortAmol01.0005BE0A": {
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.FortAmol01.0005BE0B": {
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.FortAmol01.0005BE0C": {
+   "valueTier": "trivial",
+   "item": "item.cast-iron-pot"
+  },
+  "socket.FortAmol01.0005BE0F": {
+   "valueTier": "low",
+   "item": "item.black-briar-mead"
+  },
+  "socket.FortAmol01.0005BE10": {
+   "valueTier": "moderate",
+   "item": "item.potion-of-regeneration"
+  },
+  "socket.FortAmol01.0005BE11": {
+   "valueTier": "moderate",
+   "item": "item.potion-of-regeneration"
+  },
+  "socket.FortAmol01.0005BE12": {
+   "valueTier": "low",
+   "item": "item.alto-wine"
+  },
+  "socket.FortAmol01.0005BE13": {
+   "valueTier": "low",
+   "item": "item.alto-wine"
+  },
+  "socket.FortAmol01.0005BE14": {
+   "valueTier": "trivial",
+   "item": "item.goat-cheese-wedge"
+  },
+  "socket.FortAmol01.0005BE15": {
+   "valueTier": "trivial",
+   "item": "item.sliced-goat-cheese"
+  },
+  "socket.FortAmol01.0005BE16": {
+   "valueTier": "low",
+   "item": "item.eidar-cheese-wheel"
+  },
+  "socket.FortAmol01.0005BE17": {
+   "valueTier": "trivial",
+   "item": "item.goat-cheese-wedge"
+  },
+  "socket.FortAmol01.0005BE19": {
+   "valueTier": "trivial",
+   "item": "item.saw"
+  },
+  "socket.FortAmol01.0005BE1C": {
+   "valueTier": "low",
+   "item": "item.iron-dagger"
+  },
+  "socket.FortAmol01.0005BEC6": {
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.FortAmol01.0005BED5": {
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.FortAmol01.0005BED9": {
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.FortAmol01.0005BEDC": {
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.FortAmol01.0005BEDF": {
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.FortAmol01.0005BEE0": {
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.FortAmol01.0005BFA6": {
+   "valueTier": "trivial",
+   "item": "item.kettle"
+  },
+  "socket.FortAmol01.0005C074": {
+   "valueTier": "trivial",
+   "item": "item.turtle-shell-bowl"
+  },
+  "socket.FortAmol01.0005C075": {
+   "valueTier": "trivial",
+   "item": "item.turtle-shell-bowl"
+  },
+  "socket.FortAmol01.0005C076": {
+   "valueTier": "trivial",
+   "item": "item.turtle-shell-bowl"
+  },
+  "socket.FortAmol01.0005C0D4": {
+   "valueTier": "trivial",
+   "item": "item.turtle-shell-bowl"
+  },
+  "socket.FortAmol01.0005C0E9": {
+   "valueTier": "trivial",
+   "item": "item.wooden-plate"
+  },
+  "socket.FortAmol01.0005C0EC": {
+   "valueTier": "trivial",
+   "item": "item.wooden-plate"
+  },
+  "socket.FortAmol01.0005C0F6": {
+   "valueTier": "trivial",
+   "item": "item.small-cast-iron-pot"
+  },
+  "socket.FortAmol01.0005C100": {
+   "valueTier": "trivial",
+   "item": "item.small-cast-iron-pot"
+  },
+  "socket.FortAmol01.0005C10D": {
+   "valueTier": "trivial",
+   "item": "item.cast-iron-pot"
+  },
+  "socket.FortAmol01.0005C10F": {
+   "valueTier": "trivial",
+   "item": "item.cast-iron-pot"
+  },
+  "socket.FortAmol01.0005C119": {
+   "valueTier": "trivial",
+   "item": "item.cast-iron-pot"
+  },
+  "socket.FortAmol01.0005C12C": {
+   "valueTier": "trivial",
+   "item": "item.knife"
+  },
+  "socket.FortAmol01.0005C12D": {
+   "valueTier": "trivial",
+   "item": "item.knife"
+  },
+  "socket.FortAmol01.0005C141": {
+   "valueTier": "trivial",
+   "item": "item.knife"
+  },
+  "socket.FortAmol01.0005C188": {
+   "valueTier": "trivial",
+   "item": "item.knife"
+  },
+  "socket.FortAmol01.0005C18A": {
+   "valueTier": "trivial",
+   "item": "item.fork"
+  },
+  "socket.FortAmol01.0005C1F7": {
+   "valueTier": "trivial",
+   "item": "item.fork"
+  },
+  "socket.FortAmol01.0005C216": {
+   "valueTier": "trivial",
+   "item": "item.fork"
+  },
+  "socket.FortAmol01.0005C218": {
+   "valueTier": "trivial",
+   "item": "item.knife"
+  },
+  "socket.FortAmol01.0005C21D": {
+   "valueTier": "trivial",
+   "item": "item.fork"
+  },
+  "socket.FortAmol01.0005C21E": {
+   "valueTier": "trivial",
+   "item": "item.turtle-shell-bowl"
+  },
+  "socket.FortAmol01.0005C21F": {
+   "valueTier": "trivial",
+   "item": "item.wooden-plate"
+  },
+  "socket.FortAmol01.0005C220": {
+   "valueTier": "trivial",
+   "item": "item.gold"
+  },
+  "socket.FortAmol01.0005C23A": {
+   "valueTier": "trivial",
+   "item": "item.gold"
+  },
+  "socket.FortAmol01.0005C260": {
+   "valueTier": "trivial",
+   "item": "item.gold"
+  },
+  "socket.FortAmol01.0005C262": {
+   "valueTier": "low",
+   "item": "item.alto-wine"
+  },
+  "socket.FortAmol01.0005C26F": {
+   "valueTier": "trivial",
+   "item": "item.bread"
+  },
+  "socket.FortAmol01.0005C270": {
+   "valueTier": "trivial",
+   "item": "item.leek"
+  },
+  "socket.FortAmol01.0005C271": {
+   "valueTier": "trivial",
+   "item": "item.turtle-shell-bowl"
+  },
+  "socket.FortAmol01.0005C272": {
+   "valueTier": "trivial",
+   "item": "item.turtle-shell-bowl"
+  },
+  "socket.FortAmol01.0005C277": {
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.FortAmol01.0005C278": {
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.FortAmol01.0005C279": {
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.FortAmol01.0005C27A": {
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.FortAmol01.0005C27B": {
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.FortAmol01.0005C27C": {
+   "valueTier": "trivial",
+   "item": "item.bucket"
+  },
+  "socket.FortAmol01.000603FB": {
+   "valueTier": "low",
+   "item": "item.iron-sword"
+  },
+  "socket.FortAmol01.000603FC": {
+   "valueTier": "low",
+   "item": "item.iron-sword"
+  },
+  "socket.FortAmol01.000603FF": {
+   "fillRule": "blanket.guard-footlocker",
+   "valueTier": "moderate",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.iron-dagger",
+      "count": 1
+     },
+     {
+      "item": "item.studded-helmet",
+      "count": 1
+     },
+     {
+      "item": "item.lockpick",
+      "count": 1
+     },
+     {
+      "item": "item.torch",
+      "count": 2
+     },
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     }
+    ],
+    "frozenFrom": "blanket.guard-footlocker"
+   }
+  },
+  "socket.FortAmol01.00060400": {
+   "fillRule": "blanket.legion-leavings",
+   "valueTier": "moderate",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.imperial-sword",
+      "count": 1
+     },
+     {
+      "item": "item.iron-shield",
+      "count": 1
+     },
+     {
+      "item": "item.torch",
+      "count": 2
+     },
+     {
+      "item": "item.lockpick",
+      "count": 1
+     },
+     {
+      "item": "item.steel-war-arrow",
+      "count": 6
+     }
+    ],
+    "frozenFrom": "blanket.legion-leavings"
+   }
+  },
+  "socket.FortAmol01.00060401": {
+   "fillRule": "blanket.guard-footlocker",
+   "valueTier": "moderate",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.iron-dagger",
+      "count": 1
+     },
+     {
+      "item": "item.studded-helmet",
+      "count": 1
+     },
+     {
+      "item": "item.healing-draught",
+      "count": 2
+     },
+     {
+      "item": "item.lockpick",
+      "count": 1
+     },
+     {
+      "item": "item.torch",
+      "count": 2
+     }
+    ],
+    "frozenFrom": "blanket.guard-footlocker"
+   }
+  },
+  "socket.FortAmol01.00060404": {
+   "fillRule": "blanket.cook-shelf",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.river-salt",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.lumberries",
+      "count": 3
+     },
+     {
+      "item": "item.hissmir-fish-eye-rye",
+      "count": 1
+     },
+     {
+      "item": "item.turtle-shell-bowl",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.cook-shelf"
+   }
+  },
+  "socket.FortAmol01.00060405": {
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.FortAmol01.00060406": {
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.FortAmol01.0006040D": {
+   "fillRule": "blanket.household-barrel",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.river-salt",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.lumberries",
+      "count": 3
+     },
+     {
+      "item": "item.hissmir-fish-eye-rye",
+      "count": 1
+     },
+     {
+      "item": "item.flagon",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.household-barrel"
+   }
+  },
+  "socket.FortAmol01.0006041B": {
+   "fillRule": "blanket.household-barrel",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.river-salt",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.lumberries",
+      "count": 3
+     },
+     {
+      "item": "item.hissmir-fish-eye-rye",
+      "count": 1
+     },
+     {
+      "item": "item.flagon",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.household-barrel"
+   }
+  },
+  "socket.FortAmol01.0006041C": {
+   "fillRule": "blanket.household-barrel",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.river-salt",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.lumberries",
+      "count": 3
+     },
+     {
+      "item": "item.hissmir-fish-eye-rye",
+      "count": 1
+     },
+     {
+      "item": "item.flagon",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.household-barrel"
+   }
+  },
+  "socket.FortAmol01.0006041D": {
+   "fillRule": "blanket.household-barrel",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.river-salt",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.lumberries",
+      "count": 3
+     },
+     {
+      "item": "item.hissmir-fish-eye-rye",
+      "count": 1
+     },
+     {
+      "item": "item.flagon",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.household-barrel"
+   }
+  },
+  "socket.FortAmol01.0006041E": {
+   "valueTier": "low",
+   "item": "item.healing-draught"
+  },
+  "socket.FortAmol01.0006041F": {
+   "valueTier": "low",
+   "item": "item.healing-draught"
+  },
+  "socket.FortAmol01.00060421": {
+   "valueTier": "low",
+   "item": "item.healing-draught"
+  },
+  "socket.FortAmol01.00060423": {
+   "fillRule": "blanket.legion-armoury",
+   "valueTier": "high",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.steel-cuirass",
+      "count": 1
+     },
+     {
+      "item": "item.imperial-cuirass",
+      "count": 1
+     },
+     {
+      "item": "item.imperial-helmet",
+      "count": 1
+     },
+     {
+      "item": "item.steel-shield",
+      "count": 1
+     },
+     {
+      "item": "item.imperial-boots",
+      "count": 1
+     },
+     {
+      "item": "item.imperial-gauntlets",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.legion-armoury",
+    "band": "D4"
+   }
+  },
+  "socket.FortAmol01.00060453": {
+   "fillRule": "blanket.guard-footlocker",
+   "valueTier": "moderate",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.iron-dagger",
+      "count": 1
+     },
+     {
+      "item": "item.studded-helmet",
+      "count": 1
+     },
+     {
+      "item": "item.healing-draught",
+      "count": 2
+     },
+     {
+      "item": "item.torch",
+      "count": 2
+     },
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     }
+    ],
+    "frozenFrom": "blanket.guard-footlocker"
+   }
+  },
+  "socket.FortAmol01.00060458": {
+   "fillRule": "blanket.cook-shelf",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.river-salt",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.baked-crocodile-tongue",
+      "count": 1
+     },
+     {
+      "item": "item.lumberries",
+      "count": 3
+     },
+     {
+      "item": "item.hissmir-fish-eye-rye",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.cook-shelf"
+   }
+  },
+  "socket.FortAmol01.00060459": {
+   "fillRule": "blanket.guard-footlocker",
+   "valueTier": "moderate",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.iron-dagger",
+      "count": 1
+     },
+     {
+      "item": "item.studded-helmet",
+      "count": 1
+     },
+     {
+      "item": "item.lockpick",
+      "count": 1
+     },
+     {
+      "item": "item.torch",
+      "count": 2
+     },
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     }
+    ],
+    "frozenFrom": "blanket.guard-footlocker"
+   }
+  },
+  "socket.FortAmol01.000604B7": {
+   "valueTier": "low",
+   "item": "item.iron-mace"
+  },
+  "socket.FortAmol01.000604B8": {
+   "valueTier": "moderate",
+   "item": "item.iron-battleaxe"
+  },
+  "socket.FortAmol01.000A3983": {
+   "valueTier": "trivial",
+   "item": "item.book-the-madmen-of-the-reach"
+  },
+  "socket.FortAmol01.000A3984": {
+   "valueTier": "trivial",
+   "item": "item.book-the-talos-mistake"
+  },
+  "socket.FortAmol01.000A3985": {
+   "valueTier": "trivial",
+   "item": "item.book-nords-of-skyrim"
+  },
+  "socket.FortAmol01.000E68D3": {
+   "fillRule": "authored",
+   "valueTier": "high",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.stormhold-crystal",
+      "count": 1
+     },
+     {
+      "item": "item.still-word-scroll",
+      "count": 1
+     },
+     {
+      "item": "item.hist-sap",
+      "count": 1
+     },
+     {
+      "item": "item.gold",
+      "count": 14
+     }
+    ],
+    "storyNote": "The sealing party left this chest when they nailed the door shut. They never came back for it."
+   }
+  },
+  "socket.FortAmol01.000E68D4": {
+   "valueTier": "trivial",
+   "item": "item.book-gods-and-worship"
+  },
+  "socket.FortAmol01.000E68D6": {
+   "valueTier": "trivial",
+   "item": "item.iron-dagger"
+  },
+  "socket.FortAmol01.000E68D8": {
+   "valueTier": "low",
+   "item": "item.potion-of-minor-magicka"
+  },
+  "socket.FortAmol01.000E68D9": {
+   "fillRule": "blanket.alchemist-shelf",
+   "valueTier": "moderate",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.swamp-fungal-pod",
+      "count": 3
+     },
+     {
+      "item": "item.hanging-moss",
+      "count": 2
+     },
+     {
+      "item": "item.dried-flower-buds",
+      "count": 2
+     },
+     {
+      "item": "item.rootland-mushroom",
+      "count": 2
+     },
+     {
+      "item": "item.eel-slime-salve",
+      "count": 1
+     },
+     {
+      "item": "item.bog-luck-concoction",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.alchemist-shelf"
+   }
+  },
+  "socket.FortAmol01.000E68DB": {
+   "valueTier": "trivial",
+   "item": "item.book-the-firmament"
+  },
+  "socket.FortAmol01.000E68DC": {
+   "valueTier": "low",
+   "item": "item.white-cap"
+  },
+  "socket.FortAmol01.000E68DE": {
+   "valueTier": "low",
+   "item": "item.frost-salts"
+  },
+  "socket.FortAmol01.000E68E0": {
+   "valueTier": "low",
+   "item": "item.river-salt"
+  },
+  "socket.FortAmol01.000E68E1": {
+   "valueTier": "trivial",
+   "item": "item.book-the-book-of-daedra"
+  },
+  "socket.FortAmol01.000E76BB": {
+   "fillRule": "blanket.legion-armoury",
+   "valueTier": "high",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.steel-cuirass",
+      "count": 1
+     },
+     {
+      "item": "item.imperial-cuirass",
+      "count": 1
+     },
+     {
+      "item": "item.imperial-helmet",
+      "count": 1
+     },
+     {
+      "item": "item.steel-shield",
+      "count": 1
+     },
+     {
+      "item": "item.imperial-boots",
+      "count": 1
+     },
+     {
+      "item": "item.imperial-gauntlets",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.legion-armoury",
+    "band": "D4"
+   }
+  },
+  "socket.FortAmol01.000E76BC": {
+   "fillRule": "blanket.legion-leavings",
+   "valueTier": "moderate",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.iron-shield",
+      "count": 1
+     },
+     {
+      "item": "item.healing-draught",
+      "count": 2
+     },
+     {
+      "item": "item.torch",
+      "count": 2
+     },
+     {
+      "item": "item.lockpick",
+      "count": 1
+     },
+     {
+      "item": "item.steel-war-arrow",
+      "count": 6
+     }
+    ],
+    "frozenFrom": "blanket.legion-leavings"
+   }
+  },
+  "socket.FortAmol01.000EAB4E": {
+   "valueTier": "trivial",
+   "item": "item.book-the-amulet-of-kings"
+  },
+  "socket.FortAmol01.000EAB52": {
+   "valueTier": "low",
+   "item": "item.rock-warbler-egg"
+  },
+  "socket.FortAmol01.000EAB53": {
+   "valueTier": "low",
+   "item": "item.rock-warbler-egg"
+  },
+  "socket.FortAmol01.000EAB54": {
+   "valueTier": "low",
+   "item": "item.bone-meal"
+  },
+  "socket.FortAmol01.000EAB55": {
+   "valueTier": "moderate",
+   "item": "item.canis-root"
+  },
+  "socket.FortAmol01.000EAB56": {
+   "valueTier": "low",
+   "item": "item.deathbell"
+  },
+  "socket.FortAmol01.000EAB57": {
+   "valueTier": "low",
+   "item": "item.deathbell"
+  },
+  "socket.FortAmol01.000EAB58": {
+   "valueTier": "low",
+   "item": "item.ectoplasm"
+  },
+  "socket.FortAmol01.000EAB59": {
+   "valueTier": "trivial",
+   "item": "item.kettle"
+  },
+  "socket.FortAmol01.000EAB5F": {
+   "valueTier": "low",
+   "item": "item.thistle-branch"
+  },
+  "socket.FortAmol01.000EAB60": {
+   "fillRule": "blanket.healer-satchel",
+   "valueTier": "moderate",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.healing-draught",
+      "count": 2
+     },
+     {
+      "item": "item.eel-slime-salve",
+      "count": 1
+     },
+     {
+      "item": "item.dried-flower-buds",
+      "count": 3
+     },
+     {
+      "item": "item.swamp-fungal-pod",
+      "count": 2
+     },
+     {
+      "item": "item.rag",
+      "count": 3
+     }
+    ],
+    "frozenFrom": "blanket.healer-satchel"
+   }
+  },
+  "socket.FortAmol01.000EAB63": {
+   "fillRule": "blanket.storage-crate",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.shovel",
+      "count": 1
+     },
+     {
+      "item": "item.bucket",
+      "count": 1
+     },
+     {
+      "item": "item.rag",
+      "count": 2
+     }
+    ],
+    "frozenFrom": "blanket.storage-crate"
+   }
+  },
+  "socket.FortAmol01.000EAB64": {
+   "fillRule": "blanket.storage-crate",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 1
+     },
+     {
+      "item": "item.shovel",
+      "count": 1
+     },
+     {
+      "item": "item.bucket",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.storage-crate"
+   }
+  },
+  "socket.FortAmol01.000EAB65": {
+   "fillRule": "blanket.storage-crate",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 1
+     },
+     {
+      "item": "item.shovel",
+      "count": 1
+     },
+     {
+      "item": "item.rag",
+      "count": 2
+     }
+    ],
+    "frozenFrom": "blanket.storage-crate"
+   }
+  },
+  "socket.FortAmol01.000EAB67": {
+   "valueTier": "moderate",
+   "item": "item.weak-magicka-poison"
+  },
+  "socket.FortAmol01.000EAB68": {
+   "valueTier": "high",
+   "item": "item.eel-slime-salve"
+  },
+  "socket.FortAmol01.000EAB69": {
+   "valueTier": "moderate",
+   "item": "item.weak-paralysis-poison"
+  },
+  "socket.FortAmol01.000EAB6A": {
+   "valueTier": "low",
+   "item": "item.alto-wine"
+  },
+  "socket.FortAmol01.000EAB6B": {
+   "valueTier": "low",
+   "item": "item.alto-wine"
+  },
+  "socket.FortAmol01.000FF897": {
+   "valueTier": "moderate",
+   "item": "item.book-catalogue-of-armor-enchantments"
+  }
+ }
+}

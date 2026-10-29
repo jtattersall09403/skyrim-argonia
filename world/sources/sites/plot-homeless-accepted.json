@@ -1,0 +1,29 @@
+{
+ "schemaVersion": 1,
+ "records": [
+  {
+   "id": "place.naga-kur-deeps.dead-water-village",
+   "kind": "promise-unmet",
+   "reason": "terrain promise unmet on the frozen ground (dry-rise:heightClass clearance -0.26 < 1.40); it is also the naga-deeps rootworm terminus, so the dot is load-bearing for the rootway; owner call: drop the promise, re-type, or refreeze",
+   "since": "2026-09-19"
+  },
+  {
+   "id": "place.naga-kur-deeps.naga-village-settled",
+   "kind": "promise-unmet",
+   "reason": "terrain promise unmet on the frozen ground (dry-rise:waterRelation clearance -0.32 < 1.40); owner call: drop the promise, re-type, or refreeze",
+   "since": "2026-09-19"
+  },
+  {
+   "id": "place.naga-kur-deeps.air-pocket-station-deeps",
+   "kind": "promise-unmet",
+   "reason": "terrain promise unmet on the frozen ground (pool:depthM 2.4 < 6.0); owner call: drop the promise, re-type, or refreeze",
+   "since": "2026-09-19"
+  },
+  {
+   "id": "place.saxhleel-coast.archon-lighthouse",
+   "kind": "promise-unmet",
+   "reason": "terrain promise unmet on the frozen ground (islet:waterRelation clearance -0.06 < 2.00); owner call: drop the promise, re-type, or refreeze",
+   "since": "2026-09-19"
+  }
+ ]
+}

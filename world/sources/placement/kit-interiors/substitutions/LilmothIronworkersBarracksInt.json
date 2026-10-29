@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "cellId": "LilmothIronworkersBarracksInt",
+  "plugin": "King of the Murkmire.esp",
+  "rule": "Stand-ins for the cell's missing clutter and furniture (planner brief 2026-10-10, Helstrom part 8 R21): each missing piece is drawn by a published vanilla or King of the Murkmire piece of the same object and near size, read from the kit manifests; a piece with no same-object stand-in is taken out (removals[]). Drawn at the missing reference's transform by worldgen/export_interior_bundle.py.",
+  "substitutions": [],
+  "removals": [
+    {
+      "refId": "081370A3",
+      "reason": "decorative-no-same-class",
+      "search": "Registry food and clutter assets (world/sources/assets/registry-vanilla.jsonl, read 2026-10-11): no cooked mudcrab dish is published. cookedchickenmeat01 and the cooked fish steaks are other animals; a stand-in is the same object (R113).",
+      "note": "A plate of steamed mudcrab legs stands here; no kit holds a dish of that animal, so the spot stays bare."
+    }
+  ],
+  "removalRule": "Owner ruling 2026-10-04 (R113): no missing piece ships as a gap. A missing piece takes a same-class stand-in from a published kit where one exists (substitutions[]); a decorative piece whose class no published kit or vault archive holds is taken out of the fit-out (removals[], reason decorative-no-same-class, its search recorded), and the spot is simply empty. A placed piece whose only support was a removed piece is removed with it (reason rests-on-a-removal, restsOn naming that row)."
+}

@@ -1,0 +1,4531 @@
+{
+ "schemaVersion": 1,
+ "domain": "dialogue-topics",
+ "_": "The slice topic web (2.5c0): place topics (the place, its work, its people, its danger, its directions) for the 18 published places, a role topic per roster role, a faction topic per faction sheet, a newcomer topic per glossary row; trade, rumour and advice. requiredFor names who must answer: places, roles, factions, glossaryTerms.",
+ "entries": [
+  {
+   "schemaVersion": 1,
+   "id": "topic.riverwalk",
+   "topicClass": "local",
+   "label": "Riverwalk",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.dunmer-north.riverwalk",
+    "aspect": "place"
+   },
+   "requiredFor": {
+    "places": [
+     "place.dunmer-north.riverwalk"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.riverwalk-work",
+   "topicClass": "local",
+   "label": "work at Riverwalk",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.dunmer-north.riverwalk",
+    "aspect": "work"
+   },
+   "requiredFor": {
+    "places": [
+     "place.dunmer-north.riverwalk"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.riverwalk-people",
+   "topicClass": "local",
+   "label": "the people of Riverwalk",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.dunmer-north.riverwalk",
+    "aspect": "people"
+   },
+   "requiredFor": {
+    "places": [
+     "place.dunmer-north.riverwalk"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.riverwalk-danger",
+   "topicClass": "local",
+   "label": "danger near Riverwalk",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.dunmer-north.riverwalk",
+    "aspect": "danger"
+   },
+   "requiredFor": {
+    "places": [
+     "place.dunmer-north.riverwalk"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.riverwalk-directions",
+   "topicClass": "local",
+   "label": "the way from Riverwalk",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.dunmer-north.riverwalk",
+    "aspect": "directions"
+   },
+   "requiredFor": {
+    "places": [
+     "place.dunmer-north.riverwalk"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.the-wamasu-shrine",
+   "topicClass": "local",
+   "label": "the Shrine of Haynekhtnamet",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.dunmer-north.the-wamasu-shrine",
+    "aspect": "place"
+   },
+   "requiredFor": {
+    "places": [
+     "place.dunmer-north.the-wamasu-shrine"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.the-wamasu-shrine-work",
+   "topicClass": "local",
+   "label": "work at the Shrine of Haynekhtnamet",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.dunmer-north.the-wamasu-shrine",
+    "aspect": "work"
+   },
+   "requiredFor": {
+    "places": [
+     "place.dunmer-north.the-wamasu-shrine"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.the-wamasu-shrine-people",
+   "topicClass": "local",
+   "label": "the people of the Shrine of Haynekhtnamet",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.dunmer-north.the-wamasu-shrine",
+    "aspect": "people"
+   },
+   "requiredFor": {
+    "places": [
+     "place.dunmer-north.the-wamasu-shrine"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.the-wamasu-shrine-danger",
+   "topicClass": "local",
+   "label": "danger near the Shrine of Haynekhtnamet",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.dunmer-north.the-wamasu-shrine",
+    "aspect": "danger"
+   },
+   "requiredFor": {
+    "places": [
+     "place.dunmer-north.the-wamasu-shrine"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.the-wamasu-shrine-directions",
+   "topicClass": "local",
+   "label": "the way from the Shrine of Haynekhtnamet",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.dunmer-north.the-wamasu-shrine",
+    "aspect": "directions"
+   },
+   "requiredFor": {
+    "places": [
+     "place.dunmer-north.the-wamasu-shrine"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.greenspring",
+   "topicClass": "local",
+   "label": "Greenspring",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.hist-heartland.greenspring",
+    "aspect": "place"
+   },
+   "requiredFor": {
+    "places": [
+     "place.hist-heartland.greenspring"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.greenspring-work",
+   "topicClass": "local",
+   "label": "work at Greenspring",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.hist-heartland.greenspring",
+    "aspect": "work"
+   },
+   "requiredFor": {
+    "places": [
+     "place.hist-heartland.greenspring"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.greenspring-people",
+   "topicClass": "local",
+   "label": "the people of Greenspring",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.hist-heartland.greenspring",
+    "aspect": "people"
+   },
+   "requiredFor": {
+    "places": [
+     "place.hist-heartland.greenspring"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.greenspring-danger",
+   "topicClass": "local",
+   "label": "danger near Greenspring",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.hist-heartland.greenspring",
+    "aspect": "danger"
+   },
+   "requiredFor": {
+    "places": [
+     "place.hist-heartland.greenspring"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.greenspring-directions",
+   "topicClass": "local",
+   "label": "the way from Greenspring",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.hist-heartland.greenspring",
+    "aspect": "directions"
+   },
+   "requiredFor": {
+    "places": [
+     "place.hist-heartland.greenspring"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.bog-iron-workings",
+   "topicClass": "local",
+   "label": "the Bog Iron Workings",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.imperial-fringe.bog-iron-workings",
+    "aspect": "place"
+   },
+   "requiredFor": {
+    "places": [
+     "place.imperial-fringe.bog-iron-workings"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.bog-iron-workings-work",
+   "topicClass": "local",
+   "label": "work at the Bog Iron Workings",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.imperial-fringe.bog-iron-workings",
+    "aspect": "work"
+   },
+   "requiredFor": {
+    "places": [
+     "place.imperial-fringe.bog-iron-workings"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.bog-iron-workings-people",
+   "topicClass": "local",
+   "label": "the people of the Bog Iron Workings",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.imperial-fringe.bog-iron-workings",
+    "aspect": "people"
+   },
+   "requiredFor": {
+    "places": [
+     "place.imperial-fringe.bog-iron-workings"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.bog-iron-workings-danger",
+   "topicClass": "local",
+   "label": "danger near the Bog Iron Workings",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.imperial-fringe.bog-iron-workings",
+    "aspect": "danger"
+   },
+   "requiredFor": {
+    "places": [
+     "place.imperial-fringe.bog-iron-workings"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.bog-iron-workings-directions",
+   "topicClass": "local",
+   "label": "the way from the Bog Iron Workings",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.imperial-fringe.bog-iron-workings",
+    "aspect": "directions"
+   },
+   "requiredFor": {
+    "places": [
+     "place.imperial-fringe.bog-iron-workings"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.claywater-station",
+   "topicClass": "local",
+   "label": "Claywater Station",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.imperial-fringe.claywater-station",
+    "aspect": "place"
+   },
+   "requiredFor": {
+    "places": [
+     "place.imperial-fringe.claywater-station"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.claywater-station-work",
+   "topicClass": "local",
+   "label": "work at Claywater Station",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.imperial-fringe.claywater-station",
+    "aspect": "work"
+   },
+   "requiredFor": {
+    "places": [
+     "place.imperial-fringe.claywater-station"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.claywater-station-people",
+   "topicClass": "local",
+   "label": "the people of Claywater Station",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.imperial-fringe.claywater-station",
+    "aspect": "people"
+   },
+   "requiredFor": {
+    "places": [
+     "place.imperial-fringe.claywater-station"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.claywater-station-danger",
+   "topicClass": "local",
+   "label": "danger near Claywater Station",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.imperial-fringe.claywater-station",
+    "aspect": "danger"
+   },
+   "requiredFor": {
+    "places": [
+     "place.imperial-fringe.claywater-station"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.claywater-station-directions",
+   "topicClass": "local",
+   "label": "the way from Claywater Station",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.imperial-fringe.claywater-station",
+    "aspect": "directions"
+   },
+   "requiredFor": {
+    "places": [
+     "place.imperial-fringe.claywater-station"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.the-broke-column",
+   "topicClass": "local",
+   "label": "the Broke Column",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.imperial-fringe.the-broke-column",
+    "aspect": "place"
+   },
+   "requiredFor": {
+    "places": [
+     "place.imperial-fringe.the-broke-column"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.the-broke-column-work",
+   "topicClass": "local",
+   "label": "work at the Broke Column",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.imperial-fringe.the-broke-column",
+    "aspect": "work"
+   },
+   "requiredFor": {
+    "places": [
+     "place.imperial-fringe.the-broke-column"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.the-broke-column-people",
+   "topicClass": "local",
+   "label": "the people of the Broke Column",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.imperial-fringe.the-broke-column",
+    "aspect": "people"
+   },
+   "requiredFor": {
+    "places": [
+     "place.imperial-fringe.the-broke-column"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.the-broke-column-danger",
+   "topicClass": "local",
+   "label": "danger near the Broke Column",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.imperial-fringe.the-broke-column",
+    "aspect": "danger"
+   },
+   "requiredFor": {
+    "places": [
+     "place.imperial-fringe.the-broke-column"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.the-broke-column-directions",
+   "topicClass": "local",
+   "label": "the way from the Broke Column",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.imperial-fringe.the-broke-column",
+    "aspect": "directions"
+   },
+   "requiredFor": {
+    "places": [
+     "place.imperial-fringe.the-broke-column"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.rose-bone-waystation",
+   "topicClass": "local",
+   "label": "the Tag House",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.imperial-penal-south.rose-bone-waystation",
+    "aspect": "place"
+   },
+   "requiredFor": {
+    "places": [
+     "place.imperial-penal-south.rose-bone-waystation"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.rose-bone-waystation-work",
+   "topicClass": "local",
+   "label": "work at the Tag House",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.imperial-penal-south.rose-bone-waystation",
+    "aspect": "work"
+   },
+   "requiredFor": {
+    "places": [
+     "place.imperial-penal-south.rose-bone-waystation"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.rose-bone-waystation-people",
+   "topicClass": "local",
+   "label": "the people of the Tag House",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.imperial-penal-south.rose-bone-waystation",
+    "aspect": "people"
+   },
+   "requiredFor": {
+    "places": [
+     "place.imperial-penal-south.rose-bone-waystation"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.rose-bone-waystation-danger",
+   "topicClass": "local",
+   "label": "danger near the Tag House",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.imperial-penal-south.rose-bone-waystation",
+    "aspect": "danger"
+   },
+   "requiredFor": {
+    "places": [
+     "place.imperial-penal-south.rose-bone-waystation"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.rose-bone-waystation-directions",
+   "topicClass": "local",
+   "label": "the way from the Tag House",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.imperial-penal-south.rose-bone-waystation",
+    "aspect": "directions"
+   },
+   "requiredFor": {
+    "places": [
+     "place.imperial-penal-south.rose-bone-waystation"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.voriplasm-vault",
+   "topicClass": "local",
+   "label": "the Sealed Vault",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.imperial-penal-south.voriplasm-vault",
+    "aspect": "place"
+   },
+   "requiredFor": {
+    "places": [
+     "place.imperial-penal-south.voriplasm-vault"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.voriplasm-vault-work",
+   "topicClass": "local",
+   "label": "work at the Sealed Vault",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.imperial-penal-south.voriplasm-vault",
+    "aspect": "work"
+   },
+   "requiredFor": {
+    "places": [
+     "place.imperial-penal-south.voriplasm-vault"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.voriplasm-vault-people",
+   "topicClass": "local",
+   "label": "the people of the Sealed Vault",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.imperial-penal-south.voriplasm-vault",
+    "aspect": "people"
+   },
+   "requiredFor": {
+    "places": [
+     "place.imperial-penal-south.voriplasm-vault"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.voriplasm-vault-danger",
+   "topicClass": "local",
+   "label": "danger near the Sealed Vault",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.imperial-penal-south.voriplasm-vault",
+    "aspect": "danger"
+   },
+   "requiredFor": {
+    "places": [
+     "place.imperial-penal-south.voriplasm-vault"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.voriplasm-vault-directions",
+   "topicClass": "local",
+   "label": "the way from the Sealed Vault",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.imperial-penal-south.voriplasm-vault",
+    "aspect": "directions"
+   },
+   "requiredFor": {
+    "places": [
+     "place.imperial-penal-south.voriplasm-vault"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.chasepoint",
+   "topicClass": "local",
+   "label": "Chasepoint",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.mercantile-coast.chasepoint",
+    "aspect": "place"
+   },
+   "requiredFor": {
+    "places": [
+     "place.mercantile-coast.chasepoint"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.chasepoint-work",
+   "topicClass": "local",
+   "label": "work at Chasepoint",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.mercantile-coast.chasepoint",
+    "aspect": "work"
+   },
+   "requiredFor": {
+    "places": [
+     "place.mercantile-coast.chasepoint"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.chasepoint-people",
+   "topicClass": "local",
+   "label": "the people of Chasepoint",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.mercantile-coast.chasepoint",
+    "aspect": "people"
+   },
+   "requiredFor": {
+    "places": [
+     "place.mercantile-coast.chasepoint"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.chasepoint-danger",
+   "topicClass": "local",
+   "label": "danger near Chasepoint",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.mercantile-coast.chasepoint",
+    "aspect": "danger"
+   },
+   "requiredFor": {
+    "places": [
+     "place.mercantile-coast.chasepoint"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.chasepoint-directions",
+   "topicClass": "local",
+   "label": "the way from Chasepoint",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.mercantile-coast.chasepoint",
+    "aspect": "directions"
+   },
+   "requiredFor": {
+    "places": [
+     "place.mercantile-coast.chasepoint"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.lighter-flotilla",
+   "topicClass": "local",
+   "label": "the Lighter Flotilla",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.mercantile-coast.lighter-flotilla",
+    "aspect": "place"
+   },
+   "requiredFor": {
+    "places": [
+     "place.mercantile-coast.lighter-flotilla"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.lighter-flotilla-work",
+   "topicClass": "local",
+   "label": "work at the Lighter Flotilla",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.mercantile-coast.lighter-flotilla",
+    "aspect": "work"
+   },
+   "requiredFor": {
+    "places": [
+     "place.mercantile-coast.lighter-flotilla"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.lighter-flotilla-people",
+   "topicClass": "local",
+   "label": "the people of the Lighter Flotilla",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.mercantile-coast.lighter-flotilla",
+    "aspect": "people"
+   },
+   "requiredFor": {
+    "places": [
+     "place.mercantile-coast.lighter-flotilla"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.lighter-flotilla-danger",
+   "topicClass": "local",
+   "label": "danger near the Lighter Flotilla",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.mercantile-coast.lighter-flotilla",
+    "aspect": "danger"
+   },
+   "requiredFor": {
+    "places": [
+     "place.mercantile-coast.lighter-flotilla"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.lighter-flotilla-directions",
+   "topicClass": "local",
+   "label": "the way from the Lighter Flotilla",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.mercantile-coast.lighter-flotilla",
+    "aspect": "directions"
+   },
+   "requiredFor": {
+    "places": [
+     "place.mercantile-coast.lighter-flotilla"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.teeth-of-sithis",
+   "topicClass": "local",
+   "label": "the Teeth of Sithis",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.mercantile-coast.teeth-of-sithis",
+    "aspect": "place"
+   },
+   "requiredFor": {
+    "places": [
+     "place.mercantile-coast.teeth-of-sithis"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.teeth-of-sithis-work",
+   "topicClass": "local",
+   "label": "work at the Teeth of Sithis",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.mercantile-coast.teeth-of-sithis",
+    "aspect": "work"
+   },
+   "requiredFor": {
+    "places": [
+     "place.mercantile-coast.teeth-of-sithis"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.teeth-of-sithis-people",
+   "topicClass": "local",
+   "label": "the people of the Teeth of Sithis",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.mercantile-coast.teeth-of-sithis",
+    "aspect": "people"
+   },
+   "requiredFor": {
+    "places": [
+     "place.mercantile-coast.teeth-of-sithis"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.teeth-of-sithis-danger",
+   "topicClass": "local",
+   "label": "danger near the Teeth of Sithis",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.mercantile-coast.teeth-of-sithis",
+    "aspect": "danger"
+   },
+   "requiredFor": {
+    "places": [
+     "place.mercantile-coast.teeth-of-sithis"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.teeth-of-sithis-directions",
+   "topicClass": "local",
+   "label": "the way from the Teeth of Sithis",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.mercantile-coast.teeth-of-sithis",
+    "aspect": "directions"
+   },
+   "requiredFor": {
+    "places": [
+     "place.mercantile-coast.teeth-of-sithis"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.naga-highway-camp-active-north",
+   "topicClass": "local",
+   "label": "the North Cut Camp",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.naga-kur-deeps.naga-highway-camp-active-north",
+    "aspect": "place"
+   },
+   "requiredFor": {
+    "places": [
+     "place.naga-kur-deeps.naga-highway-camp-active-north"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.naga-highway-camp-active-north-work",
+   "topicClass": "local",
+   "label": "work at the North Cut Camp",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.naga-kur-deeps.naga-highway-camp-active-north",
+    "aspect": "work"
+   },
+   "requiredFor": {
+    "places": [
+     "place.naga-kur-deeps.naga-highway-camp-active-north"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.naga-highway-camp-active-north-people",
+   "topicClass": "local",
+   "label": "the people of the North Cut Camp",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.naga-kur-deeps.naga-highway-camp-active-north",
+    "aspect": "people"
+   },
+   "requiredFor": {
+    "places": [
+     "place.naga-kur-deeps.naga-highway-camp-active-north"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.naga-highway-camp-active-north-danger",
+   "topicClass": "local",
+   "label": "danger near the North Cut Camp",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.naga-kur-deeps.naga-highway-camp-active-north",
+    "aspect": "danger"
+   },
+   "requiredFor": {
+    "places": [
+     "place.naga-kur-deeps.naga-highway-camp-active-north"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.naga-highway-camp-active-north-directions",
+   "topicClass": "local",
+   "label": "the way from the North Cut Camp",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.naga-kur-deeps.naga-highway-camp-active-north",
+    "aspect": "directions"
+   },
+   "requiredFor": {
+    "places": [
+     "place.naga-kur-deeps.naga-highway-camp-active-north"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.opening-work-camp",
+   "topicClass": "local",
+   "label": "Gang Ground",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.pirate-freeholds.opening-work-camp",
+    "aspect": "place"
+   },
+   "requiredFor": {
+    "places": [
+     "place.pirate-freeholds.opening-work-camp"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.opening-work-camp-work",
+   "topicClass": "local",
+   "label": "work at Gang Ground",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.pirate-freeholds.opening-work-camp",
+    "aspect": "work"
+   },
+   "requiredFor": {
+    "places": [
+     "place.pirate-freeholds.opening-work-camp"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.opening-work-camp-people",
+   "topicClass": "local",
+   "label": "the people of Gang Ground",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.pirate-freeholds.opening-work-camp",
+    "aspect": "people"
+   },
+   "requiredFor": {
+    "places": [
+     "place.pirate-freeholds.opening-work-camp"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.opening-work-camp-danger",
+   "topicClass": "local",
+   "label": "danger near Gang Ground",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.pirate-freeholds.opening-work-camp",
+    "aspect": "danger"
+   },
+   "requiredFor": {
+    "places": [
+     "place.pirate-freeholds.opening-work-camp"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.opening-work-camp-directions",
+   "topicClass": "local",
+   "label": "the way from Gang Ground",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.pirate-freeholds.opening-work-camp",
+    "aspect": "directions"
+   },
+   "requiredFor": {
+    "places": [
+     "place.pirate-freeholds.opening-work-camp"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.upriver-hist-village",
+   "topicClass": "local",
+   "label": "Nine Bends",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.pirate-freeholds.upriver-hist-village",
+    "aspect": "place"
+   },
+   "requiredFor": {
+    "places": [
+     "place.pirate-freeholds.upriver-hist-village"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.upriver-hist-village-work",
+   "topicClass": "local",
+   "label": "work at Nine Bends",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.pirate-freeholds.upriver-hist-village",
+    "aspect": "work"
+   },
+   "requiredFor": {
+    "places": [
+     "place.pirate-freeholds.upriver-hist-village"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.upriver-hist-village-people",
+   "topicClass": "local",
+   "label": "the people of Nine Bends",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.pirate-freeholds.upriver-hist-village",
+    "aspect": "people"
+   },
+   "requiredFor": {
+    "places": [
+     "place.pirate-freeholds.upriver-hist-village"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.upriver-hist-village-danger",
+   "topicClass": "local",
+   "label": "danger near Nine Bends",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.pirate-freeholds.upriver-hist-village",
+    "aspect": "danger"
+   },
+   "requiredFor": {
+    "places": [
+     "place.pirate-freeholds.upriver-hist-village"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.upriver-hist-village-directions",
+   "topicClass": "local",
+   "label": "the way from Nine Bends",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.pirate-freeholds.upriver-hist-village",
+    "aspect": "directions"
+   },
+   "requiredFor": {
+    "places": [
+     "place.pirate-freeholds.upriver-hist-village"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.archon-gideon-mere-neck",
+   "topicClass": "local",
+   "label": "the Mere Neck",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.route.archon-gideon-mere-neck",
+    "aspect": "place"
+   },
+   "requiredFor": {
+    "places": [
+     "place.route.archon-gideon-mere-neck"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.archon-gideon-mere-neck-work",
+   "topicClass": "local",
+   "label": "work at the Mere Neck",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.route.archon-gideon-mere-neck",
+    "aspect": "work"
+   },
+   "requiredFor": {
+    "places": [
+     "place.route.archon-gideon-mere-neck"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.archon-gideon-mere-neck-people",
+   "topicClass": "local",
+   "label": "the people of the Mere Neck",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.route.archon-gideon-mere-neck",
+    "aspect": "people"
+   },
+   "requiredFor": {
+    "places": [
+     "place.route.archon-gideon-mere-neck"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.archon-gideon-mere-neck-danger",
+   "topicClass": "local",
+   "label": "danger near the Mere Neck",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.route.archon-gideon-mere-neck",
+    "aspect": "danger"
+   },
+   "requiredFor": {
+    "places": [
+     "place.route.archon-gideon-mere-neck"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.archon-gideon-mere-neck-directions",
+   "topicClass": "local",
+   "label": "the way from the Mere Neck",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.route.archon-gideon-mere-neck",
+    "aspect": "directions"
+   },
+   "requiredFor": {
+    "places": [
+     "place.route.archon-gideon-mere-neck"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.border-road-greenspring-crossings",
+   "topicClass": "local",
+   "label": "the Greenspring crossings",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.route.border-road-greenspring-crossings",
+    "aspect": "place"
+   },
+   "requiredFor": {
+    "places": [
+     "place.route.border-road-greenspring-crossings"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.border-road-greenspring-crossings-work",
+   "topicClass": "local",
+   "label": "work at the Greenspring crossings",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.route.border-road-greenspring-crossings",
+    "aspect": "work"
+   },
+   "requiredFor": {
+    "places": [
+     "place.route.border-road-greenspring-crossings"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.border-road-greenspring-crossings-people",
+   "topicClass": "local",
+   "label": "the people of the Greenspring crossings",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.route.border-road-greenspring-crossings",
+    "aspect": "people"
+   },
+   "requiredFor": {
+    "places": [
+     "place.route.border-road-greenspring-crossings"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.border-road-greenspring-crossings-danger",
+   "topicClass": "local",
+   "label": "danger near the Greenspring crossings",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.route.border-road-greenspring-crossings",
+    "aspect": "danger"
+   },
+   "requiredFor": {
+    "places": [
+     "place.route.border-road-greenspring-crossings"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.border-road-greenspring-crossings-directions",
+   "topicClass": "local",
+   "label": "the way from the Greenspring crossings",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.route.border-road-greenspring-crossings",
+    "aspect": "directions"
+   },
+   "requiredFor": {
+    "places": [
+     "place.route.border-road-greenspring-crossings"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.jungle-root-hollow",
+   "topicClass": "local",
+   "label": "Bones-And-Tools",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.saxhleel-coast.jungle-root-hollow",
+    "aspect": "place"
+   },
+   "requiredFor": {
+    "places": [
+     "place.saxhleel-coast.jungle-root-hollow"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.jungle-root-hollow-work",
+   "topicClass": "local",
+   "label": "work at Bones-And-Tools",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.saxhleel-coast.jungle-root-hollow",
+    "aspect": "work"
+   },
+   "requiredFor": {
+    "places": [
+     "place.saxhleel-coast.jungle-root-hollow"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.jungle-root-hollow-people",
+   "topicClass": "local",
+   "label": "the people of Bones-And-Tools",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.saxhleel-coast.jungle-root-hollow",
+    "aspect": "people"
+   },
+   "requiredFor": {
+    "places": [
+     "place.saxhleel-coast.jungle-root-hollow"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.jungle-root-hollow-danger",
+   "topicClass": "local",
+   "label": "danger near Bones-And-Tools",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.saxhleel-coast.jungle-root-hollow",
+    "aspect": "danger"
+   },
+   "requiredFor": {
+    "places": [
+     "place.saxhleel-coast.jungle-root-hollow"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.jungle-root-hollow-directions",
+   "topicClass": "local",
+   "label": "the way from Bones-And-Tools",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.saxhleel-coast.jungle-root-hollow",
+    "aspect": "directions"
+   },
+   "requiredFor": {
+    "places": [
+     "place.saxhleel-coast.jungle-root-hollow"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.pearl-lots",
+   "topicClass": "local",
+   "label": "the Counted Lots",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.saxhleel-coast.pearl-lots",
+    "aspect": "place"
+   },
+   "requiredFor": {
+    "places": [
+     "place.saxhleel-coast.pearl-lots"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.pearl-lots-work",
+   "topicClass": "local",
+   "label": "work at the Counted Lots",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.saxhleel-coast.pearl-lots",
+    "aspect": "work"
+   },
+   "requiredFor": {
+    "places": [
+     "place.saxhleel-coast.pearl-lots"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.pearl-lots-people",
+   "topicClass": "local",
+   "label": "the people of the Counted Lots",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.saxhleel-coast.pearl-lots",
+    "aspect": "people"
+   },
+   "requiredFor": {
+    "places": [
+     "place.saxhleel-coast.pearl-lots"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.pearl-lots-danger",
+   "topicClass": "local",
+   "label": "danger near the Counted Lots",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.saxhleel-coast.pearl-lots",
+    "aspect": "danger"
+   },
+   "requiredFor": {
+    "places": [
+     "place.saxhleel-coast.pearl-lots"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.pearl-lots-directions",
+   "topicClass": "local",
+   "label": "the way from the Counted Lots",
+   "glossaryTerm": null,
+   "keys": {
+    "place": "place.saxhleel-coast.pearl-lots",
+    "aspect": "directions"
+   },
+   "requiredFor": {
+    "places": [
+     "place.saxhleel-coast.pearl-lots"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-argonian",
+   "topicClass": "newcomer",
+   "label": "Who are the Saxhleel?",
+   "glossaryTerm": "term.argonian",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.argonian"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-argonia",
+   "topicClass": "newcomer",
+   "label": "What is Argonia?",
+   "glossaryTerm": "term.argonia",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.argonia"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-hist",
+   "topicClass": "newcomer",
+   "label": "What is the Hist?",
+   "glossaryTerm": "term.hist",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.hist"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-hist-sap",
+   "topicClass": "newcomer",
+   "label": "What does the sap do?",
+   "glossaryTerm": "term.hist-sap",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.hist-sap"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-tree-minder",
+   "topicClass": "newcomer",
+   "label": "Who is the tree-minder?",
+   "glossaryTerm": "term.tree-minder",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.tree-minder"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-egg-tender",
+   "topicClass": "newcomer",
+   "label": "Why guard the clutch?",
+   "glossaryTerm": "term.egg-tender",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.egg-tender"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-naheesh",
+   "topicClass": "newcomer",
+   "label": "Who leads here?",
+   "glossaryTerm": "term.naheesh",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.naheesh"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-ojel",
+   "topicClass": "newcomer",
+   "label": "What does ojel mean?",
+   "glossaryTerm": "term.ojel",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.ojel"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-lukiul",
+   "topicClass": "newcomer",
+   "label": "What is a lukiul?",
+   "glossaryTerm": "term.lukiul",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.lukiul"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-sithis",
+   "topicClass": "newcomer",
+   "label": "Who is Sithis?",
+   "glossaryTerm": "term.sithis",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.sithis"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-nisswo",
+   "topicClass": "newcomer",
+   "label": "Who are the Nisswo?",
+   "glossaryTerm": "term.nisswo",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.nisswo"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-shadowscale",
+   "topicClass": "newcomer",
+   "label": "What is a Shadowscale?",
+   "glossaryTerm": "term.shadowscale",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.shadowscale"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-naga",
+   "topicClass": "newcomer",
+   "label": "Who are the Naga?",
+   "glossaryTerm": "term.naga",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.naga"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-xanmeer",
+   "topicClass": "newcomer",
+   "label": "What are the stone pyramids?",
+   "glossaryTerm": "term.xanmeer",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.xanmeer"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-dunmer",
+   "topicClass": "newcomer",
+   "label": "Who were the Dres?",
+   "glossaryTerm": "term.dunmer",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.dunmer"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-imperial",
+   "topicClass": "newcomer",
+   "label": "What did the Empire leave?",
+   "glossaryTerm": "term.imperial",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.imperial"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-bretic",
+   "topicClass": "newcomer",
+   "label": "Who are the Bretons?",
+   "glossaryTerm": "term.bretic",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.bretic"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-owing",
+   "topicClass": "newcomer",
+   "label": "What is the Owing?",
+   "glossaryTerm": "term.owing",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.owing"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-archein",
+   "topicClass": "newcomer",
+   "label": "Who were the Archeins?",
+   "glossaryTerm": "term.archein",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.archein"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-umbriel",
+   "topicClass": "newcomer",
+   "label": "What happened in 4E 48?",
+   "glossaryTerm": "term.umbriel",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.umbriel"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-battle-of-argonia",
+   "topicClass": "newcomer",
+   "label": "What was the Battle of Argonia?",
+   "glossaryTerm": "term.battle-of-argonia",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.battle-of-argonia"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-haynekhtnamet",
+   "topicClass": "newcomer",
+   "label": "Is there a creature in the pond?",
+   "glossaryTerm": "term.haynekhtnamet",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.haynekhtnamet"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-an-xileel",
+   "topicClass": "newcomer",
+   "label": "Who rules Argonia?",
+   "glossaryTerm": "term.an-xileel",
+   "keys": {
+    "faction": "faction.an-xileel"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.an-xileel"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-veiled-reed",
+   "topicClass": "newcomer",
+   "label": "Who are the Veiled Reed?",
+   "glossaryTerm": "term.veiled-reed",
+   "keys": {
+    "faction": "faction.veiled-reed"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.veiled-reed"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-unbound-root",
+   "topicClass": "newcomer",
+   "label": "Who are the Unbound Root?",
+   "glossaryTerm": "term.unbound-root",
+   "keys": {
+    "faction": "faction.unbound-root"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.unbound-root"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-many-root-conclave",
+   "topicClass": "newcomer",
+   "label": "What is the Conclave?",
+   "glossaryTerm": "term.many-root-conclave",
+   "keys": {
+    "faction": "faction.many-root-conclave"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.many-root-conclave"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-reed-sail-compact",
+   "topicClass": "newcomer",
+   "label": "Who runs the boats?",
+   "glossaryTerm": "term.reed-sail-compact",
+   "keys": {
+    "faction": "faction.reed-sail-compact"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.reed-sail-compact"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-salt-teeth",
+   "topicClass": "newcomer",
+   "label": "Who are the Salt-Teeth?",
+   "glossaryTerm": "term.salt-teeth",
+   "keys": {
+    "faction": "faction.salt-teeth"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.salt-teeth"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-chainbreakers",
+   "topicClass": "newcomer",
+   "label": "Who are the Chainbreakers?",
+   "glossaryTerm": "term.chainbreakers",
+   "keys": {
+    "faction": "faction.chainbreakers"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.chainbreakers"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-nisswo-of-the-turning-path",
+   "topicClass": "newcomer",
+   "label": "What is the Turning Path?",
+   "glossaryTerm": "term.nisswo-of-the-turning-path",
+   "keys": {
+    "faction": "faction.nisswo"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.nisswo-of-the-turning-path"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-the-empty-cradle",
+   "topicClass": "newcomer",
+   "label": "Who sends the Shadowscales?",
+   "glossaryTerm": "term.the-empty-cradle",
+   "keys": {
+    "faction": "faction.shadowscales"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.the-empty-cradle"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-naga-kur",
+   "topicClass": "newcomer",
+   "label": "Who are the Naga-Kur?",
+   "glossaryTerm": "term.naga-kur",
+   "keys": {
+    "faction": "faction.naga-kur"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.naga-kur"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-tribeless-naga",
+   "topicClass": "newcomer",
+   "label": "Who raids the tracks?",
+   "glossaryTerm": "term.tribeless-naga",
+   "keys": {
+    "faction": "faction.tribeless-naga"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.tribeless-naga"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-sul-xan",
+   "topicClass": "newcomer",
+   "label": "Who are the Sul-Xan?",
+   "glossaryTerm": "term.sul-xan",
+   "keys": {
+    "faction": "faction.sul-xan"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.sul-xan"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-rootworm-waykeepers",
+   "topicClass": "newcomer",
+   "label": "Who keeps the worm-roads?",
+   "glossaryTerm": "term.rootworm-waykeepers",
+   "keys": {
+    "faction": "faction.rootworm-waykeepers"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.rootworm-waykeepers"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-league-of-open-water",
+   "topicClass": "newcomer",
+   "label": "What is the League?",
+   "glossaryTerm": "term.league-of-open-water",
+   "keys": {
+    "faction": "faction.league-of-open-water"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.league-of-open-water"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-marsh-charter",
+   "topicClass": "newcomer",
+   "label": "Who hires fighters?",
+   "glossaryTerm": "term.marsh-charter",
+   "keys": {
+    "faction": "faction.marsh-charter"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.marsh-charter"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-night-reed-chapter",
+   "topicClass": "newcomer",
+   "label": "Who are the thieves here?",
+   "glossaryTerm": "term.night-reed-chapter",
+   "keys": {
+    "faction": "faction.night-reed-chapter"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.night-reed-chapter"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-sunken-archive",
+   "topicClass": "newcomer",
+   "label": "What is the Sunken Archive?",
+   "glossaryTerm": "term.sunken-archive",
+   "keys": {
+    "faction": "faction.sunken-archive"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.sunken-archive"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-college-of-whispers",
+   "topicClass": "newcomer",
+   "label": "Who are the College?",
+   "glossaryTerm": "term.college-of-whispers",
+   "keys": {
+    "faction": "faction.college-of-whispers"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.college-of-whispers"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-synod",
+   "topicClass": "newcomer",
+   "label": "Who are the Synod?",
+   "glossaryTerm": "term.synod",
+   "keys": {
+    "faction": "faction.synod"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.synod"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-cyrodilic-collections",
+   "topicClass": "newcomer",
+   "label": "Who digs the ruins?",
+   "glossaryTerm": "term.cyrodilic-collections",
+   "keys": {
+    "faction": "faction.cyrodilic-collections"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.cyrodilic-collections"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-imperial-legion-remnant",
+   "topicClass": "newcomer",
+   "label": "Why are there legionaries here?",
+   "glossaryTerm": "term.imperial-legion-remnant",
+   "keys": {
+    "faction": "faction.imperial-legion-remnant"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.imperial-legion-remnant"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-morrowind-veterans",
+   "topicClass": "newcomer",
+   "label": "Why are there Dunmer soldiers?",
+   "glossaryTerm": "term.morrowind-veterans",
+   "keys": {
+    "faction": "faction.morrowind-veterans"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.morrowind-veterans"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-house-dres-remnant",
+   "topicClass": "newcomer",
+   "label": "Are the Dres still here?",
+   "glossaryTerm": "term.house-dres-remnant",
+   "keys": {
+    "faction": "faction.dres-remnant"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.house-dres-remnant"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-thorn-ash-reed-accord",
+   "topicClass": "newcomer",
+   "label": "Who owns the fields?",
+   "glossaryTerm": "term.thorn-ash-reed-accord",
+   "keys": {
+    "faction": "faction.thorn-ash-reed-accord"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.thorn-ash-reed-accord"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-umbriel-witness-society",
+   "topicClass": "newcomer",
+   "label": "Who remembers Umbriel?",
+   "glossaryTerm": "term.umbriel-witness-society",
+   "keys": {
+    "faction": "faction.umbriel-witness-society"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.umbriel-witness-society"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-blackguards",
+   "topicClass": "newcomer",
+   "label": "Who are the Blackguards?",
+   "glossaryTerm": "term.blackguards",
+   "keys": {
+    "faction": "faction.blackguards"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.blackguards"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-bright-throat-tribe",
+   "topicClass": "newcomer",
+   "label": "Who are the Bright-Throats?",
+   "glossaryTerm": "term.bright-throat-tribe",
+   "keys": {
+    "faction": "faction.bright-throat-tribe"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.bright-throat-tribe"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-murkwater",
+   "topicClass": "newcomer",
+   "label": "Who are the Murkwater?",
+   "glossaryTerm": "term.murkwater",
+   "keys": {
+    "faction": "faction.murkwater-tribe"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.murkwater"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-root-whisper-tribe",
+   "topicClass": "newcomer",
+   "label": "What happened to Root-Whisper?",
+   "glossaryTerm": "term.root-whisper-tribe",
+   "keys": {
+    "faction": "faction.root-whisper"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.root-whisper-tribe"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-xit-xaht",
+   "topicClass": "newcomer",
+   "label": "Who are the Xit-Xaht?",
+   "glossaryTerm": "term.xit-xaht",
+   "keys": {
+    "faction": "faction.xit-xaht"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.xit-xaht"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-stillrise",
+   "topicClass": "newcomer",
+   "label": "What is Stillrise?",
+   "glossaryTerm": "term.stillrise",
+   "keys": {
+    "faction": "faction.stillrise"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.stillrise"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-root-talk",
+   "topicClass": "newcomer",
+   "label": "Who governs Helstrom?",
+   "glossaryTerm": "term.root-talk",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.root-talk"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-scalded-throne",
+   "topicClass": "newcomer",
+   "label": "Is there a king?",
+   "glossaryTerm": "term.scalded-throne",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.scalded-throne"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-cut-circle",
+   "topicClass": "newcomer",
+   "label": "What is the Cut Circle?",
+   "glossaryTerm": "term.cut-circle",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.cut-circle"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-unbound-root-cutting",
+   "topicClass": "newcomer",
+   "label": "What is a cutting?",
+   "glossaryTerm": "term.unbound-root-cutting",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.unbound-root-cutting"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-shells-and-stones",
+   "topicClass": "newcomer",
+   "label": "What game is that?",
+   "glossaryTerm": "term.shells-and-stones",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.shells-and-stones"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-fish-eye-rye",
+   "topicClass": "newcomer",
+   "label": "What is Fish-Eye Rye?",
+   "glossaryTerm": "term.fish-eye-rye",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.fish-eye-rye"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-helstrom",
+   "topicClass": "newcomer",
+   "label": "What is Helstrom?",
+   "glossaryTerm": "term.helstrom",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.helstrom"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-greenspring",
+   "topicClass": "newcomer",
+   "label": "Where is Greenspring?",
+   "glossaryTerm": "term.greenspring",
+   "keys": {
+    "place": "place.hist-heartland.greenspring"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.greenspring"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-gideon",
+   "topicClass": "newcomer",
+   "label": "What is Gideon?",
+   "glossaryTerm": "term.gideon",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.gideon"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-lilmoth",
+   "topicClass": "newcomer",
+   "label": "What happened at Lilmoth?",
+   "glossaryTerm": "term.lilmoth",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.lilmoth"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-archon",
+   "topicClass": "newcomer",
+   "label": "What is Archon?",
+   "glossaryTerm": "term.archon",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.archon"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-thorn",
+   "topicClass": "newcomer",
+   "label": "What is Thorn?",
+   "glossaryTerm": "term.thorn",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.thorn"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-blackrose",
+   "topicClass": "newcomer",
+   "label": "What is the Rose?",
+   "glossaryTerm": "term.blackrose",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.blackrose"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-soulrest",
+   "topicClass": "newcomer",
+   "label": "What is Soulrest?",
+   "glossaryTerm": "term.soulrest",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.soulrest"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-alten-corimont",
+   "topicClass": "newcomer",
+   "label": "What is Alten Corimont?",
+   "glossaryTerm": "term.alten-corimont",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.alten-corimont"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-alten-meerhleel",
+   "topicClass": "newcomer",
+   "label": "What is Alten Meerhleel?",
+   "glossaryTerm": "term.alten-meerhleel",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.alten-meerhleel"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-murkmire",
+   "topicClass": "newcomer",
+   "label": "What is Murkmire?",
+   "glossaryTerm": "term.murkmire",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.murkmire"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-shadowfen",
+   "topicClass": "newcomer",
+   "label": "What is Shadowfen?",
+   "glossaryTerm": "term.shadowfen",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.shadowfen"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-blackwood",
+   "topicClass": "newcomer",
+   "label": "Where does the road go?",
+   "glossaryTerm": "term.blackwood",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.blackwood"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-morrowind",
+   "topicClass": "newcomer",
+   "label": "What is north of the marsh?",
+   "glossaryTerm": "term.morrowind",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.morrowind"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-hissmir",
+   "topicClass": "newcomer",
+   "label": "What is at Hissmir?",
+   "glossaryTerm": "term.hissmir",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.hissmir"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-tear",
+   "topicClass": "newcomer",
+   "label": "Where does the Tear road go?",
+   "glossaryTerm": "term.tear",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.tear"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-padomaic",
+   "topicClass": "newcomer",
+   "label": "What is the eastern sea?",
+   "glossaryTerm": "term.padomaic",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.padomaic"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-southern-sea",
+   "topicClass": "newcomer",
+   "label": "What is south?",
+   "glossaryTerm": "term.southern-sea",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.southern-sea"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-onkobra",
+   "topicClass": "newcomer",
+   "label": "What river is that?",
+   "glossaryTerm": "term.onkobra",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.onkobra"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-panther-race",
+   "topicClass": "newcomer",
+   "label": "What is Panther Race?",
+   "glossaryTerm": "term.panther-race",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.panther-race"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-portdun-mont",
+   "topicClass": "newcomer",
+   "label": "Where is Portdun-Mont?",
+   "glossaryTerm": "term.portdun-mont",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.portdun-mont"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-long-water-hold",
+   "topicClass": "newcomer",
+   "label": "What is Long-Water Hold?",
+   "glossaryTerm": "term.long-water-hold",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.long-water-hold"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-prison-road",
+   "topicClass": "newcomer",
+   "label": "Where does this road go?",
+   "glossaryTerm": "term.prison-road",
+   "keys": {},
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.prison-road"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-teeth-of-sithis",
+   "topicClass": "newcomer",
+   "label": "What was the temple built to do?",
+   "glossaryTerm": "term.teeth-of-sithis",
+   "keys": {
+    "place": "place.mercantile-coast.teeth-of-sithis"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.teeth-of-sithis"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-riverwalk",
+   "topicClass": "newcomer",
+   "label": "What is this place?",
+   "glossaryTerm": "term.riverwalk",
+   "keys": {
+    "place": "place.dunmer-north.riverwalk"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.riverwalk"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-chasepoint",
+   "topicClass": "newcomer",
+   "label": "What is Chasepoint?",
+   "glossaryTerm": "term.chasepoint",
+   "keys": {
+    "place": "place.mercantile-coast.chasepoint"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.chasepoint"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-claywater",
+   "topicClass": "newcomer",
+   "label": "What is Claywater?",
+   "glossaryTerm": "term.claywater",
+   "keys": {
+    "place": "place.imperial-fringe.claywater-station"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.claywater"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-nine-bends",
+   "topicClass": "newcomer",
+   "label": "What is Nine Bends?",
+   "glossaryTerm": "term.nine-bends",
+   "keys": {
+    "place": "place.pirate-freeholds.upriver-hist-village"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.nine-bends"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-gang-ground",
+   "topicClass": "newcomer",
+   "label": "What is Gang Ground?",
+   "glossaryTerm": "term.gang-ground",
+   "keys": {
+    "place": "place.pirate-freeholds.opening-work-camp"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.gang-ground"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-bones-and-tools",
+   "topicClass": "newcomer",
+   "label": "What is Bones-And-Tools?",
+   "glossaryTerm": "term.bones-and-tools",
+   "keys": {
+    "place": "place.saxhleel-coast.jungle-root-hollow"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.bones-and-tools"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-counted-lots",
+   "topicClass": "newcomer",
+   "label": "What is Counted Lots?",
+   "glossaryTerm": "term.counted-lots",
+   "keys": {
+    "place": "place.saxhleel-coast.pearl-lots"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.counted-lots"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-lighter-flotilla",
+   "topicClass": "newcomer",
+   "label": "What is Lighter Flotilla?",
+   "glossaryTerm": "term.lighter-flotilla",
+   "keys": {
+    "place": "place.mercantile-coast.lighter-flotilla"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.lighter-flotilla"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-tag-house",
+   "topicClass": "newcomer",
+   "label": "What is Tag House?",
+   "glossaryTerm": "term.tag-house",
+   "keys": {
+    "place": "place.imperial-penal-south.rose-bone-waystation"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.tag-house"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-sealed-vault",
+   "topicClass": "newcomer",
+   "label": "What is Sealed Vault?",
+   "glossaryTerm": "term.sealed-vault",
+   "keys": {
+    "place": "place.imperial-penal-south.voriplasm-vault"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.sealed-vault"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-broke-column",
+   "topicClass": "newcomer",
+   "label": "What is Broke Column?",
+   "glossaryTerm": "term.broke-column",
+   "keys": {
+    "place": "place.imperial-fringe.the-broke-column"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.broke-column"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-bog-iron-workings",
+   "topicClass": "newcomer",
+   "label": "What is Bog Iron Workings?",
+   "glossaryTerm": "term.bog-iron-workings",
+   "keys": {
+    "place": "place.imperial-fringe.bog-iron-workings"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.bog-iron-workings"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.about-north-cut",
+   "topicClass": "newcomer",
+   "label": "What is North Cut?",
+   "glossaryTerm": "term.north-cut",
+   "keys": {
+    "place": "place.naga-kur-deeps.naga-highway-camp-active-north"
+   },
+   "requiredFor": {
+    "glossaryTerms": [
+     "term.north-cut"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.faction-an-xileel",
+   "topicClass": "faction",
+   "label": "the An-Xileel",
+   "glossaryTerm": null,
+   "keys": {
+    "faction": "faction.an-xileel"
+   },
+   "requiredFor": {
+    "factions": [
+     "faction.an-xileel"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.faction-blackguards",
+   "topicClass": "faction",
+   "label": "the Blackguards",
+   "glossaryTerm": null,
+   "keys": {
+    "faction": "faction.blackguards"
+   },
+   "requiredFor": {
+    "factions": [
+     "faction.blackguards"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.faction-bright-throat-tribe",
+   "topicClass": "faction",
+   "label": "the Bright-Throat tribe",
+   "glossaryTerm": null,
+   "keys": {
+    "faction": "faction.bright-throat-tribe"
+   },
+   "requiredFor": {
+    "factions": [
+     "faction.bright-throat-tribe"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.faction-chainbreakers",
+   "topicClass": "faction",
+   "label": "the Blackrose Chainbreakers",
+   "glossaryTerm": null,
+   "keys": {
+    "faction": "faction.chainbreakers"
+   },
+   "requiredFor": {
+    "factions": [
+     "faction.chainbreakers"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.faction-college-of-whispers",
+   "topicClass": "faction",
+   "label": "the College of Whispers",
+   "glossaryTerm": null,
+   "keys": {
+    "faction": "faction.college-of-whispers"
+   },
+   "requiredFor": {
+    "factions": [
+     "faction.college-of-whispers"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.faction-cyrodilic-collections",
+   "topicClass": "faction",
+   "label": "the Cyrodilic Collections",
+   "glossaryTerm": null,
+   "keys": {
+    "faction": "faction.cyrodilic-collections"
+   },
+   "requiredFor": {
+    "factions": [
+     "faction.cyrodilic-collections"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.faction-dres-remnant",
+   "topicClass": "faction",
+   "label": "the Dres remnant",
+   "glossaryTerm": null,
+   "keys": {
+    "faction": "faction.dres-remnant"
+   },
+   "requiredFor": {
+    "factions": [
+     "faction.dres-remnant"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.faction-imperial-legion-remnant",
+   "topicClass": "faction",
+   "label": "the Imperial Legion remnant",
+   "glossaryTerm": null,
+   "keys": {
+    "faction": "faction.imperial-legion-remnant"
+   },
+   "requiredFor": {
+    "factions": [
+     "faction.imperial-legion-remnant"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.faction-league-of-open-water",
+   "topicClass": "faction",
+   "label": "the League of Open Water",
+   "glossaryTerm": null,
+   "keys": {
+    "faction": "faction.league-of-open-water"
+   },
+   "requiredFor": {
+    "factions": [
+     "faction.league-of-open-water"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.faction-many-root-conclave",
+   "topicClass": "faction",
+   "label": "the Many-Root Conclave",
+   "glossaryTerm": null,
+   "keys": {
+    "faction": "faction.many-root-conclave"
+   },
+   "requiredFor": {
+    "factions": [
+     "faction.many-root-conclave"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.faction-marsh-charter",
+   "topicClass": "faction",
+   "label": "the Marsh Charter",
+   "glossaryTerm": null,
+   "keys": {
+    "faction": "faction.marsh-charter"
+   },
+   "requiredFor": {
+    "factions": [
+     "faction.marsh-charter"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.faction-morrowind-veterans",
+   "topicClass": "faction",
+   "label": "the Morrowind veterans",
+   "glossaryTerm": null,
+   "keys": {
+    "faction": "faction.morrowind-veterans"
+   },
+   "requiredFor": {
+    "factions": [
+     "faction.morrowind-veterans"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.faction-murkwater-tribe",
+   "topicClass": "faction",
+   "label": "the Murkwater tribe",
+   "glossaryTerm": null,
+   "keys": {
+    "faction": "faction.murkwater-tribe"
+   },
+   "requiredFor": {
+    "factions": [
+     "faction.murkwater-tribe"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.faction-naga-kur",
+   "topicClass": "faction",
+   "label": "the Naga-Kur",
+   "glossaryTerm": null,
+   "keys": {
+    "faction": "faction.naga-kur"
+   },
+   "requiredFor": {
+    "factions": [
+     "faction.naga-kur"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.faction-night-reed-chapter",
+   "topicClass": "faction",
+   "label": "the Night-Reed Chapter",
+   "glossaryTerm": null,
+   "keys": {
+    "faction": "faction.night-reed-chapter"
+   },
+   "requiredFor": {
+    "factions": [
+     "faction.night-reed-chapter"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.faction-nisswo",
+   "topicClass": "faction",
+   "label": "the Nisswo of the Turning Path",
+   "glossaryTerm": null,
+   "keys": {
+    "faction": "faction.nisswo"
+   },
+   "requiredFor": {
+    "factions": [
+     "faction.nisswo"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.faction-reed-sail-compact",
+   "topicClass": "faction",
+   "label": "the Reed-Sail Compact",
+   "glossaryTerm": null,
+   "keys": {
+    "faction": "faction.reed-sail-compact"
+   },
+   "requiredFor": {
+    "factions": [
+     "faction.reed-sail-compact"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.faction-root-whisper",
+   "topicClass": "faction",
+   "label": "the Root-Whisper tribe",
+   "glossaryTerm": null,
+   "keys": {
+    "faction": "faction.root-whisper"
+   },
+   "requiredFor": {
+    "factions": [
+     "faction.root-whisper"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.faction-rootworm-waykeepers",
+   "topicClass": "faction",
+   "label": "the Rootworm Waykeepers",
+   "glossaryTerm": null,
+   "keys": {
+    "faction": "faction.rootworm-waykeepers"
+   },
+   "requiredFor": {
+    "factions": [
+     "faction.rootworm-waykeepers"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.faction-salt-teeth",
+   "topicClass": "faction",
+   "label": "the Salt-Teeth",
+   "glossaryTerm": null,
+   "keys": {
+    "faction": "faction.salt-teeth"
+   },
+   "requiredFor": {
+    "factions": [
+     "faction.salt-teeth"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.faction-shadowscales",
+   "topicClass": "faction",
+   "label": "the Shadowscales",
+   "glossaryTerm": null,
+   "keys": {
+    "faction": "faction.shadowscales"
+   },
+   "requiredFor": {
+    "factions": [
+     "faction.shadowscales"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.faction-stillrise",
+   "topicClass": "faction",
+   "label": "Stillrise village",
+   "glossaryTerm": null,
+   "keys": {
+    "faction": "faction.stillrise"
+   },
+   "requiredFor": {
+    "factions": [
+     "faction.stillrise"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.faction-sul-xan",
+   "topicClass": "faction",
+   "label": "the Sul-Xan",
+   "glossaryTerm": null,
+   "keys": {
+    "faction": "faction.sul-xan"
+   },
+   "requiredFor": {
+    "factions": [
+     "faction.sul-xan"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.faction-sunken-archive",
+   "topicClass": "faction",
+   "label": "the Sunken Archive",
+   "glossaryTerm": null,
+   "keys": {
+    "faction": "faction.sunken-archive"
+   },
+   "requiredFor": {
+    "factions": [
+     "faction.sunken-archive"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.faction-synod",
+   "topicClass": "faction",
+   "label": "the Synod",
+   "glossaryTerm": null,
+   "keys": {
+    "faction": "faction.synod"
+   },
+   "requiredFor": {
+    "factions": [
+     "faction.synod"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.faction-thorn-ash-reed-accord",
+   "topicClass": "faction",
+   "label": "the Thorn Ash-Reed Accord",
+   "glossaryTerm": null,
+   "keys": {
+    "faction": "faction.thorn-ash-reed-accord"
+   },
+   "requiredFor": {
+    "factions": [
+     "faction.thorn-ash-reed-accord"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.faction-tribeless-naga",
+   "topicClass": "faction",
+   "label": "Tribeless Naga",
+   "glossaryTerm": null,
+   "keys": {
+    "faction": "faction.tribeless-naga"
+   },
+   "requiredFor": {
+    "factions": [
+     "faction.tribeless-naga"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.faction-umbriel-witness-society",
+   "topicClass": "faction",
+   "label": "the Umbriel Witness Society",
+   "glossaryTerm": null,
+   "keys": {
+    "faction": "faction.umbriel-witness-society"
+   },
+   "requiredFor": {
+    "factions": [
+     "faction.umbriel-witness-society"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.faction-unbound-root",
+   "topicClass": "faction",
+   "label": "the Unbound Root",
+   "glossaryTerm": null,
+   "keys": {
+    "faction": "faction.unbound-root"
+   },
+   "requiredFor": {
+    "factions": [
+     "faction.unbound-root"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.faction-veiled-reed",
+   "topicClass": "faction",
+   "label": "the Veiled Reed",
+   "glossaryTerm": null,
+   "keys": {
+    "faction": "faction.veiled-reed"
+   },
+   "requiredFor": {
+    "factions": [
+     "faction.veiled-reed"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.faction-xit-xaht",
+   "topicClass": "faction",
+   "label": "the Xit-Xaht",
+   "glossaryTerm": null,
+   "keys": {
+    "faction": "faction.xit-xaht"
+   },
+   "requiredFor": {
+    "factions": [
+     "faction.xit-xaht"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-bearing-witness",
+   "topicClass": "role",
+   "label": "bearing witness",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "the witness"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-boat-work",
+   "topicClass": "role",
+   "label": "boat work",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "a boat crew"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-carrying-for-the-villages",
+   "topicClass": "role",
+   "label": "carrying for the villages",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "the villages' carrier"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-digging-bog-iron",
+   "topicClass": "role",
+   "label": "digging bog iron",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "the season's diggers"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-diving-the-lots",
+   "topicClass": "role",
+   "label": "diving the lots",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "the lot divers"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-dyeing",
+   "topicClass": "role",
+   "label": "dyeing",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "the dyer"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-gang-work",
+   "topicClass": "role",
+   "label": "gang work",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "a gang family"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-keeping-the-teeth",
+   "topicClass": "role",
+   "label": "keeping the Teeth",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "nisswo of the Teeth"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-keeping-the-clutch",
+   "topicClass": "role",
+   "label": "keeping the clutch",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "the clutch-keeper"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-keeping-the-spring",
+   "topicClass": "role",
+   "label": "keeping the spring",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "the spring-keeper"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-life-in-the-rose",
+   "topicClass": "role",
+   "label": "life in the Rose",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "a family from the Rose"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-lightering",
+   "topicClass": "role",
+   "label": "lightering",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "a lighter hand"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-minding-the-tree",
+   "topicClass": "role",
+   "label": "minding the tree",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "the tree-minder"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-net-mending",
+   "topicClass": "role",
+   "label": "net mending",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "a net mender",
+     "a net-mender"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-poling",
+   "topicClass": "role",
+   "label": "poling",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "the landing's poler"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-reed-cutting",
+   "topicClass": "role",
+   "label": "reed cutting",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "a reed cutter"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-root-heralds",
+   "topicClass": "role",
+   "label": "root-heralds",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "the root-herald"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-salvage",
+   "topicClass": "role",
+   "label": "salvage",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "the salvage households"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-scrubbing-the-teeth",
+   "topicClass": "role",
+   "label": "scrubbing the Teeth",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "the scrubber"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-selling-salvage",
+   "topicClass": "role",
+   "label": "selling salvage",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "the salvage merchant"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-smithing",
+   "topicClass": "role",
+   "label": "smithing",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "the smith"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-temple-duties",
+   "topicClass": "role",
+   "label": "temple duties",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "rank-and-file"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-band",
+   "topicClass": "role",
+   "label": "the band",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "the band"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-beds",
+   "topicClass": "role",
+   "label": "the beds",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "the bed-keeper"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-camps-orders",
+   "topicClass": "role",
+   "label": "the camp's orders",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "the lieutenant"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-column",
+   "topicClass": "role",
+   "label": "the column",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "a descendant of the column"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-flotillas-business",
+   "topicClass": "role",
+   "label": "the flotilla's business",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "the flotilla speaker"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-households-that-stayed",
+   "topicClass": "role",
+   "label": "the households that stayed",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "a household left behind"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-journey-to-helstrom",
+   "topicClass": "role",
+   "label": "the journey to Helstrom",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "a traveller bound for Helstrom"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-lighter",
+   "topicClass": "role",
+   "label": "the lighter",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "the lighter's master"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-long-house",
+   "topicClass": "role",
+   "label": "the long house",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "a long house household"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-overseers",
+   "topicClass": "role",
+   "label": "the overseers",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "a camp overseer"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-priesthood",
+   "topicClass": "role",
+   "label": "the priesthood",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "a priest"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-purse",
+   "topicClass": "role",
+   "label": "the purse",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "the ship's purser"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-road",
+   "topicClass": "role",
+   "label": "the road",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "a road traveller"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-serjeants-duty",
+   "topicClass": "role",
+   "label": "the serjeant's duty",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "the serjeant"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-spring-families",
+   "topicClass": "role",
+   "label": "the spring families",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "a spring family"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-stage",
+   "topicClass": "role",
+   "label": "the stage",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "the stage-mistress"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-station",
+   "topicClass": "role",
+   "label": "the station",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "the station-keeper"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-surface-line",
+   "topicClass": "role",
+   "label": "the surface line",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "the surface tender"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-tags",
+   "topicClass": "role",
+   "label": "the tags",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "the tag-keeper"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-toll",
+   "topicClass": "role",
+   "label": "the toll",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "a toll hand",
+     "the toll-holder"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-two-halves",
+   "topicClass": "role",
+   "label": "the two halves",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "a household of either half"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-well",
+   "topicClass": "role",
+   "label": "the well",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "the well-keeper"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.role-village-matters",
+   "topicClass": "role",
+   "label": "village matters",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "the elder"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.trade",
+   "topicClass": "region",
+   "label": "trade",
+   "glossaryTerm": null
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.hearth-heal",
+   "topicClass": "service",
+   "label": "Hearth Heal",
+   "glossaryTerm": null,
+   "requiredFor": {
+    "roles": [
+     "the spring-keeper"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.latest-rumours",
+   "topicClass": "rumour",
+   "label": "latest rumours",
+   "glossaryTerm": null
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.little-advice",
+   "topicClass": "newcomer",
+   "label": "little advice",
+   "glossaryTerm": null
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.claywater-two-charges",
+   "topicClass": "quest",
+   "label": "two charges at Claywater",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lf83"
+   },
+   "requiredFor": {
+    "roles": [
+     "the well-keeper"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.claywater-landing-terms",
+   "topicClass": "quest",
+   "label": "the landing's terms",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lf83"
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.greenspring-drinker",
+   "topicClass": "quest",
+   "label": "the body in the spring",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lh38"
+   },
+   "requiredFor": {
+    "people": [
+     "npc.hist-heartland.greenspring.spring-keeper"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.greenspring-drinker-raised",
+   "topicClass": "quest",
+   "label": "what the households said",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lh38"
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.greenspring-spring-terms",
+   "topicClass": "quest",
+   "label": "the use of the spring",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lh37"
+   },
+   "requiredFor": {
+    "people": [
+     "npc.hist-heartland.greenspring.n1"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.greenspring-written-terms",
+   "topicClass": "quest",
+   "label": "the spring terms in writing",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lh37"
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.nine-trunks-pitch-rent",
+   "topicClass": "quest",
+   "label": "pitch rent at Nine-Trunks",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lh51"
+   },
+   "requiredFor": {
+    "people": [
+     "npc.hist-heartland.greenspring.root-herald"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.helstrom-sour-water",
+   "topicClass": "quest",
+   "label": "the sour water of Helstrom",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lh07"
+   },
+   "requiredFor": {
+    "people": [
+     "npc.hist-heartland.greenspring.n3"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.greenspring-sick-root",
+   "topicClass": "quest",
+   "label": "the sick root",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.mr.mr01"
+   },
+   "requiredFor": {
+    "people": [
+     "npc.hist-heartland.greenspring.tree-minder"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.wamasu-shrine-turn",
+   "topicClass": "quest",
+   "label": "this year's offering",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.ld65"
+   },
+   "requiredFor": {
+    "people": [
+     "npc.dunmer-north.the-wamasu-shrine.headwoman"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.wamasu-shelf-upkeep",
+   "topicClass": "quest",
+   "label": "the offering shelf",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.ld65"
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.burnished-scales-trial",
+   "topicClass": "quest",
+   "label": "the Trial of the Burnished Scales",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lh63"
+   },
+   "requiredFor": {
+    "people": [
+     "npc.hist-heartland.greenspring.root-steward"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.burnished-scales-leave",
+   "topicClass": "quest",
+   "label": "leave to stand before the Hist",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lh63"
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.burnished-scales-trial-heard",
+   "topicClass": "quest",
+   "label": "the trial answered",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lh63"
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.ninth-bend-traps",
+   "topicClass": "quest",
+   "label": "traps on the ninth bend",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lp13"
+   },
+   "requiredFor": {
+    "people": [
+     "npc.pirate-freeholds.upriver-hist-village.hh-net-menders"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.waterline-mark",
+   "topicClass": "quest",
+   "label": "the mark at the waterline",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lp14"
+   },
+   "requiredFor": {
+    "people": [
+     "npc.pirate-freeholds.upriver-hist-village.npc-opening-upriver-elder"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.waterline-mark-found",
+   "topicClass": "quest",
+   "label": "the mark at the landing",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lp14"
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.hist-less-naming",
+   "topicClass": "quest",
+   "label": "a naming with no tree",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lp19"
+   },
+   "requiredFor": {
+    "people": [
+     "npc.pirate-freeholds.upriver-hist-village.npc-opening-tree-minder"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.chasepoint-sea-lost",
+   "topicClass": "quest",
+   "label": "whatever the sea lost",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lm38"
+   },
+   "requiredFor": {
+    "roles": [
+     "the salvage merchant"
+    ],
+    "people": [
+     "npc.mercantile-coast.chasepoint.n2"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.chasepoint-unpaid-stage",
+   "topicClass": "quest",
+   "label": "the unpaid stage",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lm57"
+   },
+   "requiredFor": {
+    "roles": [
+     "the station-keeper"
+    ],
+    "people": [
+     "npc.mercantile-coast.chasepoint.station-keeper"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.chasepoint-road-survey",
+   "topicClass": "quest",
+   "label": "the coast road survey",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lm56"
+   },
+   "requiredFor": {
+    "roles": [
+     "the station-keeper"
+    ],
+    "people": [
+     "npc.mercantile-coast.chasepoint.station-keeper"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.chasepoint-living-cargo",
+   "topicClass": "quest",
+   "label": "the wreck on the bar",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lq29"
+   },
+   "requiredFor": {
+    "roles": [
+     "the station-keeper"
+    ],
+    "people": [
+     "npc.mercantile-coast.chasepoint.station-keeper"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.chasepoint-salvage-crew",
+   "topicClass": "quest",
+   "label": "the salvage crew",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lm62"
+   },
+   "requiredFor": {
+    "roles": [
+     "the salvage merchant"
+    ],
+    "people": [
+     "npc.mercantile-coast.chasepoint.n2"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.flotilla-licence-terms",
+   "topicClass": "quest",
+   "label": "licensing the lighters",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lm08"
+   },
+   "requiredFor": {
+    "roles": [
+     "the flotilla speaker"
+    ],
+    "people": [
+     "npc.mercantile-coast.lighter-flotilla.flotilla-speaker"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.flotilla-night-cargo",
+   "topicClass": "quest",
+   "label": "cargo landed at night",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lm23"
+   },
+   "requiredFor": {
+    "roles": [
+     "the lighter's master"
+    ],
+    "people": [
+     "npc.mercantile-coast.lighter-flotilla.lighterman"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.flotilla-floating-house",
+   "topicClass": "quest",
+   "label": "the speaker's hull",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.tg.tg04"
+   },
+   "requiredFor": {
+    "roles": [
+     "the ship's purser"
+    ],
+    "people": [
+     "npc.mercantile-coast.lighter-flotilla.purser"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.flotilla-tally-handover",
+   "topicClass": "quest",
+   "label": "the hull tally",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.tg.tg04"
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.riverwalk-two-claims",
+   "topicClass": "quest",
+   "label": "the two claims on the toll",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lv38"
+   },
+   "requiredFor": {
+    "people": [
+     "npc.dunmer-north.riverwalk.toll-holder"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.riverwalk-stage-word",
+   "topicClass": "quest",
+   "label": "the stage-mistress's word",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lv38"
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.riverwalk-accusation",
+   "topicClass": "quest",
+   "label": "the accusation at the toll",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lv39"
+   },
+   "requiredFor": {
+    "people": [
+     "npc.dunmer-north.riverwalk.n3"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.riverwalk-silted-cove",
+   "topicClass": "quest",
+   "label": "the silted cove",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lv40"
+   },
+   "requiredFor": {
+    "people": [
+     "npc.dunmer-north.riverwalk.n2"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.riverwalk-sounded-way",
+   "topicClass": "quest",
+   "label": "the sounded way",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lv40"
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.teeth-offering",
+   "topicClass": "quest",
+   "label": "an offering for the Teeth",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.ni.ni05"
+   },
+   "requiredFor": {
+    "people": [
+     "npc.mercantile-coast.teeth-of-sithis.nisswo-teeth"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.teeth-lost-purpose",
+   "topicClass": "quest",
+   "label": "the Teeth's lost purpose",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.ni.ni05"
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.broke-column-levy",
+   "topicClass": "quest",
+   "label": "the column's levy",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.fg.fg07"
+   },
+   "requiredFor": {
+    "people": [
+     "npc.imperial-fringe.the-broke-column.n1"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.broke-column-schedules",
+   "topicClass": "quest",
+   "label": "the toll office's schedules",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lq15"
+   },
+   "requiredFor": {
+    "people": [
+     "npc.imperial-fringe.the-broke-column.n1"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.broke-column-watches",
+   "topicClass": "quest",
+   "label": "the column's watches",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lq15"
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.broke-column-pardon",
+   "topicClass": "quest",
+   "label": "a pardon for the column",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lf21"
+   },
+   "requiredFor": {
+    "people": [
+     "npc.imperial-fringe.the-broke-column.n1"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.broke-column-terms",
+   "topicClass": "quest",
+   "label": "the column's terms",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lf21"
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.north-cut-quiet",
+   "topicClass": "quest",
+   "label": "quiet on the track",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.ln07"
+   },
+   "requiredFor": {
+    "people": [
+     "npc.naga-kur-deeps.naga-highway-camp-active-north.n1"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.north-cut-receipt",
+   "topicClass": "quest",
+   "label": "the camp's receipts",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.ln07"
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.bog-iron-deep-end",
+   "topicClass": "quest",
+   "label": "the deep end of the seep",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lf67"
+   },
+   "requiredFor": {
+    "people": [
+     "npc.imperial-fringe.bog-iron-workings.n1"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.bog-iron-leech-den",
+   "topicClass": "quest",
+   "label": "the leech den",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lf67"
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.returned-tag",
+   "topicClass": "quest",
+   "label": "the returned tag",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lr03"
+   },
+   "requiredFor": {
+    "people": [
+     "npc.imperial-penal-south.rose-bone-waystation.tag-keeper"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.dead-papers",
+   "topicClass": "quest",
+   "label": "papers of the dead",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lr24"
+   },
+   "requiredFor": {
+    "people": [
+     "npc.imperial-penal-south.rose-bone-waystation.carrier"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.tag-seventeen",
+   "topicClass": "quest",
+   "label": "Tag 17",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lr24"
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.living-tags",
+   "topicClass": "quest",
+   "label": "tags for the living",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.lr39"
+   },
+   "requiredFor": {
+    "people": [
+     "npc.imperial-penal-south.rose-bone-waystation.tag-keeper"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.white-rose-graves",
+   "topicClass": "quest",
+   "label": "the graves at White Rose",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.bc.bc05"
+   },
+   "requiredFor": {
+    "people": [
+     "npc.imperial-penal-south.rose-bone-waystation.tag-keeper"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.lot-four",
+   "topicClass": "quest",
+   "label": "the death on lot four",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.sx05"
+   },
+   "requiredFor": {
+    "people": [
+     "npc.saxhleel-coast.pearl-lots.n2"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.unwritten-lot",
+   "topicClass": "quest",
+   "label": "the heirless lot",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.sx06"
+   },
+   "requiredFor": {
+    "people": [
+     "npc.saxhleel-coast.pearl-lots.n2"
+    ]
+   }
+  },
+  {
+   "schemaVersion": 1,
+   "id": "topic.deep-lot-pearl",
+   "topicClass": "quest",
+   "label": "the pearl from the deep lot",
+   "glossaryTerm": null,
+   "keys": {
+    "quest": "quest.local.sx06"
+   }
+  }
+ ]
+}

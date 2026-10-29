@@ -1,0 +1,234 @@
+{
+ "schemaVersion": 2,
+ "cellId": "TeethofSithisInt01",
+ "additions": [
+  {
+   "id": "TeethofSithisInt01:add:door-candlehorn-01",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    -19.037,
+    2.78,
+    -19.874
+   ],
+   "rotZDeg": 0,
+   "zone": "door",
+   "why": "Lights the floor just inside the door."
+  },
+  {
+   "id": "TeethofSithisInt01:add:floor-candlehorn-02",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    -16.537,
+    2.241,
+    -13.374
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "Lights a dark stretch of the temple floor so worshippers can see where they step."
+  },
+  {
+   "id": "TeethofSithisInt01:add:shrine-candlehorn-03",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    53.9,
+    13.655,
+    17.75
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "Lights the hallway floor beside the stairs down to the hub."
+  },
+  {
+   "id": "TeethofSithisInt01:add:shrine-candlehorn-04",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    51.2,
+    13.655,
+    18.7
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "Lights the floor where the hallways meet."
+  },
+  {
+   "id": "TeethofSithisInt01:add:shrine-candlehorn-05",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    50.9,
+    13.655,
+    19.9
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "Lights the hub floor under the ferns so the far wall reads."
+  },
+  {
+   "id": "TeethofSithisInt01:add:shrine-candlehornfloor",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    29.463,
+    2.276,
+    -9.874
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "Lights a dark stretch of the temple's walked way so worshippers can see where they step."
+  },
+  {
+   "id": "TeethofSithisInt01:add:shrine-candlehornfloor-2",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    101.963,
+    2.277,
+    -9.374
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "Lights a dark stretch of the temple's walked way so worshippers can see where they step."
+  },
+  {
+   "id": "TeethofSithisInt01:add:shrine-candlehornfloor-3",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    125.463,
+    2.305,
+    -30.874
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "Lights a dark stretch of the temple's walked way so worshippers can see where they step."
+  },
+  {
+   "id": "TeethofSithisInt01:add:shrine-candlehornfloor-4",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    4.963,
+    2.731,
+    -21.874
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "Lights a dark stretch of the temple's walked way so worshippers can see where they step."
+  },
+  {
+   "id": "TeethofSithisInt01:add:shrine-candlehornfloor-5",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    82.963,
+    -0.895,
+    -64.874
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "Lights a dark stretch of the temple's walked way so worshippers can see where they step."
+  },
+  {
+   "id": "TeethofSithisInt01:add:shrine-candlehornfloor-6",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    36.963,
+    2.504,
+    -19.874
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "Lights a dark stretch of the temple's walked way so worshippers can see where they step."
+  },
+  {
+   "id": "TeethofSithisInt01:add:shrine-candlehornfloor-7",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    49.463,
+    -0.399,
+    -64.374
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "Lights a dark stretch of the temple's walked way so worshippers can see where they step."
+  },
+  {
+   "id": "TeethofSithisInt01:add:shrine-candlehornfloor-8",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    93.963,
+    -0.898,
+    -70.874
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "Lights a dark stretch of the temple's walked way so worshippers can see where they step."
+  },
+  {
+   "id": "TeethofSithisInt01:add:shrine-candlehornfloor-9",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    4.963,
+    2.731,
+    -0.374
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "Lights a dark stretch of the temple's walked way so worshippers can see where they step."
+  },
+  {
+   "id": "TeethofSithisInt01:add:shrine-candlehornfloor-10",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    4.963,
+    2.731,
+    -35.374
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "Lights a dark stretch of the temple's walked way so worshippers can see where they step."
+  },
+  {
+   "id": "TeethofSithisInt01:add:shrine-candlehornfloor-11",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    14.963,
+    2.731,
+    23.126
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "Lights a dark stretch of the temple's walked way so worshippers can see where they step."
+  },
+  {
+   "id": "TeethofSithisInt01:add:shrine-candlehornfloor-12",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    15.963,
+    2.784,
+    -18.374
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "Lights a dark stretch of the temple's walked way so worshippers can see where they step."
+  },
+  {
+   "id": "TeethofSithisInt01:add:shrine-candlehornfloor-13",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    37.463,
+    -0.453,
+    -70.374
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "Lights a dark stretch of the temple's walked way so worshippers can see where they step."
+  },
+  {
+   "id": "TeethofSithisInt01:add:shrine-candlehornfloor-14",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    127.463,
+    3.274,
+    -41.874
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "Lights a dark stretch of the temple's walked way so worshippers can see where they step."
+  }
+ ]
+}

@@ -1,0 +1,110 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "world-schema/loot-rules.v1",
+ "title": "The blanket loot rules (2.3a, decision 11)",
+ "type": "object",
+ "required": [
+  "schemaVersion",
+  "domain",
+  "entries"
+ ],
+ "properties": {
+  "schemaVersion": {
+   "const": 1
+  },
+  "domain": {
+   "const": "blanket"
+  },
+  "entries": {
+   "type": "array",
+   "minItems": 20,
+   "items": {
+    "type": "object",
+    "required": [
+     "id",
+     "belongs",
+     "contents"
+    ],
+    "anyOf": [
+     {
+      "required": [
+       "valueTier"
+      ]
+     },
+     {
+      "required": [
+       "byBand"
+      ]
+     }
+    ],
+    "properties": {
+     "band": {
+      "enum": ["D1", "D2", "D3", "D4", "D5"]
+     },
+     "roles": {
+      "type": "array",
+      "items": {
+       "enum": ["weapon", "armour", "jewel", "gem", "material", "soul-gem", "gold", "clothing", "food", "potion", "scroll", "book"]
+      }
+     },
+     "byBand": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+       "enum": ["D1", "D2", "D3", "D4", "D5"]
+      },
+      "additionalProperties": {
+       "type": "object",
+       "required": ["valueTier", "contents"],
+       "properties": {
+        "valueTier": {
+         "enum": ["trivial", "low", "moderate", "high", "precious"]
+        },
+        "pick": {
+         "type": ["integer", "null"],
+         "minimum": 0
+        },
+        "contents": {
+         "type": "array",
+         "items": {
+          "$ref": "world-schema/socket.v1#/$defs/lootRow"
+         }
+        }
+       }
+      }
+     },
+     "id": {
+      "type": "string",
+      "pattern": "^blanket\\.[a-z0-9]+(-[a-z0-9]+)*$"
+     },
+     "belongs": {
+      "type": "string",
+      "minLength": 1
+     },
+     "valueTier": {
+      "enum": [
+       "trivial",
+       "low",
+       "moderate",
+       "high",
+       "precious"
+      ]
+     },
+     "pick": {
+      "type": [
+       "integer",
+       "null"
+      ],
+      "minimum": 0
+     },
+     "contents": {
+      "type": "array",
+      "items": {
+       "$ref": "world-schema/socket.v1#/$defs/lootRow"
+      }
+     }
+    }
+   }
+  }
+ }
+}

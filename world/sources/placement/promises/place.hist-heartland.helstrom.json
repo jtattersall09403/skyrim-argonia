@@ -1,0 +1,1204 @@
+{
+ "schemaVersion": 1,
+ "placeId": "place.hist-heartland.helstrom",
+ "generator": "python3 -m worldgen.blueprint_promises --id <place-id> --write (decision 0104); never hand-edit a row but its `unfilled`, `filledBy` or `confirmed` block",
+ "derivedFrom": [
+  {
+   "file": "world/sources/catalogue/places-hist-heartland.json",
+   "sha256": "651bf2f4ebf45d3e8aa111349bb05952e8e53cbce1ebc69a6ee99e23716c42ad"
+  },
+  {
+   "file": "world/sources/quests/local-hist-heartland.json",
+   "sha256": "4cacb20b454692b9c755965451c09bf79fb4d75fb3fa3c15301d4ca6742184f9"
+  },
+  {
+   "file": "world/sources/quests/quests-factions.json",
+   "sha256": "19b0494ee4daed3b000b61705331ce51a620045356a14a9895a5c79287050bc1"
+  },
+  {
+   "file": "world/sources/quests/quests-main.json",
+   "sha256": "4da9fabcc57181d6f76461afed6d454c2fd4abb3e040c8136e93fae0807220f6"
+  },
+  {
+   "file": "world/sources/quests/quests-standalone.json",
+   "sha256": "761f42292c5dae19ace3d17958c9a96a6252e7284b0cb0167b138d816b18afd6"
+  }
+ ],
+ "promises": [
+  {
+   "id": "promise.helstrom.occupant-archivist",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].notableNpcSlots[archivist]"
+   },
+   "text": "Archivist who keeps the years lives and works at Helstrom.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.occupant-assembly-s-speaking-elder",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].notableNpcSlots[assembly-s-speaking-elder]"
+   },
+   "text": "The assembly's speaking-elder lives and works at Helstrom.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.occupant-dock-factor",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].notableNpcSlots[dock-factor]"
+   },
+   "text": "Dock factor who prices every foreign hull lives and works at Helstrom.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.occupant-grove-s-senior-tree",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].notableNpcSlots[grove-s-senior-tree]"
+   },
+   "text": "The grove's senior tree-minder lives and works at Helstrom.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.occupant-n1",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].contents.npcs[n1]"
+   },
+   "text": "Helstrom has single official occupants.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.occupant-n2",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].contents.npcs[n2]"
+   },
+   "text": "Helstrom has few merchant occupants.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.occupant-n3",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].contents.npcs[n3]"
+   },
+   "text": "Helstrom has pair trainer occupants.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.occupant-n4",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].contents.npcs[n4]"
+   },
+   "text": "Helstrom has single quest-giver occupants.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.occupant-nisswo-interpreter-debating-house",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].notableNpcSlots[nisswo-interpreter-debating-house]"
+   },
+   "text": "Nisswo interpreter who works at the debating house lives and works at Helstrom.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.occupant-root-herald",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].notableNpcSlots[root-herald]"
+   },
+   "text": "Root-herald who meets outsiders at the gate lives and works at Helstrom.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.occupant-slot-helstrom-cut-circle-attendee",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].notableNpcSlots[slot.helstrom.cut-circle-attendee]"
+   },
+   "text": "Cut Circle attendee at the Helstrom court (one shared slot for the attendee family) lives and works at Helstrom.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.occupant-slot-helstrom-kaska-meen",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].notableNpcSlots[slot.helstrom.kaska-meen]"
+   },
+   "text": "Kaska-Meen, Helstrom Tree-Minder lives and works at Helstrom.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.occupant-slot-helstrom-ki-ossa",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].notableNpcSlots[slot.helstrom.ki-ossa]"
+   },
+   "text": "Handler Ki-Ossa, who keeps the rootworm terminus lives and works at Helstrom.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.post-helstrom-convoy-dock",
+   "kind": "socketBucket",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].sockets.post[post.helstrom.helstrom-convoy-dock]"
+   },
+   "text": "Helstrom has the post socket post.helstrom.helstrom-convoy-dock.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.post-helstrom-root-hub",
+   "kind": "socketBucket",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].sockets.post[post.helstrom.helstrom-root-hub]"
+   },
+   "text": "Helstrom has the post socket post.helstrom.helstrom-root-hub.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.prose-playerpurpose-hook",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].playerPurpose.hook"
+   },
+   "text": "Helstrom is the interior's capital and has no wall. Its chime lines carry signals that only residents read.",
+   "confirmed": {
+    "sha": "41dff4aa7159",
+    "note": "Bone chime bars hang beside the doors of parcels in every district (d-vibe-chime-*, generator chimes()). d-vibe-chime-kaska-meen-house is dropped from the ids: no chime is laid at kaska-meen-house.",
+    "ids": [
+     "d-vibe-chime-basin-gate-house-2",
+     "d-vibe-chime-convoy-landing-house-1",
+     "d-vibe-chime-map-office",
+     "d-vibe-chime-waiting-hall",
+     "d-vibe-chime-grove-crown-sap-tapping-works-49",
+     "d-vibe-chime-heart-mud-house-12",
+     "d-vibe-chime-market-terraces-house-13",
+     "d-vibe-chime-root-hub-house-2"
+    ]
+   }
+  },
+  {
+   "id": "promise.helstrom.prose-questhooks-opportunity",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].questHooks.opportunity"
+   },
+   "text": "LOC helstrom.inner_city · LOC helstrom.scalded_throne · LOC helstrom.archive · LOC helstrom.root_archive · LOC helstrom.closed_council · FAST boat.corimont_helstrom",
+   "confirmed": {
+    "sha": "01051f18ace8",
+    "note": "FAST boat.corimont_helstrom: the moored hull h-convoy-boat at the convoy dock berth (R12); LOC rows are quest-side.",
+    "ids": [
+     "h-convoy-boat"
+    ]
+   }
+  },
+  {
+   "id": "promise.helstrom.prose-vibe-approach",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].vibe.approach"
+   },
+   "text": "The last ridge of the escorted channel gives a long sightline. The grove crown stands over the canopy.",
+   "confirmed": {
+    "sha": "6c0b17906f8f",
+    "note": "Sightline and grove crown are terrain and Hist-tree shells; no red-lit crown is promised any longer."
+   }
+  },
+  {
+   "id": "promise.helstrom.prose-vibe-condition",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].vibe.condition"
+   },
+   "text": "The residents replace the structures continuously.",
+   "confirmed": {
+    "sha": "cc058feb7a79",
+    "note": "Lore state of the builders, not a placed thing; worn shells, porch steps and sap-tapping works stand across the districts and no placed new-build contradicts it."
+   }
+  },
+  {
+   "id": "promise.helstrom.prose-vibe-materials",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].vibe.materials"
+   },
+   "text": "Builders trained root across centuries into stair and gallery. Hot sap is poured into every structural joint and left standing proud. Chime lines are strung the length of every tier.",
+   "confirmed": {
+    "sha": "739a75a3ddea",
+    "note": "Root-trained stair (b-heart-mud-house-17-stair) and chime bars hung on shells in every district; sap joints are lore. d-vibe-chime-kaska-meen-house is dropped from the ids: no chime is laid at kaska-meen-house.",
+    "ids": [
+     "d-vibe-chime-basin-gate-house-2",
+     "d-vibe-chime-convoy-landing-house-1",
+     "d-vibe-chime-map-office",
+     "d-vibe-chime-waiting-hall",
+     "d-vibe-chime-grove-crown-sap-tapping-works-49",
+     "d-vibe-chime-heart-mud-house-12",
+     "d-vibe-chime-market-terraces-house-13",
+     "d-vibe-chime-root-hub-house-2",
+     "b-heart-mud-house-17-stair"
+    ]
+   }
+  },
+  {
+   "id": "promise.helstrom.prose-vibe-mood",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].vibe.mood"
+   },
+   "text": "orderly, watched and unhurried",
+   "confirmed": {
+    "sha": "91a465e421dc",
+    "note": "Gate arch, weighing house, council house and waiting hall give the ordered, watched feel; no placed thing contradicts it."
+   }
+  },
+  {
+   "id": "promise.helstrom.prose-vibe-palette",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].vibe.palette"
+   },
+   "text": "Canopy-dark green is banded with lantern-amber. Red flowers mass across the grove crown. Black heart-mud lies in the lower lanes. One pale band marks where the river reach opens.",
+   "confirmed": {
+    "sha": "bb42e597ad34",
+    "note": "Red mountain flowers in beds at grove-crown shells; amber lanterns hung at doors.",
+    "ids": [
+     "d-vibe-flowers-grove-crown-sap-tapping-works-16-1",
+     "d-vibe-flowers-grove-crown-sap-tapping-works-16-2",
+     "d-vibe-flowers-grove-crown-sap-tapping-works-16-3",
+     "d-vibe-flowers-tree-minders-hall-1",
+     "d-vibe-flowers-tree-minders-hall-2",
+     "d-vibe-flowers-tree-minders-hall-3",
+     "d-east-gate-arch-lamp1",
+     "d-landing-tavern-lamp"
+    ]
+   }
+  },
+  {
+   "id": "promise.helstrom.prose-vibe-senses",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].vibe.senses"
+   },
+   "text": "Chimes sound together in patterns. Only residents read the chime patterns. Smoke and cooking fish layer by height.",
+   "confirmed": {
+    "sha": "483c15343729",
+    "note": "Chime lines: bone chimes hang at doors across all districts, 4 at the chime seller; the rest is lore. d-vibe-chime-kaska-meen-house is dropped from the ids: no chime is laid at kaska-meen-house.",
+    "ids": [
+     "d-vibe-chime-basin-gate-house-2",
+     "d-vibe-chime-convoy-landing-house-1",
+     "d-vibe-chime-map-office",
+     "d-vibe-chime-waiting-hall",
+     "d-vibe-chime-grove-crown-sap-tapping-works-49",
+     "d-vibe-chime-heart-mud-house-12",
+     "d-vibe-chime-market-terraces-house-13",
+     "d-vibe-chime-root-hub-house-2"
+    ]
+   }
+  },
+  {
+   "id": "promise.helstrom.prose-vibe-signaturefeature",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].vibe.signatureFeature"
+   },
+   "text": "No wall can be seen from a distance. The grove canopy is the fortification. The gates open straight onto deep basin marsh. The escorts turn back at the gates.",
+   "confirmed": {
+    "sha": "cf975225705b",
+    "note": "No wall, palisade or tower asset is placed (0 in the layout); parcel.helstrom.east-gate-arch is the open gate and district.helstrom.basin-gate stands at the marsh edge."
+   }
+  },
+  {
+   "id": "promise.helstrom.prose-vibe-silhouette",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].vibe.silhouette"
+   },
+   "text": "Helstrom has no wall and no tower. The city grew out of a grove. Its crown-line steps down in living tiers from the grove crown to the market terraces. The tiers stand above the Onkobra reach, east of the city. The city is lit amber from inside after dark.",
+   "confirmed": {
+    "sha": "724f6dcf5830",
+    "note": "No wall or tower asset placed; crown-line steps by district terraces; amber lanterns lit at doors.",
+    "ids": [
+     "d-east-gate-arch-lamp1",
+     "d-landing-tavern-lamp"
+    ]
+   }
+  },
+  {
+   "id": "promise.helstrom.prose-why-founding",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].why.founding"
+   },
+   "text": "Survivors of the Battle of Argonia withdrew to Helstrom. They retreated to ground that outsiders could not follow. The grove's tree-minders sheltered them.",
+   "confirmed": {
+    "sha": "a92c499830de",
+    "note": "Lore of the founding; the hist-shrine and tree-minders-hall parcels stand in the grove and nothing placed contradicts it."
+   }
+  },
+  {
+   "id": "promise.helstrom.prose-why-occupantsmotive",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].why.occupantsMotive"
+   },
+   "text": "An assembly of interior naheesh and tree-minders administers Helstrom. The assembly receives and redistributes goods. It does not rule. Its authority ends where a tribe stops sending a delegate.",
+   "confirmed": {
+    "sha": "3fecf40b10ee",
+    "note": "council-house, speaking-elder-office and tree-minders-hall are placed and carry the assembly occupants."
+   }
+  },
+  {
+   "id": "promise.helstrom.prose-why-pressures",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].why.pressures"
+   },
+   "text": "The grove is the city. A blight, a fire or an Unbound Root cutting would destroy grove and city at once. Helstrom is safe inside the grove. Escorts are lost in the marsh at its gates every season.",
+   "confirmed": {
+    "sha": "15176b6dfff4",
+    "note": "Grove and city are one: hist-shrine and tree-minders-hall in the grove; fire is shown by the gate braziers and the tavern hearths; no wall or garrison is placed.",
+    "ids": [
+     "d-east-gate-o190",
+     "d-landing-tavern-brazier",
+     "parcel.helstrom.hist-shrine"
+    ]
+   }
+  },
+  {
+   "id": "promise.helstrom.prose-why-siteadvantages",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].why.siteAdvantages"
+   },
+   "text": "Helstrom stands on spring-fed firm ground inside the Hist forest. Every interior route ends at Helstrom.",
+   "confirmed": {
+    "sha": "6da7c8878b8a",
+    "note": "parcel.helstrom.hist-shrine (a Hist tree) stands on the terrace and the sour spring pool b-spring-sour rises below its roots.",
+    "ids": [
+     "parcel.helstrom.hist-shrine",
+     "b-spring-sour"
+    ]
+   }
+  },
+  {
+   "id": "promise.helstrom.prose-why-wouldchangeif",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].why.wouldChangeIf"
+   },
+   "text": "If the interior tribes stopped sending delegates, Helstrom would be a grove with a market in it. Convocation attendance is already falling. The attendance count is public.",
+   "confirmed": {
+    "sha": "e8ef2e84895c",
+    "note": "Lore consequence; market-row and council-house are both placed and nothing contradicts it."
+   }
+  },
+  {
+   "id": "promise.helstrom.provision-boat-corimont-helstrom",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].questHooks.provisions[quest.provision.boat-corimont-helstrom]"
+   },
+   "text": "Helstrom holds what quest provision quest.provision.boat-corimont-helstrom needs.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.provision-canon-root-talk-helstrom",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].questHooks.provisions[quest.provision.canon.root-talk-helstrom]"
+   },
+   "text": "Helstrom holds what quest provision quest.provision.canon.root-talk-helstrom needs.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.provision-helstrom-archive",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].questHooks.provisions[quest.provision.helstrom-archive]"
+   },
+   "text": "Helstrom holds what quest provision quest.provision.helstrom-archive needs.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.provision-helstrom-archive-map-room",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].questHooks.provisions[quest.provision.helstrom-archive-map-room]"
+   },
+   "text": "Helstrom holds what quest provision quest.provision.helstrom-archive-map-room needs.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.provision-helstrom-closed-council",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].questHooks.provisions[quest.provision.helstrom-closed-council]"
+   },
+   "text": "Helstrom holds what quest provision quest.provision.helstrom-closed-council needs.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.provision-helstrom-inner-city",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].questHooks.provisions[quest.provision.helstrom-inner-city]"
+   },
+   "text": "Helstrom holds what quest provision quest.provision.helstrom-inner-city needs.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.provision-helstrom-root-archive",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].questHooks.provisions[quest.provision.helstrom-root-archive]"
+   },
+   "text": "Helstrom holds what quest provision quest.provision.helstrom-root-archive needs.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.provision-helstrom-scalded-throne",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].questHooks.provisions[quest.provision.helstrom-scalded-throne]"
+   },
+   "text": "Helstrom holds what quest provision quest.provision.helstrom-scalded-throne needs.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.provision-helstrom-veiled-reed-office",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].questHooks.provisions[quest.provision.helstrom-veiled-reed-office]"
+   },
+   "text": "Helstrom holds what quest provision quest.provision.helstrom-veiled-reed-office needs.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.provision-lq06-anchor",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].questHooks.provisions[quest.provision.lq06-anchor]"
+   },
+   "text": "Helstrom holds what quest provision quest.provision.lq06-anchor needs.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.provision-mq32-epilogue-sockets",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].questHooks.provisions[quest.provision.mq32-epilogue-sockets]"
+   },
+   "text": "Helstrom holds what quest provision quest.provision.mq32-epilogue-sockets needs.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.quest-lh01",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-hist-heartland.json",
+    "path": "quest[LH01]"
+   },
+   "text": "LH01 The Weighed Tribute: Redistributed grain is short by the same fraction at every stage. The loss is in the weighing. The loss is not in the carrying.",
+   "confirmed": {
+    "sha": "ad1b920e7dda",
+    "note": "parcel.helstrom.weighing-house is placed and is where the grain is weighed."
+   }
+  },
+  {
+   "id": "promise.helstrom.quest-lh02",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-hist-heartland.json",
+    "path": "quest[LH02]"
+   },
+   "text": "LH02 A Death Inside the Grove: A delegate is dead inside a grove. No blade may be carried in the grove. The open question is what was carried instead.",
+   "confirmed": {
+    "sha": "658e48722502",
+    "note": "parcel.helstrom.hist-shrine is the grove shrine where the delegate lies; placed with the Hist tree."
+   }
+  },
+  {
+   "id": "promise.helstrom.quest-lh03",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-hist-heartland.json",
+    "path": "quest[LH03]"
+   },
+   "text": "LH03 The Blank Line in the Register: One stage of the passenger register carries a paid fare. The fare stands against a name. No poler can place that name on any hull.",
+   "confirmed": {
+    "sha": "91d7932865b5",
+    "note": "parcel.helstrom.waiting-hall is placed and holds the passenger register at the root hub."
+   }
+  },
+  {
+   "id": "promise.helstrom.quest-lh04",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-hist-heartland.json",
+    "path": "quest[LH04]"
+   },
+   "text": "LH04 Seats Cut and Recut: Two tribes claim the same worn seat. One tribe has cut its mark deeper than the other.",
+   "confirmed": {
+    "sha": "67071f814759",
+    "note": "parcel.helstrom.council-house is placed and holds the worn seats."
+   }
+  },
+  {
+   "id": "promise.helstrom.quest-lh05",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-hist-heartland.json",
+    "path": "quest[LH05]"
+   },
+   "text": "LH05 Cast, Not Tuned: Cast chimes are sold in the Helstrom market. They carry a forged tuning mark. Half the district's prayers are wrong as a result.",
+   "confirmed": {
+    "sha": "792fe2b45963",
+    "note": "parcel.helstrom.market-row is placed and sells the cast chimes."
+   }
+  },
+  {
+   "id": "promise.helstrom.quest-lh06",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-hist-heartland.json",
+    "path": "quest[LH06]"
+   },
+   "text": "LH06 Three Short and One Long: Something on the gate approach has learnt the lantern rhythm. The basin guides use that rhythm to answer each other.",
+   "confirmed": {
+    "sha": "cd5031b9e7cb",
+    "note": "parcel.helstrom.east-gate-arch is placed with its door lamps on the gate approach."
+   }
+  },
+  {
+   "id": "promise.helstrom.quest-lh07",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-hist-heartland.json",
+    "path": "quest[LH07]"
+   },
+   "text": "LH07 The Sweet Water Turns: The city spring runs sour on a cycle. The assembly declines to time the cycle in open session.",
+   "confirmed": {
+    "sha": "2dc93728544c",
+    "note": "parcel.helstrom.apothecary and the sour spring pool b-spring-sour (socket.helstrom.spring-sour) are placed."
+   }
+  },
+  {
+   "id": "promise.helstrom.quest-lh08",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-hist-heartland.json",
+    "path": "quest[LH08]"
+   },
+   "text": "LH08 Light Sold by the Jar: Farmed gallery fungus enters the city untaxed. It travels under the assembly's own carrying licences.",
+   "confirmed": {
+    "sha": "a0d2060b17f6",
+    "note": "parcel.helstrom.market-row is placed; the gallery fungus enters through it."
+   }
+  },
+  {
+   "id": "promise.helstrom.quest-lh09",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-hist-heartland.json",
+    "path": "quest[LH09]"
+   },
+   "text": "LH09 The Poles by the Door: Finished grave-poles arrive at Helstrom houses. The houses ordered none. The poles are cut with the names of the living.",
+   "confirmed": {
+    "sha": "9b88e0ce2850",
+    "note": "parcel.helstrom.kaska-meen-house is placed; the poles arrive at its door."
+   }
+  },
+  {
+   "id": "promise.helstrom.quest-lh10",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-hist-heartland.json",
+    "path": "quest[LH10]"
+   },
+   "text": "LH10 The Unstood Turn: A rite needs a tribe that has missed three convocations. The assembly must decide who may stand in its place.",
+   "confirmed": {
+    "sha": "ffbb4e27e1b9",
+    "note": "parcel.helstrom.council-house is placed and holds the convocation decision."
+   }
+  },
+  {
+   "id": "promise.helstrom.quest-lh11",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-hist-heartland.json",
+    "path": "quest[LH11]"
+   },
+   "text": "LH11 Two Names on One Chair: A naheesh dies. The office was promised to a child of eleven. A sister who has done the work for years claims it.",
+   "confirmed": {
+    "sha": "c66c75d1ecee",
+    "note": "parcel.helstrom.speaking-elder-office is placed and holds the disputed office."
+   }
+  },
+  {
+   "id": "promise.helstrom.quest-lh12",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-hist-heartland.json",
+    "path": "quest[LH12]"
+   },
+   "text": "LH12 The Owing Paid in Passage: A porter works an Owing off in rootworm fares. The Owing is entered in the ledger again from the start each time.",
+   "confirmed": {
+    "sha": "7f25a992233f",
+    "note": "parcel.helstrom.waiting-hall is placed and keeps the rootworm fare ledger."
+   }
+  },
+  {
+   "id": "promise.helstrom.quest-lh13",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-hist-heartland.json",
+    "path": "quest[LH13]"
+   },
+   "text": "LH13 Written on the Urn: A Helstrom family's name is shelved in the vault. It is shelved under an offence. The offence was pardoned two generations ago.",
+   "confirmed": {
+    "sha": "0f6d51c209d9",
+    "note": "parcel.helstrom.archive is placed and shelves the vault names."
+   }
+  },
+  {
+   "id": "promise.helstrom.quest-lh14",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-hist-heartland.json",
+    "path": "quest[LH14]"
+   },
+   "text": "LH14 Four Hundred and Eleven: The refuge stores are counted for a population that was last surveyed forty years ago. A surveyor must walk out and count the stores again.",
+   "confirmed": {
+    "sha": "8e5244ae22d3",
+    "note": "parcel.helstrom.weighing-house is placed and keeps the refuge store counts."
+   }
+  },
+  {
+   "id": "promise.helstrom.quest-lh15",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-hist-heartland.json",
+    "path": "quest[LH15]"
+   },
+   "text": "LH15 The Fare or the Favour: The Waykeepers will carry the assembly's grain. The assembly cannot pay their price in coin.",
+   "confirmed": {
+    "sha": "998e3a0a1ff9",
+    "note": "parcel.helstrom.waiting-hall is placed; the Waykeepers' fare is settled there."
+   }
+  },
+  {
+   "id": "promise.helstrom.quest-lh16",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-hist-heartland.json",
+    "path": "quest[LH16]"
+   },
+   "text": "LH16 It Keeps Its Circle: The ground stays bare for two metres out from the standing thing. Four stories are told about the standing thing. Two of the four stories turn the bare ground to profit.",
+   "confirmed": {
+    "sha": "e24ffe5b3a46",
+    "note": "parcel.helstrom.tree-minders-hall is placed and keeps the standing thing's circle."
+   }
+  },
+  {
+   "id": "promise.helstrom.quest-lh17",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-hist-heartland.json",
+    "path": "quest[LH17]"
+   },
+   "text": "LH17 The Lifted Rota: A stage has been cut out of the tending rota. The rota is carved down the door jamb. The cut takes three hundred years of turns with it.",
+   "confirmed": {
+    "sha": "bd5b35972f7a",
+    "note": "parcel.helstrom.tree-minders-hall is placed and its door jamb carries the rota."
+   }
+  },
+  {
+   "id": "promise.helstrom.quest-lh18",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-hist-heartland.json",
+    "path": "quest[LH18]"
+   },
+   "text": "LH18 The Grove's Own Shade: The roofing of a market row is killing a limb of the grove. The traders and the tree-minders each hold a case. The assembly will hear both cases.",
+   "confirmed": {
+    "sha": "0792138667c1",
+    "note": "parcel.helstrom.market-row is placed; the roofed row stands under the grove."
+   }
+  },
+  {
+   "id": "promise.helstrom.quest-lh19",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-hist-heartland.json",
+    "path": "quest[LH19]"
+   },
+   "text": "LH19 The Line That Ends Early: The lamp-keeper's round runs on the semi-public underway. The round now stops at the first junction. The round used to stop at the second junction.",
+   "confirmed": {
+    "sha": "ae2cbbee3ba1",
+    "note": "parcel.helstrom.waykeepers-house and socket.helstrom.root-gallery-underway are placed."
+   }
+  },
+  {
+   "id": "promise.helstrom.quest-lh20",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-hist-heartland.json",
+    "path": "quest[LH20]"
+   },
+   "text": "LH20 The Roost Moves: Two hundred birds have shifted their dawn line onto the grove approach. The birds take whatever the market carries.",
+   "confirmed": {
+    "sha": "5ddc69173b6d",
+    "note": "parcel.helstrom.guild-hall is placed on the grove approach."
+   }
+  },
+  {
+   "id": "promise.helstrom.quest-lh21",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-hist-heartland.json",
+    "path": "quest[LH21]"
+   },
+   "text": "LH21 A Second Timetable: The working rootworm exit runs for an hour. The honest posted timetable leaves that hour out.",
+   "confirmed": {
+    "sha": "535ddf7e0457",
+    "note": "parcel.helstrom.waiting-hall is placed and posts the rootworm timetable."
+   }
+  },
+  {
+   "id": "promise.helstrom.quest-lh22",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-hist-heartland.json",
+    "path": "quest[LH22]"
+   },
+   "text": "LH22 The Sermon a Day Short: A Nisswo has painted a sermon inside the last rest house. The assembly wants the sermon gone before the convocation.",
+   "confirmed": {
+    "sha": "3fdebf3f93b5",
+    "note": "parcel.helstrom.debating-gallery is placed and holds the painted sermon."
+   }
+  },
+  {
+   "id": "promise.helstrom.quest-lh23",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-hist-heartland.json",
+    "path": "quest[LH23]"
+   },
+   "text": "LH23 The Chime That Names the Heir: The inheritance of a household turns on a chime. The chime is tuned to a tree. The tree has since been felled.",
+   "confirmed": {
+    "sha": "2f02ef7cd73e",
+    "note": "parcel.helstrom.market-terraces-chime-seller-10 is placed."
+   }
+  },
+  {
+   "id": "promise.helstrom.quest-lh24",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-hist-heartland.json",
+    "path": "quest[LH24]"
+   },
+   "text": "LH24 Held for the Season: A debtor is held under a custom. The custom lapses when the convocation closes. For that reason the convocation keeps being postponed.",
+   "confirmed": {
+    "sha": "2542d92b10db",
+    "note": "parcel.helstrom.speaking-elder-office is placed and keeps the debtor's custom."
+   }
+  },
+  {
+   "id": "promise.helstrom.quest-lh25",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-hist-heartland.json",
+    "path": "quest[LH25]"
+   },
+   "text": "LH25 The Sky Cut Open: Stones keep a sky-view for the convocation. The stones have begun to disagree with the season. The stones are cut to read that season.",
+   "confirmed": {
+    "sha": "cd7fd086d71c",
+    "note": "parcel.helstrom.hist-shrine is placed and keeps the sky-view stones."
+   }
+  },
+  {
+   "id": "promise.helstrom.quest-lq06",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/quests-standalone.json",
+    "path": "quest[LQ06]"
+   },
+   "text": "LQ06 The City Map That Lies: A tourist map omits poor districts, sacred closures and dangerous exits.",
+   "confirmed": {
+    "sha": "9fdf5a5f419e",
+    "note": "parcel.helstrom.map-office and socket.helstrom.lq06-anchor are placed."
+   }
+  },
+  {
+   "id": "promise.helstrom.quest-mq05",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/quests-main.json",
+    "path": "quest[MQ05]"
+   },
+   "text": "MQ05 Helstrom Behind the Thorns: The quest arrives at Helstrom, the interior capital. The throne at Helstrom stands empty.",
+   "confirmed": {
+    "sha": "4d486dd964e7",
+    "note": "parcel.helstrom.scalded-throne-hall (the empty throne) and socket.helstrom.convoy-dock are placed."
+   }
+  },
+  {
+   "id": "promise.helstrom.quest-mq06",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/quests-main.json",
+    "path": "quest[MQ06]"
+   },
+   "text": "MQ06 The Jewel Described Six Ways: Six incompatible accounts of the Eye exist. Unwilling custodians hold the six accounts.",
+   "confirmed": {
+    "sha": "32597114bf6b",
+    "note": "parcel.helstrom.archive is placed and holds the six accounts."
+   }
+  },
+  {
+   "id": "promise.helstrom.quest-mq15",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/quests-main.json",
+    "path": "quest[MQ15]"
+   },
+   "text": "MQ15 The Eye Opens Once: The quest triangulates the Eye. Word comes of a second Hist withdrawal.",
+   "confirmed": {
+    "sha": "f8a5b533ff94",
+    "note": "parcel.helstrom.archive is placed and holds the triangulation records."
+   }
+  },
+  {
+   "id": "promise.helstrom.quest-mq18",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/quests-main.json",
+    "path": "quest[MQ18]"
+   },
+   "text": "MQ18 A Sermon Against Roots: The quest infiltrates a sermon house under cover. The Collector is unmasked.",
+   "confirmed": {
+    "sha": "870951fb8499",
+    "note": "parcel.helstrom.west-gatehouse is placed; the sermon house stands at the basin gate."
+   }
+  },
+  {
+   "id": "promise.helstrom.quest-mq22",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/quests-main.json",
+    "path": "quest[MQ22]"
+   },
+   "text": "MQ22 The Second Report: Two incompatible reports exist. One report is acted on before the other is read.",
+   "confirmed": {
+    "sha": "886a4d03a45d",
+    "note": "parcel.helstrom.intermediary-house is placed and holds the two reports."
+   }
+  },
+  {
+   "id": "promise.helstrom.quest-mq25",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/quests-main.json",
+    "path": "quest[MQ25]"
+   },
+   "text": "MQ25 Council Behind Closed Gates: The council hearing is attacked mid-session.",
+   "confirmed": {
+    "sha": "3fa4a0476f12",
+    "note": "parcel.helstrom.council-house is placed and socket.helstrom.council-attack stands in it."
+   }
+  },
+  {
+   "id": "promise.helstrom.quest-mq26",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/quests-main.json",
+    "path": "quest[MQ26]"
+   },
+   "text": "MQ26 The Root of Accord: The quest reaches the hidden archive. The Accord undergoes its conversion.",
+   "confirmed": {
+    "sha": "6958fe16897b",
+    "note": "socket.helstrom.root-archive-door is placed as the hidden archive's marker."
+   }
+  },
+  {
+   "id": "promise.helstrom.quest-mq32",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/quests-main.json",
+    "path": "quest[MQ32]"
+   },
+   "text": "MQ32 Names Written in Sap: An epilogue reads back through the places that changed.",
+   "confirmed": {
+    "sha": "dd6425bfd80a",
+    "note": "parcel.helstrom.scalded-throne-hall and the mq32 epilogue marker sockets are placed."
+   }
+  },
+  {
+   "id": "promise.helstrom.quest-mr08",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/quests-factions.json",
+    "path": "quest[MR08]"
+   },
+   "text": "MR08 Council of Many Roots: The Conclave's great council cannot convene. Each delegation is stuck for a different reason.",
+   "confirmed": {
+    "sha": "432de5d4680b",
+    "note": "parcel.helstrom.council-house is placed and holds the great council."
+   }
+  },
+  {
+   "id": "promise.helstrom.safe-interior",
+   "kind": "safeInterior",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].classification.class"
+   },
+   "text": "Helstrom has one safe interior (danger D0, quests 20 section 12).",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.service-apothecary",
+   "kind": "service",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].services[apothecary]"
+   },
+   "text": "Helstrom offers the apothecary service.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.service-boatwright",
+   "kind": "service",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].services[boatwright]"
+   },
+   "text": "Helstrom offers the boatwright service.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.service-council",
+   "kind": "service",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].services[council]"
+   },
+   "text": "Helstrom offers the council service.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.service-ferry",
+   "kind": "service",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].services[ferry]"
+   },
+   "text": "Helstrom offers the ferry service.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.service-guild-hall",
+   "kind": "service",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].services[guild-hall]"
+   },
+   "text": "Helstrom offers the guild-hall service.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.service-lodging",
+   "kind": "service",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].services[lodging]"
+   },
+   "text": "Helstrom offers the lodging service.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.service-market",
+   "kind": "service",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].services[market]"
+   },
+   "text": "Helstrom offers the market service.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.service-shrine",
+   "kind": "service",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].services[shrine]"
+   },
+   "text": "Helstrom offers the shrine service.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.service-smith",
+   "kind": "service",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].services[smith]"
+   },
+   "text": "Helstrom offers the smith service.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.service-tavern",
+   "kind": "service",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].services[tavern]"
+   },
+   "text": "Helstrom offers the tavern service.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.service-trader",
+   "kind": "service",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].services[trader]"
+   },
+   "text": "Helstrom offers the trader service.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.thing-boat",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].questHooks.opportunity"
+   },
+   "text": "Helstrom shows the boat its record names.",
+   "unfilled": null,
+   "filledBy": [
+    "h-convoy-boat"
+   ]
+  },
+  {
+   "id": "promise.helstrom.thing-fire",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].why.pressures"
+   },
+   "text": "Helstrom shows the fire its record names.",
+   "unfilled": null,
+   "filledBy": [
+    "d-east-gate-o190",
+    "d-landing-tavern-brazier"
+   ]
+  },
+  {
+   "id": "promise.helstrom.thing-hist-tree",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].why.siteAdvantages"
+   },
+   "text": "Helstrom shows the Hist tree its record names.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.helstrom.thing-lantern",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].vibe.palette"
+   },
+   "text": "Helstrom shows the lantern its record names.",
+   "unfilled": null,
+   "filledBy": [
+    "d-east-gate-arch-lamp1",
+    "d-landing-tavern-lamp"
+   ]
+  },
+  {
+   "id": "promise.helstrom.thing-spring",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].why.siteAdvantages"
+   },
+   "text": "Helstrom shows the spring its record names.",
+   "unfilled": null,
+   "filledBy": [
+    "b-spring-sour"
+   ]
+  },
+  {
+   "id": "promise.helstrom.thing-steps",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].vibe.materials"
+   },
+   "text": "Helstrom shows the steps its record names.",
+   "unfilled": null,
+   "filledBy": [
+    "b-heart-mud-house-17-stair",
+    "a-waiting-hall-stair"
+   ]
+  },
+  {
+   "id": "promise.helstrom.travel-station",
+   "kind": "travelStation",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.helstrom].travelStation"
+   },
+   "text": "Helstrom is a travel station (boat, porter, guide) to 3 destinations.",
+   "unfilled": null
+  }
+ ]
+}

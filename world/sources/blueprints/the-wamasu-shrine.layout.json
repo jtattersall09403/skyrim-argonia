@@ -1,0 +1,1810 @@
+{
+ "schemaVersion": 1,
+ "placeId": "place.dunmer-north.the-wamasu-shrine",
+ "window": {
+  "centreKm": [
+   4.725,
+   0.935
+  ],
+  "halfM": 50.0
+ },
+ "ops": [
+  {
+   "op": "place",
+   "uid": "s-shelf",
+   "asset": "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arblock01",
+   "at": [
+    4723.0,
+    937.0
+   ],
+   "yaw": 30.0,
+   "settle": true,
+   "pad": {
+    "apronM": 2.5,
+    "batter": true
+   }
+  },
+  {
+   "op": "bind",
+   "uid": "s-shelf",
+   "kind": "parcel",
+   "id": "parcel.the-wamasu-shrine.the-bank"
+  },
+  {
+   "op": "place",
+   "uid": "s-of-salt1",
+   "asset": "vanilla:clutter/ingredients/saltpile",
+   "at": [
+    4723.6,
+    937.6
+   ],
+   "yaw": 10.0
+  },
+  {
+   "op": "mount",
+   "child": "s-of-salt1",
+   "parent": "s-shelf",
+   "unmined": "reader-approved r1"
+  },
+  {
+   "op": "place",
+   "uid": "s-of-salt2",
+   "asset": "vanilla:clutter/ingredients/saltpile",
+   "at": [
+    4724.0,
+    936.9
+   ],
+   "yaw": 70.0
+  },
+  {
+   "op": "mount",
+   "child": "s-of-salt2",
+   "parent": "s-shelf",
+   "unmined": "reader-approved r1"
+  },
+  {
+   "op": "place",
+   "uid": "s-of-ingots",
+   "asset": "kotm:oaristys/forge/ingotsiron01",
+   "at": [
+    4722.9,
+    937.9
+   ],
+   "yaw": 30.0
+  },
+  {
+   "op": "mount",
+   "child": "s-of-ingots",
+   "parent": "s-shelf",
+   "unmined": "reader-approved r1"
+  },
+  {
+   "op": "place",
+   "uid": "s-of-net",
+   "asset": "shores:shoresofskyrim/fishnet01",
+   "at": [
+    4723.3,
+    936.2
+   ],
+   "yaw": 120.0
+  },
+  {
+   "op": "mount",
+   "child": "s-of-net",
+   "parent": "s-shelf",
+   "unmined": "reader-approved r1"
+  },
+  {
+   "op": "place",
+   "uid": "s-of-candle",
+   "asset": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "at": [
+    4725.6,
+    937.4
+   ],
+   "yaw": 0.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-of-candle2",
+   "asset": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "at": [
+    4720.5,
+    937.8
+   ],
+   "yaw": 40.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "s-of-candle2",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "s-tool-shovel",
+   "asset": "vanilla:clutter/common/shovel01",
+   "at": [
+    4725.6,
+    936.2
+   ],
+   "yaw": 30.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-tool-fork",
+   "asset": "vanilla:clutter/common/pitchfork01",
+   "at": [
+    4724.9,
+    937.7
+   ],
+   "yaw": 60.0,
+   "settle": true
+  },
+  {
+   "op": "note",
+   "uid": "s-tool-fork",
+   "text": "Walk 12: the shovel and pitchfork stay standing on the ground against the shelf's dry face; both meshes are authored upright (1.5 m and 1.4 m tall) and an unmined mount refuses them on the slab (0102 decision 5), so the slab carries only the flat offerings."
+  },
+  {
+   "op": "place",
+   "uid": "s-of-ingots2",
+   "asset": "kotm:oaristys/forge/ingotsiron01",
+   "at": [
+    4723.5,
+    937.95
+   ],
+   "yaw": 120
+  },
+  {
+   "op": "mount",
+   "child": "s-of-ingots2",
+   "parent": "s-shelf",
+   "unmined": "reader-approved r2"
+  },
+  {
+   "op": "place",
+   "uid": "s-of-salt3",
+   "asset": "vanilla:clutter/ingredients/saltpile",
+   "at": [
+    4722.3,
+    937.6
+   ],
+   "yaw": 200.0
+  },
+  {
+   "op": "mount",
+   "child": "s-of-salt3",
+   "parent": "s-shelf",
+   "unmined": "reader-approved r2"
+  },
+  {
+   "op": "bind",
+   "uid": "s-tool-shovel",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-tool-fork",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-of-ingots2",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-of-salt3",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "s-sack",
+   "asset": "mudmother:gv_meshes/argoniannest/paintedurn01",
+   "at": [
+    4724.4,
+    939.6
+   ],
+   "yaw": 225.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-tally1",
+   "asset": "shores:shoresofskyrim/shorerock06",
+   "at": [
+    4717.9,
+    935.3
+   ],
+   "yaw": 25.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-tally2",
+   "asset": "shores:shoresofskyrim/shorerock06",
+   "at": [
+    4716.6,
+    934.8
+   ],
+   "yaw": 110.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-tally3",
+   "asset": "shores:shoresofskyrim/shorerock06",
+   "at": [
+    4715.4,
+    936.4
+   ],
+   "yaw": 200.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-tally4",
+   "asset": "shores:shoresofskyrim/shorerock06",
+   "at": [
+    4714.0,
+    935.0
+   ],
+   "yaw": 300.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-tally5",
+   "asset": "shores:shoresofskyrim/shorerock06",
+   "at": [
+    4712.8,
+    935.0
+   ],
+   "yaw": 75.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-scorch-ash",
+   "asset": "vanilla:effects/ashpile01",
+   "at": [
+    4722.1,
+    934.05
+   ],
+   "yaw": 30.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-leave-bone1",
+   "asset": "vanilla:clutter/bones/bloodybone",
+   "at": [
+    4723.7,
+    934.2
+   ],
+   "yaw": 110.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "s-of-salt1",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-of-salt2",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-of-ingots",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-of-net",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-of-candle",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-sack",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-tally1",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-tally2",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-tally3",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-tally4",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-tally5",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-scorch-ash",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-leave-bone1",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "s-leave-scales1",
+   "asset": "htbm:here there be monsters - curse of cipactli/clutter/wamasuscales",
+   "at": [
+    4716.5,
+    933.2
+   ],
+   "yaw": 60.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-leave-scales2",
+   "asset": "htbm:here there be monsters - curse of cipactli/clutter/wamasustormscales",
+   "at": [
+    4719.5,
+    933.8
+   ],
+   "yaw": 200.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "s-leave-scales1",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-leave-scales2",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "s-tally1b",
+   "asset": "shores:shoresofskyrim/shorerock01",
+   "at": [
+    4718.05,
+    935.2
+   ],
+   "yaw": 80.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-tally1c",
+   "asset": "shores:shoresofskyrim/shorerock07",
+   "at": [
+    4717.85,
+    935.45
+   ],
+   "yaw": 150.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-tally2b",
+   "asset": "shores:shoresofskyrim/shorerock07",
+   "at": [
+    4716.75,
+    934.85
+   ],
+   "yaw": 20.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-tally3b",
+   "asset": "shores:shoresofskyrim/shorerock01",
+   "at": [
+    4715.55,
+    936.35
+   ],
+   "yaw": 300.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-tally3c",
+   "asset": "shores:shoresofskyrim/shorerock07",
+   "at": [
+    4715.35,
+    936.55
+   ],
+   "yaw": 40.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-tally4b",
+   "asset": "shores:shoresofskyrim/shorerock01",
+   "at": [
+    4714.15,
+    935.1
+   ],
+   "yaw": 210.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-tally5b",
+   "asset": "shores:shoresofskyrim/shorerock01",
+   "at": [
+    4712.95,
+    934.95
+   ],
+   "yaw": 120.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-tally5c",
+   "asset": "shores:shoresofskyrim/shorerock07",
+   "at": [
+    4712.75,
+    935.15
+   ],
+   "yaw": 330.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "s-tally1b",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-tally1c",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-tally2b",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-tally3b",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-tally3c",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-tally4b",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-tally5b",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-tally5c",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "s-pool-skull1",
+   "asset": "vanilla:clutter/bones/humanskull",
+   "at": [
+    4713.0,
+    937.8
+   ],
+   "yaw": 140.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-pool-skull3",
+   "asset": "vanilla:clutter/bones/humanskull",
+   "at": [
+    4710.6,
+    938.6
+   ],
+   "yaw": 20.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-pool-arm1",
+   "asset": "vanilla:clutter/bones/humanarmleft",
+   "at": [
+    4718.2,
+    938.1
+   ],
+   "yaw": 250.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-pool-spine1",
+   "asset": "vanilla:clutter/bones/humanspine",
+   "at": [
+    4721.65,
+    933.0
+   ],
+   "yaw": 80.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-pool-skull2",
+   "asset": "vanilla:clutter/bones/humanskull",
+   "at": [
+    4722.4,
+    930.5
+   ],
+   "yaw": 300.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-pool-ribs1",
+   "asset": "vanilla:clutter/bones/humanribcage",
+   "at": [
+    4721.9,
+    932.5
+   ],
+   "yaw": 15.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-pool-skull4",
+   "asset": "vanilla:clutter/bones/humanskull",
+   "at": [
+    4711.5,
+    940.0
+   ],
+   "yaw": 200.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "s-pool-skull4",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-pool-skull1",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-pool-skull3",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-pool-arm1",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-pool-spine1",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-pool-skull2",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-pool-ribs1",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "note",
+   "uid": "s-pool-skull1",
+   "text": "Walk 12 (owner): bones, skulls and a ribcage strewn on the dry rim round the pool's north, east and south bank, the predator cue: what the wamasu leaves when it hauls out."
+  },
+  {
+   "op": "place",
+   "uid": "s-ring-skull5",
+   "asset": "vanilla:clutter/bones/humanskull",
+   "at": [
+    4707.5,
+    932.0
+   ],
+   "yaw": 70.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "s-ring-skull6",
+   "asset": "vanilla:clutter/bones/humanskull",
+   "at": [
+    4706.8,
+    937.2
+   ],
+   "yaw": 310.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-ring-skull7",
+   "asset": "vanilla:clutter/bones/bloodybone",
+   "at": [
+    4718.0,
+    938.5
+   ],
+   "yaw": 200.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-ring-spine2",
+   "asset": "vanilla:clutter/bones/humanspine",
+   "at": [
+    4719.6,
+    936.4
+   ],
+   "yaw": 130.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-ring-skull8",
+   "asset": "vanilla:clutter/bones/humanskull",
+   "at": [
+    4720.6,
+    930.6
+   ],
+   "yaw": 90.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-ring-skull9",
+   "asset": "vanilla:clutter/bones/humanskull",
+   "at": [
+    4721.4,
+    927.0
+   ],
+   "yaw": 250.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "s-ring-skull10",
+   "asset": "vanilla:clutter/bones/humanskull",
+   "at": [
+    4703.5,
+    930.5
+   ],
+   "yaw": 70.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-ring-ribs2",
+   "asset": "vanilla:clutter/bones/humanribcage",
+   "at": [
+    4704.5,
+    934.5
+   ],
+   "yaw": 160.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-ring-arm2",
+   "asset": "vanilla:clutter/bones/humanarmleft",
+   "at": [
+    4721.2,
+    924.2
+   ],
+   "yaw": 20.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-ring-bone3",
+   "asset": "vanilla:clutter/bones/bloodybone",
+   "at": [
+    4722.6,
+    921.8
+   ],
+   "yaw": 300.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-ring-skull11",
+   "asset": "vanilla:clutter/bones/humanskull",
+   "at": [
+    4702.6,
+    926.0
+   ],
+   "yaw": 180.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-ring-ribs3",
+   "asset": "vanilla:clutter/bones/humanribcage",
+   "at": [
+    4723.6,
+    924.6
+   ],
+   "yaw": 80.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-ring-skull12",
+   "asset": "vanilla:clutter/bones/humanskull",
+   "at": [
+    4723.3,
+    926.4
+   ],
+   "yaw": 220.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-ring-spine3",
+   "asset": "vanilla:clutter/bones/humanspine",
+   "at": [
+    4723.4,
+    929.3
+   ],
+   "yaw": 10.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-ring-skull13",
+   "asset": "vanilla:clutter/bones/humanskull",
+   "at": [
+    4722.4,
+    919.4
+   ],
+   "yaw": 120.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-ring-ribs4",
+   "asset": "vanilla:clutter/bones/humanribcage",
+   "at": [
+    4702.8,
+    928.2
+   ],
+   "yaw": 300.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-ring-skull14",
+   "asset": "vanilla:clutter/bones/humanskull",
+   "at": [
+    4705.6,
+    938.8
+   ],
+   "yaw": 40.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "s-ring-ribs3",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-ring-skull12",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-ring-spine3",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-ring-skull13",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-ring-ribs4",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-ring-skull14",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-ring-skull10",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-ring-ribs2",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-ring-arm2",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-ring-bone3",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-ring-skull11",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-ring-skull5",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-ring-skull6",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-ring-skull7",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-ring-spine2",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-ring-skull8",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-ring-skull9",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "note",
+   "uid": "s-ring-skull5",
+   "text": "Walk 12 close-out: the bones close into a ring round the landing arc of the pool, west shore to east shallows; some lie in the shallows where the wamasu drops them."
+  },
+  {
+   "op": "place",
+   "uid": "s-notice-stone",
+   "asset": "kotm:argonia/xanmeer/exterior/obelisk",
+   "at": [
+    4727.0,
+    935.5
+   ],
+   "yaw": 210.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "s-notice-stone",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "note",
+   "uid": "s-notice-stone",
+   "text": "Walk 12 close-out (R127): the pilgrim notice is carved on a 6.9 m grey Argonian obelisk, xanmeer stone like the old shrines, on the bank approach, so it is seen from afar; it hosts socket sign-carving."
+  },
+  {
+   "op": "socket",
+   "id": "socket.the-wamasu-shrine.idle-wamasu-hunt",
+   "kind": "idle",
+   "activity": "stand",
+   "parcel": "parcel.the-wamasu-shrine.the-bank",
+   "why": "The wamasu hauls out on the bank strip the carriers walk to reach the shelf, so it guards the approach rather than the shelf.",
+   "at": [
+    4740.0,
+    982.0
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.the-wamasu-shrine.idle-wamasu-home",
+   "kind": "idle",
+   "activity": "stand",
+   "parcel": "parcel.the-wamasu-shrine.the-bank",
+   "why": "The wamasu lies up in the black east pool beside the bank strip, the only way onto the bank, 42 m short of the shelf; the record says ozone is smelled before the water is seen; the smell rises from this bank.",
+   "at": [
+    4758.0,
+    970.0
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.the-wamasu-shrine.npc-wamasu",
+   "kind": "npc",
+   "at": [
+    4752.0,
+    980.0
+   ],
+   "rosterSlotId": "n1",
+   "role": "the wamasu of the pond",
+   "parcel": "parcel.the-wamasu-shrine.the-bank",
+   "why": "The offerings are left for a wamasu that holds the east pool along the bank strip; the villages walk past its water to reach the shelf, which is why they come nervously and leave quickly.",
+   "schedule": [
+    {
+     "dayPhase": "morning",
+     "socketId": "socket.the-wamasu-shrine.idle-wamasu-home",
+     "purpose": "home"
+    },
+    {
+     "dayPhase": "night",
+     "socketId": "socket.the-wamasu-shrine.idle-wamasu-hunt",
+     "purpose": "work"
+    }
+   ],
+   "fills": [
+    "promise.the-wamasu-shrine.occupant-n1"
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.the-wamasu-shrine.container-offering-sack",
+   "kind": "container",
+   "host": "s-sack",
+   "containerClass": "urn",
+   "fillRule": "authored",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     },
+     {
+      "item": "item.lumberries",
+      "count": 2
+     },
+     {
+      "item": "item.seed-doll",
+      "count": 1
+     }
+    ],
+    "storyNote": "This year's village's share, not yet set on the shelf."
+   },
+   "parcel": "parcel.the-wamasu-shrine.the-bank",
+   "why": "A painted urn of offerings waits beside the shelf for the next carrier.",
+   "valueTier": "moderate",
+   "owner": "faction.unclaimed"
+  },
+  {
+   "op": "socket",
+   "id": "socket.the-wamasu-shrine.the-bank",
+   "kind": "marker",
+   "at": [
+    4726.0,
+    939.5
+   ],
+   "zone": "scene",
+   "fills": [
+    "promise.the-wamasu-shrine.scene-the-bank"
+   ],
+   "parcel": "parcel.the-wamasu-shrine.the-bank",
+   "why": "The bank in front of the shelf, where a village's carriers set down the season's offering."
+  },
+  {
+   "op": "socket",
+   "id": "socket.the-wamasu-shrine.the-scorched-shelf",
+   "kind": "marker",
+   "host": "parcel.the-wamasu-shrine.the-bank",
+   "zone": "evidence",
+   "fills": [
+    "promise.the-wamasu-shrine.evidence-the-scorched-shelf"
+   ],
+   "parcel": "parcel.the-wamasu-shrine.the-bank",
+   "why": "The shelf's water-side end, where the offerings are burnt black.",
+   "at": [
+    4724.0,
+    935.27
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.the-wamasu-shrine.sign-carving",
+   "kind": "sign",
+   "host": "s-notice-stone",
+   "signPurpose": "pilgrim-notice",
+   "textKey": "text.sign.the-wamasu-shrine.carving",
+   "parcel": "parcel.the-wamasu-shrine.the-bank",
+   "why": "Words are carved into the obelisk on the bank. Whoever brings the season's offering reads them."
+  },
+  {
+   "op": "note",
+   "uid": "s-shelf",
+   "text": "The Wamasu Shrine: one Ayleid dressed block on the pond bank, loaded with salt, iron and a net; a shovel and a pitchfork given as offerings stood against its dry face; a painted offering urn beside it; five pebble tally marks along the bank; shed scales and a gnawed bone at the waterline; storm-scorched ash at the shelf's water end; a floor candle at each end."
+  },
+  {
+   "op": "note",
+   "uid": "s-tool-shovel",
+   "text": "Stands on the ground 0.3 m clear of the shelf. It does not lean on the shelf's side."
+  },
+  {
+   "op": "note",
+   "uid": "s-sack",
+   "text": "Stands on the ground 0.3 m clear of the shelf. It does not lean on the shelf's side."
+  },
+  {
+   "op": "socket",
+   "id": "socket.the-wamasu-shrine.plant-fern",
+   "at": [
+    4731.16,
+    942.86
+   ],
+   "kind": "plant",
+   "plantClass": "somnalius-fern",
+   "valueTier": "trivial",
+   "owner": null,
+   "why": "A somnalius fern grows here; a forager cuts a frond and it grows back. (bmv:landscape/plants/espfernbraken01st, chunk_10_2_vegetation.bin#12:1)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.the-wamasu-shrine.den-crocodile",
+   "kind": "encounter",
+   "at": [
+    4748.0,
+    988.0
+   ],
+   "zone": "den",
+   "species": "creature.crocodile",
+   "headcount": 2,
+   "why": "The crocodiles bask at the water edge where the east pool tails out beside the track, at the low end of the strip the villages walk; a carrier meets them on the approach, 47 m short of the shelf.",
+   "dangerBand": "D2"
+  },
+  {
+   "op": "socket",
+   "id": "socket.the-wamasu-shrine.den-death-hopper",
+   "kind": "encounter",
+   "at": [
+    4699.0,
+    911.0
+   ],
+   "zone": "den",
+   "species": "creature.death-hopper",
+   "headcount": 3,
+   "why": "Death hoppers hide in the far corner of the black pond below the bank, 44 m from the shelf; the water there is still and deep enough to cover a frog while waders pass overhead.",
+   "dangerBand": "D2"
+  },
+  {
+   "op": "socket",
+   "id": "socket.the-wamasu-shrine.den-giant-leech",
+   "kind": "encounter",
+   "at": [
+    4746.0,
+    979.0
+   ],
+   "zone": "den",
+   "species": "creature.giant-leech",
+   "headcount": 3,
+   "why": "Giant leeches keep to the south tail of the east pool beside the track, 42 m from the shelf; a carrier who wades the shallows on the approach picks them up.",
+   "dangerBand": "D2"
+  },
+  {
+   "op": "socket",
+   "id": "socket.the-wamasu-shrine.den-fleshfly",
+   "kind": "ambience",
+   "at": [
+    4748.2,
+    938
+   ],
+   "zone": "den",
+   "species": "creature.fleshfly",
+   "headcount": 1,
+   "why": "Fleshfly Swarm den over the rotting offerings. Stagnant water beside carrion; the flies gather more thickly inland."
+  },
+  {
+   "op": "socket",
+   "id": "socket.the-wamasu-shrine.station-shelf",
+   "kind": "station",
+   "stationClass": "shrine",
+   "host": "parcel.the-wamasu-shrine.the-bank",
+   "parcel": "parcel.the-wamasu-shrine.the-bank",
+   "why": "The dressed stone shelf is the shrine of Haynekhtnamet: a visitor bows here, where the four villages lay their gifts (2.4i: the pilgrim notice tells what is done here).",
+   "at": [
+    4724.0,
+    935.27
+   ]
+  },
+  {
+   "op": "place",
+   "uid": "x-sunk",
+   "asset": "kotm:oaristys/forge/ingotsiron01",
+   "at": [
+    4717.5,
+    931.2
+   ],
+   "yaw": 125.0,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "bind",
+   "uid": "x-sunk",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "socket",
+   "id": "socket.the-wamasu-shrine.cache-sunk-offerings",
+   "kind": "container",
+   "host": "x-sunk",
+   "containerClass": "hidden-cache",
+   "lock": "lock.the-wamasu-shrine.cache-sunk-offerings",
+   "fillRule": "authored",
+   "owner": null,
+   "parcel": "parcel.the-wamasu-shrine.the-bank",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.ebony-ingot",
+      "count": 1
+     },
+     {
+      "item": "item.corundum-ingot",
+      "count": 2
+     },
+     {
+      "item": "item.iron-ore",
+      "count": 3
+     }
+    ],
+    "storyNote": "Each year the four villages leave metal on the shelf as an offering to the flood. When the water rises, it carries the offerings nearest the edge down into the shallows below the stone. The metal stays in the shallows."
+   },
+   "valueTier": "moderate",
+   "reach": "walk",
+   "effort": 3,
+   "cue": {
+    "placement": "s-leave-scales1",
+    "text": "Shed wamasu scales lie at the waterline below the shelf. Past them, metal shows under a hand's depth of black water."
+   },
+   "why": "The shallows below the offering shelf hold the offerings that the water carried down from the shelf, in reach of a wader at the wamasu's edge."
+  },
+  {
+   "op": "place",
+   "uid": "s-enchant-table",
+   "asset": "vanilla:furniture/enchantingworkbench",
+   "at": [
+    4727.8,
+    940.4
+   ],
+   "yaw": 210.0,
+   "settle": true
+  },
+  {
+   "op": "note",
+   "uid": "s-enchant-table",
+   "text": "2.9b: the slice's one enchanting table stands beside the shrine shelf of Haynekhtnamet, where the four villages lay their gifts; a supplicant binds a gift's power at the god's own stone. Clear of the shelf apron, the urn and the notice stone, with the stand spot to its north-west."
+  },
+  {
+   "op": "socket",
+   "id": "socket.the-wamasu-shrine.station-enchanting",
+   "kind": "station",
+   "stationClass": "enchanting",
+   "host": "s-enchant-table",
+   "parcel": "parcel.the-wamasu-shrine.the-bank",
+   "why": "The shrine has no keeper. The offering-bearers of the four villages bind their gifts, now mostly tools, into worked things at this table beside Haynekhtnamet's stone."
+  },
+  {
+   "op": "bind",
+   "uid": "s-enchant-table",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "n-moss-root",
+   "asset": "htbm:here there be monsters - curse of cipactli/trees/treeroots03",
+   "at": [
+    4726.4,
+    944.1
+   ],
+   "yaw": 180.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "n-moss-root",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "n-hanging-moss",
+   "asset": "bmv:landscape/plants/florahangingmoss03aaa",
+   "at": [
+    4730.8,
+    944.1
+   ],
+   "yaw": 40.0,
+   "y": 160.19
+  },
+  {
+   "op": "note",
+   "uid": "n-hanging-moss",
+   "text": "2.9b node.hanging-moss: blue moss hangs on the shaded wet bank by the somnalius fern, outside the shrine's worked ground (fauna-hazards.md:99)."
+  },
+  {
+   "op": "bind",
+   "uid": "n-hanging-moss",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "grows-from": "n-moss-root"
+  },
+  {
+   "op": "note",
+   "uid": "n-moss-root",
+   "text": "2.9b node.hanging-moss host: a gnarled mangrove root arches over the wet bank and the blue moss hangs from its bough, the way it hangs from the swamp canopy across Black Marsh."
+  },
+  {
+   "op": "socket",
+   "id": "socket.the-wamasu-shrine.plant-somnalius-fern-1",
+   "at": [
+    4726.51,
+    945.76
+   ],
+   "kind": "plant",
+   "plantClass": "somnalius-fern",
+   "valueTier": "trivial",
+   "owner": null,
+   "why": "2.9b-p: A somnalius fern grows here in the marsh shade; a forager cuts a frond and it grows back. (bmv:landscape/plants/espfernbraken01st, chunk_10_2_vegetation.bin#12:2; fauna-hazards.md:98)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.the-wamasu-shrine.plant-somnalius-fern-2",
+   "at": [
+    4732.45,
+    938.54
+   ],
+   "kind": "plant",
+   "plantClass": "somnalius-fern",
+   "valueTier": "trivial",
+   "owner": null,
+   "why": "2.9b-p: A somnalius fern grows here in the marsh shade; a forager cuts a frond and it grows back. (bmv:landscape/plants/espfernbraken01st, chunk_10_2_vegetation.bin#12:4; fauna-hazards.md:98)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.the-wamasu-shrine.plant-somnalius-fern-3",
+   "at": [
+    4737.94,
+    926.92
+   ],
+   "kind": "plant",
+   "plantClass": "somnalius-fern",
+   "valueTier": "trivial",
+   "owner": null,
+   "why": "2.9b-p: A somnalius fern grows here in the marsh shade; a forager cuts a frond and it grows back. (bmv:landscape/plants/espfernbraken01st, chunk_10_1_vegetation.bin#12:113; fauna-hazards.md:98)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.the-wamasu-shrine.item-offering-salt-1",
+   "kind": "item",
+   "host": "s-of-salt1",
+   "itemClass": "food",
+   "parcel": "parcel.the-wamasu-shrine.the-bank",
+   "why": "A pile of river salt left on the shelf as this season's offering to the wamasu.",
+   "item": "item.river-salt",
+   "valueTier": "low",
+   "owner": "faction.unclaimed",
+   "itemKind": "salt"
+  },
+  {
+   "op": "socket",
+   "id": "socket.the-wamasu-shrine.item-offering-salt-2",
+   "kind": "item",
+   "host": "s-of-salt2",
+   "itemClass": "food",
+   "parcel": "parcel.the-wamasu-shrine.the-bank",
+   "why": "A pile of river salt left on the shelf as this season's offering to the wamasu.",
+   "item": "item.river-salt",
+   "valueTier": "low",
+   "owner": "faction.unclaimed",
+   "itemKind": "salt"
+  },
+  {
+   "op": "socket",
+   "id": "socket.the-wamasu-shrine.item-offering-salt-3",
+   "kind": "item",
+   "host": "s-of-salt3",
+   "itemClass": "food",
+   "parcel": "parcel.the-wamasu-shrine.the-bank",
+   "why": "A pile of river salt left on the shelf as this season's offering to the wamasu.",
+   "item": "item.river-salt",
+   "valueTier": "low",
+   "owner": "faction.unclaimed",
+   "itemKind": "salt"
+  },
+  {
+   "op": "socket",
+   "id": "socket.the-wamasu-shrine.item-offering-ingots-1",
+   "kind": "item",
+   "host": "s-of-ingots",
+   "itemClass": "material",
+   "parcel": "parcel.the-wamasu-shrine.the-bank",
+   "why": "Bars of bog iron left on the shelf as an offering to the wamasu. The villages offer the iron they work.",
+   "item": "item.bog-iron",
+   "valueTier": "low",
+   "owner": "faction.unclaimed",
+   "itemKind": "iron-ingot-stack"
+  },
+  {
+   "op": "socket",
+   "id": "socket.the-wamasu-shrine.item-offering-ingots-2",
+   "kind": "item",
+   "host": "s-of-ingots2",
+   "itemClass": "material",
+   "parcel": "parcel.the-wamasu-shrine.the-bank",
+   "why": "Bars of bog iron left on the shelf as an offering to the wamasu. The villages offer the iron they work.",
+   "item": "item.bog-iron",
+   "valueTier": "low",
+   "owner": "faction.unclaimed",
+   "itemKind": "iron-ingot-stack"
+  },
+  {
+   "op": "note",
+   "uid": "s-of-ingots2",
+   "text": "c7: re-seated 0.4 m west, turned to 120, so the whole stack sits on the shelf top between the salt piles; it overhung the south-east edge by 0.15 m."
+  },
+  {
+   "op": "place",
+   "uid": "h-scales1",
+   "asset": "htbm:here there be monsters - curse of cipactli/clutter/wamasuscales",
+   "at": [
+    4740.4,
+    981.6
+   ],
+   "yaw": 40,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "h-scales1",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "h-scales2",
+   "asset": "htbm:here there be monsters - curse of cipactli/clutter/wamasustormscales",
+   "at": [
+    4741.0,
+    982.4
+   ],
+   "yaw": 160,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "h-scales2",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "h-bone1",
+   "asset": "vanilla:clutter/bones/bloodybone",
+   "at": [
+    4740.6,
+    980.3
+   ],
+   "yaw": 75,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "h-bone1",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "h-skull1",
+   "asset": "vanilla:clutter/bones/deerskullprop",
+   "at": [
+    4739.8,
+    982.9
+   ],
+   "yaw": 210,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "h-skull1",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "h-leg1",
+   "asset": "vanilla:clutter/bones/bloodyleg",
+   "at": [
+    4740.95,
+    980.6
+   ],
+   "yaw": 300,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "h-leg1",
+   "kind": "assembly",
+   "id": "parcel.the-wamasu-shrine.the-bank",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "note",
+   "uid": "h-scales1",
+   "text": "c7 haul-out: the wamasu hauls out on the bank strip at the hunt idle (4740, 982); shed scales, a gnawed bone, a prey skull and a torn leg mark where it drags out, on the carriers' approach, so a visitor reads the danger before the shelf."
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.the-wamasu-shrine.haul-out-drag",
+   "points": [
+    [
+     4743.4,
+     980.8
+    ],
+    [
+     4742.0,
+     981.3
+    ],
+    [
+     4740.6,
+     981.9
+    ],
+    [
+     4739.2,
+     982.5
+    ],
+    [
+     4737.9,
+     983.1
+    ]
+   ],
+   "width": 1.6,
+   "kind": "drag",
+   "why": "The wamasu drags itself out of the east pool here to eat. Its belly has worn a wet mud strip from the water up to the bones and shed scales it leaves."
+  },
+  {
+   "op": "socket",
+   "id": "socket.the-wamasu-shrine.idle-headwoman-work",
+   "kind": "idle",
+   "activity": "tend",
+   "at": [
+    4726.4,
+    939.4
+   ],
+   "parcel": "parcel.the-wamasu-shrine.the-bank",
+   "why": "The bank in front of the shelf, where the headwoman of the village whose turn it is sweeps the ash off the stone and sets the offerings straight.",
+   "yawDeg": 305.2
+  },
+  {
+   "op": "socket",
+   "id": "socket.the-wamasu-shrine.idle-headwoman-home",
+   "kind": "idle",
+   "activity": "stand",
+   "at": [
+    4728.4,
+    936.8
+   ],
+   "parcel": "parcel.the-wamasu-shrine.the-bank",
+   "why": "Beside the carved obelisk, where she counts the tally stones at dusk before the walk home to Rimfield; the walk home is the later schedule system's."
+  },
+  {
+   "op": "socket",
+   "id": "socket.the-wamasu-shrine.npc-headwoman",
+   "kind": "npc",
+   "at": [
+    4726.0,
+    938.2
+   ],
+   "rosterSlotId": "headwoman",
+   "role": "the headwoman whose village has the turn",
+   "parcel": "parcel.the-wamasu-shrine.the-bank",
+   "why": "Four villages send offerings in rotation; this wet season it is her village's turn, so she keeps the shelf.",
+   "schedule": [
+    {
+     "dayPhase": "morning",
+     "socketId": "socket.the-wamasu-shrine.idle-headwoman-work",
+     "purpose": "work"
+    },
+    {
+     "dayPhase": "afternoon",
+     "socketId": "socket.the-wamasu-shrine.idle-headwoman-work",
+     "purpose": "work"
+    },
+    {
+     "dayPhase": "dusk",
+     "socketId": "socket.the-wamasu-shrine.idle-headwoman-home",
+     "purpose": "evening"
+    },
+    {
+     "dayPhase": "night",
+     "socketId": "socket.the-wamasu-shrine.idle-headwoman-home",
+     "purpose": "home"
+    }
+   ]
+  }
+ ]
+}

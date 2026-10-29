@@ -1,0 +1,201 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "_": "Region sheet for imperial-penal-south (2.5a1b). Talk is seeded from the region's published place records; every trait cites a lore dossier or says inferred.",
+ "entries": [
+  {
+   "id": "culture.region.imperial-penal-south",
+   "level": "region",
+   "name": "Blackrose country (the penal south)",
+   "parent": "culture.province.black-marsh",
+   "regionId": "imperial-penal-south",
+   "norms": [
+    {
+     "text": "Debt is recorded and inherited; the Owing is the law where no court is.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    {
+     "text": "The Rose is a ruin lived in by prison-born families who resent the word prison.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    },
+    {
+     "text": "The dead are released to their families for a fee. The fee is recorded.",
+     "source": "inferred"
+    },
+    {
+     "text": "Procedure is recited even when it is monstrous. The reciter is often a decent person.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Calling the Rose's people prisoners.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    },
+    {
+     "text": "Burning a ledger in front of its keeper; it is how feuds start.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    }
+   ],
+   "values": [
+    {
+     "text": "A balanced ledger.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    {
+     "text": "Possession as title: who holds the island holds the city.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    },
+    {
+     "text": "Bones returned to the dirt.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Debt-brokers who buy an Owing and sell the person with it.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    {
+     "text": "Outsiders who assume Blackrose city runs the Rose.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    }
+   ],
+   "opinions": {
+    "place": {
+     "lean": -1,
+     "text": "The south swallows people; you come in on a list and leave on another.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    },
+    "work": {
+     "lean": 0,
+     "text": "Work is transit, tolls and whatever comes out of the Rose.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    },
+    "people": {
+     "lean": -1,
+     "text": "Every neighbour owes a balance; ask to whom before trusting.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    "faction": {
+     "lean": 0,
+     "text": "The Chainbreakers audit the Owing and burn what they can prove false.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    "hist": {
+     "lean": 1,
+     "text": "Argonians who die in the Rose must reach the dirt near a tree.",
+     "source": "inferred"
+    },
+    "empire": {
+     "lean": -2,
+     "text": "The Empire built the prison and abandoned the lists.",
+     "source": "world/sources/lore/topics/prisons.md"
+    },
+    "trade": {
+     "lean": 0,
+     "text": "Three rivers meet at Blackrose; everything moving south pays there.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    },
+    "danger": {
+     "lean": -2,
+     "text": "Umbriel's dead still walk the Rose's lower levels.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    },
+    "rumour": {
+     "lean": 0,
+     "text": "A bone-tag came back for a woman seen alive at the ford.",
+     "source": "inferred"
+    },
+    "directions": {
+     "lean": 0,
+     "text": "Ways are given by the old cordon names: Prison road, Holding Fields, the Windlass.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Officials address people by status: debtor, holder, transferee.",
+      "source": "world/sources/lore/topics/labour-and-bondage.md"
+     },
+     {
+      "text": "Rose-born people call each other by family and generation.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "formal",
+    "oaths": [
+     {
+      "text": "On the ledger.",
+      "source": "inferred"
+     },
+     {
+      "text": "Dirt take it.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "A family's balance, aloud, in front of others.",
+      "source": "world/sources/lore/topics/labour-and-bondage.md"
+     },
+     {
+      "text": "Who carried the dead out after Umbriel.",
+      "source": "world/sources/lore/topics/umbriel.md"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#region-imperial-penal-south"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "The bone fee is the most resented payment in the south. The Chainbreakers pay it and record every payment.",
+      "source": "inferred"
+     },
+     {
+      "text": "The sealing note on the Vault door names the contents. It gives no name for whoever ordered them fed.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "The Chainbreakers have found a false Owing with a living name on it.",
+      "source": "world/sources/lore/topics/labour-and-bondage.md"
+     },
+     {
+      "text": "Offerings left at the Sealed Vault are gone by the next visit.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.region.imperial-fringe",
+     "lean": 0,
+     "text": "Gideon keeps better records and asks fewer questions about ours.",
+     "source": "world/sources/lore/gideon.md"
+    },
+    {
+     "node": "culture.region.mercantile-coast",
+     "lean": 0,
+     "text": "Lilmoth's merchants buy what comes down the rivers without asking its origin.",
+     "source": "world/sources/lore/lilmoth.md"
+    },
+    {
+     "node": "culture.region.naga-kur-deeps",
+     "lean": -2,
+     "text": "The Naga-Kur country lies past the Rose. Travellers go round it.",
+     "source": "world/sources/lore/regions/murkmire.md"
+    },
+    {
+     "node": "culture.region.hist-heartland",
+     "lean": 0,
+     "text": "The interior takes our dead and sends back nothing.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.15
+  }
+ ]
+}

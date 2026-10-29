@@ -1,0 +1,376 @@
+{
+  "schemaVersion": 1,
+  "cellId": "IxtaxhXanmeerInterior",
+  "plugin": "King of the Murkmire.esp",
+  "rule": "Stand-ins for the cell's missing clutter (place.imperial-penal-south.voriplasm-vault): each missing reference comes from a Dawnguard, Dragonborn or Creation Club archive whose base record the vault cannot resolve (no model, so no size to match), and no DLC or CC asset ships; a piece with no same-object, same-size stand-in is removed. Drawn at the reference's transform by worldgen/export_interior_bundle.py.",
+  "substitutions": [],
+  "removals": [
+    {
+      "refId": "0804C44F",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx014FD1 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard set piece stands here, one of a ring or grid round the room; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "0804C450",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx014FD1 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard set piece stands here, one of a ring or grid round the room; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "0804C451",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx014FD1 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard set piece stands here, one of a ring or grid round the room; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "0804C452",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx014FD1 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard set piece stands here, one of a ring or grid round the room; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "0804C453",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx014FD1 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard set piece stands here, one of a ring or grid round the room; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "0804C454",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx014FD1 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard set piece stands here, one of a ring or grid round the room; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "0804C518",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx000C73 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Saints and Seducers archive exists; no published kit holds a same-class piece.",
+      "note": "A Saints and Seducers piece sits here beside the Dawnguard ones; it lives only in a Creation Club archive, so the spot stays bare."
+    },
+    {
+      "refId": "0804C519",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx000C73 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Saints and Seducers archive exists; no published kit holds a same-class piece.",
+      "note": "A Saints and Seducers piece sits here beside the Dawnguard ones; it lives only in a Creation Club archive, so the spot stays bare."
+    },
+    {
+      "refId": "0807121D",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx014B85 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard set piece stands here in a grid on the lower floor; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "08071224",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx014B85 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard set piece stands here in a grid on the lower floor; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "08071225",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx014B85 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard set piece stands here in a grid on the lower floor; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "08071226",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx014B85 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard set piece stands here in a grid on the lower floor; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "08071227",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx014B85 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard set piece stands here in a grid on the lower floor; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "08071228",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx014B85 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard set piece stands here in a grid on the lower floor; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "0807122A",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx03972E is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dragonborn archive exists; no published kit holds a same-class piece.",
+      "note": "A Dragonborn piece sits here; we take no Dragonborn assets, so the spot stays bare."
+    },
+    {
+      "refId": "0807122B",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx03972E is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dragonborn archive exists; no published kit holds a same-class piece.",
+      "note": "A Dragonborn piece sits here; we take no Dragonborn assets, so the spot stays bare."
+    },
+    {
+      "refId": "08090407",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx02B5D3 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dragonborn archive exists; no published kit holds a same-class piece.",
+      "note": "A Dragonborn piece hangs here high in the room; we take no Dragonborn assets, so the spot stays bare."
+    },
+    {
+      "refId": "08090408",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx02B5D3 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dragonborn archive exists; no published kit holds a same-class piece.",
+      "note": "A Dragonborn piece hangs here high in the room; we take no Dragonborn assets, so the spot stays bare."
+    },
+    {
+      "refId": "08090409",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx02B5D3 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dragonborn archive exists; no published kit holds a same-class piece.",
+      "note": "A Dragonborn piece hangs here high in the room; we take no Dragonborn assets, so the spot stays bare."
+    },
+    {
+      "refId": "0809ABD1",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx007CDA is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard floor piece lies here along the passage; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "0809ABD2",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx007CDA is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard floor piece lies here along the passage; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "0809ABD3",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx007CDA is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard floor piece lies here along the passage; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "0809ABD4",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx007CDA is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard floor piece lies here along the passage; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "0809ABD5",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx007CDA is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard floor piece lies here along the passage; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "0809ABD6",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx007CDA is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard floor piece lies here along the passage; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "0809ABD7",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx007CDA is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard floor piece lies here along the passage; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "0809ABD8",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx007CDA is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard floor piece lies here along the passage; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "0809ABD9",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx007CDA is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard floor piece lies here along the passage; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "0809ABDC",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx007CDA is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard floor piece lies here along the passage; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "0809ABDE",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx007CDA is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard floor piece lies here along the passage; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "0809ABDF",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx007CDA is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard floor piece lies here along the passage; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "085F310F",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx014B85 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard set piece stands here in a grid on the lower floor; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "085F3115",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx00513E is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A small Dawnguard piece lies here; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "085F3153",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx00513E is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A small Dawnguard piece lies here; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "085F316F",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx03972E is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dragonborn archive exists; no published kit holds a same-class piece.",
+      "note": "A Dragonborn piece sits here; we take no Dragonborn assets, so the spot stays bare."
+    },
+    {
+      "refId": "085F318C",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx03972E is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dragonborn archive exists; no published kit holds a same-class piece.",
+      "note": "A Dragonborn piece sits here; we take no Dragonborn assets, so the spot stays bare."
+    },
+    {
+      "refId": "085F3194",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx02932E is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dragonborn archive exists; no published kit holds a same-class piece.",
+      "note": "A Dragonborn piece sits here; we take no Dragonborn assets, so the spot stays bare."
+    },
+    {
+      "refId": "085F31AF",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx02932D is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dragonborn archive exists; no published kit holds a same-class piece.",
+      "note": "A Dragonborn piece sits here; we take no Dragonborn assets, so the spot stays bare."
+    },
+    {
+      "refId": "085F31C2",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx00513E is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A small Dawnguard piece lies here; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "085F31DA",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx02932E is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dragonborn archive exists; no published kit holds a same-class piece.",
+      "note": "A Dragonborn piece sits here; we take no Dragonborn assets, so the spot stays bare."
+    },
+    {
+      "refId": "08611C10",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx039F87 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dragonborn archive exists; no published kit holds a same-class piece.",
+      "note": "A Dragonborn piece lies on the floor here; we take no Dragonborn assets, so the spot stays bare."
+    },
+    {
+      "refId": "0863FD89",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx007CDA is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard floor piece lies here along the passage; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "08707520",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx014FD1 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard set piece stands here, one of a ring or grid round the room; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "08707522",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx014FD1 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard set piece stands here, one of a ring or grid round the room; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "08707523",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx014FD1 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard set piece stands here, one of a ring or grid round the room; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "08707524",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx014FD1 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard set piece stands here, one of a ring or grid round the room; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "08707525",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx014FD1 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard set piece stands here, one of a ring or grid round the room; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "08707526",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx014FD1 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard set piece stands here, one of a ring or grid round the room; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "08707527",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx014FD1 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard set piece stands here, one of a ring or grid round the room; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "08707528",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx014FD1 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard set piece stands here, one of a ring or grid round the room; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "08707529",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx014FD1 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A Dawnguard set piece stands here, one of a ring or grid round the room; we take no Dawnguard assets, so the spot stays bare."
+    },
+    {
+      "refId": "08707533",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx000C73 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Saints and Seducers archive exists; no published kit holds a same-class piece.",
+      "note": "A Saints and Seducers piece sits here beside the Dawnguard ones; it lives only in a Creation Club archive, so the spot stays bare."
+    },
+    {
+      "refId": "08707534",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx000C73 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Saints and Seducers archive exists; no published kit holds a same-class piece.",
+      "note": "A Saints and Seducers piece sits here beside the Dawnguard ones; it lives only in a Creation Club archive, so the spot stays bare."
+    },
+    {
+      "refId": "08707535",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx000C73 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Saints and Seducers archive exists; no published kit holds a same-class piece.",
+      "note": "A Saints and Seducers piece sits here beside the Dawnguard ones; it lives only in a Creation Club archive, so the spot stays bare."
+    },
+    {
+      "refId": "08707536",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx000C73 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Saints and Seducers archive exists; no published kit holds a same-class piece.",
+      "note": "A Saints and Seducers piece sits here beside the Dawnguard ones; it lives only in a Creation Club archive, so the spot stays bare."
+    },
+    {
+      "refId": "08707537",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx000C73 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Saints and Seducers archive exists; no published kit holds a same-class piece.",
+      "note": "A Saints and Seducers piece sits here beside the Dawnguard ones; it lives only in a Creation Club archive, so the spot stays bare."
+    },
+    {
+      "refId": "08707538",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx000C73 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Saints and Seducers archive exists; no published kit holds a same-class piece.",
+      "note": "A Saints and Seducers piece sits here beside the Dawnguard ones; it lives only in a Creation Club archive, so the spot stays bare."
+    },
+    {
+      "refId": "08707539",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx000C73 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Saints and Seducers archive exists; no published kit holds a same-class piece.",
+      "note": "A Saints and Seducers piece sits here beside the Dawnguard ones; it lives only in a Creation Club archive, so the spot stays bare."
+    },
+    {
+      "refId": "0870753A",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx000C73 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Saints and Seducers archive exists; no published kit holds a same-class piece.",
+      "note": "A Saints and Seducers piece sits here beside the Dawnguard ones; it lives only in a Creation Club archive, so the spot stays bare."
+    },
+    {
+      "refId": "0870753B",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx000C73 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Saints and Seducers archive exists; no published kit holds a same-class piece.",
+      "note": "A Saints and Seducers piece sits here beside the Dawnguard ones; it lives only in a Creation Club archive, so the spot stays bare."
+    },
+    {
+      "refId": "0870753D",
+      "reason": "decorative-no-same-class",
+      "search": "Searched: absent-master-classes.json (class only, no model), the UESP pages Skyrim:Ingredients, Miscellaneous_Items, Food, Soul_Gems, Tools, Containers, Potions, Dawnguard and Dragonborn (xx015340 is not listed, so it is not an item), and the UESP API search (disabled); the vault holds only Skyrim.esm and Update.esm, so no record dump of the Dawnguard archive exists; no published kit holds a same-class piece.",
+      "note": "A small Dawnguard piece sits here; we take no Dawnguard assets, so the spot stays bare."
+    }
+  ],
+  "removalRule": "Owner ruling 2026-10-04 (R113): no missing piece ships as a gap. A missing piece takes a same-class stand-in from a published kit where one exists (substitutions[]); a decorative piece whose class no published kit or vault archive holds is taken out of the fit-out (removals[], reason decorative-no-same-class, its search recorded), and the spot is simply empty. A placed piece whose only support was a removed piece is removed with it (reason rests-on-a-removal, restsOn naming that row)."
+}

@@ -1,0 +1,21 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "world-schema/navigable-reach.v1",
+ "title": "Which reaches and bodies each boat class may enter (derived, 2.15b)",
+ "type": "object",
+ "required": ["schemaVersion", "graphSha256", "classes"],
+ "properties": {
+  "schemaVersion": {"const": 1},
+  "graphSha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+  "classes": {"type": "array", "items": {
+   "type": "object",
+   "required": ["classId", "graphSha256", "reaches", "bodies", "components"],
+   "properties": {
+    "classId": {"type": "string"},
+    "graphSha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "reaches": {"type": "array", "items": {"type": "object", "required": ["id", "downOnly", "seasonal"]}},
+    "bodies": {"type": "array", "items": {"type": "string"}},
+    "components": {"type": "array", "items": {"type": "object", "required": ["id", "km", "seaLinked", "reachIds", "bodyIds"]}}
+   }}}
+ }
+}

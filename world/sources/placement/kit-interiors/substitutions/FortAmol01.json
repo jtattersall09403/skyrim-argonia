@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "cellId": "FortAmol01",
+  "plugin": "Skyrim.esm",
+  "rule": "The Voriplasm vault (place.imperial-penal-south.voriplasm-vault) is a lair: every man-made light and fire is retired on its records, and Skyrim-only dressing goes; no piece is missing, so no stand-ins.",
+  "substitutions": [],
+  "removals": [
+    {
+      "refId": "0005BDFB",
+      "reason": "lair-man-made-light",
+      "why": "TorchPermanantOn (vanilla:clutter/common/torchpermanent01) burns (its kit row mines flames); the sealed vault is a beast's lair with no keeper to tend a flame, so it is lit by glow fungus and Hist sap bloom instead."
+    },
+    {
+      "refId": "0005BEEC",
+      "reason": "lair-man-made-light",
+      "why": "Lantern01 (vanilla:clutter/common/candlelantern01) carries a lantern light block; the sealed vault is a beast's lair with no keeper to tend a flame, so it is lit by glow fungus and Hist sap bloom instead."
+    },
+    {
+      "refId": "0005BEED",
+      "reason": "lair-man-made-light",
+      "why": "Lantern01 (vanilla:clutter/common/candlelantern01) carries a lantern light block; the sealed vault is a beast's lair with no keeper to tend a flame, so it is lit by glow fungus and Hist sap bloom instead."
+    },
+    {
+      "refId": "0005BEEE",
+      "reason": "lair-man-made-light",
+      "why": "Lantern01 (vanilla:clutter/common/candlelantern01) carries a lantern light block; the sealed vault is a beast's lair with no keeper to tend a flame, so it is lit by glow fungus and Hist sap bloom instead."
+    },
+    {
+      "refId": "0005BEF1",
+      "reason": "lair-man-made-light",
+      "why": "Lantern01 (vanilla:clutter/common/candlelantern01) carries a lantern light block; the sealed vault is a beast's lair with no keeper to tend a flame, so it is lit by glow fungus and Hist sap bloom instead."
+    },
+    {
+      "refId": "0005BF2A",
+      "reason": "lair-man-made-light",
+      "why": "Lantern01 (vanilla:clutter/common/candlelantern01) carries a lantern light block; the sealed vault is a beast's lair with no keeper to tend a flame, so it is lit by glow fungus and Hist sap bloom instead."
+    },
+    {
+      "refId": "0005C27D",
+      "reason": "lair-man-made-light",
+      "why": "Lantern01 (vanilla:clutter/common/candlelantern01) carries a lantern light block; the sealed vault is a beast's lair with no keeper to tend a flame, so it is lit by glow fungus and Hist sap bloom instead."
+    },
+    {
+      "refId": "00060433",
+      "reason": "lair-man-made-light",
+      "why": "CandleHornWall01 (vanilla:clutter/candles/candlehornwall01) burns (its kit row mines flames); the sealed vault is a beast's lair with no keeper to tend a flame, so it is lit by glow fungus and Hist sap bloom instead."
+    },
+    {
+      "refId": "00060434",
+      "reason": "lair-man-made-light",
+      "why": "CandleHornWall01 (vanilla:clutter/candles/candlehornwall01) burns (its kit row mines flames); the sealed vault is a beast's lair with no keeper to tend a flame, so it is lit by glow fungus and Hist sap bloom instead."
+    },
+    {
+      "refId": "00060436",
+      "reason": "lair-man-made-light",
+      "why": "CandleLanternwithCandle01 (vanilla:clutter/common/candlelanternwithcandle01) burns (its kit row mines flames); the sealed vault is a beast's lair with no keeper to tend a flame, so it is lit by glow fungus and Hist sap bloom instead."
+    },
+    {
+      "refId": "00060437",
+      "reason": "lair-man-made-light",
+      "why": "CandleLanternwithCandle01 (vanilla:clutter/common/candlelanternwithcandle01) burns (its kit row mines flames); the sealed vault is a beast's lair with no keeper to tend a flame, so it is lit by glow fungus and Hist sap bloom instead."
+    },
+    {
+      "refId": "00060439",
+      "reason": "lair-man-made-light",
+      "why": "CandleHornWall01 (vanilla:clutter/candles/candlehornwall01) burns (its kit row mines flames); the sealed vault is a beast's lair with no keeper to tend a flame, so it is lit by glow fungus and Hist sap bloom instead."
+    },
+    {
+      "refId": "0006043A",
+      "reason": "lair-man-made-light",
+      "why": "CandleHornWall01 (vanilla:clutter/candles/candlehornwall01) burns (its kit row mines flames); the sealed vault is a beast's lair with no keeper to tend a flame, so it is lit by glow fungus and Hist sap bloom instead."
+    },
+    {
+      "refId": "00060444",
+      "reason": "lair-man-made-light",
+      "why": "CandleHornChandelier01 (vanilla:clutter/candles/candlehornchandelier01) burns (its kit row mines flames); the sealed vault is a beast's lair with no keeper to tend a flame, so it is lit by glow fungus and Hist sap bloom instead."
+    },
+    {
+      "refId": "00060445",
+      "reason": "lair-man-made-light",
+      "why": "CandleHornTable01 (vanilla:clutter/candles/candlehorntable01) burns (its kit row mines flames); the sealed vault is a beast's lair with no keeper to tend a flame, so it is lit by glow fungus and Hist sap bloom instead."
+    },
+    {
+      "refId": "00060446",
+      "reason": "lair-man-made-light",
+      "why": "CandleHornTable01 (vanilla:clutter/candles/candlehorntable01) burns (its kit row mines flames); the sealed vault is a beast's lair with no keeper to tend a flame, so it is lit by glow fungus and Hist sap bloom instead."
+    },
+    {
+      "refId": "00060449",
+      "reason": "lair-man-made-light",
+      "why": "CandleHornTable01 (vanilla:clutter/candles/candlehorntable01) burns (its kit row mines flames); the sealed vault is a beast's lair with no keeper to tend a flame, so it is lit by glow fungus and Hist sap bloom instead."
+    },
+    {
+      "refId": "000604A4",
+      "reason": "lair-man-made-light",
+      "why": "ImpBrazier01 (vanilla:clutter/imperial/impbrazier01) carries a brazier light block; the sealed vault is a beast's lair with no keeper to tend a flame, so it is lit by glow fungus and Hist sap bloom instead."
+    },
+    {
+      "refId": "000604A5",
+      "reason": "lair-man-made-light",
+      "why": "FXfireWithEmbersHeavy (vanilla:effects/fxfirewithembers01) burns (its kit row mines flames); the sealed vault is a beast's lair with no keeper to tend a flame, so it is lit by glow fungus and Hist sap bloom instead."
+    },
+    {
+      "refId": "000604AB",
+      "reason": "lair-man-made-light",
+      "why": "Campfire01Burning (vanilla:clutter/woodfires/campfire01burning) burns (its kit row mines flames); the sealed vault is a beast's lair with no keeper to tend a flame, so it is lit by glow fungus and Hist sap bloom instead."
+    },
+    {
+      "refId": "000B293C",
+      "reason": "lair-man-made-light",
+      "why": "CandleHornChandelier01 (vanilla:clutter/candles/candlehornchandelier01) burns (its kit row mines flames); the sealed vault is a beast's lair with no keeper to tend a flame, so it is lit by glow fungus and Hist sap bloom instead."
+    },
+    {
+      "refId": "000E68C8",
+      "reason": "lair-man-made-light",
+      "why": "CraftingEnchantingWorkbench (vanilla:furniture/enchantingworkbench) burns (its kit row mines flames); the sealed vault is a beast's lair with no keeper to tend a flame, so it is lit by glow fungus and Hist sap bloom instead."
+    },
+    {
+      "refId": "0005BDF9",
+      "reason": "lair-man-made-light",
+      "why": "Plugin LIGH DefaultTorch01_Fast, a bare torch or candle light with no fixture; nothing burns in the lair."
+    },
+    {
+      "refId": "0005BDFA",
+      "reason": "lair-man-made-light",
+      "why": "Plugin LIGH DefaultTorch01, a bare torch or candle light with no fixture; nothing burns in the lair."
+    },
+    {
+      "refId": "0005BDFC",
+      "reason": "lair-man-made-light",
+      "why": "Plugin LIGH DefaultTorch01NS_Fast, a bare torch or candle light with no fixture; nothing burns in the lair."
+    },
+    {
+      "refId": "0005BDFD",
+      "reason": "lair-man-made-light",
+      "why": "Plugin LIGH DefaultCandleLight01NS, a bare torch or candle light with no fixture; nothing burns in the lair."
+    },
+    {
+      "refId": "0005BDFE",
+      "reason": "lair-man-made-light",
+      "why": "Plugin LIGH DefaultCandleLight01NS, a bare torch or candle light with no fixture; nothing burns in the lair."
+    },
+    {
+      "refId": "0005BDFF",
+      "reason": "lair-man-made-light",
+      "why": "Plugin LIGH DefaultCandleLight01NS, a bare torch or candle light with no fixture; nothing burns in the lair."
+    },
+    {
+      "refId": "0005BE02",
+      "reason": "lair-man-made-light",
+      "why": "Plugin LIGH DefaultTorch01NS_NoMove, a bare torch or candle light with no fixture; nothing burns in the lair."
+    },
+    {
+      "refId": "0005BE03",
+      "reason": "lair-man-made-light",
+      "why": "Plugin LIGH DefaultCandleLight01_NoMove, a bare torch or candle light with no fixture; nothing burns in the lair."
+    },
+    {
+      "refId": "0005BE04",
+      "reason": "lair-man-made-light",
+      "why": "Plugin LIGH DefaultCandleLight01NS, a bare torch or candle light with no fixture; nothing burns in the lair."
+    },
+    {
+      "refId": "0005BE06",
+      "reason": "lair-man-made-light",
+      "why": "Plugin LIGH DefaultCandleLight01NS, a bare torch or candle light with no fixture; nothing burns in the lair."
+    },
+    {
+      "refId": "000EAB4F",
+      "reason": "out-of-setting",
+      "why": "Charcoal from Skyrim's Thieves Guild quest TG06 (clutter/quest/tg06charcoalstick); no quest of ours uses it and no keeper lives here to leave it."
+    },
+    {
+      "refId": "000EAB50",
+      "reason": "out-of-setting",
+      "why": "Charcoal from Skyrim's Thieves Guild quest TG06 (clutter/quest/tg06charcoalstick); no quest of ours uses it and no keeper lives here to leave it."
+    },
+    {
+      "refId": "000EAB51",
+      "reason": "out-of-setting",
+      "why": "Charcoal from Skyrim's Thieves Guild quest TG06 (clutter/quest/tg06charcoalstick); no quest of ours uses it and no keeper lives here to leave it."
+    }
+  ]
+}

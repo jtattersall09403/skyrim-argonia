@@ -1,0 +1,40 @@
+<!-- imported unchanged from elder-souls-argonia docs/decisions/0115-province-route-compile-builds-no-crossings.md @ b581910f0f87d8da88eaa9876d238cdc5d709e78 (0.1 §f) -->
+# 0115 — The province route compile builds no crossings
+
+Date: 2026-09-30. Status: accepted. Supersedes the province-wide span
+placement in [0051](0051-route-span-systems.md) (its calls on anchoring,
+additive geometry and no embankments stay the rules for any span a place
+builds).
+
+## Context
+
+Owner walk 6 (2026-09-30) found a leftover bridge at 4.71 km E, 1.80 km S
+and asked for every bridge, crossing and span piece from the earlier
+province-wide attempt to go. `worldgen.compile_route_structures` had laid
+`route-spans-v1` decks (family `root-timber`) wherever a graded way met a
+gap; none of them had been designed as a place, and 16k builds crossings per
+place.
+
+## The calls
+
+1. **The province route record carries no water or gap crossing.**
+   `world/sources/routes/route-structures.json` and the published
+   `route-structures.json` hold only the ground-hugging kinds the grader
+   needs (`stair`, `lip-step`, `stepped-ascent`). The span half of
+   `compile_route_structures` and `validate_spans` is deleted, with its tests;
+   the route bundles that carried only spans are deleted.
+2. **A crossing is built by the place that needs it**, with the modular-runs
+   skill (§ F: walkable joints, turns only on a piece made to turn) and the
+   walkwayRule in `wb.py check`. A crossing between places is a 16k slice of
+   its own, never a chain stage.
+3. **`route-spans-v1` stays a kit** (its pieces are what a place draws from),
+   and [polish backlog](../phases/P-polish/backlog.md) Item 32 still replaces its Nordic pieces before any place uses them.
+4. **A route stair or bridge a place builds is claimed, never stacked**: a
+   `world/sources/routes/route-structures.json` row (schemaVersion 2) may carry
+   `builtBy: <place id>`. Grading, the route raster and the studio footprint keep
+   reserving its window; `compile_route_structures` emits no piece for it, the
+   export refuses one, and `export_settlement_bundle --route-claims` (or the
+   next `--places` publish) drops the published piece. The place's blueprint
+   claims the row with a parcel `routeStructureId: <structure id>`; gate
+   `record.coherence` fails a built place whose `builtBy` row has no claiming
+   parcel or still has a route piece.

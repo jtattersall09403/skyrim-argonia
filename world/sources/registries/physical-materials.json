@@ -1,0 +1,539 @@
+{
+ "schemaVersion": 1,
+ "domain": "material",
+ "_": "Physical-material records (2.7a2, module 75 §54-55): one record per required collider material, each with the arrow response by which the world hit resolves. The four outcome probabilities sum to 1 (stick takes the remainder). `minImpactSpeedMps`: slower than this the arrow only rests (no penetration). `ricochetRetention` and `passThroughRetention`: the share of speed kept after a glance or a pass. Footstep, impact and the other responses join these records as their systems land. `climb` (2.12, botw-climbing-system.md §11a.5): `grip` dry and `wetGripMultiplier` (effective grip = grip x wetGripMultiplier^wetness x (1 + gripBonus)); `fallbackCategories`: the kit categories whose colliders with no tag and no Havok material count as this material (the survey's materialFromCategory); `variants`: the surface classes the material alone cannot tell (stoneDressed by planarity, thatch by an alpha-masked render material). `ground` (2.9c f, 0157 ruling 11): terrain-only rows that the feet read, not collider tags: the land cover names (`landCover`, the `GROUND_MATERIAL_SURFACE` names), `speedMultiplier` on every ground speed and `sprintAllowed`.",
+ "entries": [
+  {
+   "id": "material.soil",
+   "name": "Soil",
+   "kind": "physical-material",
+   "status": "derived",
+   "sources": [
+    "docs/world/75-combat-compatibility.md §54-55",
+    "docs/research/combat-and-systems/botw-climbing-system.md §11a.5"
+   ],
+   "notes": "Shallow sticking; contamination and wetness are the mud and wetness responses' to add.",
+   "projectileResponse": {
+    "canPenetrate": true,
+    "penetrationDepthM": [
+     0.04,
+     0.12
+    ],
+    "stickProbability": 0.85,
+    "ricochetProbability": 0.1,
+    "breakProbability": 0.05,
+    "passThroughProbability": 0,
+    "waterDrag": 0,
+    "recoverable": true,
+    "minImpactSpeedMps": 6,
+    "ricochetRetention": 0.3,
+    "passThroughRetention": 0
+   },
+   "climb": {
+    "grip": 0.6,
+    "wetGripMultiplier": 0.5,
+    "fallbackCategories": []
+   }
+  },
+  {
+   "id": "material.peat",
+   "name": "Peat",
+   "kind": "physical-material",
+   "status": "derived",
+   "sources": [
+    "docs/world/75-combat-compatibility.md §54-55",
+    "docs/research/combat-and-systems/botw-climbing-system.md §11a.5"
+   ],
+   "notes": "Shallow sticking in a spongy ground; Black Marsh's commonest bank.",
+   "projectileResponse": {
+    "canPenetrate": true,
+    "penetrationDepthM": [
+     0.05,
+     0.15
+    ],
+    "stickProbability": 0.9,
+    "ricochetProbability": 0.05,
+    "breakProbability": 0.05,
+    "passThroughProbability": 0,
+    "waterDrag": 0,
+    "recoverable": true,
+    "minImpactSpeedMps": 5,
+    "ricochetRetention": 0.25,
+    "passThroughRetention": 0
+   },
+   "climb": {
+    "grip": 0.6,
+    "wetGripMultiplier": 0.5,
+    "fallbackCategories": []
+   }
+  },
+  {
+   "id": "material.mud",
+   "name": "Mud",
+   "kind": "physical-material",
+   "status": "derived",
+   "sources": [
+    "docs/world/75-combat-compatibility.md §54-55",
+    "docs/research/combat-and-systems/botw-climbing-system.md §11a.5"
+   ],
+   "notes": "Deeper low-energy embedding; the shaft is there to be found.",
+   "projectileResponse": {
+    "canPenetrate": true,
+    "penetrationDepthM": [
+     0.15,
+     0.35
+    ],
+    "stickProbability": 1.0,
+    "ricochetProbability": 0,
+    "breakProbability": 0,
+    "passThroughProbability": 0,
+    "waterDrag": 0,
+    "recoverable": true,
+    "minImpactSpeedMps": 3,
+    "ricochetRetention": 0,
+    "passThroughRetention": 0
+   },
+   "climb": {
+    "grip": 0.6,
+    "wetGripMultiplier": 0.5,
+    "fallbackCategories": []
+   }
+  },
+  {
+   "id": "material.wood",
+   "name": "Wood",
+   "kind": "physical-material",
+   "status": "derived",
+   "sources": [
+    "docs/world/75-combat-compatibility.md §54-55",
+    "docs/research/combat-and-systems/botw-climbing-system.md §11a.5"
+   ],
+   "notes": "Penetration and visible sticking; usually recoverable.",
+   "projectileResponse": {
+    "canPenetrate": true,
+    "penetrationDepthM": [
+     0.08,
+     0.25
+    ],
+    "stickProbability": 0.92,
+    "ricochetProbability": 0.05,
+    "breakProbability": 0.03,
+    "passThroughProbability": 0,
+    "waterDrag": 0,
+    "recoverable": true,
+    "minImpactSpeedMps": 10,
+    "ricochetRetention": 0.35,
+    "passThroughRetention": 0
+   },
+   "climb": {
+    "grip": 1.0,
+    "wetGripMultiplier": 0.65,
+    "fallbackCategories": [
+     "architecture",
+     "boat",
+     "bridge",
+     "furniture",
+     "container",
+     "vehicle"
+    ],
+    "variants": {
+     "thatch": {
+      "grip": 0.7,
+      "wetGripMultiplier": 0.7
+     }
+    }
+   }
+  },
+  {
+   "id": "material.bark",
+   "name": "Bark",
+   "kind": "physical-material",
+   "status": "derived",
+   "sources": [
+    "docs/world/75-combat-compatibility.md §54-55",
+    "docs/research/combat-and-systems/botw-climbing-system.md §11a.5"
+   ],
+   "notes": "As wood, a touch shallower on the tougher outer layer.",
+   "projectileResponse": {
+    "canPenetrate": true,
+    "penetrationDepthM": [
+     0.06,
+     0.2
+    ],
+    "stickProbability": 0.93,
+    "ricochetProbability": 0.04,
+    "breakProbability": 0.03,
+    "passThroughProbability": 0,
+    "waterDrag": 0,
+    "recoverable": true,
+    "minImpactSpeedMps": 9,
+    "ricochetRetention": 0.35,
+    "passThroughRetention": 0
+   },
+   "climb": {
+    "grip": 1.0,
+    "wetGripMultiplier": 0.7,
+    "fallbackCategories": [
+     "tree",
+     "root",
+     "deadfall"
+    ]
+   }
+  },
+  {
+   "id": "material.bone",
+   "name": "Bone",
+   "kind": "physical-material",
+   "status": "derived",
+   "sources": [
+    "docs/world/75-combat-compatibility.md §54-55",
+    "docs/research/combat-and-systems/botw-climbing-system.md §11a.5"
+   ],
+   "notes": "Hard and thin: a short bite, a glance or a split shaft.",
+   "projectileResponse": {
+    "canPenetrate": true,
+    "penetrationDepthM": [
+     0.02,
+     0.06
+    ],
+    "stickProbability": 0.6,
+    "ricochetProbability": 0.2,
+    "breakProbability": 0.2,
+    "passThroughProbability": 0,
+    "waterDrag": 0,
+    "recoverable": true,
+    "minImpactSpeedMps": 14,
+    "ricochetRetention": 0.4,
+    "passThroughRetention": 0
+   },
+   "climb": {
+    "grip": 0.8,
+    "wetGripMultiplier": 0.6,
+    "fallbackCategories": []
+   }
+  },
+  {
+   "id": "material.stone",
+   "name": "Stone",
+   "kind": "physical-material",
+   "status": "derived",
+   "sources": [
+    "docs/world/75-combat-compatibility.md §54-55",
+    "docs/research/combat-and-systems/botw-climbing-system.md §11a.5"
+   ],
+   "notes": "Ricochet, shaft damage or breakage.",
+   "projectileResponse": {
+    "canPenetrate": false,
+    "penetrationDepthM": [
+     0,
+     0
+    ],
+    "stickProbability": 0.1,
+    "ricochetProbability": 0.45,
+    "breakProbability": 0.45,
+    "passThroughProbability": 0,
+    "waterDrag": 0,
+    "recoverable": false,
+    "minImpactSpeedMps": 12,
+    "ricochetRetention": 0.45,
+    "passThroughRetention": 0
+   },
+   "climb": {
+    "grip": 1.0,
+    "wetGripMultiplier": 0.6,
+    "fallbackCategories": [
+     "rock",
+     "ruin",
+     "dungeon-kit",
+     "terrain-feature"
+    ],
+    "variants": {
+     "stoneDressed": {
+      "grip": 0.8,
+      "wetGripMultiplier": 0.6
+     }
+    }
+   }
+  },
+  {
+   "id": "material.metal",
+   "name": "Metal",
+   "kind": "physical-material",
+   "status": "derived",
+   "sources": [
+    "docs/world/75-combat-compatibility.md §54-55",
+    "docs/research/combat-and-systems/botw-climbing-system.md §11a.5"
+   ],
+   "notes": "Sharper ricochet and a high break risk.",
+   "projectileResponse": {
+    "canPenetrate": false,
+    "penetrationDepthM": [
+     0,
+     0
+    ],
+    "stickProbability": 0,
+    "ricochetProbability": 0.45,
+    "breakProbability": 0.55,
+    "passThroughProbability": 0,
+    "waterDrag": 0,
+    "recoverable": false,
+    "minImpactSpeedMps": 10,
+    "ricochetRetention": 0.55,
+    "passThroughRetention": 0
+   },
+   "climb": {
+    "grip": 0.5,
+    "wetGripMultiplier": 0.4,
+    "fallbackCategories": []
+   }
+  },
+  {
+   "id": "material.ceramic",
+   "name": "Ceramic",
+   "kind": "physical-material",
+   "status": "derived",
+   "sources": [
+    "docs/world/75-combat-compatibility.md §54-55",
+    "docs/research/combat-and-systems/botw-climbing-system.md §11a.5"
+   ],
+   "notes": "Hard and brittle: the point often goes with the pot.",
+   "projectileResponse": {
+    "canPenetrate": false,
+    "penetrationDepthM": [
+     0,
+     0
+    ],
+    "stickProbability": 0.3,
+    "ricochetProbability": 0.2,
+    "breakProbability": 0.5,
+    "passThroughProbability": 0,
+    "waterDrag": 0,
+    "recoverable": false,
+    "minImpactSpeedMps": 8,
+    "ricochetRetention": 0.4,
+    "passThroughRetention": 0
+   },
+   "climb": {
+    "grip": 0.3,
+    "wetGripMultiplier": 0.6,
+    "fallbackCategories": []
+   }
+  },
+  {
+   "id": "material.foliage",
+   "name": "Foliage",
+   "kind": "physical-material",
+   "status": "derived",
+   "sources": [
+    "docs/world/75-combat-compatibility.md §54-55",
+    "docs/research/combat-and-systems/botw-climbing-system.md §11a.5"
+   ],
+   "notes": "Pass-through or a small deflection; a branch can still hold a shaft.",
+   "projectileResponse": {
+    "canPenetrate": false,
+    "penetrationDepthM": [
+     0,
+     0
+    ],
+    "stickProbability": 0.15,
+    "ricochetProbability": 0,
+    "breakProbability": 0,
+    "passThroughProbability": 0.85,
+    "waterDrag": 0,
+    "recoverable": true,
+    "minImpactSpeedMps": 4,
+    "ricochetRetention": 0,
+    "passThroughRetention": 0.9
+   },
+   "climb": {
+    "grip": 0.0,
+    "wetGripMultiplier": 1.0,
+    "fallbackCategories": [
+     "plant",
+     "grass",
+     "shrub",
+     "aquatic-plant"
+    ],
+    "variants": {
+     "thatch": {
+      "grip": 0.7,
+      "wetGripMultiplier": 0.7
+     }
+    }
+   }
+  },
+  {
+   "id": "material.water",
+   "name": "Water",
+   "kind": "physical-material",
+   "status": "derived",
+   "sources": [
+    "docs/world/75-combat-compatibility.md §54-55",
+    "docs/research/combat-and-systems/botw-climbing-system.md §11a.5"
+   ],
+   "notes": "Splash and velocity loss; the arrow goes on underwater with drag, then floats or sinks by its item data.",
+   "projectileResponse": {
+    "canPenetrate": true,
+    "penetrationDepthM": [
+     0.5,
+     2.0
+    ],
+    "stickProbability": 0,
+    "ricochetProbability": 0,
+    "breakProbability": 0,
+    "passThroughProbability": 1.0,
+    "waterDrag": 4.0,
+    "recoverable": true,
+    "minImpactSpeedMps": 0,
+    "ricochetRetention": 0,
+    "passThroughRetention": 0.35
+   },
+   "climb": {
+    "grip": 0.0,
+    "wetGripMultiplier": 1.0,
+    "fallbackCategories": []
+   }
+  },
+  {
+   "id": "material.flesh",
+   "name": "Flesh",
+   "kind": "physical-material",
+   "status": "derived",
+   "sources": [
+    "docs/world/75-combat-compatibility.md §54-55",
+    "docs/research/combat-and-systems/botw-climbing-system.md §11a.5"
+   ],
+   "notes": "Matches the body planting in combat/arrowPlant: arrows stay in the body.",
+   "projectileResponse": {
+    "canPenetrate": true,
+    "penetrationDepthM": [
+     0.03,
+     0.1
+    ],
+    "stickProbability": 0.95,
+    "ricochetProbability": 0.03,
+    "breakProbability": 0.02,
+    "passThroughProbability": 0,
+    "waterDrag": 0,
+    "recoverable": true,
+    "minImpactSpeedMps": 8,
+    "ricochetRetention": 0.3,
+    "passThroughRetention": 0
+   },
+   "climb": {
+    "grip": 0.0,
+    "wetGripMultiplier": 1.0,
+    "fallbackCategories": [
+     "creature"
+    ]
+   }
+  },
+  {
+   "id": "material.glass",
+   "name": "Glass / crystal",
+   "kind": "physical-material",
+   "status": "derived",
+   "sources": [
+    "docs/world/75-combat-compatibility.md §54-55",
+    "docs/research/combat-and-systems/botw-climbing-system.md §11a.5"
+   ],
+   "notes": "Shatters a pane and continues. Thick crystal breaks the shaft or deflects it.",
+   "projectileResponse": {
+    "canPenetrate": false,
+    "penetrationDepthM": [
+     0,
+     0
+    ],
+    "stickProbability": 0.1,
+    "ricochetProbability": 0.2,
+    "breakProbability": 0.2,
+    "passThroughProbability": 0.5,
+    "waterDrag": 0,
+    "recoverable": false,
+    "minImpactSpeedMps": 6,
+    "ricochetRetention": 0.35,
+    "passThroughRetention": 0.6
+   },
+   "climb": {
+    "grip": 0.0,
+    "wetGripMultiplier": 0.6,
+    "fallbackCategories": []
+   }
+  },
+  {
+   "id": "material.fungus",
+   "name": "Fungus",
+   "kind": "physical-material",
+   "status": "derived",
+   "sources": [
+    "docs/world/75-combat-compatibility.md §54-55",
+    "docs/research/combat-and-systems/botw-climbing-system.md §11a.5"
+   ],
+   "notes": "Soft caps take a shaft or let it pass.",
+   "projectileResponse": {
+    "canPenetrate": true,
+    "penetrationDepthM": [
+     0.05,
+     0.2
+    ],
+    "stickProbability": 0.8,
+    "ricochetProbability": 0,
+    "breakProbability": 0.05,
+    "passThroughProbability": 0.15,
+    "waterDrag": 0,
+    "recoverable": true,
+    "minImpactSpeedMps": 5,
+    "ricochetRetention": 0,
+    "passThroughRetention": 0.8
+   },
+   "climb": {
+    "grip": 0.6,
+    "wetGripMultiplier": 0.6,
+    "fallbackCategories": [
+     "fungus"
+    ]
+   }
+  },
+  {
+   "id": "material.heart-mud",
+   "name": "Heart-Mud",
+   "kind": "physical-material",
+   "status": "derived",
+   "sources": [
+    "world/sources/lore/topics/fauna-hazards.md (Mud: Helstrom's Heart-Mud is pitch black and the region's defining substance; the black river mud is 'a thick gluey paste' that holds a standing man's feet fast)",
+    "world/sources/lore/regions/middle-argonia.md:11 (Helstrom Heart-Mud, pitch black)",
+    "docs/decisions/0157-the-marsh-does-what-the-lore-says.md ruling 11"
+   ],
+   "notes": "Terrain ground only, never a collider tag: it is the land cover `black_mud` (the ground-material id 4 of decision 0011, `landcover.py` BLACK_MUD, 'pitch black'), the one cover the lore names for Heart-Mud. Arrows and climbing read it as mud; the feet read `ground`.",
+   "projectileResponse": {
+    "canPenetrate": true,
+    "penetrationDepthM": [
+     0.15,
+     0.35
+    ],
+    "stickProbability": 1.0,
+    "ricochetProbability": 0,
+    "breakProbability": 0,
+    "passThroughProbability": 0,
+    "waterDrag": 0,
+    "recoverable": true,
+    "minImpactSpeedMps": 3,
+    "ricochetRetention": 0,
+    "passThroughRetention": 0
+   },
+   "climb": {
+    "grip": 0.6,
+    "wetGripMultiplier": 0.5,
+    "fallbackCategories": []
+   },
+   "ground": {
+    "landCover": [
+     "black_mud"
+    ],
+    "speedMultiplier": 0.75,
+    "sprintAllowed": false,
+    "derivation": "'Holds a standing man's feet fast': slow and sticky. Sticky is the one existing law for ground that holds the legs, the over-the-knee wade (swim.ts wadeTopSpeed, owner ruling 16x): no sprint. Slow is one gait step: PLAYER_WALK_SPEED / PLAYER_SPRINT_SPEED = 5.3 / 7.1 = 0.7465 (Skyrim MOVT, io/input.ts), held at the round 0.75 of every ground speed (within 1%), so a walk is 3.975 m/s and a held sprint (refused) can reach no more than the walk."
+   }
+  }
+ ]
+}

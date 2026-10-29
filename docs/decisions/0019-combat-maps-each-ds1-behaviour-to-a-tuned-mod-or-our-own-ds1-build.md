@@ -30,7 +30,7 @@
 
    All of it is measured from the owner's copy (decision 0004) and wired to our stats.
 2. **The combat map decides, behaviour by behaviour, how each part is reached.**
-   `docs/research/<date>/combat-map.md` (1.4) has one row per DS1 behaviour, giving:
+   `docs/research/<date>/combat-map.md` (2.7 §0; moved from 1.4 by decision 0027) has one row per DS1 behaviour, giving:
    - the mods that could carry it, tried in game;
    - how close they get once tuned, measured against DSR where a number decides it;
    - what a small tweak would add;
@@ -72,9 +72,8 @@
 
 ## Consequences
 
-- 1.4 makes the combat map and the first rung: one weapon class against one archetype, each row reached as the
-  map decides (tuned, tweaked or built). 2.7 widens it to every class, archetype, boss and encounter, building the
-  map's remaining "build" rows.
+- 1.6 runs the tuned stack on the sheet, settings only (decision 0027 §3). 2.7 makes the combat map first, then
+  reaches each row as the map decides (tuned, tweaked or built) for every class, archetype, boss and encounter.
 - G6 (measuring DSR) runs as soon as a map row needs DSR numbers. G9 (runtime timing control) runs as soon as a
   set window cannot be met by settings. The owner ruled on 2026-10-28 that they run only when needed.
 - `ArgoniaCombat` holds the built rows, and its scope is what the map sends to it.

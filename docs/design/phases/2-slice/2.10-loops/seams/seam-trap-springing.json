@@ -1,0 +1,69 @@
+{
+ "id": "seam-trap-springing",
+ "start": {
+  "query": "?view=character&x=0.6575&z=6.089&t=12:00&d=8-17",
+  "kit": "start",
+  "skills": {
+   "security": 50
+  },
+  "seed": 1
+ },
+ "steps": [
+  {
+   "name": "at-the-strongbox",
+   "transition": "Chasepoint at noon, the held-back strongbox 1.2 m ahead of the player, faced from its -x side, the camera swung 35 degrees off the player-box line so the body does not hide the box, in frame (only marsh rats about, unaware) -> the prompt",
+   "do": {
+    "action": "approach",
+    "seconds": 1
+   },
+   "keys": [
+    {
+     "aim": 125,
+     "pitch": -19.5
+    },
+    {
+     "wait_s": 1.5
+    }
+   ],
+   "hold_s": 0.5,
+   "expect": {},
+   "stage": {
+    "at": {
+     "x": 657.8,
+     "z": 6091.0,
+     "yaw": -1.571
+    },
+    "hour": 12,
+    "place": "place.mercantile-coast.chasepoint"
+   }
+  },
+  {
+   "name": "the-box-springs",
+   "transition": "E and a pick, unprobed -> the shock dart flies from the box into the player: the hit reaction, the shock on the stack, the health bar falling (held 4.5 s: 3 s of damage)",
+   "do": {
+    "action": "pick",
+    "lock": "lock.chasepoint.held-back",
+    "tool": "lockpick"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 0.8
+    },
+    {
+     "click": ".es-sheet--lock [data-lock-act=\"pick\"]"
+    }
+   ],
+   "hold_s": 4.5,
+   "expect": {
+    "trapFired": "projectile",
+    "flinch": true,
+    "active": [
+     "shock-damage"
+    ]
+   }
+  }
+ ]
+}

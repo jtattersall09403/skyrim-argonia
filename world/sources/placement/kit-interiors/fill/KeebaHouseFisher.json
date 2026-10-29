@@ -1,0 +1,241 @@
+{
+ "cellId": "KeebaHouseFisher",
+ "sockets": {
+  "socket.KeebaHouseFisher.080A5B55": {
+   "fillRule": "blanket.household-chest",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.leather-strips",
+      "count": 1
+     },
+     {
+      "item": "item.spine-balm",
+      "count": 1
+     },
+     {
+      "item": "item.gold",
+      "count": 6
+     }
+    ],
+    "frozenFrom": "blanket.household-chest"
+   }
+  },
+  "socket.KeebaHouseFisher.080A5B69": {
+   "fillRule": "blanket.household-chest",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.leather-strips",
+      "count": 1
+     },
+     {
+      "item": "item.gold",
+      "count": 6
+     },
+     {
+      "item": "item.glass-bead-strand",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.household-chest"
+   }
+  },
+  "socket.KeebaHouseFisher.080A5B74": {
+   "fillRule": "blanket.farmer-seed-bin",
+   "valueTier": "trivial",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.saltrice-loaf",
+      "count": 3
+     },
+     {
+      "item": "item.lumberries",
+      "count": 2
+     },
+     {
+      "item": "item.hoe",
+      "count": 1
+     },
+     {
+      "item": "item.bucket",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.farmer-seed-bin"
+   }
+  },
+  "socket.KeebaHouseFisher.080A5B75": {
+   "fillRule": "blanket.cook-shelf",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.river-salt",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.baked-crocodile-tongue",
+      "count": 1
+     },
+     {
+      "item": "item.lumberries",
+      "count": 3
+     },
+     {
+      "item": "item.turtle-shell-bowl",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.cook-shelf"
+   }
+  },
+  "socket.KeebaHouseFisher.080A5B76": {
+   "fillRule": "blanket.fish-basket",
+   "valueTier": "trivial",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.trodh",
+      "count": 4
+     },
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     },
+     {
+      "item": "item.fishing-pole",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.fish-basket"
+   }
+  },
+  "socket.KeebaHouseFisher.080A5B77": {
+   "fillRule": "blanket.fish-basket",
+   "valueTier": "trivial",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.trodh",
+      "count": 4
+     },
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     },
+     {
+      "item": "item.fishing-pole",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.fish-basket"
+   }
+  },
+  "socket.KeebaHouseFisher.080A5B78": {
+   "fillRule": "blanket.household-urn",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 1
+     },
+     {
+      "item": "item.trodh",
+      "count": 3
+     },
+     {
+      "item": "item.clay-jug",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.household-urn"
+   }
+  },
+  "socket.KeebaHouseFisher.080A5B82": {
+   "valueTier": "moderate",
+   "item": "item.river-salt"
+  },
+  "socket.KeebaHouseFisher.080A5B83": {
+   "valueTier": "moderate",
+   "item": "item.river-salt"
+  },
+  "socket.KeebaHouseFisher.080A5B85": {
+   "valueTier": "moderate",
+   "item": "item.fly-amanita"
+  },
+  "socket.KeebaHouseFisher.080A5B86": {
+   "valueTier": "low",
+   "item": "item.mudcrab-chitin"
+  },
+  "socket.KeebaHouseFisher.080A5B88": {
+   "valueTier": "trivial",
+   "item": "item.turtle-shell-bowl"
+  },
+  "socket.KeebaHouseFisher.080A5B89": {
+   "valueTier": "trivial",
+   "item": "item.turtle-shell-bowl"
+  },
+  "socket.KeebaHouseFisher.080A5B8A": {
+   "valueTier": "trivial",
+   "item": "item.wooden-plate"
+  },
+  "socket.KeebaHouseFisher.080A5B8B": {
+   "valueTier": "trivial",
+   "item": "item.wooden-plate"
+  },
+  "socket.KeebaHouseFisher.080A5B8C": {
+   "valueTier": "trivial",
+   "item": "item.wooden-plate"
+  },
+  "socket.KeebaHouseFisher.080A5B8D": {
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.KeebaHouseFisher.080A5B8E": {
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.KeebaHouseFisher.080A5B8F": {
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.KeebaHouseFisher.080A5B90": {
+   "valueTier": "trivial",
+   "item": "item.wooden-plate"
+  },
+  "socket.KeebaHouseFisher.080A5B91": {
+   "valueTier": "trivial",
+   "item": "item.turtle-shell-bowl"
+  },
+  "socket.KeebaHouseFisher.080A5B92": {
+   "valueTier": "trivial",
+   "item": "item.turtle-shell-bowl"
+  },
+  "socket.KeebaHouseFisher.080A5B9B": {
+   "valueTier": "trivial",
+   "item": "item.fried-frog-legs"
+  },
+  "socket.KeebaHouseFisher.08518BA6": {
+   "valueTier": "trivial",
+   "item": "item.tee-lel"
+  },
+  "socket.KeebaHouseFisher.08989C02": {
+   "valueTier": "trivial",
+   "item": "item.book-how-hackwing-got-her-tail"
+  }
+ },
+ "schemaVersion": 1
+}

@@ -1,0 +1,390 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "_": "Faction and office sheets for The Many-Root Conclave (lane 2.5a2). Ranks: the registry ladder (associate, member, senior); named offices beyond it are listed by their own rank slug.",
+ "entries": [
+  {
+   "id": "culture.faction.many-root-conclave",
+   "level": "faction",
+   "name": "The Many-Root Conclave",
+   "parent": "culture.province.black-marsh",
+   "factionId": "faction.many-root-conclave",
+   "norms": [
+    {
+     "text": "Discover in danger, decide in council.",
+     "source": "docs/quests/40-factions.md#36-the-many-root-conclave"
+    },
+    {
+     "text": "No Hist speaks for all the Hist.",
+     "source": "world/sources/lore/topics/hist-and-sap.md"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Claiming one tree's will binds another's people.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    }
+   ],
+   "values": [
+    {
+     "text": "Consent and stewardship.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Sap crews and poachers.",
+     "source": "inferred"
+    },
+    {
+     "text": "Soul-takers.",
+     "source": "world/sources/lore/tribes.md"
+    }
+   ],
+   "opinions": {
+    "hist": {
+     "lean": 2,
+     "text": "The Hist are a council of individuals and must be asked, each.",
+     "source": "world/sources/lore/topics/hist-and-sap.md"
+    },
+    "faction": {
+     "lean": 0,
+     "text": "The state is one voice at the Root Talk, not the loudest.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    },
+    "danger": {
+     "lean": -1,
+     "text": "A drained tree leaves its souls mad and homeless.",
+     "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Root-kin; tree-minder, egg-tender by office.",
+      "source": "world/sources/lore/topics/material-culture.md"
+     }
+    ],
+    "formality": "formal",
+    "oaths": [
+     {
+      "text": "Under many roots.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "What a tree said in council.",
+      "source": "inferred"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Sap crews bleed trees for foreign buyers.",
+      "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "A Hist in the south has gone silent.",
+      "source": "world/sources/lore/topics/hist-and-sap.md"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.unbound-root",
+     "lean": -1,
+     "text": "Supremacists.",
+     "source": "inferred"
+    },
+    {
+     "node": "culture.faction.sul-xan",
+     "lean": -2,
+     "text": "Soul-takers.",
+     "source": "world/sources/lore/tribes.md"
+    },
+    {
+     "node": "culture.faction.blackguards",
+     "lean": -1,
+     "text": "Sap thieves.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.15
+  },
+  {
+   "id": "culture.office.many-root-conclave.tree-minder",
+   "level": "office",
+   "name": "Tree-minder",
+   "parent": "culture.faction.many-root-conclave",
+   "factionId": "faction.many-root-conclave",
+   "rank": "tree-minder",
+   "norms": [
+    {
+     "text": "Interprets the tree's signs and arbitrates; speaks slowly and last.",
+     "source": "world/sources/lore/topics/material-culture.md"
+    },
+    {
+     "text": "Feels when the eggs or the tribe are wrong.",
+     "source": "world/sources/lore/topics/material-culture.md"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Speaking the tree's mind before it is clear.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "The tree's health.",
+     "source": "world/sources/lore/topics/material-culture.md"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Haste.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "hist": {
+     "lean": 2,
+     "text": "The tree is heard, never ventriloquised.",
+     "source": "world/sources/lore/topics/material-culture.md"
+    },
+    "people": {
+     "lean": 0,
+     "text": "All who come are heard.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Child, to any age; ojel kindly.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "ceremonial",
+    "oaths": [
+     {
+      "text": "As the root holds.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "The tree's dreams.",
+      "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "The young go to the cities.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "The eggs are slow this season.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.nisswo",
+     "lean": 1,
+     "text": "Fellow tenders of the people.",
+     "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+    }
+   ],
+   "deviationRate": 0.1
+  },
+  {
+   "id": "culture.office.many-root-conclave.egg-tender",
+   "level": "office",
+   "name": "Egg-tender (Keeper of the Shell)",
+   "parent": "culture.faction.many-root-conclave",
+   "factionId": "faction.many-root-conclave",
+   "rank": "egg-tender",
+   "norms": [
+    {
+     "text": "Tends the uxith; the hatching pools are passed only by leave.",
+     "source": "world/sources/lore/topics/material-culture.md"
+    },
+    {
+     "text": "Counts aloud, always.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Touching an egg uninvited.",
+     "source": "world/sources/lore/topics/material-culture.md"
+    }
+   ],
+   "values": [
+    {
+     "text": "The next clutch.",
+     "source": "world/sources/lore/topics/material-culture.md"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Egg-thieves.",
+     "source": "world/sources/lore/tribes.md"
+    }
+   ],
+   "opinions": {
+    "danger": {
+     "lean": -2,
+     "text": "Egg-thieves and the Ghost People.",
+     "source": "world/sources/lore/tribes.md"
+    },
+    "hist": {
+     "lean": 2,
+     "text": "Every egg is the tree's.",
+     "source": "world/sources/lore/topics/hist-and-sap.md"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Visitor, at the pool's edge.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "formal",
+    "oaths": [
+     {
+      "text": "By shell and pool.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "How many eggs are in the pool.",
+      "source": "inferred"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "The pools are thinly guarded.",
+      "source": "world/sources/lore/topics/guilds-and-orders.md"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "Veeskhleel were seen near the pools.",
+      "source": "world/sources/lore/tribes.md"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.many-root-conclave",
+     "lean": 2,
+     "text": "Their own.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.1
+  },
+  {
+   "id": "culture.office.many-root-conclave.senior",
+   "level": "office",
+   "name": "Conclave mediator",
+   "parent": "culture.faction.many-root-conclave",
+   "factionId": "faction.many-root-conclave",
+   "rank": "senior",
+   "norms": [
+    {
+     "text": "A mediator states both sides before speaking.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Taking a side early.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "Consent.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Shortcuts.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "faction": {
+     "lean": 1,
+     "text": "The council is the way.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Both parties by name.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "formal",
+    "oaths": [
+     {
+      "text": "Heard and witnessed.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "Their own lean.",
+      "source": "inferred"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Councils take seasons.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "The Root Talk will be contested.",
+      "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.unbound-root",
+     "lean": -1,
+     "text": "They skip the council.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.1
+  }
+ ]
+}

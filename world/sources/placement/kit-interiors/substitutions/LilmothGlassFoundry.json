@@ -1,0 +1,210 @@
+{
+  "schemaVersion": 1,
+  "cellId": "LilmothGlassFoundry",
+  "plugin": "King of the Murkmire.esp",
+  "rule": "Stand-ins for the cell's missing clutter and furniture (lane L17, planner brief 2026-09-28): each missing piece is drawn by a published vanilla or King of the Murkmire piece of the same object and near size, read from the kit manifests; a piece with no same-object stand-in stays a listed gap. Drawn at the missing reference's transform by worldgen/export_interior_bundle.py.",
+  "substitutions": [
+    {
+      "refId": "082E5C69",
+      "standInAsset": "vanilla:clutter/common/crateopen01",
+      "why": "An open crate stands here; the vanilla open crate, of its shape and size, takes its place."
+    },
+    {
+      "refId": "082E5C6A",
+      "standInAsset": "vanilla:clutter/common/crateopen01",
+      "why": "An open crate stands here; the vanilla open crate, of its shape and size, takes its place."
+    },
+    {
+      "refId": "082E5C6B",
+      "standInAsset": "vanilla:clutter/common/crateopen01",
+      "why": "An open crate stands here; the vanilla open crate, of its shape and size, takes its place."
+    },
+    {
+      "refId": "082E5C8D",
+      "standInAsset": "vanilla:clutter/common/crateopen01",
+      "why": "An open crate stands here; the vanilla open crate, of its shape and size, takes its place."
+    },
+    {
+      "refId": "082E5CAD",
+      "standInAsset": "vanilla:clutter/common/crateopen01",
+      "why": "An open crate stands here; the vanilla open crate, of its shape and size, takes its place."
+    }
+  ],
+  "removals": [
+    {
+      "refId": "082E5C36",
+      "reason": "decorative-no-same-class",
+      "search": "Dawnguard.esm is not in the vault (skyrim-source/Data holds Skyrim.esm and Update.esm only) and the owner excludes its content (CLAUDE.md asset rule), so the base cannot be resolved to an object; no UESP page names the form id. With the object unknown, no same-object stand-in (R48) can be chosen; the published kit manifests hold no piece of this size and class that the cell could take instead (preflight-fix, 2026-10-09).",
+      "note": "A household object from an expansion we do not hold stood here. Its record is not in the vault, so the spot stays bare."
+    },
+    {
+      "refId": "082E5C37",
+      "reason": "decorative-no-same-class",
+      "search": "Dawnguard.esm is not in the vault (skyrim-source/Data holds Skyrim.esm and Update.esm only) and the owner excludes its content (CLAUDE.md asset rule), so the base cannot be resolved to an object; no UESP page names the form id. With the object unknown, no same-object stand-in (R48) can be chosen; the published kit manifests hold no piece of this size and class that the cell could take instead (preflight-fix, 2026-10-09).",
+      "note": "A household object from an expansion we do not hold stood here. Its record is not in the vault, so the spot stays bare."
+    },
+    {
+      "refId": "082E5C6C",
+      "reason": "decorative-no-same-class",
+      "search": "Dawnguard.esm is not in the vault (skyrim-source/Data holds Skyrim.esm and Update.esm only) and the owner excludes its content (CLAUDE.md asset rule), so the base cannot be resolved to an object; no UESP page names the form id. With the object unknown, no same-object stand-in (R48) can be chosen; the published kit manifests hold no piece of this size and class that the cell could take instead (preflight-fix, 2026-10-09).",
+      "note": "A household object from an expansion we do not hold stood here. Its record is not in the vault, so the spot stays bare."
+    },
+    {
+      "refId": "082E5C6D",
+      "reason": "decorative-no-same-class",
+      "search": "Dawnguard.esm is not in the vault (skyrim-source/Data holds Skyrim.esm and Update.esm only) and the owner excludes its content (CLAUDE.md asset rule), so the base cannot be resolved to an object; no UESP page names the form id. With the object unknown, no same-object stand-in (R48) can be chosen; the published kit manifests hold no piece of this size and class that the cell could take instead (preflight-fix, 2026-10-09).",
+      "note": "A household object from an expansion we do not hold stood here. Its record is not in the vault, so the spot stays bare."
+    },
+    {
+      "refId": "082E5C6E",
+      "reason": "decorative-no-same-class",
+      "search": "Dawnguard.esm is not in the vault (skyrim-source/Data holds Skyrim.esm and Update.esm only) and the owner excludes its content (CLAUDE.md asset rule), so the base cannot be resolved to an object; no UESP page names the form id. With the object unknown, no same-object stand-in (R48) can be chosen; the published kit manifests hold no piece of this size and class that the cell could take instead (preflight-fix, 2026-10-09).",
+      "note": "A household object from an expansion we do not hold stood here. Its record is not in the vault, so the spot stays bare."
+    },
+    {
+      "refId": "082E5C6F",
+      "reason": "decorative-no-same-class",
+      "search": "Dawnguard.esm is not in the vault (skyrim-source/Data holds Skyrim.esm and Update.esm only) and the owner excludes its content (CLAUDE.md asset rule), so the base cannot be resolved to an object; no UESP page names the form id. With the object unknown, no same-object stand-in (R48) can be chosen; the published kit manifests hold no piece of this size and class that the cell could take instead (preflight-fix, 2026-10-09).",
+      "note": "A household object from an expansion we do not hold stood here. Its record is not in the vault, so the spot stays bare."
+    },
+    {
+      "refId": "082E5C70",
+      "reason": "decorative-no-same-class",
+      "search": "Dawnguard.esm is not in the vault (skyrim-source/Data holds Skyrim.esm and Update.esm only) and the owner excludes its content (CLAUDE.md asset rule), so the base cannot be resolved to an object; no UESP page names the form id. With the object unknown, no same-object stand-in (R48) can be chosen; the published kit manifests hold no piece of this size and class that the cell could take instead (preflight-fix, 2026-10-09).",
+      "note": "A household object from an expansion we do not hold stood here. Its record is not in the vault, so the spot stays bare."
+    },
+    {
+      "refId": "082E5C71",
+      "reason": "decorative-no-same-class",
+      "search": "Dawnguard.esm is not in the vault (skyrim-source/Data holds Skyrim.esm and Update.esm only) and the owner excludes its content (CLAUDE.md asset rule), so the base cannot be resolved to an object; no UESP page names the form id. With the object unknown, no same-object stand-in (R48) can be chosen; the published kit manifests hold no piece of this size and class that the cell could take instead (preflight-fix, 2026-10-09).",
+      "note": "A household object from an expansion we do not hold stood here. Its record is not in the vault, so the spot stays bare."
+    },
+    {
+      "refId": "082E5C72",
+      "reason": "decorative-no-same-class",
+      "search": "Dawnguard.esm is not in the vault (skyrim-source/Data holds Skyrim.esm and Update.esm only) and the owner excludes its content (CLAUDE.md asset rule), so the base cannot be resolved to an object; no UESP page names the form id. With the object unknown, no same-object stand-in (R48) can be chosen; the published kit manifests hold no piece of this size and class that the cell could take instead (preflight-fix, 2026-10-09).",
+      "note": "A household object from an expansion we do not hold stood here. Its record is not in the vault, so the spot stays bare."
+    },
+    {
+      "refId": "082E5C73",
+      "reason": "decorative-no-same-class",
+      "search": "Dawnguard.esm is not in the vault (skyrim-source/Data holds Skyrim.esm and Update.esm only) and the owner excludes its content (CLAUDE.md asset rule), so the base cannot be resolved to an object; no UESP page names the form id. With the object unknown, no same-object stand-in (R48) can be chosen; the published kit manifests hold no piece of this size and class that the cell could take instead (preflight-fix, 2026-10-09).",
+      "note": "A household object from an expansion we do not hold stood here. Its record is not in the vault, so the spot stays bare."
+    },
+    {
+      "refId": "082E5C7A",
+      "reason": "decorative-no-same-class",
+      "search": "Dawnguard.esm is not in the vault (skyrim-source/Data holds Skyrim.esm and Update.esm only) and the owner excludes its content (CLAUDE.md asset rule), so the base cannot be resolved to an object; no UESP page names the form id. With the object unknown, no same-object stand-in (R48) can be chosen; the published kit manifests hold no piece of this size and class that the cell could take instead (preflight-fix, 2026-10-09).",
+      "note": "A household object from an expansion we do not hold stood here. Its record is not in the vault, so the spot stays bare."
+    },
+    {
+      "refId": "082E5C7B",
+      "reason": "decorative-no-same-class",
+      "search": "Dawnguard.esm is not in the vault (skyrim-source/Data holds Skyrim.esm and Update.esm only) and the owner excludes its content (CLAUDE.md asset rule), so the base cannot be resolved to an object; no UESP page names the form id. With the object unknown, no same-object stand-in (R48) can be chosen; the published kit manifests hold no piece of this size and class that the cell could take instead (preflight-fix, 2026-10-09).",
+      "note": "A household object from an expansion we do not hold stood here. Its record is not in the vault, so the spot stays bare."
+    },
+    {
+      "refId": "082E5C7C",
+      "reason": "decorative-no-same-class",
+      "search": "Dawnguard.esm is not in the vault (skyrim-source/Data holds Skyrim.esm and Update.esm only) and the owner excludes its content (CLAUDE.md asset rule), so the base cannot be resolved to an object; no UESP page names the form id. With the object unknown, no same-object stand-in (R48) can be chosen; the published kit manifests hold no piece of this size and class that the cell could take instead (preflight-fix, 2026-10-09).",
+      "note": "A household object from an expansion we do not hold stood here. Its record is not in the vault, so the spot stays bare."
+    },
+    {
+      "refId": "082E5C7D",
+      "reason": "decorative-no-same-class",
+      "search": "Dawnguard.esm is not in the vault (skyrim-source/Data holds Skyrim.esm and Update.esm only) and the owner excludes its content (CLAUDE.md asset rule), so the base cannot be resolved to an object; no UESP page names the form id. With the object unknown, no same-object stand-in (R48) can be chosen; the published kit manifests hold no piece of this size and class that the cell could take instead (preflight-fix, 2026-10-09).",
+      "note": "A household object from an expansion we do not hold stood here. Its record is not in the vault, so the spot stays bare."
+    },
+    {
+      "refId": "082E5C7E",
+      "reason": "decorative-no-same-class",
+      "search": "Dawnguard.esm is not in the vault (skyrim-source/Data holds Skyrim.esm and Update.esm only) and the owner excludes its content (CLAUDE.md asset rule), so the base cannot be resolved to an object; no UESP page names the form id. With the object unknown, no same-object stand-in (R48) can be chosen; the published kit manifests hold no piece of this size and class that the cell could take instead (preflight-fix, 2026-10-09).",
+      "note": "A household object from an expansion we do not hold stood here. Its record is not in the vault, so the spot stays bare."
+    },
+    {
+      "refId": "082E5C7F",
+      "reason": "decorative-no-same-class",
+      "search": "Dawnguard.esm is not in the vault (skyrim-source/Data holds Skyrim.esm and Update.esm only) and the owner excludes its content (CLAUDE.md asset rule), so the base cannot be resolved to an object; no UESP page names the form id. With the object unknown, no same-object stand-in (R48) can be chosen; the published kit manifests hold no piece of this size and class that the cell could take instead (preflight-fix, 2026-10-09).",
+      "note": "A household object from an expansion we do not hold stood here. Its record is not in the vault, so the spot stays bare."
+    },
+    {
+      "refId": "082E5C97",
+      "reason": "decorative-no-same-class",
+      "search": "Dawnguard.esm is not in the vault (skyrim-source/Data holds Skyrim.esm and Update.esm only) and the owner excludes its content (CLAUDE.md asset rule), so the base cannot be resolved to an object; no UESP page names the form id. With the object unknown, no same-object stand-in (R48) can be chosen; the published kit manifests hold no piece of this size and class that the cell could take instead (preflight-fix, 2026-10-09).",
+      "note": "A household object from an expansion we do not hold stood here. Its record is not in the vault, so the spot stays bare."
+    },
+    {
+      "refId": "082E5C98",
+      "reason": "decorative-no-same-class",
+      "search": "Dawnguard.esm is not in the vault (skyrim-source/Data holds Skyrim.esm and Update.esm only) and the owner excludes its content (CLAUDE.md asset rule), so the base cannot be resolved to an object; no UESP page names the form id. With the object unknown, no same-object stand-in (R48) can be chosen; the published kit manifests hold no piece of this size and class that the cell could take instead (preflight-fix, 2026-10-09).",
+      "note": "A household object from an expansion we do not hold stood here. Its record is not in the vault, so the spot stays bare."
+    },
+    {
+      "refId": "082E5C99",
+      "reason": "decorative-no-same-class",
+      "search": "Dawnguard.esm is not in the vault (skyrim-source/Data holds Skyrim.esm and Update.esm only) and the owner excludes its content (CLAUDE.md asset rule), so the base cannot be resolved to an object; no UESP page names the form id. With the object unknown, no same-object stand-in (R48) can be chosen; the published kit manifests hold no piece of this size and class that the cell could take instead (preflight-fix, 2026-10-09).",
+      "note": "A household object from an expansion we do not hold stood here. Its record is not in the vault, so the spot stays bare."
+    },
+    {
+      "refId": "082E5C9A",
+      "reason": "decorative-no-same-class",
+      "search": "Dawnguard.esm is not in the vault (skyrim-source/Data holds Skyrim.esm and Update.esm only) and the owner excludes its content (CLAUDE.md asset rule), so the base cannot be resolved to an object; no UESP page names the form id. With the object unknown, no same-object stand-in (R48) can be chosen; the published kit manifests hold no piece of this size and class that the cell could take instead (preflight-fix, 2026-10-09).",
+      "note": "A household object from an expansion we do not hold stood here. Its record is not in the vault, so the spot stays bare."
+    },
+    {
+      "refId": "082E5C9B",
+      "reason": "decorative-no-same-class",
+      "search": "Dawnguard.esm is not in the vault (skyrim-source/Data holds Skyrim.esm and Update.esm only) and the owner excludes its content (CLAUDE.md asset rule), so the base cannot be resolved to an object; no UESP page names the form id. With the object unknown, no same-object stand-in (R48) can be chosen; the published kit manifests hold no piece of this size and class that the cell could take instead (preflight-fix, 2026-10-09).",
+      "note": "A household object from an expansion we do not hold stood here. Its record is not in the vault, so the spot stays bare."
+    },
+    {
+      "refId": "082E5C9C",
+      "reason": "decorative-no-same-class",
+      "search": "Dawnguard.esm is not in the vault (skyrim-source/Data holds Skyrim.esm and Update.esm only) and the owner excludes its content (CLAUDE.md asset rule), so the base cannot be resolved to an object; no UESP page names the form id. With the object unknown, no same-object stand-in (R48) can be chosen; the published kit manifests hold no piece of this size and class that the cell could take instead (preflight-fix, 2026-10-09).",
+      "note": "A household object from an expansion we do not hold stood here. Its record is not in the vault, so the spot stays bare."
+    },
+    {
+      "refId": "082E5C9D",
+      "reason": "decorative-no-same-class",
+      "search": "Dawnguard.esm is not in the vault (skyrim-source/Data holds Skyrim.esm and Update.esm only) and the owner excludes its content (CLAUDE.md asset rule), so the base cannot be resolved to an object; no UESP page names the form id. With the object unknown, no same-object stand-in (R48) can be chosen; the published kit manifests hold no piece of this size and class that the cell could take instead (preflight-fix, 2026-10-09).",
+      "note": "A household object from an expansion we do not hold stood here. Its record is not in the vault, so the spot stays bare."
+    },
+    {
+      "refId": "082E5CB9",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club or Hearthfire archive, which the vault does not hold (kit manifests re-read 2026-10-09, preflight-fix).",
+      "note": "A piece from a Creation Club or Hearthfire pack stood here; no kit holds one like it, so the spot stays bare."
+    },
+    {
+      "refId": "082E5CBA",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club or Hearthfire archive, which the vault does not hold (kit manifests re-read 2026-10-09, preflight-fix).",
+      "note": "A piece from a Creation Club or Hearthfire pack stood here; no kit holds one like it, so the spot stays bare."
+    },
+    {
+      "refId": "082E5CBB",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club or Hearthfire archive, which the vault does not hold (kit manifests re-read 2026-10-09, preflight-fix).",
+      "note": "A piece from a Creation Club or Hearthfire pack stood here; no kit holds one like it, so the spot stays bare."
+    },
+    {
+      "refId": "082E5CBC",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club or Hearthfire archive, which the vault does not hold (kit manifests re-read 2026-10-09, preflight-fix).",
+      "note": "A piece from a Creation Club or Hearthfire pack stood here; no kit holds one like it, so the spot stays bare."
+    },
+    {
+      "refId": "082E5CBD",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club or Hearthfire archive, which the vault does not hold (kit manifests re-read 2026-10-09, preflight-fix).",
+      "note": "A piece from a Creation Club or Hearthfire pack stood here; no kit holds one like it, so the spot stays bare."
+    },
+    {
+      "refId": "082E5CBE",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club or Hearthfire archive, which the vault does not hold (kit manifests re-read 2026-10-09, preflight-fix).",
+      "note": "A piece from a Creation Club or Hearthfire pack stood here; no kit holds one like it, so the spot stays bare."
+    }
+  ],
+  "removalRule": "Owner ruling 2026-10-04 (R113): no missing piece ships as a gap. A missing piece takes a same-class stand-in from a published kit where one exists (substitutions[]); a decorative piece whose class no published kit or vault archive holds is taken out of the fit-out (removals[], reason decorative-no-same-class, its search recorded), and the spot is simply empty. A placed piece whose only support was a removed piece is removed with it (reason rests-on-a-removal, restsOn naming that row)."
+}

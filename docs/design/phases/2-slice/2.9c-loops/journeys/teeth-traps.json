@@ -1,0 +1,834 @@
+{
+ "id": "teeth-traps",
+ "start": {
+  "query": "?view=character&x=0&z=0&t=12:00&d=8-17",
+  "kit": "start",
+  "skills": {
+   "security": 100
+  },
+  "seed": 1,
+  "grant": [
+   {
+    "item": "probe",
+    "count": 2
+   }
+  ]
+ },
+ "notes": "",
+ "steps": [
+  {
+   "transition": "Int01: the player steps on the blade hall's pressure plate; the twelve blades swing",
+   "keys": [],
+   "hold_s": 1,
+   "name": "blade-hall-plate",
+   "do": {
+    "action": "trap",
+    "cell": "TeethofSithisInt01",
+    "at": [
+     -19.677,
+     6.145,
+     -18.889
+    ]
+   },
+   "expect": {
+    "traps": {
+     "cell": "TeethofSithisInt01",
+     "fired": [
+      "08401A1A",
+      "08401A1B",
+      "08687DBA",
+      "08687DBB",
+      "08687DBC",
+      "08687DBD",
+      "08687DBE",
+      "08687DBF",
+      "08687DC0",
+      "08687DC1",
+      "08687DC2",
+      "08687DC3"
+     ],
+     "hurt": false,
+     "drawn": {
+      "gas": 4
+     }
+    }
+   },
+   "stage": {
+    "at": {
+     "x": 0,
+     "z": 0,
+     "yaw": 0
+    }
+   }
+  },
+  {
+   "transition": "Int01: the plate 083E7F29 springs its wall",
+   "keys": [],
+   "hold_s": 1,
+   "name": "plate-083E7F29",
+   "do": {
+    "action": "trap",
+    "at": [
+     37.407,
+     20.999,
+     -55.46
+    ]
+   },
+   "expect": {
+    "traps": {
+     "fired": [
+      "08401A1D"
+     ]
+    }
+   }
+  },
+  {
+   "transition": "Int01: the plate 083E7F2B springs its wall",
+   "keys": [],
+   "hold_s": 1,
+   "name": "plate-083E7F2B",
+   "do": {
+    "action": "trap",
+    "at": [
+     66.043,
+     20.973,
+     -56.913
+    ]
+   },
+   "expect": {
+    "traps": {
+     "fired": [
+      "08401A1E"
+     ]
+    }
+   }
+  },
+  {
+   "transition": "Int01: the player walks past spike bed 083E7ED9 one pace outside its box; it does not spring",
+   "keys": [],
+   "hold_s": 1,
+   "name": "avoid-bed",
+   "do": {
+    "action": "trap",
+    "at": [
+     52.955,
+     22.246,
+     -51.662
+    ]
+   },
+   "expect": {
+    "traps": {
+     "notFired": [
+      "083E7ED9"
+     ],
+     "hurt": false
+    }
+   }
+  },
+  {
+   "transition": "Int01: the player steps into spike bed 083E7F2F; the spikes spring and wound",
+   "keys": [],
+   "hold_s": 1,
+   "name": "spike-bed-083E7F2F",
+   "do": {
+    "action": "trap",
+    "at": [
+     62.671,
+     20.66,
+     -58.58
+    ]
+   },
+   "expect": {
+    "traps": {
+     "fired": [
+      "083E7F2F"
+     ],
+     "hurt": true
+    }
+   }
+  },
+  {
+   "transition": "Int01: off the bed",
+   "keys": [],
+   "hold_s": 1.5,
+   "name": "step-off-first-bed",
+   "do": {
+    "action": "trap",
+    "at": [
+     0,
+     0,
+     0
+    ]
+   },
+   "expect": {}
+  },
+  {
+   "transition": "Int01: E with a carried probe at spike bed 083E7F2F: the probe finds and disarms it",
+   "keys": [],
+   "hold_s": 1,
+   "name": "probe-bed",
+   "do": {
+    "action": "trap",
+    "at": [
+     64.573,
+     20.66,
+     -59.199
+    ],
+    "probe": "083E7F2F"
+   },
+   "expect": {
+    "traps": {
+     "probe": "found"
+    }
+   }
+  },
+  {
+   "transition": "Int01: the player steps into the disarmed bed 083E7F2F; nothing springs",
+   "keys": [],
+   "hold_s": 1,
+   "name": "stand-in-disarmed-bed",
+   "do": {
+    "action": "trap",
+    "at": [
+     62.671,
+     20.66,
+     -58.58
+    ]
+   },
+   "expect": {
+    "traps": {
+     "hurt": false
+    }
+   }
+  },
+  {
+   "transition": "Int01: off the disarmed bed",
+   "keys": [],
+   "hold_s": 0.2,
+   "name": "step-off-disarmed-bed",
+   "do": {
+    "action": "trap",
+    "at": [
+     0,
+     0,
+     0
+    ]
+   },
+   "expect": {}
+  },
+  {
+   "transition": "Int01: the player steps into spike bed 083E7ED9; the spikes spring and wound",
+   "keys": [],
+   "hold_s": 1,
+   "name": "spike-bed-083E7ED9",
+   "do": {
+    "action": "trap",
+    "at": [
+     50.262,
+     22.246,
+     -51.832
+    ]
+   },
+   "expect": {
+    "traps": {
+     "fired": [
+      "083E7ED9"
+     ],
+     "hurt": true
+    }
+   }
+  },
+  {
+   "transition": "Int01: the player steps into spike bed 083E7EDA; the spikes spring and wound",
+   "keys": [],
+   "hold_s": 1,
+   "name": "spike-bed-083E7EDA",
+   "do": {
+    "action": "trap",
+    "at": [
+     50.29,
+     25.205,
+     -51.491
+    ]
+   },
+   "expect": {
+    "traps": {
+     "fired": [
+      "083E7EDA"
+     ],
+     "hurt": true
+    }
+   }
+  },
+  {
+   "transition": "Int01: the player steps into spike bed 083E7F30; the spikes spring and wound",
+   "keys": [],
+   "hold_s": 1,
+   "name": "spike-bed-083E7F30",
+   "do": {
+    "action": "trap",
+    "at": [
+     42.131,
+     20.653,
+     -54.56
+    ]
+   },
+   "expect": {
+    "traps": {
+     "fired": [
+      "083E7F30"
+     ],
+     "hurt": true
+    }
+   }
+  },
+  {
+   "transition": "Int01: the player steps into spike bed 083E7F31; the spikes spring and wound",
+   "keys": [],
+   "hold_s": 1,
+   "name": "spike-bed-083E7F31",
+   "do": {
+    "action": "trap",
+    "at": [
+     45.592,
+     24.441,
+     -53.231
+    ]
+   },
+   "expect": {
+    "traps": {
+     "fired": [
+      "083E7F31"
+     ],
+     "hurt": true
+    }
+   }
+  },
+  {
+   "transition": "Int01: the player steps into spike bed 083E7F32; the spikes spring and wound",
+   "keys": [],
+   "hold_s": 1,
+   "name": "spike-bed-083E7F32",
+   "do": {
+    "action": "trap",
+    "at": [
+     53.409,
+     23.942,
+     -59.044
+    ]
+   },
+   "expect": {
+    "traps": {
+     "fired": [
+      "083E7F32"
+     ],
+     "hurt": true
+    }
+   }
+  },
+  {
+   "transition": "Int01: the player steps into spike bed 083E7F33; the spikes spring and wound",
+   "keys": [],
+   "hold_s": 1,
+   "name": "spike-bed-083E7F33",
+   "do": {
+    "action": "trap",
+    "at": [
+     66.019,
+     20.653,
+     -65.33
+    ]
+   },
+   "expect": {
+    "traps": {
+     "fired": [
+      "083E7F33"
+     ],
+     "hurt": true
+    }
+   }
+  },
+  {
+   "transition": "Int01: the player steps into gas cloud 083E7F08; the poison breath rises",
+   "keys": [],
+   "hold_s": 1,
+   "name": "gas-083E7F08",
+   "do": {
+    "action": "trap",
+    "at": [
+     52.58,
+     22.665,
+     -62.863
+    ]
+   },
+   "expect": {
+    "traps": {
+     "fired": [
+      "083E7F08"
+     ]
+    }
+   }
+  },
+  {
+   "transition": "Int01: the player steps into gas cloud 083E7F09; the poison breath rises",
+   "keys": [],
+   "hold_s": 1,
+   "name": "gas-083E7F09",
+   "do": {
+    "action": "trap",
+    "at": [
+     59.353,
+     22.665,
+     -63.735
+    ]
+   },
+   "expect": {
+    "traps": {
+     "fired": [
+      "083E7F09"
+     ]
+    }
+   }
+  },
+  {
+   "transition": "Int01: the player steps into gas cloud 083E7F0A; the poison breath rises",
+   "keys": [],
+   "hold_s": 1,
+   "name": "gas-083E7F0A",
+   "do": {
+    "action": "trap",
+    "at": [
+     59.736,
+     22.665,
+     -51.436
+    ]
+   },
+   "expect": {
+    "traps": {
+     "fired": [
+      "083E7F0A"
+     ]
+    }
+   }
+  },
+  {
+   "transition": "Int01: the player steps into gas cloud 083E7F0B; the poison breath rises",
+   "keys": [],
+   "hold_s": 1,
+   "name": "gas-083E7F0B",
+   "do": {
+    "action": "trap",
+    "at": [
+     54.169,
+     22.665,
+     -51.436
+    ]
+   },
+   "expect": {
+    "traps": {
+     "fired": [
+      "083E7F0B"
+     ]
+    }
+   }
+  },
+  {
+   "transition": "Int01: E on pillar 083B891A: it turns a step",
+   "keys": [],
+   "hold_s": 0.2,
+   "name": "turn-083B891A-1",
+   "do": {
+    "action": "trap",
+    "at": [
+     -66.547,
+     -20.938,
+     -81.7
+    ],
+    "press": "083B891A"
+   },
+   "expect": {
+    "traps": {
+     "pillars": {
+      "083B891A": 3
+     }
+    }
+   }
+  },
+  {
+   "transition": "Int01: E on pillar 083B9305: it turns a step",
+   "keys": [],
+   "hold_s": 0.2,
+   "name": "turn-083B9305-1",
+   "do": {
+    "action": "trap",
+    "at": [
+     -66.319,
+     -20.938,
+     -84.659
+    ],
+    "press": "083B9305"
+   },
+   "expect": {
+    "traps": {
+     "pillars": {
+      "083B9305": 3
+     }
+    }
+   }
+  },
+  {
+   "transition": "Int01: E on pillar 083B9305: it turns a step",
+   "keys": [],
+   "hold_s": 0.2,
+   "name": "turn-083B9305-2",
+   "do": {
+    "action": "trap",
+    "press": "083B9305"
+   },
+   "expect": {
+    "traps": {
+     "pillars": {
+      "083B9305": 1
+     }
+    }
+   }
+  },
+  {
+   "transition": "Int01: E on pillar 083B98DD: it turns a step",
+   "keys": [],
+   "hold_s": 0.2,
+   "name": "turn-083B98DD-1",
+   "do": {
+    "action": "trap",
+    "at": [
+     -66.774,
+     -20.938,
+     -78.742
+    ],
+    "press": "083B98DD"
+   },
+   "expect": {
+    "traps": {
+     "pillars": {
+      "083B98DD": 3
+     }
+    }
+   }
+  },
+  {
+   "transition": "Int01: E on pillar 083B98DD: it turns a step",
+   "keys": [],
+   "hold_s": 0.2,
+   "name": "turn-083B98DD-2",
+   "do": {
+    "action": "trap",
+    "press": "083B98DD"
+   },
+   "expect": {
+    "traps": {
+     "pillars": {
+      "083B98DD": 1
+     }
+    }
+   }
+  },
+  {
+   "transition": "Int01: E on the puzzle lever with the pillars at 2,3,1,1: the door marker fires and the portcullis lifts",
+   "keys": [],
+   "hold_s": 0.6,
+   "name": "pull-the-puzzle-lever",
+   "do": {
+    "action": "trap",
+    "at": [
+     -69.733,
+     -20.938,
+     -80.107
+    ],
+    "press": "083B91B5"
+   },
+   "expect": {
+    "traps": {
+     "solved": [
+      "083B91B5"
+     ],
+     "open": [
+      "083B94AD"
+     ],
+     "pillars": {
+      "083B86F9": 2,
+      "083B891A": 3,
+      "083B9305": 1,
+      "083B98DD": 1
+     }
+    }
+   }
+  },
+  {
+   "transition": "Int01: E on the lever 0867D9D9: its two gates open after two seconds",
+   "keys": [],
+   "hold_s": 2.5,
+   "name": "pull-the-gate-lever",
+   "do": {
+    "action": "trap",
+    "at": [
+     75.858,
+     22.243,
+     -66.227
+    ],
+    "press": "0867D9D9"
+   },
+   "expect": {
+    "traps": {
+     "open": [
+      "0867D8A5",
+      "0867D8A8"
+     ]
+    }
+   }
+  },
+  {
+   "transition": "Int01: every trap ref of the cell has fired once",
+   "keys": [],
+   "hold_s": 0.1,
+   "name": "int01-all-fired",
+   "do": {
+    "action": "trap"
+   },
+   "expect": {
+    "traps": {
+     "firedCounts": {
+      "TeethofSithisInt01": 25
+     }
+    }
+   }
+  },
+  {
+   "transition": "Int02: E on lever 0847CD5E: its gates open after two seconds",
+   "keys": [],
+   "hold_s": 2.5,
+   "name": "int02-lever-0847CD5E",
+   "do": {
+    "action": "trap",
+    "cell": "TeethofSithisInt02",
+    "at": [
+     7.58,
+     2.503,
+     -18.323
+    ],
+    "press": "0847CD5E"
+   },
+   "expect": {
+    "traps": {
+     "open": [
+      "0879176B"
+     ]
+    }
+   }
+  },
+  {
+   "transition": "Int02: E on lever 084BAD66: its gates open after two seconds",
+   "keys": [],
+   "hold_s": 2.5,
+   "name": "int02-lever-084BAD66",
+   "do": {
+    "action": "trap",
+    "at": [
+     98.118,
+     34.863,
+     20.454
+    ],
+    "press": "084BAD66"
+   },
+   "expect": {
+    "traps": {
+     "open": [
+      "087B59CD",
+      "087B59CE"
+     ]
+    }
+   }
+  },
+  {
+   "transition": "Int02: the player steps on the plate 087C500C; its two gates open",
+   "keys": [],
+   "hold_s": 0.5,
+   "name": "int02-step",
+   "do": {
+    "action": "trap",
+    "at": [
+     -0.559,
+     0.059,
+     -78.516
+    ]
+   },
+   "expect": {
+    "traps": {
+     "open": [
+      "08796A06",
+      "08796A0F"
+     ]
+    }
+   }
+  },
+  {
+   "transition": "Int03: E on the chain 084EA93E: the eight flame jets fire; the player stands in the flames' reach",
+   "keys": [],
+   "hold_s": 0.5,
+   "name": "int03-chain",
+   "do": {
+    "action": "trap",
+    "cell": "TeethofSithisInt03",
+    "at": [
+     192.691,
+     -1.9873,
+     -35.5584
+    ],
+    "press": "084EA93E"
+   },
+   "expect": {
+    "traps": {
+     "fired": [
+      "084EA93F",
+      "084EA940",
+      "084EA941",
+      "084EA942",
+      "084EA943",
+      "084EA944",
+      "084EA945",
+      "084EA946"
+     ],
+     "drawn": {
+      "jet": 8
+     }
+    }
+   }
+  },
+  {
+   "transition": "Int03: the player steps on the plate 084EA94D: six blades swing",
+   "keys": [],
+   "hold_s": 0.5,
+   "name": "int03-blade-plate",
+   "do": {
+    "action": "trap",
+    "at": [
+     104.234,
+     1.366,
+     -35.503
+    ]
+   },
+   "expect": {
+    "traps": {
+     "fired": [
+      "084EA947",
+      "084EA948",
+      "084EA949",
+      "084EA94A",
+      "084EA94B",
+      "084EA94C"
+     ]
+    }
+   }
+  },
+  {
+   "transition": "Int03: E on lever 084EA93A: gate 084E573E opens after five seconds",
+   "keys": [],
+   "hold_s": 5.5,
+   "name": "int03-lever-084EA93A",
+   "do": {
+    "action": "trap",
+    "at": [
+     236.077,
+     -0.013,
+     -35.503
+    ],
+    "press": "084EA93A"
+   },
+   "expect": {
+    "traps": {
+     "open": [
+      "084E573E"
+     ]
+    }
+   }
+  },
+  {
+   "transition": "Int03: E on lever 084EA93C: it toggles the same gate shut after five seconds",
+   "keys": [],
+   "hold_s": 5.5,
+   "name": "int03-lever-084EA93C",
+   "do": {
+    "action": "trap",
+    "at": [
+     194.128,
+     -1.987,
+     -35.546
+    ],
+    "press": "084EA93C"
+   },
+   "expect": {
+    "traps": {
+     "closed": [
+      "084E573E"
+     ]
+    }
+   }
+  },
+  {
+   "transition": "Int03: E on lever 0884072D: its gates open",
+   "keys": [],
+   "hold_s": 2.5,
+   "name": "int03-last-lever",
+   "do": {
+    "action": "trap",
+    "at": [
+     233.325,
+     1.368,
+     -75.382
+    ],
+    "press": "0884072D"
+   },
+   "expect": {
+    "traps": {
+     "open": [
+      "0884070C",
+      "08840715"
+     ]
+    }
+   }
+  },
+  {
+   "transition": "Int03: every trap ref of the cell has fired",
+   "keys": [],
+   "hold_s": 0.1,
+   "name": "int03-all-fired",
+   "do": {
+    "action": "trap"
+   },
+   "expect": {
+    "traps": {
+     "firedCounts": {
+      "TeethofSithisInt03": 14
+     }
+    }
+   }
+  },
+  {
+   "transition": "All of Int01 and Int03's trap refs fired",
+   "keys": [],
+   "hold_s": 0.1,
+   "name": "teeth-total",
+   "do": {
+    "action": "trap"
+   },
+   "expect": {
+    "traps": {
+     "firedCounts": {
+      "TeethofSithisInt01": 25,
+      "TeethofSithisInt03": 14
+     },
+     "damageAtLeast": 40
+    }
+   }
+  }
+ ]
+}

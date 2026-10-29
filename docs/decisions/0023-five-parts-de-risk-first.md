@@ -1,6 +1,8 @@
 # 0023: Five parts, de-risk first: foundation, the core loop, the slice in two tracks, the shell, the build-out
 
-**Status:** decided 2026-10-28. The owner asked for a critical review of the old project's four parts and of
+**Status:** decided 2026-10-28; adapted 2026-10-29 by [0027](0027-build-in-the-order-of-the-usps.md): Part 1 is the
+first place (people, talk, a quest, the sheet, rest and death, combat on the tuned stack), not the host-risky
+systems; the world track starts after G4 beside Part 1; the five parts and the gates stand. The owner asked for a critical review of the old project's four parts and of
 this repo's first plan (P0–P10), and for the best approach from here: "ok that's what we were *going* to do,
 what do I think we *should* do now".
 

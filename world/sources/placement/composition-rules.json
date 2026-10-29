@@ -1,0 +1,2082 @@
+{
+ "source": {
+  "label": "Composition + anchoring mining over BM&V (BlackMarsh, BlackMarsh2, BlackMarshNorth; Valenwood) with Tropical Skyrim edid aliases",
+  "plugins": [
+   "Black Marsh.esm",
+   "Black Marsh North.esp",
+   "Valenwood.esp"
+  ],
+  "doc": "docs/research/vegetation/vegetation-composition-rules.md",
+  "minedBy": "ad-hoc script over worldgen.mine_placement.collect, 2026-08-31",
+  "signConvention": "pivotOffsetM = placed pivot Z minus terrain Z at XY, metres; negative = sunk below terrain"
+ },
+ "anchoring": {
+  "rule": "Anchor is the model PIVOT (authored at trunk base / stem base), never bbox-min. Models routinely carry geometry below the pivot (willow bboxMinZ -4.05 m, cypress -0.94 m, mangrove -2.03 m, lilypad -2.33 m) which the authors let penetrate terrain or water. Snap pivot to terrain, then sink by class/species; ignore bbox-min entirely.",
+  "evidence": "treewillow01a/02a/03a: pivotOffset p50 exactly 0.00 with bboxMinZ -4.05/-2.92/0.0; if bbox-min were the anchor the offsets would cluster at +4/+3 m.",
+  "perClassPivotOffsetM": {
+   "note": "Valenwood is the clean signal (real slopes, dry ground); Black Marsh medians are contaminated by deliberate wetland sinking toward water and by cliff dressing.",
+   "valenwood": {
+    "tree": {
+     "flat<10deg": {
+      "p25": -2.16,
+      "p50": -0.79,
+      "p75": 0.0
+     },
+     "mid10-25deg": {
+      "p25": -3.44,
+      "p50": -1.42,
+      "p75": -0.04
+     },
+     "steep>=25deg": {
+      "p25": -4.05,
+      "p50": -1.17,
+      "p75": 1.31
+     }
+    },
+    "shrub": {
+     "flat<10deg": {
+      "p25": -2.35,
+      "p50": -0.13,
+      "p75": 0.07
+     },
+     "mid10-25deg": {
+      "p25": -3.84,
+      "p50": -1.42,
+      "p75": -0.21
+     },
+     "steep>=25deg": {
+      "p25": -4.94,
+      "p50": -1.82,
+      "p75": 0.13
+     }
+    },
+    "plant": {
+     "flat<10deg": {
+      "p25": -0.25,
+      "p50": 0.0,
+      "p75": 0.16
+     },
+     "mid10-25deg": {
+      "p25": -0.35,
+      "p50": -0.14,
+      "p75": 0.0
+     }
+    }
+   },
+   "blackmarsh": {
+    "tree": {
+     "flat<10deg": {
+      "p25": -2.25,
+      "p50": -0.23,
+      "p75": 0.82
+     }
+    },
+    "shrub": {
+     "flat<10deg": {
+      "p25": -2.73,
+      "p50": -0.27,
+      "p75": 1.3
+     }
+    },
+    "grass": {
+     "flat<10deg": {
+      "p25": -1.95,
+      "p50": -0.72,
+      "p75": 0.02
+     }
+    }
+   }
+  },
+  "recommendedSinkDepthM": {
+   "tree": {
+    "flat": 0.5,
+    "perSlopeDegOver10": 0.05,
+    "max": 2.5
+   },
+   "shrub": {
+    "flat": 0.3,
+    "perSlopeDegOver10": 0.07,
+    "max": 2.0
+   },
+   "plant": {
+    "flat": 0.05,
+    "perSlopeDegOver10": 0.02,
+    "max": 0.5
+   },
+   "grass": {
+    "flat": 0.3,
+    "perSlopeDegOver10": 0.05,
+    "max": 1.5
+   },
+   "note": "medians of the mined distributions; jitter within roughly +/-50% reproduces the observed spread",
+   "rock": {
+    "flat": 0.4,
+    "perSlopeDegOver10": 0.05,
+    "max": 15.0,
+    "note": "A rock's own mined p50 is the depth that matters (per-species below); the cap only has to be wide enough not to clip a cliff face, whose mined sink runs to 11.9 m (rockcliff04, n=521)."
+   }
+  }
+ },
+ "categories": {
+  "standalone": "snap pivot to terrain, sink per class; no host needed",
+  "attachment": "must be composed onto/into a host (tree trunk/canopy, cliff face); never place free-floating",
+  "cluster-part": "authors virtually never place it alone; spawn as member of a mixed clump with its companion set",
+  "ground-addon": "flat composed piece laid at ground level inside a bush/plant stack (dist ~0 m from companion, small dz)",
+  "water-surface": "anchor to WATER surface, not terrain (pivot at model top for lilypads)",
+  "bed-anchored-aquatic": "anchor pivot to submerged terrain (bed), plant reaches up through water"
+ },
+ "species": {
+  "bmv:landscape/trees/cypress1": {
+   "class": "standalone",
+   "count": 1775,
+   "pivotOffsetM": {
+    "vwFlatP50": -1.24,
+    "vwSlopeP50": -2.07,
+    "bmP50": -0.82
+   },
+   "bboxMinZM": -0.94
+  },
+  "bmv:landscape/trees/cypress3": {
+   "class": "standalone",
+   "count": 1011,
+   "pivotOffsetM": {
+    "vwFlatP50": -0.67,
+    "bmP50": -0.29
+   },
+   "bboxMinZM": -0.94
+  },
+  "bmv:landscape/trees/cedartree3": {
+   "class": "standalone",
+   "count": 388,
+   "pivotOffsetM": {
+    "bmP50": 1.91
+   },
+   "note": "wide spread; many placed on cliff/ledge dressing in BM; sink 0.3-0.8 m on normal ground"
+  },
+  "bmv:landscape/trees/treewillow01a": {
+   "class": "standalone",
+   "count": 103,
+   "pivotOffsetM": {
+    "p50": 0.0
+   },
+   "bboxMinZM": -4.05,
+   "note": "snap-to-terrain exactly; 4 m of frond/root geometry hangs below pivot and penetrates ground - do NOT lift by bbox"
+  },
+  "bmv:landscape/trees/treewillow02a": {
+   "class": "standalone",
+   "count": 75,
+   "pivotOffsetM": {
+    "p50": 0.0
+   },
+   "bboxMinZM": -2.92
+  },
+  "bmv:landscape/trees/treewillow03a": {
+   "class": "standalone",
+   "count": 35,
+   "pivotOffsetM": {
+    "p50": 0.0
+   },
+   "bboxMinZM": 0.0
+  },
+  "bmv:landscape/trees/mangrovereachtree0gkb3": {
+   "class": "standalone",
+   "count": 399,
+   "pivotOffsetM": {
+    "bmP50": 1.82
+   },
+   "bboxMinZM": -2.03,
+   "waterline": true,
+   "note": "pivot sits ~1.8 m above submerged bed = stilt roots straddle the waterline; anchor near water level over flooded ground"
+  },
+  "bmv:landscape/trees/mangrovereachtree0gkb9": {
+   "class": "standalone",
+   "count": 767,
+   "pivotOffsetM": {
+    "bmP50": -0.08
+   },
+   "bboxMinZM": -1.18,
+   "waterline": true
+  },
+  "bmv:landscape/trees/gkbjungletreenew1": {
+   "class": "standalone",
+   "count": 480,
+   "pivotOffsetM": {
+    "bmFlatP50": -0.23
+   },
+   "bboxMinZM": -0.48
+  },
+  "bmv:landscape/trees/gkbjungletreenew12v3": {
+   "class": "standalone",
+   "count": 659,
+   "pivotOffsetM": {
+    "bmP50": -0.23,
+    "vwP50": -0.57
+   },
+   "bboxMinZM": -0.03
+  },
+  "bmv:landscape/trees/bambooplant": {
+   "class": "standalone",
+   "count": 536,
+   "pivotOffsetM": {
+    "vwFlatP50": -1.39,
+    "vwSlopeP50": -2.43
+   },
+   "note": "sunk deep - bamboo clumps buried to hide stem bases"
+  },
+  "bmv:landscape/trees/dwarfjunip05": {
+   "class": "standalone",
+   "count": 347,
+   "pivotOffsetM": {
+    "vwFlatP50": -2.39,
+    "vwSlopeP50": -2.77
+   },
+   "note": "deepest-sunk shrub-tree in the data"
+  },
+  "bmv:landscape/trees/beachpalm1": {
+   "class": "standalone",
+   "count": 18,
+   "evidence": "thin",
+   "pivotOffsetM": null
+  },
+  "bmv:landscape/trees/beachpalm2": {
+   "class": "standalone",
+   "count": 1,
+   "evidence": "thin"
+  },
+  "bmv:landscape/trees/beachpalm3": {
+   "class": "standalone",
+   "count": 8,
+   "evidence": "thin"
+  },
+  "bmv:landscape/trees/fanpalm1": {
+   "class": "standalone",
+   "count": 19,
+   "evidence": "thin"
+  },
+  "bmv:landscape/trees/gkbfallforestshrub02": {
+   "class": "standalone",
+   "count": 520,
+   "pivotOffsetM": {
+    "bmP50": -0.07
+   },
+   "note": "85% placed at or below terrain; tight snap"
+  },
+  "bmv:vurt_shroom/vurt_shroom_big1": {
+   "class": "standalone",
+   "count": 118,
+   "pivotOffsetM": {
+    "bmP50": 0.06
+   },
+   "bboxMinZM": -3.29
+  },
+  "bmv:landscape/plants/fern01": {
+   "class": "standalone",
+   "count": 457,
+   "pivotOffsetM": {
+    "bmP50": -0.69
+   }
+  },
+  "tropical:plants/tropical/manfern": {
+   "class": "standalone",
+   "count": 0,
+   "evidence": "none-in-mined-sources",
+   "note": "Tropical Skyrim override of a vanilla fern; vanilla places it standalone groundcover - treat as standalone plant, sink ~0.05 m"
+  },
+  "bmv:landscape/plants/fernlarge03": {
+   "class": "cluster-part",
+   "count": 5902,
+   "companions": [
+    "bmv:landscape/plants/esloebush08",
+    "bmv:landscape/trees/tropicalplant01",
+    "bmv:landscape/plants/braken"
+   ],
+   "fracWithin2mOfCompanion": 0.933,
+   "pivotOffsetM": {
+    "bmP50": -1.56
+   },
+   "note": "sunk deep so only fronds show through undergrowth"
+  },
+  "bmv:landscape/plants/esloebush08": {
+   "class": "cluster-part",
+   "count": 1803,
+   "companions": [
+    "bmv:landscape/plants/fernlarge03",
+    "bmv:landscape/plants/braken",
+    "bmv:landscape/trees/tropicalplant01"
+   ],
+   "fracWithin2mOfCompanion": 0.997
+  },
+  "bmv:landscape/plants/braken": {
+   "class": "cluster-part",
+   "count": 8045,
+   "companions": [
+    "bmv:landscape/plants/esloebush08",
+    "bmv:landscape/plants/chickweed",
+    "bmv:landscape/trees/tropicalplant01"
+   ],
+   "fracWithin2mOfCompanion": 0.993,
+   "pivotOffsetM": {
+    "bmP50": -0.56
+   }
+  },
+  "bmv:landscape/plants/chickweed": {
+   "class": "cluster-part",
+   "count": 4287,
+   "companions": [
+    "bmv:landscape/trees/mangrovereachtree0gkb9",
+    "bmv:landscape/trees/tropicalshrub01",
+    "bmv:landscape/plants/braken"
+   ],
+   "fracWithin2mOfCompanion": 0.8
+  },
+  "bmv:landscape/plants/bigshrub2(colorful)": {
+   "class": "cluster-part",
+   "count": 3381,
+   "companions": [
+    "bmv:landscape/plants/esloebush08",
+    "bmv:landscape/plants/fernlarge03",
+    "bmv:landscape/trees/tropicalplant01"
+   ],
+   "fracWithin2mOfCompanion": 0.987,
+   "pivotOffsetM": {
+    "bmP50": -1.03
+   }
+  },
+  "bmv:landscape/trees/tropicalplant01": {
+   "class": "cluster-part",
+   "count": 6508,
+   "companions": [
+    "bmv:landscape/plants/esloebush08",
+    "bmv:landscape/plants/braken",
+    "bmv:landscape/plants/bigshrub2(colorful)"
+   ],
+   "fracWithin2mOfCompanion": 1.0,
+   "pivotOffsetM": {
+    "bmFlatP50": -0.19,
+    "vwFlatP50": -1.77,
+    "vwSlopeP50": -2.71
+   },
+   "note": "the bush-cluster core piece; also the host that tramaroot add-ons are stacked onto at dist 0"
+  },
+  "bmv:landscape/trees/tropicalshrub01": {
+   "class": "cluster-part",
+   "count": 2146,
+   "companions": [
+    "bmv:landscape/plants/esloebush08",
+    "bmv:landscape/plants/chickweed",
+    "bmv:landscape/plants/braken"
+   ],
+   "fracWithin2mOfCompanion": 1.0
+  },
+  "bmv:architecture/phitt/ashlands/tramaroot01": {
+   "class": "standalone",
+   "count": 2585,
+   "hosts": [],
+   "hostEvidence": "399/400 sampled have a large neighbour within 8 m; top host tropicalplant01 at horizontal dist p50 0.00 m (co-located), dz p50 +2.35 m",
+   "pivotOffsetM": {
+    "p50": -0.1
+   },
+   "bboxZM": [
+    -0.8,
+    0.8
+   ],
+   "ownerRuling": "Phase 10 round-4 feedback OVERRIDES the mined convention. The sources hang this 2-5 m up a bush or cliff; in our world that read as a big curved spiky root hovering in mid-air. The owner's rule: the base is ALWAYS ground-anchored, so it grows out of the ground. Standalone, pivot on terrain. The mesh pivot sits at the arch's CENTRE (0.80 m above its base of a 1.60 m mesh), so a pivot-to-terrain anchor already half-buries it - which is the read we want, an arch springing out of the soil. The sink is therefore small (0.10 m), not the class default; a large sink would swallow the arch entirely.",
+   "note": "dangling-root piece; mined as attachment (authors stack it INTO a bush/tree at the same XY with pivot 2-5 m up, or hang it on cliff faces, slope p95 31 deg) - retagged standalone by owner ruling"
+  },
+  "bmv:architecture/phitt/ashlands/tramaroot06": {
+   "class": "standalone",
+   "count": 401,
+   "hosts": [],
+   "hostEvidence": "368/400 have a large neighbour within 8 m; sits dz +4 to +13 m above nearby ground plants = hung high on cliff faces above them; tropicalplant01 co-located at dist 0 when tree-hung",
+   "pivotOffsetM": {
+    "p50": -0.15
+   },
+   "bboxZM": [
+    -1.01,
+    1.01
+   ],
+   "ownerRuling": "Same round-4 ruling as tramaroot01 - ground-anchored base, never hung."
+  },
+  "bmv:landscape/trees/hangingvines1": {
+   "class": "attachment",
+   "count": 0,
+   "evidence": "NEVER placed by sources",
+   "hosts": [
+    "tree-canopy",
+    "branch",
+    "overhang"
+   ],
+   "attachHeightM": {
+    "recommended": [
+     2.5,
+     6.0
+    ]
+   },
+   "note": "unused mesh in BM&V; classify by analogy with tramaroot01 and vanilla FloraTreeVine convention: hang from a tree branch/canopy, bottom clear of ground by 0.3-1.5 m"
+  },
+  "bmv:landscape/trees/hangingvines2": {
+   "class": "attachment",
+   "count": 0,
+   "evidence": "NEVER placed by sources",
+   "hosts": [
+    "tree-canopy",
+    "branch",
+    "overhang"
+   ],
+   "attachHeightM": {
+    "recommended": [
+     2.5,
+     6.0
+    ]
+   }
+  },
+  "bmv:landscape/plants/florahangingmoss02aaa": {
+   "class": "attachment",
+   "count": 0,
+   "evidence": "NEVER placed by sources (vanilla mesh; vanilla places FloraHangingMoss on tree limbs)",
+   "hosts": [
+    "tree-canopy",
+    "branch"
+   ],
+   "attachHeightM": {
+    "recommended": [
+     2.0,
+     5.0
+    ]
+   }
+  },
+  "bmv:landscape/plants/florahangingmoss03aaa": {
+   "class": "attachment",
+   "count": 0,
+   "evidence": "NEVER placed by sources",
+   "hosts": [
+    "tree-canopy",
+    "branch"
+   ],
+   "attachHeightM": {
+    "recommended": [
+     2.0,
+     5.0
+    ]
+   }
+  },
+  "bmv:landscape/rocks/moss_rockcliff01": {
+   "class": "standalone",
+   "count": 0,
+   "evidence": "NEVER placed by sources",
+   "pivotOffsetM": {
+    "p50": -1.2
+   },
+   "note": "OPEN-BACKED cliff-face dressing shell, 9.9 m tall, collision convex (trimesh at runtime), open back at 270 deg, laid with the back into the hill - authored to be embedded in a cliff, not to stand free. Round 5: freestanding scatter uses the closed vanilla boulders below; this is restricted to steep slopes with align_to_slope so its open back lies into the hill."
+  },
+  "vanilla:landscape/rocks/rockl04": {
+   "class": "standalone",
+   "count": 1081,
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 1081 placed instances (world/sources/placement/vanilla-tamriel-placement.json)",
+   "pivotOffsetM": {
+    "p25": -2.5,
+    "p50": -1.6,
+    "p75": -0.76
+   },
+   "note": "freestanding hero boulder: pivot to terrain, sunk ~12% of mesh height so the base is buried; long axis follows the slope via the layer's align_to_slope",
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 1081
+   }
+  },
+  "vanilla:landscape/rocks/rockl02": {
+   "class": "standalone",
+   "count": 2235,
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 2235 placed instances (world/sources/placement/vanilla-tamriel-placement.json)",
+   "pivotOffsetM": {
+    "p25": -1.5,
+    "p50": -0.94,
+    "p75": -0.39
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 2235
+   }
+  },
+  "vanilla:landscape/rocks/rockm03": {
+   "class": "standalone",
+   "count": 996,
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 996 placed instances (world/sources/placement/vanilla-tamriel-placement.json)",
+   "pivotOffsetM": {
+    "p25": -1.35,
+    "p50": -0.94,
+    "p75": -0.55
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 996
+   }
+  },
+  "vanilla:landscape/rocks/rockm02": {
+   "class": "standalone",
+   "count": 1646,
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 1646 placed instances (world/sources/placement/vanilla-tamriel-placement.json)",
+   "pivotOffsetM": {
+    "p25": -0.98,
+    "p50": -0.6,
+    "p75": -0.27
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 1646
+   }
+  },
+  "vanilla:landscape/rocks/rocks03": {
+   "class": "standalone",
+   "count": 1088,
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 1088 placed instances (world/sources/placement/vanilla-tamriel-placement.json)",
+   "pivotOffsetM": {
+    "p25": -0.7,
+    "p50": -0.49,
+    "p75": -0.32
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 1088
+   }
+  },
+  "bmv:landscape/trees/gkblillipad2": {
+   "class": "water-surface",
+   "count": 4482,
+   "pivotOffsetM": {
+    "bmP50": 1.19,
+    "meaning": "pivot at WATER level over submerged bed"
+   },
+   "bboxZM": [
+    -2.33,
+    0.0
+   ],
+   "note": "pivot is at the model TOP (pad); anchor pivot to water surface, stalk hangs to bed. Companions: waterkelptall01 at dz 0 within ~3 m, kelptallstatic01aaa 1.4 m BELOW (on the bed under the pads)"
+  },
+  "bmv:landscape/grass/waterkelpshort01": {
+   "class": "bed-anchored-aquatic",
+   "count": 739,
+   "pivotOffsetM": {
+    "bmP50": 0.11
+   },
+   "companions": [
+    "bmv:landscape/trees/gkblillipad2",
+    "bmv:landscape/grass/vurt_reeds"
+   ],
+   "fracWithin2mOfCompanion": 0.987
+  },
+  "bmv:landscape/grass/waterkelptall01": {
+   "class": "bed-anchored-aquatic",
+   "count": 630,
+   "pivotOffsetM": {
+    "bmP50": 0.11
+   },
+   "companions": [
+    "bmv:landscape/grass/vurt_reeds",
+    "bmv:landscape/trees/gkblillipad2"
+   ]
+  },
+  "bmv:landscape/plants/kelptallstatic01aaa": {
+   "class": "bed-anchored-aquatic",
+   "count": 609,
+   "pivotOffsetM": {
+    "bmP50": 0.39
+   },
+   "companions": [
+    "bmv:landscape/trees/gkblillipad2"
+   ],
+   "note": "placed on the bed 1.4-1.9 m below neighbouring lilypads"
+  },
+  "bmv:landscape/grass/vurt_reeds": {
+   "class": "standalone",
+   "count": 8869,
+   "pivotOffsetM": {
+    "bmP50": -0.36
+   },
+   "waterline": true,
+   "note": "waterline species (59% pivot below terrain = sunk into soft mud/shallows); companions kelp + lilypads"
+  },
+  "bmv:vvardenfell/flora/algrass03b": {
+   "class": "standalone",
+   "count": 792,
+   "pivotOffsetM": {
+    "bmP50": -0.84
+   },
+   "note": "sunk ~0.8 m; bboxMinZ +0.26 so sinking hides the stem ring"
+  },
+  "bmv:landscape/plants/water lily1": {
+   "class": "water-surface",
+   "count": 0,
+   "pivotOffsetM": {
+    "meaning": "pivot at WATER level (floating pad); not mined — authored 2026-09-08 by analogy with gkblillipad2 for the lake palette"
+   },
+   "note": "BM&V water-lily set; anchor pivot to the water surface like gkblillipad2. Companions: none."
+  },
+  "bmv:landscape/plants/water lily2": {
+   "class": "water-surface",
+   "count": 0,
+   "pivotOffsetM": {
+    "meaning": "pivot at WATER level (floating pad); not mined — authored 2026-09-08 by analogy with gkblillipad2 for the lake palette"
+   },
+   "note": "BM&V water-lily set; anchor pivot to the water surface like gkblillipad2. Companions: none."
+  },
+  "vanilla:landscape/rocks/rockl01": {
+   "class": "standalone",
+   "count": 2284,
+   "pivotOffsetM": {
+    "p25": -2.37,
+    "p50": -1.64,
+    "p75": -0.99
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 2284
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 2284 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "vanilla:landscape/rocks/rockl03": {
+   "class": "standalone",
+   "count": 1498,
+   "pivotOffsetM": {
+    "p25": -1.58,
+    "p50": -1.08,
+    "p75": -0.54
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 1498
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 1498 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "vanilla:landscape/rocks/rockl05": {
+   "class": "standalone",
+   "count": 1040,
+   "pivotOffsetM": {
+    "p25": -2.04,
+    "p50": -1.42,
+    "p75": -0.75
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 1040
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 1040 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "vanilla:landscape/rocks/rockm01": {
+   "class": "standalone",
+   "count": 1570,
+   "pivotOffsetM": {
+    "p25": -0.9,
+    "p50": -0.55,
+    "p75": -0.25
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 1570
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 1570 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "vanilla:landscape/rocks/rockm04": {
+   "class": "standalone",
+   "count": 679,
+   "pivotOffsetM": {
+    "p25": -0.85,
+    "p50": -0.58,
+    "p75": -0.28
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 679
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 679 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "vanilla:landscape/rocks/rocks01": {
+   "class": "standalone",
+   "count": 498,
+   "pivotOffsetM": {
+    "p25": -0.98,
+    "p50": -0.66,
+    "p75": -0.38
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 498
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 498 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "vanilla:landscape/rocks/rocks02": {
+   "class": "standalone",
+   "count": 1763,
+   "pivotOffsetM": {
+    "p25": -0.4,
+    "p50": -0.26,
+    "p75": -0.11
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 1763
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 1763 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "vanilla:landscape/rocks/wetrocks/rockl01wet": {
+   "class": "standalone",
+   "count": 203,
+   "pivotOffsetM": {
+    "p25": -2.57,
+    "p50": -1.98,
+    "p75": -1.27
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 203
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 203 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "vanilla:landscape/rocks/wetrocks/rockl02wet": {
+   "class": "standalone",
+   "count": 182,
+   "pivotOffsetM": {
+    "p25": -1.67,
+    "p50": -1.19,
+    "p75": -0.53
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 182
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 182 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "vanilla:landscape/rocks/wetrocks/rockl03wet": {
+   "class": "standalone",
+   "count": 89,
+   "pivotOffsetM": {
+    "p25": -1.85,
+    "p50": -1.38,
+    "p75": -0.97
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 89
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 89 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "vanilla:landscape/rocks/wetrocks/rockl04wet": {
+   "class": "standalone",
+   "count": 118,
+   "pivotOffsetM": {
+    "p25": -3.6,
+    "p50": -2.02,
+    "p75": -1.08
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 118
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 118 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "vanilla:landscape/rocks/wetrocks/rockl05wet": {
+   "class": "standalone",
+   "count": 92,
+   "pivotOffsetM": {
+    "p25": -1.98,
+    "p50": -1.32,
+    "p75": -0.62
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 92
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 92 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "vanilla:landscape/rocks/wetrocks/rockm02wet": {
+   "class": "standalone",
+   "count": 56,
+   "pivotOffsetM": {
+    "p25": -0.95,
+    "p50": -0.55,
+    "p75": -0.17
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 56
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 56 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "vanilla:landscape/rocks/wetrocks/rockpilel01wet": {
+   "class": "standalone",
+   "count": 65,
+   "pivotOffsetM": {
+    "p25": -3.12,
+    "p50": -2.21,
+    "p75": -1.68
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 65
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 65 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "vanilla:landscape/rocks/wetrocks/rockpilel02wet": {
+   "class": "standalone",
+   "count": 46,
+   "pivotOffsetM": {
+    "p25": -0.28,
+    "p50": -0.12,
+    "p75": 0.05
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 46
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 46 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "vanilla:landscape/rocks/wetrocks/rockpilel03wet": {
+   "class": "standalone",
+   "count": 42,
+   "pivotOffsetM": {
+    "p25": -1.25,
+    "p50": -1.09,
+    "p75": -0.8
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 42
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 42 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "vanilla:landscape/rocks/wetrocks/rockpilem02wet": {
+   "class": "standalone",
+   "count": 120,
+   "pivotOffsetM": {
+    "p25": -0.4,
+    "p50": -0.26,
+    "p75": -0.14
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 120
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 120 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "vanilla:landscape/rocks/rockpiles01": {
+   "class": "standalone",
+   "count": 2414,
+   "pivotOffsetM": {
+    "p25": -0.27,
+    "p50": -0.16,
+    "p75": -0.06
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 2414
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 2414 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "vanilla:landscape/rocks/rockpiles02": {
+   "class": "standalone",
+   "count": 1633,
+   "pivotOffsetM": {
+    "p25": -0.33,
+    "p50": -0.21,
+    "p75": -0.11
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 1633
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 1633 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "vanilla:landscape/rocks/rockpiles03": {
+   "class": "standalone",
+   "count": 1075,
+   "pivotOffsetM": {
+    "p25": -0.5,
+    "p50": -0.36,
+    "p75": -0.24
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 1075
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 1075 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "vanilla:landscape/rocks/rockpiles04": {
+   "class": "standalone",
+   "count": 976,
+   "pivotOffsetM": {
+    "p25": -0.34,
+    "p50": -0.21,
+    "p75": -0.09
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 976
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 976 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "vanilla:landscape/rocks/rockpilem01": {
+   "class": "standalone",
+   "count": 763,
+   "pivotOffsetM": {
+    "p25": -0.36,
+    "p50": -0.23,
+    "p75": -0.12
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 763
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 763 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "vanilla:landscape/rocks/rockpilem02": {
+   "class": "standalone",
+   "count": 2890,
+   "pivotOffsetM": {
+    "p25": -0.38,
+    "p50": -0.24,
+    "p75": -0.11
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 2890
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 2890 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "vanilla:landscape/rocks/rockpilel01": {
+   "class": "standalone",
+   "count": 1835,
+   "pivotOffsetM": {
+    "p25": -2.46,
+    "p50": -2.02,
+    "p75": -1.56
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 1835
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 1835 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "vanilla:landscape/rocks/rockpilel02": {
+   "class": "standalone",
+   "count": 588,
+   "pivotOffsetM": {
+    "p25": -0.32,
+    "p50": -0.11,
+    "p75": 0.14
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 588
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 588 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "vanilla:landscape/rocks/rockpilel03": {
+   "class": "standalone",
+   "count": 799,
+   "pivotOffsetM": {
+    "p25": -1.08,
+    "p50": -0.68,
+    "p75": -0.3
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 799
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 799 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "vanilla:landscape/rocks/rockpilel04": {
+   "class": "standalone",
+   "count": 518,
+   "pivotOffsetM": {
+    "p25": -0.94,
+    "p50": -0.64,
+    "p75": -0.36
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 518
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 518 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "vanilla:landscape/rocks/rockcliff01": {
+   "class": "standalone",
+   "count": 495,
+   "pivotOffsetM": {
+    "p25": -1.84,
+    "p50": -1.24,
+    "p75": -0.27
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 495
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 495 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "vanilla:landscape/rocks/rockcliff02": {
+   "class": "standalone",
+   "count": 793,
+   "pivotOffsetM": {
+    "p25": -9.6,
+    "p50": -8.63,
+    "p75": -7.29
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 793
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 793 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "vanilla:landscape/rocks/rockcliff03": {
+   "class": "standalone",
+   "count": 1170,
+   "pivotOffsetM": {
+    "p25": -10.47,
+    "p50": -8.77,
+    "p75": -7.5
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 1170
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 1170 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "vanilla:landscape/rocks/rockcliff04": {
+   "class": "standalone",
+   "count": 521,
+   "pivotOffsetM": {
+    "p25": -14.89,
+    "p50": -11.88,
+    "p75": -9.77
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 521
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 521 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "vanilla:landscape/rocks/rockcliff05": {
+   "class": "standalone",
+   "count": 290,
+   "pivotOffsetM": {
+    "p25": -6.9,
+    "p50": -5.68,
+    "p75": -4.65
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 290
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 290 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "vanilla:landscape/rocks/rockcliff06": {
+   "class": "standalone",
+   "count": 548,
+   "pivotOffsetM": {
+    "p25": -8.32,
+    "p50": -6.03,
+    "p75": -4.56
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 548
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 548 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "vanilla:landscape/rocks/rockcliff07": {
+   "class": "standalone",
+   "count": 574,
+   "pivotOffsetM": {
+    "p25": -10.69,
+    "p50": -9.68,
+    "p75": -8.51
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 574
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 574 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "vanilla:landscape/rocks/rockcliff08": {
+   "class": "standalone",
+   "count": 407,
+   "pivotOffsetM": {
+    "p25": -4.35,
+    "p50": -3.62,
+    "p75": -2.48
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 407
+   },
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 407 placed instances (world/sources/placement/vanilla-tamriel-placement.json)"
+  },
+  "depths:dos/misc/tbp_coralbig": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "pivotOffsetM": {
+    "p50": 0.0
+   },
+   "mined": {
+    "source": "worldgen.mine_placement DepthsOfSkyrim.esp + Skyrim.esm, world Tamriel, 2026-09-16",
+    "n": 97
+   }
+  },
+  "depths:dos/misc/tbp_coralmedium": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "pivotOffsetM": {
+    "p50": 0.0
+   },
+   "mined": {
+    "source": "worldgen.mine_placement DepthsOfSkyrim.esp + Skyrim.esm, world Tamriel, 2026-09-16",
+    "n": 95
+   }
+  },
+  "depths:landscape/grass/tbp_coralsmall01": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "pivotOffsetM": {
+    "p50": 0.0
+   },
+   "mined": {
+    "source": "worldgen.mine_placement DepthsOfSkyrim.esp + Skyrim.esm, world Tamriel, 2026-09-16",
+    "n": 102
+   }
+  },
+  "depths:landscape/grass/tbp_seaweed06": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "pivotOffsetM": {
+    "p50": 2.38
+   },
+   "mined": {
+    "source": "worldgen.mine_placement DepthsOfSkyrim.esp + Skyrim.esm, world Tamriel, 2026-09-16",
+    "n": 11
+   },
+   "note": "pivot sits ABOVE the bed in the mined placements (p25 -2.37, p75 +9.37 over 11 refs): Depths hangs this 7.4 m weed cluster in the water column rather than rooting it. Too few refs and too wide a spread to anchor on; the palette roots it on the bed instead."
+  },
+  "depths:landscape/grass/tbp_seaweed06var1": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "mined": {
+    "source": "worldgen.mine_placement DepthsOfSkyrim.esp + Skyrim.esm, world Tamriel, 2026-09-16",
+    "n": 0
+   },
+   "note": "colour/shape variant of tbp_seaweed06, never placed in Tamriel by the mod; rooted on the bed like the rest of the weed beds."
+  },
+  "depths:landscape/grass/tbp_seaweed01": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "pivotOffsetM": {
+    "p50": 0.0
+   },
+   "mined": {
+    "source": "worldgen.mine_placement DepthsOfSkyrim.esp + Skyrim.esm, world Tamriel, 2026-09-16",
+    "n": 248
+   },
+   "note": "mined under the mod's `landscape/trees/` copy of the same mesh (identical bounds, 29.3 m / 42.7 m). Rooted exactly on the bed; the mod scales it 0.15-1.15 and sinks nothing."
+  },
+  "depths:landscape/grass/tbp_seaweed02": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "pivotOffsetM": {
+    "p50": 0.0
+   },
+   "mined": {
+    "source": "worldgen.mine_placement DepthsOfSkyrim.esp + Skyrim.esm, world Tamriel, 2026-09-16",
+    "n": 267
+   },
+   "note": "mined under the mod's `landscape/trees/` copy of the same mesh (identical bounds, 29.3 m / 42.7 m). Rooted exactly on the bed; the mod scales it 0.15-1.15 and sinks nothing."
+  },
+  "depths:landscape/grass/waterkelptall02": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "mined": {
+    "source": "worldgen.mine_placement DepthsOfSkyrim.esp + Skyrim.esm, world Tamriel, 2026-09-16",
+    "n": 0
+   },
+   "note": "a GRAS record in Depths, painted by landscape texture rather than placed as a ref, so a placement mine can never see it. Rooted on the bed like bmv waterkelptall01 (pivot +0.11 m)."
+  },
+  "depths:landscape/grass/waterkelptall03": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "mined": {
+    "source": "worldgen.mine_placement DepthsOfSkyrim.esp + Skyrim.esm, world Tamriel, 2026-09-16",
+    "n": 0
+   },
+   "note": "a GRAS record in Depths, painted by landscape texture rather than placed as a ref, so a placement mine can never see it. Rooted on the bed like bmv waterkelptall01 (pivot +0.11 m)."
+  },
+  "depths:landscape/grass/tbpalgae01": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "mined": {
+    "source": "worldgen.mine_placement DepthsOfSkyrim.esp + Skyrim.esm, world Tamriel, 2026-09-16",
+    "n": 0
+   },
+   "note": "GRAS record, not placed as a ref; a 0.37 m mat laid flat on the bed."
+  },
+  "depths:landscape/grass/tbpcoastdriftwood01": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "mined": {
+    "source": "worldgen.mine_placement DepthsOfSkyrim.esp + Skyrim.esm, world Tamriel, 2026-09-16",
+    "n": 0
+   },
+   "note": "GRAS record, not placed as a ref; sits on the strand or the bed at its own pivot."
+  },
+  "depths:landscape/grass/tbpcoastdriftwood02": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "mined": {
+    "source": "worldgen.mine_placement DepthsOfSkyrim.esp + Skyrim.esm, world Tamriel, 2026-09-16",
+    "n": 0
+   },
+   "note": "GRAS record, not placed as a ref; sits on the strand or the bed at its own pivot."
+  },
+  "vanilla:plants/clam01": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "pivotOffsetM": {
+    "p50": 0.02
+   },
+   "mined": {
+    "source": "world/sources/placement/vanilla-tamriel-placement.json",
+    "n": 254
+   }
+  },
+  "vanilla:plants/clamlarge01": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "pivotOffsetM": {
+    "p50": 0.0
+   },
+   "mined": {
+    "source": "world/sources/placement/vanilla-tamriel-placement.json",
+    "n": 277
+   }
+  },
+  "vanilla:plants/clamthin01": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "pivotOffsetM": {
+    "p50": 0.01
+   },
+   "mined": {
+    "source": "world/sources/placement/vanilla-tamriel-placement.json",
+    "n": 261
+   }
+  },
+  "vanilla:clutter/shipwreck/shipwreckboards01": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "pivotOffsetM": {
+    "p50": 2.75
+   },
+   "mined": {
+    "source": "world/sources/placement/vanilla-tamriel-placement.json",
+    "n": 79
+   },
+   "note": "POSITIVE as measured: the pivot sits ~2.5 m ABOVE the ground because Bethesda floats these planks on the water surface over a deeper bed (submerged fraction 0.15-0.19). Recorded as mined, not corrected."
+  },
+  "vanilla:clutter/shipwreck/shipwreckboards02": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "pivotOffsetM": {
+    "p50": 2.98
+   },
+   "mined": {
+    "source": "world/sources/placement/vanilla-tamriel-placement.json",
+    "n": 86
+   },
+   "note": "POSITIVE as measured: the pivot sits ~2.5 m ABOVE the ground because Bethesda floats these planks on the water surface over a deeper bed (submerged fraction 0.15-0.19). Recorded as mined, not corrected."
+  },
+  "vanilla:clutter/shipwreck/shipwreckboards03": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "pivotOffsetM": {
+    "p50": 2.45
+   },
+   "mined": {
+    "source": "world/sources/placement/vanilla-tamriel-placement.json",
+    "n": 121
+   },
+   "note": "POSITIVE as measured: the pivot sits ~2.5 m ABOVE the ground because Bethesda floats these planks on the water surface over a deeper bed (submerged fraction 0.15-0.19). Recorded as mined, not corrected."
+  },
+  "vanilla:landscape/plants/kelpshortstatic01": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "mined": {
+    "source": "worldgen.mine_placement Underwater_Treasure.esp + Skyrim.esm, world Tamriel, 2026-09-16 (the only Tamriel placements of this mesh that exist)",
+    "n": 8
+   },
+   "note": "no sink figure: all 8 refs sit over water with no ground sample, so the mine reports no pivot offset. Rooted on the bed."
+  },
+  "vanilla:landscape/plants/kelptallstatic01": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "mined": {
+    "source": "worldgen.mine_placement Underwater_Treasure.esp + Skyrim.esm, world Tamriel, 2026-09-16 (the only Tamriel placements of this mesh that exist)",
+    "n": 10
+   },
+   "note": "no sink figure: all 10 refs sit over water with no ground sample. Rooted on the bed."
+  },
+  "depths:dos/boats/rowboatbrokenback": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "mined": {
+    "source": "worldgen.mine_placement DepthsOfSkyrim.esp + Skyrim.esm, world Tamriel, 2026-09-16",
+    "n": 0
+   },
+   "note": "never placed in Tamriel by the mod; a broken rowboat half lying on the bed at its own pivot."
+  },
+  "depths:dos/boats/rowboatbrokenfront": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "mined": {
+    "source": "worldgen.mine_placement DepthsOfSkyrim.esp + Skyrim.esm, world Tamriel, 2026-09-16",
+    "n": 0
+   },
+   "note": "never placed in Tamriel by the mod; a broken rowboat half lying on the bed at its own pivot."
+  },
+  "vanilla:dungeons/ship/shipwrecklarge01": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "pivotOffsetM": {
+    "p50": -5.68
+   },
+   "mined": {
+    "source": "worldgen.mine_placement Skyrim.esm, world Tamriel, 2026-09-16, floor n=1 (below the committed mine's n>=30 floor)",
+    "n": 2
+   },
+   "note": "single-digit n, recorded as measured. shipwrecklarge02's one ref is a hull beached at the waterline, which is why its offset is positive where the others are sunk."
+  },
+  "vanilla:dungeons/ship/shipwrecklarge02": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "pivotOffsetM": {
+    "p50": 3.74
+   },
+   "mined": {
+    "source": "worldgen.mine_placement Skyrim.esm, world Tamriel, 2026-09-16, floor n=1 (below the committed mine's n>=30 floor)",
+    "n": 1
+   },
+   "note": "single-digit n, recorded as measured. shipwrecklarge02's one ref is a hull beached at the waterline, which is why its offset is positive where the others are sunk."
+  },
+  "vanilla:dungeons/ship/shipwrecklarge03": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "pivotOffsetM": {
+    "p50": -3.16
+   },
+   "mined": {
+    "source": "worldgen.mine_placement Skyrim.esm, world Tamriel, 2026-09-16, floor n=1 (below the committed mine's n>=30 floor)",
+    "n": 5
+   },
+   "note": "single-digit n, recorded as measured. shipwrecklarge02's one ref is a hull beached at the waterline, which is why its offset is positive where the others are sunk."
+  },
+  "vanilla:dungeons/ship/shipwrecklarge04": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "pivotOffsetM": {
+    "p50": -4.87
+   },
+   "mined": {
+    "source": "worldgen.mine_placement Skyrim.esm, world Tamriel, 2026-09-16, floor n=1 (below the committed mine's n>=30 floor)",
+    "n": 5
+   },
+   "note": "single-digit n, recorded as measured. shipwrecklarge02's one ref is a hull beached at the waterline, which is why its offset is positive where the others are sunk."
+  },
+  "vanilla:dungeons/ship/shiplongboatwreck01": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "pivotOffsetM": {
+    "p50": -2.28
+   },
+   "mined": {
+    "source": "worldgen.mine_placement Skyrim.esm, world Tamriel, 2026-09-16, floor n=1 (below the committed mine's n>=30 floor)",
+    "n": 3
+   },
+   "note": "single-digit n, recorded as measured. shipwrecklarge02's one ref is a hull beached at the waterline, which is why its offset is positive where the others are sunk."
+  },
+  "vanilla:dungeons/ship/shiplongboatwreck02": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "pivotOffsetM": {
+    "p50": -1.6
+   },
+   "mined": {
+    "source": "worldgen.mine_placement Skyrim.esm, world Tamriel, 2026-09-16, floor n=1 (below the committed mine's n>=30 floor)",
+    "n": 4
+   },
+   "note": "single-digit n, recorded as measured. shipwrecklarge02's one ref is a hull beached at the waterline, which is why its offset is positive where the others are sunk."
+  },
+  "depths:dos/ships/shipatmoranwarshipwreck01": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "pivotOffsetM": {
+    "p50": -1.37
+   },
+   "mined": {
+    "source": "worldgen.mine_placement DepthsOfSkyrim.esp + Skyrim.esm, world Tamriel, 2026-09-16",
+    "n": 1
+   },
+   "note": "one ref only; recorded as measured."
+  },
+  "depths:dos/ships/shipatmoranwarshipwreck02": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "pivotOffsetM": {
+    "p50": -1.95
+   },
+   "mined": {
+    "source": "worldgen.mine_placement DepthsOfSkyrim.esp + Skyrim.esm, world Tamriel, 2026-09-16",
+    "n": 1
+   },
+   "note": "one ref only; recorded as measured."
+  },
+  "depths:dos/ships/shipatmoranlongshipwreck01": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "mined": {
+    "source": "worldgen.mine_placement DepthsOfSkyrim.esp + Skyrim.esm, world Tamriel, 2026-09-16",
+    "n": 0
+   },
+   "note": "shipped by the mod but never placed in Tamriel, so there is no mined sink. Its sibling warship wrecks sit 1.4-2.0 m into the bed; a plotted wreck sets its own sink from the place record."
+  },
+  "depths:dos/ships/shipatmoranlongshipwreck02": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "mined": {
+    "source": "worldgen.mine_placement DepthsOfSkyrim.esp + Skyrim.esm, world Tamriel, 2026-09-16",
+    "n": 0
+   },
+   "note": "shipped by the mod but never placed in Tamriel, so there is no mined sink. Its sibling warship wrecks sit 1.4-2.0 m into the bed; a plotted wreck sets its own sink from the place record."
+  },
+  "depths:dos/ships/shipatmoranrowboatwreck01": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "mined": {
+    "source": "worldgen.mine_placement DepthsOfSkyrim.esp + Skyrim.esm, world Tamriel, 2026-09-16",
+    "n": 0
+   },
+   "note": "shipped by the mod but never placed in Tamriel, so there is no mined sink. Its sibling warship wrecks sit 1.4-2.0 m into the bed; a plotted wreck sets its own sink from the place record."
+  },
+  "depths:dos/ships/shipatmoranrowboatwreck02": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "mined": {
+    "source": "worldgen.mine_placement DepthsOfSkyrim.esp + Skyrim.esm, world Tamriel, 2026-09-16",
+    "n": 0
+   },
+   "note": "shipped by the mod but never placed in Tamriel, so there is no mined sink. Its sibling warship wrecks sit 1.4-2.0 m into the bed; a plotted wreck sets its own sink from the place record."
+  },
+  "depths:dos/ships/shipbreticcarrack_halfwreck01": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "mined": {
+    "source": "worldgen.mine_placement DepthsOfSkyrim.esp + Skyrim.esm, world Tamriel, 2026-09-16",
+    "n": 0
+   },
+   "note": "shipped by the mod but never placed in Tamriel, so there is no mined sink. Its sibling warship wrecks sit 1.4-2.0 m into the bed; a plotted wreck sets its own sink from the place record."
+  },
+  "depths:dos/ships/shipbreticcarrack_halfwreck02": {
+   "class": "standalone",
+   "bed-anchored": true,
+   "mined": {
+    "source": "worldgen.mine_placement DepthsOfSkyrim.esp + Skyrim.esm, world Tamriel, 2026-09-16",
+    "n": 0
+   },
+   "note": "shipped by the mod but never placed in Tamriel, so there is no mined sink. Its sibling warship wrecks sit 1.4-2.0 m into the bed; a plotted wreck sets its own sink from the place record."
+  },
+  "vanilla:landscape/plants/deadshrub01": {
+   "class": "standalone",
+   "count": 4003,
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 4003 placed instances (world/sources/placement/vanilla-tamriel-placement.json)",
+   "pivotOffsetM": {
+    "p25": 0.001,
+    "p50": 0.156,
+    "p75": 0.297
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 4003
+   }
+  },
+  "vanilla:landscape/plants/tundrashrub01": {
+   "class": "standalone",
+   "count": 152,
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 152 placed instances (world/sources/placement/vanilla-tamriel-placement.json)",
+   "pivotOffsetM": {
+    "p25": -0.099,
+    "p50": 0.0,
+    "p75": 0.094
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 152
+   }
+  },
+  "vanilla:landscape/plants/tundrashrub02": {
+   "class": "standalone",
+   "count": 685,
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 685 placed instances (world/sources/placement/vanilla-tamriel-placement.json)",
+   "pivotOffsetM": {
+    "p25": -0.337,
+    "p50": 0.052,
+    "p75": 0.108
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 685
+   }
+  },
+  "vanilla:landscape/plants/tundrashrub03": {
+   "class": "standalone",
+   "count": 389,
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 389 placed instances (world/sources/placement/vanilla-tamriel-placement.json)",
+   "pivotOffsetM": {
+    "p25": -0.265,
+    "p50": 0.072,
+    "p75": 0.236
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 389
+   }
+  },
+  "vanilla:landscape/plants/tundrascrub01": {
+   "class": "standalone",
+   "count": 132,
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 132 placed instances (world/sources/placement/vanilla-tamriel-placement.json)",
+   "pivotOffsetM": {
+    "p25": -0.511,
+    "p50": -0.04,
+    "p75": 0.009
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 132
+   }
+  },
+  "vanilla:landscape/plants/reachshrub01": {
+   "class": "standalone",
+   "count": 609,
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 609 placed instances (world/sources/placement/vanilla-tamriel-placement.json)",
+   "pivotOffsetM": {
+    "p25": -0.661,
+    "p50": 0.118,
+    "p75": 0.292
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 609
+   }
+  },
+  "vanilla:landscape/plants/thicket01": {
+   "class": "standalone",
+   "count": 11143,
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 11143 placed instances (world/sources/placement/vanilla-tamriel-placement.json)",
+   "pivotOffsetM": {
+    "p25": 0.044,
+    "p50": 0.207,
+    "p75": 0.368
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 11143
+   }
+  },
+  "vanilla:plants/floramountainflower01purple": {
+   "class": "standalone",
+   "count": 756,
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 756 placed instances (world/sources/placement/vanilla-tamriel-placement.json)",
+   "pivotOffsetM": {
+    "p25": -0.03,
+    "p50": 0.059,
+    "p75": 0.154
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 756
+   }
+  },
+  "vanilla:plants/floramountainflower01blue": {
+   "class": "standalone",
+   "count": 668,
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 668 placed instances (world/sources/placement/vanilla-tamriel-placement.json)",
+   "pivotOffsetM": {
+    "p25": -0.021,
+    "p50": 0.069,
+    "p75": 0.167
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 668
+   }
+  },
+  "vanilla:plants/floramountainflower01red": {
+   "class": "standalone",
+   "count": 468,
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 468 placed instances (world/sources/placement/vanilla-tamriel-placement.json)",
+   "pivotOffsetM": {
+    "p25": -0.013,
+    "p50": 0.075,
+    "p75": 0.193
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 468
+   }
+  },
+  "vanilla:landscape/trees/treepineforestlog01": {
+   "class": "standalone",
+   "count": 110,
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 110 placed instances (world/sources/placement/vanilla-tamriel-placement.json)",
+   "pivotOffsetM": {
+    "p25": -0.812,
+    "p50": -0.606,
+    "p75": -0.382
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 110
+   }
+  },
+  "vanilla:landscape/trees/treepineforestlog02": {
+   "class": "standalone",
+   "count": 109,
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 109 placed instances (world/sources/placement/vanilla-tamriel-placement.json)",
+   "pivotOffsetM": {
+    "p25": -0.818,
+    "p50": -0.597,
+    "p75": -0.308
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 109
+   }
+  },
+  "vanilla:landscape/trees/treepineforeststump01": {
+   "class": "standalone",
+   "count": 126,
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 126 placed instances (world/sources/placement/vanilla-tamriel-placement.json)",
+   "pivotOffsetM": {
+    "p25": 0.305,
+    "p50": 0.566,
+    "p75": 0.842
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 126
+   }
+  },
+  "vanilla:landscape/trees/treepineforeststump02a": {
+   "class": "standalone",
+   "count": 126,
+   "evidence": "no vanilla Tamriel placement of its own: this is the same authored pine stump at a different break, so it takes treepineforeststump01's mined profile (126 placed instances) — the MINED_ALIAS rule rock_dressing.py applies to moss_rockcliff01",
+   "pivotOffsetM": {
+    "p25": 0.305,
+    "p50": 0.566,
+    "p75": 0.842
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "alias": "vanilla:landscape/trees/treepineforeststump01",
+    "n": 126
+   }
+  },
+  "vanilla:landscape/trees/treeaspenlog01": {
+   "class": "standalone",
+   "count": 139,
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 139 placed instances (world/sources/placement/vanilla-tamriel-placement.json)",
+   "pivotOffsetM": {
+    "p25": -0.389,
+    "p50": -0.252,
+    "p75": -0.138
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 139
+   }
+  },
+  "vanilla:landscape/trees/treeaspenstump01": {
+   "class": "standalone",
+   "count": 158,
+   "evidence": "vanilla Skyrim, worldspace Tamriel: 158 placed instances (world/sources/placement/vanilla-tamriel-placement.json)",
+   "pivotOffsetM": {
+    "p25": -0.201,
+    "p50": -0.075,
+    "p75": -0.0
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 158
+   }
+  },
+  "vanilla:landscape/rocks/wetrocks/rocks01wet": {
+   "class": "standalone",
+   "count": 0,
+   "pivotOffsetM": {
+    "p25": -0.982,
+    "p50": -0.664,
+    "p75": -0.381
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 498,
+    "alias": "vanilla:landscape/rocks/rocks01"
+   },
+   "evidence": "no placement of its own: `rocks01wet` is the WET RETEXTURE of `rocks01` - same geometry, same box, same pivot - so it takes that mesh's mined sink (498 placed instances in Tamriel), exactly as `rock_dressing.MINED_ALIAS` does for `moss_rockcliff01`. Added 2026-09-18 with the sea-bed rock bands."
+  },
+  "vanilla:landscape/rocks/wetrocks/rocks02wet": {
+   "class": "standalone",
+   "count": 0,
+   "pivotOffsetM": {
+    "p25": -0.403,
+    "p50": -0.257,
+    "p75": -0.11
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 1763,
+    "alias": "vanilla:landscape/rocks/rocks02"
+   },
+   "evidence": "no placement of its own: `rocks02wet` is the WET RETEXTURE of `rocks02` - same geometry, same box, same pivot - so it takes that mesh's mined sink (1763 placed instances in Tamriel), exactly as `rock_dressing.MINED_ALIAS` does for `moss_rockcliff01`. Added 2026-09-18 with the sea-bed rock bands."
+  },
+  "vanilla:landscape/rocks/wetrocks/rocks03wet": {
+   "class": "standalone",
+   "count": 0,
+   "pivotOffsetM": {
+    "p25": -0.701,
+    "p50": -0.495,
+    "p75": -0.324
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 1088,
+    "alias": "vanilla:landscape/rocks/rocks03"
+   },
+   "evidence": "no placement of its own: `rocks03wet` is the WET RETEXTURE of `rocks03` - same geometry, same box, same pivot - so it takes that mesh's mined sink (1088 placed instances in Tamriel), exactly as `rock_dressing.MINED_ALIAS` does for `moss_rockcliff01`. Added 2026-09-18 with the sea-bed rock bands."
+  },
+  "vanilla:landscape/rocks/wetrocks/rockm01wet": {
+   "class": "standalone",
+   "count": 0,
+   "pivotOffsetM": {
+    "p25": -0.896,
+    "p50": -0.554,
+    "p75": -0.248
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 1570,
+    "alias": "vanilla:landscape/rocks/rockm01"
+   },
+   "evidence": "no placement of its own: `rockm01wet` is the WET RETEXTURE of `rockm01` - same geometry, same box, same pivot - so it takes that mesh's mined sink (1570 placed instances in Tamriel), exactly as `rock_dressing.MINED_ALIAS` does for `moss_rockcliff01`. Added 2026-09-18 with the sea-bed rock bands."
+  },
+  "vanilla:landscape/rocks/wetrocks/rockm03wet": {
+   "class": "standalone",
+   "count": 0,
+   "pivotOffsetM": {
+    "p25": -1.347,
+    "p50": -0.943,
+    "p75": -0.548
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 996,
+    "alias": "vanilla:landscape/rocks/rockm03"
+   },
+   "evidence": "no placement of its own: `rockm03wet` is the WET RETEXTURE of `rockm03` - same geometry, same box, same pivot - so it takes that mesh's mined sink (996 placed instances in Tamriel), exactly as `rock_dressing.MINED_ALIAS` does for `moss_rockcliff01`. Added 2026-09-18 with the sea-bed rock bands."
+  },
+  "vanilla:landscape/rocks/wetrocks/rockm04wet": {
+   "class": "standalone",
+   "count": 0,
+   "pivotOffsetM": {
+    "p25": -0.849,
+    "p50": -0.58,
+    "p75": -0.283
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 679,
+    "alias": "vanilla:landscape/rocks/rockm04"
+   },
+   "evidence": "no placement of its own: `rockm04wet` is the WET RETEXTURE of `rockm04` - same geometry, same box, same pivot - so it takes that mesh's mined sink (679 placed instances in Tamriel), exactly as `rock_dressing.MINED_ALIAS` does for `moss_rockcliff01`. Added 2026-09-18 with the sea-bed rock bands."
+  },
+  "vanilla:landscape/rocks/wetrocks/rockpilem01wet": {
+   "class": "standalone",
+   "count": 0,
+   "pivotOffsetM": {
+    "p25": -0.361,
+    "p50": -0.232,
+    "p75": -0.12
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 763,
+    "alias": "vanilla:landscape/rocks/rockpilem01"
+   },
+   "evidence": "no placement of its own: `rockpilem01wet` is the WET RETEXTURE of `rockpilem01` - same geometry, same box, same pivot - so it takes that mesh's mined sink (763 placed instances in Tamriel), exactly as `rock_dressing.MINED_ALIAS` does for `moss_rockcliff01`. Added 2026-09-18 with the sea-bed rock bands."
+  },
+  "vanilla:landscape/rocks/wetrocks/rockpilem03wet": {
+   "class": "standalone",
+   "count": 0,
+   "pivotOffsetM": {
+    "p25": -0.339,
+    "p50": -0.251,
+    "p75": -0.149
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 60,
+    "alias": "vanilla:landscape/rocks/rockpilem03"
+   },
+   "evidence": "no placement of its own: `rockpilem03wet` is the WET RETEXTURE of `rockpilem03` - same geometry, same box, same pivot - so it takes that mesh's mined sink (60 placed instances in Tamriel), exactly as `rock_dressing.MINED_ALIAS` does for `moss_rockcliff01`. Added 2026-09-18 with the sea-bed rock bands."
+  },
+  "vanilla:landscape/rocks/wetrocks/rockshelf01wet": {
+   "class": "standalone",
+   "count": 0,
+   "pivotOffsetM": {
+    "p25": -0.072,
+    "p50": 0.021,
+    "p75": 0.131
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 137,
+    "alias": "vanilla:landscape/rocks/rockshelf01"
+   },
+   "evidence": "no placement of its own: `rockshelf01wet` is the WET RETEXTURE of `rockshelf01` - same geometry, same box, same pivot - so it takes that mesh's mined sink (137 placed instances in Tamriel), exactly as `rock_dressing.MINED_ALIAS` does for `moss_rockcliff01`. Added 2026-09-18 with the sea-bed rock bands."
+  },
+  "shores:shoresofskyrim/shorerock01": {
+   "class": "standalone",
+   "count": 0,
+   "pivotOffsetM": {
+    "p25": -0.695,
+    "p50": -0.472,
+    "p75": -0.272
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 3349,
+    "alias": "mean of rocks01wet/rocks02wet/rocks03wet"
+   },
+   "evidence": "FrankBlack's own mesh: nobody has placed it in a shipped worldspace, so its sink is the MEAN of the three `rocks0*wet` mined rows (n=3349 between them) - the same size class of wet shore stone on the same kind of ground. Added 2026-09-18 with the sea-bed rock bands."
+  },
+  "shores:shoresofskyrim/shorerock02": {
+   "class": "standalone",
+   "count": 0,
+   "pivotOffsetM": {
+    "p25": -0.695,
+    "p50": -0.472,
+    "p75": -0.272
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 3349,
+    "alias": "mean of rocks01wet/rocks02wet/rocks03wet"
+   },
+   "evidence": "FrankBlack's own mesh: nobody has placed it in a shipped worldspace, so its sink is the MEAN of the three `rocks0*wet` mined rows (n=3349 between them) - the same size class of wet shore stone on the same kind of ground. Added 2026-09-18 with the sea-bed rock bands."
+  },
+  "shores:shoresofskyrim/shorerock03": {
+   "class": "standalone",
+   "count": 0,
+   "pivotOffsetM": {
+    "p25": -0.695,
+    "p50": -0.472,
+    "p75": -0.272
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 3349,
+    "alias": "mean of rocks01wet/rocks02wet/rocks03wet"
+   },
+   "evidence": "FrankBlack's own mesh: nobody has placed it in a shipped worldspace, so its sink is the MEAN of the three `rocks0*wet` mined rows (n=3349 between them) - the same size class of wet shore stone on the same kind of ground. Added 2026-09-18 with the sea-bed rock bands."
+  },
+  "shores:shoresofskyrim/shorerock04": {
+   "class": "standalone",
+   "count": 0,
+   "pivotOffsetM": {
+    "p25": -0.695,
+    "p50": -0.472,
+    "p75": -0.272
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 3349,
+    "alias": "mean of rocks01wet/rocks02wet/rocks03wet"
+   },
+   "evidence": "FrankBlack's own mesh: nobody has placed it in a shipped worldspace, so its sink is the MEAN of the three `rocks0*wet` mined rows (n=3349 between them) - the same size class of wet shore stone on the same kind of ground. Added 2026-09-18 with the sea-bed rock bands."
+  },
+  "shores:shoresofskyrim/shorerock05": {
+   "class": "standalone",
+   "count": 0,
+   "pivotOffsetM": {
+    "p25": -0.695,
+    "p50": -0.472,
+    "p75": -0.272
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 3349,
+    "alias": "mean of rocks01wet/rocks02wet/rocks03wet"
+   },
+   "evidence": "FrankBlack's own mesh: nobody has placed it in a shipped worldspace, so its sink is the MEAN of the three `rocks0*wet` mined rows (n=3349 between them) - the same size class of wet shore stone on the same kind of ground. Added 2026-09-18 with the sea-bed rock bands."
+  },
+  "shores:shoresofskyrim/shorerock06": {
+   "class": "standalone",
+   "count": 0,
+   "pivotOffsetM": {
+    "p25": -0.695,
+    "p50": -0.472,
+    "p75": -0.272
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 3349,
+    "alias": "mean of rocks01wet/rocks02wet/rocks03wet"
+   },
+   "evidence": "FrankBlack's own mesh: nobody has placed it in a shipped worldspace, so its sink is the MEAN of the three `rocks0*wet` mined rows (n=3349 between them) - the same size class of wet shore stone on the same kind of ground. Added 2026-09-18 with the sea-bed rock bands."
+  },
+  "shores:shoresofskyrim/shorerock07": {
+   "class": "standalone",
+   "count": 0,
+   "pivotOffsetM": {
+    "p25": -0.695,
+    "p50": -0.472,
+    "p75": -0.272
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 3349,
+    "alias": "mean of rocks01wet/rocks02wet/rocks03wet"
+   },
+   "evidence": "FrankBlack's own mesh: nobody has placed it in a shipped worldspace, so its sink is the MEAN of the three `rocks0*wet` mined rows (n=3349 between them) - the same size class of wet shore stone on the same kind of ground. Added 2026-09-18 with the sea-bed rock bands."
+  },
+  "shores:shoresofskyrim/shorerock08": {
+   "class": "standalone",
+   "count": 0,
+   "pivotOffsetM": {
+    "p25": -0.695,
+    "p50": -0.472,
+    "p75": -0.272
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 3349,
+    "alias": "mean of rocks01wet/rocks02wet/rocks03wet"
+   },
+   "evidence": "FrankBlack's own mesh: nobody has placed it in a shipped worldspace, so its sink is the MEAN of the three `rocks0*wet` mined rows (n=3349 between them) - the same size class of wet shore stone on the same kind of ground. Added 2026-09-18 with the sea-bed rock bands."
+  },
+  "shores:shoresofskyrim/shorerock09": {
+   "class": "standalone",
+   "count": 0,
+   "pivotOffsetM": {
+    "p25": -0.695,
+    "p50": -0.472,
+    "p75": -0.272
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 3349,
+    "alias": "mean of rocks01wet/rocks02wet/rocks03wet"
+   },
+   "evidence": "FrankBlack's own mesh: nobody has placed it in a shipped worldspace, so its sink is the MEAN of the three `rocks0*wet` mined rows (n=3349 between them) - the same size class of wet shore stone on the same kind of ground. Added 2026-09-18 with the sea-bed rock bands."
+  },
+  "shores:shoresofskyrim/shorerock10": {
+   "class": "standalone",
+   "count": 0,
+   "pivotOffsetM": {
+    "p25": -0.695,
+    "p50": -0.472,
+    "p75": -0.272
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 3349,
+    "alias": "mean of rocks01wet/rocks02wet/rocks03wet"
+   },
+   "evidence": "FrankBlack's own mesh: nobody has placed it in a shipped worldspace, so its sink is the MEAN of the three `rocks0*wet` mined rows (n=3349 between them) - the same size class of wet shore stone on the same kind of ground. Added 2026-09-18 with the sea-bed rock bands."
+  },
+  "shores:shoresofskyrim/shorerock11": {
+   "class": "standalone",
+   "count": 0,
+   "pivotOffsetM": {
+    "p25": -0.695,
+    "p50": -0.472,
+    "p75": -0.272
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 3349,
+    "alias": "mean of rocks01wet/rocks02wet/rocks03wet"
+   },
+   "evidence": "FrankBlack's own mesh: nobody has placed it in a shipped worldspace, so its sink is the MEAN of the three `rocks0*wet` mined rows (n=3349 between them) - the same size class of wet shore stone on the same kind of ground. Added 2026-09-18 with the sea-bed rock bands."
+  },
+  "shores:shoresofskyrim/shorerock12": {
+   "class": "standalone",
+   "count": 0,
+   "pivotOffsetM": {
+    "p25": -0.695,
+    "p50": -0.472,
+    "p75": -0.272
+   },
+   "mined": {
+    "source": "vanilla-tamriel-placement.json",
+    "n": 3349,
+    "alias": "mean of rocks01wet/rocks02wet/rocks03wet"
+   },
+   "evidence": "FrankBlack's own mesh: nobody has placed it in a shipped worldspace, so its sink is the MEAN of the three `rocks0*wet` mined rows (n=3349 between them) - the same size class of wet shore stone on the same kind of ground. Added 2026-09-18 with the sea-bed rock bands."
+  }
+ },
+ "attachmentSpawn": {
+  "note": "Per-host spawn PROBABILITY for the attachment pass (compile-time knob, round 4). Attachments are accents, not per-host decorations: tramaroot01's rate on tropicalplant01 tracks its mined co-occurrence (2585 roots vs 6508 hosts ~= 0.4); the zero-precedent vines/moss default to sparse 8-12% of eligible hosts. Multiplied by regionHumidityMultiplier at the host's region class (deep swamp/rootland dressed more than dry uplands); values are per-host expected counts, may exceed 1 for guaranteed+extra.",
+  "perHostProbability": {
+   "bmv:landscape/trees/hangingvines1": {
+    "default": 0.1
+   },
+   "bmv:landscape/trees/hangingvines2": {
+    "default": 0.08
+   },
+   "bmv:landscape/plants/florahangingmoss02aaa": {
+    "default": 0.12
+   },
+   "bmv:landscape/plants/florahangingmoss03aaa": {
+    "default": 0.1
+   }
+  },
+  "regionHumidityMultiplier": {
+   "1": 0.15,
+   "2": 0.25,
+   "3": 1.0,
+   "4": 0.9,
+   "5": 1.0,
+   "6": 1.4,
+   "7": 1.2,
+   "8": 0.7,
+   "9": 0.5,
+   "10": 0.7,
+   "11": 0.9,
+   "12": 1.0,
+   "13": 1.0,
+   "14": 1.3
+  }
+ },
+ "neverPlacedStandaloneBySources": [
+  "bmv:landscape/trees/hangingvines1",
+  "bmv:landscape/trees/hangingvines2",
+  "bmv:landscape/plants/florahangingmoss02aaa",
+  "bmv:landscape/plants/florahangingmoss03aaa",
+  "bmv:landscape/rocks/moss_rockcliff01",
+  "bmv:architecture/phitt/ashlands/tramaroot01",
+  "bmv:architecture/phitt/ashlands/tramaroot06"
+ ],
+ "neverPlacedAtAllBySources": [
+  "bmv:landscape/trees/hangingvines1",
+  "bmv:landscape/trees/hangingvines2",
+  "bmv:landscape/plants/florahangingmoss02aaa",
+  "bmv:landscape/plants/florahangingmoss03aaa",
+  "bmv:landscape/rocks/moss_rockcliff01",
+  "tropical:plants/tropical/manfern"
+ ]
+}

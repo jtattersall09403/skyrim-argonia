@@ -1,0 +1,3002 @@
+{
+ "assets": {
+  "composite:plank/house1-with-door": {
+   "category": "misc",
+   "closedShellPromotedBy": "door-piece",
+   "doorStoreyM": 8.97,
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.29,
+     "kind": "leaf",
+     "offsetM": [
+      0.18,
+      -2.64
+     ],
+     "sideDeg": 352.5
+    }
+   ],
+   "entrance": {
+    "doorAsset": "kotm:argonia/mudhuts/door02",
+    "heightM": 1.32,
+    "kind": "esp-door",
+    "offsetM": [
+     0.09,
+     -2.81
+    ],
+    "placements": 6,
+    "radiusM": 2.806,
+    "sideDeg": 1.82,
+    "yawDeg": 180.0
+   },
+   "entranceWhy": "the exterior door kotm:argonia/mudhuts/door02 that opens this interior stands on any bearing across the plugin's placements; this composite hangs it at 2 deg in its own frame, so the entrance is fixed there",
+   "espLink": {
+    "doorModel": "kotm:argonia/mudhuts/door02",
+    "interiorCell": "AltenGeneralStore",
+    "interiorFamily": "vanilla:dungeons/ship/questitems",
+    "interiorSizeM": {
+     "heightM": 4.66,
+     "planXM": 27.36,
+     "planYM": 9.22
+    },
+    "placements": 2,
+    "plugin": "King of the Murkmire.esp"
+   },
+   "floorOffsetM": 8.0,
+   "frontFaceFraction": 0.236,
+   "headroomM": 5.52,
+   "heightM": 13.89,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 3.6,
+   "planAreaM2": 105.17,
+   "planCentreM": [
+    0.56,
+    0.24
+   ],
+   "provenance": [
+    {
+     "count": 1,
+     "doorAsset": "kotm:argonia/mudhuts/door02",
+     "doorwaySource": "composite-leaf",
+     "kind": "composite-leaf",
+     "offsetM": [
+      0.09,
+      -2.81
+     ],
+     "radiusM": 2.81,
+     "sideDeg": 1.82
+    }
+   ],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "storeyLevelsM": [
+    1.3,
+    8.0
+   ],
+   "storeys": 2,
+   "tileset": "interior-kotm-v1",
+   "why": "King of the Murkmire.esp teleports from this shell into interior cell AltenGeneralStore (2 placements of the load door); that cell is built from vanilla:dungeons/ship/questitems, which is packaged as interior-kotm-v1"
+  },
+  "composite:plank/house3-with-door": {
+   "category": "misc",
+   "closedShellPromotedBy": "own-geometry-door",
+   "doorStoreyM": 8.98,
+   "doorwayProbeCentreM": [
+    -0.52,
+    -4.43
+   ],
+   "entrance": {
+    "doorAsset": "kotm:argonia/mudhuts/door02",
+    "heightM": 1.341,
+    "kind": "esp-door",
+    "offsetM": [
+     0.163,
+     -2.893
+    ],
+    "placements": 2,
+    "radiusM": 2.898,
+    "sideDeg": 3.22,
+    "yawDeg": 180.0
+   },
+   "entranceWhy": "the exterior door kotm:argonia/mudhuts/door02 that opens this interior, at the offset the plugin places it in this shell's own frame (2 placements)",
+   "espLink": {
+    "doorModel": "kotm:argonia/mudhuts/door02",
+    "interiorCell": "AltenDockmasterHouse",
+    "interiorFamily": "vanilla:dungeons/ship/questitems",
+    "interiorSizeM": {
+     "heightM": 6.14,
+     "planXM": 9.48,
+     "planYM": 7.49
+    },
+    "placements": 2,
+    "plugin": "King of the Murkmire.esp"
+   },
+   "floorOffsetM": 8.0,
+   "frontFaceFraction": 0.25,
+   "headroomM": 5.53,
+   "heightM": 13.93,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 4.77,
+   "planAreaM2": 169.05,
+   "planCentreM": [
+    -0.46,
+    0.08
+   ],
+   "provenance": [
+    {
+     "count": 1,
+     "doorAsset": "kotm:argonia/mudhuts/door02",
+     "doorwaySource": "composite-leaf",
+     "kind": "composite-leaf",
+     "offsetM": [
+      0.16,
+      -2.89
+     ],
+     "radiusM": 2.9,
+     "sideDeg": 3.22
+    },
+    {
+     "arcM": 3.23,
+     "centreShiftM": 0.22,
+     "clearM": 2.9,
+     "kind": "open-front",
+     "offsetM": [
+      -0.09,
+      -6.33
+     ],
+     "rayConfirmed": true,
+     "sideDeg": 3.26,
+     "sillYM": 1.39,
+     "widthM": 2.8
+    }
+   ],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    1.3,
+    8.0
+   ],
+   "storeys": 2,
+   "tileset": "interior-kotm-v1",
+   "why": "King of the Murkmire.esp teleports from this shell into interior cell AltenDockmasterHouse (2 placements of the load door); that cell is built from vanilla:dungeons/ship/questitems, which is packaged as interior-kotm-v1"
+  },
+  "composite:plank/roundhut02-with-door": {
+   "category": "misc",
+   "closedShellPromotedBy": "door-piece",
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.75,
+     "kind": "leaf",
+     "offsetM": [
+      5.56,
+      -3.54
+     ],
+     "sideDeg": 57.5
+    },
+    {
+     "arcM": 1.75,
+     "kind": "leaf",
+     "offsetM": [
+      4.86,
+      4.45
+     ],
+     "sideDeg": 132.5
+    },
+    {
+     "arcM": 1.75,
+     "kind": "leaf",
+     "offsetM": [
+      -0.86,
+      6.53
+     ],
+     "sideDeg": 187.5
+    },
+    {
+     "arcM": 1.75,
+     "kind": "leaf",
+     "offsetM": [
+      -3.04,
+      5.85
+     ],
+     "sideDeg": 207.5
+    }
+   ],
+   "entrance": {
+    "doorAsset": "kotm:argonia/mudhuts/door02",
+    "heightM": -1.366,
+    "kind": "esp-door",
+    "offsetM": [
+     -0.0,
+     -4.779
+    ],
+    "placements": 6,
+    "radiusM": 4.779,
+    "sideDeg": 360.0,
+    "yawDeg": 180.0
+   },
+   "entranceWhy": "the exterior door kotm:argonia/mudhuts/door02 that opens this interior, at the offset the plugin places it in this shell's own frame (6 placements)",
+   "espLink": {
+    "doorModel": "kotm:argonia/mudhuts/door02",
+    "interiorCell": "RootWhisperHouseFisher",
+    "interiorFamily": null,
+    "interiorSizeM": {
+     "heightM": 7.57,
+     "planXM": 9.62,
+     "planYM": 9.76
+    },
+    "placements": 2,
+    "plugin": "King of the Murkmire.esp"
+   },
+   "floorOffsetM": 0.0,
+   "frontFaceFraction": 0.278,
+   "headroomM": 5.07,
+   "heightM": 13.08,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 6.61,
+   "planAreaM2": 141.39,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [
+    {
+     "count": 1,
+     "doorAsset": "kotm:argonia/mudhuts/door02",
+     "doorwaySource": "composite-leaf",
+     "kind": "composite-leaf",
+     "offsetM": [
+      0.0,
+      -4.78
+     ],
+     "radiusM": 4.78,
+     "sideDeg": 0.0
+    }
+   ],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    -1.4,
+    0.0
+   ],
+   "storeys": 1,
+   "tileset": "interior-kotm-v1",
+   "why": "King of the Murkmire.esp teleports from this shell into interior cell RootWhisperHouseFisher (2 placements of the load door); that cell is built from None, which is packaged as interior-kotm-v1"
+  },
+  "composite:plank/roundhut03-with-door": {
+   "category": "misc",
+   "closedShellPromotedBy": "door-piece",
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.75,
+     "kind": "leaf",
+     "offsetM": [
+      5.56,
+      -3.54
+     ],
+     "sideDeg": 57.5
+    },
+    {
+     "arcM": 1.75,
+     "kind": "leaf",
+     "offsetM": [
+      4.86,
+      4.45
+     ],
+     "sideDeg": 132.5
+    },
+    {
+     "arcM": 1.75,
+     "kind": "leaf",
+     "offsetM": [
+      -0.86,
+      6.53
+     ],
+     "sideDeg": 187.5
+    },
+    {
+     "arcM": 1.75,
+     "kind": "leaf",
+     "offsetM": [
+      -3.04,
+      5.85
+     ],
+     "sideDeg": 207.5
+    }
+   ],
+   "entrance": {
+    "doorAsset": "kotm:argonia/mudhuts/door02",
+    "heightM": -1.366,
+    "kind": "esp-door",
+    "offsetM": [
+     0.0,
+     -4.779
+    ],
+    "placements": 6,
+    "radiusM": 4.779,
+    "sideDeg": 0.0,
+    "yawDeg": 180.0
+   },
+   "entranceWhy": "the exterior door kotm:argonia/mudhuts/door02 that opens this interior, at the offset the plugin places it in this shell's own frame (6 placements)",
+   "espLink": {
+    "doorModel": "kotm:argonia/mudhuts/door02",
+    "interiorCell": "RootWhisperHouseBeekeeper",
+    "interiorFamily": null,
+    "interiorSizeM": {
+     "heightM": 7.57,
+     "planXM": 26.42,
+     "planYM": 14.15
+    },
+    "placements": 2,
+    "plugin": "King of the Murkmire.esp"
+   },
+   "floorOffsetM": 0.0,
+   "frontFaceFraction": 0.278,
+   "headroomM": 5.07,
+   "heightM": 15.57,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 6.61,
+   "planAreaM2": 141.39,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [
+    {
+     "count": 1,
+     "doorAsset": "kotm:argonia/mudhuts/door02",
+     "doorwaySource": "composite-leaf",
+     "kind": "composite-leaf",
+     "offsetM": [
+      0.0,
+      -4.78
+     ],
+     "radiusM": 4.78,
+     "sideDeg": 0.0
+    }
+   ],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    -1.4,
+    0.0
+   ],
+   "storeys": 1,
+   "tileset": "interior-kotm-v1",
+   "why": "King of the Murkmire.esp teleports from this shell into interior cell RootWhisperHouseBeekeeper (2 placements of the load door); that cell is built from None, which is packaged as interior-kotm-v1"
+  },
+  "composite:plank/thatchhouse05-with-door": {
+   "category": "misc",
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.3,
+     "kind": "leaf",
+     "offsetM": [
+      -1.65,
+      -2.94
+     ],
+     "sideDeg": 347.5
+    },
+    {
+     "arcM": 1.13,
+     "kind": "leaf",
+     "offsetM": [
+      5.17,
+      1.51
+     ],
+     "sideDeg": 105.0
+    },
+    {
+     "arcM": 1.09,
+     "kind": "leaf",
+     "offsetM": [
+      5.11,
+      -0.69
+     ],
+     "sideDeg": 85.0
+    }
+   ],
+   "entrance": {
+    "doorAsset": "kotm:argonia/blackwood/shackdoor",
+    "heightM": 1.147,
+    "kind": "esp-door",
+    "offsetM": [
+     -1.376,
+     3.048
+    ],
+    "placements": 2,
+    "radiusM": 3.345,
+    "sideDeg": 204.3,
+    "yawDeg": 0.0
+   },
+   "entranceWhy": "the exterior door kotm:argonia/blackwood/shackdoor that opens this interior, at the offset the plugin places it in this shell's own frame (2 placements)",
+   "espLink": {
+    "doorModel": "kotm:argonia/blackwood/shackdoor",
+    "interiorCell": "SeekhatFishersHut",
+    "interiorFamily": "vanilla:architecture/farmhouse",
+    "interiorSizeM": {
+     "heightM": 4.24,
+     "planXM": 9.78,
+     "planYM": 6.04
+    },
+    "placements": 2,
+    "plugin": "King of the Murkmire.esp"
+   },
+   "floorOffsetM": 0.0,
+   "frontFaceFraction": 1.0,
+   "headroomM": 2.8,
+   "heightM": 6.43,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 4.13,
+   "planAreaM2": 83.9,
+   "planCentreM": [
+    -1.03,
+    -0.15
+   ],
+   "provenance": [
+    {
+     "count": 1,
+     "doorAsset": "kotm:argonia/blackwood/shackdoor",
+     "doorwaySource": "composite-leaf",
+     "kind": "composite-leaf",
+     "offsetM": [
+      -1.38,
+      3.05
+     ],
+     "radiusM": 3.34,
+     "sideDeg": 204.3
+    }
+   ],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "storeyLevelsM": [
+    0.0,
+    1.1
+   ],
+   "storeys": 1,
+   "tileset": "interior-kotm-v1",
+   "why": "King of the Murkmire.esp teleports from this shell into interior cell SeekhatFishersHut (2 placements of the load door); that cell is built from vanilla:architecture/farmhouse, which is packaged as interior-kotm-v1"
+  },
+  "composite:plank/thatchhouse06-with-door": {
+   "category": "misc",
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.32,
+     "kind": "leaf",
+     "offsetM": [
+      -4.95,
+      1.69
+     ],
+     "sideDeg": 242.5
+    },
+    {
+     "arcM": 0.94,
+     "kind": "leaf",
+     "offsetM": [
+      4.6,
+      0.76
+     ],
+     "sideDeg": 105.0
+    }
+   ],
+   "entrance": {
+    "doorAsset": "kotm:argonia/blackwood/shackdoor",
+    "heightM": 1.199,
+    "kind": "esp-door",
+    "offsetM": [
+     -1.834,
+     3.164
+    ],
+    "placements": 6,
+    "radiusM": 3.643,
+    "sideDeg": 210.1,
+    "yawDeg": 0.0
+   },
+   "entranceWhy": "the exterior door kotm:argonia/blackwood/shackdoor that opens this interior, at the offset the plugin places it in this shell's own frame (6 placements)",
+   "espLink": {
+    "doorModel": "kotm:argonia/blackwood/shackdoor",
+    "interiorCell": "SeekhatEldersHut",
+    "interiorFamily": "vanilla:architecture/farmhouse",
+    "interiorSizeM": {
+     "heightM": 4.91,
+     "planXM": 9.7,
+     "planYM": 6.01
+    },
+    "placements": 2,
+    "plugin": "King of the Murkmire.esp"
+   },
+   "floorOffsetM": 0.0,
+   "frontFaceFraction": 1.0,
+   "headroomM": 6.08,
+   "heightM": 6.76,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 4.35,
+   "planAreaM2": 107.57,
+   "planCentreM": [
+    -0.53,
+    -0.61
+   ],
+   "provenance": [
+    {
+     "count": 1,
+     "doorAsset": "kotm:argonia/blackwood/shackdoor",
+     "doorwaySource": "composite-leaf",
+     "kind": "composite-leaf",
+     "offsetM": [
+      -1.83,
+      3.16
+     ],
+     "radiusM": 3.66,
+     "sideDeg": 210.1
+    }
+   ],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "storeyLevelsM": [
+    0.0,
+    1.2
+   ],
+   "storeys": 1,
+   "tileset": "interior-kotm-v1",
+   "why": "King of the Murkmire.esp teleports from this shell into interior cell SeekhatEldersHut (2 placements of the load door); that cell is built from vanilla:architecture/farmhouse, which is packaged as interior-kotm-v1"
+  },
+  "composite:plank/thatchhouse07-with-door": {
+   "category": "misc",
+   "doorStoreyM": 0.15,
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.87,
+     "kind": "leaf",
+     "offsetM": [
+      -1.87,
+      3.14
+     ],
+     "sideDeg": 215.0
+    },
+    {
+     "arcM": 0.92,
+     "kind": "opening",
+     "offsetM": [
+      3.46,
+      1.74
+     ],
+     "sideDeg": 138.94
+    }
+   ],
+   "entrance": {
+    "doorAsset": "kotm:argonia/blackwood/shackdoor",
+    "heightM": 1.285,
+    "kind": "esp-door",
+    "offsetM": [
+     -0.95,
+     -7.06
+    ],
+    "placements": 8,
+    "radiusM": 7.127,
+    "sideDeg": 352.34,
+    "yawDeg": 180.0
+   },
+   "entranceWhy": "the exterior door kotm:argonia/blackwood/shackdoor that opens this interior stands on any bearing across the plugin's placements; this composite hangs it at 352 deg in its own frame, so the entrance is fixed there",
+   "espLink": {
+    "doorModel": "kotm:argonia/blackwood/shackdoor",
+    "interiorCell": "SeekhatAccommodationHut",
+    "interiorFamily": "vanilla:architecture/farmhouse",
+    "interiorSizeM": {
+     "heightM": 5.52,
+     "planXM": 15.65,
+     "planYM": 13.53
+    },
+    "placements": 4,
+    "plugin": "King of the Murkmire.esp"
+   },
+   "floorOffsetM": 0.0,
+   "frontFaceFraction": 1.0,
+   "headroomM": 5.98,
+   "heightM": 6.71,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 5.97,
+   "planAreaM2": 180.59,
+   "planCentreM": [
+    1.05,
+    -1.03
+   ],
+   "provenance": [
+    {
+     "count": 1,
+     "doorAsset": "kotm:argonia/blackwood/shackdoor",
+     "doorwaySource": "composite-leaf",
+     "kind": "composite-leaf",
+     "offsetM": [
+      -0.95,
+      -7.06
+     ],
+     "radiusM": 7.13,
+     "sideDeg": 352.34
+    }
+   ],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    0.0,
+    1.3
+   ],
+   "storeys": 1,
+   "tileset": "interior-kotm-v1",
+   "why": "King of the Murkmire.esp teleports from this shell into interior cell SeekhatAccommodationHut (4 placements of the load door); that cell is built from vanilla:architecture/farmhouse, which is packaged as interior-kotm-v1"
+  },
+  "composite:plank/thatchhouse08-with-door": {
+   "category": "misc",
+   "doorStoreyM": 0.18,
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.85,
+     "kind": "leaf",
+     "offsetM": [
+      4.11,
+      2.07
+     ],
+     "sideDeg": 117.5
+    },
+    {
+     "arcM": 1.25,
+     "kind": "leaf",
+     "offsetM": [
+      -2.94,
+      -2.95
+     ],
+     "sideDeg": 312.5
+    }
+   ],
+   "entrance": {
+    "doorAsset": "kotm:argonia/blackwood/shackdoor",
+    "heightM": 1.192,
+    "kind": "esp-door",
+    "offsetM": [
+     -2.021,
+     3.506
+    ],
+    "placements": 2,
+    "radiusM": 4.047,
+    "sideDeg": 209.96,
+    "yawDeg": 0.0
+   },
+   "entranceWhy": "the exterior door kotm:argonia/blackwood/shackdoor that opens this interior, at the offset the plugin places it in this shell's own frame (2 placements)",
+   "espLink": {
+    "doorModel": "kotm:argonia/blackwood/shackdoor",
+    "interiorCell": "SeekhatCarpenterHut",
+    "interiorFamily": "vanilla:architecture/farmhouse",
+    "interiorSizeM": {
+     "heightM": 5.72,
+     "planXM": 11.74,
+     "planYM": 6.35
+    },
+    "placements": 2,
+    "plugin": "King of the Murkmire.esp"
+   },
+   "floorOffsetM": 0.0,
+   "frontFaceFraction": 1.0,
+   "headroomM": 6.86,
+   "heightM": 7.61,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 3.9,
+   "planAreaM2": 109.24,
+   "planCentreM": [
+    0.47,
+    0.17
+   ],
+   "provenance": [
+    {
+     "count": 1,
+     "doorAsset": "kotm:argonia/blackwood/shackdoor",
+     "doorwaySource": "composite-leaf",
+     "kind": "composite-leaf",
+     "offsetM": [
+      -2.02,
+      3.51
+     ],
+     "radiusM": 4.05,
+     "sideDeg": 209.96
+    }
+   ],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "storeyLevelsM": [
+    0.0,
+    1.2
+   ],
+   "storeys": 1,
+   "tileset": "interior-kotm-v1",
+   "why": "King of the Murkmire.esp teleports from this shell into interior cell SeekhatCarpenterHut (2 placements of the load door); that cell is built from vanilla:architecture/farmhouse, which is packaged as interior-kotm-v1"
+  },
+  "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/farmhouseline": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 2.28,
+   "interior": "none",
+   "planAreaM2": 2.58,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (2.6 m\u00b2 plan, 2.3 m tall)"
+  },
+  "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/orcawningfull01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 3.0,
+   "front": null,
+   "frontFaceFraction": 0.653,
+   "headroomM": 2.35,
+   "heightM": 5.83,
+   "interior": "none",
+   "medianWallM": 1.18,
+   "planAreaM2": 52.02,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "solid, not hollow \u2014 walls are only 1.2 m away at 1.6 m (a room needs 1.5 m), so this is massing, not a building you enter"
+  },
+  "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/stonewallarch01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 3.0,
+   "front": {
+    "deg": 310.6,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 311\u00b0 in the piece's own frame carries 1.49x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 2.37,
+   "heightM": 5.39,
+   "interior": "none",
+   "medianWallM": 0.69,
+   "planAreaM2": 6.45,
+   "planCentreM": [
+    0.0,
+    0.04
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/stonewallcurve01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 2.4,
+   "heightM": 2.49,
+   "interior": "none",
+   "medianWallM": 0.59,
+   "planAreaM2": 11.5,
+   "planCentreM": [
+    0.85,
+    -1.04
+   ],
+   "provenance": [],
+   "ringFraction": 0.917,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/stonewallcurve02": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 1.85,
+   "heightM": 2.49,
+   "interior": "none",
+   "medianWallM": 0.84,
+   "planAreaM2": 11.09,
+   "planCentreM": [
+    -1.79,
+    -0.41
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/stonewallpillar01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 4.02,
+   "interior": "none",
+   "planAreaM2": 1.85,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.9 m\u00b2 plan, 4.0 m tall)"
+  },
+  "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/wickersofa01": {
+   "category": "furniture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 346.7,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 347\u00b0 in the piece's own frame carries 2.14x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.88,
+   "interior": "none",
+   "planAreaM2": 1.49,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.5 m\u00b2 plan, 0.9 m tall)"
+  },
+  "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/fireplace_si": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 348.4,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 127 times with other statics to one side; the side they left open, at 348\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "heightM": 9.16,
+   "interior": "none",
+   "planAreaM2": 3.11,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (3.1 m\u00b2 plan, 9.2 m tall)"
+  },
+  "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/shivering_stairs": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 1.5,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 7 times with other statics to one side; the side they left open, at 2\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 1.81,
+   "heightM": 3.74,
+   "interior": "none",
+   "medianWallM": 0.98,
+   "planAreaM2": 10.67,
+   "planCentreM": [
+    -0.23,
+    -0.33
+   ],
+   "provenance": [],
+   "ringFraction": 0.111,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "name token 'stair' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/shiveringcamp_01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 232.3,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 232\u00b0 in the piece's own frame carries 1.61x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 9.93,
+   "heightM": 18.83,
+   "interior": "none",
+   "medianWallM": 4.61,
+   "planAreaM2": 83.05,
+   "planCentreM": [
+    0.21,
+    -0.11
+   ],
+   "provenance": [],
+   "ringFraction": 0.153,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "open sided \u2014 only 15% of the ring at 1.6 m hits a wall, so it does not enclose anything"
+  },
+  "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/shiveringcamp_02": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 275.9,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 109 times with other statics to one side; the side they left open, at 276\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 9.93,
+   "heightM": 18.83,
+   "interior": "none",
+   "medianWallM": 4.61,
+   "planAreaM2": 83.05,
+   "planCentreM": [
+    0.21,
+    -0.11
+   ],
+   "provenance": [],
+   "ringFraction": 0.153,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "open sided \u2014 only 15% of the ring at 1.6 m hits a wall, so it does not enclose anything"
+  },
+  "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank02": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.08,
+   "interior": "none",
+   "planAreaM2": 0.27,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.3 m\u00b2 plan, 0.1 m tall)"
+  },
+  "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank03": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.04,
+   "interior": "none",
+   "planAreaM2": 0.28,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.3 m\u00b2 plan, 0.0 m tall)"
+  },
+  "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank04": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.04,
+   "interior": "none",
+   "planAreaM2": 0.31,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.3 m\u00b2 plan, 0.0 m tall)"
+  },
+  "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplankbroken02": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.05,
+   "interior": "none",
+   "planAreaM2": 0.11,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.1 m\u00b2 plan, 0.1 m tall)"
+  },
+  "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplankbroken03": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.06,
+   "interior": "none",
+   "planAreaM2": 0.15,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.1 m\u00b2 plan, 0.1 m tall)"
+  },
+  "kotm:argonia/blackwood/doorframe": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 195.5,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 61 times with other statics to one side; the side they left open, at 195\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "heightM": 3.0,
+   "interior": "none",
+   "planAreaM2": 0.99,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.0 m\u00b2 plan, 3.0 m tall)"
+  },
+  "kotm:argonia/blackwood/doorframeb": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 4.27,
+   "interior": "none",
+   "planAreaM2": 1.15,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.1 m\u00b2 plan, 4.3 m tall)"
+  },
+  "kotm:argonia/blackwood/hausneu01": {
+   "category": "misc",
+   "closedShellPromotedBy": "own-geometry-door",
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.36,
+     "kind": "opening",
+     "offsetM": [
+      1.18,
+      -4.12
+     ],
+     "sideDeg": 350.0
+    }
+   ],
+   "doorwaysMeasuredBelowM": 5.0,
+   "entrance": {
+    "doorAsset": "kotm:argonia/mudhuts/door02",
+    "kind": "esp-door",
+    "placements": 4,
+    "radial": true,
+    "radiusM": 8.603
+   },
+   "entranceWhy": "the exterior door kotm:argonia/mudhuts/door02 that opens this interior, at a constant radius on any bearing across the plugin's placements (4 placements)",
+   "espLink": {
+    "doorModel": "kotm:argonia/mudhuts/door02",
+    "interiorCell": "LilmothBookstoreInt",
+    "interiorFamily": null,
+    "interiorSizeM": {
+     "heightM": 7.09,
+     "planXM": 14.88,
+     "planYM": 13.2
+    },
+    "placements": 2,
+    "plugin": "King of the Murkmire.esp"
+   },
+   "floorOffsetM": 5.0,
+   "frontFaceFraction": 0.153,
+   "headroomM": 5.4,
+   "heightM": 16.71,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 7.84,
+   "planAreaM2": 286.97,
+   "planCentreM": [
+    2.01,
+    0.58
+   ],
+   "provenance": [
+    {
+     "arcM": 2.14,
+     "centreShiftM": -0.03,
+     "clearM": 5.58,
+     "kind": "opening",
+     "offsetM": [
+      4.47,
+      -7.22
+     ],
+     "rayConfirmed": true,
+     "sideDeg": 17.5,
+     "sillYM": -1.69,
+     "widthM": 3.6
+    },
+    {
+     "arcM": 1.36,
+     "centreShiftM": 0.92,
+     "clearM": 4.1,
+     "kind": "opening",
+     "offsetM": [
+      1.17,
+      -4.15
+     ],
+     "rayConfirmed": true,
+     "sideDeg": 350.0,
+     "sillYM": -1.91,
+     "widthM": 3.2
+    }
+   ],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    5.0
+   ],
+   "storeys": 1,
+   "tileset": "interior-kotm-v1",
+   "why": "King of the Murkmire.esp teleports from this shell into interior cell LilmothBookstoreInt (2 placements of the load door); that cell is built from None, which is packaged as interior-kotm-v1"
+  },
+  "kotm:argonia/blackwood/hausneu02": {
+   "category": "misc",
+   "doorwaysMeasuredBelowM": 7.0,
+   "entrance": {
+    "doorAsset": "kotm:argonia/mudhuts/door02",
+    "kind": "esp-door",
+    "placements": 12,
+    "radial": true,
+    "radiusM": 5.988
+   },
+   "entranceWhy": "the exterior door kotm:argonia/mudhuts/door02 that opens this interior, at a constant radius on any bearing across the plugin's placements (12 placements)",
+   "espLink": {
+    "doorModel": "kotm:argonia/mudhuts/door02",
+    "interiorCell": "LilmothOliisIronFoundryBunkhouse",
+    "interiorFamily": "mwkeep:tesak1243/mwimperialarchitecture/architecture/keep/interior/smhall",
+    "interiorSizeM": {
+     "heightM": 8.59,
+     "planXM": 16.68,
+     "planYM": 16.56
+    },
+    "placements": 4,
+    "plugin": "King of the Murkmire.esp"
+   },
+   "floorOffsetM": 7.0,
+   "frontFaceFraction": 1.0,
+   "headroomM": 8.5,
+   "heightM": 16.66,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 1.6,
+   "planAreaM2": 277.28,
+   "planCentreM": [
+    2.0,
+    -1.95
+   ],
+   "provenance": [
+    {
+     "arcM": 1.83,
+     "centreShiftM": -0.13,
+     "clearM": 3.1,
+     "kind": "opening",
+     "offsetM": [
+      3.51,
+      4.86
+     ],
+     "rayConfirmed": true,
+     "sideDeg": 167.5,
+     "sillYM": 0.0,
+     "widthM": 1.5
+    }
+   ],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    7.0
+   ],
+   "storeys": 1,
+   "tileset": "interior-kotm-v1",
+   "why": "King of the Murkmire.esp teleports from this shell into interior cell LilmothOliisIronFoundryBunkhouse (4 placements of the load door); that cell is built from mwkeep:tesak1243/mwimperialarchitecture/architecture/keep/interior/smhall, which is packaged as interior-kotm-v1"
+  },
+  "kotm:argonia/blackwood/hausneu03": {
+   "category": "misc",
+   "closedShellPromotedBy": "own-geometry-door",
+   "doorwaysMeasuredBelowM": 2.0,
+   "entrance": {
+    "arcM": 0.99,
+    "centreShiftM": -0.15,
+    "clearM": 3.1,
+    "kind": "opening",
+    "offsetM": [
+     -1.3,
+     -7.27
+    ],
+    "rayConfirmed": true,
+    "sideDeg": 352.5,
+    "sillYM": -0.31,
+    "widthM": 1.65
+   },
+   "floorOffsetM": 2.0,
+   "frontFaceFraction": 0.0,
+   "headroomM": 10.24,
+   "heightM": 16.41,
+   "interior": "shell",
+   "medianWallM": 4.51,
+   "planAreaM2": 146.62,
+   "planCentreM": [
+    0.17,
+    3.94
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    2.0
+   ],
+   "storeys": 1,
+   "why": "measured to enclose a volume \u2014 100% of the ring at 1.6 m hits a wall, there is a roof overhead and 4.5 m of room to stand \u2014 with no matched interior and no tileset rule, so Phase 12 must claim an interior for it"
+  },
+  "kotm:argonia/blackwood/house04platform": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 1.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 5.76,
+   "heightM": 6.93,
+   "interior": "none",
+   "medianWallM": 5.04,
+   "planAreaM2": 124.83,
+   "planCentreM": [
+    -0.43,
+    0.4
+   ],
+   "provenance": [],
+   "ringFraction": 0.236,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "why": "open sided \u2014 only 24% of the ring at 1.6 m hits a wall, so it does not enclose anything"
+  },
+  "kotm:argonia/blackwood/house05platform": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 157.3,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 157\u00b0 in the piece's own frame carries 1.38x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 6.74,
+   "heightM": 6.9,
+   "interior": "none",
+   "medianWallM": 3.07,
+   "planAreaM2": 62.17,
+   "planCentreM": [
+    0.43,
+    0.18
+   ],
+   "provenance": [],
+   "ringFraction": 0.181,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "open sided \u2014 only 18% of the ring at 1.6 m hits a wall, so it does not enclose anything"
+  },
+  "kotm:argonia/blackwood/house1": {
+   "category": "misc",
+   "doorStoreyM": 6.9,
+   "entrance": {
+    "doorAsset": "kotm:argonia/mudhuts/door02",
+    "kind": "esp-door",
+    "placements": 6,
+    "radial": true,
+    "radiusM": 2.841
+   },
+   "entranceWhy": "the exterior door kotm:argonia/mudhuts/door02 that opens this interior, at a constant radius on any bearing across the plugin's placements (6 placements)",
+   "espLink": {
+    "doorModel": "kotm:argonia/mudhuts/door02",
+    "interiorCell": "AltenGeneralStore",
+    "interiorFamily": "vanilla:dungeons/ship/questitems",
+    "interiorSizeM": {
+     "heightM": 4.66,
+     "planXM": 27.36,
+     "planYM": 9.22
+    },
+    "placements": 2,
+    "plugin": "King of the Murkmire.esp"
+   },
+   "floorOffsetM": 8.0,
+   "frontFaceFraction": 0.736,
+   "headroomM": 2.4,
+   "heightM": 10.68,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 2.64,
+   "planAreaM2": 62.17,
+   "planCentreM": [
+    0.43,
+    0.18
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "storeyLevelsM": [
+    8.0
+   ],
+   "storeys": 1,
+   "tileset": "interior-kotm-v1",
+   "why": "King of the Murkmire.esp teleports from this shell into interior cell AltenGeneralStore (2 placements of the load door); that cell is built from vanilla:dungeons/ship/questitems, which is packaged as interior-kotm-v1"
+  },
+  "kotm:argonia/blackwood/house2": {
+   "category": "misc",
+   "closedShellPromotedBy": "door-piece",
+   "doorStoreyM": 6.91,
+   "entrance": {
+    "doorAsset": "kotm:argonia/mudhuts/door02",
+    "heightM": 1.304,
+    "kind": "esp-door",
+    "offsetM": [
+     -4.462,
+     -6.67
+    ],
+    "placements": 8,
+    "radiusM": 4.147,
+    "sideDeg": 326.22,
+    "yawDeg": 269.92
+   },
+   "entranceWhy": "the exterior door kotm:argonia/mudhuts/door02 that opens this interior, at the offset the plugin places it in this shell's own frame (8 placements)",
+   "espLink": {
+    "doorModel": "kotm:argonia/mudhuts/door02",
+    "interiorCell": "LilmothGlassFoundry",
+    "interiorFamily": "vanilla:dungeons/dwemer/pipes",
+    "interiorSizeM": {
+     "heightM": 7.43,
+     "planXM": 15.33,
+     "planYM": 17.67
+    },
+    "placements": 2,
+    "plugin": "King of the Murkmire.esp"
+   },
+   "floorOffsetM": 6.0,
+   "frontFaceFraction": 0.292,
+   "headroomM": 4.14,
+   "heightM": 11.79,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 3.49,
+   "planAreaM2": 218.54,
+   "planCentreM": [
+    -2.57,
+    -0.8
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    1.3,
+    6.0
+   ],
+   "storeys": 2,
+   "tileset": "interior-kotm-v1",
+   "why": "King of the Murkmire.esp teleports from this shell into interior cell LilmothGlassFoundry (2 placements of the load door); that cell is built from vanilla:dungeons/dwemer/pipes, which is packaged as interior-kotm-v1"
+  },
+  "kotm:argonia/blackwood/house3": {
+   "category": "misc",
+   "doorStoreyM": 6.9,
+   "entrance": {
+    "doorAsset": "kotm:argonia/mudhuts/door02",
+    "heightM": 1.341,
+    "kind": "esp-door",
+    "offsetM": [
+     0.163,
+     -2.893
+    ],
+    "placements": 2,
+    "radiusM": 2.898,
+    "sideDeg": 3.22,
+    "yawDeg": 180.0
+   },
+   "entranceWhy": "the exterior door kotm:argonia/mudhuts/door02 that opens this interior, at the offset the plugin places it in this shell's own frame (2 placements)",
+   "espLink": {
+    "doorModel": "kotm:argonia/mudhuts/door02",
+    "interiorCell": "AltenDockmasterHouse",
+    "interiorFamily": "vanilla:dungeons/ship/questitems",
+    "interiorSizeM": {
+     "heightM": 6.14,
+     "planXM": 9.48,
+     "planYM": 7.49
+    },
+    "placements": 2,
+    "plugin": "King of the Murkmire.esp"
+   },
+   "floorOffsetM": 8.0,
+   "frontFaceFraction": 0.667,
+   "headroomM": 2.41,
+   "heightM": 10.71,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 3.67,
+   "planAreaM2": 99.92,
+   "planCentreM": [
+    -0.35,
+    0.06
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "storeyLevelsM": [
+    1.3,
+    8.0
+   ],
+   "storeys": 2,
+   "tileset": "interior-kotm-v1",
+   "why": "King of the Murkmire.esp teleports from this shell into interior cell AltenDockmasterHouse (2 placements of the load door); that cell is built from vanilla:dungeons/ship/questitems, which is packaged as interior-kotm-v1"
+  },
+  "kotm:argonia/blackwood/house3under": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 1.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 1.68,
+   "heightM": 2.85,
+   "interior": "none",
+   "medianWallM": 1.24,
+   "planAreaM2": 59.61,
+   "planCentreM": [
+    -0.03,
+    0.4
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "a crawl space, not a room \u2014 only 1.7 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "kotm:argonia/blackwood/house4": {
+   "category": "misc",
+   "closedShellPromotedBy": "door-piece",
+   "entrance": {
+    "doorAsset": "kotm:argonia/mudhuts/door02",
+    "kind": "esp-door",
+    "placements": 32,
+    "radial": true,
+    "radiusM": 7.109
+   },
+   "entranceWhy": "the exterior door kotm:argonia/mudhuts/door02 that opens this interior, at a constant radius on any bearing across the plugin's placements (32 placements)",
+   "espLink": {
+    "doorModel": "kotm:argonia/mudhuts/door02",
+    "interiorCell": "LilmothCarpenters",
+    "interiorFamily": null,
+    "interiorSizeM": {
+     "heightM": 8.19,
+     "planXM": 12.33,
+     "planYM": 17.3
+    },
+    "placements": 4,
+    "plugin": "King of the Murkmire.esp"
+   },
+   "floorOffsetM": 13.18,
+   "frontFaceFraction": 0.292,
+   "headroomM": 5.59,
+   "heightM": 19.04,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 5.02,
+   "planAreaM2": 125.89,
+   "planCentreM": [
+    0.3,
+    1.02
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    13.2
+   ],
+   "storeys": 1,
+   "tileset": "interior-kotm-v1",
+   "why": "King of the Murkmire.esp teleports from this shell into interior cell LilmothCarpenters (4 placements of the load door); that cell is built from None, which is packaged as interior-kotm-v1"
+  },
+  "kotm:argonia/blackwood/house5": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 3.65,
+   "heightM": 11.3,
+   "interior": "none",
+   "medianWallM": 7.15,
+   "planAreaM2": 311.6,
+   "planCentreM": [
+    2.28,
+    -0.07
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "kotm:argonia/blackwood/housewindow": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 1.14,
+   "interior": "none",
+   "planAreaM2": 0.15,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.1 m\u00b2 plan, 1.1 m tall)"
+  },
+  "kotm:argonia/blackwood/plankwall01a": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 3.74,
+   "interior": "none",
+   "planAreaM2": 0.0,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.0 m\u00b2 plan, 3.7 m tall)"
+  },
+  "kotm:argonia/blackwood/plankwall01b": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 3.74,
+   "interior": "none",
+   "planAreaM2": 1.27,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.3 m\u00b2 plan, 3.7 m tall)"
+  },
+  "kotm:argonia/blackwood/plankwall02a": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 3.74,
+   "interior": "none",
+   "planAreaM2": 0.0,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.0 m\u00b2 plan, 3.7 m tall)"
+  },
+  "kotm:argonia/blackwood/plankwall02b": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 3.74,
+   "interior": "none",
+   "planAreaM2": 1.9,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.9 m\u00b2 plan, 3.7 m tall)"
+  },
+  "kotm:argonia/blackwood/plankwall03a": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.0,
+   "interior": "none",
+   "planAreaM2": 12.98,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (13.0 m\u00b2 plan, 0.0 m tall)"
+  },
+  "kotm:argonia/blackwood/roundhut01": {
+   "category": "misc",
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.75,
+     "kind": "leaf",
+     "offsetM": [
+      5.56,
+      -3.54
+     ],
+     "sideDeg": 57.5
+    },
+    {
+     "arcM": 1.75,
+     "kind": "leaf",
+     "offsetM": [
+      4.86,
+      4.45
+     ],
+     "sideDeg": 132.5
+    },
+    {
+     "arcM": 1.75,
+     "kind": "leaf",
+     "offsetM": [
+      -0.86,
+      6.53
+     ],
+     "sideDeg": 187.5
+    },
+    {
+     "arcM": 1.75,
+     "kind": "leaf",
+     "offsetM": [
+      -3.04,
+      5.85
+     ],
+     "sideDeg": 207.5
+    }
+   ],
+   "entrance": null,
+   "entranceWhy": "every measured doorway was closed wall by rays (4 dropped); the door is a separate piece or the plugin's own placement",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 15.1,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 15\u00b0 in the piece's own frame carries 1.40x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.278,
+   "headroomM": 5.07,
+   "heightM": 13.21,
+   "interior": "matched",
+   "interiorAssetRef": "kotm:argonia/blackwood/roundhut01int",
+   "medianWallM": 6.61,
+   "planAreaM2": 141.39,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    0.0
+   ],
+   "storeys": 1,
+   "why": "the kotm pool ships kotm:argonia/blackwood/roundhut01int as this piece's matched interior, authored to fit it"
+  },
+  "kotm:argonia/blackwood/roundhut02": {
+   "category": "misc",
+   "closedShellPromotedBy": "door-piece",
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.75,
+     "kind": "leaf",
+     "offsetM": [
+      5.56,
+      -3.54
+     ],
+     "sideDeg": 57.5
+    },
+    {
+     "arcM": 1.75,
+     "kind": "leaf",
+     "offsetM": [
+      4.86,
+      4.45
+     ],
+     "sideDeg": 132.5
+    },
+    {
+     "arcM": 1.75,
+     "kind": "leaf",
+     "offsetM": [
+      -0.86,
+      6.53
+     ],
+     "sideDeg": 187.5
+    },
+    {
+     "arcM": 1.75,
+     "kind": "leaf",
+     "offsetM": [
+      -3.04,
+      5.85
+     ],
+     "sideDeg": 207.5
+    }
+   ],
+   "entrance": {
+    "doorAsset": "kotm:argonia/mudhuts/door02",
+    "heightM": -1.366,
+    "kind": "esp-door",
+    "offsetM": [
+     -0.0,
+     -4.779
+    ],
+    "placements": 6,
+    "radiusM": 4.779,
+    "sideDeg": 360.0,
+    "yawDeg": 180.0
+   },
+   "entranceWhy": "the exterior door kotm:argonia/mudhuts/door02 that opens this interior, at the offset the plugin places it in this shell's own frame (6 placements)",
+   "espLink": {
+    "doorModel": "kotm:argonia/mudhuts/door02",
+    "interiorCell": "RootWhisperHouseFisher",
+    "interiorFamily": null,
+    "interiorSizeM": {
+     "heightM": 7.57,
+     "planXM": 9.62,
+     "planYM": 9.76
+    },
+    "placements": 2,
+    "plugin": "King of the Murkmire.esp"
+   },
+   "floorOffsetM": 0.0,
+   "frontFaceFraction": 0.292,
+   "headroomM": 5.07,
+   "heightM": 13.08,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 6.6,
+   "planAreaM2": 141.39,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    -1.4,
+    0.0
+   ],
+   "storeys": 1,
+   "tileset": "interior-kotm-v1",
+   "why": "King of the Murkmire.esp teleports from this shell into interior cell RootWhisperHouseFisher (2 placements of the load door); that cell is built from None, which is packaged as interior-kotm-v1"
+  },
+  "kotm:argonia/blackwood/roundhut03": {
+   "category": "misc",
+   "closedShellPromotedBy": "door-piece",
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.75,
+     "kind": "leaf",
+     "offsetM": [
+      5.56,
+      -3.54
+     ],
+     "sideDeg": 57.5
+    },
+    {
+     "arcM": 1.75,
+     "kind": "leaf",
+     "offsetM": [
+      4.86,
+      4.45
+     ],
+     "sideDeg": 132.5
+    },
+    {
+     "arcM": 1.75,
+     "kind": "leaf",
+     "offsetM": [
+      -0.86,
+      6.53
+     ],
+     "sideDeg": 187.5
+    },
+    {
+     "arcM": 1.75,
+     "kind": "leaf",
+     "offsetM": [
+      -3.04,
+      5.85
+     ],
+     "sideDeg": 207.5
+    }
+   ],
+   "entrance": {
+    "doorAsset": "kotm:argonia/mudhuts/door02",
+    "heightM": -1.366,
+    "kind": "esp-door",
+    "offsetM": [
+     0.0,
+     -4.779
+    ],
+    "placements": 6,
+    "radiusM": 4.779,
+    "sideDeg": 0.0,
+    "yawDeg": 180.0
+   },
+   "entranceWhy": "the exterior door kotm:argonia/mudhuts/door02 that opens this interior, at the offset the plugin places it in this shell's own frame (6 placements)",
+   "espLink": {
+    "doorModel": "kotm:argonia/mudhuts/door02",
+    "interiorCell": "RootWhisperHouseBeekeeper",
+    "interiorFamily": null,
+    "interiorSizeM": {
+     "heightM": 7.57,
+     "planXM": 26.42,
+     "planYM": 14.15
+    },
+    "placements": 2,
+    "plugin": "King of the Murkmire.esp"
+   },
+   "floorOffsetM": 0.0,
+   "frontFaceFraction": 0.278,
+   "headroomM": 5.07,
+   "heightM": 15.57,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 6.61,
+   "planAreaM2": 141.39,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    -1.4,
+    0.0
+   ],
+   "storeys": 1,
+   "tileset": "interior-kotm-v1",
+   "why": "King of the Murkmire.esp teleports from this shell into interior cell RootWhisperHouseBeekeeper (2 placements of the load door); that cell is built from None, which is packaged as interior-kotm-v1"
+  },
+  "kotm:argonia/blackwood/shackdoor": {
+   "category": "door",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 12.1,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 15 times with other statics to one side; the side they left open, at 12\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "heightM": 2.13,
+   "interior": "none",
+   "planAreaM2": 0.59,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.6 m\u00b2 plan, 2.1 m tall)"
+  },
+  "kotm:argonia/blackwood/shiveringhouse_02": {
+   "category": "misc",
+   "closedShellPromotedBy": "own-geometry-door",
+   "doorwayProbeCentreM": [
+    7.61,
+    -0.72
+   ],
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.93,
+     "kind": "leaf",
+     "offsetM": [
+      -5.11,
+      -2.16
+     ],
+     "sideDeg": 305.0
+    },
+    {
+     "arcM": 1.92,
+     "kind": "leaf",
+     "offsetM": [
+      -5.17,
+      0.1
+     ],
+     "sideDeg": 267.5
+    }
+   ],
+   "entrance": {
+    "doorAsset": "kotm:argonia/mudhuts/door02",
+    "kind": "esp-door",
+    "placements": 62,
+    "radial": true,
+    "radiusM": 6.566
+   },
+   "entranceWhy": "the exterior door kotm:argonia/mudhuts/door02 that opens this interior, at a constant radius on any bearing across the plugin's placements (62 placements)",
+   "espLink": {
+    "doorModel": "kotm:argonia/mudhuts/door02",
+    "interiorCell": "LilmothBakeryInt",
+    "interiorFamily": null,
+    "interiorSizeM": {
+     "heightM": 11.14,
+     "planXM": 14.3,
+     "planYM": 9.84
+    },
+    "placements": 4,
+    "plugin": "King of the Murkmire.esp"
+   },
+   "floorOffsetM": 0.0,
+   "frontFaceFraction": 0.069,
+   "headroomM": 18.22,
+   "heightM": 19.01,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 3.95,
+   "planAreaM2": 189.99,
+   "planCentreM": [
+    -2.08,
+    -0.04
+   ],
+   "provenance": [
+    {
+     "arcM": 2.9,
+     "centreShiftM": -0.6,
+     "clearM": 2.95,
+     "kind": "open-front",
+     "offsetM": [
+      7.69,
+      -2.47
+     ],
+     "rayConfirmed": true,
+     "sideDeg": 76.01,
+     "sillYM": -5.55,
+     "widthM": 3.85
+    }
+   ],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    0.0
+   ],
+   "storeys": 1,
+   "tileset": "interior-kotm-v1",
+   "why": "King of the Murkmire.esp teleports from this shell into interior cell LilmothBakeryInt (4 placements of the load door); that cell is built from None, which is packaged as interior-kotm-v1"
+  },
+  "kotm:argonia/blackwood/stable": {
+   "category": "misc",
+   "doorStoreyM": 6.91,
+   "entrance": {
+    "arcM": 1.36,
+    "centreShiftM": 0.12,
+    "clearM": 2.25,
+    "kind": "opening",
+    "offsetM": [
+     3.48,
+     0.86
+    ],
+    "rayConfirmed": true,
+    "sideDeg": 102.5,
+    "sillYM": 1.08,
+    "widthM": 1.4
+   },
+   "floorOffsetM": 8.0,
+   "frontFaceFraction": 1.0,
+   "headroomM": 2.41,
+   "heightM": 10.69,
+   "interior": "shell",
+   "medianWallM": 2.39,
+   "planAreaM2": 62.17,
+   "planCentreM": [
+    0.43,
+    0.18
+   ],
+   "provenance": [
+    {
+     "arcM": 1.38,
+     "centreShiftM": -0.13,
+     "clearM": 2.25,
+     "kind": "opening",
+     "offsetM": [
+      -3.47,
+      0.87
+     ],
+     "rayConfirmed": true,
+     "sideDeg": 260.0,
+     "sillYM": 1.08,
+     "widthM": 1.4
+    },
+    {
+     "arcM": 1.41,
+     "centreShiftM": 0.15,
+     "clearM": 2.25,
+     "kind": "opening",
+     "offsetM": [
+      -3.47,
+      -0.86
+     ],
+     "rayConfirmed": true,
+     "sideDeg": 285.0,
+     "sillYM": 1.08,
+     "widthM": 1.35
+    },
+    {
+     "arcM": 1.54,
+     "centreShiftM": -0.05,
+     "clearM": 2.25,
+     "kind": "opening",
+     "offsetM": [
+      0.05,
+      -1.99
+     ],
+     "rayConfirmed": true,
+     "sideDeg": 350.0,
+     "sillYM": 1.08,
+     "widthM": 1.55
+    }
+   ],
+   "ringFraction": 0.764,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "storeyLevelsM": [
+    8.0
+   ],
+   "storeys": 1,
+   "why": "measured to enclose a volume \u2014 76% of the ring at 1.6 m hits a wall, there is a roof overhead and 2.4 m of room to stand \u2014 with no matched interior and no tileset rule, so Phase 12 must claim an interior for it"
+  },
+  "kotm:argonia/blackwood/thatchhouse01": {
+   "category": "misc",
+   "doorStoreyM": 0.63,
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.01,
+     "kind": "opening",
+     "offsetM": [
+      4.38,
+      -0.96
+     ],
+     "sideDeg": 80.0
+    },
+    {
+     "arcM": 0.89,
+     "kind": "opening",
+     "offsetM": [
+      4.38,
+      -2.28
+     ],
+     "sideDeg": 57.5
+    }
+   ],
+   "entrance": {
+    "arcM": 1.31,
+    "centreShiftM": -0.08,
+    "clearM": 2.65,
+    "kind": "open-front",
+    "offsetM": [
+     4.28,
+     0.69
+    ],
+    "rayConfirmed": true,
+    "sideDeg": 112.5,
+    "sillYM": 1.06,
+    "widthM": 1.4
+   },
+   "floorOffsetM": 0.0,
+   "frontFaceFraction": 1.0,
+   "headroomM": 6.03,
+   "heightM": 8.18,
+   "interior": "shell",
+   "medianWallM": 2.99,
+   "planAreaM2": 116.04,
+   "planCentreM": [
+    1.52,
+    -0.46
+   ],
+   "provenance": [],
+   "ringFraction": 0.833,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "storeyLevelsM": [
+    0.0
+   ],
+   "storeys": 1,
+   "why": "measured to enclose a volume \u2014 83% of the ring at 1.6 m hits a wall, there is a roof overhead and 3.0 m of room to stand \u2014 with no matched interior and no tileset rule, so Phase 12 must claim an interior for it"
+  },
+  "kotm:argonia/blackwood/thatchhouse02": {
+   "category": "misc",
+   "doorStoreyM": 1.66,
+   "entrance": {
+    "arcM": 6.18,
+    "centreShiftM": -0.0,
+    "clearM": 2.95,
+    "kind": "open-front",
+    "offsetM": [
+     4.34,
+     1.78
+    ],
+    "rayConfirmed": true,
+    "sideDeg": 130.0,
+    "sillYM": 0.98,
+    "widthM": 5.05
+   },
+   "floorOffsetM": 1.0,
+   "frontFaceFraction": 0.833,
+   "headroomM": 4.36,
+   "heightM": 9.43,
+   "interior": "shell",
+   "medianWallM": 3.93,
+   "planAreaM2": 184.46,
+   "planCentreM": [
+    1.33,
+    -0.75
+   ],
+   "provenance": [],
+   "ringFraction": 0.75,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    1.0
+   ],
+   "storeys": 1,
+   "why": "measured to enclose a volume \u2014 75% of the ring at 1.6 m hits a wall, there is a roof overhead and 3.9 m of room to stand \u2014 with no matched interior and no tileset rule, so Phase 12 must claim an interior for it"
+  },
+  "kotm:argonia/blackwood/thatchhouse03": {
+   "category": "misc",
+   "entrance": {
+    "doorAsset": "kotm:argonia/blackwood/doorframeb",
+    "fitHow": "on the wall line",
+    "fitM": 0.058,
+    "kind": "door-piece",
+    "offsetM": [
+     -0.01,
+     -0.07
+    ],
+    "pieceHeightM": 4.15,
+    "sideDeg": 42.18
+   },
+   "entranceWhy": "the shell's own mesh has no opening \u2014 its entrance is a separate piece its pool ships in the same directory (doorframeb, walldoor01), modelled in the shell's own frame and measured to sit on its wall line to within 0.06 m",
+   "floorOffsetM": 0.0,
+   "frontFaceFraction": 0.838,
+   "headroomM": 2.52,
+   "heightM": 3.21,
+   "interior": "shell",
+   "medianWallM": 1.82,
+   "planAreaM2": 20.84,
+   "planCentreM": [
+    -0.23,
+    0.17
+   ],
+   "provenance": [
+    {
+     "doorAsset": "kotm:argonia/blackwood/walldoor01",
+     "fitHow": "on the wall line",
+     "fitM": 0.053,
+     "kind": "door-piece",
+     "offsetM": [
+      0.0,
+      0.0
+     ],
+     "pieceHeightM": 3.57,
+     "sideDeg": 53.82
+    }
+   ],
+   "ringFraction": 0.944,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "storeyLevelsM": [
+    0.0
+   ],
+   "storeys": 1,
+   "why": "measured to enclose a volume \u2014 94% of the ring at 1.6 m hits a wall, there is a roof overhead and 1.8 m of room to stand \u2014 with no matched interior and no tileset rule, so Phase 12 must claim an interior for it"
+  },
+  "kotm:argonia/blackwood/thatchhouse04": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 342.4,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 342\u00b0 in the piece's own frame carries 1.38x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.758,
+   "headroomM": 2.17,
+   "heightM": 2.78,
+   "interior": "none",
+   "medianWallM": 1.09,
+   "planAreaM2": 16.65,
+   "planCentreM": [
+    -0.16,
+    0.05
+   ],
+   "provenance": [],
+   "ringFraction": 0.861,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 2.2 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "kotm:argonia/blackwood/thatchhouse05": {
+   "category": "misc",
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.66,
+     "kind": "leaf",
+     "offsetM": [
+      -5.16,
+      0.44
+     ],
+     "sideDeg": 270.0
+    },
+    {
+     "arcM": 1.58,
+     "kind": "leaf",
+     "offsetM": [
+      1.82,
+      2.95
+     ],
+     "sideDeg": 137.5
+    }
+   ],
+   "entrance": {
+    "doorAsset": "kotm:argonia/blackwood/shackdoor",
+    "heightM": 1.147,
+    "kind": "esp-door",
+    "offsetM": [
+     -1.376,
+     3.048
+    ],
+    "placements": 2,
+    "radiusM": 3.345,
+    "sideDeg": 204.3,
+    "yawDeg": 0.0
+   },
+   "entranceWhy": "the exterior door kotm:argonia/blackwood/shackdoor that opens this interior, at the offset the plugin places it in this shell's own frame (2 placements)",
+   "espLink": {
+    "doorModel": "kotm:argonia/blackwood/shackdoor",
+    "interiorCell": "SeekhatFishersHut",
+    "interiorFamily": "vanilla:architecture/farmhouse",
+    "interiorSizeM": {
+     "heightM": 4.24,
+     "planXM": 9.78,
+     "planYM": 6.04
+    },
+    "placements": 2,
+    "plugin": "King of the Murkmire.esp"
+   },
+   "floorOffsetM": 0.0,
+   "frontFaceFraction": 1.0,
+   "headroomM": 4.89,
+   "heightM": 6.43,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 4.21,
+   "planAreaM2": 84.72,
+   "planCentreM": [
+    -0.48,
+    0.44
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "storeyLevelsM": [
+    0.0,
+    1.1
+   ],
+   "storeys": 1,
+   "tileset": "interior-kotm-v1",
+   "why": "King of the Murkmire.esp teleports from this shell into interior cell SeekhatFishersHut (2 placements of the load door); that cell is built from vanilla:architecture/farmhouse, which is packaged as interior-kotm-v1"
+  },
+  "kotm:argonia/blackwood/thatchhouse06": {
+   "category": "misc",
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.32,
+     "kind": "leaf",
+     "offsetM": [
+      -4.95,
+      1.69
+     ],
+     "sideDeg": 242.5
+    },
+    {
+     "arcM": 0.94,
+     "kind": "leaf",
+     "offsetM": [
+      4.6,
+      0.76
+     ],
+     "sideDeg": 105.0
+    }
+   ],
+   "entrance": {
+    "doorAsset": "kotm:argonia/blackwood/shackdoor",
+    "heightM": 1.199,
+    "kind": "esp-door",
+    "offsetM": [
+     -1.834,
+     3.164
+    ],
+    "placements": 6,
+    "radiusM": 3.643,
+    "sideDeg": 210.1,
+    "yawDeg": 0.0
+   },
+   "entranceWhy": "the exterior door kotm:argonia/blackwood/shackdoor that opens this interior, at the offset the plugin places it in this shell's own frame (6 placements)",
+   "espLink": {
+    "doorModel": "kotm:argonia/blackwood/shackdoor",
+    "interiorCell": "SeekhatEldersHut",
+    "interiorFamily": "vanilla:architecture/farmhouse",
+    "interiorSizeM": {
+     "heightM": 4.91,
+     "planXM": 9.7,
+     "planYM": 6.01
+    },
+    "placements": 2,
+    "plugin": "King of the Murkmire.esp"
+   },
+   "floorOffsetM": 0.0,
+   "frontFaceFraction": 1.0,
+   "headroomM": 6.08,
+   "heightM": 6.76,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 4.35,
+   "planAreaM2": 107.57,
+   "planCentreM": [
+    -0.53,
+    -0.61
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "storeyLevelsM": [
+    0.0,
+    1.2
+   ],
+   "storeys": 1,
+   "tileset": "interior-kotm-v1",
+   "why": "King of the Murkmire.esp teleports from this shell into interior cell SeekhatEldersHut (2 placements of the load door); that cell is built from vanilla:architecture/farmhouse, which is packaged as interior-kotm-v1"
+  },
+  "kotm:argonia/blackwood/thatchhouse07": {
+   "category": "misc",
+   "doorStoreyM": 0.15,
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.87,
+     "kind": "leaf",
+     "offsetM": [
+      -1.87,
+      3.14
+     ],
+     "sideDeg": 215.0
+    },
+    {
+     "arcM": 0.92,
+     "kind": "opening",
+     "offsetM": [
+      3.46,
+      1.74
+     ],
+     "sideDeg": 138.94
+    }
+   ],
+   "entrance": {
+    "doorAsset": "kotm:argonia/blackwood/shackdoor",
+    "kind": "esp-door",
+    "placements": 8,
+    "radial": true,
+    "radiusM": 7.377
+   },
+   "entranceWhy": "the exterior door kotm:argonia/blackwood/shackdoor that opens this interior, at a constant radius on any bearing across the plugin's placements (8 placements)",
+   "espLink": {
+    "doorModel": "kotm:argonia/blackwood/shackdoor",
+    "interiorCell": "SeekhatAccommodationHut",
+    "interiorFamily": "vanilla:architecture/farmhouse",
+    "interiorSizeM": {
+     "heightM": 5.52,
+     "planXM": 15.65,
+     "planYM": 13.53
+    },
+    "placements": 4,
+    "plugin": "King of the Murkmire.esp"
+   },
+   "floorOffsetM": 0.0,
+   "frontFaceFraction": 1.0,
+   "headroomM": 5.98,
+   "heightM": 6.71,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 5.97,
+   "planAreaM2": 180.59,
+   "planCentreM": [
+    1.05,
+    -1.03
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    0.0
+   ],
+   "storeys": 1,
+   "tileset": "interior-kotm-v1",
+   "why": "King of the Murkmire.esp teleports from this shell into interior cell SeekhatAccommodationHut (4 placements of the load door); that cell is built from vanilla:architecture/farmhouse, which is packaged as interior-kotm-v1"
+  },
+  "kotm:argonia/blackwood/thatchhouse08": {
+   "category": "misc",
+   "doorStoreyM": 0.18,
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.85,
+     "kind": "leaf",
+     "offsetM": [
+      4.11,
+      2.07
+     ],
+     "sideDeg": 117.5
+    },
+    {
+     "arcM": 1.25,
+     "kind": "leaf",
+     "offsetM": [
+      -2.94,
+      -2.95
+     ],
+     "sideDeg": 312.5
+    }
+   ],
+   "entrance": {
+    "doorAsset": "kotm:argonia/blackwood/shackdoor",
+    "heightM": 1.192,
+    "kind": "esp-door",
+    "offsetM": [
+     -2.021,
+     3.506
+    ],
+    "placements": 2,
+    "radiusM": 4.047,
+    "sideDeg": 209.96,
+    "yawDeg": 0.0
+   },
+   "entranceWhy": "the exterior door kotm:argonia/blackwood/shackdoor that opens this interior, at the offset the plugin places it in this shell's own frame (2 placements)",
+   "espLink": {
+    "doorModel": "kotm:argonia/blackwood/shackdoor",
+    "interiorCell": "SeekhatCarpenterHut",
+    "interiorFamily": "vanilla:architecture/farmhouse",
+    "interiorSizeM": {
+     "heightM": 5.72,
+     "planXM": 11.74,
+     "planYM": 6.35
+    },
+    "placements": 2,
+    "plugin": "King of the Murkmire.esp"
+   },
+   "floorOffsetM": 0.0,
+   "frontFaceFraction": 1.0,
+   "headroomM": 6.86,
+   "heightM": 7.61,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 3.9,
+   "planAreaM2": 109.24,
+   "planCentreM": [
+    0.47,
+    0.17
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "storeyLevelsM": [
+    0.0,
+    1.2
+   ],
+   "storeys": 1,
+   "tileset": "interior-kotm-v1",
+   "why": "King of the Murkmire.esp teleports from this shell into interior cell SeekhatCarpenterHut (2 placements of the load door); that cell is built from vanilla:architecture/farmhouse, which is packaged as interior-kotm-v1"
+  },
+  "kotm:argonia/blackwood/walkway01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 280.6,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 281\u00b0 in the piece's own frame carries 3.88x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 6.17,
+   "heightM": 7.36,
+   "interior": "none",
+   "medianWallM": 1.38,
+   "planAreaM2": 98.32,
+   "planCentreM": [
+    3.6,
+    -3.74
+   ],
+   "provenance": [],
+   "ringFraction": 0.236,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "name token 'walkway' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/blackwood/walkway02": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 81.9,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 82\u00b0 in the piece's own frame carries 2.41x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 6.34,
+   "heightM": 7.24,
+   "interior": "none",
+   "medianWallM": 2.76,
+   "planAreaM2": 65.84,
+   "planCentreM": [
+    -4.25,
+    -4.49
+   ],
+   "provenance": [],
+   "ringFraction": 0.181,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "name token 'walkway' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/blackwood/walkway03": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 262.7,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 263\u00b0 in the piece's own frame carries 3.55x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 6.33,
+   "heightM": 7.24,
+   "interior": "none",
+   "medianWallM": 4.93,
+   "planAreaM2": 146.37,
+   "planCentreM": [
+    -6.45,
+    1.9
+   ],
+   "provenance": [],
+   "ringFraction": 0.167,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "why": "name token 'walkway' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/blackwood/walkway04": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 2.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 4.39,
+   "heightM": 7.23,
+   "interior": "none",
+   "medianWallM": 1.39,
+   "planAreaM2": 175.97,
+   "planCentreM": [
+    4.56,
+    3.25
+   ],
+   "provenance": [],
+   "ringFraction": 0.194,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "why": "name token 'walkway' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/blackwood/walkway05": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 1.0,
+   "front": {
+    "deg": 79.7,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 80\u00b0 in the piece's own frame carries 2.06x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 5.34,
+   "heightM": 7.28,
+   "interior": "none",
+   "medianWallM": 2.12,
+   "planAreaM2": 80.28,
+   "planCentreM": [
+    -2.25,
+    -0.01
+   ],
+   "provenance": [],
+   "ringFraction": 0.236,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "name token 'walkway' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/blackwood/walkway06": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 4.0,
+   "front": {
+    "deg": 291.8,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 292\u00b0 in the piece's own frame carries 1.77x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 1.93,
+   "heightM": 7.11,
+   "interior": "none",
+   "medianWallM": 0.08,
+   "planAreaM2": 54.33,
+   "planCentreM": [
+    5.99,
+    -1.54
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "name token 'walkway' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/blackwood/walkway07": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 2.0,
+   "front": {
+    "deg": 15.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 16\u00b0 in the piece's own frame carries 12.11x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 1.95,
+   "heightM": 5.44,
+   "interior": "none",
+   "medianWallM": 3.93,
+   "planAreaM2": 142.18,
+   "planCentreM": [
+    2.6,
+    -8.71
+   ],
+   "provenance": [],
+   "ringFraction": 0.264,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "why": "name token 'walkway' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/blackwood/walkwaystairs": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 8.0,
+   "front": {
+    "deg": 253.6,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 254\u00b0 in the piece's own frame carries 1.46x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 1.91,
+   "heightM": 12.77,
+   "interior": "none",
+   "medianWallM": 0.93,
+   "planAreaM2": 33.44,
+   "planCentreM": [
+    1.26,
+    0.57
+   ],
+   "provenance": [],
+   "ringFraction": 0.375,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "name token 'walkway' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/blackwood/wall01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 3.61,
+   "interior": "none",
+   "planAreaM2": 1.24,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.2 m\u00b2 plan, 3.6 m tall)"
+  },
+  "kotm:argonia/blackwood/walldoor01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 3.61,
+   "interior": "none",
+   "planAreaM2": 2.15,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (2.1 m\u00b2 plan, 3.6 m tall)"
+  },
+  "kotm:argonia/blackwood/watchtower01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 5.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 3.39,
+   "heightM": 11.53,
+   "interior": "none",
+   "medianWallM": 1.58,
+   "planAreaM2": 15.42,
+   "planCentreM": [
+    0.01,
+    -0.01
+   ],
+   "provenance": [],
+   "ringFraction": 0.736,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "open sided \u2014 only 74% of the ring at 1.6 m hits a wall, so it does not enclose anything"
+  },
+  "kotm:argonia/mudhuts/door02": {
+   "category": "door",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 13.1,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 50 times with other statics to one side; the side they left open, at 13\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "heightM": 2.5,
+   "interior": "none",
+   "planAreaM2": 0.49,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.5 m\u00b2 plan, 2.5 m tall)"
+  }
+ },
+ "kit": "settlement-plank-v1",
+ "provenance": {
+  "exterior-interior-links.json": {
+   "miner": "worldgen.mine_door_links",
+   "minerVersion": "f82ba0f946d3",
+   "plugins": [
+    "ArgonianHome.esp",
+    "ArgonianLakeHouse.esl",
+    "Black Marsh North.esp",
+    "Black Marsh.esm",
+    "CCAyliedRuinsResources.esp",
+    "Cathedral - 3D FallForest Grass.esp",
+    "Cathedral - 3D Pine & Reach Grass.esp",
+    "Cathedral - 3D Tundra Grass.esp",
+    "DMArgonianHaus.esp",
+    "DarkwaterDen.esp",
+    "DepthsOfSkyrim.esp",
+    "Ferries  - Another Oakwood addon.esp",
+    "Ferries  - More Bandit Camps patch.esp",
+    "Ferries - Alternate Perspective - Here there be Monsters Patch.esp",
+    "Ferries - Alternate Perspective Patch.esp",
+    "Ferries - Alternate Start Patch.esp",
+    "Ferries - Animated Ships patch.esp",
+    "Ferries - B-oat patch - No inialta scene.esp",
+    "Ferries - B-oat patch - With Inialta Scene.esp",
+    "Ferries - Better Docks patch.esp",
+    "Ferries - Bruma Addon.esp",
+    "Ferries - Chanterelle Addon.esp",
+    "Ferries - Dynamic Boats Patch.esp",
+    "Ferries - JK Solitude Outskirts.esp",
+    "Ferries - JKs Raven Rock patch.esp",
+    "Ferries - Lainalten addon.esp",
+    "Ferries - Laintar Dale addon.esp",
+    "Ferries - Lux patch.esp",
+    "Ferries - Midwood Addon.esp",
+    "Ferries - Moon and Star addon.esp",
+    "Ferries - Old Gate Mill - Morthal Player house Addon.esp",
+    "Ferries - Riften patch.esp",
+    "Ferries - Rigmor of Bruma patch.esp",
+    "Ferries - Ryn Lumber Mills patch.esp",
+    "Ferries - Save the Icerunner Patch.esp",
+    "Ferries - Shadow Over Inialta addon.esp",
+    "Ferries - Siege At Icemoth Addon.esp",
+    "Ferries - TGSolitude Patch.esp",
+    "Ferries - Wyrmstooth Addon.esp",
+    "Ferries.esp",
+    "Here There Be Monsters - Curse of Cipactli.esp",
+    "King of the Murkmire.esp",
+    "SNT ferry.esp",
+    "SSKMovingBoats.esp",
+    "Sailboats.esp",
+    "Scriptfreeshipsailing.esp",
+    "Seashells.esp",
+    "Skyfall Sleeping Tree Overhaul.esp",
+    "Skyrim.esm",
+    "Tropical Skyrim -- Birds.esp",
+    "Tropical Skyrim.esp",
+    "Update.esm",
+    "Valenwood.esp",
+    "XanmeerResources.esp",
+    "igs_tileset_ayleid.esp"
+   ],
+   "poolRegister": {
+    "date": "2026-10-06",
+    "pools": [
+     "bmv",
+     "vanilla",
+     "tropical",
+     "xanmeer",
+     "drjacopo",
+     "hoddminir",
+     "jokerine",
+     "shores",
+     "mudmother",
+     "ferries",
+     "rowboats",
+     "ayleidcc",
+     "xalfek",
+     "darkwater",
+     "ayleidkit",
+     "histtree",
+     "canoe",
+     "ferryraft",
+     "sbot",
+     "depths",
+     "sirenroot",
+     "htbm",
+     "mwkeep",
+     "kotm",
+     "sailboats",
+     "impships",
+     "boatsanim",
+     "hlaalu"
+    ],
+    "source": "worldgen.asset_registry.POOLS",
+    "uncommittedChanges": false
+   },
+   "poolsMined": [
+    "ayleidcc",
+    "ayleidkit",
+    "bmv",
+    "boatsanim",
+    "canoe",
+    "darkwater",
+    "depths",
+    "drjacopo",
+    "ferries",
+    "ferryraft",
+    "histtree",
+    "htbm",
+    "jokerine",
+    "kotm",
+    "marshrest",
+    "mudmother",
+    "mwkeep",
+    "sailboats",
+    "tropical",
+    "vanilla",
+    "xalfek",
+    "xanmeer"
+   ],
+   "runDate": "2026-10-09"
+  },
+  "kit-assemblies-mined.json": {
+   "miner": "worldgen.mine_assemblies",
+   "minerVersion": "dd469251b755",
+   "plugins": [
+    "ArgonianLakeHouse.esl",
+    "Black Marsh North.esp",
+    "Black Marsh.esm",
+    "CCAyliedRuinsResources.esp",
+    "DMArgonianHaus.esp",
+    "DarkwaterDen.esp",
+    "DepthsOfSkyrim.esp",
+    "Ferries.esp",
+    "Here There Be Monsters - Curse of Cipactli.esp",
+    "King of the Murkmire.esp",
+    "SNT ferry.esp",
+    "SSKMovingBoats.esp",
+    "Sailboats.esp",
+    "Scriptfreeshipsailing.esp",
+    "Seashells.esp",
+    "Skyfall Sleeping Tree Overhaul.esp",
+    "Skyrim.esm",
+    "Tropical Skyrim -- Birds.esp",
+    "Tropical Skyrim.esp",
+    "Update.esm",
+    "Valenwood.esp",
+    "XanmeerResources.esp",
+    "igs_tileset_ayleid.esp"
+   ],
+   "poolRegister": {
+    "date": "2026-09-25",
+    "pools": [
+     "bmv",
+     "vanilla",
+     "tropical",
+     "xanmeer",
+     "drjacopo",
+     "hoddminir",
+     "jokerine",
+     "shores",
+     "mudmother",
+     "ferries",
+     "rowboats",
+     "ayleidcc",
+     "xalfek",
+     "darkwater",
+     "ayleidkit",
+     "histtree",
+     "canoe",
+     "ferryraft",
+     "sbot",
+     "depths",
+     "sirenroot",
+     "htbm",
+     "mwkeep",
+     "kotm",
+     "sailboats",
+     "impships",
+     "boatsanim",
+     "hlaalu"
+    ],
+    "source": "worldgen.asset_registry.POOLS",
+    "uncommittedChanges": true
+   },
+   "poolsMined": [
+    "ayleidcc",
+    "ayleidkit",
+    "bmv",
+    "boatsanim",
+    "canoe",
+    "darkwater",
+    "depths",
+    "ferries",
+    "ferryraft",
+    "histtree",
+    "htbm",
+    "jokerine",
+    "kotm",
+    "mudmother",
+    "mwkeep",
+    "sailboats",
+    "tropical",
+    "vanilla",
+    "xalfek",
+    "xanmeer"
+   ],
+   "runDate": "2026-09-26"
+  }
+ },
+ "rules": {
+  "doorwayArcM": [
+   0.8,
+   5.0
+  ],
+  "enclosureMinRing": 0.75,
+  "enclosureMinRoomM": 1.5,
+  "entranceRank": [
+   "esp-door",
+   "assembly",
+   "composite-leaf",
+   "approach",
+   "door-piece",
+   "leaf",
+   "opening",
+   "open-front"
+  ],
+  "entranceRankWhy": "one canonical entrance per piece (owner ruling 2026-09-07), ranked from the mod's own load door down to an open front; the losing evidence stays in `provenance` for audit and is never drawn or matched against",
+  "eyeHeightM": 1.6,
+  "frontEvidence": [
+   "co-placement (the bearing away from the neighbours the source authors planted around this piece)",
+   "asymmetry (the bearing band with the highest triangle density: the detailed, outward face)"
+  ],
+  "sizeClassMaxM2": {
+   "medium": 120.0,
+   "small": 40.0
+  }
+ },
+ "schemaVersion": 2
+}

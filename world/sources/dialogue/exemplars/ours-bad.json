@@ -1,0 +1,3006 @@
+{
+ "schemaVersion": 1,
+ "_": "Our lines a round found wrong, each with the corrected line. Every corpus-read FIX becomes a row (dialogue-write skill).",
+ "entries": [
+  {
+   "id": "bad.tells-01",
+   "tell": "deflection that explains nothing",
+   "wrong": "The Hist over my spring is the minder's charge.",
+   "right": "A Hist is a great tree with a mind of its own. We hatch at its roots. On the naming day, each of us drinks its sap. It makes you what you are, scales and all.",
+   "round": "Owner; 5 of 6 Hist answers",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-02",
+   "tell": "compressed pool line",
+   "wrong": "Wasps. Bad this year.",
+   "right": "The wasps are bad this year. They nest in the dead reed by the fork, so I go round by the spring and lose half the morning.",
+   "round": "the pool's facts squeezed into one",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-03",
+   "tell": "stub",
+   "wrong": "Deesh-Ra.",
+   "right": "Ask Deesh-Ra at the stage. I only take the tolls.",
+   "round": "a bare name or fragment put in to move a number. Round 6",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-04",
+   "tell": "one length for everyone",
+   "wrong": "every answer 40 words, two to four sentences, from all nine speakers.",
+   "right": "the curt hand says \"North. Fourth Stage. I don't go.\"; the rambler runs to 60 words on her own topic, the spring.",
+   "round": "Close read: 77 percent of answers in 35-55",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-05",
+   "tell": "staccato",
+   "wrong": "The ford is shallow. The clay is soft. Carts stick here. We dig them out.",
+   "right": "The ford is shallow, but the clay is soft enough that a cart sinks to the axle. We spend half our days digging them out.",
+   "round": "runs of 6-to-8-word sentences. Round 2: mean 8.4 against 11.3",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-06",
+   "tell": "packed clause-chain",
+   "wrong": "The spring, which feeds the fork where the Helstrom road meets the river track, which the families keep, has turned salt this year.",
+   "right": "The spring's turned salt this year. The families can't say why. They think the river's come up under it.",
+   "round": "facts stacked in one clause chain",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-07",
+   "tell": "four-beat cadence",
+   "wrong": "The cove is sheltered. Boats sound it every morning, which keeps the channel open. I haul the mattresses, mind you. I don't mind.",
+   "right": "Boats come in here because nowhere else on the coast is sheltered. I couldn't tell you the rest. I feed whoever lands.",
+   "round": "place sentence, pool fact, job aside, first-person verdict. Close read: the \"one writer\" voice",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-08",
+   "tell": "polite closing question",
+   "wrong": "...and that's the spring. Anything else you want to know?",
+   "right": "The spring rises under the old stone, where the reeds are thickest.",
+   "round": "Round 1 pilot",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-09",
+   "tell": "short closer",
+   "wrong": "The road floods every spring. Mud everywhere. Typical.",
+   "right": "The road floods every spring. The carts wait at the Cross until it drains.",
+   "round": "a last sentence of 5 words or fewer as a quip. Round 2: 47 percent against Morrowind's 13",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-10",
+   "tell": "copular verdict",
+   "wrong": "...we mend the nets by lamplight. That is the trade.",
+   "right": "We mend the nets by lamplight after the boats come home.",
+   "round": "Round 1: 39 \"is the/my X.\" endings",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-11",
+   "tell": "wry tag-line",
+   "wrong": "I count the tariff twice. I enjoy that more than I should.",
+   "right": "I count the tariff twice, once for the purser and once for me.",
+   "round": "Close read: 14 percent trailing asides",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-12",
+   "tell": "aphorism",
+   "wrong": "A house you keep fixing never gets to be anything but your own.",
+   "right": "They don't mend a stone. It would stop being the Teeth.",
+   "round": "Close read: 8 found, Morrowind about 1 in 30",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-13",
+   "tell": "justification ending",
+   "wrong": "I keep the gate shut at night, since the walkers come down after dark.",
+   "right": "I keep the gate shut at night. The walkers came down twice last moon.",
+   "round": "(\"since...\", \"because...\"). Final read: 1 answer in 5",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-14",
+   "tell": ", which chains",
+   "wrong": "The pier is new, which the Compact paid for, which nobody here forgets.",
+   "right": "The Compact paid for the pier. The families on the quay still talk of it.",
+   "round": "Close read: 15 percent of answers",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-15",
+   "tell": "stock aside",
+   "wrong": "It's a fair walk, mind you, and the bridge is out.",
+   "right": "It's a fair walk. The bridge is out, too.",
+   "round": "(\"mind you\", \"you see\", \"I'd say\", \"I don't mind\", \"if you ask me\", \"truth be told\"). Close read: \"mind you\" 48, \"you se",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-16",
+   "tell": "whatever x says.",
+   "wrong": "The herb is safe, whatever the herald thinks.",
+   "right": "The herald says the herb is poison. I've eaten it for years.",
+   "round": "Final read: 23 against a ceiling of 3",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-17",
+   "tell": "vocative habit",
+   "wrong": "The well is cracked, traveller, and the water's bitter, traveller.",
+   "right": "The well is cracked and the water's bitter.\" (address stays in the greeting)",
+   "round": "Close read: 31 percent of answers; Morrowind's topic answers almost never",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-18",
+   "tell": "self-answering question",
+   "wrong": "Do you pole? No? Then take the track.",
+   "right": "Take the track if you can't pole.",
+   "round": "Close read",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-19",
+   "tell": "listener-hook question",
+   "wrong": "Have you walked it yet?\" closing every directions answer.",
+   "right": "one real question in a place, in this person's words: \"You came by the ford? Then you've seen the carts.",
+   "round": "Final read: \"Have you walked it yet?\" six times",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-20",
+   "tell": "pet word",
+   "wrong": "sleep in the danger, work, people and directions answers.",
+   "right": "sleep once, in the work answer; the danger answer is about the pond.",
+   "round": "Close read: Okan-Leel's sleep in 6 of 6",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-21",
+   "tell": "job nouns in every answer",
+   "wrong": "The road's as frayed as an old hem.",
+   "right": "The road's bad past the bench.",
+   "round": "Close read: a darner's cloth in 6 of 7",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-22",
+   "tell": "count-bark gag",
+   "wrong": "Thirty coils. No, thirty-one.",
+   "right": "one numeral bark in the place, none with the self-correction.",
+   "round": "\"Seven notches. No, eight.\" Close read: one per place, then a shape",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-23",
+   "tell": "everyone sour about one neighbour",
+   "wrong": "four speakers in a row: \"The herald never listens.",
+   "right": "one grumbler; the others have their own worries.",
+   "round": "Close read: every Greenspring family grumbled at the herald",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-24",
+   "tell": "gentle dissent",
+   "wrong": "resents the claim): \"The gang families are fine, I suppose.",
+   "right": "I sell them smoked fish and hate every word of their claim.",
+   "round": "Final read: 2 of 17 dissenters spoke with the norm",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-25",
+   "tell": "shared formulas across peoples",
+   "wrong": "a Naga gate-guard and a flotilla purser both \"extend the claw of welcome\".",
+   "right": "each culture's own oath, at most once a scene.",
+   "round": "Close read: \"Stay moist\" five times in unrelated places",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-26",
+   "tell": "restated fact",
+   "wrong": "Thorn is a short walk by the Tear road.",
+   "right": "Thorn? I've never been. The fish-sellers go every week.",
+   "round": "Close read: Riverwalk 9 of 10 on one fact",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-27",
+   "tell": "restated fact",
+   "wrong": "We've one tree here and the water's sweet, and the gang camp can say what it likes.",
+   "right": "I mend nets. The tree's the minder's worry, not mine.",
+   "round": "Final read: 9 of 9 at Nine Bends after the wording gate went green",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-28",
+   "tell": "same term explained in every place",
+   "wrong": "Ojel is a plain word with no insult in it. Lukiul is the slur the An-Xileel coined...\" (ninth time)",
+   "right": "Ojel means outsider. Don't say the other word on this walk.",
+   "round": "Final read: ojel and lukiul in full 9 times",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-29",
+   "tell": "hand-off habit",
+   "wrong": "the stage-mistress: \"The boatmen tell it better.\" (they sent the player to her)",
+   "right": "I land the boats, take the fares and feed the crews. The river itself I leave to the boatmen.",
+   "round": "Final read: 21 percent, loops of A to B to A",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-30",
+   "tell": "vague stand-in",
+   "wrong": "We drink its blood on the naming day.",
+   "right": "We drink its sap on the naming day.",
+   "round": "Round 1: \"sap\" became \"its blood\"",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-31",
+   "tell": "another place's nouns",
+   "wrong": "The minder tells the rite better.",
+   "right": "A priest tells the rite. I scrub.",
+   "round": "Close read: a spring at Nine Bends, a deck at a river village; final read: a minder at the Teeth",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-32",
+   "tell": "pronoun against the roster",
+   "wrong": "She knows every cargo.\" then \"He tells it better.\" of one person.",
+   "right": "the neighbour list's sex, or the name.",
+   "round": "Final read: 5 conflicts",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-33",
+   "tell": "direction or distance against the road",
+   "wrong": "Half a watch to the Mile House.\" beside \"under an hour\".",
+   "right": "the directions pool line's time, or \"Up the road to the Mile House.",
+   "round": "Final read: Gideon east and west; Thorn on three scales",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-34",
+   "tell": "lifted sentences",
+   "wrong": "two speakers: \"The Legion left them unpaid.",
+   "right": "They were never paid, you know. Not a coin.",
+   "round": "Round 4: 36 shared between speakers",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-35",
+   "tell": "contractions at one rate",
+   "wrong": "Beds cost coin. Ask the counter, it isn't this one's trade.",
+   "right": "Beds cost coin. Ask the counter, it is not this one's trade.",
+   "round": "Final read: 68 percent of answers contract, Argonian places 60-66 percent; Morrowind's Argonians 4",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.tells-36",
+   "tell": "phonetic accent or broken grammar",
+   "wrong": "Dis one sells, yes?",
+   "right": "This one sells. You buy, or you keep walking.",
+   "round": "Culture registers §0: never; race is syntax and address",
+   "source": ".claude/skills/dialogue-write/references/tells.md"
+  },
+  {
+   "id": "bad.final-01",
+   "tell": "restated fact",
+   "wrong": "Silt, mostly. The river runs shallow here, so the boats go elsewhere.",
+   "right": "Silt, mostly. The pole-men know it better than we do.",
+   "round": "corpus read final, fix 1 (pool restatement 7 of 10 at Riverwalk)",
+   "source": "lanes/2.5x/dialogue/corpus-read-final.md"
+  },
+  {
+   "id": "bad.final-02",
+   "tell": "restated fact",
+   "wrong": "A day by pole to the gang camp, with the port beyond it.",
+   "right": "A day down by pole. I have never had cause to go.",
+   "round": "corpus read final, fix 1 (Nine Bends directions 9 of 9)",
+   "source": "lanes/2.5x/dialogue/corpus-read-final.md"
+  },
+  {
+   "id": "bad.final-03",
+   "tell": "hand-off habit",
+   "wrong": "Ask the hands about the hauling.",
+   "right": "I haul what the ships send. The speaker has the council.",
+   "round": "corpus read final, fix 3 (Ask X loops, 21% of answers)",
+   "source": "lanes/2.5x/dialogue/corpus-read-final.md"
+  },
+  {
+   "id": "bad.final-04",
+   "tell": "pronoun against the roster",
+   "wrong": "Ask the master. That is her work.",
+   "right": "Ask the master. That is his to tell.",
+   "round": "corpus read final, fix 4 (he/she conflicts at Flotilla)",
+   "source": "lanes/2.5x/dialogue/corpus-read-final.md"
+  },
+  {
+   "id": "bad.final-05",
+   "tell": "pronoun against the roster",
+   "wrong": "Ask Ri'Sakka, she has worked a shift.",
+   "right": "Ask Ri'Sakka. He has worked a shift.",
+   "round": "corpus read final, fix 4 (he/she conflicts at OWC)",
+   "source": "lanes/2.5x/dialogue/corpus-read-final.md"
+  },
+  {
+   "id": "bad.final-06",
+   "tell": "direction or distance against the road",
+   "wrong": "Under an hour from here.",
+   "right": "A long walk yet.",
+   "round": "corpus read final, fix 5 (Greenspring bark 210 against 205)",
+   "source": "lanes/2.5x/dialogue/corpus-read-final.md"
+  },
+  {
+   "id": "bad.final-07",
+   "tell": "hand-off habit",
+   "wrong": "Ask Argues-The-Toll.",
+   "right": "Seep below the road, buyer. The cakes are on the bank.",
+   "round": "corpus read final, fix 5 (Bog Iron n1 sends to their own name)",
+   "source": "lanes/2.5x/dialogue/corpus-read-final.md"
+  },
+  {
+   "id": "bad.final-08",
+   "tell": "same term explained in every place",
+   "wrong": "Gideon explained in full, again, by a fifth Claywater speaker.",
+   "right": "Old names. Ask for those.",
+   "round": "corpus read final, fix 6 (Gideon x5, Prison road x6)",
+   "source": "lanes/2.5x/dialogue/corpus-read-final.md"
+  },
+  {
+   "id": "bad.final-09",
+   "tell": "same term explained in every place",
+   "wrong": "The Prison road, the Border road and the Tag House on a dry rise, all spelled out once more.",
+   "right": "Old Imperial road. The Tag House is up on the dry rise.",
+   "round": "corpus read final, fix 6",
+   "source": "lanes/2.5x/dialogue/corpus-read-final.md"
+  },
+  {
+   "id": "bad.final-10",
+   "tell": "job nouns in every answer",
+   "wrong": "Cane gate, then the track north, though I would sleep first.",
+   "right": "Cane gate, then the track north to the Polers' Camp.",
+   "round": "corpus read final, fix 7 (Okan-Leel sleep in 5 of 6)",
+   "source": "lanes/2.5x/dialogue/corpus-read-final.md"
+  },
+  {
+   "id": "bad.final-11",
+   "tell": "job nouns in every answer",
+   "wrong": "The camp holds. The hides will not cure themselves.",
+   "right": "The camp is quiet. The hides will not cure themselves.",
+   "round": "corpus read final, fix 7 (Bux-Xeek hides in 4 of 6)",
+   "source": "lanes/2.5x/dialogue/corpus-read-final.md"
+  },
+  {
+   "id": "bad.final-12",
+   "tell": "gentle dissent",
+   "wrong": "They look past a carrier like me, and that is reason enough to look past them.",
+   "right": "They watch the coin and look through me. At the worst of it, I am the one who carries.",
+   "round": "corpus read final, fix 8 (Rose carrier sympathy, not stance)",
+   "source": "lanes/2.5x/dialogue/corpus-read-final.md"
+  },
+  {
+   "id": "bad.final-13",
+   "tell": "gentle dissent",
+   "wrong": "The work does not bother me.",
+   "right": "The work shames me. I do it from first light all the same.",
+   "round": "corpus read final, fix 8 (Bog Iron n1-2 against the sheet)",
+   "source": "lanes/2.5x/dialogue/corpus-read-final.md"
+  },
+  {
+   "id": "bad.final-14",
+   "tell": "gentle dissent",
+   "wrong": "I love every minute of it.",
+   "right": "My share goes on the beetle at Archon, not the dues.",
+   "round": "corpus read final, fix 8 (Flotilla n1-4 holds no stance)",
+   "source": "lanes/2.5x/dialogue/corpus-read-final.md"
+  },
+  {
+   "id": "bad.final-15",
+   "tell": "gentle dissent",
+   "wrong": "Nine Bends house: every household resents the gang claim alike.",
+   "right": "Their children were hatched here too. I would not turn them from the bank.",
+   "round": "corpus read final, fix 8 (the gang families have no voice)",
+   "source": "lanes/2.5x/dialogue/corpus-read-final.md"
+  },
+  {
+   "id": "bad.final-16",
+   "tell": "whatever x says.",
+   "wrong": "Born in the Rose, like my aunt, whatever the clerk says. The charge is the most resented coin in the south.",
+   "right": "Born in the Rose, like my aunt. Ask what the charge costs. You will hear it.",
+   "round": "corpus read final, fix 10 (Rose family duplicate 536)",
+   "source": "lanes/2.5x/dialogue/corpus-read-final.md"
+  },
+  {
+   "id": "bad.close-01",
+   "tell": "aphorism",
+   "wrong": "A house you keep fixing never gets to be anything but your own.",
+   "right": "They do not mend a stone. It would stop being the Teeth.",
+   "round": "corpus read close, fix 6 (aphorisms and similes, 750)",
+   "source": "lanes/2.5x/dialogue/corpus-read-close.md"
+  },
+  {
+   "id": "bad.close-02",
+   "tell": "aphorism",
+   "wrong": "That is line one in the book.",
+   "right": "Tags are paid at the table.",
+   "round": "corpus read close, fix 6 (505)",
+   "source": "lanes/2.5x/dialogue/corpus-read-close.md"
+  },
+  {
+   "id": "bad.close-03",
+   "tell": "aphorism",
+   "wrong": "Keep the spit behind you like a rope you're paying out.",
+   "right": "Keep the spit behind you.",
+   "round": "corpus read close, fix 6 (1208, simile)",
+   "source": "lanes/2.5x/dialogue/corpus-read-close.md"
+  },
+  {
+   "id": "bad.close-04",
+   "tell": "aphorism",
+   "wrong": "Rats can't drop on you from a crag.",
+   "right": "Hackwings nest in the crag. Walk the bench instead.",
+   "round": "corpus read close, fix 6 (477)",
+   "source": "lanes/2.5x/dialogue/corpus-read-close.md"
+  },
+  {
+   "id": "bad.close-05",
+   "tell": "wry tag-line",
+   "wrong": "Everything past the stage is outside the tariff line. I enjoy that more than I should.",
+   "right": "Everything past the stage is outside the tariff line.",
+   "round": "corpus read close, fix 5 (strip closers, 655)",
+   "source": "lanes/2.5x/dialogue/corpus-read-close.md"
+  },
+  {
+   "id": "bad.close-06",
+   "tell": "wry tag-line",
+   "wrong": "The scrubber was paid on the nail. He thanked me all the same.",
+   "right": "The scrubber was paid on the nail.",
+   "round": "corpus read close, fix 5 (752)",
+   "source": "lanes/2.5x/dialogue/corpus-read-close.md"
+  },
+  {
+   "id": "bad.close-07",
+   "tell": "self-answering question",
+   "wrong": "Do you pole? The silt is thick by the bank.",
+   "right": "The silt is thick by the bank.",
+   "round": "corpus read close, fix 2 (self-answering question, 59)",
+   "source": "lanes/2.5x/dialogue/corpus-read-close.md"
+  },
+  {
+   "id": "bad.close-08",
+   "tell": "self-answering question",
+   "wrong": "Don't you sleep through that? I do, mostly.",
+   "right": "The noise is constant. I sleep anyway.",
+   "round": "corpus read close, fix 3 (861)",
+   "source": "lanes/2.5x/dialogue/corpus-read-close.md"
+  },
+  {
+   "id": "bad.close-09",
+   "tell": "count-bark gag",
+   "wrong": "Seven notches. No, eight.",
+   "right": "Seven notches.",
+   "round": "corpus read close, section 1.4 (count-bark with self-correction, 853)",
+   "source": "lanes/2.5x/dialogue/corpus-read-close.md"
+  },
+  {
+   "id": "bad.close-10",
+   "tell": "vocative habit",
+   "wrong": "The ford is shallow here, traveller, but the far bank is soft.",
+   "right": "The ford is shallow here. The far bank is soft.",
+   "round": "corpus read close, fix 10 (vocative in 31% of overrides)",
+   "source": "lanes/2.5x/dialogue/corpus-read-close.md"
+  },
+  {
+   "id": "bad.close-11",
+   "tell": "another place's nouns",
+   "wrong": "A tree with a mind of its own that wakes over the spring.",
+   "right": "A tree with a mind of its own, older than the village, that wakes at dusk.",
+   "round": "corpus read close, fix 7 (Nine Bends has a Greenspring spring, 1050)",
+   "source": "lanes/2.5x/dialogue/corpus-read-close.md"
+  },
+  {
+   "id": "bad.close-12",
+   "tell": "another place's nouns",
+   "wrong": "I mend nets on deck for any crew.",
+   "right": "I sit on the bank and mend nets until they hold fish again.",
+   "round": "corpus read close, fix 7 (Nine Bends net-mender, 1122)",
+   "source": "lanes/2.5x/dialogue/corpus-read-close.md"
+  },
+  {
+   "id": "bad.close-13",
+   "tell": "pronoun against the roster",
+   "wrong": "This Jel saw that.",
+   "right": "I saw that, traveller.",
+   "round": "corpus read close, fix 7 (Rose carrier speaks as 'This Jel' once, 518)",
+   "source": "lanes/2.5x/dialogue/corpus-read-close.md"
+  },
+  {
+   "id": "bad.close-14",
+   "tell": "lifted sentences",
+   "wrong": "Three generations of my family were born in the Rose, the most resented coin in the south.",
+   "right": "She was born there like the rest of us. Ask about the charge and you will hear it.",
+   "round": "corpus read close, fix 8 (Rose family 554 repeats 541)",
+   "source": "lanes/2.5x/dialogue/corpus-read-close.md"
+  },
+  {
+   "id": "bad.close-15",
+   "tell": "direction or distance against the road",
+   "wrong": "It is no inn, whatever you have heard.",
+   "right": "The Mile House is a waystation. A bed is yours if you bring your own food.",
+   "round": "corpus read close, fix 7 (Mile House 'no inn' against 'worth a bed')",
+   "source": "lanes/2.5x/dialogue/corpus-read-close.md"
+  },
+  {
+   "id": "bad.close-16",
+   "tell": "direction or distance against the road",
+   "wrong": "Sweet water, ours. Theirs is bitter, and yours is sweet.",
+   "right": "Our bucket is sweet. Theirs is bitter.",
+   "round": "corpus read close, fix 7 (Claywater n1-3 water contradicts itself)",
+   "source": "lanes/2.5x/dialogue/corpus-read-close.md"
+  },
+  {
+   "id": "bad.train-1-01",
+   "tell": "a thing named so the player cannot place it",
+   "wrong": "Mudcrabs I leave be. Don't stand downwind of the steam.",
+   "right": "At dusk, the mudcrabs crawl up out of the creek. I leave them be, and so should you. The smoke keeps most else off.",
+   "round": "2.6d training 1: danger answer gave no danger",
+   "source": "lanes/2.6/dialogue/training/1/critic.md"
+  },
+  {
+   "id": "bad.train-1-02",
+   "tell": "the slogan answer from a curt speaker",
+   "wrong": "Good vats, clean water. Hot, honest work. You'll smell it in your coat for days.",
+   "right": "We boil alder ash into lye here, in three vats. Each pot is sealed in front of the buyer.",
+   "round": "2.6d training 1: place answer never said what the place is",
+   "source": "lanes/2.6/dialogue/training/1/critic.md"
+  },
+  {
+   "id": "bad.train-1-03",
+   "tell": "announcing your own manner",
+   "wrong": "I lost a pot in it. That's more than I wanted to say, so don't ask me for a guess.",
+   "right": "The polers say a tanner's whole order of pots never arrived. Each blames the other. I lost a pot in it.",
+   "round": "2.6d training 1: rumour with the trait announced",
+   "source": "lanes/2.6/dialogue/training/1/critic.md"
+  },
+  {
+   "id": "bad.train-1-04",
+   "tell": "they say with no source",
+   "wrong": "They say a tanner's order never arrived.",
+   "right": "The polers say a tanner's order never arrived.",
+   "round": "2.6d training 1: rumour had no teller",
+   "source": "lanes/2.6/dialogue/training/1/critic.md"
+  },
+  {
+   "id": "bad.train-2-01",
+   "tell": "repeating yourself across your own answers",
+   "wrong": "I split every eel and hang it on the rack. / I split every one and hang it in alder smoke.",
+   "right": "The tide fills the weirs and the wagons stop for what comes out. / I split every eel, hang it on the rack and feed the alder fire all day.",
+   "round": "2.6d training 2: same task in two answers",
+   "source": "lanes/2.6/dialogue/training/2/critic.md"
+  },
+  {
+   "id": "bad.train-2-02",
+   "tell": "a thin answer from a chatty speaker",
+   "wrong": "The Imperials built the wagon road. They've left old toll posts and stage houses along it too.",
+   "right": "The Imperials built the wagon road. Their wagons stop here most days. I sell to every one of them.",
+   "round": "2.6d training 2: stub, and toll posts not in the packet",
+   "source": "lanes/2.6/dialogue/training/2/critic.md"
+  },
+  {
+   "id": "bad.train-2-03",
+   "tell": "announcing your own manner",
+   "wrong": "I'm the smoker here, a Nord who's proud of every eel that leaves the shed.",
+   "right": "Every eel leaves this shed after a full day on the rack.",
+   "round": "2.6d training 2: pride announced instead of shown",
+   "source": "lanes/2.6/dialogue/training/2/critic.md"
+  },
+  {
+   "id": "bad.train-3-01",
+   "tell": "a rambler who never rambles",
+   "wrong": "Every wagon pays the same price. It is plain work. It wears a person down.",
+   "right": "Every wagon pays the same for water here, from the smallest cart to the largest. This one has argued that price at the well longer than the toll-keeper has been raising his own.",
+   "round": "2.6d training 3: rambling speaker in 4 to 9 word runs",
+   "source": "lanes/2.6/dialogue/training/3/critic.md"
+  },
+  {
+   "id": "bad.train-3-02",
+   "tell": "a line lifted from the settlement sheet or the place record",
+   "wrong": "It is plain work. It wears a person down.",
+   "right": "This one hauls the rope all day. The buckets get heavier toward evening.",
+   "round": "2.6d training 3: the sheet's view on work, word for word",
+   "source": "lanes/2.6/dialogue/training/3/critic.md"
+  },
+  {
+   "id": "bad.train-3-03",
+   "tell": "an inanimate subject doing a human verb",
+   "wrong": "After dark, the road belongs to thieves.",
+   "right": "Thieves work the road after dark.",
+   "round": "2.6d training 3: road personified",
+   "source": "lanes/2.6/dialogue/training/3/critic.md"
+  },
+  {
+   "id": "bad.train-4-01",
+   "tell": "the quirk as a catchphrase",
+   "wrong": "A claim that shifts with every village wouldn't hold up under my hammer.",
+   "right": "I would ask a Nisswo which village's version is the true one. I have heard three. Each priest swore to his own.",
+   "round": "2.6d training 4: quirk as a figure of speech in 3 of 8 answers",
+   "source": "lanes/2.6/dialogue/training/4/critic.md"
+  },
+  {
+   "id": "bad.train-4-02",
+   "tell": "a line lifted from the settlement sheet, the place record or the clock",
+   "wrong": "I'm hammering from the moment the lamps go out at half past six.",
+   "right": "I'm at the anvil from first light.",
+   "round": "2.6d training 4: clock row lifted for dawn",
+   "source": "lanes/2.6/dialogue/training/4/critic.md"
+  },
+  {
+   "id": "bad.train-4-03",
+   "tell": "a thing named so the player cannot place it",
+   "wrong": "A party grew out of the Oblivion Crisis, then drove the Empire clean out of Black Marsh.",
+   "right": "The An-Xileel grew out of the Oblivion Crisis. They drove the Empire out of Black Marsh.",
+   "round": "2.6d training 4: no antecedent for 'a party'",
+   "source": "lanes/2.6/dialogue/training/4/critic.md"
+  },
+  {
+   "id": "bad.train-5-01",
+   "tell": "a word the culture never says, said freely",
+   "wrong": "Lukiul is a slur, and the Argonians who hatched outside the marsh hear it often.",
+   "right": "The An-Xileel have a word for Argonians who hatched outside the marsh. I will not say it here.",
+   "round": "2.6d training 5: taboo slur said three times",
+   "source": "lanes/2.6/dialogue/training/5/critic.md"
+  },
+  {
+   "id": "bad.train-5-02",
+   "tell": "the flat X is Y answer",
+   "wrong": "Reedfall is a reed village. Three families live here. They weave mats.",
+   "right": "Three families live on this bank and cut reed for mats. I work the loom from first light, left hand feeding the weft and right hand beating it down.",
+   "round": "2.6d training 5: five definition answers from a plain speaker",
+   "source": "lanes/2.6/dialogue/training/5/critic.md"
+  },
+  {
+   "id": "bad.train-6-01",
+   "tell": "one construction carrying the set",
+   "wrong": "Seeth-Mur's the one who caulks the seams. Mavos Telvani's the Dunmer clerk here.",
+   "right": "Seeth-Mur pitches the seams after me. Mavos Telvani keeps the ledger and meets whoever comes to the office.",
+   "round": "2.6d training 6: copula opens 7 of 8 answers",
+   "source": "lanes/2.6/dialogue/training/6/critic.md"
+  },
+  {
+   "id": "bad.train-6-02",
+   "tell": "another people's reticence in your mouth",
+   "wrong": "The rest isn't mine to explain.",
+   "right": "I'm told a Hist is a great tree with a mind. Argonians hatch beside one. It's their business, not mine.",
+   "round": "2.6d training 6: Argonian formula in a Breton",
+   "source": "lanes/2.6/dialogue/training/6/critic.md"
+  },
+  {
+   "id": "bad.train-7-01",
+   "tell": "the answer that skips the question",
+   "wrong": "The Empire's gone but the roads aren't, and they all came from the same hands.",
+   "right": "The Prison road runs south toward the Rose. I have never walked it, but carters tell me it floods in spring.",
+   "round": "2.6d training 7: directions asked, history given",
+   "source": "lanes/2.6/dialogue/training/7/critic.md"
+  },
+  {
+   "id": "bad.train-7-02",
+   "tell": "the quirk acting on what it names",
+   "wrong": "I weighed that rumour coin by coin.",
+   "right": "I weigh the coin in my palm before I answer a price question. The rumour I only repeat.",
+   "round": "2.6d training 7: quirk as figure of speech",
+   "source": "lanes/2.6/dialogue/training/7/critic.md"
+  },
+  {
+   "id": "bad.y2-001",
+   "tell": "direction or distance against the road",
+   "note": "modern unit, banned",
+   "wrong": "Thorn is under a kilometre off on the Tear road.",
+   "right": "Thorn is a quarter hour up the Tear road.",
+   "round": "2.6 corpus read batch A, FIX 1 (Riverwalk, n3-2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-002",
+   "tell": "ungrounded talk",
+   "note": "currency not in record",
+   "wrong": "Fancy losing a few drakes, pole-hand?",
+   "right": "Fancy losing a few septims, pole-hand?",
+   "round": "2.6 corpus read batch A, FIX 2 (Riverwalk, n2-3)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-003",
+   "tell": "vocative habit",
+   "note": "Imperial address from An-Xileel hand",
+   "wrong": "The toll office remembers you well, citizen.",
+   "right": "The toll office remembers you well, captain.",
+   "round": "2.6 corpus read batch A, FIX 3 (Riverwalk, n3)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-004",
+   "tell": "ungrounded talk",
+   "note": "toll hand does not sell meals; capital P drift",
+   "wrong": "Our shore grows no food at all, so I sell meals at a price I state. Crews pay a toll to enter Pilgrim water.",
+   "right": "Our shore grows no food at all, so every meal comes in by boat. Crews pay a toll at the post to enter the pilgrim water.",
+   "round": "2.6 corpus read batch A, FIX 4 (Riverwalk, n3)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-005",
+   "tell": "packed clause-chain",
+   "note": "glossary voice, reassuring lecture",
+   "wrong": "Lukiul is an insult that the An-Xileel invented for Argonians hatched far from here. The Hist, the great tree at the heart of a village, is something these Argonians cannot hear. Our word ojel names outsiders. We use it for any stranger and mean no offence by it.",
+   "right": "Ojel means outsider. We say it to any stranger and mean no harm. Lukiul is the An-Xileel's word for one of us who took foreign ways. Never say that one.",
+   "round": "2.6 corpus read batch A, FIX 5 (Riverwalk, n1)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-006",
+   "tell": "aphorism",
+   "note": "invented singers; resonant closer",
+   "wrong": "...They send agents out to the spit every night to shout about it. Our singers cannot be heard over them until the lamps burn low.",
+   "right": "They send agents out to the spit every night to shout about it. The lamps burn low before they stop.",
+   "round": "2.6 corpus read batch A, FIX 6 (Riverwalk, n2-2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-007",
+   "tell": "restated fact",
+   "note": "clone of n1-3 riverwalk-people; overlong; unrelated demand",
+   "wrong": "Newcomers get a meal and a long look. Few of them read our body talk, so I watch what a stranger's hands do for a good while before I judge anything about the stranger at all. Tell me your crew's name. Its bunks lie along the long house wall.",
+   "right": "Sailors like me. The long house families who cook for us. A stranger gets a meal and a long look. Few read our body talk, so I watch hands. Your crew's bunks are along the long house wall.",
+   "round": "2.6 corpus read batch A, FIX 7 (Riverwalk, n2-2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-008",
+   "tell": "polite closing question",
+   "note": "\"Want one?\" has lost its antecedent",
+   "wrong": "...Thorn lies along the Tear road, a walk from the shore that takes you past the toll post at the end of the planks. Want one?",
+   "right": "Canoes for the settlements upriver leave from the ferry stage. I would ride one before I waded the mud. Thorn is a walk along the Tear road, past the toll post. Want a canoe?",
+   "round": "2.6 corpus read batch A, FIX 8 (Riverwalk, n2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-009",
+   "tell": "aphorism",
+   "note": "aphorism closer",
+   "wrong": "I have turned none of them away, for a hull is a hull until its crew shows its hand.",
+   "right": "I have turned none of them away. I cannot tell a raider from an honest crew by the boat's name.",
+   "round": "2.6 corpus read batch A, FIX 9 (Riverwalk, stage-mistress)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-010",
+   "tell": "stock aside",
+   "note": "trainer boilerplate, repeated formula",
+   "wrong": "I also teach athletics and speechcraft in my spare hours. If you wish to train, I will take you as far as your body and mind can go.",
+   "right": "I teach athletics and speechcraft if you want them.",
+   "round": "2.6 corpus read batch A, FIX 10 (Riverwalk, stage-mistress)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-011",
+   "tell": "direction or distance against the road",
+   "note": "reads as a walk; they are by canoe",
+   "wrong": "Hissmir and Murkwater lie over the plank walk, past the ferry stage.",
+   "right": "Hissmir and Murkwater are by canoe from the ferry stage, over the plank walk. From the Tear road you reach Thorn and the border beyond.",
+   "round": "2.6 corpus read batch A, FIX 11 (Riverwalk, toll-holder)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-012",
+   "tell": "polite closing question",
+   "note": "contradicts the gar records; engagement question",
+   "wrong": "Nothing in the cove has ever bitten me. Crows and torchbugs swarm the lamps after dark. Have you poled a mud flat before? The mud scares me most. Each wet season my pole finds bottom a little sooner.",
+   "right": "The gar work the cove edge, so I keep my feet dry at dusk. Crows and torchbugs swarm the lamps after dark. The mud scares me most. Each wet season my pole finds bottom a little sooner.",
+   "round": "2.6 corpus read batch A, FIX 12 (Riverwalk, n2-2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-013",
+   "tell": "ungrounded talk",
+   "note": "contradicts shallows and piles",
+   "wrong": "The plank walk floats over deep water. Sound each board before you trust it.",
+   "right": "Boards on the plank walk go soft. Sound each one before you trust it.",
+   "round": "2.6 corpus read batch A, FIX 13 (Riverwalk, n3-2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-014",
+   "tell": "restated fact",
+   "note": "clone of toll-holder and stage-mistress; reader-gloss order",
+   "wrong": "A comer meets the great tree only after passing the trials. The Root Stewards oversee them and cannot turn a comer away. Hissmir is a stepped stone xanmeer in southern Shadowfen, a temple built around that tree...",
+   "right": "Hissmir is a stepped stone temple in southern Shadowfen. The Root Stewards run the trials. Pass them and any comer may stand before the great tree, outsiders too.",
+   "round": "2.6 corpus read batch A, FIX 14 (Riverwalk, n2-2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-015",
+   "tell": "aphorism",
+   "note": "resonant triple, 69 words",
+   "wrong": "...A stroke out of time swings the whole boat sideways in the channel. The three of us watch each other's shoulders from the first push of the morning until the last landing. Wherever nightfall finds the boat, that landing is where we sleep.",
+   "right": "Crews that land at Riverwalk get a meal and a bunk. We pole the boat up the channel and stack the cargo ourselves. Stroke out of time and she swings sideways. We sleep wherever the boat lands.",
+   "round": "2.6 corpus read batch A, FIX 15 (Riverwalk, n2-3)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-016",
+   "tell": "announcing your own manner",
+   "note": "speaker names himself; ungrounded grey-water",
+   "wrong": "Ux-Ossa says the runners heading down to the big town haul more in their packs than their books declare. He guesses it is salt. The grey-water traders always want more of it.",
+   "right": "The runners going down to Helstrom carry more in their packs than their books say. I would guess salt. Buyers down there always want more of it.",
+   "round": "2.6 corpus read batch A, FIX 16 (Greenspring, n2-4)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-017",
+   "tell": "polite closing question",
+   "note": "wrong gloss; engagement question",
+   "wrong": "Outsiders get called ojel here, the name for one of their own who never heard the Hist. No insult sits in it, only a plain word. Hear it often. Have you heard either one said yet?",
+   "right": "Ojel is our word for outsiders. There is no insult in it. Lukiul is the An-Xileel's slur for an Argonian who took foreign ways. Do not say that one.",
+   "round": "2.6 corpus read batch A, FIX 17 (Greenspring, n3)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-018",
+   "tell": "direction or distance against the road",
+   "note": "promises hours, gives none; Helstrom is 1.8 km",
+   "wrong": "I have walked long roads and measure them well. Hours tell better than days. ... go far to the south-west, with Ux-Aneet on the way.",
+   "right": "I have walked long roads and measure them well. The road and the landing both begin a few steps off. Go south-west past Ux-Aneet and Cut-and-Carried; Helstrom is under an hour on foot.",
+   "round": "2.6 corpus read batch A, FIX 18 (Greenspring, n3)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-019",
+   "tell": "direction or distance against the road",
+   "note": "distance wrong (and bark.greenspring-n3.passing \"A long walk yet.\")",
+   "wrong": "A long walk yet to Helstrom, ojel.",
+   "right": "Helstrom is an hour off yet, ojel.\" with bark \"Not far now.",
+   "round": "2.6 corpus read batch A, FIX 19 (Greenspring, n3)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-020",
+   "tell": "direction or distance against the road",
+   "note": "\"far\" contradicts 1.8 km",
+   "wrong": "Helstrom is far off beyond it, south-west. Most of my lodgers leave at first light and are far along the road by dark.",
+   "right": "Helstrom lies beyond it, south-west, an hour's walk or less. Most of my lodgers leave at first light.",
+   "round": "2.6 corpus read batch A, FIX 20 (Greenspring, n1)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-021",
+   "tell": "direction or distance against the road",
+   "note": "invented atmosphere; hours",
+   "wrong": "...go on until the trees close over the road and the air turns thick and sweet. I reckon the hours I have left.",
+   "right": "Walk south-west from here past Ux-Aneet and keep on to Helstrom. The spring here is safe to drink unboiled, which is rare in this region.",
+   "round": "2.6 corpus read batch A, FIX 21 (Greenspring, n3)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-022",
+   "tell": "packed clause-chain",
+   "note": "does not parse",
+   "wrong": "A night's meal says I can guess your errand.",
+   "right": "Supper or pods, traveller?",
+   "round": "2.6 corpus read batch A, FIX 22 (Greenspring, n2-4)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-023",
+   "tell": "packed clause-chain",
+   "note": "inverted syntax",
+   "wrong": "Over the fire stands we cook all day.",
+   "right": "We cook all day at the fire stands.",
+   "round": "2.6 corpus read batch A, FIX 23 (Greenspring, n2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-024",
+   "tell": "the quirk acting on what it names",
+   "note": "invented non sequitur, narrated quirk",
+   "wrong": "...Im-Moro says I laugh too loud at breakfast. The air is chilly at that hour and I need warming.",
+   "right": "Vees-Wai tends the tree from first light until evening. Im-Moro guards the stone lip. The families cook, carry buckets and mend rope for sale.",
+   "round": "2.6 corpus read batch A, FIX 24 (Greenspring, n2-3)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-025",
+   "tell": "the quirk acting on what it names",
+   "note": "narrated quirk; span is a hand measure",
+   "wrong": "Rope I measure against my own arms and sell by the span, a subject I could talk on all night.",
+   "right": "Rope I measure against my own arms and sell by the arm's length.",
+   "round": "2.6 corpus read batch A, FIX 25 (Greenspring, n1)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-026",
+   "tell": "announcing your own manner",
+   "note": "speaker reviews own speech",
+   "wrong": "She talks about the spring the way I talk about my travels, at length and with feeling.",
+   "right": "She is at the stone lip when I wake and she will tell you about the spring at length.",
+   "round": "2.6 corpus read batch A, FIX 26 (Greenspring, n3)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-027",
+   "tell": "announcing your own manner",
+   "note": "self-praise as proof",
+   "wrong": "Visitors tell me the cup runs neither over nor short. I have the steadiest hands in the village, as the families will tell you.",
+   "right": "My work is pouring cups. I pour them level.",
+   "round": "2.6 corpus read batch A, FIX 27 (Greenspring, spring-keeper)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-028",
+   "tell": "aphorism",
+   "note": "sermon, balanced close",
+   "wrong": "Some folk get called lukiul, a slur ... Never say it to anyone. Ojel is my word for you. It means outsiders, a plain word that holds no insult, so take none from me.",
+   "right": "Ojel means outsider. It is a plain word, so take no offence. Lukiul is an An-Xileel slur for Argonians who took foreign ways. Do not say it.",
+   "round": "2.6 corpus read batch A, FIX 28 (Greenspring, n2-2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-029",
+   "tell": "aphorism",
+   "note": "wrong army; resonant run-on",
+   "wrong": "As the war turned, the legions withdrew into it. The Empire counted what a siege would cost through all the long wet seasons and then left the place be, so Helstrom was never taken so the whole interior still answers to it.",
+   "right": "As the war turned, our armies withdrew into it. The Empire weighed what a siege would cost and chose against it, so no army has taken it and the whole interior answers to it.",
+   "round": "2.6 corpus read batch A, FIX 29 (Greenspring, tree-minder)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-030",
+   "tell": "packed clause-chain",
+   "note": "odd word; chronology",
+   "wrong": "No host has ever taken Helstrom ... our armies withdrew into it when the war on us ended.",
+   "right": "No army has taken Helstrom. Our armies withdrew into it after the great battle and the Empire chose against a siege. Guests name it to me every evening.",
+   "round": "2.6 corpus read batch A, FIX 30 (Greenspring, n1)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-031",
+   "tell": "restated fact",
+   "note": "restates about-many-root-conclave in the same speaker",
+   "wrong": "...No steward lifts a tool to a tree without its consent. Any village that wants a minder gets one sent. Even small ones.",
+   "right": "The Conclave sent me here. Any village that wants a minder gets one, even a small one like this. I read this Hist's signs. When the tribe is in trouble I know first.",
+   "round": "2.6 corpus read batch A, FIX 31 (Greenspring, tree-minder)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-032",
+   "tell": "restated fact",
+   "note": "clone of tree-minder's own words",
+   "wrong": "...He reads its signs and tells us what it wants. Trouble in the nests or the kin, he feels first.",
+   "right": "Vees-Wai holds that post. The Many-Root Conclave sends each village one minder. He reads the tree's signs and tells us what it wants.",
+   "round": "2.6 corpus read batch A, FIX 32 (Greenspring, n2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-033",
+   "tell": "restated fact",
+   "note": "clone, 74 words",
+   "wrong": "Every hatchling drinks sap from the Hist on the naming day. A Hist has a mind behind its bark. That sap shapes the frame and scales of each child for life. It stays in us as our soul and blood. When a person dies, the spirit goes back to the tree that fed it. Vees-Wai, our minder, reads its signs and says whether our clutch, the eggs laid among the roots, is doing well.",
+   "right": "Every hatchling drinks sap from the Hist on its naming day. It shapes the frame and scales for life and stays in us as our soul. Vees-Wai reads the tree's signs and tells us whether the clutch is well.",
+   "round": "2.6 corpus read batch A, FIX 33 (Greenspring, n1)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-034",
+   "tell": "restated fact",
+   "note": "clone; give the herald one beat",
+   "wrong": "Every hatchling drinks Hist sap on its naming day. The sap shapes our bones and our scales through all of life, then becomes the blood and soul we carry. Each Hist is a huge tree with its own mind. The spirit of the dead goes home into its tree. Eggs lie in a clutch beneath the roots.",
+   "right": "A hatchling drinks Hist sap on its naming day. The sap is our blood and soul. When we die the spirit goes home into the tree.",
+   "round": "2.6 corpus read batch A, FIX 34 (Greenspring, root-herald)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-035",
+   "tell": "packed clause-chain",
+   "note": "tangled; \"no answer\" invented",
+   "wrong": "...The village blames them for the tree by the spring that droops more each week while those people give no answer to anyone. Eat first.",
+   "right": "Bitter brine. The salt works upstream lets it seep down to us. The village blames them. The tree droops more each week. Eat first.",
+   "round": "2.6 corpus read batch A, FIX 35 (Greenspring, n2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-036",
+   "tell": "ungrounded talk",
+   "note": "diggers; record is a salt works that boils brine",
+   "wrong": "Everyone curses those salt diggers upstream.",
+   "right": "Everyone curses the salt works upstream.",
+   "round": "2.6 corpus read batch A, FIX 36 (Greenspring, n2-4)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-037",
+   "tell": "ungrounded talk",
+   "note": "aunt not in records",
+   "wrong": "Dusk is when my aunt cooks, over the fire stands, with the pot passed round.",
+   "right": "Dusk is when Mee-Sei cooks, at the fire stands, with the pot passed round.",
+   "round": "2.6 corpus read batch A, FIX 37 (Greenspring, n2-4)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-038",
+   "tell": "aphorism",
+   "note": "resonant closer",
+   "wrong": "...Every one of us pays for it in the end, mostly in worry.",
+   "right": "Wasps nest close to the huts and I go wide of them. The tree frightens me more, as it sickens a little each week. Im-Moro dips the ladle at dawn. I taste after her. Each day there is more salt in it. An upstream works that boils salt puts it there.",
+   "round": "2.6 corpus read batch A, FIX 38 (Greenspring, n2-3)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-039",
+   "tell": "direction or distance against the road",
+   "note": "Cross is on the road",
+   "wrong": "Take the track east to the road, then follow that east. Cartwright's Cross turns off the road soon after.",
+   "right": "Take the track east to the road, then follow it east. Cartwright's Cross is on it, then the Mile House, then Gideon.",
+   "round": "2.6 corpus read batch A, FIX 39 (Claywater, n1)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-040",
+   "tell": "a thing named so the player cannot place it",
+   "note": "vague, \"short way\" x3, invented turns",
+   "wrong": "...to the turning for Cartwright's Cross and walk a short way along a track from there. Gideon is farther, a few more turns past that turning. Those turns are strange ground to me.",
+   "right": "From my door take the track east to the long road, then follow it east. Cartwright's Cross is a short way along it. Gideon is farther. I have never walked past the Cross.",
+   "round": "2.6 corpus read batch A, FIX 40 (Claywater, n1-3)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-041",
+   "tell": "the answer that skips the question",
+   "note": "non sequitur, no record",
+   "wrong": "The courts still sit. I want a paper with my name on it. An Owing is...",
+   "right": "The courts still sit. An Owing is a bond. The man works under it until his master's debt is cleared. Once it is signed in Gideon, the bound man may bring the matter before the bench to contest it.",
+   "round": "2.6 corpus read batch A, FIX 41 (Claywater, n2-2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-042",
+   "tell": "packed clause-chain",
+   "note": "muddled; reassurance",
+   "wrong": "Sign one there and you've only signed paper that a court can overturn once it's contested. Don't let that scare you off.",
+   "right": "Sign an Owing in Gideon and it is only paper: a court can overturn it if it is contested. The courts are open to all, I'm told. The judges hear both sides.",
+   "round": "2.6 corpus read batch A, FIX 42 (Claywater, well-keeper)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-043",
+   "tell": "a word the culture never says, said freely",
+   "note": "Argonian says walker (Khajiit word)",
+   "wrong": "Walkers still use the old names that they gave it.",
+   "right": "Travellers still use the old names that they gave it.",
+   "round": "2.6 corpus read batch A, FIX 43 (Claywater, n2-2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-044",
+   "tell": "a word the culture never says, said freely",
+   "note": "walker",
+   "wrong": "\"Walkers wade free.\" (role-poling)",
+   "right": "Anyone on foot wades free.",
+   "round": "2.6 corpus read batch A, FIX 44 (Claywater, poler)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-045",
+   "tell": "a word the culture never says, said freely",
+   "note": "record says a walker can wade it",
+   "wrong": "Four bog dogs prowl the shore when it's dusk. Don't wade the ford. A crocodile lies low there.",
+   "right": "Four bog dogs prowl the shore at dusk. A crocodile lies low in the channel, so wade the ford by day and keep to the stones.",
+   "round": "2.6 corpus read batch A, FIX 45 (Claywater, well-keeper)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-046",
+   "tell": "restated fact",
+   "note": "clone of n1-2 role-two-halves, no person",
+   "wrong": "Pay both ends. Each bank charges its own fee ... station half has timber houses round a stone well that is cracking. The landing half is mud walls under thatch.",
+   "right": "Two halves. I keep to mine. Their stone well is cracking and tastes of rust; the channel at my door runs cold. Each bank charges you, so you pay both.",
+   "round": "2.6 corpus read batch A, FIX 46 (Claywater, n1-3)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-047",
+   "tell": "polite closing question",
+   "note": "polite model closer",
+   "wrong": "...This one sits by the brazier through those hours and wishes the same safety for you.",
+   "right": "This one sits by the brazier through those hours.",
+   "round": "2.6 corpus read batch A, FIX 47 (Claywater, n2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-048",
+   "tell": "aphorism",
+   "note": "tidy balance; the sheet says good neighbours until the well comes up",
+   "wrong": "We're Imperials, they're Argonians. Decent folk, both.",
+   "right": "We're Imperials, they're Argonians. Good neighbours, till the well comes up.",
+   "round": "2.6 corpus read batch A, FIX 48 (Claywater, n1)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-049",
+   "tell": "aphorism",
+   "note": "aphorism closer",
+   "wrong": "...The crossing is older than any wall here.",
+   "right": "Claywater is a ford with my huts on one shore and the station, a stone well and a timber house with beds upstairs, on the other. Polers hauled folk over this crossing long before anyone dug that well. The mud walls of my huts got fresh plaster last year.",
+   "round": "2.6 corpus read batch A, FIX 49 (Claywater, poler)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-050",
+   "tell": "restated fact",
+   "note": "clone pair",
+   "wrong": "The monsoon season shuts the road for as long as it lasts. Otherwise carts roll along it from Leyawiin to Gideon. Built by the Empire, it is called the Blackwood Road by travellers. Cartwright's Cross and the Mile House stand along it. Between them lie ruts that I have cursed often.",
+   "right": "The monsoon shuts the road for as long as it lasts. Otherwise carts run from Leyawiin to Gideon. Cartwright's Cross and the Mile House stand along it. Between them are ruts I have cursed often.",
+   "round": "2.6 corpus read batch A, FIX 50 (Claywater, n2-2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
+  },
+  {
+   "id": "bad.y2-051",
+   "tell": "aphorism",
+   "note": "ungrounded count, tidy aside",
+   "wrong": "Forty-one days left.",
+   "right": "Leeches cling to my legs in the seep, so I check them each shift.",
+   "round": "2.6 corpus read batch B, FIX 1 (bog-iron, n1-3)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-052",
+   "tell": "ungrounded talk",
+   "note": "invented colour, contradicts selling and visitor contempt",
+   "wrong": "A stranger may carry off any cake he can lift.",
+   "right": "Strangers who want iron deal with the headman.",
+   "round": "2.6 corpus read batch B, FIX 2 (bog-iron, n1-2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-053",
+   "tell": "the quirk acting on what it names",
+   "note": "named emotion",
+   "wrong": "feeling the shame of this work worst of us all.",
+   "right": "None of us talks of it back home. I talk of it least.",
+   "round": "2.6 corpus read batch B, FIX 3 (bog-iron, n1-2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-054",
+   "tell": "packed clause-chain",
+   "note": "gazetteer, engineers invented, off-place",
+   "wrong": "Beside the Prison road, on a dry rise, stands the Tag House. Imperial engineers built the Prison road and the Border road. They kept a waystation at the Mile House. People still use those old names.",
+   "right": "The Empire cut the Prison road and the Border road and kept a waystation at the Mile House. Folk still use the old names.",
+   "round": "2.6 corpus read batch B, FIX 4 (bog-iron, n1)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-055",
+   "tell": "restated fact",
+   "note": "furnace fact restated (also n1.work)",
+   "wrong": "The diggers here all have their own villages far off. Each season we raise a clay furnace and pull it down to reach the bloom.",
+   "right": "The diggers here all have their own villages far off. The iron forms in stagnant water that sits for years. Ours is that kind of water.",
+   "round": "2.6 corpus read batch B, FIX 5 (bog-iron, n1)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-056",
+   "tell": "restated fact",
+   "note": "furnace restated, appositive gloss",
+   "wrong": "Each year the furnace gets raised fresh from clay and broken apart for the bloom, the raw lump of iron inside.",
+   "right": "Nothing here takes a spade. The iron forms in the seep below the bank, where the water lies stagnant for years. Come season's end we scatter.",
+   "round": "2.6 corpus read batch B, FIX 6 (bog-iron, n1-2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-057",
+   "tell": "restated fact",
+   "note": "same fact third time",
+   "wrong": "Every season the crew builds a furnace from nothing, then breaks it apart to reach the bloom, a lump of raw iron.",
+   "right": "When the season ends we scatter, each to a separate village. Until then I haul cakes out of stagnant water.",
+   "round": "2.6 corpus read batch B, FIX 7 (bog-iron, n1-3)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-058",
+   "tell": "polite closing question",
+   "note": "question closer, balanced hedge, conflicts n1-3 still wading",
+   "wrong": "Are you heading out past the bench? Be off it by dusk. I stopped sending the lifter out there, but I have not decided the risk outweighs the wage.",
+   "right": "Leeches fill the shallows and something worse sits in the deep pools. Be off the bench by dusk.",
+   "round": "2.6 corpus read batch B, FIX 8 (bog-iron, n1)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-059",
+   "tell": "contractions at one rate",
+   "note": "contraction in an Argonian",
+   "wrong": "I'm at the fire, ojel. Say your piece.",
+   "right": "At the fire, ojel. Say your piece.",
+   "round": "2.6 corpus read batch B, FIX 9 (bog-iron, n1-2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-060",
+   "tell": "direction or distance against the road",
+   "note": "copper not a record unit",
+   "wrong": "For you, the crew price less a copper.",
+   "right": "For you, the crew price less a drake.",
+   "round": "2.6 corpus read batch B, FIX 10 (bog-iron, n1)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-061",
+   "tell": "ungrounded talk",
+   "note": "invented event, says a family's debt aloud (taboo)",
+   "wrong": "I saw a spade snap one morning at the second shift of work, then saw that family owe the whole price of it to the overseers by dark.",
+   "right": "Slugs and gar keep to the water. A snapped spade goes on the debt, so it only grows.",
+   "round": "2.6 corpus read batch B, FIX 11 (opening-work-camp, ties)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-062",
+   "tell": "direction or distance against the road",
+   "note": "modern unit, ungrounded distance",
+   "wrong": "Alten Corimont is reached across the boardwalk, then half a kilometre up the Border road.",
+   "right": "Alten Corimont is across the boardwalk and a short way up the Border road.",
+   "round": "2.6 corpus read batch B, FIX 12 (opening-work-camp, tsanji)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-063",
+   "tell": "listener-hook question",
+   "note": "ungrounded distance, route invented, question opener",
+   "wrong": "Cross the boardwalk, then walk the road north for about half a mile. There it turns east. The last stretch runs south into the town.",
+   "right": "Cross the boardwalk and follow the Border road. It is a short walk to Alten Corimont.",
+   "round": "2.6 corpus read batch B, FIX 13 (opening-work-camp, risakka)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-064",
+   "tell": "direction or distance against the road",
+   "note": "contradicts sheet: gang walk runs out to the port",
+   "wrong": "The gang walk is the path that the gang takes up from the barge onto that road, a little east of the roofs.",
+   "right": "The gang walk runs out from the barge to Alten Corimont. The Border road is above, climb from the shed door.",
+   "round": "2.6 corpus read batch B, FIX 14 (opening-work-camp, neshneel)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-065",
+   "tell": "the quirk acting on what it names",
+   "note": "referent follows its object; named emotion",
+   "wrong": "I hate all three. Stairs end at the pier, the walk drags to Alten Corimont, the bank climbs toward the Border road.",
+   "right": "Stairs end at the pier, the walk drags to Alten Corimont, the bank climbs to the Border road. I use none of them.",
+   "round": "2.6 corpus read batch B, FIX 15 (opening-work-camp, dives)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-066",
+   "tell": "listener-hook question",
+   "note": "question opener, gloss, Hist tree contradicts sheet (camp has no Hist)",
+   "wrong": "You're bound for Alten Corimont? ... a Hist, the old tree that thinks for itself, on the west side that wants sure feet.",
+   "right": "The gang walk takes you to Alten Corimont. The Border road is up from the top of the camp. The roots on the west bank are a hard climb.",
+   "round": "2.6 corpus read batch B, FIX 16 (opening-work-camp, llarvi)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-067",
+   "tell": "restated fact",
+   "note": "same contradiction",
+   "wrong": "Two roots of the Hist, a great tree, make another way out over the west bank.",
+   "right": "Two great roots make another way out over the west bank.",
+   "round": "2.6 corpus read batch B, FIX 17 (opening-work-camp, tsanji)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-068",
+   "tell": "a thing named so the player cannot place it",
+   "note": "ambiguous \"their\", thin",
+   "wrong": "Two overseers write up what the hands owe. Their families are good company, asking after the eggs each dawn.",
+   "right": "Two overseers write up what the hands owe. The families ask after the eggs each dawn.",
+   "round": "2.6 corpus read batch B, FIX 18 (opening-work-camp, salsei)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-069",
+   "tell": "the quirk acting on what it names",
+   "note": "opens off topic, named emotion, near-copy of deeshduun",
+   "wrong": "I resent that the camp hears none of the reading on the barge. ... I guess the house wants a smaller camp.",
+   "right": "Deesh-Duun says more grown folk go downriver every year, sent off the roll. I say the house wants a smaller camp.",
+   "round": "2.6 corpus read batch B, FIX 19 (opening-work-camp, finds)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-070",
+   "tell": "one construction carrying the set",
+   "note": "same shape and fact as finds",
+   "wrong": "Finds-The-Other-Bank and the others at the cookfire say grown ones are sent downriver ... My guess only is that the house wants more hands than the channel work can supply.",
+   "right": "Grown ones go downriver more every year. The families say it is the roll. Me, I say the house wants more hands than the channel gives.",
+   "round": "2.6 corpus read batch B, FIX 20 (opening-work-camp, deeshduun)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-071",
+   "tell": "restated fact",
+   "note": "barge/roll restated by all nine",
+   "wrong": "Names get called aboard the barge, where the hands work the port channel. We tend the fire and the shed.",
+   "right": "The roll names who owes the house.",
+   "round": "2.6 corpus read batch B, FIX 21 (opening-work-camp, all nine)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-072",
+   "tell": "restated fact",
+   "note": "fact card in every answer",
+   "wrong": "Slugs and gar wait out in the shallows. Meals, fevers and broken spades all grow the debt.",
+   "right": "Nothing climbs to the shed. I fear only the cold hours.",
+   "round": "2.6 corpus read batch B, FIX 22 (opening-work-camp, all nine)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-073",
+   "tell": "restated fact",
+   "note": "recited card, five times",
+   "wrong": "Every hand in a gang owes the slaving house. He dredges mud... He sleeps on land...",
+   "right": "A gang hand owes the house, so the debt rides with his family.",
+   "round": "2.6 corpus read batch B, FIX 23 (opening-work-camp, ties/dives/finds/risakka/tsanji)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-074",
+   "tell": "vocative habit",
+   "note": "\"mate\" tag, not Dunmer",
+   "wrong": "Name, mate. I will write it down.",
+   "right": "Name, walker. I will write it down.",
+   "round": "2.6 corpus read batch B, FIX 24 (opening-work-camp, llarvi)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-075",
+   "tell": "polite closing question",
+   "note": "question closer, tic",
+   "wrong": "You have no name in that book, yes?",
+   "right": "You have no name in that book.",
+   "round": "2.6 corpus read batch B, FIX 25 (opening-work-camp, neshneel)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-076",
+   "tell": "direction or distance against the road",
+   "note": "contradicts \"no track\"; camp is terraces; ungrounded",
+   "wrong": "Come by boat or by the track. ... until the track meets a clearing of huts that the families who claim our tree built. The hired gangs sleep in them.",
+   "right": "Pole downriver past the bend until the work camp shows on the bank. The port lies beyond.",
+   "round": "2.6 corpus read batch B, FIX 26 (upriver, kin-house)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-077",
+   "tell": "ungrounded talk",
+   "note": "raft invented, \"past the big tree\" backwards",
+   "wrong": "No track. Take a raft to the opening work camp, past the big tree.",
+   "right": "No track. Pole down to the opening work camp.",
+   "round": "2.6 corpus read batch B, FIX 27 (upriver, net-mender)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-078",
+   "tell": "aphorism",
+   "note": "invented history, tidy closer",
+   "wrong": "...yet nothing has come up past the landing into the village in all my years at the smokehouse. I sleep soundly for it.",
+   "right": "Mind the bank, where an adder lies. Jellies float near the landing.",
+   "round": "2.6 corpus read batch B, FIX 28 (upriver, smokehouse)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-079",
+   "tell": "aphorism",
+   "note": "resonant flourish, gazetteer",
+   "wrong": "Watch the roots. Huts crowd round the trunk, with sweet river water running past. Smoke from every hearth drifts up through its branches at dusk.",
+   "right": "The crews at the lower camp talk as if the tree were theirs. Their eggs were laid in the sand at its roots.",
+   "round": "2.6 corpus read batch B, FIX 29 (upriver, weather)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-080",
+   "tell": "stock aside",
+   "note": "hook jammed in, off topic",
+   "wrong": "...The bosses count heads each dry season. Never short. I called fair skies and rain fell before dawn.",
+   "right": "Our people sign onto the roll. The lower channel pays them. That coin buys what I sell at this door. Dry all week, I said.",
+   "round": "2.6 corpus read batch B, FIX 30 (upriver, weather)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-081",
+   "tell": "polite closing question",
+   "note": "question, run-on",
+   "wrong": "Are you sleeping near the bank tonight? Jellies crowd the landing stage. Look before you step onto it, where every boat that ties up sets them stinging along the poles.",
+   "right": "Jellies crowd the landing stage. Look before you step. The big river hunters work the approach.",
+   "round": "2.6 corpus read batch B, FIX 31 (upriver, weather)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-082",
+   "tell": "listener-hook question",
+   "note": "question opener; \"huts\" wrong",
+   "wrong": "Have you a boat? Pole down to the opening work camp where the hired gangs have huts.",
+   "right": "Pole down to the opening work camp. The port is on past that.",
+   "round": "2.6 corpus read batch B, FIX 32 (upriver, smokehouse)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-083",
+   "tell": "polite closing question",
+   "note": "question; chime invented (no record)",
+   "wrong": "Did you hear the tree chime from the water? It carries a bend downstream.",
+   "right": "The tree chimes. It carries a bend down the river.",
+   "round": "2.6 corpus read batch B, FIX 33 (upriver, minder)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-084",
+   "tell": "polite closing question",
+   "note": "rhetorical Q-and-A, tidy",
+   "wrong": "How does a house pay with no hands? It does not. Every quarrel comes to my door first.",
+   "right": "A house with no hands cannot pay. Every quarrel comes to my door first.",
+   "round": "2.6 corpus read batch B, FIX 34 (upriver, elder)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-085",
+   "tell": "the quirk acting on what it names",
+   "note": "named emotion, slogan shared by six speakers",
+   "wrong": "That claim is hateful.",
+   "right": "They call the tree theirs. It is not.",
+   "round": "2.6 corpus read batch B, FIX 35 (upriver, dyer)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-086",
+   "tell": "packed clause-chain",
+   "note": "five facts in one answer, claim line shared",
+   "wrong": "There is trodh in the jar by my anvil. The families who hire out below us were hatched at our tree's roots in the soil beneath it. They talk as if it belongs to them, but it does not. Up here the river runs sweet with no salt in it yet, which you can taste. The nearest port lies far down the river, past the work camp.",
+   "right": "There is trodh in the jar by my anvil. The river runs sweet this far up. The port is far down, past the work camp.",
+   "round": "2.6 corpus read batch B, FIX 36 (upriver, smith)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-087",
+   "tell": "ungrounded talk",
+   "note": "contradicts jellies in shallows (stay in the shallows)",
+   "wrong": "Jellies drift while predators lurk in the deep pools on the way up to us, so stay in the shallows where the water runs clear.",
+   "right": "Jellies drift in the shallows near the landing. Predators lurk in the deep pools on the way up.",
+   "round": "2.6 corpus read batch B, FIX 37 (upriver, smith)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-088",
+   "tell": "polite closing question",
+   "note": "question closer",
+   "wrong": "Will you take it?",
+   "right": "as much as your body can take.",
+   "round": "2.6 corpus read batch B, FIX 38 (upriver, smith)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-089",
+   "tell": "polite closing question",
+   "note": "question closer",
+   "wrong": "How much reed do you need?",
+   "right": "tied tight enough for a shoulder.",
+   "round": "2.6 corpus read batch B, FIX 39 (upriver, reed-cutter)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-090",
+   "tell": "vocative habit",
+   "note": "tag word, not Morrowind",
+   "wrong": "Lost in the dark, mate?",
+   "right": "Lost in the dark, stranger?",
+   "round": "2.6 corpus read batch B, FIX 40 (upriver, net-mender / kin-house)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-091",
+   "tell": "restated fact",
+   "note": "restates about-many-root-conclave; clumsy",
+   "wrong": "My office is the one who tends it. The Conclave, whose stewards care for every tree, sent me out...",
+   "right": "I do not prune it. The Conclave sent me out to this village.",
+   "round": "2.6 corpus read batch B, FIX 41 (upriver, minder)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-092",
+   "tell": "packed clause-chain",
+   "note": "lecture copied from bog n1-2",
+   "wrong": "It means outsiders, just a plain word, with no insult in it. Lukiul is the bitter one, an An-Xileel slur...",
+   "right": "A trader called me ojel at the curing sheds. I shrugged. Lukiul is a word I would not shrug off.",
+   "round": "2.6 corpus read batch B, FIX 42 (upriver, hist-village-n2-2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-093",
+   "tell": "packed clause-chain",
+   "note": "lecture, dictionary",
+   "wrong": "Outsiders are what ojel means. It names strangers from beyond the marsh. The word is no insult from my mouth.",
+   "right": "Ojel is what we call anyone off the road. Lukiul stays behind my teeth.",
+   "round": "2.6 corpus read batch B, FIX 43 (bog-iron, n1-2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-094",
+   "tell": "aphorism",
+   "note": "balanced both-sides tidy turn",
+   "wrong": "Several kin houses lost every grown hand that way; the village is poorer for it now, yet the guest stores are filled from that coin.",
+   "right": "Several kin houses lost every grown hand to the roll. The guest stores are filled from that coin.",
+   "round": "2.6 corpus read batch B, FIX 44 (upriver, elder)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-095",
+   "tell": "gentle dissent",
+   "note": "dissent not distinct from the village lament (all voices)",
+   "wrong": "Each household that empties leaves the tree weaker",
+   "right": "I do not say the roll is wrong. I say the roots feel it.",
+   "round": "2.6 corpus read batch B, FIX 45 (upriver, minder)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-B.md"
+  },
+  {
+   "id": "bad.y2-096",
+   "tell": "direction or distance against the road",
+   "note": "fact contradicts the pool (unpaid since the road stopped being kept)",
+   "wrong": "I haven't been paid for this post. Not a coin, nor would I expect one. Neither was any keeper before me, back to when Imperial couriers first ran a halt here. ... Its written rules name the track and the lamp as the keeper's care.",
+   "right": "I haven't been paid for this post, not a coin since the coast road stopped being kept. I don't expect one. It's inherited, handed down from my family as it came to them from theirs. Two families claim it now and neither's giving way. The old orders name the track and the lamp as the keeper's care, so I keep both.",
+   "round": "2.6 corpus read batch C, FIX 1 (Chasepoint, station-keeper)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-097",
+   "tell": "ungrounded talk",
+   "note": "record contradiction",
+   "wrong": "fish mostly and some salvage",
+   "right": "The stall by the north wall sells what the shore's given up this week, planks and cordage and the odd cask, each with its ship's name. The families haggle hard over every lot, as you've likely found. They don't shave a price for strangers.",
+   "round": "2.6 corpus read batch C, FIX 2 (Chasepoint, station-keeper)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-098",
+   "tell": "ungrounded talk",
+   "note": "fellrunners do not chew; invented",
+   "wrong": "They've chewed my ledger.",
+   "right": "I won't cross the scrub after dusk, not with fellrunners prowling there. I can live with rats, though they'd chew a ledger if I left it out.",
+   "round": "2.6 corpus read batch C, FIX 3 (Chasepoint, station-keeper)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-099",
+   "tell": "ungrounded talk",
+   "note": "invented event",
+   "wrong": "They've shown me nothing, though I've asked twice.",
+   "right": "Two families are after this post, mine and the other. I've the paper, the written orders that made it. The other family has never shown me theirs.",
+   "round": "2.6 corpus read batch C, FIX 4 (Chasepoint, station-keeper)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-100",
+   "tell": "aphorism",
+   "note": "aphoristic closer",
+   "wrong": "I've sat out every storm in that front room. It hasn't leaked once. It won't.",
+   "right": "I've sat out every storm in that front room and it hasn't leaked yet.",
+   "round": "2.6 corpus read batch C, FIX 5 (Chasepoint, station-keeper)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-101",
+   "tell": "polite closing question",
+   "note": "closing question; hand-off to the player",
+   "wrong": "... Have you walked the causeway yet?",
+   "right": "For Fourth Stage you'd go out past the Bog causeway, the raised road across the wet ground, then on along the track. The old capital's south-west of here, hardly any walk at all. You can't see the sea for the scrub, but it's south, two fields off.",
+   "round": "2.6 corpus read batch C, FIX 6 (Chasepoint, station-keeper)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-102",
+   "tell": "packed clause-chain",
+   "note": "invented event with count and day; three ideas",
+   "wrong": "... A heavy full sack went round the back of their stable three evenings this week.",
+   "right": "Each of two families claims the keeper's post. It has paid nothing for two hundred years. I quarrel with the stall's tally instead. The rope-stable family hauls more off the sand than the stall records. I have told them so.",
+   "round": "2.6 corpus read batch C, FIX 7 (Chasepoint, n1-4)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-103",
+   "tell": "restated fact",
+   "note": "invented rule; 75 words; restates n1/n1-2/n1-3",
+   "wrong": "Each family guards its own stretch with sticks against any stranger. ... neighbours stay off that sand until the sorting is done over however many days it takes.",
+   "right": "Taking timber off another family's shore is forbidden. The right is hereditary, passed down by blood, so each family works its own stretch and watches it. After a blow, the wreck of broken ships comes ashore south of us, out of the Southern Sea.",
+   "round": "2.6 corpus read batch C, FIX 8 (Chasepoint, n1-4)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-104",
+   "tell": "one construction carrying the set",
+   "note": "same sentence frame as n1, n1-2, n1-4",
+   "wrong": "Cutting timber from a neighbour's stretch is forbidden. We guard ours through every storm. The right is hereditary and passes down the house from parent to child. After blows ...",
+   "right": "No man cuts timber from a neighbour's stretch. We keep ours, storm or none; it was my father's. After a blow, the beaches south of us are all wreck, from splinters to whole masts.",
+   "round": "2.6 corpus read batch C, FIX 9 (Chasepoint, n1-3)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-105",
+   "tell": "packed clause-chain",
+   "note": "lecture frame, \"far out\" detail invented",
+   "wrong": "Timber taken off a neighbour's sand is forbidden to everyone on this coast. Each family guards its own sand, a hereditary right handed down for longer than anyone can say.",
+   "right": "Take timber off a neighbour's sand and you will hear about it from every family on this coast. Each guards its own stretch, as their grandparents did. What the Southern Sea breaks comes ashore on the beach south of this stage.",
+   "round": "2.6 corpus read batch C, FIX 10 (Chasepoint, n1)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-106",
+   "tell": "ungrounded talk",
+   "note": "\"market days\" not recorded",
+   "wrong": "I will not say which claim is better. Both houses trade with me on market days.",
+   "right": "Two houses claim the keeper's chair, each by blood. Pay for the chair stopped two centuries back. Both buy from me, so I will not say whose claim is better.",
+   "round": "2.6 corpus read batch C, FIX 11 (Chasepoint, n1-2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-107",
+   "tell": "ungrounded talk",
+   "note": "unrecorded payment in kind; unclear",
+   "wrong": "Quiet costs you a plank of good timber now.",
+   "right": "I saw that. Keep off my stretch of the shore.",
+   "round": "2.6 corpus read batch C, FIX 12 (Chasepoint, n1-2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-108",
+   "tell": "polite closing question",
+   "note": "closing question",
+   "wrong": "Planks first ... Can you carry? The rest I buy cheap.",
+   "right": "Planks first, hauled up the beach when the sea pulls back. The rest I buy cheap, from whoever drags it up.",
+   "round": "2.6 corpus read batch C, FIX 13 (Chasepoint, n1-2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-109",
+   "tell": "polite closing question",
+   "note": "closing question",
+   "wrong": "... Did you meet fellrunners on the way here?",
+   "right": "Fellrunners in the scrub are worse than the marsh rats that chew my bedding at night. Stay on the path and out of the scrub.",
+   "round": "2.6 corpus read batch C, FIX 14 (Chasepoint, n1-3)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-110",
+   "tell": "direction or distance against the road",
+   "note": "unnamed town, no direction or time",
+   "wrong": "The town is close, along the path beyond the yard gate. Fourth Stage is far.",
+   "right": "The old capital is a short walk west. Fourth Stage is east, a long way round by the causeway.",
+   "round": "2.6 corpus read batch C, FIX 15 (Chasepoint, n1-3)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-111",
+   "tell": "wry tag-line",
+   "note": "tag closer",
+   "wrong": "... Look close, then.",
+   "right": "Soldiers built this stage for travellers. We put the reed on when the tiles went.",
+   "round": "2.6 corpus read batch C, FIX 16 (Chasepoint, n1-3)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-112",
+   "tell": "a thing named so the player cannot place it",
+   "note": "misleading; sea fact dropped",
+   "wrong": "... Follow the tar smell and you find the timber stacks.",
+   "right": "East along the road is Fourth Stage, the next stage along the road. West is the old capital, near enough that I have walked it in the cool before work. The sea is two fields south, behind the scrub.",
+   "round": "2.6 corpus read batch C, FIX 17 (Chasepoint, n1-4)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-113",
+   "tell": "a thing named so the player cannot place it",
+   "note": "opaque phrase",
+   "wrong": "... to dry through the damp middle.",
+   "right": "I rinse the salt out of every coil and hang it in the old stable. Thirty, I make it. The stall writes twenty-nine.",
+   "round": "2.6 corpus read batch C, FIX 18 (Chasepoint, n1)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-114",
+   "tell": "polite closing question",
+   "note": "closing question",
+   "wrong": "... Have you walked down there yet?",
+   "right": "Name any plank and I can tell you which ship it came off, once the families have hauled it up from the sea to the south and I have read the boards. The old stable holds the drying rope.",
+   "round": "2.6 corpus read batch C, FIX 19 (Chasepoint, n2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-115",
+   "tell": "direction or distance against the road",
+   "note": "town unnamed; west/south-west inconsistent with n1",
+   "wrong": "Go south-west for the town; it takes minutes on foot.",
+   "right": "The old capital is a few minutes' walk, south-west. Fourth Stage is east.",
+   "round": "2.6 corpus read batch C, FIX 20 (Chasepoint, n2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-116",
+   "tell": "polite closing question",
+   "note": "closing question; service not recorded",
+   "wrong": "Have you a net that needs mending? I name one price for it, in drakes.",
+   "right": "I mend net. Torn lengths reach my rack once the tide is done with them. I name one price for each, in drakes.",
+   "round": "2.6 corpus read batch C, FIX 21 (Chasepoint, n1-4)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-117",
+   "tell": "polite closing question",
+   "note": "essay, aphorism, rhetorical question",
+   "wrong": "... Where no court sits, the marsh itself is the only law. Would you call that debt fair to a baby?",
+   "right": "A man takes a debt he cannot clear. It ties him to labour until the sum is paid. That bond is the Owing. It began as a few months of work as punishment. Now the paper is sold on and handed down, so a child can be born owing a sum he never signed. Where there is no court, that is the law.",
+   "round": "2.6 corpus read batch C, FIX 22 (Rose, tag-keeper)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-118",
+   "tell": "vocative habit",
+   "note": "\"friend\" against the sheet's \"stranger\"",
+   "wrong": "Have you come about one of the dead, friend?",
+   "right": "Have you come about one of the dead?",
+   "round": "2.6 corpus read batch C, FIX 23 (Rose, tag-keeper)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-119",
+   "tell": "direction or distance against the road",
+   "note": "no real exit; same as the other three",
+   "wrong": "The Rose lies along the Prison road in one direction. The villages lie along it in the other.",
+   "right": "The Prison road runs past this rise. The Rose lies down it one way, the villages the other. The track below my door goes on to Murkwood Verge, a short walk south-east.",
+   "round": "2.6 corpus read batch C, FIX 24 (Rose, tag-keeper)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-120",
+   "tell": "gentle dissent",
+   "note": "cheer contradicts the recorded sour dissent; exclamation",
+   "wrong": "Hard walking, but I would do it again tomorrow! ...",
+   "right": "Hard walking. The work earns me no thanks. The Rose releases its dead once the Chainbreakers have paid. Then I carry each one to its own tree, since bones laid in the dirt beside it may still reach home.",
+   "round": "2.6 corpus read batch C, FIX 25 (Rose, carrier)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-121",
+   "tell": "stock aside",
+   "note": "exclamation, fragmentary list",
+   "wrong": "Thatch, hut, fire basin. Dry ground!",
+   "right": "A shelter, a hut, a brazier, on the only dry ground for a way round. The dead change hands here. I wrap them.",
+   "round": "2.6 corpus read batch C, FIX 26 (Rose, carrier)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-122",
+   "tell": "gentle dissent",
+   "note": "the dissent (families at their worst) is not voiced; \"one pair\" odd",
+   "wrong": "Ux-Vakka has the hut. The families stand in the door counting coins while one pair haggle over their dead.",
+   "right": "Ux-Vakka keeps the hut and writes every coin down. The families stand in the doorway counting out coins over their own dead. I wrap what they sold me and do not look at them.",
+   "round": "2.6 corpus read batch C, FIX 27 (Rose, carrier)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-123",
+   "tell": "polite closing question",
+   "note": "closing question; the same two ends",
+   "wrong": "... Is it the Rose you want?",
+   "right": "Follow the Prison road; I know every soft patch of it. One end reaches the Rose, the other the villages. For the North Stage take the track east, then north, then west; each leg is a short walk.",
+   "round": "2.6 corpus read batch C, FIX 28 (Rose, carrier)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-124",
+   "tell": "stock aside",
+   "note": "exclamation; \"bank\" for a rise",
+   "wrong": "My feet know this road better than any map! ... on its dry bank",
+   "right": "Imperial crews cut the Prison road with the Border road beside it, then raised a waystation called the Mile House. The Tag House stands on a dry rise by the Prison road. I rest there. People still use the old names.",
+   "round": "2.6 corpus read batch C, FIX 29 (Rose, carrier)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-125",
+   "tell": "vocative habit",
+   "note": "\"citizen\" is an Imperial word in an Argonian mouth",
+   "wrong": "Mind the bundles, citizen.",
+   "right": "Mind the bundles, stranger.",
+   "round": "2.6 corpus read batch C, FIX 30 (Rose, carrier)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-126",
+   "tell": "ungrounded talk",
+   "note": "contradicts the same speaker's refusal to say \"prison\"",
+   "wrong": "... an old prison of the Empire that now shelters whole families who call it home.",
+   "right": "Three rivers join at the lake city of Blackrose. A day's march off lies the Rose. The Empire filled it once. Whole families call it home now.",
+   "round": "2.6 corpus read batch C, FIX 31 (Rose, rose-family-2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-127",
+   "tell": "ungrounded talk",
+   "note": "same self-contradiction; repeats rose-family",
+   "wrong": "The Empire put up a prison here once and filled it. ... We will not call our home a prison.",
+   "right": "The Empire filled the Rose once. Three generations of my family have been born in it since. Say prison in front of us and you are corrected before you finish. No fee here is more resented than the carriage charge.",
+   "round": "2.6 corpus read batch C, FIX 32 (Rose, rose-family-2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-128",
+   "tell": "polite closing question",
+   "note": "invented duration; rhetorical question",
+   "wrong": "Three days our family has sat on that bench ... Would you wait so long on a payment you hate?",
+   "right": "Our family has sat on that bench all day for our aunt, over a payment we hate. The Empire made the Rose a prison. Three generations of us were born in it. We do not call it one.",
+   "round": "2.6 corpus read batch C, FIX 33 (Rose, rose-family)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-129",
+   "tell": "aphorism",
+   "note": "invented, balanced closer",
+   "wrong": "He has not sat down with us in all that time. ... Before that, I trust them hardly at all.",
+   "right": "Ux-Vakka the keeper writes each line fairly. Okan-Sei, who wraps our dead, comes from the villages and stares at a family still waiting. We wait at the door till the pen stops. Once the coin is down I trust the villages a little.",
+   "round": "2.6 corpus read batch C, FIX 34 (Rose, rose-family)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-130",
+   "tell": "ungrounded talk",
+   "note": "invented colour",
+   "wrong": "Last week I spent a full morning settling a feud over whose pennant hangs lowest on the mast.",
+   "right": "Boats that haul goods round the river mouths or down the shore all sail under the Reed-Sail Compact: the guild of ferries, routes and hands, from the smallest punt to the biggest barge. Raiders sail with us. The Salt-Teeth fly the same mark as honest crews.",
+   "round": "2.6 corpus read batch C, FIX 35 (Lighter, flotilla-speaker)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-131",
+   "tell": "packed clause-chain",
+   "note": "list of unrelated ideas; cooking line is also the lighterman's",
+   "wrong": "... Neighbours here I know by their cooking before their faces.",
+   "right": "Three posts run the row and the Compact fills them: speaker, master of the lighters, purser. I hold the first. When the town demanded licences for jobs its own men never touched, the harbour sat shut a fortnight.",
+   "round": "2.6 corpus read batch C, FIX 36 (Lighter, flotilla-speaker)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-132",
+   "tell": "restated fact",
+   "note": "the third retelling of the strike",
+   "wrong": "Once the row did stop the port over a licence, a fortnight of idle hulls. ...",
+   "right": "I speak for the hulls whenever Lilmoth sends a letter. A hull stays tied until I nod. The vote to stop the port was mine to put, from this bow, with the whole row watching.",
+   "round": "2.6 corpus read batch C, FIX 37 (Lighter, flotilla-speaker)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-133",
+   "tell": "listener-hook question",
+   "note": "opening question",
+   "wrong": "Are you walking? ...",
+   "right": "Passengers can board a hull from this pier, whether it sails for Archon or the far moorings. The big merchantman has bunks if night catches you. Walkers take the plank stage out over the reeds to the track into town.",
+   "round": "2.6 corpus read batch C, FIX 38 (Lighter, flotilla-speaker)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-134",
+   "tell": "restated fact",
+   "note": "invented personification; repeated fact",
+   "wrong": "Her captain glares at the town he cannot reach. I take the longest glare. Our berths sit outside the customs line.",
+   "right": "We call the small boats that fetch freight from far-anchored ships lighters. Lilmoth has no berth deep enough for a big hull, so a merchantman lies at her cable well out on the water and we go to her.",
+   "round": "2.6 corpus read batch C, FIX 39 (Lighter, lighterman)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-135",
+   "tell": "ungrounded talk",
+   "note": "invented rule",
+   "wrong": "A merchant in town cannot land a single sack unless all four hulls agree to carry it.",
+   "right": "Each of the four hulls shelters its own crew, who eat, sleep and quarrel on the same decks. The Compact, our guild, gives out offices called posts. Three sit here and I fill one. The speaker, Opens-The-Books, fills another. Ninx-Ossa the purser the last.",
+   "round": "2.6 corpus read batch C, FIX 40 (Lighter, lighterman)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-136",
+   "tell": "ungrounded talk",
+   "note": "invented purpose (record: no undercutting)",
+   "wrong": "Berths stay free of brawls that way.",
+   "right": "The Compact sets each crew's share, the cut of a route's takings it draws, so no crew undercuts another.",
+   "round": "2.6 corpus read batch C, FIX 41 (Lighter, lighterman)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-137",
+   "tell": "wry tag-line",
+   "note": "wry closer",
+   "wrong": "I will boast that it came back sharper.",
+   "right": "Umbriel, the flying city, destroyed Lilmoth in 4E 48 and the port was built back smaller. Merchants sit on the council that rules it now. Lilmoth stands over shallows, so a big vessel anchors far out while small craft like mine carry the loads ashore. Who took which side that year is not mine to tell.",
+   "round": "2.6 corpus read batch C, FIX 42 (Lighter, lighterman)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-138",
+   "tell": "listener-hook question",
+   "note": "opening question",
+   "wrong": "Is it the anchorage you want, or Archon? ...",
+   "right": "I run the anchorage lighter myself and cast off at the turn of the water. Boats for Archon push off from this pier too, though other masters work them. The stage behind me meets the Lilmoth track.",
+   "round": "2.6 corpus read batch C, FIX 43 (Lighter, lighterman)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-139",
+   "tell": "packed clause-chain",
+   "note": "double dictionary gloss",
+   "wrong": "... Tariff means the tax a city charges on cargo as it arrives.",
+   "right": "Any traveller carrying the fare can sleep in my bunks down in the hold. Goods from the ship's stores I sell untaxed, so the price runs lower. Most of my day goes on writing every crate that comes aboard or leaves into the ship's books.",
+   "round": "2.6 corpus read batch C, FIX 44 (Lighter, purser)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-140",
+   "tell": "restated fact",
+   "note": "same three-step explainer as speaker and lighterman",
+   "wrong": "The council once proposed to license the lighters. Every crew stopped for two weeks. That stoppage is how the Compact keeps its monopoly ...",
+   "right": "I keep the books, so I know the shares. Each crew works the slice of a route the Compact gives it and no other. The Compact holds its monopoly by stopping work, as it did for two weeks when the council wanted licences.",
+   "round": "2.6 corpus read batch C, FIX 45 (Lighter, purser)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-141",
+   "tell": "short closer",
+   "note": "unclear closer",
+   "wrong": "... The hands wait.",
+   "right": "A foot dangled off the pier edge draws osheeja gar or slaughterfish. I have seen it twice and not made the joke.",
+   "round": "2.6 corpus read batch C, FIX 46 (Lighter, purser)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-142",
+   "tell": "listener-hook question",
+   "note": "opening question",
+   "wrong": "Want to cross over? ...",
+   "right": "Passengers for Archon or the anchorage board at this pier. Walking, step onto the landing stage at the bank end of the pier. The city track runs on from it.",
+   "round": "2.6 corpus read batch C, FIX 47 (Lighter, purser)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-143",
+   "tell": "polite closing question",
+   "note": "closing question",
+   "wrong": "... Do you want the pier or the track first?",
+   "right": "Sailings for Archon and the anchorage start at the pier. Walking instead, cross the reeds on the plank stage and the city track begins past its far end.",
+   "round": "2.6 corpus read batch C, FIX 48 (Lighter, n1)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-144",
+   "tell": "packed clause-chain",
+   "note": "wrong guild; garbled",
+   "wrong": "The Reed-Sail Compact, a trading guild, owns every leading place on our crews.",
+   "right": "The Reed-Sail Compact, the guild of the boat crews, holds every leading post here. The council pressed for licences once, but every crew downed its lines for a fortnight.",
+   "round": "2.6 corpus read batch C, FIX 49 (Lighter, n1-2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-145",
+   "tell": "polite closing question",
+   "note": "route off the graph; closing question",
+   "wrong": "... follow the road toward Lilmoth, then walk a short dry way south. ... Are you bound for Archon, or only the yard?",
+   "right": "Archon crews cast off here. For Under-Yard, cross the landing stage and take the track south, a short walk. The yard stands at its end.",
+   "round": "2.6 corpus read batch C, FIX 50 (Lighter, n1-2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-146",
+   "tell": "polite closing question",
+   "note": "closing question",
+   "wrong": "... Are you looking for passage out to one of the ships?",
+   "right": "Big ships cannot tie up in Lilmoth, there being no dock for them. They sit in the bay and small craft ferry the cargo ashore. I coil rope from dawn on one of those craft.",
+   "round": "2.6 corpus read batch C, FIX 51 (Lighter, n1-3)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-147",
+   "tell": "direction or distance against the road",
+   "note": "gives the way to the pier the player is already at; drops the boats",
+   "wrong": "Follow the planks over the reeds from the end of the Lilmoth track until the pier stands in front of you.",
+   "right": "Take the planks over the reeds and you meet the Lilmoth track at the far end. Boats for Archon and the anchorage leave from this pier.",
+   "round": "2.6 corpus read batch C, FIX 52 (Lighter, n1-3)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-148",
+   "tell": "ungrounded talk",
+   "note": "personification",
+   "wrong": "... where a jaw beetle glowers at everyone and sulks until fight day.",
+   "right": "I like the box by my bunk best, where my jaw beetle waits for the fights at Archon.",
+   "round": "2.6 corpus read batch C, FIX 53 (Lighter, n1-4)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-149",
+   "tell": "contractions at one rate",
+   "note": "contraction in an Argonian greeting",
+   "wrong": "He's in the box by the bunk.",
+   "right": "Ojel, come and see him. He is in the box by the bunk.",
+   "round": "2.6 corpus read batch C, FIX 54 (Lighter, n1-4)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-150",
+   "tell": "contractions at one rate",
+   "note": "contraction",
+   "wrong": "I'm off my turn. Ask away.",
+   "right": "I am off my turn. Ask away.",
+   "round": "2.6 corpus read batch C, FIX 55 (Lighter, n1)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-151",
+   "tell": "a thing named so the player cannot place it",
+   "note": "invented object",
+   "wrong": "The boards are slick with fish scales each morning ...",
+   "right": "The boards are slick every morning. I have sat down on them harder than I like to say.",
+   "round": "2.6 corpus read batch C, FIX 56 (Lighter, n2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-152",
+   "tell": "polite closing question",
+   "note": "closing question; same frame as n1-3, n1-4 and Chasepoint n1-2",
+   "wrong": "... Has anyone called you that yet? It simply means outsiders.",
+   "right": "Lukiul is a cruel word, a slur the An-Xileel made for Argonians hatched beyond Black Marsh who cannot hear the Hist. Ojel only means outsider. Clerks, sailors and traders from every shore answer to it without a flicker.",
+   "round": "2.6 corpus read batch C, FIX 57 (Lighter, n2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-153",
+   "tell": "restated fact",
+   "note": "restates n1-3 and n2; \"carries no insult\" is the pool's",
+   "wrong": "I flinch at lukiul. ... We call outsiders ojel. It is a word that carries no insult. I use it freely on the quay all day long.",
+   "right": "I flinch at lukiul. The An-Xileel made it to jeer at Argonians raised abroad, some of whom cannot hear the Hist at all. Ojel is only what we call outsiders. I say it all day on the quay.",
+   "round": "2.6 corpus read batch C, FIX 58 (Lighter, n1-4)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-154",
+   "tell": "restated fact",
+   "note": "same answer as n1, n1-3, n1-4",
+   "wrong": "Lighter work is two jobs. The deckhand bails the boat dry between runs, then hauls cargo up the side of a deep ship. ...",
+   "right": "Between runs I bail. At the anchorage, I haul cargo up the side of whatever ship is lying out there. No dock in Lilmoth takes them, so the lighter goes out every day.",
+   "round": "2.6 corpus read batch C, FIX 59 (Lighter, n1-2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-155",
+   "tell": "ungrounded talk",
+   "note": "invented first-hand scene",
+   "wrong": "... on the first morning of the new rule. I coiled rope on the pier and watched the ships sit in the bay.",
+   "right": "The council wanted every crew to buy a licence, so every crew tied up together. Two weeks the port sat idle. The ships sat out in the bay.",
+   "round": "2.6 corpus read batch C, FIX 60 (Lighter, n1-3)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
+  },
+  {
+   "id": "bad.y2-156",
+   "tell": "ungrounded talk",
+   "note": "Contradicts no central doctrine; invented scolding",
+   "wrong": "Taking a life is held to be his work too. The order faults anyone who reads it otherwise. ... as an acolyte learned when scolded before everyone.",
+   "right": "Sithis is the void god. All change is his. Dying is a change. We mourn our dead, then let them go.",
+   "round": "2.6 corpus read batch D, FIX 1 (Teeth, n2 (Wuleen-Wai))",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-157",
+   "tell": "aphorism",
+   "note": "Invented scene, closing image",
+   "wrong": "...The mourners weep at the landing. Then the rite resumes at the next lamp.",
+   "right": "The clergy teach that a death is one more change. All change is Sithis's, the void god. The dead are mourned, then let go.",
+   "round": "2.6 corpus read batch D, FIX 2 (Teeth, n2-3 (Xal-Tei))",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-158",
+   "tell": "ungrounded talk",
+   "note": "Invented event",
+   "wrong": "...At the last rite, green crept back over a tooth cleaned that morning.",
+   "right": "The temple stays as it is below the waterline. We scrub above it, nothing more. Waist-deep for hours, my legs go numb.",
+   "round": "2.6 corpus read batch D, FIX 3 (Teeth, n2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-159",
+   "tell": "ungrounded talk",
+   "note": "Contradicts waist-deep in the record and n2",
+   "wrong": "...while the band wades the shallows, knee high, through every rite.",
+   "right": "while the band wades the shallows, waist-deep, through every rite.",
+   "round": "2.6 corpus read batch D, FIX 4 (Teeth, n2-4 (Teeb-Shaal))",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-160",
+   "tell": "aphorism",
+   "note": "Summing closer thrice (with n2-2)",
+   "wrong": "Watching, carrying and scrubbing together make the daily rite.",
+   "right": "Watching and carrying go on until it ends. It is cold.",
+   "round": "2.6 corpus read batch D, FIX 5 (Teeth, n2-3 and n2-4)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-161",
+   "tell": "aphorism",
+   "note": "Seventh copy of one doctrine sentence; \"turns that wheel\" is resonance",
+   "wrong": "Our dead are mourned, then released without wrong. The priests say dying only changes a thing. The void god Sithis turns that wheel for all of us.",
+   "right": "The priests say a death is a change. All change is Sithis's, the void god. We mourn, then let go. That is all I know of it. I scrub.",
+   "round": "2.6 corpus read batch D, FIX 6 (Teeth, the-one (Nesh-Katta))",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-162",
+   "tell": "ungrounded talk",
+   "note": "Boats not in any record; the way in is the pilgrim way",
+   "wrong": "Another boat. Yours?\" / \"I watched your boat tie up.\" / \"No boats on the water tonight, friend.\" / \"Fourth boat today.\" / \"Boat on the water!",
+   "right": "Another pilgrim. On your own?\" / \"I watched you come up the steps.\" / \"No pilgrims on the steps tonight, friend.\" / \"Fourth pilgrim today.\" / \"Pilgrim on the steps!",
+   "round": "2.6 corpus read batch D, FIX 7 (Teeth, n2-3)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-163",
+   "tell": "ungrounded talk",
+   "note": "Invented colour",
+   "wrong": "...the largest temple to Sithis in all Murkmire; those who tried to number its stones gave up before noon.",
+   "right": "What offering have you brought? The Nisswo who tend this colonnade have never settled why it was raised. It is the largest temple to Sithis in all Murkmire.",
+   "round": "2.6 corpus read batch D, FIX 8 (Teeth, nisswo-teeth (Ohl-Nakka))",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-164",
+   "tell": "a thing named so the player cannot place it",
+   "note": "Opaque, disagrees with the others",
+   "wrong": "Fourth Stage lies along the old road. Leave the worn way and follow its track from the end.",
+   "right": "Fourth Stage is a short walk north, along the old road. Take the track at the end of the pilgrim way.",
+   "round": "2.6 corpus read batch D, FIX 9 (Teeth, nisswo-teeth)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-165",
+   "tell": "ungrounded talk",
+   "note": "Bearing no record holds; contradicts n1, n2, n2-4",
+   "wrong": "Fourth Stage is close. Leave the pilgrim way on the north-west track, then turn east.",
+   "right": "Fourth Stage is close. North, a short walk from the end of the pilgrim way.",
+   "round": "2.6 corpus read batch D, FIX 10 (Teeth, the-one)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-166",
+   "tell": "packed clause-chain",
+   "note": "Invented rule; fact-stack with appositive gloss",
+   "wrong": "Leeches crowd the shallows ... so I wade out by day only. Swamp jellies drift in on the tide after dark. A voriplasm, a hungry jelly-like thing that strips anything dropped in the water, lives in the drowned room below the floor. Down there I go in company or not at all.",
+   "right": "Leeches crowd the shallows round the teeth and swamp jellies drift in on the tide. The voriplasm lives in the drowned room below the floor. It strips whatever falls into it. I stay away from that room.",
+   "round": "2.6 corpus read batch D, FIX 11 (Teeth, n2-2 (Sal-Xeek))",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-167",
+   "tell": "ungrounded talk",
+   "note": "Cut-Rope is a band of tribeless Naga, not a village",
+   "wrong": "Raiders from Cut-Rope, a raiding village down the track, kill walkers out on the paths.",
+   "right": "Cut-Rope's raiders, a band of tribeless Naga down the track, kill walkers out on the paths.",
+   "round": "2.6 corpus read batch D, FIX 12 (Naga, jeen-ozzu (n2))",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-168",
+   "tell": "a thing named so the player cannot place it",
+   "note": "Invented object",
+   "wrong": "In the evenings, the drum sounds loud across the water.",
+   "right": "The smoke from the racks lies low over the water in the evenings.",
+   "round": "2.6 corpus read batch D, FIX 13 (Naga, jeen-ozzu)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-169",
+   "tell": "ungrounded talk",
+   "note": "Invented trade partner",
+   "wrong": "The best are set aside for trading with the river clans later.",
+   "right": "The best are set aside for trade.",
+   "round": "2.6 corpus read batch D, FIX 14 (Naga, bux-xeek (n2-2))",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-170",
+   "tell": "packed clause-chain",
+   "note": "Im-Jei's argument is nowhere; census opener",
+   "wrong": "Okan-Leel is slow before noon while Im-Jei argues with every post he stands.",
+   "right": "Heita-Kai is the lieutenant. Okan-Leel is slow before noon. The settled tribes blame all of us for the killings other camps do along the walker paths.",
+   "round": "2.6 corpus read batch D, FIX 15 (Naga, bux-xeek)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-171",
+   "tell": "ungrounded talk",
+   "note": "\"there\" reads as the Polers' Camp",
+   "wrong": "...The road to that camp runs past our gate. One of the band stands between the totems there in turns.",
+   "right": "The track to that camp runs past our gate, where one of the band stands between the totems.",
+   "round": "2.6 corpus read batch D, FIX 16 (Naga, heita-kai (n1))",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-172",
+   "tell": "packed clause-chain",
+   "note": "Census plus the five-way role list",
+   "wrong": "Six of us work turns, myself and five others. Whoever has the bend whistles when a stranger comes up the wet ground below. Another tends the hides by the embers while the rest doze and a third minds the totems by the gate.",
+   "right": "The bend is mine this watch. A walker rounds it, I whistle. The camp is up. We swap bend, fire and gate in turns. Whoever has the fire smokes the hides.",
+   "round": "2.6 corpus read batch D, FIX 17 (Naga, im-jei (n2-5))",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-173",
+   "tell": "restated fact",
+   "note": "Same list as four others",
+   "wrong": "I like the fire. There one of us smokes hides while the others rest in the tent. Another sits up on the scaffold ... A third stands by the totems at the gate. We all change places in turns.",
+   "right": "The fire is my post and the tent is my bed. I smoke hides while the others sleep. When my turn to sleep comes I go down like a stone. We change places in turns.",
+   "round": "2.6 corpus read batch D, FIX 18 (Naga, okan-leel (n2-3))",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-174",
+   "tell": "restated fact",
+   "note": "Fourth copy of the danger stack; appositive gloss",
+   "wrong": "I stay clear of the water below the camp. A crocodile dens there with hackwings and death hoppers in the reeds. Cut-Rope's raiders hunt these same stretches and kill walkers, then the settled tribes, the ones with villages and hearths, look at us and say the blood is ours. Kill one walker and his tribe comes down on the camp, so we lift the cargo and nothing else.",
+   "right": "I stay clear of the water. Crocodile. Hackwings and death hoppers in the reeds. Cut-Rope's raiders do the killing and the settled tribes say the blood is ours. Ours! We lift cargo and let them walk.",
+   "round": "2.6 corpus read batch D, FIX 19 (Naga, okan-leel)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-175",
+   "tell": "packed clause-chain",
+   "note": "Assumes the player's origin; two glosses in one run",
+   "wrong": "...Hatched in a far land, you cannot hear them, the great trees we call the Hist. We call outsiders ojel, anyone from beyond Black Marsh. It is no insult.",
+   "right": "Ojel is what we call anyone from beyond Black Marsh. A plain word, no insult. Lukiul is the insult. The An-Xileel use it for Argonians who took foreign ways. An ojel hatched in a far land cannot hear the Hist, the great trees.",
+   "round": "2.6 corpus read batch D, FIX 20 (Naga, guul-teeba (n2-4))",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-176",
+   "tell": "direction or distance against the road",
+   "note": "Kilometre breaks the z3 rule; \"inland\" against the beach landing",
+   "wrong": "Go north-west on the Long road and you reach the inland village of Portdun Mont after half a kilometre.",
+   "right": "Go north-west on the Long road and you reach Portdun Mont in ten minutes' walk.",
+   "round": "2.6 corpus read batch D, FIX 21 (Pearl, n1 (Xuth-Ra))",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-177",
+   "tell": "one construction carrying the set",
+   "note": "Kilometre; copy of n1's shape",
+   "wrong": "...Walkers go along the Long road, the track inland, heading north and west for half a kilometre.",
+   "right": "By sea, run west along the coast from the spit until a village shows on its rise. That is Portdun Mont. Archon is a harbour farther along the shore. On foot, the Long road, north-west, ten minutes.",
+   "round": "2.6 corpus read batch D, FIX 22 (Pearl, n2 (Deeka-Kaya))",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-178",
+   "tell": "ungrounded talk",
+   "note": "The divers go home to Archon each night",
+   "wrong": "Archon is the big port, far past anywhere I have walked. First go west by the shoreline to the landing under Portdun Mont.",
+   "right": "Archon is the big port, where we go home at night. West by the shoreline to the landing below Portdun Mont, then onward.",
+   "round": "2.6 corpus read batch D, FIX 23 (Pearl, n1-3 (Guul-Vakka))",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-179",
+   "tell": "listener-hook question",
+   "note": "Quiz hook, muddled",
+   "wrong": "...My own lot I know well. Could you tell mine from the next? I know the rest by number.",
+   "right": "Down past the shelf, buoys float over numbered lots of seabed. Mine I know by the bottom itself. The rest I know by number.",
+   "round": "2.6 corpus read batch D, FIX 24 (Pearl, n1-3)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-180",
+   "tell": "packed clause-chain",
+   "note": "Clumsy, redundant",
+   "wrong": "I know of the other families what their tally book lists. That is the book where the pay and the deaths are written, with shells taken and drownings. Every lot passes by inheritance...",
+   "right": "I know the other families by what the tally book says of them. Pay and deaths, side by side. Every lot passes from parent to child inside one family. We all share the tenders out on the water.",
+   "round": "2.6 corpus read batch D, FIX 25 (Pearl, n1-3)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-181",
+   "tell": "packed clause-chain",
+   "note": "False \"so\"",
+   "wrong": "Lots are inherited so I open shells at the table where the catch is graded by size. I know each net.",
+   "right": "Lots are inherited, family to family. I open shells at the grading table. I know each net that comes into the shed.",
+   "round": "2.6 corpus read batch D, FIX 26 (Pearl, n1-4 (Ohl-Jei))",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-182",
+   "tell": "restated fact",
+   "note": "Invented access rule; \"one page\" repeated by n2; contradicts n1-4 night",
+   "wrong": "The tally book is a ledger that lists the pay and the dead on one page that every family on the spit can open whenever it likes.",
+   "right": "The tenders belong to all the families together. A lot itself passes down inside one family. The tally book lists the pay and the dead, side by side.",
+   "round": "2.6 corpus read batch D, FIX 27 (Pearl, n1-2 (Jeen-Vei))",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-183",
+   "tell": "packed clause-chain",
+   "note": "Tender as boat and as person; reads as nonsense",
+   "wrong": "...No tender enters the water itself on this spit. Only the diver does.",
+   "right": "I keep the surface post, on the boat moored over the lot. Mind the lines that carry the divers down. The families share every tender. I never go in the water myself. Only the diver does.",
+   "round": "2.6 corpus read batch D, FIX 28 (Pearl, n2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-184",
+   "tell": "packed clause-chain",
+   "note": "Gazetteer; customs office ungrounded",
+   "wrong": "Ships trading in the province all use Archon, the one legal harbour. Every cargo must be cleared there by the customs office before it goes inland by the Long road. The harbour authority rules the port and its power ends at the headland, the point at the harbour mouth. Its south is all beaches. The pilot families guide ships up the estuary.",
+   "right": "Archon is the one legal harbour. Ships trade there or not at all. The harbour authority rules the port. Its power stops at the headland. South of it is all beach. Pilot families take ships up the estuary.",
+   "round": "2.6 corpus read batch D, FIX 29 (Pearl, n2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-185",
+   "tell": "restated fact",
+   "note": "Near-clone of n2 in encyclopaedia voice",
+   "wrong": "Archon serves as the legal harbour of the province, where ships trade under the harbour authority that governs the port and has no say beyond the headland, the point of land at the harbour mouth. Pilot families meet each ship at the estuary, the river mouth. ...",
+   "right": "Archon is the legal harbour. Our families live there. The pilots meet each ship at the river mouth and steer it up the channel. The harbour authority has no say past the headland.",
+   "round": "2.6 corpus read batch D, FIX 30 (Pearl, n1-4)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-186",
+   "tell": "aphorism",
+   "note": "Invented ritual; image repeated from n1-2",
+   "wrong": "Each evening the tally book comes out on the grading ground, an open stretch where shells are graded. Pay and deaths share one page. Families inherit lots and share tenders.",
+   "right": "The tally book stays on the grading ground, an open stretch where shells are graded. Families inherit lots and share tenders.",
+   "round": "2.6 corpus read batch D, FIX 31 (Pearl, n2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-187",
+   "tell": "ungrounded talk",
+   "note": "Invented about children",
+   "wrong": "...Those lots drown the people who work them. Children keep going down.",
+   "right": "Those lots drown the people who work them. We go down anyway.",
+   "round": "2.6 corpus read batch D, FIX 32 (Pearl, n1-3)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-188",
+   "tell": "direction or distance against the road",
+   "note": "Unit not used elsewhere; the bed is six to nine metres",
+   "wrong": "Cold at five spans.\" / \"Down five spans.",
+   "right": "Cold on the bottom.\" / \"Down again.",
+   "round": "2.6 corpus read batch D, FIX 33 (Pearl, n1-3)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-189",
+   "tell": "ungrounded talk",
+   "note": "Invented age (the lane report said it was replaced); grandsons all of one family against a mixed lot",
+   "wrong": "I've six on the roster, me and five grandsons, none of them past twenty.",
+   "right": "Six on the roster. Me. Five more born to the column. Every name's in my hand.",
+   "round": "2.6 corpus read batch D, FIX 34 (Broke Column, n1 (Gnaeus Martius))",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-190",
+   "tell": "packed clause-chain",
+   "note": "Garbled",
+   "wrong": "...The last page of that pay book was left blank by every clerk of mine.",
+   "right": "It isn't grand work but it's steady. And I keep the pay book, though its last entry is two hundred years old.",
+   "round": "2.6 corpus read batch D, FIX 35 (Broke Column, n1)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-191",
+   "tell": "ungrounded talk",
+   "note": "Rats are at the meal sacks",
+   "wrong": "Don't wade it. There's rats in the tarn after dark.",
+   "right": "Don't wade it, it's all the water we have. Rats get at the meal sacks after dark. Mind your pack.",
+   "round": "2.6 corpus read batch D, FIX 36 (Broke Column, n1)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-192",
+   "tell": "ungrounded talk",
+   "note": "No well",
+   "wrong": "...He writes it by hand and nails the sheet up on the tree by the well.",
+   "right": "He writes it by hand and nails the sheet up on the tree by the barricade.",
+   "round": "2.6 corpus read batch D, FIX 37 (Broke Column, n2-4 (Egil))",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-193",
+   "tell": "ungrounded talk",
+   "note": "Huts against tents",
+   "wrong": "...a tarn behind it, four huts in a row.",
+   "right": "a tarn behind it, four tents in a row.",
+   "round": "2.6 corpus read batch D, FIX 38 (Broke Column, n2-4)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-194",
+   "tell": "ungrounded talk",
+   "note": "A bell where five others call the hour by voice",
+   "wrong": "I only stand my turn. Night or day, a bell calls the watch and I'm up whenever mine comes round.",
+   "right": "I only stand my turn. Night or day, the hour's called and I'm up whenever mine comes round.",
+   "round": "2.6 corpus read batch D, FIX 39 (Broke Column, n2-5 (Anwen))",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-195",
+   "tell": "a thing named so the player cannot place it",
+   "note": "Does not say what the place is",
+   "wrong": "A bench stands here; we're hungry, friend.",
+   "right": "A Legion camp on a bench of the hill. Four tents and a tarn. We're hungry, friend, but we hold it.",
+   "round": "2.6 corpus read batch D, FIX 40 (Broke Column, n2-2 (Tahir Nabhan))",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-196",
+   "tell": "ungrounded talk",
+   "note": "No pension; the pay was never paid",
+   "wrong": "They're worth more than a roof or a pension to us.",
+   "right": "They're worth more than a roof, or the pay we're owed.",
+   "round": "2.6 corpus read batch D, FIX 41 (Broke Column, n1)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-197",
+   "tell": "ungrounded talk",
+   "note": "Carts not in any record; hazard rider",
+   "wrong": "Mind the ruts where the supply carts have cut it to pieces for miles.",
+   "right": "Mind the ruts. The track's cut to pieces for miles.",
+   "round": "2.6 corpus read batch D, FIX 42 (Broke Column, n2-4)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-198",
+   "tell": "ungrounded talk",
+   "note": "Invented event",
+   "wrong": "...I've seen a carter's boy slide the whole last stretch on his back.",
+   "right": "The footpath runs steep and loose, so you'll want daylight.",
+   "round": "2.6 corpus read batch D, FIX 43 (Broke Column, n2 (Severa Maro))",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-199",
+   "tell": "stock aside",
+   "note": "\"I'd sooner\" shape x3",
+   "wrong": "The hill's full of hackwings, but I'd sooner meet one than the rats. They'll chew the sacking.",
+   "right": "Hackwings on the hill, but I can see those coming. The rats chew the sacking.",
+   "round": "2.6 corpus read batch D, FIX 44 (Broke Column, n2-4)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-200",
+   "tell": "stock aside",
+   "note": "Garbled; \"I'd sooner\"",
+   "wrong": "...The hackwings haven't troubled my pot since they'd get little for it. I'd sooner lose a ladle than a week's barley.",
+   "right": "Rats chew through the meal sacks after dark. The hackwings leave my pot alone. There's little in it to take.",
+   "round": "2.6 corpus read batch D, FIX 45 (Broke Column, n2-3 (Perrin Vaudois))",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-201",
+   "tell": "restated fact",
+   "note": "Clumsy; same facts as n2-2",
+   "wrong": "...they'll write the debt down as paper you can get contested before a judge who's still sitting in those courts.",
+   "right": "Gideon? West, out on the frontier. First town you meet coming in off the Blackwood Road. They've still got courts. A debt written down on paper can be contested before a judge.",
+   "round": "2.6 corpus read batch D, FIX 46 (Broke Column, n2)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-202",
+   "tell": "aphorism",
+   "note": "Summing closer, three sentences saying one thing",
+   "wrong": "...Not a coin of the arrears ever reached them. They'd earned it as every man of them knew. That still stings the few who stayed on this bench.",
+   "right": "Not a coin of the arrears ever reached them.",
+   "round": "2.6 corpus read batch D, FIX 47 (Broke Column, n2-5)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-203",
+   "tell": "short closer",
+   "note": "Garbled close",
+   "wrong": "...Instead they stayed put on this hill, where their grandsons haven't left the watch today.",
+   "right": "Instead they stayed put on this hill. Their grandsons stand the watch still.",
+   "round": "2.6 corpus read batch D, FIX 48 (Broke Column, n2-3)",
+   "source": "lanes/2.6/dialogue/corpus-read-batch-D.md"
+  },
+  {
+   "id": "bad.y2-204",
+   "tell": "announcing your own manner",
+   "note": "speaker names himself in the third person",
+   "wrong": "Our own crew is Half-Tail, Bright-Frill and Wet Jeeba.",
+   "right": "I am Half-Tail. Bright-Frill and Wet Jeeba pole with me.",
+   "round": "2.6 corpus read close 3, FIX 4 (Riverwalk, Half-Tail (n2))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-205",
+   "tell": "a thing named so the player cannot place it",
+   "note": "\"Its\" has no noun",
+   "wrong": "The reeds that a guest leaves behind show the guest's habits. Its floor stands on piles, long posts sunk into the shallows.",
+   "right": "The floor stands on piles, long posts sunk into the shallows.",
+   "round": "2.6 corpus read close 3, FIX 5 (Riverwalk, Kaska-Yuul (n1))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-206",
+   "tell": "restated fact",
+   "note": "same facts, same order as stage-mistress and n2-2",
+   "wrong": "The Root Stewards oversee the trials at Hissmir and may not turn away any comer. Whoever passes may stand before the Hist there, outsiders and Argonians raised without one alike. Hissmir stands in southern Shadowfen as a xanmeer, a temple of stepped stone left by the old Argonians.",
+   "right": "Hissmir is the xanmeer at the head of the pilgrim water, in southern Shadowfen. Its Root Stewards run the trials and turn no comer away.",
+   "round": "2.6 corpus read close 3, FIX 7 (Riverwalk, Lifts-Two-Traps (toll-holder))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-207",
+   "tell": "restated fact",
+   "note": "restates n2-2",
+   "wrong": "House Dres raided the saltrice city of Thorn long ago, took slaves off its streets and grew fat on the harvest of its fields. It sits on our northern border. The Tear road reaches it. Now the Ash-Reed Accord disputes who owns those fields by right.",
+   "right": "Thorn is the saltrice town on our northern border, at the end of the Tear road. House Dres raided it once. Now the Ash-Reed Accord argues over who owns its fields.",
+   "round": "2.6 corpus read close 3, FIX 8 (Riverwalk, Lifts-Two-Traps (toll-holder))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-208",
+   "tell": "direction or distance against the road",
+   "note": "promises a measure and gives none",
+   "wrong": "I have walked long roads and measure them well. Hours tell better than days.",
+   "right": "I have walked long roads and measure them well. The road and the landing both begin a few steps off. Go far to the south-west, with Ux-Aneet on the way. Count it in long days.",
+   "round": "2.6 corpus read close 3, FIX 10 (Greenspring, Reeh-Shaal (n3))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-209",
+   "tell": "one construction carrying the set",
+   "note": "third copy of the factors rumour (n2-3, n3) in one shape",
+   "wrong": "Haj-Tei the bed-keeper says several hushed lodgers are factors who serve the Veiled Reed. Couriers and tappers crowd his lodge on the road to Helstrom, so every bed is taken. I guess the factors are the reason.",
+   "right": "Couriers and tappers crowd Haj-Tei's lodge on the road to Helstrom. Every bed is taken. I write their loads in my ledger and ask the quiet ones nothing.",
+   "round": "2.6 corpus read close 3, FIX 12 (Greenspring, Ixo-Vaal (root-herald))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-210",
+   "tell": "ungrounded talk",
+   "note": "same \"chose against a siege\" in n3, root-herald, tree-minder",
+   "wrong": "No host has ever taken Helstrom. I hear it named every evening by the people sleeping here. The whole heartland counts it as its capital, a city that grew up in a grove of Hist trees. The Empire chose against a siege; our armies withdrew into it when the war on us ended.",
+   "right": "Helstrom has never been taken. Guests name it at my lodge every evening. The heartland calls it the capital. It is a city grown in a Hist grove. The Empire let it be.",
+   "round": "2.6 corpus read close 3, FIX 14 (Greenspring, Haj-Tei (n1))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-211",
+   "tell": "ungrounded talk",
+   "note": "weakens fact.column.never-paid",
+   "wrong": "Word came they were recalled, but they'd still months owed. Some stayed because they didn't fancy the march.",
+   "right": "Word came they were recalled. Not a coin of the months owed was ever paid. Some stayed because they didn't fancy the march.",
+   "round": "2.6 corpus read close 3, FIX 16b (Broke Column, Egil (n2-4))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-212",
+   "tell": "a thing named so the player cannot place it",
+   "note": "invented captain; \"longest glare\" is not a thing",
+   "wrong": "Her captain glares at the town he cannot reach. I take the longest glare.",
+   "right": "A merchantman lies at her cable well out on the water. I take the longest run out to her.",
+   "round": "2.6 corpus read close 3, FIX 20 (Lighter Flotilla, Xal-Jei (lighterman))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-213",
+   "tell": "ungrounded talk",
+   "note": "invented colour",
+   "wrong": "The boards are slick with fish scales each morning, so I have sat down on them harder than I like to say.",
+   "right": "The boards stay wet, so mind your feet.",
+   "round": "2.6 corpus read close 3, FIX 21 (Lighter Flotilla, Reeh-Tei (n2))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-214",
+   "tell": "ungrounded talk",
+   "note": "an invented count",
+   "wrong": "Four plank rafts across the pier serve as market stalls.",
+   "right": "Plank rafts across the pier serve as market stalls.",
+   "round": "2.6 corpus read close 3, FIX 22 (Lighter Flotilla, Xal-Jei (lighterman))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-215",
+   "tell": "contractions at one rate",
+   "note": "Argonian contraction (he calls strangers ojel)",
+   "wrong": "Thirsty? I'm not sharing.",
+   "right": "Thirsty? I am not sharing.",
+   "round": "2.6 corpus read close 3, FIX 23 (Lighter Flotilla, Teeb-Rekh (n1-3))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-216",
+   "tell": "contractions at one rate",
+   "note": "Argonian contraction",
+   "wrong": "Ojel, come and see him. He's in the box by the bunk.",
+   "right": "Ojel, come and see him. He is in the box by the bunk.",
+   "round": "2.6 corpus read close 3, FIX 24 (Lighter Flotilla, Cold Nakka (n1-4))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-217",
+   "tell": "contractions at one rate",
+   "note": "Argonian contraction",
+   "wrong": "You're back? Stay moist on the crossing.",
+   "right": "You are back? Stay moist on the crossing.",
+   "round": "2.6 corpus read close 3, FIX 25 (Lighter Flotilla, Xal-Jei (lighterman))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-218",
+   "tell": "polite closing question",
+   "note": "stance says \"never asks a question back\"; sixth gift question",
+   "wrong": "Have you brought a gift? Pilgrims arrive with empty hands and get turned round. Four of us serve under the priests.",
+   "right": "Pilgrims arrive with empty hands and get turned round. Four of us serve under the priests.",
+   "round": "2.6 corpus read close 3, FIX 28 (Teeth of Sithis, Sal-Xeek (n2-2))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-219",
+   "tell": "packed clause-chain",
+   "note": "the \"fewest words\" speaker gives the longest danger; gloss",
+   "wrong": "Leeches crowd the shallows round the teeth, so I wade out by day only. Swamp jellies drift in on the tide after dark. A voriplasm, a hungry jelly-like thing that strips anything dropped in the water, lives in the drowned room below the floor. Down there I go in company or not at all.",
+   "right": "Leeches in the shallows; I wade by day. Jellies come in after dark. The voriplasm in the drowned room strips whatever falls into it. I go down there with company or I do not go.",
+   "round": "2.6 corpus read close 3, FIX 29 (Teeth of Sithis, Sal-Xeek (n2-2))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-220",
+   "tell": "polite closing question",
+   "note": "answers a question not asked, stray anecdote, sixth copy of \"death is a change\"",
+   "wrong": "Taking a life is held to be his work too. The order faults anyone who reads it otherwise. Sithis, the void god, deals in change. Dying is a change among his many. The dead are mourned, then let go, as an acolyte learned when scolded before everyone.",
+   "right": "The dead are mourned, then let go. The priests say dying is one more change. Change is the work of Sithis, the void god. The order faults anyone who reads it otherwise.",
+   "round": "2.6 corpus read close 3, FIX 30 (Teeth of Sithis, Wuleen-Wai (n2))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-221",
+   "tell": "direction or distance against the road",
+   "note": "modern unit",
+   "wrong": "...you reach the inland village of Portdun Mont after half a kilometre.",
+   "right": "Go north-west on the Long road and you reach the inland village of Portdun Mont, a short walk further.",
+   "round": "2.6 corpus read close 3, FIX 31 (Pearl Lots, Xuth-Ra (n1))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-222",
+   "tell": "direction or distance against the road",
+   "note": "modern unit",
+   "wrong": "sit moored above the beds, twenty feet above the bottom.",
+   "right": "sit moored above the beds, out over the deep water.",
+   "round": "2.6 corpus read close 3, FIX 33 (Pearl Lots, Jeen-Vei (n1-2))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-223",
+   "tell": "the answer that skips the question",
+   "note": "non sequitur",
+   "wrong": "Lots are inherited so I open shells at the table where the catch is graded by size.",
+   "right": "Lots are inherited, one family to each lot. I open shells at the table where the catch is graded by size.",
+   "round": "2.6 corpus read close 3, FIX 35 (Pearl Lots, Ohl-Jei (n1-4))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-224",
+   "tell": "direction or distance against the road",
+   "note": "modern unit",
+   "wrong": "...then half a kilometre up the Border road. A short track bends round from there.",
+   "right": "then a little way up the Border road. A short track bends round from there.",
+   "round": "2.6 corpus read close 3, FIX 37 (Opening Work Camp, Tsanji (n1-5))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-225",
+   "tell": "direction or distance against the road",
+   "note": "modern unit",
+   "wrong": "walk the road north for about half a mile. There it turns east.",
+   "right": "walk the road north until it turns east. The last stretch runs south into the town.",
+   "round": "2.6 corpus read close 3, FIX 38 (Opening Work Camp, Ri'Sakka (n1-4))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-226",
+   "tell": "restated fact",
+   "note": "fifth copy (ties, finds, risakka, tsanji) in the same order",
+   "wrong": "A gang hand dredges the silt from the channel all shift, then sleeps on land beside the family. They owe House Dres coin, so each one is back on the barge at first light. Dredging the port channel is all the work the camp has.",
+   "right": "Dredging the port channel is all the work the camp has. I cook for the hands who do it. They owe House Dres, so every one is on the barge at first light and sleeps on land by night.",
+   "round": "2.6 corpus read close 3, FIX 39 (Opening Work Camp, Dives-Without-A-Rope (n1-2))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-227",
+   "tell": "pet word",
+   "note": "\"yes?\" in 5 of 12 lines",
+   "wrong": "Climb out by the Border road above, yes?",
+   "right": "Climb out by the Border road above.",
+   "round": "2.6 corpus read close 3, FIX 40 (Opening Work Camp, Nesh-Neel (n3-2))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-228",
+   "tell": "pet word",
+   "note": "same tic",
+   "wrong": "Put it down and come with me, yes?",
+   "right": "Put it down and come with me.",
+   "round": "2.6 corpus read close 3, FIX 41 (Opening Work Camp, Nesh-Neel (n3-2))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-229",
+   "tell": "a thing named so the player cannot place it",
+   "note": "odd, unplaced",
+   "wrong": "I spread the claw of welcome, guest. Close the door behind you.",
+   "right": "Welcome, guest. Close the door behind you; the eggs feel a draught.",
+   "round": "2.6 corpus read close 3, FIX 42 (Opening Work Camp, Sal-Sei (clutch-keeper))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-230",
+   "tell": "listener-hook question",
+   "note": "question opener, one of seven",
+   "wrong": "Have you come down the Border road? Gang Ground climbs a firm slope out of the marsh.",
+   "right": "Gang Ground climbs a firm slope out of the marsh, below the Border road.",
+   "round": "2.6 corpus read close 3, FIX 43 (Opening Work Camp, Finds-The-Other-Bank (n1-3))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-231",
+   "tell": "direction or distance against the road",
+   "note": "modern unit",
+   "wrong": "It's the best water for twenty miles, you'll find.",
+   "right": "It's the best water on this road, you'll find.",
+   "round": "2.6 corpus read close 3, FIX 44 (Claywater, Livia Varinius (well-keeper))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-232",
+   "tell": "one construction carrying the set",
+   "note": "one of four in one shape",
+   "wrong": "Come down from Cyrodiil by the Blackwood Road and Gideon is your first town, out on the frontier. An Owing is labour owed against a debt. Judges sit in its courts, so anyone who's holding an Owing signed there can have it contested in court.",
+   "right": "Gideon is the first town you reach coming down the Blackwood Road from Cyrodiil. An Owing is labour owed against a debt. One signed there can be contested before a judge.",
+   "round": "2.6 corpus read close 3, FIX 46 (Claywater, Gaius Vibius (n1))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-233",
+   "tell": "count-bark gag",
+   "note": "counting bark",
+   "wrong": "12, 13. Short.",
+   "right": "The rack is short again.",
+   "round": "2.6 corpus read close 3, FIX 48 (Claywater, Keeps-The-Second-Ledger (n1-2))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-234",
+   "tell": "direction or distance against the road",
+   "note": "Gideon is west (n2, Broke Column)",
+   "wrong": "Take the track east to the road, then follow that east.",
+   "right": "Take the track to the road, then follow it on toward Gideon.",
+   "round": "2.6 corpus read close 3, FIX 49 (Claywater, Gaius Vibius (n1))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-235",
+   "tell": "ungrounded talk",
+   "note": "no village answer names the Hist",
+   "wrong": "The tree has its own mind. I do not prune it. My office is the one who tends it.",
+   "right": "The tree is a Hist, one of the great trees with a mind of its own. I do not prune it. My office is the one who tends it.",
+   "round": "2.6 corpus read close 3, FIX 50 (Upriver, Swims-The-Channel-Twice (minder))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-236",
+   "tell": "direction or distance against the road",
+   "note": "track against \"no road\", \"no track\"; American spelling",
+   "wrong": "Come by boat or by the track. Pole downriver past the bend, until the track meets a clearing of huts ... toward the harbor.",
+   "right": "Come by boat; no road reaches us. Pole downriver past the bend to a clearing of huts that the families who claim our tree built. Beyond it the river widens toward the port.",
+   "round": "2.6 corpus read close 3, FIX 51 (Upriver, Zaxi-Kanna (kin-house))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-237",
+   "tell": "a word the culture never says, said freely",
+   "note": "Khajiit idiom in an Argonian",
+   "wrong": "This one keeps a dry mat for late guests.",
+   "right": "I keep a dry mat for late guests.",
+   "round": "2.6 corpus read close 3, FIX 52 (Upriver, Deeka-Seesh (elder))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-238",
+   "tell": "direction or distance against the road",
+   "note": "modern unit",
+   "wrong": "Reed beds line the shore a mile upriver",
+   "right": "Reed beds line the shore just upriver",
+   "round": "2.6 corpus read close 3, FIX 53 (Upriver, Xuth-Duun (reed-cutter))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-239",
+   "tell": "contractions at one rate",
+   "note": "Argonian contraction",
+   "wrong": "Keep what you took. I won't fight you.",
+   "right": "Keep what you took. I will not fight you.",
+   "round": "2.6 corpus read close 3, FIX 54 (Upriver, Xuth-Duun (reed-cutter))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-240",
+   "tell": "contractions at one rate",
+   "note": "Argonian contraction",
+   "wrong": "Hands empty. I've a hammer in mine.",
+   "right": "Hands empty. I have a hammer in mine.",
+   "round": "2.6 corpus read close 3, FIX 55 (Upriver, Nurwul-Vei (smith))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-241",
+   "tell": "contractions at one rate",
+   "note": "contraction; \"mate\" x4",
+   "wrong": "Can't sleep either, mate?",
+   "right": "Cannot sleep either, friend?",
+   "round": "2.6 corpus read close 3, FIX 56 (Upriver, Bux-Neel (net-mender))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-242",
+   "tell": "contractions at one rate",
+   "note": "contraction",
+   "wrong": "That knot's done. Next one.",
+   "right": "That knot is done. Next one.",
+   "round": "2.6 corpus read close 3, FIX 57 (Upriver, Bux-Neel (net-mender))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-243",
+   "tell": "contractions at one rate",
+   "note": "contraction",
+   "wrong": "I hold the trade-house key. You'll stay outside.",
+   "right": "I hold the trade-house key. You will stay outside.",
+   "round": "2.6 corpus read close 3, FIX 58 (Upriver, Reads-The-Weather-Wrong (weather))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-244",
+   "tell": "ungrounded talk",
+   "note": "patronising, and the only line this speaker has",
+   "wrong": "...an An-Xileel slur for Argonians hatched far off who cannot hear their own tree, poor things.",
+   "right": "an An-Xileel slur for Argonians hatched far off who cannot hear their own tree.",
+   "round": "2.6 corpus read close 3, FIX 59 (Upriver, Am-Nakka (n2-2))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-245",
+   "tell": "a thing named so the player cannot place it",
+   "note": "n1-2 says \"Nothing here takes a spade\"",
+   "wrong": "I dig the iron out of the mud in lumps that we call cakes. The road menders pay me coin for each stack I lift out of it.",
+   "right": "I have charge of the crew that lifts the iron out of the mud in lumps we call cakes. The road menders pay me coin for each stack.",
+   "round": "2.6 corpus read close 3, FIX 60 (Bog Iron, Prices-The-Salvage (n1))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-246",
+   "tell": "a thing named so the player cannot place it",
+   "note": "modern word, no referent",
+   "wrong": "Worth a tyre.",
+   "right": "A cake makes a wheel rim.",
+   "round": "2.6 corpus read close 3, FIX 61 (Bog Iron, Prices-The-Salvage (n1))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-247",
+   "tell": "a thing named so the player cannot place it",
+   "note": "referent unknown to the player",
+   "wrong": "Some goes to the Cold Forge.",
+   "right": "The smith at the Cold Forge takes the scraps.",
+   "round": "2.6 corpus read close 3, FIX 62 (Bog Iron, Prices-The-Salvage (n1))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-248",
+   "tell": "direction or distance against the road",
+   "note": "compass against the pool and the sheet (west); unnamed town",
+   "wrong": "Go south-west for the town; it takes minutes on foot. Fourth Stage is east.",
+   "right": "The old capital is a short walk west. Fourth Stage is east.",
+   "round": "2.6 corpus read close 3, FIX 66 (Chasepoint, Sells-The-Last-Sack (n2))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-249",
+   "tell": "direction or distance against the road",
+   "note": "compass",
+   "wrong": "The old capital's south-west of here, hardly any walk at all.",
+   "right": "The old capital's west of here, hardly any walk at all.",
+   "round": "2.6 corpus read close 3, FIX 67 (Chasepoint, Aelia Nerva (station-keeper))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-250",
+   "tell": "restated fact",
+   "note": "fourth copy (n1, n1-2, n1-3), longest and slowest",
+   "wrong": "Taking timber off another family's shore is forbidden. Each family guards its own stretch with sticks against any stranger. The right is hereditary, passed down by blood. After a blow, the wreckage of broken ships washes onto the south coast out of the Southern Sea. Every family sorts through only its own stretch while the neighbours stay off that sand until the sorting is done over however many days it takes.",
+   "right": "Taking timber off another family's shore is forbidden. The right is hereditary, passed down by blood. Each family guards its own stretch with sticks. After a blow, the neighbours stay off that sand until the sorting is done.",
+   "round": "2.6 corpus read close 3, FIX 68 (Chasepoint, Prices-It-Fairly (n1-4))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-251",
+   "tell": "ungrounded talk",
+   "note": "the hides are Bux-Xeek's; a literal paragraph break",
+   "wrong": "Hides are my proudest work. Through the night ... Name a price if you are buying.\" then a blank line, then \"Then there is the tally.",
+   "right": "The tally is mine. Every parcel of goods we take earns the walker a stick with one cut notched for it. He carries it off as a receipt. Its split half stays on my board. Through the night one of the band cures hides in the fire's smoke while the rest sleep. The best go aside for trade. Bux-Xeek names the price.",
+   "round": "2.6 corpus read close 3, FIX 69 (Naga camp, Heita-Kai (n1))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-252",
+   "tell": "ungrounded talk",
+   "note": "the bend is his post; Bux-Xeek smokes",
+   "wrong": "I smoke hides. Do you carry any? The walker takes a notched stick home as proof of the load.",
+   "right": "I watch the bend, not the fire. Bux-Xeek smokes the hides. A walker takes a notched stick home as proof of the load.",
+   "round": "2.6 corpus read close 3, FIX 70 (Naga camp, Im-Jei (n2-5))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-253",
+   "tell": "restated fact",
+   "note": "fifth copy of the policy sentence",
+   "wrong": "...Kill one walker and his tribe comes down on the camp, so we lift the cargo and nothing else.",
+   "right": "I stay clear of the water below the camp. A crocodile dens there with hackwings and death hoppers in the reeds. Cut-Rope's raiders kill walkers on the same stretches. The settled tribes look at us and say the blood is ours.",
+   "round": "2.6 corpus read close 3, FIX 71 (Naga camp, Okan-Leel (n2-3))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-254",
+   "tell": "listener-hook question",
+   "note": "odd question",
+   "wrong": "The lieutenant and five of us live here. Do you shout at guards? Guests shout and cannot read a face.",
+   "right": "The lieutenant and five of us live here. Guests shout at the gate and cannot read a face, so I stay quiet and watch.",
+   "round": "2.6 corpus read close 3, FIX 72 (Naga camp, Jeen-Ozzu (n2))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-255",
+   "tell": "stock aside",
+   "note": "exclamation, repeated about-prison-road shape",
+   "wrong": "My feet know this road better than any map! Only the Tag House on its dry bank gives me a rest...",
+   "right": "My feet know this road. Only the Tag House on its dry bank gives me a rest, with the Rose waiting down the Prison road.",
+   "round": "2.6 corpus read close 3, FIX 75 (Rose Bone, Okan-Sei (carrier))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  },
+  {
+   "id": "bad.y2-256",
+   "tell": "polite closing question",
+   "note": "rhetorical closer",
+   "wrong": "Would you wait so long on a payment you hate?",
+   "right": "Three days our family has sat on that bench for our aunt, on a payment we hate.",
+   "round": "2.6 corpus read close 3, FIX 76 (Rose Bone, Vees-Kai (rose-family))",
+   "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
+  }
+ ]
+}

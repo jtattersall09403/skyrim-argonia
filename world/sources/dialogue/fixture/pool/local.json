@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "domain": "dialogue-pool",
+  "topicClass": "local",
+  "_": "Walker and gate fixture (2.5b4).",
+  "entries": [
+    {"schemaVersion": 1, "id": "pool.fixture-ford.default", "type": "dialogue", "speaker": null, "keys": {"topic": "topic.fixture-ford"}, "words": "The ford runs waist-deep at low tide.", "available": [], "onDelivered": [], "factIds": ["fact.fixture.ford-depth"], "links": ["topic.fixture-goats"]},
+    {"schemaVersion": 1, "id": "pool.fixture-ford.night", "type": "dialogue", "speaker": null, "keys": {"topic": "topic.fixture-ford"}, "words": "The ford is too deep to wade after dark.", "available": [{"timeOfDay": "night"}], "onDelivered": [], "factIds": [], "links": []},
+    {"schemaVersion": 1, "id": "pool.fixture-old-road.rank", "type": "dialogue", "speaker": null, "keys": {"topic": "topic.fixture-old-road"}, "words": "The watch lets its own use the old road.", "available": [{"factionRankAtLeast": ["faction.fixture-watch", 3]}], "onDelivered": [], "factIds": [], "links": []},
+    {"schemaVersion": 1, "id": "pool.fallback.local", "type": "dialogue", "speaker": null, "keys": {}, "fallbackFor": "local", "words": "I could not tell you much about that.", "available": [], "onDelivered": [], "factIds": [], "links": []}
+  ]
+}

@@ -1,0 +1,66 @@
+{
+ "id": "boat-overboard",
+ "start": {
+  "query": "?view=character&x=7247&z=641&t=10:00&d=8-17",
+  "kit": "start"
+ },
+ "notes": "Riverwalk on the river by day, the stage-mistress's dugout at its tie by the stage shelter (the upriver Hist village's canoes are ground clutter in the studio, not floating hulls). Lead-in (unfilmed): E boards, E casts off, W paddles out. Filmed: the jump press goes over the side (2.12's jump clips, a leap over the gunwale, no cut), W swims a few metres, E climbs back in at the side (the low mantle), W paddles on. Taking the canoe unpaid may file a theft; the scene expects only the boat and the swim.",
+ "steps": [
+  {
+   "name": "board",
+   "transition": "E at the canoe: the player climbs aboard",
+   "do": { "action": "boat", "op": "press" },
+   "keys": [ { "wait_s": 1.5 }, { "press": "KeyE" }, { "wait_s": 1.5 } ],
+   "expect": { "boat": { "id": "boat.riverwalk.stage-canoe", "aboard": "boat.riverwalk.stage-canoe" } },
+   "stage": { "at": { "x": 7247, "z": 641, "yaw": -2.4 }, "hour": 10, "place": "place.dunmer-north.riverwalk" },
+   "lead": true
+  },
+  {
+   "name": "cast-off",
+   "transition": "E aboard: the canoe casts off",
+   "do": { "action": "boat", "op": "press" },
+   "keys": [ { "press": "KeyE" } ],
+   "expect": { "boat": { "id": "boat.riverwalk.stage-canoe", "event": "castOff" } },
+   "lead": true
+  },
+  {
+   "name": "paddle-out",
+   "transition": "W held: seated at the paddle, the canoe under way on the river",
+   "do": { "action": "observe" },
+   "keys": [ { "down": "KeyW" }, { "wait_s": 12 } ],
+   "expect": { "boat": { "id": "boat.riverwalk.stage-canoe", "aboard": "boat.riverwalk.stage-canoe", "underway": true } },
+   "lead": true
+  },
+  {
+   "name": "jump-overboard",
+   "transition": "Shift (the jump) aboard: the player leaps up over the gunwale and drops into the river beside the canoe, swimming; the canoe drifts on",
+   "do": { "action": "boat", "op": "jump" },
+   "keys": [ { "up": "KeyW" }, { "press": "ShiftLeft" }, { "wait_s": 1.5 } ],
+   "hold_s": 0.3,
+   "expect": { "moveMode": "swim", "boat": { "id": "boat.riverwalk.stage-canoe", "aboard": null, "event": "fellOut" } }
+  },
+  {
+   "name": "swim",
+   "transition": "W held: the player swims a few metres alongside the canoe",
+   "do": { "action": "swim" },
+   "keys": [ { "aim": 100, "pitch": -5 }, { "down": "KeyW" }, { "wait_s": 1.5 }, { "up": "KeyW" } ],
+   "expect": { "moveMode": "swim" }
+  },
+  {
+   "name": "climb-back-in",
+   "transition": "E at the side: the swimmer climbs back into the canoe (the low mantle) and sits at the paddle",
+   "do": { "action": "boat", "op": "press" },
+   "keys": [ { "press": "KeyE" }, { "wait_s": 2.5 } ],
+   "hold_s": 0.3,
+   "expect": { "boat": { "id": "boat.riverwalk.stage-canoe", "aboard": "boat.riverwalk.stage-canoe", "event": "boarded" } }
+  },
+  {
+   "name": "paddle-on",
+   "transition": "W held: back in the seat, the player paddles on",
+   "do": { "action": "observe" },
+   "keys": [ { "down": "KeyW" }, { "wait_s": 6 } ],
+   "hold_s": 0.5,
+   "expect": { "boat": { "id": "boat.riverwalk.stage-canoe", "aboard": "boat.riverwalk.stage-canoe", "underway": true } }
+  }
+ ]
+}

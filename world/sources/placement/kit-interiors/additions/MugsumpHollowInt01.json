@@ -1,0 +1,513 @@
+{
+ "schemaVersion": 2,
+ "cellId": "MugsumpHollowInt01",
+ "additions": [
+  {
+   "id": "MugsumpHollowInt01:add:roof-mushrooms-01",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    -62.0,
+    99.035,
+    16.0
+   ],
+   "rotZDeg": 0,
+   "zone": "hearth",
+   "why": "Glowing mushrooms grow on the roof roots above the den floor."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:roof-mushrooms-02",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    -58.0,
+    98.999,
+    20.0
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Glowing mushrooms grow on the roof roots over the east bay."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:roof-mushrooms-03",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    -68.0,
+    99.337,
+    6.0
+   ],
+   "rotZDeg": 0,
+   "zone": "hearth",
+   "why": "Glowing mushrooms grow on the roof roots over the south end."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:mid-mushrooms-01",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    -53.3,
+    90.987,
+    11.3
+   ],
+   "rotZDeg": 0,
+   "zone": "hearth",
+   "why": "Glowing mushrooms grow in the damp by the east wall."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:north-mushrooms-01",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    -66.0,
+    90.964,
+    29.8
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Glowing mushrooms grow in the damp at the back of the hollow."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:slope-moss-01",
+   "assetId": "vanilla:plants/florahangingmoss01",
+   "pos": [
+    -64.0,
+    98.642,
+    -5.0
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Moss hangs from the roots in the roof above the slope."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:throat-moss-01",
+   "assetId": "vanilla:plants/florahangingmoss02",
+   "pos": [
+    -66.0,
+    100.059,
+    -12.0
+   ],
+   "rotZDeg": 0,
+   "zone": "door",
+   "why": "Moss hangs from the tunnel roof where the way in opens out."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:mid-moss-01",
+   "assetId": "vanilla:plants/florahangingmoss03",
+   "pos": [
+    -60.0,
+    99.146,
+    6.0
+   ],
+   "rotZDeg": 0,
+   "zone": "hearth",
+   "why": "Moss hangs from the roof between the slope and the den."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:west-moss-01",
+   "assetId": "vanilla:plants/florahangingmoss01",
+   "pos": [
+    -70.0,
+    98.366,
+    20.0
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Moss hangs over the west bay."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:east-moss-01",
+   "assetId": "vanilla:plants/florahangingmoss02",
+   "pos": [
+    -55.0,
+    95.178,
+    24.0
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Moss hangs low over the east bay."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:north-fungus-01",
+   "assetId": "vanilla:plants/floramushroom06",
+   "pos": [
+    -54.0,
+    92.696,
+    27.0
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Pale fungus grows on the raised floor in the north-east corner."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:hearth-skull-01",
+   "assetId": "vanilla:clutter/bones/bloodyskull",
+   "pos": [
+    -61.5,
+    90.844,
+    17.5
+   ],
+   "rotZDeg": 0,
+   "zone": "hearth",
+   "why": "A skull lies on the den floor, left over from the occupant's last meal."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:hearth-leg-01",
+   "assetId": "vanilla:clutter/bones/humanlegright",
+   "pos": [
+    -67.0,
+    90.682,
+    18.5
+   ],
+   "rotZDeg": 0,
+   "zone": "hearth",
+   "why": "A gnawed leg bone lies on the far side of the den."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:door-glowingmushroomsingl",
+   "assetId": "vanilla:plants/glowingmushroomsingle01",
+   "pos": [
+    -64.0,
+    92.82,
+    -12.8
+   ],
+   "rotZDeg": 0,
+   "zone": "door",
+   "why": "Glowing mushrooms grow where the tunnel drops into the hollow, so the way in shows."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:door-glowingmushroomsingl-2",
+   "assetId": "vanilla:plants/glowingmushroomsingle01",
+   "pos": [
+    -65.2,
+    94.406,
+    -16.0
+   ],
+   "rotZDeg": 0,
+   "zone": "door",
+   "why": "A few glowing mushrooms grow up the tunnel wall behind the mouth."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:door-glowingmushroomsingl-3",
+   "assetId": "vanilla:plants/glowingmushroomsingle01",
+   "pos": [
+    -65.2,
+    95.872,
+    -26.5
+   ],
+   "rotZDeg": 0,
+   "zone": "door",
+   "why": "Glowing mushrooms grow at the top of the tunnel just inside the mouth."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:work-glowingmushroomclust",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    -64.0,
+    92.209,
+    -2.2
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Glowing mushrooms grow at the foot of the slope into the hollow."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:work-glowingmushroomclust-2",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    -56.0,
+    90.909,
+    3.1
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Glowing mushrooms grow along the east side of the south end."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:hearth-glowingmushroomclust",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    -70.0,
+    91.12,
+    12.5
+   ],
+   "rotZDeg": 0,
+   "zone": "hearth",
+   "why": "Glowing mushrooms grow on the west wall of the den."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:store-glowingmushroomclust",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    -73.5,
+    90.919,
+    22.0
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Glowing mushrooms grow in the west bay."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:store-glowingmushroomsingl",
+   "assetId": "vanilla:plants/glowingmushroomsingle01",
+   "pos": [
+    -77.9,
+    93.305,
+    31.5
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Glowing mushrooms grow in the far west corner."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:store-glowingmushroomsingl-2",
+   "assetId": "vanilla:plants/glowingmushroomsingle01",
+   "pos": [
+    -52.4,
+    90.762,
+    18.0
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Glowing mushrooms grow in the east bay."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:work-histflower",
+   "assetId": "kotm:argonia/trees/hist trees/histflower01",
+   "scale": 0.46,
+   "pos": [
+    -57.5,
+    84.724,
+    2.0
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "A Hist bloom rises from the root under the south-east wall and glows with sap."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:store-histflower02",
+   "assetId": "kotm:argonia/trees/hist trees/histflower02",
+   "scale": 0.63,
+   "pos": [
+    -57.0,
+    85.428,
+    29.0
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "A Hist bloom rises beside the root in the north-east corner and glows with sap."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:store-histflower",
+   "assetId": "kotm:argonia/trees/hist trees/histflower01",
+   "scale": 0.46,
+   "pos": [
+    -65.0,
+    84.935,
+    32.5
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "A Hist bloom rises from the roots at the back of the hollow and glows with sap."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:store-glowingmushroomclust-2",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    -56.8,
+    92.24,
+    23.42
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Glowing mushrooms grow thick in the damp of the east bay."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:store-glowingmushroomsingl-3",
+   "assetId": "vanilla:plants/glowingmushroomsingle01",
+   "pos": [
+    -62.3,
+    91.432,
+    26.92
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Glowing mushrooms grow among the bones at the back of the den."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:work-glowingmushroomclust-3",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    -68.3,
+    90.876,
+    6.42
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Glowing mushrooms grow in the wet hollow under the south-west wall."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:store-glowingmushroomsingl-4",
+   "assetId": "vanilla:plants/glowingmushroomsingle01",
+   "pos": [
+    -76.8,
+    92.893,
+    26.92
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Glowing mushrooms grow up the far west wall."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:door-glowingmushroomsingl-4",
+   "assetId": "vanilla:plants/glowingmushroomsingle01",
+   "pos": [
+    -63.3,
+    97.281,
+    -20.08
+   ],
+   "rotZDeg": 0,
+   "zone": "door",
+   "why": "Glowing mushrooms grow halfway down the tunnel."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:store-glowingmushroomclust-3",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    -71.8,
+    90.906,
+    29.92
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Glowing mushrooms grow in the north-west bay."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:store-glowingmushroomsingl-5",
+   "assetId": "vanilla:plants/glowingmushroomsingle01",
+   "pos": [
+    -67.8,
+    90.96,
+    24.42
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Glowing mushrooms grow in the litter at the back of the den."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:store-glowingmushroomclust-4",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    -77.8,
+    91.426,
+    19.42
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Glowing mushrooms grow at the foot of the west wall."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:work-glowingmushroomclust-4",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    -63.3,
+    91.103,
+    4.42
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Glowing mushrooms grow at the bottom of the slope."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:hearth-glowingmushroomsingl-3",
+   "assetId": "vanilla:plants/glowingmushroomsingle01",
+   "pos": [
+    -57.3,
+    90.844,
+    16.92
+   ],
+   "rotZDeg": 0,
+   "zone": "hearth",
+   "why": "Glowing mushrooms grow beside the east rock piles."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:work-glowingmushroomclust-5",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    -49.8,
+    90.864,
+    4.92
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Glowing mushrooms grow in the far south-east corner."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:door-glowingmushroomclust",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    -60.3,
+    94.675,
+    -28.08
+   ],
+   "rotZDeg": 0,
+   "zone": "door",
+   "why": "Glowing mushrooms grow at the tunnel mouth's inner end."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:store-glowingmushroomsingl-6",
+   "assetId": "vanilla:plants/glowingmushroomsingle01",
+   "pos": [
+    -72.8,
+    92.307,
+    17.42
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Glowing mushrooms grow on the ledge of the west bay."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:hearth-glowingmushroomclust-2",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    -60.3,
+    91.022,
+    8.42
+   ],
+   "rotZDeg": 0,
+   "zone": "hearth",
+   "why": "Glowing mushrooms grow where the slope meets the den floor."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:store-glowingmushroomclust-5",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    -66.0,
+    90.914,
+    3.5
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Glowing mushrooms grow thick in the dark of the lower den."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:store-glowingmushroomclust-6",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    -63.0,
+    90.953,
+    12.5
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Glowing mushrooms grow thick in the dark of the lower den."
+  },
+  {
+   "id": "MugsumpHollowInt01:add:store-glowingmushroomclust-7",
+   "assetId": "vanilla:plants/glowingmushroomcluster01",
+   "pos": [
+    -65.0,
+    91.187,
+    16.0
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Glowing mushrooms grow thick in the dark of the lower den."
+  }
+ ]
+}

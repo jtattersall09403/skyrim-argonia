@@ -1,0 +1,195 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "_": "Region sheet for pirate-freeholds (2.5a1b). Talk is seeded from the region's published place records; every trait cites a lore dossier or says inferred.",
+ "entries": [
+  {
+   "id": "culture.region.pirate-freeholds",
+   "level": "region",
+   "name": "Alten Corimont and the river camps (the pirate freeholds)",
+   "parent": "culture.province.black-marsh",
+   "regionId": "pirate-freeholds",
+   "norms": [
+    {
+     "text": "Alten Corimont takes anyone and sells to both sides.",
+     "source": "world/sources/lore/alten-corimont.md"
+    },
+    {
+     "text": "Crews are hired by the roll; a name on a roll is a debt owed downriver.",
+     "source": "inferred"
+    },
+    {
+     "text": "Shares are split by hull and by head, agreed before the boat leaves.",
+     "source": "inferred"
+    },
+    {
+     "text": "Gang families keep their clutch in camp and their tree a day upriver.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Asking a crew the origin of the last cargo.",
+     "source": "inferred"
+    },
+    {
+     "text": "Taking sides in a quarrel at the port; neutrality is the town's whole policy.",
+     "source": "world/sources/lore/alten-corimont.md"
+    }
+   ],
+   "values": [
+    {
+     "text": "A fair share.",
+     "source": "inferred"
+    },
+    {
+     "text": "Neutrality with a price list.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    },
+    {
+     "text": "Coming back to the tree, even late.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Captains who leave a crew ashore without its share.",
+     "source": "inferred"
+    },
+    {
+     "text": "Anyone who tried to make Alten Corimont pick a side.",
+     "source": "world/sources/lore/alten-corimont.md"
+    }
+   ],
+   "opinions": {
+    "place": {
+     "lean": 0,
+     "text": "The river is home; a camp is where the work is this season.",
+     "source": "inferred"
+    },
+    "work": {
+     "lean": -1,
+     "text": "Roll work, poling and salvage; it pays in tallies more often than coin.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    "people": {
+     "lean": 0,
+     "text": "Mixed crews. A hand is asked what he can lift, never his homeland.",
+     "source": "inferred"
+    },
+    "faction": {
+     "lean": 0,
+     "text": "The Compact owns the boats; the Salt-Teeth own the rest.",
+     "source": "inferred"
+    },
+    "hist": {
+     "lean": 1,
+     "text": "The tree upriver knows who is gone; the families answer to it.",
+     "source": "inferred"
+    },
+    "empire": {
+     "lean": -1,
+     "text": "The navy that came here is a memorial on the waterfront.",
+     "source": "world/sources/lore/alten-corimont.md"
+    },
+    "trade": {
+     "lean": 1,
+     "text": "Smuggling, transit and salvage; the port captain prices every question.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    },
+    "danger": {
+     "lean": -1,
+     "text": "The river kills drunks and the camps kill debtors.",
+     "source": "inferred"
+    },
+    "rumour": {
+     "lean": 0,
+     "text": "More adults go downriver on the roll every year.",
+     "source": "inferred"
+    },
+    "directions": {
+     "lean": 0,
+     "text": "Ways are given in bends and landings: Nine Bends, the camp, the port.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Crew call each other by job or nickname; a stranger is mate until he is trouble.",
+      "source": "inferred"
+     },
+     {
+      "text": "Mixed-crew loan words for outsiders, Dunmer and Imperial both.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "low",
+    "oaths": [
+     {
+      "text": "Fair shares.",
+      "source": "inferred"
+     },
+     {
+      "text": "Sink me.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "Who sold the last cargo.",
+      "source": "inferred"
+     },
+     {
+      "text": "How many on the roll never came back.",
+      "source": "world/sources/lore/topics/labour-and-bondage.md"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#region-pirate-freeholds"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "The camp has no claim on the Hist a day upriver, yet the families stay because the clutch is in the shed.",
+      "source": "inferred"
+     },
+     {
+      "text": "Nine Bends loses more adults to the downriver roll each year. Its Hist is weakening.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "The Salt-Teeth are hiring for something larger than a cargo.",
+      "source": "inferred"
+     },
+     {
+      "text": "The port captain has been paid twice for the same berth.",
+      "source": "world/sources/lore/alten-corimont.md"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.region.hist-heartland",
+     "lean": 0,
+     "text": "The interior folk look down on river work and buy what it brings.",
+     "source": "inferred"
+    },
+    {
+     "node": "culture.region.dunmer-north",
+     "lean": 0,
+     "text": "Riverwalk and Thorn are the next stops down the trunk road; good custom, hard bargains.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    },
+    {
+     "node": "culture.region.saxhleel-coast",
+     "lean": 1,
+     "text": "Archon's sailors are the only ones who outswim ours.",
+     "source": "world/sources/lore/archon.md"
+    }
+   ],
+   "deviationRate": 0.2
+  }
+ ]
+}

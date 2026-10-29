@@ -1,0 +1,78 @@
+{
+ "schemaVersion": 2,
+ "cellId": "LilmothLodgingHouse",
+ "additions": [
+  {
+   "id": "LilmothLodgingHouse:add:table-candlehornfloor",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    129.292,
+    83.072,
+    78.469
+   ],
+   "rotZDeg": 0,
+   "zone": "table",
+   "why": "Lights the dark floor of the lodging house at night."
+  },
+  {
+   "id": "LilmothLodgingHouse:add:store-candlehornfloor",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    136.749,
+    83.08,
+    77.931
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Lights the dark floor of the lodging house at night."
+  },
+  {
+   "id": "LilmothLodgingHouse:add:table-candlehornfloor-2",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    130.266,
+    86.73,
+    84.434
+   ],
+   "rotZDeg": 0,
+   "zone": "table",
+   "why": "Lights the dark floor of the lodging house at night."
+  },
+  {
+   "id": "LilmothLodgingHouse:add:store-candlehornfloor-2",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    139.062,
+    83.072,
+    81.533
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Lights the dark floor of the lodging house at night."
+  },
+  {
+   "id": "LilmothLodgingHouse:add:bed-candlehornfloor",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    131.403,
+    86.721,
+    78.733
+   ],
+   "rotZDeg": 0,
+   "zone": "bed",
+   "why": "Lights the dark floor of the lodging house at night."
+  },
+  {
+   "id": "LilmothLodgingHouse:add:table-candlehornfloor-3",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    130.268,
+    86.72,
+    82.158
+   ],
+   "rotZDeg": 0,
+   "zone": "table",
+   "why": "Lights the dark floor of the lodging house at night."
+  }
+ ]
+}

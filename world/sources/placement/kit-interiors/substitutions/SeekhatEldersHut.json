@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "cellId": "SeekhatEldersHut",
+  "plugin": "King of the Murkmire.esp",
+  "rule": "Stand-ins for the cell's missing clutter (planner ruling 2026-09-27; as AltenDockmasterHouse): each base form another cell already stands in takes the same stand-in here; the rest stay listed gaps. Drawn at the missing reference's transform by worldgen/export_interior_bundle.py.",
+  "substitutions": [],
+  "removals": [
+    {
+      "refId": "081C6F32",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club archive, which the vault does not hold",
+      "note": "A piece of fishing gear stands here; no kit holds the same object, so the spot stays bare."
+    },
+    {
+      "refId": "081C6F33",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club archive, which the vault does not hold. Its base ccBGSSSE001-Fish.esm:00000D74 is fishing gear set in the doorway under the doorframe (walk 12 A1: a square table stood in for it and blocked the way in)",
+      "note": "A piece of fishing gear stands here; no kit holds the same object, so the spot stays bare."
+    },
+    {
+      "refId": "081C6F4E",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Hearthfire archive, which the vault does not hold",
+      "note": "A dish of mudcrab legs sits here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "081C6F56",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club archive, which the vault does not hold. Its base ccBGSSSE001-Fish.esm:00000D74 is fishing gear set in the doorway under the doorframe (walk 12 A1: a square table stood in for it and blocked the way in)",
+      "note": "A piece of fishing gear stands here; no kit holds the same object, so the spot stays bare."
+    },
+    {
+      "refId": "081C6F57",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club archive, which the vault does not hold",
+      "note": "A piece of fishing gear stands here; no kit holds the same object, so the spot stays bare."
+    },
+    {
+      "refId": "081C6F5A",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club archive, which the vault does not hold",
+      "note": "A piece of Dragonborn clutter stands here; no kit holds the same object, so the spot stays bare."
+    }
+  ],
+  "removalRule": "Owner ruling 2026-10-04 (R113): no missing piece ships as a gap. A missing piece takes a same-class stand-in from a published kit where one exists (substitutions[]); a decorative piece whose class no published kit or vault archive holds is taken out of the fit-out (removals[], reason decorative-no-same-class, its search recorded), and the spot is simply empty. A placed piece whose only support was a removed piece is removed with it (reason rests-on-a-removal, restsOn naming that row)."
+}

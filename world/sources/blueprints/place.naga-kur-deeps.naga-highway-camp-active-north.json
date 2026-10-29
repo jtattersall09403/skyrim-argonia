@@ -1,0 +1,4772 @@
+{
+  "schemaVersion": 1,
+  "blueprint": {
+    "id": "place.naga-kur-deeps.naga-highway-camp-active-north",
+    "seed": "place.naga-kur-deeps.naga-highway-camp-active-north",
+    "causalModel": {
+      "founding": "A tribeless Naga band camps on a bench below a pond. Two arms of the bone-road track meet at the bend below the bench. Every walker on the track must take that bend.",
+      "siteAdvantages": "The camp stands on a low bench over a blind bend. Walkers on either arm of the track turn the pond's corner before they see the camp. The bank behind the bench drops to the flat. The drop gives the band a way out.",
+      "occupantsMotive": "The band takes cargo and rarely kills. A robbed walker comes back next season. A dead walker brings his tribe against the camp.",
+      "pressures": "The settled tribes are blamed for the camp. The settled hold has begun paying the camp not to work its stretch. The hold would be ruined if the payment became known.",
+      "wouldChangeIf": "A settlement between the settled and the tribeless would end the camp."
+    },
+    "boundary": [
+      [
+        0.308672676,
+        0.617345352
+      ],
+      [
+        0.3173524,
+        0.617345352
+      ],
+      [
+        0.3173524,
+        0.628195006
+      ],
+      [
+        0.308672676,
+        0.628195006
+      ]
+    ],
+    "districts": [
+      {
+        "id": "district.naga-highway-camp-active-north.the-bench",
+        "kind": "camp",
+        "cultureKit": "argonian-mud",
+        "wealth": "poor",
+        "boundary": [
+          [
+            0.31034063,
+            0.621529133
+          ],
+          [
+            0.310774493,
+            0.622743948
+          ],
+          [
+            0.311530585,
+            0.622986101
+          ],
+          [
+            0.311631159,
+            0.62301305
+          ],
+          [
+            0.313697022,
+            0.623085895
+          ],
+          [
+            0.313902373,
+            0.623030871
+          ],
+          [
+            0.314391424,
+            0.622671444
+          ],
+          [
+            0.314458173,
+            0.6220682
+          ],
+          [
+            0.314374728,
+            0.621756778
+          ],
+          [
+            0.313768786,
+            0.621313121
+          ],
+          [
+            0.311715946,
+            0.621233207
+          ]
+        ],
+        "notes": "Two hide tents and a fire on a low bench over the bend of the track, a watch scaffold at its north edge, a cane gate where the track ends, held cargo behind the lieutenant's tent and grave cairns stepped down the bank.",
+        "why": {
+          "what": "The camp district holds two tents, the fire between them, the watch, the gate on the track and the held cargo.",
+          "whyHere": "Both arms of the bone-road track bend round the pond and meet below this bench. Every walker on the track passes under the bench.",
+          "whySpot": "The spot is the sole dry rise beside the bend. The bank falls away behind the rise.",
+          "whyNeighbours": "The pond lies north of the bend. The flat south of the bank is empty marsh. The camp is out of sight of any dwelling.",
+          "playerPurpose": "The camp is hostile and stops walkers at the bend. The band takes what walkers carry. The band cuts each walker a tally-stick for it.",
+          "microGeography": "The camp stands on a low rise of firm ground in cypress marsh. The pond and the track bend lie to the north. A three-metre bank lies to the south."
+        }
+      },
+      {
+        "id": "district.naga-highway-camp-active-north.the-watch",
+        "kind": "camp",
+        "cultureKit": "neutral-works",
+        "wealth": "poor",
+        "boundary": [
+          [
+            0.309592475,
+            0.619845333
+          ],
+          [
+            0.30965016,
+            0.620191441
+          ],
+          [
+            0.310058354,
+            0.620599635
+          ],
+          [
+            0.310766948,
+            0.621206353
+          ],
+          [
+            0.3109826,
+            0.621391
+          ],
+          [
+            0.311715946,
+            0.621233207
+          ],
+          [
+            0.312553636,
+            0.621265817
+          ],
+          [
+            0.311799005,
+            0.620247665
+          ],
+          [
+            0.311100728,
+            0.619532246
+          ],
+          [
+            0.310705041,
+            0.61913656
+          ],
+          [
+            0.310358933,
+            0.619078875
+          ],
+          [
+            0.310108284,
+            0.619192806
+          ],
+          [
+            0.309706406,
+            0.619594684
+          ]
+        ],
+        "notes": "The watch scaffold on the north-west corner of the bench, with the tally board hung under its platform.",
+        "why": {
+          "what": "The watch scaffold stands over the bend. The camp took its timber from a stockade that it robbed.",
+          "whyHere": "From the corner of the bench a watcher can follow both arms of the track round the pond.",
+          "whySpot": "The scaffold stands at the north-west corner of the bench. It stands above the west arm of the track.",
+          "whyNeighbours": "The gate lies below the scaffold to the east. The fire lies behind the scaffold to the south-east.",
+          "playerPurpose": "The scaffold is the lookout. A watcher on it sees a walker before the walker sees the camp.",
+          "microGeography": "The scaffold stands on the north-west lip of the bench, above the track."
+        }
+      }
+    ],
+    "parcels": [
+      {
+        "id": "parcel.naga-highway-camp-active-north.lieutenants-tent",
+        "districtId": "district.naga-highway-camp-active-north.the-bench",
+        "use": "quarters",
+        "services": [
+          "trader"
+        ],
+        "buildingFamily": "mudmother-argonian",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "The lieutenant's tent has its open front facing north-east. The open front faces the fire and, past the fire, the gate on the track.",
+        "why": {
+          "what": "The lieutenant's hide tent is the big tent. The held cargo is stacked behind it.",
+          "whyHere": "The lieutenant keeps the tally and the claims. He sleeps where he can see the gate.",
+          "whySpot": "The lieutenant's tent stands on the west half of the bench. Its back is to the bank.",
+          "whyNeighbours": "The band's tent stands across the fire from the lieutenant's tent. The cargo and the cairns lie behind the lieutenant's tent. They are out of sight of the track.",
+          "playerPurpose": "The lieutenant's tent is the lieutenant's post. Behind it is the cache of cargo that the camp holds against claims.",
+          "microGeography": "The tent stands on the flat top of the bench. The ground there is trodden level."
+        },
+        "assetRef": "mudmother:gv_meshes/argoniannest/argoniantent02",
+        "centreUV": [
+          0.311724141,
+          0.622159886
+        ],
+        "yawDeg": 60.0,
+        "scale": 0.85,
+        "pad": {
+          "datumM": 11.426,
+          "apronM": 1.0,
+          "apronBySide": {
+            "s": 3.0,
+            "w": 2.5
+          },
+          "batter": true
+        },
+        "yMeasured": 11.4518,
+        "assembly": [
+          {
+            "id": "b-lieut-board",
+            "asset": "kotm:argonia/blackwood/sign",
+            "atM": [
+              -0.8355,
+              -0.9698
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "b-lieut",
+              "unmined": "reader-approved r3"
+            },
+            "yMeasured": 13.2275
+          },
+          {
+            "id": "b-lieut-candle",
+            "asset": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+            "atM": [
+              3.0026,
+              -3.0007
+            ],
+            "yaw": 300.0,
+            "on": "ground",
+            "layer": "light",
+            "evidence": "measured",
+            "yMeasured": 11.4219
+          },
+          {
+            "id": "c-barrel",
+            "asset": "vanilla:clutter/barrel01",
+            "atM": [
+              -1.4655,
+              4.0383
+            ],
+            "yaw": 300.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 11.3907
+          },
+          {
+            "id": "c-barrel2",
+            "asset": "vanilla:clutter/barrel01",
+            "atM": [
+              -0.8988,
+              5.1968
+            ],
+            "yaw": 300.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 11.3877
+          },
+          {
+            "id": "c-cart",
+            "asset": "vanilla:clutter/carts/handcart02",
+            "atM": [
+              3.615,
+              5.1586
+            ],
+            "yaw": 55.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 11.7678
+          },
+          {
+            "id": "c-cart2",
+            "asset": "vanilla:clutter/carts/handcartcrate",
+            "atM": [
+              -4.3999,
+              1.2009
+            ],
+            "yaw": 145.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 11.2751
+          },
+          {
+            "id": "c-crate1",
+            "asset": "vanilla:clutter/common/cratesmall01",
+            "atM": [
+              1.5035,
+              4.1359
+            ],
+            "yaw": 340.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 11.6967
+          },
+          {
+            "id": "c-crate2",
+            "asset": "vanilla:clutter/common/cratesmalllong01",
+            "atM": [
+              2.8267,
+              3.364
+            ],
+            "yaw": 50.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 11.6898
+          },
+          {
+            "id": "c-crate3",
+            "asset": "vanilla:clutter/common/cratesmalllong01",
+            "atM": [
+              -3.001,
+              3.1979
+            ],
+            "yaw": 90.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 11.6898
+          },
+          {
+            "id": "c-crate4",
+            "asset": "vanilla:clutter/common/cratesmall01",
+            "atM": [
+              -0.3965,
+              3.2467
+            ],
+            "yaw": 90.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 11.6967
+          },
+          {
+            "id": "c-sack1",
+            "asset": "vanilla:clutter/containers/miscsacklarge",
+            "atM": [
+              0.0003,
+              4.3996
+            ],
+            "yaw": 140.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 11.5821
+          },
+          {
+            "id": "c-sack2",
+            "asset": "vanilla:clutter/containers/miscsacklargeflat01",
+            "atM": [
+              3.7239,
+              2.15
+            ],
+            "yaw": 330.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 11.775
+          },
+          {
+            "id": "c-sack3",
+            "asset": "vanilla:clutter/containers/miscsacklarge",
+            "atM": [
+              -4.2964,
+              4.4015
+            ],
+            "yaw": 280.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 11.5838
+          },
+          {
+            "id": "h-rack1",
+            "asset": "vanilla:furniture/tanningrackmarker",
+            "atM": [
+              3.3634,
+              -6.0256
+            ],
+            "yaw": 300.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 11.301
+          },
+          {
+            "id": "k-cairn1",
+            "asset": "histtree:skyfall/sleeping tree overhaul/rockcairn01",
+            "atM": [
+              18.8026,
+              11.433
+            ],
+            "yaw": 70.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 11.0833,
+            "pad": {
+              "datumM": 11.154,
+              "apronM": 0.3,
+              "batter": true
+            }
+          },
+          {
+            "id": "k-cairn2",
+            "asset": "histtree:skyfall/sleeping tree overhaul/rockcairn02",
+            "atM": [
+              25.0121,
+              12.4778
+            ],
+            "yaw": 160.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "scale": 0.95,
+            "yMeasured": 10.7769,
+            "pad": {
+              "datumM": 10.785,
+              "apronM": 0.3,
+              "batter": true
+            }
+          },
+          {
+            "id": "k-cairn3",
+            "asset": "histtree:skyfall/sleeping tree overhaul/rockcairn03",
+            "atM": [
+              30.836,
+              10.9905
+            ],
+            "yaw": 35.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 10.063,
+            "pad": {
+              "datumM": 10.017,
+              "apronM": 0.3,
+              "batter": true
+            }
+          },
+          {
+            "id": "k-cairn4",
+            "asset": "histtree:skyfall/sleeping tree overhaul/rockcairn04",
+            "atM": [
+              37.792,
+              11.5424
+            ],
+            "yaw": 355.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 8.7902,
+            "pad": {
+              "datumM": 8.884,
+              "apronM": 0.3,
+              "batter": true
+            }
+          },
+          {
+            "id": "k-candle1",
+            "asset": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+            "atM": [
+              16.8231,
+              13.0615
+            ],
+            "yaw": 300.0,
+            "on": "ground",
+            "layer": "light",
+            "evidence": "measured",
+            "yMeasured": 11.1848,
+            "pad": {
+              "datumM": 11.186,
+              "apronM": 0.3,
+              "batter": true
+            }
+          },
+          {
+            "id": "k-candle2",
+            "asset": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+            "atM": [
+              40.2776,
+              10.4371
+            ],
+            "yaw": 300.0,
+            "on": "ground",
+            "layer": "light",
+            "evidence": "measured",
+            "yMeasured": 8.5818,
+            "pad": {
+              "datumM": 8.583,
+              "apronM": 0.3,
+              "batter": true
+            }
+          }
+        ],
+        "footprint": [
+          [
+            0.311763191,
+            0.62177794
+          ],
+          [
+            0.311786081,
+            0.621780698
+          ],
+          [
+            0.311830863,
+            0.62178679
+          ],
+          [
+            0.31183674,
+            0.621790053
+          ],
+          [
+            0.312080924,
+            0.622295993
+          ],
+          [
+            0.312072712,
+            0.622314045
+          ],
+          [
+            0.311711952,
+            0.622473079
+          ],
+          [
+            0.311683607,
+            0.622465484
+          ],
+          [
+            0.311468568,
+            0.622307441
+          ],
+          [
+            0.311439218,
+            0.622042191
+          ],
+          [
+            0.311446813,
+            0.622013846
+          ]
+        ]
+      },
+      {
+        "id": "parcel.naga-highway-camp-active-north.band-tent",
+        "districtId": "district.naga-highway-camp-active-north.the-bench",
+        "use": "shelter",
+        "buildingFamily": "mudmother-argonian",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "The band's tent has its open side facing north-west. The open side faces the fire.",
+        "why": {
+          "what": "The band's hide tent is where the rank and file sleep in turns.",
+          "whyHere": "The band sleeps close to the fire and the gate.",
+          "whySpot": "The band's tent stands on the east half of the bench. It faces the lieutenant's tent across the fire.",
+          "whyNeighbours": "The band's tent stands across the fire from the lieutenant's tent. The band's own water and stores lie beside it.",
+          "playerPurpose": "The band rests in the tent between turns at the gate.",
+          "microGeography": "The tent stands at the east end of the bench. The ground there starts to fall to the flat."
+        },
+        "assetRef": "mudmother:gv_meshes/argoniannest/argoniantent02",
+        "centreUV": [
+          0.313622831,
+          0.622227696
+        ],
+        "yawDeg": 300.0,
+        "scale": 0.85,
+        "pad": {
+          "datumM": 11.464,
+          "apronM": 1.0,
+          "batter": true
+        },
+        "yMeasured": 11.4898,
+        "assembly": [
+          {
+            "id": "b-band-candle",
+            "asset": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+            "atM": [
+              -2.616,
+              -2.5311
+            ],
+            "yaw": 60.0,
+            "on": "ground",
+            "layer": "light",
+            "evidence": "measured",
+            "yMeasured": 11.4628
+          },
+          {
+            "id": "h-rack2",
+            "asset": "vanilla:furniture/tanningrackmarker",
+            "atM": [
+              0.9586,
+              -13.1397
+            ],
+            "yaw": 130.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 11.3365
+          },
+          {
+            "id": "n-hanging-moss",
+            "asset": "bmv:landscape/plants/florahangingmoss02aaa",
+            "atM": [
+              12.3228,
+              4.1437
+            ],
+            "yaw": 260.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 12.86
+          },
+          {
+            "id": "n-marshweed",
+            "asset": "bmv:landscape/trees/reedsmall2",
+            "atM": [
+              6.3801,
+              1.0507
+            ],
+            "yaw": 90.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 11.19
+          },
+          {
+            "id": "s-barrel",
+            "asset": "vanilla:clutter/barrel01",
+            "atM": [
+              1.3724,
+              3.7571
+            ],
+            "yaw": 60.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 11.4261
+          },
+          {
+            "id": "s-basket",
+            "asset": "mudmother:gv_meshes/argoniannest/basketfull",
+            "atM": [
+              3.4621,
+              1.9964
+            ],
+            "yaw": 60.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 11.4656
+          },
+          {
+            "id": "y-chair1",
+            "asset": "mudmother:gv_meshes/argoniannest/wovenchair01",
+            "atM": [
+              -1.6153,
+              -8.9978
+            ],
+            "yaw": 205.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 11.299
+          },
+          {
+            "id": "y-chair2",
+            "asset": "mudmother:gv_meshes/argoniannest/wovenchair01",
+            "atM": [
+              2.6658,
+              -8.5828
+            ],
+            "yaw": 256.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 11.299
+          },
+          {
+            "id": "y-chop",
+            "asset": "vanilla:clutter/chopping block/choppingblock01",
+            "atM": [
+              2.7301,
+              -5.2713
+            ],
+            "yaw": 60.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 11.291
+          },
+          {
+            "id": "y-fire",
+            "asset": "vanilla:clutter/woodfires/campfire01burning",
+            "atM": [
+              0.3971,
+              -8.3122
+            ],
+            "yaw": 60.0,
+            "on": "ground",
+            "layer": "light",
+            "evidence": "measured",
+            "yMeasured": 11.299,
+            "pad": {
+              "datumM": 11.329,
+              "apronM": 1.0,
+              "batter": true
+            }
+          },
+          {
+            "id": "y-wood",
+            "asset": "vanilla:clutter/firewood/firewoodpilesmall01",
+            "atM": [
+              -0.3751,
+              -6.2497
+            ],
+            "yaw": 150.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 11.263
+          }
+        ],
+        "footprint": [
+          [
+            0.313272531,
+            0.62238485
+          ],
+          [
+            0.313263475,
+            0.622363648
+          ],
+          [
+            0.31324636,
+            0.62232182
+          ],
+          [
+            0.313246247,
+            0.622315099
+          ],
+          [
+            0.313562311,
+            0.621850659
+          ],
+          [
+            0.313582052,
+            0.621848745
+          ],
+          [
+            0.313900159,
+            0.622081656
+          ],
+          [
+            0.313907754,
+            0.622110001
+          ],
+          [
+            0.313878404,
+            0.622375251
+          ],
+          [
+            0.313663365,
+            0.622533294
+          ],
+          [
+            0.31363502,
+            0.622540889
+          ]
+        ]
+      },
+      {
+        "id": "parcel.naga-highway-camp-active-north.watch",
+        "districtId": "district.naga-highway-camp-active-north.the-watch",
+        "use": "watch",
+        "buildingFamily": "vanilla-stockade",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "The watch scaffold stands at the north-west corner of the bench. It stands over the west arm of the track and the bend.",
+        "why": {
+          "what": "The watch scaffold has two stages and stands over the bend. The cane gate stands below it where the track ends.",
+          "whyHere": "From the platform a watcher sees both arms of the track round the pond. The watcher sees them before the walkers see the camp.",
+          "whySpot": "The scaffold stands at the north-west corner of the bench. That corner is the highest ground facing the track.",
+          "whyNeighbours": "The gate stands on the track below the scaffold. The fire lies behind the scaffold.",
+          "playerPurpose": "The scaffold is the lookout. The gate is where the camp stops walkers and cuts their tally.",
+          "microGeography": "The scaffold stands on the north lip of the bench, above the bend of the track."
+        },
+        "assetRef": "composite:works/stockade-watch-2stage",
+        "centreUV": [
+          0.310435745,
+          0.619922145
+        ],
+        "yawDeg": 225.0,
+        "pad": {
+          "datumM": 11.144,
+          "apronM": 0.5,
+          "batter": true
+        },
+        "yMeasured": 10.0999,
+        "assembly": [
+          {
+            "id": "g-gate",
+            "asset": "mudmother:gv_meshes/argoniannest/wovenfence01",
+            "atM": [
+              -18.447,
+              17.5136
+            ],
+            "yaw": 161.16,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 10.9926
+          },
+          {
+            "id": "g-tally",
+            "asset": "kotm:argonia/blackwood/sign",
+            "atM": [
+              -0.9641,
+              1.4926
+            ],
+            "yaw": 135.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "w-watch",
+              "unmined": "reader-approved r3"
+            },
+            "yMeasured": 13.3531
+          },
+          {
+            "id": "g-totem",
+            "asset": "mudmother:gv_meshes/argoniannest/argoniantotem01",
+            "atM": [
+              -14.92,
+              18.0312
+            ],
+            "yaw": 135.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 10.5703
+          },
+          {
+            "id": "g-totem2",
+            "asset": "mudmother:gv_meshes/argoniannest/argoniantotem01",
+            "atM": [
+              -18.1019,
+              18.5262
+            ],
+            "yaw": 155.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 10.6589
+          },
+          {
+            "id": "g-wing1",
+            "asset": "mudmother:gv_meshes/argoniannest/wovenfence01",
+            "atM": [
+              -13.9314,
+              17.8771
+            ],
+            "yaw": 81.16,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 10.8192
+          },
+          {
+            "id": "g-wing2",
+            "asset": "mudmother:gv_meshes/argoniannest/wovenfence01",
+            "atM": [
+              -19.1294,
+              18.6867
+            ],
+            "yaw": 81.16,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 10.9612
+          },
+          {
+            "id": "w-ladder",
+            "asset": "vanilla:dungeons/imperial/door/trapdoorladder01-open",
+            "atM": [
+              2.4876,
+              0.0
+            ],
+            "yaw": 90.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 10.166
+          },
+          {
+            "id": "w-stair",
+            "asset": "vanilla:clutter/stockade/stockadescaffoldstairs01",
+            "atM": [
+              -4.0305,
+              -0.1414
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 10.5559,
+            "pad": {
+              "datumM": 11.18,
+              "apronM": 0.5,
+              "batter": true
+            }
+          }
+        ],
+        "footprint": [
+          [
+            0.310449171,
+            0.620198332
+          ],
+          [
+            0.310438622,
+            0.620203127
+          ],
+          [
+            0.310427114,
+            0.620201209
+          ],
+          [
+            0.310156681,
+            0.619930776
+          ],
+          [
+            0.310154763,
+            0.619919268
+          ],
+          [
+            0.310159558,
+            0.619908719
+          ],
+          [
+            0.310422319,
+            0.619645958
+          ],
+          [
+            0.310432868,
+            0.619641163
+          ],
+          [
+            0.310444376,
+            0.619643081
+          ],
+          [
+            0.310714809,
+            0.619913514
+          ],
+          [
+            0.310716727,
+            0.619925022
+          ],
+          [
+            0.310711932,
+            0.619935571
+          ]
+        ]
+      }
+    ],
+    "doors": [],
+    "routes": [
+      {
+        "id": "route.naga-highway-camp-active-north.camp-path",
+        "kind": "track",
+        "routing": "straight",
+        "widthM": 2.5,
+        "endsAt": [],
+        "why": "A trodden way runs from the bend of the track through the gate and up the bench to the fire. It is the sole way into the camp.",
+        "via": [
+          [
+            0.312714172,
+            0.618362507
+          ],
+          [
+            0.314721358,
+            0.618552376
+          ],
+          [
+            0.31355502,
+            0.620057765
+          ],
+          [
+            0.312876917,
+            0.621359724
+          ]
+        ],
+        "points": [
+          [
+            0.312714172,
+            0.618362507
+          ],
+          [
+            0.314721358,
+            0.618552376
+          ],
+          [
+            0.31355502,
+            0.620057765
+          ],
+          [
+            0.312876917,
+            0.621359724
+          ]
+        ]
+      },
+      {
+        "id": "route.naga-highway-camp-active-north.watch-step",
+        "kind": "footpath",
+        "routing": "straight",
+        "widthM": 1.2,
+        "endsAt": [
+          "parcel.naga-highway-camp-active-north.watch"
+        ],
+        "why": "A few steps lead from the camp path to the watch tower. The tally board hangs under the tower platform.",
+        "via": [
+          [
+            0.3122395,
+            0.621753024
+          ],
+          [
+            0.311385089,
+            0.620600248
+          ],
+          [
+            0.310706986,
+            0.620030641
+          ]
+        ],
+        "points": [
+          [
+            0.3122395,
+            0.621753024
+          ],
+          [
+            0.311385089,
+            0.620600248
+          ],
+          [
+            0.310661924,
+            0.619985579
+          ]
+        ]
+      },
+      {
+        "id": "route.naga-highway-camp-active-north.camp-yard",
+        "kind": "mud",
+        "routing": "straight",
+        "widthM": 5.0,
+        "endsAt": [
+          "parcel.naga-highway-camp-active-north.lieutenants-tent",
+          "parcel.naga-highway-camp-active-north.band-tent"
+        ],
+        "why": "A mud yard runs round the fire. The ground is trodden bare between the lieutenant's tent and the band's tent.",
+        "via": [
+          [
+            0.313351589,
+            0.622037827
+          ],
+          [
+            0.312673486,
+            0.621902207
+          ],
+          [
+            0.311995383,
+            0.621997141
+          ]
+        ],
+        "points": [
+          [
+            0.313408556,
+            0.622076594
+          ],
+          [
+            0.312673486,
+            0.621902207
+          ],
+          [
+            0.311947777,
+            0.622020117
+          ]
+        ]
+      },
+      {
+        "id": "route.naga-highway-camp-active-north.cache-floor",
+        "kind": "track",
+        "routing": "straight",
+        "widthM": 3.0,
+        "endsAt": [
+          "parcel.naga-highway-camp-active-north.lieutenants-tent"
+        ],
+        "why": "The ground behind the lieutenant's tent is churned. The band drags crates and sacks in and out there.",
+        "via": [
+          [
+            0.311602083,
+            0.62258031
+          ],
+          [
+            0.311195221,
+            0.622309069
+          ],
+          [
+            0.3110596,
+            0.621929331
+          ]
+        ],
+        "points": [
+          [
+            0.311683607,
+            0.622465484
+          ],
+          [
+            0.311195221,
+            0.622309069
+          ],
+          [
+            0.3110596,
+            0.621929331
+          ]
+        ]
+      },
+      {
+        "id": "route.naga-highway-camp-active-north.cairn-way",
+        "kind": "footpath",
+        "routing": "straight",
+        "widthM": 1.2,
+        "endsAt": [],
+        "why": "The way out runs south, down the bank past the grave cairns to the flat.",
+        "via": [
+          [
+            0.312673486,
+            0.621956455
+          ],
+          [
+            0.312605676,
+            0.6229058
+          ],
+          [
+            0.312063193,
+            0.624126386
+          ],
+          [
+            0.311900448,
+            0.62494011
+          ],
+          [
+            0.312198814,
+            0.625753834
+          ],
+          [
+            0.312876917,
+            0.626364127
+          ],
+          [
+            0.313215969,
+            0.627516903
+          ]
+        ],
+        "points": [
+          [
+            0.312673486,
+            0.621956455
+          ],
+          [
+            0.312605676,
+            0.6229058
+          ],
+          [
+            0.312063193,
+            0.624126386
+          ],
+          [
+            0.311900448,
+            0.62494011
+          ],
+          [
+            0.312198814,
+            0.625753834
+          ],
+          [
+            0.312876917,
+            0.626364127
+          ],
+          [
+            0.313215969,
+            0.627516903
+          ]
+        ]
+      }
+    ],
+    "canals": [],
+    "boardwalks": [],
+    "fences": [],
+    "docks": [],
+    "landmarks": [],
+    "questSockets": [],
+    "travelServices": [],
+    "occupants": [
+      {
+        "slotId": "n1",
+        "ladderRef": "hostile-d4 boss",
+        "cultureRole": "The lieutenant writes the receipts.",
+        "worksAt": "parcel.naga-highway-camp-active-north.watch",
+        "livesAt": "parcel.naga-highway-camp-active-north.lieutenants-tent",
+        "ownerFaction": "faction.tribeless-naga"
+      },
+      {
+        "slotId": "n2",
+        "ladderRef": "hostile-d4 rank-and-file",
+        "cultureRole": "the band",
+        "worksAt": "parcel.naga-highway-camp-active-north.watch",
+        "livesAt": "parcel.naga-highway-camp-active-north.band-tent",
+        "ownerFaction": "faction.tribeless-naga"
+      }
+    ],
+    "approaches": [
+      {
+        "id": "approach.naga-highway-camp-active-north.from-the-west-arm",
+        "mode": "walk",
+        "firstSeen": "parcel.naga-highway-camp-active-north.watch",
+        "viaUV": [
+          [
+            0.308537055,
+            0.6150398
+          ]
+        ],
+        "sequence": "A walker comes down the west arm of the track past the pond. The smoke shows first. Then the watch scaffold shows over the bend. Then the gate on the track shows, with the tents on the bench behind it.",
+        "wayfinding": "The track bends round the pond to the gate. The camp path climbs from the gate to the fire.",
+        "fromDirection": "north-west"
+      },
+      {
+        "id": "approach.naga-highway-camp-active-north.from-the-east-arm",
+        "mode": "walk",
+        "firstSeen": "parcel.naga-highway-camp-active-north.band-tent",
+        "viaUV": [
+          [
+            0.316674296,
+            0.614361697
+          ]
+        ],
+        "sequence": "A walker comes down the east arm of the track. The pond hides the bend until the last few metres. The band's tent shows on the bench. Then the gate shows across the track's end.",
+        "wayfinding": "The east arm meets the west arm at the gate below the bench.",
+        "fromDirection": "north-east"
+      }
+    ],
+    "networkTerminals": [
+      {
+        "id": "terminal.naga-highway-camp-active-north.bone-road-track",
+        "routeId": "track.road.bone-road-waystation-the-counted-dead",
+        "entryUV": [
+          0.312714172,
+          0.618362507
+        ],
+        "wayId": "route.naga-highway-camp-active-north.camp-path",
+        "kind": "footpath",
+        "why": "The bone-road track's two arms meet at the bend below the bench. The camp path leaves the bend through the gate. The camp path climbs to the fire."
+      }
+    ],
+    "combatSpaces": [
+      {
+        "id": "combat.naga-highway-camp-active-north.the-fire",
+        "aroundIds": [
+          "parcel.naga-highway-camp-active-north.lieutenants-tent",
+          "parcel.naga-highway-camp-active-north.band-tent",
+          "parcel.naga-highway-camp-active-north.watch"
+        ],
+        "clearanceClass": "open",
+        "why": "The trodden ground round the fire lies between the two tents. It is level and open on the bench.",
+        "boundary": [
+          [
+            0.309592475,
+            0.619845333
+          ],
+          [
+            0.309636852,
+            0.620111598
+          ],
+          [
+            0.311051245,
+            0.622673966
+          ],
+          [
+            0.311444599,
+            0.622963061
+          ],
+          [
+            0.311631159,
+            0.62301305
+          ],
+          [
+            0.313697022,
+            0.623085895
+          ],
+          [
+            0.313902373,
+            0.623030871
+          ],
+          [
+            0.314391424,
+            0.622671444
+          ],
+          [
+            0.314458173,
+            0.6220682
+          ],
+          [
+            0.314374728,
+            0.621756778
+          ],
+          [
+            0.313898307,
+            0.621407953
+          ],
+          [
+            0.310655345,
+            0.619128277
+          ],
+          [
+            0.310358933,
+            0.619078875
+          ],
+          [
+            0.310108284,
+            0.619192806
+          ],
+          [
+            0.309706406,
+            0.619594684
+          ]
+        ]
+      }
+    ],
+    "clearance": {
+      "hardClear": [],
+      "thinned": [],
+      "kept": []
+    },
+    "variants": [
+      {
+        "id": "variant.naga-highway-camp-active-north.base",
+        "changedRefs": [],
+        "serviceOverrides": {},
+        "ambience": "camp"
+      }
+    ],
+    "scaleGrounding": {
+      "loreSource": "The catalogue record The North Cut Camp is a camp of scale M1. It holds a lieutenant and a band of tribeless Naga.",
+      "population": "5-8",
+      "households": 0,
+      "buildingsPlanned": 3,
+      "npcsPlanned": 2,
+      "why": "A lieutenant and a band of four to seven fit two hide tents and a watch."
+    },
+    "siting": {
+      "dossier": "world/sources/sites/dossiers/naga-highway-camp-active-north.json",
+      "candidates": [
+        {
+          "id": "candidate.naga-highway-camp-active-north.the-bench",
+          "positionM": [
+            2305.0,
+            4588.0
+          ],
+          "chosen": true,
+          "why": "The candidate is the dry bench over the bend where both arms of the track meet below the pond. Tent pads there need cut and fill of at most 0.14 m."
+        },
+        {
+          "id": "candidate.naga-highway-camp-active-north.plotted-anchor",
+          "positionM": [
+            2305.8,
+            4647.3
+          ],
+          "why": "The plotted anchor lies on the flat south of the bank.",
+          "rejectedBecause": "The anchor lies 88 m south of the track. It sits below the bank and out of sight of the track. Its view covers nothing of the track."
+        }
+      ]
+    },
+    "macroEvidence": [
+      {
+        "sourcePaths": [
+          "assetPlan",
+          "contents",
+          "contents.npcs[n1]",
+          "contents.npcs[n2]",
+          "contents.loot[l1]",
+          "discovery",
+          "eraLayers",
+          "hostility",
+          "ownerFaction",
+          "playerPurpose",
+          "questHooks",
+          "relations",
+          "lootTable",
+          "season",
+          "sitingPrefs",
+          "status",
+          "traversalModes",
+          "underwaterAccess",
+          "vibe",
+          "why"
+        ],
+        "evidenceRefs": [
+          "parcel.naga-highway-camp-active-north.lieutenants-tent",
+          "parcel.naga-highway-camp-active-north.band-tent",
+          "parcel.naga-highway-camp-active-north.watch",
+          "approach.naga-highway-camp-active-north.from-the-west-arm",
+          "approach.naga-highway-camp-active-north.from-the-east-arm"
+        ]
+      }
+    ],
+    "budget": {
+      "maxInstances": 120,
+      "maxUniqueMaterials": 60,
+      "maxTextureMB": 32,
+      "maxColliders": 80
+    },
+    "assetConstraints": [],
+    "proseRefs": [],
+    "authoredOn": {
+      "wbSchemaVersion": 1,
+      "ground": {
+        "centreM": [
+          2306.0,
+          4592.0
+        ],
+        "halfM": 90.0,
+        "chunks": {
+          "chunk_4_9": "626660001e3ce41a9ab7d4eb5b83ac56763d812b3943d7d7be65bb2e9185da7c",
+          "chunk_5_9": "0b01c3268618921e7944fe010e28b81652cd74827ba8e3c2ac9ff195d0482372",
+          "chunk_4_10": "e821ae4710ef5f62a21c25b4ae3d1fe9a692d0fd269322ed14dcd0e16661901a",
+          "chunk_5_10": "a18ce35b7b42a1b27415965ab7a1f1586e047b409b057cd4e8514cb39f66f6f6"
+        },
+        "sha256": "a0bcb52a571eb18d9dca35f6ba43bc4f2881333521c52f67c56ecf3db120545a"
+      },
+      "kits": {
+        "bmv-treehouse-int": "86dca008c53055725d954758715fe76c9a8eda64a3d4a5c9725fd301e288275b",
+        "dungeon-root-v1": "0f822da89efb945a14b066f28cc1ee87932a64ac1a4082ae38f8bcbebf98f1a5",
+        "flora-province-v1": "bbfee60dbf4dc98631f8978ed8f2a43ff2c1b92523298713d2d0b089ff317a7c",
+        "mudmother-hut-int": "872c6e4125eefa7667b32ff443dea30f470b790496cf50cd1ff7d0689deb0080",
+        "route-structures-v1": "fbf04a56edba52d0d7959f7c73c2485d1df38979626c58a0ba4fcf16f2fa6726",
+        "settlement-imperial-v1": "46cb670db988166ae43d7eaa130074a14fa85f5341481087cb0d758932ca3dad",
+        "settlement-mud-v1": "5ca9e8d0a5e7270ec7b492a5c221400550623764b04c8806982db853f9b3985f",
+        "settlement-stilt-v1": "4b28055e39235e34e71274b469bb2234845136e4ca2f5a98ec8e8df974bafc9e",
+        "works-v1": "5cd7583ec52803c0c2653b04c403e94821c60118f75c69deae784b6d58bca112"
+      },
+      "layout": {
+        "path": "world/sources/blueprints/naga-highway-camp-active-north.layout.json",
+        "sha256": "2d39da9271a5932b5fe2c59f5e70e5d6952aaa309f4e53a8722dc6f844546b4a",
+        "uidSha256": {
+          "b-band": "1a6376312fb09dc56a3a8cfc1387ea586b934b696afd22bccb8c9b814d8c1b0e",
+          "b-band-candle": "213e950efc793b75c62d905b812db3d9eed7c071e744c2cf7bb2ff679e01df8f",
+          "b-lieut": "a6e6197f23cf43e38c1442d78b4455164edcc75d51bc1ab9a3c323b5c1e06bab",
+          "b-lieut-board": "0d7da4253d4392fc6b47f4858c99e88276c41cd30a57a238934ad2701f26b0a4",
+          "b-lieut-candle": "fe947dc129269934b52bc39b4dd88fb2506bf128dbcfa504a6c87416ed333274",
+          "c-barrel": "f9a31b072b37f58ce2e5493226f2d9d4a4d8e0f81c8724ff61fa609eccc0a3c9",
+          "c-barrel2": "bf73d1bd065eae33d42cba80944470f236e19aa67b841b81241d56aed665a6bd",
+          "c-cart": "fd79016ca57672de2b0e42c9a76e7070004bcc28a9c7d9c7b6433abf1602faee",
+          "c-cart2": "b4e729d0f2118a98cb81905821fc03be4bf7fba8603d5bccff2d9b6d1e9f5f42",
+          "c-crate1": "cc93cf03a3d31ca458122ede3ed78745e53a0fa3782ea58ef73a8fcd6ec88b52",
+          "c-crate2": "19988677799010837fa311cd24b5414d3f2e9447e2c9915b390ec4331f6e2729",
+          "c-crate3": "82d19fa62f8ff1d887bffc959a18d3e61d1bbdd0ce4976cb495a2a6cd2d0c397",
+          "c-crate4": "ae6d8836215d3ebda35322587dfbfa2b356b004a7cd09288aaf1cda0d5d6725d",
+          "c-sack1": "f0f5ced47861e888d7765991cc4bf88ccf5f724db31d5166cee05e508b0de95e",
+          "c-sack2": "65e256de7206bce8029a2ea4039e2031fda9fb08925fb8a1c8f84cf54cb39667",
+          "c-sack3": "1efdad43050d3f19787bcaa8027edee70d2aeea7ef75ef2fc957d45a7a9a71a6",
+          "g-gate": "becb6282e87cec04dd777db566022717bbf5eec7d9cd4fc87d54bd2171be7980",
+          "g-tally": "79d9fe4a91eef0dfe0c2b79c5e4f13731abe1a059996b0d4c6372b8a763971a9",
+          "g-totem": "2e96c497007b9e53f47a5c4a7936fc83c0c0a8f6d9a8c5aa581cff92a333f69f",
+          "g-totem2": "944bd250a4e37485e080976acfbfe1dd3737e682291085766125d10a624b265c",
+          "g-wing1": "bce130d4504a3588fd649a592df19417f344beae6db22687cdaccec13c04ffe8",
+          "g-wing2": "4558a2b1d1e71a4987e083dccea8a4c25d9496911176108315102f07ac33081f",
+          "h-rack1": "a3b94fcf6a631e83adc22a56012b0bcdeebc3d2fc66661e4ad3ef547256332db",
+          "h-rack2": "c0c6e1e3a1720f6aba0e8c0725700b3267b3ebab785d47225c9b8402439622c7",
+          "k-cairn1": "437256b33ef0bcf0fd544ac79bc710beac9905c6691fa3b9a0f8176f445df812",
+          "k-cairn2": "816c4155b0efa9390c3d9df2cd7e3ee6be4e5d5e3877019d9d2820b02e49d7c8",
+          "k-cairn3": "cb90906b998934541607fbd6e1bc8e116581f1026a1992b0daf1a5d6b20fe3e8",
+          "k-cairn4": "a74b7b98f7a3f1f3d049b39bdff50d8d2979a1c9b34cca9019c625c41256d07f",
+          "k-candle1": "c3b0926916c0d55a2aec793aa660e99e7d89b986bb93048eb7c7df2025331c96",
+          "k-candle2": "42337216db717d0d5cd68f3b308546ae85dba784e59929eaf1a09e584aa0ccdb",
+          "n-hanging-moss": "9f1c96bfdf95b60ced9131bddf6e71c1b4d0e8414450f82af56a60ea68ddc292",
+          "n-marshweed": "90f4f326dc4f61df02d46e52bad7f1a5d8f8ce5d159ebe8873b3fec38d9a75a5",
+          "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.lieutenants-tent.assembly.c-barrel2": "c5448e41cd95d3cac55be839269db8335a5511d556294b3115bfa480008f390c",
+          "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.lieutenants-tent.assembly.c-sack3": "b2e3369dbe2fcb6c9f4bab72520e7b27d3003a0c3ec0c2557d0534a2d4eb5a98",
+          "route.naga-highway-camp-active-north.cache-floor": "c88f12bc50e2b399a8fa4bd507eab79d70528aa2a132ed97d008cf996dfb763d",
+          "route.naga-highway-camp-active-north.cairn-way": "2236338e6d66b3c6d1fa6f2e90b1dbc4c149a68d846f6c03db20feec50d7b030",
+          "route.naga-highway-camp-active-north.camp-path": "2b4c902ae9435a4831285e59e80651543d0350807738bf575e9c0d3de8e336e0",
+          "route.naga-highway-camp-active-north.camp-yard": "6aecb71d2aa4faa24aa4b0442d002cdb1b266a191d1e32023cd33e21d42459d4",
+          "route.naga-highway-camp-active-north.watch-step": "e3b72cbb1e3840024335b7e1dbf541262f9c9371e35c424991b55d9f44762b9d",
+          "s-barrel": "bcace6f492798f7e933fa4129ffb0b65daba1bdd5d30c699a3200e3dcf98bc5b",
+          "s-basket": "0d8cccd7d53004ff878b563c6633dfe94ec40de2d040ba1fd5c36a61dd51e5ba",
+          "w-ladder": "7a8c858cc32bf21519d45623204285c8bc05be617b803e1b53a4f8da21ae6d1c",
+          "w-stair": "9ceb2a5e789693b778ec8e7746342eefb21c4e433913a75f4aa9d4abe72c3b9f",
+          "w-watch": "2e1511ce0ccdaf93147c0416ce6c56da1e4d0cbef701eda2b7fba4b45fa14fc1",
+          "y-chair1": "4f7a0dd50792782639d399e8a1db2a121895f8e9c519d077db8ad9bf1155305e",
+          "y-chair2": "0f9491eb73ea76168685546a31c2fb35c99a113c50047d9e923699ca74fa282e",
+          "y-chop": "1f7bd8653b2450be433e6bcacf97ec31ff9fc624df98082ca7bb59fa51d0ebae",
+          "y-fire": "a1e9019556200658e8d2b187cb2dec6b1d0828002b32b28256b3bc4055089ef9",
+          "y-wood": "05dd35fa1c4aaad16debc4af4c09c4b29670f180736b0a9de66d143debffd358"
+        },
+        "geometrySha256": "25dc19c40911ca8bcff34174857a7170eb8fe88717c1f1f1e33c4f3ff304cfbb"
+      }
+    },
+    "walkRoutes": {
+      "schemaVersion": 1,
+      "cellM": 0.5,
+      "stepM": 0.45,
+      "slopeMaxDeg": 30.0,
+      "wadeMaxM": 0.7,
+      "routes": {
+        "opening:b-lieut": {
+          "points": [
+            [
+              2305.89,
+              10.8,
+              4559.5
+            ],
+            [
+              2305.39,
+              10.79,
+              4560.0
+            ],
+            [
+              2304.89,
+              10.79,
+              4560.5
+            ],
+            [
+              2304.39,
+              10.82,
+              4561.0
+            ],
+            [
+              2303.89,
+              10.84,
+              4561.5
+            ],
+            [
+              2303.39,
+              10.87,
+              4562.0
+            ],
+            [
+              2302.89,
+              10.89,
+              4562.5
+            ],
+            [
+              2301.89,
+              10.91,
+              4563.5
+            ],
+            [
+              2301.39,
+              10.93,
+              4564.0
+            ],
+            [
+              2301.39,
+              10.93,
+              4564.5
+            ],
+            [
+              2301.39,
+              10.99,
+              4567.5
+            ],
+            [
+              2301.39,
+              11.01,
+              4568.0
+            ],
+            [
+              2301.39,
+              11.03,
+              4569.0
+            ],
+            [
+              2301.39,
+              11.05,
+              4569.5
+            ],
+            [
+              2301.39,
+              11.06,
+              4570.0
+            ],
+            [
+              2301.39,
+              11.24,
+              4574.5
+            ],
+            [
+              2301.39,
+              11.25,
+              4575.0
+            ],
+            [
+              2301.39,
+              11.29,
+              4576.0
+            ],
+            [
+              2301.39,
+              11.32,
+              4577.5
+            ],
+            [
+              2301.39,
+              11.34,
+              4578.0
+            ],
+            [
+              2301.39,
+              11.35,
+              4578.5
+            ],
+            [
+              2301.39,
+              11.35,
+              4579.0
+            ],
+            [
+              2301.39,
+              11.37,
+              4580.0
+            ],
+            [
+              2301.39,
+              11.37,
+              4580.5
+            ],
+            [
+              2300.89,
+              11.39,
+              4581.0
+            ],
+            [
+              2300.89,
+              11.39,
+              4582.0
+            ],
+            [
+              2300.39,
+              11.39,
+              4582.5
+            ],
+            [
+              2299.89,
+              11.4,
+              4583.0
+            ],
+            [
+              2299.39,
+              11.4,
+              4583.5
+            ]
+          ],
+          "routeM": 26.7,
+          "steepestDeg": 2.3,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0,
+          "parcelId": "parcel.naga-highway-camp-active-north.lieutenants-tent"
+        },
+        "opening:b-band": {
+          "points": [
+            [
+              2305.89,
+              10.8,
+              4559.5
+            ],
+            [
+              2305.89,
+              10.76,
+              4560.5
+            ],
+            [
+              2305.89,
+              10.75,
+              4561.0
+            ],
+            [
+              2305.89,
+              10.75,
+              4561.5
+            ],
+            [
+              2305.89,
+              10.73,
+              4562.0
+            ],
+            [
+              2305.89,
+              10.73,
+              4562.5
+            ],
+            [
+              2305.89,
+              10.74,
+              4563.0
+            ],
+            [
+              2305.89,
+              10.74,
+              4564.0
+            ],
+            [
+              2305.89,
+              10.79,
+              4566.5
+            ],
+            [
+              2305.89,
+              10.83,
+              4567.5
+            ],
+            [
+              2305.89,
+              10.84,
+              4568.0
+            ],
+            [
+              2305.89,
+              10.92,
+              4570.0
+            ],
+            [
+              2305.89,
+              10.95,
+              4570.5
+            ],
+            [
+              2305.89,
+              10.96,
+              4571.0
+            ],
+            [
+              2305.89,
+              11.04,
+              4573.0
+            ],
+            [
+              2305.89,
+              11.05,
+              4573.5
+            ],
+            [
+              2305.89,
+              11.11,
+              4575.0
+            ],
+            [
+              2305.89,
+              11.13,
+              4576.0
+            ],
+            [
+              2305.89,
+              11.17,
+              4577.0
+            ],
+            [
+              2305.89,
+              11.18,
+              4577.5
+            ],
+            [
+              2305.89,
+              11.2,
+              4578.0
+            ],
+            [
+              2308.39,
+              11.25,
+              4580.5
+            ],
+            [
+              2308.89,
+              11.27,
+              4581.0
+            ],
+            [
+              2309.39,
+              11.28,
+              4581.5
+            ],
+            [
+              2309.89,
+              11.3,
+              4582.0
+            ],
+            [
+              2310.39,
+              11.33,
+              4582.5
+            ],
+            [
+              2311.39,
+              11.43,
+              4583.5
+            ],
+            [
+              2311.89,
+              11.43,
+              4584.0
+            ]
+          ],
+          "routeM": 27.0,
+          "steepestDeg": 4.3,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0,
+          "parcelId": "parcel.naga-highway-camp-active-north.band-tent"
+        },
+        "opening:w-watch": {
+          "points": [
+            [
+              2305.89,
+              10.8,
+              4559.5
+            ],
+            [
+              2305.39,
+              10.8,
+              4559.5
+            ],
+            [
+              2304.89,
+              10.81,
+              4559.5
+            ],
+            [
+              2304.39,
+              10.82,
+              4560.0
+            ],
+            [
+              2303.89,
+              10.84,
+              4560.5
+            ],
+            [
+              2303.39,
+              10.87,
+              4561.0
+            ],
+            [
+              2302.89,
+              10.89,
+              4561.5
+            ],
+            [
+              2299.89,
+              10.95,
+              4564.5
+            ],
+            [
+              2299.39,
+              10.96,
+              4564.5
+            ],
+            [
+              2298.89,
+              10.96,
+              4564.5
+            ],
+            [
+              2297.39,
+              10.99,
+              4564.5
+            ],
+            [
+              2296.89,
+              10.99,
+              4565.0
+            ],
+            [
+              2296.39,
+              11.0,
+              4565.5
+            ],
+            [
+              2295.89,
+              11.0,
+              4566.0
+            ],
+            [
+              2295.39,
+              11.01,
+              4566.5
+            ],
+            [
+              2294.89,
+              11.03,
+              4567.0
+            ],
+            [
+              2294.39,
+              11.04,
+              4567.5
+            ],
+            [
+              2293.39,
+              11.08,
+              4568.5
+            ],
+            [
+              2292.89,
+              11.11,
+              4569.0
+            ],
+            [
+              2292.39,
+              11.12,
+              4569.5
+            ],
+            [
+              2291.89,
+              11.12,
+              4570.0
+            ]
+          ],
+          "routeM": 18.35,
+          "steepestDeg": 2.4,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0,
+          "parcelId": "parcel.naga-highway-camp-active-north.watch"
+        },
+        "socket:socket.naga-highway-camp-active-north.idle-n1-tally": {
+          "points": [
+            [
+              2305.89,
+              10.8,
+              4559.5
+            ],
+            [
+              2305.39,
+              10.8,
+              4559.5
+            ],
+            [
+              2304.89,
+              10.81,
+              4559.5
+            ],
+            [
+              2304.39,
+              10.82,
+              4560.0
+            ],
+            [
+              2303.89,
+              10.84,
+              4560.5
+            ],
+            [
+              2303.39,
+              10.87,
+              4561.0
+            ],
+            [
+              2302.89,
+              10.89,
+              4561.5
+            ],
+            [
+              2299.39,
+              10.96,
+              4565.0
+            ],
+            [
+              2298.39,
+              10.96,
+              4566.0
+            ],
+            [
+              2297.89,
+              10.95,
+              4566.5
+            ],
+            [
+              2297.39,
+              10.95,
+              4567.0
+            ],
+            [
+              2295.89,
+              10.98,
+              4568.5
+            ],
+            [
+              2295.39,
+              11.0,
+              4569.0
+            ],
+            [
+              2294.39,
+              11.06,
+              4570.0
+            ],
+            [
+              2293.89,
+              11.1,
+              4570.5
+            ],
+            [
+              2293.39,
+              11.12,
+              4571.0
+            ]
+          ],
+          "routeM": 17.27,
+          "steepestDeg": 3.5,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.naga-highway-camp-active-north.idle-n1-home": {
+          "points": [
+            [
+              2305.89,
+              10.8,
+              4559.5
+            ],
+            [
+              2305.39,
+              10.79,
+              4560.0
+            ],
+            [
+              2304.89,
+              10.79,
+              4560.5
+            ],
+            [
+              2304.89,
+              10.79,
+              4561.0
+            ],
+            [
+              2304.39,
+              10.81,
+              4561.5
+            ],
+            [
+              2303.89,
+              10.84,
+              4562.0
+            ],
+            [
+              2303.89,
+              10.84,
+              4563.5
+            ],
+            [
+              2303.89,
+              10.86,
+              4564.5
+            ],
+            [
+              2303.89,
+              10.88,
+              4565.0
+            ],
+            [
+              2303.89,
+              10.91,
+              4566.5
+            ],
+            [
+              2303.89,
+              10.93,
+              4567.0
+            ],
+            [
+              2303.89,
+              10.98,
+              4569.5
+            ],
+            [
+              2303.89,
+              11.04,
+              4571.0
+            ],
+            [
+              2303.89,
+              11.07,
+              4571.5
+            ],
+            [
+              2303.89,
+              11.13,
+              4573.0
+            ],
+            [
+              2303.89,
+              11.14,
+              4573.5
+            ],
+            [
+              2303.89,
+              11.18,
+              4574.5
+            ],
+            [
+              2303.89,
+              11.25,
+              4578.0
+            ],
+            [
+              2303.89,
+              11.27,
+              4578.5
+            ],
+            [
+              2303.89,
+              11.3,
+              4580.0
+            ],
+            [
+              2303.89,
+              11.3,
+              4581.5
+            ],
+            [
+              2303.39,
+              11.3,
+              4582.0
+            ],
+            [
+              2302.89,
+              11.31,
+              4582.5
+            ],
+            [
+              2302.39,
+              11.31,
+              4583.0
+            ],
+            [
+              2301.89,
+              11.32,
+              4583.5
+            ],
+            [
+              2301.39,
+              11.32,
+              4584.0
+            ],
+            [
+              2301.39,
+              11.32,
+              4584.5
+            ],
+            [
+              2301.39,
+              11.34,
+              4585.5
+            ]
+          ],
+          "routeM": 27.87,
+          "steepestDeg": 2.7,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.naga-highway-camp-active-north.npc-n1": {
+          "points": [
+            [
+              2305.89,
+              10.8,
+              4559.5
+            ],
+            [
+              2305.39,
+              10.79,
+              4560.0
+            ],
+            [
+              2304.89,
+              10.79,
+              4560.5
+            ],
+            [
+              2304.89,
+              10.79,
+              4561.0
+            ],
+            [
+              2304.39,
+              10.81,
+              4561.5
+            ],
+            [
+              2303.89,
+              10.84,
+              4562.0
+            ],
+            [
+              2303.89,
+              10.84,
+              4563.5
+            ],
+            [
+              2303.89,
+              10.86,
+              4564.5
+            ],
+            [
+              2303.89,
+              10.88,
+              4565.0
+            ],
+            [
+              2303.89,
+              10.91,
+              4566.5
+            ],
+            [
+              2303.89,
+              10.93,
+              4567.0
+            ],
+            [
+              2303.89,
+              10.98,
+              4569.5
+            ],
+            [
+              2303.89,
+              11.04,
+              4571.0
+            ],
+            [
+              2303.89,
+              11.07,
+              4571.5
+            ],
+            [
+              2303.89,
+              11.13,
+              4573.0
+            ],
+            [
+              2303.89,
+              11.14,
+              4573.5
+            ],
+            [
+              2303.89,
+              11.18,
+              4574.5
+            ],
+            [
+              2303.89,
+              11.25,
+              4578.0
+            ],
+            [
+              2303.89,
+              11.27,
+              4578.5
+            ],
+            [
+              2303.89,
+              11.3,
+              4580.0
+            ],
+            [
+              2303.89,
+              11.3,
+              4581.5
+            ],
+            [
+              2303.39,
+              11.3,
+              4582.0
+            ],
+            [
+              2302.89,
+              11.31,
+              4582.5
+            ],
+            [
+              2302.39,
+              11.31,
+              4583.0
+            ],
+            [
+              2301.89,
+              11.32,
+              4583.5
+            ],
+            [
+              2301.39,
+              11.32,
+              4584.0
+            ],
+            [
+              2301.39,
+              11.32,
+              4584.5
+            ],
+            [
+              2301.39,
+              11.33,
+              4585.0
+            ]
+          ],
+          "routeM": 27.37,
+          "steepestDeg": 2.7,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.naga-highway-camp-active-north.idle-n2-gate": {
+          "points": [
+            [
+              2305.89,
+              10.8,
+              4559.5
+            ],
+            [
+              2305.89,
+              10.76,
+              4560.5
+            ],
+            [
+              2306.89,
+              10.7,
+              4561.5
+            ],
+            [
+              2307.89,
+              10.66,
+              4562.5
+            ],
+            [
+              2308.89,
+              10.6,
+              4563.5
+            ],
+            [
+              2309.39,
+              10.58,
+              4564.0
+            ],
+            [
+              2309.89,
+              10.57,
+              4564.5
+            ],
+            [
+              2310.39,
+              10.55,
+              4565.0
+            ],
+            [
+              2310.89,
+              10.57,
+              4565.5
+            ],
+            [
+              2311.39,
+              10.58,
+              4566.0
+            ],
+            [
+              2311.39,
+              10.6,
+              4566.5
+            ],
+            [
+              2311.89,
+              10.63,
+              4567.0
+            ],
+            [
+              2312.39,
+              10.64,
+              4567.5
+            ],
+            [
+              2312.89,
+              10.67,
+              4568.0
+            ],
+            [
+              2313.39,
+              10.69,
+              4568.5
+            ]
+          ],
+          "routeM": 12.11,
+          "steepestDeg": 2.4,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.136
+        },
+        "socket:socket.naga-highway-camp-active-north.idle-n2-cook": {
+          "points": [
+            [
+              2305.89,
+              10.8,
+              4559.5
+            ],
+            [
+              2305.39,
+              10.79,
+              4560.0
+            ],
+            [
+              2305.39,
+              10.77,
+              4560.5
+            ],
+            [
+              2305.39,
+              10.77,
+              4561.0
+            ],
+            [
+              2305.39,
+              10.76,
+              4561.5
+            ],
+            [
+              2305.39,
+              10.76,
+              4562.0
+            ],
+            [
+              2305.39,
+              10.75,
+              4562.5
+            ],
+            [
+              2305.39,
+              10.77,
+              4563.5
+            ],
+            [
+              2305.39,
+              10.77,
+              4564.0
+            ],
+            [
+              2305.39,
+              10.79,
+              4565.0
+            ],
+            [
+              2305.39,
+              10.81,
+              4565.5
+            ],
+            [
+              2305.39,
+              10.85,
+              4567.5
+            ],
+            [
+              2305.39,
+              10.87,
+              4568.0
+            ],
+            [
+              2305.39,
+              10.88,
+              4568.5
+            ],
+            [
+              2305.39,
+              10.94,
+              4570.0
+            ],
+            [
+              2305.39,
+              10.97,
+              4570.5
+            ],
+            [
+              2305.39,
+              11.03,
+              4572.0
+            ],
+            [
+              2305.39,
+              11.04,
+              4572.5
+            ],
+            [
+              2305.39,
+              11.08,
+              4573.5
+            ],
+            [
+              2305.39,
+              11.09,
+              4574.0
+            ],
+            [
+              2305.39,
+              11.13,
+              4575.0
+            ],
+            [
+              2305.39,
+              11.15,
+              4576.0
+            ],
+            [
+              2305.39,
+              11.17,
+              4576.5
+            ],
+            [
+              2305.39,
+              11.18,
+              4577.0
+            ],
+            [
+              2305.39,
+              11.22,
+              4578.0
+            ],
+            [
+              2305.39,
+              11.25,
+              4578.5
+            ],
+            [
+              2305.39,
+              11.29,
+              4579.5
+            ],
+            [
+              2305.39,
+              11.3,
+              4580.0
+            ],
+            [
+              2305.39,
+              11.3,
+              4581.0
+            ]
+          ],
+          "routeM": 21.72,
+          "steepestDeg": 3.3,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.naga-highway-camp-active-north.idle-n2-sit": {
+          "points": [
+            [
+              2305.89,
+              10.8,
+              4559.5
+            ],
+            [
+              2305.39,
+              10.79,
+              4560.0
+            ],
+            [
+              2304.89,
+              10.79,
+              4560.5
+            ],
+            [
+              2304.89,
+              10.79,
+              4561.0
+            ],
+            [
+              2304.39,
+              10.81,
+              4561.5
+            ],
+            [
+              2303.89,
+              10.84,
+              4562.0
+            ],
+            [
+              2303.89,
+              10.84,
+              4563.5
+            ],
+            [
+              2303.89,
+              10.86,
+              4564.5
+            ],
+            [
+              2303.89,
+              10.88,
+              4565.0
+            ],
+            [
+              2303.89,
+              10.91,
+              4566.5
+            ],
+            [
+              2303.89,
+              10.93,
+              4567.0
+            ],
+            [
+              2303.89,
+              10.98,
+              4569.5
+            ],
+            [
+              2303.89,
+              11.04,
+              4571.0
+            ],
+            [
+              2303.89,
+              11.07,
+              4571.5
+            ],
+            [
+              2303.89,
+              11.13,
+              4573.0
+            ],
+            [
+              2303.89,
+              11.14,
+              4573.5
+            ],
+            [
+              2303.89,
+              11.18,
+              4574.5
+            ],
+            [
+              2303.89,
+              11.25,
+              4578.0
+            ],
+            [
+              2303.89,
+              11.27,
+              4578.5
+            ],
+            [
+              2303.89,
+              11.3,
+              4580.0
+            ],
+            [
+              2303.89,
+              11.3,
+              4583.5
+            ]
+          ],
+          "routeM": 24.84,
+          "steepestDeg": 2.7,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.naga-highway-camp-active-north.idle-n2-home": {
+          "points": [
+            [
+              2305.89,
+              10.8,
+              4559.5
+            ],
+            [
+              2305.89,
+              10.76,
+              4560.5
+            ],
+            [
+              2305.89,
+              10.75,
+              4561.0
+            ],
+            [
+              2305.89,
+              10.75,
+              4561.5
+            ],
+            [
+              2305.89,
+              10.73,
+              4562.0
+            ],
+            [
+              2305.89,
+              10.73,
+              4562.5
+            ],
+            [
+              2305.89,
+              10.74,
+              4563.0
+            ],
+            [
+              2305.89,
+              10.74,
+              4564.0
+            ],
+            [
+              2305.89,
+              10.79,
+              4566.5
+            ],
+            [
+              2305.89,
+              10.83,
+              4567.5
+            ],
+            [
+              2305.89,
+              10.84,
+              4568.0
+            ],
+            [
+              2305.89,
+              10.92,
+              4570.0
+            ],
+            [
+              2305.89,
+              10.95,
+              4570.5
+            ],
+            [
+              2305.89,
+              10.96,
+              4571.0
+            ],
+            [
+              2305.89,
+              11.04,
+              4573.0
+            ],
+            [
+              2305.89,
+              11.05,
+              4573.5
+            ],
+            [
+              2305.89,
+              11.11,
+              4575.0
+            ],
+            [
+              2305.89,
+              11.13,
+              4576.0
+            ],
+            [
+              2305.89,
+              11.17,
+              4577.0
+            ],
+            [
+              2305.89,
+              11.18,
+              4577.5
+            ],
+            [
+              2305.89,
+              11.2,
+              4578.0
+            ],
+            [
+              2308.39,
+              11.25,
+              4580.5
+            ],
+            [
+              2308.39,
+              11.28,
+              4581.0
+            ],
+            [
+              2308.39,
+              11.3,
+              4582.0
+            ],
+            [
+              2308.39,
+              11.3,
+              4583.5
+            ],
+            [
+              2308.89,
+              11.31,
+              4584.0
+            ],
+            [
+              2309.89,
+              11.41,
+              4585.0
+            ]
+          ],
+          "routeM": 27.17,
+          "steepestDeg": 4.1,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.naga-highway-camp-active-north.npc-n2": {
+          "points": [
+            [
+              2305.89,
+              10.8,
+              4559.5
+            ],
+            [
+              2305.89,
+              10.76,
+              4560.5
+            ],
+            [
+              2305.89,
+              10.75,
+              4561.0
+            ],
+            [
+              2305.89,
+              10.75,
+              4561.5
+            ],
+            [
+              2305.89,
+              10.73,
+              4562.0
+            ],
+            [
+              2305.89,
+              10.73,
+              4562.5
+            ],
+            [
+              2305.89,
+              10.74,
+              4563.0
+            ],
+            [
+              2305.89,
+              10.74,
+              4564.0
+            ],
+            [
+              2305.89,
+              10.79,
+              4566.5
+            ],
+            [
+              2305.89,
+              10.83,
+              4567.5
+            ],
+            [
+              2305.89,
+              10.84,
+              4568.0
+            ],
+            [
+              2305.89,
+              10.92,
+              4570.0
+            ],
+            [
+              2305.89,
+              10.95,
+              4570.5
+            ],
+            [
+              2305.89,
+              10.96,
+              4571.0
+            ],
+            [
+              2305.89,
+              11.04,
+              4573.0
+            ],
+            [
+              2305.89,
+              11.05,
+              4573.5
+            ],
+            [
+              2305.89,
+              11.11,
+              4575.0
+            ],
+            [
+              2305.89,
+              11.13,
+              4576.0
+            ],
+            [
+              2305.89,
+              11.17,
+              4577.0
+            ],
+            [
+              2305.89,
+              11.18,
+              4577.5
+            ],
+            [
+              2305.89,
+              11.2,
+              4578.0
+            ],
+            [
+              2308.39,
+              11.25,
+              4580.5
+            ],
+            [
+              2308.39,
+              11.28,
+              4581.0
+            ],
+            [
+              2308.39,
+              11.3,
+              4582.0
+            ],
+            [
+              2308.39,
+              11.3,
+              4583.5
+            ],
+            [
+              2308.89,
+              11.31,
+              4584.0
+            ],
+            [
+              2309.39,
+              11.36,
+              4584.5
+            ],
+            [
+              2309.39,
+              11.4,
+              4585.5
+            ]
+          ],
+          "routeM": 27.46,
+          "steepestDeg": 3.6,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.naga-highway-camp-active-north.container-cache-crate": {
+          "points": [
+            [
+              2305.89,
+              10.8,
+              4559.5
+            ],
+            [
+              2305.39,
+              10.79,
+              4560.0
+            ],
+            [
+              2304.89,
+              10.79,
+              4560.5
+            ],
+            [
+              2304.89,
+              10.79,
+              4561.0
+            ],
+            [
+              2304.39,
+              10.81,
+              4561.5
+            ],
+            [
+              2303.89,
+              10.84,
+              4562.0
+            ],
+            [
+              2303.89,
+              10.84,
+              4563.5
+            ],
+            [
+              2303.89,
+              10.86,
+              4564.5
+            ],
+            [
+              2303.89,
+              10.88,
+              4565.0
+            ],
+            [
+              2303.89,
+              10.91,
+              4566.5
+            ],
+            [
+              2303.89,
+              10.93,
+              4567.0
+            ],
+            [
+              2303.89,
+              10.98,
+              4569.5
+            ],
+            [
+              2303.89,
+              11.04,
+              4571.0
+            ],
+            [
+              2303.89,
+              11.07,
+              4571.5
+            ],
+            [
+              2303.89,
+              11.13,
+              4573.0
+            ],
+            [
+              2303.89,
+              11.14,
+              4573.5
+            ],
+            [
+              2303.89,
+              11.18,
+              4574.5
+            ],
+            [
+              2303.89,
+              11.25,
+              4578.0
+            ],
+            [
+              2303.89,
+              11.27,
+              4578.5
+            ],
+            [
+              2303.89,
+              11.3,
+              4580.0
+            ],
+            [
+              2303.89,
+              11.3,
+              4583.5
+            ],
+            [
+              2302.39,
+              11.3,
+              4585.0
+            ],
+            [
+              2302.39,
+              11.31,
+              4585.5
+            ],
+            [
+              2302.39,
+              11.37,
+              4587.0
+            ],
+            [
+              2302.39,
+              11.39,
+              4588.0
+            ],
+            [
+              2301.89,
+              11.4,
+              4588.5
+            ],
+            [
+              2300.89,
+              11.4,
+              4589.5
+            ],
+            [
+              2300.39,
+              11.4,
+              4589.5
+            ],
+            [
+              2298.89,
+              11.4,
+              4591.0
+            ]
+          ],
+          "routeM": 34.7,
+          "steepestDeg": 2.7,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.naga-highway-camp-active-north.container-cache-crate-small": {
+          "points": [
+            [
+              2305.89,
+              10.8,
+              4559.5
+            ],
+            [
+              2305.39,
+              10.79,
+              4560.0
+            ],
+            [
+              2304.89,
+              10.79,
+              4560.5
+            ],
+            [
+              2304.89,
+              10.79,
+              4561.0
+            ],
+            [
+              2304.39,
+              10.81,
+              4561.5
+            ],
+            [
+              2303.89,
+              10.84,
+              4562.0
+            ],
+            [
+              2303.89,
+              10.84,
+              4563.5
+            ],
+            [
+              2303.89,
+              10.86,
+              4564.5
+            ],
+            [
+              2303.89,
+              10.88,
+              4565.0
+            ],
+            [
+              2303.89,
+              10.91,
+              4566.5
+            ],
+            [
+              2303.89,
+              10.93,
+              4567.0
+            ],
+            [
+              2303.89,
+              10.98,
+              4569.5
+            ],
+            [
+              2303.89,
+              11.04,
+              4571.0
+            ],
+            [
+              2303.89,
+              11.07,
+              4571.5
+            ],
+            [
+              2303.89,
+              11.13,
+              4573.0
+            ],
+            [
+              2303.89,
+              11.14,
+              4573.5
+            ],
+            [
+              2303.89,
+              11.18,
+              4574.5
+            ],
+            [
+              2303.89,
+              11.25,
+              4578.0
+            ],
+            [
+              2303.89,
+              11.27,
+              4578.5
+            ],
+            [
+              2303.89,
+              11.3,
+              4580.0
+            ],
+            [
+              2303.89,
+              11.3,
+              4583.5
+            ],
+            [
+              2302.39,
+              11.3,
+              4585.0
+            ],
+            [
+              2302.39,
+              11.31,
+              4585.5
+            ],
+            [
+              2302.39,
+              11.37,
+              4587.0
+            ],
+            [
+              2302.39,
+              11.39,
+              4588.0
+            ],
+            [
+              2301.89,
+              11.4,
+              4588.5
+            ],
+            [
+              2300.89,
+              11.4,
+              4589.5
+            ],
+            [
+              2299.89,
+              11.4,
+              4589.5
+            ],
+            [
+              2299.39,
+              11.4,
+              4590.0
+            ],
+            [
+              2298.89,
+              11.4,
+              4590.0
+            ],
+            [
+              2298.39,
+              11.4,
+              4590.5
+            ],
+            [
+              2297.39,
+              11.4,
+              4590.5
+            ]
+          ],
+          "routeM": 35.99,
+          "steepestDeg": 2.7,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.naga-highway-camp-active-north.container-cache-sack": {
+          "points": [
+            [
+              2305.89,
+              10.8,
+              4559.5
+            ],
+            [
+              2305.39,
+              10.79,
+              4560.0
+            ],
+            [
+              2304.89,
+              10.79,
+              4560.5
+            ],
+            [
+              2304.39,
+              10.82,
+              4561.0
+            ],
+            [
+              2303.89,
+              10.84,
+              4561.5
+            ],
+            [
+              2303.39,
+              10.87,
+              4562.0
+            ],
+            [
+              2302.89,
+              10.89,
+              4562.5
+            ],
+            [
+              2301.89,
+              10.91,
+              4563.5
+            ],
+            [
+              2301.39,
+              10.93,
+              4564.0
+            ],
+            [
+              2301.39,
+              10.93,
+              4564.5
+            ],
+            [
+              2301.39,
+              10.99,
+              4567.5
+            ],
+            [
+              2301.39,
+              11.01,
+              4568.0
+            ],
+            [
+              2300.89,
+              11.02,
+              4568.5
+            ],
+            [
+              2300.39,
+              11.04,
+              4569.0
+            ],
+            [
+              2299.89,
+              11.05,
+              4569.5
+            ],
+            [
+              2299.39,
+              11.07,
+              4570.0
+            ],
+            [
+              2298.89,
+              11.08,
+              4570.5
+            ],
+            [
+              2298.39,
+              11.1,
+              4571.0
+            ],
+            [
+              2296.89,
+              11.13,
+              4572.5
+            ],
+            [
+              2296.89,
+              11.14,
+              4573.0
+            ],
+            [
+              2296.89,
+              11.16,
+              4573.5
+            ],
+            [
+              2296.89,
+              11.17,
+              4574.0
+            ],
+            [
+              2296.89,
+              11.19,
+              4574.5
+            ],
+            [
+              2296.89,
+              11.2,
+              4575.0
+            ],
+            [
+              2296.39,
+              11.21,
+              4575.5
+            ],
+            [
+              2295.89,
+              11.23,
+              4576.0
+            ],
+            [
+              2295.39,
+              11.24,
+              4576.5
+            ],
+            [
+              2294.89,
+              11.26,
+              4577.0
+            ],
+            [
+              2294.39,
+              11.27,
+              4577.5
+            ],
+            [
+              2293.89,
+              11.29,
+              4578.0
+            ],
+            [
+              2292.89,
+              11.31,
+              4579.0
+            ],
+            [
+              2292.39,
+              11.34,
+              4579.5
+            ],
+            [
+              2291.89,
+              11.35,
+              4580.0
+            ],
+            [
+              2291.89,
+              11.37,
+              4581.0
+            ],
+            [
+              2291.89,
+              11.37,
+              4582.0
+            ],
+            [
+              2291.89,
+              11.38,
+              4582.5
+            ],
+            [
+              2291.89,
+              11.38,
+              4583.0
+            ],
+            [
+              2291.89,
+              11.39,
+              4583.5
+            ],
+            [
+              2291.89,
+              11.39,
+              4584.0
+            ],
+            [
+              2291.89,
+              11.4,
+              4584.5
+            ],
+            [
+              2291.89,
+              11.4,
+              4586.5
+            ],
+            [
+              2292.39,
+              11.4,
+              4587.0
+            ],
+            [
+              2292.39,
+              11.39,
+              4587.5
+            ],
+            [
+              2292.39,
+              11.39,
+              4588.0
+            ],
+            [
+              2292.39,
+              11.37,
+              4589.0
+            ],
+            [
+              2292.39,
+              11.35,
+              4589.5
+            ],
+            [
+              2292.89,
+              11.37,
+              4590.0
+            ],
+            [
+              2293.39,
+              11.38,
+              4590.0
+            ]
+          ],
+          "routeM": 37.22,
+          "steepestDeg": 2.0,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.naga-highway-camp-active-north.container-cache-sack-flat": {
+          "points": [
+            [
+              2305.89,
+              10.8,
+              4559.5
+            ],
+            [
+              2305.39,
+              10.79,
+              4560.0
+            ],
+            [
+              2304.89,
+              10.79,
+              4560.5
+            ],
+            [
+              2304.89,
+              10.79,
+              4561.0
+            ],
+            [
+              2304.39,
+              10.81,
+              4561.5
+            ],
+            [
+              2303.89,
+              10.84,
+              4562.0
+            ],
+            [
+              2303.89,
+              10.84,
+              4563.5
+            ],
+            [
+              2303.89,
+              10.86,
+              4564.5
+            ],
+            [
+              2303.89,
+              10.88,
+              4565.0
+            ],
+            [
+              2303.89,
+              10.91,
+              4566.5
+            ],
+            [
+              2303.89,
+              10.93,
+              4567.0
+            ],
+            [
+              2303.89,
+              10.98,
+              4569.5
+            ],
+            [
+              2303.89,
+              11.04,
+              4571.0
+            ],
+            [
+              2303.89,
+              11.07,
+              4571.5
+            ],
+            [
+              2303.89,
+              11.13,
+              4573.0
+            ],
+            [
+              2303.89,
+              11.14,
+              4573.5
+            ],
+            [
+              2303.89,
+              11.18,
+              4574.5
+            ],
+            [
+              2303.89,
+              11.25,
+              4578.0
+            ],
+            [
+              2303.89,
+              11.27,
+              4578.5
+            ],
+            [
+              2303.89,
+              11.3,
+              4580.0
+            ],
+            [
+              2303.89,
+              11.3,
+              4583.5
+            ],
+            [
+              2302.39,
+              11.3,
+              4585.0
+            ],
+            [
+              2302.39,
+              11.31,
+              4585.5
+            ],
+            [
+              2302.39,
+              11.37,
+              4587.0
+            ],
+            [
+              2302.39,
+              11.39,
+              4588.0
+            ],
+            [
+              2301.89,
+              11.4,
+              4588.5
+            ],
+            [
+              2300.89,
+              11.4,
+              4589.5
+            ],
+            [
+              2300.39,
+              11.4,
+              4589.5
+            ],
+            [
+              2299.39,
+              11.4,
+              4590.5
+            ]
+          ],
+          "routeM": 33.99,
+          "steepestDeg": 2.7,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.naga-highway-camp-active-north.container-tar": {
+          "points": [
+            [
+              2305.89,
+              10.8,
+              4559.5
+            ],
+            [
+              2305.39,
+              10.79,
+              4560.0
+            ],
+            [
+              2304.89,
+              10.79,
+              4560.5
+            ],
+            [
+              2304.39,
+              10.82,
+              4561.0
+            ],
+            [
+              2303.89,
+              10.84,
+              4561.5
+            ],
+            [
+              2303.39,
+              10.87,
+              4562.0
+            ],
+            [
+              2302.89,
+              10.89,
+              4562.5
+            ],
+            [
+              2301.89,
+              10.91,
+              4563.5
+            ],
+            [
+              2301.39,
+              10.93,
+              4564.0
+            ],
+            [
+              2301.39,
+              10.93,
+              4564.5
+            ],
+            [
+              2301.39,
+              10.99,
+              4567.5
+            ],
+            [
+              2301.39,
+              11.01,
+              4568.0
+            ],
+            [
+              2301.39,
+              11.03,
+              4569.0
+            ],
+            [
+              2301.39,
+              11.05,
+              4569.5
+            ],
+            [
+              2301.39,
+              11.06,
+              4570.0
+            ],
+            [
+              2301.39,
+              11.24,
+              4574.5
+            ],
+            [
+              2301.39,
+              11.25,
+              4575.0
+            ],
+            [
+              2301.39,
+              11.29,
+              4576.0
+            ],
+            [
+              2301.39,
+              11.32,
+              4577.5
+            ],
+            [
+              2301.39,
+              11.34,
+              4578.0
+            ],
+            [
+              2301.39,
+              11.35,
+              4578.5
+            ],
+            [
+              2301.39,
+              11.35,
+              4579.0
+            ],
+            [
+              2301.39,
+              11.37,
+              4580.0
+            ],
+            [
+              2301.39,
+              11.37,
+              4580.5
+            ],
+            [
+              2300.89,
+              11.39,
+              4581.0
+            ],
+            [
+              2300.89,
+              11.39,
+              4581.5
+            ],
+            [
+              2300.39,
+              11.4,
+              4582.0
+            ],
+            [
+              2295.39,
+              11.4,
+              4587.0
+            ]
+          ],
+          "routeM": 31.86,
+          "steepestDeg": 2.3,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.naga-highway-camp-active-north.container-water": {
+          "points": [
+            [
+              2305.89,
+              10.8,
+              4559.5
+            ],
+            [
+              2305.89,
+              10.76,
+              4560.5
+            ],
+            [
+              2305.89,
+              10.75,
+              4561.0
+            ],
+            [
+              2305.89,
+              10.75,
+              4561.5
+            ],
+            [
+              2305.89,
+              10.73,
+              4562.0
+            ],
+            [
+              2305.89,
+              10.73,
+              4562.5
+            ],
+            [
+              2305.89,
+              10.74,
+              4563.0
+            ],
+            [
+              2305.89,
+              10.74,
+              4564.0
+            ],
+            [
+              2305.89,
+              10.79,
+              4566.5
+            ],
+            [
+              2305.89,
+              10.83,
+              4567.5
+            ],
+            [
+              2305.89,
+              10.84,
+              4568.0
+            ],
+            [
+              2305.89,
+              10.86,
+              4568.5
+            ],
+            [
+              2306.89,
+              10.86,
+              4569.5
+            ],
+            [
+              2307.39,
+              10.87,
+              4570.0
+            ],
+            [
+              2307.39,
+              10.89,
+              4570.5
+            ],
+            [
+              2308.39,
+              10.89,
+              4571.5
+            ],
+            [
+              2308.39,
+              10.91,
+              4572.0
+            ],
+            [
+              2308.39,
+              10.91,
+              4572.5
+            ],
+            [
+              2308.39,
+              10.92,
+              4573.0
+            ],
+            [
+              2308.39,
+              10.96,
+              4574.0
+            ],
+            [
+              2308.39,
+              10.97,
+              4574.5
+            ],
+            [
+              2308.39,
+              11.01,
+              4575.5
+            ],
+            [
+              2308.89,
+              11.02,
+              4576.0
+            ],
+            [
+              2309.39,
+              11.02,
+              4576.5
+            ],
+            [
+              2309.39,
+              11.08,
+              4578.0
+            ],
+            [
+              2309.89,
+              11.08,
+              4578.5
+            ],
+            [
+              2310.39,
+              11.09,
+              4579.0
+            ],
+            [
+              2311.39,
+              11.15,
+              4580.0
+            ],
+            [
+              2311.89,
+              11.17,
+              4580.5
+            ],
+            [
+              2312.39,
+              11.2,
+              4581.0
+            ],
+            [
+              2312.89,
+              11.25,
+              4581.5
+            ],
+            [
+              2313.39,
+              11.29,
+              4582.0
+            ],
+            [
+              2313.89,
+              11.32,
+              4582.5
+            ],
+            [
+              2314.89,
+              11.34,
+              4583.5
+            ],
+            [
+              2314.89,
+              11.38,
+              4584.0
+            ],
+            [
+              2314.89,
+              11.41,
+              4584.5
+            ],
+            [
+              2314.89,
+              11.43,
+              4585.0
+            ],
+            [
+              2314.89,
+              11.43,
+              4587.0
+            ],
+            [
+              2315.39,
+              11.43,
+              4587.5
+            ]
+          ],
+          "routeM": 31.95,
+          "steepestDeg": 4.5,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.naga-highway-camp-active-north.container-basket": {
+          "points": [
+            [
+              2305.89,
+              10.8,
+              4559.5
+            ],
+            [
+              2305.89,
+              10.76,
+              4560.5
+            ],
+            [
+              2305.89,
+              10.75,
+              4561.0
+            ],
+            [
+              2305.89,
+              10.75,
+              4561.5
+            ],
+            [
+              2305.89,
+              10.73,
+              4562.0
+            ],
+            [
+              2305.89,
+              10.73,
+              4562.5
+            ],
+            [
+              2305.89,
+              10.74,
+              4563.0
+            ],
+            [
+              2305.89,
+              10.74,
+              4564.0
+            ],
+            [
+              2305.89,
+              10.79,
+              4566.5
+            ],
+            [
+              2305.89,
+              10.83,
+              4567.5
+            ],
+            [
+              2305.89,
+              10.84,
+              4568.0
+            ],
+            [
+              2305.89,
+              10.86,
+              4568.5
+            ],
+            [
+              2306.89,
+              10.86,
+              4569.5
+            ],
+            [
+              2307.39,
+              10.87,
+              4570.0
+            ],
+            [
+              2307.39,
+              10.89,
+              4570.5
+            ],
+            [
+              2308.39,
+              10.89,
+              4571.5
+            ],
+            [
+              2308.39,
+              10.91,
+              4572.0
+            ],
+            [
+              2308.39,
+              10.91,
+              4572.5
+            ],
+            [
+              2308.39,
+              10.92,
+              4573.0
+            ],
+            [
+              2308.39,
+              10.96,
+              4574.0
+            ],
+            [
+              2308.39,
+              10.97,
+              4574.5
+            ],
+            [
+              2308.39,
+              11.01,
+              4575.5
+            ],
+            [
+              2308.89,
+              11.02,
+              4576.0
+            ],
+            [
+              2309.39,
+              11.02,
+              4576.5
+            ],
+            [
+              2309.39,
+              11.08,
+              4578.0
+            ],
+            [
+              2309.89,
+              11.08,
+              4578.5
+            ],
+            [
+              2310.39,
+              11.09,
+              4579.0
+            ],
+            [
+              2311.39,
+              11.15,
+              4580.0
+            ],
+            [
+              2311.89,
+              11.17,
+              4580.5
+            ],
+            [
+              2312.39,
+              11.2,
+              4581.0
+            ],
+            [
+              2312.89,
+              11.25,
+              4581.5
+            ],
+            [
+              2313.39,
+              11.29,
+              4582.0
+            ],
+            [
+              2313.89,
+              11.32,
+              4582.5
+            ],
+            [
+              2315.89,
+              11.36,
+              4584.5
+            ]
+          ],
+          "routeM": 29.15,
+          "steepestDeg": 4.0,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:fill.c-barrel2": {
+          "points": [
+            [
+              2305.89,
+              10.8,
+              4559.5
+            ],
+            [
+              2305.39,
+              10.79,
+              4560.0
+            ],
+            [
+              2304.89,
+              10.79,
+              4560.5
+            ],
+            [
+              2304.39,
+              10.82,
+              4561.0
+            ],
+            [
+              2303.89,
+              10.84,
+              4561.5
+            ],
+            [
+              2303.39,
+              10.87,
+              4562.0
+            ],
+            [
+              2302.89,
+              10.89,
+              4562.5
+            ],
+            [
+              2301.89,
+              10.91,
+              4563.5
+            ],
+            [
+              2301.39,
+              10.93,
+              4564.0
+            ],
+            [
+              2301.39,
+              10.93,
+              4564.5
+            ],
+            [
+              2301.39,
+              10.99,
+              4567.5
+            ],
+            [
+              2301.39,
+              11.01,
+              4568.0
+            ],
+            [
+              2300.89,
+              11.02,
+              4568.5
+            ],
+            [
+              2300.39,
+              11.04,
+              4569.0
+            ],
+            [
+              2299.89,
+              11.05,
+              4569.5
+            ],
+            [
+              2299.39,
+              11.07,
+              4570.0
+            ],
+            [
+              2298.89,
+              11.08,
+              4570.5
+            ],
+            [
+              2298.39,
+              11.1,
+              4571.0
+            ],
+            [
+              2296.89,
+              11.13,
+              4572.5
+            ],
+            [
+              2296.89,
+              11.14,
+              4573.0
+            ],
+            [
+              2296.89,
+              11.16,
+              4573.5
+            ],
+            [
+              2296.89,
+              11.17,
+              4574.0
+            ],
+            [
+              2296.89,
+              11.19,
+              4574.5
+            ],
+            [
+              2296.89,
+              11.2,
+              4575.0
+            ],
+            [
+              2296.39,
+              11.21,
+              4575.5
+            ],
+            [
+              2295.89,
+              11.23,
+              4576.0
+            ],
+            [
+              2295.39,
+              11.24,
+              4576.5
+            ],
+            [
+              2294.89,
+              11.26,
+              4577.0
+            ],
+            [
+              2294.39,
+              11.27,
+              4577.5
+            ],
+            [
+              2293.89,
+              11.29,
+              4578.0
+            ],
+            [
+              2292.89,
+              11.31,
+              4579.0
+            ],
+            [
+              2292.39,
+              11.34,
+              4579.5
+            ],
+            [
+              2291.89,
+              11.35,
+              4580.0
+            ],
+            [
+              2291.89,
+              11.37,
+              4581.0
+            ],
+            [
+              2291.89,
+              11.37,
+              4582.0
+            ],
+            [
+              2291.89,
+              11.38,
+              4582.5
+            ],
+            [
+              2291.89,
+              11.38,
+              4583.0
+            ],
+            [
+              2291.89,
+              11.39,
+              4583.5
+            ],
+            [
+              2291.89,
+              11.39,
+              4584.0
+            ],
+            [
+              2291.89,
+              11.4,
+              4584.5
+            ],
+            [
+              2291.89,
+              11.4,
+              4586.5
+            ],
+            [
+              2292.89,
+              11.4,
+              4587.5
+            ],
+            [
+              2292.89,
+              11.39,
+              4588.0
+            ]
+          ],
+          "routeM": 34.72,
+          "steepestDeg": 2.0,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:fill.c-sack3": {
+          "points": [
+            [
+              2305.89,
+              10.8,
+              4559.5
+            ],
+            [
+              2305.39,
+              10.79,
+              4560.0
+            ],
+            [
+              2304.89,
+              10.79,
+              4560.5
+            ],
+            [
+              2304.39,
+              10.82,
+              4561.0
+            ],
+            [
+              2303.89,
+              10.84,
+              4561.5
+            ],
+            [
+              2303.39,
+              10.87,
+              4562.0
+            ],
+            [
+              2302.89,
+              10.89,
+              4562.5
+            ],
+            [
+              2301.89,
+              10.91,
+              4563.5
+            ],
+            [
+              2301.39,
+              10.93,
+              4564.0
+            ],
+            [
+              2301.39,
+              10.93,
+              4564.5
+            ],
+            [
+              2301.39,
+              10.99,
+              4567.5
+            ],
+            [
+              2301.39,
+              11.01,
+              4568.0
+            ],
+            [
+              2300.89,
+              11.02,
+              4568.5
+            ],
+            [
+              2300.39,
+              11.04,
+              4569.0
+            ],
+            [
+              2299.89,
+              11.05,
+              4569.5
+            ],
+            [
+              2299.39,
+              11.07,
+              4570.0
+            ],
+            [
+              2298.89,
+              11.08,
+              4570.5
+            ],
+            [
+              2298.39,
+              11.1,
+              4571.0
+            ],
+            [
+              2297.89,
+              11.11,
+              4571.5
+            ],
+            [
+              2297.89,
+              11.13,
+              4572.0
+            ],
+            [
+              2297.89,
+              11.14,
+              4572.5
+            ],
+            [
+              2297.89,
+              11.16,
+              4573.0
+            ],
+            [
+              2297.39,
+              11.17,
+              4573.5
+            ],
+            [
+              2297.39,
+              11.18,
+              4574.0
+            ],
+            [
+              2297.39,
+              11.22,
+              4575.0
+            ],
+            [
+              2296.39,
+              11.24,
+              4576.0
+            ],
+            [
+              2295.89,
+              11.26,
+              4576.5
+            ],
+            [
+              2295.39,
+              11.27,
+              4577.0
+            ],
+            [
+              2294.39,
+              11.31,
+              4578.0
+            ],
+            [
+              2293.39,
+              11.33,
+              4579.0
+            ],
+            [
+              2292.89,
+              11.35,
+              4579.5
+            ],
+            [
+              2292.89,
+              11.36,
+              4580.0
+            ],
+            [
+              2292.89,
+              11.38,
+              4580.5
+            ],
+            [
+              2292.89,
+              11.38,
+              4581.0
+            ],
+            [
+              2292.89,
+              11.39,
+              4581.5
+            ],
+            [
+              2292.89,
+              11.39,
+              4582.0
+            ],
+            [
+              2292.89,
+              11.4,
+              4582.5
+            ],
+            [
+              2292.89,
+              11.4,
+              4583.0
+            ],
+            [
+              2292.89,
+              11.41,
+              4583.5
+            ],
+            [
+              2292.89,
+              11.41,
+              4584.5
+            ]
+          ],
+          "routeM": 30.39,
+          "steepestDeg": 2.0,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.naga-highway-camp-active-north.idle-seat-y-chair2": {
+          "points": [
+            [
+              2305.89,
+              10.8,
+              4559.5
+            ],
+            [
+              2305.89,
+              10.76,
+              4560.5
+            ],
+            [
+              2305.89,
+              10.75,
+              4561.0
+            ],
+            [
+              2305.89,
+              10.75,
+              4561.5
+            ],
+            [
+              2305.89,
+              10.73,
+              4562.0
+            ],
+            [
+              2305.89,
+              10.73,
+              4562.5
+            ],
+            [
+              2305.89,
+              10.74,
+              4563.0
+            ],
+            [
+              2305.89,
+              10.74,
+              4564.0
+            ],
+            [
+              2305.89,
+              10.79,
+              4566.5
+            ],
+            [
+              2305.89,
+              10.83,
+              4567.5
+            ],
+            [
+              2305.89,
+              10.84,
+              4568.0
+            ],
+            [
+              2305.89,
+              10.92,
+              4570.0
+            ],
+            [
+              2305.89,
+              10.95,
+              4570.5
+            ],
+            [
+              2305.89,
+              10.96,
+              4571.0
+            ],
+            [
+              2305.89,
+              11.04,
+              4573.0
+            ],
+            [
+              2305.89,
+              11.05,
+              4573.5
+            ],
+            [
+              2305.89,
+              11.11,
+              4575.0
+            ],
+            [
+              2305.89,
+              11.13,
+              4576.0
+            ],
+            [
+              2305.89,
+              11.17,
+              4577.0
+            ],
+            [
+              2305.89,
+              11.18,
+              4577.5
+            ],
+            [
+              2305.89,
+              11.2,
+              4578.0
+            ],
+            [
+              2305.89,
+              11.26,
+              4579.0
+            ],
+            [
+              2305.89,
+              11.28,
+              4579.5
+            ],
+            [
+              2305.89,
+              11.29,
+              4580.0
+            ]
+          ],
+          "routeM": 20.51,
+          "steepestDeg": 3.5,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        }
+      }
+    }
+  }
+}

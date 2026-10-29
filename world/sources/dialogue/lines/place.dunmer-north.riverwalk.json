@@ -1,0 +1,3511 @@
+{
+  "schemaVersion": 1,
+  "domain": "dialogue-lines",
+  "placeId": "place.dunmer-north.riverwalk",
+  "entries": [
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-n1.base",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.n1",
+      "words": "Mud stays on the shore, ojel.",
+      "available": [],
+      "variants": {
+        "low": "You are late and dirty.",
+        "high": "Your last bed was left tidy."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-n1.night",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.n1",
+      "words": "Lamps are out. Take a bed.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "It is dark. Sleep quietly.",
+        "high": "Come inside. The reed is fresh."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-n1.high",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.n1",
+      "words": "A dry bed is made.",
+      "available": [
+        {
+          "speakerDispositionAtLeast": 70
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "A bed is a bed.",
+        "high": "Your bed is turned and ready."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-n1.crime",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.n1",
+      "words": "No bed in this house.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "The boards remember you.",
+        "high": "I cannot give you a bed."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.riverwalk-n1.passing",
+      "type": "bark",
+      "speaker": "npc.dunmer-north.riverwalk.n1",
+      "slot": "passing",
+      "words": "Boots off, please.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.riverwalk-n1.at-work",
+      "type": "bark",
+      "speaker": "npc.dunmer-north.riverwalk.n1",
+      "slot": "at-work",
+      "words": "Reed wants the sun.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n1.riverwalk",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n1",
+      "keys": {
+        "topic": "topic.riverwalk"
+      },
+      "words": "Riverwalk is only a halt for boats, tucked into a cove with sheltered water. I live in the long house on piles in the shallows, with my household. Ojel who land here sleep under our roof.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk.default",
+        "hash": "ce8efe77"
+      },
+      "factIds": [
+        "fact.riverwalk.cove"
+      ],
+      "variants": {
+        "low": "A halt for boats, in a cove with sheltered water. Walk the boards and do not ask me for more.",
+        "high": "Riverwalk is a halt for boats in a sheltered cove. I live in the long house on piles with my household. Land here and I will find you a dry bed. I will also name the boards gone soft."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n1.riverwalk-work",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n1",
+      "keys": {
+        "topic": "topic.riverwalk-work"
+      },
+      "words": "Riverwalk grows no food. What the boats unload is what we eat. My work is the beds in the long house. A guest who leaves a mattress flat and clean is given the same one next night.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-work.default",
+        "hash": "19d7bdbe"
+      },
+      "factIds": [
+        "fact.riverwalk.grows-no-food"
+      ],
+      "variants": {
+        "low": "Riverwalk grows no food. The boats bring it. I tend the long house beds and have no time for you.",
+        "high": "Riverwalk grows no food, so the boats bring what we eat. I tend the beds in the long house. Pay for a night and I will put you on the driest mattress."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n1.riverwalk-people",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n1",
+      "keys": {
+        "topic": "topic.riverwalk-people"
+      },
+      "words": "My household keeps the long house. Boat hands sleep out on the spit. The toll-holder works the post at the shore end with two hands. Strangers walk in with mud on their feet. I wipe the boards after them.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-people.default",
+        "hash": "6671955e"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "My household has the long house. Boat hands sleep on the spit. The toll-holder and two hands run the post. Ojel track in mud.",
+        "high": "My household keeps the long house. The boat hands sleep in the plank house on the spit. The toll-holder works the post at the shore end with two hands. Speak to him before you cross. He writes every boat down."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n1.riverwalk-danger",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n1",
+      "keys": {
+        "topic": "topic.riverwalk-danger"
+      },
+      "words": "Silt. The cove is the one calm patch of water along this coast. If it fills, the boats put in elsewhere and I air beds for an empty house.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-danger.default",
+        "hash": "86960caa"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Silt. If the cove fills, the boats go elsewhere. Ask me nothing else about it.",
+        "high": "Silt. The cove is the one calm patch of water along this coast. If it fills, the boats put in elsewhere and my beds lie empty. Step where the boards are dry and you will be fine."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n1.riverwalk-directions",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n1",
+      "keys": {
+        "topic": "topic.riverwalk-directions"
+      },
+      "words": "The Tear road leaves the village westward. Follow it to Thorn, then on to Tear. For Hissmir, canoes go from the ferry stage on the islet.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-directions.default",
+        "hash": "d44d65c4"
+      },
+      "factIds": [
+        "fact.tear.road"
+      ],
+      "variants": {
+        "low": "The Tear road leaves westward, past Thorn and on to Tear. Canoes for Hissmir leave the ferry stage.",
+        "high": "The Tear road leaves the village westward. Follow it to Thorn, then on to Tear. For Hissmir, canoes go from the ferry stage on the islet. Eat before you pay the fare."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n1.role-long-house",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n1",
+      "keys": {
+        "topic": "topic.role-long-house"
+      },
+      "words": "A long house shelters a household with its guests beneath one roof. Ours is also where the boat hands eat. I look after the beds. The reed mattresses go out to air each dry morning, before anyone is awake to complain.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-long-house.default",
+        "hash": "e740e631"
+      },
+      "factIds": [
+        "fact.long-house.household",
+        "fact.long-house.mattresses"
+      ],
+      "variants": {
+        "low": "A long house is one roof for a household and its guests. I air the reed mattresses each dry morning. That is all.",
+        "high": "A long house shelters a household with its guests beneath one roof. Ours is where the boat hands eat. I air the reed mattresses each dry morning. Come early and I will show you which one is yours."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n1.about-ojel",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n1",
+      "keys": {
+        "topic": "topic.about-ojel"
+      },
+      "words": "Ojel is our word for an outsider. It carries no insult, so you will hear it often here. Lukiul is the slur to avoid. The An-Xileel coined it for Argonians hatched outside Black Marsh, who cannot hear the Hist.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-ojel.default",
+        "hash": "a30272d6"
+      },
+      "factIds": [
+        "fact.ojel.outsiders",
+        "fact.ojel.neutral",
+        "fact.lukiul.slur",
+        "fact.lukiul.deaf"
+      ],
+      "variants": {
+        "low": "Ojel means outsider. It carries no insult. Lukiul is a slur the An-Xileel coined for Argonians hatched outside Black Marsh, who cannot hear the Hist.",
+        "high": "Ojel is our word for an outsider. It carries no insult, so you will hear it often here. Lukiul is the slur to avoid. The An-Xileel coined it for Argonians hatched outside Black Marsh, who cannot hear the Hist. Do not say it on these boards."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-n1-2.base",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.n1-2",
+      "words": "Boat smell on you. Take the dry corner.",
+      "available": [],
+      "variants": {
+        "low": "Boat smell. Wipe your feet.",
+        "high": "Boat smell on you, guest. Sit, a bowl is going."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-n1-2.night",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.n1-2",
+      "words": "Quietly. The herbs are drying overhead.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Hush. Herbs are drying.",
+        "high": "Quietly, guest. Sit by the herbs. They smell sweet tonight."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-n1-2.high",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.n1-2",
+      "words": "Rain on the step again. It still clings to you.",
+      "available": [
+        {
+          "speakerDispositionAtLeast": 70
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Rain on you. Stay on the step.",
+        "high": "Rain on your shoulders. Come in and sit."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-n1-2.crime",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.n1-2",
+      "words": "Not under this roof.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "Get off my boards.",
+        "high": "Not under this roof, not from you."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.riverwalk-n1-2.passing",
+      "type": "bark",
+      "speaker": "npc.dunmer-north.riverwalk.n1-2",
+      "slot": "passing",
+      "words": "Mud on my floor.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.riverwalk-n1-2.at-work",
+      "type": "bark",
+      "speaker": "npc.dunmer-north.riverwalk.n1-2",
+      "slot": "at-work",
+      "words": "Sorting at the door.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n1-2.riverwalk",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n1-2",
+      "keys": {
+        "topic": "topic.riverwalk"
+      },
+      "words": "It's a halt in a sheltered cove, so boats off the sea put in here to get out of the swell. I gather herbs along the shore and sort the bundles by smell, the sharp ones from the sweet. I love this place, the plank walk and the piles and the wet-reed smell that gets into everything I carry.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk.default",
+        "hash": "ce8efe77"
+      },
+      "factIds": [
+        "fact.riverwalk.cove"
+      ],
+      "variants": {
+        "low": "A cove, with boats in it. I'm sorting herbs and the light is going.",
+        "high": "It's a halt in a sheltered cove, so the boats come in out of the swell. Come by in the morning and I'll show you how I sort the herbs, sharp from sweet. The shore smells best when the tide is half out."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n1-2.riverwalk-work",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n1-2",
+      "keys": {
+        "topic": "topic.riverwalk-work"
+      },
+      "words": "The village earns from the ferry stage and from the toll on boats going into the pilgrim water, the channel up to Hissmir. I don't touch the toll. My work is the herbs. I'm glad of any boat that pays for a bowl. It's the shouting about the toll I mind, all wet boots and raised voices.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-work.default",
+        "hash": "19d7bdbe"
+      },
+      "factIds": [
+        "fact.toll.pilgrim-water"
+      ],
+      "variants": {
+        "low": "Fares and a toll on the pilgrim water. Ask at the post. My hands are full of herbs.",
+        "high": "The village earns from the ferry stage and from the toll on boats going into the pilgrim water, the channel up to Hissmir. I gather herbs. I'll sell you a bundle if you want one, cheap, since you ask civilly."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n1-2.riverwalk-people",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n1-2",
+      "keys": {
+        "topic": "topic.riverwalk-people"
+      },
+      "words": "My household gathers herbs and sleeps in the long house. Lifts-Two-Traps runs the toll post with two hands beside him. Ojel who land here get fed and watched. Most of them can't read my body, so I say a thing twice aloud. I don't hate them. I just mind the mud they trail over a swept floor.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-people.default",
+        "hash": "6671955e"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Herb-gatherers, boat folk and the toll post. Look for yourself.",
+        "high": "My household gathers herbs and sleeps in the long house. Lifts-Two-Traps runs the toll post. If you've a question about the toll, he's the one with the slate. He answers civil people."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n1-2.riverwalk-danger",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n1-2",
+      "keys": {
+        "topic": "topic.riverwalk-danger"
+      },
+      "words": "Silt frightens me more than anything with teeth. I'm on the cove shore with my basket before the polers go out, so I'd see it first. The mud lies higher on the stones than I remember. Silt smells different before it shows, flat and sour, like a bucket left under a bunk. If the cove fills, the boats go elsewhere.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-danger.default",
+        "hash": "86960caa"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Silt. Go and look at the stones.",
+        "high": "Silt frightens me more than anything with teeth. Watch the stones at the shore edge at low water. If the mud is climbing them, tell me, because I'm there every morning and I like a second pair of eyes."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n1-2.riverwalk-directions",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n1-2",
+      "keys": {
+        "topic": "topic.riverwalk-directions"
+      },
+      "words": "Thorn is a short walk west up the Tear road. That road carries on from Thorn into Morrowind. For Hissmir you need a canoe from the ferry stage, out along the planks to the islet. The Thorn road smells of rice fields from a long way off.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-directions.default",
+        "hash": "d44d65c4"
+      },
+      "factIds": [
+        "fact.thorn.tear-road"
+      ],
+      "variants": {
+        "low": "West for Thorn, by the Tear road. Canoes from the stage for the rest.",
+        "high": "Thorn is a short walk west up the Tear road. It goes on into Morrowind from there. Take a lantern home at dusk because the planks are slick. For Hissmir you need a canoe from the ferry stage out on the islet."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n1-2.role-long-house",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n1-2",
+      "keys": {
+        "topic": "topic.role-long-house"
+      },
+      "words": "The long house sits up on piles in the shallows off the spit, so the tide goes under the floor. My household sleeps there and I dry the herbs overhead. Mud stays off the boards. I can smell a wet boot from the doorway.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-long-house.default",
+        "hash": "e740e631"
+      },
+      "factIds": [
+        "fact.long-house.piles"
+      ],
+      "variants": {
+        "low": "It's on piles. Keep mud off the boards.",
+        "high": "The long house sits up on piles in the shallows off the spit, so the tide goes under the floor. There's a dry corner by the herbs. You're welcome to it if your boots are clean."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-n1-3.base",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.n1-3",
+      "words": "Sit, guest. Fish is in the pot.",
+      "available": [],
+      "variants": {
+        "low": "Sit if you must, guest.",
+        "high": "Sit, guest. Bring news for the pot."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-n1-3.night",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.n1-3",
+      "words": "The pot is empty, guest. Try tomorrow.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Pot is empty. Come tomorrow.",
+        "high": "Pot is empty, guest. I have bread."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-n1-3.high",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.n1-3",
+      "words": "Guest! Sit and tell me the news.",
+      "available": [
+        {
+          "speakerDispositionAtLeast": 70
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Sit, then.",
+        "high": "Guest! Come and eat. Fish tonight."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-n1-3.crime",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.n1-3",
+      "words": "Out of my house. There is no bowl for you.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "Leave this house.",
+        "high": "Leave, guest. Come back settled."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.riverwalk-n1-3.passing",
+      "type": "bark",
+      "speaker": "npc.dunmer-north.riverwalk.n1-3",
+      "slot": "passing",
+      "words": "Bring news.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.riverwalk-n1-3.at-work",
+      "type": "bark",
+      "speaker": "npc.dunmer-north.riverwalk.n1-3",
+      "slot": "at-work",
+      "words": "Eat it alive.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n1-3.riverwalk",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n1-3",
+      "keys": {
+        "topic": "topic.riverwalk"
+      },
+      "words": "Riverwalk sits on a cove, a bay of calm sea water where the pilgrim channel starts. I live in the long house, out on piles in the shallows. Boatmen come in off the swell and eat at my table. I hear half the coast's news from them before the bowls are empty.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk.default",
+        "hash": "ce8efe77"
+      },
+      "factIds": [
+        "fact.riverwalk.cove"
+      ],
+      "variants": {
+        "low": "It's a cove with calm water. I live in the long house. Eat or go.",
+        "high": "Riverwalk sits on a cove, a bay of calm sea water where the pilgrim channel starts. I live in the long house, out on piles in the shallows. Boatmen come in off the swell and eat at my table. Sit by the pot and I'll tell you what the last boat said about the coast."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n1-3.riverwalk-work",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n1-3",
+      "keys": {
+        "topic": "topic.riverwalk-work"
+      },
+      "words": "Riverwalk grows no food. Not a root, not a grain. I feed the boatmen from what the stage earns. They pay me in coin and in talk. One of them turned up his nose at my fish last week. I told him a fish is only worth eating the way trodh is, alive and quick.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-work.default",
+        "hash": "19d7bdbe"
+      },
+      "factIds": [
+        "fact.riverwalk.grows-no-food"
+      ],
+      "variants": {
+        "low": "Riverwalk grows no food. Everything comes off a boat, so I charge for the bowl.",
+        "high": "Riverwalk grows no food. Not a root, not a grain. I feed the boatmen from what the stage earns. They pay me in coin and in talk. Come at dusk and I'll show you how a fish should be eaten."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n1-3.riverwalk-people",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n1-3",
+      "keys": {
+        "topic": "topic.riverwalk-people"
+      },
+      "words": "My household gathers herbs and lives in the long house. The boatmen sleep in the house on the spit. Lifts-Two-Traps runs the toll post with two hands. Strangers I feed and watch. Most can't read body speech, so I say a thing twice and they still nod in the wrong place.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-people.default",
+        "hash": "6671955e"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Herb-gatherers in the long house. Boatmen on the spit. Lifts-Two-Traps at the toll post. Strangers I feed and watch.",
+        "high": "My household gathers herbs and lives in the long house. The boatmen sleep in the house on the spit. Lifts-Two-Traps runs the toll post with two hands. Strangers I feed and watch. Those who come back twice get the better bowl."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n1-3.riverwalk-danger",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n1-3",
+      "keys": {
+        "topic": "topic.riverwalk-danger"
+      },
+      "words": "The water's safe. Silt frightens me. No other water along this coast is sheltered, so the boats come here. If the cove filled with mud, they'd put in elsewhere. My long house would stand empty. Before the first boat, a pole goes down along the way across the cove to find the bottom.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-danger.default",
+        "hash": "86960caa"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Silt. It fills the cove and the boats go elsewhere. Then the long house is empty.",
+        "high": "The water's safe. Silt frightens me. No other water along this coast is sheltered, so the boats come here. If the cove filled with mud, they'd put in elsewhere. My long house would stand empty. Watch your step at the stage, because the mud grips a boot."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n1-3.riverwalk-directions",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n1-3",
+      "keys": {
+        "topic": "topic.riverwalk-directions"
+      },
+      "words": "Thorn is a short walk up the Tear road. From Thorn, the same road carries on to the town of Tear. By water, canoes for Hissmir and Murkwater leave the ferry stage out on the islet. Pay the fare at the shelter.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-directions.default",
+        "hash": "d44d65c4"
+      },
+      "factIds": [
+        "fact.tear.road"
+      ],
+      "variants": {
+        "low": "Thorn is up the Tear road. The road goes on to Tear. Canoes leave from the stage.",
+        "high": "Thorn is a short walk up the Tear road. From Thorn, the same road carries on to the town of Tear. By water, canoes for Hissmir and Murkwater leave the ferry stage out on the islet. Cross the long walk first and watch for soft boards."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n1-3.role-long-house",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n1-3",
+      "keys": {
+        "topic": "topic.role-long-house"
+      },
+      "words": "My household has kept the long house a long time. It's an open plank house, up on piles in the shallows off the spit. The boatmen eat there at my table. They sleep over on the spit, in a house of their own.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-long-house.default",
+        "hash": "e740e631"
+      },
+      "factIds": [
+        "fact.long-house.kept-long"
+      ],
+      "variants": {
+        "low": "My household has kept it a long time. Boatmen eat there.",
+        "high": "My household has kept the long house a long time. It's an open plank house, up on piles in the shallows off the spit. The boatmen eat there at my table. Come in when the lamps are lit and I'll pour you something."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-n2.base",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.n2",
+      "words": "You have the shoulders for a pole, ojel.",
+      "available": [],
+      "variants": {
+        "low": "Off the planks, ojel. They are narrow.",
+        "high": "Ojel with a good back! Sit by the raft a while."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-n2.night",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.n2",
+      "words": "Every bunk I know is taken. Try the crews' house.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Full up. Find a bunk elsewhere.",
+        "high": "Full tonight. The crews' house may have a corner. Say I sent you."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-n2.high",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.n2",
+      "words": "Slow Heron! Sit a while on my board.",
+      "available": [
+        {
+          "speakerDispositionAtLeast": 70
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Not now, ojel.",
+        "high": "Slow Heron! Sit and hum with me a while."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-n2.crime",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.n2",
+      "words": "Off the stage now, or swim.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "Swim, then.",
+        "high": "Off the stage, please. I would hate to pole you out."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.riverwalk-n2.passing",
+      "type": "bark",
+      "speaker": "npc.dunmer-north.riverwalk.n2",
+      "slot": "passing",
+      "words": "Pole swinging, step wide.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.riverwalk-n2.at-work",
+      "type": "bark",
+      "speaker": "npc.dunmer-north.riverwalk.n2",
+      "slot": "at-work",
+      "words": "Hold the pace steady.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2.riverwalk",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2",
+      "keys": {
+        "topic": "topic.riverwalk"
+      },
+      "words": "I pole the raft that carries loads out to the stage, so I know this water better than most. Riverwalk is a stop for boats, set in a sheltered cove off the sea. The swell never finds them here. The boards over the water are all different ages. I hum my way across them.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk.default",
+        "hash": "ce8efe77"
+      },
+      "factIds": [
+        "fact.riverwalk.cove"
+      ],
+      "variants": {
+        "low": "Riverwalk is a stop for boats in a cove. The planks will show you the rest.",
+        "high": "Riverwalk is a stop for boats in a good cove. Sit on the stage when the water goes flat at dusk and watch the boats come. Ask Deesh-Ra for a bowl first. She likes a stranger fed."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2.riverwalk-work",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2",
+      "keys": {
+        "topic": "topic.riverwalk-work"
+      },
+      "words": "A toll is charged on every boat that goes into the pilgrim water, the channel up to Hissmir. My crew poles the raft through it each crossing. The toll comes out of our share. Thorn's field-owners and Hissmir's stewards both say the coin is theirs. This morning I watched the toll-holder write our raft on his slate again.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-work.default",
+        "hash": "19d7bdbe"
+      },
+      "factIds": [
+        "fact.toll.pilgrim-water"
+      ],
+      "variants": {
+        "low": "There's a toll on boats entering the pilgrim water. It comes out of the crew's share. Pay it at the post on the spit.",
+        "high": "A toll is charged on every boat that enters the pilgrim water. It comes out of our share. If you are bound that way, pay the toll-holder on the spit first. It saves you a quarrel at the stage."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2.riverwalk-people",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2",
+      "keys": {
+        "topic": "topic.riverwalk-people"
+      },
+      "words": "The herb family has the long house, the big plank one standing in the shallows. My crew takes bunks at the crews' house, back on the spit. Lifts-Two-Traps runs the toll post with Reaches-The-Shore-Last and Runs-The-Line-Out beside him. Strangers get fed and watched here, then sent on their way.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-people.default",
+        "hash": "6671955e"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Herb family in the long house, crews at the crews' house, toll people at the post. Keep clear of the toll people.",
+        "high": "The herb family has the long house. They feed you well. My crew takes bunks at the crews' house on the spit. Lifts-Two-Traps runs the toll post. Greet Deesh-Ra at the stage shelter first, because she likes to know who has eaten."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2.riverwalk-danger",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2",
+      "keys": {
+        "topic": "topic.riverwalk-danger"
+      },
+      "words": "The water itself won't hurt you. Silt will. Every morning before the first boat, one of us pushes a pole into the mud along the way across the cove to feel how near the bottom has come. Some mornings it's me. If the cove keeps filling, the boats will tie up on another shore.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-danger.default",
+        "hash": "86960caa"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Water's safe. Silt isn't. Mind where you step off the boards.",
+        "high": "The water is safe, truly. Silt is what worries us. If you want to see it sounded, come down to the boards before the first boat and I'll let you push the pole."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2.riverwalk-directions",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2",
+      "keys": {
+        "topic": "topic.riverwalk-directions"
+      },
+      "words": "The Tear road leaves the village westward. Thorn is a short walk along it. Past Thorn it carries on into Morrowind. For Hissmir you want a canoe from the ferry stage on the islet. I pole the raft there but I don't pole canoes.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-directions.default",
+        "hash": "d44d65c4"
+      },
+      "factIds": [
+        "fact.thorn.tear-road"
+      ],
+      "variants": {
+        "low": "Thorn's west along the Tear road. The road goes on into Morrowind. Hissmir's by canoe from the stage.",
+        "high": "Thorn is west, a short walk along the Tear road. The road goes on past it into Morrowind. For Hissmir, take a canoe from the islet stage. Pay Deesh-Ra there and eat before you go, because she'll insist."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2.role-boat-work",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2",
+      "keys": {
+        "topic": "topic.role-boat-work"
+      },
+      "words": "Poling is honest work when all three of us hold one pace. We push the raft along the channel and load her at the stage as we go. The village gives every crew a meal and a bunk. I'll grant that's a fair bargain.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-boat-work.default",
+        "hash": "12eddb15"
+      },
+      "factIds": [
+        "fact.boat-crew.poles",
+        "fact.riverwalk.feeds-crews"
+      ],
+      "variants": {
+        "low": "We pole and load the boat along the channel. The village gives us a meal and a bunk.",
+        "high": "Poling and loading the boat along the channel is the whole job. Learn the grip on the pole and you'll eat well here. The village gives every crew a meal and a bunk."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-n2-2.base",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.n2-2",
+      "words": "We are the Slow Heron. Mind my caps.",
+      "available": [],
+      "variants": {
+        "low": "Keep moving, pole-hand. Polish takes time.",
+        "high": "Slow Heron welcomes you. Come see the caps shine."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-n2-2.night",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.n2-2",
+      "words": "You are late. Dark shut the crews' house.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Dark shut that door hours past.",
+        "high": "You are late, pole-hand. Knock at the crews' house."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-n2-2.high",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.n2-2",
+      "words": "Slow Heron has time. Watch the copper shine.",
+      "available": [
+        {
+          "speakerDispositionAtLeast": 70
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "The cloth is busy, pole-hand.",
+        "high": "Sit, pole-hand. Watch the copper shine."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-n2-2.crime",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.n2-2",
+      "words": "Off the stage. I will fetch Lifts-Two-Traps.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "Off the stage, thief.",
+        "high": "Off the stage. I will fetch Lifts-Two-Traps."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.riverwalk-n2-2.passing",
+      "type": "bark",
+      "speaker": "npc.dunmer-north.riverwalk.n2-2",
+      "slot": "passing",
+      "words": "Mind the copper.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.riverwalk-n2-2.at-work",
+      "type": "bark",
+      "speaker": "npc.dunmer-north.riverwalk.n2-2",
+      "slot": "at-work",
+      "words": "Left horn, then right.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2-2.riverwalk",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2-2",
+      "keys": {
+        "topic": "topic.riverwalk"
+      },
+      "words": "Riverwalk is a landing in a cove off the sea, the one calm water along this coast. A plank walk runs out from the shore houses to the ferry stage. I pole the raft there with my crew. These copper caps on my horns cost me more than I'd tell the toll hands, so I polish them at dusk.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk.default",
+        "hash": "ce8efe77"
+      },
+      "factIds": [
+        "fact.riverwalk.cove"
+      ],
+      "variants": {
+        "low": "Riverwalk is a landing in a cove off the sea. The plank walk goes out to the ferry stage. I pole the raft. I'm busy.",
+        "high": "Riverwalk is a landing in a cove off the sea, the one calm water along this coast. The plank walk runs out to the ferry stage. Walk slowly past the toll-holder's post at the shore end, pole-hand, because he writes down every boat. I pole the raft out there. I'll be polishing my copper caps at dusk if you want to see them."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2-2.riverwalk-work",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2-2",
+      "keys": {
+        "topic": "topic.riverwalk-work"
+      },
+      "words": "Nothing grows here to eat, so the village lives off the boats. Deesh-Ra takes the fares at the ferry stage. The toll hands take a toll from every boat into the pilgrim water. Crews get fed at the long house and given a bunk. The toll comes out of our share, though, whoever ends up holding it.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-work.default",
+        "hash": "19d7bdbe"
+      },
+      "factIds": [
+        "fact.riverwalk.grows-no-food"
+      ],
+      "variants": {
+        "low": "Nothing grows here to eat. The village lives off the ferry stage and the toll. Crews get fed. I pole.",
+        "high": "Nothing grows here to eat, so the village lives off the boats and the ferry stage. Crews get fed at the long house and a bunk after. If you want a meal, the stage-mistress Deesh-Ra feeds every passenger before a canoe leaves. I'd eat first, pole-hand."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2-2.riverwalk-people",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2-2",
+      "keys": {
+        "topic": "topic.riverwalk-people"
+      },
+      "words": "The long house on the water is kept by a household of herb-gatherers. My crew sleeps in a plank house down on the spit. Lifts-Two-Traps keeps the toll post with two hands. Ojel get watched, fed and sent away. Most of you can't read our body speech anyway.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-people.default",
+        "hash": "6671955e"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Herb-gatherers keep the long house. Boat crews bed down in a plank house on the spit. Lifts-Two-Traps keeps the toll post with two hands.",
+        "high": "The long house on the water is kept by a household of herb-gatherers. My crew sleeps in a plank house down on the spit. Lifts-Two-Traps keeps the toll post with two hands. Half-Tail and Wet Jeeba pole with me. One hums to the stroke and one brags about his bunk. I don't mind either."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2-2.riverwalk-danger",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2-2",
+      "keys": {
+        "topic": "topic.riverwalk-danger"
+      },
+      "words": "The cove is safe water. Silt is the worry. If it filled, the boats would find another cove and we'd have no fares. So we sound the way across with a pole every morning before the first boat.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-danger.default",
+        "hash": "86960caa"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Safe water. Silt is the worry. We sound the way across every morning.",
+        "high": "The cove is safe water. Silt is the worry. If it filled, the boats would find another cove and we'd have no fares. So we sound the way across with a pole every morning before the first boat. Keep to the sounded way across the cove, pole-hand. Your boots stay dry."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2-2.riverwalk-directions",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2-2",
+      "keys": {
+        "topic": "topic.riverwalk-directions"
+      },
+      "words": "Take the Tear road west out of Riverwalk and Thorn is a short walk. The same road goes on from Thorn to Tear. For Hissmir or Murkwater you want a canoe from the ferry stage. Don't moor across the stage when a canoe is due out, or Deesh-Ra will have words for you.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-directions.default",
+        "hash": "d44d65c4"
+      },
+      "factIds": [
+        "fact.tear.road"
+      ],
+      "variants": {
+        "low": "West on the Tear road for Thorn. It goes on to Tear. Canoes for Hissmir leave the ferry stage.",
+        "high": "Take the Tear road west out of Riverwalk and Thorn is a short walk. The same road goes on from Thorn to Tear. For Hissmir or Murkwater you want a canoe from the ferry stage. Deesh-Ra at the stage shelter gives every route from there. She's good at it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2-2.role-boat-work",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2-2",
+      "keys": {
+        "topic": "topic.role-boat-work"
+      },
+      "words": "I pole the raft down the channel and load it at the stage. Where dark catches the boat, that landing is where the crew sleeps. Here that means the crews' house on the spit, which has the best bunks on the coast. I wear the caps to bed, pole-hand. They cost more than the bunk.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-boat-work.default",
+        "hash": "12eddb15"
+      },
+      "factIds": [
+        "fact.boat-crew.sleeps-at-landing"
+      ],
+      "variants": {
+        "low": "We pole and load. Where dark catches the boat, the crew sleeps. Here that's the crews' house.",
+        "high": "I pole the raft down the channel and load it at the stage. Where dark catches the boat, that landing is where the crew sleeps. Here that means the crews' house on the spit, which has the best bunks on the coast. Half-Tail hums to keep us in stroke. You'd want that on a long pole, pole-hand."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2-2.about-thorn",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2-2",
+      "keys": {
+        "topic": "topic.about-thorn"
+      },
+      "words": "Thorn is the border city in the north, up the Tear road, where the saltrice fields are. Its field-owners say the toll on the pilgrim water is theirs. Their agents walk out to our spit to argue it, which I resent. The Ash-Reed Accord there squabbles over who has title to the fields.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-thorn.default",
+        "hash": "8559ea2d"
+      },
+      "factIds": [
+        "fact.thorn.border-city",
+        "fact.thorn.accord"
+      ],
+      "variants": {
+        "low": "Thorn is the border city in the north, saltrice country. The Ash-Reed Accord there squabbles over who has title to the fields.",
+        "high": "Thorn is the border city in the north, up the Tear road, where the saltrice fields are. Its field-owners say the toll on the pilgrim water is theirs. The Ash-Reed Accord there squabbles over who has title to the fields. If a Thorn agent finds you on the spit, pole-hand, don't pay him the toll. Here that counts as taking his side."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2-2.about-hissmir",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2-2",
+      "keys": {
+        "topic": "topic.about-hissmir"
+      },
+      "words": "Hissmir is up the pilgrim water by canoe. Outsiders go there to commune with the great tree. So do Argonians who have none of their own. Whoever comes has to pass the trials first. The pilgrims eat well here before they go. I've watched them do it.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-hissmir.default",
+        "hash": "e60c061a"
+      },
+      "factIds": [
+        "fact.hissmir.outsiders",
+        "fact.hissmir.trials"
+      ],
+      "variants": {
+        "low": "Hissmir is up the pilgrim water. Outsiders go there to commune with the Hist. So do Argonians who have none. The trials come first.",
+        "high": "Hissmir is up the pilgrim water by canoe. Outsiders go there to commune with the great tree. So do Argonians who have none of their own. Whoever comes has to pass the trials first. The pilgrims eat well here before they go. Eat well too, pole-hand, if you go."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-n2-3.base",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.n2-3",
+      "words": "Stones tonight, pole-hand? My luck is running.",
+      "available": [],
+      "variants": {
+        "low": "Not now, pole-hand. My throw is next.",
+        "high": "Pole-hand! Sit with me. I will teach you a throw."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-n2-3.night",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.n2-3",
+      "words": "Quiet, please. I pole at dawn.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Let me sleep. I am trying to rest.",
+        "high": "Quiet, friend. Come by at first light."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-n2-3.high",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.n2-3",
+      "words": "The bunk is still mine. Another round, pole-hand?",
+      "available": [
+        {
+          "speakerDispositionAtLeast": 70
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "The bunk is mine. Go on your way.",
+        "high": "Slow Heron's best friend! Pull up a mat."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-n2-3.crime",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.n2-3",
+      "words": "I play fair. You did not. Leave the bunk-house.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "Leave the bunk-house. I play fair, you do not.",
+        "high": "I hoped better of you, pole-hand. Leave the bunk-house."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.riverwalk-n2-3.passing",
+      "type": "bark",
+      "speaker": "npc.dunmer-north.riverwalk.n2-3",
+      "slot": "passing",
+      "words": "Stones tonight, pole-hand?",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.riverwalk-n2-3.at-work",
+      "type": "bark",
+      "speaker": "npc.dunmer-north.riverwalk.n2-3",
+      "slot": "at-work",
+      "words": "Lean on it.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2-3.riverwalk",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2-3",
+      "keys": {
+        "topic": "topic.riverwalk"
+      },
+      "words": "Boats off the sea all end up in this cove, because the water inside it sits still. I pole a raft out to the ferry stage along the plank walk, the long boards that cross the cove to the islet. I sleep in the crews' house on the shore. I've got the best bunk in it. I won it at Shells and Stones. I've kept it since.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk.default",
+        "hash": "ce8efe77"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "This is the cove. The boats come in here. I pole the raft out to the stage. Leave my bunk be, I won it at Shells and Stones.",
+        "high": "Boats off the sea all end up in this cove, because the water inside it sits still. I pole a raft out to the stage along the plank walk. Come by the crews' house tonight. I'll show you my bunk, the best one, won at Shells and Stones."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2-3.riverwalk-work",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2-3",
+      "keys": {
+        "topic": "topic.riverwalk-work"
+      },
+      "words": "I'm a pole-hand on a boat crew. We take the raft out across the cove to the stage and back again. A toll is taken from every boat that enters the pilgrim water. It comes out of the crew's share before we see a coin. I watch the slate on the spit when it's called.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-work.default",
+        "hash": "19d7bdbe"
+      },
+      "factIds": [
+        "fact.toll.pilgrim-water"
+      ],
+      "variants": {
+        "low": "I pole the raft. A toll is taken from every boat that enters the pilgrim water. It comes out of our share. Ask the toll-holder about the rest.",
+        "high": "I'm a pole-hand on a boat crew, a good one. A toll is taken from every boat that enters the pilgrim water. It comes out of our share. Ask for me by the Slow Heron and I'll pole you across for less."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2-3.riverwalk-people",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2-3",
+      "keys": {
+        "topic": "topic.riverwalk-people"
+      },
+      "words": "The long house is out on piles in the shallows. A household of herb-gatherers lives there. They feed us at their table. The toll-holder has two hands to help him at the post by the spit. Crews like mine sleep over on the shore. It's a village that lets a man keep what he wins, so I like it here.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-people.default",
+        "hash": "6671955e"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "A herb household keeps the long house. The toll-holder keeps the post. Crews sleep on the shore. Talk to them yourself.",
+        "high": "The long house on the piles belongs to a household of herb-gatherers. They feed us well at their table. The toll-holder has two hands at the post by the spit. Crews like mine sleep on the shore. I like it here."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2-3.riverwalk-danger",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2-3",
+      "keys": {
+        "topic": "topic.riverwalk-danger"
+      },
+      "words": "Each morning a crew pushes a pole into the mud to find the lane across the cove. I've done it many times. Silt worries me most. If the cove fills, the boats will tie up on some other shore. These bunks would stand empty then.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-danger.default",
+        "hash": "86960caa"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Silt. A crew sounds the lane every morning with a pole. If the cove fills, the boats leave.",
+        "high": "Silt is the danger. Each morning a crew pushes a pole into the mud to find the lane across the cove. I've done it many times. If the cove fills, the boats will tie up on some other shore. Watch where you step on the boards at the edge."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2-3.riverwalk-directions",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2-3",
+      "keys": {
+        "topic": "topic.riverwalk-directions"
+      },
+      "words": "Thorn is a short walk from the spit, along the Tear road. The road runs on from Thorn into Morrowind. Canoes for Hissmir leave from the ferry stage, up the pilgrim water.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-directions.default",
+        "hash": "d44d65c4"
+      },
+      "factIds": [
+        "fact.thorn.tear-road"
+      ],
+      "variants": {
+        "low": "Thorn is a short walk along the Tear road. That road runs on into Morrowind. Canoes for Hissmir leave from the stage.",
+        "high": "Thorn is a short walk from the spit, along the Tear road. The road runs on from Thorn into Morrowind. Canoes for Hissmir leave from the ferry stage, up the pilgrim water. Eat first. The stage-mistress will ask."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2-3.role-boat-work",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2-3",
+      "keys": {
+        "topic": "topic.role-boat-work"
+      },
+      "words": "A boat crew poles her down the channel and loads her at the stage. Riverwalk has no fields or gardens, so the long house table is where we eat. Each crew gets a bunk too. Settle for it before you leave. The village thinks little of crews who skip that.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-boat-work.default",
+        "hash": "12eddb15"
+      },
+      "factIds": [
+        "fact.riverwalk.grows-no-food"
+      ],
+      "variants": {
+        "low": "We pole boats down the channel. Riverwalk has no fields, so the long house feeds us. We get a bunk. Settle for it.",
+        "high": "A boat crew poles her down the channel and loads her at the stage. Riverwalk has no fields or gardens, so the long house table is where we eat. Each crew gets a bunk too. If you crew with us, I'll show you the way to settle for it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2-3.about-shells-and-stones",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2-3",
+      "keys": {
+        "topic": "topic.about-shells-and-stones"
+      },
+      "words": "It's a gambling game. You play on a reed mat with marks on it. The crews play it every evening in the crews' house. You stake whatever you have on a throw, even the best bunk. Whoever wins takes the stake. That's how I got mine.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-shells-and-stones.default",
+        "hash": "09c8d5ee"
+      },
+      "factIds": [
+        "fact.shells.reed-mat",
+        "fact.shells.crews",
+        "fact.shells.bunk"
+      ],
+      "variants": {
+        "low": "A gambling game. A reed mat, marks on it. Crews play it nightly in the crews' house. They stake even a bunk.",
+        "high": "It's a gambling game. You play on a reed mat with marks on it. The crews play it every evening in the crews' house. You stake whatever you have on a throw, even a bunk. Sit down tonight. I'll let you try a round."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-n3.base",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.n3",
+      "words": "I rang the chime. Go ahead, captain.",
+      "available": [],
+      "variants": {
+        "low": "The chime is rung. Say what you want.",
+        "high": "I rang the chime. Welcome, captain."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-n3.night",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.n3",
+      "words": "The post shuts at dark. The ferry waits for light.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "The post is shut. Return at light.",
+        "high": "The post is shut, captain. The ferry sails at light."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-n3.high",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.n3",
+      "words": "We know your name, captain.",
+      "available": [
+        {
+          "factionStandingAtLeast": [
+            "faction.an-xileel",
+            50
+          ]
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Your name is known. Mind the boards.",
+        "high": "We know your name, captain. The boards are yours."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-n3.crime",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.n3",
+      "words": "Stay put. The toll-holder will hear of this.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "Stay where you are. Lifts-Two-Traps will hear of it.",
+        "high": "Stay put, captain. I would sooner not call the toll-holder."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.riverwalk-n3.passing",
+      "type": "bark",
+      "speaker": "npc.dunmer-north.riverwalk.n3",
+      "slot": "passing",
+      "words": "Boards are clean.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.riverwalk-n3.at-work",
+      "type": "bark",
+      "speaker": "npc.dunmer-north.riverwalk.n3",
+      "slot": "at-work",
+      "words": "Chime first, then the post.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n3.riverwalk",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n3",
+      "keys": {
+        "topic": "topic.riverwalk"
+      },
+      "words": "I work the toll post on the spit. The shrine beside it gets swept first each morning, before the post opens. From there the boards run out over the cove to the islet where the ferry lies.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk.default",
+        "hash": "ce8efe77"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "I work the toll post on the spit. The ferry lies across the boards. Pay at the post before you cross.",
+        "high": "I work the toll post on the spit. The water is calm here, so rest on the boards a moment before you cross to the ferry."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n3.riverwalk-work",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n3",
+      "keys": {
+        "topic": "topic.riverwalk-work"
+      },
+      "words": "I work the toll post on the spit. The ground here grows no food. The coin from the captains buys what is eaten.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-work.default",
+        "hash": "19d7bdbe"
+      },
+      "factIds": [
+        "fact.riverwalk.grows-no-food"
+      ],
+      "variants": {
+        "low": "The ground here grows no food. Captains pay at my post. The coin buys the meals. Pay, then cross.",
+        "high": "I work the toll post on the spit. The ground here grows no food. The coin from the captains buys the meals. A fed traveller crosses easier."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n3.riverwalk-people",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n3",
+      "keys": {
+        "topic": "topic.riverwalk-people"
+      },
+      "words": "The herb family has the long house out on the piles. Boat hands sleep in the house on the spit that lets beds. Lifts-Two-Traps is the toll-holder at the post. Runs-The-Line-Out and I are his two toll hands.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-people.default",
+        "hash": "6671955e"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "The herb family has the long house. Boat hands sleep on the spit. Ask Lifts-Two-Traps about the post.",
+        "high": "The herb family has the long house out on the piles. Boat hands sleep in the house on the spit that lets beds. Lifts-Two-Traps runs the post. Runs-The-Line-Out and I are his toll hands. We are glad of the work."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n3.riverwalk-danger",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n3",
+      "keys": {
+        "topic": "topic.riverwalk-danger"
+      },
+      "words": "Silt. Nothing else along this coast gives boats still water, so if the cove fills they tie up elsewhere. The way across is sounded with a pole every morning, before the first boat.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-danger.default",
+        "hash": "86960caa"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Silt. If the cove fills, the boats go elsewhere. The way across is sounded each morning.",
+        "high": "Silt is the worry. Nothing else along this coast gives boats still water, so a filled cove sends them elsewhere. The way across is sounded with a pole every morning, before the first boat. The boards are safe to walk."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n3.riverwalk-directions",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n3",
+      "keys": {
+        "topic": "topic.riverwalk-directions"
+      },
+      "words": "Take the Tear road west to Thorn, a short walk. From Thorn it runs on to the town of Tear. For canoes to Hissmir, Murkwater or the Tide Fair, cross the boards to the islet. Deesh-Ra takes the fares there and feeds you first.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-directions.default",
+        "hash": "d44d65c4"
+      },
+      "factIds": [
+        "fact.tear.road"
+      ],
+      "variants": {
+        "low": "West along the Tear road is Thorn, then Tear. Canoes leave from the islet.",
+        "high": "Take the Tear road west to Thorn, a short walk. From Thorn it runs on to Tear. For canoes to Hissmir, Murkwater or the Tide Fair, cross the boards to the islet. Deesh-Ra takes the fares there and feeds you first. Go before dusk."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n3.role-toll",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n3",
+      "keys": {
+        "topic": "topic.role-toll"
+      },
+      "words": "Captains owe a levy for taking a boat into the pilgrim water. The sum is written down. They pay it at the post. Both Thorn and Hissmir claim the toll. The toll office holds the coin for the state until that is settled.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-toll.default",
+        "hash": "b75c013c"
+      },
+      "factIds": [
+        "fact.toll.levy",
+        "fact.toll.two-claimants"
+      ],
+      "variants": {
+        "low": "A levy on the boat, paid at the post. Thorn and Hissmir both claim it. Pay me.",
+        "high": "Captains owe a levy for taking a boat into the pilgrim water. The sum is written down. They pay it at the post. Both Thorn and Hissmir claim the toll. The toll office holds the coin for the state until that is settled. Your coin is safe there."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-n3-2.base",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.n3-2",
+      "words": "Pay at the post first, captain.",
+      "available": [],
+      "variants": {
+        "low": "Post first. Then talk.",
+        "high": "Pay at the post, captain. I will point you to the shelter after."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-n3-2.night",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.n3-2",
+      "words": "The box is locked for tonight.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Box is locked. Return at light.",
+        "high": "The box is locked, captain. Return at light and I will weigh you first."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-n3-2.high",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.n3-2",
+      "words": "Your last payment was clean. Pass, captain.",
+      "available": [
+        {
+          "factionStandingAtLeast": [
+            "faction.an-xileel",
+            50
+          ]
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "You paid late last time. Wait here.",
+        "high": "Your last payment was clean, captain. Pass through and mind the soft boards."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-n3-2.crime",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.n3-2",
+      "words": "You had your hands on the box, captain.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "Off the box.",
+        "high": "Hands off the box, captain. Step back from the post."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.riverwalk-n3-2.passing",
+      "type": "bark",
+      "speaker": "npc.dunmer-north.riverwalk.n3-2",
+      "slot": "passing",
+      "words": "Light today.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.riverwalk-n3-2.at-work",
+      "type": "bark",
+      "speaker": "npc.dunmer-north.riverwalk.n3-2",
+      "slot": "at-work",
+      "words": "Counting the box.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n3-2.riverwalk",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n3-2",
+      "keys": {
+        "topic": "topic.riverwalk"
+      },
+      "words": "I work the toll post at the shore end. This cove is the one still water on the coast, so the boats come to us. At dusk, I lift the box and its weight tells me how the day went.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk.default",
+        "hash": "ce8efe77"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "The toll post, at the shore end. Pay there if you land.",
+        "high": "I work the toll post at the shore end. Come at dusk and I'll show you the box. This cove is the one still water on the coast, so the boats all come."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n3-2.riverwalk-work",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n3-2",
+      "keys": {
+        "topic": "topic.riverwalk-work"
+      },
+      "words": "At my post, I take the toll from each master whose boat enters the pilgrim water. At dusk, I carry the box up from the spit. A heavy box is a good day.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-work.default",
+        "hash": "19d7bdbe"
+      },
+      "factIds": [
+        "fact.toll.pilgrim-water"
+      ],
+      "variants": {
+        "low": "Tolls. Pay at the post.",
+        "high": "At my post, I take the toll from each master whose boat enters the pilgrim water. Pay early in the day while boats are few. The wait is short then."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n3-2.riverwalk-people",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n3-2",
+      "keys": {
+        "topic": "topic.riverwalk-people"
+      },
+      "words": "Herb-gatherers live in the long house. Boat hands sleep in the plank house on the spit. At the post, it is the toll-holder, Reaches-The-Shore-Last and me.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-people.default",
+        "hash": "6671955e"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Herb-gatherers, boat hands, the post. Ask no more.",
+        "high": "Herb-gatherers live in the long house. Boat hands sleep in the plank house on the spit. The post has three of us. Hungry? Eat at the long house table first."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n3-2.riverwalk-danger",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n3-2",
+      "keys": {
+        "topic": "topic.riverwalk-danger"
+      },
+      "words": "The water is safe. Silt is the worry. A pole sounds the way across before the first boat, every morning. If the cove fills, boats go elsewhere and my box goes light.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-danger.default",
+        "hash": "86960caa"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Silt. Mind the boards.",
+        "high": "The water is safe. Silt is the worry. A pole sounds the way across before the first boat, every morning. Walk the middle of the boards, the edges are soft."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n3-2.riverwalk-directions",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n3-2",
+      "keys": {
+        "topic": "topic.riverwalk-directions"
+      },
+      "words": "Up the Tear road is Thorn, a short walk. Past Thorn the road runs on into Morrowind. For Hissmir or Murkwater, pay at the shelter on the islet.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-directions.default",
+        "hash": "d44d65c4"
+      },
+      "factIds": [
+        "fact.thorn.tear-road"
+      ],
+      "variants": {
+        "low": "Thorn, up the Tear road. Water, the islet.",
+        "high": "Up the Tear road is Thorn, a short walk. Past Thorn the road runs on into Morrowind. For Hissmir or Murkwater, pay at the shelter on the islet. Fares are fairer before noon."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n3-2.role-toll",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n3-2",
+      "keys": {
+        "topic": "topic.role-toll"
+      },
+      "words": "I call the sum at my post to the master of each boat going into the pilgrim water. The toll-holder writes it down. I carry the box. Who gets the coin, others argue.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-toll.default",
+        "hash": "b75c013c"
+      },
+      "factIds": [
+        "fact.toll.pilgrim-water"
+      ],
+      "variants": {
+        "low": "Pay the toll. Do not ask who gets it.",
+        "high": "I call the sum at my post to the master of each boat going into the pilgrim water. The toll-holder writes it down. Pay in full once and your name is good here."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-stage-mistress.base",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.stage-mistress",
+      "words": "Fed yet, traveller? No canoe sails with an empty passenger.",
+      "available": [],
+      "variants": {
+        "low": "You have not eaten. Eat, then ask.",
+        "high": "I extend the claw of welcome. Sit and eat first."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-stage-mistress.night",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.stage-mistress",
+      "words": "The canoes sail at dawn. Eat, then sleep.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "The stage is shut until dawn.",
+        "high": "Rest well, traveller. Food, then bed. Canoes sail at dawn."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-stage-mistress.high",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.stage-mistress",
+      "words": "Pilot, welcome. Did you eat today?",
+      "available": [
+        {
+          "factionStandingAtLeast": [
+            "faction.reed-sail-compact",
+            50
+          ]
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Pilot. Fares first.",
+        "high": "Welcome back, pilot. Sit, there is food waiting."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-stage-mistress.crime",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.stage-mistress",
+      "words": "No canoe leaves for you.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "No fare taken. Away from my stage.",
+        "high": "Not today, traveller. Settle this, then come back."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.riverwalk-stage-mistress.passing",
+      "type": "bark",
+      "speaker": "npc.dunmer-north.riverwalk.stage-mistress",
+      "slot": "passing",
+      "words": "Rest here. Eaten yet?",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.riverwalk-stage-mistress.at-work",
+      "type": "bark",
+      "speaker": "npc.dunmer-north.riverwalk.stage-mistress",
+      "slot": "at-work",
+      "words": "Fares in the tent!",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-stage-mistress.riverwalk",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.stage-mistress",
+      "keys": {
+        "topic": "topic.riverwalk"
+      },
+      "words": "I'm the stage-mistress. I take the fares in the open tent on the islet, at the far end of the plank walk from the shore. The boards under your feet are all different ages. We replace one at a time when it goes soft.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk.default",
+        "hash": "ce8efe77"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "The fares are in the tent on the islet. Cross the plank walk and stand there.",
+        "high": "I'm the stage-mistress, glad of you. The fares are taken in the open tent on the islet, past the end of the plank walk. Mind the boards on the way. They're all different ages, because we replace them one at a time."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-stage-mistress.riverwalk-work",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.stage-mistress",
+      "keys": {
+        "topic": "topic.riverwalk-work"
+      },
+      "words": "This village grows no food of its own. All of it comes in off the boats, so the boat folk get fed first. My part is the fares. I take them in the tent on the islet. No canoe leaves with a passenger who has not eaten.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-work.default",
+        "hash": "19d7bdbe"
+      },
+      "factIds": [
+        "fact.riverwalk.grows-no-food"
+      ],
+      "variants": {
+        "low": "No food grows here. I take fares. Pay at the tent and eat before you ask for a canoe.",
+        "high": "Nothing grows here, so every bowl comes in off a boat. I take the fares in the tent on the islet. I'll tell you the price of a seat before you sit. The meal comes first if you're hungry."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-stage-mistress.riverwalk-people",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.stage-mistress",
+      "keys": {
+        "topic": "topic.riverwalk-people"
+      },
+      "words": "The herb-gatherers have the long house, the big plank house on piles in the shallows. Boat folk sleep in the plank house on the spit. At the shore end of the walk the toll-holder has his post, with two hands beside him. The ones I can't stand are boatmen who sail off without paying for their bunk.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-people.default",
+        "hash": "6671955e"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Herb-gatherers in the long house, boat folk on the spit, the toll-holder at the shore end. That is all of us.",
+        "high": "The herb-gatherers have the long house out on piles. They feed anyone who lands. Boat folk sleep on the spit. The toll-holder sits at the shore end of the walk with two hands. I like the herb-gatherers best. The bunk-dodgers I can't stand."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-stage-mistress.riverwalk-danger",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.stage-mistress",
+      "keys": {
+        "topic": "topic.riverwalk-danger"
+      },
+      "words": "The water in the cove is safe. Mud is the worry. No other water on this coast is sheltered, so if it silts up the boats put in somewhere else. A pole sounds the way across before the first boat each morning. I don't send a canoe out until it's done.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-danger.default",
+        "hash": "86960caa"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "The water's safe. Silt is the worry. A pole sounds the way across each morning. Wait for it.",
+        "high": "The water in the cove is safe, traveller. Silt is the worry, because the boats would go elsewhere if it filled. A pole sounds the way across each morning. I send no canoe out until it's done."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-stage-mistress.riverwalk-directions",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.stage-mistress",
+      "keys": {
+        "topic": "topic.riverwalk-directions"
+      },
+      "words": "Thorn is a short walk west up the Tear road. The road goes on from Thorn to the town of Tear. By water, I send canoes off the islet to Hissmir, to Murkwater and to the Tide Fair. Pay at the tent. Eat first.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-directions.default",
+        "hash": "d44d65c4"
+      },
+      "factIds": [
+        "fact.tear.road"
+      ],
+      "variants": {
+        "low": "Thorn is west up the Tear road. Canoes to Hissmir, to Murkwater or to the Tide Fair go off the islet. Pay at the tent.",
+        "high": "Thorn is a short walk west up the Tear road. From there the road runs on to Tear. The water routes are mine to give. I send canoes off the islet to Hissmir, to Murkwater and to the Tide Fair. Pay at the tent. I'll find you a seat and a bowl."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-stage-mistress.role-stage",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.stage-mistress",
+      "keys": {
+        "topic": "topic.role-stage"
+      },
+      "words": "Boats moor at the ferry stage, out beyond the islet. I take the fares in the tent there. Passengers pay before they board. A boat's hands I call by the boat's name. A passenger is a traveller to me until the village feeds them. Eaten yet? The long house table is the place.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-stage.default",
+        "hash": "2c4eb38a"
+      },
+      "factIds": [
+        "fact.stage.boats-moor",
+        "fact.stage.fares",
+        "fact.stage.crew-names",
+        "fact.stage.traveller-until-fed"
+      ],
+      "variants": {
+        "low": "Boats moor at the ferry stage. Fares are paid there before boarding. Boat hands go by their boat's name. Passengers are travellers until fed.",
+        "high": "Boats moor at the ferry stage beyond the islet. Passengers pay me their fares in the tent before they board. I call the boat hands by the name of their boat. You're a traveller to me until the village feeds you. After that I'll learn your name."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-stage-mistress.about-hissmir",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.stage-mistress",
+      "keys": {
+        "topic": "topic.about-hissmir"
+      },
+      "words": "Hissmir lies up the pilgrim water by canoe. It's a place of pilgrimage where outsiders can touch a Hist. The Root Stewards run the trials there. They can't refuse anyone who comes. Pilgrims eat well here before the canoe sets off. I see to that.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-hissmir.default",
+        "hash": "e60c061a"
+      },
+      "factIds": [
+        "fact.hissmir.stewards"
+      ],
+      "variants": {
+        "low": "Hissmir is up the pilgrim water. The Root Stewards run its trials. All visitors are admitted.",
+        "high": "Hissmir lies up the pilgrim water by canoe. Outsiders can touch a Hist there. The Root Stewards run the trials. They can't refuse anyone who comes, ojel or not. I'll feed you well before the canoe leaves."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-stage-mistress.about-reed-sail-compact",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.stage-mistress",
+      "keys": {
+        "topic": "topic.about-reed-sail-compact"
+      },
+      "words": "The Compact is a guild. Boatmen, routes and ferries all belong to it. It directs the boats along the rivers and the coast. I work its post at this stage. The Salt-Teeth are pirates who sail inside the Compact. A boat's name can cover a raider.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-reed-sail-compact.default",
+        "hash": "64816638"
+      },
+      "factIds": [
+        "fact.compact.guild",
+        "fact.compact.boats",
+        "fact.compact.salt-teeth"
+      ],
+      "variants": {
+        "low": "The Compact is the boatmen's guild. It directs boats on river and coast. Salt-Teeth pirates sail inside it.",
+        "high": "The Compact is a guild of boatmen, with the routes and ferries under it. It directs the boats along the rivers and the coast. I work its post here. Pirates called the Salt-Teeth sail inside the Compact too. I look hard at any boat whose name I don't know."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-toll-holder.base",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.toll-holder",
+      "words": "Your boat's name, captain, for the slate.",
+      "available": [],
+      "variants": {
+        "low": "Name. Then go.",
+        "high": "Welcome back, captain. Your boat?"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-toll-holder.night",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.toll-holder",
+      "words": "Moor for the night, captain.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Moor. I write you at dawn.",
+        "high": "Moor safe, captain. Dawn entry."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-toll-holder.high",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.toll-holder",
+      "words": "You are in the column, captain.",
+      "available": [
+        {
+          "factionStandingAtLeast": [
+            "faction.an-xileel",
+            50
+          ]
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Paid. Pass.",
+        "high": "Paid and welcome, captain."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.riverwalk-toll-holder.crime",
+      "type": "greeting",
+      "speaker": "npc.dunmer-north.riverwalk.toll-holder",
+      "words": "Stop here, captain. The slate stays with me.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "Hold there.",
+        "high": "Hold there, captain, please."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.riverwalk-toll-holder.passing",
+      "type": "bark",
+      "speaker": "npc.dunmer-north.riverwalk.toll-holder",
+      "slot": "passing",
+      "words": "Entered and paid.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.riverwalk-toll-holder.at-work",
+      "type": "bark",
+      "speaker": "npc.dunmer-north.riverwalk.toll-holder",
+      "slot": "at-work",
+      "words": "Hull from seaward!",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-toll-holder.riverwalk",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.toll-holder",
+      "keys": {
+        "topic": "topic.riverwalk"
+      },
+      "words": "I stand at the head of the boards on the spit. From there I call the toll on every hull that comes in off the sea. They put in here because it's the one calm cove on this stretch of coast. I've seen the swell outside. I wouldn't anchor in it either.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk.default",
+        "hash": "ce8efe77"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "A cove. Boats arrive. I enter each hull.",
+        "high": "Come and stand at the head of the boards a while, captain. I'll show you the cove. I call the toll on every hull from here. The swell outside is why they all stop here. You'll find the water inside stays flat all night."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-toll-holder.riverwalk-work",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.toll-holder",
+      "keys": {
+        "topic": "topic.riverwalk-work"
+      },
+      "words": "My work is the toll. Boats pay at my post before they go on into the pilgrim water. I call the hull, take the sum and write it down. It's dull work but it's steady. The crews tell me where they've been while I write.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-work.default",
+        "hash": "19d7bdbe"
+      },
+      "factIds": [
+        "fact.toll.pilgrim-water"
+      ],
+      "variants": {
+        "low": "The toll. Boats pay it at my post before the pilgrim water. Don't stand on the slate.",
+        "high": "My work is the toll, captain. I'm good at it. Boats pay at my post before they go on into the pilgrim water. I call the hull, take the sum and write it down. Come by at dusk and I'll show you a full slate. The crews tell me their news while I write."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-toll-holder.riverwalk-people",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.toll-holder",
+      "keys": {
+        "topic": "topic.riverwalk-people"
+      },
+      "words": "The herb-gatherers keep the long house out on the piles. Boat crews take their bunks on the spit, a step from my post. Two hands share the post with me, Reaches-The-Shore-Last and Runs-The-Line-Out. Between the three of us, every hull that comes gets a line.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-people.default",
+        "hash": "6671955e"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "A household in the long house, crews on the spit, two hands with me at the post. That's the lot.",
+        "high": "You've come to a friendly cove, captain. The herb-gatherers in the long house will feed you. Crews take their bunks on the spit by my post. Two hands share the toll with me, Reaches-The-Shore-Last and Runs-The-Line-Out. They'll write your hull if I'm eating."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-toll-holder.riverwalk-danger",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.toll-holder",
+      "keys": {
+        "topic": "topic.riverwalk-danger"
+      },
+      "words": "The water's safe. Silt is what worries me. If the cove fills, the boats will go and tie up somewhere else, and then I've nothing to write. Every morning before the first boat, a pole sounds the way across the cove. I've seen no creature in the water worth a column.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-danger.default",
+        "hash": "86960caa"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Silt. Nothing in the water bites. Mind the boards.",
+        "high": "Don't worry about the water, captain, it's safe. Silt is the only trouble. If the cove fills, the boats go elsewhere and I've nothing to write. So the way across gets sounded with a pole every morning before the first boat. I'll point out the soft boards myself."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-toll-holder.riverwalk-directions",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.toll-holder",
+      "keys": {
+        "topic": "topic.riverwalk-directions"
+      },
+      "words": "Thorn is a short walk by the Tear road, which carries on out of the city into Morrowind. Canoes for Hissmir leave from the ferry stage, out past the islet. Murkwater and the Tide Fair take canoes from there too.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.riverwalk-directions.default",
+        "hash": "d44d65c4"
+      },
+      "factIds": [
+        "fact.thorn.tear-road"
+      ],
+      "variants": {
+        "low": "Thorn is up the Tear road. Canoes leave from the ferry stage. The islet.",
+        "high": "Thorn is a short walk by the Tear road, captain. That road carries on out of the city into Morrowind. For Hissmir, Murkwater or the Tide Fair, go over the boards to the ferry stage past the islet. Deesh-Ra will find you a canoe."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-toll-holder.role-toll",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.toll-holder",
+      "keys": {
+        "topic": "topic.role-toll"
+      },
+      "words": "Every boat gets a line on my slate, ruled down the middle. Thorn gets a column, Hissmir gets a column, because each of them says the toll is theirs. Boat, column, sum, that's the entry. I don't leave the slate alone on the spit.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-toll.default",
+        "hash": "b75c013c"
+      },
+      "factIds": [
+        "fact.toll.slate"
+      ],
+      "variants": {
+        "low": "A line on the slate for every boat. Thorn's column, Hissmir's column. Pay and pass.",
+        "high": "Every boat gets a line on my slate, captain, ruled down the middle. Thorn gets a column, Hissmir gets a column, because each says the toll is theirs. Boat, column, sum, that's the entry. Pay either agent directly and you've picked a side, so pay me."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-toll-holder.about-thorn",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.toll-holder",
+      "keys": {
+        "topic": "topic.about-thorn"
+      },
+      "words": "Thorn is the big city in the saltrice fields, up the Tear road. House Dres raided the city for slaves in the old days and grew fat on its rice. These days Thorn's field-owners send agents out to my spit to shout about the toll.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-thorn.default",
+        "hash": "8559ea2d"
+      },
+      "factIds": [
+        "fact.thorn.dres-raid"
+      ],
+      "variants": {
+        "low": "A city in the rice fields. House Dres raided it once. Its agents annoy me.",
+        "high": "Thorn is the big city in the saltrice fields, captain, up the Tear road. House Dres raided the city for slaves in the old days and grew fat on its rice. Today the field-owners send agents out to my spit to shout about the toll. Go and see it, but keep your coin in your pocket there."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-toll-holder.about-hissmir",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.toll-holder",
+      "keys": {
+        "topic": "topic.about-hissmir"
+      },
+      "words": "Hissmir is a xanmeer, one of the old Argonian stone temples, down in southern Shadowfen. Outsiders go there to touch a Hist. Their canoes pass my post on the way up the pilgrim water. Each one gets a line in the Hissmir column.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-hissmir.default",
+        "hash": "e60c061a"
+      },
+      "factIds": [
+        "fact.hissmir.xanmeer"
+      ],
+      "variants": {
+        "low": "A xanmeer in southern Shadowfen. Outsiders go to touch a Hist. Canoes pay here.",
+        "high": "Hissmir is a xanmeer, captain, one of the old Argonian stone temples, down in southern Shadowfen. Outsiders go there to touch a Hist. The canoes pass my post on the way up the pilgrim water. I'll write yours in the Hissmir column if you're bound there."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n1-3.about-hissmir",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n1-3",
+      "keys": {
+        "topic": "topic.about-hissmir"
+      },
+      "words": "Hissmir is a xanmeer, an old stepped pyramid of stone, in southern Shadowfen. It lies up the pilgrim water from us. Outsiders go there to commune with the Hist, the great tree. So do Argonians who hatched with no Hist of their own. The pilgrims eat at my table first. I tell them a full belly helps.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-hissmir.default",
+        "hash": "e60c061a"
+      },
+      "factIds": [
+        "fact.hissmir.xanmeer",
+        "fact.hissmir.outsiders"
+      ],
+      "variants": {
+        "low": "Hissmir is a xanmeer, a stepped stone pyramid, in southern Shadowfen. Outsiders go there to commune with the Hist. So do Argonians who lack one.",
+        "high": "Hissmir is a xanmeer, an old stepped pyramid of stone, in southern Shadowfen. It lies up the pilgrim water from us. Outsiders go there to commune with the Hist, the great tree. So do Argonians who hatched with no Hist of their own. When you're back, tell me at the pot how it went."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n1-3.about-ojel",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n1-3",
+      "keys": {
+        "topic": "topic.about-ojel"
+      },
+      "words": "Ojel is our word for an outsider. It's a plain word with no insult in it, so say it in my house. Do not say lukiul. The An-Xileel coined that as a slur for Argonians who were hatched out in other lands. Such Argonians cannot hear the Hist, the great tree of a village. Most boatmen at my table haven't heard either word.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-ojel.default",
+        "hash": "a30272d6"
+      },
+      "factIds": [
+        "fact.ojel.outsiders",
+        "fact.ojel.neutral",
+        "fact.lukiul.slur",
+        "fact.lukiul.deaf"
+      ],
+      "variants": {
+        "low": "Ojel means outsider. It's a plain word with no insult. Lukiul is the An-Xileel's slur for Argonians hatched beyond the marsh, who cannot hear the Hist.",
+        "high": "Ojel is our word for an outsider. It's a plain word with no insult in it, so say it in my house. Do not say lukiul. The An-Xileel coined that as a slur for Argonians who were hatched out in other lands. Such Argonians cannot hear the Hist. If a boatman shouts either word at you, come and tell me."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n1-3.about-riverwalk",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n1-3",
+      "keys": {
+        "topic": "topic.about-riverwalk"
+      },
+      "words": "Riverwalk is the landing in a sheltered cove. Thorn lies a little west of it. Riverwalk grows no food, so we buy it from the boats. We feed the boatmen and give each boat's people a bunk. The ferry stage where boats moor lies out across the cove. Planks lead out to it from the shore houses.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-riverwalk.default",
+        "hash": "30a63068"
+      },
+      "factIds": [
+        "fact.riverwalk.grows-no-food",
+        "fact.riverwalk.feeds-crews",
+        "fact.riverwalk.cove"
+      ],
+      "variants": {
+        "low": "A landing in a cove, with Thorn a little west. Riverwalk grows no food. We feed boatmen and give them a bunk.",
+        "high": "Riverwalk is the landing in a sheltered cove. Thorn lies a little west of it. Riverwalk grows no food, so we buy it from the boats. We feed the boatmen and give each boat's people a bunk. The ferry stage where boats moor lies out across the cove. Ask for the long house when you land and I'll set a bowl out for you."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2-3.about-hissmir",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2-3",
+      "keys": {
+        "topic": "topic.about-hissmir"
+      },
+      "words": "Hissmir is a stone xanmeer, a stepped pyramid the old Argonians raised, up the pilgrim water by canoe. Outsiders go there to touch the Hist. First you must pass its trials. The Root Stewards run the trials. They can't turn away anyone who comes.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-hissmir.default",
+        "hash": "e60c061a"
+      },
+      "factIds": [
+        "fact.hissmir.trials",
+        "fact.hissmir.stewards"
+      ],
+      "variants": {
+        "low": "A stone xanmeer up the pilgrim water. Outsiders touch the Hist there after the trials. The Root Stewards cannot turn you away.",
+        "high": "Hissmir is a stone xanmeer, a stepped pyramid the old Argonians raised, up the pilgrim water by canoe. Outsiders go there to touch the Hist. First you must pass its trials. The Root Stewards run them. They can't turn anyone away, so you'll be welcome."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2-3.about-morrowind",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2-3",
+      "keys": {
+        "topic": "topic.about-morrowind"
+      },
+      "words": "Morrowind is the Dunmer land north of the marsh. Early in the Fourth Era our armies sacked Mournhold there. The border has been cold ever since. Both sides resent it. A pole-hand has no business crossing.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-morrowind.default",
+        "hash": "4e2a60ec"
+      },
+      "factIds": [
+        "fact.morrowind.north",
+        "fact.morrowind.mournhold",
+        "fact.morrowind.border"
+      ],
+      "variants": {
+        "low": "The Dunmer land to the north. We sacked Mournhold early in the Fourth Era. The border is cold and resented on both sides.",
+        "high": "Morrowind is the Dunmer land north of the marsh. Early in the Fourth Era our armies sacked Mournhold there. The border has been cold ever since. Both sides resent it. Take care if you cross."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n1-3.about-lilmoth",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n1-3",
+      "keys": {
+        "topic": "topic.about-lilmoth"
+      },
+      "words": "I haven't been to Lilmoth, but the boatmen talk of it. It's the port in the south. The town stands on shallow water, so big ships stay far out and small boats ferry the goods ashore. Merchants sit as a council and rule it. In 4E 48, Umbriel, the flying city, destroyed it. They built it again, smaller.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-lilmoth.default",
+        "hash": "cefdc9be"
+      },
+      "factIds": [
+        "fact.lilmoth.shallow",
+        "fact.lilmoth.council",
+        "fact.lilmoth.destroyed",
+        "fact.lilmoth.umbriel"
+      ],
+      "variants": {
+        "low": "Lilmoth is the southern port, on shallow water, so ships stay far out. A merchants' council rules it. Umbriel, the flying city, destroyed it in 4E 48. It was built again smaller.",
+        "high": "I haven't been to Lilmoth, but the boatmen talk of it. It's the port in the south. The town stands on shallow water, so big ships stay far out and small boats ferry the goods ashore. Merchants sit as a council and rule it. In 4E 48, Umbriel, the flying city, destroyed it. They built it again, smaller. I only know what they tell me at the table."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2-3.about-hist-sap",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2-3",
+      "keys": {
+        "topic": "topic.about-hist-sap"
+      },
+      "words": "The sap is the tree's soul. We drink it as hatchlings and again at coming of age. Too much poisons even us: the mouth goes gold and the scales thicken like bark. To outsiders it's a drug. It stirs bloodlust in them. Don't drink it, ojel.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-hist-sap.default",
+        "hash": "f5f37341"
+      },
+      "factIds": [
+        "fact.hist-sap.soul",
+        "fact.hist-sap.rites",
+        "fact.hist-sap.poison",
+        "fact.hist-sap.outsider"
+      ],
+      "variants": {
+        "low": "The sap is the tree's soul. We drink it at hatching and coming of age. Too much poisons us, gold mouth and bark scales. It stirs bloodlust in outsiders.",
+        "high": "The sap is the tree's soul. We drink it as hatchlings and again at coming of age. Too much poisons even us: the mouth goes gold and the scales thicken like bark. To outsiders it's a drug. It stirs bloodlust in them. Please don't try it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2-3.about-tear",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2-3",
+      "keys": {
+        "topic": "topic.about-tear"
+      },
+      "words": "Tear is a border town of the Dunmer, down on the coastal plain. From Thorn, the Tear road brings you to it. For centuries the slave trade of House Dres worked out of there, so we don't love the name.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-tear.default",
+        "hash": "4177e2fc"
+      },
+      "factIds": [
+        "fact.tear.town",
+        "fact.tear.road",
+        "fact.tear.trade"
+      ],
+      "variants": {
+        "low": "A Dunmer border town on the coastal plain. The Tear road reaches it from Thorn. House Dres ran its slave trade there.",
+        "high": "Tear is a border town of the Dunmer, down on the coastal plain. From Thorn, the Tear road brings you to it. For centuries the slave trade of House Dres worked out of there. Go carefully if you walk it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2-3.about-thorn",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2-3",
+      "keys": {
+        "topic": "topic.about-thorn"
+      },
+      "words": "Thorn is the city on our northern border, where the saltrice fields are, a short walk from the spit. Its field-owners say the toll is theirs, which is why their agents come out here. The Tear road starts at Thorn and runs on into Morrowind.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-thorn.default",
+        "hash": "8559ea2d"
+      },
+      "factIds": [
+        "fact.thorn.tear-road"
+      ],
+      "variants": {
+        "low": "A border city of saltrice fields. The Tear road starts there and runs into Morrowind. Its agents argue the toll.",
+        "high": "Thorn is the city on our northern border, where the saltrice fields are, a short walk from the spit. Its field-owners say the toll is theirs, so their agents come out here. The Tear road starts at Thorn and runs on into Morrowind."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n1-2.about-riverwalk",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n1-2",
+      "keys": {
+        "topic": "topic.about-riverwalk"
+      },
+      "words": "Riverwalk sits in a cove, the only calm water on this coast, east of Thorn and not far. Our mud grows nothing, so we feed the boat folk from what they bring and give each of them a bunk. The ferry stage lies out on the water where the boats tie up. You reach it along the plank walk from the shore houses.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-riverwalk.default",
+        "hash": "30a63068"
+      },
+      "factIds": [
+        "fact.riverwalk.grows-no-food",
+        "fact.riverwalk.feeds-crews",
+        "fact.riverwalk.cove"
+      ],
+      "variants": {
+        "low": "A cove east of Thorn. We feed boats and bunk them. Planks lead to the stage.",
+        "high": "Riverwalk sits in a cove, the only calm water on this coast, east of Thorn and not far. We grow no food in our mud, so we feed the boat folk from their own stores and give each of them a bunk. Walk the planks out to the ferry stage and Deesh-Ra will take your fare."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n1-2.about-thorn",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n1-2",
+      "keys": {
+        "topic": "topic.about-thorn"
+      },
+      "words": "Thorn is the border city, up the Tear road from us, in the middle of the saltrice fields. The road carries on from there into Morrowind. Long ago House Dres raided the city for slaves and grew rich on the rice. These days the Ash-Reed Accord at Thorn quarrels over who owns the fields.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-thorn.default",
+        "hash": "8559ea2d"
+      },
+      "factIds": [
+        "fact.thorn.border-city",
+        "fact.thorn.tear-road",
+        "fact.thorn.dres-raid",
+        "fact.thorn.accord"
+      ],
+      "variants": {
+        "low": "Thorn is the border city up the Tear road. Walk it yourself.",
+        "high": "Thorn is the border city, up the Tear road from us, in the middle of the saltrice fields. The road carries on from there into Morrowind. House Dres raided the place for slaves long ago and grew rich on the rice. These days the Ash-Reed Accord at Thorn quarrels over who owns the fields. Go by day."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n1-2.about-tear",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n1-2",
+      "keys": {
+        "topic": "topic.about-tear"
+      },
+      "words": "Tear is a town of Dunmer, north of the saltrice country where the plain meets the coast. The Tear road brings you there from Thorn. For centuries House Dres ran its trade in slaves out of the place. I smell no good in that name.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-tear.default",
+        "hash": "4177e2fc"
+      },
+      "factIds": [
+        "fact.tear.town",
+        "fact.tear.road",
+        "fact.tear.trade"
+      ],
+      "variants": {
+        "low": "A Dunmer town up the Tear road from Thorn. House Dres ran slaves from it.",
+        "high": "Tear is a town of Dunmer, north of the saltrice country where the plain meets the coast. The Tear road brings you there from Thorn. House Dres ran its trade in slaves out of the place for centuries, so be careful whom you greet there."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n1-2.about-archon",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n1-2",
+      "keys": {
+        "topic": "topic.about-archon"
+      },
+      "words": "I've never seen Archon, only heard the boat folk talk of it. They call it the eastern port, the one legal harbour of the whole province, with marsh up on the north side and beaches down the south. Pilot families guide the ships in through the estuary. Past the headland the harbour authority has no say.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-archon.default",
+        "hash": "0b011e72"
+      },
+      "factIds": [
+        "fact.archon.legal-harbour",
+        "fact.archon.beaches",
+        "fact.archon.pilots",
+        "fact.archon.headland"
+      ],
+      "variants": {
+        "low": "Archon is the eastern port, the legal harbour. I've not been. Ask the boats.",
+        "high": "I've never seen Archon, only heard the boat folk talk of it. They call it the eastern port, the one legal harbour of the whole province, with marsh up on the north side and beaches down the south. Pilot families guide the ships in through the estuary. Past the headland the harbour authority has no say. Ask Half-Tail, he has poled that way."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n1-2.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n1-2",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "The Empire laid the Prison road and the Border road. The Mile House is an Imperial waystation. We still use the old names. The Tag House stands on a patch of dry ground by the Prison road. That road heads toward the Rose.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.imperial",
+        "fact.road.old-names",
+        "fact.road.tag-house"
+      ],
+      "variants": {
+        "low": "Old Imperial roads. We call them by the old names.",
+        "high": "The Empire laid the Prison road and the Border road. The Mile House is an Imperial waystation. We still use the old names. The Prison road heads toward the Rose, with the Tag House on a dry rise beside it. Pack your own water."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n1-3.about-archon",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n1-3",
+      "keys": {
+        "topic": "topic.about-archon"
+      },
+      "words": "Archon is the port in the east. The boatmen call it the one legal harbour in Black Marsh. Marsh runs along its northern side and beaches along the southern. Families of pilots steer the ships in through the estuary. Past the headland, the harbour authority has no say.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-archon.default",
+        "hash": "0b011e72"
+      },
+      "factIds": [
+        "fact.archon.legal-harbour",
+        "fact.archon.beaches",
+        "fact.archon.pilots",
+        "fact.archon.headland"
+      ],
+      "variants": {
+        "low": "Archon is the eastern port, the legal harbour. Marsh north, beaches south. Pilots steer ships through the estuary. The authority stops at the headland.",
+        "high": "Archon is the port in the east. The boatmen call it the one legal harbour in Black Marsh. Marsh runs along its northern side and beaches along the southern. Families of pilots steer the ships in through the estuary. Past the headland, the harbour authority has no say. I have only the boatmen's word for it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n1-3.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n1-3",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "The Border road and the Prison road are old Imperial roads. The Mile House is a waystation. Folk still call them by the old names. The Prison road leads toward the Rose. A dry rise beside it holds the Tag House.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.imperial",
+        "fact.road.old-names",
+        "fact.road.tag-house"
+      ],
+      "variants": {
+        "low": "Old Imperial roads, the three of them. The Mile House is the waystation. Folk use the old names. The Tag House is on a dry rise by the Prison road.",
+        "high": "The Border road and the Prison road are old Imperial roads. The Mile House is a waystation. Folk still call them by the old names. The Prison road leads toward the Rose. A dry rise beside it holds the Tag House. I haven't walked them myself."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n1-3.about-tear",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n1-3",
+      "keys": {
+        "topic": "topic.about-tear"
+      },
+      "words": "Tear is a Dunmer town on the border. It lies north of the saltrice country, on the flat coast. The Tear road runs there from Thorn. For centuries, House Dres worked its slave trade out of Tear.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-tear.default",
+        "hash": "4177e2fc"
+      },
+      "factIds": [
+        "fact.tear.town",
+        "fact.tear.road",
+        "fact.tear.trade"
+      ],
+      "variants": {
+        "low": "Tear is a Dunmer border town. The Tear road runs from Thorn to it. House Dres ran slaves out of it for centuries.",
+        "high": "Tear is a Dunmer town on the border. It lies north of the saltrice country, on the flat coast. The Tear road runs there from Thorn. For centuries, House Dres worked its slave trade out of Tear. I haven't been."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n1-3.about-thorn",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n1-3",
+      "keys": {
+        "topic": "topic.about-thorn"
+      },
+      "words": "Thorn is the city on the northern border, over the saltrice fields. From there, the Tear road carries on into Morrowind. In the old days, House Dres raided Thorn for slaves and grew rich on the rice. These days the Thorn Ash-Reed Accord quarrels over title to the fields.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-thorn.default",
+        "hash": "8559ea2d"
+      },
+      "factIds": [
+        "fact.thorn.border-city",
+        "fact.thorn.tear-road",
+        "fact.thorn.dres-raid",
+        "fact.thorn.accord"
+      ],
+      "variants": {
+        "low": "Thorn is a city on the northern border. The Tear road goes from it into Morrowind. House Dres raided it for slaves. The Thorn Ash-Reed Accord quarrels over title to the fields.",
+        "high": "Thorn is the city on the northern border, over the saltrice fields. From there, the Tear road carries on into Morrowind. In the old days, House Dres raided Thorn for slaves and grew rich on the rice. These days the Thorn Ash-Reed Accord quarrels over title to the fields. I can tell you more of the shouting at dusk."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2-2.about-riverwalk",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2-2",
+      "keys": {
+        "topic": "topic.about-riverwalk"
+      },
+      "words": "You're standing in it. Riverwalk is a landing in a cove, east of Thorn by a short walk. Nothing grows here to eat, so the village feeds the crews from what the boats leave. Every crew also gets a bunk. The ferry stage is out in the cove. The plank walk from the shore houses leads you to it.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-riverwalk.default",
+        "hash": "30a63068"
+      },
+      "factIds": [
+        "fact.riverwalk.grows-no-food",
+        "fact.riverwalk.feeds-crews",
+        "fact.riverwalk.cove"
+      ],
+      "variants": {
+        "low": "Riverwalk is a landing in a cove east of Thorn. Nothing grows here to eat. Crews get fed and a bunk. The ferry stage is out on planks.",
+        "high": "You're standing in it. Riverwalk is a landing in a cove, east of Thorn by a short walk. Nothing grows here to eat, so the village feeds the crews from what the boats leave. Every crew also gets a bunk. The ferry stage is out in the cove. The plank walk from the shore houses leads you to it. The boards are different ages, pole-hand. Step where they're dark."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2-2.about-tear",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2-2",
+      "keys": {
+        "topic": "topic.about-tear"
+      },
+      "words": "Tear is a border town of the Dunmer, on the flat coast north of the saltrice fields. From Thorn you get there by the Tear road. For centuries the Dres house traded in slaves from there. I've no time for slavers or for the ones who want the road's custom.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-tear.default",
+        "hash": "4177e2fc"
+      },
+      "factIds": [
+        "fact.tear.town",
+        "fact.tear.road",
+        "fact.tear.trade"
+      ],
+      "variants": {
+        "low": "Tear is a border town of the Dunmer, north of the saltrice fields. From Thorn you take the Tear road. The Dres house traded slaves there.",
+        "high": "Tear is a border town of the Dunmer, on the flat coast north of the saltrice fields. From Thorn you get there by the Tear road. For centuries the Dres house traded in slaves from there. I've no time for slavers, pole-hand. I'd tell you so at dusk with my caps shining."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2-3.about-archon",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2-3",
+      "keys": {
+        "topic": "topic.about-archon"
+      },
+      "words": "Archon is the province's legal harbour, out on the east coast. I've never put in there. The city has marsh on its northern side. Beaches lie to the south of it. Pilot families take ships in by the estuary. The harbour authority's say stops at the headland.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-archon.default",
+        "hash": "0b011e72"
+      },
+      "factIds": [
+        "fact.archon.legal-harbour",
+        "fact.archon.beaches",
+        "fact.archon.pilots",
+        "fact.archon.headland"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2-3.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2-3",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "The Prison road and the Border road are old Imperial roads. The Mile House is an old waystation. We still use the old names for all three. The Tag House stands on a dry rise beside the Prison road.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.imperial",
+        "fact.road.old-names",
+        "fact.road.tag-house"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2-3.about-riverwalk",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2-3",
+      "keys": {
+        "topic": "topic.about-riverwalk"
+      },
+      "words": "Riverwalk sits in a sheltered cove, a little east of Thorn. The village grows no food. It feeds every crew that lands. Each crew gets a bunk. We moor at the ferry stage, out where the cove is deepest. From the shore houses you reach it over a plank walk.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-riverwalk.default",
+        "hash": "30a63068"
+      },
+      "factIds": [
+        "fact.riverwalk.grows-no-food",
+        "fact.riverwalk.feeds-crews",
+        "fact.riverwalk.cove"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2.about-riverwalk",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2",
+      "keys": {
+        "topic": "topic.about-riverwalk"
+      },
+      "words": "Riverwalk is a stop where boats shelter in a cove off the sea. Nothing grows here, so every meal comes in off the boats. The village feeds each crew and gives them a bunk. The ferry stage is out on the islet. You walk the planks from the shore houses to reach it.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-riverwalk.default",
+        "hash": "30a63068"
+      },
+      "factIds": [
+        "fact.riverwalk.grows-no-food",
+        "fact.riverwalk.feeds-crews",
+        "fact.riverwalk.cove"
+      ],
+      "variants": {
+        "low": "A stop in a cove. Nothing grows here. Follow the planks to the stage.",
+        "high": "Riverwalk is a stop where boats shelter in a cove off the sea. Nothing grows here, so the meals come off the boats. We feed each crew and give them a bunk. Walk the planks from the shore houses to the ferry stage. I'll show you the raft."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2.about-thorn",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2",
+      "keys": {
+        "topic": "topic.about-thorn"
+      },
+      "words": "Thorn is the border city, up at the north end of the fields where the saltrice grows. A road called the Tear road leaves it for Morrowind. House Dres raided Thorn for slaves and grew rich on its rice. Now the Thorn Ash-Reed Accord quarrels over whose title to the fields is good. Its agents wade out to our spit to shout about the toll.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-thorn.default",
+        "hash": "8559ea2d"
+      },
+      "factIds": [
+        "fact.thorn.border-city",
+        "fact.thorn.tear-road",
+        "fact.thorn.dres-raid",
+        "fact.thorn.accord"
+      ],
+      "variants": {
+        "low": "Thorn is a border city in the north, among the saltrice fields. The Tear road leads out of it. House Dres raided it for slaves. Its Accord argues over title to the fields.",
+        "high": "Thorn is the border city, up at the north end of the fields where the saltrice grows. A road called the Tear road leaves it for Morrowind. House Dres raided Thorn for slaves and grew rich on its rice. Today the Thorn Ash-Reed Accord quarrels over whose title to the fields is good. Walk there if you want to hear it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2.about-tear",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2",
+      "keys": {
+        "topic": "topic.about-tear"
+      },
+      "words": "The Dunmer town of Tear sits on flat land by the coast, north of where the saltrice grows. The Tear road brings you there from Thorn. The slave trade of House Dres worked out of Tear for centuries.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-tear.default",
+        "hash": "4177e2fc"
+      },
+      "factIds": [
+        "fact.tear.town",
+        "fact.tear.road",
+        "fact.tear.trade"
+      ],
+      "variants": {
+        "low": "Tear's a Dunmer town on the border. The Tear road reaches it from Thorn. House Dres traded slaves from there.",
+        "high": "The Dunmer town of Tear sits on flat land by the coast, north of where the saltrice grows. The Tear road brings you there from Thorn. The slave trade of House Dres worked out of Tear for centuries. Keep your papers close if you go."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2.about-archon",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2",
+      "keys": {
+        "topic": "topic.about-archon"
+      },
+      "words": "Archon, the province's legal harbour, is the port in the east. The marsh runs up behind the city, with beaches to the south. Families of pilots steer the ships through the estuary. Past the headland, the harbour authority has no say. I only know it from crews who sail past.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-archon.default",
+        "hash": "0b011e72"
+      },
+      "factIds": [
+        "fact.archon.legal-harbour",
+        "fact.archon.beaches",
+        "fact.archon.pilots",
+        "fact.archon.headland"
+      ],
+      "variants": {
+        "low": "Archon's the eastern port, the legal harbour. Marsh behind it, beaches south. Pilot families steer the ships. The authority stops at the headland.",
+        "high": "Archon, the province's legal harbour, is the port in the east. The marsh runs up behind the city, with beaches to the south. Families of pilots steer the ships through the estuary. Past the headland, the harbour authority has no say. Ask a crew just in off the Padomaic run, because they've seen it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n2.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n2",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "The Empire built the Prison road and the Border road. It put the Mile House on them as a waystation. Folk go on using the old names, though the Empire is gone. The old ones say the cargo rotted on those roads. The Prison road heads toward the Rose. Beside it, up on a dry rise, stands the Tag House.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.imperial",
+        "fact.road.old-names",
+        "fact.road.tag-house"
+      ],
+      "variants": {
+        "low": "Old Imperial roads and a waystation. Folk still use the old names. The Prison road heads toward the Rose. The Tag House stands by it.",
+        "high": "The Empire built the Prison road and the Border road. It put the Mile House on them as a waystation. Folk go on using the old names. The Prison road heads toward the Rose. Beside it, on a dry rise, stands the Tag House. Take a dry day for it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n3-2.about-thorn",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n3-2",
+      "keys": {
+        "topic": "topic.about-thorn"
+      },
+      "words": "Thorn sits on the northern border, where the saltrice grows. The Tear road starts there and runs into Morrowind. Dres raiders once took slaves from it. These days the Accord, a body of the town, argues over who owns the fields.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-thorn.default",
+        "hash": "8559ea2d"
+      },
+      "factIds": [
+        "fact.thorn.border-city",
+        "fact.thorn.tear-road",
+        "fact.thorn.dres-raid",
+        "fact.thorn.accord"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n3-2.about-archon",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n3-2",
+      "keys": {
+        "topic": "topic.about-archon"
+      },
+      "words": "Archon is the province's legal harbour, a port in the east. Marsh lies to its north and beaches to its south. Pilot families guide ships in through the estuary. The harbour's authority ends at the headland.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-archon.default",
+        "hash": "0b011e72"
+      },
+      "factIds": [
+        "fact.archon.legal-harbour",
+        "fact.archon.beaches",
+        "fact.archon.pilots",
+        "fact.archon.headland"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n3-2.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n3-2",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "The Prison road and the Border road are old Imperial roads. The Mile House is an old waystation on them. Folk use the Imperial names still. The Prison road heads toward the Rose. On a dry rise by its side stands the Tag House.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.imperial",
+        "fact.road.old-names",
+        "fact.road.tag-house"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n3-2.about-riverwalk",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n3-2",
+      "keys": {
+        "topic": "topic.about-riverwalk"
+      },
+      "words": "Riverwalk is where boats halt in a sheltered cove of the sea, east of Thorn. Nothing grows here, so we buy food off the boats. Each boat's hands get a meal and a bunk. Planks lead out to the ferry stage.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-riverwalk.default",
+        "hash": "30a63068"
+      },
+      "factIds": [
+        "fact.riverwalk.grows-no-food",
+        "fact.riverwalk.feeds-crews",
+        "fact.riverwalk.cove"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n3-2.about-tear",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n3-2",
+      "keys": {
+        "topic": "topic.about-tear"
+      },
+      "words": "Tear is a Dunmer town on the border plain, north of the saltrice fields. The Tear road brings you to it from Thorn. For centuries, the slave trade of House Dres was run out of there.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-tear.default",
+        "hash": "4177e2fc"
+      },
+      "factIds": [
+        "fact.tear.town",
+        "fact.tear.road",
+        "fact.tear.trade"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n3.about-riverwalk",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n3",
+      "keys": {
+        "topic": "topic.about-riverwalk"
+      },
+      "words": "Riverwalk is a small halt on a sheltered cove of the sea, a short walk east of Thorn. No food is grown here. We feed the boat hands and give each one a bunk. The ferry stage lies out in the water. Planks run to it from the shore houses.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-riverwalk.default",
+        "hash": "30a63068"
+      },
+      "factIds": [
+        "fact.riverwalk.grows-no-food",
+        "fact.riverwalk.feeds-crews",
+        "fact.riverwalk.cove"
+      ],
+      "variants": {
+        "low": "A halt in a sea cove, east of Thorn. We feed the boat hands and give them bunks. Planks lead to the ferry.",
+        "high": "Riverwalk is a small halt on a sheltered cove of the sea, a short walk east of Thorn. No food is grown here. We feed the boat hands and give each one a bunk. The ferry stage lies out in the water. Planks run to it from the shore houses. Rest well."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n3.about-thorn",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n3",
+      "keys": {
+        "topic": "topic.about-thorn"
+      },
+      "words": "Thorn is a city on the border, in the middle of the saltrice country. The Tear road begins there and runs on into Morrowind. House Dres raided Thorn for slaves long ago and profited from its rice. Now the Thorn Ash-Reed Accord debates title to the fields.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-thorn.default",
+        "hash": "8559ea2d"
+      },
+      "factIds": [
+        "fact.thorn.border-city",
+        "fact.thorn.tear-road",
+        "fact.thorn.dres-raid",
+        "fact.thorn.accord"
+      ],
+      "variants": {
+        "low": "Thorn is a border city in the saltrice fields. The Tear road begins there. House Dres raided it for slaves. The Thorn Ash-Reed Accord argues over title.",
+        "high": "Thorn is a city on the border, in the middle of the saltrice country. The Tear road begins there and runs on into Morrowind. House Dres raided Thorn for slaves long ago and profited from its rice. Now the Thorn Ash-Reed Accord debates title to the fields. It is a short walk west."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n3.about-tear",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n3",
+      "keys": {
+        "topic": "topic.about-tear"
+      },
+      "words": "Tear is a Dunmer town on the border, on the flat coast north of the saltrice lands. From Thorn, the Tear road runs to it. House Dres traded slaves out of Tear for centuries.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-tear.default",
+        "hash": "4177e2fc"
+      },
+      "factIds": [
+        "fact.tear.town",
+        "fact.tear.road",
+        "fact.tear.trade"
+      ],
+      "variants": {
+        "low": "Tear is a Dunmer border town north of the saltrice country. The road from Thorn reaches it. House Dres ran slaves through it.",
+        "high": "Tear is a Dunmer town on the border, on the flat coast north of the saltrice lands. From Thorn, the Tear road runs to it. House Dres traded slaves out of Tear for centuries. I would not linger there."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n3.about-archon",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n3",
+      "keys": {
+        "topic": "topic.about-archon"
+      },
+      "words": "Archon is a port on the eastern coast, the one harbour that the province recognises in law. Beaches lie south of the city and marsh lies north. Pilot families steer ships in through the estuary. Past the headland, the harbour authority has no say. I know it only from boat hands.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-archon.default",
+        "hash": "0b011e72"
+      },
+      "factIds": [
+        "fact.archon.legal-harbour",
+        "fact.archon.beaches",
+        "fact.archon.pilots",
+        "fact.archon.headland"
+      ],
+      "variants": {
+        "low": "Archon is the eastern port, the legal harbour. Beaches south, marsh north. Pilot families guide ships through the estuary. The harbour authority stops at the headland.",
+        "high": "Archon is a port on the eastern coast, the one harbour that the province recognises in law. Beaches lie south of the city and marsh lies north. Pilot families steer ships in through the estuary. Past the headland, the harbour authority has no say. Boat hands tell me it is worth seeing."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-n3.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.n3",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "The Prison road and the Border road are old Imperial roads. The Mile House is an old waystation. Folk still call all three by those names. Toward the Rose, you follow the Prison road. On a dry rise beside it, stands the Tag House.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.imperial",
+        "fact.road.old-names",
+        "fact.road.tag-house"
+      ],
+      "variants": {
+        "low": "Old Imperial roads and a waystation, still called by the old names. The Prison road leads toward the Rose. The Tag House is on a dry rise beside it.",
+        "high": "The Prison road and the Border road are old Imperial roads. The Mile House is an old waystation. Folk still call all three by those names. Toward the Rose, you follow the Prison road. On a dry rise beside it, stands the Tag House. I have not walked it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-stage-mistress.about-riverwalk",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.stage-mistress",
+      "keys": {
+        "topic": "topic.about-riverwalk"
+      },
+      "words": "Riverwalk is a village in a sheltered cove, just east of Thorn along the Tear road. No food grows here. We feed the boatmen who land and give each boat's hands a bunk. I take the fares at the ferry stage off the islet, at the end of the plank walk.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-riverwalk.default",
+        "hash": "30a63068"
+      },
+      "factIds": [
+        "fact.riverwalk.grows-no-food",
+        "fact.riverwalk.feeds-crews",
+        "fact.riverwalk.cove"
+      ],
+      "variants": {
+        "low": "Riverwalk is a cove village east of Thorn. No food grows here. We feed boat hands and bunk them.",
+        "high": "Riverwalk is a village in a sheltered cove, east of Thorn along the Tear road. No food grows here, so we feed every boat hand who lands and give a bunk besides. You're welcome to a bowl. The ferry stage is out along the plank walk."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-stage-mistress.about-thorn",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.stage-mistress",
+      "keys": {
+        "topic": "topic.about-thorn"
+      },
+      "words": "Thorn is a border city among the saltrice fields, a short walk west of here. The Tear road leaves it for Morrowind. In the old days House Dres raided Thorn for slaves and grew rich on its rice. Now a body called the Ash-Reed Accord argues there about who owns the fields.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-thorn.default",
+        "hash": "8559ea2d"
+      },
+      "factIds": [
+        "fact.thorn.border-city",
+        "fact.thorn.tear-road",
+        "fact.thorn.dres-raid",
+        "fact.thorn.accord"
+      ],
+      "variants": {
+        "low": "Thorn is the border city, west up the road. Dres raided it for slaves. The Ash-Reed Accord argues over the rice fields.",
+        "high": "Thorn is a border city among the saltrice fields, a short walk west. The Tear road leaves it for Morrowind. House Dres once raided it for slaves and grew rich on the rice. Today the Ash-Reed Accord argues over who owns the fields. I'll point you to the road."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-stage-mistress.about-tear",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.stage-mistress",
+      "keys": {
+        "topic": "topic.about-tear"
+      },
+      "words": "Tear is a Dunmer town on the northern border. It stands on the coastal plain, just beyond the saltrice country. From Thorn the Tear road runs to it. For centuries House Dres ran the slave trade from Tear.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-tear.default",
+        "hash": "4177e2fc"
+      },
+      "factIds": [
+        "fact.tear.town",
+        "fact.tear.road",
+        "fact.tear.trade"
+      ],
+      "variants": {
+        "low": "Tear is a Dunmer border town. The Tear road runs there from Thorn. Dres ran slaves from it.",
+        "high": "Tear is a Dunmer town on the coastal plain, just beyond the saltrice country. You reach it from Thorn by the Tear road. House Dres ran the slave trade from there for centuries. Eat before you go that far."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-stage-mistress.about-archon",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.stage-mistress",
+      "keys": {
+        "topic": "topic.about-archon"
+      },
+      "words": "Archon is the big port in the east, the one harbour the province treats as legal. Marsh lies north of it. South of it you find beaches. Ships come through the estuary with a pilot family aboard. Past the headland the harbour authority has no power.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-archon.default",
+        "hash": "0b011e72"
+      },
+      "factIds": [
+        "fact.archon.legal-harbour",
+        "fact.archon.beaches",
+        "fact.archon.pilots",
+        "fact.archon.headland"
+      ],
+      "variants": {
+        "low": "Archon is the eastern port and legal harbour. Pilot families guide ships through the estuary. Its authority ends at the headland.",
+        "high": "Archon is the eastern port, the province's legal harbour. Marsh lies north of it and beaches south. A pilot family guides each ship through the estuary. The harbour authority has no power past the headland. The boat folk here talk of it often."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-stage-mistress.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.stage-mistress",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "The Prison road and the Border road are old Imperial roads. The Mile House is an Imperial waystation. We still use those names, Empire or no Empire. The old ones say those roads rotted the cargo. Toward the Rose, the Prison road goes. On a dry rise by it you find the Tag House.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.imperial",
+        "fact.road.old-names",
+        "fact.road.tag-house"
+      ],
+      "variants": {
+        "low": "Old Imperial roads and a waystation, still called by their old names. The Prison road heads for the Rose.",
+        "high": "The Prison road and the Border road are old Imperial roads. The Mile House is a waystation on them. People still use the old names. Toward the Rose the Prison road goes. Beside it, up on a dry rise, stands the Tag House. I'd eat before walking it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-toll-holder.about-archon",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.toll-holder",
+      "keys": {
+        "topic": "topic.about-archon"
+      },
+      "words": "Archon is the eastern port, the province's legal harbour. I only know it from the crews. Marsh lies north of the city. Beaches lie south of it. Families of pilots guide ships in through the estuary. Past the headland, the harbour master has no say.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-archon.default",
+        "hash": "0b011e72"
+      },
+      "factIds": [
+        "fact.archon.legal-harbour",
+        "fact.archon.beaches",
+        "fact.archon.pilots",
+        "fact.archon.headland"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-toll-holder.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.toll-holder",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "Those are old Imperial work, two roads and a waystation. Folk still use the old names. I don't care for that. The Prison road heads for the Rose. By it, up on a dry rise, is the Tag House.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.imperial",
+        "fact.road.old-names",
+        "fact.road.tag-house"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-toll-holder.about-riverwalk",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.toll-holder",
+      "keys": {
+        "topic": "topic.about-riverwalk"
+      },
+      "words": "Riverwalk is this halt, in a cove a short walk past Thorn. We grow no food here. A crew that lands is fed at the long house and given a bunk. The ferry stage lies out across the water, where the boats moor.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-riverwalk.default",
+        "hash": "30a63068"
+      },
+      "factIds": [
+        "fact.riverwalk.grows-no-food",
+        "fact.riverwalk.feeds-crews",
+        "fact.riverwalk.cove"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.riverwalk-toll-holder.about-tear",
+      "type": "dialogue",
+      "speaker": "npc.dunmer-north.riverwalk.toll-holder",
+      "keys": {
+        "topic": "topic.about-tear"
+      },
+      "words": "Tear is a Dunmer town out on the coastal plain, above the rice country. You reach it by the Tear road out of Thorn. For centuries the Dres house ran its slaving from there.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-tear.default",
+        "hash": "4177e2fc"
+      },
+      "factIds": [
+        "fact.tear.town",
+        "fact.tear.road",
+        "fact.tear.trade"
+      ]
+    }
+  ],
+  "people": [
+    {
+      "id": "npc.dunmer-north.riverwalk.n2",
+      "name": "Half-Tail",
+      "role": "a boat crew",
+      "services": [],
+      "topics": [
+        "topic.latest-rumours",
+        "topic.riverwalk-silted-cove"
+      ]
+    },
+    {
+      "id": "npc.dunmer-north.riverwalk.n3",
+      "name": "Reaches-The-Shore-Last",
+      "role": "a toll hand",
+      "services": [],
+      "topics": [
+        "topic.latest-rumours",
+        "topic.riverwalk-accusation"
+      ]
+    },
+    {
+      "id": "npc.dunmer-north.riverwalk.n3-2",
+      "name": "Runs-The-Line-Out",
+      "role": "a toll hand",
+      "services": [],
+      "topics": [
+        "topic.latest-rumours",
+        "topic.riverwalk-sounded-way"
+      ]
+    },
+    {
+      "id": "npc.dunmer-north.riverwalk.stage-mistress",
+      "name": "Deesh-Ra",
+      "role": "the stage-mistress",
+      "services": [
+        "ferry",
+        "train"
+      ],
+      "topics": [
+        "topic.latest-rumours",
+        "topic.riverwalk-silted-cove",
+        "topic.riverwalk-two-claims"
+      ]
+    },
+    {
+      "id": "npc.dunmer-north.riverwalk.toll-holder",
+      "name": "Lifts-Two-Traps",
+      "role": "the toll-holder",
+      "services": [],
+      "topics": [
+        "topic.latest-rumours",
+        "topic.riverwalk-accusation",
+        "topic.riverwalk-stage-word",
+        "topic.riverwalk-two-claims"
+      ]
+    }
+  ]
+}

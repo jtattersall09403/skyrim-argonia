@@ -1,0 +1,194 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "_": "Faction and office sheets for The Sul-Xan (lane 2.5a2). Ranks: the registry ladder (associate, member, senior); named offices beyond it are listed by their own rank slug.",
+ "entries": [
+  {
+   "id": "culture.faction.sul-xan",
+   "level": "faction",
+   "name": "The Sul-Xan",
+   "parent": "culture.province.black-marsh",
+   "factionId": "faction.sul-xan",
+   "norms": [
+    {
+     "text": "The Razor Prince is the True Egg-Child of Sithis.",
+     "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+    },
+    {
+     "text": "Jade death masks for the rites.",
+     "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Mercy.",
+     "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+    }
+   ],
+   "values": [
+    {
+     "text": "Destruction.",
+     "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "The rest of Argonian faith, as weakness.",
+     "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+    }
+   ],
+   "opinions": {
+    "hist": {
+     "lean": -1,
+     "text": "Soft-tree talk.",
+     "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+    },
+    "people": {
+     "lean": -2,
+     "text": "Outsiders and Argonians alike are offerings.",
+     "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+    },
+    "danger": {
+     "lean": 2,
+     "text": "We are the end that comes.",
+     "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Offering.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "ceremonial",
+    "oaths": [
+     {
+      "text": "For the Razor Prince.",
+      "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "Mercy.",
+      "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "The Four Winds hold Stonewastes.",
+      "source": "world/sources/lore/topics/guilds-and-orders.md"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "Soul snares set near Xi-Tsei.",
+      "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.many-root-conclave",
+     "lean": -2,
+     "text": "Tree-tenders.",
+     "source": "inferred"
+    },
+    {
+     "node": "culture.faction.an-xileel",
+     "lean": -2,
+     "text": "The state.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.05
+  },
+  {
+   "id": "culture.office.sul-xan.senior",
+   "level": "office",
+   "name": "Sul-Xan masked priest",
+   "parent": "culture.faction.sul-xan",
+   "factionId": "faction.sul-xan",
+   "rank": "senior",
+   "norms": [
+    {
+     "text": "Liturgical, noun-stacked, serene.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Fear.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "The sacrifice.",
+     "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Weakness.",
+     "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+    }
+   ],
+   "opinions": {
+    "danger": {
+     "lean": 2,
+     "text": "Offerings.",
+     "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Offering.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "ceremonial",
+    "oaths": [
+     {
+      "text": "For the Razor Prince.",
+      "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "The snares.",
+      "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Too few offerings.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "A raid.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.sul-xan",
+     "lean": 2,
+     "text": "Theirs.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.1
+  }
+ ]
+}

@@ -1,0 +1,97 @@
+# Banned constructions for Argonia dialogue. One entry per ban; add new ones at the end.
+# Fields: id, rule (one sentence), bad (examples), good (rewrites), and either
+#   detect: a Python regex run by lint.py over every line (a hit is flagged, not auto-rejected), or
+#   detect: review   when only a reader can spot it (the self-check and the reviewer go through these).
+# A writer reads the whole list before writing; lint.py runs every regex; the reviewer checks every
+# `review` entry by id. Keep each entry short so the list stays cheap to read in full.
+
+- id: B01-personification
+  rule: Places, objects, goods and institutions do not talk, want, know, pay, wait or decide; people do.
+  bad:
+    - The lodge talks of salt.
+    - Rumours are for the lodge.
+    - Beds and rope pay for everything else.
+    - The mud will take your boots.
+  good:
+    - The people at the lodge talk about nothing but salt.
+    - If you want rumours, ask at the lodge. People talk there in the evenings.
+    - The water is free. We make our living from the beds and the rope we sell to travellers.
+    - Off the path, you will sink to the knee in mud.
+  detect: "(?i)(^|[.!?]\\s+|,\\s+)(the |our |my |your )?([a-z]+\\s+and\\s+)?(lodge|village|spring|road|marsh|swamp|town|city|place|market|house|river|water|mud|tree|beds?|rope|coin|money|rumours?)\\s+((will|would|can|could|must)\\s+)?(talks?|says?|wants?|knows?|pays?|waits?|decides?|remembers?|forgets?|hears?|takes?|keeps?|is for|are for)\\b"
+
+- id: B02-verbless-appositive
+  rule: Do not open a sentence with a noun phrase, a comma and a description in place of a verb.
+  bad:
+    - A dead man, under the stone lip.
+    - An iron blade, hammered flat.
+    - A courier, by the satchel.
+  good:
+    - There is a dead man under the stone lip.
+    - It is an iron blade. Someone has hammered it flat.
+    - He was a courier. I could tell by his satchel.
+  detect: "(^|[.!?]\\s+)(A|An|The|Some)\\s+[A-Za-z'-]+(\\s+[A-Za-z'-]+){0,3},\\s+(under|over|in|on|by|at|from|with|[a-z]+ed)\\b"
+
+- id: B03-dangling-participle
+  rule: An -ing phrase after an object must not be readable as describing that object; say who was doing it.
+  bad:
+    - I found him filling the lodge jars.
+  good:
+    - I found him when I was filling the water jars at the lodge.
+  detect: "\\b(found|saw|heard|watched|met|caught|left|noticed)\\s+(him|her|them|it)\\s+[a-z]+ing\\b"
+
+- id: B04-opaque-reference
+  rule: Name nothing the player cannot know yet without explaining it in the same line (see the brief's player-knows list).
+  bad:
+    - I fill the lodge jars at first light.
+    - Ask the herald.
+  good:
+    - Every morning I fill the water jars at the lodge, so that guests have water by their beds.
+    - Ask Ixo-Vaal, the root-herald. He trades with Helstrom for the village.
+  detect: review
+
+- id: B05-compressed-reason
+  rule: Give a reason as a plain clause, not a compressed phrase that leaves the player to unpack it.
+  bad:
+    - We keep quiet, for the beds and the rope.
+  good:
+    - We keep quiet, because if travellers hear of this, they will stop sleeping here and buying our rope.
+  detect: "\\bfor the [a-z]+ and the [a-z]+[.!?]"
+
+- id: B06-full-forms
+  rule: Argonian and Khajiit speakers use full forms (do not, it is, you are) except when angry, dismissive or fighting; other races contract at their own rates (voices.md).
+  bad:
+    - It's not salt. (calm Argonian)
+  good:
+    - It is not salt.
+    - Don't touch my pot! (angry Argonian bark)
+  detect: "(?i)\\b\\w+'(re|ll|ve|d|m|t)\\b|\\b(it|that|there|he|she|what|who|here|let|where)'s\\b"
+  appliesTo: [argonian, khajiit]
+
+- id: B07-wry-quip
+  rule: Argonian speakers are earnest; no dry quips at the end of a line (other races follow voices.md).
+  bad:
+    - He was not happy. Neither were his boots.
+    - Brave travellers do not come back for stew.
+  good:
+    - He was angry about it, and his boots were soaked through.
+    - Do not try to fight it. People who fight a wamasu do not come back.
+  detect: review
+  appliesTo: [argonian]
+
+- id: B08-american-english
+  rule: British spelling and punctuation; no serial comma before the last item in a list.
+  bad:
+    - color, honor, traveler, gray
+    - Fish, roots, and eggs.
+  good:
+    - colour, honour, traveller, grey
+    - Fish, roots and eggs.
+  detect: "\\b(color|honor|favor|flavor|labor|neighbor|harbor|armor|traveler|traveling|gray|center|theater|realize|recognize|apologize|organize|defense|offense|catalog)s?\\b|\\b[A-Za-z'-]+(\\s[A-Za-z'-]+){0,2},\\s[A-Za-z'-]+(\\s[A-Za-z'-]+){0,2},\\s(and|or)\\s"
+
+- id: B09-hidden-disposition-gate
+  rule: When a line holds information back at low disposition, it must say so, so the player knows to raise it.
+  bad:
+    - The lodge talks of salt and nothing else. Salt, salt.
+  good:
+    - People at the lodge say it is salt from upstream. I think otherwise, but I do not share my thoughts with strangers.
+  detect: review

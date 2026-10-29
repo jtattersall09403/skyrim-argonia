@@ -1,0 +1,976 @@
+<!-- imported unchanged from elder-souls-argonia docs/world/97-placement-principles.md @ b581910f0f87d8da88eaa9876d238cdc5d709e78 (0.1 §f) -->
+# Module 97 — Placement principles (BINDING)
+
+> One coherent set of rules for deciding where a place sits and how it is laid
+> out, from the province down to the door. Drawn from the
+> measured evidence, the source review, the lore dossiers and the owner's
+> rulings; the closing list holds the choices the owner sense-checks.
+> The `place` skill (`.claude/skills/place/`, decision 0100) is
+> the *procedure* that applies these rules, and holds
+> the operative lessons; [module 96](96-placement-playbook.md) states the loop and its records; decision [0041](../old-decisions/0041-phase11-settlement-decisions.md)
+> holds the round records and the Taste ledger; the research documents hold
+> the evidence. This module holds the rules and says what enforces each one.
+> When a rule here and a tool disagree, the tool is wrong until the owner
+> rules otherwise; when a rule here and the Taste ledger disagree, the ledger
+> is newer and this module is corrected in the same change.
+
+**How each rule is written.** A one-line statement; the why; evidence tags;
+enforcement. Tags: **E** measured evidence
+([settlement-form-evidence](../research/placement-settlements/settlement-form-evidence.md),
+[shipped-world-placement-rules](../research/placement-settlements/shipped-world-placement-rules.md),
+[vegetation-composition-rules](../research/vegetation/vegetation-composition-rules.md));
+**S** source review
+([settlement-design-principles-sources](../research/placement-settlements/settlement-design-principles-sources.md),
+[openworld-place-distribution-and-siting](../research/placement-settlements/openworld-place-distribution-and-siting.md),
+[openworld-approach-and-wayfinding](../research/placement-settlements/openworld-approach-and-wayfinding.md),
+[marsh-settlement-morphology](../research/placement-settlements/marsh-settlement-morphology.md),
+[kit-level-design-and-layout-generation](../research/placement-settlements/kit-level-design-and-layout-generation.md));
+**O** owner ruling with date (0041, CLAUDE.md, module 96); **L** lore
+([material-culture](../../../world/sources/lore/topics/material-culture.md),
+[settlement-register](../../../world/sources/lore/extrapolation/settlement-register.md),
+[92-demographics](92-demographics.md)); **R** reasoning where evidence is
+silent or conflicts. **Enforced by** names the validator rule, compiler check,
+router cost, checklist item, reviewer or owner round that catches a breach;
+**ENFORCEMENT GAP** means nothing does yet; the gap is then listed in §G
+with the smallest mechanism that would close it.
+
+Scales: **A** province → place (the macro plot), **B** place → ground (the
+meso siting), **C** ground → layout (the blueprint), **D** the walking player,
+**E** integration and honesty, **F** the culture grammars.
+
+---
+
+## Part A — Province → place (macro)
+
+**A1. Every place records a site reason and a situation reason; its size
+follows the situation.** Site is the ground it stands on (a dry point, a
+crossing, a shelf); situation is its position in the network (on a road, at a
+confluence, at the head of navigation). A hamlet on a superb site stays a
+hamlet if nothing passes it. *S* (site vs situation, geographyfieldwork); *O*
+00-core rule 1 (causal reason); *L* settlement-register §1 (scale
+in structures, calibrated to the lore's relative sizes). **Enforced by** the
+catalogue's required `why` block and `sitingPrefs` (site), `relations` and
+`travelStation` (situation), `worldgen.audit_place_semantics`; the magnitude
+ladder in `test_catalogue.py`. The size-follows-situation clause is a reviewer
+check (owner rounds) — see G1.
+
+**A2. Site types map onto our landforms; in a marsh the dry point is the
+settlement.** Bridging point → the narrows and fords (`crossing` transit
+types); confluence → route junctions and river-mouth ports; dry point →
+`flood-high`, `island`, `ridge-end`; defensive spur or meander →
+`ridge-end`, `cliff-bench`; gap town → `saddle`. The spring-line type has no
+marsh analogue: water is nowhere scarce, so firm ground takes its role, and
+everything not on the dry point is field, fishery or grave. *S* (site
+typology; fen-island economy); *E* (Black Marsh buildings a median 3.9 m
+from standing water, one in five below the water line). **Enforced
+by** `macro_plot` landform scoring (`landformClasses` ranked per type recipe; a
+wrong landform scores −0.4, no landform 0.15–0.4).
+
+**A3. Prefer ground where two or three site reasons coincide.** Real towns sit
+where a dry point is also a crossing that is also the lowest navigable reach;
+a place with one reason reads as arbitrary. *S*; *R*. **Enforced
+by** `macro_plot.score_pair` summing landform + route + water + parent + hinterland
+terms (a multi-reason site outscores a one-reason site); the meso candidate
+table (B2) records each reason per candidate.
+
+**A4. Frequency of interest is at least Morrowind's: one thing every 230–330 m
+of travel, in three separate tiers.** Beacon (visible >1 km, ~0.1–0.3/km²),
+destination (a place one enters, ~1–2/km², bound to the Morrowind-derived
+budget), snack (10–60 s of interest, ~10–15/km², compiled
+from `dressing`-scope types). A single density number is a design error because the
+tiers have different pitches. *S* (BotW/Skyrim/Vvardenfell converge on a
+60–100 s constant); *O* (Morrowind density, 527 → ~560 live); *O*
+(hostility met at least as often as in Morrowind; frequency, not
+share). **One density vocabulary, one number (16g).** The
+catalogue's `densityLayer` IS the tier: `landmark` = beacon, `destination` =
+destination, `fine-tempo` = snack. The gate of decision 0027 (18–22 named
+records per km² in D0–D3 ground, 8–12 in D4–D5 ground; 550–750 province
+total) counts **every named live record of the three layers**, per culture
+zone, over the zone's authored land in that danger class
+(`plot_stats.zone_land_area_m2` split by the danger raster): that is the
+only reading under which the 0027 province total reconciles with the per-km²
+figure. A record is counted where its `dangerTier` says it belongs, not
+where the raster under the dot says. The recipes' `recordScope` keeps the
+count honest (a `dressing`-scope type is not a named record); A4's per-tier
+pitches are reported sub-budgets, never gates. `worldgen.plot_review` writes
+the table per zone; `test_catalogue` reads the same definition.
+**Enforced by** the per-zone D0–D3 / D4–D5 floors and ceilings in
+`test_catalogue.py` (soft ceilings, hard floors, one definition);
+`worldgen.hostility_frequency` (travel measure: a
+fight every 100–140 m of route in D3–D5); `macro_plot` layers (`landmark` /
+`destination` / `fine-tempo` route bands). The snack tier's compile is Phase
+15 — G2.
+
+**A5. Density is a causal gradient, not a spread: thick on hinterlands,
+roads, rivers, coasts and resources; thin and meaningful in the deep wilds.**
+Cluster centres by minimum separation, members within a cluster clumped; even
+spacing alone reads procedural. *E* (hand placement is clustered, Clark–Evans
+R ≈ 0.5); *S*; *O*. **Enforced by** `macro_plot`: the
+culture-specific **Thomas process** (`THOMAS_CULTURES` parent floors 400–700 m,
+sigma 110–180 m, `THOMAS_CHILD_RADIUS_M` 300 m — a HARD gate, `thomas_prior_score`
+returns None outside a parent's kernel at every relaxation stage), the
+hinterland term (0.6 within 1.2 km of a city), the city rings
+(`RING_EDGE_M` 350 / `RING_HINTERLAND_M` 1200 — SCORE, not gates), and the
+roadside lattice (110 m step, 35/90 m offsets); the coverage report
+`world/sources/sites/macro-plot.md` and the Clark–Evans figures in it.
+There is no general even-spacing floor.
+Within-cluster clumping is the prior's job — G3.
+
+**A6. A place has EXTENT, and its spacing follows from that extent and from
+sight.** Two places must clear the SUM of their typed `footprintRadiusM` —
+a real occupancy, derived from the authored blueprint boundary where one
+exists, and banded from magnitude / class /
+`complexityBudget` otherwise (M5 230 · M4 140 · M3 115 · M2 65 · M1 45; a
+non-settlement type from its production budget × its class). The floor is
+IMMUTABLE: no relaxation stage touches it. A related pair whose type declares
+`proximity.mayAbut`, or which is `boundTo` the other, shares ground and clears
+only the smaller radius — that is how a city's own hist sits inside the city
+while an unrelated lighthouse 38 m off the quay still fails.
+On top of extent: the same type never twice within 300 m (700 m for
+landmarks, 900 m along one road) and never twice in sight; building variety
+is the per-settlement table of decision 0098 (signature share, shells and
+top-shell share per tier, ≥3 axes between two houses on one shell, one
+assembly at most 3 times province-wide and never twice within 2 km); the same
+purpose not twice within 500 m along one road.
+*S* (anti-sameyness); *O* 0041 Part 3; *O* (extent); *E* (the five
+measured blueprint boundaries; the scour: median site sees 18 % of its 1.2 km
+surroundings, so marsh "in sight" is short). **Enforced by**
+`macro_plot.separation_ok` (footprint sum, `SAME_TYPE_MIN_M`,
+`SAME_TYPE_LANDMARK_MIN_M`, `ROUTE_REPEAT_MIN_M`, `PURPOSE_REPEAT_*`),
+`macro_plot.typed_siting_violations` (the same gates re-checked over the
+FINISHED plot, with no ordering), `worldgen.author_type_siting` (the
+derivation, drift-checked) and `test_type_siting`. The ≥3-axes rule is
+reported, not gated — G4.
+
+**A6b. A type's own siting prose is a typed distance the solver obeys.** Where
+`type-recipes.json` `siting.neighbourRelation` states a distance relation —
+"deliberately far from any living settlement", "far from help", "a short walk
+from a village, out of its sight", "always beside a ruin", "attached to a
+living settlement" — it is authored into a typed `proximity` block
+(`minFromClassM`, `maxFromM`, `outOfSightOf`, `mayAbut`; keys are place
+classes plus the pseudo-class `route`) and evaluated as a HARD gate, in both
+directions, alongside the footprint. An ABSENT block means no constraint; that
+is the explicit default, and prose that states no distance deliberately gets
+no block. *E*: 19 of 22 records of the 16 isolation types
+contradicted their own type prose and passed the semantic audit clean (a
+standard 12 violation — prose written against a record the typed fields cannot
+deliver). **Enforced by** `macro_plot.separation_ok`,
+`audit_place_semantics.check_type_proximity` and `test_type_siting`. The
+numbers are calibrated against a dry-run solve, not asserted blind: the
+province holds 6.8 % of its land ≥800 m from every settlement and 13.9 % at
+≥600 m, so the isolation floors are 600 m, not the 800 m first proposed —
+G17.
+
+**A7. Danger is fixed by place and region and shapes what may sit where.**
+Lived-in classes sit within ±2 bands of their ground (the plot prefers one
+and allows the second at its relaxed stages; relaxed to this by the owner,
+0102 decision 9), others ±2; D5 never
+within 200 m of a road unless its identity is the road; a city's edge (≤350 m)
+holds only wards, docks, works, shrines, gates; its hinterland (≤1.2 km) holds
+no hostile place and no D4+ lair; unrelated hostile places do not exceed a 70
+% share of any 800 m neighbourhood; fights sit off routes more than on them.
+*O* 00-core rule 2; *O* (rings, frequency by place); *O*
+(±2 for lived-in, 0102). **Enforced by** `macro_plot` danger
+gate, `ring_fit`, `HOSTILE_CLUSTER_*`, `D5_MIN_ROUTE_M`;
+`test_record_services` (lived-in ±2 on the catalogue); `hostility_frequency`
+gap report.
+
+**A8. A place whose identity is a network role sits where the role exists or
+is cut.** "On the road" means ≤220 m from a route (380 relaxed); a gate sits
+on the last cut of its road; a port sits on navigable water; a ferry stage
+sits on both banks' reach. Boat lanes are a real network with stations, not
+decoration. *O* (round 4 rule 2; boat lanes ruling); *S*
+(lowest bridging point = the port site, at most one per river). **Enforced
+by** `macro_plot` `on_route` gate, `sightlineTo`/`boundTo` hard constraints,
+`SATELLITE_MAX_M`; the two typed water ties beside them, `sitingPrefs.nearWater {entityId, maxM}` (the nearest water must BE the graph entity the record names) and `sitingPrefs.minDepthM` (the recorded depth within 150 m must reach it), both hard at every relaxation stage; the route registry and `travelStation` graph checks;
+`compile_minor_routes` refusing a footpath start far from a water-sited
+record. Navigable depth is checked at meso (B5), not here — G5.
+
+**A9. Water first: the waterline, not the road, is the marsh's organising
+line.** Water-bound classes score water relation; settlements in wet region
+classes face water; the road network is secondary and may be flood-damaged,
+bridged or ferried, but it always links the eight majors. *E* (BM median 3.9 m
+to water vs Skyrim 51 m; only 6 % of BM buildings within 10 m of a road); *O*
+00-core rule 3 and acceptance rules. **Enforced by** `macro_plot`
+`water`/`navigable`/`submerged` terms; `compile_society` road connectivity;
+minor waterways compile.
+
+**A10. The province carries at least Morrowind's share of hostile, clearable
+places (≥55 %) and fewer settlement and civic records (≤22 %).** Black Marsh
+is wild, not a unified state. *O* (correcting the research doc's
+earlier cap); *S* (Morrowind 55–65 % clearable, ~8–14 % settlements).
+**Enforced by** the round-2 rebalance record (55.7 % / 21.7 %); the shares are
+reported by `hostility_frequency`, not gated — G6.
+
+**A11. Minorities are enclaves with a stated exception.** Imperial records
+cluster on Gideon, Dunmer on Thorn and Stormhold; an outlier carries its
+personal reason in `why`. *L* 92 §82 (community priors; Helstrom 97 %
+Argonian); *O*. **Enforced by** `macro_plot` culture-zone gate
+(hard; ≤350 m spill when relaxed).
+
+**A12. The plot is provisional; the meso pass may move a place 60–150 m
+on measurement and must write the move back.** Four of five Part 6 exemplars (the
+retired Phase 11 set) could not stand on their dot. *O* (write-back rule). **Enforced
+by** `worldgen.apply_sitings` (sole writer of `macro-plot-overrides.json`;
+pins applied after the solve; dependants re-run).
+
+---
+
+## Part B — Place → ground (meso)
+
+**B1. No design before a dossier.** The site dossier over the plotted
+neighbourhood is cited in the design record and in `siting.dossier`. *O*
+module 96 step 2. **Enforced by** the blueprint validator when `siting` is
+present (≥2 candidates, one chosen). `siting` is REQUIRED on any blueprint of a catalogue record (G7 closed).
+
+**B2. Two or three exact candidates are measured; the winner is chosen in this
+order of grounds.** (1) The identity's physical requirement — the water depth
+a lighter port needs, the standing water a pond lair needs, the ridge end a
+stone village needs; a candidate that would quietly delete the place's living
+is rejected however good its ground. (2) Buildable tiers within the footprint
+ring (height over the ring, slope at each bench). (3) Route tie-in without a
+new spur. (4) Approach and reveal (Part D). (5) Neighbours' sightlines and the
+write-back cost. Losers are recorded with the ground on which they lost. *O*
+(geometry, never labels); the worked candidate table is the
+first loop place's design brief (Claywater Station, 16k slice 1c,
+`<place>.design.md`, 0100 decision 2). **Enforced by** the validator
+(`candidates[].rejectedBecause`); the design record; the owner's walk of the place (0099 decision 1).
+
+**B3. The slope ladder: the building is fixed and the ground meets it,
+within limits.** Δ across the footprint: <0.15 m place direct · 0.15–0.6 plinth ·
+0.6–2.0 graded pad from the **maximum** height, falloff ring 2.5× the
+footprint, rim ≤30°, residual tilt 0.7°, base buried 0.25 m · ≥2.0 m never
+graded: stilt, dug-in or re-site. Verticals (plinths, piles, retaining walls)
+are geometry, not terrain. *S* (CK practice; Houdini flatten; DynDOLOD
+failures); *O* 0041 § Slopes. **Enforced by** `compile_settlement`
+(`FIT_MIN`/`FIT_MAX`, `BURY_M`, `PAD_FALLOFF_RATIO`, `PAD_RESIDUAL_TILT_DEG`;
+the compiler relaxes only *down* the ladder).
+
+**B4. The flood line decides the section: civic and sacred on the ground that
+stays dry, dwellings on the levee or the bench, works and quays in the flood
+band; in stilt districts 15–30 % of buildings stand over water.** Floors sit
+above the highest seasonal water; piles reach the bed, not the surface. A
+graded pad of 1–2 m is legitimate only as a *mound* under a mud village
+on flat saltmarsh (the terp form), because there the pad *is* the vernacular;
+everywhere else Δ ≥ 2 m means stilts or re-siting. *S* (Denevan bluff model;
+Tonlé Sap temple on the one dry spot; terps 1–2 m for a farm, raised
+over time); *E* (18.3 % of BM buildings stand over water; 5 % in Skyrim); *L*
+material-culture (Murkmire platforms ascend over water; Imperial houses on the
+same soil sank). **Enforced by** `docks[].piledToBed` (schema), `groundFit`,
+`compile_settlement` door-on-land test. The highest-water check and the
+over-water share are not measured — G8.
+
+**B5. Water depth at a dock is measured, per hull class, 100 m off the quay
+line.** A canoe or raft landing needs ≥0.6 m; a small-draft boat station ≥1.2
+m; a keeled hull berth ≥3 m — and a place whose living depends on hulls *not*
+berthing (Lilmoth's lighters) needs the shallow shelf recorded as a feature.
+*L* (small-draft doctrine; Lilmoth's ships anchor out); the worked dock
+table is the first loop place's design brief (Claywater Station's ferry
+landing, 16k slice 1c).
+**Enforced by** `blueprint._validate_docks` (hull class, the water terminal, the 10 m reach and the `fit` direction) plus the design record's candidate table — G9.
+
+**B6. The approach is designed at meso, before geometry.** The chosen
+candidate must offer a first-seen object taller than the vegetation on the
+sightline and a final 200–400 m that bends at least twice; features that make
+the approach (a mangrove wall, a reed fringe) are marked `kept`. *S* (chained
+reveal; local contrast); *O* (judged from the ground). **Enforced
+by** `approaches[]` required (≥1; ≥2 for M3+) and the 16-item checklist in the
+design record (manual). Sightline heights are computed over bare terrain and reported against the palette canopy (G10 part-closed).
+
+**B7. A place whose identity needs ground the plot lacks asks for it rather
+than pretending.** `terrainRequests` (a sinkhole, a pool, a rock shelf) is a
+Part 6 carving job with a why, not a rewrite of the place into something the
+ground happens to allow; the prose does not claim ground that is absent. *O*;
+engineering standard 12. **Enforced by** the catalogue field and
+the design record's "catalogue should change" list; the carve is a compile job
+— G11.
+
+**B8. A move is written back; a move over 150 m is reviewed against its
+neighbours and its role.** *O*. **Enforced by** `apply_sitings`
+(incremental move, neighbours within `NEIGHBOUR_WARN_M` reported, minor
+routes/waterways/hostility/exports re-run).
+
+---
+
+## Part C — Ground → layout (micro)
+
+**C1. A district is one plan unit and one kit set; seams between districts
+stay visible; cultures layer and never blend.** Imperial ashlar below,
+Argonian work above, stacked; the two Argonian coastal kits do not share a
+settlement without a stated founding reason; the interior root kit admits no
+reed, no stilt over open water, no wattle. *S* (Conzen plan units; Venice
+parish cells vs Amsterdam regulated plots — mixing two water grammars in one
+town reads as incoherence); *E* (vanilla mixes kits in 29 % of settlements,
+the mod sets in 61–76 % — we follow vanilla); *L* material-culture "three
+kits, never blend"; *O* CLAUDE.md kits rule. **Enforced
+by** `blueprint.KIT_SETS` (one set per district, validator), `assetConstraints`
+bans, the interiors index culture check, and `_placement_warnings` 97 C1 (WARN:
+every parcel's `assetRef` is in a kit its district may use).
+
+**C1a. Kit purity is held over what a place is BUILT of: only `structure` and
+`building` parcels are tied to their district's one kit set. The dressing pool
+— the `works-v1` props, which are vanilla clutter and neutral by construction —
+is admitted to every kit set.** A notice board in an Argonian quay is dressing,
+not a second architecture, and a one-piece "district" drawn round a board is a
+plan unit that is not one (Lilmoth's dues-board district is deleted; the board
+lives in the lighter quay). *O* implementation lead (audit §7.2).
+**Enforced by** `blueprint.DRESSING_KITS` + `kits_for_district`, read by the
+C1 warning above.
+
+**C2. The plan unit is chosen by culture (the grammars are tabulated in Part
+F).** Argonian stilt: one boardwalk spine along the shelf, decks as nodes,
+dwellings hung off it, deliberately non-gridded, the Hist on the one high
+spot, markets as decks. Argonian mud: a compact cluster on the dry point or
+mound, huts facing an open common with the Hist, the clay oven the only
+masonry, fields and fish-parks outside, causeway access. Argonian root: the
+trees are the plan; passerelle runs follow the kit's own length/rise grammar;
+vertical; nothing over open water. Imperial: planted, surveyed straight, a
+rectangular market at the T of the through roads, plots with their frontage
+on the street, visibly subsiding where it meets marsh soil. Dunmer Hlaalu: status
+climbs uphill from the water edge, manors up, plantation grids below, walled
+compounds off organic lanes. Works: the layout alone says the trade; fouling
+trades downstream and downwind. *S* (Kampong Ayer, Ganvié, Malay kampung,
+terps, bastides, Balmora, medieval edge ordinances); *L* material-culture,
+settlement-register. **Enforced by** district `kind` + `cultureKit`; `routing`
+on ways (Imperial `straight`, Argonian `terrain`); reviewer against Part F;
+owner rounds (cities always).
+
+**C3. One spine, at most three secondary ways per district, back lanes and
+alleys behind them; four tiers at most; the spine is measurably wider. The
+GATE PIECE sets the width through it: a spine may narrow to the opening for
+the length of the gate and widen again beyond it.** A 4.3 m spine cannot pass
+a 3 m arch, and the arch is measured geometry while the width class is a
+convention (*O* implementation lead, audit §7.8). The widths
+are road/spine 4.3 m (the measured road-piece median in both Skyrim and BM&V),
+track 2.5 m, footpath 1.2 m, boardwalk and pier at the kit piece's width; no
+passage narrower than two character widths (~1.3 m). Two ways of equal width
+between the same two nodes are one path drawn twice. *E* (road piece width p50
+4.34 m); *S* (high street → cross street → back lane → alley; width reads
+as rank; 128-unit character, two-widths minimum). **Enforced
+by** `blueprint_integration` `way-overlap`; `street_router` `NEIGHBOUR_PENALTY`;
+the painted route rasters (track 2.5 m, path 1.2 m). The width classes are reported and the 1.3 m
+passage is checked (G12 closed).
+
+**C4. The centre is a shape on the spine, not a plaza: for Argonians the Hist
+court (a tree with cleared ground the settlement bends round); for Imperials
+the rectangular market at the first junction inside the gate; for Dunmer a
+riverside or terrace forecourt. Where C2 and C4 want the same ground, C2 wins:
+the Hist keeps the highest dry ground, and commerce sits on the spine at the
+first junction inside the threshold on the way to the sacred or authority
+node.** At Lilmoth the high ground is the ground nearest the gate, so the
+market cannot be both "first inside the gate" and "before the Hist"; the market
+is a node on the walked line, not a fixed distance from either (*O*
+implementation lead, audit §7.3). Commerce sits at the first node inside the
+threshold, on the most integrated line, because configuration draws movement
+before attractors do; the Argonian market is a deck between gate and Hist,
+never at the Hist. *S* (market shape = plan; space syntax natural movement;
+Bethesda "market at the first junction inside the gate"); *L* (each village
+has its Hist; tree-minder arbitrates). **Enforced by** checklist items 6 and
+9; `clearance.kept` for the tree; reviewer — G13 for a mechanical "first node
+is a market/deck" check.
+
+**C5. Nearest-neighbour spacing is a legibility constant: p50 13–16 m
+between building FOOTPRINT CENTROIDS in every culture and size, p10 not under 8 m; attachments
+(`stacksOn`, a way that `endsAt`) are the only designed contacts.** Culture is
+expressed in density, edge and orientation, not in spacing. The measure is the
+derived footprint centroid, never the authored pivot: several Ayleid pieces
+carry pivots 8–20 m from their own hulls, so pivot distance says nothing about
+what a player walks between (audit §6.1). Props are exempt — a rack beside an
+oven is the trade's furniture, not two buildings — though the 1.3 m passage of
+C3 still applies to them. *E* (p50 12.2–16.2
+m across four sets and four size classes; p10 8.0–12.8). **Enforced
+by** `blueprint_integration` `parcel-overlap` and `parcel-gap` (the 8 m floor
+on centroids, with the hull-to-hull gap reported beside it; `abuts` + `abutsWhy`
+as the designed-contact exception; `kind: prop` exempt; G14 closed).
+
+**C5a. `abuts` covers KIT SNAP PAIRS only. A trade contact — a hoist against
+the rock face it works, an oven beside its rack — is declared `worksWith` +
+`worksWithWhy`: it is exempt from the 8 m floor, and it must keep 0.5 m of
+clear ground, because no author ever made those two pieces to touch.** *O*
+implementation lead (audit §7.5); CLAUDE.md kits rule. **Enforced
+by** the validator (`worksWith` schema, ids, `worksWithWhy`, never both `abuts`
+and `worksWith` for one pair) and `blueprint_integration` `parcel-gap`
+(`WORKS_WITH_CLEAR_M`, HARD).
+
+**C5b. Every parcel has a derived `kind` — `building` (encloses a room or has
+an entrance), `structure` (deck, scaffold, platform, bridge, gate, wall,
+tower), `prop` (rack, oven, cart, board, trough, cairn) — and the counting
+rules read it.** Props are exempt from the C5 floor, the C6 density band and
+the C7 use histogram, and are counted by C12 as dressing; structures count for
+C6 and not for C7; a `stacksOn` piece adds nothing to any count, because it is
+the same structure seen from higher up. The kind is derived from the interiors
+index and the measured mesh, not from the label (97 E2); a parcel may pin it
+with `kind:` where the derivation reads the mesh wrongly. *O* implementation
+lead (audit §7.1: the 8 m floor, the density band and the use
+histogram were reading a drying yard as a village). **Enforced by**
+`worldgen.parcel_kinds` (`parcel_kind`, `counted_parcels`), read by
+`parcel-gap`, `_placement_warnings` C1/C6/C7 and the `scaleGrounding`
+validator.
+
+**C6. Density falls as the place grows; growth buys radius, not tightness
+(bands per column in `breadth-bars.json` `densityPerHa`). The
+measure is taken over the BUILT HULL — the convex hull of each district's
+counted parcels, buffered by half the column's maximum building spacing — and only for records
+classed `settlement`, from four counted parcels up.** Radii:
+M2 ~20–35 m, M3 ~50–75 m, M4 ~75–120 m, M5 100–225 m. A blueprint boundary
+carries the approaches, the water and the clearance ring, so measuring over it
+reported a village as empty ground; and the bands were mined from settlements,
+so a lair or a works camp judged on them is a number about nothing (audit
+§6.3). The band and the buffer are read from the `breadth-bars.json` column the place is built under (its counted buildings), and a place of several districts is measured over the union of the district hulls, never one hull across the road or water between them (decision 0101 rule 5). *E* (density and radius
+by size class); *L* settlement-register (M3 12–35 structures, M4 40–120, M5
+150–400 total placed objects — see D7). **Enforced by** `scaleGrounding`
+(buildings and structures within ±25 % of `buildingsPlanned`); the density band
+is reported by the compile warnings over `blueprint.built_hull_area_ha`
+(G15 closed, warn-grade).
+
+**C7. The building mix follows the magnitude ladder and lore, not the mined
+family shares.** Every M3+ has its Hist or substitute, an egg-tending place
+(uxith), the office-holders' lodges and a defensible approach; M4 adds one
+specialism and an outsider presence; M5 adds districts, a market, guild or
+office buildings and a foreign quarter. Rough shares by `use`: dwellings 60–70
+%, work 15–25 %, civic and sacred 5–10 %, storage 5–10 % (hamlets run
+storage-heavy: sheds and racks). The histogram counts BUILDINGS: a deck, a
+gate or a scaffold carries no use a household lives by, and a prop is dressing
+(C5b). *E* (the mined family mix is 46–85 %
+unclassified and is therefore not adopted); *L* settlement-register §1,
+material-culture offices. **Enforced by** the catalogue's socket list and
+`scaleGrounding.why`; reviewer; the `use` histogram is reported at compile (G16 closed, warn-grade).
+
+**C8. Every building is oriented with a reason, in this order of grounds: door
+to a way; long axis along the contour where Δ would otherwise climb the
+ladder; front to the water for stilt, quay and water-side plank pieces, the
+door met by a bound landing and never by a path laid to its sill (doorFrontRule); front to the common or
+the Hist; a climate or ritual reason only where lore supports it.** Not
+compass-aligned by default; within a district no more than a tenth of parcels
+share a yaw within 5°, because a uniform yaw reads as copy-paste. *E* (yaw
+against the contour is indistinguishable from uniform in all four sets, so no
+shipped contour convention exists to copy; the sources under-randomise yaw);
+*S* (Malay long-axis rule is culture-mediated, not climatic in practice —
+noted, not adopted); *O* (`yawDeg` + `orientationWhy` required;
+axis-aligned squares are not a layout); *O*: the door
+decides the yaw — a building with an interior is turned so its DERIVED
+doorway faces the way by which the player arrives; the why says so.
+**Enforced by** the validator (`yawDeg`, `orientationWhy` required; footprint
+derived); `blueprint_footprints --orient` computes the yaw from the chosen
+doorway (`doorwayRef`) to the way, so orientation is planned from the door. Yaw diversity is checked per district, with `routing: "straight"` as the
+grid-culture exception (G17 closed).
+
+**C9. Every door opens onto a way, within 4 m of its centreline; every socket,
+service or named building presents that door to the way a player walks.** The
+measured convention (53–57 % of entrances on the road side) is too weak for a
+marker-free game, so ours is total. *E*; *S* (Morrowind's diegetic direction);
+*O*. **Enforced by** `blueprint_integration` `door-to-way`
+(within 4 m); the validator's `door-on-way` (the doorway's world bearing
+faces its way within 60°, HARD) and doorway match (a door sits only on a
+derived doorway: fixed ±45°, radial on the ring ±0.5 m); checklist item 10.
+
+**C10. Enclosure is cultural and rare: Argonians build no fence or wall piece
+except where the lore cites one (Lilmoth's estuary pole wall) — but a CLOSED
+RING formed by dwellings, trunks and woven panels between them is allowed and
+IS the place's edge (Nine-Trunks); the water, the reed edge and the clearance
+ring are the rest of it;
+Imperial places wall the gate and fence yards and fields; Dunmer compounds
+wall themselves.** *E* (enclosure pieces within 15 m: p50 0 in every set, p90
+2 in Skyrim, 0 in the marsh sets — partly by absence of pieces); *L* (Helstrom
+defended by marsh and grove, not works; totems everywhere). **Enforced
+by** `fences[]` kinds and the reviewer; checklist item 13 (the edge reads
+from inside as well as outside). The ring-of-dwellings case is a D-edge, not a
+`fences[]` entry: it is drawn as parcels and read as the edge (*O*
+implementation lead, audit §7.4).
+A wall or fence that IS a `fences[]` entry is ROUTED over the ground like a
+street, in its own kit module, and stands in water only where the lore drives
+poles (*O*): `street_router`'s fence mode costs the contour, the
+outer edge of the built hull and dry ground per `fences[].class` (pole-wall |
+curtain | palisade | fence | ring-panel), `waterOk {maxDepthM}` licenses the
+shallows, `gapAt[]` names the ways for which the wall is opened or over which it is carried, and
+`abuts[]` names the designed contact. **Enforced by** HARD checks in
+`blueprint._fence_failures` (no parcel hull crossed, no way crossed outside
+`gapAt`, no standing water without `waterOk`, `moduleM` derived, `routingWhy`
+on a `straight` wall) and the WARN in `_fence_warnings` (a run over three
+modules with no bend across falling ground).
+
+**C11. Kit purity is per district and a piece is chosen on its measured
+geometry; a piece whose hull is not attributable to its pivot is dropped.**
+*O*; module 96 lessons. **Enforced by** `assetRef` +
+`<kit>.footprints.json`, `nodeAmbiguous` flags, the pivot-offset drop.
+
+**C11a. A dug-in piece is anchored on the lowest ground under its footprint;
+every other fit on the mean.** Both then apply the asset's designed sink. The
+uphill side of a dug-in piece buries deeper and nothing hovers. **Enforced by**
+`anchoring.ts` `anchorPlacement` (fit read from the kit manifest's
+`placement.evidence.policyId`), mirrored in the yard float check.
+
+**C12. Outdoor dressing is authored per building, to the per-settlement
+numbers of [0098](../old-decisions/0098-variety-is-measured-per-settlement-not-by-a-template-cap.md),
+and the compile realises it; it varies.** The designer places dressing in
+the place's layout file as groups (the yard set per building kind, defined
+in the type sheet of the `place` skill, placed with `group place`):
+pieces within 12 m of a dwelling at the tier's p50 (hamlet ≥ 15, village
+≥ 20, town ≥ 25, city ≥ 40) with the minimum set per dwelling (door, light,
+roof detail, windows unless "none by design", ≥ 5 personal clutter); a works
+site carries the trade as its layout and props; a ruin or abandoned place
+little plus decay; a camp around the fire with the loot cached away from
+it. Dressing stands on a host (a wall face, a porch, a deck, a table), never
+on a ring round the parcel. Repeated detail is noticed before repeated
+architecture, so the vocabulary belongs to the district kit and each yard
+set varies. *E* (vanilla houses carry 19.5–69.5 pieces within 12 m, 0098;
+Skyrim p50 2, p90 19 within 10 m); *S* (GDC 2013 detail-repetition finding);
+*L* material-culture prop brief. **Enforced by** the 0098 table checked at
+export and `world/sources/placement/breadth-bars.json`; `compile_settlement`
+resolves every object through the district kit's `dressing[]` vocabulary
+(missing vocabulary is HARD) and never invents dressing near a building.
+Dressing is authored in the layout, never placed by the compile
+([0100](../old-decisions/0100-one-place-skill-whole-layout-authoring-lessons-store-and-the-acceptance-freeze.md)
+decision 5).
+
+**C13. Vegetation meets buildings as a graded field, not a line.** Hard
+clearance is the footprint union dilated by a jittered offset; a thinned ring
+of 5–15 m; per-channel falloff radii differ (ground material 8 m, vegetation
+15 m, terrain 25 m); deliberate plantings are kept inside the clearing (the
+Hist, a shade tree, a reed bed at the piles); a farm's field has a hard edge,
+a camp's a soft one; attachment species are not free-standing. *E*
+(waterline is the densest band; composition rules C1–C5); *S*; *O* 0041 §
+Slopes. **Enforced by** `worldgen/vegetation_patches.py`, one keep-factor
+rule (1 wild, 0 built ground) read by both halves of the vegetation. The
+compiler samples it as a raster in `compile_scatter.ProvinceFields`; the
+runtime groundcover ring evaluates the same rule in
+`packages/game-core/src/vegetation/settlementClearance.ts`. A fixture parity
+test holds the two together; without it one half can clear the trees while the
+other leaves the grass standing. The built edge is the `hardClear`
+union wobbled by a ±1.5 m sinusoidal jitter; the fringe grades from 25 % of
+wild growth at that edge to full wild over 15 m (C13's vegetation channel);
+weeds are *enriched* in the 1.2 m band at the wall foot; `kept` plants hold a
+protected disc (Hist 18 m, shade tree 8 m, reed bed 12 m) that clearing never
+touches. Every tier goes through one gate in `scatter.scatter_chunk`. A
+cleared plant still stamps its clearance radius, so the understory does not
+fill the space it left. A plant is judged over its own radius rather than its
+origin point, since a canopy overhangs its trunk. `fringeFalloffM` on a
+blueprint's clearance block is the per-place override: a farm's field takes a
+short falloff and a hard edge, a camp a long one. Route corridor clearance is
+in `routes_raster`.
+
+**C-stitch. The network into a place and the streets inside it are ONE
+network.** A blueprint declares `networkTerminals[]` — for each place the
+province network reaches, the real route id, the `entryUV` where it meets the
+boundary, the blueprint way that carries it inside as well as the reason
+for its arrival at that point.
+Required wherever the catalogue record is reached by road (`discovery: "road"`
+or a `reachedVia` list). The route must pass within 3 m of the entry point and
+the way must start or end within 1.5 m of it; the way may not be a lower class
+than the route (a road does not shrink to a footpath at the gate); the way's
+end segment runs within 20° of the route's bearing over its last 15 m, so the
+street continues the road rather than meeting it obliquely; a `spans` gate on a
+road or track terminal stands square (±15°) to that bearing; every
+`approaches[].fromRouteId` names a terminal's route and starts its `viaUV`
+arrow on that route at least 30 m out; and no road or track way crosses the
+boundary anywhere else (an unplanned second entrance). *O* owner requirement
+(at Lilmoth the road arrives at the gate from the south-west and the
+blueprint's gate way leaves it to the north-west, 69° apart). **Enforced by**
+`blueprint.validate_blueprint` (schema, HARD), `blueprint_integration.
+check_network_stitch` (geometry, HARD, reported in metres and degrees), and
+`compile_minor_routes`, which ends a place's derived path at the declared
+terminal instead of the plotted dot.
+
+**C14. Verticality carries its own ascent: every raised deck has its stair,
+ramp or ladder visible from the node below; ramps run ≤30°; a passerelle run
+is a sum of the kit's own lengths and rises.** *S* (Bethesda 30–45°
+for animation, 60° AI ceiling); *E* the measured connector table (each piece's
+joining faces, their positions, outward normals, widths and heights, derived
+from the source authors' own co-placements and from the mesh bounds —
+`pipeline.measure_connectors`, `<kit>.connectors.json`). The snap grammar is
+MEASURED DATA, not prose in a kit config, and a stair that serves a deck is
+laid on that deck's face. **Enforced by** `compile_settlement` door slope ≤30°
+on a 2 m gradient; checklist item 12; `blueprint_integration` `abuts-snap`
+(HARD) for the join itself; G19 closed.
+
+**C15. The Hist is not cleared, built over or moved; the settlement bends
+around it; its minders face it.** *L* (each xanmeer housed its tribe's Hist;
+the tree-minder office; Lilmoth's third Hist); *O* Round B steer list (Hist
+prominence). **Enforced by** `clearance.kept` kind `hist-tree`; reviewer.
+
+**C16. Every building shows a light at its entrance at night: a window glow
+facing the approach (within 90° of the door's bearing) or a mounted light
+(lantern, sconce, brazier, fire) within 2 m of the threshold.** The lanterns
+stand as built: the mounted lights the places carry, lit 17:30–06:30
+village-wide. *O* 0102 decision 7. **Enforced by**
+`compile_settlement.unlit_entrance_errors` (HARD for a place, WARN for a
+fixture; glow facings from the kit manifest's `glowFacingsDeg`, lights by
+assembly layer `light`); reader checklist (front).
+
+**C17. Dressing faces its user, idle spots stand at their props, and a
+trade shows its board.** A seat faces its table, else away from the wall
+it stands against, else toward the way; a spit or oven mouth faces the
+cook's open side; a lantern arm reaches over the way. An `idle` socket
+stands at the seat, fire, water, bed or workplace its activity names. A
+lodging, trader, stable or smith building hangs its pool's board on a
+bracket post beside the door, never over it. *E* (vanilla Whiterun and
+Riften shop boards on `signwrpost01`/wall brackets; mined pairs in
+`kit-mounts-mined.json`); *O* owner walk 8. **Enforced by**
+`wb.py check` `seatFacingRule`, `socketCoherenceRule`, `serviceSignRule`
+(R94-R96; the place skill's SKILL.md); reader
+checklist rows 52-53.
+
+**C18. A road between places is dressed in clusters at its features, by
+its condition and the region it crosses.** Kept field walls near holdings
+that tumble with distance; verge rocks clumped on cuts; cairns at Argonian
+forks; a signpost at every junction of three or more roads with one arm
+per destination; pull-offs on flat ground. A leg improves one condition
+step within 300 m of a place. *E* vanilla hold roads (to be measured by
+the type-10 roadside mine); *O* owner walk 8. **Enforced by** nothing
+yet: the type-10 slice proves it and its gate
+([road-dressing.md](../research/placement-settlements/road-dressing.md)).
+
+### Street dressing
+
+What the three reference games do with city clutter, and the rule we take from it.
+
+- **Morrowind:** hand-placed static clutter. Streets are sparse; interiors are dense.
+- **Oblivion:** a clutter theme per district, market stalls, and idle markers that send NPCs to a spot.
+- **Skyrim:** hand-placed clutter plus idle markers; ambient props chosen by trade; one sign per business; banners in the hold colours; wear decals on walls and ground.
+
+**C19. A city street is dressed by the function of its district.** Each district
+takes one density class, and its clutter comes from the classes its function
+needs, never from one city-wide pool.
+
+| District function | Density | Clutter classes (catalogue.md class names) |
+|---|---|---|
+| Market | high | baskets, nets, racks, carts, crates, stalls, signs |
+| Residential | medium | baskets, firewood, nets, small flora, one door light |
+| Civic, ceremonial | low | braziers, banners, signs, few props; space left open |
+| Works, industrial | high, trade-specific | the trade's props (forge, smelter, tanning, drying racks), firewood, coal |
+| Waterfront | medium | nets, fish racks, boats and their gear, baskets, piles |
+
+Rules that apply to every district:
+
+1. **Dwelling dressing.** Every dwelling carries the pieces within 12 m of its
+   footprint that decision 0105 R6 counts: every placement within 12 m except
+   shells, pads, ground treatments and modular-run pieces; trees, rocks and wild
+   plants of the frozen world and markers are excluded; crops, steps, porches,
+   doors, smoke, fire and clutter count. The floor is the tier p50 in C12; the
+   gate is `breadth.dressingPiecesPerDwellingWithin12mMin`.
+2. **Signs.** One sign per business, its kind taken from its trade (lodging,
+   trader, stable, smith: C17). A business with no sign fails the reader pass.
+3. **Idle sockets.** Clutter that implies a user gets an `idle` socket beside
+   it (a stall keeper at the stall, a net mender at the nets), per C17.
+4. **Low ground.** Ground cover and puddles gather in the low ground beside
+   ways and at yard edges, as the water table implies; never on a dry
+   crown.
+5. **Lighting rhythm.** On a main way at night a light source stands every
+   10 m. The kit's fixtures with no recorded radius reach
+   `FIXTURE_DEFAULT_RADIUS_M` (6 m, `lighting.ts`), so a 10 m step lets each
+   pool overlap the next. Side lanes take one every 20 m or none. The count stays inside the
+   `lights.density` cap (`LIGHTS_CAP` within `LIGHTS_ACTIVE_M`, `lighting.ts`).
+6. **Hist and weird flora.** Each district carries a stated share of the flora
+   classes (fungus, aquatic plants, moss, vines): high in residential and
+   waterfront, low in market and works, the Hist's own ground in civic. The
+   place's design brief records the shares; the reader checks the plan against them.
+7. **Banners and wear.** Civic and market ways carry the place's banner colours
+   (a use-keyed record, never one colour for the province); wear decals sit at
+   doors, stalls and wheel ruts.
+
+**Authoring.** Street dressing is authored as `dressing-add` patches in the
+place's own bundle (0081 decision 2: instances added by an explicit list
+or by an overlay rule on a polygon, with `why` and `sources` on each patch). A
+change to the dressing never rebuilds the frozen world. The workbench measure
+(`wb.py measure`, `wb.py check`) confirms the dressing counts, sign coverage,
+light spacing and socket coherence before any walk packet is posted. *E* (the three
+games above); *O* owner Helstrom request. **Enforced by** the
+0098/0105 breadth and lights gates and the `wb.py check` rules named above;
+the density classes, the flora shares and the 10 m rhythm are place reader
+rows until a gate has been written for them.
+
+---
+
+## Part D — The walking player
+
+**D1. Every M3+ place has at least two designed approaches; each names one
+first-seen object, a sequence of three to five beats with at least one
+occlusion, plus a final stretch that bends twice.** *S* (weenie; chained
+reveal; S-curve); *O*. **Enforced by** the validator
+(`approaches[]` count, `firstSeen` a real id); the checklist items 1–5
+(manual).
+
+**D2. The first-seen object is taller than the canopy on its sightline, and
+in the marsh it is lit.** Under a closed canopy at dusk light is the only cue
+with range; a 9 m beacon under 14 m trees does not exist. One beacon, one or
+two mid-place markers at decision points, no rival to the beacon. *S*
+(signposting ladder: light ~40 %, sound ~15 %; local contrast); *E* (the
+scour: nothing 12 m tall reads at 1.4 km). The canopy compared against is the
+canopy ON THE RAY, sampled where the survey allows trees (not over open water,
+not on the place's own hard-cleared ground), and a DOWNWARD view — the walker's
+eye already above the top of the piece — is not judged on canopy at all (audit
+§6.4). **Enforced by** checklist items 3
+and 9; the type recipes' cue slot (tall / close / lit / audible); the compiler
+runs a bare-terrain line of sight from the approach's first waypoint and
+reports the piece's height against `compile_settlement._canopy_on_ray_m`
+(G10 part-closed; the ray is still bare terrain for the occlusion test).
+
+**D3. The threshold is spanned, not passed.** A gate, arch or bridge stands
+across its way. *S* (Totten; Bethesda gates); *O*. **Enforced
+by** `blueprint_integration` `gate-spans`.
+
+**D4. Wayfinding runs gate → first node → spine → seat; the seat differs
+by culture.** Imperial and Dunmer places put authority high and enter it last
+(the measured Nordic convention: tallest building at elevation rank 0.67);
+Argonian places do not (rank 0.25 — the Hist stands where it grew and the
+beacon is often a rim feature, offset 0.65 of the radius from the centre).
+From the arrival point the first node is visible or a landmark stands at the
+bend that hides it. *E* (elevation rank; centre offset); *S* (Bethesda
+conventions; Balmora; Ald'ruhn). **Enforced by** checklist items 6 and 9;
+reviewer.
+
+**D5. The door one wants is visible from the way one walks.** *O*; *S*.
+**Enforced by** `door-to-way` and checklist item 10.
+
+**D6. A dead end pays or is cut.** A way's `endsAt` names a parcel, dock or
+landmark; what it reaches is recorded as a player purpose. *S*. **Enforced
+by** `endsAt` (schema) and checklist item 11 — the "pays" half is a reviewer
+judgement.
+
+**D7. Scale does not lie. The Morrowind ratio is the rule, and it is a rule
+about STRUCTURES: Balmora reads as a city on roughly 40 of them, so an M5 is
+50–80 buildings and structures.** The settlement register's M5 band of 150–400
+counts TOTAL PLACED OBJECTS — buildings, structures, props and dressing — and
+the two figures are therefore not in conflict (module 92; *O* implementation
+lead, audit §7.6). The count is of buildings and structures within
+±25 % of the lore-derived plan; props and stacked pieces do not add to it; the
+record names the lore source for the population. *O*;
+*L*. **Enforced by** the `scaleGrounding` validator over
+`parcel_kinds.counted_parcels`.
+
+**D8. Metrics are sized against the character: 1.83 m tall, passages ≥ two
+widths (~1.3 m), walking ways ≤30°, no player-climbed slope over 45°, 60° the
+AI ceiling.** *S* (GDC 2013). **Enforced by** `compile_settlement` door slope;
+`street_router` `K_SLOPE`/`K_CROSS` (a steep line costs more than a detour).
+Passage width is G12.
+
+**D9. Every M3+ place has at least one combat space with its clearance class
+and a why, even where it is safe.** A hostility flip, a night attack or a
+quest will use it; critical animations need the room. *O* 00-core acceptance
+(combat spaces and critical-animation clearance validated); module 75.
+**Enforced by** the `combatSpaces[]` schema; it is in the validator's
+REQUIRED list, each space carrying a boundary, a clearance class and a why
+(G20 closed).
+
+**D10. From any point on a road or shore, one to three destination- or
+beacon-tier objects are visible; none is a dead world and four is a chore
+list.** *S* (BotW gravity, two-visible rule). **Enforced by** `macro_plot`'s
+route-visibility sweep (report only).
+
+**D11. Effort is paid where it ends: a climb at the summit, a swim at the
+island, a forced detour with a view or a find.** *S* (denial and reward).
+**Enforced by** checklist item 16; `playerPurpose` on the record.
+
+---
+
+## Part E — Integration and honesty
+
+**E1. Layers integrate or the compile fails.** The six checks: a way touches a
+parcel only where it `endsAt` it; two ways of one class do not run twice;
+parcels do not overlap; a gate spans its way; every door is within 4 m of a
+way; a canal lies in water and a road fords at most 12 m. *O*.
+**Enforced by** `blueprint_integration` inside `compile_settlement`.
+
+**E1b. The breadth of the sourced pool is used.** A place draws on the whole
+set of exterior shells we hold that a plugin links to an interior, not on the
+two or three that happened to be placed first; mods tailored to our aesthetic
+are preferred over vanilla. Vanilla is used where it is the better fit. *O*.
+**Enforced by** `worldgen.asset_breadth` (per culture: the fraction
+of linked shells used across all blueprints; per blueprint: distinct shells
+against those available), reported now, with the floor set at Part 8, and by
+the validator's HARD rule that a manifest-linked shell may never be authored
+with no interior or on an unbuilt kit.
+
+**E2. Geometry, never labels.** Footprints are the measured ground hull;
+`points` are routed over the real heights; a description is a search key. *O*.
+**Enforced by** `blueprint_footprints --apply` and `street_router
+--apply` with drift checks in the validator.
+
+**E3. Kits only combine pieces designed to combine; each kit's own combination
+grammar is data the compiler obeys.** Dock systems (vanilla, Dagon Fel, HTBM
+lashed-plank) are not chained across systems; `jets` pieces only finish a run
+begun elsewhere; passerelle arcs chain only at one radius; scaffold decks
+match their base's side count. *O* CLAUDE.md. **Enforced
+by** `KIT_SETS` (set level) and `assetConstraints` bans; the piece-level
+piece-level joins are checked by `blueprint_integration` `abuts-snap` (HARD):
+a parcel that declares `abuts` must have one of its measured connector faces
+COINCIDE with one of its neighbour's — within 0.15 m and 5° of opposition in
+world space, after each piece's centre and yaw — or be joined to it through a
+piece both of them snap to. `abuts` therefore means SNAPPED, not "allowed to
+stand close"; a pair whose kit has no connectors measured is a WARN naming
+that kit, never a silent pass. G19 closed.
+
+**E4. A sourcing gap is a job with an owner and a status, filled in the
+session it is found; it is shown as a gap, not faked.** *O*.
+**Enforced by** the register
+in [settlement-kit-sourcing-log](../research/placement-settlements/settlement-kit-sourcing-log.md);
+engineering standard 13 (playbook moves with the work).
+
+**E5. Every enterable shell and entrance piece has a derived doorway and
+one door record; the door moves the player into a separate interior cell
+and back to its exterior arrival marker (the Morrowind/Skyrim model,
+[0081](../old-decisions/0081-building-blocks-then-exemplars-then-rollout-and-doors-are-transitions.md)
+decision 4).** The interior is a tier A cell shipped verbatim where a mined
+plugin links one to the shell, a fit-rule claim (`evidence: fit-rule`), or
+`reserved` with a reviewed message; an open structure with no interior
+(deck, gate arch, shelter) has no door record. No door mesh is placed: the
+door is part of the building assembly or a measured opening on the shell;
+the record says by which doorway the player enters and where it leads.
+*O* (0081). **Enforced by** the interiors
+index (`tooling/asset-pipeline/pipeline/interiors_index.py`: enclosure
+needs front-facing walls, so hollow props are masses; doorways from the
+opening, an open front, a baked leaf, a mined placement or a composed door
+part) and the validator (a building with an interior carries a door;
+`interiorRef` must be an existing kit); door records and reachability per
+compile are owned by the 16k loop; standard 12.
+
+**E6. Everything placed has a stable id and a plain-English why in the
+reference register, reviewed by a separate agent.** *O* standards 2 and 12;
+style guide §2.8; 0043. **Enforced by** the id registry, `why` blocks
+(`MIN_WHY_CHARS`), the prose linter (npm test) and the `text-review` skill.
+
+**E7. Derived data is not hand-edited; the proving-ground yards are the
+regression fixture and an accepted place is frozen; every compile is
+deterministic and carries provenance.** *O* standard 6; module 40 §31; 0099
+decision 7; 0100 decision 6. **Enforced by** drift checks,
+`GenerationProvenance`, byte-stable outputs, the yard gates
+(`test_proving_ground.py`, `test_proving_ground_b.py`) and the acceptance
+receipt `accepted-places.json`.
+
+**E8. The budget is declared and the report is checked against it.** *O* 0041
+perf contract. **Enforced by** `compile_settlement` budget report vs `budget`.
+
+**E9. The macro layer's promises are the blueprint's requirements.** What a
+catalogue record promises the player — its `services[]`, the roles in
+`contents.npcs`, its `travelStation` destinations and modes, its
+`questHooks.provisions`, its `sockets` and the reward kinds that imply a place
+— must be realised in the blueprint as named, enterable objects: a parcel
+carrying that `service`, with a door onto a linked interior for anything the
+player walks into; an occupant with `worksAt`/`livesAt` for a named person; a
+travel service and a landing per destination; a socket, parcel or variant per
+provision. A promise nothing realises is a compile error. A service the lore
+says the culture does not keep (an Argonian moneylender) is removed from the
+promise at derivation, never faked in the blueprint. *O* ("in
+Lilmoth I couldn't find the shops and services we planned"); Morrowind service
+density (UESP Morrowind:Balmora); settlement-register §1. **Enforced by**
+`catalogue.SERVICES` + `worldgen.derive_services` (the promise) and
+`worldgen.blueprint_promises` inside `compile_settlement` (the delivery),
+which writes `output/settlements/<id>.ledger.md`.
+
+---
+
+## Part F — Culture grammars
+
+One row per kit set. "Never appears" is a validator or reviewer ban.
+
+| Kit set | Where (zones) | Plan unit | Centre | Spacing p50 / density | Orientation rule | Enclosure | Water relation | Materials | Never appears |
+|---|---|---|---|---|---|---|---|---|---|
+| `argonian-stilt` | Murkmire, deltas, coasts: `mercantile-coast`, `saxhleel-coast`, `pirate-freeholds` (Argonian quarters) | boardwalk spine along the shelf; decks as nodes; dwellings hung off; non-gridded | Hist on the highest dry spot; market a deck between gate and Hist | 14–16 m; M3 8–16/ha, M5 4–10/ha | door to the boardwalk; front to water on the quay line; long axis along the shelf | `enclosure-v1` Argonian village family (`stonewallarch01` 1.72 m clear, the curved wall and pillar) at a footpath only; otherwise none — totem lines, the reed edge | 15–30 % of buildings over water; floors above highest water; piles to bed | reed weave, timber piles, bark; canoes and rafts, no keels | wattle-and-daub; stone in new work; fences; keeled hulls as native craft |
+| `argonian-mud` | Shadowfen and the north: `dunmer-north` Argonian villages, `hist-heartland` north edge | compact cluster on the dry point or a ≤2 m mound (no retaining walls: a pad edge over 0.6 m and up to 1.2 m is a graded earth batter, blended over a ramp 2 × its height wide, at least 3 m, lessons L64); huts face the common | open common with the Hist; the clay oven the one masonry | 12–14 m; M2 15–30/ha, M3 10–16/ha | front to the common; long axis along the contour on a slope | pens only; `enclosure-v1` Argonian village family where a stone arch is wanted (footpath class); a causeway is the edge | on the dry point; fields and fish-parks flood; causeway access | wattle-and-daub over log skeleton, thatch, mud | stilt platforms over open water; reed-woven walls; stone |
+| `argonian-root` | the interior: `hist-heartland`, `naga-kur-deeps` (deeps variant) | trained around trunks; passerelle runs on the kit's length/rise grammar; vertical | the grove; the tree-minder's hall a bigger version of a house | governed by trunk spacing (~15–25 m); M3 6–12/ha | door to the passerelle; front to its training trunk | none; the grove is the defence | never over open water; boardwalks cross wet ground | living root and limb, lashing, sap resin, bark shingle; deeps: cane, bog-oak, hide, bone, undressed xanmeer block | reed weave; wattle panels; stilt decks over water; quarried stone; nails |
+| `argonian-stone` | xanmeer sites province-wide | stepped terraces on a 3.64 m grid; stone bridges between masses | the summit chamber (the tribe's Hist once) | n/a (monument) | grid on 90°; axis to the cardinal or to the water it managed | the terrace itself — the Xanmeer tilesets carry NO authored gate (standing sourcing gap), so a cart way into a xanmeer site takes the nearest measured family in `enclosure-v1` and says so | causeways and weirs as relict works | ashlar, vakka stone | any *new* Argonian building in stone; occupation except as reuse (Naga-Kur heterodoxy, tribes as warning-keepers) |
+| `imperial` | `imperial-fringe` (Gideon), `imperial-penal-south` (Blackrose), enclaves | planted grid; straight surveyed streets; plots with street frontage; fringe belt | rectangular market at the T of through roads, first junction inside the gate; keep on the high point, entered last | 12–15 m; M4 6–12/ha, M5 4–10/ha | front to the street; grid axis | `enclosure-v1` newcastle curtain family (`1024wallgate01` 5.52 m clear, the only gate that passes a 4.3 m spine) plus its Whiterun farm-fence family for yards and fields | on the bank or the bluff; visibly subsiding where it meets marsh soil (the lore's sinking Imperial houses) | ashlar, tile, timber frame; the keep set | organic lanes; stilts; reed |
+| `dunmer-hlaalu` | `dunmer-north` (Thorn, Stormhold quarters) | organic lanes; walled compounds; status climbs uphill from the water | a riverside or terrace forecourt; manors up, entered last | 11–14 m; M4 8–14/ha | front to the lane; compound wall to the lane | `enclosure-v1` Redoran compound family (`redoranwallgate` 3.52 m clear at track class, `redoranwall` on a 3.64 m module) | river edge through the middle (the Balmora edge); saltrice grids below | Hlaalu domestic set (no Dres set exists — recorded gap) | Telvanni forms; Argonian kits inside the compound wall |
+| `neutral-works` | any zone, works types | freestanding props; layout says the trade | the working floor | by trade | to the resource (the bank, the pan, the cut) | scaffold rails, and `enclosure-v1`'s stockade palisade family where a works is shut; a works in another culture's hands takes that culture's family and the record says why | downstream and downwind of dwellings; sluices in compiler-cut channels | vanilla props; `stockadescaffold` grammar | machinery props (none exist); a kiln, saltern or winding gear as a mesh |
+| `neutral-underwater` | drowned quarters, wrecks, reefs | sparse; reads as a plan from above | the hollow a diver can enter | 6–10 structures per drowned district | to the old street plan | none | −1 to −10 m; ridges breaking the surface as the cue | Sirenroot blocks, HTBM totems, pile clusters | new Argonian building; anything not piled or ruined |
+
+---
+
+## G — Enforcement gaps and the smallest mechanism that closes each
+
+Status is CLOSED (a check now enforces it, HARD = fails the compile, WARN =
+reported under `warnings` and in the validator's second return value) or OPEN
+(nothing enforces it yet). Every closing check names its principle id in its
+message, so a failure sends the reader to one rule above.
+
+| # | Rule | Gap | Smallest mechanism | Status |
+|---|---|---|---|---|
+| G1 | A1 | size-follows-situation not checked | `audit_place_semantics` rule: magnitude ≥ M4 requires ≥2 network relations or a `travelStation`  | **CLOSED** — `audit_place_semantics.check_situation` (`situation` check; network relation edges exclude `visibleFrom`, which is sight, not network). All 22 live M4/M5 records pass |
+| G2 | A4 | snack tier not compiled | Phase 15: `compile_dressing` from `recordScope: dressing` types with per-region quotas  | OPEN (Phase 15) |
+| G3 | A5 | within-cluster clumping approximated by a lattice | measure Clark–Evans R on the plot per zone and report it (target < 1)  | **CLOSED (report)** — `worldgen.plot_stats` + `macro_plot --report-only`, in `macro-plot.md` and the report JSON. **Finding: R is 1.44–2.28 in every zone (median 1.78) — the plot is MORE regular than random, not clustered.** The lattice is the cause; closing the gap in the plot itself is a re-solve, not a report |
+| G4 | A6 | ≥3-axes-differ reported, not gated | make the quota report a `test_catalogue.py` soft ceiling  | **CLOSED (SOFT)** — `test_same_type_neighbours_differ_on_three_axes`: same-type pairs within 2 km differing on <3 vibe axes, ceiling 0, exception table `SAMEYNESS_EXCEPTIONS` (empty; 0 of 171 pairs in range fail) |
+| G5 | A8 | navigable depth for water roles checked only at meso | `macro_plot` `navigable` hint becomes a hard gate at `depth_m` ≥ the type's hull class  | **CLOSED (HARD)** — `macro_plot.navigable_violations` (hull ladder canoe 0.6 / small-draft 1.2 / keeled 3.0 m from B5, deepest published water within 150 m), `macro_plot --validate` + `test_navigable_roles_sit_on_navigable_water`. The full replot removed all temporary exceptions: a role must meet the measured depth or carry a typed terrain-cut promise that creates it. |
+| G6 | A10 | hostile/settlement shares reported only | ceilings and floors in `test_catalogue.py` | **CLOSED** — `test_settlement_and_civic_share_is_under_the_ceiling` (SOFT ceiling 22 %, 21.2 % live) and `test_hostile_or_clearable_share_is_over_the_floor`, which is two-level by owner ruling: a hostile share under 55 % (`HOSTILE_SHARE_FLOOR`) raises a warning, under 50 % (`HOSTILE_SHARE_HARD_FLOOR`) fails. Live 55.5 % of 580 |
+| G7 | B1 | `siting` optional | add `siting` to the validator's REQUIRED list for every blueprint of a plotted record  | **CLOSED** — `blueprint.validate_blueprint` requires `siting` on any blueprint of a catalogue record (HARD; the Part 0 fixture, compiled `--skip-catalogue`, details no record and is exempt) |
+| G8 | B4 | highest seasonal water and over-water share not measured | compiler reads the flood-band raster at each footprint; reports the over-water share per district against the culture band  | OPEN (needs a flood-band raster read) |
+| G9 | B5 | dock depth by hull class, and the dock ON the water that serves it | `blueprint._validate_docks`: `docks[].hullClass` (canoe 0.6 / small-draft 1.2 / keeled 3.0 m) sampled over the first 100 m of the serving route; a `networkTerminals[]` entry of kind lane/channel carrying `dockId`; the published water within 10 m of the berth; `docks[].fit` (`water-to-dock` re-ends the channel on the berth in `compile_minor_waterways`, `to-water` moves the berth to the channel end), derived when absent and reported with the metres | CLOSED|
+| G10 | B6/D2 | first-seen height vs canopy not computed | compiler line-of-sight from each approach's start to `firstSeen` using the dossier heights + palette canopy height along the ray  | **PART-CLOSED** — `compile_settlement._first_seen_warnings` runs bare-terrain line of sight from the approach's first waypoint to the `firstSeen` piece and reports the piece's height against the region palette's measured canopy (WARN). Canopy is not in the survey, so the ray itself is bare-terrain only |
+| G11 | B7 | `terrainRequests` not carved | typed per-place terrain patches (0059): the 16k loop (pads as patches) and open item 0c (dug-in pieces); validator warns while a request is unfulfilled | OPEN (16k loop) |
+| G12 | C3/D8 | spine width and 1.3 m passage not checked | integration: spine `widthM` > every other way in the blueprint; min gap between neighbouring footprints along a way ≥ 1.3 m  | **CLOSED** — `blueprint_integration` `passage` (a way between two hulls needs 1.3 m of clear gap, HARD) + width classes in `_placement_warnings` (road 4.3 m, track 2.5, path 1.2, plus no rank inversion, WARN) |
+| G13 | C4 | first-node-is-commerce not checked | checklist item; later an integration rule that the first `endsAt` on the spine after the `spans` parcel is a market/deck/hall `use`  | OPEN (reviewer checklist) |
+| G14 | C5 | 8 m nearest-neighbour floor | integration `parcel-gap` (centre distance ≥ 8 m unless `stacksOn`)  | **CLOSED** — `blueprint_integration` `parcel-gap` (8 m between centres, HARD), with the designed-contact exceptions `stacksOn`, `spans`, enclosure `use` plus the new parcel flag `abuts` + `abutsWhy` |
+| G15 | C6 | density band by magnitude | compiler report: parcels/ha of the BUILT HULL vs the magnitude band; warning outside it  | **CLOSED (WARN)** — `blueprint._placement_warnings` 97 C6: buildings and structures per hectare of `built_hull_area_ha` (the parcels' convex hull, buffered 15 m) against the size class's band, settlement records only, with the number |
+| G16 | C7 | `use` mix | compiler report of the `use` histogram per blueprint  | **CLOSED (WARN)** — `blueprint._placement_warnings` 97 C7: the `use` histogram of BUILDINGS against the band, once ≥8 are classified |
+| G17 | A6/A6b | the typed footprint and proximity gates are enforced on the SOLVER, but the SHIPPED catalogue predates them | commit a `macro_plot --resolve-all` under the new gates | **OPEN (BLOCKED)** — the gates, the derivation, the semantic-audit check and the mutation-tested suite have landed; the re-plot has not. A from-scratch solve under the footprint model leaves **6 of 580** records with no honest site (`horwalli-waterworks-deeps`, `dream-wallow-sap-pool`, `freehold-smithy`, `the-permit-dig`, `wamasu-pond-nest`, `rim-snowline-hermitage`); two of them carry no `proximity` block at all, so proximity tuning cannot reach zero and the footprint model itself costs those records. Owner call: shrink the radii, cut/defer ~6 records, or raise the solver's supply. Meanwhile `test_type_siting.test_the_shipped_catalogue_does_not_get_worse` is a ratchet at 426 overlapping pairs and 31 isolation-floor breaches |
+| G23 | C1a/C5b | props, structures and buildings were one undifferentiated "parcel", so a works yard was judged as a village | derive a `kind` per parcel from the interiors index and the measured mesh; the counting rules read it | **CLOSED** — `worldgen.parcel_kinds`; C1 kit-set membership is reported (WARN) with the dressing pool admitted everywhere |
+| G24 | C5a | "designed to touch" covered kit snaps only, so a hoist against its rock face had to be mis-declared as a snap | a second flag for trade contacts, with a clearance rather than a join | **CLOSED (HARD)** — `worksWith` + `worksWithWhy` (validator) and `parcel-gap`'s `WORKS_WITH_CLEAR_M` 0.5 m |
+| G17 | C8 | yaw diversity | validator: ≤10 % of a district's parcels within 5° of one yaw  | **CLOSED** — `blueprint.validate_blueprint` 97 C8 (HARD): at most max(2, 10 %) of a district's parcels within ±5° of one bearing, from 8 parcels up, unless the district declares `routing: "straight"` |
+| G18 | C12 | no outdoor dressing pass | `compile_settlement` dressing rule per `use` with count bands and a kit-owned deterministic vocabulary; report counts | **CLOSED for settlement dwellings/works** — 3–6 / 6–12 are compiled and reported; ruin/camp dressing remains the already-owned Phase 15 `compile_dressing` scope |
+| G19 | C14/E3 | kit `snapLogic` is prose, so a gate arch, its tower and two wall stubs could be placed NEAR each other and pass every check (owner) | per-kit connector table checked when two pieces touch | **CLOSED (HARD)** — `pipeline.measure_connectors` writes `<kit>.connectors.json` (per piece: face, position, outward normal, width, height, evidence `co-placement` from the source authors' repeated offsets or `bounds` from the measured plan outline) and `blueprint_integration` `abuts-snap` holds every `abuts` pair to a 0.15 m / 5° face coincidence; an unmeasured kit is a WARN, never a pass |
+| G20 | D9 | `combatSpaces` not required | add to REQUIRED for magnitude ≥ M3  | **CLOSED** — `combatSpaces` is in `REQUIRED`; each needs a boundary, a `clearanceClass` and a why (HARD) |
+| G21 | C-stitch | approach roads and inside streets were separate layers | terminals named against the province network, checked in metres and degrees | **CLOSED** — `networkTerminals[]` + `blueprint_integration` `network-stitch`; `compile_minor_routes` ends at the terminal |
+| G22 | E9 | the macro layer's promises (services, named people, travel, provisions) were prose, so nothing checked the blueprint delivered them | type `services[]` on the record and check every promise against the blueprint objects that realise it | **CLOSED** — `catalogue.SERVICES` + `worldgen.derive_services` (derivation rules, migration, band minimums in `test_catalogue`) and `worldgen.blueprint_promises` called once from `compile_settlement`: unmet promise is HARD from M3 up, WARN below, ledger written to `output/settlements/<id>.ledger.md` |
+
+---
+
+## Decisions for the owner's sense check
+
+Each is a place where evidence conflicted or two options were viable. The
+choice is provisional until the owner rules; a ruling goes to the 0041 Taste
+ledger and this module is corrected in the same change.
+
+1. **Orientation to the contour.** Measured: no shipped world follows the
+   contour (yaw indistinguishable from uniform). Options: copy the measured
+   indifference, or orient every building with a stated reason. *Chosen:*
+   reasons in ranked order (door to way → contour → water → common), because
+   the owner has already rejected axis-aligned squares and a marker-free game
+   needs doors on ways. Contour is second, not first.
+2. **One spacing constant, not one per culture.** Measured p50 is 13–16 m in
+   every set and size class. *Chosen:* culture is expressed in density,
+   edge, orientation and materials; spacing is held near-constant with a hard
+   8 m floor. The alternative (tight Imperial rows, loose Argonian) has no
+   evidence behind it.
+3. **Kit mixing.** Mods mix kits in 61–76 % of settlements; vanilla in 29 %.
+   *Chosen:* vanilla's discipline — one set per district, cultures layered
+   district by district — because the mod figure reflects an unfinished world and the
+   lore says cultures stack, never blend.
+4. **Outdoor dressing density.** Bethesda p50 2 per building within 10 m
+   (p90 19); the mods 0. *Chosen:* 3–6 for dwellings, 6–12 for works — above
+   the median because first person notices detail, below the tail because
+   repeated detail is the first thing noticed. No pass exists yet (G18).
+5. **Authority on the high point.** Nordic (0.67) yes; marsh (0.25) no.
+   *Chosen:* Imperial and Dunmer seats high and entered last; Argonian
+   places keep the Hist where it grew and let the beacon be a rim feature.
+   The alternative (every culture crowns its hill) would erase the measured
+   difference between the cultures.
+6. **Floodplain vs bluff.** Ribeirinho levee houses vs Denevan's bluff
+   model. *Chosen:* the section rule B4 — sacred and civic on the dry ground,
+   dwellings on the levee or bench, works in the flood band — and 15–30 % of stilt-district
+   buildings over water (measured 18 %). The pure-bluff
+   reading would put nothing on the water, against the lore.
+7. **Mounds.** Terps are earth, not stilts; our ladder forbids grading
+   ≥2 m. *Chosen:* a 1–2 m graded pad is permitted only as a mound under a
+   mud village on flat saltmarsh; elsewhere stilts or re-site.
+8. **Argonian enclosure: none.** Measured near-zero is partly an artefact
+   of missing fence pieces. *Chosen:* none anyway, because the lore defends
+   Helstrom with marsh and grove and marks edges with totems; Imperial and
+   Dunmer places fence and wall.
+9. **Climate orientation.** The Malay long-axis rule is attractive and
+   unsupported by the dossiers (in the measured cases culture beat climate).
+   *Chosen:* allowed as an `orientationWhy`, not required.
+10. **Doors on ways: 100 %, not the measured 55 %.** Because direction is
+    diegetic and a door facing the swamp is unfindable without a marker.
+11. **Widths.** Spine 4.3 m (the measured road piece), track 2.5 m, footpath
+    1.2 m, passage ≥1.3 m. The alternative of culture-specific widths has no
+    evidence; culture shows in the surface and the piece, not the width.
+12. **Where commerce sits in an Argonian place.** Bethesda puts the market at
+    the first junction inside the gate; Argonians have no market building.
+    *Chosen:* a deck on the spine between gate and Hist, never at the Hist.
+13. **Space syntax as a metric: not adopted.** Its own authors moved
+    correlations from −13 % to +54 % by changing representation. *Chosen:*
+    the line-of-sight and first-node tests of the checklist instead.
+14. **"In sight" distances.** 300 m for the same type, 700 m for landmarks,
+    from the scour's short marsh sightlines rather than Skyrim's horizons.
+15. **Hamlets denser than cities.** Counter-intuitive and measured in every
+    set (15–33/ha vs 4–11/ha). *Chosen:* adopt it; a city that packs like a
+    hamlet reads as a model village.

@@ -1,0 +1,194 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "_": "Faction and office sheets for The Thorn Ash-Reed Accord (lane 2.5a2). Ranks: the registry ladder (associate, member, senior); named offices beyond it are listed by their own rank slug.",
+ "entries": [
+  {
+   "id": "culture.faction.thorn-ash-reed-accord",
+   "level": "faction",
+   "name": "The Thorn Ash-Reed Accord",
+   "parent": "culture.province.black-marsh",
+   "factionId": "faction.thorn-ash-reed-accord",
+   "norms": [
+    {
+     "text": "Title is argued with old maps and older memory.",
+     "source": "world/sources/lore/thorn.md"
+    },
+    {
+     "text": "Dunmer and Argonian sit on the same bench.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Claiming land by deed alone.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "Saltrice title to those who work it.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Dres claimants.",
+     "source": "world/sources/lore/topics/foreign-powers.md"
+    }
+   ],
+   "opinions": {
+    "place": {
+     "lean": 1,
+     "text": "Thorn's grassland is the border's memory.",
+     "source": "world/sources/lore/thorn.md"
+    },
+    "work": {
+     "lean": 0,
+     "text": "The fields are worked under ledgers.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    "faction": {
+     "lean": -1,
+     "text": "The veterans and the Dres both remember the wrong war.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Neighbour; sera, among Dunmer members.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [
+     {
+      "text": "By ash and reed.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "Which family held coffles.",
+      "source": "world/sources/lore/topics/labour-and-bondage.md"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "The Branchmont fields are still under ex-Archein ledgers.",
+      "source": "world/sources/lore/topics/labour-and-bondage.md"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "A Redoran factor asks about Dres deeds.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.dres-remnant",
+     "lean": -2,
+     "text": "Slaving claimants.",
+     "source": "world/sources/lore/topics/foreign-powers.md"
+    },
+    {
+     "node": "culture.faction.morrowind-veterans",
+     "lean": -1,
+     "text": "Border memory, armed.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.15
+  },
+  {
+   "id": "culture.office.thorn-ash-reed-accord.senior",
+   "level": "office",
+   "name": "Accord title-reader",
+   "parent": "culture.faction.thorn-ash-reed-accord",
+   "factionId": "faction.thorn-ash-reed-accord",
+   "rank": "senior",
+   "norms": [
+    {
+     "text": "Reads the boundary and the memory both.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Haste.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "Title.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Forgers.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "place": {
+     "lean": 1,
+     "text": "The map.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Neighbour.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "formal",
+    "oaths": [
+     {
+      "text": "Ash and reed.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "Disputed lines.",
+      "source": "inferred"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Courts in Thorn do not sit.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "A forged deed.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.thorn-ash-reed-accord",
+     "lean": 2,
+     "text": "Theirs.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.1
+  }
+ ]
+}

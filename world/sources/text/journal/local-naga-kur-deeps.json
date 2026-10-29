@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "domain": "journal-text",
+  "_": "Journal entries and objective lines of the local-naga-kur-deeps quests (2.11): one unit per text key a quest stage names (`journal`, `objectives[].text`). Logic lives in world/sources/quests; this file holds only the words. `factIds` are dialogue facts (world/sources/dialogue/facts.json) the words state; `groundedIn` names the place facts claim ids behind the words. Compiled to packages/text-catalogue/src/generated/journal-text.ts by `python3 -m worldgen.place_text --emit-text`.",
+  "entries": [
+    {
+      "id": "text.journal.ln07.10",
+      "questId": "quest.local.ln07",
+      "surface": "journal",
+      "text": "Heita-Kai, lieutenant of the North Cut Camp, told me the camp's men take payment each season to keep the track quiet. Long-Water Hold has begun paying it. I'm to ask Heita-Kai at the bend of the track about the camp's receipts.",
+      "factIds": [
+        "fact.north-cut-camp.sells-quiet",
+        "fact.north-cut-camp.hold-pays"
+      ],
+      "groundedIn": [
+        "fact.naga-highway-camp-active-north.questHooks-opportunity-1",
+        "fact.naga-highway-camp-active-north.why-pressures-2"
+      ]
+    },
+    {
+      "id": "text.objective.ln07.hear-receipt",
+      "questId": "quest.local.ln07",
+      "surface": "journal",
+      "text": "Ask Heita-Kai about the camp's receipts at the bend of the track",
+      "factIds": [],
+      "groundedIn": [
+        "fact.naga-highway-camp-active-north.vibe-signatureFeature-1",
+        "fact.naga-highway-camp-active-north.why-siteAdvantages-1"
+      ]
+    },
+    {
+      "id": "text.journal.ln07.20",
+      "questId": "quest.local.ln07",
+      "surface": "journal",
+      "text": "Heita-Kai told me the camp's men cut a tally-stick as a receipt for each payment. Long-Water Hold keeps its own accounts. That is my next stop.",
+      "factIds": [
+        "fact.north-cut-camp.tally-receipt"
+      ],
+      "groundedIn": [
+        "fact.naga-highway-camp-active-north.vibe-signatureFeature-1",
+        "fact.naga-highway-camp-active-north.why-pressures-2"
+      ]
+    },
+    {
+      "id": "text.journal.ln07.90",
+      "questId": "quest.local.ln07",
+      "surface": "journal",
+      "text": "Heita-Kai is dead. I cannot learn more about the North Cut Camp's payments now.",
+      "factIds": [],
+      "groundedIn": [
+        "fact.naga-highway-camp-active-north.questHooks-opportunity-1"
+      ]
+    }
+  ]
+}

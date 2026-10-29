@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "domain": "node",
+  "_": "Resource-node kinds (2.9b-a, standard 18): one row per ingredient the slice's ecology grows. A row names its socket-vocabulary plantClasses row, which holds the species and regrowDays; worldgen.crafting_records validates and writes packages/crafting/src/data/resource-nodes.json (stationClass = the first species, respawnHours = regrowDays x 24). A placed node is a placed piece of one of the species (decision 0070; a layout `place` op binds {use: gather, nodeId}).",
+  "entries": [
+    {
+      "id": "node.hanging-moss",
+      "name": "Hanging Moss plant",
+      "kind": "plant",
+      "status": "derived",
+      "plantClass": "hanging-moss",
+      "yields": [
+        {
+          "itemId": "item.hanging-moss",
+          "count": [
+            1,
+            1
+          ]
+        }
+      ],
+      "whyHere": "Blue moss hangs in curtains from the marsh canopy.",
+      "sources": [
+        "world/sources/lore/topics/fauna-hazards.md:99"
+      ],
+      "notes": "gathered by a placed piece of its plantClass species"
+    },
+    {
+      "id": "node.marshweed",
+      "name": "Marshweed plant",
+      "kind": "plant",
+      "status": "derived",
+      "plantClass": "marshweed",
+      "yields": [
+        {
+          "itemId": "item.marshweed",
+          "count": [
+            1,
+            1
+          ]
+        }
+      ],
+      "whyHere": "Marshweed grows in tufts at the water's edge and is smoked.",
+      "sources": [
+        "world/sources/lore/topics/fauna-hazards.md:99"
+      ],
+      "notes": "gathered by a placed piece of its plantClass species"
+    },
+    {
+      "id": "node.mountain-flower",
+      "name": "Mountain Flower plant",
+      "kind": "plant",
+      "status": "derived",
+      "plantClass": "mountain-flower",
+      "yields": [
+        {
+          "itemId": "item.dried-flower-buds",
+          "count": [
+            1,
+            1
+          ]
+        }
+      ],
+      "whyHere": "Flower buds are dried and used to purify ground water.",
+      "sources": [
+        "world/sources/lore/topics/fauna-hazards.md:50",
+        "world/sources/lore/topics/material-culture.md:153"
+      ],
+      "notes": "gathered by a placed piece of its plantClass species"
+    },
+    {
+      "id": "node.dragons-tongue",
+      "name": "Dragon's Tongue plant",
+      "kind": "plant",
+      "status": "derived",
+      "plantClass": "dragons-tongue",
+      "yields": [
+        {
+          "itemId": "item.dragons-tongue",
+          "count": [
+            1,
+            1
+          ]
+        }
+      ],
+      "whyHere": "Herbalists dry the fiery orange flower for remedies.",
+      "sources": [
+        "Skyrim.esm:FLOR DragonsTongue",
+        "Skyrim.esm:INGR DragonsTongue"
+      ],
+      "notes": "gathered by a placed piece of its plantClass species"
+    },
+    {
+      "id": "node.nirnroot",
+      "name": "Nirnroot plant",
+      "kind": "plant",
+      "status": "derived",
+      "plantClass": "nirnroot",
+      "yields": [
+        {
+          "itemId": "item.nirnroot",
+          "count": [
+            1,
+            1
+          ]
+        }
+      ],
+      "whyHere": "Nirnroot is rare and grows only near water.",
+      "sources": [
+        "world/sources/lore/topics/fauna-hazards.md:101",
+        "UESP:Lore:Nirnroot"
+      ],
+      "notes": "gathered by a placed piece of its plantClass species"
+    },
+    {
+      "id": "node.rootland-mushroom",
+      "name": "Rootland Mushroom plant",
+      "kind": "plant",
+      "status": "derived",
+      "plantClass": "rootland-mushroom",
+      "yields": [
+        {
+          "itemId": "item.rootland-mushroom",
+          "count": [
+            1,
+            1
+          ]
+        }
+      ],
+      "whyHere": "Tall mushrooms crowd the rootland floor; nearly everything there is harvested.",
+      "sources": [
+        "world/sources/lore/topics/ecology-encounters-loot.md:36"
+      ],
+      "notes": "gathered by a placed piece of its plantClass species"
+    },
+    {
+      "id": "node.somnalius-fern",
+      "name": "Somnalius Fern plant",
+      "kind": "plant",
+      "status": "derived",
+      "plantClass": "somnalius-fern",
+      "yields": [
+        {
+          "itemId": "item.somnalius-frond",
+          "count": [
+            1,
+            1
+          ]
+        }
+      ],
+      "whyHere": "Somnalius ferns grow thick in the shade of the marsh.",
+      "sources": [
+        "world/sources/lore/topics/fauna-hazards.md:98"
+      ],
+      "notes": "gathered by a placed piece of its plantClass species"
+    },
+    {
+      "id": "node.swamp-fungal-pod",
+      "name": "Swamp Fungal Pod plant",
+      "kind": "plant",
+      "status": "derived",
+      "plantClass": "swamp-fungal-pod",
+      "yields": [
+        {
+          "itemId": "item.swamp-fungal-pod",
+          "count": [
+            1,
+            1
+          ]
+        }
+      ],
+      "whyHere": "Fungal pods grow on the deep-marsh floor.",
+      "sources": [
+        "world/sources/lore/topics/ecology-encounters-loot.md:36"
+      ],
+      "notes": "gathered by a placed piece of its plantClass species"
+    }
+  ]
+}

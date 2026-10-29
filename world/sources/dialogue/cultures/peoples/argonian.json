@@ -1,0 +1,721 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "_": "People sheets for Argonians in the slice roster, one per upbringing (lane 2.5a2). Upbringings inferred from roster roles and zones; npcs.json carries no upbringing field.",
+ "entries": [
+  {
+   "id": "culture.people.argonian-tribal",
+   "level": "people",
+   "name": "Argonian, tribal and interior-raised",
+   "parent": "culture.province.black-marsh",
+   "race": "argonian",
+   "upbringing": "tribal",
+   "norms": [
+    {
+     "text": "A person is named by tribe and office before their own name; a stranger is addressed by what they are.",
+     "source": "inferred"
+    },
+    {
+     "text": "Disputes go to the tree-minder or a chosen arbitrator; an apology plus owed work ends them.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    {
+     "text": "The dead are staked into the mud with a carved grave-stake so they cannot float up or rise.",
+     "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+    },
+    {
+     "text": "Raids between tribes are forgiven quickly; all are people of the root.",
+     "source": "world/sources/lore/tribes.md"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Pulling a grave-stake loose.",
+     "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+    },
+    {
+     "text": "Boiling or distilling Hist sap; the tree feels it.",
+     "source": "world/sources/lore/topics/hist-and-sap.md"
+    },
+    {
+     "text": "Taking a trinket from a xanmeer; the ruins are kept as warnings, not treasure.",
+     "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+    }
+   ],
+   "values": [
+    {
+     "text": "The Hist bond, voluntary and older than any law.",
+     "source": "world/sources/lore/topics/hist-and-sap.md"
+    },
+    {
+     "text": "Letting go of what has passed; holding on is shunatei.",
+     "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+    },
+    {
+     "text": "Riddles, which the river-folk trade where others trade news.",
+     "source": "world/sources/lore/tribes.md"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Collaborators who sold their own: the old Archein families, whatever they now call themselves.",
+     "source": "world/sources/lore/tribes.md"
+    },
+    {
+     "text": "Outsiders who drain and plant the marsh and leave.",
+     "source": "world/sources/lore/black-marsh-province.md"
+    }
+   ],
+   "opinions": {
+    "place": {
+     "lean": 2,
+     "text": "Home is the reach of this tribe's Hist roots; beyond them is somewhere else.",
+     "source": "world/sources/lore/tribes.md"
+    },
+    "work": {
+     "lean": 1,
+     "text": "Work is seasonal and shared; the whole tribe labours in nushmeeko without pay.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    "people": {
+     "lean": -1,
+     "text": "Ojel are watched, fed and sent away; most cannot read body speech.",
+     "source": "world/sources/lore/topics/material-culture.md"
+    },
+    "faction": {
+     "lean": -1,
+     "text": "The Wardens in the cities claim to speak for the Wild Ones without being asked.",
+     "source": "world/sources/lore/topics/guilds-and-orders.md"
+    },
+    "hist": {
+     "lean": 2,
+     "text": "The tree is spoken of plainly as kin; it is never explained to an outsider.",
+     "source": "world/sources/lore/topics/hist-and-sap.md"
+    },
+    "empire": {
+     "lean": -1,
+     "text": "The Empire is a story the old ones tell about roads that rotted the cargo.",
+     "source": "world/sources/lore/topics/foreign-powers.md"
+    },
+    "trade": {
+     "lean": 0,
+     "text": "Barter in tools, salt, sap, hide and owed labour; coin is a city thing.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    "danger": {
+     "lean": 0,
+     "text": "The marsh is not dangerous to those it raised; it is dangerous to everyone else.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    "rumour": {
+     "lean": 0,
+     "text": "News comes by the root-herald and is weighed against what the tree-minder dreamed.",
+     "source": "world/sources/lore/topics/material-culture.md"
+    },
+    "directions": {
+     "lean": 1,
+     "text": "Directions are given by water, root and landmark, never by miles.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Strangers by category: ojel, warrior, traveller.",
+      "source": "world/sources/lore/topics/material-culture.md"
+     },
+     {
+      "text": "Elders by office: naheesh, tree-minder, kaal.",
+      "source": "world/sources/lore/topics/material-culture.md"
+     }
+    ],
+    "formality": "formal",
+    "oaths": [
+     {
+      "text": "\"Hist piss!\" as a curse.",
+      "source": "world/sources/lore/topics/material-culture.md"
+     },
+     {
+      "text": "Emotional qualifiers at full strength: \"I extend the claw of welcome.\"",
+      "source": "world/sources/lore/topics/material-culture.md"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "The Chukka-Sei naming secrets.",
+      "source": "world/sources/lore/topics/material-culture.md"
+     },
+     {
+      "text": "What the Hist said in the last dream-wallow.",
+      "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#2-upbringing--culture-layer--who-raised-them-and-when"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "The state takes customs at the ports and gives the interior nothing back.",
+      "source": "world/sources/lore/an-xileel.md"
+     },
+     {
+      "text": "Foreign diggers still come for the xanmeers.",
+      "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "A Black-Tongue clutch has been keeping its Shadow-born hatchlings instead of sending them anywhere.",
+      "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.people.argonian-lukiul",
+     "lean": 0,
+     "text": "Pitied, not hated: they cannot hear the tree and it is not their fault.",
+     "source": "world/sources/lore/topics/hist-and-sap.md"
+    },
+    {
+     "node": "culture.people.argonian-port",
+     "lean": 0,
+     "text": "City cousins, quick-mouthed and worn smooth.",
+     "source": "inferred"
+    },
+    {
+     "node": "culture.faction.an-xileel",
+     "lean": -1,
+     "text": "A city government that names the interior its constituency.",
+     "source": "world/sources/lore/topics/guilds-and-orders.md"
+    },
+    {
+     "node": "culture.faction.many-root-conclave",
+     "lean": 1,
+     "text": "Tree-minders talking to tree-minders; the right way to argue.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.15
+  },
+  {
+   "id": "culture.people.argonian-port",
+   "level": "people",
+   "name": "Argonian, city and port-raised",
+   "parent": "culture.province.black-marsh",
+   "race": "argonian",
+   "upbringing": "port",
+   "norms": [
+    {
+     "text": "Business with ojel is done in complete sentences and practical imperatives.",
+     "source": "inferred"
+    },
+    {
+     "text": "The tide and the cargo set the day, not the sun.",
+     "source": "inferred"
+    },
+    {
+     "text": "A city Hist is a second government; its tender is consulted before the council.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Calling another Argonian lukiul in public.",
+     "source": "world/sources/lore/an-xileel.md"
+    },
+    {
+     "text": "Praising Umbriel or those who brought it.",
+     "source": "world/sources/lore/black-marsh-province.md"
+    }
+   ],
+   "values": [
+    {
+     "text": "A berth, a boat and a share; the port lives by moving small loads fast.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    },
+    {
+     "text": "Using the old names with kin and the ojel names with ojel.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Dock masters who hire with a debtor's Owing months.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    {
+     "text": "Interior pride that has never seen a ledger.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "place": {
+     "lean": 1,
+     "text": "The port is home; the interior is where family lives and visits are long.",
+     "source": "inferred"
+    },
+    "work": {
+     "lean": 0,
+     "text": "Work is a berth bought, a cargo moved and a share split; debtors' months pay for most berths.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    "people": {
+     "lean": 0,
+     "text": "Ojel are customers first; you learn which ones pay.",
+     "source": "inferred"
+    },
+    "faction": {
+     "lean": -1,
+     "text": "The Wardens hold the customs house and little else.",
+     "source": "world/sources/lore/an-xileel.md"
+    },
+    "hist": {
+     "lean": 1,
+     "text": "The city tree is tended and feared at once.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    },
+    "empire": {
+     "lean": -1,
+     "text": "The Company wharves are still here; the Company is gone, good riddance.",
+     "source": "world/sources/lore/topics/foreign-powers.md"
+    },
+    "trade": {
+     "lean": 1,
+     "text": "Small cargo, fast boats, cash at the wharf.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    },
+    "danger": {
+     "lean": -1,
+     "text": "Pirates on the water and debt on the land.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    },
+    "rumour": {
+     "lean": 1,
+     "text": "Everything comes through the docks first.",
+     "source": "inferred"
+    },
+    "directions": {
+     "lean": 1,
+     "text": "Directions by channel, quay and ferry price.",
+     "source": "world/sources/lore/topics/roads-and-routes-4e201.md"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Ojel to outsiders, without heat.",
+      "source": "world/sources/lore/topics/material-culture.md"
+     },
+     {
+      "text": "Captain, pilot or factor, by the job.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [
+     {
+      "text": "\"Stay moist\" as a farewell, worn smooth.",
+      "source": "world/sources/lore/topics/material-culture.md"
+     },
+     {
+      "text": "\"Host of Stormhold!\" when surprised.",
+      "source": "world/sources/lore/topics/material-culture.md"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "Which crew sold whose Owing.",
+      "source": "world/sources/lore/topics/labour-and-bondage.md"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#2-upbringing--culture-layer--who-raised-them-and-when"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Berths are bought with months of a debtor's work.",
+      "source": "world/sources/lore/topics/labour-and-bondage.md"
+     },
+     {
+      "text": "The coasts are unpoliced and the state has no navy.",
+      "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "A new merchant council seat is for sale at the next tariff vote.",
+      "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.people.argonian-tribal",
+     "lean": 0,
+     "text": "Proud cousins who think a ledger is a curse.",
+     "source": "inferred"
+    },
+    {
+     "node": "culture.people.argonian-lukiul",
+     "lean": 1,
+     "text": "Neighbours on the quay; half the port is them.",
+     "source": "inferred"
+    },
+    {
+     "node": "culture.people.khajiit-marsh-born",
+     "lean": 1,
+     "text": "The other people of the Southern Sea trade.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    },
+    {
+     "node": "culture.faction.reed-sail-compact",
+     "lean": 1,
+     "text": "The crews who make the routes work; they charge well.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.2
+  },
+  {
+   "id": "culture.people.argonian-lukiul",
+   "level": "people",
+   "name": "Argonian, Imperial-raised (lukiul)",
+   "parent": "culture.province.black-marsh",
+   "race": "argonian",
+   "upbringing": "lukiul",
+   "norms": [
+    {
+     "text": "Imperial law, contracts and the courthouse are the normal way to settle a wrong.",
+     "source": "world/sources/lore/gideon.md"
+    },
+    {
+     "text": "A Tamrielic god, Dibella or Zenithar or Seth, is kept at home, quietly.",
+     "source": "world/sources/lore/topics/guilds-and-orders.md"
+    },
+    {
+     "text": "Hissmir's trials are spoken of as a pilgrimage one might make someday.",
+     "source": "world/sources/lore/topics/hist-and-sap.md"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Saying the word lukiul about oneself.",
+     "source": "world/sources/lore/an-xileel.md"
+    },
+    {
+     "text": "Speaking of 4E 48 as anything but a massacre of people like us.",
+     "source": "world/sources/lore/an-xileel.md"
+    }
+   ],
+   "values": [
+    {
+     "text": "Citizenship and property that do not depend on a tree.",
+     "source": "inferred"
+    },
+    {
+     "text": "Records, filings and the written instrument.",
+     "source": "world/sources/lore/gideon.md"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Nativists who still call them assimilated.",
+     "source": "world/sources/lore/an-xileel.md"
+    },
+    {
+     "text": "Being pitied by those who never left.",
+     "source": "world/sources/lore/topics/hist-and-sap.md"
+    }
+   ],
+   "opinions": {
+    "place": {
+     "lean": 1,
+     "text": "Gideon and the mixed cities are home; the interior is a foreign country.",
+     "source": "world/sources/lore/gideon.md"
+    },
+    "work": {
+     "lean": 1,
+     "text": "Work is paid in coin and written down.",
+     "source": "world/sources/lore/gideon.md"
+    },
+    "people": {
+     "lean": 1,
+     "text": "Imperial neighbours are neighbours; the tribes are strangers who share a face.",
+     "source": "world/sources/lore/topics/hist-and-sap.md"
+    },
+    "faction": {
+     "lean": -2,
+     "text": "The Wardens are the heirs of the men who tried to kill us.",
+     "source": "world/sources/lore/an-xileel.md"
+    },
+    "hist": {
+     "lean": -1,
+     "text": "The tree does not speak to us. It is easier to say so plainly.",
+     "source": "world/sources/lore/topics/hist-and-sap.md"
+    },
+    "empire": {
+     "lean": 1,
+     "text": "The Empire left a courthouse that still works, which is more than anyone else left.",
+     "source": "world/sources/lore/gideon.md"
+    },
+    "trade": {
+     "lean": 1,
+     "text": "The Blackwood Road and Leyawiin keep the city fed.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    },
+    "danger": {
+     "lean": 0,
+     "text": "The marsh is dangerous; we know the road and we keep to it.",
+     "source": "inferred"
+    },
+    "rumour": {
+     "lean": 0,
+     "text": "Rumour is what is said before it is filed.",
+     "source": "inferred"
+    },
+    "directions": {
+     "lean": 1,
+     "text": "Directions by street, gate and mile.",
+     "source": "world/sources/lore/gideon.md"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Imperial forms: sir, madam, citizen, master.",
+      "source": "inferred"
+     },
+     {
+      "text": "Emotional qualifiers omitted, or one beat late.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "formal",
+    "oaths": [
+     {
+      "text": "By the Nine, or by Dibella, out of habit.",
+      "source": "world/sources/lore/topics/guilds-and-orders.md"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "That they cannot hear the Hist, to a marsh-born.",
+      "source": "world/sources/lore/topics/hist-and-sap.md"
+     },
+     {
+      "text": "Lukiul.",
+      "source": "world/sources/lore/an-xileel.md"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#2-upbringing--culture-layer--who-raised-them-and-when"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "The state that rules them was founded by the movement that tried to exterminate them.",
+      "source": "world/sources/lore/an-xileel.md"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "The League means to petition for citizenship without a tribe again.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.people.argonian-tribal",
+     "lean": -1,
+     "text": "They pity us and expect thanks for it.",
+     "source": "world/sources/lore/topics/hist-and-sap.md"
+    },
+    {
+     "node": "culture.people.imperial-marsh-born",
+     "lean": 1,
+     "text": "Same streets, same courthouse.",
+     "source": "world/sources/lore/gideon.md"
+    },
+    {
+     "node": "culture.faction.an-xileel",
+     "lean": -2,
+     "text": "Inheritors of the purge.",
+     "source": "world/sources/lore/an-xileel.md"
+    },
+    {
+     "node": "culture.faction.league-of-open-water",
+     "lean": 2,
+     "text": "The only body that argues for us as citizens.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.2
+  },
+  {
+   "id": "culture.people.argonian-freed",
+   "level": "people",
+   "name": "Argonian, Owing-held or freed-descended",
+   "parent": "culture.province.black-marsh",
+   "race": "argonian",
+   "upbringing": "freed",
+   "norms": [
+    {
+     "text": "An Owing worked off is over; by custom it is never mentioned again.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    {
+     "text": "Bones of the dead are carried home to their Hist where they can be.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Naming who sold your months, in front of them.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    {
+     "text": "Asking a washed-out worker how long they have been away.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    }
+   ],
+   "values": [
+    {
+     "text": "Getting home to one's own tree before colour and soul fade.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    {
+     "text": "An ending: a sentence that finishes.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Crossing-holders who add food and spoilage to the account.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    {
+     "text": "Those who call it a custom when it has become a chain.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    }
+   ],
+   "opinions": {
+    "place": {
+     "lean": -1,
+     "text": "Home is a tree far from here.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    "work": {
+     "lean": -2,
+     "text": "The work belongs to a holder's ledger; it grows faster than it can be paid.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    "people": {
+     "lean": 0,
+     "text": "Other debtors are family; holders are weather.",
+     "source": "inferred"
+    },
+    "faction": {
+     "lean": -1,
+     "text": "The state has not touched the Owing; the Chainbreakers at least burn the books.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    "hist": {
+     "lean": 2,
+     "text": "The ledger cannot sell the tree.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    "empire": {
+     "lean": -1,
+     "text": "The Imperials built the prisons and the ex-Archeins kept the ledgers.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    "trade": {
+     "lean": -1,
+     "text": "In trade, the debtor is the cargo.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    "danger": {
+     "lean": -1,
+     "text": "Dying far from the tree, where the soul cannot get home.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    "rumour": {
+     "lean": 0,
+     "text": "Whose ledger burned and whose was copied first.",
+     "source": "inferred"
+    },
+    "directions": {
+     "lean": 0,
+     "text": "Directions go by work-camp, crossing and holder.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Holders by title, never by name.",
+      "source": "inferred"
+     },
+     {
+      "text": "Other debtors by first name only.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [
+     {
+      "text": "By my home tree.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "The word slave about themselves.",
+      "source": "world/sources/lore/topics/labour-and-bondage.md"
+     },
+     {
+      "text": "How many nushmeekos are left.",
+      "source": "world/sources/lore/topics/labour-and-bondage.md"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#2-upbringing--culture-layer--who-raised-them-and-when"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Owings are sold, extended and inherited.",
+      "source": "world/sources/lore/topics/labour-and-bondage.md"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "A Gideon court threw out a transferred Owing last season.",
+      "source": "world/sources/lore/topics/labour-and-bondage.md"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.people.dunmer-dres-held",
+     "lean": -2,
+     "text": "The families who held coffles now hold ledgers.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    {
+     "node": "culture.faction.chainbreakers",
+     "lean": 2,
+     "text": "They burn the books and carry the bones home.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    {
+     "node": "culture.people.argonian-tribal",
+     "lean": 0,
+     "text": "Their Owing ends. Ours did not.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    }
+   ],
+   "deviationRate": 0.25
+  }
+ ]
+}

@@ -1,0 +1,988 @@
+{
+ "id": "hunter",
+ "start": {
+  "query": "?view=character&x=2.2236&z=4.4883&t=23:00&d=7-28",
+  "kit": "start",
+  "skills": {
+   "sneak": 80,
+   "shortBlade": 60
+  },
+  "seed": 1,
+  "grant": [
+   {
+    "item": "steel-dagger",
+    "count": 1
+   }
+  ],
+  "level": 20
+ },
+ "steps": [
+  {
+   "name": "equip-dagger",
+   "transition": "the steel dagger into the main hand (a lead-in, unfilmed)",
+   "stage": {
+    "at": {
+     "x": 2291.5,
+     "z": 4556.5,
+     "yaw": -1.7776
+    },
+    "hour": 23,
+    "place": "place.naga-kur-deeps.naga-highway-camp-active-north",
+    "stance": "crouch",
+    "near": [
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "m": 12,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "m": 13.7,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "m": 23,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "m": 23.3,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "m": 23.4,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "m": 23.8,
+      "facing": false
+     }
+    ]
+   },
+   "do": {
+    "action": "equip",
+    "item": "steel-dagger",
+    "hand": "mainHand"
+   },
+   "keys": [
+    {
+     "press": "Escape"
+    },
+    {
+     "wait_s": 0.4
+    },
+    {
+     "click": "[data-es-bag] [data-es-item=\"steel-dagger\"]"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": "[data-es-actions] [data-hand=\"main\"]"
+    },
+    {
+     "press": "Escape"
+    },
+    {
+     "wait_s": 0.4
+    },
+    {
+     "press": "Tab"
+    }
+   ],
+   "hold_s": 0.6,
+   "expect": {
+    "mainHand": "steel-dagger"
+   },
+   "lead": true
+  },
+  {
+   "name": "crouch-in-the-dark",
+   "transition": "crouched in the dark 15 m behind the camp's south edge -> hidden",
+   "do": {
+    "action": "crouch",
+    "near": [
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "m": 15,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "m": 14.9,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "m": 24.8,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "m": 25.5,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "m": 25.8,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "m": 26.1,
+      "facing": false
+     }
+    ],
+    "seconds": 3
+   },
+   "keys": [
+    {
+     "wait_s": 3
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "sneaking": true,
+    "eye": "hidden",
+    "notice": {
+     "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4": "unaware"
+    }
+   }
+  },
+  {
+   "name": "stand-up",
+   "transition": "stands up behind them for a breath -> standing, no eye on the HUD",
+   "do": {
+    "action": "crouch",
+    "on": false,
+    "near": [
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "m": 15,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "m": 14.9,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "m": 24.8,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "m": 25.5,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "m": 25.8,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "m": 26.1,
+      "facing": false
+     }
+    ],
+    "seconds": 0.1
+   },
+   "keys": [
+    {
+     "press": "KeyC"
+    },
+    {
+     "wait_s": 0.1
+    }
+   ],
+   "hold_s": 0.1,
+   "expect": {
+    "sneaking": false
+   }
+  },
+  {
+   "name": "crouch-again",
+   "transition": "crouches again at once; n2-4 glimpsed him and searches -> danger",
+   "do": {
+    "action": "crouch",
+    "near": [
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "m": 15,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "m": 14.9,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "m": 24.8,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "m": 25.5,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "m": 25.8,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "m": 26.1,
+      "facing": false
+     }
+    ]
+   },
+   "keys": [
+    {
+     "press": "KeyC"
+    },
+    {
+     "wait_s": 0.3
+    }
+   ],
+   "hold_s": 0.1,
+   "expect": {
+    "sneaking": true,
+    "eye": "danger",
+    "searching": {
+     "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4": true
+    }
+   }
+  },
+  {
+   "name": "back-off",
+   "transition": "creeps back out of the spot n2-4 will search -> still crouched, the search goes to the empty spot",
+   "do": {
+    "action": "approach",
+    "near": [
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "m": 19.3,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "m": 14.9,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "m": 24.8,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "m": 25.5,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "m": 25.8,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "m": 26.1,
+      "facing": false
+     }
+    ]
+   },
+   "keys": [
+    {
+     "down": "KeyS"
+    },
+    {
+     "wait_s": 6
+    },
+    {
+     "up": "KeyS"
+    }
+   ],
+   "hold_s": 0.3,
+   "expect": {
+    "sneaking": true
+   }
+  },
+  {
+   "name": "searcher-gives-up",
+   "transition": "holds still in the dark while they look -> the search ends, hidden",
+   "do": {
+    "action": "wait-for-search",
+    "near": [
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "m": 19.3,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "m": 14.9,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "m": 24.8,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "m": 25.5,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "m": 25.8,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "m": 26.1,
+      "facing": false
+     }
+    ],
+    "seconds": 60
+   },
+   "keys": [
+    {
+     "wait_s": 20
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "searching": {
+     "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4": false,
+     "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5": false,
+     "npc.naga-kur-deeps.naga-highway-camp-active-north.n1": false,
+     "npc.naga-kur-deeps.naga-highway-camp-active-north.n2": false,
+     "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2": false,
+     "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3": false
+    },
+    "eye": "hidden"
+   }
+  },
+  {
+   "name": "creep-1",
+   "transition": "creeps on, stops and listens -> hidden",
+   "do": {
+    "action": "approach",
+    "near": [
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "m": 12.8,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "m": 14.5,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "m": 22.1,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "m": 22.8,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "m": 23.1,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "m": 24.2,
+      "facing": false
+     }
+    ]
+   },
+   "keys": [
+    {
+     "down": "KeyW"
+    },
+    {
+     "wait_s": 10
+    },
+    {
+     "up": "KeyW"
+    },
+    {
+     "wait_s": 2.5
+    }
+   ],
+   "hold_s": 0.3,
+   "expect": {
+    "sneaking": true,
+    "eye": "hidden"
+   }
+  },
+  {
+   "name": "creep-2",
+   "transition": "creeps on, stops and listens -> hidden",
+   "do": {
+    "action": "approach",
+    "near": [
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "m": 11.3,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "m": 14.5,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "m": 20.4,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "m": 21.2,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "m": 21.5,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "m": 23.1,
+      "facing": false
+     }
+    ]
+   },
+   "keys": [
+    {
+     "down": "KeyW"
+    },
+    {
+     "wait_s": 2.5
+    },
+    {
+     "up": "KeyW"
+    },
+    {
+     "wait_s": 2.5
+    }
+   ],
+   "hold_s": 0.3,
+   "expect": {
+    "sneaking": true,
+    "eye": "hidden"
+   }
+  },
+  {
+   "name": "creep-3",
+   "transition": "creeps on, stops and listens -> hidden",
+   "do": {
+    "action": "approach",
+    "near": [
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "m": 9.7,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "m": 14.7,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "m": 18.7,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "m": 19.7,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "m": 19.9,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "m": 22.1,
+      "facing": false
+     }
+    ]
+   },
+   "keys": [
+    {
+     "down": "KeyW"
+    },
+    {
+     "wait_s": 2.5
+    },
+    {
+     "up": "KeyW"
+    },
+    {
+     "wait_s": 2.5
+    }
+   ],
+   "hold_s": 0.3,
+   "expect": {
+    "sneaking": true,
+    "eye": "hidden"
+   }
+  },
+  {
+   "name": "creep-4",
+   "transition": "creeps on, stops and listens -> hidden",
+   "do": {
+    "action": "approach",
+    "near": [
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "m": 8.2,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "m": 15.1,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "m": 17,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "m": 18.1,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "m": 18.3,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "m": 21.2,
+      "facing": false
+     }
+    ]
+   },
+   "keys": [
+    {
+     "down": "KeyW"
+    },
+    {
+     "wait_s": 2.5
+    },
+    {
+     "up": "KeyW"
+    },
+    {
+     "wait_s": 2.5
+    }
+   ],
+   "hold_s": 0.3,
+   "expect": {
+    "sneaking": true,
+    "eye": "hidden"
+   }
+  },
+  {
+   "name": "creep-5",
+   "transition": "creeps on, stops and listens -> hidden",
+   "do": {
+    "action": "approach",
+    "near": [
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "m": 6.7,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "m": 15.4,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "m": 15.7,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "m": 16.6,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "m": 16.7,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "m": 20.4,
+      "facing": false
+     }
+    ]
+   },
+   "keys": [
+    {
+     "down": "KeyW"
+    },
+    {
+     "wait_s": 2.5
+    },
+    {
+     "up": "KeyW"
+    },
+    {
+     "wait_s": 2.5
+    }
+   ],
+   "hold_s": 0.3,
+   "expect": {
+    "sneaking": true,
+    "eye": "hidden"
+   }
+  },
+  {
+   "name": "creep-6",
+   "transition": "creeps on, stops and listens -> hidden",
+   "do": {
+    "action": "approach",
+    "near": [
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "m": 5.2,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "m": 13.8,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "m": 15.2,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "m": 15.2,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "m": 16.5,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "m": 19.8,
+      "facing": false
+     }
+    ]
+   },
+   "keys": [
+    {
+     "down": "KeyW"
+    },
+    {
+     "wait_s": 2.5
+    },
+    {
+     "up": "KeyW"
+    },
+    {
+     "wait_s": 2.5
+    }
+   ],
+   "hold_s": 0.3,
+   "expect": {
+    "sneaking": true,
+    "eye": "hidden"
+   }
+  },
+  {
+   "name": "creep-7",
+   "transition": "creeps on, stops and listens -> hidden",
+   "do": {
+    "action": "approach",
+    "near": [
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "m": 3.8,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "m": 12.2,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "m": 13.8,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "m": 13.9,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "m": 17.4,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "m": 19.2,
+      "facing": false
+     }
+    ]
+   },
+   "keys": [
+    {
+     "down": "KeyW"
+    },
+    {
+     "wait_s": 2.5
+    },
+    {
+     "up": "KeyW"
+    },
+    {
+     "wait_s": 2.5
+    }
+   ],
+   "hold_s": 0.3,
+   "expect": {
+    "sneaking": true,
+    "eye": "hidden"
+   }
+  },
+  {
+   "name": "creep-8",
+   "transition": "creeps on to within a couple of strides of his back -> hidden",
+   "do": {
+    "action": "approach",
+    "near": [
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "m": 2.3,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "m": 11.2,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "m": 12.9,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "m": 13.1,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "m": 18.1,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "m": 19,
+      "facing": false
+     }
+    ]
+   },
+   "keys": [
+    {
+     "aimAt": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+     "pitch": -10
+    },
+    {
+     "down": "KeyW"
+    },
+    {
+     "wait_s": 2.5
+    },
+    {
+     "up": "KeyW"
+    }
+   ],
+   "hold_s": 0.3,
+   "expect": {
+    "sneaking": true,
+    "eye": "hidden"
+   }
+  },
+  {
+   "name": "creep-9",
+   "transition": "the last steps to his back, to 1.3 m behind him -> hidden, right behind n2-4",
+   "do": {
+    "action": "approach",
+    "near": [
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "m": 1.3,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "m": 11.2,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "m": 12.9,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "m": 13.1,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "m": 18.1,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "m": 19,
+      "facing": false
+     }
+    ]
+   },
+   "keys": [
+    {
+     "aimAt": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+     "pitch": -10
+    },
+    {
+     "down": "KeyW"
+    },
+    {
+     "wait_s": 1.6
+    },
+    {
+     "up": "KeyW"
+    }
+   ],
+   "hold_s": 0.3,
+   "expect": {
+    "sneaking": true,
+    "eye": "hidden"
+   }
+  },
+  {
+   "name": "creep-10",
+   "transition": "a still beat, then the last half-metre into the dagger's 0.99 m reach -> hidden, at n2-4's back",
+   "do": {
+    "action": "approach",
+    "near": [
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "m": 0.8,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "m": 11.2,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "m": 12.9,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "m": 13.1,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "m": 18.1,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "m": 19,
+      "facing": false
+     }
+    ]
+   },
+   "keys": [
+    {
+     "wait_s": 4
+    },
+    {
+     "aimAt": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+     "pitch": -10
+    },
+    {
+     "down": "KeyW"
+    },
+    {
+     "wait_s": 0.9
+    },
+    {
+     "up": "KeyW"
+    }
+   ],
+   "hold_s": 0.3,
+   "expect": {
+    "sneaking": true,
+    "eye": "hidden"
+   }
+  },
+  {
+   "name": "dagger-opener",
+   "transition": "the dagger in his back -> the sneak band takes him in one",
+   "do": {
+    "action": "strike",
+    "target": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4"
+   },
+   "keys": [
+    {
+     "wait_s": 0.5
+    },
+    {
+     "aimAt": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+     "pitch": -10
+    },
+    {
+     "mouse": "left",
+     "hold_s": 0.3
+    }
+   ],
+   "hold_s": 2.5,
+   "expect": {
+    "window": "unaware",
+    "multiplierAtLeast": 2,
+    "killed": true
+   }
+  }
+ ]
+}

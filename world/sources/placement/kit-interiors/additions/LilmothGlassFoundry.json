@@ -1,0 +1,126 @@
+{
+ "schemaVersion": 2,
+ "cellId": "LilmothGlassFoundry",
+ "additions": [
+  {
+   "id": "LilmothGlassFoundry:add:work-impbrazier",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    70.407,
+    83.065,
+    99.097
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Brazier lights the dark foundry floor where the glassworkers stand."
+  },
+  {
+   "id": "LilmothGlassFoundry:add:work-impbrazier-2",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    60.16,
+    83.073,
+    98.153
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Brazier lights the dark foundry floor where the glassworkers stand."
+  },
+  {
+   "id": "LilmothGlassFoundry:add:work-impbrazier-3",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    62.422,
+    83.065,
+    103.392
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Brazier lights the dark foundry floor where the glassworkers stand."
+  },
+  {
+   "id": "LilmothGlassFoundry:add:work-impbrazier-4",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    66.197,
+    83.065,
+    93.192
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Brazier lights the dark foundry floor where the glassworkers stand."
+  },
+  {
+   "id": "LilmothGlassFoundry:add:work-impbrazier-5",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    73.063,
+    83.065,
+    96.584
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Brazier lights the dark foundry floor where the glassworkers stand."
+  },
+  {
+   "id": "LilmothGlassFoundry:add:work-impbrazier-6",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    62.151,
+    83.065,
+    95.543
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Brazier lights the dark foundry floor where the glassworkers stand."
+  },
+  {
+   "id": "LilmothGlassFoundry:add:work-impbrazier-7",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    64.592,
+    83.065,
+    98.792
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Brazier lights the dark foundry floor where the glassworkers stand."
+  },
+  {
+   "id": "LilmothGlassFoundry:add:work-impbrazier-8",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    63.882,
+    83.065,
+    107.543
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Brazier lights the dark foundry floor where the glassworkers stand."
+  },
+  {
+   "id": "LilmothGlassFoundry:add:work-impbrazier-9",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    72.015,
+    83.065,
+    92.777
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Brazier lights the dark foundry floor where the glassworkers stand."
+  },
+  {
+   "id": "LilmothGlassFoundry:add:work-impbrazier-10",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    59.042,
+    83.065,
+    92.847
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Brazier lights the dark foundry floor where the glassworkers stand."
+  }
+ ]
+}

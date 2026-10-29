@@ -1,0 +1,126 @@
+{
+ "schemaVersion": 2,
+ "cellId": "LilmothHealerHutInt",
+ "additions": [
+  {
+   "id": "LilmothHealerHutInt:add:door-townlantern04",
+   "assetId": "kotm:argonia/clutter/townlantern04",
+   "pos": [
+    66.891,
+    85.62,
+    99.93
+   ],
+   "rotZDeg": 0,
+   "zone": "door",
+   "why": "Lights the floor inside the door."
+  },
+  {
+   "id": "LilmothHealerHutInt:add:work-townlantern04",
+   "assetId": "kotm:argonia/clutter/townlantern04",
+   "pos": [
+    63.511,
+    90.149,
+    100.826
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Hangs over the healer's work and resting places."
+  },
+  {
+   "id": "LilmothHealerHutInt:add:work-townlantern04-2",
+   "assetId": "kotm:argonia/clutter/townlantern04",
+   "pos": [
+    67.587,
+    85.609,
+    103.107
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Hangs over the healer's work and resting places."
+  },
+  {
+   "id": "LilmothHealerHutInt:add:work-townlantern04-3",
+   "assetId": "kotm:argonia/clutter/townlantern04",
+   "pos": [
+    59.822,
+    85.609,
+    99.995
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Hangs over the healer's work and resting places."
+  },
+  {
+   "id": "LilmothHealerHutInt:add:work-townlantern04-4",
+   "assetId": "kotm:argonia/clutter/townlantern04",
+   "pos": [
+    61.334,
+    89.852,
+    103.5
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Hangs over the healer's work and resting places."
+  },
+  {
+   "id": "LilmothHealerHutInt:add:work-townlantern04-5",
+   "assetId": "kotm:argonia/clutter/townlantern04",
+   "pos": [
+    67.414,
+    85.616,
+    107.03
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Hangs over the healer's work and resting places."
+  },
+  {
+   "id": "LilmothHealerHutInt:add:work-townlantern04-6",
+   "assetId": "kotm:argonia/clutter/townlantern04",
+   "pos": [
+    60.731,
+    85.61,
+    106.916
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Hangs over the healer's work and resting places."
+  },
+  {
+   "id": "LilmothHealerHutInt:add:work-townlantern04-7",
+   "assetId": "kotm:argonia/clutter/townlantern04",
+   "pos": [
+    63.474,
+    85.597,
+    109.033
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Hangs over the healer's work and resting places."
+  },
+  {
+   "id": "LilmothHealerHutInt:add:work-townlantern04-8",
+   "assetId": "kotm:argonia/clutter/townlantern04",
+   "pos": [
+    66.632,
+    85.596,
+    109.983
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Hangs over the healer's work and resting places."
+  },
+  {
+   "id": "LilmothHealerHutInt:add:door-candlehornfloor",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    63.6,
+    83.065,
+    100.4
+   ],
+   "rotZDeg": 0,
+   "zone": "door",
+   "why": "A candle horn beside the door, so a patient sees the step in."
+  }
+ ]
+}

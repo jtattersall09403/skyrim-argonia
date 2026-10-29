@@ -1,0 +1,114 @@
+{
+ "id": "boat-still-helm",
+ "start": {
+  "query": "?view=character&x=3866&z=6358.5&t=10:00&d=8-17",
+  "kit": "start"
+ },
+ "notes": "The pod stills of the sea hull walk-on and helm: the lighterman's longboat moored bow-on to the pier (Lighter Flotilla, by day). The player stands on the pier at the stem; E walks aboard (over the stem, aft along the side deck beside the cabin, to the helm), E casts off, W held. The reader checks: no leap and no figure ghosting through the cabin, the camera clear of the cabin roof at the helm, hands on the hull's own steering, no oar.",
+ "steps": [
+  {
+   "name": "board",
+   "transition": "E on the pier at the moored hull's stem: the player walks aboard; the still is taken mid-walk",
+   "do": {
+    "action": "boat",
+    "op": "press"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 1.2
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.lighter-flotilla.longboat",
+     "aboard": "boat.lighter-flotilla.longboat"
+    }
+   },
+   "stage": {
+    "at": {
+     "x": 3866,
+     "z": 6358.5,
+     "yaw": 3.1416
+    },
+    "hour": 10,
+    "place": "place.mercantile-coast.lighter-flotilla",
+    "near": [
+     {
+      "id": "npc.mercantile-coast.lighter-flotilla.flotilla-speaker",
+      "m": 11.8,
+      "facing": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "cast-off",
+   "transition": "E aboard: the hull casts off",
+   "do": {
+    "action": "boat",
+    "op": "press"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.lighter-flotilla.longboat",
+     "event": "castOff",
+     "state": "aboard"
+    }
+   }
+  },
+  {
+   "name": "underway",
+   "transition": "W held: the player at the paddle or the helm, the hull under way; the still is taken with W still held",
+   "do": {
+    "action": "observe"
+   },
+   "keys": [
+    {
+     "down": "KeyW"
+    },
+    {
+     "wait_s": 3
+    },
+    { "closeUp": "player", "bearing": 90, "dist_m": 1.8, "up_m": 1.1, "target": "hands" },
+    { "wait_s": 0.6 },
+    { "closeUp": "player", "bearing": 270, "dist_m": 1.8, "up_m": 1.1, "target": "hands" },
+    { "wait_s": 0.6 },
+    { "closeUp": false }
+   ],
+   "hold_s": 0.5,
+   "expect": {
+    "boat": {
+     "id": "boat.lighter-flotilla.longboat",
+     "aboard": "boat.lighter-flotilla.longboat",
+     "underway": true
+    }
+   }
+  },
+  {
+   "name": "let-go",
+   "transition": "W released",
+   "do": {
+    "action": "observe"
+   },
+   "keys": [
+    {
+     "up": "KeyW"
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.lighter-flotilla.longboat",
+     "aboard": "boat.lighter-flotilla.longboat"
+    }
+   }
+  }
+ ]
+}

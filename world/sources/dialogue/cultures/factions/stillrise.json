@@ -1,0 +1,188 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "_": "Faction and office sheets for Stillrise village (lane 2.5a2). Ranks: the registry ladder (associate, member, senior); named offices beyond it are listed by their own rank slug.",
+ "entries": [
+  {
+   "id": "culture.faction.stillrise",
+   "level": "faction",
+   "name": "Stillrise village",
+   "parent": "culture.province.black-marsh",
+   "factionId": "faction.stillrise",
+   "norms": [
+    {
+     "text": "The array keeps the village standing; it is never touched.",
+     "source": "inferred"
+    },
+    {
+     "text": "The dead keep their daily round.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Saying the village is dead.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "Continuity.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Necromancers who would take the array.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "place": {
+     "lean": 2,
+     "text": "Stillrise is home, still.",
+     "source": "inferred"
+    },
+    "danger": {
+     "lean": -1,
+     "text": "Anyone who touches the array.",
+     "source": "inferred"
+    },
+    "people": {
+     "lean": 0,
+     "text": "Visitors are polite or gone.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Neighbour.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [
+     {
+      "text": "As it was.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "When they died.",
+      "source": "inferred"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Visitors stare.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "A College scholar asked about the array.",
+      "source": "world/sources/lore/topics/guilds-and-orders.md"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.college-of-whispers",
+     "lean": -2,
+     "text": "Would take the array.",
+     "source": "world/sources/lore/topics/guilds-and-orders.md"
+    }
+   ],
+   "deviationRate": 0.1
+  },
+  {
+   "id": "culture.office.stillrise.senior",
+   "level": "office",
+   "name": "Array-keeper",
+   "parent": "culture.faction.stillrise",
+   "factionId": "faction.stillrise",
+   "rank": "senior",
+   "norms": [
+    {
+     "text": "Speaks of the array as a household chore.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Touching it.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "The array.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Meddlers.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "danger": {
+     "lean": -1,
+     "text": "Meddlers.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Neighbour.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [
+     {
+      "text": "As it was.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "How it works.",
+      "source": "inferred"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "It weakens.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "A scholar.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.stillrise",
+     "lean": 2,
+     "text": "Theirs.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.1
+  }
+ ]
+}

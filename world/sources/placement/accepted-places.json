@@ -1,0 +1,282 @@
+{
+  "schemaVersion": 1,
+  "id": "placement.accepted-places",
+  "comment": "Decision 0100 decision 6: the receipt for every place the owner has accepted. Each entry holds the place id, the owner's 'looks right' date, the hash of the compiled settlement record and of the place's own patches, and the ground and kit provenance from the export. A gate fails the build when an accepted place's compiled record would change and the entry has no 'reopened' item (owner date and reason). Gates added after acceptance run on the place in report mode only.",
+  "places": [
+    {
+      "placeId": "place.imperial-fringe.the-broke-column",
+      "acceptedOn": "2026-10-09",
+      "authoredOn": "2026-10-09",
+      "compiledHash": "9e45368560c792357361170d055b5cc08cc7bea8fcec97907700db7b01467d3b",
+      "patchesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "provenance": {
+        "sourceBlueprintSha256": "c16d73d9176a7ef94be1b383924e75a07440cda1607cb20f8e97d5eddf64530e",
+        "layout": "world/sources/blueprints/the-broke-column.layout.json"
+      },
+      "layers": [
+        {
+          "kind": "furniture",
+          "placementIds": [
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.command-tent.assembly.cmd-chest-armour",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.command-tent.assembly.cmd-chest-arms"
+          ],
+          "on": "2026-10-22",
+          "compiledHash": "46a99e87c53ee6d0c40833d501ac7c9a153d87cd94f54fa908a18bdff8c50852"
+        },
+        {
+          "kind": "furniture",
+          "placementIds": [
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.command-tent.assembly.pk-b1",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.command-tent.assembly.pk-b2",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.command-tent.assembly.pk-b3",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.command-tent.assembly.pk-b4",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.command-tent.assembly.pk-b5",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.command-tent.assembly.pk-b6",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.command-tent.assembly.pk-b7",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.command-tent.assembly.pk-b8",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.command-tent.assembly.pk-s1",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.command-tent.assembly.pk-s10",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.command-tent.assembly.pk-s11",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.command-tent.assembly.pk-s2",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.command-tent.assembly.pk-s3",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.command-tent.assembly.pk-s4",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.command-tent.assembly.pk-s5",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.command-tent.assembly.pk-s6",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.command-tent.assembly.pk-s7",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.command-tent.assembly.pk-s8",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.command-tent.assembly.pk-s9",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.command-tent.assembly.pk-w0",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.command-tent.assembly.sc-shrub1",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-1.assembly.pk-b10",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-1.assembly.pk-b11",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-1.assembly.pk-b12",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-1.assembly.pk-b9",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-1.assembly.pk-w6",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-1.assembly.sc-gorse1",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-2.assembly.pk-b13",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-2.assembly.pk-b14",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-2.assembly.pk-b15",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-2.assembly.sc-gorse4",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-2.assembly.sc-shrub2",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.pk-b16",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.pk-b17",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.pk-b18",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.pk-b19",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.pk-b20",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.pk-b21",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.pk-b22",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.pk-e6",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.pk-n1",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.pk-n10",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.pk-n2",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.pk-n3",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.pk-n4",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.pk-n5",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.pk-n6",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.pk-n7",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.pk-n8",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.pk-n9",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.sc-gorse2",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.sc-gorse3",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.sc-gorse5",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.sc-shrub3",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.sc-shrub4",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.sc-shrub5"
+          ],
+          "on": "2026-10-23",
+          "compiledHash": "57a1a2f3169bb21130361c29205279c3c1852b03d152d285529c1c2dd1ffb41e"
+        },
+        {
+          "kind": "furniture",
+          "placementIds": [
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-1.assembly.sc-shrub7",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-2.assembly.pk-g1",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.sc-gorse6",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.sc-gorse7",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.sc-gorse8",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.sc-shrub6"
+          ],
+          "on": "2026-10-23",
+          "compiledHash": "35a524c0512a71cf147b6b5dba75839e45533ff6121d63337595d1c14c6110f4"
+        },
+        {
+          "kind": "furniture",
+          "placementIds": [
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.sc-shrub10",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.sc-shrub11",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.sc-shrub12",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.sc-shrub13",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.sc-shrub14",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.sc-shrub15",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.sc-shrub16",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.sc-shrub17",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.sc-shrub18",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.sc-shrub19",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.sc-shrub8",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.sc-shrub9"
+          ],
+          "on": "2026-10-23",
+          "compiledHash": "c4147f6c81d07c83eb51e815e6565b95de5e9fe085c10e34f0cfb6616daa637d"
+        },
+        {
+          "kind": "furniture",
+          "placementIds": [
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.sc-shrub20",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.sc-shrub21",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.sc-shrub22",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.sc-shrub23",
+            "place.imperial-fringe.the-broke-column.parcel.the-broke-column.tent-3.assembly.sc-shrub24"
+          ],
+          "on": "2026-10-23",
+          "compiledHash": "22176d8c977a060675c4e4b34bf97bf947ba2d1a02f7b765fe4dd787290b44e0"
+        }
+      ]
+    },
+    {
+      "placeId": "place.route.archon-gideon-mere-neck",
+      "acceptedOn": "2026-10-09",
+      "authoredOn": "2026-10-04",
+      "compiledHash": "43e4ac1234c208a543b2d98ff7dde05e4f80f4cd3164269f2c8622f99e5f15d0",
+      "patchesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "provenance": {
+        "sourceBlueprintSha256": "5320387407f63646f98d0b4dace94d38d0e6aa44bf455831df898807d683d7ec",
+        "layout": "world/sources/blueprints/archon-gideon-mere-neck.layout.json"
+      }
+    },
+    {
+      "placeId": "place.route.border-road-greenspring-crossings",
+      "acceptedOn": "2026-10-09",
+      "authoredOn": "2026-10-04",
+      "compiledHash": "2c9a8c3b1a3171b10bd23e2d4991ae2158ec2df1bbc7bf7d91eff13983677d64",
+      "patchesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "provenance": {
+        "sourceBlueprintSha256": "667690f46a459d13a28e049c804510014b78bd6f3f353598754e98d7e9a71016",
+        "layout": "world/sources/blueprints/border-road-greenspring-crossings.layout.json"
+      },
+      "layers": [
+        {
+          "kind": "furniture",
+          "placementIds": [
+            "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.inlet-deck.assembly.ib-ladder"
+          ],
+          "on": "2026-10-23",
+          "compiledHash": "ec235c5dcdfb763446b58c2922b92b9875219d3a3b149c7232f9458c33ebcef6"
+        },
+        {
+          "kind": "furniture",
+          "placementIds": [
+            "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.inlet-deck.assembly.ib-ladder"
+          ],
+          "on": "2026-10-23",
+          "compiledHash": "accea083a0c243a1e96e7aee3ed96f1ccd93eb6ad14da497255331295d1ad84c"
+        },
+        {
+          "kind": "furniture",
+          "placementIds": [],
+          "on": "2026-10-23",
+          "compiledHash": "2c9a8c3b1a3171b10bd23e2d4991ae2158ec2df1bbc7bf7d91eff13983677d64",
+          "removedIds": [
+            "place.route.border-road-greenspring-crossings.parcel.border-road-greenspring-crossings.inlet-deck.assembly.ib-ladder"
+          ],
+          "baseHash": "2c9a8c3b1a3171b10bd23e2d4991ae2158ec2df1bbc7bf7d91eff13983677d64"
+        }
+      ]
+    },
+    {
+      "placeId": "place.hist-heartland.greenspring",
+      "acceptedOn": "2026-10-09",
+      "authoredOn": "2026-10-05",
+      "compiledHash": "df12659ea207d4d9d7a38b06db4d69d7eab0fe5f1490ab2a35119a64b7a03900",
+      "patchesHash": "a7b38af7b9a84026e0cdaae89ae81e08673feb690a1cbc1b4e3c0f97fb8c5ca8",
+      "provenance": {
+        "sourceBlueprintSha256": "04068c6fa3f3e5ffc070c78d90d55dad4d6b12d7572ba88fc324e762cca8a20c",
+        "layout": "world/sources/blueprints/greenspring.layout.json"
+      },
+      "layers": [
+        {
+          "kind": "furniture",
+          "placementIds": [
+            "place.hist-heartland.greenspring.parcel.greenspring.hist-shrine.assembly.node-rootland-mushroom",
+            "place.hist-heartland.greenspring.parcel.greenspring.hist-shrine.assembly.node-swamp-fungal-pod",
+            "place.hist-heartland.greenspring.parcel.greenspring.minders-house.assembly.craft-alchemy"
+          ],
+          "on": "2026-10-20",
+          "compiledHash": "ef86f617a3b80bfb9d5a720be0fca30c665fc56d4c09a4d75cd3c98d5b7ebab9"
+        },
+        {
+          "kind": "furniture",
+          "placementIds": [
+            "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.node-nirnroot"
+          ],
+          "on": "2026-10-20",
+          "compiledHash": "06462e7bd6afd2caf7f5f6484db3c1dd801e5ccf681de8587d842157cea0092f"
+        },
+        {
+          "kind": "furniture",
+          "placementIds": [
+            "place.hist-heartland.greenspring.parcel.greenspring.hist-shrine.assembly.node-rootland-mushroom"
+          ],
+          "on": "2026-10-21",
+          "compiledHash": "a18a1c6cf3455bd0d08a305d8f7f479cb787d9268ebc7999365d4dc36c9df89f"
+        }
+      ]
+    },
+    {
+      "placeId": "place.imperial-fringe.claywater-station",
+      "acceptedOn": "2026-10-09",
+      "authoredOn": "2026-10-09",
+      "compiledHash": "9bf5f547b0e1ecba76401607ba8bf6937941dff0af2c8f3d8c1c7776927901af",
+      "patchesHash": "3f87484d5d41ecc9f18ca5a4476cf1c5b16527deadaee121c035ca16ddc0a754",
+      "provenance": {
+        "sourceBlueprintSha256": "a8d1778966047e9b17160b9ae367b9fff63665aa3d09165124c8137266154641",
+        "layout": "world/sources/blueprints/claywater-station.layout.json"
+      },
+      "exceptions": [
+        {
+          "bar": "topShellShareMax",
+          "reason": "No third linked Argonian shell with a usable cell exists. The mudhut02 shell (KeebaHouseElder) was tried in the residual round. Its door stands 4.7 m above the ground at every scanned pose. The kit has no stair or walkway to reach that door. The store keeps its King of the Murkmire pod.",
+          "on": "2026-09-27",
+          "planner": "Fable"
+        }
+      ],
+      "layers": [
+        {
+          "kind": "furniture",
+          "placementIds": [
+            "place.imperial-fringe.claywater-station.parcel.claywater-station.family-hut.assembly.b5-meal-bench",
+            "place.imperial-fringe.claywater-station.parcel.claywater-station.polers-hut.assembly.b4-meal-bench"
+          ],
+          "on": "2026-10-18",
+          "compiledHash": "0ccfe4e13718c0432e37f530e536a11bdaddc6ee1df95217e246eb5c4f118c65"
+        },
+        {
+          "kind": "furniture",
+          "placementIds": [
+            "place.imperial-fringe.claywater-station.parcel.claywater-station.station-house.assembly.sh-alchemy",
+            "place.imperial-fringe.claywater-station.parcel.claywater-station.the-well.assembly.node-marshweed",
+            "place.imperial-fringe.claywater-station.parcel.claywater-station.the-well.assembly.node-mtflower"
+          ],
+          "on": "2026-10-20",
+          "compiledHash": "4bb144606ef9937663609926337500a4b04c16d6fb27a4dadf9dd8fc3028612e"
+        },
+        {
+          "kind": "furniture",
+          "placementIds": [
+            "place.imperial-fringe.claywater-station.parcel.claywater-station.the-well.assembly.node-marshweed",
+            "place.imperial-fringe.claywater-station.parcel.claywater-station.the-well.assembly.node-mtflower"
+          ],
+          "on": "2026-10-20",
+          "compiledHash": "0d7f7eeaf4d6e641f6f235abebc7de74c053335f1680e15bd6e3f19420f2e7bd"
+        },
+        {
+          "kind": "furniture",
+          "placementIds": [
+            "place.imperial-fringe.claywater-station.parcel.claywater-station.the-well.assembly.node-mtflower"
+          ],
+          "on": "2026-10-20",
+          "compiledHash": "a135756543cc08b6deaa2a9300007a1490a4fe8236216790f33ead2094f48624"
+        }
+      ]
+    }
+  ]
+}

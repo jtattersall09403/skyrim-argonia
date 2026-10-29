@@ -1,0 +1,872 @@
+{
+ "schemaVersion": 1,
+ "domain": "stance",
+ "_": "First-draft stance and voice sheets composed down the culture chain; the place review sets each row and marks it reviewed.",
+ "placeId": "place.pirate-freeholds.opening-work-camp",
+ "generator": "worldgen.dialogue_compose",
+ "derivedFrom": [
+  "world/sources/dialogue/cultures/",
+  "world/sources/registries/npcs.json"
+ ],
+ "entries": [
+  {
+   "personId": "npc.pirate-freeholds.opening-work-camp.n1",
+   "chain": [
+    "culture.province.black-marsh",
+    "culture.region.pirate-freeholds",
+    "culture.people.argonian-tribal",
+    "culture.settlement.opening-work-camp",
+    "culture.group.opening-work-camp.gang-families"
+   ],
+   "topics": {
+    "place": {
+     "lean": 1,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    },
+    "work": {
+     "lean": -1,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    },
+    "people": {
+     "lean": 1,
+     "from": "culture.group.opening-work-camp.gang-families",
+     "deviation": null
+    },
+    "faction": {
+     "lean": -2,
+     "from": "culture.group.opening-work-camp.gang-families",
+     "deviation": null
+    },
+    "hist": {
+     "lean": 2,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "empire": {
+     "lean": -1,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "trade": {
+     "lean": 0,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "danger": {
+     "lean": 0,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    },
+    "rumour": {
+     "lean": 0,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": {
+      "lean": -1,
+      "reason": "He will not repeat talk about the roll so close to the shed; he thinks it brings bad luck to the clutch."
+     }
+    },
+    "directions": {
+     "lean": 1,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    }
+   },
+   "voice": {
+    "quirk": "Counts time in shifts and fish heads, never in days.",
+    "chatter": "terse",
+    "answerLength": {
+     "topic": {
+      "min": 6,
+      "max": 45
+     },
+     "newcomer": {
+      "min": 6,
+      "max": 45
+     },
+     "rumour": {
+      "min": 6,
+      "max": 40
+     }
+    },
+    "contractionRate": 0.1,
+    "addressTerm": "you",
+    "favouriteSubject": "hist",
+    "neverMentions": [
+     "Who among the neighbours took the An-Xileel's side in 4E 48.",
+     "That a family was once owned, or once owned others.",
+     "Who sold the last cargo.",
+     "How many on the roll never came back.",
+     "The Chukka-Sei naming secrets."
+    ]
+   },
+   "reviewed": true
+  },
+  {
+   "personId": "npc.pirate-freeholds.opening-work-camp.n1-2",
+   "chain": [
+    "culture.province.black-marsh",
+    "culture.region.pirate-freeholds",
+    "culture.people.argonian-tribal",
+    "culture.settlement.opening-work-camp",
+    "culture.group.opening-work-camp.gang-families"
+   ],
+   "topics": {
+    "place": {
+     "lean": 1,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    },
+    "work": {
+     "lean": -1,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    },
+    "people": {
+     "lean": 1,
+     "from": "culture.group.opening-work-camp.gang-families",
+     "deviation": {
+      "lean": 2,
+      "reason": "She says the shed names in order after every shift and knows each family by its hand on the roll."
+     }
+    },
+    "faction": {
+     "lean": -2,
+     "from": "culture.group.opening-work-camp.gang-families",
+     "deviation": null
+    },
+    "hist": {
+     "lean": 2,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "empire": {
+     "lean": -1,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "trade": {
+     "lean": 0,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "danger": {
+     "lean": 0,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    },
+    "rumour": {
+     "lean": 0,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    },
+    "directions": {
+     "lean": 1,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    }
+   },
+   "voice": {
+    "quirk": "Lists things in threes, the way she says the shed names.",
+    "chatter": "terse",
+    "answerLength": {
+     "topic": {
+      "min": 6,
+      "max": 45
+     },
+     "newcomer": {
+      "min": 6,
+      "max": 45
+     },
+     "rumour": {
+      "min": 6,
+      "max": 40
+     }
+    },
+    "contractionRate": 0.05,
+    "addressTerm": "you",
+    "favouriteSubject": "hist",
+    "neverMentions": [
+     "Who among the neighbours took the An-Xileel's side in 4E 48.",
+     "That a family was once owned, or once owned others.",
+     "Who sold the last cargo.",
+     "How many on the roll never came back.",
+     "The Chukka-Sei naming secrets."
+    ]
+   },
+   "reviewed": true
+  },
+  {
+   "personId": "npc.pirate-freeholds.opening-work-camp.n1-3",
+   "chain": [
+    "culture.province.black-marsh",
+    "culture.region.pirate-freeholds",
+    "culture.people.argonian-tribal",
+    "culture.settlement.opening-work-camp",
+    "culture.group.opening-work-camp.gang-families"
+   ],
+   "topics": {
+    "place": {
+     "lean": 1,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": {
+      "lean": 0,
+      "reason": "She keeps her boots on under the west shed's thatch and would take the families to the port."
+     }
+    },
+    "work": {
+     "lean": -1,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": {
+      "lean": -2,
+      "reason": "She sleeps in her boots; she has seen food and broken tools added to the debt and expects to run."
+     }
+    },
+    "people": {
+     "lean": 1,
+     "from": "culture.group.opening-work-camp.gang-families",
+     "deviation": null
+    },
+    "faction": {
+     "lean": -2,
+     "from": "culture.group.opening-work-camp.gang-families",
+     "deviation": null
+    },
+    "hist": {
+     "lean": 2,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "empire": {
+     "lean": -1,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "trade": {
+     "lean": 0,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "danger": {
+     "lean": 0,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    },
+    "rumour": {
+     "lean": 0,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    },
+    "directions": {
+     "lean": 1,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    }
+   },
+   "voice": {
+    "quirk": "Speaks of every subject as a way out: where it leads and how far.",
+    "chatter": "plain",
+    "answerLength": {
+     "topic": {
+      "min": 6,
+      "max": 55
+     },
+     "newcomer": {
+      "min": 6,
+      "max": 60
+     },
+     "rumour": {
+      "min": 8,
+      "max": 55
+     }
+    },
+    "contractionRate": 0.1,
+    "addressTerm": "you",
+    "favouriteSubject": "hist",
+    "neverMentions": [
+     "Who among the neighbours took the An-Xileel's side in 4E 48.",
+     "That a family was once owned, or once owned others.",
+     "Who sold the last cargo.",
+     "How many on the roll never came back.",
+     "The Chukka-Sei naming secrets."
+    ]
+   },
+   "reviewed": true
+  },
+  {
+   "personId": "npc.pirate-freeholds.opening-work-camp.n1-4",
+   "chain": [
+    "culture.province.black-marsh",
+    "culture.region.pirate-freeholds",
+    "culture.people.khajiit-marsh-born",
+    "culture.settlement.opening-work-camp",
+    "culture.group.opening-work-camp.gang-families",
+    "culture.household.opening-work-camp.west-shed"
+   ],
+   "topics": {
+    "place": {
+     "lean": 1,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": {
+      "lean": -1,
+      "reason": "He patches mats for families who count him a hand and never kin; the grievance is his alone."
+     }
+    },
+    "work": {
+     "lean": -1,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    },
+    "people": {
+     "lean": 1,
+     "from": "culture.group.opening-work-camp.gang-families",
+     "deviation": {
+      "lean": 0,
+      "reason": "The shed families count him as a hand, never as kin."
+     }
+    },
+    "faction": {
+     "lean": -2,
+     "from": "culture.group.opening-work-camp.gang-families",
+     "deviation": null
+    },
+    "hist": {
+     "lean": 0,
+     "from": "culture.people.khajiit-marsh-born",
+     "deviation": null
+    },
+    "empire": {
+     "lean": 0,
+     "from": "culture.people.khajiit-marsh-born",
+     "deviation": null
+    },
+    "trade": {
+     "lean": 1,
+     "from": "culture.people.khajiit-marsh-born",
+     "deviation": null
+    },
+    "danger": {
+     "lean": 0,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    },
+    "rumour": {
+     "lean": 0,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    },
+    "directions": {
+     "lean": 1,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    }
+   },
+   "voice": {
+    "quirk": "Calls himself by his own name, never I.",
+    "chatter": "chatty",
+    "answerLength": {
+     "topic": {
+      "min": 6,
+      "max": 70
+     },
+     "newcomer": {
+      "min": 6,
+      "max": 75
+     },
+     "rumour": {
+      "min": 10,
+      "max": 70
+     }
+    },
+    "contractionRate": 0.5,
+    "addressTerm": "friend",
+    "favouriteSubject": "faction",
+    "neverMentions": [
+     "Who among the neighbours took the An-Xileel's side in 4E 48.",
+     "That a family was once owned, or once owned others.",
+     "Who sold the last cargo.",
+     "How many on the roll never came back.",
+     "What is in the second hold."
+    ]
+   },
+   "reviewed": true
+  },
+  {
+   "personId": "npc.pirate-freeholds.opening-work-camp.n1-5",
+   "chain": [
+    "culture.province.black-marsh",
+    "culture.region.pirate-freeholds",
+    "culture.people.khajiit-marsh-born",
+    "culture.settlement.opening-work-camp",
+    "culture.group.opening-work-camp.gang-families",
+    "culture.household.opening-work-camp.west-shed"
+   ],
+   "topics": {
+    "place": {
+     "lean": 1,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    },
+    "work": {
+     "lean": -1,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    },
+    "people": {
+     "lean": 1,
+     "from": "culture.group.opening-work-camp.gang-families",
+     "deviation": null
+    },
+    "faction": {
+     "lean": -2,
+     "from": "culture.group.opening-work-camp.gang-families",
+     "deviation": null
+    },
+    "hist": {
+     "lean": 0,
+     "from": "culture.people.khajiit-marsh-born",
+     "deviation": {
+      "lean": 1,
+      "reason": "She leaves the first cup of water at the shed door each day; she honours the clutch though it is not hers."
+     }
+    },
+    "empire": {
+     "lean": 0,
+     "from": "culture.people.khajiit-marsh-born",
+     "deviation": null
+    },
+    "trade": {
+     "lean": 1,
+     "from": "culture.people.khajiit-marsh-born",
+     "deviation": null
+    },
+    "danger": {
+     "lean": 0,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    },
+    "rumour": {
+     "lean": 0,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    },
+    "directions": {
+     "lean": 1,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    }
+   },
+   "voice": {
+    "quirk": "Measures everything in water jars and trips up the slope.",
+    "chatter": "plain",
+    "answerLength": {
+     "topic": {
+      "min": 6,
+      "max": 55
+     },
+     "newcomer": {
+      "min": 6,
+      "max": 60
+     },
+     "rumour": {
+      "min": 8,
+      "max": 55
+     }
+    },
+    "contractionRate": 0.1,
+    "addressTerm": "traveller",
+    "favouriteSubject": "faction",
+    "neverMentions": [
+     "Who among the neighbours took the An-Xileel's side in 4E 48.",
+     "That a family was once owned, or once owned others.",
+     "Who sold the last cargo.",
+     "How many on the roll never came back.",
+     "What is in the second hold."
+    ]
+   },
+   "reviewed": true
+  },
+  {
+   "personId": "npc.pirate-freeholds.opening-work-camp.n3",
+   "chain": [
+    "culture.province.black-marsh",
+    "culture.region.pirate-freeholds",
+    "culture.people.dunmer-marsh-born",
+    "culture.faction.dres-remnant",
+    "culture.settlement.opening-work-camp",
+    "culture.group.opening-work-camp.overseers"
+   ],
+   "topics": {
+    "place": {
+     "lean": 1,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    },
+    "work": {
+     "lean": 1,
+     "from": "culture.group.opening-work-camp.overseers",
+     "deviation": null
+    },
+    "people": {
+     "lean": 0,
+     "from": "culture.group.opening-work-camp.overseers",
+     "deviation": {
+      "lean": -1,
+      "reason": "She keeps the debt ledger on her lap and sees the families as accounts to balance."
+     }
+    },
+    "faction": {
+     "lean": -2,
+     "from": "culture.faction.dres-remnant",
+     "deviation": null
+    },
+    "hist": {
+     "lean": 1,
+     "from": "culture.people.dunmer-marsh-born",
+     "deviation": null
+    },
+    "empire": {
+     "lean": 0,
+     "from": "culture.people.dunmer-marsh-born",
+     "deviation": null
+    },
+    "trade": {
+     "lean": 1,
+     "from": "culture.faction.dres-remnant",
+     "deviation": null
+    },
+    "danger": {
+     "lean": 0,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    },
+    "rumour": {
+     "lean": 0,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    },
+    "directions": {
+     "lean": 1,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    }
+   },
+   "voice": {
+    "quirk": "Gives every amount to the exact figure in the ledger.",
+    "chatter": "chatty",
+    "answerLength": {
+     "topic": {
+      "min": 6,
+      "max": 70
+     },
+     "newcomer": {
+      "min": 6,
+      "max": 75
+     },
+     "rumour": {
+      "min": 10,
+      "max": 70
+     }
+    },
+    "contractionRate": 0.5,
+    "addressTerm": "outlander",
+    "favouriteSubject": "faction",
+    "neverMentions": [
+     "Who among the neighbours took the An-Xileel's side in 4E 48.",
+     "That a family was once owned, or once owned others.",
+     "Who sold the last cargo.",
+     "How many on the roll never came back.",
+     "The trade of their great-grandparents."
+    ]
+   },
+   "reviewed": true
+  },
+  {
+   "personId": "npc.pirate-freeholds.opening-work-camp.n3-2",
+   "chain": [
+    "culture.province.black-marsh",
+    "culture.region.pirate-freeholds",
+    "culture.people.argonian-tribal",
+    "culture.faction.dres-remnant",
+    "culture.settlement.opening-work-camp",
+    "culture.group.opening-work-camp.overseers"
+   ],
+   "topics": {
+    "place": {
+     "lean": 1,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    },
+    "work": {
+     "lean": 1,
+     "from": "culture.group.opening-work-camp.overseers",
+     "deviation": {
+      "lean": 2,
+      "reason": "She walks the doors for the house and believes the channel work ends each debt in time."
+     }
+    },
+    "people": {
+     "lean": 0,
+     "from": "culture.group.opening-work-camp.overseers",
+     "deviation": null
+    },
+    "faction": {
+     "lean": -2,
+     "from": "culture.faction.dres-remnant",
+     "deviation": {
+      "lean": 0,
+      "reason": "She serves the house for a wage and carries none of the house's grudge against the north."
+     }
+    },
+    "hist": {
+     "lean": 2,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "empire": {
+     "lean": -1,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "trade": {
+     "lean": 1,
+     "from": "culture.faction.dres-remnant",
+     "deviation": null
+    },
+    "danger": {
+     "lean": 0,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    },
+    "rumour": {
+     "lean": 0,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    },
+    "directions": {
+     "lean": 1,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    }
+   },
+   "voice": {
+    "quirk": "Ends her statements with a check: shut, yes? Paid, yes?",
+    "chatter": "chatty",
+    "answerLength": {
+     "topic": {
+      "min": 6,
+      "max": 70
+     },
+     "newcomer": {
+      "min": 6,
+      "max": 75
+     },
+     "rumour": {
+      "min": 10,
+      "max": 70
+     }
+    },
+    "contractionRate": 0.5,
+    "addressTerm": "stranger",
+    "favouriteSubject": "faction",
+    "neverMentions": [
+     "Who among the neighbours took the An-Xileel's side in 4E 48.",
+     "That a family was once owned, or once owned others.",
+     "Who sold the last cargo.",
+     "How many on the roll never came back.",
+     "The Chukka-Sei naming secrets."
+    ]
+   },
+   "reviewed": true
+  },
+  {
+   "personId": "npc.pirate-freeholds.opening-work-camp.npc-opening-clutch-keeper",
+   "chain": [
+    "culture.province.black-marsh",
+    "culture.region.pirate-freeholds",
+    "culture.people.argonian-tribal",
+    "culture.settlement.opening-work-camp",
+    "culture.group.opening-work-camp.gang-families"
+   ],
+   "topics": {
+    "place": {
+     "lean": 1,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": {
+      "lean": 2,
+      "reason": "The hatching shed is his whole work; he keeps its fire low and its nest dry."
+     }
+    },
+    "work": {
+     "lean": -1,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    },
+    "people": {
+     "lean": 1,
+     "from": "culture.group.opening-work-camp.gang-families",
+     "deviation": null
+    },
+    "faction": {
+     "lean": -2,
+     "from": "culture.group.opening-work-camp.gang-families",
+     "deviation": null
+    },
+    "hist": {
+     "lean": 2,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "empire": {
+     "lean": -1,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "trade": {
+     "lean": 0,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "danger": {
+     "lean": 0,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    },
+    "rumour": {
+     "lean": 0,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    },
+    "directions": {
+     "lean": 1,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    }
+   },
+   "voice": {
+    "quirk": "Judges everything by how warm or dry it is.",
+    "chatter": "plain",
+    "answerLength": {
+     "topic": {
+      "min": 6,
+      "max": 55
+     },
+     "newcomer": {
+      "min": 6,
+      "max": 60
+     },
+     "rumour": {
+      "min": 8,
+      "max": 55
+     }
+    },
+    "contractionRate": 0.05,
+    "addressTerm": "guest",
+    "favouriteSubject": "faction",
+    "neverMentions": [
+     "Who among the neighbours took the An-Xileel's side in 4E 48.",
+     "That a family was once owned, or once owned others.",
+     "Who sold the last cargo.",
+     "How many on the roll never came back.",
+     "The Chukka-Sei naming secrets."
+    ]
+   },
+   "reviewed": true
+  },
+  {
+   "personId": "npc.pirate-freeholds.opening-work-camp.npc-opening-witness",
+   "chain": [
+    "culture.province.black-marsh",
+    "culture.region.pirate-freeholds",
+    "culture.people.argonian-tribal",
+    "culture.settlement.opening-work-camp",
+    "culture.group.opening-work-camp.gang-families"
+   ],
+   "topics": {
+    "place": {
+     "lean": 1,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    },
+    "work": {
+     "lean": -1,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    },
+    "people": {
+     "lean": 1,
+     "from": "culture.group.opening-work-camp.gang-families",
+     "deviation": null
+    },
+    "faction": {
+     "lean": -2,
+     "from": "culture.group.opening-work-camp.gang-families",
+     "deviation": null
+    },
+    "hist": {
+     "lean": 2,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "empire": {
+     "lean": -1,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "trade": {
+     "lean": 0,
+     "from": "culture.people.argonian-tribal",
+     "deviation": null
+    },
+    "danger": {
+     "lean": 0,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    },
+    "rumour": {
+     "lean": 0,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": {
+      "lean": 1,
+      "reason": "She mends nets at the shed's corner where every family passes. She hears all the camp's talk."
+     }
+    },
+    "directions": {
+     "lean": 1,
+     "from": "culture.settlement.opening-work-camp",
+     "deviation": null
+    }
+   },
+   "voice": {
+    "quirk": "Names a person by their family's hand on the roll.",
+    "chatter": "rambling",
+    "answerLength": {
+     "topic": {
+      "min": 6,
+      "max": 80
+     },
+     "newcomer": {
+      "min": 6,
+      "max": 80
+     },
+     "rumour": {
+      "min": 12,
+      "max": 80
+     }
+    },
+    "contractionRate": 0.4,
+    "addressTerm": "visitor",
+    "favouriteSubject": "faction",
+    "neverMentions": [
+     "Who among the neighbours took the An-Xileel's side in 4E 48.",
+     "That a family was once owned, or once owned others.",
+     "Who sold the last cargo.",
+     "How many on the roll never came back.",
+     "The Chukka-Sei naming secrets."
+    ]
+   },
+   "reviewed": true
+  }
+ ]
+}

@@ -1,0 +1,265 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "world-schema/stance.v1",
+ "title": "Stance and voice-sheet rows of one place (2.5a, decision 0139)",
+ "type": "object",
+ "required": [
+  "schemaVersion",
+  "domain",
+  "placeId",
+  "generator",
+  "entries"
+ ],
+ "properties": {
+  "schemaVersion": {
+   "const": 1
+  },
+  "domain": {
+   "const": "stance"
+  },
+  "_": {
+   "type": "string"
+  },
+  "placeId": {
+   "type": "string",
+   "pattern": "^place\\."
+  },
+  "generator": {
+   "type": "string"
+  },
+  "derivedFrom": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "entries": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "personId",
+     "chain",
+     "topics",
+     "voice",
+     "reviewed"
+    ],
+    "properties": {
+     "personId": {
+      "type": "string",
+      "pattern": "^npc\\."
+     },
+     "chain": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+       "$ref": "world-schema/culture-sheet.v1#/$defs/cultureId"
+      }
+     },
+     "topics": {
+      "type": "object",
+      "propertyNames": {
+       "enum": [
+        "place",
+        "work",
+        "people",
+        "faction",
+        "hist",
+        "empire",
+        "trade",
+        "danger",
+        "rumour",
+        "directions"
+       ]
+      },
+      "required": [
+       "place",
+       "work",
+       "people",
+       "faction",
+       "hist",
+       "empire",
+       "trade",
+       "danger",
+       "rumour",
+       "directions"
+      ],
+      "additionalProperties": {
+       "type": "object",
+       "additionalProperties": false,
+       "required": [
+        "lean",
+        "from",
+        "deviation"
+       ],
+       "properties": {
+        "lean": {
+         "$ref": "world-schema/culture-sheet.v1#/$defs/lean"
+        },
+        "from": {
+         "$ref": "world-schema/culture-sheet.v1#/$defs/cultureId"
+        },
+        "deviation": {
+         "oneOf": [
+          {
+           "type": "null"
+          },
+          {
+           "type": "object",
+           "additionalProperties": false,
+           "required": [
+            "lean",
+            "reason"
+           ],
+           "properties": {
+            "lean": {
+             "$ref": "world-schema/culture-sheet.v1#/$defs/lean"
+            },
+            "reason": {
+             "type": [
+              "string",
+              "null"
+             ]
+            }
+           }
+          }
+         ]
+        }
+       }
+      }
+     },
+     "voice": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+       "quirk",
+       "chatter",
+       "answerLength",
+       "contractionRate",
+       "addressTerm",
+       "favouriteSubject",
+       "neverMentions"
+      ],
+      "properties": {
+       "quirk": {
+        "type": "string",
+        "minLength": 3
+       },
+       "explainerOf": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        },
+        "description": "topic ids this person explains in full for the place (optional; the packet and the newcomer gate read it)"
+       },
+       "chatter": {
+        "enum": [
+         "terse",
+         "plain",
+         "chatty",
+         "rambling"
+        ],
+        "description": "how much a person says: answer length and meander, by personality (style-core §4)"
+       },
+       "answerLength": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+         "topic",
+         "newcomer",
+         "rumour"
+        ],
+        "description": "words per answer by slot (newcomer covers faction; topic covers local and role)",
+        "properties": {
+         "topic": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+           "min",
+           "max"
+          ],
+          "properties": {
+           "min": {
+            "type": "integer",
+            "minimum": 6,
+            "maximum": 60
+           },
+           "max": {
+            "type": "integer",
+            "minimum": 10,
+            "maximum": 80
+           }
+          }
+         },
+         "newcomer": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+           "min",
+           "max"
+          ],
+          "properties": {
+           "min": {
+            "type": "integer",
+            "minimum": 6,
+            "maximum": 60
+           },
+           "max": {
+            "type": "integer",
+            "minimum": 10,
+            "maximum": 80
+           }
+          }
+         },
+         "rumour": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+           "min",
+           "max"
+          ],
+          "properties": {
+           "min": {
+            "type": "integer",
+            "minimum": 6,
+            "maximum": 60
+           },
+           "max": {
+            "type": "integer",
+            "minimum": 10,
+            "maximum": 80
+           }
+          }
+         }
+        }
+       },
+       "contractionRate": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+       },
+       "addressTerm": {
+        "type": "string",
+        "minLength": 1
+       },
+       "favouriteSubject": {
+        "$ref": "world-schema/culture-sheet.v1#/$defs/topicClass"
+       },
+       "neverMentions": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        },
+        "maxItems": 5
+       }
+      }
+     },
+     "reviewed": {
+      "type": "boolean"
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,330 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "_": "Faction and office sheets for The An-Xileel (the Wardens) (lane 2.5a2). Ranks: the registry ladder (associate, member, senior); named offices beyond it are listed by their own rank slug.",
+ "entries": [
+  {
+   "id": "culture.faction.an-xileel",
+   "level": "faction",
+   "name": "The An-Xileel (the Wardens)",
+   "parent": "culture.province.black-marsh",
+   "factionId": "faction.an-xileel",
+   "norms": [
+    {
+     "text": "The administration still calls itself the An-Xileel; staff say the Wardens.",
+     "source": "world/sources/lore/an-xileel.md"
+    },
+    {
+     "text": "Writ is held at the ports and the border; elsewhere it is argued.",
+     "source": "world/sources/lore/an-xileel.md"
+    },
+    {
+     "text": "The Wild Ones are spoken of as the constituency.",
+     "source": "world/sources/lore/topics/guilds-and-orders.md"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Mentioning Umbriel as the party's own act.",
+     "source": "world/sources/lore/an-xileel.md"
+    }
+   ],
+   "values": [
+    {
+     "text": "Argonian sovereignty.",
+     "source": "world/sources/lore/an-xileel.md"
+    },
+    {
+     "text": "The border screen and the customs regime.",
+     "source": "world/sources/lore/an-xileel.md"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Lukiul, as a weapon word, by the older hands.",
+     "source": "world/sources/lore/an-xileel.md"
+    },
+    {
+     "text": "Foreign institutions that come without a licence.",
+     "source": "world/sources/lore/topics/guilds-and-orders.md"
+    }
+   ],
+   "opinions": {
+    "faction": {
+     "lean": 1,
+     "text": "The Organism governs; the rest is detail.",
+     "source": "world/sources/lore/an-xileel.md"
+    },
+    "empire": {
+     "lean": -2,
+     "text": "The Empire is the thing Argonia ended.",
+     "source": "world/sources/lore/an-xileel.md"
+    },
+    "hist": {
+     "lean": 1,
+     "text": "The state honours the Hist and claims no tree.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    },
+    "trade": {
+     "lean": 1,
+     "text": "Customs duty at the recognised ports funds the screen.",
+     "source": "world/sources/lore/an-xileel.md"
+    },
+    "people": {
+     "lean": 0,
+     "text": "Citizens are welcome to their opinions.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Citizen, offered as an invitation.",
+      "source": "inferred"
+     },
+     {
+      "text": "Archwarden, Warden, by office.",
+      "source": "world/sources/lore/an-xileel.md"
+     }
+    ],
+    "formality": "formal",
+    "oaths": [
+     {
+      "text": "For the Marsh and its people.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "That the predecessor tried to exterminate the lukiul.",
+      "source": "world/sources/lore/an-xileel.md"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Gideon and Lilmoth deny the mandate openly.",
+      "source": "world/sources/lore/an-xileel.md"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "The Organism is split on the Root Talk.",
+      "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.veiled-reed",
+     "lean": 2,
+     "text": "The administration's own office.",
+     "source": "inferred"
+    },
+    {
+     "node": "culture.faction.unbound-root",
+     "lean": -2,
+     "text": "The movement against the state.",
+     "source": "inferred"
+    },
+    {
+     "node": "culture.faction.dres-remnant",
+     "lean": -2,
+     "text": "Slaving interests.",
+     "source": "world/sources/lore/topics/foreign-powers.md"
+    },
+    {
+     "node": "culture.people.argonian-lukiul",
+     "lean": -1,
+     "text": "Citizens the older hands still call lukiul.",
+     "source": "world/sources/lore/an-xileel.md"
+    }
+   ],
+   "deviationRate": 0.15
+  },
+  {
+   "id": "culture.office.an-xileel.senior",
+   "level": "office",
+   "name": "Warden on duty (Archwarden's officer)",
+   "parent": "culture.faction.an-xileel",
+   "factionId": "faction.an-xileel",
+   "rank": "senior",
+   "norms": [
+    {
+     "text": "On duty a Warden recites the licence and the port rule before anything else.",
+     "source": "world/sources/lore/an-xileel.md"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Saying \"Wild Ones\" with a smile.",
+     "source": "world/sources/lore/topics/guilds-and-orders.md"
+    }
+   ],
+   "values": [
+    {
+     "text": "The licence.",
+     "source": "world/sources/lore/an-xileel.md"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Unlicensed foreigners.",
+     "source": "world/sources/lore/an-xileel.md"
+    }
+   ],
+   "opinions": {
+    "faction": {
+     "lean": 2,
+     "text": "The Organism's writ, stated as settled.",
+     "source": "world/sources/lore/an-xileel.md"
+    },
+    "danger": {
+     "lean": 0,
+     "text": "Unlicensed travel is the danger.",
+     "source": "world/sources/lore/an-xileel.md"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Citizen; foreigner, to the unlicensed.",
+      "source": "world/sources/lore/an-xileel.md"
+     }
+    ],
+    "formality": "formal",
+    "oaths": [
+     {
+      "text": "By the authority of the Organism.",
+      "source": "world/sources/lore/an-xileel.md"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "Doubt about the mandate.",
+      "source": "world/sources/lore/an-xileel.md"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Port duty is collected; interior villages ignore the office.",
+      "source": "world/sources/lore/an-xileel.md"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "A licence was forged at Archon.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.an-xileel",
+     "lean": 2,
+     "text": "Duty.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.1
+  },
+  {
+   "id": "culture.office.an-xileel.owing-assessor",
+   "level": "office",
+   "name": "Warden assessor of Owings (penal office)",
+   "parent": "culture.faction.an-xileel",
+   "factionId": "faction.an-xileel",
+   "rank": "owing-assessor",
+   "norms": [
+    {
+     "text": "Assesses an Owing in nushmeekos before a witness and records it.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    {
+     "text": "Speaks of a debtor as a balance.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Calling an Owing slavery.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    }
+   ],
+   "values": [
+    {
+     "text": "An ending, recorded.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Holders who extend accounts without assessment.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    }
+   ],
+   "opinions": {
+    "work": {
+     "lean": 1,
+     "text": "Work owed is work assessed, and then it is over.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    "faction": {
+     "lean": 0,
+     "text": "The state has never regulated the Owing; the assessor does it by hand.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Debtor, claimant, by role in the case.",
+      "source": "world/sources/lore/topics/labour-and-bondage.md"
+     }
+    ],
+    "formality": "formal",
+    "oaths": [
+     {
+      "text": "So assessed, so witnessed.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "How many assessments the holders overrule.",
+      "source": "world/sources/lore/topics/labour-and-bondage.md"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "No court backs an assessment outside Gideon.",
+      "source": "world/sources/lore/topics/labour-and-bondage.md"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "Transfers are being filed under old Archein seals.",
+      "source": "world/sources/lore/topics/labour-and-bondage.md"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.chainbreakers",
+     "lean": 0,
+     "text": "Reformers with matches.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    }
+   ],
+   "deviationRate": 0.1
+  }
+ ]
+}

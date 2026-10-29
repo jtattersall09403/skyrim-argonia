@@ -1,0 +1,111 @@
+{
+ "id": "climb",
+ "start": {
+  "query": "?view=character&x=3960&z=1370&t=10&d=7-28",
+  "kit": "start",
+  "seed": 1
+ },
+ "notes": "The opening work camp's terrain cliff (place.pirate-freeholds.opening-work-camp, centre (3949,1384)): a plateau 13-14 m high; at x 3960 the lod1 heightfield is 0 at z 1374 and 13 at z 1378 (slope >= 70 deg), the face looks north. journey-spot.mjs --hour 10: at the foot (3960,1370) light 1 (sky), E picks nothing, n3 (the watch) sees it from 29.2 m; at the top (3960,1382) E picks nothing, n3 sees it from 18.7 m. n3 is named on the fall step.",
+ "steps": [
+  {
+   "name": "climb-the-face",
+   "transition": "W into the cliff's north face: the hands take the stone and the body goes up the wall",
+   "stage": {
+    "at": {
+     "x": 3960,
+     "z": 1370,
+     "yaw": 3.14
+    },
+    "hour": 10,
+    "place": "place.pirate-freeholds.opening-work-camp",
+    "near": [
+     {
+      "id": "npc.pirate-freeholds.opening-work-camp.n3",
+      "m": 29.2,
+      "facing": false
+     }
+    ]
+   },
+   "do": {
+    "action": "climb"
+   },
+   "keys": [
+    {
+     "down": "KeyW"
+    },
+    {
+     "wait_s": 4
+    },
+    {
+     "up": "KeyW"
+    }
+   ],
+   "expect": {
+    "climbMode": "wall",
+    "climbEvents": [
+     "attach"
+    ],
+    "skillRose": "acrobatics"
+   }
+  },
+  {
+   "name": "let-go",
+   "transition": "C lets go: the body drops off the face",
+   "do": {
+    "action": "drop"
+   },
+   "keys": [
+    {
+     "press": "KeyC"
+    },
+    {
+     "wait_s": 2
+    }
+   ],
+   "expect": {
+    "climbEvents": [
+     "release:drop"
+    ],
+    "moveMode": "grounded"
+   }
+  },
+  {
+   "name": "off-the-top",
+   "transition": "from the plateau's top, W off its north edge: a fall of about 13 m that costs health and pays Acrobatics",
+   "teleport": {
+    "x": 3960,
+    "z": 1382,
+    "yaw": 0
+   },
+   "do": {
+    "action": "leap",
+    "near": [
+     {
+      "id": "npc.pirate-freeholds.opening-work-camp.n3",
+      "m": 18.7,
+      "facing": false
+     }
+    ]
+   },
+   "keys": [
+    {
+     "down": "KeyW"
+    },
+    {
+     "wait_s": 4
+    },
+    {
+     "up": "KeyW"
+    },
+    {
+     "wait_s": 1
+    }
+   ],
+   "expect": {
+    "hurtBy": "fall",
+    "skillRose": "acrobatics",
+    "moveMode": "grounded"
+   }
+  }
+ ]
+}

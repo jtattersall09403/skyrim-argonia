@@ -1,0 +1,330 @@
+{
+ "schemaVersion": 1,
+ "placeId": "place.imperial-fringe.bog-iron-workings",
+ "generator": "python3 -m worldgen.blueprint_promises --id <place-id> --write (decision 0104); never hand-edit a row but its `unfilled`, `filledBy` or `confirmed` block",
+ "derivedFrom": [
+  {
+   "file": "world/sources/catalogue/places-imperial-fringe.json",
+   "sha256": "b93a79c0feb86d7b13941b8ec7cd46e66c95d8035ee9566c0fc82a2569a397af"
+  },
+  {
+   "file": "world/sources/quests/local-imperial-fringe.json",
+   "sha256": "05d17c80525aaf221ca2e8e56e71d4f85e26a04fe48c9f22e926adc04bca660c"
+  }
+ ],
+ "promises": [
+  {
+   "id": "promise.bog-iron-workings.evidence-the-stained-boots",
+   "kind": "socketBucket",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.bog-iron-workings].sockets.evidence[evidence.bog-iron-workings.the-stained-boots]"
+   },
+   "text": "Bog Iron Workings has the evidence socket evidence.bog-iron-workings.the-stained-boots.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.bog-iron-workings.interior-principal",
+   "kind": "interior",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.bog-iron-workings].interior"
+   },
+   "text": "Bog Iron Workings's principal interior is a dwelling (S1); its buildings carry 1 load door in all.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.bog-iron-workings.occupant-n1",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.bog-iron-workings].contents.npcs[n1]"
+   },
+   "text": "Bog Iron Workings has few rank-and-file occupants.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.bog-iron-workings.post-ore-digger",
+   "kind": "socketBucket",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.bog-iron-workings].sockets.post[post.bog-iron-workings.ore-digger]"
+   },
+   "text": "Bog Iron Workings has the post socket post.bog-iron-workings.ore-digger.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.bog-iron-workings.prose-playerpurpose-hook",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.bog-iron-workings].playerPurpose.hook"
+   },
+   "text": "Iron lifts out of the mud here in cakes. The seasonal diggers allow a visitor to take what they can carry.",
+   "confirmed": {
+    "sha": "a8db0d6673c5",
+    "note": "The bloomery and its smoke stand beside the diggers' hut; the take-what-you-carry ore is the harvest system's job."
+   }
+  },
+  {
+   "id": "promise.bog-iron-workings.prose-questhooks-opportunity",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.bog-iron-workings].questHooks.opportunity"
+   },
+   "text": "The diggers have abandoned the deep end of the seep without saying why.",
+   "confirmed": {
+    "sha": "da674c2878d4",
+    "note": "The deep end of the seep, 1.5 m of water south-east of the bank, carries the fauna socket deep-pools; no work piece stands there.",
+    "ids": [
+     "socket.bog-iron-workings.deep-pools"
+    ]
+   }
+  },
+  {
+   "id": "promise.bog-iron-workings.prose-vibe-approach",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.bog-iron-workings].vibe.approach"
+   },
+   "text": "The seep shows through the ferns below the bench well before the workings do.",
+   "confirmed": {
+    "sha": "97924d97f82a",
+    "note": "The seep is the iron-rich ground below the bench; the fern scatter (813 within 200 m) covers the slope up to the workings; the dig on the seep's south edge shows before the furnace does.",
+    "ids": [
+     "sd-shovel",
+     "socket.bog-iron-workings.deep-pools"
+    ]
+   }
+  },
+  {
+   "id": "promise.bog-iron-workings.prose-vibe-condition",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.bog-iron-workings].vibe.condition"
+   },
+   "text": "Rebuilt every season, because the furnace is broken open to get the bloom out.",
+   "confirmed": {
+    "sha": "aaa7148f367c",
+    "note": "A practice of the crew, shown by the furnace and its raked charcoal bed (bl-furnace)."
+   }
+  },
+  {
+   "id": "promise.bog-iron-workings.prose-vibe-materials",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.bog-iron-workings].vibe.materials"
+   },
+   "text": "A clay furnace rebuilt every season and a timber house on posts.",
+   "confirmed": {
+    "sha": "e5f2703f75d8",
+    "note": "The bloomery (smeltermarker) is the clay furnace; the diggers' hut is the KotM plank house composite:plank/house1-with-door on its posts, whose linked interior is the Lilmoth apothecary cell.",
+    "ids": [
+     "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.diggers-hut.building"
+    ]
+   }
+  },
+  {
+   "id": "promise.bog-iron-workings.prose-vibe-mood",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.bog-iron-workings].vibe.mood"
+   },
+   "text": "purposeful",
+   "confirmed": {
+    "sha": "99ed95947dc2",
+    "note": "Every piece serves the work in one line: three flooded pits at the seep's margin, the cart and duckboards beside them, the ore heaps, the furnace on its floor, the crew's hut.",
+    "ids": [
+     "socket.bog-iron-workings.seep-diggings",
+     "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.building"
+    ]
+   }
+  },
+  {
+   "id": "promise.bog-iron-workings.prose-vibe-palette",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.bog-iron-workings].vibe.palette"
+   },
+   "text": "Charcoal black, grey furnace clay, dark peat water.",
+   "confirmed": {
+    "sha": "61f2f185b897",
+    "note": "The charcoal bed, the grey furnace and the seep's water as built."
+   }
+  },
+  {
+   "id": "promise.bog-iron-workings.prose-vibe-senses",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.bog-iron-workings].vibe.senses"
+   },
+   "text": "Sucking mud; a hollow ring when a bloom is struck; sulphur.",
+   "confirmed": {
+    "sha": "d6f2d45df4d2",
+    "note": "Sounds and smells of the work at the furnace and the seep; no world behaviour claimed."
+   }
+  },
+  {
+   "id": "promise.bog-iron-workings.prose-vibe-signaturefeature",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.bog-iron-workings].vibe.signatureFeature"
+   },
+   "text": "The furnace stands on a levelled floor above the seep, its charcoal bed spread before its mouth.",
+   "confirmed": {
+    "sha": "2c78ac487e2d",
+    "note": "The furnace on its levelled pad above the seep, its charcoal bed part of the smelter mesh in front of its mouth (bl-furnace).",
+    "ids": [
+     "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.building",
+     "socket.bog-iron-workings.deep-pools"
+    ]
+   }
+  },
+  {
+   "id": "promise.bog-iron-workings.prose-vibe-silhouette",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.bog-iron-workings].vibe.silhouette"
+   },
+   "text": "A squat clay furnace and its black charcoal bed on a bench, a small timber house west of the furnace, the seep below the bank.",
+   "confirmed": {
+    "sha": "3a9237955f32",
+    "note": "The furnace on its levelled floor on the bench with a coal pile at its mouth, the crew's timber house west of it, the seep and its diggings below the bank.",
+    "ids": [
+     "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.building",
+     "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.diggers-hut.building"
+    ]
+   }
+  },
+  {
+   "id": "promise.bog-iron-workings.prose-why-founding",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.bog-iron-workings].why.founding"
+   },
+   "text": "Bog iron forms in this ground. Nails, tyres and tools wear out fast on the road; the road crews buy replacement iron from the diggers here.",
+   "confirmed": {
+    "sha": "85159ee9c158",
+    "note": "The ground is dug for its iron at the three seep pits; the iron the road crews buy is the bar stack at the furnace foot beside the way (y1-bl-ingots). The sale itself is a trade-system act; no counter or trader service is promised.",
+    "ids": [
+     "socket.bog-iron-workings.seep-diggings"
+    ]
+   }
+  },
+  {
+   "id": "promise.bog-iron-workings.prose-why-occupantsmotive",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.bog-iron-workings].why.occupantsMotive"
+   },
+   "text": "The diggers come from three villages for one season a year. They consider the work shameful.",
+   "confirmed": {
+    "sha": "ca77dcc3f60a",
+    "note": "One crew's hut and roster slot n1 (the season's diggers), schedule work at the furnace, sleep in the hut."
+   }
+  },
+  {
+   "id": "promise.bog-iron-workings.prose-why-pressures",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.bog-iron-workings].why.pressures"
+   },
+   "text": "The seep is being worked out; each season's cakes are smaller and lie further from the path.",
+   "confirmed": {
+    "sha": "d06275ea3bab",
+    "note": "The worked-out pit (seep-pit-3) floods beside the ore heaps nearest the path; this season's pits lie further out along the margin, the last reached only by duckboards.",
+    "ids": [
+     "socket.bog-iron-workings.seep-diggings"
+    ]
+   }
+  },
+  {
+   "id": "promise.bog-iron-workings.prose-why-siteadvantages",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.bog-iron-workings].why.siteAdvantages"
+   },
+   "text": "The seep is stagnant and rich in iron; the ore can be lifted from the mud in cakes.",
+   "confirmed": {
+    "sha": "303bcb393e7d",
+    "note": "Three flooded pits cut into the seep's south margin, the shovel stood in the mud between them, the cakes heaped and in a bucket beside them.",
+    "ids": [
+     "socket.bog-iron-workings.seep-diggings"
+    ]
+   }
+  },
+  {
+   "id": "promise.bog-iron-workings.prose-why-wouldchangeif",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.bog-iron-workings].why.wouldChangeIf"
+   },
+   "text": "Would be abandoned without ceremony.",
+   "confirmed": {
+    "sha": "3533f9051a08",
+    "note": "Counterfactual; claims nothing built."
+   }
+  },
+  {
+   "id": "promise.bog-iron-workings.quest-lf67",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-imperial-fringe.json",
+    "path": "quest[LF67]"
+   },
+   "text": "LF67 Bog Iron, Deeper Pools: The diggers have stopped working the deep end of the seep, without saying why",
+   "confirmed": {
+    "sha": "354df5cff110",
+    "note": "The deep end of the seep (water 1.5 m deep at 2040, 2556) carries the fauna socket deep-pools; the diggers' hut (witness purpose) holds the crew that stopped digging at the deep end."
+   }
+  },
+  {
+   "id": "promise.bog-iron-workings.scene-the-mound",
+   "kind": "socketBucket",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.bog-iron-workings].sockets.scene[scene.bog-iron-workings.the-mound]"
+   },
+   "text": "Bog Iron Workings has the scene socket scene.bog-iron-workings.the-mound.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.bog-iron-workings.thing-ore",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.bog-iron-workings].why.siteAdvantages"
+   },
+   "text": "Bog Iron Workings shows the ore its record names.",
+   "unfilled": null,
+   "filledBy": [
+    "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.y4-oc-ore1",
+    "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.y1-bl-ingots"
+   ]
+  },
+  {
+   "id": "promise.bog-iron-workings.thing-seep",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-imperial-fringe.json",
+    "path": "places[place.imperial-fringe.bog-iron-workings].why.siteAdvantages"
+   },
+   "text": "Bog Iron Workings shows the seep its record names.",
+   "unfilled": null
+  }
+ ]
+}

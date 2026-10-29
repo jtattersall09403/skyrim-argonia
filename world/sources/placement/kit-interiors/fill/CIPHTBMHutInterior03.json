@@ -1,0 +1,125 @@
+{
+ "cellId": "CIPHTBMHutInterior03",
+ "sockets": {
+  "socket.CIPHTBMHutInterior03.06029EE6": {
+   "owner": "parcel.upriver-hist-village.net-menders-house",
+   "fillRule": "blanket.fish-basket",
+   "valueTier": "trivial",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.trodh",
+      "count": 4
+     },
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     },
+     {
+      "item": "item.fishing-pole",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.fish-basket"
+   }
+  },
+  "socket.CIPHTBMHutInterior03.06029EE7": {
+   "owner": "parcel.upriver-hist-village.net-menders-house",
+   "fillRule": "blanket.water-barrel",
+   "valueTier": "trivial",
+   "lootTable": {
+    "items": [],
+    "frozenFrom": "blanket.water-barrel"
+   }
+  },
+  "socket.CIPHTBMHutInterior03.06029EE8": {
+   "owner": "parcel.upriver-hist-village.net-menders-house",
+   "fillRule": "blanket.fish-basket",
+   "valueTier": "trivial",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.trodh",
+      "count": 4
+     },
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     },
+     {
+      "item": "item.fishing-pole",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.fish-basket"
+   }
+  },
+  "socket.CIPHTBMHutInterior03.06029EE9": {
+   "owner": "parcel.upriver-hist-village.net-menders-house",
+   "fillRule": "blanket.household-urn",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 1
+     },
+     {
+      "item": "item.trodh",
+      "count": 3
+     },
+     {
+      "item": "item.clay-jug",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.household-urn"
+   }
+  },
+  "socket.CIPHTBMHutInterior03.06029EF5": {
+   "owner": "parcel.upriver-hist-village.net-menders-house",
+   "valueTier": "low",
+   "item": "item.dragons-tongue"
+  },
+  "socket.CIPHTBMHutInterior03.06029EF6": {
+   "owner": "parcel.upriver-hist-village.net-menders-house",
+   "valueTier": "low",
+   "item": "item.dragons-tongue"
+  },
+  "socket.CIPHTBMHutInterior03.06029EF7": {
+   "owner": "parcel.upriver-hist-village.net-menders-house",
+   "valueTier": "moderate",
+   "item": "item.river-betty"
+  },
+  "socket.CIPHTBMHutInterior03.06029EF8": {
+   "owner": "parcel.upriver-hist-village.net-menders-house",
+   "valueTier": "moderate",
+   "item": "item.slaughterfish-egg"
+  },
+  "socket.CIPHTBMHutInterior03.06029EF9": {
+   "owner": "parcel.upriver-hist-village.net-menders-house",
+   "valueTier": "low",
+   "item": "item.slaughterfish-scales"
+  },
+  "socket.CIPHTBMHutInterior03.06029EFA": {
+   "owner": "parcel.upriver-hist-village.net-menders-house",
+   "valueTier": "moderate",
+   "item": "item.slaughterfish-egg"
+  },
+  "socket.CIPHTBMHutInterior03.06029EFB": {
+   "owner": "parcel.upriver-hist-village.net-menders-house",
+   "valueTier": "moderate",
+   "item": "item.river-betty"
+  },
+  "socket.CIPHTBMHutInterior03.06029EFC": {
+   "owner": "parcel.upriver-hist-village.net-menders-house",
+   "valueTier": "moderate",
+   "item": "item.firebrand-wine"
+  }
+ },
+ "schemaVersion": 1
+}

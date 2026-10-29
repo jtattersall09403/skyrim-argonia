@@ -25,12 +25,12 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | A12 | Cuirass, pauldrons etc. (nice to have) | In | 0005 C6; 2.3; O-9 for split meshes |
 | A13 | Custom HUD | In | 0005 C11; 2.2 |
 | A14 | Dark Souls combat hooked to Morrowind-based stats | In | 0004, 0019; 2.7 §a wiring spec, 2.7 §c state machine |
-| A15 | Use the existing thinking in the argonia repo for combat/stats | In | imported 76-stats-progression and combat docs; 1.3, 1.4, 2.7, 2.8 read lists |
+| A15 | Use the existing thinking in the argonia repo for combat/stats | In | imported 76-stats-progression and combat docs; 1.3, 1.6, 2.7, 2.8 read lists |
 | A16 | ds3-open-re as a reverse-engineering example | Out (as a tool) | it is netcode only (engine-feasibility §3, um-ghidra-lens §3.1); DSR data tools used instead (0004) |
 | A17 | Ghidra, universal-modder, Ghidrust for RE and extraction | In | 0010 (route order, scalpel use, vendored skills); 0.1/0.4; 2.7 §b; Ghidrust Out as experimental (um-ghidra-lens §2.2) |
 | A18 | "Anything else from Skyrim" from Mudcrab | Out (for now) | Mudcrab is a world viewer, not playable (0001 table); Skyrim itself is the host; watch as S4 |
 | A19 | Free climbing (Mirror's Edge parkour-in-Skyrim reference; anything like free climbing) | In | 2.13 (FreeClimb + SkyParkour); the "one day" video is a second-hand report (um-ghidra-lens §4) |
-| A20 | Player-controlled boats; research best source | In | 1.6; 2.15 (Sailable Ship base, Wind Waker model, ownership) |
+| A20 | Player-controlled boats; research best source | In | 0.2 G3; 2.15 (Sailable Ship base, Wind Waker model, ownership) |
 | A21 | Skyrim SE or DS3 level graphics | In | Skyrim host; 0.3 Community Shaders; 4.6 |
 | A22 | Modern features: volumetric or pseudo-volumetric fog, lighting | In | 0.3; 2.W2 (mist); 4.6 |
 | A23 | Minimal new art; extract/adapt from Morrowind, Skyrim SE, DS1/3 and community mods | In / partly Out | 0006 §6; Skyrim and mod assets used at runtime; **Morrowind and DS assets Out** (licences, 0003/0004; Morrowind assets cannot run in Skyrim without conversion, which Bethesda's terms bind to Morrowind) |
@@ -78,11 +78,15 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | B14 | The $100 cap is AWS infrastructure only | 0008 |
 | B16 | The owner can get the Creation Kit; "isn't that how mods normally get made?" | 0018 (CK as a scripted tool; records by code; Papyrus compiler and base scripts come from the CK); 0.1; 0.5; 2.W4 |
 | B17 | Study OpenMW's window layouts and contents to improve our UI | 0017 §8; 2.2 §a |
+| B40 | 2026-10-29: the order of importance (world and places; quests, story, people; combat; progression; UI) and licence to change the plan | 0027; PLAN §2, §5; phases/README; Part 1 re-cut (1.2, 1.4, 1.6, 1.7); 2.W1 after G4; 2-slice order |
+| B41 | 2026-10-29: critical review of the old ways of working; adopt rtk and some agent types; the cheaper 0.0 way of working | 0027 §7–9; ways-of-working §1, §6; CLAUDE.md; `.claude/settings.json` (rtk hook); 0.1 §b |
+| B42 | 2026-10-29: Morrowind-like mods welcome (Magic Expanded 133435); permissive UI mods as a foundation (Dear Diary 23010, Wood and Paper 44174, Oblivion-like Loading Menu 38708); an easy early UI, the big overhaul later | 0027 §5; 1.2 §a; 0.2 G3, G11; the reuse audit (0.1 §j) |
+| B43 | 2026-10-29: October's AWS overspend explained; the $100 cap binds from November | 0008 note; owner-brief |
 | B18 | Holistic UI design; "eyes on" transitions in focused loops; no jarring vanilla screens (e.g. constellations) | 0017 §7; 2.2 §a (UI map), 2.2 (transition loop); 3.1; perk constellations hidden (2.1) |
 | B19 | Load Skyrim's own symbols (sneak eye) from the player's files | 0017 §5; 0014 §8; 1.2 |
 | B20 | Trim flourishes are the owner's ChatGPT art | 0017 §5; sourcing register |
-| B21 | Do not reproduce the old project's buggy combat and animations; DS1R numbers, system and feel, wired to our stats | 0019; combat written around DSR (1.4 first rung; 2.7 §a wiring spec, 2.7 §c DS1 state machine in a tested core, 2.7 §e movesets chosen for fidelity, 2.7 §h side-by-side with DSR); inherited-rulings 0037/0040/0090 |
-| B22 | Use universal-modder / Ghidra agent skills and methods wherever useful | 0020 (full skill set, agents, `um` CLI, field-note reading list per chunk, ReVa and pyghidra-mcp, "Prior art" brief field, O-19 giving back); 0.1/0.4; 0.2, 1.4, 1.6, 2.5, 2.7, 2.13, 2.15, 3.4 read lists |
+| B21 | Do not reproduce the old project's buggy combat and animations; DS1R numbers, system and feel, wired to our stats | 0019; combat written around DSR (1.6 the tuned stack on the sheet; 2.7 §0 the map, §a wiring spec, 2.7 §c DS1 state machine in a tested core, 2.7 §e movesets chosen for fidelity, 2.7 §h side-by-side with DSR); inherited-rulings 0037/0040/0090 |
+| B22 | Use universal-modder / Ghidra agent skills and methods wherever useful | 0020 (full skill set, agents, `um` CLI, field-note reading list per chunk, ReVa and pyghidra-mcp, "Prior art" brief field, O-19 giving back); 0.1/0.4; 0.2, 2.5, 2.7, 2.13, 2.15, 3.4 read lists; vendored one skill at a time (0027 §7) |
 | B23 | Carry the "fast focused loops with eyes" way of working and its ladder, updated for the new infrastructure | 0021; docs/loops.md (ladder rebuilt: L2 core runner + L4 game runner from a studio scene); a Loops section in every chunk brief; ways-of-working §3; CLAUDE.md |
 | B24 | The lane that builds a feature tests the feature and its joins in the same loop; no separate seam loops | 0021 §2; loops.md rule 2; every brief's "Joins owned" |
 | B25 | Journeys are headless only: no agent plays the game by looking; no harness or capture rigs | 0021 §3; loops.md rule 5; 0.4 §c (the two runners, schema refuses stills and clips in a journey) |
@@ -112,7 +116,7 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | C5 | openmw-web (WASM), Android community builds | Out | Skyrim host; no native phone (0007) |
 | C6 | Mudcrab: converter + world viewer, not playable | Out (now) | 0001 S4 |
 | C7 | Bandai Namco EULA: no RE, no derivative works, DMCA history | In | 0004; legal §1 |
-| C8 | DS combat feel lives in timing data and animations; extraction of animations fragile and forbidden | In | 0004 §5; 1.4, 2.7 §e (the animation side) |
+| C8 | DS combat feel lives in timing data and animations; extraction of animations fragile and forbidden | In | 0004 §5; 2.7 §e (the animation side) |
 | C9 | Clean-room spec: mechanics as knowledge, own implementation | In | 0004 §2; 2.7 §b parity table |
 | C10 | DS1 wiki says 11 i-frames for fast/mid/fat rolls vs old 13/11/9 | In | 0004 context; 0.2 G6; 2.7 §b settles; owner ruled DS1 wins |
 | C11 | DSR tools: soulstruct (Linux), Paramdex DS1R, DSAnimStudio, UXM, DSR Gadget (archived), debug menu mod 266; exe packed on disk (dump at runtime); servers live since Nov 2022, no anti-cheat; offline only | In | 0004 §3; 0.2 G6; 2.7 §b |
@@ -143,14 +147,14 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | D11 | SkyUI 6, Infinity UI, TrueHUD, PrismaUI (licence: dependency fine; forks need permission; Ultralight licence), dMenu NG, full SWF skins; Scaleform authoring poor on Linux | In | 1.2; 2.2 |
 | D12 | Encounter zones min=max, Morrowloot, carriages pattern for travel, EnableFastTravel, training game setting, merchant gold | In | 2.6; 2.7 §j |
 | D13 | Beyond Skyrim: Argonia dormant; name overlap | In / Open | O-13 |
-| D14 | Precision (API callbacks), TDM (no distance setter), TrueHUD, OAR (custom conditions), BFCO (active; conflicts with MCO), SCAR (MIT), CPR, UND, Wait Your Turn, Distance Based Combat, TK Dodge SE (restrictive) vs RE/Redux, Valhalla (BSD-3), Elden Parry, Rim Parry, zxlice, Blade and Blunt, Poisebreaker, Chocolate Poise (MIT), Archery Locational Damage, AMR/AMF, LoreRim/Elder Souls modlists | In | 1.4; 2.7 §c, §d; 0.3 conflict list |
+| D14 | Precision (API callbacks), TDM (no distance setter), TrueHUD, OAR (custom conditions), BFCO (active; conflicts with MCO), SCAR (MIT), CPR, UND, Wait Your Turn, Distance Based Combat, TK Dodge SE (restrictive) vs RE/Redux, Valhalla (BSD-3), Elden Parry, Rim Parry, zxlice, Blade and Blunt, Poisebreaker, Chocolate Poise (MIT), Archery Locational Damage, AMR/AMF, LoreRim/Elder Souls modlists | In | 1.6; 2.7 §0, §c, §d; 0.3 conflict list |
 | D15 | No melee hit-zone mod; buildable from Precision's hit rigid body | In | 2.7 §d (per-hitbox rates as DS1 data defines them, 0019) |
 | D16 | ArgoniaCombat design (pre-hit ignore for i-frames, OAR burden-tier roll, parry window, riposte paired anims, backstab angle, poise fork, 20 m lock-on ≈ 1,400 units) | In (adapter mechanics) / replaced (numbers) | 2.7 §d adapter; numbers and rules now from DSR (0019): lock-on from `LockCamParam`, per-hitbox rates instead of head ×2, poise in our core (Chocolate Poise as reference only) |
 | D17 | ±1-frame test dummy at 30/60 fps; tunnelling check | In | 2.7 §f |
 | D18 | FromSoft-derived movesets on Nexus (e.g. Cathedral Knight) | Out | 0004 §5 |
-| D19 | FreeClimb (GPL-3.0-only; Mixamo/Threepeat clips), SkyParkour, SkyClimb (superseded), EVG Animated Traversal (ladders), climbing stamina add-on | In | 1.6; 2.13 |
+| D19 | FreeClimb (GPL-3.0-only; Mixamo/Threepeat clips), SkyParkour, SkyClimb (superseded), EVG Animated Traversal (ladders), climbing stamina add-on | In | 0.2 G3; 2.13 |
 | D20 | Underwater NG, swim sprint mod, vanilla diving | In | 2.13 |
-| D21 | Sailable Ship (scripted helm, issues: deck instability, unanimated sails, save at helm, 60 fps), Sailboats (mount race, restrictive), L.V.X Boats, Rowboats (CC BY-SA), rowboat spell, Animated Ships | In | 1.6; 2.15 |
+| D21 | Sailable Ship (scripted helm, issues: deck instability, unanimated sails, save at helm, 60 fps), Sailboats (mount race, restrictive), L.V.X Boats, Rowboats (CC BY-SA), rowboat spell, Animated Ships | In | 0.2 G3; 2.15 |
 | D22 | PLANCK VR-only; XP32 True Ragdoll; Precision impulses; Skyrim Delirium unverified | In / Out | 2.7 §i (PLANCK Out: VR only) |
 | D23 | Pandora under Proton fragile; generate on the playing machine | In | 0.2 G3; 0.3 risks |
 | D24 | Mutagen, Spriggit, Synthesis (not needed), xEdit under Wine (read-only), plugin2text (lossy) | In | 0.5; 0.1 |

@@ -1,0 +1,862 @@
+{
+  "schemaVersion": 1,
+  "domain": "harvest",
+  "_": "The creature harvest home table (2.7b1, filled 2.9c d): the items a killed creature of each species drops, mapped from the species row's `harvest` words to `items.json` records. Every row carries at least one item; `worldgen.hostile_loot.harvest_problems` reds an empty one. `worldgen.hostile_loot` copies a species' items into every hostile creature record's `loot`, frozen at authoring time; nothing rolls at play. Lore: world/sources/lore/topics/ecology-encounters-loot.md \u00a7 S1 Harvest.",
+  "entries": [
+    {
+      "id": "harvest.bog-blight",
+      "species": "creature.bog-blight",
+      "name": "Bog Blight harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "the clinging life energy is item.grave-stake-essence; taking it is a desecration (the stake's rule)",
+      "harvest": "the grave-stake's clinging life energy (desecration)",
+      "items": [
+        {
+          "item": "item.grave-stake-essence",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.crocodile",
+      "species": "creature.crocodile",
+      "name": "Crocodile harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "hide and teeth are items; the tongue is the cook's dish (item.baked-crocodile-tongue), not a drop",
+      "harvest": "hide (armour, travel bags), teeth (maturation-trial necklaces), tongue (food)",
+      "items": [
+        {
+          "item": "item.crocodile-tooth",
+          "count": 1
+        },
+        {
+          "item": "item.hide",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.death-hopper",
+      "species": "creature.death-hopper",
+      "name": "Death Hopper harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "bile and vocal sacs, each an item",
+      "harvest": "vocal sacs (Sul-Xan armour), bile (good-luck concoction)",
+      "items": [
+        {
+          "item": "item.death-hopper-bile",
+          "count": 1
+        },
+        {
+          "item": "item.vocal-sac",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.feather-serpent",
+      "species": "creature.feather-serpent",
+      "name": "Feather Serpent harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "the plume, item.feather-serpent-plume; a legendary kill",
+      "harvest": "none recorded; a legendary kill",
+      "items": [
+        {
+          "item": "item.feather-serpent-plume",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.fellrunner",
+      "species": "creature.fellrunner",
+      "name": "Fellrunner harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "the pale down, item.fellrunner-down",
+      "harvest": "pale down (Murkwood hunter's armband); farmers trade sacks of it",
+      "items": [
+        {
+          "item": "item.fellrunner-down",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.fleshfly",
+      "species": "creature.fleshfly",
+      "name": "Fleshfly harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "the swarm's dead leave husks, item.fleshfly-husks",
+      "harvest": "none",
+      "items": [
+        {
+          "item": "item.fleshfly-husks",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.giant-leech",
+      "species": "creature.giant-leech",
+      "name": "Giant Leech harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "the blood, item.giant-leech-blood",
+      "harvest": "none recorded",
+      "items": [
+        {
+          "item": "item.giant-leech-blood",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.giant-wasp",
+      "species": "creature.giant-wasp",
+      "name": "Giant Wasp harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1",
+        "docs/world/74-ecology.md#giant-wasp"
+      ],
+      "notes": "the chitin and the sting; the venom is the sting's",
+      "harvest": "sting and venom (alchemy); its chitin shell",
+      "items": [
+        {
+          "item": "item.chaurus-chitin",
+          "count": 1
+        },
+        {
+          "item": "item.wasp-sting",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.guar",
+      "species": "creature.guar",
+      "name": "Guar harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "the hide is an item; the meat is the cook's, not a drop",
+      "harvest": "hide, meat",
+      "items": [
+        {
+          "item": "item.hide",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.hackwing",
+      "species": "creature.hackwing",
+      "name": "Hackwing harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "leather as item.hide and the plumage as item.hackwing-plume; feathers are the plume",
+      "harvest": "supple leather (light armour, furniture), head plumage, feathers",
+      "items": [
+        {
+          "item": "item.hide",
+          "count": 1
+        },
+        {
+          "item": "item.hackwing-plume",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.haj-mota",
+      "species": "creature.haj-mota",
+      "name": "Haj Mota harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "the shell and the baby shell, each an item",
+      "harvest": "shell (platters, shield bosses, whole shields); baby shells (bowls)",
+      "items": [
+        {
+          "item": "item.haj-mota-shell",
+          "count": 1
+        },
+        {
+          "item": "item.haj-mota-baby-shell",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.haynekhtnamet",
+      "species": "creature.haynekhtnamet",
+      "name": "Haynekhtnamet harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "bones, organs and hide, each an item",
+      "harvest": "black charged bones, organs, hide (legendary)",
+      "items": [
+        {
+          "item": "item.wamasu-bone",
+          "count": 1
+        },
+        {
+          "item": "item.hide",
+          "count": 1
+        },
+        {
+          "item": "item.wamasu-organ",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.hoarvor",
+      "species": "creature.hoarvor",
+      "name": "Hoarvor harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "the blood sac, item.hoarvor-blood-sac",
+      "harvest": "none recorded",
+      "items": [
+        {
+          "item": "item.hoarvor-blood-sac",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.jassa-red-slug",
+      "species": "creature.jassa-red-slug",
+      "name": "Jassa Red Slug harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "the acid mucus, item.jassa-red-slug-mucus",
+      "harvest": "acidic mucus (slug shaping)",
+      "items": [
+        {
+          "item": "item.jassa-red-slug-mucus",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.kaj-thux",
+      "species": "creature.kaj-thux",
+      "name": "Kaj Thux harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "the hide is item.hide",
+      "harvest": "hide (protects textiles; Shadowfen armour)",
+      "items": [
+        {
+          "item": "item.hide",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.kotu-gava",
+      "species": "creature.kotu-gava",
+      "name": "Kotu Gava harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "the dropped wings, item.kotu-gava-wings",
+      "harvest": "none",
+      "items": [
+        {
+          "item": "item.kotu-gava-wings",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.lamia",
+      "species": "creature.lamia",
+      "name": "Lamia harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "the scales, item.lamia-scales",
+      "harvest": "scales",
+      "items": [
+        {
+          "item": "item.lamia-scales",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.lizard-steed",
+      "species": "creature.lizard-steed",
+      "name": "Lizard Steed harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "the hide is item.hide; a kept steed yields it only to a deliberate kill",
+      "harvest": "none (a kept animal)",
+      "items": [
+        {
+          "item": "item.hide",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.marsh-giant",
+      "species": "creature.marsh-giant",
+      "name": "Marsh Giant harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "the blood, item.marsh-giant-blood; killing a giant is an offence",
+      "harvest": "blood (paints and inks); killing one is an offence",
+      "items": [
+        {
+          "item": "item.marsh-giant-blood",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.medusa",
+      "species": "creature.medusa",
+      "name": "Medusa harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "the scales, item.medusa-scales",
+      "harvest": "scales",
+      "items": [
+        {
+          "item": "item.medusa-scales",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.miregaunt",
+      "species": "creature.miregaunt",
+      "name": "Miregaunt harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "the cavity holds a gem, a relic or a living thing: the drop is the gem (item.garnet); a relic or a creature is the placed cell's own content, never rolled",
+      "harvest": "the contents of its midsection cavity (gem, relic or a living thing)",
+      "items": [
+        {
+          "item": "item.garnet",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.mouth-plover",
+      "species": "creature.mouth-plover",
+      "name": "Mouth Plover harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "the feather, item.mouth-plover-feather; a kept bird",
+      "harvest": "none (kept)",
+      "items": [
+        {
+          "item": "item.mouth-plover-feather",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.osheeja-gar",
+      "species": "creature.osheeja-gar",
+      "name": "Osheeja Gar harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "the flesh, item.osheeja-gar-flesh",
+      "harvest": "flesh",
+      "items": [
+        {
+          "item": "item.osheeja-gar-flesh",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.rootworm",
+      "species": "creature.rootworm",
+      "name": "Rootworm harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "the mucus, item.rootworm-mucus",
+      "harvest": "none",
+      "items": [
+        {
+          "item": "item.rootworm-mucus",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.sea-drake",
+      "species": "creature.sea-drake",
+      "name": "Sea Drake harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "hide and teeth, each an item",
+      "harvest": "hide, teeth",
+      "items": [
+        {
+          "item": "item.hide",
+          "count": 1
+        },
+        {
+          "item": "item.sea-drake-tooth",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.swamp-leviathan",
+      "species": "creature.swamp-leviathan",
+      "name": "Swamp Leviathan harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "spines and tusks, each an item",
+      "harvest": "spines, tusks",
+      "items": [
+        {
+          "item": "item.leviathan-spine",
+          "count": 1
+        },
+        {
+          "item": "item.leviathan-tusk",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.voriplasm",
+      "species": "creature.voriplasm",
+      "name": "Voriplasm harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "the small bones, item.voriplasm-bones; what it could not dissolve is the place's own content",
+      "harvest": "small bones and what it could not dissolve",
+      "items": [
+        {
+          "item": "item.voriplasm-bones",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.wamasu",
+      "species": "creature.wamasu",
+      "name": "Wamasu harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "hide, bones and the luminescent organs, each an item",
+      "harvest": "hide (tarps), luminescent organs (lanterns), black charged bones",
+      "items": [
+        {
+          "item": "item.wamasu-bone",
+          "count": 1
+        },
+        {
+          "item": "item.hide",
+          "count": 1
+        },
+        {
+          "item": "item.wamasu-organ",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.wisp",
+      "species": "creature.wisp",
+      "name": "Wisp harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "harvest names a part that an item record carries",
+      "harvest": "glow dust",
+      "items": [
+        {
+          "item": "item.glow-dust",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.wispmother",
+      "species": "creature.wispmother",
+      "name": "Wispmother harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "item.wisp-wrappings, the wrappings the wisp family leaves",
+      "harvest": "wisp wrappings",
+      "items": [
+        {
+          "item": "item.wisp-wrappings",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.xal-krona",
+      "species": "creature.xal-krona",
+      "name": "Xal Krona harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "item.hist-sap, the sap that made it; a hostile one also carries its own kit through hostile_loot's person path",
+      "harvest": "none (a person)",
+      "items": [
+        {
+          "item": "item.hist-sap",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.bog-dog",
+      "species": "creature.bog-dog",
+      "name": "Bog Dog harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "pelt and dung, each an item",
+      "harvest": "pelt; dung (good-luck concoction)",
+      "items": [
+        {
+          "item": "item.pelt",
+          "count": 1
+        },
+        {
+          "item": "item.bog-dog-dung",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.swamp-jelly",
+      "species": "creature.swamp-jelly",
+      "name": "Swamp Jelly harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "the gas bladder (daril's fermenting vessel) and the feeler with its plum, each an item",
+      "harvest": "gas bladder (fermenting daril), feelers (the plum is a luck charm)",
+      "items": [
+        {
+          "item": "item.jelly-gas-bladder",
+          "count": 1
+        },
+        {
+          "item": "item.jelly-feeler",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.ripper-eel",
+      "species": "creature.ripper-eel",
+      "name": "Ripper Eel harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "the slime, item.eel-slime",
+      "harvest": "eel-slime (the counter)",
+      "items": [
+        {
+          "item": "item.eel-slime",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.slaughterfish",
+      "species": "creature.slaughterfish",
+      "name": "Slaughterfish harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "harvest names a part that an item record carries",
+      "harvest": "scales",
+      "items": [
+        {
+          "item": "item.slaughterfish-scales",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.dreugh",
+      "species": "creature.dreugh",
+      "name": "Dreugh harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "wax and shell, each an item",
+      "harvest": "wax, shell (armour)",
+      "items": [
+        {
+          "item": "item.dreugh-wax",
+          "count": 1
+        },
+        {
+          "item": "item.dreugh-shell",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.alit",
+      "species": "creature.alit",
+      "name": "Alit harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "the hide is item.hide",
+      "harvest": "hide",
+      "items": [
+        {
+          "item": "item.hide",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.marsh-rat",
+      "species": "creature.marsh-rat",
+      "name": "Marsh Rat harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "the meat, item.marsh-rat-meat",
+      "harvest": "none",
+      "items": [
+        {
+          "item": "item.marsh-rat-meat",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.crow",
+      "species": "creature.crow",
+      "name": "Crow harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "the feathers, item.crow-feather",
+      "harvest": "feathers",
+      "items": [
+        {
+          "item": "item.crow-feather",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.moon-adder",
+      "species": "creature.moon-adder",
+      "name": "Moon Adder harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "the venom, item.moon-adder-venom; daril, its prepared drug, is item.daril",
+      "harvest": "venom (daril)",
+      "items": [
+        {
+          "item": "item.moon-adder-venom",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.shine",
+      "species": "creature.shine",
+      "name": "Shine harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "the mote, item.shine-mote",
+      "harvest": "none",
+      "items": [
+        {
+          "item": "item.shine-mote",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "harvest.torchbug",
+      "species": "creature.torchbug",
+      "name": "Torchbug harvest",
+      "kind": "creature-harvest",
+      "status": "derived",
+      "sources": [
+        "world/sources/registries/creatures.json",
+        "world/sources/lore/topics/ecology-encounters-loot.md:S1"
+      ],
+      "notes": "the thorax, item.torchbug-thorax",
+      "harvest": "thorax (alchemy)",
+      "items": [
+        {
+          "item": "item.torchbug-thorax",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

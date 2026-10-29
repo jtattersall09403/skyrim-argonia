@@ -1,0 +1,113 @@
+{
+ "cellId": "CIPHTBMHutInterior04",
+ "sockets": {
+  "socket.CIPHTBMHutInterior04.06029F00": {
+   "fillRule": "blanket.fish-basket",
+   "valueTier": "trivial",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.trodh",
+      "count": 4
+     },
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     },
+     {
+      "item": "item.fishing-pole",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.fish-basket"
+   }
+  },
+  "socket.CIPHTBMHutInterior04.06029F01": {
+   "fillRule": "blanket.water-barrel",
+   "valueTier": "trivial",
+   "lootTable": {
+    "items": [],
+    "frozenFrom": "blanket.water-barrel"
+   }
+  },
+  "socket.CIPHTBMHutInterior04.06029F02": {
+   "fillRule": "blanket.fish-basket",
+   "valueTier": "trivial",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.trodh",
+      "count": 4
+     },
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     },
+     {
+      "item": "item.fishing-pole",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.fish-basket"
+   }
+  },
+  "socket.CIPHTBMHutInterior04.06029F03": {
+   "fillRule": "blanket.household-urn",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 1
+     },
+     {
+      "item": "item.trodh",
+      "count": 3
+     },
+     {
+      "item": "item.clay-jug",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.household-urn"
+   }
+  },
+  "socket.CIPHTBMHutInterior04.06029F0F": {
+   "valueTier": "low",
+   "item": "item.dragons-tongue"
+  },
+  "socket.CIPHTBMHutInterior04.06029F10": {
+   "valueTier": "low",
+   "item": "item.dragons-tongue"
+  },
+  "socket.CIPHTBMHutInterior04.06029F11": {
+   "valueTier": "moderate",
+   "item": "item.river-betty"
+  },
+  "socket.CIPHTBMHutInterior04.06029F12": {
+   "valueTier": "moderate",
+   "item": "item.slaughterfish-egg"
+  },
+  "socket.CIPHTBMHutInterior04.06029F13": {
+   "valueTier": "low",
+   "item": "item.slaughterfish-scales"
+  },
+  "socket.CIPHTBMHutInterior04.06029F14": {
+   "valueTier": "moderate",
+   "item": "item.slaughterfish-egg"
+  },
+  "socket.CIPHTBMHutInterior04.06029F15": {
+   "valueTier": "moderate",
+   "item": "item.river-betty"
+  },
+  "socket.CIPHTBMHutInterior04.06029F16": {
+   "valueTier": "moderate",
+   "item": "item.firebrand-wine"
+  }
+ },
+ "schemaVersion": 1
+}

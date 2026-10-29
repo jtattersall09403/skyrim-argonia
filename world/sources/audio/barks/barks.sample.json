@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "domain": "bark",
+  "_": "Sample rows for 2.5's bark surface: text only, clip null until the voice archive lands (docs/research/text-and-voice/skyrim-voice-barks.md). Vanilla rows cite their source Skyrim.esm INFO; written rows cite their sheet row.",
+  "entries": [
+    {"id": "bark.hello.argonian.tidings", "slot": "hello", "when": {"friendliness": ["neutral", "warm"]}, "voiceTypes": ["MaleArgonian", "FemaleArgonian"], "text": "Tidings.", "clip": null, "source": {"plugin": "Skyrim.esm", "info": "000A9B3E", "response": 1, "quest": "DialogueGeneric"}},
+    {"id": "bark.hello.argonian.questions", "slot": "hello", "when": {"friendliness": ["neutral"], "activity": ["work"]}, "voiceTypes": ["MaleArgonian", "FemaleArgonian"], "text": "You have questions?", "clip": null, "source": {"plugin": "Skyrim.esm", "info": "000A9B3F", "response": 1, "quest": "DialogueGeneric"}},
+    {"id": "bark.hello.argonian.smile-at-passing", "slot": "hello", "when": {"friendliness": ["friend"]}, "voiceTypes": ["MaleArgonian"], "text": "Ours is to smile at your passing, friend.", "clip": null, "source": {"plugin": "Skyrim.esm", "info": "000225EB", "response": 1, "quest": "DialogueRelationshipGeneric"}},
+    {"id": "bark.hello.argonian.most-favoured", "slot": "hello", "when": {"friendliness": ["friend"]}, "voiceTypes": ["FemaleArgonian"], "text": "It is our most favored company.", "clip": null, "source": {"plugin": "Skyrim.esm", "info": "000225F0", "response": 1, "quest": "DialogueRelationshipGeneric"}},
+    {"id": "bark.hello.argonian.annoyed", "slot": "hello", "when": {"friendliness": ["cold"]}, "voiceTypes": ["FemaleArgonian"], "text": "It annoys us. What does it want to take from us now?", "clip": null, "source": {"plugin": "Skyrim.esm", "info": "000225E5", "response": 1, "quest": "DialogueRelationshipGeneric"}},
+    {"id": "bark.hello.dunmer.sera", "slot": "hello", "when": {"friendliness": ["neutral", "warm"], "formality": ["formal", "plain"]}, "voiceTypes": ["MaleDarkElf", "FemaleDarkElf"], "text": "Yes, sera?", "clip": null, "source": {"plugin": "Skyrim.esm", "info": "000A9B39", "response": 1, "quest": "DialogueGeneric"}},
+    {"id": "bark.goodbye.dunmer.safe-travels", "slot": "goodbye", "when": {"friendliness": ["neutral", "warm", "friend"]}, "voiceTypes": ["MaleDarkElf", "FemaleDarkElf"], "text": "Safe travels.", "clip": null, "source": {"plugin": "Skyrim.esm", "info": "000AA112", "response": 1, "quest": "DialogueGeneric"}},
+    {"id": "bark.comment.argonian.shadowscale", "slot": "comment", "when": {"listenerState": ["sneaking"]}, "voiceTypes": ["MaleArgonian"], "text": "You remind me of the Shadowscales, from the old histories.", "clip": null, "source": {"plugin": "Skyrim.esm", "info": "000AD0D6", "response": 1, "quest": "WICommentSneaking"}},
+    {"id": "bark.warning.argonian.hurt-me", "slot": "warning", "when": {"crime": "assaulted-speaker"}, "voiceTypes": ["FemaleArgonian"], "text": "Stay away! Last time you hurt me.", "clip": null, "source": {"plugin": "Skyrim.esm", "info": "0003916C", "response": 1, "quest": "WIAssaultRememberDialogue"}},
+    {"id": "bark.hello.imperial.morning", "slot": "hello", "when": {"friendliness": ["neutral", "warm", "friend"], "dayPhase": ["morning"]}, "voiceTypes": ["MaleEvenToned", "FemaleEvenToned", "MaleCommoner", "FemaleCommoner"], "text": "Good morning.", "clip": null, "source": {"plugin": "Skyrim.esm", "info": "000142C2", "response": 1, "quest": "DialogueGeneric"}}
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "kind": "terrain-request-known-red",
+  "owner": "16g (places adapt to the frozen world, decision 0059)",
+  "why": "These typed terrain requests were APPLIED as terrain patches on the frozen base (Phase 16b) but the frozen water, or the route grading below the gate, does not deliver the depth, current, water relation or surviving shape they ask for. Under 0059 the water is not re-solved to meet a place: 16g re-sites, re-types or drops the request. Refused requests are not here: they are listed with their invariant in province/refined/terrain-patches-applied.json. The postcondition gate reports these as KNOWN-RED and fails on any request outside this register.",
+  "measuredOn": "2026-09-19 (16g remedy round): the register is EMPTY. Every row it held was a request the frozen world does not deliver; under decision 0059 the water is not re-solved to meet a place, so each record's request was dropped by a `plot-remedies` field row and the record re-sited instead. The postcondition gate still fails on any applied request outside this register.",
+  "requests": []
+}

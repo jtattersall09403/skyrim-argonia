@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "world/sources/audio/barks/barks.schema.json",
+  "title": "Bark table",
+  "description": "One row per bark line. A row is chosen by data: its slot, its band key (keys named in lanes/2.5/x5-bark-design.md, each read from a record, stance or sheet field) and its voice types. clip is null for a text-only bark; 2.5's bark surface shows text in both cases.",
+  "type": "object",
+  "required": ["schemaVersion", "domain", "entries"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "domain": {"const": "bark"},
+    "_": {"type": "string"},
+    "entries": {"type": "array", "items": {"$ref": "#/$defs/row"}, "minItems": 1}
+  },
+  "$defs": {
+    "row": {
+      "type": "object",
+      "required": ["id", "slot", "when", "voiceTypes", "text", "clip", "source"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "pattern": "^bark\\.[a-z0-9-]+(\\.[a-z0-9-]+)+$"},
+        "slot": {"enum": ["hello", "idle", "goodbye", "warning", "chatter", "rumour", "comment"]},
+        "when": {
+          "description": "Band key: every listed key must match. Absent keys match anything.",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "friendliness": {"type": "array", "items": {"enum": ["hostile", "cold", "neutral", "warm", "friend"]}, "minItems": 1},
+            "formality": {"type": "array", "items": {"enum": ["formal", "plain", "familiar"]}, "minItems": 1},
+            "activity": {"type": "array", "items": {"enum": ["work", "rest", "night", "crowd", "travel"]}, "minItems": 1},
+            "dayPhase": {"type": "array", "items": {"enum": ["morning", "afternoon", "evening", "night"]}, "minItems": 1},
+            "listenerPeople": {"type": "array", "items": {"type": "string", "pattern": "^[a-z-]+$"}, "minItems": 1},
+            "listenerOutsider": {"type": "boolean"},
+            "crime": {"enum": ["none", "known", "assaulted-speaker"]},
+            "listenerState": {"type": "array", "items": {"enum": ["sneaking", "spell-drawn", "weapon-drawn", "unclothed"]}, "minItems": 1},
+            "topicClass": {"type": "string", "pattern": "^[a-z-]+$"}
+          }
+        },
+        "voiceTypes": {
+          "description": "Skyrim VTYP editor ids that recorded this line ([] = any voice: text-only rows).",
+          "type": "array", "items": {"type": "string", "pattern": "^(Male|Female)[A-Za-z]+$"}, "uniqueItems": true
+        },
+        "text": {"type": "string", "minLength": 1},
+        "clip": {
+          "oneOf": [
+            {"type": "null"},
+            {"type": "object", "required": ["soundSet"], "additionalProperties": false,
+             "properties": {"soundSet": {"type": "string", "pattern": "^voice\\.[a-z0-9-]+\\.[a-z0-9.-]+$"}}}
+          ]
+        },
+        "source": {
+          "oneOf": [
+            {"type": "object", "required": ["plugin", "info", "response"], "additionalProperties": false,
+             "properties": {"plugin": {"enum": ["Skyrim.esm"]}, "info": {"type": "string", "pattern": "^[0-9A-F]{8}$"},
+                            "response": {"type": "integer", "minimum": 1}, "quest": {"type": "string"}}},
+            {"type": "object", "required": ["written"], "additionalProperties": false,
+             "properties": {"written": {"type": "string", "description": "Text-catalogue key or sheet row the line is written from."}}}
+          ]
+        }
+      }
+    }
+  }
+}

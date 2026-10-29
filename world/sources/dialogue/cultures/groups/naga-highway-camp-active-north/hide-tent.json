@@ -1,0 +1,61 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "entries": [
+  {
+   "norms": [
+    {
+     "text": "The tent is slept in turns.",
+     "source": "world/sources/catalogue/places-naga-kur-deeps.json#place.naga-kur-deeps.naga-highway-camp-active-north"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Waking the day watch.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "A dry sleeping hide.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Snoring.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {},
+   "speech": {
+    "addressTerms": [],
+    "formality": "low",
+    "oaths": [],
+    "neverSaid": []
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "The smoke from the hide racks gets into the tent.",
+      "source": "world/sources/catalogue/places-naga-kur-deeps.json#place.naga-kur-deeps.naga-highway-camp-active-north"
+     }
+    ],
+    "rumours": []
+   },
+   "views": [],
+   "deviationRate": 0.3,
+   "id": "culture.household.naga-highway-camp-active-north.hide-tent",
+   "level": "household",
+   "name": "The hide tent",
+   "parent": "culture.group.naga-highway-camp-active-north.band",
+   "members": [
+    "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+    "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+    "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+    "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+    "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5"
+   ]
+  }
+ ]
+}

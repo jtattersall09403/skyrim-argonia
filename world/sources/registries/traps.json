@@ -1,0 +1,582 @@
+{
+ "schemaVersion": 1,
+ "domain": "trap",
+ "_": "Trap kinds (2.10a, decision 0151 item 5): Morrowind's trapped-lock spells (world/sources/lore/topics/door-locks.md section Traps), each a packages/magic effects.json effect fired on whoever opens the trapped thing. magnitude: Morrowind's points range has no roll here, so the range's mean; durationSeconds as Morrowind; visualFamily is the effect's 2.9 family; trigger `open` (activating a still-trapped thing; a key or a probe disarms); probeThreshold the trap spell's cost (OpenMW's fTrapCostMult term, 0 in vanilla: see blockers); resets false (the spell is spent). A lock names its trap in locks.json `trap`. 2.9c-e adds `triggers` (step, tripwire, lever beside open and pick), `wiringKinds` (trap kinds the Teeth wiring fires: physical damage from the mined BladeTrap, HazardBase and TrapSwingingWall properties, spell damage from the mined flame spell and gas explosion), `nodes` (gates, barriers, pillars, markers) and `ignoredBases`; every number cites its mined field or the miner's gap value (world/sources/placement/traps-mined.json). `probeThresholdFrom` names the lock-trap row with the same effect (health damage for physical hits), its threshold being the one the existing probe check reads. `disarm.byProbe` is the existing probe check on the trigger; `byAvoidance` is a volume or lever the path never enters.",
+ "blockers": [
+  "probeThreshold: world/76 section 118 Security row gives the pick check only; no passage gives a trap's difficulty in the no-dice check (Morrowind's is 0, fTrapCostMult); the spell cost is carried until one does",
+  "resets and the failed-pick trigger: UESP is silent (door-locks.md section Traps); one-shot on open is the dossier's inference",
+  "units: the mined damage numbers are Skyrim hit points (30..200 per hit), read against this game's stats pool unscaled; the first headless drive judges whether a unit map is owed (the owner rules retuning)",
+  "oneShot, resetS and triggerDelayS: Skyrim keeps them in the script body or Havok graph; the gap's nearest vanilla value is used where the property is a once-flag, resetS has no value in any gap (null), so a spent ref never re-arms"
+ ],
+ "entries": [
+  {
+   "id": "trap.fire",
+   "name": "Fire trap",
+   "kind": "trap",
+   "status": "canon",
+   "sources": [
+    "UESP:Morrowind:Spells",
+    "world/sources/lore/topics/door-locks.md"
+   ],
+   "notes": "trap_fire00: Fire Damage 2-20 pts for 3 secs on Touch, cost 3",
+   "effectId": "fire-damage",
+   "magnitude": 11,
+   "durationSeconds": 3,
+   "trigger": "open",
+   "probeThreshold": 3,
+   "resets": false
+  },
+  {
+   "id": "trap.frost",
+   "name": "Frost trap",
+   "kind": "trap",
+   "status": "canon",
+   "sources": [
+    "UESP:Morrowind:Spells",
+    "world/sources/lore/topics/door-locks.md"
+   ],
+   "notes": "trap_frost00: Frost Damage 2-20 pts for 3 secs on Touch, cost 3",
+   "effectId": "frost-damage",
+   "magnitude": 11,
+   "durationSeconds": 3,
+   "trigger": "open",
+   "probeThreshold": 3,
+   "resets": false
+  },
+  {
+   "id": "trap.shock",
+   "name": "Shock trap",
+   "kind": "trap",
+   "status": "canon",
+   "sources": [
+    "UESP:Morrowind:Spells",
+    "world/sources/lore/topics/door-locks.md"
+   ],
+   "notes": "trap_shock00: Shock Damage 2-20 pts for 3 secs on Touch, cost 5",
+   "effectId": "shock-damage",
+   "magnitude": 11,
+   "durationSeconds": 3,
+   "trigger": "open",
+   "probeThreshold": 5,
+   "resets": false
+  },
+  {
+   "id": "trap.lifeforce",
+   "name": "Lifeforce trap",
+   "kind": "trap",
+   "status": "canon",
+   "sources": [
+    "UESP:Morrowind:Spells",
+    "world/sources/lore/topics/door-locks.md"
+   ],
+   "notes": "trap_health00: Damage Health 2-20 pts for 3 secs on Touch, cost 8",
+   "effectId": "damage-health",
+   "magnitude": 11,
+   "durationSeconds": 3,
+   "trigger": "open",
+   "probeThreshold": 8,
+   "resets": false
+  },
+  {
+   "id": "trap.poison",
+   "name": "Poison trap",
+   "kind": "trap",
+   "status": "canon",
+   "sources": [
+    "UESP:Morrowind:Spells",
+    "world/sources/lore/topics/door-locks.md"
+   ],
+   "notes": "trap_poison00: Poison 1-5 pts for 60 secs on Touch, cost 16",
+   "effectId": "poison",
+   "magnitude": 3,
+   "durationSeconds": 60,
+   "trigger": "open",
+   "probeThreshold": 16,
+   "resets": false
+  },
+  {
+   "id": "trap.paralysis",
+   "name": "Paralysis trap",
+   "kind": "trap",
+   "status": "canon",
+   "sources": [
+    "UESP:Morrowind:Spells",
+    "world/sources/lore/topics/door-locks.md"
+   ],
+   "notes": "trap_paralyze00: Paralyze for 10 secs on Touch, cost 13",
+   "effectId": "paralyze",
+   "magnitude": 1,
+   "durationSeconds": 10,
+   "trigger": "open",
+   "probeThreshold": 13,
+   "resets": false
+  },
+  {
+   "id": "trap.silence",
+   "name": "Silence trap",
+   "kind": "trap",
+   "status": "canon",
+   "sources": [
+    "UESP:Morrowind:Spells",
+    "world/sources/lore/topics/door-locks.md"
+   ],
+   "notes": "trap_silence00: Silence for 30 secs on Touch, cost 37",
+   "effectId": "silence",
+   "magnitude": 1,
+   "durationSeconds": 30,
+   "trigger": "open",
+   "probeThreshold": 37,
+   "resets": false
+  }
+ ],
+ "triggers": [
+  {
+   "id": "open",
+   "name": "Open",
+   "rule": "activating a still-trapped lock springs it; a key or a probe disarms (2.10a, locks.ts)",
+   "bases": [],
+   "sources": [
+    "world/sources/lore/topics/door-locks.md"
+   ]
+  },
+  {
+   "id": "pick",
+   "name": "Failed pick",
+   "rule": "an unprobed pick springs a pick-triggered trap (2.10a, locks.ts)",
+   "bases": [],
+   "sources": [
+    "world/sources/lore/topics/door-locks.md"
+   ]
+  },
+  {
+   "id": "step",
+   "name": "Step",
+   "rule": "an actor not already inside the trigger volume enters it: fires the ref's targets once per entry. The volume is a local box (half extents or the base bounds) at the ref, turned by the ref's yaw and scaled by its scale. A ref with playerOnlyTrigger true counts only the one actor the user controls.",
+   "bases": [
+    "TrapTriggerBox",
+    "XanmeerTrapPressurePlate",
+    "defaultSetStageTRIGPlayerOnly",
+    "defaultActivateSelfTRIG",
+    "XanmeerMagicBarrierTrigger"
+   ],
+   "volumeFrom": "mined primitive.boundsM (half extents, trigger boxes) else the base boundsUnits (a plate's phantom)",
+   "playerOnlyProperty": "TrapTriggerBase.playerOnlyTrigger",
+   "rawTypeProperty": "TrapTriggerBase.TriggerType (3 on both Teeth trigger boxes; carried, the enum is in the script body)",
+   "sources": [
+    "world/sources/placement/traps-mined.json cells.*.refs[].primitive, TrapTriggerBase and PressurePlate scripts"
+   ]
+  },
+  {
+   "id": "tripwire",
+   "name": "Tripwire",
+   "rule": "an actor entering the wire's volume (the base bounds) springs it; it fires TriggerCount times and then is spent when FiniteUse. No Teeth cell carries one: the row is the vanilla base's own values.",
+   "bases": [
+    "TrapTripwire01"
+   ],
+   "triggerCount": 1,
+   "finiteUse": true,
+   "blockActivate": true,
+   "volumeFrom": "base boundsUnits",
+   "sources": [
+    "world/sources/placement/traps-mined.json bases Skyrim.esm:022F54 TrapTripwire01 Tripwire script"
+   ]
+  },
+  {
+   "id": "lever",
+   "name": "Lever",
+   "rule": "activate(state, refId) throws the lever once: fires its targets through their activate-parent delays. A lever has no volume. The mined TrapLever script carries TriggerType 2.",
+   "bases": [
+    "XanmeerLever01",
+    "GenPullChain01"
+   ],
+   "rawTypeProperty": "TrapLever.TriggerType (2)",
+   "sources": [
+    "world/sources/placement/traps-mined.json bases XanmeerLever01, GenPullChain01"
+   ]
+  }
+ ],
+ "wiringKinds": [
+  {
+   "id": "trap.blade",
+   "name": "Swinging blade",
+   "kind": "trap",
+   "status": "mined",
+   "bases": [
+    "XanmeerTrapBladeSwinging01"
+   ],
+   "triggers": [
+    "step",
+    "lever"
+   ],
+   "damageKind": "physical",
+   "damage": {
+    "tiers": [
+     {
+      "n": 1,
+      "thresholdLevel": 10,
+      "damage": 30
+     },
+     {
+      "n": 2,
+      "thresholdLevel": 15,
+      "damage": 40
+     },
+     {
+      "n": 3,
+      "thresholdLevel": 20,
+      "damage": 50
+     },
+     {
+      "n": 4,
+      "thresholdLevel": 25,
+      "damage": 60
+     },
+     {
+      "n": 5,
+      "thresholdLevel": 30,
+      "damage": 70
+     },
+     {
+      "n": 6,
+      "thresholdLevel": null,
+      "damage": 80
+     }
+    ],
+    "tierPick": 1,
+    "tierDerivation": "Skyrim picks LvlDamageN by the level of the character who enters, set against LvlThresholdN. The world never receives a character level (docs/world/00-core.md rule 2), so no level indexes the table: the row is tier 1, Skyrim's own value for a character below LvlThreshold1, which is the arrival character that the Teeth's early route meets (King of the Murkmire quest stages 10 to 40, the defaultsetStageTrigSCRIPT triggers in the three cells). Every tier stays in `tiers` for a later fixed-danger rule.",
+    "hitOnlyOnce": true,
+    "hitOnlyOnceSource": {
+     "base": "Skyrim.esm:07144D",
+     "baseEditorId": "BearTrap01",
+     "value": {
+      "script": "TrapHitBase",
+      "property": "hitOnlyOnce",
+      "value": true
+     },
+     "source": "Skyrim.esm base record"
+    },
+    "pushForce": {
+     "value": 45,
+     "source": "gap",
+     "nearestVanilla": {
+      "base": "Skyrim.esm:090571",
+      "baseEditorId": "TrapWallDwe",
+      "value": {
+       "script": "TrapHitBase",
+       "property": "trapPushBack",
+       "value": 45
+      },
+      "source": "Skyrim.esm base record"
+     }
+    }
+   },
+   "hitSound": "TRPBladeSwingImpact",
+   "windupSound": "TRPBladeSwingWindup",
+   "volumeFrom": "base boundsUnits (the blade arm's swept box), scaled by the ref scale",
+   "probeThresholdFrom": "trap.lifeforce",
+   "disarm": {
+    "byProbe": true,
+    "byAvoidance": true
+   },
+   "sources": [
+    "world/sources/placement/traps-mined.json bases Skyrim.esm/King of the Murkmire.esp:401A17 BladeTrap, TrapHitBase"
+   ]
+  },
+  {
+   "id": "trap.spike-bed",
+   "name": "Spike bed",
+   "kind": "trap",
+   "status": "mined",
+   "bases": [
+    "TrapWoodSpikeBed01"
+   ],
+   "triggers": [
+    "step"
+   ],
+   "damageKind": "physical",
+   "damage": {
+    "tiers": [
+     {
+      "n": 1,
+      "thresholdLevel": 6,
+      "damage": 40
+     },
+     {
+      "n": 2,
+      "thresholdLevel": 10,
+      "damage": 60
+     },
+     {
+      "n": 3,
+      "thresholdLevel": 14,
+      "damage": 70
+     },
+     {
+      "n": 4,
+      "thresholdLevel": 18,
+      "damage": 80
+     },
+     {
+      "n": 5,
+      "thresholdLevel": 22,
+      "damage": 90
+     },
+     {
+      "n": 6,
+      "thresholdLevel": null,
+      "damage": 100
+     }
+    ],
+    "tierPick": 1,
+    "tierDerivation": "Skyrim picks LvlDamageN by the level of the character who enters, set against LvlThresholdN. The world never receives a character level (docs/world/00-core.md rule 2), so no level indexes the table: the row is tier 1, Skyrim's own value for a character below LvlThreshold1, which is the arrival character that the Teeth's early route meets (King of the Murkmire quest stages 10 to 40, the defaultsetStageTrigSCRIPT triggers in the three cells). Every tier stays in `tiers` for a later fixed-danger rule.",
+    "hitOnlyOnce": true,
+    "hitOnlyOnceSource": {
+     "base": "Skyrim.esm:07144D",
+     "baseEditorId": "BearTrap01",
+     "value": {
+      "script": "TrapHitBase",
+      "property": "hitOnlyOnce",
+      "value": true
+     },
+     "source": "Skyrim.esm base record"
+    },
+    "pushForce": {
+     "value": 500,
+     "source": "gap",
+     "nearestVanilla": {
+      "base": "Skyrim.esm:01B3C0",
+      "baseEditorId": "TrapMace01",
+      "value": {
+       "script": "PhysicsTrapHit",
+       "property": "trapPushBack",
+       "value": 500
+      },
+      "source": "Skyrim.esm base record"
+     }
+    }
+   },
+   "hitSound": "TRPImpactImpalex",
+   "volumeFrom": "base boundsUnits (the mesh's bhkSimpleShapePhantom is the damage volume)",
+   "selfTriggered": "no activate parent in any cell: the standing volume is its own step trigger",
+   "probeThresholdFrom": "trap.lifeforce",
+   "disarm": {
+    "byProbe": true,
+    "byAvoidance": true
+   },
+   "sources": [
+    "world/sources/placement/traps-mined.json bases Skyrim.esm:073265 HazardBase"
+   ]
+  },
+  {
+   "id": "trap.wall",
+   "name": "Swinging wall",
+   "kind": "trap",
+   "status": "mined",
+   "bases": [
+    "XanmeerTrapWallWood"
+   ],
+   "triggers": [
+    "step"
+   ],
+   "damageKind": "physical",
+   "damage": {
+    "tiers": [
+     {
+      "n": 1,
+      "thresholdLevel": 10,
+      "damage": 75
+     },
+     {
+      "n": 2,
+      "thresholdLevel": 15,
+      "damage": 100
+     },
+     {
+      "n": 3,
+      "thresholdLevel": 20,
+      "damage": 125
+     },
+     {
+      "n": 4,
+      "thresholdLevel": 25,
+      "damage": 150
+     },
+     {
+      "n": 5,
+      "thresholdLevel": 30,
+      "damage": 175
+     },
+     {
+      "n": 6,
+      "thresholdLevel": null,
+      "damage": 200
+     }
+    ],
+    "tierPick": 1,
+    "tierDerivation": "Skyrim picks LvlDamageN by the level of the character who enters, set against LvlThresholdN. The world never receives a character level (docs/world/00-core.md rule 2), so no level indexes the table: the row is tier 1, Skyrim's own value for a character below LvlThreshold1, which is the arrival character that the Teeth's early route meets (King of the Murkmire quest stages 10 to 40, the defaultsetStageTrigSCRIPT triggers in the three cells). Every tier stays in `tiers` for a later fixed-danger rule.",
+    "hitOnlyOnce": null,
+    "hitOnlyOnceSource": {
+     "base": "Skyrim.esm:05095E",
+     "baseEditorId": "WordWallTrigger",
+     "value": {
+      "script": "WordWallTriggerScript",
+      "property": "IMODLoop03",
+      "value": {
+       "key": "Skyrim.esm:04E77D",
+       "type": "IMAD",
+       "editorId": "LearnWordFadeLoop03"
+      }
+     },
+     "source": "Skyrim.esm base record"
+    },
+    "pushForce": {
+     "value": 45,
+     "source": "mined",
+     "field": "TrapHitBase.trapPushBack on XanmeerTrapWallWood"
+    }
+   },
+   "stagger": 0.7,
+   "hitSound": "TRPSwingGrateImpactFlesh",
+   "windupSound": "TRPMaceRelease",
+   "volumeFrom": "base boundsUnits (phantom)",
+   "probeThresholdFrom": "trap.lifeforce",
+   "disarm": {
+    "byProbe": true,
+    "byAvoidance": true
+   },
+   "sources": [
+    "world/sources/placement/traps-mined.json bases King of the Murkmire.esp:406B80 TrapSwingingWall, TrapHitBase"
+   ]
+  },
+  {
+   "id": "trap.flames",
+   "name": "Flamethrower",
+   "kind": "trap",
+   "status": "mined",
+   "bases": [
+    "XanmeerTrapFlamethrower01"
+   ],
+   "triggers": [
+    "lever"
+   ],
+   "damageKind": "spell",
+   "effectId": "fire-damage",
+   "magnitude": 40.0,
+   "durationSeconds": 1,
+   "range": "target",
+   "areaMetres": 0,
+   "reachFrom": "base boundsUnits y extent (504 units, the jet's length)",
+   "spellRecord": "King of the Murkmire.esp:066DB5 XanmeerTrapFlames01 (effect magnitude 40, durationS 1, MGEF XanmeerTrapFireDamageConcAimed: health, fire resist, aimed concentration)",
+   "sameForEveryTier": true,
+   "probeThresholdFrom": "trap.fire",
+   "disarm": {
+    "byProbe": true,
+    "byAvoidance": true
+   },
+   "sources": [
+    "world/sources/placement/traps-mined.json records King of the Murkmire.esp:066DB5, 066DB4; bases 06196F TrapFlamethrower (sLvlFlames1..6 all XanmeerTrapFlames01)"
+   ]
+  },
+  {
+   "id": "trap.gas",
+   "name": "Poison gas",
+   "kind": "trap",
+   "status": "mined",
+   "bases": [
+    "TrapPoisonGas"
+   ],
+   "triggers": [
+    "step"
+   ],
+   "damageKind": "spell",
+   "effectId": "poison",
+   "range": "target",
+   "areaMetres": 0.711,
+   "magnitude": 3,
+   "magnitudeSource": "gap: the explosions' ENCH records (TrapPoisonGasEnch01..06) are not in the miner's record classes, so no magnitude is read; the nearest value is the registry's own trap.poison (Morrowind's trapped-lock poison, a Poison effect on health)",
+   "durationSeconds": 1,
+   "durationSource": "hazard-volumes.json tickSeconds (1): the cloud re-casts once per tick while an actor stands in it (the gas mesh is a phantom volume)",
+   "areaSource": "EXPL Skyrim.esm:10A263 TrapPoisonGasExplosion02 data.radiusM 0.711 (tiers 02..06 all 50 units; 01 carries none)",
+   "tierNote": "TrapLevel 35 and LvlThreshold 10..30 pick explosion 01..06 by level; no level indexes (see tierDerivation on trap.blade): all six share the radius",
+   "selfTriggered": "no activate parent in any cell: the standing volume is its own step trigger",
+   "volumeFrom": "base boundsUnits (phantom)",
+   "probeThresholdFrom": "trap.poison",
+   "disarm": {
+    "byProbe": true,
+    "byAvoidance": true
+   },
+   "sources": [
+    "world/sources/placement/traps-mined.json bases Skyrim.esm:09F290 TrapPoisonGas, records MGEF 09F28F, EXPL 10A263"
+   ]
+  }
+ ],
+ "nodes": [
+  {
+   "id": "node.gate",
+   "name": "Gate or door the wiring opens",
+   "bases": [
+    "XanmeerPortcullisLarge01",
+    "XanmeerDoor03NoName",
+    "XanmeerArgonianBust03Door01",
+    "XanmeerArgonianBust03Door02"
+   ],
+   "sources": [
+    "world/sources/placement/traps-mined.json"
+   ]
+  },
+  {
+   "id": "node.barrier",
+   "name": "Magic barrier",
+   "bases": [
+    "XanmeerMagicBarrierActivator",
+    "CollisionMarker"
+   ],
+   "sources": [
+    "world/sources/placement/traps-mined.json"
+   ]
+  },
+  {
+   "id": "node.puzzle-lever",
+   "name": "Puzzle lever (owned by the puzzle module)",
+   "bases": [
+    "XanmeerPuzzleLever01"
+   ],
+   "sources": [
+    "world/sources/placement/traps-mined.json"
+   ]
+  },
+  {
+   "id": "node.puzzle-pillar",
+   "name": "Puzzle pillar (owned by the puzzle module)",
+   "bases": [
+    "XanmeerPuzzlePillar01"
+   ],
+   "sources": [
+    "world/sources/placement/traps-mined.json"
+   ]
+  },
+  {
+   "id": "node.marker",
+   "name": "Activator source marker",
+   "bases": [
+    "XMarker"
+   ],
+   "sources": [
+    "world/sources/placement/traps-mined.json"
+   ]
+  }
+ ],
+ "ignoredBases": {
+  "bases": [
+   "TOSAdventurerNote01",
+   "TOSAlchemistNote",
+   "critterSpawnDragonflies24x7",
+   "critterSpawnDragonflies24x7_Many",
+   "critterSpawnFirefly24x7",
+   "critterSpawnInsects_Few",
+   "WoodPileCypress",
+   "WoodChoppingBlockCypress"
+  ],
+  "why": "carried in the mined cell for the text, a family tag or a nearby prop, with no wiring or behaviour of their own"
+ }
+}

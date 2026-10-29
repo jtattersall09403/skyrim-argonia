@@ -1,0 +1,91 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "entries": [
+  {
+   "id": "culture.group.rose-bone-waystation.villages-side",
+   "level": "group",
+   "name": "The villages' side",
+   "parent": "culture.settlement.rose-bone-waystation",
+   "members": [
+    "npc.imperial-penal-south.rose-bone-waystation.tag-keeper",
+    "npc.imperial-penal-south.rose-bone-waystation.carrier"
+   ],
+   "norms": [
+    {
+     "text": "The charge is paid in full and written down, then argued about later.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Letting a family see the bundle wrapped before the coin is counted.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "Getting the bones out of the Rose.",
+     "source": "world/sources/lore/topics/prisons.md"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Being made to buy back the dead.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "people": {
+     "lean": -1,
+     "text": "The Rose's families sell what was never theirs to keep.",
+     "source": "inferred"
+    },
+    "trade": {
+     "lean": -2,
+     "text": "The carriage charge is a price on the dead.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Friend, among themselves; stranger otherwise.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [
+     {
+      "text": "Bones go home.",
+      "source": "world/sources/lore/topics/labour-and-bondage.md"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "That the charge should stop, where a family can hear.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Every coin paid at the shelter is a coin the Rose learns to ask for again.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": []
+   },
+   "views": [
+    {
+     "node": "culture.household.rose-bone-waystation.rose-family",
+     "lean": -1,
+     "text": "Polite at the shelter; holders of the dead.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.15
+  }
+ ]
+}

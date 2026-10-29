@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "domain": "dialogue-topics",
+  "_": "Walker and gate fixture (2.5b4): not slice content. Topics with their labels and who must answer them.",
+  "entries": [
+    {"schemaVersion": 1, "id": "topic.fixture-ford", "topicClass": "local", "label": "the ford", "glossaryTerm": null, "requiredFor": {"places": ["place.fixture.dialogue-walk"]}},
+    {"schemaVersion": 1, "id": "topic.fixture-old-road", "topicClass": "local", "label": "the old road", "glossaryTerm": null},
+    {"schemaVersion": 1, "id": "topic.fixture-ferry", "topicClass": "role", "label": "the ferry", "glossaryTerm": null, "requiredFor": {"roles": ["ferry-keeper"]}},
+    {"schemaVersion": 1, "id": "topic.fixture-smithing", "topicClass": "role", "label": "smithing", "glossaryTerm": null, "requiredFor": {"roles": ["smith"]}},
+    {"schemaVersion": 1, "id": "topic.fixture-hist", "topicClass": "newcomer", "label": "the Hist", "glossaryTerm": "term.fixture-hist"},
+    {"schemaVersion": 1, "id": "topic.fixture-goats", "topicClass": "quest", "label": "the missing goats", "glossaryTerm": null},
+    {"schemaVersion": 1, "id": "topic.fixture-watch", "topicClass": "faction", "label": "the watch", "glossaryTerm": null}
+  ]
+}

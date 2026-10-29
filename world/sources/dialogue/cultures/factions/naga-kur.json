@@ -1,0 +1,199 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "_": "Faction and office sheets for The Naga-Kur (Dead-Water) (lane 2.5a2). Ranks: the registry ladder (associate, member, senior); named offices beyond it are listed by their own rank slug.",
+ "entries": [
+  {
+   "id": "culture.faction.naga-kur",
+   "level": "faction",
+   "name": "The Naga-Kur (Dead-Water)",
+   "parent": "culture.province.black-marsh",
+   "factionId": "faction.naga-kur",
+   "norms": [
+    {
+     "text": "Proud traditionalist warriors; arms adorned with the bones of the fallen.",
+     "source": "world/sources/lore/tribes.md"
+    },
+    {
+     "text": "Menace offered as hospitality.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Leaving a comrade's bones.",
+     "source": "world/sources/lore/tribes.md"
+    }
+   ],
+   "values": [
+    {
+     "text": "The deeps' discipline.",
+     "source": "world/sources/lore/tribes.md"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Tribeless Naga.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "place": {
+     "lean": 2,
+     "text": "The inner swamp is ours.",
+     "source": "world/sources/lore/tribes.md"
+    },
+    "people": {
+     "lean": -2,
+     "text": "Outsiders are owed nothing.",
+     "source": "world/sources/lore/tribes.md"
+    },
+    "danger": {
+     "lean": 1,
+     "text": "We are what the others fear.",
+     "source": "world/sources/lore/tribes.md"
+    },
+    "hist": {
+     "lean": 2,
+     "text": "The tree, painted red in the dream-wallow.",
+     "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Guest, said courteously and meant otherwise.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "ceremonial",
+    "oaths": [
+     {
+      "text": "By the dead water.",
+      "source": "world/sources/lore/tribes.md"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "The kaju chosen.",
+      "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Tribeless Naga shame the name.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "A kaju hunt this moon.",
+      "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.tribeless-naga",
+     "lean": -2,
+     "text": "Outside the discipline.",
+     "source": "inferred"
+    },
+    {
+     "node": "culture.faction.an-xileel",
+     "lean": -1,
+     "text": "Far away.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.1
+  },
+  {
+   "id": "culture.office.naga-kur.senior",
+   "level": "office",
+   "name": "Naga-Kur rite-keeper",
+   "parent": "culture.faction.naga-kur",
+   "factionId": "faction.naga-kur",
+   "rank": "senior",
+   "norms": [
+    {
+     "text": "Ceremonial parallelism; appalling content said courteously.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Snarling.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "The rite.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Disorder.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "danger": {
+     "lean": 1,
+     "text": "The rite decides.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Guest.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "ceremonial",
+    "oaths": [
+     {
+      "text": "By the dead water.",
+      "source": "world/sources/lore/tribes.md"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "The tally.",
+      "source": "inferred"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Too few rites kept.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "A kaju.",
+      "source": "world/sources/lore/topics/sithis-nisswo-shadowscales.md"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.naga-kur",
+     "lean": 2,
+     "text": "Theirs.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.1
+  }
+ ]
+}

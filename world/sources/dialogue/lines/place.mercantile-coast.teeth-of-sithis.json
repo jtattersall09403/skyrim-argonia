@@ -1,0 +1,1924 @@
+{
+  "schemaVersion": 1,
+  "domain": "dialogue-lines",
+  "placeId": "place.mercantile-coast.teeth-of-sithis",
+  "entries": [
+    {
+      "schemaVersion": 1,
+      "id": "greeting.teeth-of-sithis-nisswo-teeth.base",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.nisswo-teeth",
+      "words": "What offering do you carry, pilgrim?",
+      "available": [],
+      "variants": {
+        "low": "Show your offering or turn back.",
+        "high": "Welcome, pilgrim. What offering do you bring?"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.teeth-of-sithis-nisswo-teeth.night",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.nisswo-teeth",
+      "words": "The day's rite is finished.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "The rite is done. Walk back up the track.",
+        "high": "The rite is finished for today, pilgrim. Come when the lamps go out."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.teeth-of-sithis-nisswo-teeth.high",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.nisswo-teeth",
+      "words": "You come again, pilgrim. Ask your question.",
+      "available": [
+        {
+          "factionStandingAtLeast": [
+            "faction.nisswo",
+            50
+          ]
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Again. Ask, then go.",
+        "high": "You return, pilgrim. Ask what you came to ask."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.teeth-of-sithis-nisswo-teeth.crime",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.nisswo-teeth",
+      "words": "I will take no gift from you.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "Away from the water. I take no gift from you.",
+        "high": "I will take no gift from you. Say what you must."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-nisswo-teeth.teeth-of-sithis",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.nisswo-teeth",
+      "keys": {
+        "topic": "topic.teeth-of-sithis"
+      },
+      "words": "What offering do you bring for the Teeth? I ask first, since I stand where the pilgrim way reaches the water and every visitor passes me. The black teeth standing in the sea are the temple. The Clutch of Nisswo keeps all of it.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis.default",
+        "hash": "5e61e9cd"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "The Teeth are the temple in the sea. The Clutch of Nisswo keeps it. What offering do you bring?",
+        "high": "What offering do you bring for the Teeth? I ask first, since I stand where the pilgrim way reaches the water. The black teeth in the sea are the temple, kept by the Clutch of Nisswo. I will answer what I can once I have seen your gift."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-nisswo-teeth.teeth-of-sithis-work",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.nisswo-teeth",
+      "keys": {
+        "topic": "topic.teeth-of-sithis-work"
+      },
+      "words": "My office is the pilgrim way down to the water. From the time the lamps go out, I stand at the west stair and meet each pilgrim. I know a right offering on sight. The scrubbing belongs to the others.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis-work.default",
+        "hash": "bc164336"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "I meet pilgrims at the water. That is my office. The scrubbing belongs to the others.",
+        "high": "Come to the west stair after the lamps go out. I will look at your offering there and tell you plainly whether it will do."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-nisswo-teeth.teeth-of-sithis-people",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.nisswo-teeth",
+      "keys": {
+        "topic": "topic.teeth-of-sithis-people"
+      },
+      "words": "The Clutch priests hold the temple. Four of the band work beneath them. An outsider is taken in only for the right offering. Too many walk down here with empty hands and long questions. I turn them back at the water.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis-people.default",
+        "hash": "1f953549"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Priests hold the temple, with four of the band beneath them. Outsiders enter for the right offering. You have not shown me one.",
+        "high": "The Clutch priests hold the temple, with four of the band beneath them. An outsider goes in for the right offering. Bring yours to me first. I will tell you plainly if it is right."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-nisswo-teeth.teeth-of-sithis-danger",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.nisswo-teeth",
+      "keys": {
+        "topic": "topic.teeth-of-sithis-danger"
+      },
+      "words": "In the flooded deep room, a voriplasm strips whatever falls into the water. Leeches and swamp jellies stay in the shallows round the teeth. The stone below the waterline is not for touching, so keep your hands off it.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis-danger.default",
+        "hash": "5d14b700"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "A voriplasm in the flooded deep room strips whatever falls into that water. Leeches and swamp jellies stay in the shallows. Touch nothing below the waterline.",
+        "high": "The flooded deep room holds a voriplasm that strips whatever drops into that water. Leeches and swamp jellies stay in the shallows round the teeth. Watch your feet at the landing. Keep clear of the stone below the waterline."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-nisswo-teeth.teeth-of-sithis-directions",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.nisswo-teeth",
+      "keys": {
+        "topic": "topic.teeth-of-sithis-directions"
+      },
+      "words": "North of the temple, a short walk, you reach Fourth Stage. That is the old road stage. The pilgrim way ends at the water here, so go back between the two scaffolds to the track.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis-directions.default",
+        "hash": "f7b6c9e3"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "North, a short walk, is Fourth Stage. It is the old road stage. Go back up between the scaffolds.",
+        "high": "I walk the pilgrim way each day, so I know it well. North of the temple, a short walk, you reach Fourth Stage, the old road stage. Go back between the two scaffolds to the track."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-nisswo-teeth.role-keeping-the-teeth",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.nisswo-teeth",
+      "keys": {
+        "topic": "topic.role-keeping-the-teeth"
+      },
+      "words": "I am a nisswo, one of the Argonian priests of Sithis. I meet each pilgrim at the water's edge and ask what offering they carry. Outsiders enter the Teeth only with the right offering, so an empty-handed pilgrim is turned back.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-keeping-the-teeth.default",
+        "hash": "18df972e"
+      },
+      "factIds": [
+        "fact.nisswo.meets-pilgrims",
+        "fact.nisswo.asks-offering",
+        "fact.nisswo.priests-of-sithis",
+        "fact.teeth.empty-handed"
+      ],
+      "variants": {
+        "low": "I am a nisswo, one of the Argonian priests of Sithis. I meet pilgrims at the water and ask their offering. Outsiders enter only with the right one. An empty-handed pilgrim goes back.",
+        "high": "I am a nisswo, one of the Argonian priests of Sithis. I meet every pilgrim at the water's edge and ask what offering they carry. Outsiders enter the Teeth only with the right offering. An empty-handed pilgrim goes back, so show me yours first."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-nisswo-teeth.about-sithis",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.nisswo-teeth",
+      "keys": {
+        "topic": "topic.about-sithis"
+      },
+      "words": "Sithis is the god of change. When a pilgrim has lost a kinsman, I tell them what the Nisswo teach. The dead are mourned for their season, then released. Some pilgrims cling to the grief past that season. I have watched them carry it back up the track.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-sithis.default",
+        "hash": "bf760158"
+      },
+      "factIds": [
+        "fact.sithis.mourned"
+      ],
+      "variants": {
+        "low": "Sithis is change. The dead are mourned, then released. That is what we teach.",
+        "high": "Sithis is the god of change. When a pilgrim comes down grieving, I tell them what we teach. The dead are mourned for their season, then released. Bring your grief here. I will hear it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-nisswo-teeth.about-nisswo",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.nisswo-teeth",
+      "keys": {
+        "topic": "topic.about-nisswo"
+      },
+      "words": "We Nisswo are priests who serve Sithis. We have no fixed doctrine and answer to no central rule. Each of us reads the faith as he was taught, so I cannot settle a dispute for anyone beyond this temple. I keep the Teeth.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-nisswo.default",
+        "hash": "ad4e10a0"
+      },
+      "factIds": [
+        "fact.nisswo.no-doctrine"
+      ],
+      "variants": {
+        "low": "We Nisswo serve Sithis. We hold no doctrine and no central rule. Do not ask me to settle your dispute.",
+        "high": "We Nisswo are priests who serve Sithis. We have no fixed doctrine and answer to no central rule. Each priest reads the faith as he was taught. I can tell you how it is read here, but I cannot settle a dispute for the whole province."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.teeth-of-sithis-n1.base",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n1",
+      "words": "The bell has sounded twice. Speak, seeker.",
+      "available": [],
+      "variants": {
+        "low": "Two strokes. Say it fast.",
+        "high": "Two strokes sounded, seeker. Speak, you are welcome."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.teeth-of-sithis-n1.night",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n1",
+      "words": "The band sleeps. Keep to a whisper.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Sleepers lie close. Be silent.",
+        "high": "The band sleeps, seeker. Speak low, I will hear you."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.teeth-of-sithis-n1.high",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n1",
+      "words": "You are back, seeker. I hoped you would be.",
+      "available": [
+        {
+          "factionStandingAtLeast": [
+            "faction.nisswo",
+            50
+          ]
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "It is you again.",
+        "high": "You are back, seeker. I hoped so. Sit by the lamp."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.teeth-of-sithis-n1.crime",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n1",
+      "words": "The temple is shut to you.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "Leave the bank.",
+        "high": "The temple is shut to you. I am sorry for it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n1.teeth-of-sithis",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n1",
+      "keys": {
+        "topic": "topic.teeth-of-sithis"
+      },
+      "words": "I ring the bell for the landing. No Sithis temple in Murkmire is bigger. The Clutch of Nisswo tend it. Its first purpose is lost.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis.default",
+        "hash": "5e61e9cd"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "The Teeth. I ring the bell. Ask the band about the rest.",
+        "high": "I ring the bell for the landing, two strokes at a time. No Sithis temple in Murkmire is bigger. The Clutch of Nisswo tend it, though its first purpose is lost."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n1.teeth-of-sithis-work",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n1",
+      "keys": {
+        "topic": "topic.teeth-of-sithis-work"
+      },
+      "words": "Scrubbing is our rite. We clean the black stone down to the waterline. After the second stroke of the bell, it starts. We mend nothing and we add nothing.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis-work.default",
+        "hash": "bc164336"
+      },
+      "factIds": [
+        "fact.scrubbing.waterline"
+      ],
+      "variants": {
+        "low": "We scrub the teeth to the waterline. Nothing is mended or added.",
+        "high": "Come at the second stroke of the bell and watch. The black stone is scrubbed clean to the waterline. Nothing is mended, nothing added. Stay on the bank."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n1.teeth-of-sithis-people",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n1",
+      "keys": {
+        "topic": "topic.teeth-of-sithis-people"
+      },
+      "words": "A band of four serves under us priests. Ojel pass inside for the right offering. Empty hands go back the way they came.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis-people.default",
+        "hash": "1f953549"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Four serve under the priests. Bring an offering or leave.",
+        "high": "Four serve under us priests. Ojel pass inside for the right offering. Bring fruit of your own country. Teeb-Shaal will carry it in for you."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n1.teeth-of-sithis-danger",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n1",
+      "keys": {
+        "topic": "topic.teeth-of-sithis-danger"
+      },
+      "words": "I flatten my crest at that room. The voriplasm in the flooded deep room strips bare whatever drops in the water. Leeches and swamp jellies stay in the shallows.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis-danger.default",
+        "hash": "5d14b700"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "A voriplasm in the flooded room strips bare what drops there. Leeches in the shallows.",
+        "high": "Stay out of the water. A voriplasm sits in the flooded deep room and strips bare whatever drops there. Leeches and swamp jellies keep to the shallows near it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n1.teeth-of-sithis-directions",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n1",
+      "keys": {
+        "topic": "topic.teeth-of-sithis-directions"
+      },
+      "words": "Walk north from the head of the pilgrim way. Fourth Stage is there, an old road stage, a short walk.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis-directions.default",
+        "hash": "f7b6c9e3"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "North. Fourth Stage, a short walk.",
+        "high": "North from the head of the pilgrim way is Fourth Stage, an old road stage. It is a short walk. Go before the light goes."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n1.role-priesthood",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n1",
+      "keys": {
+        "topic": "topic.role-priesthood"
+      },
+      "words": "A priest rings the bell for pilgrims at the landing. Priests hold the teaching. The band below holds the stair. A nisswo meets every pilgrim and asks for their offering.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-priesthood.teeth",
+        "hash": "b12b7dfd"
+      },
+      "factIds": [
+        "fact.teeth-priest.bell",
+        "fact.teeth-priest.teaching",
+        "fact.teeth-band.stair",
+        "fact.nisswo.meets-pilgrims"
+      ],
+      "variants": {
+        "low": "I ring the bell. Priests hold the teaching. The band holds the stair. A nisswo meets pilgrims and asks for the offering.",
+        "high": "A priest rings the bell for pilgrims at the landing. Priests hold the teaching. The band below holds the stair. A nisswo meets every pilgrim and asks for their offering. Wait for him at the water."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n1.about-sithis",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n1",
+      "keys": {
+        "topic": "topic.about-sithis"
+      },
+      "words": "Sithis is the void god, the god of change. We teach that a death is a change like any other. Do not call Sithis evil here.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-sithis.default",
+        "hash": "bf760158"
+      },
+      "factIds": [
+        "fact.sithis.void-god",
+        "fact.sithis.death-change"
+      ],
+      "variants": {
+        "low": "The void god of change. A death is a change. Do not call it evil.",
+        "high": "Sithis is the void god, the god of change. We teach that a death is a change like any other. Call it evil here and the Clutch will not hear you out."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n1.about-nisswo",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n1",
+      "keys": {
+        "topic": "topic.about-nisswo"
+      },
+      "words": "The Nisswo are Argonian priests of Sithis. I came to the Teeth from the travelling Nisswo. They teach that each village should hear many readings.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-nisswo.default",
+        "hash": "ad4e10a0"
+      },
+      "factIds": [
+        "fact.nisswo.priests"
+      ],
+      "variants": {
+        "low": "Priests of Sithis. I am one.",
+        "high": "The Nisswo are Argonian priests of Sithis. I came to the Teeth from the travelling Nisswo. They teach that each village should hear many readings, so one more reading of this place does not frighten me."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.teeth-of-sithis-the-one.base",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.the-one",
+      "words": "Tide is high, traveller.",
+      "available": [],
+      "variants": {
+        "low": "Tide is high. Mind the edge.",
+        "high": "Tide is high, traveller. Good day for the brush."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.teeth-of-sithis-the-one.night",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.the-one",
+      "words": "Cold comes off the sea tonight.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Cold tonight. Go inside.",
+        "high": "Cold comes off the sea tonight, traveller. Keep your cloak shut."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.teeth-of-sithis-the-one.high",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.the-one",
+      "words": "Clean stone today, traveller. Look.",
+      "available": [
+        {
+          "factionStandingAtLeast": [
+            "faction.nisswo",
+            50
+          ]
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Clean stone. Do not touch it.",
+        "high": "Clean stone today, traveller. Look how it shines above the line."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.teeth-of-sithis-the-one.crime",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.the-one",
+      "words": "Keep away from me.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "Keep away.",
+        "high": "Keep away from me, traveller. I mean it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-the-one.teeth-of-sithis",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.the-one",
+      "keys": {
+        "topic": "topic.teeth-of-sithis"
+      },
+      "words": "I scrub the black teeth, so I see this place closer than most. Murkmire has no bigger temple of Sithis. The Clutch of Nisswo looks after it. Ask me what it was built to do and I point you at the stone above the waterline.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis.default",
+        "hash": "5e61e9cd"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Murkmire has no bigger temple of Sithis. The Clutch of Nisswo looks after it. I scrub it. Nothing more from me.",
+        "high": "I scrub the black teeth, so I see this place closer than most. Murkmire has no bigger temple of Sithis. The Clutch of Nisswo looks after it. Come at low tide and watch the stone dry above the waterline. It shows best then."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-the-one.teeth-of-sithis-work",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.the-one",
+      "keys": {
+        "topic": "topic.teeth-of-sithis-work"
+      },
+      "words": "Each morning when the lamps go out, I carry the bucket up from the landing to the west scaffold. I work the teeth from there with a brush. My arms are green to the elbow by noon. Above the line I leave nothing dirty.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis-work.default",
+        "hash": "bc164336"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "I carry a bucket and I scrub. That is the work.",
+        "high": "Each morning when the lamps go out, I carry the bucket up to the west scaffold. I work the teeth with a brush from there. Come by at the midday break. I eat then. I can show you how the brush is held."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-the-one.teeth-of-sithis-people",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.the-one",
+      "keys": {
+        "topic": "topic.teeth-of-sithis-people"
+      },
+      "words": "Four hands of the band work under the priests who keep the temple. I am none of them. I carry the bucket. An outsider gets taken inside when the offering is right. Pilgrims with empty hands stand on the bank a long while.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis-people.default",
+        "hash": "1f953549"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Priests keep the temple. Four of the band serve under them. Bring the right offering or stay out.",
+        "high": "Four hands of the band work under the priests who keep the temple. An outsider gets taken inside when the offering is right. Bring something plain, laid with care. Teeb-Shaal carries the offerings. He is the man you want to meet."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-the-one.teeth-of-sithis-danger",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.the-one",
+      "keys": {
+        "topic": "topic.teeth-of-sithis-danger"
+      },
+      "words": "Everything dangerous here lies below the waterline. Down in the deep room the sea has flooded, a voriplasm strips whatever drops into the water. Leeches and swamp jellies stay out in the shallows. I watch my brush hand near the edge.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis-danger.default",
+        "hash": "5d14b700"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "A voriplasm lies in the flooded deep room. It strips whatever drops down. Leeches and jellies stay out in the shallows. Keep out of the water.",
+        "high": "Everything dangerous here lies below the waterline. Down in the deep room the sea has flooded, a voriplasm strips whatever drops into the water. Leeches and swamp jellies stay out in the shallows. Wade only if you must. Check your legs after."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-the-one.teeth-of-sithis-directions",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.the-one",
+      "keys": {
+        "topic": "topic.teeth-of-sithis-directions"
+      },
+      "words": "A short walk north brings you to Fourth Stage, an old road stage. Take the track at the end of the pilgrim way. I walk the other way each day, down to the landing for my bucket.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis-directions.default",
+        "hash": "f7b6c9e3"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Fourth Stage is north. Short walk. Take the track.",
+        "high": "A short walk north brings you to Fourth Stage, an old road stage. Take the track at the end of the pilgrim way. You have time to reach it before the lamps come on at dusk."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-the-one.role-scrubbing-the-teeth",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.the-one",
+      "keys": {
+        "topic": "topic.role-scrubbing-the-teeth"
+      },
+      "words": "Up from the landing I haul a bucket. With it I clean the teeth to the waterline, no deeper. The scrubbing is a ritual. Nothing gets repaired or added. The band leaves the stone beneath that line untouched.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-scrubbing-the-teeth.default",
+        "hash": "87ab2358"
+      },
+      "factIds": [
+        "fact.scrubber.bucket",
+        "fact.scrubbing.waterline",
+        "fact.scrubbing.ritual",
+        "fact.scrubbing.no-touch-beneath"
+      ],
+      "variants": {
+        "low": "Bucket from the landing. Scrub to the waterline. It is a ritual, so nothing is mended or added. The stone beneath that line stays untouched.",
+        "high": "Up from the landing I haul a bucket. With it I clean the teeth to the waterline, no deeper. The scrubbing is a ritual. Nothing gets repaired or added. The band leaves the stone beneath that line untouched. The green down there stays green."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-the-one.about-sithis",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.the-one",
+      "keys": {
+        "topic": "topic.about-sithis"
+      },
+      "words": "Sithis is the void god of change. I hold a brush, not a sermon, so that is the part I can say plainly. The teeth are clean above the waterline by evening. The green starts back by morning.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-sithis.default",
+        "hash": "bf760158"
+      },
+      "factIds": [
+        "fact.sithis.void-god"
+      ],
+      "variants": {
+        "low": "Sithis is the void god of change. That is all I carry.",
+        "high": "Sithis is the void god of change. I hold a brush, not a sermon, so that is the part I can say plainly. Stand on the west scaffold at dusk. The tide takes the light off the teeth."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.teeth-of-sithis-n2.base",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2",
+      "words": "Keep your voice low, stranger. The rite runs.",
+      "available": [],
+      "variants": {
+        "low": "The rite runs. Not for you.",
+        "high": "Welcome, stranger. You picked a quiet hour."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.teeth-of-sithis-n2.night",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2",
+      "words": "Night watch. My legs know the water's colder.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Night watch. Leave me to it.",
+        "high": "Night watch. Stay a while if the dark suits you."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.teeth-of-sithis-n2.high",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2",
+      "words": "A good hour to you, stranger.",
+      "available": [
+        {
+          "factionStandingAtLeast": [
+            "faction.nisswo",
+            50
+          ]
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Speak, then, or pass.",
+        "high": "A good hour, stranger. It is a pleasure to have you here."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.teeth-of-sithis-n2.crime",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2",
+      "words": "You took that, stranger.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "Put the thing down. I am watching.",
+        "high": "I saw that, stranger. Return it and I will say nothing."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n2.teeth-of-sithis",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2",
+      "keys": {
+        "topic": "topic.teeth-of-sithis"
+      },
+      "words": "It's the biggest temple to Sithis in Murkmire. The teeth are black stone, standing in a row out of the sea. The priests keep them exact. I'm with the band on the east scaffold, where the whole row shows at once. Why it was built I won't guess.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis.default",
+        "hash": "5e61e9cd"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "It's a temple to Sithis, the biggest in Murkmire. You're looking at it. Why it's here is not mine to guess.",
+        "high": "It's the biggest temple to Sithis in Murkmire. You've come at a good hour, with the rite quiet. From the east scaffold you can see every tooth in the row, black out of the sea. The door frame on the bank gives you the best first look."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n2.teeth-of-sithis-work",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2",
+      "keys": {
+        "topic": "topic.teeth-of-sithis-work"
+      },
+      "words": "I stand with the band in the shallows through each rite, waist-deep. The cold gets into my legs long before it's over. The Clutch scrub the temple's stone as far down as the waterline. They mend nothing and add nothing. Below the line the green stays.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis-work.default",
+        "hash": "bc164336"
+      },
+      "factIds": [
+        "fact.scrubbing.waterline"
+      ],
+      "variants": {
+        "low": "I wade through the rite, waist-deep. The Clutch scrub the teeth as far as the waterline.",
+        "high": "The Clutch scrub the black stone as far down as the waterline each day. They fix nothing. I stand waist-deep in the shallows through each rite, so the cold finds my legs first. It's slow work to watch. Standing through it is slower."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n2.teeth-of-sithis-people",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2",
+      "keys": {
+        "topic": "topic.teeth-of-sithis-people"
+      },
+      "words": "The Clutch priests run the temple. There's me and three men on the band under them. The priests take an outsider in if the offering is right. I mostly see the pilgrims from the water, coming down the way with their offerings in their hands.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis-people.default",
+        "hash": "1f953549"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "The priests keep the temple, with a band of four under them. They take outsiders in for the right offering. Bring that or turn back.",
+        "high": "The Clutch priests run the temple, with a band of four under them, me and three men. They take an outsider in for the right offering. Teeb-Shaal meets the givers at the steps, so give him yours."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n2.teeth-of-sithis-danger",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2",
+      "keys": {
+        "topic": "topic.teeth-of-sithis-danger"
+      },
+      "words": "I know the leeches and the swamp jellies well, since I wade among them through every rite. They keep to the shallows. The voriplasm is another matter. It lies in the flooded room deep inside. Anything that falls into that water comes out stripped. I've no wish to see it.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis-danger.default",
+        "hash": "5d14b700"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Leeches and swamp jellies keep to the shallows. The voriplasm in the flooded deep room strips anything that falls in the water there. Stay out of both.",
+        "high": "The leeches and the swamp jellies keep to the shallows, where I wade. The voriplasm lies deeper, in the flooded room. It strips anything that falls into the water there. Keep your offering and your boots back from the edge."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n2.teeth-of-sithis-directions",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2",
+      "keys": {
+        "topic": "topic.teeth-of-sithis-directions"
+      },
+      "words": "Fourth Stage is the way out. It's an old road stage. Go north from the temple, it's not far. You pass the door frames on the bank, then the track takes you there. My legs warm up again on that walk after a rite.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis-directions.default",
+        "hash": "f7b6c9e3"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Fourth Stage, north. A short walk.",
+        "high": "Fourth Stage is the old road stage. Go north, it's a short way. The track starts past the door frames on the bank. After a rite, I like to walk some of it myself, just to feel my legs again."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n2.role-temple-duties",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2",
+      "keys": {
+        "topic": "topic.role-temple-duties"
+      },
+      "words": "On the band, we keep the watch on the stair. We carry the offerings inside, then we stand out in the shallows through every rite. I get the shallows more than the others do, waist-deep. Teeb-Shaal takes most of the bowls up the steps. I'd rather carry bowls than wade.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-temple-duties.teeth",
+        "hash": "ea5cd3bf"
+      },
+      "factIds": [
+        "fact.teeth-band.watch",
+        "fact.teeth-band.offerings"
+      ],
+      "variants": {
+        "low": "We keep the watch on the stair. We carry the offerings inside. Each rite we stand in the shallows. I am the one in the water.",
+        "high": "The band keeps the watch on the stair. It carries the offerings inside, then stands in the shallows through each rite. I get the water more often than the others. A dry turn on the stair is what I wish for by the end of it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n2.about-sithis",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2",
+      "keys": {
+        "topic": "topic.about-sithis"
+      },
+      "words": "Sithis is the void god, the Changer. The priests teach that every death is a change, not a wrong. So you mourn the dead, as long as the grief takes, then you release them. I think of it in the water, with the rite going on around me.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-sithis.default",
+        "hash": "bf760158"
+      },
+      "factIds": [
+        "fact.sithis.death-change",
+        "fact.sithis.mourned"
+      ],
+      "variants": {
+        "low": "Sithis is the void god of change. The priests say a death is a change, to be mourned and then released.",
+        "high": "Sithis is the void god of change. What the priests here teach is that a death is a change, not a wrong done to anyone. You mourn the dead first, then you release them. I think of that whenever the cold gets to me in the water."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.teeth-of-sithis-n2-2.base",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-2",
+      "words": "The top step is mine. Offerings first, words after.",
+      "available": [],
+      "variants": {
+        "low": "Off my step.",
+        "high": "Climb. Show me the offering, then ask what you like."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.teeth-of-sithis-n2-2.night",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-2",
+      "words": "Off the stair. Wake a priest if you must.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Lower your voice on my stair.",
+        "high": "Walk soft. The band is asleep."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.teeth-of-sithis-n2-2.high",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-2",
+      "words": "You again. Fine.",
+      "available": [
+        {
+          "factionStandingAtLeast": [
+            "faction.nisswo",
+            50
+          ]
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Not today.",
+        "high": "Still coming. Fine, climb, but softly."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.teeth-of-sithis-n2-2.crime",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-2",
+      "words": "Leave, before I call the band.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "Go down the way.",
+        "high": "Leave now. I will say nothing to the band."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n2-2.teeth-of-sithis",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-2",
+      "keys": {
+        "topic": "topic.teeth-of-sithis"
+      },
+      "words": "This is the largest temple of Sithis in Murkmire. I sleep upstairs on a bedroll between day watches, so for me it is where I rest more than where I pray. Why it was built, I do not touch.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis.default",
+        "hash": "5e61e9cd"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "It is a temple of Sithis. I sleep upstairs. Nothing more from me.",
+        "high": "It is the largest temple of Sithis in Murkmire. I sleep upstairs on a bedroll between watches. The quiet suits me. Why it was built, I do not touch."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n2-2.teeth-of-sithis-work",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-2",
+      "keys": {
+        "topic": "topic.teeth-of-sithis-work"
+      },
+      "words": "The teeth are scrubbed clean down to the waterline, every day. Others hold the brush. My work is the east stair, watching who comes up the track.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis-work.default",
+        "hash": "bc164336"
+      },
+      "factIds": [
+        "fact.scrubbing.waterline"
+      ],
+      "variants": {
+        "low": "They scrub the teeth to the waterline. I watch the stair.",
+        "high": "The teeth are scrubbed clean down to the waterline each day, by hands other than mine. I watch the east stair from the scaffold, where the whole row shows."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n2-2.teeth-of-sithis-people",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-2",
+      "keys": {
+        "topic": "topic.teeth-of-sithis-people"
+      },
+      "words": "There is a band of four under the priests. I am one of them. Pilgrims come up the way with empty hands and expect the door open. I send them back down.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis-people.default",
+        "hash": "1f953549"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Priests, with a band of four under them. Empty hands go back down.",
+        "high": "The priests keep the temple, with a band of four under them. Bring the right offering and the priests admit you. I turn you round on the stair if you come empty-handed."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n2-2.teeth-of-sithis-danger",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-2",
+      "keys": {
+        "topic": "topic.teeth-of-sithis-danger"
+      },
+      "words": "The shallows have leeches and swamp jellies. Deep inside, in the flooded room, a voriplasm eats whatever falls into the water. I have not gone down to look.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis-danger.default",
+        "hash": "5d14b700"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Leeches and jellies in the shallows. A voriplasm in the flooded room. Stay on the stair.",
+        "high": "Leeches and swamp jellies keep to the shallows. You can see them from the scaffold. The voriplasm is in the flooded room inside. It strips whatever drops there, so keep your gift in your hands."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n2-2.teeth-of-sithis-directions",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-2",
+      "keys": {
+        "topic": "topic.teeth-of-sithis-directions"
+      },
+      "words": "Take the track at the end of the pilgrim way and keep north. It is a short walk to Fourth Stage, an old stage on the road.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis-directions.default",
+        "hash": "f7b6c9e3"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "North. Fourth Stage. Short walk.",
+        "high": "Take the track at the end of the pilgrim way and keep north. Fourth Stage, an old stage on the road, is a short walk. I walk it myself when my watch is done."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n2-2.role-temple-duties",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-2",
+      "keys": {
+        "topic": "topic.role-temple-duties"
+      },
+      "words": "I keep the watch on the east stair. Teeb-Shaal carries the offerings in from the steps. I stop pilgrims who climb without asking.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-temple-duties.teeth",
+        "hash": "ea5cd3bf"
+      },
+      "factIds": [
+        "fact.teeth-band.watch",
+        "fact.teeth-band.offerings"
+      ],
+      "variants": {
+        "low": "I keep the watch. Others carry the offerings.",
+        "high": "I keep the watch on the east stair, from the morning lamps. Teeb-Shaal carries the offerings in from the steps. Come up with yours and I will point you to him."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n2-2.about-sithis",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-2",
+      "keys": {
+        "topic": "topic.about-sithis"
+      },
+      "words": "Sithis is the void god, the source of every change. When a person dies, the priests say to mourn them first, then let them go. I am no priest, so that is all I give you.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-sithis.default",
+        "hash": "bf760158"
+      },
+      "factIds": [
+        "fact.sithis.mourned"
+      ],
+      "variants": {
+        "low": "Sithis is the void god. You mourn the dead, then let them go.",
+        "high": "Sithis is the void god, the source of every change. When a person dies, the priests say to mourn them first, then let them go. I go to the sermons when I am awake, which is not often."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.teeth-of-sithis-n2-3.base",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-3",
+      "words": "A pilgrim. You came up alone?",
+      "available": [],
+      "variants": {
+        "low": "Stay off the stair until you are asked.",
+        "high": "Friend, mind the wet stone on the way up."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.teeth-of-sithis-n2-3.night",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-3",
+      "words": "Late for a pilgrim, friend. Stay where I can see you.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Come back in the day. The stair is mine now.",
+        "high": "Friend, you are late. Stand by the lamp."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.teeth-of-sithis-n2-3.high",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-3",
+      "words": "I counted your steps up from the landing, friend.",
+      "available": [
+        {
+          "factionStandingAtLeast": [
+            "faction.nisswo",
+            50
+          ]
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "I saw you come up. Say your business.",
+        "high": "I counted you all the way up, friend. Ask me what you need."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.teeth-of-sithis-n2-3.crime",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-3",
+      "words": "You tried the stair unasked. Not again.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "Get down from my stair.",
+        "high": "I will let it pass this once. Ask me first next time."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n2-3.teeth-of-sithis",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-3",
+      "keys": {
+        "topic": "topic.teeth-of-sithis"
+      },
+      "words": "This is the largest temple of Sithis in Murkmire. The Nisswo of the Clutch tend it. I keep the stair above the landing, so I see every pilgrim who comes up. Its purpose is for the priests to tell. I don't guess at it.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis.default",
+        "hash": "5e61e9cd"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "A temple of Sithis. The Clutch tend it. Ask the priests about the rest.",
+        "high": "It is the largest temple of Sithis in Murkmire, with the Clutch of Nisswo to tend it. I see it best from the stair above the landing. Come up in daylight and look at the teeth in the water. The priests will tell you its purpose."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n2-3.teeth-of-sithis-work",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-3",
+      "keys": {
+        "topic": "topic.teeth-of-sithis-work"
+      },
+      "words": "My work is the night watch on the stair above the landing. I stand there from the evening lamps until the morning ones. A pilgrim who tries the steps without asking gets stopped. Scrubbing the teeth is the priests' side.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis-work.default",
+        "hash": "bc164336"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "I watch the stair at night. That is my work and it does not need your help.",
+        "high": "I watch the stair above the landing from the evening lamps until the morning ones. Come at dusk and I will show you where pilgrims may stand. The scrubbing is the priests' work, so ask them about it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n2-3.teeth-of-sithis-people",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-3",
+      "keys": {
+        "topic": "topic.teeth-of-sithis-people"
+      },
+      "words": "Priests of the Clutch run the temple. The four of us in the band stand under them, on the stair and in the water. A stranger gets taken in when the offering is right. Empty hands go back down the steps.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis-people.default",
+        "hash": "1f953549"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Priests rule here, with four of us under them. Bring an offering or go back down.",
+        "high": "The priests of the Clutch run the temple, with four of us in the band under them. If you bring a good offering, a stranger is let inside. Before you climb, ask Ohl-Nakka at the water. He decides what counts."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n2-3.teeth-of-sithis-danger",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-3",
+      "keys": {
+        "topic": "topic.teeth-of-sithis-danger"
+      },
+      "words": "The room far under the temple is flooded. A voriplasm lies in that water. Anything dropped in it is stripped away. Leeches and swamp jellies stay in the shallows by the landing. I look down on them all night from the stair.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis-danger.default",
+        "hash": "5d14b700"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "A voriplasm in the flooded room, leeches and jellies in the shallows. Stay out of the water.",
+        "high": "There is a voriplasm in the flooded room under the temple. It strips whatever drops into the water. Leeches and swamp jellies stay in the shallows by the landing, so keep your feet on the stone. I watch that water all night."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n2-3.teeth-of-sithis-directions",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-3",
+      "keys": {
+        "topic": "topic.teeth-of-sithis-directions"
+      },
+      "words": "Fourth Stage lies north, a little walk from here. It was a stopping place on the old road. Take the track from the head of the pilgrim way.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis-directions.default",
+        "hash": "f7b6c9e3"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "North. Fourth Stage. Take the track.",
+        "high": "Fourth Stage lies north, a little walk from here. It was a stopping place on the old road. Take the track from the head of the pilgrim way. I send most pilgrims there when the steps are full."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n2-3.role-temple-duties",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-3",
+      "keys": {
+        "topic": "topic.role-temple-duties"
+      },
+      "words": "The band wades in the shallows for every rite. The water is cold. Watching, carrying and scrubbing make up the daily rite here, all of it. My share is the stair at night, so I stay dry. Wuleen-Wai takes the water.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-temple-duties.teeth",
+        "hash": "ea5cd3bf"
+      },
+      "factIds": [
+        "fact.teeth-band.shallows",
+        "fact.teeth.daily-rite"
+      ],
+      "variants": {
+        "low": "We watch, we carry, we scrub. Some of us wade the shallows. I take the stair.",
+        "high": "Every rite has the band wading in the shallows. The water is cold. Watching, carrying and scrubbing are the daily rite, nothing more. I take the stair at night, so I stay dry. Ask Wuleen-Wai about the water."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n2-3.about-sithis",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-3",
+      "keys": {
+        "topic": "topic.about-sithis"
+      },
+      "words": "The priests call Sithis the void god. Every change belongs to him, a death too. It is no wrong done. I keep the stair, so I leave the rest of the teaching to Zaxi-Rekh.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-sithis.default",
+        "hash": "bf760158"
+      },
+      "factIds": [
+        "fact.sithis.void-god"
+      ],
+      "variants": {
+        "low": "The void god. Ask a priest for more.",
+        "high": "The priests call Sithis the void god. Every change belongs to him, a death too. None of it is wrong done. Zaxi-Rekh keeps the bell and knows the teaching better. Climb to the top of the steps and she will hear you."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.teeth-of-sithis-n2-4.base",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-4",
+      "words": "That bowl in your hands, giver?",
+      "available": [],
+      "variants": {
+        "low": "Empty hands?",
+        "high": "A good bowl, giver."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.teeth-of-sithis-n2-4.night",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-4",
+      "words": "Dark on the landing. Come back at dawn.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Go back. The landing is shut.",
+        "high": "Dark on the landing, giver. Dawn is better."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.teeth-of-sithis-n2-4.high",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-4",
+      "words": "You look well.",
+      "available": [
+        {
+          "factionStandingAtLeast": [
+            "faction.nisswo",
+            50
+          ]
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Pilgrim, step aside.",
+        "high": "You look well. Your bowl is safe with me."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.teeth-of-sithis-n2-4.crime",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-4",
+      "words": "Nothing leaves this temple.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "Return it to the stone.",
+        "high": "Put it back, giver. I will say no more."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n2-4.teeth-of-sithis",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-4",
+      "keys": {
+        "topic": "topic.teeth-of-sithis"
+      },
+      "words": "No temple to Sithis in Murkmire is larger than this one. Priests of the Nisswo look after it, though the reason it was built is lost. I carry the pilgrims' bowls in from the landing. That part of the temple I know well.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis.default",
+        "hash": "5e61e9cd"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "It is the largest temple of Sithis in Murkmire. The reason for it is lost. I carry bowls in from the landing.",
+        "high": "No temple to Sithis in Murkmire is larger than this one. Priests of the Nisswo look after it, though the reason it was built is lost. Bring a bowl to the landing and I will carry it in for you."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n2-4.teeth-of-sithis-work",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-4",
+      "keys": {
+        "topic": "topic.teeth-of-sithis-work"
+      },
+      "words": "I carry the offerings in from the landing, a bowl at a time. The giver picks the spot for it. After that, I do not lift it again.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis-work.default",
+        "hash": "bc164336"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "I carry the offerings in from the landing. The giver picks the spot. I do not lift a bowl again after that.",
+        "high": "I carry the offerings in from the landing, a bowl at a time. The giver picks the spot, so tell me where you want yours. After that, I do not lift it again."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n2-4.teeth-of-sithis-people",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-4",
+      "keys": {
+        "topic": "topic.teeth-of-sithis-people"
+      },
+      "words": "Priests of the Clutch run the temple, with us four in the band beneath them. The others watch from the stair. I take the bowls from the givers' hands, so I see what each one brings. A stranger is let in for the right offering.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis-people.default",
+        "hash": "1f953549"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Priests run the temple, with four in the band beneath them. A stranger is let in for the right offering. Empty hands wait outside.",
+        "high": "Priests of the Clutch run the temple, with us four in the band beneath them. The others watch from the stair. I take the bowls from the givers' own hands, so I can tell you what the priests like to see. A stranger is let in for the right offering."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n2-4.teeth-of-sithis-danger",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-4",
+      "keys": {
+        "topic": "topic.teeth-of-sithis-danger"
+      },
+      "words": "In the flooded room deep inside the temple lies a voriplasm. It strips whatever falls into that water. Leeches and swamp jellies live in the shallows round the teeth. I do not look into that water.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis-danger.default",
+        "hash": "5d14b700"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "A voriplasm is in the flooded room below. Leeches and swamp jellies are in the shallows. Stay out of the water.",
+        "high": "In the flooded room deep inside the temple lies a voriplasm. It strips whatever falls into that water, so grip your bowl tight on the stair. Leeches and swamp jellies live in the shallows round the teeth."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n2-4.teeth-of-sithis-directions",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-4",
+      "keys": {
+        "topic": "topic.teeth-of-sithis-directions"
+      },
+      "words": "Fourth Stage is north of here, only a brief walk. It was a stage on the old road. Follow the track from the end of the pilgrim way and you will reach it.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.teeth-of-sithis-directions.default",
+        "hash": "f7b6c9e3"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Fourth Stage is north of here, a brief walk. The track starts at the end of the pilgrim way.",
+        "high": "Fourth Stage is north of here, only a brief walk. It was a stage on the old road. Follow the track from the end of the pilgrim way and you will reach it. You will arrive before you tire."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n2-4.role-temple-duties",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-4",
+      "keys": {
+        "topic": "topic.role-temple-duties"
+      },
+      "words": "The daily rite is three jobs: watching, carrying and scrubbing. Our band watches the stair and carries the offerings inside, then wades into the shallows until each rite ends. The water is cold. My own part is the carrying.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-temple-duties.teeth",
+        "hash": "ea5cd3bf"
+      },
+      "factIds": [
+        "fact.teeth-band.shallows",
+        "fact.teeth.daily-rite"
+      ],
+      "variants": {
+        "low": "The daily rite is watching, carrying and scrubbing. The band wades into the cold shallows until each rite ends. I carry.",
+        "high": "The daily rite is three jobs: watching, carrying and scrubbing. Our band watches the stair and carries the offerings inside, then wades into the shallows until each rite ends. The water is cold. Rest by the stair first if you mean to try it. My own part is the carrying."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n2-4.about-sithis",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-4",
+      "keys": {
+        "topic": "topic.about-sithis"
+      },
+      "words": "Sithis is the void god of change, called Raj-Sithis the Changer in the old speech. The priests teach that death is Sithis at work, so a person who dies has changed. Nothing has been done to wrong them. The bowls I carry in are laid before him.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-sithis.default",
+        "hash": "bf760158"
+      },
+      "factIds": [
+        "fact.sithis.death-change"
+      ],
+      "variants": {
+        "low": "Sithis is the void god of change. The priests teach that death is Sithis at work, so a person who dies has changed.",
+        "high": "Sithis is the void god of change, called Raj-Sithis the Changer in the old speech. The priests teach that death is Sithis at work, so a person who dies has changed. Nothing has been done to wrong them. The bowls I carry in are laid before him. You may lay one too."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.teeth-of-sithis-nisswo-teeth.passing",
+      "type": "bark",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.nisswo-teeth",
+      "slot": "passing",
+      "words": "A pilgrim comes.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.teeth-of-sithis-nisswo-teeth.at-work",
+      "type": "bark",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.nisswo-teeth",
+      "slot": "at-work",
+      "words": "Your gift?",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.teeth-of-sithis-n1.passing",
+      "type": "bark",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n1",
+      "slot": "passing",
+      "words": "Two strokes. Scrubbing follows.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.teeth-of-sithis-n1.at-work",
+      "type": "bark",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n1",
+      "slot": "at-work",
+      "words": "The bell again.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.teeth-of-sithis-the-one.passing",
+      "type": "bark",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.the-one",
+      "slot": "passing",
+      "words": "Tide turns soon.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.teeth-of-sithis-the-one.at-work",
+      "type": "bark",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.the-one",
+      "slot": "at-work",
+      "words": "Green creeps back by noon.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.teeth-of-sithis-n2.passing",
+      "type": "bark",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2",
+      "slot": "passing",
+      "words": "Cannot feel my legs.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.teeth-of-sithis-n2.at-work",
+      "type": "bark",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2",
+      "slot": "at-work",
+      "words": "Cold in here today.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.teeth-of-sithis-n2.night",
+      "type": "bark",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2",
+      "slot": "night",
+      "words": "Who is out on the water?",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.teeth-of-sithis-n2-2.passing",
+      "type": "bark",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-2",
+      "slot": "passing",
+      "words": "Stair duty.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.teeth-of-sithis-n2-2.at-work",
+      "type": "bark",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-2",
+      "slot": "at-work",
+      "words": "Stair is quiet.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.teeth-of-sithis-n2-3.passing",
+      "type": "bark",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-3",
+      "slot": "passing",
+      "words": "Third pilgrim since the lamps.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.teeth-of-sithis-n2-3.at-work",
+      "type": "bark",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-3",
+      "slot": "at-work",
+      "words": "Keep off the stair.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.teeth-of-sithis-n2-3.night",
+      "type": "bark",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-3",
+      "slot": "night",
+      "words": "Who carries that lamp?",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.teeth-of-sithis-n2-4.passing",
+      "type": "bark",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-4",
+      "slot": "passing",
+      "words": "Set down. Stays down.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.teeth-of-sithis-n2-4.at-work",
+      "type": "bark",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-4",
+      "slot": "at-work",
+      "words": "Careful with that bowl.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n2-2.about-nisswo",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-2",
+      "keys": {
+        "topic": "topic.about-nisswo"
+      },
+      "words": "Nisswo is the name of Sithis's priests. They travel, so every village hears more than one reading of the faith. Some of them keep this temple. Their readings are their business.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-nisswo.default",
+        "hash": "ad4e10a0"
+      },
+      "factIds": [
+        "fact.nisswo.travel"
+      ],
+      "variants": {
+        "low": "Priests of Sithis. They travel. That is all I know.",
+        "high": "Nisswo is the name of Sithis's priests. They travel, so every village hears more than one reading of the faith. Some of them keep this temple. Their readings are their business, not mine."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n1.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n1",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "Imperial hands made the Border road and the Prison road. The Mile House was their waystation. Folk keep calling them by the Imperial names. The Prison road continues toward the Rose. A dry rise beside it holds the Tag House.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.imperial",
+        "fact.road.old-names",
+        "fact.road.tag-house"
+      ],
+      "variants": {
+        "low": "Old Imperial roads. The Prison road runs toward the Rose. The Tag House sits on a dry rise.",
+        "high": "Imperial hands made the Border road and the Prison road. The Mile House was their waystation. Folk keep calling them by the Imperial names. The Prison road continues toward the Rose. A dry rise beside it holds the Tag House."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n2-2.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-2",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "The Prison road is an old Imperial road, still called that by everyone. A dry rise beside it holds the Tag House. I have not walked it.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.imperial",
+        "fact.road.old-names",
+        "fact.road.tag-house"
+      ],
+      "variants": {
+        "low": "Old Imperial road. Ask a carter.",
+        "high": "The Prison road is an old Imperial road, still called that by everyone along it. A dry rise beside it holds the Tag House. I have not walked it, only heard the carters."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n2-4.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2-4",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "The Empire made the Prison road and the Border road. The Mile House was an Imperial waystation. Folk here still call all three by those names. The Prison road leads on to the Rose. Next to that road, on dry ground a little raised, stands the Tag House.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.imperial",
+        "fact.road.old-names",
+        "fact.road.tag-house"
+      ],
+      "variants": {
+        "low": "The Prison road is an old Imperial road toward the Rose. A Tag House stands on dry ground near it.",
+        "high": "The Empire made the Prison road and the Border road. The Mile House was an Imperial waystation. Folk here still call all three by those names. The Prison road leads on to the Rose. Next to that road, on dry ground a little raised, stands the Tag House. Pilgrims who come up that way often carry the finest bowls."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-n2.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.n2",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "The Prison road is one of the old Imperial roads. It runs toward the Rose, with the Tag House by it on a dry rise. Folk still use the old names for them, Mile House for the waystation, Border road for the other road.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.imperial",
+        "fact.road.old-names",
+        "fact.road.tag-house"
+      ],
+      "variants": {
+        "low": "An old Imperial road, still called by its old name. It runs toward the Rose, with the Tag House by it on a dry rise.",
+        "high": "The Prison road is an old Imperial road. On a dry rise by its side stands the Tag House. It runs on toward the Rose. People still use the old names for it, for the Border road and for the Mile House, the old waystation."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-nisswo-teeth.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.nisswo-teeth",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "The Prison road is an old Imperial road. People still call it by that name. The Tag House is on a dry rise by the road. I have not walked it, because my own road ends at the water.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.imperial",
+        "fact.road.old-names",
+        "fact.road.tag-house"
+      ],
+      "variants": {
+        "low": "An old Imperial road, still called the Prison road. The Tag House sits on a dry rise by it. I have not walked it.",
+        "high": "The Prison road is an old Imperial road. People still use that name. On a dry rise by the road is the Tag House. I know it only from the pilgrims who come that way."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.teeth-of-sithis-the-one.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.teeth-of-sithis.the-one",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "Those are Imperial names, old ones. The Border road and the Prison road were laid by the Empire. The Mile House is a waystation on them. We still use the Empire's names. Toward the Rose, that is where the Prison road leads. Beside it is the Tag House, up on a dry rise.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.imperial",
+        "fact.road.old-names",
+        "fact.road.tag-house"
+      ],
+      "variants": {
+        "low": "Old Imperial roads and a waystation, with the old names still in use. Toward the Rose, that is where the Prison road leads. The Tag House sits up on dry ground beside it.",
+        "high": "Those are Imperial names, old ones. The Border road and the Prison road were laid by the Empire. The Mile House is a waystation on them. We still use the Empire's names. Toward the Rose, that is where the Prison road leads. Beside it is the Tag House, up on dry ground, a fair place to rest your feet."
+      }
+    }
+  ],
+  "people": [
+    {
+      "id": "npc.mercantile-coast.teeth-of-sithis.n1",
+      "name": "Zaxi-Rekh",
+      "role": "a priest",
+      "services": [],
+      "topics": [
+        "topic.latest-rumours",
+        "topic.teeth-lost-purpose"
+      ]
+    },
+    {
+      "id": "npc.mercantile-coast.teeth-of-sithis.nisswo-teeth",
+      "name": "Ohl-Nakka",
+      "role": "nisswo of the Teeth",
+      "services": [],
+      "topics": [
+        "topic.latest-rumours",
+        "topic.teeth-lost-purpose",
+        "topic.teeth-offering"
+      ]
+    }
+  ]
+}

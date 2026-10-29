@@ -1,0 +1,329 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "world-schema/items.v2",
+ "title": "The Item home table (2.3a, standard 18)",
+ "type": "object",
+ "required": [
+  "schemaVersion",
+  "domain",
+  "entries",
+  "sets"
+ ],
+ "properties": {
+  "schemaVersion": {
+   "const": 2
+  },
+  "domain": {
+   "const": "item"
+  },
+  "entries": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "id",
+     "status",
+     "name",
+     "kind",
+     "pocket",
+     "verb",
+     "value",
+     "weightKg",
+     "ladder",
+     "model",
+     "icon",
+     "stackable",
+     "unique"
+    ],
+    "properties": {
+     "id": {
+      "type": "string",
+      "pattern": "^item\\.[a-z0-9]+(-[a-z0-9]+)*$"
+     },
+     "status": {
+      "enum": [
+       "canon",
+       "derived"
+      ]
+     },
+     "name": {
+      "type": "string",
+      "minLength": 1
+     },
+     "kind": {
+      "enum": [
+       "weapon",
+       "armour",
+       "clothing",
+       "consumable",
+       "book",
+       "note",
+       "key",
+       "tool",
+       "light",
+       "misc",
+       "quest"
+      ]
+     },
+     "subkind": {
+      "type": "string"
+     },
+     "set": {
+      "type": "string"
+     },
+     "pocket": {
+      "enum": [
+       "bag",
+       "keyItems"
+      ]
+     },
+     "unique": {
+      "type": "boolean"
+     },
+     "stackable": {
+      "type": "boolean"
+     },
+     "verb": {
+      "enum": [
+       "take",
+       "read",
+       "harvest",
+       "light",
+       "equip"
+      ]
+     },
+     "value": {
+      "type": "number",
+      "minimum": 0
+     },
+     "weightKg": {
+      "type": "number",
+      "minimum": 0
+     },
+     "condition": {
+      "oneOf": [
+       {
+        "type": "null"
+       },
+       {
+        "type": "object",
+        "required": [
+         "max"
+        ],
+        "properties": {
+         "max": {
+          "type": "number",
+          "exclusiveMinimum": 0
+         },
+         "wear": {
+          "enum": [
+           "hit",
+           "struck",
+           "burn",
+           "use"
+          ]
+         },
+         "wearPerUse": {
+          "type": "number",
+          "exclusiveMinimum": 0
+         }
+        }
+       }
+      ]
+     },
+     "ladder": {
+      "type": "object",
+      "required": [
+       "band",
+       "position"
+      ],
+      "properties": {
+       "band": {
+        "enum": [
+         "D1",
+         "D2",
+         "D3",
+         "D4",
+         "D5"
+        ]
+       },
+       "position": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+       }
+      }
+     },
+     "model": {
+      "oneOf": [
+       {
+        "type": "string",
+        "minLength": 1
+       },
+       {
+        "type": "object",
+        "required": [
+         "male",
+         "female"
+        ],
+        "properties": {
+         "male": {
+          "type": "string"
+         },
+         "female": {
+          "type": "string"
+         }
+        }
+       }
+      ]
+     },
+     "icon": {
+      "type": "string",
+      "minLength": 1
+     },
+     "lock": {
+      "type": "string",
+      "pattern": "^lock\\."
+     },
+     "textRef": {
+      "type": "string"
+     },
+     "teaches": {
+      "type": "string"
+     },
+     "spellId": {
+      "type": "string"
+     },
+     "bound": {
+      "type": "boolean"
+     },
+     "soulGem": {
+      "type": "object",
+      "required": ["size", "capacity", "filled"],
+      "properties": {
+       "size": {"enum": ["petty", "lesser", "common", "greater", "grand"]},
+       "capacity": {"type": "integer"},
+       "filled": {"type": "boolean"},
+       "holds": {"enum": ["corruption"]}
+      }
+     },
+     "enchantment": {
+      "type": "object",
+      "required": ["effectId", "magnitude", "duration", "chargeMax"],
+      "properties": {
+       "effectId": {"type": "string"},
+       "magnitude": {"type": "number", "exclusiveMinimum": 0},
+       "duration": {"type": "number", "minimum": 0},
+       "chargeMax": {"type": "number", "minimum": 0}
+      }
+     },
+     "harvestedFrom": {
+      "type": "string"
+     },
+     "materialFrom": {
+      "type": "string",
+      "pattern": "^.+\\.es[mpl]:(KYWD|COBJ|WEAP|ARMO) \\S+ \\S+$"
+     },
+     "quest": {
+      "type": ["string", "null"],
+      "pattern": "^quest\\."
+     },
+     "whyHere": {
+      "type": "string"
+     },
+     "description": {
+      "type": "string"
+     },
+     "sources": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     }
+    },
+    "allOf": [
+     {
+      "if": {
+       "properties": {
+        "pocket": {
+         "const": "keyItems"
+        }
+       }
+      },
+      "then": {
+       "properties": {
+        "weightKg": {
+         "const": 0
+        }
+       }
+      }
+     },
+     {
+      "if": {
+       "properties": {
+        "kind": {
+         "const": "key"
+        }
+       }
+      },
+      "then": {
+       "required": [
+        "lock"
+       ]
+      }
+     },
+     {
+      "if": {
+       "properties": {
+        "kind": {
+         "enum": [
+          "book",
+          "note"
+         ]
+        }
+       }
+      },
+      "then": {
+       "required": [
+        "textRef"
+       ]
+      }
+     },
+     {
+      "if": {
+       "properties": {
+        "kind": {
+         "enum": [
+          "weapon",
+          "armour"
+         ]
+        }
+       }
+      },
+      "then": {
+       "required": [
+        "set"
+       ]
+      },
+      "else": {
+       "required": [
+        "whyHere"
+       ]
+      }
+     }
+    ]
+   }
+  },
+  "sets": {
+   "type": "object",
+   "additionalProperties": {
+    "type": "object",
+    "required": [
+     "name",
+     "whyHere",
+     "tier"
+    ]
+   }
+  }
+ }
+}

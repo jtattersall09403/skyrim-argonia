@@ -1,5 +1,8 @@
 # 0008: Infrastructure: AWS London, an x86 build VM and an on-demand GPU box, under $100 a month
 
+**Note (owner, 2026-10-29):** October 2026 is over the cap (about $357 month to date on the 29th) because of the
+old project's costlier way of working in its first four weeks; the $100 cap binds from November 2026.
+
 **Status:** decided 2026-10-27 (owner: AWS, max $100/month for infrastructure, not Hetzner, "as cheaply as
 possible", London). Prices re-measured in 0.1 and recorded in [infra/README.md](../../infra/README.md).
 

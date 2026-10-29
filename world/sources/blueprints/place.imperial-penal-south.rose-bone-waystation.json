@@ -1,0 +1,4141 @@
+{
+  "schemaVersion": 1,
+  "blueprint": {
+    "id": "place.imperial-penal-south.rose-bone-waystation",
+    "seed": "place.imperial-penal-south.rose-bone-waystation",
+    "causalModel": {
+      "founding": "Argonians die in the Rose. Their bones must reach the dirt. The Chainbreakers built a station near the Blackrose road to receive the bones. The station stands 189 m from the Prison road and not on it.",
+      "siteAdvantages": "The station stands on a dry rise. The rise lies between the Prison road and the tracks east to the villages. The Rose's people hand a body to the villages' people there.",
+      "occupantsMotive": "The Rose's families release the dead at the station for a fee. The families call the fee a carriage charge. The Chainbreakers pay the fee and record every payment.",
+      "pressures": "The fee is the most resented transaction in the south. Both sides need the fee to continue.",
+      "wouldChangeIf": "If the Rose refused to release the dead, the arrangement would end. The refusal would put the Chainbreakers and the families in open conflict."
+    },
+    "boundary": [
+      [
+        0.343121,
+        0.886689
+      ],
+      [
+        0.352614,
+        0.886689
+      ],
+      [
+        0.352614,
+        0.894012
+      ],
+      [
+        0.343121,
+        0.894012
+      ]
+    ],
+    "districts": [
+      {
+        "id": "district.rose-bone-waystation.the-rise",
+        "kind": "shrine",
+        "cultureKit": "argonian",
+        "wealth": "poor",
+        "boundary": [
+          [
+            0.343121,
+            0.886689
+          ],
+          [
+            0.343121,
+            0.887562804
+          ],
+          [
+            0.346422345,
+            0.891026402
+          ],
+          [
+            0.346766711,
+            0.891246797
+          ],
+          [
+            0.34693224,
+            0.891305914
+          ],
+          [
+            0.34737402,
+            0.891305914
+          ],
+          [
+            0.350434458,
+            0.89105359
+          ],
+          [
+            0.350481313,
+            0.888582046
+          ],
+          [
+            0.350481805,
+            0.888500622
+          ],
+          [
+            0.350410943,
+            0.888161697
+          ],
+          [
+            0.350352976,
+            0.887997763
+          ],
+          [
+            0.350184244,
+            0.887809884
+          ],
+          [
+            0.349777431,
+            0.887639162
+          ],
+          [
+            0.346151296,
+            0.886689
+          ]
+        ],
+        "notes": "A thatched handover shelter on a low dry rise, with the keeper's hut beside it and a way leaving on each side.",
+        "why": {
+          "what": "The district is the rise, the handover shelter on it and the keeper's hut.",
+          "whyHere": "The rise lies between the Prison road and the tracks east to the villages. Both parties can reach the rise without entering the other's ground.",
+          "whySpot": "The shelter stands on the flattest part of the rise. The builders levelled the ground under the shelter.",
+          "whyNeighbours": "Blackrose stands about 300 m north-west of the rise, measured at 275 m. The Rose, Blackrose Prison, stands about 500 m west-south-west, measured at 521 m. The ferry stage lies 94 m away. The bonded stores lie 180 m away.",
+          "playerPurpose": "The rise serves the handover of the dead, the fee and the record of the fee.",
+          "microGeography": "The ground is firm and gently sloping grassland. The ground is drier than the marsh to the west."
+        }
+      }
+    ],
+    "parcels": [
+      {
+        "id": "parcel.rose-bone-waystation.handover-shelter",
+        "districtId": "district.rose-bone-waystation.the-rise",
+        "use": "shrine",
+        "buildingFamily": "htbm-argonian-village",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "The shelter's open front faces north onto the two ways. The two ways end at the shelter's two front corners. The Rose's way ends at the west corner. The villages' way ends at the east corner.",
+        "why": {
+          "what": "The handover shelter is a thatched half pavilion on log posts. The shelter is open at the front.",
+          "whyHere": "The dead change hands under one roof. Both parties stand in sight of each other.",
+          "whySpot": "The shelter stands on a pad of levelled earth at the top of the rise.",
+          "whyNeighbours": "The keeper's hut stands a short walk east of the shelter. The hut stands on the villages' side.",
+          "playerPurpose": "The shelter receives the Rose's dead. The keeper tags the dead and wraps them for the road home.",
+          "microGeography": "Trodden earth lies under the thatch. A row of candles crosses the floor between the two halves."
+        },
+        "playerPurpose": [
+          {
+            "kind": "lore-fragment",
+            "tier": "medium",
+            "note": "The handover of the Rose's dead, the tags and the wrapping for the road home."
+          },
+          {
+            "kind": "quest-stage",
+            "tier": "major",
+            "socketRef": "socket.rose-bone-waystation.whiterose-prison-ruin-procession",
+            "note": "The procession bearing the dead from the prison ruin stops at the shelter."
+          }
+        ],
+        "assetRef": "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/orcawninghalf01",
+        "centreUV": [
+          0.34718895,
+          0.890349788
+        ],
+        "yawDeg": 180.0,
+        "scale": 1.0,
+        "yMeasured": 10.26,
+        "assembly": [
+          {
+            "id": "n-somnalius-fern",
+            "asset": "bmv:landscape/plants/fern01",
+            "atM": [
+              13.7,
+              2.8
+            ],
+            "yaw": 220.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 9.7582
+          },
+          {
+            "id": "p-bench",
+            "asset": "vanilla:furniture/farm/farmbench01",
+            "atM": [
+              7.7,
+              -1.0
+            ],
+            "yaw": 210.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 10.1175
+          },
+          {
+            "id": "p-brazier",
+            "asset": "vanilla:clutter/imperial/impbrazier01",
+            "atM": [
+              5.4,
+              -2.2
+            ],
+            "yaw": 180.0,
+            "on": "ground",
+            "layer": "light",
+            "evidence": "measured",
+            "yMeasured": 10.124
+          },
+          {
+            "id": "s-bones-arm",
+            "asset": "vanilla:clutter/bones/humanarmleft",
+            "atM": [
+              1.4,
+              -1.62
+            ],
+            "yaw": 275.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 10.2065
+          },
+          {
+            "id": "s-bones-rib1",
+            "asset": "vanilla:clutter/bones/humanribcage",
+            "atM": [
+              2.7,
+              -0.4
+            ],
+            "yaw": 180.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 10.3066
+          },
+          {
+            "id": "s-bones-rib2",
+            "asset": "vanilla:clutter/bones/humanribcage",
+            "atM": [
+              1.4,
+              -2.05
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 10.3066
+          },
+          {
+            "id": "s-bones-skull1",
+            "asset": "kotm:issgard/clutter/bones/issgard_boneargonianskullfull",
+            "atM": [
+              2.4,
+              1.05
+            ],
+            "yaw": 160.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 10.2748
+          },
+          {
+            "id": "s-bones-skull2",
+            "asset": "kotm:issgard/clutter/bones/issgard_boneargonianskullfull",
+            "atM": [
+              1.4,
+              1.05
+            ],
+            "yaw": 205.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 10.2748
+          },
+          {
+            "id": "s-bones-skull3",
+            "asset": "kotm:issgard/clutter/bones/issgard_boneargonianskullfull",
+            "atM": [
+              2.05,
+              -2.05
+            ],
+            "yaw": 280.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 10.2748
+          },
+          {
+            "id": "s-bones-spine",
+            "asset": "vanilla:clutter/bones/humanspine",
+            "atM": [
+              0.3,
+              1.1
+            ],
+            "yaw": 260.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 10.2502
+          },
+          {
+            "id": "s-chime1",
+            "asset": "histtree:skyfall/sleeping tree overhaul/windchimehavok",
+            "atM": [
+              1.9698,
+              -0.0161
+            ],
+            "yaw": 180.0,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "s-shelter",
+              "unmined": "reader-approved r2"
+            },
+            "upM": 3.0494
+          },
+          {
+            "id": "s-chime2",
+            "asset": "histtree:skyfall/sleeping tree overhaul/windchimehavok",
+            "atM": [
+              2.4173,
+              -1.19
+            ],
+            "yaw": 180.0,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "s-shelter",
+              "unmined": "reader-approved r2"
+            },
+            "upM": 3.1649
+          },
+          {
+            "id": "s-hp-basket1",
+            "asset": "vanilla:clutter/basketclosed01",
+            "atM": [
+              2.0,
+              0.4
+            ],
+            "yaw": 200.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 10.1546
+          },
+          {
+            "id": "s-hp-basket2",
+            "asset": "vanilla:clutter/basketclosed01",
+            "atM": [
+              1.0,
+              0.4
+            ],
+            "yaw": 120.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 10.1546
+          },
+          {
+            "id": "s-hp-basket3",
+            "asset": "vanilla:clutter/basketclosed01",
+            "atM": [
+              1.8,
+              -1.2
+            ],
+            "yaw": 255.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 10.1546
+          },
+          {
+            "id": "s-hp-urn",
+            "asset": "mudmother:gv_meshes/argoniannest/paintedurn01",
+            "atM": [
+              4.3,
+              -0.4
+            ],
+            "yaw": 180.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 10.1613
+          },
+          {
+            "id": "s-hv-basket",
+            "asset": "mudmother:gv_meshes/argoniannest/basketfull",
+            "atM": [
+              -3.3,
+              1.6
+            ],
+            "yaw": 250.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 10.1954
+          },
+          {
+            "id": "s-hv-flat1",
+            "asset": "vanilla:clutter/containers/miscsacklargeflat01",
+            "atM": [
+              -3.7,
+              0.4
+            ],
+            "yaw": 195.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 10.539
+          },
+          {
+            "id": "s-hv-flat2",
+            "asset": "vanilla:clutter/containers/miscsacklargeflat01",
+            "atM": [
+              -3.8,
+              -0.6
+            ],
+            "yaw": 170.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 10.539
+          },
+          {
+            "id": "s-hv-table",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/wickertable01",
+            "atM": [
+              -1.7,
+              -0.4
+            ],
+            "yaw": 180.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 10.1568
+          },
+          {
+            "id": "s-hv-urn1",
+            "asset": "mudmother:gv_meshes/argoniannest/paintedurn01",
+            "atM": [
+              -4.0,
+              -1.9
+            ],
+            "yaw": 180.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 10.1613
+          },
+          {
+            "id": "s-hv-urn2",
+            "asset": "mudmother:gv_meshes/argoniannest/paintedurn01",
+            "atM": [
+              -2.8,
+              -2.7
+            ],
+            "yaw": 220.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 10.1613
+          },
+          {
+            "id": "s-line1",
+            "asset": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+            "atM": [
+              -0.0,
+              2.0
+            ],
+            "yaw": 180.0,
+            "on": "ground",
+            "layer": "light",
+            "evidence": "measured",
+            "yMeasured": 10.1888
+          },
+          {
+            "id": "s-line2",
+            "asset": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+            "atM": [
+              0.4,
+              -0.9
+            ],
+            "yaw": 180.0,
+            "on": "ground",
+            "layer": "light",
+            "evidence": "measured",
+            "yMeasured": 10.1888
+          },
+          {
+            "id": "s-line3",
+            "asset": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+            "atM": [
+              0.4,
+              -2.0
+            ],
+            "yaw": 180.0,
+            "on": "ground",
+            "layer": "light",
+            "evidence": "measured",
+            "yMeasured": 10.1888
+          },
+          {
+            "id": "s-tagrack",
+            "asset": "mudmother:gv_meshes/argoniannest/argonianbonechime01",
+            "atM": [
+              -1.3822,
+              -1.5566
+            ],
+            "yaw": 180.0,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "s-shelter",
+              "unmined": "reader-approved r17"
+            },
+            "upM": 2.2888
+          }
+        ],
+        "footprint": [
+          [
+            0.34763243,
+            0.890303677
+          ],
+          [
+            0.347618868,
+            0.890584412
+          ],
+          [
+            0.347608018,
+            0.890604755
+          ],
+          [
+            0.347370682,
+            0.89075665
+          ],
+          [
+            0.347351695,
+            0.890763431
+          ],
+          [
+            0.347026205,
+            0.890763431
+          ],
+          [
+            0.347007218,
+            0.89075665
+          ],
+          [
+            0.346769882,
+            0.890604755
+          ],
+          [
+            0.346759032,
+            0.890584412
+          ],
+          [
+            0.34674547,
+            0.890303677
+          ],
+          [
+            0.346749539,
+            0.890283334
+          ],
+          [
+            0.346768526,
+            0.890267059
+          ],
+          [
+            0.346771238,
+            0.890264347
+          ],
+          [
+            0.34718895,
+            0.890189756
+          ],
+          [
+            0.347606662,
+            0.890264347
+          ],
+          [
+            0.347609374,
+            0.890267059
+          ],
+          [
+            0.347628361,
+            0.890283334
+          ]
+        ]
+      },
+      {
+        "id": "parcel.rose-bone-waystation.keepers-house",
+        "districtId": "district.rose-bone-waystation.the-rise",
+        "use": "civic",
+        "buildingFamily": "htbm-argonian-village",
+        "interior": {
+          "kind": "shell"
+        },
+        "orientationWhy": "The keeper's hut door faces south-west. The door faces toward the shelter and the way to it.",
+        "why": {
+          "what": "The keeper's hut is a bamboo store hut on short stilts. The Chainbreakers' keeper holds the carriers' stores there. The keeper writes down every fee paid.",
+          "whyHere": "The hut stands on the villages' side of the shelter. The villages' side is the Chainbreakers' charge.",
+          "whySpot": "The hut stands on a levelled pad north-east of the shelter. The pad lies above the villages' way.",
+          "whyNeighbours": "The shelter is a short walk south-west of the hut. The track east starts below the hut door.",
+          "playerPurpose": "The hut holds the keeper, the ledger of carriage charges and the carriers' stores.",
+          "microGeography": "The hut is bamboo on a mud pad. A wicker table and chairs stand outside the door."
+        },
+        "playerPurpose": [
+          {
+            "kind": "actionable-information",
+            "tier": "medium",
+            "note": "The keeper's ledger of carriage charges, kept at the table by the door: every fee paid at the shelter, by date, name and amount."
+          },
+          {
+            "kind": "cache",
+            "tier": "medium",
+            "note": "The Chainbreakers' stores for the carriers: barrels, dried fish and wine."
+          },
+          {
+            "kind": "quest-stage",
+            "tier": "major",
+            "socketRef": "socket.rose-bone-waystation.q-evidence-carriage-charges",
+            "note": "A quest asks the player to check the ledger of carriage charges."
+          }
+        ],
+        "assetRef": "composite:stilt/bamboohut02-with-door",
+        "centreUV": [
+          0.349494502,
+          0.888586719
+        ],
+        "yawDeg": 290.0,
+        "yMeasured": 9.7407,
+        "assembly": [
+          {
+            "id": "k-candle",
+            "asset": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+            "atM": [
+              -2.7348,
+              -2.8357
+            ],
+            "yaw": 70.0,
+            "on": "ground",
+            "layer": "light",
+            "evidence": "measured",
+            "yMeasured": 9.6588
+          },
+          {
+            "id": "k-chimes",
+            "asset": "histtree:skyfall/sleeping tree overhaul/windchimehavok",
+            "atM": [
+              -3.9421,
+              -0.3155
+            ],
+            "yaw": 290.0,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "b-keeper",
+              "unmined": "reader-approved r2"
+            },
+            "upM": 2.6177
+          },
+          {
+            "id": "k-tagrack",
+            "asset": "mudmother:gv_meshes/argoniannest/argonianbonechime01",
+            "atM": [
+              -3.4347,
+              1.3436
+            ],
+            "yaw": 65.0,
+            "on": "parent",
+            "layer": "clutter",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "unmined",
+              "mountedOn": "b-keeper",
+              "unmined": "reader-approved r17"
+            },
+            "upM": 2.0418
+          },
+          {
+            "id": "k-totem",
+            "asset": "mudmother:gv_meshes/argoniannest/argoniantotem01",
+            "atM": [
+              -5.3666,
+              -4.2189
+            ],
+            "yaw": 290.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 9.5153
+          },
+          {
+            "id": "k-ty-basket",
+            "asset": "mudmother:gv_meshes/argoniannest/basketsmall01",
+            "atM": [
+              -7.4916,
+              3.6845
+            ],
+            "yaw": 80.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 9.6297
+          },
+          {
+            "id": "k-ty-chair1",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/wickerchair01",
+            "atM": [
+              -6.877,
+              1.8645
+            ],
+            "yaw": 160.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 9.5838
+          },
+          {
+            "id": "k-ty-chair2",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/wickerchair01",
+            "atM": [
+              -5.8682,
+              4.0514
+            ],
+            "yaw": 340.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 9.5838
+          },
+          {
+            "id": "k-ty-sack",
+            "asset": "vanilla:clutter/containers/miscsacklarge",
+            "atM": [
+              -6.886,
+              0.3779
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 9.8161
+          },
+          {
+            "id": "k-ty-table",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/wickertable01",
+            "atM": [
+              -6.3726,
+              2.958
+            ],
+            "yaw": 100.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 9.6268
+          },
+          {
+            "id": "k-ty-urn",
+            "asset": "mudmother:gv_meshes/argoniannest/paintedurn01",
+            "atM": [
+              -7.4402,
+              4.4107
+            ],
+            "yaw": 70.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 9.6313
+          },
+          {
+            "id": "k-ty-wicker",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/wickerbasket01",
+            "atM": [
+              -8.338,
+              1.6514
+            ],
+            "yaw": 70.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 9.6214
+          },
+          {
+            "id": "k-ty-wood",
+            "asset": "vanilla:clutter/firewood/firewoodpilemedium01",
+            "atM": [
+              -6.7133,
+              6.7001
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 9.8681
+          }
+        ],
+        "footprint": [
+          [
+            0.349299493,
+            0.888987683
+          ],
+          [
+            0.349288951,
+            0.888980959
+          ],
+          [
+            0.349281768,
+            0.888976902
+          ],
+          [
+            0.349073626,
+            0.888727955
+          ],
+          [
+            0.349065984,
+            0.888709297
+          ],
+          [
+            0.349030726,
+            0.888429464
+          ],
+          [
+            0.349038148,
+            0.888409074
+          ],
+          [
+            0.34905681,
+            0.888385558
+          ],
+          [
+            0.34924503,
+            0.888217372
+          ],
+          [
+            0.349255923,
+            0.888211234
+          ],
+          [
+            0.349262877,
+            0.888207992
+          ],
+          [
+            0.349582343,
+            0.888151079
+          ],
+          [
+            0.349602851,
+            0.888154214
+          ],
+          [
+            0.349862017,
+            0.888262975
+          ],
+          [
+            0.349877422,
+            0.888280128
+          ],
+          [
+            0.349887379,
+            0.888308287
+          ],
+          [
+            0.349938983,
+            0.888555102
+          ],
+          [
+            0.349938632,
+            0.888567963
+          ],
+          [
+            0.349938861,
+            0.888575263
+          ],
+          [
+            0.349827537,
+            0.888881123
+          ],
+          [
+            0.349814671,
+            0.888896646
+          ],
+          [
+            0.34961649,
+            0.889052547
+          ],
+          [
+            0.349590763,
+            0.889067718
+          ],
+          [
+            0.349567936,
+            0.889070955
+          ]
+        ]
+      }
+    ],
+    "doors": [
+      {
+        "id": "door.imperial-penal-south.rose-bone-waystation.1",
+        "parcelId": "parcel.rose-bone-waystation.keepers-house",
+        "doorType": "load",
+        "fills": [
+          "promise.rose-bone-waystation.interior-principal"
+        ],
+        "thresholdUV": [
+          0.349202781,
+          0.888837617
+        ],
+        "facingDeg": 229.3,
+        "interiorClaim": {
+          "interiorRef": "htbm-hut-int",
+          "sizeClass": "medium",
+          "culture": "argonian",
+          "tier": "A",
+          "cellId": "CIPHTBMHutInterior01",
+          "plugin": "Here There Be Monsters - Curse of Cipactli.esp",
+          "interiorLoadDoorRef": "06029E47",
+          "arrivalMarker": {
+            "positionM": [
+              -2.0483,
+              0.1138,
+              -1.2517
+            ],
+            "yawDeg": 115.0
+          },
+          "why": "9 of 9 cells plugins link to htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/bamboohut02 (the base shell of composite:stilt/bamboohut02-with-door) pass; CIPHTBMHutInterior01 is a storage, 1 exterior load door; ties broken on the plugin's most-used cell (2 door links), then cell id"
+        }
+      }
+    ],
+    "routes": [
+      {
+        "id": "route.rose-bone-waystation.the-villages-way",
+        "kind": "footpath",
+        "routing": "straight",
+        "widthM": 2.0,
+        "endsAt": [
+          "terminal.rose-bone-waystation.villages-track",
+          "parcel.rose-bone-waystation.handover-shelter"
+        ],
+        "why": "The villages' way is the end of the track from the villages. The way runs on past the keeper's hut to the east corner of the shelter.",
+        "via": [
+          [
+            0.349901364,
+            0.890553219
+          ],
+          [
+            0.348748588,
+            0.89010567
+          ],
+          [
+            0.348002674,
+            0.890078546
+          ],
+          [
+            0.347433067,
+            0.890119232
+          ]
+        ],
+        "points": [
+          [
+            0.349901364,
+            0.890553219
+          ],
+          [
+            0.348748588,
+            0.89010567
+          ],
+          [
+            0.348002674,
+            0.890078546
+          ],
+          [
+            0.347413319,
+            0.890229822
+          ]
+        ]
+      },
+      {
+        "id": "route.rose-bone-waystation.the-keepers-path",
+        "kind": "footpath",
+        "routing": "straight",
+        "widthM": 1.5,
+        "endsAt": [
+          "route.rose-bone-waystation.the-villages-way",
+          "parcel.rose-bone-waystation.keepers-house"
+        ],
+        "why": "The keeper's path is a short path up from the villages' way to the keeper's door.",
+        "via": [
+          [
+            0.348382412,
+            0.890092108
+          ],
+          [
+            0.349209698,
+            0.888844398
+          ]
+        ],
+        "points": [
+          [
+            0.348382412,
+            0.890092108
+          ],
+          [
+            0.349202781,
+            0.888837617
+          ]
+        ]
+      },
+      {
+        "id": "route.rose-bone-waystation.the-rose-way",
+        "kind": "footpath",
+        "routing": "straight",
+        "widthM": 2.0,
+        "endsAt": [
+          "parcel.rose-bone-waystation.handover-shelter"
+        ],
+        "why": "The Rose's porters use the Rose's way. The way runs from the shelter's west corner down the slope toward the Prison road.",
+        "via": [
+          [
+            0.346944833,
+            0.890119232
+          ],
+          [
+            0.345832743,
+            0.889468253
+          ],
+          [
+            0.344476536,
+            0.888179857
+          ],
+          [
+            0.342713467,
+            0.886348977
+          ]
+        ],
+        "points": [
+          [
+            0.346964581,
+            0.890229822
+          ],
+          [
+            0.345832743,
+            0.889468253
+          ],
+          [
+            0.342713467,
+            0.886348977
+          ]
+        ]
+      }
+    ],
+    "canals": [],
+    "boardwalks": [],
+    "fences": [],
+    "docks": [],
+    "landmarks": [],
+    "questSockets": [
+      {
+        "id": "socket.rose-bone-waystation.q-evidence-carriage-charges",
+        "kind": "evidence",
+        "socketRef": "evidence.tag-house.carriage-charges",
+        "position": [
+          0.349698,
+          0.889605
+        ],
+        "parcel": "parcel.rose-bone-waystation.keepers-house",
+        "fills": [
+          "promise.rose-bone-waystation.evidence-tag-house-carriage-charges"
+        ]
+      },
+      {
+        "id": "socket.rose-bone-waystation.whiterose-prison-ruin-procession",
+        "kind": "scene",
+        "position": [
+          0.347189,
+          0.890025
+        ],
+        "parcel": "parcel.rose-bone-waystation.handover-shelter",
+        "fills": [
+          "promise.rose-bone-waystation.provision-whiterose-prison-ruin"
+        ],
+        "why": "The procession for the dead of White Rose Prison stops at the shelter. The bones change hands there before the road home."
+      }
+    ],
+    "travelServices": [],
+    "occupants": [
+      {
+        "slotId": "tag-keeper",
+        "ladderRef": "modest-d1 official",
+        "cultureRole": "the Chainbreakers' tag-keeper",
+        "worksAt": "parcel.rose-bone-waystation.handover-shelter",
+        "livesAt": "parcel.rose-bone-waystation.handover-shelter"
+      }
+    ],
+    "approaches": [
+      {
+        "id": "approach.rose-bone-waystation.from-the-villages",
+        "mode": "walk",
+        "fromRouteId": "track.imperial-penal-south.rose-bone-waystation",
+        "firstSeen": "parcel.rose-bone-waystation.keepers-house",
+        "viaUV": [
+          [
+            0.354128557,
+            0.89180828
+          ]
+        ],
+        "sequence": "A traveller comes west along the track from the villages. The keeper's hut shows first on the rise, then is hidden by the slope. The thatch of the shelter then appears beyond the hut, with the candles under it.",
+        "wayfinding": "The track ends below the keeper's door. The shelter stands a short walk west."
+      },
+      {
+        "id": "approach.rose-bone-waystation.from-the-prison-road",
+        "mode": "walk",
+        "fromDirection": "north-west",
+        "firstSeen": "parcel.rose-bone-waystation.handover-shelter",
+        "viaUV": [
+          [
+            0.341764,
+            0.885333
+          ]
+        ],
+        "sequence": "A traveller comes off the Prison road across the grass. The shelter's thatch shows on the rise, then the way. The brazier and the bench then show at the shelter's west corner.",
+        "wayfinding": "A worn way climbs from the north-west to the shelter's west corner."
+      }
+    ],
+    "networkTerminals": [
+      {
+        "id": "terminal.rose-bone-waystation.villages-track",
+        "routeId": "track.imperial-penal-south.rose-bone-waystation",
+        "entryUV": [
+          0.349900843,
+          0.89055528
+        ],
+        "wayId": "route.rose-bone-waystation.the-villages-way",
+        "kind": "footpath",
+        "why": "The track from the villages to the east ends below the keeper's door."
+      }
+    ],
+    "combatSpaces": [
+      {
+        "id": "combat.rose-bone-waystation.the-rise",
+        "aroundIds": [
+          "parcel.rose-bone-waystation.handover-shelter",
+          "parcel.rose-bone-waystation.keepers-house"
+        ],
+        "clearanceClass": "open",
+        "why": "Open grass surrounds the shelter and the hut on all sides.",
+        "boundary": [
+          [
+            0.346200387,
+            0.890262954
+          ],
+          [
+            0.346223058,
+            0.890732241
+          ],
+          [
+            0.346357979,
+            0.890985208
+          ],
+          [
+            0.346766711,
+            0.891246797
+          ],
+          [
+            0.34693224,
+            0.891305914
+          ],
+          [
+            0.34744566,
+            0.891305914
+          ],
+          [
+            0.347611189,
+            0.891246797
+          ],
+          [
+            0.347920709,
+            0.891048704
+          ],
+          [
+            0.349950063,
+            0.889480358
+          ],
+          [
+            0.350195478,
+            0.889287299
+          ],
+          [
+            0.350305167,
+            0.889154958
+          ],
+          [
+            0.350480765,
+            0.888672507
+          ],
+          [
+            0.350481805,
+            0.888500622
+          ],
+          [
+            0.350410943,
+            0.888161697
+          ],
+          [
+            0.350352976,
+            0.887997763
+          ],
+          [
+            0.350184244,
+            0.887809884
+          ],
+          [
+            0.349751023,
+            0.88762808
+          ],
+          [
+            0.349575578,
+            0.88760126
+          ],
+          [
+            0.349097922,
+            0.887686355
+          ],
+          [
+            0.34900779,
+            0.887728375
+          ],
+          [
+            0.348936514,
+            0.887768537
+          ],
+          [
+            0.346419636,
+            0.889851165
+          ],
+          [
+            0.346253713,
+            0.88999635
+          ]
+        ]
+      }
+    ],
+    "clearance": {
+      "hardClear": [],
+      "thinned": [],
+      "kept": []
+    },
+    "variants": [
+      {
+        "id": "variant.rose-bone-waystation.base",
+        "changedRefs": [],
+        "serviceOverrides": {},
+        "ambience": "shrine"
+      }
+    ],
+    "scaleGrounding": {
+      "loreSource": "The catalogue record The Tag House is a bone-repatriation waystation of magnitude M1 with one door. The lore source is world/sources/lore/topics/prisons.md. White Rose: Argonian bones in stone prisons must be brought to the dirt.",
+      "population": "1-3",
+      "households": 1,
+      "buildingsPlanned": 2,
+      "npcsPlanned": 1,
+      "why": "The tag-keeper works and sleeps at the shelter. The tag-keeper keeps the stores in the hut. The Rose's porters and the villages' carriers come and go."
+    },
+    "siting": {
+      "dossier": "world/sources/sites/dossiers/rose-bone-waystation.json",
+      "candidates": [
+        {
+          "id": "candidate.rose-bone-waystation.the-rise",
+          "positionM": [
+            2565.0,
+            6560.0
+          ],
+          "chosen": true,
+          "why": "The chosen candidate is the plotted anchor's own rise. The rise is dry firm ground 3 m above the water table. The place's track from the villages already ends there. The rise has room on its west side for a way down toward the Prison road."
+        },
+        {
+          "id": "candidate.rose-bone-waystation.marsh-edge",
+          "positionM": [
+            2525.2,
+            6303.3
+          ],
+          "why": "The rejected candidate is the record's near point. The point lies beside the Rose causeway south of Blackrose.",
+          "rejectedBecause": "The point lies inside the Blackrose disc after the 2026-09-20 island reseat. The record was moved to the rise."
+        }
+      ]
+    },
+    "macroEvidence": [
+      {
+        "sourcePaths": [
+          "assetPlan",
+          "contents",
+          "discovery",
+          "eraLayers",
+          "hostility",
+          "notableNpcSlots",
+          "playerPurpose",
+          "questHooks",
+          "relations",
+          "lootTable",
+          "season",
+          "sitingPrefs",
+          "sockets",
+          "status",
+          "traversalModes",
+          "underwaterAccess",
+          "vibe",
+          "why"
+        ],
+        "evidenceRefs": [
+          "parcel.rose-bone-waystation.handover-shelter",
+          "parcel.rose-bone-waystation.keepers-house",
+          "approach.rose-bone-waystation.from-the-villages",
+          "approach.rose-bone-waystation.from-the-prison-road"
+        ]
+      },
+      {
+        "sourcePaths": [
+          "entrance",
+          "interior"
+        ],
+        "evidenceRefs": [
+          "door.imperial-penal-south.rose-bone-waystation.1",
+          "parcel.rose-bone-waystation.keepers-house"
+        ]
+      }
+    ],
+    "budget": {
+      "maxInstances": 120,
+      "maxUniqueMaterials": 120,
+      "maxTextureMB": 48,
+      "maxColliders": 120
+    },
+    "proseRefs": [
+      {
+        "sourcePath": "approaches[1].sequence",
+        "routeRef": "route.road.blackrose-lilmoth"
+      },
+      {
+        "sourcePath": "causalModel.founding",
+        "placeRef": "place.imperial-penal-south.blackrose"
+      },
+      {
+        "sourcePath": "causalModel.founding",
+        "routeRef": "route.road.blackrose-lilmoth"
+      },
+      {
+        "sourcePath": "causalModel.siteAdvantages",
+        "routeRef": "route.road.blackrose-lilmoth"
+      },
+      {
+        "sourcePath": "districts[0].why.whyHere",
+        "routeRef": "route.road.blackrose-lilmoth"
+      },
+      {
+        "sourcePath": "districts[0].why.whyNeighbours",
+        "placeRef": "place.imperial-penal-south.blackrose"
+      },
+      {
+        "sourcePath": "districts[0].why.whyNeighbours",
+        "placeRef": "place.imperial-penal-south.blackrose-prison"
+      },
+      {
+        "sourcePath": "questSockets[1].why",
+        "placeRef": "place.mercantile-coast.white-rose-prison"
+      },
+      {
+        "sourcePath": "routes[2].why",
+        "routeRef": "route.road.blackrose-lilmoth"
+      }
+    ],
+    "authoredOn": {
+      "wbSchemaVersion": 1,
+      "ground": {
+        "centreM": [
+          2565.0,
+          6560.0
+        ],
+        "halfM": 60.0,
+        "chunks": {
+          "chunk_5_13": "c81bd920e85f5c167c30d3714963b93c749b552d5ea6f18792410cb16ca5228e",
+          "chunk_5_14": "30887966d9badf6c24d73d179b665878111d6581a18f01716b95e43f99848818"
+        },
+        "sha256": "a06450f5c8fcff7c7e7e3264fa94c5690c26142500691c90cecadb226b328dd4"
+      },
+      "kits": {
+        "dungeon-root-v1": "be5fe13fd322efc0912be649fecd63542bca0d975a5111bfd714df72624ee68b",
+        "flora-province-v1": "614056f3ad15751e40b900da6c129b75d858360a69dde416d5078afa2fff7f63",
+        "htbm-hut-int": "cdac8da23cedb18893fd4407f97c8dd84df8ccd206888327c791e05776970e2d",
+        "mudmother-hut-int": "495d9aaad681abc92d8c75eb75ec785050a92e756790389e56322ff93af4daa7",
+        "settlement-imperial-v1": "5f3e1c22df6143bf317e3c805bf5609060846fe7ed128db269584a5aacc6dac8",
+        "settlement-mud-v1": "6d77fb952c587ac2cb229b681d7651adb17459936cc5ea358b061e234f32aa7f",
+        "settlement-root-v1": "71e3df7b247a1ad31db15ba7179f46134fe0d49a711ca890af89815f3a31d12f",
+        "settlement-stilt-v1": "9588481c4c433fab45b4721fdb6348dbc1ffb5dbc9a5f2900387b7d71d4bea6f",
+        "works-v1": "5878e867a195125408f4525f6bc74c03f20a1035f3da79972dded433be81717a"
+      },
+      "layout": {
+        "path": "world/sources/blueprints/rose-bone-waystation.layout.json",
+        "sha256": "96b8d619f0b314b8e02d25e219f2451c6c020a7d0c21246a6088de848522bcbc",
+        "uidSha256": {
+          "b-keeper": "31132cab3fdf4b0419a209c6cf1d458df8e98018c1e6977409f5b8edec12a26c",
+          "k-candle": "ff47b43f411cceacd78ff052ad60131c3d590c9d5ea3deeef7bd0ba9970ecb26",
+          "k-chimes": "6cf5e48cf58450e57607d50f1cfdbe4fb6c2693a4d158df08c27a90978b45c48",
+          "k-tagrack": "e49e0a1549f5fea96a6bbbcefaa10d6c6f74e33a6ce472b7ceee747183eec0c3",
+          "k-totem": "91d434cb9cbd1ad224a3927874e0e9d852cdb5b2d6f0d5634a0b97bc03679371",
+          "k-ty-basket": "2c1804fffa9f96147436bd5cf9257f2f75294bbf5b6425d5571c98c4626e0d56",
+          "k-ty-chair1": "77511bfa3456089f4f95a05a3a2a8645a6f41f9929e544813bf4a13c7a862bca",
+          "k-ty-chair2": "17696057c39a2bf8f0c5468989e3d7b9384216d8103e53560bea27f7a2b04a76",
+          "k-ty-sack": "9cfa260c7cc498865df785864ed0a93f8712a7c7f7d79534b718fe240926951e",
+          "k-ty-table": "e50001575da86ec7b9af35a6860e71adbd7b85eff8c4694549617405bad583ab",
+          "k-ty-urn": "288178984d570c7c0580e960346184cf2200b1808e16870c40c58c18e0e80213",
+          "k-ty-wicker": "b731f09a44f33b7a31a0fbedae9ead02d64b48d6fb0b791ecee5fbbfb6abff4a",
+          "k-ty-wood": "d9c97a7b2973efa8fa9eff3086da17245c5db7341e8e9113ad20bb2ab9fab40c",
+          "n-somnalius-fern": "336437e51ba099eecdbf8b0921d2d9d528776a18202bb992751ba1b7f5cacb4a",
+          "p-bench": "ee483b37d6c484d994dfecc2a24255fb2a0ac7145e6cd1dcc6b202edb17e215b",
+          "p-brazier": "ebb6889bf77c51ba3e479182a0009e982b414193f8bfea96bc2e4532f89eae23",
+          "route.rose-bone-waystation.the-keepers-path": "af43c13d655406240ed515b698b9efb4c0bf5506facb873825eb679f6832e3f9",
+          "route.rose-bone-waystation.the-rose-way": "f07ad4e5cc7f6b7938bc0b3f9f69ae7ef016c2aa4aa290ffd465adc60cb61528",
+          "route.rose-bone-waystation.the-villages-way": "1c1ff112f9170ce59daeb4c6f7ed8d951ff9c2528acff4c9c3787ca61f92f10e",
+          "s-bones-arm": "031d1f04b7c2b383fdd691d4a9cff898c6f03857b92ae64149dc60ea92e20a22",
+          "s-bones-rib1": "359b3241fd56595c91b2f9902b16a7ad1088da658ce6e62905f5b6473140ffbf",
+          "s-bones-rib2": "f1db2473485a9e7a681c8173801f632ab1ad8fdd5eab0a537c324c39150ec8af",
+          "s-bones-skull1": "3914ebe09e454e4610de383eda50f745b7210d947fa22a2be5036431ab5e7532",
+          "s-bones-skull2": "a0cb51923fad5d39366a10f97226cc062f5e2634c6ae72683cf5f4bed1b5bb1d",
+          "s-bones-skull3": "73248277695d48d1302eb917d8d9a903757772481b84da0bd73d9dafcff93f4c",
+          "s-bones-spine": "bb99481c0ae1b3a89930b31a0353281acaef76f214c7fed67709bbb89358efd7",
+          "s-chime1": "113d15cb501671c721d6628d4c77fb9fe4c6ac1180b705e94da5eacfaf2e8f01",
+          "s-chime2": "c32ad64f3f7639d6ea22b6adce018a690d8964cf137ade86a3f2891d59060786",
+          "s-hp-basket1": "e92338d8678d626657cee0eaa4840e17067e06f1581cf1d4cdc17fd67115b531",
+          "s-hp-basket2": "920b3cb38c0376ae8b32d0940d2acd0a0b48bee083da0031b0052b55ab8a9bd8",
+          "s-hp-basket3": "2af02cb5bde5e410be1de05252621e5f15c7ce3721f2f14cd4740b8b25666f79",
+          "s-hp-urn": "199b825d59254eb9dd36a4c3acbcc068761edcd1de3f2e08978b26b413ae2300",
+          "s-hv-basket": "526e072f98bd5750e113a3b0fa47a4a21c1308c6e93cc6a2c1f89d013c2443a7",
+          "s-hv-flat1": "bc6d59fad248d1f72a23f5c17a89fbc6fc621bd754c8f1d2398fad4b6d067e1e",
+          "s-hv-flat2": "e7b522b5aded4e9d7dfd05809c209cb7c4a5ae4ba54d20665848e3b47fdfab97",
+          "s-hv-table": "a94afe478eac3aa85e763294c99b6da313620f8db946f0ca6ba6a48c7c1c16e2",
+          "s-hv-urn1": "2ef507c731bf11ac014969c9ea139d3f10b0b2d8d60e69502b48536c253f66f4",
+          "s-hv-urn2": "fd119c30c6d2744635cf3398e8e4459d5e04a97db291c39cb8fc4cc1295d4635",
+          "s-line1": "95fee9d512f6aef3f5fb0928238c7d33927a82270e2e53c27ad9e3d9b83e26ef",
+          "s-line2": "241f4e406ddee4c18b84b3b5ea5923ee81b6b23bfb0115aa05e6bf80eff3030f",
+          "s-line3": "70da9679afd77bcee844ffa46a7d9822a7e5060ba611ffabc00db8f7149ddad9",
+          "s-shelter": "bcedb57bb2d7bf8a0c8a3e4a0d931251a3f76c22491a87ce30079d6e18344c99",
+          "s-tagrack": "b722f88681a3753b1e89e2ad3b2f0feac1dae3e55e002d89ea2761afc0f0bb44",
+          "yard-keeper": "51b5d5b52439f6d6c7e6202cfca46088a723cd5b22fe5478f8f23f5f79b335ef",
+          "yard-tag-house": "80fc5d2975e4cd405f3b2eee563bf54ba7ff22cdf4d89b5a0a8d2db57da527bb"
+        },
+        "geometrySha256": "ba9936a410273da67044a2bd471b83a445313536bdf2d919a620f02537019798"
+      }
+    },
+    "walkRoutes": {
+      "schemaVersion": 1,
+      "cellM": 0.5,
+      "stepM": 0.45,
+      "slopeMaxDeg": 30.0,
+      "wadeMaxM": 0.7,
+      "routes": {
+        "door:b-keeper": {
+          "points": [
+            [
+              2580.0,
+              10.07,
+              6566.5
+            ],
+            [
+              2580.0,
+              10.09,
+              6566.0
+            ],
+            [
+              2579.5,
+              10.14,
+              6565.5
+            ],
+            [
+              2579.0,
+              10.13,
+              6565.0
+            ],
+            [
+              2578.5,
+              10.05,
+              6564.5
+            ],
+            [
+              2578.0,
+              9.94,
+              6564.0
+            ],
+            [
+              2577.5,
+              9.85,
+              6563.5
+            ],
+            [
+              2577.0,
+              9.81,
+              6563.0
+            ],
+            [
+              2576.5,
+              9.75,
+              6562.5
+            ],
+            [
+              2576.0,
+              9.66,
+              6562.0
+            ],
+            [
+              2575.5,
+              9.63,
+              6561.5
+            ],
+            [
+              2574.5,
+              9.63,
+              6560.5
+            ],
+            [
+              2574.5,
+              9.63,
+              6559.5
+            ],
+            [
+              2574.0,
+              9.63,
+              6559.0
+            ],
+            [
+              2574.0,
+              9.63,
+              6555.0
+            ],
+            [
+              2574.5,
+              9.63,
+              6554.5
+            ]
+          ],
+          "routeM": 14.72,
+          "steepestDeg": 8.7,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0,
+          "parcelId": "parcel.rose-bone-waystation.keepers-house",
+          "doorIds": [
+            "door.imperial-penal-south.rose-bone-waystation.1"
+          ]
+        },
+        "door:b-keeper.1": {
+          "points": [
+            [
+              2580.0,
+              10.07,
+              6566.5
+            ],
+            [
+              2580.0,
+              10.09,
+              6566.0
+            ],
+            [
+              2579.5,
+              10.14,
+              6565.5
+            ],
+            [
+              2579.0,
+              10.13,
+              6565.0
+            ],
+            [
+              2578.5,
+              10.05,
+              6564.5
+            ],
+            [
+              2578.0,
+              9.94,
+              6564.0
+            ],
+            [
+              2577.5,
+              9.85,
+              6563.5
+            ],
+            [
+              2577.0,
+              9.81,
+              6563.0
+            ],
+            [
+              2576.5,
+              9.75,
+              6562.5
+            ],
+            [
+              2576.0,
+              9.66,
+              6562.0
+            ],
+            [
+              2575.5,
+              9.63,
+              6561.5
+            ],
+            [
+              2574.5,
+              9.63,
+              6560.5
+            ],
+            [
+              2574.5,
+              9.63,
+              6559.5
+            ],
+            [
+              2574.0,
+              9.63,
+              6559.0
+            ],
+            [
+              2574.0,
+              9.63,
+              6555.0
+            ],
+            [
+              2574.5,
+              9.63,
+              6554.5
+            ]
+          ],
+          "routeM": 14.72,
+          "steepestDeg": 8.7,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "opening:s-shelter": {
+          "points": [
+            [
+              2580.0,
+              10.07,
+              6566.5
+            ],
+            [
+              2579.0,
+              10.13,
+              6566.5
+            ],
+            [
+              2578.5,
+              10.18,
+              6566.5
+            ],
+            [
+              2578.0,
+              10.22,
+              6566.5
+            ],
+            [
+              2577.5,
+              10.25,
+              6566.5
+            ],
+            [
+              2577.0,
+              10.29,
+              6566.5
+            ],
+            [
+              2576.5,
+              10.34,
+              6566.5
+            ],
+            [
+              2576.0,
+              10.38,
+              6566.5
+            ],
+            [
+              2575.5,
+              10.41,
+              6566.5
+            ],
+            [
+              2575.0,
+              10.51,
+              6566.5
+            ],
+            [
+              2574.5,
+              10.62,
+              6566.5
+            ],
+            [
+              2574.0,
+              10.71,
+              6566.5
+            ],
+            [
+              2573.5,
+              10.83,
+              6566.5
+            ],
+            [
+              2573.0,
+              11.04,
+              6566.0
+            ],
+            [
+              2572.5,
+              11.22,
+              6565.5
+            ],
+            [
+              2572.0,
+              11.31,
+              6565.0
+            ],
+            [
+              2571.5,
+              11.35,
+              6565.0
+            ],
+            [
+              2571.0,
+              11.5,
+              6565.0
+            ],
+            [
+              2570.5,
+              11.66,
+              6565.0
+            ],
+            [
+              2570.0,
+              11.65,
+              6564.5
+            ],
+            [
+              2569.5,
+              11.64,
+              6564.5
+            ],
+            [
+              2568.5,
+              11.58,
+              6564.5
+            ],
+            [
+              2568.0,
+              11.52,
+              6564.5
+            ],
+            [
+              2567.5,
+              11.33,
+              6564.5
+            ],
+            [
+              2567.0,
+              11.16,
+              6565.0
+            ],
+            [
+              2566.5,
+              10.9,
+              6565.5
+            ],
+            [
+              2566.0,
+              10.55,
+              6566.0
+            ],
+            [
+              2565.5,
+              10.28,
+              6566.0
+            ],
+            [
+              2565.0,
+              10.17,
+              6566.0
+            ],
+            [
+              2564.5,
+              10.16,
+              6566.0
+            ]
+          ],
+          "routeM": 17.38,
+          "steepestDeg": 28.1,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0,
+          "parcelId": "parcel.rose-bone-waystation.handover-shelter"
+        },
+        "socket:socket.rose-bone-waystation.idle-keeper-tags": {
+          "points": [
+            [
+              2580.0,
+              10.07,
+              6566.5
+            ],
+            [
+              2579.0,
+              10.13,
+              6566.5
+            ],
+            [
+              2578.5,
+              10.18,
+              6566.5
+            ],
+            [
+              2578.0,
+              10.22,
+              6566.5
+            ],
+            [
+              2577.5,
+              10.25,
+              6566.5
+            ],
+            [
+              2577.0,
+              10.29,
+              6566.5
+            ],
+            [
+              2576.5,
+              10.34,
+              6566.5
+            ],
+            [
+              2576.0,
+              10.38,
+              6566.5
+            ],
+            [
+              2575.5,
+              10.41,
+              6566.5
+            ],
+            [
+              2575.0,
+              10.51,
+              6566.5
+            ],
+            [
+              2574.5,
+              10.62,
+              6566.5
+            ],
+            [
+              2574.0,
+              10.71,
+              6566.5
+            ],
+            [
+              2573.5,
+              10.83,
+              6566.5
+            ],
+            [
+              2573.0,
+              11.04,
+              6566.0
+            ],
+            [
+              2572.5,
+              11.22,
+              6565.5
+            ],
+            [
+              2572.0,
+              11.31,
+              6565.0
+            ],
+            [
+              2571.5,
+              11.35,
+              6565.0
+            ],
+            [
+              2571.0,
+              11.3,
+              6564.5
+            ],
+            [
+              2570.5,
+              11.3,
+              6564.0
+            ],
+            [
+              2570.0,
+              11.37,
+              6563.5
+            ],
+            [
+              2569.5,
+              11.34,
+              6563.5
+            ],
+            [
+              2569.0,
+              11.32,
+              6563.5
+            ],
+            [
+              2568.5,
+              11.21,
+              6563.0
+            ],
+            [
+              2568.0,
+              11.15,
+              6563.0
+            ],
+            [
+              2567.5,
+              10.92,
+              6563.0
+            ],
+            [
+              2567.0,
+              10.7,
+              6563.5
+            ],
+            [
+              2566.5,
+              10.41,
+              6563.5
+            ],
+            [
+              2566.0,
+              10.27,
+              6563.5
+            ],
+            [
+              2565.5,
+              10.22,
+              6563.5
+            ],
+            [
+              2565.0,
+              10.16,
+              6563.0
+            ],
+            [
+              2564.5,
+              10.16,
+              6562.5
+            ],
+            [
+              2559.5,
+              10.16,
+              6562.5
+            ],
+            [
+              2559.0,
+              10.16,
+              6563.0
+            ],
+            [
+              2559.0,
+              10.16,
+              6563.5
+            ]
+          ],
+          "routeM": 24.1,
+          "steepestDeg": 29.9,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.rose-bone-waystation.idle-wrapper": {
+          "points": [
+            [
+              2580.0,
+              10.07,
+              6566.5
+            ],
+            [
+              2579.0,
+              10.13,
+              6566.5
+            ],
+            [
+              2578.5,
+              10.18,
+              6566.5
+            ],
+            [
+              2578.0,
+              10.22,
+              6566.5
+            ],
+            [
+              2577.5,
+              10.25,
+              6566.5
+            ],
+            [
+              2577.0,
+              10.29,
+              6566.5
+            ],
+            [
+              2576.5,
+              10.34,
+              6566.5
+            ],
+            [
+              2576.0,
+              10.38,
+              6566.5
+            ],
+            [
+              2575.5,
+              10.41,
+              6566.5
+            ],
+            [
+              2575.0,
+              10.51,
+              6566.5
+            ],
+            [
+              2574.5,
+              10.62,
+              6566.5
+            ],
+            [
+              2574.0,
+              10.71,
+              6566.5
+            ],
+            [
+              2573.5,
+              10.83,
+              6566.5
+            ],
+            [
+              2573.0,
+              11.04,
+              6566.0
+            ],
+            [
+              2572.5,
+              11.22,
+              6565.5
+            ],
+            [
+              2572.0,
+              11.31,
+              6565.0
+            ],
+            [
+              2571.5,
+              11.35,
+              6565.0
+            ],
+            [
+              2571.0,
+              11.3,
+              6564.5
+            ],
+            [
+              2570.5,
+              11.3,
+              6564.0
+            ],
+            [
+              2570.0,
+              11.37,
+              6563.5
+            ],
+            [
+              2569.5,
+              11.34,
+              6563.5
+            ],
+            [
+              2569.0,
+              11.32,
+              6563.5
+            ],
+            [
+              2568.5,
+              11.29,
+              6563.5
+            ],
+            [
+              2568.0,
+              11.22,
+              6563.5
+            ],
+            [
+              2567.5,
+              10.99,
+              6563.5
+            ],
+            [
+              2567.0,
+              10.81,
+              6564.0
+            ],
+            [
+              2566.5,
+              10.64,
+              6564.5
+            ],
+            [
+              2566.0,
+              10.37,
+              6564.5
+            ],
+            [
+              2565.5,
+              10.22,
+              6564.5
+            ],
+            [
+              2565.0,
+              10.17,
+              6564.5
+            ]
+          ],
+          "routeM": 16.97,
+          "steepestDeg": 28.6,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.rose-bone-waystation.idle-family-waits": {
+          "points": [
+            [
+              2580.0,
+              10.07,
+              6566.5
+            ],
+            [
+              2579.0,
+              10.13,
+              6566.5
+            ],
+            [
+              2578.5,
+              10.18,
+              6566.5
+            ],
+            [
+              2578.0,
+              10.22,
+              6566.5
+            ],
+            [
+              2577.5,
+              10.25,
+              6566.5
+            ],
+            [
+              2577.0,
+              10.29,
+              6566.5
+            ],
+            [
+              2576.5,
+              10.34,
+              6566.5
+            ],
+            [
+              2576.0,
+              10.38,
+              6566.5
+            ],
+            [
+              2575.5,
+              10.41,
+              6566.5
+            ],
+            [
+              2575.0,
+              10.51,
+              6566.5
+            ],
+            [
+              2574.5,
+              10.62,
+              6566.5
+            ],
+            [
+              2574.0,
+              10.71,
+              6566.5
+            ],
+            [
+              2573.5,
+              10.83,
+              6566.5
+            ],
+            [
+              2573.0,
+              11.04,
+              6566.0
+            ],
+            [
+              2572.5,
+              11.26,
+              6566.0
+            ],
+            [
+              2572.0,
+              11.44,
+              6565.5
+            ],
+            [
+              2571.5,
+              11.55,
+              6565.5
+            ],
+            [
+              2570.5,
+              11.85,
+              6565.5
+            ],
+            [
+              2570.0,
+              12.01,
+              6565.5
+            ],
+            [
+              2569.5,
+              12.0,
+              6565.5
+            ],
+            [
+              2569.0,
+              11.96,
+              6565.5
+            ],
+            [
+              2568.5,
+              11.93,
+              6565.5
+            ],
+            [
+              2568.0,
+              11.87,
+              6565.5
+            ],
+            [
+              2567.5,
+              11.66,
+              6565.5
+            ],
+            [
+              2567.0,
+              11.38,
+              6566.0
+            ],
+            [
+              2566.5,
+              11.0,
+              6566.5
+            ],
+            [
+              2566.0,
+              10.6,
+              6567.0
+            ],
+            [
+              2565.5,
+              10.31,
+              6567.5
+            ],
+            [
+              2565.0,
+              10.17,
+              6568.0
+            ],
+            [
+              2564.5,
+              10.16,
+              6568.5
+            ],
+            [
+              2554.5,
+              10.16,
+              6568.5
+            ],
+            [
+              2554.0,
+              10.16,
+              6568.0
+            ],
+            [
+              2553.5,
+              10.17,
+              6567.5
+            ]
+          ],
+          "routeM": 29.18,
+          "steepestDeg": 29.2,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.rose-bone-waystation.idle-keeper-counts": {
+          "points": [
+            [
+              2580.0,
+              10.07,
+              6566.5
+            ],
+            [
+              2580.0,
+              10.11,
+              6565.5
+            ],
+            [
+              2580.0,
+              10.11,
+              6565.0
+            ],
+            [
+              2580.0,
+              10.07,
+              6564.5
+            ],
+            [
+              2580.0,
+              10.0,
+              6564.0
+            ],
+            [
+              2580.0,
+              9.92,
+              6563.5
+            ],
+            [
+              2580.0,
+              9.86,
+              6563.0
+            ],
+            [
+              2579.5,
+              9.72,
+              6562.5
+            ],
+            [
+              2579.0,
+              9.64,
+              6562.0
+            ],
+            [
+              2578.5,
+              9.63,
+              6561.5
+            ],
+            [
+              2578.0,
+              9.63,
+              6561.0
+            ]
+          ],
+          "routeM": 6.36,
+          "steepestDeg": 11.0,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.rose-bone-waystation.container-grave-goods": {
+          "points": [
+            [
+              2580.0,
+              10.07,
+              6566.5
+            ],
+            [
+              2579.0,
+              10.13,
+              6566.5
+            ],
+            [
+              2578.5,
+              10.18,
+              6566.5
+            ],
+            [
+              2578.0,
+              10.22,
+              6566.5
+            ],
+            [
+              2577.5,
+              10.25,
+              6566.5
+            ],
+            [
+              2577.0,
+              10.29,
+              6566.5
+            ],
+            [
+              2576.5,
+              10.34,
+              6566.5
+            ],
+            [
+              2576.0,
+              10.38,
+              6566.5
+            ],
+            [
+              2575.5,
+              10.41,
+              6566.5
+            ],
+            [
+              2575.0,
+              10.51,
+              6566.5
+            ],
+            [
+              2574.5,
+              10.62,
+              6566.5
+            ],
+            [
+              2574.0,
+              10.71,
+              6566.5
+            ],
+            [
+              2573.5,
+              10.83,
+              6566.5
+            ],
+            [
+              2573.0,
+              11.04,
+              6566.0
+            ],
+            [
+              2572.5,
+              11.26,
+              6566.0
+            ],
+            [
+              2572.0,
+              11.44,
+              6565.5
+            ],
+            [
+              2571.5,
+              11.55,
+              6565.5
+            ],
+            [
+              2570.5,
+              11.85,
+              6565.5
+            ],
+            [
+              2570.0,
+              12.01,
+              6565.5
+            ],
+            [
+              2569.5,
+              12.0,
+              6565.5
+            ],
+            [
+              2569.0,
+              11.96,
+              6565.5
+            ],
+            [
+              2568.5,
+              11.93,
+              6565.5
+            ],
+            [
+              2568.0,
+              11.87,
+              6565.5
+            ],
+            [
+              2567.5,
+              11.66,
+              6565.5
+            ],
+            [
+              2567.0,
+              11.38,
+              6566.0
+            ],
+            [
+              2566.5,
+              11.0,
+              6566.5
+            ],
+            [
+              2566.0,
+              10.6,
+              6567.0
+            ],
+            [
+              2565.5,
+              10.31,
+              6567.5
+            ]
+          ],
+          "routeM": 16.34,
+          "steepestDeg": 29.2,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.rose-bone-waystation.idle-keeper-home": {
+          "points": [
+            [
+              2580.0,
+              10.07,
+              6566.5
+            ],
+            [
+              2579.0,
+              10.13,
+              6566.5
+            ],
+            [
+              2578.5,
+              10.18,
+              6566.5
+            ],
+            [
+              2578.0,
+              10.22,
+              6566.5
+            ],
+            [
+              2577.5,
+              10.25,
+              6566.5
+            ],
+            [
+              2577.0,
+              10.29,
+              6566.5
+            ],
+            [
+              2576.5,
+              10.34,
+              6566.5
+            ],
+            [
+              2576.0,
+              10.38,
+              6566.5
+            ],
+            [
+              2575.5,
+              10.41,
+              6566.5
+            ],
+            [
+              2575.0,
+              10.51,
+              6566.5
+            ],
+            [
+              2574.5,
+              10.62,
+              6566.5
+            ],
+            [
+              2574.0,
+              10.71,
+              6566.5
+            ],
+            [
+              2573.5,
+              10.83,
+              6566.5
+            ],
+            [
+              2573.0,
+              11.04,
+              6566.0
+            ],
+            [
+              2572.5,
+              11.22,
+              6565.5
+            ],
+            [
+              2572.0,
+              11.31,
+              6565.0
+            ],
+            [
+              2571.5,
+              11.35,
+              6565.0
+            ],
+            [
+              2571.0,
+              11.3,
+              6564.5
+            ],
+            [
+              2570.5,
+              11.3,
+              6564.0
+            ],
+            [
+              2570.0,
+              11.37,
+              6563.5
+            ],
+            [
+              2569.5,
+              11.34,
+              6563.5
+            ],
+            [
+              2569.0,
+              11.32,
+              6563.5
+            ],
+            [
+              2568.5,
+              11.21,
+              6563.0
+            ],
+            [
+              2568.0,
+              11.15,
+              6563.0
+            ],
+            [
+              2567.5,
+              10.92,
+              6563.0
+            ],
+            [
+              2567.0,
+              10.7,
+              6563.5
+            ],
+            [
+              2566.5,
+              10.41,
+              6563.5
+            ],
+            [
+              2566.0,
+              10.27,
+              6563.5
+            ],
+            [
+              2565.5,
+              10.22,
+              6563.5
+            ],
+            [
+              2565.0,
+              10.16,
+              6563.0
+            ],
+            [
+              2564.5,
+              10.16,
+              6562.5
+            ],
+            [
+              2563.0,
+              10.16,
+              6562.5
+            ],
+            [
+              2562.5,
+              10.16,
+              6563.0
+            ],
+            [
+              2562.5,
+              10.16,
+              6563.5
+            ]
+          ],
+          "routeM": 20.6,
+          "steepestDeg": 29.9,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.rose-bone-waystation.npc-tag-keeper": {
+          "points": [
+            [
+              2580.0,
+              10.07,
+              6566.5
+            ],
+            [
+              2579.0,
+              10.13,
+              6566.5
+            ],
+            [
+              2578.5,
+              10.18,
+              6566.5
+            ],
+            [
+              2578.0,
+              10.22,
+              6566.5
+            ],
+            [
+              2577.5,
+              10.25,
+              6566.5
+            ],
+            [
+              2577.0,
+              10.29,
+              6566.5
+            ],
+            [
+              2576.5,
+              10.34,
+              6566.5
+            ],
+            [
+              2576.0,
+              10.38,
+              6566.5
+            ],
+            [
+              2575.5,
+              10.41,
+              6566.5
+            ],
+            [
+              2575.0,
+              10.51,
+              6566.5
+            ],
+            [
+              2574.5,
+              10.62,
+              6566.5
+            ],
+            [
+              2574.0,
+              10.71,
+              6566.5
+            ],
+            [
+              2573.5,
+              10.83,
+              6566.5
+            ],
+            [
+              2573.0,
+              11.04,
+              6566.0
+            ],
+            [
+              2572.5,
+              11.22,
+              6565.5
+            ],
+            [
+              2572.0,
+              11.31,
+              6565.0
+            ],
+            [
+              2571.5,
+              11.35,
+              6565.0
+            ],
+            [
+              2571.0,
+              11.3,
+              6564.5
+            ],
+            [
+              2570.5,
+              11.3,
+              6564.0
+            ],
+            [
+              2570.0,
+              11.37,
+              6563.5
+            ],
+            [
+              2569.5,
+              11.34,
+              6563.5
+            ],
+            [
+              2569.0,
+              11.32,
+              6563.5
+            ],
+            [
+              2568.5,
+              11.21,
+              6563.0
+            ],
+            [
+              2568.0,
+              11.15,
+              6563.0
+            ],
+            [
+              2567.5,
+              10.92,
+              6563.0
+            ],
+            [
+              2567.0,
+              10.7,
+              6563.5
+            ],
+            [
+              2566.5,
+              10.41,
+              6563.5
+            ],
+            [
+              2566.0,
+              10.27,
+              6563.5
+            ],
+            [
+              2565.5,
+              10.22,
+              6563.5
+            ],
+            [
+              2565.0,
+              10.16,
+              6563.0
+            ],
+            [
+              2564.5,
+              10.16,
+              6562.5
+            ],
+            [
+              2563.0,
+              10.16,
+              6562.5
+            ],
+            [
+              2562.5,
+              10.16,
+              6563.0
+            ]
+          ],
+          "routeM": 20.1,
+          "steepestDeg": 29.9,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.rose-bone-waystation.container-keeper-papers": {
+          "points": [
+            [
+              2580.0,
+              10.07,
+              6566.5
+            ],
+            [
+              2580.0,
+              10.09,
+              6566.0
+            ],
+            [
+              2579.5,
+              10.14,
+              6565.5
+            ],
+            [
+              2579.0,
+              10.13,
+              6565.0
+            ],
+            [
+              2578.5,
+              10.05,
+              6564.5
+            ],
+            [
+              2578.0,
+              9.94,
+              6564.0
+            ],
+            [
+              2577.5,
+              9.85,
+              6563.5
+            ],
+            [
+              2577.0,
+              9.81,
+              6563.0
+            ],
+            [
+              2576.5,
+              9.75,
+              6562.5
+            ],
+            [
+              2576.0,
+              9.66,
+              6562.0
+            ]
+          ],
+          "routeM": 6.19,
+          "steepestDeg": 8.7,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:yard.k-ty-sack": {
+          "points": [
+            [
+              2580.0,
+              10.07,
+              6566.5
+            ],
+            [
+              2580.0,
+              10.09,
+              6566.0
+            ],
+            [
+              2579.5,
+              10.14,
+              6565.5
+            ],
+            [
+              2579.0,
+              10.13,
+              6565.0
+            ],
+            [
+              2578.5,
+              10.05,
+              6564.5
+            ],
+            [
+              2578.0,
+              9.94,
+              6564.0
+            ],
+            [
+              2577.5,
+              9.85,
+              6563.5
+            ],
+            [
+              2577.0,
+              9.81,
+              6563.0
+            ],
+            [
+              2576.5,
+              9.75,
+              6562.5
+            ],
+            [
+              2576.0,
+              9.66,
+              6562.0
+            ],
+            [
+              2575.5,
+              9.63,
+              6561.5
+            ],
+            [
+              2574.5,
+              9.63,
+              6560.5
+            ],
+            [
+              2574.5,
+              9.63,
+              6560.0
+            ]
+          ],
+          "routeM": 8.81,
+          "steepestDeg": 8.7,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:yard.k-ty-urn": {
+          "points": [
+            [
+              2580.0,
+              10.07,
+              6566.5
+            ],
+            [
+              2580.0,
+              10.11,
+              6565.5
+            ],
+            [
+              2580.0,
+              10.11,
+              6565.0
+            ],
+            [
+              2580.0,
+              10.07,
+              6564.5
+            ],
+            [
+              2580.0,
+              10.0,
+              6564.0
+            ],
+            [
+              2580.0,
+              9.92,
+              6563.5
+            ],
+            [
+              2580.0,
+              9.86,
+              6563.0
+            ],
+            [
+              2579.5,
+              9.72,
+              6562.5
+            ],
+            [
+              2579.0,
+              9.64,
+              6562.0
+            ]
+          ],
+          "routeM": 4.95,
+          "steepestDeg": 11.0,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:yard.s-hp-urn": {
+          "points": [
+            [
+              2580.0,
+              10.07,
+              6566.5
+            ],
+            [
+              2579.0,
+              10.13,
+              6566.5
+            ],
+            [
+              2578.5,
+              10.18,
+              6566.5
+            ],
+            [
+              2578.0,
+              10.22,
+              6566.5
+            ],
+            [
+              2577.5,
+              10.25,
+              6566.5
+            ],
+            [
+              2577.0,
+              10.29,
+              6566.5
+            ],
+            [
+              2576.5,
+              10.34,
+              6566.5
+            ],
+            [
+              2576.0,
+              10.38,
+              6566.5
+            ],
+            [
+              2575.5,
+              10.41,
+              6566.5
+            ],
+            [
+              2575.0,
+              10.51,
+              6566.5
+            ],
+            [
+              2574.5,
+              10.62,
+              6566.5
+            ],
+            [
+              2574.0,
+              10.71,
+              6566.5
+            ],
+            [
+              2573.5,
+              10.83,
+              6566.5
+            ],
+            [
+              2573.0,
+              11.04,
+              6566.0
+            ],
+            [
+              2572.5,
+              11.22,
+              6565.5
+            ],
+            [
+              2572.0,
+              11.31,
+              6565.0
+            ],
+            [
+              2571.5,
+              11.35,
+              6565.0
+            ],
+            [
+              2571.0,
+              11.3,
+              6564.5
+            ],
+            [
+              2570.5,
+              11.3,
+              6564.0
+            ],
+            [
+              2570.0,
+              11.37,
+              6563.5
+            ],
+            [
+              2569.5,
+              11.34,
+              6563.5
+            ],
+            [
+              2569.0,
+              11.32,
+              6563.5
+            ],
+            [
+              2568.5,
+              11.21,
+              6563.0
+            ],
+            [
+              2568.0,
+              11.15,
+              6563.0
+            ],
+            [
+              2567.5,
+              10.92,
+              6563.0
+            ],
+            [
+              2567.0,
+              10.7,
+              6563.5
+            ],
+            [
+              2566.5,
+              10.41,
+              6563.5
+            ],
+            [
+              2566.0,
+              10.27,
+              6563.5
+            ],
+            [
+              2565.5,
+              10.22,
+              6563.5
+            ],
+            [
+              2565.0,
+              10.16,
+              6563.0
+            ],
+            [
+              2564.5,
+              10.16,
+              6562.5
+            ],
+            [
+              2558.0,
+              10.16,
+              6562.5
+            ],
+            [
+              2556.5,
+              10.16,
+              6564.0
+            ]
+          ],
+          "routeM": 26.51,
+          "steepestDeg": 29.9,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:yard.s-hv-basket": {
+          "points": [
+            [
+              2580.0,
+              10.07,
+              6566.5
+            ],
+            [
+              2579.0,
+              10.13,
+              6566.5
+            ],
+            [
+              2578.5,
+              10.18,
+              6566.5
+            ],
+            [
+              2578.0,
+              10.22,
+              6566.5
+            ],
+            [
+              2577.5,
+              10.25,
+              6566.5
+            ],
+            [
+              2577.0,
+              10.29,
+              6566.5
+            ],
+            [
+              2576.5,
+              10.34,
+              6566.5
+            ],
+            [
+              2576.0,
+              10.38,
+              6566.5
+            ],
+            [
+              2575.5,
+              10.41,
+              6566.5
+            ],
+            [
+              2575.0,
+              10.51,
+              6566.5
+            ],
+            [
+              2574.5,
+              10.62,
+              6566.5
+            ],
+            [
+              2574.0,
+              10.71,
+              6566.5
+            ],
+            [
+              2573.5,
+              10.83,
+              6566.5
+            ],
+            [
+              2573.0,
+              11.04,
+              6566.0
+            ],
+            [
+              2572.5,
+              11.22,
+              6565.5
+            ],
+            [
+              2572.0,
+              11.31,
+              6565.0
+            ],
+            [
+              2571.5,
+              11.35,
+              6565.0
+            ],
+            [
+              2571.0,
+              11.3,
+              6564.5
+            ],
+            [
+              2570.5,
+              11.3,
+              6564.0
+            ],
+            [
+              2570.0,
+              11.37,
+              6563.5
+            ],
+            [
+              2569.5,
+              11.34,
+              6563.5
+            ],
+            [
+              2569.0,
+              11.32,
+              6563.5
+            ],
+            [
+              2568.5,
+              11.21,
+              6563.0
+            ],
+            [
+              2568.0,
+              11.15,
+              6563.0
+            ],
+            [
+              2567.5,
+              10.92,
+              6563.0
+            ],
+            [
+              2567.0,
+              10.7,
+              6563.5
+            ],
+            [
+              2566.5,
+              10.41,
+              6563.5
+            ],
+            [
+              2566.0,
+              10.27,
+              6563.5
+            ],
+            [
+              2565.0,
+              10.17,
+              6563.5
+            ],
+            [
+              2564.5,
+              10.16,
+              6563.5
+            ]
+          ],
+          "routeM": 17.48,
+          "steepestDeg": 29.9,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:yard.s-hv-flat1": {
+          "points": [
+            [
+              2580.0,
+              10.07,
+              6566.5
+            ],
+            [
+              2579.0,
+              10.13,
+              6566.5
+            ],
+            [
+              2578.5,
+              10.18,
+              6566.5
+            ],
+            [
+              2578.0,
+              10.22,
+              6566.5
+            ],
+            [
+              2577.5,
+              10.25,
+              6566.5
+            ],
+            [
+              2577.0,
+              10.29,
+              6566.5
+            ],
+            [
+              2576.5,
+              10.34,
+              6566.5
+            ],
+            [
+              2576.0,
+              10.38,
+              6566.5
+            ],
+            [
+              2575.5,
+              10.41,
+              6566.5
+            ],
+            [
+              2575.0,
+              10.51,
+              6566.5
+            ],
+            [
+              2574.5,
+              10.62,
+              6566.5
+            ],
+            [
+              2574.0,
+              10.71,
+              6566.5
+            ],
+            [
+              2573.5,
+              10.83,
+              6566.5
+            ],
+            [
+              2573.0,
+              11.04,
+              6566.0
+            ],
+            [
+              2572.5,
+              11.22,
+              6565.5
+            ],
+            [
+              2572.0,
+              11.31,
+              6565.0
+            ],
+            [
+              2571.5,
+              11.35,
+              6565.0
+            ],
+            [
+              2571.0,
+              11.3,
+              6564.5
+            ],
+            [
+              2570.5,
+              11.3,
+              6564.0
+            ],
+            [
+              2570.0,
+              11.37,
+              6563.5
+            ],
+            [
+              2569.5,
+              11.34,
+              6563.5
+            ],
+            [
+              2569.0,
+              11.32,
+              6563.5
+            ],
+            [
+              2568.5,
+              11.29,
+              6563.5
+            ],
+            [
+              2568.0,
+              11.22,
+              6563.5
+            ],
+            [
+              2567.5,
+              10.99,
+              6563.5
+            ],
+            [
+              2567.0,
+              10.81,
+              6564.0
+            ],
+            [
+              2566.5,
+              10.64,
+              6564.5
+            ],
+            [
+              2566.0,
+              10.37,
+              6564.5
+            ],
+            [
+              2565.5,
+              10.22,
+              6564.5
+            ],
+            [
+              2565.0,
+              10.17,
+              6564.5
+            ]
+          ],
+          "routeM": 16.97,
+          "steepestDeg": 28.6,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:yard.s-hv-flat2": {
+          "points": [
+            [
+              2580.0,
+              10.07,
+              6566.5
+            ],
+            [
+              2579.0,
+              10.13,
+              6566.5
+            ],
+            [
+              2578.5,
+              10.18,
+              6566.5
+            ],
+            [
+              2578.0,
+              10.22,
+              6566.5
+            ],
+            [
+              2577.5,
+              10.25,
+              6566.5
+            ],
+            [
+              2577.0,
+              10.29,
+              6566.5
+            ],
+            [
+              2576.5,
+              10.34,
+              6566.5
+            ],
+            [
+              2576.0,
+              10.38,
+              6566.5
+            ],
+            [
+              2575.5,
+              10.41,
+              6566.5
+            ],
+            [
+              2575.0,
+              10.51,
+              6566.5
+            ],
+            [
+              2574.5,
+              10.62,
+              6566.5
+            ],
+            [
+              2574.0,
+              10.71,
+              6566.5
+            ],
+            [
+              2573.5,
+              10.83,
+              6566.5
+            ],
+            [
+              2573.0,
+              11.04,
+              6566.0
+            ],
+            [
+              2572.5,
+              11.26,
+              6566.0
+            ],
+            [
+              2572.0,
+              11.44,
+              6565.5
+            ],
+            [
+              2571.5,
+              11.55,
+              6565.5
+            ],
+            [
+              2570.5,
+              11.85,
+              6565.5
+            ],
+            [
+              2570.0,
+              12.01,
+              6565.5
+            ],
+            [
+              2569.5,
+              12.0,
+              6565.5
+            ],
+            [
+              2569.0,
+              11.96,
+              6565.5
+            ],
+            [
+              2568.5,
+              11.93,
+              6565.5
+            ],
+            [
+              2568.0,
+              11.87,
+              6565.5
+            ],
+            [
+              2567.5,
+              11.66,
+              6565.5
+            ],
+            [
+              2567.0,
+              11.38,
+              6566.0
+            ],
+            [
+              2566.5,
+              11.0,
+              6566.5
+            ],
+            [
+              2566.0,
+              10.6,
+              6567.0
+            ],
+            [
+              2565.5,
+              10.29,
+              6566.5
+            ],
+            [
+              2565.0,
+              10.17,
+              6566.5
+            ]
+          ],
+          "routeM": 16.86,
+          "steepestDeg": 29.2,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:yard.s-hv-urn2": {
+          "points": [
+            [
+              2580.0,
+              10.07,
+              6566.5
+            ],
+            [
+              2579.0,
+              10.13,
+              6566.5
+            ],
+            [
+              2578.5,
+              10.18,
+              6566.5
+            ],
+            [
+              2578.0,
+              10.22,
+              6566.5
+            ],
+            [
+              2577.5,
+              10.25,
+              6566.5
+            ],
+            [
+              2577.0,
+              10.29,
+              6566.5
+            ],
+            [
+              2576.5,
+              10.34,
+              6566.5
+            ],
+            [
+              2576.0,
+              10.38,
+              6566.5
+            ],
+            [
+              2575.5,
+              10.41,
+              6566.5
+            ],
+            [
+              2575.0,
+              10.51,
+              6566.5
+            ],
+            [
+              2574.5,
+              10.62,
+              6566.5
+            ],
+            [
+              2574.0,
+              10.71,
+              6566.5
+            ],
+            [
+              2573.5,
+              10.83,
+              6566.5
+            ],
+            [
+              2573.0,
+              11.04,
+              6566.0
+            ],
+            [
+              2572.5,
+              11.26,
+              6566.0
+            ],
+            [
+              2572.0,
+              11.44,
+              6565.5
+            ],
+            [
+              2571.5,
+              11.55,
+              6565.5
+            ],
+            [
+              2570.5,
+              11.85,
+              6565.5
+            ],
+            [
+              2570.0,
+              12.01,
+              6565.5
+            ],
+            [
+              2569.5,
+              12.0,
+              6565.5
+            ],
+            [
+              2569.0,
+              11.96,
+              6565.5
+            ],
+            [
+              2568.5,
+              11.93,
+              6565.5
+            ],
+            [
+              2568.0,
+              11.87,
+              6565.5
+            ],
+            [
+              2567.5,
+              11.66,
+              6565.5
+            ],
+            [
+              2567.0,
+              11.38,
+              6566.0
+            ],
+            [
+              2566.5,
+              11.0,
+              6566.5
+            ],
+            [
+              2566.0,
+              10.6,
+              6567.0
+            ],
+            [
+              2565.5,
+              10.31,
+              6567.5
+            ],
+            [
+              2565.0,
+              10.17,
+              6568.0
+            ],
+            [
+              2564.5,
+              10.16,
+              6568.0
+            ],
+            [
+              2564.0,
+              10.16,
+              6568.0
+            ]
+          ],
+          "routeM": 18.06,
+          "steepestDeg": 29.2,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.rose-bone-waystation.idle-seat-k-ty-chair1": {
+          "points": [
+            [
+              2580.0,
+              10.07,
+              6566.5
+            ],
+            [
+              2580.0,
+              10.11,
+              6565.5
+            ],
+            [
+              2579.5,
+              10.12,
+              6565.0
+            ],
+            [
+              2579.0,
+              10.03,
+              6564.5
+            ],
+            [
+              2578.5,
+              9.91,
+              6564.0
+            ],
+            [
+              2578.0,
+              9.81,
+              6563.5
+            ],
+            [
+              2577.5,
+              9.74,
+              6563.0
+            ],
+            [
+              2577.0,
+              9.69,
+              6562.5
+            ],
+            [
+              2577.0,
+              9.63,
+              6562.0
+            ],
+            [
+              2577.0,
+              9.63,
+              6560.5
+            ]
+          ],
+          "routeM": 7.28,
+          "steepestDeg": 10.2,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:socket.rose-bone-waystation.idle-seat-k-ty-chair2": {
+          "points": [
+            [
+              2580.0,
+              10.07,
+              6566.5
+            ],
+            [
+              2580.0,
+              10.11,
+              6565.5
+            ],
+            [
+              2580.0,
+              10.11,
+              6565.0
+            ],
+            [
+              2580.0,
+              10.07,
+              6564.5
+            ],
+            [
+              2580.0,
+              10.0,
+              6564.0
+            ],
+            [
+              2580.0,
+              9.92,
+              6563.5
+            ],
+            [
+              2580.0,
+              9.86,
+              6563.0
+            ],
+            [
+              2580.0,
+              9.81,
+              6562.5
+            ],
+            [
+              2580.0,
+              9.73,
+              6561.5
+            ],
+            [
+              2580.0,
+              9.7,
+              6561.0
+            ],
+            [
+              2579.5,
+              9.63,
+              6560.5
+            ]
+          ],
+          "routeM": 6.23,
+          "steepestDeg": 9.0,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "socket:yard.s-hv-table": {
+          "points": [
+            [
+              2580.0,
+              10.07,
+              6566.5
+            ],
+            [
+              2579.0,
+              10.13,
+              6566.5
+            ],
+            [
+              2578.5,
+              10.18,
+              6566.5
+            ],
+            [
+              2578.0,
+              10.22,
+              6566.5
+            ],
+            [
+              2577.5,
+              10.25,
+              6566.5
+            ],
+            [
+              2577.0,
+              10.29,
+              6566.5
+            ],
+            [
+              2576.5,
+              10.34,
+              6566.5
+            ],
+            [
+              2576.0,
+              10.38,
+              6566.5
+            ],
+            [
+              2575.5,
+              10.41,
+              6566.5
+            ],
+            [
+              2575.0,
+              10.51,
+              6566.5
+            ],
+            [
+              2574.5,
+              10.62,
+              6566.5
+            ],
+            [
+              2574.0,
+              10.71,
+              6566.5
+            ],
+            [
+              2573.5,
+              10.83,
+              6566.5
+            ],
+            [
+              2573.0,
+              11.04,
+              6566.0
+            ],
+            [
+              2572.5,
+              11.22,
+              6565.5
+            ],
+            [
+              2572.0,
+              11.31,
+              6565.0
+            ],
+            [
+              2571.5,
+              11.35,
+              6565.0
+            ],
+            [
+              2571.0,
+              11.3,
+              6564.5
+            ],
+            [
+              2570.5,
+              11.3,
+              6564.0
+            ],
+            [
+              2570.0,
+              11.37,
+              6563.5
+            ],
+            [
+              2569.5,
+              11.34,
+              6563.5
+            ],
+            [
+              2569.0,
+              11.32,
+              6563.5
+            ],
+            [
+              2568.5,
+              11.21,
+              6563.0
+            ],
+            [
+              2568.0,
+              11.15,
+              6563.0
+            ],
+            [
+              2567.5,
+              10.92,
+              6563.0
+            ],
+            [
+              2567.0,
+              10.7,
+              6563.5
+            ],
+            [
+              2566.5,
+              10.41,
+              6563.5
+            ],
+            [
+              2566.0,
+              10.27,
+              6563.5
+            ],
+            [
+              2565.5,
+              10.22,
+              6563.5
+            ],
+            [
+              2565.0,
+              10.16,
+              6563.0
+            ],
+            [
+              2564.5,
+              10.16,
+              6562.5
+            ],
+            [
+              2563.0,
+              10.16,
+              6562.5
+            ],
+            [
+              2562.5,
+              10.16,
+              6563.0
+            ],
+            [
+              2562.5,
+              10.16,
+              6563.5
+            ]
+          ],
+          "routeM": 20.6,
+          "steepestDeg": 29.9,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        }
+      }
+    }
+  }
+}

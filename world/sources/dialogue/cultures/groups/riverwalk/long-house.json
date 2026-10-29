@@ -1,0 +1,99 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "_": "Riverwalk life-group and household sheet (2.5c), from the place record's life block.",
+ "entries": [
+  {
+   "id": "culture.household.riverwalk.long-house",
+   "level": "household",
+   "name": "The long house family",
+   "parent": "culture.settlement.riverwalk",
+   "members": [
+    "npc.dunmer-north.riverwalk.n1",
+    "npc.dunmer-north.riverwalk.n1-2",
+    "npc.dunmer-north.riverwalk.n1-3"
+   ],
+   "norms": [
+    {
+     "text": "Reed mattresses are aired every dry morning.",
+     "source": "inferred"
+    },
+    {
+     "text": "Herbs from the cove shore are sorted into bundles before the evening meal.",
+     "source": "inferred"
+    },
+    {
+     "text": "Trodh is eaten alive at the long house table; Hassk-Nasha holds to it.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Wearing mud onto the long house floor.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "Guests who sleep well and pay.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "The shouting at the spit after dark.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "place": {
+     "lean": 2,
+     "text": "The long house stands on piles in the shallows; the family has kept it a long time.",
+     "source": "inferred"
+    },
+    "danger": {
+     "lean": -1,
+     "text": "If the cove silted up, the boats would go elsewhere and the long house would stand empty.",
+     "source": "world/sources/lore/extrapolation/settlement-register.md"
+    },
+    "faction": {
+     "lean": -1,
+     "text": "The toll is no business of the household's, but its noise is.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Guest, for whoever is sleeping under the roof.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [
+     {
+      "text": "By the long house piles.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "What a guest said in their sleep.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "The toll argument keeps the guests awake.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": []
+   },
+   "views": [],
+   "deviationRate": 0.2
+  }
+ ]
+}

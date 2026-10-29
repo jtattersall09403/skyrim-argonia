@@ -1,0 +1,218 @@
+{
+ "cellId": "SeekhatSmithyHut",
+ "sockets": {
+  "socket.SeekhatSmithyHut.081A843D": {
+   "owner": "parcel.upriver-hist-village.smiths-house",
+   "valueTier": "low",
+   "item": "item.corundum-ore"
+  },
+  "socket.SeekhatSmithyHut.081A843E": {
+   "owner": "parcel.upriver-hist-village.smiths-house",
+   "valueTier": "low",
+   "item": "item.corundum-ore"
+  },
+  "socket.SeekhatSmithyHut.081A8449": {
+   "owner": "parcel.upriver-hist-village.smiths-house",
+   "valueTier": "moderate",
+   "item": "item.saxhleel-sabre"
+  },
+  "socket.SeekhatSmithyHut.081A844A": {
+   "owner": "parcel.upriver-hist-village.smiths-house",
+   "valueTier": "moderate",
+   "item": "item.saxhleel-axe"
+  },
+  "socket.SeekhatSmithyHut.081A844B": {
+   "owner": "parcel.upriver-hist-village.smiths-house",
+   "valueTier": "moderate",
+   "item": "item.saxhleel-dagger"
+  },
+  "socket.SeekhatSmithyHut.081A8451": {
+   "owner": "parcel.upriver-hist-village.smiths-house",
+   "valueTier": "high",
+   "item": "item.saxhleel-tusik"
+  },
+  "socket.SeekhatSmithyHut.081A8452": {
+   "owner": "parcel.upriver-hist-village.smiths-house",
+   "valueTier": "moderate",
+   "item": "item.saxhleel-mace"
+  },
+  "socket.SeekhatSmithyHut.081A8453": {
+   "owner": "parcel.upriver-hist-village.smiths-house",
+   "valueTier": "moderate",
+   "item": "item.saxhleel-dagger"
+  },
+  "socket.SeekhatSmithyHut.081A8454": {
+   "owner": "parcel.upriver-hist-village.smiths-house",
+   "valueTier": "moderate",
+   "item": "item.saxhleel-dagger"
+  },
+  "socket.SeekhatSmithyHut.081A8466": {
+   "owner": "parcel.upriver-hist-village.smiths-house",
+   "valueTier": "low",
+   "item": "item.corundum-ingot"
+  },
+  "socket.SeekhatSmithyHut.081A8467": {
+   "owner": "parcel.upriver-hist-village.smiths-house",
+   "valueTier": "low",
+   "item": "item.corundum-ingot"
+  },
+  "socket.SeekhatSmithyHut.081A8468": {
+   "owner": "parcel.upriver-hist-village.smiths-house",
+   "valueTier": "low",
+   "item": "item.corundum-ingot"
+  },
+  "socket.SeekhatSmithyHut.081A8469": {
+   "owner": "parcel.upriver-hist-village.smiths-house",
+   "valueTier": "trivial",
+   "item": "item.tongs"
+  },
+  "socket.SeekhatSmithyHut.081A846A": {
+   "owner": "parcel.upriver-hist-village.smiths-house",
+   "valueTier": "trivial",
+   "item": "item.repair-hammer"
+  },
+  "socket.SeekhatSmithyHut.081A846B": {
+   "owner": "parcel.upriver-hist-village.smiths-house",
+   "valueTier": "trivial",
+   "item": "item.repair-hammer"
+  },
+  "socket.SeekhatSmithyHut.081A846C": {
+   "owner": "parcel.upriver-hist-village.smiths-house",
+   "valueTier": "trivial",
+   "item": "item.bucket"
+  },
+  "socket.SeekhatSmithyHut.081AD606": {
+   "owner": "parcel.upriver-hist-village.smiths-house",
+   "valueTier": "low",
+   "item": "item.saxhleel-pot"
+  },
+  "socket.SeekhatSmithyHut.081AD608": {
+   "owner": "parcel.upriver-hist-village.smiths-house",
+   "valueTier": "low",
+   "item": "item.saxhleel-pot"
+  },
+  "socket.SeekhatSmithyHut.081AD609": {
+   "owner": "parcel.upriver-hist-village.smiths-house",
+   "valueTier": "low",
+   "item": "item.saxhleel-pot"
+  },
+  "socket.SeekhatSmithyHut.081AD60C": {
+   "owner": "parcel.upriver-hist-village.smiths-house",
+   "valueTier": "low",
+   "item": "item.saxhleel-pot"
+  },
+  "socket.SeekhatSmithyHut.081CC124": {
+   "owner": "parcel.upriver-hist-village.smiths-house",
+   "fillRule": "blanket.cook-shelf",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.river-salt",
+      "count": 2
+     },
+     {
+      "item": "item.baked-crocodile-tongue",
+      "count": 1
+     },
+     {
+      "item": "item.lumberries",
+      "count": 3
+     },
+     {
+      "item": "item.hissmir-fish-eye-rye",
+      "count": 1
+     },
+     {
+      "item": "item.turtle-shell-bowl",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.cook-shelf"
+   }
+  },
+  "socket.SeekhatSmithyHut.081CC12A": {
+   "owner": "parcel.upriver-hist-village.smiths-house",
+   "fillRule": "blanket.household-chest",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.rag",
+      "count": 2
+     },
+     {
+      "item": "item.leather-strips",
+      "count": 1
+     },
+     {
+      "item": "item.glass-bead-strand",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.household-chest"
+   }
+  },
+  "socket.SeekhatSmithyHut.081CC12B": {
+   "owner": "parcel.upriver-hist-village.smiths-house",
+   "valueTier": "moderate",
+   "item": "item.tunic-with-sash"
+  },
+  "socket.SeekhatSmithyHut.081CC12C": {
+   "owner": "parcel.upriver-hist-village.smiths-house",
+   "valueTier": "moderate",
+   "item": "item.tunic-with-sash"
+  },
+  "socket.SeekhatSmithyHut.081CC12D": {
+   "owner": "parcel.upriver-hist-village.smiths-house",
+   "valueTier": "trivial",
+   "item": "item.wooden-plate"
+  },
+  "socket.SeekhatSmithyHut.081CC12E": {
+   "owner": "parcel.upriver-hist-village.smiths-house",
+   "valueTier": "trivial",
+   "item": "item.wooden-plate"
+  },
+  "socket.SeekhatSmithyHut.081CC12F": {
+   "owner": "parcel.upriver-hist-village.smiths-house",
+   "valueTier": "trivial",
+   "item": "item.turtle-shell-bowl"
+  },
+  "socket.SeekhatSmithyHut.081CC130": {
+   "owner": "parcel.upriver-hist-village.smiths-house",
+   "valueTier": "trivial",
+   "item": "item.turtle-shell-bowl"
+  },
+  "socket.SeekhatSmithyHut.081CC131": {
+   "owner": "parcel.upriver-hist-village.smiths-house",
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.SeekhatSmithyHut.081CC132": {
+   "owner": "parcel.upriver-hist-village.smiths-house",
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.SeekhatSmithyHut.081CC133": {
+   "owner": "parcel.upriver-hist-village.smiths-house",
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.SeekhatSmithyHut.081CC134": {
+   "owner": "parcel.upriver-hist-village.smiths-house",
+   "valueTier": "trivial",
+   "item": "item.wooden-plate"
+  },
+  "socket.SeekhatSmithyHut.081CC137": {
+   "owner": "parcel.upriver-hist-village.smiths-house",
+   "valueTier": "trivial",
+   "item": "item.fried-frog-legs"
+  },
+  "socket.SeekhatSmithyHut.08AA3220": {
+   "owner": "parcel.upriver-hist-village.smiths-house",
+   "valueTier": "trivial",
+   "item": "item.tee-lel"
+  }
+ },
+ "schemaVersion": 1
+}

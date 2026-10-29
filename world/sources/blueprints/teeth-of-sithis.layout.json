@@ -1,0 +1,1428 @@
+{
+ "schemaVersion": 1,
+ "placeId": "place.mercantile-coast.teeth-of-sithis",
+ "window": {
+  "centreKm": [
+   3.655,
+   6.755
+  ],
+  "halfM": 60.0
+ },
+ "ops": [
+  {
+   "op": "place",
+   "uid": "t-tooth1",
+   "asset": "kotm:argonia/xanmeer/exterior/obelisk",
+   "at": [
+    3642.0,
+    6784.0
+   ],
+   "yaw": 12.0,
+   "scale": 1.4,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "bind",
+   "uid": "t-tooth1",
+   "kind": "landmark",
+   "id": "landmark.teeth-of-sithis.the-colonnade-tooth-1"
+  },
+  {
+   "op": "place",
+   "uid": "t-tooth2",
+   "asset": "kotm:argonia/xanmeer/exterior/obelisk",
+   "at": [
+    3646.5,
+    6783.0
+   ],
+   "yaw": 340.0,
+   "scale": 1.55,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "t-tooth3",
+   "asset": "kotm:argonia/xanmeer/exterior/obelisk",
+   "at": [
+    3651.0,
+    6782.0
+   ],
+   "yaw": 25.0,
+   "scale": 1.65,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "t-tooth4",
+   "asset": "kotm:argonia/xanmeer/exterior/obelisk",
+   "at": [
+    3659.5,
+    6780.0
+   ],
+   "yaw": 195.0,
+   "scale": 1.6,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "t-tooth5",
+   "asset": "kotm:argonia/xanmeer/exterior/obelisk",
+   "at": [
+    3664.0,
+    6780.0
+   ],
+   "yaw": 100.0,
+   "scale": 1.45,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "t-tooth6",
+   "asset": "kotm:argonia/xanmeer/exterior/obelisk",
+   "at": [
+    3668.5,
+    6780.0
+   ],
+   "yaw": 290.0,
+   "scale": 1.35,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "bind",
+   "uid": "t-tooth2",
+   "kind": "landmark",
+   "id": "landmark.teeth-of-sithis.the-colonnade-tooth-2",
+   "layer": "structure",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "t-tooth3",
+   "kind": "landmark",
+   "id": "landmark.teeth-of-sithis.the-colonnade-tooth-3",
+   "layer": "structure",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "t-tooth4",
+   "kind": "landmark",
+   "id": "landmark.teeth-of-sithis.the-colonnade-tooth-4",
+   "layer": "structure",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "t-tooth5",
+   "kind": "landmark",
+   "id": "landmark.teeth-of-sithis.the-colonnade-tooth-5",
+   "layer": "structure",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "t-tooth6",
+   "kind": "landmark",
+   "id": "landmark.teeth-of-sithis.the-colonnade",
+   "layer": "structure",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "mound",
+   "uid": "m-a-hill-w",
+   "profile": "ramp",
+   "polygonM": [
+    [
+     3608.0,
+     6741.0
+    ],
+    [
+     3642.0,
+     6741.0
+    ],
+    [
+     3642.0,
+     6769.0
+    ],
+    [
+     3608.0,
+     6769.0
+    ]
+   ],
+   "rampM": [
+    [
+     3642.0,
+     6758.0,
+     3.0
+    ],
+    [
+     3637.0,
+     6758.0,
+     9.5
+    ]
+   ],
+   "blendM": 8.0,
+   "why": "The bank climbs from the shore path to a rounded hill behind the west door, so the door is set into the hillside with earth over its lintel.",
+   "sources": [
+    "tmp/16k-user-instruction.md walk 12 Teeth of Sithis: doors set into a rock mass"
+   ]
+  },
+  {
+   "op": "mound",
+   "uid": "m-a-hill-e",
+   "profile": "ramp",
+   "polygonM": [
+    [
+     3645.0,
+     6735.0
+    ],
+    [
+     3666.0,
+     6735.0
+    ],
+    [
+     3666.0,
+     6743.5
+    ],
+    [
+     3670.0,
+     6743.5
+    ],
+    [
+     3670.0,
+     6748.0
+    ],
+    [
+     3645.0,
+     6748.0
+    ]
+   ],
+   "rampM": [
+    [
+     3667.0,
+     6738.0,
+     3.5
+    ],
+    [
+     3663.0,
+     6738.0,
+     9.7
+    ]
+   ],
+   "blendM": 3.0,
+   "why": "The bank climbs from the street to the hill behind the east door; it stops short of the street on its north side.",
+   "sources": [
+    "tmp/16k-user-instruction.md walk 12 Teeth of Sithis: doors set into a rock mass"
+   ]
+  },
+  {
+   "op": "mound",
+   "uid": "m-b-cut-w",
+   "polygonM": [
+    [
+     3639.6,
+     6752.8
+    ],
+    [
+     3647.0,
+     6753.5
+    ],
+    [
+     3647.0,
+     6762.5
+    ],
+    [
+     3639.6,
+     6763.2
+    ]
+   ],
+   "datumM": 1.6,
+   "profile": "cut",
+   "blendM": 5.0,
+   "why": "The west forecourt is dug down to the door sill; its sides slope back into the hill.",
+   "sources": [
+    "tmp/16k-user-instruction.md walk 12 Teeth of Sithis: doors set into a rock mass"
+   ]
+  },
+  {
+   "op": "mound",
+   "uid": "m-b-cut-e",
+   "polygonM": [
+    [
+     3665.8,
+     6732.8
+    ],
+    [
+     3671.5,
+     6732.8
+    ],
+    [
+     3671.5,
+     6743.2
+    ],
+    [
+     3665.8,
+     6743.2
+    ]
+   ],
+   "datumM": 1.8,
+   "profile": "cut",
+   "blendM": 7.0,
+   "why": "The east forecourt is dug down to the door sill; its sides slope back into the hill.",
+   "sources": [
+    "tmp/16k-user-instruction.md walk 12 Teeth of Sithis: doors set into a rock mass"
+   ]
+  },
+  {
+   "op": "mound",
+   "uid": "m-c-ramp-w",
+   "profile": "ramp",
+   "polygonM": [
+    [
+     3645.0,
+     6752.5
+    ],
+    [
+     3656.0,
+     6752.5
+    ],
+    [
+     3656.0,
+     6763.5
+    ],
+    [
+     3645.0,
+     6763.5
+    ]
+   ],
+   "rampM": [
+    [
+     3646.0,
+     6758.0,
+     1.6
+    ],
+    [
+     3656.0,
+     6758.0,
+     2.6
+    ]
+   ],
+   "blendM": 4.0,
+   "why": "The way down: a sloped cut from the shore path into the west forecourt.",
+   "sources": [
+    "tmp/16k-user-instruction.md walk 12 Teeth of Sithis: the way down must be visible and walkable"
+   ]
+  },
+  {
+   "op": "mound",
+   "uid": "m-c-ramp-e",
+   "profile": "ramp",
+   "polygonM": [
+    [
+     3670.0,
+     6732.8
+    ],
+    [
+     3678.0,
+     6732.8
+    ],
+    [
+     3678.0,
+     6743.2
+    ],
+    [
+     3670.0,
+     6743.2
+    ]
+   ],
+   "rampM": [
+    [
+     3670.5,
+     6738.0,
+     1.8
+    ],
+    [
+     3677.0,
+     6738.0,
+     2.4
+    ]
+   ],
+   "blendM": 4.0,
+   "why": "The way down: a sloped cut from the street into the east forecourt.",
+   "sources": [
+    "tmp/16k-user-instruction.md walk 12 Teeth of Sithis: the way down must be visible and walkable"
+   ]
+  },
+  {
+   "op": "mound",
+   "uid": "m-d-back-w",
+   "polygonM": [
+    [
+     3622.0,
+     6750.0
+    ],
+    [
+     3637.6,
+     6750.0
+    ],
+    [
+     3637.6,
+     6766.0
+    ],
+    [
+     3622.0,
+     6766.0
+    ]
+   ],
+   "datumM": 9.5,
+   "blendM": 2.0,
+   "why": "The hill closes right up to the back of the west portico, so its lintel is buried in the bank.",
+   "sources": [
+    "tmp/16k-user-instruction.md walk 12 Teeth of Sithis: doors set into a rock mass"
+   ]
+  },
+  {
+   "op": "mound",
+   "uid": "m-d-back-e",
+   "polygonM": [
+    [
+     3652.0,
+     6734.0
+    ],
+    [
+     3663.8,
+     6734.0
+    ],
+    [
+     3663.8,
+     6745.0
+    ],
+    [
+     3652.0,
+     6745.0
+    ]
+   ],
+   "datumM": 9.7,
+   "blendM": 2.0,
+   "why": "The hill closes right up to the back of the east portico, so its lintel is buried in the bank.",
+   "sources": [
+    "tmp/16k-user-instruction.md walk 12 Teeth of Sithis: doors set into a rock mass"
+   ]
+  },
+  {
+   "op": "place",
+   "uid": "t-candle-w",
+   "asset": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "at": [
+    3644.5,
+    6762.0
+   ],
+   "yaw": 0.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "t-candle-w",
+   "kind": "assembly",
+   "id": "parcel.teeth-of-sithis.west-stair",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "pad"
+  },
+  {
+   "op": "place",
+   "uid": "t-lantern-w",
+   "asset": "vanilla:clutter/common/candlelantern01",
+   "at": [
+    3642.4,
+    6756.9
+   ],
+   "yaw": 90.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "t-lantern-w",
+   "kind": "assembly",
+   "id": "parcel.teeth-of-sithis.west-stair",
+   "layer": "light",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "place",
+   "uid": "t-door-w",
+   "asset": "composite:ruin/xanmeer-door2load-portico",
+   "at": [
+    3637.3,
+    6758.0
+   ],
+   "yaw": 90.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "t-door-w",
+   "kind": "parcel",
+   "id": "parcel.teeth-of-sithis.west-stair"
+  },
+  {
+   "op": "place",
+   "uid": "t-rock-wn1",
+   "asset": "vanilla:landscape/rocks/rocks02",
+   "at": [
+    3637.0,
+    6762.6
+   ],
+   "yaw": 215.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "t-rock-wn1",
+   "kind": "assembly",
+   "id": "parcel.teeth-of-sithis.west-stair",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "dug-in"
+  },
+  {
+   "op": "place",
+   "uid": "t-rock-ws1",
+   "asset": "vanilla:landscape/rocks/rocks02",
+   "at": [
+    3637.0,
+    6753.4
+   ],
+   "yaw": 120.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "t-rock-ws1",
+   "kind": "assembly",
+   "id": "parcel.teeth-of-sithis.west-stair",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "dug-in"
+  },
+  {
+   "op": "place",
+   "uid": "t-door-e",
+   "asset": "composite:ruin/xanmeer-door2load-portico",
+   "at": [
+    3663.44,
+    6738.0
+   ],
+   "yaw": 90.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "t-door-e",
+   "kind": "parcel",
+   "id": "parcel.teeth-of-sithis.east-stair"
+  },
+  {
+   "op": "place",
+   "uid": "t-lantern-e",
+   "asset": "vanilla:clutter/common/candlelantern01",
+   "at": [
+    3668.55,
+    6736.9
+   ],
+   "yaw": 270.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "t-rock-en1",
+   "asset": "vanilla:landscape/rocks/rocks02",
+   "at": [
+    3662.4,
+    6741.6
+   ],
+   "yaw": 35.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "t-rock-en1",
+   "kind": "assembly",
+   "id": "parcel.teeth-of-sithis.east-stair",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "dug-in"
+  },
+  {
+   "op": "bind",
+   "uid": "t-lantern-e",
+   "kind": "assembly",
+   "id": "parcel.teeth-of-sithis.east-stair",
+   "layer": "light",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.teeth-of-sithis.the-street",
+   "points": [
+    [
+     3654.7,
+     6731.0
+    ],
+    [
+     3673.5,
+     6731.5
+    ],
+    [
+     3673.5,
+     6744.5
+    ],
+    [
+     3662.0,
+     6752.0
+    ],
+    [
+     3655.9,
+     6758.1
+    ]
+   ]
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.teeth-of-sithis.west-stair",
+   "points": [
+    [
+     3655.9,
+     6758.1
+    ],
+    [
+     3648.0,
+     6758.2
+    ],
+    [
+     3642.1,
+     6758.0
+    ]
+   ]
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.teeth-of-sithis.east-stair",
+   "points": [
+    [
+     3673.5,
+     6738.0
+    ],
+    [
+     3668.3,
+     6738.0
+    ]
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.q-post-pilgrim-landing",
+   "kind": "marker",
+   "at": [
+    3655.3,
+    6776.0
+   ],
+   "zone": "post",
+   "parcel": "parcel.teeth-of-sithis.west-stair",
+   "why": "The end of the pilgrim way, where the track runs out at the water. A pilgrim waits here for a priest of the Clutch.",
+   "fills": [
+    "promise.teeth-of-sithis.post-teeth-pilgrim-landing",
+    "promise.teeth-of-sithis.provision-murkmire-teeth-of-sithis"
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.q-scene-colonnade-rite",
+   "kind": "marker",
+   "at": [
+    3655.3,
+    6780.0
+   ],
+   "zone": "scene",
+   "parcel": "parcel.teeth-of-sithis.west-stair",
+   "why": "The open water between the two middle teeth, where the Clutch stand to the knee for the rite.",
+   "fills": [
+    "promise.teeth-of-sithis.scene-teeth-colonnade-rite"
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.q-evidence-scrub-line-rule",
+   "kind": "marker",
+   "at": [
+    3651.0,
+    6778.8
+   ],
+   "zone": "evidence",
+   "parcel": "parcel.teeth-of-sithis.west-stair",
+   "why": "The scrubbed band on the third tooth stops at the water. The stone below it is green.",
+   "fills": [
+    "promise.teeth-of-sithis.evidence-teeth-scrub-line-rule"
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.q-mark-rite-witnessed",
+   "kind": "marker",
+   "at": [
+    3655.3,
+    6774.0
+   ],
+   "zone": "mark",
+   "parcel": "parcel.teeth-of-sithis.west-stair",
+   "why": "The last dry ground before the water, where a witness to the rite stands.",
+   "fills": [
+    "promise.teeth-of-sithis.marks-teeth-rite-witnessed"
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.idle-priest-work",
+   "kind": "idle",
+   "activity": "stand",
+   "parcel": "parcel.teeth-of-sithis.west-stair",
+   "why": "Nisswo of the Teeth stands where the way meets the water to meet pilgrims.",
+   "at": [
+    3656.5,
+    6775.0
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.idle-priest-home",
+   "kind": "idle",
+   "activity": "sleep",
+   "parcel": "parcel.teeth-of-sithis.east-stair",
+   "why": "The priest sleeps in the covered bed in the temple behind the east door.",
+   "interiorCell": "TeethofSithisInt02",
+   "host": "TeethofSithisInt02.0879BC0D",
+   "fills": [
+    "promise.teeth-of-sithis.interior-principal"
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.idle-scrubber-work",
+   "kind": "idle",
+   "activity": "stand",
+   "parcel": "parcel.teeth-of-sithis.west-stair",
+   "why": "The scrubber works round the teeth at the waterline.",
+   "at": [
+    3648.0,
+    6775.0
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.idle-scrubber-home",
+   "kind": "idle",
+   "activity": "sleep",
+   "parcel": "parcel.teeth-of-sithis.east-stair",
+   "why": "The scrubber sleeps on a bedroll in the lower east hall behind the east door, among the temple's workers.",
+   "interiorCell": "TeethofSithisInt02",
+   "host": "TeethofSithisInt02.084C538E"
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.idle-band-work",
+   "kind": "idle",
+   "activity": "stand",
+   "parcel": "parcel.teeth-of-sithis.east-stair",
+   "why": "The band of the Clutch keep watch on the east stair.",
+   "at": [
+    3669.0,
+    6736.2
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.idle-band-home",
+   "kind": "idle",
+   "activity": "sleep",
+   "parcel": "parcel.teeth-of-sithis.east-stair",
+   "why": "The band sleeps on bedrolls in the upper rooms of the temple behind the east door.",
+   "interiorCell": "TeethofSithisInt02",
+   "host": "TeethofSithisInt02.084C538C"
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.npc-nisswo",
+   "kind": "npc",
+   "at": [
+    3656.5,
+    6775.0
+   ],
+   "rosterSlotId": "nisswo-teeth",
+   "role": "Nisswo of the Teeth",
+   "parcel": "parcel.teeth-of-sithis.west-stair",
+   "why": "The Clutch's priest at the Teeth meets every pilgrim at the water's edge.",
+   "schedule": [
+    {
+     "dayPhase": "morning",
+     "socketId": "socket.teeth-of-sithis.idle-priest-work",
+     "purpose": "work"
+    },
+    {
+     "dayPhase": "night",
+     "socketId": "socket.teeth-of-sithis.idle-priest-home",
+     "purpose": "home"
+    },
+    {
+     "dayPhase": "morning",
+     "socketId": "socket.teeth-of-sithis.idle-priest-last-bend",
+     "purpose": "work"
+    }
+   ],
+   "fills": [
+    "promise.teeth-of-sithis.occupant-nisswo-teeth"
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.idle-keeper-work",
+   "kind": "idle",
+   "activity": "stand",
+   "parcel": "parcel.teeth-of-sithis.east-stair",
+   "why": "The temple keeper tends the east door and the lamp beside it.",
+   "at": [
+    3670.4,
+    6739.6
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.npc-keeper",
+   "kind": "npc",
+   "at": [
+    3670.4,
+    6739.6
+   ],
+   "rosterSlotId": "n1",
+   "role": "the temple keeper",
+   "parcel": "parcel.teeth-of-sithis.east-stair",
+   "why": "A second priest of the Clutch keeps the temple below while Nisswo meets the pilgrims.",
+   "schedule": [
+    {
+     "dayPhase": "morning",
+     "socketId": "socket.teeth-of-sithis.idle-keeper-work",
+     "purpose": "work"
+    },
+    {
+     "dayPhase": "night",
+     "socketId": "socket.teeth-of-sithis.idle-band-home",
+     "purpose": "home"
+    }
+   ],
+   "fills": [
+    "promise.teeth-of-sithis.occupant-n1"
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.npc-scrubber",
+   "kind": "npc",
+   "at": [
+    3648.0,
+    6775.0
+   ],
+   "rosterSlotId": "the-one",
+   "role": "the one who scrubs to the waterline",
+   "parcel": "parcel.teeth-of-sithis.west-stair",
+   "why": "One of the Clutch scrubs the teeth each day down to the water and never below it.",
+   "schedule": [
+    {
+     "dayPhase": "morning",
+     "socketId": "socket.teeth-of-sithis.idle-scrubber-work",
+     "purpose": "work"
+    },
+    {
+     "dayPhase": "night",
+     "socketId": "socket.teeth-of-sithis.idle-scrubber-home",
+     "purpose": "home"
+    }
+   ],
+   "fills": [
+    "promise.teeth-of-sithis.occupant-the-one"
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.npc-band",
+   "kind": "npc",
+   "at": [
+    3669.0,
+    6736.2
+   ],
+   "rosterSlotId": "n2",
+   "role": "the band of the Clutch",
+   "parcel": "parcel.teeth-of-sithis.east-stair",
+   "why": "A band of the Clutch keeps the two stairs down into the temple.",
+   "schedule": [
+    {
+     "dayPhase": "morning",
+     "socketId": "socket.teeth-of-sithis.idle-band-work",
+     "purpose": "work"
+    },
+    {
+     "dayPhase": "night",
+     "socketId": "socket.teeth-of-sithis.idle-band-home",
+     "purpose": "home"
+    }
+   ],
+   "fills": [
+    "promise.teeth-of-sithis.occupant-n2"
+   ]
+  },
+  {
+   "op": "note",
+   "uid": "t-door-w",
+   "text": "Walk 12: the owner saw the two porticos as free-standing doors into nothing. Each now stands at the foot of a hill that climbs from the path (m-a-hill-w, m-a-hill-e, ramp profile, soft blend) and closes on the portico's back over its lintel (m-d-back-w, m-d-back-e); a forecourt is dug to the sill with sloped sides (m-b-cut-w, m-b-cut-e) and a ramp leads down into it from the path (m-c-ramp-w, m-c-ramp-e). Part 3: mound uids carry a/b/c/d because overlays apply in id order (hill, cut, ramp, back). The scrubbing scaffolds are gone (owner, walk 12): each portico is itself the parcel's host, a door-only shell carrying the plugin load door into the temple."
+  },
+  {
+   "op": "note",
+   "uid": "t-rock-en1",
+   "text": "Walk 12 close-out: the east portico's north side faces the street with no bank behind it; a bank rock closes that side so the door reads as cut into the hill."
+  },
+  {
+   "op": "note",
+   "uid": "t-tooth3",
+   "text": "Walk 12: the owner saw no row of teeth. The row is drawn 4 to 6 m nearer the bank, every tooth in knee-deep water, at 1.35 to 1.65 times the mined scale, each turned differently, so the six teeth read as a weathered colonnade from the landing rather than a set of identical posts (close-out)."
+  },
+  {
+   "op": "note",
+   "uid": "t-rock-wn1",
+   "text": "Walk 12 close-out: two bank rocks flank the west portico so its door reads as cut into the rock of the hill; the hill ramps start 2 to 3 m behind the forecourt so its sides are low banks, not pit walls."
+  },
+  {
+   "op": "note",
+   "uid": "t-tooth1",
+   "text": "The Teeth of Sithis: six black xanmeer teeth standing in knee-deep water off the bank, the pilgrim way running out at the water opposite the gap between the middle pair. Two doors in the rock of the bank lead down into the temple below."
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.plant-1",
+   "at": [
+    3663.47,
+    6787.0
+   ],
+   "kind": "plant",
+   "plantClass": "pearl-clam",
+   "valueTier": "high",
+   "owner": null,
+   "why": "A clam of the shallows. One in many holds a pearl. A new one grows in a month. (vanilla:plants/clamlarge01, chunk_7_14_vegetation.bin#211:72)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.plant-2",
+   "at": [
+    3663.67,
+    6792.46
+   ],
+   "kind": "plant",
+   "plantClass": "pearl-clam",
+   "valueTier": "high",
+   "owner": null,
+   "why": "A clam of the shallows. One in many holds a pearl. A new one grows in a month. (vanilla:plants/clamlarge01, chunk_7_14_vegetation.bin#211:75)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.den-swamp-jelly",
+   "kind": "fauna",
+   "at": [
+    3645.3,
+    6722.3
+   ],
+   "zone": "den",
+   "species": "creature.swamp-jelly",
+   "headcount": 4,
+   "why": "Swamp Jelly den at the flat water round the colonnade. Still sheltered water where it drifts low.",
+   "dangerBand": "D1"
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.den-giant-leech",
+   "kind": "encounter",
+   "at": [
+    3684.3,
+    6771.5
+   ],
+   "zone": "den",
+   "species": "creature.giant-leech",
+   "headcount": 3,
+   "why": "Giant Leech den at green water below the scrub line. Dark still water with a steady trickle of scraps and swimmers.",
+   "dangerBand": "D2"
+  },
+  {
+   "op": "move",
+   "uid": "t-rock-wn1",
+   "dy": 0.293
+  },
+  {
+   "op": "move",
+   "uid": "t-rock-ws1",
+   "dy": 0.293
+  },
+  {
+   "op": "note",
+   "uid": "t-rock-ws1",
+   "text": "2.4g2: the bank rock settled into the raised hill 1.4 to 1.8 m deep (rockSeatRule); it is lifted to its seat on its three lowest contacts so it reads as lying on the bank."
+  },
+  {
+   "op": "move",
+   "uid": "t-rock-en1",
+   "dy": 0.3
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.den-voriplasm",
+   "kind": "encounter",
+   "dangerBand": "D3",
+   "zone": "den",
+   "species": "creature.voriplasm",
+   "headcount": 1,
+   "parcel": "parcel.teeth-of-sithis.east-stair",
+   "interiorCell": "TeethofSithisInt02",
+   "host": "TeethofSithisInt02.08482067",
+   "why": "The voriplasm (life c1, the guardian) lies in the flooded deep room of the temple, on the fallen floor under the still water. It strips the flesh from anything that falls there."
+  },
+  {
+   "op": "mound",
+   "uid": "m-e-lintel-w",
+   "polygonM": [
+    [
+     3634.0,
+     6753.1
+    ],
+    [
+     3639.9,
+     6753.1
+    ],
+    [
+     3639.9,
+     6762.9
+    ],
+    [
+     3634.0,
+     6762.9
+    ]
+   ],
+   "blendM": 2.0,
+   "why": "The hill is banked hard against the back of the west portico, so the doorway opens straight into the slope with no gap behind.",
+   "sources": [
+    "tmp/2-slice-so-far-fixes.md: the Teeth doorways embedded in the hillside, no gap behind"
+   ],
+   "profile": "ramp",
+   "rampM": [
+    [
+     3639.9,
+     6758.0,
+     7.8
+    ],
+    [
+     3634.0,
+     6758.0,
+     9.5
+    ]
+   ]
+  },
+  {
+   "op": "mound",
+   "uid": "m-e-lintel-e",
+   "polygonM": [
+    [
+     3660.0,
+     6733.1
+    ],
+    [
+     3666.0,
+     6733.1
+    ],
+    [
+     3666.0,
+     6742.9
+    ],
+    [
+     3660.0,
+     6742.9
+    ]
+   ],
+   "blendM": 2.0,
+   "why": "The hill is banked hard against the back of the east portico, so the doorway opens straight into the slope with no gap behind.",
+   "sources": [
+    "tmp/2-slice-so-far-fixes.md: the Teeth doorways embedded in the hillside, no gap behind"
+   ],
+   "profile": "ramp",
+   "rampM": [
+    [
+     3666.0,
+     6738.0,
+     8.0
+    ],
+    [
+     3660.0,
+     6738.0,
+     9.7
+    ]
+   ]
+  },
+  {
+   "op": "mound",
+   "uid": "m-f-floor-w",
+   "polygonM": [
+    [
+     3640.4,
+     6753.3
+    ],
+    [
+     3642.5,
+     6753.3
+    ],
+    [
+     3642.5,
+     6762.7
+    ],
+    [
+     3640.4,
+     6762.7
+    ]
+   ],
+   "datumM": 1.6,
+   "blendM": 0.3,
+   "facedBy": [
+    "t-door-w"
+   ],
+   "why": "The west portico floor in front of the door stays level with the sill; the portico itself hides the edges.",
+   "sources": [
+    "tmp/2-slice-so-far-fixes.md: the Teeth doorways embedded in the hillside, no gap behind"
+   ]
+  },
+  {
+   "op": "mound",
+   "uid": "m-f-floor-e",
+   "polygonM": [
+    [
+     3666.54,
+     6733.3
+    ],
+    [
+     3668.65,
+     6733.3
+    ],
+    [
+     3668.65,
+     6742.7
+    ],
+    [
+     3666.54,
+     6742.7
+    ]
+   ],
+   "datumM": 1.8,
+   "blendM": 0.3,
+   "facedBy": [
+    "t-door-e"
+   ],
+   "why": "The east portico floor in front of the door stays level with the sill; the portico itself hides the edges.",
+   "sources": [
+    "tmp/2-slice-so-far-fixes.md: the Teeth doorways embedded in the hillside, no gap behind"
+   ]
+  },
+  {
+   "op": "place",
+   "uid": "t-bench-w",
+   "asset": "vanilla:furniture/farm/farmbench01",
+   "at": [
+    3652.0,
+    6769.0
+   ],
+   "yaw": 0.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "t-bench-w",
+   "kind": "assembly",
+   "id": "parcel.teeth-of-sithis.west-stair",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "settle",
+   "uid": "t-bench-w"
+  },
+  {
+   "op": "place",
+   "uid": "t-bench-e",
+   "asset": "vanilla:furniture/farm/farmbench01",
+   "at": [
+    3660.5,
+    6769.0
+   ],
+   "yaw": 0.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "t-bench-e",
+   "kind": "assembly",
+   "id": "parcel.teeth-of-sithis.west-stair",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "note",
+   "uid": "t-bench-w",
+   "text": "2.5x seats: the Clutch's three outdoor keepers eat at midday where the pilgrim way meets the water; two plain benches flank the way, 4 m off its line on level bank, facing the teeth."
+  },
+  {
+   "op": "note",
+   "uid": "t-bench-e",
+   "text": "2.5x seats: the east bench of the pair at the way's end, within reach of the priest, the scrubber and the temple keeper's door."
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.idle-seat-t-bench-w-1",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "t-bench-w",
+   "parcel": "parcel.teeth-of-sithis.west-stair",
+   "at": [
+    3651.6,
+    6769.0
+   ],
+   "seatHeightM": 0.43,
+   "why": "A seat at a bench where people take the midday meal."
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.idle-seat-t-bench-w-2",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "t-bench-w",
+   "parcel": "parcel.teeth-of-sithis.west-stair",
+   "at": [
+    3652.44,
+    6769.0
+   ],
+   "seatHeightM": 0.43,
+   "why": "A seat at a bench where people take the midday meal."
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.idle-seat-t-bench-e-1",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "t-bench-e",
+   "parcel": "parcel.teeth-of-sithis.west-stair",
+   "at": [
+    3660.1,
+    6769.0
+   ],
+   "seatHeightM": 0.43,
+   "why": "A seat at a bench where people take the midday meal."
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.idle-seat-t-bench-e-2",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "t-bench-e",
+   "parcel": "parcel.teeth-of-sithis.west-stair",
+   "at": [
+    3660.94,
+    6769.0
+   ],
+   "seatHeightM": 0.43,
+   "why": "A seat at a bench where people take the midday meal."
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.idle-seat-teethofsithisint02-08491a7e",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "TeethofSithisInt02.08491A7E",
+   "parcel": "parcel.teeth-of-sithis.east-stair",
+   "seatHeightM": 0.48,
+   "why": "A chair in TeethofSithisInt02 where the household takes the midday meal.",
+   "interiorCell": "TeethofSithisInt02"
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.idle-seat-teethofsithisint02-08491a80",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "TeethofSithisInt02.08491A80",
+   "parcel": "parcel.teeth-of-sithis.east-stair",
+   "seatHeightM": 0.48,
+   "why": "A chair in TeethofSithisInt02 where the household takes the midday meal.",
+   "interiorCell": "TeethofSithisInt02"
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.idle-seat-teethofsithisint02-08491a88",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "TeethofSithisInt02.08491A88",
+   "parcel": "parcel.teeth-of-sithis.east-stair",
+   "seatHeightM": 0.48,
+   "why": "A chair in TeethofSithisInt02 where the household takes the midday meal.",
+   "interiorCell": "TeethofSithisInt02"
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.idle-seat-teethofsithisint02-08491a8d",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "TeethofSithisInt02.08491A8D",
+   "parcel": "parcel.teeth-of-sithis.east-stair",
+   "seatHeightM": 0.48,
+   "why": "A chair in TeethofSithisInt02 where the household takes the midday meal.",
+   "interiorCell": "TeethofSithisInt02"
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.idle-seat-teethofsithisint02-08491a8e",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "TeethofSithisInt02.08491A8E",
+   "parcel": "parcel.teeth-of-sithis.east-stair",
+   "seatHeightM": 0.48,
+   "why": "A chair in TeethofSithisInt02 where the household takes the midday meal.",
+   "interiorCell": "TeethofSithisInt02"
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.idle-seat-teethofsithisint02-084c00c1",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "TeethofSithisInt02.084C00C1",
+   "parcel": "parcel.teeth-of-sithis.east-stair",
+   "seatHeightM": 0.45,
+   "why": "A chair in TeethofSithisInt02 where the household takes the midday meal.",
+   "interiorCell": "TeethofSithisInt02"
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.idle-seat-teethofsithisint02-084c54da",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "TeethofSithisInt02.084C54DA",
+   "parcel": "parcel.teeth-of-sithis.east-stair",
+   "seatHeightM": 0.46,
+   "why": "A chair in TeethofSithisInt02 where the household takes the midday meal.",
+   "interiorCell": "TeethofSithisInt02"
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.idle-seat-teethofsithisint02-0879bcd5",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "TeethofSithisInt02.0879BCD5",
+   "parcel": "parcel.teeth-of-sithis.east-stair",
+   "seatHeightM": 0.45,
+   "why": "A chair in TeethofSithisInt02 where the household takes the midday meal.",
+   "interiorCell": "TeethofSithisInt02"
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.idle-seat-teethofsithisint02-087ab6d8",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "TeethofSithisInt02.087AB6D8",
+   "parcel": "parcel.teeth-of-sithis.east-stair",
+   "seatHeightM": 0.57,
+   "why": "A chair in TeethofSithisInt02 where the household takes the midday meal.",
+   "interiorCell": "TeethofSithisInt02"
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.idle-priest-last-bend",
+   "kind": "idle",
+   "activity": "stand",
+   "at": [
+    3600.0,
+    6800.0
+   ],
+   "why": "Ohl-Nakka's second post, at the last-bend quest post: while NI05 asks for the pilgrim's offering, he meets them where the teeth first come into view across the water."
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.q-post-last-bend",
+   "kind": "marker",
+   "at": [
+    3600.0,
+    6800.0
+   ],
+   "zone": "post",
+   "why": "The water's edge west of the temple, where the shore turns south-east for its last run to the teeth. The raised bank hides the colonnade from the priests' track; from this shore it stands in full view across open water. The Clutch keep no watch this far out, so a pilgrim can stop here and look."
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.pilgrim-landing",
+   "kind": "mooring",
+   "mooringKind": "landing",
+   "accepts": [
+    "dugout",
+    "skiff",
+    "sea-hull"
+   ],
+   "capacity": 2,
+   "at": [
+    3689.86,
+    6749.66
+   ],
+   "why": "The pilgrim route ends here, 35 m from the open sea: the promised pilgrim landing below the temple.",
+   "owner": "faction.nisswo",
+   "serviceLink": null,
+   "minDepthDryM": 0.96,
+   "waterId": "body.ocean"
+  },
+  {
+   "op": "socket",
+   "id": "socket.teeth-of-sithis.pilgrim-beach",
+   "kind": "mooring",
+   "mooringKind": "beach",
+   "accepts": [
+    "dugout"
+   ],
+   "capacity": 1,
+   "at": [
+    3668.7,
+    6761.1
+   ],
+   "why": "Pilgrims who came by canoe pull it up on the shingle below the temple.",
+   "serviceLink": null,
+   "minDepthDryM": 0.72,
+   "waterId": "body.ocean"
+  }
+ ]
+}

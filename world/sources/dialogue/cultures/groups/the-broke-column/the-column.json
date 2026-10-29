@@ -1,0 +1,97 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "entries": [
+  {
+   "id": "culture.group.the-broke-column.the-column",
+   "level": "group",
+   "name": "The column",
+   "parent": "culture.settlement.the-broke-column",
+   "members": [
+    "npc.imperial-fringe.the-broke-column.n1",
+    "npc.imperial-fringe.the-broke-column.n2",
+    "npc.imperial-fringe.the-broke-column.n2-2",
+    "npc.imperial-fringe.the-broke-column.n2-3"
+   ],
+   "norms": [
+    {
+     "text": "Sons and grandsons take their fathers' places on the roster.",
+     "source": "world/sources/catalogue/places-imperial-fringe.json#place.imperial-fringe.the-broke-column"
+    },
+    {
+     "text": "Colours are worn as an inheritance.",
+     "source": "world/sources/catalogue/places-imperial-fringe.json#place.imperial-fringe.the-broke-column"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Striking a name off the roster while the man still lives.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "The column's colours, unrolled at dawn.",
+     "source": "world/sources/catalogue/places-imperial-fringe.json#place.imperial-fringe.the-broke-column"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Being called bandits by the Mile House.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "people": {
+     "lean": 1,
+     "text": "Six are left on the roster. Every one of them stands a watch.",
+     "source": "world/sources/catalogue/places-imperial-fringe.json#place.imperial-fringe.the-broke-column"
+    },
+    "empire": {
+     "lean": -1,
+     "text": "The Legion recalled its column and left the pay owing.",
+     "source": "world/sources/catalogue/places-imperial-fringe.json#place.imperial-fringe.the-broke-column"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Rank and surname among themselves.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "formal",
+    "oaths": [
+     {
+      "text": "Mark it in the book.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "That a grandfather ran.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Two centuries of pay are owed. The book shows the last entry.",
+      "source": "world/sources/catalogue/places-imperial-fringe.json#place.imperial-fringe.the-broke-column"
+     }
+    ],
+    "rumours": []
+   },
+   "views": [
+    {
+     "node": "culture.region.imperial-fringe",
+     "lean": -1,
+     "text": "Gideon's governor will not pay to clear them, nor to pardon them.",
+     "source": "world/sources/catalogue/places-imperial-fringe.json#place.imperial-fringe.the-broke-column"
+    }
+   ],
+   "deviationRate": 0.2
+  }
+ ]
+}

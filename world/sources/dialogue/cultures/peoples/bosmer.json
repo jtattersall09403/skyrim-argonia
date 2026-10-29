@@ -1,0 +1,140 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "_": "People sheets for bosmer in the slice roster (lane 2.5a2). Upbringings inferred from roster roles and zones.",
+ "entries": [
+  {
+   "id": "culture.people.bosmer-marsh-born",
+   "level": "people",
+   "name": "Bosmer, penal-staff and column descendants",
+   "parent": "culture.province.black-marsh",
+   "race": "bosmer",
+   "upbringing": "marsh-born",
+   "norms": [
+    {
+     "text": "Nicknames given early; ceremony kept light.",
+     "source": "inferred"
+    },
+    {
+     "text": "The tally is kept, generation to generation.",
+     "source": "world/sources/lore/topics/prisons.md"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Harming a living tree for timber in front of them.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "Meat, family and the tally.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Pomp.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "place": {
+     "lean": 1,
+     "text": "The supply town is home.",
+     "source": "world/sources/lore/blackrose.md"
+    },
+    "work": {
+     "lean": 0,
+     "text": "Quartermastering and keeping the tally.",
+     "source": "world/sources/lore/topics/prisons.md"
+    },
+    "people": {
+     "lean": 1,
+     "text": "Argonians keep trees too; good.",
+     "source": "inferred"
+    },
+    "faction": {
+     "lean": -1,
+     "text": "The Wardens are the customs house and the licence.",
+     "source": "world/sources/lore/an-xileel.md"
+    },
+    "hist": {
+     "lean": 0,
+     "text": "The Hist is the Argonians' business.",
+     "source": "inferred"
+    },
+    "empire": {
+     "lean": 0,
+     "text": "The Empire is history here.",
+     "source": "world/sources/lore/topics/foreign-powers.md"
+    },
+    "trade": {
+     "lean": 0,
+     "text": "Trade is barter here.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    "danger": {
+     "lean": -1,
+     "text": "The Rose.",
+     "source": "world/sources/lore/topics/prisons.md"
+    },
+    "rumour": {
+     "lean": 1,
+     "text": "Who is owed what in the Rose.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    "directions": {
+     "lean": 1,
+     "text": "Directions fast and wry.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Nicknames.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "low",
+    "oaths": [
+     {
+      "text": "By Y'ffre.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "What the old tally covers.",
+      "source": "world/sources/lore/topics/prisons.md"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#2-upbringing--culture-layer--who-raised-them-and-when"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "The Rose's ledgers are three generations deep.",
+      "source": "world/sources/lore/topics/labour-and-bondage.md"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "Something bricked up in the prison is open again.",
+      "source": "world/sources/lore/topics/prisons.md"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.chainbreakers",
+     "lean": 0,
+     "text": "They want our tallies.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    }
+   ],
+   "deviationRate": 0.2
+  }
+ ]
+}

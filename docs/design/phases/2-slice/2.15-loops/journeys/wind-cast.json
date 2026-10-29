@@ -1,0 +1,46 @@
+{
+ "id": "wind-cast",
+ "start": {
+  "query": "?view=character&x=3866&z=6362&t=10:00&d=8-17",
+  "kit": "melee",
+  "drawn": false,
+  "known": ["call-the-wind"]
+ },
+ "notes": "The Lighter Flotilla by day, aboard the longboat (the one sea hull here). Call the Wind is a lesser power, already known; the melee kit holds a sword and a steel shield in hand. The power goes into the power slot, never a hand (Skyrim), and the power key casts it with the shield still held; the wind pick opens, south is picked, and the trees, the water and the sail swing to the new wind. From the cast on, the capture camera stands 8 m out to sea (south-east, bearing 150) looking back past the sail at the shore trees 26-36 m north-west, so the swing is in shot before and after the pick. The boarding is an unfilmed lead-in; the hull is taken, not bought (the buy is proved by boat-sea-wind).",
+ "steps": [
+  {
+   "lead": true,
+   "name": "board",
+   "transition": "at the longboat's mooring, E: the player climbs aboard the flotilla's sea hull and takes the helm (taken, not bought)",
+   "stage": { "at": { "x": 3866, "z": 6362, "yaw": 0 }, "hour": 10, "place": "place.mercantile-coast.lighter-flotilla" },
+   "do": { "action": "boat", "op": "press", "near": [{ "id": "npc.mercantile-coast.lighter-flotilla.flotilla-speaker", "m": 11.8, "facing": false }] },
+   "keys": [{ "wait_s": 1.0 }, { "press": "KeyE" }],
+   "expect": { "boat": { "id": "boat.lighter-flotilla.longboat", "aboard": "boat.lighter-flotilla.longboat" } }
+  },
+  {
+   "lead": true,
+   "name": "ready-the-power",
+   "transition": "magic window -> Call the Wind in the power slot; the shield stays in the left hand",
+   "do": { "action": "readyPower", "spell": "call-the-wind" },
+   "keys": [{ "press": "Escape" }, { "wait_s": 0.6 }, { "click": ".es-magic [data-es-row=\"call-the-wind\"]" }, { "wait_s": 0.3 }, { "click": ".es-magic [data-ready=\"power\"]" }, { "wait_s": 0.3 }, { "press": "Escape" }, { "wait_s": 0.6 }],
+   "hold_s": 0.5,
+   "expect": { "power": "call-the-wind", "offHand": "steel-shield" }
+  },
+  {
+   "name": "use-the-power",
+   "transition": "the power key (Z) aboard: Call the Wind casts with the shield held, the wind pick opens",
+   "do": { "action": "usePower" },
+   "keys": [{ "closeUp": "player", "bearing": 150, "dist_m": 8, "up_m": 1.6 }, { "press": "KeyZ" }, { "wait_s": 0.8 }],
+   "hold_s": 1.0,
+   "expect": { "effects": ["call-the-wind"], "offHand": "steel-shield", "power": "call-the-wind" }
+  },
+  {
+   "name": "pick-the-wind",
+   "transition": "wind pick -> south: the trees, the water and the sail swing to a south wind",
+   "do": { "action": "callWind", "direction": "s" },
+   "keys": [{ "click": "[data-wind-dir=\"s\"]" }, { "wait_s": 3.0 }],
+   "hold_s": 2.0,
+   "expect": { "windDir": "s", "offHand": "steel-shield" }
+  }
+ ]
+}

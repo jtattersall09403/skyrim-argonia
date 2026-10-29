@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "cellId": "KeebaHouseCrafter",
+  "plugin": "King of the Murkmire.esp",
+  "rule": "Stand-ins for the cell's missing clutter whose mesh or base is not in the vault (Creation Club, Hearthfire, the resource pack, Dawnguard; planner ruling 2026-09-27; place-diag P9). Each stand-in is a published piece of the same object and near size, drawn at the missing reference's transform by worldgen/export_interior_bundle.py.",
+  "substitutions": [
+    {
+      "refId": "080A0842",
+      "standInAsset": "vanilla:clutter/ingredients/scalypholiotabits01",
+      "why": "A bog beacon cap sits here; scaly pholiota takes its place."
+    },
+    {
+      "refId": "080A0843",
+      "standInAsset": "vanilla:clutter/ingredients/scalypholiotabits01",
+      "why": "A bog beacon cap sits here; scaly pholiota takes its place."
+    },
+    {
+      "refId": "080A0863",
+      "standInAsset": "vanilla:clutter/common/rug01",
+      "why": "A woven rug lies here; a common rug takes its place."
+    },
+    {
+      "refId": "080A0864",
+      "standInAsset": "vanilla:clutter/common/rug01",
+      "why": "A woven rug lies here; a common rug takes its place."
+    },
+    {
+      "refId": "08989BFA",
+      "standInAsset": "vanilla:clutter/common/flute01",
+      "why": "A bone flute lies here; a wooden flute of its length takes its place."
+    }
+  ],
+  "removals": [
+    {
+      "refId": "0809B578",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club or Hearthfire archive, which the vault does not hold",
+      "note": "A Hearthfire household item sits here; its master is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "0809B579",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club or Hearthfire archive, which the vault does not hold",
+      "note": "A Hearthfire household item sits here; its master is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "0809B57A",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club or Hearthfire archive, which the vault does not hold",
+      "note": "A Hearthfire household item sits here; its master is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "0809B57B",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club or Hearthfire archive, which the vault does not hold",
+      "note": "A Hearthfire household item sits here; its master is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "0809B57C",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club or Hearthfire archive, which the vault does not hold",
+      "note": "A Hearthfire household item sits here; its master is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "0809B57D",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club or Hearthfire archive, which the vault does not hold",
+      "note": "A Hearthfire household item sits here; its master is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "0809B57E",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club or Hearthfire archive, which the vault does not hold",
+      "note": "A Hearthfire household item sits here; its master is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "080A0844",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club or Hearthfire archive, which the vault does not hold",
+      "note": "A stalk of marshmerrow lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "0809B560",
+      "reason": "seals-a-passage",
+      "why": "This woven loft railing stands over the head of loft stair 0809B536 and pinches the way against the pod wall, so nobody can reach the loft bed. A nav bake without it alone joins the door to the loft (lane 2.4g1 exclusion bakes).",
+      "note": "The rest of the loft rail stays; the stair head is open."
+    }
+  ],
+  "removalRule": "Owner ruling 2026-10-04 (R113): no missing piece ships as a gap. A missing piece takes a same-class stand-in from a published kit where one exists (substitutions[]); a decorative piece whose class no published kit or vault archive holds is taken out of the fit-out (removals[], reason decorative-no-same-class, its search recorded), and the spot is simply empty. A placed piece whose only support was a removed piece is removed with it (reason rests-on-a-removal, restsOn naming that row)."
+}

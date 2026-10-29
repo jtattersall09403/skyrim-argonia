@@ -1,0 +1,63 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "entries": [
+  {
+   "id": "culture.household.opening-work-camp.west-shed",
+   "level": "household",
+   "name": "The household in the west shed",
+   "parent": "culture.group.opening-work-camp.gang-families",
+   "members": [
+    "npc.pirate-freeholds.opening-work-camp.n1-4",
+    "npc.pirate-freeholds.opening-work-camp.n1-5"
+   ],
+   "norms": [
+    {
+     "text": "Mats are patched with reed from the store before the rains.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Speaking for the clutch as if it were their own.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "A dry mat and a full water jar.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Being counted as Argonian kin by the ledger and as strangers by the shed.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {},
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Walker, the same as the camp, said with a Khajiit's warmth.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "low",
+    "oaths": [],
+    "neverSaid": []
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "They carry water for a Hist that will never name them.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": []
+   },
+   "views": [],
+   "deviationRate": 0.25
+  }
+ ]
+}

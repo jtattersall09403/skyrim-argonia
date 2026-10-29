@@ -1,0 +1,531 @@
+{
+  "schemaVersion": 1,
+  "domain": "source",
+  "_": "One row per sourced plugin set (CLAUDE.md \u00a7 Assets and kits; world/98): the plugin and records read, the archive and its sha256, the licence and credit (root README \u00a7 Credits), what it backs. Added by hand in the change that sources it.",
+  "entries": [
+    {
+      "id": "source.kotm-saxhleel-clothing",
+      "name": "King of the Murkmire: Saxhleel clothing",
+      "status": "derived",
+      "kind": "plugin-set",
+      "sources": [
+        "https://www.nexusmods.com/skyrimspecialedition/mods/190459"
+      ],
+      "plugin": "King of the Murkmire.esp",
+      "records": [
+        "SaxhleelTunicShortBlue",
+        "SaxhleelTunicShortGreen",
+        "SaxhleelTunicShortGrey",
+        "SaxhleelTunicShortBrown",
+        "SaxhleelTunicShortOrange",
+        "SaxhleelTunicBlue01",
+        "SaxhleelTunicGreen01",
+        "SaxhleelTunicGrey01",
+        "SaxhleelTunicBrown02",
+        "SaxhleelTunicOrange02",
+        "SaxhleelTunicPurple02",
+        "AnWamasuRobe",
+        "ClothesBlackSmithVariantAncArg"
+      ],
+      "archive": "King of the Murkmire - Main 190459 1.0.2 2026-09-11T09-42Z cE8hkAoxS.7z",
+      "sha256": "7bf18067157130d47058ce20f0bc15759f5df71b6f81eb05079b8dba720a5ff2",
+      "licence": "used with the author's permission (held by the owner, 2026-09-24)",
+      "credit": "pancake0723, v1.0.2",
+      "backs": "worn clothing: tunics short, long and wrapped in their record dyes, the belted robe, the smith's apron (config/armour/armour.json `record`)",
+      "notes": "Vanilla meshes and textures the records name (monk robes, blacksmith torso, robe dyes) come from Skyrim's own archives."
+    },
+    {
+      "id": "source.cipactli-native-clothing",
+      "name": "Here There Be Monsters - Sign of Cipactli: Argonian native clothing",
+      "status": "derived",
+      "kind": "plugin-set",
+      "sources": [
+        "https://www.nexusmods.com/skyrimspecialedition/mods/35933"
+      ],
+      "plugin": "Here There Be Monsters - Curse of Cipactli.esp",
+      "records": [
+        "CIPHTBMNativeClothes1",
+        "CIPHTBMNativeClothes2",
+        "CIPHTBMNativeClothes3",
+        "CIPHTBMNativeBoots1",
+        "CIPHTBMNativeBoots2",
+        "CIPHTBMNativeHat1"
+      ],
+      "archive": "Here There Be Monsters - Sign of Cipactli SSE-35933-2-92-1622685794.7z",
+      "sha256": "c44da49e52ae68d41df23fdf672b406d09ea72a9338e3e496b5be86784d0aed6",
+      "licence": "modder's resource, use with credit (itself bundling many credited modder resources)",
+      "credit": "Araanim, v2.92",
+      "backs": "worn clothing: the woven wrap, layered skirt, patterned kilt, reed sandals, foot wraps and woven hat (config/armour/armour.json `record`)",
+      "notes": "Female skirts carry a physics bone (SkirtBBone0) the build folds onto the pelvis."
+    },
+    {
+      "id": "source.kotm-items",
+      "name": "King of the Murkmire: carried items",
+      "status": "derived",
+      "kind": "plugin-set",
+      "sources": [
+        "https://www.nexusmods.com/skyrimspecialedition/mods/190459"
+      ],
+      "plugin": "King of the Murkmire.esp",
+      "records": [
+        "DollTurtle",
+        "SwampLeviathanClaws",
+        "ArgonianEggBlack01",
+        "XanmeerNisswoCoin",
+        "SaxhleelMetalPot01",
+        "Shell01",
+        "SaltriceFlatbread",
+        "JeelSa",
+        "TeeLel",
+        "SaltriceNoodles",
+        "FrogLegRaw",
+        "FrogLegCooked",
+        "SnailMeat",
+        "SnailMeatCooked",
+        "SnailSlimeIngredient"
+      ],
+      "archive": "King of the Murkmire - Main 190459 1.0.2 2026-09-11T09-42Z cE8hkAoxS.7z",
+      "sha256": "7bf18067157130d47058ce20f0bc15759f5df71b6f81eb05079b8dba720a5ff2",
+      "licence": "used with the author's permission (held by the owner, 2026-09-24)",
+      "credit": "pancake0723, v1.0.2",
+      "backs": "item models (config/weapons/clutter.json `root`): item.seed-doll (Turtle Xeech'ki), item.leviathan-bone (swamp beast claws), item.mnemic-egg (Argonian egg); and the slice-cell pieces 2.3c3 built: item.nisswo-coin, item.saxhleel-pot, item.shell, item.saltrice-flatbread, item.jeel-sa, item.tee-lel, item.saltrice-noodles, item.frog-legs, item.fried-frog-legs, item.snails-foot, item.seared-snails-foot, item.snail-mucus",
+      "notes": "The first three replace the 2.3 stand-in meshes; the rest were built in 2.3c3. The VakkaStone mesh read as a black spiked cage; item.vakka-stone now uses a vanilla crystal (2.5x)."
+    },
+    {
+      "id": "source.cipactli-items",
+      "name": "Here There Be Monsters - Sign of Cipactli: carried items",
+      "status": "derived",
+      "kind": "plugin-set",
+      "sources": [
+        "https://www.nexusmods.com/skyrimspecialedition/mods/35933"
+      ],
+      "plugin": "Here There Be Monsters - Curse of Cipactli.esp",
+      "records": [
+        "CIPHTBMRuinsXanGraveStake1"
+      ],
+      "archive": "Here There Be Monsters - Sign of Cipactli SSE-35933-2-92-1622685794.7z",
+      "sha256": "c44da49e52ae68d41df23fdf672b406d09ea72a9338e3e496b5be86784d0aed6",
+      "licence": "modder's resource, use with credit (itself bundling many credited modder resources)",
+      "credit": "Araanim, v2.92",
+      "backs": "item models: item.grave-stake (xanmeer grave stake) (config/weapons/clutter.json `root`)",
+      "notes": "Sourced in 2.5x4 to replace a 2.3 stand-in mesh. The turtle shell piece read as a fragment; item.turtle-shell-bowl now uses a vanilla bowl (2.5x)."
+    },
+    {
+      "id": "source.monk-beads-items",
+      "name": "Monk Prayer Beads PORT: carried items",
+      "status": "derived",
+      "kind": "plugin-set",
+      "sources": [
+        "https://www.nexusmods.com/skyrimspecialedition/mods/63100"
+      ],
+      "plugin": "monkamu.esp",
+      "records": [
+        "MonkAmulet"
+      ],
+      "archive": "Unenchanted Prayer Beads-63100-1-2-1644098513.7z",
+      "sha256": "8c3caf26ffddc25a8afe0c3ebf0b91e73f539a142221b702c7e78beaec09d454",
+      "licence": "used with the author's permission (held by the owner, 2026-10-18)",
+      "credit": "FiddlerOnTheRoof, v1.2 (file 262023)",
+      "backs": "item models: item.glass-bead-strand (the ARMO's world model neckmonktex04.nif) (config/weapons/clutter.json `root`)",
+      "notes": "Sourced in 2.5x to replace the amethyst stand-in. The emissive map monkneck_em.dds is absent from the archive; the build uses the diffuse alone. Expanded Gemstones (36509) was downloaded and checked: its 25 cut stones share one bevelled-slab cut and render grey, so none was used; its extract sits unused at mod-sources/expanded-gemstones-36509 (archive sha256 b2bd5f9b36c61c870736b7560e18252f2b451881545fd7e16695c119de066e7b)."
+    },
+    {
+      "id": "source.spear-mechanic-clips",
+      "name": "Skyrim Spear Mechanic SE 3.0 (DAR): shortspear clips",
+      "status": "derived",
+      "kind": "animation-set",
+      "sources": [
+        "https://www.nexusmods.com/skyrimspecialedition/mods/25146"
+      ],
+      "plugin": "SkyrimSpearMechanic.esp",
+      "records": [
+        "DAR folders 100 and 400 (one-handed spear idle, attacks, power attacks, draw)"
+      ],
+      "archive": "Skyrim Spear Mechanic SE 3.0 DAR (main file 145670)",
+      "sha256": "d2e714645e59cd1c0ff5f60d2d4f7782d5b1f7aafd502d6352e80b7479e3ef73",
+      "licence": "permission to use confirmed by the owner from the Nexus permission box; used with credit",
+      "credit": "Ashingda, with BouBoule201288, NickaNak, Bubbajones_ya, KeyboardKing and nikikuriton (original Elder Spear)",
+      "backs": "animation pack rig-skyrim-humanoid.shortspear (config/animations/humanoid-1h-combat.json `shortspear`)",
+      "notes": "Animated Heavy Armory's DAR folder 620 carries byte-identical copies of these clips (md5-checked); the Spear Mechanic archive is the named source."
+    },
+    {
+      "id": "source.heavy-armory-shortspear",
+      "name": "Animated Heavy Armory (DAR version): shortspear weapons",
+      "status": "derived",
+      "kind": "plugin-set",
+      "sources": [
+        "https://www.nexusmods.com/skyrimspecialedition/mods/51100"
+      ],
+      "plugin": "PrvtI_HeavyArmory.esp",
+      "records": [
+        "ShIronShortspear",
+        "ShSteelShortspear"
+      ],
+      "archive": "animated-heavy-armory-2.4.2",
+      "sha256": "d0e23122d8d38e535fc25be557b340612672bd5e4824ab7ed52957c0719770e4",
+      "licence": "permission to use confirmed by the owner from the Nexus permission box; used with credit, as the trident and spear meshes from the same archive are",
+      "credit": "Dreadflopp, v2.4.2 (a standalone release of PrivateEye's Heavy Armory)",
+      "backs": "item models: item.iron-shortspear, item.steel-shortspear (meshes/prvti/{iron,steel}/*shortspear.nif; config/weapons/arsenal.json `root`)",
+      "notes": "One-handed short spear, weapon class shortspear (2.7a2b); numbers read from the WEAP records."
+    },
+    {
+      "id": "source.vanilla-bows",
+      "name": "Vanilla Skyrim bows: the Imperial, Hunting and Long Bow records",
+      "status": "derived",
+      "kind": "plugin-set",
+      "sources": ["Skyrim - Meshes.bsa and Skyrim - Textures.bsa (vanilla Skyrim, the owner's copy, in the asset vault)"],
+      "plugin": "Skyrim.esm",
+      "records": ["ImperialBow (meshes/weapons/iron/ironbow.nif)", "HuntingBow (meshes/weapons/steel/steelbow.nif)", "LongBow (meshes/weapons/wooden/woodenbow.nif)"],
+      "archive": "Skyrim - Meshes.bsa",
+      "sha256": "built weapons/imperial-bow.glb cf51d61939b8218f1de8065ef4b216e38b9923d1c576f8a5d7c45147af28c7a3; weapons/hunting-bow.glb e7ac9c47691dc37310b9bb291b9bc44aae29878f4fdecd2dc2e85d6c7287e26b; weapons/long-bow.glb 5bb27baf085a55c10f4433783ecfd2ee445ca2387bf624f6d88da237bf1041f4",
+      "licence": "vanilla game data under the owner's permission for this non-commercial fan project (root README § Credits)",
+      "credit": "Bethesda Game Studios, The Elder Scrolls V: Skyrim",
+      "backs": "item.imperial-bow, item.hunting-bow, item.long-bow (config/weapons/arsenal.json; names, material and type keywords read from the WEAP records, `weapon_records --check`)",
+      "notes": "2.11-weapon-matrix: Skyrim has no iron, steel or studded bow; these rows were the same three records under invented ids (iron-longbow, steel-longbow, wood-shortbow)."
+    },
+    {
+      "id": "source.animated-armoury-weapons",
+      "name": "Animated Armoury (DAR version): claws, rapiers, katanas, pikes, halberds, quarterstaffs",
+      "status": "derived",
+      "kind": "plugin-set",
+      "sources": ["https://www.nexusmods.com/skyrimspecialedition/mods/35978"],
+      "plugin": "NewArmoury.esp",
+      "records": ["{Iron,Steel,Elven,Ebony}{Claws,Rapier,Katana,Pike,Halberd,QStaff}"],
+      "archive": "animated-armoury-2.3",
+      "sha256": "NewArmoury.esp 89973a72c02a90c1ed9b69d1f78cea11f204d9d2bf9ea0e58f9bdda4db7e73d4",
+      "licence": "used with credit (root README § Credits)",
+      "credit": "NickNak, v2.3",
+      "backs": "item models and records: the 24 Animated Armoury rows of config/weapons/arsenal.json (`root` animated-armoury-2.3)",
+      "notes": "2.11-weapon-matrix: the mod ships no spear record; the four -spear rows built from its pike meshes were removed, their references moved to the Heavy Armory spears and the ebony pike."
+    },
+    {
+      "id": "source.vanilla-daedric-dagger",
+      "name": "Vanilla Skyrim daedric dagger: the bound weapons' dagger mesh",
+      "status": "derived",
+      "kind": "mesh",
+      "sources": ["Skyrim - Meshes.bsa and Skyrim - Textures.bsa (vanilla Skyrim, the owner's copy, in the asset vault)"],
+      "plugin": "Skyrim.esm",
+      "records": ["DaedricDagger (000139b6) meshes/weapons/daedric/daedricdagger.nif sha256:f6b86ee4aaa58254b0537b45c9ef95020bf867f1d669f08e85ee96d74ff54dea"],
+      "archive": "Skyrim - Meshes.bsa",
+      "sha256": "nif f6b86ee4aaa58254b0537b45c9ef95020bf867f1d669f08e85ee96d74ff54dea; built packages/character-assets/files/weapons/daedric-dagger.glb c1ca894f2e17428f00d747f319ab1c1bb90002f6d42fde0b13bfd5b68d7f3797; icon weapon-icons/daedric-dagger.png b9991e878e893e1802694f859c7fa4cd7d3d5c12d4130e5ca2582269336ba58c",
+      "licence": "vanilla game data under the owner's permission for this non-commercial fan project (root README § Credits)",
+      "credit": "Bethesda Game Studios, The Elder Scrolls V: Skyrim",
+      "backs": "item.bound-dagger's model and icon (the bound rule: a bound weapon wears the daedric mesh of its class); built by config/weapons/arsenal.json `daedric-dagger`",
+      "notes": "2.9x h: replaces the iron dagger stand-in. Skyrim's boundweapons/ holds no dagger; the owner asked for daedric bound weapons with a shimmer (packages/magic/src/fx/bound.json)."
+    },
+    {
+      "id": "source.vanilla-magic-sprites",
+      "name": "Vanilla Skyrim effect textures: the spell-family sprite atlas",
+      "status": "derived",
+      "kind": "texture-set",
+      "sources": ["Skyrim - Textures.bsa (vanilla Skyrim, the owner's copy, in the asset vault)"],
+      "plugin": "Skyrim.esm",
+      "records": ["textures/effects/glowsoft01.dds", "textures/effects/fxbrightfash01.dds", "textures/effects/fxenergyimpacring.dds", "textures/effects/fxsmallstar01.dds", "textures/effects/fxmagicwisps01.dds", "textures/effects/fxfluidstream01_lessspots.dds"],
+      "archive": "Skyrim - Textures.bsa",
+      "sha256": "per texture in packages/magic/src/fx/sprites/sprites.json (sourceSha256); atlas 9a7d1bfa12c2b433b1ca682f418b44b9c247984354a0c42f48b86154e3ad6815",
+      "licence": "vanilla game data under the owner's permission for this non-commercial fan project (root README § Credits)",
+      "credit": "Bethesda Game Studios, The Elder Scrolls V: Skyrim",
+      "backs": "every spell-effect family (packages/magic/src/fx/sprites/atlas.png, written by mine_sprites.py: grey luminance x alpha masks, 128 px cells)",
+      "notes": "Textures only; no particle mesh converted (decision 0146 item 3). 2.9c1."
+    },
+    {
+      "id": "source.vanilla-cast-clips",
+      "name": "Vanilla Skyrim spellcasting clips: the five cast styles on the shared rig",
+      "status": "derived",
+      "kind": "animation-set",
+      "sources": [
+        "Skyrim - Animations.bsa (vanilla Skyrim, the owner's copy, in the asset vault)"
+      ],
+      "plugin": "Skyrim.esm",
+      "records": [
+        "meshes/actors/character/animations/dmagaimconcharge.hkx sha256:0fd3cb8bd6c7459b2dc7f31526786b07b674cf720a43b9b2784555ecebb303a7",
+        "meshes/actors/character/animations/dmagaimconloop.hkx sha256:0e5f1decd350f424727d4e714f2a52480de492221b0a0a4c4a57b817cd0b6dc3",
+        "meshes/actors/character/animations/dmagaimrelease.hkx sha256:4e2b0df733eb62596ce23c03495570e443898380a0fc2be2460e8669a7bc7b5c",
+        "meshes/actors/character/animations/dmagpreaimcon.hkx sha256:b09187039d346bf6b637631bd7d98d74a15f3b6ef197930484d16ed72a015f3e",
+        "meshes/actors/character/animations/dmagpreaimconcharge.hkx sha256:cddfedfb598263037d34901a7b7fc1d155b58a1af88042b011ffd719b3b93741",
+        "meshes/actors/character/animations/dmagpreselfconcharge.hkx sha256:f355acaf4efd35d190cea26254536c567fda553c8ba4c3dbd3823dbaceabf270",
+        "meshes/actors/character/animations/dmagselfconcharge.hkx sha256:64585bbe3c80e8764f8d931c8c2737bc924cc823dd3d13e4f80eea9bff0f6534",
+        "meshes/actors/character/animations/dmagselfconloop.hkx sha256:a964a8697d500fb43e2cbfcaea154a6c559a35e68c4e7a814abe3bf48d46f123",
+        "meshes/actors/character/animations/dmagselfrelease.hkx sha256:8ba45e38cb33ec6b1c01062b2ffa4cfd4ce034a3a73701180bd9d3d8fb1f4088",
+        "meshes/actors/character/animations/dualmagic_idle.hkx sha256:e46f7399a4f5f347f1a81d3b0af213ce0dae817a58e33412aac47fa3d1211673",
+        "meshes/actors/character/animations/mlh_aimedconcentration.hkx sha256:fefd455b1d2f3950ebbf37dc586e437c03af8abf232387cfe827df98d3c377f8",
+        "meshes/actors/character/animations/mlh_idle.hkx sha256:d4b946fecdaa2db42fe5182946a20e89febb6b13917473c82dc71f1664f9a65b",
+        "meshes/actors/character/animations/mlh_preaimedcon.hkx sha256:f35d4307de6f57e365282e1f305ff84c02c8ef111105129b255cf6e252c65f73",
+        "meshes/actors/character/animations/mlh_precharge.hkx sha256:de305f29bac529ac6e643e838d1db0bcf44019954cf631b1d60056b70d1e3b60",
+        "meshes/actors/character/animations/mlh_prewardcharge.hkx sha256:4d7f919a6226ab9d50d5545a1292490386f0ec61d078e0137c60180ed4bafb3f",
+        "meshes/actors/character/animations/mlh_readyloop.hkx sha256:42ce56bbd61d89b1f49a1100c0e77e89e329057100dafab5b4e09d58d64cb518",
+        "meshes/actors/character/animations/mlh_release.hkx sha256:5c230cdd1bb032ef67d4026da5fbba06a21c4c5c97229f2d97b3d85d57b53b86",
+        "meshes/actors/character/animations/mlh_selfprecharge.hkx sha256:9c9b9821007f7bb5ce7d562102174361ce187ecaa5e3a49679ffb90493a2cfed",
+        "meshes/actors/character/animations/mlh_selfreadyloop.hkx sha256:232007534c64006c1be6b556b4f84e97e925e1de9e0e07ec41213499f66be71b",
+        "meshes/actors/character/animations/mlh_selfrelease.hkx sha256:3fa9379750c029ae10a99a77783b3f8278162be6c139b5534e216e8ca02e12df",
+        "meshes/actors/character/animations/mlh_wardloop.hkx sha256:79c3104cfe8026f6c45a558921a06a5dc565eb4aff0ce85282cddcff50866827",
+        "meshes/actors/character/animations/mrh_aimedconcentration.hkx sha256:8c04a9abf74f0e196425ecd6195375b3e28da8edc2fea507d6612a1930d33c79",
+        "meshes/actors/character/animations/mrh_idle.hkx sha256:5bd611e0d6433526cb9454b72bec166391d20598fea9c12981bade6dc8807bb5",
+        "meshes/actors/character/animations/mrh_preaimedcon.hkx sha256:78ffd6b576b4728756492ab2ebb3894940f9145b0da41a40c40ae987c13350ce",
+        "meshes/actors/character/animations/mrh_precharge.hkx sha256:501f23c782358f9f65c24ffb96b3b302de73104bc5c9c08bf0edd1b6d8dcc27a",
+        "meshes/actors/character/animations/mrh_prewardcharge.hkx sha256:6d6a05371815b27a42141f8c69a535ba29b49a6caf4b243e4f97c5357eab8ce3",
+        "meshes/actors/character/animations/mrh_readyloop.hkx sha256:6a4980e654d7d710573e294953e175feee7ba7efc13c8de420015017d6e89f02",
+        "meshes/actors/character/animations/mrh_release.hkx sha256:fdad7ea166735095b1d09a5bff3cfce151dec5db82868ee52b7251b7c95a91bc",
+        "meshes/actors/character/animations/mrh_selfprecharge.hkx sha256:37bef39c19fa1d2905ac20e0bd90755cacef2d2731bf180576458a3cdd3de5af",
+        "meshes/actors/character/animations/mrh_selfreadyloop.hkx sha256:e0445afe66c3e8214627260f17632fa40292a34d1ad81de73894afe6b648ba00",
+        "meshes/actors/character/animations/mrh_selfrelease.hkx sha256:30c6ac2a3929f3080d539f4761dea576ba7b85371e2416921272446b78b2c8dc",
+        "meshes/actors/character/animations/mrh_wardloop.hkx sha256:deb28cbba4b773b9a78dd2e1a67ffd53312c2bcc7c7888d3f0c754bb864c430d"
+      ],
+      "archive": "Skyrim - Animations.bsa",
+      "sha256": "per HKX in records; shipped pack packages/character-assets/files/rig-skyrim-humanoid.magic.glb 95f7c457460dd31026685512bba2bda5943e3504ee59bdabf8563dc2d12775fb",
+      "licence": "vanilla game data under the owner's permission for this non-commercial fan project (root README § Credits)",
+      "credit": "Bethesda Game Studios, The Elder Scrolls V: Skyrim",
+      "backs": "pack magic: the 39 CAST_* clips (aimed, stream, self, ward per hand; dual), tooling/asset-pipeline/pipeline/config/animations/humanoid-1h-combat.json",
+      "notes": "Clip meanings read from behaviors/magicbehavior.hkx clip generators. No clip made; vanilla authors no stream or ward release, so those releases play the readied idle. 2.9c2."
+    },
+    {
+      "id": "source.freeclimb-clips",
+      "name": "FreeClimb wall-climb clips",
+      "status": "derived",
+      "kind": "animation-set",
+      "sources": [
+        "Nexus SSE mod 193552, FreeClimb v0.5.0 file 817460 (owner's Nexus key), in the asset vault mod-sources"
+      ],
+      "plugin": "none (OpenAnimationReplacer/behaviour clips; no plugin records)",
+      "records": [
+        "freeclimb-193552/meshes/actors/character/animations/FreeClimb/reach.hkx sha256:dbde3cf7acb1760b76ceea623ad587b0e885efc1b9474f74c520e4231065b313",
+        "freeclimb-193552/meshes/actors/character/animations/FreeClimb/hang.hkx sha256:bd7c41fdcf66f9544b7a61a6f5d6182f0e2bedbd932230aa5e092fd235ad2e84",
+        "freeclimb-193552/meshes/actors/character/animations/FreeClimb/up.hkx sha256:acadd93d348eb5de387aec0a388f31346b49fac407fca638b8a56075ef6c4ab1",
+        "freeclimb-193552/meshes/actors/character/animations/FreeClimb/down.hkx sha256:349f9ae7236b4ad1410d53840fc96479636f60fbfac83d898351c3757a2ead8b",
+        "freeclimb-193552/meshes/actors/character/animations/FreeClimb/left.hkx sha256:e644f34b48121a21d7f89ccc331bc0ccb77584b5af6421bba08c3765fb0f7b65",
+        "freeclimb-193552/meshes/actors/character/animations/FreeClimb/right.hkx sha256:fa2ae62aaf2b276f369307983d595643efdfafcf1565ac68e17ce70e9a674c27",
+        "freeclimb-193552/meshes/actors/character/animations/FreeClimb/jumpCatch.hkx sha256:82ac8007ee8c69590e66b0066084525b39391adca00d0f5e82342f815e549178",
+        "freeclimb-193552/meshes/actors/character/animations/FreeClimb/contextMantle.hkx sha256:465dd5a8fd4ee19421c354b4bd6ba03b53dba5050f98e2b4ff30f8c5339d9c9c",
+        "freeclimb-193552/meshes/actors/character/animations/FreeClimb/hopUp.hkx sha256:1fab1d92c0d0c89b66ee5c314471a930fd43319e957c93cbe37ce89b5816ce68",
+        "freeclimb-193552/meshes/actors/character/animations/FreeClimb/hopLeft.hkx sha256:42d1a313f77cdabb84a6cf1b2b624700a918166e4616a3deb909f3a0baaf3eb1",
+        "freeclimb-193552/meshes/actors/character/animations/FreeClimb/hopRight.hkx sha256:9fc8e7b9967caac827978b8b0bd2f432c2f02d7da3ca0306f97b01bb4bba5bd9",
+        "freeclimb-193552/meshes/actors/character/animations/FreeClimb/drop.hkx sha256:eeaa5ae340064d4cf009d72c0fd5f396ae6679f0e3d8d182cf32e60275f632f7"
+      ],
+      "archive": "FreeClimb 193552 0.5.0 2026-10-10T12-21Z Sx9oEwy6h.zip",
+      "sha256": "archive 3c54c07a012820b81b26c4153b7df17876a7c790cd3d0a24053a2183161eb95a; shipped pack packages/character-assets/files/rig-skyrim-humanoid.climb.glb c12ca5e122386300d28ca0abf9272e3c8381f47b4dc83d24ece5d22d633b08f3",
+      "licence": "Nexus mod used with credit for this non-commercial fan project (permissions waived by the owner; credit kept, root README § Credits)",
+      "credit": "Epsilona11",
+      "backs": "pack climb: CLIMB_GRAB_GROUND, CLIMB_HANG, CLIMB_UP, CLIMB_DOWN (also the ladder loops), CLIMB_LEFT, CLIMB_RIGHT, CLIMB_LEDGE_CATCH, CLIMB_PULL_UP, CLIMB_LEAP_UP/LEFT/RIGHT, CLIMB_RELEASE, tooling/asset-pipeline/pipeline/config/animations/humanoid-1h-combat.json",
+      "notes": "Chosen per row of docs/research/combat-and-systems/botw-climbing-system.md §12 on audition sheets read by a reader (lanes/2.12-clips/eyes). No clip made. 2.12."
+    },
+    {
+      "id": "source.evgat-clips",
+      "name": "EVG Animated Traversal wall-drop, failed-ledge and ladder clips",
+      "status": "derived",
+      "kind": "animation-set",
+      "sources": [
+        "Nexus SSE mod 63232, EVG Animated Traversal v2.1 file 506136 (owner's Nexus key), in the asset vault mod-sources"
+      ],
+      "plugin": "none (OpenAnimationReplacer/behaviour clips; no plugin records)",
+      "records": [
+        "evgat-63232/01 EVGATCore/meshes/actors/character/animations/OpenAnimationReplacer/EVG Animated Traversal/Wall Drop Short/mt_leverfloorpull.hkx sha256:c282494c9895787438227d589f887458eb60ae74099ee8bac1ec4477df9d738b",
+        "evgat-63232/01 EVGATCore/meshes/actors/character/animations/OpenAnimationReplacer/EVG Animated Traversal/Failed Ledge/mt_leverfloorpull.hkx sha256:985b0cae8843ba794cbca6ba88a9a4deccd918d735c9a7c282fe37f35bdff130",
+        "evgat-63232/01 EVGATCore/meshes/actors/character/animations/OpenAnimationReplacer/EVG Animated Traversal/Tall Ladder - Main/mt_leverfloorpull.hkx sha256:593229b539c0d6c25e0eb8d21d866bff8a68afe43386937506e8c3c53fefbb4e",
+        "evgat-63232/01 EVGATCore/meshes/actors/character/animations/OpenAnimationReplacer/EVG Animated Traversal/Short Ladder - Main/mt_leverfloorpull.hkx sha256:8604f0e5151456ce67ebf6e0f4d1c2fcc0aae1d3cfbbae8439c813ef0a1f8a82"
+      ],
+      "archive": "EVG Animated Traversal - Framework 2.1-63232-2-1-1716950619.7z",
+      "sha256": "archive a3302ab97bb07572af8ff6a8473756531a71b6d2888f34f954ff85596cee46b9; shipped pack packages/character-assets/files/rig-skyrim-humanoid.climb.glb c12ca5e122386300d28ca0abf9272e3c8381f47b4dc83d24ece5d22d633b08f3",
+      "licence": "Nexus mod used with credit for this non-commercial fan project (permissions waived by the owner; credit kept, root README § Credits)",
+      "credit": "Everglaid",
+      "backs": "pack climb: CLIMB_DOWN_FROM_TOP, CLIMB_FAIL, LADDER_MOUNT_BOTTOM, LADDER_DISMOUNT_TOP, LADDER_MOUNT_TOP and LADDER_DISMOUNT_BOTTOM (the last two reversed playback windows), tooling/asset-pipeline/pipeline/config/animations/humanoid-1h-combat.json",
+      "notes": "Chosen per row of docs/research/combat-and-systems/botw-climbing-system.md §12 on audition sheets read by a reader (lanes/2.12-clips/eyes). No clip made. 2.12."
+    },
+    {
+      "id": "source.skyparkour-clips",
+      "name": "SkyParkour v3 vault, mantle and landing-roll clips",
+      "status": "derived",
+      "kind": "animation-set",
+      "sources": [
+        "Nexus SSE mod 132292, SkyParkour v3 - Procedural Parkour and Climbing Framework (SPPF) v3.6.5 file 808269 (owner's Nexus key), in the asset vault mod-sources"
+      ],
+      "plugin": "none (OpenAnimationReplacer/behaviour clips; no plugin records)",
+      "records": [
+        "skyparkour-132292/meshes/actors/character/animations/SkyParkour/SkyParkour_Vault.hkx sha256:85907677ca5698592939172bd295b3f002139716cf3822d8a0959c64b1494453",
+        "skyparkour-132292/meshes/actors/character/animations/SkyParkour/SkyParkour_ClimbLow.hkx sha256:1e52ed4ef5d871e8e431986e3ac7b4532aed712fc55d3fae028ed1a77b9f2c27",
+        "skyparkour-132292/meshes/actors/character/animations/SkyParkour/SkyParkour_ClimbHigh.hkx sha256:214a0d922a2ebf19575f8f3dd0ebcc3a0b18e9da5b3e0058e2ba1151ffb98ec3",
+        "skyparkour-132292/meshes/actors/character/animations/SkyParkour_Slide/LandRoll.hkx sha256:a92002faf2a978a345d31936475bcb0c98502f8cf67f1123109e1ef35145feae",
+        "skyparkour-132292/meshes/actors/character/animations/SkyParkour/SkyParkour_Fail.hkx sha256:dc4a7b32bc85309f6f25d0d397d46bf9de5d3f8a72dfb6de27fa29520146ed5a"
+      ],
+      "archive": "SkyParkour V3 - Parkour Framework 132292 3.6.5 2026-09-20T14-01Z rvwm2BOlR.7z",
+      "sha256": "archive 1dd1e76dc020610e9efdc7136746b9f6988ce0f3fdb9b1acb7916d27b9ade67f; shipped pack packages/character-assets/files/rig-skyrim-humanoid.climb.glb c12ca5e122386300d28ca0abf9272e3c8381f47b4dc83d24ece5d22d633b08f3",
+      "licence": "Nexus mod used with credit for this non-commercial fan project (permissions waived by the owner; credit kept, root README § Credits)",
+      "credit": "Tsptds - JellyfishInLoop",
+      "backs": "pack climb: MANTLE_VAULT, MANTLE_LOW, MANTLE_HIGH, CLIMB_DROP_LAND, CLIMB_SLIP, tooling/asset-pipeline/pipeline/config/animations/humanoid-1h-combat.json",
+      "notes": "Chosen per row of docs/research/combat-and-systems/botw-climbing-system.md §12 on audition sheets read by a reader (lanes/2.12-clips/eyes). No clip made. 2.12."
+    },
+    {
+      "id": "source.clamber-clips",
+      "name": "EVG CLAMBER slope scramble clips",
+      "status": "derived",
+      "kind": "animation-set",
+      "sources": [
+        "Nexus SSE mod 114753, EVG CLAMBER - Slope Animations v1.0 file 506903 (owner's Nexus key), in the asset vault mod-sources"
+      ],
+      "plugin": "none (OpenAnimationReplacer/behaviour clips; no plugin records)",
+      "records": [
+        "clamber-114753/00 Core/meshes/actors/character/animations/OpenAnimationReplacer/CLAMBER/Upwards Walk/male/_variants_mt_walkforward/mWUP1.hkx sha256:78295c3168c7b76ec93abc621469c307d1d2796828fd2f62262cc7bb2ad3aae6",
+        "clamber-114753/00 Core/meshes/actors/character/animations/OpenAnimationReplacer/CLAMBER/Downwards Run Steep/male/_variants_mt_runforward/steepDOWN2.hkx sha256:20ba384419f2d984e456c24982c3d9c218fe61114aba98c87bb534187a2f703a"
+      ],
+      "archive": "EVG CLAMBER - Slope Animations 1.0-114753-1-0-1717167372.zip",
+      "sha256": "archive 63ec52b360841645571c099189499615d80806f0639a326f682b5851e0486e6d; shipped pack packages/character-assets/files/rig-skyrim-humanoid.climb.glb c12ca5e122386300d28ca0abf9272e3c8381f47b4dc83d24ece5d22d633b08f3",
+      "licence": "Nexus mod used with credit for this non-commercial fan project (permissions waived by the owner; credit kept, root README § Credits)",
+      "credit": "Everglaid - miken1ke - Ersh",
+      "backs": "pack climb: SCRAMBLE_UP, SCRAMBLE_DOWN, tooling/asset-pipeline/pipeline/config/animations/humanoid-1h-combat.json",
+      "notes": "Chosen per row of docs/research/combat-and-systems/botw-climbing-system.md §12 on audition sheets read by a reader (lanes/2.12-clips/eyes). No clip made. 2.12."
+    },
+    {
+      "id": "source.vanilla-crafting-stations",
+      "name": "Vanilla Skyrim crafting stations: the alchemy workbench and the anvil",
+      "status": "derived",
+      "kind": "mesh",
+      "sources": [
+        "Skyrim - Meshes.bsa and Skyrim - Textures.bsa (vanilla Skyrim, the owner's copy, in the asset vault)"
+      ],
+      "plugin": "Skyrim.esm",
+      "records": [
+        "meshes/furniture/workbenches/alchemyworkbench01.nif sha256:ff4d5b87c6c9a4c95fa15aa60f5261ce7f0d2b310a78eff4e4c002ebfd7fc909",
+        "meshes/clutter/blacksmith/blacksmithanvil01.nif sha256:525ff034c79c4b570aace1ecca7c61d0fa9abc188bb28b88bce45c6f8c5b18cb"
+      ],
+      "archive": "Skyrim - Meshes.bsa",
+      "sha256": "nifs in records; built apps/world-studio/public/kits/works-v1/parts/vanilla_furniture_workbenches_alchemyworkbench01-3f3a4bb6.glb 4f55bb085a56e3eb9f4c683bfa59ff9f470e970eb267f3401afa5aeed3cad54f; vanilla_clutter_blacksmith_blacksmithanvil01-72ead6b2.glb 11085ac104fa5415421307fc0142acbcf7b686df0ce1205f752db4953758474b",
+      "licence": "vanilla game data under the owner's permission for this non-commercial fan project (root README § Credits)",
+      "credit": "Bethesda Game Studios, The Elder Scrolls V: Skyrim",
+      "backs": "the crafting stations in kit works-v1: station.alchemy's apparatus table and the anvil beside every forge (tooling/asset-pipeline/pipeline/config/kits/works-v1.json)",
+      "notes": "2.9b-e. Forge, workbench, grindstone and enchanting table were already built (works-v1, xanmeer-kotm-v1)."
+    },
+    {
+      "id": "source.vanilla-sneak-bow-clips",
+      "name": "Vanilla Skyrim crouched bow clips: draw, hold and loose while sneaking",
+      "status": "derived",
+      "kind": "animation-set",
+      "sources": [
+        "Skyrim - Animations.bsa (vanilla Skyrim, the owner's copy, in the asset vault)"
+      ],
+      "plugin": "Skyrim.esm",
+      "records": [
+        "meshes/actors/character/animations/sneakbow_drawlight.hkx sha256:7f871e7d6bc8fd2e7abf4c557fcf1ae49e477558abff0409e824b2b8ec5e6b38",
+        "meshes/actors/character/animations/sneakbow_idledrawn.hkx sha256:1393f36aff789e4a9d272d6518b2203d9627f2398c18bc52f8fce62c30033ee4",
+        "meshes/actors/character/animations/sneakbow_release.hkx sha256:cbcf5f3c1a09994158db369bcf3dae854c4548051f3b65b904c7bd581c719096"
+      ],
+      "archive": "Skyrim - Animations.bsa",
+      "sha256": "per HKX in records; shipped pack packages/character-assets/files/rig-skyrim-humanoid.bow.glb",
+      "licence": "vanilla game data under the owner's permission for this non-commercial fan project (root README § Credits)",
+      "credit": "Bethesda Game Studios, The Elder Scrolls V: Skyrim",
+      "backs": "pack bow: SNEAK_BOW_DRAW, SNEAK_BOW_DRAWN, SNEAK_BOW_RELEASE, tooling/asset-pipeline/pipeline/config/animations/humanoid-1h-combat.json",
+      "notes": "No clip made. The crouched archer draws, holds and looses on these instead of the standing BOW_* set. 2.10-fD."
+    },
+    {
+      "id": "source.vanilla-sneak-attack-clips",
+      "name": "Vanilla Skyrim crouched one-handed attacks and the paired sneak kill",
+      "status": "derived",
+      "kind": "animation-set",
+      "sources": [
+        "Skyrim - Animations.bsa (vanilla Skyrim, the owner's copy, in the asset vault)"
+      ],
+      "plugin": "Skyrim.esm",
+      "records": [
+        "meshes/actors/character/animations/1hm_sneakattackright.hkx sha256:f6b1b3eb74ee745c5e6b73b64c2dd21d2e0f24205ee5804a16df4544b1d51b15",
+        "meshes/actors/character/animations/1hm_sneakattackleft.hkx sha256:081bb78c275bb3f2e647205aebc0417d1aa171e847b707d4584e35d94000f329",
+        "meshes/actors/character/animations/1hm_sneakattackrightintro.hkx sha256:ac853684c2908638976511994309219513266334c038136ea37de9af8d499678",
+        "meshes/actors/character/animations/1hm_sneakattackleftintro.hkx sha256:3ee4dc6b0ec878762c40c47d5421e0acb6adcc87256ee62035aa9c122b56927a",
+        "meshes/actors/character/animations/1hm_sneakattackpower.hkx sha256:140f460c8d4578aaa970607a57bb479fd66df6c16ecc6d48f6eaeab40424875b",
+        "meshes/actors/character/animations/1hm_sneakattackpowerright.hkx sha256:b794e2c312b0d2fe560f48ce3247d15d5138d353a4299e501b0bca1eba17f224",
+        "meshes/actors/character/animations/1hm_sneakattackpowerleft.hkx sha256:7ec6a79deac4926e9ad6a09409eaa17e07160b07574ff17bb46bff581ba9bbd7",
+        "meshes/actors/character/animations/1hm_sneakattackpowerforward.hkx sha256:1e39c960ae2dae502dc9b0228f5de75f05a68c43a0e5f07a1ae615c84974e7c1",
+        "meshes/actors/character/animations/1hm_sneakattackpowerback.hkx sha256:7d7e4305e67ec8b45dd03231d48ff0126f146b343e3284ae8e7879bb3e447304",
+        "meshes/actors/character/animations/sneak_1hmattack.hkx sha256:061169ea28402eccc3918a662982016f270c1065a1302555c035b39a7a38b658",
+        "meshes/actors/character/animations/paired_1hmsneakkillbacka.hkx sha256:a6b2a9abf2c50a1f02b5d4737fa9aecaf040644546f0b8b923e61eddb904a425"
+      ],
+      "archive": "Skyrim - Animations.bsa",
+      "sha256": "per HKX in records; shipped pack packages/character-assets/files/rig-skyrim-humanoid.oneHanded.glb",
+      "licence": "vanilla game data under the owner's permission for this non-commercial fan project (root README § Credits)",
+      "credit": "Bethesda Game Studios, The Elder Scrolls V: Skyrim",
+      "backs": "pack oneHanded: SNEAK_ATTACK_RIGHT, _LEFT, _RIGHT_INTRO, _LEFT_INTRO, _POWER, _POWER_RIGHT, _POWER_LEFT, _POWER_FORWARD, _POWER_BACK, SNEAK_ATTACK, SNEAK_ATTACK_KILL, SNEAK_ATTACK_KILLED, tooling/asset-pipeline/pipeline/config/animations/humanoid-1h-combat.json",
+      "notes": "No clip made. A crouched one-handed weapon swings on these instead of the standing LIGHT_*/HEAVY* set. A crouched dagger's backstab is the vanilla paired sneak kill (packages/game-core/src/combat/stanceAttacks.ts). 2.10-fG."
+    },
+    {
+      "id": "source.vanilla-imperial-armour",
+      "name": "Vanilla Skyrim Imperial armour, light and heavy: the Legion's sets",
+      "status": "derived",
+      "kind": "mesh",
+      "sources": ["Skyrim - Meshes.bsa and Skyrim - Textures.bsa (vanilla Skyrim, the owner's copy, in the asset vault)"],
+      "plugin": "Skyrim.esm",
+      "archive": "Skyrim - Meshes.bsa",
+      "licence": "vanilla game data under the owner's permission for this non-commercial fan project (root README § Credits)",
+      "credit": "Bethesda Game Studios, The Elder Scrolls V: Skyrim",
+      "records": ["ArmorImperialCuirass -> imperial-cuirass: meshes/armor/imperial/f/cuirassheavy_0.nif sha256:a901984f72564feb5ff0fbfc73c6e6fb03ae1c46a81d87b5ea75d638d1f9207c, meshes/armor/imperial/f/cuirassheavy_1.nif sha256:a517261fc315aa918bbb60c75ba8c3fd9ce10f123369ccc7ace267b3e7b2a487, meshes/armor/imperial/m/cuirassheavy_0.nif sha256:01450853d20784010c2158867b5902abee03a2bf20d1941dbea9ef2ba349a906, meshes/armor/imperial/m/cuirassheavy_1.nif sha256:e92b5e72c4b566f974e8282141b36611cf4d7cc9d5bda98ec31ffa53992f4098", "ArmorImperialGauntlets -> imperial-gauntlets: meshes/armor/imperial/f/gauntletsheavy_0.nif sha256:10136cb394270792cc6eb2ee29e707d2e62ab91c614a27f0ddd9ad63ae0e4b87, meshes/armor/imperial/f/gauntletsheavy_1.nif sha256:58509e215e6c43ef35fa160127b74c90d3258dc0712cabf41b2b4ba7d15816cb, meshes/armor/imperial/m/gauntletsheavy_0.nif sha256:c2bdca2cfd3198f3a3535aa13b47c1723b4130cf19d6e2d7b0663410c36ab0b8, meshes/armor/imperial/m/gauntletsheavy_1.nif sha256:f1c893709f8bb266ef925dcaca65730447ca1356adeef4f313de14d7aef2f616", "ArmorImperialBoots -> imperial-boots: meshes/armor/imperial/f/bootsheavy_0.nif sha256:86cda84e4e64591cc63b7231778ac6dafb94eceebd975e2f55009436d582ea91, meshes/armor/imperial/f/bootsheavy_1.nif sha256:f4b455560dca6e82c03a41805522dc91427752ce9f23cdbe90bb38db61a53338, meshes/armor/imperial/m/bootsheavy_0.nif sha256:cf5193c9ef9afe7f721418f641a4027ad05d12600fb172988b62f01a040a0a51, meshes/armor/imperial/m/bootsheavy_1.nif sha256:b248b1e84c1519dda1c01166b5e75e24c0f861dc4003a308ee8cf56361b116c4", "ArmorImperialHelmet -> imperial-helmet: meshes/armor/imperial/f/helmetmedium.nif sha256:23a8a14eaf5134e55562ab396b5d4232d70cc3674ee50c452f26ebd3f6cbe022, meshes/armor/imperial/m/helmetmedium.nif sha256:dc7fb1612e6020a75645612d13fa499f0d40d60de6d1cc5ddf74b3e7f5119fe1", "ArmorImperialLightCuirass -> imperial-light-cuirass: meshes/armor/imperial/f/cuirasslight_0.nif sha256:471ce73cb92a6ca2fea9ff3a74fc3cb52d425fdc4117fa44abf22b609a11b70e, meshes/armor/imperial/f/cuirasslight_1.nif sha256:5c8043273df6e33abdd545cb9321165a79bca558c0f2d87334c1226a2750c2de, meshes/armor/imperial/m/cuirasslight_0.nif sha256:52cc101d3af60a3aadb780d4068aef320371b28f607222808b0db26b7f0ed18f, meshes/armor/imperial/m/cuirasslight_1.nif sha256:64fd99eb5b4c4bff75ae7ab770ac9ccd4ff4953f9e63cefa00b6105fcba1f5b7", "ArmorImperialLightGauntlets -> imperial-light-gauntlets: meshes/armor/imperial/f/gauntletslight_0.nif sha256:1b2b0ec7c871f92c2274f049f0d7cd7639aad967573d50f6736b7b66b074523b, meshes/armor/imperial/f/gauntletslight_1.nif sha256:e0911aa5d111c8a53e66958fd5ebf6388412840372ef24cb0010bb3f8def201c, meshes/armor/imperial/m/gauntletslight_0.nif sha256:151411599bc3562501b39b4a659b31b59701c47d9f0c2a72d99cd0bd53bd0dd3, meshes/armor/imperial/m/gauntletslight_1.nif sha256:555d8041353e20a6cde04516bf54b2489b38226de3616d4ccb2a9403c94f19f7", "ArmorImperialLightBoots -> imperial-light-boots: meshes/armor/imperial/f/bootslight_0.nif sha256:6eee9164899697870973206a2b3d4ebbd5eb05529bf211f121eda4d85a2092b7, meshes/armor/imperial/f/bootslight_1.nif sha256:4d66abd00a111b6aeeee30672b22fc7839a28463056ec95dfb21be49e8d61e0b, meshes/armor/imperial/m/bootslight_0.nif sha256:8b76e3963ae891aae25f5577635775b30c4007065448e298fd100e8d2766d69e, meshes/armor/imperial/m/bootslight_1.nif sha256:c79a2ca497b873c0fc399bdd7c38cf3dfedce805805679dc158c754ed793bd31", "ArmorImperialLightHelmet -> imperial-light-helmet: meshes/armor/imperial/f/helmetlight.nif sha256:c6c23dd35a74ffe15ed9e07187859c2be2d5ad65a9af839193332556c93f2b84, meshes/armor/imperial/m/helmetlight.nif sha256:80a9279bf8941a788fe2ac566084cf0727f4a60d8ae9459f4720e113f5c46ea5"],
+      "sha256": "built armour/imperial-cuirass-male.glb 5227f5442dac46d6c6b02a168e2540e3463779cc949b6efa069c498e85bdd65d; armour/imperial-cuirass-female.glb d68956a818b43a66de1da5df7ca1e33bcefbafff2043a82c5b8e4afadeea2cb0; armour-icons/imperial-cuirass.png 7c4cf537902111446736aa0148c3bfd0594b177beed5a941ce0f0234d8cd9f98; armour/imperial-gauntlets-male.glb 9b4d446b90f7e5ddcce160f3f80f89d0b12ca8c1cd3a8ab7601d7b56a31954fc; armour/imperial-gauntlets-female.glb ac3cb3a0f7ba8401ca7aaac404f25bf0305c5df822650ee939fde3f49e0cc092; armour-icons/imperial-gauntlets.png 61e6570a8a913e6d00214538d493a5c4536f007f175608d8faa6e32b3582e4c8; armour/imperial-boots-male.glb 6c01c8fb4c257317a2c888ae13cd1910e80d31c6643f7817de95c4bd5b006698; armour/imperial-boots-female.glb 750e8c0fa06afbcda294d2ba8bffac410418fcaf908c993b920dc1ed06ddfa40; armour-icons/imperial-boots.png 6986c071b866be700bf3cb3dbc084882a4a04f0dfc99897084da6324e52980cd; armour/imperial-helmet-male.glb 5fd2ec005ee128f6e73ab149b699877fa4f40268d3478db7f6969e7173aa9790; armour/imperial-helmet-female.glb 1e0a1937f59fcb414448f533c166c3a06b0c37a7ee8784635d95dd51544931c7; armour-icons/imperial-helmet.png efe17825b750dd86007fd9a35e5fd0aa926ebe24f1f57c4c9108c1bee49f0ce1; armour/imperial-light-cuirass-male.glb 95b0466de339ab07db45c66bca0d8dbe8757622e8498acad8b3956f073766327; armour/imperial-light-cuirass-female.glb 17b87fed18e348c49ebfa781385686a8f58e4650b14b32ca63db5913ab87541b; armour-icons/imperial-light-cuirass.png 016000a38f3882dbe19805b834ace3c6be2cd1b47df4f9526c24ba3a21975b81; armour/imperial-light-gauntlets-male.glb 9451c0ef87a1bd4826e23930834d703d70786bd3b00529fdba45020d6b40972c; armour/imperial-light-gauntlets-female.glb b08d18e21e5d8c48794e0180cb1187d9115729ce07336c491e4b29e3cd277be6; armour-icons/imperial-light-gauntlets.png 601c0c9d7b7f23a9fbe393ace3b8d7c35e6a4f216bbe948b0625c0ab2e325faf; armour/imperial-light-boots-male.glb 353a893e92b6cd721c929fd1e53b79234083d51bf7d92d352daefacd00c5f24d; armour/imperial-light-boots-female.glb 8ff8c19f126373de703edf5e6c63de679aaf2e7a19f6d4bddae44db9ad0901cc; armour-icons/imperial-light-boots.png 5d4f0cf7753d21990575a03b4b8fc05c855c27f92b41c95abc093941a0e5c310; armour/imperial-light-helmet-male.glb 80b5f20cfdfc1c4ebdac9696c1dd49588ec3775c49ad87e884603e1352af6578; armour/imperial-light-helmet-female.glb 4470928c6734a0eff5e87854ba083232049beeeb144cd88474b9195c1ecddb1e; armour-icons/imperial-light-helmet.png 650d27b4e2f3ae8c66215301e4cd933bf567dc9694c029150fa383f42844ed2f",
+      "backs": "item.imperial-* (cuirass, gauntlets, boots, helmet; light and heavy): gear.imperial D2/D3 and blanket.legion-armoury; built by config/armour/armour.json `record` (meshes per sex from each ARMO's ARMA)",
+      "notes": "2.9b-c11-source: replaces the iron/studded/steel stand-ins for Legion issue. Published at maxTexture 512 (site budget)."
+    },
+    {
+      "id": "source.vanilla-fine-clothes",
+      "name": "Vanilla Skyrim fine clothes: two outfits, boots, shoes and hat",
+      "status": "derived",
+      "kind": "mesh",
+      "sources": ["Skyrim - Meshes.bsa and Skyrim - Textures.bsa (vanilla Skyrim, the owner's copy, in the asset vault)"],
+      "plugin": "Skyrim.esm",
+      "archive": "Skyrim - Meshes.bsa",
+      "licence": "vanilla game data under the owner's permission for this non-commercial fan project (root README § Credits)",
+      "credit": "Bethesda Game Studios, The Elder Scrolls V: Skyrim",
+      "records": ["ClothesFineClothes01 -> fine-clothes: meshes/clothes/fineclothes01/outfitf_0.nif sha256:1c633e1e4ba8da293a64d5cbabf552253ae81a308190d346378c2456823c3199, meshes/clothes/fineclothes01/outfitf_1.nif sha256:08ef564d43ccc2a863c84673512a5db00eb9b9e636b24c5a81d0533bc2316b33, meshes/clothes/fineclothes01/outfitm_0.nif sha256:862de4358c58f38543a0284404e6458113d4478f1cddfb5c331799a2b4aa1c40, meshes/clothes/fineclothes01/outfitm_1.nif sha256:96eaf7bc6ab8111fc2efc540ab07273c6bf0b82ca9d6abfe44548beb408240c0", "ClothesFineBoots01 -> fine-boots: meshes/clothes/fineclothes01/bootsf_0.nif sha256:5c721fa53f93cc0e9ede39535b7315055ada51d4f5b61761ce1660ea8766534a, meshes/clothes/fineclothes01/bootsf_1.nif sha256:0dc92507be819de9282c017b7b63eabbd7685639b9e8a209aa9d7accb35e5d9a, meshes/clothes/fineclothes01/bootsm_0.nif sha256:701093f25fdcb8c8b96cde34a39d29f4e2b9ac13d4ffa27b5c5c45f058452ef2, meshes/clothes/fineclothes01/bootsm_1.nif sha256:c94dc96b08843b3e608f320b831d816a99cf7a7d1fb1e957ed1cf55c3c710355", "ClothesFineClothes02 -> fine-coat: meshes/clothes/fineclothes02/outfitf_0.nif sha256:cc25a3333aa33ba22f43e55264be6fe19be70df233e3a17751b933b450f36d7d, meshes/clothes/fineclothes02/outfitf_1.nif sha256:1915d6552448be37589ff980c04ab2b6adb9d06ebbeed345e8fb0ec83060ca04, meshes/clothes/fineclothes02/outfitm_0.nif sha256:e27b20c73b423a03ecb32b8d222ef08d462430567a3dc9876a5216d100484c93, meshes/clothes/fineclothes02/outfitm_1.nif sha256:ae0de65021270c3b062400249ef25b37c4d3937a763d47b6a5c8ef1a1f49ed81", "ClothesFineBoots02 -> fine-shoes: meshes/clothes/fineclothes01/bootsf_0.nif sha256:5c721fa53f93cc0e9ede39535b7315055ada51d4f5b61761ce1660ea8766534a, meshes/clothes/fineclothes01/bootsf_1.nif sha256:0dc92507be819de9282c017b7b63eabbd7685639b9e8a209aa9d7accb35e5d9a, meshes/clothes/fineclothes02/bootsm_0.nif sha256:06e84989c65c112de129568448c335957c57c7eb95ded15b9fe6859bc5d10b6a, meshes/clothes/fineclothes02/bootsm_1.nif sha256:a92c96a21a8d5d90b8f0be73b998eb0eae87f777b0e6c7314ad29f2fb72168b5", "ClothesFineHat02 -> fine-hat: meshes/clothes/fineclothes02/hatf_0.nif sha256:8c9f3289a4d5d97293c458a00353d6edb61595b4dde3ea7b6572fe601eadfb5a, meshes/clothes/fineclothes02/hatf_1.nif sha256:4f17bddf16c9ff7fb2df76639e1b61221e5d68d18a51e9fdfb1c3787ca931819, meshes/clothes/fineclothes02/hatm_0.nif sha256:a649fe45adcdd0e54923e07b0602dfc4bdafab2301d319d2ca72feea18017745, meshes/clothes/fineclothes02/hatm_1.nif sha256:4105ea65adf478efee3b7f8be3902661f6031e9f2b1dc8ed9faca8411fd36dde"],
+      "sha256": "built armour/fine-clothes-male.glb 353c282aa2effec0d177de34945c231291dcf60f1e8f16d848c263c1b8bbd1db; armour/fine-clothes-female.glb dba085711fcdf53f95bc5597d4dd064cfe236de2a694858c8dc35b77c6de3b9b; armour-icons/fine-clothes.png 2fa42dcb7e5443e39bef8c6d01dd9025a77f21667fc5e75c47656e642b1ca371; armour/fine-boots-male.glb b674b310069c1daa8d2336f36588f80e34452564f6c326569b27e59e08a73c47; armour/fine-boots-female.glb 1f0a7a7152b7e0cea9ee9abef300ed35156aede61ea457f34e5596b84ed07849; armour-icons/fine-boots.png 4e69b1c89b4a1024d637f31ff8cf713891d771c083abc58fe6404638ccb81e4a; armour/fine-coat-male.glb 82b3058241963468fdcd66be582a988352cc57815105735bd9f3979c92be3b44; armour/fine-coat-female.glb b36852aaac497e9582749ef6db0b88bff96ef9d0ee9ab93a1eb8cd5fcbe6663f; armour-icons/fine-coat.png fa92badc8a3a2cb6b7e67b71893b7d7be74fa2a5609e504fb256de592fb4f2c3; armour/fine-shoes-male.glb b52d6fb6f2aa63b6c2e5ec6365aff2416624a31ce6b0c00c9c99aa9e3fb49908; armour/fine-shoes-female.glb c3c78c485c83efbb5b06042c493181de1dca43ec816b9c249a3f992a8fa1d46b; armour-icons/fine-shoes.png 1750055ff7dcb78e2a0be2f6a87b494cd74379011a0fd14b25e567579648c105; armour/fine-hat-male.glb a057fc44c090aede6f25d1ccf100e77fe5d9f406fb98d20611f3699f358fd48c; armour/fine-hat-female.glb 24133683da50dddf73a56aae10953655dcc71864dfa4671ba9a59a3aa5a43fbb; armour-icons/fine-hat.png 405b2ec2fd0c18c23b527fba9ec0221acf571c97067b6c1da25e7e482551470e",
+      "backs": "item.fine-clothes, item.fine-coat, item.fine-boots, item.fine-shoes, item.fine-hat: blanket.clothier-wardrobe; built by config/armour/armour.json `record`",
+      "notes": "2.9b-c11-source: replaces the tunic stand-ins in the clothier's wardrobe. Published at maxTexture 512 (site budget)."
+    },
+    {
+      "id": "source.vanilla-rings-amulets",
+      "name": "Vanilla Skyrim silver and gold rings and amulets (ground models, worn amulets)",
+      "status": "derived",
+      "kind": "mesh",
+      "sources": ["Skyrim - Meshes.bsa and Skyrim - Textures.bsa (vanilla Skyrim, the owner's copy, in the asset vault)"],
+      "plugin": "Skyrim.esm",
+      "archive": "Skyrim - Meshes.bsa",
+      "licence": "vanilla game data under the owner's permission for this non-commercial fan project (root README § Credits)",
+      "credit": "Bethesda Game Studios, The Elder Scrolls V: Skyrim",
+      "records": ["JewelryRingSilver -> silver-ring: meshes/armor/amuletsandrings/silverringgo.nif sha256:687251a72d9750907b3bd667e6dbb36b4cc6f458d9a57c3555c50dbb21311d10", "JewelryRingGold -> gold-ring: meshes/armor/amuletsandrings/goldringgo.nif sha256:f3b747de6f74c3c44e6dc087f1845c370c273789ccfa5dac438bad8622051728", "JewelryNecklaceSilver -> silver-amulet: meshes/armor/amuletsandrings/silveramuletgo.nif sha256:fa6d83520f575d95f9c3a84a50c824fc6f5e04c4b76f3987d47b5f01128b3a23", "JewelryNecklaceGold -> gold-amulet: meshes/armor/amuletsandrings/goldamuletgo.nif sha256:08d81f76dfef4c2174ebd28e65a91595a15122b27f8b6033e4e5f30562a5bfbe", "JewelryNecklaceGold ARMA GoldAmuletAA -> gold-amulet-worn (worn, biped slot 35): meshes/armor/amuletsandrings/goldamulet_1.nif sha256:74632b0009abdd943b760635c613889566d6f4a400e7828655ec1f9fcf281a3a, meshes/armor/amuletsandrings/goldamulet_0.nif sha256:d06702f34e05aea261fd70bc36b6f023f0fe8060c8ee06eea1d128b19608e0cb, meshes/armor/amuletsandrings/goldamuletf_1.nif sha256:b2d25fa80172c6fbf59d28ce142d958360edd41ff97f1bc4df1b6f46c1cf589b, meshes/armor/amuletsandrings/goldamuletf_0.nif sha256:8897087ccfd8ce86946be2621c994c1c5369919dc1a21363c6970b14dde00f0a", "JewelryNecklaceSilver ARMA SilverAmuletAA -> silver-amulet-worn (worn, biped slot 35): meshes/armor/amuletsandrings/silveramulet_1.nif sha256:00926345aff79bf64d66ea9202fceef57595fe2f81549e87f990999e37849e19, meshes/armor/amuletsandrings/silveramulet_0.nif sha256:c9ae7ae1bc9f0b77757c5be2e531e1e4b5d45f93e2b21869cbd7f354c5c83331, meshes/armor/amuletsandrings/silveramuletf_1.nif sha256:2812c8f00712bbc8e680ae17b597fed097cf8e173dbb73030109ee6fc76c2c9c, meshes/armor/amuletsandrings/silveramuletf_0.nif sha256:c43d15a8c97a6aea735b0b62f713dd365fba9298e0bfe38abf9df190556510ff"],
+      "sha256": "built clutter/silver-ring.glb a5f2459bfe3bc2b9edd1e8e3a96007dd1c4727b07e907c6c4aced2c1a11530c3; clutter-icons/silver-ring.png ad8dbaedc7c1b976664493573c92d3d031f7467f24117066c030bf2b22467f0d; clutter/gold-ring.glb 5a8165eb3e576fea7c0ba2f57a3edeee66fe30d2e18bda375d154bb951da7d93; clutter-icons/gold-ring.png 14ad822ab85d25d7223322815d40ff51cf9fec218e95d55e85fc81a5f63918e3; clutter/silver-amulet.glb 7cb3fa2621bf53b022666bb0ee65cfac0af50890a4c356c30c2b9615521fd4e8; clutter-icons/silver-amulet.png db3cac503759db5e092dedf5161953d4cdeb73348e24504317cb14e7c95233ae; clutter/gold-amulet.glb b031c8dd81d34d2c158247d2b823640c14794a53598be7831946138b42242230; clutter-icons/gold-amulet.png da6c15c32d99fd2834d4d6d4919386536dec93f2136ba5a989a5edfd9b0403bf; armour/gold-amulet-worn-male.glb ca1ebb4c9bd3806dc3e433ecc99922719bfb62a3d69001294d0e7ca43961db1a; armour/gold-amulet-worn-female.glb b1a837157e29385cdc4ab8f99ef39b679e2548ece996d3d985f3b02cd0cadaec; armour/silver-amulet-worn-male.glb 07e13acaf04374638b5e9b857e184530d0b6295f3fab844f62ef16298509d974; armour/silver-amulet-worn-female.glb e0b0c7cf96e40d718a53ab44330006d58980043f7a24b02754421133c0acb4f7",
+      "backs": "item.silver-ring, item.gold-ring, item.silver-amulet, item.gold-amulet (misc/trinket, loot role jewel): blanket.cult-cache and blanket.naga-cache; built by config/weapons/clutter.json from each ARMO's ground model; the worn amulets gold-amulet-worn and silver-amulet-worn (config/armour/armour.json `wornBy`), mounted on the amulet slot",
+      "notes": "2.9b-c11-source: the first rings and amulets. Gold differs from silver only by its NIF vertex colour (gamma-space), now converted to linear by blender/build_weapons.py. 2.10b-jewellery2: the worn amulets (each ARMO's skinned ARMA mesh, male and female, with the weight pair) built through the armour path at 128 px textures; the armour builder ships a chromatic vertex colour linear as COLOR_0 (blender/vertex_colour.py)."
+    },
+    {
+      "id": "source.sfss-canoe",
+      "name": "Script free ship sailing: dugout canoe hull",
+      "status": "derived",
+      "kind": "plugin-set",
+      "sources": [
+        "https://www.nexusmods.com/skyrim/mods/67727"
+      ],
+      "plugin": "Scriptfreeshipsailing.esp",
+      "records": [
+        "ARMA 01001d8c canoe1 -> dugout: meshes/actors/sfss/canoe/canoe1.nif sha256:49dac8221c62de7840e846362d6cd7ebfaaafa849c87f2b26bc57f44c6eeb657"
+      ],
+      "archive": " Script free ship sailing 2.3-67727-2-3.7z",
+      "sha256": "f13d0875fcc258bfa4f3b9ab1acf105d744159b8bae7074584a8e91dc18237e6",
+      "licence": "Nexus page: no re-upload; asset use and modification only with the author's permission; the canoe model needs FrankFamily's permission (paraphrase of the Nexus permissions box, page 403 to fetch; asset-use permission is not on file and is an open owner call: does the 2026-09-02 no-porting ruling cover asset use)",
+      "credit": "ElstarTomas, v2.3; canoe model by FrankFamily",
+      "notes": "Meshes only; no Papyrus taken."
+    },
+    {
+      "id": "source.sailboats-expanded",
+      "name": "Sailboats - Script Free Sailing EXPANDED SSE: longboat, rowboat and sailboat hulls",
+      "status": "derived",
+      "kind": "plugin-set",
+      "sources": [
+        "https://www.nexusmods.com/skyrimspecialedition/mods/40057"
+      ],
+      "plugin": "Sailboats.esp",
+      "records": [
+        "ARMA 020038b5 longboat -> sea-hull: meshes/sailboats/longboat.nif sha256:35c6606475946726dbc462dc475aad1436ba6e1ff59deefdc97de25e80ac0b45",
+        "ARMA 020038b6 longboat furled -> sea-hull: meshes/sailboats/longboatfurled.nif sha256:8ffa1622b9d31e8065ea044230532df0285f1bfa525fddc4fbc034095d1af897",
+        "rowboatnord -> skiff: meshes/sailboats/rowboatnord.nif sha256:054278c5365a1116a3264be1fe08b784a273cf17499fdde5c69478f54814f730",
+        "sailboat -> river-boat: meshes/sailboats/sailboat.nif sha256:05bcf5ebaa3479b842e74400866990548bff7362699e7661c7ae95f5852a14bb"
+      ],
+      "archive": "Sailboats SSE-40057-2-0-1621552064.7z",
+      "sha256": "2e2919e5ff6b2d66cc4055efd305db11e5e920f465e95bf09b513e0892642d82",
+      "licence": "Nexus page: no re-upload; no conversion to other games; modification and asset use only with permission; some assets belong to other authors (paraphrase of the Nexus permissions box, page 403 to fetch; asset-use permission is not on file and is an open owner call: does the 2026-09-02 no-porting ruling cover asset use)",
+      "credit": "Araanim, v2.0, with ElstarTomas and DeviantKhaled (models)",
+      "notes": "Meshes and textures only; sailunfurlcombined.pex not taken."
+    }
+  ]
+}

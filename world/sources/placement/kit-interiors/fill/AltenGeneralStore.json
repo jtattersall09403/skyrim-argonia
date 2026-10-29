@@ -1,0 +1,234 @@
+{
+ "cellId": "AltenGeneralStore",
+ "sockets": {
+  "socket.AltenGeneralStore.080F265D": {
+   "fillRule": "blanket.household-chest",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.rag",
+      "count": 2
+     },
+     {
+      "item": "item.leather-strips",
+      "count": 1
+     },
+     {
+      "item": "item.glass-bead-strand",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.household-chest"
+   }
+  },
+  "socket.AltenGeneralStore.080F265F": {
+   "fillRule": "blanket.cook-shelf",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.river-salt",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.baked-crocodile-tongue",
+      "count": 1
+     },
+     {
+      "item": "item.lumberries",
+      "count": 3
+     },
+     {
+      "item": "item.turtle-shell-bowl",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.cook-shelf"
+   }
+  },
+  "socket.AltenGeneralStore.080F267B": {
+   "valueTier": "trivial",
+   "item": "item.bucket"
+  },
+  "socket.AltenGeneralStore.080F267C": {
+   "valueTier": "trivial",
+   "item": "item.clothes-iron"
+  },
+  "socket.AltenGeneralStore.080F2680": {
+   "valueTier": "low",
+   "item": "item.drum"
+  },
+  "socket.AltenGeneralStore.080F2683": {
+   "valueTier": "trivial",
+   "item": "item.fox-pelt"
+  },
+  "socket.AltenGeneralStore.080F2684": {
+   "valueTier": "low",
+   "item": "item.fine-bowl"
+  },
+  "socket.AltenGeneralStore.080F2685": {
+   "valueTier": "trivial",
+   "item": "item.bowl"
+  },
+  "socket.AltenGeneralStore.080F2687": {
+   "valueTier": "trivial",
+   "item": "item.pot"
+  },
+  "socket.AltenGeneralStore.080F2688": {
+   "valueTier": "trivial",
+   "item": "item.glazed-urn"
+  },
+  "socket.AltenGeneralStore.080F2689": {
+   "valueTier": "trivial",
+   "item": "item.cup"
+  },
+  "socket.AltenGeneralStore.080F268A": {
+   "valueTier": "trivial",
+   "item": "item.cup"
+  },
+  "socket.AltenGeneralStore.080F268B": {
+   "valueTier": "trivial",
+   "item": "item.cup"
+  },
+  "socket.AltenGeneralStore.080F268C": {
+   "valueTier": "trivial",
+   "item": "item.kettle"
+  },
+  "socket.AltenGeneralStore.080F268D": {
+   "valueTier": "high",
+   "item": "item.hide"
+  },
+  "socket.AltenGeneralStore.080F268E": {
+   "valueTier": "trivial",
+   "item": "item.pitchfork"
+  },
+  "socket.AltenGeneralStore.080F268F": {
+   "valueTier": "moderate",
+   "item": "item.shell"
+  },
+  "socket.AltenGeneralStore.080F2697": {
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.AltenGeneralStore.080F2698": {
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.AltenGeneralStore.080F2699": {
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.AltenGeneralStore.080F269B": {
+   "valueTier": "low",
+   "item": "item.hide"
+  },
+  "socket.AltenGeneralStore.080F269C": {
+   "valueTier": "low",
+   "item": "item.hide"
+  },
+  "socket.AltenGeneralStore.080F269D": {
+   "valueTier": "low",
+   "item": "item.hide"
+  },
+  "socket.AltenGeneralStore.080F269F": {
+   "valueTier": "trivial",
+   "item": "item.woodcutters-axe"
+  },
+  "socket.AltenGeneralStore.080F26A0": {
+   "valueTier": "moderate",
+   "item": "item.ebony-ingot"
+  },
+  "socket.AltenGeneralStore.080F26A1": {
+   "valueTier": "trivial",
+   "item": "item.silver-bowl"
+  },
+  "socket.AltenGeneralStore.080F26A3": {
+   "valueTier": "trivial",
+   "item": "item.goblet"
+  },
+  "socket.AltenGeneralStore.080F26A4": {
+   "valueTier": "trivial",
+   "item": "item.goblet"
+  },
+  "socket.AltenGeneralStore.080F26A5": {
+   "valueTier": "low",
+   "item": "item.malachite-ore"
+  },
+  "socket.AltenGeneralStore.080F26AD": {
+   "valueTier": "low",
+   "item": "item.mudcrab-chitin"
+  },
+  "socket.AltenGeneralStore.080F26B5": {
+   "valueTier": "trivial",
+   "item": "item.plate"
+  },
+  "socket.AltenGeneralStore.080F26B6": {
+   "valueTier": "trivial",
+   "item": "item.cup"
+  },
+  "socket.AltenGeneralStore.080F26B7": {
+   "valueTier": "trivial",
+   "item": "item.fried-frog-legs"
+  },
+  "socket.AltenGeneralStore.080F26B8": {
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.AltenGeneralStore.080F26B9": {
+   "fillRule": "blanket.fish-basket",
+   "valueTier": "trivial",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.trodh",
+      "count": 4
+     },
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     },
+     {
+      "item": "item.fishing-pole",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.fish-basket"
+   }
+  },
+  "socket.AltenGeneralStore.080F26BA": {
+   "fillRule": "blanket.cook-shelf",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.river-salt",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.lumberries",
+      "count": 3
+     },
+     {
+      "item": "item.hissmir-fish-eye-rye",
+      "count": 1
+     },
+     {
+      "item": "item.turtle-shell-bowl",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.cook-shelf"
+   }
+  }
+ },
+ "schemaVersion": 1
+}

@@ -1,0 +1,213 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "_": "Region sheet for hist-heartland (2.5a1b). Talk is seeded from the region's published place records; every trait cites a lore dossier or says inferred.",
+ "entries": [
+  {
+   "id": "culture.region.hist-heartland",
+   "level": "region",
+   "name": "Middle Argonia (the Hist heartland)",
+   "parent": "culture.province.black-marsh",
+   "regionId": "hist-heartland",
+   "norms": [
+    {
+     "text": "Villages are governed by their tree-minder and naheesh; disputes go to the tree, not a court.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    },
+    {
+     "text": "Travel is by raft, rootworm and drifting village; footpaths link near villages. No Imperial road reaches the groves.",
+     "source": "world/sources/lore/regions/middle-argonia.md"
+    },
+    {
+     "text": "A status named aloud binds: a gift or a name given in speech is kept.",
+     "source": "inferred"
+    },
+    {
+     "text": "Several tribes live here and nowhere else, each with its own breed and custom.",
+     "source": "world/sources/lore/regions/middle-argonia.md"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Cutting or burning near a grove; the grove is the city.",
+     "source": "world/sources/lore/helstrom.md"
+    },
+    {
+     "text": "Leading outsiders to a Hist without the minder's leave.",
+     "source": "world/sources/lore/topics/hist-and-sap.md"
+    }
+   ],
+   "values": [
+    {
+     "text": "The health of the tree before any person's comfort.",
+     "source": "world/sources/lore/topics/hist-and-sap.md"
+    },
+    {
+     "text": "Consensus. Root Talk decides; the Scalded Throne stays empty.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    },
+    {
+     "text": "Owing and repaying exactly, counted in kind.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Salt works and tappers that foul the springs.",
+     "source": "inferred"
+    },
+    {
+     "text": "Couriers of the state who arrive with orders for people who never gave consent.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    }
+   ],
+   "opinions": {
+    "place": {
+     "lean": 2,
+     "text": "This is the centre; every river comes here, so everything arrives in the end.",
+     "source": "world/sources/lore/regions/middle-argonia.md"
+    },
+    "work": {
+     "lean": 0,
+     "text": "Work is tending: trees, pockets, rafts and the worm-roads.",
+     "source": "world/sources/lore/regions/middle-argonia.md"
+    },
+    "people": {
+     "lean": -1,
+     "text": "Ojel are a category, named by what they want, rarely by name.",
+     "source": "inferred"
+    },
+    "faction": {
+     "lean": -1,
+     "text": "The state's seat is in Helstrom and the city ignores it.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    },
+    "hist": {
+     "lean": 2,
+     "text": "The trees speak and the minders listen; that is the whole of government.",
+     "source": "world/sources/lore/topics/hist-and-sap.md"
+    },
+    "empire": {
+     "lean": -2,
+     "text": "The Empire never reached Helstrom and was never wanted.",
+     "source": "world/sources/lore/regions/middle-argonia.md"
+    },
+    "trade": {
+     "lean": -1,
+     "text": "The heartland receives and shares out; a village sells beds and rope to travellers and little else.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    },
+    "danger": {
+     "lean": -1,
+     "text": "The marsh at Helstrom's gates loses escorts every season.",
+     "source": "inferred"
+    },
+    "rumour": {
+     "lean": 0,
+     "text": "Talk is of the springs souring and of who brought the salt.",
+     "source": "inferred"
+    },
+    "directions": {
+     "lean": 0,
+     "text": "Ways are told by landmark and time: a path to the next spring, so many hours on foot, so many days by raft.",
+     "source": "world/sources/lore/regions/middle-argonia.md"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Strangers are called ojel, or by their errand: courier, tapper, factor.",
+      "source": "inferred"
+     },
+     {
+      "text": "Elders are addressed by office: minder, naheesh.",
+      "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+     }
+    ],
+    "formality": "ceremonial",
+    "oaths": [
+     {
+      "text": "By the root that holds us.",
+      "source": "inferred"
+     },
+     {
+      "text": "As the tree hears it.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "What the Hist said to its minder, word for word.",
+      "source": "world/sources/lore/topics/hist-and-sap.md"
+     },
+     {
+      "text": "The way to the grove by dry ground.",
+      "source": "inferred"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#region-hist-heartland"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Salt is reaching Greenspring's spring. The Hist there has begun to sicken.",
+      "source": "inferred"
+     },
+     {
+      "text": "Cult couriers, tappers and Veiled Reed factors use the villages as inns.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "An Unbound Root cell has been cutting at the edge of a grove.",
+      "source": "inferred"
+     },
+     {
+      "text": "The Held Breath's seal leaks more each year. The Waykeepers will not reseal it unpaid.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.region.dunmer-north",
+     "lean": 0,
+     "text": "The north grows rice and argues over paper; it comes to the trees when it is frightened.",
+     "source": "world/sources/lore/regions/shadowfen.md"
+    },
+    {
+     "node": "culture.region.imperial-fringe",
+     "lean": -1,
+     "text": "Gideon's people have forgotten their trees and want roads instead.",
+     "source": "world/sources/lore/gideon.md"
+    },
+    {
+     "node": "culture.region.pirate-freeholds",
+     "lean": -1,
+     "text": "The river camps pull adults away from their trees and pay them in tallies.",
+     "source": "inferred"
+    },
+    {
+     "node": "culture.region.naga-kur-deeps",
+     "lean": -1,
+     "text": "The deeps keep a harder faith and their raiders work the southern tracks.",
+     "source": "world/sources/lore/tribes.md"
+    },
+    {
+     "node": "culture.region.imperial-penal-south",
+     "lean": -1,
+     "text": "Blackrose sends bodies and debts; neither is welcome.",
+     "source": "world/sources/lore/topics/prisons.md"
+    },
+    {
+     "node": "culture.region.saxhleel-coast",
+     "lean": 1,
+     "text": "The coast tribes keep the old ways and come to Root Talk in good faith.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.1
+  }
+ ]
+}

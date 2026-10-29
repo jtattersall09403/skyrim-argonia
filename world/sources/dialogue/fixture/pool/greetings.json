@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "domain": "dialogue-greetings",
+  "_": "Walker and gate fixture (2.5b4): pool greetings.",
+  "entries": [
+    {"schemaVersion": 1, "id": "greeting.fixture-any", "type": "greeting", "speaker": null, "words": "Well met, stranger.", "available": [], "fallback": true},
+    {"schemaVersion": 1, "id": "greeting.fixture-wanted", "type": "greeting", "speaker": null, "words": "Keep your hands where I can see them.", "available": [{"witnessed": "event.crime-witnessed"}], "fallback": false}
+  ]
+}

@@ -1,0 +1,260 @@
+{
+ "id": "boat-own-paddle-rest-ferry",
+ "start": {
+  "query": "?view=character&x=7247&z=641&t=10:00&d=8-17",
+  "kit": "start"
+ },
+ "notes": "Riverwalk by day. The player buys the stage-mistress's dugout at her landing (7244.5, 638), paddles to the public cove beach (7213.4, 535.0), goes over the side short of it, swims to the hull and climbs back in, paddles on, moors at the beach and steps off. A save and load mid-journey gives the same boat back. The player rests at the landing (elsewhere), takes the canoe poler's ferry to Hissmir and back (2 gold each way), and finds the dugout still tied at the cove where it was moored.",
+ "steps": [
+  {
+   "name": "buy-the-dugout",
+   "transition": "the stage-mistress's boat window -> Buy the dugout: 150 gold, the stage canoe turns the player's",
+   "stage": {
+    "at": {
+     "x": 7247,
+     "z": 641,
+     "yaw": -2.4
+    },
+    "hour": 10,
+    "place": "place.dunmer-north.riverwalk"
+   },
+   "do": {
+    "action": "boat",
+    "op": "buy",
+    "seller": "npc.dunmer-north.riverwalk.stage-mistress",
+    "classId": "dugout"
+   },
+   "keys": [],
+   "expect": {
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "owner": "player",
+     "event": "bought",
+     "spent": 150
+    }
+   }
+  },
+  {
+   "name": "board",
+   "transition": "E at the canoe: the player steps aboard",
+   "do": {
+    "action": "boat",
+    "op": "press"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "aboard": "boat.riverwalk.stage-canoe"
+    }
+   }
+  },
+  {
+   "name": "cast-off",
+   "transition": "E aboard: the canoe casts off from the landing",
+   "do": {
+    "action": "boat",
+    "op": "press"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "event": "castOff",
+     "state": "aboard"
+    }
+   }
+  },
+  {
+   "name": "paddle-out",
+   "transition": "W on the paddle towards the cove beach",
+   "do": {
+    "action": "boat",
+    "op": "paddleTo",
+    "mooring": "socket.riverwalk.cove-beach"
+   },
+   "keys": [],
+   "expect": {
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "event": "arrived"
+    }
+   }
+  },
+  {
+   "name": "fall-out",
+   "transition": "the player goes over the side: the canoe drifts free",
+   "do": {
+    "action": "boat",
+    "op": "fallOut"
+   },
+   "keys": [],
+   "expect": {
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "aboard": null,
+     "state": "adrift"
+    }
+   }
+  },
+  {
+   "name": "climb-back-in",
+   "transition": "swimming beside the canoe, E: the player climbs back aboard",
+   "do": {
+    "action": "boat",
+    "op": "press"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "aboard": "boat.riverwalk.stage-canoe"
+    }
+   }
+  },
+  {
+   "name": "paddle-on",
+   "transition": "W on the paddle to the cove beach",
+   "do": {
+    "action": "boat",
+    "op": "paddleTo",
+    "mooring": "socket.riverwalk.cove-beach"
+   },
+   "keys": [],
+   "expect": {
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "event": "arrived"
+    }
+   }
+  },
+  {
+   "name": "moor",
+   "transition": "E at the beach post: the canoe is tied at the cove",
+   "do": {
+    "action": "boat",
+    "op": "press"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "event": "moored",
+     "tiedAt": "socket.riverwalk.cove-beach"
+    }
+   }
+  },
+  {
+   "name": "step-off",
+   "transition": "E: the player steps ashore",
+   "do": {
+    "action": "boat",
+    "op": "press"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "aboard": null,
+     "state": "moored",
+     "tiedAt": "socket.riverwalk.cove-beach"
+    }
+   }
+  },
+  {
+   "name": "save-and-load",
+   "transition": "save and load: the boat records and hulls come back as they were",
+   "do": {
+    "action": "boat",
+    "op": "reload"
+   },
+   "keys": [],
+   "expect": {
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "reloaded": true,
+     "event": "reloaded",
+     "state": "moored",
+     "tiedAt": "socket.riverwalk.cove-beach"
+    }
+   }
+  },
+  {
+   "name": "rest-elsewhere",
+   "transition": "walk to the landing, rest eight hours: the moored boat stays where it was tied",
+   "teleport": {
+    "x": 7247,
+    "z": 641,
+    "yaw": -2.4
+   },
+   "do": {
+    "action": "rest",
+    "hours": 8
+   },
+   "keys": [],
+   "expect": {
+    "rested": true,
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "state": "moored",
+     "tiedAt": "socket.riverwalk.cove-beach"
+    }
+   }
+  },
+  {
+   "name": "ferry-away",
+   "transition": "the canoe poler's ferry to Hissmir: 2 gold",
+   "do": {
+    "action": "travel",
+    "service": "canoe.dunmer-north.riverwalk-the-tide-fair",
+    "to": "station.dunmer-north.hissmir"
+   },
+   "keys": [],
+   "expect": {
+    "boat": {
+     "at": "station.dunmer-north.hissmir",
+     "fare": 2
+    }
+   }
+  },
+  {
+   "name": "ferry-back",
+   "transition": "the ferry back to Riverwalk: 2 gold; the dugout still tied at the cove",
+   "do": {
+    "action": "travel",
+    "service": "canoe.dunmer-north.riverwalk-the-tide-fair",
+    "to": "station.dunmer-north.riverwalk"
+   },
+   "keys": [],
+   "expect": {
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "at": "station.dunmer-north.riverwalk",
+     "fare": 2,
+     "state": "moored",
+     "tiedAt": "socket.riverwalk.cove-beach"
+    }
+   }
+  }
+ ]
+}

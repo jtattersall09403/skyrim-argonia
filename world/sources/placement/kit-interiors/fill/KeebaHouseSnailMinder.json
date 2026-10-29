@@ -1,0 +1,237 @@
+{
+ "cellId": "KeebaHouseSnailMinder",
+ "sockets": {
+  "socket.KeebaHouseSnailMinder.08095F85": {
+   "owner": "parcel.greenspring.spring-keepers-house",
+   "valueTier": "trivial",
+   "item": "item.snails-foot"
+  },
+  "socket.KeebaHouseSnailMinder.08095F86": {
+   "owner": "parcel.greenspring.spring-keepers-house",
+   "valueTier": "trivial",
+   "item": "item.snails-foot"
+  },
+  "socket.KeebaHouseSnailMinder.08095F87": {
+   "owner": "parcel.greenspring.spring-keepers-house",
+   "valueTier": "trivial",
+   "item": "item.snails-foot"
+  },
+  "socket.KeebaHouseSnailMinder.08095F8A": {
+   "owner": "parcel.greenspring.spring-keepers-house",
+   "valueTier": "trivial",
+   "item": "item.snails-foot"
+  },
+  "socket.KeebaHouseSnailMinder.08095F8B": {
+   "owner": "parcel.greenspring.spring-keepers-house",
+   "valueTier": "trivial",
+   "item": "item.snails-foot"
+  },
+  "socket.KeebaHouseSnailMinder.08095F92": {
+   "owner": "parcel.greenspring.spring-keepers-house",
+   "valueTier": "trivial",
+   "item": "item.tongs"
+  },
+  "socket.KeebaHouseSnailMinder.08095F93": {
+   "owner": "parcel.greenspring.spring-keepers-house",
+   "valueTier": "trivial",
+   "item": "item.tongs"
+  },
+  "socket.KeebaHouseSnailMinder.08095F94": {
+   "owner": "parcel.greenspring.spring-keepers-house",
+   "valueTier": "trivial",
+   "item": "item.bucket"
+  },
+  "socket.KeebaHouseSnailMinder.08095F95": {
+   "owner": "parcel.greenspring.spring-keepers-house",
+   "valueTier": "trivial",
+   "item": "item.bucket"
+  },
+  "socket.KeebaHouseSnailMinder.08095F97": {
+   "owner": "parcel.greenspring.spring-keepers-house",
+   "valueTier": "low",
+   "item": "item.snail-mucus"
+  },
+  "socket.KeebaHouseSnailMinder.08095F98": {
+   "owner": "parcel.greenspring.spring-keepers-house",
+   "valueTier": "low",
+   "item": "item.snail-mucus"
+  },
+  "socket.KeebaHouseSnailMinder.08095F99": {
+   "owner": "parcel.greenspring.spring-keepers-house",
+   "valueTier": "low",
+   "item": "item.snail-mucus"
+  },
+  "socket.KeebaHouseSnailMinder.08095F9A": {
+   "owner": "parcel.greenspring.spring-keepers-house",
+   "valueTier": "low",
+   "item": "item.snail-mucus"
+  },
+  "socket.KeebaHouseSnailMinder.08095F9B": {
+   "owner": "parcel.greenspring.spring-keepers-house",
+   "fillRule": "blanket.household-chest",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.leather-strips",
+      "count": 1
+     },
+     {
+      "item": "item.spine-balm",
+      "count": 1
+     },
+     {
+      "item": "item.glass-bead-strand",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.household-chest"
+   }
+  },
+  "socket.KeebaHouseSnailMinder.08095FA1": {
+   "owner": "parcel.greenspring.spring-keepers-house",
+   "fillRule": "blanket.household-chest",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.leather-strips",
+      "count": 1
+     },
+     {
+      "item": "item.spine-balm",
+      "count": 1
+     },
+     {
+      "item": "item.gold",
+      "count": 6
+     }
+    ],
+    "frozenFrom": "blanket.household-chest"
+   }
+  },
+  "socket.KeebaHouseSnailMinder.08095FAC": {
+   "owner": "parcel.greenspring.spring-keepers-house",
+   "fillRule": "blanket.cook-shelf",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.river-salt",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.lumberries",
+      "count": 3
+     },
+     {
+      "item": "item.hissmir-fish-eye-rye",
+      "count": 1
+     },
+     {
+      "item": "item.turtle-shell-bowl",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.cook-shelf"
+   }
+  },
+  "socket.KeebaHouseSnailMinder.08095FB0": {
+   "owner": "parcel.greenspring.spring-keepers-house",
+   "valueTier": "trivial",
+   "item": "item.knife"
+  },
+  "socket.KeebaHouseSnailMinder.08095FB5": {
+   "owner": "parcel.greenspring.spring-keepers-house",
+   "fillRule": "blanket.household-chest",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.rag",
+      "count": 2
+     },
+     {
+      "item": "item.leather-strips",
+      "count": 1
+     },
+     {
+      "item": "item.gold",
+      "count": 6
+     }
+    ],
+    "frozenFrom": "blanket.household-chest"
+   }
+  },
+  "socket.KeebaHouseSnailMinder.08095FC4": {
+   "owner": "parcel.greenspring.spring-keepers-house",
+   "valueTier": "trivial",
+   "item": "item.wooden-plate"
+  },
+  "socket.KeebaHouseSnailMinder.08095FC5": {
+   "owner": "parcel.greenspring.spring-keepers-house",
+   "valueTier": "trivial",
+   "item": "item.wooden-plate"
+  },
+  "socket.KeebaHouseSnailMinder.08095FC6": {
+   "owner": "parcel.greenspring.spring-keepers-house",
+   "valueTier": "trivial",
+   "item": "item.turtle-shell-bowl"
+  },
+  "socket.KeebaHouseSnailMinder.08095FC7": {
+   "owner": "parcel.greenspring.spring-keepers-house",
+   "valueTier": "trivial",
+   "item": "item.turtle-shell-bowl"
+  },
+  "socket.KeebaHouseSnailMinder.08095FC8": {
+   "owner": "parcel.greenspring.spring-keepers-house",
+   "valueTier": "low",
+   "item": "item.honeycomb"
+  },
+  "socket.KeebaHouseSnailMinder.08095FCA": {
+   "owner": "parcel.greenspring.spring-keepers-house",
+   "valueTier": "low",
+   "item": "item.giant-lichen"
+  },
+  "socket.KeebaHouseSnailMinder.08095FCC": {
+   "owner": "parcel.greenspring.spring-keepers-house",
+   "valueTier": "trivial",
+   "item": "item.jeel-sa"
+  },
+  "socket.KeebaHouseSnailMinder.08095FCD": {
+   "owner": "parcel.greenspring.spring-keepers-house",
+   "valueTier": "trivial",
+   "item": "item.jeel-sa"
+  },
+  "socket.KeebaHouseSnailMinder.08095FCE": {
+   "owner": "parcel.greenspring.spring-keepers-house",
+   "valueTier": "trivial",
+   "item": "item.saltrice-flatbread"
+  },
+  "socket.KeebaHouseSnailMinder.08095FCF": {
+   "owner": "parcel.greenspring.spring-keepers-house",
+   "valueTier": "trivial",
+   "item": "item.frog-legs"
+  },
+  "socket.KeebaHouseSnailMinder.08095FD2": {
+   "owner": "parcel.greenspring.spring-keepers-house",
+   "valueTier": "moderate",
+   "item": "item.tunic-with-sash"
+  },
+  "socket.KeebaHouseSnailMinder.08095FD4": {
+   "owner": "parcel.greenspring.spring-keepers-house",
+   "valueTier": "low",
+   "item": "item.tunic-with-sash"
+  },
+  "socket.KeebaHouseSnailMinder.08989C03": {
+   "owner": "parcel.greenspring.spring-keepers-house",
+   "valueTier": "trivial",
+   "item": "item.book-chimes-of-silver"
+  }
+ },
+ "schemaVersion": 1
+}

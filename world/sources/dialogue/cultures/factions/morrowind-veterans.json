@@ -1,0 +1,194 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "_": "Faction and office sheets for The Morrowind veterans (lane 2.5a2). Ranks: the registry ladder (associate, member, senior); named offices beyond it are listed by their own rank slug.",
+ "entries": [
+  {
+   "id": "culture.faction.morrowind-veterans",
+   "level": "faction",
+   "name": "The Morrowind veterans",
+   "parent": "culture.province.black-marsh",
+   "factionId": "faction.morrowind-veterans",
+   "norms": [
+    {
+     "text": "Old soldiers keep the old ranks.",
+     "source": "inferred"
+    },
+    {
+     "text": "They stayed when the line broke.",
+     "source": "world/sources/lore/topics/foreign-powers.md"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Calling them deserters.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "Comrades.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Argonian raiders, from the war.",
+     "source": "world/sources/lore/topics/foreign-powers.md"
+    }
+   ],
+   "opinions": {
+    "faction": {
+     "lean": -1,
+     "text": "The Wardens are the enemy we fought.",
+     "source": "world/sources/lore/topics/foreign-powers.md"
+    },
+    "danger": {
+     "lean": -1,
+     "text": "The border screen.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    },
+    "empire": {
+     "lean": 0,
+     "text": "Irrelevant.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Sera; by rank.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "formal",
+    "oaths": [
+     {
+      "text": "By Redoran honour.",
+      "source": "world/sources/lore/topics/foreign-powers.md"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "What they did at Mournhold.",
+      "source": "world/sources/lore/topics/foreign-powers.md"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Morrowind has forgotten them.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "The Accord files on the fields.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.thorn-ash-reed-accord",
+     "lean": -1,
+     "text": "Border memory.",
+     "source": "inferred"
+    },
+    {
+     "node": "culture.faction.an-xileel",
+     "lean": -1,
+     "text": "The old enemy.",
+     "source": "world/sources/lore/topics/foreign-powers.md"
+    }
+   ],
+   "deviationRate": 0.15
+  },
+  {
+   "id": "culture.office.morrowind-veterans.senior",
+   "level": "office",
+   "name": "Veteran captain",
+   "parent": "culture.faction.morrowind-veterans",
+   "factionId": "faction.morrowind-veterans",
+   "rank": "senior",
+   "norms": [
+    {
+     "text": "Formal contempt, delivered in full sentences.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Weeping.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "Discipline.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Cowards.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "danger": {
+     "lean": -1,
+     "text": "The screen.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Sera.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "formal",
+    "oaths": [
+     {
+      "text": "By Redoran honour.",
+      "source": "world/sources/lore/topics/foreign-powers.md"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "The war's end.",
+      "source": "world/sources/lore/topics/foreign-powers.md"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Forgotten.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "A patrol crossed.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.morrowind-veterans",
+     "lean": 2,
+     "text": "Theirs.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.1
+  }
+ ]
+}

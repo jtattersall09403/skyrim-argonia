@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "cellId": "RootWhisperHouseTreeminder",
+  "plugin": "King of the Murkmire.esp",
+  "rule": "Stand-ins for the cell's missing clutter and furniture (lane L17, planner brief 2026-09-28): each missing piece is drawn by a published vanilla or King of the Murkmire piece of the same object and near size, read from the kit manifests; a piece with no same-object stand-in stays a listed gap. Drawn at the missing reference's transform by worldgen/export_interior_bundle.py.",
+  "substitutions": [
+    {
+      "refId": "085D818B",
+      "standInAsset": "vanilla:clutter/ingredients/scalypholiotabits01",
+      "why": "A bungler's bane cap lies here; a pinch of dried fungus takes its place."
+    },
+    {
+      "refId": "085D818D",
+      "standInAsset": "vanilla:clutter/ingredients/scalypholiotabits01",
+      "why": "A bog beacon cap lies here; a pinch of dried fungus takes its place."
+    },
+    {
+      "refId": "085D818E",
+      "standInAsset": "vanilla:clutter/ingredients/scalypholiotabits01",
+      "why": "A bog beacon cap lies here; a pinch of dried fungus takes its place."
+    },
+    {
+      "refId": "085D819A",
+      "standInAsset": "vanilla:clutter/ingredients/scalypholiotabits01",
+      "why": "A poison bloom lies here; a pinch of dried fungus takes its place."
+    },
+    {
+      "refId": "085D819F",
+      "standInAsset": "vanilla:clutter/deadanimals/deadpondfish05",
+      "why": "A raw ayotlchin fish lies here; a dead pond fish takes its place."
+    },
+    {
+      "refId": "085D81A2",
+      "standInAsset": "vanilla:clutter/ingredients/stew",
+      "why": "A bowl of marshmerrow stew sits here; a bowl of stew takes its place."
+    }
+  ],
+  "removals": [
+    {
+      "refId": "085D8123",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in the Dragonborn archive, which we do not ship (no DLC)",
+      "note": "A Dragonborn household item sits here; we take no Dragonborn assets, so the spot stays bare."
+    },
+    {
+      "refId": "085D8136",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club archive, which the vault does not hold",
+      "note": "A piece of fishing gear stands here; no kit holds the same object, so the spot stays bare."
+    },
+    {
+      "refId": "085D817A",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club archive, which the vault does not hold. Its base ccBGSSSE001-Fish.esm:00000D74 is fishing gear set in the doorway under the doorframe (walk 12 A1: a square table stood in for it and blocked the way in)",
+      "note": "A piece of fishing gear stands here; no kit holds the same object, so the spot stays bare."
+    },
+    {
+      "refId": "085D817B",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club archive, which the vault does not hold",
+      "note": "A piece of fishing gear stands here; no kit holds the same object, so the spot stays bare."
+    },
+    {
+      "refId": "085D818A",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A sprig of chokeberry lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "085D8196",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club or Hearthfire archive, which the vault does not hold",
+      "note": "A stalk of marshmerrow lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "085D8198",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A redwort flower lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "085D8199",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A redwort flower lies here; no kit holds one, so the spot stays bare."
+    }
+  ],
+  "removalRule": "Owner ruling 2026-10-04 (R113): no missing piece ships as a gap. A missing piece takes a same-class stand-in from a published kit where one exists (substitutions[]); a decorative piece whose class no published kit or vault archive holds is taken out of the fit-out (removals[], reason decorative-no-same-class, its search recorded), and the spot is simply empty. A placed piece whose only support was a removed piece is removed with it (reason rests-on-a-removal, restsOn naming that row)."
+}

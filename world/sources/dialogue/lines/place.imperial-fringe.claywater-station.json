@@ -1,0 +1,2533 @@
+{
+  "schemaVersion": 1,
+  "domain": "dialogue-lines",
+  "placeId": "place.imperial-fringe.claywater-station",
+  "entries": [
+    {
+      "schemaVersion": 1,
+      "id": "greeting.claywater-station-landing-s-poler.base",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.claywater-station.landing-s-poler",
+      "words": "Cart, or only feet? Water keep you.",
+      "available": [],
+      "variants": {
+        "low": "Feet or cart. Choose.",
+        "high": "Cart or feet? Water keep you, friend."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.claywater-station-landing-s-poler.night",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.claywater-station.landing-s-poler",
+      "words": "Dark water tonight. Step lightly.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Black water. Go carefully.",
+        "high": "Dark water tonight. Mind the planks."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.claywater-station-landing-s-poler.crime",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.claywater-station.landing-s-poler",
+      "words": "Off my landing.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "Off, now.",
+        "high": "Saw that. This once I will say nothing."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.claywater-station-landing-s-poler.high",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.claywater-station.landing-s-poler",
+      "words": "Back again. The raft is ready.",
+      "available": [
+        {
+          "speakerDispositionAtLeast": 70
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Back again.",
+        "high": "You return. I have kept the raft ready for you."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.claywater-station-landing-s-poler.passing",
+      "type": "bark",
+      "speaker": "npc.imperial-fringe.claywater-station.landing-s-poler",
+      "slot": "passing",
+      "words": "Mind the wet ramp.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.claywater-station-landing-s-poler.at-work",
+      "type": "bark",
+      "speaker": "npc.imperial-fringe.claywater-station.landing-s-poler",
+      "slot": "at-work",
+      "words": "Pushing off.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-landing-s-poler.claywater-station",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.landing-s-poler",
+      "keys": {
+        "topic": "topic.claywater-station"
+      },
+      "words": "This is the landing. The mud huts sit low beside the channel. I pole the raft from here. The well and the station house are over the ford, with their own charge on that bank. Carters tell me Helstrom, the capital of the heartland, has a rootworm station for the great worms that carry people through the roots.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station.default",
+        "hash": "3c444bc7"
+      },
+      "factIds": [
+        "fact.rootworm-waykeepers.station"
+      ],
+      "variants": {
+        "low": "The landing's this bank. The station's across the ford. Carters talk of a rootworm station at Helstrom. I haven't seen it.",
+        "high": "This is the landing, with the mud huts low by the channel. I pole the raft here. Ask me the price before you unload anything. The well and station house are across the ford. Carters say Helstrom has a rootworm station, a stop for the great worms under the roots. I'd like to see it one day."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-landing-s-poler.claywater-station-work",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.landing-s-poler",
+      "keys": {
+        "topic": "topic.claywater-station-work"
+      },
+      "words": "The well, the beds and the stable are over the water. I keep the plank raft on this bank. A handcart costs less than a wagon. A sack of salt has no wheels at all, so I call it half a wheel. The station takes its charge for its half of the stop. I take mine for the crossing.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station-work.default",
+        "hash": "886960b6"
+      },
+      "factIds": [
+        "fact.claywater.each-bank-charges"
+      ],
+      "variants": {
+        "low": "Station has the well and beds. I have the raft. Each bank charges for its own half of the stop.",
+        "high": "The well, the beds and the stable are over the water. I keep the plank raft here. A handcart costs less than a wagon. I'll tell you the price before the pole goes in the water. Each bank charges for its own half of the stop. Pay the station at its door, then me at the hut."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-landing-s-poler.claywater-station-people",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.landing-s-poler",
+      "keys": {
+        "topic": "topic.claywater-station-people"
+      },
+      "words": "Imperial families live over by the well. Argonian families live here in the huts. Livia Varinius keeps the well, so quarrels on her bank go to her. Ours come to me. The station folk count everything twice. They drink from a cracked well, yet they call my fee dear. Some travellers wade over to dodge a charge.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station-people.default",
+        "hash": "f9006599"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Imperials by the well. Argonians in the huts. Livia Varinius has the well. I have the landing.",
+        "high": "Imperial families live by the well. Argonian families live here in the huts. Livia Varinius keeps the well and settles quarrels on her bank. Ours come to me. The station folk count everything twice, yet they're fair when you deal with them straight. A traveller who wades over to dodge a charge sours me."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-landing-s-poler.claywater-station-danger",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.landing-s-poler",
+      "keys": {
+        "topic": "topic.claywater-station-danger"
+      },
+      "words": "Bog dogs come down to the banks at dawn and again at dusk. Between those hours the banks are quiet enough. A crocodile lives in the channel. I keep my feet on the planks and my pole short when I take a cart over. I keep my work to the light.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station-danger.default",
+        "hash": "c1d12a9a"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Bog dogs on the banks at dawn and dusk. A crocodile in the channel. Don't wade.",
+        "high": "Bog dogs come down to the banks at dawn and dusk, so cross in the middle of the day. A crocodile lives in the channel. Keep off the edge of the planks when I pole. I'll bring you over dry."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-landing-s-poler.claywater-station-directions",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.landing-s-poler",
+      "keys": {
+        "topic": "topic.claywater-station-directions"
+      },
+      "words": "I give ways by the water, since the channel is what I know. The road is the station's business. Past the ford, Cartwright's Cross is a short walk off. Further along the road is the Eagle's Mile House. Carters say Gideon is at the far end. I've not poled anyone that far.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station-directions.default",
+        "hash": "11502af0"
+      },
+      "factIds": [
+        "fact.blackwood-road.stops"
+      ],
+      "variants": {
+        "low": "I know the channel. Road stages are the station's affair. Cartwright's Cross, then the Eagle's Mile House.",
+        "high": "I give ways by the water, as the channel is my work. Past the ford, Cartwright's Cross is a short walk. The Eagle's Mile House lies beyond it. Carters say Gideon is at the far end of the road. Ask the well-keeper about the road. Take her a coin."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-landing-s-poler.role-poling",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.landing-s-poler",
+      "keys": {
+        "topic": "topic.role-poling"
+      },
+      "words": "The ford is shallow, so a walker can wade it. A cart can't. The carts come to my plank raft instead. I charge by the wheel. A wagon pays more than a handcart. The oldest rule of this landing is that a cart pays me. A cart that goes over unpaid has broken it.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-poling.default",
+        "hash": "20f1143f"
+      },
+      "factIds": [
+        "fact.ford.wade",
+        "fact.poler.raft",
+        "fact.poler.by-wheel",
+        "fact.poler.must-pay"
+      ],
+      "variants": {
+        "low": "Walkers wade the ford. Carts can't. They take my plank raft. I charge by the wheel. Unpaid, a cart breaks the landing's oldest rule.",
+        "high": "A walker can wade this ford. A cart can't. The carts come to my plank raft instead. I charge by the wheel. A wagon pays more than a handcart. I'll name the price first. The oldest rule of the landing is that a cart pays the poler. Go over unpaid and you've broken it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.claywater-station-n1.base",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.claywater-station.n1",
+      "words": "Supper's nearly ready, citizen.",
+      "available": [],
+      "variants": {
+        "low": "Supper's mine. Stand back.",
+        "high": "Sit down, citizen. There's enough in the pot."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.claywater-station-n1.night",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.claywater-station.n1",
+      "words": "Pot's off the fire. Come at sunrise.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Pot's off. Come back at sunrise.",
+        "high": "Pot's off, citizen, but there's bread. Sunrise for more."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.claywater-station-n1.crime",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.claywater-station.n1",
+      "words": "The well-keeper will hear of this.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "Seen it. She'll hear.",
+        "high": "I saw it, citizen. Put it right before she hears."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.claywater-station-n1.high",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.claywater-station.n1",
+      "words": "Bowl's still warm for you, citizen.",
+      "available": [
+        {
+          "speakerDispositionAtLeast": 70
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Bowl's gone. Off with you.",
+        "high": "Bowl's warm, citizen. The bread's fresh. Pull up a crate."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.claywater-station-n1.passing",
+      "type": "bark",
+      "speaker": "npc.imperial-fringe.claywater-station.n1",
+      "slot": "passing",
+      "words": "Rain's coming.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.claywater-station-n1.at-work",
+      "type": "bark",
+      "speaker": "npc.imperial-fringe.claywater-station.n1",
+      "slot": "at-work",
+      "words": "Salt's short again.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n1.claywater-station",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n1",
+      "keys": {
+        "topic": "topic.claywater-station"
+      },
+      "words": "Two banks at a ford. The well and the station house are on my side, the landing across the water. A rootworm station stands at Helstrom, far off.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station.default",
+        "hash": "3c444bc7"
+      },
+      "factIds": [
+        "fact.rootworm-waykeepers.station"
+      ],
+      "variants": {
+        "low": "A well, a house, a ford. A rootworm station stands at Helstrom, far off. Not here.",
+        "high": "Two banks at a ford. The well and beds are on mine, the landing across the water. A rootworm station stands at Helstrom, far off. Ours has a good pot."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n1.claywater-station-work",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n1",
+      "keys": {
+        "topic": "topic.claywater-station-work"
+      },
+      "words": "I cook for my household. That's my work. The poler over the ford takes carts across on a plank raft, because a cart can't wade those stones.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station-work.default",
+        "hash": "886960b6"
+      },
+      "factIds": [
+        "fact.poler.raft"
+      ],
+      "variants": {
+        "low": "I cook. The poler takes carts over on a plank raft. A cart can't wade the stones.",
+        "high": "I cook for my household, so the pot's open to a hungry traveller. The poler over the ford takes carts across on a plank raft, because a cart can't wade those stones."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n1.claywater-station-people",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n1",
+      "keys": {
+        "topic": "topic.claywater-station-people"
+      },
+      "words": "Imperial families by the well, Argonian families in the huts over the water. The landing folk are good neighbours until the well comes up.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station-people.default",
+        "hash": "f9006599"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Imperials by the well, Argonians in the huts. Good neighbours, till the well comes up.",
+        "high": "Imperial families by the well, Argonian families in the huts over the water. The landing folk are good neighbours until the well comes up. Their pots are theirs, ours are ours, but I'll share bread."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n1.claywater-station-danger",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n1",
+      "keys": {
+        "topic": "topic.claywater-station-danger"
+      },
+      "words": "Bog dogs run the banks at dawn and dusk, four of them. A crocodile lies in the channel. I'm indoors with the pot on by dusk.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station-danger.default",
+        "hash": "c1d12a9a"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Four bog dogs on the banks, dawn and dusk. A crocodile in the channel.",
+        "high": "Four bog dogs run the banks at dawn and dusk. A crocodile lies in the channel. Be off the banks by dusk, citizen. Supper waits at the fire."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n1.claywater-station-directions",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n1",
+      "keys": {
+        "topic": "topic.claywater-station-directions"
+      },
+      "words": "East along the track to the Blackwood Road. Cartwright's Cross lies a few minutes from the turning, then the Mile House some fifteen minutes farther. Gideon lies beyond.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station-directions.default",
+        "hash": "11502af0"
+      },
+      "factIds": [
+        "fact.blackwood-road.stops"
+      ],
+      "variants": {
+        "low": "East along the track to the Blackwood Road. Cartwright's Cross, then the Mile House. Gideon after.",
+        "high": "East along the track to the Blackwood Road. Cartwright's Cross lies a few minutes from the turning, then the Mile House some fifteen minutes farther. Gideon lies beyond. Eat before you go."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n1.role-two-halves",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n1",
+      "keys": {
+        "topic": "topic.role-two-halves"
+      },
+      "words": "Two halves, one ford. Ours is timber and stone. The landing's is mud and thatch, replastered last year.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-two-halves.default",
+        "hash": "06cc104a"
+      },
+      "factIds": [
+        "fact.claywater.two-halves",
+        "fact.claywater.landing-mud"
+      ],
+      "variants": {
+        "low": "Two halves. Timber and stone here, mud and thatch there.",
+        "high": "Two halves, one ford. Ours is timber and stone. The landing's is mud and thatch, replastered last year. I like their walls, I'll say that."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n1.about-gideon",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n1",
+      "keys": {
+        "topic": "topic.about-gideon"
+      },
+      "words": "It's the city on the western frontier. Come down out of Cyrodiil by the Blackwood Road and Gideon's the first settlement you reach.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-gideon.default",
+        "hash": "95d75bc2"
+      },
+      "factIds": [
+        "fact.gideon.frontier",
+        "fact.gideon.blackwood-road"
+      ],
+      "variants": {
+        "low": "The frontier city in the west. First on the Blackwood Road from Cyrodiil.",
+        "high": "It's the city on the western frontier. Come down out of Cyrodiil by the Blackwood Road and Gideon's the first settlement you reach. The carters eat well there, I'm told."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n1.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n1",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "The Empire built the Prison road and the Border road, with the Mile House as a waystation. People use those Imperial names still. A Tag House sits on a dry rise beside the Prison road.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.imperial",
+        "fact.road.tag-house"
+      ],
+      "variants": {
+        "low": "Old Imperial roads with a waystation. A Tag House sits on a dry rise by the Prison road.",
+        "high": "The Empire built the Prison road and the Border road, with the Mile House as a waystation. People use those Imperial names still. A Tag House sits on a dry rise beside the Prison road. Pack bread for it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.claywater-station-n1-2.base",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-2",
+      "words": "Dried fish, if you are buying. Stay moist, traveller.",
+      "available": [],
+      "variants": {
+        "low": "Buying or not? The racks are not a bench.",
+        "high": "Sunned and warm, traveller. Fresh strings are up."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.claywater-station-n1-2.night",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-2",
+      "words": "Racks covered. Come at dawn.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Racks are covered. Be gone.",
+        "high": "Racks are covered. I will set a string aside."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.claywater-station-n1-2.crime",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-2",
+      "words": "I have written down what you did, stranger.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "It is written down. Keep from my racks.",
+        "high": "It is written down, stranger. Mend it and I will cross it out."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.claywater-station-n1-2.high",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-2",
+      "words": "The racks are full today.",
+      "available": [
+        {
+          "speakerDispositionAtLeast": 70
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Racks are full. Nothing for you.",
+        "high": "The racks are full today. Take the best string."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.claywater-station-n1-2.passing",
+      "type": "bark",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-2",
+      "slot": "passing",
+      "words": "Dried fish here.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.claywater-station-n1-2.at-work",
+      "type": "bark",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-2",
+      "slot": "at-work",
+      "words": "The rack is short again.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n1-2.claywater-station",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-2",
+      "keys": {
+        "topic": "topic.claywater-station"
+      },
+      "words": "I dry fish on the landing racks, then sell it to the station counter. The road crosses the ford here, with the well house on one bank and our huts on the other. The carters tell me Helstrom has a rootworm station.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station.default",
+        "hash": "3c444bc7"
+      },
+      "factIds": [
+        "fact.rootworm-waykeepers.station"
+      ],
+      "variants": {
+        "low": "Claywater Station. A ford, a well, a raft. Buy something or leave.",
+        "high": "I dry fish on the landing racks, then sell it to the station counter. The road crosses the ford here, with the well house on one bank and our huts on the other. Carters tell me Helstrom has a rootworm station. Bring a buyer's coin and I'll show you the racks."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n1-2.claywater-station-work",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-2",
+      "keys": {
+        "topic": "topic.claywater-station-work"
+      },
+      "words": "I dry fish on the landing racks. The station counter buys it. My ledger says nine strings went to the counter. A traveller pays the station for the well and the bed, then the landing for the raft. Each bank charges for its own share.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station-work.default",
+        "hash": "886960b6"
+      },
+      "factIds": [
+        "fact.claywater.each-bank-charges"
+      ],
+      "variants": {
+        "low": "I dry fish. The counter buys it. Ask the poler about the raft.",
+        "high": "I dry fish on the landing racks. The station counter buys it. My ledger says nine strings went to the counter. A traveller pays the station for the well and the bed, then the landing for the raft. Each bank charges for its own share. I'll take less from a regular."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n1-2.claywater-station-people",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-2",
+      "keys": {
+        "topic": "topic.claywater-station-people"
+      },
+      "words": "Imperial families live by the well. Argonian households live over here on the landing. If two neighbours fall out, the Imperials go to the well-keeper, we go to the poler. I buy nothing from the well, but I'll sell fish to anyone.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station-people.default",
+        "hash": "f9006599"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Imperials by the well. Argonians here. Quarrels go to the well-keeper or the poler.",
+        "high": "Imperial families live by the well. Argonian households live over here on the landing. If two neighbours fall out, the Imperials go to the well-keeper, we go to the poler. Come by the racks at midday and I'll give you the names."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n1-2.claywater-station-danger",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-2",
+      "keys": {
+        "topic": "topic.claywater-station-danger"
+      },
+      "words": "Bog dogs hunt both banks at first light and again at dusk, so I hang my catch at midday. The crocodile stays in the channel. Keep off the stones when the light is low, stranger.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station-danger.default",
+        "hash": "c1d12a9a"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Bog dogs at dawn and dusk. A crocodile in the channel. Mind yourself.",
+        "high": "Bog dogs hunt both banks at first light and again at dusk, so I hang my catch at midday. The crocodile stays in the channel. Keep off the stones when the light is low, stranger. I'll walk you to the track if it is late."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n1-2.claywater-station-directions",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-2",
+      "keys": {
+        "topic": "topic.claywater-station-directions"
+      },
+      "words": "Take the track east to the Blackwood Road. Cartwright's Cross lies a few minutes along the road, on a north-west track. Fifteen minutes east on the road, you reach the Mile House. Gideon is farther than either.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station-directions.default",
+        "hash": "11502af0"
+      },
+      "factIds": [
+        "fact.blackwood-road.stops"
+      ],
+      "variants": {
+        "low": "East by the track to the Blackwood Road. Cartwright's Cross, the Mile House, then Gideon.",
+        "high": "Take the track east to the Blackwood Road. Cartwright's Cross lies a few minutes along the road, on a north-west track. Fifteen minutes east on the road, you reach the Mile House. Gideon is farther than either. Leave before the dogs come down."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n1-2.role-two-halves",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-2",
+      "keys": {
+        "topic": "topic.role-two-halves"
+      },
+      "words": "Two banks, one ford. The station half has the well and the beds. The landing half has the raft and my racks. A traveller pays at both, because each bank charges for its own share. The station well is cracking. Its water is sour anyway.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-two-halves.default",
+        "hash": "06cc104a"
+      },
+      "factIds": [
+        "fact.claywater.each-bank-charges",
+        "fact.claywater.well-cracking"
+      ],
+      "variants": {
+        "low": "Two banks, one ford. Each bank charges you. The station well is cracking.",
+        "high": "Two banks, one ford. The station half has the well and the beds. The landing half has the raft and my racks. A traveller pays at both, because each bank charges for its own share. The station well is cracking. Its water is sour anyway. Brine takes ford water on my racks."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.claywater-station-n1-3.base",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-3",
+      "words": "Bucket by the door. Go round it.",
+      "available": [],
+      "variants": {
+        "low": "Go round the bucket.",
+        "high": "Have a cup from the bucket."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.claywater-station-n1-3.night",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-3",
+      "words": "Dark on the ford now. Go slowly over the stones.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Dark ford. Go slowly.",
+        "high": "Dark on the ford. Rest here, then go over the stones."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.claywater-station-n1-3.crime",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-3",
+      "words": "Get away from my door.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "Away from my door.",
+        "high": "Away from my door."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.claywater-station-n1-3.high",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-3",
+      "words": "Drink from my bucket. It runs cold.",
+      "available": [
+        {
+          "speakerDispositionAtLeast": 70
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "The bucket is full. Drink.",
+        "high": "Drink from my bucket, traveller. It runs cold today."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.claywater-station-n1-3.passing",
+      "type": "bark",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-3",
+      "slot": "passing",
+      "words": "Cold water, full bucket.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.claywater-station-n1-3.at-work",
+      "type": "bark",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-3",
+      "slot": "at-work",
+      "words": "Bucket topped up.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n1-3.claywater-station",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-3",
+      "keys": {
+        "topic": "topic.claywater-station"
+      },
+      "words": "Claywater is where I live. My hut stands on the landing bank, on the driest ground this side of the ford. The water here tastes of clay and stone. I like that. The well across the ford tastes tinny to me. Now its head is cracking.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station.default",
+        "hash": "3c444bc7"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "It's a ford with two banks. I live on this one.",
+        "high": "Claywater is my home, traveller. My hut is on the driest ground this side of the ford. The water here tastes of clay and stone. I'll tell you so over a cup of it. The well across the ford tastes tinny to me. Its head is cracking too."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n1-3.claywater-station-work",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-3",
+      "keys": {
+        "topic": "topic.claywater-station-work"
+      },
+      "words": "I keep a bucket of ford water by my door and fill it again after every crossing. The poler takes carts over on a plank raft. Carts pay him by the wheel. I argue his fee with him every week, and then I pay it in full.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station-work.default",
+        "hash": "886960b6"
+      },
+      "factIds": [
+        "fact.poler.raft"
+      ],
+      "variants": {
+        "low": "I carry water. The poler runs the raft for carts. Ask him about the fee.",
+        "high": "I keep a bucket of ford water by my door and fill it after every crossing. You're welcome to a cup. The poler takes carts over on a plank raft. He charges by the wheel. I argue his fee with him weekly, then I pay all of it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n1-3.claywater-station-people",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-3",
+      "keys": {
+        "topic": "topic.claywater-station-people"
+      },
+      "words": "Imperial families live over by the well. Argonian households live here at the landing. When two Imperial families fall out, they take it to Livia Varinius at the station house. We take ours to the poler. I take mine to him whatever the quarrel is.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station-people.default",
+        "hash": "f9006599"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Imperials by the well, Argonians here. Quarrels go to the poler on this bank.",
+        "high": "Imperial families live by the well and Argonian households live here at the landing. Livia Varinius hears the Imperials' quarrels. The poler hears ours. He hears me out even when I'm in the wrong. His name is Signs-For-The-Cargo."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n1-3.claywater-station-danger",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-3",
+      "keys": {
+        "topic": "topic.claywater-station-danger"
+      },
+      "words": "Bog dogs hunt along both banks around first light and again near dark. A crocodile lives in the channel. I stand well back from its edge when I fill my bucket. I do my carrying in the hours between the dogs. The dogs are bad enough, but I like the crocodile less.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station-danger.default",
+        "hash": "c1d12a9a"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Dogs on the banks at dawn and dusk. A crocodile in the channel. Keep back.",
+        "high": "Bog dogs hunt the banks at first light and near dark. A crocodile lives in the channel. Stand back from the edge. Drink from my bucket instead."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n1-3.claywater-station-directions",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-3",
+      "keys": {
+        "topic": "topic.claywater-station-directions"
+      },
+      "words": "I don't walk past the ford, so I can't tell you the road from my feet. Carters say the track east meets the Blackwood Road. Cartwright's Cross comes first. After it, comes the Mile House. Gideon is last. What I can show you is the water. The stones of the ford start at my door.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station-directions.default",
+        "hash": "11502af0"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "I don't go past the ford. Carters say east to the Blackwood Road.",
+        "high": "I don't walk past the ford, but I hear the carters. East on the track to the Blackwood Road. Then comes Cartwright's Cross, then the Mile House, then Gideon. Take water from my bucket before you start."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n1-3.role-two-halves",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-3",
+      "keys": {
+        "topic": "topic.role-two-halves"
+      },
+      "words": "Across the ford, they build with timber and stone. That's the well, the beds and the counter at the door. We on the landing build in mud and thatch. We replaster before the rains.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-two-halves.default",
+        "hash": "06cc104a"
+      },
+      "factIds": [
+        "fact.claywater.station-timber"
+      ],
+      "variants": {
+        "low": "Timber and stone across the water. Mud here.",
+        "high": "Across the ford, they build with timber and stone, for the well and the beds. Our half is mud and thatch. We replastered last year. Come and see the walls, traveller. They're dry inside."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.claywater-station-n2.base",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.claywater-station.n2",
+      "words": "What does walker want of Abhuki?",
+      "available": [],
+      "variants": {
+        "low": "Walker talks too much. This one is busy.",
+        "high": "Ah, walker. Come, ask this one."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.claywater-station-n2.night",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.claywater-station.n2",
+      "words": "Awake too, walker? The coals are still warm.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Walker should be asleep. This one is.",
+        "high": "Come sit, walker. The brazier has coals yet."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.claywater-station-n2.crime",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.claywater-station.n2",
+      "words": "Walker should not have done that. Abhuki has heard.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "Abhuki saw it. Walker had best go.",
+        "high": "Abhuki saw, walker. Do not do it again."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.claywater-station-n2.high",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.claywater-station.n2",
+      "words": "Sit, walker. The brazier has room.",
+      "available": [
+        {
+          "speakerDispositionAtLeast": 70
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Walker may stand.",
+        "high": "Sit, friend. The warm side is yours."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.claywater-station-n2.passing",
+      "type": "bark",
+      "speaker": "npc.imperial-fringe.claywater-station.n2",
+      "slot": "passing",
+      "words": "Good road.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.claywater-station-n2.at-work",
+      "type": "bark",
+      "speaker": "npc.imperial-fringe.claywater-station.n2",
+      "slot": "at-work",
+      "words": "Come, warm yourself.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.claywater-station-n2.rumour",
+      "type": "bark",
+      "speaker": "npc.imperial-fringe.claywater-station.n2",
+      "slot": "rumour",
+      "words": "The well is cracking.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n2.claywater-station",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n2",
+      "keys": {
+        "topic": "topic.claywater-station"
+      },
+      "words": "Where does this one sit, you ask? By the brazier at the well, with her pack close against her leg. A station is a stop on the road, not a home. The station house is on this bank. Across the ford, the landing huts sit low by the channel. Those Argonians poled the crossing long before anyone dug the well.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station.default",
+        "hash": "3c444bc7"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "A stop on the road. The well is on this bank, the landing across the ford. Ask the well-keeper for the rest.",
+        "high": "Sit down by the brazier, friend. This one will show you the place with her hand. The station house is here on the near bank. The landing huts across the ford are older than the well."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n2.claywater-station-work",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n2",
+      "keys": {
+        "topic": "topic.claywater-station-work"
+      },
+      "words": "A plain arrangement pleases this one. On the station bank, you find water, a counter, beds upstairs and a stable. The landing across the water keeps the crossing. A traveller pays twice for one stop. The station bank charges for its half. The landing charges for the other half. Neighbours on both banks dislike travellers who wade over to dodge a charge.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station-work.default",
+        "hash": "886960b6"
+      },
+      "factIds": [
+        "fact.claywater.each-bank-charges"
+      ],
+      "variants": {
+        "low": "Water, beds and a stable on this bank. The crossing on that one. The station charges for the beds. The landing charges for the crossing. It's coin twice. This one pays it.",
+        "high": "The station bank has water, beds and a stable. The landing has the crossing. Each side charges you for its part, so carry coin for both, friend. Wading over to dodge one charge only annoys the neighbours."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n2.claywater-station-people",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n2",
+      "keys": {
+        "topic": "topic.claywater-station-people"
+      },
+      "words": "The station bank is where the Imperial families live. The Argonian families are across the ford on the landing bank. Imperials bring a quarrel to the well-keeper. Argonians bring theirs to the poler. This one finds Argonians fair in trade. They weigh honestly. They remember every coin you owe them.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station-people.default",
+        "hash": "f9006599"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Imperials on this bank, Argonians on that one. Imperials bring a quarrel to the well-keeper. Argonians bring theirs to the poler. This one keeps out of both.",
+        "high": "Imperial families are on the station bank. Argonian families are on the landing bank. The well-keeper hears the Imperial quarrels. The poler hears the Argonian ones. Trade with the Argonians, friend. They weigh honestly."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n2.claywater-station-danger",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n2",
+      "keys": {
+        "topic": "topic.claywater-station-danger"
+      },
+      "words": "Bog dogs, you ask? They prowl both banks at dawn and again at dusk, so this one keeps to her brazier at those hours. A crocodile lives in the channel and keeps to it. It is no trouble if you stay out of the water. The dogs are different. A hungry dog will go round a camp half the night, sniffing at every bundle on the ground.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station-danger.default",
+        "hash": "c1d12a9a"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Bog dogs on the banks at dawn and at dusk. A crocodile in the channel. Keep away from both.",
+        "high": "Stay by the brazier at dawn and dusk, friend. Bog dogs prowl the banks then. The crocodile keeps to the channel, so keep out of the water. A dog finds a pack by its smell, this one has heard."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n2.claywater-station-directions",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n2",
+      "keys": {
+        "topic": "topic.claywater-station-directions"
+      },
+      "words": "The road east is easy to find. Take the track to the Blackwood Road, then follow the road east. Cartwright's Cross is a few minutes off it. Next comes Mile House of the Eagle, after some fifteen minutes along the road. Gideon is about twenty-five minutes on from the turning. This one would reach the Mile House before dark.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station-directions.default",
+        "hash": "11502af0"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "East by the track, then the Blackwood Road. Cartwright's Cross, the Mile House, Gideon, in that order.",
+        "high": "It's easy, friend. East on the track to the Blackwood Road, then keep going. Cartwright's Cross comes first, Mile House of the Eagle after it, Gideon last. Rest at the Mile House if the light goes."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n2.role-road",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n2",
+      "keys": {
+        "topic": "topic.role-road"
+      },
+      "words": "The Blackwood Road is what this is. The Empire built it. Carts still roll on it between Leyawiin and Gideon. On the way, a traveller passes Cartwright's Cross and Mile House of the Eagle. In the monsoon season, the road closes. This one would not like to be caught on the wrong side of that with a pack to keep dry.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-road.default",
+        "hash": "65d83edf"
+      },
+      "factIds": [
+        "fact.blackwood-road.name",
+        "fact.blackwood-road.carts",
+        "fact.blackwood-road.stops",
+        "fact.blackwood-road.monsoon"
+      ],
+      "variants": {
+        "low": "The Blackwood Road, an Imperial road. Carts run it between Leyawiin and Gideon. Cartwright's Cross and Mile House of the Eagle lie along it. It closes in the monsoon season.",
+        "high": "The Blackwood Road is Imperial work. Carts run along it between Leyawiin and Gideon. You pass Cartwright's Cross and Mile House of the Eagle. Plan around the monsoon season, friend, because the road closes then."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n2.about-gideon",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n2",
+      "keys": {
+        "topic": "topic.about-gideon"
+      },
+      "words": "Walkers on this road talk of Gideon all day. The courts there still work. An Owing is a debt worked off in labour. When one is made in Gideon it is written on paper, so the bound one can take it to the court and contest it. This one has the pack to carry and no Owing to carry with it.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-gideon.default",
+        "hash": "95d75bc2"
+      },
+      "factIds": [
+        "fact.gideon.courts",
+        "fact.gideon.owing-paper"
+      ],
+      "variants": {
+        "low": "Gideon has courts and they still work. An Owing made there is a paper that a court can contest.",
+        "high": "Gideon's courts still work, friend. An Owing is a debt worked off in labour. If one is made in Gideon it is a paper contract, so the bound one can contest it in court."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n2.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n2",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "The Prison road is the one with the Tag House beside it, up on a dry rise above the mud. This one would pick that rise over the road itself on any wet night. Where the road ends, Abhuki cannot say. She knows only what stands beside it.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.tag-house"
+      ],
+      "variants": {
+        "low": "The Tag House stands by the Prison road, on a dry rise. That is all this one knows of it.",
+        "high": "Look for the Tag House, friend. It stands beside the Prison road on a dry rise. A good place to be out of the mud."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.claywater-station-n2-2.base",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.claywater-station.n2-2",
+      "words": "You come from the Gideon road, sir?",
+      "available": [],
+      "variants": {
+        "low": "Not from Gideon, then. Go your way.",
+        "high": "Sir, you came at the right time. What news of Gideon?"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.claywater-station-n2-2.night",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.claywater-station.n2-2",
+      "words": "Any word of the Gideon road tonight?",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Ask me of the road in daylight.",
+        "high": "Sit down, sir. What is said of Gideon tonight?"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.claywater-station-n2-2.crime",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.claywater-station.n2-2",
+      "words": "That was a crime, sir.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "I watched you do it. Do it far from my sight.",
+        "high": "That was a crime, sir. Put it right before Gideon."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.claywater-station-n2-2.high",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.claywater-station.n2-2",
+      "words": "Good, sir. I hoped you would pass again.",
+      "available": [
+        {
+          "speakerDispositionAtLeast": 70
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Back already. I hoped for a better face.",
+        "high": "Sir, you are back. Sit and tell me of the road."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.claywater-station-n2-2.passing",
+      "type": "bark",
+      "speaker": "npc.imperial-fringe.claywater-station.n2-2",
+      "slot": "passing",
+      "words": "Any news from Gideon?",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.claywater-station-n2-2.at-work",
+      "type": "bark",
+      "speaker": "npc.imperial-fringe.claywater-station.n2-2",
+      "slot": "at-work",
+      "words": "The next cart, then.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.claywater-station-n2-2.rumour",
+      "type": "bark",
+      "speaker": "npc.imperial-fringe.claywater-station.n2-2",
+      "slot": "rumour",
+      "words": "Traders mention a Sul-Xan mask.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n2-2.claywater-station",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n2-2",
+      "keys": {
+        "topic": "topic.claywater-station"
+      },
+      "words": "I'm only a traveller here. I pay for a bed at the station house. The well and the counter are on this bank. The landing across the ford is older than all of it, since the polers worked this crossing before the Imperials dug a stone. You came by the Gideon road? Then you have walked further than I have.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station.default",
+        "hash": "3c444bc7"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Ask the well-keeper. I only pay for a bed.",
+        "high": "Sit by me at the well. I will tell you what I have learnt of this ford. You can tell me of the road."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n2-2.claywater-station-work",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n2-2",
+      "keys": {
+        "topic": "topic.claywater-station-work"
+      },
+      "words": "I don't work here, I just pay. I sleep at the station house, then walk down to the landing in the morning. The poler poles carts across the ford on a raft of planks, since a cart can't wade the stones. I'm saving my coin for the courts at Gideon.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station-work.default",
+        "hash": "886960b6"
+      },
+      "factIds": [
+        "fact.poler.raft"
+      ],
+      "variants": {
+        "low": "Work is for those who stay. I pay and I leave.",
+        "high": "You will want a seat on the raft. Pay the poler before the planks are loaded."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n2-2.claywater-station-people",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n2-2",
+      "keys": {
+        "topic": "topic.claywater-station-people"
+      },
+      "words": "Imperial families live by the well. The Argonians live in the huts across the ford. When two neighbours fall out, the Imperials go to the well-keeper and the Argonians go to the poler. I'm a customer to both banks. You learn quickly which of them wants paying first.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station-people.default",
+        "hash": "f9006599"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Two banks, two sets of neighbours. Pay both.",
+        "high": "Imperial or Argonian, they will serve you if you pay first. I can tell you who to pay first."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n2-2.claywater-station-danger",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n2-2",
+      "keys": {
+        "topic": "topic.claywater-station-danger"
+      },
+      "words": "Bog dogs run the banks at dawn and again at dusk, so I stay inside at both hours. A crocodile lies in the channel. Wait for full light before you set off, because the road to Gideon is long enough without a bite in it.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station-danger.default",
+        "hash": "c1d12a9a"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Dogs at dawn and dusk. A crocodile in the channel. Stay indoors.",
+        "high": "Bog dogs and a crocodile are the whole of it. I walk the ford at midday. You should do the same."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n2-2.claywater-station-directions",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n2-2",
+      "keys": {
+        "topic": "topic.claywater-station-directions"
+      },
+      "words": "Take the track east from the ford, a few minutes, to the Blackwood Road. You have walked it before? Cartwright's Cross is a short walk off it to the north-west. Some fifteen minutes east along the road, a track turns toward Mile House of the Eagle. Gideon is some twenty-five minutes along the road, then a few turnings.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station-directions.default",
+        "hash": "11502af0"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "East from the ford to the Blackwood Road. Gideon is at its far end.",
+        "high": "East from the ford, a few minutes, to the Blackwood Road. Cartwright's Cross is off it, then Mile House of the Eagle. Gideon is some twenty-five minutes along the road, then a few turnings. I will draw it in the dust if you wish."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n2-2.role-road",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n2-2",
+      "keys": {
+        "topic": "topic.role-road"
+      },
+      "words": "It's the Blackwood Road, an Imperial road. Carts use it between Leyawiin and Gideon. You pass Cartwright's Cross on the way, then Mile House of the Eagle. The road closes in the monsoon season, so I mean to reach Gideon before the rains.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-road.default",
+        "hash": "65d83edf"
+      },
+      "factIds": [
+        "fact.blackwood-road.name",
+        "fact.blackwood-road.carts",
+        "fact.blackwood-road.stops",
+        "fact.blackwood-road.monsoon"
+      ],
+      "variants": {
+        "low": "It's the Blackwood Road. It closes in the monsoon season.",
+        "high": "It's the Blackwood Road, which carts use between Leyawiin and Gideon. The monsoon shuts it, so start before the rains."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n2-2.about-gideon",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n2-2",
+      "keys": {
+        "topic": "topic.about-gideon"
+      },
+      "words": "Gideon is the frontier city out west. Its courts still sit. That matters to a man like me. An Owing is a debt you work off with your hands. One made in Gideon is a paper contract, so a court will hear you contest it. I want a paper with my name on it.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-gideon.default",
+        "hash": "95d75bc2"
+      },
+      "factIds": [
+        "fact.gideon.owing-paper"
+      ],
+      "variants": {
+        "low": "Gideon is a frontier city with working courts.",
+        "high": "Gideon is the frontier city out west, with courts that still sit. I will tell you what I know of the paper there. Tell me what you know of the road."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n2-2.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n2-2",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "This road ends at Gideon. That is the road I follow. The Prison road and the Border road were laid by the Empire. The Mile House was an Imperial waystation. I have not walked any of the three.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.imperial"
+      ],
+      "variants": {
+        "low": "Old Imperial roads. Not mine.",
+        "high": "The Prison road and the Border road are old Imperial work, while the Mile House was a waystation. I have not walked them, but I am glad to say so."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.claywater-station-well-keeper.base",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.claywater-station.well-keeper",
+      "words": "Water or a bed, citizen?",
+      "available": [],
+      "variants": {
+        "low": "Water or a bed? Make up your mind.",
+        "high": "Water or a bed, citizen? The first bucket is on me."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.claywater-station-well-keeper.night",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.claywater-station.well-keeper",
+      "words": "Awake at this hour? State your business, citizen.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "State your business or leave.",
+        "high": "Come in out of the dark, citizen. Your bed is aired."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.claywater-station-well-keeper.crime",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.claywater-station.well-keeper",
+      "words": "The log has this.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "Enough. It goes in the log.",
+        "high": "Stop there. Put it right and the log can wait."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.claywater-station-well-keeper.high",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.claywater-station.well-keeper",
+      "words": "A friend of the office. A bed is made up for you.",
+      "available": [
+        {
+          "factionStandingAtLeast": [
+            "faction.imperial-legion-remnant",
+            50
+          ]
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Friend of the office? Beds cost the same.",
+        "high": "A friend of the office. Your bed is made up. First bucket is mine."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.claywater-station-well-keeper.passing",
+      "type": "bark",
+      "speaker": "npc.imperial-fringe.claywater-station.well-keeper",
+      "slot": "passing",
+      "words": "Mind the windlass.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.claywater-station-well-keeper.at-work",
+      "type": "bark",
+      "speaker": "npc.imperial-fringe.claywater-station.well-keeper",
+      "slot": "at-work",
+      "words": "Level's low again.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-well-keeper.claywater-station",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.well-keeper",
+      "keys": {
+        "topic": "topic.claywater-station"
+      },
+      "words": "I keep the well at Claywater Station and the beds in the house behind it. Dawn, travellers asleep upstairs, rope dry. Noon, a cart waiting at the ford. The huts across the water are older than my well.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station.default",
+        "hash": "3c444bc7"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Well and beds. That is all I keep. The counter at the door will sell you either.",
+        "high": "I keep the well and the beds here. Dawn is quiet. Noon brings the carts. Stay a night and your first bucket is on me."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-well-keeper.claywater-station-work",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.well-keeper",
+      "keys": {
+        "topic": "topic.claywater-station-work"
+      },
+      "words": "I draw the water. You ask me before any bucket goes down. The house behind the well has beds upstairs and a counter at the door for provisions. Four stalls in the stable take your horse.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station-work.default",
+        "hash": "886960b6"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "I draw the water. Ask before any bucket goes down. Beds and provisions are at the house.",
+        "high": "I draw the water, so ask me before any bucket goes down. Beds are upstairs and the counter at the door sells provisions. I'll see a stall is swept for your horse."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-well-keeper.claywater-station-people",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.well-keeper",
+      "keys": {
+        "topic": "topic.claywater-station-people"
+      },
+      "words": "Imperial families live on this bank, the Argonian families in the huts across the ford. Quarrels from our side come to me. The poler hears the ones from his. The landing folk are good neighbours until the well comes up in talk.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station-people.default",
+        "hash": "f9006599"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Imperials this side, Argonians across the ford. I hear the quarrels from my side. The poler hears his.",
+        "high": "Imperial families live this side, Argonian families across the ford. I hear our quarrels. Signs-For-The-Cargo, the poler, hears theirs. The landing folk are good neighbours."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-well-keeper.claywater-station-danger",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.well-keeper",
+      "keys": {
+        "topic": "topic.claywater-station-danger"
+      },
+      "words": "Bog dogs come down to the water at first light and last light, so I draw at midday. A crocodile lies in the channel. The ford stones look easy. I would not wade them. Be indoors when the lamps are lit.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station-danger.default",
+        "hash": "c1d12a9a"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Bog dogs at first and last light. A crocodile in the channel. Keep out of the water.",
+        "high": "Bog dogs come down to the water at first light and last light. A crocodile lies in the channel, so keep off the ford stones. If you sleep here, I'll light the lantern post for you."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-well-keeper.claywater-station-directions",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.well-keeper",
+      "keys": {
+        "topic": "topic.claywater-station-directions"
+      },
+      "words": "Take the track east to the Blackwood Road, a few minutes. Cartwright's Cross is the first stop, a short walk. The Mile House is next, some fifteen minutes east. Gideon is last, some twenty-five minutes, then a few turnings.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-station-directions.default",
+        "hash": "11502af0"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "East along the track to the Blackwood Road. Cartwright's Cross, then the Mile House, then Gideon.",
+        "high": "East along the track to the Blackwood Road, then Cartwright's Cross, the Mile House and Gideon in that order. Fill your skins first. I'll draw them myself."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-well-keeper.role-well",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.well-keeper",
+      "keys": {
+        "topic": "topic.role-well"
+      },
+      "words": "The head of the well is Imperial stone. A windlass draws the water at set hours. I work it myself. The stone is cracking, so I look it over each morning. A traveller asks me before any bucket goes down.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-well.default",
+        "hash": "daa823e0"
+      },
+      "factIds": [
+        "fact.well.imperial-stone",
+        "fact.well.windlass",
+        "fact.claywater.well-cracking",
+        "fact.well.ask-keeper"
+      ],
+      "variants": {
+        "low": "Imperial stone, a windlass at set hours, cracking at the head. A traveller asks me first.",
+        "high": "The well is Imperial stone with a windlass that draws at set hours. It is cracking, which worries me. I work the windlass myself. A traveller asks me before drawing, so ask and I'll draw yours fresh."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-well-keeper.about-gideon",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.well-keeper",
+      "keys": {
+        "topic": "topic.about-gideon"
+      },
+      "words": "Gideon is the city on the western frontier. More travellers ask me the road to it than to anywhere else, so I know it by heart. Three turnings follow the Blackwood Road.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-gideon.default",
+        "hash": "95d75bc2"
+      },
+      "factIds": [
+        "fact.gideon.frontier"
+      ],
+      "variants": {
+        "low": "Gideon is the frontier city. Take the Blackwood Road east. That's all I know of it.",
+        "high": "Gideon is the city on the frontier in the west. I send travellers there often. East along the Blackwood Road, twenty-five minutes, then a few turnings. I'll draw you water for the road."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-well-keeper.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.well-keeper",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "Which road do you want? People round here still call the Imperial roads by the old names, so I do the same. Give me the old name and I can point you. Give me another and I will have to think.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.old-names"
+      ],
+      "variants": {
+        "low": "Which road? Folk use the old names, so I do. Say one and I'll point.",
+        "high": "Which road do you want? Folk here call the Imperial roads by their old names. I keep to them too. Say the one you want. I will tell you the first turning."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-well-keeper.about-imperial",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.well-keeper",
+      "keys": {
+        "topic": "topic.about-imperial"
+      },
+      "words": "Cyrodiil's Empire kept hold of the coasts and the borderlands, but never the deep marsh. The Empire withdrew from the province. Roads came from it, with the stages along them and the prisons. This station was one of its stages.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-imperial.default",
+        "hash": "e16de56d"
+      },
+      "factIds": [
+        "fact.imperial.coasts",
+        "fact.imperial.built",
+        "fact.imperial.withdrew"
+      ],
+      "variants": {
+        "low": "It had the coasts and borderlands, never the deep marsh. Roads, stages, prisons: it built those. It withdrew.",
+        "high": "Cyrodiil's Empire kept the coasts and the borderlands but never the deep marsh. It built roads, stages and prisons. The Empire withdrew from the province. This station was one of its stages. I keep its well."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n1-3.about-claywater",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-3",
+      "keys": {
+        "topic": "topic.about-claywater"
+      },
+      "words": "The village is two halves at one ford. The Imperial station is on one bank. The Argonian landing is on the other. Both banks charge you for the same stop. You pay at the well, then you pay again at the landing. I tell travellers so at my bucket, before they get to the counter.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-claywater.default",
+        "hash": "1e4b6adf"
+      },
+      "factIds": [
+        "fact.claywater.two-halves",
+        "fact.claywater.each-bank-charges"
+      ],
+      "variants": {
+        "low": "Two halves, one ford. Both banks charge you.",
+        "high": "The village is two halves at one ford. The Imperial station is on one bank. The landing is on the other. Both banks charge you for their share. Pay the poler first. The water at my bucket costs you nothing."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n1-3.about-onkobra",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-3",
+      "keys": {
+        "topic": "topic.about-onkobra"
+      },
+      "words": "The Onkobra is a river. It runs east past Gideon and on into the interior. I haven't drunk from it, so I can't tell you how it tastes. I'd want a cup of it before I said a good word of it.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-onkobra.default",
+        "hash": "1f493d53"
+      },
+      "factIds": [
+        "fact.onkobra.east"
+      ],
+      "variants": {
+        "low": "A river that runs east past Gideon. I don't know it.",
+        "high": "The Onkobra is a river that runs east past Gideon into the interior. I haven't tasted it yet. A carter may bring me a bottle one day. I'd give him a cup of mine in trade."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n1-3.about-gideon",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-3",
+      "keys": {
+        "topic": "topic.about-gideon"
+      },
+      "words": "Gideon is the first town on the Blackwood Road, coming in from Cyrodiil. The courts there still sit, which is more than I can say for the Imperial well. I've never been there. Carters tell me about it when they stop at my door.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-gideon.default",
+        "hash": "95d75bc2"
+      },
+      "factIds": [
+        "fact.gideon.blackwood-road",
+        "fact.gideon.courts"
+      ],
+      "variants": {
+        "low": "The first town on the Blackwood Road from Cyrodiil. Courts still sit.",
+        "high": "Gideon is the first town on the Blackwood Road from Cyrodiil. The courts there still sit. I haven't been myself. The carters have told me about it. I'll tell you what I heard if you sit awhile."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n1-3.about-blackwood",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-3",
+      "keys": {
+        "topic": "topic.about-blackwood"
+      },
+      "words": "Blackwood is hills, out at the western end of Black Marsh. The road to Cyrodiil climbs through them. I haven't walked it. The carters who come down say the water is cold up there.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-blackwood.default",
+        "hash": "20cbe1a3"
+      },
+      "factIds": [
+        "fact.blackwood.hills"
+      ],
+      "variants": {
+        "low": "Hills in the west. That's all I know.",
+        "high": "Blackwood is hills, out at the western end of Black Marsh. The carters who come down say the water is cold there. I'd like to taste it. Tell me if you have."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n1-3.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-3",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "People still call the old Imperial roads by their old names, long after the Empire left. The Prison road is one. The Mile House is a waystation on another. I use those names as the carters do. I have no love for the Empire, but the names help a stranger.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.old-names"
+      ],
+      "variants": {
+        "low": "The old Imperial roads keep their old names. I don't walk them.",
+        "high": "People still call the old Imperial roads by their old names. I hear them from the carters. It's an Imperial habit. The names are useful all the same, so I use them. Ask at my door and I'll point you."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n2.about-blackwood",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n2",
+      "keys": {
+        "topic": "topic.about-blackwood"
+      },
+      "words": "It goes up. Blackwood is the hill country in the west. The Blackwood Road climbs up through those hills to Cyrodiil. A pack feels every step of a climb.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-blackwood.default",
+        "hash": "20cbe1a3"
+      },
+      "factIds": [
+        "fact.blackwood.road"
+      ],
+      "variants": {
+        "low": "The Blackwood Road climbs through the hills to Cyrodiil. Go and see.",
+        "high": "West and up, friend. The Blackwood Road climbs through the Blackwood hills to Cyrodiil. Take a good cloak for the climb."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n2.about-claywater",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n2",
+      "keys": {
+        "topic": "topic.about-claywater"
+      },
+      "words": "One ford, two banks, two halves of a village. The half with the well and the station house is timber frame and masonry. The well is cracking in its stone. This one has heard the Argonians will not help mend it. The brazier is the best part.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-claywater.default",
+        "hash": "1e4b6adf"
+      },
+      "factIds": [
+        "fact.claywater.station-timber"
+      ],
+      "variants": {
+        "low": "The station half is timber frame and masonry. The well is cracking.",
+        "high": "Claywater is a ford with two halves, friend. Mine, the station half, is timber frame and stone. Sit by the brazier and watch the well."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n2.about-onkobra",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n2",
+      "keys": {
+        "topic": "topic.about-onkobra"
+      },
+      "words": "The Onkobra flows past Gideon, heading east into the heart of the province. The road that follows its bank is muddy. A pack sits better on a dry back than a wet one, so this one waits for dry days.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-onkobra.default",
+        "hash": "1f493d53"
+      },
+      "factIds": [
+        "fact.onkobra.muddy"
+      ],
+      "variants": {
+        "low": "The Onkobra runs east. The road beside it is muddy.",
+        "high": "Mind the mud on the Onkobra road, friend. The river runs east from Gideon. The road beside it is muddy. Wait for a dry day."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-well-keeper.about-blackwood",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.well-keeper",
+      "keys": {
+        "topic": "topic.about-blackwood"
+      },
+      "words": "Blackwood is the hill country in the west. The road climbs through it toward Cyrodiil. The hill people like a riddle, so I would carry one up there. They show strangers little interest otherwise.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-blackwood.default",
+        "hash": "20cbe1a3"
+      },
+      "factIds": [
+        "fact.blackwood.riddles"
+      ],
+      "variants": {
+        "low": "Hill country in the west. They like riddles up there. I have none to give you.",
+        "high": "Blackwood is the hill country in the west, where the road climbs toward Cyrodiil. The hill people like a riddle. Carry one up there. A good one will get you a hearing."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-well-keeper.about-claywater",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.well-keeper",
+      "keys": {
+        "topic": "topic.about-claywater"
+      },
+      "words": "Claywater is the ford with a stop on each bank. My bank has timber and masonry. Across the water, the huts are mud walls and thatch. They replastered them last year before the rains.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-claywater.default",
+        "hash": "1e4b6adf"
+      },
+      "factIds": [
+        "fact.claywater.landing-mud"
+      ],
+      "variants": {
+        "low": "A ford with a stop each side. Timber and stone here. Mud and thatch over the water.",
+        "high": "Claywater is the ford with a stop on each bank. My bank is timber and stone. The huts across the water are mud and thatch, plastered fresh last year. The landing folk keep them tidy."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-well-keeper.about-onkobra",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.well-keeper",
+      "keys": {
+        "topic": "topic.about-onkobra"
+      },
+      "words": "The Onkobra is the river with the clay pits. Red clay from it is known across the marsh. The pits lie east then north off the Blackwood Road, a good walk from my well.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-onkobra.default",
+        "hash": "1f493d53"
+      },
+      "factIds": [
+        "fact.onkobra.clay"
+      ],
+      "variants": {
+        "low": "The river with the clay pits. Red clay, known across the marsh. East of here.",
+        "high": "The Onkobra is the river with the clay pits. Red clay from it is known across the marsh. The pits lie east then north off the Blackwood Road. Go in daylight and take water from my well."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n1-3.about-imperial-legion-remnant",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-3",
+      "keys": {
+        "topic": "topic.about-imperial-legion-remnant"
+      },
+      "words": "When the Empire pulled out, some garrisons stayed in the marsh. Their children after them are Legion as well. The old road stages are their work. The well-keeper is one of them. I take my quarrels to the poler. She gets none from me.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-imperial-legion-remnant.default",
+        "hash": "cb88a4c8"
+      },
+      "factIds": [
+        "fact.legion.stayed",
+        "fact.legion.heirs",
+        "fact.legion.stages"
+      ],
+      "variants": {
+        "low": "Garrisons stayed when the Empire left. Their children are Legion too. They made the stages.",
+        "high": "When the Empire withdrew, some garrisons stayed in the marsh. Their children after them are Legion as well. The old road stages are their work. I keep clear of the well. The poler will hear you out."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n2.about-imperial",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n2",
+      "keys": {
+        "topic": "topic.about-imperial"
+      },
+      "words": "Black Marsh had its coasts and border lands held by the Empire. It never held the deep marsh. What it built was roads, road stages and prisons. Then it withdrew from the province. This one sits at one of its stages today, by a brazier at a well it dug.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-imperial.default",
+        "hash": "e16de56d"
+      },
+      "factIds": [
+        "fact.imperial.coasts",
+        "fact.imperial.built",
+        "fact.imperial.withdrew"
+      ],
+      "variants": {
+        "low": "The Empire held coasts and borders, not the deep marsh. It built roads, stages and prisons. Then it withdrew.",
+        "high": "The Empire held the borders and coasts of Black Marsh, friend, but not the deep marsh. It built roads, road stages and prisons. Then it withdrew. The stages still serve a traveller."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-well-keeper.about-imperial-legion-remnant",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.well-keeper",
+      "keys": {
+        "topic": "topic.about-imperial-legion-remnant"
+      },
+      "words": "Some Legion garrisons stayed on in the province after the Empire pulled out. Their heirs are Legion too, myself among them. Legion hands laid out the old road stages. The post sends me no pay.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-imperial-legion-remnant.default",
+        "hash": "cb88a4c8"
+      },
+      "factIds": [
+        "fact.legion.stayed",
+        "fact.legion.heirs",
+        "fact.legion.stages"
+      ],
+      "variants": {
+        "low": "Garrisons stayed on after the pull-out. Heirs are Legion too. Legion hands laid out these stages. There's no pay in it.",
+        "high": "The garrisons stayed on after the Empire pulled out. Their heirs are Legion too. I am one of the heirs. Legion hands laid out these stages. No pay comes with the post. I keep faith with the well, not with Cyrodiil."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-well-keeper.claywater-two-charges",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.well-keeper",
+      "keys": {
+        "topic": "topic.claywater-two-charges"
+      },
+      "words": "Both the well and the landing charge you for stopping here. I take the station's share on this bank. The poler takes the landing's share across the ford. Ask him what the landing charges you.",
+      "available": [
+        {
+          "questState": [
+            "quest.local.lf83",
+            "unstarted"
+          ]
+        }
+      ],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-two-charges.start",
+        "hash": "3d5aad24"
+      },
+      "factIds": [
+        "fact.claywater.each-bank-charges",
+        "fact.claywater.two-halves"
+      ],
+      "variants": {
+        "low": "Two charges, one stop. Ask the poler across the ford what the landing charges.",
+        "high": "You'll pay twice for the one stop, here and at the landing. Ask the poler across the ford what he wants. I'd sooner you knew before you wade over."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-well-keeper.claywater-landing-terms",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.well-keeper",
+      "keys": {
+        "topic": "topic.claywater-landing-terms"
+      },
+      "words": "The poler says the landing won't help mend the well in stone. I'll take the matter up with him myself.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-landing-terms.default",
+        "hash": "8c437ae1"
+      },
+      "factIds": [
+        "fact.claywater.landing-refuses-stone"
+      ],
+      "variants": {
+        "low": "The landing won't help mend the well in stone. I'll take it up with the poler myself.",
+        "high": "The landing won't help mend the well in stone. That's the poler's answer. I'll take it up with him myself."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-landing-s-poler.about-blackwood",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.landing-s-poler",
+      "keys": {
+        "topic": "topic.about-blackwood"
+      },
+      "words": "Blackwood is hill country, far over in the west. The road climbs up through it to Cyrodiil. I've never been up there. The hill people stay near the roots of their own tree, the carters tell me. They pay little mind to strangers. A riddle they do like.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-blackwood.default",
+        "hash": "20cbe1a3"
+      },
+      "factIds": [
+        "fact.blackwood.hills",
+        "fact.blackwood.road",
+        "fact.blackwood.riddles"
+      ],
+      "variants": {
+        "low": "Hill country in the west. The road climbs through it to Cyrodiil. They keep to their own tree. They like riddles.",
+        "high": "Blackwood is hill country in the far west. The road climbs up through it to Cyrodiil. The hill people keep to the roots of their own tree. They pay strangers little mind. Carters say a riddle will keep them talking all evening."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-landing-s-poler.about-claywater",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.landing-s-poler",
+      "keys": {
+        "topic": "topic.about-claywater"
+      },
+      "words": "Claywater is one ford with two halves. The station half has timber and stone, with the well and the house. Ours is mud and thatch, over the ford from them. We replastered it last year before the rains. A traveller pays at the well for the station half. Then the traveller pays at my hut for the landing half.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-claywater.default",
+        "hash": "1e4b6adf"
+      },
+      "factIds": [
+        "fact.claywater.two-halves",
+        "fact.claywater.station-timber",
+        "fact.claywater.landing-mud",
+        "fact.claywater.each-bank-charges"
+      ],
+      "variants": {
+        "low": "A ford with two halves. Timber and stone on the station bank. Mud and thatch here. Each bank charges its share.",
+        "high": "Claywater is a ford with two halves. The station bank is timber and stone. Ours is mud and thatch, replastered last year before the rains. Each bank charges a traveller separately for the stop. Keep two purses ready. I'll take the smaller coins at the hut."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-landing-s-poler.about-gideon",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.landing-s-poler",
+      "keys": {
+        "topic": "topic.about-gideon"
+      },
+      "words": "Gideon is the city on the western frontier. Coming down the Blackwood Road out of Cyrodiil, it's the first settlement you reach. I've not been. Carters say its courts still sit. An Owing is a debt worked off in labour. If one was written there, the paper can be contested before a judge. Most of Gideon's people are Argonian.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-gideon.default",
+        "hash": "95d75bc2"
+      },
+      "factIds": [
+        "fact.gideon.frontier",
+        "fact.gideon.blackwood-road",
+        "fact.gideon.courts",
+        "fact.gideon.owing-paper"
+      ],
+      "variants": {
+        "low": "A frontier city in the west, first on the road from Cyrodiil. Its courts still sit. Most are Argonian.",
+        "high": "Gideon is the city on the western frontier, the first settlement on the Blackwood Road from Cyrodiil. Carters say its courts still sit. An Owing is a debt worked off in labour. One written there is a paper contract you can contest before a judge. Most of Gideon's people are Argonian, like me."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-landing-s-poler.about-onkobra",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.landing-s-poler",
+      "keys": {
+        "topic": "topic.about-onkobra"
+      },
+      "words": "The Onkobra is a river. Its source lies near Topal Bay. It flows east beyond Gideon, toward the heart of the province. Carters say the road along it is muddy and badly kept. Near Gideon the current is white and fast. The red clay of the Onkobra sells widely in the marsh. I'd price a cartload by the wheel.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-onkobra.default",
+        "hash": "1f493d53"
+      },
+      "factIds": [
+        "fact.onkobra.east",
+        "fact.onkobra.muddy",
+        "fact.onkobra.clay"
+      ],
+      "variants": {
+        "low": "A river flowing east from Topal Bay past Gideon. Muddy road along it. Red clay.",
+        "high": "The Onkobra starts near Topal Bay and flows east beyond Gideon, toward the heart of the province. The road along it is muddy and ill kept. Near Gideon the current is white and fast. Red clay from it sells all over the marsh. A cartload crosses my raft for a fair price."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-landing-s-poler.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.landing-s-poler",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "The Prison road and the Border road are old Imperial roads. The Mile House is an old Imperial waystation. People here still use the old names for all three. The Prison road heads for the Rose. Next to it, on a dry rise, stands the Tag House. I've only heard of it from carters.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.imperial",
+        "fact.road.old-names",
+        "fact.road.tag-house"
+      ],
+      "variants": {
+        "low": "Old Imperial roads and a waystation, the Mile House. The old names stay. The Tag House is on a dry rise by the Prison road.",
+        "high": "The Prison road and the Border road are old Imperial roads. The Mile House is an old Imperial waystation. People still use the old names. The Prison road heads for the Rose, with the Tag House on a dry rise next to it. Carters tell it better than I do."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-landing-s-poler.claywater-two-charges",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.landing-s-poler",
+      "keys": {
+        "topic": "topic.claywater-two-charges"
+      },
+      "words": "The station charges on that bank. I charge here, for the crossing. The landing is older than the station. Polers worked this ford before the well was dug. Now the well head is cracking. We won't help mend it in stone. Neither side could keep the other's half going.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.claywater-two-charges.default",
+        "hash": "526b7219"
+      },
+      "factIds": [
+        "fact.claywater.each-bank-charges"
+      ],
+      "variants": {
+        "low": "Station charges on its bank. I charge on mine. The landing is older than the well. We won't mend it in stone."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n1-2.about-claywater",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-2",
+      "keys": {
+        "topic": "topic.about-claywater"
+      },
+      "words": "This is Claywater. It is one stop on both banks of the ford. Timber and stone on the station side. Mud and thatch on mine. You pay each side separately.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-claywater.default",
+        "hash": "1e4b6adf"
+      },
+      "factIds": [
+        "fact.claywater.two-halves",
+        "fact.claywater.station-timber",
+        "fact.claywater.landing-mud",
+        "fact.claywater.each-bank-charges"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n1-2.about-blackwood",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-2",
+      "keys": {
+        "topic": "topic.about-blackwood"
+      },
+      "words": "Blackwood is the hill country in the west. The road past our ford climbs through it into Cyrodiil. I have never been up there. The carters say the hill folk keep close to their own tree and ask little about strangers. They like a riddle.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-blackwood.default",
+        "hash": "20cbe1a3"
+      },
+      "factIds": [
+        "fact.blackwood.hills",
+        "fact.blackwood.road",
+        "fact.blackwood.riddles"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n1-2.about-gideon",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-2",
+      "keys": {
+        "topic": "topic.about-gideon"
+      },
+      "words": "Gideon is the frontier city in the west. Coming from Cyrodiil, it is the first town you reach on the Blackwood Road. The courts there still sit. An Owing is a debt worked off in labour. In Gideon, it is a paper contract you can contest. Most of the people are Argonian.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-gideon.default",
+        "hash": "95d75bc2"
+      },
+      "factIds": [
+        "fact.gideon.frontier",
+        "fact.gideon.blackwood-road",
+        "fact.gideon.courts",
+        "fact.gideon.owing-paper"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n1-2.about-onkobra",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-2",
+      "keys": {
+        "topic": "topic.about-onkobra"
+      },
+      "words": "The Onkobra is a river. It rises near Topal Bay, then runs east by Gideon into the heart of the province. The road along its bank is mud, badly kept. Red Onkobra clay is known across the marsh.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-onkobra.default",
+        "hash": "1f493d53"
+      },
+      "factIds": [
+        "fact.onkobra.east",
+        "fact.onkobra.muddy",
+        "fact.onkobra.clay"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n1-2.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n1-2",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "The Prison road and the Border road are old Imperial roads. The Mile House was their waystation. People still use the old names. Heading for the Rose, you take the Prison road. You will see the Tag House standing on a dry rise by it.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.imperial",
+        "fact.road.old-names",
+        "fact.road.tag-house"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n1.about-blackwood",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n1",
+      "keys": {
+        "topic": "topic.about-blackwood"
+      },
+      "words": "Blackwood's the hill country in the west of the marsh. The road climbs through it into Cyrodiil. The hill people stay close to their own tree and ask nothing of strangers. They like a riddle, I'm told.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-blackwood.default",
+        "hash": "20cbe1a3"
+      },
+      "factIds": [
+        "fact.blackwood.hills",
+        "fact.blackwood.road",
+        "fact.blackwood.riddles"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n1.about-claywater",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n1",
+      "keys": {
+        "topic": "topic.about-claywater"
+      },
+      "words": "It's the stop at this ford, in two halves. My bank is timber and stone, the far bank mud and thatch. You pay each bank for its own half. Ask the well-keeper before you draw.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-claywater.default",
+        "hash": "1e4b6adf"
+      },
+      "factIds": [
+        "fact.claywater.two-halves",
+        "fact.claywater.station-timber",
+        "fact.claywater.landing-mud",
+        "fact.claywater.each-bank-charges"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n1.about-onkobra",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n1",
+      "keys": {
+        "topic": "topic.about-onkobra"
+      },
+      "words": "The Onkobra rises by Topal Bay and flows east beyond Gideon, deep into the province. Its road is muddy and poorly kept. The marsh is known for red Onkobra clay.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-onkobra.default",
+        "hash": "1f493d53"
+      },
+      "factIds": [
+        "fact.onkobra.east",
+        "fact.onkobra.muddy",
+        "fact.onkobra.clay"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n2-2.about-blackwood",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n2-2",
+      "keys": {
+        "topic": "topic.about-blackwood"
+      },
+      "words": "West of here, the hill country is called Blackwood. The road I mean to take goes up through those hills into Cyrodiil. The hill folk stay close to the roots of their own tree and ask strangers few questions. A riddle will still get a word out of them.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-blackwood.default",
+        "hash": "20cbe1a3"
+      },
+      "factIds": [
+        "fact.blackwood.hills",
+        "fact.blackwood.road",
+        "fact.blackwood.riddles"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n2-2.about-claywater",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n2-2",
+      "keys": {
+        "topic": "topic.about-claywater"
+      },
+      "words": "Two halves share this ford. The station bank is timber and stone. The landing bank is mud and thatch. A traveller pays the station for its half of the stop and the landing for the other. I pay twice for one night.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-claywater.default",
+        "hash": "1e4b6adf"
+      },
+      "factIds": [
+        "fact.claywater.two-halves",
+        "fact.claywater.station-timber",
+        "fact.claywater.landing-mud",
+        "fact.claywater.each-bank-charges"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n2-2.about-onkobra",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n2-2",
+      "keys": {
+        "topic": "topic.about-onkobra"
+      },
+      "words": "The Onkobra starts near Topal Bay. From there it flows east, passing Gideon, then on into the province's heart. The track along its bank is muddy and in poor repair. Red clay from its banks sells well in the marsh. I'd walk that track only in the dry.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-onkobra.default",
+        "hash": "1f493d53"
+      },
+      "factIds": [
+        "fact.onkobra.east",
+        "fact.onkobra.muddy",
+        "fact.onkobra.clay"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-n2-2.about-sul-xan",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.n2-2",
+      "keys": {
+        "topic": "topic.about-sul-xan"
+      },
+      "words": "The Sul-Xan are Naga who take souls. They put on jade death masks and sacrifice ojel and Argonians both. Every tribe fears them. Traders here mention a mask found at a border post. I want to be in Gideon behind a court door before I hear more.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-sul-xan.default",
+        "hash": "d998298f"
+      },
+      "factIds": [
+        "fact.sul-xan.cult",
+        "fact.sul-xan.masks",
+        "fact.sul-xan.fear"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.claywater-station-landing-s-poler.about-helstrom",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.claywater-station.landing-s-poler",
+      "keys": {
+        "topic": "topic.about-helstrom"
+      },
+      "words": "Helstrom is the interior's capital for us Argonians. The city has grown into a grove of great trees with minds of their own. After the Battle of Argonia, our armies pulled back there. The Empire decided against besieging it. No army has taken the city. I know it only from carters.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-helstrom.default",
+        "hash": "9ba3f585"
+      },
+      "factIds": [
+        "fact.helstrom.capital",
+        "fact.helstrom.grove",
+        "fact.helstrom.refuge",
+        "fact.helstrom.never-taken"
+      ],
+      "variants": {
+        "low": "The Argonian capital, a city grown into a grove of great trees. The armies pulled back there after the Battle of Argonia. The Empire decided against besieging it. No army has taken it.",
+        "high": "Helstrom is the interior's capital for us Argonians. The city has grown into a grove of great trees with minds of their own. After the Battle of Argonia, our armies pulled back there. The Empire decided against besieging it. No army has taken the city. Carters who cross on my raft talk of little else."
+      }
+    }
+  ],
+  "people": [
+    {
+      "id": "npc.imperial-fringe.claywater-station.landing-s-poler",
+      "topics": [
+        "topic.claywater-two-charges"
+      ]
+    },
+    {
+      "id": "npc.imperial-fringe.claywater-station.well-keeper",
+      "topics": [
+        "topic.claywater-landing-terms"
+      ]
+    }
+  ]
+}

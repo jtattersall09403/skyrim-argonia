@@ -1,0 +1,52 @@
+{
+ "id": "boat-walk-on",
+ "framesSpanMs": 4600,
+ "start": {
+  "query": "?view=character&x=3867.5&z=6358.5&t=10:00&d=8-17",
+  "kit": "start"
+ },
+ "notes": "The sea hull walk-on filmed frame by frame (journey=boat-walk-on/frames): the player stands on the pier at the stem of the lighterman's moored longboat (Lighter Flotilla, by day); the step stands still a second, then E walks aboard. The still second and the 3.6 s after E are the strip (framesSpanMs 4600), the whole walk-on: a level step over the stem onto the side deck and along it to the helm, no hop, no snap; the board step's state (boats.station against the player) proves the walk ends at the helm.",
+ "steps": [
+  {
+   "name": "board",
+   "transition": "on the pier at the stem, facing the hull, still for a second; then E: the player walks aboard to the helm",
+   "do": {
+    "action": "boat",
+    "op": "press"
+   },
+   "keys": [
+    {
+     "wait_s": 1
+    },
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 3.6
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.lighter-flotilla.longboat",
+     "aboard": "boat.lighter-flotilla.longboat"
+    }
+   },
+   "stage": {
+    "at": {
+     "x": 3867.5,
+     "z": 6358.5,
+     "yaw": 3.1416
+    },
+    "hour": 10,
+    "place": "place.mercantile-coast.lighter-flotilla",
+    "near": [
+     {
+      "id": "npc.mercantile-coast.lighter-flotilla.flotilla-speaker",
+      "m": 11.8,
+      "facing": false
+     }
+    ]
+   }
+  }
+ ]
+}

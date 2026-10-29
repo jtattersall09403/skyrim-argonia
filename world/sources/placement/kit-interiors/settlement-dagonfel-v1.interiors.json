@@ -1,0 +1,569 @@
+{
+ "assets": {
+  "bmv:sheogorad/dagon fel/chimneysmall": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 222.2,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 222\u00b0 in the piece's own frame carries 1.95x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 2.72,
+   "interior": "none",
+   "planAreaM2": 1.54,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.5 m\u00b2 plan, 2.7 m tall)"
+  },
+  "bmv:sheogorad/dagon fel/chimneytall": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 229.9,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 230\u00b0 in the piece's own frame carries 2.07x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 19.19,
+   "interior": "none",
+   "planAreaM2": 3.64,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (3.6 m\u00b2 plan, 19.2 m tall)"
+  },
+  "bmv:sheogorad/dagon fel/dagonfeldoor": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 2.8,
+   "interior": "none",
+   "planAreaM2": 0.13,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.1 m\u00b2 plan, 2.8 m tall)"
+  },
+  "bmv:sheogorad/dagon fel/doorframe": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 165.6,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 166\u00b0 in the piece's own frame carries 1.54x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 3.61,
+   "interior": "none",
+   "planAreaM2": 5.71,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (5.7 m\u00b2 plan, 3.6 m tall)"
+  },
+  "bmv:sheogorad/dagon fel/shack01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "the openings measured are wider than an open front or narrower than 0.8 m \u2014 a texture seam or a ring of modular walls, not a doorway",
+   "floorOffsetM": 3.0,
+   "front": {
+    "deg": 313.8,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 314\u00b0 in the piece's own frame carries 1.65x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.722,
+   "headroomM": 2.39,
+   "heightM": 6.96,
+   "interior": "matched",
+   "interiorAssetRef": "bmv:sheogorad/dagon fel/shack01interior",
+   "medianWallM": 1.81,
+   "planAreaM2": 91.16,
+   "planCentreM": [
+    0.07,
+    0.2
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "storeyLevelsM": [
+    3.0
+   ],
+   "storeys": 1,
+   "why": "the bmv pool ships bmv:sheogorad/dagon fel/shack01interior as this piece's matched interior, authored to fit it"
+  },
+  "bmv:sheogorad/dagon fel/shack02": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "no direction reads as a doorway \u2014 the ring at 1.1 m matches the wall above the lintel all the way round, so the door is a separate mesh or the piece is a modular wall segment; place the door on the side the design wants",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 218.7,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 219\u00b0 in the piece's own frame carries 2.61x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.042,
+   "headroomM": 4.52,
+   "heightM": 6.46,
+   "interior": "matched",
+   "interiorAssetRef": "bmv:sheogorad/dagon fel/shack02interior",
+   "medianWallM": 3.95,
+   "planAreaM2": 55.82,
+   "planCentreM": [
+    -0.28,
+    0.21
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "storeyLevelsM": [
+    0.0
+   ],
+   "storeys": 1,
+   "why": "the bmv pool ships bmv:sheogorad/dagon fel/shack02interior as this piece's matched interior, authored to fit it"
+  },
+  "bmv:sheogorad/dagon fel/shack03": {
+   "category": "architecture",
+   "doorStoreyM": 6.63,
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.08,
+     "kind": "leaf",
+     "offsetM": [
+      2.45,
+      -1.37
+     ],
+     "sideDeg": 55.0
+    }
+   ],
+   "entrance": null,
+   "entranceWhy": "every measured doorway was closed wall by rays (1 dropped); the door is a separate piece or the plugin's own placement",
+   "floorOffsetM": 6.0,
+   "front": {
+    "deg": 320.6,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 321\u00b0 in the piece's own frame carries 1.50x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.139,
+   "headroomM": 2.96,
+   "heightM": 10.82,
+   "interior": "matched",
+   "interiorAssetRef": "bmv:sheogorad/dagon fel/shack03interior",
+   "medianWallM": 3.55,
+   "planAreaM2": 65.38,
+   "planCentreM": [
+    0.18,
+    0.22
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "storeyLevelsM": [
+    6.0
+   ],
+   "storeys": 1,
+   "why": "the bmv pool ships bmv:sheogorad/dagon fel/shack03interior as this piece's matched interior, authored to fit it"
+  },
+  "bmv:sheogorad/dagon fel/shack04": {
+   "category": "architecture",
+   "doorStoreyM": 2.17,
+   "entrance": null,
+   "entranceWhy": "no direction reads as a doorway \u2014 the ring at 1.1 m matches the wall above the lintel all the way round, so the door is a separate mesh or the piece is a modular wall segment; place the door on the side the design wants",
+   "floorOffsetM": 1.0,
+   "front": {
+    "deg": 132.7,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 133\u00b0 in the piece's own frame carries 1.88x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.139,
+   "headroomM": 3.39,
+   "heightM": 5.92,
+   "interior": "matched",
+   "interiorAssetRef": "bmv:sheogorad/dagon fel/shack04interior",
+   "medianWallM": 2.78,
+   "planAreaM2": 37.17,
+   "planCentreM": [
+    -0.04,
+    0.22
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "storeyLevelsM": [
+    1.0
+   ],
+   "storeys": 1,
+   "why": "the bmv pool ships bmv:sheogorad/dagon fel/shack04interior as this piece's matched interior, authored to fit it"
+  },
+  "bmv:sheogorad/dagon fel/shack05": {
+   "category": "architecture",
+   "doorStoreyM": 6.78,
+   "entrance": null,
+   "entranceWhy": "no direction reads as a doorway \u2014 the ring at 1.1 m matches the wall above the lintel all the way round, so the door is a separate mesh or the piece is a modular wall segment; place the door on the side the design wants",
+   "floorOffsetM": 6.0,
+   "front": {
+    "deg": 227.2,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 227\u00b0 in the piece's own frame carries 1.49x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.139,
+   "headroomM": 3.06,
+   "heightM": 10.61,
+   "interior": "matched",
+   "interiorAssetRef": "bmv:sheogorad/dagon fel/shack05interior",
+   "medianWallM": 2.81,
+   "planAreaM2": 47.18,
+   "planCentreM": [
+    -0.18,
+    0.37
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "storeyLevelsM": [
+    6.0
+   ],
+   "storeys": 1,
+   "why": "the bmv pool ships bmv:sheogorad/dagon fel/shack05interior as this piece's matched interior, authored to fit it"
+  },
+  "bmv:sheogorad/dagon fel/shackawninglarge": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 1.0,
+   "front": null,
+   "frontFaceFraction": 0.014,
+   "headroomM": 1.73,
+   "heightM": 2.94,
+   "interior": "none",
+   "medianWallM": 1.27,
+   "planAreaM2": 37.54,
+   "planCentreM": [
+    0.13,
+    0.35
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 1.7 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "bmv:sheogorad/dagon fel/shackawningsmall": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 1.0,
+   "front": {
+    "deg": 44.1,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 44\u00b0 in the piece's own frame carries 1.55x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.014,
+   "headroomM": 1.66,
+   "heightM": 2.7,
+   "interior": "none",
+   "medianWallM": 1.14,
+   "planAreaM2": 18.48,
+   "planCentreM": [
+    -0.59,
+    0.09
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 1.7 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "bmv:sheogorad/dagon fel/shackdoor": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 2.13,
+   "interior": "none",
+   "planAreaM2": 0.57,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.6 m\u00b2 plan, 2.1 m tall)"
+  },
+  "bmv:sheogorad/dagon fel/skyway": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 2.0,
+   "front": {
+    "deg": 81.0,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 81\u00b0 in the piece's own frame carries 1.94x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 1.92,
+   "heightM": 4.2,
+   "interior": "none",
+   "medianWallM": 0.73,
+   "planAreaM2": 31.21,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 0.889,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 1.9 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  }
+ },
+ "kit": "settlement-dagonfel-v1",
+ "provenance": {
+  "exterior-interior-links.json": {
+   "miner": "worldgen.mine_door_links",
+   "minerVersion": "0cd64d1a336f",
+   "plugins": [
+    "ArgonianHome.esp",
+    "ArgonianLakeHouse.esl",
+    "Black Marsh North.esp",
+    "Black Marsh.esm",
+    "CCAyliedRuinsResources.esp",
+    "Cathedral - 3D FallForest Grass.esp",
+    "Cathedral - 3D Pine & Reach Grass.esp",
+    "Cathedral - 3D Tundra Grass.esp",
+    "DMArgonianHaus.esp",
+    "DarkwaterDen.esp",
+    "DepthsOfSkyrim.esp",
+    "Ferries  - Another Oakwood addon.esp",
+    "Ferries  - More Bandit Camps patch.esp",
+    "Ferries - Alternate Perspective - Here there be Monsters Patch.esp",
+    "Ferries - Alternate Perspective Patch.esp",
+    "Ferries - Alternate Start Patch.esp",
+    "Ferries - Animated Ships patch.esp",
+    "Ferries - B-oat patch - No inialta scene.esp",
+    "Ferries - B-oat patch - With Inialta Scene.esp",
+    "Ferries - Better Docks patch.esp",
+    "Ferries - Bruma Addon.esp",
+    "Ferries - Chanterelle Addon.esp",
+    "Ferries - Dynamic Boats Patch.esp",
+    "Ferries - JK Solitude Outskirts.esp",
+    "Ferries - JKs Raven Rock patch.esp",
+    "Ferries - Lainalten addon.esp",
+    "Ferries - Laintar Dale addon.esp",
+    "Ferries - Lux patch.esp",
+    "Ferries - Midwood Addon.esp",
+    "Ferries - Moon and Star addon.esp",
+    "Ferries - Old Gate Mill - Morthal Player house Addon.esp",
+    "Ferries - Riften patch.esp",
+    "Ferries - Rigmor of Bruma patch.esp",
+    "Ferries - Ryn Lumber Mills patch.esp",
+    "Ferries - Save the Icerunner Patch.esp",
+    "Ferries - Shadow Over Inialta addon.esp",
+    "Ferries - Siege At Icemoth Addon.esp",
+    "Ferries - TGSolitude Patch.esp",
+    "Ferries - Wyrmstooth Addon.esp",
+    "Ferries.esp",
+    "Here There Be Monsters - Curse of Cipactli.esp",
+    "King of the Murkmire.esp",
+    "SNT ferry.esp",
+    "SSKMovingBoats.esp",
+    "Sailboats.esp",
+    "Scriptfreeshipsailing.esp",
+    "Seashells.esp",
+    "Skyfall Sleeping Tree Overhaul.esp",
+    "Skyrim.esm",
+    "Tropical Skyrim -- Birds.esp",
+    "Tropical Skyrim.esp",
+    "Update.esm",
+    "Valenwood.esp",
+    "XanmeerResources.esp",
+    "igs_tileset_ayleid.esp"
+   ],
+   "poolRegister": {
+    "date": "2026-09-27",
+    "pools": [
+     "bmv",
+     "vanilla",
+     "tropical",
+     "xanmeer",
+     "drjacopo",
+     "hoddminir",
+     "jokerine",
+     "shores",
+     "mudmother",
+     "ferries",
+     "rowboats",
+     "ayleidcc",
+     "xalfek",
+     "darkwater",
+     "ayleidkit",
+     "histtree",
+     "canoe",
+     "ferryraft",
+     "sbot",
+     "depths",
+     "sirenroot",
+     "htbm",
+     "mwkeep",
+     "kotm",
+     "sailboats",
+     "impships",
+     "boatsanim",
+     "hlaalu"
+    ],
+    "source": "worldgen.asset_registry.POOLS",
+    "uncommittedChanges": false
+   },
+   "poolsMined": [
+    "ayleidcc",
+    "ayleidkit",
+    "bmv",
+    "boatsanim",
+    "canoe",
+    "darkwater",
+    "depths",
+    "drjacopo",
+    "ferries",
+    "ferryraft",
+    "histtree",
+    "htbm",
+    "jokerine",
+    "kotm",
+    "marshrest",
+    "mudmother",
+    "mwkeep",
+    "sailboats",
+    "tropical",
+    "vanilla",
+    "xalfek",
+    "xanmeer"
+   ],
+   "runDate": "2026-10-01"
+  },
+  "kit-assemblies-mined.json": {
+   "miner": "worldgen.mine_assemblies",
+   "minerVersion": "dd469251b755",
+   "plugins": [
+    "ArgonianLakeHouse.esl",
+    "Black Marsh North.esp",
+    "Black Marsh.esm",
+    "CCAyliedRuinsResources.esp",
+    "DMArgonianHaus.esp",
+    "DarkwaterDen.esp",
+    "DepthsOfSkyrim.esp",
+    "Ferries.esp",
+    "Here There Be Monsters - Curse of Cipactli.esp",
+    "King of the Murkmire.esp",
+    "SNT ferry.esp",
+    "SSKMovingBoats.esp",
+    "Sailboats.esp",
+    "Scriptfreeshipsailing.esp",
+    "Seashells.esp",
+    "Skyfall Sleeping Tree Overhaul.esp",
+    "Skyrim.esm",
+    "Tropical Skyrim -- Birds.esp",
+    "Tropical Skyrim.esp",
+    "Update.esm",
+    "Valenwood.esp",
+    "XanmeerResources.esp",
+    "igs_tileset_ayleid.esp"
+   ],
+   "poolRegister": {
+    "date": "2026-09-25",
+    "pools": [
+     "bmv",
+     "vanilla",
+     "tropical",
+     "xanmeer",
+     "drjacopo",
+     "hoddminir",
+     "jokerine",
+     "shores",
+     "mudmother",
+     "ferries",
+     "rowboats",
+     "ayleidcc",
+     "xalfek",
+     "darkwater",
+     "ayleidkit",
+     "histtree",
+     "canoe",
+     "ferryraft",
+     "sbot",
+     "depths",
+     "sirenroot",
+     "htbm",
+     "mwkeep",
+     "kotm",
+     "sailboats",
+     "impships",
+     "boatsanim",
+     "hlaalu"
+    ],
+    "source": "worldgen.asset_registry.POOLS",
+    "uncommittedChanges": true
+   },
+   "poolsMined": [
+    "ayleidcc",
+    "ayleidkit",
+    "bmv",
+    "boatsanim",
+    "canoe",
+    "darkwater",
+    "depths",
+    "ferries",
+    "ferryraft",
+    "histtree",
+    "htbm",
+    "jokerine",
+    "kotm",
+    "mudmother",
+    "mwkeep",
+    "sailboats",
+    "tropical",
+    "vanilla",
+    "xalfek",
+    "xanmeer"
+   ],
+   "runDate": "2026-09-26"
+  }
+ },
+ "rules": {
+  "doorwayArcM": [
+   0.8,
+   5.0
+  ],
+  "enclosureMinRing": 0.75,
+  "enclosureMinRoomM": 1.5,
+  "entranceRank": [
+   "esp-door",
+   "assembly",
+   "composite-leaf",
+   "approach",
+   "door-piece",
+   "leaf",
+   "opening",
+   "open-front"
+  ],
+  "entranceRankWhy": "one canonical entrance per piece (owner ruling 2026-09-07), ranked from the mod's own load door down to an open front; the losing evidence stays in `provenance` for audit and is never drawn or matched against",
+  "eyeHeightM": 1.6,
+  "frontEvidence": [
+   "co-placement (the bearing away from the neighbours the source authors planted around this piece)",
+   "asymmetry (the bearing band with the highest triangle density: the detailed, outward face)"
+  ],
+  "sizeClassMaxM2": {
+   "medium": 120.0,
+   "small": 40.0
+  }
+ },
+ "schemaVersion": 2
+}

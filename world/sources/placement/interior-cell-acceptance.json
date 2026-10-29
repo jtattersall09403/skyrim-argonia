@@ -1,0 +1,258 @@
+{
+ "schemaVersion": 1,
+ "source": "worldgen.shell_breadth --record-cells (blueprint_interiors.bundle_sourcing per cell)",
+ "cells": {
+  "ArgonianLakeHouse.esl|00MudHut01": {
+   "passes": false,
+   "findings": [
+    "00MudHut01: 1 missing architecture pieces (dlc02/architecture/telvannitower/dlc2telmithryndoor01.nif); the cell does not fit and is never claimed",
+    "52 references need a mesh missing from every published kit: clutter/dummyitems/dummybook02.nif, dlc02/architecture/telvannitower/dlc2telmithryndoor01.nif"
+   ]
+  },
+  "Black Marsh.esm|01CabinIntsining1": {
+   "passes": false,
+   "findings": [
+    "01CabinIntsining1: 123 missing architecture pieces (architecture/jets/miscstuff/furnbook4shelf01.nif, architecture/largecastle/1sov castle.nif, architecture/riften/interior/smallroomsecond/rifrmsmsecondfloor01.nif, architecture/rochester/burgkerker.nif, architecture/shackkit/shackbrokepole02.nif, architecture/shackkit/shackframebend01.nif, architecture/shackkit/shackframelend02.nif, architecture/shackkit/shackframemend01.nif, architecture/shackkit/shackframemend02.nif, architecture/shackkit/shackroofmid03.nif, architecture/shackkit/shackroofmid04.nif, architecture/shackkit/shackroofmid05.nif, architecture/shackkit/shackwall01.nif, architecture/shackkit/shackwall03.nif, architecture/shackkit/shackwalldoor01.nif, architecture/shackkit/shackwalltop01.nif, architecture/whiterun/wrshackdoor01.nif, dungeons/caves/green/rocks/cavegrockl01.nif, dungeons/caves/green/rocks/cavegrockl02.nif, dungeons/caves/green/rocks/cavegrockl03.nif, dungeons/caves/green/rocks/cavegrockl05.nif, dungeons/caves/green/rocks/cavegrockm01.nif, dungeons/dwemer/rubble/dwefloorrubbleflat01.nif); the cell does not fit and is never claimed",
+    "129 references need a mesh missing from every published kit: architecture/jets/miscstuff/furnbook4shelf01.nif, architecture/largecastle/1sov castle.nif, architecture/riften/clutter/rtfireplace01.nif, architecture/riften/clutter/rtleavesflat01.nif, architecture/riften/interior/smallroomsecond/rifrmsmsecondfloor01.nif, architecture/rochester/burgkerker.nif, architecture/shackkit/shackbrokepole02.nif, architecture/shackkit/shackframebend01.nif, architecture/shackkit/shackframelend02.nif, architecture/shackkit/shackframemend01.nif, architecture/shackkit/shackframemend02.nif, architecture/shackkit/shackroofmid03.nif, architecture/shackkit/shackroofmid04.nif, architecture/shackkit/shackroofmid05.nif, architecture/shackkit/shackwall01.nif, architecture/shackkit/shackwall03.nif, architecture/shackkit/shackwalldoor01.nif, architecture/shackkit/shackwalltop01.nif, architecture/whiterun/wrshackdoor01.nif, barrel01cabbages.nif, clutter/upperclass/upperchest01.nif, dungeons/caves/green/rocks/cavegrockl01.nif, dungeons/caves/green/rocks/cavegrockl02.nif, dungeons/caves/green/rocks/cavegrockl03.nif, dungeons/caves/green/rocks/cavegrockl05.nif, dungeons/caves/green/rocks/cavegrockm01.nif, dungeons/dwemer/rubble/dwefloorrubbleflat01.nif, generalstores/arrowstores01.nif, generalstores/smithstores01.nif"
+   ]
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp|CIPHTBMHutInterior01": {
+   "passes": true,
+   "findings": []
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp|CIPHTBMHutInterior03": {
+   "passes": true,
+   "findings": []
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp|CIPHTBMHutInterior04": {
+   "passes": true,
+   "findings": []
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp|CIPHTBMHutInterior05": {
+   "passes": true,
+   "findings": []
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp|CIPHTBMHutInterior06": {
+   "passes": true,
+   "findings": []
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp|CIPHTBMHutInterior07": {
+   "passes": true,
+   "findings": []
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp|CIPHTBMHutInterior08": {
+   "passes": true,
+   "findings": []
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp|CIPHTBMHutInterior09": {
+   "passes": true,
+   "findings": []
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp|CIPHTBMHutInterior10": {
+   "passes": true,
+   "findings": []
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp|CIPHTBMHutInterior11": {
+   "passes": true,
+   "findings": []
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp|CIPHTBMHutInterior12": {
+   "passes": true,
+   "findings": []
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp|CIPHTBMHutInterior13": {
+   "passes": true,
+   "findings": []
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp|CIPHTBMHutInterior14": {
+   "passes": true,
+   "findings": []
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp|CIPHTBMHutInterior15": {
+   "passes": true,
+   "findings": []
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp|CIPHTBMHutInterior16": {
+   "passes": true,
+   "findings": []
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp|CIPHTBMHutInterior17": {
+   "passes": true,
+   "findings": []
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp|CIPHTBMHutInteriorGreatHouse": {
+   "passes": true,
+   "findings": []
+  },
+  "King of the Murkmire.esp|AltenDockmasterHouse": {
+   "passes": true,
+   "findings": []
+  },
+  "King of the Murkmire.esp|AltenGeneralStore": {
+   "passes": true,
+   "findings": []
+  },
+  "King of the Murkmire.esp|LilmothApothecaryHouse": {
+   "passes": true,
+   "findings": []
+  },
+  "King of the Murkmire.esp|LilmothGlassFoundry": {
+   "passes": true,
+   "findings": []
+  },
+  "King of the Murkmire.esp|LilmothIronworks": {
+   "passes": false,
+   "findings": [
+    "1 references need a mesh missing from every published kit: _byoh/furniture/draftingtable01.nif"
+   ]
+  },
+  "King of the Murkmire.esp|LilmothLumberworks": {
+   "passes": false,
+   "findings": [
+    "4 references need a mesh missing from every published kit: _byoh/furniture/craftingworkbench01.nif, furniture/clutter/leveranimatingmetal.nif"
+   ]
+  },
+  "King of the Murkmire.esp|LilmothLumberworksBarracksInt": {
+   "passes": true,
+   "findings": []
+  },
+  "King of the Murkmire.esp|LilmothTaverna": {
+   "passes": true,
+   "findings": []
+  },
+  "King of the Murkmire.esp|RootWhisperHouseBeekeeper": {
+   "passes": true,
+   "findings": []
+  },
+  "King of the Murkmire.esp|RootWhisperHouseCarpenter": {
+   "passes": true,
+   "findings": []
+  },
+  "King of the Murkmire.esp|RootWhisperHouseFisher": {
+   "passes": true,
+   "findings": []
+  },
+  "King of the Murkmire.esp|RootWhisperHouseHunter": {
+   "passes": true,
+   "findings": []
+  },
+  "King of the Murkmire.esp|RootWhisperHouseSapSpeaker": {
+   "passes": true,
+   "findings": []
+  },
+  "King of the Murkmire.esp|RootWhisperHouseTreeminder": {
+   "passes": true,
+   "findings": []
+  },
+  "King of the Murkmire.esp|SeekhatCarpenterHut": {
+   "passes": false,
+   "findings": [
+    "2 references need a mesh missing from every published kit: _byoh/furniture/craftingworkbench01.nif, _byoh/furniture/draftingtable01.nif"
+   ]
+  },
+  "King of the Murkmire.esp|SeekhatEldersHut": {
+   "passes": true,
+   "findings": []
+  },
+  "King of the Murkmire.esp|SeekhatFishersHut": {
+   "passes": true,
+   "findings": []
+  },
+  "King of the Murkmire.esp|SeekhatSmithyHut": {
+   "passes": true,
+   "findings": []
+  },
+  "King of the Murkmire.esp|SeekhatTreeminderHut": {
+   "passes": true,
+   "findings": []
+  },
+  "Skyrim.esm|DawnstarBarracks": {
+   "passes": true,
+   "findings": []
+  },
+  "Skyrim.esm|DawnstarBrinasHouse": {
+   "passes": true,
+   "findings": []
+  },
+  "Skyrim.esm|DawnstarMortarandPestle": {
+   "passes": true,
+   "findings": []
+  },
+  "Skyrim.esm|FalkreathBarracks": {
+   "passes": true,
+   "findings": []
+  },
+  "Skyrim.esm|FalkreathGrayPineGoods": {
+   "passes": true,
+   "findings": []
+  },
+  "Skyrim.esm|FalkreathHouseofArkay": {
+   "passes": true,
+   "findings": []
+  },
+  "Skyrim.esm|FortDunstad04": {
+   "passes": true,
+   "findings": []
+  },
+  "Skyrim.esm|HalfMoonMill": {
+   "passes": true,
+   "findings": []
+  },
+  "Skyrim.esm|IvarsteadFellstarFarm": {
+   "passes": true,
+   "findings": []
+  },
+  "Skyrim.esm|KarthwastenEnmonsHouse": {
+   "passes": true,
+   "findings": []
+  },
+  "Skyrim.esm|KarthwastenMinersBarracks": {
+   "passes": true,
+   "findings": []
+  },
+  "Skyrim.esm|MorthalThaumaturgistsHut": {
+   "passes": true,
+   "findings": []
+  },
+  "Skyrim.esm|Pinewatch01": {
+   "passes": false,
+   "findings": [
+    "Pinewatch01: 378 missing architecture pieces (dungeons/imperial/door/impbutton01.nif, dungeons/mines/cavebalcony/minecbalconycorner01.nif, dungeons/mines/cavebalcony/minecbalconycorner02.nif, dungeons/mines/cavebalcony/minecbalconycorner03.nif, dungeons/mines/cavebalcony/minecbalconycorner04.nif, dungeons/mines/cavebalcony/minecbalconycurve03.nif, dungeons/mines/cavebalcony/minecbalconycurve04.nif, dungeons/mines/cavebalcony/minecbalconymid01.nif, dungeons/mines/cavebalcony/minecbalconyramp01.nif, dungeons/mines/cavebalcony/minecbalconystraight01.nif, dungeons/mines/cavebalcony/minecbalconystraight02.nif, dungeons/mines/cavebalcony/minecbalconystraight03.nif, dungeons/mines/cavebalcony/minecbalconystraight04.nif, dungeons/mines/cavelargehall/mineclhall2way01.nif, dungeons/mines/cavelargehall/mineclhall2way02.nif, dungeons/mines/cavelargehall/mineclhall3way01.nif, dungeons/mines/cavelargehall/mineclhall4way01.nif, dungeons/mines/cavelargehall/mineclhalldeadend02.nif, dungeons/mines/cavelargehall/mineclhalldoor01.nif, dungeons/mines/cavelargehall/mineclhalldoor02.nif, dungeons/mines/cavelargehall/mineclhallramp01.nif, dungeons/mines/cavelargeroom/mineclroomcorner01.nif, dungeons/mines/cavelargeroom/mineclroomcorner02.nif, dungeons/mines/cavelargeroom/mineclroomcorner03.nif, dungeons/mines/cavelargeroom/mineclroomcorner04.nif, dungeons/mines/cavelargeroom/mineclroomdoor03.nif, dungeons/mines/cavelargeroom/mineclroomdoorl01.nif, dungeons/mines/cavelargeroom/mineclroomdoorl03.nif, dungeons/mines/cavelargeroom/mineclroomdoorl04.nif, dungeons/mines/cavelargeroom/mineclroomdoorlb01.nif, dungeons/mines/cavelargeroom/mineclroomdoorlb02.nif, dungeons/mines/cavelargeroom/mineclroomdoorlb03.nif, dungeons/mines/cavelargeroom/mineclroomincorner01.nif, dungeons/mines/cavelargeroom/mineclroomincorner02.nif, dungeons/mines/cavelargeroom/mineclroomincorner03.nif, dungeons/mines/cavelargeroom/mineclroomincorner04.nif, dungeons/mines/cavelargeroom/mineclroommid01.nif, dungeons/mines/cavelargeroom/mineclroomwall01.nif, dungeons/mines/cavelargeroom/mineclroomwall02.nif, dungeons/mines/cavelargeroom/mineclroomwall03.nif, dungeons/mines/cavelargeroom/mineclroomwall04.nif, dungeons/mines/cavewall/minecceiling01.nif, dungeons/mines/cavewall/mineclwallcorner02.nif, dungeons/mines/cavewall/mineclwallincorner01.nif, dungeons/mines/cavewall/mineclwallstraight01.nif, dungeons/mines/rocks/minecboulderl01.nif, dungeons/mines/rocks/minecboulderl02.nif, dungeons/mines/rocks/minecboulderl03.nif, dungeons/mines/rocks/minecboulderl04.nif, dungeons/mines/rocks/minecboulderl05.nif, dungeons/mines/rocks/minecboulderm01.nif, dungeons/mines/rocks/minecboulderm02.nif, dungeons/mines/rocks/minecboulderm03.nif, dungeons/mines/rocks/minecboulders01.nif, dungeons/mines/rocks/minecboulders02.nif, dungeons/mines/rocks/minecboulders03.nif, dungeons/mines/rocks/minecdirtmound05.nif, dungeons/mines/rocks/minecdirtmound07.nif, dungeons/mines/rocks/minecdirtmound08.nif, dungeons/mines/scaffolding/minescaffoldbase1sided01.nif, dungeons/mines/scaffolding/minescaffoldbase2sided01.nif, dungeons/mines/scaffolding/minescaffoldbridge01.nif, dungeons/mines/scaffolding/minescaffoldbridge02.nif, dungeons/mines/scaffolding/minescaffoldbridge03.nif, dungeons/mines/scaffolding/minescaffoldropelong04.nif, dungeons/mines/scaffolding/minescaffoldtop1sided01.nif, dungeons/mines/scaffolding/minescaffoldtop2sided02.nif, dungeons/nordic/bghalls/norhallexsmextension01.nif, dungeons/nordic/bgrooms/norrmbgcorinl01.nif, dungeons/nordic/bgrooms/norrmbgcorinr01.nif, dungeons/nordic/bgrooms/norrmbgcoroutl01.nif, dungeons/nordic/bgrooms/norrmbgcoroutr01.nif, dungeons/nordic/bgrooms/norrmbgwallfront01.nif, dungeons/nordic/bgrooms/norrmbgwallside01.nif, dungeons/nordic/bgrooms/norrmbgwallsidedam01.nif, dungeons/nordic/bridges/norbridge1way01x512.nif, dungeons/nordic/bridges/norbridge1way02x256.nif, dungeons/nordic/bridges/norbridge1wayendcap02.nif, dungeons/nordic/bridges/norbridgemid04.nif, dungeons/nordic/bridges/norbridgemid1way02.nif, dungeons/nordic/bridges/norbridgemidstair01.nif, dungeons/nordic/bridges/norbridgermbgwallside02exsm02.nif, dungeons/nordic/bridges/norbridgewoodplanks02.nif, dungeons/nordic/doors/animated/smdoor02/nordoorsmload02.nif, dungeons/nordic/doors/animated/trapdoor/ruins_trapdoorsmaller01.nif, dungeons/nordic/doors/animated/wooddoor/ruinswooddoor01.nif, dungeons/nordic/doors/animated/wooddoor/ruinswooddoorload01.nif, dungeons/nordic/pits/norpitwallfront02.nif, dungeons/nordic/pits/norpitwallfrontenclosure01.nif, dungeons/nordic/pits/norpitwallfrontenclosure02.nif, dungeons/nordic/pits/norpitwallfrontstairs02.nif, dungeons/nordic/pits/norpitwallfronttormbgfrontl01.nif, dungeons/nordic/pits/norpitwallfronttormbgfrontr01.nif, dungeons/nordic/platforms/norplatbgfloorraised01.nif, dungeons/nordic/rubble/norrubblepiece01.nif, dungeons/nordic/rubble/norrubblepiece03.nif, dungeons/nordic/rubble/norrubblepiece04.nif, dungeons/nordic/rubble/norrubblepile01.nif, dungeons/nordic/rubble/norrubblepile02.nif, dungeons/nordic/rubble/norrubblepile03.nif, dungeons/nordic/rubble/norrubblepile04.nif, dungeons/nordic/rubble/norrubblepile05.nif, dungeons/nordic/rubble/norrubblepile06.nif, dungeons/nordic/rubble/norrubblepile07.nif, dungeons/nordic/rubble/norrubblepile08.nif, dungeons/nordic/rubble/norrubblepileceiling01.nif, dungeons/nordic/ruinsdragonstatue01.nif, dungeons/nordic/secretpass/norsec1wayramp384.nif, dungeons/nordic/secretpass/norsec1wayshiftl01.nif, dungeons/nordic/secretpass/norsec2way01.nif, dungeons/nordic/secretpass/norsecrmsmwallfrontexsm01.nif, dungeons/nordic/shafts/norrmshaftbeam01.nif, dungeons/nordic/shafts/norrmshaftbot01.nif, dungeons/nordic/shafts/norrmshaftmidcapbot01.nif, dungeons/nordic/shafts/norrmshaftmidexsm01.nif, dungeons/nordic/smhalls/norhallsm1way01.nif, dungeons/nordic/smhalls/norhallsm1wayendexsm01.nif, dungeons/nordic/smhalls/norhallsm1waystairs128.nif, dungeons/nordic/smhalls/norhallsm2way01.nif, dungeons/nordic/smrooms/norrmsmalcove01.nif, dungeons/nordic/smrooms/norrmsmcorin01.nif, dungeons/nordic/smrooms/norrmsmcoroutl01.nif, dungeons/nordic/smrooms/norrmsmcoroutr01.nif, dungeons/nordic/smrooms/norrmsmfloorraised01.nif, dungeons/nordic/smrooms/norrmsmfloorraised02.nif, dungeons/nordic/smrooms/norrmsmmid01.nif, dungeons/nordic/smrooms/norrmsmwallfront01.nif, dungeons/nordic/smrooms/norrmsmwallfrontexsm01.nif, dungeons/nordic/smrooms/norrmsmwallside03.nif, dungeons/nordic/smrooms/norrmsmwallsidedam03.nif); the cell does not fit and is never claimed",
+    "441 references need a mesh missing from every published kit: clutter/caves/cave_lamp01.nif, clutter/common/commonshelfsecretdoor01/commonshelfsecretdoor01.nif, clutter/common/removabletorchsconce01.nif, clutter/common/ruground02.nif, clutter/deadanimals/rabbitmeat01.nif, clutter/dummyitems/dummyquiver01.nif, clutter/dummyitems/dummysword01.nif, clutter/dummyitems/dummywaraxe01.nif, clutter/food/grilledleeks01.nif, clutter/food/grilledpotatoes01.nif, clutter/ingredients/frostbitevenom01.nif, clutter/ruins/ruins_largeurnchunk01.nif, clutter/ruins/ruins_largeurnchunk02.nif, clutter/ruins/ruins_largeurndestroyed.nif, clutter/ruins/ruins_largeurndestroyedtop.nif, clutter/ruins/ruinsfloorcandlelampmidon.nif, clutter/ruins/ruinsfloorcandlelampmidon02.nif, clutter/ruins/ruinsfloorcandlelampsmoff.nif, clutter/ruins/ruinslargeurnnostand01.nif, clutter/ruins/ruinspot01.nif, clutter/ruins/ruinspot03.nif, clutter/ruins/ruinspot05.nif, clutter/ruins/ruinspot06.nif, clutter/sabrecatpelt/sabrecatpelt.nif, dungeons/imperial/door/impbutton01.nif, dungeons/mines/cavebalcony/minecbalconycorner01.nif, dungeons/mines/cavebalcony/minecbalconycorner02.nif, dungeons/mines/cavebalcony/minecbalconycorner03.nif, dungeons/mines/cavebalcony/minecbalconycorner04.nif, dungeons/mines/cavebalcony/minecbalconycurve03.nif, dungeons/mines/cavebalcony/minecbalconycurve04.nif, dungeons/mines/cavebalcony/minecbalconymid01.nif, dungeons/mines/cavebalcony/minecbalconyramp01.nif, dungeons/mines/cavebalcony/minecbalconystraight01.nif, dungeons/mines/cavebalcony/minecbalconystraight02.nif, dungeons/mines/cavebalcony/minecbalconystraight03.nif, dungeons/mines/cavebalcony/minecbalconystraight04.nif, dungeons/mines/cavelargehall/mineclhall2way01.nif, dungeons/mines/cavelargehall/mineclhall2way02.nif, dungeons/mines/cavelargehall/mineclhall3way01.nif, dungeons/mines/cavelargehall/mineclhall4way01.nif, dungeons/mines/cavelargehall/mineclhalldeadend02.nif, dungeons/mines/cavelargehall/mineclhalldoor01.nif, dungeons/mines/cavelargehall/mineclhalldoor02.nif, dungeons/mines/cavelargehall/mineclhallramp01.nif, dungeons/mines/cavelargeroom/mineclroomcorner01.nif, dungeons/mines/cavelargeroom/mineclroomcorner02.nif, dungeons/mines/cavelargeroom/mineclroomcorner03.nif, dungeons/mines/cavelargeroom/mineclroomcorner04.nif, dungeons/mines/cavelargeroom/mineclroomdoor03.nif, dungeons/mines/cavelargeroom/mineclroomdoorl01.nif, dungeons/mines/cavelargeroom/mineclroomdoorl03.nif, dungeons/mines/cavelargeroom/mineclroomdoorl04.nif, dungeons/mines/cavelargeroom/mineclroomdoorlb01.nif, dungeons/mines/cavelargeroom/mineclroomdoorlb02.nif, dungeons/mines/cavelargeroom/mineclroomdoorlb03.nif, dungeons/mines/cavelargeroom/mineclroomincorner01.nif, dungeons/mines/cavelargeroom/mineclroomincorner02.nif, dungeons/mines/cavelargeroom/mineclroomincorner03.nif, dungeons/mines/cavelargeroom/mineclroomincorner04.nif, dungeons/mines/cavelargeroom/mineclroommid01.nif, dungeons/mines/cavelargeroom/mineclroomwall01.nif, dungeons/mines/cavelargeroom/mineclroomwall02.nif, dungeons/mines/cavelargeroom/mineclroomwall03.nif, dungeons/mines/cavelargeroom/mineclroomwall04.nif, dungeons/mines/cavewall/minecceiling01.nif, dungeons/mines/cavewall/mineclwallcorner02.nif, dungeons/mines/cavewall/mineclwallincorner01.nif, dungeons/mines/cavewall/mineclwallstraight01.nif, dungeons/mines/rocks/minecboulderl01.nif, dungeons/mines/rocks/minecboulderl02.nif, dungeons/mines/rocks/minecboulderl03.nif, dungeons/mines/rocks/minecboulderl04.nif, dungeons/mines/rocks/minecboulderl05.nif, dungeons/mines/rocks/minecboulderm01.nif, dungeons/mines/rocks/minecboulderm02.nif, dungeons/mines/rocks/minecboulderm03.nif, dungeons/mines/rocks/minecboulders01.nif, dungeons/mines/rocks/minecboulders02.nif, dungeons/mines/rocks/minecboulders03.nif, dungeons/mines/rocks/minecdirtmound05.nif, dungeons/mines/rocks/minecdirtmound07.nif, dungeons/mines/rocks/minecdirtmound08.nif, dungeons/mines/scaffolding/minescaffoldbase1sided01.nif, dungeons/mines/scaffolding/minescaffoldbase2sided01.nif, dungeons/mines/scaffolding/minescaffoldbridge01.nif, dungeons/mines/scaffolding/minescaffoldbridge02.nif, dungeons/mines/scaffolding/minescaffoldbridge03.nif, dungeons/mines/scaffolding/minescaffoldropelong04.nif, dungeons/mines/scaffolding/minescaffoldtop1sided01.nif, dungeons/mines/scaffolding/minescaffoldtop2sided02.nif, dungeons/nordic/bghalls/norhallexsmextension01.nif, dungeons/nordic/bgrooms/norrmbgcorinl01.nif, dungeons/nordic/bgrooms/norrmbgcorinr01.nif, dungeons/nordic/bgrooms/norrmbgcoroutl01.nif, dungeons/nordic/bgrooms/norrmbgcoroutr01.nif, dungeons/nordic/bgrooms/norrmbgwallfront01.nif, dungeons/nordic/bgrooms/norrmbgwallside01.nif, dungeons/nordic/bgrooms/norrmbgwallsidedam01.nif, dungeons/nordic/bridges/norbridge1way01x512.nif, dungeons/nordic/bridges/norbridge1way02x256.nif, dungeons/nordic/bridges/norbridge1wayendcap02.nif, dungeons/nordic/bridges/norbridgemid04.nif, dungeons/nordic/bridges/norbridgemid1way02.nif, dungeons/nordic/bridges/norbridgemidstair01.nif, dungeons/nordic/bridges/norbridgermbgwallside02exsm02.nif, dungeons/nordic/bridges/norbridgewoodplanks02.nif, dungeons/nordic/clutter/norsculpturehead01.nif, dungeons/nordic/doors/animated/smdoor02/nordoorsmload02.nif, dungeons/nordic/doors/animated/trapdoor/ruins_trapdoorsmaller01.nif, dungeons/nordic/doors/animated/wooddoor/ruinswooddoor01.nif, dungeons/nordic/doors/animated/wooddoor/ruinswooddoorload01.nif, dungeons/nordic/pits/norpitwallfront02.nif, dungeons/nordic/pits/norpitwallfrontenclosure01.nif, dungeons/nordic/pits/norpitwallfrontenclosure02.nif, dungeons/nordic/pits/norpitwallfrontstairs02.nif, dungeons/nordic/pits/norpitwallfronttormbgfrontl01.nif, dungeons/nordic/pits/norpitwallfronttormbgfrontr01.nif, dungeons/nordic/platforms/norplatbgfloorraised01.nif, dungeons/nordic/rubble/norrubblepiece01.nif, dungeons/nordic/rubble/norrubblepiece03.nif, dungeons/nordic/rubble/norrubblepiece04.nif, dungeons/nordic/rubble/norrubblepile01.nif, dungeons/nordic/rubble/norrubblepile02.nif, dungeons/nordic/rubble/norrubblepile03.nif, dungeons/nordic/rubble/norrubblepile04.nif, dungeons/nordic/rubble/norrubblepile05.nif, dungeons/nordic/rubble/norrubblepile06.nif, dungeons/nordic/rubble/norrubblepile07.nif, dungeons/nordic/rubble/norrubblepile08.nif, dungeons/nordic/rubble/norrubblepileceiling01.nif, dungeons/nordic/ruinsdragonstatue01.nif, dungeons/nordic/secretpass/norsec1wayramp384.nif, dungeons/nordic/secretpass/norsec1wayshiftl01.nif, dungeons/nordic/secretpass/norsec2way01.nif, dungeons/nordic/secretpass/norsecrmsmwallfrontexsm01.nif, dungeons/nordic/shafts/norrmshaftbeam01.nif, dungeons/nordic/shafts/norrmshaftbot01.nif, dungeons/nordic/shafts/norrmshaftmidcapbot01.nif, dungeons/nordic/shafts/norrmshaftmidexsm01.nif, dungeons/nordic/smhalls/norhallsm1way01.nif, dungeons/nordic/smhalls/norhallsm1wayendexsm01.nif, dungeons/nordic/smhalls/norhallsm1waystairs128.nif, dungeons/nordic/smhalls/norhallsm2way01.nif, dungeons/nordic/smrooms/norrmsmalcove01.nif, dungeons/nordic/smrooms/norrmsmcorin01.nif, dungeons/nordic/smrooms/norrmsmcoroutl01.nif, dungeons/nordic/smrooms/norrmsmcoroutr01.nif, dungeons/nordic/smrooms/norrmsmfloorraised01.nif, dungeons/nordic/smrooms/norrmsmfloorraised02.nif, dungeons/nordic/smrooms/norrmsmmid01.nif, dungeons/nordic/smrooms/norrmsmwallfront01.nif, dungeons/nordic/smrooms/norrmsmwallfrontexsm01.nif, dungeons/nordic/smrooms/norrmsmwallside03.nif, dungeons/nordic/smrooms/norrmsmwallsidedam03.nif, landscape/rocks/cairns/rockcairnbanner01.nif, traps/beartrap/beartrap01.nif, traps/doordeadbolt/doordeadbolt01.nif, traps/oiltrap/oiltrap01.nif, traps/oiltrap/trapoilropebase01.nif, weapons/steel/steelbow.nif, weapons/torch/torch.nif"
+   ]
+  },
+  "Skyrim.esm|RiverwoodRiverwoodTrader": {
+   "passes": true,
+   "findings": []
+  },
+  "Skyrim.esm|RoriksteadLemkilsFarm": {
+   "passes": true,
+   "findings": []
+  },
+  "Skyrim.esm|ShorsStoneOdfelsandGrogmarsHouse": {
+   "passes": true,
+   "findings": []
+  },
+  "Skyrim.esm|StonehillsSorlisHouse": {
+   "passes": true,
+   "findings": []
+  },
+  "Skyrim.esm|WinterholdKorirshouse": {
+   "passes": true,
+   "findings": []
+  },
+  "Skyrim.esm|WinterholdRanmirshouse": {
+   "passes": false,
+   "findings": [
+    "5 references need a mesh missing from every published kit: clutter/common/rug09.nif, clutter/ingredients/mammothtusk.nif, clutter/silver/silvergoblet02.nif, weapons/orcish/orcishdagger.nif"
+   ]
+  },
+  "Valenwood.esp|01treeint": {
+   "passes": false,
+   "findings": [
+    "01treeint: 36 missing architecture pieces (architecture/phitt/stronghold/entrance.nif, dlc01/dungeons/castle/lghalls/casexfreelgdoor01.nif, dungeons/ship/shipdoor02.nif, stroti/tree house/clutter miscitem/basketpears.nif, stroti/tree house/clutter miscitem/beercarrier.nif, telvanni/telv_gatewaygreat.nif); the cell does not fit and is never claimed",
+    "90 references need a mesh missing from every published kit: architecture/phitt/stronghold/entrance.nif, architecture/winterhold/winterholdbookcase01.nif, clutter/books/book02mg03lowpoly.nif, clutter/clutterbooksnsuch/foodcontainer/crate01egg.nif, clutter/clutterresource/basket/clothesnewbasket01.nif, clutter/clutterresource/basket/meatbasket01.nif, clutter/clutterresource/flower/nightshadebucket01.nif, clutter/common/commonchair02.nif, clutter/common/rug03aaax.nif, clutter/jars/jardragonfliesorange.nif, clutter/meaderybrewer01aaa.nif, clutter/oaristys/the witcher/decoration/amphora.nif, clutter/oaristys/the witcher/decoration/cloth/clothpile02.nif, clutter/oaristys/the witcher/paper/letter02.nif, clutterresource/clutter/books/lcr_booktower01.nif, dlc01/dungeons/castle/lghalls/casexfreelgdoor01.nif, dungeons/ship/shipdoor02.nif, furniture/noble/noblebeddouble02.nif, furniture/noble/nobleendtable01.nif, furniture/noble/nobleendtable02.nif, furniture/noble/noblenighttable01.nif, furniture/noble/nobletablelongbench01.nif, furniture/noble/nobletableubench01.nif, landscape/plants/reachmountainmosscover11.nif, landscape/plants/tundrashrub04.nif, landscape/plants/tundrashrub08.nif, landscape/plants/vinemaple01.nif, landscape/plants/yellowshrub01.nif, landscape/plants/yellowshrub03.nif, stroti/tree house/clutter miscitem/basketpears.nif, stroti/tree house/clutter miscitem/beercarrier.nif, telvanni/telv_gatewaygreat.nif"
+   ]
+  }
+ }
+}

@@ -1,0 +1,114 @@
+{
+ "id": "seam-burglary-stopped-again",
+ "start": {
+  "query": "?view=character&x=7.1770&z=0.5170&t=14:00&d=8-17",
+  "kit": "start",
+  "seed": 1
+ },
+ "steps": [
+  {
+   "name": "facing-the-watch",
+   "transition": "Riverwalk at 14:00, a trespass Owing open (the crews' house entered at night, a crewman saw), standing 17.5 m west of from the An-Xileel watchman at his post in daylight -> he is in frame, no stop yet",
+   "do": {
+    "action": "approach",
+    "near": [
+     {
+      "id": "npc.dunmer-north.riverwalk.n3",
+      "m": 17.5,
+      "facing": true
+     },
+     {
+      "id": "npc.dunmer-north.riverwalk.n3-2",
+      "m": 18.4,
+      "facing": false
+     },
+     {
+      "id": "npc.dunmer-north.riverwalk.toll-holder",
+      "m": 26.4,
+      "facing": false
+     }
+    ],
+    "seconds": 1
+   },
+   "keys": [
+    {
+     "wait_s": 0.5
+    }
+   ],
+   "hold_s": 0.5,
+   "expect": {
+    "screen": null
+   },
+   "stage": {
+    "at": {
+     "x": 7177.0,
+     "z": 517.0,
+     "yaw": -1.58
+    },
+    "hour": 14,
+    "place": "place.dunmer-north.riverwalk",
+    "owing": [
+     {
+      "crime": "trespass",
+      "place": "place.dunmer-north.riverwalk",
+      "witness": "npc.dunmer-north.riverwalk.n1",
+      "value": 0
+     }
+    ]
+   }
+  },
+  {
+   "name": "stopped-again",
+   "transition": "the watchman engages on the open trespass -> he walks the 17.5 m up and the guard stop opens on the trespass",
+   "do": {
+    "action": "stop",
+    "npc": "npc.dunmer-north.riverwalk.n3",
+    "near": [
+     {
+      "id": "npc.dunmer-north.riverwalk.n3",
+      "m": 17.5,
+      "facing": true
+     },
+     {
+      "id": "npc.dunmer-north.riverwalk.n3-2",
+      "m": 18.4,
+      "facing": false
+     },
+     {
+      "id": "npc.dunmer-north.riverwalk.toll-holder",
+      "m": 26.4,
+      "facing": false
+     }
+    ],
+    "seconds": 2
+   },
+   "keys": [
+    {
+     "wait_s": 16
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "stop": true,
+    "screen": "guard-stop"
+   }
+  },
+  {
+   "name": "after",
+   "transition": "a moment later -> the stop stays open, waiting on the player's choice",
+   "do": {
+    "action": "approach",
+    "seconds": 1
+   },
+   "keys": [
+    {
+     "wait_s": 1.5
+    }
+   ],
+   "hold_s": 0.5,
+   "expect": {
+    "screen": "guard-stop"
+   }
+  }
+ ]
+}

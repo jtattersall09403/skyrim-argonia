@@ -1,0 +1,78 @@
+{
+ "schemaVersion": 2,
+ "cellId": "SeekhatAccommodationHut",
+ "additions": [
+  {
+   "id": "SeekhatAccommodationHut:add:table-candlehornfloor",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    108.016,
+    99.236,
+    60.292
+   ],
+   "rotZDeg": 0,
+   "zone": "table",
+   "why": "Lights the dark floor of the accommodation hut at night."
+  },
+  {
+   "id": "SeekhatAccommodationHut:add:table-candlehornfloor-2",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    122.591,
+    98.937,
+    63.368
+   ],
+   "rotZDeg": 0,
+   "zone": "table",
+   "why": "Lights the dark floor of the accommodation hut at night."
+  },
+  {
+   "id": "SeekhatAccommodationHut:add:bed-candlehornfloor",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    112.519,
+    95.952,
+    64.067
+   ],
+   "rotZDeg": 0,
+   "zone": "bed",
+   "why": "Lights the dark floor of the accommodation hut at night."
+  },
+  {
+   "id": "SeekhatAccommodationHut:add:table-candlehornfloor-3",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    116.52,
+    95.952,
+    58.098
+   ],
+   "rotZDeg": 0,
+   "zone": "table",
+   "why": "Lights the dark floor of the accommodation hut at night."
+  },
+  {
+   "id": "SeekhatAccommodationHut:add:table-candlehornfloor-4",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    111.017,
+    95.952,
+    62.137
+   ],
+   "rotZDeg": 0,
+   "zone": "table",
+   "why": "Lights the dark floor of the accommodation hut at night."
+  },
+  {
+   "id": "SeekhatAccommodationHut:add:store-candlehornfloor",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    119.532,
+    95.952,
+    57.941
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Lights the dark floor of the accommodation hut at night."
+  }
+ ]
+}

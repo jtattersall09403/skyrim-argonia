@@ -1,0 +1,736 @@
+{
+ "schemaVersion": 1,
+ "cellId": "FortDunstad04",
+ "sockets": {
+  "socket.FortDunstad04.000715D2": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "low",
+   "item": "item.iron-waraxe"
+  },
+  "socket.FortDunstad04.000715D9": {
+   "owner": "parcel.chasepoint.the-stage",
+   "fillRule": "blanket.cook-shelf",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.river-salt",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.baked-crocodile-tongue",
+      "count": 1
+     },
+     {
+      "item": "item.lumberries",
+      "count": 3
+     },
+     {
+      "item": "item.hissmir-fish-eye-rye",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.cook-shelf"
+   }
+  },
+  "socket.FortDunstad04.000715DA": {
+   "owner": "parcel.chasepoint.the-stage",
+   "fillRule": "blanket.household-barrel",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.river-salt",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.lumberries",
+      "count": 3
+     },
+     {
+      "item": "item.hissmir-fish-eye-rye",
+      "count": 1
+     },
+     {
+      "item": "item.flagon",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.household-barrel"
+   }
+  },
+  "socket.FortDunstad04.000715DE": {
+   "owner": "parcel.chasepoint.the-stage",
+   "fillRule": "blanket.household-barrel",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.river-salt",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.lumberries",
+      "count": 3
+     },
+     {
+      "item": "item.hissmir-fish-eye-rye",
+      "count": 1
+     },
+     {
+      "item": "item.flagon",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.household-barrel"
+   }
+  },
+  "socket.FortDunstad04.000715DF": {
+   "owner": "parcel.chasepoint.the-stage",
+   "fillRule": "blanket.household-chest",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.leather-strips",
+      "count": 1
+     },
+     {
+      "item": "item.spine-balm",
+      "count": 1
+     },
+     {
+      "item": "item.glass-bead-strand",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.household-chest"
+   }
+  },
+  "socket.FortDunstad04.000715E0": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.broom"
+  },
+  "socket.FortDunstad04.000715E6": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.gold"
+  },
+  "socket.FortDunstad04.000715E7": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.gold"
+  },
+  "socket.FortDunstad04.000715E8": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.gold"
+  },
+  "socket.FortDunstad04.000715E9": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.gold"
+  },
+  "socket.FortDunstad04.0008ACD7": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.FortDunstad04.0008ACD8": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.FortDunstad04.0008ACD9": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.FortDunstad04.0008ACDA": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.FortDunstad04.0008ACDB": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.FortDunstad04.0008ACDC": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.FortDunstad04.0008ACDD": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.nord-mead"
+  },
+  "socket.FortDunstad04.0008ACDE": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.nord-mead"
+  },
+  "socket.FortDunstad04.0008ACDF": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.nord-mead"
+  },
+  "socket.FortDunstad04.0008ACE0": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "low",
+   "item": "item.alto-wine"
+  },
+  "socket.FortDunstad04.0008ACE1": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.wooden-plate"
+  },
+  "socket.FortDunstad04.0008ACE2": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.wooden-plate"
+  },
+  "socket.FortDunstad04.0008ACE3": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.wooden-plate"
+  },
+  "socket.FortDunstad04.0008ACE4": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.wooden-plate"
+  },
+  "socket.FortDunstad04.0008ACE5": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.wooden-plate"
+  },
+  "socket.FortDunstad04.0008ACE6": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.FortDunstad04.0008ACE7": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.FortDunstad04.0008ACE8": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.FortDunstad04.0008ACE9": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.FortDunstad04.0008ACEA": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.FortDunstad04.0008ACEB": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.FortDunstad04.0008ACEC": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.FortDunstad04.0008ACED": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "low",
+   "item": "item.alto-wine"
+  },
+  "socket.FortDunstad04.0008ACEE": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "low",
+   "item": "item.alto-wine"
+  },
+  "socket.FortDunstad04.0008ACEF": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.hissmir-fish-eye-rye"
+  },
+  "socket.FortDunstad04.0008ACF0": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.hissmir-fish-eye-rye"
+  },
+  "socket.FortDunstad04.0008ACF1": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "low",
+   "item": "item.alto-wine"
+  },
+  "socket.FortDunstad04.0008ACF2": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "low",
+   "item": "item.alto-wine"
+  },
+  "socket.FortDunstad04.0008ACF6": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "low",
+   "item": "item.alto-wine"
+  },
+  "socket.FortDunstad04.0008ACF7": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "low",
+   "item": "item.alto-wine"
+  },
+  "socket.FortDunstad04.0008ACF8": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.hissmir-fish-eye-rye"
+  },
+  "socket.FortDunstad04.0008ACF9": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.hissmir-fish-eye-rye"
+  },
+  "socket.FortDunstad04.0008ACFA": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.nord-mead"
+  },
+  "socket.FortDunstad04.0008ACFB": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.nord-mead"
+  },
+  "socket.FortDunstad04.0008ACFC": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.nord-mead"
+  },
+  "socket.FortDunstad04.0008AD00": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.nord-mead"
+  },
+  "socket.FortDunstad04.0008AD01": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.nord-mead"
+  },
+  "socket.FortDunstad04.0008AD02": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.nord-mead"
+  },
+  "socket.FortDunstad04.0008AD03": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.nord-mead"
+  },
+  "socket.FortDunstad04.0008AD04": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "low",
+   "item": "item.alto-wine"
+  },
+  "socket.FortDunstad04.0008AD05": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.nord-mead"
+  },
+  "socket.FortDunstad04.0008AD06": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.nord-mead"
+  },
+  "socket.FortDunstad04.0008AD09": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "low",
+   "item": "item.alto-wine"
+  },
+  "socket.FortDunstad04.0008AD0A": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.hissmir-fish-eye-rye"
+  },
+  "socket.FortDunstad04.0008AD0B": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.hissmir-fish-eye-rye"
+  },
+  "socket.FortDunstad04.0008AD0C": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "low",
+   "item": "item.alto-wine"
+  },
+  "socket.FortDunstad04.0008AD0D": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.hissmir-fish-eye-rye"
+  },
+  "socket.FortDunstad04.0008AD0E": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.hissmir-fish-eye-rye"
+  },
+  "socket.FortDunstad04.0008AD0F": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "low",
+   "item": "item.alto-wine"
+  },
+  "socket.FortDunstad04.0008AD11": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "low",
+   "item": "item.alto-wine"
+  },
+  "socket.FortDunstad04.0008AD12": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "low",
+   "item": "item.alto-wine"
+  },
+  "socket.FortDunstad04.0008AD21": {
+   "owner": "parcel.chasepoint.the-stage",
+   "fillRule": "blanket.highwayman-bundle",
+   "valueTier": "moderate",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.pelt",
+      "count": 2
+     },
+     {
+      "item": "item.moon-sugar",
+      "count": 1
+     },
+     {
+      "item": "item.gold",
+      "count": 40
+     },
+     {
+      "item": "item.ferry-guide-note",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.highwayman-bundle"
+   }
+  },
+  "socket.FortDunstad04.0008AD29": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.FortDunstad04.0008AD2A": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.wooden-plate"
+  },
+  "socket.FortDunstad04.0008AD2B": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.wooden-plate"
+  },
+  "socket.FortDunstad04.0008AD33": {
+   "owner": "parcel.chasepoint.the-stage",
+   "fillRule": "blanket.household-barrel",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.river-salt",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.lumberries",
+      "count": 3
+     },
+     {
+      "item": "item.hissmir-fish-eye-rye",
+      "count": 1
+     },
+     {
+      "item": "item.flagon",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.household-barrel"
+   }
+  },
+  "socket.FortDunstad04.0008AD34": {
+   "owner": "parcel.chasepoint.the-stage",
+   "fillRule": "blanket.household-barrel",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.river-salt",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.lumberries",
+      "count": 3
+     },
+     {
+      "item": "item.hissmir-fish-eye-rye",
+      "count": 1
+     },
+     {
+      "item": "item.flagon",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.household-barrel"
+   }
+  },
+  "socket.FortDunstad04.0008AD35": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "low",
+   "item": "item.iron-dagger"
+  },
+  "socket.FortDunstad04.0008AD39": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.tankard"
+  },
+  "socket.FortDunstad04.0008AD3B": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.bucket"
+  },
+  "socket.FortDunstad04.0008AD3C": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.bucket"
+  },
+  "socket.FortDunstad04.0008AD3D": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.bucket"
+  },
+  "socket.FortDunstad04.0008AD3E": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.fork"
+  },
+  "socket.FortDunstad04.0008AD3F": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.fork"
+  },
+  "socket.FortDunstad04.0008AD40": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.fork"
+  },
+  "socket.FortDunstad04.0008AD41": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.fork"
+  },
+  "socket.FortDunstad04.0008AD42": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.fork"
+  },
+  "socket.FortDunstad04.0008AD43": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.fork"
+  },
+  "socket.FortDunstad04.0008AD44": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.fork"
+  },
+  "socket.FortDunstad04.0008AD45": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.fork"
+  },
+  "socket.FortDunstad04.0008AD46": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "low",
+   "item": "item.jazbay-grapes"
+  },
+  "socket.FortDunstad04.0008AD47": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "low",
+   "item": "item.jazbay-grapes"
+  },
+  "socket.FortDunstad04.0008AD48": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.potato"
+  },
+  "socket.FortDunstad04.0008AD49": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.potato"
+  },
+  "socket.FortDunstad04.0008AD4A": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.potato"
+  },
+  "socket.FortDunstad04.0008AD4B": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.potato"
+  },
+  "socket.FortDunstad04.0008AD4C": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.potato"
+  },
+  "socket.FortDunstad04.0008AD4D": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.potato"
+  },
+  "socket.FortDunstad04.0008AD4E": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.potato"
+  },
+  "socket.FortDunstad04.0008AD4F": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.potato"
+  },
+  "socket.FortDunstad04.000E799E": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "low",
+   "item": "item.iron-dagger"
+  },
+  "socket.FortDunstad04.000F83CA": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "low",
+   "item": "item.alto-wine"
+  },
+  "socket.FortDunstad04.0010BF4D": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "low",
+   "item": "item.alto-wine"
+  },
+  "socket.FortDunstad04.0010BF4E": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "low",
+   "item": "item.skooma"
+  },
+  "socket.FortDunstad04.0010BF50": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.gold"
+  },
+  "socket.FortDunstad04.0010BF51": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.gold"
+  },
+  "socket.FortDunstad04.0010BF52": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.gold"
+  },
+  "socket.FortDunstad04.0010BF53": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.gold"
+  },
+  "socket.FortDunstad04.0010BF54": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.gold"
+  },
+  "socket.FortDunstad04.0010BF55": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.gold"
+  },
+  "socket.FortDunstad04.0010BF56": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.gold"
+  },
+  "socket.FortDunstad04.0010BF57": {
+   "fillRule": "authored",
+   "valueTier": "high",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.gold",
+      "count": 40
+     },
+     {
+      "item": "item.glass-bead-strand",
+      "count": 2
+     },
+     {
+      "item": "item.blue-jasper",
+      "count": 1
+     }
+    ],
+    "storyNote": "The stage keeper's takings from the road and the salvage trade."
+   },
+   "owner": "parcel.chasepoint.the-stage"
+  },
+  "socket.FortDunstad04.0010BF58": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.healing-draught"
+  },
+  "socket.FortDunstad04.0010BF5B": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "moderate",
+   "item": "item.river-salt"
+  },
+  "socket.FortDunstad04.0010BF5C": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "moderate",
+   "item": "item.river-salt"
+  },
+  "socket.FortDunstad04.0010BF5D": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "moderate",
+   "item": "item.river-salt"
+  },
+  "socket.FortDunstad04.0010BF5E": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "moderate",
+   "item": "item.river-salt"
+  },
+  "socket.FortDunstad04.0010BF5F": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "moderate",
+   "item": "item.river-salt"
+  },
+  "socket.FortDunstad04.0010BF60": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "moderate",
+   "item": "item.steel-greatsword"
+  },
+  "socket.FortDunstad04.0010BF64": {
+   "owner": "parcel.chasepoint.the-stage",
+   "valueTier": "trivial",
+   "item": "item.lockpick"
+  }
+ }
+}

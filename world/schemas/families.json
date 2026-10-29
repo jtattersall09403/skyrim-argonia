@@ -1,0 +1,139 @@
+{
+ "schemaVersion": 1,
+ "families": {
+  "promises": {
+   "schema": "promises.v1.schema.json",
+   "files": [
+    "world/sources/placement/promises/*.json"
+   ],
+   "homeOf": "promise."
+  },
+  "layout": {
+   "schema": "layout.v1.schema.json",
+   "files": [
+    "world/sources/blueprints/*.layout.json"
+   ],
+   "homeOf": "socket."
+  },
+  "socket": {
+   "schema": "socket.v1.schema.json",
+   "within": "layout ops[op=socket]"
+  },
+  "door": {
+   "schema": "door.v1.schema.json",
+   "within": "blueprint doors[]"
+  },
+  "blueprint": {
+   "schema": "blueprint.v3.schema.json",
+   "files": [
+    "world/sources/blueprints/place.*.json"
+   ],
+   "homeOf": "door."
+  },
+  "travel-services": {
+   "schema": "travel-services.v1.schema.json",
+   "files": [
+    "world/sources/routes/travel-services.json"
+   ],
+   "homeOf": "travel services"
+  },
+  "socket-vocabulary": {
+   "schema": "socket-vocabulary.v1.schema.json",
+   "files": [
+    "world/sources/vocab/socket-vocabulary.json"
+   ]
+  },
+  "quests": {
+   "schema": "quests.v2.schema.json",
+   "files": [
+    "world/sources/quests/quests-*.json",
+    "world/sources/quests/local-*.json"
+   ],
+   "homeOf": "quest."
+  },
+  "items": {
+   "schema": "items.v2.schema.json",
+   "files": [
+    "world/sources/registries/items.json"
+   ],
+   "homeOf": "item."
+  },
+  "locks": {
+   "schema": "locks.v1.schema.json",
+   "files": [
+    "world/sources/registries/locks.json"
+   ],
+   "homeOf": "lock."
+  },
+  "physical-materials": {
+   "schema": "physical-materials.v1.schema.json",
+   "files": [
+    "world/sources/registries/physical-materials.json"
+   ],
+   "homeOf": "material."
+  },
+  "hazard-volumes": {
+   "schema": "hazard-volumes.v1.schema.json",
+   "files": [
+    "world/sources/registries/hazard-volumes.json"
+   ],
+   "homeOf": "hazard."
+  },
+  "grave-stakes": {
+   "schema": "grave-stakes.v1.schema.json",
+   "files": [
+    "world/sources/registries/grave-stakes.json"
+   ],
+   "homeOf": "stake."
+  },
+  "loot-rules": {
+   "schema": "loot-rules.v1.schema.json",
+   "files": [
+    "world/sources/registries/loot-rules.json"
+   ],
+   "homeOf": "blanket."
+  },
+  "culture-sheet": {
+   "schema": "culture-sheet.v1.schema.json",
+   "files": [
+    "world/sources/dialogue/cultures/**/*.json"
+   ],
+   "homeOf": "culture."
+  },
+  "stance": {
+   "schema": "stance.v1.schema.json",
+   "files": [
+    "world/sources/dialogue/stance/*.json"
+   ],
+   "homeOf": "stance rows by npc id"
+  },
+  "place-crime": {
+   "schema": "place-crime.v1.schema.json",
+   "within": "catalogue places[] (zones, watch)"
+  },
+  "boat-classes": {
+   "schema": "boat-classes.v1.schema.json",
+   "files": [
+    "world/sources/vocab/boat-classes.json"
+   ],
+   "homeOf": "boat classes (by id)"
+  },
+  "boats": {
+   "schema": "boats.v1.schema.json",
+   "files": [
+    "world/sources/placement/boats.json"
+   ],
+   "homeOf": "boat."
+  },
+  "navigable-reach": {
+   "schema": "navigable-reach.v1.schema.json",
+   "files": [
+    "packages/game-core/src/boats/data/navigable-reach.json"
+   ]
+  },
+  "owner-ref": {
+   "schema": "owner-ref.v1.schema.json",
+   "within": "locks entries[].owner, place zones[].owner and watch.answers"
+  }
+ }
+}

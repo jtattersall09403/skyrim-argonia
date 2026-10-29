@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "cellId": "KeebaHouseElder",
+  "plugin": "King of the Murkmire.esp",
+  "rule": "Stand-ins for the cell's missing clutter (planner ruling 2026-09-27; as KeebaHouseFisher). Each stand-in is a published clutter piece picked on the missing base's measured size (its OBND, or the UESP item's kind for a base in an absent master), drawn at the missing reference's transform by worldgen/export_interior_bundle.py.",
+  "substitutions": [
+    {
+      "refId": "0801AAC2",
+      "standInAsset": "vanilla:clutter/ingredients/scalypholiotabits01",
+      "why": "A poison bloom lies on the shelf; a pinch of dried fungus takes its place."
+    },
+    {
+      "refId": "0801AAC3",
+      "standInAsset": "vanilla:clutter/ingredients/scalypholiotabits01",
+      "why": "A poison bloom lies on the shelf; a pinch of dried fungus takes its place."
+    },
+    {
+      "refId": "0801AACE",
+      "standInAsset": "vanilla:clutter/ingredients/scalypholiotabits01",
+      "why": "A bog beacon cap lies on the shelf; a pinch of dried fungus takes its place."
+    },
+    {
+      "refId": "0801AACF",
+      "standInAsset": "vanilla:clutter/ingredients/scalypholiotabits01",
+      "why": "A bog beacon cap lies on the shelf; a pinch of dried fungus takes its place."
+    },
+    {
+      "refId": "0801AAD1",
+      "standInAsset": "vanilla:clutter/ingredients/stew",
+      "why": "A bowl of marshmerrow stew sits here; a bowl of stew takes its place."
+    },
+    {
+      "refId": "080CC2AA",
+      "standInAsset": "kotm:argonia/clutter/amberbee",
+      "why": "A lump of raw amber lies by the chopping block; a lump of amber takes its place."
+    },
+    {
+      "refId": "080CC2AC",
+      "standInAsset": "kotm:argonia/clutter/amberbee",
+      "why": "A lump of raw amber lies by the chopping block; a lump of amber takes its place."
+    },
+    {
+      "refId": "08518BA3",
+      "standInAsset": "kotm:argonia/clutter/doll_atronachamber",
+      "why": "A turtle doll sits here; its twin from the same set takes its place."
+    },
+    {
+      "refId": "08AA3222",
+      "standInAsset": "vanilla:clutter/glazedjugsmall01",
+      "why": "A jug of bog brew stands here; a small glazed jug of its height takes its place."
+    }
+  ],
+  "removals": [
+    {
+      "refId": "0801AABC",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club or Hearthfire archive, which the vault does not hold",
+      "note": "A bed of redwort flowers grows here; no archive we hold has the plant, so the spot stays bare."
+    },
+    {
+      "refId": "0801AA24",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club or Hearthfire archive, which the vault does not hold",
+      "note": "A Hearthfire household item sits loose here; its master is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "0801AA27",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club or Hearthfire archive, which the vault does not hold",
+      "note": "A Hearthfire household item sits loose here; its master is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "0801AA29",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club or Hearthfire archive, which the vault does not hold",
+      "note": "A Hearthfire household item sits loose here; its master is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "0801AAA3",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club or Hearthfire archive, which the vault does not hold",
+      "note": "A Hearthfire household item sits loose here; its master is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "0801AAA7",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club or Hearthfire archive, which the vault does not hold",
+      "note": "A Hearthfire household item sits loose here; its master is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "0801AABD",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club or Hearthfire archive, which the vault does not hold",
+      "note": "A Hearthfire household item sits here; its master is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "0801AAB1",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club or Hearthfire archive, which the vault does not hold",
+      "note": "A redwort flower lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "0801AAB2",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club or Hearthfire archive, which the vault does not hold",
+      "note": "A redwort flower lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "0801AAC0",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club or Hearthfire archive, which the vault does not hold",
+      "note": "A stalk of marshmerrow lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "0801AAC1",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club or Hearthfire archive, which the vault does not hold",
+      "note": "A stalk of marshmerrow lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "0801AAC7",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club or Hearthfire archive, which the vault does not hold",
+      "note": "A stalk of marshmerrow lies here; no kit holds one, so the spot stays bare."
+    }
+  ],
+  "removalRule": "Owner ruling 2026-10-04 (R113): no missing piece ships as a gap. A missing piece takes a same-class stand-in from a published kit where one exists (substitutions[]); a decorative piece whose class no published kit or vault archive holds is taken out of the fit-out (removals[], reason decorative-no-same-class, its search recorded), and the spot is simply empty. A placed piece whose only support was a removed piece is removed with it (reason rests-on-a-removal, restsOn naming that row)."
+}

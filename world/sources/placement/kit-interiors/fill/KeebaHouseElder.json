@@ -1,0 +1,402 @@
+{
+ "cellId": "KeebaHouseElder",
+ "sockets": {
+  "socket.KeebaHouseElder.080157F2": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "trivial",
+   "item": "item.spine-balm"
+  },
+  "socket.KeebaHouseElder.0801AA5C": {
+   "owner": "parcel.claywater-station.family-hut",
+   "fillRule": "blanket.cook-shelf",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.river-salt",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.baked-crocodile-tongue",
+      "count": 1
+     },
+     {
+      "item": "item.hissmir-fish-eye-rye",
+      "count": 1
+     },
+     {
+      "item": "item.turtle-shell-bowl",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.cook-shelf"
+   }
+  },
+  "socket.KeebaHouseElder.0801AA5D": {
+   "owner": "parcel.claywater-station.family-hut",
+   "fillRule": "blanket.cook-shelf",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.river-salt",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.baked-crocodile-tongue",
+      "count": 1
+     },
+     {
+      "item": "item.hissmir-fish-eye-rye",
+      "count": 1
+     },
+     {
+      "item": "item.turtle-shell-bowl",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.cook-shelf"
+   }
+  },
+  "socket.KeebaHouseElder.0801AA60": {
+   "owner": "parcel.claywater-station.family-hut",
+   "fillRule": "blanket.cook-shelf",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.river-salt",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.lumberries",
+      "count": 3
+     },
+     {
+      "item": "item.hissmir-fish-eye-rye",
+      "count": 1
+     },
+     {
+      "item": "item.turtle-shell-bowl",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.cook-shelf"
+   }
+  },
+  "socket.KeebaHouseElder.0801AA98": {
+   "owner": "parcel.claywater-station.family-hut",
+   "fillRule": "blanket.cook-shelf",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.river-salt",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.baked-crocodile-tongue",
+      "count": 1
+     },
+     {
+      "item": "item.lumberries",
+      "count": 3
+     },
+     {
+      "item": "item.turtle-shell-bowl",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.cook-shelf"
+   }
+  },
+  "socket.KeebaHouseElder.0801AA99": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.KeebaHouseElder.0801AA9A": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.KeebaHouseElder.0801AA9B": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.KeebaHouseElder.0801AAA9": {
+   "owner": "parcel.claywater-station.family-hut",
+   "fillRule": "blanket.household-chest",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.rag",
+      "count": 2
+     },
+     {
+      "item": "item.spine-balm",
+      "count": 1
+     },
+     {
+      "item": "item.gold",
+      "count": 6
+     }
+    ],
+    "frozenFrom": "blanket.household-chest"
+   }
+  },
+  "socket.KeebaHouseElder.0801AAB3": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "low",
+   "item": "item.deathbell"
+  },
+  "socket.KeebaHouseElder.0801AAB4": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "low",
+   "item": "item.deathbell"
+  },
+  "socket.KeebaHouseElder.0801AAB5": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "low",
+   "item": "item.beehive-husk"
+  },
+  "socket.KeebaHouseElder.0801AAB8": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "trivial",
+   "item": "item.spine-balm"
+  },
+  "socket.KeebaHouseElder.0801AABE": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "moderate",
+   "item": "item.spriggan-sap"
+  },
+  "socket.KeebaHouseElder.0801AABF": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "low",
+   "item": "item.taproot"
+  },
+  "socket.KeebaHouseElder.0801AAC5": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "low",
+   "item": "item.snail-mucus"
+  },
+  "socket.KeebaHouseElder.0801AAC6": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "moderate",
+   "item": "item.hanging-moss"
+  },
+  "socket.KeebaHouseElder.0801AAC8": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "trivial",
+   "item": "item.wooden-plate"
+  },
+  "socket.KeebaHouseElder.0801AAC9": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "trivial",
+   "item": "item.wooden-plate"
+  },
+  "socket.KeebaHouseElder.0801AACA": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "trivial",
+   "item": "item.turtle-shell-bowl"
+  },
+  "socket.KeebaHouseElder.0801AACB": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "trivial",
+   "item": "item.turtle-shell-bowl"
+  },
+  "socket.KeebaHouseElder.0801AACC": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "trivial",
+   "item": "item.snails-foot"
+  },
+  "socket.KeebaHouseElder.0801AACD": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "trivial",
+   "item": "item.snails-foot"
+  },
+  "socket.KeebaHouseElder.0801AAD0": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "trivial",
+   "item": "item.knife"
+  },
+  "socket.KeebaHouseElder.0801AAD2": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "trivial",
+   "item": "item.saltrice-flatbread"
+  },
+  "socket.KeebaHouseElder.0801AAD3": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "trivial",
+   "item": "item.saltrice-flatbread"
+  },
+  "socket.KeebaHouseElder.0801AAD4": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "trivial",
+   "item": "item.seared-snails-foot"
+  },
+  "socket.KeebaHouseElder.0801AAD5": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "trivial",
+   "item": "item.wooden-plate"
+  },
+  "socket.KeebaHouseElder.0801AADB": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "trivial",
+   "item": "item.turtle-shell-bowl"
+  },
+  "socket.KeebaHouseElder.0801AADD": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "low",
+   "item": "item.dragons-tongue"
+  },
+  "socket.KeebaHouseElder.0801AADE": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "moderate",
+   "item": "item.canis-root"
+  },
+  "socket.KeebaHouseElder.0801AADF": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "moderate",
+   "item": "item.canis-root"
+  },
+  "socket.KeebaHouseElder.080CC29E": {
+   "owner": "parcel.claywater-station.family-hut",
+   "fillRule": "blanket.cook-shelf",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.river-salt",
+      "count": 2
+     },
+     {
+      "item": "item.baked-crocodile-tongue",
+      "count": 1
+     },
+     {
+      "item": "item.lumberries",
+      "count": 3
+     },
+     {
+      "item": "item.hissmir-fish-eye-rye",
+      "count": 1
+     },
+     {
+      "item": "item.turtle-shell-bowl",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.cook-shelf"
+   }
+  },
+  "socket.KeebaHouseElder.080CC2A1": {
+   "owner": "parcel.claywater-station.family-hut",
+   "fillRule": "blanket.fish-basket",
+   "valueTier": "trivial",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.trodh",
+      "count": 4
+     },
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     },
+     {
+      "item": "item.fishing-pole",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.fish-basket"
+   }
+  },
+  "socket.KeebaHouseElder.080CC2A2": {
+   "owner": "parcel.claywater-station.family-hut",
+   "fillRule": "blanket.fish-basket",
+   "valueTier": "trivial",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.trodh",
+      "count": 4
+     },
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     },
+     {
+      "item": "item.fishing-pole",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.fish-basket"
+   }
+  },
+  "socket.KeebaHouseElder.080CC2A3": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.KeebaHouseElder.080CC2A4": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.KeebaHouseElder.080CC2A7": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.KeebaHouseElder.080CC2A8": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.KeebaHouseElder.080CC2A9": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "trivial",
+   "item": "item.woodcutters-axe"
+  },
+  "socket.KeebaHouseElder.08518BA5": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "trivial",
+   "item": "item.jeel-sa"
+  },
+  "socket.KeebaHouseElder.08989BFF": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "trivial",
+   "item": "item.book-ku-vastei-the-needed-change"
+  },
+  "socket.KeebaHouseElder.08989C00": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "low",
+   "item": "item.book-argonians-of-western-solstice"
+  },
+  "socket.KeebaHouseElder.08989C01": {
+   "owner": "parcel.claywater-station.family-hut",
+   "valueTier": "trivial",
+   "item": "item.book-the-seasons-of-argonia"
+  }
+ },
+ "schemaVersion": 1
+}

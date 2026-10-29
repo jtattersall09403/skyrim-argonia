@@ -1,0 +1,64 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "entries": [
+  {
+   "id": "culture.group.upriver-hist-village.households",
+   "level": "group",
+   "name": "The households left behind",
+   "parent": "culture.settlement.upriver-hist-village",
+   "members": [
+    "npc.pirate-freeholds.upriver-hist-village.n2",
+    "npc.pirate-freeholds.upriver-hist-village.n2-2",
+    "npc.pirate-freeholds.upriver-hist-village.n2-3"
+   ],
+   "norms": [
+    {
+     "text": "Every kin-house keeps the mats of its absent adults where they were left.",
+     "source": "world/sources/catalogue/places-pirate-freeholds.json#place.pirate-freeholds.upriver-hist-village"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Moving an absent adult's mat.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "Keeping the trade-house, the smokehouse and the kin-houses going with too few hands.",
+     "source": "world/sources/catalogue/places-pirate-freeholds.json#place.pirate-freeholds.upriver-hist-village"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Visitors who ask how many have come back.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {},
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Buyer at the trade-house; stranger anywhere else.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "low",
+    "oaths": [],
+    "neverSaid": []
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "The adults of every household are all downriver on the roll.",
+      "source": "world/sources/catalogue/places-pirate-freeholds.json#place.pirate-freeholds.upriver-hist-village"
+     }
+    ],
+    "rumours": []
+   },
+   "views": [],
+   "deviationRate": 0.2
+  }
+ ]
+}

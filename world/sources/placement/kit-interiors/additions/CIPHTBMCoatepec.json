@@ -1,0 +1,222 @@
+{
+ "schemaVersion": 2,
+ "cellId": "CIPHTBMCoatepec",
+ "additions": [
+  {
+   "id": "CIPHTBMCoatepec:add:shrine-candlehornfloor",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    -58.938,
+    76.354,
+    11.118
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "A tall floor candle lights the walked route through the hall after dark."
+  },
+  {
+   "id": "CIPHTBMCoatepec:add:shrine-candlehornfloor-2",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    -40.438,
+    76.354,
+    68.618
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "A tall floor candle lights the walked route through the hall after dark."
+  },
+  {
+   "id": "CIPHTBMCoatepec:add:shrine-candlehornfloor-3",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    -44.938,
+    76.354,
+    21.618
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "A tall floor candle lights the walked route through the hall after dark."
+  },
+  {
+   "id": "CIPHTBMCoatepec:add:shrine-candlehornfloor-4",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    -66.438,
+    76.354,
+    21.118
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "A tall floor candle lights the walked route through the hall after dark."
+  },
+  {
+   "id": "CIPHTBMCoatepec:add:shrine-candlehornfloor-5",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    -46.938,
+    76.354,
+    9.618
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "A tall floor candle lights the walked route through the hall after dark."
+  },
+  {
+   "id": "CIPHTBMCoatepec:add:shrine-candlehornfloor-6",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    -69.938,
+    76.354,
+    32.118
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "A tall floor candle lights the walked route through the hall after dark."
+  },
+  {
+   "id": "CIPHTBMCoatepec:add:shrine-candlehornfloor-7",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    -54.938,
+    76.51,
+    -12.382
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "A tall floor candle lights the walked route through the hall after dark."
+  },
+  {
+   "id": "CIPHTBMCoatepec:add:shrine-candlehornfloor-8",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    -54.938,
+    76.51,
+    -24.882
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "A tall floor candle lights the walked route through the hall after dark."
+  },
+  {
+   "id": "CIPHTBMCoatepec:add:shrine-candlehornfloor-9",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    -70.438,
+    76.396,
+    48.618
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "A tall floor candle lights the walked route through the hall after dark."
+  },
+  {
+   "id": "CIPHTBMCoatepec:add:shrine-candlehornfloor-10",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    -55.438,
+    76.438,
+    -36.382
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "A tall floor candle lights the walked route through the hall after dark."
+  },
+  {
+   "id": "CIPHTBMCoatepec:add:shrine-candlehornfloor-11",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    -24.938,
+    76.354,
+    83.118
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "A tall floor candle lights the walked route through the hall after dark."
+  },
+  {
+   "id": "CIPHTBMCoatepec:add:shrine-candlehornfloor-12",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    -42.438,
+    76.354,
+    33.618
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "A tall floor candle lights the walked route through the hall after dark."
+  },
+  {
+   "id": "CIPHTBMCoatepec:add:shrine-candlehornfloor-13",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    -42.438,
+    76.354,
+    46.118
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "A tall floor candle lights the walked route through the hall after dark."
+  },
+  {
+   "id": "CIPHTBMCoatepec:add:shrine-candlehornfloor-14",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    -42.438,
+    76.354,
+    58.118
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "A tall floor candle lights the walked route through the hall after dark."
+  },
+  {
+   "id": "CIPHTBMCoatepec:add:shrine-candlehornfloor-15",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    -36.938,
+    76.354,
+    77.618
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "A tall floor candle lights the walked route through the hall after dark."
+  },
+  {
+   "id": "CIPHTBMCoatepec:add:shrine-candlehornfloor-16",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    -55.438,
+    76.354,
+    1.618
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "A tall floor candle lights the walked route through the hall after dark."
+  },
+  {
+   "id": "CIPHTBMCoatepec:add:shrine-candlehornfloor-17",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    -66.438,
+    76.354,
+    10.618
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "A tall floor candle lights the walked route through the hall after dark."
+  },
+  {
+   "id": "CIPHTBMCoatepec:add:shrine-candlehornfloor-18",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    -29.938,
+    76.354,
+    72.618
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "A tall floor candle lights the walked route through the hall after dark."
+  }
+ ]
+}

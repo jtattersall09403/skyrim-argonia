@@ -1,0 +1,95 @@
+{
+ "cellId": "LilmothApothecaryHouse",
+ "sockets": {
+  "socket.LilmothApothecaryHouse.08893377": {
+   "valueTier": "trivial",
+   "item": "item.saltrice-noodles"
+  },
+  "socket.LilmothApothecaryHouse.0889337A": {
+   "valueTier": "trivial",
+   "item": "item.turtle-shell-bowl"
+  },
+  "socket.LilmothApothecaryHouse.0889337D": {
+   "valueTier": "trivial",
+   "item": "item.snails-foot"
+  },
+  "socket.LilmothApothecaryHouse.08893381": {
+   "valueTier": "moderate",
+   "item": "item.slaughterfish-egg"
+  },
+  "socket.LilmothApothecaryHouse.0889338B": {
+   "valueTier": "trivial",
+   "item": "item.clay-jug"
+  },
+  "socket.LilmothApothecaryHouse.08893391": {
+   "valueTier": "trivial",
+   "item": "item.tee-lel"
+  },
+  "socket.LilmothApothecaryHouse.08893396": {
+   "valueTier": "moderate",
+   "item": "item.slaughterfish-egg"
+  },
+  "socket.LilmothApothecaryHouse.088933A7": {
+   "valueTier": "trivial",
+   "item": "item.jeel-sa"
+  },
+  "socket.LilmothApothecaryHouse.088933B5": {
+   "valueTier": "trivial",
+   "item": "item.saltrice-flatbread"
+  },
+  "socket.LilmothApothecaryHouse.088933C4": {
+   "valueTier": "trivial",
+   "item": "item.jeel-sa"
+  },
+  "socket.LilmothApothecaryHouse.088933CC": {
+   "valueTier": "moderate",
+   "item": "item.slaughterfish-egg"
+  },
+  "socket.LilmothApothecaryHouse.088933CE": {
+   "valueTier": "trivial",
+   "item": "item.cup"
+  },
+  "socket.LilmothApothecaryHouse.088933D8": {
+   "valueTier": "trivial",
+   "item": "item.cup"
+  },
+  "socket.LilmothApothecaryHouse.088933DA": {
+   "valueTier": "trivial",
+   "item": "item.snails-foot"
+  },
+  "socket.LilmothApothecaryHouse.088933DC": {
+   "valueTier": "trivial",
+   "item": "item.saltrice-flatbread"
+  },
+  "socket.LilmothApothecaryHouse.088933E6": {
+   "fillRule": "blanket.household-chest",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.rag",
+      "count": 2
+     },
+     {
+      "item": "item.spine-balm",
+      "count": 1
+     },
+     {
+      "item": "item.glass-bead-strand",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.household-chest"
+   }
+  },
+  "socket.LilmothApothecaryHouse.088933E9": {
+   "valueTier": "low",
+   "item": "item.dragons-tongue"
+  },
+  "socket.LilmothApothecaryHouse.08989B70": {
+   "valueTier": "trivial",
+   "item": "item.book-miregaunts-of-the-marsh"
+  }
+ },
+ "schemaVersion": 1
+}

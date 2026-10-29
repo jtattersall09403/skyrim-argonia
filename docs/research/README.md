@@ -23,3 +23,13 @@ and read that day, "[K]" prior knowledge, "[I]" inference to prove on a sample.
 | [audit-systems.md](2026-10-27/audit-systems.md) | Old repo: every gameplay system's design, numbers and build status | Parts 1–2 |
 | [audit-world.md](2026-10-27/audit-world.md) | Old repo: setting, content inventory, what data ports, asset pools | 0.3, 2.W, 4.2 |
 | [audit-infra.md](2026-10-27/audit-infra.md) | Old repo: research, infra, vault, agent model, licensing | 0.1, ways-of-working |
+| [2026-10-29/reuse-audit.md](2026-10-29/reuse-audit.md) | The build-versus-reuse audit (0.1 §j): every PLAN §4 row with a verdict, licence, runtime and evidence; tes4skyrim read in full (MorrowindRuntime's sidecar input, the activate-slot interception, the navmesh writer as a binary spec); licence gaps (Mutagen GPL-3 no linking exception, PrismaUI custom, tes4skyrim's unfiled MIT); the paper-theme family and Magic Expanded | 0.2 G1, G3, G4, G5, G10, G11; 1.2; 2.7; 0015 |
+| [quest-design-elder-scrolls.md](2026-10-27/quest-design-elder-scrolls.md) | What makes Elder Scrolls quests work or fail: no-marker directions, investigations, radiant criticism; reviewer checklist | quest-write, quest-review (0.1 §i, 1.4, 2.12, 4.3) |
+| [quest-design-open-world-rpg.md](2026-10-27/quest-design-open-world-rpg.md) | Open-world RPG quest design: Three Clue Rule, hidden truth, knowledge matrix, pre/postconditions, consequence | quest-write, quest-review |
+| [quest-shape-investigation.md](2026-10-27/quest-shape-investigation.md) | MURDER, MISSING, RECKONING; fair, solvable cases; accusation with evidence; the detectives' line | 0.1 §i, 2.12, 4.1 §d, 4.3 |
+| [quest-shape-crime-and-deceit.md](2026-10-27/quest-shape-crime-and-deceit.md) | THEFT (commit and solve), FRAUD, SMUGGLING | 0.1 §i, 4.3 |
+| [quest-shape-social.md](2026-10-27/quest-shape-social.md) | DISPUTE, NEGOTIATION, SUCCESSION, BONDAGE (the Owing handled seriously) | 0.1 §i, 4.3 |
+| [quest-shape-threat-and-journey.md](2026-10-27/quest-shape-threat-and-journey.md) | PREDATOR, CONTAMINATION, EXPEDITION; directions without markers | 0.1 §i, 4.3 |
+| [quest-shape-otherworldly.md](2026-10-27/quest-shape-otherworldly.md) | HAUNTING, RITE, WONDER, Daedric and oddity quests | 0.1 §i, 4.3 |
+| [questline-design.md](2026-10-27/questline-design.md) | Faction and main lines: line template, ranks, seeding, finale; detectives' line options | 0.1 §i, 4.1 §d, 4.3 |
+| [quest-actions-and-skills.md](2026-10-27/quest-actions-and-skills.md) | Skill-based action in quests: verb families, combinations, faction profiles, variety measures | 0.1 §i, quest-write |

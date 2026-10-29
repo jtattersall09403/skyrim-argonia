@@ -1,0 +1,2770 @@
+{
+ "schemaVersion": 1,
+ "placeId": "place.dunmer-north.riverwalk",
+ "facts": [
+  {
+   "id": "fact.riverwalk.tag-safe-rest",
+   "claim": "A traveller can rest safely at Riverwalk.",
+   "sourceField": "playerPurpose.primary",
+   "tag": "safe-rest",
+   "kind": "service",
+   "carrier": {
+    "built": {
+     "uid": "npc-n1",
+     "type": "npc"
+    }
+   }
+  },
+  {
+   "id": "fact.riverwalk.tag-vista-landmark",
+   "claim": "Riverwalk can be seen from far off.",
+   "sourceField": "playerPurpose.secondary",
+   "tag": "vista-landmark",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.dunmer-north.riverwalk.n2"
+    }
+   }
+  },
+  {
+   "id": "fact.riverwalk.tag-service-hub",
+   "claim": "Riverwalk sells goods and services to travellers.",
+   "sourceField": "playerPurpose.secondary",
+   "tag": "service-hub",
+   "kind": "service",
+   "carrier": {
+    "built": {
+     "uid": "npc-n1",
+     "type": "npc"
+    }
+   }
+  },
+  {
+   "id": "fact.riverwalk.tag-rest-shelter",
+   "claim": "Riverwalk gives shelter for the night.",
+   "sourceField": "lootTable.kinds",
+   "tag": "rest-shelter",
+   "kind": "service",
+   "carrier": {
+    "built": {
+     "uid": "npc-n1",
+     "type": "npc"
+    }
+   }
+  },
+  {
+   "id": "fact.riverwalk.tag-trade-access",
+   "claim": "A player can buy and sell at Riverwalk.",
+   "sourceField": "lootTable.kinds",
+   "tag": "trade-access",
+   "kind": "service",
+   "carrier": {
+    "built": {
+     "uid": "npc-n1",
+     "type": "npc"
+    }
+   }
+  },
+  {
+   "id": "fact.riverwalk.tag-route-unlock",
+   "claim": "Riverwalk opens a way on to somewhere else.",
+   "sourceField": "lootTable.kinds",
+   "tag": "route-unlock",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "raft",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.riverwalk.tag-rumour",
+   "claim": "Talk at Riverwalk points to something elsewhere.",
+   "sourceField": "lootTable.kinds",
+   "tag": "rumour",
+   "kind": "history",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "rumour.dunmer-north.hissmir-trials"
+    }
+   }
+  },
+  {
+   "id": "fact.riverwalk.why-founding-1",
+   "claim": "Riverwalk is a halt in a sheltered sea cove at the mouth of the pilgrim water, the channel up to Hissmir.",
+   "sourceField": "why.founding",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "lw",
+     "type": "piece-set"
+    }
+   }
+  },
+  {
+   "id": "fact.riverwalk.why-founding-2",
+   "claim": "Boats off the Padomaic run put in at Riverwalk.",
+   "sourceField": "why.founding",
+   "kind": "activity",
+   "carrier": {
+    "built": {
+     "uid": "canoe",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.riverwalk.why-founding-3",
+   "claim": "The houses stand on the shore.",
+   "sourceField": "why.founding",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "b-crews",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.riverwalk.why-founding-4",
+   "claim": "A plank walk runs out from the houses across the cove to the islet where the ferry stage moors.",
+   "sourceField": "why.founding",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "lw",
+     "type": "piece-set"
+    }
+   }
+  },
+  {
+   "id": "fact.riverwalk.why-siteAdvantages-1",
+   "claim": "Canoes leave the ferry stage for Hissmir and Murkwater.",
+   "sourceField": "why.siteAdvantages",
+   "kind": "activity",
+   "carrier": {
+    "built": {
+     "uid": "npc-n2",
+     "type": "npc"
+    }
+   }
+  },
+  {
+   "id": "fact.riverwalk.why-occupantsMotive-1",
+   "claim": "Riverwalk lives on the ferry stage and the toll on boats entering the pilgrim water.",
+   "sourceField": "why.occupantsMotive",
+   "kind": "activity",
+   "carrier": {
+    "built": {
+     "uid": "npc-toll-holder",
+     "type": "npc"
+    }
+   }
+  },
+  {
+   "id": "fact.riverwalk.why-occupantsMotive-2",
+   "claim": "Riverwalk feeds and lodges the boat crews.",
+   "sourceField": "why.occupantsMotive",
+   "kind": "service",
+   "carrier": {
+    "built": {
+     "uid": "npc-n1",
+     "type": "npc"
+    }
+   }
+  },
+  {
+   "id": "fact.riverwalk.why-pressures-1",
+   "claim": "Thorn's field-owners and the stewards of Hissmir both say the toll on the pilgrim water is theirs.",
+   "sourceField": "why.pressures",
+   "kind": "history",
+   "carrier": {
+    "queued": {
+     "type": "quest-beat",
+     "ref": "quest.local.lv39"
+    }
+   }
+  },
+  {
+   "id": "fact.riverwalk.vibe-signatureFeature-1",
+   "claim": "The plank walk is the only way between the shore and the ferry stage.",
+   "sourceField": "vibe.signatureFeature",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "lw",
+     "type": "piece-set"
+    }
+   }
+  },
+  {
+   "id": "fact.riverwalk.vibe-signatureFeature-2",
+   "claim": "Everyone who lands at the ferry stage walks past the toll-holder's post at the shore end of the walk.",
+   "sourceField": "vibe.signatureFeature",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "d9-notice",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.riverwalk.vibe-silhouette-1",
+   "claim": "A totem stands on the shore.",
+   "sourceField": "vibe.silhouette",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "sh-totem1",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.riverwalk.vibe-silhouette-2",
+   "claim": "The long house stands on piles in the shallows beside the shore houses.",
+   "sourceField": "vibe.silhouette",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "b-house",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.riverwalk.vibe-silhouette-3",
+   "claim": "The plank walk ends at a tent on a low islet.",
+   "sourceField": "vibe.silhouette",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "b-stage",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.riverwalk.vibe-silhouette-4",
+   "claim": "The ferry stage is moored off the far side of the islet.",
+   "sourceField": "vibe.silhouette",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "raft",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.riverwalk.vibe-materials-1",
+   "claim": "The crews' house is a plank house on posts, on dry ground at the shore.",
+   "sourceField": "vibe.materials",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "b-crews",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.riverwalk.vibe-materials-2",
+   "claim": "The family house is a plank house on posts, on dry ground at the shore.",
+   "sourceField": "vibe.materials",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "b-family",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.riverwalk.vibe-condition-1",
+   "claim": "The plank walk is constantly re-planked and its boards are all different ages.",
+   "sourceField": "vibe.condition",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.dunmer-north.riverwalk.stage-mistress"
+    }
+   }
+  },
+  {
+   "id": "fact.riverwalk.vibe-condition-2",
+   "claim": "The boards record the order in which the village was built.",
+   "sourceField": "vibe.condition",
+   "kind": "history",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.dunmer-north.riverwalk.n1"
+    }
+   }
+  },
+  {
+   "id": "fact.riverwalk.vibe-approach-1",
+   "claim": "Boats pole across the cove to the ferry stage off the islet.",
+   "sourceField": "vibe.approach",
+   "kind": "activity",
+   "carrier": {
+    "built": {
+     "uid": "npc-n2",
+     "type": "npc"
+    }
+   }
+  },
+  {
+   "id": "fact.riverwalk.playerPurpose-hook-1",
+   "claim": "The toll is argued over nightly.",
+   "sourceField": "playerPurpose.hook",
+   "kind": "activity",
+   "carrier": {
+    "built": {
+     "uid": "npc-n3",
+     "type": "npc"
+    }
+   }
+  },
+  {
+   "id": "fact.riverwalk.questHooks-opportunity-1",
+   "claim": "Paying the toll to either Thorn or Hissmir counts as taking its side.",
+   "sourceField": "questHooks.opportunity",
+   "kind": "activity",
+   "carrier": {
+    "queued": {
+     "type": "quest-beat",
+     "ref": "quest.local.lv39"
+    }
+   }
+  },
+  {
+   "id": "fact.riverwalk.vibe-mood-1",
+   "claim": "The village is linear and sociable.",
+   "sourceField": "vibe.mood",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.dunmer-north.riverwalk.n1"
+    }
+   }
+  },
+  {
+   "id": "fact.riverwalk.vibe-palette-1",
+   "claim": "The palette is silver weathered plank, black water and reed thatch.",
+   "sourceField": "vibe.palette",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "place.dunmer-north.riverwalk.parcel.riverwalk.the-long-walk.piece.1",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.riverwalk.vibe-senses-1",
+   "claim": "Boards run underfoot from the shore to the islet.",
+   "sourceField": "vibe.senses",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "place.dunmer-north.riverwalk.parcel.riverwalk.the-long-walk.piece.1",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.riverwalk.vibe-senses-2",
+   "claim": "Poles push into the mud.",
+   "sourceField": "vibe.senses",
+   "kind": "activity",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.dunmer-north.riverwalk.stage-mistress"
+    }
+   }
+  },
+  {
+   "id": "fact.riverwalk.vibe-senses-3",
+   "claim": "Talk carries over still water.",
+   "sourceField": "vibe.senses",
+   "kind": "activity",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.dunmer-north.riverwalk.n2"
+    }
+   }
+  },
+  {
+   "id": "fact.riverwalk.why-wouldChangeIf-1",
+   "claim": "Boats would bypass Riverwalk if the cove silted up.",
+   "sourceField": "why.wouldChangeIf",
+   "kind": "activity",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.dunmer-north.riverwalk.toll-holder"
+    }
+   }
+  },
+  {
+   "id": "fact.riverwalk.why-wouldChangeIf-2",
+   "claim": "The villagers sound the way across the cove to the ferry stage every morning.",
+   "sourceField": "why.wouldChangeIf",
+   "kind": "activity",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.dunmer-north.riverwalk.stage-mistress"
+    }
+   }
+  }
+ ],
+ "world": {
+  "schemaVersion": 1,
+  "name": "Riverwalk",
+  "positionM": [
+   7197.1,
+   584.0
+  ],
+  "footprintRadiusM": 115.0,
+  "boundaryM": [
+   [
+    7186.0,
+    496.0
+   ],
+   [
+    7236.01,
+    496.0
+   ],
+   [
+    7236.01,
+    531.61
+   ],
+   [
+    7246.0,
+    531.61
+   ],
+   [
+    7250.0,
+    616.0
+   ],
+   [
+    7250.0,
+    642.0
+   ],
+   [
+    7200.0,
+    642.0
+   ],
+   [
+    7168.0,
+    614.0
+   ],
+   [
+    7176.0,
+    540.0
+   ],
+   [
+    7184.0,
+    528.0
+   ]
+  ],
+  "extentM": [
+   [
+    7168.0,
+    614.0
+   ],
+   [
+    7176.0,
+    540.0
+   ],
+   [
+    7186.0,
+    496.0
+   ],
+   [
+    7236.01,
+    496.0
+   ],
+   [
+    7246.0,
+    531.61
+   ],
+   [
+    7250.0,
+    616.0
+   ],
+   [
+    7250.0,
+    642.0
+   ],
+   [
+    7200.0,
+    642.0
+   ]
+  ],
+  "extentRadiusM": 96.2,
+  "route": {
+   "lineId": "track.dunmer-north.hissmir",
+   "kind": "track",
+   "name": null,
+   "from": "place.dunmer-north.hissmir",
+   "to": "network",
+   "vertexM": [
+    7197.12,
+    496.26
+   ],
+   "offExtentM": 11.1,
+   "alongM": 961.6,
+   "lengthM": 2747.1
+  },
+  "stands": [
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.crews-house.assembly.c-basket",
+    "assetId": "mudmother:gv_meshes/argoniannest/basketsmall01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7194.0,
+     0.5,
+     515.6
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.crews-house.assembly.c-board1",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank02",
+    "kind": "settlement",
+    "layer": "landing",
+    "positionM": [
+     7204.64,
+     0.77,
+     508.96
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.crews-house.assembly.c-board2",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank03",
+    "kind": "settlement",
+    "layer": "landing",
+    "positionM": [
+     7204.69,
+     0.73,
+     509.19
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.crews-house.assembly.c-board3",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank04",
+    "kind": "settlement",
+    "layer": "landing",
+    "positionM": [
+     7204.68,
+     0.73,
+     509.43
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.crews-house.assembly.c-board4",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank03",
+    "kind": "settlement",
+    "layer": "landing",
+    "positionM": [
+     7204.6,
+     0.72,
+     509.67
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.crews-house.assembly.c-board5",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank02",
+    "kind": "settlement",
+    "layer": "landing",
+    "positionM": [
+     7204.6,
+     0.74,
+     509.9
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.crews-house.assembly.c-board6",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank04",
+    "kind": "settlement",
+    "layer": "landing",
+    "positionM": [
+     7204.6,
+     0.66,
+     510.13
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.crews-house.assembly.c-board7",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank03",
+    "kind": "settlement",
+    "layer": "landing",
+    "positionM": [
+     7204.64,
+     0.73,
+     508.73
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.crews-house.assembly.c-board8",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplankbroken02",
+    "kind": "settlement",
+    "layer": "landing",
+    "positionM": [
+     7204.7,
+     0.74,
+     508.5
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.crews-house.assembly.c-board9",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplankbroken02",
+    "kind": "settlement",
+    "layer": "landing",
+    "positionM": [
+     7204.6,
+     0.74,
+     508.29
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.crews-house.assembly.c-candle1",
+    "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+    "kind": "settlement",
+    "layer": "light",
+    "positionM": [
+     7197.6,
+     0.53,
+     514.3
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.crews-house.assembly.c-chair1",
+    "assetId": "mudmother:gv_meshes/argoniannest/wovenchair01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7197.2,
+     0.5,
+     517.2
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.crews-house.assembly.c-doorlamp",
+    "assetId": "mudmother:gv_meshes/argoniannest/argonianlanterns03",
+    "kind": "settlement",
+    "layer": "light",
+    "positionM": [
+     7203.6,
+     4.61,
+     507.68
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.crews-house.assembly.c-full",
+    "assetId": "mudmother:gv_meshes/argoniannest/basketfull",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7194.6,
+     0.54,
+     517.8
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.crews-house.assembly.c-net",
+    "assetId": "shores:shoresofskyrim/fishnet01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7193.9,
+     0.48,
+     513.0
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.crews-house.assembly.c-sack",
+    "assetId": "vanilla:clutter/containers/miscsacklarge",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7195.0,
+     0.69,
+     513.5
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.crews-house.assembly.c-urn1",
+    "assetId": "mudmother:gv_meshes/argoniannest/paintedurn01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7196.2,
+     0.5,
+     515.6
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.crews-house.assembly.c-urn2",
+    "assetId": "mudmother:gv_meshes/argoniannest/paintedurn01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7195.3,
+     0.5,
+     515.0
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.crews-house.assembly.cc-bucket",
+    "assetId": "vanilla:clutter/bucket01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7192.3,
+     0.5,
+     513.0
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.crews-house.assembly.cc-pot",
+    "assetId": "kotm:argonia/clutter/saxhleelmetalpot01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7193.0,
+     0.6,
+     514.6
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.crews-house.assembly.cc-wood",
+    "assetId": "vanilla:clutter/firewood/firewoodpilesmall01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7193.0,
+     0.46,
+     516.6
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.crews-house.assembly.d9-notice",
+    "assetId": "bmv:advertising_board",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7195.9,
+     0.52,
+     512.6
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.crews-house.assembly.d9-rainbarrel",
+    "assetId": "vanilla:clutter/barrel01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7197.0,
+     0.49,
+     506.5
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.crews-house.assembly.d9-stall",
+    "assetId": "vanilla:architecture/riften/rtmarketstall01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7218.0,
+     0.25,
+     523.0
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.crews-house.assembly.d9-washline",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/farmhouseline",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7199.0,
+     1.03,
+     499.0
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.crews-house.assembly.rw-sign",
+    "assetId": "kotm:argonia/blackwood/sign",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7200.14,
+     3.32,
+     501.06
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.crews-house.assembly.w2-basket-crews",
+    "assetId": "vanilla:clutter/basket01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7191.3,
+     0.5,
+     517.4
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.crews-house.assembly.w2-bucket-crews",
+    "assetId": "vanilla:clutter/bucket01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7194.5,
+     0.5,
+     509.6
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.crews-house.building",
+    "assetId": "composite:plank/thatchhouse06-with-door",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     7206.5,
+     0.75,
+     505.0
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.family-house.assembly.f-board0",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank02",
+    "kind": "settlement",
+    "layer": "landing",
+    "positionM": [
+     7209.3,
+     0.52,
+     520.41
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.family-house.assembly.f-board1",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank02",
+    "kind": "settlement",
+    "layer": "landing",
+    "positionM": [
+     7209.3,
+     0.52,
+     520.71
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.family-house.assembly.f-board10",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank02",
+    "kind": "settlement",
+    "layer": "landing",
+    "positionM": [
+     7209.3,
+     0.23,
+     522.81
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.family-house.assembly.f-board11",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank04",
+    "kind": "settlement",
+    "layer": "landing",
+    "positionM": [
+     7209.32,
+     0.19,
+     523.04
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.family-house.assembly.f-board2",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank03",
+    "kind": "settlement",
+    "layer": "landing",
+    "positionM": [
+     7209.25,
+     0.48,
+     520.95
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.family-house.assembly.f-board3",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank04",
+    "kind": "settlement",
+    "layer": "landing",
+    "positionM": [
+     7209.33,
+     0.45,
+     521.18
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.family-house.assembly.f-board4",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank03",
+    "kind": "settlement",
+    "layer": "landing",
+    "positionM": [
+     7209.32,
+     0.41,
+     521.41
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.family-house.assembly.f-board5",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank03",
+    "kind": "settlement",
+    "layer": "landing",
+    "positionM": [
+     7209.39,
+     0.36,
+     521.65
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.family-house.assembly.f-board6",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank04",
+    "kind": "settlement",
+    "layer": "landing",
+    "positionM": [
+     7209.37,
+     0.31,
+     521.88
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.family-house.assembly.f-board7",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank02",
+    "kind": "settlement",
+    "layer": "landing",
+    "positionM": [
+     7209.36,
+     0.31,
+     522.12
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.family-house.assembly.f-board8",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank04",
+    "kind": "settlement",
+    "layer": "landing",
+    "positionM": [
+     7209.27,
+     0.22,
+     522.36
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.family-house.assembly.f-board9",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank03",
+    "kind": "settlement",
+    "layer": "landing",
+    "positionM": [
+     7209.28,
+     0.2,
+     522.58
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.family-house.assembly.f-bucket",
+    "assetId": "vanilla:clutter/bucket01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7217.4,
+     0.47,
+     512.9
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.family-house.assembly.f-candle",
+    "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+    "kind": "settlement",
+    "layer": "light",
+    "positionM": [
+     7215.2,
+     0.53,
+     505.6
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.family-house.assembly.f-chair",
+    "assetId": "mudmother:gv_meshes/argoniannest/wovenchair01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7215.5,
+     0.5,
+     507.5
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.family-house.assembly.f-closed",
+    "assetId": "vanilla:clutter/basketclosed01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7215.0,
+     0.49,
+     506.5
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.family-house.assembly.f-closed2",
+    "assetId": "vanilla:clutter/basketclosed01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7218.5,
+     0.25,
+     521.5
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.family-house.assembly.f-doorlamp",
+    "assetId": "mudmother:gv_meshes/argoniannest/argonianlanterns03",
+    "kind": "settlement",
+    "layer": "light",
+    "positionM": [
+     7210.5,
+     3.93,
+     519.67
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.family-house.assembly.f-full",
+    "assetId": "mudmother:gv_meshes/argoniannest/basketfull",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7218.5,
+     0.51,
+     513.5
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.family-house.assembly.f-sack",
+    "assetId": "vanilla:clutter/containers/miscsacklarge",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7219.5,
+     0.44,
+     522.5
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.family-house.assembly.f-urn",
+    "assetId": "mudmother:gv_meshes/argoniannest/paintedurn01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7217.6,
+     0.47,
+     514.6
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.family-house.assembly.f-wood",
+    "assetId": "vanilla:clutter/firewood/firewoodpilesmall01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7215.3,
+     0.46,
+     508.8
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.family-house.building",
+    "assetId": "composite:plank/house1-with-door",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     7209.4,
+     -0.53,
+     516.0
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.ferry-landing.piece.1",
+    "assetId": "vanilla:architecture/docks/dockstrent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     7231.2,
+     0.19,
+     621.5
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.ferry-landing.piece.2",
+    "assetId": "vanilla:architecture/docks/dockstrent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     7232.7,
+     0.19,
+     614.38
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.ferry-landing.piece.3",
+    "assetId": "vanilla:architecture/docks/dockstrent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     7234.21,
+     0.19,
+     607.25
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.ferry-stage.building",
+    "assetId": "ferryraft:snt/ferry/ferryraft01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     7235.45,
+     0.0,
+     601.3
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.long-house.building",
+    "assetId": "composite:stilt/swamp-house-with-landing",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     7231.5,
+     -2.02,
+     519.5
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.shrine.assembly.sh-totem2",
+    "assetId": "mudmother:gv_meshes/argoniannest/argoniantotem01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7196.0,
+     0.39,
+     517.8
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.shrine.building",
+    "assetId": "mudmother:gv_meshes/argoniannest/argoniantotem01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     7195.5,
+     0.39,
+     516.5
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.stage-shelter.assembly.canoe",
+    "assetId": "canoe:actors/sfss/canoe/canoe1",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7244.5,
+     0.02,
+     638.0
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.stage-shelter.assembly.canoe2",
+    "assetId": "canoe:actors/sfss/canoe/canoe1",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7237.3,
+     0.02,
+     613.7
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.stage-shelter.assembly.d9-fishrack",
+    "assetId": "vanilla:clutter/deadanimals/fishrack01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7219.0,
+     -0.19,
+     620.5
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.stage-shelter.assembly.s-candle",
+    "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+    "kind": "settlement",
+    "layer": "light",
+    "positionM": [
+     7229.6,
+     0.36,
+     628.4
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.stage-shelter.assembly.s-oar",
+    "assetId": "rowboats:dungeons/clutter/shipoar01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7240.0,
+     0.48,
+     628.55
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.stage-shelter.assembly.sc-bucket",
+    "assetId": "vanilla:clutter/bucket01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7230.0,
+     0.36,
+     634.4
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.stage-shelter.assembly.sc-pot",
+    "assetId": "kotm:argonia/clutter/saxhleelmetalpot01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7229.25,
+     0.43,
+     632.85
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.stage-shelter.assembly.sn-net1",
+    "assetId": "shores:shoresofskyrim/fishnet01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7237.5,
+     0.24,
+     630.4
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.stage-shelter.assembly.sn-sack",
+    "assetId": "vanilla:clutter/containers/miscsacklarge",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7237.45,
+     0.42,
+     631.45
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.stage-shelter.assembly.ss-b1",
+    "assetId": "kotm:argonia/clutter/basket01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7235.4,
+     0.6,
+     629.25
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.stage-shelter.assembly.ss-closed",
+    "assetId": "vanilla:clutter/basketclosed01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7233.65,
+     0.32,
+     626.7
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.stage-shelter.assembly.ss-store",
+    "assetId": "kotm:argonia/clutter/basketcontainer",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7234.65,
+     0.83,
+     627.6
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.stage-shelter.building",
+    "assetId": "mudmother:gv_meshes/argoniannest/argoniantent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     7232.0,
+     0.39,
+     630.0
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.the-long-walk.piece.1",
+    "assetId": "vanilla:architecture/docks/dockstrent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     7206.27,
+     0.35,
+     526.53
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.the-long-walk.piece.10",
+    "assetId": "vanilla:architecture/docks/dockstrent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     7211.89,
+     0.35,
+     591.84
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.the-long-walk.piece.11",
+    "assetId": "vanilla:architecture/docks/dockstrent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     7212.49,
+     0.35,
+     599.1
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.the-long-walk.piece.12",
+    "assetId": "vanilla:architecture/docks/dockstrent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     7213.1,
+     0.35,
+     606.35
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.the-long-walk.piece.13",
+    "assetId": "vanilla:architecture/docks/dockstrent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     7213.7,
+     0.35,
+     613.61
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.the-long-walk.piece.14",
+    "assetId": "vanilla:architecture/docks/dockstrent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     7214.31,
+     0.35,
+     620.86
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.the-long-walk.piece.2",
+    "assetId": "vanilla:architecture/docks/dockstrent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     7206.88,
+     0.35,
+     533.78
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.the-long-walk.piece.3",
+    "assetId": "vanilla:architecture/docks/dockstrent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     7207.48,
+     0.35,
+     541.04
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.the-long-walk.piece.4",
+    "assetId": "vanilla:architecture/docks/dockstrent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     7208.09,
+     0.35,
+     548.3
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.the-long-walk.piece.5",
+    "assetId": "vanilla:architecture/docks/dockstrent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     7208.69,
+     0.35,
+     555.55
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.the-long-walk.piece.6",
+    "assetId": "vanilla:architecture/docks/dockstrent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     7209.3,
+     0.35,
+     562.81
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.the-long-walk.piece.7",
+    "assetId": "vanilla:architecture/docks/dockstr4way01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     7210.14,
+     0.36,
+     570.07
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.the-long-walk.piece.8",
+    "assetId": "vanilla:architecture/docks/dockstrent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     7210.68,
+     0.35,
+     577.33
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.the-long-walk.piece.9",
+    "assetId": "vanilla:architecture/docks/dockstrent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     7211.28,
+     0.35,
+     584.59
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.west-boards.assembly.w-bucket",
+    "assetId": "vanilla:clutter/bucket01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7195.8,
+     0.3,
+     571.6
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.west-boards.assembly.w-net",
+    "assetId": "shores:shoresofskyrim/fishnet01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7197.5,
+     0.28,
+     572.3
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.west-boards.piece.1",
+    "assetId": "vanilla:architecture/docks/dockstrent02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     7204.81,
+     0.37,
+     570.72
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.west-boards.piece.2",
+    "assetId": "vanilla:architecture/docks/dockstrsol01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     7197.56,
+     0.3,
+     571.4
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.west-boards.piece.3",
+    "assetId": "vanilla:architecture/docks/dockstepsdown01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     7190.43,
+     -1.49,
+     571.88
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.crews-house.assembly.m-chair-y1",
+    "assetId": "mudmother:gv_meshes/argoniannest/wovenchair01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7193.5,
+     0.5,
+     510.0
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.crews-house.assembly.m-chair-y2",
+    "assetId": "mudmother:gv_meshes/argoniannest/wovenchair01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7195.0,
+     0.5,
+     510.0
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.crews-house.assembly.m-chair-y3",
+    "assetId": "mudmother:gv_meshes/argoniannest/wovenchair01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7196.5,
+     0.5,
+     510.0
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.long-house.assembly.m-chair-l1",
+    "assetId": "mudmother:gv_meshes/argoniannest/wovenchair01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7216.5,
+     0.47,
+     513.5
+    ]
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.stage-shelter.assembly.m-chair-s1",
+    "assetId": "mudmother:gv_meshes/argoniannest/wovenchair01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     7232.49,
+     0.33,
+     626.91
+    ]
+   }
+  ],
+  "sockets": [
+   {
+    "id": "fill.c-full",
+    "kind": "container",
+    "area": "parcel.riverwalk.crews-house",
+    "positionM": [
+     7194.6,
+     0.54,
+     517.8
+    ],
+    "fills": []
+   },
+   {
+    "id": "fill.c-sack",
+    "kind": "container",
+    "area": "parcel.riverwalk.crews-house",
+    "positionM": [
+     7195.0,
+     0.69,
+     513.5
+    ],
+    "fills": []
+   },
+   {
+    "id": "fill.c-urn2",
+    "kind": "container",
+    "area": "parcel.riverwalk.crews-house",
+    "positionM": [
+     7195.3,
+     0.5,
+     515.0
+    ],
+    "fills": []
+   },
+   {
+    "id": "fill.d9-rainbarrel",
+    "kind": "container",
+    "area": "parcel.riverwalk.crews-house",
+    "positionM": [
+     7197.0,
+     0.49,
+     506.5
+    ],
+    "fills": []
+   },
+   {
+    "id": "fill.f-full",
+    "kind": "container",
+    "area": "parcel.riverwalk.family-house",
+    "positionM": [
+     7218.5,
+     0.7,
+     513.5
+    ],
+    "fills": []
+   },
+   {
+    "id": "fill.f-sack",
+    "kind": "container",
+    "area": "parcel.riverwalk.family-house",
+    "positionM": [
+     7219.5,
+     0.7,
+     522.5
+    ],
+    "fills": []
+   },
+   {
+    "id": "fill.f-urn",
+    "kind": "container",
+    "area": "parcel.riverwalk.family-house",
+    "positionM": [
+     7217.6,
+     0.7,
+     514.6
+    ],
+    "fills": []
+   },
+   {
+    "id": "fill.sn-sack",
+    "kind": "container",
+    "area": "parcel.riverwalk.stage-shelter",
+    "positionM": [
+     7237.45,
+     0.42,
+     631.45
+    ],
+    "fills": []
+   },
+   {
+    "id": "fill.ss-store",
+    "kind": "container",
+    "area": "parcel.riverwalk.stage-shelter",
+    "positionM": [
+     7234.65,
+     0.83,
+     627.6
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.container-crews-stores",
+    "kind": "container",
+    "area": "parcel.riverwalk.crews-house",
+    "positionM": [
+     7194.0,
+     0.5,
+     515.6
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.container-toll-takings",
+    "kind": "container",
+    "area": "parcel.riverwalk.crews-house",
+    "positionM": [
+     7196.2,
+     0.5,
+     515.6
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.cove-beach",
+    "kind": "mooring",
+    "area": "open",
+    "positionM": [
+     7213.43,
+     -0.6,
+     535.04
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.den-crow",
+    "kind": "fauna",
+    "area": "open",
+    "positionM": [
+     7181.2,
+     -0.42,
+     509.5
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.den-osheeja-gar",
+    "kind": "fauna",
+    "area": "open",
+    "positionM": [
+     7158.7,
+     -2.42,
+     650.3
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.den-torchbug",
+    "kind": "fauna",
+    "area": "open",
+    "positionM": [
+     7164.6,
+     2.64,
+     536.7
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.evidence-the-plank-ages",
+    "kind": "marker",
+    "area": "parcel.riverwalk.the-long-walk",
+    "positionM": [
+     7211.2,
+     0.35,
+     590.0
+    ],
+    "fills": [
+     "promise.riverwalk.evidence-the-plank-ages"
+    ]
+   },
+   {
+    "id": "socket.riverwalk.idle-n1-home",
+    "kind": "idle",
+    "area": "SeekhatEldersHut",
+    "positionM": [
+     114.95,
+     96.7,
+     46.54
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.idle-n1-work",
+    "kind": "idle",
+    "area": "parcel.riverwalk.long-house",
+    "positionM": [
+     7226.65,
+     0.7,
+     514.01
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.idle-n2-home",
+    "kind": "idle",
+    "area": "SeekhatEldersHut",
+    "positionM": [
+     114.95,
+     96.71,
+     45.5
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.idle-n2-work",
+    "kind": "idle",
+    "area": "parcel.riverwalk.ferry-stage",
+    "positionM": [
+     7235.45,
+     0.0,
+     601.3
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.idle-n3-home",
+    "kind": "idle",
+    "area": "SeekhatEldersHut",
+    "positionM": [
+     114.95,
+     96.7,
+     46.54
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.idle-n3-work",
+    "kind": "idle",
+    "area": "parcel.riverwalk.shrine",
+    "positionM": [
+     7194.46,
+     0.5,
+     517.1
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.idle-seat-c-chair1",
+    "kind": "idle",
+    "area": "parcel.riverwalk.crews-house",
+    "positionM": [
+     7197.2,
+     0.5,
+     517.2
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.idle-seat-f-chair",
+    "kind": "idle",
+    "area": "parcel.riverwalk.family-house",
+    "positionM": [
+     7215.5,
+     0.5,
+     507.5
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.idle-seat-m-chair-l1",
+    "kind": "idle",
+    "area": "parcel.riverwalk.long-house",
+    "positionM": [
+     7216.5,
+     0.7,
+     513.5
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.idle-seat-m-chair-s1",
+    "kind": "idle",
+    "area": "parcel.riverwalk.stage-shelter",
+    "positionM": [
+     7232.49,
+     0.33,
+     626.91
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.idle-seat-m-chair-y1",
+    "kind": "idle",
+    "area": "parcel.riverwalk.crews-house",
+    "positionM": [
+     7193.5,
+     0.5,
+     510.0
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.idle-seat-m-chair-y2",
+    "kind": "idle",
+    "area": "parcel.riverwalk.crews-house",
+    "positionM": [
+     7195.0,
+     0.5,
+     510.0
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.idle-seat-m-chair-y3",
+    "kind": "idle",
+    "area": "parcel.riverwalk.crews-house",
+    "positionM": [
+     7196.5,
+     0.5,
+     510.0
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.idle-seat-seekhateldershut-081c6f24",
+    "kind": "idle",
+    "area": "SeekhatEldersHut",
+    "positionM": [
+     120.9,
+     96.71,
+     49.41
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.idle-seat-seekhateldershut-081c6f25",
+    "kind": "idle",
+    "area": "SeekhatEldersHut",
+    "positionM": [
+     122.65,
+     96.71,
+     47.59
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.idle-stage-mistress-home",
+    "kind": "idle",
+    "area": "SeekhatEldersHut",
+    "positionM": [
+     114.95,
+     96.71,
+     45.5
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.idle-stage-mistress-work",
+    "kind": "idle",
+    "area": "parcel.riverwalk.stage-shelter",
+    "positionM": [
+     7230.35,
+     0.34,
+     629.51
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.idle-toll-holder-home",
+    "kind": "idle",
+    "area": "SeekhatEldersHut",
+    "positionM": [
+     114.95,
+     96.7,
+     46.54
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.idle-toll-holder-work",
+    "kind": "idle",
+    "area": "parcel.riverwalk.crews-house",
+    "positionM": [
+     7203.2,
+     0.58,
+     520.4
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.item-toll-tally",
+    "kind": "item",
+    "area": "parcel.riverwalk.long-house",
+    "positionM": [
+     7230.11,
+     0.7,
+     516.94
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.marker-house-door",
+    "kind": "marker",
+    "area": "parcel.riverwalk.crews-house",
+    "positionM": [
+     7213.03,
+     0.47,
+     514.84
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.npc-n1",
+    "kind": "npc",
+    "area": "parcel.riverwalk.crews-house",
+    "positionM": [
+     7199.4,
+     0.65,
+     518.6
+    ],
+    "fills": [
+     "promise.riverwalk.occupant-n1"
+    ],
+    "slot": "n1"
+   },
+   {
+    "id": "socket.riverwalk.npc-n2",
+    "kind": "npc",
+    "area": "parcel.riverwalk.ferry-stage",
+    "positionM": [
+     7229.8,
+     0.19,
+     623.4
+    ],
+    "fills": [
+     "promise.riverwalk.occupant-n2",
+     "promise.riverwalk.operator-canoe-dunmer-north-riverwalk-the-tide-fair"
+    ],
+    "slot": "n2"
+   },
+   {
+    "id": "socket.riverwalk.npc-n3",
+    "kind": "npc",
+    "area": "parcel.riverwalk.shrine",
+    "positionM": [
+     7207.2,
+     0.47,
+     521.2
+    ],
+    "fills": [
+     "promise.riverwalk.occupant-n3"
+    ],
+    "slot": "n3"
+   },
+   {
+    "id": "socket.riverwalk.npc-stage-mistress",
+    "kind": "npc",
+    "area": "parcel.riverwalk.stage-shelter",
+    "positionM": [
+     7227.9,
+     0.48,
+     626.4
+    ],
+    "fills": [
+     "promise.riverwalk.occupant-stage-mistress"
+    ],
+    "slot": "stage-mistress"
+   },
+   {
+    "id": "socket.riverwalk.npc-toll-holder",
+    "kind": "npc",
+    "area": "parcel.riverwalk.crews-house",
+    "positionM": [
+     7202.8,
+     0.62,
+     521.9
+    ],
+    "fills": [
+     "promise.riverwalk.occupant-toll-holder"
+    ],
+    "slot": "toll-holder"
+   },
+   {
+    "id": "socket.riverwalk.plant-1",
+    "kind": "plant",
+    "area": "open",
+    "positionM": [
+     7224.31,
+     -1.36,
+     563.28
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.plant-2",
+    "kind": "plant",
+    "area": "open",
+    "positionM": [
+     7241.95,
+     -2.26,
+     562.75
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.plant-3",
+    "kind": "plant",
+    "area": "open",
+    "positionM": [
+     7247.02,
+     -3.47,
+     562.98
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.post-stage-mistress",
+    "kind": "marker",
+    "area": "parcel.riverwalk.ferry-stage",
+    "positionM": [
+     7229.6,
+     0.19,
+     623.2
+    ],
+    "fills": [
+     "promise.riverwalk.post-stage-mistress"
+    ]
+   },
+   {
+    "id": "socket.riverwalk.post-toll-holder",
+    "kind": "marker",
+    "area": "parcel.riverwalk.the-long-walk",
+    "positionM": [
+     7204.3,
+     0.53,
+     521.8
+    ],
+    "fills": [
+     "promise.riverwalk.post-toll-holder"
+    ]
+   },
+   {
+    "id": "socket.riverwalk.scene-the-long-walk",
+    "kind": "marker",
+    "area": "parcel.riverwalk.the-long-walk",
+    "positionM": [
+     7209.9,
+     0.36,
+     572.0
+    ],
+    "fills": [
+     "promise.riverwalk.scene-the-long-walk"
+    ]
+   },
+   {
+    "id": "socket.riverwalk.sea-hull-mooring",
+    "kind": "mooring",
+    "area": "open",
+    "positionM": [
+     7221.8,
+     -1.22,
+     583.1
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.shelter-peg-1",
+    "kind": "mooring",
+    "area": "open",
+    "positionM": [
+     7234.2,
+     -0.62,
+     620.5
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.shelter-peg-2",
+    "kind": "mooring",
+    "area": "open",
+    "positionM": [
+     7235.7,
+     -1.16,
+     614.0
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.shelter-peg-3",
+    "kind": "mooring",
+    "area": "open",
+    "positionM": [
+     7237.1,
+     -1.25,
+     607.0
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.riverwalk.stage-landing",
+    "kind": "mooring",
+    "area": "open",
+    "positionM": [
+     7244.5,
+     0.02,
+     638.0
+    ],
+    "fills": []
+   }
+  ],
+  "landmarks": [
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.ferry-landing.piece.1",
+    "what": "dock",
+    "via": "promise.riverwalk.thing-dock",
+    "positionM": [
+     7231.2,
+     0.19,
+     621.5
+    ],
+    "inSight": {
+     "places": [],
+     "here": [
+      "fill.ss-store",
+      "socket.riverwalk.den-osheeja-gar",
+      "socket.riverwalk.idle-seat-m-chair-s1",
+      "socket.riverwalk.idle-stage-mistress-work",
+      "socket.riverwalk.npc-n2",
+      "socket.riverwalk.npc-stage-mistress",
+      "socket.riverwalk.post-stage-mistress",
+      "socket.riverwalk.shelter-peg-1"
+     ]
+    }
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.ferry-stage.building",
+    "what": "ferry",
+    "via": "promise.riverwalk.thing-ferry",
+    "positionM": [
+     7235.45,
+     0.0,
+     601.3
+    ],
+    "inSight": {
+     "places": [],
+     "here": [
+      "socket.riverwalk.idle-n2-work",
+      "socket.riverwalk.shelter-peg-3"
+     ]
+    }
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.stage-shelter.assembly.canoe",
+    "what": "boat",
+    "via": "promise.riverwalk.thing-boat",
+    "positionM": [
+     7244.5,
+     0.02,
+     638.0
+    ],
+    "inSight": {
+     "places": [],
+     "here": [
+      "fill.sn-sack",
+      "socket.riverwalk.stage-landing"
+     ]
+    }
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.stage-shelter.assembly.canoe2",
+    "what": "boat",
+    "via": "promise.riverwalk.thing-boat",
+    "positionM": [
+     7237.3,
+     0.02,
+     613.7
+    ],
+    "inSight": {
+     "places": [],
+     "here": [
+      "socket.riverwalk.shelter-peg-2"
+     ]
+    }
+   },
+   {
+    "id": "place.dunmer-north.riverwalk.parcel.riverwalk.the-long-walk.piece.1",
+    "what": "plank crossing",
+    "via": "promise.riverwalk.thing-plank-crossing",
+    "positionM": [
+     7206.27,
+     0.35,
+     526.53
+    ],
+    "inSight": {
+     "places": [],
+     "here": [
+      "fill.c-full",
+      "fill.c-sack",
+      "fill.c-urn2",
+      "fill.d9-rainbarrel",
+      "fill.f-full",
+      "fill.f-sack",
+      "fill.f-urn",
+      "socket.riverwalk.container-crews-stores",
+      "socket.riverwalk.container-toll-takings",
+      "socket.riverwalk.cove-beach",
+      "socket.riverwalk.den-crow",
+      "socket.riverwalk.den-torchbug",
+      "socket.riverwalk.idle-n1-work",
+      "socket.riverwalk.idle-n3-work",
+      "socket.riverwalk.idle-seat-c-chair1",
+      "socket.riverwalk.idle-seat-f-chair",
+      "socket.riverwalk.idle-seat-m-chair-l1",
+      "socket.riverwalk.idle-seat-m-chair-y1",
+      "socket.riverwalk.idle-seat-m-chair-y2",
+      "socket.riverwalk.idle-seat-m-chair-y3",
+      "socket.riverwalk.idle-toll-holder-work",
+      "socket.riverwalk.item-toll-tally",
+      "socket.riverwalk.marker-house-door",
+      "socket.riverwalk.npc-n1",
+      "socket.riverwalk.npc-n3",
+      "socket.riverwalk.npc-toll-holder",
+      "socket.riverwalk.post-toll-holder"
+     ]
+    }
+   },
+   {
+    "id": "socket.riverwalk.evidence-the-plank-ages",
+    "what": "the plank ages",
+    "via": "evidence socket",
+    "positionM": [
+     7211.2,
+     0.35,
+     590.0
+    ],
+    "inSight": {
+     "places": [],
+     "here": [
+      "socket.riverwalk.sea-hull-mooring"
+     ]
+    }
+   },
+   {
+    "id": "socket.riverwalk.scene-the-long-walk",
+    "what": "the long walk",
+    "via": "scene socket",
+    "positionM": [
+     7209.9,
+     0.36,
+     572.0
+    ],
+    "inSight": {
+     "places": [],
+     "here": [
+      "socket.riverwalk.plant-1",
+      "socket.riverwalk.plant-2",
+      "socket.riverwalk.plant-3"
+     ]
+    }
+   }
+  ],
+  "people": [
+   {
+    "id": "npc.dunmer-north.riverwalk.n1",
+    "name": "Kaska-Yuul",
+    "role": "a long house household",
+    "post": "socket.riverwalk.npc-n1",
+    "services": [],
+    "hostility": "guarded",
+    "topics": [
+     "topic.about-ojel",
+     "topic.riverwalk",
+     "topic.riverwalk-danger",
+     "topic.riverwalk-directions",
+     "topic.riverwalk-people",
+     "topic.riverwalk-work",
+     "topic.role-long-house"
+    ]
+   },
+   {
+    "id": "npc.dunmer-north.riverwalk.n1-2",
+    "name": "Am-Rekh",
+    "role": "a long house household",
+    "post": "socket.riverwalk.npc-n1",
+    "services": [],
+    "hostility": "guarded",
+    "topics": [
+     "topic.about-archon",
+     "topic.about-prison-road",
+     "topic.about-riverwalk",
+     "topic.about-tear",
+     "topic.about-thorn",
+     "topic.riverwalk",
+     "topic.riverwalk-danger",
+     "topic.riverwalk-directions",
+     "topic.riverwalk-people",
+     "topic.riverwalk-work",
+     "topic.role-long-house"
+    ]
+   },
+   {
+    "id": "npc.dunmer-north.riverwalk.n1-3",
+    "name": "Hassk-Nasha",
+    "role": "a long house household",
+    "post": "socket.riverwalk.npc-n1",
+    "services": [],
+    "hostility": "guarded",
+    "topics": [
+     "topic.about-archon",
+     "topic.about-hissmir",
+     "topic.about-lilmoth",
+     "topic.about-ojel",
+     "topic.about-prison-road",
+     "topic.about-riverwalk",
+     "topic.about-tear",
+     "topic.about-thorn",
+     "topic.riverwalk",
+     "topic.riverwalk-danger",
+     "topic.riverwalk-directions",
+     "topic.riverwalk-people",
+     "topic.riverwalk-work",
+     "topic.role-long-house"
+    ]
+   },
+   {
+    "id": "npc.dunmer-north.riverwalk.n2",
+    "name": "Half-Tail",
+    "role": "a boat crew",
+    "post": "socket.riverwalk.npc-n2",
+    "services": [],
+    "hostility": "guarded",
+    "topics": [
+     "topic.about-archon",
+     "topic.about-prison-road",
+     "topic.about-riverwalk",
+     "topic.about-tear",
+     "topic.about-thorn",
+     "topic.latest-rumours",
+     "topic.riverwalk",
+     "topic.riverwalk-danger",
+     "topic.riverwalk-directions",
+     "topic.riverwalk-people",
+     "topic.riverwalk-silted-cove",
+     "topic.riverwalk-work",
+     "topic.role-boat-work"
+    ]
+   },
+   {
+    "id": "npc.dunmer-north.riverwalk.n2-2",
+    "name": "Bright-Frill",
+    "role": "a boat crew",
+    "post": "socket.riverwalk.npc-n2",
+    "services": [],
+    "hostility": "guarded",
+    "topics": [
+     "topic.about-hissmir",
+     "topic.about-riverwalk",
+     "topic.about-tear",
+     "topic.about-thorn",
+     "topic.riverwalk",
+     "topic.riverwalk-danger",
+     "topic.riverwalk-directions",
+     "topic.riverwalk-people",
+     "topic.riverwalk-work",
+     "topic.role-boat-work"
+    ]
+   },
+   {
+    "id": "npc.dunmer-north.riverwalk.n2-3",
+    "name": "Wet Jeeba",
+    "role": "a boat crew",
+    "post": "socket.riverwalk.npc-n2",
+    "services": [],
+    "hostility": "guarded",
+    "topics": [
+     "topic.about-archon",
+     "topic.about-hissmir",
+     "topic.about-hist-sap",
+     "topic.about-morrowind",
+     "topic.about-prison-road",
+     "topic.about-riverwalk",
+     "topic.about-shells-and-stones",
+     "topic.about-tear",
+     "topic.about-thorn",
+     "topic.riverwalk",
+     "topic.riverwalk-danger",
+     "topic.riverwalk-directions",
+     "topic.riverwalk-people",
+     "topic.riverwalk-work",
+     "topic.role-boat-work"
+    ]
+   },
+   {
+    "id": "npc.dunmer-north.riverwalk.n3",
+    "name": "Reaches-The-Shore-Last",
+    "role": "a toll hand",
+    "post": "socket.riverwalk.npc-n3",
+    "services": [],
+    "hostility": "guarded",
+    "topics": [
+     "topic.about-archon",
+     "topic.about-prison-road",
+     "topic.about-riverwalk",
+     "topic.about-tear",
+     "topic.about-thorn",
+     "topic.latest-rumours",
+     "topic.riverwalk",
+     "topic.riverwalk-accusation",
+     "topic.riverwalk-danger",
+     "topic.riverwalk-directions",
+     "topic.riverwalk-people",
+     "topic.riverwalk-work",
+     "topic.role-toll"
+    ]
+   },
+   {
+    "id": "npc.dunmer-north.riverwalk.n3-2",
+    "name": "Runs-The-Line-Out",
+    "role": "a toll hand",
+    "post": "socket.riverwalk.npc-n3",
+    "services": [],
+    "hostility": "guarded",
+    "topics": [
+     "topic.about-archon",
+     "topic.about-prison-road",
+     "topic.about-riverwalk",
+     "topic.about-tear",
+     "topic.about-thorn",
+     "topic.latest-rumours",
+     "topic.riverwalk",
+     "topic.riverwalk-danger",
+     "topic.riverwalk-directions",
+     "topic.riverwalk-people",
+     "topic.riverwalk-sounded-way",
+     "topic.riverwalk-work",
+     "topic.role-toll"
+    ]
+   },
+   {
+    "id": "npc.dunmer-north.riverwalk.stage-mistress",
+    "name": "Deesh-Ra",
+    "role": "the stage-mistress",
+    "post": "socket.riverwalk.npc-stage-mistress",
+    "services": [
+     "ferry",
+     "train",
+     "boat"
+    ],
+    "hostility": "guarded",
+    "topics": [
+     "topic.about-archon",
+     "topic.about-hissmir",
+     "topic.about-prison-road",
+     "topic.about-reed-sail-compact",
+     "topic.about-riverwalk",
+     "topic.about-tear",
+     "topic.about-thorn",
+     "topic.latest-rumours",
+     "topic.riverwalk",
+     "topic.riverwalk-danger",
+     "topic.riverwalk-directions",
+     "topic.riverwalk-people",
+     "topic.riverwalk-silted-cove",
+     "topic.riverwalk-two-claims",
+     "topic.riverwalk-work",
+     "topic.role-stage"
+    ]
+   },
+   {
+    "id": "npc.dunmer-north.riverwalk.toll-holder",
+    "name": "Lifts-Two-Traps",
+    "role": "the toll-holder",
+    "post": "socket.riverwalk.npc-toll-holder",
+    "services": [],
+    "hostility": "guarded",
+    "topics": [
+     "topic.about-archon",
+     "topic.about-hissmir",
+     "topic.about-prison-road",
+     "topic.about-riverwalk",
+     "topic.about-tear",
+     "topic.about-thorn",
+     "topic.latest-rumours",
+     "topic.riverwalk",
+     "topic.riverwalk-accusation",
+     "topic.riverwalk-danger",
+     "topic.riverwalk-directions",
+     "topic.riverwalk-people",
+     "topic.riverwalk-stage-word",
+     "topic.riverwalk-two-claims",
+     "topic.riverwalk-work",
+     "topic.role-toll"
+    ]
+   }
+  ],
+  "counts": {
+   "SeekhatEldersHut": {
+    "nodes": 0,
+    "plants": 0,
+    "items": 0,
+    "containers": 0,
+    "occupants": 0,
+    "byItem": {},
+    "byPlant": {},
+    "creatures": {}
+   },
+   "open": {
+    "nodes": 0,
+    "plants": 3,
+    "items": 0,
+    "containers": 0,
+    "occupants": 0,
+    "byItem": {
+     "item.oliis-pearl": 3
+    },
+    "byPlant": {
+     "pearl-clam": 3
+    },
+    "creatures": {
+     "creature.crow": 4,
+     "creature.osheeja-gar": 4,
+     "creature.torchbug": 6
+    }
+   },
+   "parcel.riverwalk.crews-house": {
+    "nodes": 0,
+    "plants": 0,
+    "items": 66,
+    "containers": 6,
+    "occupants": 2,
+    "byItem": {
+     "item.eel-slime-salve": 1,
+     "item.fishing-pole": 1,
+     "item.flagon": 1,
+     "item.gold": 35,
+     "item.hissmir-fish-eye-rye": 1,
+     "item.leather-strips": 2,
+     "item.lumberries": 3,
+     "item.rag": 2,
+     "item.river-salt": 2,
+     "item.saltrice-loaf": 8,
+     "item.shovel": 1,
+     "item.smoked-slaughterfish": 7,
+     "item.toll-urn-key": 1,
+     "item.torch": 1
+    },
+    "byPlant": {},
+    "creatures": {}
+   },
+   "parcel.riverwalk.family-house": {
+    "nodes": 0,
+    "plants": 0,
+    "items": 17,
+    "containers": 3,
+    "occupants": 0,
+    "byItem": {
+     "item.bucket": 1,
+     "item.clay-jug": 1,
+     "item.eel-slime-reminder": 1,
+     "item.eel-slime-salve": 1,
+     "item.hoe": 1,
+     "item.lumberries": 2,
+     "item.saltrice-loaf": 4,
+     "item.smoked-slaughterfish": 3,
+     "item.trodh": 3
+    },
+    "byPlant": {},
+    "creatures": {}
+   },
+   "parcel.riverwalk.ferry-stage": {
+    "nodes": 0,
+    "plants": 0,
+    "items": 0,
+    "containers": 0,
+    "occupants": 1,
+    "byItem": {},
+    "byPlant": {},
+    "creatures": {}
+   },
+   "parcel.riverwalk.long-house": {
+    "nodes": 0,
+    "plants": 0,
+    "items": 1,
+    "containers": 0,
+    "occupants": 0,
+    "byItem": {
+     "item.toll-tally": 1
+    },
+    "byPlant": {},
+    "creatures": {}
+   },
+   "parcel.riverwalk.shrine": {
+    "nodes": 0,
+    "plants": 0,
+    "items": 0,
+    "containers": 0,
+    "occupants": 1,
+    "byItem": {},
+    "byPlant": {},
+    "creatures": {}
+   },
+   "parcel.riverwalk.stage-shelter": {
+    "nodes": 0,
+    "plants": 0,
+    "items": 14,
+    "containers": 2,
+    "occupants": 1,
+    "byItem": {
+     "item.dried-flower-buds": 3,
+     "item.eel-slime-salve": 2,
+     "item.ferry-guide-note": 1,
+     "item.fishing-pole": 1,
+     "item.smoked-slaughterfish": 4,
+     "item.torch": 3
+    },
+    "byPlant": {},
+    "creatures": {}
+   },
+   "parcel.riverwalk.the-long-walk": {
+    "nodes": 0,
+    "plants": 0,
+    "items": 0,
+    "containers": 0,
+    "occupants": 0,
+    "byItem": {},
+    "byPlant": {},
+    "creatures": {}
+   }
+  },
+  "services": [
+   {
+    "kind": "ferry",
+    "promised": true,
+    "by": [
+     "npc.dunmer-north.riverwalk.stage-mistress"
+    ],
+    "filledBy": [
+     "parcel.riverwalk.ferry-stage"
+    ]
+   },
+   {
+    "kind": "lodging",
+    "promised": true,
+    "by": [],
+    "filledBy": [
+     "parcel.riverwalk.crews-house"
+    ]
+   },
+   {
+    "kind": "trader",
+    "promised": true,
+    "by": [],
+    "filledBy": [
+     "parcel.riverwalk.crews-house"
+    ]
+   },
+   {
+    "kind": "train",
+    "promised": false,
+    "by": [
+     "npc.dunmer-north.riverwalk.stage-mistress"
+    ],
+    "filledBy": []
+   },
+   {
+    "kind": "boat",
+    "promised": false,
+    "by": [
+     "npc.dunmer-north.riverwalk.stage-mistress"
+    ],
+    "filledBy": []
+   }
+  ],
+  "hostility": {
+   "baseline": "wary",
+   "owner": null,
+   "flips": [],
+   "clearable": false,
+   "respawn": "none"
+  }
+ }
+}

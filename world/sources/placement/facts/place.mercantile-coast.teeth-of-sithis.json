@@ -1,0 +1,1326 @@
+{
+ "schemaVersion": 1,
+ "placeId": "place.mercantile-coast.teeth-of-sithis",
+ "facts": [
+  {
+   "id": "fact.teeth-of-sithis.tag-faction-gateway",
+   "claim": "A faction can be met and joined at The Teeth of Sithis.",
+   "sourceField": "playerPurpose.primary",
+   "tag": "faction-gateway",
+   "kind": "activity",
+   "carrier": {
+    "built": {
+     "uid": "socket.teeth-of-sithis.npc-nisswo",
+     "type": "npc"
+    }
+   }
+  },
+  {
+   "id": "fact.teeth-of-sithis.tag-dungeon-delve",
+   "claim": "The Teeth of Sithis has a way down into a delve.",
+   "sourceField": "playerPurpose.secondary",
+   "tag": "dungeon-delve",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "place.mercantile-coast.teeth-of-sithis.parcel.teeth-of-sithis.east-stair",
+     "type": "piece-set"
+    }
+   }
+  },
+  {
+   "id": "fact.teeth-of-sithis.tag-lore-reveal",
+   "claim": "The Teeth of Sithis tells part of the province's past.",
+   "sourceField": "playerPurpose.secondary",
+   "tag": "lore-reveal",
+   "kind": "history",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.mercantile-coast.teeth-of-sithis.nisswo-teeth"
+    }
+   }
+  },
+  {
+   "id": "fact.teeth-of-sithis.tag-lore-fragment",
+   "claim": "Something at The Teeth of Sithis records its past.",
+   "sourceField": "lootTable.kinds",
+   "tag": "lore-fragment",
+   "kind": "history",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.mercantile-coast.teeth-of-sithis.nisswo-teeth"
+    }
+   }
+  },
+  {
+   "id": "fact.teeth-of-sithis.why-founding-1",
+   "claim": "The Teeth of Sithis is the largest Sithis temple in Murkmire.",
+   "sourceField": "why.founding",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.mercantile-coast.teeth-of-sithis.nisswo-teeth"
+    }
+   }
+  },
+  {
+   "id": "fact.teeth-of-sithis.why-founding-2",
+   "claim": "The Clutch of Nisswo tends the temple.",
+   "sourceField": "why.founding",
+   "kind": "activity",
+   "carrier": {
+    "built": {
+     "uid": "socket.teeth-of-sithis.npc-keeper",
+     "type": "npc"
+    }
+   }
+  },
+  {
+   "id": "fact.teeth-of-sithis.why-siteAdvantages-1",
+   "claim": "The temple stands at the end of a pilgrim route, built to frame six black stone teeth in the shallows.",
+   "sourceField": "why.siteAdvantages",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "place.mercantile-coast.teeth-of-sithis.landmark.teeth-of-sithis.the-colonnade",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.teeth-of-sithis.why-occupantsMotive-1",
+   "claim": "The Clutch maintain the temple precisely.",
+   "sourceField": "why.occupantsMotive",
+   "kind": "activity",
+   "carrier": {
+    "built": {
+     "uid": "socket.teeth-of-sithis.npc-scrubber",
+     "type": "npc"
+    }
+   }
+  },
+  {
+   "id": "fact.teeth-of-sithis.why-occupantsMotive-2",
+   "claim": "The Clutch preach that the loss of the temple's purpose is itself the teaching.",
+   "sourceField": "why.occupantsMotive",
+   "kind": "history",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.mercantile-coast.teeth-of-sithis.nisswo-teeth"
+    }
+   }
+  },
+  {
+   "id": "fact.teeth-of-sithis.why-pressures-1",
+   "claim": "At least one faction claims to have found out the temple's lost original purpose.",
+   "sourceField": "why.pressures",
+   "kind": "history",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.mercantile-coast.teeth-of-sithis.n1"
+    }
+   }
+  },
+  {
+   "id": "fact.teeth-of-sithis.vibe-silhouette-1",
+   "claim": "A colonnade of black stone teeth rises straight out of flat water.",
+   "sourceField": "vibe.silhouette",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "place.mercantile-coast.teeth-of-sithis.landmark.teeth-of-sithis.the-colonnade",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.teeth-of-sithis.vibe-silhouette-2",
+   "claim": "The colonnade is scrubbed clean to the waterline and green below it.",
+   "sourceField": "vibe.silhouette",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.mercantile-coast.teeth-of-sithis.the-one"
+    }
+   }
+  },
+  {
+   "id": "fact.teeth-of-sithis.vibe-approach-1",
+   "claim": "The temple is visible only from the last bend of the pilgrim water.",
+   "sourceField": "vibe.approach",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.mercantile-coast.teeth-of-sithis.n1"
+    }
+   }
+  },
+  {
+   "id": "fact.teeth-of-sithis.playerPurpose-hook-1",
+   "claim": "The Nisswo will take an outsider in for the right offering.",
+   "sourceField": "playerPurpose.hook",
+   "kind": "service",
+   "carrier": {
+    "built": {
+     "uid": "socket.teeth-of-sithis.npc-nisswo",
+     "type": "npc"
+    }
+   }
+  },
+  {
+   "id": "fact.teeth-of-sithis.contents-loot-l1-1",
+   "claim": "Four centuries of unmaking offerings lie where they were laid in the main hall.",
+   "sourceField": "contents.loot.l1",
+   "kind": "cache",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.mercantile-coast.teeth-of-sithis.n1"
+    }
+   }
+  },
+  {
+   "id": "fact.teeth-of-sithis.vibe-condition-1",
+   "claim": "The temple is immaculate to the waterline and untouched beneath it.",
+   "sourceField": "vibe.condition",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.mercantile-coast.teeth-of-sithis.the-one"
+    }
+   }
+  },
+  {
+   "id": "fact.teeth-of-sithis.vibe-materials-1",
+   "claim": "The temple is black stone, xanmeer construction on a natural formation, with ornament courses.",
+   "sourceField": "vibe.materials",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "place.mercantile-coast.teeth-of-sithis.landmark.teeth-of-sithis.the-colonnade",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.teeth-of-sithis.vibe-materials-2",
+   "claim": "The Clutch scrub it ritually, with no repair and no addition.",
+   "sourceField": "vibe.materials",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.mercantile-coast.teeth-of-sithis.the-one"
+    }
+   }
+  },
+  {
+   "id": "fact.teeth-of-sithis.vibe-mood-1",
+   "claim": "The mood is exact and unexplained.",
+   "sourceField": "vibe.mood",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.mercantile-coast.teeth-of-sithis.nisswo-teeth"
+    }
+   }
+  },
+  {
+   "id": "fact.teeth-of-sithis.vibe-palette-1",
+   "claim": "The colours are wet black stone, a white scrub-line and brown water.",
+   "sourceField": "vibe.palette",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "place.mercantile-coast.teeth-of-sithis.landmark.teeth-of-sithis.the-colonnade",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.teeth-of-sithis.vibe-senses-1",
+   "claim": "Water laps on stone with no echo back, and there is the sound of scrubbing.",
+   "sourceField": "vibe.senses",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.mercantile-coast.teeth-of-sithis.nisswo-teeth"
+    }
+   }
+  },
+  {
+   "id": "fact.teeth-of-sithis.vibe-senses-2",
+   "claim": "Cold air comes off the stone even at noon, and there is silence where birds should call.",
+   "sourceField": "vibe.senses",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.mercantile-coast.teeth-of-sithis.nisswo-teeth"
+    }
+   }
+  },
+  {
+   "id": "fact.teeth-of-sithis.vibe-signatureFeature-1",
+   "claim": "A colonnade of black stone teeth rises out of standing water, kept scrubbed clean of algae to the waterline.",
+   "sourceField": "vibe.signatureFeature",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "place.mercantile-coast.teeth-of-sithis.landmark.teeth-of-sithis.the-colonnade",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.teeth-of-sithis.why-wouldChangeIf-1",
+   "claim": "A rediscovery of the temple's function would split the Clutch.",
+   "sourceField": "why.wouldChangeIf",
+   "kind": "activity",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.mercantile-coast.teeth-of-sithis.nisswo-teeth"
+    }
+   }
+  }
+ ],
+ "world": {
+  "schemaVersion": 1,
+  "name": "The Teeth of Sithis",
+  "positionM": [
+   3654.8,
+   6731.0
+  ],
+  "footprintRadiusM": 45.0,
+  "boundaryM": [
+   [
+    3621.0,
+    6725.0
+   ],
+   [
+    3682.5,
+    6725.0
+   ],
+   [
+    3682.5,
+    6803.8
+   ],
+   [
+    3621.0,
+    6803.8
+   ]
+  ],
+  "extentM": [
+   [
+    3621.0,
+    6725.0
+   ],
+   [
+    3682.5,
+    6725.0
+   ],
+   [
+    3682.5,
+    6803.8
+   ],
+   [
+    3621.0,
+    6803.8
+   ]
+  ],
+  "extentRadiusM": 80.3,
+  "route": {
+   "lineId": "track.track.mercantile-coast.nisswo-line",
+   "kind": "footpath",
+   "name": null,
+   "from": "place.mercantile-coast.lilmoth",
+   "to": "place.mercantile-coast.teeth-of-sithis",
+   "vertexM": [
+    3616.38,
+    6736.5
+   ],
+   "offExtentM": 12.4,
+   "alongM": 1015.9,
+   "lengthM": 1061.1
+  },
+  "stands": [
+   {
+    "id": "place.mercantile-coast.teeth-of-sithis.landmark.teeth-of-sithis.the-colonnade",
+    "assetId": "kotm:argonia/xanmeer/exterior/obelisk",
+    "kind": "landmark",
+    "layer": null,
+    "positionM": [
+     3668.5,
+     -1.45,
+     6780.0
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.teeth-of-sithis.landmark.teeth-of-sithis.the-colonnade-tooth-1",
+    "assetId": "kotm:argonia/xanmeer/exterior/obelisk",
+    "kind": "landmark",
+    "layer": null,
+    "positionM": [
+     3642.0,
+     -1.76,
+     6784.0
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.teeth-of-sithis.landmark.teeth-of-sithis.the-colonnade-tooth-2",
+    "assetId": "kotm:argonia/xanmeer/exterior/obelisk",
+    "kind": "landmark",
+    "layer": null,
+    "positionM": [
+     3646.5,
+     -1.42,
+     6783.0
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.teeth-of-sithis.landmark.teeth-of-sithis.the-colonnade-tooth-3",
+    "assetId": "kotm:argonia/xanmeer/exterior/obelisk",
+    "kind": "landmark",
+    "layer": null,
+    "positionM": [
+     3651.0,
+     -1.32,
+     6782.0
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.teeth-of-sithis.landmark.teeth-of-sithis.the-colonnade-tooth-4",
+    "assetId": "kotm:argonia/xanmeer/exterior/obelisk",
+    "kind": "landmark",
+    "layer": null,
+    "positionM": [
+     3659.5,
+     -1.36,
+     6780.0
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.teeth-of-sithis.landmark.teeth-of-sithis.the-colonnade-tooth-5",
+    "assetId": "kotm:argonia/xanmeer/exterior/obelisk",
+    "kind": "landmark",
+    "layer": null,
+    "positionM": [
+     3664.0,
+     -1.37,
+     6780.0
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.teeth-of-sithis.parcel.teeth-of-sithis.east-stair.assembly.t-lantern-e",
+    "assetId": "vanilla:clutter/common/candlelantern01",
+    "kind": "settlement",
+    "layer": "light",
+    "positionM": [
+     3668.55,
+     1.8,
+     6736.9
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.teeth-of-sithis.parcel.teeth-of-sithis.east-stair.assembly.t-rock-en1",
+    "assetId": "vanilla:landscape/rocks/rocks02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3662.4,
+     9.04,
+     6741.6
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.teeth-of-sithis.parcel.teeth-of-sithis.east-stair.building",
+    "assetId": "composite:ruin/xanmeer-door2load-portico",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     3663.44,
+     2.03,
+     6738.0
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.teeth-of-sithis.parcel.teeth-of-sithis.west-stair.assembly.t-bench-e",
+    "assetId": "vanilla:furniture/farm/farmbench01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3660.5,
+     0.39,
+     6769.0
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.teeth-of-sithis.parcel.teeth-of-sithis.west-stair.assembly.t-bench-w",
+    "assetId": "vanilla:furniture/farm/farmbench01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3652.0,
+     0.93,
+     6769.0
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.teeth-of-sithis.parcel.teeth-of-sithis.west-stair.assembly.t-candle-w",
+    "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3644.5,
+     1.63,
+     6762.0
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.teeth-of-sithis.parcel.teeth-of-sithis.west-stair.assembly.t-lantern-w",
+    "assetId": "vanilla:clutter/common/candlelantern01",
+    "kind": "settlement",
+    "layer": "light",
+    "positionM": [
+     3642.4,
+     1.6,
+     6756.9
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.teeth-of-sithis.parcel.teeth-of-sithis.west-stair.assembly.t-rock-wn1",
+    "assetId": "vanilla:landscape/rocks/rocks02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3637.0,
+     8.65,
+     6762.6
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.teeth-of-sithis.parcel.teeth-of-sithis.west-stair.assembly.t-rock-ws1",
+    "assetId": "vanilla:landscape/rocks/rocks02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     3637.0,
+     8.63,
+     6753.4
+    ]
+   },
+   {
+    "id": "place.mercantile-coast.teeth-of-sithis.parcel.teeth-of-sithis.west-stair.building",
+    "assetId": "composite:ruin/xanmeer-door2load-portico",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     3637.3,
+     1.83,
+     6758.0
+    ]
+   }
+  ],
+  "sockets": [
+   {
+    "id": "socket.teeth-of-sithis.den-giant-leech",
+    "kind": "encounter",
+    "area": "open",
+    "positionM": [
+     3684.3,
+     -2.24,
+     6771.5
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.teeth-of-sithis.den-swamp-jelly",
+    "kind": "fauna",
+    "area": "open",
+    "positionM": [
+     3645.3,
+     5.45,
+     6722.3
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.teeth-of-sithis.den-voriplasm",
+    "kind": "encounter",
+    "area": "TeethofSithisInt02",
+    "positionM": [
+     52.47,
+     2.28,
+     -28.81
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.teeth-of-sithis.idle-band-home",
+    "kind": "idle",
+    "area": "TeethofSithisInt02",
+    "positionM": [
+     107.78,
+     13.43,
+     49.38
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.teeth-of-sithis.idle-band-work",
+    "kind": "idle",
+    "area": "parcel.teeth-of-sithis.east-stair",
+    "positionM": [
+     3669.0,
+     1.8,
+     6736.2
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.teeth-of-sithis.idle-keeper-work",
+    "kind": "idle",
+    "area": "parcel.teeth-of-sithis.east-stair",
+    "positionM": [
+     3670.4,
+     1.8,
+     6739.6
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.teeth-of-sithis.idle-priest-home",
+    "kind": "idle",
+    "area": "TeethofSithisInt02",
+    "positionM": [
+     21.85,
+     -0.68,
+     30.72
+    ],
+    "fills": [
+     "promise.teeth-of-sithis.interior-principal"
+    ]
+   },
+   {
+    "id": "socket.teeth-of-sithis.idle-priest-last-bend",
+    "kind": "idle",
+    "area": "open",
+    "positionM": [
+     3600.0,
+     0.58,
+     6800.0
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.teeth-of-sithis.idle-priest-work",
+    "kind": "idle",
+    "area": "parcel.teeth-of-sithis.west-stair",
+    "positionM": [
+     3656.5,
+     0.17,
+     6775.0
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.teeth-of-sithis.idle-scrubber-home",
+    "kind": "idle",
+    "area": "TeethofSithisInt02",
+    "positionM": [
+     100.93,
+     13.43,
+     44.5
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.teeth-of-sithis.idle-scrubber-work",
+    "kind": "idle",
+    "area": "parcel.teeth-of-sithis.west-stair",
+    "positionM": [
+     3648.0,
+     0.81,
+     6775.0
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.teeth-of-sithis.idle-seat-t-bench-e-1",
+    "kind": "idle",
+    "area": "parcel.teeth-of-sithis.west-stair",
+    "positionM": [
+     3660.1,
+     0.39,
+     6769.0
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.teeth-of-sithis.idle-seat-t-bench-e-2",
+    "kind": "idle",
+    "area": "parcel.teeth-of-sithis.west-stair",
+    "positionM": [
+     3660.94,
+     0.39,
+     6769.0
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.teeth-of-sithis.idle-seat-t-bench-w-1",
+    "kind": "idle",
+    "area": "parcel.teeth-of-sithis.west-stair",
+    "positionM": [
+     3651.6,
+     0.93,
+     6769.0
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.teeth-of-sithis.idle-seat-t-bench-w-2",
+    "kind": "idle",
+    "area": "parcel.teeth-of-sithis.west-stair",
+    "positionM": [
+     3652.44,
+     0.93,
+     6769.0
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.teeth-of-sithis.idle-seat-teethofsithisint02-08491a7e",
+    "kind": "idle",
+    "area": "TeethofSithisInt02",
+    "positionM": [
+     32.07,
+     13.59,
+     40.59
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.teeth-of-sithis.idle-seat-teethofsithisint02-08491a80",
+    "kind": "idle",
+    "area": "TeethofSithisInt02",
+    "positionM": [
+     28.8,
+     13.59,
+     40.76
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.teeth-of-sithis.idle-seat-teethofsithisint02-08491a88",
+    "kind": "idle",
+    "area": "TeethofSithisInt02",
+    "positionM": [
+     28.82,
+     13.59,
+     20.97
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.teeth-of-sithis.idle-seat-teethofsithisint02-08491a8d",
+    "kind": "idle",
+    "area": "TeethofSithisInt02",
+    "positionM": [
+     32.14,
+     13.59,
+     26.52
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.teeth-of-sithis.idle-seat-teethofsithisint02-08491a8e",
+    "kind": "idle",
+    "area": "TeethofSithisInt02",
+    "positionM": [
+     28.82,
+     13.59,
+     24.71
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.teeth-of-sithis.idle-seat-teethofsithisint02-084c00c1",
+    "kind": "idle",
+    "area": "TeethofSithisInt02",
+    "positionM": [
+     42.22,
+     13.2,
+     -64.06
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.teeth-of-sithis.idle-seat-teethofsithisint02-084c54da",
+    "kind": "idle",
+    "area": "TeethofSithisInt02",
+    "positionM": [
+     24.65,
+     -1.14,
+     40.21
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.teeth-of-sithis.idle-seat-teethofsithisint02-0879bcd5",
+    "kind": "idle",
+    "area": "TeethofSithisInt02",
+    "positionM": [
+     41.59,
+     15.02,
+     -40.49
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.teeth-of-sithis.idle-seat-teethofsithisint02-087ab6d8",
+    "kind": "idle",
+    "area": "TeethofSithisInt02",
+    "positionM": [
+     6.37,
+     20.71,
+     -36.19
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.teeth-of-sithis.npc-band",
+    "kind": "npc",
+    "area": "parcel.teeth-of-sithis.east-stair",
+    "positionM": [
+     3669.0,
+     1.8,
+     6736.2
+    ],
+    "fills": [
+     "promise.teeth-of-sithis.occupant-n2"
+    ],
+    "slot": "n2"
+   },
+   {
+    "id": "socket.teeth-of-sithis.npc-keeper",
+    "kind": "npc",
+    "area": "parcel.teeth-of-sithis.east-stair",
+    "positionM": [
+     3670.4,
+     1.8,
+     6739.6
+    ],
+    "fills": [
+     "promise.teeth-of-sithis.occupant-n1"
+    ],
+    "slot": "n1"
+   },
+   {
+    "id": "socket.teeth-of-sithis.npc-nisswo",
+    "kind": "npc",
+    "area": "parcel.teeth-of-sithis.west-stair",
+    "positionM": [
+     3656.5,
+     0.17,
+     6775.0
+    ],
+    "fills": [
+     "promise.teeth-of-sithis.occupant-nisswo-teeth"
+    ],
+    "slot": "nisswo-teeth"
+   },
+   {
+    "id": "socket.teeth-of-sithis.npc-scrubber",
+    "kind": "npc",
+    "area": "parcel.teeth-of-sithis.west-stair",
+    "positionM": [
+     3648.0,
+     0.81,
+     6775.0
+    ],
+    "fills": [
+     "promise.teeth-of-sithis.occupant-the-one"
+    ],
+    "slot": "the-one"
+   },
+   {
+    "id": "socket.teeth-of-sithis.pilgrim-beach",
+    "kind": "mooring",
+    "area": "open",
+    "positionM": [
+     3668.7,
+     0.86,
+     6761.1
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.teeth-of-sithis.pilgrim-landing",
+    "kind": "mooring",
+    "area": "open",
+    "positionM": [
+     3689.86,
+     -0.87,
+     6749.66
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.teeth-of-sithis.plant-1",
+    "kind": "plant",
+    "area": "open",
+    "positionM": [
+     3663.47,
+     -1.11,
+     6787.0
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.teeth-of-sithis.plant-2",
+    "kind": "plant",
+    "area": "open",
+    "positionM": [
+     3663.67,
+     -3.49,
+     6792.46
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.teeth-of-sithis.q-evidence-scrub-line-rule",
+    "kind": "marker",
+    "area": "parcel.teeth-of-sithis.west-stair",
+    "positionM": [
+     3651.0,
+     0.28,
+     6778.8
+    ],
+    "fills": [
+     "promise.teeth-of-sithis.evidence-teeth-scrub-line-rule"
+    ]
+   },
+   {
+    "id": "socket.teeth-of-sithis.q-mark-rite-witnessed",
+    "kind": "marker",
+    "area": "parcel.teeth-of-sithis.west-stair",
+    "positionM": [
+     3655.3,
+     0.43,
+     6774.0
+    ],
+    "fills": [
+     "promise.teeth-of-sithis.marks-teeth-rite-witnessed"
+    ]
+   },
+   {
+    "id": "socket.teeth-of-sithis.q-post-last-bend",
+    "kind": "marker",
+    "area": "open",
+    "positionM": [
+     3600.0,
+     0.58,
+     6800.0
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.teeth-of-sithis.q-post-pilgrim-landing",
+    "kind": "marker",
+    "area": "parcel.teeth-of-sithis.west-stair",
+    "positionM": [
+     3655.3,
+     0.43,
+     6776.0
+    ],
+    "fills": [
+     "promise.teeth-of-sithis.post-teeth-pilgrim-landing",
+     "promise.teeth-of-sithis.provision-murkmire-teeth-of-sithis"
+    ]
+   },
+   {
+    "id": "socket.teeth-of-sithis.q-scene-colonnade-rite",
+    "kind": "marker",
+    "area": "parcel.teeth-of-sithis.west-stair",
+    "positionM": [
+     3655.3,
+     0.06,
+     6780.0
+    ],
+    "fills": [
+     "promise.teeth-of-sithis.scene-teeth-colonnade-rite"
+    ]
+   }
+  ],
+  "landmarks": [
+   {
+    "id": "place.mercantile-coast.teeth-of-sithis.landmark.teeth-of-sithis.the-colonnade",
+    "what": "the colonnade",
+    "via": "landmark placement",
+    "positionM": [
+     3668.5,
+     -1.45,
+     6780.0
+    ],
+    "inSight": {
+     "places": [],
+     "here": [
+      "socket.teeth-of-sithis.den-giant-leech",
+      "socket.teeth-of-sithis.idle-band-work",
+      "socket.teeth-of-sithis.idle-keeper-work",
+      "socket.teeth-of-sithis.npc-band",
+      "socket.teeth-of-sithis.npc-keeper",
+      "socket.teeth-of-sithis.pilgrim-beach",
+      "socket.teeth-of-sithis.pilgrim-landing"
+     ]
+    }
+   },
+   {
+    "id": "place.mercantile-coast.teeth-of-sithis.landmark.teeth-of-sithis.the-colonnade-tooth-1",
+    "what": "the colonnade tooth 1",
+    "via": "landmark placement",
+    "positionM": [
+     3642.0,
+     -1.76,
+     6784.0
+    ],
+    "inSight": {
+     "places": [],
+     "here": [
+      "socket.teeth-of-sithis.idle-priest-last-bend",
+      "socket.teeth-of-sithis.q-post-last-bend"
+     ]
+    }
+   },
+   {
+    "id": "place.mercantile-coast.teeth-of-sithis.landmark.teeth-of-sithis.the-colonnade-tooth-2",
+    "what": "the colonnade tooth 2",
+    "via": "landmark placement",
+    "positionM": [
+     3646.5,
+     -1.42,
+     6783.0
+    ],
+    "inSight": {
+     "places": [],
+     "here": []
+    }
+   },
+   {
+    "id": "place.mercantile-coast.teeth-of-sithis.landmark.teeth-of-sithis.the-colonnade-tooth-3",
+    "what": "the colonnade tooth 3",
+    "via": "landmark placement",
+    "positionM": [
+     3651.0,
+     -1.32,
+     6782.0
+    ],
+    "inSight": {
+     "places": [],
+     "here": []
+    }
+   },
+   {
+    "id": "place.mercantile-coast.teeth-of-sithis.landmark.teeth-of-sithis.the-colonnade-tooth-4",
+    "what": "the colonnade tooth 4",
+    "via": "landmark placement",
+    "positionM": [
+     3659.5,
+     -1.36,
+     6780.0
+    ],
+    "inSight": {
+     "places": [],
+     "here": [
+      "socket.teeth-of-sithis.den-swamp-jelly",
+      "socket.teeth-of-sithis.idle-seat-t-bench-e-1",
+      "socket.teeth-of-sithis.idle-seat-t-bench-e-2"
+     ]
+    }
+   },
+   {
+    "id": "place.mercantile-coast.teeth-of-sithis.landmark.teeth-of-sithis.the-colonnade-tooth-5",
+    "what": "the colonnade tooth 5",
+    "via": "landmark placement",
+    "positionM": [
+     3664.0,
+     -1.37,
+     6780.0
+    ],
+    "inSight": {
+     "places": [],
+     "here": [
+      "socket.teeth-of-sithis.plant-1",
+      "socket.teeth-of-sithis.plant-2"
+     ]
+    }
+   },
+   {
+    "id": "socket.teeth-of-sithis.q-evidence-scrub-line-rule",
+    "what": "scrub line rule",
+    "via": "evidence socket",
+    "positionM": [
+     3651.0,
+     0.28,
+     6778.8
+    ],
+    "inSight": {
+     "places": [],
+     "here": [
+      "socket.teeth-of-sithis.idle-scrubber-work",
+      "socket.teeth-of-sithis.idle-seat-t-bench-w-1",
+      "socket.teeth-of-sithis.idle-seat-t-bench-w-2",
+      "socket.teeth-of-sithis.npc-scrubber"
+     ]
+    }
+   },
+   {
+    "id": "socket.teeth-of-sithis.q-scene-colonnade-rite",
+    "what": "colonnade rite",
+    "via": "scene socket",
+    "positionM": [
+     3655.3,
+     0.06,
+     6780.0
+    ],
+    "inSight": {
+     "places": [],
+     "here": [
+      "socket.teeth-of-sithis.idle-priest-work",
+      "socket.teeth-of-sithis.npc-nisswo",
+      "socket.teeth-of-sithis.q-mark-rite-witnessed",
+      "socket.teeth-of-sithis.q-post-pilgrim-landing"
+     ]
+    }
+   }
+  ],
+  "people": [
+   {
+    "id": "npc.mercantile-coast.teeth-of-sithis.n1",
+    "name": "Zaxi-Rekh",
+    "role": "a priest",
+    "post": "socket.teeth-of-sithis.npc-keeper",
+    "services": [],
+    "hostility": "hostile",
+    "topics": [
+     "topic.about-nisswo",
+     "topic.about-prison-road",
+     "topic.about-sithis",
+     "topic.latest-rumours",
+     "topic.role-priesthood",
+     "topic.teeth-lost-purpose",
+     "topic.teeth-of-sithis",
+     "topic.teeth-of-sithis-danger",
+     "topic.teeth-of-sithis-directions",
+     "topic.teeth-of-sithis-people",
+     "topic.teeth-of-sithis-work"
+    ]
+   },
+   {
+    "id": "npc.mercantile-coast.teeth-of-sithis.n2",
+    "name": "Wuleen-Wai",
+    "role": "rank-and-file",
+    "post": "socket.teeth-of-sithis.npc-band",
+    "services": [],
+    "hostility": "hostile",
+    "topics": [
+     "topic.about-prison-road",
+     "topic.about-sithis",
+     "topic.role-temple-duties",
+     "topic.teeth-of-sithis",
+     "topic.teeth-of-sithis-danger",
+     "topic.teeth-of-sithis-directions",
+     "topic.teeth-of-sithis-people",
+     "topic.teeth-of-sithis-work"
+    ]
+   },
+   {
+    "id": "npc.mercantile-coast.teeth-of-sithis.n2-2",
+    "name": "Sal-Xeek",
+    "role": "rank-and-file",
+    "post": "socket.teeth-of-sithis.npc-band",
+    "services": [],
+    "hostility": "hostile",
+    "topics": [
+     "topic.about-nisswo",
+     "topic.about-prison-road",
+     "topic.about-sithis",
+     "topic.role-temple-duties",
+     "topic.teeth-of-sithis",
+     "topic.teeth-of-sithis-danger",
+     "topic.teeth-of-sithis-directions",
+     "topic.teeth-of-sithis-people",
+     "topic.teeth-of-sithis-work"
+    ]
+   },
+   {
+    "id": "npc.mercantile-coast.teeth-of-sithis.n2-3",
+    "name": "Xal-Tei",
+    "role": "rank-and-file",
+    "post": "socket.teeth-of-sithis.npc-band",
+    "services": [],
+    "hostility": "hostile",
+    "topics": [
+     "topic.about-sithis",
+     "topic.role-temple-duties",
+     "topic.teeth-of-sithis",
+     "topic.teeth-of-sithis-danger",
+     "topic.teeth-of-sithis-directions",
+     "topic.teeth-of-sithis-people",
+     "topic.teeth-of-sithis-work"
+    ]
+   },
+   {
+    "id": "npc.mercantile-coast.teeth-of-sithis.n2-4",
+    "name": "Teeb-Shaal",
+    "role": "rank-and-file",
+    "post": "socket.teeth-of-sithis.npc-band",
+    "services": [],
+    "hostility": "hostile",
+    "topics": [
+     "topic.about-prison-road",
+     "topic.about-sithis",
+     "topic.role-temple-duties",
+     "topic.teeth-of-sithis",
+     "topic.teeth-of-sithis-danger",
+     "topic.teeth-of-sithis-directions",
+     "topic.teeth-of-sithis-people",
+     "topic.teeth-of-sithis-work"
+    ]
+   },
+   {
+    "id": "npc.mercantile-coast.teeth-of-sithis.nisswo-teeth",
+    "name": "Ohl-Nakka",
+    "role": "nisswo of the Teeth",
+    "post": "socket.teeth-of-sithis.npc-nisswo",
+    "services": [],
+    "hostility": "hostile",
+    "topics": [
+     "topic.about-nisswo",
+     "topic.about-prison-road",
+     "topic.about-sithis",
+     "topic.latest-rumours",
+     "topic.role-keeping-the-teeth",
+     "topic.teeth-lost-purpose",
+     "topic.teeth-of-sithis",
+     "topic.teeth-of-sithis-danger",
+     "topic.teeth-of-sithis-directions",
+     "topic.teeth-of-sithis-people",
+     "topic.teeth-of-sithis-work",
+     "topic.teeth-offering"
+    ]
+   },
+   {
+    "id": "npc.mercantile-coast.teeth-of-sithis.the-one",
+    "name": "Nesh-Katta",
+    "role": "the scrubber",
+    "post": "socket.teeth-of-sithis.npc-scrubber",
+    "services": [],
+    "hostility": "hostile",
+    "topics": [
+     "topic.about-prison-road",
+     "topic.about-sithis",
+     "topic.role-scrubbing-the-teeth",
+     "topic.teeth-of-sithis",
+     "topic.teeth-of-sithis-danger",
+     "topic.teeth-of-sithis-directions",
+     "topic.teeth-of-sithis-people",
+     "topic.teeth-of-sithis-work"
+    ]
+   }
+  ],
+  "counts": {
+   "TeethofSithisInt02": {
+    "nodes": 0,
+    "plants": 0,
+    "items": 0,
+    "containers": 0,
+    "occupants": 0,
+    "byItem": {},
+    "byPlant": {},
+    "creatures": {
+     "creature.voriplasm": 1
+    }
+   },
+   "open": {
+    "nodes": 0,
+    "plants": 2,
+    "items": 0,
+    "containers": 0,
+    "occupants": 0,
+    "byItem": {
+     "item.oliis-pearl": 2
+    },
+    "byPlant": {
+     "pearl-clam": 2
+    },
+    "creatures": {
+     "creature.giant-leech": 3,
+     "creature.swamp-jelly": 4
+    }
+   },
+   "parcel.teeth-of-sithis.east-stair": {
+    "nodes": 0,
+    "plants": 0,
+    "items": 0,
+    "containers": 0,
+    "occupants": 2,
+    "byItem": {},
+    "byPlant": {},
+    "creatures": {}
+   },
+   "parcel.teeth-of-sithis.west-stair": {
+    "nodes": 0,
+    "plants": 0,
+    "items": 0,
+    "containers": 0,
+    "occupants": 2,
+    "byItem": {},
+    "byPlant": {},
+    "creatures": {}
+   }
+  },
+  "services": [],
+  "hostility": {
+   "baseline": "hostile",
+   "owner": "faction.nisswo",
+   "flips": [
+    {
+     "to": "sanctuary",
+     "when": {
+      "factionRankAtLeast": [
+       "faction.nisswo",
+       1
+      ]
+     },
+     "scope": "place"
+    },
+    {
+     "to": "hostile",
+     "when": {
+      "deedCountAtLeast": [
+       "faction.nisswo",
+       "deed.nisswo.rite-broken",
+       1
+      ]
+     },
+     "scope": "place"
+    }
+   ],
+   "clearable": true,
+   "respawn": "faction-refills"
+  }
+ }
+}

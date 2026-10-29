@@ -1,0 +1,525 @@
+{
+ "schemaVersion": 1,
+ "placeId": "place.hist-heartland.greenspring",
+ "generator": "python3 -m worldgen.blueprint_promises --id <place-id> --write (decision 0104); never hand-edit a row but its `unfilled`, `filledBy` or `confirmed` block",
+ "derivedFrom": [
+  {
+   "file": "world/sources/catalogue/places-hist-heartland.json",
+   "sha256": "60a321b6d6533ce9c8dd2717f6f028e3780352fd3b8c58b9d404916beb906344"
+  },
+  {
+   "file": "world/sources/quests/local-hist-heartland.json",
+   "sha256": "ec92b28a68440a3251a982f5877f893b32f100d113c658a346f55ab1b182007c"
+  },
+  {
+   "file": "world/sources/quests/quests-factions.json",
+   "sha256": "92f935e9fe9b1ac016732f03f7c72ea3fc5a038cbad4ea4bb6302e86642c07c1"
+  }
+ ],
+ "promises": [
+  {
+   "id": "promise.greenspring.evidence-sick-root",
+   "kind": "socketBucket",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.greenspring].sockets.evidence[evidence.greenspring.sick-root]"
+   },
+   "text": "Greenspring has the evidence socket evidence.greenspring.sick-root.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.greenspring.interior-principal",
+   "kind": "interior",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.greenspring].interior"
+   },
+   "text": "Greenspring's principal interior is a dwelling (S2); its buildings carry 6 load doors in all.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.greenspring.occupant-n1",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.greenspring].contents.npcs[n1]"
+   },
+   "text": "Greenspring has single merchant occupants.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.greenspring.occupant-n2",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.greenspring].contents.npcs[n2]"
+   },
+   "text": "Greenspring has band family occupants.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.greenspring.occupant-root-herald",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.greenspring].notableNpcSlots[root-herald]"
+   },
+   "text": "The root-herald who trades with Helstrom lives and works at Greenspring.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.greenspring.occupant-spring-keeper",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.greenspring].notableNpcSlots[spring-keeper]"
+   },
+   "text": "The spring-keeper lives and works at Greenspring.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.greenspring.occupant-tree-minder",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.greenspring].notableNpcSlots[tree-minder]"
+   },
+   "text": "The tree-minder lives and works at Greenspring.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.greenspring.post-greenspring-river-landing",
+   "kind": "socketBucket",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.greenspring].sockets.post[post.greenspring.greenspring-river-landing]"
+   },
+   "text": "Greenspring has the post socket post.greenspring.greenspring-river-landing.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.greenspring.prose-playerpurpose-hook",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.greenspring].playerPurpose.hook"
+   },
+   "text": "Water here can be drunk without ceremony. The tribe charges nothing for it. Beds and rope cost a great deal.",
+   "confirmed": {
+    "sha": "a6fdc8c36379",
+    "note": "Spring pool open to all; the lodge (Keeba cell) sells beds and its trader rope."
+   }
+  },
+  {
+   "id": "promise.greenspring.prose-questhooks-opportunity",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.greenspring].questHooks.opportunity"
+   },
+   "text": "A quest can settle the spring's use in writing, or foul it.",
+   "confirmed": {
+    "sha": "6326417580fe",
+    "note": "The spring pool, ringed by its rim stones, and the spring house stand at the village centre.",
+    "ids": [
+     "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.sp-ring1",
+     "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.sp-ring8"
+    ]
+   }
+  },
+  {
+   "id": "promise.greenspring.prose-vibe-approach",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.greenspring].vibe.approach"
+   },
+   "text": "Coming up from the landing, the black river water gives way to a small clear pool under the Hist. Frond smoke from the cookfires reaches the landing before the houses are in sight.",
+   "confirmed": {
+    "sha": "c8d8c56c2576",
+    "note": "The inlet deck of the Border road crossings below lands on the bank; the clear pool lies under the Hist and the family-hut fire smokes between them.",
+    "ids": [
+     "landmark.greenspring.the-hist"
+    ]
+   }
+  },
+  {
+   "id": "promise.greenspring.prose-vibe-condition",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.greenspring].vibe.condition"
+   },
+   "text": "well kept in the yards used daily, threadbare a step off the path",
+   "confirmed": {
+    "sha": "dc037c288f1c",
+    "note": "Yards dressed round each house; the margins are left as ground cover."
+   }
+  },
+  {
+   "id": "promise.greenspring.prose-vibe-materials",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.greenspring].vibe.materials"
+   },
+   "text": "a hide tent beside the spring; mud-walled pods and bamboo huts; a plank landing on the bank",
+   "confirmed": {
+    "sha": "0b80ad45ac96",
+    "note": "The spring-house is a hide tent (argoniantent02) by the pool; the kotm mud pods and two bamboo huts stand round it; the landing is the crossings' plank deck.",
+    "ids": [
+     "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.ld-plank"
+    ]
+   }
+  },
+  {
+   "id": "promise.greenspring.prose-vibe-mood",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.greenspring].vibe.mood"
+   },
+   "text": "hospitable, tired",
+   "confirmed": {
+    "sha": "d150a7bf00d3",
+    "note": "The lodge and the spring lip open onto the common; the yards a step off the path are worn and bare."
+   }
+  },
+  {
+   "id": "promise.greenspring.prose-vibe-palette",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.greenspring].vibe.palette"
+   },
+   "text": "a pool of clear water, a green crown thinning to open sky above, painted urns along the yards, mud churned brown at the landing",
+   "confirmed": {
+    "sha": "b7238e304527",
+    "note": "Pool under the Hist, the sick crown over open sky, urns among the yard clutter, the landing on mud bank."
+   }
+  },
+  {
+   "id": "promise.greenspring.prose-vibe-senses",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.greenspring].vibe.senses"
+   },
+   "text": "cold mineral water tasted before a word is spoken; wet rope and boat tar at the landing; voices bartering over bed and rope prices; frond smoke drifting from cookfires at dusk",
+   "confirmed": {
+    "sha": "ffe39b733947",
+    "note": "The spring pool, the plank landing with its canoe, the lodge trader, the cookfire.",
+    "ids": [
+     "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.ld-canoe"
+    ]
+   }
+  },
+  {
+   "id": "promise.greenspring.prose-vibe-signaturefeature",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.greenspring].vibe.signatureFeature"
+   },
+   "text": "Water drunk without ceremony, dipped from the clear pool under the Hist that visitors are expected to taste before they speak.",
+   "confirmed": {
+    "sha": "35e5cd2a92b8",
+    "note": "The pool lies at the foot of the built Hist landmark beside the spring-house; the custom is a later-phase dialogue system.",
+    "ids": [
+     "landmark.greenspring.the-hist"
+    ]
+   }
+  },
+  {
+   "id": "promise.greenspring.prose-vibe-silhouette",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.greenspring].vibe.silhouette"
+   },
+   "text": "a sick crown leaning over the spring and the huts round it",
+   "confirmed": {
+    "sha": "7f1072bebaca",
+    "note": "The sick Hist (ancient-sleeping-tree-sick) stands over the pool with the ten structures round it.",
+    "ids": [
+     "landmark.greenspring.the-hist",
+     "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.sp-ring1"
+    ]
+   }
+  },
+  {
+   "id": "promise.greenspring.prose-why-founding",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.greenspring].why.founding"
+   },
+   "text": "Founded beside the Panther Race on springs whose water can be drunk unboiled, which is rare in this region. The tribe's Hist grows over the spring.",
+   "confirmed": {
+    "sha": "e4edbe6b6c1b",
+    "note": "Spring pool and the Hist parcel built; The Panther Race 0.39 km N on the same water body.",
+    "ids": [
+     "landmark.greenspring.the-hist"
+    ]
+   }
+  },
+  {
+   "id": "promise.greenspring.prose-why-occupantsmotive",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.greenspring].why.occupantsMotive"
+   },
+   "text": "A tribe that has made itself indispensable to travellers bound for Helstrom. It charges nothing for water, but a great deal for beds and rope.",
+   "confirmed": {
+    "sha": "121a050edd8b",
+    "note": "The spring lip stands open on the common with no gate; beds are sold in the lodge, which also holds the trader.",
+    "ids": [
+     "pool.place.hist-heartland.greenspring.sp-pool"
+    ]
+   }
+  },
+  {
+   "id": "promise.greenspring.prose-why-pressures",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.greenspring].why.pressures"
+   },
+   "text": "Salt is reaching the water from upstream. The Hist has begun to sicken. The village blames the salt works. Traffic for Helstrom also brings people the tribe would rather not host: cult couriers, tappers and the Veiled Reed's factors.",
+   "confirmed": {
+    "sha": "b0891e4cfc85",
+    "note": "Salt sack and sick-root marker (socket.greenspring.marker-sick-root, MR01) built; Salt Ledge 1.5 km N.",
+    "ids": [
+     "landmark.greenspring.the-hist"
+    ]
+   }
+  },
+  {
+   "id": "promise.greenspring.prose-why-siteadvantages",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.greenspring].why.siteAdvantages"
+   },
+   "text": "Firm ground where clean water rises from a stone lip, a short walk from the road and from the river landing.",
+   "confirmed": {
+    "sha": "40d3f00d093e",
+    "note": "Border road 0.09 km; plank landing on the bank; spring pool on firm ground, its water held by a lip of rim stones.",
+    "ids": [
+     "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.sp-ring1",
+     "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.sp-ring2",
+     "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.sp-ring3",
+     "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.sp-ring4",
+     "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.sp-ring6",
+     "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.sp-ring7",
+     "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.sp-ring8",
+     "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.sp-ring9",
+     "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.sp-ring10",
+     "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.sp-ring11",
+     "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.sp-ring12",
+     "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.sp-ring13",
+     "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.sp-ring14",
+     "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.sp-fill1",
+     "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.sp-fill2",
+     "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.sp-fill3",
+     "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.sp-fill4",
+     "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.sp-fill5",
+     "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.sp-fill6",
+     "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.sp-fill7",
+     "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.sp-fill8",
+     "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.sp-fill9",
+     "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.sp-fill10",
+     "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.sp-fill11",
+     "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.sp-fill12",
+     "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.sp-fill13"
+    ]
+   }
+  },
+  {
+   "id": "promise.greenspring.prose-why-wouldchangeif",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.greenspring].why.wouldChangeIf"
+   },
+   "text": "If the spring soured, the village would have to move to find a new source of fresh water. Travellers bound for Helstrom would then lose their surest clean water.",
+   "confirmed": {
+    "sha": "c21c8747a2b5",
+    "note": "The stone-ringed pool under the Hist is the only water in the village; nothing built contradicts a move.",
+    "ids": [
+     "pool.place.hist-heartland.greenspring.sp-pool"
+    ]
+   }
+  },
+  {
+   "id": "promise.greenspring.provision-mr01-anchor",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.greenspring].questHooks.provisions[quest.provision.mr01-anchor]"
+   },
+   "text": "Greenspring holds what quest provision quest.provision.mr01-anchor needs.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.greenspring.quest-lh07",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-hist-heartland.json",
+    "path": "quest[LH07]"
+   },
+   "text": "LH07 The Sweet Water Turns: The city spring runs sour on a cycle which the assembly declines to time in open session",
+   "confirmed": {
+    "sha": "be90e30f31c3",
+    "note": "Helstrom's quest reads Greenspring's spring pool as its comparison water."
+   }
+  },
+  {
+   "id": "promise.greenspring.quest-lh37",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-hist-heartland.json",
+    "path": "quest[LH37]"
+   },
+   "text": "LH37 Water Without Ceremony: Two delegations who would not pay Nine-Trunks' pitch rent lodge here instead; they want the spring's use written down before the next convocation",
+   "confirmed": {
+    "sha": "d6a3023821f3",
+    "note": "Lodge with guest beds built; Nine-Trunks (rival) rents the pitch per LH51; spring pool built."
+   }
+  },
+  {
+   "id": "promise.greenspring.quest-lh38",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-hist-heartland.json",
+    "path": "quest[LH38]"
+   },
+   "text": "LH38 The Drinker at the Spring: A body is in the water that the interior drinks without ceremony, which two households at the spring would rather nobody raised",
+   "confirmed": {
+    "sha": "164c469d533f",
+    "note": "The spring pool is the water; two households live beside it (family huts)."
+   }
+  },
+  {
+   "id": "promise.greenspring.quest-lh51",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-hist-heartland.json",
+    "path": "quest[LH51]"
+   },
+   "text": "LH51 Pitch-Rights: The village rents convocation pitch at a rate that has sent two delegations to camp elsewhere",
+   "confirmed": {
+    "sha": "53d8f1dbe156",
+    "note": "The open common round the spring is the pitch ground the premise rents."
+   }
+  },
+  {
+   "id": "promise.greenspring.quest-mr01",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/quests-factions.json",
+    "path": "quest[MR01]"
+   },
+   "text": "MR01 The Sick Root: A Hist is dying and the village blames upstream salt, so the diagnosis has to be made underwater",
+   "confirmed": {
+    "sha": "b7af4be7eeab",
+    "note": "The sick Hist and its roots at the spring; provision mr01-anchor is filled by its socket."
+   }
+  },
+  {
+   "id": "promise.greenspring.safe-interior",
+   "kind": "safeInterior",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.greenspring].classification.class"
+   },
+   "text": "Greenspring has one safe interior (danger D0, quests 20 section 12).",
+   "unfilled": null
+  },
+  {
+   "id": "promise.greenspring.scene-greenspring-fork-market",
+   "kind": "socketBucket",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.greenspring].sockets.scene[scene.greenspring.greenspring-fork-market]"
+   },
+   "text": "Greenspring has the scene socket scene.greenspring.greenspring-fork-market.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.greenspring.service-lodging",
+   "kind": "service",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.greenspring].services[lodging]"
+   },
+   "text": "Greenspring offers the lodging service.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.greenspring.service-trader",
+   "kind": "service",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.greenspring].services[trader]"
+   },
+   "text": "Greenspring offers the trader service.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.greenspring.thing-boat",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.greenspring].vibe.senses"
+   },
+   "text": "Greenspring shows the boat its record names.",
+   "unfilled": null,
+   "filledBy": [
+    "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.ld-canoe"
+   ]
+  },
+  {
+   "id": "promise.greenspring.thing-hist-tree",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.greenspring].why.founding"
+   },
+   "text": "Greenspring shows the Hist tree its record names.",
+   "unfilled": null,
+   "filledBy": [
+    "landmark.greenspring.the-hist"
+   ]
+  },
+  {
+   "id": "promise.greenspring.thing-plank-crossing",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.greenspring].vibe.materials"
+   },
+   "text": "Greenspring shows the plank crossing its record names.",
+   "unfilled": null,
+   "filledBy": [
+    "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.ld-plank"
+   ]
+  },
+  {
+   "id": "promise.greenspring.thing-spring",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-hist-heartland.json",
+    "path": "places[place.hist-heartland.greenspring].why.founding"
+   },
+   "text": "Greenspring shows the spring its record names.",
+   "unfilled": null,
+   "filledBy": [
+    "pool.place.hist-heartland.greenspring.sp-pool",
+    "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.sp-ring1",
+    "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.sp-ring8"
+   ]
+  }
+ ]
+}

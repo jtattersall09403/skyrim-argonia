@@ -1,0 +1,78 @@
+{
+ "schemaVersion": 2,
+ "cellId": "LilmothSilverRefinery",
+ "additions": [
+  {
+   "id": "LilmothSilverRefinery:add:work-impbrazier",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    129.132,
+    83.072,
+    81.913
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Brazier lights the dark refinery floor where the silver is worked."
+  },
+  {
+   "id": "LilmothSilverRefinery:add:work-impbrazier-2",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    133.845,
+    83.072,
+    84.657
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Brazier lights the dark refinery floor where the silver is worked."
+  },
+  {
+   "id": "LilmothSilverRefinery:add:work-impbrazier-3",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    128.486,
+    83.072,
+    85.515
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Brazier lights the dark refinery floor where the silver is worked."
+  },
+  {
+   "id": "LilmothSilverRefinery:add:work-impbrazier-4",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    130.464,
+    83.306,
+    78.627
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Brazier lights the dark refinery floor where the silver is worked."
+  },
+  {
+   "id": "LilmothSilverRefinery:add:work-impbrazier-5",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    137.702,
+    83.072,
+    85.431
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Brazier lights the dark refinery floor where the silver is worked."
+  },
+  {
+   "id": "LilmothSilverRefinery:add:work-impbrazier-6",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    127.302,
+    83.072,
+    78.277
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Brazier lights the dark refinery floor where the silver is worked."
+  }
+ ]
+}

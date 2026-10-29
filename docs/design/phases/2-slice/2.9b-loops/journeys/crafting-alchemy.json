@@ -1,0 +1,345 @@
+{
+ "id": "crafting-alchemy",
+ "start": {
+  "query": "?view=character&x=4.7789&z=1.9&t=10:00&d=8-17",
+  "kit": "start",
+  "grant": [
+   {
+    "item": "rock-warbler-egg",
+    "count": 1
+   },
+   {
+    "item": "imp-stool",
+    "count": 1
+   },
+   {
+    "item": "deathbell",
+    "count": 1
+   }
+  ]
+ },
+ "steps": [
+  {
+   "name": "gather-fungal-pod",
+   "transition": "walking by a swamp fungal pod -> one pod in the bag",
+   "do": {
+    "action": "gather",
+    "place": "place.hist-heartland.greenspring",
+    "node": "node.swamp-fungal-pod"
+   },
+   "teleport": {
+    "x": 4748.2,
+    "z": 1889.6
+   },
+   "keys": [
+    {
+     "wait_s": 5.0
+    },
+    {
+     "press": "KeyE"
+    }
+   ],
+   "hold_s": 0.8,
+   "expect": {
+    "has": {
+     "swamp-fungal-pod": 1
+    },
+    "screen": null
+   }
+  },
+  {
+   "name": "open-alchemy",
+   "transition": "walking -> the alchemy station's window",
+   "do": {
+    "action": "openStation",
+    "place": "place.hist-heartland.greenspring",
+    "station": "alchemy"
+   },
+   "teleport": {
+    "x": 4763.2,
+    "z": 1877.2
+   },
+   "keys": [
+    {
+     "wait_s": 5.0
+    },
+    {
+     "press": "KeyE"
+    }
+   ],
+   "hold_s": 0.8,
+   "expect": {
+    "screen": "alchemy",
+    "stationVerbs": [
+     "brew"
+    ]
+   }
+  },
+  {
+   "name": "brew-restore-health",
+   "transition": "alchemy window -> pick two ingredients that share Restore Health, brew (the reference character's Alchemy 10 sees no effect names, so no filter chip shows)",
+   "do": {
+    "action": "brew",
+    "effect": "restore-health",
+    "ingredients": [
+     "rock-warbler-egg",
+     "swamp-fungal-pod"
+    ]
+   },
+   "keys": [
+    {
+     "click": ".es-alchemy [data-es-row=\"rock-warbler-egg\"]"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": ".es-alchemy [data-es-row=\"swamp-fungal-pod\"]"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": ".es-craft-sheet [data-es-act=\"brew\"]"
+    }
+   ],
+   "hold_s": 1.0,
+   "expect": {
+    "made": [
+     "restore-health"
+    ],
+    "has": {
+     "swamp-fungal-pod": 0,
+     "rock-warbler-egg": 0
+    },
+    "screen": "alchemy"
+   }
+  },
+  {
+   "name": "close-alchemy",
+   "transition": "alchemy window -> walking",
+   "do": {
+    "action": "closeScreen"
+   },
+   "keys": [
+    {
+     "press": "Escape"
+    }
+   ],
+   "hold_s": 0.4,
+   "expect": {
+    "screen": null
+   }
+  },
+  {
+   "name": "drink-restore-health",
+   "transition": "walking -> the brewed potion on belt slot 1, drunk; the effects strip shows it",
+   "do": {
+    "action": "drink",
+    "effect": "restore-health",
+    "slot": 0
+   },
+   "keys": [
+    {
+     "press": "Escape"
+    },
+    {
+     "wait_s": 0.4
+    },
+    {
+     "click": "[data-es-bag] [data-es-item=\"healing-draught#1\"]"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": "[data-es-actions] button:has-text(\"Belt Slot 1\")"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "press": "Escape"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "press": "Digit1"
+    }
+   ],
+   "hold_s": 1.5,
+   "expect": {
+    "drunk": true,
+    "active": [
+     "restore-health"
+    ],
+    "screen": null
+   }
+  },
+  {
+   "name": "open-alchemy-again",
+   "transition": "walking -> the alchemy station's window",
+   "do": {
+    "action": "openStation",
+    "place": "place.hist-heartland.greenspring",
+    "station": "alchemy"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    }
+   ],
+   "hold_s": 0.6,
+   "expect": {
+    "screen": "alchemy"
+   }
+  },
+  {
+   "name": "brew-poison",
+   "transition": "alchemy window -> pick two ingredients that share Damage Health, brew a poison",
+   "do": {
+    "action": "brew",
+    "effect": "damage-health",
+    "ingredients": [
+     "imp-stool",
+     "deathbell"
+    ]
+   },
+   "keys": [
+    {
+     "click": ".es-alchemy [data-es-row=\"imp-stool\"]"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": ".es-alchemy [data-es-row=\"deathbell\"]"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": ".es-craft-sheet [data-es-act=\"brew\"]"
+    }
+   ],
+   "hold_s": 1.0,
+   "expect": {
+    "made": [
+     "damage-health"
+    ],
+    "has": {
+     "imp-stool": 0,
+     "deathbell": 0
+    }
+   }
+  },
+  {
+   "name": "close-alchemy-again",
+   "transition": "alchemy window -> walking",
+   "do": {
+    "action": "closeScreen"
+   },
+   "keys": [
+    {
+     "press": "Escape"
+    }
+   ],
+   "hold_s": 0.4,
+   "expect": {
+    "screen": null
+   }
+  },
+  {
+   "name": "coat-blade",
+   "transition": "walking -> the poison on belt slot 2, pressed: the sword coated",
+   "do": {
+    "action": "coat",
+    "effect": "damage-health",
+    "slot": 1
+   },
+   "keys": [
+    {
+     "press": "Escape"
+    },
+    {
+     "wait_s": 0.4
+    },
+    {
+     "click": "[data-es-bag] [data-es-item=\"weak-magicka-poison\"]"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": "[data-es-actions] button:has-text(\"Belt Slot 2\")"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "press": "Escape"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "press": "Digit2"
+    }
+   ],
+   "hold_s": 1.0,
+   "expect": {
+    "coating": [
+     "damage-health"
+    ],
+    "mainHand": "steel-sword"
+   }
+  },
+  {
+   "name": "hit-hostile",
+   "transition": "coated sword drawn -> a hit on the wasp: its strip shows the poison, the coating gone",
+   "do": {
+    "action": "hit",
+    "target": "creature-at.hist-heartland.greenspring.eco-giant-wasp",
+    "near": [
+     {
+      "id": "creature-at.hist-heartland.greenspring.eco-giant-wasp-2",
+      "m": 0.8,
+      "facing": true
+     }
+    ]
+   },
+   "keys": [
+    {
+     "wait_s": 1.0
+    },
+    {
+     "press": "Tab"
+    },
+    {
+     "wait_s": 0.8
+    },
+    {
+     "press": "KeyQ"
+    },
+    {
+     "mouse": "left",
+     "hold_s": 0.1
+    }
+   ],
+   "hold_s": 1.5,
+   "expect": {
+    "victim": [
+     "damage-health"
+    ],
+    "coating": null
+   },
+   "teleport": {
+    "x": 4692.0,
+    "z": 1912.0,
+    "actor": "creature-at.hist-heartland.greenspring.eco-giant-wasp",
+    "near_m": 2.0
+   }
+  }
+ ]
+}

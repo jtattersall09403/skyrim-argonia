@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "cellId": "LilmothMerchantManor02Barracks",
+  "plugin": "King of the Murkmire.esp",
+  "rule": "Stand-ins for the cell's missing clutter and furniture (lane L17, planner brief 2026-09-28): each missing piece is drawn by a published vanilla or King of the Murkmire piece of the same object and near size, read from the kit manifests; a piece with no same-object stand-in stays a listed gap. Drawn at the missing reference's transform by worldgen/export_interior_bundle.py.",
+  "substitutions": [
+    {
+      "refId": "08AC6DF3",
+      "standInAsset": "vanilla:clutter/glazedjugsmall01",
+      "why": "A jug of bog brew stands here; a small glazed jug of its height takes its place."
+    },
+    {
+      "refId": "08AC6E22",
+      "standInAsset": "vanilla:clutter/deadanimals/deadpondfish05",
+      "why": "A raw ayotlchin fish lies here; a dead pond fish takes its place."
+    }
+  ],
+  "removals": [
+    {
+      "refId": "08AC6DED",
+      "reason": "decorative-no-same-class",
+      "search": "Base form ccBGSSSE037-Curios.esl:00000811 lives in a master the project never sources (absent-master-classes.json rule; planner ruling 2026-09-27); the vault Data folder holds only Skyrim.esm and Update.esm (listing, 16k walk 9, 2026-10-01). No published kit holds the same object, so no same-object stand-in can be chosen (R48).",
+      "note": "A small loose piece from the Creation Club lay here; that content is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "08AC6DF2",
+      "reason": "decorative-no-same-class",
+      "search": "Base form ccBGSSSE037-Curios.esl:00000814 lives in a master the project never sources (absent-master-classes.json rule; planner ruling 2026-09-27); the vault Data folder holds only Skyrim.esm and Update.esm (listing, 16k walk 9, 2026-10-01). No published kit holds the same object, so no same-object stand-in can be chosen (R48).",
+      "note": "A small loose piece from the Creation Club lay here; that content is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "08AC6DFB",
+      "reason": "decorative-no-same-class",
+      "search": "Base form ccBGSSSE037-Curios.esl:00000814 lives in a master the project never sources (absent-master-classes.json rule; planner ruling 2026-09-27); the vault Data folder holds only Skyrim.esm and Update.esm (listing, 16k walk 9, 2026-10-01). No published kit holds the same object, so no same-object stand-in can be chosen (R48).",
+      "note": "A small loose piece from the Creation Club lay here; that content is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "08AC6E21",
+      "reason": "decorative-no-same-class",
+      "search": "Base form ccBGSSSE037-Curios.esl:0000082E lives in a master the project never sources (absent-master-classes.json rule; planner ruling 2026-09-27); the vault Data folder holds only Skyrim.esm and Update.esm (listing, 16k walk 9, 2026-10-01). No published kit holds the same object, so no same-object stand-in can be chosen (R48).",
+      "note": "A small loose piece from the Creation Club lay here; that content is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "08AC6E28",
+      "reason": "decorative-no-same-class",
+      "search": "Base form ccBGSSSE037-Curios.esl:00000811 lives in a master the project never sources (absent-master-classes.json rule; planner ruling 2026-09-27); the vault Data folder holds only Skyrim.esm and Update.esm (listing, 16k walk 9, 2026-10-01). No published kit holds the same object, so no same-object stand-in can be chosen (R48).",
+      "note": "A small loose piece from the Creation Club lay here; that content is not ours, so the spot stays bare."
+    }
+  ],
+  "removalRule": "Owner ruling 2026-10-04 (R113): no missing piece ships as a gap. A missing piece takes a same-class stand-in from a published kit where one exists (substitutions[]); a decorative piece whose class no published kit or vault archive holds is taken out of the fit-out (removals[], reason decorative-no-same-class, its search recorded), and the spot is simply empty. A placed piece whose only support was a removed piece is removed with it (reason rests-on-a-removal, restsOn naming that row)."
+}

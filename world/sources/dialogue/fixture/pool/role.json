@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "domain": "dialogue-pool",
+  "topicClass": "role",
+  "_": "Walker and gate fixture (2.5b4).",
+  "entries": [
+    {"schemaVersion": 1, "id": "pool.fixture-ferry.default", "type": "dialogue", "speaker": null, "keys": {"topic": "topic.fixture-ferry"}, "words": "The raft crosses twice a day for five drakes.", "available": [], "onDelivered": [], "factIds": ["fact.fixture.ferry-fare"], "links": ["topic.fixture-ford"]},
+    {"schemaVersion": 1, "id": "pool.fixture-smithing.default", "type": "dialogue", "speaker": null, "keys": {"topic": "topic.fixture-smithing"}, "words": "Bog iron, worked cold and often.", "available": [], "onDelivered": [], "factIds": [], "links": []},
+    {"schemaVersion": 1, "id": "pool.fallback.role", "type": "dialogue", "speaker": null, "keys": {}, "fallbackFor": "role", "words": "That is not my trade.", "available": [], "onDelivered": [], "factIds": [], "links": []}
+  ]
+}

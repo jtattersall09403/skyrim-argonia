@@ -1,0 +1,297 @@
+{
+ "id": "boat-beach-moor",
+ "start": {
+  "query": "?view=character&x=5433&z=4291&t=10:00&d=8-17",
+  "kit": "start"
+ },
+ "notes": "The Pearl Lots by day, the dugout's beach and its jetty: the grading-ground canoe (boat.pearl-lots.grading-ground-canoe) lies on the shore at (5433.1, 4294.2), the lot beach (socket.pearl-lots.lot-beach, kind beach) 45 m west along the shore and the lot jetty (socket.pearl-lots.lot-jetty, kind landing) 8 m east of the canoe. Lead-in: board from the shore south of the hull and cast off. Filmed: the paddle along the shore to the beach (driveTo on the headless paddleTo route over the same water), E runs the canoe up and ties it on the beach, E casts off again, the paddle back to the jetty with the jetty ahead of the bow in shot, E moors at it. Who is near: n2 (the canoe's keeper) at 5 m by her grading ground, the n1 crew 20 m off at the drying racks; no watch and no hostile within sight. Lit: the sky at 10:00 (103811 lx). What wins E: the hull (its beam/2 + 2 m reach, 2.9 m from the shore spot); n2 stands past a person's 2.5 m reach. Staged: the canoe is the player's (stage.owns; it is n2's in boats.json and taking it in front of her is a witnessed theft): the scene tests beaching and mooring, not ownership.",
+ "steps": [
+  {
+   "lead": true,
+   "name": "board",
+   "transition": "E at the canoe from the shore: the player climbs aboard",
+   "stage": {
+    "at": {
+     "x": 5433,
+     "z": 4291.3,
+     "yaw": 3.14
+    },
+    "hour": 10,
+    "place": "place.saxhleel-coast.pearl-lots",
+    "near": [
+     {
+      "id": "npc.saxhleel-coast.pearl-lots.n2",
+      "m": 5.9,
+      "facing": false
+     }
+    ],
+    "owns": [
+     "boat.pearl-lots.grading-ground-canoe"
+    ]
+   },
+   "do": {
+    "action": "boat",
+    "op": "press"
+   },
+   "keys": [
+    {
+     "wait_s": 1.0
+    },
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 1.0
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.pearl-lots.grading-ground-canoe",
+     "aboard": "boat.pearl-lots.grading-ground-canoe"
+    }
+   }
+  },
+  {
+   "lead": true,
+   "name": "cast-off",
+   "transition": "E aboard: the canoe casts off from the shore",
+   "do": {
+    "action": "boat",
+    "op": "press"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 0.6
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.pearl-lots.grading-ground-canoe",
+     "event": "castOff",
+     "state": "aboard"
+    }
+   }
+  },
+  {
+   "name": "drive-to-the-bank",
+   "transition": "W on the paddle along the shore to the lot beach, the beach ahead of the bow; the paddle let go, the canoe coasts to rest at the bank",
+   "do": {
+    "action": "boat",
+    "op": "paddleTo",
+    "mooring": "socket.pearl-lots.lot-beach",
+    "via": [
+     [
+      5434.5,
+      4300
+     ],
+     [
+      5422,
+      4300.5
+     ],
+     [
+      5400,
+      4310
+     ]
+    ]
+   },
+   "keys": [
+    {
+     "driveTo": [
+      [
+       5434.5,
+       4300
+      ],
+      [
+       5422,
+       4300.5
+      ],
+      [
+       5400,
+       4310
+      ],
+      [
+       5394.5,
+       4315.3
+      ]
+     ],
+     "within_m": 2.5,
+     "max_s": 60
+    },
+    {
+     "wait_s": 3
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.pearl-lots.grading-ground-canoe",
+     "event": "arrived"
+    }
+   }
+  },
+  {
+   "name": "beach",
+   "transition": "E at the lot beach: the canoe is run up and tied on the bank",
+   "do": {
+    "action": "boat",
+    "op": "press"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 1.5
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.pearl-lots.grading-ground-canoe",
+     "event": "moored",
+     "tiedAt": "socket.pearl-lots.lot-beach"
+    }
+   }
+  },
+  {
+   "name": "step-ashore",
+   "transition": "E on the beached canoe: the player steps off onto the bank (a tied hull's E is step off, boatRuntime interactAboard)",
+   "do": {
+    "action": "boat",
+    "op": "press"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 1.5
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.pearl-lots.grading-ground-canoe",
+     "event": "left"
+    }
+   }
+  },
+  {
+   "name": "board-again",
+   "transition": "E at the beached canoe from the bank: aboard again",
+   "do": {
+    "action": "boat",
+    "op": "press"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 1.5
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.pearl-lots.grading-ground-canoe",
+     "event": "boarded"
+    }
+   }
+  },
+  {
+   "name": "cast-off-the-bank",
+   "transition": "E aboard the tied canoe: it pushes off the beach",
+   "do": {
+    "action": "boat",
+    "op": "press"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 0.6
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.pearl-lots.grading-ground-canoe",
+     "event": "castOff",
+     "state": "aboard"
+    }
+   }
+  },
+  {
+   "name": "drive-to-the-jetty",
+   "transition": "W on the paddle back along the shore to the lot jetty, the jetty ahead of the bow in shot; the paddle let go, the canoe coasts to rest beside it",
+   "do": {
+    "action": "boat",
+    "op": "paddleTo",
+    "mooring": "socket.pearl-lots.lot-jetty",
+    "via": [
+     [
+      5410,
+      4306
+     ],
+     [
+      5421,
+      4300.5
+     ]
+    ]
+   },
+   "keys": [
+    {
+     "driveTo": [
+      [
+       5410,
+       4306
+      ],
+      [
+       5421,
+       4300.5
+      ],
+      [
+       5425.7,
+       4298.5
+      ]
+     ],
+     "within_m": 2.5,
+     "max_s": 60
+    },
+    {
+     "wait_s": 3
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.pearl-lots.grading-ground-canoe",
+     "event": "arrived"
+    }
+   }
+  },
+  {
+   "name": "moor-at-the-jetty",
+   "transition": "E aboard at rest within the jetty's reach, the jetty in shot ahead: the canoe is tied at the lot jetty",
+   "do": {
+    "action": "boat",
+    "op": "press"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 2
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "boat": {
+     "id": "boat.pearl-lots.grading-ground-canoe",
+     "event": "moored",
+     "tiedAt": "socket.pearl-lots.lot-jetty"
+    }
+   }
+  }
+ ]
+}

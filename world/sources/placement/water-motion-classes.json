@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "about": "How each water piece moves (decision 0129). The workbench `place` op writes the class default `motion` on a `--wet` piece over drawn water; gate water.motion fails a piece of any class here over water with no motion. Classes are chosen from the kit piece id and its kit sizeM length (y), never from a label: a hull over 10 m long is a moored hull. Tether lengthM null = water depth at the pivot plus the slack, measured by the place op at the compiled high-water line; the tide and season only lower the water from it (game-core water/tide.ts), so the fall needs no slack and every metre of slack widens a seabed tether's swing at low water. The slack is the measured need: the wave crest over the rest, 2 sqrt 2 x envelope.waveRmsM rounded up to 0.05 m (worldgen water_motion.slack_m); slackM overrides it only for a class with a reason. envelope is the class's measured motion (buoyancy_loop.mjs at wind 10 m/s, the worst hull of the class: body-height RMS, peak pitch and roll). Gate water.motion adds the tide and season fall and the tether swing at the hull, and accepts a rigid gangplank seated on a buoyant hull only when that envelope fits the plank's seat: its thickness plus its length times sin(seatPitchTolDeg) vertically, its overlap on the hull horizontally. assetDraughtM overrides the class draught for a piece whose authored sit differs: the depth of its mesh bottom (kit groundContactOffsetM) under the waterline it was authored at, a ship's pivot or a raft's published seat. Every class but gangplank floats: its collider and probes come from the hull cut below its mast (game-core settlement/buoyantHull.ts) and its mass reaches Rapier on that collider.",
+  "classes": {
+    "rowboat": {
+      "envelope": {"waveRmsM": 0.041, "pitchDeg": 1.22, "rollDeg": 1.84},
+      "motion": {"kind": "buoyant", "massKg": 250, "draughtM": 0.15, "linDamp": 0.6, "angDamp": 1.2},
+      "assets": [
+        "canoe:actors/sfss/canoe/canoe1",
+        "ferries:yamadori/ferries/rowboat_ferry_swamp_01",
+        "ferries:yamadori/ferries/common_rowboat_inialta_01",
+        "rowboats:dungeons/ship/shiprowboat01",
+        "rowboats:dungeons/ship/shiprowboatanim01",
+        "sailboats:sailboats/rowboat",
+        "sailboats:sailboats/rowboatnord",
+        "sbot:bstamriel/dungeons/ships/cyrodiilicships/shipcyrodiilicrowboat01",
+        "bmv:architecture/boats/rowboat01",
+        "bmv:nordships/shipnordrowboat"
+      ]
+    },
+    "barge": {
+      "envelope": {"waveRmsM": 0.041, "pitchDeg": 1.05, "rollDeg": 1.61},
+      "motion": {"kind": "buoyant", "massKg": 1500, "draughtM": 0.4, "linDamp": 0.8, "angDamp": 1.5},
+      "assets": [
+        "sailboats:sailboats/sailboat",
+        "sailboats:sailboats/sailboatfurled",
+        "sailboats:sailboats/longboat",
+        "sailboats:sailboats/longboatfurled",
+        "ferries:yamadori/ferries/river_ferry_rift_01",
+        "ferries:yamadori/ferries/volkihar_ferry_01",
+        "sbot:bstamriel/dungeons/ships/cyrodiilicships/shipcyrodiiliccityferry01",
+        "sbot:bstamriel/dungeons/ships/breticships/shipbreticrennenboat01"
+      ]
+    },
+    "keg-buoy": {
+      "envelope": {"waveRmsM": 0.042, "pitchDeg": 0.44, "rollDeg": 0.26},
+      "motion": {"kind": "buoyant", "massKg": 60, "draughtM": 0.3, "linDamp": 0.4, "angDamp": 0.8,
+                 "tether": {"to": "seabed", "lengthM": null}},
+      "slackM": 0.5,
+      "assets": ["vanilla:clutter/barrel01-keg-buoy"]
+    },
+    "ferry-raft": {
+      "envelope": {"waveRmsM": 0.043, "pitchDeg": 0.46, "rollDeg": 0.46},
+      "motion": {"kind": "buoyant", "massKg": 1800, "draughtM": 0.15, "linDamp": 0.8, "angDamp": 1.5,
+                 "tether": {"to": "seabed", "lengthM": null}},
+      "assetDraughtM": {
+        "ferryraft:snt/ferry/ferryraft01": 0.473,
+        "ferryraft:snt/ferry/ferryraft01_no_col": 0.473,
+        "ferries:yamadori/ferries/plank_ferry_swamp_01": 0.569,
+        "ferries:yamadori/ferries/plank_ferry_swamp_03": 0.569
+      },
+      "assets": [
+        "ferryraft:snt/ferry/ferryraft01",
+        "ferryraft:snt/ferry/ferryraft01_no_col",
+        "ferries:yamadori/ferries/plank_ferry_swamp_01",
+        "ferries:yamadori/ferries/plank_ferry_swamp_03"
+      ]
+    },
+    "moored-hull": {
+      "envelope": {"waveRmsM": 0.040, "pitchDeg": 1.40, "rollDeg": 0.08},
+      "motion": {"kind": "buoyant", "massKg": 60000, "draughtM": 1.2, "linDamp": 1.0, "angDamp": 2.0,
+                 "tether": {"to": "seabed", "lengthM": null}},
+      "assetDraughtM": {
+        "sbot:bstamriel/dungeons/ships/breticships/shipbreticgreyteship_hull01": 4.614
+      },
+      "assets": [
+        "sailboats:sailboats/sailboatelf",
+        "sailboats:sailboats/sailboatelffurled",
+        "sbot:bstamriel/dungeons/ships/cyrodiilicships/shipcyrodiilicriverferry01",
+        "sbot:bstamriel/dungeons/ships/cyrodiilicships/shipcyrodiilicgalleon01_docked",
+        "sbot:bstamriel/dungeons/ships/cyrodiilicships/shipcyrodiilicnavyshipsmall01_docked",
+        "sbot:bstamriel/dungeons/ships/cyrodiilicships/shipeectradeship01",
+        "sbot:bstamriel/dungeons/ships/breticships/shipbreticgreyteship_hull01",
+        "bmv:architecture/ships/imperialship01base",
+        "bmv:architecture/ships/imperialship01masts",
+        "bmv:nordships/shipnordtradeship",
+        "bmv:breticships/shipbreticjollyboat",
+        "bmv:transport/ships/ghostship",
+        "bmv:transport/ships/merchant_ship"
+      ]
+    },
+    "gangplank": {
+      "motion": {"kind": "static"},
+      "rigid": true,
+      "seatPitchTolDeg": 5,
+      "assets": [
+        "ferryraft:snt/ferry/norbridgewoodplanks01",
+        "ferryraft:snt/ferry/norbridgewoodplanks02",
+        "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank01",
+        "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank02",
+        "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank03",
+        "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank04"
+      ]
+    }
+  }
+}

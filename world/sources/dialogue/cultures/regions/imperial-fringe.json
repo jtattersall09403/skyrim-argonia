@@ -1,0 +1,195 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "_": "Region sheet for imperial-fringe (2.5a1b). Talk is seeded from the region's published place records; every trait cites a lore dossier or says inferred.",
+ "entries": [
+  {
+   "id": "culture.region.imperial-fringe",
+   "level": "region",
+   "name": "Blackwood and Gloommire (the Imperial fringe)",
+   "parent": "culture.province.black-marsh",
+   "regionId": "imperial-fringe",
+   "norms": [
+    {
+     "text": "Imperial-descended families and lukiul Argonians share the villages and keep separate wells and landings.",
+     "source": "world/sources/lore/gideon.md"
+    },
+    {
+     "text": "Written records still settle things here; Gideon's courthouse is the last working one.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    },
+    {
+     "text": "The roads close in monsoon season and everyone plans the year around it.",
+     "source": "world/sources/lore/regions/blackwood-and-gloommire.md"
+    },
+    {
+     "text": "Legion descendants keep old ranks and drills without pay.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Calling a lukiul Argonian a traitor to the trees.",
+     "source": "world/sources/lore/gideon.md"
+    },
+    {
+     "text": "Defending what the An-Xileel did in 4E 48; their weapon killed Gideon's majority.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    }
+   ],
+   "values": [
+    {
+     "text": "A clear title and a signed paper.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    },
+    {
+     "text": "A stone building over a reed one, among the Imperial families.",
+     "source": "inferred"
+    },
+    {
+     "text": "Getting the harvest to Leyawiin before the road shuts.",
+     "source": "world/sources/lore/regions/blackwood-and-gloommire.md"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Nativists who call the assimilated lukiul.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    },
+    {
+     "text": "The Sul-Xan and anyone who deals with them.",
+     "source": "world/sources/lore/regions/blackwood-and-gloommire.md"
+    }
+   ],
+   "opinions": {
+    "place": {
+     "lean": 0,
+     "text": "The frontier is hills, a bad road and orchards the swamp is taking back.",
+     "source": "world/sources/lore/regions/blackwood-and-gloommire.md"
+    },
+    "work": {
+     "lean": 0,
+     "text": "Bog iron, herbs, red-clay pots and the road trade, when the road is open.",
+     "source": "world/sources/lore/regions/blackwood-and-gloommire.md"
+    },
+    "people": {
+     "lean": 0,
+     "text": "A neighbour is Imperial or lukiul; both of them keep accounts.",
+     "source": "world/sources/lore/gideon.md"
+    },
+    "faction": {
+     "lean": -1,
+     "text": "The Legion's heirs hold posts without pay.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    },
+    "hist": {
+     "lean": 0,
+     "text": "Most lukiul speak of the Hist politely and rarely visit one.",
+     "source": "world/sources/lore/gideon.md"
+    },
+    "empire": {
+     "lean": 1,
+     "text": "The Empire built this country and then left it; some here still miss it.",
+     "source": "world/sources/lore/regions/blackwood-and-gloommire.md"
+    },
+    "trade": {
+     "lean": 1,
+     "text": "The Gideon–Leyawiin road is the only land trade in the province.",
+     "source": "world/sources/lore/topics/foreign-powers.md"
+    },
+    "danger": {
+     "lean": -1,
+     "text": "Death hoppers, hackwings and fleshflies at the border posts; the Sul-Xan beyond them.",
+     "source": "world/sources/lore/regions/blackwood-and-gloommire.md"
+    },
+    "rumour": {
+     "lean": 0,
+     "text": "Talk is of the governor's purse and who will clear the deserters' camp.",
+     "source": "inferred"
+    },
+    "directions": {
+     "lean": 1,
+     "text": "Ways are given by road, milestone and bridge, the Imperial way.",
+     "source": "world/sources/lore/regions/blackwood-and-gloommire.md"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Citizen, sir and madam among the Imperial families; serjeant and the old ranks among the Legion heirs.",
+      "source": "inferred"
+     },
+     {
+      "text": "Argonians are called by name, not by category, in the towns.",
+      "source": "world/sources/lore/gideon.md"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [
+     {
+      "text": "By the Nine.",
+      "source": "inferred"
+     },
+     {
+      "text": "Gods keep the road dry.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "That the Archein serfdoms were worse than what came after.",
+      "source": "world/sources/lore/regions/blackwood-and-gloommire.md"
+     },
+     {
+      "text": "What the Legion did to the tribes before the withdrawal.",
+      "source": "inferred"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#region-imperial-fringe"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Gideon's governor will not pay to clear the camp at the Broke Column.",
+      "source": "inferred"
+     },
+     {
+      "text": "The Imperial-built well at Claywater is failing, but half the village will not help rebuild it in stone.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "The diggers have abandoned the deep end of the bog-iron seep.",
+      "source": "inferred"
+     },
+     {
+      "text": "A Sul-Xan mask was found at a border post.",
+      "source": "world/sources/lore/regions/blackwood-and-gloommire.md"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.region.hist-heartland",
+     "lean": -1,
+     "text": "The interior folk think anyone who writes things down has lost their soul.",
+     "source": "world/sources/lore/regions/middle-argonia.md"
+    },
+    {
+     "node": "culture.region.imperial-penal-south",
+     "lean": -1,
+     "text": "Blackrose is a day's ride and a different world; people go in and stay.",
+     "source": "world/sources/lore/topics/prisons.md"
+    },
+    {
+     "node": "culture.region.dunmer-north",
+     "lean": 0,
+     "text": "Shadowfen is a long way round. The Dunmer up there are not our business.",
+     "source": "world/sources/lore/regions/shadowfen.md"
+    }
+   ],
+   "deviationRate": 0.2
+  }
+ ]
+}

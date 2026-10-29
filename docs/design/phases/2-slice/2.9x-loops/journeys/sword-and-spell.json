@@ -1,0 +1,549 @@
+{
+ "id": "sword-and-spell",
+ "start": {
+  "query": "?view=character&x=4.7789&z=1.9&t=12:00&d=8-17",
+  "kit": "bag-sword-shield",
+  "drawn": false
+ },
+ "steps": [
+  {
+   "name": "open-inventory",
+   "transition": "walking -> inventory open",
+   "do": {
+    "action": "openInventory"
+   },
+   "keys": [
+    {
+     "press": "Escape"
+    }
+   ],
+   "hold_s": 0.8,
+   "expect": {
+    "drawn": false,
+    "screen": "inventory",
+    "mainHand": null,
+    "offHand": null
+   }
+  },
+  {
+   "name": "equip-sword",
+   "transition": "inventory -> sword in the right hand",
+   "do": {
+    "action": "equip",
+    "item": "steel-sword",
+    "hand": "mainHand"
+   },
+   "keys": [
+    {
+     "click": "[data-es-bag] [data-es-item=\"steel-sword\"]"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": "[data-es-actions] [data-hand=\"main\"]"
+    }
+   ],
+   "hold_s": 0.5,
+   "expect": {
+    "mainHand": "steel-sword",
+    "offHand": null,
+    "screen": "inventory"
+   }
+  },
+  {
+   "name": "equip-shield",
+   "transition": "inventory -> shield in the left hand",
+   "do": {
+    "action": "equip",
+    "item": "steel-shield",
+    "hand": "offHand"
+   },
+   "keys": [
+    {
+     "click": "[data-es-bag] [data-es-item=\"steel-shield\"]"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": "[data-es-actions] [data-es-act=\"equip\"]"
+    }
+   ],
+   "hold_s": 0.5,
+   "expect": {
+    "mainHand": "steel-sword",
+    "offHand": "steel-shield"
+   }
+  },
+  {
+   "name": "close-inventory",
+   "transition": "inventory open -> walking",
+   "do": {
+    "action": "closeScreen"
+   },
+   "keys": [
+    {
+     "click": "[data-es-close]"
+    }
+   ],
+   "hold_s": 0.5,
+   "expect": {
+    "screen": null,
+    "drawn": false
+   }
+  },
+  {
+   "name": "draw",
+   "transition": "sheathed -> drawn",
+   "do": {
+    "action": "draw"
+   },
+   "keys": [
+    {
+     "press": "Tab"
+    }
+   ],
+   "hold_s": 1.0,
+   "expect": {
+    "drawn": true,
+    "intent": "equipPressed",
+    "clip": "EQUIP"
+   }
+  },
+  {
+   "name": "light",
+   "transition": "drawn idle -> light attack",
+   "do": {
+    "action": "light"
+   },
+   "keys": [
+    {
+     "mouse": "left",
+     "hold_s": 0.1
+    }
+   ],
+   "hold_s": 1.0,
+   "expect": {
+    "intent": "lightPressed",
+    "clip": "LIGHT_1"
+   }
+  },
+  {
+   "name": "heavy",
+   "transition": "drawn idle -> heavy attack at the hold threshold",
+   "do": {
+    "action": "heavy"
+   },
+   "keys": [
+    {
+     "mouse": "left",
+     "hold_s": 0.5
+    }
+   ],
+   "hold_s": 1.2,
+   "expect": {
+    "intent": "heavyPressed",
+    "clip": "HEAVY"
+   }
+  },
+  {
+   "name": "block",
+   "transition": "drawn idle -> guard raised, a blow blocked",
+   "do": {
+    "action": "block"
+   },
+   "keys": [
+    {
+     "mouse": "right",
+     "hold_s": 0.6
+    }
+   ],
+   "hold_s": 0.5,
+   "expect": {
+    "intent": "guardHeld",
+    "blocked": true,
+    "clip": "SHIELD_GUARD_ENTER"
+   }
+  },
+  {
+   "name": "parry",
+   "transition": "drawn idle -> parry (guard held, primary tapped)",
+   "do": {
+    "action": "parry"
+   },
+   "keys": [
+    {
+     "down": "MouseRight"
+    },
+    {
+     "press": "MouseLeft"
+    },
+    {
+     "up": "MouseRight"
+    }
+   ],
+   "hold_s": 1.0,
+   "expect": {
+    "intent": "parryPressed",
+    "parryActive": true,
+    "clip": "SHIELD_PARRY"
+   }
+  },
+  {
+   "name": "lock-on",
+   "transition": "free camera -> locked on a hostile",
+   "do": {
+    "action": "lockOn"
+   },
+   "keys": [
+    {
+     "press": "KeyQ"
+    }
+   ],
+   "hold_s": 0.5,
+   "expect": {
+    "intent": "lockOnPressed"
+   }
+  },
+  {
+   "name": "roll",
+   "transition": "locked on -> roll toward the stick",
+   "do": {
+    "action": "roll"
+   },
+   "keys": [
+    {
+     "down": "KeyW"
+    },
+    {
+     "down": "Space"
+    },
+    {
+     "wait_s": 0.1
+    },
+    {
+     "up": "Space"
+    },
+    {
+     "up": "KeyW"
+    }
+   ],
+   "hold_s": 0.9,
+   "expect": {
+    "dodge": "roll",
+    "clip": "ROLL"
+   }
+  },
+  {
+   "name": "two-hand-grip",
+   "transition": "sword and shield -> two-hand grip, shield stowed",
+   "do": {
+    "action": "twoHand"
+   },
+   "keys": [
+    {
+     "press": "KeyV"
+    }
+   ],
+   "hold_s": 0.6,
+   "expect": {
+    "intent": "twoHandPressed",
+    "mainHand": "steel-sword",
+    "offHand": null
+   }
+  },
+  {
+   "name": "release-grip",
+   "transition": "two-hand grip -> shield restored",
+   "do": {
+    "action": "twoHand"
+   },
+   "keys": [
+    {
+     "press": "KeyV"
+    }
+   ],
+   "hold_s": 0.6,
+   "expect": {
+    "intent": "twoHandPressed",
+    "mainHand": "steel-sword",
+    "offHand": "steel-shield"
+   }
+  },
+  {
+   "name": "open-inventory-again",
+   "transition": "walking -> inventory open",
+   "do": {
+    "action": "openInventory"
+   },
+   "keys": [
+    {
+     "press": "Escape"
+    }
+   ],
+   "hold_s": 0.5,
+   "expect": {
+    "screen": "inventory"
+   }
+  },
+  {
+   "name": "spell-to-off-hand",
+   "transition": "magic window -> spell in the left hand",
+   "do": {
+    "action": "equipSpell",
+    "spell": "fireball",
+    "hand": "off"
+   },
+   "keys": [
+    {
+     "click": ".es-magic [data-es-row=\"fireball\"]"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": ".es-magic [data-ready=\"off\"]"
+    }
+   ],
+   "hold_s": 0.5,
+   "expect": {
+    "mainHand": "steel-sword",
+    "offHand": "fireball"
+   }
+  },
+  {
+   "name": "close-inventory-again",
+   "transition": "inventory open -> walking",
+   "do": {
+    "action": "closeScreen"
+   },
+   "keys": [
+    {
+     "press": "Escape"
+    }
+   ],
+   "hold_s": 0.3,
+   "expect": {
+    "screen": null
+   }
+  },
+  {
+   "name": "cast-off-hand",
+   "transition": "spell in the off hand -> cast",
+   "do": {
+    "action": "cast",
+    "hand": "off"
+   },
+   "keys": [
+    {
+     "mouse": "right",
+     "hold_s": 1.5
+    }
+   ],
+   "hold_s": 1.0,
+   "expect": {
+    "intent": "castOffHeld",
+    "clip": "CAST_AIMED_RELEASE_L"
+   }
+  },
+  {
+   "name": "open-inventory-for-belt",
+   "transition": "walking -> inventory open",
+   "do": {
+    "action": "openInventory"
+   },
+   "keys": [
+    {
+     "press": "Escape"
+    }
+   ],
+   "hold_s": 0.3,
+   "expect": {
+    "screen": "inventory"
+   }
+  },
+  {
+   "name": "belt-shield-set",
+   "transition": "inventory -> shield on belt slot 1",
+   "do": {
+    "action": "setBelt",
+    "slot": 0,
+    "item": "steel-shield"
+   },
+   "keys": [
+    {
+     "click": "[data-es-bag] [data-es-item=\"steel-shield\"]"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": ".es-inventory [data-belt=\"item-0\"]"
+    }
+   ],
+   "hold_s": 0.2,
+   "expect": {
+    "screen": "inventory"
+   }
+  },
+  {
+   "name": "belt-spell-set",
+   "transition": "inventory -> spell on belt slot 2",
+   "do": {
+    "action": "setBelt",
+    "slot": 1,
+    "spell": "fireball"
+   },
+   "keys": [
+    {
+     "click": ".es-magic [data-es-row=\"fireball\"]"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": ".es-magic [data-belt=\"item-1\"]"
+    }
+   ],
+   "hold_s": 0.2,
+   "expect": {
+    "screen": "inventory"
+   }
+  },
+  {
+   "name": "close-inventory-belt",
+   "transition": "inventory open -> walking",
+   "do": {
+    "action": "closeScreen"
+   },
+   "keys": [
+    {
+     "press": "Escape"
+    }
+   ],
+   "hold_s": 0.3,
+   "expect": {
+    "screen": null
+   }
+  },
+  {
+   "name": "belt-to-shield",
+   "transition": "belt slot 1 -> shield in the left hand, spell displaced",
+   "do": {
+    "action": "belt",
+    "slot": 0
+   },
+   "keys": [
+    {
+     "press": "Digit1"
+    }
+   ],
+   "hold_s": 0.5,
+   "expect": {
+    "mainHand": "steel-sword",
+    "offHand": "steel-shield"
+   }
+  },
+  {
+   "name": "belt-to-spell",
+   "transition": "belt slot 2 -> spell in the right hand, sword displaced",
+   "do": {
+    "action": "belt",
+    "slot": 1
+   },
+   "keys": [
+    {
+     "press": "Digit2"
+    }
+   ],
+   "hold_s": 0.5,
+   "expect": {
+    "mainHand": "fireball",
+    "offHand": "steel-shield"
+   }
+  },
+  {
+   "name": "cast-main-hand",
+   "transition": "spell in the main hand -> cast",
+   "do": {
+    "action": "cast",
+    "hand": "main"
+   },
+   "keys": [
+    {
+     "mouse": "left",
+     "hold_s": 1.5
+    }
+   ],
+   "hold_s": 1.0,
+   "expect": {
+    "intent": "castMainHeld",
+    "clip": "CAST_AIMED_RELEASE_R"
+   }
+  },
+  {
+   "name": "sheathe",
+   "transition": "drawn with a spell in hand -> sheathed",
+   "do": {
+    "action": "sheathe"
+   },
+   "keys": [
+    {
+     "press": "Tab"
+    }
+   ],
+   "hold_s": 1.0,
+   "expect": {
+    "drawn": false,
+    "intent": "equipPressed",
+    "clip": "BEAST_H2H_UNEQUIP"
+   }
+  },
+  {
+   "name": "wait-for-the-alert-to-clear",
+   "transition": "after the fight -> hunted alert decayed (nothing seen or heard)",
+   "do": {
+    "action": "observe"
+   },
+   "keys": [
+    {
+     "wait_s": 16
+    }
+   ],
+   "hold_s": 0.5,
+   "expect": {
+    "drawn": false
+   }
+  },
+  {
+   "name": "rest",
+   "transition": "walking -> a camp sitting",
+   "do": {
+    "action": "rest",
+    "hours": 8
+   },
+   "keys": [
+    {
+     "press": "KeyT"
+    },
+    {
+     "wait_s": 0.6
+    },
+    {
+     "click": "[data-es-act=\"rest\"]"
+    },
+    {
+     "wait_s": 1.0
+    },
+    {
+     "press": "Escape"
+    }
+   ],
+   "hold_s": 0.5,
+   "expect": {
+    "rested": true
+   }
+  }
+ ]
+}

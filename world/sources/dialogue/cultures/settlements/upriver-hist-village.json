@@ -1,0 +1,140 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "entries": [
+  {
+   "id": "culture.settlement.upriver-hist-village",
+   "level": "settlement",
+   "name": "Nine Bends",
+   "parent": "culture.region.pirate-freeholds",
+   "placeId": "place.pirate-freeholds.upriver-hist-village",
+   "norms": [
+    {
+     "text": "A stranger is housed under the elder's roof and fed from the guest stores.",
+     "source": "world/sources/catalogue/places-pirate-freeholds.json#place.pirate-freeholds.upriver-hist-village"
+    },
+    {
+     "text": "Quarrels and debts between households go to the elder.",
+     "source": "world/sources/catalogue/places-pirate-freeholds.json#place.pirate-freeholds.upriver-hist-village"
+    },
+    {
+     "text": "Offerings at the foot of the tree are kept filled.",
+     "source": "world/sources/catalogue/places-pirate-freeholds.json#place.pirate-freeholds.upriver-hist-village"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Taking from the offering bowls at the tree's foot.",
+     "source": "inferred"
+    },
+    {
+     "text": "Lifting a hatchery lid without a keeper.",
+     "source": "world/sources/catalogue/places-pirate-freeholds.json#place.pirate-freeholds.upriver-hist-village"
+    }
+   ],
+   "values": [
+    {
+     "text": "A kin-house swept for whoever comes back from downriver.",
+     "source": "world/sources/catalogue/places-pirate-freeholds.json#place.pirate-freeholds.upriver-hist-village"
+    },
+    {
+     "text": "Fresh water above the salt.",
+     "source": "world/sources/catalogue/places-pirate-freeholds.json#place.pirate-freeholds.upriver-hist-village"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Gang bosses who keep a hand on the roll past the season.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "place": {
+     "lean": 1,
+     "text": "Too big now for the people left in it; the tree is why anyone stays.",
+     "source": "world/sources/catalogue/places-pirate-freeholds.json#place.pirate-freeholds.upriver-hist-village"
+    },
+    "work": {
+     "lean": 0,
+     "text": "The roll is the only coin; whether it is worth the strain on the tree divides the village.",
+     "source": "world/sources/catalogue/places-pirate-freeholds.json#place.pirate-freeholds.upriver-hist-village"
+    },
+    "danger": {
+     "lean": -1,
+     "text": "River predators on the approach; jellies in the shallows; a moon adder under the bank.",
+     "source": "world/sources/catalogue/places-pirate-freeholds.json#place.pirate-freeholds.upriver-hist-village"
+    },
+    "rumour": {
+     "lean": -1,
+     "text": "Talk is of the tree going quiet.",
+     "source": "world/sources/catalogue/places-pirate-freeholds.json#place.pirate-freeholds.upriver-hist-village"
+    },
+    "directions": {
+     "lean": 1,
+     "text": "Ways are given by the river: a day down to the gang camp, the port past it.",
+     "source": "world/sources/catalogue/places-pirate-freeholds.json#place.pirate-freeholds.upriver-hist-village"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "A stranger is called by what they are doing or what they want; neighbours by name.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [
+     {
+      "text": "By the root.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "How long a neighbour's kin have been gone, said to that neighbour.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "More adults go downriver on the roll every year and fewer come back up.",
+      "source": "world/sources/catalogue/places-pirate-freeholds.json#place.pirate-freeholds.upriver-hist-village"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "The tree has begun to go quiet.",
+      "source": "world/sources/catalogue/places-pirate-freeholds.json#place.pirate-freeholds.upriver-hist-village"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.region.pirate-freeholds",
+     "lean": -1,
+     "text": "The port and the gangs take the village's people and send back coin.",
+     "source": "world/sources/catalogue/places-pirate-freeholds.json#place.pirate-freeholds.upriver-hist-village"
+    }
+   ],
+   "deviationRate": 0.2,
+   "dissent": [
+    {
+     "personId": "npc.pirate-freeholds.upriver-hist-village.npc-opening-tree-minder",
+     "topic": "work",
+     "lean": -2,
+     "text": "The tree marks every adult on the roll and shows the strain; she reads that strain.",
+     "source": "inferred"
+    },
+    {
+     "personId": "npc.pirate-freeholds.upriver-hist-village.n2",
+     "topic": "people",
+     "lean": -2,
+     "text": "The gang families downriver were hatched under this Hist and still claim it; she sells to their camp and resents every word of the claim.",
+     "source": "inferred"
+    }
+   ]
+  }
+ ]
+}

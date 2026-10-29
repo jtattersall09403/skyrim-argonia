@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "domain": "dialogue-glossary",
+  "_": "Walker and gate fixture (2.5b4). loadBearing: the nouns a line may not name without a glossary row.",
+  "loadBearing": ["Hist", "Sap"],
+  "entries": [
+    {"id": "term.fixture-hist", "forms": ["Hist"], "topicId": "topic.fixture-hist", "actOne": true, "opaque": false}
+  ]
+}

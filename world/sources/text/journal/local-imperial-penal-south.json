@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "domain": "journal-text",
+  "_": "Journal entries and objective lines of the imperial-penal-south local quests (2.11): one unit per text key a quest stage names (`journal`, `objectives[].text`). Logic lives in world/sources/quests; this file holds only the words. `factIds` are dialogue facts the text states; `groundedIn` the place facts under it.",
+  "entries": [
+    {
+      "id": "text.journal.lr03.10",
+      "questId": "quest.local.lr03",
+      "surface": "journal",
+      "text": "Ux-Vakka, the tag-keeper at the Tag House, gave me a bone-tag that came back from the villages for a woman of the Rose. Her family were told she walked out years ago. I'm to take the tag to Vees-Kai of that family, who waits under the shelter.",
+      "factIds": [
+        "fact.tag-house.returned-tag",
+        "fact.tag-house.walked-out"
+      ],
+      "groundedIn": [
+        "fact.rose-bone-waystation.questHooks-opportunity-1"
+      ]
+    },
+    {
+      "id": "text.objective.lr03.give-tag",
+      "questId": "quest.local.lr03",
+      "surface": "journal",
+      "text": "Take the bone-tag to Vees-Kai under the shelter",
+      "factIds": [],
+      "groundedIn": [
+        "fact.rose-bone-waystation.why-siteAdvantages-2"
+      ]
+    },
+    {
+      "id": "text.journal.lr03.20",
+      "questId": "quest.local.lr03",
+      "surface": "journal",
+      "text": "I gave Vees-Kai the bone-tag. Her family were told the woman walked out of the Rose, but if a tag comes back, there are bones behind it. I'm to learn in the Rose what became of her.",
+      "factIds": [
+        "fact.tag-house.returned-tag",
+        "fact.tag-house.walked-out"
+      ],
+      "groundedIn": [
+        "fact.rose-bone-waystation.why-founding-1"
+      ]
+    },
+    {
+      "id": "text.journal.lr03.90",
+      "questId": "quest.local.lr03",
+      "surface": "journal",
+      "text": "Vees-Kai has died at the Tag House. The bone-tag cannot reach her family from here now.",
+      "factIds": [],
+      "groundedIn": [
+        "fact.rose-bone-waystation.why-siteAdvantages-2"
+      ]
+    },
+    {
+      "id": "text.journal.lr24.10",
+      "questId": "quest.local.lr24",
+      "surface": "journal",
+      "text": "Okan-Sei, the villages' carrier at the Tag House, told me a trafficker moves living people out of the Rose on the papers of the dead. Every carriage charge is written in the tag-keeper's book, in his hut.",
+      "factIds": [
+        "fact.tag-house.dead-papers",
+        "fact.tags.charge-book"
+      ],
+      "groundedIn": [
+        "fact.rose-bone-waystation.why-occupantsMotive-2"
+      ]
+    },
+    {
+      "id": "text.objective.lr24.read-ledger",
+      "questId": "quest.local.lr24",
+      "surface": "journal",
+      "text": "Read the carriage charge book in the tag-keeper's hut",
+      "factIds": [],
+      "groundedIn": [
+        "fact.rose-bone-waystation.contents-loot-l1-1"
+      ]
+    },
+    {
+      "id": "text.journal.lr24.20",
+      "questId": "quest.local.lr24",
+      "surface": "journal",
+      "text": "I read in the charge book that Tag 17 was released after a week with no name given. The Chainbreakers paid forty drakes for it.",
+      "factIds": [
+        "fact.tag-house.tag-seventeen"
+      ],
+      "groundedIn": [
+        "fact.rose-bone-waystation.why-occupantsMotive-2"
+      ]
+    },
+    {
+      "id": "text.objective.lr24.ask-keeper",
+      "questId": "quest.local.lr24",
+      "surface": "journal",
+      "text": "Ask Ux-Vakka about Tag 17",
+      "factIds": [],
+      "groundedIn": [
+        "fact.rose-bone-waystation.vibe-signatureFeature-2"
+      ]
+    },
+    {
+      "id": "text.journal.lr24.30",
+      "questId": "quest.local.lr24",
+      "surface": "journal",
+      "text": "Ux-Vakka could not say whose bones went out as Tag 17. A living person may have left the Rose under that charge.",
+      "factIds": [
+        "fact.tag-house.tag-seventeen",
+        "fact.tag-house.dead-papers"
+      ],
+      "groundedIn": [
+        "fact.rose-bone-waystation.why-founding-1"
+      ]
+    },
+    {
+      "id": "text.journal.lr24.90",
+      "questId": "quest.local.lr24",
+      "surface": "journal",
+      "text": "Ux-Vakka or Okan-Sei has died at the Tag House. I can learn nothing more here about the papers of the dead.",
+      "factIds": [],
+      "groundedIn": [
+        "fact.rose-bone-waystation.why-occupantsMotive-2"
+      ]
+    },
+    {
+      "id": "text.journal.lr39.10",
+      "questId": "quest.local.lr39",
+      "surface": "journal",
+      "text": "Ux-Vakka, the tag-keeper at the Tag House, told me some of the tags on his wall are hung for people who are still alive. He did not hang them. I'm to ask Sal-Ozzu, who waits under the shelter, whose names they carry.",
+      "factIds": [
+        "fact.tag-house.living-tags"
+      ],
+      "groundedIn": [
+        "fact.rose-bone-waystation.vibe-signatureFeature-2"
+      ]
+    },
+    {
+      "id": "text.objective.lr39.ask-sal-ozzu",
+      "questId": "quest.local.lr39",
+      "surface": "journal",
+      "text": "Ask Sal-Ozzu whose names the tags carry",
+      "factIds": [],
+      "groundedIn": [
+        "fact.rose-bone-waystation.why-siteAdvantages-2"
+      ]
+    },
+    {
+      "id": "text.journal.lr39.20",
+      "questId": "quest.local.lr39",
+      "surface": "journal",
+      "text": "Sal-Ozzu told me the names on the living tags belong to families in Vaunting. I'm to learn in Vaunting who hung them.",
+      "factIds": [
+        "fact.tag-house.living-tags",
+        "fact.tag-house.vaunting-names"
+      ],
+      "groundedIn": [
+        "fact.rose-bone-waystation.why-pressures-1"
+      ]
+    },
+    {
+      "id": "text.journal.lr39.90",
+      "questId": "quest.local.lr39",
+      "surface": "journal",
+      "text": "Ux-Vakka or Sal-Ozzu has died at the Tag House. I will learn nothing more here of the tags that hang for living people.",
+      "factIds": [],
+      "groundedIn": [
+        "fact.rose-bone-waystation.vibe-signatureFeature-2"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1417 @@
+{
+  "schemaVersion": 1,
+  "note": "The province place taxonomy (Phase 11 Part 1, decision 0041). class -> family -> type -> variants. DERIVED from world/sources/catalogue/type-recipes.json, which is the source of truth for every type's siting grammar, five-slot recipe, culture, era, season, danger band, asset plan and expected count; worldgen/test_type_recipes.py fails if the two drift. Never hand-edit this file. Enumerated across the 0041 breadth-rule axes (economy/trade, faction/institution, ecology/habitat, era layer, traversal mode, danger tier, social function, condition state, season, scale) and crossed. Adding entries is cheap; renaming is a migration.",
+  "classes": {
+    "settlement": {
+      "dry-village": {
+        "cliff-shelf-village": [
+          "sea-facing",
+          "gorge-facing"
+        ],
+        "flood-high-hamlet": [
+          "single-rise",
+          "levee-top"
+        ],
+        "gorge-wall-dwelling": [
+          "cut",
+          "built-out"
+        ],
+        "grassland-field-village": [
+          "saltrice",
+          "mixed-field"
+        ],
+        "hammock-village": [
+          "tree-island",
+          "raised-ring"
+        ],
+        "upland-terrace-village": [
+          "ridge-shelf",
+          "spring-head"
+        ]
+      },
+      "free-port": {
+        "neutral-free-port": [
+          "price-listed",
+          "half-legal"
+        ]
+      },
+      "homestead": {
+        "claimable-steading": [
+          "derelict",
+          "disputed",
+          "gifted"
+        ],
+        "domestic-compound": [
+          "extended-family",
+          "two-household",
+          "new-build"
+        ]
+      },
+      "imperial-settlement": {
+        "colonial-quarter": [
+          "sacked",
+          "drowned",
+          "reoccupied"
+        ],
+        "foreign-trading-station": [
+          "near-abandoned",
+          "active"
+        ],
+        "imperial-farmstead": [
+          "working",
+          "sinking",
+          "abandoned"
+        ],
+        "road-station-village": [
+          "staffed",
+          "squatted"
+        ]
+      },
+      "major-city": {
+        "contested-ex-capital": [],
+        "field-margin-city": [],
+        "frontier-records-city": [],
+        "hist-grove-capital": [],
+        "island-confluence-city": [],
+        "legal-harbour-city": [],
+        "rebuilt-stilt-city": [],
+        "terraced-river-city": []
+      },
+      "mixed-settlement": {
+        "customs-town": [
+          "state",
+          "loophole"
+        ],
+        "dunmer-frontier-holding": [
+          "house-remnant",
+          "refugee-founded"
+        ],
+        "estate-village": [
+          "working",
+          "disputed",
+          "derelict"
+        ],
+        "garrison-town": [
+          "levy-held",
+          "imperial-shell"
+        ],
+        "inland-market-town": [
+          "crossroads",
+          "river-junction"
+        ],
+        "plantation-quarters": [
+          "occupied",
+          "abandoned"
+        ],
+        "port-town": [
+          "deep-water",
+          "lighterage"
+        ],
+        "shrine-town": [
+          "hist",
+          "sithis",
+          "foreign"
+        ],
+        "toll-road-town": [
+          "imperial-era",
+          "argonian-held"
+        ],
+        "trade-landing": [
+          "seasonal",
+          "permanent"
+        ],
+        "works-town": [
+          "extraction",
+          "processing"
+        ]
+      },
+      "outcast-settlement": {
+        "freed-worker-shelter": [
+          "chainbreaker-run",
+          "self-organised"
+        ],
+        "hist-less-refuge": [
+          "urban-fringe",
+          "wilderness"
+        ],
+        "morrowind-veterans-holding": [
+          "celebrated",
+          "unquiet"
+        ],
+        "quarantine-village": [
+          "active",
+          "lapsed"
+        ],
+        "waiting-vigil-settlement": [
+          "first-generation",
+          "third-generation"
+        ]
+      },
+      "tribal-village": {
+        "artisan-village": [
+          "chime-makers",
+          "weavers",
+          "jewellers",
+          "instrument-makers"
+        ],
+        "beast-keeper-village": [
+          "crocodile",
+          "lizard-steed",
+          "gar",
+          "swamp-jelly",
+          "hackwing"
+        ],
+        "bereaved-village": [
+          "mnemic-egg",
+          "hist-less-since"
+        ],
+        "hatchery-village": [
+          "pool-terraced",
+          "heavily-defended"
+        ],
+        "heretic-stone-village": [
+          "building-restarted",
+          "slave-pens"
+        ],
+        "hist-village": [
+          "speaking-hist",
+          "sleeping-hist",
+          "young-cutting",
+          "blue-flowered",
+          "frost-hist"
+        ],
+        "insular-village": [
+          "hereditary-watch",
+          "warmonger",
+          "hostile-first"
+        ],
+        "naga-village": [
+          "settled",
+          "raiding"
+        ],
+        "necropolis-village": [
+          "dead-tenders",
+          "nightbound"
+        ],
+        "nightbound-village": [
+          "lightless",
+          "egg-stealing"
+        ],
+        "pilgrim-trial-village": [
+          "trials-open",
+          "sap-reconnection"
+        ],
+        "sap-touched-village": [
+          "miredancer",
+          "gold-tongue"
+        ]
+      },
+      "water-village": {
+        "boardwalk-village": [
+          "single-spine",
+          "branching",
+          "high-walkway"
+        ],
+        "canoe-berth-hamlet": [
+          "agaceph-poling",
+          "tide-born"
+        ],
+        "drifting-village": [
+          "wet-mooring",
+          "dry-mooring",
+          "in-transit-footprint"
+        ],
+        "houseboat-flotilla": [
+          "reef",
+          "lagoon",
+          "estuary"
+        ],
+        "mangrove-platform-village": [
+          "wall-edge",
+          "channel-cut"
+        ],
+        "raft-village": [
+          "moored-platform",
+          "lashed-cluster"
+        ],
+        "stilt-village": [
+          "shallow-flat",
+          "channel-edge",
+          "tidal"
+        ]
+      }
+    },
+    "works": {
+      "aquaculture": {
+        "fish-station": [
+          "drying",
+          "salting",
+          "smoking",
+          "live-well"
+        ],
+        "frog-pond-farm": [
+          "tone-selected",
+          "food"
+        ],
+        "guar-byre": [
+          "landward",
+          "underwater"
+        ],
+        "pearl-and-shell-bed": [
+          "pearl",
+          "shell",
+          "reef-harvest"
+        ],
+        "predator-pen": [
+          "crocodile",
+          "gar",
+          "ripper-eel"
+        ],
+        "shell-yard": [
+          "haj-mota",
+          "turtle",
+          "clam"
+        ],
+        "small-stock-beds": [
+          "licorice-worm",
+          "fermentation-scum",
+          "swamp-jelly",
+          "luck-charm-jelly"
+        ]
+      },
+      "craft": {
+        "anomalous-smithy": [
+          "foreign",
+          "heretical"
+        ],
+        "boatwright-yard": [
+          "raft",
+          "canoe",
+          "careening-hard"
+        ],
+        "bone-and-hide-works": [
+          "bone",
+          "tannery",
+          "shieldwright"
+        ],
+        "dye-and-lacquer-house": [
+          "scale-lacquer",
+          "cloth-dye"
+        ],
+        "glass-and-bead-house": [
+          "bead",
+          "volcanic-glass"
+        ],
+        "instrument-and-toy-works": [
+          "vossa-satl",
+          "kites",
+          "spring-boxes"
+        ],
+        "salvage-divers-yard": [
+          "wreck",
+          "drowned-village"
+        ],
+        "shipyard": [
+          "building",
+          "dry-dock",
+          "breaking"
+        ],
+        "slug-shaping-house": [],
+        "wamasu-works": [
+          "lantern",
+          "charged-bone",
+          "prod-shed"
+        ],
+        "weaving-house": [
+          "guarded",
+          "open",
+          "cordage"
+        ]
+      },
+      "cultivation": {
+        "calcinator-court": [
+          "moon-oriented",
+          "abandoned"
+        ],
+        "drying-yard": [
+          "marshweed",
+          "lumberry",
+          "herb"
+        ],
+        "floating-garden": [
+          "village",
+          "solo"
+        ],
+        "paddy-works": [
+          "saltrice",
+          "rice"
+        ],
+        "reed-cutting-ground": [
+          "withy",
+          "thatch"
+        ],
+        "seed-doll-nursery": []
+      },
+      "extraction": {
+        "bog-iron-bloomery": [
+          "working",
+          "cold"
+        ],
+        "clay-pit-and-kiln": [
+          "red-onkobra",
+          "common"
+        ],
+        "crystal-diggings": [
+          "ayleid-tunnel",
+          "open-cut",
+          "hollow-crystal-vault"
+        ],
+        "derelict-concession": [
+          "goldworks",
+          "timber",
+          "overseers-camp"
+        ],
+        "gem-workings": [
+          "blue-jasper",
+          "neesak",
+          "niben-crystal"
+        ],
+        "hardwood-and-charcoal-camp": [
+          "felling",
+          "charcoal-clamp"
+        ],
+        "knapping-floor": [
+          "jadeflint",
+          "obsidian"
+        ],
+        "kwama-mine": [
+          "egg",
+          "ore"
+        ],
+        "peat-cutting": [
+          "working",
+          "burning",
+          "burnt-out"
+        ],
+        "salt-pans": [
+          "coastal",
+          "estuary"
+        ]
+      },
+      "illicit": {
+        "antiquities-fence": [
+          "urban",
+          "field"
+        ],
+        "clandestine-dig-camp": [
+          "umbrielic-remains",
+          "xanmeer",
+          "ayleid"
+        ],
+        "contraband-cache": [
+          "channel-mouth",
+          "cave",
+          "false-bottom"
+        ],
+        "daril-fermentary": [
+          "venom-milking",
+          "quill-works"
+        ],
+        "sap-tapping-camp": [
+          "licensed",
+          "illicit"
+        ],
+        "smugglers-lay-by": [
+          "mangrove",
+          "coastal"
+        ],
+        "smugglers-ledge": [
+          "cached",
+          "staffed"
+        ]
+      },
+      "labour": {
+        "hiring-office": [
+          "clean-paper",
+          "captured"
+        ],
+        "ledger-house": [
+          "estate",
+          "crossing",
+          "internal"
+        ],
+        "muster-yard": [
+          "levy",
+          "owing"
+        ],
+        "tunnel-rat-gallery": [
+          "working",
+          "collapsed"
+        ],
+        "work-gang-camp": [
+          "dredging",
+          "boardwalk-cutting",
+          "grave-staking",
+          "hauling"
+        ]
+      },
+      "market": {
+        "counting-bench": [
+          "moneychanger",
+          "obligation-broker"
+        ],
+        "market-fair-ground": [
+          "periodic-fair",
+          "stall-row",
+          "beast-market"
+        ],
+        "steed-hire-post": [
+          "lizard-steed",
+          "guar"
+        ]
+      },
+      "provision": {
+        "brewhouse": [
+          "rye",
+          "phlegmwine",
+          "xanmeer-brandy"
+        ],
+        "cookshop": [
+          "outsider-facing",
+          "local"
+        ],
+        "field-remedy-stall": [
+          "emollient",
+          "purifier",
+          "depth-stick"
+        ],
+        "groomers-house": [
+          "moulting",
+          "bathhouse"
+        ],
+        "pickling-and-sauce-house": []
+      },
+      "storage-and-freight": {
+        "bonded-warehouse": [
+          "company-sealed",
+          "reused",
+          "broken-open"
+        ],
+        "porter-relay-yard": [
+          "walking",
+          "poling"
+        ]
+      }
+    },
+    "transit": {
+      "crossing": {
+        "causeway": [
+          "pile-timber",
+          "stone-flagged",
+          "broken"
+        ],
+        "ford-post": [
+          "seasonal",
+          "tidal"
+        ],
+        "route-structure": [
+          "crossing",
+          "causeway"
+        ],
+        "portage-slipway": [
+          "falls",
+          "narrows"
+        ],
+        "tide-timed-run": [
+          "channel",
+          "flat"
+        ],
+        "toll-bridge": [
+          "plank",
+          "stone-arch",
+          "xanmeer-span"
+        ],
+        "toll-tower": [
+          "manned",
+          "ruined"
+        ]
+      },
+      "elevated": {
+        "canopy-crossing": [
+          "rope",
+          "root"
+        ],
+        "platform-ladder-tower": [],
+        "walkway-junction": [
+          "low",
+          "high",
+          "branching"
+        ]
+      },
+      "landing": {
+        "ferry-stage": [
+          "toll",
+          "free",
+          "guide-hire"
+        ],
+        "head-of-navigation": [
+          "seasonal",
+          "permanent"
+        ],
+        "mooring-cluster": [
+          "flotilla",
+          "storm"
+        ],
+        "night-shelter-platform": [],
+        "raft-landing": [
+          "village",
+          "wild"
+        ],
+        "wharf": [
+          "deep-water",
+          "lighterage",
+          "bonded"
+        ]
+      },
+      "road": {
+        "monsoon-barrier": [],
+        "mountain-pass-station": [
+          "snowline",
+          "scree"
+        ],
+        "road-stage": [
+          "imperial",
+          "argonian"
+        ],
+        "waymark-junction": [
+          "pictographic",
+          "lettered"
+        ],
+        "waystation": [
+          "shrine",
+          "shelter"
+        ]
+      },
+      "root-transit": {
+        "bubble-spire-exit": [
+          "open",
+          "collapsed"
+        ],
+        "rootworm-station": [
+          "standing",
+          "seasonal"
+        ]
+      },
+      "submerged-way": {
+        "air-pocket-station": [],
+        "canal-gate": [
+          "eel-guarded",
+          "derelict"
+        ],
+        "dive-shaft": [
+          "xanmeer",
+          "natural"
+        ],
+        "flooded-passage": [
+          "cellar",
+          "tunnel"
+        ]
+      }
+    },
+    "sacred": {
+      "foreign-faith": {
+        "dibella-house": [],
+        "orphaned-conclave-hall": [
+          "lodging",
+          "warehouse",
+          "still-congregating"
+        ],
+        "ruined-chapel": [
+          "mission",
+          "garrison"
+        ],
+        "shunned-daedric-ruin": [
+          "boethiah-vaermina",
+          "molag-bal",
+          "clavicus"
+        ],
+        "wayside-imperial-shrine": []
+      },
+      "hist": {
+        "city-hist": [
+          "contested",
+          "vigil-kept",
+          "cutting"
+        ],
+        "drowned-hist": [],
+        "harmed-hist": [
+          "tapped",
+          "enslaved",
+          "dead-mnemic-egg"
+        ],
+        "hero-hist-grove": [],
+        "village-hist": [
+          "enclosure",
+          "pond",
+          "field-edge"
+        ],
+        "wild-hist": [
+          "sleeping",
+          "rogue",
+          "mad"
+        ]
+      },
+      "rite": {
+        "beast-offering-shrine": [
+          "flood-staying",
+          "hunt"
+        ],
+        "bonding-hall": [],
+        "convocation-ground": [
+          "root-talk",
+          "tribal"
+        ],
+        "dream-wallow": [
+          "sap",
+          "starblossom"
+        ],
+        "maturity-trial-ground": [
+          "chukka-sei",
+          "kaju-kill",
+          "burnished-scales"
+        ],
+        "mourning-ground": [
+          "first",
+          "second",
+          "third"
+        ],
+        "naming-day-ground": [],
+        "shadowscale-ground": [
+          "tempering-ground",
+          "closed-sanctuary",
+          "black-tongue-site"
+        ]
+      },
+      "sithis": {
+        "art-and-destroy-site": [],
+        "meditation-stone": [
+          "onyx",
+          "riverine"
+        ],
+        "nisswo-rest-house": [],
+        "preaching-ground": [
+          "wayside",
+          "village"
+        ],
+        "sithis-temple": [
+          "tended",
+          "mass-sacrifice",
+          "ruined-sermon"
+        ]
+      },
+      "the-dead": {
+        "bone-repatriation-waystation": [],
+        "cairn-field": [
+          "kothringi",
+          "plague"
+        ],
+        "foreign-graveyard": [
+          "imperial",
+          "mixed"
+        ],
+        "grave-singers-yard": [
+          "staking",
+          "mortuary-harvest"
+        ],
+        "grave-stake-field": [
+          "village",
+          "war-memorial",
+          "flood-disturbed"
+        ],
+        "hammock-crown-terrace": [
+          "ancestor",
+          "clan-founder"
+        ],
+        "mass-grave-memorial": [
+          "umbriel",
+          "burn",
+          "flu"
+        ],
+        "pahnjee-rack": [],
+        "urn-vault": [
+          "blasphemers",
+          "sealed"
+        ]
+      },
+      "wonder": {
+        "murkwood-verge": [
+          "present",
+          "absent"
+        ],
+        "umbriel-shadow-track": [
+          "scoured",
+          "overgrown"
+        ]
+      }
+    },
+    "civic": {
+      "childhood": {
+        "egg-log-house": [],
+        "play-ground": [
+          "underwater",
+          "pony-lizard"
+        ],
+        "uxith": [
+          "village",
+          "regional-pools"
+        ]
+      },
+      "festivity": {
+        "ball-court": [
+          "teeba-hatsei",
+          "teeba-enoo",
+          "race-water"
+        ],
+        "debate-circle": [],
+        "festival-ground": [
+          "seasonal",
+          "mourning"
+        ],
+        "fighting-pit": [
+          "ruction-ring",
+          "informal"
+        ],
+        "performance-platform": [
+          "travelling",
+          "resident"
+        ],
+        "placation-court": [
+          "teeba-enoo",
+          "teeba-hatsei"
+        ],
+        "tradehouse": [
+          "road",
+          "quay",
+          "village"
+        ],
+        "vice-den": [
+          "gambling",
+          "daril",
+          "dance-barge"
+        ]
+      },
+      "governance": {
+        "council-house": [
+          "merchant",
+          "tribal"
+        ],
+        "courier-relay": [
+          "runner",
+          "poler",
+          "chime-relay"
+        ],
+        "harbour-office": [
+          "captain",
+          "wharfinger",
+          "weigh-house"
+        ],
+        "stipend-post": [],
+        "wardens-office": [
+          "state",
+          "ignored"
+        ]
+      },
+      "healing": {
+        "alchemists-court": [],
+        "elders-house": [
+          "elders",
+          "infirm",
+          "blind"
+        ],
+        "pest-house": [
+          "active",
+          "abandoned"
+        ],
+        "quarantine-shed": [
+          "inspection",
+          "plague"
+        ],
+        "withdrawal-house": [
+          "sap",
+          "daril"
+        ]
+      },
+      "law": {
+        "arbitration-ground": [
+          "nisswo-witnessed",
+          "tree-minder"
+        ],
+        "courthouse": [
+          "functioning",
+          "ruined"
+        ],
+        "gallows-yard": [
+          "standing",
+          "disused"
+        ],
+        "records-archive": [
+          "civic",
+          "estate"
+        ],
+        "vicecanons-hall": []
+      },
+      "learning": {
+        "apprentice-house": [
+          "craft",
+          "office"
+        ],
+        "curators-chapterhouse": [],
+        "field-station": [
+          "naturalist",
+          "antiquarian"
+        ],
+        "library": [
+          "anachronistic-ruin",
+          "conclave-vault"
+        ],
+        "storytelling-ground": [
+          "song-line",
+          "grievance-stone"
+        ],
+        "teaching-ground": [
+          "deelith",
+          "recitation"
+        ],
+        "unbuilt-museum-site": []
+      },
+      "magic": {
+        "enchanters-bench": [
+          "crystal",
+          "charged-bone",
+          "soul-gem"
+        ],
+        "sign-readers-ground": [
+          "charm-maker",
+          "sign-reader",
+          "weather-caller"
+        ],
+        "synod-outstation": [
+          "licensed",
+          "overstaying"
+        ],
+        "whispers-house": [
+          "deniable",
+          "abandoned-in-haste"
+        ]
+      },
+      "quarter": {
+        "foreign-quarter": [
+          "dunmer",
+          "khajiit",
+          "mixed"
+        ],
+        "slum-quarter": [
+          "squat",
+          "tidal-flood",
+          "hist-less"
+        ]
+      },
+      "refuge": {
+        "dry-cache": [
+          "marked",
+          "hidden"
+        ],
+        "hearth-house": [
+          "village-kept",
+          "road-kept"
+        ],
+        "refuge-station": [
+          "caretaker",
+          "unmanned"
+        ],
+        "storm-shelter": [
+          "coastal",
+          "upland"
+        ]
+      },
+      "waste": {
+        "failed-drainage-works": [],
+        "latrine-stage": [],
+        "midden": [
+          "village",
+          "city"
+        ]
+      }
+    },
+    "martial": {
+      "carceral": {
+        "holding-pit": [
+          "scandal",
+          "derelict"
+        ],
+        "prison-ruin": [
+          "structurally-sound",
+          "collapsed"
+        ],
+        "reoccupied-prison": [
+          "criminal-held",
+          "undead-below"
+        ],
+        "sealed-facility": [
+          "watched",
+          "forgotten"
+        ],
+        "slaver-apparatus": [
+          "dres-derelict",
+          "archein-derelict"
+        ]
+      },
+      "imperial-military": {
+        "abandoned-fort": [
+          "intact",
+          "collapsed"
+        ],
+        "battlefield-ground": [
+          "massacre",
+          "pitched"
+        ],
+        "buried-weapon-cache": [],
+        "occupied-fort": [
+          "non-imperial-held",
+          "garrisoned"
+        ],
+        "siege-earthworks": []
+      },
+      "strength": {
+        "defenders-hall": [
+          "hereditary",
+          "levied"
+        ],
+        "drill-ground": [],
+        "inhabited-xanmeer-fort": [
+          "walls-only",
+          "defences-working"
+        ],
+        "levy-armoury": [],
+        "totem-perimeter": [
+          "boundary",
+          "meddled"
+        ]
+      },
+      "watch": {
+        "beacon-platform": [],
+        "border-post": [
+          "staffed",
+          "thinned"
+        ],
+        "deniable-listening-post": [
+          "thalmor",
+          "veiled-reed",
+          "foreign"
+        ],
+        "lighthouse": [
+          "lit",
+          "dark"
+        ],
+        "patrol-shelter": [],
+        "watchtower": [
+          "chain-link",
+          "solitary"
+        ]
+      }
+    },
+    "camp": {
+      "civil-camp": {
+        "fishing-camp": [
+          "dawn-boat",
+          "reef"
+        ],
+        "gatherers-camp": [
+          "herb",
+          "reed",
+          "lumberry"
+        ],
+        "guide-camp": [
+          "night-shelter",
+          "predator-watch"
+        ],
+        "hunters-stand": [
+          "hide",
+          "elevated"
+        ],
+        "pilgrim-camp": [
+          "trial-bound",
+          "mourning-bound"
+        ],
+        "prospectors-camp": [
+          "crystal",
+          "clay",
+          "iron"
+        ]
+      },
+      "displaced-camp": {
+        "bone-carriers-camp": [],
+        "owing-eviction-camp": [],
+        "refugee-camp": [
+          "flood",
+          "raid"
+        ],
+        "vigil-camp": [
+          "waiting-for-the-clean-province"
+        ]
+      },
+      "expedition-camp": {
+        "dig-camp": [
+          "antiquarian",
+          "necromantic"
+        ],
+        "survey-camp": [
+          "imperial-era",
+          "current"
+        ],
+        "treasure-hunters-camp": [
+          "living",
+          "dead"
+        ]
+      },
+      "hostile-camp": {
+        "blackguard-hideout": [
+          "ledgered",
+          "raw"
+        ],
+        "deserter-camp": [
+          "legion-remnant"
+        ],
+        "cult-raid-camp": [
+          "sul-xan",
+          "other"
+        ],
+        "naga-highway-camp": [
+          "road-active",
+          "road-abandoned"
+        ],
+        "pirate-anchorage": [
+          "outlaw",
+          "half-chartered"
+        ],
+        "poacher-camp": [
+          "sap",
+          "hide",
+          "egg"
+        ],
+        "safehouse-drop": [
+          "reed-drop",
+          "criminal",
+          "abolitionist"
+        ],
+        "wrecker-beach": []
+      }
+    },
+    "ruin": {
+      "ayleid": {
+        "barsaebic-compound": [
+          "surface",
+          "sub-city"
+        ],
+        "fenlord-tomb": [],
+        "keystone-chamber": [],
+        "lamia-cavern": [],
+        "ring-complex": []
+      },
+      "daedric-works": {
+        "bargain-site": [
+          "soul-gem-array",
+          "unfinished"
+        ],
+        "oblivion-gate-scar": [],
+        "sap-collection-facility": []
+      },
+      "depopulated": {
+        "burn-scar-village": [],
+        "drowned-village": [
+          "tidal",
+          "lake"
+        ],
+        "plague-abandoned-village": [
+          "goods-in-place",
+          "looted"
+        ],
+        "plague-cordon-line": [
+          "burnt",
+          "marked"
+        ],
+        "rebuilt-elsewhere-footprint": [
+          "recent",
+          "old"
+        ],
+        "subsidence-hamlet": [],
+        "umbriel-stripped-village": [
+          "undead-present",
+          "quiet"
+        ]
+      },
+      "imperial-ruin": {
+        "derelict-plantation": [
+          "great-house",
+          "quarters"
+        ],
+        "ducal-ruin": [],
+        "empty-mission": [],
+        "failed-roadworks": [
+          "drainage",
+          "bridge",
+          "embankment"
+        ],
+        "sacked-colonial-quarter": [],
+        "second-empire-works": [
+          "akaviri",
+          "reman"
+        ],
+        "sunken-house": []
+      },
+      "lost-peoples": {
+        "cantemiric-velothi-site": [],
+        "horwalli-waterworks": [],
+        "kothringi-ruin": [
+          "village",
+          "capital-complex"
+        ],
+        "lilmothiit-substratum": [],
+        "orma-tactile-ruin": [],
+        "yespest-misattributed-site": []
+      },
+      "xanmeer": {
+        "broken-xanmeer": [
+          "collapsed",
+          "subsumed"
+        ],
+        "duskfall-horizon-site": [
+          "abandoned-mid-build",
+          "deliberately-unmade"
+        ],
+        "sealed-xanmeer": [
+          "vakka-defended",
+          "hist-chamber"
+        ],
+        "submerged-xanmeer": [
+          "fully",
+          "topmost-chamber"
+        ],
+        "tended-xanmeer": [
+          "clan-tended",
+          "pilgrim-tended"
+        ]
+      }
+    },
+    "lair": {
+      "beast-lair": {
+        "bird-colony": [
+          "nesting-island",
+          "dusk-roost"
+        ],
+        "bog-blight-ground": [],
+        "crocodile-ravine": [
+          "wild",
+          "town-threshold"
+        ],
+        "death-hopper-pool": [],
+        "dry-season-herd-ground": [
+          "concentration",
+          "calving"
+        ],
+        "hackwing-roost": [
+          "wild",
+          "mewed"
+        ],
+        "legendary-deep": [
+          "medusa-wood",
+          "feather-serpent-deep"
+        ],
+        "leviathan-bone-field": [
+          "hollowed",
+          "fresh"
+        ],
+        "marsh-giant-ground": [],
+        "miregaunt-ward": [
+          "ruin-approach",
+          "open"
+        ],
+        "sea-drake-deep": [],
+        "serpent-ground": [
+          "giant-snake",
+          "moon-adder"
+        ],
+        "shell-beast-ground": [
+          "haj-mota",
+          "nesting"
+        ],
+        "voriplasm-chamber": [
+          "sealed",
+          "breached"
+        ],
+        "wamasu-pond": [
+          "adult",
+          "egg-nest"
+        ],
+        "wisp-lure": []
+      },
+      "harvest-node": {
+        "mineral-node": [
+          "gem",
+          "ore",
+          "glass"
+        ],
+        "reagent-pool": [
+          "nirnroot",
+          "glowflower",
+          "starblossom"
+        ],
+        "vine-face": [
+          "flint-vine",
+          "fibre"
+        ]
+      },
+      "hazard-ground": {
+        "black-mud-trap": [],
+        "collapsing-pinnacle": [],
+        "drawdown-flat": [
+          "exposed",
+          "refilling"
+        ],
+        "drowning-narrows": [
+          "tidal",
+          "current"
+        ],
+        "foul-water-pool": [],
+        "gas-vent-field": [
+          "venting",
+          "burning"
+        ],
+        "swarm-hollow": [],
+        "whitewater-reach": [
+          "rapids",
+          "logjam"
+        ]
+      },
+      "open-water": {
+        "becalmed-lane": [
+          "pirate-worked",
+          "haunted"
+        ],
+        "fishing-bank": [
+          "worked",
+          "fought-over"
+        ],
+        "reef": [
+          "living",
+          "wrecking",
+          "harvest"
+        ],
+        "sea-stack": [
+          "seabird",
+          "nesting",
+          "occupied"
+        ]
+      },
+      "root-system": {
+        "root-hollow-gallery": [
+          "walkable",
+          "flooded",
+          "collapsed",
+          "inhabited"
+        ],
+        "wild-rootworm-burrow": [
+          "occupied",
+          "collapsed"
+        ]
+      }
+    },
+    "lone": {
+      "curiosity": {
+        "air-pocket-grotto": [],
+        "bioluminescent-water": [
+          "glowfen",
+          "tidal-bloom",
+          "cave-pool"
+        ],
+        "climbable-ruin-roof": [],
+        "fallen-flier": [
+          "mage"
+        ],
+        "mist-locked-hollow": [],
+        "shunned-ground-marker": [],
+        "sinkhole-mouth": [],
+        "vista-ledge": [],
+        "waterfall-chamber": []
+      },
+      "lone-dwelling": {
+        "hermit-hut": [
+          "ascetic",
+          "exile",
+          "mad"
+        ],
+        "keepers-lodge": [
+          "ferry",
+          "toll",
+          "light"
+        ],
+        "officeholders-house": [
+          "tree-minder",
+          "grave-singer",
+          "retired-arbiter",
+          "chime-maker"
+        ],
+        "snowline-hermitage": [
+          "ascetic",
+          "exiled-order"
+        ],
+        "squatted-ruin-home": []
+      },
+      "monument": {
+        "boundary-totem": [
+          "territorial",
+          "shunned-ground"
+        ],
+        "chime-frame": [
+          "bone",
+          "tin",
+          "seed"
+        ],
+        "memorial-stone": [
+          "naval",
+          "war",
+          "personal"
+        ],
+        "standing-curiosity": [
+          "mechanism",
+          "statue",
+          "unexplained"
+        ],
+        "stone-calendar": []
+      },
+      "remnant": {
+        "abandoned-boat": [],
+        "cache": [
+          "marked",
+          "hidden",
+          "forgotten"
+        ],
+        "derelict-works": [
+          "racks",
+          "pens",
+          "kiln",
+          "staging"
+        ],
+        "lone-grave-stake": [
+          "read",
+          "fallen"
+        ],
+        "wreck": [
+          "above-water",
+          "submerged",
+          "beached-as-hall"
+        ]
+      }
+    }
+  }
+}

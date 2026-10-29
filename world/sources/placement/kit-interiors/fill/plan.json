@@ -1,0 +1,27 @@
+{
+ "schemaVersion": 1,
+ "_": "The interior fill plan (2.3 b): the blanket loot rule a cell author's container stands for, by its source base editor id (the socket's `why`), first match wins; `cells` narrows a row to cells whose id matches. Unmatched containers take their class default (socket-vocabulary containerClasses), else blanket.household-chest. `python3 -m worldgen.loot_fill --cell <cell> --apply` freezes the result per socket into fill/<cell>.json; an `authored` row there is kept.",
+ "containers": [
+  {"source": "^TreasCWImperialChest", "cells": "^FortAmol01$", "rule": "blanket.legion-armoury", "why": "the voriplasm vault's fort keeps the garrison's armour beside its weapons (world/76 §128.2)"},
+  {"source": "^(EndTable|Dresser)", "cells": "^FortAmol01$", "rule": "blanket.guard-footlocker", "why": "a fort's bedside table is a soldier's footlocker, not a family's clothes chest"},
+  {"source": "^TreasXanmeerUrn01", "cells": "^TeethofSithisInt02$", "rule": "blanket.cult-cache", "why": "the Nisswo hall's altar urn keeps the cult's offerings"},
+  {"source": "^(BasketFish|BarrelFish)", "rule": "blanket.fish-basket"},
+  {"source": "^(BasketIngredients|BasketMarshmerrow|BasketSnail|ALPARusticCupboard01Food|ALPAFurnCupboard01Food|Cupboard01)", "rule": "blanket.cook-shelf"},
+  {"source": "^(BarrelFood|BarrelMeat|MeadBarrel)", "rule": "blanket.household-barrel"},
+  {"source": "^BarrelEmpty", "rule": "blanket.water-barrel"},
+  {"source": "^(BasketSaltrice|MiscSack0?2?LargeSaltrice)", "rule": "blanket.farmer-seed-bin"},
+  {"source": "^(CIPHTBMNativeBasket|BasketEmpty)", "rule": "blanket.household-urn"},
+  {"source": "^(ALPARusticChest01Clothes|ALPARusticCupboard01Clothes|ALPAFurnWardrobe|ALPAFurnDresser|Dresser|CommonWardrobe|EndTable|PersonalChest)", "rule": "blanket.household-chest"},
+  {"source": "^TreasXanmeerUrn0[123]", "rule": "blanket.kothringi-cairn"},
+  {"source": "^TreasXanmeerUrn04", "rule": "blanket.shrine-bowl"},
+  {"source": "^TreasBanditChest", "rule": "blanket.highwayman-bundle"},
+  {"source": "^TreasCW(Imperial|Sons)Chest", "rule": "blanket.legion-leavings"},
+  {"source": "^TreasWarlockChest", "rule": "blanket.alchemist-shelf"},
+  {"source": "^TreasAlchemySatchel", "rule": "blanket.healer-satchel"},
+  {"source": "^TreasMurkmireChest", "rule": "blanket.smuggler-crate"},
+  {"source": "^StrongBox", "rule": "blanket.toll-strongbox"},
+  {"source": "^TreasKnapsack", "rule": "blanket.trapper-sack"},
+  {"source": "^TreasBurntCorpse", "rule": "blanket.prisoner-bundle"},
+  {"source": "^MiscSack", "rule": "blanket.storage-crate"}
+ ]
+}

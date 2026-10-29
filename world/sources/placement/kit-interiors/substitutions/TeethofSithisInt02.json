@@ -1,0 +1,338 @@
+{
+  "schemaVersion": 1,
+  "cellId": "TeethofSithisInt02",
+  "plugin": "King of the Murkmire.esp",
+  "rule": "Stand-ins for the cell's missing Creation Club, Dawnguard and Hearthfire clutter (as KeebaHouseFisher). Each stand-in is a published piece of the same object class and near size, drawn at the missing reference's transform by worldgen/export_interior_bundle.py.",
+  "substitutions": [
+    {
+      "refId": "084B5B97",
+      "standInAsset": "vanilla:clutter/ingredients/scalypholiotabits01",
+      "why": "A bungler's bane cap lies here; a pinch of dried fungus takes its place."
+    },
+    {
+      "refId": "084B5B98",
+      "standInAsset": "vanilla:clutter/ingredients/scalypholiotabits01",
+      "why": "A bungler's bane cap lies here; a pinch of dried fungus takes its place."
+    },
+    {
+      "refId": "084B5B99",
+      "standInAsset": "vanilla:clutter/ingredients/scalypholiotabits01",
+      "why": "A hypha facia cap lies here; a pinch of dried fungus takes its place."
+    },
+    {
+      "refId": "084B5B9A",
+      "standInAsset": "vanilla:clutter/ingredients/scalypholiotabits01",
+      "why": "A hypha facia cap lies here; a pinch of dried fungus takes its place."
+    },
+    {
+      "refId": "084B5B9E",
+      "standInAsset": "vanilla:clutter/ingredients/scalypholiotabits01",
+      "why": "A luminous russula cap lies here; a pinch of dried fungus takes its place."
+    },
+    {
+      "refId": "084B5B9F",
+      "standInAsset": "vanilla:clutter/ingredients/scalypholiotabits01",
+      "why": "A luminous russula cap lies here; a pinch of dried fungus takes its place."
+    },
+    {
+      "refId": "084B5BA0",
+      "standInAsset": "vanilla:clutter/ingredients/scalypholiotabits01",
+      "why": "A luminous russula cap lies here; a pinch of dried fungus takes its place."
+    },
+    {
+      "refId": "084B5BAD",
+      "standInAsset": "vanilla:clutter/ingredients/scalypholiotabits01",
+      "why": "A poison bloom lies here; a pinch of dried fungus takes its place."
+    }
+  ],
+  "removals": [
+    {
+      "refId": "08491B15",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A stalk of marshmerrow lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "08491B16",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A stalk of marshmerrow lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "08491B17",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A bundle of kresh fibre lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "08491B55",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A handful of saltrice lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "08491B56",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A handful of saltrice lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "08491B57",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A stalk of marshmerrow lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "08491B58",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A stalk of marshmerrow lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "084B089E",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A Dawnguard item lies loose here; its master is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "084B089F",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A Dawnguard item lies loose here; its master is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "084B08A0",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A Dawnguard item lies loose here; its master is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "084B08A4",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A Dawnguard item lies loose here; its master is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "084B08A7",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A Dawnguard item lies loose here; its master is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "084B08A8",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A Dawnguard item lies loose here; its master is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "084B08AC",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A Dawnguard item lies loose here; its master is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "084B08D8",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A Dawnguard item lies loose here; its master is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "084B08D9",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A Dawnguard item lies loose here; its master is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "084B5B3E",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A Dawnguard item lies loose here; its master is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "084B5B8A",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A Creation Club ingredient lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "084B5B8B",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A Creation Club ingredient lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "084B5B8C",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A sprig of chokeberry lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "084B5B8D",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A Creation Club ingredient lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "084B5B8E",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A sprig of chokeberry lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "084B5B8F",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A Creation Club ingredient lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "084B5B91",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A Creation Club ingredient lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "084B5B92",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A Creation Club ingredient lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "084B5B93",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A Creation Club ingredient lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "084B5B94",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A sprig of hackle-lo leaf lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "084B5B95",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A sprig of hackle-lo leaf lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "084B5B9B",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A Creation Club ingredient lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "084B5B9C",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A Creation Club ingredient lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "084B5B9D",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A redwort flower lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "084B5BA1",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A stalk of marshmerrow lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "084B5BA2",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A stalk of marshmerrow lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "084B5BA3",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A bundle of kresh fibre lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "084B5BA4",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A Creation Club ingredient lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "084B5BA5",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A Creation Club ingredient lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "084B5BA6",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A handful of saltrice lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "084B5BA7",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A handful of saltrice lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "084B5BA8",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A handful of saltrice lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "084B5BAB",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A Creation Club ingredient lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "084B5BAC",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A redwort flower lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "084C52A3",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A sprig of hackle-lo leaf lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "087AB569",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A sprig of chokeberry lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "087AB56A",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A sprig of chokeberry lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "087AB56F",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A dish of mudcrab legs lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "087AB570",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A dish of mudcrab legs lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "087BAC3C",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A Dawnguard item lies loose here; its master is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "0879BBE4",
+      "reason": "seals-a-passage",
+      "why": "The fallen wall of the priests' sunken bed room closes it. Its collider seals the floor beside the covered beds from the temple door, and a nav bake without it alone joins door and bed (lane 2.4b2b). The room stays open on that side, as the wall's broken state shows."
+    }
+  ],
+  "removalRule": "Owner ruling 2026-10-04 (R113): no missing piece ships as a gap. A missing piece takes a same-class stand-in from a published kit where one exists (substitutions[]); a decorative piece whose class no published kit or vault archive holds is taken out of the fit-out (removals[], reason decorative-no-same-class, its search recorded), and the spot is simply empty. A placed piece whose only support was a removed piece is removed with it (reason rests-on-a-removal, restsOn naming that row)."
+}

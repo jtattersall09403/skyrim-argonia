@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "cellId": "RootWhisperHouseBeekeeper",
+  "plugin": "King of the Murkmire.esp",
+  "rule": "Stand-ins for the cell's missing clutter and furniture (lane L17, planner brief 2026-09-28): each missing piece is drawn by a published vanilla or King of the Murkmire piece of the same object and near size, read from the kit manifests; a piece with no same-object stand-in stays a listed gap. Drawn at the missing reference's transform by worldgen/export_interior_bundle.py.",
+  "substitutions": [
+    {
+      "refId": "085BDDE3",
+      "standInAsset": "vanilla:clutter/deadanimals/fishrack02",
+      "why": "Fishing gear hangs here; a fish rack takes its place."
+    },
+    {
+      "refId": "085BDE03",
+      "standInAsset": "vanilla:clutter/common/fishingpolecollection01",
+      "why": "Fishing gear hangs here; a bundle of fishing poles takes its place."
+    },
+    {
+      "refId": "085BDE17",
+      "standInAsset": "vanilla:clutter/deadanimals/deadpondfish05",
+      "why": "A raw michinitl fish lies here; a dead pond fish takes its place."
+    },
+    {
+      "refId": "085BDE19",
+      "standInAsset": "vanilla:clutter/common/fishingpolecollection01",
+      "why": "Fishing gear hangs here; a bundle of fishing poles takes its place."
+    },
+    {
+      "refId": "085BDE1E",
+      "standInAsset": "vanilla:clutter/deadanimals/deadpondfish02",
+      "why": "A raw slaughterfish lies here; a dead pond fish takes its place."
+    },
+    {
+      "refId": "085C2FB5",
+      "standInAsset": "vanilla:clutter/glazedjugsmall01",
+      "why": "A jug of bog brew stands here; a small glazed jug of its height takes its place."
+    },
+    {
+      "refId": "085C2FB7",
+      "standInAsset": "vanilla:clutter/ingredients/stew",
+      "why": "A bowl of marshmerrow stew sits here; a bowl of stew takes its place."
+    },
+    {
+      "refId": "085BDDE5",
+      "standInAsset": "vanilla:clutter/common/fishingpolecollection01",
+      "why": "A fishing rod leans here; the vanilla fishing-pole rack, of its kind and size, takes its place."
+    }
+  ],
+  "removals": [
+    {
+      "refId": "085BDDEF",
+      "reason": "decorative-no-same-class",
+      "search": "Base form ccBGSSSE001-Fish.esm:00000D6B lives in a master the project never sources (absent-master-classes.json rule; planner ruling 2026-09-27); the vault Data folder holds only Skyrim.esm and Update.esm (listing, 16k walk 9, 2026-10-01). No published kit holds the same object, so no same-object stand-in can be chosen (R48).",
+      "note": "A small loose piece from the Creation Club lay here; that content is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "085BDDF3",
+      "reason": "decorative-no-same-class",
+      "search": "Base form ccBGSSSE001-Fish.esm:00000D73 lives in a master the project never sources (absent-master-classes.json rule; planner ruling 2026-09-27); the vault Data folder holds only Skyrim.esm and Update.esm (listing, 16k walk 9, 2026-10-01). No published kit holds the same object, so no same-object stand-in can be chosen (R48).",
+      "note": "A small loose piece from the Creation Club lay here; that content is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "085BDE01",
+      "reason": "decorative-no-same-class",
+      "search": "Base form ccBGSSSE037-Curios.esl:00000814 lives in a master the project never sources (absent-master-classes.json rule; planner ruling 2026-09-27); the vault Data folder holds only Skyrim.esm and Update.esm (listing, 16k walk 9, 2026-10-01). No published kit holds the same object, so no same-object stand-in can be chosen (R48).",
+      "note": "A small loose piece from the Creation Club lay here; that content is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "085BDE0B",
+      "reason": "decorative-no-same-class",
+      "search": "Base form ccBGSSSE001-Fish.esm:00000D72 lives in a master the project never sources (absent-master-classes.json rule; planner ruling 2026-09-27); the vault Data folder holds only Skyrim.esm and Update.esm (listing, 16k walk 9, 2026-10-01). No published kit holds the same object, so no same-object stand-in can be chosen (R48).",
+      "note": "A small loose piece from the Creation Club lay here; that content is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "085BDE0F",
+      "reason": "decorative-no-same-class",
+      "search": "Base form ccBGSSSE037-Curios.esl:00000811 lives in a master the project never sources (absent-master-classes.json rule; planner ruling 2026-09-27); the vault Data folder holds only Skyrim.esm and Update.esm (listing, 16k walk 9, 2026-10-01). No published kit holds the same object, so no same-object stand-in can be chosen (R48).",
+      "note": "A small loose piece from the Creation Club lay here; that content is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "085BDE12",
+      "reason": "decorative-no-same-class",
+      "search": "Base form ccBGSSSE001-Fish.esm:00000D72 lives in a master the project never sources (absent-master-classes.json rule; planner ruling 2026-09-27); the vault Data folder holds only Skyrim.esm and Update.esm (listing, 16k walk 9, 2026-10-01). No published kit holds the same object, so no same-object stand-in can be chosen (R48).",
+      "note": "A small loose piece from the Creation Club lay here; that content is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "085BDE20",
+      "reason": "decorative-no-same-class",
+      "search": "Base form ccBGSSSE001-Fish.esm:00000D74 lives in a master the project never sources (absent-master-classes.json rule; planner ruling 2026-09-27); the vault Data folder holds only Skyrim.esm and Update.esm (listing, 16k walk 9, 2026-10-01). No published kit holds the same object, so no same-object stand-in can be chosen (R48).",
+      "note": "A small loose piece from the Creation Club lay here; that content is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "085C2FBE",
+      "reason": "decorative-no-same-class",
+      "search": "Base form ccBGSSSE001-Fish.esm:00000D73 lives in a master the project never sources (absent-master-classes.json rule; planner ruling 2026-09-27); the vault Data folder holds only Skyrim.esm and Update.esm (listing, 16k walk 9, 2026-10-01). No published kit holds the same object, so no same-object stand-in can be chosen (R48).",
+      "note": "A small loose piece from the Creation Club lay here; that content is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "085C2FBF",
+      "reason": "decorative-no-same-class",
+      "search": "Base form ccBGSSSE001-Fish.esm:00000D74 lives in a master the project never sources (absent-master-classes.json rule; planner ruling 2026-09-27); the vault Data folder holds only Skyrim.esm and Update.esm (listing, 16k walk 9, 2026-10-01). No published kit holds the same object, so no same-object stand-in can be chosen (R48).",
+      "note": "A small loose piece from the Creation Club lay here; that content is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "085C2FC0",
+      "reason": "decorative-no-same-class",
+      "search": "Base form ccBGSSSE001-Fish.esm:00000D6B lives in a master the project never sources (absent-master-classes.json rule; planner ruling 2026-09-27); the vault Data folder holds only Skyrim.esm and Update.esm (listing, 16k walk 9, 2026-10-01). No published kit holds the same object, so no same-object stand-in can be chosen (R48).",
+      "note": "A small loose piece from the Creation Club lay here; that content is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "085C82BE",
+      "reason": "decorative-no-same-class",
+      "search": "Base form Dragonborn.esm:0002000C lives in a master the project never sources (absent-master-classes.json rule; planner ruling 2026-09-27); the vault Data folder holds only Skyrim.esm and Update.esm (listing, 16k walk 9, 2026-10-01). No published kit holds the same object, so no same-object stand-in can be chosen (R48).",
+      "note": "A small loose piece from the Dragonborn add-on lay here; that content is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "085C82BF",
+      "reason": "decorative-no-same-class",
+      "search": "Base form HearthFires.esm:00003F31 lives in a master the project never sources (absent-master-classes.json rule; planner ruling 2026-09-27); the vault Data folder holds only Skyrim.esm and Update.esm (listing, 16k walk 9, 2026-10-01). No published kit holds the same object, so no same-object stand-in can be chosen (R48).",
+      "note": "A small loose piece from the Hearthfire add-on lay here; that content is not ours, so the spot stays bare."
+    }
+  ],
+  "removalRule": "Owner ruling 2026-10-04 (R113): no missing piece ships as a gap. A missing piece takes a same-class stand-in from a published kit where one exists (substitutions[]); a decorative piece whose class no published kit or vault archive holds is taken out of the fit-out (removals[], reason decorative-no-same-class, its search recorded), and the spot is simply empty. A placed piece whose only support was a removed piece is removed with it (reason rests-on-a-removal, restsOn naming that row)."
+}

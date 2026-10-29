@@ -1,0 +1,150 @@
+{
+ "id": "boat-fetch",
+ "start": {
+  "query": "?view=character&x=7247&z=641&t=10:00&d=8-17",
+  "kit": "start"
+ },
+ "notes": "Riverwalk by day. The player buys the stage-mistress's dugout (150 gold), paddles towards the public cove beach, falls out and leaves it adrift, then walks back to the stage-mistress and pays her to fetch it: the fee is ceil(10% of the price), at least 5, so 15 gold for the dugout; the boat lies tied at a mooring of her place the player may use.",
+ "steps": [
+  {
+   "name": "buy-the-dugout",
+   "transition": "the stage-mistress's boat window -> Buy the dugout: 150 gold, the stage canoe turns the player's",
+   "stage": {
+    "at": {
+     "x": 7247,
+     "z": 641,
+     "yaw": -2.4
+    },
+    "hour": 10,
+    "place": "place.dunmer-north.riverwalk"
+   },
+   "do": {
+    "action": "boat",
+    "op": "buy",
+    "seller": "npc.dunmer-north.riverwalk.stage-mistress",
+    "classId": "dugout"
+   },
+   "keys": [],
+   "expect": {
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "owner": "player",
+     "event": "bought",
+     "spent": 150
+    }
+   }
+  },
+  {
+   "name": "board",
+   "transition": "E at the canoe: the player steps aboard",
+   "do": {
+    "action": "boat",
+    "op": "press"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "aboard": "boat.riverwalk.stage-canoe"
+    }
+   }
+  },
+  {
+   "name": "cast-off",
+   "transition": "E aboard: the canoe casts off from the landing",
+   "do": {
+    "action": "boat",
+    "op": "press"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "event": "castOff",
+     "state": "aboard"
+    }
+   }
+  },
+  {
+   "name": "paddle-out",
+   "transition": "W on the paddle towards the cove beach",
+   "do": {
+    "action": "boat",
+    "op": "paddleTo",
+    "mooring": "socket.riverwalk.cove-beach"
+   },
+   "keys": [],
+   "expect": {
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "event": "arrived"
+    }
+   }
+  },
+  {
+   "name": "fall-out",
+   "transition": "the player goes over the side: the canoe drifts free",
+   "do": {
+    "action": "boat",
+    "op": "fallOut"
+   },
+   "keys": [],
+   "expect": {
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "aboard": null,
+     "state": "adrift"
+    }
+   }
+  },
+  {
+   "name": "save-and-load",
+   "transition": "save adrift and load: the boat records and the hulls come back as they were",
+   "do": {
+    "action": "boat",
+    "op": "reload"
+   },
+   "keys": [],
+   "expect": {
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "reloaded": true,
+     "event": "reloaded",
+     "state": "adrift"
+    }
+   }
+  },
+  {
+   "name": "pay-to-fetch",
+   "transition": "back at the landing, the stage-mistress's boat window -> Fetch the dugout: 15 gold, the canoe comes back tied",
+   "do": {
+    "action": "boat",
+    "op": "fetch",
+    "keeper": "npc.dunmer-north.riverwalk.stage-mistress",
+    "boat": "boat.riverwalk.stage-canoe"
+   },
+   "keys": [],
+   "expect": {
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "event": "fetched",
+     "spent": 15,
+     "state": "moored"
+    }
+   },
+   "teleport": {
+    "x": 7247,
+    "z": 641,
+    "yaw": -2.4
+   }
+  }
+ ]
+}

@@ -1,0 +1,1279 @@
+{
+ "schemaVersion": 1,
+ "placeId": "place.imperial-penal-south.voriplasm-vault",
+ "facts": [
+  {
+   "id": "fact.voriplasm-vault.tag-combat-challenge",
+   "claim": "Something at The Sealed Vault has to be fought.",
+   "sourceField": "playerPurpose.primary",
+   "tag": "combat-challenge",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "quest-beat",
+     "ref": "quest.local.lr52"
+    }
+   }
+  },
+  {
+   "id": "fact.voriplasm-vault.tag-dungeon-delve",
+   "claim": "The Sealed Vault has a way down into a delve.",
+   "sourceField": "playerPurpose.secondary",
+   "tag": "dungeon-delve",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "s-1",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.voriplasm-vault.tag-unique-item",
+   "claim": "A unique item is kept at The Sealed Vault.",
+   "sourceField": "playerPurpose.secondary",
+   "tag": "unique-item",
+   "kind": "cache",
+   "carrier": {
+    "queued": {
+     "type": "quest-beat",
+     "ref": "quest.local.lr52"
+    }
+   }
+  },
+  {
+   "id": "fact.voriplasm-vault.tag-loot-cache",
+   "claim": "Goods are stored at The Sealed Vault for a player to find.",
+   "sourceField": "lootTable.kinds",
+   "tag": "loot-cache",
+   "kind": "cache",
+   "carrier": {
+    "queued": {
+     "type": "quest-beat",
+     "ref": "quest.local.lr52"
+    }
+   }
+  },
+  {
+   "id": "fact.voriplasm-vault.tag-lore-fragment",
+   "claim": "Something at The Sealed Vault records its past.",
+   "sourceField": "lootTable.kinds",
+   "tag": "lore-fragment",
+   "kind": "history",
+   "carrier": {
+    "built": {
+     "uid": "socket.voriplasm-vault.sealing-note",
+     "type": "sign"
+    }
+   }
+  },
+  {
+   "id": "fact.voriplasm-vault.why-founding-1",
+   "claim": "A vault lies under a ruined works.",
+   "sourceField": "why.founding",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "k-2",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.voriplasm-vault.why-founding-2",
+   "claim": "The vault was sealed by the people who found what had grown in it.",
+   "sourceField": "why.founding",
+   "kind": "history",
+   "carrier": {
+    "built": {
+     "uid": "socket.voriplasm-vault.sealing-note",
+     "type": "sign"
+    }
+   }
+  },
+  {
+   "id": "fact.voriplasm-vault.why-founding-3",
+   "claim": "The sealing party left the door welded.",
+   "sourceField": "why.founding",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "socket.voriplasm-vault.sealing-note",
+     "type": "sign"
+    }
+   }
+  },
+  {
+   "id": "fact.voriplasm-vault.why-siteAdvantages-1",
+   "claim": "The vault is a stone undercroft with one door and no other opening.",
+   "sourceField": "why.siteAdvantages",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "rumour.kept-chamber"
+    }
+   }
+  },
+  {
+   "id": "fact.voriplasm-vault.why-occupantsMotive-1",
+   "claim": "The voriplasm has been sealed in the vault for two hundred years.",
+   "sourceField": "why.occupantsMotive",
+   "kind": "history",
+   "carrier": {
+    "built": {
+     "uid": "socket.voriplasm-vault.sealing-note",
+     "type": "sign"
+    }
+   }
+  },
+  {
+   "id": "fact.voriplasm-vault.why-pressures-1",
+   "claim": "The sealing party's note is still nailed to the door and names what is inside.",
+   "sourceField": "why.pressures",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "socket.voriplasm-vault.sealing-note",
+     "type": "sign"
+    }
+   }
+  },
+  {
+   "id": "fact.voriplasm-vault.vibe-signatureFeature-1",
+   "claim": "Iron straps are welded across the stone door.",
+   "sourceField": "vibe.signatureFeature",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "rumour.kept-chamber"
+    }
+   }
+  },
+  {
+   "id": "fact.voriplasm-vault.vibe-signatureFeature-2",
+   "claim": "The message on the nailed board is legible after two hundred years.",
+   "sourceField": "vibe.signatureFeature",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "socket.voriplasm-vault.sealing-note",
+     "type": "sign"
+    }
+   }
+  },
+  {
+   "id": "fact.voriplasm-vault.contents-loot-l1-1",
+   "claim": "A hidden cache holds a unique item: whatever was worth sealing in with it.",
+   "sourceField": "contents.loot.l1",
+   "kind": "cache",
+   "carrier": {
+    "queued": {
+     "type": "quest-beat",
+     "ref": "quest.local.lr52"
+    }
+   }
+  },
+  {
+   "id": "fact.voriplasm-vault.contents-loot-l2-1",
+   "claim": "Workshop stock, as materials, lies in the main part of the vault.",
+   "sourceField": "contents.loot.l2",
+   "kind": "cache",
+   "carrier": {
+    "queued": {
+     "type": "quest-beat",
+     "ref": "quest.local.lr52"
+    }
+   }
+  },
+  {
+   "id": "fact.voriplasm-vault.entrance-1",
+   "claim": "The vault is entered by a stair-throat.",
+   "sourceField": "entrance",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "s-1",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.voriplasm-vault.questHooks-opportunity-1",
+   "claim": "A quest could establish what has been fed to the sealed vault, on whose orders.",
+   "sourceField": "questHooks.opportunity",
+   "kind": "activity",
+   "carrier": {
+    "queued": {
+     "type": "quest-beat",
+     "ref": "quest.local.lr52"
+    }
+   }
+  },
+  {
+   "id": "fact.voriplasm-vault.playerPurpose-hook-1",
+   "claim": "The party that sealed the door nailed a board to it.",
+   "sourceField": "playerPurpose.hook",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.n-board",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.voriplasm-vault.playerPurpose-hook-2",
+   "claim": "The board says what is inside the vault, and it is still legible.",
+   "sourceField": "playerPurpose.hook",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "rumour.kept-chamber"
+    }
+   }
+  },
+  {
+   "id": "fact.voriplasm-vault.vibe-mood-1",
+   "claim": "The vault is sealed and posted.",
+   "sourceField": "vibe.mood",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.n-board",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.voriplasm-vault.vibe-palette-1",
+   "claim": "The stone is grey and the board weathered.",
+   "sourceField": "vibe.palette",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.n-board",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.voriplasm-vault.why-wouldChangeIf-1",
+   "claim": "If the vault were opened, a creature would be released.",
+   "sourceField": "why.wouldChangeIf",
+   "kind": "activity",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "rumour.kept-chamber"
+    }
+   }
+  },
+  {
+   "id": "fact.voriplasm-vault.why-wouldChangeIf-2",
+   "claim": "The province has a specific and unhappy history with that creature.",
+   "sourceField": "why.wouldChangeIf",
+   "kind": "activity",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "rumour.kept-chamber"
+    }
+   }
+  }
+ ],
+ "world": {
+  "schemaVersion": 1,
+  "name": "The Sealed Vault",
+  "positionM": [
+   1697.1,
+   6681.7
+  ],
+  "footprintRadiusM": 30.0,
+  "boundaryM": [
+   [
+    1668.0,
+    6668.0
+   ],
+   [
+    1750.0,
+    6668.0
+   ],
+   [
+    1750.0,
+    6728.0
+   ],
+   [
+    1668.0,
+    6728.0
+   ]
+  ],
+  "extentM": [
+   [
+    1668.0,
+    6668.0
+   ],
+   [
+    1700.6,
+    6666.9
+   ],
+   [
+    1750.0,
+    6668.0
+   ],
+   [
+    1750.0,
+    6728.0
+   ],
+   [
+    1668.0,
+    6728.0
+   ]
+  ],
+  "extentRadiusM": 70.3,
+  "route": {
+   "lineId": "track.track.mercantile-coast.coast-road",
+   "kind": "track",
+   "name": null,
+   "from": "place.mercantile-coast.soulrest",
+   "to": "place.mercantile-coast.lilmoth",
+   "vertexM": [
+    1697.15,
+    6665.22
+   ],
+   "offExtentM": 3.8,
+   "alongM": 3175.8,
+   "lengthM": 9799.1
+  },
+  "stands": [
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-face.piece.1",
+    "assetId": "vanilla:dungeons/imperial/exterior/impextwall01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     1738.75,
+     -1.6,
+     6695.6
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-face.piece.2",
+    "assetId": "vanilla:dungeons/imperial/exterior/impextwall01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     1738.75,
+     -1.6,
+     6688.38
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-stair.piece.1",
+    "assetId": "vanilla:dungeons/imperial/exterior/impextstairs02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     1706.4,
+     1.62,
+     6692.0
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-stair.piece.2",
+    "assetId": "vanilla:dungeons/imperial/exterior/impextstairs02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     1711.8,
+     3.72,
+     6692.0
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-stair.piece.3",
+    "assetId": "vanilla:dungeons/imperial/exterior/impextstairs02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     1718.2,
+     3.73,
+     6692.0
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-stair.piece.4",
+    "assetId": "vanilla:dungeons/imperial/exterior/impextstairs02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     1723.6,
+     1.73,
+     6692.0
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.b1-lb-arm",
+    "assetId": "vanilla:clutter/bones/humanarmleft",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     1730.7,
+     1.85,
+     6696.14
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.b1-lb-arm2",
+    "assetId": "vanilla:clutter/bones/humanarmleft",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     1730.25,
+     1.85,
+     6697.43
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.b1-lb-fresh",
+    "assetId": "vanilla:clutter/bones/bloodyribs",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     1728.57,
+     1.95,
+     6693.97
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.b1-lb-leg",
+    "assetId": "vanilla:clutter/bones/humanlegleft",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     1728.12,
+     1.88,
+     6695.26
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.b1-lb-ribs",
+    "assetId": "vanilla:clutter/bones/humanribcage",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     1729.5,
+     1.95,
+     6696.0
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.b1-lb-scrap",
+    "assetId": "vanilla:clutter/bones/bloodybone",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     1730.8,
+     1.84,
+     6694.72
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.b1-lb-skull",
+    "assetId": "kotm:issgard/clutter/bones/issgard_boneargonianskullfull",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     1729.47,
+     1.91,
+     6694.92
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.b1-lb-spine",
+    "assetId": "vanilla:clutter/bones/humanspine",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     1728.83,
+     1.89,
+     6696.96
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.b2-arm",
+    "assetId": "vanilla:clutter/bones/humanarmleft",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     1728.08,
+     1.85,
+     6691.54
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.b2-fresh",
+    "assetId": "vanilla:clutter/bones/bloodyribs",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     1728.15,
+     1.95,
+     6688.81
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.b2-humanribcage",
+    "assetId": "vanilla:clutter/bones/humanribcage",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     1727.7,
+     1.95,
+     6690.4
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.b2-scrap",
+    "assetId": "vanilla:clutter/bones/bloodybone",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     1729.06,
+     1.84,
+     6690.84
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.b2-skull",
+    "assetId": "kotm:issgard/clutter/bones/issgard_boneargonianskullfull",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     1728.67,
+     1.91,
+     6689.92
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.g-1",
+    "assetId": "vanilla:plants/glowingmushroomcluster01",
+    "kind": "settlement",
+    "layer": "light",
+    "positionM": [
+     1732.0,
+     2.37,
+     6690.2
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.g-2",
+    "assetId": "vanilla:plants/glowingmushroomcluster01",
+    "kind": "settlement",
+    "layer": "light",
+    "positionM": [
+     1732.4,
+     2.37,
+     6694.4
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.g-3",
+    "assetId": "vanilla:plants/glowingmushroomcluster01",
+    "kind": "settlement",
+    "layer": "light",
+    "positionM": [
+     1735.1,
+     2.37,
+     6689.0
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.g-vine-1",
+    "assetId": "vanilla:dungeons/nordic/rubble/norvinewall01nocol",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     1735.9,
+     3.92,
+     6687.4
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.g-vine-2",
+    "assetId": "vanilla:dungeons/nordic/rubble/norvinewall01nocol",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     1735.95,
+     3.92,
+     6696.7
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.n-board",
+    "assetId": "kotm:argonia/stockades/minewoodplanks02",
+    "kind": "settlement",
+    "layer": "door",
+    "positionM": [
+     1733.82,
+     3.0,
+     6692.0
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.r-spoil-n",
+    "assetId": "vanilla:dungeons/imperial/exterior/impextrubble02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     1728.7,
+     0.17,
+     6683.0
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.r-spoil-s",
+    "assetId": "vanilla:dungeons/imperial/exterior/impextrubble02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     1731.5,
+     0.17,
+     6700.6
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.s-drag",
+    "assetId": "vanilla:clutter/bones/bloodyleg",
+    "kind": "settlement",
+    "layer": "wear",
+    "positionM": [
+     1730.3,
+     1.87,
+     6693.0
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.s-rags",
+    "assetId": "vanilla:clutter/bloodyrags/bloodyrags",
+    "kind": "settlement",
+    "layer": "wear",
+    "positionM": [
+     1731.9,
+     1.88,
+     6693.3
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.t1-lt-basket",
+    "assetId": "vanilla:clutter/basket01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     1730.25,
+     1.8,
+     6690.54
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.t1-lt-net",
+    "assetId": "shores:shoresofskyrim/fishnet01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     1732.73,
+     1.78,
+     6689.85
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.t1-lt-shovel",
+    "assetId": "vanilla:clutter/common/shovel01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     1731.4,
+     2.34,
+     6690.0
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.v-hole-door",
+    "assetId": "vanilla:dungeons/imperial/door/impwooddoorsingleload01",
+    "kind": "settlement",
+    "layer": "door",
+    "positionM": [
+     1734.05,
+     1.8,
+     6692.0
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.building",
+    "assetId": "vanilla:dungeons/imperial/exterior/impextdoorhole01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     1734.55,
+     1.8,
+     6692.0
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-works.assembly.c-01",
+    "assetId": "kotm:argonia/imperialruins/ruins_17",
+    "kind": "settlement",
+    "layer": "annex",
+    "positionM": [
+     1690.0,
+     0.69,
+     6709.0
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-works.assembly.c-02",
+    "assetId": "vanilla:dungeons/imperial/exterior/impextblocks01",
+    "kind": "settlement",
+    "layer": "annex",
+    "positionM": [
+     1693.79,
+     0.41,
+     6708.88
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-works.assembly.c-03",
+    "assetId": "kotm:argonia/imperialruins/ruins_16",
+    "kind": "settlement",
+    "layer": "annex",
+    "positionM": [
+     1690.26,
+     1.17,
+     6694.02
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-works.assembly.c-06",
+    "assetId": "kotm:argonia/imperialruins/ruins_17b",
+    "kind": "settlement",
+    "layer": "annex",
+    "positionM": [
+     1690.0,
+     1.1,
+     6711.9
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-works.assembly.c-07",
+    "assetId": "kotm:argonia/imperialruins/ruins_17c",
+    "kind": "settlement",
+    "layer": "annex",
+    "positionM": [
+     1690.0,
+     1.06,
+     6714.87
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-works.assembly.c-11",
+    "assetId": "mwkeep:tesak1243/mwimperialarchitecture/architecture/keep/rubbles/mwimparchfloorchunk02",
+    "kind": "settlement",
+    "layer": "annex",
+    "positionM": [
+     1697.56,
+     1.27,
+     6688.05
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-works.assembly.c-12",
+    "assetId": "kotm:argonia/imperialruins/ruins_17",
+    "kind": "settlement",
+    "layer": "annex",
+    "positionM": [
+     1690.0,
+     0.7,
+     6718.02
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-works.assembly.c-15",
+    "assetId": "kotm:argonia/imperialruins/ruins_14",
+    "kind": "settlement",
+    "layer": "annex",
+    "positionM": [
+     1690.0,
+     0.82,
+     6684.94
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-works.assembly.c-16",
+    "assetId": "kotm:argonia/imperialruins/ruins_17c",
+    "kind": "settlement",
+    "layer": "annex",
+    "positionM": [
+     1707.98,
+     1.65,
+     6703.61
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-works.assembly.c-17",
+    "assetId": "kotm:argonia/imperialruins/ruins_17",
+    "kind": "settlement",
+    "layer": "annex",
+    "positionM": [
+     1708.02,
+     1.28,
+     6700.39
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-works.assembly.c-18",
+    "assetId": "kotm:argonia/imperialruins/ruins_17b",
+    "kind": "settlement",
+    "layer": "annex",
+    "positionM": [
+     1707.98,
+     1.61,
+     6706.51
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-works.assembly.c-19",
+    "assetId": "kotm:argonia/imperialruins/ruins_17c",
+    "kind": "settlement",
+    "layer": "annex",
+    "positionM": [
+     1708.02,
+     1.58,
+     6697.49
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-works.assembly.c-21",
+    "assetId": "kotm:argonia/imperialruins/ruins_17b",
+    "kind": "settlement",
+    "layer": "annex",
+    "positionM": [
+     1690.0,
+     1.11,
+     6720.99
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-works.assembly.c-23",
+    "assetId": "kotm:argonia/imperialruins/ruins_16",
+    "kind": "settlement",
+    "layer": "annex",
+    "positionM": [
+     1692.89,
+     1.27,
+     6683.1
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-works.assembly.c-25",
+    "assetId": "kotm:argonia/imperialruins/ruins_17c",
+    "kind": "settlement",
+    "layer": "annex",
+    "positionM": [
+     1692.74,
+     1.23,
+     6721.15
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-works.assembly.c-30",
+    "assetId": "kotm:argonia/imperialruins/ruins_17c",
+    "kind": "settlement",
+    "layer": "annex",
+    "positionM": [
+     1692.9,
+     1.28,
+     6680.76
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-works.assembly.c-32",
+    "assetId": "kotm:argonia/imperialruins/ruins_17",
+    "kind": "settlement",
+    "layer": "annex",
+    "positionM": [
+     1695.79,
+     0.85,
+     6680.76
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-works.assembly.c-33",
+    "assetId": "kotm:argonia/imperialruins/ruins_17",
+    "kind": "settlement",
+    "layer": "annex",
+    "positionM": [
+     1701.87,
+     1.03,
+     6720.92
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-works.assembly.c-34",
+    "assetId": "vanilla:dungeons/imperial/exterior/impextblocks01",
+    "kind": "settlement",
+    "layer": "annex",
+    "positionM": [
+     1712.67,
+     2.08,
+     6704.7
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-works.assembly.c-35",
+    "assetId": "kotm:argonia/imperialruins/ruins_15",
+    "kind": "settlement",
+    "layer": "annex",
+    "positionM": [
+     1697.26,
+     1.22,
+     6680.61
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-works.assembly.c-37",
+    "assetId": "kotm:argonia/imperialruins/ruins_17",
+    "kind": "settlement",
+    "layer": "annex",
+    "positionM": [
+     1705.27,
+     1.16,
+     6720.92
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-works.assembly.c-38",
+    "assetId": "kotm:argonia/imperialruins/ruins_17",
+    "kind": "settlement",
+    "layer": "annex",
+    "positionM": [
+     1701.91,
+     1.02,
+     6680.76
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-works.assembly.c-40",
+    "assetId": "kotm:argonia/imperialruins/ruins_17",
+    "kind": "settlement",
+    "layer": "annex",
+    "positionM": [
+     1704.81,
+     1.12,
+     6680.76
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-works.assembly.c-41",
+    "assetId": "kotm:argonia/imperialruins/ruins_17b",
+    "kind": "settlement",
+    "layer": "annex",
+    "positionM": [
+     1708.02,
+     1.63,
+     6720.99
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-works.assembly.c-44",
+    "assetId": "kotm:argonia/imperialruins/ruins_17c",
+    "kind": "settlement",
+    "layer": "annex",
+    "positionM": [
+     1708.02,
+     1.55,
+     6680.76
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-works.assembly.d-01",
+    "assetId": "mwkeep:tesak1243/mwimperialarchitecture/architecture/keep/rubbles/mwimparchfloorchunk02",
+    "kind": "settlement",
+    "layer": "annex",
+    "positionM": [
+     1699.46,
+     1.37,
+     6696.77
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-works.assembly.d-04",
+    "assetId": "vanilla:dungeons/imperial/exterior/impextblocks01",
+    "kind": "settlement",
+    "layer": "annex",
+    "positionM": [
+     1703.41,
+     0.79,
+     6693.81
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-works.assembly.d-05",
+    "assetId": "vanilla:dungeons/imperial/exterior/impextrubble02",
+    "kind": "settlement",
+    "layer": "annex",
+    "positionM": [
+     1690.63,
+     -0.79,
+     6727.81
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-works.assembly.d-08",
+    "assetId": "vanilla:dungeons/imperial/exterior/impextblocks01",
+    "kind": "settlement",
+    "layer": "annex",
+    "positionM": [
+     1703.58,
+     0.72,
+     6715.99
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-works.building",
+    "assetId": "kotm:argonia/imperialruins/ruins_17",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     1690.0,
+     0.73,
+     6692.67
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.works-gate.piece.1",
+    "assetId": "mwkeep:tesak1243/mwimperialarchitecture/architecture/keep/exterior/walls/mwimparchwall01destroyed02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     1684.01,
+     1.0,
+     6689.97
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.works-gate.piece.2",
+    "assetId": "mwkeep:tesak1243/mwimperialarchitecture/architecture/keep/exterior/walls/mwimparchwall01destroyed01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     1684.01,
+     0.88,
+     6695.2
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.works-gate.piece.3",
+    "assetId": "mwkeep:tesak1243/mwimperialarchitecture/architecture/keep/exterior/walls/mwimparchwallgate01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     1684.0,
+     1.0,
+     6701.02
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.works-gate.piece.4",
+    "assetId": "mwkeep:tesak1243/mwimperialarchitecture/architecture/keep/exterior/walls/mwimparchwalltower01",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     1684.0,
+     1.0,
+     6706.83
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.works-gate.piece.5",
+    "assetId": "mwkeep:tesak1243/mwimperialarchitecture/architecture/keep/exterior/walls/mwimparchwall01destroyed02",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     1684.0,
+     1.0,
+     6714.1
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-throat.assembly.node-2",
+    "assetId": "vanilla:plants/floraswampfungalpod01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     1726.8,
+     1.8,
+     6687.2
+    ]
+   },
+   {
+    "id": "place.imperial-penal-south.voriplasm-vault.parcel.voriplasm-vault.the-works.assembly.node-1",
+    "assetId": "bmv:trdata/mushrooms/tr_oth_tallmush01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     1700.6,
+     1.06,
+     6666.9
+    ]
+   }
+  ],
+  "sockets": [
+   {
+    "id": "socket.voriplasm-vault.boss",
+    "kind": "encounter",
+    "area": "FortAmol01",
+    "positionM": [
+     21.79,
+     -4.58,
+     -6.22
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.voriplasm-vault.den-marsh-rat",
+    "kind": "encounter",
+    "area": "open",
+    "positionM": [
+     1699.5,
+     1.21,
+     6734.5
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.voriplasm-vault.entrance-stair-throat",
+    "kind": "marker",
+    "area": "parcel.voriplasm-vault.the-throat",
+    "positionM": [
+     1715.0,
+     5.8,
+     6692.0
+    ],
+    "fills": [
+     "promise.voriplasm-vault.entrance"
+    ]
+   },
+   {
+    "id": "socket.voriplasm-vault.hidden-cache",
+    "kind": "item",
+    "area": "FortAmol01",
+    "positionM": [
+     33.23,
+     -5.63,
+     -15.99
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.voriplasm-vault.plant-1",
+    "kind": "plant",
+    "area": "open",
+    "positionM": [
+     1698.9,
+     1.22,
+     6668.17
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.voriplasm-vault.sealing-note",
+    "kind": "sign",
+    "area": "parcel.voriplasm-vault.the-throat",
+    "positionM": [
+     1733.82,
+     3.0,
+     6692.0
+    ],
+    "fills": [
+     "promise.voriplasm-vault.evidence-sealed-vault-warning-board"
+    ]
+   },
+   {
+    "id": "socket.voriplasm-vault.swarm",
+    "kind": "encounter",
+    "area": "FortAmol01",
+    "positionM": [
+     14.17,
+     -4.25,
+     -9.84
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.voriplasm-vault.workshop-stock",
+    "kind": "item",
+    "area": "FortAmol01",
+    "positionM": [
+     7.77,
+     1.61,
+     -13.74
+    ],
+    "fills": []
+   }
+  ],
+  "landmarks": [],
+  "people": [],
+  "counts": {
+   "FortAmol01": {
+    "nodes": 0,
+    "plants": 0,
+    "items": 2,
+    "containers": 0,
+    "occupants": 0,
+    "byItem": {
+     "item.blue-jasper": 1,
+     "item.bog-iron": 1
+    },
+    "byPlant": {},
+    "creatures": {}
+   },
+   "open": {
+    "nodes": 1,
+    "plants": 1,
+    "items": 0,
+    "containers": 0,
+    "occupants": 0,
+    "byItem": {
+     "item.hanging-moss": 1
+    },
+    "byPlant": {
+     "hanging-moss": 1
+    },
+    "creatures": {
+     "creature.marsh-rat": 3
+    }
+   },
+   "parcel.voriplasm-vault.the-throat": {
+    "nodes": 0,
+    "plants": 0,
+    "items": 0,
+    "containers": 0,
+    "occupants": 0,
+    "byItem": {},
+    "byPlant": {},
+    "creatures": {}
+   }
+  },
+  "services": [],
+  "hostility": {
+   "baseline": "hostile",
+   "owner": null,
+   "flips": [],
+   "clearable": true,
+   "respawn": "none"
+  }
+ }
+}

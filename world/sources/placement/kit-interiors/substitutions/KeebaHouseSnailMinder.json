@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "cellId": "KeebaHouseSnailMinder",
+  "plugin": "King of the Murkmire.esp",
+  "rule": "Stand-ins for the cell's missing clutter whose mesh or base is not in the vault (Creation Club, Hearthfire, the resource pack, Dawnguard; planner ruling 2026-09-27; place-diag P9). Each stand-in is a published piece of the same object and near size, drawn at the missing reference's transform by worldgen/export_interior_bundle.py.",
+  "substitutions": [
+    {
+      "refId": "08095F8F",
+      "standInAsset": "vanilla:clutter/wine/winebottle02a",
+      "why": "A bottle of snail milk stands here; a wine bottle takes its place."
+    },
+    {
+      "refId": "08095F90",
+      "standInAsset": "vanilla:clutter/wine/winebottle02a",
+      "why": "A bottle of snail milk stands here; a wine bottle takes its place."
+    },
+    {
+      "refId": "08095F91",
+      "standInAsset": "vanilla:clutter/wine/winebottle02a",
+      "why": "A bottle of snail milk stands here; a wine bottle takes its place."
+    },
+    {
+      "refId": "08095FB2",
+      "standInAsset": "vanilla:clutter/common/rug02",
+      "why": "A woven rug lies here; a common rug takes its place."
+    },
+    {
+      "refId": "08095FB3",
+      "standInAsset": "vanilla:clutter/common/rug02",
+      "why": "A woven rug lies here; a common rug takes its place."
+    },
+    {
+      "refId": "08095FB4",
+      "standInAsset": "vanilla:clutter/common/rug02",
+      "why": "A woven rug lies here; a common rug takes its place."
+    },
+    {
+      "refId": "08095FD0",
+      "standInAsset": "vanilla:clutter/common/rug02",
+      "why": "A woven rug lies here; a common rug takes its place."
+    },
+    {
+      "refId": "08095FD1",
+      "standInAsset": "vanilla:clutter/common/rug02",
+      "why": "A woven rug lies here; a common rug takes its place."
+    },
+    {
+      "refId": "08095FAE",
+      "standInAsset": "vanilla:clutter/deadanimals/deadpondfish01",
+      "why": "A brook bass lies here; a dead pond fish takes its place."
+    },
+    {
+      "refId": "08095FAF",
+      "standInAsset": "vanilla:clutter/deadanimals/deadpondfish02",
+      "why": "A brook bass lies here; a dead pond fish takes its place."
+    }
+  ],
+  "removals": [
+    {
+      "refId": "08095FB1",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club or Hearthfire archive, which the vault does not hold",
+      "note": "A stalk of marshmerrow lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "08095FC9",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club or Hearthfire archive, which the vault does not hold",
+      "note": "A stalk of marshmerrow lies here; no kit holds one, so the spot stays bare."
+    }
+  ],
+  "removalRule": "Owner ruling 2026-10-04 (R113): no missing piece ships as a gap. A missing piece takes a same-class stand-in from a published kit where one exists (substitutions[]); a decorative piece whose class no published kit or vault archive holds is taken out of the fit-out (removals[], reason decorative-no-same-class, its search recorded), and the spot is simply empty. A placed piece whose only support was a removed piece is removed with it (reason rests-on-a-removal, restsOn naming that row)."
+}

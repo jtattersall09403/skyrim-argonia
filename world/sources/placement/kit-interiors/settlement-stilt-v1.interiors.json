@@ -1,0 +1,2479 @@
+{
+ "assets": {
+  "bmv:architecture/citebosmer/passerelles/kiosque/kiosk01": {
+   "category": "architecture",
+   "entrance": {
+    "doorAsset": "dlc01/dungeons/castle/lghalls/casexfreelgdoor01.nif",
+    "heightM": -0.564,
+    "kind": "esp-door",
+    "offsetM": [
+     0.218,
+     -0.187
+    ],
+    "placements": 8,
+    "radiusM": 1.607,
+    "sideDeg": 243.96,
+    "yawDeg": 233.95
+   },
+   "entranceWhy": "the shell's own mesh has no opening \u2014 its entrance is a separate piece its pool ships in the same directory (kioskaccesd01, kioskaccesi01), modelled in the shell's own frame and measured to sit on its wall line to within 0.11 m",
+   "espLink": {
+    "doorModel": "dlc01/dungeons/castle/lghalls/casexfreelgdoor01.nif",
+    "interiorCell": "01treeint",
+    "interiorFamily": "bmv:architecture/citebosmer/houses",
+    "interiorSizeM": {
+     "heightM": 85.18,
+     "planXM": 1041.71,
+     "planYM": 469.47
+    },
+    "placements": 8,
+    "plugin": "Valenwood.esp"
+   },
+   "floorOffsetM": 8.0,
+   "frontFaceFraction": 1.0,
+   "headroomM": 10.44,
+   "heightM": 20.74,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 3.55,
+   "planAreaM2": 53.33,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [
+    {
+     "doorAsset": "bmv:architecture/citebosmer/passerelles/kiosque/kioskaccesd01",
+     "fitHow": "in the gap in the ring",
+     "fitM": 0.111,
+     "kind": "door-piece",
+     "offsetM": [
+      0.04,
+      3.44
+     ],
+     "pieceHeightM": 1.33,
+     "sideDeg": 179.36
+    },
+    {
+     "doorAsset": "bmv:architecture/citebosmer/passerelles/kiosque/kioskaccesi01",
+     "fitHow": "in the gap in the ring",
+     "fitM": 0.023,
+     "kind": "door-piece",
+     "offsetM": [
+      -2.48,
+      2.5
+     ],
+     "pieceHeightM": 1.34,
+     "sideDeg": 224.77
+    }
+   ],
+   "ringFraction": 0.778,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "storeyLevelsM": [
+    -0.6,
+    8.0
+   ],
+   "storeys": 2,
+   "tileset": "bmv-treehouse-int",
+   "why": "Valenwood.esp teleports from this shell into interior cell 01treeint (8 placements of the load door); that cell is built from bmv:architecture/citebosmer/houses, which is packaged as bmv-treehouse-int"
+  },
+  "bmv:architecture/citebosmer/passerelles/kiosque/kioskaccesd01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 1.33,
+   "interior": "none",
+   "planAreaM2": 1.41,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.4 m\u00b2 plan, 1.3 m tall)"
+  },
+  "bmv:architecture/citebosmer/passerelles/kiosque/kioskaccesi01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 1.34,
+   "interior": "none",
+   "planAreaM2": 2.04,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (2.0 m\u00b2 plan, 1.3 m tall)"
+  },
+  "bmv:architecture/citebosmer/passerelles/kiosque/kioskbarrierei01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 1.23,
+   "interior": "none",
+   "planAreaM2": 0.54,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.5 m\u00b2 plan, 1.2 m tall)"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passcirc45r1280h0ldi01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 340.6,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 341\u00b0 in the piece's own frame carries 2.04x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 3.03,
+   "interior": "none",
+   "medianWallM": 1.98,
+   "planAreaM2": 54.73,
+   "planCentreM": [
+    7.21,
+    -1.82
+   ],
+   "provenance": [],
+   "ringFraction": 0.431,
+   "roofOverhead": false,
+   "sizeClass": "medium",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passcirc90r448h256ldd01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 2.0,
+   "front": {
+    "deg": 224.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 224\u00b0 in the piece's own frame carries 1.92x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 6.7,
+   "interior": "none",
+   "medianWallM": 1.17,
+   "planAreaM2": 37.78,
+   "planCentreM": [
+    4.37,
+    -4.35
+   ],
+   "provenance": [],
+   "ringFraction": 0.514,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passend01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 153.4,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 69 times with other statics to one side; the side they left open, at 153\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "heightM": 3.03,
+   "interior": "none",
+   "planAreaM2": 3.82,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (3.8 m\u00b2 plan, 3.0 m tall)"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passesc128h64d01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 1.7,
+   "heightM": 4.03,
+   "interior": "none",
+   "medianWallM": 0.15,
+   "planAreaM2": 6.02,
+   "planCentreM": [
+    0.91,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 0.444,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 1.7 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passjunctd01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 350.3,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 87 times with other statics to one side; the side they left open, at 350\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 1.82,
+   "heightM": 3.79,
+   "interior": "none",
+   "medianWallM": 0.07,
+   "planAreaM2": 12.84,
+   "planCentreM": [
+    0.02,
+    -0.05
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 1.8 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passjuncxd01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 135.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 136\u00b0 in the piece's own frame carries 5.61x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 1.82,
+   "heightM": 3.79,
+   "interior": "none",
+   "medianWallM": 0.06,
+   "planAreaM2": 14.06,
+   "planCentreM": [
+    -0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 1.8 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passl128i01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 225.9,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 374 times with other statics to one side; the side they left open, at 226\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 3.03,
+   "interior": "none",
+   "medianWallM": 1.47,
+   "planAreaM2": 8.42,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 0.167,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passl256h64i01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 225.6,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 3 times with other statics to one side; the side they left open, at 226\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 1.65,
+   "heightM": 3.96,
+   "interior": "none",
+   "medianWallM": 0.73,
+   "planAreaM2": 16.35,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 0.347,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 1.7 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passl512h64i01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 314.2,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 314\u00b0 in the piece's own frame carries 2.63x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 1.65,
+   "heightM": 3.95,
+   "interior": "none",
+   "medianWallM": 1.23,
+   "planAreaM2": 32.23,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 0.25,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 1.6 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "bmv:architecture/stilthouse/stilthousedooranim": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 2.35,
+   "interior": "none",
+   "planAreaM2": 0.14,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.1 m\u00b2 plan, 2.4 m tall)"
+  },
+  "bmv:architecture/stilthouse/stilthouseext": {
+   "category": "architecture",
+   "doorStoreyM": 7.18,
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 0.86,
+     "kind": "opening",
+     "offsetM": [
+      -0.51,
+      2.93
+     ],
+     "sideDeg": 238.1
+    }
+   ],
+   "doorwaysMeasuredAboveFloorM": 0.05,
+   "entrance": {
+    "arcM": 1.89,
+    "centreShiftM": 0.02,
+    "clearM": 2.35,
+    "kind": "opening",
+    "offsetM": [
+     1.97,
+     -2.96
+    ],
+    "rayConfirmed": true,
+    "sideDeg": 15.0,
+    "sillYM": -1.25,
+    "widthM": 1.5
+   },
+   "floorOffsetM": 6.0,
+   "frontFaceFraction": 1.0,
+   "headroomM": 4.56,
+   "heightM": 10.75,
+   "interior": "tileset",
+   "medianWallM": 3.59,
+   "planAreaM2": 186.94,
+   "planCentreM": [
+    0.57,
+    2.26
+   ],
+   "provenance": [],
+   "ringFraction": 0.819,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    6.0
+   ],
+   "storeys": 1,
+   "tileset": "vanilla-farmhouse-int",
+   "why": "the BM&V stilt house exterior ships no interior; its deck-level room is dressed from the farmhouse interior tileset"
+  },
+  "canoe:actors/sfss/canoe/canoe1": {
+   "category": "creature",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 222.9,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 223\u00b0 in the piece's own frame carries 1.50x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 2.12,
+   "interior": "none",
+   "planAreaM2": 9.87,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (9.9 m\u00b2 plan, 2.1 m tall)"
+  },
+  "composite:stilt/bamboohut01-with-door": {
+   "category": "architecture",
+   "entrance": {
+    "doorAsset": "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/bamboohutdoor01",
+    "heightM": 0.0,
+    "kind": "esp-door",
+    "offsetM": [
+     -2.459,
+     -1.391
+    ],
+    "placements": 16,
+    "radiusM": 2.826,
+    "sideDeg": 299.49,
+    "yawDeg": 120.0
+   },
+   "entranceWhy": "the exterior door htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/bamboohutdoor01 that opens this interior, at the offset the plugin places it in this shell's own frame (16 placements)",
+   "espLink": {
+    "doorModel": "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/bamboohutdoor01",
+    "interiorCell": "CIPHTBMHutInterior04",
+    "interiorFamily": "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian",
+    "interiorSizeM": {
+     "heightM": 1.14,
+     "planXM": 3.47,
+     "planYM": 3.31
+    },
+    "placements": 2,
+    "plugin": "Here There Be Monsters - Curse of Cipactli.esp"
+   },
+   "floorOffsetM": 0.0,
+   "frontFaceFraction": 0.917,
+   "headroomM": 5.35,
+   "heightM": 5.83,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 2.99,
+   "planAreaM2": 52.02,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [
+    {
+     "count": 8,
+     "doorAsset": "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/bamboohutdoor01",
+     "doorwaySource": "assembly",
+     "kind": "assembly",
+     "offsetM": [
+      -2.47,
+      -1.41
+     ],
+     "radiusM": 2.84,
+     "sideDeg": 299.71
+    }
+   ],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "storeyLevelsM": [
+    0.0
+   ],
+   "storeys": 1,
+   "tileset": "htbm-hut-int",
+   "why": "Here There Be Monsters - Curse of Cipactli.esp teleports from this shell into interior cell CIPHTBMHutInterior04 (2 placements of the load door); that cell is built from htbm:here there be monsters - curse of cipactli/architecture/villages/argonian, which is packaged as htbm-hut-int"
+  },
+  "composite:stilt/bamboohut02-with-door": {
+   "category": "architecture",
+   "entrance": {
+    "doorAsset": "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/bamboohutdoor01",
+    "heightM": 0.0,
+    "kind": "esp-door",
+    "offsetM": [
+     -2.474,
+     -1.389
+    ],
+    "placements": 18,
+    "radiusM": 2.837,
+    "sideDeg": 299.31,
+    "yawDeg": 120.0
+   },
+   "entranceWhy": "the exterior door htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/bamboohutdoor01 that opens this interior, at the offset the plugin places it in this shell's own frame (18 placements)",
+   "espLink": {
+    "doorModel": "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/bamboohutdoor01",
+    "interiorCell": "CIPHTBMHutInterior01",
+    "interiorFamily": "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian",
+    "interiorSizeM": {
+     "heightM": 1.14,
+     "planXM": 3.47,
+     "planYM": 3.26
+    },
+    "placements": 2,
+    "plugin": "Here There Be Monsters - Curse of Cipactli.esp"
+   },
+   "floorOffsetM": 0.0,
+   "frontFaceFraction": 0.917,
+   "headroomM": 5.26,
+   "heightM": 5.83,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 2.98,
+   "planAreaM2": 52.12,
+   "planCentreM": [
+    0.01,
+    -0.01
+   ],
+   "provenance": [
+    {
+     "count": 9,
+     "doorAsset": "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/bamboohutdoor01",
+     "doorwaySource": "assembly",
+     "kind": "assembly",
+     "offsetM": [
+      -2.47,
+      -1.4
+     ],
+     "radiusM": 2.83,
+     "sideDeg": 299.59
+    }
+   ],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "storeyLevelsM": [
+    0.0
+   ],
+   "storeys": 1,
+   "tileset": "htbm-hut-int",
+   "why": "Here There Be Monsters - Curse of Cipactli.esp teleports from this shell into interior cell CIPHTBMHutInterior01 (2 placements of the load door); that cell is built from htbm:here there be monsters - curse of cipactli/architecture/villages/argonian, which is packaged as htbm-hut-int"
+  },
+  "composite:stilt/kiosk-with-access": {
+   "category": "architecture",
+   "entrance": {
+    "doorAsset": "dlc01/dungeons/castle/lghalls/casexfreelgdoor01.nif",
+    "heightM": -0.564,
+    "kind": "esp-door",
+    "offsetM": [
+     0.218,
+     -0.187
+    ],
+    "placements": 8,
+    "radiusM": 1.607,
+    "sideDeg": 243.96,
+    "yawDeg": 233.95
+   },
+   "entranceWhy": "the shell's own mesh has no opening \u2014 its entrance is a separate piece its pool ships in the same directory (kioskaccesd01, kioskaccesi01), modelled in the shell's own frame and measured to sit on its wall line to within 0.11 m",
+   "espLink": {
+    "doorModel": "dlc01/dungeons/castle/lghalls/casexfreelgdoor01.nif",
+    "interiorCell": "01treeint",
+    "interiorFamily": "bmv:architecture/citebosmer/houses",
+    "interiorSizeM": {
+     "heightM": 85.18,
+     "planXM": 1041.71,
+     "planYM": 469.47
+    },
+    "placements": 8,
+    "plugin": "Valenwood.esp"
+   },
+   "floorOffsetM": 8.0,
+   "frontFaceFraction": 1.0,
+   "headroomM": 10.43,
+   "heightM": 20.74,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 3.55,
+   "planAreaM2": 53.34,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [
+    {
+     "doorAsset": "bmv:architecture/citebosmer/passerelles/kiosque/kioskaccesd01",
+     "fitHow": "in the gap in the ring",
+     "fitM": 0.114,
+     "kind": "door-piece",
+     "offsetM": [
+      0.04,
+      3.44
+     ],
+     "pieceHeightM": 1.33,
+     "sideDeg": 179.38
+    },
+    {
+     "doorAsset": "bmv:architecture/citebosmer/passerelles/kiosque/kioskaccesi01",
+     "fitHow": "in the gap in the ring",
+     "fitM": 0.025,
+     "kind": "door-piece",
+     "offsetM": [
+      -2.48,
+      2.5
+     ],
+     "pieceHeightM": 1.34,
+     "sideDeg": 224.81
+    }
+   ],
+   "ringFraction": 0.778,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "storeyLevelsM": [
+    -0.6,
+    8.0
+   ],
+   "storeys": 2,
+   "tileset": "bmv-treehouse-int",
+   "why": "Valenwood.esp teleports from this shell into interior cell 01treeint (8 placements of the load door); that cell is built from bmv:architecture/citebosmer/houses, which is packaged as bmv-treehouse-int"
+  },
+  "composite:stilt/stilthouse-with-door": {
+   "category": "architecture",
+   "doorStoreyM": 7.18,
+   "doorwaysMeasuredAboveFloorM": 0.05,
+   "entrance": {
+    "count": 1,
+    "doorAsset": "bmv:architecture/stilthouse/stilthousedooranim",
+    "doorwaySource": "composite-leaf",
+    "kind": "composite-leaf",
+    "offsetM": [
+     0.0,
+     3.06
+    ],
+    "radiusM": 3.06,
+    "sideDeg": 180.0
+   },
+   "floorOffsetM": 6.0,
+   "frontFaceFraction": 1.0,
+   "headroomM": 4.56,
+   "heightM": 10.75,
+   "interior": "tileset",
+   "medianWallM": 2.51,
+   "planAreaM2": 186.94,
+   "planCentreM": [
+    0.57,
+    2.26
+   ],
+   "provenance": [
+    {
+     "arcM": 1.89,
+     "centreShiftM": 0.02,
+     "clearM": 2.35,
+     "kind": "opening",
+     "offsetM": [
+      1.97,
+      -2.96
+     ],
+     "rayConfirmed": true,
+     "sideDeg": 15.0,
+     "sillYM": -1.25,
+     "widthM": 1.5
+    }
+   ],
+   "ringFraction": 0.917,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    6.0
+   ],
+   "storeys": 1,
+   "tileset": "vanilla-farmhouse-int",
+   "why": "the BM&V stilt house exterior ships no interior; its deck-level room is dressed from the farmhouse interior tileset"
+  },
+  "composite:stilt/swamp-house-with-landing": {
+   "category": "architecture",
+   "doorStoreyM": 6.55,
+   "doorwayProbeCentreM": [
+    1.48,
+    -4.01
+   ],
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 2.46,
+     "kind": "opening",
+     "offsetM": [
+      2.7,
+      -3.36
+     ],
+     "sideDeg": 15.0
+    },
+    {
+     "arcM": 1.18,
+     "kind": "opening",
+     "offsetM": [
+      -4.11,
+      -0.48
+     ],
+     "sideDeg": 255.0
+    },
+    {
+     "arcM": 3.1,
+     "kind": "open-front",
+     "offsetM": [
+      1.93,
+      -3.52
+     ],
+     "sideDeg": 340.1
+    },
+    {
+     "arcM": 1.41,
+     "kind": "opening",
+     "offsetM": [
+      -1.27,
+      3.56
+     ],
+     "sideDeg": 212.39
+    },
+    {
+     "arcM": 1.01,
+     "kind": "opening",
+     "offsetM": [
+      -4.11,
+      -2.51
+     ],
+     "sideDeg": 272.51
+    }
+   ],
+   "entrance": {
+    "approachBearingDeg": 97.8,
+    "approachReachM": 0.38,
+    "arcM": 1.64,
+    "centreShiftM": 0.07,
+    "clearM": 2.7,
+    "doorAsset": "vanilla:architecture/docks/dockstrent02",
+    "kind": "approach",
+    "offsetM": [
+     8.16,
+     0.74
+    ],
+    "rayConfirmed": true,
+    "sideDeg": 95.2,
+    "sillYM": 2.78,
+    "widthM": 1.6
+   },
+   "floorOffsetM": 6.0,
+   "frontFaceFraction": 1.0,
+   "headroomM": 2.35,
+   "heightM": 16.14,
+   "interior": "promised",
+   "medianWallM": 1.53,
+   "planAreaM2": 412.99,
+   "planCentreM": [
+    2.4,
+    -2.22
+   ],
+   "promiseReason": "Blackmarsh and Valenwood places the swamp house 47 times with no load door in any plugin, furnishing its own floor as an open house; Phase 12 builds its interior",
+   "provenance": [
+    {
+     "arcM": 1.13,
+     "centreShiftM": -0.15,
+     "clearM": 2.0,
+     "kind": "opening",
+     "offsetM": [
+      -4.11,
+      -0.78
+     ],
+     "rayConfirmed": true,
+     "sideDeg": 257.49,
+     "sillYM": 2.83,
+     "widthM": 1.15
+    }
+   ],
+   "ringFraction": 0.889,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    6.0
+   ],
+   "storeys": 1,
+   "why": "measured to enclose a volume (89% of the ring at 1.6 m hits a wall, a roof overhead) with no matched interior and no tileset rule: Blackmarsh and Valenwood places the swamp house 47 times with no load door in any plugin, furnishing its own floor as an open house; Phase 12 builds its interior"
+  },
+  "ferries:yamadori/ferries/plank_ferry_swamp_03": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 274.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 275\u00b0 in the piece's own frame carries 11.79x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 1.55,
+   "interior": "none",
+   "planAreaM2": 8.12,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (8.1 m\u00b2 plan, 1.6 m tall)"
+  },
+  "ferries:yamadori/ferries/rowboat_ferry_swamp_01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 2.19,
+   "interior": "none",
+   "planAreaM2": 17.96,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (18.0 m\u00b2 plan, 2.2 m tall)"
+  },
+  "ferryraft:snt/ferry/ferryraft01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 1.71,
+   "interior": "none",
+   "planAreaM2": 12.7,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (12.7 m\u00b2 plan, 1.7 m tall)"
+  },
+  "histtree:skyfall/sleeping tree overhaul/ancient sleeping tree": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 7.0,
+   "front": {
+    "deg": 255.0,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 255\u00b0 in the piece's own frame carries 1.64x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.014,
+   "headroomM": 2.18,
+   "heightM": 24.35,
+   "interior": "none",
+   "medianWallM": 0.61,
+   "planAreaM2": 509.44,
+   "planCentreM": [
+    -0.76,
+    -1.63
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "why": "name token 'tree' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "histtree:skyfall/sleeping tree overhaul/histflower01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 3.46,
+   "interior": "none",
+   "planAreaM2": 0.51,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.5 m\u00b2 plan, 3.5 m tall)"
+  },
+  "histtree:skyfall/sleeping tree overhaul/histflower02": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 4.3,
+   "interior": "none",
+   "planAreaM2": 0.36,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.4 m\u00b2 plan, 4.3 m tall)"
+  },
+  "histtree:skyfall/sleeping tree overhaul/rockcairn01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 2.65,
+   "interior": "none",
+   "planAreaM2": 4.2,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (4.2 m\u00b2 plan, 2.6 m tall)"
+  },
+  "histtree:skyfall/sleeping tree overhaul/rockcairn02": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 229.0,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 229\u00b0 in the piece's own frame carries 2.32x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 1.68,
+   "heightM": 2.44,
+   "interior": "none",
+   "medianWallM": 0.63,
+   "planAreaM2": 7.27,
+   "planCentreM": [
+    -0.12,
+    0.16
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 1.7 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "histtree:skyfall/sleeping tree overhaul/rockcairn03": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 254.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 254\u00b0 in the piece's own frame carries 1.92x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 2.56,
+   "interior": "none",
+   "planAreaM2": 3.72,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (3.7 m\u00b2 plan, 2.6 m tall)"
+  },
+  "histtree:skyfall/sleeping tree overhaul/rockcairn04": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 2.56,
+   "interior": "none",
+   "planAreaM2": 2.06,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (2.1 m\u00b2 plan, 2.6 m tall)"
+  },
+  "histtree:skyfall/sleeping tree overhaul/rune circle": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 3.32,
+   "interior": "none",
+   "medianWallM": 3.56,
+   "planAreaM2": 56.68,
+   "planCentreM": [
+    -0.6,
+    0.71
+   ],
+   "provenance": [],
+   "ringFraction": 0.278,
+   "roofOverhead": false,
+   "sizeClass": "medium",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "histtree:skyfall/sleeping tree overhaul/windchimehavok": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 197.0,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 197\u00b0 in the piece's own frame carries 1.88x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 2.24,
+   "interior": "none",
+   "planAreaM2": 0.08,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.1 m\u00b2 plan, 2.2 m tall)"
+  },
+  "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/bamboohut01": {
+   "category": "architecture",
+   "entrance": {
+    "doorAsset": "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/bamboohutdoor01",
+    "heightM": 0.0,
+    "kind": "esp-door",
+    "offsetM": [
+     -2.459,
+     -1.391
+    ],
+    "placements": 16,
+    "radiusM": 2.826,
+    "sideDeg": 299.49,
+    "yawDeg": 120.0
+   },
+   "entranceWhy": "the exterior door htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/bamboohutdoor01 that opens this interior, at the offset the plugin places it in this shell's own frame (16 placements)",
+   "espLink": {
+    "doorModel": "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/bamboohutdoor01",
+    "interiorCell": "CIPHTBMHutInterior04",
+    "interiorFamily": "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian",
+    "interiorSizeM": {
+     "heightM": 1.14,
+     "planXM": 3.47,
+     "planYM": 3.31
+    },
+    "placements": 2,
+    "plugin": "Here There Be Monsters - Curse of Cipactli.esp"
+   },
+   "floorOffsetM": 0.0,
+   "frontFaceFraction": 1.0,
+   "headroomM": 5.35,
+   "heightM": 5.83,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 3.03,
+   "planAreaM2": 52.02,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [
+    {
+     "count": 8,
+     "doorAsset": "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/bamboohutdoor01",
+     "doorwaySource": "assembly",
+     "kind": "assembly",
+     "offsetM": [
+      -2.47,
+      -1.41
+     ],
+     "radiusM": 2.84,
+     "sideDeg": 299.71
+    },
+    {
+     "arcM": 1.58,
+     "centreShiftM": -0.0,
+     "clearM": 2.95,
+     "kind": "open-front",
+     "offsetM": [
+      -2.62,
+      -1.51
+     ],
+     "rayConfirmed": true,
+     "sideDeg": 300.0,
+     "sillYM": -0.91,
+     "widthM": 1.65
+    }
+   ],
+   "ringFraction": 0.917,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "storeyLevelsM": [
+    0.0
+   ],
+   "storeys": 1,
+   "tileset": "htbm-hut-int",
+   "why": "Here There Be Monsters - Curse of Cipactli.esp teleports from this shell into interior cell CIPHTBMHutInterior04 (2 placements of the load door); that cell is built from htbm:here there be monsters - curse of cipactli/architecture/villages/argonian, which is packaged as htbm-hut-int"
+  },
+  "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/bamboohut02": {
+   "category": "architecture",
+   "entrance": {
+    "doorAsset": "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/bamboohutdoor01",
+    "heightM": 0.0,
+    "kind": "esp-door",
+    "offsetM": [
+     -2.474,
+     -1.389
+    ],
+    "placements": 18,
+    "radiusM": 2.837,
+    "sideDeg": 299.31,
+    "yawDeg": 120.0
+   },
+   "entranceWhy": "the exterior door htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/bamboohutdoor01 that opens this interior, at the offset the plugin places it in this shell's own frame (18 placements)",
+   "espLink": {
+    "doorModel": "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/bamboohutdoor01",
+    "interiorCell": "CIPHTBMHutInterior01",
+    "interiorFamily": "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian",
+    "interiorSizeM": {
+     "heightM": 1.14,
+     "planXM": 3.47,
+     "planYM": 3.26
+    },
+    "placements": 2,
+    "plugin": "Here There Be Monsters - Curse of Cipactli.esp"
+   },
+   "floorOffsetM": 0.0,
+   "frontFaceFraction": 1.0,
+   "headroomM": 5.26,
+   "heightM": 5.83,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 3.04,
+   "planAreaM2": 52.12,
+   "planCentreM": [
+    0.01,
+    -0.01
+   ],
+   "provenance": [
+    {
+     "count": 9,
+     "doorAsset": "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/bamboohutdoor01",
+     "doorwaySource": "assembly",
+     "kind": "assembly",
+     "offsetM": [
+      -2.47,
+      -1.4
+     ],
+     "radiusM": 2.83,
+     "sideDeg": 299.59
+    },
+    {
+     "arcM": 1.58,
+     "centreShiftM": -0.0,
+     "clearM": 2.95,
+     "kind": "open-front",
+     "offsetM": [
+      -2.61,
+      -1.52
+     ],
+     "rayConfirmed": true,
+     "sideDeg": 300.0,
+     "sillYM": -0.91,
+     "widthM": 1.65
+    }
+   ],
+   "ringFraction": 0.917,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "storeyLevelsM": [
+    0.0
+   ],
+   "storeys": 1,
+   "tileset": "htbm-hut-int",
+   "why": "Here There Be Monsters - Curse of Cipactli.esp teleports from this shell into interior cell CIPHTBMHutInterior01 (2 placements of the load door); that cell is built from htbm:here there be monsters - curse of cipactli/architecture/villages/argonian, which is packaged as htbm-hut-int"
+  },
+  "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/bamboohutdoor01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 179.6,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 17 times with other statics to one side; the side they left open, at 180\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "heightM": 2.58,
+   "interior": "none",
+   "planAreaM2": 0.25,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.2 m\u00b2 plan, 2.6 m tall)"
+  },
+  "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/chestwicker01": {
+   "category": "container",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.72,
+   "interior": "none",
+   "planAreaM2": 0.97,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.0 m\u00b2 plan, 0.7 m tall)"
+  },
+  "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/orcawning01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 2.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 2.09,
+   "heightM": 5.83,
+   "interior": "none",
+   "medianWallM": 1.54,
+   "planAreaM2": 14.98,
+   "planCentreM": [
+    0.0,
+    -2.62
+   ],
+   "provenance": [],
+   "ringFraction": 0.333,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 2.1 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/orcawninghalf01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 3.0,
+   "front": {
+    "deg": 192.1,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 192\u00b0 in the piece's own frame carries 1.64x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.75,
+   "headroomM": 99.0,
+   "heightM": 5.83,
+   "interior": "none",
+   "medianWallM": 0.48,
+   "planAreaM2": 34.38,
+   "planCentreM": [
+    0.0,
+    -1.55
+   ],
+   "provenance": [],
+   "ringFraction": 0.444,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/wickerbasket01": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 1.01,
+   "interior": "none",
+   "planAreaM2": 0.5,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.5 m\u00b2 plan, 1.0 m tall)"
+  },
+  "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/wickerchair01": {
+   "category": "furniture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 48.0,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 48\u00b0 in the piece's own frame carries 2.04x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.89,
+   "interior": "none",
+   "planAreaM2": 0.78,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.8 m\u00b2 plan, 0.9 m tall)"
+  },
+  "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/wickertable01": {
+   "category": "furniture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 36.8,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 37\u00b0 in the piece's own frame carries 1.55x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.46,
+   "interior": "none",
+   "planAreaM2": 1.25,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.2 m\u00b2 plan, 0.5 m tall)"
+  },
+  "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/stilthouseplatform": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 7.0,
+   "front": {
+    "deg": 225.1,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 225\u00b0 in the piece's own frame carries 2.00x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 2.91,
+   "heightM": 11.2,
+   "interior": "none",
+   "medianWallM": 6.73,
+   "planAreaM2": 187.2,
+   "planCentreM": [
+    0.65,
+    0.85
+   ],
+   "provenance": [],
+   "ringFraction": 0.389,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "why": "open sided \u2014 only 39% of the ring at 1.6 m hits a wall, so it does not enclose anything"
+  },
+  "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_wooddock01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 127.6,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 128\u00b0 in the piece's own frame carries 1.59x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 1.96,
+   "interior": "none",
+   "planAreaM2": 6.31,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (6.3 m\u00b2 plan, 2.0 m tall)"
+  },
+  "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_wooddock02": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 280.0,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 55 times with other statics to one side; the side they left open, at 280\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "heightM": 2.12,
+   "interior": "none",
+   "planAreaM2": 6.56,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (6.6 m\u00b2 plan, 2.1 m tall)"
+  },
+  "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_wooddockshort01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 279.6,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 96 times with other statics to one side; the side they left open, at 280\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "heightM": 2.12,
+   "interior": "none",
+   "planAreaM2": 3.45,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (3.5 m\u00b2 plan, 2.1 m tall)"
+  },
+  "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.07,
+   "interior": "none",
+   "planAreaM2": 0.35,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.3 m\u00b2 plan, 0.1 m tall)"
+  },
+  "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplankbroken01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.04,
+   "interior": "none",
+   "planAreaM2": 0.19,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.2 m\u00b2 plan, 0.0 m tall)"
+  },
+  "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 340.9,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 341\u00b0 in the piece's own frame carries 2.55x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 1.92,
+   "interior": "none",
+   "planAreaM2": 0.04,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.0 m\u00b2 plan, 1.9 m tall)"
+  },
+  "kotm:argonia/blackwood/crane01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 4.0,
+   "front": {
+    "deg": 165.7,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 166\u00b0 in the piece's own frame carries 1.94x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 1.84,
+   "heightM": 10.4,
+   "interior": "none",
+   "medianWallM": 0.15,
+   "planAreaM2": 18.19,
+   "planCentreM": [
+    0.68,
+    -0.18
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 1.8 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "kotm:argonia/blackwood/docks3way": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 228.4,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 228\u00b0 in the piece's own frame carries 2.83x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 7.41,
+   "heightM": 9.16,
+   "interior": "none",
+   "medianWallM": 1.96,
+   "planAreaM2": 13.4,
+   "planCentreM": [
+    -0.2,
+    0.56
+   ],
+   "provenance": [],
+   "ringFraction": 0.083,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "open sided \u2014 only 8% of the ring at 1.6 m hits a wall, so it does not enclose anything"
+  },
+  "kotm:argonia/blackwood/docks4way": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 135.7,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 136\u00b0 in the piece's own frame carries 2.63x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 7.41,
+   "heightM": 9.16,
+   "interior": "none",
+   "medianWallM": 2.18,
+   "planAreaM2": 13.41,
+   "planCentreM": [
+    -0.18,
+    0.13
+   ],
+   "provenance": [],
+   "ringFraction": 0.111,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "open sided \u2014 only 11% of the ring at 1.6 m hits a wall, so it does not enclose anything"
+  },
+  "kotm:argonia/blackwood/dockscentre": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 3.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 4.41,
+   "heightM": 9.16,
+   "interior": "none",
+   "medianWallM": 1.51,
+   "planAreaM2": 13.41,
+   "planCentreM": [
+    -0.03,
+    0.12
+   ],
+   "provenance": [],
+   "ringFraction": 0.069,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "open sided \u2014 only 7% of the ring at 1.6 m hits a wall, so it does not enclose anything"
+  },
+  "kotm:argonia/blackwood/dockscentrealt": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 7.42,
+   "heightM": 9.15,
+   "interior": "none",
+   "medianWallM": 1.5,
+   "planAreaM2": 13.29,
+   "planCentreM": [
+    -0.16,
+    -0.15
+   ],
+   "provenance": [],
+   "ringFraction": 0.056,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "open sided \u2014 only 6% of the ring at 1.6 m hits a wall, so it does not enclose anything"
+  },
+  "kotm:argonia/blackwood/dockscentrenopost": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 90.0,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 3 times with other statics to one side; the side they left open, at 90\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 7.41,
+   "heightM": 7.55,
+   "interior": "none",
+   "medianWallM": 1.54,
+   "planAreaM2": 13.32,
+   "planCentreM": [
+    -0.04,
+    0.1
+   ],
+   "provenance": [],
+   "ringFraction": 0.069,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "open sided \u2014 only 7% of the ring at 1.6 m hits a wall, so it does not enclose anything"
+  },
+  "kotm:argonia/blackwood/dockscentresmall": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 270.0,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 3 times with other statics to one side; the side they left open, at 270\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 7.42,
+   "heightM": 7.55,
+   "interior": "none",
+   "medianWallM": 1.49,
+   "planAreaM2": 6.44,
+   "planCentreM": [
+    0.92,
+    -0.02
+   ],
+   "provenance": [],
+   "ringFraction": 0.056,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "open sided \u2014 only 6% of the ring at 1.6 m hits a wall, so it does not enclose anything"
+  },
+  "kotm:argonia/blackwood/dockscorner": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 135.1,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 135\u00b0 in the piece's own frame carries 2.74x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 7.41,
+   "heightM": 9.16,
+   "interior": "none",
+   "medianWallM": 2.16,
+   "planAreaM2": 13.27,
+   "planCentreM": [
+    -0.1,
+    -0.09
+   ],
+   "provenance": [],
+   "ringFraction": 0.111,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "open sided \u2014 only 11% of the ring at 1.6 m hits a wall, so it does not enclose anything"
+  },
+  "kotm:argonia/blackwood/docksend": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 3.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 4.42,
+   "heightM": 9.16,
+   "interior": "none",
+   "medianWallM": 1.87,
+   "planAreaM2": 9.19,
+   "planCentreM": [
+    1.05,
+    -0.02
+   ],
+   "provenance": [],
+   "ringFraction": 0.069,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "open sided \u2014 only 7% of the ring at 1.6 m hits a wall, so it does not enclose anything"
+  },
+  "kotm:argonia/blackwood/docksendnopost": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 356.9,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 3 times with other statics to one side; the side they left open, at 357\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 7.42,
+   "heightM": 7.55,
+   "interior": "none",
+   "medianWallM": 1.73,
+   "planAreaM2": 9.13,
+   "planCentreM": [
+    0.89,
+    -0.01
+   ],
+   "provenance": [],
+   "ringFraction": 0.056,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "open sided \u2014 only 6% of the ring at 1.6 m hits a wall, so it does not enclose anything"
+  },
+  "kotm:argonia/blackwood/dockspilings": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 8.24,
+   "interior": "none",
+   "planAreaM2": 0.42,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.4 m\u00b2 plan, 8.2 m tall)"
+  },
+  "kotm:argonia/blackwood/dockspilingsdamage": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 167.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 167\u00b0 in the piece's own frame carries 1.66x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 8.4,
+   "interior": "none",
+   "planAreaM2": 0.11,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.1 m\u00b2 plan, 8.4 m tall)"
+  },
+  "kotm:argonia/blackwood/walkway01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 280.6,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 281\u00b0 in the piece's own frame carries 3.88x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 6.17,
+   "heightM": 7.36,
+   "interior": "none",
+   "medianWallM": 1.38,
+   "planAreaM2": 98.32,
+   "planCentreM": [
+    3.6,
+    -3.74
+   ],
+   "provenance": [],
+   "ringFraction": 0.236,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "name token 'walkway' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/blackwood/walkway02": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 81.9,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 82\u00b0 in the piece's own frame carries 2.41x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 6.34,
+   "heightM": 7.24,
+   "interior": "none",
+   "medianWallM": 2.76,
+   "planAreaM2": 65.84,
+   "planCentreM": [
+    -4.25,
+    -4.49
+   ],
+   "provenance": [],
+   "ringFraction": 0.181,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "name token 'walkway' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/blackwood/walkway03": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 262.6,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 263\u00b0 in the piece's own frame carries 3.53x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 6.33,
+   "heightM": 7.24,
+   "interior": "none",
+   "medianWallM": 4.93,
+   "planAreaM2": 146.38,
+   "planCentreM": [
+    -6.45,
+    1.9
+   ],
+   "provenance": [],
+   "ringFraction": 0.167,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "why": "name token 'walkway' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/blackwood/walkway04": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 2.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 4.39,
+   "heightM": 7.23,
+   "interior": "none",
+   "medianWallM": 1.39,
+   "planAreaM2": 175.97,
+   "planCentreM": [
+    4.56,
+    3.25
+   ],
+   "provenance": [],
+   "ringFraction": 0.194,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "why": "name token 'walkway' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/blackwood/walkway05": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 1.0,
+   "front": {
+    "deg": 79.7,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 80\u00b0 in the piece's own frame carries 2.06x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 5.34,
+   "heightM": 7.28,
+   "interior": "none",
+   "medianWallM": 2.12,
+   "planAreaM2": 80.28,
+   "planCentreM": [
+    -2.25,
+    -0.01
+   ],
+   "provenance": [],
+   "ringFraction": 0.236,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "name token 'walkway' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/blackwood/walkway06": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 4.0,
+   "front": {
+    "deg": 291.8,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 292\u00b0 in the piece's own frame carries 1.77x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 1.93,
+   "heightM": 7.11,
+   "interior": "none",
+   "medianWallM": 0.08,
+   "planAreaM2": 54.33,
+   "planCentreM": [
+    5.99,
+    -1.54
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "name token 'walkway' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/blackwood/walkway07": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 2.0,
+   "front": {
+    "deg": 15.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 16\u00b0 in the piece's own frame carries 12.11x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 1.95,
+   "heightM": 5.44,
+   "interior": "none",
+   "medianWallM": 3.93,
+   "planAreaM2": 142.18,
+   "planCentreM": [
+    2.6,
+    -8.71
+   ],
+   "provenance": [],
+   "ringFraction": 0.264,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "why": "name token 'walkway' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/blackwood/walkwaystairs": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 8.0,
+   "front": {
+    "deg": 253.6,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 254\u00b0 in the piece's own frame carries 1.46x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 1.91,
+   "heightM": 12.77,
+   "interior": "none",
+   "medianWallM": 0.93,
+   "planAreaM2": 33.44,
+   "planCentreM": [
+    1.26,
+    0.57
+   ],
+   "provenance": [],
+   "ringFraction": 0.375,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "name token 'walkway' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "mudmother:gv_meshes/argoniannest/argonianlanterns02": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 134.1,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 134\u00b0 in the piece's own frame carries 1.46x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 2.71,
+   "interior": "none",
+   "planAreaM2": 0.31,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.3 m\u00b2 plan, 2.7 m tall)"
+  },
+  "mudmother:gv_meshes/argoniannest/argoniantotem01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 1.95,
+   "interior": "none",
+   "planAreaM2": 0.33,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.3 m\u00b2 plan, 1.9 m tall)"
+  },
+  "mudmother:gv_meshes/argoniannest/fishracksmall": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 2.53,
+   "interior": "none",
+   "medianWallM": 1.11,
+   "planAreaM2": 6.0,
+   "planCentreM": [
+    -0.08,
+    0.18
+   ],
+   "provenance": [],
+   "ringFraction": 0.056,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "mudmother:gv_meshes/argoniannest/histtree": {
+   "category": "misc",
+   "doorStoreyM": 7.21,
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 4.25,
+     "kind": "opening",
+     "offsetM": [
+      0.19,
+      0.43
+     ],
+     "sideDeg": 5.0
+    },
+    {
+     "arcM": 3.37,
+     "kind": "opening",
+     "offsetM": [
+      -0.58,
+      1.34
+     ],
+     "sideDeg": 268.29
+    },
+    {
+     "arcM": 2.37,
+     "kind": "opening",
+     "offsetM": [
+      -5.16,
+      1.61
+     ],
+     "sideDeg": 266.84
+    },
+    {
+     "arcM": 1.84,
+     "kind": "opening",
+     "offsetM": [
+      -9.79,
+      8.96
+     ],
+     "sideDeg": 232.34
+    }
+   ],
+   "doorwaysMeasuredAboveFloorM": -0.0,
+   "entrance": {
+    "arcM": 1.73,
+    "centreShiftM": -0.6,
+    "clearM": 1.9,
+    "kind": "opening",
+    "offsetM": [
+     3.77,
+     2.84
+    ],
+    "rayConfirmed": true,
+    "sideDeg": 112.5,
+    "sillYM": -1.62,
+    "widthM": 3.85
+   },
+   "floorOffsetM": 8.0,
+   "frontFaceFraction": 0.733,
+   "headroomM": 5.76,
+   "heightM": 22.12,
+   "interior": "tileset",
+   "medianWallM": 2.18,
+   "planAreaM2": 532.21,
+   "planCentreM": [
+    0.11,
+    1.32
+   ],
+   "provenance": [],
+   "ringFraction": 0.833,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    8.0
+   ],
+   "storeys": 1,
+   "tileset": "dungeon-root-v1",
+   "why": "a hollow Hist trunk, not a built room: the root dungeon kit is the grown interior grammar for it"
+  },
+  "vanilla:architecture/shackkit/shackbrokepole01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 1.9,
+   "interior": "none",
+   "planAreaM2": 0.11,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.1 m\u00b2 plan, 1.9 m tall)"
+  },
+  "vanilla:architecture/shackkit/shackbrokewall01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 2.73,
+   "interior": "none",
+   "planAreaM2": 0.12,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.1 m\u00b2 plan, 2.7 m tall)"
+  },
+  "vanilla:architecture/shackkit/shackframelend01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 3.0,
+   "front": {
+    "deg": 57.3,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 57\u00b0 in the piece's own frame carries 12.42x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 4.71,
+   "interior": "none",
+   "medianWallM": 1.1,
+   "planAreaM2": 8.52,
+   "planCentreM": [
+    0.15,
+    1.05
+   ],
+   "provenance": [],
+   "ringFraction": 0.347,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "vanilla:architecture/shackkit/shackframelmid01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "a free-standing plugin load door beside the shell",
+   "espLink": {
+    "doorModel": "vanilla:dungeons/imperial/door/impwooddoorholedoorload",
+    "interiorCell": "TrevasWatch01",
+    "interiorFamily": "vanilla:dungeons/imperial/tower",
+    "interiorSizeM": {
+     "heightM": 26.08,
+     "planXM": 105.86,
+     "planYM": 87.92
+    },
+    "placements": 2,
+    "plugin": "Skyrim.esm"
+   },
+   "floorOffsetM": 3.0,
+   "front": {
+    "deg": 40.2,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 40\u00b0 in the piece's own frame carries 2.95x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 4.71,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 1.06,
+   "planAreaM2": 7.97,
+   "planCentreM": [
+    1.08,
+    1.06
+   ],
+   "provenance": [],
+   "ringFraction": 0.306,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "storeyLevelsM": [
+    3.0
+   ],
+   "storeys": 1,
+   "tileset": "vanilla-imperial-int",
+   "why": "Skyrim.esm teleports from this shell into interior cell TrevasWatch01 (2 placements of the load door); that cell is built from vanilla:dungeons/imperial/tower, which is packaged as vanilla-imperial-int"
+  },
+  "vanilla:architecture/shackkit/shackframerend02": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 84.1,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 167 times with other statics to one side; the side they left open, at 84\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "heightM": 4.83,
+   "interior": "none",
+   "planAreaM2": 4.86,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (4.9 m\u00b2 plan, 4.8 m tall)"
+  },
+  "vanilla:architecture/shackkit/shackroofcorner01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 301.1,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 82 times with other statics to one side; the side they left open, at 301\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "heightM": 1.88,
+   "interior": "none",
+   "planAreaM2": 3.8,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (3.8 m\u00b2 plan, 1.9 m tall)"
+  },
+  "vanilla:architecture/shackkit/shackroofmid01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.05,
+   "interior": "none",
+   "planAreaM2": 12.41,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (12.4 m\u00b2 plan, 0.1 m tall)"
+  },
+  "vanilla:architecture/shackkit/shackroofside01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 1.91,
+   "interior": "none",
+   "planAreaM2": 7.39,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (7.4 m\u00b2 plan, 1.9 m tall)"
+  },
+  "vanilla:architecture/shackkit/shackwalll01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 4.59,
+   "interior": "none",
+   "planAreaM2": 0.17,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.2 m\u00b2 plan, 4.6 m tall)"
+  },
+  "vanilla:architecture/shackkit/shackwallr01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 4.35,
+   "interior": "none",
+   "planAreaM2": 0.18,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.2 m\u00b2 plan, 4.3 m tall)"
+  },
+  "vanilla:architecture/shackkit/shackwalltopwindow01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 1.88,
+   "interior": "none",
+   "planAreaM2": 0.95,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.9 m\u00b2 plan, 1.9 m tall)"
+  },
+  "vanilla:architecture/shackkit/shackwallwindow01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 2.73,
+   "interior": "none",
+   "planAreaM2": 0.95,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.9 m\u00b2 plan, 2.7 m tall)"
+  },
+  "vanilla:architecture/shackkit/shackwallwindow02": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 2.73,
+   "interior": "none",
+   "planAreaM2": 0.95,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.9 m\u00b2 plan, 2.7 m tall)"
+  },
+  "vanilla:dungeons/imperial/door/trapdoorladder01-open": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 5.59,
+   "interior": "none",
+   "planAreaM2": 0.63,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.6 m\u00b2 plan, 5.6 m tall)"
+  }
+ },
+ "kit": "settlement-stilt-v1",
+ "provenance": {
+  "exterior-interior-links.json": {
+   "miner": "worldgen.mine_door_links",
+   "minerVersion": "f82ba0f946d3",
+   "plugins": [
+    "ArgonianHome.esp",
+    "ArgonianLakeHouse.esl",
+    "Black Marsh North.esp",
+    "Black Marsh.esm",
+    "CCAyliedRuinsResources.esp",
+    "Cathedral - 3D FallForest Grass.esp",
+    "Cathedral - 3D Pine & Reach Grass.esp",
+    "Cathedral - 3D Tundra Grass.esp",
+    "DMArgonianHaus.esp",
+    "DarkwaterDen.esp",
+    "DepthsOfSkyrim.esp",
+    "Ferries  - Another Oakwood addon.esp",
+    "Ferries  - More Bandit Camps patch.esp",
+    "Ferries - Alternate Perspective - Here there be Monsters Patch.esp",
+    "Ferries - Alternate Perspective Patch.esp",
+    "Ferries - Alternate Start Patch.esp",
+    "Ferries - Animated Ships patch.esp",
+    "Ferries - B-oat patch - No inialta scene.esp",
+    "Ferries - B-oat patch - With Inialta Scene.esp",
+    "Ferries - Better Docks patch.esp",
+    "Ferries - Bruma Addon.esp",
+    "Ferries - Chanterelle Addon.esp",
+    "Ferries - Dynamic Boats Patch.esp",
+    "Ferries - JK Solitude Outskirts.esp",
+    "Ferries - JKs Raven Rock patch.esp",
+    "Ferries - Lainalten addon.esp",
+    "Ferries - Laintar Dale addon.esp",
+    "Ferries - Lux patch.esp",
+    "Ferries - Midwood Addon.esp",
+    "Ferries - Moon and Star addon.esp",
+    "Ferries - Old Gate Mill - Morthal Player house Addon.esp",
+    "Ferries - Riften patch.esp",
+    "Ferries - Rigmor of Bruma patch.esp",
+    "Ferries - Ryn Lumber Mills patch.esp",
+    "Ferries - Save the Icerunner Patch.esp",
+    "Ferries - Shadow Over Inialta addon.esp",
+    "Ferries - Siege At Icemoth Addon.esp",
+    "Ferries - TGSolitude Patch.esp",
+    "Ferries - Wyrmstooth Addon.esp",
+    "Ferries.esp",
+    "Here There Be Monsters - Curse of Cipactli.esp",
+    "King of the Murkmire.esp",
+    "SNT ferry.esp",
+    "SSKMovingBoats.esp",
+    "Sailboats.esp",
+    "Scriptfreeshipsailing.esp",
+    "Seashells.esp",
+    "Skyfall Sleeping Tree Overhaul.esp",
+    "Skyrim.esm",
+    "Tropical Skyrim -- Birds.esp",
+    "Tropical Skyrim.esp",
+    "Update.esm",
+    "Valenwood.esp",
+    "XanmeerResources.esp",
+    "igs_tileset_ayleid.esp"
+   ],
+   "poolRegister": {
+    "date": "2026-10-06",
+    "pools": [
+     "bmv",
+     "vanilla",
+     "tropical",
+     "xanmeer",
+     "drjacopo",
+     "hoddminir",
+     "jokerine",
+     "shores",
+     "mudmother",
+     "ferries",
+     "rowboats",
+     "ayleidcc",
+     "xalfek",
+     "darkwater",
+     "ayleidkit",
+     "histtree",
+     "canoe",
+     "ferryraft",
+     "sbot",
+     "depths",
+     "sirenroot",
+     "htbm",
+     "mwkeep",
+     "kotm",
+     "sailboats",
+     "impships",
+     "boatsanim",
+     "hlaalu"
+    ],
+    "source": "worldgen.asset_registry.POOLS",
+    "uncommittedChanges": false
+   },
+   "poolsMined": [
+    "ayleidcc",
+    "ayleidkit",
+    "bmv",
+    "boatsanim",
+    "canoe",
+    "darkwater",
+    "depths",
+    "drjacopo",
+    "ferries",
+    "ferryraft",
+    "histtree",
+    "htbm",
+    "jokerine",
+    "kotm",
+    "marshrest",
+    "mudmother",
+    "mwkeep",
+    "sailboats",
+    "tropical",
+    "vanilla",
+    "xalfek",
+    "xanmeer"
+   ],
+   "runDate": "2026-10-09"
+  },
+  "kit-assemblies-mined.json": {
+   "miner": "worldgen.mine_assemblies",
+   "minerVersion": "dd469251b755",
+   "plugins": [
+    "ArgonianLakeHouse.esl",
+    "Black Marsh North.esp",
+    "Black Marsh.esm",
+    "CCAyliedRuinsResources.esp",
+    "DMArgonianHaus.esp",
+    "DarkwaterDen.esp",
+    "DepthsOfSkyrim.esp",
+    "Ferries.esp",
+    "Here There Be Monsters - Curse of Cipactli.esp",
+    "King of the Murkmire.esp",
+    "SNT ferry.esp",
+    "SSKMovingBoats.esp",
+    "Sailboats.esp",
+    "Scriptfreeshipsailing.esp",
+    "Seashells.esp",
+    "Skyfall Sleeping Tree Overhaul.esp",
+    "Skyrim.esm",
+    "Tropical Skyrim -- Birds.esp",
+    "Tropical Skyrim.esp",
+    "Update.esm",
+    "Valenwood.esp",
+    "XanmeerResources.esp",
+    "igs_tileset_ayleid.esp"
+   ],
+   "poolRegister": {
+    "date": "2026-09-25",
+    "pools": [
+     "bmv",
+     "vanilla",
+     "tropical",
+     "xanmeer",
+     "drjacopo",
+     "hoddminir",
+     "jokerine",
+     "shores",
+     "mudmother",
+     "ferries",
+     "rowboats",
+     "ayleidcc",
+     "xalfek",
+     "darkwater",
+     "ayleidkit",
+     "histtree",
+     "canoe",
+     "ferryraft",
+     "sbot",
+     "depths",
+     "sirenroot",
+     "htbm",
+     "mwkeep",
+     "kotm",
+     "sailboats",
+     "impships",
+     "boatsanim",
+     "hlaalu"
+    ],
+    "source": "worldgen.asset_registry.POOLS",
+    "uncommittedChanges": true
+   },
+   "poolsMined": [
+    "ayleidcc",
+    "ayleidkit",
+    "bmv",
+    "boatsanim",
+    "canoe",
+    "darkwater",
+    "depths",
+    "ferries",
+    "ferryraft",
+    "histtree",
+    "htbm",
+    "jokerine",
+    "kotm",
+    "mudmother",
+    "mwkeep",
+    "sailboats",
+    "tropical",
+    "vanilla",
+    "xalfek",
+    "xanmeer"
+   ],
+   "runDate": "2026-09-26"
+  }
+ },
+ "rules": {
+  "doorwayArcM": [
+   0.8,
+   5.0
+  ],
+  "enclosureMinRing": 0.75,
+  "enclosureMinRoomM": 1.5,
+  "entranceRank": [
+   "esp-door",
+   "assembly",
+   "composite-leaf",
+   "approach",
+   "door-piece",
+   "leaf",
+   "opening",
+   "open-front"
+  ],
+  "entranceRankWhy": "one canonical entrance per piece (owner ruling 2026-09-07), ranked from the mod's own load door down to an open front; the losing evidence stays in `provenance` for audit and is never drawn or matched against",
+  "eyeHeightM": 1.6,
+  "frontEvidence": [
+   "co-placement (the bearing away from the neighbours the source authors planted around this piece)",
+   "asymmetry (the bearing band with the highest triangle density: the detailed, outward face)"
+  ],
+  "sizeClassMaxM2": {
+   "medium": 120.0,
+   "small": 40.0
+  }
+ },
+ "schemaVersion": 2
+}

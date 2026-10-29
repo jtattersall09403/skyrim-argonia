@@ -1,0 +1,162 @@
+{
+ "schemaVersion": 2,
+ "cellId": "AltenGeneralStore",
+ "additions": [
+  {
+   "id": "AltenGeneralStore:add:door-argoniancandle-01",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    111.592,
+    85.876,
+    78.875
+   ],
+   "rotZDeg": 0,
+   "zone": "door",
+   "why": "Lights the floor inside the door, where buyers come in off the track."
+  },
+  {
+   "id": "AltenGeneralStore:add:store-argoniancandle-01",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    111.944,
+    87.855,
+    76.471
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Lights the salvage stock so the keeper can count it."
+  },
+  {
+   "id": "AltenGeneralStore:add:table-argoniancandle-01",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    98.26,
+    83.993,
+    78.226
+   ],
+   "rotZDeg": 0,
+   "zone": "table",
+   "why": "Lights the tally table at the back of the room."
+  },
+  {
+   "id": "AltenGeneralStore:add:door-floor-argoniancandle-01",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    111.0,
+    83.094,
+    77.6
+   ],
+   "rotZDeg": 0,
+   "zone": "door",
+   "why": "Stands on the floor just inside the door, so a buyer sees the step."
+  },
+  {
+   "id": "AltenGeneralStore:add:aisle-argoniancandle-01",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    102.5,
+    83.099,
+    76.2
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Lights the middle of the shop floor between the stock and the tally table."
+  },
+  {
+   "id": "AltenGeneralStore:add:corner-argoniancandle-01",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    115.0,
+    83.094,
+    75.0
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Lights the east corner, where the larger salvage lots stand."
+  },
+  {
+   "id": "AltenGeneralStore:add:beam-lantern-01",
+   "assetId": "vanilla:clutter/common/candlelanternwithcandle01",
+   "pos": [
+    100.0,
+    87.16,
+    77.0
+   ],
+   "rotZDeg": 0,
+   "zone": "table",
+   "why": "Hangs from the beam over the tally table, so the keeper can read the count."
+  },
+  {
+   "id": "AltenGeneralStore:add:beam-lantern-02",
+   "assetId": "vanilla:clutter/common/candlelanternwithcandle01",
+   "pos": [
+    106.0,
+    86.661,
+    78.0
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Hangs from the beam over the middle of the shop floor."
+  },
+  {
+   "id": "AltenGeneralStore:add:beam-lantern-03",
+   "assetId": "vanilla:clutter/common/candlelanternwithcandle01",
+   "pos": [
+    114.0,
+    86.65,
+    78.0
+   ],
+   "rotZDeg": 0,
+   "zone": "door",
+   "why": "Hangs from the beam inside the door, over the larger salvage lots."
+  },
+  {
+   "id": "AltenGeneralStore:add:store-impbrazier",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    100.9,
+    83.08,
+    78.4
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Brazier lights the dark shop floor where goods are kept and traded."
+  },
+  {
+   "id": "AltenGeneralStore:add:store-impbrazier-2",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    105.0,
+    83.08,
+    78.3
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Brazier lights the dark shop floor where goods are kept and traded."
+  },
+  {
+   "id": "AltenGeneralStore:add:store-impbrazier-3",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    113.923,
+    83.281,
+    75.081
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Brazier lights the dark shop floor where goods are kept and traded."
+  },
+  {
+   "id": "AltenGeneralStore:add:store-impbrazier-4",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    109.995,
+    83.065,
+    75.099
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Brazier lights the dark shop floor where goods are kept and traded."
+  }
+ ]
+}

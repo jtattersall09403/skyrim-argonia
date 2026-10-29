@@ -1,0 +1,102 @@
+{
+ "schemaVersion": 1,
+ "about": "The slice's authored Boat records (2.15b, 0159), one per placed hull. placementUid is the published bundle placement id of the hull in placeId; lastMooring and currentMooring stay null until the place publishes mooring sockets. Runtime state lives in the save.",
+ "boats": [
+  {
+   "id": "boat.riverwalk.stage-canoe",
+   "schemaVersion": 1,
+   "classId": "dugout",
+   "owner": "npc.dunmer-north.riverwalk.stage-mistress",
+   "condition": 1,
+   "placeId": "place.dunmer-north.riverwalk",
+   "placementUid": "place.dunmer-north.riverwalk.parcel.riverwalk.stage-shelter.assembly.canoe",
+   "lastMooring": null,
+   "currentMooring": null,
+   "state": "moored"
+  },
+  {
+   "id": "boat.riverwalk.stage-canoe-2",
+   "schemaVersion": 1,
+   "classId": "dugout",
+   "owner": "npc.dunmer-north.riverwalk.stage-mistress",
+   "condition": 1,
+   "placeId": "place.dunmer-north.riverwalk",
+   "placementUid": "place.dunmer-north.riverwalk.parcel.riverwalk.stage-shelter.assembly.canoe2",
+   "lastMooring": null,
+   "currentMooring": null,
+   "state": "moored"
+  },
+  {
+   "id": "boat.greenspring.spring-house-canoe",
+   "schemaVersion": 1,
+   "classId": "dugout",
+   "owner": "parcel.greenspring.spring-house",
+   "condition": 1,
+   "placeId": "place.hist-heartland.greenspring",
+   "placementUid": "place.hist-heartland.greenspring.parcel.greenspring.spring-house.assembly.ld-canoe",
+   "lastMooring": null,
+   "currentMooring": null,
+   "state": "moored"
+  },
+  {
+   "id": "boat.claywater-station.polers-canoe",
+   "schemaVersion": 1,
+   "classId": "dugout",
+   "owner": "npc.imperial-fringe.claywater-station.landing-s-poler",
+   "condition": 1,
+   "placeId": "place.imperial-fringe.claywater-station",
+   "placementUid": "place.imperial-fringe.claywater-station.parcel.claywater-station.polers-hut.assembly.canoe",
+   "lastMooring": null,
+   "currentMooring": null,
+   "state": "moored"
+  },
+  {
+   "id": "boat.upriver-hist-village.fishers-canoe",
+   "schemaVersion": 1,
+   "classId": "dugout",
+   "owner": "npc.pirate-freeholds.upriver-hist-village.hh-net-menders",
+   "condition": 1,
+   "placeId": "place.pirate-freeholds.upriver-hist-village",
+   "placementUid": "place.pirate-freeholds.upriver-hist-village.parcel.upriver-hist-village.fishers-house.assembly.ft-canoe1",
+   "lastMooring": null,
+   "currentMooring": null,
+   "state": "moored"
+  },
+  {
+   "id": "boat.upriver-hist-village.fishers-canoe-2",
+   "schemaVersion": 1,
+   "classId": "dugout",
+   "owner": "npc.pirate-freeholds.upriver-hist-village.hh-net-menders",
+   "condition": 1,
+   "placeId": "place.pirate-freeholds.upriver-hist-village",
+   "placementUid": "place.pirate-freeholds.upriver-hist-village.parcel.upriver-hist-village.fishers-house.assembly.ft-canoe2",
+   "lastMooring": null,
+   "currentMooring": null,
+   "state": "moored"
+  },
+  {
+   "id": "boat.pearl-lots.grading-ground-canoe",
+   "schemaVersion": 1,
+   "classId": "dugout",
+   "owner": "npc.saxhleel-coast.pearl-lots.n2",
+   "condition": 1,
+   "placeId": "place.saxhleel-coast.pearl-lots",
+   "placementUid": "place.saxhleel-coast.pearl-lots.parcel.pearl-lots.grading-ground.assembly.h-canoe",
+   "lastMooring": null,
+   "currentMooring": null,
+   "state": "moored"
+  },
+  {
+   "id": "boat.lighter-flotilla.longboat",
+   "schemaVersion": 1,
+   "classId": "sea-hull",
+   "owner": "npc.mercantile-coast.lighter-flotilla.lighterman",
+   "condition": 1,
+   "placeId": "place.mercantile-coast.lighter-flotilla",
+   "placementUid": "place.mercantile-coast.lighter-flotilla.parcel.lighter-flotilla.hull-s00.building",
+   "lastMooring": null,
+   "currentMooring": null,
+   "state": "moored"
+  }
+ ]
+}

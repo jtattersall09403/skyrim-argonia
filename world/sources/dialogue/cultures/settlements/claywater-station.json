@@ -1,0 +1,133 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "entries": [
+  {
+   "id": "culture.settlement.claywater-station",
+   "level": "settlement",
+   "name": "Claywater Station",
+   "parent": "culture.region.imperial-fringe",
+   "placeId": "place.imperial-fringe.claywater-station",
+   "norms": [
+    {
+     "text": "Each bank charges a traveller for its own half of the stop.",
+     "source": "inferred"
+    },
+    {
+     "text": "Quarrels go to the well-keeper on the station bank and to the poler on the landing bank.",
+     "source": "inferred"
+    },
+    {
+     "text": "Imperial and Argonian households keep their own cooking pots.",
+     "source": "world/sources/lore/gideon.md"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Taking a cart across without paying the poler.",
+     "source": "inferred"
+    },
+    {
+     "text": "Drawing at the well without asking the well-keeper.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "A crossing paid in full.",
+     "source": "inferred"
+    },
+    {
+     "text": "Fresh plaster on the mud walls before the rains.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Travellers who wade over to dodge one bank's charge.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "place": {
+     "lean": 0,
+     "text": "Two halves at one ford; neither can hold the other's bank.",
+     "source": "inferred"
+    },
+    "work": {
+     "lean": 1,
+     "text": "Water, beds and a stable on one bank; the cart raft on the other.",
+     "source": "inferred"
+    },
+    "danger": {
+     "lean": -1,
+     "text": "Bog dogs on the banks at dawn and dusk; a crocodile in the channel.",
+     "source": "world/sources/lore/regions/blackwood-and-gloommire.md"
+    },
+    "rumour": {
+     "lean": 0,
+     "text": "Talk is of the cracked well and who will pay to mend it.",
+     "source": "inferred"
+    },
+    "directions": {
+     "lean": 1,
+     "text": "Ways are given along the road: Cartwright's Cross, the Mile House, then Gideon.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Traveller, to anyone who stops; neighbours by name.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [
+     {
+      "text": "Gods keep the road dry.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "Which bank was there first, said to a neighbour from the other bank.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "The well is cracking and the landing half will not help to mend it in stone.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "A Sul-Xan mask was found at a border post.",
+      "source": "world/sources/lore/regions/blackwood-and-gloommire.md"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.region.hist-heartland",
+     "lean": -1,
+     "text": "Tribe folk who come down the channel will not pay for a crossing.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.15,
+   "dissent": [
+    {
+     "personId": "npc.imperial-fringe.claywater-station.n1-3",
+     "topic": "faction",
+     "lean": -2,
+     "text": "She takes her quarrels to the poler and will not deal with the Legion's heirs at the well.",
+     "source": "inferred"
+    }
+   ]
+  }
+ ]
+}

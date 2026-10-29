@@ -1,0 +1,5789 @@
+{
+ "schemaVersion": 1,
+ "placeId": "place.pirate-freeholds.upriver-hist-village",
+ "window": {
+  "centreKm": [
+   3.39,
+   1.44
+  ],
+  "halfM": 100.0
+ },
+ "ops": [
+  {
+   "op": "place",
+   "uid": "hist",
+   "asset": "kotm:argonia/trees/hist trees/histtree01",
+   "at": [
+    3447.0,
+    1444.5
+   ],
+   "yaw": 135.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "hist",
+   "kind": "landmark",
+   "id": "landmark.upriver-hist-village.the-hist"
+  },
+  {
+   "op": "place",
+   "uid": "hist-root",
+   "asset": "kotm:argonia/trees/hist trees/hist_root05",
+   "at": [
+    3457.2,
+    1445.6
+   ],
+   "yaw": 90.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "hist-root",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "pool",
+   "uid": "hatchery",
+   "centreM": [
+    3463.6,
+    1446.6
+   ],
+   "radiusM": 2.0,
+   "depthM": 0.6,
+   "rimM": 0.4,
+   "why": "The hatchery pool, cut into the toe of the bank under the tree so its root runs down into the water where the clutches are laid.",
+   "sources": [
+    "world/sources/blueprints/upriver-hist-village.design.md § Brief"
+   ]
+  },
+  {
+   "op": "place",
+   "uid": "b-minder",
+   "asset": "composite:plank/thatchhouse06-with-door",
+   "at": [
+    3446.0,
+    1424.0
+   ],
+   "yaw": 322.8,
+   "settle": true,
+   "pad": {
+    "apronM": 2.5,
+    "batter": true
+   }
+  },
+  {
+   "op": "place",
+   "uid": "b-elder",
+   "asset": "composite:plank/thatchhouse06-with-door",
+   "at": [
+    3427.0,
+    1432.0
+   ],
+   "yaw": 277.2,
+   "settle": true,
+   "pad": {
+    "apronM": 2.0,
+    "batter": true
+   }
+  },
+  {
+   "op": "place",
+   "uid": "b-trade",
+   "asset": "composite:stilt/bamboohut01-with-door",
+   "at": [
+    3416.0,
+    1446.5
+   ],
+   "yaw": 240.5,
+   "settle": true,
+   "pad": {
+    "apronM": 1.5,
+    "batter": true
+   }
+  },
+  {
+   "op": "place",
+   "uid": "b-kin",
+   "asset": "composite:stilt/bamboohut02-with-door",
+   "at": [
+    3421.0,
+    1413.0
+   ],
+   "yaw": 215,
+   "settle": true,
+   "pad": {
+    "apronM": 2.5,
+    "batter": true
+   }
+  },
+  {
+   "op": "place",
+   "uid": "b-empty",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/orcawninghalf01",
+   "at": [
+    3437.0,
+    1404.0
+   ],
+   "yaw": 330.0,
+   "settle": true,
+   "pad": {
+    "apronM": 1.5,
+    "batter": true
+   }
+  },
+  {
+   "op": "place",
+   "uid": "b-fish",
+   "asset": "composite:plank/thatchhouse05-with-door",
+   "at": [
+    3430.0,
+    1458.0
+   ],
+   "yaw": 217.9,
+   "settle": true,
+   "pad": {
+    "apronM": 2.5,
+    "batter": true
+   }
+  },
+  {
+   "op": "place",
+   "uid": "b-guar",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/argonian/orcawning01",
+   "at": [
+    3459.0,
+    1436.0
+   ],
+   "yaw": 219.8,
+   "settle": true,
+   "pad": {
+    "apronM": 1.5,
+    "batter": true
+   }
+  },
+  {
+   "op": "bind",
+   "uid": "b-minder",
+   "kind": "parcel",
+   "id": "parcel.upriver-hist-village.minders-house"
+  },
+  {
+   "op": "bind",
+   "uid": "b-elder",
+   "kind": "parcel",
+   "id": "parcel.upriver-hist-village.elders-house"
+  },
+  {
+   "op": "bind",
+   "uid": "b-trade",
+   "kind": "parcel",
+   "id": "parcel.upriver-hist-village.trade-house"
+  },
+  {
+   "op": "bind",
+   "uid": "b-kin",
+   "kind": "parcel",
+   "id": "parcel.upriver-hist-village.kin-house"
+  },
+  {
+   "op": "bind",
+   "uid": "b-fish",
+   "kind": "parcel",
+   "id": "parcel.upriver-hist-village.fishers-house"
+  },
+  {
+   "op": "bind",
+   "uid": "b-empty",
+   "kind": "parcel",
+   "id": "parcel.upriver-hist-village.empty-frame"
+  },
+  {
+   "op": "bind",
+   "uid": "b-guar",
+   "kind": "parcel",
+   "id": "parcel.upriver-hist-village.guar-shelter"
+  },
+  {
+   "op": "place",
+   "uid": "b-smith",
+   "asset": "composite:plank/thatchhouse06-with-door",
+   "at": [
+    3310.0,
+    1446.0
+   ],
+   "yaw": 315.0,
+   "settle": true,
+   "pad": {
+    "apronM": 2.0,
+    "batter": true
+   }
+  },
+  {
+   "op": "place",
+   "uid": "b-reed",
+   "asset": "composite:stilt/bamboohut01-with-door",
+   "at": [
+    3319.9,
+    1433.4
+   ],
+   "yaw": 270.0,
+   "settle": true,
+   "pad": {
+    "apronM": 3.0,
+    "batter": true
+   }
+  },
+  {
+   "op": "place",
+   "uid": "b-net",
+   "asset": "composite:stilt/bamboohut02-with-door",
+   "at": [
+    3303.0,
+    1443.5
+   ],
+   "yaw": 90,
+   "settle": true,
+   "pad": {
+    "apronM": 2.0,
+    "batter": true
+   }
+  },
+  {
+   "op": "place",
+   "uid": "b-boat",
+   "asset": "composite:plank/thatchhouse05-with-door",
+   "at": [
+    3346.0,
+    1454.0
+   ],
+   "yaw": 270.0,
+   "settle": true,
+   "pad": {
+    "apronM": 2.0,
+    "batter": true
+   }
+  },
+  {
+   "op": "place",
+   "uid": "b-cane",
+   "asset": "composite:stilt/bamboohut02-with-door",
+   "at": [
+    3306.0,
+    1425.0
+   ],
+   "yaw": 225,
+   "settle": true,
+   "pad": {
+    "apronM": 3.0,
+    "batter": true
+   }
+  },
+  {
+   "op": "place",
+   "uid": "b-dyer",
+   "asset": "composite:stilt/bamboohut01-with-door",
+   "at": [
+    3316.5,
+    1405.0
+   ],
+   "yaw": 135,
+   "settle": true,
+   "pad": {
+    "apronM": 3.0,
+    "batter": true
+   }
+  },
+  {
+   "op": "bind",
+   "uid": "b-smith",
+   "kind": "parcel",
+   "id": "parcel.upriver-hist-village.smiths-house"
+  },
+  {
+   "op": "bind",
+   "uid": "b-reed",
+   "kind": "parcel",
+   "id": "parcel.upriver-hist-village.reed-cutters-house"
+  },
+  {
+   "op": "bind",
+   "uid": "b-net",
+   "kind": "parcel",
+   "id": "parcel.upriver-hist-village.net-menders-house"
+  },
+  {
+   "op": "bind",
+   "uid": "b-boat",
+   "kind": "parcel",
+   "id": "parcel.upriver-hist-village.boat-builders-house"
+  },
+  {
+   "op": "bind",
+   "uid": "b-cane",
+   "kind": "parcel",
+   "id": "parcel.upriver-hist-village.cane-cutters-house"
+  },
+  {
+   "op": "bind",
+   "uid": "b-dyer",
+   "kind": "parcel",
+   "id": "parcel.upriver-hist-village.dyers-house"
+  },
+  {
+   "op": "place",
+   "uid": "dock1",
+   "asset": "vanilla:architecture/docks/dockstrent02",
+   "at": [
+    3471.9,
+    1440.0
+   ],
+   "yaw": 90.0,
+   "settle": true,
+   "walkable": true
+  },
+  {
+   "op": "place",
+   "uid": "dock2",
+   "asset": "vanilla:architecture/docks/dockstrent02",
+   "at": [
+    3479.6,
+    1440.0
+   ],
+   "yaw": 90.0,
+   "settle": false,
+   "walkable": true,
+   "wet": true
+  },
+  {
+   "op": "snap",
+   "child": "dock2",
+   "child_face": "south",
+   "parent": "dock1",
+   "parent_face": "north",
+   "by": "evidence",
+   "settle": true,
+   "pick": 3
+  },
+  {
+   "op": "move",
+   "uid": "dock1",
+   "dy": -0.12
+  },
+  {
+   "op": "move",
+   "uid": "dock2",
+   "dy": -0.12
+  },
+  {
+   "op": "bind",
+   "uid": "dock1",
+   "kind": "run",
+   "id": "parcel.upriver-hist-village.landing",
+   "index": 0
+  },
+  {
+   "op": "bind",
+   "uid": "dock2",
+   "kind": "run",
+   "id": "parcel.upriver-hist-village.landing",
+   "index": 1
+  },
+  {
+   "op": "place",
+   "uid": "sh-totem1",
+   "asset": "mudmother:gv_meshes/argoniannest/argoniantotem01",
+   "at": [
+    3440.4,
+    1442.1
+   ],
+   "yaw": 280.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "sh-totem2",
+   "asset": "mudmother:gv_meshes/argoniannest/argoniantotem01",
+   "at": [
+    3440.4,
+    1446.5
+   ],
+   "yaw": 280.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "sh-totem1",
+   "kind": "parcel",
+   "id": "parcel.upriver-hist-village.hist-shrine"
+  },
+  {
+   "op": "bind",
+   "uid": "sh-totem2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "sh-urn",
+   "asset": "mudmother:gv_meshes/argoniannest/paintedurn01",
+   "at": [
+    3440.6,
+    1444.3
+   ],
+   "yaw": 0.0,
+   "settle": true,
+   "pad": {
+    "apronM": 2.6,
+    "batter": true
+   },
+   "collision": "none"
+  },
+  {
+   "op": "place",
+   "uid": "sh-offer1",
+   "asset": "kotm:argonia/clutter/urn01",
+   "at": [
+    3440.9,
+    1443.2
+   ],
+   "yaw": 0.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "sh-offer2",
+   "asset": "kotm:argonia/clutter/urn02",
+   "at": [
+    3440.9,
+    1445.4
+   ],
+   "yaw": 30.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "sh-candle1",
+   "asset": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "at": [
+    3439.5,
+    1442.3
+   ],
+   "yaw": 100.0,
+   "settle": true,
+   "collision": "none"
+  },
+  {
+   "op": "place",
+   "uid": "sh-candle2",
+   "asset": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "at": [
+    3439.0,
+    1446.9
+   ],
+   "yaw": 80.0,
+   "settle": true,
+   "collision": "none"
+  },
+  {
+   "op": "bind",
+   "uid": "sh-urn",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "sh-offer1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "sh-offer2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "sh-candle1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "light",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "pad"
+  },
+  {
+   "op": "bind",
+   "uid": "sh-candle2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "light",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "pad"
+  },
+  {
+   "op": "place",
+   "uid": "chime1",
+   "asset": "kotm:argonia/clutter/tamwindchime01",
+   "at": [
+    3453.06,
+    1448.0
+   ],
+   "yaw": 0.0,
+   "settle": false
+  },
+  {
+   "op": "mount",
+   "child": "chime1",
+   "parent": "hist",
+   "hang": true,
+   "unmined": "reader-approved r1",
+   "max_h": 12.0,
+   "bearing": 120.0,
+   "along": 7.0
+  },
+  {
+   "op": "bind",
+   "uid": "chime1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "chime2",
+   "asset": "kotm:argonia/clutter/tamwindchime01",
+   "at": [
+    3450.75,
+    1451.0
+   ],
+   "yaw": 0.0,
+   "settle": false
+  },
+  {
+   "op": "mount",
+   "child": "chime2",
+   "parent": "hist",
+   "hang": true,
+   "unmined": "reader-approved r1",
+   "max_h": 12.0,
+   "bearing": 155.0,
+   "along": 5.0
+  },
+  {
+   "op": "bind",
+   "uid": "chime2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "chime3",
+   "asset": "kotm:argonia/clutter/tamwindchime01",
+   "at": [
+    3447.61,
+    1451.47
+   ],
+   "yaw": 0.0,
+   "settle": false
+  },
+  {
+   "op": "mount",
+   "child": "chime3",
+   "parent": "hist",
+   "hang": true,
+   "unmined": "reader-approved r1",
+   "max_h": 12.0,
+   "bearing": 175.0,
+   "along": 3.0
+  },
+  {
+   "op": "bind",
+   "uid": "chime3",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "lantern1",
+   "asset": "mudmother:gv_meshes/argoniannest/argonianlanterns02",
+   "at": [
+    3440.03,
+    1445.11
+   ],
+   "yaw": 0.0,
+   "settle": false,
+   "collision": "none"
+  },
+  {
+   "op": "mount",
+   "child": "lantern1",
+   "parent": "hist",
+   "hang": true,
+   "unmined": "reader-approved r1",
+   "max_h": 12.0,
+   "bearing": 265.0,
+   "along": 7.0
+  },
+  {
+   "op": "bind",
+   "uid": "lantern1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "light",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "place",
+   "uid": "lantern2",
+   "asset": "mudmother:gv_meshes/argoniannest/argonianlanterns02",
+   "at": [
+    3452.8,
+    1446.05
+   ],
+   "yaw": 0.0,
+   "settle": false,
+   "collision": "none"
+  },
+  {
+   "op": "mount",
+   "child": "lantern2",
+   "parent": "hist",
+   "hang": true,
+   "unmined": "reader-approved r2",
+   "max_h": 12.0,
+   "bearing": 190,
+   "along": 5.5
+  },
+  {
+   "op": "bind",
+   "uid": "lantern2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "light",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "place",
+   "uid": "lantern3",
+   "asset": "mudmother:gv_meshes/argoniannest/argonianlanterns02",
+   "at": [
+    3451.0,
+    1440.0
+   ],
+   "yaw": 0.0,
+   "settle": false,
+   "collision": "none"
+  },
+  {
+   "op": "mount",
+   "child": "lantern3",
+   "parent": "hist",
+   "hang": true,
+   "unmined": "reader-approved r1",
+   "min_h": 2.2,
+   "max_h": 12.0,
+   "bearing": 40.0,
+   "along": 6.0
+  },
+  {
+   "op": "bind",
+   "uid": "lantern3",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "light",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "place",
+   "uid": "lantern4",
+   "asset": "mudmother:gv_meshes/argoniannest/argonianlanterns02",
+   "at": [
+    3443.0,
+    1439.0
+   ],
+   "yaw": 0.0,
+   "settle": false,
+   "collision": "none"
+  },
+  {
+   "op": "mount",
+   "child": "lantern4",
+   "parent": "hist",
+   "hang": true,
+   "unmined": "reader-approved r1",
+   "min_h": 2.2,
+   "max_h": 12.0,
+   "bearing": 320.0,
+   "along": 6.5
+  },
+  {
+   "op": "bind",
+   "uid": "lantern4",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "light",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "place",
+   "uid": "hfl1",
+   "asset": "histtree:skyfall/sleeping tree overhaul/histflower01",
+   "at": [
+    3447.0,
+    1439.5
+   ],
+   "yaw": 0.0,
+   "settle": false,
+   "collision": "none"
+  },
+  {
+   "op": "mount",
+   "child": "hfl1",
+   "parent": "hist",
+   "hang": true,
+   "unmined": "reader-approved r13",
+   "max_h": 12.0,
+   "bearing": 0.0,
+   "along": 5.0
+  },
+  {
+   "op": "place",
+   "uid": "hfl2",
+   "asset": "histtree:skyfall/sleeping tree overhaul/histflower01",
+   "at": [
+    3452.0,
+    1444.0
+   ],
+   "yaw": 70.0,
+   "settle": false,
+   "collision": "none"
+  },
+  {
+   "op": "mount",
+   "child": "hfl2",
+   "parent": "hist",
+   "hang": true,
+   "unmined": "reader-approved r13",
+   "max_h": 12.0,
+   "bearing": 85.0,
+   "along": 5.0
+  },
+  {
+   "op": "place",
+   "uid": "hfl3",
+   "asset": "histtree:skyfall/sleeping tree overhaul/histflower01",
+   "at": [
+    3444.0,
+    1449.0
+   ],
+   "yaw": 150.0,
+   "settle": false,
+   "collision": "none"
+  },
+  {
+   "op": "mount",
+   "child": "hfl3",
+   "parent": "hist",
+   "hang": true,
+   "unmined": "reader-approved r13",
+   "max_h": 12.0,
+   "bearing": 215.0,
+   "along": 5.5
+  },
+  {
+   "op": "place",
+   "uid": "hfl4",
+   "asset": "histtree:skyfall/sleeping tree overhaul/histflower01",
+   "at": [
+    3442.0,
+    1442.0
+   ],
+   "yaw": 230.0,
+   "settle": false,
+   "collision": "none"
+  },
+  {
+   "op": "mount",
+   "child": "hfl4",
+   "parent": "hist",
+   "hang": true,
+   "unmined": "reader-approved r13",
+   "max_h": 12.0,
+   "bearing": 290.0,
+   "along": 4.5
+  },
+  {
+   "op": "note",
+   "uid": "hist",
+   "text": "walk 12 (owner: tree balanced on its root tips): re-seated by the median base-band seat (R19, settle); R130 lights: four lanterns and four glowing Hist flowers hung from its branches by --hang."
+  },
+  {
+   "op": "place",
+   "uid": "lid1",
+   "asset": "mudmother:gv_meshes/argoniannest/potteryplate02",
+   "at": [
+    3462.27,
+    1448.81
+   ],
+   "yaw": 15.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "lid1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "lid2",
+   "asset": "mudmother:gv_meshes/argoniannest/potteryplate02",
+   "at": [
+    3462.91,
+    1449.34
+   ],
+   "yaw": 30.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "lid2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "lid3",
+   "asset": "mudmother:gv_meshes/argoniannest/potteryplate02",
+   "at": [
+    3463.67,
+    1449.68
+   ],
+   "yaw": 45.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "lid3",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "lid4",
+   "asset": "mudmother:gv_meshes/argoniannest/potteryplate02",
+   "at": [
+    3464.5,
+    1449.8
+   ],
+   "yaw": 60.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "lid4",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "lid5",
+   "asset": "mudmother:gv_meshes/argoniannest/potteryplate02",
+   "at": [
+    3465.3,
+    1449.75
+   ],
+   "yaw": 75.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "lid5",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "note",
+   "uid": "lid5",
+   "text": "C1 walk 11: the lid row runs on round the landward rim (no fired-clay lid wider than 0.6 m exists in the pool: mud-mother PotteryPlate01/02/03 are the only clay discs); reeds and ferns placed on the bank and round the pool (13 instances, no colliders; the bamboo plant has no collider in its manifest and fails colliderRule, so no bamboo clump stands here)."
+  },
+  {
+   "op": "place",
+   "uid": "lid6",
+   "asset": "mudmother:gv_meshes/argoniannest/potteryplate02",
+   "at": [
+    3466.05,
+    1449.45
+   ],
+   "yaw": 95.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "lid6",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "fl-poolreed1",
+   "asset": "bmv:landscape/trees/reedsmall1",
+   "at": [
+    3464.3,
+    1443.5
+   ],
+   "yaw": 20.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "fl-poolreed1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "fl-poolreed2",
+   "asset": "bmv:landscape/trees/reedsmall1",
+   "at": [
+    3466.3,
+    1443.8
+   ],
+   "yaw": 200.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "fl-poolreed2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "fl-fern1",
+   "asset": "bmv:landscape/plants/espfernbrakencluster04",
+   "at": [
+    3459.0,
+    1452.5
+   ],
+   "yaw": 40.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "fl-fern1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "fl-fern2",
+   "asset": "bmv:landscape/plants/espfernbrakencluster04",
+   "at": [
+    3460.8,
+    1441.6
+   ],
+   "yaw": 160.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "fl-fern2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "fl-manfern1",
+   "asset": "tropical:plants/tropical/manfern",
+   "at": [
+    3453.0,
+    1463.0
+   ],
+   "yaw": 70.0,
+   "settle": true,
+   "collision": "none"
+  },
+  {
+   "op": "bind",
+   "uid": "fl-manfern1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.fishers-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "place",
+   "uid": "fl-reed1",
+   "asset": "bmv:landscape/trees/reedsmall1",
+   "at": [
+    3469.8,
+    1451.2
+   ],
+   "yaw": 30.0,
+   "wet": true,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "fl-reed1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "bk-reed1",
+   "asset": "bmv:landscape/trees/reedsmall1",
+   "at": [
+    3454.6,
+    1448.4
+   ],
+   "yaw": 70.0,
+   "wet": true,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "bk-reed1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "bk-reed2",
+   "asset": "bmv:landscape/trees/reedsmall1",
+   "at": [
+    3457.6,
+    1448.9
+   ],
+   "yaw": 150.0,
+   "wet": true,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "bk-reed2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "bk-reed3",
+   "asset": "bmv:landscape/trees/reedsmall1",
+   "at": [
+    3463.4,
+    1447.6
+   ],
+   "yaw": 250.0,
+   "wet": true,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "bk-reed3",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "bk-reed4",
+   "asset": "bmv:landscape/trees/reedsmall1",
+   "at": [
+    3468.6,
+    1448.8
+   ],
+   "yaw": 320.0,
+   "wet": true,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "bk-reed4",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "bk-shore1",
+   "asset": "bmv:landscape/trees/reedsmall1",
+   "at": [
+    3456.8,
+    1451.2
+   ],
+   "yaw": 20.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "bk-shore1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "bk-shore2",
+   "asset": "bmv:landscape/trees/reedsmall1",
+   "at": [
+    3465.0,
+    1451.6
+   ],
+   "yaw": 200.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "bk-shore2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "fl-reed2",
+   "asset": "bmv:landscape/trees/reedsmall1",
+   "at": [
+    3467.2,
+    1455.4
+   ],
+   "yaw": 150.0,
+   "wet": true,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "fl-reed2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "fl-reed3",
+   "asset": "bmv:landscape/trees/reedmed1",
+   "at": [
+    3474.5,
+    1451.5
+   ],
+   "yaw": 250.0,
+   "wet": true,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "fl-reed3",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "fl-reed4",
+   "asset": "bmv:landscape/trees/reedmed1",
+   "at": [
+    3472.5,
+    1431.5
+   ],
+   "yaw": 100.0,
+   "wet": true,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "fl-reed4",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "fl-reed5",
+   "asset": "bmv:landscape/trees/reedsmall1",
+   "at": [
+    3469.6,
+    1436.0
+   ],
+   "yaw": 310.0,
+   "wet": true,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "fl-reed5",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "fl-backfern1",
+   "asset": "bmv:landscape/plants/espfernbrakencluster04",
+   "at": [
+    3452.5,
+    1419.5
+   ],
+   "yaw": 0.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "fl-backfern1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.minders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "place",
+   "uid": "fl-backfern2",
+   "asset": "bmv:landscape/plants/espfernbrakencluster04",
+   "at": [
+    3417.5,
+    1424.0
+   ],
+   "yaw": 120.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "fl-backfern2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.kin-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "place",
+   "uid": "eggs1",
+   "asset": "kotm:argonia/argonianeggs/dragoneggs1",
+   "at": [
+    3461.3,
+    1449.3
+   ],
+   "yaw": 0.0,
+   "settle": true,
+   "collision": "none"
+  },
+  {
+   "op": "place",
+   "uid": "eggs2",
+   "asset": "kotm:argonia/argonianeggs/dragoneggs3",
+   "at": [
+    3462.6,
+    1450.3
+   ],
+   "yaw": 40.0,
+   "settle": true,
+   "collision": "none"
+  },
+  {
+   "op": "place",
+   "uid": "hatch-urn",
+   "asset": "mudmother:gv_meshes/argoniannest/paintedurn01",
+   "at": [
+    3466.6,
+    1450.9
+   ],
+   "yaw": 0.0,
+   "settle": true,
+   "pad": {
+    "apronM": 0.3,
+    "batter": true
+   },
+   "collision": "none"
+  },
+  {
+   "op": "place",
+   "uid": "hatch-candle",
+   "asset": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "at": [
+    3461.4,
+    1450.5
+   ],
+   "yaw": 200.0,
+   "settle": true,
+   "pad": {
+    "apronM": 0.3,
+    "batter": true
+   },
+   "collision": "none"
+  },
+  {
+   "op": "bind",
+   "uid": "eggs1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "eggs2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "hatch-urn",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "hatch-candle",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "light",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "pad"
+  },
+  {
+   "op": "place",
+   "uid": "b-minder-candle",
+   "asset": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "at": [
+    3448.08,
+    1427.78
+   ],
+   "yaw": 352.9,
+   "settle": true,
+   "collision": "none"
+  },
+  {
+   "op": "bind",
+   "uid": "b-minder-candle",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.minders-house",
+   "layer": "light",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "pad"
+  },
+  {
+   "op": "group",
+   "action": "place",
+   "name": "hist-village-stores",
+   "at": [
+    3449.75,
+    1427.01
+   ],
+   "yaw": 172.9,
+   "prefix": "minder-st-",
+   "parcel": "parcel.upriver-hist-village.minders-house"
+  },
+  {
+   "op": "bind",
+   "uid": "minder-st-hv-store",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.minders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "minder-st-hv-basket1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.minders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "minder-st-hv-basket2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.minders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "minder-st-hv-closed",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.minders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "minder-st-hv-small",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.minders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "group",
+   "action": "place",
+   "name": "hist-village-cookpot",
+   "at": [
+    3444.49,
+    1431.0
+   ],
+   "yaw": 172.9,
+   "prefix": "minder-ck-",
+   "parcel": "parcel.upriver-hist-village.minders-house"
+  },
+  {
+   "op": "bind",
+   "uid": "minder-ck-hc-wood",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.minders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "minder-ck-hc-pot",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.minders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "minder-ck-hc-potloose",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.minders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "minder-ck-hc-bucket",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.minders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "plinth"
+  },
+  {
+   "op": "place",
+   "uid": "b-elder-candle",
+   "asset": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "at": [
+    3431.15,
+    1433.16
+   ],
+   "yaw": 307.3,
+   "settle": true,
+   "collision": "none"
+  },
+  {
+   "op": "bind",
+   "uid": "b-elder-candle",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.elders-house",
+   "layer": "light",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "pad"
+  },
+  {
+   "op": "group",
+   "action": "place",
+   "name": "hist-village-stores",
+   "at": [
+    3431.78,
+    1431.42
+   ],
+   "yaw": 127.3,
+   "prefix": "elder-st-",
+   "parcel": "parcel.upriver-hist-village.elders-house"
+  },
+  {
+   "op": "bind",
+   "uid": "elder-st-hv-store",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.elders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "elder-st-hv-basket1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.elders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "elder-st-hv-basket2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.elders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "elder-st-hv-closed",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.elders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "elder-st-hv-small",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.elders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "group",
+   "action": "place",
+   "name": "hist-village-cookpot",
+   "at": [
+    3430.95,
+    1437.97
+   ],
+   "yaw": 127.3,
+   "prefix": "elder-ck-",
+   "parcel": "parcel.upriver-hist-village.elders-house"
+  },
+  {
+   "op": "bind",
+   "uid": "elder-ck-hc-wood",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.elders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "elder-ck-hc-pot",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.elders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "elder-ck-hc-potloose",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.elders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "elder-ck-hc-bucket",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.elders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "plinth"
+  },
+  {
+   "op": "place",
+   "uid": "b-trade-candle",
+   "asset": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "at": [
+    3415.2,
+    1450.43
+   ],
+   "yaw": 0.0,
+   "settle": true,
+   "collision": "none"
+  },
+  {
+   "op": "bind",
+   "uid": "b-trade-candle",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.trade-house",
+   "layer": "light",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "pad"
+  },
+  {
+   "op": "group",
+   "action": "place",
+   "name": "hist-village-stores",
+   "at": [
+    3413.6,
+    1450.63
+   ],
+   "yaw": 180.0,
+   "prefix": "trade-st-",
+   "parcel": "parcel.upriver-hist-village.trade-house"
+  },
+  {
+   "op": "bind",
+   "uid": "trade-st-hv-store",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.trade-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "trade-st-hv-basket1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.trade-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "trade-st-hv-basket2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.trade-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "trade-st-hv-closed",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.trade-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "trade-st-hv-small",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.trade-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "b-kin-candle",
+   "asset": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "at": [
+    3421.3,
+    1417.0
+   ],
+   "yaw": 322.0,
+   "settle": true,
+   "collision": "none"
+  },
+  {
+   "op": "bind",
+   "uid": "b-kin-candle",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.kin-house",
+   "layer": "light",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "pad"
+  },
+  {
+   "op": "group",
+   "action": "place",
+   "name": "hist-village-stores",
+   "at": [
+    3427.78,
+    1412.67
+   ],
+   "yaw": 142.0,
+   "prefix": "kin-st-",
+   "parcel": "parcel.upriver-hist-village.kin-house"
+  },
+  {
+   "op": "bind",
+   "uid": "kin-st-hv-store",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.kin-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "kin-st-hv-basket1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.kin-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "kin-st-hv-basket2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.kin-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "kin-st-hv-closed",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.kin-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "kin-st-hv-small",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.kin-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "group",
+   "action": "place",
+   "name": "hist-village-nets",
+   "at": [
+    3417.4,
+    1416.7
+   ],
+   "yaw": 142.0,
+   "prefix": "kin-nt-",
+   "parcel": "parcel.upriver-hist-village.kin-house"
+  },
+  {
+   "op": "bind",
+   "uid": "kin-nt-hn-net1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.kin-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "kin-nt-hn-net2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.kin-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "kin-nt-hn-sack",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.kin-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "place",
+   "uid": "b-fish-candle",
+   "asset": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "at": [
+    3432.68,
+    1454.83
+   ],
+   "yaw": 242.2,
+   "settle": true,
+   "collision": "none"
+  },
+  {
+   "op": "bind",
+   "uid": "b-fish-candle",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.fishers-house",
+   "layer": "light",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "pad"
+  },
+  {
+   "op": "group",
+   "action": "place",
+   "name": "hist-village-stores",
+   "at": [
+    3431.51,
+    1453.42
+   ],
+   "yaw": 62.2,
+   "prefix": "fish-st-",
+   "parcel": "parcel.upriver-hist-village.fishers-house"
+  },
+  {
+   "op": "bind",
+   "uid": "fish-st-hv-store",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.fishers-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "fish-st-hv-basket1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.fishers-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "fish-st-hv-basket2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.fishers-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "fish-st-hv-closed",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.fishers-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "fish-st-hv-small",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.fishers-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "group",
+   "action": "place",
+   "name": "hist-village-nets",
+   "at": [
+    3436.72,
+    1457.47
+   ],
+   "yaw": 62.2,
+   "prefix": "fish-nt-",
+   "parcel": "parcel.upriver-hist-village.fishers-house"
+  },
+  {
+   "op": "move",
+   "uid": "fish-nt-hn-net2",
+   "dx": -0.3,
+   "dz": -0.3,
+   "resettle": true
+  },
+  {
+   "op": "bind",
+   "uid": "fish-nt-hn-net1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.fishers-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "fish-nt-hn-net2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.fishers-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "fish-nt-hn-sack",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.fishers-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "place",
+   "uid": "fish-rack",
+   "asset": "vanilla:clutter/deadanimals/fishrack01",
+   "at": [
+    3440.5,
+    1462.0
+   ],
+   "yaw": 0.0,
+   "settle": true,
+   "pad": {
+    "apronM": 0.3,
+    "batter": true
+   }
+  },
+  {
+   "op": "bind",
+   "uid": "fish-rack",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.fishers-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "group",
+   "action": "place",
+   "name": "hist-village-cookpot",
+   "at": [
+    3423.8,
+    1408.7
+   ],
+   "yaw": 52.0,
+   "prefix": "kin-ck-",
+   "parcel": "parcel.upriver-hist-village.kin-house"
+  },
+  {
+   "op": "bind",
+   "uid": "kin-ck-hc-wood",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.kin-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "kin-ck-hc-pot",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.kin-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "kin-ck-hc-potloose",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.kin-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "kin-ck-hc-bucket",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.kin-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "plinth"
+  },
+  {
+   "op": "group",
+   "action": "place",
+   "name": "hist-village-cookpot",
+   "at": [
+    3425.6,
+    1460.6
+   ],
+   "yaw": 242.2,
+   "prefix": "fish-ck-",
+   "parcel": "parcel.upriver-hist-village.fishers-house"
+  },
+  {
+   "op": "bind",
+   "uid": "fish-ck-hc-wood",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.fishers-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "fish-ck-hc-pot",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.fishers-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "fish-ck-hc-potloose",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.fishers-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "fish-ck-hc-bucket",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.fishers-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "plinth"
+  },
+  {
+   "op": "place",
+   "uid": "cane-block",
+   "asset": "kotm:argonia/clutter/woodchoppingblock",
+   "at": [
+    3430.5,
+    1423.6
+   ],
+   "yaw": 20.0,
+   "settle": true,
+   "pad": {
+    "apronM": 0.3,
+    "batter": true
+   }
+  },
+  {
+   "op": "bind",
+   "uid": "cane-block",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.kin-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "place",
+   "uid": "cane-bundle1",
+   "asset": "kotm:argonia/clutter/twigsbundle",
+   "at": [
+    3429.6,
+    1424.7
+   ],
+   "yaw": 75.0,
+   "settle": true,
+   "collision": "none"
+  },
+  {
+   "op": "bind",
+   "uid": "cane-bundle1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.kin-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "place",
+   "uid": "cane-bundle2",
+   "asset": "kotm:argonia/clutter/twigsbundle",
+   "at": [
+    3431.5,
+    1425.0
+   ],
+   "yaw": 140.0,
+   "settle": true,
+   "collision": "none"
+  },
+  {
+   "op": "bind",
+   "uid": "cane-bundle2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.kin-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "place",
+   "uid": "cane-basket",
+   "asset": "mudmother:gv_meshes/argoniannest/basketfull",
+   "at": [
+    3426.4,
+    1426.6
+   ],
+   "yaw": 0.0,
+   "settle": true,
+   "collision": "none"
+  },
+  {
+   "op": "bind",
+   "uid": "cane-basket",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.kin-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "place",
+   "uid": "common-bucket1",
+   "asset": "vanilla:clutter/bucket01",
+   "at": [
+    3430.5,
+    1426.3
+   ],
+   "yaw": 0.0,
+   "settle": true,
+   "collision": "none"
+  },
+  {
+   "op": "bind",
+   "uid": "common-bucket1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.elders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "plinth"
+  },
+  {
+   "op": "place",
+   "uid": "fish-smoke-wood",
+   "asset": "vanilla:clutter/firewood/firewoodpilesmall01",
+   "at": [
+    3435.0,
+    1461.5
+   ],
+   "yaw": 0.0,
+   "settle": true,
+   "collision": "none"
+  },
+  {
+   "op": "bind",
+   "uid": "fish-smoke-wood",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.fishers-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "place",
+   "uid": "fish-catch-basket",
+   "asset": "kotm:argonia/clutter/basket01",
+   "at": [
+    3435.5,
+    1460.5
+   ],
+   "yaw": 0.0,
+   "settle": true,
+   "collision": "none"
+  },
+  {
+   "op": "bind",
+   "uid": "fish-catch-basket",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.fishers-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "place",
+   "uid": "elder-wood",
+   "asset": "vanilla:clutter/firewood/firewoodpilesmall01",
+   "at": [
+    3427.0,
+    1438.0
+   ],
+   "yaw": 0.0,
+   "settle": true,
+   "collision": "none"
+  },
+  {
+   "op": "bind",
+   "uid": "elder-wood",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.elders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "place",
+   "uid": "common-bucket2",
+   "asset": "vanilla:clutter/bucket02a",
+   "at": [
+    3429.6,
+    1426.9
+   ],
+   "yaw": 40.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "common-bucket2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.elders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "place",
+   "uid": "common-basket",
+   "asset": "vanilla:clutter/basket03",
+   "at": [
+    3427.4,
+    1426.9
+   ],
+   "yaw": 30.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "common-basket",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.elders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "place",
+   "uid": "fish-closed-basket",
+   "asset": "vanilla:clutter/basketclosed01",
+   "at": [
+    3435.5,
+    1457.5
+   ],
+   "yaw": 0.0,
+   "settle": true,
+   "collision": "none"
+  },
+  {
+   "op": "bind",
+   "uid": "fish-closed-basket",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.fishers-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "place",
+   "uid": "elder-basket",
+   "asset": "kotm:argonia/clutter/basket02",
+   "at": [
+    3429.0,
+    1438.5
+   ],
+   "yaw": 0.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "elder-basket",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.elders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "mound",
+   "uid": "gap-fill",
+   "polygonM": [
+    [
+     3394.0,
+     1427.5
+    ],
+    [
+     3407.5,
+     1427.5
+    ],
+    [
+     3408.0,
+     1450.5
+    ],
+    [
+     3395.5,
+     1450.5
+    ]
+   ],
+   "profile": "ramp",
+   "rampM": [
+    [
+     3401.5,
+     1427.5,
+     0.3
+    ],
+    [
+     3401.5,
+     1450.5,
+     2.2
+    ]
+   ],
+   "blendM": 2.0,
+   "why": "The dry sea-level hollow beside the ring-link is filled to the bank either side, so the lane runs on into the tree ring over one stretch of ground.",
+   "sources": [
+    "frozen ground survey (wb.py bpy heights, walk 11 w3g): a dry flat hollow at 0 m, 1.5-2.5 m under the banks, x 3396-3407 z 1428-1450"
+   ]
+  },
+  {
+   "op": "place",
+   "uid": "gap-rack1",
+   "asset": "vanilla:clutter/deadanimals/fishrack01",
+   "at": [
+    3372.5,
+    1437.2
+   ],
+   "yaw": 5.0,
+   "settle": true,
+   "pad": {
+    "apronM": 0.3,
+    "batter": true
+   }
+  },
+  {
+   "op": "bind",
+   "uid": "gap-rack1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.boat-builders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "place",
+   "uid": "gap-wood",
+   "asset": "vanilla:clutter/firewood/firewoodpilesmall01",
+   "at": [
+    3376.0,
+    1440.9
+   ],
+   "yaw": 10.0,
+   "settle": true,
+   "pad": {
+    "apronM": 0.3,
+    "batter": true
+   },
+   "collision": "none"
+  },
+  {
+   "op": "bind",
+   "uid": "gap-wood",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.boat-builders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "place",
+   "uid": "gap-rack2",
+   "asset": "vanilla:clutter/deadanimals/fishrack01",
+   "at": [
+    3385.1,
+    1441.0
+   ],
+   "yaw": 28.0,
+   "settle": true,
+   "pad": {
+    "apronM": 0.3,
+    "batter": true
+   }
+  },
+  {
+   "op": "bind",
+   "uid": "gap-rack2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.trade-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "place",
+   "uid": "gap-twigs",
+   "asset": "kotm:argonia/clutter/twigsbundle",
+   "at": [
+    3392.0,
+    1450.9
+   ],
+   "yaw": 28.0,
+   "settle": true,
+   "pad": {
+    "apronM": 0.3,
+    "batter": true
+   },
+   "collision": "none"
+  },
+  {
+   "op": "bind",
+   "uid": "gap-twigs",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.trade-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "place",
+   "uid": "gap-rack3",
+   "asset": "vanilla:clutter/deadanimals/fishrack01",
+   "at": [
+    3400.4,
+    1457.1
+   ],
+   "yaw": 28.0,
+   "settle": true,
+   "pad": {
+    "apronM": 0.3,
+    "batter": true
+   }
+  },
+  {
+   "op": "bind",
+   "uid": "gap-rack3",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.trade-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.upriver-hist-village.road-houses-lane",
+   "kind": "footpath",
+   "width": 2.4,
+   "points": [
+    [
+     3382.0,
+     1443.0
+    ],
+    [
+     3365.0,
+     1440.0
+    ],
+    [
+     3352.0,
+     1438.5
+    ],
+    [
+     3346.0,
+     1437.8
+    ],
+    [
+     3336.0,
+     1437.8
+    ],
+    [
+     3328.0,
+     1440.0
+    ],
+    [
+     3321.4,
+     1439.4
+    ]
+   ]
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.upriver-hist-village.ring-link",
+   "kind": "footpath",
+   "width": 2.4,
+   "points": [
+    [
+     3382.0,
+     1443.0
+    ],
+    [
+     3394.0,
+     1449.0
+    ],
+    [
+     3410.5,
+     1450.0
+    ],
+    [
+     3412.2,
+     1455.0
+    ]
+   ]
+  },
+  {
+   "op": "place",
+   "uid": "rh-reed-lamp",
+   "asset": "mudmother:gv_meshes/argoniannest/argonianlanterns04",
+   "at": [
+    3317.11,
+    1436.1
+   ],
+   "yaw": 0.0,
+   "settle": false,
+   "collision": "none"
+  },
+  {
+   "op": "bind",
+   "uid": "rh-reed-lamp",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.reed-cutters-house",
+   "layer": "light",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "mount",
+   "child": "rh-reed-lamp",
+   "parent": "b-reed",
+   "hang": true,
+   "max_h": 6.0,
+   "along": 3.4,
+   "bearing": 240,
+   "unmined": "reader-approved r113"
+  },
+  {
+   "op": "place",
+   "uid": "rh-net-lamp",
+   "asset": "mudmother:gv_meshes/argoniannest/argonianlanterns04",
+   "at": [
+    3306.2,
+    1441.4
+   ],
+   "yaw": 0.0,
+   "settle": false,
+   "collision": "none"
+  },
+  {
+   "op": "mount",
+   "child": "rh-net-lamp",
+   "parent": "b-net",
+   "hang": true,
+   "unmined": "reader-approved r113",
+   "max_h": 6.0
+  },
+  {
+   "op": "bind",
+   "uid": "rh-net-lamp",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.net-menders-house",
+   "layer": "light",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "place",
+   "uid": "rh-cane-lamp",
+   "asset": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "at": [
+    3306.19,
+    1429.35
+   ],
+   "yaw": 0.0,
+   "settle": true,
+   "collision": "none"
+  },
+  {
+   "op": "bind",
+   "uid": "rh-cane-lamp",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.cane-cutters-house",
+   "layer": "light",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "pad"
+  },
+  {
+   "op": "move",
+   "uid": "b-smith",
+   "dx": 0.5,
+   "dz": 2.0
+  },
+  {
+   "op": "place",
+   "uid": "rh-smith-lamp",
+   "asset": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "at": [
+    3310.7,
+    1452.97
+   ],
+   "yaw": 0.0,
+   "settle": true,
+   "collision": "none"
+  },
+  {
+   "op": "bind",
+   "uid": "rh-smith-lamp",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.smiths-house",
+   "layer": "light",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "pad"
+  },
+  {
+   "op": "place",
+   "uid": "rh-boat-lamp",
+   "asset": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "at": [
+    3349.69,
+    1456.87
+   ],
+   "yaw": 0.0,
+   "settle": true,
+   "collision": "none"
+  },
+  {
+   "op": "bind",
+   "uid": "rh-boat-lamp",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.boat-builders-house",
+   "layer": "light",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "pad"
+  },
+  {
+   "op": "place",
+   "uid": "rh-dye-lamp",
+   "asset": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "at": [
+    3320.38,
+    1405.07
+   ],
+   "yaw": 0.0,
+   "settle": true,
+   "collision": "none"
+  },
+  {
+   "op": "bind",
+   "uid": "rh-dye-lamp",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.dyers-house",
+   "layer": "light",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "pad"
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.upriver-hist-village.net-step",
+   "kind": "footpath",
+   "width": 1.2,
+   "points": [
+    [
+     3316.4,
+     1431.0
+    ],
+    [
+     3308.5,
+     1435.5
+    ],
+    [
+     3305.6,
+     1439.0
+    ],
+    [
+     3304.55,
+     1440.8
+    ]
+   ]
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.upriver-hist-village.reed-step",
+   "kind": "footpath",
+   "width": 1.2,
+   "points": [
+    [
+     3318.46,
+     1437.51
+    ],
+    [
+     3318.51,
+     1435.86
+    ]
+   ]
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.upriver-hist-village.cane-step",
+   "kind": "footpath",
+   "width": 1.2,
+   "points": [
+    [
+     3321.4,
+     1439.4
+    ],
+    [
+     3313.0,
+     1434.0
+    ],
+    [
+     3307.2,
+     1430.0
+    ],
+    [
+     3306.77,
+     1427.73
+    ]
+   ]
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.upriver-hist-village.smith-step",
+   "kind": "footpath",
+   "width": 1.2,
+   "points": [
+    [
+     3321.4,
+     1439.4
+    ],
+    [
+     3319.5,
+     1443.0
+    ],
+    [
+     3317.5,
+     1452.0
+    ],
+    [
+     3313.2,
+     1453.3
+    ],
+    [
+     3311.44,
+     1451.53
+    ]
+   ]
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.upriver-hist-village.boat-step",
+   "kind": "footpath",
+   "width": 1.2,
+   "points": [
+    [
+     3352.0,
+     1438.5
+    ],
+    [
+     3353.5,
+     1448.0
+    ],
+    [
+     3351.5,
+     1455.4
+    ],
+    [
+     3349.05,
+     1455.38
+    ]
+   ]
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.upriver-hist-village.south-lane",
+   "kind": "footpath",
+   "width": 1.2,
+   "points": [
+    [
+     3330.0,
+     1439.45
+    ],
+    [
+     3332.0,
+     1428.0
+    ]
+   ]
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.upriver-hist-village.track-in",
+   "kind": "footpath",
+   "width": 1.2,
+   "points": [
+    [
+     3332.0,
+     1428.0
+    ],
+    [
+     3346.0,
+     1433.4
+    ],
+    [
+     3346.0,
+     1437.8
+    ]
+   ]
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.upriver-hist-village.dyer-step",
+   "kind": "footpath",
+   "width": 1.2,
+   "points": [
+    [
+     3332.0,
+     1428.0
+    ],
+    [
+     3328.0,
+     1418.0
+    ],
+    [
+     3321.7,
+     1403.6
+    ],
+    [
+     3319.24,
+     1404.25
+    ]
+   ]
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.upriver-hist-village.the-way",
+   "kind": "track",
+   "width": 2.5,
+   "points": [
+    [
+     3407.44,
+     1456.44
+    ],
+    [
+     3414.6,
+     1452.0
+    ],
+    [
+     3427.0,
+     1448.6
+    ],
+    [
+     3433.0,
+     1445.8
+    ],
+    [
+     3437.4,
+     1445.0
+    ],
+    [
+     3438.6,
+     1439.6
+    ],
+    [
+     3444.0,
+     1436.6
+    ],
+    [
+     3450.0,
+     1436.6
+    ],
+    [
+     3455.0,
+     1441.0
+    ],
+    [
+     3461.0,
+     1441.2
+    ],
+    [
+     3467.4,
+     1440.0
+    ]
+   ]
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.upriver-hist-village.north-way",
+   "kind": "footpath",
+   "width": 1.8,
+   "points": [
+    [
+     3433.0,
+     1445.8
+    ],
+    [
+     3435.6,
+     1437.6
+    ],
+    [
+     3437.5,
+     1431.0
+    ],
+    [
+     3434.0,
+     1424.0
+    ],
+    [
+     3437.0,
+     1416.0
+    ],
+    [
+     3437.5,
+     1405.4
+    ]
+   ]
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.upriver-hist-village.elders-step",
+   "kind": "footpath",
+   "width": 1.2,
+   "points": [
+    [
+     3435.6,
+     1437.6
+    ],
+    [
+     3431.9,
+     1435.73
+    ],
+    [
+     3430.23,
+     1434.46
+    ]
+   ]
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.upriver-hist-village.minders-step",
+   "kind": "footpath",
+   "width": 1.2,
+   "points": [
+    [
+     3437.5,
+     1431.0
+    ],
+    [
+     3446.76,
+     1430.11
+    ],
+    [
+     3446.5,
+     1428.03
+    ]
+   ]
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.upriver-hist-village.kin-step",
+   "kind": "footpath",
+   "width": 1.2,
+   "points": [
+    [
+     3434.0,
+     1424.0
+    ],
+    [
+     3426.5,
+     1420.5
+    ],
+    [
+     3423.3,
+     1417.8
+    ],
+    [
+     3422.3,
+     1415.75
+    ]
+   ]
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.upriver-hist-village.trade-step",
+   "kind": "footpath",
+   "width": 1.2,
+   "points": [
+    [
+     3416.0,
+     1453.8
+    ],
+    [
+     3416.0,
+     1451.83
+    ],
+    [
+     3416.0,
+     1449.73
+    ]
+   ]
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.upriver-hist-village.fishers-step",
+   "kind": "footpath",
+   "width": 1.2,
+   "points": [
+    [
+     3433.0,
+     1445.8
+    ],
+    [
+     3435.17,
+     1455.27
+    ],
+    [
+     3433.31,
+     1456.25
+    ]
+   ]
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.upriver-hist-village.shrine-step",
+   "kind": "footpath",
+   "width": 1.2,
+   "points": [
+    [
+     3437.88,
+     1442.84
+    ],
+    [
+     3439.6,
+     1442.7
+    ]
+   ]
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.upriver-hist-village.guar-step",
+   "kind": "footpath",
+   "width": 1.2,
+   "points": [
+    [
+     3455.0,
+     1441.0
+    ],
+    [
+     3457.0,
+     1438.6
+    ]
+   ]
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.upriver-hist-village.hatchery-step",
+   "kind": "footpath",
+   "width": 1.2,
+   "points": [
+    [
+     3467.4,
+     1440.0
+    ],
+    [
+     3467.9,
+     1444.0
+    ],
+    [
+     3467.6,
+     1448.6
+    ],
+    [
+     3465.5,
+     1450.6
+    ]
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.idle-minder-tends",
+   "kind": "idle",
+   "host": "sh-urn",
+   "activity": "stand",
+   "parcel": "parcel.upriver-hist-village.hist-shrine",
+   "why": "The tree-minder keeps the offerings at the foot of the tree filled and the candles trimmed."
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.idle-minder-home",
+   "kind": "idle",
+   "activity": "sleep",
+   "parcel": "parcel.upriver-hist-village.minders-house",
+   "why": "The tree-minder sleeps in the house that faces the tree.",
+   "interiorCell": "SeekhatTreeminderHut",
+   "host": "SeekhatTreeminderHut.08198CEB"
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.npc-tree-minder",
+   "kind": "npc",
+   "at": [
+    3446.94,
+    1429.26
+   ],
+   "rosterSlotId": "npc-opening-tree-minder",
+   "role": "the tree-minder",
+   "parcel": "parcel.upriver-hist-village.hist-shrine",
+   "why": "The tree-minder speaks for the tree and tends its shrine; the shrine is hers to keep.",
+   "fills": [
+    "promise.upriver-hist-village.occupant-npc-opening-tree-minder",
+    "promise.upriver-hist-village.service-shrine"
+   ],
+   "schedule": [
+    {
+     "dayPhase": "morning",
+     "socketId": "socket.upriver-hist-village.idle-minder-tends",
+     "purpose": "work"
+    },
+    {
+     "dayPhase": "afternoon",
+     "socketId": "socket.upriver-hist-village.idle-minder-tends",
+     "purpose": "work"
+    },
+    {
+     "dayPhase": "dusk",
+     "socketId": "socket.upriver-hist-village.idle-minder-home",
+     "purpose": "home"
+    },
+    {
+     "dayPhase": "night",
+     "socketId": "socket.upriver-hist-village.idle-minder-home",
+     "purpose": "home"
+    }
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.idle-elder-hosts",
+   "kind": "idle",
+   "activity": "stand",
+   "parcel": "parcel.upriver-hist-village.elders-house",
+   "why": "The elder keeps the guest stores by the door of the house where strangers sleep.",
+   "at": [
+    3432.2,
+    1432.4
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.idle-elder-home",
+   "kind": "idle",
+   "activity": "sleep",
+   "parcel": "parcel.upriver-hist-village.elders-house",
+   "why": "The elder sleeps in the house that looks across the common to the tree.",
+   "interiorCell": "SeekhatEldersHut",
+   "host": "SeekhatEldersHut.081C6F1D"
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.npc-upriver-elder",
+   "kind": "npc",
+   "at": [
+    3431.42,
+    1435.02
+   ],
+   "rosterSlotId": "npc-opening-upriver-elder",
+   "role": "the elder who houses strangers",
+   "parcel": "parcel.upriver-hist-village.elders-house",
+   "why": "The elder gives a stranger who brings news a bed in her house.",
+   "fills": [
+    "promise.upriver-hist-village.occupant-npc-opening-upriver-elder",
+    "promise.upriver-hist-village.service-lodging"
+   ],
+   "schedule": [
+    {
+     "dayPhase": "morning",
+     "socketId": "socket.upriver-hist-village.idle-elder-hosts",
+     "purpose": "work"
+    },
+    {
+     "dayPhase": "afternoon",
+     "socketId": "socket.upriver-hist-village.idle-elder-hosts",
+     "purpose": "work"
+    },
+    {
+     "dayPhase": "dusk",
+     "socketId": "socket.upriver-hist-village.idle-elder-home",
+     "purpose": "home"
+    },
+    {
+     "dayPhase": "night",
+     "socketId": "socket.upriver-hist-village.idle-elder-home",
+     "purpose": "home"
+    }
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.idle-trader-work",
+   "kind": "idle",
+   "host": "trade-st-hv-store",
+   "activity": "stand",
+   "parcel": "parcel.upriver-hist-village.trade-house",
+   "why": "Cut cane, cord and smoked fish are traded from the stores at the trade-house door."
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.idle-family-home",
+   "kind": "idle",
+   "activity": "sleep",
+   "parcel": "parcel.upriver-hist-village.kin-house",
+   "why": "The house the remaining children and grandparents share; they sleep on its hay nests.",
+   "host": "CIPHTBMHutInterior01:add:bed-bedrollhay",
+   "interiorCell": "CIPHTBMHutInterior01"
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.idle-family-fish",
+   "kind": "idle",
+   "host": "fish-rack",
+   "activity": "work-at",
+   "parcel": "parcel.upriver-hist-village.fishers-house",
+   "why": "The families dry their catch on the rack by the south shore."
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.npc-trader",
+   "kind": "npc",
+   "at": [
+    3415.4,
+    1450.93
+   ],
+   "rosterSlotId": "n2",
+   "role": "the households' trader",
+   "parcel": "parcel.upriver-hist-village.trade-house",
+   "why": "One of the households trades what the village makes with the boats that come upriver.",
+   "fills": [
+    "promise.upriver-hist-village.occupant-n2",
+    "promise.upriver-hist-village.service-trader"
+   ],
+   "schedule": [
+    {
+     "dayPhase": "morning",
+     "socketId": "socket.upriver-hist-village.idle-trader-work",
+     "purpose": "work"
+    },
+    {
+     "dayPhase": "afternoon",
+     "socketId": "socket.upriver-hist-village.idle-family-fish",
+     "purpose": "work"
+    },
+    {
+     "dayPhase": "dusk",
+     "socketId": "socket.upriver-hist-village.idle-family-home",
+     "purpose": "home"
+    },
+    {
+     "dayPhase": "night",
+     "socketId": "socket.upriver-hist-village.idle-family-home",
+     "purpose": "home"
+    }
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.marker-waterline-cut",
+   "kind": "marker",
+   "at": [
+    3468.6,
+    1441.2
+   ],
+   "zone": "evidence",
+   "parcel": "parcel.upriver-hist-village.landing",
+   "why": "The cut mark at the waterline on the landing's first post, the same mark LP14 finds on every bend.",
+   "fills": [
+    "promise.upriver-hist-village.quest-lp14"
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.fauna-pond-guar",
+   "kind": "fauna",
+   "at": [
+    3459.0,
+    1436.0
+   ],
+   "zone": "pen",
+   "dangerBand": "D1",
+   "parcel": "parcel.upriver-hist-village.guar-shelter",
+   "why": "The pond guar are kept under the awning by the hatchery for their warmth."
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.marker-elders-door",
+   "kind": "marker",
+   "at": [
+    3430.7,
+    1434.32
+   ],
+   "zone": "mark",
+   "parcel": "parcel.upriver-hist-village.elders-house",
+   "why": "The elder's door, the way into the house where a stranger sleeps.",
+   "fills": [
+    "promise.upriver-hist-village.post-rest-nine-bends"
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.marker-harvest-cut",
+   "kind": "marker",
+   "at": [
+    3451.4,
+    1445.0
+   ],
+   "zone": "mark",
+   "parcel": "parcel.upriver-hist-village.hist-shrine",
+   "why": "The cut in the trunk above the root that runs down to the pool.",
+   "fills": [
+    "promise.upriver-hist-village.evidence-opening-harvest-cut"
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.marker-hatchery-pool",
+   "kind": "marker",
+   "at": [
+    3462.6,
+    1449.8
+   ],
+   "zone": "mark",
+   "parcel": "parcel.upriver-hist-village.hist-shrine",
+   "why": "The landward rim of the hatchery pool, beside the clay lids.",
+   "fills": [
+    "promise.upriver-hist-village.marks-opening-hatchery-pool"
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.marker-tree-foot",
+   "kind": "marker",
+   "at": [
+    3439.0,
+    1444.3
+   ],
+   "zone": "mark",
+   "parcel": "parcel.upriver-hist-village.hist-shrine",
+   "why": "The shrine at the west foot of the trunk.",
+   "fills": [
+    "promise.upriver-hist-village.marks-opening-tree-foot"
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.marker-opening-hist-withdrawal",
+   "kind": "marker",
+   "at": [
+    3436.0,
+    1442.5
+   ],
+   "zone": "scene",
+   "parcel": "parcel.upriver-hist-village.hist-shrine",
+   "why": "The common in front of the shrine, where the village gathers when the chimes stop.",
+   "fills": [
+    "promise.upriver-hist-village.scene-opening-tree-withdraws",
+    "promise.upriver-hist-village.provision-opening-hist-withdrawal"
+   ]
+  },
+  {
+   "op": "group",
+   "action": "place",
+   "name": "hist-village-stores",
+   "at": [
+    3314.0,
+    1451.0
+   ],
+   "yaw": 135.0,
+   "prefix": "smith-st-",
+   "parcel": "parcel.upriver-hist-village.smiths-house"
+  },
+  {
+   "op": "bind",
+   "uid": "smith-st-hv-store",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.smiths-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "smith-st-hv-basket1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.smiths-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "smith-st-hv-basket2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.smiths-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "smith-st-hv-closed",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.smiths-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "smith-st-hv-small",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.smiths-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "group",
+   "action": "place",
+   "name": "hist-village-stores",
+   "at": [
+    3317.9,
+    1430.4
+   ],
+   "yaw": 135.0,
+   "prefix": "reed-st-",
+   "parcel": "parcel.upriver-hist-village.reed-cutters-house"
+  },
+  {
+   "op": "bind",
+   "uid": "reed-st-hv-store",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.reed-cutters-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "reed-st-hv-basket1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.reed-cutters-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "reed-st-hv-basket2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.reed-cutters-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "reed-st-hv-closed",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.reed-cutters-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "reed-st-hv-small",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.reed-cutters-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "group",
+   "action": "place",
+   "name": "hist-village-nets",
+   "at": [
+    3303.0,
+    1439.5
+   ],
+   "yaw": 0.0,
+   "prefix": "net-nt-",
+   "parcel": "parcel.upriver-hist-village.net-menders-house"
+  },
+  {
+   "op": "bind",
+   "uid": "net-nt-hn-net1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.net-menders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "net-nt-hn-net2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.net-menders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "net-nt-hn-sack",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.net-menders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "group",
+   "action": "place",
+   "name": "hist-village-stores",
+   "at": [
+    3302.0,
+    1425.0
+   ],
+   "yaw": 45.0,
+   "prefix": "cane-st-",
+   "parcel": "parcel.upriver-hist-village.cane-cutters-house"
+  },
+  {
+   "op": "bind",
+   "uid": "cane-st-hv-store",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.cane-cutters-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "cane-st-hv-basket1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.cane-cutters-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "cane-st-hv-basket2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.cane-cutters-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "cane-st-hv-closed",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.cane-cutters-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "cane-st-hv-small",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.cane-cutters-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "group",
+   "action": "place",
+   "name": "hist-village-stores",
+   "at": [
+    3316.5,
+    1409.0
+   ],
+   "yaw": 0.0,
+   "prefix": "dyer-st-",
+   "parcel": "parcel.upriver-hist-village.dyers-house"
+  },
+  {
+   "op": "bind",
+   "uid": "dyer-st-hv-store",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.dyers-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "dyer-st-hv-basket1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.dyers-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "dyer-st-hv-basket2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.dyers-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "dyer-st-hv-closed",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.dyers-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "dyer-st-hv-small",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.dyers-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "note",
+   "uid": "smith-st-hv-store",
+   "text": "walk 12 close-out: the five west-cluster houses (smith, reed, net, cane, dyer) carried only a door light; each gets the village store or net group on a scanned pose, as the east houses already have."
+  },
+  {
+   "op": "place",
+   "uid": "sp-elder",
+   "asset": "vanilla:clutter/deadanimals/fishrack01",
+   "at": [
+    3434.0,
+    1434.5
+   ],
+   "yaw": 277.2,
+   "settle": true,
+   "pad": {
+    "apronM": 0.3
+   }
+  },
+  {
+   "op": "bind",
+   "uid": "sp-elder",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.elders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "note",
+   "uid": "sp-elder",
+   "text": "walk 12 close-out (R127): a drying rack at the lane end of the elder's step carries the lodging board under its crossbar, so it is read from the lane. The HTBM washline post is not licensed outside by its plugin (setting.class). A bare Kothringi pole has no beam for a board."
+  },
+  {
+   "op": "place",
+   "uid": "sign-elder",
+   "asset": "kotm:argonia/blackwood/sign",
+   "at": [
+    3434.0,
+    1434.5
+   ],
+   "yaw": 7.2,
+   "settle": true
+  },
+  {
+   "op": "mount",
+   "child": "sign-elder",
+   "parent": "b-elder",
+   "hang": true,
+   "bracket": true,
+   "min_h": 2.4,
+   "max_h": 3.2,
+   "along": 2.5,
+   "bearing": 110,
+   "unmined": "reader-approved r12"
+  },
+  {
+   "op": "bind",
+   "uid": "sign-elder",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.elders-house",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "measured",
+   "host": "b-elder"
+  },
+  {
+   "op": "note",
+   "uid": "sign-elder",
+   "text": "16x reds: the drying rack gives no solid seat, so the board hangs on its own arm from the elder house wall, 2.4 m up on the lane side."
+  },
+  {
+   "op": "place",
+   "uid": "sp-trade",
+   "asset": "vanilla:clutter/deadanimals/fishrack01",
+   "at": [
+    3418.5,
+    1453.3
+   ],
+   "yaw": 250.0,
+   "settle": true,
+   "pad": {
+    "apronM": 0.3
+   }
+  },
+  {
+   "op": "bind",
+   "uid": "sp-trade",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.trade-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "note",
+   "uid": "b-trade-candle",
+   "text": "walk 12 close-out: moved to the west side of the trade step, clear of the pad that seats sp-trade."
+  },
+  {
+   "op": "note",
+   "uid": "sp-trade",
+   "text": "walk 12 close-out (R127): a drying rack beside the lane end of the trade step carries the trade board."
+  },
+  {
+   "op": "place",
+   "uid": "sign-trade",
+   "asset": "kotm:argonia/blackwood/sign",
+   "at": [
+    3418.5,
+    1453.3
+   ],
+   "yaw": 340.0,
+   "settle": true
+  },
+  {
+   "op": "mount",
+   "child": "sign-trade",
+   "parent": "b-trade",
+   "hang": true,
+   "bracket": true,
+   "min_h": 2.0,
+   "max_h": 9.0,
+   "along": 2.5,
+   "bearing": 129.81433023628614,
+   "unmined": "reader-approved r12"
+  },
+  {
+   "op": "bind",
+   "uid": "sign-trade",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.trade-house",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "measured",
+   "host": "b-trade"
+  },
+  {
+   "op": "note",
+   "uid": "sign-trade",
+   "text": "16x reds: the drying rack gives no solid seat, so the board hangs on its own arm from the trade hut, on the side that faces the lane."
+  },
+  {
+   "op": "note",
+   "uid": "sp-elder",
+   "text": "walk 12 close-out: moved 1 m further from the door, clear of the eave, still within the 4 m of the walls that serviceSignRule asks; board turned 90 degrees to the rack so its face looks down the lane."
+  },
+  {
+   "op": "bind",
+   "uid": "hfl1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "light",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "hfl2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "light",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "hfl3",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "light",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "hfl4",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "light",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.sign-elder-lodging",
+   "kind": "sign",
+   "host": "sign-elder",
+   "signPurpose": "service",
+   "textKey": "text.sign.upriver-hist-village.elder-lodging",
+   "parcel": "parcel.upriver-hist-village.elders-house",
+   "why": "A board on the elder's house tells a stranger that a bed is given here."
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.sign-trade-house",
+   "kind": "sign",
+   "host": "sign-trade",
+   "signPurpose": "service",
+   "textKey": "text.sign.upriver-hist-village.trade-house",
+   "parcel": "parcel.upriver-hist-village.trade-house",
+   "why": "A board on the trade house marks where cane, cord and smoked fish are traded."
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.container-elder-provisions",
+   "kind": "container",
+   "host": "elder-st-hv-store",
+   "containerClass": "basket",
+   "fillRule": "authored",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 3
+     },
+     {
+      "item": "item.lumberries",
+      "count": 2
+     },
+     {
+      "item": "item.book-the-three-mournings",
+      "count": 1
+     }
+    ],
+    "storyNote": "Smoked fish and berries the elder hands to a stranger who brings news from downriver, with the primer that teaches the hatchlings the Mournings."
+   },
+   "parcel": "parcel.upriver-hist-village.elders-house",
+   "why": "The elder's store, from which a stranger with news is given provisions.",
+   "valueTier": "moderate",
+   "owner": "npc.pirate-freeholds.upriver-hist-village.npc-opening-upriver-elder"
+  },
+  {
+   "op": "place",
+   "uid": "ft-canoe1",
+   "asset": "canoe:actors/sfss/canoe/canoe1",
+   "at": [
+    3468.5,
+    1428.5
+   ],
+   "yaw": 85.0,
+   "settle": true,
+   "beached": true
+  },
+  {
+   "op": "bind",
+   "uid": "ft-canoe1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.fishers-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "note",
+   "uid": "ft-canoe1",
+   "text": "walk 12 W2 part 2: feature 1, the canoe beach: the village's canoes drawn up on the bank north of the landing, clear of the reeds (fl-reed4/5)."
+  },
+  {
+   "op": "place",
+   "uid": "ft-canoe2",
+   "asset": "canoe:actors/sfss/canoe/canoe1",
+   "at": [
+    3466.5,
+    1433.5
+   ],
+   "yaw": 95.0,
+   "settle": true,
+   "beached": true
+  },
+  {
+   "op": "bind",
+   "uid": "ft-canoe2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.fishers-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "ft-dryrack",
+   "asset": "vanilla:clutter/deadanimals/fishrack01",
+   "at": [
+    3338.0,
+    1433.5
+   ],
+   "yaw": 10.0,
+   "settle": true,
+   "pad": {
+    "apronM": 0.3,
+    "batter": true
+   }
+  },
+  {
+   "op": "bind",
+   "uid": "ft-dryrack",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.boat-builders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "note",
+   "uid": "ft-dryrack",
+   "text": "walk 12 W2 part 2: feature 2, the drying way: fish and cane leaf hung to dry along the houses lane between the two halves of the village (dressing.md 7)."
+  },
+  {
+   "op": "place",
+   "uid": "dr-basket2",
+   "asset": "kotm:argonia/clutter/basketcontainer",
+   "at": [
+    3359.0,
+    1435.8
+   ],
+   "yaw": 200.0,
+   "settle": true,
+   "pad": {
+    "apronM": 0.3,
+    "batter": true
+   }
+  },
+  {
+   "op": "bind",
+   "uid": "dr-basket2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.boat-builders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "dr-basket3",
+   "asset": "kotm:argonia/clutter/basket02",
+   "at": [
+    3330.0,
+    1436.2
+   ],
+   "yaw": 75.0,
+   "settle": true,
+   "pad": {
+    "apronM": 0.3,
+    "batter": true
+   }
+  },
+  {
+   "op": "bind",
+   "uid": "dr-basket3",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.reed-cutters-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "dr-foodrack",
+   "asset": "vanilla:clutter/deadanimals/fishrack01",
+   "at": [
+    3341.0,
+    1441.6
+   ],
+   "yaw": 0.0,
+   "settle": true,
+   "pad": {
+    "apronM": 0.3,
+    "batter": true
+   }
+  },
+  {
+   "op": "bind",
+   "uid": "dr-foodrack",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.boat-builders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "dr-fishsmall",
+   "asset": "kotm:argonia/clutter/basket01",
+   "at": [
+    3376.0,
+    1447.2
+   ],
+   "yaw": 180.0,
+   "settle": true,
+   "pad": {
+    "apronM": 0.3,
+    "batter": true
+   }
+  },
+  {
+   "op": "bind",
+   "uid": "dr-fishsmall",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.trade-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "dr-woven",
+   "asset": "mudmother:gv_meshes/argoniannest/wovenfence01",
+   "at": [
+    3358.5,
+    1446.6
+   ],
+   "yaw": 175.0,
+   "settle": true,
+   "pad": {
+    "apronM": 0.3,
+    "batter": true
+   }
+  },
+  {
+   "op": "bind",
+   "uid": "dr-woven",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.boat-builders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "dr-fence1",
+   "asset": "kotm:argonia/clutter/saxhleelfence01",
+   "at": [
+    3348.0,
+    1434.4
+   ],
+   "yaw": 2.0,
+   "settle": true,
+   "pad": {
+    "apronM": 0.3,
+    "batter": true
+   }
+  },
+  {
+   "op": "bind",
+   "uid": "dr-fence1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.boat-builders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "note",
+   "uid": "dr-basket2",
+   "text": "walk 12 W2 part 3: houses lane dressing, so a walker sees a lane in daily use: baskets at the doors and at the trade end, a woven screen and a fence by the yards; a second drying rack (the village smokes fish on racks; no smoke-house mesh is in the pool)."
+  },
+  {
+   "op": "place",
+   "uid": "ft-totem",
+   "asset": "mudmother:gv_meshes/argoniannest/argoniantotem01",
+   "at": [
+    3321.0,
+    1442.5
+   ],
+   "yaw": 270.0,
+   "settle": true,
+   "pad": {
+    "apronM": 0.3
+   }
+  },
+  {
+   "op": "bind",
+   "uid": "ft-totem",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.reed-cutters-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "note",
+   "uid": "ft-totem",
+   "text": "walk 12 W2 part 2: feature 3, the bend markers: a carved post at the west end of the lane and marker poles (ft-pole1-3) along it, one for each bend the village counts on the way to the tree."
+  },
+  {
+   "op": "place",
+   "uid": "ft-pole1",
+   "asset": "vanilla:clutter/deadanimals/fishrack01",
+   "at": [
+    3330.5,
+    1442.5
+   ],
+   "settle": true,
+   "pad": {
+    "apronM": 0.3,
+    "batter": true
+   }
+  },
+  {
+   "op": "bind",
+   "uid": "ft-pole1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.reed-cutters-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "place",
+   "uid": "ft-pole2",
+   "asset": "vanilla:clutter/deadanimals/fishrack01",
+   "at": [
+    3367.0,
+    1446.0
+   ],
+   "settle": true,
+   "pad": {
+    "apronM": 0.3,
+    "batter": true
+   }
+  },
+  {
+   "op": "bind",
+   "uid": "ft-pole2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.boat-builders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "place",
+   "uid": "ft-pole3",
+   "asset": "vanilla:clutter/deadanimals/fishrack01",
+   "at": [
+    3393.5,
+    1455.5
+   ],
+   "settle": true,
+   "pad": {
+    "apronM": 0.3,
+    "batter": true
+   }
+  },
+  {
+   "op": "bind",
+   "uid": "ft-pole3",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.trade-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "note",
+   "uid": "rh-reed-lamp",
+   "text": "16x reds: hung beside the door frame, not in the doorway, so a walker passes under it into the hut."
+  },
+  {
+   "op": "socket",
+   "id": "fill.cane-basket",
+   "kind": "container",
+   "host": "place.pirate-freeholds.upriver-hist-village.parcel.upriver-hist-village.kin-house.assembly.cane-basket",
+   "containerClass": "basket",
+   "fillRule": "blanket.cook-shelf",
+   "why": "placed container mudmother:gv_meshes/argoniannest/basketfull: class default fill",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.river-salt",
+      "count": 2
+     },
+     {
+      "item": "item.baked-crocodile-tongue",
+      "count": 1
+     },
+     {
+      "item": "item.lumberries",
+      "count": 3
+     },
+     {
+      "item": "item.hissmir-fish-eye-rye",
+      "count": 1
+     },
+     {
+      "item": "item.turtle-shell-bowl",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.cook-shelf"
+   },
+   "valueTier": "low",
+   "owner": "parcel.upriver-hist-village.kin-house"
+  },
+  {
+   "op": "socket",
+   "id": "fill.dr-basket2",
+   "kind": "container",
+   "host": "place.pirate-freeholds.upriver-hist-village.parcel.upriver-hist-village.boat-builders-house.assembly.dr-basket2",
+   "containerClass": "basket",
+   "fillRule": "blanket.woodcutter-lean-to",
+   "why": "placed container kotm:argonia/clutter/basketcontainer: class default fill",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.saw",
+      "count": 1
+     },
+     {
+      "item": "item.firewood",
+      "count": 4
+     },
+     {
+      "item": "item.bucket",
+      "count": 1
+     },
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.woodcutter-lean-to"
+   },
+   "valueTier": "trivial",
+   "owner": "parcel.upriver-hist-village.boat-builders-house"
+  },
+  {
+   "op": "socket",
+   "id": "fill.hatch-urn",
+   "kind": "container",
+   "host": "place.pirate-freeholds.upriver-hist-village.parcel.upriver-hist-village.hist-shrine.assembly.hatch-urn",
+   "containerClass": "urn",
+   "fillRule": "blanket.shrine-bowl",
+   "why": "placed container mudmother:gv_meshes/argoniannest/paintedurn01: class default fill",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.lumberries",
+      "count": 4
+     },
+     {
+      "item": "item.dried-flower-buds",
+      "count": 3
+     },
+     {
+      "item": "item.hist-sap",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.shrine-bowl"
+   },
+   "valueTier": "low",
+   "owner": "parcel.upriver-hist-village.hist-shrine"
+  },
+  {
+   "op": "socket",
+   "id": "fill.sh-urn",
+   "kind": "container",
+   "host": "place.pirate-freeholds.upriver-hist-village.parcel.upriver-hist-village.hist-shrine.assembly.sh-urn",
+   "containerClass": "urn",
+   "fillRule": "blanket.shrine-bowl",
+   "why": "placed container mudmother:gv_meshes/argoniannest/paintedurn01: class default fill",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.lumberries",
+      "count": 4
+     },
+     {
+      "item": "item.dried-flower-buds",
+      "count": 3
+     },
+     {
+      "item": "item.seed-doll",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.shrine-bowl"
+   },
+   "valueTier": "low",
+   "owner": "parcel.upriver-hist-village.hist-shrine"
+  },
+  {
+   "op": "socket",
+   "id": "yard.cane-st-hv-store",
+   "kind": "container",
+   "host": "cane-st-hv-store",
+   "containerClass": "basket",
+   "fillRule": "blanket.farmer-seed-bin",
+   "why": "yard set hist-village-stores member hv-store (container)",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.lumberries",
+      "count": 2
+     },
+     {
+      "item": "item.hoe",
+      "count": 1
+     },
+     {
+      "item": "item.shovel",
+      "count": 1
+     },
+     {
+      "item": "item.bucket",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.farmer-seed-bin"
+   },
+   "valueTier": "trivial",
+   "owner": "parcel.upriver-hist-village.cane-cutters-house"
+  },
+  {
+   "op": "socket",
+   "id": "yard.dyer-st-hv-store",
+   "kind": "container",
+   "host": "dyer-st-hv-store",
+   "containerClass": "basket",
+   "fillRule": "blanket.alchemist-shelf",
+   "why": "yard set hist-village-stores member hv-store (container)",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.swamp-fungal-pod",
+      "count": 3
+     },
+     {
+      "item": "item.hanging-moss",
+      "count": 2
+     },
+     {
+      "item": "item.dried-flower-buds",
+      "count": 2
+     },
+     {
+      "item": "item.rootland-mushroom",
+      "count": 2
+     },
+     {
+      "item": "item.eel-slime-salve",
+      "count": 1
+     },
+     {
+      "item": "item.bog-luck-concoction",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.alchemist-shelf"
+   },
+   "valueTier": "moderate",
+   "owner": "parcel.upriver-hist-village.dyers-house"
+  },
+  {
+   "op": "socket",
+   "id": "yard.fish-nt-hn-sack",
+   "kind": "container",
+   "host": "fish-nt-hn-sack",
+   "containerClass": "sack",
+   "fillRule": "blanket.boat-locker",
+   "why": "yard set hist-village-nets member hn-sack (container)",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.bucket",
+      "count": 1
+     },
+     {
+      "item": "item.fishing-pole",
+      "count": 1
+     },
+     {
+      "item": "item.torch",
+      "count": 1
+     },
+     {
+      "item": "item.eel-slime-salve",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.boat-locker"
+   },
+   "valueTier": "low",
+   "owner": "parcel.upriver-hist-village.fishers-house"
+  },
+  {
+   "op": "socket",
+   "id": "yard.fish-st-hv-store",
+   "kind": "container",
+   "host": "fish-st-hv-store",
+   "containerClass": "basket",
+   "fillRule": "blanket.fish-basket",
+   "why": "yard set hist-village-stores member hv-store (container)",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.trodh",
+      "count": 4
+     },
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     },
+     {
+      "item": "item.fishing-pole",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.fish-basket"
+   },
+   "valueTier": "trivial",
+   "owner": "parcel.upriver-hist-village.fishers-house"
+  },
+  {
+   "op": "socket",
+   "id": "yard.kin-nt-hn-sack",
+   "kind": "container",
+   "host": "kin-nt-hn-sack",
+   "containerClass": "sack",
+   "fillRule": "blanket.storage-crate",
+   "why": "yard set hist-village-nets member hn-sack (container)",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 1
+     },
+     {
+      "item": "item.shovel",
+      "count": 1
+     },
+     {
+      "item": "item.bucket",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.storage-crate"
+   },
+   "valueTier": "low",
+   "owner": "parcel.upriver-hist-village.kin-house"
+  },
+  {
+   "op": "socket",
+   "id": "yard.kin-st-hv-store",
+   "kind": "container",
+   "host": "kin-st-hv-store",
+   "containerClass": "basket",
+   "fillRule": "blanket.farmer-seed-bin",
+   "why": "yard set hist-village-stores member hv-store (container)",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.saltrice-loaf",
+      "count": 3
+     },
+     {
+      "item": "item.lumberries",
+      "count": 2
+     },
+     {
+      "item": "item.shovel",
+      "count": 1
+     },
+     {
+      "item": "item.bucket",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.farmer-seed-bin"
+   },
+   "valueTier": "trivial",
+   "owner": "parcel.upriver-hist-village.kin-house"
+  },
+  {
+   "op": "socket",
+   "id": "yard.minder-st-hv-store",
+   "kind": "container",
+   "host": "minder-st-hv-store",
+   "containerClass": "basket",
+   "fillRule": "blanket.shrine-bowl",
+   "why": "yard set hist-village-stores member hv-store (container)",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.lumberries",
+      "count": 4
+     },
+     {
+      "item": "item.dried-flower-buds",
+      "count": 3
+     },
+     {
+      "item": "item.hist-sap",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.shrine-bowl"
+   },
+   "valueTier": "low",
+   "owner": "parcel.upriver-hist-village.minders-house"
+  },
+  {
+   "op": "socket",
+   "id": "yard.net-nt-hn-sack",
+   "kind": "container",
+   "host": "net-nt-hn-sack",
+   "containerClass": "sack",
+   "fillRule": "blanket.fish-basket",
+   "why": "yard set hist-village-nets member hn-sack (container)",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.trodh",
+      "count": 4
+     },
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     },
+     {
+      "item": "item.fishing-pole",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.fish-basket"
+   },
+   "valueTier": "trivial",
+   "owner": "parcel.upriver-hist-village.net-menders-house"
+  },
+  {
+   "op": "socket",
+   "id": "yard.reed-st-hv-store",
+   "kind": "container",
+   "host": "reed-st-hv-store",
+   "containerClass": "basket",
+   "fillRule": "blanket.woodcutter-lean-to",
+   "why": "yard set hist-village-stores member hv-store (container)",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.saw",
+      "count": 1
+     },
+     {
+      "item": "item.firewood",
+      "count": 4
+     },
+     {
+      "item": "item.bucket",
+      "count": 1
+     },
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.woodcutter-lean-to"
+   },
+   "valueTier": "trivial",
+   "owner": "parcel.upriver-hist-village.reed-cutters-house"
+  },
+  {
+   "op": "socket",
+   "id": "yard.smith-st-hv-store",
+   "kind": "container",
+   "host": "smith-st-hv-store",
+   "containerClass": "basket",
+   "fillRule": "blanket.smith-rack",
+   "why": "yard set hist-village-stores member hv-store (container)",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.repair-hammer",
+      "count": 1
+     },
+     {
+      "item": "item.bog-iron",
+      "count": 2
+     },
+     {
+      "item": "item.iron-waraxe",
+      "count": 1
+     },
+     {
+      "item": "item.iron-war-arrow",
+      "count": 8
+     }
+    ],
+    "frozenFrom": "blanket.smith-rack"
+   },
+   "valueTier": "moderate",
+   "owner": "parcel.upriver-hist-village.smiths-house"
+  },
+  {
+   "op": "socket",
+   "id": "yard.trade-st-hv-store",
+   "kind": "container",
+   "host": "trade-st-hv-store",
+   "containerClass": "basket",
+   "fillRule": "blanket.storage-crate",
+   "why": "yard set hist-village-stores member hv-store (container)",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.shovel",
+      "count": 1
+     },
+     {
+      "item": "item.bucket",
+      "count": 1
+     },
+     {
+      "item": "item.rag",
+      "count": 2
+     }
+    ],
+    "frozenFrom": "blanket.storage-crate"
+   },
+   "valueTier": "low",
+   "owner": "parcel.upriver-hist-village.trade-house"
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.plant-1",
+   "at": [
+    3347.49,
+    1413.38
+   ],
+   "kind": "plant",
+   "plantClass": "hanging-moss",
+   "valueTier": "trivial",
+   "owner": null,
+   "why": "Hanging moss on the trees here; a forager cuts it and it grows back. (bmv:landscape/plants/florahangingmoss03aaa, chunk_7_3_vegetation.bin#27:53)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.plant-2",
+   "at": [
+    3445.39,
+    1399.89
+   ],
+   "kind": "plant",
+   "plantClass": "hanging-moss",
+   "valueTier": "trivial",
+   "owner": null,
+   "why": "Hanging moss on the trees here; a forager cuts it and it grows back. (bmv:landscape/plants/florahangingmoss03aaa, chunk_7_2_vegetation.bin#27:67)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.den-osheeja-gar",
+   "kind": "fauna",
+   "at": [
+    3447.2,
+    1474.5
+   ],
+   "zone": "den",
+   "species": "creature.osheeja-gar",
+   "headcount": 4,
+   "why": "Osheeja Gar den at the river bends either side. A slow river pool rich in small fish.",
+   "dangerBand": "D1"
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.den-swamp-jelly",
+   "kind": "fauna",
+   "at": [
+    3420.3,
+    1393.8
+   ],
+   "zone": "den",
+   "species": "creature.swamp-jelly",
+   "headcount": 3,
+   "why": "Swamp Jelly den at the backwater below the village. Still sheltered water where it drifts low.",
+   "dangerBand": "D1"
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.den-moon-adder",
+   "kind": "fauna",
+   "at": [
+    3304.1,
+    1391.3
+   ],
+   "zone": "den",
+   "species": "creature.moon-adder",
+   "headcount": 1,
+   "why": "Moon Adder den at the reed roots downstream. A warm stone crevice in reeds near rats and eggs.",
+   "dangerBand": "D1"
+  },
+  {
+   "op": "place",
+   "uid": "trade-chair1",
+   "asset": "mudmother:gv_meshes/argoniannest/wovenchair01",
+   "at": [
+    3414.0,
+    1443.0
+   ],
+   "yaw": 4.76,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "trade-chair1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.trade-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "trade-chair2",
+   "asset": "mudmother:gv_meshes/argoniannest/wovenchair01",
+   "at": [
+    3415.5,
+    1442.0
+   ],
+   "yaw": 351.87,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "trade-chair2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.trade-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "trade-chair3",
+   "asset": "mudmother:gv_meshes/argoniannest/wovenchair01",
+   "at": [
+    3416.84,
+    1441.78
+   ],
+   "yaw": 27.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "trade-chair3",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.trade-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "settle",
+   "uid": "trade-chair3"
+  },
+  {
+   "op": "place",
+   "uid": "trade-chair4",
+   "asset": "mudmother:gv_meshes/argoniannest/wovenchair01",
+   "at": [
+    3418.5,
+    1443.5
+   ],
+   "yaw": 323.97,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "trade-chair4",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.trade-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "fish-chair1",
+   "asset": "mudmother:gv_meshes/argoniannest/wovenchair01",
+   "at": [
+    3433.0,
+    1464.0
+   ],
+   "yaw": 133.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "fish-chair1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.fishers-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "fish-chair2",
+   "asset": "mudmother:gv_meshes/argoniannest/wovenchair01",
+   "at": [
+    3434.0,
+    1464.5
+   ],
+   "yaw": 133.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "fish-chair2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.fishers-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "fish-chair3",
+   "asset": "mudmother:gv_meshes/argoniannest/wovenchair01",
+   "at": [
+    3435.5,
+    1462.5
+   ],
+   "yaw": 127.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "fish-chair3",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.fishers-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "hist-chair1",
+   "asset": "mudmother:gv_meshes/argoniannest/wovenchair01",
+   "at": [
+    3428.0,
+    1438.5
+   ],
+   "yaw": 208.01,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "hist-chair1",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.elders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "hist-chair2",
+   "asset": "mudmother:gv_meshes/argoniannest/wovenchair01",
+   "at": [
+    3424.5,
+    1426.0
+   ],
+   "yaw": 203.96,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "hist-chair2",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.elders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "note",
+   "uid": "trade-chair3",
+   "text": "2.7 spots.solids: its sitter walked out through trade-chair2; moved 0.75 m to the gate's clear spot, back to the trade-house wall, facing the yard (seatFacingRule yaw 27)."
+  },
+  {
+   "op": "place",
+   "uid": "smith-forge",
+   "asset": "vanilla:clutter/blacksmith/blacksmithforge01/blacksmithforge01",
+   "at": [
+    3305.0,
+    1456.5
+   ],
+   "yaw": 135.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "smith-forge",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.smiths-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "place",
+   "uid": "smith-anvil",
+   "asset": "vanilla:clutter/blacksmith/blacksmithanvil01",
+   "at": [
+    3308.3,
+    1456.2
+   ],
+   "yaw": 90.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "smith-anvil",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.smiths-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "place",
+   "uid": "smith-workbench",
+   "asset": "vanilla:clutter/blacksmith/blacksmithworkbench01",
+   "at": [
+    3302.6,
+    1452.6
+   ],
+   "yaw": 90.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "smith-workbench",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.smiths-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "place",
+   "uid": "smith-grindstone",
+   "asset": "vanilla:clutter/blacksmith/blacksmithsharpeningwheelstatic",
+   "at": [
+    3305.3,
+    1452.2
+   ],
+   "yaw": 90.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "smith-grindstone",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.smiths-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "place",
+   "uid": "minder-alchemy",
+   "asset": "vanilla:furniture/workbenches/alchemyworkbench01",
+   "at": [
+    3452.6,
+    1425.2
+   ],
+   "yaw": 292.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "minder-alchemy",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.minders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "place",
+   "uid": "n-somnalius-fern",
+   "asset": "bmv:landscape/plants/espfernbrakencluster01",
+   "at": [
+    3455.6,
+    1420.6
+   ],
+   "yaw": 200.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "n-hanging-moss",
+   "asset": "bmv:landscape/plants/florahangingmoss02aaa",
+   "at": [
+    3437.5,
+    1452.5
+   ],
+   "yaw": 60.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "n-somnalius-fern",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.minders-house",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "bind",
+   "uid": "n-hanging-moss",
+   "kind": "assembly",
+   "id": "parcel.upriver-hist-village.hist-shrine",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured",
+   "fit": "direct"
+  },
+  {
+   "op": "note",
+   "uid": "smith-forge",
+   "text": "2.9b: the forge stands in the open yard north-west of the smith's door, clear of the step path and the stores; the anvil is set at its east side as dressing."
+  },
+  {
+   "op": "note",
+   "uid": "smith-workbench",
+   "text": "2.9b: the smith's workbench behind the forge, its stand spot to the east."
+  },
+  {
+   "op": "note",
+   "uid": "smith-grindstone",
+   "text": "2.9b: the grindstone on the forge's west side, plinth fit for the 2 degree fall of the yard."
+  },
+  {
+   "op": "note",
+   "uid": "minder-alchemy",
+   "text": "2.9b: the tree-minder's mortar table east of the house door, facing the common, plinth fit on the sloping bank; the minder cures the village (places-pirate-freeholds.json:13537-13541)."
+  },
+  {
+   "op": "note",
+   "uid": "n-somnalius-fern",
+   "text": "2.9b node.somnalius-fern: a second bracken clump on the wet ground behind the minder's house beside fl-backfern1, where the marsh fern already grows (fauna-hazards.md:98)."
+  },
+  {
+   "op": "note",
+   "uid": "n-hanging-moss",
+   "text": "2.9b node.hanging-moss: blue moss under the Hist canopy on the root mound west of the trunk (fauna-hazards.md:99)."
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.station-forge",
+   "kind": "station",
+   "stationClass": "forge",
+   "host": "smith-forge",
+   "parcel": "parcel.upriver-hist-village.smiths-house",
+   "why": "The smith of the upriver houses keeps a forge in the yard beside the door, where boat nails, hooks and blades are worked."
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.station-workbench",
+   "kind": "station",
+   "stationClass": "workbench",
+   "host": "smith-workbench",
+   "parcel": "parcel.upriver-hist-village.smiths-house",
+   "why": "The smith fits hide and hardwood to worked iron at the bench behind the forge."
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.station-grindstone",
+   "kind": "station",
+   "stationClass": "grindstone",
+   "host": "smith-grindstone",
+   "parcel": "parcel.upriver-hist-village.smiths-house",
+   "why": "The smith puts an edge back on the village knives and spears at the wheel by the forge."
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.station-alchemy",
+   "kind": "station",
+   "stationClass": "alchemy",
+   "stationId": "station.alchemy.mortar",
+   "host": "minder-alchemy",
+   "parcel": "parcel.upriver-hist-village.minders-house",
+   "why": "The tree-minder grinds the cures for the village at a plain mortar table by the house that faces the tree."
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.idle-seat-hist-chair1",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "hist-chair1",
+   "parcel": "parcel.upriver-hist-village.elders-house",
+   "seatHeightM": 0.42,
+   "why": "A seat at a chair where people take the midday meal."
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.idle-seat-hist-chair2",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "hist-chair2",
+   "parcel": "parcel.upriver-hist-village.elders-house",
+   "seatHeightM": 0.42,
+   "why": "A seat at a chair where people take the midday meal."
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.idle-seat-fish-chair1",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "fish-chair1",
+   "parcel": "parcel.upriver-hist-village.fishers-house",
+   "seatHeightM": 0.42,
+   "why": "A seat at a chair where people take the midday meal."
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.idle-seat-fish-chair2",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "fish-chair2",
+   "parcel": "parcel.upriver-hist-village.fishers-house",
+   "seatHeightM": 0.42,
+   "why": "A seat at a chair where people take the midday meal."
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.idle-seat-fish-chair3",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "fish-chair3",
+   "parcel": "parcel.upriver-hist-village.fishers-house",
+   "seatHeightM": 0.42,
+   "why": "A seat at a chair where people take the midday meal."
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.idle-seat-trade-chair1",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "trade-chair1",
+   "parcel": "parcel.upriver-hist-village.trade-house",
+   "seatHeightM": 0.42,
+   "why": "A seat at a chair where people take the midday meal."
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.idle-seat-trade-chair2",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "trade-chair2",
+   "parcel": "parcel.upriver-hist-village.trade-house",
+   "seatHeightM": 0.42,
+   "why": "A seat at a chair where people take the midday meal."
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.idle-seat-trade-chair3",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "trade-chair3",
+   "parcel": "parcel.upriver-hist-village.trade-house",
+   "seatHeightM": 0.42,
+   "why": "A seat at a chair where people take the midday meal."
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.idle-seat-trade-chair4",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "trade-chair4",
+   "parcel": "parcel.upriver-hist-village.trade-house",
+   "seatHeightM": 0.42,
+   "why": "A seat at a chair where people take the midday meal."
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.idle-seat-ciphtbmhutinteriorgreathouse-06256e06",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "CIPHTBMHutInteriorGreatHouse.06256E06",
+   "parcel": "parcel.upriver-hist-village.dyers-house",
+   "seatHeightM": 0.35,
+   "why": "A chair in CIPHTBMHutInteriorGreatHouse where the household takes the midday meal.",
+   "interiorCell": "CIPHTBMHutInteriorGreatHouse"
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.idle-seat-ciphtbmhutinteriorgreathouse-06256e07",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "CIPHTBMHutInteriorGreatHouse.06256E07",
+   "parcel": "parcel.upriver-hist-village.dyers-house",
+   "seatHeightM": 0.35,
+   "why": "A chair in CIPHTBMHutInteriorGreatHouse where the household takes the midday meal.",
+   "interiorCell": "CIPHTBMHutInteriorGreatHouse"
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.idle-seat-ciphtbmhutinteriorgreathouse-06256e8d",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "CIPHTBMHutInteriorGreatHouse.06256E8D",
+   "parcel": "parcel.upriver-hist-village.dyers-house",
+   "seatHeightM": 0.35,
+   "why": "A chair in CIPHTBMHutInteriorGreatHouse where the household takes the midday meal.",
+   "interiorCell": "CIPHTBMHutInteriorGreatHouse"
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.idle-seat-ciphtbmhutinteriorgreathouse-06256e8e",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "CIPHTBMHutInteriorGreatHouse.06256E8E",
+   "parcel": "parcel.upriver-hist-village.dyers-house",
+   "seatHeightM": 0.35,
+   "why": "A chair in CIPHTBMHutInteriorGreatHouse where the household takes the midday meal.",
+   "interiorCell": "CIPHTBMHutInteriorGreatHouse"
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.idle-seat-ciphtbmhutinteriorgreathouse-06256e8f",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "CIPHTBMHutInteriorGreatHouse.06256E8F",
+   "parcel": "parcel.upriver-hist-village.dyers-house",
+   "seatHeightM": 0.35,
+   "why": "A chair in CIPHTBMHutInteriorGreatHouse where the household takes the midday meal.",
+   "interiorCell": "CIPHTBMHutInteriorGreatHouse"
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.idle-seat-ciphtbmhutinteriorgreathouse-06256e90",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "CIPHTBMHutInteriorGreatHouse.06256E90",
+   "parcel": "parcel.upriver-hist-village.dyers-house",
+   "seatHeightM": 0.35,
+   "why": "A chair in CIPHTBMHutInteriorGreatHouse where the household takes the midday meal.",
+   "interiorCell": "CIPHTBMHutInteriorGreatHouse"
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.idle-seat-ciphtbmhutinteriorgreathouse-06256e91",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "CIPHTBMHutInteriorGreatHouse.06256E91",
+   "parcel": "parcel.upriver-hist-village.dyers-house",
+   "seatHeightM": 0.35,
+   "why": "A chair in CIPHTBMHutInteriorGreatHouse where the household takes the midday meal.",
+   "interiorCell": "CIPHTBMHutInteriorGreatHouse"
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.idle-seat-ciphtbmhutinteriorgreathouse-06256e93",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "CIPHTBMHutInteriorGreatHouse.06256E93",
+   "parcel": "parcel.upriver-hist-village.dyers-house",
+   "seatHeightM": 0.35,
+   "why": "A chair in CIPHTBMHutInteriorGreatHouse where the household takes the midday meal.",
+   "interiorCell": "CIPHTBMHutInteriorGreatHouse"
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.idle-seat-seekhateldershut-081c6f24",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "SeekhatEldersHut.081C6F24",
+   "parcel": "parcel.upriver-hist-village.elders-house",
+   "seatHeightM": 0.45,
+   "why": "A chair in SeekhatEldersHut where the household takes the midday meal.",
+   "interiorCell": "SeekhatEldersHut"
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.idle-seat-seekhateldershut-081c6f25",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "SeekhatEldersHut.081C6F25",
+   "parcel": "parcel.upriver-hist-village.elders-house",
+   "seatHeightM": 0.45,
+   "why": "A chair in SeekhatEldersHut where the household takes the midday meal.",
+   "interiorCell": "SeekhatEldersHut"
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.idle-seat-seekhatfishershut-081bcafd",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "SeekhatFishersHut.081BCAFD",
+   "parcel": "parcel.upriver-hist-village.fishers-house",
+   "seatHeightM": 0.45,
+   "why": "A chair in SeekhatFishersHut where the household takes the midday meal.",
+   "interiorCell": "SeekhatFishersHut"
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.idle-seat-seekhatfishershut-081bcafe",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "SeekhatFishersHut.081BCAFE",
+   "parcel": "parcel.upriver-hist-village.fishers-house",
+   "seatHeightM": 0.45,
+   "why": "A chair in SeekhatFishersHut where the household takes the midday meal.",
+   "interiorCell": "SeekhatFishersHut"
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.idle-seat-seekhatfishershut-081bcaff",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "SeekhatFishersHut.081BCAFF",
+   "parcel": "parcel.upriver-hist-village.fishers-house",
+   "seatHeightM": 0.46,
+   "why": "A chair in SeekhatFishersHut where the household takes the midday meal.",
+   "interiorCell": "SeekhatFishersHut"
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.idle-seat-seekhatsmithyhut-081a8438",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "SeekhatSmithyHut.081A8438",
+   "parcel": "parcel.upriver-hist-village.smiths-house",
+   "seatHeightM": 0.54,
+   "why": "A chair in SeekhatSmithyHut where the household takes the midday meal.",
+   "interiorCell": "SeekhatSmithyHut"
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.idle-seat-seekhatsmithyhut-081cc127",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "SeekhatSmithyHut.081CC127",
+   "parcel": "parcel.upriver-hist-village.smiths-house",
+   "seatHeightM": 0.45,
+   "why": "A chair in SeekhatSmithyHut where the household takes the midday meal.",
+   "interiorCell": "SeekhatSmithyHut"
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.idle-seat-seekhatsmithyhut-081cc128",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "SeekhatSmithyHut.081CC128",
+   "parcel": "parcel.upriver-hist-village.smiths-house",
+   "seatHeightM": 0.45,
+   "why": "A chair in SeekhatSmithyHut where the household takes the midday meal.",
+   "interiorCell": "SeekhatSmithyHut"
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.plant-hanging-moss-1",
+   "at": [
+    3412.48,
+    1424.74
+   ],
+   "kind": "plant",
+   "plantClass": "hanging-moss",
+   "valueTier": "trivial",
+   "owner": null,
+   "why": "2.9b-p: Blue moss hangs here from the canopy; a forager pulls a strand and it grows back. (bmv:landscape/plants/florahangingmoss03aaa, chunk_7_3_vegetation.bin#27:57; fauna-hazards.md:99)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.plant-somnalius-fern-1",
+   "at": [
+    3371.9,
+    1447.83
+   ],
+   "kind": "plant",
+   "plantClass": "somnalius-fern",
+   "valueTier": "trivial",
+   "owner": null,
+   "why": "2.9b-p: A somnalius fern grows here in the marsh shade; a forager cuts a frond and it grows back. (bmv:landscape/plants/braken, chunk_7_3_vegetation.bin#9:0; fauna-hazards.md:98)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.plant-somnalius-fern-2",
+   "at": [
+    3367.84,
+    1459.32
+   ],
+   "kind": "plant",
+   "plantClass": "somnalius-fern",
+   "valueTier": "trivial",
+   "owner": null,
+   "why": "2.9b-p: A somnalius fern grows here in the marsh shade; a forager cuts a frond and it grows back. (bmv:landscape/plants/espfernbrakencluster05, chunk_7_3_vegetation.bin#22:38; fauna-hazards.md:98)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.plant-somnalius-fern-3",
+   "at": [
+    3375.99,
+    1467.4
+   ],
+   "kind": "plant",
+   "plantClass": "somnalius-fern",
+   "valueTier": "trivial",
+   "owner": null,
+   "why": "2.9b-p: A somnalius fern grows here in the marsh shade; a forager cuts a frond and it grows back. (bmv:landscape/plants/espfernbrakencluster05, chunk_7_3_vegetation.bin#22:41; fauna-hazards.md:98)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.plant-hanging-moss-2",
+   "at": [
+    3424.98,
+    1385.39
+   ],
+   "kind": "plant",
+   "plantClass": "hanging-moss",
+   "valueTier": "trivial",
+   "owner": null,
+   "why": "2.9b-p: Blue moss hangs here from the canopy; a forager pulls a strand and it grows back. (bmv:landscape/plants/florahangingmoss03aaa, chunk_7_2_vegetation.bin#27:30; fauna-hazards.md:99)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.village-landing",
+   "kind": "mooring",
+   "mooringKind": "landing",
+   "accepts": [
+    "dugout",
+    "skiff"
+   ],
+   "capacity": 2,
+   "at": [
+    3479.6,
+    1440.0
+   ],
+   "why": "A day downriver from Alten Corimont; the village lands here on fresh water above the salt.",
+   "serviceLink": null,
+   "minDepthDryM": 1.2,
+   "waterId": "body.2442-1212"
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.canoe-tie-1",
+   "kind": "mooring",
+   "mooringKind": "mooring",
+   "accepts": [
+    "dugout"
+   ],
+   "capacity": 1,
+   "at": [
+    3468.5,
+    1428.5
+   ],
+   "why": "The net-menders tie their canoe here to work the river.",
+   "owner": "npc.pirate-freeholds.upriver-hist-village.hh-net-menders",
+   "serviceLink": null,
+   "minDepthDryM": 0.36,
+   "waterId": "body.2442-1212"
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.canoe-tie-2",
+   "kind": "mooring",
+   "mooringKind": "mooring",
+   "accepts": [
+    "dugout"
+   ],
+   "capacity": 1,
+   "at": [
+    3469.5,
+    1433.5
+   ],
+   "why": "A second canoe tie of the net-menders.",
+   "owner": "npc.pirate-freeholds.upriver-hist-village.hh-net-menders",
+   "serviceLink": null,
+   "minDepthDryM": 0.48,
+   "waterId": "body.2442-1212"
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.canoe-tie-3",
+   "kind": "mooring",
+   "mooringKind": "mooring",
+   "accepts": [
+    "dugout"
+   ],
+   "capacity": 1,
+   "at": [
+    3471.9,
+    1440.0
+   ],
+   "why": "A free tie at the near dock for a visitor's canoe.",
+   "serviceLink": null,
+   "minDepthDryM": 0.36,
+   "waterId": "body.2442-1212"
+  },
+  {
+   "op": "socket",
+   "id": "socket.upriver-hist-village.bank-beach",
+   "kind": "mooring",
+   "mooringKind": "beach",
+   "accepts": [
+    "dugout"
+   ],
+   "capacity": 1,
+   "at": [
+    3403.4,
+    1418.89
+   ],
+   "why": "The village bank, where canoes are run up out of the current.",
+   "serviceLink": null,
+   "minDepthDryM": 0.36,
+   "waterId": "body.2442-1212"
+  }
+ ]
+}

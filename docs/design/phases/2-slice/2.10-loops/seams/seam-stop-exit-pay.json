@@ -1,0 +1,101 @@
+{
+ "id": "seam-stop-exit-pay",
+ "start": {
+  "query": "?view=character&x=7.2032&z=0.5204&t=14:00&d=8-17",
+  "kit": "start",
+  "seed": 1
+ },
+ "steps": [
+  {
+   "name": "the-stop",
+   "transition": "an Owing open (a theft the crewman saw) and the watch engaged at 3 m -> the guard stop opens",
+   "do": {
+    "action": "stop",
+    "npc": "npc.dunmer-north.riverwalk.toll-holder",
+    "near": [
+     {
+      "id": "npc.dunmer-north.riverwalk.toll-holder",
+      "m": 3,
+      "facing": true
+     },
+     {
+      "id": "npc.dunmer-north.riverwalk.n3-2",
+      "m": 11.7,
+      "facing": false
+     },
+     {
+      "id": "npc.dunmer-north.riverwalk.n3",
+      "m": 12.2,
+      "facing": false
+     }
+    ],
+    "seconds": 2
+   },
+   "keys": [
+    {
+     "wait_s": 5
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "stop": true,
+    "screen": "guard-stop"
+   },
+   "stage": {
+    "at": {
+     "x": 7213.2,
+     "z": 520.4,
+     "actor": "npc.dunmer-north.riverwalk.toll-holder",
+     "near_m": 3
+    },
+    "hour": 14,
+    "place": "place.dunmer-north.riverwalk",
+    "owing": [
+     {
+      "crime": "theft",
+      "place": "place.dunmer-north.riverwalk",
+      "witness": "npc.dunmer-north.riverwalk.n1",
+      "value": 20
+     }
+    ]
+   },
+   "lead": true
+  },
+  {
+   "name": "paid",
+   "transition": "the Owing paid -> the purse lighter, the talk closed, the watch at ease",
+   "do": {
+    "action": "pay",
+    "npc": "npc.dunmer-north.riverwalk.toll-holder"
+   },
+   "keys": [
+    {
+     "click": "[data-guard-stop] [data-choice=\"pay\"]"
+    }
+   ],
+   "hold_s": 2,
+   "expect": {
+    "paid": true,
+    "owing": 0,
+    "screen": null
+   }
+  },
+  {
+   "name": "after",
+   "transition": "a moment later -> the outcome holds",
+   "do": {
+    "action": "approach",
+    "seconds": 1
+   },
+   "keys": [
+    {
+     "wait_s": 1.5
+    }
+   ],
+   "hold_s": 0.5,
+   "expect": {
+    "owing": 0
+   }
+  }
+ ]
+}

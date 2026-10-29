@@ -1,0 +1,186 @@
+{
+ "schemaVersion": 2,
+ "cellId": "LilmothFishery",
+ "additions": [
+  {
+   "id": "LilmothFishery:add:work-argoniancandle",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    128.474,
+    83.101,
+    85.441
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the dark floor of the fishery work room."
+  },
+  {
+   "id": "LilmothFishery:add:work-argoniancandle-2",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    136.095,
+    83.101,
+    78.452
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the dark floor of the fishery work room."
+  },
+  {
+   "id": "LilmothFishery:add:work-argoniancandle-3",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    131.389,
+    83.101,
+    81.785
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the dark floor of the fishery work room."
+  },
+  {
+   "id": "LilmothFishery:add:work-argoniancandle-4",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    135.559,
+    83.101,
+    82.837
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the dark floor of the fishery work room."
+  },
+  {
+   "id": "LilmothFishery:add:work-argoniancandle-5",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    127.656,
+    83.101,
+    81.365
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the dark floor of the fishery work room."
+  },
+  {
+   "id": "LilmothFishery:add:work-argoniancandle-6",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    129.99,
+    83.101,
+    78.683
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the dark floor of the fishery work room."
+  },
+  {
+   "id": "LilmothFishery:add:work-argoniancandle-7",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    137.702,
+    83.101,
+    79.869
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the dark floor of the fishery work room."
+  },
+  {
+   "id": "LilmothFishery:add:work-argoniancandle-8",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    137.575,
+    83.837,
+    85.981
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the dark floor of the fishery work room."
+  },
+  {
+   "id": "LilmothFishery:add:work-argoniancandle-9",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    133.342,
+    83.876,
+    85.58
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the dark floor of the fishery work room."
+  },
+  {
+   "id": "LilmothFishery:add:work-argoniancandle-10",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    128.2,
+    83.101,
+    78.6
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the dark floor of the fishery work room."
+  },
+  {
+   "id": "LilmothFishery:add:work-argoniancandle-11",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    126.9,
+    84.697,
+    79.2
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the dark floor of the fishery work room."
+  },
+  {
+   "id": "LilmothFishery:add:work-argoniancandle-12",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    128.4,
+    83.133,
+    77.8
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the dark floor of the fishery work room."
+  },
+  {
+   "id": "LilmothFishery:add:work-impbrazier",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    129.99,
+    83.072,
+    80.2
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Brazier lights the dark work floor of the fishery where the catch is cleaned."
+  },
+  {
+   "id": "LilmothFishery:add:work-impbrazier-2",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    135.559,
+    83.072,
+    84.4
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Brazier lights the dark work floor on the far side of the fishery where the nets are mended."
+  },
+  {
+   "id": "LilmothFishery:add:work-impbrazier-3",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    131.389,
+    83.072,
+    83.6
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Brazier lights the dark floor by the fishery pens where the catch is kept."
+  }
+ ]
+}

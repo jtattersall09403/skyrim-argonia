@@ -1,0 +1,95 @@
+<!-- imported unchanged from elder-souls-argonia docs/quests/README.md @ b581910f0f87d8da88eaa9876d238cdc5d709e78 (0.1 §f) -->
+# Quest & narrative master plan (modular)
+
+The strategy for _The Eye and the Root_ main quest, factions, side content,
+writing and narrative runtime. The runtime (Q1) is built in Part 2 phase
+[2.11](../phases/2-slice/2.11-quests-journal-map.md) with one exemplar
+quest; the opening (Q2) is Part 3 phase 3.4; the lines (Q3–Q6) are Part 4
+phase 4.3 ([the plan](../phases/README.md), decision 0134). This plan
+tells the world build what to provide and the runtime what to be.
+
+## Who reads what
+
+| You are… | Read |
+|---|---|
+| **Placing, moving or cutting a place; or authoring a quest that needs one** | [25-quest-place-map.md](25-quest-place-map.md) — the provision → catalogue-place table, the questline → anchor-places view, and the four standing rules that keep the two halves in sync. Read it before you touch `world/sources/catalogue/places-*.json` or write a brief. |
+| **Any world-generation agent** (terrain, settlements, POIs, dungeons, routes, danger, ecology) | [20-world-provisions.md](20-world-provisions.md) — handoff contract, provision tags, danger tiers (incl. the D↔danger-band mapping), location packet, consequence budget, exit gate. Then the quest tables for whatever region/city you're building: [30-main-quest.md](30-main-quest.md), [40-factions.md](40-factions.md), [50-side-quests.md](50-side-quests.md) each carry per-quest **World-generation provision** columns — those are requirements. |
+| Anyone needing the story/design picture | [00-overview.md](00-overview.md) — summary, content targets, frozen decisions, design rules (cost tiers, dramatic register, wonder budget, **cast rules, delivery tiers, the boredom test**), acceptance criteria. |
+| **Authoring any new quest** | [index/README.md](index/README.md) — **mandatory before writing a brief**: the shape taxonomy, the novelty/collision rule and the per-packet shape budget (§47a–c). Then [index/coverage.md](index/coverage.md), the generated commissioning brief (shape gaps, per-region budget, the settlement demand ladder). The rows themselves are DATA in [world/sources/quests/](../../../world/sources/quests/README.md): add yours to `local-<region>.json`, then run `python3 -m worldgen.quests --check --sync` and `python3 -m worldgen.export_quest_index`. |
+| **Wiring a quest into a place that is already built** | `world/sources/sites/purpose-ledger.json` (`worldgen.export_purpose_ledger`) — every promise a blueprint makes the player, with its parcel, its socket and the phase that must deliver it. The rows marked `deliveredBy: "quests"` are the quest-giver and quest-stage doors already drawn on the map, each naming its `questSockets[]` entry and, where the blueprint knows it, the quest id. |
+| **Writing any named NPC** — main quest, faction, local, texture | [35-cast.md](35-cast.md) — **the rules, mandatory before naming anybody** (~5k tokens): depth tiers, the six character rules (Morrowind desk model, UESP-mined), the canon naming system, the texture kit, validation. Then [36-cast-roster.md](36-cast-roster.md) — **lookup-only**: the principal cast, per-faction desks, shared places, oddities — consult only the lines/places your brief touches. |
+| **Authoring one local/texture quest brief** | The minimal chain: [index/README.md](index/README.md) + [index/coverage.md](index/coverage.md) + your region's `index/local-<region>.md`; [00-overview.md](00-overview.md) §1 + §4; [35-cast.md](35-cast.md) rules; [70-assets.md](70-assets.md) §51; [20-world-provisions.md](20-world-provisions.md) §11–12 tags. |
+| Political/cultural framing for places or NPCs | [10-political-frame.md](10-political-frame.md) (+ the lore dossiers, per the CLAUDE.md lore rule). |
+| Writing, dialogue, lore-confidence layers | [60-writing-and-lore.md](60-writing-and-lore.md) — **incl. §45e, the TES-voice rules and the banned-constructions list, binding on every line written.** Strings live in `packages/text-catalogue`, never as literals (engineering standard 4). |
+| **Gating anything on world state** — a stage requirement, a dialogue line's availability, a faction check, a reward | [85-condition-vocabulary.md](85-condition-vocabulary.md) — the only language conditions and actions may be written in. Need a predicate that isn't there? Add it there, then use it. Never prose. |
+| Asset planning/ingestion | [70-assets.md](70-assets.md) (A/V codes cited by every quest). |
+| **Writing a quest as data** (stages, journal, lines, driver script) | [87-written-quest-recipe.md](87-written-quest-recipe.md): the recipe every slice quest is written against; worked example LF83. |
+| **Naming anything** (place, NPC, book, item) | [86-never-reuse-names.md](86-never-reuse-names.md): names invented by other mods that we never reuse. |
+| Narrative runtime design (post-gate) | [80-technical-architecture.md](80-technical-architecture.md), [90-production-sequence.md](90-production-sequence.md). |
+| Source/credit lookups (L/C codes) | [99-sources-credits.md](99-sources-credits.md). |
+
+## Standing rules
+
+- **Rule strengths.** Every rule in these docs carries one of three strengths
+  (marked where it matters; unmarked imperatives are strong defaults):
+  - **Hard rule** — protects a real constraint (engine, assets, canon, tier
+    protection). Never depart. The hard rules are: no new art; no level
+    scaling; the delivery-tier conversions (no free-roaming chase/escort/
+    simulated crowd); canon grounding; the traversal-fallback rule; race
+    completability; and tier protection (canonical text: 40-factions §30b).
+  - **Strong default** — depart only with a recorded one-line reason.
+  - **Target** — an aim: report against it, don't block on it.
+
+  To future agents, from the owner: these documents are guidance written by
+  predecessors, not gospel — you are expected to apply your own reasoning.
+  When your judgement and a strong default or target disagree, follow your
+  judgement and record why in one line. Only hard rules are non-negotiable.
+- Quest tables cite lore as L-codes and assets as A/V-codes — resolve them in
+  [99-sources-credits.md](99-sources-credits.md) and [70-assets.md](70-assets.md).
+- The world build honours per-quest provisions; the narrative build never
+  demands dynamic geography (consequence budget in 20).
+- This plan was reviewed and integrated with the world plan on 2026-08-23
+  (decision 0009): danger tiers mapped to the built danger field, the old
+  standalone danger-map image superseded by the generated danger layer, and
+  the rootworm opening route registered in world data.
+- A cast, lore, deliverability and fun review landed on 2026-08-25
+  (decision [0018](../old-decisions/0018-cast-lore-deliverability-review.md)):
+  added [35-cast.md](35-cast.md); introduced the Owing
+  (`world/sources/lore/topics/labour-and-bondage.md`); grounded the cult's method
+  on the canon Mnemic Egg; re-anchored the Marsh Charter and Sunken Archive on
+  canon; and converted every chase, escort and crowd beat in the plan into a
+  cheap pattern.
+- The main quest was sharpened on 2026-08-26 (decision
+  [0026](../old-decisions/0026-main-quest-sharpened.md)): visceral newcomer-legible
+  stakes and the 60 §45d no-lore-assumed rule; the villain seen in the opening
+  hour and heard in recurring dreams; the handler purged mid-game; **three
+  player-intent ending families** (CUT / CLAIM / MEND) replacing the old five;
+  the core line cut to 24 quests (count corrected 2026-08-28, decision 0030);
+  boat pursuits replaced by manhunts; and the
+  **quest–world co-design loop** (90 §65b) binding region packets to
+  local-quest briefs before placement freeze.
+- Content density is pinned to Morrowind's (decision
+  [0027](../old-decisions/0027-morrowind-density-targets.md), evidence in
+  `docs/research/placement-settlements/morrowind-content-density.md`): 18–22 named POIs/km² in
+  settled regions, ≤300 m route spacing, quests-per-settlement by magnitude
+  class, mature quest target raised to ≈450–550, all settlement structures
+  enterable — and the co-design loop is a **phase completion gate**, runnable
+  by one agent wearing both hats.
+- Each side of the main quest now pays (decision
+  [0028](../old-decisions/0028-allegiance-reward-tracks.md), research in
+  `docs/research/quests-and-cast/tes-quest-and-faction-rewards.md`): four **allegiance reward
+  tracks** of five tiers each (30 §24b) — cult power with corprus-style
+  trade-offs, Reed access and informants, the tribes' welcome and safe routes,
+  and the Eye-and-crown; stack tiers 1–3, lock 4–5; one phased stronghold
+  re-skinned by allegiance. And [index/README.md](index/README.md) is
+  **mandatory reading before authoring any quest** — shape taxonomy, novelty
+  rule — with the coverage gaps generated into
+  [index/coverage.md](index/coverage.md).
+
+- The **quest ↔ place co-design pass** ran on 2026-09-04 (decision
+  [0041](../old-decisions/0041-phase11-settlement-decisions.md) § Part 4 step 2):
+  every provision in this plan now names the catalogue place that satisfies it
+  ([25-quest-place-map.md](25-quest-place-map.md)), four records were added and
+  eight promoted to close gaps, fifteen places were re-sited for quest value,
+  and eighteen *proposed* rows written from what the plotted province offers
+  ([index/proposed.md](index/proposed.md), PP01–PP18).

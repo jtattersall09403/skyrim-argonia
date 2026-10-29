@@ -1,0 +1,282 @@
+{
+ "schemaVersion": 1,
+ "type": "01-road-station",
+ "about": "Yard sets for road stations (decision 0101): the dressing groups that `wb.py group place` lays, rebuilt from the repo. Members sit in the anchor's plan frame (offsetM is x east and z south with the anchor at yaw 0). A member without `mount` is settled on the ground; a member with `mount` stands upM above the member it names, and only where kit-mounts-mined.json holds that child-on-parent pair. The sets were first laid at Claywater Station.",
+ "source": "world/sources/blueprints/claywater-station.layout.json (first laid there by `group place`)",
+ "sets": [
+  {
+   "id": "imperial-station-yard",
+   "anchor": "isy-barrel1",
+   "members": [
+    {
+     "uid": "isy-trough",
+     "piece": "vanilla:clutter/horsetrough/horsetrough01",
+     "offsetM": [
+      4.0,
+      -2.5
+     ],
+     "yaw": 0.0
+    },
+    {
+     "uid": "isy-bench",
+     "piece": "vanilla:furniture/farm/farmbench01",
+     "offsetM": [
+      8.0,
+      11.0
+     ],
+     "yaw": 48.0
+    },
+    {
+     "uid": "isy-cart",
+     "piece": "vanilla:clutter/carts/handcart01",
+     "offsetM": [
+      10.0,
+      12.5
+     ],
+     "yaw": 140.0
+    },
+    {
+     "uid": "isy-barrel1",
+     "piece": "vanilla:clutter/barrel02",
+     "offsetM": [
+      0.0,
+      0.0
+     ],
+     "yaw": 0.0
+    },
+    {
+     "uid": "isy-barrel2",
+     "piece": "vanilla:clutter/barrel01",
+     "offsetM": [
+      -2.7,
+      4.5
+     ],
+     "yaw": 30.0
+    },
+    {
+     "uid": "isy-crate",
+     "piece": "vanilla:clutter/common/cratesmall01",
+     "offsetM": [
+      3.5,
+      8.5
+     ],
+     "yaw": 48.0
+    },
+    {
+     "uid": "isy-bucket",
+     "piece": "vanilla:clutter/bucket01",
+     "offsetM": [
+      -1.6,
+      -0.4
+     ],
+     "yaw": 0.0
+    },
+    {
+     "uid": "isy-lamp",
+     "piece": "vanilla:clutter/common/candlelanternwithcandle01",
+     "offsetM": [
+      -2.5,
+      -1.2
+     ],
+     "yaw": 0.0
+    },
+    {
+     "uid": "isy-fire",
+     "piece": "vanilla:clutter/imperial/impbrazier01",
+     "offsetM": [
+      -4.5,
+      4.0
+     ],
+     "yaw": 0.0
+    }
+   ]
+  },
+  {
+   "id": "imperial-stable-yard",
+   "anchor": "sty-hay",
+   "members": [
+    {
+     "uid": "sty-hay",
+     "piece": "vanilla:clutter/hay/haymound01",
+     "offsetM": [
+      0.0,
+      0.0
+     ],
+     "yaw": 0.0
+    },
+    {
+     "uid": "sty-trough",
+     "piece": "vanilla:clutter/horsetrough/horsetrough01",
+     "offsetM": [
+      13.87,
+      6.69
+     ],
+     "yaw": 80.0
+    },
+    {
+     "uid": "sty-wood",
+     "piece": "vanilla:clutter/firewood/firewoodpilelarge01",
+     "offsetM": [
+      23.17,
+      7.59
+     ],
+     "yaw": 7.0
+    }
+   ]
+  },
+  {
+   "id": "argonian-landing",
+   "anchor": "al-basket2",
+   "members": [
+    {
+     "uid": "al-rack2",
+     "piece": "mudmother:gv_meshes/argoniannest/fishracksmall",
+     "offsetM": [
+      3.08,
+      -7.03
+     ],
+     "yaw": 0.0
+    },
+    {
+     "uid": "al-basket1",
+     "piece": "mudmother:gv_meshes/argoniannest/basketfull",
+     "offsetM": [
+      1.83,
+      -1.03
+     ],
+     "yaw": 290.0
+    },
+    {
+     "uid": "al-basket2",
+     "piece": "vanilla:clutter/basketclosed01",
+     "offsetM": [
+      2.3,
+      0.1
+     ],
+     "yaw": 310.0
+    },
+    {
+     "uid": "al-oar",
+     "piece": "rowboats:dungeons/clutter/shipoar01",
+     "offsetM": [
+      -2.4,
+      1.0
+     ],
+     "yaw": 90.0
+    },
+    {
+     "uid": "al-net",
+     "piece": "shores:shoresofskyrim/fishnet01",
+     "offsetM": [
+      2.53,
+      1.31
+     ],
+     "yaw": 30.0
+    }
+   ]
+  },
+  {
+   "id": "argonian-hut-yard",
+   "anchor": "ahy-candle",
+   "members": [
+    {
+     "uid": "ahy-candle",
+     "piece": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+     "offsetM": [
+      0.0,
+      0.0
+     ],
+     "yaw": 0.0
+    },
+    {
+     "uid": "ahy-urn",
+     "piece": "mudmother:gv_meshes/argoniannest/paintedurn01",
+     "offsetM": [
+      1.6,
+      1.5
+     ],
+     "yaw": 0.0
+    },
+    {
+     "uid": "ahy-basket",
+     "piece": "mudmother:gv_meshes/argoniannest/basketsmall01",
+     "offsetM": [
+      1.6,
+      0.4
+     ],
+     "yaw": 0.0
+    },
+    {
+     "uid": "ahy-table",
+     "piece": "vanilla:clutter/exteriorwoodenfurniture/exteriorwoodentable01",
+     "offsetM": [
+      -3.2,
+      1.2
+     ],
+     "yaw": 0.0
+    },
+    {
+     "uid": "ahy-chair",
+     "piece": "mudmother:gv_meshes/argoniannest/wovenchair01",
+     "offsetM": [
+      -3.2,
+      -0.3
+     ],
+     "yaw": 0.0
+    },
+    {
+     "uid": "ahy-sack",
+     "piece": "vanilla:clutter/containers/miscsacklarge",
+     "offsetM": [
+      2.6,
+      1.4
+     ],
+     "yaw": 0.0
+    },
+    {
+     "uid": "ahy-pot",
+     "piece": "vanilla:clutter/woodfires/spitpotopenloose01",
+     "offsetM": [
+      0.9,
+      1.0
+     ],
+     "yaw": 0.0
+    }
+   ]
+  },
+  {
+   "id": "imperial-station-porch",
+   "anchor": "isp-sack",
+   "why": "Supplies the station keeper sets out for travellers waiting on the ferry: a sack of provisions, a closed basket and a water bucket by the door.",
+   "members": [
+    {
+     "uid": "isp-sack",
+     "piece": "vanilla:clutter/containers/miscsacklarge",
+     "offsetM": [
+      0.0,
+      0.0
+     ],
+     "yaw": 0.0
+    },
+    {
+     "uid": "isp-basket",
+     "piece": "vanilla:clutter/basketclosed01",
+     "offsetM": [
+      0.8,
+      0.3
+     ],
+     "yaw": 20.0
+    },
+    {
+     "uid": "isp-bucket",
+     "piece": "vanilla:clutter/bucket01",
+     "offsetM": [
+      -0.8,
+      0.4
+     ],
+     "yaw": 0.0
+    }
+   ]
+  }
+ ]
+}

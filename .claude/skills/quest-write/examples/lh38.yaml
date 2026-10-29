@@ -1,0 +1,276 @@
+# Worked example: LH38 redesigned with the owner, 2026-10-27. Persona details marked `invented` await the
+# NPC registry import (0.1 §f); everything else cites the Greenspring place record and culture sheets as held in
+# the import (world/sources/placement/facts/place.hist-heartland.greenspring.json, world/sources/dialogue/cultures/).
+id: quest.local.lh38
+code: LH38
+title: The Drinker at the Spring
+place: place.hist-heartland.greenspring
+line: local
+shapes: [MURDER, CONTAMINATION]   # primary first (shapes.yaml)
+foundation: "world/sources/quests/local-hist-heartland.json (imported from the old repo) LH38 skeleton: premise and cast kept, truth and stages rebuilt"
+status: design
+
+sources:
+  placeRecord: world/sources/placement/facts/place.hist-heartland.greenspring.json
+  cultureSheets: [culture.settlement.greenspring, culture.group.greenspring.lodge, culture.household.greenspring.fire-stand-hut]
+
+playerStart:
+  # What any player can know on arrival: what they see, and what a sign or any villager says first.
+  - fact.greenspring.why-founding-2   # the tribe's Hist grows over the spring
+  - fact.greenspring.why-occupantsMotive-2   # the tribe charges nothing for water
+  - fact.greenspring.vibe-approach-1   # a small clear pool lies under the Hist
+  - fact.greenspring.vibe-silhouette-1   # huts stand round the spring
+
+actionPlan:
+  # Chosen by hand from action_plan.py proposals (profile local; shapes MURDER, CONTAMINATION), then the truth
+  # was written so each action follows from it: the body is under water (dive), the pack is in a locked store
+  # (pick-a-lock or persuade), the killer checks the spring at night (spy), the satchel is on him (pickpocket).
+  - {skill: speechcraft, use: persuade}
+  - {skill: sneak, use: sneak-past}
+  - {skill: athletics, use: dive}
+  - {skill: security, use: pick-a-lock}
+  - {skill: sneak, use: spy}
+  - {skill: sneak, use: pickpocket}
+  - {skill: speechcraft, use: accuse}
+  - {skill: any-weapon, use: fight}
+
+premise: A courier was murdered and staked in Greenspring's spring, travellers are falling sick from the water, and the player finds the body and the killer.
+
+truth:
+  - id: t1
+    when: 12 days before
+    who: [npc.courier-ahzi, npc.hist-heartland.greenspring.n3]
+    where: place.hist-heartland.greenspring.lodge
+    what: Ahzi-Tal, a Helstrom courier, lodges for one night. Reeh-Shaal, who travels the same road, sees that his satchel holds a sealed packet the courier's ledger does not list.
+  - id: t2
+    when: 12 days before, late evening
+    who: [npc.hist-heartland.greenspring.n3, npc.hist-heartland.greenspring.n2-2]
+    where: thing.rope-coil-yard
+    what: Reeh-Shaal buys a length of rope from Tsono-Ra after the lodge has closed, saying he needs it to tie his pack.
+  - id: t3
+    when: 12 days before, night
+    who: [npc.hist-heartland.greenspring.n3, npc.courier-ahzi]
+    where: thing.spring-throat
+    what: Reeh-Shaal kills Ahzi-Tal at the spring, takes the satchel, ties the body's wrists and pins it with a grave-stake deep in the spring's throat under the Hist's roots, so it will not float up. He leaves the stake's face uncarved.
+  - id: t4
+    when: 11 days before, dawn
+    who: [npc.hist-heartland.greenspring.n1]
+    where: place.hist-heartland.greenspring.lodge
+    what: Haj-Tei finds the courier's bed empty and his pack still in the lodge store, with his bill unpaid. He assumes the courier left before dawn without paying and keeps the pack against the debt.
+  - id: t5
+    when: from 8 days before
+    who: [travellers]
+    where: thing.spring-pool
+    what: The body fouls the water. Travellers who drink it, or eat food cooked in it, fall sick with fever and retching.
+  - id: t6
+    when: from 8 days before
+    who: [npc.hist-heartland.greenspring.n3]
+    where: place.hist-heartland.greenspring.lodge
+    what: Reeh-Shaal stays at the lodge, telling people he is waiting for a boat to Helstrom. He is waiting for the packet's buyer, who has not come.
+  - id: t7
+    when: every night since
+    who: [npc.hist-heartland.greenspring.n3]
+    where: thing.spring-pool
+    what: After the lamps are out, Reeh-Shaal goes to the stone lip and looks down into the water for a while, to be sure the body has not come up.
+
+facts:
+  - {id: fact.lh38.pool-office, claim: "Only the spring-keeper may enter the pool under the Hist; anyone else who goes in fouls it.", from: "culture.settlement.greenspring#taboos"}
+  - {id: fact.lh38.courier-missing, claim: "A Helstrom courier lodged at Greenspring 12 days ago and was not seen to leave.", from: t1}
+  - {id: fact.lh38.rope-sold-late, claim: "Tsono-Ra sold Reeh-Shaal a length of rope after the lodge had closed, the night the courier vanished.", from: t2}
+  - {id: fact.lh38.body-in-throat, claim: "The courier's body is staked deep in the spring's throat under the Hist's roots.", from: t3}
+  - {id: fact.lh38.stake-blank, claim: "The grave-stake through the body has no story carved on it.", from: t3}
+  - {id: fact.lh38.rope-knot, claim: "The rope on the body's wrists is tied with Tsono-Ra's knot.", from: t3}
+  - {id: fact.lh38.pack-unpaid, claim: "The courier's pack is in the lodge store and his bill was never paid.", from: t4}
+  - {id: fact.lh38.sickness, claim: "Travellers have been falling sick after drinking the spring water or eating food cooked in it.", from: t5}
+  - {id: fact.lh38.reeh-waiting, claim: "Reeh-Shaal has stayed at the lodge for ten days, waiting for a boat that has not come.", from: t6}
+  - {id: fact.lh38.water-smell, claim: "At dusk the spring water smells faintly of rot.", from: t5}
+  - {id: fact.lh38.night-watch, claim: "Reeh-Shaal goes to the stone lip every night after the lamps are out and stares into the water.", from: t7}
+  - {id: fact.lh38.packet, claim: "Reeh-Shaal carries the courier's satchel, with a sealed packet that the courier's ledger does not list.", from: t3}
+
+cast:
+  - id: npc.hist-heartland.greenspring.n2
+    name: Mee-Sei
+    persona: {race: argonian, sex: female, role: cooks for the household at the fire stand, chattiness: chatty, friendliness: friendly, formality: low, backstory: "hatched in the heartland and has lived in Greenspring all her life (owner brief)", visible: "standing at a cooking fire, cooking; poor marsh clothing", invented: [sex]}
+    wants: to stop the sickness, because travellers now avoid her food (fact.lh38.sickness)
+    fears: being blamed for the sickness
+    knowledge:
+      fact.lh38.sickness: knows
+      fact.greenspring.why-pressures-3: believes "the salt may not be the cause"
+      fact.lh38.pool-office: knows
+      fact.lh38.courier-missing: ignorant
+    changes: []
+  - id: npc.hist-heartland.greenspring.n2-2
+    name: Tsono-Ra
+    persona: {race: argonian, sex: female, role: mends and sells rope for the lodge, chattiness: plain, friendliness: friendly, formality: low, visible: "pulling and testing rope behind the lodge", invented: [sex, chattiness]}
+    wants: to keep selling rope to travellers (culture.group.greenspring.lodge values)
+    fears: that the rope she sold that night was used for something bad
+    knowledge:
+      fact.lh38.rope-sold-late: hides "selling after the lodge closed is against the village's agreed price and hours, and she suspects why he wanted it"
+      fact.lh38.sickness: knows
+    changes:
+      - {atStage: 40, fact: fact.lh38.rope-sold-late, to: knows}
+  - id: npc.hist-heartland.greenspring.n1
+    name: Haj-Tei
+    persona: {race: argonian, sex: male, role: the bed-keeper, runs the lodge, chattiness: plain, friendliness: friendly, formality: plain, visible: "at the lodge door"}
+    wants: guests to keep coming (fact.greenspring.why-occupantsMotive-3)
+    fears: that a guest came to harm in his lodge
+    knowledge:
+      fact.lh38.courier-missing: believes "the courier left before dawn without paying"
+      fact.lh38.pack-unpaid: hides "a guest vanishing without paying is bad for the lodge's name"
+    changes:
+      - {atStage: 40, fact: fact.lh38.pack-unpaid, to: knows}
+  - id: npc.hist-heartland.greenspring.n3
+    name: Reeh-Shaal
+    persona: {race: argonian, sex: male, role: a guest who says he is bound for Helstrom, chattiness: chatty, friendliness: friendly, formality: plain, visible: "sitting by the spring house"}
+    wants: to sell the packet and leave
+    fears: anyone looking in the spring
+    knowledge:
+      fact.lh38.body-in-throat: hides "he killed the courier"
+      fact.lh38.packet: hides "it is why he killed him"
+      fact.lh38.reeh-waiting: knows
+      fact.lh38.night-watch: hides "it would give him away"
+    changes: []
+  - id: npc.hist-heartland.greenspring.spring-keeper
+    name: Im-Moro
+    persona: {race: argonian, sex: female, role: the spring-keeper; only she may enter the pool, chattiness: plain, friendliness: friendly, formality: ceremonial, visible: "at the stone lip of the spring with a ladle"}
+    wants: to keep the spring's good name (culture.settlement.greenspring dissent)
+    fears: that the spring could sour for good (her never-said)
+    knowledge:
+      fact.lh38.sickness: believes "it is the travellers' own food, not the water"
+    changes:
+      - {atStage: 60, fact: fact.lh38.body-in-throat, to: knows}
+  - id: npc.hist-heartland.greenspring.tree-minder
+    name: Vees-Wai
+    persona: {race: argonian, sex: male, role: the tree-minder, reads the Hist, chattiness: plain, friendliness: friendly, formality: ceremonial, visible: "at the shrine at the Hist's foot"}
+    wants: the Hist and the tribe kept well
+    fears: the dead left without their story
+    knowledge:
+      fact.lh38.stake-blank: ignorant
+    changes: []
+
+things:
+  - {id: thing.spring-pool, kind: pool, source: "existing: sp-pool (layout op)", states: {all: "open; Im-Moro forbids entry"}}
+  - {id: thing.spring-throat, kind: underwater shaft, source: new, where: "below thing.spring-pool, between the Hist's roots, deep enough to swim down", states: {all: "dark; body inside"}}
+  - {id: thing.courier-body, kind: corpse, source: new, where: thing.spring-throat, states: {before-60: "staked, wrists tied", after-60: "removed"}}
+  - {id: thing.grave-stake, kind: activator, source: new, where: thing.courier-body, states: {all: "face uncarved"}}
+  - {id: thing.knotted-rope, kind: item, source: new, where: thing.courier-body, states: {all: "tied with Tsono-Ra's knot; can be taken"}}
+  - {id: thing.courier-pack, kind: container, source: "new, in the lodge store (parcel.greenspring.lodge)", states: {all: "the courier's pack and his unpaid bill"}}
+  - {id: thing.satchel, kind: item, source: new, where: "Reeh-Shaal's inventory", states: {all: "holds the sealed packet"}}
+  - {id: thing.sick-guests, kind: npc pair, source: new, where: "lying on mats in the lodge", states: {before-60: "feverish; say they drank at the spring", after-60: "recovering"}}
+  - {id: thing.rope-coil-yard, kind: place, source: "existing: behind the lodge (culture.group.greenspring.lodge)", states: {all: "Tsono-Ra's work spot"}}
+
+conclusions:
+  - {id: c1, statement: "Something in the spring is making people sick.", clues: [k1, k2, k3]}
+  - {id: c2, statement: "The courier did not leave; he was murdered and hidden in the spring.", clues: [k4, k5, k6]}
+  - {id: c3, statement: "Reeh-Shaal killed him.", clues: [k7, k8, k9, k10]}
+
+clues:
+  - {id: k1, form: line, carrier: npc.hist-heartland.greenspring.n2, gives: [fact.lh38.sickness], supports: [c1]}
+  - {id: k2, form: behaviour, carrier: thing.sick-guests, gives: [fact.lh38.sickness], supports: [c1]}
+  - {id: k3, form: thing, carrier: thing.spring-pool, gives: [fact.lh38.water-smell], supports: [c1]}
+  - {id: k4, form: thing, carrier: thing.courier-body, gives: [fact.lh38.body-in-throat], supports: [c2]}
+  - {id: k5, form: thing, carrier: thing.courier-pack, gives: [fact.lh38.pack-unpaid], supports: [c2]}
+  - {id: k6, form: line, carrier: npc.hist-heartland.greenspring.n1, gives: [fact.lh38.courier-missing], supports: [c2]}
+  - {id: k7, form: thing, carrier: thing.knotted-rope, gives: [fact.lh38.rope-knot], supports: [c3]}
+  - {id: k8, form: line, carrier: npc.hist-heartland.greenspring.n2-2, gives: [fact.lh38.rope-sold-late], supports: [c3]}
+  - {id: k9, form: line, carrier: npc.hist-heartland.greenspring.tree-minder, gives: [fact.lh38.stake-blank], supports: [c3]}
+  - {id: k10, form: behaviour, carrier: npc.hist-heartland.greenspring.n3, gives: [fact.lh38.reeh-waiting], supports: [c3]}
+  - {id: k11, form: behaviour, carrier: npc.hist-heartland.greenspring.n3, gives: [fact.lh38.night-watch], supports: [c3]}
+
+stages:
+  # Conditions and actions use the condition vocabulary (docs/design/quests/85-condition-vocabulary.md after
+  # the 0.1 §f import); `actions` follow principles/actions.md (skill families, each with its approaches).
+  - id: 10
+    objective: "Find out why travellers are falling sick."
+    pre: {any: [{speakerDispositionAtLeast: 40}, {flag: flag.lh38.persuaded}]}
+    onEnter: [{grantTopic: topic.sickness-at-the-spring}, {setFlag: [flag.lh38.started, true]}]
+    learns: [fact.lh38.sickness, fact.lh38.pool-office]
+    actions: [{skill: speechcraft, use: persuade, note: "raise Mee-Sei's disposition, or admire or bribe her"}]
+    directions: "the pool under the Hist, a short walk from the fire stand (landmark: the Hist)"
+  - id: 20
+    objective: "Get into the pool under the Hist."
+    pre: {flag: flag.lh38.started}
+    approaches:
+      - {id: a-ask, actions: [{skill: speechcraft, use: persuade, note: "convince Im-Moro with k2 or k3 as evidence"}]}
+      - {id: a-night, actions: [{skill: sneak, use: sneak-past, target: "Im-Moro and the night watch", setting: at night, note: "seen = crime: fouling the pool"}]}
+    post: {setFlag: [flag.lh38.in-pool, true]}
+  - id: 30
+    objective: "Search the spring's throat."
+    pre: {flag: flag.lh38.in-pool}
+    actions:
+      - {skill: athletics, use: dive, setting: in a flooded ruin or underwater, note: "between the Hist's roots; breath matters (alteration: water-breathe also works)"}
+      - {skill: illusion, use: light-a-dark-place, note: "optional: the throat is dark; a torch will not burn underwater"}
+      - {skill: mysticism, use: detect-life, note: "optional: nothing alive below; the stake's blank face is seen by looking"}
+    post: {setFlag: [flag.lh38.body-found, true]}
+    learns: [fact.lh38.body-in-throat, fact.lh38.stake-blank, fact.lh38.rope-knot]
+  - id: 40
+    objective: "Find out who the dead man was and who killed him."
+    pre: {flag: flag.lh38.body-found}
+    approaches:
+      - {id: a-store, actions: [{skill: security, use: pick-a-lock, note: "the lodge store, to find thing.courier-pack"}, {skill: speechcraft, use: present-evidence, note: "or show Haj-Tei the rope and he opens it"}]}
+      - {id: a-watch, actions: [{skill: sneak, use: spy, target: "Reeh-Shaal at the stone lip", setting: at night, note: "k11"}]}
+      - {id: a-satchel, actions: [{skill: sneak, use: pickpocket, target: Reeh-Shaal, note: "thing.satchel; or search his mat while he is at the spring"}]}
+      - {id: a-rope, actions: [{skill: speechcraft, use: present-evidence, note: "show Tsono-Ra the rope; she knows her knot"}]}
+    learns: [fact.lh38.courier-missing, fact.lh38.pack-unpaid, fact.lh38.rope-sold-late, fact.lh38.reeh-waiting, fact.lh38.night-watch]
+    post: {setFlag: [flag.lh38.suspect-known, true]}
+    failForward: "if Tsono-Ra is dead or hostile, the knot, the night watch and the pack still point at Reeh-Shaal"
+  - id: 50
+    objective: "Confront Reeh-Shaal."
+    pre: {flag: flag.lh38.suspect-known}
+    approaches:
+      - {id: a-accuse, actions: [{skill: speechcraft, use: accuse, note: "name him and present two of: the rope, the pack, the satchel, the night watch"}]}
+      - {id: a-fight, actions: [{skill: any-weapon, use: fight, target: "Reeh-Shaal, short blade", setting: "running for the landing", note: D2}]}
+      - {id: a-bribe, actions: [{skill: mercantile, use: bargain, note: "take the packet and let him go"}]}
+    post: {setFlag: [flag.lh38.resolved, true]}
+    learns: [fact.lh38.packet]
+  - id: 60
+    objective: "Tell Im-Moro so the body can be raised."
+    pre: {flag: flag.lh38.body-found}
+    actions: [{skill: speechcraft, use: present-evidence, note: "show Im-Moro the rope or lead her to the throat"}]
+    post: {setFlag: [flag.lh38.raised, true]}
+  - {id: 90, ending: failed, pre: {any: [{not: {npcAlive: npc.hist-heartland.greenspring.n2}}, {not: {npcAlive: npc.hist-heartland.greenspring.spring-keeper}}]}}
+
+endings:
+  - {id: e-justice, when: "Reeh-Shaal accused with at least two clues", world: "Reeh-Shaal held for the root-herald to take to Helstrom; the body raised and given to the Hist", seen: "Reeh-Shaal gone from the spring house; the sickness stops after 3 days; Im-Moro's greeting changes", rewards: ["free training from Im-Moro (skill to choose)", "Mee-Sei: free meals in Greenspring", "Haj-Tei: free bed", "the packet, to return in Helstrom (leads on)"]}
+  - {id: e-fight, when: "Reeh-Shaal killed", world: "as e-justice, without the trial", seen: "as e-justice", rewards: ["as e-justice", "his purse"]}
+  - {id: e-bribe, when: "player takes the packet and lets him go", world: "Reeh-Shaal leaves; nobody in Greenspring learns who killed the courier", seen: "Mee-Sei and Im-Moro believe the killer was never found", rewards: ["the packet, to sell", "Im-Moro's training only if the body is raised"]}
+  - {id: e-fail, when: "Mee-Sei, Im-Moro or Reeh-Shaal dies before stage 30", world: "the sickness goes on until the body is found by chance (journal closes)", seen: "travellers stop coming", rewards: []}
+
+shapeData:
+  # MURDER
+  timeline: [t1, t2, t3, t4, t6, t7]
+  lies:
+    - {speaker: npc.hist-heartland.greenspring.n1, says: "the courier left before dawn", refutedBy: thing.courier-pack}
+    - {speaker: npc.hist-heartland.greenspring.n3, says: "the salt works poison the spring", refutedBy: thing.courier-body}
+    - {speaker: npc.hist-heartland.greenspring.n2-2, says: "she sold no rope that night", refutedBy: thing.knotted-rope}
+  nodes: [npc.hist-heartland.greenspring.n2, thing.spring-pool, thing.spring-throat, place.hist-heartland.greenspring.lodge, npc.hist-heartland.greenspring.n2-2, npc.hist-heartland.greenspring.n3, npc.hist-heartland.greenspring.tree-minder]
+  leads:
+    - {from: npc.hist-heartland.greenspring.n2, to: [thing.spring-pool, npc.hist-heartland.greenspring.spring-keeper, place.hist-heartland.greenspring.lodge]}
+    - {from: thing.spring-throat, to: [npc.hist-heartland.greenspring.n2-2, npc.hist-heartland.greenspring.tree-minder, place.hist-heartland.greenspring.lodge]}
+    - {from: place.hist-heartland.greenspring.lodge, to: [npc.hist-heartland.greenspring.n3, npc.hist-heartland.greenspring.n2-2, thing.spring-pool]}
+  redHerrings:
+    - {suspect: "the salt works upstream", refutedBy: k4}
+    - {suspect: npc.hist-heartland.greenspring.n2-2, refutedBy: k8}
+  openQuestions:
+    - "Why are travellers falling sick at Greenspring?"
+    - "Who was the dead man in the spring?"
+    - "___ killed the courier and staked him in the spring because ___."
+  accusation: {exhibits: [thing.knotted-rope, thing.courier-pack, thing.satchel, fact.lh38.night-watch], needed: 2, tooFew: "Reeh-Shaal laughs it off and leaves on the next boat unless stopped", closedRun: [who, how, why]}
+  endings: {right: e-justice, partial: e-fight, wrong: "accusing Tsono-Ra: she is shamed, the village closes ranks, Reeh-Shaal leaves (journal: the case is unsolved)", unsolved: e-fail}
+  # CONTAMINATION
+  source: thing.courier-body
+  spread: "the spring water, drunk and used for cooking"
+  sign: fact.lh38.water-smell
+  cure: "raise the body; the water clears in three days"
+  firstIllLastWell: "guests at the lodge first (they drink most), then Mee-Sei's customers; the office-holders, who drink from the far side of the pool, last"
+  misdiagnosis: {wrong: "salt from the salt works", test: "taste the river above the fork: it is fresh, so the salt cannot be the cause"}
+  ladder: ["day 0: two sick guests", "after stage 20: a third guest sickens", "after stage 40: travellers stop at Greenspring; Haj-Tei's beds are empty"]
+
+topics:
+  - {topic: latest rumours, person: npc.hist-heartland.greenspring.n2, stages: [0], essential: false, intent: "hook: travellers are falling sick; she doubts it is salt; below 40 she says she keeps her thoughts from strangers", uses: [fact.lh38.sickness, fact.greenspring.why-pressures-3], grants: [sickness at the spring]}
+  - {topic: sickness at the spring, person: npc.hist-heartland.greenspring.n2, stages: [10, 20], essential: true, intent: "she thinks something is in the spring; only Im-Moro may enter the pool; ask her, or look at night; she offers free meals", uses: [fact.lh38.sickness, fact.lh38.pool-office], hides: []}
+  - {topic: the dead man in the spring, person: npc.hist-heartland.greenspring.n1, stages: [40], essential: true, intent: "at first he says the courier left without paying; shown the body or the pack, he admits the pack is in his store", uses: [fact.lh38.courier-missing, fact.lh38.pack-unpaid], hides: [fact.lh38.pack-unpaid]}
+  - {topic: the knotted rope, person: npc.hist-heartland.greenspring.n2-2, stages: [40], essential: true, intent: "she knows her knot; at first evasive; at disposition 40 or shown the rope she admits selling it late to Reeh-Shaal", uses: [fact.lh38.rope-knot, fact.lh38.rope-sold-late], hides: [fact.lh38.rope-sold-late]}
+  - {topic: the grave-stake, person: npc.hist-heartland.greenspring.tree-minder, stages: [30, 40], essential: true, intent: "a stake carries the dead person's story; a blank one means the killer knew the custom and chose not to honour the dead", uses: [fact.lh38.stake-blank]}
+  - {topic: the dead man in the spring, person: npc.hist-heartland.greenspring.n3, stages: [40, 50], essential: true, intent: "friendly and helpful, points at the salt and at Tsono-Ra; under accusation with evidence he breaks", uses: [fact.lh38.reeh-waiting], hides: [fact.lh38.body-in-throat, fact.lh38.packet]}
+  - {topic: the dead man in the spring, person: npc.hist-heartland.greenspring.spring-keeper, stages: [30, 60], essential: true, intent: "refuses to believe it until she sees the body or the rope; then has him raised and thanks the player", uses: [fact.lh38.body-in-throat]}

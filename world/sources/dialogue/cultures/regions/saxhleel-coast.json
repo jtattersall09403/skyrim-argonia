@@ -1,0 +1,207 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "_": "Region sheet for saxhleel-coast (2.5a1b). Talk is seeded from the region's published place records; every trait cites a lore dossier or says inferred.",
+ "entries": [
+  {
+   "id": "culture.region.saxhleel-coast",
+   "level": "region",
+   "name": "Archon and the eastern coast (the Saxhleel coast)",
+   "parent": "culture.province.black-marsh",
+   "regionId": "saxhleel-coast",
+   "norms": [
+    {
+     "text": "Children play underwater games; being amphibious is ordinary here.",
+     "source": "world/sources/lore/archon.md"
+    },
+    {
+     "text": "The harbour works in three dimensions: dive lots, wrecks and moorings.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    },
+    {
+     "text": "A hiring camp shares what it forages among every family in it.",
+     "source": "inferred"
+    },
+    {
+     "text": "Place names are clauses, given without thought: a lot is named for what happened there.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Diving another family's lot.",
+     "source": "inferred"
+    },
+    {
+     "text": "Opening the sealed Shadowscale house.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    }
+   ],
+   "values": [
+    {
+     "text": "Competence on water.",
+     "source": "inferred"
+    },
+    {
+     "text": "A tally kept straight: pay and deaths both entered.",
+     "source": "inferred"
+    },
+    {
+     "text": "Paperwork as the line between a harbour and a pirate.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Mystics who talk grandly about the sea and cannot swim it.",
+     "source": "inferred"
+    },
+    {
+     "text": "Landlords who evict families to clear a jungle lot.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "place": {
+     "lean": 1,
+     "text": "The coast is the harbour, the beach and the reef below it.",
+     "source": "world/sources/lore/archon.md"
+    },
+    "work": {
+     "lean": 1,
+     "text": "Diving, fishing and harbour labour; the deep lots pay best and kill most.",
+     "source": "inferred"
+    },
+    "people": {
+     "lean": 1,
+     "text": "Sailors of every race come through Archon and most of them pay.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    },
+    "faction": {
+     "lean": 0,
+     "text": "The harbour authority charters the pirates it cannot beat.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    },
+    "hist": {
+     "lean": 1,
+     "text": "The coast tribes keep their trees quietly and mind the water first.",
+     "source": "inferred"
+    },
+    "empire": {
+     "lean": -1,
+     "text": "The Company's wharves are standing; the Company is not.",
+     "source": "world/sources/lore/topics/foreign-powers.md"
+    },
+    "trade": {
+     "lean": 2,
+     "text": "Archon is the province's legal port and proud of it.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    },
+    "danger": {
+     "lean": -1,
+     "text": "Reefs, sharks and the deep lots; a lair inland drives foragers off.",
+     "source": "inferred"
+    },
+    "rumour": {
+     "lean": 0,
+     "text": "The Dark Brotherhood wants the Shadowscale house.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    },
+    "directions": {
+     "lean": 0,
+     "text": "Ways are given by water: so many strokes off the point, so many fathoms down.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Strangers are called by their boat or their errand; locals by the lot they dive.",
+      "source": "inferred"
+     },
+     {
+      "text": "Imperatives without ceremony: come here, go round.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [
+     {
+      "text": "Stay moist.",
+      "source": "world/sources/lore/topics/material-culture.md"
+     },
+     {
+      "text": "Deep lots, deep pay.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "What the old ku-vastei near the sealed house used to do.",
+      "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+     },
+     {
+      "text": "The count of divers lost this season.",
+      "source": "inferred"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#region-saxhleel-coast"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Evicted families live at the hiring camp a kilometre east of Bones-And-Tools.",
+      "source": "inferred"
+     },
+     {
+      "text": "The deep lots pay best, but they kill divers. The tally book records the pay and the deaths.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "A lot with no living heir must be reassigned. The claimants will settle it in the water.",
+      "source": "inferred"
+     },
+     {
+      "text": "Glowgill guar have been seen breeding wild off the point.",
+      "source": "world/sources/lore/regions/thornmarsh-and-east.md"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.region.dunmer-north",
+     "lean": 0,
+     "text": "Tear and Thorn are a short sail; Dunmer cargo pays well and argues long.",
+     "source": "world/sources/lore/regions/thornmarsh-and-east.md"
+    },
+    {
+     "node": "culture.region.mercantile-coast",
+     "lean": 0,
+     "text": "Lilmoth rebuilds and undercuts us on every run.",
+     "source": "world/sources/lore/lilmoth.md"
+    },
+    {
+     "node": "culture.region.naga-kur-deeps",
+     "lean": -1,
+     "text": "The deeps come down to the coast only to raid.",
+     "source": "world/sources/lore/tribes.md"
+    },
+    {
+     "node": "culture.region.hist-heartland",
+     "lean": 1,
+     "text": "The heartland keeps the trees; the coast keeps the water.",
+     "source": "inferred"
+    },
+    {
+     "node": "culture.region.pirate-freeholds",
+     "lean": -1,
+     "text": "River crews come down to the coast looking for work and trouble.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.15
+  }
+ ]
+}

@@ -1,0 +1,938 @@
+{
+  "schemaVersion": 1,
+  "domain": "dialogue-lines",
+  "placeId": "place.imperial-fringe.bog-iron-workings",
+  "entries": [
+    {
+      "schemaVersion": 1,
+      "id": "greeting.bog-iron-workings-n1.base",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1",
+      "words": "Iron by the cake, buyer. Cheap today.",
+      "available": [],
+      "variants": {
+        "low": "Buy a cake or stand clear.",
+        "high": "Buyer! Good stack this week. Cheap today."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.bog-iron-workings-n1.night",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1",
+      "words": "Stack is tallied. Nothing sold till light.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Stack is tallied. Go away.",
+        "high": "Stack is tallied. Come at light, buyer. The first cake is yours."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.bog-iron-workings-n1.crime",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1",
+      "words": "That cost me, buyer. You owe for it.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "You owe me for that.",
+        "high": "That cost me, buyer. Pay half and we are done."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.bog-iron-workings-n1.bog-iron-workings",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1",
+      "keys": {
+        "topic": "topic.bog-iron-workings"
+      },
+      "words": "The Bog Iron Workings lies below the road. I have charge of the season's diggers. I sleep beside the stacked cakes to tally each one at dawn. Cakes are priced by the stack. Looking at the furnace costs nothing.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.bog-iron-workings.default",
+        "hash": "1d25f4cb"
+      },
+      "factIds": [
+        "fact.bog-iron-workings.below"
+      ],
+      "variants": {
+        "low": "Below the road. I have charge of the stack. Buy a cake or go back up the path.",
+        "high": "The Bog Iron Workings lies below the road. Come up to the bench and I will show you the stack. I have charge of the diggers here, so I can name a fair price for a whole stack. If you carry it yourself, I'll knock a little off."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.bog-iron-workings-n1.bog-iron-workings-work",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1",
+      "keys": {
+        "topic": "topic.bog-iron-workings-work"
+      },
+      "words": "A digger lifts the bog iron out of the seep in cakes. The cakes dry on the bank. Road gangs pay coin for each one. A good cake is worth more than my cracked bowl. That bowl is worth a copper.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.bog-iron-workings-work.default",
+        "hash": "eafd04e5"
+      },
+      "factIds": [
+        "fact.bogiron.cakes"
+      ],
+      "variants": {
+        "low": "We lift iron from the seep in cakes. Road gangs pay for them. Are you buying, or only watching?",
+        "high": "A digger lifts the iron from the seep in cakes, then they dry on the bank. Road gangs pay coin for each. If you carry them yourself, I'll shave a little off the stack price."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.bog-iron-workings-n1.bog-iron-workings-people",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1",
+      "keys": {
+        "topic": "topic.bog-iron-workings-people"
+      },
+      "words": "Three of us work the season, each from a different village. I have charge. Argues-The-Toll works the bellows. She says what she thinks of the work, loudly. Meets-Every-Tide lifts the cakes. She says little. I pay no mind to the shame of it.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.bog-iron-workings-people.default",
+        "hash": "fd3cef3e"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Three of us, from three villages. I have charge. That is all you need.",
+        "high": "Three of us work the season, each from a different village. I have charge. Argues-The-Toll works the bellows. She says plainly what she thinks of the work. Meets-Every-Tide lifts the cakes. Speak to them kindly, since both are low this week."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.bog-iron-workings-n1.bog-iron-workings-danger",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1",
+      "keys": {
+        "topic": "topic.bog-iron-workings-danger"
+      },
+      "words": "Leeches lie in the seep, so I check my legs after each shift. We stopped working the deep end because something sits in the pools. I still weigh what that iron would fetch. Near the path the mud has given all it had.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.bog-iron-workings-danger.default",
+        "hash": "731b2a8c"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Leeches in the seep. Something in the deep end. Stay on the path.",
+        "high": "Keep to the path and look to your legs for leeches after. I do not touch the deep end, since something sits in the pools. The mud near the path has given all it had, so each season's cakes come up smaller and further out."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.bog-iron-workings-n1.bog-iron-workings-directions",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1",
+      "keys": {
+        "topic": "topic.bog-iron-workings-directions"
+      },
+      "words": "From the bench a path goes up to the road. Turn west there. You reach Mile House of the Eagle first, then Cartwright's Cross. Take a cake with you if you can lift one. Road gangs pay for them.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.bog-iron-workings-directions.default",
+        "hash": "7440920f"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Up the path to the road. West is Mile House of the Eagle. Cartwright's Cross is past it.",
+        "high": "Climb the path to the road, then go west. Mile House of the Eagle comes first. Cartwright's Cross lies beyond it. The smith at the Cold Forge buys our scraps, if you pass his way."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.bog-iron-workings-n1.role-digging-bog-iron",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1",
+      "keys": {
+        "topic": "topic.role-digging-bog-iron"
+      },
+      "words": "The iron gathers where the water stands stagnant and heavy with iron. A seep like ours has stood still for years. When the season ends, every digger walks off to a separate village. I walk to mine with my pay for the stack.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-digging-bog-iron.default",
+        "hash": "0e527357"
+      },
+      "factIds": [
+        "fact.bogiron.stagnant",
+        "fact.bogiron.home"
+      ],
+      "variants": {
+        "low": "Stagnant water makes it. Every digger walks off to a separate village at season's end.",
+        "high": "Stagnant water, rich with iron, makes it. Our seep has stood still for years, so the cakes come up good. At season's end, every digger walks off to a separate village. Mine is a long walk. I carry the pay for the stack."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.bog-iron-workings-n1.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "The Border road and the Prison road are Imperial roads. The Mile House is an Imperial waystation. Everyone still uses the old names for them. Beside the Prison road, on a dry rise, you will find the Tag House. The gangs wear nails and tyres off those roads, so they buy my iron.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.imperial",
+        "fact.road.old-names",
+        "fact.road.tag-house"
+      ],
+      "variants": {
+        "low": "Imperial roads, old ones. People use the old names. The Tag House is on a dry rise by the Prison road.",
+        "high": "The Border road and the Prison road are Imperial roads. The Mile House is an Imperial waystation. People use the old names still. Beside the Prison road, on a dry rise, you will find the Tag House. I sell iron to the gangs who mend those roads."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.bog-iron-workings-n1-2.base",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1-2",
+      "words": "Visitor. State your business before the clay cools.",
+      "available": [],
+      "variants": {
+        "low": "Visitor. Go back to the road.",
+        "high": "Visitor, you may stand by the furnace."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.bog-iron-workings-n1-2.night",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1-2",
+      "words": "Visitor, the dark is no time for the bench.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Go up the path, visitor.",
+        "high": "Visitor, take the fire side. The seep is loud tonight."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.bog-iron-workings-n1-2.crime",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1-2",
+      "words": "Visitor, get off my bench.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "Off the bench.",
+        "high": "Visitor, I will forget this once."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.bog-iron-workings-n1-2.bog-iron-workings",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1-2",
+      "keys": {
+        "topic": "topic.bog-iron-workings"
+      },
+      "words": "A place? It's a seep in the ferns with a bench above it. Iron comes up out of the mud in cakes. We smelt them in the clay furnace up top. I work the bellows there from first light. The air smells of sulphur and the mud makes a sucking sound all day. I leave when the season does.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.bog-iron-workings.default",
+        "hash": "1d25f4cb"
+      },
+      "factIds": [
+        "fact.bog-iron-workings.furnace"
+      ],
+      "variants": {
+        "low": "It's a seep and a furnace. Dig, smelt, leave.",
+        "high": "It's a seep in the ferns with a bench above it. Iron comes out of the mud in cakes. We smelt them in the clay furnace up top. I'm on the bellows there from first light. Come to the bench in the morning and I'll let you feel the heat. The sulphur you will smell whatever I do."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.bog-iron-workings-n1-2.bog-iron-workings-work",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1-2",
+      "keys": {
+        "topic": "topic.bog-iron-workings-work"
+      },
+      "words": "I work the bellows at the clay furnace from first light until the cakes are cool. The furnace is built new at the start of the season. When the iron is ready, we break it open for the bloom. Road gangs buy what comes out for nails and tyres. It's shameful work and I'll say so to anyone who asks.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.bog-iron-workings-work.default",
+        "hash": "eafd04e5"
+      },
+      "factIds": [
+        "fact.bogiron.furnace"
+      ],
+      "variants": {
+        "low": "Bellows. The furnace is built new and broken open for the bloom. Road gangs buy the iron.",
+        "high": "I work the bellows at the clay furnace from first light until the cakes are cool. The furnace is built new at the start of the season, then broken open for the bloom. Road gangs buy the iron for nails and tyres. They pay fair coin for it. I still call it shameful work, but I'll pump for you if you want to see the bloom come out."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.bog-iron-workings-n1-2.bog-iron-workings-people",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1-2",
+      "keys": {
+        "topic": "topic.bog-iron-workings-people"
+      },
+      "words": "Three of us were hired from three villages. Prices-The-Salvage keeps the count and sleeps by the stacked cakes. He sees no shame in it, since he's paid by the stack. Meets-Every-Tide wades for the iron. I work the bellows and feel the shame of it more than they do. We leave once the season is done.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.bog-iron-workings-people.default",
+        "hash": "fd3cef3e"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Three of us. A headman, a lifter. Then me at the bellows. Ask them what they feel.",
+        "high": "Three of us were hired from three villages. Prices-The-Salvage keeps the count and sleeps by the stacked cakes. He sees no shame in it, since he's paid by the stack. Meets-Every-Tide wades for the iron. I'm on the bellows and I feel the shame more than they do. You listen well. Few visitors stay to hear that."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.bog-iron-workings-n1-2.bog-iron-workings-danger",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1-2",
+      "keys": {
+        "topic": "topic.bog-iron-workings-danger"
+      },
+      "words": "Danger? The leeches are the small trouble. They fill the seep and you pick them off after. The deep end is the real one. We gave it up, because something sits in the pools down there. From the bellows at dusk I hear it move. I was right about that long before the others would say so. The mud near the path has given what it had. Cakes lie farther out now. They come up small.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.bog-iron-workings-danger.default",
+        "hash": "731b2a8c"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Leeches in the seep. Something in the deep end. Stay out of the pools.",
+        "high": "The leeches are the small trouble. They fill the seep, so check your legs. The deep end is the real one. We gave it up, because something sits in the pools down there. From the bellows at dusk I hear it move. Be gone before dark, visitor. The cakes lie farther out now. They come up small."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.bog-iron-workings-n1-2.bog-iron-workings-directions",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1-2",
+      "keys": {
+        "topic": "topic.bog-iron-workings-directions"
+      },
+      "words": "I only know the road as far as the top of the path. The path up from the bench meets the road at the top. Others turn west there and come to Mile House of the Eagle, with Cartwright's Cross after it. I haven't walked that far. I'm at the furnace all day.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.bog-iron-workings-directions.default",
+        "hash": "7440920f"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Up the path to the road. West after that. I haven't gone farther.",
+        "high": "I only know the road as far as the top of the path. It meets the road at the top. Turn west there and you come to Mile House of the Eagle, with Cartwright's Cross after it. I haven't walked that far myself. Go up before the light goes and you'll make the Mile House by dark."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.bog-iron-workings-n1-2.role-digging-bog-iron",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1-2",
+      "keys": {
+        "topic": "topic.role-digging-bog-iron"
+      },
+      "words": "A digger lifts the iron out of the seep in cakes and stacks them on the bank to dry. I work the bellows instead, so I only hear it from the bench. The mud makes a sucking sound each time a cake comes loose. When that sound comes slow, the lifter is tired.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-digging-bog-iron.default",
+        "hash": "0e527357"
+      },
+      "factIds": [
+        "fact.bogiron.cakes"
+      ],
+      "variants": {
+        "low": "A digger lifts the iron out of the seep in cakes. I don't.",
+        "high": "A digger lifts the iron out of the seep in cakes and stacks them on the bank to dry. I work the bellows instead, so I only hear it from the bench. The mud makes a sucking sound each time a cake comes loose. Take one if you can lift it. The road gangs pay for every cake, but a stranger's hands are free."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.bog-iron-workings-n1-2.about-ojel",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1-2",
+      "keys": {
+        "topic": "topic.about-ojel"
+      },
+      "words": "Ojel is what we call outsiders. There's no insult in it, so say it freely. You are ojel to me and to everyone at this furnace. Lukiul is another matter. The An-Xileel coined it as a slur for our kind who hatched beyond Black Marsh. They cannot hear the Hist.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-ojel.default",
+        "hash": "a30272d6"
+      },
+      "factIds": [
+        "fact.ojel.outsiders",
+        "fact.ojel.neutral",
+        "fact.lukiul.slur",
+        "fact.lukiul.deaf"
+      ],
+      "variants": {
+        "low": "Ojel is outsiders. No insult in it. Lukiul is the An-Xileel slur for Argonians hatched beyond Black Marsh, who cannot hear the Hist.",
+        "high": "Ojel is what we call outsiders. There's no insult in it, so say it freely. Lukiul is another matter. I'd keep that word behind your teeth. The An-Xileel coined it as a slur for our kind who hatched beyond Black Marsh. They cannot hear the Hist."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.bog-iron-workings-n1-3.base",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1-3",
+      "words": "Visitor. Wet ground here.",
+      "available": [],
+      "variants": {
+        "low": "Visitor. You are in the way.",
+        "high": "Visitor. The bank is firmer by the stack."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.bog-iron-workings-n1-3.night",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1-3",
+      "words": "Another morning gone.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Leave me be tonight.",
+        "high": "I am done for the day. Stay by the stack."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.bog-iron-workings-n1-3.crime",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1-3",
+      "words": "Do that again and you swim.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "Touch the stack and you swim.",
+        "high": "That was seen. Put it back."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.bog-iron-workings-n1-3.bog-iron-workings",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1-3",
+      "keys": {
+        "topic": "topic.bog-iron-workings"
+      },
+      "words": "Bog iron lies in the mud of the seep, down the bank from here. I lift it out in cakes, one by one. Then I stack them on the bank to dry. The road crews buy the cakes for their nails and tyres.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.bog-iron-workings.default",
+        "hash": "1d25f4cb"
+      },
+      "factIds": [
+        "fact.bogiron.cakes"
+      ],
+      "variants": {
+        "low": "Bog iron, from the seep. I lift it out in cakes and stack them on the bank. Road crews buy them. That is all you need.",
+        "high": "Bog iron lies in the mud of the seep, down the bank from here. I lift it out in cakes and stack them to dry on the bank. Road crews buy them for nails and tyres. Take a look at the stack if you want to see one."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.bog-iron-workings-n1-3.bog-iron-workings-work",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1-3",
+      "keys": {
+        "topic": "topic.bog-iron-workings-work"
+      },
+      "words": "I lift. From first light I stand in the mud pulling cakes out. The near mud gives less every season. Twenty-six mornings left of it.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.bog-iron-workings-work.default",
+        "hash": "eafd04e5"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "I lift, from first light. Ask the others what they do.",
+        "high": "I lift. From first light I stand in the mud pulling cakes out. The near mud gives less every season. Come when the cakes are cool and I will show you how a good one rings."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.bog-iron-workings-n1-3.bog-iron-workings-people",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1-3",
+      "keys": {
+        "topic": "topic.bog-iron-workings-people"
+      },
+      "words": "Three of us came for the season. The other two stay dry up at the furnace and the stack. I stand in the mud with the cakes. We do not ask each other our villages.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.bog-iron-workings-people.default",
+        "hash": "fd3cef3e"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Three of us. They stay dry. I do not.",
+        "high": "Three of us came for the season. The other two stay dry up at the furnace and the stack. I stand in the mud with the cakes. Still, the walk home is better with company."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.bog-iron-workings-n1-3.bog-iron-workings-danger",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1-3",
+      "keys": {
+        "topic": "topic.bog-iron-workings-danger"
+      },
+      "words": "Leeches in the seep. I pull them off at the midday break. Past the near mud is the deep end. The crew will not dig it, but I would, with the near mud worked out. It's a frog down there, that is all.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.bog-iron-workings-danger.default",
+        "hash": "731b2a8c"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Leeches. Keep out of the seep.",
+        "high": "Leeches in the seep. Salt on the legs gets them off at the midday break. The deep end is past the near mud. The crew will not dig it, but I would. It's a frog down there, that is all."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.bog-iron-workings-n1-3.bog-iron-workings-directions",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1-3",
+      "keys": {
+        "topic": "topic.bog-iron-workings-directions"
+      },
+      "words": "Back down the path to the seep track, then up to the road. West of here is the Mile House, the one with an eagle in its name. Cartwright's Cross comes after that.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.bog-iron-workings-directions.default",
+        "hash": "7440920f"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Down the path. Then west. You will find it.",
+        "high": "Back down the path to the seep track, then up to the road. West of here is the Mile House, the one with an eagle in its name. Cartwright's Cross comes after that. Keep to the track edge. The ground is soft."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.bog-iron-workings-n1-3.role-digging-bog-iron",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1-3",
+      "keys": {
+        "topic": "topic.role-digging-bog-iron"
+      },
+      "words": "Every season the crew builds the clay furnace new on the bench. When the season ends we break it open to get the bloom out, the lump of iron inside. Twenty-six mornings and it comes down.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-digging-bog-iron.default",
+        "hash": "0e527357"
+      },
+      "factIds": [
+        "fact.bogiron.furnace"
+      ],
+      "variants": {
+        "low": "We build the furnace new each season. We break it open for the bloom. Stand clear of it.",
+        "high": "Every season the crew builds the clay furnace new on the bench. We break it open at the end to get the bloom out, the lump of iron inside. Twenty-six mornings and it comes down. You can hear the bloom ring when it's struck."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.bog-iron-workings-n1.trusted",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1",
+      "words": "For you, the diggers' price less a drake.",
+      "available": [
+        {
+          "speakerDispositionAtLeast": 75
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Same price as anyone, buyer.",
+        "high": "For you, the diggers' price less two drakes."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.bog-iron-workings-n1.passing",
+      "type": "bark",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1",
+      "slot": "passing",
+      "words": "Cold Forge smith buys scraps.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.bog-iron-workings-n1.at-work",
+      "type": "bark",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1",
+      "slot": "at-work",
+      "words": "Cakes make wheel rims.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.bog-iron-workings-n1.night",
+      "type": "bark",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1",
+      "slot": "night",
+      "words": "Tally again.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.bog-iron-workings-n1-2.trusted",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1-2",
+      "words": "Visitor, sit by the furnace. It is warm.",
+      "available": [
+        {
+          "speakerDispositionAtLeast": 75
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Sit if you must.",
+        "high": "Visitor, sit close. The coals are good tonight."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.bog-iron-workings-n1-2.passing",
+      "type": "bark",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1-2",
+      "slot": "passing",
+      "words": "Still cold, the clay.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.bog-iron-workings-n1-2.at-work",
+      "type": "bark",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1-2",
+      "slot": "at-work",
+      "words": "Steady now, bellows.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.bog-iron-workings-n1-2.night",
+      "type": "bark",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1-2",
+      "slot": "night",
+      "words": "Listen. Down there.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.bog-iron-workings-n1-3.trusted",
+      "type": "greeting",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1-3",
+      "words": "Take the other end of this.",
+      "available": [
+        {
+          "speakerDispositionAtLeast": 75
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Hold the cart. Say nothing.",
+        "high": "Take the other end. I will show you the good cakes."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.bog-iron-workings-n1-3.passing",
+      "type": "bark",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1-3",
+      "slot": "passing",
+      "words": "Watch the bank.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.bog-iron-workings-n1-3.at-work",
+      "type": "bark",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1-3",
+      "slot": "at-work",
+      "words": "Out of my light.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.bog-iron-workings-n1-3.night",
+      "type": "bark",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1-3",
+      "slot": "night",
+      "words": "Cold mud again.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.bog-iron-workings-n1-2.about-blackwood",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1-2",
+      "keys": {
+        "topic": "topic.about-blackwood"
+      },
+      "words": "Blackwood is the hill country out west in Black Marsh. A road climbs up through the hills into Cyrodiil. I haven't walked it. The hill people stay close to the roots of their own tree and don't ask after strangers. They'll stop for a riddle though.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-blackwood.default",
+        "hash": "20cbe1a3"
+      },
+      "factIds": [
+        "fact.blackwood.hills",
+        "fact.blackwood.road",
+        "fact.blackwood.riddles"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.bog-iron-workings-n1-2.about-bog-iron-workings",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1-2",
+      "keys": {
+        "topic": "topic.about-bog-iron-workings"
+      },
+      "words": "Bog iron is iron the marsh makes itself. Water works down through the clay and leaves a hard crust of iron in its place. We cut that crust into cakes. Then we smelt the cakes in the clay furnace on the bench. The workings lie below the road.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-bog-iron-workings.default",
+        "hash": "00bec51e"
+      },
+      "factIds": [
+        "fact.bog-iron-workings.crust",
+        "fact.bog-iron-workings.below",
+        "fact.bog-iron-workings.furnace"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.bog-iron-workings-n1-2.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1-2",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "The Empire laid the Prison road and the Border road. It built the Mile House as a waystation. The old ones say those roads rotted the cargo. People still use the old names. The Prison road heads for the Rose. You will find the Tag House at its side, up on a dry rise.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.imperial",
+        "fact.road.old-names",
+        "fact.road.tag-house"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.bog-iron-workings-n1-3.about-blackwood",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1-3",
+      "keys": {
+        "topic": "topic.about-blackwood"
+      },
+      "words": "Blackwood is the hill country at the western edge of the marsh. The Blackwood Road goes up through it into Cyrodiil. The hill folk keep to the roots of their own tree and ignore strangers. A riddle they like.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-blackwood.default",
+        "hash": "20cbe1a3"
+      },
+      "factIds": [
+        "fact.blackwood.hills",
+        "fact.blackwood.road",
+        "fact.blackwood.riddles"
+      ],
+      "variants": {
+        "low": "Hills in the west. The road climbs to Cyrodiil. They ignore strangers.",
+        "high": "Blackwood is the hill country at the western edge of the marsh. The Blackwood Road goes up through it into Cyrodiil. The hill folk keep to the roots of their own tree and ignore strangers. Bring a riddle and they might listen."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.bog-iron-workings-n1-3.about-bog-iron-workings",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1-3",
+      "keys": {
+        "topic": "topic.about-bog-iron-workings"
+      },
+      "words": "The marsh makes bog iron on its own. Seeping water leaves iron crusted in the clay. These workings sit below the road. The crews cut the crust out in cakes. The furnace on the bench smelts the cakes.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-bog-iron-workings.default",
+        "hash": "00bec51e"
+      },
+      "factIds": [
+        "fact.bog-iron-workings.crust",
+        "fact.bog-iron-workings.below",
+        "fact.bog-iron-workings.furnace"
+      ],
+      "variants": {
+        "low": "Iron from the mud. We cut it, we smelt it, the crews buy it.",
+        "high": "The marsh makes bog iron on its own. Seeping water leaves iron crusted in the clay. These workings sit below the road. The crews cut the crust out in cakes, then the furnace on the bench smelts them. Ask for a cake if you want to feel the weight."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.bog-iron-workings-n1-3.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1-3",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "Those are Imperial roads and a waystation from the old days. Crews still use the old names, so the roads go by them. Toward the Rose runs the Prison one. The Tag House stands next to it, up on a rise of dry ground.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.imperial",
+        "fact.road.old-names",
+        "fact.road.tag-house"
+      ],
+      "variants": {
+        "low": "Old Imperial roads. The crews use the old names. Ask them.",
+        "high": "Those are Imperial roads and a waystation from the old days. Crews still use the old names, so the roads go by them. Toward the Rose runs the Prison one. The Tag House stands next to it, up on a rise of dry ground. Walk it in daylight."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.bog-iron-workings-n1.about-blackwood",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1",
+      "keys": {
+        "topic": "topic.about-blackwood"
+      },
+      "words": "Blackwood is the hill country in the far west of Black Marsh. The road climbs through it into Cyrodiil. The hill folk keep close to their own tree and show strangers little interest. They love a riddle.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-blackwood.default",
+        "hash": "20cbe1a3"
+      },
+      "factIds": [
+        "fact.blackwood.hills",
+        "fact.blackwood.road",
+        "fact.blackwood.riddles"
+      ],
+      "variants": {
+        "low": "Hills in the far west of Black Marsh. A road climbs through them to Cyrodiil. The hill folk like riddles.",
+        "high": "Blackwood is the hill country in the far west of Black Marsh. The road climbs through it into Cyrodiil. The hill folk keep close to their own tree and show strangers little interest. They do love a riddle, so try one on them."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.bog-iron-workings-n1.about-bog-iron-workings",
+      "type": "dialogue",
+      "speaker": "npc.imperial-fringe.bog-iron-workings.n1",
+      "keys": {
+        "topic": "topic.about-bog-iron-workings"
+      },
+      "words": "The marsh makes bog iron without help. Water soaks through the clay and leaves a hard crust of iron. The Bog Iron Workings sits below the road. We cut the crust into cakes. Then the cakes go into a clay furnace for smelting.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-bog-iron-workings.default",
+        "hash": "00bec51e"
+      },
+      "factIds": [
+        "fact.bog-iron-workings.crust",
+        "fact.bog-iron-workings.below",
+        "fact.bog-iron-workings.furnace"
+      ],
+      "variants": {
+        "low": "The marsh makes the iron itself. We cut cakes of it from the crust. The workings sit below the road.",
+        "high": "The marsh makes bog iron without help. Water soaks through the clay and leaves a hard crust of iron. The Bog Iron Workings sits below the road. We cut the crust into cakes. Then the cakes go into a clay furnace for smelting. I will show you the furnace if you ask."
+      }
+    }
+  ],
+  "people": [
+    {
+      "id": "npc.imperial-fringe.bog-iron-workings.n1",
+      "name": "Prices-The-Salvage",
+      "role": "the season's diggers",
+      "services": [],
+      "topics": [
+        "topic.bog-iron-deep-end",
+        "topic.latest-rumours"
+      ]
+    },
+    {
+      "id": "npc.imperial-fringe.bog-iron-workings.n1-3",
+      "name": "Meets-Every-Tide",
+      "role": "the season's diggers",
+      "services": [],
+      "topics": [
+        "topic.bog-iron-leech-den",
+        "topic.latest-rumours"
+      ]
+    }
+  ]
+}

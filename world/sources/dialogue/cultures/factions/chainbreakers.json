@@ -1,0 +1,194 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "_": "Faction and office sheets for The Blackrose Chainbreakers (lane 2.5a2). Ranks: the registry ladder (associate, member, senior); named offices beyond it are listed by their own rank slug.",
+ "entries": [
+  {
+   "id": "culture.faction.chainbreakers",
+   "level": "faction",
+   "name": "The Blackrose Chainbreakers",
+   "parent": "culture.province.black-marsh",
+   "factionId": "faction.chainbreakers",
+   "norms": [
+    {
+     "text": "Audit, burn the book, carry the bones home.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    {
+     "text": "The burial work and the abolition work are one work.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Buying a debtor's Owing to free them; it feeds the trade.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "An ending for every debt.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Holders, brokers and the ex-Archein letterhead.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    }
+   ],
+   "opinions": {
+    "work": {
+     "lean": -2,
+     "text": "An obligation that can be sold is slavery with manners.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    "hist": {
+     "lean": 2,
+     "text": "A debtor dying far from the tree may never get home.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    "faction": {
+     "lean": -1,
+     "text": "The state has never touched the Owing.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Friend; brother, sister in the work.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [
+     {
+      "text": "Bones go home.",
+      "source": "world/sources/lore/topics/labour-and-bondage.md"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "Whose ledger burns next.",
+      "source": "inferred"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Ledgers are copied before they burn.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "A Gideon court threw out a transferred Owing.",
+      "source": "world/sources/lore/topics/labour-and-bondage.md"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.dres-remnant",
+     "lean": -2,
+     "text": "Owing brokers.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    {
+     "node": "culture.faction.blackguards",
+     "lean": -1,
+     "text": "Ledgered and ledgering.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.15
+  },
+  {
+   "id": "culture.office.chainbreakers.senior",
+   "level": "office",
+   "name": "Ledger-burner",
+   "parent": "culture.faction.chainbreakers",
+   "factionId": "faction.chainbreakers",
+   "rank": "senior",
+   "norms": [
+    {
+     "text": "Reads the debt aloud before burning it.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Keeping a copy.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "The fire.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Copyists.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "work": {
+     "lean": -2,
+     "text": "Burn it.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Friend.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [
+     {
+      "text": "Bones go home.",
+      "source": "world/sources/lore/topics/labour-and-bondage.md"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "The next target.",
+      "source": "inferred"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Copies survive.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "A holder fled with the books.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.chainbreakers",
+     "lean": 2,
+     "text": "Theirs.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.1
+  }
+ ]
+}

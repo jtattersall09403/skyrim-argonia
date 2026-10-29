@@ -1,0 +1,4861 @@
+{
+  "schemaVersion": 1,
+  "blueprint": {
+    "id": "place.route.border-road-greenspring-crossings",
+    "seed": "place.route.border-road-greenspring-crossings",
+    "causalModel": {
+      "founding": "The Border road was laid on a Dunmer line from Stormhold to Thorn. Below Greenspring the road meets the river marsh and an inlet stream. The keepers of the road carry it over both on piled timber.",
+      "siteAdvantages": "The road runs along the dry strip at the mountain foot. It crosses water only at the points where the dry ground gives out. The two crossings are at the inlet mouth and at one reach of the river marsh.",
+      "occupantsMotive": "The crossings have no residents. The village above keeps the planks. The trade of the village goes out along this road.",
+      "pressures": "The piles rot in the marsh within a few seasons. The village above has to keep replacing the piles.",
+      "wouldChangeIf": "A stone causeway would replace the planks if a payer funded one."
+    },
+    "boundary": [
+      [
+        0.602155835,
+        0.204109129
+      ],
+      [
+        0.652335488,
+        0.204109129
+      ],
+      [
+        0.652335488,
+        0.248185851
+      ],
+      [
+        0.602155835,
+        0.248185851
+      ]
+    ],
+    "districts": [
+      {
+        "id": "district.border-road-greenspring-crossings.the-crossings",
+        "kind": "route-structure",
+        "cultureKit": "argonian-mud",
+        "wealth": "poor",
+        "boundary": [
+          [
+            0.605770601,
+            0.210490214
+          ],
+          [
+            0.60608732,
+            0.219254312
+          ],
+          [
+            0.606133817,
+            0.219755111
+          ],
+          [
+            0.606176357,
+            0.220101241
+          ],
+          [
+            0.606399206,
+            0.22120784
+          ],
+          [
+            0.631718149,
+            0.243151147
+          ],
+          [
+            0.632166115,
+            0.243396291
+          ],
+          [
+            0.633076419,
+            0.243821352
+          ],
+          [
+            0.636657727,
+            0.245493595
+          ],
+          [
+            0.636683034,
+            0.245505076
+          ],
+          [
+            0.637583843,
+            0.24591221
+          ],
+          [
+            0.638484097,
+            0.2463156
+          ],
+          [
+            0.63871192,
+            0.24628512
+          ],
+          [
+            0.652335488,
+            0.241757962
+          ],
+          [
+            0.652335488,
+            0.240579563
+          ],
+          [
+            0.606798312,
+            0.209363138
+          ],
+          [
+            0.606015075,
+            0.210007412
+          ],
+          [
+            0.605790192,
+            0.210225985
+          ]
+        ],
+        "notes": "The stretch of the Border road from the Greenspring track west to the river marsh, with its two plank crossings and the timber stair up the river bank.",
+        "why": {
+          "what": "The district is the Border road between the Greenspring track and the river marsh. It holds two plank crossings, the timber stair and the marks beside the way.",
+          "whyHere": "The road runs along the dry strip at the mountain foot. It has to cross water twice before it can climb the river bank.",
+          "whyNeighbours": "Greenspring stands up its own track at the east end. The road runs on west toward Stormhold.",
+          "playerPurpose": "The road is the way between Greenspring and the west. It is dry underfoot only where the planks carry it.",
+          "microGeography": "The ground is firm lowland and bank between black marsh water. The road is a worn earth strip on the dry ground."
+        }
+      }
+    ],
+    "parcels": [
+      {
+        "id": "parcel.border-road-greenspring-crossings.river-bridge",
+        "districtId": "district.border-road-greenspring-crossings.the-crossings",
+        "use": "dock",
+        "buildingFamily": "vanilla-docks",
+        "interior": {
+          "kind": "none"
+        },
+        "groundFit": "stilt",
+        "orientationWhy": "The planks are laid north to south along the line of the road. They end in line with the stair up the bank. They end 0.4 m short of the foot of the stair.",
+        "why": {
+          "what": "The river crossing is plank spans on piles. The spans carry the road over a reach of the river marsh. They run up to the foot of the timber stair.",
+          "whyHere": "The road meets the river marsh at its narrowest reach. The water stands about 1.3 m deep.",
+          "whySpot": "The crossing runs from the dry ground at the north end. It runs straight south across the marsh to the foot of the stair up the bank.",
+          "whyNeighbours": "A cairn and a grave mound stand at the north head of the crossing. The timber stair climbs the bank from the south end of the crossing.",
+          "playerPurpose": "The crossing carries the road across the river marsh. It is dry underfoot from the cairn to the stair.",
+          "microGeography": "The planks stand a hand's breadth over black marsh water. They rest on sunk piles."
+        },
+        "centreUV": [
+          0.606773719,
+          0.21176356
+        ],
+        "yawDeg": 178.1,
+        "pieces": [
+          {
+            "asset": "vanilla:architecture/docks/dockstrent02",
+            "atM": [
+              0.0,
+              -0.0
+            ],
+            "yaw": 0.0,
+            "yMeasured": 0.15
+          },
+          {
+            "asset": "vanilla:architecture/docks/dockstrent02",
+            "atM": [
+              0.08,
+              -7.28
+            ],
+            "yaw": 0.0,
+            "yMeasured": 0.15
+          },
+          {
+            "asset": "vanilla:architecture/docks/dockstrent02",
+            "atM": [
+              0.16,
+              -14.56
+            ],
+            "yaw": 0.0,
+            "yMeasured": 0.15
+          },
+          {
+            "asset": "vanilla:architecture/docks/dockstrent02",
+            "atM": [
+              0.24,
+              -21.84
+            ],
+            "yaw": 0.0,
+            "yMeasured": 0.15
+          },
+          {
+            "asset": "vanilla:architecture/docks/dockstrent02",
+            "atM": [
+              0.32,
+              -29.12
+            ],
+            "yaw": 0.0,
+            "yMeasured": 0.15
+          },
+          {
+            "asset": "vanilla:architecture/docks/dockstrent02",
+            "atM": [
+              0.4,
+              -36.4
+            ],
+            "yaw": 0.0,
+            "yMeasured": 0.15
+          },
+          {
+            "asset": "vanilla:architecture/docks/dockstrent02",
+            "atM": [
+              0.48,
+              -43.68
+            ],
+            "yaw": 0.0,
+            "yMeasured": 0.15
+          },
+          {
+            "asset": "vanilla:architecture/docks/dockstrent02",
+            "atM": [
+              0.56,
+              -50.96
+            ],
+            "yaw": 0.0,
+            "yMeasured": 0.15
+          },
+          {
+            "asset": "vanilla:architecture/docks/dockstrent02",
+            "atM": [
+              0.64,
+              -58.24
+            ],
+            "yaw": 0.0,
+            "yMeasured": 0.15
+          }
+        ],
+        "footprint": [
+          [
+            0.606452959,
+            0.211297945
+          ],
+          [
+            0.606453769,
+            0.211322329
+          ],
+          [
+            0.606498105,
+            0.211799852
+          ],
+          [
+            0.606537131,
+            0.212117396
+          ],
+          [
+            0.606553783,
+            0.212131805
+          ],
+          [
+            0.606547197,
+            0.212133248
+          ],
+          [
+            0.606551602,
+            0.212266209
+          ],
+          [
+            0.606491929,
+            0.21226819
+          ],
+          [
+            0.606474848,
+            0.212285074
+          ],
+          [
+            0.606475658,
+            0.212309457
+          ],
+          [
+            0.606519995,
+            0.212786981
+          ],
+          [
+            0.606559021,
+            0.213104525
+          ],
+          [
+            0.606575672,
+            0.213118934
+          ],
+          [
+            0.606569086,
+            0.213120377
+          ],
+          [
+            0.606573491,
+            0.213253352
+          ],
+          [
+            0.606513818,
+            0.213255333
+          ],
+          [
+            0.606496737,
+            0.213272216
+          ],
+          [
+            0.606497547,
+            0.2132966
+          ],
+          [
+            0.606541884,
+            0.213774123
+          ],
+          [
+            0.60658091,
+            0.214091667
+          ],
+          [
+            0.606597561,
+            0.214106076
+          ],
+          [
+            0.606590976,
+            0.214107519
+          ],
+          [
+            0.60659538,
+            0.21424048
+          ],
+          [
+            0.606535707,
+            0.214242461
+          ],
+          [
+            0.606518626,
+            0.214259345
+          ],
+          [
+            0.606519436,
+            0.214283728
+          ],
+          [
+            0.606563773,
+            0.214761252
+          ],
+          [
+            0.606602799,
+            0.215078796
+          ],
+          [
+            0.60661945,
+            0.215093205
+          ],
+          [
+            0.606612865,
+            0.215094648
+          ],
+          [
+            0.60661727,
+            0.215227623
+          ],
+          [
+            0.60655761,
+            0.215229604
+          ],
+          [
+            0.606540529,
+            0.215246453
+          ],
+          [
+            0.606541336,
+            0.21527083
+          ],
+          [
+            0.606585674,
+            0.215748374
+          ],
+          [
+            0.606624702,
+            0.216065938
+          ],
+          [
+            0.606641353,
+            0.216080347
+          ],
+          [
+            0.606634768,
+            0.21608179
+          ],
+          [
+            0.606639172,
+            0.216214751
+          ],
+          [
+            0.606579499,
+            0.216216732
+          ],
+          [
+            0.606562418,
+            0.216233616
+          ],
+          [
+            0.606563228,
+            0.216257999
+          ],
+          [
+            0.606607565,
+            0.216735523
+          ],
+          [
+            0.606646591,
+            0.217053067
+          ],
+          [
+            0.606663242,
+            0.217067476
+          ],
+          [
+            0.606656657,
+            0.217068919
+          ],
+          [
+            0.606661061,
+            0.217201894
+          ],
+          [
+            0.606601388,
+            0.217203875
+          ],
+          [
+            0.606584307,
+            0.217220758
+          ],
+          [
+            0.606585117,
+            0.217245142
+          ],
+          [
+            0.606629454,
+            0.217722665
+          ],
+          [
+            0.60666848,
+            0.218040209
+          ],
+          [
+            0.606685132,
+            0.218054618
+          ],
+          [
+            0.606678546,
+            0.218056061
+          ],
+          [
+            0.60668295,
+            0.218189022
+          ],
+          [
+            0.606623277,
+            0.218191003
+          ],
+          [
+            0.606606197,
+            0.218207853
+          ],
+          [
+            0.606607004,
+            0.21823223
+          ],
+          [
+            0.606651341,
+            0.218709774
+          ],
+          [
+            0.606690369,
+            0.219027337
+          ],
+          [
+            0.606707021,
+            0.219041747
+          ],
+          [
+            0.606700435,
+            0.21904319
+          ],
+          [
+            0.60670484,
+            0.219176165
+          ],
+          [
+            0.606645166,
+            0.219178146
+          ],
+          [
+            0.606628086,
+            0.219195029
+          ],
+          [
+            0.606628896,
+            0.219219413
+          ],
+          [
+            0.606673232,
+            0.219696936
+          ],
+          [
+            0.606712258,
+            0.22001448
+          ],
+          [
+            0.606730455,
+            0.220030195
+          ],
+          [
+            0.606753491,
+            0.220029411
+          ],
+          [
+            0.607204996,
+            0.219652172
+          ],
+          [
+            0.607222063,
+            0.219633939
+          ],
+          [
+            0.607240206,
+            0.219199139
+          ],
+          [
+            0.607239396,
+            0.219174716
+          ],
+          [
+            0.607222592,
+            0.219158991
+          ],
+          [
+            0.606721105,
+            0.219175625
+          ],
+          [
+            0.606716698,
+            0.219042783
+          ],
+          [
+            0.606731602,
+            0.219042269
+          ],
+          [
+            0.607183107,
+            0.21866503
+          ],
+          [
+            0.607200174,
+            0.218646797
+          ],
+          [
+            0.607218317,
+            0.218211996
+          ],
+          [
+            0.607217507,
+            0.218187573
+          ],
+          [
+            0.60720067,
+            0.218171848
+          ],
+          [
+            0.606699216,
+            0.218188483
+          ],
+          [
+            0.606694809,
+            0.218055654
+          ],
+          [
+            0.606709712,
+            0.21805514
+          ],
+          [
+            0.607161218,
+            0.217677901
+          ],
+          [
+            0.607178285,
+            0.217659668
+          ],
+          [
+            0.607196427,
+            0.217224868
+          ],
+          [
+            0.607195617,
+            0.217200445
+          ],
+          [
+            0.607178781,
+            0.217184719
+          ],
+          [
+            0.606677327,
+            0.217201354
+          ],
+          [
+            0.60667292,
+            0.217068512
+          ],
+          [
+            0.606687823,
+            0.217067998
+          ],
+          [
+            0.607139329,
+            0.216690759
+          ],
+          [
+            0.607156395,
+            0.216672526
+          ],
+          [
+            0.607174538,
+            0.216237725
+          ],
+          [
+            0.607173728,
+            0.216213302
+          ],
+          [
+            0.607156891,
+            0.216197577
+          ],
+          [
+            0.606655437,
+            0.216214212
+          ],
+          [
+            0.606651031,
+            0.216081383
+          ],
+          [
+            0.606665934,
+            0.216080869
+          ],
+          [
+            0.60711744,
+            0.21570363
+          ],
+          [
+            0.607134506,
+            0.215685397
+          ],
+          [
+            0.607152649,
+            0.215250546
+          ],
+          [
+            0.607151839,
+            0.215226174
+          ],
+          [
+            0.607135035,
+            0.215210449
+          ],
+          [
+            0.606633535,
+            0.215227083
+          ],
+          [
+            0.606629128,
+            0.215094241
+          ],
+          [
+            0.606644031,
+            0.215093727
+          ],
+          [
+            0.607095537,
+            0.214716488
+          ],
+          [
+            0.607112603,
+            0.214698255
+          ],
+          [
+            0.607130746,
+            0.214263454
+          ],
+          [
+            0.607129936,
+            0.214239031
+          ],
+          [
+            0.6071131,
+            0.214223306
+          ],
+          [
+            0.606611645,
+            0.214239941
+          ],
+          [
+            0.606607239,
+            0.214107112
+          ],
+          [
+            0.606622142,
+            0.214106598
+          ],
+          [
+            0.607073648,
+            0.213729359
+          ],
+          [
+            0.607090714,
+            0.213711126
+          ],
+          [
+            0.607108857,
+            0.213276326
+          ],
+          [
+            0.607108047,
+            0.213251903
+          ],
+          [
+            0.60709121,
+            0.213236177
+          ],
+          [
+            0.606589757,
+            0.213252812
+          ],
+          [
+            0.60658535,
+            0.21311997
+          ],
+          [
+            0.606600253,
+            0.213119456
+          ],
+          [
+            0.607051758,
+            0.212742217
+          ],
+          [
+            0.607068825,
+            0.212723984
+          ],
+          [
+            0.607086968,
+            0.212289183
+          ],
+          [
+            0.607086158,
+            0.21226476
+          ],
+          [
+            0.607069321,
+            0.212249035
+          ],
+          [
+            0.606567867,
+            0.21226567
+          ],
+          [
+            0.606563461,
+            0.212132841
+          ],
+          [
+            0.606578364,
+            0.212132327
+          ],
+          [
+            0.607029869,
+            0.211755088
+          ],
+          [
+            0.607046936,
+            0.211736855
+          ],
+          [
+            0.607065079,
+            0.211302004
+          ],
+          [
+            0.607064269,
+            0.211277632
+          ],
+          [
+            0.607047432,
+            0.211261906
+          ],
+          [
+            0.60647007,
+            0.211281059
+          ]
+        ]
+      },
+      {
+        "id": "parcel.border-road-greenspring-crossings.bank-stair",
+        "routeStructureId": "structure.road-stormhold-thorn.12",
+        "districtId": "district.border-road-greenspring-crossings.the-crossings",
+        "use": "stair",
+        "buildingFamily": "kotm-mudhuts",
+        "interior": {
+          "kind": "none"
+        },
+        "groundFit": "direct",
+        "orientationWhy": "The stair climbs south on the line of the planks. A walker crosses the 0.4 m gap from the last span onto the bottom tread. A walker steps off the top tread onto the bank top.",
+        "why": {
+          "what": "The stair is a steep timber stair of three flights. It carries the road from the river crossing up the river bank.",
+          "whyHere": "The bank face is 7.85 m high over 2 m of ground at the south end of the crossing. The bank is too steep to walk or to cut back.",
+          "whySpot": "The stair stands at the south end of the planks. There the road leaves the marsh and climbs onto the bank.",
+          "whyNeighbours": "The planks of the river crossing end at the foot of the stair. The road runs on along the top of the bank.",
+          "playerPurpose": "The stair carries the road up the bank. A walker climbs step by step from the planks to the dry ground.",
+          "microGeography": "The foot of the stair is sunk in the marsh mud 0.4 m past the planks. The stair leans up the face of the bank. Its top tread meets the grass at the bank edge."
+        },
+        "centreUV": [
+          0.606962232,
+          0.220303595
+        ],
+        "yawDeg": 268.1,
+        "pieces": [
+          {
+            "asset": "kotm:argonia/mudhuts/stairs02",
+            "atM": [
+              -0.0,
+              0.0
+            ],
+            "yaw": 0.0,
+            "yMeasured": 2.31
+          },
+          {
+            "asset": "kotm:argonia/mudhuts/stairs02",
+            "atM": [
+              -2.47,
+              -0.03
+            ],
+            "yaw": 0.0,
+            "yMeasured": 5.23
+          },
+          {
+            "asset": "kotm:argonia/mudhuts/stairs02",
+            "atM": [
+              -4.94,
+              -0.06
+            ],
+            "yaw": 0.0,
+            "yMeasured": 8.15
+          }
+        ],
+        "footprint": [
+          [
+            0.606874077,
+            0.220059587
+          ],
+          [
+            0.606880326,
+            0.220247963
+          ],
+          [
+            0.606872272,
+            0.220249587
+          ],
+          [
+            0.606877083,
+            0.220394617
+          ],
+          [
+            0.60688116,
+            0.220395838
+          ],
+          [
+            0.606887365,
+            0.220582892
+          ],
+          [
+            0.60687931,
+            0.220584516
+          ],
+          [
+            0.606884122,
+            0.220729559
+          ],
+          [
+            0.606888198,
+            0.220730781
+          ],
+          [
+            0.60689445,
+            0.220919188
+          ],
+          [
+            0.607054391,
+            0.220913882
+          ],
+          [
+            0.607048096,
+            0.220724121
+          ],
+          [
+            0.606900388,
+            0.220729019
+          ],
+          [
+            0.606895576,
+            0.220583977
+          ],
+          [
+            0.607047353,
+            0.22057894
+          ],
+          [
+            0.607041058,
+            0.220389179
+          ],
+          [
+            0.606893348,
+            0.220394077
+          ],
+          [
+            0.606888537,
+            0.220249048
+          ],
+          [
+            0.607040314,
+            0.220244011
+          ],
+          [
+            0.607034019,
+            0.22005425
+          ]
+        ]
+      },
+      {
+        "id": "parcel.border-road-greenspring-crossings.inlet-deck",
+        "districtId": "district.border-road-greenspring-crossings.the-crossings",
+        "use": "dock",
+        "buildingFamily": "vanilla-docks",
+        "interior": {
+          "kind": "none"
+        },
+        "groundFit": "stilt",
+        "orientationWhy": "The inlet deck is laid east-south-east along the line of the road. It runs straight across the inlet mouth between two dry banks.",
+        "why": {
+          "what": "The inlet deck is plank spans on piles. The spans cross the mouth of the inlet stream.",
+          "whyHere": "The inlet stream spreads into marsh at its mouth. The water is up to 1.07 m deep across the line of the road.",
+          "whySpot": "The deck runs east from the dry ground below the bank. It crosses the mouth to the dry ground under the Greenspring rise.",
+          "whyNeighbours": "A cairn marks the west head of the deck. The track up to Greenspring turns off a short walk to the east.",
+          "playerPurpose": "The deck carries the road across the inlet mouth. It is the last wet stretch before Greenspring.",
+          "microGeography": "The planks stand about a metre over the black water of the inlet mouth. They rest on sunk piles."
+        },
+        "centreUV": [
+          0.63212665,
+          0.242446384
+        ],
+        "yawDeg": 294.4,
+        "pieces": [
+          {
+            "asset": "vanilla:architecture/docks/dockstrent02",
+            "atM": [
+              0.0,
+              0.0
+            ],
+            "yaw": 0.0,
+            "yMeasured": 1.74
+          },
+          {
+            "asset": "vanilla:architecture/docks/dockstrent02",
+            "atM": [
+              -0.08,
+              7.28
+            ],
+            "yaw": 0.0,
+            "yMeasured": 1.74
+          },
+          {
+            "asset": "vanilla:architecture/docks/dockstrent02",
+            "atM": [
+              -0.16,
+              14.56
+            ],
+            "yaw": 0.0,
+            "yMeasured": 1.74
+          },
+          {
+            "asset": "vanilla:architecture/docks/dockstrent02",
+            "atM": [
+              -0.24,
+              21.84
+            ],
+            "yaw": 0.0,
+            "yMeasured": 1.74
+          },
+          {
+            "asset": "vanilla:architecture/docks/dockstrent02",
+            "atM": [
+              -0.32,
+              29.12
+            ],
+            "yaw": 0.0,
+            "yMeasured": 1.74
+          },
+          {
+            "asset": "vanilla:architecture/docks/dockstrent02",
+            "atM": [
+              -0.4,
+              36.4
+            ],
+            "yaw": 0.0,
+            "yMeasured": 1.74
+          },
+          {
+            "asset": "vanilla:architecture/docks/dockstrsol01",
+            "atM": [
+              -0.4,
+              43.68
+            ],
+            "yaw": 0.0,
+            "yMeasured": 1.69
+          },
+          {
+            "asset": "vanilla:architecture/docks/dockstepsdown01",
+            "atM": [
+              -0.5984,
+              50.8273
+            ],
+            "yaw": 91.67,
+            "yMeasured": -0.1
+          }
+        ],
+        "footprint": [
+          [
+            0.632783403,
+            0.242512025
+          ],
+          [
+            0.63277726,
+            0.242525613
+          ],
+          [
+            0.632915401,
+            0.243097525
+          ],
+          [
+            0.632924214,
+            0.243120921
+          ],
+          [
+            0.633305939,
+            0.243329816
+          ],
+          [
+            0.633328193,
+            0.243339911
+          ],
+          [
+            0.633349751,
+            0.243331785
+          ],
+          [
+            0.633557023,
+            0.242874856
+          ],
+          [
+            0.633678065,
+            0.242929764
+          ],
+          [
+            0.633671923,
+            0.242943352
+          ],
+          [
+            0.633810064,
+            0.243515264
+          ],
+          [
+            0.633818847,
+            0.243538643
+          ],
+          [
+            0.634200602,
+            0.243747555
+          ],
+          [
+            0.634222855,
+            0.24375765
+          ],
+          [
+            0.634244413,
+            0.243749524
+          ],
+          [
+            0.634451678,
+            0.243292611
+          ],
+          [
+            0.634572714,
+            0.243347516
+          ],
+          [
+            0.634566572,
+            0.243361104
+          ],
+          [
+            0.634704712,
+            0.243933016
+          ],
+          [
+            0.634713496,
+            0.243956395
+          ],
+          [
+            0.635095251,
+            0.244165307
+          ],
+          [
+            0.635117504,
+            0.244175402
+          ],
+          [
+            0.635139062,
+            0.244167276
+          ],
+          [
+            0.635346332,
+            0.243710352
+          ],
+          [
+            0.635467363,
+            0.243765255
+          ],
+          [
+            0.635461221,
+            0.243778843
+          ],
+          [
+            0.635599361,
+            0.244350755
+          ],
+          [
+            0.635608145,
+            0.244374134
+          ],
+          [
+            0.6359899,
+            0.244583046
+          ],
+          [
+            0.636012153,
+            0.244593141
+          ],
+          [
+            0.636033711,
+            0.244585015
+          ],
+          [
+            0.636240976,
+            0.244128103
+          ],
+          [
+            0.636362012,
+            0.244183007
+          ],
+          [
+            0.63635587,
+            0.244196595
+          ],
+          [
+            0.63649401,
+            0.244768508
+          ],
+          [
+            0.636502794,
+            0.244791886
+          ],
+          [
+            0.636884549,
+            0.245000799
+          ],
+          [
+            0.636906802,
+            0.245010894
+          ],
+          [
+            0.63692836,
+            0.245002767
+          ],
+          [
+            0.637151875,
+            0.244510032
+          ],
+          [
+            0.637272915,
+            0.244564938
+          ],
+          [
+            0.637062286,
+            0.245029265
+          ],
+          [
+            0.637070372,
+            0.245050839
+          ],
+          [
+            0.637348874,
+            0.245208448
+          ],
+          [
+            0.637806469,
+            0.245417512
+          ],
+          [
+            0.637828604,
+            0.245408192
+          ],
+          [
+            0.637850539,
+            0.245363193
+          ],
+          [
+            0.637854547,
+            0.245367537
+          ],
+          [
+            0.638080644,
+            0.24549476
+          ],
+          [
+            0.638565106,
+            0.245757446
+          ],
+          [
+            0.638589338,
+            0.245754204
+          ],
+          [
+            0.638603124,
+            0.245735283
+          ],
+          [
+            0.63879474,
+            0.245309687
+          ],
+          [
+            0.638793946,
+            0.245286618
+          ],
+          [
+            0.638777999,
+            0.245269754
+          ],
+          [
+            0.63810474,
+            0.244914702
+          ],
+          [
+            0.638081111,
+            0.244919784
+          ],
+          [
+            0.637962166,
+            0.245116705
+          ],
+          [
+            0.638066151,
+            0.244884521
+          ],
+          [
+            0.638058614,
+            0.244861743
+          ],
+          [
+            0.637600372,
+            0.244653877
+          ],
+          [
+            0.637297866,
+            0.24454941
+          ],
+          [
+            0.637278085,
+            0.244556822
+          ],
+          [
+            0.637279756,
+            0.244550178
+          ],
+          [
+            0.637158598,
+            0.244495211
+          ],
+          [
+            0.637167013,
+            0.244476655
+          ],
+          [
+            0.637159476,
+            0.244453878
+          ],
+          [
+            0.637137227,
+            0.244443785
+          ],
+          [
+            0.636689508,
+            0.244271962
+          ],
+          [
+            0.636387524,
+            0.244166247
+          ],
+          [
+            0.636367229,
+            0.24417479
+          ],
+          [
+            0.636368853,
+            0.244168247
+          ],
+          [
+            0.636247699,
+            0.244113282
+          ],
+          [
+            0.636272364,
+            0.244058903
+          ],
+          [
+            0.636264796,
+            0.24403611
+          ],
+          [
+            0.636242578,
+            0.244026032
+          ],
+          [
+            0.63579484,
+            0.243854203
+          ],
+          [
+            0.635492876,
+            0.243748494
+          ],
+          [
+            0.63547258,
+            0.243757038
+          ],
+          [
+            0.635474204,
+            0.243750495
+          ],
+          [
+            0.635353055,
+            0.243695532
+          ],
+          [
+            0.635377715,
+            0.243641164
+          ],
+          [
+            0.635370147,
+            0.243618371
+          ],
+          [
+            0.635347929,
+            0.243608293
+          ],
+          [
+            0.634900191,
+            0.243436464
+          ],
+          [
+            0.634598227,
+            0.243330756
+          ],
+          [
+            0.634577931,
+            0.243339299
+          ],
+          [
+            0.634579556,
+            0.243332756
+          ],
+          [
+            0.634458401,
+            0.24327779
+          ],
+          [
+            0.634483066,
+            0.243223412
+          ],
+          [
+            0.634475498,
+            0.243200618
+          ],
+          [
+            0.63445328,
+            0.243190541
+          ],
+          [
+            0.634005543,
+            0.243018711
+          ],
+          [
+            0.633703578,
+            0.242913003
+          ],
+          [
+            0.633683282,
+            0.242921547
+          ],
+          [
+            0.633684907,
+            0.242915003
+          ],
+          [
+            0.633563746,
+            0.242860035
+          ],
+          [
+            0.633588404,
+            0.242805673
+          ],
+          [
+            0.633580836,
+            0.242782879
+          ],
+          [
+            0.633558618,
+            0.242772802
+          ],
+          [
+            0.63311088,
+            0.242600973
+          ],
+          [
+            0.632808915,
+            0.242495264
+          ],
+          [
+            0.632788619,
+            0.242503808
+          ],
+          [
+            0.632790244,
+            0.242497265
+          ],
+          [
+            0.632669089,
+            0.242442299
+          ],
+          [
+            0.632693755,
+            0.242387921
+          ],
+          [
+            0.632686217,
+            0.242365143
+          ],
+          [
+            0.632664006,
+            0.242355065
+          ],
+          [
+            0.63221625,
+            0.242183227
+          ],
+          [
+            0.631914266,
+            0.242077512
+          ],
+          [
+            0.631892115,
+            0.242086862
+          ],
+          [
+            0.631882611,
+            0.242107861
+          ],
+          [
+            0.632020752,
+            0.242679773
+          ],
+          [
+            0.632029536,
+            0.242703151
+          ],
+          [
+            0.632411336,
+            0.242912086
+          ],
+          [
+            0.632433544,
+            0.242922159
+          ],
+          [
+            0.632455087,
+            0.242914061
+          ],
+          [
+            0.632662366,
+            0.24245712
+          ]
+        ]
+      },
+      {
+        "id": "parcel.border-road-greenspring-crossings.track-head-marks",
+        "districtId": "district.border-road-greenspring-crossings.the-crossings",
+        "use": "waymark",
+        "kind": "prop",
+        "buildingFamily": "road-dressing",
+        "interior": {
+          "kind": "none"
+        },
+        "groundFit": "dug-in",
+        "orientationWhy": "A cairn and a totem stand on the verge. The verge is where the track comes down to the road.",
+        "why": {
+          "what": "The end of the road at Greenspring has a stone cairn and a tribe totem at the track head. A few loose rocks lie on the verge toward the inlet.",
+          "whyHere": "The people of Greenspring keep this stretch. The verge is clear and the marks stand upright.",
+          "whySpot": "The marks stand beside the track head. They stand off the road on the uphill side.",
+          "whyNeighbours": "Greenspring lies up the track. The inlet deck is a short walk west.",
+          "playerPurpose": "The marks show a walker where the track to Greenspring leaves the road.",
+          "microGeography": "The ground is dry at the mountain foot. It is firm underfoot."
+        },
+        "assetRef": "vanilla:landscape/rocks/cairns/rockcairn02",
+        "centreUV": [
+          0.651841829,
+          0.241145781
+        ],
+        "yawDeg": 29.0,
+        "yMeasured": 7.8998,
+        "assembly": [
+          {
+            "id": "rk-deck-e-0",
+            "asset": "vanilla:landscape/rocks/rockm01",
+            "atM": [
+              -62.8135,
+              52.4372
+            ],
+            "yaw": 59.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": -0.5418
+          },
+          {
+            "id": "rk-deck-e-1",
+            "asset": "vanilla:landscape/rocks/rocks02",
+            "atM": [
+              -70.3529,
+              56.8222
+            ],
+            "yaw": 146.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": -0.289
+          },
+          {
+            "id": "rk-spur-0",
+            "asset": "vanilla:landscape/rocks/rockl01",
+            "atM": [
+              -81.0021,
+              -56.3438
+            ],
+            "yaw": 99.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 5.5229
+          },
+          {
+            "id": "rk-verge3-0",
+            "asset": "vanilla:landscape/rocks/rockm02",
+            "atM": [
+              -64.5274,
+              12.2379
+            ],
+            "yaw": 197.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": -0.4542
+          }
+        ],
+        "footprint": [
+          [
+            0.651645712,
+            0.24103242
+          ],
+          [
+            0.651700982,
+            0.240974671
+          ],
+          [
+            0.651805671,
+            0.240939663
+          ],
+          [
+            0.652021913,
+            0.241022313
+          ],
+          [
+            0.652058364,
+            0.2411216
+          ],
+          [
+            0.652068849,
+            0.241203393
+          ],
+          [
+            0.65201835,
+            0.241291697
+          ],
+          [
+            0.651841344,
+            0.241328486
+          ],
+          [
+            0.651768886,
+            0.241319334
+          ],
+          [
+            0.651689813,
+            0.241280155
+          ],
+          [
+            0.651626622,
+            0.241181552
+          ],
+          [
+            0.651614436,
+            0.241111222
+          ]
+        ]
+      },
+      {
+        "id": "parcel.border-road-greenspring-crossings.bank-road",
+        "districtId": "district.border-road-greenspring-crossings.the-crossings",
+        "use": "waymark",
+        "kind": "prop",
+        "buildingFamily": "road-dressing",
+        "interior": {
+          "kind": "none"
+        },
+        "groundFit": "direct",
+        "orientationWhy": "A cold fire ring lies on the flat above the inlet. Rocks lie along both bends of the bank road. A cairn stands at the west head of the inlet deck.",
+        "why": {
+          "what": "The bank road runs between the two crossings. It has rocks at the bends and a cold fire ring above the inlet where travellers stop. A cairn stands at the head of the inlet deck.",
+          "whyHere": "Greenspring maintains the plank crossings. Greenspring leaves the bank road between the crossings unkept. Fallen rocks lie on the bank road where they dropped. A cairn stands at the head of the inlet deck.",
+          "whySpot": "The fire ring stands on flat ground above the inlet. The road levels out there before the deck.",
+          "whyNeighbours": "The steps down to the river crossing lie west of the fire ring. The inlet deck lies east of the fire ring.",
+          "playerPurpose": "The fire ring is cold. Travellers can rest at it between the two crossings.",
+          "microGeography": "The ground is firm lowland on the bank top. The road is a worn earth strip."
+        },
+        "assetRef": "vanilla:clutter/woodfires/campfire01landoff",
+        "centreUV": [
+          0.627923765,
+          0.235844369
+        ],
+        "yawDeg": 0.0,
+        "yMeasured": 4.3073,
+        "assembly": [
+          {
+            "id": "cn-deck-w-0",
+            "asset": "vanilla:landscape/rocks/cairns/rockcairn04",
+            "atM": [
+              10.6,
+              40.61
+            ],
+            "yaw": 66.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 2.4101
+          },
+          {
+            "id": "cn-deck-w-1",
+            "asset": "vanilla:landscape/rocks/rockm01",
+            "atM": [
+              6.91,
+              39.76
+            ],
+            "yaw": 93.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 2.373
+          },
+          {
+            "id": "cn-deck-w-2",
+            "asset": "vanilla:landscape/rocks/rocks01",
+            "atM": [
+              9.99,
+              43.01
+            ],
+            "yaw": 209.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 2.2163
+          },
+          {
+            "id": "po-bend-1",
+            "asset": "vanilla:landscape/rocks/rocks02",
+            "atM": [
+              -2.85,
+              3.48
+            ],
+            "yaw": 221.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 3.9211
+          },
+          {
+            "id": "po-bend-2",
+            "asset": "vanilla:landscape/rocks/rocks03",
+            "atM": [
+              0.54,
+              5.47
+            ],
+            "yaw": 146.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 3.8364
+          },
+          {
+            "id": "rk-bend-bank-0",
+            "asset": "vanilla:landscape/rocks/rockl04",
+            "atM": [
+              -100.08,
+              -36.9
+            ],
+            "yaw": 276.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 8.1623
+          },
+          {
+            "id": "rk-bend-bank-1",
+            "asset": "vanilla:landscape/rocks/rockm03",
+            "atM": [
+              -74.89,
+              -35.0
+            ],
+            "yaw": 182.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 6.2392
+          },
+          {
+            "id": "rk-bend-bank-2",
+            "asset": "vanilla:landscape/rocks/rocks03",
+            "atM": [
+              -99.48,
+              -47.38
+            ],
+            "yaw": 41.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 8.2424
+          },
+          {
+            "id": "rk-bend-east-0",
+            "asset": "vanilla:landscape/rocks/rockm04",
+            "atM": [
+              -47.44,
+              28.26
+            ],
+            "yaw": 215.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 4.845
+          },
+          {
+            "id": "rk-bend-east-1",
+            "asset": "vanilla:landscape/rocks/rocks02",
+            "atM": [
+              -57.47,
+              10.83
+            ],
+            "yaw": 98.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 6.0525
+          },
+          {
+            "id": "rk-bend-east-2",
+            "asset": "vanilla:landscape/rocks/rockpiles03",
+            "atM": [
+              -38.16,
+              3.21
+            ],
+            "yaw": 204.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 4.7145
+          },
+          {
+            "id": "rk-verge-a-0",
+            "asset": "vanilla:landscape/rocks/rocks01",
+            "atM": [
+              -68.66,
+              -5.77
+            ],
+            "yaw": 140.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 6.3047
+          },
+          {
+            "id": "rk-verge2-0",
+            "asset": "vanilla:landscape/rocks/rocks03",
+            "atM": [
+              -7.51,
+              35.01
+            ],
+            "yaw": 276.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 3.0955
+          },
+          {
+            "id": "rk-verge2-1",
+            "asset": "vanilla:landscape/rocks/rockpiles01",
+            "atM": [
+              -20.14,
+              34.42
+            ],
+            "yaw": 220.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 3.9935
+          }
+        ],
+        "footprint": [
+          [
+            0.627572507,
+            0.235853862
+          ],
+          [
+            0.627685073,
+            0.235659925
+          ],
+          [
+            0.627801706,
+            0.235567703
+          ],
+          [
+            0.627925121,
+            0.235529729
+          ],
+          [
+            0.628051248,
+            0.235554141
+          ],
+          [
+            0.628158389,
+            0.23562602
+          ],
+          [
+            0.6282045,
+            0.235734516
+          ],
+          [
+            0.628218062,
+            0.235862
+          ],
+          [
+            0.628186869,
+            0.235973209
+          ],
+          [
+            0.628128552,
+            0.236074924
+          ],
+          [
+            0.628022768,
+            0.23615494
+          ],
+          [
+            0.627925121,
+            0.236188846
+          ],
+          [
+            0.627798994,
+            0.236163078
+          ],
+          [
+            0.627691854,
+            0.236091199
+          ],
+          [
+            0.627592851,
+            0.235989483
+          ]
+        ]
+      },
+      {
+        "id": "parcel.border-road-greenspring-crossings.river-crossing-head",
+        "districtId": "district.border-road-greenspring-crossings.the-crossings",
+        "use": "waymark",
+        "kind": "prop",
+        "buildingFamily": "road-dressing",
+        "interior": {
+          "kind": "none"
+        },
+        "groundFit": "dug-in",
+        "orientationWhy": "The cairn stands beside the north end of the river crossing. A grave mound lies on the flat ground beside the cairn.",
+        "why": {
+          "what": "A stone cairn stands at the north end of the river crossing. A low grave mound lies on the flat ground beside the cairn. Wet rocks lie at both ends of the planks.",
+          "whyHere": "The road reaches the river marsh at this spot. The cairn shows a walker from the west where the planks begin.",
+          "whySpot": "The cairn stands on the dry verge beside the first plank.",
+          "whyNeighbours": "The river crossing runs south from the cairn to the timber stair.",
+          "playerPurpose": "The cairn marks the start of the crossing for anyone coming from Stormhold. The grave mound shows that a traveller died on this stretch.",
+          "microGeography": "The cairn stands at the edge of the marsh. Dry ground meets black water there."
+        },
+        "assetRef": "vanilla:landscape/rocks/cairns/rockcairn01",
+        "centreUV": [
+          0.606510615,
+          0.210513137
+        ],
+        "yawDeg": 122.0,
+        "yMeasured": -0.4439,
+        "assembly": [
+          {
+            "id": "cn-bridge-n-1",
+            "asset": "vanilla:landscape/rocks/wetrocks/rockm02wet",
+            "atM": [
+              -3.5359,
+              -3.0733
+            ],
+            "yaw": 250.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": -0.5163
+          },
+          {
+            "id": "cn-bridge-n-2",
+            "asset": "vanilla:landscape/rocks/rockpiles01",
+            "atM": [
+              -7.8422,
+              -7.6815
+            ],
+            "yaw": 231.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": -0.1358
+          },
+          {
+            "id": "gr-verge1-0",
+            "asset": "vanilla:clutter/burialcairn/burialcairn02",
+            "atM": [
+              -4.6849,
+              -14.6305
+            ],
+            "yaw": 238.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "direct",
+            "yMeasured": -0.0689
+          },
+          {
+            "id": "rk-bridge-s-0",
+            "asset": "vanilla:landscape/rocks/wetrocks/rockm02wet",
+            "atM": [
+              51.3938,
+              -42.9039
+            ],
+            "yaw": 12.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": -0.5299
+          },
+          {
+            "id": "rk-bridge-s-1",
+            "asset": "vanilla:landscape/rocks/rocks03",
+            "atM": [
+              48.4439,
+              -44.1147
+            ],
+            "yaw": 281.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": -0.2608
+          }
+        ],
+        "footprint": [
+          [
+            0.606625609,
+            0.210380294
+          ],
+          [
+            0.606681536,
+            0.21043923
+          ],
+          [
+            0.606703823,
+            0.210493137
+          ],
+          [
+            0.606708858,
+            0.210523469
+          ],
+          [
+            0.606711016,
+            0.210545607
+          ],
+          [
+            0.606645038,
+            0.210617924
+          ],
+          [
+            0.606384693,
+            0.210619961
+          ],
+          [
+            0.606332364,
+            0.210606452
+          ],
+          [
+            0.606323447,
+            0.210559301
+          ],
+          [
+            0.60631381,
+            0.210500505
+          ],
+          [
+            0.606315963,
+            0.210471466
+          ],
+          [
+            0.606377055,
+            0.210412088
+          ],
+          [
+            0.606479261,
+            0.210356013
+          ],
+          [
+            0.606549701,
+            0.210345656
+          ]
+        ]
+      }
+    ],
+    "doors": [],
+    "routes": [
+      {
+        "id": "route.border-road-greenspring-crossings.track-head-marks-path",
+        "kind": "footpath",
+        "routing": "straight",
+        "widthM": 1.5,
+        "endsAt": [
+          "parcel.border-road-greenspring-crossings.track-head-marks"
+        ],
+        "why": "A few steps of trodden ground lead from the road to the cairn. The cairn stands at the track head.",
+        "via": [
+          [
+            0.650942664,
+            0.241269196
+          ],
+          [
+            0.65152312,
+            0.24118918
+          ]
+        ],
+        "points": [
+          [
+            0.650942664,
+            0.241269196
+          ],
+          [
+            0.651624888,
+            0.241171547
+          ]
+        ]
+      },
+      {
+        "id": "route.border-road-greenspring-crossings.bank-road-path",
+        "kind": "footpath",
+        "routing": "straight",
+        "widthM": 1.5,
+        "endsAt": [
+          "parcel.border-road-greenspring-crossings.bank-road"
+        ],
+        "why": "Trodden ground leads from the road to the cold fire ring. Travellers stop at the fire ring at the bend.",
+        "via": [
+          [
+            0.626654355,
+            0.237303647
+          ],
+          [
+            0.627645743,
+            0.236164434
+          ]
+        ],
+        "points": [
+          [
+            0.626654355,
+            0.237303647
+          ],
+          [
+            0.627693938,
+            0.236092597
+          ]
+        ]
+      },
+      {
+        "id": "route.border-road-greenspring-crossings.river-crossing-head-path",
+        "kind": "footpath",
+        "routing": "straight",
+        "widthM": 1.5,
+        "endsAt": [
+          "parcel.border-road-greenspring-crossings.river-crossing-head"
+        ],
+        "why": "A few steps of trodden ground lead from the road to the cairn. The cairn stands at the head of the river crossing.",
+        "via": [
+          [
+            0.606827968,
+            0.210041177
+          ],
+          [
+            0.606667935,
+            0.210278514
+          ]
+        ],
+        "points": [
+          [
+            0.606827968,
+            0.210041177
+          ],
+          [
+            0.606622201,
+            0.210378739
+          ]
+        ]
+      }
+    ],
+    "canals": [],
+    "boardwalks": [],
+    "fences": [],
+    "docks": [],
+    "landmarks": [],
+    "questSockets": [],
+    "travelServices": [],
+    "occupants": [],
+    "approaches": [
+      {
+        "id": "approach.border-road-greenspring-crossings.from-greenspring",
+        "mode": "walk",
+        "fromRouteId": "track.hist-heartland.greenspring",
+        "firstSeen": "parcel.border-road-greenspring-crossings.inlet-deck",
+        "viaUV": [
+          [
+            0.651834408,
+            0.247644
+          ],
+          [
+            0.651090729,
+            0.242083136
+          ]
+        ],
+        "sequence": "The approach runs down the track from Greenspring. A cairn and a totem mark where the track meets the road. West along the road, the planks of the inlet deck show low over the marsh.",
+        "wayfinding": "The road runs west from the track head. The road runs down to the inlet deck and on to the river crossing."
+      },
+      {
+        "id": "approach.border-road-greenspring-crossings.from-the-west",
+        "mode": "walk",
+        "fromRouteId": "route.road.stormhold-thorn",
+        "firstSeen": "parcel.border-road-greenspring-crossings.river-bridge",
+        "viaUV": [
+          [
+            0.603133,
+            0.205627169
+          ],
+          [
+            0.607537136,
+            0.211253146
+          ]
+        ],
+        "sequence": "The approach runs south-east along the road from Stormhold. A cairn marks the head of the river crossing. The planks run straight across the marsh to a steep timber stair.",
+        "wayfinding": "The way goes across the planks, up the stair and along the top of the bank."
+      }
+    ],
+    "networkTerminals": [
+      {
+        "id": "terminal.border-road-greenspring-crossings.west",
+        "routeId": "route.road.stormhold-thorn",
+        "entryUV": [
+          0.607537136,
+          0.211253146
+        ],
+        "wayId": "route.road.stormhold-thorn",
+        "kind": "road",
+        "why": "The road from Stormhold reaches the north end of the river crossing."
+      },
+      {
+        "id": "terminal.border-road-greenspring-crossings.greenspring-track",
+        "routeId": "track.hist-heartland.greenspring",
+        "entryUV": [
+          0.651115481,
+          0.242083136
+        ],
+        "wayId": "route.road.stormhold-thorn",
+        "kind": "road",
+        "why": "The Greenspring track meets the road at its east end."
+      }
+    ],
+    "combatSpaces": [
+      {
+        "id": "combat.border-road-greenspring-crossings.the-bank-top",
+        "aroundIds": [
+          "parcel.border-road-greenspring-crossings.river-bridge"
+        ],
+        "clearanceClass": "open",
+        "why": "The flat top of the river bank lies between the steps and the inlet. It is the single open footing between the two crossings.",
+        "boundary": [
+          [
+            0.605905424,
+            0.211076121
+          ],
+          [
+            0.605954388,
+            0.213284242
+          ],
+          [
+            0.605976277,
+            0.214271371
+          ],
+          [
+            0.606085803,
+            0.219210049
+          ],
+          [
+            0.606087247,
+            0.219253524
+          ],
+          [
+            0.606133817,
+            0.219755111
+          ],
+          [
+            0.606199347,
+            0.220288306
+          ],
+          [
+            0.606536634,
+            0.220579588
+          ],
+          [
+            0.606958256,
+            0.220565239
+          ],
+          [
+            0.607578329,
+            0.22004716
+          ],
+          [
+            0.607755681,
+            0.21985769
+          ],
+          [
+            0.60778294,
+            0.21920444
+          ],
+          [
+            0.607760666,
+            0.21819997
+          ],
+          [
+            0.607694998,
+            0.21523852
+          ],
+          [
+            0.607607362,
+            0.21128698
+          ],
+          [
+            0.607598979,
+            0.211034753
+          ],
+          [
+            0.607253726,
+            0.210712281
+          ],
+          [
+            0.606240036,
+            0.210745909
+          ]
+        ]
+      }
+    ],
+    "clearance": {
+      "hardClear": [],
+      "thinned": [],
+      "kept": []
+    },
+    "variants": [
+      {
+        "id": "variant.border-road-greenspring-crossings.base",
+        "changedRefs": [],
+        "serviceOverrides": {},
+        "ambience": "wild"
+      }
+    ],
+    "scaleGrounding": {
+      "loreSource": "The lore source is the route record route.road.stormhold-thorn. The route record describes the road as worn, with long timber bridges patched. The second source is world/sources/routes/route-structure-exemplars.json.",
+      "population": "0",
+      "households": 0,
+      "buildingsPlanned": 0,
+      "npcsPlanned": 0,
+      "why": "The place is a stretch of road. It has two plank crossings, a timber stair and road marks. The stretch has no residents."
+    },
+    "siting": {
+      "dossier": "world/sources/sites/dossiers/border-road-greenspring-crossings.json",
+      "candidates": [
+        {
+          "id": "candidate.border-road-greenspring-crossings.greenspring-crossings",
+          "positionM": [
+            4620.0,
+            1690.0
+          ],
+          "chosen": true,
+          "why": "The Border road below Greenspring crosses two marsh reaches. The crossing record bands both reaches as spans. crossing.major.009 is 36 m long and 1.32 m deep. crossing.major.012 is 26.4 m long and up to 1.07 m deep. The road climbs the river bank on a recorded stair. The road meets the built village's track. The stretch holds a bridge, a deck and a stair. No other place's ground lies on this stretch."
+        },
+        {
+          "id": "candidate.border-road-greenspring-crossings.claywater-leg",
+          "positionM": [
+            645.0,
+            3190.0
+          ],
+          "why": "The candidate is the Blackwood Road from Claywater Station east to the Greenditch stairs.",
+          "rejectedBecause": "Claywater already built the crossings on the Blackwood Road as fords and a ferry. The Blackwood Road needs no bridge or deck. Five unbuilt places hold the ground beside its stairs. The five places are Cartwright's Cross, Fort Greenditch, the Ridge-runners' Post, the Ashen Tower and the Drowned Embankment."
+        }
+      ]
+    },
+    "budget": {
+      "maxInstances": 80,
+      "maxUniqueMaterials": 40,
+      "maxTextureMB": 24,
+      "maxColliders": 60
+    },
+    "assetConstraints": [],
+    "proseRefs": [
+      {
+        "sourcePath": "approaches[0].sequence",
+        "placeRef": "place.hist-heartland.greenspring"
+      },
+      {
+        "sourcePath": "approaches[1].sequence",
+        "placeRef": "place.dunmer-north.stormhold"
+      },
+      {
+        "sourcePath": "causalModel.founding",
+        "placeRef": "place.dunmer-north.stormhold"
+      },
+      {
+        "sourcePath": "causalModel.founding",
+        "placeRef": "place.dunmer-north.thorn"
+      },
+      {
+        "sourcePath": "causalModel.founding",
+        "placeRef": "place.hist-heartland.greenspring"
+      },
+      {
+        "sourcePath": "districts[0].notes",
+        "placeRef": "place.hist-heartland.greenspring"
+      },
+      {
+        "sourcePath": "districts[0].why.playerPurpose",
+        "placeRef": "place.hist-heartland.greenspring"
+      },
+      {
+        "sourcePath": "districts[0].why.what",
+        "placeRef": "place.hist-heartland.greenspring"
+      },
+      {
+        "sourcePath": "districts[0].why.whyNeighbours",
+        "placeRef": "place.dunmer-north.stormhold"
+      },
+      {
+        "sourcePath": "districts[0].why.whyNeighbours",
+        "placeRef": "place.hist-heartland.greenspring"
+      },
+      {
+        "sourcePath": "networkTerminals[0].why",
+        "placeRef": "place.dunmer-north.stormhold"
+      },
+      {
+        "sourcePath": "networkTerminals[1].why",
+        "placeRef": "place.hist-heartland.greenspring"
+      },
+      {
+        "sourcePath": "parcels[2].why.playerPurpose",
+        "placeRef": "place.hist-heartland.greenspring"
+      },
+      {
+        "sourcePath": "parcels[2].why.whyNeighbours",
+        "placeRef": "place.hist-heartland.greenspring"
+      },
+      {
+        "sourcePath": "parcels[2].why.whySpot",
+        "placeRef": "place.hist-heartland.greenspring"
+      },
+      {
+        "sourcePath": "parcels[3].why.playerPurpose",
+        "placeRef": "place.hist-heartland.greenspring"
+      },
+      {
+        "sourcePath": "parcels[3].why.what",
+        "placeRef": "place.hist-heartland.greenspring"
+      },
+      {
+        "sourcePath": "parcels[3].why.whyHere",
+        "placeRef": "place.hist-heartland.greenspring"
+      },
+      {
+        "sourcePath": "parcels[3].why.whyNeighbours",
+        "placeRef": "place.hist-heartland.greenspring"
+      },
+      {
+        "sourcePath": "parcels[4].why.whyHere",
+        "placeRef": "place.hist-heartland.greenspring"
+      },
+      {
+        "sourcePath": "parcels[5].why.playerPurpose",
+        "placeRef": "place.dunmer-north.stormhold"
+      }
+    ],
+    "authoredOn": {
+      "wbSchemaVersion": 1,
+      "ground": {
+        "centreM": [
+          4620.0,
+          1690.0
+        ],
+        "halfM": 190.0,
+        "chunks": {
+          "chunk_9_3": "fefb62ea8c3727f815f5bf5c6f2101bd918f03eadf952e97888a0b0db6aed29d",
+          "chunk_10_3": "57cc9f49e4bdbcf9e1888acb334d770ab18567ba19a8e575e0af2c5763a52906",
+          "chunk_9_4": "7603bc740a904f20c9cba31bbffe744f6a9cfe1c562e6191b7d21e773adfe3a8",
+          "chunk_10_4": "56c799bc9919bf1eadaaf6b5289a4da7b8a73164555666c5cf93deb2cf5cff83"
+        },
+        "sha256": "2861793c32c2bcfb6ad7006b0590739c517fab96578c9d92c7aec1b635d16cfb"
+      },
+      "kits": {
+        "docks-v1": "1726cc6c3eb842b9dce935d2e8e084b7ff5655e39fc3dc50829bb8c4425b22be",
+        "flora-province-v1": "bbfee60dbf4dc98631f8978ed8f2a43ff2c1b92523298713d2d0b089ff317a7c",
+        "route-dressing-v1": "bdde7fc195938af4ecd6f37f653b71c5e675db7db376a6cc20b3c20196e19b08",
+        "settlement-mud-v1": "5ca9e8d0a5e7270ec7b492a5c221400550623764b04c8806982db853f9b3985f"
+      },
+      "layout": {
+        "path": "world/sources/blueprints/border-road-greenspring-crossings.layout.json",
+        "sha256": "d9828dd74d1b3f20b13704ae8d4cebce8c238e95c97e67d47e5fbbd7b6c0d469",
+        "uidSha256": {
+          "cn-bridge-n-0": "10d5666d7c243ee3b317c9aae2b48324bfe9a0c51861be280bf997d9f62bfb4c",
+          "cn-bridge-n-1": "5791bdccea82b15444d3011012422673d0f41d66fbdff1fe69a0b89217978106",
+          "cn-bridge-n-2": "2f3493930989c20e11fc7781df791d3c8a1a57d6969e21fe88efe3e09ff66f13",
+          "cn-deck-w-0": "9fb473e22f6a5f96c445bef8537f7cc18b531d767fe29a86cc2c2e93155a9e92",
+          "cn-deck-w-1": "d8db5d7cde98899b62b7e5ed04e438fa42bead5616364714160565c7849eb9d9",
+          "cn-deck-w-2": "b49d20ec923192c77c81602cc5dbf4198672f9047e9b79f50b081146d896e72a",
+          "gr-verge1-0": "7f4e359da407f97e276942f75b18eef5925c821abe90b6a32a4b8e8f5beede4e",
+          "ib-00": "75f51ec03b3a98496396b624a5bafb08fe4ecfed3ebc36a01bb993b2f23864a8",
+          "ib-01": "c9ff78d4f2fb4bb7d712bb36dc3e7238ed73e4bd613592c9ba7c21e2bbd9e28f",
+          "ib-02": "c5b668ebfcd59634053d58a27c3bf8849863535c5ba60ccc52f81c46e50d25d6",
+          "ib-03": "d08c2e6197e8b19f4e175cd2c37c750baf905d8a18a1b9eac5ab80d7bdf67f70",
+          "ib-04": "a5c0f74324bd2e50ac9c1dd3e87f802ea3d8d3ee8eddb40b00fb776f3cfe9eb4",
+          "ib-05": "581985588c922c68b38bde0bacf05f68db4e78092d0b40d03c2e2fcbe12d2458",
+          "ib-sol": "ae99ba0a128b57c4c3eca34db08234dfceb0a3ed5338bb5fcde0f73fdbb73a41",
+          "ib-step": "202cbbb68c1b87b397c4fd12705b949682acb0952ed3fd549d0ec1aec3a78687",
+          "po-bend-0": "522c84a9740c4cdf1cb342b8a58317d71920da25a5b3e3c6d4e3b6359774b72b",
+          "po-bend-1": "41d98ef803e2ba82a78bff45fcc5ec94ee9ee0298d03a137bd21e4320fd8fd82",
+          "po-bend-2": "6a07092f9f8e2a2ff64177a29727984eb5ce67fc44c642df9f75f1769ee17fc8",
+          "rb-00": "eeab98d3c195bdf56d76cc7578794fc0d04cfcd90dd7c0fbb347ffe548b3af2c",
+          "rb-01": "2a6db60c2cf8b07e891dcf9385952415e57147d0ac2bc0e64f3d91ea39078303",
+          "rb-02": "ce5ccce9d7ddce5b3b57901a4eefb5e5cb8a49206bfc2dfacbd6ac7f8775c7d2",
+          "rb-03": "44ae59f0d57abf2371ce05dcdf73a978df11dd18188e6518d2f36a29c448a062",
+          "rb-04": "68fba95b3ab33b23159318f51bf3a2f1947b6687b8c7725bcbe4f64e8b08fc68",
+          "rb-05": "a76bb9ff8a9a6ca240f9469aadbefe3608c722351c20f1b1b3c5f2b6669cd76e",
+          "rb-06": "93f90d53073c638fdbfd16156420f69ae4b3438ed8bb081ffe22c3b40edf5b7a",
+          "rb-07": "e2273ece7841c8cdfba41b2afae0dc632fd796f2d730206011060a4566f240ac",
+          "rb-08": "64dea7688228adac14dab751889a65ae3bc95fbf7d50a8e20d6f035d260dc343",
+          "rk-bend-bank-0": "5bcab13cc7fba183a861e1479d6c093c29f4258d0163908ec98c08473f1cdef1",
+          "rk-bend-bank-1": "05e0769975feccef082e873980b917865e6bfcbb9b6af602e935930d9477e8f6",
+          "rk-bend-bank-2": "a981d78c6c7ce59979713000e9c317481e36c73f86d50838f107d98fcf035394",
+          "rk-bend-east-0": "2c2d03a7036f602182b05d58af0c58c47091f7ca7705ce7b8a2d7f78d07971c9",
+          "rk-bend-east-1": "d98ec2d5904b5b2e7d0d1e18e49de15759dea79e955c708b308e1943330aa2af",
+          "rk-bend-east-2": "b573b7e1a392ccb729e21c9ac04d617987e2234ee180ee80493c5686a0b2b108",
+          "rk-bridge-s-0": "6f45895a993ee9e63cedcaf04d4ac25794806f7940f0ecdc05aaa48256bc54cb",
+          "rk-bridge-s-1": "61617b6060b888624354829f3b8c7f3bf591685317d56af1e96061b430b18eb0",
+          "rk-deck-e-0": "a9b95b9d0d1ddbf1d0d6888b2681e9e94076cfcb71ccb397a9e54d928c3445b9",
+          "rk-deck-e-1": "8341094a13009382d7d2c2b8c19214b05d787354b067dc0d97f0d0ef12ccfc0d",
+          "rk-spur-0": "70155fc347e54ee3e1e1c1cd11304698d14a87e231fba84c7037b6bb96231f39",
+          "rk-verge-a-0": "923e06bd960ca1786016ac86d89de29f9eb3d6ca072569809da1b502d5cbf2ec",
+          "rk-verge2-0": "57a8e941556f08fd02bf9df9e28f6c0dbc61504bb7e8afc941cd8aae1710d4d4",
+          "rk-verge2-1": "a0326ec42d227f34d404dbc03199fddf0cbe262be44fdcfefa7f421eb9189cfb",
+          "rk-verge3-0": "cec9d12e40f2a7b9a8677ba4e5abe2e3e7398c52ba20dae8ff608385a558fc28",
+          "route.border-road-greenspring-crossings.bank-road-path": "a61ec2cc8f477bb090ebb13282dcea445dca132f11d0aa05620ee46985b9818b",
+          "route.border-road-greenspring-crossings.river-crossing-head-path": "85288815c90ade7771c9b1aafdc8f15ebb04a329d0d4e30f33b41bc2b727c64d",
+          "route.border-road-greenspring-crossings.track-head-marks-path": "755141c3145ada71c1bdcf03fb15e8bc4a5c5de937d70735908b953343f7ae09",
+          "st-0": "0d3a86dc31a78a5e970970abb84a3a4dd68d002067a03635ac29ea6d820085ef",
+          "st-1": "c0bc907ad25e67ee1f6060857dbf557895bb5906eac6b7382c3bba32859a7649",
+          "st-2": "15d2c45ad076cc627508a3092daf138897a603d4c85eb47daf221f399798f8e6",
+          "wm-track-0": "1cb207a369f2d96cf9de7cb047c9381d971f0e6bd82858909e8c3f4afd618964"
+        },
+        "geometrySha256": "8688ab3989ad37b9a72d64b1c5e6f64fa8f98fdcb773ebb49aff658ca2adac99"
+      }
+    },
+    "walkRoutes": {
+      "schemaVersion": 1,
+      "cellM": 0.5,
+      "stepM": 0.45,
+      "slopeMaxDeg": 30.0,
+      "wadeMaxM": 0.7,
+      "routes": {
+        "opening:wm-track-0": {
+          "points": [
+            [
+              4479.66,
+              -0.05,
+              1557.88
+            ],
+            [
+              4482.66,
+              -0.05,
+              1557.88
+            ],
+            [
+              4483.66,
+              -0.05,
+              1558.88
+            ],
+            [
+              4496.66,
+              -0.05,
+              1558.88
+            ],
+            [
+              4506.66,
+              -0.05,
+              1568.88
+            ],
+            [
+              4507.66,
+              -0.05,
+              1568.88
+            ],
+            [
+              4511.16,
+              -0.05,
+              1572.38
+            ],
+            [
+              4511.66,
+              -0.05,
+              1572.38
+            ],
+            [
+              4515.16,
+              -0.05,
+              1575.88
+            ],
+            [
+              4516.66,
+              -0.05,
+              1575.88
+            ],
+            [
+              4518.66,
+              -0.05,
+              1577.88
+            ],
+            [
+              4521.66,
+              -0.05,
+              1577.88
+            ],
+            [
+              4531.16,
+              -0.05,
+              1587.38
+            ],
+            [
+              4546.16,
+              -0.05,
+              1587.38
+            ],
+            [
+              4558.66,
+              -0.05,
+              1599.88
+            ],
+            [
+              4569.66,
+              -0.05,
+              1599.88
+            ],
+            [
+              4628.16,
+              -0.05,
+              1658.38
+            ],
+            [
+              4633.66,
+              -0.05,
+              1658.38
+            ],
+            [
+              4650.66,
+              -0.05,
+              1675.38
+            ],
+            [
+              4651.16,
+              -0.06,
+              1675.88
+            ],
+            [
+              4651.66,
+              -0.06,
+              1676.38
+            ],
+            [
+              4652.16,
+              -0.07,
+              1676.88
+            ],
+            [
+              4652.66,
+              -0.07,
+              1677.38
+            ],
+            [
+              4653.66,
+              -0.09,
+              1678.38
+            ],
+            [
+              4654.16,
+              -0.09,
+              1678.88
+            ],
+            [
+              4655.16,
+              -0.11,
+              1679.88
+            ],
+            [
+              4655.66,
+              -0.11,
+              1680.38
+            ],
+            [
+              4656.66,
+              -0.11,
+              1680.38
+            ],
+            [
+              4657.16,
+              -0.12,
+              1680.38
+            ],
+            [
+              4658.16,
+              -0.12,
+              1681.38
+            ],
+            [
+              4659.16,
+              -0.12,
+              1681.38
+            ],
+            [
+              4659.66,
+              -0.13,
+              1681.88
+            ],
+            [
+              4660.16,
+              -0.13,
+              1682.38
+            ],
+            [
+              4662.16,
+              -0.13,
+              1682.38
+            ],
+            [
+              4662.66,
+              -0.14,
+              1682.38
+            ],
+            [
+              4664.16,
+              -0.14,
+              1682.38
+            ],
+            [
+              4664.66,
+              -0.15,
+              1682.38
+            ],
+            [
+              4666.16,
+              -0.15,
+              1682.38
+            ],
+            [
+              4666.66,
+              -0.16,
+              1682.38
+            ],
+            [
+              4667.66,
+              -0.16,
+              1682.38
+            ],
+            [
+              4668.16,
+              -0.17,
+              1682.88
+            ],
+            [
+              4669.16,
+              -0.17,
+              1682.88
+            ],
+            [
+              4669.66,
+              -0.17,
+              1683.38
+            ],
+            [
+              4670.16,
+              -0.18,
+              1683.88
+            ],
+            [
+              4670.66,
+              -0.18,
+              1683.88
+            ],
+            [
+              4671.16,
+              -0.19,
+              1683.88
+            ],
+            [
+              4671.66,
+              -0.19,
+              1683.88
+            ],
+            [
+              4672.16,
+              -0.19,
+              1684.38
+            ],
+            [
+              4673.16,
+              -0.21,
+              1685.38
+            ],
+            [
+              4673.66,
+              -0.21,
+              1685.88
+            ],
+            [
+              4674.16,
+              -0.22,
+              1686.38
+            ],
+            [
+              4675.16,
+              -0.22,
+              1687.38
+            ],
+            [
+              4675.66,
+              -0.23,
+              1687.88
+            ],
+            [
+              4677.66,
+              -0.23,
+              1689.88
+            ],
+            [
+              4678.16,
+              -0.24,
+              1690.38
+            ],
+            [
+              4680.16,
+              -0.24,
+              1692.38
+            ],
+            [
+              4680.66,
+              -0.25,
+              1692.88
+            ],
+            [
+              4681.66,
+              -0.25,
+              1693.88
+            ],
+            [
+              4682.16,
+              -0.26,
+              1694.38
+            ],
+            [
+              4682.66,
+              -0.26,
+              1694.88
+            ],
+            [
+              4683.66,
+              -0.28,
+              1695.88
+            ],
+            [
+              4684.16,
+              -0.28,
+              1695.88
+            ],
+            [
+              4686.16,
+              -0.32,
+              1697.88
+            ],
+            [
+              4686.66,
+              -0.32,
+              1698.38
+            ],
+            [
+              4690.66,
+              -0.4,
+              1702.38
+            ],
+            [
+              4691.16,
+              -0.42,
+              1702.88
+            ],
+            [
+              4691.66,
+              -0.43,
+              1703.38
+            ],
+            [
+              4692.16,
+              -0.43,
+              1703.38
+            ],
+            [
+              4693.16,
+              -0.45,
+              1703.38
+            ],
+            [
+              4693.66,
+              -0.47,
+              1703.38
+            ],
+            [
+              4694.16,
+              -0.48,
+              1703.38
+            ],
+            [
+              4695.16,
+              -0.48,
+              1703.38
+            ],
+            [
+              4695.66,
+              -0.49,
+              1703.38
+            ],
+            [
+              4696.16,
+              -0.52,
+              1703.88
+            ],
+            [
+              4696.66,
+              -0.56,
+              1704.38
+            ],
+            [
+              4697.66,
+              -0.62,
+              1705.38
+            ],
+            [
+              4698.16,
+              -0.63,
+              1705.38
+            ],
+            [
+              4698.66,
+              -0.65,
+              1705.38
+            ],
+            [
+              4699.66,
+              -0.67,
+              1705.38
+            ],
+            [
+              4700.16,
+              -0.67,
+              1705.38
+            ],
+            [
+              4700.66,
+              -0.66,
+              1705.38
+            ],
+            [
+              4701.16,
+              -0.66,
+              1705.38
+            ],
+            [
+              4701.66,
+              -0.65,
+              1705.38
+            ],
+            [
+              4702.16,
+              -0.65,
+              1705.38
+            ],
+            [
+              4702.66,
+              -0.64,
+              1705.38
+            ],
+            [
+              4703.16,
+              -0.64,
+              1705.88
+            ],
+            [
+              4704.16,
+              -0.56,
+              1706.88
+            ],
+            [
+              4704.66,
+              -0.53,
+              1707.38
+            ],
+            [
+              4705.16,
+              -0.49,
+              1707.88
+            ],
+            [
+              4706.66,
+              -0.34,
+              1709.38
+            ],
+            [
+              4707.16,
+              -0.31,
+              1709.88
+            ],
+            [
+              4707.66,
+              -0.29,
+              1710.38
+            ],
+            [
+              4708.16,
+              -0.26,
+              1710.88
+            ],
+            [
+              4708.66,
+              -0.24,
+              1711.38
+            ],
+            [
+              4709.16,
+              -0.24,
+              1711.88
+            ],
+            [
+              4710.66,
+              -0.21,
+              1713.38
+            ],
+            [
+              4714.66,
+              -0.21,
+              1717.38
+            ],
+            [
+              4715.16,
+              -0.22,
+              1717.88
+            ],
+            [
+              4717.16,
+              -0.22,
+              1719.88
+            ],
+            [
+              4717.66,
+              -0.21,
+              1720.38
+            ],
+            [
+              4718.16,
+              -0.21,
+              1720.88
+            ],
+            [
+              4719.66,
+              -0.18,
+              1722.38
+            ],
+            [
+              4721.16,
+              -0.18,
+              1722.38
+            ],
+            [
+              4721.66,
+              -0.17,
+              1722.38
+            ],
+            [
+              4722.66,
+              -0.17,
+              1722.38
+            ],
+            [
+              4723.66,
+              -0.15,
+              1723.38
+            ],
+            [
+              4726.66,
+              -0.15,
+              1726.38
+            ],
+            [
+              4727.16,
+              -0.21,
+              1726.88
+            ],
+            [
+              4728.66,
+              -0.48,
+              1728.38
+            ],
+            [
+              4730.16,
+              -0.48,
+              1729.88
+            ],
+            [
+              4730.66,
+              -0.52,
+              1730.38
+            ],
+            [
+              4731.16,
+              -0.58,
+              1730.88
+            ],
+            [
+              4731.66,
+              -0.63,
+              1731.38
+            ],
+            [
+              4732.16,
+              -0.67,
+              1731.38
+            ],
+            [
+              4732.66,
+              -0.67,
+              1731.38
+            ],
+            [
+              4733.16,
+              -0.66,
+              1731.38
+            ],
+            [
+              4733.66,
+              -0.66,
+              1731.38
+            ],
+            [
+              4734.16,
+              -0.65,
+              1731.38
+            ],
+            [
+              4737.16,
+              -0.41,
+              1731.38
+            ],
+            [
+              4737.66,
+              -0.4,
+              1731.38
+            ],
+            [
+              4738.16,
+              -0.17,
+              1730.88
+            ],
+            [
+              4738.66,
+              -0.13,
+              1730.88
+            ],
+            [
+              4738.16,
+              0.2,
+              1730.38
+            ],
+            [
+              4738.16,
+              0.23,
+              1729.88
+            ],
+            [
+              4738.66,
+              0.62,
+              1730.38
+            ],
+            [
+              4739.16,
+              0.66,
+              1730.38
+            ],
+            [
+              4738.66,
+              0.98,
+              1729.88
+            ],
+            [
+              4738.66,
+              1.02,
+              1729.38
+            ],
+            [
+              4739.16,
+              1.41,
+              1729.88
+            ],
+            [
+              4739.66,
+              1.45,
+              1729.88
+            ],
+            [
+              4739.16,
+              1.77,
+              1729.38
+            ],
+            [
+              4739.16,
+              1.82,
+              1728.88
+            ],
+            [
+              4739.66,
+              2.2,
+              1729.38
+            ],
+            [
+              4740.66,
+              2.32,
+              1729.38
+            ],
+            [
+              4741.16,
+              2.71,
+              1728.88
+            ],
+            [
+              4741.66,
+              2.78,
+              1728.88
+            ],
+            [
+              4742.16,
+              2.86,
+              1728.88
+            ],
+            [
+              4742.66,
+              2.91,
+              1729.38
+            ],
+            [
+              4743.16,
+              2.97,
+              1729.38
+            ],
+            [
+              4743.66,
+              3.01,
+              1729.38
+            ],
+            [
+              4744.16,
+              3.06,
+              1729.38
+            ],
+            [
+              4744.66,
+              3.12,
+              1729.38
+            ],
+            [
+              4746.66,
+              3.32,
+              1729.38
+            ],
+            [
+              4747.16,
+              3.38,
+              1729.38
+            ],
+            [
+              4747.66,
+              3.4,
+              1729.88
+            ],
+            [
+              4748.16,
+              3.41,
+              1730.38
+            ],
+            [
+              4748.66,
+              3.48,
+              1730.38
+            ],
+            [
+              4749.16,
+              3.5,
+              1730.88
+            ],
+            [
+              4749.66,
+              3.58,
+              1731.38
+            ],
+            [
+              4750.16,
+              3.65,
+              1731.88
+            ],
+            [
+              4750.66,
+              3.7,
+              1732.38
+            ],
+            [
+              4751.16,
+              3.76,
+              1732.88
+            ],
+            [
+              4751.66,
+              3.84,
+              1733.38
+            ],
+            [
+              4752.16,
+              3.91,
+              1733.88
+            ],
+            [
+              4752.66,
+              3.99,
+              1734.38
+            ],
+            [
+              4753.16,
+              4.05,
+              1734.88
+            ],
+            [
+              4753.66,
+              4.13,
+              1735.38
+            ],
+            [
+              4754.16,
+              4.19,
+              1735.88
+            ],
+            [
+              4755.16,
+              4.33,
+              1736.88
+            ],
+            [
+              4756.16,
+              4.45,
+              1737.88
+            ],
+            [
+              4756.66,
+              4.52,
+              1738.38
+            ],
+            [
+              4757.16,
+              4.58,
+              1738.88
+            ],
+            [
+              4757.66,
+              4.62,
+              1739.38
+            ],
+            [
+              4758.16,
+              4.67,
+              1739.88
+            ],
+            [
+              4758.66,
+              4.7,
+              1740.38
+            ],
+            [
+              4759.66,
+              4.74,
+              1741.38
+            ],
+            [
+              4760.16,
+              4.77,
+              1741.88
+            ],
+            [
+              4760.66,
+              4.82,
+              1742.38
+            ],
+            [
+              4761.16,
+              4.88,
+              1742.88
+            ],
+            [
+              4762.66,
+              5.09,
+              1744.38
+            ],
+            [
+              4765.16,
+              5.49,
+              1746.88
+            ],
+            [
+              4765.66,
+              5.56,
+              1747.38
+            ],
+            [
+              4766.16,
+              5.64,
+              1747.88
+            ],
+            [
+              4767.16,
+              5.78,
+              1748.88
+            ],
+            [
+              4767.66,
+              5.81,
+              1749.38
+            ],
+            [
+              4768.16,
+              5.83,
+              1749.88
+            ],
+            [
+              4768.66,
+              5.86,
+              1750.38
+            ],
+            [
+              4769.16,
+              5.91,
+              1750.38
+            ],
+            [
+              4769.66,
+              5.95,
+              1750.38
+            ],
+            [
+              4770.66,
+              6.05,
+              1750.38
+            ],
+            [
+              4771.16,
+              6.08,
+              1750.38
+            ],
+            [
+              4771.66,
+              6.12,
+              1750.38
+            ],
+            [
+              4772.16,
+              6.15,
+              1750.88
+            ],
+            [
+              4772.66,
+              6.19,
+              1750.88
+            ],
+            [
+              4773.16,
+              6.22,
+              1751.38
+            ],
+            [
+              4773.66,
+              6.24,
+              1751.88
+            ],
+            [
+              4774.66,
+              6.34,
+              1752.88
+            ],
+            [
+              4776.66,
+              6.5,
+              1754.88
+            ],
+            [
+              4779.16,
+              6.65,
+              1757.38
+            ],
+            [
+              4779.66,
+              6.7,
+              1757.88
+            ],
+            [
+              4780.16,
+              6.72,
+              1758.38
+            ],
+            [
+              4780.66,
+              6.77,
+              1758.88
+            ],
+            [
+              4781.16,
+              6.83,
+              1759.38
+            ],
+            [
+              4781.66,
+              6.89,
+              1759.38
+            ],
+            [
+              4782.66,
+              6.99,
+              1760.38
+            ],
+            [
+              4783.16,
+              7.05,
+              1760.88
+            ],
+            [
+              4784.16,
+              7.15,
+              1761.88
+            ],
+            [
+              4784.66,
+              7.17,
+              1762.38
+            ],
+            [
+              4785.16,
+              7.18,
+              1762.88
+            ],
+            [
+              4786.16,
+              7.24,
+              1763.88
+            ],
+            [
+              4786.66,
+              7.26,
+              1764.38
+            ],
+            [
+              4787.16,
+              7.29,
+              1764.88
+            ],
+            [
+              4788.16,
+              7.37,
+              1765.88
+            ],
+            [
+              4788.66,
+              7.4,
+              1766.38
+            ],
+            [
+              4789.66,
+              7.42,
+              1767.38
+            ],
+            [
+              4790.16,
+              7.41,
+              1767.88
+            ],
+            [
+              4790.66,
+              7.41,
+              1768.38
+            ],
+            [
+              4791.16,
+              7.42,
+              1768.88
+            ],
+            [
+              4792.16,
+              7.46,
+              1769.88
+            ],
+            [
+              4795.16,
+              7.76,
+              1772.88
+            ],
+            [
+              4795.66,
+              7.8,
+              1773.38
+            ],
+            [
+              4796.66,
+              7.9,
+              1774.38
+            ],
+            [
+              4797.16,
+              7.98,
+              1774.88
+            ],
+            [
+              4797.66,
+              8.04,
+              1775.38
+            ],
+            [
+              4798.16,
+              8.04,
+              1775.38
+            ],
+            [
+              4799.16,
+              7.96,
+              1776.38
+            ],
+            [
+              4799.66,
+              7.94,
+              1776.88
+            ],
+            [
+              4800.16,
+              7.99,
+              1777.38
+            ],
+            [
+              4801.16,
+              8.09,
+              1777.38
+            ],
+            [
+              4801.66,
+              8.15,
+              1777.38
+            ],
+            [
+              4802.16,
+              8.17,
+              1777.38
+            ],
+            [
+              4802.66,
+              8.18,
+              1777.38
+            ],
+            [
+              4803.66,
+              8.22,
+              1777.38
+            ]
+          ],
+          "routeM": 423.07,
+          "steepestDeg": 29.0,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.67,
+          "parcelId": "parcel.border-road-greenspring-crossings.track-head-marks"
+        },
+        "opening:po-bend-0": {
+          "points": [
+            [
+              4479.66,
+              -0.05,
+              1557.88
+            ],
+            [
+              4479.66,
+              -0.05,
+              1559.38
+            ],
+            [
+              4476.66,
+              -0.05,
+              1562.38
+            ],
+            [
+              4476.16,
+              0.15,
+              1562.88
+            ],
+            [
+              4476.16,
+              0.15,
+              1623.38
+            ],
+            [
+              4475.66,
+              -0.03,
+              1623.88
+            ],
+            [
+              4475.66,
+              1.13,
+              1624.88
+            ],
+            [
+              4475.66,
+              1.72,
+              1625.38
+            ],
+            [
+              4475.66,
+              2.3,
+              1625.88
+            ],
+            [
+              4475.66,
+              2.89,
+              1626.38
+            ],
+            [
+              4475.66,
+              4.05,
+              1627.38
+            ],
+            [
+              4475.66,
+              4.64,
+              1627.88
+            ],
+            [
+              4475.66,
+              5.8,
+              1628.88
+            ],
+            [
+              4475.66,
+              6.39,
+              1629.38
+            ],
+            [
+              4475.66,
+              6.96,
+              1629.88
+            ],
+            [
+              4475.66,
+              7.56,
+              1630.38
+            ],
+            [
+              4475.66,
+              7.85,
+              1630.88
+            ],
+            [
+              4476.66,
+              7.95,
+              1631.88
+            ],
+            [
+              4477.16,
+              7.99,
+              1632.38
+            ],
+            [
+              4477.66,
+              8.01,
+              1632.88
+            ],
+            [
+              4478.66,
+              8.09,
+              1633.88
+            ],
+            [
+              4479.16,
+              8.12,
+              1634.38
+            ],
+            [
+              4479.66,
+              8.14,
+              1634.88
+            ],
+            [
+              4480.16,
+              8.17,
+              1635.38
+            ],
+            [
+              4481.66,
+              8.32,
+              1636.88
+            ],
+            [
+              4482.66,
+              8.44,
+              1637.88
+            ],
+            [
+              4483.16,
+              8.52,
+              1638.38
+            ],
+            [
+              4483.66,
+              8.59,
+              1638.88
+            ],
+            [
+              4484.16,
+              8.65,
+              1639.38
+            ],
+            [
+              4486.16,
+              8.81,
+              1641.38
+            ],
+            [
+              4486.66,
+              8.83,
+              1641.88
+            ],
+            [
+              4487.16,
+              8.87,
+              1642.38
+            ],
+            [
+              4487.66,
+              8.89,
+              1642.88
+            ],
+            [
+              4489.16,
+              8.89,
+              1644.38
+            ],
+            [
+              4490.66,
+              8.83,
+              1645.88
+            ],
+            [
+              4491.16,
+              8.8,
+              1646.38
+            ],
+            [
+              4491.66,
+              8.78,
+              1646.88
+            ],
+            [
+              4492.16,
+              8.74,
+              1647.38
+            ],
+            [
+              4492.66,
+              8.73,
+              1647.88
+            ],
+            [
+              4493.16,
+              8.71,
+              1648.38
+            ],
+            [
+              4493.66,
+              8.7,
+              1648.88
+            ],
+            [
+              4493.66,
+              8.71,
+              1649.38
+            ],
+            [
+              4494.66,
+              8.71,
+              1650.38
+            ],
+            [
+              4495.16,
+              8.72,
+              1650.88
+            ],
+            [
+              4495.66,
+              8.72,
+              1651.38
+            ],
+            [
+              4496.16,
+              8.75,
+              1651.88
+            ],
+            [
+              4498.16,
+              8.83,
+              1653.88
+            ],
+            [
+              4498.66,
+              8.86,
+              1654.38
+            ],
+            [
+              4499.66,
+              8.9,
+              1655.38
+            ],
+            [
+              4500.16,
+              8.93,
+              1655.88
+            ],
+            [
+              4500.66,
+              8.93,
+              1656.38
+            ],
+            [
+              4501.16,
+              8.94,
+              1656.88
+            ],
+            [
+              4501.16,
+              8.96,
+              1657.38
+            ],
+            [
+              4501.66,
+              8.93,
+              1657.88
+            ],
+            [
+              4502.66,
+              8.89,
+              1658.88
+            ],
+            [
+              4504.66,
+              8.77,
+              1660.88
+            ],
+            [
+              4504.66,
+              8.79,
+              1661.38
+            ],
+            [
+              4505.16,
+              8.75,
+              1661.88
+            ],
+            [
+              4505.16,
+              8.78,
+              1662.38
+            ],
+            [
+              4505.16,
+              8.79,
+              1662.88
+            ],
+            [
+              4505.16,
+              8.81,
+              1663.38
+            ],
+            [
+              4505.66,
+              8.78,
+              1663.88
+            ],
+            [
+              4506.16,
+              8.76,
+              1664.38
+            ],
+            [
+              4506.66,
+              8.72,
+              1664.88
+            ],
+            [
+              4507.16,
+              8.69,
+              1665.38
+            ],
+            [
+              4507.66,
+              8.67,
+              1665.88
+            ],
+            [
+              4508.16,
+              8.64,
+              1666.38
+            ],
+            [
+              4508.16,
+              8.68,
+              1666.88
+            ],
+            [
+              4508.66,
+              8.62,
+              1667.38
+            ],
+            [
+              4509.16,
+              8.54,
+              1667.88
+            ],
+            [
+              4509.66,
+              8.47,
+              1668.38
+            ],
+            [
+              4509.66,
+              8.51,
+              1668.88
+            ],
+            [
+              4510.16,
+              8.43,
+              1669.38
+            ],
+            [
+              4510.66,
+              8.36,
+              1669.88
+            ],
+            [
+              4511.16,
+              8.3,
+              1670.38
+            ],
+            [
+              4511.66,
+              8.28,
+              1670.88
+            ],
+            [
+              4512.66,
+              8.28,
+              1671.88
+            ],
+            [
+              4513.16,
+              8.3,
+              1672.38
+            ],
+            [
+              4513.66,
+              8.34,
+              1672.88
+            ],
+            [
+              4515.16,
+              8.43,
+              1674.38
+            ],
+            [
+              4515.66,
+              8.44,
+              1674.88
+            ],
+            [
+              4516.16,
+              8.44,
+              1675.38
+            ],
+            [
+              4516.66,
+              8.43,
+              1675.88
+            ],
+            [
+              4517.16,
+              8.43,
+              1676.38
+            ],
+            [
+              4517.66,
+              8.41,
+              1676.88
+            ],
+            [
+              4517.66,
+              8.43,
+              1677.88
+            ],
+            [
+              4518.16,
+              8.39,
+              1678.38
+            ],
+            [
+              4518.16,
+              8.45,
+              1679.88
+            ],
+            [
+              4519.16,
+              8.45,
+              1680.88
+            ],
+            [
+              4519.66,
+              8.44,
+              1681.38
+            ],
+            [
+              4520.16,
+              8.44,
+              1681.88
+            ],
+            [
+              4520.66,
+              8.49,
+              1682.38
+            ],
+            [
+              4521.16,
+              8.52,
+              1682.88
+            ],
+            [
+              4521.66,
+              8.51,
+              1683.38
+            ],
+            [
+              4522.16,
+              8.51,
+              1683.88
+            ],
+            [
+              4522.66,
+              8.52,
+              1684.38
+            ],
+            [
+              4523.16,
+              8.49,
+              1684.88
+            ],
+            [
+              4523.66,
+              8.44,
+              1685.38
+            ],
+            [
+              4524.16,
+              8.4,
+              1685.88
+            ],
+            [
+              4524.66,
+              8.37,
+              1686.38
+            ],
+            [
+              4525.16,
+              8.32,
+              1686.88
+            ],
+            [
+              4525.66,
+              8.28,
+              1687.38
+            ],
+            [
+              4526.16,
+              8.27,
+              1687.88
+            ],
+            [
+              4527.16,
+              8.29,
+              1688.88
+            ],
+            [
+              4527.66,
+              8.28,
+              1688.88
+            ],
+            [
+              4528.66,
+              8.32,
+              1688.88
+            ],
+            [
+              4529.16,
+              8.35,
+              1688.88
+            ],
+            [
+              4529.66,
+              8.38,
+              1689.38
+            ],
+            [
+              4530.16,
+              8.37,
+              1689.38
+            ],
+            [
+              4530.66,
+              8.38,
+              1689.88
+            ],
+            [
+              4531.16,
+              8.38,
+              1690.38
+            ],
+            [
+              4531.66,
+              8.35,
+              1690.88
+            ],
+            [
+              4532.16,
+              8.31,
+              1691.38
+            ],
+            [
+              4532.66,
+              8.21,
+              1691.88
+            ],
+            [
+              4533.16,
+              8.09,
+              1692.38
+            ],
+            [
+              4533.66,
+              7.99,
+              1692.88
+            ],
+            [
+              4534.16,
+              7.91,
+              1693.38
+            ],
+            [
+              4534.66,
+              7.87,
+              1693.88
+            ],
+            [
+              4535.16,
+              7.86,
+              1694.38
+            ],
+            [
+              4535.66,
+              7.88,
+              1694.88
+            ],
+            [
+              4536.16,
+              7.93,
+              1695.38
+            ],
+            [
+              4538.16,
+              7.85,
+              1695.38
+            ],
+            [
+              4538.66,
+              7.84,
+              1695.38
+            ],
+            [
+              4539.16,
+              7.89,
+              1695.38
+            ],
+            [
+              4539.66,
+              7.87,
+              1695.88
+            ],
+            [
+              4540.16,
+              7.83,
+              1696.38
+            ],
+            [
+              4540.66,
+              7.85,
+              1696.88
+            ],
+            [
+              4541.66,
+              7.91,
+              1697.88
+            ],
+            [
+              4542.16,
+              7.93,
+              1698.38
+            ],
+            [
+              4543.16,
+              7.93,
+              1699.38
+            ],
+            [
+              4543.66,
+              7.92,
+              1699.88
+            ],
+            [
+              4545.66,
+              7.76,
+              1701.88
+            ],
+            [
+              4546.16,
+              7.7,
+              1702.38
+            ],
+            [
+              4546.66,
+              7.65,
+              1702.88
+            ],
+            [
+              4548.66,
+              7.37,
+              1704.88
+            ],
+            [
+              4549.16,
+              7.32,
+              1705.38
+            ],
+            [
+              4549.66,
+              7.26,
+              1705.88
+            ],
+            [
+              4550.16,
+              7.21,
+              1706.38
+            ],
+            [
+              4550.66,
+              7.18,
+              1706.88
+            ],
+            [
+              4551.16,
+              7.14,
+              1707.38
+            ],
+            [
+              4552.16,
+              7.08,
+              1707.38
+            ],
+            [
+              4552.66,
+              7.06,
+              1707.38
+            ],
+            [
+              4553.16,
+              7.03,
+              1707.38
+            ],
+            [
+              4554.16,
+              6.99,
+              1707.38
+            ],
+            [
+              4555.16,
+              6.93,
+              1708.38
+            ],
+            [
+              4555.66,
+              6.91,
+              1708.88
+            ],
+            [
+              4556.16,
+              6.89,
+              1708.88
+            ],
+            [
+              4556.66,
+              6.88,
+              1708.88
+            ],
+            [
+              4557.16,
+              6.86,
+              1708.88
+            ],
+            [
+              4557.66,
+              6.85,
+              1708.88
+            ],
+            [
+              4558.16,
+              6.83,
+              1708.88
+            ],
+            [
+              4560.16,
+              6.79,
+              1708.88
+            ],
+            [
+              4560.66,
+              6.75,
+              1709.38
+            ],
+            [
+              4561.16,
+              6.64,
+              1709.88
+            ],
+            [
+              4561.66,
+              6.54,
+              1710.38
+            ],
+            [
+              4562.16,
+              6.45,
+              1710.88
+            ],
+            [
+              4562.66,
+              6.4,
+              1711.38
+            ],
+            [
+              4563.16,
+              6.36,
+              1711.88
+            ],
+            [
+              4564.16,
+              6.32,
+              1711.88
+            ],
+            [
+              4564.66,
+              6.28,
+              1711.88
+            ],
+            [
+              4565.66,
+              6.24,
+              1711.88
+            ],
+            [
+              4567.16,
+              6.21,
+              1711.88
+            ],
+            [
+              4567.66,
+              6.22,
+              1711.88
+            ],
+            [
+              4569.16,
+              6.19,
+              1711.88
+            ],
+            [
+              4569.66,
+              6.19,
+              1711.88
+            ],
+            [
+              4570.66,
+              6.17,
+              1711.88
+            ],
+            [
+              4571.16,
+              6.15,
+              1711.88
+            ],
+            [
+              4571.66,
+              6.14,
+              1711.88
+            ],
+            [
+              4572.16,
+              6.14,
+              1711.88
+            ],
+            [
+              4572.66,
+              6.12,
+              1711.88
+            ],
+            [
+              4573.16,
+              6.09,
+              1711.88
+            ],
+            [
+              4573.66,
+              6.08,
+              1711.88
+            ],
+            [
+              4574.16,
+              6.08,
+              1711.88
+            ],
+            [
+              4574.66,
+              6.05,
+              1711.88
+            ],
+            [
+              4575.16,
+              6.03,
+              1711.88
+            ],
+            [
+              4575.66,
+              6.02,
+              1711.88
+            ],
+            [
+              4576.16,
+              6.0,
+              1711.88
+            ],
+            [
+              4576.66,
+              5.97,
+              1712.38
+            ],
+            [
+              4577.66,
+              5.93,
+              1712.38
+            ],
+            [
+              4578.16,
+              5.9,
+              1712.38
+            ],
+            [
+              4581.66,
+              5.76,
+              1712.38
+            ],
+            [
+              4582.16,
+              5.73,
+              1712.88
+            ],
+            [
+              4586.16,
+              5.57,
+              1712.88
+            ],
+            [
+              4586.66,
+              5.54,
+              1712.88
+            ],
+            [
+              4587.16,
+              5.52,
+              1712.88
+            ],
+            [
+              4588.16,
+              5.46,
+              1712.88
+            ],
+            [
+              4588.66,
+              5.44,
+              1712.88
+            ],
+            [
+              4589.16,
+              5.41,
+              1712.88
+            ],
+            [
+              4589.66,
+              5.39,
+              1712.88
+            ],
+            [
+              4590.16,
+              5.36,
+              1713.38
+            ],
+            [
+              4590.66,
+              5.32,
+              1713.88
+            ],
+            [
+              4591.16,
+              5.3,
+              1714.38
+            ],
+            [
+              4592.16,
+              5.24,
+              1715.38
+            ],
+            [
+              4592.66,
+              5.2,
+              1715.88
+            ],
+            [
+              4593.16,
+              5.19,
+              1715.88
+            ],
+            [
+              4595.66,
+              5.09,
+              1715.88
+            ],
+            [
+              4596.66,
+              5.03,
+              1716.88
+            ],
+            [
+              4597.66,
+              4.99,
+              1717.88
+            ],
+            [
+              4600.66,
+              4.81,
+              1720.88
+            ],
+            [
+              4601.66,
+              4.79,
+              1721.88
+            ],
+            [
+              4602.16,
+              4.79,
+              1722.38
+            ],
+            [
+              4603.16,
+              4.79,
+              1722.38
+            ],
+            [
+              4603.66,
+              4.8,
+              1722.88
+            ],
+            [
+              4604.16,
+              4.8,
+              1723.38
+            ],
+            [
+              4605.16,
+              4.78,
+              1724.38
+            ],
+            [
+              4606.16,
+              4.74,
+              1725.38
+            ],
+            [
+              4607.16,
+              4.68,
+              1726.38
+            ],
+            [
+              4607.66,
+              4.64,
+              1726.88
+            ],
+            [
+              4608.66,
+              4.58,
+              1727.88
+            ],
+            [
+              4609.66,
+              4.5,
+              1728.88
+            ],
+            [
+              4610.16,
+              4.47,
+              1729.38
+            ],
+            [
+              4610.66,
+              4.46,
+              1729.88
+            ],
+            [
+              4611.16,
+              4.46,
+              1730.38
+            ],
+            [
+              4612.66,
+              4.43,
+              1731.88
+            ],
+            [
+              4613.16,
+              4.4,
+              1732.38
+            ],
+            [
+              4613.66,
+              4.36,
+              1732.88
+            ],
+            [
+              4615.16,
+              4.27,
+              1732.88
+            ],
+            [
+              4615.66,
+              4.25,
+              1732.88
+            ],
+            [
+              4616.16,
+              4.22,
+              1732.88
+            ],
+            [
+              4616.66,
+              4.2,
+              1732.88
+            ],
+            [
+              4617.16,
+              4.17,
+              1732.88
+            ],
+            [
+              4618.16,
+              4.13,
+              1732.88
+            ],
+            [
+              4618.66,
+              4.1,
+              1732.88
+            ],
+            [
+              4619.16,
+              4.08,
+              1732.88
+            ],
+            [
+              4620.16,
+              4.06,
+              1732.88
+            ],
+            [
+              4620.66,
+              4.03,
+              1733.38
+            ],
+            [
+              4621.66,
+              4.05,
+              1734.38
+            ],
+            [
+              4622.16,
+              4.07,
+              1734.88
+            ],
+            [
+              4622.66,
+              4.12,
+              1735.38
+            ],
+            [
+              4623.66,
+              4.18,
+              1736.38
+            ],
+            [
+              4624.66,
+              4.22,
+              1737.38
+            ],
+            [
+              4625.66,
+              4.24,
+              1738.38
+            ],
+            [
+              4626.16,
+              4.24,
+              1738.88
+            ]
+          ],
+          "routeM": 277.58,
+          "steepestDeg": 50.1,
+          "largestStepM": 0.59,
+          "deepestWadeM": 0.0,
+          "parcelId": "parcel.border-road-greenspring-crossings.bank-road"
+        },
+        "opening:cn-bridge-n-0": {
+          "points": [
+            [
+              4479.66,
+              -0.05,
+              1557.88
+            ],
+            [
+              4474.66,
+              -0.05,
+              1552.88
+            ]
+          ],
+          "routeM": 7.07,
+          "steepestDeg": 0.0,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0,
+          "parcelId": "parcel.border-road-greenspring-crossings.river-crossing-head"
+        }
+      }
+    }
+  }
+}

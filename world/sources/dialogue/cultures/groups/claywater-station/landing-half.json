@@ -1,0 +1,96 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "entries": [
+  {
+   "id": "culture.group.claywater-station.landing-half",
+   "level": "group",
+   "name": "The landing half",
+   "parent": "culture.settlement.claywater-station",
+   "members": [
+    "npc.imperial-fringe.claywater-station.landing-s-poler",
+    "npc.imperial-fringe.claywater-station.n1-2",
+    "npc.imperial-fringe.claywater-station.n1-3"
+   ],
+   "norms": [
+    {
+     "text": "Fish dry on the landing racks.",
+     "source": "inferred"
+    },
+    {
+     "text": "The mud walls are replastered every year.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Building in stone on the landing bank.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "The ford, which was worked before the well was dug.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Being told to haul stone for a well whose water the landing does not drink.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "people": {
+     "lean": 0,
+     "text": "The station folk count everything twice and drink from a cracked well.",
+     "source": "inferred"
+    },
+    "trade": {
+     "lean": 1,
+     "text": "The raft is the only way a cart crosses. Carts pay by the wheel.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "By name among themselves; traveller to strangers.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [
+     {
+      "text": "Water keep you.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "That the landing could not last without the station's trade.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "The station wants stone hauled across the ford for its own well.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": []
+   },
+   "views": [
+    {
+     "node": "culture.group.claywater-station.station-half",
+     "lean": 0,
+     "text": "Good customers; poor judges of water.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.15
+  }
+ ]
+}

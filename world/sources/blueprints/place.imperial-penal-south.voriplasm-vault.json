@@ -1,0 +1,3337 @@
+{
+  "schemaVersion": 1,
+  "blueprint": {
+    "id": "place.imperial-penal-south.voriplasm-vault",
+    "seed": "place.imperial-penal-south.voriplasm-vault",
+    "causalModel": {
+      "founding": "A vault lies under a ruined works. The party that found what had grown in the vault sealed it. The sealing party left the door welded.",
+      "siteAdvantages": "The vault is a stone undercroft with one door. The undercroft has no other opening.",
+      "occupantsMotive": "The voriplasm is sealed in the vault. The voriplasm has been sealed there for two hundred years.",
+      "pressures": "The sealing party's note is still nailed to the door. The note names what is inside the vault.",
+      "wouldChangeIf": "If the vault were opened, the voriplasm would be released. The province has a specific and unhappy history with the voriplasm."
+    },
+    "boundary": [
+      [
+        0.22621530020039746,
+        0.9043187180672964
+      ],
+      [
+        0.23733619625341462,
+        0.9043187180672964
+      ],
+      [
+        0.23733619625341462,
+        0.9124559590816992
+      ],
+      [
+        0.22621530020039746,
+        0.9124559590816992
+      ]
+    ],
+    "districts": [
+      {
+        "id": "district.voriplasm-vault.voriplasm-vault",
+        "kind": "lair",
+        "cultureKit": "imperial-ruin",
+        "wealth": "poor",
+        "boundary": [
+          [
+            0.228862587,
+            0.907631436
+          ],
+          [
+            0.228867424,
+            0.907719823
+          ],
+          [
+            0.228865519,
+            0.907758609
+          ],
+          [
+            0.228891676,
+            0.907885782
+          ],
+          [
+            0.228919467,
+            0.907946131
+          ],
+          [
+            0.22894497,
+            0.908012956
+          ],
+          [
+            0.229024162,
+            0.908140129
+          ],
+          [
+            0.229119252,
+            0.908250217
+          ],
+          [
+            0.229132537,
+            0.908267302
+          ],
+          [
+            0.229223367,
+            0.908358393
+          ],
+          [
+            0.229294802,
+            0.908417758
+          ],
+          [
+            0.229389356,
+            0.90850254
+          ],
+          [
+            0.22952214,
+            0.908604396
+          ],
+          [
+            0.229417063,
+            0.909313793
+          ],
+          [
+            0.230308276,
+            0.909287814
+          ],
+          [
+            0.236317852,
+            0.909112628
+          ],
+          [
+            0.23666194,
+            0.908825197
+          ],
+          [
+            0.236681098,
+            0.908390931
+          ],
+          [
+            0.236682505,
+            0.908056221
+          ],
+          [
+            0.236682521,
+            0.907071649
+          ],
+          [
+            0.23667027,
+            0.906412176
+          ],
+          [
+            0.236367738,
+            0.906077036
+          ],
+          [
+            0.235462425,
+            0.906041361
+          ],
+          [
+            0.229165816,
+            0.907035666
+          ],
+          [
+            0.229119392,
+            0.90708703
+          ],
+          [
+            0.229083593,
+            0.907122743
+          ],
+          [
+            0.22898677,
+            0.907249916
+          ],
+          [
+            0.228920603,
+            0.907377089
+          ],
+          [
+            0.228915267,
+            0.907396201
+          ],
+          [
+            0.22887691,
+            0.907504263
+          ],
+          [
+            0.228865723,
+            0.907615981
+          ]
+        ],
+        "notes": "A ruined Imperial court on the lake flat and a spoil berm at its east end. A hollow dug into the berm reaches the vault's front wall and its one door.",
+        "why": {
+          "what": "The district is the vault and the ruin court built over it.",
+          "whyHere": "The Imperial works stood over older stone on the dry part of the lake flat. Diggers broke down to the vault's wall here.",
+          "whyNeighbours": "The broken keep wall of the works stands west of the court, beside the track. Bramman Head lies inside the 600 m bound.",
+          "playerPurpose": "The hollow and its door are the way into the vault. The note on the door warns what was sealed inside.",
+          "microGeography": "The court lies on the flat at about one metre. A spoil berm about five metres high closes its east end. A hollow cut into the berm drops to a floor under two metres, at the foot of the vault's wall."
+        }
+      },
+      {
+        "id": "district.voriplasm-vault.the-works",
+        "kind": "works",
+        "cultureKit": "imperial",
+        "wealth": "poor",
+        "boundary": [
+          [
+            0.2262153,
+            0.90797144
+          ],
+          [
+            0.2262153,
+            0.90810247
+          ],
+          [
+            0.227774166,
+            0.911393204
+          ],
+          [
+            0.228424402,
+            0.911549559
+          ],
+          [
+            0.228562899,
+            0.911559944
+          ],
+          [
+            0.22909022,
+            0.911520391
+          ],
+          [
+            0.229417063,
+            0.909313793
+          ],
+          [
+            0.22952214,
+            0.908604396
+          ],
+          [
+            0.229389356,
+            0.90850254
+          ],
+          [
+            0.229294802,
+            0.908417758
+          ],
+          [
+            0.229223367,
+            0.908358393
+          ],
+          [
+            0.229132537,
+            0.908267302
+          ],
+          [
+            0.229119252,
+            0.908250217
+          ],
+          [
+            0.229024162,
+            0.908140129
+          ],
+          [
+            0.22894497,
+            0.908012956
+          ],
+          [
+            0.228919467,
+            0.907946131
+          ],
+          [
+            0.228891676,
+            0.907885782
+          ],
+          [
+            0.228865519,
+            0.907758609
+          ],
+          [
+            0.228867424,
+            0.907719823
+          ],
+          [
+            0.228862587,
+            0.907631436
+          ],
+          [
+            0.228865723,
+            0.907615981
+          ],
+          [
+            0.22887691,
+            0.907504263
+          ],
+          [
+            0.228915267,
+            0.907396201
+          ],
+          [
+            0.228920603,
+            0.907377089
+          ],
+          [
+            0.22898677,
+            0.907249916
+          ],
+          [
+            0.229083593,
+            0.907122743
+          ],
+          [
+            0.229119392,
+            0.90708703
+          ],
+          [
+            0.229165816,
+            0.907035666
+          ],
+          [
+            0.229485033,
+            0.906985258
+          ],
+          [
+            0.229432191,
+            0.906795413
+          ],
+          [
+            0.228832049,
+            0.90463931
+          ],
+          [
+            0.226295626,
+            0.905561645
+          ]
+        ],
+        "notes": "The broken curtain wall of the works: a fallen stub at each end, the gate across the track and a wall tower.",
+        "why": {
+          "what": "The district is the curtain wall of the ruined works.",
+          "whyHere": "The penal colony walled its works where the track leaves the main track.",
+          "whyNeighbours": "The ruin court lies inside the wall to the east. The main track passes north of the gate.",
+          "playerPurpose": "The wall and its gate are the first things a traveller sees from the road.",
+          "microGeography": "The wall stands on the dry lake flat at about one metre. The ground falls gently west to the track and the reeds."
+        }
+      }
+    ],
+    "parcels": [
+      {
+        "id": "parcel.voriplasm-vault.works-gate",
+        "districtId": "district.voriplasm-vault.the-works",
+        "use": "gate",
+        "kind": "structure",
+        "buildingFamily": "mwkeep-mwimparchwall",
+        "spans": "route.voriplasm-vault.the-gate-track",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "The wall runs north to south on the west edge of the works. The gate faces west onto the track.",
+        "why": {
+          "what": "The curtain wall is one run of the keep's own pieces. A fallen stub ends it at the north and a second stub ends it at the south. The gate and a wall tower stand in it.",
+          "whyHere": "The penal colony walled its works beside the track that leaves the main track.",
+          "whySpot": "The wall stands on the dry ground east of the shore. The track meets it at the gate.",
+          "whyNeighbours": "The ruin court stands inside the wall. The main track passes north of it.",
+          "playerPurpose": "A traveller on the road sees the broken wall first and walks in through the gate.",
+          "microGeography": "The ground is firm and almost flat, a metre above the lake."
+        },
+        "pieces": [
+          {
+            "asset": "mwkeep:tesak1243/mwimperialarchitecture/architecture/keep/exterior/walls/mwimparchwall01destroyed02",
+            "atM": [
+              0.0,
+              0.0
+            ],
+            "yaw": 0.0,
+            "yMeasured": 1.0
+          },
+          {
+            "asset": "mwkeep:tesak1243/mwimperialarchitecture/architecture/keep/exterior/walls/mwimparchwall01destroyed01",
+            "atM": [
+              5.2288,
+              0.0
+            ],
+            "yaw": 0.0,
+            "yMeasured": 0.88
+          },
+          {
+            "asset": "mwkeep:tesak1243/mwimperialarchitecture/architecture/keep/exterior/walls/mwimparchwallgate01",
+            "atM": [
+              11.0448,
+              0.01
+            ],
+            "yaw": 0.0,
+            "yMeasured": 1.0
+          },
+          {
+            "asset": "mwkeep:tesak1243/mwimperialarchitecture/architecture/keep/exterior/walls/mwimparchwalltower01",
+            "atM": [
+              16.8608,
+              0.01
+            ],
+            "yaw": 0.0,
+            "yMeasured": 1.0
+          },
+          {
+            "asset": "mwkeep:tesak1243/mwimperialarchitecture/architecture/keep/exterior/walls/mwimparchwall01destroyed02",
+            "atM": [
+              24.1308,
+              0.01
+            ],
+            "yaw": 0.0,
+            "yMeasured": 1.0
+          }
+        ],
+        "centreUV": [
+          0.228386587,
+          0.907298468
+        ],
+        "yawDeg": 90.0,
+        "footprint": [
+          [
+            0.227883436,
+            0.909293558
+          ],
+          [
+            0.227883436,
+            0.909876725
+          ],
+          [
+            0.228153291,
+            0.910079201
+          ],
+          [
+            0.228153321,
+            0.910926429
+          ],
+          [
+            0.228508646,
+            0.91101187
+          ],
+          [
+            0.228562894,
+            0.911015938
+          ],
+          [
+            0.228617141,
+            0.911011869
+          ],
+          [
+            0.228617142,
+            0.909290063
+          ],
+          [
+            0.228623923,
+            0.909148969
+          ],
+          [
+            0.228623923,
+            0.908443774
+          ],
+          [
+            0.228618498,
+            0.908330889
+          ],
+          [
+            0.228618497,
+            0.90680481
+          ],
+          [
+            0.228154677,
+            0.90680481
+          ],
+          [
+            0.228154676,
+            0.907653762
+          ],
+          [
+            0.228176655,
+            0.907660193
+          ],
+          [
+            0.228154676,
+            0.907667228
+          ],
+          [
+            0.228154676,
+            0.908301356
+          ],
+          [
+            0.228146538,
+            0.908443774
+          ],
+          [
+            0.228146531,
+            0.909096038
+          ]
+        ]
+      },
+      {
+        "id": "parcel.voriplasm-vault.the-works",
+        "districtId": "district.voriplasm-vault.voriplasm-vault",
+        "use": "ruin",
+        "kind": "structure",
+        "buildingFamily": "kotm-imperialruins",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "The court's long side runs north to south behind the curtain wall. Its east end faces the berm.",
+        "why": {
+          "what": "The court is the shell of an Imperial building of the works. Broken wall lines and columns stand on its old outline. Fallen columns, loose blocks and rubble lie between them.",
+          "whyHere": "The works stood over the vault. Its floor and roof are gone.",
+          "whySpot": "The court fills the dry ground between the curtain wall and the berm.",
+          "whyNeighbours": "The gate opens into its west side. The berm and the hollow lie east of it.",
+          "playerPurpose": "The court is the ruin to explore before the vault. Its east end leads up onto the berm.",
+          "microGeography": "The ground rises half a metre from west to east."
+        },
+        "assetRef": "kotm:argonia/imperialruins/ruins_17",
+        "centreUV": [
+          0.229198955,
+          0.907663938
+        ],
+        "yawDeg": 90.0,
+        "yMeasured": 0.7267,
+        "assembly": [
+          {
+            "id": "c-01",
+            "asset": "kotm:argonia/imperialruins/ruins_17",
+            "atM": [
+              16.337,
+              0.0
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "annex",
+            "evidence": "plugin-neighbours King of the Murkmire ruins_14 cluster ArgoniaWorld (-18,-36), rotated +90 deg",
+            "yMeasured": 0.6903
+          },
+          {
+            "id": "c-02",
+            "asset": "vanilla:dungeons/imperial/exterior/impextblocks01",
+            "atM": [
+              16.21,
+              -3.789
+            ],
+            "yaw": 274.9,
+            "on": "ground",
+            "layer": "annex",
+            "evidence": "plugin-neighbours King of the Murkmire ruins_14 cluster ArgoniaWorld (-18,-36), rotated +90 deg",
+            "yMeasured": 0.4074
+          },
+          {
+            "id": "c-03",
+            "asset": "kotm:argonia/imperialruins/ruins_16",
+            "atM": [
+              1.349,
+              -0.256
+            ],
+            "yaw": 135.4,
+            "on": "ground",
+            "layer": "annex",
+            "evidence": "plugin-neighbours King of the Murkmire ruins_14 cluster ArgoniaWorld (-18,-36), rotated +90 deg",
+            "yMeasured": 1.1724
+          },
+          {
+            "id": "c-06",
+            "asset": "kotm:argonia/imperialruins/ruins_17b",
+            "atM": [
+              19.234,
+              0.0
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "annex",
+            "evidence": "plugin-neighbours King of the Murkmire ruins_14 cluster ArgoniaWorld (-18,-36), rotated +90 deg",
+            "yMeasured": 1.1011
+          },
+          {
+            "id": "c-07",
+            "asset": "kotm:argonia/imperialruins/ruins_17c",
+            "atM": [
+              22.208,
+              0.0
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "annex",
+            "evidence": "plugin-neighbours King of the Murkmire ruins_14 cluster ArgoniaWorld (-18,-36), rotated +90 deg",
+            "yMeasured": 1.0623
+          },
+          {
+            "id": "c-11",
+            "asset": "mwkeep:tesak1243/mwimperialarchitecture/architecture/keep/rubbles/mwimparchfloorchunk02",
+            "atM": [
+              -4.618,
+              -7.562
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "annex",
+            "evidence": "plugin-neighbours King of the Murkmire ruins_14 cluster ArgoniaWorld (-18,-36), rotated +90 deg",
+            "yMeasured": 1.2686
+          },
+          {
+            "id": "c-12",
+            "asset": "kotm:argonia/imperialruins/ruins_17",
+            "atM": [
+              25.349,
+              0.0
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "annex",
+            "evidence": "plugin-neighbours King of the Murkmire ruins_14 cluster ArgoniaWorld (-18,-36), rotated +90 deg",
+            "yMeasured": 0.7007
+          },
+          {
+            "id": "c-15",
+            "asset": "kotm:argonia/imperialruins/ruins_14",
+            "atM": [
+              -7.724,
+              -0.0
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "annex",
+            "evidence": "plugin-neighbours King of the Murkmire ruins_14 cluster ArgoniaWorld (-18,-36), rotated +90 deg",
+            "yMeasured": 0.8168
+          },
+          {
+            "id": "c-16",
+            "asset": "kotm:argonia/imperialruins/ruins_17c",
+            "atM": [
+              10.943,
+              -17.979
+            ],
+            "yaw": 180.0,
+            "on": "ground",
+            "layer": "annex",
+            "evidence": "plugin-neighbours King of the Murkmire ruins_14 cluster ArgoniaWorld (-18,-36), rotated +90 deg",
+            "yMeasured": 1.6476
+          },
+          {
+            "id": "c-17",
+            "asset": "kotm:argonia/imperialruins/ruins_17",
+            "atM": [
+              7.725,
+              -18.019
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "annex",
+            "evidence": "plugin-neighbours King of the Murkmire ruins_14 cluster ArgoniaWorld (-18,-36), rotated +90 deg",
+            "yMeasured": 1.2835
+          },
+          {
+            "id": "c-18",
+            "asset": "kotm:argonia/imperialruins/ruins_17b",
+            "atM": [
+              13.84,
+              -17.979
+            ],
+            "yaw": 180.0,
+            "on": "ground",
+            "layer": "annex",
+            "evidence": "plugin-neighbours King of the Murkmire ruins_14 cluster ArgoniaWorld (-18,-36), rotated +90 deg",
+            "yMeasured": 1.6068
+          },
+          {
+            "id": "c-19",
+            "asset": "kotm:argonia/imperialruins/ruins_17c",
+            "atM": [
+              4.828,
+              -18.024
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "annex",
+            "evidence": "plugin-neighbours King of the Murkmire ruins_14 cluster ArgoniaWorld (-18,-36), rotated +90 deg",
+            "yMeasured": 1.5822
+          },
+          {
+            "id": "c-21",
+            "asset": "kotm:argonia/imperialruins/ruins_17b",
+            "atM": [
+              28.323,
+              0.0
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "annex",
+            "evidence": "plugin-neighbours King of the Murkmire ruins_14 cluster ArgoniaWorld (-18,-36), rotated +90 deg",
+            "yMeasured": 1.1142
+          },
+          {
+            "id": "c-23",
+            "asset": "kotm:argonia/imperialruins/ruins_16",
+            "atM": [
+              -9.563,
+              -2.89
+            ],
+            "yaw": 315.5,
+            "on": "ground",
+            "layer": "annex",
+            "evidence": "plugin-neighbours King of the Murkmire ruins_14 cluster ArgoniaWorld (-18,-36), rotated +90 deg",
+            "yMeasured": 1.2727
+          },
+          {
+            "id": "c-25",
+            "asset": "kotm:argonia/imperialruins/ruins_17c",
+            "atM": [
+              28.484,
+              -2.736
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "annex",
+            "evidence": "plugin-neighbours King of the Murkmire ruins_14 cluster ArgoniaWorld (-18,-36), rotated +90 deg",
+            "yMeasured": 1.227
+          },
+          {
+            "id": "c-30",
+            "asset": "kotm:argonia/imperialruins/ruins_17c",
+            "atM": [
+              -11.908,
+              -2.897
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "annex",
+            "evidence": "plugin-neighbours King of the Murkmire ruins_14 cluster ArgoniaWorld (-18,-36), rotated +90 deg",
+            "yMeasured": 1.2803
+          },
+          {
+            "id": "c-32",
+            "asset": "kotm:argonia/imperialruins/ruins_17",
+            "atM": [
+              -11.908,
+              -5.793
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "annex",
+            "evidence": "plugin-neighbours King of the Murkmire ruins_14 cluster ArgoniaWorld (-18,-36), rotated +90 deg",
+            "yMeasured": 0.8526
+          },
+          {
+            "id": "c-33",
+            "asset": "kotm:argonia/imperialruins/ruins_17",
+            "atM": [
+              28.251,
+              -11.866
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "annex",
+            "evidence": "plugin-neighbours King of the Murkmire ruins_14 cluster ArgoniaWorld (-18,-36), rotated +90 deg",
+            "yMeasured": 1.029
+          },
+          {
+            "id": "c-34",
+            "asset": "vanilla:dungeons/imperial/exterior/impextblocks01",
+            "atM": [
+              12.031,
+              -22.671
+            ],
+            "yaw": 200.4,
+            "on": "ground",
+            "layer": "annex",
+            "evidence": "plugin-neighbours King of the Murkmire ruins_14 cluster ArgoniaWorld (-18,-36), rotated +90 deg",
+            "yMeasured": 2.0777
+          },
+          {
+            "id": "c-35",
+            "asset": "kotm:argonia/imperialruins/ruins_15",
+            "atM": [
+              -12.052,
+              -7.264
+            ],
+            "yaw": 321.0,
+            "on": "ground",
+            "layer": "annex",
+            "evidence": "plugin-neighbours King of the Murkmire ruins_14 cluster ArgoniaWorld (-18,-36), rotated +90 deg",
+            "yMeasured": 1.218
+          },
+          {
+            "id": "c-37",
+            "asset": "kotm:argonia/imperialruins/ruins_17",
+            "atM": [
+              28.251,
+              -15.266
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "annex",
+            "evidence": "plugin-neighbours King of the Murkmire ruins_14 cluster ArgoniaWorld (-18,-36), rotated +90 deg",
+            "yMeasured": 1.163
+          },
+          {
+            "id": "c-38",
+            "asset": "kotm:argonia/imperialruins/ruins_17",
+            "atM": [
+              -11.908,
+              -11.909
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "annex",
+            "evidence": "plugin-neighbours King of the Murkmire ruins_14 cluster ArgoniaWorld (-18,-36), rotated +90 deg",
+            "yMeasured": 1.0162
+          },
+          {
+            "id": "c-40",
+            "asset": "kotm:argonia/imperialruins/ruins_17",
+            "atM": [
+              -11.908,
+              -14.805
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "annex",
+            "evidence": "plugin-neighbours King of the Murkmire ruins_14 cluster ArgoniaWorld (-18,-36), rotated +90 deg",
+            "yMeasured": 1.1195
+          },
+          {
+            "id": "c-41",
+            "asset": "kotm:argonia/imperialruins/ruins_17b",
+            "atM": [
+              28.323,
+              -18.024
+            ],
+            "yaw": 180.0,
+            "on": "ground",
+            "layer": "annex",
+            "evidence": "plugin-neighbours King of the Murkmire ruins_14 cluster ArgoniaWorld (-18,-36), rotated +90 deg",
+            "yMeasured": 1.6303
+          },
+          {
+            "id": "c-44",
+            "asset": "kotm:argonia/imperialruins/ruins_17c",
+            "atM": [
+              -11.908,
+              -18.024
+            ],
+            "yaw": 180.0,
+            "on": "ground",
+            "layer": "annex",
+            "evidence": "plugin-neighbours King of the Murkmire ruins_14 cluster ArgoniaWorld (-18,-36), rotated +90 deg",
+            "yMeasured": 1.5506
+          },
+          {
+            "id": "d-01",
+            "asset": "mwkeep:tesak1243/mwimperialarchitecture/architecture/keep/rubbles/mwimparchfloorchunk02",
+            "atM": [
+              4.104,
+              -9.46
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "annex",
+            "evidence": "measured",
+            "yMeasured": 1.3686
+          },
+          {
+            "id": "d-04",
+            "asset": "vanilla:dungeons/imperial/exterior/impextblocks01",
+            "atM": [
+              1.144,
+              -13.41
+            ],
+            "yaw": 161.3,
+            "on": "ground",
+            "layer": "annex",
+            "evidence": "measured",
+            "yMeasured": 0.7893
+          },
+          {
+            "id": "d-05",
+            "asset": "vanilla:dungeons/imperial/exterior/impextrubble02",
+            "atM": [
+              35.144,
+              -0.63
+            ],
+            "yaw": 20.6,
+            "on": "ground",
+            "layer": "annex",
+            "evidence": "measured",
+            "yMeasured": -0.7917
+          },
+          {
+            "id": "d-08",
+            "asset": "vanilla:dungeons/imperial/exterior/impextblocks01",
+            "atM": [
+              23.324,
+              -13.58
+            ],
+            "yaw": 286.4,
+            "on": "ground",
+            "layer": "annex",
+            "evidence": "measured",
+            "yMeasured": 0.7242
+          },
+          {
+            "id": "node-1",
+            "asset": "bmv:trdata/mushrooms/tr_oth_tallmush01",
+            "atM": [
+              -25.766,
+              -10.6
+            ],
+            "yaw": 340.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 1.0634
+          }
+        ],
+        "footprint": [
+          [
+            0.229197599,
+            0.907582566
+          ],
+          [
+            0.229247778,
+            0.90758799
+          ],
+          [
+            0.229276259,
+            0.907617827
+          ],
+          [
+            0.229281684,
+            0.907668007
+          ],
+          [
+            0.229276259,
+            0.907719542
+          ],
+          [
+            0.229247778,
+            0.907748023
+          ],
+          [
+            0.229197599,
+            0.907753448
+          ],
+          [
+            0.229146063,
+            0.907748023
+          ],
+          [
+            0.229117583,
+            0.907719542
+          ],
+          [
+            0.229112158,
+            0.907668007
+          ],
+          [
+            0.229117583,
+            0.907617827
+          ],
+          [
+            0.229146063,
+            0.90758799
+          ]
+        ]
+      },
+      {
+        "id": "parcel.voriplasm-vault.the-face",
+        "districtId": "district.voriplasm-vault.voriplasm-vault",
+        "use": "ruin",
+        "kind": "structure",
+        "buildingFamily": "vanilla-impextwall",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "The face runs north to south and looks west across the hollow.",
+        "why": {
+          "what": "The face is the vault's front wall: two lengths of Imperial fort wall, their broken ends buried in the slopes.",
+          "whyHere": "The diggers cut down to this wall. It is the one side of the hollow that stands upright.",
+          "whySpot": "The wall stands at the east edge of the hollow with the berm behind it.",
+          "whyNeighbours": "The doorway is set at its foot. The stair comes down the far slope.",
+          "playerPurpose": "The face shows where the vault begins. Its door is the only entrance.",
+          "microGeography": "The wall's foot stands on the hollow floor; its top stands just over the berm."
+        },
+        "pieces": [
+          {
+            "asset": "vanilla:dungeons/imperial/exterior/impextwall01",
+            "atM": [
+              0.0,
+              0.0
+            ],
+            "yaw": 0.0,
+            "yMeasured": -1.6
+          },
+          {
+            "asset": "vanilla:dungeons/imperial/exterior/impextwall01",
+            "atM": [
+              0.0,
+              -7.22
+            ],
+            "yaw": 0.14,
+            "yMeasured": -1.6
+          }
+        ],
+        "centreUV": [
+          0.235810464,
+          0.908061849
+        ],
+        "yawDeg": 0.0,
+        "footprint": [
+          [
+            0.235477033,
+            0.907557882
+          ],
+          [
+            0.235486917,
+            0.907570542
+          ],
+          [
+            0.235478191,
+            0.907579071
+          ],
+          [
+            0.235463276,
+            0.907762161
+          ],
+          [
+            0.235478195,
+            0.908537877
+          ],
+          [
+            0.235490431,
+            0.908552797
+          ],
+          [
+            0.236114254,
+            0.90857585
+          ],
+          [
+            0.23613053,
+            0.908562254
+          ],
+          [
+            0.236138666,
+            0.908377832
+          ],
+          [
+            0.236140022,
+            0.908055077
+          ],
+          [
+            0.23613053,
+            0.907603486
+          ],
+          [
+            0.236120465,
+            0.907591898
+          ],
+          [
+            0.236129307,
+            0.907583853
+          ],
+          [
+            0.236137892,
+            0.907399478
+          ],
+          [
+            0.236140038,
+            0.907076683
+          ],
+          [
+            0.236131649,
+            0.906625088
+          ],
+          [
+            0.236118122,
+            0.906610103
+          ],
+          [
+            0.235494358,
+            0.906585523
+          ],
+          [
+            0.235479375,
+            0.906599048
+          ],
+          [
+            0.235464009,
+            0.906782133
+          ]
+        ]
+      },
+      {
+        "id": "parcel.voriplasm-vault.the-throat",
+        "districtId": "district.voriplasm-vault.voriplasm-vault",
+        "use": "entrance",
+        "kind": "structure",
+        "buildingFamily": "vanilla-impextdoorhole",
+        "interior": {
+          "kind": "dwelling"
+        },
+        "orientationWhy": "The doorway faces west at 270 degrees, across the hollow to the foot of the stair.",
+        "why": {
+          "what": "The doorway is a stone hood with its plugin's load door, set at the foot of the face. The sealing party's note is nailed on the hood.",
+          "whyHere": "The vault has one door. The diggers reached it at the bottom of their hollow.",
+          "whySpot": "The door stands on the hollow floor, so a visitor walks straight to it from the stair.",
+          "whyNeighbours": "The face rises over it. Bones and a dropped tool lie on the floor in front of it.",
+          "playerPurpose": "The door leads into the vault. The note on it warns of what was sealed inside.",
+          "microGeography": "The hollow floor is level and dry, almost a metre above the lake."
+        },
+        "assetRef": "vanilla:dungeons/imperial/exterior/impextdoorhole01",
+        "playerPurpose": [
+          {
+            "kind": "cache",
+            "tier": "medium",
+            "note": "A hidden cache deep in the vault holds what the sealing party shut in with the voriplasm."
+          },
+          {
+            "kind": "unique-item",
+            "tier": "major",
+            "note": "One authored item lies in that cache, past the boss."
+          },
+          {
+            "kind": "quest-stage",
+            "tier": "major",
+            "socketRef": "socket.voriplasm-vault.q-evidence-warning-board",
+            "note": "The warning board over the door gives the evidence for the vault's quest."
+          }
+        ],
+        "centreUV": [
+          0.235240857,
+          0.907573614
+        ],
+        "yawDeg": 180.0,
+        "yMeasured": 1.8,
+        "assembly": [
+          {
+            "id": "b1-lb-arm",
+            "asset": "vanilla:clutter/bones/humanarmleft",
+            "atM": [
+              3.8539,
+              -4.1391
+            ],
+            "yaw": 195.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 1.8465
+          },
+          {
+            "id": "b1-lb-arm2",
+            "asset": "vanilla:clutter/bones/humanarmleft",
+            "atM": [
+              4.2961,
+              -5.4254
+            ],
+            "yaw": 305.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 1.8465
+          },
+          {
+            "id": "b1-lb-fresh",
+            "asset": "vanilla:clutter/bones/bloodyribs",
+            "atM": [
+              5.9842,
+              -1.9684
+            ],
+            "yaw": 255.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 1.9506
+          },
+          {
+            "id": "b1-lb-leg",
+            "asset": "vanilla:clutter/bones/humanlegleft",
+            "atM": [
+              6.4264,
+              -3.2547
+            ],
+            "yaw": 80.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 1.8792
+          },
+          {
+            "id": "b1-lb-ribs",
+            "asset": "vanilla:clutter/bones/humanribcage",
+            "atM": [
+              5.05,
+              -4.0
+            ],
+            "yaw": 55.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 1.9466
+          },
+          {
+            "id": "b1-lb-scrap",
+            "asset": "vanilla:clutter/bones/bloodybone",
+            "atM": [
+              3.7476,
+              -2.7218
+            ],
+            "yaw": 150.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 1.837
+          },
+          {
+            "id": "b1-lb-skull",
+            "asset": "kotm:issgard/clutter/bones/issgard_boneargonianskullfull",
+            "atM": [
+              5.0747,
+              -2.9186
+            ],
+            "yaw": 125.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 1.9148
+          },
+          {
+            "id": "b1-lb-spine",
+            "asset": "vanilla:clutter/bones/humanspine",
+            "atM": [
+              5.7216,
+              -4.9586
+            ],
+            "yaw": 355.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 1.8902
+          },
+          {
+            "id": "b2-arm",
+            "asset": "vanilla:clutter/bones/humanarmleft",
+            "atM": [
+              6.471,
+              0.457
+            ],
+            "yaw": 260.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 1.8465
+          },
+          {
+            "id": "b2-fresh",
+            "asset": "vanilla:clutter/bones/bloodyribs",
+            "atM": [
+              6.396,
+              3.186
+            ],
+            "yaw": 320.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 1.9506
+          },
+          {
+            "id": "b2-humanribcage",
+            "asset": "vanilla:clutter/bones/humanribcage",
+            "atM": [
+              6.85,
+              1.6
+            ],
+            "yaw": 120.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 1.9466
+          },
+          {
+            "id": "b2-scrap",
+            "asset": "vanilla:clutter/bones/bloodybone",
+            "atM": [
+              5.488,
+              1.16
+            ],
+            "yaw": 215.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 1.837
+          },
+          {
+            "id": "b2-skull",
+            "asset": "kotm:issgard/clutter/bones/issgard_boneargonianskullfull",
+            "atM": [
+              5.88,
+              2.079
+            ],
+            "yaw": 190.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 1.9148
+          },
+          {
+            "id": "g-1",
+            "asset": "vanilla:plants/glowingmushroomcluster01",
+            "atM": [
+              2.55,
+              1.8
+            ],
+            "yaw": 220.0,
+            "on": "ground",
+            "layer": "light",
+            "evidence": "measured",
+            "groundFit": "direct",
+            "yMeasured": 2.3651
+          },
+          {
+            "id": "g-2",
+            "asset": "vanilla:plants/glowingmushroomcluster01",
+            "atM": [
+              2.15,
+              -2.4
+            ],
+            "yaw": 35.0,
+            "on": "ground",
+            "layer": "light",
+            "evidence": "measured",
+            "groundFit": "direct",
+            "yMeasured": 2.3651
+          },
+          {
+            "id": "g-3",
+            "asset": "vanilla:plants/glowingmushroomcluster01",
+            "atM": [
+              -0.55,
+              3.0
+            ],
+            "yaw": 300.0,
+            "on": "ground",
+            "layer": "light",
+            "evidence": "measured",
+            "groundFit": "direct",
+            "yMeasured": 2.3651
+          },
+          {
+            "id": "g-vine-1",
+            "asset": "vanilla:dungeons/nordic/rubble/norvinewall01nocol",
+            "atM": [
+              -1.35,
+              4.6
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 3.9198
+          },
+          {
+            "id": "g-vine-2",
+            "asset": "vanilla:dungeons/nordic/rubble/norvinewall01nocol",
+            "atM": [
+              -1.4,
+              -4.7
+            ],
+            "yaw": 0.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 3.9198
+          },
+          {
+            "id": "n-board",
+            "asset": "kotm:argonia/stockades/minewoodplanks02",
+            "atM": [
+              0.735,
+              0.0
+            ],
+            "yaw": 180.0,
+            "on": "parent",
+            "layer": "door",
+            "evidence": "measured",
+            "mountPair": {
+              "kind": "measured",
+              "mountedOn": "v-hole",
+              "gapM": 0.0
+            },
+            "upM": 1.2,
+            "scale": 0.93
+          },
+          {
+            "id": "node-2",
+            "asset": "vanilla:plants/floraswampfungalpod01",
+            "atM": [
+              7.75,
+              4.8
+            ],
+            "yaw": 20.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 1.8
+          },
+          {
+            "id": "r-spoil-n",
+            "asset": "vanilla:dungeons/imperial/exterior/impextrubble02",
+            "atM": [
+              5.85,
+              9.0
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 0.1726
+          },
+          {
+            "id": "r-spoil-s",
+            "asset": "vanilla:dungeons/imperial/exterior/impextrubble02",
+            "atM": [
+              3.05,
+              -8.6
+            ],
+            "yaw": 80.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 0.1726
+          },
+          {
+            "id": "s-drag",
+            "asset": "vanilla:clutter/bones/bloodyleg",
+            "atM": [
+              4.25,
+              -1.0
+            ],
+            "yaw": 250.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "yMeasured": 1.8664
+          },
+          {
+            "id": "s-rags",
+            "asset": "vanilla:clutter/bloodyrags/bloodyrags",
+            "atM": [
+              2.65,
+              -1.3
+            ],
+            "yaw": 20.0,
+            "on": "ground",
+            "layer": "wear",
+            "evidence": "measured",
+            "yMeasured": 1.875
+          },
+          {
+            "id": "t1-lt-basket",
+            "asset": "vanilla:clutter/basket01",
+            "atM": [
+              4.3035,
+              1.4621
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 1.8
+          },
+          {
+            "id": "t1-lt-net",
+            "asset": "shores:shoresofskyrim/fishnet01",
+            "atM": [
+              1.8172,
+              2.1534
+            ],
+            "yaw": 35.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 1.7794
+          },
+          {
+            "id": "t1-lt-shovel",
+            "asset": "vanilla:clutter/common/shovel01",
+            "atM": [
+              3.15,
+              2.0
+            ],
+            "yaw": 20.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "yMeasured": 2.3396
+          },
+          {
+            "id": "v-hole-door",
+            "asset": "vanilla:dungeons/imperial/door/impwooddoorsingleload01",
+            "atM": [
+              0.5,
+              0.0
+            ],
+            "yaw": 271.3,
+            "on": "parent",
+            "layer": "door",
+            "evidence": "plugin offset Skyrim.esm ImpExtDoorhole01 + ImpDoorSingleLoad01 (7 refs, e.g. 0001AB9D)",
+            "upM": 0.0,
+            "scale": 0.84
+          }
+        ],
+        "footprint": [
+          [
+            0.235432082,
+            0.907317291
+          ],
+          [
+            0.235422589,
+            0.90781095
+          ],
+          [
+            0.235219158,
+            0.9078218
+          ],
+          [
+            0.235129648,
+            0.9078218
+          ],
+          [
+            0.23511473,
+            0.907808238
+          ],
+          [
+            0.235120155,
+            0.907343059
+          ],
+          [
+            0.235136429,
+            0.907326784
+          ],
+          [
+            0.235223226,
+            0.907322716
+          ]
+        ]
+      },
+      {
+        "id": "parcel.voriplasm-vault.the-stair",
+        "districtId": "district.voriplasm-vault.voriplasm-vault",
+        "use": "stair",
+        "kind": "structure",
+        "buildingFamily": "vanilla-impextstairs",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "The stair runs east to west down the west slope of the hollow, from the berm rim to the hollow floor.",
+        "why": {
+          "what": "The stair is two flights of Imperial fort steps with a short landing between them.",
+          "whyHere": "The diggers set old steps from the works into the slope to reach the door.",
+          "whySpot": "The stair comes down the west slope, straight across the hollow from the door.",
+          "whyNeighbours": "Its head is on the berm at the east end of the court. Its foot faces the doorway.",
+          "playerPurpose": "The stair leads down from the berm to the door.",
+          "microGeography": "The west slope of the hollow drops four metres over ten metres of run."
+        },
+        "pieces": [
+          {
+            "asset": "vanilla:dungeons/imperial/exterior/impextstairs02",
+            "atM": [
+              0.0,
+              0.0
+            ],
+            "yaw": 0.0,
+            "yMeasured": 1.62
+          },
+          {
+            "asset": "vanilla:dungeons/imperial/exterior/impextstairs02",
+            "atM": [
+              0.0,
+              -5.4
+            ],
+            "yaw": 0.0,
+            "yMeasured": 3.72
+          },
+          {
+            "asset": "vanilla:dungeons/imperial/exterior/impextstairs02",
+            "atM": [
+              0.0,
+              -11.8
+            ],
+            "yaw": -180.0,
+            "yMeasured": 3.73
+          },
+          {
+            "asset": "vanilla:dungeons/imperial/exterior/impextstairs02",
+            "atM": [
+              0.0,
+              -17.2
+            ],
+            "yaw": -180.0,
+            "yMeasured": 1.73
+          }
+        ],
+        "centreUV": [
+          0.231423134,
+          0.907573614
+        ],
+        "yawDeg": 90.0,
+        "footprint": [
+          [
+            0.231126149,
+            0.907809618
+          ],
+          [
+            0.231132906,
+            0.90781366
+          ],
+          [
+            0.231179052,
+            0.907817731
+          ],
+          [
+            0.231698409,
+            0.907809595
+          ],
+          [
+            0.231714704,
+            0.907794585
+          ],
+          [
+            0.231715983,
+            0.907801422
+          ],
+          [
+            0.231858551,
+            0.907803042
+          ],
+          [
+            0.231858478,
+            0.907809593
+          ],
+          [
+            0.23186522,
+            0.90781365
+          ],
+          [
+            0.231911404,
+            0.907817731
+          ],
+          [
+            0.232430795,
+            0.907809592
+          ],
+          [
+            0.232448427,
+            0.907793285
+          ],
+          [
+            0.232452394,
+            0.907359537
+          ],
+          [
+            0.232730443,
+            0.90736208
+          ],
+          [
+            0.232726449,
+            0.907798713
+          ],
+          [
+            0.232741368,
+            0.907812305
+          ],
+          [
+            0.23275089,
+            0.907815019
+          ],
+          [
+            0.233134673,
+            0.9078218
+          ],
+          [
+            0.233298768,
+            0.907816374
+          ],
+          [
+            0.233312331,
+            0.907812274
+          ],
+          [
+            0.233320208,
+            0.90736046
+          ],
+          [
+            0.233462794,
+            0.907362079
+          ],
+          [
+            0.233458801,
+            0.907798713
+          ],
+          [
+            0.233473719,
+            0.907812305
+          ],
+          [
+            0.233483242,
+            0.907815019
+          ],
+          [
+            0.233867025,
+            0.9078218
+          ],
+          [
+            0.23403112,
+            0.907816374
+          ],
+          [
+            0.234044682,
+            0.907812274
+          ],
+          [
+            0.234052817,
+            0.907337635
+          ],
+          [
+            0.234046038,
+            0.907333568
+          ],
+          [
+            0.233999892,
+            0.907329497
+          ],
+          [
+            0.233480535,
+            0.907337633
+          ],
+          [
+            0.23346424,
+            0.907352643
+          ],
+          [
+            0.233462961,
+            0.907345806
+          ],
+          [
+            0.233320393,
+            0.907344186
+          ],
+          [
+            0.233320466,
+            0.907337635
+          ],
+          [
+            0.233313724,
+            0.907333578
+          ],
+          [
+            0.23326754,
+            0.907329497
+          ],
+          [
+            0.232748183,
+            0.907337633
+          ],
+          [
+            0.232731885,
+            0.907352646
+          ],
+          [
+            0.232730591,
+            0.907345806
+          ],
+          [
+            0.232452543,
+            0.907343263
+          ],
+          [
+            0.23245115,
+            0.907347261
+          ],
+          [
+            0.232437576,
+            0.907334923
+          ],
+          [
+            0.232428054,
+            0.907332209
+          ],
+          [
+            0.232044271,
+            0.907325428
+          ],
+          [
+            0.231880176,
+            0.907330854
+          ],
+          [
+            0.231866613,
+            0.907334954
+          ],
+          [
+            0.231858736,
+            0.907786768
+          ],
+          [
+            0.231716149,
+            0.907785149
+          ],
+          [
+            0.231720143,
+            0.907348515
+          ],
+          [
+            0.231705224,
+            0.907334923
+          ],
+          [
+            0.231695702,
+            0.907332209
+          ],
+          [
+            0.231311919,
+            0.907325428
+          ],
+          [
+            0.231147824,
+            0.907330854
+          ],
+          [
+            0.231134261,
+            0.907334954
+          ]
+        ]
+      }
+    ],
+    "doors": [
+      {
+        "id": "door.imperial-penal-south.voriplasm-vault.1",
+        "parcelId": "parcel.voriplasm-vault.the-throat",
+        "doorType": "load",
+        "thresholdUV": [
+          0.235170334,
+          0.907572258
+        ],
+        "facingDeg": 271.3,
+        "interiorClaim": {
+          "interiorRef": "vanilla-imperial-int",
+          "sizeClass": "small",
+          "culture": "imperial",
+          "tier": "A",
+          "cellId": "FortAmol01",
+          "plugin": "Skyrim.esm",
+          "interiorLoadDoorRef": "0001565E",
+          "arrivalMarker": {
+            "positionM": [
+              21.141,
+              -4.3876,
+              6.5143
+            ],
+            "yawDeg": 0.0
+          },
+          "why": "1 of 9 cells plugins link to vanilla:dungeons/imperial/exterior/impextdoorhole01 pass; FortAmol01 is a dwelling, 2 exterior load doors (one entrance, paired to the lowest of 2 exterior load doors; 1 load door(s) left closed)"
+        }
+      }
+    ],
+    "routes": [
+      {
+        "id": "route.voriplasm-vault.the-trail",
+        "kind": "footpath",
+        "routing": "straight",
+        "widthM": 1.2,
+        "endsAt": [
+          "parcel.voriplasm-vault.works-gate",
+          "parcel.voriplasm-vault.the-works"
+        ],
+        "why": "The footpath goes in at the gate and turns south to the arch in the court's west wall.",
+        "via": [
+          [
+            0.228724283,
+            0.908794201
+          ],
+          [
+            0.228927714,
+            0.907912666
+          ],
+          [
+            0.229117583,
+            0.907668549
+          ]
+        ],
+        "points": [
+          [
+            0.228623923,
+            0.908794201
+          ],
+          [
+            0.229112274,
+            0.907669108
+          ]
+        ]
+      },
+      {
+        "id": "route.voriplasm-vault.the-gate-track",
+        "kind": "track",
+        "routing": "straight",
+        "widthM": 1.6,
+        "endsAt": [
+          "parcel.voriplasm-vault.works-gate"
+        ],
+        "why": "A short track leaves the main road at the junction and runs south along the wall to the works gate.",
+        "via": [
+          [
+            0.228466604,
+            0.905349435
+          ],
+          [
+            0.226825593,
+            0.905946166
+          ],
+          [
+            0.226757783,
+            0.907980477
+          ],
+          [
+            0.227571507,
+            0.908794201
+          ],
+          [
+            0.228724283,
+            0.908794201
+          ]
+        ],
+        "points": [
+          [
+            0.228466604,
+            0.905349435
+          ],
+          [
+            0.226825593,
+            0.905946166
+          ],
+          [
+            0.226757783,
+            0.907980477
+          ],
+          [
+            0.227571507,
+            0.908794201
+          ],
+          [
+            0.228623923,
+            0.908794201
+          ]
+        ]
+      },
+      {
+        "id": "route.voriplasm-vault.the-court",
+        "kind": "footpath",
+        "routing": "straight",
+        "widthM": 1.2,
+        "endsAt": [
+          "parcel.voriplasm-vault.the-works",
+          "parcel.voriplasm-vault.the-stair"
+        ],
+        "why": "The footpath crosses the ruin court from the arch to the foot of the stair up the berm.",
+        "via": [
+          [
+            0.229117583,
+            0.907668549
+          ],
+          [
+            0.2301483,
+            0.907736359
+          ],
+          [
+            0.231097645,
+            0.907573614
+          ]
+        ],
+        "points": [
+          [
+            0.229112274,
+            0.907669108
+          ],
+          [
+            0.2301483,
+            0.907736359
+          ],
+          [
+            0.231130173,
+            0.90757417
+          ]
+        ]
+      },
+      {
+        "id": "route.voriplasm-vault.the-hollow",
+        "kind": "footpath",
+        "routing": "straight",
+        "widthM": 1.2,
+        "endsAt": [
+          "parcel.voriplasm-vault.the-stair",
+          "parcel.voriplasm-vault.the-throat"
+        ],
+        "why": "The footpath crosses the hollow floor from the foot of the stair to the door.",
+        "via": [
+          [
+            0.2340813,
+            0.907573614
+          ],
+          [
+            0.235084893,
+            0.907573614
+          ]
+        ],
+        "points": [
+          [
+            0.234048782,
+            0.907573057
+          ],
+          [
+            0.235170334,
+            0.907572258
+          ]
+        ]
+      }
+    ],
+    "canals": [],
+    "boardwalks": [],
+    "fences": [],
+    "docks": [],
+    "landmarks": [],
+    "questSockets": [
+      {
+        "id": "socket.voriplasm-vault.q-evidence-warning-board",
+        "kind": "evidence",
+        "socketRef": "evidence.sealed-vault.warning-board",
+        "position": [
+          0.230161862,
+          0.906176721
+        ],
+        "parcel": "parcel.voriplasm-vault.the-throat"
+      }
+    ],
+    "travelServices": [],
+    "occupants": [],
+    "approaches": [
+      {
+        "id": "approach.voriplasm-vault.arrival",
+        "mode": "walk",
+        "fromDirection": "west",
+        "firstSeen": "parcel.voriplasm-vault.works-gate",
+        "sequence": "From the lake flat a traveller sees the broken keep wall first. The court's columns show over it. The hollow and its door are seen last, from the berm.",
+        "wayfinding": "The gate is the only way through the wall. The berm rises at the far end of the court."
+      },
+      {
+        "id": "approach.voriplasm-vault.from-coast-road",
+        "mode": "walk",
+        "fromRouteId": "track.track.mercantile-coast.coast-road",
+        "firstSeen": "parcel.voriplasm-vault.works-gate",
+        "viaUV": [
+          [
+            0.218269707,
+            0.905428855
+          ],
+          [
+            0.228482904,
+            0.905428855
+          ]
+        ],
+        "sequence": "From the junction the track runs south to the gate. Inside, the path crosses the court and climbs the berm. The stair goes down to the door.",
+        "wayfinding": "The wall can be seen from the road. The track leaves the road at the junction."
+      }
+    ],
+    "networkTerminals": [
+      {
+        "id": "terminal.voriplasm-vault.coast-road",
+        "routeId": "track.track.mercantile-coast.coast-road",
+        "entryUV": [
+          0.228482904,
+          0.905428855
+        ],
+        "wayId": "route.voriplasm-vault.the-gate-track",
+        "kind": "track",
+        "why": "The place's own track meets the main track at the junction. The junction lies west of the works."
+      }
+    ],
+    "combatSpaces": [
+      {
+        "id": "combat.voriplasm-vault.voriplasm-vault",
+        "aroundIds": [
+          "parcel.voriplasm-vault.the-throat",
+          "parcel.voriplasm-vault.the-works"
+        ],
+        "clearanceClass": "open",
+        "why": "The court and the hollow floor are open ground. The fighting happens inside the vault.",
+        "boundary": [
+          [
+            0.228566597,
+            0.90766724
+          ],
+          [
+            0.228598187,
+            0.907967327
+          ],
+          [
+            0.228898267,
+            0.908267419
+          ],
+          [
+            0.229166009,
+            0.908295603
+          ],
+          [
+            0.235126523,
+            0.908364283
+          ],
+          [
+            0.235233614,
+            0.908364283
+          ],
+          [
+            0.235955272,
+            0.908325793
+          ],
+          [
+            0.235985377,
+            0.906760254
+          ],
+          [
+            0.235204495,
+            0.906780537
+          ],
+          [
+            0.229157484,
+            0.907041309
+          ],
+          [
+            0.228891185,
+            0.907069336
+          ],
+          [
+            0.228598034,
+            0.907376455
+          ]
+        ]
+      }
+    ],
+    "clearance": {
+      "hardClear": [],
+      "thinned": [],
+      "kept": []
+    },
+    "variants": [
+      {
+        "id": "variant.voriplasm-vault.base",
+        "changedRefs": [],
+        "serviceOverrides": {},
+        "ambience": "wild"
+      }
+    ],
+    "scaleGrounding": {
+      "loreSource": "catalogue record The Sealed Vault (voriplasm-chamber, None)",
+      "population": "0",
+      "households": 1,
+      "buildingsPlanned": 4,
+      "npcsPlanned": 0,
+      "why": "The vault has no occupants. The place has four built things: the curtain wall, the ruin court, the vault face and its doorway."
+    },
+    "siting": {
+      "dossier": "world/sources/blueprints/voriplasm-vault.design.md",
+      "candidates": [
+        {
+          "id": "candidate.voriplasm-vault.chosen",
+          "positionM": [
+            1697.1,
+            6681.7
+          ],
+          "chosen": true,
+          "why": "The ground is dry beside the coast-road track. Travellers on the road see the wall."
+        },
+        {
+          "id": "candidate.voriplasm-vault.second",
+          "positionM": [
+            1720.0,
+            6645.0
+          ],
+          "why": "The ground is firm beside the second track. The second track climbs north-east from the lake edge.",
+          "rejectedBecause": "The second track carries less traffic than the main track. The board would face fewer travellers there. No lake flat lies beside the second track for the works."
+        }
+      ]
+    },
+    "budget": {
+      "maxInstances": 120,
+      "maxUniqueMaterials": 48,
+      "maxTextureMB": 32,
+      "maxColliders": 80
+    },
+    "assetConstraints": [],
+    "macroEvidence": [
+      {
+        "sourcePaths": [
+          "contents.loot[l1]"
+        ],
+        "evidenceRefs": [
+          "parcel.voriplasm-vault.the-throat"
+        ]
+      },
+      {
+        "sourcePaths": [
+          "contents.loot[l2]"
+        ],
+        "evidenceRefs": [
+          "parcel.voriplasm-vault.the-throat"
+        ]
+      },
+      {
+        "sourcePaths": [
+          "assetPlan",
+          "contents",
+          "discovery",
+          "eraLayers",
+          "hostility",
+          "notableNpcSlots",
+          "playerPurpose",
+          "questHooks",
+          "relations",
+          "lootTable",
+          "season",
+          "sitingPrefs",
+          "status",
+          "traversalModes",
+          "underwaterAccess",
+          "vibe"
+        ],
+        "evidenceRefs": [
+          "parcel.voriplasm-vault.the-throat",
+          "parcel.voriplasm-vault.the-works",
+          "approach.voriplasm-vault.arrival"
+        ]
+      },
+      {
+        "sourcePaths": [
+          "entrance",
+          "interior"
+        ],
+        "evidenceRefs": [
+          "door.imperial-penal-south.voriplasm-vault.1",
+          "parcel.voriplasm-vault.the-throat",
+          "route.voriplasm-vault.the-trail"
+        ]
+      }
+    ],
+    "proseRefs": [],
+    "authoredOn": {
+      "wbSchemaVersion": 1,
+      "ground": {
+        "centreM": [
+          1705.0,
+          6690.0
+        ],
+        "halfM": 66.0,
+        "chunks": {
+          "chunk_3_14": "2ac3a0c835e6c649a3d838c212cb33057f1034496d010c7b56ba34c56eec76aa"
+        },
+        "sha256": "f5e3266a5c8f6cc515936d90989584de68c4f06936088bc41a3bf9254b5dea87"
+      },
+      "kits": {
+        "flora-province-v1": "0ef937d974ac29e0c20057d560413bb7d248a7c78c48d734bf30c9b0b99c6003",
+        "imperial-keep": "7f923e549521832436264d46f6ba2c876880cb25f5d6d5e52cbbd676d11d9c77",
+        "interior-kotm-v1": "4911d600175285cbadb2c32d58d105998c1d5573e70501b828aacfdf3e9e8a70",
+        "ruin-imperial-v1": "2e58e3f1b10666a23aa16c1e83bc6bc5997f9d68676308819fb93689b33fbcb5",
+        "settlement-root-v1": "71e3df7b247a1ad31db15ba7179f46134fe0d49a711ca890af89815f3a31d12f",
+        "vanilla-imperial-int": "45d923ff8a566247d86eb17cc1bea26f57487b403f8cd40cf60f70057de4ddca"
+      },
+      "layout": {
+        "path": "world/sources/blueprints/voriplasm-vault.layout.json",
+        "sha256": "b74b7c6a0ee1b05c38ed03b0c94aabb70363b9450f025ef4d8bc85d9dcdbd39d",
+        "uidSha256": {
+          "FortAmol01.00060457": "2a0f6aa7934f7c85f7b184628a7785919329ceb491d80e6468554c91dbcb7d18",
+          "FortAmol01.000B2930": "5e5b524f89385fd4002b8fc32b621339f154a3d744a71272eec26e89d09cdf64",
+          "FortAmol01.000EAB54": "746d966ff832ee5831cbc649b313ce5c80aa437bc154ac7290c14c43892fb829",
+          "FortAmol01.000EAB5E": "157ce96f1159dd676a037ce5808f0107e9710b2090d1a29ec4614f4020295b52",
+          "b2-arm": "41b94c0fc2d418ba2a340f3a65a3df2aef5dad4e20462675477537942d803604",
+          "b2-fresh": "311867c175c27a56a0785055eb9ba9d26668826acc229d2d7211327b5950d444",
+          "b2-humanribcage": "444fdd21bd26b3fc2574be0de1f90c1e0eec8d8e3ba7bd1211c3b1b0b3a05d65",
+          "b2-scrap": "146da4362426017e86970bb455d43198861e8b167a25caa2787b58df37c5bf06",
+          "b2-skull": "8456dc07c85d0d6d13e5e37033aa13421cb00c054e9ea24462b168c253ab9b4d",
+          "c-01": "37fb4052c54318de98834d5f2c4d16daf81429f09a0b4d3d255146d8a36ad3df",
+          "c-02": "9c960dc2a4de31f7b53b8954c6814e747277cfb458a29bbd98135f4554548424",
+          "c-03": "7c0fe86d2d8fffaa8d758fcc0cfe77dacb0370bcdb8b174e203c9115b5c5a033",
+          "c-04": "3812c34cd3b92b21aba52b911c37f57f0a5824335618d9f2bdaa2a3f25f4c233",
+          "c-06": "41131ff6096b0f64e50cc1127bd3c21eb66d1dc9f41858c20248dbf45774c0c2",
+          "c-07": "ef4740a11fc65eb2ea745025f85e2e06a415ff0c827449eaa304d0c2463b85c4",
+          "c-11": "41eb3fb087750f0375dd011f500a2b8a7ecb10f2fa455d15e3ac1cdbd797eb1a",
+          "c-12": "0bbbeb521c229ffdce778a7b4e10bc385741b8f77f50620d3c2807e45520cf67",
+          "c-15": "459ab353df7167aed4eb8e586c461bfdc9ed80d162e6e7858c5f7574c8b67c13",
+          "c-16": "1f128c6889238020e4501915db9735f1e1e7eb41f9ef7c630ce85bc561c95ec8",
+          "c-17": "439db3333c527faadb047af238a92144b73bb09895a23ca319e1491ec0593b5d",
+          "c-18": "7997279dee7d0049014defd04a715284b57d3b141fbc5d07f79b8faf72effa9a",
+          "c-19": "412b81d3bb8b3379bee6b3c8f4d947f8774fd6f6a6b33b81d1c15a4bd9598a60",
+          "c-21": "79e45ce65e117eea29e2126feae847823cc7020ce02b3cc95564747aea33b254",
+          "c-23": "fa8ad6d08ff343ab1c87d81cbdc794fc5aaddded8c1a67003ed3ed6e5708db9d",
+          "c-25": "4fc77cc30ca76bac9c0d43db396421f55e25090d39443d3e39e603e953d3b60f",
+          "c-30": "d26ed2273798d59c9e16cb04cd8f7b346d091a935316dd8d59cedf4892e824fc",
+          "c-32": "95e0660a44c034468d466281757420a9f19572589981f8aff1a27d4c6bcf8cb0",
+          "c-33": "f12c6743aef99472e1a08c806c27cf63ba40df988ed622e06600156c355bb365",
+          "c-34": "aa9e5557b5f9722a96252035fdbd8339a94e3b14f7f9ddfafd00bf6bb5b5dc9a",
+          "c-35": "c5a33162aff7515674a9dec70dcf210d8b474e4066bf78f54ad16afdab48b5fb",
+          "c-37": "94b716dae083f3720cbd2f990c1d666cc2cbfba716db3c8868d096c5f5b68b55",
+          "c-38": "df28823c80fd8b3ed6d81cdf548db382ee6934ef58eeff9244afb3eb59930a2e",
+          "c-40": "f6406874a36c89d424120afc032652a0b91507dd6e433de59f419fa816801e10",
+          "c-41": "143a080500f0a69e2c305647805ae3b4fdec0ed74dd3bc82cf8eb7c635806a75",
+          "c-44": "7ef02da110cab2d286d8dfb1a56d4592d0c8afe52074ada489821a3bc08adbe9",
+          "d-01": "a1cdefe7c463e39cbc52689ae37a103dde0834c87dfde70379742ea95e8487fa",
+          "d-04": "3673d392ce04048f78e5d75c5701dbe0968d1b8e53f9e8af5037d17fcef2d06f",
+          "d-05": "841329749e73d6df5353e4b0e3cd001356d5e9d6a0bfd04fe0136d8c40e23bdf",
+          "d-08": "7c629836763047874a709ac21974d808dadf277d530879baad9b47b172fd8833",
+          "f-1": "25138f80bb6902e7eb4dd164123f247a8d58bf7484c024e8da457a037d1633ee",
+          "f-2": "a9db97837197b904ae9a7ed9250381ffe42807b1028709064a3341017cff83c3",
+          "g-1": "832587adc0344c8e4dea16cb58d82dfc248c7df05c2258fa8156fd5b54c0d93c",
+          "g-2": "8c152bd87bd15da53bc0bb28d9c1734b8b618536107f0794a9cf81abb7b8fc5b",
+          "g-3": "33fd1c1120fdc4b30d7e36b64219b4326cc799e1f8bb00944ddaddb4432213b0",
+          "g-vine-1": "72a10d29d26d108ed9277a037afed1a75ee01e9cc930b5351fd752c2630c44ed",
+          "g-vine-2": "748173b522895a5e5181c1881d8e3e796d0e33f14d7aa69adf6899d37bf84473",
+          "k-0": "eb7c665086bc1312130827a3806a508239fbc3b7b5cb9dd26bba49eb35fad797",
+          "k-1": "4343b706bedc3cee240857df9b70892487abb74668550948a477e4fa9dc17c8d",
+          "k-2": "c90f5b5c9d9a36f81dc5d59be858547b3eb4d39d0db84b113a8329e0fca20473",
+          "k-3": "dd0aca039b1b02e824c967d81bb837b0f69ad58d750808924a8b1c61a118a54e",
+          "k-4": "30c06ae65beb6c36a5766284e811da6c006dadd93762a0035beda9340f6308e0",
+          "m-bank": "21f8baf4536a05991b56c14d3a52031723a5b36049699c0c3216a4e23f806f5f",
+          "m-bank-w": "6880f985eacab2de2cf38694b599031d5fe2c332fa82c988bacb472cbbdca1f3",
+          "m-berm": "63d1cf56416a865a36d11d50dceb7a48cc185ee8b8974703d1edaeaaacb382af",
+          "m-climb": "cbb940936ddab06531b50c69ee8f51a227421ba4d404a492379d44982c85acef",
+          "m-hollow": "2a40afac8ae045d7e1181c7537361ec00815d2131edd888971fac018457627fd",
+          "m-keep": "9d7d615155ea93d868c4923658afc0af7331ae8e005d85f513580a6ba528b5e5",
+          "m-rear-face": "39fcc128ea53da694a43c71d25e4c7862d1620fdef8e4cf259b569f5c019e9a1",
+          "m-stair": "fccd760683d64e0c5a420c4aaeeeafb7db3b49ed0763444897cb0716a3ea3435",
+          "n-board": "fa0aed9fd9e8c287d5e3b257cab87b5e92755940d014bda2d36128e02f827998",
+          "node-1": "7287bfd12a7ea27a5077ed351065b57ba9dbbeba6f6f7e9313f88ad95e36935e",
+          "node-2": "84a6ac2acf8822cb455c14d4ebc7668f9417f6db7bd1e37497dc9c1ab0a06931",
+          "r-spoil-n": "75468a2353f22eeaa5ac086ecdb6c3e2814d6367e317ce1ef0ed60c20805664b",
+          "r-spoil-s": "36eb2ceeb8b30dc0c50014aefb8563032f67e0286ce3cc7e416d5864f871c846",
+          "route.voriplasm-vault.the-court": "2afea505f7822e74c1eb4f5af230fa9258eb8d7cab6e6eaef0bfd3e77466d63f",
+          "route.voriplasm-vault.the-gate-track": "7e651a5fd2a3b67c92beb457ce9ee96cf2fb60cceb2c76204d816feba457ae1e",
+          "route.voriplasm-vault.the-hollow": "822a02267ddb20cb713eca94fa8df5ac229fd830c38fcf4478a7d6fa8f375f07",
+          "route.voriplasm-vault.the-trail": "ad7b4ccafbd187a54f303faa4b43fbf29343efa56d54e830a562d3df27672110",
+          "s-1": "8f34ba08fa791086a2ea1b4843ef5977fce411e89b7ee5a915ce373bfa861c3e",
+          "s-2": "f81ca43fc6005cb90440134ea9a219b07dd7f890c96132a620b4b55b4f719b48",
+          "s-drag": "d24d1a114cc24b5b9f9d61f00a62f5c4f3a8649d479156fee33da50023958da7",
+          "s-rags": "a8eaa2bd249168f74b5e12ae78e97c3668d995f952bd6858bee2614ae0553fe2",
+          "u-1": "76c490f51b3ddd65bfd3d20e94b94aa9e90b456cc15209888b539cbf6ffeb58a",
+          "u-2": "fc70fea254ed3f32b045180b69314b226a3183ab52f87bc487f68f1c0a88c810",
+          "v-hole": "36b2c4866f6b69dc26959316288f58f18c564a107a0f2cf4b396704c8d944ba2",
+          "v-hole-door": "ac482e141e2377b48f2122f661d50ca5bd541a498a2d912b711603459ef48e57"
+        },
+        "geometrySha256": "efec35da8da7068ad04cbce4c528d95e7db83d5c055c388a72ebc2d8760dc1fc"
+      }
+    },
+    "walkRoutes": {
+      "schemaVersion": 1,
+      "cellM": 0.5,
+      "stepM": 0.45,
+      "slopeMaxDeg": 30.0,
+      "wadeMaxM": 0.7,
+      "routes": {
+        "door:v-hole.0": {
+          "points": [
+            [
+              1684.5,
+              0.89,
+              6676.4
+            ],
+            [
+              1684.0,
+              0.88,
+              6676.9
+            ],
+            [
+              1684.0,
+              0.88,
+              6677.4
+            ],
+            [
+              1684.0,
+              0.89,
+              6677.9
+            ],
+            [
+              1684.0,
+              1.05,
+              6678.4
+            ],
+            [
+              1684.0,
+              1.18,
+              6678.9
+            ],
+            [
+              1684.0,
+              1.19,
+              6679.4
+            ],
+            [
+              1684.0,
+              1.19,
+              6680.9
+            ],
+            [
+              1684.0,
+              1.21,
+              6681.9
+            ],
+            [
+              1684.0,
+              1.27,
+              6683.4
+            ],
+            [
+              1684.0,
+              1.28,
+              6683.9
+            ],
+            [
+              1684.0,
+              1.28,
+              6684.4
+            ],
+            [
+              1684.0,
+              1.22,
+              6684.9
+            ],
+            [
+              1684.5,
+              1.55,
+              6685.4
+            ],
+            [
+              1685.0,
+              1.39,
+              6685.9
+            ],
+            [
+              1685.5,
+              1.02,
+              6686.4
+            ],
+            [
+              1686.0,
+              1.0,
+              6686.9
+            ],
+            [
+              1686.0,
+              1.0,
+              6687.4
+            ],
+            [
+              1686.5,
+              1.0,
+              6687.9
+            ],
+            [
+              1687.0,
+              0.98,
+              6688.4
+            ],
+            [
+              1687.5,
+              0.97,
+              6688.9
+            ],
+            [
+              1688.0,
+              0.99,
+              6689.4
+            ],
+            [
+              1688.5,
+              1.0,
+              6689.9
+            ],
+            [
+              1689.5,
+              1.0,
+              6690.9
+            ],
+            [
+              1690.0,
+              1.05,
+              6690.9
+            ],
+            [
+              1691.0,
+              1.21,
+              6691.9
+            ],
+            [
+              1691.5,
+              1.25,
+              6691.9
+            ],
+            [
+              1692.5,
+              1.29,
+              6691.9
+            ],
+            [
+              1693.0,
+              1.3,
+              6691.9
+            ],
+            [
+              1694.5,
+              1.3,
+              6691.9
+            ],
+            [
+              1695.5,
+              1.32,
+              6691.9
+            ],
+            [
+              1696.0,
+              1.32,
+              6691.9
+            ],
+            [
+              1696.5,
+              1.33,
+              6691.9
+            ],
+            [
+              1698.0,
+              1.33,
+              6691.9
+            ],
+            [
+              1698.5,
+              1.34,
+              6691.9
+            ],
+            [
+              1699.0,
+              1.34,
+              6691.9
+            ],
+            [
+              1699.5,
+              1.33,
+              6691.9
+            ],
+            [
+              1700.0,
+              1.33,
+              6691.9
+            ],
+            [
+              1700.5,
+              1.31,
+              6691.4
+            ],
+            [
+              1701.0,
+              1.28,
+              6690.9
+            ],
+            [
+              1701.5,
+              1.26,
+              6690.4
+            ],
+            [
+              1702.0,
+              1.24,
+              6690.4
+            ],
+            [
+              1702.5,
+              1.25,
+              6690.4
+            ],
+            [
+              1703.0,
+              1.34,
+              6690.4
+            ],
+            [
+              1703.5,
+              1.48,
+              6689.9
+            ],
+            [
+              1704.0,
+              1.59,
+              6689.9
+            ],
+            [
+              1704.5,
+              1.72,
+              6689.9
+            ],
+            [
+              1705.0,
+              1.78,
+              6689.4
+            ],
+            [
+              1705.5,
+              1.96,
+              6689.4
+            ],
+            [
+              1706.0,
+              2.13,
+              6689.4
+            ],
+            [
+              1709.0,
+              3.21,
+              6689.4
+            ],
+            [
+              1708.5,
+              3.43,
+              6689.9
+            ],
+            [
+              1709.0,
+              3.66,
+              6690.4
+            ],
+            [
+              1709.0,
+              3.66,
+              6693.9
+            ],
+            [
+              1709.5,
+              3.65,
+              6694.4
+            ],
+            [
+              1710.0,
+              3.84,
+              6694.4
+            ],
+            [
+              1710.5,
+              4.06,
+              6694.4
+            ],
+            [
+              1711.0,
+              4.3,
+              6694.4
+            ],
+            [
+              1711.5,
+              4.56,
+              6694.4
+            ],
+            [
+              1712.5,
+              5.1,
+              6694.4
+            ],
+            [
+              1713.0,
+              5.35,
+              6694.4
+            ],
+            [
+              1713.5,
+              5.59,
+              6694.4
+            ],
+            [
+              1714.0,
+              5.8,
+              6694.4
+            ],
+            [
+              1716.0,
+              5.8,
+              6694.4
+            ],
+            [
+              1716.5,
+              5.62,
+              6694.4
+            ],
+            [
+              1717.0,
+              5.43,
+              6694.4
+            ],
+            [
+              1718.0,
+              5.07,
+              6694.4
+            ],
+            [
+              1718.5,
+              4.88,
+              6694.4
+            ],
+            [
+              1719.5,
+              4.52,
+              6694.4
+            ],
+            [
+              1720.0,
+              4.33,
+              6694.4
+            ],
+            [
+              1721.0,
+              3.97,
+              6694.4
+            ],
+            [
+              1721.5,
+              3.76,
+              6694.4
+            ],
+            [
+              1722.0,
+              3.54,
+              6694.4
+            ],
+            [
+              1722.5,
+              3.31,
+              6694.4
+            ],
+            [
+              1723.0,
+              3.07,
+              6694.4
+            ],
+            [
+              1723.5,
+              2.82,
+              6694.4
+            ],
+            [
+              1724.5,
+              2.34,
+              6694.4
+            ],
+            [
+              1725.0,
+              2.12,
+              6694.4
+            ],
+            [
+              1725.5,
+              1.91,
+              6694.4
+            ],
+            [
+              1726.0,
+              1.8,
+              6693.9
+            ],
+            [
+              1727.0,
+              1.8,
+              6692.9
+            ],
+            [
+              1729.5,
+              1.8,
+              6692.9
+            ],
+            [
+              1730.0,
+              1.8,
+              6692.4
+            ],
+            [
+              1732.5,
+              1.8,
+              6692.4
+            ],
+            [
+              1733.0,
+              1.8,
+              6691.9
+            ]
+          ],
+          "routeM": 69.98,
+          "steepestDeg": 28.2,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "door:v-hole": {
+          "points": [
+            [
+              1684.5,
+              0.89,
+              6676.4
+            ],
+            [
+              1684.0,
+              0.88,
+              6676.9
+            ],
+            [
+              1684.0,
+              0.88,
+              6677.4
+            ],
+            [
+              1684.0,
+              0.89,
+              6677.9
+            ],
+            [
+              1684.0,
+              1.05,
+              6678.4
+            ],
+            [
+              1684.0,
+              1.18,
+              6678.9
+            ],
+            [
+              1684.0,
+              1.19,
+              6679.4
+            ],
+            [
+              1684.0,
+              1.19,
+              6680.9
+            ],
+            [
+              1684.0,
+              1.21,
+              6681.9
+            ],
+            [
+              1684.0,
+              1.27,
+              6683.4
+            ],
+            [
+              1684.0,
+              1.28,
+              6683.9
+            ],
+            [
+              1684.0,
+              1.28,
+              6684.4
+            ],
+            [
+              1684.0,
+              1.22,
+              6684.9
+            ],
+            [
+              1684.5,
+              1.55,
+              6685.4
+            ],
+            [
+              1685.0,
+              1.39,
+              6685.9
+            ],
+            [
+              1685.5,
+              1.02,
+              6686.4
+            ],
+            [
+              1686.0,
+              1.0,
+              6686.9
+            ],
+            [
+              1686.0,
+              1.0,
+              6687.4
+            ],
+            [
+              1686.5,
+              1.0,
+              6687.9
+            ],
+            [
+              1687.0,
+              0.98,
+              6688.4
+            ],
+            [
+              1687.5,
+              0.97,
+              6688.9
+            ],
+            [
+              1688.0,
+              0.99,
+              6689.4
+            ],
+            [
+              1688.5,
+              1.0,
+              6689.9
+            ],
+            [
+              1689.5,
+              1.0,
+              6690.9
+            ],
+            [
+              1690.0,
+              1.05,
+              6690.9
+            ],
+            [
+              1691.0,
+              1.21,
+              6691.9
+            ],
+            [
+              1691.5,
+              1.25,
+              6691.9
+            ],
+            [
+              1692.5,
+              1.29,
+              6691.9
+            ],
+            [
+              1693.0,
+              1.3,
+              6691.9
+            ],
+            [
+              1694.5,
+              1.3,
+              6691.9
+            ],
+            [
+              1695.5,
+              1.32,
+              6691.9
+            ],
+            [
+              1696.0,
+              1.32,
+              6691.9
+            ],
+            [
+              1696.5,
+              1.33,
+              6691.9
+            ],
+            [
+              1698.0,
+              1.33,
+              6691.9
+            ],
+            [
+              1698.5,
+              1.34,
+              6691.9
+            ],
+            [
+              1699.0,
+              1.34,
+              6691.9
+            ],
+            [
+              1699.5,
+              1.33,
+              6691.9
+            ],
+            [
+              1700.0,
+              1.33,
+              6691.9
+            ],
+            [
+              1700.5,
+              1.31,
+              6691.4
+            ],
+            [
+              1701.0,
+              1.28,
+              6690.9
+            ],
+            [
+              1701.5,
+              1.26,
+              6690.4
+            ],
+            [
+              1702.0,
+              1.24,
+              6690.4
+            ],
+            [
+              1702.5,
+              1.25,
+              6690.4
+            ],
+            [
+              1703.0,
+              1.34,
+              6690.4
+            ],
+            [
+              1703.5,
+              1.48,
+              6689.9
+            ],
+            [
+              1704.0,
+              1.59,
+              6689.9
+            ],
+            [
+              1704.5,
+              1.72,
+              6689.9
+            ],
+            [
+              1705.0,
+              1.78,
+              6689.4
+            ],
+            [
+              1705.5,
+              1.96,
+              6689.4
+            ],
+            [
+              1706.0,
+              2.13,
+              6689.4
+            ],
+            [
+              1709.0,
+              3.21,
+              6689.4
+            ],
+            [
+              1708.5,
+              3.43,
+              6689.9
+            ],
+            [
+              1709.0,
+              3.66,
+              6690.4
+            ],
+            [
+              1709.0,
+              3.66,
+              6693.9
+            ],
+            [
+              1709.5,
+              3.65,
+              6694.4
+            ],
+            [
+              1710.0,
+              3.84,
+              6694.4
+            ],
+            [
+              1710.5,
+              4.06,
+              6694.4
+            ],
+            [
+              1711.0,
+              4.3,
+              6694.4
+            ],
+            [
+              1711.5,
+              4.56,
+              6694.4
+            ],
+            [
+              1712.5,
+              5.1,
+              6694.4
+            ],
+            [
+              1713.0,
+              5.35,
+              6694.4
+            ],
+            [
+              1713.5,
+              5.59,
+              6694.4
+            ],
+            [
+              1714.0,
+              5.8,
+              6694.4
+            ],
+            [
+              1716.0,
+              5.8,
+              6694.4
+            ],
+            [
+              1716.5,
+              5.62,
+              6694.4
+            ],
+            [
+              1717.0,
+              5.43,
+              6694.4
+            ],
+            [
+              1718.0,
+              5.07,
+              6694.4
+            ],
+            [
+              1718.5,
+              4.88,
+              6694.4
+            ],
+            [
+              1719.5,
+              4.52,
+              6694.4
+            ],
+            [
+              1720.0,
+              4.33,
+              6694.4
+            ],
+            [
+              1721.0,
+              3.97,
+              6694.4
+            ],
+            [
+              1721.5,
+              3.76,
+              6694.4
+            ],
+            [
+              1722.0,
+              3.54,
+              6694.4
+            ],
+            [
+              1722.5,
+              3.31,
+              6694.4
+            ],
+            [
+              1723.0,
+              3.07,
+              6694.4
+            ],
+            [
+              1723.5,
+              2.82,
+              6694.4
+            ],
+            [
+              1724.5,
+              2.34,
+              6694.4
+            ],
+            [
+              1725.0,
+              2.12,
+              6694.4
+            ],
+            [
+              1725.5,
+              1.91,
+              6694.4
+            ],
+            [
+              1726.0,
+              1.8,
+              6693.9
+            ],
+            [
+              1727.0,
+              1.8,
+              6692.9
+            ],
+            [
+              1729.5,
+              1.8,
+              6692.9
+            ],
+            [
+              1730.0,
+              1.8,
+              6692.4
+            ],
+            [
+              1732.5,
+              1.8,
+              6692.4
+            ],
+            [
+              1733.0,
+              1.8,
+              6691.9
+            ]
+          ],
+          "routeM": 69.98,
+          "steepestDeg": 28.2,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0,
+          "parcelId": "parcel.voriplasm-vault.the-throat",
+          "doorIds": [
+            "door.imperial-penal-south.voriplasm-vault.1"
+          ]
+        },
+        "opening:c-04": {
+          "points": [
+            [
+              1684.5,
+              0.89,
+              6676.4
+            ],
+            [
+              1684.0,
+              0.88,
+              6676.9
+            ],
+            [
+              1684.0,
+              0.88,
+              6677.4
+            ],
+            [
+              1684.0,
+              0.89,
+              6677.9
+            ],
+            [
+              1684.0,
+              1.05,
+              6678.4
+            ],
+            [
+              1684.0,
+              1.18,
+              6678.9
+            ],
+            [
+              1684.0,
+              1.19,
+              6679.4
+            ],
+            [
+              1684.0,
+              1.19,
+              6680.9
+            ],
+            [
+              1684.0,
+              1.21,
+              6681.9
+            ],
+            [
+              1684.0,
+              1.27,
+              6683.4
+            ],
+            [
+              1684.0,
+              1.28,
+              6683.9
+            ],
+            [
+              1684.0,
+              1.28,
+              6684.4
+            ],
+            [
+              1684.0,
+              1.22,
+              6684.9
+            ],
+            [
+              1684.5,
+              1.55,
+              6685.4
+            ],
+            [
+              1685.0,
+              1.39,
+              6685.9
+            ],
+            [
+              1685.5,
+              1.02,
+              6686.4
+            ],
+            [
+              1686.0,
+              1.0,
+              6686.9
+            ],
+            [
+              1686.0,
+              1.0,
+              6687.4
+            ],
+            [
+              1686.5,
+              1.0,
+              6687.9
+            ],
+            [
+              1687.0,
+              0.98,
+              6688.4
+            ],
+            [
+              1687.5,
+              0.97,
+              6688.9
+            ],
+            [
+              1688.0,
+              0.99,
+              6689.4
+            ],
+            [
+              1688.5,
+              1.0,
+              6689.9
+            ],
+            [
+              1689.5,
+              1.0,
+              6690.9
+            ]
+          ],
+          "routeM": 17.22,
+          "steepestDeg": 27.8,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0,
+          "parcelId": "parcel.voriplasm-vault.the-works"
+        }
+      }
+    }
+  }
+}

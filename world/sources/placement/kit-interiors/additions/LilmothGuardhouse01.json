@@ -1,0 +1,54 @@
+{
+ "schemaVersion": 2,
+ "cellId": "LilmothGuardhouse01",
+ "additions": [
+  {
+   "id": "LilmothGuardhouse01:add:table-candlehornfloor",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    129.112,
+    83.325,
+    78.184
+   ],
+   "rotZDeg": 0,
+   "zone": "table",
+   "why": "Lights the dark floor of the guardhouse at night."
+  },
+  {
+   "id": "LilmothGuardhouse01:add:table-candlehornfloor-2",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    129.682,
+    83.072,
+    85.8
+   ],
+   "rotZDeg": 0,
+   "zone": "table",
+   "why": "Lights the dark floor of the guardhouse at night."
+  },
+  {
+   "id": "LilmothGuardhouse01:add:table-candlehornfloor-3",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    133.452,
+    86.232,
+    80.741
+   ],
+   "rotZDeg": 0,
+   "zone": "table",
+   "why": "Lights the dark floor of the guardhouse at night."
+  },
+  {
+   "id": "LilmothGuardhouse01:add:table-candlehornfloor-4",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    130.777,
+    83.072,
+    87.015
+   ],
+   "rotZDeg": 0,
+   "zone": "table",
+   "why": "Lights the dark floor of the guardhouse at night."
+  }
+ ]
+}

@@ -1,0 +1,2812 @@
+{
+ "schemaVersion": 1,
+ "placeId": "place.mercantile-coast.lighter-flotilla",
+ "window": {
+  "centreKm": [
+   3.875,
+   6.37
+  ],
+  "halfM": 75.0
+ },
+ "ops": [
+  {
+   "op": "place",
+   "uid": "pier",
+   "asset": "vanilla:architecture/docks/dockstrent02",
+   "at": [
+    3832.8,
+    6358.0
+   ],
+   "yaw": 270.0,
+   "y": 0.32,
+   "walkable": true,
+   "wet": true,
+   "fills": [
+    "promise.lighter-flotilla.thing-dock"
+   ]
+  },
+  {
+   "op": "place",
+   "uid": "pier-sol",
+   "asset": "vanilla:architecture/docks/dockstrsol01",
+   "at": [
+    3840.09,
+    6358.0
+   ],
+   "yaw": 270.0,
+   "walkable": true,
+   "wet": true
+  },
+  {
+   "op": "snap",
+   "child": "pier-sol",
+   "child_face": "north",
+   "parent": "pier",
+   "parent_face": "south",
+   "by": "evidence",
+   "allow_terminal": true
+  },
+  {
+   "op": "place",
+   "uid": "pier-sol2",
+   "asset": "vanilla:architecture/docks/dockstrsol01",
+   "at": [
+    3847.38,
+    6358.0
+   ],
+   "yaw": 270.0,
+   "walkable": true,
+   "wet": true
+  },
+  {
+   "op": "snap",
+   "child": "pier-sol2",
+   "child_face": "north",
+   "parent": "pier-sol",
+   "parent_face": "south",
+   "by": "evidence",
+   "allow_terminal": true
+  },
+  {
+   "op": "place",
+   "uid": "pier-sol3",
+   "asset": "vanilla:architecture/docks/dockstrsol01",
+   "at": [
+    3854.67,
+    6358.0
+   ],
+   "yaw": 270.0,
+   "walkable": true,
+   "wet": true
+  },
+  {
+   "op": "snap",
+   "child": "pier-sol3",
+   "child_face": "north",
+   "parent": "pier-sol2",
+   "parent_face": "south",
+   "by": "evidence",
+   "allow_terminal": true
+  },
+  {
+   "op": "place",
+   "uid": "pier-sol4",
+   "asset": "vanilla:architecture/docks/dockstrsol01",
+   "at": [
+    3861.96,
+    6358.0
+   ],
+   "yaw": 270.0,
+   "walkable": true,
+   "wet": true
+  },
+  {
+   "op": "snap",
+   "child": "pier-sol4",
+   "child_face": "north",
+   "parent": "pier-sol3",
+   "parent_face": "south",
+   "by": "evidence",
+   "allow_terminal": true
+  },
+  {
+   "op": "place",
+   "uid": "pier-sol5",
+   "asset": "vanilla:architecture/docks/dockstrsol01",
+   "at": [
+    3869.25,
+    6358.0
+   ],
+   "yaw": 270.0,
+   "walkable": true,
+   "wet": true
+  },
+  {
+   "op": "snap",
+   "child": "pier-sol5",
+   "child_face": "north",
+   "parent": "pier-sol4",
+   "parent_face": "south",
+   "by": "evidence",
+   "allow_terminal": true
+  },
+  {
+   "op": "place",
+   "uid": "pier-sol6",
+   "asset": "vanilla:architecture/docks/dockstrsol01",
+   "at": [
+    3876.54,
+    6358.0
+   ],
+   "yaw": 270.0,
+   "walkable": true,
+   "wet": true
+  },
+  {
+   "op": "snap",
+   "child": "pier-sol6",
+   "child_face": "north",
+   "parent": "pier-sol5",
+   "parent_face": "south",
+   "by": "evidence",
+   "allow_terminal": true
+  },
+  {
+   "op": "place",
+   "uid": "pier-sol7",
+   "asset": "vanilla:architecture/docks/dockstrsol01",
+   "at": [
+    3883.83,
+    6358.0
+   ],
+   "yaw": 270.0,
+   "walkable": true,
+   "wet": true
+  },
+  {
+   "op": "snap",
+   "child": "pier-sol7",
+   "child_face": "north",
+   "parent": "pier-sol6",
+   "parent_face": "south",
+   "by": "evidence",
+   "allow_terminal": true
+  },
+  {
+   "op": "place",
+   "uid": "pier-sol8",
+   "asset": "vanilla:architecture/docks/dockstrsol01",
+   "at": [
+    3891.12,
+    6358.0
+   ],
+   "yaw": 270.0,
+   "walkable": true,
+   "wet": true
+  },
+  {
+   "op": "snap",
+   "child": "pier-sol8",
+   "child_face": "north",
+   "parent": "pier-sol7",
+   "parent_face": "south",
+   "by": "evidence",
+   "allow_terminal": true
+  },
+  {
+   "op": "place",
+   "uid": "pier-sol9",
+   "asset": "vanilla:architecture/docks/dockstrsol01",
+   "at": [
+    3898.41,
+    6358.0
+   ],
+   "yaw": 270.0,
+   "walkable": true,
+   "wet": true
+  },
+  {
+   "op": "snap",
+   "child": "pier-sol9",
+   "child_face": "north",
+   "parent": "pier-sol8",
+   "parent_face": "south",
+   "by": "evidence",
+   "allow_terminal": true
+  },
+  {
+   "op": "place",
+   "uid": "pier-sol10",
+   "asset": "vanilla:architecture/docks/dockstrsol01",
+   "at": [
+    3905.7,
+    6358.0
+   ],
+   "yaw": 270.0,
+   "walkable": true,
+   "wet": true
+  },
+  {
+   "op": "snap",
+   "child": "pier-sol10",
+   "child_face": "north",
+   "parent": "pier-sol9",
+   "parent_face": "south",
+   "by": "evidence",
+   "allow_terminal": true
+  },
+  {
+   "op": "place",
+   "uid": "land",
+   "asset": "vanilla:architecture/docks/dockstrent02",
+   "at": [
+    3825.786,
+    6360.835
+   ],
+   "yaw": 22.0,
+   "y": 0.32,
+   "walkable": true,
+   "wet": true
+  },
+  {
+   "op": "note",
+   "uid": "land",
+   "text": "The stage ends on the firm bank a step short of the pier foot. Both of its ends rest on ground, so no rope hangs over a join. The one mined dock corner would turn the stage south or east into the water, away from the Lilmoth track."
+  },
+  {
+   "op": "place",
+   "uid": "land-sol1",
+   "asset": "vanilla:architecture/docks/dockstrsol01",
+   "at": [
+    3823.257,
+    6366.537
+   ],
+   "yaw": 22.0,
+   "walkable": true,
+   "wet": true
+  },
+  {
+   "op": "snap",
+   "child": "land-sol1",
+   "child_face": "north",
+   "parent": "land",
+   "parent_face": "south",
+   "by": "evidence",
+   "allow_terminal": true
+  },
+  {
+   "op": "place",
+   "uid": "land-sol2",
+   "asset": "vanilla:architecture/docks/dockstrsol01",
+   "at": [
+    3820.526,
+    6373.296
+   ],
+   "yaw": 22.0,
+   "walkable": true,
+   "wet": true
+  },
+  {
+   "op": "snap",
+   "child": "land-sol2",
+   "child_face": "north",
+   "parent": "land-sol1",
+   "parent_face": "south",
+   "by": "evidence",
+   "allow_terminal": true
+  },
+  {
+   "op": "place",
+   "uid": "land-sol3",
+   "asset": "vanilla:architecture/docks/dockstrsol01",
+   "at": [
+    3817.795,
+    6380.056
+   ],
+   "yaw": 22.0,
+   "walkable": true,
+   "wet": true
+  },
+  {
+   "op": "snap",
+   "child": "land-sol3",
+   "child_face": "north",
+   "parent": "land-sol2",
+   "parent_face": "south",
+   "by": "evidence",
+   "allow_terminal": true
+  },
+  {
+   "op": "place",
+   "uid": "land-sol4",
+   "asset": "vanilla:architecture/docks/dockstrsol01",
+   "at": [
+    3815.064,
+    6386.815
+   ],
+   "yaw": 22.0,
+   "walkable": true,
+   "wet": true
+  },
+  {
+   "op": "snap",
+   "child": "land-sol4",
+   "child_face": "north",
+   "parent": "land-sol3",
+   "parent_face": "south",
+   "by": "evidence",
+   "allow_terminal": true
+  },
+  {
+   "op": "place",
+   "uid": "r00",
+   "asset": "ferries:yamadori/ferries/plank_ferry_swamp_01",
+   "at": [
+    3871.55,
+    6355.09
+   ],
+   "yaw": 90,
+   "y": 0.195,
+   "wet": true,
+   "fills": [
+    "promise.lighter-flotilla.thing-plank-crossing"
+   ]
+  },
+  {
+   "op": "bind",
+   "uid": "r00",
+   "kind": "parcel",
+   "id": "parcel.lighter-flotilla.raft-r00"
+  },
+  {
+   "op": "place",
+   "uid": "r01",
+   "asset": "ferries:yamadori/ferries/plank_ferry_swamp_01",
+   "at": [
+    3875.2,
+    6355.09
+   ],
+   "yaw": 90,
+   "y": 0.195,
+   "wet": true
+  },
+  {
+   "op": "bind",
+   "uid": "r01",
+   "kind": "parcel",
+   "id": "parcel.lighter-flotilla.raft-r01"
+  },
+  {
+   "op": "place",
+   "uid": "r02",
+   "asset": "ferries:yamadori/ferries/plank_ferry_swamp_01",
+   "at": [
+    3878.85,
+    6355.09
+   ],
+   "yaw": 90,
+   "y": 0.195,
+   "wet": true
+  },
+  {
+   "op": "bind",
+   "uid": "r02",
+   "kind": "parcel",
+   "id": "parcel.lighter-flotilla.raft-r02"
+  },
+  {
+   "op": "place",
+   "uid": "r03",
+   "asset": "ferries:yamadori/ferries/plank_ferry_swamp_01",
+   "at": [
+    3882.65,
+    6355.09
+   ],
+   "yaw": 90,
+   "y": 0.195,
+   "wet": true
+  },
+  {
+   "op": "bind",
+   "uid": "r03",
+   "kind": "parcel",
+   "id": "parcel.lighter-flotilla.raft-r03"
+  },
+  {
+   "op": "place",
+   "uid": "h-n00",
+   "asset": "sailboats:sailboats/sailboatfurled",
+   "at": [
+    3898.41,
+    6354.4
+   ],
+   "yaw": 270,
+   "settle": true,
+   "wet": true,
+   "fills": [
+    "promise.lighter-flotilla.thing-boat"
+   ]
+  },
+  {
+   "op": "bind",
+   "uid": "h-n00",
+   "kind": "parcel",
+   "id": "parcel.lighter-flotilla.hull-n00"
+  },
+  {
+   "op": "note",
+   "uid": "h-n00",
+   "text": "walk 12 close-out: the north-side hull, moored alongside pier-sol9 where the water deepens past the shelf (3.7 m), leaving pier-sol10 to the lighter"
+  },
+  {
+   "op": "place",
+   "uid": "h-s00",
+   "asset": "sailboats:sailboats/longboatfurled",
+   "at": [
+    3865.9,
+    6364.77
+   ],
+   "yaw": 172,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "bind",
+   "uid": "h-s00",
+   "kind": "parcel",
+   "id": "parcel.lighter-flotilla.hull-s00"
+  },
+  {
+   "op": "place",
+   "uid": "h-s01",
+   "asset": "sailboats:sailboats/sailboatfurled",
+   "at": [
+    3876.15,
+    6364.283
+   ],
+   "yaw": 184,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "bind",
+   "uid": "h-s01",
+   "kind": "parcel",
+   "id": "parcel.lighter-flotilla.hull-s01"
+  },
+  {
+   "op": "place",
+   "uid": "h-n02",
+   "asset": "ferries:yamadori/ferries/river_ferry_rift_01",
+   "at": [
+    3880.1,
+    6364.597
+   ],
+   "yaw": 180,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "bind",
+   "uid": "h-n02",
+   "kind": "parcel",
+   "id": "parcel.lighter-flotilla.hull-n02"
+  },
+  {
+   "op": "place",
+   "uid": "lighter",
+   "asset": "ferries:yamadori/ferries/volkihar_ferry_01",
+   "at": [
+    3905.7,
+    6353.45
+   ],
+   "yaw": 90.0,
+   "settle": true,
+   "wet": true,
+   "fills": [
+    "promise.lighter-flotilla.thing-ferry"
+   ]
+  },
+  {
+   "op": "bind",
+   "uid": "lighter",
+   "kind": "parcel",
+   "id": "parcel.lighter-flotilla.lighter-berth"
+  },
+  {
+   "op": "note",
+   "uid": "lighter",
+   "text": "The lighter lies alongside pier-sol10 on its north side, parallel to the pier like the rafts, in 3.7 m of water. It floats on its line, so it has no fixed plank. The crew step down from the pier onto its low deck."
+  },
+  {
+   "op": "place",
+   "uid": "tradeship",
+   "asset": "composite:ship/eec-tradeship-with-door",
+   "at": [
+    3895.6,
+    6365.07
+   ],
+   "yaw": 270,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "bind",
+   "uid": "tradeship",
+   "kind": "parcel",
+   "id": "parcel.lighter-flotilla.tradeship"
+  },
+  {
+   "op": "place",
+   "uid": "ts-stair-out",
+   "asset": "kotm:argonia/mudhuts/stairs01",
+   "at": [
+    3895.292,
+    6359.353
+   ],
+   "yaw": 270.0,
+   "y": 1.44,
+   "scale": 1.0,
+   "walkable": true,
+   "wet": true
+  },
+  {
+   "op": "place",
+   "uid": "ts-stair-in",
+   "asset": "kotm:argonia/mudhuts/stairs01",
+   "at": [
+    3895.239,
+    6361.783
+   ],
+   "yaw": 92.6,
+   "y": 1.906,
+   "scale": 1.0,
+   "walkable": true,
+   "wet": true
+  },
+  {
+   "op": "bind",
+   "uid": "ts-stair-out",
+   "kind": "run",
+   "id": "parcel.lighter-flotilla.ship-stairs",
+   "index": 0
+  },
+  {
+   "op": "bind",
+   "uid": "ts-stair-in",
+   "kind": "run",
+   "id": "parcel.lighter-flotilla.ship-stairs",
+   "index": 1
+  },
+  {
+   "op": "place",
+   "uid": "ts-sign",
+   "asset": "kotm:argonia/blackwood/sign",
+   "at": [
+    3901.1,
+    6361.4
+   ],
+   "yaw": 345
+  },
+  {
+   "op": "mount",
+   "child": "ts-sign",
+   "parent": "tradeship",
+   "hang": true,
+   "unmined": "reader-approved r3",
+   "min_h": 3.8,
+   "max_h": 4.0,
+   "bracket": true,
+   "along": 11.2,
+   "bearing": 288.6
+  },
+  {
+   "op": "note",
+   "uid": "ts-sign",
+   "text": "The sign hangs from its own arm on the aftcastle's planked north wall, 3.8 m over the water, turned to square with the angled wall. The board hangs over the water beside the pier, about 2 m above the deck. The old hang sat on a rigging card."
+  },
+  {
+   "op": "bind",
+   "uid": "ts-sign",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.tradeship",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "measured",
+   "host": "tradeship"
+  },
+  {
+   "op": "place",
+   "uid": "ts-cargo-0",
+   "asset": "vanilla:clutter/barrel02",
+   "at": [
+    3896.886,
+    6366.218
+   ],
+   "yaw": 1.7,
+   "y": 1.564
+  },
+  {
+   "op": "mount",
+   "child": "ts-cargo-0",
+   "parent": "tradeship"
+  },
+  {
+   "op": "bind",
+   "uid": "ts-cargo-0",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.tradeship",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "plugin",
+   "host": "tradeship"
+  },
+  {
+   "op": "place",
+   "uid": "ts-cargo-1",
+   "asset": "vanilla:clutter/barrel02",
+   "at": [
+    3897.683,
+    6366.233
+   ],
+   "yaw": 110.5,
+   "y": 1.578
+  },
+  {
+   "op": "mount",
+   "child": "ts-cargo-1",
+   "parent": "tradeship"
+  },
+  {
+   "op": "bind",
+   "uid": "ts-cargo-1",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.tradeship",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "plugin",
+   "host": "tradeship"
+  },
+  {
+   "op": "place",
+   "uid": "ts-cargo-2",
+   "asset": "vanilla:clutter/barrel02",
+   "at": [
+    3898.491,
+    6366.343
+   ],
+   "yaw": 36.1,
+   "y": 1.583
+  },
+  {
+   "op": "mount",
+   "child": "ts-cargo-2",
+   "parent": "tradeship"
+  },
+  {
+   "op": "bind",
+   "uid": "ts-cargo-2",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.tradeship",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "plugin",
+   "host": "tradeship"
+  },
+  {
+   "op": "place",
+   "uid": "ts-cargo-3",
+   "asset": "vanilla:clutter/brewerycasklargeclosed02",
+   "at": [
+    3898.47,
+    6364.471
+   ],
+   "yaw": 270.0,
+   "y": 2.83
+  },
+  {
+   "op": "mount",
+   "child": "ts-cargo-3",
+   "parent": "tradeship"
+  },
+  {
+   "op": "bind",
+   "uid": "ts-cargo-3",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.tradeship",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "plugin",
+   "host": "tradeship"
+  },
+  {
+   "op": "place",
+   "uid": "ts-cargo-4",
+   "asset": "vanilla:clutter/common/cratesmall02",
+   "at": [
+    3897.078,
+    6361.39
+   ],
+   "yaw": 281.5,
+   "y": 1.888
+  },
+  {
+   "op": "mount",
+   "child": "ts-cargo-4",
+   "parent": "tradeship"
+  },
+  {
+   "op": "bind",
+   "uid": "ts-cargo-4",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.tradeship",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "plugin",
+   "host": "tradeship"
+  },
+  {
+   "op": "place",
+   "uid": "ts-cargo-5",
+   "asset": "vanilla:clutter/common/cratesmalllong01eeco",
+   "at": [
+    3895.385,
+    6364.02
+   ],
+   "yaw": 87.6,
+   "y": 1.929
+  },
+  {
+   "op": "mount",
+   "child": "ts-cargo-5",
+   "parent": "tradeship"
+  },
+  {
+   "op": "bind",
+   "uid": "ts-cargo-5",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.tradeship",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "plugin",
+   "host": "tradeship"
+  },
+  {
+   "op": "place",
+   "uid": "ts-cargo-6",
+   "asset": "vanilla:clutter/common/cratesmalllong02",
+   "at": [
+    3895.871,
+    6365.4
+   ],
+   "yaw": 173.6,
+   "y": 2.548
+  },
+  {
+   "op": "mount",
+   "child": "ts-cargo-6",
+   "parent": "tradeship"
+  },
+  {
+   "op": "bind",
+   "uid": "ts-cargo-6",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.tradeship",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "plugin",
+   "host": "tradeship"
+  },
+  {
+   "op": "place",
+   "uid": "ts-cargo-7",
+   "asset": "vanilla:clutter/common/cratesmalllong02",
+   "at": [
+    3894.972,
+    6364.528
+   ],
+   "yaw": 355.9,
+   "y": 2.548
+  },
+  {
+   "op": "mount",
+   "child": "ts-cargo-7",
+   "parent": "tradeship"
+  },
+  {
+   "op": "bind",
+   "uid": "ts-cargo-7",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.tradeship",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "plugin",
+   "host": "tradeship"
+  },
+  {
+   "op": "place",
+   "uid": "ts-cargo-8",
+   "asset": "vanilla:clutter/common/cratesmalllong03",
+   "at": [
+    3895.959,
+    6365.44
+   ],
+   "yaw": 1.7,
+   "y": 1.929
+  },
+  {
+   "op": "mount",
+   "child": "ts-cargo-8",
+   "parent": "tradeship"
+  },
+  {
+   "op": "bind",
+   "uid": "ts-cargo-8",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.tradeship",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "plugin",
+   "host": "tradeship"
+  },
+  {
+   "op": "place",
+   "uid": "ts-cargo-9",
+   "asset": "vanilla:clutter/common/cratesmalllong04eeco",
+   "at": [
+    3894.892,
+    6365.409
+   ],
+   "yaw": 178.3,
+   "y": 1.929
+  },
+  {
+   "op": "mount",
+   "child": "ts-cargo-9",
+   "parent": "tradeship"
+  },
+  {
+   "op": "bind",
+   "uid": "ts-cargo-9",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.tradeship",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "plugin",
+   "host": "tradeship"
+  },
+  {
+   "op": "place",
+   "uid": "mk-r00-0",
+   "asset": "vanilla:clutter/common/cratesmall01",
+   "at": [
+    3870.65,
+    6354.2
+   ],
+   "yaw": 0,
+   "y": 1.2
+  },
+  {
+   "op": "mount",
+   "child": "mk-r00-0",
+   "parent": "r00",
+   "inside": true,
+   "unmined": "reader-approved r1"
+  },
+  {
+   "op": "bind",
+   "uid": "mk-r00-0",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.raft-r00",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "measured",
+   "host": "r00"
+  },
+  {
+   "op": "place",
+   "uid": "mk-r00-1",
+   "asset": "vanilla:clutter/barrel02",
+   "at": [
+    3872.85,
+    6354.98
+   ],
+   "yaw": 37,
+   "y": 1.2
+  },
+  {
+   "op": "mount",
+   "child": "mk-r00-1",
+   "parent": "r00",
+   "inside": true,
+   "unmined": "reader-approved r1"
+  },
+  {
+   "op": "bind",
+   "uid": "mk-r00-1",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.raft-r00",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "measured",
+   "host": "r00"
+  },
+  {
+   "op": "place",
+   "uid": "mk-r00-2",
+   "asset": "vanilla:clutter/common/cratesmall02",
+   "at": [
+    3872.6,
+    6354.1
+   ],
+   "yaw": 74,
+   "y": 1.2
+  },
+  {
+   "op": "mount",
+   "child": "mk-r00-2",
+   "parent": "r00",
+   "inside": true,
+   "unmined": "reader-approved r1"
+  },
+  {
+   "op": "bind",
+   "uid": "mk-r00-2",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.raft-r00",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "measured",
+   "host": "r00"
+  },
+  {
+   "op": "place",
+   "uid": "mk-r01-0",
+   "asset": "vanilla:clutter/common/cratesmall02",
+   "at": [
+    3873.9,
+    6354.98
+   ],
+   "yaw": 111,
+   "y": 1.2
+  },
+  {
+   "op": "mount",
+   "child": "mk-r01-0",
+   "parent": "r01",
+   "inside": true,
+   "unmined": "reader-approved r1"
+  },
+  {
+   "op": "bind",
+   "uid": "mk-r01-0",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.raft-r01",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "measured",
+   "host": "r01"
+  },
+  {
+   "op": "place",
+   "uid": "mk-r01-1",
+   "asset": "vanilla:clutter/barrel02",
+   "at": [
+    3876.5,
+    6354.98
+   ],
+   "yaw": 148,
+   "y": 1.2
+  },
+  {
+   "op": "mount",
+   "child": "mk-r01-1",
+   "parent": "r01",
+   "inside": true,
+   "unmined": "reader-approved r1"
+  },
+  {
+   "op": "bind",
+   "uid": "mk-r01-1",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.raft-r01",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "measured",
+   "host": "r01"
+  },
+  {
+   "op": "place",
+   "uid": "mk-r01-2",
+   "asset": "vanilla:clutter/common/candlelanternwithcandle01",
+   "at": [
+    3873.95,
+    6354.23
+   ],
+   "yaw": 53,
+   "y": 1.2
+  },
+  {
+   "op": "mount",
+   "child": "mk-r01-2",
+   "parent": "r01",
+   "inside": true,
+   "unmined": "reader-approved r1"
+  },
+  {
+   "op": "bind",
+   "uid": "mk-r01-2",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.raft-r01",
+   "layer": "light",
+   "on": "parent",
+   "evidence": "measured",
+   "host": "r01"
+  },
+  {
+   "op": "place",
+   "uid": "mk-r02-0",
+   "asset": "vanilla:clutter/common/cratesmall01",
+   "at": [
+    3878.1,
+    6354.2
+   ],
+   "yaw": 185,
+   "y": 1.2
+  },
+  {
+   "op": "mount",
+   "child": "mk-r02-0",
+   "parent": "r02",
+   "inside": true,
+   "unmined": "reader-approved r1"
+  },
+  {
+   "op": "bind",
+   "uid": "mk-r02-0",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.raft-r02",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "measured",
+   "host": "r02"
+  },
+  {
+   "op": "place",
+   "uid": "mk-r02-1",
+   "asset": "vanilla:clutter/barrel02",
+   "at": [
+    3880.15,
+    6354.98
+   ],
+   "yaw": 222,
+   "y": 1.2
+  },
+  {
+   "op": "mount",
+   "child": "mk-r02-1",
+   "parent": "r02",
+   "inside": true,
+   "unmined": "reader-approved r1"
+  },
+  {
+   "op": "bind",
+   "uid": "mk-r02-1",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.raft-r02",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "measured",
+   "host": "r02"
+  },
+  {
+   "op": "place",
+   "uid": "mk-r02-2",
+   "asset": "vanilla:clutter/common/cratesmall02",
+   "at": [
+    3879.9,
+    6354.1
+   ],
+   "yaw": 259,
+   "y": 1.2
+  },
+  {
+   "op": "mount",
+   "child": "mk-r02-2",
+   "parent": "r02",
+   "inside": true,
+   "unmined": "reader-approved r1"
+  },
+  {
+   "op": "bind",
+   "uid": "mk-r02-2",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.raft-r02",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "measured",
+   "host": "r02"
+  },
+  {
+   "op": "place",
+   "uid": "mk-r03-0",
+   "asset": "vanilla:clutter/carts/handcartcrate",
+   "at": [
+    3883.8,
+    6354.78
+   ],
+   "yaw": 90,
+   "y": 1.2
+  },
+  {
+   "op": "mount",
+   "child": "mk-r03-0",
+   "parent": "r03",
+   "inside": true,
+   "unmined": "reader-approved r1"
+  },
+  {
+   "op": "bind",
+   "uid": "mk-r03-0",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.raft-r03",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "measured",
+   "host": "r03"
+  },
+  {
+   "op": "place",
+   "uid": "mk-r03-1",
+   "asset": "vanilla:clutter/barrel02",
+   "at": [
+    3881.35,
+    6354.98
+   ],
+   "yaw": 296,
+   "y": 1.2
+  },
+  {
+   "op": "mount",
+   "child": "mk-r03-1",
+   "parent": "r03",
+   "inside": true,
+   "unmined": "reader-approved r1"
+  },
+  {
+   "op": "bind",
+   "uid": "mk-r03-1",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.raft-r03",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "measured",
+   "host": "r03"
+  },
+  {
+   "op": "place",
+   "uid": "mk-r03-2",
+   "asset": "vanilla:clutter/common/candlelanternwithcandle01",
+   "at": [
+    3881.4,
+    6354.23
+   ],
+   "yaw": 159,
+   "y": 1.2
+  },
+  {
+   "op": "mount",
+   "child": "mk-r03-2",
+   "parent": "r03",
+   "inside": true,
+   "unmined": "reader-approved r1"
+  },
+  {
+   "op": "bind",
+   "uid": "mk-r03-2",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.raft-r03",
+   "layer": "light",
+   "on": "parent",
+   "evidence": "measured",
+   "host": "r03"
+  },
+  {
+   "op": "bind",
+   "uid": "pier",
+   "kind": "run",
+   "id": "parcel.lighter-flotilla.the-street",
+   "index": 0
+  },
+  {
+   "op": "bind",
+   "uid": "pier-sol",
+   "kind": "run",
+   "id": "parcel.lighter-flotilla.the-street",
+   "index": 1
+  },
+  {
+   "op": "bind",
+   "uid": "pier-sol2",
+   "kind": "run",
+   "id": "parcel.lighter-flotilla.the-street",
+   "index": 2
+  },
+  {
+   "op": "bind",
+   "uid": "pier-sol3",
+   "kind": "run",
+   "id": "parcel.lighter-flotilla.the-street",
+   "index": 3
+  },
+  {
+   "op": "bind",
+   "uid": "pier-sol4",
+   "kind": "run",
+   "id": "parcel.lighter-flotilla.the-street",
+   "index": 4
+  },
+  {
+   "op": "bind",
+   "uid": "pier-sol5",
+   "kind": "run",
+   "id": "parcel.lighter-flotilla.the-street",
+   "index": 5
+  },
+  {
+   "op": "bind",
+   "uid": "pier-sol6",
+   "kind": "run",
+   "id": "parcel.lighter-flotilla.the-street",
+   "index": 6
+  },
+  {
+   "op": "bind",
+   "uid": "pier-sol7",
+   "kind": "run",
+   "id": "parcel.lighter-flotilla.the-street",
+   "index": 7
+  },
+  {
+   "op": "bind",
+   "uid": "pier-sol8",
+   "kind": "run",
+   "id": "parcel.lighter-flotilla.the-street",
+   "index": 8
+  },
+  {
+   "op": "bind",
+   "uid": "pier-sol9",
+   "kind": "run",
+   "id": "parcel.lighter-flotilla.the-street",
+   "index": 9
+  },
+  {
+   "op": "bind",
+   "uid": "pier-sol10",
+   "kind": "run",
+   "id": "parcel.lighter-flotilla.the-street",
+   "index": 10
+  },
+  {
+   "op": "bind",
+   "uid": "land",
+   "kind": "run",
+   "id": "parcel.lighter-flotilla.the-landing",
+   "index": 0
+  },
+  {
+   "op": "bind",
+   "uid": "land-sol1",
+   "kind": "run",
+   "id": "parcel.lighter-flotilla.the-landing",
+   "index": 1
+  },
+  {
+   "op": "bind",
+   "uid": "land-sol2",
+   "kind": "run",
+   "id": "parcel.lighter-flotilla.the-landing",
+   "index": 2
+  },
+  {
+   "op": "bind",
+   "uid": "land-sol3",
+   "kind": "run",
+   "id": "parcel.lighter-flotilla.the-landing",
+   "index": 3
+  },
+  {
+   "op": "bind",
+   "uid": "land-sol4",
+   "kind": "run",
+   "id": "parcel.lighter-flotilla.the-landing",
+   "index": 4
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.lighter-flotilla.the-street",
+   "points": [
+    [
+     3815.6,
+     6382.8
+    ],
+    [
+     3827.337,
+     6356.44
+    ],
+    [
+     3829.8,
+     6358.0
+    ],
+    [
+     3832.8,
+     6358.0
+    ],
+    [
+     3895.27,
+     6358.0
+    ],
+    [
+     3895.27,
+     6365.64
+    ],
+    [
+     3890.49,
+     6365.64
+    ]
+   ],
+   "width": 1.6,
+   "kind": "footpath"
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.station-lighter-berth",
+   "kind": "marker",
+   "host": "parcel.lighter-flotilla.lighter-berth",
+   "parcel": "parcel.lighter-flotilla.lighter-berth",
+   "why": "The lighter for the Lilmoth run lies alongside the street's outer end; the boat route route.boat.lilmoth-anchorage starts and ends here."
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.npc-speaker",
+   "kind": "npc",
+   "host": "parcel.lighter-flotilla.hull-n02",
+   "rosterSlotId": "flotilla-speaker",
+   "role": "the flotilla speaker",
+   "parcel": "parcel.lighter-flotilla.hull-n02",
+   "why": "The speaker lives aboard her longboat at the middle of the street, where every crew passes.",
+   "schedule": [
+    {
+     "dayPhase": "morning",
+     "socketId": "socket.lighter-flotilla.idle-speaker-work",
+     "purpose": "work"
+    },
+    {
+     "dayPhase": "night",
+     "socketId": "socket.lighter-flotilla.idle-speaker-home",
+     "purpose": "home"
+    }
+   ],
+   "fills": [
+    "promise.lighter-flotilla.occupant-flotilla-speaker"
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.npc-crew",
+   "kind": "npc",
+   "host": "parcel.lighter-flotilla.hull-n02",
+   "rosterSlotId": "n1",
+   "role": "lighter crew",
+   "parcel": "parcel.lighter-flotilla.hull-n02",
+   "why": "Crews come and go along the street between their hulls and the lighter.",
+   "schedule": [
+    {
+     "dayPhase": "morning",
+     "socketId": "socket.lighter-flotilla.idle-n1-work",
+     "purpose": "work"
+    },
+    {
+     "dayPhase": "night",
+     "socketId": "socket.lighter-flotilla.idle-n1-home",
+     "purpose": "home"
+    }
+   ],
+   "fills": [
+    "promise.lighter-flotilla.occupant-n1"
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.npc-n2",
+   "kind": "npc",
+   "host": "parcel.lighter-flotilla.hull-s01",
+   "rosterSlotId": "n2",
+   "role": "lighter crew",
+   "parcel": "parcel.lighter-flotilla.hull-s01",
+   "why": "A second crew lives aboard across the street from the speaker.",
+   "schedule": [
+    {
+     "dayPhase": "morning",
+     "socketId": "socket.lighter-flotilla.idle-n2-work",
+     "purpose": "work"
+    },
+    {
+     "dayPhase": "night",
+     "socketId": "socket.lighter-flotilla.idle-n2-home",
+     "purpose": "home"
+    }
+   ],
+   "fills": [
+    "promise.lighter-flotilla.occupant-n2"
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.idle-speaker-work",
+   "kind": "idle",
+   "activity": "stand",
+   "host": "parcel.lighter-flotilla.hull-n02",
+   "parcel": "parcel.lighter-flotilla.hull-n02",
+   "why": "The speaker stands at her bow by day, where the crews pass on the street."
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.idle-speaker-home",
+   "kind": "idle",
+   "activity": "sleep",
+   "host": "parcel.lighter-flotilla.hull-n02",
+   "parcel": "parcel.lighter-flotilla.hull-n02",
+   "why": "The speaker sleeps aboard her own longboat."
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.idle-n1-work",
+   "kind": "idle",
+   "activity": "tend",
+   "host": "parcel.lighter-flotilla.lighter-berth",
+   "parcel": "parcel.lighter-flotilla.lighter-berth",
+   "why": "The crew works the lighter's lines by day."
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.idle-n1-home",
+   "kind": "idle",
+   "activity": "sleep",
+   "host": "parcel.lighter-flotilla.hull-n02",
+   "parcel": "parcel.lighter-flotilla.hull-n02",
+   "why": "The crew sleeps aboard its own hull."
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.idle-n2-work",
+   "kind": "idle",
+   "activity": "tend",
+   "host": "parcel.lighter-flotilla.hull-s01",
+   "parcel": "parcel.lighter-flotilla.hull-s01",
+   "why": "The crew mends gear on its own deck by day."
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.idle-n2-home",
+   "kind": "idle",
+   "activity": "sleep",
+   "host": "parcel.lighter-flotilla.hull-s01",
+   "parcel": "parcel.lighter-flotilla.hull-s01",
+   "why": "The crew sleeps aboard its own hull."
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.station-bunks",
+   "kind": "idle",
+   "activity": "sleep",
+   "interiorCell": "MurkmireTravelShipAltenMeerhleel",
+   "host": "MurkmireTravelShipAltenMeerhleel.0891E07A",
+   "parcel": "parcel.lighter-flotilla.tradeship",
+   "why": "The Alten Meerhleel ship lets its spare bunks below decks to anyone waiting on the lighter.",
+   "fills": [
+    "promise.lighter-flotilla.service-lodging"
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.station-trader",
+   "kind": "marker",
+   "interiorCell": "MurkmireTravelShipAltenMeerhleel",
+   "host": "MurkmireTravelShipAltenMeerhleel.0891E07E",
+   "parcel": "parcel.lighter-flotilla.tradeship",
+   "why": "The ship's purser sells goods that never reached the tariff line.",
+   "fills": [
+    "promise.lighter-flotilla.service-trader"
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.marker-crew-vote",
+   "kind": "marker",
+   "host": "parcel.lighter-flotilla.hull-n02",
+   "parcel": "parcel.lighter-flotilla.hull-n02",
+   "why": "The street off the speaker's longboat, where the crews stand to vote.",
+   "fills": [
+    "promise.lighter-flotilla.scene-crew-vote"
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.marker-hire",
+   "kind": "marker",
+   "host": "parcel.lighter-flotilla.hull-n02",
+   "parcel": "parcel.lighter-flotilla.hull-n02",
+   "why": "Crews looking for hands call for them from the speaker's longboat.",
+   "fills": [
+    "promise.lighter-flotilla.post-hire"
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.marker-crew-standing",
+   "kind": "marker",
+   "host": "parcel.lighter-flotilla.hull-n02",
+   "parcel": "parcel.lighter-flotilla.hull-n02",
+   "why": "The speaker keeps the crews' standing.",
+   "fills": [
+    "promise.lighter-flotilla.marks-crew-standing"
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.npc-purser",
+   "kind": "npc",
+   "interiorCell": "MurkmireTravelShipAltenMeerhleel",
+   "host": "MurkmireTravelShipAltenMeerhleel.0891E07C",
+   "role": "the ship's purser",
+   "parcel": "parcel.lighter-flotilla.tradeship",
+   "why": "The purser lets the bunks, sells from the stores and books passage to Alten Meerhleel.",
+   "fills": [
+    "promise.lighter-flotilla.safe-interior"
+   ],
+   "rosterSlotId": "purser",
+   "schedule": [
+    {
+     "dayPhase": "morning",
+     "socketId": "socket.lighter-flotilla.idle-n1-work",
+     "purpose": "work"
+    },
+    {
+     "dayPhase": "night",
+     "socketId": "socket.lighter-flotilla.idle-n1-home",
+     "purpose": "home"
+    }
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.npc-lighterman",
+   "kind": "npc",
+   "host": "parcel.lighter-flotilla.lighter-berth",
+   "role": "the lighter's master",
+   "parcel": "parcel.lighter-flotilla.lighter-berth",
+   "why": "The lighter's master stands at the quay end over the lighters, taking the fare for the run to Lilmoth at the foot of the plank.",
+   "fills": [
+    "promise.lighter-flotilla.service-ferry",
+    "promise.lighter-flotilla.travel-station",
+    "promise.lighter-flotilla.thing-boat"
+   ],
+   "rosterSlotId": "lighterman",
+   "schedule": [
+    {
+     "dayPhase": "morning",
+     "socketId": "socket.lighter-flotilla.idle-lighterman-work",
+     "purpose": "work"
+    },
+    {
+     "dayPhase": "night",
+     "socketId": "socket.lighter-flotilla.idle-n1-home",
+     "purpose": "home"
+    }
+   ],
+   "at": [
+    3905.0,
+    6357.6
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.marker-tg04-anchor",
+   "kind": "marker",
+   "host": "parcel.lighter-flotilla.hull-n02",
+   "parcel": "parcel.lighter-flotilla.hull-n02",
+   "why": "The speaker's longboat, where the floating house's mooring is asked after.",
+   "fills": [
+    "promise.lighter-flotilla.provision-tg04-anchor"
+   ]
+  },
+  {
+   "op": "note",
+   "uid": "h-s01",
+   "text": "16x: afloat at its draught it sits 0.25 m lower and its quarter met h-n02 (0.015 m); 0.15 m west clears it"
+  },
+  {
+   "op": "place",
+   "uid": "h-n00-rope-post",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+   "scale": 0.75,
+   "at": [
+    3898.41,
+    6354.4
+   ],
+   "yaw": 0.0
+  },
+  {
+   "op": "mount",
+   "child": "h-n00-rope-post",
+   "parent": "pier-sol9",
+   "moor": "h-n00",
+   "unmined": "reader-approved r4"
+  },
+  {
+   "op": "bind",
+   "uid": "h-n00-rope-post",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.hull-n00",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "h-s00-rope-post",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+   "scale": 0.75,
+   "at": [
+    3865.9,
+    6364.77
+   ],
+   "yaw": 0.0
+  },
+  {
+   "op": "mount",
+   "child": "h-s00-rope-post",
+   "parent": "pier-sol5",
+   "moor": "h-s00",
+   "unmined": "reader-approved r4"
+  },
+  {
+   "op": "bind",
+   "uid": "h-s00-rope-post",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.hull-s00",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "h-s01-rope-post",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+   "scale": 0.75,
+   "at": [
+    3876.15,
+    6364.283
+   ],
+   "yaw": 0.0
+  },
+  {
+   "op": "mount",
+   "child": "h-s01-rope-post",
+   "parent": "pier-sol6",
+   "moor": "h-s01",
+   "unmined": "reader-approved r4"
+  },
+  {
+   "op": "bind",
+   "uid": "h-s01-rope-post",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.hull-s01",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "h-n02-rope-post",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+   "scale": 0.75,
+   "at": [
+    3880.1,
+    6364.597
+   ],
+   "yaw": 0.0
+  },
+  {
+   "op": "mount",
+   "child": "h-n02-rope-post",
+   "parent": "pier-sol6",
+   "moor": "h-n02",
+   "unmined": "reader-approved r4"
+  },
+  {
+   "op": "bind",
+   "uid": "h-n02-rope-post",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.hull-n02",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "lighter-rope-post",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+   "scale": 0.75,
+   "at": [
+    3905.7,
+    6353.0
+   ],
+   "yaw": 0.0
+  },
+  {
+   "op": "mount",
+   "child": "lighter-rope-post",
+   "parent": "pier-sol10",
+   "moor": "lighter",
+   "unmined": "reader-approved r4"
+  },
+  {
+   "op": "bind",
+   "uid": "lighter-rope-post",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.lighter-berth",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "tradeship-rope-post",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+   "scale": 0.75,
+   "at": [
+    3895.6,
+    6365.07
+   ],
+   "yaw": 0.0
+  },
+  {
+   "op": "place",
+   "uid": "tradeship-rope",
+   "asset": "vanilla:architecture/docks/dockropestr01",
+   "at": [
+    3895.6,
+    6365.07
+   ],
+   "yaw": 0.0
+  },
+  {
+   "op": "mount",
+   "child": "tradeship-rope-post",
+   "parent": "pier-sol9",
+   "moor": "tradeship",
+   "unmined": "reader-approved r4",
+   "rope": "tradeship-rope"
+  },
+  {
+   "op": "bind",
+   "uid": "tradeship-rope-post",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.tradeship",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "tradeship-rope",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.tradeship",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "measured",
+   "host": "tradeship"
+  },
+  {
+   "op": "place",
+   "uid": "r00-rope-post",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+   "scale": 0.75,
+   "at": [
+    3871.55,
+    6355.09
+   ],
+   "yaw": 0.0
+  },
+  {
+   "op": "mount",
+   "child": "r00-rope-post",
+   "parent": "pier-sol5",
+   "moor": "r00",
+   "unmined": "reader-approved r4"
+  },
+  {
+   "op": "bind",
+   "uid": "r00-rope-post",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.raft-r00",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "r01-rope-post",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+   "scale": 0.75,
+   "at": [
+    3875.2,
+    6355.09
+   ],
+   "yaw": 0.0
+  },
+  {
+   "op": "mount",
+   "child": "r01-rope-post",
+   "parent": "pier-sol6",
+   "moor": "r01",
+   "unmined": "reader-approved r4"
+  },
+  {
+   "op": "bind",
+   "uid": "r01-rope-post",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.raft-r01",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "r02-rope-post",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+   "scale": 0.75,
+   "at": [
+    3878.85,
+    6355.09
+   ],
+   "yaw": 0.0
+  },
+  {
+   "op": "mount",
+   "child": "r02-rope-post",
+   "parent": "pier-sol6",
+   "moor": "r02",
+   "unmined": "reader-approved r4"
+  },
+  {
+   "op": "bind",
+   "uid": "r02-rope-post",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.raft-r02",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "r03-rope-post",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+   "scale": 0.75,
+   "at": [
+    3882.65,
+    6355.09
+   ],
+   "yaw": 0.0
+  },
+  {
+   "op": "mount",
+   "child": "r03-rope-post",
+   "parent": "pier-sol7",
+   "moor": "r03",
+   "unmined": "reader-approved r4"
+  },
+  {
+   "op": "bind",
+   "uid": "r03-rope-post",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.raft-r03",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "ts-lamp-aft",
+   "asset": "vanilla:clutter/common/candlelanternwithcandle01",
+   "at": [
+    3889.0,
+    6365.07
+   ],
+   "yaw": 0,
+   "y": 3.6
+  },
+  {
+   "op": "mount",
+   "child": "ts-lamp-aft",
+   "parent": "tradeship",
+   "inside": true,
+   "unmined": "reader-approved r1"
+  },
+  {
+   "op": "bind",
+   "uid": "ts-lamp-aft",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.tradeship",
+   "layer": "light",
+   "on": "parent",
+   "evidence": "measured",
+   "host": "tradeship"
+  },
+  {
+   "op": "note",
+   "uid": "ts-lamp-aft",
+   "text": "A deck lantern: the crew work and sleep aboard, so the deck is lit after dark."
+  },
+  {
+   "op": "place",
+   "uid": "ts-lamp-mid",
+   "asset": "vanilla:clutter/common/candlelanternwithcandle01",
+   "at": [
+    3893.2,
+    6363.6
+   ],
+   "yaw": 0,
+   "y": 2.0
+  },
+  {
+   "op": "mount",
+   "child": "ts-lamp-mid",
+   "parent": "tradeship",
+   "inside": true,
+   "unmined": "reader-approved r1"
+  },
+  {
+   "op": "bind",
+   "uid": "ts-lamp-mid",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.tradeship",
+   "layer": "light",
+   "on": "parent",
+   "evidence": "measured",
+   "host": "tradeship"
+  },
+  {
+   "op": "note",
+   "uid": "ts-lamp-mid",
+   "text": "A deck lantern: the crew work and sleep aboard, so the deck is lit after dark."
+  },
+  {
+   "op": "place",
+   "uid": "ts-lamp-fore",
+   "asset": "vanilla:clutter/common/candlelanternwithcandle01",
+   "at": [
+    3903.0,
+    6365.07
+   ],
+   "yaw": 0,
+   "y": 4.0
+  },
+  {
+   "op": "mount",
+   "child": "ts-lamp-fore",
+   "parent": "tradeship",
+   "inside": true,
+   "unmined": "reader-approved r1"
+  },
+  {
+   "op": "bind",
+   "uid": "ts-lamp-fore",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.tradeship",
+   "layer": "light",
+   "on": "parent",
+   "evidence": "measured",
+   "host": "tradeship"
+  },
+  {
+   "op": "note",
+   "uid": "ts-lamp-fore",
+   "text": "A deck lantern: the crew work and sleep aboard, so the deck is lit after dark."
+  },
+  {
+   "op": "place",
+   "uid": "h-n01",
+   "asset": "ferries:yamadori/ferries/volkihar_ferry_01",
+   "at": [
+    3871.8,
+    6365.22
+   ],
+   "yaw": 173,
+   "settle": true,
+   "wet": true
+  },
+  {
+   "op": "bind",
+   "uid": "h-n01",
+   "kind": "parcel",
+   "id": "parcel.lighter-flotilla.hull-n01"
+  },
+  {
+   "op": "note",
+   "uid": "h-n01",
+   "text": "This crew hull had no layout piece and stood fixed with no rope. It now floats where it stood, roped to the pier like its neighbours."
+  },
+  {
+   "op": "place",
+   "uid": "h-n01-rope-post",
+   "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+   "scale": 0.75,
+   "at": [
+    3871.8,
+    6365.22
+   ],
+   "yaw": 0.0
+  },
+  {
+   "op": "mount",
+   "child": "h-n01-rope-post",
+   "parent": "pier-sol5",
+   "moor": "h-n01",
+   "unmined": "reader-approved r4"
+  },
+  {
+   "op": "bind",
+   "uid": "h-n01-rope-post",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.hull-n01",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "pier-lamp-e",
+   "asset": "vanilla:clutter/common/candlelanternwithcandle01",
+   "at": [
+    3901.0,
+    6356.9
+   ],
+   "yaw": 0,
+   "y": 1.2
+  },
+  {
+   "op": "mount",
+   "child": "pier-lamp-e",
+   "parent": "pier-sol9",
+   "inside": true,
+   "unmined": "reader-approved r1"
+  },
+  {
+   "op": "bind",
+   "uid": "pier-lamp-e",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.the-street",
+   "layer": "light",
+   "on": "parent",
+   "evidence": "measured",
+   "host": "pier-sol9"
+  },
+  {
+   "op": "note",
+   "uid": "pier-lamp-e",
+   "text": "A pier lantern where the crews step off their bows. Lanterns on the floating hulls would stay put while the hulls move, so the light stands on the pier."
+  },
+  {
+   "op": "place",
+   "uid": "pier-lamp-m",
+   "asset": "vanilla:clutter/common/candlelanternwithcandle01",
+   "at": [
+    3877.5,
+    6359.3
+   ],
+   "yaw": 0,
+   "y": 1.2
+  },
+  {
+   "op": "mount",
+   "child": "pier-lamp-m",
+   "parent": "pier-sol6",
+   "inside": true,
+   "unmined": "reader-approved r1"
+  },
+  {
+   "op": "bind",
+   "uid": "pier-lamp-m",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.the-street",
+   "layer": "light",
+   "on": "parent",
+   "evidence": "measured",
+   "host": "pier-sol6"
+  },
+  {
+   "op": "note",
+   "uid": "pier-lamp-m",
+   "text": "A pier lantern where the crews step off their bows. Lanterns on the floating hulls would stay put while the hulls move, so the light stands on the pier."
+  },
+  {
+   "op": "place",
+   "uid": "pier-lamp-w",
+   "asset": "vanilla:clutter/common/candlelanternwithcandle01",
+   "at": [
+    3868.0,
+    6359.2
+   ],
+   "yaw": 0,
+   "y": 1.2
+  },
+  {
+   "op": "mount",
+   "child": "pier-lamp-w",
+   "parent": "pier-sol5",
+   "inside": true,
+   "unmined": "reader-approved r1"
+  },
+  {
+   "op": "bind",
+   "uid": "pier-lamp-w",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.the-street",
+   "layer": "light",
+   "on": "parent",
+   "evidence": "measured",
+   "host": "pier-sol5"
+  },
+  {
+   "op": "note",
+   "uid": "pier-lamp-w",
+   "text": "A pier lantern where the crews step off their bows. Lanterns on the floating hulls would stay put while the hulls move, so the light stands on the pier."
+  },
+  {
+   "op": "mound",
+   "uid": "pier-foot-bed",
+   "polygonM": [
+    [
+     3831.0,
+     6355.8
+    ],
+    [
+     3836.4,
+     6355.8
+    ],
+    [
+     3836.4,
+     6360.4
+    ],
+    [
+     3831.0,
+     6360.4
+    ]
+   ],
+   "datumM": 0.2,
+   "blendM": 2.0,
+   "why": "The bank is dug down to a bed where the pier foot comes ashore, so its planks lie on the ground instead of under it.",
+   "sources": [
+    "world/sources/blueprints/lighter-flotilla.design.md"
+   ]
+  },
+  {
+   "op": "place",
+   "uid": "pier-lamp-foot",
+   "asset": "vanilla:clutter/common/candlelanternwithcandle01",
+   "at": [
+    3834.0,
+    6356.9
+   ],
+   "yaw": 0,
+   "y": 1.2
+  },
+  {
+   "op": "mount",
+   "child": "pier-lamp-foot",
+   "parent": "pier",
+   "inside": true,
+   "unmined": "reader-approved r1"
+  },
+  {
+   "op": "bind",
+   "uid": "pier-lamp-foot",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.the-street",
+   "layer": "light",
+   "on": "parent",
+   "evidence": "measured",
+   "host": "pier"
+  },
+  {
+   "op": "note",
+   "uid": "pier-lamp-foot",
+   "text": "A pier lantern lights the way from the bank to the hulls after dark."
+  },
+  {
+   "op": "place",
+   "uid": "pier-lamp-mid2",
+   "asset": "vanilla:clutter/common/candlelanternwithcandle01",
+   "at": [
+    3855.0,
+    6356.9
+   ],
+   "yaw": 0,
+   "y": 1.2
+  },
+  {
+   "op": "mount",
+   "child": "pier-lamp-mid2",
+   "parent": "pier-sol3",
+   "inside": true,
+   "unmined": "reader-approved r1"
+  },
+  {
+   "op": "bind",
+   "uid": "pier-lamp-mid2",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.the-street",
+   "layer": "light",
+   "on": "parent",
+   "evidence": "measured",
+   "host": "pier-sol3"
+  },
+  {
+   "op": "note",
+   "uid": "pier-lamp-mid2",
+   "text": "A pier lantern lights the way from the bank to the hulls after dark."
+  },
+  {
+   "op": "note",
+   "uid": "r00",
+   "text": "16x craft: floats (ferry-raft class), tethered to r00-rope-post; its cargo rides the hull (runtime riders). Its rigid plank went because the hull's tide fall and swing overran the plank's seat. The raft already lies at the pier edge, a step down as at the lighter. The runtime draws its mooring line, so the static rope mesh went too."
+  },
+  {
+   "op": "note",
+   "uid": "r01",
+   "text": "16x craft: floats (ferry-raft class), tethered to r01-rope-post; its cargo rides the hull (runtime riders). Its rigid plank went because the hull's tide fall and swing overran the plank's seat. The raft already lies at the pier edge, a step down as at the lighter. The runtime draws its mooring line, so the static rope mesh went too."
+  },
+  {
+   "op": "note",
+   "uid": "r02",
+   "text": "16x craft: floats (ferry-raft class), tethered to r02-rope-post; its cargo rides the hull (runtime riders). Its rigid plank went because the hull's tide fall and swing overran the plank's seat. The raft already lies at the pier edge, a step down as at the lighter. The runtime draws its mooring line, so the static rope mesh went too."
+  },
+  {
+   "op": "note",
+   "uid": "r03",
+   "text": "16x craft: floats (ferry-raft class), tethered to r03-rope-post; its cargo rides the hull (runtime riders). Its rigid plank went because the hull's tide fall and swing overran the plank's seat. The raft already lies at the pier edge, a step down as at the lighter. The runtime draws its mooring line, so the static rope mesh went too."
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.plant-1",
+   "at": [
+    3843.29,
+    6362.07
+   ],
+   "kind": "plant",
+   "plantClass": "pearl-clam",
+   "valueTier": "high",
+   "owner": null,
+   "why": "A clam of the shallows. One in many holds a pearl. It grows a new one. (jokerine:_seaside/clam_large, chunk_8_13_vegetation.bin#106:21)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.plant-2",
+   "at": [
+    3857.38,
+    6373.48
+   ],
+   "kind": "plant",
+   "plantClass": "pearl-clam",
+   "valueTier": "high",
+   "owner": null,
+   "why": "A clam of the shallows. One in many holds a pearl. It grows a new one. (jokerine:_seaside/clam_large, chunk_8_13_vegetation.bin#106:24)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.plant-3",
+   "at": [
+    3852.06,
+    6373.84
+   ],
+   "kind": "plant",
+   "plantClass": "pearl-clam",
+   "valueTier": "high",
+   "owner": null,
+   "why": "A clam of the shallows. One in many holds a pearl. It grows a new one. (jokerine:_seaside/clam_large, chunk_8_13_vegetation.bin#106:26)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.den-slaughterfish",
+   "kind": "encounter",
+   "at": [
+    3865.3,
+    6401.6
+   ],
+   "zone": "den",
+   "species": "creature.slaughterfish",
+   "headcount": 3,
+   "why": "Slaughterfish den at open water beyond the moorings. Weed beds in coastal shallows with fish to eat.",
+   "dangerBand": "D1"
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.den-osheeja-gar",
+   "kind": "fauna",
+   "at": [
+    3842.8,
+    6382.7
+   ],
+   "zone": "den",
+   "species": "creature.osheeja-gar",
+   "headcount": 4,
+   "why": "Osheeja Gar den at the estuary channel upstream of the pier. A slow river pool rich in small fish.",
+   "dangerBand": "D1"
+  },
+  {
+   "op": "place",
+   "uid": "pier-bench-e",
+   "asset": "vanilla:furniture/farm/farmbench01",
+   "at": [
+    3891.5,
+    6357.5
+   ],
+   "yaw": 0.0,
+   "y": 0.32
+  },
+  {
+   "op": "mount",
+   "child": "pier-bench-e",
+   "parent": "pier-sol8",
+   "inside": true,
+   "unmined": "reader-approved r1"
+  },
+  {
+   "op": "bind",
+   "uid": "pier-bench-e",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.the-street",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "measured",
+   "host": "pier-sol8"
+  },
+  {
+   "op": "place",
+   "uid": "pier-bench-w",
+   "asset": "vanilla:furniture/farm/farmbench01",
+   "at": [
+    3861.0,
+    6357.5
+   ],
+   "yaw": 0.0,
+   "y": 0.32
+  },
+  {
+   "op": "mount",
+   "child": "pier-bench-w",
+   "parent": "pier-sol4",
+   "inside": true,
+   "unmined": "reader-approved r1"
+  },
+  {
+   "op": "bind",
+   "uid": "pier-bench-w",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.the-street",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "measured",
+   "host": "pier-sol4"
+  },
+  {
+   "op": "place",
+   "uid": "pier-alchemy",
+   "asset": "vanilla:furniture/workbenches/alchemyworkbench01",
+   "at": [
+    3848.0,
+    6356.95
+   ],
+   "yaw": 0.0,
+   "y": 0.32
+  },
+  {
+   "op": "mount",
+   "child": "pier-alchemy",
+   "parent": "pier-sol2",
+   "inside": true,
+   "unmined": "reader-approved r1"
+  },
+  {
+   "op": "place",
+   "uid": "shore-marshweed",
+   "asset": "bmv:landscape/trees/reedsmall2",
+   "at": [
+    3820.4,
+    6359.4
+   ],
+   "yaw": 40.0,
+   "settle": true
+  },
+  {
+   "op": "settle",
+   "uid": "shore-marshweed"
+  },
+  {
+   "op": "bind",
+   "uid": "pier-alchemy",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.the-street",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "measured",
+   "host": "pier-sol2"
+  },
+  {
+   "op": "bind",
+   "uid": "shore-marshweed",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.hull-s00",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.station-alchemy",
+   "kind": "station",
+   "stationClass": "alchemy",
+   "stationId": "station.alchemy.mortar",
+   "host": "pier-alchemy",
+   "parcel": "parcel.lighter-flotilla.the-street",
+   "why": "The purser's mortar table on the pier, beside the tradeship whose goods he sells. He grinds salves for the lighter crews from what grows at the landing. No healer lives aboard."
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.idle-seat-pier-bench-e-1",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "pier-bench-e",
+   "parcel": "parcel.lighter-flotilla.the-street",
+   "at": [
+    3891.5,
+    6357.1
+   ],
+   "seatHeightM": 0.43,
+   "why": "A seat at a bench where people take the midday meal."
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.idle-seat-pier-bench-e-2",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "pier-bench-e",
+   "parcel": "parcel.lighter-flotilla.the-street",
+   "at": [
+    3891.5,
+    6357.94
+   ],
+   "seatHeightM": 0.43,
+   "why": "A seat at a bench where people take the midday meal."
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.idle-seat-pier-bench-w-1",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "pier-bench-w",
+   "parcel": "parcel.lighter-flotilla.the-street",
+   "at": [
+    3861.0,
+    6357.1
+   ],
+   "seatHeightM": 0.43,
+   "why": "A seat at a bench where people take the midday meal."
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.idle-seat-pier-bench-w-2",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "pier-bench-w",
+   "parcel": "parcel.lighter-flotilla.the-street",
+   "at": [
+    3861.0,
+    6357.94
+   ],
+   "seatHeightM": 0.43,
+   "why": "A seat at a bench where people take the midday meal."
+  },
+  {
+   "op": "note",
+   "uid": "pier-alchemy",
+   "text": "The crews keep a mortar on the pier by the moorings: salves for rope-burn and brine sores are ground here between runs to Lilmoth."
+  },
+  {
+   "op": "note",
+   "uid": "shore-marshweed",
+   "text": "Marshweed tufts at the water's edge beside the landing walk; the crews smoke it off watch (fauna-hazards.md:99)."
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.plant-marshweed-1",
+   "at": [
+    3825.45,
+    6394.9
+   ],
+   "kind": "plant",
+   "plantClass": "marshweed",
+   "valueTier": "trivial",
+   "owner": null,
+   "why": "2.9b-p: Marshweed grows in a tuft at the water's edge; a forager cuts a stalk to smoke and it grows back. (bmv:landscape/trees/reedsmall2, chunk_8_13_vegetation.bin#74:16; fauna-hazards.md:99)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.plant-somnalius-fern-1",
+   "at": [
+    3831.31,
+    6330.15
+   ],
+   "kind": "plant",
+   "plantClass": "somnalius-fern",
+   "valueTier": "trivial",
+   "owner": null,
+   "why": "2.9b-p: A somnalius fern grows here in the marsh shade; a forager cuts a frond and it grows back. (bmv:landscape/plants/fern01, chunk_8_13_vegetation.bin#24:142; fauna-hazards.md:98)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.plant-somnalius-fern-2",
+   "at": [
+    3832.55,
+    6325.9
+   ],
+   "kind": "plant",
+   "plantClass": "somnalius-fern",
+   "valueTier": "trivial",
+   "owner": null,
+   "why": "2.9b-p: A somnalius fern grows here in the marsh shade; a forager cuts a frond and it grows back. (bmv:landscape/plants/espfernbrakencluster05, chunk_8_13_vegetation.bin#22:173; fauna-hazards.md:98)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.plant-somnalius-fern-3",
+   "at": [
+    3852.19,
+    6311.51
+   ],
+   "kind": "plant",
+   "plantClass": "somnalius-fern",
+   "valueTier": "trivial",
+   "owner": null,
+   "why": "2.9b-p: A somnalius fern grows here in the marsh shade; a forager cuts a frond and it grows back. (bmv:landscape/plants/espfernbrakencluster05, chunk_8_13_vegetation.bin#22:174; fauna-hazards.md:98)"
+  },
+  {
+   "op": "place",
+   "uid": "h-n02-tally-crate",
+   "asset": "vanilla:clutter/common/cratesmall02",
+   "at": [
+    3879.7,
+    6367.9
+   ],
+   "yaw": 90.0,
+   "y": 0.82
+  },
+  {
+   "op": "mount",
+   "child": "h-n02-tally-crate",
+   "parent": "h-n02",
+   "inside": true,
+   "unmined": "reader-approved r1"
+  },
+  {
+   "op": "bind",
+   "uid": "h-n02-tally-crate",
+   "kind": "assembly",
+   "id": "parcel.lighter-flotilla.hull-n02",
+   "layer": "clutter",
+   "on": "parent",
+   "evidence": "measured",
+   "host": "h-n02"
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.container-speaker-tally",
+   "kind": "container",
+   "host": "h-n02-tally-crate",
+   "containerClass": "crate",
+   "fillRule": "authored",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.flotilla-hull-tally",
+      "count": 1
+     }
+    ],
+    "storyNote": "The speaker keeps the tally of the lost hull's cargo in the crate on her own deck."
+   },
+   "parcel": "parcel.lighter-flotilla.hull-n02",
+   "why": "The flotilla speaker keeps her tally of the lost hull's cargo aboard her own longboat, where she sleeps. TG04 takes it.",
+   "valueTier": "moderate",
+   "owner": "npc.mercantile-coast.lighter-flotilla.flotilla-speaker"
+  },
+  {
+   "op": "note",
+   "uid": "h-n02-tally-crate",
+   "text": "2.11 TG04: the speaker's crate holding the hull tally. Ferries.esp stands this small cargo crate on a ferry deck (cratesmall02 on rowboat_ferry_solstheim_011, ref 040008A7); no plugin loads river_ferry_rift_01, so it is deck-mounted on h-n02's flat aft deck."
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.sea-hull-mooring",
+   "kind": "mooring",
+   "mooringKind": "mooring",
+   "accepts": [
+    "sea-hull"
+   ],
+   "capacity": 1,
+   "at": [
+    3865.9,
+    6364.77
+   ],
+   "why": "The lighter's master's longboat lies at its permanent mooring beside the quay; the only sea hull on this water.",
+   "owner": "npc.mercantile-coast.lighter-flotilla.lighterman",
+   "serviceLink": null,
+   "minDepthDryM": 2.88,
+   "waterId": "body.ocean"
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.crew-mooring-1",
+   "kind": "mooring",
+   "mooringKind": "mooring",
+   "accepts": [
+    "skiff",
+    "river-boat"
+   ],
+   "capacity": 1,
+   "at": [
+    3898.41,
+    6354.4
+   ],
+   "why": "The crews live aboard their boats at permanent moorings beside the lighter quay.",
+   "owner": "npc.mercantile-coast.lighter-flotilla.flotilla-speaker",
+   "serviceLink": null,
+   "minDepthDryM": 3.72,
+   "waterId": "body.ocean"
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.crew-mooring-2",
+   "kind": "mooring",
+   "mooringKind": "mooring",
+   "accepts": [
+    "skiff",
+    "river-boat"
+   ],
+   "capacity": 1,
+   "at": [
+    3876.15,
+    6364.28
+   ],
+   "why": "The crews live aboard their boats at permanent moorings beside the lighter quay.",
+   "owner": "npc.mercantile-coast.lighter-flotilla.flotilla-speaker",
+   "serviceLink": null,
+   "minDepthDryM": 3.36,
+   "waterId": "body.ocean"
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.crew-mooring-3",
+   "kind": "mooring",
+   "mooringKind": "mooring",
+   "accepts": [
+    "skiff",
+    "river-boat"
+   ],
+   "capacity": 1,
+   "at": [
+    3880.1,
+    6364.6
+   ],
+   "why": "The crews live aboard their boats at permanent moorings beside the lighter quay.",
+   "owner": "npc.mercantile-coast.lighter-flotilla.flotilla-speaker",
+   "serviceLink": null,
+   "minDepthDryM": 3.48,
+   "waterId": "body.ocean"
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.crew-mooring-4",
+   "kind": "mooring",
+   "mooringKind": "mooring",
+   "accepts": [
+    "skiff",
+    "river-boat"
+   ],
+   "capacity": 1,
+   "at": [
+    3871.8,
+    6365.22
+   ],
+   "why": "The crews live aboard their boats at permanent moorings beside the lighter quay.",
+   "owner": "npc.mercantile-coast.lighter-flotilla.flotilla-speaker",
+   "serviceLink": null,
+   "minDepthDryM": 3.36,
+   "waterId": "body.ocean"
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.crew-mooring-5",
+   "kind": "mooring",
+   "mooringKind": "mooring",
+   "accepts": [
+    "skiff",
+    "river-boat"
+   ],
+   "capacity": 1,
+   "at": [
+    3871.55,
+    6355.09
+   ],
+   "why": "The crews live aboard their boats at permanent moorings beside the lighter quay.",
+   "owner": "npc.mercantile-coast.lighter-flotilla.flotilla-speaker",
+   "serviceLink": null,
+   "minDepthDryM": 3.24,
+   "waterId": "body.ocean"
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.crew-mooring-6",
+   "kind": "mooring",
+   "mooringKind": "mooring",
+   "accepts": [
+    "skiff",
+    "river-boat"
+   ],
+   "capacity": 1,
+   "at": [
+    3882.65,
+    6355.09
+   ],
+   "why": "The crews live aboard their boats at permanent moorings beside the lighter quay.",
+   "owner": "npc.mercantile-coast.lighter-flotilla.flotilla-speaker",
+   "serviceLink": null,
+   "minDepthDryM": 3.6,
+   "waterId": "body.ocean"
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.quay-landing-1",
+   "kind": "mooring",
+   "mooringKind": "landing",
+   "accepts": [
+    "dugout"
+   ],
+   "capacity": 1,
+   "at": [
+    3865.9,
+    6360.77
+   ],
+   "why": "The lighter quay side, where the flotilla's boat service takes on passengers.",
+   "serviceLink": "boat.lilmoth-lighter-flotilla",
+   "minDepthDryM": 3.24,
+   "waterId": "body.ocean"
+  },
+  {
+   "op": "socket",
+   "id": "socket.lighter-flotilla.idle-lighterman-work",
+   "kind": "idle",
+   "activity": "stand",
+   "host": "lighter-rope-post",
+   "parcel": "parcel.lighter-flotilla.lighter-berth",
+   "at": [
+    3905.0,
+    6357.6
+   ],
+   "why": "The lighter's master keeps his day at the quay end, over the lighters he sends out."
+  }
+ ]
+}

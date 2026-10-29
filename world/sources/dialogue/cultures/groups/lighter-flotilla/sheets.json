@@ -1,0 +1,210 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "_": "Life-group and household sheets for the Lighter Flotilla (lane 2.5c).",
+ "entries": [
+  {
+   "id": "culture.group.lighter-flotilla.posts",
+   "level": "group",
+   "name": "The Compact's posts on the run",
+   "parent": "culture.settlement.lighter-flotilla",
+   "members": [
+    "npc.mercantile-coast.lighter-flotilla.flotilla-speaker",
+    "npc.mercantile-coast.lighter-flotilla.lighterman",
+    "npc.mercantile-coast.lighter-flotilla.purser"
+   ],
+   "norms": [
+    {
+     "text": "Settle a council letter by vote before anyone answers it.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Answering the council before the vote.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "The share fixed and paid.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Hands who work the anchorage without a turn.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "faction": {
+     "lean": 2,
+     "text": "The Compact's posts are what keep the run in the crews' hands.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Shore-foot.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [],
+    "neverSaid": [
+     {
+      "text": "That the posts argue among themselves.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "The council's letters come more often since the stoppage.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": []
+   },
+   "views": [
+    {
+     "node": "culture.group.lighter-flotilla.hands",
+     "lean": 1,
+     "text": "Good backs; quick to want a stoppage they will not have to settle.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.25
+  },
+  {
+   "id": "culture.group.lighter-flotilla.hands",
+   "level": "group",
+   "name": "The hands of the flotilla",
+   "parent": "culture.settlement.lighter-flotilla",
+   "members": [
+    "npc.mercantile-coast.lighter-flotilla.n1",
+    "npc.mercantile-coast.lighter-flotilla.n1-2",
+    "npc.mercantile-coast.lighter-flotilla.n1-3",
+    "npc.mercantile-coast.lighter-flotilla.n1-4",
+    "npc.mercantile-coast.lighter-flotilla.n2"
+   ],
+   "norms": [
+    {
+     "text": "Work the turn that the master gives.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Leaving a hold half-bailed.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "Pay on the day it is owed.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Tariff men on the pier.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "work": {
+     "lean": 0,
+     "text": "Haul, bail, coil and haul again; the posts do the talking.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Shore-foot.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "low",
+    "oaths": [],
+    "neverSaid": [
+     {
+      "text": "The posts' disputes.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "The share comes late after a slow week at the anchorage.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": []
+   },
+   "views": [
+    {
+     "node": "culture.group.lighter-flotilla.posts",
+     "lean": 0,
+     "text": "They hold the nod and the books; the hands hold the rope.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.35
+  },
+  {
+   "id": "culture.household.lighter-flotilla.foredeck",
+   "level": "household",
+   "name": "The bunks below the lighter's foredeck",
+   "parent": "culture.group.lighter-flotilla.hands",
+   "members": [
+    "npc.mercantile-coast.lighter-flotilla.n1",
+    "npc.mercantile-coast.lighter-flotilla.n1-2",
+    "npc.mercantile-coast.lighter-flotilla.n1-3",
+    "npc.mercantile-coast.lighter-flotilla.n1-4"
+   ],
+   "norms": [
+    {
+     "text": "Sleep in the bunks below the foredeck between runs.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Waking a hand off his turn.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "A dry bunk.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Bilge in the bunks.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {},
+   "speech": {
+    "addressTerms": [],
+    "formality": "low",
+    "oaths": [],
+    "neverSaid": []
+   },
+   "talk": {
+    "grievances": [],
+    "rumours": []
+   },
+   "views": [],
+   "deviationRate": 0.3
+  }
+ ]
+}

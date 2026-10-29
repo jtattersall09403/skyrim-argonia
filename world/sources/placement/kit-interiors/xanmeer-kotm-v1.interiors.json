@@ -1,0 +1,2483 @@
+{
+ "assets": {
+  "composite:ruin/xanmeer-door2load-portico": {
+   "category": "door",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 3.0,
+   "front": {
+    "deg": 170.4,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 170\u00b0 in the piece's own frame carries 2.28x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.139,
+   "headroomM": 1.77,
+   "heightM": 6.06,
+   "interior": "none",
+   "medianWallM": 0.7,
+   "planAreaM2": 25.64,
+   "planCentreM": [
+    0.0,
+    -3.87
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "category 'door' is never a building"
+  },
+  "kotm:architecture/xanmeer/furniture/xanmeer_murkmire_bed_covered": {
+   "category": "furniture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 2.06,
+   "heightM": 2.28,
+   "interior": "none",
+   "medianWallM": 1.2,
+   "planAreaM2": 6.75,
+   "planCentreM": [
+    -0.09,
+    -0.01
+   ],
+   "provenance": [],
+   "ringFraction": 0.333,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "category 'furniture' is never a building"
+  },
+  "kotm:architecture/xanmeer/furniture/xanmeer_murkmire_bench2sit": {
+   "category": "furniture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.81,
+   "interior": "none",
+   "planAreaM2": 2.49,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (2.5 m\u00b2 plan, 0.8 m tall)"
+  },
+  "kotm:architecture/xanmeer/furniture/xanmeer_murkmire_bench3sit": {
+   "category": "furniture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.81,
+   "interior": "none",
+   "planAreaM2": 2.49,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (2.5 m\u00b2 plan, 0.8 m tall)"
+  },
+  "kotm:architecture/xanmeer/furniture/xanmeer_murkmire_bookshelf1": {
+   "category": "furniture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 41.9,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 42\u00b0 in the piece's own frame carries 1.58x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 2.41,
+   "interior": "none",
+   "planAreaM2": 0.99,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.0 m\u00b2 plan, 2.4 m tall)"
+  },
+  "kotm:architecture/xanmeer/furniture/xanmeer_murkmire_bookshelf2": {
+   "category": "furniture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 2.43,
+   "interior": "none",
+   "planAreaM2": 0.86,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.9 m\u00b2 plan, 2.4 m tall)"
+  },
+  "kotm:architecture/xanmeer/furniture/xanmeer_murkmire_chair": {
+   "category": "furniture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 1.47,
+   "interior": "none",
+   "planAreaM2": 0.74,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.7 m\u00b2 plan, 1.5 m tall)"
+  },
+  "kotm:architecture/xanmeer/furniture/xanmeer_murkmire_door2load": {
+   "category": "door",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.014,
+   "headroomM": 3.06,
+   "heightM": 4.58,
+   "interior": "none",
+   "medianWallM": 0.12,
+   "planAreaM2": 8.47,
+   "planCentreM": [
+    -0.17,
+    -3.73
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "category 'door' is never a building"
+  },
+  "kotm:architecture/xanmeer/furniture/xanmeer_murkmire_planter": {
+   "category": "furniture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 1.07,
+   "interior": "none",
+   "planAreaM2": 4.64,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (4.6 m\u00b2 plan, 1.1 m tall)"
+  },
+  "kotm:architecture/xanmeer/furniture/xanmeer_murkmire_rubblewall1_1": {
+   "category": "furniture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 112.1,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 112\u00b0 in the piece's own frame carries 2.35x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 1.28,
+   "interior": "none",
+   "planAreaM2": 6.44,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (6.4 m\u00b2 plan, 1.3 m tall)"
+  },
+  "kotm:architecture/xanmeer/furniture/xanmeer_murkmire_sconce": {
+   "category": "furniture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.19,
+   "interior": "none",
+   "planAreaM2": 0.12,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.1 m\u00b2 plan, 0.2 m tall)"
+  },
+  "kotm:architecture/xanmeer/furniture/xanmeer_murkmire_sconce_off": {
+   "category": "furniture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.19,
+   "interior": "none",
+   "planAreaM2": 0.12,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.1 m\u00b2 plan, 0.2 m tall)"
+  },
+  "kotm:architecture/xanmeer/furniture/xanmeer_murkmire_table": {
+   "category": "furniture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 1.07,
+   "interior": "none",
+   "planAreaM2": 4.64,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (4.6 m\u00b2 plan, 1.1 m tall)"
+  },
+  "kotm:architecture/xanmeer/props/xanmeer_murkmire_chestbasic": {
+   "category": "container",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 278.6,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 279\u00b0 in the piece's own frame carries 2.00x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.48,
+   "interior": "none",
+   "planAreaM2": 0.49,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.5 m\u00b2 plan, 0.5 m tall)"
+  },
+  "kotm:architecture/xanmeer/props/xanmeer_murkmire_chompyanim": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 3.0,
+   "front": {
+    "deg": 101.3,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 101\u00b0 in the piece's own frame carries 2.56x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.056,
+   "headroomM": 1.65,
+   "heightM": 5.85,
+   "interior": "none",
+   "medianWallM": 0.45,
+   "planAreaM2": 7.02,
+   "planCentreM": [
+    1.87,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "category 'clutter' is never a building"
+  },
+  "kotm:architecture/xanmeer/props/xanmeer_murkmire_chompyanimopenst": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 2.0,
+   "front": {
+    "deg": 101.7,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 102\u00b0 in the piece's own frame carries 2.49x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.236,
+   "headroomM": 2.14,
+   "heightM": 5.25,
+   "interior": "none",
+   "medianWallM": 0.45,
+   "planAreaM2": 7.03,
+   "planCentreM": [
+    1.94,
+    -0.01
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "category 'clutter' is never a building"
+  },
+  "kotm:architecture/xanmeer/props/xanmeer_murkmire_deco3": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 1.44,
+   "interior": "none",
+   "planAreaM2": 0.32,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.3 m\u00b2 plan, 1.4 m tall)"
+  },
+  "kotm:architecture/xanmeer/props/xanmeer_murkmire_pot1": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 194.7,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 195\u00b0 in the piece's own frame carries 2.34x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.27,
+   "interior": "none",
+   "planAreaM2": 0.12,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.1 m\u00b2 plan, 0.3 m tall)"
+  },
+  "kotm:architecture/xanmeer/props/xanmeer_murkmire_pot2": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.2,
+   "interior": "none",
+   "planAreaM2": 0.14,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.1 m\u00b2 plan, 0.2 m tall)"
+  },
+  "kotm:argonia/clutter/nisswocoin": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.0,
+   "interior": "none",
+   "planAreaM2": 0.0,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.0 m\u00b2 plan, 0.0 m tall)"
+  },
+  "kotm:argonia/stockades/stockadescaffoldbase1sided01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "a free-standing plugin load door beside the shell",
+   "espLink": {
+    "doorModel": "kotm:architecture/xanmeer/furniture/xanmeer_murkmire_door2load",
+    "interiorCell": "TeethofSithisInt01",
+    "interiorFamily": "kotm:architecture/xanmeer/interior",
+    "interiorSizeM": {
+     "heightM": 77.29,
+     "planXM": 236.4,
+     "planYM": 153.05
+    },
+    "placements": 2,
+    "plugin": "King of the Murkmire.esp"
+   },
+   "floorOffsetM": 1.0,
+   "front": {
+    "deg": 225.0,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 4 times with other statics to one side; the side they left open, at 225\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 2.73,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 1.77,
+   "planAreaM2": 14.18,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 0.556,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "storeyLevelsM": [
+    1.0
+   ],
+   "storeys": 1,
+   "tileset": "interior-kotm-v1",
+   "why": "King of the Murkmire.esp teleports from this shell into interior cell TeethofSithisInt01 (2 placements of the load door); that cell is built from kotm:architecture/xanmeer/interior, which is packaged as interior-kotm-v1"
+  },
+  "kotm:argonia/trees/greguire/junglebananaplant01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 46.1,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 46\u00b0 in the piece's own frame carries 1.65x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.72,
+   "interior": "none",
+   "planAreaM2": 1.65,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.6 m\u00b2 plan, 0.7 m tall)"
+  },
+  "kotm:argonia/trees/greguire/junglepatch01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 224.7,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 225\u00b0 in the piece's own frame carries 1.41x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 1.49,
+   "interior": "none",
+   "planAreaM2": 21.23,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (21.2 m\u00b2 plan, 1.5 m tall)"
+  },
+  "kotm:argonia/trees/greguire/palmokeseedling01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 344.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 345\u00b0 in the piece's own frame carries 1.45x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 2.23,
+   "interior": "none",
+   "planAreaM2": 4.73,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (4.7 m\u00b2 plan, 2.2 m tall)"
+  },
+  "kotm:argonia/trees/hist trees/histtree02c": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 2.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 1.93,
+   "heightM": 6.0,
+   "interior": "none",
+   "medianWallM": 0.15,
+   "planAreaM2": 13.56,
+   "planCentreM": [
+    -0.06,
+    0.48
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "name token 'tree' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/trees/undergrowth01jungle": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 99.0,
+   "heightM": 2.24,
+   "interior": "none",
+   "medianWallM": 0.04,
+   "planAreaM2": 12.69,
+   "planCentreM": [
+    -0.41,
+    -0.63
+   ],
+   "provenance": [],
+   "ringFraction": 0.917,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "kotm:argonia/trees/undergrowth02jungle": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.417,
+   "headroomM": 2.04,
+   "heightM": 3.1,
+   "interior": "none",
+   "medianWallM": 0.61,
+   "planAreaM2": 52.53,
+   "planCentreM": [
+    0.02,
+    0.87
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "a crawl space, not a room \u2014 only 2.0 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "kotm:argonia/xanmeer/chest01": {
+   "category": "container",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 344.4,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 344\u00b0 in the piece's own frame carries 1.49x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.94,
+   "interior": "none",
+   "planAreaM2": 3.18,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (3.2 m\u00b2 plan, 0.9 m tall)"
+  },
+  "kotm:argonia/xanmeer/detail/argonianhead03": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 137.9,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 138\u00b0 in the piece's own frame carries 1.57x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 1.01,
+   "interior": "none",
+   "planAreaM2": 0.59,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.6 m\u00b2 plan, 1.0 m tall)"
+  },
+  "kotm:argonia/xanmeer/detail/bigpotground": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.06,
+   "interior": "none",
+   "planAreaM2": 2.48,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (2.5 m\u00b2 plan, 0.1 m tall)"
+  },
+  "kotm:argonia/xanmeer/detail/sconce2": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.97,
+   "interior": "none",
+   "planAreaM2": 1.66,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.7 m\u00b2 plan, 1.0 m tall)"
+  },
+  "kotm:argonia/xanmeer/detail/snakestatue01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 73.7,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 74\u00b0 in the piece's own frame carries 1.72x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 2.22,
+   "heightM": 10.79,
+   "interior": "none",
+   "medianWallM": 1.67,
+   "planAreaM2": 20.17,
+   "planCentreM": [
+    0.0,
+    -0.01
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "kotm:argonia/xanmeer/detail/xanmeerbanner01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 2.23,
+   "interior": "none",
+   "planAreaM2": 0.14,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.1 m\u00b2 plan, 2.2 m tall)"
+  },
+  "kotm:argonia/xanmeer/exterior/1mjyaztecbuilding2": {
+   "category": "misc",
+   "doorStoreyM": 4.74,
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 4.0,
+   "front": {
+    "deg": 156.9,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 157\u00b0 in the piece's own frame carries 10.49x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.111,
+   "headroomM": 2.32,
+   "heightM": 6.84,
+   "interior": "none",
+   "medianWallM": 5.62,
+   "planAreaM2": 132.87,
+   "planCentreM": [
+    0.0,
+    1.4
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "why": "a closed prop seen from inside, not a room \u2014 only 11% of the ring hits show a face turned towards the stander (a room needs 60%, and the up ray finds no down-facing ceiling): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "kotm:argonia/xanmeer/exterior/1mjyaztecbuilding5": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 314.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 315\u00b0 in the piece's own frame carries 2.00x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.153,
+   "headroomM": 3.42,
+   "heightM": 3.42,
+   "interior": "none",
+   "medianWallM": 3.7,
+   "planAreaM2": 118.46,
+   "planCentreM": [
+    -0.67,
+    -1.64
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "a closed prop seen from inside, not a room \u2014 only 15% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor, and the up ray finds no down-facing ceiling): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "kotm:argonia/xanmeer/exterior/1mjyaztecbuilding6": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 4.0,
+   "front": {
+    "deg": 350.9,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 351\u00b0 in the piece's own frame carries 3.71x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 2.2,
+   "heightM": 6.77,
+   "interior": "none",
+   "medianWallM": 4.28,
+   "planAreaM2": 246.84,
+   "planCentreM": [
+    1.63,
+    -0.84
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "why": "a crawl space, not a room \u2014 only 2.2 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "kotm:argonia/xanmeer/exterior/1mjyaztecbuilding8redone": {
+   "category": "misc",
+   "closedShellPromotedBy": "own-geometry-door",
+   "doorStoreyM": 0.33,
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.95,
+     "kind": "leaf",
+     "offsetM": [
+      7.4,
+      -0.26
+     ],
+     "sideDeg": 17.5
+    },
+    {
+     "arcM": 1.66,
+     "kind": "leaf",
+     "offsetM": [
+      17.51,
+      12.21
+     ],
+     "sideDeg": 62.5
+    },
+    {
+     "arcM": 1.6,
+     "kind": "leaf",
+     "offsetM": [
+      7.71,
+      37.85
+     ],
+     "sideDeg": 157.5
+    },
+    {
+     "arcM": 8.3,
+     "kind": "open-front",
+     "offsetM": [
+      20.93,
+      18.19
+     ],
+     "sideDeg": 82.2
+    }
+   ],
+   "doorwaysMeasuredAboveFloorM": 22.0,
+   "entrance": {
+    "arcM": 1.54,
+    "centreShiftM": 0.15,
+    "clearM": 2.5,
+    "kind": "opening",
+    "offsetM": [
+     6.31,
+     22.72
+    ],
+    "rayConfirmed": true,
+    "sideDeg": 107.5,
+    "sillYM": 8.42,
+    "widthM": 1.45
+   },
+   "floorOffsetM": 0.0,
+   "frontFaceFraction": 0.097,
+   "headroomM": 21.97,
+   "heightM": 28.72,
+   "interior": "shell",
+   "medianWallM": 22.51,
+   "planAreaM2": 2775.0,
+   "planCentreM": [
+    0.71,
+    20.96
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    0.0
+   ],
+   "storeys": 1,
+   "why": "measured to enclose a volume \u2014 100% of the ring at 1.6 m hits a wall, there is a roof overhead and 22.5 m of room to stand \u2014 with no matched interior and no tileset rule, so Phase 12 must claim an interior for it"
+  },
+  "kotm:argonia/xanmeer/exterior/dwellingruin01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 52.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 52\u00b0 in the piece's own frame carries 4.07x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 3.31,
+   "interior": "none",
+   "medianWallM": 1.97,
+   "planAreaM2": 32.06,
+   "planCentreM": [
+    -1.03,
+    -2.24
+   ],
+   "provenance": [],
+   "ringFraction": 0.472,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "kotm:argonia/xanmeer/exterior/floor01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.69,
+   "interior": "none",
+   "planAreaM2": 35.35,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (35.4 m\u00b2 plan, 0.7 m tall)"
+  },
+  "kotm:argonia/xanmeer/exterior/longstairs01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.939,
+   "headroomM": 5.83,
+   "heightM": 8.46,
+   "interior": "none",
+   "medianWallM": 2.5,
+   "planAreaM2": 331.76,
+   "planCentreM": [
+    4.14,
+    -0.03
+   ],
+   "provenance": [],
+   "ringFraction": 0.917,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "why": "name token 'stairs' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/xanmeer/exterior/obelisk": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 315.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 315\u00b0 in the piece's own frame carries 2.93x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 6.86,
+   "interior": "none",
+   "planAreaM2": 0.82,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.8 m\u00b2 plan, 6.9 m tall)"
+  },
+  "kotm:argonia/xanmeer/exterior/pyramid": {
+   "category": "misc",
+   "closedShellPromotedBy": "door-piece",
+   "entrance": null,
+   "entranceWhy": "a free-standing plugin load door beside the shell",
+   "espLink": {
+    "doorModel": "kotm:architecture/xanmeer/furniture/xanmeer_murkmire_door2load",
+    "interiorCell": "RootWhisperVakkaBokInt01",
+    "interiorFamily": "kotm:architecture/xanmeer/interior",
+    "interiorSizeM": {
+     "heightM": 24.47,
+     "planXM": 119.03,
+     "planYM": 34.14
+    },
+    "placements": 2,
+    "plugin": "King of the Murkmire.esp"
+   },
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 134.9,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 135\u00b0 in the piece's own frame carries 41.07x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.014,
+   "headroomM": 19.0,
+   "heightM": 19.7,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 31.85,
+   "planAreaM2": 4145.62,
+   "planCentreM": [
+    2.03,
+    1.15
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    0.0
+   ],
+   "storeys": 1,
+   "tileset": "interior-kotm-v1",
+   "why": "King of the Murkmire.esp teleports from this shell into interior cell RootWhisperVakkaBokInt01 (2 placements of the load door); that cell is built from kotm:architecture/xanmeer/interior, which is packaged as interior-kotm-v1"
+  },
+  "kotm:argonia/xanmeer/exterior/stairs01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.431,
+   "headroomM": 2.04,
+   "heightM": 3.34,
+   "interior": "none",
+   "medianWallM": 1.58,
+   "planAreaM2": 21.89,
+   "planCentreM": [
+    -0.25,
+    -0.09
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "name token 'stair' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/xanmeer/exterior/stairs02": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 317.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 317\u00b0 in the piece's own frame carries 1.37x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 1.7,
+   "interior": "none",
+   "planAreaM2": 13.04,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (13.0 m\u00b2 plan, 1.7 m tall)"
+  },
+  "kotm:argonia/xanmeer/exterior/stairs03": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 137.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 137\u00b0 in the piece's own frame carries 1.98x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 2.73,
+   "interior": "none",
+   "medianWallM": 0.23,
+   "planAreaM2": 28.98,
+   "planCentreM": [
+    0.22,
+    1.75
+   ],
+   "provenance": [],
+   "ringFraction": 0.778,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "name token 'stair' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/xanmeer/exterior/stairs04": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 195.2,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 195\u00b0 in the piece's own frame carries 2.78x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.514,
+   "headroomM": 3.32,
+   "heightM": 7.72,
+   "interior": "none",
+   "medianWallM": 2.81,
+   "planAreaM2": 144.24,
+   "planCentreM": [
+    -3.43,
+    0.55
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "why": "name token 'stair' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/xanmeer/exterior/tower01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 224.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 225\u00b0 in the piece's own frame carries 1.61x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 13.54,
+   "heightM": 26.32,
+   "interior": "none",
+   "medianWallM": 2.85,
+   "planAreaM2": 28.69,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "kotm:argonia/xanmeer/exterior/tower02": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 13.54,
+   "heightM": 26.32,
+   "interior": "none",
+   "medianWallM": 5.69,
+   "planAreaM2": 115.25,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "kotm:argonia/xanmeer/exterior/wallmantle01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.54,
+   "interior": "none",
+   "planAreaM2": 5.12,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (5.1 m\u00b2 plan, 0.5 m tall)"
+  },
+  "kotm:argonia/xanmeer/exterior/wallmantle02": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 1.69,
+   "interior": "none",
+   "planAreaM2": 5.35,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (5.3 m\u00b2 plan, 1.7 m tall)"
+  },
+  "kotm:argonia/xanmeer/exterior/wallmural01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 4.0,
+   "front": null,
+   "frontFaceFraction": 0.028,
+   "headroomM": 1.87,
+   "heightM": 6.43,
+   "interior": "none",
+   "medianWallM": 0.31,
+   "planAreaM2": 10.12,
+   "planCentreM": [
+    -0.84,
+    -0.1
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/xanmeer/exterior/wallpiece01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 223.8,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 224\u00b0 in the piece's own frame carries 2.23x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.181,
+   "headroomM": 6.96,
+   "heightM": 7.12,
+   "interior": "none",
+   "medianWallM": 1.5,
+   "planAreaM2": 9.99,
+   "planCentreM": [
+    0.04,
+    -0.19
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/xanmeer/exterior/wallpiece02": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 169.4,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 169\u00b0 in the piece's own frame carries 1.49x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.111,
+   "headroomM": 3.18,
+   "heightM": 3.34,
+   "interior": "none",
+   "medianWallM": 1.98,
+   "planAreaM2": 40.0,
+   "planCentreM": [
+    0.88,
+    0.05
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/xanmeer/exterior/wallpiece05": {
+   "category": "misc",
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.01,
+     "kind": "leaf",
+     "offsetM": [
+      0.32,
+      1.37
+     ],
+     "sideDeg": 167.5
+    }
+   ],
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 164.8,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 165\u00b0 in the piece's own frame carries 1.45x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.042,
+   "headroomM": 8.73,
+   "heightM": 8.9,
+   "interior": "none",
+   "medianWallM": 1.98,
+   "planAreaM2": 40.17,
+   "planCentreM": [
+    -0.0,
+    -0.12
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/xanmeer/exterior/wallruinbig": {
+   "category": "misc",
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 0.82,
+     "kind": "leaf",
+     "offsetM": [
+      -1.68,
+      7.51
+     ],
+     "sideDeg": 192.5
+    }
+   ],
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 5.57,
+   "heightM": 13.19,
+   "interior": "none",
+   "medianWallM": 2.29,
+   "planAreaM2": 124.0,
+   "planCentreM": [
+    0.34,
+    -1.59
+   ],
+   "provenance": [],
+   "ringFraction": 0.972,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/xanmeer/exterior/wallsmall01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 3.5,
+   "interior": "none",
+   "planAreaM2": 3.24,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (3.2 m\u00b2 plan, 3.5 m tall)"
+  },
+  "kotm:argonia/xanmeer/exterior/wallsmall02": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 2.96,
+   "interior": "none",
+   "planAreaM2": 3.51,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (3.5 m\u00b2 plan, 3.0 m tall)"
+  },
+  "kotm:argonia/xanmeer/exterior/wallsmall03": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 314.2,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 314\u00b0 in the piece's own frame carries 1.45x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 4.93,
+   "interior": "none",
+   "planAreaM2": 1.16,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.2 m\u00b2 plan, 4.9 m tall)"
+  },
+  "kotm:argonia/xanmeer/exterior/wallsmall04": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 2.73,
+   "interior": "none",
+   "planAreaM2": 0.55,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.6 m\u00b2 plan, 2.7 m tall)"
+  },
+  "kotm:argonia/xanmeer/exterior/xanmeercurvedwall01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 6.72,
+   "interior": "none",
+   "medianWallM": 3.41,
+   "planAreaM2": 125.95,
+   "planCentreM": [
+    -0.27,
+    -0.61
+   ],
+   "provenance": [],
+   "ringFraction": 0.556,
+   "roofOverhead": false,
+   "sizeClass": "large",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/xanmeer/exterior/xanmeercurvedwall02": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 165.9,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 166\u00b0 in the piece's own frame carries 1.36x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 6.74,
+   "interior": "none",
+   "medianWallM": 2.18,
+   "planAreaM2": 104.44,
+   "planCentreM": [
+    -0.1,
+    -0.39
+   ],
+   "provenance": [],
+   "ringFraction": 0.556,
+   "roofOverhead": false,
+   "sizeClass": "medium",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/xanmeer/exterior/xanmeercurvedwall03": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 6.72,
+   "interior": "none",
+   "medianWallM": 2.57,
+   "planAreaM2": 63.17,
+   "planCentreM": [
+    -0.97,
+    0.38
+   ],
+   "provenance": [],
+   "ringFraction": 0.583,
+   "roofOverhead": false,
+   "sizeClass": "medium",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/xanmeer/furniture/xanfurniturechair01": {
+   "category": "furniture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 198.0,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 198\u00b0 in the piece's own frame carries 1.56x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 1.03,
+   "interior": "none",
+   "planAreaM2": 0.43,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.4 m\u00b2 plan, 1.0 m tall)"
+  },
+  "kotm:argonia/xanmeer/furniture/xanfurnituretablea01": {
+   "category": "furniture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 12.1,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 12\u00b0 in the piece's own frame carries 3.00x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.8,
+   "interior": "none",
+   "planAreaM2": 7.18,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (7.2 m\u00b2 plan, 0.8 m tall)"
+  },
+  "kotm:argonia/xanmeer/furniture/xanfurnituretableathin01": {
+   "category": "furniture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 345.9,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 346\u00b0 in the piece's own frame carries 3.33x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.8,
+   "interior": "none",
+   "planAreaM2": 5.47,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (5.5 m\u00b2 plan, 0.8 m tall)"
+  },
+  "kotm:argonia/xanmeer/furniture/xanfurnituretablesqa01": {
+   "category": "furniture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 159.9,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 160\u00b0 in the piece's own frame carries 2.23x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.79,
+   "interior": "none",
+   "planAreaM2": 3.65,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (3.6 m\u00b2 plan, 0.8 m tall)"
+  },
+  "kotm:argonia/xanmeer/interior/freeceiling3x3": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-kotm-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "kotm:argonia/xanmeer/largegate02": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 109.0,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 109\u00b0 in the piece's own frame carries 2.37x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 3.59,
+   "interior": "none",
+   "planAreaM2": 2.27,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (2.3 m\u00b2 plan, 3.6 m tall)"
+  },
+  "kotm:argonia/xanmeer/templewall01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 15.1,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 15\u00b0 in the piece's own frame carries 1.60x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 2.9,
+   "heightM": 3.88,
+   "interior": "none",
+   "medianWallM": 0.25,
+   "planAreaM2": 6.91,
+   "planCentreM": [
+    -0.06,
+    0.28
+   ],
+   "provenance": [],
+   "ringFraction": 0.736,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/xanmeer/templewall02": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 3.83,
+   "heightM": 3.88,
+   "interior": "none",
+   "medianWallM": 0.96,
+   "planAreaM2": 6.24,
+   "planCentreM": [
+    -0.29,
+    0.43
+   ],
+   "provenance": [],
+   "ringFraction": 0.806,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/xanmeer/templewall03": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 225.0,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 225\u00b0 in the piece's own frame carries 1.67x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 3.79,
+   "interior": "none",
+   "planAreaM2": 5.35,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (5.3 m\u00b2 plan, 3.8 m tall)"
+  },
+  "kotm:argonia/xanmeer/traps/trappressureplate": {
+   "category": "trap",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.07,
+   "interior": "none",
+   "planAreaM2": 0.78,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.8 m\u00b2 plan, 0.1 m tall)"
+  },
+  "kotm:argonia/xanmeer/xanmeerbase01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 45.1,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 45\u00b0 in the piece's own frame carries 1.77x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.111,
+   "headroomM": 3.82,
+   "heightM": 3.88,
+   "interior": "none",
+   "medianWallM": 6.79,
+   "planAreaM2": 212.93,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "why": "a closed prop seen from inside, not a room \u2014 only 11% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor, and the up ray finds no down-facing ceiling): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "kotm:argonia/xanmeer/xanmeerbase02": {
+   "category": "misc",
+   "closedShellPromotedBy": "door-piece",
+   "entrance": null,
+   "entranceWhy": "a free-standing plugin load door beside the shell",
+   "espLink": {
+    "doorModel": "kotm:architecture/xanmeer/furniture/xanmeer_murkmire_door2load",
+    "interiorCell": "XoceiTluthekInterior",
+    "interiorFamily": "kotm:architecture/xanmeer/interior",
+    "interiorSizeM": {
+     "heightM": 35.32,
+     "planXM": 175.67,
+     "planYM": 94.67
+    },
+    "placements": 2,
+    "plugin": "King of the Murkmire.esp"
+   },
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 225.0,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 225\u00b0 in the piece's own frame carries 2.53x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.556,
+   "headroomM": 3.84,
+   "heightM": 3.89,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 12.4,
+   "planAreaM2": 659.02,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    0.0
+   ],
+   "storeys": 1,
+   "tileset": "interior-kotm-v1",
+   "why": "King of the Murkmire.esp teleports from this shell into interior cell XoceiTluthekInterior (2 placements of the load door); that cell is built from kotm:architecture/xanmeer/interior, which is packaged as interior-kotm-v1"
+  },
+  "kotm:argonia/xanmeer/xincheikonudias02": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.95,
+   "interior": "none",
+   "planAreaM2": 117.74,
+   "provenance": [],
+   "sizeClass": "medium",
+   "why": "too small to hold an interior (117.7 m\u00b2 plan, 0.9 m tall)"
+  },
+  "kotm:denoffen/architecture/argonian/fen_az_wall_01_linear_192_256_03_lod0": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 344.8,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 345\u00b0 in the piece's own frame carries 2.15x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 3.71,
+   "interior": "none",
+   "planAreaM2": 3.54,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (3.5 m\u00b2 plan, 3.7 m tall)"
+  },
+  "kotm:denoffen/architecture/argonian/fen_az_wall_01_linear_256_256_01_b_lod0": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.042,
+   "headroomM": 3.63,
+   "heightM": 5.58,
+   "interior": "none",
+   "medianWallM": 0.69,
+   "planAreaM2": 7.17,
+   "planCentreM": [
+    1.93,
+    0.58
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:denoffen/architecture/argonian/fen_az_wall_01_open_192_256_01_c": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 346.0,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 346\u00b0 in the piece's own frame carries 1.45x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 10.01,
+   "heightM": 11.88,
+   "interior": "none",
+   "medianWallM": 4.48,
+   "planAreaM2": 53.45,
+   "planCentreM": [
+    5.47,
+    -0.16
+   ],
+   "provenance": [],
+   "ringFraction": 0.236,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:oaristys/paper/scrolls04": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 169.1,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 169\u00b0 in the piece's own frame carries 1.95x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.29,
+   "interior": "none",
+   "planAreaM2": 0.2,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.2 m\u00b2 plan, 0.3 m tall)"
+  },
+  "kotm:oaristys/paper/scrolls05": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 75.8,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 76\u00b0 in the piece's own frame carries 1.74x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.23,
+   "interior": "none",
+   "planAreaM2": 0.21,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.2 m\u00b2 plan, 0.2 m tall)"
+  },
+  "kotm:oaristys/paper/scrolls06": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 103.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 104\u00b0 in the piece's own frame carries 1.36x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.32,
+   "interior": "none",
+   "planAreaM2": 0.24,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.2 m\u00b2 plan, 0.3 m tall)"
+  },
+  "kotm:oaristys/paper/scrolls08": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 283.9,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 284\u00b0 in the piece's own frame carries 1.37x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.32,
+   "interior": "none",
+   "planAreaM2": 0.3,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.3 m\u00b2 plan, 0.3 m tall)"
+  },
+  "kotm:oaristys/paper/scrollschest01": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.6,
+   "interior": "none",
+   "planAreaM2": 0.28,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.3 m\u00b2 plan, 0.6 m tall)"
+  },
+  "kotm:plants/tamira/new plants/bush01": {
+   "category": "shrub",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 1.86,
+   "interior": "none",
+   "planAreaM2": 2.79,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (2.8 m\u00b2 plan, 1.9 m tall)"
+  },
+  "kotm:plants/tamira/new plants/palmplant": {
+   "category": "tree",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 1.47,
+   "interior": "none",
+   "planAreaM2": 0.52,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.5 m\u00b2 plan, 1.5 m tall)"
+  },
+  "vanilla:clutter/bones/humanarmright": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 75.9,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 76\u00b0 in the piece's own frame carries 2.37x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.13,
+   "interior": "none",
+   "planAreaM2": 0.08,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.1 m\u00b2 plan, 0.1 m tall)"
+  },
+  "vanilla:clutter/bones/humanfootright": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.12,
+   "interior": "none",
+   "planAreaM2": 0.03,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.0 m\u00b2 plan, 0.1 m tall)"
+  },
+  "vanilla:clutter/bones/humanhandright": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 313.2,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 313\u00b0 in the piece's own frame carries 1.48x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.14,
+   "interior": "none",
+   "planAreaM2": 0.05,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.1 m\u00b2 plan, 0.1 m tall)"
+  },
+  "vanilla:clutter/books/notetornpaper": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 226.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 227\u00b0 in the piece's own frame carries 1.79x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.02,
+   "interior": "none",
+   "planAreaM2": 0.07,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.1 m\u00b2 plan, 0.0 m tall)"
+  },
+  "vanilla:clutter/burntcorpses/corpse01": {
+   "category": "container",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.8,
+   "interior": "none",
+   "planAreaM2": 0.38,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.4 m\u00b2 plan, 0.8 m tall)"
+  },
+  "vanilla:clutter/common/candlelantern01": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 313.4,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 313\u00b0 in the piece's own frame carries 2.32x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.45,
+   "interior": "none",
+   "planAreaM2": 0.08,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.1 m\u00b2 plan, 0.5 m tall)"
+  },
+  "vanilla:clutter/common/inkwell01": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.12,
+   "interior": "none",
+   "planAreaM2": 0.01,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.0 m\u00b2 plan, 0.1 m tall)"
+  },
+  "vanilla:clutter/common/scroll01": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.12,
+   "interior": "none",
+   "planAreaM2": 0.05,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.1 m\u00b2 plan, 0.1 m tall)"
+  },
+  "vanilla:clutter/common/scroll02": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.1,
+   "interior": "none",
+   "planAreaM2": 0.05,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.1 m\u00b2 plan, 0.1 m tall)"
+  },
+  "vanilla:clutter/common/scroll03": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 21.6,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 22\u00b0 in the piece's own frame carries 15.10x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.1,
+   "interior": "none",
+   "planAreaM2": 0.05,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.1 m\u00b2 plan, 0.1 m tall)"
+  },
+  "vanilla:clutter/common/scroll04": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.07,
+   "interior": "none",
+   "planAreaM2": 0.03,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.0 m\u00b2 plan, 0.1 m tall)"
+  },
+  "vanilla:clutter/common/scroll05": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.12,
+   "interior": "none",
+   "planAreaM2": 0.05,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.1 m\u00b2 plan, 0.1 m tall)"
+  },
+  "vanilla:clutter/common/scroll06": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.09,
+   "interior": "none",
+   "planAreaM2": 0.07,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.1 m\u00b2 plan, 0.1 m tall)"
+  },
+  "vanilla:clutter/containers/miscpouch": {
+   "category": "container",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 258.4,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 258\u00b0 in the piece's own frame carries 3.01x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.67,
+   "interior": "none",
+   "planAreaM2": 0.19,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.2 m\u00b2 plan, 0.7 m tall)"
+  },
+  "vanilla:clutter/deadanimals/charredskeever03": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.6,
+   "interior": "none",
+   "planAreaM2": 0.26,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.3 m\u00b2 plan, 0.6 m tall)"
+  },
+  "vanilla:clutter/gemstones/emerald": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 34.3,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 34\u00b0 in the piece's own frame carries 7.07x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.02,
+   "interior": "none",
+   "planAreaM2": 0.01,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.0 m\u00b2 plan, 0.0 m tall)"
+  },
+  "vanilla:clutter/gemstones/garnetflawed": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.04,
+   "interior": "none",
+   "planAreaM2": 0.01,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.0 m\u00b2 plan, 0.0 m tall)"
+  },
+  "vanilla:clutter/giant/giantcampfire01burningnoland": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.403,
+   "headroomM": 1.81,
+   "heightM": 6.47,
+   "interior": "none",
+   "medianWallM": 0.39,
+   "planAreaM2": 95.67,
+   "planCentreM": [
+    0.0,
+    0.35
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "category 'clutter' is never a building"
+  },
+  "vanilla:clutter/potions/poisondamagestamina03": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.23,
+   "interior": "none",
+   "planAreaM2": 0.03,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.0 m\u00b2 plan, 0.2 m tall)"
+  },
+  "vanilla:clutter/ruins/ruinslinensheet01": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.0,
+   "interior": "none",
+   "planAreaM2": 0.79,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.8 m\u00b2 plan, 0.0 m tall)"
+  },
+  "vanilla:clutter/ruins/ruinslinensheet02": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.0,
+   "interior": "none",
+   "planAreaM2": 0.62,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.6 m\u00b2 plan, 0.0 m tall)"
+  },
+  "vanilla:clutter/ruins/ruinslinenwrap01": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.19,
+   "interior": "none",
+   "planAreaM2": 0.14,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.1 m\u00b2 plan, 0.2 m tall)"
+  },
+  "vanilla:clutter/soulgem/soulgemcommon01": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.31,
+   "interior": "none",
+   "planAreaM2": 0.01,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.0 m\u00b2 plan, 0.3 m tall)"
+  },
+  "vanilla:clutter/soulgem/soulgemgreater01": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 344.9,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 345\u00b0 in the piece's own frame carries 1.38x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.25,
+   "interior": "none",
+   "planAreaM2": 0.02,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.0 m\u00b2 plan, 0.2 m tall)"
+  },
+  "vanilla:clutter/soulgem/soulgemlesser01": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.28,
+   "interior": "none",
+   "planAreaM2": 0.01,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.0 m\u00b2 plan, 0.3 m tall)"
+  },
+  "vanilla:clutter/soulgem/soulgempetty01": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.25,
+   "interior": "none",
+   "planAreaM2": 0.0,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.0 m\u00b2 plan, 0.2 m tall)"
+  },
+  "vanilla:critters/bee/beeingredient": {
+   "category": "creature",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.1,
+   "interior": "none",
+   "planAreaM2": 0.02,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.0 m\u00b2 plan, 0.1 m tall)"
+  },
+  "vanilla:dungeons/dwemer/clutter/dwecluttertrough01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.88,
+   "interior": "none",
+   "planAreaM2": 14.61,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (14.6 m\u00b2 plan, 0.9 m tall)"
+  },
+  "vanilla:dungeons/mines/scaffolding/minescaffoldrope04": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 1.49,
+   "interior": "none",
+   "planAreaM2": 0.29,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.3 m\u00b2 plan, 1.5 m tall)"
+  },
+  "vanilla:dungeons/mines/scaffolding/minescaffoldropelong03": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.6,
+   "interior": "none",
+   "planAreaM2": 0.34,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.3 m\u00b2 plan, 0.6 m tall)"
+  },
+  "vanilla:furniture/enchantingworkbench": {
+   "category": "furniture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 10.3,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 10\u00b0 in the piece's own frame carries 1.90x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 1.64,
+   "interior": "none",
+   "planAreaM2": 2.63,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (2.6 m\u00b2 plan, 1.6 m tall)"
+  },
+  "vanilla:plants/floradeathbell01": {
+   "category": "plant",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 311.2,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 311\u00b0 in the piece's own frame carries 1.42x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 1.92,
+   "interior": "none",
+   "planAreaM2": 2.9,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (2.9 m\u00b2 plan, 1.9 m tall)"
+  },
+  "vanilla:plants/floradragonstongue01": {
+   "category": "plant",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 50.3,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 50\u00b0 in the piece's own frame carries 9.07x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 1.36,
+   "interior": "none",
+   "planAreaM2": 1.85,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.9 m\u00b2 plan, 1.4 m tall)"
+  },
+  "vanilla:plants/floradragonstongue02": {
+   "category": "plant",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 107.4,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 107\u00b0 in the piece's own frame carries 2.77x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 1.59,
+   "interior": "none",
+   "planAreaM2": 3.12,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (3.1 m\u00b2 plan, 1.6 m tall)"
+  },
+  "vanilla:traps/swingingblade/trapbladeswinging01": {
+   "category": "trap",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 1.78,
+   "interior": "none",
+   "planAreaM2": 0.25,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.2 m\u00b2 plan, 1.8 m tall)"
+  },
+  "vanilla:traps/walltrap/walltrapcw/walltrapwooden": {
+   "category": "trap",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 36.8,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 37\u00b0 in the piece's own frame carries 18.88x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 3.97,
+   "interior": "none",
+   "planAreaM2": 1.91,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.9 m\u00b2 plan, 4.0 m tall)"
+  }
+ },
+ "kit": "xanmeer-kotm-v1",
+ "provenance": {
+  "exterior-interior-links.json": {
+   "miner": "worldgen.mine_door_links",
+   "minerVersion": "f82ba0f946d3",
+   "plugins": [
+    "ArgonianHome.esp",
+    "ArgonianLakeHouse.esl",
+    "Black Marsh North.esp",
+    "Black Marsh.esm",
+    "CCAyliedRuinsResources.esp",
+    "Cathedral - 3D FallForest Grass.esp",
+    "Cathedral - 3D Pine & Reach Grass.esp",
+    "Cathedral - 3D Tundra Grass.esp",
+    "DMArgonianHaus.esp",
+    "DarkwaterDen.esp",
+    "DepthsOfSkyrim.esp",
+    "Ferries  - Another Oakwood addon.esp",
+    "Ferries  - More Bandit Camps patch.esp",
+    "Ferries - Alternate Perspective - Here there be Monsters Patch.esp",
+    "Ferries - Alternate Perspective Patch.esp",
+    "Ferries - Alternate Start Patch.esp",
+    "Ferries - Animated Ships patch.esp",
+    "Ferries - B-oat patch - No inialta scene.esp",
+    "Ferries - B-oat patch - With Inialta Scene.esp",
+    "Ferries - Better Docks patch.esp",
+    "Ferries - Bruma Addon.esp",
+    "Ferries - Chanterelle Addon.esp",
+    "Ferries - Dynamic Boats Patch.esp",
+    "Ferries - JK Solitude Outskirts.esp",
+    "Ferries - JKs Raven Rock patch.esp",
+    "Ferries - Lainalten addon.esp",
+    "Ferries - Laintar Dale addon.esp",
+    "Ferries - Lux patch.esp",
+    "Ferries - Midwood Addon.esp",
+    "Ferries - Moon and Star addon.esp",
+    "Ferries - Old Gate Mill - Morthal Player house Addon.esp",
+    "Ferries - Riften patch.esp",
+    "Ferries - Rigmor of Bruma patch.esp",
+    "Ferries - Ryn Lumber Mills patch.esp",
+    "Ferries - Save the Icerunner Patch.esp",
+    "Ferries - Shadow Over Inialta addon.esp",
+    "Ferries - Siege At Icemoth Addon.esp",
+    "Ferries - TGSolitude Patch.esp",
+    "Ferries - Wyrmstooth Addon.esp",
+    "Ferries.esp",
+    "Here There Be Monsters - Curse of Cipactli.esp",
+    "King of the Murkmire.esp",
+    "SNT ferry.esp",
+    "SSKMovingBoats.esp",
+    "Sailboats.esp",
+    "Scriptfreeshipsailing.esp",
+    "Seashells.esp",
+    "Skyfall Sleeping Tree Overhaul.esp",
+    "Skyrim.esm",
+    "Tropical Skyrim -- Birds.esp",
+    "Tropical Skyrim.esp",
+    "Update.esm",
+    "Valenwood.esp",
+    "XanmeerResources.esp",
+    "igs_tileset_ayleid.esp"
+   ],
+   "poolRegister": {
+    "date": "2026-10-06",
+    "pools": [
+     "bmv",
+     "vanilla",
+     "tropical",
+     "xanmeer",
+     "drjacopo",
+     "hoddminir",
+     "jokerine",
+     "shores",
+     "mudmother",
+     "ferries",
+     "rowboats",
+     "ayleidcc",
+     "xalfek",
+     "darkwater",
+     "ayleidkit",
+     "histtree",
+     "canoe",
+     "ferryraft",
+     "sbot",
+     "depths",
+     "sirenroot",
+     "htbm",
+     "mwkeep",
+     "kotm",
+     "sailboats",
+     "impships",
+     "boatsanim",
+     "hlaalu"
+    ],
+    "source": "worldgen.asset_registry.POOLS",
+    "uncommittedChanges": false
+   },
+   "poolsMined": [
+    "ayleidcc",
+    "ayleidkit",
+    "bmv",
+    "boatsanim",
+    "canoe",
+    "darkwater",
+    "depths",
+    "drjacopo",
+    "ferries",
+    "ferryraft",
+    "histtree",
+    "htbm",
+    "jokerine",
+    "kotm",
+    "marshrest",
+    "mudmother",
+    "mwkeep",
+    "sailboats",
+    "tropical",
+    "vanilla",
+    "xalfek",
+    "xanmeer"
+   ],
+   "runDate": "2026-10-09"
+  },
+  "kit-assemblies-mined.json": {
+   "miner": "worldgen.mine_assemblies",
+   "minerVersion": "dd469251b755",
+   "plugins": [
+    "ArgonianLakeHouse.esl",
+    "Black Marsh North.esp",
+    "Black Marsh.esm",
+    "CCAyliedRuinsResources.esp",
+    "DMArgonianHaus.esp",
+    "DarkwaterDen.esp",
+    "DepthsOfSkyrim.esp",
+    "Ferries.esp",
+    "Here There Be Monsters - Curse of Cipactli.esp",
+    "King of the Murkmire.esp",
+    "SNT ferry.esp",
+    "SSKMovingBoats.esp",
+    "Sailboats.esp",
+    "Scriptfreeshipsailing.esp",
+    "Seashells.esp",
+    "Skyfall Sleeping Tree Overhaul.esp",
+    "Skyrim.esm",
+    "Tropical Skyrim -- Birds.esp",
+    "Tropical Skyrim.esp",
+    "Update.esm",
+    "Valenwood.esp",
+    "XanmeerResources.esp",
+    "igs_tileset_ayleid.esp"
+   ],
+   "poolRegister": {
+    "date": "2026-09-25",
+    "pools": [
+     "bmv",
+     "vanilla",
+     "tropical",
+     "xanmeer",
+     "drjacopo",
+     "hoddminir",
+     "jokerine",
+     "shores",
+     "mudmother",
+     "ferries",
+     "rowboats",
+     "ayleidcc",
+     "xalfek",
+     "darkwater",
+     "ayleidkit",
+     "histtree",
+     "canoe",
+     "ferryraft",
+     "sbot",
+     "depths",
+     "sirenroot",
+     "htbm",
+     "mwkeep",
+     "kotm",
+     "sailboats",
+     "impships",
+     "boatsanim",
+     "hlaalu"
+    ],
+    "source": "worldgen.asset_registry.POOLS",
+    "uncommittedChanges": true
+   },
+   "poolsMined": [
+    "ayleidcc",
+    "ayleidkit",
+    "bmv",
+    "boatsanim",
+    "canoe",
+    "darkwater",
+    "depths",
+    "ferries",
+    "ferryraft",
+    "histtree",
+    "htbm",
+    "jokerine",
+    "kotm",
+    "mudmother",
+    "mwkeep",
+    "sailboats",
+    "tropical",
+    "vanilla",
+    "xalfek",
+    "xanmeer"
+   ],
+   "runDate": "2026-09-26"
+  }
+ },
+ "rules": {
+  "doorwayArcM": [
+   0.8,
+   5.0
+  ],
+  "enclosureMinRing": 0.75,
+  "enclosureMinRoomM": 1.5,
+  "entranceRank": [
+   "esp-door",
+   "assembly",
+   "composite-leaf",
+   "approach",
+   "door-piece",
+   "leaf",
+   "opening",
+   "open-front"
+  ],
+  "entranceRankWhy": "one canonical entrance per piece (owner ruling 2026-09-07), ranked from the mod's own load door down to an open front; the losing evidence stays in `provenance` for audit and is never drawn or matched against",
+  "eyeHeightM": 1.6,
+  "frontEvidence": [
+   "co-placement (the bearing away from the neighbours the source authors planted around this piece)",
+   "asymmetry (the bearing band with the highest triangle density: the detailed, outward face)"
+  ],
+  "sizeClassMaxM2": {
+   "medium": 120.0,
+   "small": 40.0
+  }
+ },
+ "schemaVersion": 2
+}

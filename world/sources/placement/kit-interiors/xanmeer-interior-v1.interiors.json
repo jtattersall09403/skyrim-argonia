@@ -1,0 +1,1011 @@
+{
+ "assets": {
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arbench02": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arbench03": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arbridge1way02x256": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": {
+    "deg": 337.3,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 337\u00b0 in the piece's own frame carries 1.72x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arbridge1wayendcap02": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arclutterpedestal01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": {
+    "deg": 41.1,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 41\u00b0 in the piece's own frame carries 1.99x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arcluttertrough01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arconstellationstele": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arfacadebridge01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arfacadebridgecurve01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": {
+    "deg": 81.4,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 81\u00b0 in the piece's own frame carries 2.00x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arfacadebridgerampccw01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": {
+    "deg": 9.4,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 9\u00b0 in the piece's own frame carries 1.80x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arfacadebridgerampcw01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": {
+    "deg": 350.6,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 351\u00b0 in the piece's own frame carries 1.80x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arfloorraised01a": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": {
+    "deg": 73.7,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 74\u00b0 in the piece's own frame carries 1.35x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arfloorraised02a": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": {
+    "deg": 74.0,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 74\u00b0 in the piece's own frame carries 1.82x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arfloorraised03a": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arfurniturebedsingle01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arfurniturebedsingle02": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arfurniturechair01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": {
+    "deg": 198.0,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 198\u00b0 in the piece's own frame carries 1.56x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arfurniturechair02": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arhitchpost01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": {
+    "deg": 282.3,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 282\u00b0 in the piece's own frame carries 2.60x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arledgescreen01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arledgescreen02": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arledgescreen02left": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arledgescreen02right": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arnhall01mine": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": {
+    "deg": 288.9,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 289\u00b0 in the piece's own frame carries 3.50x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arnhall4way01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arnhall4way02": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": {
+    "deg": 45.0,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 45\u00b0 in the piece's own frame carries 1.56x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arnhallbladeslots": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arnhalldeadend01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arnhalldeadend02": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arnhalldeadendwall": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arpitretractablestairs02": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": {
+    "deg": 47.2,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 47\u00b0 in the piece's own frame carries 1.45x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arpitretractablestairsbase02": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arpitwalltallsecret01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arplatcorin01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arplatcorin02": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arplatcorout01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arplatmid01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arplatwall01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arplatwallstair01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arplatwallstair02": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arretractablebridge01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": {
+    "deg": 235.8,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 236\u00b0 in the piece's own frame carries 3.09x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arrmcornerexitrightnarrow01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": {
+    "deg": 315.2,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 315\u00b0 in the piece's own frame carries 1.84x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arrubblepile02": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": {
+    "deg": 197.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 197\u00b0 in the piece's own frame carries 1.74x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arrubblepile03": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": {
+    "deg": 276.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 276\u00b0 in the piece's own frame carries 2.42x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arrubblepileceiling01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": {
+    "deg": 351.0,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 351\u00b0 in the piece's own frame carries 1.97x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arsteppeddias01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/artable01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": {
+    "deg": 12.1,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 12\u00b0 in the piece's own frame carries 3.00x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/artablebench2seater": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": {
+    "deg": 12.8,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 13\u00b0 in the piece's own frame carries 2.10x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/artablebench4seater": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": {
+    "deg": 43.7,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 44\u00b0 in the piece's own frame carries 2.39x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/artablesquare01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": {
+    "deg": 159.9,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 160\u00b0 in the piece's own frame carries 2.23x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/artablethin01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": {
+    "deg": 345.9,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 346\u00b0 in the piece's own frame carries 3.33x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arwhall01dirt": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arwhall3way01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arwhall3way02": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": {
+    "deg": 224.7,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 225\u00b0 in the piece's own frame carries 1.37x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arwhall4way01fancy": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": {
+    "deg": 314.9,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 315\u00b0 in the piece's own frame carries 1.45x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arwhallcorner01fancy": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": {
+    "deg": 45.0,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 45\u00b0 in the piece's own frame carries 1.76x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arwhallsecret01fancy": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arwhalltransnarrowflat": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/arwindow01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/puzzle/arpuzzlepillar": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/puzzle/magicstonealteration01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/puzzle/magicstoneconjuration01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": {
+    "deg": 311.3,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 311\u00b0 in the piece's own frame carries 2.18x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/puzzle/magicstonedestruction01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": {
+    "deg": 131.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 131\u00b0 in the piece's own frame carries 1.56x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/puzzle/magicstoneenchanting01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": {
+    "deg": 311.3,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 311\u00b0 in the piece's own frame carries 2.18x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/puzzle/magicstoneillusion01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": {
+    "deg": 311.3,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 311\u00b0 in the piece's own frame carries 2.18x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/puzzle/magicstonerestoration01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": {
+    "deg": 131.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 131\u00b0 in the piece's own frame carries 1.56x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/traps/artrapswingingblade01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": null,
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  },
+  "ayleidcc:sarthesarai/dungeons/ayleidruins/interior/traps/arwelkyndclusterevil01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "interior modules have no exterior doorway",
+   "front": {
+    "deg": 345.4,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 345\u00b0 in the piece's own frame carries 2.21x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "interior": "none",
+   "provenance": [],
+   "why": "xanmeer-interior-v1 is an interior kit \u2014 these modules ARE the inside"
+  }
+ },
+ "kit": "xanmeer-interior-v1",
+ "provenance": {
+  "exterior-interior-links.json": {
+   "miner": "worldgen.mine_door_links",
+   "minerVersion": "f82ba0f946d3",
+   "plugins": [
+    "ArgonianHome.esp",
+    "ArgonianLakeHouse.esl",
+    "Black Marsh North.esp",
+    "Black Marsh.esm",
+    "CCAyliedRuinsResources.esp",
+    "Cathedral - 3D FallForest Grass.esp",
+    "Cathedral - 3D Pine & Reach Grass.esp",
+    "Cathedral - 3D Tundra Grass.esp",
+    "DMArgonianHaus.esp",
+    "DarkwaterDen.esp",
+    "DepthsOfSkyrim.esp",
+    "Ferries  - Another Oakwood addon.esp",
+    "Ferries  - More Bandit Camps patch.esp",
+    "Ferries - Alternate Perspective - Here there be Monsters Patch.esp",
+    "Ferries - Alternate Perspective Patch.esp",
+    "Ferries - Alternate Start Patch.esp",
+    "Ferries - Animated Ships patch.esp",
+    "Ferries - B-oat patch - No inialta scene.esp",
+    "Ferries - B-oat patch - With Inialta Scene.esp",
+    "Ferries - Better Docks patch.esp",
+    "Ferries - Bruma Addon.esp",
+    "Ferries - Chanterelle Addon.esp",
+    "Ferries - Dynamic Boats Patch.esp",
+    "Ferries - JK Solitude Outskirts.esp",
+    "Ferries - JKs Raven Rock patch.esp",
+    "Ferries - Lainalten addon.esp",
+    "Ferries - Laintar Dale addon.esp",
+    "Ferries - Lux patch.esp",
+    "Ferries - Midwood Addon.esp",
+    "Ferries - Moon and Star addon.esp",
+    "Ferries - Old Gate Mill - Morthal Player house Addon.esp",
+    "Ferries - Riften patch.esp",
+    "Ferries - Rigmor of Bruma patch.esp",
+    "Ferries - Ryn Lumber Mills patch.esp",
+    "Ferries - Save the Icerunner Patch.esp",
+    "Ferries - Shadow Over Inialta addon.esp",
+    "Ferries - Siege At Icemoth Addon.esp",
+    "Ferries - TGSolitude Patch.esp",
+    "Ferries - Wyrmstooth Addon.esp",
+    "Ferries.esp",
+    "Here There Be Monsters - Curse of Cipactli.esp",
+    "King of the Murkmire.esp",
+    "SNT ferry.esp",
+    "SSKMovingBoats.esp",
+    "Sailboats.esp",
+    "Scriptfreeshipsailing.esp",
+    "Seashells.esp",
+    "Skyfall Sleeping Tree Overhaul.esp",
+    "Skyrim.esm",
+    "Tropical Skyrim -- Birds.esp",
+    "Tropical Skyrim.esp",
+    "Update.esm",
+    "Valenwood.esp",
+    "XanmeerResources.esp",
+    "igs_tileset_ayleid.esp"
+   ],
+   "poolRegister": {
+    "date": "2026-10-06",
+    "pools": [
+     "bmv",
+     "vanilla",
+     "tropical",
+     "xanmeer",
+     "drjacopo",
+     "hoddminir",
+     "jokerine",
+     "shores",
+     "mudmother",
+     "ferries",
+     "rowboats",
+     "ayleidcc",
+     "xalfek",
+     "darkwater",
+     "ayleidkit",
+     "histtree",
+     "canoe",
+     "ferryraft",
+     "sbot",
+     "depths",
+     "sirenroot",
+     "htbm",
+     "mwkeep",
+     "kotm",
+     "sailboats",
+     "impships",
+     "boatsanim",
+     "hlaalu"
+    ],
+    "source": "worldgen.asset_registry.POOLS",
+    "uncommittedChanges": false
+   },
+   "poolsMined": [
+    "ayleidcc",
+    "ayleidkit",
+    "bmv",
+    "boatsanim",
+    "canoe",
+    "darkwater",
+    "depths",
+    "drjacopo",
+    "ferries",
+    "ferryraft",
+    "histtree",
+    "htbm",
+    "jokerine",
+    "kotm",
+    "marshrest",
+    "mudmother",
+    "mwkeep",
+    "sailboats",
+    "tropical",
+    "vanilla",
+    "xalfek",
+    "xanmeer"
+   ],
+   "runDate": "2026-10-09"
+  },
+  "kit-assemblies-mined.json": {
+   "miner": "worldgen.mine_assemblies",
+   "minerVersion": "dd469251b755",
+   "plugins": [
+    "ArgonianLakeHouse.esl",
+    "Black Marsh North.esp",
+    "Black Marsh.esm",
+    "CCAyliedRuinsResources.esp",
+    "DMArgonianHaus.esp",
+    "DarkwaterDen.esp",
+    "DepthsOfSkyrim.esp",
+    "Ferries.esp",
+    "Here There Be Monsters - Curse of Cipactli.esp",
+    "King of the Murkmire.esp",
+    "SNT ferry.esp",
+    "SSKMovingBoats.esp",
+    "Sailboats.esp",
+    "Scriptfreeshipsailing.esp",
+    "Seashells.esp",
+    "Skyfall Sleeping Tree Overhaul.esp",
+    "Skyrim.esm",
+    "Tropical Skyrim -- Birds.esp",
+    "Tropical Skyrim.esp",
+    "Update.esm",
+    "Valenwood.esp",
+    "XanmeerResources.esp",
+    "igs_tileset_ayleid.esp"
+   ],
+   "poolRegister": {
+    "date": "2026-09-25",
+    "pools": [
+     "bmv",
+     "vanilla",
+     "tropical",
+     "xanmeer",
+     "drjacopo",
+     "hoddminir",
+     "jokerine",
+     "shores",
+     "mudmother",
+     "ferries",
+     "rowboats",
+     "ayleidcc",
+     "xalfek",
+     "darkwater",
+     "ayleidkit",
+     "histtree",
+     "canoe",
+     "ferryraft",
+     "sbot",
+     "depths",
+     "sirenroot",
+     "htbm",
+     "mwkeep",
+     "kotm",
+     "sailboats",
+     "impships",
+     "boatsanim",
+     "hlaalu"
+    ],
+    "source": "worldgen.asset_registry.POOLS",
+    "uncommittedChanges": true
+   },
+   "poolsMined": [
+    "ayleidcc",
+    "ayleidkit",
+    "bmv",
+    "boatsanim",
+    "canoe",
+    "darkwater",
+    "depths",
+    "ferries",
+    "ferryraft",
+    "histtree",
+    "htbm",
+    "jokerine",
+    "kotm",
+    "mudmother",
+    "mwkeep",
+    "sailboats",
+    "tropical",
+    "vanilla",
+    "xalfek",
+    "xanmeer"
+   ],
+   "runDate": "2026-09-26"
+  }
+ },
+ "rules": {
+  "doorwayArcM": [
+   0.8,
+   5.0
+  ],
+  "enclosureMinRing": 0.75,
+  "enclosureMinRoomM": 1.5,
+  "entranceRank": [
+   "esp-door",
+   "assembly",
+   "composite-leaf",
+   "approach",
+   "door-piece",
+   "leaf",
+   "opening",
+   "open-front"
+  ],
+  "entranceRankWhy": "one canonical entrance per piece (owner ruling 2026-09-07), ranked from the mod's own load door down to an open front; the losing evidence stays in `provenance` for audit and is never drawn or matched against",
+  "eyeHeightM": 1.6,
+  "frontEvidence": [
+   "co-placement (the bearing away from the neighbours the source authors planted around this piece)",
+   "asymmetry (the bearing band with the highest triangle density: the detailed, outward face)"
+  ],
+  "sizeClassMaxM2": {
+   "medium": 120.0,
+   "small": 40.0
+  }
+ },
+ "schemaVersion": 2
+}

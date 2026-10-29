@@ -1,0 +1,30 @@
+{
+ "schemaVersion": 2,
+ "cellId": "AltenDockmasterHouse",
+ "additions": [
+  {
+   "id": "AltenDockmasterHouse:add:store-lantern-01",
+   "assetId": "vanilla:clutter/common/candlelanternwithcandle01",
+   "pos": [
+    115.569,
+    83.107,
+    66.765
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Lights the bookshelves and the ledgers kept on them."
+  },
+  {
+   "id": "AltenDockmasterHouse:add:door-lantern-02",
+   "assetId": "vanilla:clutter/common/candlelanternwithcandle01",
+   "pos": [
+    112.4,
+    83.089,
+    64.9
+   ],
+   "rotZDeg": 0,
+   "zone": "door",
+   "why": "Lights the way in from the door."
+  }
+ ]
+}

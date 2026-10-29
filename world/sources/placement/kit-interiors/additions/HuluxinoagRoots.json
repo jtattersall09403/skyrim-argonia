@@ -1,0 +1,30 @@
+{
+ "schemaVersion": 2,
+ "cellId": "HuluxinoagRoots",
+ "additions": [
+  {
+   "id": "HuluxinoagRoots:add:table-argoniancandle",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    138.132,
+    86.09,
+    -78.29
+   ],
+   "rotZDeg": 0,
+   "zone": "table",
+   "why": "Lights the dark cave floor at the entrance where the root-keepers sit."
+  },
+  {
+   "id": "HuluxinoagRoots:add:table-impbrazier",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    138.132,
+    85.872,
+    -79.6
+   ],
+   "rotZDeg": 0,
+   "zone": "table",
+   "why": "Brazier lights the dark floor of the root cave, where the root-keepers sit around the roots."
+  }
+ ]
+}

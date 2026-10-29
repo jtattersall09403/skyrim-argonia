@@ -1,0 +1,166 @@
+{
+ "cellId": "SeekhatFishersHut",
+ "sockets": {
+  "socket.SeekhatFishersHut.081BCAEF": {
+   "valueTier": "trivial",
+   "item": "item.tunic-with-sash"
+  },
+  "socket.SeekhatFishersHut.081BCAF8": {
+   "valueTier": "moderate",
+   "item": "item.saxhleel-dagger"
+  },
+  "socket.SeekhatFishersHut.081BCAF9": {
+   "valueTier": "moderate",
+   "item": "item.river-salt"
+  },
+  "socket.SeekhatFishersHut.081BCAFA": {
+   "valueTier": "moderate",
+   "item": "item.river-salt"
+  },
+  "socket.SeekhatFishersHut.081C1C6E": {
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.SeekhatFishersHut.081C1C80": {
+   "valueTier": "trivial",
+   "item": "item.wooden-plate"
+  },
+  "socket.SeekhatFishersHut.081C1C81": {
+   "valueTier": "trivial",
+   "item": "item.wooden-plate"
+  },
+  "socket.SeekhatFishersHut.081C1C82": {
+   "valueTier": "trivial",
+   "item": "item.turtle-shell-bowl"
+  },
+  "socket.SeekhatFishersHut.081C1C83": {
+   "valueTier": "trivial",
+   "item": "item.turtle-shell-bowl"
+  },
+  "socket.SeekhatFishersHut.081C1C84": {
+   "valueTier": "trivial",
+   "item": "item.turtle-shell-bowl"
+  },
+  "socket.SeekhatFishersHut.081C1C85": {
+   "valueTier": "trivial",
+   "item": "item.saltrice-flatbread"
+  },
+  "socket.SeekhatFishersHut.081C1C87": {
+   "valueTier": "trivial",
+   "item": "item.murkmire-stew"
+  },
+  "socket.SeekhatFishersHut.081C1C8A": {
+   "valueTier": "trivial",
+   "item": "item.jeel-sa"
+  },
+  "socket.SeekhatFishersHut.081C1C8C": {
+   "valueTier": "trivial",
+   "item": "item.wooden-plate"
+  },
+  "socket.SeekhatFishersHut.081C1C95": {
+   "fillRule": "blanket.household-chest",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.leather-strips",
+      "count": 1
+     },
+     {
+      "item": "item.gold",
+      "count": 6
+     },
+     {
+      "item": "item.glass-bead-strand",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.household-chest"
+   }
+  },
+  "socket.SeekhatFishersHut.081C1C96": {
+   "fillRule": "blanket.fish-basket",
+   "valueTier": "trivial",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.trodh",
+      "count": 4
+     },
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     },
+     {
+      "item": "item.fishing-pole",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.fish-basket"
+   }
+  },
+  "socket.SeekhatFishersHut.081C1C97": {
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.SeekhatFishersHut.081C1C98": {
+   "valueTier": "trivial",
+   "item": "item.basket"
+  },
+  "socket.SeekhatFishersHut.081C1C99": {
+   "fillRule": "blanket.farmer-seed-bin",
+   "valueTier": "trivial",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.saltrice-loaf",
+      "count": 3
+     },
+     {
+      "item": "item.lumberries",
+      "count": 2
+     },
+     {
+      "item": "item.hoe",
+      "count": 1
+     },
+     {
+      "item": "item.shovel",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.farmer-seed-bin"
+   }
+  },
+  "socket.SeekhatFishersHut.081C1C9A": {
+   "fillRule": "blanket.fish-basket",
+   "valueTier": "trivial",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.trodh",
+      "count": 4
+     },
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     },
+     {
+      "item": "item.fishing-pole",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.fish-basket"
+   }
+  },
+  "socket.SeekhatFishersHut.08989C1F": {
+   "valueTier": "trivial",
+   "item": "item.book-the-black-fin-foreign-adventures-3"
+  },
+  "socket.SeekhatFishersHut.08989C20": {
+   "valueTier": "low",
+   "item": "item.book-argonians-of-western-solstice"
+  }
+ },
+ "schemaVersion": 1
+}

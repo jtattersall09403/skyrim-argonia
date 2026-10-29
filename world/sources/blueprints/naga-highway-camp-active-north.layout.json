@@ -1,0 +1,1708 @@
+{
+ "schemaVersion": 1,
+ "placeId": "place.naga-kur-deeps.naga-highway-camp-active-north",
+ "window": {
+  "centreKm": [
+   2.306,
+   4.592
+  ],
+  "halfM": 90.0
+ },
+ "ops": [
+  {
+   "op": "place",
+   "uid": "b-lieut",
+   "asset": "mudmother:gv_meshes/argoniannest/argoniantent02",
+   "at": [
+    2298.5,
+    4587.5
+   ],
+   "yaw": 60.0,
+   "settle": true,
+   "pad": {
+    "apronM": 1.0,
+    "batter": true,
+    "apronBySide": {
+     "s": 3.0,
+     "w": 2.5
+    }
+   }
+  },
+  {
+   "op": "place",
+   "uid": "b-band",
+   "asset": "mudmother:gv_meshes/argoniannest/argoniantent02",
+   "at": [
+    2312.5,
+    4588.0
+   ],
+   "yaw": 300.0,
+   "settle": true,
+   "pad": {
+    "apronM": 1.0,
+    "batter": true
+   }
+  },
+  {
+   "op": "place",
+   "uid": "w-watch",
+   "asset": "composite:works/stockade-watch-2stage",
+   "at": [
+    2289.0,
+    4571.0
+   ],
+   "yaw": 225.0,
+   "settle": true,
+   "pad": {
+    "apronM": 0.5,
+    "batter": true
+   }
+  },
+  {
+   "op": "place",
+   "uid": "w-stair",
+   "asset": "vanilla:clutter/stockade/stockadescaffoldstairs01",
+   "at": [
+    2291.75,
+    4573.95
+   ],
+   "yaw": 225.0,
+   "settle": true,
+   "pad": {
+    "apronM": 0.5,
+    "batter": true
+   }
+  },
+  {
+   "op": "bind",
+   "uid": "w-stair",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.watch",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "note",
+   "uid": "w-stair",
+   "text": "walk 12 close-out: the watch tower had no way up. Stair posed from the plugin's own pairing (template vanilla:t1654: base4sided at [3.73,-0.13] in the stair's frame), same yaw as the tower; foot on the ground, top at the first stage."
+  },
+  {
+   "op": "bind",
+   "uid": "b-lieut",
+   "kind": "parcel",
+   "id": "parcel.naga-highway-camp-active-north.lieutenants-tent"
+  },
+  {
+   "op": "bind",
+   "uid": "b-band",
+   "kind": "parcel",
+   "id": "parcel.naga-highway-camp-active-north.band-tent"
+  },
+  {
+   "op": "bind",
+   "uid": "w-watch",
+   "kind": "parcel",
+   "id": "parcel.naga-highway-camp-active-north.watch"
+  },
+  {
+   "op": "place",
+   "uid": "y-fire",
+   "asset": "vanilla:clutter/woodfires/campfire01burning",
+   "at": [
+    2305.5,
+    4583.5
+   ],
+   "yaw": 0.0,
+   "settle": true,
+   "pad": {
+    "apronM": 1.0,
+    "batter": true
+   },
+   "fills": [
+    "promise.naga-highway-camp-active-north.thing-fire"
+   ]
+  },
+  {
+   "op": "place",
+   "uid": "y-wood",
+   "asset": "vanilla:clutter/firewood/firewoodpilesmall01",
+   "at": [
+    2306.9,
+    4585.2
+   ],
+   "yaw": 90.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "y-chop",
+   "asset": "vanilla:clutter/chopping block/choppingblock01",
+   "at": [
+    2309.3,
+    4583.0
+   ],
+   "yaw": 0.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "y-chair1",
+   "asset": "mudmother:gv_meshes/argoniannest/wovenchair01",
+   "at": [
+    2303.9,
+    4584.9
+   ],
+   "yaw": 145.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "y-chair2",
+   "asset": "mudmother:gv_meshes/argoniannest/wovenchair01",
+   "at": [
+    2306.4,
+    4581.4
+   ],
+   "yaw": 196.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "h-rack1",
+   "asset": "vanilla:furniture/tanningrackmarker",
+   "at": [
+    2305.4,
+    4587.4
+   ],
+   "yaw": 0.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "h-rack2",
+   "asset": "vanilla:furniture/tanningrackmarker",
+   "at": [
+    2301.6,
+    4580.6
+   ],
+   "yaw": 70.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "y-fire",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.band-tent",
+   "layer": "light",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "y-wood",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.band-tent",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "y-chop",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.band-tent",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "y-chair1",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.band-tent",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "y-chair2",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.band-tent",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "h-rack1",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.lieutenants-tent",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "h-rack2",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.band-tent",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "g-totem",
+   "asset": "mudmother:gv_meshes/argoniannest/argoniantotem01",
+   "at": [
+    2312.3,
+    4568.8
+   ],
+   "yaw": 0.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "g-totem2",
+   "asset": "mudmother:gv_meshes/argoniannest/argoniantotem01",
+   "at": [
+    2314.9,
+    4570.7
+   ],
+   "yaw": 20.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "g-tally",
+   "asset": "kotm:argonia/blackwood/sign",
+   "at": [
+    2292.6,
+    4571.0
+   ],
+   "yaw": 0.0,
+   "settle": true,
+   "fills": [
+    "promise.naga-highway-camp-active-north.thing-sign"
+   ]
+  },
+  {
+   "op": "mount",
+   "child": "g-tally",
+   "parent": "w-watch",
+   "hang": true,
+   "unmined": "reader-approved r3",
+   "min_h": 1.8,
+   "max_h": 3.2
+  },
+  {
+   "op": "place",
+   "uid": "b-lieut-board",
+   "asset": "kotm:argonia/blackwood/sign",
+   "at": [
+    2300.6,
+    4585.4
+   ],
+   "yaw": 60.0,
+   "settle": true
+  },
+  {
+   "op": "mount",
+   "child": "b-lieut-board",
+   "parent": "b-lieut",
+   "hang": true,
+   "unmined": "reader-approved r3",
+   "min_h": 1.2,
+   "max_h": 2.4
+  },
+  {
+   "op": "bind",
+   "uid": "b-lieut-board",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.lieutenants-tent",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "g-totem",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.watch",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "g-totem2",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.watch",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "g-tally",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.watch",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "c-crate1",
+   "asset": "vanilla:clutter/common/cratesmall01",
+   "at": [
+    2295.67,
+    4590.87
+   ],
+   "yaw": 40.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "c-crate2",
+   "asset": "vanilla:clutter/common/cratesmalllong01",
+   "at": [
+    2297.0,
+    4591.63
+   ],
+   "yaw": 110.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "c-sack1",
+   "asset": "vanilla:clutter/containers/miscsacklarge",
+   "at": [
+    2294.69,
+    4589.7
+   ],
+   "yaw": 200.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "c-sack2",
+   "asset": "vanilla:clutter/containers/miscsacklargeflat01",
+   "at": [
+    2298.5,
+    4591.8
+   ],
+   "yaw": 30.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "c-barrel",
+   "asset": "vanilla:clutter/barrel01",
+   "at": [
+    2294.27,
+    4588.25
+   ],
+   "yaw": 0.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "c-cart",
+   "asset": "vanilla:clutter/carts/handcart02",
+   "at": [
+    2295.84,
+    4593.21
+   ],
+   "yaw": 115.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "c-crate3",
+   "asset": "vanilla:clutter/common/cratesmalllong01",
+   "at": [
+    2294.23,
+    4586.5
+   ],
+   "yaw": 150.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "c-crate4",
+   "asset": "vanilla:clutter/common/cratesmall01",
+   "at": [
+    2295.49,
+    4588.78
+   ],
+   "yaw": 150.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "c-sack3",
+   "asset": "vanilla:clutter/containers/miscsacklarge",
+   "at": [
+    2292.54,
+    4585.98
+   ],
+   "yaw": 340.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "c-barrel2",
+   "asset": "vanilla:clutter/barrel01",
+   "at": [
+    2293.55,
+    4589.32
+   ],
+   "yaw": 0.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "c-cart2",
+   "asset": "vanilla:clutter/carts/handcartcrate",
+   "at": [
+    2295.26,
+    4584.29
+   ],
+   "yaw": 205.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "c-crate3",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.lieutenants-tent",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "c-crate4",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.lieutenants-tent",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "c-sack3",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.lieutenants-tent",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "c-barrel2",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.lieutenants-tent",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "c-cart2",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.lieutenants-tent",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "c-crate1",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.lieutenants-tent",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "c-crate2",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.lieutenants-tent",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "c-sack1",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.lieutenants-tent",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "c-sack2",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.lieutenants-tent",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "c-barrel",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.lieutenants-tent",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "c-cart",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.lieutenants-tent",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "s-basket",
+   "asset": "mudmother:gv_meshes/argoniannest/basketfull",
+   "at": [
+    2315.96,
+    4586.0
+   ],
+   "yaw": 0.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "s-barrel",
+   "asset": "vanilla:clutter/barrel01",
+   "at": [
+    2316.44,
+    4588.69
+   ],
+   "yaw": 0.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "s-basket",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.band-tent",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "s-barrel",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.band-tent",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "place",
+   "uid": "k-cairn1",
+   "asset": "histtree:skyfall/sleeping tree overhaul/rockcairn01",
+   "at": [
+    2298.0,
+    4609.5
+   ],
+   "yaw": 130.0,
+   "settle": true,
+   "pad": {
+    "apronM": 0.3,
+    "batter": true
+   }
+  },
+  {
+   "op": "place",
+   "uid": "k-cairn2",
+   "asset": "histtree:skyfall/sleeping tree overhaul/rockcairn02",
+   "at": [
+    2300.2,
+    4615.4
+   ],
+   "yaw": 220.0,
+   "settle": true,
+   "pad": {
+    "apronM": 0.3,
+    "batter": true
+   }
+  },
+  {
+   "op": "place",
+   "uid": "k-cairn3",
+   "asset": "histtree:skyfall/sleeping tree overhaul/rockcairn03",
+   "at": [
+    2304.4,
+    4619.7
+   ],
+   "yaw": 95.0,
+   "settle": true,
+   "pad": {
+    "apronM": 0.3,
+    "batter": true
+   }
+  },
+  {
+   "op": "place",
+   "uid": "k-cairn4",
+   "asset": "histtree:skyfall/sleeping tree overhaul/rockcairn04",
+   "at": [
+    2307.4,
+    4626.0
+   ],
+   "yaw": 55.0,
+   "settle": true,
+   "pad": {
+    "apronM": 0.3,
+    "batter": true
+   }
+  },
+  {
+   "op": "place",
+   "uid": "k-candle1",
+   "asset": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "at": [
+    2295.6,
+    4608.6
+   ],
+   "yaw": 0.0,
+   "settle": true,
+   "pad": {
+    "apronM": 0.3,
+    "batter": true
+   }
+  },
+  {
+   "op": "place",
+   "uid": "k-candle2",
+   "asset": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "at": [
+    2309.6,
+    4627.6
+   ],
+   "yaw": 0.0,
+   "settle": true,
+   "pad": {
+    "apronM": 0.3,
+    "batter": true
+   }
+  },
+  {
+   "op": "place",
+   "uid": "b-lieut-candle",
+   "asset": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "at": [
+    2302.6,
+    4588.6
+   ],
+   "yaw": 0.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "b-band-candle",
+   "asset": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "at": [
+    2309.0,
+    4589.0
+   ],
+   "yaw": 0.0,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "b-lieut-candle",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.lieutenants-tent",
+   "layer": "light",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "b-band-candle",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.band-tent",
+   "layer": "light",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "k-cairn1",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.lieutenants-tent",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "k-cairn2",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.lieutenants-tent",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "k-cairn3",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.lieutenants-tent",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "k-cairn4",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.lieutenants-tent",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "k-candle1",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.lieutenants-tent",
+   "layer": "light",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "k-candle2",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.lieutenants-tent",
+   "layer": "light",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "note",
+   "uid": "w-watch",
+   "text": "walk 12: owner asked for the finished watch tower; swapped the bare two-stage scaffold for composite works/stockade-watch-2stage (template t0475: top3sided deck on the stacked bases). Walk-12 close-out: the stair w-stair climbs to stage 1 (plugin pairing t1654); no plugin template pairs a stair or ramp from stage 1 to the deck (t0891 pairs stairs with a single-stage top2sided, t1631 sets a ramp on the deck itself), so the top deck is the lookout, reached from stage 1 inside the frame."
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.naga-highway-camp-active-north.camp-path",
+   "points": [
+    [
+     2305.8,
+     4559.5
+    ],
+    [
+     2320.6,
+     4560.9
+    ],
+    [
+     2312.0,
+     4572.0
+    ],
+    [
+     2307.0,
+     4581.6
+    ]
+   ],
+   "width": 2.5,
+   "kind": "track"
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.naga-highway-camp-active-north.watch-step",
+   "points": [
+    [
+     2302.3,
+     4584.5
+    ],
+    [
+     2296.0,
+     4576.0
+    ],
+    [
+     2291.0,
+     4571.8
+    ]
+   ],
+   "width": 1.2,
+   "kind": "footpath"
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.naga-highway-camp-active-north.camp-yard",
+   "points": [
+    [
+     2310.5,
+     4586.6
+    ],
+    [
+     2305.5,
+     4585.6
+    ],
+    [
+     2300.5,
+     4586.3
+    ]
+   ],
+   "width": 5.0,
+   "kind": "mud"
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.naga-highway-camp-active-north.cache-floor",
+   "points": [
+    [
+     2297.6,
+     4590.6
+    ],
+    [
+     2294.6,
+     4588.6
+    ],
+    [
+     2293.6,
+     4585.8
+    ]
+   ],
+   "width": 3.0,
+   "kind": "track"
+  },
+  {
+   "op": "path",
+   "action": "add",
+   "id": "route.naga-highway-camp-active-north.cairn-way",
+   "points": [
+    [
+     2305.5,
+     4586.0
+    ],
+    [
+     2305.0,
+     4593.0
+    ],
+    [
+     2301.0,
+     4602.0
+    ],
+    [
+     2299.8,
+     4608.0
+    ],
+    [
+     2302.0,
+     4614.0
+    ],
+    [
+     2307.0,
+     4618.5
+    ],
+    [
+     2309.5,
+     4627.0
+    ]
+   ],
+   "width": 1.2,
+   "kind": "footpath"
+  },
+  {
+   "op": "socket",
+   "id": "socket.naga-highway-camp-active-north.idle-n1-tally",
+   "kind": "idle",
+   "activity": "stand",
+   "at": [
+    2292.2,
+    4571.4
+   ],
+   "parcel": "parcel.naga-highway-camp-active-north.watch",
+   "why": "The lieutenant cuts the tally at the board under the watch: one notched stick for the walker, its split half kept on the board."
+  },
+  {
+   "op": "socket",
+   "id": "socket.naga-highway-camp-active-north.idle-n1-home",
+   "kind": "idle",
+   "activity": "sleep",
+   "at": [
+    2300.41,
+    4586.4
+   ],
+   "parcel": "parcel.naga-highway-camp-active-north.lieutenants-tent",
+   "why": "The lieutenant sleeps at the mouth of his tent, facing the gate."
+  },
+  {
+   "op": "socket",
+   "id": "socket.naga-highway-camp-active-north.npc-n1",
+   "kind": "npc",
+   "at": [
+    2301.01,
+    4586.05
+   ],
+   "rosterSlotId": "n1",
+   "role": "the lieutenant, who writes the receipts",
+   "parcel": "parcel.naga-highway-camp-active-north.lieutenants-tent",
+   "why": "The lieutenant runs the camp from his tent and the tally board.",
+   "schedule": [
+    {
+     "dayPhase": "morning",
+     "socketId": "socket.naga-highway-camp-active-north.idle-n1-tally",
+     "purpose": "work"
+    },
+    {
+     "dayPhase": "night",
+     "socketId": "socket.naga-highway-camp-active-north.idle-n1-home",
+     "purpose": "home"
+    }
+   ],
+   "fills": [
+    "promise.naga-highway-camp-active-north.occupant-n1"
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.naga-highway-camp-active-north.idle-n2-gate",
+   "kind": "idle",
+   "activity": "stand",
+   "at": [
+    2313.6,
+    4569.8
+   ],
+   "parcel": "parcel.naga-highway-camp-active-north.watch",
+   "why": "One of the band stands by the totem at the gate and stops whoever comes round the pond."
+  },
+  {
+   "op": "socket",
+   "id": "socket.naga-highway-camp-active-north.idle-n2-cook",
+   "kind": "idle",
+   "activity": "cook",
+   "host": "y-fire",
+   "at": [
+    2304.2,
+    4582.0
+   ],
+   "parcel": "parcel.naga-highway-camp-active-north.band-tent",
+   "why": "The band smokes hides and cooks over the one fire."
+  },
+  {
+   "op": "socket",
+   "id": "socket.naga-highway-camp-active-north.idle-n2-sit",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "y-chair1",
+   "at": [
+    2303.9,
+    4584.9
+   ],
+   "parcel": "parcel.naga-highway-camp-active-north.band-tent",
+   "why": "The band sits out the evening by the fire."
+  },
+  {
+   "op": "socket",
+   "id": "socket.naga-highway-camp-active-north.idle-n2-home",
+   "kind": "idle",
+   "activity": "sleep",
+   "at": [
+    2310.38,
+    4586.13
+   ],
+   "parcel": "parcel.naga-highway-camp-active-north.band-tent",
+   "why": "The band sleeps in turns in the hide tent."
+  },
+  {
+   "op": "socket",
+   "id": "socket.naga-highway-camp-active-north.npc-n2",
+   "kind": "npc",
+   "at": [
+    2309.99,
+    4586.55
+   ],
+   "rosterSlotId": "n2",
+   "role": "the band",
+   "parcel": "parcel.naga-highway-camp-active-north.band-tent",
+   "why": "The band keeps the gate and the fire.",
+   "schedule": [
+    {
+     "dayPhase": "morning",
+     "socketId": "socket.naga-highway-camp-active-north.idle-n2-gate",
+     "purpose": "work"
+    },
+    {
+     "dayPhase": "dusk",
+     "socketId": "socket.naga-highway-camp-active-north.idle-n2-sit",
+     "purpose": "evening"
+    },
+    {
+     "dayPhase": "sunset",
+     "socketId": "socket.naga-highway-camp-active-north.idle-n2-cook",
+     "purpose": "evening"
+    },
+    {
+     "dayPhase": "night",
+     "socketId": "socket.naga-highway-camp-active-north.idle-n2-home",
+     "purpose": "home"
+    }
+   ],
+   "fills": [
+    "promise.naga-highway-camp-active-north.occupant-n2"
+   ]
+  },
+  {
+   "op": "socket",
+   "id": "socket.naga-highway-camp-active-north.encounter-the-bend",
+   "kind": "encounter",
+   "dangerBand": "D4",
+   "zone": "approach",
+   "at": [
+    2305.8,
+    4561.0
+   ],
+   "parcel": "parcel.naga-highway-camp-active-north.watch",
+   "why": "The band holds the bend: a walker who will not stop at the gate is met here, with the watch above."
+  },
+  {
+   "op": "socket",
+   "id": "socket.naga-highway-camp-active-north.encounter-the-fire",
+   "kind": "encounter",
+   "dangerBand": "D4",
+   "zone": "camp",
+   "at": [
+    2305.5,
+    4578.5
+   ],
+   "parcel": "parcel.naga-highway-camp-active-north.band-tent",
+   "why": "The camp fights round its fire if the gate falls."
+  },
+  {
+   "op": "socket",
+   "id": "socket.naga-highway-camp-active-north.container-cache-crate",
+   "kind": "container",
+   "host": "c-crate2",
+   "containerClass": "crate",
+   "lock": "lock.naga-highway-camp-active-north.container-cache-crate",
+   "fillRule": "blanket.naga-cache",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.gold",
+      "count": 200
+     },
+     {
+      "item": "item.pelt",
+      "count": 2
+     },
+     {
+      "item": "item.glass-bead-strand",
+      "count": 1
+     },
+     {
+      "item": "item.garnet",
+      "count": 1
+     },
+     {
+      "item": "item.moon-sugar",
+      "count": 1
+     },
+     {
+      "item": "item.wamasu-bone",
+      "count": 1
+     },
+     {
+      "item": "item.silver-ring",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.naga-cache",
+    "band": "D4"
+   },
+   "parcel": "parcel.naga-highway-camp-active-north.lieutenants-tent",
+   "why": "The cache: what the camp holds until its owners pay or come back.",
+   "owner": "parcel.naga-highway-camp-active-north.lieutenants-tent",
+   "valueTier": "high"
+  },
+  {
+   "op": "socket",
+   "id": "socket.naga-highway-camp-active-north.container-cache-crate-small",
+   "kind": "container",
+   "host": "c-crate1",
+   "containerClass": "crate",
+   "fillRule": "authored",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.gold",
+      "count": 25
+     },
+     {
+      "item": "item.flagon",
+      "count": 1
+     },
+     {
+      "item": "item.clay-jug",
+      "count": 1
+     }
+    ],
+    "storyNote": "The most recent claims, not yet sorted."
+   },
+   "parcel": "parcel.naga-highway-camp-active-north.lieutenants-tent",
+   "why": "The newest of the held cargo, stacked on the older.",
+   "valueTier": "moderate",
+   "owner": "parcel.naga-highway-camp-active-north.lieutenants-tent"
+  },
+  {
+   "op": "socket",
+   "id": "socket.naga-highway-camp-active-north.container-cache-sack",
+   "kind": "container",
+   "host": "c-sack1",
+   "containerClass": "sack",
+   "fillRule": "authored",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.swamp-fungal-pod",
+      "count": 2
+     },
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 1
+     }
+    ],
+    "storyNote": "A walker's provisions, taken with the rest of his load."
+   },
+   "parcel": "parcel.naga-highway-camp-active-north.lieutenants-tent",
+   "why": "Held cargo.",
+   "valueTier": "low",
+   "owner": "parcel.naga-highway-camp-active-north.lieutenants-tent"
+  },
+  {
+   "op": "socket",
+   "id": "socket.naga-highway-camp-active-north.container-cache-sack-flat",
+   "kind": "container",
+   "host": "c-sack2",
+   "containerClass": "sack",
+   "fillRule": "authored",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.pelt",
+      "count": 3
+     }
+    ],
+    "storyNote": "Hides taken off a trapper on the east arm."
+   },
+   "parcel": "parcel.naga-highway-camp-active-north.lieutenants-tent",
+   "why": "Held cargo.",
+   "valueTier": "moderate",
+   "owner": "parcel.naga-highway-camp-active-north.lieutenants-tent"
+  },
+  {
+   "op": "socket",
+   "id": "socket.naga-highway-camp-active-north.container-tar",
+   "kind": "container",
+   "host": "c-barrel",
+   "containerClass": "barrel",
+   "fillRule": "authored",
+   "lootTable": {
+    "items": [],
+    "storyNote": "Pitch for sealing the hides, gone hard at the top."
+   },
+   "parcel": "parcel.naga-highway-camp-active-north.lieutenants-tent",
+   "why": "The camp's tar, for the hides and the cane lashings.",
+   "valueTier": "trivial",
+   "owner": "parcel.naga-highway-camp-active-north.lieutenants-tent"
+  },
+  {
+   "op": "socket",
+   "id": "socket.naga-highway-camp-active-north.container-water",
+   "kind": "container",
+   "host": "s-barrel",
+   "containerClass": "barrel",
+   "fillRule": "blanket.water-barrel",
+   "parcel": "parcel.naga-highway-camp-active-north.band-tent",
+   "why": "The band's water, carried up from the pond.",
+   "lootTable": {
+    "items": [],
+    "frozenFrom": "blanket.water-barrel"
+   },
+   "valueTier": "trivial",
+   "owner": "parcel.naga-highway-camp-active-north.band-tent"
+  },
+  {
+   "op": "socket",
+   "id": "socket.naga-highway-camp-active-north.container-basket",
+   "kind": "container",
+   "host": "s-basket",
+   "containerClass": "basket",
+   "fillRule": "authored",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.trodh",
+      "count": 3
+     },
+     {
+      "item": "item.rootland-mushroom",
+      "count": 2
+     },
+     {
+      "item": "item.steel-dagger-of-chills",
+      "count": 1
+     }
+    ],
+    "storyNote": "Pond fish and roots, the band's own food. Under them, wrapped in a hide, is a cold steel dagger taken off a traveller on the road."
+   },
+   "parcel": "parcel.naga-highway-camp-active-north.band-tent",
+   "why": "The band's food.",
+   "valueTier": "moderate",
+   "owner": "parcel.naga-highway-camp-active-north.band-tent"
+  },
+  {
+   "op": "socket",
+   "id": "fill.c-barrel2",
+   "kind": "container",
+   "host": "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.lieutenants-tent.assembly.c-barrel2",
+   "containerClass": "barrel",
+   "fillRule": "blanket.household-barrel",
+   "why": "placed container vanilla:clutter/barrel01: class default fill",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.river-salt",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 2
+     },
+     {
+      "item": "item.lumberries",
+      "count": 3
+     },
+     {
+      "item": "item.hissmir-fish-eye-rye",
+      "count": 1
+     },
+     {
+      "item": "item.flagon",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.household-barrel"
+   },
+   "valueTier": "low",
+   "owner": "parcel.naga-highway-camp-active-north.lieutenants-tent"
+  },
+  {
+   "op": "socket",
+   "id": "fill.c-sack3",
+   "kind": "container",
+   "host": "place.naga-kur-deeps.naga-highway-camp-active-north.parcel.naga-highway-camp-active-north.lieutenants-tent.assembly.c-sack3",
+   "containerClass": "sack",
+   "fillRule": "blanket.highwayman-bundle",
+   "why": "placed container vanilla:clutter/containers/miscsacklarge: class default fill",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.pelt",
+      "count": 2
+     },
+     {
+      "item": "item.gold",
+      "count": 40
+     },
+     {
+      "item": "item.healing-draught",
+      "count": 1
+     },
+     {
+      "item": "item.ferry-guide-note",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.highwayman-bundle"
+   },
+   "valueTier": "moderate",
+   "owner": "parcel.naga-highway-camp-active-north.lieutenants-tent"
+  },
+  {
+   "op": "socket",
+   "id": "socket.naga-highway-camp-active-north.plant-1",
+   "at": [
+    2315.49,
+    4582.11
+   ],
+   "kind": "plant",
+   "plantClass": "swamp-fungal-pod",
+   "valueTier": "low",
+   "owner": null,
+   "why": "Swamp fungal pods on the wet ground; picked and grown back in days. (vanilla:plants/floraswampfungalpod01, chunk_4_9_vegetation.bin#216:306)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.naga-highway-camp-active-north.plant-2",
+   "at": [
+    2320.35,
+    4580.84
+   ],
+   "kind": "plant",
+   "plantClass": "swamp-fungal-pod",
+   "valueTier": "low",
+   "owner": null,
+   "why": "Swamp fungal pods on the wet ground; picked and grown back in days. (vanilla:plants/floraswampfungalpod01, chunk_4_9_vegetation.bin#216:311)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.naga-highway-camp-active-north.plant-3",
+   "at": [
+    2310.55,
+    4555.98
+   ],
+   "kind": "plant",
+   "plantClass": "hanging-moss",
+   "valueTier": "trivial",
+   "owner": null,
+   "why": "Hanging moss on the trees here; a forager cuts it and it grows back. (bmv:landscape/plants/florahangingmoss03aaa, chunk_4_9_vegetation.bin#27:50)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.naga-highway-camp-active-north.den-death-hopper",
+   "kind": "encounter",
+   "at": [
+    2277.7,
+    4626.7
+   ],
+   "zone": "den",
+   "species": "creature.death-hopper",
+   "headcount": 4,
+   "why": "Death Hopper den at the pond below the bench at the bend. A still pond or seep deep enough to hide a frog while waders pass overhead.",
+   "dangerBand": "D2"
+  },
+  {
+   "op": "socket",
+   "id": "socket.naga-highway-camp-active-north.den-hackwing",
+   "kind": "encounter",
+   "at": [
+    2342.5,
+    4628.8
+   ],
+   "zone": "den",
+   "species": "creature.hackwing",
+   "headcount": 3,
+   "why": "Hackwing den at snags over the open marsh past the watch. A dead-tree roost over open marsh with long sight lines over prey.",
+   "dangerBand": "D2"
+  },
+  {
+   "op": "socket",
+   "id": "socket.naga-highway-camp-active-north.den-crocodile",
+   "kind": "encounter",
+   "at": [
+    2328.1,
+    4621.9
+   ],
+   "zone": "den",
+   "species": "creature.crocodile",
+   "headcount": 1,
+   "why": "Crocodile den at the pond bank. A sunning bank beside deep water with prey coming down to drink.",
+   "dangerBand": "D2"
+  },
+  {
+   "op": "socket",
+   "id": "socket.naga-highway-camp-active-north.idle-seat-y-chair2",
+   "kind": "idle",
+   "activity": "sit",
+   "host": "y-chair2",
+   "parcel": "parcel.naga-highway-camp-active-north.band-tent",
+   "seatHeightM": 0.42,
+   "why": "A seat at a chair where people take the midday meal."
+  },
+  {
+   "op": "place",
+   "uid": "n-marshweed",
+   "asset": "bmv:landscape/trees/reedsmall2",
+   "at": [
+    2316.6,
+    4583.0
+   ],
+   "yaw": 30.0,
+   "settle": true
+  },
+  {
+   "op": "place",
+   "uid": "n-hanging-moss",
+   "asset": "bmv:landscape/plants/florahangingmoss02aaa",
+   "at": [
+    2322.25,
+    4579.4
+   ],
+   "yaw": 200.0,
+   "y": 12.86
+  },
+  {
+   "op": "bind",
+   "uid": "n-marshweed",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.band-tent",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "bind",
+   "uid": "n-hanging-moss",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.band-tent",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "note",
+   "uid": "n-marshweed",
+   "text": "2.9b gather node node.marshweed: a marshweed tuft on the wet ground by the pond-side fungal pods (plant-1); marshweed grows in tufts at the water edge and the marsh folk smoke it (fauna-hazards.md:99)."
+  },
+  {
+   "op": "note",
+   "uid": "n-hanging-moss",
+   "text": "2.9b gather node node.hanging-moss: hangs off the frozen-world cypress3 at (2322.85, 4578.9), between plant-1 and plant-2, pivot 2.1 m over the ground as the world moss near it hangs (chunk_4_9 moss at 2312.8,4593.3 hangs 2.07 m up); blue moss hangs in curtains from the marsh canopy (fauna-hazards.md:99)."
+  },
+  {
+   "op": "socket",
+   "id": "socket.naga-highway-camp-active-north.plant-rootland-mushroom-1",
+   "at": [
+    2321.73,
+    4591.65
+   ],
+   "kind": "plant",
+   "plantClass": "rootland-mushroom",
+   "valueTier": "trivial",
+   "owner": null,
+   "why": "2.9b-p: A tall rootland mushroom grows among the roots; a forager cuts the cap and it grows back. (bmv:trdata/mushrooms/tr_oth_tallmush01, chunk_4_9_vegetation.bin#84:16; resource-nodes.json node.rootland-mushroom)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.naga-highway-camp-active-north.plant-swamp-fungal-pod-1",
+   "at": [
+    2322.32,
+    4585.31
+   ],
+   "kind": "plant",
+   "plantClass": "swamp-fungal-pod",
+   "valueTier": "trivial",
+   "owner": null,
+   "why": "2.9b-p: A fungal pod grows on the wet marsh floor; a forager cuts it and another swells in its place. (vanilla:plants/floraswampfungalpod01, chunk_4_9_vegetation.bin#216:310; resource-nodes.json node.swamp-fungal-pod)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.naga-highway-camp-active-north.plant-somnalius-fern-1",
+   "at": [
+    2295.85,
+    4580.21
+   ],
+   "kind": "plant",
+   "plantClass": "somnalius-fern",
+   "valueTier": "trivial",
+   "owner": null,
+   "why": "2.9b-p: A somnalius fern grows here in the marsh shade; a forager cuts a frond and it grows back. (bmv:landscape/plants/espfernbrakencluster01, chunk_4_9_vegetation.bin#18:306; fauna-hazards.md:98)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.naga-highway-camp-active-north.plant-rootland-mushroom-2",
+   "at": [
+    2324.88,
+    4594.61
+   ],
+   "kind": "plant",
+   "plantClass": "rootland-mushroom",
+   "valueTier": "trivial",
+   "owner": null,
+   "why": "2.9b-p: A tall rootland mushroom grows among the roots; a forager cuts the cap and it grows back. (bmv:trdata/mushrooms/tr_oth_tallmush01, chunk_4_9_vegetation.bin#84:15; resource-nodes.json node.rootland-mushroom)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.naga-highway-camp-active-north.plant-somnalius-fern-2",
+   "at": [
+    2297.75,
+    4575.55
+   ],
+   "kind": "plant",
+   "plantClass": "somnalius-fern",
+   "valueTier": "trivial",
+   "owner": null,
+   "why": "2.9b-p: A somnalius fern grows here in the marsh shade; a forager cuts a frond and it grows back. (bmv:landscape/plants/espfernbrakencluster01, chunk_4_9_vegetation.bin#18:308; fauna-hazards.md:98)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.naga-highway-camp-active-north.plant-somnalius-fern-3",
+   "at": [
+    2345.94,
+    4579.05
+   ],
+   "kind": "plant",
+   "plantClass": "somnalius-fern",
+   "valueTier": "trivial",
+   "owner": null,
+   "why": "2.9b-p: A somnalius fern grows here in the marsh shade; a forager cuts a frond and it grows back. (bmv:landscape/plants/espfernbrakencluster05, chunk_5_9_vegetation.bin#22:281; fauna-hazards.md:98)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.naga-highway-camp-active-north.plant-swamp-fungal-pod-2",
+   "at": [
+    2281.96,
+    4558.72
+   ],
+   "kind": "plant",
+   "plantClass": "swamp-fungal-pod",
+   "valueTier": "trivial",
+   "owner": null,
+   "why": "2.9b-p: A fungal pod grows on the wet marsh floor; a forager cuts it and another swells in its place. (vanilla:plants/floraswampfungalpod01, chunk_4_9_vegetation.bin#216:297; resource-nodes.json node.swamp-fungal-pod)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.naga-highway-camp-active-north.plant-hanging-moss-1",
+   "at": [
+    2265.5,
+    4564.74
+   ],
+   "kind": "plant",
+   "plantClass": "hanging-moss",
+   "valueTier": "trivial",
+   "owner": null,
+   "why": "2.9b-p: Blue moss hangs here from the canopy; a forager pulls a strand and it grows back. (bmv:landscape/plants/florahangingmoss02aaa, chunk_4_9_vegetation.bin#26:34; fauna-hazards.md:99)"
+  },
+  {
+   "op": "socket",
+   "id": "socket.naga-highway-camp-active-north.q-track-bend",
+   "kind": "marker",
+   "zone": "post",
+   "at": [
+    2278.4,
+    4543.1
+   ],
+   "why": "On the walked track short of the blind bend, the pond on the right and the watch over the bench ahead: a walker here is seen from the watch before the camp comes into view. Here a buyer of quiet waits to be called up to the gate."
+  },
+  {
+   "op": "place",
+   "uid": "g-gate",
+   "asset": "mudmother:gv_meshes/argoniannest/wovenfence01",
+   "at": [
+    2314.428,
+    4571.66
+   ],
+   "yaw": 26.16,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "g-gate",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.watch",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "note",
+   "uid": "g-gate",
+   "text": "2.11 build-list: the cane gate. A woven cane leaf (wovenfence01, the panel the Mud Mother plugin stands beside argoniantotem01) hung against g-totem2 and swung 100 deg open toward the camp, so the track passes between the totems; the band shuts the way by standing in it (idle-n2-gate). Replaces the four stake tufts g-fence1-4."
+  },
+  {
+   "op": "place",
+   "uid": "g-wing1",
+   "asset": "mudmother:gv_meshes/argoniannest/wovenfence01",
+   "at": [
+    2311.492,
+    4568.21
+   ],
+   "yaw": 306.16,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "g-wing1",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.watch",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "note",
+   "uid": "g-wing1",
+   "text": "2.11 build-list: cane wing on the totem line, butted against g-totem, closing the ground beside the gate."
+  },
+  {
+   "op": "place",
+   "uid": "g-wing2",
+   "asset": "mudmother:gv_meshes/argoniannest/wovenfence01",
+   "at": [
+    2315.74,
+    4571.313
+   ],
+   "yaw": 306.16,
+   "settle": true
+  },
+  {
+   "op": "bind",
+   "uid": "g-wing2",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.watch",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "note",
+   "uid": "g-wing2",
+   "text": "2.11 build-list: cane wing on the totem line, butted against g-totem2, closing the ground beside the gate."
+  },
+  {
+   "op": "place",
+   "uid": "w-ladder",
+   "asset": "vanilla:dungeons/imperial/door/trapdoorladder01-open",
+   "at": [
+    2287.241,
+    4569.241
+   ],
+   "yaw": 315.0,
+   "y": 10.166
+  },
+  {
+   "op": "bind",
+   "uid": "w-ladder",
+   "kind": "assembly",
+   "id": "parcel.naga-highway-camp-active-north.watch",
+   "layer": "clutter",
+   "on": "ground",
+   "evidence": "measured"
+  },
+  {
+   "op": "note",
+   "uid": "w-ladder",
+   "text": "2.12 ladders: no plugin template pairs a stair from stage 1 to the lookout deck, so the Naga raiders' watch is reached by the open TrapdoorLadder01 on the SW face, away from w-stair, as Black Marsh builders reach high platforms (material-culture.md:26-29, :44-46). Yaw 315, top rest at the deck edge (measured 1.8525 m vs 1.8522 m out), pivot 5.45 m under the deck top, foot below the ground (docs/phases/2-slice/2.12-loops/ladders.md)."
+  }
+ ]
+}

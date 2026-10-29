@@ -1,0 +1,84 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "entries": [
+  {
+   "id": "culture.group.bog-iron-workings.crew",
+   "level": "group",
+   "name": "The season's crew",
+   "parent": "culture.settlement.bog-iron-workings",
+   "members": [
+    "npc.imperial-fringe.bog-iron-workings.n1",
+    "npc.imperial-fringe.bog-iron-workings.n1-2",
+    "npc.imperial-fringe.bog-iron-workings.n1-3"
+   ],
+   "norms": [
+    {
+     "text": "The crew sleeps in the timber house and eats from one pot.",
+     "source": "world/sources/catalogue/places-imperial-fringe.json#place.imperial-fringe.bog-iron-workings"
+    },
+    {
+     "text": "The head of the crew sleeps beside the stacked cakes.",
+     "source": "world/sources/catalogue/places-imperial-fringe.json#place.imperial-fringe.bog-iron-workings"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Taking a cake from the stack without the head's say.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "A furnace that holds for the whole season.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "A digger who boasts about the work at home.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "people": {
+     "lean": 0,
+     "text": "Three strangers for a season; none asks after the others' villages.",
+     "source": "world/sources/catalogue/places-imperial-fringe.json#place.imperial-fringe.bog-iron-workings"
+    },
+    "trade": {
+     "lean": 1,
+     "text": "The road crews pay for every cake. The smith in the west buys the rest.",
+     "source": "world/sources/catalogue/places-imperial-fringe.json#place.imperial-fringe.bog-iron-workings"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "By name in the crew; visitor to anyone else.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "low",
+    "oaths": [],
+    "neverSaid": [
+     {
+      "text": "The name of their home village.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "The good mud near the path is gone.",
+      "source": "world/sources/catalogue/places-imperial-fringe.json#place.imperial-fringe.bog-iron-workings"
+     }
+    ],
+    "rumours": []
+   },
+   "views": [],
+   "deviationRate": 0.2
+  }
+ ]
+}

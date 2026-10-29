@@ -1,0 +1,76 @@
+{
+ "schemaVersion": 1,
+ "domain": "pickpocket",
+ "_": "Pickpocketing, the one roll (decision 0151 item 4; world/76 section 118 intro). Skyrim's chance, rebuilt as rows (lore topics/skyrim-sneak-detection.md section Pickpocket): base = 15 + Sneak (capped 90, MaxChance) sampled at the Sneak bands; the target's spot takes 0.25 a point (TargetSkillMult -0.25); weight takes 4 a kilogram (WeightMult -4), carried as the penalty at each weight class's top edge; value takes 1 per 10 gold (AmountMult -0.1) at each value band's lower edge. Worn armour is never taken. The roll is seeded from the save's rng stream per attempt. `worldgen.stealth_views` writes the runtime view.",
+ "entries": [
+  {
+   "id": "pickpocket.chance",
+   "name": "The pickpocket chance",
+   "kind": "pickpocket-table",
+   "status": "derived",
+   "sources": [
+    "UESP:Skyrim:Pickpocket",
+    "world/sources/lore/topics/skyrim-sneak-detection.md"
+   ],
+   "notes": "Skyrim's GMSTs as bands; neither world/76 section 118 nor section 121.5 carries a pickpocket number.",
+   "base": [
+    {
+     "sneakAtLeast": 0,
+     "chance": 15
+    },
+    {
+     "sneakAtLeast": 20,
+     "chance": 35
+    },
+    {
+     "sneakAtLeast": 40,
+     "chance": 55
+    },
+    {
+     "sneakAtLeast": 60,
+     "chance": 75
+    },
+    {
+     "sneakAtLeast": 75,
+     "chance": 90
+    }
+   ],
+   "targetSpot": {
+    "perPoint": 0.25
+   },
+   "bands": {
+    "weightClass": {
+     "light": 4,
+     "medium": 20,
+     "heavy": 40
+    },
+    "weightClassKg": {
+     "light": 1,
+     "medium": 5,
+     "heavy": 10
+    },
+    "value": [
+     {
+      "above": 50,
+      "penalty": 5
+     },
+     {
+      "above": 100,
+      "penalty": 10
+     },
+     {
+      "above": 250,
+      "penalty": 25
+     },
+     {
+      "above": 500,
+      "penalty": 50
+     }
+    ]
+   },
+   "exclude": [
+    "worn-armour"
+   ]
+  }
+ ]
+}

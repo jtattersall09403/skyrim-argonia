@@ -1,0 +1,565 @@
+<!-- imported unchanged from elder-souls-argonia docs/world/90-asset-strategy.md @ b581910f0f87d8da88eaa9876d238cdc5d709e78 (0.1 §f) -->
+# Part XI — Asset strategy and candidate sources (§71–80)
+
+> Module of the world-generation master plan — see [README](README.md) for the router
+> and [00-core.md](00-core.md) for the universal principles. Section numbers (§NN)
+> preserved from the original plan; cross-doc references resolve via the README map.
+
+## 71. Asset strategy under the no-new-art constraint
+
+**Binding: we never make art.** This is the one statement of the rule; other
+docs link here. No new 3D models, no new textures, **no new animations**,
+ever (UI excepted). Every visual and every clip comes from vanilla Skyrim or
+from a mod, chosen on availability and quality. The rule extends to
+**audio**: we never record or synthesize source sounds, we source them
+(Module 57 §107). Take mods' assets, never their SKSE or Papyrus code. This is
+not a temporary constraint to be worked around when something is missing — a
+missing asset is a *sourcing* task, never a modelling or hand-animation task.
+A small Blender edit to a sourced mesh (recolour, prune, scale a part, bend a
+trunk) for variety and character is not new art (owner, place
+ruling R126); the kit's credit row records the source mesh and the edit.
+
+**When you find a gap, in this order:**
+
+1. **Check what we already have — run the vault inventory first.**
+   `cd tooling/asset-pipeline && python3 -m pipeline.vault_inventory` (≈3s)
+   regenerates
+   [world/sources/assets/vault-inventory.md](../../../world/sources/assets/vault-inventory.md):
+   every authored set in the vault, grouped by the author's own folder, with
+   how much of each is already in a kit. Read its *"Unpackaged authored sets
+   worth a look"* section **before** any sourcing search — the BM&V tree-house
+   and root pieces were sitting there unused, and so are hundreds more. Then
+   the asset vault itself (`ELDER_SOULS_ASSET_ROOT`, see decision 0001) and
+   this module's candidate tables. (Read directory and file names; don't
+   keyword-search asset archives; see CLAUDE.md.) The whole vault is local; a
+   folder absent here is a sourcing job (`vault-pull.sh` is the
+   fresh-machine bootstrap only, tooling/bootstrap/README.md).
+2. **Research the mod scene** for the best available source, weighing quality,
+   completeness and how cleanly it converts.
+
+   **Preference order (owner directive): mod assets over vanilla for
+   anything that reads as Argonian, marsh, tropical or Black Marsh-specific.**
+   Skyrim's own assets were designed for a cold Nordic province and a different
+   culture; mod sources built *for this setting* are closer to what we need and
+   were made for our use case. In order:
+
+   1. **[Black Marsh & Valenwood](https://www.moddb.com/mods/black-marsh-valenwood)
+      — the Black Marsh half** (§74.1b) and the **Argonian Xanmeer Tileset**
+      (§74.2). These are the house style; reach for them first.
+   2. Other Argonia-appropriate mod sources — the candidate tables in §75–§79
+      and quests [70-assets §52](../quests/70-assets.md) (A-codes).
+   3. **Vanilla Skyrim/Creation** — still the right answer for *culturally
+      neutral* things (generic containers, tools, rope, rubble, furniture the
+      player will not read as Nordic) and for anything skeleton- or
+      animation-adjacent where vanilla compatibility is the point. Zero
+      sourcing cost, guaranteed pipeline fit — use it where it is genuinely
+      neutral, not where it is merely available.
+
+   A vanilla asset chosen for an Argonian-reading role should carry a one-line
+   note saying why no mod source served — that note is the trigger for a later
+   upgrade pass.
+3. **Download it.** The owner has a **Nexus Mods premium account with an API
+   key on the VM** (`apikey:` header against `api.nexusmods.com`; premium can
+   generate `download_link.json`). Never echo the key. Ask the owner for the
+   variable/path if it isn't visible in your shell.
+4. **Record it** — source link, credits entry (root README § Credits) and file hash
+   in the source registry, per §73 — *before* the asset is relied upon.
+
+**Take assets, not mod code.** Skyrim mods that add mechanics are Papyrus/SKSE
+plugins we cannot run. What we want from them is the **content**: meshes,
+textures and HKX animation clips, converted through the asset pipeline. A mod's
+gameplay code is at most a design reference (§74.1b applies the same rule to
+mod worlds).
+
+The project can build a large world through:
+
+- vanilla Skyrim meshes, textures, animations and sounds processed through the existing asset pipeline;
+- mod assets from the permitted source pool;
+- modular composition and instancing;
+- material variants derived from existing source material;
+- generated terrain and water meshes;
+- shader effects, particles and procedural placement;
+- kit-based interior and settlement assembly.
+
+No workflow should depend on future bespoke modelling or texture painting.
+
+**Kits only combine pieces that were designed to combine (owner ruling).** "Modular composition" above means a kit's *own* modularity: a
+mod's authored tile set, its snap/placement rules, its pre-built assemblies.
+It never means bolting one mod's mesh onto another's — or two unrelated sets
+from the same mod — and calling the result a building. Jamming a stilt house
+through a stone quay does not read as architecture; it reads as broken. So:
+kit builders and the Part 6 settlement compiler place **authored pieces in the
+way their author intended**, and any multi-part assembly must be either one
+shipped mesh or a set whose parts share a folder/tile grid and were built to
+snap. Where no authored piece exists for a shape we want, **show the gap as a
+gap** (a stand-in with an amber caption, a note in the kit's sheet) and treat
+it as a sourcing job per the steps above — never paper over it with a
+composite. The one exception already on the books is *foliage*: tree and shrub
+composites (§76) stack crowns and trunks that nobody sees join, are
+owner-approved, and are judged on silhouette, not on joinery.
+
+Building composites are the same rule read the other way, not a loosening of
+it: a kit may pre-assemble pieces **only where the source authors themselves
+placed them at one repeated offset**, which is a measurement, not a guess.
+Those offsets are mined in
+[kit-assemblies-evidence.md](../research/placement-settlements/kit-assemblies-evidence.md)
+and authored as `compose` entries in the kit configs (see its `## Composites`
+section for which exist and why); anything the evidence does not support — and
+anything whose length or bearing is a siting decision, like a walkway run —
+stays a separate placement.
+
+For this personal total-conversion-style project, the asset-management rule should be simple: **retain a source link and the credits that need to appear in the final credits list**. Avoid creating a legal/permissions bureaucracy inside the codebase.
+
+## 72. Asset registry
+
+```ts
+interface AssetRecord {
+  assetId: AssetId;
+  sourceProject: string;
+  sourcePage: string;
+  sourceVersion?: string;
+  sourceArchiveHash?: string;
+  sourceFilePaths?: string[];
+  creditRefs: string[];
+  category: AssetCategory;
+  cultureTags: CultureId[];
+  biomeTags: BiomeId[];
+  dimensions: Vec3;
+  collisionProfile: CollisionProfileId;
+  physicalMaterials: MaterialAssignment[];
+  climbProfile?: ClimbSurfaceProfileId;
+  lodSet?: LodSetId;
+  snapPoints: SnapPoint[];
+  sockets: AssetSocket[];
+  generatorTags: AssetTag[];
+}
+```
+
+The registry exists to make generation, physics, performance and credits reliable. It is not intended to become a heavyweight compliance ledger.
+
+**Built at Phase 10:** `world/sources/assets/` — 27,929 tagged
+rows across all four pools (BM&V 12,001 / vanilla 14,974 / Tropical Skyrim 869
+/ Xanmeer 85), with category, culture and biome tags, LOD-billboard siblings,
+plugin dimensions and how often a shipped world actually placed each mesh.
+**Query it, never read it** (`python3 -m worldgen.asset_registry query
+--category tree --biome swamp --used`); the pool table and row shape are in
+that directory's README. `--used` is the fastest way to separate "exists in
+the archive" from "an art team chose it for a swamp". Rows carry the cheap
+facts only: collision, snap points, sockets and LOD chains are added per asset
+by `pipeline/build_kit.py` when a kit actually places it — the
+catalogue-wide, kit-compile-deep rule.
+
+## 73. Source and credits process
+
+Keep this deliberately lightweight:
+
+1. record the mod/source project name and URL;
+2. record the author/project names that should be credited;
+3. optionally record archive version/hash where it helps reproducibility;
+4. record which semantic asset IDs came from that source;
+5. **add the credit line to root [README.md](../../README.md) § Credits and
+   third-party sources in the same change that ships the asset** — a
+   pipeline/audit doc recording provenance (e.g.
+   `apps/combat-sandbox/docs/assets/`, `tooling/asset-pipeline/docs/`) is
+   necessary but not sufficient; the README is the single list a credits
+   review checks, so a source that's provenance-documented but not there is a
+   gap, not a formality skipped.
+
+All mods listed in this document are assumed available for this personal project. There should be no per-asset permission gate, permission-evidence workflow or agent-time spent repeatedly re-checking usage terms unless a genuinely new source is introduced later.
+
+## 74. Available foundations
+
+### 74.1 Vanilla Skyrim and DLC/Creation content
+
+High-value source families:
+
+| Source family | Direct world uses |
+|---|---|
+| Hjaalmarch/Morthal | marsh ground, reeds, dead trees, fog, wetland clutter, poor-road composition |
+| Riften and Ratway | docks, pilings, timber waterfronts, canals, sewers, rough urban interiors |
+| Fishing content | nets, fish, traps, rods, boats, dock clutter and catches |
+| Caves and mines | natural caverns, mine supports, smuggler dens, roots and underground routes |
+| Imperial and Nordic forts | frontier forts, prisons, checkpoints and ruined colonial infrastructure |
+| Farms and estates | plantations, storehouses, fences, mills and fringe agriculture |
+| Ships and shipwrecks | coastal wrecks, river obstructions, salvage and pirate sites |
+| Solstheim/Dragonborn | fungi, giant roots, Telvanni organic forms, ash/Dunmer border culture |
+| Blackreach | glowing fungi, subterranean water, deep-cavern lighting and scale |
+| Dawnguard/Falmer cave material | selected underground infrastructure and organic clutter |
+| Ruins and tombs | later cultural reuse, crypts and generic structural components |
+
+The Dawnguard and Dragonborn archives are not owned, so their rows are not
+sourced; a need they would fill is met from the base game or a mod.
+
+### 74.1a Tropical Skyrim — A Climate Overhaul (Nexus classic 33017) — preferred source
+
+Owner-directed preferred source (found during the 8b water
+rounds): [Tropical Skyrim](https://www.nexusmods.com/skyrim/mods/33017)
+(Soolie, classic Skyrim) — a **full tropical replacer of the vanilla
+texture set under vanilla filenames** plus purpose-made tropical assets. In
+the vault at `mod-sources/tropical-skyrim-33017/` (main + both updates,
+SHA256SUMS recorded; main archive uses deflate64 — extract with Info-ZIP
+`unzip`, not python/bsdtar). Already in use: landscape ground textures
+(`Beach`, `CoastOceanFloor01`, `Tropical/RiverGravel`, tropicalised
+riverbottom/rivermud/mossy-rocks/mountain slabs → `build_ground_materials`
+"ts" source). Still unmined and highly promising for later phases: tropical
+**trees/palms/jungle flora**, grasses, **creature retextures** (Phase 13),
+and architecture/clutter — sweep this archive FIRST when filling tropical
+gaps before hunting new mods.
+
+**Architecture is texture-only (Phase 11 audit).** Tropical ships **no
+architecture meshes at all** — its farmhouse/riften/solitude/whiterun/roads
+retextures sit under vanilla filenames. So tropicalising a kit is a **lookup
+order, not a parallel kit family**.
+
+**Tropical is the DEFAULT resolution for every vanilla texture (owner ruling).** `build_kit.vanilla_texture_roots` puts Tropical's directory
+ahead of `Skyrim - Textures.bsa` in **every** pool's fallback, and
+`build.assemble_data_root` does the same for the character/creature builds.
+A pool's own textures still win, so a sourced mod keeps its authored look;
+only the pieces that fall back on vanilla art change — including *mod* pieces,
+whose meshes routinely name vanilla texture paths. A file Tropical does not
+repaint still resolves from the BSA.
+
+This is a default and not a per-kit key because the per-kit key
+(`textureOverlayPools: ["tropical"]`) is exactly what let **seven of the
+twenty-two built kits ship un-tropicalised** — most visibly
+`route-structures-v1` and `route-spans-v1`, whose 11,298 placed pieces put Whiterun castle stairs and
+a Nordic grey stone bridge on graded roads across a tropical marsh. A kit keeps
+the un-tropicalised vanilla art **only** by declaring `untropicalisedReason`, a
+written reason of at least 40 characters; a reasonless opt-out raises, and the
+kit must also be named in `UNTROPICALISED` in
+`pipeline/test_tropical_default.py` (run directly: `cd tooling/asset-pipeline && python3 -m pytest pipeline/test_tropical_default.py`; not in `npm run check`). As of
+that allowlist is **empty**, and measurably so: of the 13 textures
+the default changes inside `mudmother-hut-int`, every one is structural (bark,
+wood post, river mud, Whiterun interior beam, Riften log detail, hearth
+clutter) and not one is a sack, brazier or piece of woven furniture. Tropical
+repaints climate surfaces, so the default limits itself to the pieces a climate
+replacer should touch — no interior kit needed an exception.
+
+Files Tropical does not cover are handled with the existing `textureAliases`
+key: `clutter/stockade` is the standing case, redirected to the tropicalised
+`farmhouse/woodwall01` and `woodpost02` in `works-v1`, `enclosure-v1`,
+`settlement-stilt-v1` and `route-structures-v1` and `route-spans-v1`.
+`stockadeextra01` has no stand-in and stays vanilla. Tropical ships no
+`textures/effects/` at all, so `export_waterfall_fx_textures` is vanilla by
+necessity, and none of its 40 wild-fauna skins overlap the character or weapon
+builds (measured: 0 of 30). See
+[settlement-kit-sourcing-log.md](../research/placement-settlements/settlement-kit-sourcing-log.md)
+entry 2.
+
+**Built kits (the current shelf).** A kit is *packaging*, never new art: a JSON
+config in `tooling/asset-pipeline/pipeline/config/kits/` naming pieces we
+already hold, built with `python3 -m pipeline.build_kit --kit <id>`. Each config
+carries a `snapLogic` block recording **that set's own** grid/connector
+convention — package a mod's modular set intact and lay it out the way its
+author intended; never interleave two sets piece-for-piece.
+
+| Kit | Assets | Culture | Tropical textures | Pools | Delivers |
+|---|---|---|---|---|---|
+| `settlement-mud-v1` | 33 | argonian-mud | **11** | bmv, mudmother | Shadowfen mud/wattle villages |
+| `settlement-stilt-v1` | 26+ | argonian-stilt | **7** | bmv, vanilla, mudmother, htbm, ferries | Murkmire reed/stilt, passerelle subset |
+| `settlement-root-v1` | 140 | argonian-root | **2** | bmv, htbm, mudmother | grown-root canopy settlement: trunk-houses + the **complete** modular elevated walkway |
+| `dungeon-root-v1` | 124 | argonian-root | **4** | bmv, htbm, mudmother | walkable **root interiors** — `root-cavern`, `hist-sanctum` |
+| `settlement-imperial-v1` | 11 | imperial | **19** | vanilla | Imperial stone-timber |
+| `vanilla-farmhouse-int` | 76 | imperial-colonial | **11** | vanilla | walkable **farmhouse interiors** — the linked inside for `vanilla:architecture/farmhouse/` shells (cottage, inn, longhouse, cellar) |
+| `vanilla-imperial-int` | 65 | imperial-colonial | — | vanilla | walkable **Imperial fort/keep interiors** — the linked inside for Imperial, `mwkeep` and `hlaalu` shells (rooms, halls, load doors) |
+| `bmv-treehouse-int` | 16 | bosmer-grown | — | bmv, vanilla | walkable **grown tree-house interiors** — the `CiteBosmer/Houses` `*int*` chamber, wall-arc and trunk modules that `Valenwood.esp`'s own load doors teleport into (cell `01treeint`), with the Telvanni interior connector that joins them |
+| `htbm-hut-int` | 15 | argonian-stilt | **10** | htbm | walkable **bamboo-hut interiors** — the HTBM `_Int` rooms authored to sit inside `bamboohut01/02` (and the Kothringi variant), the hut door leaf, the mod's wicker furniture and the vanilla hearth/hay/barrel dressing the mod's own hut cells place (mined) |
+| `mudmother-hut-int` | 64 | argonian-mud | **13** | mudmother | walkable **mud-hut interior** — `mudhut01intnew`, the room authored to sit inside `mudhut01`, plus everything cell `00MudHut01` actually places: woven furniture, totem, shrine, fish rack, oven and the vanilla sacks, beams and hay the mod uses for dressing (mined) |
+| `imperial-keep` | 88 | imperial | **2** | mwkeep | Imperial civic/military tier |
+| `hlaalu-domestic` | 68 | imperial | **10** | hlaalu, mwkeep | Morrowind-Imperial domestic tier |
+| `ruin-monumental-v1` | — | xanmeer-ancient | — | ayleidkit, ayleidcc | monumental dressed stone |
+| `underwater-v1` | — | neutral | **6** | sirenroot, depths | drowned dressing |
+| `works-v1` | 85 | neutral-works | **28** | vanilla, mudmother | forge/smelter/racks/carts/mine timbers/scaffold/water wheels — the whole works taxonomy branch |
+| `enclosure-v1` | 57 | multi (six never-mixed families) | **14** | bmv, vanilla, htbm, ayleidkit | the **enclosure vocabulary**: road-spanning gates, gate arches, curtain wall, palisade and field fence. The only 4.3 m-spine gates we hold are `bmv:…/newcastle/wall/1024/1024wallgate01` (5.52 m clear) and its free-standing arch `1024arch01` (8.96 m); `hlaalu:…/stonewallgatearc001` (4.53 m, in `hlaalu-domestic`) is the third. Measured apertures and the rejects are in the sourcing log |
+| `route-structures-v1` | 20 | mixed (five never-mixed families) | **37** | vanilla, bmv, hlaalu | the authored CLIMBS terrain grading cannot fix — stairs, stepped ascents, landings and lip-steps, one family per culture a route passes through. Crossings moved to `route-spans-v1` on|
+| `route-spans-v1` | 22 | mixed (four never-mixed span systems) | **33** | vanilla, bmv | the way-CARRYING half: `nordic-viaduct` (deck + pier + foot + abutment + approach flight), `stockade-trestle` (the one family whose every join, parapet included, is mined from vanilla), `root-passerelle` (self-supporting Bosmer walkway), `stone-arch` (four whole landscape bridges, one per crossing, never tiled) and the `marsh-timber` single span. Anchoring is declared per piece and checked against the manifest: the Nordic pier's pivot is at deck level with 21.848 m of shaft below it. **204 crossings, 4,531 pieces, 841 piers, none failing to reach the ground.** Rules and rejects in [decision 0051](../old-decisions/0051-route-span-systems.md) |
+| `watercraft-v1` | 45 | multi | **4** | canoe, ferryraft, ferries, rowboats, sailboats, sbot, bmv | the sailable/moored small-craft roster |
+| `xanmeer-interior-v1` | 68 | xanmeer-ancient | — | ayleidcc | walkable Xanmeer ruin interiors |
+| `flora-province-v1`, `groundcover-province-v1` | — | — | — | bmv, tropical, vanilla | Phase 10 vegetation |
+
+Not built; needed by the first 16k slice that builds a Dunmer place (the Mazzatun exemplar was dropped, 0099 addendum): **`settlement-dunmer-v1`** (288 BM&V
+Velothi/Telvanni/Redoran pieces). Kit provenance and the two build fixes the
+root kits needed are in
+[settlement-kit-sourcing-log.md](../research/placement-settlements/settlement-kit-sourcing-log.md)
+entry 3.
+
+### 74.1a-bis Morrowind-Imperial architecture — the Gideon civic language
+
+Sourced Phase 11 Part 4 after the vibe-sheet audit found the catalogue using
+the **Nordic vanilla farmhouse** as its de-facto "Imperial building" in all
+eight regions. **Morrowind Imperial Keep Set (Remodeled)** (SSE 133090,
+Tesak1243, pool `mwkeep`, kit `imperial-keep`, 88 exterior pieces) is the
+civic/military tier — curtain walls, gate, stackable towers, keep blocks,
+ledges, bridges, docks, stables, rubble variants. **Morrowind Hlaalu
+Architecture** (SSE 157997, Angelio, pool `hlaalu`, kit `hlaalu-domestic`, 68
+pieces) is the domestic tier, built on 133090 and retextured. BM&V's
+`arch.imperial.fort-wall` stays with the **penal south**, so the two Imperial
+regions no longer share one silhouette. Red Cyrodiil pantile roofs remain an
+open gap — treat as a **texture** problem (Rally's City Roofs SSE 20896,
+Better Towns Textures classic 46121) before sourcing a new tileset.
+
+### 74.1b Black Marsh & Valenwood (ModDB) — VERY HIGH priority source
+
+[Black Marsh & Valenwood](https://www.moddb.com/mods/black-marsh-valenwood)
+(Skyrim SE new-land mod): an art-directed large Black Marsh environment
+starting at Lilmoth — **the closest existing asset base to our game**.
+
+**Binding principle (owner): we are building OUR OWN world.**
+Never lift-and-shift their authored Black Marsh (their worldspace, layout,
+places) as ours — our world comes from our own canonical maps, hydrology and
+causal generation. BM&V is (a) an asset pool (textures, meshes) and (b) a
+*reference to learn from*: how an art team dressed a Lilmoth-adjacent swamp,
+what they painted where (readable via `worldgen.esp_landtex`), how they
+composed settlements. Every agent using this source should reflect on which
+side of that line their use falls; bring genuinely borderline cases (e.g.
+reusing a whole composed location) to the owner.
+Two archives, both in the vault: Part1 (meshes + plugins,
+1.3 GB, catalogued — `manifest-data1.txt`) and part2 (7.6 GB, all textures,
+mined — `manifest.txt`). Part1 highlights: **12.8k NIF meshes** (2.4k
+architecture, 2.4k landscape incl. ~700 swamp/tropical tree meshes, 1.3k
+clutter, dungeons, creature packs) for Phases 10–12, and the **worldspace
+plugins** (`plugins/Black Marsh.esm`, `Black Marsh North.esp`,
+`Valenwood.esp`) — the mod's authored heightmaps, landscape-texture painting
+and object placements, readable with our `worldgen/esp.py`; mine their LTEX
+painting and Lilmoth-area composition as references when building
+settlements and refining the ground palette. Local copy: `tooling/asset-pipeline/black-marsh-mod-source/`
+— **gitignored, never commit** (huge); `manifest.txt` lists all 24.6k
+textures, ground candidates extracted under `extracted-ground/`.
+
+Mining results: the ground look lives in `textures/TEXTUREPACK/landscape/`
+(a full vanilla-named 512px repaint — dark/mossy/moody, the mod's
+art-directed swamp character; roads/cliffs at 1024). `textures/Terrain/*`
+are auto-generated LOD tiles (ignore). 16 winners are in the **`bmv-v1`
+ground-material set** (mossy cobble road, roots-in-mudbank slopes, dark
+river mud/edge/bottom, rooty forest floors, dark tidal sand, limestone
+terraces, mossy grasses) — A/B-comparable with `aendemika-v1` in the studio.
+Also catalogued for later phases: large grass/reed billboard families
+(EGrass pack, V_reeds, bittercoastgrass01 — Phase 13 groundcover), tree
+textures, and Part1's meshes (Phase 10+). NOTE: ModDB is Cloudflare-gated
+for this VM; archives arrive via the owner's resumable uploader.
+
+### 74.2 Argonian Xanmeer Tileset
+
+[Argonian Xanmeer Tileset — Modder's Resource](https://www.nexusmods.com/skyrimspecialedition/mods/181193) contains 85 modular meshes covering structural and damaged Xanmeer components.[^A1] The kit is available for this project.
+
+Direct uses:
+
+- Xanmeer exterior shells;
+- corridors and chambers;
+- roofs, floors, stairs and monumental transitions;
+- broken and collapsed variants;
+- hydraulic and flooded complexes;
+- ruin fragments for exterior dressing;
+- modular dungeon families.
+
+Record the source page and required author credits in the normal credits list; no separate permission-evidence subsystem is needed.
+
+### 74.3 Character animation — what we have, what's missing, where to get it
+
+The shared rig currently carries **103 clips** (re-measured; 51 was the first count) (walk/run/sprint/strafe, jump and
+landings, one-handed and bow combat, guard, parry, riposte, rolls, criticals,
+hits, deaths, equip/unequip, heal), sourced from vanilla Skyrim plus permitted
+mod HKX. Animation gaps are filled the same way as any other asset (§71) — by
+sourcing, never by authoring.
+
+Known gaps and researched candidate sources (verify current state
+and quality before ingesting):
+
+| Gap | Vanilla? | Candidate mod sources |
+|---|---|---|
+| Swimming (surface + submerged) | **Yes** — vanilla swim locomotion exists; use it unless a mod is substantially better | [Stronger Swimming Animations SE](https://www.nexusmods.com/skyrimspecialedition/mods/32625) (surface/underwater sets, freestyle + breaststroke), [Random Swimming Animations](https://www.nexusmods.com/skyrimspecialedition/mods/92951), sprint-swim sets |
+| Climbing / ledge traversal | **No** — vanilla Skyrim has no climbing animation (ladders are load doors, instant, no clip) | **Audited** ([botw-climbing-system](../research/combat-and-systems/botw-climbing-system.md) §10, [mod survey](../research/combat-and-systems/skyrim-climbing-mod-survey.md)). [FreeClimb](https://www.nexusmods.com/skyrimspecialedition/mods/193552) supplies the continuous set: wall climb up, down, left and right with corners, hang, leap catches up and sideways, drop, release, re-grab and mantle (loose HKX, Mixamo and Threepeat content; its GPL-3.0 code is not taken). [EVG Animated Traversal](https://www.nexusmods.com/skyrimspecialedition/mods/63232) and [SkyParkour v3](https://www.nexusmods.com/skyrimspecialedition/mods/132292) supply the one-shots (mantle tiers, ledge catch, slip, wall drops, water exit, ladder mount and dismount); [EVG CLAMBER](https://www.nexusmods.com/skyrimspecialedition/mods/114753) supplies the 45–70° scramble and slide. No mod ships a ladder loop: it is FreeClimb's climb loops retimed to a rung pitch (a one-shot cut into a loop is not a legal edit). Licence reading is waived for the private build ([0152](../old-decisions/0152-climbing-is-a-province-wide-system-swim-is-closed-ladders-and-water-stealth-join.md) §2); credits still required. [Simply Climb V2](https://www.nexusmods.com/skyrimspecialedition/mods/170550) proves clips are the scarce part (the mechanic with no animation: the character floats). SkyClimb/SkyParkour SKSE *code* stays design-reference only; their clips are fair game |
+| Boat rowing / boarding | **No** player rowing clips | [Boats – Operational Animated Travel](https://www.nexusmods.com/skyrimspecialedition/mods/110882) bundles ride/row behaviour; boat *motion* sets ([Animated Ships Bobbing and Motion](https://www.nexusmods.com/skyrimspecialedition/mods/187453)) carry much of the read. Expect seated poses + procedural oar/tiller drive. **Boat rule (owner): boats are sourced assets too, never designed by us** — models from the §77 candidate pool, clips per this table; the roster is *selected* so that both exist, favouring craft needing only seated poses + procedural drive (module 60 §45) |
+| Spellcasting | **Yes — ingested (2.9c2)**: rig pack `magic`, 39 `CAST_*` clips from 32 vanilla HKX (`mlh_*`, `mrh_*`, `dmag*`, `dualmagic_idle`), read from `magicbehavior.hkx`'s clip generators: aimed, stream, self and ward in each hand and dual, charge, hold and release. Vanilla authors no stream or ward release, so those play the readied idle | none needed |
+| Wading, sneak, unarmed, NPC idles/work | vanilla has all of these | ingest as the phases that need them arrive |
+| **Chassis weapon categories kept by workstream S** (decision 0031: spears, pikes, halberds, quarterstaves; medium armour; unarmed. Cut: whips, crossbows, thrown) | unarmed **yes** (70 vanilla clips incl. the `beasth2h_*` clawed set for Argonians/Khajiit); polearms **no** | **Verified, permissions checked, not yet downloaded — the weapons side lane sources *and* wires them in one pass** (decision 0074, brief weapons-lane.md (a retired side-lane brief, in git history); was 10b's per 0042 §4; the clips are auditioned once, by the agent about to wire them). Polearms: [Animated Armoury (DAR)](https://www.nexusmods.com/skyrimspecialedition/mods/35978) — rapier/pike/halberd/quarterstaff/claw/katana meshes + loose-`.hkx` player *and* NPC movesets ("just credit NickaNak", conversions allowed); [Animated Heavy Armory](https://www.nexusmods.com/skyrimspecialedition/mods/51100) — shortspear/half-pike/poleaxe/trident (no credit required); [Skyrim Spear Mechanic](https://www.nexusmods.com/skyrimspecialedition/mods/25146) — spear + javelin sets, v3 dropped the FNIS/Nemesis dependency. **Medium armour needs no assets at all** — it is a per-material data tag on meshes we already have (module 76 §121.4); Morrowind-flavour additions would come from the SE/Dragonborn bonemold and chitin sets if that vault extension is ever pulled. **Whips are the reason the category was cut**: Animated Armoury's whips are behaviour/script-injected rather than clean DAR clips. Credit lines go into the root README in the same change as any download (§73) |
+
+**"Procedural" means steering sourced clips, never inventing motion.** The
+runtime already does this in principled, calibrated ways — feet planted on
+uneven ground, playback speed matched to the clip's authored stride speed, a
+bow-draw pose driven directly by its charge fraction. The required reading for
+any clip work is the sandbox's
+**[animation quality playbook](../../apps/combat-sandbox/docs/animation-quality-playbook.md)**
+(audition batches, manifest provenance, support phases, owner visual gates) —
+which also *forbids* ad-hoc procedural posing used to patch a bad source clip.
+Climbing IK is a new system in the same principled family: the sourced poses
+are the art; code chooses where the hands go.
+
+### 74.4 Sound — sourced like everything else
+
+The no-new-art rule extends to audio: **we never record or synthesize source
+sounds; we source them** (module 57 §107). The pool (owner, decision 0023):
+(1) **vanilla Skyrim's sound library** — the Morthal tundra-marsh region set
+(frogs, insect beds, owls), full rain/thunder/water/wind and complete
+footstep-material sets; **the Sounds BSA is not yet in the vault — extracting
+it is Phase 12b's first sourcing job**; (2) **Skyrim sound mods** (Sounds of
+Skyrim, AOS, ISC families and similar) — their *sound assets* enter the
+catalogue with a credits entry, the same rule as meshes and clips (§71/§73);
+prefer packs that are the author's own work over visible repackages of
+commercial libraries, and vanilla where it's good enough; (3) genuinely
+tropical gaps (jungle insect choruses, tropical frogs) fill from
+**royalty-free/CC0 libraries** (Sonniss GDC bundles, CC0-filtered Freesound).
+Credits + hashes per §73 (root README Credits section). Research and candidate
+details:
+[research/rendering/ambient-audio-soundscape-threejs.md](../research/rendering/ambient-audio-soundscape-threejs.md).
+
+## 75. High-priority architecture and settlement candidates
+
+All candidates in Sections 75–79 are available for use in this personal project. Preserve their source URLs and author/project credits in the credits list; asset selection can focus on visual usefulness, technical compatibility and reproducible builds.
+
+| Candidate | Useful material |
+| --- | --- |
+| [Mud Mother Grove — Argonian Mud Hut](https://www.nexusmods.com/skyrimspecialedition/mods/146557) | Argonian mud-hut shell, interior composition, local props and settlement visual language |
+| [Marsh-Rest — Argonian Themed Player Home](https://www.nexusmods.com/skyrim/mods/50111) | Argonian dwelling/interior composition, mixed props and waterside home ideas |
+| [Xalfek — An Argonian Home](https://www.nexusmods.com/skyrim/mods/55595) | Compact Argonian home and interior arrangement |
+| [Darkwater Den](https://www.nexusmods.com/skyrim/mods/52630) | Jungle-swamp cave home, clutter, textures and organic interior composition |
+| Roots of the Sleeping Tree and similar organic homes | Root rooms, living-tree circulation, organic architecture and furniture ideas |
+| Glimmergrove and bioluminescent cave homes | Glowing plants, cave homes, pools and underground settlement composition |
+| Wares of Tamriel and Argonian cultural-prop projects | baskets, ceramics, tools, fishing goods, ritual props and trade clutter |
+| Argonian bone/wood weapon resources | spears, fishing weapons, shields, bone tools and hunting equipment |
+
+### 75.1 Argonian equipment candidates — recorded, not sourced
+
+Found while sweeping for settlement assets; equipment is out of scope for
+Phase 11, so these are recorded here for the equipment passes (10b/13/15)
+rather than downloaded. Do not re-derive this list.
+
+| Candidate | Offers | Serves |
+| --- | --- | --- |
+| [Argonian (Saxhleel) Weapon pack](https://www.nexusmods.com/skyrimspecialedition/mods/67137) | a full Argonian-idiom weapon family — the single best equipment lead found | Argonian weapon set (10b/13) |
+| [Saxhleel War Club — Argonian Warhammer](https://www.nexusmods.com/skyrimspecialedition/mods/35555) | one heavy Argonian two-hander | greathammer family (10b) |
+| [Shadowscale Set Reborn](https://www.nexusmods.com/skyrimspecialedition/mods/79717) | Shadowscale armour — canon Argonian assassin order, ties to the Owing/faction work | faction armour (13/15) |
+| [Marsh Armor — Custom Ebony Argonian Heavy Armor](https://www.nexusmods.com/skyrim/mods/23920) | Argonian heavy armour (classic; needs SSE conversion) | armour variety (13/15) |
+| [Black Marsh Import — Models and Textures](https://www.nexusmods.com/skyrim/mods/48551) | 5 bespoke Black Marsh weapons (obsidian warhammer, bone talon dagger, silver jagged katana, steel great cleaver); despite the name it contains **no** architecture | weapon variety (10b/13) |
+| [Here There Be Monsters — Sign of Cipactli](https://www.nexusmods.com/skyrimspecialedition/mods/35933) | **already sourced for architecture (see README credits)**; its vault copy also holds Kothringi, Xanmeer, Legion and Naga-elite armour/weapon sets and a large creature roster — mine the vault copy, do not re-download | equipment + creatures (13) |
+
+## 76. Flora, terrain and underwater candidates
+
+### 76.0 Ground/landscape textures (terrain splat palette)
+
+Vetted with permissions verified — full shortlist, vanilla keep-list
+and ruled-out list in
+[docs/research/rendering/black-marsh-ground-texture-sources.md](../research/rendering/black-marsh-ground-texture-sources.md)
+(don't re-research; system design is decision 0011). Top sources: **ambientCG
+and Poly Haven CC0 PBR sets** (black mud, puddled shallows, wet clay, mud+leaf
+litter, moss), **A Cathedralist's PBR Landscape** (SSE 137333, open
+permissions, full PBR marsh/river family), **Cathedral Landscapes** (SSE
+21954, share-alike), plus the retained vanilla wet/mossy set (frozenmarsh
+grass/dirtslopes, rivermud/riverbottom, reachmoss, hue-shifted
+fallforestleaves). Owner rulings: **Project Rainforest approved**
+(use wherever it's the best fit; CC0/open-mod sources first, Rainforest for
+gaps); **Vanaheimr – Marsh rejected** (cold-climate set — Black Marsh is
+canonically hot tropical swamp, module 50 §33.1).
+
+| Candidate | Useful material |
+| --- | --- |
+| [Depths of Skyrim — An Underwater Overhaul](https://www.nexusmods.com/skyrim/mods/98331) and SSE versions | underwater grass, seaweed, kelp, coral, fish, treasure, wreck and submerged-POI dressing |
+| [Project Rainforest SE](https://www.nexusmods.com/skyrimspecialedition/mods/20636) | tropical vegetation, lily-pad replacements, red earth/rock material ideas, rain and jungle ambience |
+| [Hoddminir Plants and Trees](https://www.nexusmods.com/skyrim/mods/38651) | broad plant/tree resource pool, including waterside and temperate species according to selected files |
+| [WOODLAND Flora Overhaul](https://www.nexusmods.com/skyrimspecialedition/mods/48926) | trees, shrubs and broad vegetation variation |
+| Enhanced Landscapes marsh pines/oaks resources | distinctive wetland tree silhouettes |
+| Cathedral, Renthal and EEK flora families | mushrooms, ferns, reeds, shrubs, flowers and tree variants |
+| [Cave Roots 4K](https://www.nexusmods.com/skyrimspecialedition/mods/32565) | improved cave and mine root textures |
+| [Exist's Caves — PBR Retexture](https://www.nexusmods.com/skyrimspecialedition/mods/131152) | cave PBR textures with a stated CC BY-SA 4.0 licence |
+| Vanilla Solstheim and Blackreach flora | roots, fungi and bioluminescent cave dressing |
+
+## 77. Boats, ferries and water-transport candidates
+
+| Candidate | Direct reusable value |
+| --- | --- |
+| [Sailboats — Script Free Sailing Expanded SSE](https://www.nexusmods.com/skyrimspecialedition/mods/40057) | six small boat classes, rowboats, sailboats, raised/furled sail states, storage and passenger concepts |
+| [L.V.X. Magick's — Boats](https://www.nexusmods.com/skyrimspecialedition/mods/36149) | nine boat types, row/sail/Nordic variants, cargo themes, raised/lowered sails, fishing and construction concepts |
+| [Skyrim Ferries](https://www.nexusmods.com/skyrimspecialedition/mods/109843) | rowboats, rafts, city ferries, logistics-aware route placement, simple point-to-point ferry interaction |
+| [Rowboats of Skyrim](https://www.nexusmods.com/skyrimspecialedition/mods/35341) | rowboat models and rowing/interaction references |
+| Nord Boats and Ships / ThatShipGuy resources | longboats, rowboats and larger ships for ports and coast |
+| Vanilla Skyrim ships, rowboats, wrecks and fishing assets | base hulls, oars, docks, nets, cargo and wreck dressing |
+
+The boat gameplay code should be original project code built around Rapier and `WorldWaterQuery`. Existing Skyrim scripts provide interaction and design references; permitted meshes and animation states can enter the asset catalogue.
+
+## 78. Creature and fauna candidates
+
+| Candidate | Direct reusable value |
+| --- | --- |
+| [Wamasu — Mihail Monsters and Animals](https://www.nexusmods.com/skyrimspecialedition/mods/158860) | wamasu model, textures, animations, effects and encounter reference. **Deferred, off the critical path** (boss decision 0030): the Last Warden final boss is now an in-vault Xal-Krona build (vanilla werewolfbeast rig + BM&V armoured-daedroth re-material — quests 70 §52 A06); the wamasu is an optional overworld legendary later. If ever ingested: audio credits CDPR and must be replaced from the §74.4 pool; custom Megalania-derived skeleton needs a conversion spike |
+| BM&V vault pool moray eel — `meshes/actors/slaughterfish/morayeel.nif` (`tooling/asset-pipeline/black-marsh-mod-source/`) | moray eel on the vanilla slaughterfish skeleton (animations solved); ripper-eel encounters, slaughterfish as fallback |
+| [Guars — Mihail Monsters and Animals](https://www.nexusmods.com/skyrimspecialedition/mods/44491) | guar variants, pack/mount/cargo forms and animations; includes Black Marsh-associated variants |
+| [Scuttlers and Bantam Guars](https://www.nexusmods.com/skyrimspecialedition/mods/143604) | small domestic and wild fauna, animations and settlement life |
+| [Sea of Spirits](https://www.nexusmods.com/skyrimspecialedition/mods/4781) | sharks, dreugh, whales, narwhals and other aquatic creature assets/behaviours |
+| Bloedzuigers / giant-leech projects | large leech body and animation base for deep-marsh hazards |
+| Mihail frogs, giant snakes, crocodilian creatures and centipedes | amphibian, reptile and invertebrate variety |
+| Insect and dragonfly resources | ambient swarms, disease vectors and food-web detail |
+| [The Blackest Reaches](https://www.nexusmods.com/skyrimspecialedition/mods/35933) (owner lead) | quest mod that sends the player to Black Marsh to hunt monsters — evaluate for creature/predator/boss-monster assets (Phase 13) AND possible Argonia-setting environment/settlement pieces (Phase 11 sourcing pass is checking the latter) |
+| Vanilla slaughterfish, insects, fish, mudcrabs and chaurus families | baseline aquatic and invertebrate animation/material sources |
+| **BM&V vault creature roster (found, directory read of `tooling/asset-pipeline/black-marsh-mod-source/manifest*.txt`)** | the pool is far richer than this table assumed and it closes most of the bestiary. `slaughterfish/character assets/mihailcrocodile.nif` (+SALT) = crocodile and sea-drake on the vanilla swim rig; `slaughterfish/rivnaga.nif` = naga/lamia/medusa; `slaughterfish/character assets/bloodsuckerfish.nif` = giant leech; `giant/character assets/treant.nif` + `treantskeleton.nif` = **the miregaunt** (own skeleton); `cliffracer/cliffracer.nif` = hackwing; `cow/Glyptodon` = haj mota; `gehenoth/gehenoth.nif` = swamp leviathan; `snakes/…/oldsnake.nif` = kaj-thux; `snail/slug.nif` + `slugskeleton.nif` = voriplasm and jassa red slug; `Chaurus Hunter/Giant Wasp/mihailgiantwasp.nif` = giant wasp; `mudcrab/character assets/parasite.nif` = hoarvor; `guars/` = the full guar and lizard-steed family incl. `histguar.nif` and a mount skeleton; `raven/`, `chicken/owl*` = marsh birds. All still inside `Data*.rar`; extraction and kit builds are the outstanding work |
+| **Only unfilled creature gap: the death hopper (giant frog)** | no frog rig in the vault. Candidate is Mihail's amphibian/frog pack (SSE, id to confirm from his author page); fallback is a rescaled chaurus. Insect swarms (kotu gava, fleshfly) and the feather serpent are **not** sourcing jobs — see [research/lore/creature-asset-availability.md](../research/lore/creature-asset-availability.md) |
+
+Creature assets provide models and animations. Habitat, behaviour, statistics, fixed danger and population rules remain game-owned data.
+
+Per-creature verdicts (`vanilla` / `sourced` / `sourceable` / `none`) are now
+recorded on every entry in `world/sources/registries/creatures.json` as
+`assetAvailability`, with the reasoning and the sourcing shortlist in
+[research/lore/creature-asset-availability.md](../research/lore/creature-asset-availability.md).
+Check it before writing a creature into a place record.
+
+**The rootworm is never seen on screen** (owner design rule) — do
+not open a sourcing job for it; no creature asset exists or will exist. Its
+presence is staged entirely from effects: animated roots, water
+displacement/wake VFX and audio (quests 70 §54).
+
+## 79. Ruin, cave, fort and dungeon candidates
+
+| Candidate | Useful material |
+| --- | --- |
+| [Creation Club Ayleid Ruin Resources](https://www.nexusmods.com/skyrimspecialedition/mods/83999) | extra pieces for the Update 1.6 Ayleid kit, original and modified structural assets |
+| [Balamath — Ayleid Ruin Dungeon](https://www.nexusmods.com/skyrimspecialedition/mods/84000) | example of multi-zone dungeon assembly and non-linear variant using Bethesda's Ayleid kit |
+| [Fort Castellum SE](https://www.nexusmods.com/skyrimspecialedition/mods/23438) | ancient Imperial tileset demonstration, fort and dungeon block combinations |
+| [The Psychedelic Caves](https://www.nexusmods.com/skyrimspecialedition/mods/150288) | bioluminescent plants, mushrooms, crystals and unusual cave composition |
+| Vanilla cave, mine, fort, prison and sewer kits | natural caves, smugglers, colonial infrastructure and flooded interiors |
+| Vanilla Ayleid Update 1.6 content where owned | Barsaebic Ayleid structures and dungeon pieces |
+| Beyond Skyrim Bruma Ayleid material | high-quality Ayleid architecture and textures |
+
+### 79.1 Ruin sources on hand and the cells that build with them
+
+Kits: `ruin-imperial-v1` (214: vanilla `dungeons/imperial/exterior` 75,
+`nortmpext*` 32, `da13vine*`/`norvine*` 25, KotM `argonia/imperialruins` 24,
+Ayleid kit exterior 58) and `ruin-monumental-v1` (60). A layout copies a
+reference cell: `python3 -m worldgen.cell_clusters --plugin <esm/esp>
+--families <regex> --min-refs N` prints each cluster's pieces, extent, rise
+and load-door interiors. Measured:
+
+| Plugin | Cells | Refs / pieces | Interior |
+| --- | --- | --- | --- |
+| Skyrim.esm, impext | Tamriel (-15..-14, 16..17) Fort Snowhawk | 249 / 51, 73 x 75 m, rise 33 m | FortSnowhawk01, 02 |
+| Skyrim.esm, impext | Tamriel (-19..-17, -7..-6) Fort Sungard | 352 / 43 | FortSungard01 to 05 |
+| Skyrim.esm, impext | Tamriel (-4..-3, -3..-2) Fort Greymoor | 162 / 46 | FortGreymoor01, 02 |
+| Skyrim.esm, impext | Tamriel (40..41, -19..-17) Fort Greenwall | 172 / 43 | FortGreenwall01 to 04 |
+| KotM, imperialruins | ArgoniaWorld (-4..0, -49..-45) Lilmoth | 141 / 19 | Lilmoth sewers, manor |
+| KotM, imperialruins | ArgoniaWorld (-18..-17, -36..-35) | 33 / 6, 39 x 42 m | none |
+| KotM, ayleidruins | ArgoniaWorld (-30..-28, -32..-30) | 84 / 37 | LoreisianInt01 |
+| KotM, ayleidruins | ArgoniaWorld (1..3, -43) | 31 / 13 | FerenTarnInt01 |
+
+The Ayleid kit, CC Ayleid and xanmeer plugins place nothing, so their snap
+grid comes from the KotM, BM&V and HTBM cells above. Not on hand and not
+checked: Beyond Skyrim Bruma, Skyland, Vigilant, Wyrmstooth.
+`tooling/repo-standards/asset_breadth.py` fails when a vanilla exterior family
+with 50 or more mined templates has no kit holding three quarters of its
+pieces.
+
+## 80. Asset acquisition priorities
+
+1. Ingest the Xanmeer kit and record its source/credits entry.
+2. Build the vanilla Skyrim semantic catalogue.
+3. Ingest one Argonian current-settlement kit.
+4. Acquire waterside flora, tree and underwater vegetation sets.
+5. Acquire small-boat and ferry assets.
+6. Acquire a compact creature foundation: wamasu, guar, small reptiles/amphibians, insects and aquatic fauna.
+7. Acquire Ayleid/Nedic/Imperial historical-layer kits.
+8. Expand clutter, tools, fishing, ritual and market assets.
+9. Add specialised cave and bioluminescent assets.
+10. Extract the Skyrim Sounds BSA and assemble the tropical ambience set
+    (§74.4, Phase 12b).
+11. Fill gaps only after the exemplar areas expose them (the reference
+    watershed's special status is superseded — docs/phases/README.md §85.2).
+
+---
+

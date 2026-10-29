@@ -1,0 +1,269 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "_": "People sheets for redguard in the slice roster (lane 2.5a2). Upbringings inferred from roster roles and zones.",
+ "entries": [
+  {
+   "id": "culture.people.redguard-marsh-born",
+   "level": "people",
+   "name": "Redguard, column descendants",
+   "parent": "culture.province.black-marsh",
+   "race": "redguard",
+   "upbringing": "marsh-born",
+   "norms": [
+    {
+     "text": "A saying where an argument would go.",
+     "source": "inferred"
+    },
+    {
+     "text": "Ancestors named at meals.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Boasting openly.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "Sword, sea and ancestry.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Loud men.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "place": {
+     "lean": 1,
+     "text": "The column's ground is ours.",
+     "source": "inferred"
+    },
+    "work": {
+     "lean": 1,
+     "text": "The yard and the guard.",
+     "source": "inferred"
+    },
+    "people": {
+     "lean": 0,
+     "text": "Argonians keep their word.",
+     "source": "inferred"
+    },
+    "faction": {
+     "lean": -1,
+     "text": "The Wardens are the customs house and the licence.",
+     "source": "world/sources/lore/an-xileel.md"
+    },
+    "hist": {
+     "lean": 0,
+     "text": "The Hist is the Argonians' business.",
+     "source": "inferred"
+    },
+    "empire": {
+     "lean": 0,
+     "text": "The Empire is history here.",
+     "source": "world/sources/lore/topics/foreign-powers.md"
+    },
+    "trade": {
+     "lean": 0,
+     "text": "Trade is honourable when honest.",
+     "source": "inferred"
+    },
+    "danger": {
+     "lean": -1,
+     "text": "The road west in monsoon.",
+     "source": "inferred"
+    },
+    "rumour": {
+     "lean": 0,
+     "text": "Ancestors' stories, retold.",
+     "source": "inferred"
+    },
+    "directions": {
+     "lean": 1,
+     "text": "Directions given once.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Friend; elder, to the old.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [
+     {
+      "text": "By the HoonDing.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "Their own deeds.",
+      "source": "inferred"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#2-upbringing--culture-layer--who-raised-them-and-when"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "The column is forgotten in Cyrodiil.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "A Hammerfell ship called at Soulrest.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.people.imperial-legion-descended",
+     "lean": 1,
+     "text": "Column kin.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.15
+  },
+  {
+   "id": "culture.people.redguard-newcomer",
+   "level": "people",
+   "name": "Redguard, newcomer shipwrights and yard hands",
+   "parent": "culture.province.black-marsh",
+   "race": "redguard",
+   "upbringing": "newcomer",
+   "norms": [
+    {
+     "text": "Terse; proverbs over explanation.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Speaking ill of the sea.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "Craft and a sound hull.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Breakers who sell wrecks as sound.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "place": {
+     "lean": 0,
+     "text": "A good harbour, a bad climate.",
+     "source": "inferred"
+    },
+    "work": {
+     "lean": 1,
+     "text": "The breaking yard.",
+     "source": "inferred"
+    },
+    "people": {
+     "lean": 0,
+     "text": "Argonians swim better than they build.",
+     "source": "inferred"
+    },
+    "faction": {
+     "lean": -1,
+     "text": "The Wardens are the customs house and the licence.",
+     "source": "world/sources/lore/an-xileel.md"
+    },
+    "hist": {
+     "lean": 0,
+     "text": "The Hist is the Argonians' business.",
+     "source": "inferred"
+    },
+    "empire": {
+     "lean": 0,
+     "text": "The Empire is history here.",
+     "source": "world/sources/lore/topics/foreign-powers.md"
+    },
+    "trade": {
+     "lean": 1,
+     "text": "Hulls sell.",
+     "source": "inferred"
+    },
+    "danger": {
+     "lean": -1,
+     "text": "Pirates.",
+     "source": "inferred"
+    },
+    "rumour": {
+     "lean": 0,
+     "text": "Whose hull went down.",
+     "source": "inferred"
+    },
+    "directions": {
+     "lean": 0,
+     "text": "Directions by the harbour.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Friend.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [
+     {
+      "text": "By Tava.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "What the yard pays the Compact.",
+      "source": "inferred"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#2-upbringing--culture-layer--who-raised-them-and-when"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "The Compact skims every hull.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "A wreck off Soulrest still has cargo aboard.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.reed-sail-compact",
+     "lean": -1,
+     "text": "The water's landlords.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.2
+  }
+ ]
+}

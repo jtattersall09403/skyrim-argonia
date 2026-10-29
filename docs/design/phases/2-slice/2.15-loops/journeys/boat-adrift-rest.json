@@ -1,0 +1,15 @@
+{
+ "id": "boat-adrift-rest",
+ "start": { "query": "?view=character&x=7247&z=641&t=10:00&d=8-17", "kit": "start" },
+ "notes": "Riverwalk by day. The stage-mistress sells her own dugout (boat.riverwalk.stage-canoe, tied at socket.riverwalk.stage-landing, 7244.5, 638); the player buys it, paddles towards the public cove beach (7213.4, 535.0), falls out short of it and leaves it adrift, wades ashore and rests: the rest brings the boat back to its last mooring, the landing it left (its own berth).",
+ "steps": [
+  { "name": "buy-the-dugout", "transition": "the stage-mistress's boat window -> Buy the dugout: 150 gold, the stage canoe turns the player's", "stage": { "at": { "x": 7247, "z": 641, "yaw": -2.4 }, "hour": 10, "place": "place.dunmer-north.riverwalk" },
+   "do": { "action": "boat", "op": "buy", "seller": "npc.dunmer-north.riverwalk.stage-mistress", "classId": "dugout" }, "keys": [], "expect": { "boat": { "id": "boat.riverwalk.stage-canoe", "owner": "player", "event": "bought", "spent": 150 } } },
+  { "name": "board", "transition": "E at the canoe: the player steps aboard", "do": { "action": "boat", "op": "press" }, "keys": [ { "press": "KeyE" } ], "expect": { "boat": { "id": "boat.riverwalk.stage-canoe", "aboard": "boat.riverwalk.stage-canoe" } } },
+  { "name": "cast-off", "transition": "E aboard: the canoe casts off from the landing", "do": { "action": "boat", "op": "press" }, "keys": [ { "press": "KeyE" } ], "expect": { "boat": { "id": "boat.riverwalk.stage-canoe", "event": "castOff", "state": "aboard" } } },
+  { "name": "paddle-out", "transition": "W on the paddle towards the cove beach", "do": { "action": "boat", "op": "paddleTo", "mooring": "socket.riverwalk.cove-beach" }, "keys": [], "expect": { "boat": { "id": "boat.riverwalk.stage-canoe", "event": "arrived" } } },
+  { "name": "fall-out", "transition": "the player goes over the side: the canoe drifts free", "do": { "action": "boat", "op": "fallOut" }, "keys": [], "expect": { "boat": { "id": "boat.riverwalk.stage-canoe", "aboard": null, "state": "adrift" } } },
+  { "name": "save-and-load", "transition": "save adrift and load: the boat records and the hulls come back as they were", "do": { "action": "boat", "op": "reload" }, "keys": [], "expect": { "boat": { "id": "boat.riverwalk.stage-canoe", "reloaded": true, "event": "reloaded", "state": "adrift" } } },
+  { "name": "ashore-and-rest", "transition": "ashore on the cove beach, rest eight hours from the pause menu", "teleport": { "x": 7205, "z": 528, "yaw": 0 }, "do": { "action": "rest", "hours": 8 }, "keys": [], "expect": { "rested": true, "boat": { "id": "boat.riverwalk.stage-canoe", "state": "moored", "tiedAt": "socket.riverwalk.stage-landing" } } }
+ ]
+}

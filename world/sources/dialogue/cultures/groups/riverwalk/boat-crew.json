@@ -1,0 +1,103 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "_": "Riverwalk life-group and household sheet (2.5c), from the place record's life block.",
+ "entries": [
+  {
+   "id": "culture.group.riverwalk.boat-crew",
+   "level": "group",
+   "name": "The boat crew lodging at the stage",
+   "parent": "culture.settlement.riverwalk",
+   "members": [
+    "npc.dunmer-north.riverwalk.n2",
+    "npc.dunmer-north.riverwalk.n2-2",
+    "npc.dunmer-north.riverwalk.n2-3"
+   ],
+   "norms": [
+    {
+     "text": "The crew poles the raft along the channel to the stage.",
+     "source": "inferred"
+    },
+    {
+     "text": "The best bunk in the crews' house goes to whoever wins it at Shells and Stones.",
+     "source": "inferred"
+    },
+    {
+     "text": "Evenings in the crews' house go on Shells and Stones.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Poling out of stroke.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "A dry bunk and a fed belly.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "The toll, paid at every crossing into the pilgrim water.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "faction": {
+     "lean": -1,
+     "text": "The toll comes out of the crew's share, whoever ends up with it.",
+     "source": "inferred"
+    },
+    "place": {
+     "lean": 1,
+     "text": "The best bunks on the coast are here.",
+     "source": "inferred"
+    },
+    "work": {
+     "lean": 1,
+     "text": "Poling is honest work if the stroke is kept.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Pole-hand, for any stranger who looks able.",
+      "source": "inferred"
+     },
+     {
+      "text": "The crew is called by its raft, the Slow Heron, as the stage calls every crew by its boat; the three answer to 'Slow Heron' and hail other crews by their boats.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "low",
+    "oaths": [
+     {
+      "text": "Keep the stroke.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "What the last boat carried.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Two claimants on one toll means the crews pay for the argument.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": []
+   },
+   "views": [],
+   "deviationRate": 0.25
+  }
+ ]
+}

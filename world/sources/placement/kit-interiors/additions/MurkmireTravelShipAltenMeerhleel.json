@@ -1,0 +1,94 @@
+{
+ "schemaVersion": 2,
+ "cellId": "MurkmireTravelShipAltenMeerhleel",
+ "additions": [
+  {
+   "id": "MurkmireTravelShipAltenMeerhleel:add:door-lantern-01",
+   "assetId": "vanilla:clutter/common/candlelanternwithcandle01",
+   "pos": [129.992, 93.1, 48.185],
+   "rotZDeg": 0,
+   "zone": "door",
+   "why": "Stands inside the hatch so passengers can see the ladder."
+  },
+  {
+   "id": "MurkmireTravelShipAltenMeerhleel:add:bed-lantern-01",
+   "assetId": "vanilla:clutter/common/candlelanternwithcandle01",
+   "pos": [128.23, 90.232, 52.127],
+   "rotZDeg": 0,
+   "zone": "bed",
+   "why": "Lights the bunks, where the crew sleep between tides."
+  },
+  {
+   "id": "MurkmireTravelShipAltenMeerhleel:add:hold-lantern-01",
+   "assetId": "vanilla:clutter/common/candlelanternwithcandle01",
+   "pos": [128.0, 90.232, 56.4],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Lights the hold between the bunks and the purser's table."
+  },
+  {
+   "id": "MurkmireTravelShipAltenMeerhleel:add:table-lantern-01",
+   "assetId": "vanilla:clutter/common/candlelanternwithcandle01",
+   "pos": [126.917, 92.29, 60.801],
+   "rotZDeg": 0,
+   "zone": "table",
+   "why": "Hangs over the purser's table to light the manifest."
+  },
+  {
+   "id": "MurkmireTravelShipAltenMeerhleel:add:fore-lantern-01",
+   "assetId": "vanilla:clutter/common/candlelanternwithcandle01",
+   "pos": [129.08, 96.748, 41.5],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Hangs from the beam in the bow so the forward deck is not black."
+  },
+  {
+   "id": "MurkmireTravelShipAltenMeerhleel:add:fore-lantern-02",
+   "assetId": "vanilla:clutter/common/candlelanternwithcandle01",
+   "pos": [127.67, 93.118, 41.63],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Lights the port side of the bow deck."
+  },
+  {
+   "id": "MurkmireTravelShipAltenMeerhleel:add:fore-lantern-03",
+   "assetId": "vanilla:clutter/common/candlelanternwithcandle01",
+   "pos": [127.6, 93.118, 43.4],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Lights the walk aft from the bow to the hatch."
+  },
+  {
+   "id": "MurkmireTravelShipAltenMeerhleel:add:fore-lantern-04",
+   "assetId": "vanilla:clutter/common/candlelanternwithcandle01",
+   "pos": [127.53, 93.118, 45.28],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Lights the port side beside the hatch."
+  },
+  {
+   "id": "MurkmireTravelShipAltenMeerhleel:add:fore-lantern-05",
+   "assetId": "vanilla:clutter/common/candlelanternwithcandle01",
+   "pos": [131.1, 93.118, 42.5],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Lights the starboard side of the bow deck."
+  },
+  {
+   "id": "MurkmireTravelShipAltenMeerhleel:add:cargo-lantern-01",
+   "assetId": "vanilla:clutter/common/candlelanternwithcandle01",
+   "pos": [132.0, 90.232, 50.6],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Stands by the starboard crates so the stores can be counted."
+  },
+  {
+   "id": "MurkmireTravelShipAltenMeerhleel:add:aft-lantern-01",
+   "assetId": "vanilla:clutter/common/candlelanternwithcandle01",
+   "pos": [125.4, 93.68, 58.6],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Hangs over the port shelves aft of the bunks."
+  }
+ ]
+}

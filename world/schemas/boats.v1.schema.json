@@ -1,0 +1,27 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "world-schema/boats.v1",
+ "title": "The slice's authored Boat records (2.15b, 0159)",
+ "type": "object",
+ "required": ["schemaVersion", "boats"],
+ "properties": {
+  "schemaVersion": {"const": 1},
+  "boats": {"type": "array", "items": {
+   "type": "object",
+   "required": ["id", "schemaVersion", "classId", "owner", "condition", "placeId", "placementUid",
+                "lastMooring", "currentMooring", "state"],
+   "additionalProperties": false,
+   "properties": {
+    "id": {"type": "string", "pattern": "^boat\\.[a-z0-9-]+\\.[a-z0-9-]+$"},
+    "schemaVersion": {"const": 1},
+    "classId": {"type": "string"},
+    "owner": {"type": ["string", "null"]},
+    "condition": {"type": "number", "minimum": 0, "maximum": 1},
+    "placeId": {"type": "string", "pattern": "^place\\."},
+    "placementUid": {"type": "string"},
+    "lastMooring": {"type": ["string", "null"]},
+    "currentMooring": {"type": ["string", "null"]},
+    "state": {"enum": ["moored", "adrift", "aboard", "grounded", "wrecked"]}
+   }}}
+ }
+}

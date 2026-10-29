@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "cellId": "LilmothLumberworksBarracksInt",
+  "plugin": "King of the Murkmire.esp",
+  "rule": "Stand-ins for the cell's missing clutter and furniture (lane L17, planner brief 2026-09-28): each missing piece is drawn by a published vanilla or King of the Murkmire piece of the same object and near size, read from the kit manifests; a piece with no same-object stand-in stays a listed gap. Drawn at the missing reference's transform by worldgen/export_interior_bundle.py.",
+  "substitutions": [
+    {
+      "refId": "082F00D9",
+      "standInAsset": "vanilla:clutter/glazedjugsmall01",
+      "why": "A jug of bog brew stands here; a small glazed jug of its height takes its place."
+    },
+    {
+      "refId": "082F00E1",
+      "standInAsset": "vanilla:clutter/ingredients/stew",
+      "why": "A bowl of marshmerrow stew sits here; a bowl of stew takes its place."
+    },
+    {
+      "refId": "082F00E4",
+      "standInAsset": "vanilla:clutter/deadanimals/deadpondfish04",
+      "why": "A raw ayotlchin fish lies here; a dead pond fish takes its place."
+    },
+    {
+      "refId": "082F0108",
+      "standInAsset": "kotm:argonia/clutter/doll_spriggan",
+      "why": "A turtle doll sits here; a doll from the same set takes its place."
+    }
+  ],
+  "removals": [
+    {
+      "refId": "082EAF33",
+      "reason": "decorative-no-same-class",
+      "search": "Base form Dragonborn.esm:0002000C lives in a master the project never sources (absent-master-classes.json rule; planner ruling 2026-09-27); the vault Data folder holds only Skyrim.esm and Update.esm (listing, 16k walk 9, 2026-10-01). No published kit holds the same object, so no same-object stand-in can be chosen (R48).",
+      "note": "A small loose piece from the Dragonborn add-on lay here; that content is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "082F00CD",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club or Hearthfire archive, which the vault does not hold",
+      "note": "A stalk of marshmerrow lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "082F00CE",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club or Hearthfire archive, which the vault does not hold",
+      "note": "A stalk of marshmerrow lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "082F00CF",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club archive, which the vault does not hold",
+      "note": "A bundle of kresh fibre lies here; no kit holds the same object, so the spot stays bare."
+    },
+    {
+      "refId": "082F00D0",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club archive, which the vault does not hold",
+      "note": "A bundle of kresh fibre lies here; no kit holds the same object, so the spot stays bare."
+    },
+    {
+      "refId": "082F00D1",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club archive, which the vault does not hold",
+      "note": "A sprig of hackle-lo leaf lies here; no kit holds the same object, so the spot stays bare."
+    }
+  ],
+  "removalRule": "Owner ruling 2026-10-04 (R113): no missing piece ships as a gap. A missing piece takes a same-class stand-in from a published kit where one exists (substitutions[]); a decorative piece whose class no published kit or vault archive holds is taken out of the fit-out (removals[], reason decorative-no-same-class, its search recorded), and the spot is simply empty. A placed piece whose only support was a removed piece is removed with it (reason rests-on-a-removal, restsOn naming that row)."
+}

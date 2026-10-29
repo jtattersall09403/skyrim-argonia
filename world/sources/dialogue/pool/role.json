@@ -1,0 +1,892 @@
+{
+ "schemaVersion": 1,
+ "domain": "dialogue-pool",
+ "topicClass": "role",
+ "entries": [
+  {
+   "schemaVersion": 1,
+   "id": "pool.fallback.role",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {},
+   "fallbackFor": "role",
+   "words": "That is not my trade.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-boat-work.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-boat-work"
+   },
+   "words": "A boat crew poles and loads the boat along the channel to the stage. The crew sleeps at the landing the boat reaches by dark. Riverwalk grows no food of its own, so it feeds each crew and gives it a bunk.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.boat-crew.poles",
+    "fact.boat-crew.sleeps-at-landing",
+    "fact.riverwalk.grows-no-food",
+    "fact.riverwalk.feeds-crews"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-long-house.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-long-house"
+   },
+   "words": "A long house holds a household and its guests under one roof. The long house at Riverwalk stands on piles in the shallows. Its family has kept it a long time. Reed mattresses are aired every dry morning.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.long-house.household",
+    "fact.long-house.piles",
+    "fact.long-house.kept-long",
+    "fact.long-house.mattresses"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-stage.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-stage"
+   },
+   "words": "Boats moor at the stage. Passengers pay their fares on the stage before boarding. The stage calls each crew by the name of its boat. A passenger stays a traveller until the village has fed them.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.stage.boats-moor",
+    "fact.stage.fares",
+    "fact.stage.crew-names",
+    "fact.stage.traveller-until-fed"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-toll.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-toll"
+   },
+   "words": "The toll is a levy on each boat that enters the pilgrim water, written on a slate and paid at the toll post. Thorn and Hissmir each claim it, so the slate has one column for each.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.toll.levy",
+    "fact.toll.pilgrim-water",
+    "fact.toll.slate",
+    "fact.toll.two-claimants"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-priesthood.teeth",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-priesthood"
+   },
+   "words": "A priest of the Teeth rings the bell that the pilgrims hear from the landing. The priests hold the bell and the teaching. The band below them holds the stair. The nisswo meets each pilgrim and asks for the offering.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.teeth-priest.bell",
+    "fact.teeth-priest.teaching",
+    "fact.teeth-band.stair",
+    "fact.nisswo.meets-pilgrims"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-temple-duties.teeth",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-temple-duties"
+   },
+   "words": "The band at the Teeth keeps the watch on the stair, carries the offerings in and stands in the shallows through each rite. The shallows are cold. This work is the temple's whole daily rite.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.teeth-band.watch",
+    "fact.teeth-band.offerings",
+    "fact.teeth-band.shallows",
+    "fact.teeth.daily-rite"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-keeping-the-teeth.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-keeping-the-teeth"
+   },
+   "words": "The nisswo of the Teeth meets pilgrims where the way meets the water and asks what offering they bring. Nisswo are Argonian priests of Sithis. A pilgrim who comes empty-handed is turned back.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.nisswo.meets-pilgrims",
+    "fact.nisswo.asks-offering",
+    "fact.nisswo.priests-of-sithis",
+    "fact.teeth.empty-handed"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-scrubbing-the-teeth.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-scrubbing-the-teeth"
+   },
+   "words": "The scrubber carries a bucket up from the landing and cleans the teeth down to the waterline. The scrubbing is a ritual, so nothing is repaired or added. Touching the stone beneath the waterline is forbidden.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.scrubber.bucket",
+    "fact.scrubbing.waterline",
+    "fact.scrubbing.ritual",
+    "fact.scrubbing.no-touch-beneath"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-poling.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-poling"
+   },
+   "words": "A walker can wade the ford, but a cart cannot. The poler takes carts over on a plank raft and charges by the wheel. A cart that crosses without paying the poler breaks the landing's oldest rule.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.ford.wade",
+    "fact.poler.raft",
+    "fact.poler.by-wheel",
+    "fact.poler.must-pay"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-two-halves.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-two-halves"
+   },
+   "words": "Claywater is two halves at one ford. Each bank charges a traveller for its own half. The station half is built of timber and stone, the landing half of mud and thatch. The station well is cracking.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.claywater.two-halves",
+    "fact.claywater.each-bank-charges",
+    "fact.claywater.station-timber",
+    "fact.claywater.landing-mud",
+    "fact.claywater.well-cracking"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-road.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-road"
+   },
+   "words": "This is the Blackwood Road, the Imperial road that carries carts between Leyawiin and Gideon. Travellers pass the Mile House of the Eagle and Cartwright's Cross on the way. It closes in the monsoon season.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.blackwood-road.name",
+    "fact.blackwood-road.carts",
+    "fact.blackwood-road.stops",
+    "fact.blackwood-road.monsoon"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-well.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-well"
+   },
+   "words": "The station well is Imperial-built stone, drawn by a windlass at set hours. It is failing, because its stone is cracking. A traveller asks the well-keeper before drawing any water.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.well.imperial-stone",
+    "fact.well.windlass",
+    "fact.claywater.well-cracking",
+    "fact.well.ask-keeper"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-beds.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-beds"
+   },
+   "words": "The lodge is the village inn, where travellers bound for Helstrom sleep. A bed costs one price a night that the village agreed together. Rope is sold there too. Water is free, so beds and rope pay for everything else.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.lodge.inn",
+    "fact.lodge.bed-price",
+    "fact.lodge.rope",
+    "fact.spring.water-free"
+   ],
+   "links": [
+    "topic.greenspring-work"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-spring-families.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-spring-families"
+   },
+   "words": "The spring families live around the spring. They cook at the fire stands and fill the lodge jars. They mend rope to sell. When two families quarrel, the tree-minder hears both sides out and settles it.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.families.cook",
+    "fact.families.jars",
+    "fact.families.mend-rope",
+    "fact.families.quarrel"
+   ],
+   "links": [
+    "topic.greenspring-people"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-journey-to-helstrom.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-journey-to-helstrom"
+   },
+   "words": "Helstrom is the capital of the Argonian interior. It lies south-west of the spring, past the village of Ux-Aneet. Travellers bound for it stop here for water and a bed. The spring water can be drunk unboiled, which is rare in this region.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.helstrom.capital",
+    "fact.helstrom.south-west",
+    "fact.travellers.stop",
+    "fact.spring.unboiled"
+   ],
+   "links": [
+    "topic.greenspring-directions"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-root-heralds.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-root-heralds"
+   },
+   "words": "A root-herald is a tribe's envoy to the outside world. The herald gathers news and bargains over trade. The office is the tribe's own and holds no rank in the state. Greenspring's herald keeps a ledger of goods sent down the road to Helstrom.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.herald.envoy",
+    "fact.herald.news",
+    "fact.herald.bargains",
+    "fact.herald.no-state-rank",
+    "fact.greenspring.ledger"
+   ],
+   "links": [
+    "topic.greenspring-work"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-keeping-the-spring.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-keeping-the-spring"
+   },
+   "words": "The spring is a clear pool under the Hist, ringed by boulders. The spring-keeper holds the ladle on its cord at the stone lip. Water is free to any traveller. Visitors are expected to taste it before they speak.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.spring.pool",
+    "fact.keeper.ladle",
+    "fact.spring.water-free",
+    "fact.spring.taste"
+   ],
+   "links": [
+    "topic.greenspring"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-minding-the-tree.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-minding-the-tree"
+   },
+   "words": "The tree-minder tends the village Hist, the great tree with a mind of its own. The minder clears the fallen leaves from its root each dusk. The Many-Root Conclave, an order of Hist stewards, sent the village that office.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.minder.tends",
+    "fact.hist.mind",
+    "fact.minder.leaves",
+    "fact.conclave.sends-minders",
+    "fact.conclave.stewards"
+   ],
+   "links": [
+    "topic.faction-many-root-conclave"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-salvage.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-salvage"
+   },
+   "words": "Wreckage from the Southern Sea comes ashore on the coast south of the stage. The families hold hereditary salvage rights and guard each stretch of shore. Taking timber from another family's stretch is forbidden.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.salvage.wreckage",
+    "fact.salvage.hereditary",
+    "fact.salvage.guarded-stretch",
+    "fact.salvage.no-foreign-timber"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-selling-salvage.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-selling-salvage"
+   },
+   "words": "The stall sells the past week's salvage. Each lot is counted at the stall and sold under the name of its ship, read off the bow-board. A lot without its ship's name does not sell.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.stall.week",
+    "fact.stall.counted",
+    "fact.stall.bow-board",
+    "fact.stall.no-nameless-lot"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-station.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-station"
+   },
+   "words": "Chasepoint is an Imperial stage. The stage-keeper's office is inherited. No keeper has been paid since the coast road stopped being kept. Two families each claim the office. Neither gives way.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.chasepoint.imperial-stage",
+    "fact.station.inherited",
+    "fact.station.unpaid",
+    "fact.station.two-claims"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-gang-work.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-gang-work"
+   },
+   "words": "A gang is a crew of hands who owe money to House Dres. A hand dredges the channel off the barge and sleeps on land with the family. Food adds to the debt, and so do sickness and broken tools.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.gang.owes",
+    "fact.gang.dredges",
+    "fact.gang.sleeps-on-land",
+    "fact.gang.debt-grows"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-keeping-the-clutch.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-keeping-the-clutch"
+   },
+   "words": "A clutch is a family's eggs. The clutch-keeper tends them until they hatch. The keeper keeps the hatching shed's fire low and the nest dry. Dry reed for the nest comes from the basket by the door.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.clutch.eggs",
+    "fact.clutch-keeper.fire-low",
+    "fact.clutch-keeper.nest-dry",
+    "fact.clutch-keeper.reed"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-bearing-witness.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-bearing-witness"
+   },
+   "words": "The roll is the list of hands who owe the house. It is read on the barge. A witness knows every family and every name on it. When a thing is done in the camp, the witness can say who saw it.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.roll.list",
+    "fact.roll.read-on-barge",
+    "fact.witness.knows-names",
+    "fact.witness.says-who-saw"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-overseers.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-overseers"
+   },
+   "words": "Two overseers keep the gang's debts for House Dres, the old slaving house. One sits by the fire with the ledger. The other walks the yard at dusk and checks each door.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.overseers.two",
+    "fact.dres.slaving-house",
+    "fact.overseers.ledger",
+    "fact.overseers.doors"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-lightering.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-lightering"
+   },
+   "words": "Large ships cannot dock at Lilmoth, so lighter crews carry their cargo ashore. A lighter hand hauls cargo from the anchorage into the lighter's hold, bails between runs and sleeps in a bunk below the foredeck.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.lightering.no-dock",
+    "fact.lightering.hauls",
+    "fact.lightering.bails",
+    "fact.lightering.bunk"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-net-mending.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-net-mending"
+   },
+   "words": "A net-mender is a hand who sits with torn nets and worn gear and makes them sound again. The work is done in the open, where anyone can watch the mending. Anyone may bring a net.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.netmender.mends",
+    "fact.netmender.deck",
+    "fact.netmender.any-crew"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-flotillas-business.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-flotillas-business"
+   },
+   "words": "The flotilla speaker speaks for the lighter crews when the Lilmoth council writes. The speaker calls the crews to a vote on the answer. No hull casts off without the speaker's nod. Once the crews voted to stop the port for two weeks.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.speaker.for-crews",
+    "fact.speaker.vote",
+    "fact.speaker.nod",
+    "fact.flotilla.stopped-port"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-lighter.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-lighter"
+   },
+   "words": "A lighter is a boat that meets deep-water ships and takes their cargo ashore, so every cargo in the bay comes ashore in a lighter's hold. The master casts off the Lilmoth lighter and carries passengers between the city pier and the anchorage.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.lighter.cargo-ashore",
+    "fact.lighter.master-casts-off",
+    "fact.lighter.passengers",
+    "fact.lighter.deep-water"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-purse.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-purse"
+   },
+   "words": "The purser is the officer who keeps a trade ship's books and counts what comes aboard and what goes out. The purser sells the ship's goods untaxed and lets bunks below deck to anyone who pays the fare.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.purser.books",
+    "fact.purser.untaxed",
+    "fact.purser.bunks"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-digging-bog-iron.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-digging-bog-iron"
+   },
+   "words": "Bog iron forms in stagnant water rich in iron. A digger lifts it from the seep in cakes. Each season a new furnace is built, then broken open for the bloom. Each digger goes home to a different village when the season ends.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.bogiron.stagnant",
+    "fact.bogiron.cakes",
+    "fact.bogiron.furnace",
+    "fact.bogiron.home"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-diving-the-lots.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-diving-the-lots"
+   },
+   "words": "A lot is a numbered stretch of seabed that passes down one diver family. No other may dive it. The lot diver fills a net with shells and grades them by size before any opens. The tally book records takings and drownings alike.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.lot.numbered",
+    "fact.lot.family",
+    "fact.lot.grades",
+    "fact.lot.tally"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-surface-line.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-surface-line"
+   },
+   "words": "The surface tender is the one who stays in the boat and minds the divers' lines from above. The tender never enters the water. The diver families share the tenders moored over the lots.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.tender.lines",
+    "fact.tender.never-enters",
+    "fact.tender.shared",
+    "fact.tender.moored"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-tags.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-tags"
+   },
+   "words": "The tag-keeper hangs a tag on every basket and writes each carriage charge in the book before a bundle is wrapped. A body leaves the Rose's hands only under the shelter, never on the road. It never goes without its tag.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.tags.basket",
+    "fact.tags.charge-book",
+    "fact.tags.shelter",
+    "fact.tags.no-tag"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-carrying-for-the-villages.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-carrying-for-the-villages"
+   },
+   "words": "The carrier takes the dead from the Rose home to the villages. The Rose releases a body. The Chainbreakers pay the charge. Then the carrier wraps it and carries it away. Bones brought to the dirt near a tree can still go home.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.carrier.takes-home",
+    "fact.rose.releases-dead",
+    "fact.chainbreakers.pay",
+    "fact.bones.can-go-home"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-life-in-the-rose.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-life-in-the-rose"
+   },
+   "words": "The Rose is the old prison south of Blackrose. Families born there three generations deep live in it now and will not call it a prison. The carriage charge on its dead is the most resented coin in the south.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.rose.old-prison",
+    "fact.rose.generations",
+    "fact.rose.not-prison",
+    "fact.carriage.resented"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-dyeing.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-dyeing"
+   },
+   "words": "A dyer buys cut reed by the armful from the cutters along the bank, then steeps it in the vat until the colour takes. The dye stains the dyer's hands, wrist and all. The stain shows the trade.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.dyer.armful",
+    "fact.dyer.vat",
+    "fact.dyer.stains",
+    "fact.dyer.cutters"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-reed-cutting.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-reed-cutting"
+   },
+   "words": "Reed is cut along the bank by the reed cutter and tied in bundles so it can be carried. It is sold by the armful to the dyer and to anyone who is building a house.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.reed.cut-bank",
+    "fact.reed.bundled",
+    "fact.reed.sold-armful",
+    "fact.reed.buyers"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-smithing.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-smithing"
+   },
+   "words": "A smith works iron at the forge and mends the household tools of a settlement. Bog iron, smelted into a bloom, is the raw metal such a forge works. The smith is paid in coin or in kind.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.smith.forge",
+    "fact.smith.mends-tools",
+    "fact.smith.bloom",
+    "fact.smith.paid"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-households-that-stayed.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-households-that-stayed"
+   },
+   "words": "Households whose adults are all downriver on the roll keep the village going. They keep the trade-house and the smokehouse running. They keep a kin-house swept for whoever comes back. More adults go downriver every year. Fewer return.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.stayed.roll",
+    "fact.stayed.houses",
+    "fact.stayed.kin-house",
+    "fact.stayed.fewer"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-village-matters.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-village-matters"
+   },
+   "words": "The elder keeps the guest stores by the door and houses strangers under the elder's roof. Quarrels and debts between households are brought to the elder. The elder sees that the offerings at the foot of the tree stay filled.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.elder.guest-stores",
+    "fact.elder.strangers",
+    "fact.elder.debts",
+    "fact.elder.offerings"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-column.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-column"
+   },
+   "words": "The column was a body of Legion soldiers on the border road when the Legion was recalled, about two centuries ago. Their pay was owed. Part of the column did not march home. The Legion never paid them.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.column.legion-soldiers",
+    "fact.column.recalled",
+    "fact.column.unpaid",
+    "fact.column.stayed",
+    "fact.column.never-paid"
+   ],
+   "links": [
+    "topic.role-serjeants-duty"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-serjeants-duty.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-serjeants-duty"
+   },
+   "words": "The serjeant keeps the column's watch, called on the hour day and night. He writes the duty roster in his own hand. The pay book still holds the column's last entry. He parleys with a stranger before he fights.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.serjeant.watch",
+    "fact.serjeant.roster",
+    "fact.serjeant.pay-book",
+    "fact.serjeant.parley"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-band.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-band"
+   },
+   "words": "The band works in turns, so the camp is never left unwatched. One stands at the gate totems. One watches the bend and whistles when a walker comes into view, while another smokes hides at the fire as the rest sleep.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.band.turns",
+    "fact.band.totems",
+    "fact.band.whistle",
+    "fact.band.hides"
+   ],
+   "links": []
+  },
+  {
+   "schemaVersion": 1,
+   "id": "pool.role-camps-orders.default",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {
+    "topic": "topic.role-camps-orders"
+   },
+   "words": "The lieutenant gives the camp's orders. The load is taken and the walker goes free with a notched stick as his receipt. A walker is never killed, because his tribe would then come for the camp. A robbed walker comes back next season.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [
+    "fact.camp.orders",
+    "fact.camp.stick",
+    "fact.camp.walker-free",
+    "fact.camp.no-kill",
+    "fact.camp.returns"
+   ],
+   "links": []
+  }
+ ]
+}

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "_": "Import points (lane 2.9b-c3; owner call 2.9b): goods with no Black Marsh source are bought only where they come in from outside the province. `importOnly` items (ids as on the shelf, no `item.` prefix) are never shelved elsewhere; at each point they join every trader's shelf at the favour weight. Every other way to get one is loot. Read by worldgen.trade_tables into packages/economy/src/data/stock-tables.json.",
+  "importOnly": [
+    {"itemId": "dwarven-metal-ingot", "why": "Dwemer metal is salvaged from Dwemer ruins; none stands in Black Marsh, so traders bring the metal from outside the province."},
+    {"itemId": "refined-moonstone", "why": "Moonstone is an Altmer and Bosmer working stone; no lore places a Black Marsh source."},
+    {"itemId": "orichalcum-ingot", "why": "Orichalcum is Orsimer ore; no lore places a Black Marsh source."},
+    {"itemId": "refined-malachite", "why": "Malachite (glass) is mined in Morrowind and the Summerset Isles, never in the marsh."},
+    {"itemId": "ebony-ingot", "why": "Ebony comes from Morrowind and Skyrim; in the marsh it is imported and costly."}
+  ],
+  "points": [
+    {
+      "id": "import-point.lighter-flotilla",
+      "placeId": "place.mercantile-coast.lighter-flotilla",
+      "why": "Lilmoth's lighter crews carry every cargo ashore from the deep-water hulls anchored in the Southern Sea, so foreign metal passes through their hands first.",
+      "sources": ["world/sources/lore/lilmoth.md:39", "world/sources/lore/lilmoth.md:104"]
+    },
+    {
+      "id": "import-point.chasepoint",
+      "placeId": "place.mercantile-coast.chasepoint",
+      "why": "Chasepoint's salvage families take what the Southern Sea wrecks wash ashore, on the coast road beside Soulrest, the port that draws in foreign goods.",
+      "sources": ["world/sources/lore/soulrest.md:8", "world/sources/lore/soulrest.md:31"]
+    },
+    {
+      "id": "import-point.claywater-station",
+      "placeId": "place.imperial-fringe.claywater-station",
+      "why": "Claywater Station is an Imperial road station on the way in from Cyrodiil by the Blackwood Road, where traders from outside the province stop first.",
+      "sources": ["world/sources/lore/gideon.md:12", "uesp:Lore:Gideon (the Blackwood Road)"]
+    }
+  ]
+}

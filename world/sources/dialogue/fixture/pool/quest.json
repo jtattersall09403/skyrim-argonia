@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "domain": "dialogue-pool",
+  "topicClass": "quest",
+  "_": "Walker and gate fixture (2.5b4).",
+  "entries": [
+    {"schemaVersion": 1, "id": "pool.fixture-goats.default", "type": "dialogue", "speaker": null, "keys": {"topic": "topic.fixture-goats"}, "words": "Something took two goats from the east pen.", "available": [], "onDelivered": [], "factIds": [], "links": ["topic.fixture-watch"]},
+    {"schemaVersion": 1, "id": "pool.fixture-goats.active", "type": "dialogue", "speaker": null, "keys": {"topic": "topic.fixture-goats"}, "words": "Try the reeds below the pen, then.", "available": [{"questState": ["quest.fixture-goats", "active"]}], "onDelivered": [], "factIds": [], "links": []},
+    {"schemaVersion": 1, "id": "pool.fallback.quest", "type": "dialogue", "speaker": null, "keys": {}, "fallbackFor": "quest", "words": "I have heard nothing of it.", "available": [], "onDelivered": [], "factIds": [], "links": []}
+  ]
+}

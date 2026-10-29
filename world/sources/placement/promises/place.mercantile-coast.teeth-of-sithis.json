@@ -1,0 +1,323 @@
+{
+ "schemaVersion": 1,
+ "placeId": "place.mercantile-coast.teeth-of-sithis",
+ "generator": "python3 -m worldgen.blueprint_promises --id <place-id> --write (decision 0104); never hand-edit a row but its `unfilled`, `filledBy` or `confirmed` block",
+ "derivedFrom": [
+  {
+   "file": "world/sources/catalogue/places-mercantile-coast.json",
+   "sha256": "b771e47e3a90844be81af7585381b80a05285d0529a18df53b93ec7637777396"
+  },
+  {
+   "file": "world/sources/quests/quests-factions.json",
+   "sha256": "98ccc4fa725de13de70ac1ad9dd052002a21608bde42ed6055354186b6fd1040"
+  }
+ ],
+ "promises": [
+  {
+   "id": "promise.teeth-of-sithis.entrance",
+   "kind": "entrance",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.teeth-of-sithis].entrance[door]"
+   },
+   "text": "The Teeth of Sithis is entered by a door.",
+   "unfilled": null,
+   "filledBy": ["door.mercantile-coast.teeth-of-sithis.1", "door.mercantile-coast.teeth-of-sithis.2"]
+  },
+  {
+   "id": "promise.teeth-of-sithis.evidence-teeth-scrub-line-rule",
+   "kind": "socketBucket",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.teeth-of-sithis].sockets.evidence[evidence.teeth.scrub-line-rule]"
+   },
+   "text": "The Teeth of Sithis has the evidence socket evidence.teeth.scrub-line-rule.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.teeth-of-sithis.interior-principal",
+   "kind": "interior",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.teeth-of-sithis].interior"
+   },
+   "text": "The Teeth of Sithis's principal interior is a hist-sanctum (S3); its buildings carry 2 load doors in all.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.teeth-of-sithis.marks-teeth-rite-witnessed",
+   "kind": "socketBucket",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.teeth-of-sithis].sockets.marks[marks.teeth.rite-witnessed]"
+   },
+   "text": "The Teeth of Sithis has the marks socket marks.teeth.rite-witnessed.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.teeth-of-sithis.occupant-n1",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.teeth-of-sithis].contents.npcs[n1]"
+   },
+   "text": "The Teeth of Sithis has single priest occupants.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.teeth-of-sithis.occupant-n2",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.teeth-of-sithis].contents.npcs[n2]"
+   },
+   "text": "The Teeth of Sithis has band rank-and-file occupants.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.teeth-of-sithis.occupant-nisswo-teeth",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.teeth-of-sithis].notableNpcSlots[nisswo-teeth]"
+   },
+   "text": "Nisswo of the Teeth lives and works at The Teeth of Sithis.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.teeth-of-sithis.occupant-the-one",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.teeth-of-sithis].notableNpcSlots[the-one]"
+   },
+   "text": "The one who scrubs to the waterline lives and works at The Teeth of Sithis.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.teeth-of-sithis.post-teeth-pilgrim-landing",
+   "kind": "socketBucket",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.teeth-of-sithis].sockets.post[post.teeth.pilgrim-landing]"
+   },
+   "text": "The Teeth of Sithis has the post socket post.teeth.pilgrim-landing.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.teeth-of-sithis.prose-playerpurpose-hook",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.teeth-of-sithis].playerPurpose.hook"
+   },
+   "text": "The largest Sithis temple in Murkmire. The Nisswo will take an outsider in for the right offering.",
+   "confirmed": {
+    "sha": "963d21ac96dc",
+    "note": "socket.teeth-of-sithis.npc-nisswo stands where the track meets the water; both scaffold doors lead down into the two temple cells TeethofSithisInt01 and Int02."
+   }
+  },
+  {
+   "id": "promise.teeth-of-sithis.prose-vibe-approach",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.teeth-of-sithis].vibe.approach"
+   },
+   "text": "Visible only from the last bend of the pilgrim water.",
+   "confirmed": {
+    "sha": "1d2d84b44941",
+    "note": "route.teeth-of-sithis.the-street bends at its second point and only then runs straight down the bank to the water facing the gap between t-tooth3 and t-tooth4."
+   }
+  },
+  {
+   "id": "promise.teeth-of-sithis.prose-vibe-condition",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.teeth-of-sithis].vibe.condition"
+   },
+   "text": "Immaculate to the waterline and untouched beneath it.",
+   "confirmed": {
+    "sha": "4237088e805c",
+    "note": "The six teeth t-tooth1 to t-tooth6 are the King of the Murkmire xanmeer obelisks, standing wet in the water; the scrubber's work socket idle-scrubber-work is at the waterline."
+   }
+  },
+  {
+   "id": "promise.teeth-of-sithis.prose-vibe-materials",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.teeth-of-sithis].vibe.materials"
+   },
+   "text": "Black stone, xanmeer construction on a natural formation, ornament courses; ritual scrub, no repair, no addition.",
+   "confirmed": {
+    "sha": "52ffc4e55124",
+    "note": "The teeth are black xanmeer stone from xanmeer-kotm-v1; the only additions are the two timber scaffolds over the doors, which are working platforms rather than repairs."
+   }
+  },
+  {
+   "id": "promise.teeth-of-sithis.prose-vibe-mood",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.teeth-of-sithis].vibe.mood"
+   },
+   "text": "Exact and unexplained.",
+   "confirmed": {
+    "sha": "9ee03a6b6f23",
+    "note": "The six teeth stand in one even line in the water with no sign or marker to explain them; the doors to the temple are under plain scaffolds on the bank."
+   }
+  },
+  {
+   "id": "promise.teeth-of-sithis.prose-vibe-palette",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.teeth-of-sithis].vibe.palette"
+   },
+   "text": "Wet black stone, white scrub-line, brown water.",
+   "confirmed": {
+    "sha": "0fb69085188d",
+    "note": "Black obelisks t-tooth1 to t-tooth6 standing wet in the marsh water off the bank."
+   }
+  },
+  {
+   "id": "promise.teeth-of-sithis.prose-vibe-senses",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.teeth-of-sithis].vibe.senses"
+   },
+   "text": "Water lapping on stone with no echo back; scrubbing; cold air off the stone even at noon; silence where birds should call.",
+   "confirmed": {
+    "sha": "b1c1f8a95af4",
+    "note": "The scrubbing is the scrubber's daily work at idle-scrubber-work by the teeth; the sounds belong to the later audio phase, and the teeth carry no perch or nest dressing."
+   }
+  },
+  {
+   "id": "promise.teeth-of-sithis.prose-vibe-signaturefeature",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.teeth-of-sithis].vibe.signatureFeature"
+   },
+   "text": "A colonnade of black stone teeth rising out of standing water, kept scrubbed clean of algae to the waterline.",
+   "confirmed": {
+    "sha": "705b85f70d14",
+    "note": "landmark.teeth-of-sithis.the-colonnade: six obelisks t-tooth1 to t-tooth6 in a line in standing water, with the scrub-line evidence socket q-evidence-scrub-line-rule on the third."
+   }
+  },
+  {
+   "id": "promise.teeth-of-sithis.prose-vibe-silhouette",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.teeth-of-sithis].vibe.silhouette"
+   },
+   "text": "A colonnade of black teeth rising straight out of flat water, scrubbed clean to the waterline and green below it.",
+   "confirmed": {
+    "sha": "dd9a4fc704a0",
+    "note": "landmark.teeth-of-sithis.the-colonnade: the six obelisks rise straight out of the flat water off the bank."
+   }
+  },
+  {
+   "id": "promise.teeth-of-sithis.prose-why-founding",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.teeth-of-sithis].why.founding"
+   },
+   "text": "The largest Sithis temple in Murkmire, tended by the Clutch of Nisswo though it no longer serves its original purpose.",
+   "confirmed": {
+    "sha": "39968132b271",
+    "note": "The temple is the two King of the Murkmire cells TeethofSithisInt01 and Int02 under the scaffolds, kept by Nisswo (npc-nisswo), a keeper (npc-keeper) and the band (npc-band)."
+   }
+  },
+  {
+   "id": "promise.teeth-of-sithis.prose-why-occupantsmotive",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.teeth-of-sithis].why.occupantsMotive"
+   },
+   "text": "The Clutch maintain it precisely. They preach that the loss of its purpose is itself the teaching.",
+   "confirmed": {
+    "sha": "766d55cd1dc3",
+    "note": "npc-scrubber works the teeth every morning, and npc-nisswo meets pilgrims at the water's edge."
+   }
+  },
+  {
+   "id": "promise.teeth-of-sithis.prose-why-pressures",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.teeth-of-sithis].why.pressures"
+   },
+   "text": "The original purpose is lost, but at least one faction claims to have found it out.",
+   "confirmed": {
+    "sha": "21938fc54df7",
+    "note": "Carried by quest NI05 and its sockets q-scene-colonnade-rite and q-mark-rite-witnessed at the water."
+   }
+  },
+  {
+   "id": "promise.teeth-of-sithis.prose-why-siteadvantages",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.teeth-of-sithis].why.siteAdvantages"
+   },
+   "text": "Deep in the marsh at the end of a pilgrim route, where six black stone teeth stand in the shallows, which the temple was built to frame.",
+   "confirmed": {
+    "sha": "52ad7dac647f",
+    "note": "route.teeth-of-sithis.the-street ends at the water facing the colonnade, and the teeth stand off the bank in the marsh."
+   }
+  },
+  {
+   "id": "promise.teeth-of-sithis.prose-why-wouldchangeif",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.teeth-of-sithis].why.wouldChangeIf"
+   },
+   "text": "A rediscovery of the temple's function would split the Clutch.",
+   "confirmed": {
+    "sha": "0b922338ec68",
+    "note": "A story condition for quest NI05; nothing built is needed beyond the rite sockets at the water."
+   }
+  },
+  {
+   "id": "promise.teeth-of-sithis.provision-murkmire-teeth-of-sithis",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.teeth-of-sithis].questHooks.provisions[quest.provision.murkmire-teeth-of-sithis]"
+   },
+   "text": "The Teeth of Sithis holds what quest provision quest.provision.murkmire-teeth-of-sithis needs.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.teeth-of-sithis.quest-ni05",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/quests-factions.json",
+    "path": "quest[NI05]"
+   },
+   "text": "NI05 Teeth of Sithis: A splinter sect wants the province's largest Sithis temple returned to blood",
+   "confirmed": {
+    "sha": "d2853c4fba3f",
+    "note": "quest.ni.ni05 sockets[] are all placed: q-post-pilgrim-landing, q-scene-colonnade-rite, q-evidence-scrub-line-rule, q-mark-rite-witnessed, q-murkmire-teeth-of-sithis."
+   }
+  },
+  {
+   "id": "promise.teeth-of-sithis.scene-teeth-colonnade-rite",
+   "kind": "socketBucket",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.teeth-of-sithis].sockets.scene[scene.teeth.colonnade-rite]"
+   },
+   "text": "The Teeth of Sithis has the scene socket scene.teeth.colonnade-rite.",
+   "unfilled": null
+  }
+ ]
+}

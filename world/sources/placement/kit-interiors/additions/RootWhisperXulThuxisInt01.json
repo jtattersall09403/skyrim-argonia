@@ -1,0 +1,246 @@
+{
+ "schemaVersion": 2,
+ "cellId": "RootWhisperXulThuxisInt01",
+ "additions": [
+  {
+   "id": "RootWhisperXulThuxisInt01:add:work-argoniancandle",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    2.274,
+    -1.205,
+    -35.531
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the dark floor of this Xanmeer room."
+  },
+  {
+   "id": "RootWhisperXulThuxisInt01:add:work-argoniancandle-2",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    0.584,
+    -0.391,
+    -35.591
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the dark floor of this Xanmeer room."
+  },
+  {
+   "id": "RootWhisperXulThuxisInt01:add:work-argoniancandle-3",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    -11.893,
+    0.256,
+    -39.156
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the dark floor of this Xanmeer room."
+  },
+  {
+   "id": "RootWhisperXulThuxisInt01:add:work-argoniancandle-4",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    -6.459,
+    0.389,
+    -32.131
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the dark floor of this Xanmeer room."
+  },
+  {
+   "id": "RootWhisperXulThuxisInt01:add:work-argoniancandle-5",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    -5.264,
+    0.256,
+    -37.281
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the dark floor of this Xanmeer room."
+  },
+  {
+   "id": "RootWhisperXulThuxisInt01:add:work-argoniancandle-6",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    -11.893,
+    0.256,
+    -34.934
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the dark floor of this Xanmeer room."
+  },
+  {
+   "id": "RootWhisperXulThuxisInt01:add:work-argoniancandle-7",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    -3.476,
+    0.256,
+    -34.136
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the dark floor of this Xanmeer room."
+  },
+  {
+   "id": "RootWhisperXulThuxisInt01:add:work-argoniancandle-8",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    -8.655,
+    0.256,
+    -35.116
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the dark floor of this Xanmeer room."
+  },
+  {
+   "id": "RootWhisperXulThuxisInt01:add:work-argoniancandle-9",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    -9.38,
+    0.256,
+    -38.843
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the dark floor of this Xanmeer room."
+  },
+  {
+   "id": "RootWhisperXulThuxisInt01:add:work-argoniancandle-10",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    -9.476,
+    1.12,
+    -32.031
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the dark floor of this Xanmeer room."
+  },
+  {
+   "id": "RootWhisperXulThuxisInt01:add:door-histflower",
+   "assetId": "kotm:argonia/trees/hist trees/histflower01",
+   "pos": [
+    -13.655,
+    -5.627,
+    -34.441
+   ],
+   "rotZDeg": 0,
+   "zone": "door",
+   "why": "A Hist sap bloom lights the way in."
+  },
+  {
+   "id": "RootWhisperXulThuxisInt01:add:shrine-histflower",
+   "assetId": "kotm:argonia/trees/hist trees/histflower01",
+   "pos": [
+    -5.653,
+    -5.627,
+    -29.843
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "A Hist sap bloom glows where the roots break through."
+  },
+  {
+   "id": "RootWhisperXulThuxisInt01:add:shrine-histflower-2",
+   "assetId": "kotm:argonia/trees/hist trees/histflower01",
+   "pos": [
+    -14.369,
+    -5.627,
+    -39.965
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "A Hist sap bloom glows where the roots break through."
+  },
+  {
+   "id": "RootWhisperXulThuxisInt01:add:shrine-histflower-3",
+   "assetId": "kotm:argonia/trees/hist trees/histflower01",
+   "pos": [
+    -14.422,
+    -5.627,
+    -29.567
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "A Hist sap bloom glows where the roots break through."
+  },
+  {
+   "id": "RootWhisperXulThuxisInt01:add:shrine-histflower-4",
+   "assetId": "kotm:argonia/trees/hist trees/histflower01",
+   "pos": [
+    -3.501,
+    -5.492,
+    -42.593
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "A Hist sap bloom glows where the roots break through."
+  },
+  {
+   "id": "RootWhisperXulThuxisInt01:add:shrine-histflower-5",
+   "assetId": "kotm:argonia/trees/hist trees/histflower01",
+   "pos": [
+    -5.33,
+    -5.627,
+    -45.836
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "A Hist sap bloom glows where the roots break through."
+  },
+  {
+   "id": "RootWhisperXulThuxisInt01:add:shrine-histflower-6",
+   "assetId": "kotm:argonia/trees/hist trees/histflower01",
+   "pos": [
+    -3.634,
+    -5.627,
+    -25.373
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "A Hist sap bloom glows where the roots break through."
+  },
+  {
+   "id": "RootWhisperXulThuxisInt01:add:shrine-histflower-7",
+   "assetId": "kotm:argonia/trees/hist trees/histflower01",
+   "pos": [
+    -6.292,
+    -5.627,
+    -22.413
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "A Hist sap bloom glows where the roots break through."
+  },
+  {
+   "id": "RootWhisperXulThuxisInt01:add:shrine-histflower-8",
+   "assetId": "kotm:argonia/trees/hist trees/histflower01",
+   "pos": [
+    -2.837,
+    -5.627,
+    -48.966
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "A Hist sap bloom glows where the roots break through."
+  },
+  {
+   "id": "RootWhisperXulThuxisInt01:add:shrine-histflower-9",
+   "assetId": "kotm:argonia/trees/hist trees/histflower01",
+   "pos": [
+    -2.766,
+    -5.627,
+    -21.941
+   ],
+   "rotZDeg": 0,
+   "zone": "shrine",
+   "why": "A Hist sap bloom glows where the roots break through."
+  }
+ ]
+}

@@ -1,0 +1,663 @@
+{
+ "id": "burglary",
+ "start": {
+  "query": "?view=character&x=7.1975&z=0.5156&t=02:00&d=8-17",
+  "kit": "start",
+  "skills": {
+   "security": 30,
+   "sneak": 30
+  },
+  "seed": 1,
+  "grant": [
+   {
+    "item": "key-dunmer-north-riverwalk-1",
+    "count": 1
+   },
+   {
+    "item": "key-dunmer-north-riverwalk-2",
+    "count": 1
+   }
+  ]
+ },
+ "steps": [
+  {
+   "name": "crouch-at-night",
+   "transition": "standing at the toll urn at 02:00 under the candle by the urn -> crouched; nobody up (the household sleeps in the crews' house), the eye hidden",
+   "stage": {
+    "at": {
+     "x": 7197.5,
+     "z": 515.6,
+     "yaw": 1.57
+    },
+    "hour": 2,
+    "place": "place.dunmer-north.riverwalk"
+   },
+   "do": {
+    "action": "crouch",
+    "seconds": 2
+   },
+   "keys": [
+    {
+     "wait_s": 1
+    },
+    {
+     "press": "KeyC"
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "sneaking": true,
+    "eye": "hidden"
+   }
+  },
+  {
+   "name": "pick-the-urn",
+   "transition": "crouched at the toll urn -> the lock screen, a pick gives: the urn opens on its contents, unseen, nothing filed",
+   "do": {
+    "action": "pick",
+    "lock": "lock.riverwalk.toll-takings",
+    "tool": "lockpick",
+    "cell": null,
+    "seconds": 1
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 0.6
+    },
+    {
+     "click": ".es-sheet--lock [data-lock-act=\"pick\"]"
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "lockState": {
+     "lock.riverwalk.toll-takings": "unlocked"
+    },
+    "screen": "container",
+    "owing": 0,
+    "filed": null
+   }
+  },
+  {
+   "name": "take-the-takings",
+   "transition": "the open urn -> the day's toll in the bag, unseen: nothing filed",
+   "do": {
+    "action": "take",
+    "lock": "lock.riverwalk.toll-takings"
+   },
+   "keys": [
+    {
+     "click": "[data-es-act=\"take-all\"]"
+    },
+    {
+     "press": "Escape"
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "lifted": true,
+    "owing": 0,
+    "eye": "hidden"
+   }
+  },
+  {
+   "name": "enter-zone-unseen",
+   "transition": "crouched at the family house's door under its lantern, E -> the load into the house (AltenGeneralStore, the household's zone, private at night), nobody inside: the room shown, no trespass",
+   "do": {
+    "action": "approach",
+    "cell": "AltenGeneralStore",
+    "near": [],
+    "seconds": 3
+   },
+   "keys": [
+    {
+     "wait_s": 1
+    },
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 3
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "eye": "hidden",
+    "owing": 0,
+    "filed": null
+   },
+   "teleport": {
+    "x": 7208.97,
+    "z": 520.07,
+    "yaw": -0.26
+   }
+  },
+  {
+   "name": "leave-and-save",
+   "transition": "inside the empty house, unseen, E on its door -> back out on the boards at night; the ledger, the lock states, the carried things and the bag round-trip a save headless (the game saves only on a rest in a bed, and Riverwalk offers the player none: no cue on the pod)",
+   "do": {
+    "action": "save",
+    "cell": null,
+    "seconds": 1
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 3
+    }
+   ],
+   "hold_s": 0.6,
+   "expect": {
+    "saved": [
+     "owing",
+     "locks",
+     "carried",
+     "inventory",
+     "faction-standing",
+     "violence"
+    ],
+    "owing": 0
+   }
+  },
+  {
+   "name": "stand-up",
+   "transition": "crouched on the boards at night -> standing (the day half is played standing, so the watch sees the player)",
+   "do": {
+    "action": "crouch",
+    "on": false,
+    "seconds": 1
+   },
+   "keys": [
+    {
+     "press": "KeyC"
+    }
+   ],
+   "hold_s": 0.6,
+   "expect": {
+    "sneaking": false
+   }
+  },
+  {
+   "name": "wait-for-day",
+   "transition": "the Wait window, twelve hours -> 14:00",
+   "do": {
+    "action": "wait",
+    "hours": 12
+   },
+   "keys": [
+    {
+     "press": "KeyT"
+    },
+    {
+     "wait_s": 0.6
+    },
+    {
+     "press": "ArrowRight"
+    },
+    {
+     "press": "ArrowRight"
+    },
+    {
+     "press": "ArrowRight"
+    },
+    {
+     "press": "ArrowRight"
+    },
+    {
+     "click": "[data-es-act=\"rest\"]"
+    },
+    {
+     "wait_s": 1
+    }
+   ],
+   "hold_s": 0.6,
+   "expect": {
+    "screen": null
+   }
+  },
+  {
+   "name": "seen-by-day",
+   "transition": "14:00, standing at the tally on the boards, the camera between the tally and the three crewmen 4 to 5 m off -> the tally taken under his eyes: a theft filed (standing, so no sneak eye)",
+   "do": {
+    "action": "take",
+    "socket": "socket.riverwalk.item-toll-tally",
+    "cell": null,
+    "near": [
+     {
+      "id": "npc.dunmer-north.riverwalk.n1",
+      "m": 4.3,
+      "facing": true
+     },
+     {
+      "id": "npc.dunmer-north.riverwalk.n1-2",
+      "m": 4.8,
+      "facing": false
+     },
+     {
+      "id": "npc.dunmer-north.riverwalk.n1-3",
+      "m": 4.9,
+      "facing": false
+     },
+     {
+      "id": "npc.dunmer-north.riverwalk.toll-holder",
+      "m": 25.9,
+      "facing": false
+     }
+    ],
+    "seconds": 2
+   },
+   "keys": [
+    {
+     "wait_s": 1.5
+    },
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 0.6
+    },
+    {
+     "click": ".es-reader__take"
+    }
+   ],
+   "hold_s": 1.5,
+   "expect": {
+    "notice": {
+     "npc.dunmer-north.riverwalk.n1": "engaged"
+    },
+    "filed": "theft"
+   },
+   "teleport": {
+    "x": 7228.98,
+    "z": 517.59,
+    "yaw": -0.7
+   }
+  },
+  {
+   "name": "the-stop",
+   "transition": "walked up to the toll-holder at her post (she answers for the An-Xileel watch), the Owing open -> she engages and the guard stop opens",
+   "do": {
+    "action": "stop",
+    "npc": "npc.dunmer-north.riverwalk.toll-holder",
+    "near": [
+     {
+      "id": "npc.dunmer-north.riverwalk.toll-holder",
+      "m": 3,
+      "facing": true
+     },
+     {
+      "id": "npc.dunmer-north.riverwalk.n3-2",
+      "m": 11.7,
+      "facing": false
+     },
+     {
+      "id": "npc.dunmer-north.riverwalk.n3",
+      "m": 12.2,
+      "facing": false
+     }
+    ],
+    "seconds": 2
+   },
+   "keys": [
+    {
+     "wait_s": 3
+    }
+   ],
+   "teleport": {
+    "x": 7213.2,
+    "z": 520.4,
+    "actor": "npc.dunmer-north.riverwalk.toll-holder",
+    "near_m": 3
+   },
+   "hold_s": 1,
+   "expect": {
+    "stop": true,
+    "screen": "guard-stop",
+    "framed": {
+     "npc.dunmer-north.riverwalk.toll-holder": true
+    }
+   }
+  },
+  {
+   "name": "pay",
+   "transition": "the stop -> pay: the Owing cleared, the purse lighter, the talk closed",
+   "do": {
+    "action": "pay",
+    "npc": "npc.dunmer-north.riverwalk.toll-holder"
+   },
+   "keys": [
+    {
+     "click": "[data-guard-stop] [data-choice=\"pay\"]"
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "paid": true,
+    "owing": 0,
+    "screen": null
+   }
+  },
+  {
+   "name": "wait-for-night",
+   "transition": "the Wait window, nine hours -> 23:00",
+   "do": {
+    "action": "wait",
+    "hours": 9
+   },
+   "keys": [
+    {
+     "press": "KeyT"
+    },
+    {
+     "wait_s": 0.6
+    },
+    {
+     "press": "ArrowRight"
+    },
+    {
+     "click": "[data-es-act=\"rest\"]"
+    },
+    {
+     "wait_s": 1
+    }
+   ],
+   "hold_s": 0.6,
+   "expect": {
+    "screen": null
+   }
+  },
+  {
+   "name": "trespass-at-night",
+   "transition": "23:00, at the crews' house door (locked for the night, its key carried), E -> the load inside (private after 22:00) where the household and the watch sleep: a crewman stirs facing the player, trespass filed",
+   "do": {
+    "action": "approach",
+    "cell": "SeekhatEldersHut",
+    "near": [
+     {
+      "id": "npc.dunmer-north.riverwalk.n1",
+      "m": 3,
+      "facing": true,
+      "cell": "SeekhatEldersHut"
+     },
+     {
+      "id": "npc.dunmer-north.riverwalk.n3",
+      "m": 3.3,
+      "facing": false,
+      "cell": "SeekhatEldersHut"
+     }
+    ],
+    "seconds": 3
+   },
+   "keys": [
+    {
+     "wait_s": 1
+    },
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 3
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "filed": "trespass",
+    "notice": {
+     "npc.dunmer-north.riverwalk.n1": "engaged"
+    }
+   },
+   "teleport": {
+    "x": 7205.32,
+    "z": 509.29,
+    "yaw": 0.52
+   }
+  },
+  {
+   "name": "stopped-again",
+   "transition": "inside the crews' house, the watch's An-Xileel man 3 m off engaged -> the stop opens on the trespass",
+   "do": {
+    "action": "stop",
+    "npc": "npc.dunmer-north.riverwalk.n3",
+    "cell": "SeekhatEldersHut",
+    "near": [
+     {
+      "id": "npc.dunmer-north.riverwalk.n3",
+      "m": 3,
+      "facing": true,
+      "cell": "SeekhatEldersHut"
+     }
+    ],
+    "seconds": 2
+   },
+   "keys": [
+    {
+     "wait_s": 3
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "stop": true,
+    "screen": "guard-stop",
+    "framed": {
+     "npc.dunmer-north.riverwalk.n3": true
+    }
+   }
+  },
+  {
+   "name": "resist",
+   "transition": "the stop -> resist: assault filed, the watch answers the violence",
+   "do": {
+    "action": "resist",
+    "npc": "npc.dunmer-north.riverwalk.n3"
+   },
+   "keys": [
+    {
+     "click": "[data-guard-stop] [data-choice=\"resist\"]"
+    }
+   ],
+   "hold_s": 2,
+   "expect": {
+    "filed": "assault",
+    "hostile": {
+     "npc.dunmer-north.riverwalk.n3": true
+    },
+    "screen": null
+   }
+  },
+  {
+   "name": "slip-out",
+   "transition": "the watch turned on the player inside the crews' house, E on its door -> out on the boards at night; out of their sight past the lose-target window the watch stands down, the Owing still open (0151 item 2). What wins E: the door's Leave only with the door framed; where the resist leaves the camera depends on where the watch stands (boot 9 mid-swing, boot 10 pinned at 0.42 m facing the shelf), and the shelf's wooden plate then wins, so the player turns to the door first (camera heading 3.08 rad, where boot 9 showed Leave at 0283)",
+   "do": {
+    "action": "approach",
+    "cell": null,
+    "near": [],
+    "seconds": 9
+   },
+   "keys": [
+    {
+     "wait_s": 0.4
+    },
+    {
+     "aim": -176.5,
+     "pitch": -19.5
+    },
+    {
+     "wait_s": 0.6
+    },
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 8
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "owing": 45,
+    "hostile": {
+     "npc.dunmer-north.riverwalk.n3": false,
+     "npc.dunmer-north.riverwalk.n3-2": false
+    }
+   }
+  },
+  {
+   "name": "wait-till-three",
+   "transition": "on the boards, the Wait window, four hours -> 03:00",
+   "do": {
+    "action": "wait",
+    "hours": 4
+   },
+   "keys": [
+    {
+     "press": "KeyT"
+    },
+    {
+     "wait_s": 0.6
+    },
+    {
+     "press": "ArrowLeft"
+    },
+    {
+     "press": "ArrowLeft"
+    },
+    {
+     "press": "ArrowLeft"
+    },
+    {
+     "press": "ArrowLeft"
+    },
+    {
+     "click": "[data-es-act=\"rest\"]"
+    },
+    {
+     "wait_s": 1
+    }
+   ],
+   "hold_s": 0.6,
+   "expect": {
+    "screen": null
+   }
+  },
+  {
+   "name": "back-in",
+   "transition": "03:00, at the crews' house door, E -> the load inside: the watch awake (the watch woman by the bedrolls, and the An-Xileel man the player resisted, the nearer) sees them (engaged), the Owing still open; the nearer of the watch, the man, walks up and opens the stop, and the camera frames him beside the player clear of the stop window (stopFraming.ts)",
+   "do": {
+    "action": "approach",
+    "cell": "SeekhatEldersHut",
+    "near": [
+     {
+      "id": "npc.dunmer-north.riverwalk.n3",
+      "m": 2.5,
+      "facing": true,
+      "cell": "SeekhatEldersHut"
+     },
+     {
+      "id": "npc.dunmer-north.riverwalk.n3-2",
+      "m": 3,
+      "facing": true,
+      "cell": "SeekhatEldersHut"
+     }
+    ],
+    "seconds": 3
+   },
+   "keys": [
+    {
+     "wait_s": 1
+    },
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 3
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "notice": {
+     "npc.dunmer-north.riverwalk.n3-2": "engaged"
+    }
+   },
+   "teleport": {
+    "x": 7205.32,
+    "z": 509.29,
+    "yaw": 0.52
+   }
+  },
+  {
+   "name": "stopped-for-the-assault",
+   "transition": "inside the crews' house, the watch man 2.5 m off engaged, the Owing open with the assault -> a fresh stop opens, its speaker framed",
+   "do": {
+    "action": "stop",
+    "npc": "npc.dunmer-north.riverwalk.n3",
+    "cell": "SeekhatEldersHut",
+    "near": [
+     {
+      "id": "npc.dunmer-north.riverwalk.n3",
+      "m": 2.5,
+      "facing": true,
+      "cell": "SeekhatEldersHut"
+     }
+    ],
+    "seconds": 2
+   },
+   "keys": [
+    {
+     "wait_s": 3
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "stop": true,
+    "screen": "guard-stop",
+    "framed": {
+     "npc.dunmer-north.riverwalk.n3": true
+    }
+   }
+  },
+  {
+   "name": "clear-later",
+   "transition": "the fresh stop -> pay: every Owing cleared, the assault with it, the place stands down",
+   "do": {
+    "action": "pay",
+    "npc": "npc.dunmer-north.riverwalk.n3-2"
+   },
+   "keys": [
+    {
+     "click": "[data-guard-stop] [data-choice=\"pay\"]"
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "paid": true,
+    "owing": 0,
+    "screen": null,
+    "hostile": {
+     "npc.dunmer-north.riverwalk.n3": false,
+     "npc.dunmer-north.riverwalk.n3-2": false
+    }
+   }
+  },
+  {
+   "name": "save-cleared",
+   "transition": "peaceful again -> the cleared ledger and the stood-down place round-trip a save headless (no save cue on the pod: rest-save only)",
+   "do": {
+    "action": "save"
+   },
+   "keys": [],
+   "hold_s": 0.4,
+   "expect": {
+    "saved": [
+     "owing",
+     "violence",
+     "faction-standing",
+     "locks"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,529 @@
+{
+ "schemaVersion": 1,
+ "placeId": "place.pirate-freeholds.upriver-hist-village",
+ "generator": "python3 -m worldgen.blueprint_promises --id <place-id> --write (decision 0104); never hand-edit a row but its `unfilled`, `filledBy` or `confirmed` block",
+ "derivedFrom": [
+  {
+   "file": "world/sources/catalogue/places-pirate-freeholds.json",
+   "sha256": "1baf90e37596c14f08fcf11cdc15c665db6126a98c4ac6eee8465b1947aab416"
+  },
+  {
+   "file": "world/sources/quests/local-pirate-freeholds.json",
+   "sha256": "5b0b554a8b6f1f3a1a101ebab863278f841951f0cc524c5f5f46e4670ade882f"
+  },
+  {
+   "file": "world/sources/quests/quests-main.json",
+   "sha256": "ef798d3d1b69742e9a7650aa73b24c51a519421b21260d3ae3212f2e31bae612"
+  }
+ ],
+ "promises": [
+  {
+   "id": "promise.upriver-hist-village.evidence-opening-harvest-cut",
+   "kind": "socketBucket",
+   "source": {
+    "file": "world/sources/catalogue/places-pirate-freeholds.json",
+    "path": "places[place.pirate-freeholds.upriver-hist-village].sockets.evidence[evidence.opening.harvest-cut]"
+   },
+   "text": "Nine Bends has the evidence socket evidence.opening.harvest-cut.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.upriver-hist-village.interior-principal",
+   "kind": "interior",
+   "source": {
+    "file": "world/sources/catalogue/places-pirate-freeholds.json",
+    "path": "places[place.pirate-freeholds.upriver-hist-village].interior"
+   },
+   "text": "Nine Bends's principal interior is a dwelling (S1); its buildings carry 5 load doors in all.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.upriver-hist-village.marks-opening-hatchery-pool",
+   "kind": "socketBucket",
+   "source": {
+    "file": "world/sources/catalogue/places-pirate-freeholds.json",
+    "path": "places[place.pirate-freeholds.upriver-hist-village].sockets.marks[mark.opening.hatchery-pool]"
+   },
+   "text": "Nine Bends has the marks socket mark.opening.hatchery-pool.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.upriver-hist-village.marks-opening-tree-foot",
+   "kind": "socketBucket",
+   "source": {
+    "file": "world/sources/catalogue/places-pirate-freeholds.json",
+    "path": "places[place.pirate-freeholds.upriver-hist-village].sockets.marks[mark.opening.tree-foot]"
+   },
+   "text": "Nine Bends has the marks socket mark.opening.tree-foot.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.upriver-hist-village.occupant-n2",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-pirate-freeholds.json",
+    "path": "places[place.pirate-freeholds.upriver-hist-village].contents.npcs[n2]"
+   },
+   "text": "Nine Bends has band family occupants.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.upriver-hist-village.occupant-npc-opening-tree-minder",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-pirate-freeholds.json",
+    "path": "places[place.pirate-freeholds.upriver-hist-village].notableNpcSlots[npc-opening-tree-minder]"
+   },
+   "text": "Npc.opening.tree-minder lives and works at Nine Bends.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.upriver-hist-village.occupant-npc-opening-upriver-elder",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-pirate-freeholds.json",
+    "path": "places[place.pirate-freeholds.upriver-hist-village].notableNpcSlots[npc-opening-upriver-elder]"
+   },
+   "text": "Npc.opening.upriver-elder lives and works at Nine Bends.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.upriver-hist-village.post-rest-nine-bends",
+   "kind": "socketBucket",
+   "source": {
+    "file": "world/sources/catalogue/places-pirate-freeholds.json",
+    "path": "places[place.pirate-freeholds.upriver-hist-village].sockets.post[post.rest.nine-bends]"
+   },
+   "text": "Nine Bends has the post socket post.rest.nine-bends.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.upriver-hist-village.prose-playerpurpose-hook",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-pirate-freeholds.json",
+    "path": "places[place.pirate-freeholds.upriver-hist-village].playerPurpose.hook"
+   },
+   "text": "The tree the gang's families answer to stands nine bends upriver. Its minder says it has begun to go quiet.",
+   "confirmed": {
+    "sha": "bb6300de6b2d",
+    "note": "The Hist stands at the village heart; the tree-minder's house faces it; the minder's work post is at its foot.",
+    "ids": [
+     "place.pirate-freeholds.upriver-hist-village.landmark.upriver-hist-village.the-hist",
+     "b-minder"
+    ]
+   }
+  },
+  {
+   "id": "promise.upriver-hist-village.prose-questhooks-opportunity",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-pirate-freeholds.json",
+    "path": "places[place.pirate-freeholds.upriver-hist-village].questHooks.opportunity"
+   },
+   "text": "the tree to which the gang families answer, a day upriver from the camp where their clutch is kept",
+   "confirmed": {
+    "sha": "ed1b17ac1f9d",
+    "note": "The Hist and its hatchery pool, with the clutch eggs at the pool edge; the gang camp is downriver.",
+    "ids": [
+     "place.pirate-freeholds.upriver-hist-village.landmark.upriver-hist-village.the-hist",
+     "eggs1",
+     "eggs2"
+    ]
+   }
+  },
+  {
+   "id": "promise.upriver-hist-village.prose-vibe-approach",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-pirate-freeholds.json",
+    "path": "places[place.pirate-freeholds.upriver-hist-village].vibe.approach"
+   },
+   "text": "the tree's chimes carry a bend downstream of the village",
+   "confirmed": {
+    "sha": "5aba35ab2a20",
+    "note": "Three wind chimes hang on the tree side of the village; their sound is a later-phase system (0102).",
+    "ids": [
+     "chime1",
+     "chime2",
+     "chime3"
+    ]
+   }
+  },
+  {
+   "id": "promise.upriver-hist-village.prose-vibe-condition",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-pirate-freeholds.json",
+    "path": "places[place.pirate-freeholds.upriver-hist-village].vibe.condition"
+   },
+   "text": "kept up by too few hands",
+   "confirmed": {
+    "sha": "1ceccffe541a",
+    "note": "Five houses for the place's size, one empty frame and a guar shelter; stores and cook pots at each lived house.",
+    "ids": [
+     "b-minder",
+     "b-elder",
+     "b-kin",
+     "b-fish",
+     "b-trade",
+     "b-empty"
+    ]
+   }
+  },
+  {
+   "id": "promise.upriver-hist-village.prose-vibe-materials",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-pirate-freeholds.json",
+    "path": "places[place.pirate-freeholds.upriver-hist-village].vibe.materials"
+   },
+   "text": "cut reed, mud render, bundled cane, earth tracks between the houses, one wooden landing stage",
+   "confirmed": {
+    "sha": "7ea5a6f8c9a1",
+    "note": "Reed clumps on the banks, thatch and mud houses, cane bundles at the cane block, earth tracks, the two-piece plank landing.",
+    "ids": [
+     "fl-reed1",
+     "b-kin",
+     "cane-bundle1",
+     "cane-bundle2",
+     "dock1",
+     "dock2"
+    ]
+   }
+  },
+  {
+   "id": "promise.upriver-hist-village.prose-vibe-mood",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-pirate-freeholds.json",
+    "path": "places[place.pirate-freeholds.upriver-hist-village].vibe.mood"
+   },
+   "text": "quiet; too few people for the size of it",
+   "confirmed": {
+    "sha": "5a2e6b0ce3c5",
+    "note": "Five houses round a wide ring with one empty frame; few people for the space.",
+    "ids": [
+     "b-minder",
+     "b-elder",
+     "b-kin",
+     "b-fish",
+     "b-trade",
+     "b-empty"
+    ]
+   }
+  },
+  {
+   "id": "promise.upriver-hist-village.prose-vibe-palette",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-pirate-freeholds.json",
+    "path": "places[place.pirate-freeholds.upriver-hist-village].vibe.palette"
+   },
+   "text": "wet green reed and fern, the dark wet bark of the trunk, the dull red of fired clay hatchery lids",
+   "confirmed": {
+    "sha": "fb22a9092e39",
+    "note": "Reed and fern round the pool and banks, the Hist's dark trunk, six fired-clay lids on the pool rim.",
+    "ids": [
+     "fl-reed1",
+     "fl-fern1",
+     "place.pirate-freeholds.upriver-hist-village.landmark.upriver-hist-village.the-hist",
+     "lid1",
+     "lid2",
+     "lid3",
+     "lid4",
+     "lid5",
+     "lid6"
+    ]
+   }
+  },
+  {
+   "id": "promise.upriver-hist-village.prose-vibe-senses",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-pirate-freeholds.json",
+    "path": "places[place.pirate-freeholds.upriver-hist-village].vibe.senses"
+   },
+   "text": "sap, wet reed, the low sound of a tree still talking",
+   "confirmed": {
+    "sha": "3172489f8458",
+    "note": "Sound and smell are later-phase systems (0102); their sources are built: the Hist, the bank reeds and the chimes.",
+    "ids": [
+     "place.pirate-freeholds.upriver-hist-village.landmark.upriver-hist-village.the-hist",
+     "fl-reed1",
+     "chime1",
+     "chime2",
+     "chime3"
+    ]
+   }
+  },
+  {
+   "id": "promise.upriver-hist-village.prose-vibe-signaturefeature",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-pirate-freeholds.json",
+    "path": "places[place.pirate-freeholds.upriver-hist-village].vibe.signatureFeature"
+   },
+   "text": "the hatchery pool cut into the bank so the tree's roots run down into it",
+   "confirmed": {
+    "sha": "728c9156a1d6",
+    "note": "The Hist's root piece runs down into the hatchery pool, lidded on its rim, eggs at its edge.",
+    "ids": [
+     "hist-root",
+     "hatch-urn",
+     "eggs1",
+     "lid1",
+     "lid2",
+     "lid3",
+     "lid4",
+     "lid5",
+     "lid6"
+    ]
+   }
+  },
+  {
+   "id": "promise.upriver-hist-village.prose-vibe-silhouette",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-pirate-freeholds.json",
+    "path": "places[place.pirate-freeholds.upriver-hist-village].vibe.silhouette"
+   },
+   "text": "one broad low tree with a village built round its foot in a ring, the river bending away on both sides",
+   "confirmed": {
+    "sha": "6292909c2ab0",
+    "note": "One Hist with the five houses, empty frame and shelter in a ring round its foot on the river bend.",
+    "ids": [
+     "place.pirate-freeholds.upriver-hist-village.landmark.upriver-hist-village.the-hist",
+     "b-minder",
+     "b-elder",
+     "b-kin",
+     "b-fish",
+     "b-trade"
+    ]
+   }
+  },
+  {
+   "id": "promise.upriver-hist-village.prose-why-founding",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-pirate-freeholds.json",
+    "path": "places[place.pirate-freeholds.upriver-hist-village].why.founding"
+   },
+   "text": "The gangs that work the lower channel are hired out of Alten Corimont, but the tree the gang families answer to stands nine bends upriver, where the water is still fresh enough to drink. The village grew where the tree is. The work has been a day downriver for sixty years.",
+   "confirmed": {
+    "sha": "f1d38df37c2e",
+    "note": "The Hist that the village grew round, on the river bank with its landing for the boats downriver.",
+    "ids": [
+     "place.pirate-freeholds.upriver-hist-village.landmark.upriver-hist-village.the-hist",
+     "dock1"
+    ]
+   }
+  },
+  {
+   "id": "promise.upriver-hist-village.prose-why-occupantsmotive",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-pirate-freeholds.json",
+    "path": "places[place.pirate-freeholds.upriver-hist-village].why.occupantsMotive"
+   },
+   "text": "A tribe keeping a tree and hiring its own people out downriver, because there is no other coin here.",
+   "confirmed": {
+    "sha": "922bf0f38c5d",
+    "note": "The Hist and its shrine kept by the village; coin comes in through the trade house.",
+    "ids": [
+     "place.pirate-freeholds.upriver-hist-village.landmark.upriver-hist-village.the-hist",
+     "sh-totem1",
+     "b-trade"
+    ]
+   }
+  },
+  {
+   "id": "promise.upriver-hist-village.prose-why-pressures",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-pirate-freeholds.json",
+    "path": "places[place.pirate-freeholds.upriver-hist-village].why.pressures"
+   },
+   "text": "Every year more of the village's adults are on somebody's roll downriver. The tree has begun to notice how few of them it sees.",
+   "confirmed": {
+    "sha": "069881be14e3",
+    "note": "An empty house frame and too few lived houses; the Hist at the centre.",
+    "ids": [
+     "b-empty",
+     "place.pirate-freeholds.upriver-hist-village.landmark.upriver-hist-village.the-hist"
+    ]
+   }
+  },
+  {
+   "id": "promise.upriver-hist-village.prose-why-siteadvantages",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-pirate-freeholds.json",
+    "path": "places[place.pirate-freeholds.upriver-hist-village].why.siteAdvantages"
+   },
+   "text": "Fresh water above the salt wedge, a bank firm enough to build on and nine bends of river between here and the port.",
+   "confirmed": {
+    "sha": "139155ca2dfa",
+    "note": "Houses on firm bank ground above the river; the landing on the water.",
+    "ids": [
+     "b-minder",
+     "b-elder",
+     "b-kin",
+     "b-fish",
+     "b-trade",
+     "dock1"
+    ]
+   }
+  },
+  {
+   "id": "promise.upriver-hist-village.prose-why-wouldchangeif",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-pirate-freeholds.json",
+    "path": "places[place.pirate-freeholds.upriver-hist-village].why.wouldChangeIf"
+   },
+   "text": "If the tree withdraws, there is no reason left to keep the village nine bends from the work. The lower channel is left without a Hist that will speak to it.",
+   "confirmed": {
+    "sha": "9f65295f48f8",
+    "note": "The village stands for the Hist; its shrine and hatchery are at its foot.",
+    "ids": [
+     "place.pirate-freeholds.upriver-hist-village.landmark.upriver-hist-village.the-hist",
+     "sh-totem1",
+     "hatch-urn"
+    ]
+   }
+  },
+  {
+   "id": "promise.upriver-hist-village.provision-opening-hist-withdrawal",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-pirate-freeholds.json",
+    "path": "places[place.pirate-freeholds.upriver-hist-village].questHooks.provisions[quest.provision.opening-hist-withdrawal]"
+   },
+   "text": "Nine Bends holds what quest provision quest.provision.opening-hist-withdrawal needs.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.upriver-hist-village.quest-lp13",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-pirate-freeholds.json",
+    "path": "quest[LP13]"
+   },
+   "text": "LP13 Traps on the Ninth Bend: The village's fish traps stand where the free port's boats now load, with both claims old enough to be argued",
+   "confirmed": {
+    "sha": "6911cbdcdab9",
+    "note": "The fishers' house keeps its nets and the drying rack; the traps in dispute are at the free port's landing.",
+    "ids": [
+     "b-fish",
+     "fish-nt-hn-net1",
+     "fish-rack"
+    ]
+   }
+  },
+  {
+   "id": "promise.upriver-hist-village.quest-lp14",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-pirate-freeholds.json",
+    "path": "quest[LP14]"
+   },
+   "text": "LP14 The Mark at the Waterline: Nine bends of the river carry the same cut mark at the waterline, which the village stopped counting a generation ago",
+   "confirmed": {
+    "sha": "4330dccb9a74",
+    "note": "The waterline cut is the marker socket at the landing.",
+    "ids": [
+     "dock1",
+     "socket.upriver-hist-village.marker-waterline-cut"
+    ]
+   }
+  },
+  {
+   "id": "promise.upriver-hist-village.quest-lp19",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-pirate-freeholds.json",
+    "path": "quest[LP19]"
+   },
+   "text": "LP19 A Naming With No Tree: The refuge has a clutch to name and no Hist under which to name it, so an upriver village has offered to do it for them",
+   "confirmed": {
+    "sha": "032bc95c152f",
+    "note": "A naming needs the Hist and its hatchery pool; both are built.",
+    "ids": [
+     "place.pirate-freeholds.upriver-hist-village.landmark.upriver-hist-village.the-hist",
+     "hist-root",
+     "hatch-urn"
+    ]
+   }
+  },
+  {
+   "id": "promise.upriver-hist-village.quest-mq01",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/quests-main.json",
+    "path": "quest[MQ01]"
+   },
+   "text": "MQ01 No Name on the Work Roll: An Owing-gang processing runs into the cult's attack while a Hist withdraws over a dead egg clutch",
+   "confirmed": {
+    "sha": "8c3c059f6137",
+    "note": "The Hist that withdraws and the clutch at its pool; the withdrawal scene socket is at the tree foot.",
+    "ids": [
+     "place.pirate-freeholds.upriver-hist-village.landmark.upriver-hist-village.the-hist",
+     "eggs1",
+     "eggs2",
+     "socket.upriver-hist-village.marker-opening-hist-withdrawal"
+    ]
+   }
+  },
+  {
+   "id": "promise.upriver-hist-village.safe-interior",
+   "kind": "safeInterior",
+   "source": {
+    "file": "world/sources/catalogue/places-pirate-freeholds.json",
+    "path": "places[place.pirate-freeholds.upriver-hist-village].classification.class"
+   },
+   "text": "Nine Bends has one safe interior (danger D0, quests 20 section 12).",
+   "unfilled": null
+  },
+  {
+   "id": "promise.upriver-hist-village.scene-opening-tree-withdraws",
+   "kind": "socketBucket",
+   "source": {
+    "file": "world/sources/catalogue/places-pirate-freeholds.json",
+    "path": "places[place.pirate-freeholds.upriver-hist-village].sockets.scene[scene.opening.tree-withdraws]"
+   },
+   "text": "Nine Bends has the scene socket scene.opening.tree-withdraws.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.upriver-hist-village.service-lodging",
+   "kind": "service",
+   "source": {
+    "file": "world/sources/catalogue/places-pirate-freeholds.json",
+    "path": "places[place.pirate-freeholds.upriver-hist-village].services[lodging]"
+   },
+   "text": "Nine Bends offers the lodging service.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.upriver-hist-village.service-shrine",
+   "kind": "service",
+   "source": {
+    "file": "world/sources/catalogue/places-pirate-freeholds.json",
+    "path": "places[place.pirate-freeholds.upriver-hist-village].services[shrine]"
+   },
+   "text": "Nine Bends offers the shrine service.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.upriver-hist-village.service-trader",
+   "kind": "service",
+   "source": {
+    "file": "world/sources/catalogue/places-pirate-freeholds.json",
+    "path": "places[place.pirate-freeholds.upriver-hist-village].services[trader]"
+   },
+   "text": "Nine Bends offers the trader service.",
+   "unfilled": null
+  }
+ ]
+}

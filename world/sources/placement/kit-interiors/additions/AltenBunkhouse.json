@@ -1,0 +1,138 @@
+{
+ "schemaVersion": 2,
+ "cellId": "AltenBunkhouse",
+ "additions": [
+  {
+   "id": "AltenBunkhouse:add:bed-argoniancandle",
+   "assetId": "mudmother:gv_meshes/argoniannest/argoniancandle01",
+   "pos": [
+    114.132,
+    84.121,
+    57.926
+   ],
+   "rotZDeg": 0,
+   "zone": "bed",
+   "why": "Lights the sleeping floor where the crew bunks down for the night."
+  },
+  {
+   "id": "AltenBunkhouse:add:bed-impbrazier",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    108.56,
+    83.065,
+    51.126
+   ],
+   "rotZDeg": 0,
+   "zone": "bed",
+   "why": "Brazier lights the dark bunkhouse floor where the residents sleep and sit."
+  },
+  {
+   "id": "AltenBunkhouse:add:bed-impbrazier-2",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    110.241,
+    83.064,
+    60.38
+   ],
+   "rotZDeg": 0,
+   "zone": "bed",
+   "why": "Brazier lights the dark bunkhouse floor where the residents sleep and sit."
+  },
+  {
+   "id": "AltenBunkhouse:add:bed-impbrazier-3",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    112.071,
+    83.065,
+    56.072
+   ],
+   "rotZDeg": 0,
+   "zone": "bed",
+   "why": "Brazier lights the dark bunkhouse floor where the residents sleep and sit."
+  },
+  {
+   "id": "AltenBunkhouse:add:bed-impbrazier-4",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    112.476,
+    83.065,
+    52.361
+   ],
+   "rotZDeg": 0,
+   "zone": "bed",
+   "why": "Brazier lights the dark bunkhouse floor where the residents sleep and sit."
+  },
+  {
+   "id": "AltenBunkhouse:add:bed-impbrazier-5",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    107.889,
+    83.638,
+    63.311
+   ],
+   "rotZDeg": 0,
+   "zone": "bed",
+   "why": "Brazier lights the dark bunkhouse floor where the residents sleep and sit."
+  },
+  {
+   "id": "AltenBunkhouse:add:bed-impbrazier-6",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    104.338,
+    83.065,
+    54.107
+   ],
+   "rotZDeg": 0,
+   "zone": "bed",
+   "why": "Brazier lights the dark bunkhouse floor where the residents sleep and sit."
+  },
+  {
+   "id": "AltenBunkhouse:add:bed-impbrazier-7",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    107.747,
+    83.065,
+    55.244
+   ],
+   "rotZDeg": 0,
+   "zone": "bed",
+   "why": "Brazier lights the dark bunkhouse floor where the residents sleep and sit."
+  },
+  {
+   "id": "AltenBunkhouse:add:bed-impbrazier-8",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    114.132,
+    84.092,
+    57.926
+   ],
+   "rotZDeg": 0,
+   "zone": "bed",
+   "why": "Brazier lights the dark bunkhouse floor where the residents sleep and sit."
+  },
+  {
+   "id": "AltenBunkhouse:add:bed-impbrazier-9",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    113.213,
+    83.061,
+    62.002
+   ],
+   "rotZDeg": 0,
+   "zone": "bed",
+   "why": "Brazier lights the dark bunkhouse floor where the residents sleep and sit."
+  },
+  {
+   "id": "AltenBunkhouse:add:bed-impbrazier-10",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    113.27,
+    83.065,
+    49.925
+   ],
+   "rotZDeg": 0,
+   "zone": "bed",
+   "why": "Brazier lights the dark bunkhouse floor where the residents sleep and sit."
+  }
+ ]
+}

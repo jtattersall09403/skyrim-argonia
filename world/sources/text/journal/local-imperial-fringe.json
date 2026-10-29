@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "domain": "journal-text",
+  "_": "Journal entries and objective lines of the imperial-fringe local quests (2.11): one unit per text key a quest stage names (`journal`, `objectives[].text`). Logic lives in world/sources/quests; this file holds only the words. `factIds` are dialogue facts (world/sources/dialogue/facts.json) the words state; `groundedIn` names the place facts claim ids behind the words. Compiled to packages/text-catalogue/src/generated/journal-text.ts by `python3 -m worldgen.place_text --emit-text`.",
+  "entries": [
+    {
+      "id": "text.journal.lf83.10",
+      "questId": "quest.local.lf83",
+      "surface": "journal",
+      "text": "Livia Varinius keeps the well at Claywater Station. She told me the well and the landing each charge a traveller for the same stop. I'm to cross the ford and ask Signs-For-The-Cargo, the landing's poler, what the landing charges for its half.",
+      "factIds": [
+        "fact.claywater.each-bank-charges",
+        "fact.claywater.two-halves"
+      ],
+      "groundedIn": [
+        "fact.claywater-station.questHooks-opportunity-1",
+        "fact.claywater-station.vibe-signatureFeature-1",
+        "fact.claywater-station.why-founding-2",
+        "fact.claywater-station.why-founding-3"
+      ]
+    },
+    {
+      "id": "text.objective.lf83.hear-landing",
+      "questId": "quest.local.lf83",
+      "surface": "journal",
+      "text": "Ask Signs-For-The-Cargo across the ford about the two charges",
+      "factIds": [],
+      "groundedIn": [
+        "fact.claywater-station.vibe-signatureFeature-1"
+      ]
+    },
+    {
+      "id": "text.journal.lf83.20",
+      "questId": "quest.local.lf83",
+      "surface": "journal",
+      "text": "Livia Varinius sent me across the ford at Claywater Station to ask about the two charges. Signs-For-The-Cargo told me the landing is older than the well and will not help to mend it in stone. His people gave up building in stone long ago; they build in mud and timber. I must carry the landing's terms back to Livia Varinius.",
+      "factIds": [
+        "fact.claywater.landing-older",
+        "fact.claywater.landing-refuses-stone",
+        "fact.claywater.stone-is-the-old-way"
+      ],
+      "groundedIn": [
+        "fact.claywater-station.why-founding-4",
+        "fact.claywater-station.why-founding-5",
+        "fact.claywater-station.why-pressures-2"
+      ]
+    },
+    {
+      "id": "text.objective.lf83.carry-terms",
+      "questId": "quest.local.lf83",
+      "surface": "journal",
+      "text": "Take the landing's terms to Livia Varinius at the well",
+      "factIds": [],
+      "groundedIn": [
+        "fact.claywater-station.why-founding-2"
+      ]
+    },
+    {
+      "id": "text.journal.lf83.30",
+      "questId": "quest.local.lf83",
+      "surface": "journal",
+      "text": "I carried the landing's terms back to Livia Varinius at Claywater Station. Signs-For-The-Cargo will not help to mend the well in stone. Livia Varinius will take the matter of the two charges up with him in person.",
+      "factIds": [
+        "fact.claywater.landing-refuses-stone"
+      ],
+      "groundedIn": [
+        "fact.claywater-station.why-pressures-2",
+        "fact.claywater-station.why-occupantsMotive-1"
+      ]
+    },
+    {
+      "id": "text.journal.lf83.90",
+      "questId": "quest.local.lf83",
+      "surface": "journal",
+      "text": "One of the two keepers at Claywater Station is dead. The well's charge and the landing's charge were never settled.",
+      "factIds": [],
+      "groundedIn": [
+        "fact.claywater-station.questHooks-opportunity-1"
+      ]
+    },
+    {
+      "id": "text.journal.lf21.10",
+      "questId": "quest.local.lf21",
+      "surface": "journal",
+      "text": "Gnaeus Martius, serjeant of the Broke Column, told me the column would disband if Gideon offered a pardon and a wage. I'm to hear the column's terms from the serjeant below the camp.",
+      "factIds": [
+        "fact.broke-column.disband-terms"
+      ],
+      "groundedIn": [
+        "fact.the-broke-column.why-wouldChangeIf-1",
+        "fact.the-broke-column.questHooks-opportunity-2"
+      ]
+    },
+    {
+      "id": "text.objective.lf21.hear-terms",
+      "questId": "quest.local.lf21",
+      "surface": "journal",
+      "text": "Hear the column's terms from Gnaeus Martius below the camp",
+      "factIds": [],
+      "groundedIn": [
+        "fact.the-broke-column.questHooks-opportunity-1"
+      ]
+    },
+    {
+      "id": "text.journal.lf21.20",
+      "questId": "quest.local.lf21",
+      "surface": "journal",
+      "text": "The column's terms are a pardon and a wage. Gideon is the one who can give them. I'm to carry the terms to Gideon.",
+      "factIds": [
+        "fact.broke-column.disband-terms"
+      ],
+      "groundedIn": [
+        "fact.the-broke-column.why-wouldChangeIf-1"
+      ]
+    },
+    {
+      "id": "text.journal.lf21.90",
+      "questId": "quest.local.lf21",
+      "surface": "journal",
+      "text": "Gnaeus Martius is dead. I cannot learn the column's terms now.",
+      "factIds": [],
+      "groundedIn": [
+        "fact.the-broke-column.why-founding-3"
+      ]
+    },
+    {
+      "id": "text.journal.lf67.10",
+      "questId": "quest.local.lf67",
+      "surface": "journal",
+      "text": "Prices-The-Salvage told me the diggers at the Bog Iron Workings have left the deep end of the seep. I'm to look past the deep end myself.",
+      "factIds": [
+        "fact.bog-iron-workings.deep-end-left"
+      ],
+      "groundedIn": [
+        "fact.bog-iron-workings.questHooks-opportunity-1",
+        "fact.bog-iron-workings.why-pressures-1"
+      ]
+    },
+    {
+      "id": "text.objective.lf67.find-den",
+      "questId": "quest.local.lf67",
+      "surface": "journal",
+      "text": "Look past the deep end of the seep",
+      "factIds": [],
+      "groundedIn": [
+        "fact.bog-iron-workings.questHooks-opportunity-1"
+      ]
+    },
+    {
+      "id": "text.journal.lf67.20",
+      "questId": "quest.local.lf67",
+      "surface": "journal",
+      "text": "Past the deep end of the seep I found the den of a giant leech. I'm to tell Meets-Every-Tide what I found.",
+      "factIds": [
+        "fact.bog-iron-workings.leech-den"
+      ],
+      "groundedIn": [
+        "fact.bog-iron-workings.questHooks-opportunity-1"
+      ]
+    },
+    {
+      "id": "text.objective.lf67.tell-diggers",
+      "questId": "quest.local.lf67",
+      "surface": "journal",
+      "text": "Tell Meets-Every-Tide about the leech den",
+      "factIds": [],
+      "groundedIn": [
+        "fact.bog-iron-workings.why-occupantsMotive-1"
+      ]
+    },
+    {
+      "id": "text.journal.lf67.30",
+      "questId": "quest.local.lf67",
+      "surface": "journal",
+      "text": "The diggers come from three villages. I'm to carry word of the den to Swampmoth Town, below a fort on firm ground.",
+      "factIds": [],
+      "groundedIn": [
+        "fact.bog-iron-workings.why-occupantsMotive-1"
+      ]
+    }
+  ]
+}

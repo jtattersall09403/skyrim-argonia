@@ -1,0 +1,379 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "_": "Life-group and household sheets for Chasepoint (lane 2.5c).",
+ "entries": [
+  {
+   "id": "culture.group.chasepoint.salvage",
+   "level": "group",
+   "name": "The salvage households",
+   "parent": "culture.settlement.chasepoint",
+   "members": [
+    "npc.mercantile-coast.chasepoint.n1",
+    "npc.mercantile-coast.chasepoint.n1-2",
+    "npc.mercantile-coast.chasepoint.n1-3",
+    "npc.mercantile-coast.chasepoint.n1-4"
+   ],
+   "norms": [
+    {
+     "text": "Work the south shore at low water and drag timber above the tideline.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Leaving rope wet in the stable.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "A full drying rack.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Hands who let good cordage rot.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "work": {
+     "lean": 2,
+     "text": "Salvage is the families' right and their living.",
+     "source": "world/sources/catalogue/places-mercantile-coast.json#place.mercantile-coast.chasepoint"
+    },
+    "people": {
+     "lean": -1,
+     "text": "The keeper's office should sit with a salvage family.",
+     "source": "world/sources/catalogue/places-mercantile-coast.json#place.mercantile-coast.chasepoint"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Traveller.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [],
+    "neverSaid": [
+     {
+      "text": "Which family moved the last boundary stake.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "The stall takes its share before the families see a coin.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": []
+   },
+   "views": [
+    {
+     "node": "culture.group.chasepoint.stage",
+     "lean": -1,
+     "text": "A title with no pay that still gives orders.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.25
+  },
+  {
+   "id": "culture.group.chasepoint.stall",
+   "level": "group",
+   "name": "The salvage stall",
+   "parent": "culture.settlement.chasepoint",
+   "members": [
+    "npc.mercantile-coast.chasepoint.n2"
+   ],
+   "norms": [
+    {
+     "text": "Read each lot's ship name off its bow-board before selling it.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Selling a lot without its ship's name.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "A week's salvage sold in a week.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Buyers who want a lot without its story.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "work": {
+     "lean": 1,
+     "text": "The stall turns a week's finds into coin.",
+     "source": "world/sources/catalogue/places-mercantile-coast.json#place.mercantile-coast.chasepoint"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Customer.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [],
+    "neverSaid": [
+     {
+      "text": "What a lot cost the families.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Last week's lots are still on the board.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": []
+   },
+   "views": [
+    {
+     "node": "culture.group.chasepoint.salvage",
+     "lean": 1,
+     "text": "The families bring the goods; the stall finds the buyers.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.25
+  },
+  {
+   "id": "culture.group.chasepoint.stage",
+   "level": "group",
+   "name": "The stage office",
+   "parent": "culture.settlement.chasepoint",
+   "members": [
+    "npc.mercantile-coast.chasepoint.station-keeper"
+   ],
+   "norms": [
+    {
+     "text": "Keep the stage office open as the family always has.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Letting the office lapse.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "An inherited duty kept.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Squatters who call the office a joke.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "place": {
+     "lean": 2,
+     "text": "An Imperial stage that still stands and still has its keeper.",
+     "source": "world/sources/catalogue/places-mercantile-coast.json#place.mercantile-coast.chasepoint"
+    },
+    "people": {
+     "lean": -1,
+     "text": "The other family has no paper to the office.",
+     "source": "world/sources/catalogue/places-mercantile-coast.json#place.mercantile-coast.chasepoint"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Traveller.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "formal",
+    "oaths": [],
+    "neverSaid": [
+     {
+      "text": "That the office carries no pay.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "No stage-keeper has been paid in two centuries.",
+      "source": "world/sources/catalogue/places-mercantile-coast.json#place.mercantile-coast.chasepoint"
+     }
+    ],
+    "rumours": []
+   },
+   "views": [
+    {
+     "node": "culture.group.chasepoint.salvage",
+     "lean": 0,
+     "text": "Useful neighbours with a claim they cannot prove.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.25
+  },
+  {
+   "id": "culture.household.chasepoint.rope-stable",
+   "level": "household",
+   "name": "The rope-stable family",
+   "parent": "culture.settlement.chasepoint",
+   "members": [
+    "npc.mercantile-coast.chasepoint.n1",
+    "npc.mercantile-coast.chasepoint.n1-3"
+   ],
+   "norms": [
+    {
+     "text": "Dry the recovered rope in the old stable before anyone else hangs theirs.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Opening the second shed while a stranger watches.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "The family's own claim to the keeper's office.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "The stage family's old papers.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "people": {
+     "lean": -2,
+     "text": "The keeper's office is theirs by right, not the stage family's.",
+     "source": "world/sources/catalogue/places-mercantile-coast.json#place.mercantile-coast.chasepoint"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Traveller.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [],
+    "neverSaid": [
+     {
+      "text": "What is held back from the count.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "The stage family holds an office that pays nothing.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": []
+   },
+   "views": [],
+   "deviationRate": 0.25
+  },
+  {
+   "id": "culture.household.chasepoint.net-rack",
+   "level": "household",
+   "name": "The net-rack family",
+   "parent": "culture.settlement.chasepoint",
+   "members": [
+    "npc.mercantile-coast.chasepoint.n1-2",
+    "npc.mercantile-coast.chasepoint.n1-4",
+    "npc.mercantile-coast.chasepoint.n2"
+   ],
+   "norms": [
+    {
+     "text": "Mend salvaged net on the rack each evening.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Selling a net unmended.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "A fair price, said once.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Families who hide lots from the count.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "people": {
+     "lean": 0,
+     "text": "Whoever holds the office, the stall still opens.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Traveller.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [],
+    "neverSaid": [
+     {
+      "text": "Who in the rope-stable family hides lots.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Some salvage never reaches the stall.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": []
+   },
+   "views": [],
+   "deviationRate": 0.25
+  }
+ ]
+}

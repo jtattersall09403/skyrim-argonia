@@ -1,0 +1,28 @@
+{
+ "cellId": "MurkmireTravelShipAltenMeerhleel",
+ "sockets": {
+  "socket.MurkmireTravelShipAltenMeerhleel.0891E07E": {
+   "owner": "parcel.lighter-flotilla.tradeship",
+   "fillRule": "blanket.household-chest",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.rag",
+      "count": 2
+     },
+     {
+      "item": "item.leather-strips",
+      "count": 1
+     },
+     {
+      "item": "item.spine-balm",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.household-chest"
+   }
+  }
+ },
+ "schemaVersion": 1
+}

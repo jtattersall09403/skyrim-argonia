@@ -1,0 +1,95 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "entries": [
+  {
+   "id": "culture.group.opening-work-camp.overseers",
+   "level": "group",
+   "name": "The overseers",
+   "parent": "culture.settlement.opening-work-camp",
+   "members": [
+    "npc.pirate-freeholds.opening-work-camp.n3",
+    "npc.pirate-freeholds.opening-work-camp.n3-2"
+   ],
+   "norms": [
+    {
+     "text": "Each door is checked at dusk.",
+     "source": "inferred"
+    },
+    {
+     "text": "The debt ledger stays open by the fire.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Striking a name from the ledger without the house's word.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    }
+   ],
+   "values": [
+    {
+     "text": "A ledger that balances.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Families who hide a hand from the roll.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "work": {
+     "lean": 1,
+     "text": "The channel is kept open and the debts are paid down by it.",
+     "source": "world/sources/lore/topics/labour-and-bondage.md"
+    },
+    "people": {
+     "lean": 0,
+     "text": "Quiet families, as long as the clutch keeps them here.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Stranger to a visitor; the families by their roles.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [
+     {
+      "text": "By the ledger.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "That the debts can never be worked off.",
+      "source": "world/sources/lore/topics/labour-and-bondage.md"
+     }
+    ]
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "The house sends no more coin for the camp's lamp oil.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": []
+   },
+   "views": [
+    {
+     "node": "culture.group.opening-work-camp.gang-families",
+     "lean": 0,
+     "text": "They will not run while the clutch is in the shed.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.15
+  }
+ ]
+}

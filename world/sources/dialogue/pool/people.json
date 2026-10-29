@@ -1,0 +1,20 @@
+{
+ "schemaVersion": 1,
+ "domain": "dialogue-pool",
+ "topicClass": "people",
+ "entries": [
+  {
+   "schemaVersion": 1,
+   "id": "pool.fallback.people",
+   "type": "dialogue",
+   "speaker": null,
+   "keys": {},
+   "fallbackFor": "people",
+   "words": "Folk are folk. Ask them yourself.",
+   "available": [],
+   "onDelivered": [],
+   "factIds": [],
+   "links": []
+  }
+ ]
+}

@@ -1,0 +1,225 @@
+{
+ "id": "archer",
+ "start": {
+  "query": "?view=character&x=2.2236&z=4.4883&t=23:00&d=7-28",
+  "kit": "start",
+  "skills": {
+   "sneak": 80,
+   "marksman": 60
+  },
+  "seed": 1,
+  "grant": [
+   {
+    "item": "imperial-bow",
+    "count": 1
+   }
+  ],
+  "level": 20
+ },
+ "steps": [
+  {
+   "name": "equip-bow",
+   "transition": "the iron longbow into the hands (a lead-in, unfilmed)",
+   "stage": {
+    "at": {
+     "x": 2313.6,
+     "z": 4556,
+     "yaw": 3.1416
+    },
+    "hour": 23,
+    "place": "place.naga-kur-deeps.naga-highway-camp-active-north",
+    "stance": "crouch",
+    "near": [
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "m": 13.8,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "m": 9.3,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "m": 11.4,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "m": 14.6,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "m": 23.9,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "m": 26.4,
+      "facing": false
+     }
+    ]
+   },
+   "do": {
+    "action": "equip",
+    "item": "imperial-bow",
+    "hand": "mainHand"
+   },
+   "keys": [
+    {
+     "press": "Escape"
+    },
+    {
+     "wait_s": 0.4
+    },
+    {
+     "click": "[data-es-bag] [data-es-item=\"imperial-bow\"]"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": "[data-es-actions] [data-es-act=\"equip\"]"
+    },
+    {
+     "press": "Escape"
+    }
+   ],
+   "hold_s": 0.6,
+   "expect": {
+    "mainHand": "imperial-bow"
+   },
+   "lead": true
+  },
+  {
+   "name": "nock-daedric",
+   "transition": "the kit's daedric war arrows into the quiver, the archer's best shafts for a one-shot kill (a lead-in, unfilmed)",
+   "do": {
+    "action": "equip",
+    "item": "daedric-war-arrow"
+   },
+   "keys": [
+    {
+     "press": "Escape"
+    },
+    {
+     "wait_s": 0.4
+    },
+    {
+     "click": "[data-es-bag] [data-es-item=\"daedric-war-arrow\"]"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": "[data-es-actions] [data-es-act=\"equip\"]"
+    },
+    {
+     "press": "Escape"
+    }
+   ],
+   "hold_s": 0.6,
+   "expect": {
+    "mainHand": "imperial-bow"
+   },
+   "lead": true
+  },
+  {
+   "name": "sneak-shot",
+   "transition": "crouched 14 m behind n2, unaware at his post -> the shaft (staged: the game's own arrow loosed onto his chest) takes the sneak bow band and kills him",
+   "do": {
+    "action": "shoot",
+    "target": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+    "near": [
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "m": 13.8,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "m": 9.3,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "m": 11.4,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "m": 14.6,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "m": 23.9,
+      "facing": false
+     },
+     {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "m": 26.4,
+      "facing": false
+     }
+    ]
+   },
+   "keys": [
+    {
+     "wait_s": 1
+    },
+    {
+     "looseAt": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2"
+    },
+    {
+     "wait_s": 2
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "window": "unaware",
+    "multiplierAtLeast": 2,
+    "killed": true
+   }
+  },
+  {
+   "name": "the-alarm",
+   "transition": "n2 falls -> the camp's alarm: n2-3 beside him finds the body and walks to it searching, the eye opens (read at once: his search is a short walk)",
+   "do": {
+    "action": "wait",
+    "seconds": 0.3
+   },
+   "keys": [
+    {
+     "wait_s": 0.3
+    }
+   ],
+   "hold_s": 0.2,
+   "expect": {
+    "eye": "danger"
+   }
+  },
+  {
+   "name": "re-hide",
+   "transition": "the bow lowered, crouched still -> n2-3's search at the body ends: the eye hidden",
+   "do": {
+    "action": "wait-for-search",
+    "target": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+    "seconds": 60
+   },
+   "keys": [
+    {
+     "wait_s": 10
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "searching": {
+     "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3": false
+    },
+    "eye": "hidden"
+   }
+  }
+ ]
+}

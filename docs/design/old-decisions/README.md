@@ -1,0 +1,164 @@
+<!-- imported unchanged from elder-souls-argonia docs/decisions/README.md @ b581910f0f87d8da88eaa9876d238cdc5d709e78 (0.1 §f) -->
+# Decision records
+
+One record per decision the code does not make obvious: the why, never the
+recipe. Rewritten in place when the decision changes; one replaced whole
+is marked superseded here; under about 150 lines. Read the line of any
+record touching your task, then that record.
+
+- [0001](0001-migration-sources-and-vault.md) migration sources and asset vault
+- [0002](0002-era-and-source-confidence.md) era policy and source confidence
+- [0003](0003-coordinates-and-units.md) Coordinates and units
+- [0004](0004-fixed-difficulty-constraint.md) fixed difficulty is an architectural constraint
+- [0005](0005-province-heightfield-ingest.md) province heightfield ingest and provisional scale
+- [0006](0006-province-scale.md) provisional province scale ×3 (superseded by 0015)
+- [0007](0007-access-progression.md) deep-marsh access progression model
+- [0008](0008-reference-watershed.md) Reference watershed
+- [0009](0009-quest-plan-integration.md) quest master plan reviewed, modularised and integrated
+- [0010](0010-world-plan-modularised.md) world-generation master plan modularised
+- [0011](0011-ground-material-system.md) Ground material system
+- [0012](0012-portage-resolution-policy.md) Portage resolution policy
+- [0013](0013-phase7-package-extraction-shape.md) Phase 7 package extraction shape
+- [0014](0014-browser-chunk-encoding.md) browser encoding of terrain chunks
+- [0015](0015-province-rescale-and-mountain-relief.md) province scale ×1, vertical ×1, mountain drama into the data
+- [0016](0016-natural-light-and-world-time.md) Natural light and world time
+- [0017](0017-sandbox-parity-moved-to-phase-10b.md) Sandbox parity moved to phase 10b
+- [0018](0018-cast-lore-deliverability-review.md) Quest-plan review: cast, lore, delivery tiers
+- [0019](0019-stats-system-workstream-and-placement.md) The stats system workstream
+- [0020](0020-phase8a-light-implementation-shape.md) Phase 8a light implementation shape
+- [0021](0021-phase8a-gate-defect-fixes.md) The light stack after the 8a gate
+- [0022](0022-world-build-gap-audit.md) World build gap audit
+- [0023](0023-soundscape-polish-tier-and-credits.md) Soundscape polish tier and credits
+- [0024](0024-credits-review-and-notices-consolidation.md) Credits review and notices consolidation
+- [0025](0025-phase8b-water-implementation-shape.md) Water rendering shape
+- [0026](0026-main-quest-sharpened.md) Main quest sharpened
+- [0027](0027-morrowind-density-targets.md) Content density matched to Morrowind
+- [0028](0028-allegiance-reward-tracks.md) allegiance reward tracks, the quest index and the novelty rule
+- [0029](0029-phase-plan-research-review.md) forward research pack for Phases 8c–13
+- [0030](0030-quest-plan-qa-review.md) Quest-plan rulings: tiers, locks, swimming
+- [0031](0031-workstream-s-round1-shape.md) Workstream S round 1 shape
+- [0032](0032-phase8c-weather-implementation-shape.md) Weather and atmosphere
+- [0033](0033-workstream-s-design-and-numbers.md) The stat design, numbers and balance harness
+- [0034](0034-build-sequence-rework.md) Build sequence rulings (order superseded by 0134)
+- [0035](0035-workstream-s-round3-attributes-and-pace.md) workstream S round 3
+- [0036](0036-phase10-placement-decisions.md) Vegetation placement
+- [0037](0037-workstream-s-round4-qa-rulings.md) Stat design QA rulings
+- [0038](0038-world-build-vs-game-buildout-seam.md) The package rule; the world-build seam (superseded by 0134)
+- [0039](0039-source-game-crosscheck-triage.md) Source-game systems
+- [0040](0040-animation-packs-and-combat-parallel-pass.md) Animation packs, and the combat rules they carry
+- [0041](0041-phase11-settlement-decisions.md) Settlements and places
+- [0042](0042-buildout-steers-and-engineering-standards.md) Build-out steers, the ambitions batch, and the engineering standards
+- [0043](0043-text-quality-workstream.md) Text quality workstream
+- [0044](0044-world-registries.md) one registry framework for the world's id vocabularies
+- [0045](../research/archive/water-overhaul-2026-09/0045-reversible-water-overhaul.md) Reversible, terrain-constrained water (archived)
+- [0046](0046-water-overhaul-retired.md) the terrain-constrained water overhaul is retired
+- [0047](0047-water-one-physical-model.md) Water: one physical model shared by carve and compile
+- [0048](0048-vegetation-density-ladder.md) The between-region vegetation ladder, and the gates that hold it
+- [0049](0049-water-is-measured-and-has-a-season.md) Physical water is measured and has a season
+- [0050](0050-retire-the-raised-hammock-region-class.md) the raised hammock region class is retired
+- [0051](0051-route-span-systems.md) Route span systems (superseded in part by 0115)
+- [0052](0052-a-published-bundle-obeys-the-runtime-contract.md) A published place bundle obeys every contract the runtime enforces
+- [0053](0053-a-suppression-register-is-keyed-to-the-failure.md) A suppression register is keyed to the failure
+- [0054](0054-sex-is-an-axis-not-a-second-set-of-races.md) sex is an axis, not a second set of races
+- [0055](0055-a-collar-overlaps-the-neck-rather-than-meeting-it.md) A collar overlaps the neck rather than meeting it (superseded by 0056)
+- [0056](0056-armour-is-blended-to-the-wearer-not-deformed-to-fit.md) Armour is blended to the wearer, not deformed to fit
+- [0057](0057-phase16-terrain-once-water-once-places-on-a-frozen-world.md) Phase 16: terrain once, water once (superseded by 0099)
+- [0058](0058-the-hydrology-graph-is-the-water-record.md) The hydrology graph is the water record
+- [0059](0059-terrain-built-once-frozen-base-and-typed-patches.md) The terrain is built once
+- [0060](0060-rivers-reach-the-coast-profiles-are-graded.md) Inland sea-level water is not the sea
+- [0061](0061-phase-seams-after-16.md) The seams after the foundation phase (superseded; two rulings stand)
+- [0062](0062-dungeons-are-places-interiors-are-a-late-phase.md) Dungeons are places (queue superseded by 0134)
+- [0063](0063-water-once-the-line-is-high-water.md) Water once the line is high water
+- [0064](0064-waterfalls-are-the-vanilla-kit.md) Waterfalls are the vanilla kit
+- [0065](0065-the-compile-realises-the-graphs-classification.md) The water compile realises the graph's classification
+- [0066](0066-downstream-stages-read-the-signed-record-never-re-solve-it.md) Downstream stages read the signed-off record, never re-solve it
+- [0067](0067-the-apron-is-the-tamriel-map-at-one-to-one.md) The land beyond the border is the all-Tamriel map at 1
+- [0068](0068-routes-below-the-gate-records-here-realised-in-16h.md) Roads solved on the frozen ground, graded by patches
+- [0069](0069-the-road-network-is-six-legs-and-two-exits.md) The road network is six legs and two exits
+- [0070](0070-vegetation-and-dressing-read-the-record.md) Vegetation and dressing read the record
+- [0071](0071-every-placed-thing-steps-down-through-bands-and-collides-as-itself.md) Placed things step down through quality bands, collide as themselves
+- [0072](0072-the-ring-fades-in-the-shader-and-the-studio-serves-files-from-disk.md) The ring fades in the shader; the studio serves files from disk
+- [0073](0073-one-copy-per-pixel-a-card-is-baked-from-its-own-mesh-and-the-writer-is-not-the-rule.md) One copy per pixel; a card is baked from its own mesh
+- [0074](0074-side-lanes-beside-the-world-build-and-the-weapons-lane.md) Side lanes beside the world build and the weapons lane
+- [0075](0075-lod-is-a-ladder-stepped-from-the-camera.md) LOD is a ladder stepped from the camera
+- [0076](0076-weapons-lane-round-0-effects-slot-skill-inputs-and-skyrim-calibrated-tables.md) Weapons lane round 0
+- [0077](0077-weapons-lane-round-1-animated-armoury-movesets-and-meshes.md) Weapons lane round 1
+- [0078](0078-places-adapt-to-the-frozen-world.md) places adapt to the frozen world
+- [0079](0079-cheap-hands-expensive-head-agent-cost-controls.md) Agent policy: cheap hands, expensive head
+- [0080](0080-the-chain-runs-by-dependency-not-position.md) The chain runs by dependency, not by position
+- [0081](0081-building-blocks-then-exemplars-then-rollout-and-doors-are-transitions.md) Doors are transitions (superseded in part by 0099)
+- [0082](0082-vegetation-cells-are-built-once-and-the-gpu-picks-the-rung.md) Vegetation cells are built once
+- [0083](0083-session-switch-advice.md) Planners never hand off for cost
+- [0084](0084-the-frame-is-a-triangle-budget.md) The frame is a triangle budget
+- [0085](0085-kit-truth-is-mined-fixtures-ship-to-the-studio-only.md) Kit truth is mined from placement evidence
+- [0086](0086-kit-work-is-four-skills-by-job-written-from-the-ledger.md) Kit work is four skills by job (part superseded by 0100)
+- [0087](0087-opus-decides-when-delegated-no-lane-cap-review-by-pathspec.md) Opus decides when delegated (superseded in part by 0106)
+- [0088](0088-the-stats-model-lives-in-game-core-and-reads-injected-data.md) The stats model lives in game core and reads injected data
+- [0089](0089-the-combat-runtime-is-a-package-with-an-injected-host.md) The combat runtime is a package
+- [0090](0090-arrow-damage-is-calibrated-to-a-masters-warbow-headshot.md) Arrow damage is calibrated to the band ladder
+- [0091](0091-the-off-hand-holds-a-shield-a-weapon-or-a-light.md) The off hand holds a shield a weapon or a light
+- [0092](0092-stealth-is-a-detection-service-the-runtime-feeds.md) Stealth is a pure detection service the runtime feeds
+- [0093](0093-swimming-is-a-movement-mode-behind-the-controller-boundary.md) Swimming is a movement mode behind the controller boundary
+- [0094](0094-audio-ships-as-opus-webm-sets-read-from-the-plugin-loops-crossfade-at-runtime.md) Audio ships as Opus in WebM
+- [0095](0095-audio-runtime-is-an-injected-manager-over-an-engine-interface-fed-by-typed-sound-events.md) Audio runtime: an injected manager fed by typed sound events
+- [0096](0096-one-race-record-keyed-by-the-roster-with-morrowinds-packages.md) One race record keyed by the roster with morrowinds packages
+- [0097](0097-placement-is-authored-in-a-workbench-and-the-pose-record-is-the-output.md) Placement is authored in a workbench (superseded in part by 0099, 0100)
+- [0098](0098-variety-is-measured-per-settlement-not-by-a-template-cap.md) Variety is measured per settlement
+- [0099](0099-places-are-built-in-a-loop-until-the-skill-is-proven.md) Places are built in a loop until the skill is proven (part superseded)
+- [0100](0100-one-place-skill-whole-layout-authoring-lessons-store-and-the-acceptance-freeze.md) One place skill; an accepted place is frozen
+- [0101](0101-building-pads-are-typed-patches-with-retaining-walls.md) Building pads are typed `settlement-pad` patches (superseded in part by 0102)
+- [0102](0102-a-place-carries-its-own-ground-and-hands-over-nothing-it-can-check-itself.md) A place carries its own ground
+- [0103](0103-tier-a-interiors-ship-in-16k-and-every-promise-is-a-placed-socket.md) Tier A interiors ship in 16k (part superseded)
+- [0104](0104-the-world-is-one-normalised-record-set-promises-are-fulfilled-by-placed-interactables.md) The world is one normalised record set
+- [0105](0105-setting-class-reserved-doors-lights-band-planned-variety.md) Setting class, reserved doors, lights band (part superseded by 0108)
+- [0106](0106-how-we-work-fix-at-source-one-preflight-per-batch-scoped-for-real.md) How we work (superseded in part by 0131)
+- [0107](0107-one-config-driven-fire-system-replaces-sprite-flames.md) One config-driven fire system replaces sprite flames
+- [0108](0108-performance-architecture-fixture-light-field-ready-materials-view-gated-streaming-fading-tiers.md) Performance architecture: light field, view-gated streaming, tiers
+- [0109](0109-interior-additions-add-kit-pieces-to-a-tier-a-cell.md) Interior additions add kit pieces to a tier A cell (part superseded by 0123)
+- [0113](0113-socket-interact-point.md) Socket interact point
+- [0114](0114-the-plugin-data-is-the-interior-manifest.md) The plugin data is the interior manifest
+- [0115](0115-province-route-compile-builds-no-crossings.md) The province route compile builds no crossings
+- [0116](0116-the-record-is-the-built-place.md) The record is the built place
+- [0117](0117-record-coherence-protocol-and-gate.md) Record coherence protocol and gate
+- [0118](0118-agents-are-capped-by-context-leads-only-plan-look-ups-are-batched-by-hook.md) Work is chunked to one context per brief
+- [0119](0119-runpod-is-the-gpu-lane.md) RunPod is the GPU lane
+- [0120](0120-kits-stream-per-piece-spawn-ring-first.md) Kits stream per piece, spawn ring first
+- [0121](0121-webgpu-stays-a-second-build-until-parity.md) WebGPU stays a second build until parity (superseded by 0122)
+- [0122](0122-webgpu-retired-webgl-studio-is-canonical.md) Webgpu retired webgl studio is canonical
+- [0123](0123-interiors-are-lit-by-their-sources-windows-and-beams.md) Interiors are lit by their sources windows and beams
+- [0124](0124-marsh-mist-waterfall-mist-and-cap-clouds-are-raymarched-volumes.md) Marsh mist waterfall mist and cap clouds are raymarched volumes
+- [0125](0125-mound-op-raises-ground-for-terrain-shells.md) The `mound` layout op
+- [0126](0126-scene-states-on-layout-ops.md) Scene states on layout ops
+- [0127](0127-interior-claims-drop-cosmetic-cc-textured-refs-and-alias-functional-ones.md) Interior claims drop cosmetic cc textured refs and alias functional ones
+- [0128](0128-places-are-edited-in-place-never-rebuilt.md) Places are edited in place never rebuilt
+- [0129](0129-walk-12-contracts-facts-motion-light-plan-door-pairs.md) Walk 12 contracts: facts, motion, light, door pairs
+- [0130](0130-one-collider-part-per-placement.md) One collider part per placement
+- [0131](0131-one-check-gate.md) One check gate
+- [0132](0132-city-scale-build-methodology.md) City scale build methodology
+- [0133](0133-cities-are-hand-built.md) Cities are hand built
+- [0134](0134-four-parts-de-risk-first.md) Four parts, de-risk first (supersedes 0034/0062 and 0038)
+- [0135](0135-phase-16-closes-the-world-is-leg-work-now.md) Phase 16 closes
+- [0136](0136-haze-by-default-exemption-by-reason.md) Haze by default, exemption by reason
+- [0137](0137-directions-not-markers-until-discovered.md) Directions, not markers, until the player has been there
+- [0138](0138-people-and-creatures-live-by-the-place-record-and-the-lamp-clock.md) People and creatures live by the place record and the lamp clock
+- [0139](0139-cultures-down-to-the-person-facts-once-opinions-each.md) Cultures down to the person: facts once, opinions each
+- [0140](0140-layers-on-a-built-place-never-rebuild-it.md) Layers on a built place never rebuild it
+- [0141](0141-one-price-contract-coin-goods-or-a-favour.md) One price contract: coin, goods or a favour
+- [0142](0142-combat-is-met-everywhere-hostile-places-roaming-bands-and-answered-violence.md) Combat everywhere: hostile places, roaming bands, answered violence
+- [0143](0143-anyone-may-explain-restatement-is-near-verbatim-only.md) Anyone may explain; restatement is near-verbatim only
+- [0144](0144-progression-ships-whole-one-stat-schema-compiled-for-every-actor.md) Progression ships whole: one stat schema, every actor
+- [0145](0145-disposition-changes-the-talk-essential-topics-never-gated.md) Disposition changes the talk; essential topics never gated
+- [0146](0146-magic-ships-whole-skyrim-hands-one-effect-family-system-folk-sellers.md) Magic ships whole: Skyrim hands, one effect-family system
+- [0147](0147-early-levels-come-fast.md) Early levels come fast: level 2 in 20–30 minutes
+- [0148](0148-spell-sellers-carry-a-sheet-not-the-catalogue.md) Spell sellers carry a sheet, never the catalogue
+- [0149](0149-the-studio-plays-the-game-no-modes-flags-or-switches-for-game-actions.md) The studio plays the game: no mode, flag or switch for a game action
+- [0150](0150-crafting-ships-whole-the-slice-climbs-its-first-rungs.md) Crafting ships whole; the slice climbs its first rungs; journeys with eyes
+- [0151](0151-stealth-crime-and-locks-ship-whole-pickpocket-is-the-one-gamble.md) Stealth, crime and locks ship whole; the Owing paid, served or resisted
+- [0152](0152-climbing-is-a-province-wide-system-swim-is-closed-ladders-and-water-stealth-join.md) Province-wide climbing from FreeClimb's clips; swim closed; ladders and water stealth join
+- [0153](0153-quests-ship-as-data-over-one-world-record.md) Quests as data over one world record; the slice set authored whole
+- [0154](0154-the-build-gates-the-deploy-the-checks-run-beside-it.md) Only the build gates deploys
+- [0155](0155-journeys-are-staged-scenes.md) Journeys are staged scenes
+- [0156](0156-test-each-building-block-at-its-cheapest-level-compose-once.md) Test each block at its cheapest level, compose once
+- [0157](0157-the-marsh-does-what-the-lore-says.md) The marsh does what the loading facts say
+- [0158](0158-boats-and-sound-before-the-save-loop.md) Boats whole, then sound, then the save loop last in Part 2
+- [0159](0159-boats-are-wind-waker-sailing-dugout-and-sea-hull-first.md) Boats sail like The Wind Waker on one system; the dugout and the sea hull first; the player turns the wind

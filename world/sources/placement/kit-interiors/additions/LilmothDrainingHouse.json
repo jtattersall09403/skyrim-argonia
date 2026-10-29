@@ -1,0 +1,54 @@
+{
+ "schemaVersion": 2,
+ "cellId": "LilmothDrainingHouse",
+ "additions": [
+  {
+   "id": "LilmothDrainingHouse:add:work-impbrazier",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    127.416,
+    83.38,
+    81.49
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the dark floor of the draining house at night."
+  },
+  {
+   "id": "LilmothDrainingHouse:add:work-impbrazier-2",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    134.564,
+    83.072,
+    79.027
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the dark floor of the draining house at night."
+  },
+  {
+   "id": "LilmothDrainingHouse:add:work-impbrazier-3",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    127.616,
+    83.086,
+    85.239
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the dark floor of the draining house at night."
+  },
+  {
+   "id": "LilmothDrainingHouse:add:work-impbrazier-4",
+   "assetId": "vanilla:clutter/imperial/impbrazier01",
+   "pos": [
+    130.224,
+    83.072,
+    78.238
+   ],
+   "rotZDeg": 0,
+   "zone": "work",
+   "why": "Lights the dark floor of the draining house at night."
+  }
+ ]
+}

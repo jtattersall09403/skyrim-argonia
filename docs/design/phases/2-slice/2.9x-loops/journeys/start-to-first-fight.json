@@ -1,0 +1,443 @@
+{
+ "id": "start-to-first-fight",
+ "start": {
+  "query": "?view=character&x=4.7789&z=1.9&t=10:00&d=8-17",
+  "kit": "start"
+ },
+ "steps": [
+  {
+   "name": "start-kit",
+   "transition": "new game -> the start kit in the hands, sheathed",
+   "do": {
+    "action": "observe"
+   },
+   "keys": [],
+   "hold_s": 0.5,
+   "expect": {
+    "mainHand": "steel-sword",
+    "offHand": "steel-shield",
+    "drawn": false,
+    "screen": null
+   }
+  },
+  {
+   "name": "walk-to-hostile",
+   "transition": "standing -> walking toward a hostile",
+   "do": {
+    "action": "walkTo",
+    "target": "hostile"
+   },
+   "keys": [
+    {
+     "down": "KeyW"
+    },
+    {
+     "wait_s": 2.0
+    },
+    {
+     "up": "KeyW"
+    }
+   ],
+   "hold_s": 0.5,
+   "expect": {
+    "intent": "move",
+    "drawn": false
+   }
+  },
+  {
+   "name": "draw-at-hostile",
+   "transition": "sheathed -> drawn",
+   "do": {
+    "action": "draw"
+   },
+   "keys": [
+    {
+     "press": "Tab"
+    }
+   ],
+   "hold_s": 1.0,
+   "expect": {
+    "drawn": true,
+    "intent": "equipPressed",
+    "clip": "EQUIP"
+   }
+  },
+  {
+   "name": "light",
+   "transition": "drawn idle -> light attack",
+   "do": {
+    "action": "light"
+   },
+   "keys": [
+    {
+     "mouse": "left",
+     "hold_s": 0.1
+    }
+   ],
+   "hold_s": 1.0,
+   "expect": {
+    "intent": "lightPressed",
+    "clip": "LIGHT_1"
+   }
+  },
+  {
+   "name": "heavy",
+   "transition": "drawn idle -> heavy attack at the hold threshold",
+   "do": {
+    "action": "heavy"
+   },
+   "keys": [
+    {
+     "mouse": "left",
+     "hold_s": 0.5
+    }
+   ],
+   "hold_s": 1.2,
+   "expect": {
+    "intent": "heavyPressed",
+    "clip": "HEAVY"
+   }
+  },
+  {
+   "name": "block",
+   "transition": "drawn idle -> guard raised, a blow blocked",
+   "do": {
+    "action": "block"
+   },
+   "keys": [
+    {
+     "mouse": "right",
+     "hold_s": 0.6
+    }
+   ],
+   "hold_s": 0.5,
+   "expect": {
+    "intent": "guardHeld",
+    "blocked": true,
+    "clip": "SHIELD_GUARD_ENTER"
+   }
+  },
+  {
+   "name": "parry",
+   "transition": "drawn idle -> parry (guard held, primary tapped)",
+   "do": {
+    "action": "parry"
+   },
+   "keys": [
+    {
+     "down": "MouseRight"
+    },
+    {
+     "press": "MouseLeft"
+    },
+    {
+     "up": "MouseRight"
+    }
+   ],
+   "hold_s": 1.0,
+   "expect": {
+    "intent": "parryPressed",
+    "parryActive": true,
+    "clip": "SHIELD_PARRY"
+   }
+  },
+  {
+   "name": "lock-on",
+   "transition": "free camera -> locked on a hostile",
+   "do": {
+    "action": "lockOn"
+   },
+   "keys": [
+    {
+     "press": "KeyQ"
+    }
+   ],
+   "hold_s": 0.5,
+   "expect": {
+    "intent": "lockOnPressed"
+   }
+  },
+  {
+   "name": "roll",
+   "transition": "locked on -> roll toward the stick",
+   "do": {
+    "action": "roll"
+   },
+   "keys": [
+    {
+     "down": "KeyW"
+    },
+    {
+     "down": "Space"
+    },
+    {
+     "wait_s": 0.1
+    },
+    {
+     "up": "Space"
+    },
+    {
+     "up": "KeyW"
+    }
+   ],
+   "hold_s": 0.9,
+   "expect": {
+    "dodge": "roll",
+    "clip": "ROLL"
+   }
+  },
+  {
+   "name": "sheathe-after-fight",
+   "transition": "drawn -> sheathed",
+   "do": {
+    "action": "sheathe"
+   },
+   "keys": [
+    {
+     "press": "Tab"
+    }
+   ],
+   "hold_s": 1.0,
+   "expect": {
+    "drawn": false,
+    "intent": "equipPressed",
+    "clip": "UNEQUIP"
+   }
+  },
+  {
+   "name": "buy-a-spell",
+   "transition": "Greenspring's spell seller -> the spell onto the offer, Offer: bought for gold",
+   "do": {
+    "action": "buySpell",
+    "npc": "npc.hist-heartland.greenspring.tree-minder",
+    "spell": "purge-magic"
+   },
+   "keys": [
+    {
+     "wait_s": 1.5
+    },
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 1.0
+    },
+    {
+     "click": "[data-service=\"spells\"]"
+    },
+    {
+     "wait_s": 0.6
+    },
+    {
+     "click": "[data-spells] [data-es-row=\"purge-magic\"]"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": "[data-act=\"offer\"]"
+    },
+    {
+     "wait_s": 0.8
+    },
+    {
+     "press": "Escape"
+    }
+   ],
+   "hold_s": 1.0,
+   "expect": {
+    "known": [
+     "purge-magic"
+    ],
+    "paid": true
+   },
+   "teleport": {
+    "x": 4742.6,
+    "z": 1862.6
+   }
+  },
+  {
+   "name": "learn-a-spell",
+   "transition": "Greenspring's teacher -> a spell taught for coin",
+   "do": {
+    "action": "learnSpell",
+    "npc": "npc.hist-heartland.greenspring.spring-keeper",
+    "spell": "hearth-heal"
+   },
+   "keys": [
+    {
+     "wait_s": 1.5
+    },
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 1.0
+    },
+    {
+     "click": "[data-service=\"teach\"]"
+    },
+    {
+     "wait_s": 0.6
+    },
+    {
+     "wait_s": 1.0
+    },
+    {
+     "press": "Escape"
+    }
+   ],
+   "hold_s": 1.0,
+   "expect": {
+    "known": [
+     "hearth-heal"
+    ],
+    "paid": true
+   },
+   "teleport": {
+    "x": 4730.4,
+    "z": 1865.95
+   }
+  },
+  {
+   "name": "open-inventory",
+   "transition": "walking -> inventory open",
+   "do": {
+    "action": "openInventory"
+   },
+   "keys": [
+    {
+     "press": "Escape"
+    }
+   ],
+   "hold_s": 0.5,
+   "expect": {
+    "screen": "inventory"
+   }
+  },
+  {
+   "name": "spell-to-off-hand",
+   "transition": "magic window -> bought spell in the left hand",
+   "do": {
+    "action": "equipSpell",
+    "spell": "purge-magic",
+    "hand": "off"
+   },
+   "keys": [
+    {
+     "click": ".es-magic [data-es-row=\"purge-magic\"]"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": ".es-magic [data-ready=\"off\"]"
+    }
+   ],
+   "hold_s": 0.5,
+   "expect": {
+    "mainHand": "steel-sword",
+    "offHand": "purge-magic"
+   }
+  },
+  {
+   "name": "close-inventory",
+   "transition": "inventory open -> walking",
+   "do": {
+    "action": "closeScreen"
+   },
+   "keys": [
+    {
+     "click": "[data-es-close]"
+    }
+   ],
+   "hold_s": 0.3,
+   "expect": {
+    "screen": null
+   }
+  },
+  {
+   "name": "draw-with-spell",
+   "transition": "sheathed -> drawn, spell in the off hand",
+   "do": {
+    "action": "draw"
+   },
+   "keys": [
+    {
+     "press": "Tab"
+    }
+   ],
+   "hold_s": 1.0,
+   "expect": {
+    "drawn": true,
+    "intent": "equipPressed",
+    "clip": "EQUIP"
+   }
+  },
+  {
+   "name": "cast-bought-spell",
+   "transition": "spell in the off hand -> cast",
+   "do": {
+    "action": "cast",
+    "hand": "off"
+   },
+   "keys": [
+    {
+     "mouse": "right",
+     "hold_s": 1.5
+    }
+   ],
+   "hold_s": 1.0,
+   "expect": {
+    "intent": "castOffHeld",
+    "clip": "CAST_AIMED_RELEASE_L"
+   }
+  },
+  {
+   "name": "sheathe-at-the-end",
+   "transition": "drawn -> sheathed",
+   "do": {
+    "action": "sheathe"
+   },
+   "keys": [
+    {
+     "press": "Tab"
+    }
+   ],
+   "hold_s": 1.0,
+   "expect": {
+    "drawn": false,
+    "intent": "equipPressed",
+    "clip": "UNEQUIP"
+   }
+  },
+  {
+   "name": "die-in-the-fight",
+   "transition": "fighting -> fallen: the death screen (2.9b owner walk blocker 1)",
+   "do": {
+    "action": "die"
+   },
+   "keys": [],
+   "hold_s": 1.0,
+   "expect": {
+    "screen": "death"
+   }
+  },
+  {
+   "name": "wake-at-the-wake-point",
+   "transition": "the death screen -> awake at the wake point, the world running",
+   "do": {
+    "action": "wake"
+   },
+   "keys": [
+    {
+     "click": "[data-es-close]"
+    }
+   ],
+   "hold_s": 1.0,
+   "expect": {
+    "screen": null
+   }
+  }
+ ]
+}

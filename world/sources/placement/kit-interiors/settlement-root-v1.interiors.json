@@ -1,0 +1,4367 @@
+{
+ "assets": {
+  "bmv:architecture/citebosmer/houses/housechamp001": {
+   "category": "architecture",
+   "closedShellPromotedBy": "door-piece",
+   "doorStoreyM": 9.7,
+   "entrance": {
+    "doorAsset": "dlc01/dungeons/castle/lghalls/casexfreelgdoor01.nif",
+    "heightM": -0.35,
+    "kind": "esp-door",
+    "offsetM": [
+     4.475,
+     6.039
+    ],
+    "placements": 14,
+    "radiusM": 9.643,
+    "sideDeg": 153.22,
+    "yawDeg": 148.44
+   },
+   "entranceWhy": "the exterior door dlc01/dungeons/castle/lghalls/casexfreelgdoor01.nif that opens this interior, at the offset the plugin places it in this shell's own frame (14 placements)",
+   "espLink": {
+    "doorModel": "dlc01/dungeons/castle/lghalls/casexfreelgdoor01.nif",
+    "interiorCell": "01treeint",
+    "interiorFamily": "bmv:architecture/citebosmer/houses",
+    "interiorSizeM": {
+     "heightM": 85.18,
+     "planXM": 1041.71,
+     "planYM": 469.47
+    },
+    "placements": 14,
+    "plugin": "Valenwood.esp"
+   },
+   "floorOffsetM": 15.75,
+   "frontFaceFraction": 0.056,
+   "headroomM": 9.45,
+   "heightM": 34.37,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 6.8,
+   "planAreaM2": 161.39,
+   "planCentreM": [
+    -0.5,
+    0.37
+   ],
+   "provenance": [
+    {
+     "count": 3,
+     "doorAsset": "bmv:dlc01/dungeons/castle/lghalls/casexfreelgdoor01",
+     "doorwaySource": "assembly",
+     "kind": "assembly",
+     "offsetM": [
+      -6.45,
+      5.38
+     ],
+     "radiusM": 8.4,
+     "sideDeg": 230.17
+    }
+   ],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    -0.3,
+    15.8
+   ],
+   "storeys": 2,
+   "tileset": "bmv-treehouse-int",
+   "why": "Valenwood.esp teleports from this shell into interior cell 01treeint (14 placements of the load door); that cell is built from bmv:architecture/citebosmer/houses, which is packaged as bmv-treehouse-int"
+  },
+  "bmv:architecture/citebosmer/houses/housechampbalcon45v001": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 172.9,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 173\u00b0 in the piece's own frame carries 2.82x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 3.03,
+   "interior": "none",
+   "medianWallM": 1.39,
+   "planAreaM2": 21.25,
+   "planCentreM": [
+    0.58,
+    8.73
+   ],
+   "provenance": [],
+   "ringFraction": 0.208,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/houses/housechampbalconacces45d001": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 4.0,
+   "front": {
+    "deg": 225.6,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 226\u00b0 in the piece's own frame carries 3.53x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 1.71,
+   "heightM": 13.11,
+   "interior": "none",
+   "medianWallM": 0.24,
+   "planAreaM2": 57.18,
+   "planCentreM": [
+    0.22,
+    5.39
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "a crawl space, not a room \u2014 only 1.7 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "bmv:architecture/citebosmer/houses/housechampbalconacces45i001": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 4.0,
+   "front": {
+    "deg": 191.2,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 191\u00b0 in the piece's own frame carries 2.52x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 1.71,
+   "heightM": 13.11,
+   "interior": "none",
+   "medianWallM": 0.24,
+   "planAreaM2": 57.18,
+   "planCentreM": [
+    -3.66,
+    3.97
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "a crawl space, not a room \u2014 only 1.7 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "bmv:architecture/citebosmer/houses/housechampbalconacceslatld001": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 203.6,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 204\u00b0 in the piece's own frame carries 2.26x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 3.03,
+   "interior": "none",
+   "medianWallM": 1.38,
+   "planAreaM2": 16.38,
+   "planCentreM": [
+    0.88,
+    8.42
+   ],
+   "provenance": [],
+   "ringFraction": 0.181,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/houses/housechampbalconacceslatli001": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 216.7,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 217\u00b0 in the piece's own frame carries 1.72x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 3.03,
+   "interior": "none",
+   "medianWallM": 1.59,
+   "planAreaM2": 12.54,
+   "planCentreM": [
+    -4.82,
+    6.85
+   ],
+   "provenance": [],
+   "ringFraction": 0.236,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/houses/housechampbalconacceslatrd001": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 159.0,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 159\u00b0 in the piece's own frame carries 2.44x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.923,
+   "headroomM": 99.0,
+   "heightM": 3.03,
+   "interior": "none",
+   "medianWallM": 1.65,
+   "planAreaM2": 16.38,
+   "planCentreM": [
+    -0.26,
+    8.56
+   ],
+   "provenance": [],
+   "ringFraction": 0.181,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/houses/housechampbalconacceslatri001": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 142.9,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 143\u00b0 in the piece's own frame carries 2.59x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 3.03,
+   "interior": "none",
+   "medianWallM": 1.11,
+   "planAreaM2": 12.31,
+   "planCentreM": [
+    5.59,
+    6.97
+   ],
+   "provenance": [],
+   "ringFraction": 0.181,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/houses/housechampbalconfinl01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 253.3,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 253\u00b0 in the piece's own frame carries 2.37x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 3.03,
+   "interior": "none",
+   "medianWallM": 1.2,
+   "planAreaM2": 13.2,
+   "planCentreM": [
+    -5.05,
+    6.11
+   ],
+   "provenance": [],
+   "ringFraction": 0.222,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/houses/housechampbalconfinr01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 101.0,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 101\u00b0 in the piece's own frame carries 2.96x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 3.03,
+   "interior": "none",
+   "medianWallM": 1.16,
+   "planAreaM2": 13.12,
+   "planCentreM": [
+    5.31,
+    5.85
+   ],
+   "provenance": [],
+   "ringFraction": 0.194,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/houses/housechampdoor01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 3.0,
+   "front": null,
+   "frontFaceFraction": 0.206,
+   "headroomM": 2.43,
+   "heightM": 8.02,
+   "interior": "none",
+   "medianWallM": 0.94,
+   "planAreaM2": 8.69,
+   "planCentreM": [
+    -0.08,
+    6.09
+   ],
+   "provenance": [],
+   "ringFraction": 0.472,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "open sided \u2014 only 47% of the ring at 1.6 m hits a wall, so it does not enclose anything"
+  },
+  "bmv:architecture/citebosmer/houses/housechamplianess001": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 8.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 10.24,
+   "interior": "none",
+   "medianWallM": 1.1,
+   "planAreaM2": 91.4,
+   "planCentreM": [
+    -0.49,
+    2.95
+   ],
+   "provenance": [],
+   "ringFraction": 0.264,
+   "roofOverhead": false,
+   "sizeClass": "medium",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/houses/housechamplianestronc": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 8.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 39.73,
+   "interior": "none",
+   "medianWallM": 5.25,
+   "planAreaM2": 127.71,
+   "planCentreM": [
+    -0.57,
+    -3.76
+   ],
+   "provenance": [],
+   "ringFraction": 0.181,
+   "roofOverhead": false,
+   "sizeClass": "large",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/houses/housechampwindow001": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 2.01,
+   "interior": "none",
+   "planAreaM2": 0.58,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.6 m\u00b2 plan, 2.0 m tall)"
+  },
+  "bmv:architecture/citebosmer/houses/housechampwindow002": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 2.74,
+   "interior": "none",
+   "planAreaM2": 1.19,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.2 m\u00b2 plan, 2.7 m tall)"
+  },
+  "bmv:architecture/citebosmer/houses/housechampwindow003": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 313.3,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 313\u00b0 in the piece's own frame carries 2.04x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 2.34,
+   "interior": "none",
+   "planAreaM2": 1.14,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.1 m\u00b2 plan, 2.3 m tall)"
+  },
+  "bmv:architecture/citebosmer/houses/housechampwindow004": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 2.5,
+   "interior": "none",
+   "planAreaM2": 0.94,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.9 m\u00b2 plan, 2.5 m tall)"
+  },
+  "bmv:architecture/citebosmer/houses/housegland001": {
+   "category": "architecture",
+   "closedShellPromotedBy": "door-piece",
+   "entrance": {
+    "doorAsset": "dlc01/dungeons/castle/lghalls/casexfreelgdoor01.nif",
+    "heightM": 1.518,
+    "kind": "esp-door",
+    "offsetM": [
+     4.538,
+     0.726
+    ],
+    "placements": 4,
+    "radiusM": 4.596,
+    "sideDeg": 231.24,
+    "yawDeg": 279.79
+   },
+   "entranceWhy": "the exterior door dlc01/dungeons/castle/lghalls/casexfreelgdoor01.nif that opens this interior, at the offset the plugin places it in this shell's own frame (4 placements)",
+   "espLink": {
+    "doorModel": "dlc01/dungeons/castle/lghalls/casexfreelgdoor01.nif",
+    "interiorCell": "01treeint",
+    "interiorFamily": "bmv:architecture/citebosmer/houses",
+    "interiorSizeM": {
+     "heightM": 85.18,
+     "planXM": 1041.71,
+     "planYM": 469.47
+    },
+    "placements": 4,
+    "plugin": "Valenwood.esp"
+   },
+   "floorOffsetM": 5.0,
+   "frontFaceFraction": 0.111,
+   "headroomM": 13.44,
+   "heightM": 20.79,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 2.39,
+   "planAreaM2": 47.24,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [
+    {
+     "count": 17,
+     "doorAsset": "bmv:dlc01/dungeons/castle/lghalls/casexfreelgdoor01",
+     "doorwaySource": "assembly",
+     "kind": "assembly",
+     "offsetM": [
+      -3.43,
+      -2.81
+     ],
+     "radiusM": 4.43,
+     "sideDeg": 309.32
+    },
+    {
+     "count": 14,
+     "doorAsset": "bmv:dlc01/dungeons/castle/lghalls/casexfreelgdoor01",
+     "doorwaySource": "assembly",
+     "kind": "assembly",
+     "offsetM": [
+      -3.64,
+      2.53
+     ],
+     "radiusM": 4.43,
+     "sideDeg": 235.19
+    },
+    {
+     "count": 12,
+     "doorAsset": "bmv:dlc01/dungeons/castle/lghalls/casexfreelgdoor01",
+     "doorwaySource": "assembly",
+     "kind": "assembly",
+     "offsetM": [
+      -3.43,
+      -2.81
+     ],
+     "radiusM": 4.43,
+     "sideDeg": 309.32
+    }
+   ],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "storeyLevelsM": [
+    1.5,
+    5.0
+   ],
+   "storeys": 2,
+   "tileset": "bmv-treehouse-int",
+   "why": "Valenwood.esp teleports from this shell into interior cell 01treeint (4 placements of the load door); that cell is built from bmv:architecture/citebosmer/houses, which is packaged as bmv-treehouse-int"
+  },
+  "bmv:architecture/citebosmer/houses/houseglandacceslatd01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 100.6,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 28 times with other statics to one side; the side they left open, at 101\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 3.03,
+   "interior": "none",
+   "medianWallM": 1.52,
+   "planAreaM2": 11.73,
+   "planCentreM": [
+    0.07,
+    4.76
+   ],
+   "provenance": [],
+   "ringFraction": 0.167,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/houses/houseglandacceslati01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 224.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 225\u00b0 in the piece's own frame carries 2.82x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 3.03,
+   "interior": "none",
+   "medianWallM": 1.77,
+   "planAreaM2": 12.37,
+   "planCentreM": [
+    -3.22,
+    3.15
+   ],
+   "provenance": [],
+   "ringFraction": 0.111,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/houses/houseglanddoor001": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 4.52,
+   "interior": "none",
+   "planAreaM2": 0.65,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.7 m\u00b2 plan, 4.5 m tall)"
+  },
+  "bmv:architecture/citebosmer/houses/houseglandfixation001": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 74.8,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 75\u00b0 in the piece's own frame carries 1.39x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.097,
+   "headroomM": 2.23,
+   "heightM": 8.13,
+   "interior": "none",
+   "medianWallM": 0.74,
+   "planAreaM2": 87.44,
+   "planCentreM": [
+    0.13,
+    1.57
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "a closed prop seen from inside, not a room \u2014 only 10% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor, and the up ray finds no down-facing ceiling): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "bmv:architecture/citebosmer/houses/houseglandwindowet001": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 3.65,
+   "interior": "none",
+   "planAreaM2": 2.54,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (2.5 m\u00b2 plan, 3.6 m tall)"
+  },
+  "bmv:architecture/citebosmer/houses/houseglandwindowet002": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 256.3,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 256\u00b0 in the piece's own frame carries 12.72x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 2.59,
+   "interior": "none",
+   "planAreaM2": 0.8,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.8 m\u00b2 plan, 2.6 m tall)"
+  },
+  "bmv:architecture/citebosmer/houses/houseglandwindowet003": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 225.7,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 226\u00b0 in the piece's own frame carries 1.92x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 2.24,
+   "interior": "none",
+   "planAreaM2": 1.32,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.3 m\u00b2 plan, 2.2 m tall)"
+  },
+  "bmv:architecture/citebosmer/houses/houseglandwindowrc001": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 3.24,
+   "interior": "none",
+   "planAreaM2": 0.47,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.5 m\u00b2 plan, 3.2 m tall)"
+  },
+  "bmv:architecture/citebosmer/houses/housetronc001": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 8.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 55.55,
+   "interior": "none",
+   "medianWallM": 5.54,
+   "planAreaM2": 461.85,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 0.222,
+   "roofOverhead": false,
+   "sizeClass": "large",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/houses/housetronc001lianess": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 4.0,
+   "front": {
+    "deg": 195.9,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 196\u00b0 in the piece's own frame carries 1.46x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 18.4,
+   "interior": "none",
+   "medianWallM": 3.13,
+   "planAreaM2": 101.96,
+   "planCentreM": [
+    3.17,
+    8.33
+   ],
+   "provenance": [],
+   "ringFraction": 0.208,
+   "roofOverhead": false,
+   "sizeClass": "medium",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/houses/housetroncbalcon15v001": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 187.7,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 188\u00b0 in the piece's own frame carries 3.39x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 3.03,
+   "interior": "none",
+   "medianWallM": 2.14,
+   "planAreaM2": 11.23,
+   "planCentreM": [
+    0.09,
+    13.51
+   ],
+   "provenance": [],
+   "ringFraction": 0.347,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/houses/housetroncbalconacces15d001": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 134.6,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 135\u00b0 in the piece's own frame carries 2.98x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 8.38,
+   "interior": "none",
+   "medianWallM": 0.58,
+   "planAreaM2": 37.11,
+   "planCentreM": [
+    -0.52,
+    9.88
+   ],
+   "provenance": [],
+   "ringFraction": 0.153,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/houses/housetroncbalconacces15i001": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 189.8,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 190\u00b0 in the piece's own frame carries 3.86x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 8.38,
+   "interior": "none",
+   "medianWallM": 0.59,
+   "planAreaM2": 37.04,
+   "planCentreM": [
+    -7.35,
+    6.62
+   ],
+   "provenance": [],
+   "ringFraction": 0.153,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/houses/housetroncbalconendl01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 223.2,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 223\u00b0 in the piece's own frame carries 2.22x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 3.03,
+   "interior": "none",
+   "medianWallM": 1.35,
+   "planAreaM2": 13.83,
+   "planCentreM": [
+    2.34,
+    12.33
+   ],
+   "provenance": [],
+   "ringFraction": 0.542,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/houses/housetroncbalconendr01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 137.1,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 137\u00b0 in the piece's own frame carries 2.15x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 3.03,
+   "interior": "none",
+   "medianWallM": 1.39,
+   "planAreaM2": 13.8,
+   "planCentreM": [
+    -2.25,
+    12.39
+   ],
+   "provenance": [],
+   "ringFraction": 0.528,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/houses/housetroncdooret01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 3.0,
+   "front": {
+    "deg": 197.2,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 197\u00b0 in the piece's own frame carries 2.26x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.294,
+   "headroomM": 2.46,
+   "heightM": 8.34,
+   "interior": "none",
+   "medianWallM": 0.76,
+   "planAreaM2": 7.96,
+   "planCentreM": [
+    -0.18,
+    10.72
+   ],
+   "provenance": [],
+   "ringFraction": 0.472,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "open sided \u2014 only 47% of the ring at 1.6 m hits a wall, so it does not enclose anything"
+  },
+  "bmv:architecture/citebosmer/houses/housetroncdoorrc01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 1.0,
+   "front": {
+    "deg": 196.3,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 196\u00b0 in the piece's own frame carries 1.99x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.091,
+   "headroomM": 99.0,
+   "heightM": 11.09,
+   "interior": "none",
+   "medianWallM": 1.33,
+   "planAreaM2": 10.41,
+   "planCentreM": [
+    -0.65,
+    10.42
+   ],
+   "provenance": [],
+   "ringFraction": 0.458,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/houses/housetroncwindowet001": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 313.3,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 313\u00b0 in the piece's own frame carries 1.87x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 2.66,
+   "interior": "none",
+   "planAreaM2": 1.09,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.1 m\u00b2 plan, 2.7 m tall)"
+  },
+  "bmv:architecture/citebosmer/houses/housetroncwindowet002": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 2.41,
+   "interior": "none",
+   "planAreaM2": 1.41,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.4 m\u00b2 plan, 2.4 m tall)"
+  },
+  "bmv:architecture/citebosmer/houses/housetroncwindowet003": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 2.44,
+   "interior": "none",
+   "planAreaM2": 0.75,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.8 m\u00b2 plan, 2.4 m tall)"
+  },
+  "bmv:architecture/citebosmer/houses/housetroncwindowet004": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 77.6,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 78\u00b0 in the piece's own frame carries 2.23x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 2.82,
+   "interior": "none",
+   "planAreaM2": 1.67,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.7 m\u00b2 plan, 2.8 m tall)"
+  },
+  "bmv:architecture/citebosmer/houses/housetroncwindowrc001": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 2.56,
+   "interior": "none",
+   "planAreaM2": 0.43,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.4 m\u00b2 plan, 2.6 m tall)"
+  },
+  "bmv:architecture/citebosmer/houses/housetroncwindowrc002": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 2.55,
+   "interior": "none",
+   "planAreaM2": 0.37,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.4 m\u00b2 plan, 2.5 m tall)"
+  },
+  "bmv:architecture/citebosmer/houses/housetroncwindowrc003": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 2.33,
+   "interior": "none",
+   "planAreaM2": 0.32,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.3 m\u00b2 plan, 2.3 m tall)"
+  },
+  "bmv:architecture/citebosmer/passerelles/kiosque/kiosk01": {
+   "category": "architecture",
+   "entrance": {
+    "doorAsset": "dlc01/dungeons/castle/lghalls/casexfreelgdoor01.nif",
+    "heightM": -0.564,
+    "kind": "esp-door",
+    "offsetM": [
+     0.218,
+     -0.187
+    ],
+    "placements": 8,
+    "radiusM": 1.607,
+    "sideDeg": 243.96,
+    "yawDeg": 233.95
+   },
+   "entranceWhy": "the shell's own mesh has no opening \u2014 its entrance is a separate piece its pool ships in the same directory (kioskaccesd01, kioskaccesi01), modelled in the shell's own frame and measured to sit on its wall line to within 0.11 m",
+   "espLink": {
+    "doorModel": "dlc01/dungeons/castle/lghalls/casexfreelgdoor01.nif",
+    "interiorCell": "01treeint",
+    "interiorFamily": "bmv:architecture/citebosmer/houses",
+    "interiorSizeM": {
+     "heightM": 85.18,
+     "planXM": 1041.71,
+     "planYM": 469.47
+    },
+    "placements": 8,
+    "plugin": "Valenwood.esp"
+   },
+   "floorOffsetM": 8.0,
+   "frontFaceFraction": 1.0,
+   "headroomM": 10.44,
+   "heightM": 20.74,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 3.55,
+   "planAreaM2": 53.33,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [
+    {
+     "doorAsset": "bmv:architecture/citebosmer/passerelles/kiosque/kioskaccesd01",
+     "fitHow": "in the gap in the ring",
+     "fitM": 0.111,
+     "kind": "door-piece",
+     "offsetM": [
+      0.04,
+      3.44
+     ],
+     "pieceHeightM": 1.33,
+     "sideDeg": 179.36
+    },
+    {
+     "doorAsset": "bmv:architecture/citebosmer/passerelles/kiosque/kioskaccesi01",
+     "fitHow": "in the gap in the ring",
+     "fitM": 0.023,
+     "kind": "door-piece",
+     "offsetM": [
+      -2.48,
+      2.5
+     ],
+     "pieceHeightM": 1.34,
+     "sideDeg": 224.77
+    }
+   ],
+   "ringFraction": 0.778,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "storeyLevelsM": [
+    -0.6,
+    8.0
+   ],
+   "storeys": 2,
+   "tileset": "bmv-treehouse-int",
+   "why": "Valenwood.esp teleports from this shell into interior cell 01treeint (8 placements of the load door); that cell is built from bmv:architecture/citebosmer/houses, which is packaged as bmv-treehouse-int"
+  },
+  "bmv:architecture/citebosmer/passerelles/kiosque/kioskaccesd01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 1.33,
+   "interior": "none",
+   "planAreaM2": 1.41,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.4 m\u00b2 plan, 1.3 m tall)"
+  },
+  "bmv:architecture/citebosmer/passerelles/kiosque/kioskaccesi01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 1.34,
+   "interior": "none",
+   "planAreaM2": 2.04,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (2.0 m\u00b2 plan, 1.3 m tall)"
+  },
+  "bmv:architecture/citebosmer/passerelles/kiosque/kioskbarriered01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 1.23,
+   "interior": "none",
+   "planAreaM2": 0.55,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.6 m\u00b2 plan, 1.2 m tall)"
+  },
+  "bmv:architecture/citebosmer/passerelles/kiosque/kioskbarrierei01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 1.23,
+   "interior": "none",
+   "planAreaM2": 0.55,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.6 m\u00b2 plan, 1.2 m tall)"
+  },
+  "bmv:architecture/citebosmer/passerelles/kiosque/kioskfixation001": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 74.8,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 75\u00b0 in the piece's own frame carries 1.40x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.125,
+   "headroomM": 2.4,
+   "heightM": 8.24,
+   "interior": "none",
+   "medianWallM": 0.69,
+   "planAreaM2": 88.17,
+   "planCentreM": [
+    0.03,
+    1.46
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "a closed prop seen from inside, not a room \u2014 only 12% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor, and the up ray finds no down-facing ceiling): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "bmv:architecture/citebosmer/passerelles/kiosque/kioskmurd01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 4.73,
+   "interior": "none",
+   "planAreaM2": 1.26,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.3 m\u00b2 plan, 4.7 m tall)"
+  },
+  "bmv:architecture/citebosmer/passerelles/kiosque/kioskmuri01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 4.61,
+   "interior": "none",
+   "planAreaM2": 1.05,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.1 m\u00b2 plan, 4.6 m tall)"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passcirc45r1280h0ldi01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 340.6,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 341\u00b0 in the piece's own frame carries 2.04x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 3.03,
+   "interior": "none",
+   "medianWallM": 1.98,
+   "planAreaM2": 54.73,
+   "planCentreM": [
+    7.21,
+    -1.82
+   ],
+   "provenance": [],
+   "ringFraction": 0.431,
+   "roofOverhead": false,
+   "sizeClass": "medium",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passcirc45r1280h0rdi01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 17.8,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 18\u00b0 in the piece's own frame carries 2.21x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 3.03,
+   "interior": "none",
+   "medianWallM": 2.26,
+   "planAreaM2": 55.12,
+   "planCentreM": [
+    -6.5,
+    -1.57
+   ],
+   "provenance": [],
+   "ringFraction": 0.347,
+   "roofOverhead": false,
+   "sizeClass": "medium",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passcirc45r1280h256ldi01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 2.0,
+   "front": {
+    "deg": 345.6,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 346\u00b0 in the piece's own frame carries 2.27x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.978,
+   "headroomM": 99.0,
+   "heightM": 6.7,
+   "interior": "none",
+   "medianWallM": 1.13,
+   "planAreaM2": 53.66,
+   "planCentreM": [
+    7.33,
+    -1.86
+   ],
+   "provenance": [],
+   "ringFraction": 0.625,
+   "roofOverhead": false,
+   "sizeClass": "medium",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passcirc45r1280h256lid01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 2.0,
+   "front": {
+    "deg": 14.7,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 15\u00b0 in the piece's own frame carries 2.14x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 6.7,
+   "interior": "none",
+   "medianWallM": 0.83,
+   "planAreaM2": 53.55,
+   "planCentreM": [
+    6.66,
+    4.23
+   ],
+   "provenance": [],
+   "ringFraction": 0.667,
+   "roofOverhead": false,
+   "sizeClass": "medium",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passcirc45r1280h256rdi01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 2.0,
+   "front": {
+    "deg": 14.6,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 15\u00b0 in the piece's own frame carries 2.17x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 6.7,
+   "interior": "none",
+   "medianWallM": 0.95,
+   "planAreaM2": 53.93,
+   "planCentreM": [
+    -7.32,
+    -2.1
+   ],
+   "provenance": [],
+   "ringFraction": 0.653,
+   "roofOverhead": false,
+   "sizeClass": "medium",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passcirc45r1280h256rid01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 2.0,
+   "front": {
+    "deg": 345.1,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 345\u00b0 in the piece's own frame carries 2.24x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.943,
+   "headroomM": 99.0,
+   "heightM": 6.7,
+   "interior": "none",
+   "medianWallM": 1.86,
+   "planAreaM2": 53.7,
+   "planCentreM": [
+    -5.37,
+    3.72
+   ],
+   "provenance": [],
+   "ringFraction": 0.486,
+   "roofOverhead": false,
+   "sizeClass": "medium",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passcirc90r448h0dd01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 224.4,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 224\u00b0 in the piece's own frame carries 1.88x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 3.03,
+   "interior": "none",
+   "medianWallM": 1.81,
+   "planAreaM2": 37.78,
+   "planCentreM": [
+    4.37,
+    -4.35
+   ],
+   "provenance": [],
+   "ringFraction": 0.333,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passcirc90r448h128ldd01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 1.0,
+   "front": {
+    "deg": 224.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 224\u00b0 in the piece's own frame carries 1.89x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 4.88,
+   "interior": "none",
+   "medianWallM": 1.47,
+   "planAreaM2": 37.78,
+   "planCentreM": [
+    4.37,
+    -4.35
+   ],
+   "provenance": [],
+   "ringFraction": 0.569,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passcirc90r448h128rdd01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 1.0,
+   "front": {
+    "deg": 224.4,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 224\u00b0 in the piece's own frame carries 1.88x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 4.87,
+   "interior": "none",
+   "medianWallM": 1.55,
+   "planAreaM2": 37.78,
+   "planCentreM": [
+    4.37,
+    -4.35
+   ],
+   "provenance": [],
+   "ringFraction": 0.542,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passcirc90r448h256ldd01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 2.0,
+   "front": {
+    "deg": 224.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 224\u00b0 in the piece's own frame carries 1.92x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 6.7,
+   "interior": "none",
+   "medianWallM": 1.17,
+   "planAreaM2": 37.78,
+   "planCentreM": [
+    4.37,
+    -4.35
+   ],
+   "provenance": [],
+   "ringFraction": 0.514,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passcirc90r448h256rdd01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 2.0,
+   "front": {
+    "deg": 224.4,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 224\u00b0 in the piece's own frame carries 1.92x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 6.71,
+   "interior": "none",
+   "medianWallM": 1.1,
+   "planAreaM2": 37.78,
+   "planCentreM": [
+    4.37,
+    -4.35
+   ],
+   "provenance": [],
+   "ringFraction": 0.458,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passcirc90r576h256ldd01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 2.0,
+   "front": {
+    "deg": 224.7,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 225\u00b0 in the piece's own frame carries 2.58x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 6.7,
+   "interior": "none",
+   "medianWallM": 1.1,
+   "planAreaM2": 51.63,
+   "planCentreM": [
+    5.34,
+    -5.62
+   ],
+   "provenance": [],
+   "ringFraction": 0.569,
+   "roofOverhead": false,
+   "sizeClass": "medium",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passcirc90r576h256rdd01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 2.0,
+   "front": {
+    "deg": 223.8,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 224\u00b0 in the piece's own frame carries 2.45x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 6.7,
+   "interior": "none",
+   "medianWallM": 1.6,
+   "planAreaM2": 52.27,
+   "planCentreM": [
+    5.39,
+    -5.66
+   ],
+   "provenance": [],
+   "ringFraction": 0.514,
+   "roofOverhead": false,
+   "sizeClass": "medium",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passend01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 153.4,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 69 times with other statics to one side; the side they left open, at 153\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "heightM": 3.03,
+   "interior": "none",
+   "planAreaM2": 3.82,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (3.8 m\u00b2 plan, 3.0 m tall)"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passesc128h64d01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 1.7,
+   "heightM": 4.03,
+   "interior": "none",
+   "medianWallM": 0.15,
+   "planAreaM2": 6.02,
+   "planCentreM": [
+    0.91,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 0.444,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 1.7 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passjunctd01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 350.3,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 87 times with other statics to one side; the side they left open, at 350\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 1.82,
+   "heightM": 3.79,
+   "interior": "none",
+   "medianWallM": 0.07,
+   "planAreaM2": 12.84,
+   "planCentreM": [
+    0.02,
+    -0.05
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 1.8 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passjuncti01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 314.2,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 314\u00b0 in the piece's own frame carries 2.38x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 1.74,
+   "heightM": 3.64,
+   "interior": "none",
+   "medianWallM": 0.78,
+   "planAreaM2": 20.96,
+   "planCentreM": [
+    0.11,
+    -0.1
+   ],
+   "provenance": [],
+   "ringFraction": 0.875,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 1.7 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passjuncxd01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 135.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 136\u00b0 in the piece's own frame carries 5.61x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 1.82,
+   "heightM": 3.79,
+   "interior": "none",
+   "medianWallM": 0.06,
+   "planAreaM2": 14.06,
+   "planCentreM": [
+    -0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 1.8 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passjuncxi01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 1.74,
+   "heightM": 3.64,
+   "interior": "none",
+   "medianWallM": 0.8,
+   "planAreaM2": 25.58,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 0.875,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 1.7 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passjuncydii01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 79.7,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 80\u00b0 in the piece's own frame carries 1.97x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 3.03,
+   "interior": "none",
+   "medianWallM": 2.48,
+   "planAreaM2": 29.77,
+   "planCentreM": [
+    1.31,
+    0.07
+   ],
+   "provenance": [],
+   "ringFraction": 0.278,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passjuncyidd01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 44.3,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 44\u00b0 in the piece's own frame carries 1.97x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 3.03,
+   "interior": "none",
+   "medianWallM": 2.19,
+   "planAreaM2": 27.53,
+   "planCentreM": [
+    1.58,
+    -1.11
+   ],
+   "provenance": [],
+   "ringFraction": 0.194,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passl128d01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 3.03,
+   "interior": "none",
+   "medianWallM": 1.44,
+   "planAreaM2": 6.02,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 0.139,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passl128h32d01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.056,
+   "headroomM": 1.64,
+   "heightM": 3.51,
+   "interior": "none",
+   "medianWallM": 0.56,
+   "planAreaM2": 6.02,
+   "planCentreM": [
+    0.91,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 1.6 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passl128h32i01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.069,
+   "headroomM": 1.64,
+   "heightM": 3.5,
+   "interior": "none",
+   "medianWallM": 0.75,
+   "planAreaM2": 8.42,
+   "planCentreM": [
+    0.91,
+    -0.91
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 1.6 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passl128h64d01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 1.71,
+   "heightM": 4.03,
+   "interior": "none",
+   "medianWallM": 0.16,
+   "planAreaM2": 6.06,
+   "planCentreM": [
+    0.89,
+    0.18
+   ],
+   "provenance": [],
+   "ringFraction": 0.444,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 1.7 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passl128h64i01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 1.69,
+   "heightM": 3.97,
+   "interior": "none",
+   "medianWallM": 0.2,
+   "planAreaM2": 8.42,
+   "planCentreM": [
+    0.91,
+    -0.91
+   ],
+   "provenance": [],
+   "ringFraction": 0.417,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 1.7 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passl128i01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 225.9,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 374 times with other statics to one side; the side they left open, at 226\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 3.03,
+   "interior": "none",
+   "medianWallM": 1.47,
+   "planAreaM2": 8.42,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 0.167,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passl160h128d01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 1.0,
+   "front": {
+    "deg": 141.6,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 142\u00b0 in the piece's own frame carries 1.58x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 4.85,
+   "interior": "none",
+   "medianWallM": 0.55,
+   "planAreaM2": 7.53,
+   "planCentreM": [
+    1.11,
+    0.06
+   ],
+   "provenance": [],
+   "ringFraction": 0.528,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passl160h128i01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 1.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 4.85,
+   "interior": "none",
+   "medianWallM": 0.68,
+   "planAreaM2": 10.29,
+   "planCentreM": [
+    1.14,
+    -1.14
+   ],
+   "provenance": [],
+   "ringFraction": 0.514,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passl256d01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 171.1,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 171\u00b0 in the piece's own frame carries 1.47x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.9,
+   "headroomM": 99.0,
+   "heightM": 3.03,
+   "interior": "none",
+   "medianWallM": 1.66,
+   "planAreaM2": 11.68,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 0.278,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passl256h64d01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 11.7,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 12\u00b0 in the piece's own frame carries 1.56x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 1.74,
+   "heightM": 3.96,
+   "interior": "none",
+   "medianWallM": 0.65,
+   "planAreaM2": 11.66,
+   "planCentreM": [
+    0.07,
+    0.06
+   ],
+   "provenance": [],
+   "ringFraction": 0.389,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 1.7 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passl256h64i01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 225.6,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 3 times with other statics to one side; the side they left open, at 226\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 1.65,
+   "heightM": 3.96,
+   "interior": "none",
+   "medianWallM": 0.78,
+   "planAreaM2": 16.4,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 0.361,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 1.6 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passl256h64startd01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 133.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 134\u00b0 in the piece's own frame carries 1.92x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 3.51,
+   "interior": "none",
+   "medianWallM": 0.9,
+   "planAreaM2": 15.69,
+   "planCentreM": [
+    0.02,
+    0.32
+   ],
+   "provenance": [],
+   "ringFraction": 0.556,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passl256h64starti01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 316.2,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 316\u00b0 in the piece's own frame carries 3.15x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 3.61,
+   "interior": "none",
+   "medianWallM": 0.52,
+   "planAreaM2": 21.26,
+   "planCentreM": [
+    -0.05,
+    -0.1
+   ],
+   "provenance": [],
+   "ringFraction": 0.653,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passl256i01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 313.7,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 314\u00b0 in the piece's own frame carries 2.28x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 3.03,
+   "interior": "none",
+   "medianWallM": 1.74,
+   "planAreaM2": 16.41,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 0.278,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passl512h64d01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 1.74,
+   "heightM": 3.95,
+   "interior": "none",
+   "medianWallM": 1.11,
+   "planAreaM2": 22.88,
+   "planCentreM": [
+    0.13,
+    -0.05
+   ],
+   "provenance": [],
+   "ringFraction": 0.319,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 1.7 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passl512h64i01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 314.1,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 314\u00b0 in the piece's own frame carries 3.07x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 1.65,
+   "heightM": 3.95,
+   "interior": "none",
+   "medianWallM": 1.23,
+   "planAreaM2": 32.23,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 0.25,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 1.6 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passl64d01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 3.03,
+   "interior": "none",
+   "planAreaM2": 3.24,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (3.2 m\u00b2 plan, 3.0 m tall)"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passl64i01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 3.03,
+   "interior": "none",
+   "planAreaM2": 4.58,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (4.6 m\u00b2 plan, 3.0 m tall)"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passturn45h128ldi01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 1.0,
+   "front": {
+    "deg": 342.7,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 343\u00b0 in the piece's own frame carries 1.82x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 4.88,
+   "interior": "none",
+   "medianWallM": 1.12,
+   "planAreaM2": 18.75,
+   "planCentreM": [
+    2.75,
+    -0.62
+   ],
+   "provenance": [],
+   "ringFraction": 0.639,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passturn45h128lid01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 1.0,
+   "front": {
+    "deg": 198.0,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 198\u00b0 in the piece's own frame carries 1.67x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 4.88,
+   "interior": "none",
+   "medianWallM": 0.76,
+   "planAreaM2": 18.77,
+   "planCentreM": [
+    -2.59,
+    -1.85
+   ],
+   "provenance": [],
+   "ringFraction": 0.639,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passturn45h128rdi01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 1.0,
+   "front": {
+    "deg": 198.4,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 198\u00b0 in the piece's own frame carries 1.76x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 4.88,
+   "interior": "none",
+   "medianWallM": 1.14,
+   "planAreaM2": 18.66,
+   "planCentreM": [
+    2.7,
+    0.27
+   ],
+   "provenance": [],
+   "ringFraction": 0.569,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passturn45h128rid01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 1.0,
+   "front": {
+    "deg": 342.6,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 343\u00b0 in the piece's own frame carries 1.83x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.932,
+   "headroomM": 99.0,
+   "heightM": 4.88,
+   "interior": "none",
+   "medianWallM": 1.26,
+   "planAreaM2": 18.82,
+   "planCentreM": [
+    -2.17,
+    1.41
+   ],
+   "provenance": [],
+   "ringFraction": 0.611,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passturn45h64ldi01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 342.7,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 343\u00b0 in the piece's own frame carries 1.79x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 1.67,
+   "heightM": 3.95,
+   "interior": "none",
+   "medianWallM": 0.73,
+   "planAreaM2": 18.73,
+   "planCentreM": [
+    2.75,
+    -0.62
+   ],
+   "provenance": [],
+   "ringFraction": 0.361,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 1.7 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passturn45h64lid01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 198.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 199\u00b0 in the piece's own frame carries 2.03x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 1.79,
+   "heightM": 3.95,
+   "interior": "none",
+   "medianWallM": 1.06,
+   "planAreaM2": 19.04,
+   "planCentreM": [
+    -2.4,
+    -2.23
+   ],
+   "provenance": [],
+   "ringFraction": 0.306,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 1.8 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passturn45h64rdi01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 198.4,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 198\u00b0 in the piece's own frame carries 2.01x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 1.69,
+   "heightM": 3.95,
+   "interior": "none",
+   "medianWallM": 0.2,
+   "planAreaM2": 18.66,
+   "planCentreM": [
+    2.63,
+    0.22
+   ],
+   "provenance": [],
+   "ringFraction": 0.361,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 1.7 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passturn45h64rid01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 342.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 343\u00b0 in the piece's own frame carries 1.86x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 1.65,
+   "heightM": 3.95,
+   "interior": "none",
+   "medianWallM": 0.52,
+   "planAreaM2": 18.79,
+   "planCentreM": [
+    -2.33,
+    1.58
+   ],
+   "provenance": [],
+   "ringFraction": 0.375,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 1.6 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passturn45ldi01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 341.8,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 342\u00b0 in the piece's own frame carries 1.76x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 3.03,
+   "interior": "none",
+   "medianWallM": 1.75,
+   "planAreaM2": 19.05,
+   "planCentreM": [
+    2.64,
+    -0.65
+   ],
+   "provenance": [],
+   "ringFraction": 0.306,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passturn45ldis01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 37.2,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 37\u00b0 in the piece's own frame carries 2.57x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 3.03,
+   "interior": "none",
+   "planAreaM2": 4.92,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (4.9 m\u00b2 plan, 3.0 m tall)"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passturn45rdi01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 198.9,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 199\u00b0 in the piece's own frame carries 1.56x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.929,
+   "headroomM": 99.0,
+   "heightM": 3.03,
+   "interior": "none",
+   "medianWallM": 1.75,
+   "planAreaM2": 19.07,
+   "planCentreM": [
+    2.69,
+    0.68
+   ],
+   "provenance": [],
+   "ringFraction": 0.389,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "bmv:architecture/citebosmer/passerelles/troncons/passturn45rdis01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 322.2,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 322\u00b0 in the piece's own frame carries 1.92x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 3.03,
+   "interior": "none",
+   "planAreaM2": 4.91,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (4.9 m\u00b2 plan, 3.0 m tall)"
+  },
+  "bmv:architecture/citebosmer/trees/treegiant01": {
+   "category": "architecture",
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.87,
+     "kind": "leaf",
+     "offsetM": [
+      9.97,
+      0.52
+     ],
+     "sideDeg": 115.0
+    },
+    {
+     "arcM": 1.6,
+     "kind": "leaf",
+     "offsetM": [
+      8.72,
+      12.22
+     ],
+     "sideDeg": 152.5
+    },
+    {
+     "arcM": 1.31,
+     "kind": "leaf",
+     "offsetM": [
+      -4.21,
+      10.24
+     ],
+     "sideDeg": 197.5
+    },
+    {
+     "arcM": 1.12,
+     "kind": "leaf",
+     "offsetM": [
+      6.01,
+      -6.67
+     ],
+     "sideDeg": 65.0
+    }
+   ],
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 315.8,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 316\u00b0 in the piece's own frame carries 1.37x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 16.03,
+   "heightM": 205.89,
+   "interior": "none",
+   "medianWallM": 8.58,
+   "planAreaM2": 9636.21,
+   "planCentreM": [
+    0.28,
+    -3.99
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "why": "name token 'tree' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "bmv:architecture/citebosmer/trees/treegiantbranche1": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 8.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 5.0,
+   "heightM": 28.88,
+   "interior": "none",
+   "medianWallM": 4.0,
+   "planAreaM2": 255.12,
+   "planCentreM": [
+    -14.52,
+    -6.4
+   ],
+   "provenance": [],
+   "ringFraction": 0.111,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "why": "name token 'tree' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "bmv:architecture/citebosmer/trees/treegiantbranche12": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 4.0,
+   "front": {
+    "deg": 139.6,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 140\u00b0 in the piece's own frame carries 2.01x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 11.88,
+   "heightM": 30.63,
+   "interior": "none",
+   "medianWallM": 16.92,
+   "planAreaM2": 2065.33,
+   "planCentreM": [
+    49.72,
+    -0.68
+   ],
+   "provenance": [],
+   "ringFraction": 0.042,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "why": "name token 'tree' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "bmv:architecture/citebosmer/trees/treegiantbranche13": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 1.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 2.46,
+   "heightM": 11.7,
+   "interior": "none",
+   "medianWallM": 1.08,
+   "planAreaM2": 31.81,
+   "planCentreM": [
+    7.46,
+    0.71
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "name token 'tree' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "bmv:architecture/citebosmer/trees/treegiantbranche2": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 1.0,
+   "front": {
+    "deg": 273.6,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 274\u00b0 in the piece's own frame carries 4.54x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 22.72,
+   "heightM": 73.15,
+   "interior": "none",
+   "medianWallM": 35.2,
+   "planAreaM2": 1409.06,
+   "planCentreM": [
+    2.58,
+    -37.28
+   ],
+   "provenance": [],
+   "ringFraction": 0.028,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "why": "name token 'tree' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "bmv:architecture/citebosmer/trees/treegiantbranche3": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 1.0,
+   "front": {
+    "deg": 15.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 16\u00b0 in the piece's own frame carries 2.01x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 73.15,
+   "interior": "none",
+   "medianWallM": 37.82,
+   "planAreaM2": 1410.92,
+   "planCentreM": [
+    35.49,
+    -19.01
+   ],
+   "provenance": [],
+   "ringFraction": 0.028,
+   "roofOverhead": false,
+   "sizeClass": "large",
+   "why": "name token 'tree' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "bmv:architecture/citebosmer/trees/treegiantbranche4": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 4.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 7.12,
+   "interior": "none",
+   "medianWallM": 3.9,
+   "planAreaM2": 325.18,
+   "planCentreM": [
+    -22.32,
+    -12.3
+   ],
+   "provenance": [],
+   "ringFraction": 0.472,
+   "roofOverhead": false,
+   "sizeClass": "large",
+   "why": "name token 'tree' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "bmv:architecture/citebosmer/trees/treegiantbranche5": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 8.0,
+   "front": {
+    "deg": 6.6,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 7\u00b0 in the piece's own frame carries 1.92x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 23.05,
+   "interior": "none",
+   "medianWallM": 9.02,
+   "planAreaM2": 543.39,
+   "planCentreM": [
+    -5.97,
+    -23.97
+   ],
+   "provenance": [],
+   "ringFraction": 0.056,
+   "roofOverhead": false,
+   "sizeClass": "large",
+   "why": "name token 'tree' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "bmv:architecture/citebosmer/trees/treegiantbranche6": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 8.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 21.97,
+   "interior": "none",
+   "medianWallM": 1.98,
+   "planAreaM2": 143.03,
+   "planCentreM": [
+    14.68,
+    -10.72
+   ],
+   "provenance": [],
+   "ringFraction": 0.153,
+   "roofOverhead": false,
+   "sizeClass": "large",
+   "why": "name token 'tree' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "bmv:architecture/citebosmer/trees/treegiantbranche7": {
+   "category": "architecture",
+   "closedShellPromotedBy": "own-geometry-door",
+   "doorStoreyM": 0.85,
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 3.79,
+     "kind": "open-front",
+     "offsetM": [
+      -3.4,
+      -0.33
+     ],
+     "sideDeg": 270.0
+    }
+   ],
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 1.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 2.71,
+   "heightM": 5.04,
+   "interior": "none",
+   "medianWallM": 1.65,
+   "planAreaM2": 15.21,
+   "planCentreM": [
+    -1.34,
+    -0.33
+   ],
+   "provenance": [],
+   "ringFraction": 0.861,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "name token 'tree' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "bmv:architecture/citebosmer/trees/treegiantbrancheleaves01b": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 73.2,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 73\u00b0 in the piece's own frame carries 1.68x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.347,
+   "headroomM": 1.81,
+   "heightM": 4.63,
+   "interior": "none",
+   "medianWallM": 0.05,
+   "planAreaM2": 10.76,
+   "planCentreM": [
+    -0.3,
+    0.12
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "name token 'tree' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "bmv:architecture/citebosmer/trees/treegiantbrancheleaves03": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 2.0,
+   "front": {
+    "deg": 314.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 314\u00b0 in the piece's own frame carries 1.71x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.389,
+   "headroomM": 1.78,
+   "heightM": 10.55,
+   "interior": "none",
+   "medianWallM": 0.14,
+   "planAreaM2": 31.81,
+   "planCentreM": [
+    0.64,
+    -0.27
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "name token 'tree' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "bmv:architecture/citebosmer/trees/treegiantbrancheleaves04": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 258.4,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 258\u00b0 in the piece's own frame carries 1.86x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.514,
+   "headroomM": 3.05,
+   "heightM": 10.45,
+   "interior": "none",
+   "medianWallM": 0.17,
+   "planAreaM2": 34.29,
+   "planCentreM": [
+    -0.44,
+    -0.46
+   ],
+   "provenance": [],
+   "ringFraction": 0.972,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "name token 'tree' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "bmv:architecture/citebosmer/trees/treegiantrootbase01": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 8.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 6.71,
+   "heightM": 43.97,
+   "interior": "none",
+   "medianWallM": 7.63,
+   "planAreaM2": 528.85,
+   "planCentreM": [
+    24.27,
+    4.97
+   ],
+   "provenance": [],
+   "ringFraction": 0.097,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "why": "name token 'tree' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "bmv:architecture/citebosmer/trees/treemere03": {
+   "category": "architecture",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 8.0,
+   "front": {
+    "deg": 130.4,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 130\u00b0 in the piece's own frame carries 1.86x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 33.34,
+   "heightM": 342.54,
+   "interior": "none",
+   "medianWallM": 70.51,
+   "planAreaM2": 54829.23,
+   "planCentreM": [
+    -4.94,
+    34.09
+   ],
+   "provenance": [],
+   "ringFraction": 0.042,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "why": "name token 'tree' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "bmv:architecture/philscaves/small/hall01-wormbore": {
+   "category": "architecture",
+   "doorStoreyM": 0.1,
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.09,
+     "kind": "opening",
+     "offsetM": [
+      -3.1,
+      0.86
+     ],
+     "sideDeg": 253.21
+    }
+   ],
+   "entrance": null,
+   "entranceWhy": "every measured doorway was closed wall by rays (1 dropped); the door is a separate piece or the plugin's own placement",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 3.65,
+   "heightM": 3.73,
+   "interior": "shell",
+   "medianWallM": 2.45,
+   "planAreaM2": 25.93,
+   "planCentreM": [
+    -0.0,
+    -0.08
+   ],
+   "provenance": [],
+   "ringFraction": 0.944,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "storeyLevelsM": [
+    0.0
+   ],
+   "storeys": 1,
+   "why": "measured to enclose a volume \u2014 94% of the ring at 1.6 m hits a wall, there is a roof overhead and 2.5 m of room to stand \u2014 with no matched interior and no tileset rule, so Phase 12 must claim an interior for it"
+  },
+  "composite:root/kiosk-with-access": {
+   "category": "architecture",
+   "entrance": {
+    "doorAsset": "dlc01/dungeons/castle/lghalls/casexfreelgdoor01.nif",
+    "heightM": -0.564,
+    "kind": "esp-door",
+    "offsetM": [
+     0.218,
+     -0.187
+    ],
+    "placements": 8,
+    "radiusM": 1.607,
+    "sideDeg": 243.96,
+    "yawDeg": 233.95
+   },
+   "entranceWhy": "the shell's own mesh has no opening \u2014 its entrance is a separate piece its pool ships in the same directory (kioskaccesd01, kioskaccesi01), modelled in the shell's own frame and measured to sit on its wall line to within 0.11 m",
+   "espLink": {
+    "doorModel": "dlc01/dungeons/castle/lghalls/casexfreelgdoor01.nif",
+    "interiorCell": "01treeint",
+    "interiorFamily": "bmv:architecture/citebosmer/houses",
+    "interiorSizeM": {
+     "heightM": 85.18,
+     "planXM": 1041.71,
+     "planYM": 469.47
+    },
+    "placements": 8,
+    "plugin": "Valenwood.esp"
+   },
+   "floorOffsetM": 8.0,
+   "frontFaceFraction": 1.0,
+   "headroomM": 10.43,
+   "heightM": 20.74,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 3.55,
+   "planAreaM2": 53.34,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [
+    {
+     "doorAsset": "bmv:architecture/citebosmer/passerelles/kiosque/kioskaccesd01",
+     "fitHow": "in the gap in the ring",
+     "fitM": 0.114,
+     "kind": "door-piece",
+     "offsetM": [
+      0.04,
+      3.44
+     ],
+     "pieceHeightM": 1.33,
+     "sideDeg": 179.38
+    },
+    {
+     "doorAsset": "bmv:architecture/citebosmer/passerelles/kiosque/kioskaccesi01",
+     "fitHow": "in the gap in the ring",
+     "fitM": 0.025,
+     "kind": "door-piece",
+     "offsetM": [
+      -2.48,
+      2.5
+     ],
+     "pieceHeightM": 1.34,
+     "sideDeg": 224.81
+    }
+   ],
+   "ringFraction": 0.778,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "storeyLevelsM": [
+    -0.6,
+    8.0
+   ],
+   "storeys": 2,
+   "tileset": "bmv-treehouse-int",
+   "why": "Valenwood.esp teleports from this shell into interior cell 01treeint (8 placements of the load door); that cell is built from bmv:architecture/citebosmer/houses, which is packaged as bmv-treehouse-int"
+  },
+  "htbm:here there be monsters - curse of cipactli/trees/histramp": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 2.0,
+   "front": {
+    "deg": 224.2,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 224\u00b0 in the piece's own frame carries 1.90x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 6.7,
+   "interior": "none",
+   "medianWallM": 1.21,
+   "planAreaM2": 37.91,
+   "planCentreM": [
+    4.17,
+    -3.67
+   ],
+   "provenance": [],
+   "ringFraction": 0.472,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "name token 'ramp' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "htbm:here there be monsters - curse of cipactli/trees/histroots01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 8.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 6.71,
+   "heightM": 43.97,
+   "interior": "none",
+   "medianWallM": 7.63,
+   "planAreaM2": 528.85,
+   "planCentreM": [
+    24.27,
+    4.97
+   ],
+   "provenance": [],
+   "ringFraction": 0.097,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "why": "open sided \u2014 only 10% of the ring at 1.6 m hits a wall, so it does not enclose anything"
+  },
+  "htbm:here there be monsters - curse of cipactli/trees/histroots02": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 3.0,
+   "front": {
+    "deg": 51.0,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 51\u00b0 in the piece's own frame carries 1.69x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 6.2,
+   "interior": "none",
+   "medianWallM": 1.15,
+   "planAreaM2": 107.46,
+   "planCentreM": [
+    1.84,
+    -1.83
+   ],
+   "provenance": [],
+   "ringFraction": 0.958,
+   "roofOverhead": false,
+   "sizeClass": "medium",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "htbm:here there be monsters - curse of cipactli/trees/histroots03": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 1.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 4.71,
+   "interior": "none",
+   "medianWallM": 0.36,
+   "planAreaM2": 14.03,
+   "planCentreM": [
+    -4.02,
+    0.22
+   ],
+   "provenance": [],
+   "ringFraction": 0.458,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "htbm:here there be monsters - curse of cipactli/trees/histroots04": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 74.8,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 75\u00b0 in the piece's own frame carries 1.40x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.125,
+   "headroomM": 2.4,
+   "heightM": 8.24,
+   "interior": "none",
+   "medianWallM": 0.69,
+   "planAreaM2": 88.17,
+   "planCentreM": [
+    0.03,
+    1.46
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "a closed prop seen from inside, not a room \u2014 only 12% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor, and the up ray finds no down-facing ceiling): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "htbm:here there be monsters - curse of cipactli/trees/histroots05": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 4.73,
+   "interior": "none",
+   "planAreaM2": 1.24,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.2 m\u00b2 plan, 4.7 m tall)"
+  },
+  "htbm:here there be monsters - curse of cipactli/trees/histroots06": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 4.61,
+   "interior": "none",
+   "planAreaM2": 1.05,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.1 m\u00b2 plan, 4.6 m tall)"
+  },
+  "kotm:argonia/trees/hist trees/hist_root02": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 6.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 9.12,
+   "interior": "none",
+   "medianWallM": 1.44,
+   "planAreaM2": 174.84,
+   "planCentreM": [
+    0.49,
+    -0.05
+   ],
+   "provenance": [],
+   "ringFraction": 0.306,
+   "roofOverhead": false,
+   "sizeClass": "large",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "kotm:argonia/trees/hist trees/hist_root05": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 7.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 2.38,
+   "heightM": 9.77,
+   "interior": "none",
+   "medianWallM": 1.27,
+   "planAreaM2": 54.65,
+   "planCentreM": [
+    0.36,
+    -0.06
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor, and the up ray finds no down-facing ceiling): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "kotm:argonia/trees/hist trees/hist_vines01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 3.0,
+   "front": {
+    "deg": 195.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 195\u00b0 in the piece's own frame carries 1.63x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.9,
+   "headroomM": 99.0,
+   "heightM": 7.74,
+   "interior": "none",
+   "medianWallM": 0.34,
+   "planAreaM2": 22.45,
+   "planCentreM": [
+    -0.5,
+    -0.46
+   ],
+   "provenance": [],
+   "ringFraction": 0.417,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "kotm:argonia/trees/hist trees/histtree01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 7.0,
+   "front": {
+    "deg": 255.0,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 255\u00b0 in the piece's own frame carries 1.64x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.014,
+   "headroomM": 2.18,
+   "heightM": 24.35,
+   "interior": "none",
+   "medianWallM": 0.61,
+   "planAreaM2": 509.44,
+   "planCentreM": [
+    -0.76,
+    -1.63
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "why": "name token 'tree' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/trees/hist trees/histtree03": {
+   "category": "misc",
+   "doorStoreyM": 5.2,
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.71,
+     "kind": "opening",
+     "offsetM": [
+      -9.71,
+      0.36
+     ],
+     "sideDeg": 275.0
+    }
+   ],
+   "entrance": {
+    "doorAsset": "kotm:argonia/mudhuts/door01",
+    "heightM": -6.331,
+    "kind": "esp-door",
+    "offsetM": [
+     -7.548,
+     -5.32
+    ],
+    "placements": 2,
+    "radiusM": 9.235,
+    "sideDeg": 305.18,
+    "yawDeg": 116.5
+   },
+   "entranceWhy": "the exterior door kotm:argonia/mudhuts/door01 that opens this interior, at the offset the plugin places it in this shell's own frame (2 placements)",
+   "espLink": {
+    "doorModel": "kotm:argonia/mudhuts/door01",
+    "interiorCell": "HuluxinoagRoots",
+    "interiorFamily": "vanilla:dungeons/caves/green/epic",
+    "interiorSizeM": {
+     "heightM": 58.45,
+     "planXM": 235.61,
+     "planYM": 117.71
+    },
+    "placements": 2,
+    "plugin": "King of the Murkmire.esp"
+   },
+   "floorOffsetM": 6.0,
+   "frontFaceFraction": 0.618,
+   "headroomM": 8.96,
+   "heightM": 20.84,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 3.66,
+   "planAreaM2": 687.31,
+   "planCentreM": [
+    0.04,
+    1.21
+   ],
+   "provenance": [],
+   "ringFraction": 0.944,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    -6.3,
+    6.0
+   ],
+   "storeys": 2,
+   "tileset": "interior-kotm-v1",
+   "why": "King of the Murkmire.esp teleports from this shell into interior cell HuluxinoagRoots (2 placements of the load door); that cell is built from vanilla:dungeons/caves/green/epic, which is packaged as interior-kotm-v1"
+  },
+  "kotm:issgard/clutter/bones/issgard_boneargonianskullfull": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.23,
+   "interior": "none",
+   "planAreaM2": 0.04,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.0 m\u00b2 plan, 0.2 m tall)"
+  },
+  "mudmother:gv_meshes/argoniannest/archwaysticks": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 1.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 1.7,
+   "heightM": 2.73,
+   "interior": "none",
+   "medianWallM": 0.36,
+   "planAreaM2": 8.92,
+   "planCentreM": [
+    -6.72,
+    -6.72
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 1.7 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "mudmother:gv_meshes/argoniannest/argonianbonechime01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 196.1,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 196\u00b0 in the piece's own frame carries 1.65x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 1.41,
+   "interior": "none",
+   "planAreaM2": 0.55,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.6 m\u00b2 plan, 1.4 m tall)"
+  },
+  "mudmother:gv_meshes/argoniannest/argonianbridge": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 1.69,
+   "heightM": 2.69,
+   "interior": "none",
+   "medianWallM": 1.31,
+   "planAreaM2": 37.59,
+   "planCentreM": [
+    0.53,
+    -0.04
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "name token 'bridge' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "mudmother:gv_meshes/argoniannest/argonianbridgestart": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 137.8,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 138\u00b0 in the piece's own frame carries 1.55x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.944,
+   "headroomM": 1.69,
+   "heightM": 3.13,
+   "interior": "none",
+   "medianWallM": 1.27,
+   "planAreaM2": 8.66,
+   "planCentreM": [
+    -0.01,
+    0.03
+   ],
+   "provenance": [],
+   "ringFraction": 0.25,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 1.7 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "mudmother:gv_meshes/argoniannest/argonianfence01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 1.7,
+   "interior": "none",
+   "planAreaM2": 0.33,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.3 m\u00b2 plan, 1.7 m tall)"
+  },
+  "mudmother:gv_meshes/argoniannest/argonianfence02": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 1.64,
+   "interior": "none",
+   "planAreaM2": 0.11,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.1 m\u00b2 plan, 1.6 m tall)"
+  },
+  "mudmother:gv_meshes/argoniannest/argonianfenceend": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 1.69,
+   "interior": "none",
+   "planAreaM2": 0.28,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.3 m\u00b2 plan, 1.7 m tall)"
+  },
+  "mudmother:gv_meshes/argoniannest/argonianlanterns01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 4.51,
+   "interior": "none",
+   "planAreaM2": 3.21,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (3.2 m\u00b2 plan, 4.5 m tall)"
+  },
+  "mudmother:gv_meshes/argoniannest/argonianlanterns02": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 134.1,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 134\u00b0 in the piece's own frame carries 1.46x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 2.71,
+   "interior": "none",
+   "planAreaM2": 0.31,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.3 m\u00b2 plan, 2.7 m tall)"
+  },
+  "mudmother:gv_meshes/argoniannest/argonianlanterns03": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 2.24,
+   "interior": "none",
+   "planAreaM2": 0.31,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.3 m\u00b2 plan, 2.2 m tall)"
+  },
+  "mudmother:gv_meshes/argoniannest/argonianlanterns04": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 1.02,
+   "interior": "none",
+   "planAreaM2": 0.31,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.3 m\u00b2 plan, 1.0 m tall)"
+  },
+  "mudmother:gv_meshes/argoniannest/argonianplatform": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 137.6,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 138\u00b0 in the piece's own frame carries 1.65x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.34,
+   "interior": "none",
+   "planAreaM2": 7.27,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (7.3 m\u00b2 plan, 0.3 m tall)"
+  },
+  "mudmother:gv_meshes/argoniannest/argonianplatformsmall": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.31,
+   "interior": "none",
+   "planAreaM2": 2.86,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (2.9 m\u00b2 plan, 0.3 m tall)"
+  },
+  "mudmother:gv_meshes/argoniannest/argoniantotem01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 1.95,
+   "interior": "none",
+   "planAreaM2": 0.33,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.3 m\u00b2 plan, 1.9 m tall)"
+  },
+  "mudmother:gv_meshes/argoniannest/banner01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 2.92,
+   "interior": "none",
+   "planAreaM2": 0.28,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.3 m\u00b2 plan, 2.9 m tall)"
+  },
+  "mudmother:gv_meshes/argoniannest/histtree": {
+   "category": "misc",
+   "doorStoreyM": 7.21,
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 4.25,
+     "kind": "opening",
+     "offsetM": [
+      0.19,
+      0.43
+     ],
+     "sideDeg": 5.0
+    },
+    {
+     "arcM": 3.37,
+     "kind": "opening",
+     "offsetM": [
+      -0.58,
+      1.34
+     ],
+     "sideDeg": 268.29
+    },
+    {
+     "arcM": 2.37,
+     "kind": "opening",
+     "offsetM": [
+      -5.16,
+      1.61
+     ],
+     "sideDeg": 266.84
+    },
+    {
+     "arcM": 1.84,
+     "kind": "opening",
+     "offsetM": [
+      -9.79,
+      8.96
+     ],
+     "sideDeg": 232.34
+    }
+   ],
+   "doorwaysMeasuredAboveFloorM": -0.0,
+   "entrance": {
+    "arcM": 1.73,
+    "centreShiftM": -0.6,
+    "clearM": 1.9,
+    "kind": "opening",
+    "offsetM": [
+     3.77,
+     2.84
+    ],
+    "rayConfirmed": true,
+    "sideDeg": 112.5,
+    "sillYM": -1.62,
+    "widthM": 3.85
+   },
+   "floorOffsetM": 8.0,
+   "frontFaceFraction": 0.733,
+   "headroomM": 5.76,
+   "heightM": 22.12,
+   "interior": "tileset",
+   "medianWallM": 2.18,
+   "planAreaM2": 532.21,
+   "planCentreM": [
+    0.11,
+    1.32
+   ],
+   "provenance": [],
+   "ringFraction": 0.833,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    8.0
+   ],
+   "storeys": 1,
+   "tileset": "dungeon-root-v1",
+   "why": "a hollow Hist trunk, not a built room: the root dungeon kit is the grown interior grammar for it"
+  },
+  "mudmother:gv_meshes/argoniannest/thatchroofing": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.0,
+   "interior": "none",
+   "planAreaM2": 32.65,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (32.6 m\u00b2 plan, 0.0 m tall)"
+  },
+  "shores:shoresofskyrim/fishnet01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 343.6,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 344\u00b0 in the piece's own frame carries 2.80x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.46,
+   "interior": "none",
+   "planAreaM2": 0.25,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.2 m\u00b2 plan, 0.5 m tall)"
+  },
+  "tropical:landscape/trees/anvil_palm_trunk": {
+   "category": "tree",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 17.74,
+   "heightM": 33.74,
+   "interior": "none",
+   "medianWallM": 2.89,
+   "planAreaM2": 96.0,
+   "planCentreM": [
+    3.17,
+    -2.94
+   ],
+   "provenance": [],
+   "ringFraction": 0.153,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "category 'tree' is never a building"
+  },
+  "tropical:landscape/trees/anvil_root01": {
+   "category": "root",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 3.0,
+   "front": {
+    "deg": 51.1,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 51\u00b0 in the piece's own frame carries 1.85x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 6.38,
+   "interior": "none",
+   "medianWallM": 1.15,
+   "planAreaM2": 108.19,
+   "planCentreM": [
+    1.53,
+    -1.82
+   ],
+   "provenance": [],
+   "ringFraction": 0.972,
+   "roofOverhead": false,
+   "sizeClass": "medium",
+   "why": "category 'root' is never a building"
+  },
+  "tropical:landscape/trees/anvilgianttrunk": {
+   "category": "tree",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 56.3,
+   "heightM": 56.39,
+   "interior": "none",
+   "medianWallM": 4.9,
+   "planAreaM2": 85.62,
+   "planCentreM": [
+    -0.04,
+    0.04
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "category 'tree' is never a building"
+  },
+  "vanilla:clutter/basket01": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.44,
+   "interior": "none",
+   "planAreaM2": 0.18,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.2 m\u00b2 plan, 0.4 m tall)"
+  },
+  "vanilla:clutter/bones/bloodybone": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.07,
+   "interior": "none",
+   "planAreaM2": 0.04,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.0 m\u00b2 plan, 0.1 m tall)"
+  },
+  "vanilla:clutter/bones/bloodyribs": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.3,
+   "interior": "none",
+   "planAreaM2": 0.22,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.2 m\u00b2 plan, 0.3 m tall)"
+  },
+  "vanilla:clutter/bones/humanarmleft": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 284.1,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 284\u00b0 in the piece's own frame carries 2.37x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.13,
+   "interior": "none",
+   "planAreaM2": 0.08,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.1 m\u00b2 plan, 0.1 m tall)"
+  },
+  "vanilla:clutter/bones/humanlegleft": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 138.9,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 139\u00b0 in the piece's own frame carries 1.63x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.34,
+   "interior": "none",
+   "planAreaM2": 0.12,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.1 m\u00b2 plan, 0.3 m tall)"
+  },
+  "vanilla:clutter/bones/humanribcage": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.29,
+   "interior": "none",
+   "planAreaM2": 0.2,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.2 m\u00b2 plan, 0.3 m tall)"
+  },
+  "vanilla:clutter/bones/humanspine": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.18,
+   "interior": "none",
+   "planAreaM2": 0.09,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.1 m\u00b2 plan, 0.2 m tall)"
+  },
+  "vanilla:clutter/common/shovel01": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 229.4,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 229\u00b0 in the piece's own frame carries 7.41x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 1.51,
+   "interior": "none",
+   "planAreaM2": 0.06,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.1 m\u00b2 plan, 1.5 m tall)"
+  },
+  "vanilla:landscape/dirtcliffs/dirtcliffsisland01": {
+   "category": "terrain-feature",
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.29,
+     "kind": "opening",
+     "offsetM": [
+      -1.86,
+      1.41
+     ],
+     "sideDeg": 237.5
+    }
+   ],
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 198.6,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 199\u00b0 in the piece's own frame carries 3.77x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.028,
+   "headroomM": 4.11,
+   "heightM": 4.29,
+   "interior": "none",
+   "medianWallM": 5.2,
+   "planAreaM2": 150.3,
+   "planCentreM": [
+    -0.13,
+    0.31
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "why": "category 'terrain-feature' is never a building"
+  },
+  "vanilla:landscape/rocks/rockcaveentrance02": {
+   "category": "rock",
+   "doorStoreyM": 1.57,
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 9.39,
+     "kind": "open-front",
+     "offsetM": [
+      -1.46,
+      1.66
+     ],
+     "sideDeg": 182.5
+    },
+    {
+     "arcM": 1.46,
+     "kind": "opening",
+     "offsetM": [
+      0.56,
+      -1.75
+     ],
+     "sideDeg": 95.0
+    },
+    {
+     "arcM": 9.58,
+     "kind": "open-front",
+     "offsetM": [
+      -0.85,
+      1.57
+     ],
+     "sideDeg": 172.53
+    },
+    {
+     "arcM": 3.19,
+     "kind": "opening",
+     "offsetM": [
+      0.88,
+      -1.05
+     ],
+     "sideDeg": 111.63
+    }
+   ],
+   "doorwaysMeasuredAboveFloorM": 14.25,
+   "entrance": {
+    "doorAsset": "vanilla:autoloadmarker01",
+    "kind": "esp-door",
+    "offsetM": [
+     1.406,
+     0.419
+    ],
+    "placements": 63,
+    "radiusM": 1.467,
+    "sideDeg": 106.59,
+    "yawDeg": 106.59
+   },
+   "entranceWhy": "a cave mouth: the plugin's invisible load door stands inside the tunnel on a 1.47 m ring across its placements; their 31 door yaws give the tunnel axis, 107 deg in the rock's frame, on its show side, so the door is fixed there",
+   "espLink": {
+    "doorModel": "vanilla:autoloadmarker01",
+    "interiorCell": "ArgonianHome",
+    "interiorFamily": "vanilla:dungeons/caves/green/cliffs",
+    "interiorSizeM": {
+     "heightM": 31.29,
+     "planXM": 58.76,
+     "planYM": 89.87
+    },
+    "placements": 2,
+    "plugin": "ArgonianHome.esp"
+   },
+   "floorOffsetM": 1.0,
+   "frontFaceFraction": 1.0,
+   "headroomM": 3.7,
+   "heightM": 19.51,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 2.0,
+   "planAreaM2": 747.9,
+   "planCentreM": [
+    -1.31,
+    -1.92
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    1.0
+   ],
+   "storeys": 1,
+   "tileset": "vanilla-imperial-int",
+   "why": "ArgonianHome.esp teleports from this shell into interior cell ArgonianHome (2 placements of the load door); that cell is built from vanilla:dungeons/caves/green/cliffs, which is packaged as vanilla-imperial-int"
+  },
+  "vanilla:landscape/rocks/rockcaveentrance02-bored": {
+   "category": "rock",
+   "closedShellPromotedBy": "own-geometry-door",
+   "entrance": {
+    "doorAsset": "vanilla:autoloadmarker01",
+    "kind": "esp-door",
+    "offsetM": [
+     1.332,
+     0.615
+    ],
+    "placements": 63,
+    "radiusM": 1.467,
+    "sideDeg": 114.81,
+    "yawDeg": 114.81
+   },
+   "entranceWhy": "a cave mouth: the plugin's invisible load door stands inside the tunnel on a 1.47 m ring across its placements; their 31 door yaws give the tunnel axis, 115 deg in the rock's frame, on its show side, so the door is fixed there",
+   "espLink": {
+    "doorModel": "vanilla:autoloadmarker01",
+    "interiorCell": "ArgonianHome",
+    "interiorFamily": "vanilla:dungeons/caves/green/cliffs",
+    "interiorSizeM": {
+     "heightM": 31.29,
+     "planXM": 58.76,
+     "planYM": 89.87
+    },
+    "placements": 2,
+    "plugin": "ArgonianHome.esp"
+   },
+   "floorOffsetM": 1.0,
+   "frontFaceFraction": 0.0,
+   "headroomM": 2.81,
+   "heightM": 13.93,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 9.32,
+   "planAreaM2": 736.02,
+   "planCentreM": [
+    2.27,
+    -1.94
+   ],
+   "provenance": [],
+   "ringFraction": 0.917,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    1.0
+   ],
+   "storeys": 1,
+   "tileset": "vanilla-imperial-int",
+   "why": "ArgonianHome.esp teleports from this shell into interior cell ArgonianHome (2 placements of the load door); that cell is built from vanilla:dungeons/caves/green/cliffs, which is packaged as vanilla-imperial-int"
+  },
+  "vanilla:landscape/rocks/rockcliff02": {
+   "category": "rock",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 7.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 10.82,
+   "interior": "none",
+   "medianWallM": 0.54,
+   "planAreaM2": 331.21,
+   "planCentreM": [
+    1.89,
+    4.36
+   ],
+   "provenance": [],
+   "ringFraction": 0.847,
+   "roofOverhead": false,
+   "sizeClass": "large",
+   "why": "category 'rock' is never a building"
+  },
+  "vanilla:landscape/rocks/rockcliff08": {
+   "category": "rock",
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.4,
+     "kind": "leaf",
+     "offsetM": [
+      -5.94,
+      -4.09
+     ],
+     "sideDeg": 295.0
+    },
+    {
+     "arcM": 1.02,
+     "kind": "leaf",
+     "offsetM": [
+      0.58,
+      -12.28
+     ],
+     "sideDeg": 357.5
+    },
+    {
+     "arcM": 0.84,
+     "kind": "leaf",
+     "offsetM": [
+      9.97,
+      1.98
+     ],
+     "sideDeg": 107.5
+    },
+    {
+     "arcM": 0.84,
+     "kind": "leaf",
+     "offsetM": [
+      9.39,
+      3.51
+     ],
+     "sideDeg": 117.5
+    }
+   ],
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 72.6,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 73\u00b0 in the piece's own frame carries 2.21x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 6.94,
+   "heightM": 8.97,
+   "interior": "none",
+   "medianWallM": 9.67,
+   "planAreaM2": 394.28,
+   "planCentreM": [
+    1.08,
+    -0.82
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "why": "category 'rock' is never a building"
+  },
+  "vanilla:landscape/rocks/rockm01": {
+   "category": "rock",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 1.76,
+   "interior": "none",
+   "planAreaM2": 6.28,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (6.3 m\u00b2 plan, 1.8 m tall)"
+  },
+  "vanilla:markers/blackplane01": {
+   "category": "marker",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.0,
+   "interior": "none",
+   "planAreaM2": 53.0,
+   "provenance": [],
+   "sizeClass": "medium",
+   "why": "too small to hold an interior (53.0 m\u00b2 plan, 0.0 m tall)"
+  }
+ },
+ "kit": "settlement-root-v1",
+ "provenance": {
+  "exterior-interior-links.json": {
+   "miner": "worldgen.mine_door_links",
+   "minerVersion": "f82ba0f946d3",
+   "plugins": [
+    "ArgonianHome.esp",
+    "ArgonianLakeHouse.esl",
+    "Black Marsh North.esp",
+    "Black Marsh.esm",
+    "CCAyliedRuinsResources.esp",
+    "Cathedral - 3D FallForest Grass.esp",
+    "Cathedral - 3D Pine & Reach Grass.esp",
+    "Cathedral - 3D Tundra Grass.esp",
+    "DMArgonianHaus.esp",
+    "DarkwaterDen.esp",
+    "DepthsOfSkyrim.esp",
+    "Ferries  - Another Oakwood addon.esp",
+    "Ferries  - More Bandit Camps patch.esp",
+    "Ferries - Alternate Perspective - Here there be Monsters Patch.esp",
+    "Ferries - Alternate Perspective Patch.esp",
+    "Ferries - Alternate Start Patch.esp",
+    "Ferries - Animated Ships patch.esp",
+    "Ferries - B-oat patch - No inialta scene.esp",
+    "Ferries - B-oat patch - With Inialta Scene.esp",
+    "Ferries - Better Docks patch.esp",
+    "Ferries - Bruma Addon.esp",
+    "Ferries - Chanterelle Addon.esp",
+    "Ferries - Dynamic Boats Patch.esp",
+    "Ferries - JK Solitude Outskirts.esp",
+    "Ferries - JKs Raven Rock patch.esp",
+    "Ferries - Lainalten addon.esp",
+    "Ferries - Laintar Dale addon.esp",
+    "Ferries - Lux patch.esp",
+    "Ferries - Midwood Addon.esp",
+    "Ferries - Moon and Star addon.esp",
+    "Ferries - Old Gate Mill - Morthal Player house Addon.esp",
+    "Ferries - Riften patch.esp",
+    "Ferries - Rigmor of Bruma patch.esp",
+    "Ferries - Ryn Lumber Mills patch.esp",
+    "Ferries - Save the Icerunner Patch.esp",
+    "Ferries - Shadow Over Inialta addon.esp",
+    "Ferries - Siege At Icemoth Addon.esp",
+    "Ferries - TGSolitude Patch.esp",
+    "Ferries - Wyrmstooth Addon.esp",
+    "Ferries.esp",
+    "Here There Be Monsters - Curse of Cipactli.esp",
+    "King of the Murkmire.esp",
+    "SNT ferry.esp",
+    "SSKMovingBoats.esp",
+    "Sailboats.esp",
+    "Scriptfreeshipsailing.esp",
+    "Seashells.esp",
+    "Skyfall Sleeping Tree Overhaul.esp",
+    "Skyrim.esm",
+    "Tropical Skyrim -- Birds.esp",
+    "Tropical Skyrim.esp",
+    "Update.esm",
+    "Valenwood.esp",
+    "XanmeerResources.esp",
+    "igs_tileset_ayleid.esp"
+   ],
+   "poolRegister": {
+    "date": "2026-10-06",
+    "pools": [
+     "bmv",
+     "vanilla",
+     "tropical",
+     "xanmeer",
+     "drjacopo",
+     "hoddminir",
+     "jokerine",
+     "shores",
+     "mudmother",
+     "ferries",
+     "rowboats",
+     "ayleidcc",
+     "xalfek",
+     "darkwater",
+     "ayleidkit",
+     "histtree",
+     "canoe",
+     "ferryraft",
+     "sbot",
+     "depths",
+     "sirenroot",
+     "htbm",
+     "mwkeep",
+     "kotm",
+     "sailboats",
+     "impships",
+     "boatsanim",
+     "hlaalu"
+    ],
+    "source": "worldgen.asset_registry.POOLS",
+    "uncommittedChanges": false
+   },
+   "poolsMined": [
+    "ayleidcc",
+    "ayleidkit",
+    "bmv",
+    "boatsanim",
+    "canoe",
+    "darkwater",
+    "depths",
+    "drjacopo",
+    "ferries",
+    "ferryraft",
+    "histtree",
+    "htbm",
+    "jokerine",
+    "kotm",
+    "marshrest",
+    "mudmother",
+    "mwkeep",
+    "sailboats",
+    "tropical",
+    "vanilla",
+    "xalfek",
+    "xanmeer"
+   ],
+   "runDate": "2026-10-09"
+  },
+  "kit-assemblies-mined.json": {
+   "miner": "worldgen.mine_assemblies",
+   "minerVersion": "dd469251b755",
+   "plugins": [
+    "ArgonianLakeHouse.esl",
+    "Black Marsh North.esp",
+    "Black Marsh.esm",
+    "CCAyliedRuinsResources.esp",
+    "DMArgonianHaus.esp",
+    "DarkwaterDen.esp",
+    "DepthsOfSkyrim.esp",
+    "Ferries.esp",
+    "Here There Be Monsters - Curse of Cipactli.esp",
+    "King of the Murkmire.esp",
+    "SNT ferry.esp",
+    "SSKMovingBoats.esp",
+    "Sailboats.esp",
+    "Scriptfreeshipsailing.esp",
+    "Seashells.esp",
+    "Skyfall Sleeping Tree Overhaul.esp",
+    "Skyrim.esm",
+    "Tropical Skyrim -- Birds.esp",
+    "Tropical Skyrim.esp",
+    "Update.esm",
+    "Valenwood.esp",
+    "XanmeerResources.esp",
+    "igs_tileset_ayleid.esp"
+   ],
+   "poolRegister": {
+    "date": "2026-09-25",
+    "pools": [
+     "bmv",
+     "vanilla",
+     "tropical",
+     "xanmeer",
+     "drjacopo",
+     "hoddminir",
+     "jokerine",
+     "shores",
+     "mudmother",
+     "ferries",
+     "rowboats",
+     "ayleidcc",
+     "xalfek",
+     "darkwater",
+     "ayleidkit",
+     "histtree",
+     "canoe",
+     "ferryraft",
+     "sbot",
+     "depths",
+     "sirenroot",
+     "htbm",
+     "mwkeep",
+     "kotm",
+     "sailboats",
+     "impships",
+     "boatsanim",
+     "hlaalu"
+    ],
+    "source": "worldgen.asset_registry.POOLS",
+    "uncommittedChanges": true
+   },
+   "poolsMined": [
+    "ayleidcc",
+    "ayleidkit",
+    "bmv",
+    "boatsanim",
+    "canoe",
+    "darkwater",
+    "depths",
+    "ferries",
+    "ferryraft",
+    "histtree",
+    "htbm",
+    "jokerine",
+    "kotm",
+    "mudmother",
+    "mwkeep",
+    "sailboats",
+    "tropical",
+    "vanilla",
+    "xalfek",
+    "xanmeer"
+   ],
+   "runDate": "2026-09-26"
+  }
+ },
+ "rules": {
+  "doorwayArcM": [
+   0.8,
+   5.0
+  ],
+  "enclosureMinRing": 0.75,
+  "enclosureMinRoomM": 1.5,
+  "entranceRank": [
+   "esp-door",
+   "assembly",
+   "composite-leaf",
+   "approach",
+   "door-piece",
+   "leaf",
+   "opening",
+   "open-front"
+  ],
+  "entranceRankWhy": "one canonical entrance per piece (owner ruling 2026-09-07), ranked from the mod's own load door down to an open front; the losing evidence stays in `provenance` for audit and is never drawn or matched against",
+  "eyeHeightM": 1.6,
+  "frontEvidence": [
+   "co-placement (the bearing away from the neighbours the source authors planted around this piece)",
+   "asymmetry (the bearing band with the highest triangle density: the detailed, outward face)"
+  ],
+  "sizeClassMaxM2": {
+   "medium": 120.0,
+   "small": 40.0
+  }
+ },
+ "schemaVersion": 2
+}

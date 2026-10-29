@@ -57,9 +57,13 @@ engine that already has native systems for most of them.
    - Every old piece came from Skyrim or a Skyrim mod, so a native match always exists. The open cases are a mod
      we may not depend on, a mod that will not load on the pinned runtime, or a piece that looks different under
      Tropical Skyrim's textures (a look check).
-4. **Navmesh: tes4skyrim's method first.** It generates navmesh from the world's own collision, from code. The
-   Creation Kit's generator, scripted on the Windows game machine, is the check and the fallback. The proving
-   step comes first: round-trip one CK navmesh through Mutagen and confirm NPCs walk it, then generate.
+4. **Navmesh from the world's own collision, by code; tes4skyrim as the binary spec.** The reuse audit
+   (2026-10-29) found tes4skyrim's live generator walks Morrowind pathgrids and its collision-voxel generator was
+   deleted, so it cannot run on our LAND and REFR data. The generator is ours, on DotRecast over the collision
+   read from the placed meshes' `bhkCompressedMeshShape`, writing NVNM, NAVI, edge links and door triangles as
+   tes4skyrim's writer documents them. The Creation Kit's generator, scripted on the Windows game machine, is the
+   check and the fallback. The proving step comes first: round-trip one CK navmesh through Mutagen and confirm
+   NPCs walk it, then generate.
 5. **Water is Skyrim's own** (WATR records, cell water, placed planes, the vanilla rapids and falls pieces), tuned
    with Community Shaders. Nothing reproduces the old water's look.
 6. **Mist and light are Skyrim's and Community Shaders':**

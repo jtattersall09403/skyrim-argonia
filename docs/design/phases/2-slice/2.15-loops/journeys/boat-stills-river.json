@@ -1,0 +1,334 @@
+{
+ "id": "boat-stills-river",
+ "start": {
+  "query": "?view=character&x=7229&z=631&t=10:00&d=8-17",
+  "kit": "start",
+  "grant": [
+   {
+    "item": "gold",
+    "count": 400
+   }
+  ],
+  "known": [
+   "call-the-wind"
+  ]
+ },
+ "notes": "Riverwalk by day: buy the dugout, the pause map with an owned boat, moor at the stage landing, fall out and climb back in, beach on the cove bank.",
+ "steps": [
+  {
+   "name": "buy-the-dugout",
+   "transition": "the stage-mistress's boat window -> Buy the dugout: 150 gold; the stage canoe turns the player's",
+   "do": {
+    "action": "boat",
+    "op": "buy",
+    "seller": "npc.dunmer-north.riverwalk.stage-mistress",
+    "classId": "dugout"
+   },
+   "keys": [
+    {
+     "wait_s": 1.5
+    },
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 1.0
+    },
+    {
+     "click": "[data-service=\"boat\"]"
+    },
+    {
+     "wait_s": 0.6
+    },
+    {
+     "click": "[data-boat-buy=\"dugout\"]"
+    },
+  {
+   "wait_s": 0.6
+  },
+  {
+   "click": "[data-confirm=\"deal\"] [data-es-act=\"accept\"]"
+  },
+    {
+     "wait_s": 0.8
+    },
+    {
+     "press": "Escape"
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "owner": "player",
+     "event": "bought",
+     "spent": 150
+    }
+   },
+   "stage": {
+    "at": {
+     "x": 7229.48,
+     "z": 631.03,
+     "yaw": -0.52
+    },
+    "hour": 10,
+    "place": "place.dunmer-north.riverwalk"
+   },
+   "hold_s": 1.0,
+   "lead": true
+  },
+  {
+   "name": "pause-map-owned-boat",
+   "transition": "Escape opens the pause deck with the map beside the inventory: the owned dugout's marker and the mooring markers ([data-boat-marker]) on the map; the still is the deck at rest",
+   "do": {
+    "action": "openInventory"
+   },
+   "keys": [
+    {
+     "press": "Escape"
+    },
+    {
+     "wait_s": 1.5
+    }
+   ],
+   "expect": {
+    "screen": "inventory"
+   },
+   "hold_s": 1.5
+  },
+  {
+   "name": "close-the-map",
+   "transition": "Escape: the deck closes",
+   "do": {
+    "action": "closeScreen"
+   },
+   "keys": [
+    {
+     "press": "Escape"
+    },
+    {
+     "wait_s": 0.5
+    }
+   ],
+   "expect": {
+    "screen": null
+   }
+  },
+  {
+   "name": "board",
+   "transition": "E at the canoe: the player steps aboard",
+   "do": {
+    "action": "boat",
+    "op": "press"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "aboard": "boat.riverwalk.stage-canoe"
+    }
+   },
+   "teleport": {
+    "x": 7247,
+    "z": 641,
+    "yaw": -2.4
+   }
+  },
+  {
+   "name": "cast-off",
+   "transition": "E aboard: the canoe casts off from its tie",
+   "do": {
+    "action": "boat",
+    "op": "press"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "event": "castOff",
+     "state": "aboard"
+    }
+   }
+  },
+  {
+   "name": "moor-at-landing",
+   "transition": "E aboard, canoe at rest within the landing's reach: the canoe is tied at the stage landing",
+   "do": {
+    "action": "boat",
+    "op": "press"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "event": "moored",
+     "tiedAt": "socket.riverwalk.stage-landing"
+    }
+   },
+   "hold_s": 0.8
+  },
+  {
+   "name": "step-off-landing",
+   "transition": "E: the player steps ashore at the landing",
+   "do": {
+    "action": "boat",
+    "op": "press"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "aboard": null,
+     "state": "moored"
+    }
+   }
+  },
+  {
+   "name": "board-again",
+   "transition": "E at the tied canoe: aboard",
+   "do": {
+    "action": "boat",
+    "op": "press"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "aboard": "boat.riverwalk.stage-canoe"
+    }
+   }
+  },
+  {
+   "name": "cast-off-again",
+   "transition": "E aboard: the canoe casts off from the landing",
+   "do": {
+    "action": "boat",
+    "op": "press"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "event": "castOff",
+     "state": "aboard"
+    }
+   }
+  },
+  {
+   "name": "fall-out",
+   "transition": "Headless only (Blocker: no pod key goes over the side): the player goes over the side, the canoe drifts free",
+   "do": {
+    "action": "boat",
+    "op": "fallOut"
+   },
+   "keys": [],
+   "expect": {
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "aboard": null,
+     "state": "adrift"
+    }
+   }
+  },
+  {
+   "name": "climb-back-in",
+   "transition": "Headless only (Blocker: see fall-out): swimming beside the canoe, E climbs back aboard",
+   "do": {
+    "action": "boat",
+    "op": "press"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "aboard": "boat.riverwalk.stage-canoe"
+    }
+   }
+  },
+  {
+   "name": "paddle-to-the-bank",
+   "transition": "Headless only (Blocker: no pod verb drives a hull to a named mooring): W on the paddle to the cove beach",
+   "do": {
+    "action": "boat",
+    "op": "paddleTo",
+    "mooring": "socket.riverwalk.cove-beach"
+   },
+   "keys": [],
+   "expect": {
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "event": "arrived"
+    }
+   }
+  },
+  {
+   "name": "beach-on-the-bank",
+   "transition": "E at the cove beach: the canoe is run up and tied on the bank",
+   "do": {
+    "action": "boat",
+    "op": "press"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "event": "moored",
+     "tiedAt": "socket.riverwalk.cove-beach"
+    }
+   },
+   "hold_s": 0.8
+  },
+  {
+   "name": "step-off-bank",
+   "transition": "E: the player steps ashore on the bank",
+   "do": {
+    "action": "boat",
+    "op": "press"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.riverwalk.stage-canoe",
+     "aboard": null,
+     "state": "moored",
+     "tiedAt": "socket.riverwalk.cove-beach"
+    }
+   }
+  }
+ ]
+}

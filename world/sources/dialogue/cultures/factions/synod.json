@@ -1,0 +1,194 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "_": "Faction and office sheets for The Synod (lane 2.5a2). Ranks: the registry ladder (associate, member, senior); named offices beyond it are listed by their own rank slug.",
+ "entries": [
+  {
+   "id": "culture.faction.synod",
+   "level": "faction",
+   "name": "The Synod",
+   "parent": "culture.province.black-marsh",
+   "factionId": "faction.synod",
+   "norms": [
+    {
+     "text": "Knowledge is earned by years of dues.",
+     "source": "world/sources/lore/topics/guilds-and-orders.md"
+    },
+    {
+     "text": "Work through buyers and commissions here.",
+     "source": "world/sources/lore/topics/guilds-and-orders.md"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Necromancy.",
+     "source": "world/sources/lore/topics/guilds-and-orders.md"
+    }
+   ],
+   "values": [
+    {
+     "text": "Artefacts of power.",
+     "source": "world/sources/lore/topics/guilds-and-orders.md"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "The College of Whispers.",
+     "source": "world/sources/lore/topics/guilds-and-orders.md"
+    }
+   ],
+   "opinions": {
+    "faction": {
+     "lean": -1,
+     "text": "The College is a disgrace to the art.",
+     "source": "world/sources/lore/topics/guilds-and-orders.md"
+    },
+    "hist": {
+     "lean": 0,
+     "text": "An unparalleled field of study.",
+     "source": "world/sources/lore/topics/guilds-and-orders.md"
+    },
+    "empire": {
+     "lean": 1,
+     "text": "The Elder Council's favour matters.",
+     "source": "world/sources/lore/topics/guilds-and-orders.md"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Attendant; First Adjunct.",
+      "source": "world/sources/lore/topics/guilds-and-orders.md"
+     }
+    ],
+    "formality": "formal",
+    "oaths": [
+     {
+      "text": "By the Grand Council.",
+      "source": "world/sources/lore/topics/guilds-and-orders.md"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "Hierem.",
+      "source": "world/sources/lore/topics/guilds-and-orders.md"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Unwelcome in the province.",
+      "source": "world/sources/lore/topics/guilds-and-orders.md"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "A keystone is for sale.",
+      "source": "world/sources/lore/topics/guilds-and-orders.md"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.college-of-whispers",
+     "lean": -2,
+     "text": "Rivals.",
+     "source": "world/sources/lore/topics/guilds-and-orders.md"
+    },
+    {
+     "node": "culture.faction.sunken-archive",
+     "lean": -1,
+     "text": "Local hoarders.",
+     "source": "world/sources/lore/topics/guilds-and-orders.md"
+    }
+   ],
+   "deviationRate": 0.1
+  },
+  {
+   "id": "culture.office.synod.senior",
+   "level": "office",
+   "name": "Synod magister",
+   "parent": "culture.faction.synod",
+   "factionId": "faction.synod",
+   "rank": "senior",
+   "norms": [
+    {
+     "text": "Speaks in encrypted reference, half-explained.",
+     "source": "world/sources/lore/topics/guilds-and-orders.md"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Free knowledge.",
+     "source": "world/sources/lore/topics/guilds-and-orders.md"
+    }
+   ],
+   "values": [
+    {
+     "text": "The commission.",
+     "source": "world/sources/lore/topics/guilds-and-orders.md"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Amateurs.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "trade": {
+     "lean": 1,
+     "text": "Everything has a buyer.",
+     "source": "world/sources/lore/topics/guilds-and-orders.md"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Attendant.",
+      "source": "world/sources/lore/topics/guilds-and-orders.md"
+     }
+    ],
+    "formality": "formal",
+    "oaths": [
+     {
+      "text": "By the Grand Council.",
+      "source": "world/sources/lore/topics/guilds-and-orders.md"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "Hierem.",
+      "source": "world/sources/lore/topics/guilds-and-orders.md"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "No standing here.",
+      "source": "world/sources/lore/topics/guilds-and-orders.md"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "A keystone.",
+      "source": "world/sources/lore/topics/guilds-and-orders.md"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.synod",
+     "lean": 2,
+     "text": "Theirs.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.1
+  }
+ ]
+}

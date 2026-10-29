@@ -1,0 +1,347 @@
+{
+ "id": "pickpocket",
+ "start": {
+  "query": "?view=character&x=7.2032&z=0.5204&t=14:00&d=8-17",
+  "kit": "start",
+  "skills": {
+   "sneak": 80
+  },
+  "seed": 7
+ },
+ "steps": [
+  {
+   "name": "crouch-in-the-crowd",
+   "transition": "Riverwalk by day, crouched behind a crewman at his work -> unseen",
+   "stage": {
+    "at": {
+     "x": 7226.9,
+     "z": 516.0,
+     "yaw": 0.12
+    },
+    "hour": 14,
+    "place": "place.dunmer-north.riverwalk",
+    "stance": "crouch"
+   },
+   "do": {
+    "action": "crouch",
+    "near": [
+     {
+      "id": "npc.dunmer-north.riverwalk.n1",
+      "m": 2.0,
+      "facing": false
+     },
+     {
+      "id": "npc.dunmer-north.riverwalk.n1-3",
+      "m": 2.4,
+      "facing": true
+     },
+     {
+      "id": "npc.dunmer-north.riverwalk.n1-2",
+      "m": 3.0,
+      "facing": true
+     },
+     {
+      "id": "npc.dunmer-north.riverwalk.toll-holder",
+      "m": 24.1,
+      "facing": false
+     }
+    ],
+    "seconds": 2
+   },
+   "keys": [
+    {
+     "wait_s": 1
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "sneaking": true,
+    "notice": {
+     "npc.dunmer-north.riverwalk.n1-2": "unaware",
+     "npc.dunmer-north.riverwalk.n1-3": "unaware"
+    },
+    "eye": "hidden"
+   }
+  },
+  {
+   "name": "the-sheet",
+   "transition": "the pickpocket verb on him -> the sheet lists his key with its percent",
+   "do": {
+    "action": "pickpocket",
+    "npc": "npc.dunmer-north.riverwalk.n1"
+   },
+   "keys": [
+    {
+     "wait_s": 7
+    },
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 0.6
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "screen": "pickpocket",
+    "percent": {
+     "key-dunmer-north-riverwalk-1": 76
+    }
+   }
+  },
+  {
+   "name": "lift-the-key",
+   "transition": "the key chosen, the lift -> it is in the bag and nobody saw",
+   "do": {
+    "action": "pickpocket",
+    "npc": "npc.dunmer-north.riverwalk.n1",
+    "item": "key-dunmer-north-riverwalk-1"
+   },
+   "keys": [
+    {
+     "click": ".es-sheet--pickpocket [data-es-row=\"key-dunmer-north-riverwalk-1\"]"
+    },
+    {
+     "click": "[data-pickpocket-act=\"take\"]"
+    },
+    {
+     "press": "Escape"
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "lifted": true,
+    "has": {
+     "key-dunmer-north-riverwalk-1": 1
+    },
+    "owing": 0
+   }
+  },
+  {
+   "name": "failed-lift",
+   "transition": "behind another crewman -> a lift of his key fails: caught, he turns, a pickpocket filed",
+   "do": {
+    "action": "pickpocket",
+    "npc": "npc.dunmer-north.riverwalk.n1-2",
+    "item": "key-dunmer-north-riverwalk-2",
+    "near": [
+     {
+      "id": "npc.dunmer-north.riverwalk.n1-2",
+      "m": 1.8,
+      "facing": false
+     },
+     {
+      "id": "npc.dunmer-north.riverwalk.n1",
+      "m": 3.0,
+      "facing": true
+     },
+     {
+      "id": "npc.dunmer-north.riverwalk.n1-3",
+      "m": 4.3,
+      "facing": true
+     },
+     {
+      "id": "npc.dunmer-north.riverwalk.toll-holder",
+      "m": 27.2,
+      "facing": false
+     }
+    ],
+    "seconds": 1
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 0.6
+    },
+    {
+     "click": ".es-sheet--pickpocket [data-es-row=\"key-dunmer-north-riverwalk-2\"]"
+    },
+    {
+     "click": "[data-pickpocket-act=\"take\"]"
+    }
+   ],
+   "hold_s": 1.5,
+   "expect": {
+    "caught": true,
+    "facing": {
+     "npc.dunmer-north.riverwalk.n1-2": true
+    },
+    "notice": {
+     "npc.dunmer-north.riverwalk.n1-2": "engaged"
+    },
+    "filed": "pickpocket",
+    "owing": 25
+   },
+   "teleport": {
+    "x": 7229.3,
+    "z": 512.6,
+    "yaw": 1.82
+   }
+  },
+  {
+   "name": "back-off",
+   "transition": "caught, the player backs out of talk reach (S then A, clear of the pier rail) -> the mark stands turned on the player, his face in view clear of the prompt",
+   "do": {
+    "action": "crouch",
+    "on": true,
+    "seconds": 2
+   },
+   "keys": [
+    {
+     "down": "KeyS"
+    },
+    {
+     "wait_s": 1.2
+    },
+    {
+     "up": "KeyS"
+    },
+    {
+     "down": "KeyA"
+    },
+    {
+     "wait_s": 1.6
+    },
+    {
+     "up": "KeyA"
+    },
+    {
+     "wait_s": 0.4
+    }
+   ],
+   "hold_s": 1.5,
+   "expect": {
+    "facing": {
+     "npc.dunmer-north.riverwalk.n1-2": true
+    }
+   }
+  },
+  {
+   "name": "the-greeting",
+   "transition": "talking to another villager -> the greeting knows the pickpocket",
+   "do": {
+    "action": "greet",
+    "npc": "npc.dunmer-north.riverwalk.n2"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 1
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "greeting": "greeting.riverwalk-n2.crime"
+   },
+   "teleport": {
+    "x": 7231.6,
+    "z": 596.7,
+    "actor": "npc.dunmer-north.riverwalk.n2",
+    "near_m": 1.5
+   }
+  },
+  {
+   "name": "stand-up",
+   "transition": "greeted, the player stands up -> standing, no longer sneaking",
+   "do": {
+    "action": "crouch",
+    "on": false
+   },
+   "keys": [
+    {
+     "press": "KeyC"
+    },
+    {
+     "wait_s": 0.5
+    }
+   ],
+   "hold_s": 0.5,
+   "expect": {
+    "sneaking": false
+   }
+  },
+  {
+   "name": "the-stop",
+   "transition": "the watch (an An-Xileel man) 6 m off sees the player with the Owing open -> he walks up, faces the player and the guard stop opens",
+   "do": {
+    "action": "stop",
+    "npc": "npc.dunmer-north.riverwalk.n3",
+    "near": [
+     {
+      "id": "npc.dunmer-north.riverwalk.n3",
+      "m": 6,
+      "facing": true
+     },
+     {
+      "id": "npc.dunmer-north.riverwalk.n3-2",
+      "m": 4.3,
+      "facing": false
+     },
+     {
+      "id": "npc.dunmer-north.riverwalk.toll-holder",
+      "m": 10.9,
+      "facing": false
+     }
+    ],
+    "seconds": 8
+   },
+   "keys": [
+    {
+     "wait_s": 8
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "stop": true,
+    "screen": "guard-stop"
+   },
+   "teleport": {
+    "x": 7187.4,
+    "z": 524.2,
+    "actor": "npc.dunmer-north.riverwalk.n3",
+    "near_m": 6
+   }
+  },
+  {
+   "name": "serve",
+   "transition": "the stop -> serve: the clock runs the custody hours, the player wakes at the watch's post , the Sneak progress of the lift forfeit",
+   "do": {
+    "action": "serve",
+    "npc": "npc.dunmer-north.riverwalk.n3"
+   },
+   "keys": [
+    {
+     "click": "[data-guard-stop] [data-choice=\"serve\"]"
+    }
+   ],
+   "hold_s": 2,
+   "expect": {
+    "owing": 0,
+    "custodyPost": "socket.riverwalk.idle-toll-holder-work",
+    "progressForfeit": true
+   }
+  },
+  {
+   "name": "wake-clear",
+   "transition": "the custody load (about 22 s on the pod) -> awake at the post, the Owing clear and the eye hidden",
+   "do": {
+    "action": "approach",
+    "seconds": 1
+   },
+   "keys": [
+    {
+     "wait_s": 26
+    }
+   ],
+   "hold_s": 2,
+   "expect": {
+    "owing": 0,
+    "screen": null
+   }
+  }
+ ]
+}

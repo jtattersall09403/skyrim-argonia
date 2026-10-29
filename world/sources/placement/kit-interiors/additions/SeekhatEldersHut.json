@@ -1,0 +1,30 @@
+{
+ "schemaVersion": 2,
+ "cellId": "SeekhatEldersHut",
+ "additions": [
+  {
+   "id": "SeekhatEldersHut:add:bed-glazedcandles-01",
+   "assetId": "vanilla:clutter/glazedcandles01",
+   "pos": [116.4, 96.709, 46.7],
+   "rotZDeg": 0,
+   "zone": "bed",
+   "why": "Lights the floor at the foot of the two sleeping mats."
+  },
+  {
+   "id": "SeekhatEldersHut:add:table-glazedcandles-02",
+   "assetId": "vanilla:clutter/glazedcandles01",
+   "pos": [121.6, 96.709, 48.3],
+   "rotZDeg": 0,
+   "zone": "table",
+   "why": "Lights the floor between the table and its two chairs."
+  },
+  {
+   "id": "SeekhatEldersHut:add:store-glazedcandles-03",
+   "assetId": "vanilla:clutter/glazedcandles01",
+   "pos": [119.6, 96.709, 45.3],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Lights the cupboard where the elder keeps the household stores."
+  }
+ ]
+}

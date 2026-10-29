@@ -1,0 +1,30 @@
+{
+ "schemaVersion": 1,
+ "about": "Freeze-gate violations accepted by name at the 16b freeze, each with its cause and owner. The gate prints them as KNOWN and fails on anything else; remove a row when its cause is fixed.",
+ "known": [
+  {
+   "id": "reach.2355-2094",
+   "check": "trench-bed",
+   "owner": "16c",
+   "why": "Round-2 carve leftover (2026-09-12): trench bed 1.54 m above its promise -0.22 at point 26. 16c reads the graph's levels; fix at the carve (a rim-closure ring from the approved-body restore crossing this reach) or re-measure in the water compile."
+  },
+  {
+   "id": "reach.1150-3112",
+   "check": "shoulder-seal",
+   "owner": "16c",
+   "why": "Round-2 carve leftover (2026-09-12): shoulder -0.47 m sits under its seal (nearest water level 1.66) at point 328. 16c reads the graph's levels; fix at the carve (a rim-closure ring from the approved-body restore crossing this reach) or re-measure in the water compile."
+  },
+  {
+   "id": "reach.1815-1261",
+   "check": "in-body-ground",
+   "owner": "16c",
+   "why": "Round-2 carve leftover (2026-09-12): in body.1571-1249 but the ground 0.74 m stands over its level 0.66. 16c reads the graph's levels; fix at the carve (a rim-closure ring from the approved-body restore crossing this reach) or re-measure in the water compile."
+  },
+  {
+   "id": "body.1746-2172",
+   "check": "captured-floor",
+   "owner": "16c",
+   "why": "Round-2 carve leftover (2026-09-13, after the routing correction): a captured body's floor stands 0.4 m over its level (22.13 vs 21.73); the levee of the channel that captures it raised its bed. 16c refills a captured body from the channel; if the bed matters there, lower it at the carve."
+  }
+ ]
+}

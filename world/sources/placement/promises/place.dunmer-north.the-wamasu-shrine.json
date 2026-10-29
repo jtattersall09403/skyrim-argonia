@@ -1,0 +1,327 @@
+{
+ "schemaVersion": 1,
+ "placeId": "place.dunmer-north.the-wamasu-shrine",
+ "generator": "python3 -m worldgen.blueprint_promises --id <place-id> --write (decision 0104); never hand-edit a row but its `unfilled`, `filledBy` or `confirmed` block",
+ "derivedFrom": [
+  {
+   "file": "world/sources/catalogue/places-dunmer-north.json",
+   "sha256": "a6ef18b8fa43af8d561cfabe568d7812c7c05d35713002fb4b7a57304a5777ec"
+  },
+  {
+   "file": "world/sources/quests/local-dunmer-north.json",
+   "sha256": "13e86659e9ca968b5bbf8f515b10a6599a5880bda91dbe5f4a6973df1d5410fd"
+  }
+ ],
+ "promises": [
+  {
+   "id": "promise.the-wamasu-shrine.evidence-the-scorched-shelf",
+   "kind": "socketBucket",
+   "source": {
+    "file": "world/sources/catalogue/places-dunmer-north.json",
+    "path": "places[place.dunmer-north.the-wamasu-shrine].sockets.evidence[evidence.the-wamasu-shrine.the-scorched-shelf]"
+   },
+   "text": "Shrine of Haynekhtnamet has the evidence socket evidence.the-wamasu-shrine.the-scorched-shelf.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.the-wamasu-shrine.occupant-n1",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-dunmer-north.json",
+    "path": "places[place.dunmer-north.the-wamasu-shrine].contents.npcs[n1]"
+   },
+   "text": "Shrine of Haynekhtnamet has few rank-and-file occupants.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.the-wamasu-shrine.prose-playerpurpose-hook",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-dunmer-north.json",
+    "path": "places[place.dunmer-north.the-wamasu-shrine].playerPurpose.hook"
+   },
+   "text": "Offerings left to stop the flooding, still being left, above a pond people say holds Haynekhtnamet.",
+   "confirmed": {
+    "sha": "3c8222f105bd",
+    "note": "This year's offerings (salt, iron, net) lie on the shelf, which stands on the bank above the pond.",
+    "ids": [
+     "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.building",
+     "s-of-salt1",
+     "s-of-ingots"
+    ]
+   }
+  },
+  {
+   "id": "promise.the-wamasu-shrine.prose-questhooks-opportunity",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-dunmer-north.json",
+    "path": "places[place.dunmer-north.the-wamasu-shrine].questHooks.opportunity"
+   },
+   "text": "people still leave offerings above a pond they say holds a leviathan; this year the flooding got worse",
+   "confirmed": {
+    "sha": "ea104d7d8082",
+    "note": "Offerings on the shelf above the pond; the painted urn beside it holds a village's share not yet laid out. The worse flooding is LD65's quest state, not a built thing.",
+    "ids": [
+     "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.building",
+     "s-sack"
+    ]
+   }
+  },
+  {
+   "id": "promise.the-wamasu-shrine.prose-vibe-approach",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-dunmer-north.json",
+    "path": "places[place.dunmer-north.the-wamasu-shrine].vibe.approach"
+   },
+   "text": "Ozone is noticeable before the water comes into sight.",
+   "confirmed": {
+    "sha": "74815aeda48d",
+    "note": "Smell is not drawn by the runtime (a later-phase ambience system); the approach from the north-east comes down onto the bank with the pond hidden until the shelf.",
+    "ids": [
+     "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.building"
+    ]
+   }
+  },
+  {
+   "id": "promise.the-wamasu-shrine.prose-vibe-condition",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-dunmer-north.json",
+    "path": "places[place.dunmer-north.the-wamasu-shrine].vibe.condition"
+   },
+   "text": "The shelf is older than the villages that use it. Most of what's on it is from this year or last.",
+   "confirmed": {
+    "sha": "1f8e25a540de",
+    "note": "The shelf is an Ayleid dressed block; everything on and round it is plain new iron, salt and tools.",
+    "ids": [
+     "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.building",
+     "s-of-ingots",
+     "s-tool-shovel"
+    ]
+   }
+  },
+  {
+   "id": "promise.the-wamasu-shrine.prose-vibe-materials",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-dunmer-north.json",
+    "path": "places[place.dunmer-north.the-wamasu-shrine].vibe.materials"
+   },
+   "text": "One dressed stone shelf, otherwise bare.",
+   "confirmed": {
+    "sha": "0b1ffc5e1355",
+    "note": "One dressed stone (arblock01); no other built thing, only offerings, tally stones and leavings on the bare bank.",
+    "ids": [
+     "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.building"
+    ]
+   }
+  },
+  {
+   "id": "promise.the-wamasu-shrine.prose-vibe-mood",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-dunmer-north.json",
+    "path": "places[place.dunmer-north.the-wamasu-shrine].vibe.mood"
+   },
+   "text": "Practical and superstitious. Nervous.",
+   "confirmed": {
+    "sha": "db9f7c747a9f",
+    "note": "Practical offerings (tools, salt, iron) set down on the dry side of the shelf, away from the water where the creature's leavings lie; one candle, no keeper.",
+    "ids": [
+     "s-tool-fork",
+     "s-of-candle",
+     "s-leave-scales1"
+    ]
+   }
+  },
+  {
+   "id": "promise.the-wamasu-shrine.prose-vibe-palette",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-dunmer-north.json",
+    "path": "places[place.dunmer-north.the-wamasu-shrine].vibe.palette"
+   },
+   "text": "Green-black water, corroded iron, salt white and scorch marks on the shelf.",
+   "confirmed": {
+    "sha": "a1d4882993ca",
+    "note": "Black pond water, iron ingots, white salt piles and a burnt ash patch at the shelf's water-side foot.",
+    "ids": [
+     "s-of-salt1",
+     "s-of-ingots",
+     "s-scorch-ash"
+    ]
+   }
+  },
+  {
+   "id": "promise.the-wamasu-shrine.prose-vibe-senses",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-dunmer-north.json",
+    "path": "places[place.dunmer-north.the-wamasu-shrine].vibe.senses"
+   },
+   "text": "Water; a dry crackle with no flame behind it; hair standing up.",
+   "confirmed": {
+    "sha": "49747c13f5d3",
+    "note": "Sound and static are later-phase ambience systems; nothing on the bank burns; the scorch at the shelf's water end is the only mark the crackle leaves.",
+    "ids": [
+     "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.building",
+     "s-scorch-ash"
+    ]
+   }
+  },
+  {
+   "id": "promise.the-wamasu-shrine.prose-vibe-signaturefeature",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-dunmer-north.json",
+    "path": "places[place.dunmer-north.the-wamasu-shrine].vibe.signatureFeature"
+   },
+   "text": "The scorch marks. The shelf gets struck. The offerings nearest the water are the most burnt.",
+   "confirmed": {
+    "sha": "cf56ebf95d53",
+    "note": "The ash patch and a burnt bone lie at the shelf's water-side end; the dry side's tools and urn are untouched.",
+    "ids": [
+     "s-scorch-ash",
+     "s-leave-bone1"
+    ]
+   }
+  },
+  {
+   "id": "promise.the-wamasu-shrine.prose-vibe-silhouette",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-dunmer-north.json",
+    "path": "places[place.dunmer-north.the-wamasu-shrine].vibe.silhouette"
+   },
+   "text": "A stone shelf on a bank above black water, loaded with tools, salt and cord, all of it slowly corroding.",
+   "confirmed": {
+    "sha": "8fd00a31e241",
+    "note": "Shelf on the bank above the pond with salt, iron ingots and a net on it; a shovel and a pitchfork stood against it.",
+    "ids": [
+     "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.building",
+     "s-of-salt2",
+     "s-of-net",
+     "s-tool-shovel"
+    ]
+   }
+  },
+  {
+   "id": "promise.the-wamasu-shrine.prose-why-founding",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-dunmer-north.json",
+    "path": "places[place.dunmer-north.the-wamasu-shrine].why.founding"
+   },
+   "text": "A wamasu of Shadowfen received offerings to stop the seasonal flooding; the stone shelf on the bank is where they were left.",
+   "confirmed": {
+    "sha": "1d22901aecbc",
+    "note": "The dressed stone shelf on the bank above the pond, offerings on it; the wamasu's own slot n1 and its shed scales at the waterline.",
+    "ids": [
+     "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.building",
+     "s-of-salt1",
+     "s-leave-scales1",
+     "s-leave-scales2"
+    ]
+   }
+  },
+  {
+   "id": "promise.the-wamasu-shrine.prose-why-occupantsmotive",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-dunmer-north.json",
+    "path": "places[place.dunmer-north.the-wamasu-shrine].why.occupantsMotive"
+   },
+   "text": "Four villages send offerings each wet season, in rotation. A headwoman asked why will say it is her turn.",
+   "confirmed": {
+    "sha": "3298b499e5e2",
+    "note": "Nobody lives here; the five tally stones mark the seasons; a painted urn stands ready for the next village's carrier.",
+    "ids": [
+     "s-tally1",
+     "s-tally5",
+     "s-sack"
+    ]
+   }
+  },
+  {
+   "id": "promise.the-wamasu-shrine.prose-why-pressures",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-dunmer-north.json",
+    "path": "places[place.dunmer-north.the-wamasu-shrine].why.pressures"
+   },
+   "text": "The offerings are increasingly practical, tools and salt rather than symbols, which the older villagers find embarrassing.",
+   "confirmed": {
+    "sha": "758a51066d1b",
+    "note": "Nearly every offering is a useful thing: shovel, pitchfork, salt, ingots, net; the painted urn and two candles are the only older touches.",
+    "ids": [
+     "s-tool-shovel",
+     "s-tool-fork",
+     "s-of-salt2",
+     "s-of-ingots"
+    ]
+   }
+  },
+  {
+   "id": "promise.the-wamasu-shrine.prose-why-siteadvantages",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-dunmer-north.json",
+    "path": "places[place.dunmer-north.the-wamasu-shrine].why.siteAdvantages"
+   },
+   "text": "On the bank above the pond which the creature is held to inhabit, at the highest point reached by the flood.",
+   "confirmed": {
+    "sha": "a94e0bd2a915",
+    "note": "The shelf stands on the bank strip 0.5-0.9 m over the pond (158.4-158.8 m against 157.89 m), 5 m from the water.",
+    "ids": [
+     "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.building"
+    ]
+   }
+  },
+  {
+   "id": "promise.the-wamasu-shrine.prose-why-wouldchangeif",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-dunmer-north.json",
+    "path": "places[place.dunmer-north.the-wamasu-shrine].why.wouldChangeIf"
+   },
+   "text": "Would be abandoned in a dry decade and set up again after the next bad flood.",
+   "confirmed": {
+    "sha": "b20dd4588ac6",
+    "note": "Nothing here is built to last but the old stone: offerings and stones only, quick to leave and to set up again.",
+    "ids": [
+     "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.building",
+     "s-tally3"
+    ]
+   }
+  },
+  {
+   "id": "promise.the-wamasu-shrine.quest-ld65",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-dunmer-north.json",
+    "path": "quest[LD65]"
+   },
+   "text": "LD65 Offerings Against the Flood: People still leave offerings above a pond they say holds a leviathan; this year the flooding got worse",
+   "confirmed": {
+    "sha": "2e0cb9ff2bdc",
+    "note": "LD65's places: the offering shelf (scene socket the-bank) and the wamasu slot n1 by the pond.",
+    "ids": [
+     "place.dunmer-north.the-wamasu-shrine.parcel.the-wamasu-shrine.the-bank.building",
+     "s-sack"
+    ]
+   }
+  },
+  {
+   "id": "promise.the-wamasu-shrine.scene-the-bank",
+   "kind": "socketBucket",
+   "source": {
+    "file": "world/sources/catalogue/places-dunmer-north.json",
+    "path": "places[place.dunmer-north.the-wamasu-shrine].sockets.scene[scene.the-wamasu-shrine.the-bank]"
+   },
+   "text": "Shrine of Haynekhtnamet has the scene socket scene.the-wamasu-shrine.the-bank.",
+   "unfilled": null
+  }
+ ]
+}

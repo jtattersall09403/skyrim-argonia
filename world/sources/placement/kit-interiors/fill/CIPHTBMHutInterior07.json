@@ -1,0 +1,130 @@
+{
+ "cellId": "CIPHTBMHutInterior07",
+ "sockets": {
+  "socket.CIPHTBMHutInterior07.06029F4E": {
+   "owner": "parcel.upriver-hist-village.cane-cutters-house",
+   "fillRule": "blanket.fish-basket",
+   "valueTier": "trivial",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.trodh",
+      "count": 4
+     },
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     },
+     {
+      "item": "item.fishing-pole",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.fish-basket"
+   }
+  },
+  "socket.CIPHTBMHutInterior07.06029F4F": {
+   "owner": "parcel.upriver-hist-village.cane-cutters-house",
+   "fillRule": "blanket.water-barrel",
+   "valueTier": "trivial",
+   "lootTable": {
+    "items": [],
+    "frozenFrom": "blanket.water-barrel"
+   }
+  },
+  "socket.CIPHTBMHutInterior07.06029F50": {
+   "owner": "parcel.upriver-hist-village.cane-cutters-house",
+   "fillRule": "blanket.fish-basket",
+   "valueTier": "trivial",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.trodh",
+      "count": 4
+     },
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     },
+     {
+      "item": "item.fishing-pole",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.fish-basket"
+   }
+  },
+  "socket.CIPHTBMHutInterior07.06029F51": {
+   "owner": "parcel.upriver-hist-village.cane-cutters-house",
+   "fillRule": "blanket.household-urn",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 1
+     },
+     {
+      "item": "item.trodh",
+      "count": 3
+     },
+     {
+      "item": "item.clay-jug",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.household-urn"
+   }
+  },
+  "socket.CIPHTBMHutInterior07.06029F5D": {
+   "owner": "parcel.upriver-hist-village.cane-cutters-house",
+   "valueTier": "low",
+   "item": "item.dragons-tongue"
+  },
+  "socket.CIPHTBMHutInterior07.06029F5E": {
+   "owner": "parcel.upriver-hist-village.cane-cutters-house",
+   "valueTier": "low",
+   "item": "item.dragons-tongue"
+  },
+  "socket.CIPHTBMHutInterior07.06029F5F": {
+   "owner": "parcel.upriver-hist-village.cane-cutters-house",
+   "valueTier": "moderate",
+   "item": "item.river-betty"
+  },
+  "socket.CIPHTBMHutInterior07.06029F60": {
+   "owner": "parcel.upriver-hist-village.cane-cutters-house",
+   "valueTier": "moderate",
+   "item": "item.slaughterfish-egg"
+  },
+  "socket.CIPHTBMHutInterior07.06029F61": {
+   "owner": "parcel.upriver-hist-village.cane-cutters-house",
+   "valueTier": "low",
+   "item": "item.slaughterfish-scales"
+  },
+  "socket.CIPHTBMHutInterior07.06029F62": {
+   "owner": "parcel.upriver-hist-village.cane-cutters-house",
+   "valueTier": "moderate",
+   "item": "item.slaughterfish-egg"
+  },
+  "socket.CIPHTBMHutInterior07.06029F63": {
+   "owner": "parcel.upriver-hist-village.cane-cutters-house",
+   "valueTier": "moderate",
+   "item": "item.river-betty"
+  },
+  "socket.CIPHTBMHutInterior07.06029F64": {
+   "owner": "parcel.upriver-hist-village.cane-cutters-house",
+   "valueTier": "moderate",
+   "item": "item.firebrand-wine"
+  },
+  "socket.CIPHTBMHutInterior07.0605950C": {
+   "owner": "parcel.upriver-hist-village.cane-cutters-house",
+   "valueTier": "low",
+   "item": "item.book-villagers-journal"
+  }
+ },
+ "schemaVersion": 1
+}

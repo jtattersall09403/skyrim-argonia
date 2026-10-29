@@ -36,11 +36,11 @@ live (since Nov 2022) though it has no client anti-cheat.
    player's own clips only if needed), never by shipping edited clips. No
    FromSoftware-derived movesets (several Nexus packs are DS3/ER rips: excluded whatever their Nexus page says).
 6. **Verification:** every window we set or tune is within ±1 DS1 frame (33 ms, aim 16 ms) of the golden table,
-   checked by the scripted test dummy at capped 30 and 60 fps (1.4, 2.7 §f).
+   checked by the scripted test dummy at capped 30 and 60 fps (2.7 §f).
 
 ## Consequences
 
-- The 13/11/9 question is answered when roll i-frames are tuned (G6 if the combat map calls for it, else 1.4); the result is written back here.
+- The 13/11/9 question is answered when roll i-frames are tuned (G6 when the 2.7 combat map calls for it); the result is written back here.
 - Decision 0019 sets the frame: DS1's whole system is the target, each behaviour a tuned mod or our build;
   nothing of the old project's combat (code, constants, animation choices) is inherited.
 - Burden tiers: Argonia's ratios (fast < 0.2, mid < 0.35, fat < 1, of carry capacity) define the tiers; DSR

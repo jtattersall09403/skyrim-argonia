@@ -1,0 +1,41 @@
+{
+  "$schema": "community demographic priors, master plan §82 (r/ElderScrolls charts; image hashes recorded there)",
+  "confidence": "COMMUNITY_CONSENSUS",
+  "note": "Zone shares are rounded community estimates and do not sum cleanly; location-specific causal history overrides these priors (plan §82). Zones map to culture territories and anchor hinterlands.",
+  "derivedShares": "breton and orc are absent from the community charts; every zone row carries a derived 0.5 for both (grounding: Lore:Lilmoth, Hereguard Plantation as one of the few Breton settlements; no Black Marsh page exists for Orcs, so the weight is a trace). DERIVED, not community data.",
+  "provinceHeadline": { "argonian": 72, "dunmer": 10, "imperial": 8, "khajiit": 5, "nord": 2, "bosmer": 2, "altmer": 1, "redguard": 1 },
+  "zones": {
+    "stormhold": { "argonian": 75, "dunmer": 22, "imperial": 2, "khajiit": 2, "nord": 7, "bosmer": 2, "altmer": 2, "redguard": 2, "breton": 0.5, "orc": 0.5 },
+    "thorn": { "argonian": 75, "dunmer": 20, "imperial": 2, "khajiit": 1, "nord": 3, "bosmer": 1, "altmer": 1, "redguard": 1, "breton": 0.5, "orc": 0.5 },
+    "helstrom": { "argonian": 97, "dunmer": 1, "imperial": 1, "khajiit": 1, "nord": 1, "bosmer": 1, "altmer": 1, "redguard": 1, "breton": 0.5, "orc": 0.5 },
+    "gideon": { "argonian": 70, "dunmer": 3, "imperial": 22, "khajiit": 6, "nord": 1, "bosmer": 1, "altmer": 1, "redguard": 3, "breton": 0.5, "orc": 0.5 },
+    "soulrest": { "argonian": 60, "dunmer": 1, "imperial": 13, "khajiit": 19, "nord": 1, "bosmer": 5, "altmer": 1, "redguard": 1, "breton": 0.5, "orc": 0.5 },
+    "archon": { "argonian": 79, "dunmer": 15, "imperial": 5, "khajiit": 0.5, "nord": 0.5, "bosmer": 0.5, "altmer": 0.5, "redguard": 0.5, "breton": 0.5, "orc": 0.5 },
+    "blackrose-lilmoth": { "argonian": 80, "dunmer": 3, "imperial": 7, "khajiit": 6, "nord": 0.5, "bosmer": 10, "altmer": 3, "redguard": 1, "breton": 0.5, "orc": 0.5 }
+  },
+  "cultureZoneMap": {
+    "imperial-fringe": "gideon",
+    "dunmer-north": ["stormhold", "thorn"],
+    "mercantile-coast": ["soulrest", "blackrose-lilmoth"],
+    "argonian-settled": ["archon", "blackrose-lilmoth"],
+    "hist-heartland": "helstrom",
+    "imperial-penal-south": "blackrose-lilmoth",
+    "saxhleel-coast": "archon",
+    "naga-kur-deeps": "helstrom",
+    "pirate-freeholds": "soulrest"
+  },
+  "placeTypeOutsiderMultiplier": { "capital": 1.0, "port": 2.0, "border-town": 1.5, "village": 0.4, "camp": 0.1, "works": 0.8, "shrine": 0.3, "hist-village": 0.1 },
+  "placeTypeNote": "Modelling choice grounded in the fringe-versus-interior pattern (Lore:Black Marsh, Lore:Gideon, Lore:Stormhold); no source for the numbers. The Argonian share is the zone row's figure at capital scale; the other races split the rest in proportion to their row values. A place type multiplies that rest (capped at 100).",
+  "placeTypeOf": {
+    "note": "A place's type is read from its catalogue record's classification: the most specific key wins (type, then class/family, then class). A place matching no key takes multiplier 1.0.",
+    "type": { "port-town": "port", "neutral-free-port": "port", "legal-harbour-city": "port", "island-confluence-city": "port", "rebuilt-stilt-city": "port", "contested-ex-capital": "port", "hist-village": "hist-village" },
+    "family": {
+      "settlement/major-city": "capital", "settlement/free-port": "port",
+      "settlement/mixed-settlement": "border-town", "settlement/imperial-settlement": "border-town",
+      "settlement/dry-village": "village", "settlement/tribal-village": "village",
+      "settlement/water-village": "village", "settlement/outcast-settlement": "village",
+      "settlement/homestead": "village"
+    },
+    "class": { "camp": "camp", "works": "works", "sacred": "shrine" }
+  }
+}

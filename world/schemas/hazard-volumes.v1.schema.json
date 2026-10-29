@@ -1,0 +1,58 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "world-schema/hazard-volumes.v1",
+ "title": "Hazard volumes (2.9c): harmful volumes cast through castSpell on every actor inside",
+ "type": "object",
+ "required": ["schemaVersion", "domain", "tickSeconds", "tickDerivation", "entries"],
+ "properties": {
+  "schemaVersion": { "const": 1 },
+  "domain": { "const": "hazard" },
+  "tickSeconds": { "type": "number", "exclusiveMinimum": 0 },
+  "tickDerivation": { "type": "string", "minLength": 1 },
+  "entries": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": ["id", "name", "trigger", "strikeEffects", "landCover", "cast", "radius", "lifetimeSeconds", "derivation", "places", "anchors", "visual", "why"],
+    "additionalProperties": false,
+    "properties": {
+     "id": { "type": "string", "pattern": "^hazard\\." },
+     "name": { "type": "string", "minLength": 1 },
+     "trigger": { "enum": ["strike-ground", "strike-water", "standing"] },
+     "strikeEffects": { "type": "array", "items": { "type": "string" } },
+     "landCover": { "type": "array", "items": { "type": "string" } },
+     "cast": {
+      "oneOf": [
+       { "type": "object", "required": ["from"], "additionalProperties": false, "properties": { "from": { "const": "strike" } } },
+       { "type": "object", "required": ["spellId"], "additionalProperties": false, "properties": { "spellId": { "type": "string" } } }
+      ]
+     },
+     "radius": {
+      "oneOf": [
+       { "type": "object", "required": ["rule", "minM"], "additionalProperties": false, "properties": { "rule": { "const": "strike-area" }, "minM": { "type": "number", "exclusiveMinimum": 0 } } },
+       { "type": "object", "required": ["rule", "metres"], "additionalProperties": false, "properties": { "rule": { "const": "fixed" }, "metres": { "type": "number", "exclusiveMinimum": 0 } } }
+      ]
+     },
+     "lifetimeSeconds": { "type": "number", "minimum": 0 },
+     "derivation": { "type": "string", "minLength": 1 },
+     "places": { "type": "array", "items": { "type": "string" } },
+     "anchors": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "additionalProperties": false,
+       "properties": { "socket": { "type": "string" }, "creature": { "type": "string" }, "record": { "type": "string" } }
+      }
+     },
+     "visual": {
+      "type": "object",
+      "required": ["kind", "ref", "source"],
+      "additionalProperties": false,
+      "properties": { "kind": { "enum": ["fire-preset", "magic-family", "mesh"] }, "ref": { "type": "string", "minLength": 1 }, "source": { "type": "string", "minLength": 1 } }
+     },
+     "why": { "type": "string", "minLength": 1 }
+    }
+   }
+  }
+ }
+}

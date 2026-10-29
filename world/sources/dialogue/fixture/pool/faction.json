@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "domain": "dialogue-pool",
+  "topicClass": "faction",
+  "_": "Walker and gate fixture (2.5b4).",
+  "entries": [
+    {"schemaVersion": 1, "id": "pool.fixture-watch.default", "type": "dialogue", "speaker": null, "keys": {"topic": "topic.fixture-watch"}, "words": "The watch keeps to the causeway.", "available": [], "onDelivered": [], "factIds": [], "links": ["topic.fixture-old-road"]},
+    {"schemaVersion": 1, "id": "pool.fixture-watch.rank", "type": "dialogue", "speaker": null, "keys": {"topic": "topic.fixture-watch"}, "words": "A sergeant of the watch may pass the gate.", "available": [{"factionRankAtLeast": ["faction.fixture-watch", 3]}], "onDelivered": [], "factIds": [], "links": ["topic.fixture-old-road"]},
+    {"schemaVersion": 1, "id": "pool.fallback.faction", "type": "dialogue", "speaker": null, "keys": {}, "fallbackFor": "faction", "words": "None of my business.", "available": [], "onDelivered": [], "factIds": [], "links": []}
+  ]
+}

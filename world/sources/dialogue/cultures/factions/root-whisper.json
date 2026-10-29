@@ -1,0 +1,188 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "_": "Faction and office sheets for The Root-Whisper tribe (lane 2.5a2). Ranks: the registry ladder (associate, member, senior); named offices beyond it are listed by their own rank slug.",
+ "entries": [
+  {
+   "id": "culture.faction.root-whisper",
+   "level": "faction",
+   "name": "The Root-Whisper tribe",
+   "parent": "culture.province.black-marsh",
+   "factionId": "faction.root-whisper",
+   "norms": [
+    {
+     "text": "The village waits beside a dreaming tree.",
+     "source": "world/sources/lore/tribes.md"
+    },
+    {
+     "text": "The dead are spoken of as present.",
+     "source": "world/sources/lore/tribes.md"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Waking the tree.",
+     "source": "world/sources/lore/tribes.md"
+    }
+   ],
+   "values": [
+    {
+     "text": "Patience.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Ayleid relic-hunters.",
+     "source": "world/sources/lore/tribes.md"
+    }
+   ],
+   "opinions": {
+    "hist": {
+     "lean": 1,
+     "text": "Our tree sleeps; we keep it.",
+     "source": "world/sources/lore/tribes.md"
+    },
+    "danger": {
+     "lean": -1,
+     "text": "Relic-hunters at the twin temples.",
+     "source": "world/sources/lore/tribes.md"
+    },
+    "place": {
+     "lean": 2,
+     "text": "Between Xul-Thuxis and Vakka-Bok.",
+     "source": "world/sources/lore/tribes.md"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Friend of the sleeping tree.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "formal",
+    "oaths": [
+     {
+      "text": "Let it sleep.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "The tree's name.",
+      "source": "inferred"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "The tree has slept since the flu.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "A sap-speaker dreamed the tree stirred.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.cyrodilic-collections",
+     "lean": 1,
+     "text": "They once helped us.",
+     "source": "world/sources/lore/topics/guilds-and-orders.md"
+    }
+   ],
+   "deviationRate": 0.15
+  },
+  {
+   "id": "culture.office.root-whisper.senior",
+   "level": "office",
+   "name": "Root-Whisper naheesh",
+   "parent": "culture.faction.root-whisper",
+   "factionId": "faction.root-whisper",
+   "rank": "senior",
+   "norms": [
+    {
+     "text": "Carries the Root Talk; respected, not in power.",
+     "source": "world/sources/lore/topics/material-culture.md"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Rushing.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "Memory.",
+     "source": "world/sources/lore/topics/material-culture.md"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Forgetting.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "hist": {
+     "lean": 1,
+     "text": "Sleep.",
+     "source": "world/sources/lore/tribes.md"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Child.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "ceremonial",
+    "oaths": [
+     {
+      "text": "Let it sleep.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "The naming secrets.",
+      "source": "world/sources/lore/topics/material-culture.md"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "The young leave.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "A dream.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.root-whisper",
+     "lean": 2,
+     "text": "Theirs.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.1
+  }
+ ]
+}

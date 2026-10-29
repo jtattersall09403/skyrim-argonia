@@ -1,0 +1,150 @@
+{
+ "id": "seam-failed-lift-and-turn",
+ "start": {
+  "query": "?view=character&x=7.2032&z=0.5204&t=14:00&d=8-17",
+  "kit": "start",
+  "skills": {
+   "sneak": 80
+  },
+  "seed": 0
+ },
+ "steps": [
+  {
+   "name": "crouch-behind",
+   "transition": "behind the crewman at his work, crouched -> unseen",
+   "do": {
+    "action": "crouch",
+    "near": [
+     {
+      "id": "npc.dunmer-north.riverwalk.n1-2",
+      "m": 1.5,
+      "facing": false
+     },
+     {
+      "id": "npc.dunmer-north.riverwalk.n1",
+      "m": 2.8,
+      "facing": true
+     },
+     {
+      "id": "npc.dunmer-north.riverwalk.n1-3",
+      "m": 4.2,
+      "facing": true
+     },
+     {
+      "id": "npc.dunmer-north.riverwalk.toll-holder",
+      "m": 25.9,
+      "facing": false
+     }
+    ],
+    "seconds": 2
+   },
+   "keys": [
+    {
+     "wait_s": 1
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "sneaking": true,
+    "eye": "hidden",
+    "notice": {
+     "npc.dunmer-north.riverwalk.n1": "unaware",
+     "npc.dunmer-north.riverwalk.n1-3": "unaware"
+    }
+   },
+   "stage": {
+    "at": {
+     "x": 7234.6,
+     "z": 506,
+     "actor": "npc.dunmer-north.riverwalk.n1-2",
+     "near_m": 1.5
+    },
+    "hour": 14,
+    "place": "place.dunmer-north.riverwalk",
+    "stance": "crouch"
+   }
+  },
+  {
+   "name": "the-sheet",
+   "transition": "E on him, crouched and unseen -> the pickpocket sheet opens on his things, each with its percent",
+   "do": {
+    "action": "pickpocket",
+    "npc": "npc.dunmer-north.riverwalk.n1-2"
+   },
+   "keys": [
+    {
+     "wait_s": 7
+    },
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 0.6
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "screen": "pickpocket",
+    "percent": {
+     "key-dunmer-north-riverwalk-2": 76
+    }
+   }
+  },
+  {
+   "name": "the-turn",
+   "transition": "the lift fails -> he turns to face the player and calls it out; the eye reads detected",
+   "do": {
+    "action": "pickpocket",
+    "npc": "npc.dunmer-north.riverwalk.n1-2",
+    "item": "key-dunmer-north-riverwalk-2"
+   },
+   "keys": [
+    {
+     "click": ".es-sheet--pickpocket [data-es-row=\"key-dunmer-north-riverwalk-2\"]"
+    },
+    {
+     "click": "[data-pickpocket-act=\"take\"]"
+    }
+   ],
+   "hold_s": 3,
+   "expect": {
+    "caught": true,
+    "facing": {
+     "npc.dunmer-north.riverwalk.n1-2": true
+    },
+    "notice": {
+     "npc.dunmer-north.riverwalk.n1-2": "engaged"
+    }
+   }
+  },
+  {
+   "name": "back-off",
+   "transition": "caught, the player backs away -> the mark stands turned on the player, his face in view clear of the prompt",
+   "do": {
+    "action": "crouch",
+    "on": true,
+    "seconds": 2
+   },
+   "keys": [
+    {
+     "down": "KeyS"
+    },
+    {
+     "wait_s": 3.5
+    },
+    {
+     "up": "KeyS"
+    },
+    {
+     "wait_s": 0.4
+    }
+   ],
+   "hold_s": 1.5,
+   "expect": {
+    "facing": {
+     "npc.dunmer-north.riverwalk.n1-2": true
+    }
+   }
+  }
+ ]
+}

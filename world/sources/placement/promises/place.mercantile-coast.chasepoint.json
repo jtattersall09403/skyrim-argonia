@@ -1,0 +1,459 @@
+{
+ "schemaVersion": 1,
+ "placeId": "place.mercantile-coast.chasepoint",
+ "generator": "python3 -m worldgen.blueprint_promises --id <place-id> --write (decision 0104); never hand-edit a row but its `unfilled`, `filledBy` or `confirmed` block",
+ "derivedFrom": [
+  {
+   "file": "world/sources/catalogue/places-mercantile-coast.json",
+   "sha256": "a9fb8daab648f68a63ea9a7b9fb57656f56a05ad1d9f3721cac827205bb543c4"
+  },
+  {
+   "file": "world/sources/quests/local-mercantile-coast.json",
+   "sha256": "d386f45e52f912a9d7983134437018c93dfb570352b2c07b8e60f1cd925bff42"
+  },
+  {
+   "file": "world/sources/quests/quests-standalone.json",
+   "sha256": "e98f97d82cb57bac8991371db51adb19d56d83200dc7f01d6947e62fc1ea91e8"
+  }
+ ],
+ "promises": [
+  {
+   "id": "promise.chasepoint.evidence-foreign-timber-tally",
+   "kind": "socketBucket",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.chasepoint].sockets.evidence[evidence.chasepoint.foreign-timber-tally]"
+   },
+   "text": "Chasepoint has the evidence socket evidence.chasepoint.foreign-timber-tally.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.chasepoint.occupant-n1",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.chasepoint].contents.npcs[n1]"
+   },
+   "text": "Chasepoint has band family occupants.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.chasepoint.occupant-n2",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.chasepoint].contents.npcs[n2]"
+   },
+   "text": "Chasepoint has single merchant occupants.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.chasepoint.occupant-station-keeper",
+   "kind": "occupant",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.chasepoint].notableNpcSlots[station-keeper]"
+   },
+   "text": "Station-keeper who inherited an Imperial office lives and works at Chasepoint.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.chasepoint.post-way-station",
+   "kind": "socketBucket",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.chasepoint].sockets.post[post.chasepoint.way-station]"
+   },
+   "text": "Chasepoint has the post socket post.chasepoint.way-station.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.chasepoint.prose-playerpurpose-hook",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.chasepoint].playerPurpose.hook"
+   },
+   "text": "A wreck-salvage village on the road bend; whatever the sea lost last week is for sale here.",
+   "confirmed": {
+    "sha": "60b62c67a086",
+    "note": "The salvage stall stands by the stage door on the coast track at the bend; the merchant sells the week's salvage over it.",
+    "ids": [
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.the-stage.assembly.stall",
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.the-stage.building"
+    ]
+   }
+  },
+  {
+   "id": "promise.chasepoint.prose-questhooks-opportunity",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.chasepoint].questHooks.opportunity"
+   },
+   "text": "Trace a salvage lot back to a ship whose owners have not heard it is down.",
+   "confirmed": {
+    "sha": "963b7907e694",
+    "note": "Each timber lot in the yard is counted against its ship at the tally marker on the stacks.",
+    "ids": [
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.drying-shed.assembly.tim-3"
+    ]
+   }
+  },
+  {
+   "id": "promise.chasepoint.prose-vibe-approach",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.chasepoint].vibe.approach"
+   },
+   "text": "The square yard wall reads through scrub from the road bend; the reed roof over it names the current occupants.",
+   "confirmed": {
+    "sha": "5fcec5c370ac",
+    "note": "From the bend the yard wall shows on three sides with the stage closing the fourth; the stage's thatch roof stands over it.",
+    "ids": [
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.yard-wall.piece.1",
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.yard-wall.piece.2",
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.yard-wall.piece.3",
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.yard-wall.piece.4",
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.the-stage.building"
+    ]
+   }
+  },
+  {
+   "id": "promise.chasepoint.prose-vibe-condition",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.chasepoint].vibe.condition"
+   },
+   "text": "Sound but scavenged. Pantiles gone, roof replaced with what grows here, the rest Imperial and holding.",
+   "confirmed": {
+    "sha": "abee792d607d",
+    "note": "The stage is an Imperial stone farmhouse shell under a thatch roof, sound and lived in.",
+    "ids": [
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.the-stage.building"
+    ]
+   }
+  },
+  {
+   "id": "promise.chasepoint.prose-vibe-materials",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.chasepoint].vibe.materials"
+   },
+   "text": "Imperial grey plaster and rubble core under Argonian reed thatch. The families here call it a bodge. The yard stacks are ships' timber, foreign in every grain.",
+   "confirmed": {
+    "sha": "f2ba2fbbbca6",
+    "note": "The stage's rubble walls stand under thatch; the yard holds stacks of sawn timber.",
+    "ids": [
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.the-stage.building",
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.drying-shed.assembly.tim-1",
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.drying-shed.assembly.tim-2",
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.drying-shed.assembly.tim-3",
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.drying-shed.assembly.tim-4"
+    ]
+   }
+  },
+  {
+   "id": "promise.chasepoint.prose-vibe-mood",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.chasepoint].vibe.mood"
+   },
+   "text": "Thrifty, proprietorial.",
+   "confirmed": {
+    "sha": "f908bff3d3cb",
+    "note": "Salvage is stacked inside a walled yard and sold from one stall.",
+    "ids": [
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.yard-wall.piece.1",
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.drying-shed.assembly.tim-1",
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.the-stage.assembly.stall"
+    ]
+   }
+  },
+  {
+   "id": "promise.chasepoint.prose-vibe-palette",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.chasepoint].vibe.palette"
+   },
+   "text": "Grey plaster, rubble stone, bleached driftwood.",
+   "confirmed": {
+    "sha": "e0aa3295a9ab",
+    "note": "Rubble-stone yard walls and two pieces of bleached driftwood in the yard.",
+    "ids": [
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.yard-wall.piece.1",
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.drying-shed.assembly.drift-1",
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.drying-shed.assembly.drift-2"
+    ]
+   }
+  },
+  {
+   "id": "promise.chasepoint.prose-vibe-senses",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.chasepoint].vibe.senses"
+   },
+   "text": "Road traffic, the sea two fields away, out of sight, wet plaster, tar from the timber stacks.",
+   "confirmed": {
+    "sha": "5e9b90cdb99d",
+    "note": "The stage door opens on the coast track; the timber stacks sit in the yard; the sea is off the site to the south.",
+    "ids": [
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.the-stage.building",
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.drying-shed.assembly.tim-1"
+    ]
+   }
+  },
+  {
+   "id": "promise.chasepoint.prose-vibe-signaturefeature",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.chasepoint].vibe.signatureFeature"
+   },
+   "text": "An Imperial way-station wearing a reed roof, its yard stacked with ships' timber cut in other provinces.",
+   "confirmed": {
+    "sha": "74ee386a9225",
+    "note": "The Imperial stage under thatch, with sawn timber stacked in its walled yard.",
+    "ids": [
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.the-stage.building",
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.drying-shed.assembly.tim-1",
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.drying-shed.assembly.tim-3"
+    ]
+   }
+  },
+  {
+   "id": "promise.chasepoint.prose-vibe-silhouette",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.chasepoint].vibe.silhouette"
+   },
+   "text": "An Imperial way-station's straight ridge and square yard wall, wearing a reed roof that overhangs it wrongly on all four sides.",
+   "confirmed": {
+    "sha": "9e40cd18f034",
+    "note": "The stage's ridge and the yard wall make the outline from the track.",
+    "ids": [
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.the-stage.building",
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.yard-wall.piece.1",
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.yard-wall.piece.4"
+    ]
+   }
+  },
+  {
+   "id": "promise.chasepoint.prose-why-founding",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.chasepoint].why.founding"
+   },
+   "text": "An Imperial road stage east of Soulrest and its nearest neighbour; the Legion built it, the wreck-salvage families kept it.",
+   "confirmed": {
+    "sha": "bd89b66600e0",
+    "note": "The stage stands on the coast track; the three family houses stand south of its yard.",
+    "ids": [
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.the-stage.building",
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.home-salvager.building",
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.home-tally.building"
+    ]
+   }
+  },
+  {
+   "id": "promise.chasepoint.prose-why-occupantsmotive",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.chasepoint].why.occupantsMotive"
+   },
+   "text": "Salvage rights are hereditary here and jealously counted; the stage's old stable now dries the recovered cordage.",
+   "confirmed": {
+    "sha": "86ffb2111c61",
+    "note": "The old stable inside the yard wall holds the nets, rope racks and timber of the salvage count.",
+    "ids": [
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.drying-shed.building"
+    ]
+   }
+  },
+  {
+   "id": "promise.chasepoint.prose-why-pressures",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.chasepoint].why.pressures"
+   },
+   "text": "No stage-keeper has been paid in two centuries; the roof is Argonian thatch on Imperial walls.",
+   "confirmed": {
+    "sha": "8686ccca1d74",
+    "note": "The stage's Imperial walls carry a thatch roof.",
+    "ids": [
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.the-stage.building"
+    ]
+   }
+  },
+  {
+   "id": "promise.chasepoint.prose-why-siteadvantages",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.chasepoint].why.siteAdvantages"
+   },
+   "text": "Last firm ground before the coast road turns inland; a shingle beach below that catches what the Southern Sea loses.",
+   "confirmed": {
+    "sha": "92718a034da4",
+    "note": "The hamlet stands on a dry plateau at 7 m above the swamp; the shingle beach lies off the site to the south.",
+    "ids": [
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.home-salvager.building",
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.home-tally.building"
+    ]
+   }
+  },
+  {
+   "id": "promise.chasepoint.prose-why-wouldchangeif",
+   "kind": "prose",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.chasepoint].why.wouldChangeIf"
+   },
+   "text": "A revived coast road with paid stage-keepers would make it a proper town again.",
+   "confirmed": {
+    "sha": "b2830c14353b",
+    "note": "One Legion stage, three salvage houses and their outbuildings on the coast track: a hamlet, not a town.",
+    "ids": [
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.the-stage.building"
+    ]
+   }
+  },
+  {
+   "id": "promise.chasepoint.provision-lq29-anchor",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.chasepoint].questHooks.provisions[quest.provision.lq29-anchor]"
+   },
+   "text": "Chasepoint holds what quest provision quest.provision.lq29-anchor needs.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.chasepoint.quest-lm38",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-mercantile-coast.json",
+    "path": "quest[LM38]"
+   },
+   "text": "LM38 Whatever the Sea Lost: Goods from a wreck are on sale at Chasepoint before their owners know the ship is down",
+   "confirmed": {
+    "sha": "130c06dfdf0a",
+    "note": "Wreck goods are sold from the stall by the stage door.",
+    "ids": [
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.the-stage.assembly.stall"
+    ]
+   }
+  },
+  {
+   "id": "promise.chasepoint.quest-lm56",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-mercantile-coast.json",
+    "path": "quest[LM56]"
+   },
+   "text": "LM56 The Coast Road Survey: A road survey east of Soulrest went out to price a causeway repair and stopped sending its stages back",
+   "confirmed": {
+    "sha": "ac503ff32b97",
+    "note": "The Legion stage on the coast track is the last stage the survey reached; its door opens onto the track east.",
+    "ids": [
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.the-stage.building"
+    ]
+   }
+  },
+  {
+   "id": "promise.chasepoint.quest-lm57",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-mercantile-coast.json",
+    "path": "quest[LM57]"
+   },
+   "text": "LM57 The Stage That Was Not Paid: Two families each claim to be the Legion's unpaid stage-keeper, with two centuries of arrears behind the claim",
+   "confirmed": {
+    "sha": "a8ca43be0b4e",
+    "note": "The Legion stage and two separate family houses stand for the two claims.",
+    "ids": [
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.the-stage.building",
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.home-salvager.building",
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.home-tally.building"
+    ]
+   }
+  },
+  {
+   "id": "promise.chasepoint.quest-lm62",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/local-mercantile-coast.json",
+    "path": "quest[LM62]"
+   },
+   "text": "LM62 What the Salvage Coast Owes: Survivors pulled off the bar have been kept as salvage crew to work their own rescue off",
+   "confirmed": {
+    "sha": "7db6287a5db3",
+    "note": "Rescued crew work the walled salvage yard and the old stable where the cordage dries.",
+    "ids": [
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.drying-shed.building",
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.yard-wall.piece.1"
+    ]
+   }
+  },
+  {
+   "id": "promise.chasepoint.quest-lq29",
+   "kind": "quest",
+   "source": {
+    "file": "world/sources/quests/quests-standalone.json",
+    "path": "quest[LQ29]"
+   },
+   "text": "LQ29 A Wreck with Living Cargo: A wreck holds trafficked animals, contraband relics and surviving pirates",
+   "confirmed": {
+    "sha": "7cc73f67b8a4",
+    "note": "Relics held back from the count go into the yard's stacks, counted at the tally marker.",
+    "ids": [
+     "place.mercantile-coast.chasepoint.parcel.chasepoint.drying-shed.assembly.tim-3"
+    ]
+   }
+  },
+  {
+   "id": "promise.chasepoint.safe-interior",
+   "kind": "safeInterior",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.chasepoint].classification.class"
+   },
+   "text": "Chasepoint has one safe interior (danger D0, quests 20 section 12).",
+   "unfilled": null
+  },
+  {
+   "id": "promise.chasepoint.service-trader",
+   "kind": "service",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.chasepoint].services[trader]"
+   },
+   "text": "Chasepoint offers the trader service.",
+   "unfilled": null
+  },
+  {
+   "id": "promise.chasepoint.thing-sign",
+   "kind": "provision",
+   "source": {
+    "file": "world/sources/catalogue/places-mercantile-coast.json",
+    "path": "places[place.mercantile-coast.chasepoint].assetPlan[2]"
+   },
+   "text": "Chasepoint shows the sign its record names.",
+   "unfilled": null,
+   "filledBy": [
+    "place.mercantile-coast.chasepoint.parcel.chasepoint.the-stage.assembly.rd-post",
+    "place.mercantile-coast.chasepoint.parcel.chasepoint.the-stage.assembly.st-post"
+   ]
+  }
+ ]
+}

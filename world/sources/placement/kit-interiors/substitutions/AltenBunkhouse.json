@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "cellId": "AltenBunkhouse",
+  "plugin": "King of the Murkmire.esp",
+  "rule": "Stand-ins for the cell's missing clutter and furniture (lane L17, planner brief 2026-09-28): each missing piece is drawn by a published vanilla or King of the Murkmire piece of the same object and near size, read from the kit manifests; a piece with no same-object stand-in stays a listed gap. Drawn at the missing reference's transform by worldgen/export_interior_bundle.py.",
+  "substitutions": [
+    {
+      "refId": "080F279F",
+      "standInAsset": "vanilla:clutter/common/rug07",
+      "why": "A woven rug lies here; a common rug of its size takes its place."
+    },
+    {
+      "refId": "080F27A0",
+      "standInAsset": "vanilla:clutter/common/ruground04",
+      "why": "A square woven rug lies here; a round rug of its width takes its place."
+    },
+    {
+      "refId": "080F27A8",
+      "standInAsset": "vanilla:clutter/common/crateopen01",
+      "why": "An open crate stands here; the vanilla open crate, of its shape and size, takes its place."
+    },
+    {
+      "refId": "080F27AA",
+      "standInAsset": "vanilla:clutter/ingredients/scalypholiotabits01",
+      "why": "A bog beacon cap lies here; a pinch of dried fungus takes its place."
+    },
+    {
+      "refId": "080F27AB",
+      "standInAsset": "vanilla:clutter/ingredients/scalypholiotabits01",
+      "why": "A bog beacon cap lies here; a pinch of dried fungus takes its place."
+    },
+    {
+      "refId": "080F27AC",
+      "standInAsset": "vanilla:clutter/ingredients/scalypholiotabits01",
+      "why": "A bog beacon cap lies here; a pinch of dried fungus takes its place."
+    },
+    {
+      "refId": "080F27AD",
+      "standInAsset": "vanilla:clutter/ingredients/scalypholiotabits01",
+      "why": "A bog beacon cap lies here; a pinch of dried fungus takes its place."
+    },
+    {
+      "refId": "080F27AE",
+      "standInAsset": "vanilla:clutter/ingredients/scalypholiotabits01",
+      "why": "A bog beacon cap lies here; a pinch of dried fungus takes its place."
+    },
+    {
+      "refId": "080F27BF",
+      "standInAsset": "vanilla:clutter/deadanimals/deadpondfish04",
+      "why": "A raw pogfish lies here; a dead pond fish takes its place."
+    },
+    {
+      "refId": "080F7A8E",
+      "standInAsset": "vanilla:clutter/wine/winebottle02a",
+      "why": "A bottle of theilul stands here; a wine bottle takes its place."
+    },
+    {
+      "refId": "080F7A8F",
+      "standInAsset": "vanilla:clutter/wine/winebottle02a",
+      "why": "A bottle of theilul stands here; a wine bottle takes its place."
+    },
+    {
+      "refId": "080F7A91",
+      "standInAsset": "vanilla:clutter/wine/winebottle02b",
+      "why": "A bottle of snail milk stands here; a wine bottle takes its place."
+    },
+    {
+      "refId": "080F7A93",
+      "standInAsset": "vanilla:clutter/glazedjugsmall01",
+      "why": "A jug of bog brew stands here; a small glazed jug of its height takes its place."
+    },
+    {
+      "refId": "080F7AA7",
+      "standInAsset": "vanilla:clutter/wine/winebottle02a",
+      "why": "A bottle of theilul stands here; a wine bottle takes its place."
+    },
+    {
+      "refId": "080F7ACD",
+      "standInAsset": "vanilla:clutter/ingredients/stew",
+      "why": "A bowl of marshmerrow stew sits here; a bowl of stew takes its place."
+    }
+  ],
+  "removals": [
+    {
+      "refId": "080F27AF",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club or Hearthfire archive, which the vault does not hold (kit manifests re-read 2026-10-09, preflight-fix).",
+      "note": "A piece from a Creation Club or Hearthfire pack stood here; no kit holds one like it, so the spot stays bare."
+    },
+    {
+      "refId": "080F7A7D",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A handful of saltrice lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "080F7A7F",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A handful of saltrice lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "080F7A80",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club, Dawnguard or Hearthfire archive, which the vault does not hold",
+      "note": "A handful of saltrice lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "080F7A84",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club or Hearthfire archive, which the vault does not hold",
+      "note": "A stalk of marshmerrow lies here; no kit holds one, so the spot stays bare."
+    },
+    {
+      "refId": "080F7A89",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club archive, which the vault does not hold",
+      "note": "A bundle of kresh fibre lies here; no kit holds the same object, so the spot stays bare."
+    },
+    {
+      "refId": "080F7A8A",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club archive, which the vault does not hold",
+      "note": "A bundle of kresh fibre lies here; no kit holds the same object, so the spot stays bare."
+    },
+    {
+      "refId": "080F7AEA",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club archive, which the vault does not hold",
+      "note": "A piece of fishing gear stands here; no kit holds the same object, so the spot stays bare."
+    },
+    {
+      "refId": "080F7AEB",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club archive, which the vault does not hold. Its base ccBGSSSE001-Fish.esm:00000D74 is fishing gear set in the doorway under the doorframe (walk 12 A1: a square table stood in for it and blocked the way in)",
+      "note": "A piece of fishing gear stands here; no kit holds the same object, so the spot stays bare."
+    },
+    {
+      "refId": "080F7AEC",
+      "reason": "decorative-no-same-class",
+      "search": "settlement-kit-sourcing-log.md, the KotM stand-ins row of 2026-09-28 (lane L17): no published interior kit holds the same object; the piece lives only in a Creation Club archive, which the vault does not hold",
+      "note": "A piece of fishing gear stands here; no kit holds the same object, so the spot stays bare."
+    }
+  ],
+  "removalRule": "Owner ruling 2026-10-04 (R113): no missing piece ships as a gap. A missing piece takes a same-class stand-in from a published kit where one exists (substitutions[]); a decorative piece whose class no published kit or vault archive holds is taken out of the fit-out (removals[], reason decorative-no-same-class, its search recorded), and the spot is simply empty. A placed piece whose only support was a removed piece is removed with it (reason rests-on-a-removal, restsOn naming that row)."
+}

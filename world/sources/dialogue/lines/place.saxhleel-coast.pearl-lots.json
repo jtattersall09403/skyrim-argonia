@@ -1,0 +1,1288 @@
+{
+  "schemaVersion": 1,
+  "domain": "dialogue-lines",
+  "placeId": "place.saxhleel-coast.pearl-lots",
+  "people": [
+    {
+      "id": "npc.saxhleel-coast.pearl-lots.n2",
+      "name": "Deeka-Kaya",
+      "role": "the surface tender",
+      "services": [],
+      "topics": [
+        "topic.deep-lot-pearl",
+        "topic.lot-four",
+        "topic.unwritten-lot"
+      ]
+    },
+    {
+      "id": "npc.saxhleel-coast.pearl-lots.n1-4",
+      "name": "Ohl-Jei",
+      "role": "the lot divers",
+      "services": [],
+      "topics": [
+        "topic.lot-four"
+      ]
+    }
+  ],
+  "entries": [
+    {
+      "schemaVersion": 1,
+      "id": "greeting.pearl-lots-n1.base",
+      "type": "greeting",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1",
+      "words": "Long breath, rower. What is your errand?",
+      "available": [],
+      "variants": {
+        "low": "Errand, rower.",
+        "high": "Long breath, rower. Come up to the fire."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.pearl-lots-n1.night",
+      "type": "greeting",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1",
+      "words": "Dark. The lots are shut until work starts.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Lots are shut. Leave the jetty.",
+        "high": "Dark, rower. The lots are shut. Come when the work starts."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.pearl-lots-n1.crime",
+      "type": "greeting",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1",
+      "words": "Every family on the spit will hear of this.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "The spit will hear of this.",
+        "high": "The spit will hear of this. I will say what I can for you."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.pearl-lots-n1.trusted",
+      "type": "greeting",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1",
+      "words": "You are back at the raft.",
+      "available": [
+        {
+          "speakerDispositionAtLeast": 75
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Back at the raft, are you.",
+        "high": "Back at the raft, rower. The lot kept your place."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n1.pearl-lots",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1",
+      "keys": {
+        "topic": "topic.pearl-lots"
+      },
+      "words": "The Counted Lots are the pearl beds past the jetty. Each lot is a numbered stretch of seabed with a buoy over it. My family's lot lies under the raft.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.pearl-lots.default",
+        "hash": "6a4953cf"
+      },
+      "factIds": [
+        "fact.lot.numbered"
+      ],
+      "variants": {
+        "low": "Pearl beds. Each lot is numbered. Look for the buoys.",
+        "high": "The Counted Lots are the pearl beds past the jetty. Every lot is numbered and has its buoy. Watch the water by the raft, that is my lot."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n1.pearl-lots-work",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1",
+      "keys": {
+        "topic": "topic.pearl-lots-work"
+      },
+      "words": "I dive from the raft over my family's lot. Pay is best on the deep lots. They kill divers. My breath is the longest on the spit.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.pearl-lots-work.default",
+        "hash": "d2961f2c"
+      },
+      "factIds": [
+        "fact.lots.deep"
+      ],
+      "variants": {
+        "low": "I dive. Pay is best on the deep lots. They kill divers.",
+        "high": "I dive from the raft over my family's lot. The deep lots pay the most. They kill divers. I would take the deep lot every day. Come at lamp-out and count my time below."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n1.pearl-lots-people",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1",
+      "keys": {
+        "topic": "topic.pearl-lots-people"
+      },
+      "words": "Diver families hold the lots by inheritance. Each keeps to its own. The tally book gets what we bring up. It gets the drownings as well.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.pearl-lots-people.default",
+        "hash": "05cf6e4d"
+      },
+      "factIds": [
+        "fact.lot.tally",
+        "fact.lots.inheritance"
+      ],
+      "variants": {
+        "low": "Families hold the lots by inheritance. The tally book has the takings and the drownings.",
+        "high": "Diver families hold the lots by inheritance. Each keeps to its own lot. The takings go in the tally book with the drownings. Ohl-Jei keeps it at the grading table, so ask him to show it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n1.pearl-lots-danger",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1",
+      "keys": {
+        "topic": "topic.pearl-lots-danger"
+      },
+      "words": "The deep lots kill divers. Pay is better down there. I have outlasted every other diver on them. Jellies drift over the beds too.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.pearl-lots-danger.default",
+        "hash": "bd06f603"
+      },
+      "factIds": [
+        "fact.lots.deep"
+      ],
+      "variants": {
+        "low": "Deep water kills divers. Jellies drift over the beds.",
+        "high": "The deep lots kill divers. Pay is better down there. I have outlasted all of them. Jellies drift over the beds, so keep out of the shallows by the buoys."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n1.pearl-lots-directions",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1",
+      "keys": {
+        "topic": "topic.pearl-lots-directions"
+      },
+      "words": "Walk west along the shore from the spit. The landing below Portdun Mont comes first. Archon lies beyond that landing.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.pearl-lots-directions.default",
+        "hash": "0c53e1e3"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "West along the shore. The landing, then Archon.",
+        "high": "Walk west along the shore from the spit. The landing below Portdun Mont comes first. Archon lies beyond it. The sand is soft, so go in daylight."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n1.role-diving-the-lots",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1",
+      "keys": {
+        "topic": "topic.role-diving-the-lots"
+      },
+      "words": "Seabed is cut into numbered lots. Each lot passes down one diver family. Only that family dives it. How it came by the lot is not for strangers.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-diving-the-lots.default",
+        "hash": "66540641"
+      },
+      "factIds": [
+        "fact.lot.numbered",
+        "fact.lot.family"
+      ],
+      "variants": {
+        "low": "Numbered seabed. One family dives each lot. No other.",
+        "high": "Seabed is cut into numbered lots. Only the family that holds one may dive it. I fill my net, then grade the shells before any opens. Ohl-Jei grades at the table if you want to watch."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.pearl-lots-n1.passing",
+      "type": "bark",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1",
+      "slot": "passing",
+      "words": "Twenty breaths, then down.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.pearl-lots-n1.at-work",
+      "type": "bark",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1",
+      "slot": "at-work",
+      "words": "Down again.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.pearl-lots-n1-2.base",
+      "type": "greeting",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-2",
+      "words": "Small, middling or good?",
+      "available": [],
+      "variants": {
+        "low": "Not buying? Then stand clear of the baskets.",
+        "high": "Good day to you. The good basket is the one by the fire."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.pearl-lots-n1-2.night",
+      "type": "greeting",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-2",
+      "words": "Late, buyer. The tenders are moored.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "The baskets are sold. Come at light.",
+        "high": "Late, buyer. Come at first light for the best."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.pearl-lots-n1-2.crime",
+      "type": "greeting",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-2",
+      "words": "You went for that basket. It is already sold.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "Leave the basket. It is sold.",
+        "high": "Hands off that basket. Ask me for another."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.pearl-lots-n1-2.trusted",
+      "type": "greeting",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-2",
+      "words": "Back again, buyer. Which basket today?",
+      "available": [
+        {
+          "speakerDispositionAtLeast": 75
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Which basket, then?",
+        "high": "Back again, buyer. The middling ones are cheap today."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n1-2.pearl-lots",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-2",
+      "keys": {
+        "topic": "topic.pearl-lots"
+      },
+      "words": "Every lot out there is a numbered stretch of seabed with a buoy over it. I grade what the divers bring up, here on the spit, into baskets by size. Size sets the price in Archon.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.pearl-lots.default",
+        "hash": "6a4953cf"
+      },
+      "factIds": [
+        "fact.lot.numbered"
+      ],
+      "variants": {
+        "low": "Numbered lots, buoys over each. Mind the baskets, I grade the catch here."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n1-2.pearl-lots-work",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-2",
+      "keys": {
+        "topic": "topic.pearl-lots-work"
+      },
+      "words": "The tenders lie moored over the lots all day. The divers go down from them. When a net comes up, I carry it to the grading ground and sort it into baskets by size.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.pearl-lots-work.default",
+        "hash": "d2961f2c"
+      },
+      "factIds": [
+        "fact.tender.moored"
+      ],
+      "variants": {
+        "low": "Tenders over the lots. Divers go down. I grade what comes up.",
+        "high": "The tenders lie moored over the lots all day, with the divers going down from them. I take each net to the grading ground and sort it by size. Ask for the good basket when the price is set."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n1-2.pearl-lots-people",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-2",
+      "keys": {
+        "topic": "topic.pearl-lots-people"
+      },
+      "words": "Diver families hold the lots by inheritance, parent to child. The tally book keeps the pay and the deaths together. I grade the baskets. Size is what sets the price.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.pearl-lots-people.default",
+        "hash": "05cf6e4d"
+      },
+      "factIds": [
+        "fact.lots.inheritance",
+        "fact.lots.tally"
+      ],
+      "variants": {
+        "low": "Families hold the lots by inheritance. The tally book keeps pay and deaths.",
+        "high": "Diver families hold the lots by inheritance, parent to child. The tally book keeps the pay and the deaths together. I grade the baskets. Size sets the price in Archon, so come to me before you go there."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n1-2.pearl-lots-danger",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-2",
+      "keys": {
+        "topic": "topic.pearl-lots-danger"
+      },
+      "words": "The deep lots pay best. They kill divers too. Jellies drift over the beds, so watch the water around the buoys before you step off the spit.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.pearl-lots-danger.default",
+        "hash": "bd06f603"
+      },
+      "factIds": [
+        "fact.lots.deep"
+      ],
+      "variants": {
+        "low": "Deep lots kill divers. Jellies drift over the beds. Stay out.",
+        "high": "The deep lots pay best. They kill divers too. Jellies drift over the beds, so watch the water around the buoys. If you must go down, take a diver of the family."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n1-2.pearl-lots-directions",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-2",
+      "keys": {
+        "topic": "topic.pearl-lots-directions"
+      },
+      "words": "Go west from the grading ground to the headland. Past it the shore leads on to the landing under Portdun Mont. Archon lies beyond that.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.pearl-lots-directions.default",
+        "hash": "0c53e1e3"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "West to the headland, on to the landing. Archon lies beyond.",
+        "high": "Go west from the grading ground to the headland. Past it the shore leads on to the landing under Portdun Mont. Archon lies beyond that. The sand is soft, so give yourself the morning."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n1-2.role-diving-the-lots",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-2",
+      "keys": {
+        "topic": "topic.role-diving-the-lots"
+      },
+      "words": "Out on the bed each lot has a number on a stretch of seabed. One diver family has it from its parents. No other family dives it. My part comes after the dive, when the net is up and I grade the shells.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-diving-the-lots.default",
+        "hash": "66540641"
+      },
+      "factIds": [
+        "fact.lot.numbered",
+        "fact.lot.family"
+      ],
+      "variants": {
+        "low": "One family dives each lot. I grade what they bring up.",
+        "high": "Out on the bed each lot has a number on a stretch of seabed. One diver family has it from its parents. No other family dives it. My part comes after the dive, when the net is up and I grade the shells. Bring a basket if you want to see it done."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.pearl-lots-n1-2.passing",
+      "type": "bark",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-2",
+      "slot": "passing",
+      "words": "A middling day.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.pearl-lots-n1-2.at-work",
+      "type": "bark",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-2",
+      "slot": "at-work",
+      "words": "Another one.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.pearl-lots-n1-3.base",
+      "type": "greeting",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-3",
+      "words": "Up from the deep lot. Shore-foot.",
+      "available": [],
+      "variants": {
+        "low": "Wet, cold, tired. Say it now.",
+        "high": "Shore-foot. Sit by the fire, I am nearly dry."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.pearl-lots-n1-3.night",
+      "type": "greeting",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-3",
+      "words": "Night. The water is closed.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Night. Keep off the lots.",
+        "high": "Night, shore-foot. The water opens at first light."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.pearl-lots-n1-3.crime",
+      "type": "greeting",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-3",
+      "words": "Your hand was in a net that is not mine.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "That was a diver's net you handled.",
+        "high": "You handled a net I filled. Return it to the basket."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.pearl-lots-n1-3.trusted",
+      "type": "greeting",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-3",
+      "words": "Rest here while I dry off.",
+      "available": [
+        {
+          "speakerDispositionAtLeast": 75
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Stand there while I dry.",
+        "high": "Rest here, shore-foot. I will tell you the depth."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n1-3.pearl-lots",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-3",
+      "keys": {
+        "topic": "topic.pearl-lots"
+      },
+      "words": "The Counted Lots are the pearl beds inside the bar. Each numbered lot has a buoy over it. I dive the deep one, down three or four arm-spans from the tender. Most days I surface with the net and little breath.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.pearl-lots.default",
+        "hash": "6a4953cf"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Pearl beds inside the bar. Buoys mark them. I dive the deep one and I am tired.",
+        "high": "The Counted Lots are the pearl beds inside the bar, with a buoy on each numbered lot. I dive the deep one, three or four arm-spans down. Come to the grading ground at dusk and I will show you a good shell."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n1-3.pearl-lots-work",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-3",
+      "keys": {
+        "topic": "topic.pearl-lots-work"
+      },
+      "words": "I dive the deep lot and carry the day's net up myself. The deep lots pay the best. They also kill divers. I weigh what the net holds against that on every dive.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.pearl-lots-work.default",
+        "hash": "d2961f2c"
+      },
+      "factIds": [
+        "fact.lots.deep"
+      ],
+      "variants": {
+        "low": "The deep lots pay best. They kill divers. I dive one.",
+        "high": "I carry the day's net up from the deep lot myself. It pays the best of any lot here. It also kills divers, so I go down slow and I tell the tender my plan first."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n1-3.pearl-lots-people",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-3",
+      "keys": {
+        "topic": "topic.pearl-lots-people"
+      },
+      "words": "The diver families share the tenders, the boats moored over the lots. At the grading ground there is a tally book. It holds the pay and the deaths on the same pages. I have read what it says about the deep lot.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.pearl-lots-people.default",
+        "hash": "05cf6e4d"
+      },
+      "factIds": [
+        "fact.lots.tally",
+        "fact.tender.shared"
+      ],
+      "variants": {
+        "low": "The families share the tenders. The tally book has the pay and the deaths in it. Read it yourself.",
+        "high": "The families share the tenders moored over the lots. The tally book at the grading ground holds the pay and the deaths together. Ask the grader to open it for you. He knows my page best."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n1-3.pearl-lots-danger",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-3",
+      "keys": {
+        "topic": "topic.pearl-lots-danger"
+      },
+      "words": "Gar fish come in over the beds. Jellies float among the buoys. The deep lots drown divers. I am the one who dives them, so ask me about depth. It is four arm-spans of dark water with a net on your arm.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.pearl-lots-danger.default",
+        "hash": "bd06f603"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Deep lots drown divers. Jellies sting. Gar bite. Stay on the shore.",
+        "high": "Gar fish come in over the beds and jellies float among the buoys. Both are a nuisance. The deep lots are the danger. I know them well. Do not swim out. Ask the tender to point out a safe buoy."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n1-3.pearl-lots-directions",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-3",
+      "keys": {
+        "topic": "topic.pearl-lots-directions"
+      },
+      "words": "From the spit, walk west along the shore. The landing below Portdun Mont comes first. Archon is beyond that landing. It is a flat walk of a few hundred arm-spans to the landing.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.pearl-lots-directions.default",
+        "hash": "0c53e1e3"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "West along the shore. The landing below Portdun Mont, then Archon.",
+        "high": "From the spit, walk west along the shore. You reach the landing below Portdun Mont first, with Archon beyond it. The sand is flat all the way. Go with the light."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n1-3.role-diving-the-lots",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-3",
+      "keys": {
+        "topic": "topic.role-diving-the-lots"
+      },
+      "words": "My family holds a numbered patch of seabed. Only we dive it. I fill a net with shells down there. Up top, they are graded by size before any is opened. The tally book gets the takings and the drownings together.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-diving-the-lots.default",
+        "hash": "66540641"
+      },
+      "factIds": [
+        "fact.lot.grades",
+        "fact.lot.tally"
+      ],
+      "variants": {
+        "low": "I fill a net. Shells are graded by size, then opened. The tally book keeps takings and drownings.",
+        "high": "I fill a net with shells on my family's patch. Up top, the grader sorts them by size before any is opened. Then the takings and the drownings go into the tally book. Stay and watch if you like."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.pearl-lots-n1-3.passing",
+      "type": "bark",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-3",
+      "slot": "passing",
+      "words": "Cold on the bottom.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.pearl-lots-n1-3.at-work",
+      "type": "bark",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-3",
+      "slot": "at-work",
+      "words": "Deep lot next.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.pearl-lots-n1-4.base",
+      "type": "greeting",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-4",
+      "words": "Mind the knife, asker.",
+      "available": [],
+      "variants": {
+        "low": "Back off, asker. I am cutting.",
+        "high": "Long breath to you, asker."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.pearl-lots-n1-4.night",
+      "type": "greeting",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-4",
+      "words": "No grading in the dark.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "The tally book is shut.",
+        "high": "The table is closed, but ask."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.pearl-lots-n1-4.crime",
+      "type": "greeting",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-4",
+      "words": "I have heard of it, asker.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "I saw it all, asker. Move off.",
+        "high": "I saw it, asker. Put it right."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.pearl-lots-n1-4.trusted",
+      "type": "greeting",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-4",
+      "words": "Watch this cut, asker.",
+      "available": [
+        {
+          "speakerDispositionAtLeast": 75
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Stand there, asker.",
+        "high": "Closer, asker. Watch the knife."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n1-4.pearl-lots",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-4",
+      "keys": {
+        "topic": "topic.pearl-lots"
+      },
+      "words": "The Counted Lots are the pearl beds inside the bar, out past the jetty. Each lot has a number and a family. I open the shells at the grading table for all of them, so I know the lot of every shell.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.pearl-lots.default",
+        "hash": "6a4953cf"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Pearl beds past the jetty, numbered, one family each. I am busy with these shells.",
+        "high": "The Counted Lots are the numbered pearl beds inside the bar, past the jetty. Each family has its own lot. I know them all from my table. Watch me open a net, ojel, if you want to see how it goes."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n1-4.pearl-lots-work",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-4",
+      "keys": {
+        "topic": "topic.pearl-lots-work"
+      },
+      "words": "Divers go down from the tenders. A tender floats moored over its lot, with a line to the diver. I work up here at the grading table, where a net comes up and I open the shells with my bone knife.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.pearl-lots-work.default",
+        "hash": "d2961f2c"
+      },
+      "factIds": [
+        "fact.tender.moored"
+      ],
+      "variants": {
+        "low": "Divers dive. The tenders are moored over the lots. I open shells.",
+        "high": "Divers go down from the tenders, each one moored over its lot. I stay at the grading table with my bone knife. Come at midday and I will show you a net coming apart, shell by shell."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n1-4.pearl-lots-people",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-4",
+      "keys": {
+        "topic": "topic.pearl-lots-people"
+      },
+      "words": "Diver families come to my table every day. They share the tenders, one boat for several lots. I open the shells for each family in turn, so I know every family's lot.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.pearl-lots-people.default",
+        "hash": "05cf6e4d"
+      },
+      "factIds": [
+        "fact.tender.shared"
+      ],
+      "variants": {
+        "low": "Families share the tenders. Wait your turn at the table.",
+        "high": "The families share the tenders, one boat for several lots. Every one of them comes to my table. I know each lot by its number. I can tell you which family is on which."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n1-4.pearl-lots-danger",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-4",
+      "keys": {
+        "topic": "topic.pearl-lots-danger"
+      },
+      "words": "Divers drown on the deep lots. Gar fish crowd the beds. The swamp jellies drift in among the buoys. From the table I watch for the jellies first.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.pearl-lots-danger.default",
+        "hash": "bd06f603"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "The deep lots drown divers. Stay out of the water.",
+        "high": "Divers drown on the deep lots. I want you to hear that plainly. Swamp jellies drift in among the buoys. Gar fish crowd the beds. Do not swim out here, ojel."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n1-4.pearl-lots-directions",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-4",
+      "keys": {
+        "topic": "topic.pearl-lots-directions"
+      },
+      "words": "Follow the spit west from the grading ground. The landing for the beach under Portdun Mont is the first stop. Archon lies beyond the landing. Go in daylight.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.pearl-lots-directions.default",
+        "hash": "0c53e1e3"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "West along the spit. The landing is below Portdun Mont. Archon is beyond.",
+        "high": "Follow the spit west from the grading ground. It ends at the landing for the beach under Portdun Mont, a few minutes along the shore. Archon lies beyond the landing. Go in daylight, so you are there before dark."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n1-4.role-diving-the-lots",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-4",
+      "keys": {
+        "topic": "topic.role-diving-the-lots"
+      },
+      "words": "Each lot is a numbered patch of seabed. One family dives it. The diver fills a net down there. At the table, I grade the shells by size before I open any. The tally book gets the takings and the drownings alike.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-diving-the-lots.default",
+        "hash": "66540641"
+      },
+      "factIds": [
+        "fact.lot.grades",
+        "fact.lot.tally"
+      ],
+      "variants": {
+        "low": "Divers fill nets. I grade the shells, then open them. The tally book gets it all.",
+        "high": "Each lot is a numbered patch of seabed, dived by one family. The diver fills a net down there. I grade the shells by size before I open any. You can watch me do it. The tally book gets the takings and the drownings alike."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n1-4.about-counted-lots",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-4",
+      "keys": {
+        "topic": "topic.about-counted-lots"
+      },
+      "words": "These are pearl beds, numbered one by one. A family of divers has each lot by inheritance, parent to child. The deep lots pay best, but they kill divers. The tally book has the pay written down, with the deaths next to the pay.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-counted-lots.default",
+        "hash": "ba7e1019"
+      },
+      "factIds": [
+        "fact.lots.numbered",
+        "fact.lots.inheritance",
+        "fact.lots.deep",
+        "fact.lots.tally"
+      ],
+      "variants": {
+        "low": "Numbered pearl beds. Each family has its lot by inheritance. The deep lots pay best and kill divers. The tally book has all of it.",
+        "high": "These are pearl beds, numbered one by one. A family of divers has each lot by inheritance, parent to child. The deep lots pay best, but they kill divers. The tally book has the pay written down, with the deaths next to the pay. Ask me about any lot you see."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.pearl-lots-n1-4.passing",
+      "type": "bark",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-4",
+      "slot": "passing",
+      "words": "Poor shells today.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.pearl-lots-n1-4.at-work",
+      "type": "bark",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-4",
+      "slot": "at-work",
+      "words": "Empty again.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.pearl-lots-n2.base",
+      "type": "greeting",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n2",
+      "words": "Mind the planks, boat-guest.",
+      "available": [],
+      "variants": {
+        "low": "Off the planks, boat-guest.",
+        "high": "Welcome aboard, boat-guest. The planks are dry."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.pearl-lots-n2.night",
+      "type": "greeting",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n2",
+      "words": "The divers are ashore for the night.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "The divers are ashore. Come back later.",
+        "high": "The divers are ashore. Come back at first light."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.pearl-lots-n2.crime",
+      "type": "greeting",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n2",
+      "words": "You cut a line. Get off my boat.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "A cut line. Leave my boat.",
+        "high": "You cut a line. Get off my boat."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.pearl-lots-n2.trusted",
+      "type": "greeting",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n2",
+      "words": "Back aboard, boat-guest. Lines are fair.",
+      "available": [
+        {
+          "speakerDispositionAtLeast": 75
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Back, boat-guest. Touch nothing.",
+        "high": "Back aboard, boat-guest. Lines are fair today."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n2.pearl-lots",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n2",
+      "keys": {
+        "topic": "topic.pearl-lots"
+      },
+      "words": "I tend the boat at the end of the jetty. The lines go over its side. I have never been down there, so all I know of the lots is what the buoys show and what the rope tells my hands. A line runs taut while the diver works the bed. Slack, I lean out over the water.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.pearl-lots.default",
+        "hash": "6a4953cf"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "The buoys float over the lots. I mind the boat and the lines. That is all I know of them.",
+        "high": "I tend the boat at the jetty's end. I haven't been down there myself, so the buoys show me the lots and the rope tells me the rest. The water drops away fastest right below this jetty. Stand at the tip if you want to see the colour change."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n2.pearl-lots-work",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n2",
+      "keys": {
+        "topic": "topic.pearl-lots-work"
+      },
+      "words": "I'm the surface tender. I stay in the boat while the divers go down. When a line pulls, I haul. Going over the side was never my work and I won't pretend it was. A diver needs a dry hand on the far end of the rope. I lay mine out coiled each morning so it can't foul.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.pearl-lots-work.default",
+        "hash": "d2961f2c"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "I stay in the boat and haul. The divers do the rest.",
+        "high": "I'm the surface tender. I stay in the boat while the divers go down. When a line pulls, I haul. Going over the side was never my work. A diver needs a dry hand on the far end of the rope. I coil mine fresh at first light so the divers can trust it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n2.pearl-lots-people",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n2",
+      "keys": {
+        "topic": "topic.pearl-lots-people"
+      },
+      "words": "The diver families work the lots. Every pearl they pull goes into the tally book. So does every drowning. One book holds both, in the order they came. I don't write in it. I only see the lines. A line that stays slack too long tells me what the next entry will be.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.pearl-lots-people.default",
+        "hash": "05cf6e4d"
+      },
+      "factIds": [
+        "fact.lot.tally"
+      ],
+      "variants": {
+        "low": "The book holds takings and drownings alike. I do not write in it.",
+        "high": "The diver families work the lots. The tally book holds their takings and their drownings, one after the other. I don't write in it. I only see the lines. A slack line that never tightens tells me what the next entry will be before the book does."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n2.pearl-lots-danger",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n2",
+      "keys": {
+        "topic": "topic.pearl-lots-danger"
+      },
+      "words": "I wait longest on the deep lots. The line goes down and goes slack. I hold the end of it and watch the water until the diver comes up. Jellies drift in under the buoys. Gar swim thick over the beds. The families call a tender's work easy because they never hold the slack themselves.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.pearl-lots-danger.default",
+        "hash": "bd06f603"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "The deep lots drown divers. Jellies drift under the buoys. Gar swim over the beds.",
+        "high": "I wait longest on the deep lots. The line goes down and goes slack. I hold the end until the diver comes up. Jellies drift in under the buoys. Gar swim thick over the beds. The families call that easy work, but they don't hold the slack. I do. It is heavy."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n2.pearl-lots-directions",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n2",
+      "keys": {
+        "topic": "topic.pearl-lots-directions"
+      },
+      "words": "From the jetty, walk the spit west to the grading ground. Then follow the shore on to the landing at the foot of Portdun Mont, a few minutes along the Long road. Archon lies beyond that landing. I give ways by the shore. Sand holds no track. The tide takes a path like a loose line.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.pearl-lots-directions.default",
+        "hash": "0c53e1e3"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "West along the shore to the landing below Portdun Mont. Archon lies beyond it.",
+        "high": "From the jetty, walk the spit west to the grading ground. Then follow the shore on to the landing at the foot of Portdun Mont, a few minutes along the Long road. Archon lies beyond that landing. Go before the light fails. The sand is soft and slow underfoot."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n2.role-surface-line",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n2",
+      "keys": {
+        "topic": "topic.role-surface-line"
+      },
+      "words": "I'm the surface tender. I stay in the boat and mind the divers' lines from above. I never enter the water myself. The families share the tenders. Each one is moored over the lots, so I haul for whichever diver is down. The rope is all I ask of the sea.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-surface-line.default",
+        "hash": "5a77259f"
+      },
+      "factIds": [
+        "fact.tender.lines",
+        "fact.tender.never-enters",
+        "fact.tender.shared",
+        "fact.tender.moored"
+      ],
+      "variants": {
+        "low": "I stay in the boat and mind the lines. I never go in the water. The families share the tenders, moored over the lots.",
+        "high": "I'm the surface tender. I stay in the boat and mind the divers' lines from above. I never enter the water. The families share the tenders. Every one is moored over the lots, so I haul for whichever diver is down. I'll tell you honestly that it's a long wait."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n2.about-archon",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n2",
+      "keys": {
+        "topic": "topic.about-archon"
+      },
+      "words": "Archon is the legal harbour for the whole province, out on the east coast. Marsh runs north of the city. Beaches lie to the south. Families of pilots guide ships in by the estuary. Past the headland, the harbour authority has no power. Our pearls go to Archon, but its buyers stay ashore.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-archon.default",
+        "hash": "0b011e72"
+      },
+      "factIds": [
+        "fact.archon.legal-harbour",
+        "fact.archon.beaches",
+        "fact.archon.pilots",
+        "fact.archon.headland"
+      ],
+      "variants": {
+        "low": "Archon is the legal harbour in the east. Past the headland, the harbour authority has no power.",
+        "high": "Archon is the legal harbour for the whole province, out on the east coast. Marsh runs north of the city. Beaches lie to the south. Families of pilots guide ships in by the estuary. Past the headland, the harbour authority has no power. Our pearls go there. I've never gone myself."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n2.about-portdun-mont",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n2",
+      "keys": {
+        "topic": "topic.about-portdun-mont"
+      },
+      "words": "Portdun Mont is a village of pilots. It sits on the rise over a beach landing, near the lots. The pilot families get paid to guide ships through the approach. Their hold on that work is custom only. No law stands behind it. I see their boats go out past my tender.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-portdun-mont.default",
+        "hash": "9c4a32bb"
+      },
+      "factIds": [
+        "fact.portdun.pilots",
+        "fact.portdun.paid",
+        "fact.portdun.monopoly",
+        "fact.portdun.landing"
+      ],
+      "variants": {
+        "low": "Portdun Mont is a village of pilots over the landing. Pilots get paid to guide ships. Custom holds their monopoly.",
+        "high": "Portdun Mont is a village of pilots. It sits on the rise over a beach landing, near the lots. The pilot families get paid to guide ships through the approach. Their monopoly is custom only. No law stands behind it. I see their boats go out past my tender. Their lines run straight."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.pearl-lots-n2.passing",
+      "type": "bark",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n2",
+      "slot": "passing",
+      "words": "Calm water. Lines fair.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.pearl-lots-n2.at-work",
+      "type": "bark",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n2",
+      "slot": "at-work",
+      "words": "Slack. Hauling now.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n1-4.about-archon",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-4",
+      "keys": {
+        "topic": "topic.about-archon"
+      },
+      "words": "Archon is the port to the east, the legal harbour of the province. North of the city is marsh. South of it are beaches. Pilot families steer each ship up the estuary. The harbour authority rules as far as the headland, no further.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-archon.default",
+        "hash": "0b011e72"
+      },
+      "factIds": [
+        "fact.archon.legal-harbour",
+        "fact.archon.beaches",
+        "fact.archon.pilots",
+        "fact.archon.headland"
+      ],
+      "variants": {
+        "low": "Archon is the legal harbour, east. Marsh north, beaches south. Pilot families steer the ships. The authority ends at the headland.",
+        "high": "Archon is the port to the east, the legal harbour of the province. North of the city is marsh. South of it are beaches. Pilot families steer each ship up the estuary. The harbour authority rules as far as the headland, no further. Archon buys our pearls, ojel."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n1-2.about-counted-lots",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-2",
+      "keys": {
+        "topic": "topic.about-counted-lots"
+      },
+      "words": "The Counted Lots are the pearl beds off this spit, each a numbered stretch of seabed. Diver families have a lot from their parents by inheritance. Pay is best on the deep lots. They kill divers too. The tally book takes the pay. The deaths go into it as well. Small shells, middling shells, good shells: I grade them all.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-counted-lots.default",
+        "hash": "ba7e1019"
+      },
+      "factIds": [
+        "fact.lots.numbered",
+        "fact.lots.inheritance",
+        "fact.lots.deep",
+        "fact.lots.tally"
+      ],
+      "variants": {
+        "low": "Pearl beds off the spit, numbered, held by diver families. Deep lots kill divers."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n1-3.about-counted-lots",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1-3",
+      "keys": {
+        "topic": "topic.about-counted-lots"
+      },
+      "words": "Archon buys the pearls. We work them out here inside the bar, from tenders moored over numbered lots. A lot passes down one diver family from parent to child. The best pay is in the deep lots. Divers die there. The tally book has both.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-counted-lots.default",
+        "hash": "ba7e1019"
+      },
+      "factIds": [
+        "fact.lots.numbered",
+        "fact.lots.inheritance",
+        "fact.lots.deep",
+        "fact.lots.tally"
+      ],
+      "variants": {
+        "low": "Pearl beds. Numbered lots, one family each. The deepest pay most and drown divers.",
+        "high": "Archon buys the pearls we raise here. Each numbered lot passes from parent to child in one family. The deep lots pay the most, but divers die there. The tally book keeps both. Ask at the grading ground."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.pearl-lots-n1.about-counted-lots",
+      "type": "dialogue",
+      "speaker": "npc.saxhleel-coast.pearl-lots.n1",
+      "keys": {
+        "topic": "topic.about-counted-lots"
+      },
+      "words": "Pearl beds inside the bar, east of Archon, cut into numbered lots. A family holds each lot from its elders. The deep lots pay the most and drown the most. The tally book keeps the pay and the deaths.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-counted-lots.default",
+        "hash": "ba7e1019"
+      },
+      "factIds": [
+        "fact.lots.numbered",
+        "fact.lots.inheritance",
+        "fact.lots.deep",
+        "fact.lots.tally"
+      ],
+      "variants": {
+        "low": "Pearl beds east of Archon. Numbered lots, held by families. The deep lots pay the most and drown the most. The tally book keeps the pay and the deaths.",
+        "high": "Pearl beds inside the bar, east of Archon, cut into numbered lots. A family holds each lot from its elders. The deep lots pay the most and drown the most. The tally book keeps the pay and the deaths."
+      }
+    }
+  ]
+}

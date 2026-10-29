@@ -1,0 +1,679 @@
+{
+  "schemaVersion": 1,
+  "domain": "document",
+  "_": "The home of every book's and note's words; worldgen.item_views writes them into packages/text-catalogue (generated/item-text.ts) under the item's textRef. Each entry's `textRef` is the catalogue id its item's `textRef` names.",
+  "entries": [
+    {
+      "id": "document.depth-sticks-and-buds",
+      "textRef": "text.book.depth-sticks-and-buds",
+      "name": "Depth Sticks and Dried Buds",
+      "kind": "book",
+      "status": "derived",
+      "item": "item.book-depth-sticks-and-buds",
+      "leaves": [
+        "The ground water of the marsh carries disease. A drop of it swallowed will set off a torrent in the bowels. A traveller who is not an Argonian will be dead of swamp rot inside a month. Argonians are not harmed by it. Everyone else carries two things on every road: a depth stick and a pouch of dried flower buds.\n\nThe guides sell this little book to travellers who have chosen to go without a guide. We would sooner sell the guide. Failing that, we sell the two things that the book describes. We ask that you read it before the first pond.",
+        "The depth stick is a straight pole, longer than a man is tall. Sound a pond with it before any foot enters it. The black river mud at the border is a thick gluey paste that holds a standing man's feet fast. It lies under pond water as readily as under bank. Do not stand still on it.\n\nThe rivers tide. A bridge that you crossed dry at noon can be four days under water by the end of the week. Sound the bridge. Sound the ford. A man who has stopped has begun to sink. Trust the stick over your memory of the road.",
+        "The dried buds go into the water you mean to drink. They purify it. Wait before you drink. Drink from no pond that you have not sounded.\n\nRest where the guide says. Where there is no guide, rest where the ground is firm and you can see the sky. The hackwings are giant birds with saw-like beaks. They will eat you if you do not keep moving. A hackwing that has wounded a man flies off and comes back when he is mostly dead from blood loss. Do not sit down in the open to wait for your strength. Move on to the next firm ground and sound it. Rest there."
+      ],
+      "sources": [
+        "world/sources/lore/topics/fauna-hazards.md:41",
+        "world/sources/lore/topics/fauna-hazards.md:49",
+        "world/sources/lore/topics/fauna-hazards.md:51",
+        "world/sources/lore/topics/fauna-hazards.md:55",
+        "world/sources/lore/topics/ecology-encounters-loot.md:16",
+        "world/sources/lore/topics/ecology-encounters-loot.md:19",
+        "world/sources/lore/topics/ecology-encounters-loot.md:72"
+      ],
+      "notes": "Written by a river guide for the road trade and sold at Claywater Station to travellers who will not hire a guide. The depth stick and buds are the water kit named in the fauna dossier. The length of the stick and the waiting before drinking are the writer's own practice, not dossier fact."
+    },
+    {
+      "id": "document.miregaunts-of-the-marsh",
+      "textRef": "text.book.miregaunts-of-the-marsh",
+      "name": "Miregaunts of the Marsh",
+      "kind": "book",
+      "status": "derived",
+      "item": "item.book-miregaunts-of-the-marsh",
+      "leaves": [
+        "Of all the creatures of the Black Marsh that I have been asked to describe for the Society, the miregaunt is the one that I am least able to describe as a creature. It is large and it is tree-like. It is built of plant matter, mud, stone and vines. It also holds pieces of ancient architecture that it has taken into itself. I have not seen one at rest, if the thing can be said to rest.\n\nThey are found mostly in Murkmire, in the same country that the Naga-Kur patrol.",
+        "The Argonians say that miregaunts are as old as the Argonians themselves and kin to the Hist. One account holds that a Hist summoned each one to guard, to defend or to avenge. Another holds that they are the by-product of Hist activity and have no purpose at all. I record both and decide neither.\n\nEvery miregaunt has a cavity in its midsection. I have found it empty and I have found it holding rubble. Other observers report a gemstone or an ancient relic. One reports a living creature. The locals believe that such things were taken in to protect or imprison them.",
+        "A miregaunt is part of the land. When one is struck down, it will inevitably come back later. The Society will want to know how long it takes. I cannot say.\n\nThe readers will want to know whether the cavity can be counted on to hold a prize. It cannot. It may be empty. One that is struck down and opened yields nothing lasting, because the creature returns. A traveller crossing Murkmire may meet the same creature twice."
+      ],
+      "sources": [
+        "world/sources/lore/topics/fauna-hazards.md:16",
+        "world/sources/lore/topics/ecology-encounters-loot.md:58",
+        "world/sources/lore/topics/ecology-encounters-loot.md:74",
+        "world/sources/lore/topics/guilds-and-orders.md:336"
+      ],
+      "notes": "Kratius Gray, a foreign naturalist writing for the Black Marsh Exploration Society. The copy lies in the held cargo at the North Cut Camp, taken from a walker and kept against claims. The dossier gives the creature, its materials, folklore and cavity; the lintel in a shoulder and the writer's first-person observations are his own voice. The dossier names him only as the author."
+    },
+    {
+      "id": "document.the-three-mournings",
+      "textRef": "text.book.the-three-mournings",
+      "name": "The Three Mournings",
+      "kind": "book",
+      "status": "derived",
+      "item": "item.book-the-three-mournings",
+      "leaves": [
+        "The Argonian year is kept in twelve months. The old names of the months follow the life of the Hist from sprout to death. Three of the months carry a Mourning. Every village keeps all three. A child learns them before the rest of the calendar.\n\nA Mourning is a grief that the village agrees to feel together. The Argonians hold that the pain of the world comes from holding too tightly to what has come to pass. That pain is called shunatei. A Mourning is the way that a village lets go of one thing at a time, in the right month, together.",
+        "The First Mourning is Xeech's. Xeech is the month of planting. It is hopeful and melancholy at once. A nut that is planted is lost forever. The village mourns it. Then it sees the sprout.\n\nThe village keeps this Mourning so that the planting is done knowingly. A village that did not mourn the nut would meet the loss later, at the harvest. The loss comes at the start of the year.",
+        "The Second Mourning is Hist-Tsoko's. Hist-Tsoko is the holiest month. It is the month of knowledge, wisdom and fullness. In it the elders recite Saxhleel history. This is the Root Talk.\n\nThe Second Mourning is kept because what the elders recite is over. A history that has been told in full is a history that has come to pass. The elders recite the whole of it, so that it is known. The village mourns it, so that it is let go.",
+        "The Third Mourning is Xulomaht's. It is the most significant. Xulomaht is the last month of the year. Its name means the deceased. The village mourns the year that has gone. It holds festivals for its dead.\n\nThe month before it is Saxhleel, when the elders gather to prepare for the deaths to come. The Third Mourning is kept because the year can still be changed until it ends. The village holds festivals for the dead of the year."
+      ],
+      "sources": [
+        "world/sources/lore/topics/material-culture.md:204",
+        "world/sources/lore/topics/material-culture.md:207",
+        "world/sources/lore/topics/material-culture.md:209",
+        "world/sources/lore/topics/material-culture.md:211",
+        "world/sources/lore/topics/material-culture.md:216",
+        "world/sources/lore/topics/material-culture.md:217",
+        "world/sources/lore/topics/labour-and-bondage.md:58",
+        "world/sources/lore/topics/sky-moons-calendar.md:30"
+      ],
+      "notes": "A primer written for the hatchlings of a village such as Nine Bends, where the gang families answer to the tree. The month meanings are dossier fact. The Second and Third Mournings' reasons are derived from shunatei in labour-and-bondage.md:58 because the dossier gives the months and not the reasons; the reviewer should judge them."
+    },
+    {
+      "id": "document.bonded-store-slip",
+      "textRef": "text.note.bonded-store-slip",
+      "name": "Bonded-Store Slip",
+      "kind": "note",
+      "status": "derived",
+      "item": "item.bonded-store-slip",
+      "leaves": [
+        "EAST EMPIRE COMPANY. Bonded Store, Soulrest.\n\nReceived for keeping, 11 Last Seed, 4E 31: forty sacks of saltrice, marked for Archon, to lie in Store Three until the Company calls for them. They are not to be released to any bearer who does not carry the Company's seal. The charge for keeping is 2 drakes the season, paid in advance by the shipper.\n\nThe keeper holds this slip against the goods. When the Company claims the goods, the slip is returned and cancelled. This copy is kept in the Company's book at Soulrest. A copy goes by the next boat to Archon."
+      ],
+      "sources": [
+        "world/sources/lore/topics/foreign-powers.md:85",
+        "world/sources/lore/topics/foreign-powers.md:93",
+        "world/sources/lore/topics/guilds-and-orders.md:338",
+        "world/sources/lore/topics/sky-moons-calendar.md:25"
+      ],
+      "notes": "An East Empire Company storekeeper at Soulrest. The slip lies in the salvage at Chasepoint, 355 m from Soulrest; the Company is gone from the province and its bonded stores are not. Saltrice, the Archon line and the stores at Soulrest are dossier fact. The year 4E 31, the quantity and the charge are the slip's own particulars."
+    },
+    {
+      "id": "document.eel-slime-reminder",
+      "textRef": "text.note.eel-slime-reminder",
+      "name": "Canal Reminder",
+      "kind": "note",
+      "status": "derived",
+      "item": "item.eel-slime-reminder",
+      "leaves": [
+        "Rub with slime before crossing at night.\n\nThe jar is by the door. It is half full. There is a spoon in it. Rub the arms, the legs and the tail. The throat as well. Eels do not go for anyone who has rubbed themselves with slime. They were trained to go for people who cross when they should not.\n\nVisitors take the same care as the household. The children are rubbed before they go out. The old are rubbed by the children. Fill the jar when it is down by a hand."
+      ],
+      "sources": [
+        "world/sources/lore/topics/ecology-encounters-loot.md:80"
+      ],
+      "notes": "Pinned inside the door of a canal household at Riverwalk, in the householder's hand. The dossier fact is that ripper eels were trained to hunt Argonians crossing the canals unlawfully and do not attack anyone rubbed with eel-slime. The dossier places the trained eels at Lilmoth; the note does not name a city. The reviewer should confirm it need not."
+    },
+    {
+      "id": "document.ferry-guide-note",
+      "textRef": "text.note.ferry-guide-note",
+      "name": "Ferry Guide's Note",
+      "kind": "note",
+      "status": "derived",
+      "item": "item.ferry-guide-note",
+      "leaves": [
+        "Terms of the crossing. Chalked for the passengers, who are to read it before they step aboard.\n\nThe guide chooses when we move. Sometimes we move at night. The guide chooses where we shelter. The passengers do not choose it for us.\n\nDo not ask us to stop. A predator follows the boats and outruns them. Stand and balance. Keep your hands off the poles. Carts and beasts go on the raft first. Those who will not wade go on after them.\n\nThe fare is 15 drakes, paid before the raft leaves the bank. Nothing is returned if you step off in the middle."
+      ],
+      "sources": [
+        "world/sources/lore/topics/material-culture.md:119"
+      ],
+      "notes": "A poler of the landing at Claywater Station, chalked on bark paper for passengers of the plank ferry. The guide chooses when to move and where to shelter, refuses to stop. Predators trail the boats; the passengers stand and balance. These are the dossier's account of guided river travel. The fare of 15 gold is from the ferry row in travel-services.json (ferry.imperial-fringe.drowning-gate); the dossier gives no fare."
+    },
+    {
+      "id": "document.stake-ward-tally",
+      "textRef": "text.note.stake-ward-tally",
+      "name": "Stake-Ward Tally",
+      "kind": "note",
+      "status": "derived",
+      "item": "item.stake-ward-tally",
+      "leaves": [
+        "Count of the stakes and the pahnjee racks, kept by Sha-Meeru, grave-singer.\n\nStakes standing: 38. Each one is carved with the whole story of the one under it. I have read and sung every one this season.\n\nPahnjee racks: 6, hung fresh with oily meat. They mask the scent of the living.\n\nOne stake is loose. It is the stake on the east side, nearest the shelter. I could not set it deeper before the light went. The wet season tests the stakes. A loose one is a bog blight when the water comes. Set it again before then. Do not pull any other for any cause."
+      ],
+      "sources": [
+        "world/sources/lore/topics/ecology-encounters-loot.md:77",
+        "world/sources/lore/topics/ecology-encounters-loot.md:135",
+        "world/sources/lore/topics/ecology-encounters-loot.md:137",
+        "world/sources/lore/topics/ecology-encounters-loot.md:209",
+        "world/sources/lore/topics/material-culture.md:232"
+      ],
+      "notes": "A grave-singer who tends and stakes the dead, writing at the Tag House where bones are handed over. Stakes carved with the whole story, pahnjee racks as a scent mask, the loose stake as a bog blight and the wet season testing the stakes are dossier fact. The count of 38 and 6 and the name Sha-Meeru are the writer's own particulars."
+    },
+    {
+      "id": "document.station-water-ledger",
+      "textRef": "text.note.station-water-ledger",
+      "name": "Station Water Ledger",
+      "kind": "note",
+      "status": "derived",
+      "item": "item.station-water-ledger",
+      "leaves": [
+        "Water drawn and beds let, Claywater Station, 4E 201.\n\nMorndas, 3 Rain's Hand. Drawn 62 buckets. Two beds let upstairs, 6 drakes the pair.\n\nTirdas, 4 Rain's Hand. Drawn 48. The poler's wife came for water. Charged her nothing, as always. A bed let to a carter, 3 drakes.\n\nMiddas, 5 Rain's Hand. Drawn 71. A new crack in the well head, a finger wide. The roof shows it first. Windlass rope spliced.\n\nTurdas, 6 Rain's Hand. Drawn 55. No beds. The landing keepers charge the same travellers again for the ford. Travellers ask me why.\n\nThe landing keepers will not mend the well in stone."
+      ],
+      "sources": [
+        "world/sources/lore/topics/roads-and-routes-4e201.md:31",
+        "world/sources/lore/topics/sky-moons-calendar.md:16",
+        "world/sources/lore/topics/sky-moons-calendar.md:30"
+      ],
+      "notes": "The well-keeper of Claywater Station, who keeps the counter, the beds and the stable. The cracking well, the failing Imperial stone, the landing's refusal to help and the double charge to travellers are the place record's pressures and quest hook (LF83). The figures are the keeper's own. Dates follow the calendar dossier: Rain's Hand is month 4."
+    },
+    {
+      "id": "document.toll-tally",
+      "textRef": "text.note.toll-tally",
+      "name": "Toll Tally",
+      "kind": "note",
+      "status": "derived",
+      "item": "item.toll-tally",
+      "leaves": [
+        "Boats that put in at Riverwalk this week, with the city each paid. Kept at the shore end of the walk.\n\nThorn: the Padomaic boat with the red sail. Eight drakes.\n\nHissmir: two canoes, one crew between them. Three drakes the pair.\n\nThorn: a trader's boat from the coast. Eight drakes.\n\nHissmir: the boat of the pilgrims for the water. Five drakes.\n\nPaid to neither: one boat. The crew said Thorn and Hissmir would settle it between them. Slept on the stage.\n\nThorn and Hissmir each say the toll on the pilgrim water is theirs. I write down what is paid and to whom."
+      ],
+      "sources": [
+        "world/sources/lore/regions/secondary-settlements.md:77"
+      ],
+      "notes": "The toll-holder of Riverwalk, at the post at the shore end of the plank walk. The record gives the toll on boats entering the pilgrim water, the rival claims of Thorn's field-owners and Hissmir's stewards. The post stands at the shore end of the plank walk. The boats, sums and the crew who paid neither are the toll-holder's own entries. The design file names the captain of Alten Corimont as a claimant; the catalogue record names Hissmir. The tally follows the record."
+    },
+    {
+      "id": "document.carriage-charge-ledger",
+      "textRef": "text.note.carriage-charge-ledger",
+      "name": "Carriage Charge Ledger",
+      "kind": "note",
+      "status": "derived",
+      "item": "item.carriage-charge-ledger",
+      "leaves": [
+        "The Tag House. Carriage charges received, 4E 201.\n\nHearthfire. Tag 14. The bones of Teeba-Jo, from the Rose. Released by his mother's family. Fee 30 drakes, paid by the Chainbreakers.\n\nHearthfire. Tag 15. The bones of Ak-Sheel. Released by her brother. Fee 30 drakes, paid by the Chainbreakers.\n\nFrostfall. Tag 16. The bones of Deem-Sa. Released by two families, who each asked for the fee. Fee 60 drakes, paid by the Chainbreakers.\n\nFrostfall. Tag 17. The bones of one whose name was not given. Released after a week. Fee 40 drakes, paid by the Chainbreakers."
+      ],
+      "sources": [
+        "world/sources/lore/topics/prisons.md:86",
+        "world/sources/lore/topics/prisons.md:125",
+        "world/sources/lore/topics/material-culture.md:300"
+      ],
+      "notes": "The tag-keeper of the Tag House, who receives the fee and writes every payment in the ledger. The families of the Rose release the dead for a carriage charge and the Chainbreakers pay it; the bones must reach the dirt. Names, tag numbers and sums are the keeper's own entries.",
+      "teaches": [
+        "topic.tag-seventeen"
+      ]
+    },
+    {
+      "id": "document.column-pay-book",
+      "textRef": "text.note.column-pay-book",
+      "name": "Column Pay Book",
+      "kind": "note",
+      "status": "derived",
+      "item": "item.column-pay-book",
+      "leaves": [
+        "Pay book of the column on the border road. The last page.\n\nHearthfire, 3E 433. Pay not come. Arrears, four months.\n\nFrostfall. Pay not come. Arrears, five months. The paymaster was reported at Fort Swampmoth.\n\nSun's Dusk. Pay not come. Arrears, six months.\n\nEvening Star. Order of recall received. The column is to march. Arrears, seven months. No paymaster has come. None is named.\n\nPart of the column marched. The rest were not paid and would not go. Their names are struck from the roll of the marching and left here with their arrears entered against the Legion."
+      ],
+      "sources": [
+        "world/sources/lore/topics/history-timeline.md:73",
+        "world/sources/lore/topics/foreign-powers.md:26",
+        "world/sources/lore/topics/sky-moons-calendar.md:25"
+      ],
+      "notes": "The column's clerk, in the command tent of the Broke Column: the last page of the pay book that the camp's current men keep as an inheritance. The record says part of the column deserted at the recall, about two centuries before 4E 201. The Legion never paid them; the catalogue provenance is 'the pay book, with the last entry in it'. The recall at 3E 433 follows the Oblivion Crisis row; the arrears counts are the clerk's own entries. The text names no payer, so it does not settle FG07's 'who pays'."
+    },
+    {
+      "id": "document.toll-office-schedules",
+      "textRef": "text.note.toll-office-schedules",
+      "name": "Toll Office Schedules",
+      "kind": "note",
+      "status": "derived",
+      "item": "item.toll-office-schedules",
+      "leaves": [
+        "Copied out by the clerk from the notice of the toll office at Cartwright's Cross. Kept with the pay book.\n\nBoats and carts on the Gideon leg of the Blackwood Road.\n\nCarts for Gideon leave the Cross at first light on Middas and Fredas. Tolls are paid at the Cross before they leave.\n\nThe ferry at the Cross takes carts from first light until the sun is high on Morndas, Middas and Sundas.\n\nBoats for the channel are counted at the landing on Turdas. The toll for a boat is entered against the shipper.\n\nThe office posts them at the toll house door."
+      ],
+      "sources": [
+        "world/sources/lore/topics/roads-and-routes-4e201.md:31",
+        "world/sources/lore/regions/blackwood-and-gloommire.md:13",
+        "world/sources/lore/topics/sky-moons-calendar.md:30"
+      ],
+      "notes": "The toll office at Cartwright's Cross publishes its schedules, as quest LQ15 requires. The column at the Broke Column copied them out and kept them with the pay book in the command tent. The Cross is a toll-road town on the Blackwood Road with a ferry. The days, hours and tolls are the notice's own particulars, not dossier fact."
+    },
+    {
+      "id": "document.duty-roster",
+      "textRef": "text.note.duty-roster",
+      "name": "Duty Roster",
+      "kind": "note",
+      "status": "derived",
+      "item": "item.duty-roster",
+      "leaves": [
+        "Duty roster of the column. The bell is rung on the hour. By order of the serjeant, Gnaeus Martius.\n\nBarricade, first watch: Lucius Varro and Aulus Crassus. The levy is to be asked in the Legion's phrasing.\n\nPalisade gap, second watch: Titus Decimus. The aspen is to be kept clear.\n\nTarn bench, third watch: Marcus Gallus.\n\nCommand tent, all watches: the serjeant. The pay book is in his keeping.\n\nCook fire: the men who are not on watch, in turn.\n\nKeep the colours. Keep the roster. No man is excused for want of pay."
+      ],
+      "sources": [
+        "world/sources/lore/topics/history-timeline.md:73",
+        "world/sources/lore/topics/sky-moons-calendar.md:30"
+      ],
+      "notes": "The clerk of the Broke Column, in a clerk's hand, nailed to the aspen in the palisade gap below the tents. The serjeant's name is from npcs.json (npc.imperial-fringe.the-broke-column.n1); the men, posts and watches are the clerk's entries. The record: the men keep watches, wear the colours, ask the levy in correct Legion phrasing. The bell rings on the hour."
+    },
+    {
+      "id": "document.gang-roll",
+      "textRef": "text.note.gang-roll",
+      "name": "Gang Roll",
+      "kind": "note",
+      "status": "derived",
+      "item": "item.gang-roll",
+      "leaves": [
+        "Roll of the gang, as read out at Gang Ground. Months owed are counted in nushmeekos.\n\nDeem-Sa. Owed 4. Added 1 for a broken pole. Added 1 for food. Owed 6.\n\nAk-Teeba. Owed 3. Added 2 for a sickness in the crew. Owed 5.\n\nShe-Lasha. Owed 7. The owing sold on to the dock master. Owed 7.\n\nTeeba-Ru, hatchling of Deem-Sa. Entered at birth. Owed 6, the house having had the benefit.\n\nThe overseers read it aloud and the families hear every name."
+      ],
+      "sources": [
+        "world/sources/lore/topics/labour-and-bondage.md:73",
+        "world/sources/lore/topics/labour-and-bondage.md:90",
+        "world/sources/lore/topics/labour-and-bondage.md:94",
+        "world/sources/lore/topics/labour-and-bondage.md:97"
+      ],
+      "notes": "The ledger of the gang that works the lower channel, in the hand of the overseers' clerk; the roll is read out at the camp, where the families know every name on it. The nushmeeko unit, the transferable, extendable and heritable Owing are dossier fact. Names and sums are particulars. The roll's reach beyond the camp is not stated."
+    },
+    {
+      "id": "document.chimes-of-silver",
+      "textRef": "text.book.chimes-of-silver",
+      "name": "Chimes of Silver",
+      "kind": "book",
+      "status": "derived",
+      "item": "item.book-chimes-of-silver",
+      "sources": [
+        "King of the Murkmire.esp:BOOK KoTMBookChimesOfSilver"
+      ],
+      "leaves": [
+        "Many dryskins blame us for killing the Kothringi. They twist their faces and spit dry words like \"murder,\" and \"conspiracy,\" and \"witchcraft.\" Even now, long seasons later, people still believe the Saxhleel conjured up the Knahaten Flu. I wish they could peel the hate from their eyes and look up-river to the days when I was a hatchling. Back then, the people of the root and the silver-skin tribes walked hand-in-hand, bound by mud, good food and cheerful dancing.\n\nI have many memories of the silver-skins. When I shut my mortal eyes, I can still smell Kuusa's heel-snail kabobs drawn fresh from a clay oven. I can hear the tin-chimes sing as they jangle at Dassil's waist. I can feel Old Haduk's rootfoam scrape down my throat and warm my belly. But what I remember most of all is the music. The shimmering songs without end. I miss those songs most of all.\n\nWe Saxhleel have a multitude of musical instruments, both simple and not-so-simple. The Kothringi, however, had many, many more. Indeed, my egg-sister and I used to joke about how anything could be an instrument in the hand of a Kothringi. Their tree cutters turned hollow logs into wamasu-sized drums. They plucked the sinew from cliffstriders to make low humming bow harps. The instruments they loved best, however, were their chimes.",
+        "Unlike people of the root, Kothringi had no distaste for metal. While they rarely wore clothes, they did wear bits of metal on thin strands of rope that tinkled and jangled as they walked. Their metal-tamer, Baelah, would cast lumps of tin and copper into his great fire pit and draw them out hot, twisting and molding them with a stone mallet until they took the right shape. After the metal rods cooled, he would hang them from tree boughs and strike each in time to take the measure of its song. Baelah made hundreds of these chimes, intent on taming every sound that metal could make.\n\nOne warm night in Nushmeeko, he summoned the tribes to his village for a feast. I do not know why they feasted, but we did not care. When the feasting ended, we all gathered around his great singing cypress and listened to his family play the chimes. Eight Kothringi - his wife, uncle and five sons - leaped from root to branch like sure-footed treefrogs, tapping the chimes with their song-sticks. The sound it made echoed in my chest like the gentle child of a thunderclap. Each of us felt our hearts burn bright as a torch and many of the silver-skins wept joyful tears.",
+        "When dryskins say we killed the Kothringi, I think of that night in Nushmeeko. Had they heard what I heard and saw what I saw as a hatchling, they would know that no child of the Hist would destroy something so beautiful."
+      ],
+      "notes": "The words of the plugin record KoTMBookChimesOfSilver (King of the Murkmire.esp), markup removed."
+    },
+    {
+      "id": "document.keshu-travels-beyond-the-village-2",
+      "textRef": "text.book.keshu-travels-beyond-the-village-2",
+      "name": "Keshu: Travels Beyond the Village II",
+      "kind": "book",
+      "status": "derived",
+      "item": "item.book-keshu-travels-beyond-the-village-2",
+      "sources": [
+        "King of the Murkmire.esp:BOOK KoTMBookKeshuTravels02"
+      ],
+      "leaves": [
+        "Our visit to Stormhold had taken a bad turn, like a sudden storm appearing on an otherwise sunny day. Xocin and Tee-Wan had decided to explore the city on their own while Keshu, Vos-Huruk and I spent the evening with our new Nord friends. When Tee-Wan returned, he was alone. He explained that Dark Elf slavers had taken Xocin captive. Keshu, of course, planned to rescue him. And, much to our surprise, Jorunn the bard, leader of our new Nord friends, wanted to assist us. \"Nothing gets the blood running like busting a few Dark Elf heads for a good cause,\" he proclaimed in his deep, booming voice.\n\nKeshu and Jorunn led the way to the Dark Elf enclave on the edge of the city. \"House Dres,\" Jorunn said, but it came out more as a curse than a name. \"I should have known.\" We scouted the enclave, taking note of where guards were positioned and how they moved about the encampment. We determined where the newly acquired slaves were being held and began to formulate a plan for setting them free. Keshu led the discussion on strategy and Jorunn listened carefully, interjecting a suggestion every so often but otherwise agreeing with her plan. Just as the sun began to rise in the sky, four Saxhleel and five Nords went to war with the House Dres slaver's enclave. And the battle was glorious!\n\nLaunching a surprise attack on an overconfident and unprepared enemy is easier than you might imagine. Especially when you have a handful of overeager, half-drunk Nords at your side. Keshu and Jorunn fought like whirlwinds, carving a path to the slave pen while the rest of us dealt with arriving reinforcements. It took the Dark Elves more time than we expected to get their defenses together. The late hour and the unexpected assault seemed to have totally flummoxed the slavers' usual routine. Jorunn explained that they were used to defending their caravans in the wild, but none had ever had the audacity to strike at the heart of a Dres enclave. \"And that's why your plan is going to succeed,\" he said to Keshu.",
+        "With relative ease, Keshu dispatched the guards trying to protect the gate to the slave pen. Jorunn stepped into the opening she created and smashed off the pen's lock with a single swipe of his massive battleaxe. Xocin emerged from the pen, leading a band of disheveled Saxhleel out of the confined space. By this time, the Dark Elves had rallied and were advancing on our position. \"We're about to have company, Black Fin,\" Vos-Huruk warned. \"And they have mages with them,\" I added. Keshu began giving orders, ready to fight to the last of us if that was what was required. But Jorunn had a different idea.\n\n\"Not every battle needs to be to the death, my Argonian friend,\" the big Nord said with a twinkle in his eyes. \"Take your people and make your escape. My companions and I will keep the puny Elves occupied while you slip away.\" Keshu thanked him and promised to return the favor someday. \"I may just hold you to that promise,\" Jorunn laughed as he turned to face the oncoming slavers. \"Someday.\"\n\nKeshu led us and the newly released slaves into the marsh as Jorunn and his companions took up our defense. The Nords fought with gusto and we could hear them laughing and singing battle songs as we disappeared into the swamp. After we had run for nearly as long as it took the sun to reach the top of the sky, Keshu called for us to halt. She asked me to return to the city and make sure the Nords had survived the assault on the slavers' enclave. Tee-Wan, skilled at stealth and deception, offered to accompany me. We set out immediately while Keshu talked to the now-freed slaves.",
+        "We slipped back into Stormhold as quietly and unobtrusively as we could. The enclave was sealed up tight and a large contingent of guards had arrived to bolster its defenses. Tee-Wan and I made our way back to the inn. We found Jorunn and his companions there, appearing no worse for the morning's battle. He thanked us for showing concern and coming to check on him, but he told us not to linger. \"The House Dres leader is very upset about losing his slaves,\" Jorunn said. \"We're even getting ready to leave this place - after we finish our meal and our mead. Tell Keshu I look forward to our next encounter.\"\n\nAnd with that, Tee-Wan and I left the city of Stormhold and made our way back to Keshu and the others."
+      ],
+      "notes": "The words of the plugin record KoTMBookKeshuTravels02 (King of the Murkmire.esp), markup removed."
+    },
+    {
+      "id": "document.gift-of-the-lilmothiit",
+      "textRef": "text.book.gift-of-the-lilmothiit",
+      "name": "Gift of the Lilmothiit",
+      "kind": "book",
+      "status": "derived",
+      "item": "item.book-gift-of-the-lilmothiit",
+      "sources": [
+        "King of the Murkmire.esp:BOOK KoTMBookGiftOfLilmothiit"
+      ],
+      "leaves": [
+        "Kzaar bounded ahead, his feet skittering lightly over the grass-covered rocks. He said his people's camp wasn't far, but he'd said that every morning since the two of them had left Jee-Tee's tribal lands. Jee-Tee was starting to feel her tolerant tree shake loose from its roots. Still, Kzaar promised that his people were nearby and that they had no intention of moving yet. Jee-Tee believed him, for what else could she do? Her tribe needed the medicines that the Lilimothiit carried. Moreover, her mother needed the cure, she was growing weaker every day.\n\nThe sickness came out of nowhere. One day, two or three adults developed fevers. After that, the symptoms spread. The spread was slow at first. The healers could deal with a fever and patients who had trouble keeping food down, but then the healer's huts filled. The healers did what they could. Most of the time, patients were just kept comfortable.\n\nWhen the young kit wandered into the village, claiming to have escaped from some slavers, Jee-Tee was the first to approach him. For being so young, Kzaar didn't speak like a hatchling. He remembered all that he'd seen since the slavers had taken him from his people. The route he'd traveled was still fresh in his mind, as was the place where the Lilmothiit set camp. The majority of her tribe couldn't bring themselves to trust the kit, Lilmothiit and their tricks were too well remembered, but Jee-Tee knew what could be at stake. She and the kit gathered supplies and sneaked away not three nights after the kit had stumbled into camp.",
+        "Now Jee-Tee was starting to question her decision to trust Kzaar. They'd been walking for so long that her feet had grown rough in new places and the pack on her back was nearly empty. The dust of the road caked her throat. It had been days since they'd seen anyone else traveling. If she didn't know any better, Jee-Tee would say that this path had never been walked before. But there were footprints in the dust and the undergrowth was cut away from the ground. The camp had been used recently. They were just out of view.\n\nThe kit climbed atop another boulder and let out a short, full-throated cheer. \"Here! We're here!\"\n\nJee-Tee scrambled up the pile of rocks on willowy legs to stand next to her young traveling companion and looked down into the ravine. There were the signs of a camp, embers and charcoal gathered in a tight circle, holes poked into the ground from tent poles and an assortment of wood lying scattered, as well as tracks leading east. Jee-Tee felt her spine slink in disappointment. The Lilmothiit may have been there, but they had left.\n\nJee-Tee walked in silence through the abandoned camp while Kzaar scampered here and there, looking behind rocks and trees as if a member of his tribe was going to pop out and welcome him back. They circled the camp, moving through the valley as the sun shone brightly above them. There wasn't anything left in the camp besides ashes and some holes. The trip had been for nothing. Kzaar was never going to reunite with his people and Jee-Tee failed in her mission to retrieve the medicine her mother so desperately needed.",
+        "\"Here! Here!\" Kzaar tore into a pile of discarded wood and wagon wheels. When he emerged, he carried a clay jar clutched between his hands. Jee-Tee found her pace slowing as she neared the kit. His ears were slumped in disappointment, but his eyes were bright. He removed the jar's lid. Inside, a thick paste reeked of pungent herbs.\n\n\"What is that?\" Jee-Tee asked turning her head from the smell.\n\n\"Mother's Mix. Clears all sickness. Good for Kzaar, good for Jee-Tee.\"\n\nJee-Tee almost didn't believe him. After all, he said his tribe would not abandon him. \"It's medicine?\"\n\nKzaar stared up at her earnestly and pressed the lidded jar into her hands. \"Medicine. A gift. From my tribe to yours.\"\n\nThen Kzaar turned away. He followed the tracks east and never looked back. Jee-Tee watched until he disappeared over the horizon. Then she took the gift of the Lilmothiit and went to administer it to her mother and the rest of the sick huddled in the healer's huts."
+      ],
+      "notes": "The words of the plugin record KoTMBookGiftOfLilmothiit (King of the Murkmire.esp), markup removed."
+    },
+    {
+      "id": "document.hej-xajhuthi-kroni",
+      "textRef": "text.book.hej-xajhuthi-kroni",
+      "name": "Hej Xajhuthi Kroni",
+      "kind": "book",
+      "status": "derived",
+      "item": "item.book-hej-xajhuthi-kroni",
+      "sources": [
+        "King of the Murkmire.esp:BOOK KoTMBookBewareWitchlightsTale"
+      ],
+      "leaves": [
+        "Hej Xajhuthi Kroni. Beware of Witchlights. It is a common utterance from Saxhleel elders to their hatchlings, a traditional warning against lights in the dark. The following is one tale of many I have heard recounted during my travels in Black Marsh.\n\nThere was once a Hatchling, a brave and curious sort, eager to explore the lands of her birth. There was also a wise and well-experienced Elder who guided the hatchlings in the village and taught them lessons of Obedience and Patience.\n\nOne day, Elder noticed Hatchling attempting to sneak away from one of his lessons and called out to her.\n\"Hatchling! Where are you going?\"\n\"Elder, I am going to explore in the swamp!\"\n\"But Hatchling, I have not finished telling you about the Dangers of Exploration and the Wholeness of Home.\"\nThe Hatchling laughed, for she did not believe in the Dangers. She only believed in what she could see with her own eyes.\n\"Elder, may I go fetch a drink of water from the river?\" Hatchling asked, innocently.\n\"Very well, if you are quick and do not wander away from the village!\"",
+        "Hatchling soon slipped between the thick, buttressed roots of the cypresses and was away from the village. The branches forming the canopy seemed to knot together in an attempt to block out as much light as possible, making it difficult to see what time of day it was. But this didn't matter to Hatchling, as she did not believe in the Dangers of Nighttime.\n\nHatchling hopped, skipped and danced across ponds, over stones and beside mud-pools, looking for something fun. She passed a large, hollow fallen trunk, but peering inside, she saw nothing. Pillars of an ancient xanmeer, a Cursed Place according to Elder, jutted out of the mud. But nothing lurked there.\n\nHatchling could not see the Sun, but she did notice darkness settling amongst the gnarled Depassas. She had to squint to see and decided to try find the hollow trunk as a shelter in case it rained. As the light faded, the noises of the swamp got much louder and Hatchling felt a shiver run down her spine.",
+        "Out of the Dark she saw a Light. Pale and cold, it looked, but she was drawn to it like a fleshfly to an open wound. The sounds of insects and frogs faded as she approached and a melodic singing grew more intense, yet Hatchling could not see what caused the Light or the Song.\n\nHatchling kept walking forward, even though at this point she knew not why. Her body went numb and she stopped questioning the invisible force pulling her forward. Hatchling walked until the Light consumed her.\n\n\"This is why we tell you of the Dangers,\" said Elder to the hatchlings, \"you must not leave the sight of the Egg-Tenders while you are playing.\""
+      ],
+      "notes": "The words of the plugin record KoTMBookBewareWitchlightsTale (King of the Murkmire.esp), markup removed."
+    },
+    {
+      "id": "document.how-hackwing-got-her-tail",
+      "textRef": "text.book.how-hackwing-got-her-tail",
+      "name": "How Hackwing Got Her Tail",
+      "kind": "book",
+      "status": "derived",
+      "item": "item.book-how-hackwing-got-her-tail",
+      "sources": [
+        "King of the Murkmire.esp:BOOK KoTMBookHowHackwingGotHerTail"
+      ],
+      "leaves": [
+        "A traditional Argonian children's tale recorded by Tsuleenkeesh.\n\nOne day, Hackwing was busy soaring through the air when she heard a voice from the ground call up to her. \"You're pretty good at that,\" Bog Dog said, his beady eyes tracking her across the sky, \"but how fast are you on the ground?\"\n\nHackwing dove at Bog Dog's head and giggled as he ducked, \"I'm as fast as I need to be.\"\n\n\"I bet I'm faster than you,\" Bog Dog challenged.\n\nHackwing spun in the air and landed lightly on a rock just beyond Bog Dog's grasp. \"What do you suggest?\"\n\n\"A race. If you win, I won't hunt your kind again.\"\n\n\"And if I don't?\" Hackwing asked, knowing better than to trust Bog Dog.\n\n\"If I win,\" Bog Dog barked, \"I get to eat you.\"\n\nHackwing thought about the terms of the race. They were too good to pass up. Bog Dog had been hunting her family for too long and now she had a chance to stop him. Hackwing nodded. \"We will race to that boulder there, in the distance. The first one to reach it wins the race.\"",
+        "Bog Dog nodded. \"Before we start, you must stand next to me. Otherwise one of us will have an unfair advantage.\"\n\nHackwing, forgetting not to trust Bog Dog, did as he asked and climbed down from her rocky perch. In a flash, Bog Dog's toothy muzzle snapped at her, but Hackwing was too fast. She took to the sky so quickly that Bog Dog's bite missed her middle and snapped closed on her short tail. Hackwing pulled, her wings flapping as fast as they could. She pulled and flapped and stretched until she'd reached the boulder.\n\n\"I won!\" She preened. \"Let go of my tail, I've won and you can't eat me.\"\n\nReluctantly, Bog Dog let go of Hackwing's tail which had been stretched so far that it was much longer than the stub it had been.\n\nNow, hackwings keep their tails long, to honor their quick ancestor and remind bog dogs to keep their promise."
+      ],
+      "notes": "The words of the plugin record KoTMBookHowHackwingGotHerTail (King of the Murkmire.esp), markup removed."
+    },
+    {
+      "id": "document.the-black-fin-foreign-adventures-3",
+      "textRef": "text.book.the-black-fin-foreign-adventures-3",
+      "name": "The Black Fin: Foreign Adventures III",
+      "kind": "book",
+      "status": "derived",
+      "item": "item.book-the-black-fin-foreign-adventures-3",
+      "sources": [
+        "King of the Murkmire.esp:BOOK KoTMBookKeshuForeignAdventures03"
+      ],
+      "leaves": [
+        "It was well into the second year after the formation of the Ebonheart Pact and Keshu and the Black Fin Legion (minus the troops we left behind as part of the Pact army in Morrowind) were now touring the Nords' lands of Skyrim. Our first stop after crossing into Nord territory was the town of Riften, where we were treated to a typical Nord celebration that included lots of food, lots of mead and a number of good-natured brawls that seem to be a common pastime in the colder climes. While there, we helped fortify some of the town's defenses, which Keshu insisted we do wherever we went to show our willingness to provide whatever assistance we could during our visits.\n\nAfter more than a week in Riften, we began our trek north through Eastmarch toward the city of Windhelm for Keshu's reunion with Jorunn - who was now Jorunn the Skald-King, if you can believe that! Apparently, the big Nord was a prince or some such and was now the leader of the entire Nord nation! And Windhelm, what a city! It was as large and as impressive in its own way as Mournhold, but where the Dark Elf metropolis was a reflection of its people, Windhelm was clearly and undeniably a reflection of the Nords. Repairs were still underway to deal with the damage inflicted by the Akaviri siege, but that did nothing to detract from the sheer grandeur of the Nord city.",
+        "Jorunn met us at the gates, grabbed Keshu up in an enormous hug, and then invited us all to enjoy the hospitality of his home and city. The celebration lasted for a week and a day! The Nords certainly love to throw a good party and they seem to look for any excuse to have one. During the celebration, we were treated to the best mead and ale the Nords produced, exquisite delicacies such as rabbit meatballs and some of the most ribald drinking songs I had ever heard - all sung extremely loudly and with a lot of clinking of mugs and goblets.\n\nWhen the mead casks were finally empty and the rabbit meatballs had run out, the celebration came to an abrupt end. Then the work began. We stayed in Windhelm for the better part of a month, helping repair the outer walls of the city and providing whatever other aid the Nords were comfortable letting us help. And whenever they could both spare the time, Keshu and the Skald-King huddled in a corner and spoke at length about a variety of topics. None of us was allowed to join them during these discussions, but I always got the sense that they were sharing their thoughts on leadership, the alliance and the future of our nations.",
+        "The Black Fin Legion, as we had come to know it, came to an end in Skyrim, as well. Our soldiers were divided into small teams and sent to serve with Pact troops of mixed nationality, fighting alongside Nords and Dark Elves in the same cohorts. I stayed with Keshu, of course and I was there when the Skald-King offered her a unique honor. \"I want you to command the Pact forces in Skyrim, Black Fin,\" Jorunn proclaimed. \"Will you accept this charge?\" As we all expected, Keshu agreed. And through her efforts over the next seven years, the tactics and strategies of the Pact's military might were developed and set in place.\n\nWhich is why the Pact was prepared when the War of the Three Banners began."
+      ],
+      "notes": "The words of the plugin record KoTMBookKeshuForeignAdventures03 (King of the Murkmire.esp), markup removed."
+    },
+    {
+      "id": "document.the-black-fin-comes-home",
+      "textRef": "text.book.the-black-fin-comes-home",
+      "name": "The Black Fin Comes Home",
+      "kind": "book",
+      "status": "derived",
+      "item": "item.book-the-black-fin-comes-home",
+      "sources": [
+        "King of the Murkmire.esp:BOOK KoTMBookKeshuForeignAdventures05"
+      ],
+      "leaves": [
+        "General Keshu, known as the Black Fin, turned command of the Pact forces in Cyrodiil over to a Dark Elf general named Felisi Varo. Then, with a small group of companions that included myself, Vos-Huruk, Tee-Wan, Xocin, the Dark Elf twins Llensi and Meralyn and the Nords Jod and Ulfbel, we departed the war-torn countryside and returned to Mournhold for a final meeting with Jorunn the Skald-King.\n\n\"The more time I spend in this strange country, the more I miss the mountains and the snow,\" Jorunn said as we entered his audience chamber in the Dark Elf city. \"Now tell me, Black Fin,\" he said, turning to face Keshu, \"are you sure you want to do this?\"\n\nKeshu raised the spine of affirmation and said, \"I've done all I set out to do for you and the Pact, Jorunn. It's time for me to return to Black Marsh and do the same for my people.\"\n\nJorunn nodded solemnly. \"Then I can ask no more of you, my trusted friend,\" he said with a tear in his eye. \"May Kyne guide you back home, Black Fin. And if you ever need my aid, you have but to ask.\"",
+        "At those words, Keshu's eyes sparkled like the stars in the sky. \"Well, there is a small matter,\" she said, and then she went on to explain how she was hoping to open Black Marsh to outsiders, especially crafters and artisans, to help expand the knowledge and experiences of her people. \"I shall put out the word,\" Jorunn agreed. \"And where should these crafters and artisans go? To Stormhold?\"\n\n\"No,\" Keshu replied. \"Send them to Gideon.\"\n\nKeshu, however, led us to Gideon, the Imperial stronghold in central Black Marsh, where she was determined to establish a more inviting and vibrant \"modern\" Argonian society. Her plan, as she explained them to us during the journey, was to start out by bringing the things we learned and discovered during our time in Morrowind and Skyrim to Gideon, and then begin a series of quests to re-discover the secrets of the ancient Argonian civilization. \"I do not want to change our culture,\" Keshu assured us. \"I want to enhance it and bring back the glory we had and lost in ages past.\"",
+        "We may not have all agreed with everything Keshu outlined on our journey home, but we believed in the Black Fin. We would follow her to Oblivion and back if she asked it of us. So it wasn't that far a leap to realize that we were going to help her achieve her dream for our people.\n\nAs we approach the borders of Black Marsh, this ongoing narrative of how a simple Saxhleel from Seekhat-Xol became an Argonian to be reckoned with comes to an end. I may write again in the future, but I imagine that my free time will evaporate like a small puddle on a hot day as soon as we get settled in Gideon. But if you ever make it to our fair city, stop by and say hello. We welcome all visitors - Argonians and dryskins alike!"
+      ],
+      "notes": "The words of the plugin record KoTMBookKeshuForeignAdventures05 (King of the Murkmire.esp), markup removed."
+    },
+    {
+      "id": "document.ku-vastei-the-needed-change",
+      "textRef": "text.book.ku-vastei-the-needed-change",
+      "name": "Ku-Vastei: The Needed Change",
+      "kind": "book",
+      "status": "derived",
+      "item": "item.book-ku-vastei-the-needed-change",
+      "sources": [
+        "King of the Murkmire.esp:BOOK KoTMBookKuVastei"
+      ],
+      "leaves": [
+        "It is hard to describe the culture of my people. Often my tongue stumbles as I try to explain, but it is my hope that ink and quill will give me time enough to gather my thoughts. And perhaps, through such writing, I will finally connect the parts of me that now feel so divided; my homeland of Murkmire and my new life within the Mages Guild.\n\nThese journals are to become my ku-vastei. And, as I write that, I can think of no better place to begin.\n\nKu-vastei roughly translates to \"the catalyst of needed change,\" though such a direct translation in no way does justice to the original meaning. Another translation could be \"that which creates the needed pathway for change to occur\" or even \"the spark which ignites the flame which must come into being.\"\n\nPerhaps a more direct analysis should be first presented. Ku-vastei is a noun, a thing or person. Vastei directly translates to change, an important part of my culture. Ku is harder to put into words. It is that which leads to change, though not that which creates change. An important role, as stagnation is a fate worse than death.",
+        "Take a boulder which sits atop a cliff, teetering in place. It must fall eventually. The ku-vastei does not push the boulder off the cliff; rather, it picks the pebble which holds the rock in place. And so it falls, not by a push, but by a pathway cleared.\n\nKu-vastei is revered, just as change itself is revered, for to look back at what was means to stumble as you move forward. Sometimes, a little push in the right direction is all a person needs to remember such wisdom. Other times, they may need to be shoved."
+      ],
+      "notes": "The words of the plugin record KoTMBookKuVastei (King of the Murkmire.esp), markup removed."
+    },
+    {
+      "id": "document.the-seasons-of-argonia",
+      "textRef": "text.book.the-seasons-of-argonia",
+      "name": "The Seasons of Argonia",
+      "kind": "book",
+      "status": "derived",
+      "item": "item.book-the-seasons-of-argonia",
+      "sources": [
+        "King of the Murkmire.esp:BOOK KoTMBookSeasonofArgonia"
+      ],
+      "leaves": [
+        "Time is immutable. An engine that drives the will of change, inevitable, primordial. An ever-moving force in an ever-constant cycle. To mark the progression of that change is a thing most sacred to the Saxhleel. Each month marks a particular aspect of the yearly cycle and is thus celebrated accordingly. The months and their respective meanings are as follows:\n\nVakka (Sun)\nAs the first month of the cycle, Vakka is associated with the primordial origin of existence, or origins in general. We are encouraged to show extra respect to the tribal elders during this time.\n\nXeech (Nut)\nAlso known as the hiding time, Xeech is a month of planting both seeds and ideals. Swamp bulbs are buried, planting sprouts. Elders pass down their knowledge, implanting knowledge. This is a time of hope, but also of melancholy. It is the first of the Three Mournings, for once a thing it is planted, it is hidden and gone. What emerges will not be something new: the nut is lost forever.\n\nSisei (Sprout)\nSisei stands for newness, possibility and youthful excitement. The Hist has shed its sleeping life and now is truly alive. Many hatchling festivals take place during this time. It is also known as the \"leaping season,\" for this month is also full of sport and competition. The virtues of strength, speed and willpower are all venerated and celebrated.",
+        "Hist-Deek (Hist Sapling)\nHist-Deek is, for good or ill, dedicated to the challenge of authority and the power of individual agency. Many use this month to highlight injustices, with intra-tribal conflict often resulting. Needless to say, it is a very controversial time. Many also take this time to analyze their agency apart from the Hist; to reflect upon our worship and see it as bond rather than bondage.\n\nHist-Dooka (Mature Hist)\nServing as the counter-balance to the turbulent Hist-Deek, the Hist-Dooka is centered on the ideas of family, tradition and obligation. Young Saxhleel are given more responsibility and many adolescents take on the Chukka-Sei, a trial of maturation, to prove themselves worthy of being called an adult. Those who pass the trials are gain full tribal membership and the month typically ends with a great celebration.\n\nHist-Tsoko (Elder Hist)\nPerhaps the holiest month of the year, Hist-Tsoko is dedicated to the ideas of knowledge, wisdom and fullness of potential. Many gatherings this month are solemn affairs, the most important being the Root Talk, where the tribal elders recite the history of the Saxhleel. This month also stands as the Second Mourning, due to the fact that the Hist has stopped growing and all of its individual potential is expended.",
+        "Thtithil-Gah (Egg-Basket)\nThtithil-Gah is a month of foolishness and frivolity, often a welcome respite from the oppressive solemnity of the Hist-Tsoko. Hatchling-like wonder, youthful joy and mild confusion are all venerated. Many traveling entertaining troupes make the majority of their profit during this time. Festivals and feasts are nearly constant.\n\nThtithil (Egg)\nThe Egg month is associated with mystery, anticipation and (perhaps oddly) finality. For most tribes, the connection is literal; much egg-laying takes place during this month.\n\nNushmeeko (Lizard)\nThe lizard symbolizes swift and quiet labor. Nushmeeko celebrates the thankless tasks of everyday life and work is near constant. Cleaning, building, repairing and preparing; every member of the tribe puts their snout to the grindstone and pushes.\n\nShaja-Nushmeeko (Semi-Humanoid Lizard)\nThis month, like Hist-Deek earlier, is another of mystery and debate. There is significant controversy about what the humanoid-lizard actually represents. Is it a hatchling emerged from the egg, or a representation of our cultural origins? Unifying concepts such as change, becoming and shifting values are all contemplated. Appropriately, many adolescent gatherings take place during this time, resulting in various romantic entanglements. The awkwardness of youth is often associated with this month.",
+        "Saxhleel (Argonian)\nSaxhleel is a month associated with the true passions of our culture. Given that the hunting and harvesting season has passed, tribe members are free to focus on pursuits such as pottery, woodcarving and other creative pastimes. A sense of things coming to a close is pervasive and in many tribes there is a large gathering of elders at the end of this month. The intent of the festival is to prepare both our elders and community for the impending deaths to come. Dryskins often find this a morbid tradition.\n\nXulomaht (The Deceased)\nLike many traditions, Xulomaht is a month of apparently conflicting ideas. It is associated with the Third Mourning, the most powerful of the three given the literal ending of the year. Tribes look back on the events of the year and come to terms with its passing. However, it is also a time of celebration and remembrances. Great festivals are held in honor of all who have passed from their old life and into a new one. Much of the month is spent planning and preparing for these festivities."
+      ],
+      "notes": "The words of the plugin record KoTMBookSeasonofArgonia (King of the Murkmire.esp), markup removed."
+    },
+    {
+      "id": "document.argonians-of-western-solstice",
+      "textRef": "text.book.argonians-of-western-solstice",
+      "name": "Argonians of Western Solstice",
+      "kind": "book",
+      "status": "derived",
+      "item": "item.book-argonians-of-western-solstice",
+      "sources": [
+        "King of the Murkmire.esp:BOOK KoTMBookWesternSolsticeArgonians"
+      ],
+      "leaves": [
+        "A report on the Tide-Born tribe and their villages that I have made contact with in the name of the Stirk Fellowship. The Tide-Born are spread across the western shores in loose, porous villages. From my observations, they generally consist of kind fisherfolk and artisans, but there are a number of distinct sub-tribes and villages worth noting, as detailed below.\n\nShell-Tide Village\nA hub for trade and cultural teachings, Shell-Tide is the largest Argonian settlement on the western side of the island and the de facto capital of the Tide-Born people. The village hatchery tends to clutches from across the island, something that must greatly benefit the more nomadic sub-tribes and may also explain the large number of warriors that are trained here. Their leader, though that word may be inaccurate (perhaps religious guide?), is Tide-Reader Suhath. A kind and patient Argonian who also refuses to suffer fools.\n\nSalt-Cured\nA fishing group that spends most of their lives on the water in large, twin hulled canoes that feature a platform for living areas spanning the space between the canoes. They generally stick to the reefs in a loose flotilla, but will travel toward deeper water when following the fish. They employ smaller boats to travel back to the island to trade goods with other sub-tribes and in the village of Shell-Tide.\n\nPalm-Backed\nThe conservators of Solstice, this roaming group of Tide-Born has dedicated their lives to tending the island's sandbars and tidal flats, fearing that one day the island may disappear altogether. If you walk the shoreline and see walking bushes or ambulatory palms, do not fear. It isn't the sun's heat frying your scales, it's merely the island's caretakers planting their cuttings and saplings along the berm's edge.",
+        "Mihuitleel\nWhile I wasn't able to confirm their existence, the other villages tell me of the Mihuitleel, their name meaning \"feathered people.\" Villagers explained that they are extremely reclusive and even keep their distance from other Tide-Born. They can sometimes be spotted at the tops of palm trees, where their iridescent green feathers keep them hidden from untrained eyes. Locals tell stories of how the Mihuitleel have \"swooped in\" to save them from beasts and, lately, even cultists. Curiously, I spotted several hatchlings playing with feathered dolls and all of them, every single one, played with them as if they could fly.\n\nA Note on Death-Dancers, or Xul-Kat\nThese are not a sub-tribe, but rather a role placed on the scales of a handful of island Argonians. I have met only one in my travels, but he was more than happy to sit and speak with me. Teerad explained that Death-Dancers act as avatars of death in times of need. Whether that means bringing mercy to the suffering or terminally ill, or justice to the rare few who are deemed guilty of crimes befitting death depends on circumstances and necessity. They do not relish their role as executioners, but understand that it is necessary to the cycle of death, change and new beginnings on an island where the Hist no longer provides guidance. In its absence, the Death-Dancers and Tide-Born overall, have developed a strong connection to Sithis. Even the Death-Dancer role, of which there are never more than six members, is structured so that \"his reach will never falter and no Argonian is left in the darkness alone.\" As I understand it, there are also Death-Dancers among the Stone-Nest of eastern Solstice, but due to current circumstances, I have yet to meet or talk to any from that tribe.",
+        "A Note on the Naga\nI have noticed a number of Naga scattered among the Tide-Born villages, but no evidence of a village or community consisting only of Naga. Moreover, the Argonians grow skittish when I ask why that is. It seems, at some point, the Naga had a larger population on the island, but over the centuries their numbers have dwindled and that it wasn't until recently that they were accepted into other villages. There are some old writings that mention a Shark-Tooth tribe, which may have once been the home of these Naga, but it has since been lost to time and the tides."
+      ],
+      "notes": "The words of the plugin record KoTMBookWesternSolsticeArgonians (King of the Murkmire.esp), markup removed."
+    },
+    {
+      "id": "document.rhymes-and-chimes",
+      "textRef": "text.book.rhymes-and-chimes",
+      "name": "Rhymes and Chimes",
+      "kind": "book",
+      "status": "derived",
+      "item": "item.book-rhymes-and-chimes",
+      "sources": [
+        "King of the Murkmire.esp:BOOK KoTMBookRhymesAndChimes"
+      ],
+      "leaves": [
+        "Egg-Tender's Lullaby (unattributed)\n\nLittle Thtithil, Little Thtithil\nDrink up your sap\nLittle Thtithil, Little Thtithil\nIts time for your nap\n\nLittle Thtithil, Little Thtithil\nRest in your shell\nLittle Thtithil, Little Thtithil\nWe'll keep you well\n\nLittle Thtithil, Little Thtithil\nGently you turn\nLittle Thtithil, Little Thtithil\nGrow hard and firm\n\nHist Hymn (unattributed)\n\nAmong the roots where we are born,\nBathed in your sap to shape our form,\nWe gather here to sing your praise\nAnd give our thanks for those you raise.\n\nWind ring your chimes with its caress,\nMud hold you firm through all distress,\nRain reach your roots past golden rays,\nSun kiss your leaves for all your days.\n\nBless your every branch and bough,\nBeneath which we make each our vows.\nBless your tender bark and flowers,\nBlessed are we to call you ours.\n\nHatchling's Rhyme by Mimme\n\nTinkle, tinkle, hollow chime,\nSinging with me as I rhyme\nFor our darlings in their nest,\nDrifting off to well-earned rest.",
+        "How you sway and dance with ease,\nOn the evening's gentle breeze.\nConjure thoughts of lazy streams,\nFerry them to pleasant dreams.\n\nTinkle, tinkle, hollow chime,\nSinging with me as I rhyme.\nGuide us through the evening mist,\nHome to the roots of our Hist.\n\nTender Roots by Chak-Shushu\n\nAs I lie beneath you\nResting in your embrace\nI am moist with morning dew\nFrom the time we spend enlaced\n\nBasking under the sun's golden kiss\nI am hot as humid air,\nMy breath exhales as mist\nUntil the warmth is more than I can bear\n\nI wet my scales, slick with mud\nShaded by your caring boughs\nAmong your loving roots I cool my blood\nAnd then begin to drowse\n\nYou sing me a gentle lullaby\nOf chimes in the breeze\nTo plant your seed in my mind's eye\nAnd give me dreams of trees."
+      ],
+      "notes": "The words of the plugin record KoTMBookRhymesAndChimes (King of the Murkmire.esp), markup removed."
+    },
+    {
+      "id": "document.a-shallow-pool",
+      "textRef": "text.book.a-shallow-pool",
+      "name": "A Shallow Pool",
+      "kind": "book",
+      "status": "derived",
+      "item": "item.book-a-shallow-pool",
+      "sources": [
+        "King of the Murkmire.esp:BOOK KoTMBookAShallowPool"
+      ],
+      "leaves": [
+        "A Shallow Pool\n\nA shallow pool is all I ask\n\nWater for roots\n\nMist and shadow\n\nLeaves lifting toward the sky\n\nGentle rain is all I need\n\nCloak of night",
+        "Warmth and rain\n\nMurmurs in the darkness\n\nA shallow pool is all I want\n\nMemories held\n\nOld stories told\n\nSurrounded by children\n\nWho call me their Hist"
+      ],
+      "notes": "The words of the plugin record KoTMBookAShallowPool (King of the Murkmire.esp), markup removed."
+    },
+    {
+      "id": "document.lost-tales-of-the-famed-explorer-2",
+      "textRef": "text.book.lost-tales-of-the-famed-explorer-2",
+      "name": "Lost Tales of the Famed Explorer II",
+      "kind": "book",
+      "status": "derived",
+      "item": "item.book-lost-tales-of-the-famed-explorer-2",
+      "sources": [
+        "King of the Murkmire.esp:BOOK KoTMBookLostTales02"
+      ],
+      "leaves": [
+        "The sun was still high as they at last reached a suitable clearing for a camp. They could press forward, but many an expedition had become lost thinking they could chase the last bit of light. Early morning was the best time to travel. The swamp was sleepy and full come dawn. Matius set to gathering what he would need for a fire, taking care to stay near his companions. He decided to look for sticks and ferns as well. They could be used to hide the light, which Matius knew was a wise thing to do this deep in the marsh. He chose to say nothing of this to his new companions, who were as tired as they were bored.\n\n\"They say the ancient Argonians had golden scales that could blind lowly men and mer.\" Matius hoped reminding the crew of the significance of their mission would raise their spirits. And the embellished version always made for a better campfire tale. \"They built their greatest city higher and higher until they reached the sun.\"",
+        "\"What happened then?\" young Riffen asked.\n\nMatius had to admit he enjoyed the young man's curiosity. He intentionally held his answer, half-hoping River-Gills would volunteer his own. Everything Matius knew of these legends had been the work of other Imperial explorers and scholars. He had never managed to get an Argonian to speak of it.\n\nRiver-Gills simply sat basking in the sun as if he wasn't listening at all. As far as Matius could tell, the Argonian was asleep.\n\n\"The story is that it destroyed them,\" Matius continued, dropping off a bundle of sticks. \"Others say they cracked it open like an egg and became gods.\"\n\nThe Elf Salara scoffed. \"That's ridiculous,\" she said. \"Everyone knows the sun isn't an egg.\" Thus far Matius had learned little of the battlemage other than she was wholly committed to her own beliefs, most of which he recognized came from Guild teachings.",
+        "\"What is it then?\" Riffen asked.\n\n\"A hole.\"\n\nRiffen scrunched his nose and looked up. \"That's supposed to be a hole?\"\n\n\"Don't stare at it.\" Matius sighed.\n\n\"Do you not believe in the golden city, Lady Salara?\" Riffen asked. \"A sailor told me it was just a story.\"\n\n\"She needs to be sure,\" Matius offered. Salara had refused to give her personal reasons for joining the expedition, so he guessed.\n\nSalara turned away from them and stared into the brush. She took out a broken compass and held it tightly.\n\n\"I expect something of value could still be learned,\" Salara answered. \"Even if everything they believed is wrong.\"\n\nRiver-Gills opened his eyes."
+      ],
+      "notes": "The words of the plugin record KoTMBookLostTales02 (King of the Murkmire.esp), markup removed."
+    },
+    {
+      "id": "document.gods-and-worship",
+      "textRef": "text.book.gods-and-worship",
+      "name": "Gods and Worship",
+      "kind": "book",
+      "status": "derived",
+      "item": "item.book-gods-and-worship",
+      "sources": [
+        "Skyrim.esm:BOOK Book2CommonOverviewofGodsandWorship"
+      ],
+      "leaves": [
+        "Editor's Note:\nBrother Hetchfeld is an Associate Scribe at the Imperial University, Office of Introductory Studies.\n\nGods are commonly judged upon the evidence of their interest in worldly matters. A central belief in the active participation of Deities in mundane matters can be challenged by the reference to apparent apathy and indifference on the part of Gods during times of plague or famine.\n\nFrom intervention in legendary quests to manifestations in common daily life, no pattern for the Gods of Tamriel activities is readily perceived. The concerns of Gods in many ways may seem unrelated or at best unconcerned with the daily trials of the mortal realm. The exceptions do exist, however.\n\nMany historical records and legends point to the direct intervention of one or more gods at times of great need. Many heroic tales recount blessings of the divinity bestowed upon heroic figures who worked or quested for the good of a Deity or the Deity's temple. Some of the more powerful artifacts in the known world were originally bestowed upon their owners through such reward. It has also been reported that priests of high ranking in their temples may on occasion call upon their Deity for blessings or help in time of need. The exact nature of such contact and the blessings bestowed is given to much speculation, as the temples hold such associations secret and holy. This direct contact gives weight to the belief that the Gods are aware of the mortal realm. In many circumstances, however, these same Gods will do nothing in the face of suffering and death, seeming to feel no need to interfere. It is thus possible to conclude that we, as mortals, may not be capable of understanding more than a small fraction of the reasoning and logic such beings use.",
+        "One defining characteristic of all Gods and Goddesses is their interest in worship and deeds. Deeds in the form of holy quests are just one of the many things that bring the attention of a Deity. Deeds in everyday life, by conforming to the statutes and obligations of individual temples are commonly supposed to please a Deity. Performance of ceremony in a temple may also bring a Deity's attention. Ceremonies vary according to the individual Deity. The results are not always apparent but sacrifice and offerings are usually required to have any hope of gaining a Deity's attention.\n\nWhile direct intervention in daily temple life has been recorded, the exact nature of the presence of a God in daily mundane life is a subject of controversy. A traditional saying of the Wood Elves is that \"One man's miracle is another man's accident.\" While some gods are believed to take an active part of daily life, others are well known for their lack of interest in temporal affairs.\n\nIt has been theorized that gods do in fact gain strength from such things as worship through praise, sacrifice and deed. It may even be theorized that the number of worshippers a given Deity has may reflect on His overall position among the other Gods. This my own conjecture, garnered from the apparent ability of the larger temples to attain blessings and assistance from their God with greater ease than smaller religious institutions.",
+        "There are reports of the existence of spirits in our world that have the same capacity to use the actions and deeds of mortals to strengthen themselves as do the Gods. The understanding of the exact nature of such creatures would allow us to understand with more clarity the connection between a Deity and the Deity's worshipers.\n\nThe implication of the existence of such spirits leads to the speculation that these spirits may even be capable of raising themselves to the level of a God or Goddess. Motusuo of the Imperial Seminary has suggested that these spirits may be the remains of Gods and Goddesses who through time lost all or most of their following, reverting to their earliest most basic form. Practioners of the Old Ways say that there are no Gods, just greater and lesser spirits. Perhaps it is possible for all three theories to be true."
+      ],
+      "notes": "The words of the plugin record Book2CommonOverviewofGodsandWorship (Skyrim.esm), markup removed."
+    },
+    {
+      "id": "document.the-importance-of-where",
+      "textRef": "text.book.the-importance-of-where",
+      "name": "The Importance of Where",
+      "kind": "book",
+      "status": "derived",
+      "item": "item.book-the-importance-of-where",
+      "sources": [
+        "Skyrim.esm:BOOK SkillOneHanded1"
+      ],
+      "leaves": [
+        "The chieftain of Othrobar gathered his wise men together and said, \"Every morning a tenfold of my flock are found butchered. What is the cause?\"\n\nFangbith the Warleader said, \"A Monster may be coming down from the Mountain and devouring your flock.\"\n\nGhorick the Healer said, \"A strange new disease perhaps is to blame.\"\n\nBeran the Priest said, \"We must sacrifice to the Goddess for her to save us.\"\n\nThe wise men made sacrifices and while they waited for their answers from the Goddess, Fangbith went to Mentor Joltereg and said, \"You taught me well how to forge the cudgel of Zolia and how to wield it in combat, but I must know now when it is wise to use my skill. Do I wait for the Goddess to reply, or the medicine to work, or do I hunt the Monster which I know is in the Mountain?\"\n\n\"When is not important,\" said Joltereg. \"Where is all that is important.\"\n\nSo Fangbith took his Zolic cudgel in hand and walked far through the dark forest until he came to the base of the Great Mountain. There he met two Monsters. One bloodied with the flesh of the chieftain of Othrobar's flock fought him while its mate fled. Fangbith remembered what his master had taught him, that \"where\" was all that was important.\n\nHe struck the Monster on each of its five vital points: head, groin, throat, back and chest. Five blows to the five points and the Monster was slain. It was too heavy to carry with him, but still triumphant, Fangbith returned to Othrobar.\n\n\"I say I have slain the Monster that ate your flock,\" he cried.\n\n\"What proof have you that you have slain any Monster?\" asked the chieftain.\n\n\"I say I have saved the flock with my medicine,\" said Ghorick the Healer.",
+        "\"I say The Goddess has saved the flock by my sacrifices,\" said Beran the Priest.\n\nTwo mornings went by and the flocks were safe, but on the morning of the third day, another tenfold of the chieftain's flock was found butchered. Ghorick the Healer went to his study to find a new medicine. Beran the Priest prepared more sacrifices. Fangbith took his Zolic cudgel in hand, again and walked far through the dark forest until he came to the base of the Great Mountain. There he met the other Monster, bloodied with the flesh of the chieftain of Othrobar's flock. They did battle and again Fangbith remembered what his master had taught him, that \"where\" was all that was important.\n\nHe struck the Monster five times on the head and it fled. Chasing it along the mountain, he struck it five times in the groin and it fled. Running through the forest, Fangbith overtook the Monster and struck it five times in the throat and it fled. Entering into the fields of Othrobar, Fangbith overtook the Monster and struck it five times in the back and it fled. At the foot of the stronghold, the chieftain and his wise men emerged to the sound of the Monster wailing. There they beheld the Monster that had slain the chieftain's flock. Fangbith struck the Monster five times in the chest and it was slain.\n\nA great feast was held in Fangbith's honor and the flock of Othrobar was never again slain. Joltereg embraced his student and said, \"You have at last learned the importance of where you strike your blows.\"\n\nPublisher's Note\nThis tale is another, which has an obvious origin among the Ashlander tribes of Vvardenfell and is one of their oldest tales. \"Marobar Sul\" merely changed the names of the character to sound more \"Dwarven\" and resold it as part of his collection. The Great Mountain in the tale is clearly \"Red Mountain,\" despite its description of being forested. The Star-Fall and later eruptions destroyed the vegetation on Red Mountain, giving it the wasted appearance it has today.",
+        "This tale does have some scholarly interest, as it suggests a primitive Ashlander culture, but it talks of living in \"strongholds\" much like the ruined strongholds on Vvardenfell today. There are even references to a stronghold of \"Othrobar\" somewhere between Vvardenfell and Skyrim, but few strongholds outside of sparsely-settled Vvardenfell have survived to the present. Scholars do not agree on who built these strongholds or when, but I believe it is clear from this story and other evidence that the Ashlander tribes used these strongholds in the ancient past instead of making camps of wickwheat huts as they do today.\n\nThe play on words that forms the lesson of the fable -- that it is as important to know where the monster should be slain, at the stronghold, as it is to know where the monster must be struck on its body to be slain -- is typical of many Ashlander tales. Riddles, even ones as simple as this one, are loved by both the Ashlanders and the vanished Dwemer. Although the Dwemer are usually portrayed as presenting the riddles, rather than being the ones who solve it as in Ashlander tales."
+      ],
+      "notes": "The words of the plugin record SkillOneHanded1 (Skyrim.esm), markup removed."
+    },
+    {
+      "id": "document.the-firmament",
+      "textRef": "text.book.the-firmament",
+      "name": "The Firmament",
+      "kind": "book",
+      "status": "derived",
+      "item": "item.book-the-firmament",
+      "sources": [
+        "Skyrim.esm:BOOK Book2CommonTheFirmament"
+      ],
+      "leaves": [
+        "The Stars of Tamriel are divided into thirteen constellations. Three of them are the major constellations, known as the Guardians. These are the Warrior, the Mage and the Thief. Each of the Guardians protects its three Charges from the thirteenth constellation, the Serpent.\n\nWhen the sun rises near one of the constellations, it is that constellation's season. Each constellation has a Season of approximately one month. The Serpent has no season, for it moves about in the heavens, usually threatening one of the other constellations.\n\nThe Warrior\n\nThe Warrior is the first Guardian Constellation and he protects his charges during their Seasons. The Warrior's own season is Last Seed when his Strength is needed for the harvest. His Charges are the Lady, the Steed and the Lord. Those born under the sign of the Warrior are skilled with weapons of all kinds, but prone to short tempers.\n\nThe Mage\n\nThe Mage is a Guardian Constellation whose Season is Rain's Hand when magicka was first used by men. His Charges are the Apprentice, the Golem and the Ritual. Those born under the Mage have more magicka and talent for all kinds of spellcasting, but are often arrogant and absent-minded.",
+        "The Thief\n\nThe Thief is the last Guardian Constellation and her Season is the darkest month of Evening Star. Her Charges are the Lover, the Shadow and the Tower. Those born under the sign of the Thief are not typically thieves, though they take risks more often and only rarely come to harm. They will run out of luck eventually, however and rarely live as long as those born under other signs.\n\nThe Serpent\n\nThe Serpent wanders about in the sky and has no Season, though its motions are predictable to a degree. No characteristics are common to all who are born under the sign of the Serpent. Those born under this sign are the most blessed and the most cursed.\n\nThe Lady\n\nThe Lady is one of the Warrior's Charges and her Season is Heartfire. Those born under the sign of the Lady are kind and tolerant.\n\nThe Steed\n\nThe Steed is one of the Warrior's Charges and her Season is Mid Year. Those born under the sign of the Steed are impatient and always hurrying from one place to another.\n\nThe Lord\n\nThe Lord's Season is First Seed and he oversees all of Tamriel during the planting. Those born under the sign of the Lord are stronger and healthier than those born under other signs.",
+        "The Apprentice\n\nThe Apprentice's Season is Sun's Height. Those born under the sign of the apprentice have a special affinity for magick of all kinds, but are more vulnerable to magick as well.\n\nThe Atronach\n\nThe Atronach (often called the Golem) is one of the Mage's Charges. Its season is Sun's Dusk. Those born under this sign are natural sorcerers with deep reserves of magicka, but they cannot generate magicka of their own.\n\nThe Ritual\n\nThe Ritual is one of the Mage's Charges and its Season is Morning Star. Those born under this sign have a variety of abilities depending on the aspects of the moons and the Divines.\n\nThe Lover\n\nThe Lover is one of the Thief's Charges and her season is Sun's Dawn. Those born under the sign of the Lover are graceful and passionate.\n\nThe Shadow\n\nThe Shadow's Season is Second Seed. The Shadow grants those born under her sign the ability to hide in shadows.\n\nThe Tower\n\nThe Tower is one of the Thief's Charges and its Season is Frostfall. Those born under the sign of the Tower have a knack for finding gold and can open locks of all kinds."
+      ],
+      "notes": "The words of the plugin record Book2CommonTheFirmament (Skyrim.esm), markup removed."
+    },
+    {
+      "id": "document.nords-of-skyrim",
+      "textRef": "text.book.nords-of-skyrim",
+      "name": "Nords of Skyrim",
+      "kind": "book",
+      "status": "derived",
+      "item": "item.book-nords-of-skyrim",
+      "sources": [
+        "Skyrim.esm:BOOK Book2CommonNordsOfSkyrim"
+      ],
+      "leaves": [
+        "Nords of Skyrim - My People, My Pride\n\nRespected reader. My name is Hrothmund Wolf-Heart and I am a Nord. But, more importantly, I am a Nord born and raised in the land of Skyrim.\n\nI write this volume in the desperate hope that the rest of Tamriel can come to know my people as they deserve to be known and understand this province for what it truly is - a place of uncontested beauty and culture.\n\nSome of what you know is undoubtedly true. Physically, we Nords are an impressive, often imposing sight - tall of stature, strong of bone and thick of muscle. Our hair is often fair and worn braided, as has been the custom for generations. Often we are swathed in the hides of beasts, for such creatures are abundant in Skyrim and we would be foolish not to take advantage of such an available resource.\n\nHaving read this far, you may be shocked at the strength of my words and the literacy of a northern \"savage.\" Aye, many Nords can both read and write. My father began my instruction in the way of letters when I was but a bairn, as did his father and his father before him.",
+        "But the accomplishments of the children of Skyrim are multitude and go beyond mere wordcraft. For we are artisans as well and through the ages have learned to manipulate steel as a sculptor would clay.\n\nIndeed, I have seen with mine own eyes, visitors from High Rock and Cyrodiil weep in disbelief as they beheld the blades wrought in the fires of the Skyforge and honed to beautiful deadliness by the gods-touched hands of Clan Gray-Mane.\n\nBut how can this be true, you ask? How are such achievements possible from a people who have yet to emerge from the muck and snow? Again, provincial bias clouds the truth.\n\nThe cities of Skyrim show Nord ingenuity and craftsmanship. Chief among them are Solitude, seat of the High King and capital of the province; Windhelm, ancient and honored, a jewel in the snow; Markarth, carved into the living rock itself, in ages long since past; Riften, set in the golden shadows of the Fall Forest, whence comes delicious fish and mead; and Whiterun, built around the hall of Jorrvaskr, home of the most noble Companions and revered Skyforge.",
+        "And now, respected reader, you have the full measure of it. We Nords are everything you imagined - and so much more.\n\nBut let not this work be your only gateway to the truth. Book passage on carriage or vessel and make the journey north. See Skyrim with thine own eyes. See Skyrim as have the Nords, since the gods first shaped the world."
+      ],
+      "notes": "The words of the plugin record Book2CommonNordsOfSkyrim (Skyrim.esm), markup removed."
+    },
+    {
+      "id": "document.the-book-of-daedra",
+      "textRef": "text.book.the-book-of-daedra",
+      "name": "The Book of Daedra",
+      "kind": "book",
+      "status": "derived",
+      "item": "item.book-the-book-of-daedra",
+      "sources": [
+        "Skyrim.esm:BOOK Book2CommonBookofDaedra"
+      ],
+      "leaves": [
+        "Azura, whose sphere is dusk and dawn, the magic in-between realms of twilight, known as Moonshadow, Mother of the Rose and Queen of the Night Sky.\n\nBoethiah, whose sphere is deceit and conspiracy and the secret plots of murder, assassination, treason and unlawful overthrow of authority.\n\nClavicus Vile, whose sphere is the granting of power and wishes through ritual invocations and pact.\n\nHermaeus Mora, whose sphere is scrying of the tides of Fate, of the past and future as read in the stars and heavens and in whose dominion are the treasures of knowledge and memory.\n\nHircine, whose sphere is the Hunt, the Sport of Daedra, the Great Game, the Chase, known as the Huntsman and the Father of Manbeasts.\n\nMalacath, whose sphere is the patronage of the spurned and ostracized, the keeper of the Sworn Oath and the Bloody Curse.\n\nMehrunes Dagon, whose sphere is Destruction, Change, Revolution, Energy and Ambition.\n\nMephala, whose sphere is obscured to mortals; known by the names Webspinner, Spinner and Spider; whose only consistent theme seems to be interference in the affairs of mortals for her amusement.",
+        "Meridia, whose sphere is obscured to mortals; who is associated with the energies of living things.\n\nMolag Bal, whose sphere is the domination and enslavement of mortals; whose desire is to harvest the souls of mortals and to bring mortals souls within his sway by spreading seeds of strife and discord in the mortal realms.\n\nNamira, whose sphere is the ancient Darkness; known as the Spirit Daedra, ruler of sundry dark and shadowy spirits; associated with spiders, insects, slugs and other repulsive creatures which inspire mortals with an instinctive revulsion.\n\nNocturnal, whose sphere is the night and darkness; who is known as the Night Mistress.\n\nPeryite, whose sphere is the ordering of the lowest orders of Oblivion, known as the Taskmaster.\n\nSanguine, whose sphere is hedonistic revelry and debauchery and passionate indulgences of darker natures.\n\nSheogorath, whose sphere is Madness and whose motives are unknowable.\n\nVaernima, whose sphere is the realm of dreams and nightmares and from whose realm issues forth evil omens.\n\n[Especially marked for special interest under the heading \"Malacath\" you find a reference to SCOURGE, blessed by Malacath and dedicated to the use of mortals. In short, the reference suggests that any Daedra attempting to invoke the weapon's powers will be expelled into the voidstreams of Oblivion.]",
+        "\"Of the legendary artifacts of the Daedra, many are well known, like Azura's Star and Sheogorath's Wabbajack. Others are less well known, like Scourge, Mackkan's Hammer, Bane of Daedra.\"\n\n\"Yet though Malacath blessed Scourge to be potent against his Daedra kin, he thought not that it should fall into Daedric hands, then to serve as a tool for private war among caitiff and forsaken. Thus did Malacath curse the device such that, should any dark kin seek to invoke its powers, that a void should open and swallow that Daedra and purge him into Oblivion's voidstreams, from thence to pathfind back to the Real and Unreal Worlds in the full order of time.\""
+      ],
+      "notes": "The words of the plugin record Book2CommonBookofDaedra (Skyrim.esm), markup removed."
+    },
+    {
+      "id": "document.the-talos-mistake",
+      "textRef": "text.book.the-talos-mistake",
+      "name": "The Talos Mistake",
+      "kind": "book",
+      "status": "derived",
+      "item": "item.book-the-talos-mistake",
+      "sources": [
+        "Skyrim.esm:BOOK Book2ReligiousTalosWorship"
+      ],
+      "leaves": [
+        "As citizens of the Empire, all are of course familiar with the deeds of Emperor Tiber Septim. But it is the Emperor's ascent to godhood, as Talos, that is the subject of this work.\n\nUntil Tiber Septim's death, there had been but Eight Divines: Akatosh, Dibella, Arkay, Zenithar, Stendarr, Mara, Kynareth and Julianos. These gods were and are, worshipped throughout the Empire. And while some may have different names in the varying provinces (for example, Akatosh is known as \"Auri-El\" to the Aldmer; and Arkay is sometimes known as \"Ar'Kay\"), all are recognized and revered by all races and cultures of Tamriel.\n\nBut when Tiber Septim passed to Aetherius, there came to be a Ninth Divine - Talos, also called Ysmir, the \"Dragon of the North.\" The man who was so loved in life became worshipped in death. Indeed, it can be argued that Talos, the Ninth Divine, became even more important than the Eight that had preceded him, at least to humans. For he was a god who was once just a man and through great deeds actually managed to ascend to godhood. And if one human could achieve such a feat - couldn't it be done again? Couldn't all humans aspire to achieve divinity?",
+        "So we thought, we humans. And so we continued to worship Talos and revere him as the ultimate hero-god. But that was then. This is now. And now, we know the truth:\n\nWe were wrong.\n\nAs citizens of the Empire, we all experienced the horrors of the Great War. And it was not until the signing of the White-Gold Concordat, the treaty between the Empire and the Aldmeri Dominion, that we once again knew peace. One of the most important stipulations of that treaty, as every Imperial citizen is well aware, is that Talos can no longer be worshipped as a god. This edict shook the foundations of the Empire. There were those who rebelled against the law. Indeed, some still do.\n\nBut the citizens of the Empire must know this: the Emperor did not agree to outlaw the worship of Talos because it was demanded by the Thalmor, the ruling body of the Aldmeri Dominion.\n\nThe Emperor agreed to the outlaw of the worship of Talos because it was the right thing to do.",
+        "Today, the Emperor and indeed the Empire itself, recognizes that allowing the worship of Talos was a mistake. For by doing so, by allowing the worship of Talos as a Divine, the Empire actually did its people a great disservice: for this only succeeded in weakening the memory of the man Tiber Septim and his many extraordinary (though mortal) deeds; and pushing people away from the Eight Divines, the true gods, who do deserve our love and reverence.\n\nAnd so, the Empire admits it was wrong. The Talos Mistake will not be repeated. May we find centuries of peace and prosperity with our new Thalmor friends and continue to share a spirituality that binds together all the cultures and races of Tamriel."
+      ],
+      "notes": "The words of the plugin record Book2ReligiousTalosWorship (Skyrim.esm), markup removed."
+    },
+    {
+      "id": "document.the-amulet-of-kings",
+      "textRef": "text.book.the-amulet-of-kings",
+      "name": "The Amulet of Kings",
+      "kind": "book",
+      "status": "derived",
+      "item": "item.book-the-amulet-of-kings",
+      "sources": [
+        "Skyrim.esm:BOOK Book2ReligiousTheAmuletofKings"
+      ],
+      "leaves": [
+        "In the first years of the First Era, a powerful race of Elves called the Ayleids, or the Heartland High Elves, ruled central Tamriel with an iron hand. The high and haughty Ayleids relied on their patrons, the treacherous Daedra Lords, to provide armies of daedra and dead spirits; with these fearless magical armies, the Ayleids preyed without mercy upon the young races of men, slaughtering or enslaving them at their whim.\n\nOn behalf of the suffering human races, St. Alessia, the first in the line of Cyrodiils, sought the aid of Akatosh, the Dragon God of Time and ruler of the noble Aedra. Akatosh, looking with pity upon the plight of men, drew precious blood from his own heart and blessed St. Alessia with this blood of Dragons and made a Covenant that so long as Alessia's generations were true to the dragon blood, Akatosh would endeavor to seal tight the Gates of Oblivion and to deny the armies of daedra and undead to their enemies, the Daedra-loving Ayleids.\n\nIn token of this Covenant, Akatosh gave to Alessia and her descendants the Amulet of Kings and the Eternal Dragonfires of the Imperial City. Thus does Alessia become the first gem in the Cyrodilic Amulet of Kings. The gem is the Red Diamond in the middle of the Amulet. This is the Symbol of the Empire and later taken as the symbol of the Septim line. It is surrounded by eight other gems, one for each of the divines.",
+        "So long as the Empire shall maintain its worship of Akatosh and his kin, and so long as Alessia's heirs shall bear the Amulet of Kings, Akatosh and his divine kin maintain a strong barrier between Tamriel and Oblivion, so that mortal man need never again fear the devastating summoned hosts of the Daedra Lords.\n\nBut if the Empire should slacken in its dedication to the Nine Divines, or if the blood of Alessia's heirs should fail, then shall the barriers between Tamriel and the Daedric realms fall and Daedra-worshippers might summon lesser Daedra and undead spirits to trouble the races of men."
+      ],
+      "notes": "The words of the plugin record Book2ReligiousTheAmuletofKings (Skyrim.esm), markup removed."
+    },
+    {
+      "id": "document.catalogue-of-armor-enchantments",
+      "textRef": "text.book.catalogue-of-armor-enchantments",
+      "name": "Catalogue of Armor Enchantments",
+      "kind": "book",
+      "status": "derived",
+      "item": "item.book-catalogue-of-armor-enchantments",
+      "sources": [
+        "Skyrim.esm:BOOK SkillEnchanting5"
+      ],
+      "leaves": [
+        "Within this catalogue are all the known varieties of armor enchantments the modern mages can cast. No pretense is made that this list is complete. New discoveries are made and new enchantments are revealed often enough that this work will eventually become outdated. Those who follow may choose to revise this work as needed.\n\nThe most common enchantments for armor and other garb are those that improve health, magick or stamina. Fortifying the wearers health is popular with warriors. It actually makes the wearer harder to kill, binding his life force a bit tighter to his body. Fortifying magicka is more commonly seen in clothing because wizards tend to avoid bulky, restrictive armor. It allows the wizard to cast more spells before becoming magically exhausted. Fortifying stamina is a secondary choice for fighters. They tire less quickly, but do not survive their wounds any better.\n\nThere is a wide range of physical and mental attributes or skills that can be fortified by enchantments. There are as many of these as there are wizards with imagination. A few choice examples are archery, sneaking, conjuration and carrying strength. The focus is always quite narrow. There are even examples of gauntlets that are enchanted to improve the wearers ability to enchant things.",
+        "Another common form of armor enchantment are the resistances. The elemental resistances are marginally easier to find and make. The make the wearer less susceptible to burning, freezing and shocks. There are also poison resistances and enchantments that will resist all forms of magic.\n\nAn uncommon pair of enchantments are waterbreathing and muffle. The former allows the wearing to swim underwater indefinitely. The later totally silences the clinking and clanking of the armor so the wearer moves more quietly. It's been speculated that muffle is a wizard's lazy solution to a problem that could be solved with cloth and wrappings.\n\nThe rarest of enchantments increase the recovery rate of health, magicka or stamina. The wearer actually heals from his wounds while you watch, even if he is in the midst of a battle. Wizards normally recover their magical energy at a moderate pace. Wearing this armor makes that recovery much faster. The same is true for stamina recovery enchantments. The wearer tires just as quickly as always, but seems to get his wind back much faster."
+      ],
+      "notes": "The words of the plugin record SkillEnchanting5 (Skyrim.esm), markup removed."
+    },
+    {
+      "id": "document.the-madmen-of-the-reach",
+      "textRef": "text.book.the-madmen-of-the-reach",
+      "name": "The 'Madmen' of the Reach",
+      "kind": "book",
+      "status": "derived",
+      "item": "item.book-the-madmen-of-the-reach",
+      "sources": [
+        "Skyrim.esm:BOOK Book2CommonMadmenoftheReach"
+      ],
+      "leaves": [
+        "Since the legendary victory of Tiber Septim over the \"barbarian natives\" in the Battle of Old Hroldan, Imperial and Nord scholarship has cast the people of the Reach as little more than savages, prone to irrational fits of violence, worshipping old, heretical gods and fetishizing beasts and nature spirits that any civilized person would best well avoid. In truth, these accounts are little more than \"victor's essays,\" a perspective narrowed by the Empire's constant strife with the ancient, proud people that lived in this land far before Tiber Septim walked the soil of Tamriel. In light of this, I hope to create a more complete, accurate and fair assessment of a group that has long suffered under the role of \"enemy,\" \"troublemakers,\" and \"them.\"\n\nLet us begin with the Forsworn, the so-called \"madmen\" of the Reach. The Imperial Legion classifies them as little more than brigands, noting their constant raids and ambushes within the Hold. But none of their military reports asks the question of \"why?\" If they were merely a group of bandits, surely they would be focused on acquiring gold and minimizing deaths among their own. But the opposite is true in Forsworn attacks. Large sums of coin are often left behind and their fighters easily throw away their lives rather than risk capture by Imperial soldiers.",
+        "It is this incongruity that led me to Markarth, the capital city of the Reach, in search of answers. There, I met one of the native peoples, an old woman who preferred to not be named in my writings. She told me of her family's long history. How she believes they originally came from High Rock, home of the Bretons (which would explain the similar faces and stature of the two peoples). How the Nords came and took their lands, their gods and their culture from them. When asked about the Forsworn, the old woman would say that they are the \"real\" men and women of the Reach: those that refused to give in to the Nords. Those that still practiced the ancient traditions that the rest of their people had abandoned in exchange for peace.\n\nIn time, I was able to create trust with many more natives in my search that corroborated the old woman's story. By chance, one of them arranged a meeting between myself and what I thought was an elder member of his village. I was shocked to find that I was led to a camp, filled with the animal skulls, severed heads and still beating hearts that I had read about from the military reports back in the Imperial City. There, I met Cortoran, a Forsworn, who seemed amused at the prospect of me writing down his story. Which I quote in full below:",
+        "\"You want to know who the Forsworn are? We are the people who must pillage our own land. Burn our own ground. We are the scourge of the Nords. The axe that falls in the dark. The scream before the gods claim your soul. We are the true sons and daughters of the Reach. The spirits and hags have lived here from the beginning and they are on our side. Go back. Go back and tell your Empire that we will have our own kingdom again. And on that day, we will be the ones burying your dead in a land that is no longer yours.\""
+      ],
+      "notes": "The words of the plugin record Book2CommonMadmenoftheReach (Skyrim.esm), markup removed."
+    },
+    {
+      "id": "document.villagers-journal",
+      "textRef": "text.book.villagers-journal",
+      "name": "Villager's Journal",
+      "kind": "book",
+      "status": "derived",
+      "item": "item.book-villagers-journal",
+      "sources": [
+        "Here There Be Monsters - Curse of Cipactli.esp:BOOK CIPHTBMBookArgJournal1"
+      ],
+      "leaves": [
+        "4E 201, 20 Sun's Height\n\nWe're on our way at long last. Tee-Kahz insists that this place is a paradise, where we will never have to want again. No more the frigid, fruitless waters of the north. Best fishing in all of Tamriel. Lagoon-of-Many-Fishes, it is called. The place of his birth, a village called Shedet. All I know is I'm already sick of this damnable ship. It's going to be a long journey.\n\n4E 201, 1 Last Seed\n\nHome at last! We have found a place in the village; a small reed hut in the traditional Argonian manner. It's quite cozy, considering. By the gods it's hot here. I've only ever lived in Skyrim. The villagers insist I will adjust. \"Remember my roots,\" and all that. They're friendly enough, though not particularly joyful. They seem excited to have new faces here. None seems to remember Tee-Kahz's family. Or, rather, they do seem to remember, but . . . don't want to talk about it. It's strange, really.\n\n4E 201, 8 Last Seed\n\nTee-Kahz was right! The fishing here is incredible. The lagoon is teaming with fish. They never seem to run out! Even as the autumn moves in (what autumn there is this far south) the fish only seem to be getting thicker. Even the crops seems to be thriving. Swamp leaf like mad and even wheat! Real wheat, from Cyrodil! In the jungle! I must say, this might have been a good idea. It's good to see Tee-Kahz this alive again.\n\n4E 201, 17 Last Seed\n\nThe strangest thing happened this morning. Tee-Kahz awoke with a start, a strange look in his eyes. \"Dovahkiin.\" he muttered, like he was in a trance. He told me later it was the Hist, speaking to him. Speaking to us all. I have been too long away to hear it, they say, but the rest have heard it. Something is happening in this world. Something important. The villagers are visibly shaken today. They keep stealing glances at the old Imperial ruin up on the cliff. Even the weather seems dreary. I feel like there's a massive secret that everybody's in on except me. At least the fishing is still good.",
+        "4E 201, 25 Last Seed\n\nI asked one of the villagers about the ruins on the cliff and about the wall beside the village. He seemed friendly enough, but as soon as I asked he hissed viciously. \"Mustn't talk about it. You don't need to go in that jungle.\" I'm afraid to question the others. Tee-Kahz says it's some superstition about the ruins; just the way it's always been. He says that jungle is thick and miserable; we wouldn't want to go there anyway. Yet his eyes don't seems convinced.\n\n4E 201, 13 Hearthfire\n\nOur neighbors left today. Just got on a boat and left, without a word to anyone. Another family did the same a week ago. I don't understand, the fishing is better than ever! Tee-Kahz has been having trouble selling it all. We've never seen such bounty. Yet the villagers just seem to get more and more grim.\n\n4E 201, 1 Frostfall\n\nAnother family gone. Not a soul saw them leave. Says their hut was still locked from the inside. Where did they go?? The fish are out of control. They're just starting to rot in the barrels, more than we can possibly sell. We've started feeding them to the turtles in the swamps. The villagers call it an omen, say the Sunken God is awakening. They make signs with their hands and glare at the ruin on the cliff. Tee-Kahz is shaken, I can tell. The stink of fish is heavy in the air.\n\n4E 201, 18 Frostfall\n\nThe oarsman have stopped buying our fish. They say there's a taint to the meat, that these waters are cursed. Only a few came to trade this week. They've heard rumors of people disappearing. The captain claims he's seen Naga in the jungles. We've got more than enough saved to support ourselves, but it won't last forever. The villagers have begun whispering about the Legion.",
+        "4E 201, 2 Sun's Dusk\n\nWe awoke today with a symbol painted on the neighbors' door. Written in blood. A creature, a reptile, with a glaring green eye. \"The Sign of Cipactli,\" Tee-Kahz whispered. The neighbors are gone. The same was drawn on other doors. They were gone, too.\n\n4E 201, 12 Sun's Dusk\n\nThe stench of decay is everywhere. Dead fish litter the beaches and flood into the swamps, stinking and rotting. All manner of beast comes to feed on the carrion. The villagers don't bother taking the boats out any longer. I swear I've seen lights on the cliffs, in the ruins. Activity beyond the wall. The Kothringi have come picking through the swamps. They stick to the coast and haven't bothered us. Tee-Kahz says they're not the ones to fear. He says the Legion will take us.\n\n4E 201, 19 Sun's Dusk\n\nThey came in the night. I don't know who, but they came. Tore a family from their hut, kicking and screaming. They were Argonians. Soldiers. They wore shiny brass armor, Imperial-like but ancient looking. \"You will join the Legion, or feed Cipactli,\" they growled as they hauled away a mother and her three hatchlings. I think they took them through the gate, into the jungle. When they left they painted the dreaded Sign on her door.\n\n4E 201, 1 Evening Star\n\nTee-Kahz says we must join them. Whoever they are, they own this lagoon. They always have. He didn't believe it before, but he knows the stories. The Legion. The Sload. Cipactli. We don't belong here. We must join them, or Cipactli will consume us. We haven't gone outside in days. I have seen Naga near the huts, eying the village, hissing their savage calls back and force. I insist we contact the Kothringi; maybe they can help us. Tee-Kahz just laughs and laughs. I don't know who else is left in the village.",
+        "4E 201, 3 Evening Star\n\nWe awoke this morning with the Sign on our door. Tee-Kahz has run off into the jungle. I locked the gate behind him. He's gone mad. I'll take my chances with the Naga.\n\n4 Evening Star\n\nFish . . .everything reeks. Naga in the village. Screams. Death. Killed hatchwings. Didn't take the meat. Gods, I'm hungry. A storm is rolling closer. Splitting thunder. I can hear the Hist, now. It calls for Him. \"Awaken, awaken, awaken, awaken, awaken.\" They'll find me. Gods, the smell. Fish. Fish everywhere.\n\ndate?\n\nN'Gasta. Kvata. Kvakis. Kvak.\n\nN'Gasta, Kvata, Kvakis, Kvak. N'Gasta, Kvata, Kvakis, Kvak, N'Gasta, Kvata, Kvakis, Kvak, N'Gasta, Kvata, Kvakis, Kvak, N'Gasta, Kvata, Kvakis, Kvak, N'Gasta, Kvata, Kvakis, Kvak, N'Gasta, Kvata, Kvakis, Kvak, N'Gasta, Kvata, Kvakis, Kvak, N'Gasta, Kvata, Kvakis, Kvak, N'Gasta, Kvata, Kvakis, Kvak. Awaken. Awaken awaken awaken awaken awaken awaken awaken awaken awaken awaken awaken awaken awaken awaken awaken awaken awaken awaken awaken awaken awaken awaken RISE RISE RISE RISE RISE RISE RISE RISE RISE RISE RISE RISE RISE RISE RISE RISE RISE RISE RISE RISE RISE RISE RISE RISE RISE RISE RISE RISE RISE RISE RISE RISE RISE RISE RISE RISE"
+      ],
+      "notes": "The words of the plugin record CIPHTBMBookArgJournal1 (Here There Be Monsters - Curse of Cipactli.esp), markup removed."
+    },
+    {
+      "id": "document.an-xileel-horticulturists-note",
+      "textRef": "text.note.an-xileel-horticulturists-note",
+      "name": "An-Xileel Horticulturist's Note",
+      "kind": "note",
+      "status": "derived",
+      "item": "item.note-an-xileel-horticulturists-note",
+      "sources": [
+        "King of the Murkmire.esp:BOOK TOSAlchemistNote"
+      ],
+      "leaves": [
+        "The cutting we took from the Lilmoth Hist seems to have taken root nicely within the highest room atop our bastion. I admit, I did not expect it to flourish so, perhaps it is the ancient, pre-Duskfall Xanmeer ruins that it takes to like a fleshfly to an open wound, It has, seemingly out of nowhere, facilitated the growth of many new species that of flora that I had not thought present in the Kronka-thtith. Blooms, blossoms and ichors I have harvested and set about to experiment. I hope this Hist will continue to aid my research."
+      ],
+      "notes": "The words of the plugin record TOSAlchemistNote (King of the Murkmire.esp), markup removed."
+    },
+    {
+      "id": "document.adventurers-torn-note",
+      "textRef": "text.note.adventurers-torn-note",
+      "name": "Adventurer's Torn Note",
+      "kind": "note",
+      "status": "derived",
+      "item": "item.note-adventurers-torn-note",
+      "sources": [
+        "King of the Murkmire.esp:BOOK TOSAdventurerNote01"
+      ],
+      "leaves": [
+        "There's something at the end of this maze, I can feel it! It's like my Pa always said: \"The moment you stop searching is the moment you miss the big one.\" He may have been talking about how he almost didn't meet my mother but it sure is a quote to guide a life. I'll just rest here a moment before continuing, that gas almost knocked me out!"
+      ],
+      "notes": "The words of the plugin record TOSAdventurerNote01 (King of the Murkmire.esp), markup removed."
+    }
+  ]
+}

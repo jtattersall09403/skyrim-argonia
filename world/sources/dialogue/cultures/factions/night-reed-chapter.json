@@ -1,0 +1,194 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "_": "Faction and office sheets for The Night-Reed Chapter (lane 2.5a2). Ranks: the registry ladder (associate, member, senior); named offices beyond it are listed by their own rank slug.",
+ "entries": [
+  {
+   "id": "culture.faction.night-reed-chapter",
+   "level": "faction",
+   "name": "The Night-Reed Chapter",
+   "parent": "culture.province.black-marsh",
+   "factionId": "faction.night-reed-chapter",
+   "norms": [
+    {
+     "text": "Take from those who can bear it.",
+     "source": "inferred"
+    },
+    {
+     "text": "Mutual aid among members; silence to outsiders.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Blackmail as a trade.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "Skill and restraint.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Bosses who sell their own.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "place": {
+     "lean": 1,
+     "text": "Pusbottom and the canals.",
+     "source": "world/sources/lore/topics/guilds-and-orders.md"
+    },
+    "faction": {
+     "lean": -1,
+     "text": "The Wardens look away for a price.",
+     "source": "inferred"
+    },
+    "danger": {
+     "lean": 0,
+     "text": "Ripper eels; eel-slime keeps them off.",
+     "source": "world/sources/lore/topics/guilds-and-orders.md"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Reed; water-rat, to juniors.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "low",
+    "oaths": [
+     {
+      "text": "Dry feet.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "The fence's name.",
+      "source": "inferred"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "The League wants the flooded districts cleared.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "The Tidal Palace vault changes hands at the new moon.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.league-of-open-water",
+     "lean": -1,
+     "text": "They want our districts.",
+     "source": "inferred"
+    },
+    {
+     "node": "culture.faction.shadowscales",
+     "lean": -1,
+     "text": "Old knives.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.2
+  },
+  {
+   "id": "culture.office.night-reed-chapter.senior",
+   "level": "office",
+   "name": "Night-Reed",
+   "parent": "culture.faction.night-reed-chapter",
+   "factionId": "faction.night-reed-chapter",
+   "rank": "senior",
+   "norms": [
+    {
+     "text": "Gives a job as a weather report.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Names in the open.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "Clean work.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Show-offs.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "trade": {
+     "lean": 1,
+     "text": "Fences pay.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Reed.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "low",
+    "oaths": [
+     {
+      "text": "Dry feet.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "The vault.",
+      "source": "inferred"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Too many eyes.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "The palace guard changed.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.night-reed-chapter",
+     "lean": 2,
+     "text": "Theirs.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.1
+  }
+ ]
+}

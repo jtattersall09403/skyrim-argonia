@@ -1,0 +1,1381 @@
+{
+  "schemaVersion": 2,
+  "packet": "local-saxhleel-coast",
+  "seed": "quests-local-saxhleel-coast-v1",
+  "quests": [
+    {
+      "id": "quest.local.sx01",
+      "code": "SX01",
+      "title": "The Plate Seal",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "THEFT",
+        "FRAUD"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon",
+        "place.saxhleel-coast.archon-bonded-row"
+      ],
+      "premise": "A harbour clerk wants a two-century Company seal broken. The break must read as decay.",
+      "costTier": "M",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    },
+    {
+      "id": "quest.local.sx02",
+      "code": "SX02",
+      "title": "One Cargo, Three Manifests",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "FRAUD",
+        "NEGOTIATION"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon",
+        "place.saxhleel-coast.quay-tradehouse"
+      ],
+      "premise": "One cargo is declared as three different things. The declarations use the three languages of the customs desk.",
+      "costTier": "S",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    },
+    {
+      "id": "quest.local.sx03",
+      "code": "SX03",
+      "title": "Lands It After Dark",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "SMUGGLING",
+        "DISPUTE"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon",
+        "place.saxhleel-coast.oliis-coast-lay-by"
+      ],
+      "premise": "Half-chartered hulls are landing on the Oliis shore. The Archon factors buying from them are content. The customs desk has to report the landings.",
+      "costTier": "M",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    },
+    {
+      "id": "quest.local.sx04",
+      "code": "SX04",
+      "title": "The Wrong Light",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "SMUGGLING",
+        "RECKONING"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon",
+        "place.saxhleel-coast.padomaic-wrecker-beach"
+      ],
+      "premise": "A buyer on the wrecker beach is purchasing lamp oil. The quantities exceed what any household needs.",
+      "costTier": "M",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    },
+    {
+      "id": "quest.local.sx05",
+      "code": "SX05",
+      "title": "Lot Four",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "MURDER",
+        "THEFT"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon",
+        "place.saxhleel-coast.pearl-lots"
+      ],
+      "premise": "A diver came up dead on a lot. She had no right to work that lot.",
+      "costTier": "M",
+      "milestone": 2,
+      "touches": [
+        {
+          "id": "npc.saxhleel-coast.pearl-lots.n1-4",
+          "access": "read"
+        },
+        {
+          "id": "npc.saxhleel-coast.pearl-lots.n2",
+          "access": "read"
+        },
+        {
+          "id": "place.saxhleel-coast.archon",
+          "access": "read"
+        },
+        {
+          "id": "place.saxhleel-coast.pearl-lots",
+          "access": "read"
+        }
+      ],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ],
+      "stages": [
+        {
+          "id": 10,
+          "place": "place.saxhleel-coast.pearl-lots",
+          "journal": "text.journal.sx05.10",
+          "onEnter": [],
+          "objectives": [
+            {
+              "id": "ask-ohl-jei",
+              "text": "text.objective.sx05.ask-ohl-jei",
+              "completeWhen": {
+                "topicHeardFrom": [
+                  "topic.lot-four",
+                  "npc.saxhleel-coast.pearl-lots.n1-4"
+                ]
+              }
+            }
+          ],
+          "successors": [
+            {
+              "to": 20,
+              "when": {
+                "topicHeardFrom": [
+                  "topic.lot-four",
+                  "npc.saxhleel-coast.pearl-lots.n1-4"
+                ]
+              }
+            }
+          ],
+          "failForward": [
+            {
+              "to": 90,
+              "when": {
+                "any": [
+                  {
+                    "not": {
+                      "npcAlive": "npc.saxhleel-coast.pearl-lots.n2"
+                    }
+                  },
+                  {
+                    "not": {
+                      "npcAlive": "npc.saxhleel-coast.pearl-lots.n1-4"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 20,
+          "place": "place.saxhleel-coast.archon",
+          "journal": "text.journal.sx05.20",
+          "onEnter": [],
+          "objectives": [],
+          "successors": [],
+          "outside": {
+            "packet": "4.2.saxhleel-coast"
+          }
+        },
+        {
+          "id": 90,
+          "place": "place.saxhleel-coast.pearl-lots",
+          "journal": "text.journal.sx05.90",
+          "onEnter": [],
+          "objectives": [],
+          "successors": [],
+          "ending": "failed"
+        }
+      ],
+      "essentialTopics": [
+        "topic.lot-four"
+      ]
+    },
+    {
+      "id": "quest.local.sx06",
+      "code": "SX06",
+      "title": "The Unwritten Lot",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "SUCCESSION",
+        "DISPUTE"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon",
+        "place.saxhleel-coast.pearl-lots"
+      ],
+      "premise": "A pearl lot has outlived its last heir. Four families are diving the lot to establish a claim.",
+      "costTier": "M",
+      "milestone": 2,
+      "touches": [
+        {
+          "id": "npc.saxhleel-coast.pearl-lots.n2",
+          "access": "read"
+        },
+        {
+          "id": "place.saxhleel-coast.archon",
+          "access": "read"
+        },
+        {
+          "id": "place.saxhleel-coast.pearl-lots",
+          "access": "read"
+        }
+      ],
+      "essentialTopics": [
+        "topic.unwritten-lot"
+      ],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ],
+      "stages": [
+        {
+          "id": 10,
+          "place": "place.saxhleel-coast.pearl-lots",
+          "journal": "text.journal.sx06.10",
+          "onEnter": [],
+          "objectives": [
+            {
+              "id": "take-pearl",
+              "text": "text.objective.sx06.take-pearl",
+              "completeWhen": {
+                "hasItem": [
+                  "item.deep-lot-pearl",
+                  1
+                ]
+              },
+              "where": {
+                "ref": "socket.pearl-lots.cache-deep-lot"
+              }
+            }
+          ],
+          "successors": [
+            {
+              "to": 20,
+              "when": {
+                "hasItem": [
+                  "item.deep-lot-pearl",
+                  1
+                ]
+              }
+            }
+          ],
+          "failForward": [
+            {
+              "to": 90,
+              "when": {
+                "not": {
+                  "npcAlive": "npc.saxhleel-coast.pearl-lots.n2"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 20,
+          "place": "place.saxhleel-coast.pearl-lots",
+          "journal": "text.journal.sx06.20",
+          "onEnter": [
+            {
+              "grantTopic": "topic.deep-lot-pearl"
+            }
+          ],
+          "objectives": [
+            {
+              "id": "show-tender",
+              "text": "text.objective.sx06.show-tender",
+              "completeWhen": {
+                "all": [
+                  {
+                    "hasItem": [
+                      "item.deep-lot-pearl",
+                      1
+                    ]
+                  },
+                  {
+                    "topicHeardFrom": [
+                      "topic.deep-lot-pearl",
+                      "npc.saxhleel-coast.pearl-lots.n2"
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "successors": [
+            {
+              "to": 30,
+              "when": {
+                "all": [
+                  {
+                    "hasItem": [
+                      "item.deep-lot-pearl",
+                      1
+                    ]
+                  },
+                  {
+                    "topicHeardFrom": [
+                      "topic.deep-lot-pearl",
+                      "npc.saxhleel-coast.pearl-lots.n2"
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "failForward": [
+            {
+              "to": 90,
+              "when": {
+                "not": {
+                  "npcAlive": "npc.saxhleel-coast.pearl-lots.n2"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 30,
+          "place": "place.saxhleel-coast.archon",
+          "journal": "text.journal.sx06.30",
+          "onEnter": [
+            {
+              "takeItem": [
+                "item.deep-lot-pearl",
+                1
+              ]
+            }
+          ],
+          "objectives": [],
+          "successors": [],
+          "outside": {
+            "packet": "4.2.saxhleel-coast"
+          }
+        },
+        {
+          "id": 90,
+          "place": "place.saxhleel-coast.pearl-lots",
+          "journal": "text.journal.sx06.90",
+          "onEnter": [],
+          "objectives": [],
+          "successors": [],
+          "ending": "failed"
+        }
+      ]
+    },
+    {
+      "id": "quest.local.sx07",
+      "code": "SX07",
+      "title": "Wallow Season",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "PREDATOR",
+        "EXPEDITION"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon",
+        "place.saxhleel-coast.shell-beast-shallows"
+      ],
+      "premise": "A haj mota has taken to the boat channel. The fishing crews want it moved. They do not want it killed.",
+      "costTier": "M",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    },
+    {
+      "id": "quest.local.sx08",
+      "code": "SX08",
+      "title": "Takes The Tools",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "PREDATOR"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon",
+        "place.saxhleel-coast.jungle-root-hollow",
+        "place.saxhleel-coast.owing-hiring-camp"
+      ],
+      "premise": "The hiring camp cannot forage west. Something in a root hollow has been taking foragers.",
+      "costTier": "M",
+      "milestone": 2,
+      "touches": [
+        {
+          "id": "place.saxhleel-coast.jungle-root-hollow",
+          "access": "read"
+        },
+        {
+          "id": "place.saxhleel-coast.owing-hiring-camp",
+          "access": "read"
+        }
+      ],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ],
+      "start": 10,
+      "startWhen": {
+        "discovered": "socket.jungle-root-hollow.the-tools"
+      },
+      "essentialTopics": [],
+      "stages": [
+        {
+          "id": 10,
+          "place": "place.saxhleel-coast.jungle-root-hollow",
+          "journal": "text.journal.sx08.10",
+          "onEnter": [],
+          "objectives": [
+            {
+              "id": "clear-hollow",
+              "text": "text.objective.sx08.clear-hollow",
+              "completeWhen": {
+                "placeCleared": "place.saxhleel-coast.jungle-root-hollow"
+              }
+            }
+          ],
+          "successors": [
+            {
+              "to": 20,
+              "when": {
+                "placeCleared": "place.saxhleel-coast.jungle-root-hollow"
+              }
+            }
+          ],
+          "entry": "clear"
+        },
+        {
+          "id": 20,
+          "place": "place.saxhleel-coast.owing-hiring-camp",
+          "journal": "text.journal.sx08.20",
+          "onEnter": [],
+          "objectives": [],
+          "successors": [],
+          "outside": {
+            "packet": "4.2.saxhleel-coast"
+          }
+        }
+      ]
+    },
+    {
+      "id": "quest.local.sx09",
+      "code": "SX09",
+      "title": "The Hiring List",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "BONDAGE",
+        "NEGOTIATION"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon",
+        "place.saxhleel-coast.owing-hiring-camp"
+      ],
+      "premise": "Who works is set by the broker's hiring list. A clerk can rewrite the list between two hiring days.",
+      "costTier": "S",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    },
+    {
+      "id": "quest.local.sx10",
+      "code": "SX10",
+      "title": "Something In The Water",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "CONTAMINATION",
+        "FRAUD"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon",
+        "place.saxhleel-coast.archon-glowgill-byre"
+      ],
+      "premise": "Sickness has taken hold in the lower town. The people of the lower town blame the underwater byre. The drovers say the fouling comes from upstream.",
+      "costTier": "M",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    },
+    {
+      "id": "quest.local.sx11",
+      "code": "SX11",
+      "title": "Cordon Three Hundred",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "DISPUTE"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.quarantine-village-lagoon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon",
+        "place.saxhleel-coast.quarantine-village-lagoon"
+      ],
+      "premise": "The villagers want a release order. The order was never written. The office that would issue it no longer exists.",
+      "costTier": "M",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    },
+    {
+      "id": "quest.local.sx12",
+      "code": "SX12",
+      "title": "Under The Tide Streets",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "HAUNTING",
+        "MISSING"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon",
+        "place.saxhleel-coast.tide-street-village"
+      ],
+      "premise": "Salvage divers hear a voice calling in the deep streets. The voice calls at slack water.",
+      "costTier": "M",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    },
+    {
+      "id": "quest.local.sx13",
+      "code": "SX13",
+      "title": "The Burnt Streets Are Occupied",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "HAUNTING"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon",
+        "place.saxhleel-coast.archon-sacked-quarter"
+      ],
+      "premise": "Lamps move in a quarter that burnt two centuries ago. Three squatting households want the ward roll to stay wrong.",
+      "costTier": "S",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    },
+    {
+      "id": "quest.local.sx14",
+      "code": "SX14",
+      "title": "Four-Eight",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "HAUNTING",
+        "RECKONING"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon",
+        "place.saxhleel-coast.umbriel-shore-memorial"
+      ],
+      "premise": "The count on the shore memorial is wrong by two. The dead have made the error known.",
+      "costTier": "M",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    },
+    {
+      "id": "quest.local.sx15",
+      "code": "SX15",
+      "title": "Breathing Stock",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "WONDER"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon",
+        "place.saxhleel-coast.archon-glowgill-byre"
+      ],
+      "premise": "A drover will show an outsider a farmyard. The farmyard lies entirely below the waterline. The drover charges a price.",
+      "costTier": "S",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    },
+    {
+      "id": "quest.local.sx16",
+      "code": "SX16",
+      "title": "One Chest",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "WONDER"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon",
+        "place.saxhleel-coast.mangrove-air-pocket"
+      ],
+      "premise": "A grotto holds a pocket of breathable air. A resident has furnished the pocket.",
+      "costTier": "S",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    },
+    {
+      "id": "quest.local.sx17",
+      "code": "SX17",
+      "title": "Seven Terrace",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "WONDER",
+        "EXPEDITION"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon",
+        "place.saxhleel-coast.sealed-xanmeer-wall"
+      ],
+      "premise": "A xanmeer wall with no door has seven terraces of handholds. A climber who wanted the roof cut the handholds.",
+      "costTier": "M",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    },
+    {
+      "id": "quest.local.sx18",
+      "code": "SX18",
+      "title": "The Build Register",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "MISSING"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon",
+        "place.saxhleel-coast.archon-bonded-row"
+      ],
+      "premise": "A hull left the stocks eleven years ago. The hull reached nowhere. The registers still list the hull as afloat.",
+      "costTier": "S",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    },
+    {
+      "id": "quest.local.sx19",
+      "code": "SX19",
+      "title": "Sink Tag",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "MISSING"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon",
+        "place.saxhleel-coast.archon-harbour-hist"
+      ],
+      "premise": "A child did not surface after a diving game. The people of the whole harbour play that game.",
+      "costTier": "S",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    },
+    {
+      "id": "quest.local.sx20",
+      "code": "SX20",
+      "title": "Bonded And Gone",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "MISSING",
+        "SMUGGLING"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon",
+        "place.saxhleel-coast.archon-bonded-row"
+      ],
+      "premise": "A sealed bond section is lighter than its manifest says it should be.",
+      "costTier": "M",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    },
+    {
+      "id": "quest.local.sx21",
+      "code": "SX21",
+      "title": "Iron Store",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "THEFT"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon",
+        "place.saxhleel-coast.archon-bonded-row"
+      ],
+      "premise": "Imported fastenings are being taken out of the bonded store. The loss halts the building of hulls.",
+      "costTier": "S",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    },
+    {
+      "id": "quest.local.sx22",
+      "code": "SX22",
+      "title": "The Tally Book",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "THEFT",
+        "FRAUD"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon"
+      ],
+      "premise": "A harbour clerk's client needs a page removed from the harbour authority's tally book. The client needs it done before the quarter closes.",
+      "costTier": "S",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    },
+    {
+      "id": "quest.local.sx23",
+      "code": "SX23",
+      "title": "Drowned Standing Up",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "MURDER",
+        "RECKONING"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon"
+      ],
+      "premise": "A customs enforcer was found drowned. The water was shallow enough for standing.",
+      "costTier": "M",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    },
+    {
+      "id": "quest.local.sx24",
+      "code": "SX24",
+      "title": "The Deep Berth",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "DISPUTE"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon"
+      ],
+      "premise": "Two crews hold paper for the same mooring column. Both papers are genuine.",
+      "costTier": "S",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    },
+    {
+      "id": "quest.local.sx25",
+      "code": "SX25",
+      "title": "Best Ground In Archon",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "DISPUTE",
+        "NEGOTIATION"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon",
+        "place.saxhleel-coast.archon-sacked-quarter"
+      ],
+      "premise": "The harbour authority wants to build on the burnt quarter. The authority does not want to be seen wanting it.",
+      "costTier": "M",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    },
+    {
+      "id": "quest.local.sx26",
+      "code": "SX26",
+      "title": "A Writ From Nowhere",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "FRAUD"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon",
+        "place.saxhleel-coast.quay-tradehouse"
+      ],
+      "premise": "An Imperial writ is circulating in the port. An office that closed 200 years ago signed the writ.",
+      "costTier": "M",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    },
+    {
+      "id": "quest.local.sx27",
+      "code": "SX27",
+      "title": "Signed In A Language",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "FRAUD",
+        "BONDAGE"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon",
+        "place.saxhleel-coast.owing-hiring-camp"
+      ],
+      "premise": "People signed indenture papers. The signers could not read the language of the text.",
+      "costTier": "M",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    },
+    {
+      "id": "quest.local.sx28",
+      "code": "SX28",
+      "title": "Nothing Planted",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "RITE"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.coast-hist-less-refuge",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon",
+        "place.saxhleel-coast.coast-hist-less-refuge"
+      ],
+      "premise": "A Hist-less household wants a naming rite. The rite will have no tree as witness.",
+      "costTier": "S",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    },
+    {
+      "id": "quest.local.sx29",
+      "code": "SX29",
+      "title": "Reaches The Low Branch",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "RITE",
+        "WONDER"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon",
+        "place.saxhleel-coast.archon-harbour-hist"
+      ],
+      "premise": "The harbour Hist has put out a branch low enough for children to reach. The elders read the branch as a demand.",
+      "costTier": "M",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    },
+    {
+      "id": "quest.local.sx30",
+      "code": "SX30",
+      "title": "Letter Of Marque",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "RECKONING"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon"
+      ],
+      "premise": "A privateer's commission has surfaced. General Lucinia Falco signed the commission. The holder wants it honoured.",
+      "costTier": "M",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    },
+    {
+      "id": "quest.local.sx31",
+      "code": "SX31",
+      "title": "Passage Price",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "NEGOTIATION"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon",
+        "place.saxhleel-coast.east-estuary-rootworm-station"
+      ],
+      "premise": "The rootworm station has doubled its fare. The coast's travellers need an envoy to argue with the waykeepers.",
+      "costTier": "S",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    },
+    {
+      "id": "quest.local.sx32",
+      "code": "SX32",
+      "title": "The Rope",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "NEGOTIATION",
+        "DISPUTE"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.portdun-mont",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon",
+        "place.saxhleel-coast.portdun-mont"
+      ],
+      "premise": "Everything reaches Portdun Mont by one rope. The household that owns the rope has stopped hauling.",
+      "costTier": "S",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    },
+    {
+      "id": "quest.local.sx33",
+      "code": "SX33",
+      "title": "Nine Fathom",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "EXPEDITION",
+        "PREDATOR"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon",
+        "place.saxhleel-coast.deep-bank"
+      ],
+      "premise": "A boat crew will pay for a diver. The diver must work their bank at the depth that killed the last diver.",
+      "costTier": "M",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    },
+    {
+      "id": "quest.local.sx34",
+      "code": "SX34",
+      "title": "The Ashen Towers",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "EXPEDITION"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon",
+        "place.saxhleel-coast.cantemir-headland"
+      ],
+      "premise": "A Dunmer household in Archon wants proof. The proof must show that the towers on the spur are Cantemiric work.",
+      "costTier": "L",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    },
+    {
+      "id": "quest.local.sx35",
+      "code": "SX35",
+      "title": "Master of Works",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "SUCCESSION"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon",
+        "place.saxhleel-coast.archon-bonded-row"
+      ],
+      "premise": "The company's master of works is dying. Three shipwrights can lay a keel. The build register will decide which of them succeeds him.",
+      "costTier": "M",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    },
+    {
+      "id": "quest.local.sx36",
+      "code": "SX36",
+      "title": "The Dusk Island Take",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "CONTAMINATION",
+        "PREDATOR"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon",
+        "place.saxhleel-coast.dusk-bird-colony"
+      ],
+      "premise": "Eggs from the colony are reaching the market rotten. The eggers have given no account of their last visit.",
+      "costTier": "S",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    },
+    {
+      "id": "quest.local.sx37",
+      "code": "SX37",
+      "title": "Held Aboard",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "BONDAGE",
+        "THEFT"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon"
+      ],
+      "premise": "A crew is being kept aboard. The crew is held against a debt that their captain incurred without them.",
+      "costTier": "S",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    },
+    {
+      "id": "quest.local.sx38",
+      "code": "SX38",
+      "title": "The Two-Hour Flat",
+      "line": "quest.line.local",
+      "group": "local",
+      "tier": 3,
+      "status": "skeleton",
+      "shapes": [
+        "SMUGGLING",
+        "MISSING"
+      ],
+      "region": "saxhleel-coast",
+      "settlement": "place.saxhleel-coast.archon",
+      "anchorPlaces": [
+        "place.saxhleel-coast.archon",
+        "place.saxhleel-coast.tide-run-delta"
+      ],
+      "premise": "Guides walk people across the delta flat. They start with two hours of tide in hand.",
+      "costTier": "M",
+      "milestone": 2,
+      "touches": [],
+      "sources": [
+        "docs/quests/index/coverage.md",
+        "docs/quests/25-quest-place-map.md",
+        "world/sources/catalogue/places-saxhleel-coast.json",
+        "world/sources/lore/archon.md"
+      ]
+    }
+  ]
+}

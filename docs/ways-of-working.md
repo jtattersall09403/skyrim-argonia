@@ -8,12 +8,15 @@ How the planner and its agents build Argonia. Inherited from elder-souls-argonia
 - **The owner** decides the vision, rules on hard-to-reverse calls (the open calls in
   [decisions/README.md](decisions/README.md)), plays packets, and reports what feels wrong. The owner never
   checks anything an agent can measure.
-- **The planner** (the main Claude Code session, Opus) plans, briefs, judges results and talks to the owner.
-  It reads plans, decisions and reports, not code dumps or images; it delegates looking-around to `find`, long
-  jobs to `run`, judgement of images and prose to `reader`.
+- **The planner** (the main Claude Code session, on whatever model the owner starts it with) plans, briefs,
+  judges results and talks to the owner. It builds directly when delegation would cost more than the work
+  (tooling, docs, a bounded fix) and delegates volume and parallel lanes: looking-around to `find`, long jobs to
+  `run`, judgement of images and prose to `reader`, builds to `deliver` and `deliver-small`. It reads reports,
+  never image dumps.
 - **Agents** (in `.claude/agents/`, model and effort set only in their frontmatter): `deliver` (Opus, builds a
   packet from a brief), `deliver-small` (Sonnet, a bounded change with a quick acceptance), `world-builder`
-  (from 2.W5), `find`, `run`, `check` (Haiku), `research`, `reader` (Sonnet), the dialogue agents (Sonnet).
+  (from 2.W5), `find`, `run`, `check` (Haiku), `research`, `reader` (Sonnet), the writing agents
+  `dialogue-writer` (Sonnet), `quest-reviewer` (Opus), `corpus-find` (Haiku).
 
 ## 2. Briefs
 
@@ -86,9 +89,18 @@ addresses and no Lambda or console links; those reach the owner privately (a sec
 `--public`, referred to in the issue only by its title, which the owner finds in their own gist list; or the
 owner's AWS console). Costs may be summarised.
 
-## 6. Cost controls (old 0079, 0083, 0118)
+## 6. Cost controls (old 0079, 0083, 0118; decision 0027 §9)
 
-- Cheapest model that does the job; the planner on Opus; looking around on Haiku; prose and dialogue on Sonnet.
+- **rtk in front of every shell command.** The `rtk hook claude` PreToolUse hook in `.claude/settings.json`
+  rewrites Bash calls so git, test, grep and listing output reaches the model trimmed (rtk 1.1.0, pinned in
+  `tooling/toolchain/toolchain.lock`; Apache-2.0 CLI). `rtk gain` shows what it saved.
+- **What is deliberately not here** (the old project's 18,000 lines of process tooling were most of its bill):
+  no review gate (a lane past 1,500 changed lines runs `/code-review` once, by hand), no lane watchers, keepalives
+  or memory watchdogs, no scheduled check-ins, no `Workflow` fan-outs by default, no reader panels (one `reader`
+  per question; a second only when the first disagrees with the builder), no per-hunk commit tooling (one
+  builder per path). Each returns only after an incident it would have prevented, with its test (0011 §2).
+- Cheapest model that does the job; looking around on Haiku; prose and dialogue on Sonnet; the planner's model
+  is the owner's choice at session start.
 - Keep output out of long-lived contexts: reports to disk, short returns, `find` for trawls, `run` for long
   jobs' verdicts.
 - No `sleep`, no polling loops (the shell guard refuses them); long jobs run under `job_guard.sh` in the

@@ -1,0 +1,104 @@
+{
+ "schemaVersion": 1,
+ "domain": "hazard",
+ "tickSeconds": 1,
+ "tickDerivation": "Morrowind applies a lasting magic effect once per game second (OpenMW MagicEffects tick); a standing or burning volume re-casts on an actor inside once per second, never faster.",
+ "entries": [
+  {
+   "id": "hazard.burning-peat",
+   "name": "Burning peat",
+   "trigger": "strike-ground",
+   "strikeEffects": ["fire-damage"],
+   "landCover": ["peat", "peat_slope"],
+   "cast": { "from": "strike" },
+   "radius": { "rule": "strike-area", "minM": 1.2192 },
+   "lifetimeSeconds": 7.0,
+   "derivation": "Skyrim.esm HAZD FireSpellHazard (the ground fire a fire spell leaves): radius 4 ft (Skyrim's hazard and spell areas are in feet; 4 x 0.3048 = 1.2192 m) and lifetime 7.0 s. A wider fire strike lights its own area: radius = max(strike area, 1.2192 m). The burning ground casts the lighting strike's effect and magnitude, once per tick.",
+   "places": [
+    "place.hist-heartland.greenspring",
+    "place.imperial-fringe.bog-iron-workings",
+    "place.route.archon-gideon-mere-neck",
+    "place.pirate-freeholds.upriver-hist-village",
+    "place.route.border-road-greenspring-crossings",
+    "place.imperial-fringe.the-broke-column",
+    "place.pirate-freeholds.opening-work-camp",
+    "place.naga-kur-deeps.naga-highway-camp-active-north",
+    "place.dunmer-north.the-wamasu-shrine",
+    "place.dunmer-north.riverwalk",
+    "place.imperial-fringe.claywater-station"
+   ],
+   "anchors": [],
+   "visual": { "kind": "fire-preset", "ref": "campfire", "source": "packages/game-core/src/fx/fire/fireTypes.ts campfire (Skyrim fire sprites)" },
+   "why": "Peat is dried bog turf that burns where struck by fire; the slice places listed stand on the peat land cover (ground-control raster ids 9 and 28)."
+  },
+  {
+   "id": "hazard.shock-water",
+   "name": "Shocked water",
+   "trigger": "strike-water",
+   "strikeEffects": ["shock-damage"],
+   "landCover": [],
+   "cast": { "from": "strike" },
+   "radius": { "rule": "strike-area", "minM": 0.3048 },
+   "lifetimeSeconds": 0,
+   "derivation": "The shock spreads through the struck body of water over the attack's own area (a spell's areaMetres; an arrow's from Morrowind's enchant area rule), never less than Morrowind's 1 ft area unit (0.3048 m; OpenMW's cost formula takes max(1, area)). Every actor standing in the same water body inside it takes the attack's effect and magnitude once.",
+   "places": ["place.dunmer-north.the-wamasu-shrine"],
+   "anchors": [{ "creature": "creature.wamasu", "record": "creature-at.dunmer-north.the-wamasu-shrine.n1" }],
+   "visual": { "kind": "magic-family", "ref": "areaRing", "source": "packages/magic/src/fx/families.json areaRing (Skyrim fxenergyimpacring.dds) in the shock colour" },
+   "why": "Lore topics/fauna-hazards.md: the wamasu is lightning-powered and electrifies the water around it, 'cursing all the water to deadly convulsions'."
+  },
+  {
+   "id": "hazard.fleshfly-swarm",
+   "name": "Fleshfly swarm",
+   "trigger": "standing",
+   "strikeEffects": [],
+   "landCover": [],
+   "cast": { "spellId": "hand-of-decay" },
+   "radius": { "rule": "fixed", "metres": 1.1087 },
+   "lifetimeSeconds": 0,
+   "derivation": "Spell: hand-of-decay (drain-health touch 1, the Morrowind spell of flesh wasting away) because lore topics/fauna-hazards.md says fleshflies 'eat flesh'; the 1 point per tick matches sand-grain insects. Radius: Skyrim.esm meshes/actors/spriggan/fxsprigganswarm.nif is a particle swarm whose NiParticleSystem emitters (SwarmMagicPArray05-Emitter at 38.143, 62.550, -16.845 and SwarmTrailPArray05-Emitter at -2.426, 63.587, -44.280 Skyrim units, children of the root at the origin) bound the cloud; the farthest, the trail emitter, lies sqrt(2.426^2 + 63.587^2 + 44.280^2) = 77.6 units from the root. At 1 unit = 0.0142875 m (69.99 units per metre) that is 1.1087 m. The NIF is a particle system (its only mesh is the hidden Sphere05 emitter, radius 10.46 x 1.0823 = 11.3 units), so no glb exists to convert and it is drawn as a particle effect from the NIF.",
+   "places": ["place.dunmer-north.the-wamasu-shrine", "place.route.archon-gideon-mere-neck"],
+   "anchors": [
+    { "socket": "socket.the-wamasu-shrine.den-fleshfly" },
+    { "socket": "socket.archon-gideon-mere-neck.den-fleshfly" }
+   ],
+   "visual": { "kind": "mesh", "ref": "meshes/actors/spriggan/fxsprigganswarm.nif", "source": "Skyrim.esm vault Skyrim - Meshes.bsa meshes/actors/spriggan/fxsprigganswarm.nif (particle swarm; textures FXLeafBug, FXGlowSpotLinearAlpha); not convertible to a glb" },
+   "why": "The den sockets name carrion over stagnant water where fleshflies gather."
+  },
+  {
+   "id": "hazard.voriplasm-pool",
+   "name": "Voriplasm pool",
+   "trigger": "standing",
+   "strikeEffects": [],
+   "landCover": [],
+   "cast": { "spellId": "dread-curse-health" },
+   "radius": { "rule": "fixed", "metres": 1.0 },
+   "lifetimeSeconds": 0,
+   "derivation": "Spell: dread-curse-health (damage-health touch 5) because lore topics/fauna-hazards.md says the voriplasm 'will strip you to the bone by the second syllable', a body dissolved at once, not poisoned. Radius: the shipped voriplasm.glb (voriplasm.set.json) is sizeMeters 2.0 at its longest axis (restSize 20.5074 x 0.09753 = 2.0 m; width 14.2102 x 0.09753 = 1.386 m); the pool reaches half its longest extent, 2.0 / 2 = 1.0 m from its centre.",
+   "places": ["place.imperial-penal-south.voriplasm-vault", "place.mercantile-coast.teeth-of-sithis"],
+   "anchors": [
+    { "creature": "creature.voriplasm", "record": "creature-at.imperial-penal-south.voriplasm-vault.c1" },
+    { "creature": "creature.voriplasm", "record": "creature-at.mercantile-coast.teeth-of-sithis.c1" }
+   ],
+   "visual": { "kind": "mesh", "ref": "packages/character-assets/files/creatures/voriplasm.glb", "source": "Keepers of the Mire voriplasm (credited)" },
+   "why": "The voriplasm's acidic body pools where it lies."
+  },
+  {
+   "id": "hazard.dragons-tongue-touch",
+   "name": "Dragon's tongue",
+   "trigger": "standing",
+   "strikeEffects": [],
+   "landCover": [],
+   "cast": { "spellId": "poisonous-touch" },
+   "radius": { "rule": "fixed", "metres": 0.1055 },
+   "lifetimeSeconds": 0,
+   "derivation": "Spell: poisonous-touch (poison touch 15) because loading-facts text.loading.fact.dragons-tongue says the herb is 'lethal to the touch'. Radius: Skyrim.esm meshes/plants/dragonstongue01.nif (the INGR the sockets place, shipped as clutter/dragons-tongue.glb) measures 0.156 x 0.142 m (registry-vanilla sizeM) at scale 1.0 (the fill sockets carry no scale); the circle enclosing that footprint has radius sqrt(0.156^2 + 0.142^2) / 2 = 0.1055 m, the touch reach.",
+   "places": ["place.mercantile-coast.teeth-of-sithis"],
+   "anchors": [
+    { "socket": "socket.TeethofSithisInt02.084B5BAE" },
+    { "socket": "socket.TeethofSithisInt02.084B5BAF" }
+   ],
+   "visual": { "kind": "mesh", "ref": "packages/character-assets/files/clutter/dragons-tongue.glb", "source": "Skyrim DragonsTongue01" },
+   "why": "loading-facts.md: dragon's tongue is a fern-like herb lethal to the touch."
+  }
+ ]
+}

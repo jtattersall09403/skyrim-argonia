@@ -1,0 +1,308 @@
+{
+ "id": "boat-sea-wind",
+ "start": {
+  "query": "?view=character&x=3866&z=6330&t=10:00&d=8-17",
+  "kit": "start",
+  "grant": [
+   {
+    "item": "gold",
+    "count": 2400
+   }
+  ],
+  "known": [
+   "call-the-wind"
+  ]
+ },
+ "notes": "The Lighter Flotilla by day. The lighterman Xal-Jei sells his longboat, the one sea hull on this water (boat.lighter-flotilla.longboat, 2400 gold, at socket.lighter-flotilla.sea-hull-mooring 3865.9, 6364.77). The player buys it on the shore south of the quay (the pier deck is a solid the landing steps off), saves and loads, readies Call the Wind (a known power), casts it and picks a wind, boards, casts off and sails first across the wind (abeam), then with it astern: the ground speed astern is higher than abeam.",
+ "steps": [
+  {
+   "lead": true,
+   "name": "buy-the-longboat",
+   "transition": "W along the quay deck to the lighterman (the shore at the quay's foot (3846, 6350; the studio landing steps off every deck footprint, so no teleport lands beside him), then the quay deck east on the humanoid nav path (NavService.findPath: z 6358 to 3902.7, 6357.4, then south to his north side at 3904.6, 6354.0), the camera aimed at him so the aim ray, not the nearest crewman, wins E (arbiter.ts aimedCandidate)), E: his boat window -> Buy the sea hull -> confirm: 2400 gold",
+   "stage": {
+    "at": {
+     "x": 3846.0,
+     "z": 6350.0,
+     "yaw": 0
+    },
+    "hour": 10,
+    "place": "place.mercantile-coast.lighter-flotilla"
+   },
+   "do": {
+    "action": "boat",
+    "op": "buy",
+    "near": [
+     {
+      "id": "npc.mercantile-coast.lighter-flotilla.purser",
+      "m": 6,
+      "facing": false
+     }
+    ],
+    "seller": "npc.mercantile-coast.lighter-flotilla.lighterman",
+    "classId": "sea-hull"
+   },
+   "keys": [
+    {
+     "wait_s": 1.0
+    },
+    {
+     "walkTo": {
+      "x": 3847.7,
+      "z": 6358.3
+     },
+     "within_m": 1.0,
+     "max_s": 6
+    },
+    {
+     "walkTo": {
+      "x": 3898.5,
+      "z": 6357.6
+     },
+     "within_m": 1.0,
+     "max_s": 18
+    },
+    {
+     "walkTo": {
+      "x": 3904.4,
+      "z": 6356.8
+     },
+     "within_m": 0.8,
+     "max_s": 4
+    },
+    {
+     "walkTo": {
+      "x": 3904.6,
+      "z": 6354.0
+     },
+     "within_m": 0.5,
+     "max_s": 4
+    },
+    {
+     "aimAt": "npc.mercantile-coast.lighter-flotilla.lighterman"
+    },
+    {
+     "wait_s": 0.6
+    },
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 1.0
+    },
+    {
+     "click": "[data-service=\"boat\"]"
+    },
+    {
+     "wait_s": 0.6
+    },
+    {
+     "click": "[data-boat-buy=\"sea-hull\"]"
+    },
+    {
+     "wait_s": 0.6
+    },
+    {
+     "click": "[data-confirm=\"deal\"] [data-es-act=\"accept\"]"
+    },
+    {
+     "wait_s": 0.6
+    },
+    {
+     "press": "Escape"
+    },
+    {
+     "wait_s": 0.6
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.lighter-flotilla.longboat",
+     "owner": "player",
+     "event": "bought",
+     "spent": 2400
+    }
+   },
+   "teleport": {
+    "x": 3846.0,
+    "z": 6350.0
+   }
+  },
+  {
+   "name": "save-and-load",
+   "transition": "save and load on the quay: the bought longboat comes back the player's, at its mooring",
+   "do": {
+    "action": "boat",
+    "op": "reload"
+   },
+   "keys": [],
+   "expect": {
+    "boat": {
+     "id": "boat.lighter-flotilla.longboat",
+     "reloaded": true,
+     "event": "reloaded",
+     "owner": "player"
+    }
+   }
+  },
+  {
+   "name": "ready-the-power",
+   "transition": "magic window -> Call the Wind in the power slot",
+   "do": {
+    "action": "readyPower",
+    "spell": "call-the-wind"
+   },
+   "keys": [
+    {
+     "press": "Escape"
+    },
+    {
+     "wait_s": 0.6
+    },
+    {
+     "click": ".es-magic [data-es-row=\"call-the-wind\"]"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "click": ".es-magic [data-ready=\"power\"]"
+    },
+    {
+     "wait_s": 0.3
+    },
+    {
+     "press": "Escape"
+    },
+    {
+     "wait_s": 0.6
+    }
+   ],
+   "expect": {
+    "power": "call-the-wind"
+   }
+  },
+  {
+   "name": "call-the-wind",
+   "transition": "the power key -> cast: the wind pick opens",
+   "do": {
+    "action": "usePower"
+   },
+   "keys": [
+    {
+     "press": "KeyZ"
+    },
+    {
+     "wait_s": 0.8
+    }
+   ],
+   "expect": {
+    "effects": [
+     "call-the-wind"
+    ]
+   }
+  },
+  {
+   "name": "pick-the-wind",
+   "transition": "wind pick -> north",
+   "do": {
+    "action": "callWind",
+    "direction": "n"
+   },
+   "keys": [
+    {
+     "click": "[data-wind-dir=\"n\"]"
+    }
+   ],
+   "expect": {
+    "windDir": "n"
+   }
+  },
+  {
+   "name": "board",
+   "transition": "down to the water at the longboat's mooring, E: the player climbs aboard and takes the helm",
+   "do": {
+    "action": "boat",
+    "op": "press",
+    "near": [
+     {
+      "id": "npc.mercantile-coast.lighter-flotilla.flotilla-speaker",
+      "m": 11.8,
+      "facing": false
+     }
+    ]
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.lighter-flotilla.longboat",
+     "aboard": "boat.lighter-flotilla.longboat"
+    }
+   },
+   "teleport": {
+    "x": 3866,
+    "z": 6362,
+    "yaw": 0
+   }
+  },
+  {
+   "name": "cast-off",
+   "transition": "E at the helm: the longboat casts off",
+   "do": {
+    "action": "boat",
+    "op": "press"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    }
+   ],
+   "expect": {
+    "boat": {
+     "id": "boat.lighter-flotilla.longboat",
+     "event": "castOff",
+     "state": "aboard"
+    }
+   }
+  },
+  {
+   "name": "sail-abeam",
+   "transition": "the helm square to the wind for twenty seconds: the ground speed abeam",
+   "do": {
+    "action": "boat",
+    "op": "sail",
+    "seconds": 20,
+    "label": "abeam",
+    "heading": "crosswind"
+   },
+   "keys": [],
+   "expect": {
+    "boat": {
+     "id": "boat.lighter-flotilla.longboat",
+     "aboard": "boat.lighter-flotilla.longboat"
+    }
+   }
+  },
+  {
+   "name": "sail-astern",
+   "transition": "the helm away from the wind, the wind astern for twenty seconds: faster than abeam",
+   "do": {
+    "action": "boat",
+    "op": "sail",
+    "seconds": 20,
+    "label": "astern",
+    "heading": "downwind"
+   },
+   "keys": [],
+   "expect": {
+    "boat": {
+     "id": "boat.lighter-flotilla.longboat",
+     "fasterThan": "abeam"
+    }
+   }
+  }
+ ]
+}

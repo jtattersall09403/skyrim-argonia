@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "_": "Trade classes (lane 2.6c1; decision 0141): what a merchant class stocks and buys, as item filters over items.json (kind, subkind, id prefix, value cap). A shop is a class and a culture, never a list; `always` names the few shelf ids a class carries on top of its drawn lines (the smith's bog iron and leather strips, which the slice's forge recipes start from). `settles` coin: the purse is the class's `purse` (its Skyrim VendorGold list, `purseFrom`) times economy.json `vendorPurse[placeTier]`, or the `purse` itself where `purseByTier` is false (a rich buyer); `atBase`: the class trades at item value, no barter band (Morrowind's rich creature merchants); goods: the trader holds no coin and pays in kind (settlement register section 7, villages barter tools, salt, sap, hide and worked craft). Read by worldgen.trade_tables into packages/economy/src/data/stock-tables.json.",
+  "classes": [
+    {
+      "id": "trade-class.general",
+      "why": "A general trader at a coin place: a broad shelf of everyday goods and plain arms. Buys almost anything. No picks or probes: those are the fence's line (decision 0151), sold by the salvage trade.",
+      "settles": "coin",
+      "purse": 750,
+      "purseFrom": "Skyrim VendorGoldMisc 750 (the general-goods merchant's list)",
+      "mirror": {"mercantile": 40, "personality": 40},
+      "lines": {"min": 14, "max": 20},
+      "stocks": [
+        {"kind": "consumable", "subkind": "food"},
+        {"kind": "consumable", "subkind": "ingredient", "maxValue": 20},
+        {"kind": "consumable", "subkind": "potion", "maxValue": 80},
+        {"kind": "misc", "subkind": "household"},
+        {"kind": "misc", "subkind": "material", "maxValue": 40},
+        {"kind": "tool", "subkind": "pole"}, {"kind": "tool", "subkind": "ward"}, {"kind": "tool", "subkind": "repair"},
+        {"kind": "light"},
+        {"kind": "clothing"},
+        {"kind": "weapon", "maxValue": 100},
+        {"kind": "armour", "maxValue": 200},
+        {"kind": "book", "maxValue": 30},
+        {"kind": "consumable", "subkind": "scroll", "maxValue": 80}
+      ],
+      "buys": [
+        {"kind": "consumable"}, {"kind": "misc"}, {"kind": "tool"}, {"kind": "light"},
+        {"kind": "clothing"}, {"kind": "weapon"}, {"kind": "armour"}, {"kind": "book"}
+      ]
+    },
+    {
+      "id": "trade-class.provisioner",
+      "why": "A bed-keeper or purser who sells a traveller food, drink and light. Buys provisions.",
+      "settles": "coin",
+      "purse": 100,
+      "purseFrom": "Skyrim VendorGoldInn 100 (the innkeeper's list)",
+      "mirror": {"mercantile": 35, "personality": 40},
+      "lines": {"min": 8, "max": 12},
+      "stocks": [
+        {"kind": "consumable", "subkind": "food"},
+        {"kind": "consumable", "subkind": "potion", "maxValue": 40},
+        {"kind": "light"},
+        {"kind": "misc", "subkind": "household", "maxValue": 10},
+        {"kind": "tool", "subkind": "pole"}
+      ],
+      "buys": [
+        {"kind": "consumable", "subkind": "food"},
+        {"kind": "consumable", "subkind": "ingredient"},
+        {"kind": "misc", "subkind": "household"},
+        {"kind": "misc", "subkind": "material", "maxValue": 15}
+      ]
+    },
+    {
+      "id": "trade-class.salvage",
+      "why": "A salvage merchant on a wrecking coast: arms, gear, metal and trinkets off lost hulls. Buys the same. The coast's fence: held-back salvage changes hands here, so it sells picks and probes (decision 0151).",
+      "settles": "coin",
+      "purse": 1000,
+      "purseFrom": "Skyrim VendorGoldFenceStage00 1000 (the fence's list)",
+      "mirror": {"mercantile": 45, "personality": 30},
+      "lines": {"min": 10, "max": 16},
+      "always": ["lockpick", "probe"],
+      "stocks": [
+        {"kind": "weapon", "maxValue": 300},
+        {"kind": "armour", "maxValue": 300},
+        {"kind": "tool"},
+        {"kind": "light"},
+        {"kind": "misc", "subkind": "material", "maxValue": 60},
+        {"kind": "misc", "subkind": "gem", "maxValue": 200},
+        {"kind": "misc", "subkind": "trinket"},
+        {"kind": "misc", "subkind": "household", "minValue": 4}
+      ],
+      "buys": [
+        {"kind": "weapon"}, {"kind": "armour"}, {"kind": "tool"}, {"kind": "light"},
+        {"kind": "misc", "subkind": "material"}, {"kind": "misc", "subkind": "gem"},
+        {"kind": "misc", "subkind": "trinket"}, {"kind": "misc", "subkind": "household"}
+      ]
+    },
+    {
+      "id": "trade-class.in-kind",
+      "why": "A village trader in kind: stocks what the village makes and uses (food, salt, sap, hide, tools, worked craft, plain cloth) and takes the same in exchange; no coin (settlement register section 7).",
+      "settles": "goods",
+      "purse": 0,
+      "purseFrom": "none: a trader in kind pays in goods",
+      "mirror": {"mercantile": 25, "personality": 45},
+      "lines": {"min": 8, "max": 12},
+      "stocks": [
+        {"kind": "consumable", "subkind": "food", "maxValue": 15},
+        {"kind": "consumable", "subkind": "ingredient", "maxValue": 20},
+        {"kind": "misc", "subkind": "material", "maxValue": 40},
+        {"kind": "misc", "subkind": "household", "maxValue": 25},
+        {"kind": "clothing", "maxValue": 30},
+        {"kind": "tool", "subkind": "pole"},
+        {"kind": "tool", "subkind": "ward"},
+        {"kind": "light", "subkind": "torch"}
+      ],
+      "buys": [
+        {"kind": "consumable", "subkind": "food", "maxValue": 15},
+        {"kind": "consumable", "subkind": "ingredient", "maxValue": 20},
+        {"kind": "misc", "subkind": "material", "maxValue": 40},
+        {"kind": "misc", "subkind": "household", "maxValue": 25},
+        {"kind": "clothing", "maxValue": 30},
+        {"kind": "tool", "subkind": "pole"},
+        {"kind": "tool", "subkind": "ward"},
+        {"kind": "light", "subkind": "torch"}
+      ]
+    },
+    {
+      "id": "trade-class.smith",
+      "why": "A smith: arms and armour, ore and ingots, the repair hammer; buys metal and arms.",
+      "settles": "coin",
+      "purse": 1000,
+      "purseFrom": "Skyrim VendorGoldBlacksmith 1000 (the city smith's list; VendorGoldBlacksmithTown 500 is the village smith, the village multiplier 0.5 of it)",
+      "mirror": {"mercantile": 35, "personality": 35},
+      "lines": {"min": 10, "max": 14},
+      "always": ["bog-iron", "leather-strips"],
+      "stocks": [
+        {"kind": "weapon", "maxValue": 300},
+        {"kind": "armour", "maxValue": 300},
+        {"kind": "misc", "subkind": "material"},
+        {"kind": "tool", "subkind": "repair"}
+      ],
+      "buys": [
+        {"kind": "weapon"}, {"kind": "armour"}, {"kind": "misc", "subkind": "material"}, {"kind": "tool", "subkind": "repair"}
+      ]
+    },
+    {
+      "id": "trade-class.apothecary",
+      "why": "An apothecary: potions, ingredients and scrolls; buys ingredients and potions.",
+      "settles": "coin",
+      "purse": 500,
+      "purseFrom": "Skyrim VendorGoldApothecary 500 (the apothecary's list)",
+      "mirror": {"mercantile": 40, "personality": 40},
+      "lines": {"min": 12, "max": 18},
+      "stocks": [
+        {"kind": "consumable", "subkind": "potion"},
+        {"kind": "consumable", "subkind": "ingredient"},
+        {"kind": "consumable", "subkind": "scroll"}
+      ],
+      "buys": [
+        {"kind": "consumable", "subkind": "potion"}, {"kind": "consumable", "subkind": "ingredient"}
+      ]
+    },
+    {
+      "id": "trade-class.rich-lighterage",
+      "why": "A rich buyer at Lilmoth's lighter moorings, which lie out of the tariff line: the Reed-Sail Compact's common purse buys whole cargoes off the deep-water hulls before they reach the quay, so it can take a costly piece at once. Trades at base value: it buys by the cargo, not by haggling.",
+      "settles": "coin",
+      "purse": 9375,
+      "purseFrom": "Morrowind's richest buyer (the Mudcrab merchant, 10,000) is 25 times the Trader median (400); 25 x the general trader's purse at the slice's village tier (750 x 0.5 = 375) = 9,375. Fixed, not scaled by tier, like Morrowind's.",
+      "purseByTier": false,
+      "atBase": true,
+      "mirror": {"mercantile": 50, "personality": 40},
+      "lines": {"min": 10, "max": 16},
+      "stocks": [
+        {"kind": "weapon", "maxValue": 1000},
+        {"kind": "armour", "maxValue": 1000},
+        {"kind": "misc", "subkind": "material"},
+        {"kind": "misc", "subkind": "gem"},
+        {"kind": "misc", "subkind": "trinket"},
+        {"kind": "clothing"}
+      ],
+      "buys": [
+        {"kind": "weapon"}, {"kind": "armour"}, {"kind": "misc", "subkind": "material"}, {"kind": "misc", "subkind": "gem"},
+        {"kind": "misc", "subkind": "trinket"}, {"kind": "clothing"}, {"kind": "consumable", "subkind": "potion"}
+      ]
+    },
+    {
+      "id": "trade-class.rich-salvage",
+      "why": "A rich buyer on the wrecking coast, off the cities on the Ashlander model: the stage office at Chasepoint keeps the salvage families' common chest and buys what the hulls give up whole. Trades at base value: it pays the families' rate, not a shop's.",
+      "settles": "coin",
+      "purse": 4688,
+      "purseFrom": "Creeper (5,000) is 12.5 times Morrowind's Trader median (400); 12.5 x the general trader's purse at the slice's village tier (750 x 0.5 = 375) = 4,687.5, rounded up. Fixed, not scaled by tier, like Morrowind's.",
+      "purseByTier": false,
+      "atBase": true,
+      "mirror": {"mercantile": 45, "personality": 30},
+      "lines": {"min": 8, "max": 12},
+      "stocks": [
+        {"kind": "weapon", "maxValue": 500},
+        {"kind": "armour", "maxValue": 500},
+        {"kind": "misc", "subkind": "material"},
+        {"kind": "misc", "subkind": "gem", "maxValue": 500},
+        {"kind": "misc", "subkind": "trinket"}
+      ],
+      "buys": [
+        {"kind": "weapon"}, {"kind": "armour"}, {"kind": "tool"}, {"kind": "misc", "subkind": "material"},
+        {"kind": "misc", "subkind": "gem"}, {"kind": "misc", "subkind": "trinket"}
+      ]
+    }
+  ]
+}

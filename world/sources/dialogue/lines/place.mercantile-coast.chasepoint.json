@@ -1,0 +1,2100 @@
+{
+  "schemaVersion": 1,
+  "domain": "dialogue-lines",
+  "placeId": "place.mercantile-coast.chasepoint",
+  "entries": [
+    {
+      "schemaVersion": 1,
+      "id": "greeting.chasepoint-n1.base",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.chasepoint.n1",
+      "words": "Mind the wet racks, traveller.",
+      "available": [],
+      "variants": {
+        "low": "Round the racks. I am counting.",
+        "high": "Traveller. Come round by the dry rack."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.chasepoint-n1.night",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.chasepoint.n1",
+      "words": "Late for the track, traveller. The stable door is barred.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Too late. The door is barred.",
+        "high": "Late, traveller. The door is barred, but I will walk you to the track."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.chasepoint-n1.crime",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.chasepoint.n1",
+      "words": "Off our yard, thief. Tideline's behind you.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "Off our yard.",
+        "high": "Off our yard, thief. Count what you took."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.chasepoint-n1.trusted",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.chasepoint.n1",
+      "words": "Dry rope today, traveller.",
+      "available": [
+        {
+          "speakerDispositionAtLeast": 75
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Rope is drying. Go round.",
+        "high": "Dry rope today, traveller. Sit if you want."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1.chasepoint",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1",
+      "keys": {
+        "topic": "topic.chasepoint"
+      },
+      "words": "The Legion raised this as an Imperial road stage. The pantiles are gone, so the roof is reed now, with the old walls under it. I dry recovered rope in the stable inside the yard wall.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint.default",
+        "hash": "b32421e3"
+      },
+      "factIds": [
+        "fact.chasepoint.imperial-stage"
+      ],
+      "variants": {
+        "low": "An Imperial road stage. The roof is reed. I dry rope in the stable. I have thirty-one coils on the rack.",
+        "high": "It began as an Imperial road stage, raised by the Legion. The pantiles are gone, so the roof is reed now. I dry recovered rope in the stable here, if you want to see how it hangs."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1.chasepoint-work",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1",
+      "keys": {
+        "topic": "topic.chasepoint-work"
+      },
+      "words": "I dry the rope that the families bring up from the wrecks. It hangs in the old stable, west of the stage. The stall writes a total for each lot. I dispute it every time. Thirty-one coils this morning. The stall wrote twenty-nine.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint-work.default",
+        "hash": "1e12d6a1"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "I dry rope in the old stable. The stall writes the totals wrong. Ask it, not me.",
+        "high": "I dry the rope that the families bring up from the wrecks. It hangs in the old stable, west of the stage. Come to the rack. I will show you which coils are sound."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1.chasepoint-people",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1",
+      "keys": {
+        "topic": "topic.chasepoint-people"
+      },
+      "words": "The keeper's office belongs with the salvage households, by right. The stage family waves Imperial papers at you instead. Two families claim it. No keeper has been paid in two hundred years, so I ask what the paper is worth.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint-people.default",
+        "hash": "9c3a9a5c"
+      },
+      "factIds": [
+        "fact.chasepoint.keeper-claim"
+      ],
+      "variants": {
+        "low": "Two families claim the keeper's office. One has papers. I do not care for papers.",
+        "high": "Two families claim the keeper's office. I will tell you where I stand. It belongs with the salvage households, not with the stage family and its Imperial papers. No keeper has been paid in two hundred years. You may ask them what the papers are worth."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1.chasepoint-danger",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1",
+      "keys": {
+        "topic": "topic.chasepoint-danger"
+      },
+      "words": "Four fellrunners and three marsh rats live in the scrub, by my count. The families say more. I never go in after them. Keep to the track and be gone before dark.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint-danger.default",
+        "hash": "46db9da8"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Fellrunners and marsh rats in the scrub. Stay on the track.",
+        "high": "Fellrunners and marsh rats live in the scrub, four of the first and three of the second by my count. I never go in after them. Take the track. Go early, so you are home before dark."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1.chasepoint-directions",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1",
+      "keys": {
+        "topic": "topic.chasepoint-directions"
+      },
+      "words": "Soulrest is west along the track, a short walk. East, the coast road runs on to Fourth Stage, The Southern Sea lies south across two fields. The yard wall hides it. I count those fields each time and get two.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint-directions.default",
+        "hash": "4083bfe1"
+      },
+      "factIds": [
+        "fact.southern-sea.south"
+      ],
+      "variants": {
+        "low": "West for Soulrest. East for Fourth Stage. The sea is south.",
+        "high": "Soulrest is west along the track, a short walk. East, the coast road runs on to Fourth Stage. The Southern Sea lies south across two fields. Walk them once and count them yourself, traveller."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1.role-salvage",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1",
+      "keys": {
+        "topic": "topic.role-salvage"
+      },
+      "words": "When a ship breaks up, the sea sends the wreckage to the shore below the stage. The right to gather it passes down the households. My kin work our stretch. The others work theirs. Take timber off a stretch not yours and answer for it.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-salvage.default",
+        "hash": "9e96afec"
+      },
+      "factIds": [
+        "fact.salvage.wreckage",
+        "fact.salvage.hereditary"
+      ],
+      "variants": {
+        "low": "Wreckage comes ashore south of here. The right to it is hereditary. Leave the timber be.",
+        "high": "Salvage is what a wreck leaves. The Southern Sea sends the wreckage to the shore south of the stage. The right to gather it is hereditary, passed down each household. If you want to learn the stretches, I will walk you along the rack and name them."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.chasepoint-n1.passing",
+      "type": "bark",
+      "speaker": "npc.mercantile-coast.chasepoint.n1",
+      "slot": "passing",
+      "words": "Coils to count.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.chasepoint-n1.at-work",
+      "type": "bark",
+      "speaker": "npc.mercantile-coast.chasepoint.n1",
+      "slot": "at-work",
+      "words": "Thirty-one coils.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.chasepoint-n1-2.base",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-2",
+      "words": "Two hours to low water, landsman.",
+      "available": [],
+      "variants": {
+        "low": "Step aside. The tide will not wait.",
+        "high": "Welcome, landsman. Two hours to low water. Come and see the shingle."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.chasepoint-n1-2.night",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-2",
+      "words": "The tide turns before dawn. I sleep in my coat.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "It is night. Wait for the tide.",
+        "high": "The tide turns before dawn. Sit by me and I will wake you."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.chasepoint-n1-2.crime",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-2",
+      "words": "Touch my planks again and answer to me.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "Keep your hands off my planks.",
+        "high": "I forgive the planks. Keep your hands off them now."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.chasepoint-n1-2.trusted",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-2",
+      "words": "Come to the beach tomorrow, ojel.",
+      "available": [
+        {
+          "speakerDispositionAtLeast": 75
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Not tomorrow. Not the beach.",
+        "high": "Come to the beach tomorrow, ojel. I will show you the best planks."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1-2.chasepoint",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-2",
+      "keys": {
+        "topic": "topic.chasepoint"
+      },
+      "words": "The Legion built the stage back when they kept the coast road in order. Now the salvage households have it. Our reed went up where the roof tiles were lost. The plaster walls underneath are still sound. I know the place best from the shore side, where I drag the wreck timber up.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint.default",
+        "hash": "b32421e3"
+      },
+      "factIds": [
+        "fact.chasepoint.legion-built"
+      ],
+      "variants": {
+        "low": "The Legion built it. We hold it now. Reed on the roof, plaster underneath. I've no time to give you the rest.",
+        "high": "The Legion built this stage, back when the coast road had a keeper. We've got reed up where the tiles went. I'll show you the sound walls if you're passing the yard. The shore side is my part of it, though. That's where I'm happiest."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1-2.chasepoint-work",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-2",
+      "keys": {
+        "topic": "topic.chasepoint-work"
+      },
+      "words": "I walk the shingle at low water and drag the wreck timber above the tideline. The rope goes to dry in the old stable. Before the other families' lots reach the stall, I buy them cheap. They take my low price to save the walk. I count my day in hours to low water.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint-work.default",
+        "hash": "1e12d6a1"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "I haul timber up the shingle at low water. The rope dries in the old stable. The stall sells the rest. It's my work. It doesn't need your help.",
+        "high": "I haul the wreck timber up the shingle when the water's low. The rope hangs in the old stable to dry. The stall sells the week's finds. If you've coin, find me before the stall does. I buy lots from the other families at a price I can resell."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1-2.chasepoint-people",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-2",
+      "keys": {
+        "topic": "topic.chasepoint-people"
+      },
+      "words": "Two families here each say the keeper's office is theirs. It hasn't paid in two hundred years, so I leave them to their papers. Whoever wins it, the stall still opens at the same hour.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint-people.default",
+        "hash": "9c3a9a5c"
+      },
+      "factIds": [
+        "fact.station.two-claims"
+      ],
+      "variants": {
+        "low": "Two families say the keeper's office is theirs. It hasn't paid in two hundred years. Ask them, not me.",
+        "high": "Two families here each say the keeper's office is theirs. It hasn't paid in two hundred years, so I stay out of it. The stall opens at the same hour whoever wins. You can come to me for a fair price in the meantime."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1-2.chasepoint-danger",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-2",
+      "keys": {
+        "topic": "topic.chasepoint-danger"
+      },
+      "words": "Fellrunners and marsh rats live in the scrub. I cross it alone to reach the shingle. Out on the shore I watch the tide as well. There's no second pair of eyes out there.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint-danger.default",
+        "hash": "46db9da8"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Fellrunners and marsh rats in the scrub. Keep off the shore if you can't read the tide.",
+        "high": "Fellrunners and marsh rats live in the scrub, so keep to the track. I cross it alone to reach the shingle. If you must go down to the shore, ask me the hours to low water first and I'll tell you the safe ones."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1-2.chasepoint-directions",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-2",
+      "keys": {
+        "topic": "topic.chasepoint-directions"
+      },
+      "words": "For Soulrest, go west along the track. It's a few minutes. East on the coast road is Fourth Stage. The Southern Sea is the water south of the marsh, two fields beyond the yard through the scrub. You can't see it from the stage, but I use that way down to the shingle.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint-directions.default",
+        "hash": "4083bfe1"
+      },
+      "factIds": [
+        "fact.southern-sea.south"
+      ],
+      "variants": {
+        "low": "Soulrest is west along the track. Fourth Stage is east. The Southern Sea lies south of the marsh, two fields off.",
+        "high": "Soulrest is a few minutes west along the track. Fourth Stage is east on the coast road. The Southern Sea lies south of the marsh, two fields beyond the yard. If you're going to the water, I'll walk the scrub with you as far as the shingle."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1-2.role-salvage",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-2",
+      "keys": {
+        "topic": "topic.role-salvage"
+      },
+      "words": "Whatever the Southern Sea breaks up lands on the shore south of the stage. Timber, rope, nets, all of it. Our salvage rights are hereditary, so each family has its own stretch. I keep to mine. Lift a plank off another family's shingle and you'll answer for it.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-salvage.default",
+        "hash": "9e96afec"
+      },
+      "factIds": [
+        "fact.salvage.wreckage",
+        "fact.salvage.hereditary"
+      ],
+      "variants": {
+        "low": "The Southern Sea throws wreck up on the shore south of the stage. The rights are hereditary. Keep off my stretch.",
+        "high": "The Southern Sea breaks ships and the pieces land on the shore south of the stage. Salvage rights are hereditary, so every family keeps its own stretch. If you want timber, I'll sell you some of mine. Lifting it from another family's shingle is another matter."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1-2.about-ojel",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-2",
+      "keys": {
+        "topic": "topic.about-ojel"
+      },
+      "words": "Ojel is our word for outsiders. It's a plain word with no insult in it, so you needn't flinch at it on the quays. Lukiul is the slur. The An-Xileel coined it for Argonians hatched outside Black Marsh, because those Argonians can't hear the Hist. Who uses it against whom is not mine to say.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-ojel.default",
+        "hash": "a30272d6"
+      },
+      "factIds": [
+        "fact.ojel.outsiders",
+        "fact.ojel.neutral",
+        "fact.lukiul.slur",
+        "fact.lukiul.deaf"
+      ],
+      "variants": {
+        "low": "Ojel means outsider. It carries no insult. Lukiul is the slur the An-Xileel coined for Argonians hatched outside Black Marsh, who can't hear the Hist.",
+        "high": "Ojel is our word for outsiders. It carries no insult, so wear it easily. Lukiul is the slur. The An-Xileel coined it for Argonians hatched outside Black Marsh, who can't hear the Hist. Say that word to a stranger and you'll lose a friend."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.chasepoint-n1-2.passing",
+      "type": "bark",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-2",
+      "slot": "passing",
+      "words": "The water is dropping.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.chasepoint-n1-2.at-work",
+      "type": "bark",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-2",
+      "slot": "at-work",
+      "words": "Another plank up.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.chasepoint-n1-3.base",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-3",
+      "words": "Road or shore, stranger?",
+      "available": [],
+      "variants": {
+        "low": "Not now, stranger.",
+        "high": "Come into the yard, stranger. Road or shore?"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.chasepoint-n1-3.night",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-3",
+      "words": "Out late. The yard gate is shut.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Shut. Try the road, stranger.",
+        "high": "Late for the road, stranger. Mind the track."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.chasepoint-n1-3.crime",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-3",
+      "words": "Away from the sheds.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "Not the sheds.",
+        "high": "Stay clear of the sheds, stranger. They are not for sale."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.chasepoint-n1-3.trusted",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-3",
+      "words": "I will walk you to the yard, stranger.",
+      "available": [
+        {
+          "speakerDispositionAtLeast": 75
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "The yard is that way.",
+        "high": "I will walk you to the yard, stranger. Watch your step."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1-3.chasepoint",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-3",
+      "keys": {
+        "topic": "topic.chasepoint"
+      },
+      "words": "Road or shore? Road, then you saw the front first. It is an Imperial road stage with grey walls. The reed on top is ours. The families call it a bodge.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint.default",
+        "hash": "b32421e3"
+      },
+      "factIds": [
+        "fact.chasepoint.imperial-stage"
+      ],
+      "variants": {
+        "low": "Imperial stage. Grey walls, reed roof. Look all you like.",
+        "high": "Road or shore? Road, then you saw the front first. It is an Imperial road stage with grey walls. The families put the reed on top. Ask me about the rope if you want to know more."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1-3.chasepoint-work",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-3",
+      "keys": {
+        "topic": "topic.chasepoint-work"
+      },
+      "words": "I haul rope up off the south shingle with the others and hang it to dry in the old stable. My palms show it. The stall sells whatever comes ashore that week.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint-work.default",
+        "hash": "1e12d6a1"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Rope off the south shingle, hung in the old stable. The stall sells it.",
+        "high": "I haul rope up off the south shingle with the others and hang it to dry in the old stable. My palms show it. The stall sells that week's finds. Come when the tide is low and I will show you a good coil."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1-3.chasepoint-people",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-3",
+      "keys": {
+        "topic": "topic.chasepoint-people"
+      },
+      "words": "Two families want the keeper's office. Mine says it is ours by right. I say so in the yard and nowhere louder, because loud talk sends people looking at the sheds.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint-people.default",
+        "hash": "9c3a9a5c"
+      },
+      "factIds": [
+        "fact.chasepoint.keeper-claim"
+      ],
+      "variants": {
+        "low": "Two families want the keeper's office. That is all I say.",
+        "high": "Two families want the keeper's office. Mine says it is ours by right. I say it quietly in the yard, since loud talk sends people looking at the sheds. Ask me about the rope instead."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1-3.chasepoint-danger",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-3",
+      "keys": {
+        "topic": "topic.chasepoint-danger"
+      },
+      "words": "Fellrunners hunt the scrub round the stage. Marsh rats chew rope in the stable. Came by the road? Then stay on it after dark.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint-danger.default",
+        "hash": "46db9da8"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Fellrunners and marsh rats in the scrub. Stay on the track.",
+        "high": "Fellrunners hunt the scrub round the stage. Marsh rats go for rope in the stable. Stay on the track after dark and carry a lantern if you must cross."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1-3.chasepoint-directions",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-3",
+      "keys": {
+        "topic": "topic.chasepoint-directions"
+      },
+      "words": "Soulrest is a short walk west on the track. Fourth Stage is further, east along the coast road. The Southern Sea lies south, two fields past the scrub. Most of what I handle comes up from that side.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint-directions.default",
+        "hash": "4083bfe1"
+      },
+      "factIds": [
+        "fact.southern-sea.south"
+      ],
+      "variants": {
+        "low": "Soulrest west. Fourth Stage east. The Southern Sea lies south.",
+        "high": "Soulrest is a short walk west on the track. Fourth Stage is further, east along the coast road. The Southern Sea lies south, two fields past the scrub. Stay on the track either way."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1-3.role-salvage",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-3",
+      "keys": {
+        "topic": "topic.role-salvage"
+      },
+      "words": "I haul rope off my family's shore until my palms burn. Each family guards its own stretch of the south shore. Taking timber off another family's stretch is forbidden.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-salvage.default",
+        "hash": "9e96afec"
+      },
+      "factIds": [
+        "fact.salvage.guarded-stretch",
+        "fact.salvage.no-foreign-timber"
+      ],
+      "variants": {
+        "low": "Each family guards its stretch of shore. Timber off another's stretch is forbidden.",
+        "high": "I haul rope off my family's shore until my palms burn. Each family guards its own stretch of the south shore. Taking timber off another family's stretch is forbidden. Ask before you carry anything off the sand."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.chasepoint-n1-3.passing",
+      "type": "bark",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-3",
+      "slot": "passing",
+      "words": "Shore sand on you?",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.chasepoint-n1-3.at-work",
+      "type": "bark",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-3",
+      "slot": "at-work",
+      "words": "Palms raw again.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.chasepoint-n1-4.base",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-4",
+      "words": "Nets mended here.",
+      "available": [],
+      "variants": {
+        "low": "Nets mended. Buy or look.",
+        "high": "Nets mended here, traveller. Come and see the rack."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.chasepoint-n1-4.night",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-4",
+      "words": "Late for nets. Come in anyway.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Lamps are lit. The rope is wet.",
+        "high": "Late for nets. Sit down. I will tell you a price."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.chasepoint-n1-4.crime",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-4",
+      "words": "I will remember your face.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "I know your face.",
+        "high": "I will remember you. I will still mend your net."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.chasepoint-n1-4.trusted",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-4",
+      "words": "You came back. The rack is yours to look over.",
+      "available": [
+        {
+          "speakerDispositionAtLeast": 75
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Back, then. Mind the rack.",
+        "high": "You came back. Look the rack over. It is yours."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1-4.chasepoint",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-4",
+      "keys": {
+        "topic": "topic.chasepoint"
+      },
+      "words": "The Legion built this stage in the days when the coast road mattered. The soldiers left. The walls stayed, grey plaster over rubble, still sound. The pantiles went long ago, so the families laid reed across the top. I sit at the net rack in the yard and mend what the shore sends up. I'm fond of the place, bodged roof and all.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint.default",
+        "hash": "b32421e3"
+      },
+      "factIds": [
+        "fact.chasepoint.legion-built"
+      ],
+      "variants": {
+        "low": "Chasepoint. The Legion built it. Mind the rope.",
+        "high": "The Legion built this stage, traveller. I will tell you the lot if you have a moment. Grey plaster, a straight ridge, a reed roof we laid ourselves. I mend nets at the rack in the yard. Come and look if you like. The work is honest and so is the price."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1-4.chasepoint-work",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-4",
+      "keys": {
+        "topic": "topic.chasepoint-work"
+      },
+      "words": "I mend nets. The families drag wreck up from the shore in the south at low tide. The torn nets come to my rack. When one's done I work out its worth and tell the stall the price once. Ask me again and you'll get the same number. The stall at the north end sells the week's finds. I like watching a straight sale.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint-work.default",
+        "hash": "1e12d6a1"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "I mend nets. Ask the stall about the rest.",
+        "high": "I mend nets, traveller. The families haul wreck up from the south shore and the torn nets come to my rack. I'll mend you one cheap if you've a tear. I price it once, so mind you listen. The stall at the north end sells the week's finds. I like watching a straight sale."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1-4.chasepoint-people",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-4",
+      "keys": {
+        "topic": "topic.chasepoint-people"
+      },
+      "words": "Two families claim the keeper's office. It carries no pay, so I don't care much who wins. What I care about is the tally at the stall. I know what the shore sends up. I also know what reaches the tally from the rope-stable family. The two don't match. A fair count matters more to me than a title on a door.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint-people.default",
+        "hash": "9c3a9a5c"
+      },
+      "factIds": [
+        "fact.station.two-claims"
+      ],
+      "variants": {
+        "low": "Two families want the office. I want the tally honest. Leave it there.",
+        "high": "Two families claim the keeper's office, traveller. It carries no pay, so I don't mind who wins. My complaint is the tally. I know what the shore sends up. The rope-stable family's lots do not add up to it. Look at the stall's book yourself, I won't stop you."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1-4.chasepoint-danger",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-4",
+      "keys": {
+        "topic": "topic.chasepoint-danger"
+      },
+      "words": "Fellrunners and marsh rats live in the scrub round the stage. The fellrunners hunt, so a traveller out there after dusk is asking for trouble. The rats are only a nuisance, though they chew a net through if I leave it down. Stay on the track and be gone before dark. That advice costs you nothing.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint-danger.default",
+        "hash": "46db9da8"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Fellrunners in the scrub. Stay on the track.",
+        "high": "Fellrunners and marsh rats live in the scrub, traveller. The fellrunners hunt, so I'd walk the track and be gone by dark. I'll lend you a lantern if you need one. The rats only chew my nets. I rack them high now, so they've given up on me."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1-4.chasepoint-directions",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-4",
+      "keys": {
+        "topic": "topic.chasepoint-directions"
+      },
+      "words": "Soulrest is a short walk west along the track. It's the nearer market if you've coin to spend. East on the coast road is Fourth Stage, further off, with a few turnings. South of here, two fields away, is the sea. The yard wall hides it from you. I'd go to Soulrest first.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint-directions.default",
+        "hash": "4083bfe1"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "West is Soulrest. East is Fourth Stage. The sea is south.",
+        "high": "Soulrest is a short walk west along the track, traveller. Go there first. It is the nearer market. The stalls pay well for a mended net. East along the coast road is Fourth Stage, further off, with a few turnings. The sea is south, two fields away, behind the yard wall."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1-4.role-salvage",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-4",
+      "keys": {
+        "topic": "topic.role-salvage"
+      },
+      "words": "Wreck washes up on the shore south of the stage. Every family guards its own stretch of it. Taking timber off a stretch that isn't yours is forbidden. Mine is mended net and rope, so I stay out of the quarrels over planks. When I name a price for a net it's named once. Buyers who haggle leave empty-handed.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-salvage.default",
+        "hash": "9e96afec"
+      },
+      "factIds": [
+        "fact.salvage.guarded-stretch",
+        "fact.salvage.no-foreign-timber"
+      ],
+      "variants": {
+        "low": "Each family guards its shore. No taking timber from another's. Don't try.",
+        "high": "Wreck washes up on the shore south of the stage, traveller. Each family guards its own stretch. Taking timber from a stretch that isn't yours is forbidden. The families mean it. My work is nets and rope, so I'm no part of those quarrels. Ask me a net's price. You'll hear it once."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.chasepoint-n1-4.passing",
+      "type": "bark",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-4",
+      "slot": "passing",
+      "words": "Mind the wet rope.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.chasepoint-n1-4.at-work",
+      "type": "bark",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-4",
+      "slot": "at-work",
+      "words": "Knot, pull, knot.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.chasepoint-n2.base",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.chasepoint.n2",
+      "words": "This week's lots, each with its ship.",
+      "available": [],
+      "variants": {
+        "low": "Lots are on the board. Buy or leave.",
+        "high": "Welcome back. This week's lots, each with its ship."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.chasepoint-n2.night",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.chasepoint.n2",
+      "words": "Night buyer? The lamp is lit.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Night buyer? Then say what you want.",
+        "high": "Night buyer? The lamp is lit. Come to the counter."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.chasepoint-n2.crime",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.chasepoint.n2",
+      "words": "No more buying from my stall.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "Not from my stall. Leave, ojel.",
+        "high": "I will not sell to you. Come back after you settle it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.chasepoint-n2.trusted",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.chasepoint.n2",
+      "words": "Good to see you. Fresh lots on the board.",
+      "available": [
+        {
+          "speakerDispositionAtLeast": 75
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Fresh lots. Pick one.",
+        "high": "Good to see you. Fresh lots on the board, one held back."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n2.chasepoint",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n2",
+      "keys": {
+        "topic": "topic.chasepoint"
+      },
+      "words": "This is an Imperial road stage. I keep the salvage stall at the north end of it, so I see everyone who comes up the track. The families run the place now, under their own reed roof.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint.default",
+        "hash": "b32421e3"
+      },
+      "factIds": [
+        "fact.chasepoint.imperial-stage"
+      ],
+      "variants": {
+        "low": "An Imperial road stage. The stall is at the north end if you came to buy.",
+        "high": "This is an Imperial road stage. I keep the salvage stall at the north end, so I see the whole track from my counter. Come by on a Sixthday and I will show you the new lots, with the reed roof overhead."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n2.chasepoint-work",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n2",
+      "keys": {
+        "topic": "topic.chasepoint-work"
+      },
+      "words": "I sell the week's salvage over the stall at the north end of the stage. Each lot comes up from the south shore. I read its ship's name off the bow-board before it goes on the counter.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint-work.default",
+        "hash": "1e12d6a1"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "I sell the week's salvage at the stall. Lots come from the south shore.",
+        "high": "I sell the week's salvage over the stall at the north end of the stage. Each lot comes up from the south shore. I read its ship's name off the bow-board first, so you know what you are buying."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n2.chasepoint-people",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n2",
+      "keys": {
+        "topic": "topic.chasepoint-people"
+      },
+      "words": "Two families claim the keeper's office here. It has paid nothing for two centuries, so I leave them to it. I sell to both households and to any traveller. The stall needs every buyer it can get.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint-people.default",
+        "hash": "9c3a9a5c"
+      },
+      "factIds": [
+        "fact.chasepoint.keeper-claim"
+      ],
+      "variants": {
+        "low": "Two families claim the keeper's office. I sell to both. Ask them yourself.",
+        "high": "Two families claim the keeper's office here, with no pay in two centuries to show for it. I sell to both households and to any traveller. Bring your coin and I will sell to you at the same price."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n2.chasepoint-danger",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n2",
+      "keys": {
+        "topic": "topic.chasepoint-danger"
+      },
+      "words": "Fellrunners and marsh rats live in the scrub round the stage. I stand behind the stall in the yard all day, so I only hear of them. The shore walkers meet them more often than I do.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint-danger.default",
+        "hash": "46db9da8"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Fellrunners and marsh rats are in the scrub. I stay in the yard.",
+        "high": "Fellrunners and marsh rats live in the scrub round the stage. I am in the yard all day, so I only hear of them. If you walk out, ask the shore walkers first, because they meet the beasts more than I do."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n2.chasepoint-directions",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n2",
+      "keys": {
+        "topic": "topic.chasepoint-directions"
+      },
+      "words": "Soulrest is a short walk west along the track. East, the coast road goes on to Fourth Stage. The sea is two fields south, with scrub in the way. Most of what I sell comes up on that shore.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint-directions.default",
+        "hash": "4083bfe1"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "West is Soulrest, a short walk. East is Fourth Stage. South is the sea.",
+        "high": "Soulrest is a short walk west along the track. East, the coast road goes on to Fourth Stage. The sea is two fields south, with scrub in the way. Take the track to Soulrest first, since it is quickest. Come back for the lots after."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n2.role-selling-salvage",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n2",
+      "keys": {
+        "topic": "topic.role-selling-salvage"
+      },
+      "words": "I sell the past week's salvage at this stall. Each lot is counted first, then I read its ship's name off the bow-board and sell it under that name. I do not sell a lot that has no ship's name.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-selling-salvage.default",
+        "hash": "4e36be05"
+      },
+      "factIds": [
+        "fact.stall.week",
+        "fact.stall.counted",
+        "fact.stall.bow-board",
+        "fact.stall.no-nameless-lot"
+      ],
+      "variants": {
+        "low": "I sell the week's salvage. Each lot is counted, then sold under its ship's name off the bow-board. No ship's name, no sale.",
+        "high": "I sell the past week's salvage at this stall. Each lot is counted first. Then I read its ship's name off the bow-board and sell it under that name. I do not sell a lot with no ship's name, so you can trust what you take home."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.chasepoint-n2.passing",
+      "type": "bark",
+      "speaker": "npc.mercantile-coast.chasepoint.n2",
+      "slot": "passing",
+      "words": "Good hull lots today.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.chasepoint-n2.at-work",
+      "type": "bark",
+      "speaker": "npc.mercantile-coast.chasepoint.n2",
+      "slot": "at-work",
+      "words": "Bow-board read.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.chasepoint-n2.rumour",
+      "type": "bark",
+      "speaker": "npc.mercantile-coast.chasepoint.n2",
+      "slot": "rumour",
+      "words": "Its owners think it still sails.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.chasepoint-station-keeper.base",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.chasepoint.station-keeper",
+      "words": "The office is open, traveller.",
+      "available": [],
+      "variants": {
+        "low": "Stage business only, traveller.",
+        "high": "Come and sit, traveller."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.chasepoint-station-keeper.night",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.chasepoint.station-keeper",
+      "words": "The lamp's lit all night, traveller.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "The lamp's lit. Speak low.",
+        "high": "The lamp's lit, traveller. Warm yourself."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.chasepoint-station-keeper.crime",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.chasepoint.station-keeper",
+      "words": "That's going in the ledger.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "Entered. Don't expect it struck.",
+        "high": "Entered, though I've entered worse."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.chasepoint-station-keeper.trusted",
+      "type": "greeting",
+      "speaker": "npc.mercantile-coast.chasepoint.station-keeper",
+      "words": "You've a chair here, traveller.",
+      "available": [
+        {
+          "speakerDispositionAtLeast": 75
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "The chair's there, if you want it.",
+        "high": "Your chair's kept for you, traveller."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-station-keeper.chasepoint",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.station-keeper",
+      "keys": {
+        "topic": "topic.chasepoint"
+      },
+      "words": "The Legion built this stage for the coast road. The grey plaster walls are theirs, still sound after all this time. I hold the keeper's office here. The roof tiles went long ago, so the families put reed up in their place. They call that thatch a bodge. They're right, but it keeps the wet off my ledger.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint.default",
+        "hash": "b32421e3"
+      },
+      "factIds": [
+        "fact.chasepoint.legion-built"
+      ],
+      "variants": {
+        "low": "The Legion built this stage. I hold the keeper's office here. Reed on the roof is the families' doing.",
+        "high": "The Legion built this stage for the coast road, you'll see their plaster all round the yard. I hold the keeper's office. The reed roof is a bodge by the families' own word, but sit under it a while. It's drier than you'd think."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-station-keeper.chasepoint-work",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.station-keeper",
+      "keys": {
+        "topic": "topic.chasepoint-work"
+      },
+      "words": "The families walk the shingle to the south at low tide and drag the wreck timber up above the tideline. The rope comes back here to dry in the old stable. I haul nothing myself. I watch the track from the stage door. That's the work of the office. On a slow day, the weather is the busiest entry.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint-work.default",
+        "hash": "1e12d6a1"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "The families haul wreck timber from the shore. The rope dries in the old stable. The stall sells the finds.",
+        "high": "The families haul wreck timber up from the south shore. I note every load that comes in past my door. The rope dries in the old stable. The stall at the north end sells the week's finds. Ask there for a price."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-station-keeper.chasepoint-people",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.station-keeper",
+      "keys": {
+        "topic": "topic.chasepoint-people"
+      },
+      "words": "There are two families here. Each makes its claim to the keeper's office. Mine holds the paper for it. The other has none. It's still loud about the matter at the stall. The standing orders say a keeper answers every traveller at the door. They don't say what to do about neighbours.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint-people.default",
+        "hash": "9c3a9a5c"
+      },
+      "factIds": [
+        "fact.station.two-claims"
+      ],
+      "variants": {
+        "low": "Two families make their claim to the office. Mine has the paper. That's all you need.",
+        "high": "Two families lay claim to the keeper's office. Mine has the paper. I'll show it to you if you doubt me. The other is loud at the stall about it. I'd rather you heard my side first."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-station-keeper.chasepoint-danger",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.station-keeper",
+      "keys": {
+        "topic": "topic.chasepoint-danger"
+      },
+      "words": "Four fellrunners and a few marsh rats live in the scrub round the stage. I've watched the fellrunners from the door. I'd rather not watch them closer. The wet does more harm to the stage than any teeth do, since the coast plaster never dries. If you walk out, get back to the track before the lamps are lit.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint-danger.default",
+        "hash": "46db9da8"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Fellrunners and marsh rats in the scrub. Stay clear of both.",
+        "high": "Four fellrunners and a few marsh rats keep to the scrub round the stage. Take a lantern if you walk out there. Be on the track again before the lamps are lit. I've seen the fellrunners from the door. I'd not meet them closer."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-station-keeper.chasepoint-directions",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.station-keeper",
+      "keys": {
+        "topic": "topic.chasepoint-directions"
+      },
+      "words": "Soulrest is a short walk west along the track. East, the coast road runs on to Fourth Stage, another of the Legion's. The sea lies south, two fields off. The scrub and the yard wall hide it from the door. The road and its stages are my inheritance, so I like a traveller to leave here pointed the right way.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint-directions.default",
+        "hash": "4083bfe1"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Soulrest is west along the track. Fourth Stage is east on the coast road. The sea is south.",
+        "high": "Soulrest is a short walk west along the track. Fourth Stage is east on the coast road, another of the Legion's stages. The sea lies two fields south, hidden by the scrub. I'll walk you to the track if you like."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-station-keeper.role-station",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.station-keeper",
+      "keys": {
+        "topic": "topic.role-station"
+      },
+      "words": "This is an Imperial road stage. The keeper's office came to me by inheritance, wageless. Nothing has been paid to a keeper since the road fell out of repair. Each of two families lays claim to the office. I hold the paper. The standing orders say a keeper keeps the door, the lamp and the ledger. Money isn't mentioned.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-station.default",
+        "hash": "2361592b"
+      },
+      "factIds": [
+        "fact.chasepoint.imperial-stage",
+        "fact.station.inherited",
+        "fact.station.unpaid",
+        "fact.station.two-claims"
+      ],
+      "variants": {
+        "low": "An Imperial stage. The office is inherited. It has paid no keeper for ages. Two families claim it.",
+        "high": "This is an Imperial stage. The keeper's office is inherited. It pays nothing. No keeper has seen a wage since the road fell out of repair. Two families lay claim to it. Mine has the paper. I'm glad of company in the argument."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.chasepoint-station-keeper.passing",
+      "type": "bark",
+      "speaker": "npc.mercantile-coast.chasepoint.station-keeper",
+      "slot": "passing",
+      "words": "Stay on the track.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.chasepoint-station-keeper.at-work",
+      "type": "bark",
+      "speaker": "npc.mercantile-coast.chasepoint.station-keeper",
+      "slot": "at-work",
+      "words": "That's entered.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1.about-soulrest",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1",
+      "keys": {
+        "topic": "topic.about-soulrest"
+      },
+      "words": "In the Third Era, the Empire ruled the marsh out of Soulrest. It was their capital. It sits by Topal Bay on the south-west coast, west of here along the track.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-soulrest.default",
+        "hash": "2c3efb7f"
+      },
+      "factIds": [
+        "fact.soulrest.capital",
+        "fact.soulrest.bay"
+      ],
+      "variants": {
+        "low": "Soulrest is the old Imperial capital, on Topal Bay, south-west coast. Walk there and look.",
+        "high": "Soulrest is a town to the west along the track. In the Third Era, the Empire ruled Black Marsh from it, as its capital. It lies on the south-west coast by Topal Bay. I buy my twine there when I have the coin."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1.about-southern-sea",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1",
+      "keys": {
+        "topic": "topic.about-southern-sea"
+      },
+      "words": "South of the marsh is the Southern Sea. Of all the cities in the province, Lilmoth and Soulrest alone stand on it. The wrecks start far out over that water. The families only see them after the tide has finished with them.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-southern-sea.default",
+        "hash": "d64732bd"
+      },
+      "factIds": [
+        "fact.southern-sea.south",
+        "fact.southern-sea.cities"
+      ],
+      "variants": {
+        "low": "The Southern Sea lies south. Lilmoth and Soulrest are the only two cities on it.",
+        "high": "The Southern Sea lies south of the marsh. Lilmoth and Soulrest are the only two cities of the province on its shore. Everything the families haul up came across that water first. Ask the stall which ship each piece was."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1-2.about-soulrest",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-2",
+      "keys": {
+        "topic": "topic.about-soulrest"
+      },
+      "words": "In the Third Era, the Empire made Soulrest its capital for all Black Marsh. It stands on the south-west coast, on Topal Bay, a few minutes from the stage. Today it's contested. I haul timber, so that's a quarrel for the people who rule.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-soulrest.default",
+        "hash": "2c3efb7f"
+      },
+      "factIds": [
+        "fact.soulrest.capital",
+        "fact.soulrest.bay"
+      ],
+      "variants": {
+        "low": "The Empire's capital for Black Marsh, in the Third Era. South-west coast, on Topal Bay. Contested now.",
+        "high": "In the Third Era, the Empire made Soulrest its capital for all Black Marsh. It's on the south-west coast, on Topal Bay, a few minutes from here along the track. It's contested now, so keep your purse close when you go."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1-2.about-southern-sea",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-2",
+      "keys": {
+        "topic": "topic.about-southern-sea"
+      },
+      "words": "South of us is the Southern Sea, the water beyond the marsh. Of the province's cities, only Lilmoth and Soulrest sit on its water. Oliis Bay is a piece of it. So is Topal Bay. I work its shore south of the stage. It gives me something most low waters.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-southern-sea.default",
+        "hash": "d64732bd"
+      },
+      "factIds": [
+        "fact.southern-sea.cities",
+        "fact.southern-sea.bays"
+      ],
+      "variants": {
+        "low": "South is the Southern Sea. Lilmoth and Soulrest are the province's only cities on it. Oliis Bay and Topal Bay belong to it.",
+        "high": "South of us is the Southern Sea, the water beyond the marsh. Only Lilmoth and Soulrest among the province's cities stand on it. Oliis Bay and Topal Bay are parts of it. I'll show you the shore at low water if you want to see it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1-3.about-soulrest",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-3",
+      "keys": {
+        "topic": "topic.about-soulrest"
+      },
+      "words": "Soulrest is the old capital, a short walk west. These days it is contested. I go in when I must. I am back before the lamps.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-soulrest.default",
+        "hash": "2c3efb7f"
+      },
+      "factIds": [
+        "fact.soulrest.contested"
+      ],
+      "variants": {
+        "low": "Soulrest is west. It is contested.",
+        "high": "Soulrest is the old capital, a short walk west. These days it is contested. Go in by daylight and be back on the track before the lamps."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1-3.about-southern-sea",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-3",
+      "keys": {
+        "topic": "topic.about-southern-sea"
+      },
+      "words": "South of the marsh is the Southern Sea. Topal Bay is part of it, and so is Oliis Bay. What it breaks of ships ends on our shingle.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-southern-sea.default",
+        "hash": "d64732bd"
+      },
+      "factIds": [
+        "fact.southern-sea.bays"
+      ],
+      "variants": {
+        "low": "The Southern Sea, south. Topal Bay is part of it. So is Oliis Bay.",
+        "high": "South of the marsh is the Southern Sea. Topal Bay is part of it, and so is Oliis Bay. Ships break on it and we haul the pieces off the shingle."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1-4.about-soulrest",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-4",
+      "keys": {
+        "topic": "topic.about-soulrest"
+      },
+      "words": "Soulrest is the town west of here. When the Empire ran Black Marsh in the Third Era, it was the capital. Now it's contested. I leave the arguing to others. I go there to sell. I'm back before the lamps are lit.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-soulrest.default",
+        "hash": "2c3efb7f"
+      },
+      "factIds": [
+        "fact.soulrest.capital",
+        "fact.soulrest.contested"
+      ],
+      "variants": {
+        "low": "West of here. Once the capital, contested now. I sell there.",
+        "high": "Soulrest is the town west of here, traveller. When the Empire ran Black Marsh, in the Third Era, it was the capital. Now it's contested. I leave that to others and go to sell. The prices there are fair. I will tell you my own once if you need one."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n2.about-soulrest",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n2",
+      "keys": {
+        "topic": "topic.about-soulrest"
+      },
+      "words": "Soulrest lies a short walk west. It sits on the south-west coast, by Topal Bay. Who holds it is not my business. The stall sells to whoever walks up with coin.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-soulrest.default",
+        "hash": "2c3efb7f"
+      },
+      "factIds": [
+        "fact.soulrest.bay"
+      ],
+      "variants": {
+        "low": "Soulrest is west, on Topal Bay, on the south-west coast. Who holds it is not my business.",
+        "high": "Soulrest lies a short walk west. It sits on the south-west coast, by Topal Bay. Who holds it is not my business, but its streets are worth a look. Come back and tell me what lots you saw there."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n2.about-southern-sea",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n2",
+      "keys": {
+        "topic": "topic.about-southern-sea"
+      },
+      "words": "South of the marsh there is open water, the Southern Sea. From this yard it is two fields off, hidden by scrub. The wrecks I sell come ashore from it.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-southern-sea.default",
+        "hash": "d64732bd"
+      },
+      "factIds": [
+        "fact.southern-sea.south"
+      ],
+      "variants": {
+        "low": "The Southern Sea is south of the marsh. Wrecks come ashore from it.",
+        "high": "South of the marsh there is open water, the Southern Sea. From this yard it is two fields off, hidden by scrub. Every wreck I sell came ashore from it, so I would not walk the shingle after dark."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-station-keeper.about-soulrest",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.station-keeper",
+      "keys": {
+        "topic": "topic.about-soulrest"
+      },
+      "words": "Soulrest was the Empire's capital in Black Marsh once. It's a short walk west of here. Today it's contested. I couldn't tell you by whom, because the stage doesn't see that side of it. I'd go in with nothing I couldn't lose. Be out again before the lamps go down.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-soulrest.default",
+        "hash": "2c3efb7f"
+      },
+      "factIds": [
+        "fact.soulrest.contested"
+      ],
+      "variants": {
+        "low": "Soulrest is the old capital, west of here. It's contested. Mind yourself.",
+        "high": "Soulrest was the Empire's capital in Black Marsh. It's a short walk west, but contested today. Go in with little to lose. If you're robbed, come and tell me. I'll enter it in the ledger."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1-2.about-chasepoint",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-2",
+      "keys": {
+        "topic": "topic.about-chasepoint"
+      },
+      "words": "Coming down the coast track, you see a straight ridge with a reed roof over it. That's Chasepoint, a road stage the Legion built on the coast road. The wreck-salvage families keep it now. Salvage rights here are hereditary. The old stable dries our rope. Two families each want the keeper's office.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-chasepoint.default",
+        "hash": "23323a33"
+      },
+      "factIds": [
+        "fact.chasepoint.legion-built",
+        "fact.chasepoint.salvage",
+        "fact.chasepoint.hereditary",
+        "fact.chasepoint.keeper-claim"
+      ],
+      "variants": {
+        "low": "Chasepoint is a road stage on the coast road. The Legion built it. The wreck-salvage families keep it. Salvage rights are hereditary. Two families each want the keeper's office.",
+        "high": "Coming down the coast track, you see the reed roof first. That's Chasepoint, a road stage the Legion built. The wreck-salvage families keep it now. Salvage rights are hereditary, so the shore stretches pass down. The old stable dries our rope. Two families each want the keeper's office."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1-2.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-2",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "The Empire left us the Border road, the Prison road and a waystation called the Mile House. Folk still use the old names. Walk east towards Fourth Stage and you come onto the Prison road. On a dry rise beside it, you'll find the Tag House.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.imperial",
+        "fact.road.old-names",
+        "fact.road.tag-house"
+      ],
+      "variants": {
+        "low": "The Empire left the Border road, the Prison road and the Mile House waystation. Folk use the old names. The Tag House stands on a dry rise beside the Prison road.",
+        "high": "The Empire left us the Border road, the Prison road and a waystation called the Mile House. Folk still use the old names. Walk east towards Fourth Stage and you come onto the Prison road. The Tag House is on a dry rise beside it. I'll point it out if you're going."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1-3.about-chasepoint",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-3",
+      "keys": {
+        "topic": "topic.about-chasepoint"
+      },
+      "words": "The Legion built this stage on the coast road. Salvage families work it now. The rights pass from parent to child. Rope dries in the old stable. The keeper's office has two families after it.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-chasepoint.default",
+        "hash": "23323a33"
+      },
+      "factIds": [
+        "fact.chasepoint.legion-built",
+        "fact.chasepoint.salvage",
+        "fact.chasepoint.hereditary",
+        "fact.chasepoint.keeper-claim"
+      ],
+      "variants": {
+        "low": "Legion stage. Salvage families, parent to child. Two families want the keeper's office.",
+        "high": "Soldiers of the Legion raised this stage along the coast road. Salvage is the families' work now, handed down from parent to child. I hang rope in the old stable myself. Two families each want the keeper's office. My own household is one of them."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1-3.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-3",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "The Mile House is a waystation. The Prison and Border roads are Imperial work, old roads. People still use the old names. East of the stage the Prison road heads for the Rose. On a dry rise by it stands the Tag House.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.imperial",
+        "fact.road.old-names",
+        "fact.road.tag-house"
+      ],
+      "variants": {
+        "low": "Old Imperial roads, the Mile House too. Old names still used. The Tag House sits on a dry rise.",
+        "high": "The Mile House is an old waystation. The Prison and Border roads are Imperial work. Most people still say the old names. Walk east from the stage on the Prison road and you pass the Tag House, up on a dry rise."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1-4.about-chasepoint",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-4",
+      "keys": {
+        "topic": "topic.about-chasepoint"
+      },
+      "words": "Chasepoint is a stage on the coast road. The Legion built it. The wreck-salvage families work it now. A family's right to the shore passes down to its children. Two families want the keeper's office. The shore rope hangs to dry in the old stable. I mend nets here and say my price once.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-chasepoint.default",
+        "hash": "23323a33"
+      },
+      "factIds": [
+        "fact.chasepoint.legion-built",
+        "fact.chasepoint.salvage",
+        "fact.chasepoint.hereditary",
+        "fact.chasepoint.keeper-claim"
+      ],
+      "variants": {
+        "low": "A coast road stage, salvage families. Ask elsewhere about the rest.",
+        "high": "Chasepoint is a stage on the coast road, traveller. The Legion built it. The wreck-salvage families work it now. A family's right to the shore passes down to its children. Two families want the keeper's office. The shore rope hangs to dry in the old stable. Sit by the rack awhile."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1-4.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-4",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "Prison road, Border road, the Mile House: those are old Imperial names. People use them still, though the Empire is gone. The Rose lies where the Prison road heads. Beside that road, on a patch of dry ground, you'll find the Tag House. I mend nets. I've never needed the road.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.imperial",
+        "fact.road.old-names",
+        "fact.road.tag-house"
+      ],
+      "variants": {
+        "low": "Old Imperial names. Ask a carter.",
+        "high": "Prison road, Border road, the Mile House, traveller: those are old Imperial names. People use them still, though the Empire is gone. The Prison road heads toward the Rose. The Tag House sits beside it on a patch of dry ground. I've never walked it, but you should."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1.about-chasepoint",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1",
+      "keys": {
+        "topic": "topic.about-chasepoint"
+      },
+      "words": "Chasepoint is a stop on the coast road. The Legion built it. Wreck-salvage households keep it now. The right to salvage passes down each family. I hang rope to dry in the stable. Two families claim the keeper's office, though no keeper has seen pay in two hundred years.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-chasepoint.default",
+        "hash": "23323a33"
+      },
+      "factIds": [
+        "fact.chasepoint.legion-built",
+        "fact.chasepoint.salvage",
+        "fact.chasepoint.hereditary",
+        "fact.chasepoint.keeper-claim"
+      ],
+      "variants": {
+        "low": "A coast road stage the Legion built. Salvage households keep it. Two families claim the keeper's office.",
+        "high": "Chasepoint is a stop on the coast road that the Legion built. Salvage households keep it now. The right to salvage passes down each family. I dry rope in the old stable. Two families claim the keeper's office. Ask the stall for the count, traveller."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "The Prison road is an old Imperial road, east of the stage. It runs toward the Rose. People still use old names for it. The Border road and the waystation called the Mile House keep theirs too. You will find the Tag House on a dry rise beside the Prison road.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.imperial",
+        "fact.road.old-names",
+        "fact.road.tag-house"
+      ],
+      "variants": {
+        "low": "The Prison road is an old Imperial road toward the Rose. The Tag House is by it.",
+        "high": "The Prison road is an old Imperial road, east of the stage. It runs toward the Rose. People still use the old names for it. The Border road and the waystation called the Mile House keep theirs too. Walk it. You will find the Tag House on a dry rise beside it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n2.about-chasepoint",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n2",
+      "keys": {
+        "topic": "topic.about-chasepoint"
+      },
+      "words": "I sell the families' salvage here. The Legion built this stage on the coast road. Salvage rights pass from parent to child, so each family guards its own. Rope dries in the stable. The keeper's office has two families claiming it.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-chasepoint.default",
+        "hash": "23323a33"
+      },
+      "factIds": [
+        "fact.chasepoint.legion-built",
+        "fact.chasepoint.salvage",
+        "fact.chasepoint.hereditary",
+        "fact.chasepoint.keeper-claim"
+      ],
+      "variants": {
+        "low": "The Legion built this stage on the coast road. Salvage rights pass down the families. Two families claim the keeper's office.",
+        "high": "I sell the families' salvage here. The Legion built this stage on the coast road. Salvage rights pass from parent to child, so each family guards its own. Rope dries in the stable. The keeper's office has two families claiming it. Buy from the stall, not from the shore."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n2.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n2",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "The Prison road is an old Imperial road toward the Rose. People still use its old name. The Mile House and the Border road keep theirs as well. Beside the Prison road, on a dry rise, stands the Tag House.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.imperial",
+        "fact.road.old-names",
+        "fact.road.tag-house"
+      ],
+      "variants": {
+        "low": "The Prison road is an old Imperial road toward the Rose. People use the old names. The Tag House stands beside it.",
+        "high": "The Prison road is an old Imperial road toward the Rose. People still use its old name. The Mile House and the Border road keep theirs as well. Beside the Prison road, on a dry rise, stands the Tag House. Dry ground, if you walk it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-station-keeper.about-chasepoint",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.station-keeper",
+      "keys": {
+        "topic": "topic.about-chasepoint"
+      },
+      "words": "You're standing in it. This is a stage on the coast road. The Legion put it up, then left it. Wreck-salvage families keep it now. Salvage rights pass from parent to child here. Each family guards its own stretch of shore. Two families want the keeper's office. That argument is older than I am. The rope they bring up dries in the old stable.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-chasepoint.default",
+        "hash": "23323a33"
+      },
+      "factIds": [
+        "fact.chasepoint.legion-built",
+        "fact.chasepoint.salvage",
+        "fact.chasepoint.hereditary",
+        "fact.chasepoint.keeper-claim"
+      ],
+      "variants": {
+        "low": "A coast road stage. The Legion built it. Salvage families keep it now.",
+        "high": "You're in Chasepoint, a coast road stage the Legion built. The salvage families keep it today. Their rights pass down from parent to child. Ask at the stall for rope or timber. Two families want the keeper's office, but that needn't trouble you."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-station-keeper.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.station-keeper",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "The Border road and the Prison road are the Empire's old work. There's an old waystation too, the Mile House. We still use all three old names here, as my family always has. The Prison road heads for the Rose. Over on a dry rise beside it you'll find the Tag House.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.imperial",
+        "fact.road.old-names",
+        "fact.road.tag-house"
+      ],
+      "variants": {
+        "low": "Old Imperial roads, the Border road and the Prison road. The Mile House is a waystation. The Tag House is on a dry rise by the Prison road, toward the Rose.",
+        "high": "The Border road and the Prison road are Imperial work, with the Mile House as a waystation. People still use the old names. The Prison road heads for the Rose. The Tag House sits on a dry rise there. Go by daylight and you'll find it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1-2.chasepoint-living-cargo",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-2",
+      "keys": {
+        "topic": "topic.chasepoint-living-cargo"
+      },
+      "words": "I went out on the bar and looked. That wreck is Southern Sea wreckage, the same as everything that lands on the shore south of the stage. The wreckers of the Long Bar have taken it over, though, so the families keep off it.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint-living-cargo.default",
+        "hash": "64db1673"
+      },
+      "factIds": [
+        "fact.salvage.wreckage"
+      ],
+      "variants": {
+        "low": "That wreck on the bar is Southern Sea wreckage. The wreckers of the Long Bar have taken it over. I've no time for more.",
+        "high": "That wreck on the bar is Southern Sea wreckage, landsman, the same as all that lands on the shore south of the stage. The wreckers of the Long Bar have taken it over, so the families keep off it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1-3.chasepoint-salvage-crew",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1-3",
+      "keys": {
+        "topic": "topic.chasepoint-salvage-crew"
+      },
+      "words": "Did you come by the road or the shore? The shore people know the bar. The wreckers out there pull people off it. They say the rescue is owed, so they keep them as crew to work it off. I haul rope on this side.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint-salvage-crew.default",
+        "hash": "98d47e30"
+      },
+      "factIds": [
+        "fact.salvage.wreckage"
+      ],
+      "variants": {
+        "low": "The wreckers on the bar keep the people they rescue. The rescue is owed in work.",
+        "high": "Did you come by the road or the shore? If the shore, keep off the bar, stranger. The wreckers out there pull people off it. They say the rescue is owed, so they keep them as crew to work it off."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n1.chasepoint-unpaid-stage",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n1",
+      "keys": {
+        "topic": "topic.chasepoint-unpaid-stage"
+      },
+      "words": "The Legion built this stage, then stopped paying. In two hundred years, no keeper has been paid. Two families want the office. Mine has the right. The stage family holds the office now.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint-unpaid-stage.default",
+        "hash": "45307678"
+      },
+      "factIds": [
+        "fact.chasepoint.unpaid-keeper",
+        "fact.chasepoint.keeper-claim",
+        "fact.chasepoint.legion-built"
+      ],
+      "variants": {
+        "low": "Two hundred years without pay for a keeper here. The office is my family's by right. The stage family says it is theirs.",
+        "high": "Two hundred years. No keeper at this stage has been paid, traveller. My family has the right to the keeper's office, with the arrears. The stage family holds the office now. Ask Aelia Nerva at the stage door what she was paid."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n2.chasepoint-sea-lost",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n2",
+      "keys": {
+        "topic": "topic.chasepoint-sea-lost"
+      },
+      "words": "I sell the week's salvage at the stall. This week's lot is Southern Sea wreckage off a ship. The owners have not heard it sank. They should be told. Aelia Nerva keeps the stage office. Ask her who.",
+      "available": [
+        {
+          "questState": [
+            "quest.local.lm38",
+            "unstarted"
+          ]
+        }
+      ],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint-sea-lost.start",
+        "hash": "dce3c78b"
+      },
+      "factIds": [
+        "fact.chasepoint.unknowing-owners",
+        "fact.salvage.wreckage"
+      ],
+      "variants": {
+        "low": "The owners of this week's ship have not heard it sank. Ask Aelia Nerva at the stage door.",
+        "high": "This week's lot is Southern Sea wreckage off a ship. The owners have not heard it sank. Aelia Nerva keeps the stage office."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-n2.chasepoint-salvage-crew",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.n2",
+      "keys": {
+        "topic": "topic.chasepoint-salvage-crew"
+      },
+      "words": "The wreckers on the bar pull people out of the water. They keep those people on as crew until the rescue is worked off. I do not know the sum. Opens-The-Second-Shed does. He hauls rope with the households at the drying shed.",
+      "available": [
+        {
+          "questState": [
+            "quest.local.lm62",
+            "unstarted"
+          ]
+        }
+      ],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint-salvage-crew.start",
+        "hash": "0f050654"
+      },
+      "factIds": [
+        "fact.salvage.wreckage"
+      ],
+      "variants": {
+        "low": "Wreckers on the bar keep the people they pull out as crew. The rescue is owed in work. The sum is for Opens-The-Second-Shed to say.",
+        "high": "The wreckers on the bar pull people out of the water. They keep those people on as crew until the cost of the rescue is worked off. I do not know the sum. Opens-The-Second-Shed does."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-station-keeper.chasepoint-unpaid-stage",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.station-keeper",
+      "keys": {
+        "topic": "topic.chasepoint-unpaid-stage"
+      },
+      "words": "I hold the keeper's office here. The Legion built this stage, then the pay stopped. No keeper has drawn a wage in two hundred years. Two families say the office is theirs, with the arrears. Argues-With-The-Clerk speaks for the other one, if you want his side.",
+      "available": [
+        {
+          "questState": [
+            "quest.local.lm57",
+            "unstarted"
+          ]
+        }
+      ],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint-unpaid-stage.start",
+        "hash": "59306ae4"
+      },
+      "factIds": [
+        "fact.chasepoint.unpaid-keeper",
+        "fact.chasepoint.keeper-claim",
+        "fact.chasepoint.legion-built"
+      ],
+      "variants": {
+        "low": "No keeper here has drawn pay in two hundred years. Two families want the office. Argues-With-The-Clerk speaks for the other one.",
+        "high": "No keeper at this stage has drawn a wage in two hundred years. I hold the office all the same. Two families say it is theirs, with the arrears. Argues-With-The-Clerk speaks for the other one. Hear him out, traveller, then come back and I'll read you the old orders."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-station-keeper.chasepoint-road-survey",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.station-keeper",
+      "keys": {
+        "topic": "topic.chasepoint-road-survey"
+      },
+      "words": "Chasepoint is the last solid footing before the road swings inland. Past here it needs a causeway. A survey went east out of Soulrest to cost the mending, but no word has come back. Go to The Tag House on the Prison road. Look for the survey's trail there.",
+      "available": [
+        {
+          "questState": [
+            "quest.local.lm56",
+            "unstarted"
+          ]
+        }
+      ],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint-road-survey.start",
+        "hash": "2ea5c6b6"
+      },
+      "factIds": [
+        "fact.chasepoint.last-firm-ground",
+        "fact.tag-house.prison-road"
+      ],
+      "variants": {
+        "low": "A survey went east out of Soulrest to cost a causeway and sent no word back. Try The Tag House on the Prison road. This is the last solid ground before the road swings inland.",
+        "high": "This is the last solid ground before the road swings inland. Past it the road is poor. A survey went east out of Soulrest to cost a causeway and sent no word back. Find The Tag House on the Prison road. Look for the survey's trail there."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-station-keeper.chasepoint-living-cargo",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.station-keeper",
+      "keys": {
+        "topic": "topic.chasepoint-living-cargo"
+      },
+      "words": "A wreck has come in on the bar. The families won't work it. Wreckage from the Southern Sea lands on the shore south of the stage often enough, but this one is different. Buys-Cheap has been out to look at it. You'll find him by the drying shed. Ask him what is aboard.",
+      "available": [
+        {
+          "questState": [
+            "quest.local.lq29",
+            "unstarted"
+          ]
+        }
+      ],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint-living-cargo.start",
+        "hash": "2b383704"
+      },
+      "factIds": [
+        "fact.salvage.wreckage"
+      ],
+      "variants": {
+        "low": "A wreck has come in on the bar. The families won't work it. Buys-Cheap went to look. Ask him.",
+        "high": "A wreck has come in on the bar. Wreckage from the Southern Sea lands south of the stage often enough, but the families won't work this one. Buys-Cheap has been out to look at it. He's by the drying shed."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.chasepoint-station-keeper.chasepoint-sea-lost",
+      "type": "dialogue",
+      "speaker": "npc.mercantile-coast.chasepoint.station-keeper",
+      "keys": {
+        "topic": "topic.chasepoint-sea-lost"
+      },
+      "words": "Wreckage comes ashore to the south of the stage. That part is no secret. I don't carry talk about lots traced to sunk ships. It isn't the office's business. A ship's owners can think her still afloat when she is on our shingle, though. You'd find them in Soulrest, west along the coast road.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.chasepoint-sea-lost.default",
+        "hash": "5205334c"
+      },
+      "factIds": [
+        "fact.salvage.wreckage",
+        "fact.chasepoint.unknowing-owners"
+      ],
+      "variants": {
+        "low": "I don't repeat that talk. Wreckage comes ashore south of the stage. Owners who think their ship is afloat will be in Soulrest, west along the coast road.",
+        "high": "I don't repeat that talk, traveller, but I'll give you the part that helps. Wreckage comes ashore south of the stage. Some owners think their ship is afloat when she is on our shingle. Ask in Soulrest, west along the coast road, if you want to tell them."
+      }
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "domain": "journal-text",
+  "_": "Journal entries and objective lines of the saxhleel-coast local quests (2.11): one unit per text key a quest stage names (`journal`, `objectives[].text`). Logic lives in world/sources/quests; this file holds only the words. `factIds` are dialogue facts (world/sources/dialogue/facts.json) the words state; `groundedIn` names the place facts claim ids and promises behind the words. Compiled to packages/text-catalogue/src/generated/journal-text.ts by `python3 -m worldgen.place_text --emit-text`.",
+  "entries": [
+    {
+      "id": "text.journal.sx08.10",
+      "questId": "quest.local.sx08",
+      "surface": "journal",
+      "text": "Bones lie outside a cave mouth among the roots at Takes-The-Tools, with old tools among them. Something has made a lair of the hollow.",
+      "factIds": [],
+      "groundedIn": [
+        "fact.jungle-root-hollow.why-founding-2",
+        "fact.jungle-root-hollow.why-pressures-1",
+        "fact.jungle-root-hollow.playerPurpose-hook-1",
+        "fact.jungle-root-hollow.vibe-signatureFeature-1"
+      ]
+    },
+    {
+      "id": "text.objective.sx08.clear-hollow",
+      "questId": "quest.local.sx08",
+      "surface": "journal",
+      "text": "Clear the lair at Takes-The-Tools",
+      "factIds": [],
+      "groundedIn": [
+        "fact.jungle-root-hollow.why-founding-2",
+        "fact.jungle-root-hollow.why-pressures-1",
+        "fact.jungle-root-hollow.playerPurpose-hook-1",
+        "fact.jungle-root-hollow.vibe-signatureFeature-1"
+      ]
+    },
+    {
+      "id": "text.journal.sx08.20",
+      "questId": "quest.local.sx08",
+      "surface": "journal",
+      "text": "I cleared the lair at Takes-The-Tools. The hiring camp a kilometre east can forage twice as far. Its overseers pay in goods.",
+      "factIds": [],
+      "groundedIn": [
+        "fact.jungle-root-hollow.why-founding-2",
+        "fact.jungle-root-hollow.why-pressures-1",
+        "fact.jungle-root-hollow.playerPurpose-hook-1",
+        "fact.jungle-root-hollow.vibe-signatureFeature-1",
+        "fact.jungle-root-hollow.questHooks-opportunity-1"
+      ]
+    },
+    {
+      "id": "text.journal.sx05.10",
+      "questId": "quest.local.sx05",
+      "surface": "journal",
+      "text": "Deeka-Kaya, the surface tender at the Counted Lots, told me a diver came up dead on lot four. She had no right to work that lot. I'm to ask Ohl-Jei, who dives beside it.",
+      "factIds": [
+        "fact.lots.lot-four"
+      ],
+      "groundedIn": [
+        "fact.pearl-lots.why-pressures-1"
+      ]
+    },
+    {
+      "id": "text.objective.sx05.ask-ohl-jei",
+      "questId": "quest.local.sx05",
+      "surface": "journal",
+      "text": "Ask Ohl-Jei about the death on lot four",
+      "factIds": [],
+      "groundedIn": [
+        "fact.pearl-lots.why-occupantsMotive-1"
+      ]
+    },
+    {
+      "id": "text.journal.sx05.20",
+      "questId": "quest.local.sx05",
+      "surface": "journal",
+      "text": "Ohl-Jei told me lot four was never the dead diver's. Lots pass by inheritance. Disputes over them are settled in Archon.",
+      "factIds": [
+        "fact.lots.lot-four",
+        "fact.lots.inheritance"
+      ],
+      "groundedIn": [
+        "fact.pearl-lots.why-occupantsMotive-1"
+      ]
+    },
+    {
+      "id": "text.journal.sx05.90",
+      "questId": "quest.local.sx05",
+      "surface": "journal",
+      "text": "Deeka-Kaya or Ohl-Jei has died at the Counted Lots. I will learn nothing more here of the death on lot four.",
+      "factIds": [],
+      "groundedIn": [
+        "fact.pearl-lots.why-pressures-1"
+      ]
+    },
+    {
+      "id": "text.journal.sx06.10",
+      "questId": "quest.local.sx06",
+      "surface": "journal",
+      "text": "Deeka-Kaya, the surface tender at the Counted Lots, told me a lot has outlived its last heir and four families dive it to stake a claim. A claimant must pay the heirs' line a share of the lot's worth, so the worth must be set first. A drowned diver's basket lies eight metres down by the fourth lot.",
+      "factIds": [
+        "fact.lots.heirless",
+        "fact.lots.heirs-share",
+        "fact.lots.drowned-basket"
+      ],
+      "groundedIn": [
+        "fact.pearl-lots.questHooks-opportunity-1"
+      ]
+    },
+    {
+      "id": "text.objective.sx06.take-pearl",
+      "questId": "quest.local.sx06",
+      "surface": "journal",
+      "text": "Dive to the drowned diver's basket by the fourth lot and take the deep-lot pearl",
+      "factIds": [],
+      "groundedIn": [
+        "fact.pearl-lots.why-siteAdvantages-1"
+      ]
+    },
+    {
+      "id": "text.journal.sx06.20",
+      "questId": "quest.local.sx06",
+      "surface": "journal",
+      "text": "I brought up the deep-lot pearl from the drowned diver's basket. Deeka-Kaya wants to see it.",
+      "factIds": [
+        "fact.lots.drowned-basket"
+      ],
+      "groundedIn": [
+        "fact.pearl-lots.tag-unique-item"
+      ]
+    },
+    {
+      "id": "text.objective.sx06.show-tender",
+      "questId": "quest.local.sx06",
+      "surface": "journal",
+      "text": "Show Deeka-Kaya the deep-lot pearl",
+      "factIds": [],
+      "groundedIn": [
+        "fact.pearl-lots.why-occupantsMotive-2"
+      ]
+    },
+    {
+      "id": "text.journal.sx06.30",
+      "questId": "quest.local.sx06",
+      "surface": "journal",
+      "text": "Deeka-Kaya took the deep-lot pearl to set the heirs' share. The claim on the heirless lot is settled in Archon.",
+      "factIds": [
+        "fact.lots.heirs-share"
+      ],
+      "groundedIn": [
+        "fact.pearl-lots.questHooks-opportunity-1"
+      ]
+    },
+    {
+      "id": "text.journal.sx06.90",
+      "questId": "quest.local.sx06",
+      "surface": "journal",
+      "text": "Deeka-Kaya has died at the Counted Lots. The heirless lot will not be valued at the Counted Lots now.",
+      "factIds": [],
+      "groundedIn": [
+        "fact.pearl-lots.why-occupantsMotive-2"
+      ]
+    }
+  ]
+}

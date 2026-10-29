@@ -1,0 +1,1748 @@
+{
+ "schemaVersion": 1,
+ "placeId": "place.imperial-fringe.bog-iron-workings",
+ "facts": [
+  {
+   "id": "fact.bog-iron-workings.tag-resource-source",
+   "claim": "Bog Iron Workings gathers or works a resource the player can see.",
+   "sourceField": "playerPurpose.primary",
+   "tag": "resource-source",
+   "kind": "activity",
+   "carrier": {
+    "built": {
+     "uid": "sd-ore1",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.bog-iron-workings.tag-social-drama",
+   "claim": "The people of Bog Iron Workings are caught in a quarrel the player can see.",
+   "sourceField": "playerPurpose.secondary",
+   "tag": "social-drama",
+   "kind": "activity",
+   "carrier": {
+    "built": {
+     "uid": "socket.bog-iron-workings.npc-n1",
+     "type": "npc"
+    }
+   }
+  },
+  {
+   "id": "fact.bog-iron-workings.tag-materials",
+   "claim": "Materials are gathered or stacked at Bog Iron Workings.",
+   "sourceField": "lootTable.kinds",
+   "tag": "materials",
+   "kind": "activity",
+   "carrier": {
+    "built": {
+     "uid": "bl-iron-bars-1",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.bog-iron-workings.why-founding-1",
+   "claim": "Bog iron forms in the ground here.",
+   "sourceField": "why.founding",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.imperial-fringe.bog-iron-workings.n1"
+    }
+   }
+  },
+  {
+   "id": "fact.bog-iron-workings.why-founding-2",
+   "claim": "The road crews buy replacement iron for nails, tyres and tools from the diggers here.",
+   "sourceField": "why.founding",
+   "kind": "service",
+   "carrier": {
+    "built": {
+     "uid": "socket.bog-iron-workings.npc-n1",
+     "type": "npc"
+    }
+   }
+  },
+  {
+   "id": "fact.bog-iron-workings.why-siteAdvantages-1",
+   "claim": "The seep is stagnant and rich in iron.",
+   "sourceField": "why.siteAdvantages",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.imperial-fringe.bog-iron-workings.n1"
+    }
+   }
+  },
+  {
+   "id": "fact.bog-iron-workings.why-siteAdvantages-2",
+   "claim": "The ore is lifted from the mud in cakes.",
+   "sourceField": "why.siteAdvantages",
+   "kind": "activity",
+   "carrier": {
+    "built": {
+     "uid": "sd-orebucket",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.bog-iron-workings.why-occupantsMotive-1",
+   "claim": "The diggers come from three villages for one season a year.",
+   "sourceField": "why.occupantsMotive",
+   "kind": "activity",
+   "carrier": {
+    "built": {
+     "uid": "socket.bog-iron-workings.npc-n1",
+     "type": "npc"
+    }
+   }
+  },
+  {
+   "id": "fact.bog-iron-workings.why-occupantsMotive-2",
+   "claim": "The diggers consider the work shameful.",
+   "sourceField": "why.occupantsMotive",
+   "kind": "history",
+   "carrier": {
+    "built": {
+     "uid": "socket.bog-iron-workings.npc-n1",
+     "type": "npc"
+    }
+   }
+  },
+  {
+   "id": "fact.bog-iron-workings.why-pressures-1",
+   "claim": "The seep is being worked out. Each season's cakes are smaller and lie further from the path.",
+   "sourceField": "why.pressures",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.imperial-fringe.bog-iron-workings.n1"
+    }
+   }
+  },
+  {
+   "id": "fact.bog-iron-workings.vibe-signatureFeature-1",
+   "claim": "The furnace stands on a levelled floor above the seep.",
+   "sourceField": "vibe.signatureFeature",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "bl-furnace",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.bog-iron-workings.vibe-signatureFeature-2",
+   "claim": "The furnace's charcoal bed is spread before its mouth.",
+   "sourceField": "vibe.signatureFeature",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "bl-charcoal-bed",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.bog-iron-workings.vibe-silhouette-1",
+   "claim": "A small timber house stands west of the furnace.",
+   "sourceField": "vibe.silhouette",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "b-hut",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.bog-iron-workings.vibe-silhouette-2",
+   "claim": "The seep lies below the bank.",
+   "sourceField": "vibe.silhouette",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "dw-plank14",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.bog-iron-workings.vibe-condition-1",
+   "claim": "The furnace is rebuilt every season because it is broken open to get the bloom out.",
+   "sourceField": "vibe.condition",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.imperial-fringe.bog-iron-workings.n1"
+    }
+   }
+  },
+  {
+   "id": "fact.bog-iron-workings.playerPurpose-hook-1",
+   "claim": "The seasonal diggers allow a visitor to take what they can carry.",
+   "sourceField": "playerPurpose.hook",
+   "kind": "service",
+   "carrier": {
+    "built": {
+     "uid": "socket.bog-iron-workings.npc-n1",
+     "type": "npc"
+    }
+   }
+  },
+  {
+   "id": "fact.bog-iron-workings.questHooks-opportunity-1",
+   "claim": "The diggers have abandoned the deep end of the seep without saying why.",
+   "sourceField": "questHooks.opportunity",
+   "kind": "history",
+   "carrier": {
+    "built": {
+     "uid": "socket.bog-iron-workings.npc-n1",
+     "type": "npc"
+    }
+   }
+  },
+  {
+   "id": "fact.bog-iron-workings.contents-loot-l1-1",
+   "claim": "Workshop stock, as materials, can be found at the workings.",
+   "sourceField": "contents.loot.l1",
+   "kind": "cache",
+   "carrier": {
+    "built": {
+     "uid": "socket.bog-iron-workings.container-iron-stock",
+     "type": "container"
+    }
+   }
+  },
+  {
+   "id": "fact.bog-iron-workings.vibe-approach-1",
+   "claim": "The seep shows through the ferns below the bench well before the workings do.",
+   "sourceField": "vibe.approach",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.imperial-fringe.bog-iron-workings.n1"
+    }
+   }
+  },
+  {
+   "id": "fact.bog-iron-workings.vibe-materials-1",
+   "claim": "A clay furnace is rebuilt every season.",
+   "sourceField": "vibe.materials",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.building",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.bog-iron-workings.vibe-materials-2",
+   "claim": "A timber house stands on posts.",
+   "sourceField": "vibe.materials",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.diggers-hut.building",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.bog-iron-workings.vibe-mood-1",
+   "claim": "The mood is purposeful.",
+   "sourceField": "vibe.mood",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.imperial-fringe.bog-iron-workings.n1"
+    }
+   }
+  },
+  {
+   "id": "fact.bog-iron-workings.vibe-palette-1",
+   "claim": "The palette is charcoal black, grey furnace clay and dark peat water.",
+   "sourceField": "vibe.palette",
+   "kind": "feature",
+   "carrier": {
+    "built": {
+     "uid": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.building",
+     "type": "visual-cue"
+    }
+   }
+  },
+  {
+   "id": "fact.bog-iron-workings.vibe-senses-1",
+   "claim": "The mud is sucking.",
+   "sourceField": "vibe.senses",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.imperial-fringe.bog-iron-workings.n1-2"
+    }
+   }
+  },
+  {
+   "id": "fact.bog-iron-workings.vibe-senses-2",
+   "claim": "A bloom struck gives a hollow ring.",
+   "sourceField": "vibe.senses",
+   "kind": "activity",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.imperial-fringe.bog-iron-workings.n1-2"
+    }
+   }
+  },
+  {
+   "id": "fact.bog-iron-workings.vibe-senses-3",
+   "claim": "Sulphur hangs in the air.",
+   "sourceField": "vibe.senses",
+   "kind": "feature",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.imperial-fringe.bog-iron-workings.n1-3"
+    }
+   }
+  },
+  {
+   "id": "fact.bog-iron-workings.why-wouldChangeIf-1",
+   "claim": "The workings would be abandoned without ceremony.",
+   "sourceField": "why.wouldChangeIf",
+   "kind": "activity",
+   "carrier": {
+    "queued": {
+     "type": "npc-topic",
+     "ref": "npc.imperial-fringe.bog-iron-workings.n1-3"
+    }
+   }
+  }
+ ],
+ "world": {
+  "schemaVersion": 1,
+  "name": "Bog Iron Workings",
+  "positionM": [
+   2004.2,
+   2598.7
+  ],
+  "footprintRadiusM": 45.0,
+  "boundaryM": [
+   [
+    1972.0,
+    2505.0
+   ],
+   [
+    2022.0,
+    2505.0
+   ],
+   [
+    2022.0,
+    2612.0
+   ],
+   [
+    2000.0,
+    2612.0
+   ],
+   [
+    2000.0,
+    2553.0
+   ],
+   [
+    1972.0,
+    2553.0
+   ]
+  ],
+  "extentM": [
+   [
+    1972.0,
+    2505.0
+   ],
+   [
+    2022.0,
+    2505.0
+   ],
+   [
+    2043.75,
+    2587.15
+   ],
+   [
+    2022.0,
+    2612.0
+   ],
+   [
+    2000.0,
+    2612.0
+   ],
+   [
+    1972.0,
+    2553.0
+   ]
+  ],
+  "extentRadiusM": 99.1,
+  "route": {
+   "lineId": "track.road.gideon-ridge-runners-post",
+   "kind": "footpath",
+   "name": null,
+   "from": "place.imperial-fringe.gideon",
+   "to": "place.imperial-fringe.ridge-runners-post",
+   "vertexM": [
+    1998.74,
+    2612.9
+   ],
+   "offExtentM": 1.5,
+   "alongM": 1055.5,
+   "lengthM": 24370.6
+  },
+  "stands": [
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.diggers-hut.assembly.b-hut-lamp",
+    "assetId": "kotm:argonia/clutter/townlantern04",
+    "kind": "settlement",
+    "layer": "light",
+    "positionM": [
+     1990.6,
+     20.79,
+     2533.3
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.diggers-hut.assembly.y5-cs-basket",
+    "assetId": "mudmother:gv_meshes/argoniannest/basketfull",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     1993.2,
+     20.66,
+     2529.6
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.diggers-hut.assembly.y5-cs-crate",
+    "assetId": "vanilla:clutter/common/cratesmall01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     1993.8,
+     20.92,
+     2531.5
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.diggers-hut.assembly.y5-cs-pail",
+    "assetId": "vanilla:clutter/bucket01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     1994.4,
+     20.63,
+     2536.9
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.diggers-hut.assembly.y5-cs-sack",
+    "assetId": "vanilla:clutter/containers/miscsacklarge",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     1994.5,
+     20.8,
+     2530.3
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.diggers-hut.assembly.y5-cs-urn1",
+    "assetId": "mudmother:gv_meshes/argoniannest/paintedurn01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     1994.1,
+     20.62,
+     2528.5
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.diggers-hut.assembly.y5-cs-urn2",
+    "assetId": "mudmother:gv_meshes/argoniannest/paintedurn01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     1992.6,
+     20.63,
+     2528.2
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.diggers-hut.assembly.y5-cs-wood",
+    "assetId": "vanilla:clutter/firewood/firewoodpilesmall01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     1990.9,
+     20.59,
+     2526.8
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.diggers-hut.building",
+    "assetId": "composite:plank/house1-with-door",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     1987.0,
+     19.45,
+     2535.0
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.bl-charcoal-bed",
+    "assetId": "kotm:oaristys/forge/coalpile",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2008.6,
+     19.46,
+     2545.6
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.bl-iron-bars-1",
+    "assetId": "kotm:oaristys/forge/ingotsiron01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2005.3,
+     19.46,
+     2538.6
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.bl-iron-bars-2",
+    "assetId": "kotm:oaristys/forge/ingotsiron01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2005.35,
+     19.46,
+     2539.15
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.bl-iron-bars-3",
+    "assetId": "kotm:oaristys/forge/ingotsiron02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2005.9,
+     19.46,
+     2538.0
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.bl-meal-bench-s",
+    "assetId": "vanilla:furniture/farm/farmbench01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2004.5,
+     19.45,
+     2546.5
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.bl-meal-bench-sw",
+    "assetId": "vanilla:furniture/farm/farmbench01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2001.0,
+     19.45,
+     2547.0
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.dw-plank1",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2039.6,
+     15.51,
+     2585.6
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.dw-plank10",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2042.55,
+     15.36,
+     2586.66
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.dw-plank11",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank03",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2042.87,
+     15.3,
+     2586.78
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.dw-plank12",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank04",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2043.17,
+     15.29,
+     2586.91
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.dw-plank13",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2043.47,
+     15.33,
+     2587.03
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.dw-plank14",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank03",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2043.75,
+     15.29,
+     2587.15
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.dw-plank2",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank03",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2039.93,
+     15.47,
+     2585.72
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.dw-plank3",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank04",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2040.25,
+     15.47,
+     2585.84
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.dw-plank4",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2040.58,
+     15.51,
+     2585.95
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.dw-plank5",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank03",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2040.91,
+     15.46,
+     2586.07
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.dw-plank6",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank04",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2041.24,
+     15.44,
+     2586.19
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.dw-plank7",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2041.56,
+     15.45,
+     2586.31
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.dw-plank8",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank03",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2041.89,
+     15.38,
+     2586.43
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.dw-plank9",
+    "assetId": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodplank04",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2042.22,
+     15.35,
+     2586.55
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.n-marshweed",
+    "assetId": "bmv:landscape/trees/reedsmall2",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2041.2,
+     15.4,
+     2583.0
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.n-somnalius-fern",
+    "assetId": "bmv:landscape/plants/fern01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2002.6,
+     15.0,
+     2591.0
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.sd-basket",
+    "assetId": "mudmother:gv_meshes/argoniannest/basketfull",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2035.2,
+     15.43,
+     2589.7
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.sd-cart",
+    "assetId": "vanilla:clutter/carts/handcart01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2038.0,
+     15.79,
+     2586.0
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.sd-ore1",
+    "assetId": "kotm:oaristys/forge/orestack_iron",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2033.8,
+     15.39,
+     2587.5
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.sd-ore2",
+    "assetId": "kotm:oaristys/forge/orestack_iron",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2033.6,
+     15.39,
+     2588.9
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.sd-orebucket",
+    "assetId": "kotm:oaristys/forge/orebucket_iron",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2035.0,
+     15.39,
+     2588.0
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.sd-shovel",
+    "assetId": "vanilla:clutter/common/shovel01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2036.6,
+     15.96,
+     2588.4
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.sd-spoil",
+    "assetId": "vanilla:dungeons/mines/rocks/minecdirtmound02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2036.6,
+     14.75,
+     2592.6
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.sd-spoil2",
+    "assetId": "vanilla:dungeons/mines/rocks/minecdirtmound02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2032.8,
+     15.16,
+     2592.0
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.sm-anvil",
+    "assetId": "vanilla:clutter/blacksmith/blacksmithanvil01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     1996.8,
+     20.59,
+     2550.0
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.sm-forge",
+    "assetId": "vanilla:clutter/blacksmith/blacksmithforge01/blacksmithforge01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     1994.0,
+     20.51,
+     2550.0
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.sm-grindstone",
+    "assetId": "vanilla:clutter/blacksmith/blacksmithsharpeningwheelstatic",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     1995.5,
+     20.49,
+     2552.25
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.sm-workbench",
+    "assetId": "vanilla:clutter/blacksmith/blacksmithworkbench01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     1996.4,
+     20.62,
+     2548.15
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.y1-bl-bellows",
+    "assetId": "vanilla:clutter/blacksmith/blacksmithnovicebellows01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2007.0,
+     19.53,
+     2537.6
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.y1-bl-chop",
+    "assetId": "vanilla:clutter/chopping block/choppingblock01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2011.0,
+     19.45,
+     2547.0
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.y1-bl-ingots",
+    "assetId": "kotm:oaristys/forge/ingotsiron01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2008.6,
+     19.46,
+     2545.6
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.y1-bl-wood",
+    "assetId": "vanilla:clutter/firewood/firewoodpilelarge01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2011.6,
+     19.39,
+     2544.3
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.y3-cf-fire",
+    "assetId": "vanilla:clutter/woodfires/campfire01burning",
+    "kind": "settlement",
+    "layer": "light",
+    "positionM": [
+     2003.6,
+     19.46,
+     2541.6
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.y3-cf-fire.socket.fire",
+    "assetId": "fx:smoke-column",
+    "kind": "effect",
+    "layer": null,
+    "positionM": [
+     2003.54,
+     20.45,
+     2541.59
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.y3-cf-pot",
+    "assetId": "kotm:argonia/clutter/saxhleelmetalpot01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2002.3,
+     19.56,
+     2540.6
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.y3-cf-urn",
+    "assetId": "mudmother:gv_meshes/argoniannest/paintedurn01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2002.5,
+     19.46,
+     2543.0
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.y4-oc-bask1",
+    "assetId": "mudmother:gv_meshes/argoniannest/basketfull",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2012.6,
+     19.49,
+     2542.6
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.y4-oc-bask2",
+    "assetId": "kotm:argonia/clutter/basket02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2013.6,
+     19.47,
+     2543.5
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.y4-oc-cart",
+    "assetId": "vanilla:clutter/carts/handcart02",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2011.3,
+     19.83,
+     2540.6
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.y4-oc-ore1",
+    "assetId": "kotm:oaristys/forge/orestack_iron",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2014.2,
+     19.46,
+     2541.2
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.y4-oc-ore2",
+    "assetId": "kotm:oaristys/forge/orestack_iron",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2014.9,
+     19.46,
+     2542.2
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.y4-oc-orebucket",
+    "assetId": "kotm:oaristys/forge/orebucket_iron",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2012.7,
+     19.46,
+     2541.4
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.y4-oc-pail",
+    "assetId": "vanilla:clutter/bucket01",
+    "kind": "settlement",
+    "layer": "clutter",
+    "positionM": [
+     2010.6,
+     19.46,
+     2542.8
+    ]
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.building",
+    "assetId": "vanilla:furniture/smeltermarker",
+    "kind": "settlement",
+    "layer": null,
+    "positionM": [
+     2008.0,
+     19.5,
+     2541.0
+    ]
+   }
+  ],
+  "sockets": [
+   {
+    "id": "fill.sd-basket",
+    "kind": "container",
+    "area": "parcel.bog-iron-workings.the-bloomery",
+    "positionM": [
+     2035.2,
+     15.43,
+     2589.7
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.bog-iron-workings.container-iron-stock",
+    "kind": "container",
+    "area": "parcel.bog-iron-workings.diggers-hut",
+    "positionM": [
+     1993.8,
+     20.93,
+     2531.5
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.bog-iron-workings.deep-pools",
+    "kind": "fauna",
+    "area": "parcel.bog-iron-workings.the-bloomery",
+    "positionM": [
+     2040.0,
+     13.76,
+     2556.0
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.bog-iron-workings.den-crow",
+    "kind": "fauna",
+    "area": "open",
+    "positionM": [
+     2029.7,
+     18.94,
+     2523.9
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.bog-iron-workings.den-giant-leech",
+    "kind": "encounter",
+    "area": "open",
+    "positionM": [
+     2047.3,
+     13.98,
+     2572.3
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.bog-iron-workings.evidence-the-stained-boots",
+    "kind": "marker",
+    "area": "parcel.bog-iron-workings.diggers-hut",
+    "positionM": [
+     1990.9,
+     20.62,
+     2536.9
+    ],
+    "fills": [
+     "promise.bog-iron-workings.evidence-the-stained-boots"
+    ]
+   },
+   {
+    "id": "socket.bog-iron-workings.idle-n1-cook",
+    "kind": "idle",
+    "area": "parcel.bog-iron-workings.the-bloomery",
+    "positionM": [
+     2003.6,
+     19.46,
+     2541.6
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.bog-iron-workings.idle-n1-home",
+    "kind": "idle",
+    "area": "LilmothApothecaryHouse",
+    "positionM": [
+     120.55,
+     81.25,
+     76.77
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.bog-iron-workings.idle-n1-work",
+    "kind": "idle",
+    "area": "parcel.bog-iron-workings.the-bloomery",
+    "positionM": [
+     2008.0,
+     19.5,
+     2541.0
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.bog-iron-workings.idle-seat-bl-meal-bench-s-1",
+    "kind": "idle",
+    "area": "parcel.bog-iron-workings.the-bloomery",
+    "positionM": [
+     2004.1,
+     19.45,
+     2546.5
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.bog-iron-workings.idle-seat-bl-meal-bench-s-2",
+    "kind": "idle",
+    "area": "parcel.bog-iron-workings.the-bloomery",
+    "positionM": [
+     2004.94,
+     19.45,
+     2546.5
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.bog-iron-workings.idle-seat-bl-meal-bench-sw-1",
+    "kind": "idle",
+    "area": "parcel.bog-iron-workings.the-bloomery",
+    "positionM": [
+     2001.29,
+     19.45,
+     2546.72
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.bog-iron-workings.idle-seat-bl-meal-bench-sw-2",
+    "kind": "idle",
+    "area": "parcel.bog-iron-workings.the-bloomery",
+    "positionM": [
+     2000.69,
+     19.45,
+     2547.31
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.bog-iron-workings.idle-seat-lilmothapothecaryhouse-088933a3",
+    "kind": "idle",
+    "area": "LilmothApothecaryHouse",
+    "positionM": [
+     125.86,
+     81.25,
+     74.08
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.bog-iron-workings.marker-hut-door",
+    "kind": "marker",
+    "area": "parcel.bog-iron-workings.diggers-hut",
+    "positionM": [
+     1990.5,
+     20.62,
+     2535.1
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.bog-iron-workings.npc-n1",
+    "kind": "npc",
+    "area": "parcel.bog-iron-workings.the-bloomery",
+    "positionM": [
+     2005.2,
+     19.46,
+     2543.0
+    ],
+    "fills": [
+     "promise.bog-iron-workings.occupant-n1"
+    ],
+    "slot": "n1"
+   },
+   {
+    "id": "socket.bog-iron-workings.ore-beach",
+    "kind": "mooring",
+    "area": "open",
+    "positionM": [
+     2023.0,
+     15.45,
+     2565.0
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.bog-iron-workings.plant-fern",
+    "kind": "plant",
+    "area": "open",
+    "positionM": [
+     2001.56,
+     16.26,
+     2590.01
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.bog-iron-workings.plant-hanging-moss-1",
+    "kind": "plant",
+    "area": "open",
+    "positionM": [
+     2003.93,
+     18.57,
+     2564.4
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.bog-iron-workings.plant-hanging-moss-2",
+    "kind": "plant",
+    "area": "open",
+    "positionM": [
+     1947.82,
+     19.79,
+     2531.14
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.bog-iron-workings.plant-somnalius-fern-1",
+    "kind": "plant",
+    "area": "open",
+    "positionM": [
+     1971.76,
+     19.99,
+     2551.26
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.bog-iron-workings.plant-somnalius-fern-2",
+    "kind": "plant",
+    "area": "open",
+    "positionM": [
+     1996.01,
+     16.62,
+     2585.65
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.bog-iron-workings.plant-somnalius-fern-3",
+    "kind": "plant",
+    "area": "open",
+    "positionM": [
+     1992.1,
+     16.09,
+     2588.95
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.bog-iron-workings.plant-swamp-fungal-pod-1",
+    "kind": "plant",
+    "area": "open",
+    "positionM": [
+     1954.96,
+     19.06,
+     2553.8
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.bog-iron-workings.plant-swamp-fungal-pod-2",
+    "kind": "plant",
+    "area": "open",
+    "positionM": [
+     1968.9,
+     20.63,
+     2523.32
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.bog-iron-workings.post-ore-digger",
+    "kind": "marker",
+    "area": "parcel.bog-iron-workings.the-bloomery",
+    "positionM": [
+     2021.5,
+     18.71,
+     2538.0
+    ],
+    "fills": [
+     "promise.bog-iron-workings.post-ore-digger"
+    ]
+   },
+   {
+    "id": "socket.bog-iron-workings.scene-the-mound",
+    "kind": "marker",
+    "area": "parcel.bog-iron-workings.the-bloomery",
+    "positionM": [
+     2008.0,
+     19.5,
+     2541.0
+    ],
+    "fills": [
+     "promise.bog-iron-workings.scene-the-mound"
+    ]
+   },
+   {
+    "id": "socket.bog-iron-workings.seep-diggings",
+    "kind": "marker",
+    "area": "parcel.bog-iron-workings.the-bloomery",
+    "positionM": [
+     2041.0,
+     15.36,
+     2589.0
+    ],
+    "fills": [
+     "promise.bog-iron-workings.thing-seep"
+    ]
+   },
+   {
+    "id": "socket.bog-iron-workings.station-forge",
+    "kind": "station",
+    "area": "parcel.bog-iron-workings.the-bloomery",
+    "positionM": [
+     1994.0,
+     20.51,
+     2550.0
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.bog-iron-workings.station-grindstone",
+    "kind": "station",
+    "area": "parcel.bog-iron-workings.the-bloomery",
+    "positionM": [
+     1995.5,
+     20.49,
+     2552.25
+    ],
+    "fills": []
+   },
+   {
+    "id": "socket.bog-iron-workings.station-workbench",
+    "kind": "station",
+    "area": "parcel.bog-iron-workings.the-bloomery",
+    "positionM": [
+     1996.4,
+     20.62,
+     2548.15
+    ],
+    "fills": []
+   },
+   {
+    "id": "yard.y3-cf-urn",
+    "kind": "container",
+    "area": "parcel.bog-iron-workings.the-bloomery",
+    "positionM": [
+     2002.5,
+     19.46,
+     2543.0
+    ],
+    "fills": []
+   },
+   {
+    "id": "yard.y4-oc-bask1",
+    "kind": "container",
+    "area": "parcel.bog-iron-workings.the-bloomery",
+    "positionM": [
+     2012.6,
+     19.49,
+     2542.6
+    ],
+    "fills": []
+   },
+   {
+    "id": "yard.y5-cs-basket",
+    "kind": "container",
+    "area": "parcel.bog-iron-workings.diggers-hut",
+    "positionM": [
+     1993.2,
+     20.66,
+     2529.6
+    ],
+    "fills": []
+   },
+   {
+    "id": "yard.y5-cs-sack",
+    "kind": "container",
+    "area": "parcel.bog-iron-workings.diggers-hut",
+    "positionM": [
+     1994.5,
+     20.8,
+     2530.3
+    ],
+    "fills": []
+   },
+   {
+    "id": "yard.y5-cs-urn1",
+    "kind": "container",
+    "area": "parcel.bog-iron-workings.diggers-hut",
+    "positionM": [
+     1994.1,
+     20.62,
+     2528.5
+    ],
+    "fills": []
+   },
+   {
+    "id": "yard.y5-cs-urn2",
+    "kind": "container",
+    "area": "parcel.bog-iron-workings.diggers-hut",
+    "positionM": [
+     1992.6,
+     20.62,
+     2528.2
+    ],
+    "fills": []
+   }
+  ],
+  "landmarks": [
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.sd-ore1",
+    "what": "ore",
+    "via": "promise.bog-iron-workings.thing-ore",
+    "positionM": [
+     2033.8,
+     15.39,
+     2587.5
+    ],
+    "inSight": {
+     "places": [],
+     "here": [
+      "fill.sd-basket",
+      "socket.bog-iron-workings.plant-fern",
+      "socket.bog-iron-workings.plant-somnalius-fern-2",
+      "socket.bog-iron-workings.plant-somnalius-fern-3"
+     ]
+    }
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.y1-bl-ingots",
+    "what": "ore",
+    "via": "promise.bog-iron-workings.thing-ore",
+    "positionM": [
+     2008.6,
+     19.46,
+     2545.6
+    ],
+    "inSight": {
+     "places": [],
+     "here": [
+      "socket.bog-iron-workings.idle-seat-bl-meal-bench-s-1",
+      "socket.bog-iron-workings.idle-seat-bl-meal-bench-s-2",
+      "socket.bog-iron-workings.idle-seat-bl-meal-bench-sw-1",
+      "socket.bog-iron-workings.idle-seat-bl-meal-bench-sw-2",
+      "socket.bog-iron-workings.ore-beach",
+      "socket.bog-iron-workings.plant-hanging-moss-1",
+      "socket.bog-iron-workings.station-grindstone",
+      "socket.bog-iron-workings.station-workbench"
+     ]
+    }
+   },
+   {
+    "id": "place.imperial-fringe.bog-iron-workings.parcel.bog-iron-workings.the-bloomery.assembly.y4-oc-ore1",
+    "what": "ore",
+    "via": "promise.bog-iron-workings.thing-ore",
+    "positionM": [
+     2014.2,
+     19.46,
+     2541.2
+    ],
+    "inSight": {
+     "places": [],
+     "here": [
+      "socket.bog-iron-workings.deep-pools",
+      "socket.bog-iron-workings.den-crow",
+      "socket.bog-iron-workings.post-ore-digger",
+      "yard.y4-oc-bask1"
+     ]
+    }
+   },
+   {
+    "id": "socket.bog-iron-workings.evidence-the-stained-boots",
+    "what": "the stained boots",
+    "via": "evidence socket",
+    "positionM": [
+     1990.9,
+     20.62,
+     2536.9
+    ],
+    "inSight": {
+     "places": [],
+     "here": [
+      "socket.bog-iron-workings.container-iron-stock",
+      "socket.bog-iron-workings.marker-hut-door",
+      "socket.bog-iron-workings.plant-hanging-moss-2",
+      "socket.bog-iron-workings.plant-somnalius-fern-1",
+      "socket.bog-iron-workings.plant-swamp-fungal-pod-1",
+      "socket.bog-iron-workings.plant-swamp-fungal-pod-2",
+      "socket.bog-iron-workings.station-forge",
+      "yard.y5-cs-basket",
+      "yard.y5-cs-sack",
+      "yard.y5-cs-urn1",
+      "yard.y5-cs-urn2"
+     ]
+    }
+   },
+   {
+    "id": "socket.bog-iron-workings.scene-the-mound",
+    "what": "the mound",
+    "via": "scene socket",
+    "positionM": [
+     2008.0,
+     19.5,
+     2541.0
+    ],
+    "inSight": {
+     "places": [],
+     "here": [
+      "socket.bog-iron-workings.idle-n1-cook",
+      "socket.bog-iron-workings.idle-n1-work",
+      "socket.bog-iron-workings.npc-n1",
+      "yard.y3-cf-urn"
+     ]
+    }
+   },
+   {
+    "id": "socket.bog-iron-workings.seep-diggings",
+    "what": "seep",
+    "via": "promise.bog-iron-workings.thing-seep",
+    "positionM": [
+     2041.0,
+     15.36,
+     2589.0
+    ],
+    "inSight": {
+     "places": [],
+     "here": [
+      "socket.bog-iron-workings.den-giant-leech"
+     ]
+    }
+   }
+  ],
+  "people": [
+   {
+    "id": "npc.imperial-fringe.bog-iron-workings.n1",
+    "name": "Prices-The-Salvage",
+    "role": "the season's diggers",
+    "post": "socket.bog-iron-workings.npc-n1",
+    "services": [],
+    "hostility": "guarded",
+    "topics": [
+     "topic.about-blackwood",
+     "topic.about-bog-iron-workings",
+     "topic.about-prison-road",
+     "topic.bog-iron-deep-end",
+     "topic.bog-iron-workings",
+     "topic.bog-iron-workings-danger",
+     "topic.bog-iron-workings-directions",
+     "topic.bog-iron-workings-people",
+     "topic.bog-iron-workings-work",
+     "topic.latest-rumours",
+     "topic.role-digging-bog-iron"
+    ]
+   },
+   {
+    "id": "npc.imperial-fringe.bog-iron-workings.n1-2",
+    "name": "Argues-The-Toll",
+    "role": "the season's diggers",
+    "post": "socket.bog-iron-workings.npc-n1",
+    "services": [],
+    "hostility": "guarded",
+    "topics": [
+     "topic.about-blackwood",
+     "topic.about-bog-iron-workings",
+     "topic.about-ojel",
+     "topic.about-prison-road",
+     "topic.bog-iron-workings",
+     "topic.bog-iron-workings-danger",
+     "topic.bog-iron-workings-directions",
+     "topic.bog-iron-workings-people",
+     "topic.bog-iron-workings-work",
+     "topic.role-digging-bog-iron"
+    ]
+   },
+   {
+    "id": "npc.imperial-fringe.bog-iron-workings.n1-3",
+    "name": "Meets-Every-Tide",
+    "role": "the season's diggers",
+    "post": "socket.bog-iron-workings.npc-n1",
+    "services": [],
+    "hostility": "guarded",
+    "topics": [
+     "topic.about-blackwood",
+     "topic.about-bog-iron-workings",
+     "topic.about-prison-road",
+     "topic.bog-iron-leech-den",
+     "topic.bog-iron-workings",
+     "topic.bog-iron-workings-danger",
+     "topic.bog-iron-workings-directions",
+     "topic.bog-iron-workings-people",
+     "topic.bog-iron-workings-work",
+     "topic.latest-rumours",
+     "topic.role-digging-bog-iron"
+    ]
+   }
+  ],
+  "counts": {
+   "LilmothApothecaryHouse": {
+    "nodes": 0,
+    "plants": 0,
+    "items": 0,
+    "containers": 0,
+    "occupants": 0,
+    "byItem": {},
+    "byPlant": {},
+    "creatures": {}
+   },
+   "open": {
+    "nodes": 8,
+    "plants": 8,
+    "items": 0,
+    "containers": 0,
+    "occupants": 0,
+    "byItem": {
+     "item.hanging-moss": 2,
+     "item.somnalius-frond": 4,
+     "item.swamp-fungal-pod": 2
+    },
+    "byPlant": {
+     "hanging-moss": 2,
+     "somnalius-fern": 4,
+     "swamp-fungal-pod": 2
+    },
+    "creatures": {
+     "creature.crow": 4,
+     "creature.giant-leech": 4
+    }
+   },
+   "parcel.bog-iron-workings.diggers-hut": {
+    "nodes": 0,
+    "plants": 0,
+    "items": 30,
+    "containers": 5,
+    "occupants": 0,
+    "byItem": {
+     "item.baked-crocodile-tongue": 1,
+     "item.bog-iron": 6,
+     "item.bucket": 1,
+     "item.clay-jug": 1,
+     "item.hissmir-fish-eye-rye": 1,
+     "item.iron-ore": 4,
+     "item.rag": 2,
+     "item.river-salt": 2,
+     "item.saltrice-loaf": 5,
+     "item.smoked-slaughterfish": 3,
+     "item.trodh": 3,
+     "item.turtle-shell-bowl": 1
+    },
+    "byPlant": {},
+    "creatures": {}
+   },
+   "parcel.bog-iron-workings.the-bloomery": {
+    "nodes": 0,
+    "plants": 0,
+    "items": 19,
+    "containers": 3,
+    "occupants": 1,
+    "byItem": {
+     "item.bog-iron": 6,
+     "item.iron-war-arrow": 8,
+     "item.pickaxe": 1,
+     "item.repair-hammer": 2,
+     "item.tongs": 2
+    },
+    "byPlant": {},
+    "creatures": {}
+   }
+  },
+  "services": [],
+  "hostility": {
+   "baseline": "guarded",
+   "owner": null,
+   "flips": [],
+   "clearable": false,
+   "respawn": "none"
+  }
+ }
+}

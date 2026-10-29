@@ -1,0 +1,2603 @@
+{
+  "blueprint": {
+    "approaches": [
+      {
+        "firstSeen": "parcel.proving-ground.imperial-wall-run",
+        "fromDirection": "This approach comes from the west. It crosses open fringe marsh.",
+        "id": "approach.proving-ground.west",
+        "mode": "walk",
+        "sequence": "The tower shows first over the flat fringe. The gate, the wall and the other test pieces follow along the straight way.",
+        "wayfinding": "The visitor walks east along the straight way. The walk starts at the west edge of the yard."
+      },
+      {
+        "firstSeen": "parcel.proving-ground.cave-mouth",
+        "fromDirection": "This approach comes from the east. It climbs the west bank of body.2407-3123.",
+        "id": "approach.proving-ground.east",
+        "mode": "walk",
+        "sequence": "The cave mouth reads first from the water edge. The berth, the way and the huts beyond follow.",
+        "wayfinding": "The visitor walks west from the berth on body.2407-3123. The walk follows the straight way."
+      }
+    ],
+    "assetConstraints": [],
+    "boardwalks": [],
+    "boundary": [
+      [
+        0.573157,
+        0.768296
+      ],
+      [
+        0.594726,
+        0.768296
+      ],
+      [
+        0.594726,
+        0.78771
+      ],
+      [
+        0.573157,
+        0.78771
+      ]
+    ],
+    "budget": {
+      "maxColliders": 200,
+      "maxInstances": 200,
+      "maxTextureMB": 64,
+      "maxUniqueMaterials": 106
+    },
+    "canals": [],
+    "causalModel": {
+      "founding": "The yard is built as a fixture. It holds ten kit pieces. Each piece stands on ground under 2 deg. The yard proves the settlement runtime.",
+      "occupantsMotive": "The yard has no occupants. It has no lore.",
+      "pressures": "The yard has no pressures. It is never published to the shipped build.",
+      "siteAdvantages": "The ground is empty and measured. The mean slope is 4.08 deg. Recorded water lies 60.6 m east for the berth.",
+      "wouldChangeIf": "The yard changes if a kit piece under test changes. It also changes if the runtime contract moves."
+    },
+    "clearance": {
+      "hardClear": [
+        [
+          [
+            0.573157,
+            0.768296
+          ],
+          [
+            0.594726,
+            0.768296
+          ],
+          [
+            0.594726,
+            0.78771
+          ],
+          [
+            0.573157,
+            0.78771
+          ]
+        ]
+      ],
+      "kept": [],
+      "thinned": [
+        [
+          [
+            0.571122,
+            0.766262
+          ],
+          [
+            0.596761,
+            0.766262
+          ],
+          [
+            0.596761,
+            0.789745
+          ],
+          [
+            0.571122,
+            0.789745
+          ]
+        ]
+      ]
+    },
+    "clearingTestArea": null,
+    "combatSpaces": [
+      {
+        "aroundIds": [
+          "route.proving-ground.way"
+        ],
+        "boundary": [
+          [
+            0.594498837,
+            0.777105921
+          ],
+          [
+            0.594726,
+            0.776260881
+          ],
+          [
+            0.594726,
+            0.776121711
+          ],
+          [
+            0.576349287,
+            0.770904083
+          ],
+          [
+            0.573157,
+            0.770904083
+          ],
+          [
+            0.573157,
+            0.77168881
+          ]
+        ],
+        "clearanceClass": "open",
+        "id": "combat.proving-ground.yard",
+        "why": "The yard is open ground. It is kept clear for the animation tests."
+      }
+    ],
+    "districts": [
+      {
+        "boundary": [
+          [
+            0.575238967,
+            0.777929806
+          ],
+          [
+            0.577320648,
+            0.784123287
+          ],
+          [
+            0.578238123,
+            0.786852988
+          ],
+          [
+            0.578441893,
+            0.787182521
+          ],
+          [
+            0.578856017,
+            0.78733618
+          ],
+          [
+            0.579148829,
+            0.787336632
+          ],
+          [
+            0.579449482,
+            0.787296439
+          ],
+          [
+            0.580937585,
+            0.786988268
+          ],
+          [
+            0.581225266,
+            0.78690694
+          ],
+          [
+            0.581508894,
+            0.786789061
+          ],
+          [
+            0.583457385,
+            0.784911158
+          ],
+          [
+            0.583500921,
+            0.7848692
+          ],
+          [
+            0.583498496,
+            0.784861239
+          ],
+          [
+            0.583446961,
+            0.784674623
+          ],
+          [
+            0.583425729,
+            0.78459195
+          ],
+          [
+            0.583266861,
+            0.783923621
+          ],
+          [
+            0.583250889,
+            0.783852032
+          ],
+          [
+            0.583136265,
+            0.783302949
+          ],
+          [
+            0.583102593,
+            0.783158501
+          ],
+          [
+            0.583065161,
+            0.783012896
+          ],
+          [
+            0.583023971,
+            0.782866135
+          ],
+          [
+            0.582987999,
+            0.782747762
+          ],
+          [
+            0.58185776,
+            0.783318736
+          ],
+          [
+            0.581729706,
+            0.783387275
+          ],
+          [
+            0.581688925,
+            0.783410435
+          ],
+          [
+            0.581603943,
+            0.783456308
+          ],
+          [
+            0.581582938,
+            0.783468377
+          ],
+          [
+            0.581057286,
+            0.78375481
+          ],
+          [
+            0.58089921,
+            0.783842489
+          ],
+          [
+            0.580819485,
+            0.783883452
+          ],
+          [
+            0.580615677,
+            0.783979839
+          ],
+          [
+            0.580569591,
+            0.784004408
+          ],
+          [
+            0.580513284,
+            0.784030507
+          ],
+          [
+            0.580452518,
+            0.784062426
+          ],
+          [
+            0.580410978,
+            0.784081261
+          ],
+          [
+            0.580262917,
+            0.784157795
+          ],
+          [
+            0.58018906,
+            0.784189909
+          ],
+          [
+            0.579214513,
+            0.783974847
+          ],
+          [
+            0.579050982,
+            0.783936873
+          ],
+          [
+            0.578692516,
+            0.78360977
+          ],
+          [
+            0.578610912,
+            0.783491714
+          ],
+          [
+            0.576056316,
+            0.777063839
+          ],
+          [
+            0.576905244,
+            0.776164415
+          ],
+          [
+            0.577102747,
+            0.775954105
+          ],
+          [
+            0.5775844,
+            0.775436843
+          ],
+          [
+            0.577957573,
+            0.775345548
+          ],
+          [
+            0.577962998,
+            0.775344222
+          ],
+          [
+            0.579351353,
+            0.775007214
+          ],
+          [
+            0.579400176,
+            0.774995351
+          ],
+          [
+            0.579496467,
+            0.774970327
+          ],
+          [
+            0.57954529,
+            0.774956813
+          ],
+          [
+            0.579698556,
+            0.774914356
+          ],
+          [
+            0.581912896,
+            0.774304686
+          ],
+          [
+            0.582591347,
+            0.774237911
+          ],
+          [
+            0.582588491,
+            0.774390681
+          ],
+          [
+            0.582551172,
+            0.775600156
+          ],
+          [
+            0.582524668,
+            0.776573453
+          ],
+          [
+            0.582486448,
+            0.778106082
+          ],
+          [
+            0.582485872,
+            0.77822272
+          ],
+          [
+            0.582486405,
+            0.77825805
+          ],
+          [
+            0.582486136,
+            0.778339354
+          ],
+          [
+            0.58249111,
+            0.778637231
+          ],
+          [
+            0.582519697,
+            0.779549743
+          ],
+          [
+            0.582551039,
+            0.780439367
+          ],
+          [
+            0.583000334,
+            0.78098412
+          ],
+          [
+            0.583541368,
+            0.780865762
+          ],
+          [
+            0.58371154,
+            0.780831773
+          ],
+          [
+            0.583878776,
+            0.780801666
+          ],
+          [
+            0.584043076,
+            0.780775439
+          ],
+          [
+            0.58583183,
+            0.780527733
+          ],
+          [
+            0.585957956,
+            0.780514431
+          ],
+          [
+            0.585982798,
+            0.780512631
+          ],
+          [
+            0.586056234,
+            0.780507252
+          ],
+          [
+            0.585955514,
+            0.779132126
+          ],
+          [
+            0.585586696,
+            0.779132126
+          ],
+          [
+            0.584858751,
+            0.778581467
+          ],
+          [
+            0.584858751,
+            0.777934634
+          ],
+          [
+            0.585586696,
+            0.777383975
+          ],
+          [
+            0.58620309,
+            0.777383975
+          ],
+          [
+            0.586931035,
+            0.777934634
+          ],
+          [
+            0.586931035,
+            0.778581467
+          ],
+          [
+            0.58620309,
+            0.779132126
+          ],
+          [
+            0.585962313,
+            0.779132126
+          ],
+          [
+            0.586062996,
+            0.780506757
+          ],
+          [
+            0.586974011,
+            0.78044003
+          ],
+          [
+            0.587113099,
+            0.780425509
+          ],
+          [
+            0.587253552,
+            0.780406553
+          ],
+          [
+            0.587395369,
+            0.780383164
+          ],
+          [
+            0.587442973,
+            0.780373913
+          ],
+          [
+            0.587537742,
+            0.780357969
+          ],
+          [
+            0.587570496,
+            0.780351521
+          ],
+          [
+            0.587680127,
+            0.780332732
+          ],
+          [
+            0.587698043,
+            0.780329163
+          ],
+          [
+            0.587822524,
+            0.780307457
+          ],
+          [
+            0.587825614,
+            0.780306834
+          ],
+          [
+            0.587964932,
+            0.780282146
+          ],
+          [
+            0.588105427,
+            0.780253536
+          ],
+          [
+            0.588243931,
+            0.78022189
+          ],
+          [
+            0.588351026,
+            0.780194802
+          ],
+          [
+            0.589842004,
+            0.778757837
+          ],
+          [
+            0.589634294,
+            0.77825805
+          ],
+          [
+            0.589300292,
+            0.777415407
+          ],
+          [
+            0.58847357,
+            0.775352699
+          ],
+          [
+            0.588425098,
+            0.775225806
+          ],
+          [
+            0.588378186,
+            0.775096851
+          ],
+          [
+            0.588332834,
+            0.774965834
+          ],
+          [
+            0.588300333,
+            0.774867068
+          ],
+          [
+            0.587954181,
+            0.773826381
+          ],
+          [
+            0.584333115,
+            0.772478909
+          ],
+          [
+            0.579027273,
+            0.770504497
+          ],
+          [
+            0.577626068,
+            0.770153794
+          ],
+          [
+            0.577578217,
+            0.770204452
+          ],
+          [
+            0.577372016,
+            0.770423454
+          ],
+          [
+            0.577244597,
+            0.770559071
+          ],
+          [
+            0.576766238,
+            0.771070897
+          ],
+          [
+            0.576725569,
+            0.771111309
+          ],
+          [
+            0.5766069,
+            0.771229468
+          ],
+          [
+            0.5764772,
+            0.771370198
+          ],
+          [
+            0.576379748,
+            0.771270268
+          ],
+          [
+            0.576273812,
+            0.771152735
+          ],
+          [
+            0.576212189,
+            0.771078262
+          ],
+          [
+            0.576145454,
+            0.770998037
+          ],
+          [
+            0.576091922,
+            0.770929899
+          ],
+          [
+            0.576059908,
+            0.770886615
+          ],
+          [
+            0.575972933,
+            0.770754099
+          ],
+          [
+            0.575896996,
+            0.770621583
+          ],
+          [
+            0.575832096,
+            0.770489067
+          ],
+          [
+            0.575778233,
+            0.770356552
+          ],
+          [
+            0.575735408,
+            0.770224036
+          ],
+          [
+            0.575703619,
+            0.77009152
+          ],
+          [
+            0.575635348,
+            0.769655544
+          ],
+          [
+            0.575588124,
+            0.769643724
+          ],
+          [
+            0.574975819,
+            0.769490472
+          ],
+          [
+            0.574819913,
+            0.769472346
+          ],
+          [
+            0.574658142,
+            0.769491154
+          ],
+          [
+            0.573924324,
+            0.769691807
+          ],
+          [
+            0.573602041,
+            0.772104879
+          ],
+          [
+            0.573602041,
+            0.772792734
+          ],
+          [
+            0.573893919,
+            0.773927976
+          ]
+        ],
+        "cultureKit": "imperial",
+        "id": "district.proving-ground.imperial",
+        "kind": "test-yard",
+        "notes": "Test cells for the imperial kit set.",
+        "wealth": "poor",
+        "why": {
+          "microGeography": "The ground is level cells of fringe marsh. Each cell is under 2 deg. The cells hold the imperial test pieces.",
+          "playerPurpose": "The imperial row has no purpose in play. It proves the imperial kit set alone. The row is never played.",
+          "what": "The imperial row is part of the test grid. It holds every piece under test from that kit set.",
+          "whyHere": "The imperial row sits on measured empty ground. The world has no reason to put it here.",
+          "whyNeighbours": "The imperial row keeps one kit set. A kit-purity warning therefore reads as a real one."
+        }
+      },
+      {
+        "boundary": [
+          [
+            0.575735408,
+            0.770224036
+          ],
+          [
+            0.575778233,
+            0.770356552
+          ],
+          [
+            0.575832096,
+            0.770489067
+          ],
+          [
+            0.575896996,
+            0.770621583
+          ],
+          [
+            0.575972933,
+            0.770754099
+          ],
+          [
+            0.576059908,
+            0.770886615
+          ],
+          [
+            0.576091922,
+            0.770929899
+          ],
+          [
+            0.576145454,
+            0.770998037
+          ],
+          [
+            0.576212189,
+            0.771078262
+          ],
+          [
+            0.576273812,
+            0.771152735
+          ],
+          [
+            0.576379748,
+            0.771270268
+          ],
+          [
+            0.576477201,
+            0.7713702
+          ],
+          [
+            0.576477244,
+            0.77137015
+          ],
+          [
+            0.5766069,
+            0.771229468
+          ],
+          [
+            0.576725569,
+            0.771111309
+          ],
+          [
+            0.576766238,
+            0.771070897
+          ],
+          [
+            0.577244597,
+            0.770559071
+          ],
+          [
+            0.577372016,
+            0.770423454
+          ],
+          [
+            0.577578217,
+            0.770204452
+          ],
+          [
+            0.577626068,
+            0.770153794
+          ],
+          [
+            0.579027273,
+            0.770504497
+          ],
+          [
+            0.584333115,
+            0.772478909
+          ],
+          [
+            0.587954181,
+            0.773826381
+          ],
+          [
+            0.588300333,
+            0.774867068
+          ],
+          [
+            0.588332834,
+            0.774965834
+          ],
+          [
+            0.588378186,
+            0.775096851
+          ],
+          [
+            0.588425098,
+            0.775225806
+          ],
+          [
+            0.58847357,
+            0.775352699
+          ],
+          [
+            0.589300292,
+            0.777415407
+          ],
+          [
+            0.589634294,
+            0.77825805
+          ],
+          [
+            0.589842004,
+            0.778757837
+          ],
+          [
+            0.588351026,
+            0.780194802
+          ],
+          [
+            0.588243931,
+            0.78022189
+          ],
+          [
+            0.588105427,
+            0.780253536
+          ],
+          [
+            0.587964932,
+            0.780282146
+          ],
+          [
+            0.587825614,
+            0.780306834
+          ],
+          [
+            0.587822524,
+            0.780307457
+          ],
+          [
+            0.587698043,
+            0.780329163
+          ],
+          [
+            0.587680127,
+            0.780332732
+          ],
+          [
+            0.587570496,
+            0.780351521
+          ],
+          [
+            0.587537742,
+            0.780357969
+          ],
+          [
+            0.587442973,
+            0.780373913
+          ],
+          [
+            0.587395369,
+            0.780383164
+          ],
+          [
+            0.587253552,
+            0.780406553
+          ],
+          [
+            0.587113099,
+            0.780425509
+          ],
+          [
+            0.586974011,
+            0.78044003
+          ],
+          [
+            0.5859828,
+            0.780512631
+          ],
+          [
+            0.585957957,
+            0.780514431
+          ],
+          [
+            0.58583183,
+            0.780527733
+          ],
+          [
+            0.584043076,
+            0.780775439
+          ],
+          [
+            0.583878776,
+            0.780801666
+          ],
+          [
+            0.58371154,
+            0.780831773
+          ],
+          [
+            0.583541368,
+            0.780865762
+          ],
+          [
+            0.583000334,
+            0.78098412
+          ],
+          [
+            0.582551039,
+            0.780439367
+          ],
+          [
+            0.582519697,
+            0.779549743
+          ],
+          [
+            0.58249111,
+            0.778637231
+          ],
+          [
+            0.582486136,
+            0.778339354
+          ],
+          [
+            0.582486405,
+            0.77825805
+          ],
+          [
+            0.582485872,
+            0.77822272
+          ],
+          [
+            0.582486448,
+            0.778106082
+          ],
+          [
+            0.582524668,
+            0.776573453
+          ],
+          [
+            0.582551172,
+            0.775600156
+          ],
+          [
+            0.582588491,
+            0.774390681
+          ],
+          [
+            0.582591347,
+            0.774237911
+          ],
+          [
+            0.581912896,
+            0.774304686
+          ],
+          [
+            0.579698556,
+            0.774914356
+          ],
+          [
+            0.579545291,
+            0.774956813
+          ],
+          [
+            0.579496467,
+            0.774970327
+          ],
+          [
+            0.579400176,
+            0.774995351
+          ],
+          [
+            0.579351353,
+            0.775007213
+          ],
+          [
+            0.577962998,
+            0.775344222
+          ],
+          [
+            0.577957573,
+            0.775345548
+          ],
+          [
+            0.5775844,
+            0.775436843
+          ],
+          [
+            0.577102747,
+            0.775954105
+          ],
+          [
+            0.576905244,
+            0.776164415
+          ],
+          [
+            0.576056316,
+            0.777063839
+          ],
+          [
+            0.578610912,
+            0.783491714
+          ],
+          [
+            0.578692516,
+            0.78360977
+          ],
+          [
+            0.579050982,
+            0.783936873
+          ],
+          [
+            0.579214513,
+            0.783974847
+          ],
+          [
+            0.58018906,
+            0.784189909
+          ],
+          [
+            0.580262917,
+            0.784157795
+          ],
+          [
+            0.580410978,
+            0.784081261
+          ],
+          [
+            0.580452518,
+            0.784062426
+          ],
+          [
+            0.580513284,
+            0.784030507
+          ],
+          [
+            0.580569591,
+            0.784004408
+          ],
+          [
+            0.580615677,
+            0.783979839
+          ],
+          [
+            0.580819485,
+            0.783883452
+          ],
+          [
+            0.58089921,
+            0.783842489
+          ],
+          [
+            0.581057286,
+            0.78375481
+          ],
+          [
+            0.581582938,
+            0.783468377
+          ],
+          [
+            0.581603943,
+            0.783456308
+          ],
+          [
+            0.581688925,
+            0.783410435
+          ],
+          [
+            0.581729706,
+            0.783387275
+          ],
+          [
+            0.58185776,
+            0.783318736
+          ],
+          [
+            0.582987999,
+            0.782747762
+          ],
+          [
+            0.583023971,
+            0.782866135
+          ],
+          [
+            0.583065161,
+            0.783012896
+          ],
+          [
+            0.583102593,
+            0.783158501
+          ],
+          [
+            0.583136265,
+            0.783302949
+          ],
+          [
+            0.583250889,
+            0.783852032
+          ],
+          [
+            0.583266861,
+            0.783923621
+          ],
+          [
+            0.583425729,
+            0.78459195
+          ],
+          [
+            0.583446961,
+            0.784674623
+          ],
+          [
+            0.583498496,
+            0.784861239
+          ],
+          [
+            0.583500921,
+            0.7848692
+          ],
+          [
+            0.583457385,
+            0.784911158
+          ],
+          [
+            0.583517759,
+            0.784924481
+          ],
+          [
+            0.587026967,
+            0.785698889
+          ],
+          [
+            0.58729424,
+            0.785557368
+          ],
+          [
+            0.594726,
+            0.777114365
+          ],
+          [
+            0.594726,
+            0.775685233
+          ],
+          [
+            0.594678285,
+            0.775664025
+          ],
+          [
+            0.58786477,
+            0.773059414
+          ],
+          [
+            0.587869606,
+            0.773045898
+          ],
+          [
+            0.587874457,
+            0.773026532
+          ],
+          [
+            0.587877387,
+            0.773006785
+          ],
+          [
+            0.587878366,
+            0.772986845
+          ],
+          [
+            0.587877387,
+            0.772966905
+          ],
+          [
+            0.587874457,
+            0.772947158
+          ],
+          [
+            0.587869606,
+            0.772927792
+          ],
+          [
+            0.587862881,
+            0.772908995
+          ],
+          [
+            0.587854345,
+            0.772890948
+          ],
+          [
+            0.587844082,
+            0.772873825
+          ],
+          [
+            0.587832189,
+            0.77285779
+          ],
+          [
+            0.587818783,
+            0.772842997
+          ],
+          [
+            0.58780399,
+            0.772829591
+          ],
+          [
+            0.587787955,
+            0.772817698
+          ],
+          [
+            0.587770832,
+            0.772807435
+          ],
+          [
+            0.587752785,
+            0.772798899
+          ],
+          [
+            0.587733988,
+            0.772792174
+          ],
+          [
+            0.587714623,
+            0.772787323
+          ],
+          [
+            0.587694875,
+            0.772784393
+          ],
+          [
+            0.587674935,
+            0.772783414
+          ],
+          [
+            0.587654995,
+            0.772784393
+          ],
+          [
+            0.587635248,
+            0.772787323
+          ],
+          [
+            0.587615882,
+            0.772792174
+          ],
+          [
+            0.587597085,
+            0.772798899
+          ],
+          [
+            0.587579038,
+            0.772807435
+          ],
+          [
+            0.587561915,
+            0.772817698
+          ],
+          [
+            0.58754588,
+            0.772829591
+          ],
+          [
+            0.587531088,
+            0.772842997
+          ],
+          [
+            0.587517681,
+            0.77285779
+          ],
+          [
+            0.587505788,
+            0.772873825
+          ],
+          [
+            0.587495525,
+            0.772890948
+          ],
+          [
+            0.587486989,
+            0.772908995
+          ],
+          [
+            0.5874851,
+            0.772914276
+          ],
+          [
+            0.578336657,
+            0.769417088
+          ],
+          [
+            0.576824366,
+            0.768838982
+          ],
+          [
+            0.576475539,
+            0.768838982
+          ],
+          [
+            0.575627856,
+            0.769607694
+          ],
+          [
+            0.575703619,
+            0.77009152
+          ]
+        ],
+        "cultureKit": "argonian-stilt",
+        "id": "district.proving-ground.stilt",
+        "kind": "test-yard",
+        "notes": "Test cells for the argonian-stilt kit set.",
+        "wealth": "poor",
+        "why": {
+          "microGeography": "The ground is level cells of fringe marsh. Each cell is under 2 deg. The cells hold the argonian-stilt test pieces.",
+          "playerPurpose": "The argonian-stilt row has no purpose in play. It proves the argonian-stilt kit set alone. That row is never played.",
+          "what": "The argonian-stilt row is part of the test grid. It holds every piece under test from that kit set.",
+          "whyHere": "The argonian-stilt row sits on measured empty ground. The world has no reason to put it here.",
+          "whyNeighbours": "The argonian-stilt row keeps one kit set. A kit-purity warning therefore reads as a real one."
+        }
+      },
+      {
+        "boundary": [
+          [
+            0.58620309,
+            0.779132126
+          ],
+          [
+            0.586931035,
+            0.778581467
+          ],
+          [
+            0.586931035,
+            0.777934634
+          ],
+          [
+            0.58620309,
+            0.777383975
+          ],
+          [
+            0.585586696,
+            0.777383975
+          ],
+          [
+            0.584858751,
+            0.777934634
+          ],
+          [
+            0.584858751,
+            0.778581467
+          ],
+          [
+            0.585586696,
+            0.779132126
+          ]
+        ],
+        "cultureKit": "argonian-root",
+        "id": "district.proving-ground.root",
+        "kind": "test-yard",
+        "notes": "Test cells for the argonian-root kit set.",
+        "wealth": "poor",
+        "why": {
+          "microGeography": "The ground is level cells of fringe marsh. Each cell is under 2 deg. The cells hold the argonian-root test pieces.",
+          "playerPurpose": "The argonian-root row has no purpose in play. It proves the argonian-root kit set alone. The row is never played.",
+          "what": "The argonian-root row is part of the test grid. It holds every piece under test from that kit set.",
+          "whyHere": "The argonian-root row sits on measured empty ground. The world has no reason to put it here.",
+          "whyNeighbours": "The argonian-root row keeps one kit set. A kit-purity warning therefore reads as a real one."
+        }
+      }
+    ],
+    "docks": [],
+    "doors": [
+      {
+        "facingDeg": 15.4,
+        "id": "door.fixture.proving-ground.imperial-house",
+        "interiorClaim": {
+          "culture": "imperial",
+          "interiorRef": "vanilla-farmhouse-int",
+          "sizeClass": "large"
+        },
+        "parcelId": "parcel.proving-ground.imperial-house",
+        "thresholdUV": [
+          0.580089455,
+          0.785423261
+        ]
+      },
+      {
+        "facingDeg": 14.5,
+        "id": "door.fixture.proving-ground.mud-hut",
+        "interiorClaim": {
+          "culture": "argonian",
+          "interiorRef": "htbm-hut-int",
+          "sizeClass": "medium"
+        },
+        "parcelId": "parcel.proving-ground.mud-hut",
+        "thresholdUV": [
+          0.579545584,
+          0.782598803
+        ]
+      }
+    ],
+    "fences": [],
+    "fixture": true,
+    "id": "place.fixture.proving-ground",
+    "landmarks": [
+      {
+        "id": "landmark.proving-ground.huntsman-sign",
+        "kind": "mounted-sign",
+        "assetRef": "vanilla:clutter/signage/whiterun/signwrdrunkenhuntsman01",
+        "position": [
+          0.57796232,
+          0.772310362
+        ],
+        "yawDeg": 180.0,
+        "notes": "Mounted child of the sign-post piece by its mined mount pair.",
+        "why": {
+          "what": "The test piece is called sign. It is the Drunken Huntsman board, which hangs from the Whiterun sign post.",
+          "whyHere": "The sign-post cell is a fixture. It proves that a hanging piece hangs from its parent.",
+          "whySpot": "The board hangs under the post's arm. It hangs at the offset that Bethesda's own two placements of this pair use.",
+          "whyNeighbours": "The board hangs from the sign-post piece. It is 9 m from the sconce wall.",
+          "playerPurpose": "The sign cell has no purpose in play. It proves a placement mechanism. The sign cell is never played.",
+          "microGeography": "The board hangs about 2.4 m up, under the post's arm. It hangs above dry ground."
+        }
+      },
+      {
+        "id": "landmark.proving-ground.sconce",
+        "kind": "mounted-light",
+        "assetRef": "vanilla:clutter/imperial/impwallsconcecandle01",
+        "position": [
+          0.578660954,
+          0.771093057
+        ],
+        "yawDeg": 270.2,
+        "notes": "Mounted child of the sconce-wall piece by its mined mount pair.",
+        "why": {
+          "what": "The test piece is called sconce. It is the candle sconce, which hangs on the free-standing imperial wall.",
+          "whyHere": "The sconce cell is a fixture. It proves that a wall-class piece hangs off its parent.",
+          "whySpot": "The sconce hangs on the wall face. It hangs at the offset that Bethesda's own placements of this pair use most often.",
+          "whyNeighbours": "The sconce hangs on the sconce-wall piece.",
+          "playerPurpose": "The sconce cell has no purpose in play. It proves a placement mechanism. The sconce cell is never played.",
+          "microGeography": "The sconce hangs about 2.7 m up the wall face. It hangs above dry ground."
+        }
+      }
+    ],
+    "macroEvidence": [],
+    "networkTerminals": [],
+    "occupants": [],
+    "padTestCorner": null,
+    "parcels": [
+      {
+        "assetRef": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_wooddock01",
+        "buildingFamily": "test.boardwalk",
+        "centreUV": [
+          0.579449678,
+          0.778259792
+        ],
+        "districtId": "district.proving-ground.stilt",
+        "footprint": [
+          [
+            0.579544612,
+            0.778023812
+          ],
+          [
+            0.579545969,
+            0.778023812
+          ],
+          [
+            0.579563599,
+            0.778045511
+          ],
+          [
+            0.57957038,
+            0.778059073
+          ],
+          [
+            0.579571737,
+            0.778408975
+          ],
+          [
+            0.579566312,
+            0.778494416
+          ],
+          [
+            0.579558175,
+            0.778517471
+          ],
+          [
+            0.57953105,
+            0.778517471
+          ],
+          [
+            0.579365593,
+            0.778488991
+          ],
+          [
+            0.579350675,
+            0.778475429
+          ],
+          [
+            0.579330332,
+            0.778426605
+          ],
+          [
+            0.579323551,
+            0.778406262
+          ],
+          [
+            0.579323551,
+            0.778069923
+          ],
+          [
+            0.579323551,
+            0.778067211
+          ],
+          [
+            0.579323551,
+            0.778055005
+          ],
+          [
+            0.579333044,
+            0.778042799
+          ],
+          [
+            0.579350675,
+            0.778023812
+          ],
+          [
+            0.579352031,
+            0.778023812
+          ]
+        ],
+        "id": "parcel.proving-ground.boardwalk",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "The piece is turned to face the straight way through the middle of the yard. Every door faces that way, so every door is read from one line.",
+        "use": "work",
+        "why": {
+          "microGeography": "The ground under the boardwalk cell is level fringe-marsh ground. The steepest cell under the footprint is 2.0 deg.",
+          "playerPurpose": "The boardwalk cell has no purpose in play. It proves a placement mechanism. The cell is never played.",
+          "what": "The test piece is called boardwalk. It is the kit asset tamu_wooddock01, which stands on its designed sink.",
+          "whyHere": "The boardwalk cell is a fixture on measured empty ground. The world has no reason to put it here.",
+          "whyNeighbours": "The boardwalk cell stands 25 m from its nearest neighbour. The nearest neighbour is mud-hut.",
+          "whySpot": "The spot is the nearest ground to the old lattice cell where every cell under the footprint is under 2 deg. The designed sink alone therefore seats the piece."
+        },
+        "yawDeg": 90.0
+      },
+      {
+        "assetRef": "bmv:architecture/philscaves/small/doorcaveb",
+        "buildingFamily": "test.cave-mouth",
+        "centreUV": [
+          0.585894893,
+          0.778011899
+        ],
+        "districtId": "district.proving-ground.root",
+        "footprint": [
+          [
+            0.586388552,
+            0.778311621
+          ],
+          [
+            0.58602102,
+            0.778589643
+          ],
+          [
+            0.585768766,
+            0.778589643
+          ],
+          [
+            0.585401234,
+            0.778311621
+          ],
+          [
+            0.585401234,
+            0.77820448
+          ],
+          [
+            0.585768766,
+            0.777926458
+          ],
+          [
+            0.58602102,
+            0.777926458
+          ],
+          [
+            0.586388552,
+            0.77820448
+          ]
+        ],
+        "id": "parcel.proving-ground.cave-mouth",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "The piece is turned to face the straight way through the middle of the yard. Every door faces that way, so every door is read from one line.",
+        "use": "work",
+        "why": {
+          "microGeography": "The ground under the cave-mouth cell is level fringe-marsh ground. The steepest cell under the footprint is 1.9 deg.",
+          "playerPurpose": "The cave-mouth cell has no purpose in play. It proves a placement mechanism. The cell is never played in the game.",
+          "what": "The test piece is called cave-mouth. It is the kit asset doorcaveb, which stands on its designed sink.",
+          "whyHere": "The cave-mouth cell is a fixture on measured empty ground. The world has no reason to put it here.",
+          "whyNeighbours": "The cave-mouth cell stands 28 m from its nearest neighbour. The nearest neighbour is stilt-hut.",
+          "whySpot": "The spot is the nearest ground to the old lattice cell where every cell under the footprint is under 2 deg. The designed sink alone therefore seats the piece."
+        },
+        "yawDeg": 180.0
+      },
+      {
+        "assetRef": "ferryraft:snt/ferry/ferryraft01",
+        "buildingFamily": "test.hull-berth",
+        "centreUV": [
+          0.59420395,
+          0.776381239
+        ],
+        "districtId": "district.proving-ground.stilt",
+        "footprint": [
+          [
+            0.594467054,
+            0.776165602
+          ],
+          [
+            0.594471123,
+            0.776165602
+          ],
+          [
+            0.594473835,
+            0.776166958
+          ],
+          [
+            0.594483329,
+            0.776171027
+          ],
+          [
+            0.594484685,
+            0.776172383
+          ],
+          [
+            0.594487397,
+            0.776253756
+          ],
+          [
+            0.594487397,
+            0.776482955
+          ],
+          [
+            0.594484685,
+            0.776553477
+          ],
+          [
+            0.594477904,
+            0.776575177
+          ],
+          [
+            0.594441286,
+            0.776587382
+          ],
+          [
+            0.593953052,
+            0.776605013
+          ],
+          [
+            0.593947627,
+            0.776605013
+          ],
+          [
+            0.593944914,
+            0.776603657
+          ],
+          [
+            0.593940846,
+            0.776603657
+          ],
+          [
+            0.593931352,
+            0.776598232
+          ],
+          [
+            0.593929996,
+            0.776596876
+          ],
+          [
+            0.593940846,
+            0.776279523
+          ],
+          [
+            0.593942202,
+            0.776209001
+          ],
+          [
+            0.593950339,
+            0.776187301
+          ],
+          [
+            0.593972039,
+            0.776172383
+          ],
+          [
+            0.593997807,
+            0.776172383
+          ],
+          [
+            0.594461629,
+            0.776165602
+          ]
+        ],
+        "id": "parcel.proving-ground.hull-berth",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "The piece is turned to face the straight way through the middle of the yard. Every door faces that way, so every door is read from one line.",
+        "use": "quay",
+        "why": {
+          "microGeography": "The open water of body.2407-3123 lies under the whole hull. The hull is at the east edge of the yard.",
+          "playerPurpose": "The hull-berth cell has no purpose in play. It proves a placement mechanism. This cell is never played.",
+          "what": "The test piece is called hull-berth. It is the kit asset ferryraft01, which stands on its designed sink.",
+          "whyHere": "The hull-berth cell is a fixture on measured empty ground. The world has no reason to put it here.",
+          "whyNeighbours": "The hull-berth cell lies against the water end of the landing stage.",
+          "whySpot": "The hull floats at the water end of the landing stage. The whole hull floats on recorded water."
+        },
+        "yawDeg": 90.0,
+        "worksWith": [
+          "parcel.proving-ground.landing-stage"
+        ],
+        "worksWithWhy": "The hull lies against the water end of the landing stage. A walker steps from the stage onto the hull."
+      },
+      {
+        "assetRef": "composite:farmhouse/farmhouse01-with-door",
+        "buildingFamily": "test.imperial-house",
+        "centreUV": [
+          0.579945464,
+          0.785944472
+        ],
+        "districtId": "district.proving-ground.imperial",
+        "footprint": [
+          [
+            0.581276149,
+            0.7856689
+          ],
+          [
+            0.581310266,
+            0.785913902
+          ],
+          [
+            0.581324629,
+            0.7860702
+          ],
+          [
+            0.581314672,
+            0.786209376
+          ],
+          [
+            0.581206157,
+            0.786327412
+          ],
+          [
+            0.581046754,
+            0.786393662
+          ],
+          [
+            0.580808628,
+            0.786460981
+          ],
+          [
+            0.579358421,
+            0.786761304
+          ],
+          [
+            0.579113145,
+            0.786794094
+          ],
+          [
+            0.578953821,
+            0.786793848
+          ],
+          [
+            0.578805295,
+            0.786738738
+          ],
+          [
+            0.578732412,
+            0.786620873
+          ],
+          [
+            0.57868077,
+            0.786458445
+          ],
+          [
+            0.578614779,
+            0.786220044
+          ],
+          [
+            0.578580662,
+            0.785975042
+          ],
+          [
+            0.578566299,
+            0.785818744
+          ],
+          [
+            0.578576256,
+            0.785679568
+          ],
+          [
+            0.578684771,
+            0.785561532
+          ],
+          [
+            0.578844174,
+            0.785495282
+          ],
+          [
+            0.5790823,
+            0.785427963
+          ],
+          [
+            0.580532507,
+            0.78512764
+          ],
+          [
+            0.580777783,
+            0.78509485
+          ],
+          [
+            0.580937107,
+            0.785095096
+          ],
+          [
+            0.581085633,
+            0.785150206
+          ],
+          [
+            0.581158516,
+            0.785268071
+          ],
+          [
+            0.581210158,
+            0.785430499
+          ]
+        ],
+        "id": "parcel.proving-ground.imperial-house",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "The cell is turned to face the straight way through the middle of the yard. Every door is read from one line.",
+        "use": "dwelling",
+        "why": {
+          "microGeography": "The ground under the imperial-house cell is level fringe-marsh ground. The steepest cell under the footprint is 2.0 deg.",
+          "playerPurpose": "The imperial-house cell has no player purpose. It proves a placement mechanism. The cell is never played.",
+          "what": "The imperial-house cell is a test piece. The piece is the kit asset farmhouse01-with-door. It stands on its designed sink.",
+          "whyHere": "The imperial-house cell is a fixture on measured empty ground. The world gives no reason for it to stand there.",
+          "whyNeighbours": "The imperial-house cell stands 11 m from its nearest neighbour. The nearest neighbour is mud-hut.",
+          "whySpot": "The nearest ground to the old lattice cell is chosen. Every cell under the footprint is under 2 deg. The designed sink alone seats the piece."
+        },
+        "yawDeg": 168.3
+      },
+      {
+        "id": "parcel.proving-ground.imperial-wall-run",
+        "districtId": "district.proving-ground.imperial",
+        "use": "civic",
+        "kind": "structure",
+        "buildingFamily": "test.imperial-wall-run",
+        "centreUV": [
+          0.574646319,
+          0.770460604
+        ],
+        "yawDeg": 90.0,
+        "orientationWhy": "The wall run stands north to south on the west edge of the yard. The gate arch faces east into the yard. The west approach walks through the gate arch.",
+        "interior": {
+          "kind": "none"
+        },
+        "pieces": [
+          {
+            "asset": "mwkeep:tesak1243/mwimperialarchitecture/architecture/keep/exterior/walls/mwimparchwall01destroyed01"
+          },
+          {
+            "asset": "mwkeep:tesak1243/mwimperialarchitecture/architecture/keep/exterior/walls/mwimparchwallgate01"
+          },
+          {
+            "asset": "mwkeep:tesak1243/mwimperialarchitecture/architecture/keep/exterior/walls/mwimparchwalltower01"
+          },
+          {
+            "asset": "mwkeep:tesak1243/mwimperialarchitecture/architecture/keep/exterior/walls/mwimparchwall01destroyed02"
+          }
+        ],
+        "footprint": [
+          [
+            0.574144524,
+            0.772140945
+          ],
+          [
+            0.574144524,
+            0.772724112
+          ],
+          [
+            0.574414379,
+            0.772926588
+          ],
+          [
+            0.574414409,
+            0.773773816
+          ],
+          [
+            0.574769734,
+            0.773859257
+          ],
+          [
+            0.574823982,
+            0.773863326
+          ],
+          [
+            0.574878229,
+            0.773859257
+          ],
+          [
+            0.57487823,
+            0.771940258
+          ],
+          [
+            0.574885011,
+            0.771799164
+          ],
+          [
+            0.574885011,
+            0.771093969
+          ],
+          [
+            0.57487823,
+            0.770952874
+          ],
+          [
+            0.574878229,
+            0.770025263
+          ],
+          [
+            0.574819913,
+            0.770018483
+          ],
+          [
+            0.574761597,
+            0.770025263
+          ],
+          [
+            0.574414409,
+            0.770120197
+          ],
+          [
+            0.574414408,
+            0.770952874
+          ],
+          [
+            0.574407627,
+            0.771093969
+          ],
+          [
+            0.574407627,
+            0.771799164
+          ],
+          [
+            0.574414297,
+            0.771938463
+          ]
+        ],
+        "why": {
+          "what": "The imperial-wall-run cell is a test run. The run is four curtain-wall pieces laid end to end. The pieces meet on the joints King of the Murkmire uses. A broken wall stands at each end.",
+          "playerPurpose": "The imperial-wall-run cell has no player purpose. It proves the modular run. The cell is never played.",
+          "whyHere": "The imperial-wall-run cell is a fixture on measured empty ground. The world gives no reason for it to stand there.",
+          "whySpot": "The west edge of the yard has a 29 m strip under 2 deg. The strip is clear of the other test cells. The yard has no longer strip that meets that limit. The run therefore has four pieces.",
+          "microGeography": "The ground along the west edge of the yard is level fringe-marsh ground. The ground is measured at compile.",
+          "whyNeighbours": "The wall run stands alone on the west edge. The stilt stair is 12 m east of the run. The sconce wall is 23 m east of the run."
+        }
+      },
+      {
+        "assetRef": "composite:docks/quay-run-2",
+        "buildingFamily": "test.landing-stage",
+        "centreUV": [
+          0.592372283,
+          0.775831022
+        ],
+        "districtId": "district.proving-ground.stilt",
+        "id": "parcel.proving-ground.landing-stage",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "The shore end of the landing stage sits on the end of the straight way. The run points along the way to the hull.",
+        "use": "quay",
+        "yawDeg": 286.7,
+        "worksWith": [
+          "parcel.proving-ground.hull-berth"
+        ],
+        "worksWithWhy": "The hull lies against the water end of the landing stage. A walker steps from the stage onto the hull.",
+        "why": {
+          "what": "The landing-stage cell is a test piece. The piece is the docks-v1 quay run. The run is two dock sections from the bank out to the hull.",
+          "whyHere": "The landing-stage cell is a fixture. It carries the straight way over the water to the hull.",
+          "whySpot": "The shore end of the landing stage stands on dry bank at the end of the straight way. The water end reaches the hull.",
+          "whyNeighbours": "The hull-berth cell lies against the water end of the landing stage.",
+          "playerPurpose": "The landing-stage cell has no player purpose. It proves a placement mechanism. The cell is never played.",
+          "microGeography": "Dry bank lies under the shore end. Open water of body.2407-3123 lies under the rest of the run."
+        },
+        "footprint": [
+          [
+            0.592258616,
+            0.776115504
+          ],
+          [
+            0.591961923,
+            0.775995341
+          ],
+          [
+            0.591951012,
+            0.775975077
+          ],
+          [
+            0.591958027,
+            0.775951695
+          ],
+          [
+            0.592438146,
+            0.77561149
+          ],
+          [
+            0.59245841,
+            0.775600579
+          ],
+          [
+            0.592891759,
+            0.775671121
+          ],
+          [
+            0.593815612,
+            0.775942626
+          ],
+          [
+            0.593838994,
+            0.775949641
+          ],
+          [
+            0.593849516,
+            0.775971205
+          ],
+          [
+            0.593683495,
+            0.776524581
+          ],
+          [
+            0.59366323,
+            0.776535492
+          ],
+          [
+            0.592740547,
+            0.77626009
+          ]
+        ]
+      },
+      {
+        "assetRef": "composite:stilt/bamboohut01-with-door",
+        "buildingFamily": "test.bamboo-hut",
+        "centreUV": [
+          0.579449678,
+          0.782969757
+        ],
+        "districtId": "district.proving-ground.stilt",
+        "footprint": [
+          [
+            0.579379437,
+            0.782529454
+          ],
+          [
+            0.57940014,
+            0.782528119
+          ],
+          [
+            0.57971343,
+            0.782612659
+          ],
+          [
+            0.579730391,
+            0.782623559
+          ],
+          [
+            0.579919778,
+            0.782832562
+          ],
+          [
+            0.579925394,
+            0.782853522
+          ],
+          [
+            0.579865882,
+            0.783129217
+          ],
+          [
+            0.579856643,
+            0.783147137
+          ],
+          [
+            0.579627596,
+            0.783376996
+          ],
+          [
+            0.579608999,
+            0.783386191
+          ],
+          [
+            0.57933432,
+            0.783445751
+          ],
+          [
+            0.579311862,
+            0.783440536
+          ],
+          [
+            0.579103715,
+            0.7832506
+          ],
+          [
+            0.579092251,
+            0.783234015
+          ],
+          [
+            0.579008008,
+            0.782919616
+          ],
+          [
+            0.579009644,
+            0.782899521
+          ],
+          [
+            0.579094936,
+            0.782630959
+          ],
+          [
+            0.579111778,
+            0.782615214
+          ]
+        ],
+        "id": "parcel.proving-ground.mud-hut",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "The cell is turned to face the straight way through the middle of the yard. Every door is read from one line.",
+        "use": "dwelling",
+        "why": {
+          "microGeography": "The ground under the mud-hut cell is level fringe-marsh ground. The steepest cell under the footprint is 1.7 deg.",
+          "playerPurpose": "The mud-hut cell has no player purpose. It proves a placement mechanism. The cell is never played.",
+          "what": "The mud-hut cell is a test piece named hut. The piece is HTBM's bamboo hut. The mod hangs a door leaf on the hut at one fixed offset. The piece is composite:stilt/bamboohut01-with-door, a stilt-kit piece. It stands on its designed sink. It replaced the marsh hut composite. The shell of the marsh hut composite has no doorway in its mesh.",
+          "whyHere": "The mud-hut cell is a fixture on measured empty ground. The world gives no reason for it to stand there.",
+          "whyNeighbours": "The mud-hut cell stands 11 m from its nearest neighbour. The nearest neighbour is imperial-house.",
+          "whySpot": "The nearest ground to the old lattice cell is chosen. Every cell under the footprint is under 2 deg. The designed sink alone seats the piece."
+        },
+        "yawDeg": 75.0
+      },
+      {
+        "assetRef": "vanilla:dungeons/imperial/clutterkits/impfreewall01",
+        "buildingFamily": "test.sconce-wall",
+        "centreUV": [
+          0.578458106,
+          0.771070897
+        ],
+        "districtId": "district.proving-ground.imperial",
+        "id": "parcel.proving-ground.sconce-wall",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "The cell is turned to face the straight way through the middle of the yard. Every door is read from one line.",
+        "use": "civic",
+        "why": {
+          "what": "The sconce-wall cell is a test piece. The piece is the kit asset impfreewall01. It stands on its designed sink.",
+          "playerPurpose": "The sconce-wall cell has no player purpose. It proves a placement mechanism. The cell is never played.",
+          "whyHere": "The sconce-wall cell is a fixture on measured empty ground. The world gives no reason for it to stand there.",
+          "whySpot": "The nearest ground to the old lattice cell is chosen. Every cell under the footprint is under 2 deg. The designed sink alone seats the piece.",
+          "microGeography": "The ground under the sconce-wall cell is level fringe-marsh ground. The steepest cell under the footprint is 1.7 deg.",
+          "whyNeighbours": "The sconce-wall cell stands 9 m from its nearest neighbour. The nearest neighbour is sign-post."
+        },
+        "yawDeg": 180.0,
+        "footprint": [
+          [
+            0.578866324,
+            0.771118364
+          ],
+          [
+            0.578049888,
+            0.771118364
+          ],
+          [
+            0.578049888,
+            0.77102343
+          ],
+          [
+            0.578866324,
+            0.77102343
+          ]
+        ]
+      },
+      {
+        "assetRef": "vanilla:clutter/signage/whiterun/signwrpost01",
+        "buildingFamily": "test.sign-post",
+        "centreUV": [
+          0.57796232,
+          0.772310362
+        ],
+        "districtId": "district.proving-ground.imperial",
+        "id": "parcel.proving-ground.sign-post",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "The cell is turned to face the straight way through the middle of the yard. Every door is read from one line.",
+        "use": "civic",
+        "why": {
+          "what": "The sign-post cell is a test piece. The piece is the kit asset signwrpost01. It stands on its designed sink.",
+          "playerPurpose": "The sign-post cell has no player purpose. It proves a placement mechanism. The cell is never played.",
+          "whyHere": "The sign-post cell is a fixture on measured empty ground. The world gives no reason for it to stand there.",
+          "whySpot": "The nearest ground to the old lattice cell is chosen. Every cell under the footprint is under 2 deg. The designed sink alone seats the piece.",
+          "microGeography": "The ground under the sign-post cell is level fringe-marsh ground. The steepest cell under the footprint is 1.6 deg.",
+          "whyNeighbours": "The sign-post cell stands 9 m from its nearest neighbour. The nearest neighbour is sconce-wall."
+        },
+        "yawDeg": 180.0,
+        "footprint": [
+          [
+            0.577979951,
+            0.772311718
+          ],
+          [
+            0.577975882,
+            0.772321212
+          ],
+          [
+            0.577967745,
+            0.772326636
+          ],
+          [
+            0.577958251,
+            0.772326636
+          ],
+          [
+            0.577956895,
+            0.772326636
+          ],
+          [
+            0.577948758,
+            0.772319855
+          ],
+          [
+            0.577946046,
+            0.772310362
+          ],
+          [
+            0.577948758,
+            0.772300869
+          ],
+          [
+            0.577956895,
+            0.772295444
+          ],
+          [
+            0.577967745,
+            0.772295444
+          ],
+          [
+            0.577967745,
+            0.772295444
+          ],
+          [
+            0.577975882,
+            0.772302225
+          ],
+          [
+            0.577979951,
+            0.772311718
+          ]
+        ]
+      },
+      {
+        "assetRef": "composite:stilt/stilthouse-with-door",
+        "buildingFamily": "test.stilt-hut",
+        "centreUV": [
+          0.586638572,
+          0.783465543
+        ],
+        "districtId": "district.proving-ground.stilt",
+        "footprint": [
+          [
+            0.586145877,
+            0.782903898
+          ],
+          [
+            0.586297812,
+            0.782410026
+          ],
+          [
+            0.586300803,
+            0.782409527
+          ],
+          [
+            0.587284659,
+            0.782712201
+          ],
+          [
+            0.587755199,
+            0.782856958
+          ],
+          [
+            0.587756994,
+            0.782860348
+          ],
+          [
+            0.587214654,
+            0.784623252
+          ],
+          [
+            0.586952639,
+            0.785124408
+          ],
+          [
+            0.586949249,
+            0.785126203
+          ],
+          [
+            0.58633313,
+            0.784938079
+          ],
+          [
+            0.586303316,
+            0.784928907
+          ],
+          [
+            0.585756469,
+            0.784178913
+          ],
+          [
+            0.585754674,
+            0.784175523
+          ],
+          [
+            0.585905413,
+            0.783685539
+          ]
+        ],
+        "id": "parcel.proving-ground.stilt-hut",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "The cell is turned to face the straight way through the middle of the yard. Every door is read from one line.",
+        "use": "dwelling",
+        "why": {
+          "microGeography": "The ground under the stilt-hut cell is level fringe-marsh ground. The steepest cell under the footprint is 2.9 deg.",
+          "playerPurpose": "The stilt-hut cell has no player purpose. It proves a placement mechanism. The cell is never played.",
+          "what": "The stilt-hut cell is a test piece. The piece is the kit asset stilthouse-with-door. It stands on its designed sink.",
+          "whyHere": "The stilt-hut cell is a fixture on measured empty ground. The world gives no reason for it to stand there.",
+          "whyNeighbours": "The stilt-hut cell stands 28 m from its nearest neighbour. The nearest neighbour is cave-mouth.",
+          "whySpot": "The nearest ground to the old lattice cell is chosen. Every cell under the footprint is under 3 deg. The limit of 3 deg applies to a piece on legs."
+        },
+        "yawDeg": 17.1
+      },
+      {
+        "assetRef": "bmv:architecture/citebosmer/passerelles/troncons/passesc128h64d01",
+        "buildingFamily": "test.stilt-stair",
+        "centreUV": [
+          0.576722856,
+          0.76958354
+        ],
+        "districtId": "district.proving-ground.stilt",
+        "footprint": [
+          [
+            0.576733706,
+            0.769778834
+          ],
+          [
+            0.576733706,
+            0.76978019
+          ],
+          [
+            0.576732349,
+            0.769782902
+          ],
+          [
+            0.576730993,
+            0.769784259
+          ],
+          [
+            0.576726925,
+            0.769786971
+          ],
+          [
+            0.576724212,
+            0.769786971
+          ],
+          [
+            0.576476026,
+            0.769777478
+          ],
+          [
+            0.576469245,
+            0.769776121
+          ],
+          [
+            0.576684882,
+            0.769381465
+          ],
+          [
+            0.576709294,
+            0.769381465
+          ],
+          [
+            0.576724212,
+            0.769381465
+          ],
+          [
+            0.576728281,
+            0.769385534
+          ],
+          [
+            0.576729637,
+            0.769390959
+          ],
+          [
+            0.576733706,
+            0.769774765
+          ]
+        ],
+        "id": "parcel.proving-ground.stilt-stair",
+        "interior": {
+          "kind": "none"
+        },
+        "orientationWhy": "The cell is turned to face the straight way through the middle of the yard. Every door is read from one line.",
+        "use": "work",
+        "why": {
+          "microGeography": "The ground under the stilt-stair cell is level fringe-marsh ground. The steepest cell under the footprint is 1.4 deg.",
+          "playerPurpose": "The stilt-stair cell has no player purpose. It proves a placement mechanism. The cell is never played.",
+          "what": "The stilt-stair cell is a test piece named ramp. The piece is the Bosmer walkway stair passesc128h64d01. The stair is shown alone as a labelled single piece. A ramp belongs to the built ways, which are ramps, stairs, boardwalks and bridges. Built ways are placed as a run with both ends resolved. The stair stands alone until the yard has a ways run.",
+          "whyHere": "The stilt-stair cell is a fixture on measured empty ground. The world gives no reason for it to stand there.",
+          "whyNeighbours": "The stilt-stair cell stands 12 m from its nearest neighbour. The nearest neighbour is imperial-wall-run.",
+          "whySpot": "The nearest ground to the old lattice cell is chosen. Every cell under the footprint is under 2 deg. The designed sink alone seats the piece."
+        },
+        "yawDeg": 180.0
+      }
+    ],
+    "partTwoTestSitesNote": "The pad corner, clearing and rock test sites stay empty. Part 2 chooses those test sites.",
+    "questSockets": [],
+    "rockTestPoint": null,
+    "routes": [
+      {
+        "endsAt": [
+          "parcel.proving-ground.imperial-wall-run",
+          "parcel.proving-ground.landing-stage"
+        ],
+        "id": "route.proving-ground.way",
+        "kind": "road",
+        "points": [
+          [
+            0.574407627,
+            0.771446566
+          ],
+          [
+            0.576273767,
+            0.771446566
+          ],
+          [
+            0.592010378,
+            0.7759146
+          ]
+        ],
+        "routing": "straight",
+        "via": [
+          [
+            0.574646319,
+            0.771446566
+          ],
+          [
+            0.576273767,
+            0.771446566
+          ],
+          [
+            0.591837278,
+            0.775670311
+          ]
+        ],
+        "why": "The straight way runs through the middle of the yard. Every test piece stands within 12 m of the straight way.",
+        "widthM": 4.3
+      },
+      {
+        "endsAt": [
+          "parcel.proving-ground.imperial-house"
+        ],
+        "id": "route.proving-ground.imperial-house-path",
+        "kind": "footpath",
+        "points": [
+          [
+            0.58345255,
+            0.773274635
+          ],
+          [
+            0.580089455,
+            0.785423261
+          ]
+        ],
+        "routing": "straight",
+        "via": [
+          [
+            0.58345255,
+            0.773274635
+          ],
+          [
+            0.579698634,
+            0.786427282
+          ]
+        ],
+        "why": "The footpath runs from the straight way to the imperial house door. The door opens onto a walked line.",
+        "widthM": 1.5
+      },
+      {
+        "endsAt": [
+          "parcel.proving-ground.stilt-hut"
+        ],
+        "id": "route.proving-ground.stilt-hut-path",
+        "kind": "footpath",
+        "points": [
+          [
+            0.589280418,
+            0.774937975
+          ],
+          [
+            0.586908503,
+            0.78259648
+          ]
+        ],
+        "routing": "straight",
+        "via": [
+          [
+            0.589280418,
+            0.774937975
+          ],
+          [
+            0.587055142,
+            0.782119824
+          ]
+        ],
+        "why": "The footpath runs from the straight way to the stilt hut door. The door opens onto a walked line.",
+        "widthM": 1.5
+      },
+      {
+        "endsAt": [
+          "parcel.proving-ground.mud-hut"
+        ],
+        "id": "route.proving-ground.mud-hut-path",
+        "kind": "footpath",
+        "points": [
+          [
+            0.582051616,
+            0.772874792
+          ],
+          [
+            0.579545584,
+            0.782598803
+          ]
+        ],
+        "routing": "straight",
+        "via": [
+          [
+            0.582051616,
+            0.772874792
+          ],
+          [
+            0.579448472,
+            0.782088051
+          ]
+        ],
+        "why": "The footpath runs from the straight way to the mud hut door. The door opens onto a walked line.",
+        "widthM": 1.5
+      }
+    ],
+    "scaleGrounding": {
+      "buildingsPlanned": 13,
+      "households": 0,
+      "loreSource": "none — fixture",
+      "npcsPlanned": 0,
+      "population": 0,
+      "why": "The yard holds ten test pieces. It has one piece of each mechanism under test. The yard has no population."
+    },
+    "seed": "place.fixture.proving-ground",
+    "travelServices": [],
+    "variants": [
+      {
+        "ambience": "quiet-water",
+        "changedRefs": [],
+        "id": "variant.proving-ground.base",
+        "serviceOverrides": {}
+      }
+    ]
+  },
+  "schemaVersion": 1
+}

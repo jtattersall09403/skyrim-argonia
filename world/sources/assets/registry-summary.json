@@ -1,0 +1,558 @@
+{
+ "schemaVersion": 2,
+ "pools": {
+  "bmv": {
+   "label": "Black Marsh & Valenwood",
+   "source": "https://www.moddb.com/mods/black-marsh-valenwood",
+   "credit": "Black Marsh & Valenwood (ModDB), bundling many credited modder resources",
+   "meshesSeen": 12798,
+   "registered": 12016,
+   "skippedNonContent": {
+    "lod": 690,
+    "effect": 92
+   },
+   "categories": {
+    "architecture": 3135,
+    "creature": 2245,
+    "clutter": 1636,
+    "tree": 932,
+    "armour": 874,
+    "misc": 428,
+    "plant": 405,
+    "rock": 340,
+    "dungeon-kit": 327,
+    "boat": 275,
+    "signage": 256,
+    "grass": 250,
+    "ruin": 244,
+    "shrub": 198,
+    "weapon": 99,
+    "fungus": 97,
+    "terrain-feature": 86,
+    "furniture": 77,
+    "deadfall": 43,
+    "aquatic-plant": 31,
+    "root": 15,
+    "effect": 15,
+    "door": 4,
+    "ice": 2,
+    "vehicle": 2
+   },
+   "withLodVariant": 634,
+   "withDimensions": 860,
+   "observedPlaced": 191
+  },
+  "vanilla": {
+   "label": "Vanilla Skyrim (Bethesda)",
+   "source": "Skyrim - Meshes.bsa (owner's copy of the game)",
+   "credit": "Skyrim vanilla assets (Bethesda)",
+   "meshesSeen": 17216,
+   "registered": 15050,
+   "skippedNonContent": {
+    "lod": 840,
+    "marker": 283,
+    "effect": 869,
+    "sky": 154,
+    "water": 20
+   },
+   "categories": {
+    "creature": 3423,
+    "dungeon-kit": 3130,
+    "architecture": 2828,
+    "armour": 2288,
+    "clutter": 1603,
+    "weapon": 326,
+    "furniture": 260,
+    "misc": 209,
+    "door": 172,
+    "plant": 122,
+    "terrain-feature": 98,
+    "trap": 91,
+    "container": 89,
+    "effect": 72,
+    "rock": 71,
+    "tree": 47,
+    "ice": 46,
+    "deadfall": 39,
+    "fungus": 37,
+    "shrub": 27,
+    "grass": 25,
+    "ammo": 17,
+    "root": 16,
+    "aquatic-plant": 5,
+    "bridge": 4,
+    "lod": 3,
+    "marker": 1,
+    "light": 1
+   },
+   "withLodVariant": 52,
+   "withDimensions": 8690,
+   "observedPlaced": 699
+  },
+  "tropical": {
+   "label": "Tropical Skyrim \u2014 A Climate Overhaul",
+   "source": "https://www.nexusmods.com/skyrim/mods/33017",
+   "credit": "Tropical Skyrim (Nexus classic 33017, Soolie)",
+   "meshesSeen": 876,
+   "registered": 869,
+   "skippedNonContent": {
+    "lod": 1,
+    "effect": 4,
+    "marker": 2
+   },
+   "categories": {
+    "tree": 707,
+    "deadfall": 42,
+    "shrub": 29,
+    "creature": 27,
+    "grass": 25,
+    "plant": 18,
+    "aquatic-plant": 10,
+    "ice": 7,
+    "root": 2,
+    "rock": 2
+   },
+   "withLodVariant": 1,
+   "withDimensions": 51,
+   "observedPlaced": 6
+  },
+  "xanmeer": {
+   "label": "Argonian Xanmeer Tileset \u2014 Modder's Resource",
+   "source": "https://www.nexusmods.com/skyrimspecialedition/mods/181193",
+   "credit": "Argonian Xanmeer Tileset (Nexus SSE 181193, DarthVitrial)",
+   "meshesSeen": 85,
+   "registered": 85,
+   "skippedNonContent": {},
+   "categories": {
+    "dungeon-kit": 27,
+    "furniture": 24,
+    "clutter": 19,
+    "architecture": 9,
+    "container": 6
+   },
+   "withLodVariant": 0,
+   "withDimensions": 77,
+   "observedPlaced": 0
+  },
+  "drjacopo": {
+   "label": "DrJacopo's 3D Landscapes and Grass Library",
+   "source": "https://www.nexusmods.com/skyrimspecialedition/mods/80687",
+   "credit": "DrJacopo's - 3D Landscapes and Grass Library (Nexus SSE 80687, DrJacopo and JonnyWang13; a modder's resource)",
+   "archiveSha256": "5026606faae2b72cc796242dbc2e3f13d0a22133f9afafe6e2a9a71ecb298c68",
+   "meshesSeen": 579,
+   "registered": 579,
+   "skippedNonContent": {},
+   "categories": {
+    "grass": 478,
+    "shrub": 43,
+    "plant": 34,
+    "aquatic-plant": 18,
+    "deadfall": 6
+   },
+   "withLodVariant": 0,
+   "withDimensions": 0,
+   "observedPlaced": 0
+  },
+  "hoddminir": {
+   "label": "Hoddminir Plants and Trees",
+   "source": "https://www.nexusmods.com/skyrim/mods/38651",
+   "credit": "Hoddminir Plants and Trees (Nexus classic 38651, Ztree and Elinen; with credit to Vurt, SparrowPrince and Ga-Knomboe Boy; non-commercial)",
+   "archiveSha256": "42e6127a06c2c277fc98eecae097238aff2b59edb6dcd69db13a8d7169321b47",
+   "meshesSeen": 836,
+   "registered": 520,
+   "skippedNonContent": {
+    "lod": 316
+   },
+   "categories": {
+    "misc": 278,
+    "plant": 124,
+    "shrub": 62,
+    "tree": 56
+   },
+   "withLodVariant": 293,
+   "withDimensions": 0,
+   "observedPlaced": 2
+  },
+  "jokerine": {
+   "label": "Jokerine's Seashells",
+   "source": "https://www.nexusmods.com/skyrimspecialedition/mods/4492",
+   "credit": "Seashells (Nexus SSE 4492, Jokerine; SSE conversion by Rusey)",
+   "archiveSha256": "b561bd0a1ead01c007febb708b6279d80a37c7c8efa8655f800874fbc5c61c68",
+   "meshesSeen": 45,
+   "registered": 45,
+   "skippedNonContent": {},
+   "categories": {
+    "misc": 45
+   },
+   "withLodVariant": 0,
+   "withDimensions": 0,
+   "observedPlaced": 0
+  },
+  "shores": {
+   "label": "Shores of Skyrim, CC Attribution files",
+   "source": "https://www.nexusmods.com/skyrimspecialedition/mods/140081",
+   "credit": "Shores of Skyrim - Base Object Swapper, Part Two CC Attribution files (Nexus SSE 140081, FrankBlack; CC-BY)",
+   "archiveSha256": "44307f926585bc24ffa7a5ef5b09b63e450edca87dd255c48e0ea59856ee6934",
+   "meshesSeen": 19,
+   "registered": 19,
+   "skippedNonContent": {},
+   "categories": {
+    "misc": 19
+   },
+   "withLodVariant": 0,
+   "withDimensions": 0,
+   "observedPlaced": 0
+  },
+  "mudmother": {
+   "label": "Mud Mother Grove \u2014 An Argonian Mud Hut",
+   "source": "https://www.nexusmods.com/skyrimspecialedition/mods/146557",
+   "credit": "Mud Mother Grove \u2014 An Argonian Mud Hut (Nexus SSE 146557, GeminiVoid)",
+   "meshesSeen": 62,
+   "registered": 62,
+   "skippedNonContent": {},
+   "categories": {
+    "misc": 36,
+    "clutter": 15,
+    "furniture": 7,
+    "container": 2,
+    "architecture": 2
+   },
+   "withLodVariant": 0,
+   "withDimensions": 57,
+   "observedPlaced": 0
+  },
+  "ferries": {
+   "label": "Skyrim Ferries \u2014 plank ferries, rafts and poled craft",
+   "source": "https://www.nexusmods.com/skyrimspecialedition/mods/109843",
+   "credit": "Skyrim Ferries (Nexus SSE 109843, Mharlek1; ferry meshes by yamadori)",
+   "meshesSeen": 89,
+   "registered": 89,
+   "skippedNonContent": {},
+   "categories": {
+    "misc": 89
+   },
+   "withLodVariant": 0,
+   "withDimensions": 0,
+   "observedPlaced": 0
+  },
+  "rowboats": {
+   "label": "RowBoats and Oars of Skyrim",
+   "source": "https://www.nexusmods.com/skyrimspecialedition/mods/35341",
+   "credit": "RowBoats and Oars of Skyrim (Nexus SSE 35341, PraedythXVI)",
+   "meshesSeen": 3,
+   "registered": 3,
+   "skippedNonContent": {},
+   "categories": {
+    "dungeon-kit": 3
+   },
+   "withLodVariant": 0,
+   "withDimensions": 0,
+   "observedPlaced": 1
+  },
+  "ayleidcc": {
+   "label": "Creation Club Ayleid Ruin Resources",
+   "source": "https://www.nexusmods.com/skyrimspecialedition/mods/83999",
+   "credit": "Creation Club Ayleid Ruin Resources (Nexus SSE 83999, SarthesArai)",
+   "meshesSeen": 68,
+   "registered": 68,
+   "skippedNonContent": {},
+   "categories": {
+    "ruin": 68
+   },
+   "withLodVariant": 0,
+   "withDimensions": 0,
+   "observedPlaced": 0
+  },
+  "xalfek": {
+   "label": "Xalfek \u2014 An Argonian Home",
+   "source": "https://www.nexusmods.com/skyrimspecialedition/mods/55595",
+   "credit": "Xalfek \u2014 An Argonian Home (Nexus SSE 55595, DexMods), bundling many credited modder resources",
+   "meshesSeen": 72,
+   "registered": 72,
+   "skippedNonContent": {},
+   "categories": {
+    "misc": 64,
+    "clutter": 7,
+    "fungus": 1
+   },
+   "withLodVariant": 0,
+   "withDimensions": 0,
+   "observedPlaced": 0
+  },
+  "darkwater": {
+   "label": "Darkwater Den \u2014 Argonian themed home",
+   "source": "https://www.nexusmods.com/skyrim/mods/52630",
+   "credit": "Darkwater Den (Nexus classic 52630, Elianora), bundling many credited modder resources",
+   "meshesSeen": 124,
+   "registered": 123,
+   "skippedNonContent": {
+    "water": 1
+   },
+   "categories": {
+    "misc": 72,
+    "clutter": 27,
+    "architecture": 8,
+    "furniture": 7,
+    "armour": 3,
+    "tree": 3,
+    "plant": 2,
+    "shrub": 1
+   },
+   "withLodVariant": 0,
+   "withDimensions": 0,
+   "observedPlaced": 3
+  },
+  "ayleidkit": {
+   "label": "Ayleid Ruins Building Kit \u2014 Resources",
+   "source": "https://www.nexusmods.com/skyrim/mods/90667",
+   "credit": "Ayleid Ruins Building Kit -Resources- (Nexus classic 90667, Imperial Society)",
+   "meshesSeen": 195,
+   "registered": 195,
+   "skippedNonContent": {},
+   "categories": {
+    "ruin": 195
+   },
+   "withLodVariant": 0,
+   "withDimensions": 191,
+   "observedPlaced": 0
+  },
+  "histtree": {
+   "label": "Skyfall's Sleeping Hist Tree Overhaul",
+   "source": "https://www.nexusmods.com/skyrimspecialedition/mods/116792",
+   "credit": "Skyfall's Sleeping Hist Tree Overhaul (Nexus SSE 116792, Skyfall515, ToosTruus and Clofas)",
+   "meshesSeen": 22,
+   "registered": 19,
+   "skippedNonContent": {
+    "effect": 3
+   },
+   "categories": {
+    "misc": 19
+   },
+   "withLodVariant": 0,
+   "withDimensions": 19,
+   "observedPlaced": 0
+  },
+  "canoe": {
+   "label": "Script Free Ship Sailing \u2014 canoe and oars",
+   "source": "https://www.nexusmods.com/skyrim/mods/67727",
+   "credit": "Script free ship sailing (Nexus classic 67727, ElstarTomas; canoe model by FrankFamily)",
+   "meshesSeen": 11,
+   "registered": 11,
+   "skippedNonContent": {},
+   "categories": {
+    "weapon": 7,
+    "creature": 4
+   },
+   "withLodVariant": 0,
+   "withDimensions": 0,
+   "observedPlaced": 0
+  },
+  "ferryraft": {
+   "label": "Solitude (ghost) Ferry \u2014 poled ferry raft",
+   "source": "https://www.nexusmods.com/skyrim/mods/89948",
+   "credit": "Solitude (ghost) Ferry (Nexus classic 89948, Syntia)",
+   "meshesSeen": 8,
+   "registered": 8,
+   "skippedNonContent": {},
+   "categories": {
+    "misc": 4,
+    "creature": 4
+   },
+   "withLodVariant": 0,
+   "withDimensions": 0,
+   "observedPlaced": 0
+  },
+  "sbot": {
+   "label": "Ships and Boats of Tamriel",
+   "source": "https://www.nexusmods.com/skyrimspecialedition/mods/41653",
+   "credit": "Ships and boats of Tamriel (Nexus SSE 41653, ThatShipGuy/DeviantKaled)",
+   "meshesSeen": 102,
+   "registered": 102,
+   "skippedNonContent": {},
+   "categories": {
+    "boat": 51,
+    "dungeon-kit": 51
+   },
+   "withLodVariant": 0,
+   "withDimensions": 0,
+   "observedPlaced": 0
+  },
+  "depths": {
+   "label": "Depths of Skyrim \u2014 An Underwater Overhaul",
+   "source": "https://www.nexusmods.com/skyrimspecialedition/mods/26913",
+   "credit": "Depths of Skyrim - An Underwater Overhaul (Nexus SSE 26913, TheBlackpixel), with the corrected plant/coral meshes from Depths of Skyrim - Mesh fixes (Nexus SSE 174995, Gobsnek) overlaid",
+   "meshesSeen": 47,
+   "registered": 47,
+   "skippedNonContent": {},
+   "categories": {
+    "misc": 31,
+    "aquatic-plant": 12,
+    "grass": 2,
+    "deadfall": 2
+   },
+   "withLodVariant": 0,
+   "withDimensions": 25,
+   "observedPlaced": 7
+  },
+  "sirenroot": {
+   "label": "SIRENROOT \u2014 Deluge of Deceit (ruin-block and caustics resource)",
+   "source": "https://www.nexusmods.com/skyrimspecialedition/mods/70917",
+   "credit": "SIRENROOT - Deluge of Deceit (Nexus SSE 70917, Everglaid)",
+   "meshesSeen": 204,
+   "registered": 200,
+   "skippedNonContent": {
+    "effect": 3,
+    "water": 1
+   },
+   "categories": {
+    "ruin": 88,
+    "clutter": 59,
+    "misc": 40,
+    "creature": 11,
+    "weapon": 2
+   },
+   "withLodVariant": 0,
+   "withDimensions": 0,
+   "observedPlaced": 0
+  },
+  "htbm": {
+   "label": "Here There Be Monsters \u2014 Sign of Cipactli (Black Marsh assets)",
+   "source": "https://www.nexusmods.com/skyrimspecialedition/mods/35933",
+   "credit": "Here There Be Monsters - Sign of Cipactli (Nexus SSE 35933, Araanim), bundling many credited modder resources",
+   "meshesSeen": 1612,
+   "registered": 1579,
+   "skippedNonContent": {
+    "lod": 33
+   },
+   "categories": {
+    "armour": 768,
+    "creature": 256,
+    "architecture": 141,
+    "ruin": 100,
+    "clutter": 92,
+    "misc": 78,
+    "weapon": 75,
+    "tree": 21,
+    "plant": 13,
+    "grass": 10,
+    "root": 7,
+    "container": 6,
+    "ammo": 4,
+    "furniture": 3,
+    "shrub": 3,
+    "door": 2
+   },
+   "withLodVariant": 33,
+   "withDimensions": 439,
+   "observedPlaced": 0
+  },
+  "mwkeep": {
+   "label": "Morrowind Imperial Keep Set (Remodeled)",
+   "source": "https://www.nexusmods.com/skyrimspecialedition/mods/133090",
+   "credit": "Morrowind Imperial Keep Set (Remodeled) (Nexus SSE 133090, Tesak1243)",
+   "meshesSeen": 164,
+   "registered": 164,
+   "skippedNonContent": {},
+   "categories": {
+    "architecture": 159,
+    "door": 5
+   },
+   "withLodVariant": 0,
+   "withDimensions": 161,
+   "observedPlaced": 0
+  },
+  "kotm": {
+   "label": "King of the Murkmire",
+   "source": "https://www.nexusmods.com/skyrimspecialedition/mods/190459",
+   "credit": "King of the Murkmire (Nexus SSE 190459, pancake0723), bundling many credited modder resources",
+   "archiveSha256": "7bf18067157130d47058ce20f0bc15759f5df71b6f81eb05079b8dba720a5ff2",
+   "meshesSeen": 2118,
+   "registered": 2100,
+   "skippedNonContent": {
+    "lod": 17,
+    "sky": 1
+   },
+   "categories": {
+    "misc": 1069,
+    "creature": 376,
+    "clutter": 208,
+    "armour": 132,
+    "architecture": 64,
+    "furniture": 54,
+    "dungeon-kit": 38,
+    "grass": 30,
+    "weapon": 26,
+    "root": 21,
+    "plant": 21,
+    "door": 18,
+    "container": 16,
+    "trap": 8,
+    "tree": 6,
+    "shrub": 6,
+    "fungus": 4,
+    "ammo": 3
+   },
+   "withLodVariant": 12,
+   "withDimensions": 1042,
+   "observedPlaced": 0
+  },
+  "sailboats": {
+   "label": "Sailboats \u2014 Script Free Sailing EXPANDED SSE",
+   "source": "https://www.nexusmods.com/skyrimspecialedition/mods/40057",
+   "credit": "Sailboats - Script Free Sailing EXPANDED SSE (Nexus SSE 40057, Araanim, building on ElstarTomas' Script free ship sailing and DeviantKaled's lore-friendly ship/boat resources)",
+   "meshesSeen": 8,
+   "registered": 8,
+   "skippedNonContent": {},
+   "categories": {
+    "misc": 8
+   },
+   "withLodVariant": 0,
+   "withDimensions": 0,
+   "observedPlaced": 0
+  },
+  "impships": {
+   "label": "Cyrodiil Ship and boat resource (Beyond Skyrim)",
+   "source": "https://www.nexusmods.com/skyrim/mods/59426",
+   "credit": "Cyrodiil Ship and boat resource (Nexus classic 59426, Markus Liberty / Tellmann for Beyond Skyrim; collision work by Tamira and 1shoedpunk)",
+   "meshesSeen": 5,
+   "registered": 5,
+   "skippedNonContent": {},
+   "categories": {
+    "misc": 5
+   },
+   "withLodVariant": 0,
+   "withDimensions": 0,
+   "observedPlaced": 0
+  },
+  "boatsanim": {
+   "label": "Boats \u2014 Operational Animated Travel (Vicn boat-carrier meshes)",
+   "source": "https://www.nexusmods.com/skyrimspecialedition/mods/110882",
+   "credit": "Boats - Operational Animated Travel (Nexus SSE 110882, Enneal; carrier meshes from Vicn's resource, with DeviantKaled's ship assets credited on its page)",
+   "meshesSeen": 4,
+   "registered": 4,
+   "skippedNonContent": {},
+   "categories": {
+    "clutter": 4
+   },
+   "withLodVariant": 0,
+   "withDimensions": 0,
+   "observedPlaced": 0
+  },
+  "hlaalu": {
+   "label": "Morrowind Hlaalu Architecture",
+   "source": "https://www.nexusmods.com/skyrimspecialedition/mods/157997",
+   "credit": "Morrowind Hlaalu Architecture (Nexus SSE 157997, Angelio; uploaded by Kai4304), bundling many credited modder resources",
+   "meshesSeen": 127,
+   "registered": 127,
+   "skippedNonContent": {},
+   "categories": {
+    "misc": 116,
+    "architecture": 10,
+    "clutter": 1
+   },
+   "withLodVariant": 0,
+   "withDimensions": 0,
+   "observedPlaced": 0
+  }
+ }
+}

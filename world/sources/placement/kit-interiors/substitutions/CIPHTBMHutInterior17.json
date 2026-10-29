@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "cellId": "CIPHTBMHutInterior17",
+  "plugin": "Here There Be Monsters - Curse of Cipactli.esp",
+  "rule": "Stand-ins for the cell's missing clutter and furniture (planner brief 2026-10-10, Helstrom part 8 R21): each missing piece is drawn by a published vanilla or King of the Murkmire piece of the same object and near size, read from the kit manifests; a piece with no same-object stand-in is taken out (removals[]). Drawn at the missing reference's transform by worldgen/export_interior_bundle.py.",
+  "substitutions": [],
+  "removals": [
+    {
+      "refId": "06256E76",
+      "reason": "decorative-no-same-class",
+      "search": "Base form Dragonborn.esm:00021743 lives in a master the project never sources (absent-master-classes.json rule; planner ruling 2026-09-27); the vault Data folder holds only Skyrim.esm and Update.esm (listing, 16k walk 9, 2026-10-01). No published kit holds the same object, so no same-object stand-in can be chosen (R48).",
+      "note": "A small loose piece from the Dragonborn add-on lay here; that content is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "06256E77",
+      "reason": "decorative-no-same-class",
+      "search": "Base form Dragonborn.esm:00035038 lives in a master the project never sources (absent-master-classes.json rule; planner ruling 2026-09-27); the vault Data folder holds only Skyrim.esm and Update.esm (listing, 16k walk 9, 2026-10-01). No published kit holds the same object, so no same-object stand-in can be chosen (R48).",
+      "note": "A small loose piece from the Dragonborn add-on lay here; that content is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "06256E78",
+      "reason": "decorative-no-same-class",
+      "search": "Base form Dragonborn.esm:00035037 lives in a master the project never sources (absent-master-classes.json rule; planner ruling 2026-09-27); the vault Data folder holds only Skyrim.esm and Update.esm (listing, 16k walk 9, 2026-10-01). No published kit holds the same object, so no same-object stand-in can be chosen (R48).",
+      "note": "A small loose piece from the Dragonborn add-on lay here; that content is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "06256E79",
+      "reason": "decorative-no-same-class",
+      "search": "Base form Dragonborn.esm:00021746 lives in a master the project never sources (absent-master-classes.json rule; planner ruling 2026-09-27); the vault Data folder holds only Skyrim.esm and Update.esm (listing, 16k walk 9, 2026-10-01). No published kit holds the same object, so no same-object stand-in can be chosen (R48).",
+      "note": "A small loose piece from the Dragonborn add-on lay here; that content is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "06256E7A",
+      "reason": "decorative-no-same-class",
+      "search": "Base form Dragonborn.esm:00036793 lives in a master the project never sources (absent-master-classes.json rule; planner ruling 2026-09-27); the vault Data folder holds only Skyrim.esm and Update.esm (listing, 16k walk 9, 2026-10-01). No published kit holds the same object, so no same-object stand-in can be chosen (R48).",
+      "note": "A small loose piece from the Dragonborn add-on lay here; that content is not ours, so the spot stays bare."
+    },
+    {
+      "refId": "06256E7B",
+      "reason": "decorative-no-same-class",
+      "search": "Base form Dragonborn.esm:00036794 lives in a master the project never sources (absent-master-classes.json rule; planner ruling 2026-09-27); the vault Data folder holds only Skyrim.esm and Update.esm (listing, 16k walk 9, 2026-10-01). No published kit holds the same object, so no same-object stand-in can be chosen (R48).",
+      "note": "A small loose piece from the Dragonborn add-on lay here; that content is not ours, so the spot stays bare."
+    }
+  ],
+  "removalRule": "Owner ruling 2026-10-04 (R113): no missing piece ships as a gap. A missing piece takes a same-class stand-in from a published kit where one exists (substitutions[]); a decorative piece whose class no published kit or vault archive holds is taken out of the fit-out (removals[], reason decorative-no-same-class, its search recorded), and the spot is simply empty. A placed piece whose only support was a removed piece is removed with it (reason rests-on-a-removal, restsOn naming that row)."
+}

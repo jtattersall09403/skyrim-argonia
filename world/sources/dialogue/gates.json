@@ -1,0 +1,4 @@
+{
+  "voiceGates": "off",
+  "reason": "owner ruling 2026-10-19: the voice loop plateaued after four rounds; the slice is rewritten once with the current dialogue-write skill and left there; the voice gates are off locally and on deploy until the owner returns to the dialogue work"
+}

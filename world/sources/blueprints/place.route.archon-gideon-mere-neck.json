@@ -1,0 +1,2766 @@
+{
+  "schemaVersion": 1,
+  "blueprint": {
+    "id": "place.route.archon-gideon-mere-neck",
+    "seed": "place.route.archon-gideon-mere-neck",
+    "causalModel": {
+      "founding": "The Long road from Archon to Gideon crosses Middle Argonia. The road follows the firm ground that is available. Here the firm ground is a strip between two meres. The strip lies barely higher than the water.",
+      "siteAdvantages": "The neck is the only dry line between the meres for a long way. About 55 m of the neck lies under water. Walkers wade that stretch. The water is up to the waist where it is deepest.",
+      "occupantsMotive": "The neck has no residents. Travellers drove poles into both verges. The poles let a walker keep to the causeway when the water covers it.",
+      "pressures": "The water rises over the neck every wet season. The poles rot or fall. A walker who steps off the causeway then is in deep water.",
+      "wouldChangeIf": "The meres could dry back. The poles would then stand on dry ground. The travellers would stop replacing the poles."
+    },
+    "boundary": [
+      [
+        0.6375,
+        0.47467
+      ],
+      [
+        0.65508,
+        0.47467
+      ],
+      [
+        0.65508,
+        0.48552
+      ],
+      [
+        0.6375,
+        0.48552
+      ]
+    ],
+    "districts": [
+      {
+        "id": "district.archon-gideon-mere-neck.the-neck",
+        "kind": "route-structure",
+        "cultureKit": "argonian-mud",
+        "wealth": "poor",
+        "boundary": [
+          [
+            0.637994498,
+            0.477779866
+          ],
+          [
+            0.638107432,
+            0.478085092
+          ],
+          [
+            0.638239015,
+            0.478286479
+          ],
+          [
+            0.640227726,
+            0.480037937
+          ],
+          [
+            0.640347704,
+            0.480101893
+          ],
+          [
+            0.649426287,
+            0.484642582
+          ],
+          [
+            0.649853515,
+            0.484661007
+          ],
+          [
+            0.65016573,
+            0.484456497
+          ],
+          [
+            0.650348577,
+            0.484272736
+          ],
+          [
+            0.650784448,
+            0.483499374
+          ],
+          [
+            0.650853759,
+            0.483183505
+          ],
+          [
+            0.650649042,
+            0.482530666
+          ],
+          [
+            0.639629298,
+            0.476891776
+          ],
+          [
+            0.638598328,
+            0.477066278
+          ],
+          [
+            0.63814677,
+            0.477274364
+          ]
+        ],
+        "notes": "The stretch of the Long road across the neck between two meres, with its poled wade and the marks at each end.",
+        "why": {
+          "what": "The district is the Long road across the neck between two meres. The road wades about 55 m, marked by poles on both verges. A cairn stands at each end.",
+          "whyHere": "The neck is the only firm line between the meres. It lies barely above the water.",
+          "whyNeighbours": "The road runs on south-east toward Archon. It runs on north-west toward Gideon. A marsh track leaves the road at the north-west bend.",
+          "playerPurpose": "The neck is the way across the meres. A walker who keeps between the poles finds the water shallow.",
+          "microGeography": "The neck is a low strip of mud and reed. A deep mere lies to the east. A marsh pond lies to the west."
+        }
+      }
+    ],
+    "parcels": [
+      {
+        "id": "parcel.archon-gideon-mere-neck.east-wade-head",
+        "districtId": "district.archon-gideon-mere-neck.the-neck",
+        "use": "waymark",
+        "kind": "prop",
+        "buildingFamily": "road-dressing",
+        "interior": {
+          "kind": "none"
+        },
+        "groundFit": "dug-in",
+        "orientationWhy": "The cairn stands on the dry verge where the road goes down into the water. The poles run on from the cairn along both verges.",
+        "why": {
+          "what": "The parcel is the south-east head of the wade. A stone cairn stands on the last dry ground. The first poles of the line stand along both verges.",
+          "whyHere": "The road leaves dry ground here. It goes into the water here.",
+          "whySpot": "The parcel lies on the verge beside the road. It lies just short of the water's edge.",
+          "whyNeighbours": "The drying fire lies a few paces back up the road. The west head lies about 55 m away across the water.",
+          "playerPurpose": "The cairn shows the walker where the wade starts. It also shows which way the causeway runs under the water.",
+          "microGeography": "The ground is the last firm mud before the water. Reeds grow on both sides."
+        },
+        "assetRef": "vanilla:landscape/rocks/cairns/rockcairn01",
+        "centreUV": [
+          0.650103172,
+          0.483280237
+        ],
+        "yawDeg": 92.0,
+        "yMeasured": 9.179,
+        "assembly": [
+          {
+            "id": "cn-east-1",
+            "asset": "vanilla:landscape/rocks/wetrocks/rockm02wet",
+            "atM": [
+              0.0339,
+              5.8424
+            ],
+            "yaw": 270.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 9.0174
+          },
+          {
+            "id": "pl-n00",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+            "atM": [
+              -18.5169,
+              6.4301
+            ],
+            "yaw": 266.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 7.7937
+          },
+          {
+            "id": "pl-n01",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+            "atM": [
+              -16.6485,
+              12.3686
+            ],
+            "yaw": 353.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 7.2995
+          },
+          {
+            "id": "pl-n02",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+            "atM": [
+              -14.6482,
+              18.0722
+            ],
+            "yaw": 181.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 7.4809
+          },
+          {
+            "id": "pl-n03",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+            "atM": [
+              -17.4756,
+              22.4936
+            ],
+            "yaw": 100.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 7.5145
+          },
+          {
+            "id": "pl-n04",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+            "atM": [
+              -17.889,
+              27.5611
+            ],
+            "yaw": 177.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 7.4949
+          },
+          {
+            "id": "pl-s00",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+            "atM": [
+              -0.8181,
+              11.8158
+            ],
+            "yaw": 106.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 9.4797
+          },
+          {
+            "id": "pl-s01",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+            "atM": [
+              -0.8929,
+              16.5512
+            ],
+            "yaw": 197.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 9.6459
+          },
+          {
+            "id": "pl-s02",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+            "atM": [
+              -2.2758,
+              21.3624
+            ],
+            "yaw": 19.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 9.5202
+          },
+          {
+            "id": "pl-s03",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+            "atM": [
+              -5.8812,
+              25.5708
+            ],
+            "yaw": 129.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 9.0053
+          },
+          {
+            "id": "pl-s04",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+            "atM": [
+              -5.618,
+              30.8148
+            ],
+            "yaw": 333.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 8.936
+          }
+        ],
+        "footprint": [
+          [
+            0.650136338,
+            0.483107695
+          ],
+          [
+            0.65021424,
+            0.483130771
+          ],
+          [
+            0.650260495,
+            0.483166312
+          ],
+          [
+            0.650280021,
+            0.483190063
+          ],
+          [
+            0.65029296,
+            0.483208157
+          ],
+          [
+            0.650271979,
+            0.483303773
+          ],
+          [
+            0.650047533,
+            0.48343571
+          ],
+          [
+            0.64999546,
+            0.483450176
+          ],
+          [
+            0.649964162,
+            0.4834138
+          ],
+          [
+            0.649926417,
+            0.4833677
+          ],
+          [
+            0.649913763,
+            0.483341474
+          ],
+          [
+            0.649936981,
+            0.483259506
+          ],
+          [
+            0.649997457,
+            0.48315984
+          ],
+          [
+            0.650053281,
+            0.483115651
+          ]
+        ]
+      },
+      {
+        "id": "parcel.archon-gideon-mere-neck.west-wade-head",
+        "districtId": "district.archon-gideon-mere-neck.the-neck",
+        "use": "waymark",
+        "kind": "prop",
+        "buildingFamily": "road-dressing",
+        "interior": {
+          "kind": "none"
+        },
+        "groundFit": "dug-in",
+        "orientationWhy": "The cairn stands on the dry verge where the road comes up out of the water. The last poles of the line stand in front of the cairn.",
+        "why": {
+          "what": "The parcel is the north-west head of the wade. A stone cairn stands where the road comes out of the water. The cairn stands behind the deepest stretch of the poled line.",
+          "whyHere": "The water is deepest just before this end. The poles here matter most.",
+          "whySpot": "The parcel lies on the verge beside the road. The ground rises out of the water there.",
+          "whyNeighbours": "The south-east head is about 55 m back across the water. The track head lies a short walk further along the road.",
+          "playerPurpose": "The cairn shows the walker coming from Gideon where the wade starts.",
+          "microGeography": "The ground is firm mud. The mud rises from the deep end of the wade."
+        },
+        "assetRef": "vanilla:landscape/rocks/cairns/rockcairn04",
+        "centreUV": [
+          0.640623286,
+          0.479492352
+        ],
+        "yawDeg": 10.0,
+        "yMeasured": 7.4524,
+        "assembly": [
+          {
+            "id": "cn-west-1",
+            "asset": "vanilla:landscape/rocks/wetrocks/rockm02wet",
+            "atM": [
+              11.9901,
+              -0.1849
+            ],
+            "yaw": 207.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 7.3117
+          },
+          {
+            "id": "pl-n05",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+            "atM": [
+              38.3312,
+              0.5116
+            ],
+            "yaw": 304.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 7.4526
+          },
+          {
+            "id": "pl-n06",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+            "atM": [
+              33.1119,
+              -0.2943
+            ],
+            "yaw": 76.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 7.4629
+          },
+          {
+            "id": "pl-n07",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+            "atM": [
+              28.2226,
+              0.7709
+            ],
+            "yaw": 194.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 7.5772
+          },
+          {
+            "id": "pl-n08",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+            "atM": [
+              23.5764,
+              3.2148
+            ],
+            "yaw": 136.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 6.9251
+          },
+          {
+            "id": "pl-n09",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+            "atM": [
+              19.358,
+              4.111
+            ],
+            "yaw": 260.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 6.673
+          },
+          {
+            "id": "pl-n10",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+            "atM": [
+              14.4968,
+              2.917
+            ],
+            "yaw": 355.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 6.9267
+          },
+          {
+            "id": "pl-s05",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+            "atM": [
+              40.7796,
+              14.3974
+            ],
+            "yaw": 309.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 8.9394
+          },
+          {
+            "id": "pl-s06",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+            "atM": [
+              35.8382,
+              15.1672
+            ],
+            "yaw": 236.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 8.8968
+          },
+          {
+            "id": "pl-s07",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+            "atM": [
+              30.8794,
+              15.8385
+            ],
+            "yaw": 228.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 8.6479
+          },
+          {
+            "id": "pl-s08",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+            "atM": [
+              25.9901,
+              16.9037
+            ],
+            "yaw": 148.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 8.3879
+          },
+          {
+            "id": "pl-s09",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+            "atM": [
+              17.4599,
+              14.539
+            ],
+            "yaw": 56.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 6.2297
+          },
+          {
+            "id": "pl-s10",
+            "asset": "htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01",
+            "atM": [
+              13.0132,
+              11.0887
+            ],
+            "yaw": 319.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 6.604
+          }
+        ],
+        "footprint": [
+          [
+            0.640533404,
+            0.479447584
+          ],
+          [
+            0.640551308,
+            0.479392901
+          ],
+          [
+            0.640597813,
+            0.479355656
+          ],
+          [
+            0.640671193,
+            0.479376858
+          ],
+          [
+            0.640700425,
+            0.479421949
+          ],
+          [
+            0.640721408,
+            0.479466963
+          ],
+          [
+            0.640710578,
+            0.479551812
+          ],
+          [
+            0.64064695,
+            0.479608072
+          ],
+          [
+            0.640596671,
+            0.479619863
+          ],
+          [
+            0.640538766,
+            0.479588996
+          ],
+          [
+            0.640526106,
+            0.479512399
+          ]
+        ]
+      },
+      {
+        "id": "parcel.archon-gideon-mere-neck.track-head",
+        "districtId": "district.archon-gideon-mere-neck.the-neck",
+        "use": "waymark",
+        "kind": "prop",
+        "buildingFamily": "road-dressing",
+        "interior": {
+          "kind": "none"
+        },
+        "groundFit": "dug-in",
+        "orientationWhy": "The cairn stands on the inside of the bend. The marsh track leaves the road at the bend. Loose rocks lie along the bend.",
+        "why": {
+          "what": "The parcel is the track head at the north-west bend. A cairn stands where the marsh track leaves the road. Rocks have fallen along the bend.",
+          "whyHere": "The road turns north at this spot. A track goes off south-west into the marsh.",
+          "whySpot": "The cairn stands on the dry inside of the bend. It stands beside the first steps of the track.",
+          "whyNeighbours": "The west head of the wade lies a short walk back along the road.",
+          "playerPurpose": "The cairn shows where the marsh track leaves the Long road.",
+          "microGeography": "The ground on the bend is dry. The track is a trodden line into the reeds."
+        },
+        "assetRef": "vanilla:landscape/rocks/cairns/rockcairn02",
+        "centreUV": [
+          0.638800544,
+          0.477767257
+        ],
+        "yawDeg": 196.0,
+        "yMeasured": 7.4428,
+        "assembly": [
+          {
+            "id": "cn-track-1",
+            "asset": "vanilla:landscape/rocks/rockm01",
+            "atM": [
+              -0.7872,
+              4.2205
+            ],
+            "yaw": 81.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 7.152
+          },
+          {
+            "id": "cn-track-2",
+            "asset": "vanilla:landscape/rocks/rocks02",
+            "atM": [
+              -3.3197,
+              0.2861
+            ],
+            "yaw": 339.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 7.6534
+          },
+          {
+            "id": "rk-bend-0",
+            "asset": "vanilla:landscape/rocks/rockm04",
+            "atM": [
+              -3.3157,
+              7.411
+            ],
+            "yaw": 298.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 7.167
+          },
+          {
+            "id": "rk-bend-1",
+            "asset": "vanilla:landscape/rocks/rockpiles01",
+            "atM": [
+              -9.5337,
+              7.748
+            ],
+            "yaw": 116.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 7.7125
+          }
+        ],
+        "footprint": [
+          [
+            0.639017135,
+            0.477833596
+          ],
+          [
+            0.638976273,
+            0.477902298
+          ],
+          [
+            0.638882141,
+            0.477959958
+          ],
+          [
+            0.63865285,
+            0.47792807
+          ],
+          [
+            0.638594998,
+            0.477839528
+          ],
+          [
+            0.638566383,
+            0.47776219
+          ],
+          [
+            0.638595723,
+            0.477664789
+          ],
+          [
+            0.638759916,
+            0.477589126
+          ],
+          [
+            0.638832576,
+            0.477581743
+          ],
+          [
+            0.638918436,
+            0.477602131
+          ],
+          [
+            0.639002189,
+            0.477683992
+          ],
+          [
+            0.639029883,
+            0.477749778
+          ]
+        ]
+      },
+      {
+        "id": "parcel.archon-gideon-mere-neck.drying-fire",
+        "districtId": "district.archon-gideon-mere-neck.the-neck",
+        "use": "waymark",
+        "kind": "prop",
+        "buildingFamily": "road-dressing",
+        "interior": {
+          "kind": "none"
+        },
+        "groundFit": "direct",
+        "orientationWhy": "The parcel is a cold fire ring. The ring sits on a single flat dry spot near the south-east head of the wade.",
+        "why": {
+          "what": "The parcel is a cold fire ring. Walkers dry off beside the ring after the wade.",
+          "whyHere": "The spot is the first flat dry ground after the water for walkers who come from Gideon.",
+          "whySpot": "The ring sits on the flat a few paces off the road. The flat lies above the water.",
+          "whyNeighbours": "The south-east cairn lies just down the road. The first poles also lie just down the road.",
+          "playerPurpose": "The ring is a place to stop and dry off after the wade. It lies a few paces from the south-east cairn.",
+          "microGeography": "The ring sits on a dry flat of trodden mud. The flat lies above the mere."
+        },
+        "assetRef": "vanilla:clutter/woodfires/campfire01landoff",
+        "centreUV": [
+          0.649623074,
+          0.483758978
+        ],
+        "yawDeg": 281.0,
+        "yMeasured": 9.5668,
+        "assembly": [
+          {
+            "id": "fr-crest-1",
+            "asset": "vanilla:landscape/rocks/rocks03",
+            "atM": [
+              -0.8586,
+              -4.4173
+            ],
+            "yaw": 261.0,
+            "on": "ground",
+            "layer": "clutter",
+            "evidence": "measured",
+            "groundFit": "dug-in",
+            "yMeasured": 9.3495
+          }
+        ],
+        "footprint": [
+          [
+            0.64956537,
+            0.484105593
+          ],
+          [
+            0.649396474,
+            0.483958091
+          ],
+          [
+            0.649328201,
+            0.483826004
+          ],
+          [
+            0.649314474,
+            0.483697611
+          ],
+          [
+            0.649362503,
+            0.483578459
+          ],
+          [
+            0.649453505,
+            0.483487002
+          ],
+          [
+            0.649568806,
+            0.48346244
+          ],
+          [
+            0.649696535,
+            0.483473452
+          ],
+          [
+            0.649799749,
+            0.483525292
+          ],
+          [
+            0.649888468,
+            0.483601945
+          ],
+          [
+            0.64994683,
+            0.483721054
+          ],
+          [
+            0.64996148,
+            0.483823376
+          ],
+          [
+            0.64991212,
+            0.483942269
+          ],
+          [
+            0.649821118,
+            0.484033726
+          ],
+          [
+            0.649702381,
+            0.484111502
+          ]
+        ]
+      }
+    ],
+    "doors": [],
+    "routes": [
+      {
+        "id": "route.archon-gideon-mere-neck.east-wade-head-path",
+        "kind": "footpath",
+        "routing": "straight",
+        "widthM": 1.5,
+        "endsAt": [
+          "parcel.archon-gideon-mere-neck.east-wade-head"
+        ],
+        "why": "A step of trodden ground links the road to the cairn. The cairn stands at the south-east head of the wade.",
+        "via": [
+          [
+            0.650199462,
+            0.482909993
+          ],
+          [
+            0.650173694,
+            0.483006284
+          ]
+        ],
+        "points": [
+          [
+            0.650199462,
+            0.482909993
+          ],
+          [
+            0.650143064,
+            0.483109687
+          ]
+        ]
+      },
+      {
+        "id": "route.archon-gideon-mere-neck.west-wade-head-path",
+        "kind": "footpath",
+        "routing": "straight",
+        "widthM": 1.5,
+        "endsAt": [
+          "parcel.archon-gideon-mere-neck.west-wade-head"
+        ],
+        "why": "A step of trodden ground links the road to the cairn. The cairn stands at the north-west head of the wade.",
+        "via": [
+          [
+            0.641028792,
+            0.479687645
+          ],
+          [
+            0.640825361,
+            0.479589998
+          ]
+        ],
+        "points": [
+          [
+            0.641028792,
+            0.479687645
+          ],
+          [
+            0.640710578,
+            0.479551812
+          ]
+        ]
+      },
+      {
+        "id": "route.archon-gideon-mere-neck.track-head-path",
+        "kind": "footpath",
+        "routing": "straight",
+        "widthM": 1.5,
+        "endsAt": [
+          "parcel.archon-gideon-mere-neck.track-head"
+        ],
+        "why": "A step of trodden ground links the road to the cairn at the track head.",
+        "via": [
+          [
+            0.639542389,
+            0.477456685
+          ],
+          [
+            0.639097553,
+            0.477642485
+          ]
+        ],
+        "points": [
+          [
+            0.639542389,
+            0.477456685
+          ],
+          [
+            0.639002189,
+            0.477683992
+          ]
+        ]
+      },
+      {
+        "id": "route.archon-gideon-mere-neck.drying-fire-path",
+        "kind": "footpath",
+        "routing": "straight",
+        "widthM": 1.5,
+        "endsAt": [
+          "parcel.archon-gideon-mere-neck.drying-fire"
+        ],
+        "why": "A few steps of trodden ground lead from the road up to the fire ring. The fire ring sits on the dry flat.",
+        "via": [
+          [
+            0.649703091,
+            0.482909993
+          ],
+          [
+            0.649662404,
+            0.483335842
+          ]
+        ],
+        "points": [
+          [
+            0.649703091,
+            0.482909993
+          ],
+          [
+            0.649650879,
+            0.483469516
+          ]
+        ]
+      }
+    ],
+    "canals": [],
+    "boardwalks": [],
+    "fences": [],
+    "docks": [],
+    "landmarks": [],
+    "questSockets": [],
+    "travelServices": [],
+    "occupants": [],
+    "approaches": [
+      {
+        "id": "approach.archon-gideon-mere-neck.from-archon",
+        "mode": "walk",
+        "fromRouteId": "route.road.archon-gideon",
+        "firstSeen": "parcel.archon-gideon-mere-neck.east-wade-head",
+        "viaUV": [
+          [
+            0.658011733,
+            0.485478267
+          ],
+          [
+            0.65354,
+            0.483763014
+          ]
+        ],
+        "sequence": "A walker comes north-west along the road from Archon. Open water lies on both sides of the road. A cairn stands where the road goes into the water. Two lines of poles cross the water from the cairn.",
+        "wayfinding": "A walker keeps between the poles to reach the cairn on the far side."
+      },
+      {
+        "id": "approach.archon-gideon-mere-neck.from-gideon",
+        "mode": "walk",
+        "fromRouteId": "route.road.archon-gideon",
+        "firstSeen": "parcel.archon-gideon-mere-neck.track-head",
+        "viaUV": [
+          [
+            0.639191869,
+            0.47175
+          ],
+          [
+            0.63844819,
+            0.477069906
+          ]
+        ],
+        "sequence": "A walker comes south along the road from Gideon. A cairn marks the bend where a marsh track leaves the road. Past the cairn the road runs down into the water between two lines of poles.",
+        "wayfinding": "A walker goes round the bend and past the cairn. The walker then wades between the poles."
+      }
+    ],
+    "networkTerminals": [
+      {
+        "id": "terminal.archon-gideon-mere-neck.archon",
+        "routeId": "route.road.archon-gideon",
+        "entryUV": [
+          0.65354,
+          0.483763014
+        ],
+        "wayId": "route.road.archon-gideon",
+        "kind": "road",
+        "why": "The road from Archon reaches the south-east end of the neck."
+      },
+      {
+        "id": "terminal.archon-gideon-mere-neck.gideon",
+        "routeId": "route.road.archon-gideon",
+        "entryUV": [
+          0.63844819,
+          0.477069906
+        ],
+        "wayId": "route.road.archon-gideon",
+        "kind": "road",
+        "why": "The road from Gideon reaches the north-west bend of the neck."
+      }
+    ],
+    "combatSpaces": [
+      {
+        "id": "combat.archon-gideon-mere-neck.the-wade",
+        "aroundIds": [
+          "parcel.archon-gideon-mere-neck.east-wade-head",
+          "parcel.archon-gideon-mere-neck.west-wade-head"
+        ],
+        "clearanceClass": "open",
+        "why": "The combat space is the wade between the cairns. Open water lies on both sides. Footing exists only on the causeway.",
+        "boundary": [
+          [
+            0.640086045,
+            0.479070506
+          ],
+          [
+            0.640000549,
+            0.479331629
+          ],
+          [
+            0.639978602,
+            0.479526548
+          ],
+          [
+            0.640047221,
+            0.479941717
+          ],
+          [
+            0.640366105,
+            0.480111701
+          ],
+          [
+            0.649962228,
+            0.484022435
+          ],
+          [
+            0.650261193,
+            0.483939381
+          ],
+          [
+            0.650751088,
+            0.483651405
+          ],
+          [
+            0.650874536,
+            0.483088818
+          ],
+          [
+            0.650710667,
+            0.482859661
+          ],
+          [
+            0.650640177,
+            0.482773919
+          ],
+          [
+            0.650484062,
+            0.482653965
+          ],
+          [
+            0.640846158,
+            0.478862738
+          ],
+          [
+            0.640478212,
+            0.478756426
+          ]
+        ]
+      }
+    ],
+    "clearance": {
+      "hardClear": [],
+      "thinned": [],
+      "kept": []
+    },
+    "variants": [
+      {
+        "id": "variant.archon-gideon-mere-neck.base",
+        "changedRefs": [],
+        "serviceOverrides": {},
+        "ambience": "wild"
+      }
+    ],
+    "scaleGrounding": {
+      "loreSource": "route registry row route.road.archon-gideon (broken; a marked route that dissolves into poled channel) and world/sources/routes/route-structure-exemplars.json",
+      "population": "0",
+      "households": 0,
+      "buildingsPlanned": 0,
+      "npcsPlanned": 0,
+      "why": "The place is a stretch of road with a poled wade and road marks. The stretch has no recorded residents."
+    },
+    "siting": {
+      "dossier": "world/sources/sites/dossiers/archon-gideon-mere-neck.json",
+      "candidates": [
+        {
+          "id": "candidate.archon-gideon-mere-neck.mere-neck",
+          "positionM": [
+            4755.0,
+            3542.0
+          ],
+          "chosen": true,
+          "why": "The Long road crosses a neck between two meres, crossing.major.030 and crossing.major.033. About 55 m of the road lies under 0.1 to 1.3 m of water. No place owns the neck. The ground of the nearest place, the Open Mouth, lies 66 m away."
+        },
+        {
+          "id": "candidate.archon-gideon-mere-neck.nine-trunks-ford",
+          "positionM": [
+            4900.0,
+            3700.0
+          ],
+          "why": "The Long road crosses water at crossing.major.029. That crossing lies further toward Archon.",
+          "rejectedBecause": "The crossing lies 93 m from the centre of Nine-Trunks. The crossing lies inside the ground of the village of Nine-Trunks. Nine-Trunks builds the crossing."
+        }
+      ]
+    },
+    "budget": {
+      "maxInstances": 80,
+      "maxUniqueMaterials": 40,
+      "maxTextureMB": 24,
+      "maxColliders": 60
+    },
+    "assetConstraints": [],
+    "proseRefs": [
+      {
+        "sourcePath": "approaches[0].sequence",
+        "placeRef": "place.saxhleel-coast.archon"
+      },
+      {
+        "sourcePath": "approaches[1].sequence",
+        "placeRef": "place.imperial-fringe.gideon"
+      },
+      {
+        "sourcePath": "causalModel.founding",
+        "placeRef": "place.imperial-fringe.gideon"
+      },
+      {
+        "sourcePath": "causalModel.founding",
+        "placeRef": "place.saxhleel-coast.archon"
+      },
+      {
+        "sourcePath": "districts[0].why.whyNeighbours",
+        "placeRef": "place.imperial-fringe.gideon"
+      },
+      {
+        "sourcePath": "districts[0].why.whyNeighbours",
+        "placeRef": "place.saxhleel-coast.archon"
+      },
+      {
+        "sourcePath": "networkTerminals[0].why",
+        "placeRef": "place.saxhleel-coast.archon"
+      },
+      {
+        "sourcePath": "networkTerminals[1].why",
+        "placeRef": "place.imperial-fringe.gideon"
+      },
+      {
+        "sourcePath": "parcels[1].why.playerPurpose",
+        "placeRef": "place.imperial-fringe.gideon"
+      },
+      {
+        "sourcePath": "parcels[3].why.whyHere",
+        "placeRef": "place.imperial-fringe.gideon"
+      }
+    ],
+    "macroEvidence": [],
+    "authoredOn": {
+      "wbSchemaVersion": 1,
+      "ground": {
+        "centreM": [
+          4755.0,
+          3542.0
+        ],
+        "halfM": 110.0,
+        "chunks": {
+          "chunk_9_7": "735b9b3f0595ea8bbf390a35db10b3c87bb90e3da8b5bd8830c8c36c17ed3a3c",
+          "chunk_10_7": "409a3150077f6439008ddf2c9b622b333f73fe3667bd76acf9eef74d62501e61"
+        },
+        "sha256": "f07b9cb9b622406171a8a1d1bf006253f35dfdd011d3b8110a7c4dae2be4b11e"
+      },
+      "kits": {
+        "docks-v1": "6e1c31c360d400419dffa6b64350289fc7ac25e42a512280282441f0b424abce",
+        "flora-province-v1": "0acafa8b11ee3a31591d220e5dfe0b7167d570d2f2d444a4e1ac47da7f67b041",
+        "route-dressing-v1": "9eacf67cd0c0f616c587b0bff285bfa48b017b7a5b2704cbea4447963bb69a07"
+      },
+      "layout": {
+        "path": "world/sources/blueprints/archon-gideon-mere-neck.layout.json",
+        "sha256": "490ed20b7344cf420b5094490ded04365882273e526d3f1ba36d295200f5799d"
+      }
+    },
+    "walkRoutes": {
+      "schemaVersion": 1,
+      "cellM": 0.5,
+      "stepM": 0.45,
+      "slopeMaxDeg": 30.0,
+      "wadeMaxM": 0.7,
+      "routes": {
+        "opening:cn-east-0": {
+          "points": [
+            [
+              4818.97,
+              8.34,
+              3566.95
+            ],
+            [
+              4818.47,
+              8.31,
+              3566.95
+            ],
+            [
+              4817.97,
+              8.29,
+              3566.95
+            ],
+            [
+              4816.47,
+              8.29,
+              3566.95
+            ],
+            [
+              4815.97,
+              8.3,
+              3566.95
+            ],
+            [
+              4815.47,
+              8.32,
+              3566.95
+            ],
+            [
+              4814.97,
+              8.35,
+              3566.95
+            ],
+            [
+              4814.47,
+              8.37,
+              3566.95
+            ],
+            [
+              4813.97,
+              8.4,
+              3566.45
+            ],
+            [
+              4813.47,
+              8.44,
+              3566.45
+            ],
+            [
+              4812.47,
+              8.5,
+              3566.45
+            ],
+            [
+              4809.47,
+              8.62,
+              3566.45
+            ],
+            [
+              4808.97,
+              8.7,
+              3565.95
+            ],
+            [
+              4808.47,
+              8.99,
+              3565.45
+            ],
+            [
+              4807.97,
+              9.02,
+              3564.95
+            ],
+            [
+              4807.47,
+              9.05,
+              3564.95
+            ],
+            [
+              4806.97,
+              9.06,
+              3564.95
+            ],
+            [
+              4806.47,
+              9.06,
+              3564.95
+            ],
+            [
+              4805.97,
+              9.1,
+              3564.95
+            ],
+            [
+              4805.47,
+              9.13,
+              3564.95
+            ],
+            [
+              4804.97,
+              9.1,
+              3564.95
+            ],
+            [
+              4804.47,
+              9.37,
+              3564.45
+            ],
+            [
+              4803.97,
+              9.66,
+              3563.95
+            ],
+            [
+              4803.47,
+              9.65,
+              3563.95
+            ],
+            [
+              4802.47,
+              9.85,
+              3563.95
+            ],
+            [
+              4801.97,
+              9.97,
+              3563.95
+            ],
+            [
+              4801.47,
+              10.04,
+              3563.95
+            ],
+            [
+              4800.47,
+              10.02,
+              3563.95
+            ],
+            [
+              4799.97,
+              10.05,
+              3563.95
+            ],
+            [
+              4799.47,
+              9.87,
+              3563.95
+            ],
+            [
+              4798.97,
+              9.68,
+              3563.95
+            ],
+            [
+              4798.47,
+              9.5,
+              3563.95
+            ],
+            [
+              4797.97,
+              9.52,
+              3563.95
+            ],
+            [
+              4796.97,
+              9.54,
+              3563.95
+            ],
+            [
+              4796.47,
+              9.56,
+              3563.95
+            ],
+            [
+              4795.97,
+              9.57,
+              3563.95
+            ]
+          ],
+          "routeM": 24.56,
+          "steepestDeg": 22.6,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        },
+        "opening:cn-west-0": {
+          "points": [
+            [
+              4818.97,
+              8.34,
+              3566.95
+            ],
+            [
+              4818.47,
+              8.31,
+              3566.95
+            ],
+            [
+              4817.97,
+              8.29,
+              3566.95
+            ],
+            [
+              4816.97,
+              8.25,
+              3565.95
+            ],
+            [
+              4816.47,
+              8.24,
+              3565.45
+            ],
+            [
+              4815.97,
+              8.25,
+              3564.95
+            ],
+            [
+              4814.97,
+              8.29,
+              3563.95
+            ],
+            [
+              4813.97,
+              8.31,
+              3562.95
+            ],
+            [
+              4812.97,
+              8.31,
+              3561.95
+            ],
+            [
+              4811.97,
+              8.29,
+              3560.95
+            ],
+            [
+              4810.97,
+              8.23,
+              3559.95
+            ],
+            [
+              4810.47,
+              8.22,
+              3559.45
+            ],
+            [
+              4809.97,
+              8.2,
+              3558.95
+            ],
+            [
+              4809.47,
+              8.17,
+              3558.45
+            ],
+            [
+              4808.97,
+              8.18,
+              3558.45
+            ],
+            [
+              4808.47,
+              8.18,
+              3558.45
+            ],
+            [
+              4807.97,
+              8.14,
+              3557.95
+            ],
+            [
+              4806.97,
+              8.16,
+              3556.95
+            ],
+            [
+              4805.47,
+              8.13,
+              3555.45
+            ],
+            [
+              4804.97,
+              8.11,
+              3554.95
+            ],
+            [
+              4804.47,
+              8.1,
+              3554.45
+            ],
+            [
+              4802.97,
+              8.01,
+              3552.95
+            ],
+            [
+              4802.47,
+              7.95,
+              3552.45
+            ],
+            [
+              4801.97,
+              7.96,
+              3552.45
+            ],
+            [
+              4801.47,
+              7.96,
+              3552.45
+            ],
+            [
+              4800.97,
+              7.97,
+              3552.45
+            ],
+            [
+              4800.47,
+              7.91,
+              3551.95
+            ],
+            [
+              4799.97,
+              7.87,
+              3551.45
+            ],
+            [
+              4796.47,
+              7.87,
+              3551.45
+            ],
+            [
+              4795.97,
+              7.89,
+              3551.45
+            ],
+            [
+              4792.97,
+              7.89,
+              3551.45
+            ],
+            [
+              4791.97,
+              7.87,
+              3551.45
+            ],
+            [
+              4790.97,
+              7.83,
+              3551.45
+            ],
+            [
+              4790.47,
+              7.83,
+              3551.45
+            ],
+            [
+              4789.97,
+              7.84,
+              3551.45
+            ],
+            [
+              4788.97,
+              7.84,
+              3551.45
+            ],
+            [
+              4788.47,
+              7.86,
+              3551.45
+            ],
+            [
+              4786.97,
+              7.89,
+              3551.45
+            ],
+            [
+              4778.47,
+              7.89,
+              3551.45
+            ],
+            [
+              4777.97,
+              7.88,
+              3551.45
+            ],
+            [
+              4776.47,
+              7.88,
+              3551.45
+            ],
+            [
+              4775.97,
+              7.89,
+              3551.45
+            ],
+            [
+              4774.97,
+              7.95,
+              3551.45
+            ],
+            [
+              4774.47,
+              7.9,
+              3550.95
+            ],
+            [
+              4773.97,
+              7.88,
+              3550.45
+            ],
+            [
+              4773.47,
+              7.84,
+              3549.95
+            ],
+            [
+              4772.97,
+              7.82,
+              3549.45
+            ],
+            [
+              4771.97,
+              7.8,
+              3548.45
+            ],
+            [
+              4771.47,
+              7.82,
+              3548.45
+            ],
+            [
+              4770.97,
+              7.85,
+              3548.45
+            ],
+            [
+              4769.97,
+              7.89,
+              3548.45
+            ],
+            [
+              4768.47,
+              7.92,
+              3548.45
+            ],
+            [
+              4767.97,
+              7.89,
+              3547.95
+            ],
+            [
+              4767.47,
+              7.87,
+              3547.45
+            ],
+            [
+              4766.47,
+              7.89,
+              3547.45
+            ],
+            [
+              4765.97,
+              7.91,
+              3547.45
+            ],
+            [
+              4765.47,
+              7.92,
+              3547.45
+            ],
+            [
+              4763.97,
+              7.92,
+              3547.45
+            ],
+            [
+              4761.47,
+              7.97,
+              3547.45
+            ],
+            [
+              4760.47,
+              8.01,
+              3547.45
+            ],
+            [
+              4759.97,
+              8.02,
+              3547.45
+            ],
+            [
+              4759.47,
+              8.04,
+              3547.45
+            ],
+            [
+              4758.97,
+              8.05,
+              3547.45
+            ],
+            [
+              4758.47,
+              8.07,
+              3547.45
+            ],
+            [
+              4757.97,
+              8.06,
+              3546.95
+            ],
+            [
+              4757.47,
+              8.06,
+              3546.45
+            ],
+            [
+              4756.97,
+              8.08,
+              3546.45
+            ],
+            [
+              4756.47,
+              8.11,
+              3546.45
+            ],
+            [
+              4755.97,
+              8.12,
+              3546.45
+            ],
+            [
+              4755.47,
+              8.1,
+              3546.45
+            ],
+            [
+              4754.47,
+              8.08,
+              3546.45
+            ],
+            [
+              4752.97,
+              8.02,
+              3546.45
+            ],
+            [
+              4752.47,
+              8.01,
+              3546.45
+            ],
+            [
+              4751.47,
+              7.97,
+              3546.45
+            ],
+            [
+              4750.47,
+              7.95,
+              3546.45
+            ],
+            [
+              4749.97,
+              7.95,
+              3546.45
+            ],
+            [
+              4749.47,
+              7.96,
+              3546.45
+            ],
+            [
+              4748.97,
+              7.98,
+              3546.45
+            ],
+            [
+              4748.47,
+              7.98,
+              3546.45
+            ],
+            [
+              4747.97,
+              7.97,
+              3546.45
+            ],
+            [
+              4746.47,
+              7.97,
+              3546.45
+            ],
+            [
+              4744.47,
+              7.89,
+              3546.45
+            ],
+            [
+              4737.47,
+              7.89,
+              3546.45
+            ],
+            [
+              4733.47,
+              7.89,
+              3542.45
+            ],
+            [
+              4732.97,
+              7.9,
+              3541.95
+            ],
+            [
+              4731.97,
+              7.92,
+              3541.95
+            ],
+            [
+              4731.47,
+              7.92,
+              3541.95
+            ],
+            [
+              4730.47,
+              7.96,
+              3540.95
+            ],
+            [
+              4729.97,
+              7.96,
+              3540.45
+            ],
+            [
+              4729.47,
+              7.94,
+              3540.45
+            ],
+            [
+              4728.47,
+              7.9,
+              3539.45
+            ],
+            [
+              4727.97,
+              7.89,
+              3538.95
+            ],
+            [
+              4726.97,
+              7.89,
+              3537.95
+            ],
+            [
+              4726.47,
+              7.88,
+              3537.45
+            ],
+            [
+              4725.47,
+              7.84,
+              3536.45
+            ]
+          ],
+          "routeM": 106.17,
+          "steepestDeg": 4.5,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.087
+        },
+        "opening:cn-track-0": {
+          "points": [
+            [
+              4818.97,
+              8.34,
+              3566.95
+            ],
+            [
+              4818.47,
+              8.31,
+              3566.95
+            ],
+            [
+              4817.97,
+              8.29,
+              3566.95
+            ],
+            [
+              4816.97,
+              8.25,
+              3565.95
+            ],
+            [
+              4816.47,
+              8.24,
+              3565.45
+            ],
+            [
+              4815.97,
+              8.25,
+              3564.95
+            ],
+            [
+              4814.97,
+              8.29,
+              3563.95
+            ],
+            [
+              4813.97,
+              8.31,
+              3562.95
+            ],
+            [
+              4812.97,
+              8.31,
+              3561.95
+            ],
+            [
+              4811.97,
+              8.29,
+              3560.95
+            ],
+            [
+              4810.97,
+              8.23,
+              3559.95
+            ],
+            [
+              4810.47,
+              8.22,
+              3559.45
+            ],
+            [
+              4809.97,
+              8.2,
+              3558.95
+            ],
+            [
+              4809.47,
+              8.17,
+              3558.45
+            ],
+            [
+              4808.97,
+              8.18,
+              3558.45
+            ],
+            [
+              4808.47,
+              8.18,
+              3558.45
+            ],
+            [
+              4807.97,
+              8.14,
+              3557.95
+            ],
+            [
+              4806.97,
+              8.16,
+              3556.95
+            ],
+            [
+              4805.47,
+              8.13,
+              3555.45
+            ],
+            [
+              4804.97,
+              8.11,
+              3554.95
+            ],
+            [
+              4804.47,
+              8.1,
+              3554.45
+            ],
+            [
+              4802.97,
+              8.01,
+              3552.95
+            ],
+            [
+              4802.47,
+              7.95,
+              3552.45
+            ],
+            [
+              4801.97,
+              7.96,
+              3552.45
+            ],
+            [
+              4801.47,
+              7.96,
+              3552.45
+            ],
+            [
+              4800.97,
+              7.97,
+              3552.45
+            ],
+            [
+              4800.47,
+              7.91,
+              3551.95
+            ],
+            [
+              4799.97,
+              7.87,
+              3551.45
+            ],
+            [
+              4796.47,
+              7.87,
+              3551.45
+            ],
+            [
+              4795.97,
+              7.89,
+              3551.45
+            ],
+            [
+              4792.97,
+              7.89,
+              3551.45
+            ],
+            [
+              4791.97,
+              7.87,
+              3551.45
+            ],
+            [
+              4790.97,
+              7.83,
+              3551.45
+            ],
+            [
+              4790.47,
+              7.83,
+              3551.45
+            ],
+            [
+              4789.97,
+              7.84,
+              3551.45
+            ],
+            [
+              4788.97,
+              7.84,
+              3551.45
+            ],
+            [
+              4788.47,
+              7.86,
+              3551.45
+            ],
+            [
+              4786.97,
+              7.89,
+              3551.45
+            ],
+            [
+              4778.47,
+              7.89,
+              3551.45
+            ],
+            [
+              4777.97,
+              7.88,
+              3551.45
+            ],
+            [
+              4776.47,
+              7.88,
+              3551.45
+            ],
+            [
+              4775.97,
+              7.89,
+              3551.45
+            ],
+            [
+              4774.47,
+              7.74,
+              3549.95
+            ],
+            [
+              4773.97,
+              7.73,
+              3549.45
+            ],
+            [
+              4773.47,
+              7.75,
+              3548.95
+            ],
+            [
+              4772.97,
+              7.74,
+              3548.45
+            ],
+            [
+              4772.47,
+              7.72,
+              3547.95
+            ],
+            [
+              4771.47,
+              7.72,
+              3546.95
+            ],
+            [
+              4770.47,
+              7.64,
+              3545.95
+            ],
+            [
+              4768.97,
+              7.64,
+              3545.95
+            ],
+            [
+              4768.47,
+              7.62,
+              3545.45
+            ],
+            [
+              4767.97,
+              7.61,
+              3544.95
+            ],
+            [
+              4767.47,
+              7.61,
+              3544.95
+            ],
+            [
+              4766.97,
+              7.59,
+              3544.45
+            ],
+            [
+              4766.47,
+              7.56,
+              3543.95
+            ],
+            [
+              4765.97,
+              7.57,
+              3543.95
+            ],
+            [
+              4764.47,
+              7.57,
+              3543.95
+            ],
+            [
+              4763.97,
+              7.58,
+              3543.95
+            ],
+            [
+              4762.97,
+              7.58,
+              3543.95
+            ],
+            [
+              4762.47,
+              7.59,
+              3543.95
+            ],
+            [
+              4761.97,
+              7.59,
+              3543.95
+            ],
+            [
+              4761.47,
+              7.6,
+              3543.95
+            ],
+            [
+              4760.47,
+              7.58,
+              3542.95
+            ],
+            [
+              4759.97,
+              7.58,
+              3542.95
+            ],
+            [
+              4759.47,
+              7.57,
+              3542.45
+            ],
+            [
+              4758.97,
+              7.57,
+              3542.45
+            ],
+            [
+              4756.97,
+              7.61,
+              3542.45
+            ],
+            [
+              4756.47,
+              7.61,
+              3542.45
+            ],
+            [
+              4754.97,
+              7.64,
+              3542.45
+            ],
+            [
+              4754.47,
+              7.64,
+              3542.45
+            ],
+            [
+              4753.97,
+              7.65,
+              3542.45
+            ],
+            [
+              4753.47,
+              7.65,
+              3541.95
+            ],
+            [
+              4752.47,
+              7.63,
+              3540.95
+            ],
+            [
+              4751.97,
+              7.63,
+              3540.45
+            ],
+            [
+              4751.47,
+              7.64,
+              3540.45
+            ],
+            [
+              4750.97,
+              7.64,
+              3540.45
+            ],
+            [
+              4750.47,
+              7.64,
+              3539.95
+            ],
+            [
+              4749.97,
+              7.65,
+              3539.95
+            ],
+            [
+              4748.47,
+              7.65,
+              3538.45
+            ],
+            [
+              4747.97,
+              7.66,
+              3538.45
+            ],
+            [
+              4747.47,
+              7.66,
+              3538.45
+            ],
+            [
+              4746.97,
+              7.67,
+              3537.95
+            ],
+            [
+              4746.47,
+              7.67,
+              3537.95
+            ],
+            [
+              4745.97,
+              7.68,
+              3537.95
+            ],
+            [
+              4745.47,
+              7.68,
+              3537.45
+            ],
+            [
+              4744.47,
+              7.7,
+              3537.45
+            ],
+            [
+              4743.97,
+              7.7,
+              3537.45
+            ],
+            [
+              4743.47,
+              7.71,
+              3536.95
+            ],
+            [
+              4742.97,
+              7.71,
+              3536.95
+            ],
+            [
+              4742.47,
+              7.72,
+              3536.95
+            ],
+            [
+              4741.97,
+              7.72,
+              3536.45
+            ],
+            [
+              4741.47,
+              7.73,
+              3535.95
+            ],
+            [
+              4740.47,
+              7.73,
+              3535.95
+            ],
+            [
+              4739.97,
+              7.74,
+              3535.45
+            ],
+            [
+              4737.97,
+              7.74,
+              3535.45
+            ],
+            [
+              4737.47,
+              7.75,
+              3535.45
+            ],
+            [
+              4735.97,
+              7.75,
+              3535.45
+            ],
+            [
+              4735.47,
+              7.76,
+              3535.45
+            ],
+            [
+              4734.47,
+              7.76,
+              3535.45
+            ],
+            [
+              4733.97,
+              7.77,
+              3535.45
+            ],
+            [
+              4732.97,
+              7.83,
+              3534.45
+            ],
+            [
+              4732.47,
+              7.88,
+              3533.95
+            ],
+            [
+              4731.97,
+              7.89,
+              3533.45
+            ],
+            [
+              4730.47,
+              7.89,
+              3533.45
+            ],
+            [
+              4726.47,
+              7.89,
+              3529.45
+            ],
+            [
+              4725.97,
+              7.88,
+              3528.95
+            ],
+            [
+              4725.47,
+              7.88,
+              3528.45
+            ],
+            [
+              4724.97,
+              7.87,
+              3527.95
+            ],
+            [
+              4724.47,
+              7.88,
+              3527.45
+            ],
+            [
+              4723.97,
+              7.88,
+              3526.95
+            ],
+            [
+              4723.47,
+              7.89,
+              3526.45
+            ],
+            [
+              4722.97,
+              7.89,
+              3525.95
+            ],
+            [
+              4722.47,
+              7.9,
+              3525.95
+            ],
+            [
+              4721.97,
+              7.89,
+              3525.45
+            ],
+            [
+              4721.47,
+              7.89,
+              3524.95
+            ],
+            [
+              4720.97,
+              7.9,
+              3524.95
+            ],
+            [
+              4720.47,
+              7.9,
+              3524.95
+            ],
+            [
+              4719.97,
+              7.9,
+              3524.45
+            ],
+            [
+              4719.47,
+              7.91,
+              3524.45
+            ],
+            [
+              4718.47,
+              7.91,
+              3524.45
+            ],
+            [
+              4717.97,
+              7.92,
+              3524.45
+            ],
+            [
+              4716.97,
+              7.92,
+              3524.45
+            ],
+            [
+              4716.47,
+              7.93,
+              3524.45
+            ],
+            [
+              4714.97,
+              7.93,
+              3524.45
+            ],
+            [
+              4714.47,
+              7.92,
+              3524.45
+            ],
+            [
+              4713.97,
+              7.92,
+              3524.45
+            ],
+            [
+              4712.47,
+              7.89,
+              3524.45
+            ]
+          ],
+          "routeM": 124.14,
+          "steepestDeg": 4.5,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.326
+        },
+        "opening:fr-crest-0": {
+          "points": [
+            [
+              4818.97,
+              8.34,
+              3566.95
+            ],
+            [
+              4818.47,
+              8.31,
+              3566.95
+            ],
+            [
+              4817.97,
+              8.29,
+              3566.95
+            ],
+            [
+              4816.47,
+              8.29,
+              3566.95
+            ],
+            [
+              4815.97,
+              8.3,
+              3566.95
+            ],
+            [
+              4815.47,
+              8.32,
+              3566.95
+            ],
+            [
+              4814.97,
+              8.35,
+              3566.95
+            ],
+            [
+              4814.47,
+              8.37,
+              3566.95
+            ],
+            [
+              4812.97,
+              8.49,
+              3566.95
+            ],
+            [
+              4811.97,
+              8.53,
+              3566.95
+            ],
+            [
+              4811.47,
+              8.56,
+              3566.95
+            ],
+            [
+              4810.47,
+              8.6,
+              3566.95
+            ],
+            [
+              4809.97,
+              8.61,
+              3566.95
+            ],
+            [
+              4809.47,
+              8.64,
+              3566.95
+            ],
+            [
+              4808.97,
+              8.72,
+              3566.95
+            ],
+            [
+              4808.47,
+              9.04,
+              3567.45
+            ],
+            [
+              4807.97,
+              9.35,
+              3566.95
+            ],
+            [
+              4807.47,
+              9.67,
+              3567.45
+            ],
+            [
+              4806.97,
+              9.79,
+              3567.45
+            ],
+            [
+              4806.47,
+              9.77,
+              3567.45
+            ],
+            [
+              4805.97,
+              9.76,
+              3567.45
+            ],
+            [
+              4805.47,
+              9.74,
+              3567.45
+            ],
+            [
+              4804.97,
+              9.58,
+              3567.45
+            ],
+            [
+              4804.47,
+              9.41,
+              3567.45
+            ],
+            [
+              4803.97,
+              9.29,
+              3567.45
+            ],
+            [
+              4803.47,
+              9.26,
+              3567.45
+            ],
+            [
+              4802.47,
+              9.28,
+              3567.45
+            ],
+            [
+              4801.97,
+              9.38,
+              3567.45
+            ],
+            [
+              4801.47,
+              9.44,
+              3567.45
+            ],
+            [
+              4800.47,
+              9.46,
+              3567.45
+            ],
+            [
+              4799.97,
+              9.27,
+              3567.45
+            ],
+            [
+              4799.47,
+              9.27,
+              3567.45
+            ],
+            [
+              4798.97,
+              9.28,
+              3567.45
+            ],
+            [
+              4798.47,
+              9.28,
+              3567.45
+            ],
+            [
+              4797.97,
+              9.29,
+              3567.45
+            ],
+            [
+              4797.47,
+              9.32,
+              3567.45
+            ],
+            [
+              4796.97,
+              9.34,
+              3567.45
+            ],
+            [
+              4796.47,
+              9.35,
+              3567.45
+            ],
+            [
+              4795.47,
+              9.39,
+              3567.45
+            ],
+            [
+              4794.97,
+              9.42,
+              3567.45
+            ],
+            [
+              4793.47,
+              9.45,
+              3567.45
+            ]
+          ],
+          "routeM": 26.47,
+          "steepestDeg": 24.4,
+          "largestStepM": 0.0,
+          "deepestWadeM": 0.0
+        }
+      }
+    }
+  }
+}

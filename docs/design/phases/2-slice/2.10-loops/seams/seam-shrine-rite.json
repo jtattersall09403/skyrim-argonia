@@ -1,0 +1,127 @@
+{
+ "id": "seam-shrine-rite",
+ "start": {
+  "query": "?view=character&x=4725.4&z=935.65&t=12:00&d=8-17",
+  "kit": "start",
+  "seed": 1,
+  "pools": {
+   "health": 0.5,
+   "stamina": 0.5
+  }
+ },
+ "steps": [
+  {
+   "name": "pray-bare-shelf",
+   "transition": "Wamasu shrine at noon, the player 1.45 m from the station shelf with nothing laid on it; the player starts wounded (half health and stamina); E on the shelf -> the shrine window asks for a gift, the pools stay as they were, the guardian stays asleep. Nearest unnamed watcher 36 m; the headwoman stands 3.9 m off and is no hostile; the shelf wins E at 1.45 m (reach 2.5 m).",
+   "do": {
+    "action": "pray",
+    "socket": "socket.the-wamasu-shrine.station-shelf"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 1.5
+    }
+   ],
+   "hold_s": 1.5,
+   "expect": {
+    "screen": "sign",
+    "line": "text.system.shrine-wants-gift",
+    "pools": "unchanged",
+    "awake": {
+     "creature-at.dunmer-north.the-wamasu-shrine.n1": false
+    },
+    "calm": true
+   },
+   "stage": {
+    "at": {
+     "x": 4725.4,
+     "z": 935.65,
+     "yaw": 1.31
+    },
+    "hour": 12,
+    "place": "place.dunmer-north.the-wamasu-shrine"
+   }
+  },
+  {
+   "name": "lay-a-gift",
+   "transition": "A healing draught set down on the shelf (the placing confirm's setDown) -> it lies in the world, the guardian still asleep",
+   "do": {
+    "action": "lay",
+    "item": "healing-draught",
+    "x": 4724.2,
+    "z": 935.3
+   },
+   "keys": [
+    {
+     "wait_s": 1
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "laid": true,
+    "awake": {
+     "creature-at.dunmer-north.the-wamasu-shrine.n1": false
+    },
+    "calm": true
+   }
+  },
+  {
+   "name": "pray-over-the-gift",
+   "transition": "E on the shelf with the gift laid -> the prayer is asked and accepted: health and stamina full, the gift taken from the world, the guardian still asleep",
+   "do": {
+    "action": "pray",
+    "socket": "socket.the-wamasu-shrine.station-shelf"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 1.5
+    }
+   ],
+   "hold_s": 1.5,
+   "expect": {
+    "screen": null,
+    "pools": "full",
+    "laid": false,
+    "awake": {
+     "creature-at.dunmer-north.the-wamasu-shrine.n1": false
+    },
+    "calm": true
+   }
+  },
+  {
+   "name": "take-from-the-hoard",
+   "transition": "The river salt on the hoard shelf taken -> the guardian wakes and joins the encounter",
+   "do": {
+    "action": "take",
+    "socket": "socket.the-wamasu-shrine.item-offering-salt-3"
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 1
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "lifted": true,
+    "awake": {
+     "creature-at.dunmer-north.the-wamasu-shrine.n1": true
+    },
+    "calm": false
+   },
+   "teleport": {
+    "x": 4721.92,
+    "z": 939,
+    "yaw": -0.26
+   }
+  }
+ ]
+}

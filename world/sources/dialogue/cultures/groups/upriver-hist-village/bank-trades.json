@@ -1,0 +1,69 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "entries": [
+  {
+   "id": "culture.group.upriver-hist-village.bank-trades",
+   "level": "group",
+   "name": "The bank trades",
+   "parent": "culture.settlement.upriver-hist-village",
+   "members": [
+    "npc.pirate-freeholds.upriver-hist-village.hh-reed-cutters",
+    "npc.pirate-freeholds.upriver-hist-village.hh-dyer",
+    "npc.pirate-freeholds.upriver-hist-village.hh-net-menders",
+    "npc.pirate-freeholds.upriver-hist-village.hh-smith"
+   ],
+   "norms": [
+    {
+     "text": "Cut reed goes to the dyer by the armful.",
+     "source": "world/sources/catalogue/places-pirate-freeholds.json#place.pirate-freeholds.upriver-hist-village"
+    },
+    {
+     "text": "Tools go to the smith; the elder settles the bill.",
+     "source": "world/sources/catalogue/places-pirate-freeholds.json#place.pirate-freeholds.upriver-hist-village"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Cutting reed inside the ring of houses.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "Work paid by measure, not by favour.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Fishers who blame the net for the catch.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {},
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "By trade or by what the stranger carries.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "low",
+    "oaths": [],
+    "neverSaid": []
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "A dispute over a net still goes to the elder.",
+      "source": "world/sources/catalogue/places-pirate-freeholds.json#place.pirate-freeholds.upriver-hist-village"
+     }
+    ],
+    "rumours": []
+   },
+   "views": [],
+   "deviationRate": 0.2
+  }
+ ]
+}

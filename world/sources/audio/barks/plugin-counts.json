@@ -1,0 +1,1745 @@
+{
+ "infoRecordsPerSlot": {
+  "hello": 5287,
+  "goodbye": 986,
+  "idle": 576
+ },
+ "genericInfosAnyVoice": {
+  "goodbye": 43,
+  "hello": 623,
+  "idle": 34
+ },
+ "estimate": "seconds = 0.4 per line + words / 2.6; Opus mono 24 kbps = 3 KB/s",
+ "voiceTypes": {
+  "CrAtronachFlameVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrAtronachFrostVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrAtronachStormVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrBearVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrChaurusVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrChickenVoice": {
+   "explicit": {
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrCowVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrDeerVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrDogVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrDragonPriestVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrDragonVoice": {
+   "explicit": {
+    "hello": 1
+   },
+   "candidates": {
+    "hello": 592,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7670,
+   "estSeconds": 3209,
+   "estOpusKB24": 9628
+  },
+  "CrDraugrVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrDremoraVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrDwarvenCenturionVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrDwarvenSphereVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrDwarvenSpiderVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrFalmerVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrFoxVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrFrostbiteSpiderGiantVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrFrostbiteSpiderVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrGiantVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrGoatVoice": {
+   "explicit": {
+    "hello": 0
+   },
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrHagravenVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrHareVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrHorkerVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrHorseVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrIceWraithVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrMammothVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrMudcrabVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrSabreCatVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrSkeeverVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrSkeletonVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrSlaughterfishVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrSprigganVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrTrollVoice": {
+   "explicit": {
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrUniqueAlduin": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrUniqueOdahviing": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrUniquePaarthurnax": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrWerewolfVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrWispVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrWitchlightVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "CrWolfVoice": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "FemaleArgonian": {
+   "explicit": {
+    "hello": 13,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 604,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7719,
+   "estSeconds": 3233,
+   "estOpusKB24": 9699
+  },
+  "FemaleChild": {
+   "explicit": {
+    "hello": 7,
+    "goodbye": 1,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 598,
+    "idle": 21,
+    "goodbye": 36
+   },
+   "words": 7711,
+   "estSeconds": 3228,
+   "estOpusKB24": 9683
+  },
+  "FemaleCommander": {
+   "explicit": {
+    "hello": 6,
+    "goodbye": 1,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 504,
+    "idle": 21,
+    "goodbye": 36
+   },
+   "words": 6441,
+   "estSeconds": 2702,
+   "estOpusKB24": 8105
+  },
+  "FemaleCommoner": {
+   "explicit": {
+    "hello": 14,
+    "goodbye": 2,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 605,
+    "idle": 21,
+    "goodbye": 37
+   },
+   "words": 7766,
+   "estSeconds": 3252,
+   "estOpusKB24": 9756
+  },
+  "FemaleCondescending": {
+   "explicit": {
+    "hello": 9,
+    "goodbye": 1,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 600,
+    "idle": 21,
+    "goodbye": 36
+   },
+   "words": 7731,
+   "estSeconds": 3236,
+   "estOpusKB24": 9709
+  },
+  "FemaleCoward": {
+   "explicit": {
+    "hello": 7,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 598,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7706,
+   "estSeconds": 3225,
+   "estOpusKB24": 9676
+  },
+  "FemaleDarkElf": {
+   "explicit": {
+    "hello": 10,
+    "goodbye": 3,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 601,
+    "idle": 21,
+    "goodbye": 38
+   },
+   "words": 7821,
+   "estSeconds": 3272,
+   "estOpusKB24": 9816
+  },
+  "FemaleElfHaughty": {
+   "explicit": {
+    "hello": 14,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 605,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7744,
+   "estSeconds": 3243,
+   "estOpusKB24": 9729
+  },
+  "FemaleEvenToned": {
+   "explicit": {
+    "hello": 18,
+    "goodbye": 2,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 609,
+    "idle": 21,
+    "goodbye": 37
+   },
+   "words": 7759,
+   "estSeconds": 3251,
+   "estOpusKB24": 9753
+  },
+  "FemaleKhajiit": {
+   "explicit": {
+    "hello": 30,
+    "goodbye": 8,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 621,
+    "idle": 21,
+    "goodbye": 43
+   },
+   "words": 7961,
+   "estSeconds": 3336,
+   "estOpusKB24": 10008
+  },
+  "FemaleNord": {
+   "explicit": {
+    "hello": 71,
+    "goodbye": 2,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 652,
+    "idle": 21,
+    "goodbye": 37
+   },
+   "words": 8472,
+   "estSeconds": 3542,
+   "estOpusKB24": 10627
+  },
+  "FemaleOldGrumpy": {
+   "explicit": {
+    "hello": 9,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 600,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7724,
+   "estSeconds": 3233,
+   "estOpusKB24": 9700
+  },
+  "FemaleOldKindly": {
+   "explicit": {
+    "hello": 6,
+    "goodbye": 1,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 597,
+    "idle": 21,
+    "goodbye": 36
+   },
+   "words": 7713,
+   "estSeconds": 3228,
+   "estOpusKB24": 9684
+  },
+  "FemaleOrc": {
+   "explicit": {
+    "hello": 12,
+    "goodbye": 1,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 603,
+    "idle": 21,
+    "goodbye": 36
+   },
+   "words": 7725,
+   "estSeconds": 3235,
+   "estOpusKB24": 9705
+  },
+  "FemaleShrill": {
+   "explicit": {
+    "hello": 5,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 596,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7708,
+   "estSeconds": 3225,
+   "estOpusKB24": 9676
+  },
+  "FemaleSoldier": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "FemaleSultry": {
+   "explicit": {
+    "hello": 8,
+    "goodbye": 2,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 599,
+    "idle": 21,
+    "goodbye": 37
+   },
+   "words": 7724,
+   "estSeconds": 3234,
+   "estOpusKB24": 9701
+  },
+  "FemaleUniqueAstrid": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "FemaleUniqueAzura": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "FemaleUniqueBoethiah": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "FemaleUniqueDelphine": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "FemaleUniqueElenwen": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "FemaleUniqueGhost": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "FemaleUniqueKarliah": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "FemaleUniqueMaven": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "FemaleUniqueMephala": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "FemaleUniqueMeridia": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "FemaleUniqueMirabelleErvine": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "FemaleUniqueNamira": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "FemaleUniqueNightMother": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "FemaleUniqueNocturnal": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "FemaleUniqueVaermina": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "FemaleUniqueVex": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "FemaleYoungEager": {
+   "explicit": {
+    "hello": 8,
+    "goodbye": 1
+   },
+   "candidates": {
+    "hello": 599,
+    "idle": 21,
+    "goodbye": 36
+   },
+   "words": 7721,
+   "estSeconds": 3232,
+   "estOpusKB24": 9696
+  },
+  "MaleArgonian": {
+   "explicit": {
+    "hello": 13,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 604,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7728,
+   "estSeconds": 3236,
+   "estOpusKB24": 9709
+  },
+  "MaleBandit": {
+   "explicit": {
+    "hello": 0
+   },
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleBrute": {
+   "explicit": {
+    "hello": 10,
+    "idle": 0,
+    "goodbye": 1
+   },
+   "candidates": {
+    "hello": 601,
+    "idle": 21,
+    "goodbye": 36
+   },
+   "words": 7790,
+   "estSeconds": 3259,
+   "estOpusKB24": 9778
+  },
+  "MaleChild": {
+   "explicit": {
+    "hello": 7,
+    "goodbye": 1,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 598,
+    "idle": 21,
+    "goodbye": 36
+   },
+   "words": 7711,
+   "estSeconds": 3228,
+   "estOpusKB24": 9683
+  },
+  "MaleCommander": {
+   "explicit": {
+    "hello": 6,
+    "goodbye": 1,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 503,
+    "idle": 21,
+    "goodbye": 36
+   },
+   "words": 6438,
+   "estSeconds": 2700,
+   "estOpusKB24": 8100
+  },
+  "MaleCommoner": {
+   "explicit": {
+    "hello": 12,
+    "goodbye": 2,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 603,
+    "idle": 21,
+    "goodbye": 37
+   },
+   "words": 7741,
+   "estSeconds": 3242,
+   "estOpusKB24": 9725
+  },
+  "MaleCommonerAccented": {
+   "explicit": {
+    "hello": 10,
+    "goodbye": 2,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 601,
+    "idle": 21,
+    "goodbye": 37
+   },
+   "words": 7727,
+   "estSeconds": 3236,
+   "estOpusKB24": 9707
+  },
+  "MaleCondescending": {
+   "explicit": {
+    "hello": 9,
+    "goodbye": 1,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 600,
+    "idle": 21,
+    "goodbye": 36
+   },
+   "words": 7729,
+   "estSeconds": 3235,
+   "estOpusKB24": 9706
+  },
+  "MaleCoward": {
+   "explicit": {
+    "hello": 7,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 598,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7711,
+   "estSeconds": 3227,
+   "estOpusKB24": 9682
+  },
+  "MaleDarkElf": {
+   "explicit": {
+    "hello": 6,
+    "goodbye": 2,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 597,
+    "idle": 21,
+    "goodbye": 37
+   },
+   "words": 7699,
+   "estSeconds": 3223,
+   "estOpusKB24": 9669
+  },
+  "MaleDrunk": {
+   "explicit": {
+    "hello": 10,
+    "goodbye": 1,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 601,
+    "idle": 21,
+    "goodbye": 36
+   },
+   "words": 7726,
+   "estSeconds": 3235,
+   "estOpusKB24": 9704
+  },
+  "MaleElfHaughty": {
+   "explicit": {
+    "hello": 14,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 605,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7738,
+   "estSeconds": 3241,
+   "estOpusKB24": 9722
+  },
+  "MaleEvenToned": {
+   "explicit": {
+    "hello": 24,
+    "goodbye": 2,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 615,
+    "idle": 21,
+    "goodbye": 37
+   },
+   "words": 7755,
+   "estSeconds": 3252,
+   "estOpusKB24": 9756
+  },
+  "MaleEvenTonedAccented": {
+   "explicit": {
+    "goodbye": 2,
+    "hello": 18,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 609,
+    "idle": 21,
+    "goodbye": 37
+   },
+   "words": 7739,
+   "estSeconds": 3243,
+   "estOpusKB24": 9730
+  },
+  "MaleForsworn": {
+   "explicit": {
+    "hello": 0
+   },
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleGuard": {
+   "explicit": {
+    "hello": 55
+   },
+   "candidates": {
+    "hello": 646,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 8484,
+   "estSeconds": 3544,
+   "estOpusKB24": 10632
+  },
+  "MaleKhajiit": {
+   "explicit": {
+    "hello": 25,
+    "goodbye": 8,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 616,
+    "idle": 21,
+    "goodbye": 43
+   },
+   "words": 7916,
+   "estSeconds": 3317,
+   "estOpusKB24": 9950
+  },
+  "MaleNord": {
+   "explicit": {
+    "hello": 16,
+    "goodbye": 3,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 606,
+    "idle": 21,
+    "goodbye": 38
+   },
+   "words": 7777,
+   "estSeconds": 3257,
+   "estOpusKB24": 9771
+  },
+  "MaleNordCommander": {
+   "explicit": {
+    "hello": 59,
+    "goodbye": 1,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 650,
+    "idle": 21,
+    "goodbye": 36
+   },
+   "words": 8506,
+   "estSeconds": 3554,
+   "estOpusKB24": 10663
+  },
+  "MaleOldGrumpy": {
+   "explicit": {
+    "hello": 9,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 600,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7726,
+   "estSeconds": 3234,
+   "estOpusKB24": 9702
+  },
+  "MaleOldKindly": {
+   "explicit": {
+    "hello": 6,
+    "goodbye": 1,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 597,
+    "idle": 21,
+    "goodbye": 36
+   },
+   "words": 7714,
+   "estSeconds": 3229,
+   "estOpusKB24": 9686
+  },
+  "MaleOrc": {
+   "explicit": {
+    "hello": 15,
+    "goodbye": 1,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 606,
+    "idle": 21,
+    "goodbye": 36
+   },
+   "words": 7739,
+   "estSeconds": 3242,
+   "estOpusKB24": 9725
+  },
+  "MaleSlyCynical": {
+   "explicit": {
+    "hello": 7,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 598,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7719,
+   "estSeconds": 3230,
+   "estOpusKB24": 9691
+  },
+  "MaleSoldier": {
+   "explicit": {
+    "hello": 1
+   },
+   "candidates": {
+    "hello": 581,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7515,
+   "estSeconds": 3145,
+   "estOpusKB24": 9436
+  },
+  "MaleUniqueAmaundMotierre": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleUniqueAncano": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleUniqueArngeir": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleUniqueAventusAretino": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleUniqueBrynjolf": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleUniqueCicero": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleUniqueClavicusVile": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleUniqueDBBlackDoor": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleUniqueDBGuardian": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleUniqueDBSpectralLachance": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleUniqueDelvinMallory": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleUniqueEmperor": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleUniqueEsbern": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleUniqueGallus": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleUniqueGalmar": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleUniqueGhost": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleUniqueGhostSvaknir": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleUniqueHadvar": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleUniqueHermaeusMora": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleUniqueHircine": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleUniqueKodlakWhitemane": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleUniqueMGAugur": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleUniqueMalacath": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleUniqueMehrunesDagon": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleUniqueMercerFrey": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleUniqueMolagBal": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleUniqueNazir": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleUniquePeryite": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleUniqueSeptimus": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleUniqueSheogorath": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleUniqueSongOfTheDragonborn1": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleUniqueSongOfTheDragonborn2": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleUniqueTullius": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleUniqueUlfric": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleWarlock": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "MaleYoungEager": {
+   "explicit": {
+    "hello": 15,
+    "goodbye": 1,
+    "idle": 0
+   },
+   "candidates": {
+    "hello": 600,
+    "idle": 21,
+    "goodbye": 36
+   },
+   "words": 7669,
+   "estSeconds": 3212,
+   "estOpusKB24": 9637
+  },
+  "SPECIALFemaleUniqueGormlaith": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "SPECIALMaleUniqueBorri": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "SPECIALMaleUniqueEinarth": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "SPECIALMaleUniqueFelldir": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "SPECIALMaleUniqueHakon": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "SPECIALMaleUniqueTsun": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  },
+  "SPECIALMaleUniqueWulfgar": {
+   "explicit": {},
+   "candidates": {
+    "hello": 591,
+    "idle": 21,
+    "goodbye": 35
+   },
+   "words": 7660,
+   "estSeconds": 3205,
+   "estOpusKB24": 9615
+  }
+ }
+}

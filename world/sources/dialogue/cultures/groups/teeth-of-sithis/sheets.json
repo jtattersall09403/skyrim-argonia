@@ -1,0 +1,210 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "_": "Life-group and household sheets for the Teeth of Sithis (lane 2.5c).",
+ "entries": [
+  {
+   "id": "culture.group.teeth-of-sithis.keepers",
+   "level": "group",
+   "name": "The keepers of the Teeth",
+   "parent": "culture.settlement.teeth-of-sithis",
+   "members": [
+    "npc.mercantile-coast.teeth-of-sithis.nisswo-teeth",
+    "npc.mercantile-coast.teeth-of-sithis.n1",
+    "npc.mercantile-coast.teeth-of-sithis.the-one"
+   ],
+   "norms": [
+    {
+     "text": "Meet each pilgrim at the landing and ask for the offering.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Naming a purpose for the temple to a pilgrim.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "The rite done on time.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Pilgrims who ask the stone's purpose.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "work": {
+     "lean": 2,
+     "text": "The keepers' work is the temple's whole daily rite.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Pilgrim.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "formal",
+    "oaths": [],
+    "neverSaid": [
+     {
+      "text": "That the keepers disagree among themselves.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "The band below grumbles about the cold water.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": []
+   },
+   "views": [
+    {
+     "node": "culture.group.teeth-of-sithis.band",
+     "lean": 1,
+     "text": "Steady hands, slow to understand the teaching.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.25
+  },
+  {
+   "id": "culture.group.teeth-of-sithis.band",
+   "level": "group",
+   "name": "The band of the Teeth",
+   "parent": "culture.settlement.teeth-of-sithis",
+   "members": [
+    "npc.mercantile-coast.teeth-of-sithis.n2",
+    "npc.mercantile-coast.teeth-of-sithis.n2-2",
+    "npc.mercantile-coast.teeth-of-sithis.n2-3",
+    "npc.mercantile-coast.teeth-of-sithis.n2-4"
+   ],
+   "norms": [
+    {
+     "text": "Stand in the shallows through each rite; keep the watch on the stair.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Leaving the stair unwatched.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "A watch kept to its end.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Pilgrims who try the stair without asking.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "work": {
+     "lean": 0,
+     "text": "Watch, carry and stand in cold water; the teaching is the priests' business.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Traveller.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [],
+    "neverSaid": [
+     {
+      "text": "The priests' disputes.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "The shallows are cold through a long rite.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": []
+   },
+   "views": [
+    {
+     "node": "culture.group.teeth-of-sithis.keepers",
+     "lean": 1,
+     "text": "They hold the bell and the teaching; the band holds the stair.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.3
+  },
+  {
+   "id": "culture.household.teeth-of-sithis.band-home",
+   "level": "household",
+   "name": "The upper rooms",
+   "parent": "culture.settlement.teeth-of-sithis",
+   "members": [
+    "npc.mercantile-coast.teeth-of-sithis.n1",
+    "npc.mercantile-coast.teeth-of-sithis.n2",
+    "npc.mercantile-coast.teeth-of-sithis.n2-2",
+    "npc.mercantile-coast.teeth-of-sithis.n2-3",
+    "npc.mercantile-coast.teeth-of-sithis.n2-4"
+   ],
+   "norms": [
+    {
+     "text": "Sleep on bedrolls in the upper rooms.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Waking a sleeper off watch.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "Quiet in the rooms by day.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Noise on the stair.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {},
+   "speech": {
+    "addressTerms": [],
+    "formality": "plain",
+    "oaths": [],
+    "neverSaid": []
+   },
+   "talk": {
+    "grievances": [],
+    "rumours": []
+   },
+   "views": [],
+   "deviationRate": 0.25
+  }
+ ]
+}

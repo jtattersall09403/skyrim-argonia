@@ -1,0 +1,23 @@
+{
+ "id": "swim-camera",
+ "start": { "query": "?view=character&x=5404&z=4318&t=23:00&d=7-28", "kit": "start" },
+ "notes": "The swim camera is the walker's camera (2.15-swim-camera, c4be8468b). Pearl-lots at 23:00, the dive journey's dry shallows start (5404, 4318): wade out and dive to the deep lot, look fully up (pitch -85) and swim forward: the stroke rises along the camera ray and the view tilts up as on land. Then the camera returns to rest (pitch 0) and the swimmer steers to the shallows and walks out: the camera must not snap to the sky at the swim-to-walk. The reader checks: the swimmer pitched along the swim direction under water, the view tilted up when looking up, the surface stroke level, no camera jump at the swim-to-walk.",
+ "steps": [
+  { "name": "wade-out", "transition": "W from the shallows towards the deep lot: wading turns to swimming where the water deepens", "stage": { "at": { "x": 5404, "z": 4318, "yaw": -2.56 }, "hour": 23, "place": "place.saxhleel-coast.pearl-lots" },
+    "do": { "action": "swim" }, "keys": [ { "down": "KeyW" }, { "wait_s": 40 }, { "up": "KeyW" } ], "expect": { "moveMode": "swim" } },
+  { "name": "dive", "transition": "a downward look and W: the head goes under", "do": { "action": "dive", "look": "down" },
+    "keys": [ { "aim": 146.6, "pitch": -60 }, { "down": "KeyW" }, { "wait_s": 5 }, { "up": "KeyW" } ], "expect": { "headUnder": true, "hurtBy": null } },
+  { "name": "look-up", "transition": "the camera pitched fully up under water, stick not yet pushed: the still at the start of the climb", "do": { "action": "surface", "look": "up" },
+    "keys": [ { "aim": 146.6, "pitch": 80 }, { "wait_s": 1 } ], "expect": { "headUnder": true } },
+  { "name": "rise-mid", "transition": "W held with the camera fully up: the swimmer rises along the camera ray, the view looking up as on land", "do": { "action": "surface", "look": "up" },
+    "keys": [ { "down": "KeyW" }, { "wait_s": 2 } ], "expect": { "moveMode": "swim" } },
+  { "name": "surfacing", "transition": "W still held: the head breaks the surface", "do": { "action": "surface", "look": "up" },
+    "keys": [ { "wait_s": 5 }, { "up": "KeyW" } ], "expect": { "headUnder": false, "hurtBy": null } },
+  { "name": "camera-rest", "transition": "the camera back to rest (pitch 0), the stick released", "do": { "action": "swim" },
+    "keys": [ { "aim": 146.6, "pitch": 0 }, { "wait_s": 1 } ], "expect": { "moveMode": "swim" } },
+  { "name": "swim-ashore", "transition": "W held with the camera steered onto the shallows: the last strokes at the surface", "do": { "action": "swim" },
+    "keys": [ { "walkTo": { "x": 5404, "z": 4318 }, "within_m": 12, "max_s": 70 } ], "expect": { "moveMode": "swim" } },
+  { "name": "walk-out", "transition": "the camera still at rest: the swimmer wades and walks out onto the shallows, first step and two steps later", "do": { "action": "swim" },
+    "keys": [ { "walkTo": { "x": 5404, "z": 4318 }, "within_m": 0.8, "max_s": 30 } ], "expect": {} }
+ ]
+}

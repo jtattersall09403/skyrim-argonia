@@ -1,0 +1,66 @@
+{
+ "schemaVersion": 2,
+ "cellId": "LilmothLumberworksBarracksInt",
+ "additions": [
+  {
+   "id": "LilmothLumberworksBarracksInt:add:table-candlehornfloor",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    62.815,
+    83.195,
+    93.862
+   ],
+   "rotZDeg": 0,
+   "zone": "table",
+   "why": "Lights the dark floor of the barracks at night."
+  },
+  {
+   "id": "LilmothLumberworksBarracksInt:add:bed-candlehornfloor",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    66.65,
+    83.072,
+    108.568
+   ],
+   "rotZDeg": 0,
+   "zone": "bed",
+   "why": "Lights the dark floor of the barracks at night."
+  },
+  {
+   "id": "LilmothLumberworksBarracksInt:add:store-candlehornfloor",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    65.891,
+    83.065,
+    93.467
+   ],
+   "rotZDeg": 0,
+   "zone": "store",
+   "why": "Lights the dark floor of the barracks at night."
+  },
+  {
+   "id": "LilmothLumberworksBarracksInt:add:table-candlehornfloor-2",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    62.749,
+    83.065,
+    99.427
+   ],
+   "rotZDeg": 0,
+   "zone": "table",
+   "why": "Lights the dark floor of the barracks at night."
+  },
+  {
+   "id": "LilmothLumberworksBarracksInt:add:table-candlehornfloor-3",
+   "assetId": "vanilla:clutter/candles/candlehornfloor01",
+   "pos": [
+    66.235,
+    83.065,
+    102.433
+   ],
+   "rotZDeg": 0,
+   "zone": "table",
+   "why": "Lights the dark floor of the barracks at night."
+  }
+ ]
+}

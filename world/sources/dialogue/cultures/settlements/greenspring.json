@@ -1,0 +1,152 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "_": "Settlement sheet for Greenspring (2.5c), from its catalogue record.",
+ "entries": [
+  {
+   "norms": [
+    {
+     "text": "Water from the spring is given free to any traveller.",
+     "source": "inferred"
+    },
+    {
+     "text": "Beds and rope are sold at one price that the village agreed together.",
+     "source": "inferred"
+    },
+    {
+     "text": "A visitor tastes the water before speaking.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Selling the spring water.",
+     "source": "inferred"
+    },
+    {
+     "text": "Fouling the pool under the Hist.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "Being indispensable to the travellers bound for Helstrom.",
+     "source": "inferred"
+    },
+    {
+     "text": "Clean water that can be drunk unboiled.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "The salt works upstream, which the village blames for the salt in the spring.",
+     "source": "inferred"
+    },
+    {
+     "text": "Cult couriers, tappers and Veiled Reed factors who use the lodge as an inn.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "place": {
+     "lean": 2,
+     "text": "The spring is the reason the village stands here; travellers bound for Helstrom have no surer water.",
+     "source": "inferred"
+    },
+    "work": {
+     "lean": 1,
+     "text": "Water is free, but beds and rope pay for everything else.",
+     "source": "inferred"
+    },
+    "people": {
+     "lean": 0,
+     "text": "Travellers are fed and housed for a price; most of them are gone by morning.",
+     "source": "inferred"
+    },
+    "trade": {
+     "lean": 1,
+     "text": "Beds and rope fetch a great deal from travellers bound for Helstrom.",
+     "source": "inferred"
+    },
+    "danger": {
+     "lean": -2,
+     "text": "Salt is reaching the spring and the Hist has begun to sicken.",
+     "source": "inferred"
+    },
+    "rumour": {
+     "lean": 0,
+     "text": "Talk at the lodge is of the salt and of who will carry the next load to Helstrom.",
+     "source": "inferred"
+    },
+    "directions": {
+     "lean": 1,
+     "text": "Helstrom lies south-west past Ux-Aneet; the landing is below the huts.",
+     "source": "world/sources/lore/helstrom.md"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Travellers are called traveller, or by their errand.",
+      "source": "inferred"
+     },
+     {
+      "text": "The three office-holders are called by office: minder, keeper, herald.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "formal",
+    "oaths": [
+     {
+      "text": "By the root that holds us.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "That the spring could sour for good.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Salt is reaching the spring from upstream.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "Couriers bound for Helstrom carry more than their ledgers declare.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.many-root-conclave",
+     "lean": 1,
+     "text": "The Conclave sent the village its tree-minder's office; the village keeps faith with it.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.15,
+   "id": "culture.settlement.greenspring",
+   "level": "settlement",
+   "name": "Greenspring",
+   "parent": "culture.region.hist-heartland",
+   "placeId": "place.hist-heartland.greenspring",
+   "dissent": [
+    {
+     "personId": "npc.hist-heartland.greenspring.spring-keeper",
+     "topic": "danger",
+     "lean": 0,
+     "text": "Holds the spring's ladle at the stone lip and will not grant that the spring is souring. She is wrong; the minder and the jar-filler taste the salt.",
+     "source": "inferred"
+    }
+   ]
+  }
+ ]
+}

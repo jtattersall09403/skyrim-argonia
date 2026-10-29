@@ -1,0 +1,129 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "entries": [
+  {
+   "id": "culture.settlement.rose-bone-waystation",
+   "level": "settlement",
+   "name": "The Tag House",
+   "parent": "culture.region.imperial-penal-south",
+   "placeId": "place.imperial-penal-south.rose-bone-waystation",
+   "norms": [
+    {
+     "text": "A body leaves the Rose's hands only under the shelter, never on the road.",
+     "source": "inferred"
+    },
+    {
+     "text": "Every carriage charge is written in the book before the bundle is wrapped.",
+     "source": "inferred"
+    },
+    {
+     "text": "Bones brought to the dirt near a tree can still go home.",
+     "source": "world/sources/lore/topics/prisons.md"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Handing over a body without its tag.",
+     "source": "inferred"
+    },
+    {
+     "text": "Haggling over the charge in front of the dead.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "A tag on every basket and a line in the book for every coin.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Anyone who calls the charge a ransom inside the shelter.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "place": {
+     "lean": -1,
+     "text": "A shelter, a hut and a brazier on a dry rise where the dead change hands.",
+     "source": "inferred"
+    },
+    "work": {
+     "lean": -1,
+     "text": "The Rose releases the dead, the Chainbreakers pay, the carrier takes them home.",
+     "source": "inferred"
+    },
+    "danger": {
+     "lean": -1,
+     "text": "Death hoppers in the wet ground below the rise; a wisp after dark.",
+     "source": "inferred"
+    },
+    "rumour": {
+     "lean": 0,
+     "text": "A tag came back for a person seen alive.",
+     "source": "inferred"
+    },
+    "directions": {
+     "lean": 0,
+     "text": "Ways are given by the Prison road: the Rose one way, the villages the other.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Stranger, to anyone who has not come for a body.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "formal",
+    "oaths": [
+     {
+      "text": "Bones go home.",
+      "source": "world/sources/lore/topics/labour-and-bondage.md"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "The word ransom, inside the shelter.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "The carriage charge is the most resented coin in the south. Both sides need it paid.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "A bone-tag came back for a person who is alive.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.region.hist-heartland",
+     "lean": 1,
+     "text": "The villages wait at home for what the carrier brings.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.15,
+   "dissent": [
+    {
+     "personId": "npc.imperial-penal-south.rose-bone-waystation.carrier",
+     "topic": "people",
+     "lean": -2,
+     "text": "He wraps and carries bodies the Rose would not let go without coin; he sees the families at their worst (record notes).",
+     "source": "inferred"
+    }
+   ]
+  }
+ ]
+}

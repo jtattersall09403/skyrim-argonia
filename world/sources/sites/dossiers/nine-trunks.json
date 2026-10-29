@@ -1,0 +1,1212 @@
+{
+ "schemaVersion": 1,
+ "kind": "site-dossier",
+ "id": "dossier.phase11.dossier.phase11.nine-trunks",
+ "siteId": "dossier.phase11.nine-trunks",
+ "seed": 0,
+ "generatedBy": "worldgen.site_dossier (Phase 11 Part 0 item 1, decision 0041)",
+ "sources": [
+  "apps/world-studio/public/province/{meta,hydrology-meta,society-meta}.json",
+  "apps/world-studio/public/province/hydro-*.png, soc-*.png, climate-*.png",
+  "apps/world-studio/public/province/refined/*, water/*, vegetation/*",
+  "world/sources/anchors/settlement-anchors.json",
+  "world/sources/placement/*-settlement-form.json"
+ ],
+ "centre": {
+  "worldM": [
+   4937.9,
+   3610.9
+  ],
+  "uv": [
+   0.66968,
+   0.48971
+  ],
+  "elevationM": 5.07,
+  "slopeDeg": 2.81,
+  "aspectDeg": 221.7,
+  "regionClass": 8,
+  "regionName": "fringe marsh",
+  "soilClass": 2,
+  "soilName": "firm lowland",
+  "dangerBand": 3,
+  "cultureTerritory": "hist-heartland",
+  "hydrology": {
+   "waterLevelM": 5.01,
+   "waterDepthM": 0.0,
+   "heightAboveWaterTableM": 0.06,
+   "shoreDistanceM": 11.6,
+   "coastDistanceM": 1596.0,
+   "record": {
+    "id": null,
+    "kind": null,
+    "levelM": null,
+    "season": null,
+    "depthM": null
+   },
+   "wetSeasonInundated": false,
+   "waterSalinity": 0.0,
+   "turbidity": 0.251,
+   "tannin": 0.498,
+   "seasonalResponse": 0.2,
+   "waterClass": "marsh"
+  },
+  "climate": {
+   "humidity": 0.898,
+   "mist": 0.561,
+   "canopyClosure": 0.306,
+   "rainAmplitude": 0.643,
+   "stormExposure": 0.039,
+   "seaFog": 0.78,
+   "cloudBelt": 0.0,
+   "airVisibilityM": 380.7,
+   "profile": {
+    "humidity": 0.9,
+    "mist": 0.6,
+    "rain": "monsoonal",
+    "visibility": 350,
+    "canopy": 0.3
+   }
+  }
+ },
+ "terrain": {
+  "radiusM": 350.0,
+  "elevationM": {
+   "p0": -3.07,
+   "p5": -0.24,
+   "p50": 4.39,
+   "p95": 10.15,
+   "p100": 14.26
+  },
+  "reliefM": 17.33,
+  "slopeDeg": {
+   "p5": 0.46,
+   "p50": 2.76,
+   "p95": 9.94
+  },
+  "slopeAreaHa": {
+   "flat": 20.752,
+   "gentle": 14.354,
+   "moderate": 2.908,
+   "steep": 0.449,
+   "very steep": 0.003,
+   "cliff": 0.0
+  },
+  "aspectSectorsPct": {
+   "E": 9.4,
+   "N": 10.1,
+   "NE": 9.6,
+   "NW": 12.7,
+   "S": 11.5,
+   "SE": 8.8,
+   "SW": 20.2,
+   "W": 17.6
+  },
+  "buildableAreaHa": 17.632,
+  "buildableFraction": 0.458,
+  "note": "buildable = slope < 8 deg and > 0.5 m above the local water level; 0041's ground-fitting ladder grades up to Delta 2.0 m, beyond which a site must stilt or move."
+ },
+ "profiles": {
+  "N-S": {
+   "offsetM": [
+    -340.0,
+    -320.0,
+    -300.0,
+    -280.0,
+    -260.0,
+    -240.0,
+    -220.0,
+    -200.0,
+    -180.0,
+    -160.0,
+    -140.0,
+    -120.0,
+    -100.0,
+    -80.0,
+    -60.0,
+    -40.0,
+    -20.0,
+    0.0,
+    20.0,
+    40.0,
+    60.0,
+    80.0,
+    100.0,
+    120.0,
+    140.0,
+    160.0,
+    180.0,
+    200.0,
+    220.0,
+    240.0,
+    260.0,
+    280.0,
+    300.0,
+    320.0,
+    340.0
+   ],
+   "elevationM": [
+    4.92,
+    4.92,
+    5.42,
+    6.32,
+    7.66,
+    8.3,
+    7.96,
+    7.51,
+    7.5,
+    7.21,
+    6.61,
+    6.82,
+    7.8,
+    8.31,
+    8.14,
+    7.41,
+    6.32,
+    5.07,
+    4.89,
+    5.64,
+    6.34,
+    6.44,
+    5.77,
+    5.07,
+    3.96,
+    3.58,
+    3.24,
+    2.1,
+    2.37,
+    1.56,
+    2.44,
+    1.65,
+    1.71,
+    1.57,
+    2.01
+   ],
+   "waterLevelM": [
+    1.6,
+    1.6,
+    5.3,
+    5.3,
+    4.3,
+    5.31,
+    4.71,
+    4.33,
+    4.27,
+    6.78,
+    6.78,
+    6.78,
+    6.78,
+    5.13,
+    5.15,
+    4.01,
+    5.01,
+    5.01,
+    5.01,
+    5.01,
+    3.27,
+    2.22,
+    2.22,
+    1.98,
+    0.79,
+    2.31,
+    2.31,
+    2.31,
+    2.31,
+    1.79,
+    2.1,
+    -1.3,
+    -1.35,
+    -1.4,
+    2.1
+   ]
+  },
+  "E-W": {
+   "offsetM": [
+    -340.0,
+    -320.0,
+    -300.0,
+    -280.0,
+    -260.0,
+    -240.0,
+    -220.0,
+    -200.0,
+    -180.0,
+    -160.0,
+    -140.0,
+    -120.0,
+    -100.0,
+    -80.0,
+    -60.0,
+    -40.0,
+    -20.0,
+    0.0,
+    20.0,
+    40.0,
+    60.0,
+    80.0,
+    100.0,
+    120.0,
+    140.0,
+    160.0,
+    180.0,
+    200.0,
+    220.0,
+    240.0,
+    260.0,
+    280.0,
+    300.0,
+    320.0,
+    340.0
+   ],
+   "elevationM": [
+    5.85,
+    6.99,
+    7.83,
+    8.39,
+    8.41,
+    7.19,
+    6.9,
+    6.56,
+    6.36,
+    5.43,
+    5.61,
+    5.52,
+    6.12,
+    6.99,
+    7.53,
+    7.08,
+    5.9,
+    5.07,
+    4.54,
+    3.81,
+    2.66,
+    1.69,
+    0.78,
+    1.38,
+    0.34,
+    1.01,
+    0.61,
+    0.05,
+    0.59,
+    0.79,
+    1.21,
+    1.14,
+    0.63,
+    -0.11,
+    -0.39
+   ],
+   "waterLevelM": [
+    7.31,
+    7.31,
+    7.31,
+    7.41,
+    7.41,
+    4.35,
+    3.2,
+    3.18,
+    3.06,
+    2.24,
+    5.62,
+    5.62,
+    2.81,
+    3.95,
+    4.01,
+    4.01,
+    5.01,
+    5.01,
+    0.97,
+    0.77,
+    -0.65,
+    -1.56,
+    1.97,
+    1.97,
+    0.25,
+    0.72,
+    0.72,
+    0.72,
+    0.72,
+    0.77,
+    1.05,
+    1.05,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "NE-SW": {
+   "offsetM": [
+    -340.0,
+    -320.0,
+    -300.0,
+    -280.0,
+    -260.0,
+    -240.0,
+    -220.0,
+    -200.0,
+    -180.0,
+    -160.0,
+    -140.0,
+    -120.0,
+    -100.0,
+    -80.0,
+    -60.0,
+    -40.0,
+    -20.0,
+    0.0,
+    20.0,
+    40.0,
+    60.0,
+    80.0,
+    100.0,
+    120.0,
+    140.0,
+    160.0,
+    180.0,
+    200.0,
+    220.0,
+    240.0,
+    260.0,
+    280.0,
+    300.0,
+    320.0,
+    340.0
+   ],
+   "elevationM": [
+    8.44,
+    7.56,
+    8.27,
+    9.18,
+    10.0,
+    9.43,
+    8.59,
+    7.51,
+    4.88,
+    4.09,
+    4.48,
+    7.4,
+    8.08,
+    8.44,
+    7.84,
+    7.69,
+    6.93,
+    5.07,
+    4.44,
+    3.95,
+    2.96,
+    1.94,
+    1.59,
+    0.0,
+    1.66,
+    -0.22,
+    -0.71,
+    0.94,
+    -0.06,
+    0.9,
+    0.79,
+    1.21,
+    1.59,
+    1.59,
+    1.8
+   ],
+   "waterLevelM": [
+    7.69,
+    7.69,
+    7.69,
+    7.66,
+    8.51,
+    7.89,
+    7.89,
+    7.89,
+    7.89,
+    7.89,
+    7.89,
+    7.89,
+    7.89,
+    7.88,
+    7.88,
+    4.01,
+    5.01,
+    5.01,
+    0.97,
+    0.88,
+    -0.01,
+    -1.3,
+    1.97,
+    1.97,
+    1.97,
+    1.97,
+    1.97,
+    1.97,
+    1.97,
+    1.97,
+    -2.34,
+    1.21,
+    1.21,
+    1.36,
+    1.36
+   ]
+  },
+  "NW-SE": {
+   "offsetM": [
+    -340.0,
+    -320.0,
+    -300.0,
+    -280.0,
+    -260.0,
+    -240.0,
+    -220.0,
+    -200.0,
+    -180.0,
+    -160.0,
+    -140.0,
+    -120.0,
+    -100.0,
+    -80.0,
+    -60.0,
+    -40.0,
+    -20.0,
+    0.0,
+    20.0,
+    40.0,
+    60.0,
+    80.0,
+    100.0,
+    120.0,
+    140.0,
+    160.0,
+    180.0,
+    200.0,
+    220.0,
+    240.0,
+    260.0,
+    280.0,
+    300.0,
+    320.0,
+    340.0
+   ],
+   "elevationM": [
+    -0.4,
+    0.75,
+    1.43,
+    2.17,
+    2.35,
+    3.12,
+    3.83,
+    3.73,
+    3.73,
+    4.2,
+    4.54,
+    4.76,
+    4.95,
+    4.66,
+    4.66,
+    4.96,
+    4.83,
+    5.07,
+    5.61,
+    6.07,
+    7.16,
+    7.31,
+    6.93,
+    7.06,
+    7.92,
+    9.97,
+    10.02,
+    8.07,
+    7.86,
+    6.54,
+    4.89,
+    4.17,
+    3.32,
+    3.91,
+    4.49
+   ],
+   "waterLevelM": [
+    0.0,
+    0.0,
+    0.0,
+    1.96,
+    1.04,
+    -1.0,
+    3.27,
+    3.27,
+    3.27,
+    4.2,
+    3.65,
+    3.65,
+    3.65,
+    1.51,
+    0.97,
+    0.97,
+    1.64,
+    5.01,
+    5.01,
+    5.01,
+    7.18,
+    7.18,
+    7.18,
+    5.62,
+    2.22,
+    2.22,
+    2.22,
+    2.22,
+    2.22,
+    2.4,
+    4.97,
+    4.97,
+    4.97,
+    4.97,
+    4.97
+   ]
+  }
+ },
+ "hydrology": {
+  "channels": [
+   {
+    "riverBand": 1,
+    "label": "headwater/minor",
+    "cellsInRadius": 38,
+    "lengthInRadiusM": 208.4,
+    "nearestDistanceM": 150.6,
+    "nearestBearing": "E"
+   }
+  ],
+  "waterDepthM": {
+   "p5": 0.12,
+   "p50": 0.48,
+   "p95": 2.88,
+   "p100": 5.88
+  },
+  "openWaterAreaHa": 10.082,
+  "waterKindAreaHa": {
+   "none": 28.384,
+   "horizontal-channel": 0.112,
+   "ocean": 1.793,
+   "lagoon": 0.212,
+   "pond": 0.727,
+   "marsh-fringe": 3.877,
+   "swamp": 3.332,
+   "mudflat": 0.028
+  },
+  "wetSeasonNewlyInundatedFraction": 0.019,
+  "wetSeasonFraction": 0.259,
+  "marshFraction": 0.187,
+  "tidalFraction": 0.047,
+  "lakeFraction": 0.0,
+  "waterSalinity": {
+   "p5": 0.0,
+   "p50": 0.0,
+   "p95": 0.22
+  },
+  "salineFraction": 0.062,
+  "distanceToOpenSeaM": 1596.0
+ },
+ "context": {
+  "regionMixPct": {
+   "ocean": 4.0,
+   "tidal delta": 0.7,
+   "coastal lagoon & salt marsh": 4.7,
+   "interior swamp": 10.1,
+   "fringe marsh": 46.1,
+   "seasonal floodplain": 0.7,
+   "firm lowland": 14.6,
+   "lake & standing water": 14.3,
+   "tropical jungle": 3.9,
+   "mangrove forest": 0.9
+  },
+  "dangerMixPct": {
+   "0": 4.8,
+   "2": 1.5,
+   "3": 68.6,
+   "4": 23.5,
+   "5": 1.5
+  },
+  "cultureMixPct": {
+   "unclaimed": 4.0,
+   "saxhleel-coast": 19.9,
+   "hist-heartland": 76.2
+  },
+  "soilMixPct": {
+   "unclassified": 4.8,
+   "rock/upland firm": 0.4,
+   "firm lowland": 63.8,
+   "soft marsh": 25.5,
+   "mud": 5.5
+  }
+ },
+ "access": {
+  "routes": [
+   {
+    "kind": "road",
+    "from": "archon",
+    "to": "gideon",
+    "lengthKm": 6.24,
+    "nearestDistanceM": 50.5,
+    "nearestPointM": [
+     4888.6,
+     3621.9
+    ],
+    "nearestBearing": "W",
+    "withinRadius": true
+   },
+   {
+    "kind": "boat",
+    "from": "archon",
+    "to": "thorn",
+    "lengthKm": 4.87,
+    "nearestDistanceM": 633.5,
+    "nearestPointM": [
+     5546.6,
+     3786.4
+    ],
+    "nearestBearing": "E",
+    "withinRadius": false
+   },
+   {
+    "kind": "boat",
+    "from": "lilmoth",
+    "to": "archon",
+    "lengthKm": 2.41,
+    "nearestDistanceM": 1060.5,
+    "nearestPointM": [
+     5162.7,
+     4647.3
+    ],
+    "nearestBearing": "S",
+    "withinRadius": false
+   },
+   {
+    "kind": "boat",
+    "from": "alten-corimont",
+    "to": "helstrom",
+    "lengthKm": 3.45,
+    "nearestDistanceM": 1479.1,
+    "nearestPointM": [
+     4471.8,
+     2207.1
+    ],
+    "nearestBearing": "N",
+    "withinRadius": false
+   },
+   {
+    "kind": "road",
+    "from": "stormhold",
+    "to": "thorn",
+    "lengthKm": 8.8,
+    "nearestDistanceM": 1722.1,
+    "nearestPointM": [
+     4905.0,
+     1889.1
+    ],
+    "nearestBearing": "N",
+    "withinRadius": false
+   }
+  ],
+  "neighbourAnchors": [
+   {
+    "id": "archon",
+    "straightLineM": 1058.3,
+    "bearing": "S"
+   },
+   {
+    "id": "helstrom",
+    "straightLineM": 1680.0,
+    "bearing": "NW"
+   },
+   {
+    "id": "alten-corimont",
+    "straightLineM": 2703.5,
+    "bearing": "NW"
+   },
+   {
+    "id": "lilmoth",
+    "straightLineM": 3074.9,
+    "bearing": "SW"
+   },
+   {
+    "id": "thorn",
+    "straightLineM": 3271.7,
+    "bearing": "NE"
+   },
+   {
+    "id": "gideon",
+    "straightLineM": 3559.9,
+    "bearing": "W"
+   },
+   {
+    "id": "stormhold",
+    "straightLineM": 3670.3,
+    "bearing": "NW"
+   },
+   {
+    "id": "blackrose",
+    "straightLineM": 3809.3,
+    "bearing": "SW"
+   },
+   {
+    "id": "soulrest",
+    "straightLineM": 5296.5,
+    "bearing": "SW"
+   }
+  ],
+  "distanceToNearestRouteM": 50.6,
+  "nearestAnchor": "archon",
+  "distanceToNearestAnchorM": 1058.3,
+  "dangerBand": 3,
+  "effortScore": 0.154
+ },
+ "vegetation": {
+  "compiled": true,
+  "chunksRead": [
+   [
+    9,
+    6
+   ],
+   [
+    9,
+    7
+   ],
+   [
+    9,
+    8
+   ],
+   [
+    10,
+    6
+   ],
+   [
+    10,
+    7
+   ],
+   [
+    10,
+    8
+   ],
+   [
+    11,
+    6
+   ],
+   [
+    11,
+    7
+   ],
+   [
+    11,
+    8
+   ]
+  ],
+  "chunksMissing": [],
+  "instancesInRadius": 10593,
+  "perHectare": 275.3,
+  "canopyClosureFromClimate": 0.306,
+  "speciesMixTop": [
+   {
+    "species": "bmv:vvardenfell/flora/algrass03b",
+    "count": 1282,
+    "pct": 12.1
+   },
+   {
+    "species": "bmv:landscape/trees/tropicalplant01",
+    "count": 1015,
+    "pct": 9.6
+   },
+   {
+    "species": "bmv:landscape/plants/esloebush08",
+    "count": 1000,
+    "pct": 9.4
+   },
+   {
+    "species": "bmv:landscape/plants/braken",
+    "count": 947,
+    "pct": 8.9
+   },
+   {
+    "species": "bmv:landscape/grass/vurt_reeds",
+    "count": 750,
+    "pct": 7.1
+   },
+   {
+    "species": "bmv:landscape/plants/fern01",
+    "count": 531,
+    "pct": 5.0
+   },
+   {
+    "species": "bmv:landscape/grass/riverbedpebbles",
+    "count": 488,
+    "pct": 4.6
+   },
+   {
+    "species": "bmv:landscape/plants/fernlarge03",
+    "count": 437,
+    "pct": 4.1
+   },
+   {
+    "species": "bmv:landscape/trees/bambooplant",
+    "count": 427,
+    "pct": 4.0
+   },
+   {
+    "species": "bmv:landscape/plants/bigshrub2(colorful)",
+    "count": 403,
+    "pct": 3.8
+   },
+   {
+    "species": "bmv:landscape/trees/reedlarge1",
+    "count": 358,
+    "pct": 3.4
+   },
+   {
+    "species": "bmv:landscape/plants/chickweed",
+    "count": 315,
+    "pct": 3.0
+   }
+  ],
+  "distinctSpecies": 77,
+  "chunkRecords": [
+   {
+    "chunk": [
+     9,
+     6
+    ],
+    "region": 11,
+    "regionName": "firm lowland",
+    "regionsPresent": [
+     6,
+     7,
+     8,
+     9,
+     11,
+     12
+    ],
+    "instances": 4426,
+    "tiers": {
+     "T1": 370,
+     "T2": 4056
+    },
+    "perHectare": 202.1
+   },
+   {
+    "chunk": [
+     9,
+     7
+    ],
+    "region": 11,
+    "regionName": "firm lowland",
+    "regionsPresent": [
+     6,
+     7,
+     9,
+     11,
+     12,
+     13
+    ],
+    "instances": 7286,
+    "tiers": {
+     "T1": 601,
+     "T2": 6685
+    },
+    "perHectare": 332.8
+   },
+   {
+    "chunk": [
+     9,
+     8
+    ],
+    "region": 13,
+    "regionName": "tropical jungle",
+    "regionsPresent": [
+     4,
+     7,
+     8,
+     11,
+     12,
+     13
+    ],
+    "instances": 6585,
+    "tiers": {
+     "T1": 845,
+     "T2": 5740
+    },
+    "perHectare": 300.7
+   },
+   {
+    "chunk": [
+     10,
+     6
+    ],
+    "region": 11,
+    "regionName": "firm lowland",
+    "regionsPresent": [
+     4,
+     7,
+     8,
+     9,
+     11,
+     12
+    ],
+    "instances": 3482,
+    "tiers": {
+     "T1": 391,
+     "T2": 3091
+    },
+    "perHectare": 159.0
+   },
+   {
+    "chunk": [
+     10,
+     7
+    ],
+    "region": 8,
+    "regionName": "fringe marsh",
+    "regionsPresent": [
+     0,
+     3,
+     4,
+     7,
+     8,
+     9,
+     11,
+     12
+    ],
+    "instances": 5457,
+    "tiers": {
+     "T1": 386,
+     "T2": 5071
+    },
+    "perHectare": 249.2
+   },
+   {
+    "chunk": [
+     10,
+     8
+    ],
+    "region": 8,
+    "regionName": "fringe marsh",
+    "regionsPresent": [
+     0,
+     3,
+     4,
+     7,
+     8,
+     9,
+     11,
+     12,
+     13,
+     14
+    ],
+    "instances": 4652,
+    "tiers": {
+     "T1": 621,
+     "T2": 4031
+    },
+    "perHectare": 212.5
+   },
+   {
+    "chunk": [
+     11,
+     6
+    ],
+    "region": 11,
+    "regionName": "firm lowland",
+    "regionsPresent": [
+     0,
+     3,
+     4,
+     8,
+     9,
+     11,
+     12,
+     14
+    ],
+    "instances": 4916,
+    "tiers": {
+     "T1": 662,
+     "T2": 4254
+    },
+    "perHectare": 224.5
+   },
+   {
+    "chunk": [
+     11,
+     7
+    ],
+    "region": 14,
+    "regionName": "mangrove forest",
+    "regionsPresent": [
+     0,
+     3,
+     4,
+     8,
+     9,
+     11,
+     12,
+     14
+    ],
+    "instances": 9195,
+    "tiers": {
+     "T1": 1632,
+     "T2": 7563
+    },
+    "perHectare": 419.9
+   },
+   {
+    "chunk": [
+     11,
+     8
+    ],
+    "region": 14,
+    "regionName": "mangrove forest",
+    "regionsPresent": [
+     0,
+     4,
+     8,
+     9,
+     11,
+     12,
+     14
+    ],
+    "instances": 8209,
+    "tiers": {
+     "T1": 611,
+     "T2": 7598
+    },
+    "perHectare": 374.9
+   }
+  ]
+ },
+ "viewshed": {
+  "radial": {
+   "rays": 72,
+   "radiusM": 1500.0,
+   "visibleFraction": 0.2439,
+   "horizonAngleDeg": {
+    "p5": -0.59,
+    "p50": 0.9,
+    "p95": 2.5,
+    "max": 2.69
+   },
+   "openAzimuthFraction": 0.417,
+   "medianFirstBlockM": 87.7
+  },
+  "landmarksVisible": [
+   {
+    "id": "archon",
+    "kind": "anchor",
+    "distanceM": 1058.3,
+    "bearing": "S",
+    "elevationM": 0.4
+   }
+  ],
+  "landmarksOccluded": [],
+  "visibleFromRoutes": [
+   {
+    "kind": "road",
+    "from": "archon",
+    "to": "gideon",
+    "sampledPointsWithin2km": 153,
+    "withLineOfSight": 79,
+    "fraction": 0.516
+   },
+   {
+    "kind": "boat",
+    "from": "archon",
+    "to": "thorn",
+    "sampledPointsWithin2km": 121,
+    "withLineOfSight": 38,
+    "fraction": 0.314
+   },
+   {
+    "kind": "boat",
+    "from": "lilmoth",
+    "to": "archon",
+    "sampledPointsWithin2km": 45,
+    "withLineOfSight": 11,
+    "fraction": 0.244
+   },
+   {
+    "kind": "road",
+    "from": "stormhold",
+    "to": "thorn",
+    "sampledPointsWithin2km": 57,
+    "withLineOfSight": 2,
+    "fraction": 0.035
+   },
+   {
+    "kind": "boat",
+    "from": "alten-corimont",
+    "to": "helstrom",
+    "sampledPointsWithin2km": 84,
+    "withLineOfSight": 0,
+    "fraction": 0.0
+   }
+  ],
+  "approachVisibility": 0.283,
+  "routePointsSampledWithin2km": 460,
+  "concealment": 0.717,
+  "method": "radial (R2) line of sight over the terrain skeleton (height smoothed to ~11 m); 1.7 m eye. Vegetation and buildings are not occluders here."
+ },
+ "minedFormAnalogues": [
+  {
+   "source": "bmv",
+   "index": 1,
+   "buildings": 106,
+   "radiusM": 206.6,
+   "buildingsPerHectare": 7.91,
+   "orientationCoherence": 0.226,
+   "medianWaterDistanceM": 18.3,
+   "medianRoadDistanceM": 86.4,
+   "kits": [
+    [
+     "architecture",
+     39
+    ],
+    [
+     "architecture/small house",
+     20
+    ],
+    [
+     "architecture/cyrodil",
+     15
+    ]
+   ],
+   "formDistance": 0.312
+  },
+  {
+   "source": "vanilla-tamriel",
+   "index": 1,
+   "buildings": 52,
+   "radiusM": 94.2,
+   "buildingsPerHectare": 18.66,
+   "orientationCoherence": 0.865,
+   "medianWaterDistanceM": 9.7,
+   "medianRoadDistanceM": 40.7,
+   "kits": [
+    [
+     "architecture/riften",
+     49
+    ],
+    [
+     "architecture/tents",
+     3
+    ]
+   ],
+   "formDistance": 0.419
+  },
+  {
+   "source": "vanilla-tamriel",
+   "index": 3,
+   "buildings": 34,
+   "radiusM": 244.1,
+   "buildingsPerHectare": 1.82,
+   "orientationCoherence": 0.412,
+   "medianWaterDistanceM": 26.6,
+   "medianRoadDistanceM": 23.4,
+   "kits": [
+    [
+     "architecture/highhrothgar",
+     34
+    ]
+   ],
+   "formDistance": 0.492
+  }
+ ]
+}

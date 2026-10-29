@@ -1,0 +1,125 @@
+{
+ "cellId": "CIPHTBMHutInterior05",
+ "sockets": {
+  "socket.CIPHTBMHutInterior05.06029F1A": {
+   "owner": "parcel.upriver-hist-village.trade-house",
+   "fillRule": "blanket.fish-basket",
+   "valueTier": "trivial",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.trodh",
+      "count": 4
+     },
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     },
+     {
+      "item": "item.fishing-pole",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.fish-basket"
+   }
+  },
+  "socket.CIPHTBMHutInterior05.06029F1B": {
+   "owner": "parcel.upriver-hist-village.trade-house",
+   "fillRule": "blanket.water-barrel",
+   "valueTier": "trivial",
+   "lootTable": {
+    "items": [],
+    "frozenFrom": "blanket.water-barrel"
+   }
+  },
+  "socket.CIPHTBMHutInterior05.06029F1C": {
+   "owner": "parcel.upriver-hist-village.trade-house",
+   "fillRule": "blanket.fish-basket",
+   "valueTier": "trivial",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.trodh",
+      "count": 4
+     },
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     },
+     {
+      "item": "item.fishing-pole",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.fish-basket"
+   }
+  },
+  "socket.CIPHTBMHutInterior05.06029F1D": {
+   "owner": "parcel.upriver-hist-village.trade-house",
+   "fillRule": "blanket.household-urn",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.smoked-slaughterfish",
+      "count": 2
+     },
+     {
+      "item": "item.saltrice-loaf",
+      "count": 1
+     },
+     {
+      "item": "item.trodh",
+      "count": 3
+     },
+     {
+      "item": "item.clay-jug",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.household-urn"
+   }
+  },
+  "socket.CIPHTBMHutInterior05.06029F29": {
+   "owner": "parcel.upriver-hist-village.trade-house",
+   "valueTier": "low",
+   "item": "item.dragons-tongue"
+  },
+  "socket.CIPHTBMHutInterior05.06029F2A": {
+   "owner": "parcel.upriver-hist-village.trade-house",
+   "valueTier": "low",
+   "item": "item.dragons-tongue"
+  },
+  "socket.CIPHTBMHutInterior05.06029F2B": {
+   "owner": "parcel.upriver-hist-village.trade-house",
+   "valueTier": "moderate",
+   "item": "item.river-betty"
+  },
+  "socket.CIPHTBMHutInterior05.06029F2C": {
+   "owner": "parcel.upriver-hist-village.trade-house",
+   "valueTier": "moderate",
+   "item": "item.slaughterfish-egg"
+  },
+  "socket.CIPHTBMHutInterior05.06029F2D": {
+   "owner": "parcel.upriver-hist-village.trade-house",
+   "valueTier": "low",
+   "item": "item.slaughterfish-scales"
+  },
+  "socket.CIPHTBMHutInterior05.06029F2E": {
+   "owner": "parcel.upriver-hist-village.trade-house",
+   "valueTier": "moderate",
+   "item": "item.slaughterfish-egg"
+  },
+  "socket.CIPHTBMHutInterior05.06029F2F": {
+   "owner": "parcel.upriver-hist-village.trade-house",
+   "valueTier": "moderate",
+   "item": "item.river-betty"
+  },
+  "socket.CIPHTBMHutInterior05.06029F30": {
+   "owner": "parcel.upriver-hist-village.trade-house",
+   "valueTier": "moderate",
+   "item": "item.firebrand-wine"
+  }
+ },
+ "schemaVersion": 1
+}

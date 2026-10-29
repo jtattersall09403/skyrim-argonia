@@ -1,0 +1,399 @@
+{
+ "cellId": "TeethofSithisInt01",
+ "sockets": {
+  "socket.TeethofSithisInt01.083E7F3F": {
+   "fillRule": "blanket.trapper-sack",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.pelt",
+      "count": 3
+     },
+     {
+      "item": "item.hide",
+      "count": 1
+     },
+     {
+      "item": "item.leather-strips",
+      "count": 3
+     },
+     {
+      "item": "item.crocodile-tooth",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.trapper-sack"
+   }
+  },
+  "socket.TeethofSithisInt01.083E7F40": {
+   "valueTier": "trivial",
+   "item": "item.marsh-lantern"
+  },
+  "socket.TeethofSithisInt01.083E7F42": {
+   "valueTier": "trivial",
+   "item": "item.note-adventurers-torn-note"
+  },
+  "socket.TeethofSithisInt01.083E7F49": {
+   "valueTier": "high",
+   "item": "item.flawless-emerald"
+  },
+  "socket.TeethofSithisInt01.083E7F4A": {
+   "valueTier": "high",
+   "item": "item.blue-jasper"
+  },
+  "socket.TeethofSithisInt01.083ED140": {
+   "valueTier": "trivial",
+   "item": "item.healing-draught"
+  },
+  "socket.TeethofSithisInt01.083F7650": {
+   "valueTier": "trivial",
+   "item": "item.nisswo-coin"
+  },
+  "socket.TeethofSithisInt01.083F7651": {
+   "valueTier": "trivial",
+   "item": "item.nisswo-coin"
+  },
+  "socket.TeethofSithisInt01.083F7652": {
+   "valueTier": "trivial",
+   "item": "item.nisswo-coin"
+  },
+  "socket.TeethofSithisInt01.083F7653": {
+   "valueTier": "trivial",
+   "item": "item.nisswo-coin"
+  },
+  "socket.TeethofSithisInt01.083F7654": {
+   "valueTier": "trivial",
+   "item": "item.nisswo-coin"
+  },
+  "socket.TeethofSithisInt01.083F7655": {
+   "valueTier": "trivial",
+   "item": "item.nisswo-coin"
+  },
+  "socket.TeethofSithisInt01.083F7656": {
+   "valueTier": "trivial",
+   "item": "item.nisswo-coin"
+  },
+  "socket.TeethofSithisInt01.083F7657": {
+   "valueTier": "trivial",
+   "item": "item.nisswo-coin"
+  },
+  "socket.TeethofSithisInt01.083F7658": {
+   "valueTier": "moderate",
+   "item": "item.glass-bead-strand"
+  },
+  "socket.TeethofSithisInt01.083F7699": {
+   "valueTier": "moderate",
+   "item": "item.spine-balm"
+  },
+  "socket.TeethofSithisInt01.0867D9DF": {
+   "fillRule": "blanket.kothringi-cairn",
+   "valueTier": "moderate",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.glass-bead-strand",
+      "count": 2
+     },
+     {
+      "item": "item.bone-meal",
+      "count": 1
+     },
+     {
+      "item": "item.seed-doll",
+      "count": 1
+     },
+     {
+      "item": "item.silver-slide-flute",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.kothringi-cairn"
+   }
+  },
+  "socket.TeethofSithisInt01.0867D9E0": {
+   "fillRule": "blanket.shrine-bowl",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.lumberries",
+      "count": 4
+     },
+     {
+      "item": "item.seed-doll",
+      "count": 1
+     },
+     {
+      "item": "item.hist-sap",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.shrine-bowl"
+   }
+  },
+  "socket.TeethofSithisInt01.0867D9E1": {
+   "fillRule": "blanket.kothringi-cairn",
+   "valueTier": "moderate",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.glass-bead-strand",
+      "count": 2
+     },
+     {
+      "item": "item.bone-meal",
+      "count": 1
+     },
+     {
+      "item": "item.seed-doll",
+      "count": 1
+     },
+     {
+      "item": "item.silver-slide-flute",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.kothringi-cairn"
+   }
+  },
+  "socket.TeethofSithisInt01.0867DA06": {
+   "fillRule": "blanket.shrine-bowl",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.lumberries",
+      "count": 4
+     },
+     {
+      "item": "item.seed-doll",
+      "count": 1
+     },
+     {
+      "item": "item.hist-sap",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.shrine-bowl"
+   }
+  },
+  "socket.TeethofSithisInt01.08687D6A": {
+   "fillRule": "blanket.kothringi-cairn",
+   "valueTier": "moderate",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.glass-bead-strand",
+      "count": 2
+     },
+     {
+      "item": "item.bone-meal",
+      "count": 1
+     },
+     {
+      "item": "item.seed-doll",
+      "count": 1
+     },
+     {
+      "item": "item.silver-slide-flute",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.kothringi-cairn"
+   }
+  },
+  "socket.TeethofSithisInt01.08687D6B": {
+   "fillRule": "blanket.shrine-bowl",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.lumberries",
+      "count": 4
+     },
+     {
+      "item": "item.dried-flower-buds",
+      "count": 3
+     },
+     {
+      "item": "item.hist-sap",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.shrine-bowl"
+   }
+  },
+  "socket.TeethofSithisInt01.08687D8A": {
+   "fillRule": "blanket.shrine-bowl",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.lumberries",
+      "count": 4
+     },
+     {
+      "item": "item.seed-doll",
+      "count": 1
+     },
+     {
+      "item": "item.hist-sap",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.shrine-bowl"
+   }
+  },
+  "socket.TeethofSithisInt01.08687D8B": {
+   "fillRule": "blanket.kothringi-cairn",
+   "valueTier": "moderate",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.glass-bead-strand",
+      "count": 2
+     },
+     {
+      "item": "item.bone-meal",
+      "count": 1
+     },
+     {
+      "item": "item.seed-doll",
+      "count": 1
+     },
+     {
+      "item": "item.silver-slide-flute",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.kothringi-cairn"
+   }
+  },
+  "socket.TeethofSithisInt01.0868D065": {
+   "valueTier": "trivial",
+   "item": "item.linen-wrap"
+  },
+  "socket.TeethofSithisInt01.0868D066": {
+   "valueTier": "trivial",
+   "item": "item.linen-wrap"
+  },
+  "socket.TeethofSithisInt01.0868D067": {
+   "valueTier": "trivial",
+   "item": "item.linen-wrap"
+  },
+  "socket.TeethofSithisInt01.0868D06B": {
+   "valueTier": "trivial",
+   "item": "item.roll-of-paper"
+  },
+  "socket.TeethofSithisInt01.0868D06C": {
+   "valueTier": "trivial",
+   "item": "item.roll-of-paper"
+  },
+  "socket.TeethofSithisInt01.0868D06E": {
+   "valueTier": "trivial",
+   "item": "item.roll-of-paper"
+  },
+  "socket.TeethofSithisInt01.0868D06F": {
+   "valueTier": "trivial",
+   "item": "item.roll-of-paper"
+  },
+  "socket.TeethofSithisInt01.0868D070": {
+   "valueTier": "trivial",
+   "item": "item.healing-draught"
+  },
+  "socket.TeethofSithisInt01.0868D071": {
+   "fillRule": "blanket.shrine-bowl",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.dried-flower-buds",
+      "count": 3
+     },
+     {
+      "item": "item.seed-doll",
+      "count": 1
+     },
+     {
+      "item": "item.hist-sap",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.shrine-bowl"
+   }
+  },
+  "socket.TeethofSithisInt01.0868D072": {
+   "fillRule": "blanket.kothringi-cairn",
+   "valueTier": "moderate",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.glass-bead-strand",
+      "count": 2
+     },
+     {
+      "item": "item.bone-meal",
+      "count": 1
+     },
+     {
+      "item": "item.seed-doll",
+      "count": 1
+     },
+     {
+      "item": "item.silver-slide-flute",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.kothringi-cairn"
+   }
+  },
+  "socket.TeethofSithisInt01.0868D1EB": {
+   "fillRule": "blanket.shrine-bowl",
+   "valueTier": "low",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.lumberries",
+      "count": 4
+     },
+     {
+      "item": "item.dried-flower-buds",
+      "count": 3
+     },
+     {
+      "item": "item.seed-doll",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.shrine-bowl"
+   }
+  },
+  "socket.TeethofSithisInt01.0869238B": {
+   "fillRule": "blanket.kothringi-cairn",
+   "valueTier": "moderate",
+   "lootTable": {
+    "items": [
+     {
+      "item": "item.glass-bead-strand",
+      "count": 2
+     },
+     {
+      "item": "item.bone-meal",
+      "count": 1
+     },
+     {
+      "item": "item.seed-doll",
+      "count": 1
+     },
+     {
+      "item": "item.silver-slide-flute",
+      "count": 1
+     }
+    ],
+    "frozenFrom": "blanket.kothringi-cairn"
+   }
+  }
+ },
+ "schemaVersion": 1
+}

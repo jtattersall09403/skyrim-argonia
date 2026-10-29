@@ -1,0 +1,126 @@
+{
+ "id": "seam-burglary-seen-by-day",
+ "start": {
+  "query": "?view=character&x=7.2290&z=0.5176&t=14:00&d=8-17",
+  "kit": "start",
+  "seed": 1
+ },
+ "steps": [
+  {
+   "name": "at-the-tally",
+   "transition": "Riverwalk at 14:00, standing at the toll tally on the boards, the camera between the tally and the three crewmen 4 to 5 m off in daylight -> the crewmen in frame, the take prompt on the tally",
+   "do": {
+    "action": "approach",
+    "near": [
+     {
+      "id": "npc.dunmer-north.riverwalk.n1",
+      "m": 4.3,
+      "facing": true
+     },
+     {
+      "id": "npc.dunmer-north.riverwalk.n1-2",
+      "m": 4.8,
+      "facing": false
+     },
+     {
+      "id": "npc.dunmer-north.riverwalk.n1-3",
+      "m": 4.9,
+      "facing": false
+     },
+     {
+      "id": "npc.dunmer-north.riverwalk.toll-holder",
+      "m": 25.9,
+      "facing": false
+     }
+    ],
+    "seconds": 1
+   },
+   "keys": [
+    {
+     "wait_s": 1.5
+    }
+   ],
+   "hold_s": 1,
+   "expect": {
+    "owing": 0
+   },
+   "stage": {
+    "at": {
+     "x": 7228.98,
+     "z": 517.59,
+     "yaw": -1.05
+    },
+    "hour": 14,
+    "place": "place.dunmer-north.riverwalk"
+   }
+  },
+  {
+   "name": "seen-by-day",
+   "transition": "the tally taken under the crewman's eyes -> a theft filed (standing, so no sneak eye: the eye shows only while sneaking): the crime cue and the Owing show",
+   "do": {
+    "action": "take",
+    "socket": "socket.riverwalk.item-toll-tally",
+    "near": [
+     {
+      "id": "npc.dunmer-north.riverwalk.n1",
+      "m": 4.3,
+      "facing": true
+     },
+     {
+      "id": "npc.dunmer-north.riverwalk.n1-2",
+      "m": 4.8,
+      "facing": false
+     },
+     {
+      "id": "npc.dunmer-north.riverwalk.n1-3",
+      "m": 4.9,
+      "facing": false
+     },
+     {
+      "id": "npc.dunmer-north.riverwalk.toll-holder",
+      "m": 25.9,
+      "facing": false
+     }
+    ],
+    "seconds": 2
+   },
+   "keys": [
+    {
+     "press": "KeyE"
+    },
+    {
+     "wait_s": 0.6
+    },
+    {
+     "click": ".es-reader__take"
+    }
+   ],
+   "hold_s": 1.5,
+   "expect": {
+    "notice": {
+     "npc.dunmer-north.riverwalk.n1": "engaged"
+    },
+    "filed": "theft"
+   }
+  },
+  {
+   "name": "after",
+   "transition": "a moment later -> the Owing holds, the crewman still on the player",
+   "do": {
+    "action": "approach",
+    "seconds": 1
+   },
+   "keys": [
+    {
+     "wait_s": 1.5
+    }
+   ],
+   "hold_s": 0.5,
+   "expect": {
+    "notice": {
+     "npc.dunmer-north.riverwalk.n1": "engaged"
+    }
+   }
+  }
+ ]
+}

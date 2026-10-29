@@ -1,0 +1,246 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "_": "Life-group and household sheets for Greenspring (2.5c), from its record's life block.",
+ "entries": [
+  {
+   "norms": [
+    {
+     "text": "Each office is answered for by its holder alone: the tree, the spring, the ledger.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [],
+   "values": [
+    {
+     "text": "Keeping the village's word to travellers.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [],
+   "opinions": {
+    "hist": {
+     "lean": 2,
+     "text": "The tree's health comes before any trade.",
+     "source": "inferred"
+    },
+    "faction": {
+     "lean": 0,
+     "text": "The state matters only when its couriers stop at the lodge.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Each other by office.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "ceremonial",
+    "oaths": [],
+    "neverSaid": [
+     {
+      "text": "A quarrel between the three office-holders.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "talk": {
+    "grievances": [],
+    "rumours": []
+   },
+   "views": [],
+   "deviationRate": 0.2,
+   "id": "culture.group.greenspring.office-holders",
+   "level": "group",
+   "name": "The three office-holders",
+   "parent": "culture.settlement.greenspring",
+   "members": [
+    "npc.hist-heartland.greenspring.tree-minder",
+    "npc.hist-heartland.greenspring.spring-keeper",
+    "npc.hist-heartland.greenspring.root-herald"
+   ]
+  },
+  {
+   "norms": [
+    {
+     "text": "The lodge jars are full by noon.",
+     "source": "inferred"
+    },
+    {
+     "text": "Each length of rope is tested before it is sold.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [],
+   "values": [
+    {
+     "text": "A bed paid for is a bed kept clean.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [],
+   "opinions": {
+    "people": {
+     "lean": 1,
+     "text": "Travellers pay for everything but water. They come back anyway.",
+     "source": "inferred"
+    },
+    "work": {
+     "lean": 2,
+     "text": "The lodge keeps the village fed.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Guests are called traveller.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [],
+    "neverSaid": [
+     {
+      "text": "What a guest paid another guest.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "talk": {
+    "grievances": [],
+    "rumours": []
+   },
+   "views": [],
+   "deviationRate": 0.15,
+   "id": "culture.group.greenspring.lodge",
+   "level": "group",
+   "name": "The lodge workers",
+   "parent": "culture.settlement.greenspring",
+   "members": [
+    "npc.hist-heartland.greenspring.n1",
+    "npc.hist-heartland.greenspring.n2-2",
+    "npc.hist-heartland.greenspring.n2-3",
+    "npc.hist-heartland.greenspring.n2-4"
+   ]
+  },
+  {
+   "norms": [
+    {
+     "text": "A guest owes the village the price of a bed and nothing more.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [],
+   "values": [
+    {
+     "text": "Reaching Helstrom with the purse intact.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [],
+   "opinions": {
+    "place": {
+     "lean": 0,
+     "text": "The village is a bed and a drink on the way to somewhere else.",
+     "source": "inferred"
+    },
+    "directions": {
+     "lean": 2,
+     "text": "Ask about the road to Helstrom. Nothing else here is worth the question.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Locals by office, if the guest has learnt it.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [],
+    "neverSaid": [
+     {
+      "text": "The errand that takes the guest to Helstrom.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "talk": {
+    "grievances": [],
+    "rumours": []
+   },
+   "views": [],
+   "deviationRate": 0.2,
+   "id": "culture.group.greenspring.road-guests",
+   "level": "group",
+   "name": "Guests on the road to Helstrom",
+   "parent": "culture.settlement.greenspring",
+   "members": [
+    "npc.hist-heartland.greenspring.n3"
+   ]
+  },
+  {
+   "norms": [
+    {
+     "text": "The pot stays covered against the wasps.",
+     "source": "inferred"
+    },
+    {
+     "text": "Each member brings something to the fire by dusk.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [],
+   "values": [
+    {
+     "text": "Feeding the household before the guests.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [],
+   "opinions": {
+    "danger": {
+     "lean": -1,
+     "text": "The wasps nest too close to the fire stand.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Each other by name.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "low",
+    "oaths": [],
+    "neverSaid": [
+     {
+      "text": "Which of them a guest last cheated at seed pods.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "talk": {
+    "grievances": [],
+    "rumours": []
+   },
+   "views": [],
+   "deviationRate": 0.15,
+   "id": "culture.household.greenspring.fire-stand-hut",
+   "level": "household",
+   "name": "The hut by the fire stand",
+   "parent": "culture.group.greenspring.lodge",
+   "members": [
+    "npc.hist-heartland.greenspring.n2",
+    "npc.hist-heartland.greenspring.n2-2",
+    "npc.hist-heartland.greenspring.n2-3",
+    "npc.hist-heartland.greenspring.n2-4"
+   ]
+  }
+ ]
+}

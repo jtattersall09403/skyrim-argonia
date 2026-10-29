@@ -1,0 +1,18 @@
+{
+ "schemaVersion": 2,
+ "cellId": "CIPHTBMHutInterior17",
+ "additions": [
+  {
+   "id": "CIPHTBMHutInterior17:add:door-argonianlanterns04",
+   "assetId": "mudmother:gv_meshes/argoniannest/argonianlanterns04",
+   "pos": [
+    1.668,
+    3.384,
+    0.722
+   ],
+   "rotZDeg": 0,
+   "zone": "door",
+   "why": "Lights the floor inside the door."
+  }
+ ]
+}

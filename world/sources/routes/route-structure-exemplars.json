@@ -1,0 +1,247 @@
+{
+ "schemaVersion": 1,
+ "_": "The home table of route places (16k type 10, standard 18): a stretch of a major road built as one place, its crossings and its road dressing, between built places or a built place and a city. A route place has no catalogue record; this row is its record, typed `classification.type: route-structure` (its type-recipes.json row, read by worldgen.place_type for the acceptance freeze). worldgen.blueprint.catalogue_ids() reads its ids. `structures[]` lists one structure of each route-structure kind the exemplar set proves and who builds it: `this-place` (laid in this place's layout with the modular-runs rules, decision 0115), `route-compile` (a stair, lip step or stepped ascent of world/sources/routes/route-structures.json, built by worldgen.compile_route_structures), or another place id (a ferry crossing inside a settlement). A kind not on this stretch is `pending: packet` with the stretch that holds it.",
+ "places": [
+  {
+   "id": "place.route.border-road-greenspring-crossings",
+   "name": "the Border road crossings below Greenspring",
+   "classification": {
+    "type": "route-structure"
+   },
+   "wayId": "route.road.stormhold-thorn",
+   "chainageM": [
+    3940,
+    4815
+   ],
+   "positionM": [
+    4620.0,
+    1690.0
+   ],
+   "footprintRadiusM": 190,
+   "region": "hist-heartland",
+   "culture": "argonian",
+   "settingClass": "wild",
+   "condition": "worn",
+   "why": {
+    "founding": "The Border road was laid on a Dunmer line from Stormhold to Thorn. West of the Greenspring track it drops off the ridge into the river marsh.",
+    "siteAdvantages": "The road keeps to the dry strip at the mountain foot and crosses water only where it must: two reaches of the river marsh, where the water stands up to a metre and a quarter deep.",
+    "occupantsMotive": "The crossings have no residents. The people of Greenspring keep the planks in repair because their trade goes out along this road.",
+    "pressures": "The marsh rots the piles in a few seasons. Greenspring has to keep replacing them.",
+    "wouldChangeIf": "A stone causeway would replace the planks if anyone paid for one."
+   },
+   "ends": {
+    "east": {
+     "placeId": "place.hist-heartland.greenspring",
+     "via": "track.hist-heartland.greenspring",
+     "atM": [
+      4801.0,
+      1785.0
+     ]
+    },
+    "west": {
+     "wayId": "route.road.stormhold-thorn",
+     "towards": "stormhold",
+     "atM": [
+      4444.0,
+      1516.0
+     ]
+    }
+   },
+   "structures": [
+    {
+     "kind": "bridge",
+     "id": "structure.border-road-greenspring-crossings.river",
+     "crossingId": "crossing.major.009",
+     "builtBy": "this-place"
+    },
+    {
+     "kind": "deck",
+     "id": "structure.border-road-greenspring-crossings.inlet",
+     "crossingId": "crossing.major.012",
+     "junctionId": "junction.pin.stormhold-thorn.inlet-mouth",
+     "builtBy": "this-place"
+    },
+    {
+     "kind": "stair",
+     "id": "structure.road-stormhold-thorn.12",
+     "builtBy": "this-place"
+    },
+    {
+     "kind": "lip-step",
+     "id": "structure.road-stormhold-thorn.15",
+     "builtBy": "route-compile",
+     "status": "pending: packet",
+     "pendingWhy": "not on this stretch: it stands 480 m east of Greenspring inside the Two-Gate Bridge's ground, which places it when that place is built"
+    },
+    {
+     "kind": "ferry-crossing",
+     "id": "ferry.imperial-fringe.drowning-gate",
+     "builtBy": "place.imperial-fringe.claywater-station",
+     "status": "pending: packet",
+     "pendingWhy": "not on this stretch: the Drowning Gate ferry serves the Gideon-Blackwood road and is built at Claywater Station"
+    }
+   ],
+   "dressingRules": "docs/research/placement-settlements/road-dressing.md",
+   "dressingEvidence": "world/sources/placement/vanilla-roadside-dressing.json",
+   "life": {
+    "creatures": [
+     {
+      "slotId": "eco-giant-leech",
+      "species": "creature.giant-leech",
+      "headcount": 4,
+      "band": "D2",
+      "den": "socket.border-road-greenspring-crossings.den-giant-leech",
+      "network": "swim",
+      "territory": [
+       "socket.border-road-greenspring-crossings.den-giant-leech"
+      ],
+      "lines": []
+     },
+     {
+      "slotId": "eco-moon-adder",
+      "species": "creature.moon-adder",
+      "headcount": 2,
+      "band": "D1",
+      "den": "socket.border-road-greenspring-crossings.den-moon-adder",
+      "network": "humanoid",
+      "territory": [
+       "socket.border-road-greenspring-crossings.den-moon-adder"
+      ],
+      "lines": []
+     },
+     {
+      "slotId": "eco-giant-wasp",
+      "species": "creature.giant-wasp",
+      "headcount": 2,
+      "band": "D3",
+      "den": "socket.border-road-greenspring-crossings.den-giant-wasp",
+      "network": "humanoid",
+      "territory": [
+       "socket.border-road-greenspring-crossings.den-giant-wasp"
+      ],
+      "lines": []
+     },
+     {
+      "slotId": "eco-fellrunner",
+      "species": "creature.fellrunner",
+      "headcount": 5,
+      "band": "D1",
+      "den": "socket.border-road-greenspring-crossings.den-fellrunner",
+      "network": "humanoid",
+      "territory": [
+       "socket.border-road-greenspring-crossings.den-fellrunner"
+      ],
+      "lines": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "place.route.archon-gideon-mere-neck",
+   "name": "the Mere Neck on the Long road",
+   "classification": {
+    "type": "route-structure"
+   },
+   "wayId": "route.road.archon-gideon",
+   "chainageM": [
+    1460,
+    1625
+   ],
+   "positionM": [
+    4755.0,
+    3542.0
+   ],
+   "footprintRadiusM": 75,
+   "region": "hist-heartland",
+   "culture": "argonian",
+   "settingClass": "wild",
+   "condition": "broken",
+   "why": {
+    "founding": "The Long road from Archon to Gideon crosses Middle Argonia on what firm ground it can find. Here that is a strip of ground between two meres, barely higher than the water.",
+    "siteAdvantages": "The neck is the only dry line between the meres for a long way. For about fifty metres the mere covers the north half of the road, knee-deep and in places to the waist.",
+    "occupantsMotive": "The neck has no residents. Travellers drove poles into both verges so that a walker can keep to the causeway when the water covers it.",
+    "pressures": "Poles mark the causeway verge. A walker who strays off the causeway between them goes into deeper water.",
+    "wouldChangeIf": "If the meres dried back, the poles would be left standing on dry ground. No traveller would replace them."
+   },
+   "ends": {
+    "southeast": {
+     "wayId": "route.road.archon-gideon",
+     "towards": "archon",
+     "atM": [
+      4837.3,
+      3565.9
+     ]
+    },
+    "northwest": {
+     "wayId": "route.road.archon-gideon",
+     "towards": "gideon",
+     "atM": [
+      4701.8,
+      3513.4
+     ]
+    },
+    "southwest": {
+     "wayId": "track.hist-heartland.heretic-stone-restarted",
+     "towards": "the marsh track west of the neck",
+     "atM": [
+      4699.4,
+      3520.4
+     ]
+    }
+   },
+   "structures": [
+    {
+     "kind": "ford",
+     "id": "structure.archon-gideon-mere-neck.wade",
+     "crossingIds": [
+      "crossing.major.030",
+      "crossing.major.033"
+     ],
+     "builtBy": "this-place"
+    }
+   ],
+   "dressingRules": "docs/research/placement-settlements/road-dressing.md",
+   "dressingEvidence": "world/sources/placement/vanilla-roadside-dressing.json",
+   "life": {
+    "creatures": [
+     {
+      "slotId": "eco-kaj-thux",
+      "species": "creature.kaj-thux",
+      "headcount": 1,
+      "band": "D3",
+      "den": "socket.archon-gideon-mere-neck.den-kaj-thux",
+      "network": "swim",
+      "territory": [
+       "socket.archon-gideon-mere-neck.den-kaj-thux"
+      ],
+      "lines": []
+     },
+     {
+      "slotId": "eco-giant-leech",
+      "species": "creature.giant-leech",
+      "headcount": 3,
+      "band": "D2",
+      "den": "socket.archon-gideon-mere-neck.den-giant-leech",
+      "network": "swim",
+      "territory": [
+       "socket.archon-gideon-mere-neck.den-giant-leech"
+      ],
+      "lines": []
+     },
+     {
+      "slotId": "eco-torchbug",
+      "species": "creature.torchbug",
+      "headcount": 6,
+      "band": "D1",
+      "den": "socket.archon-gideon-mere-neck.den-torchbug",
+      "network": "humanoid",
+      "territory": [
+       "socket.archon-gideon-mere-neck.den-torchbug"
+      ],
+      "lines": []
+     }
+    ]
+   }
+  }
+ ]
+}

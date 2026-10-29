@@ -1,0 +1,38 @@
+{
+  "id": "call-the-wind",
+  "start": { "query": "?view=character&t=10:00&d=8-17", "kit": "start" },
+  "steps": [
+    {
+      "name": "buy-the-wind-call",
+      "transition": "Xal-Jei at the Lighter Flotilla -> Call the Wind onto the offer, Offer: bought for gold",
+      "do": { "action": "buySpell", "npc": "npc.mercantile-coast.lighter-flotilla.lighterman", "spell": "call-the-wind" },
+      "keys": [{ "wait_s": 1.5 }, { "press": "KeyE" }, { "wait_s": 1.0 }, { "click": "[data-service=\"spells\"]" }, { "wait_s": 0.6 }, { "click": "[data-spells] [data-es-row=\"call-the-wind\"]" }, { "wait_s": 0.3 }, { "click": "[data-act=\"offer\"]" }, { "wait_s": 0.8 }, { "press": "Escape" }],
+      "hold_s": 1.0,
+      "expect": { "known": ["call-the-wind"], "paid": true }
+    },
+    {
+      "name": "ready-the-power",
+      "transition": "magic window -> Call the Wind in the power slot",
+      "do": { "action": "readyPower", "spell": "call-the-wind" },
+      "keys": [{ "click": ".es-magic [data-es-row=\"call-the-wind\"]" }, { "wait_s": 0.3 }, { "click": ".es-magic [data-ready=\"power\"]" }],
+      "hold_s": 0.5,
+      "expect": { "power": "call-the-wind" }
+    },
+    {
+      "name": "call-the-wind",
+      "transition": "the power key -> cast: the wind pick opens",
+      "do": { "action": "usePower" },
+      "keys": [{ "press": "KeyZ" }, { "wait_s": 0.8 }],
+      "hold_s": 1.0,
+      "expect": { "effects": ["call-the-wind"], "windDir": "ne" }
+    },
+    {
+      "name": "pick-the-wind",
+      "transition": "wind pick -> south: the weather's wind turns south",
+      "do": { "action": "callWind", "direction": "s" },
+      "keys": [{ "click": "[data-wind-dir=\"s\"]" }],
+      "hold_s": 1.0,
+      "expect": { "windDir": "s" }
+    }
+  ]
+}

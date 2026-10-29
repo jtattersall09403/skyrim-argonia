@@ -33,6 +33,7 @@ Rulings inherited from elder-souls-argonia are listed (carry / adapt / drop) in
 - [0024](0024-content-is-written-from-one-source-of-truth.md) Quests, dialogue and text are written from one source of truth, through generated briefs and the quest-write, quest-review and dialogue-write skills; old written lines are not used
 - [0025](0025-a-detectives-faction.md) A detectives' faction, rival to the Shadowscales and the Night-Reed Chapter, escalating to a grand murder-mystery finale
 - [0026](0026-everything-is-built-natively-the-skyrim-way.md) Places are rebuilt natively, the Skyrim way: the old project gives content (heightfield, designs, people), never machinery; navmesh by tes4skyrim's method; whole-body NPC templates
+- [0027](0027-build-in-the-order-of-the-usps.md) Build in the order of what makes Argonia worth playing: world and places, then story and people; combat rides the tuned stack until its map (2.7); the UI in two stages; the world track starts after G4; tools just in time
 
 ## Open owner calls
 
@@ -41,7 +42,7 @@ recommendation; the answer is recorded in the named record (or a new one) and th
 
 | Id | Call | Needed by | Recommendation |
 |---|---|---|---|
-| O-1 | Fate of the old elder-souls-argonia EC2 machine (stopped; ~$23/month for its 250 GiB disk) | 0.1 | Snapshot the disk to S3, then delete the volume; keep the R2 vault |
+| O-1 | Fate of the old elder-souls-argonia EC2 machine (stopped; ~$23/month for its 250 GiB disk) | 0.1 (asked 2026-10-29) | Snapshot the disk to S3, then delete the volume; keep the R2 vault |
 | O-2 | Subscription: 5x now, 20x from Part 4 (or Part 2's two tracks, if measured) | 0.1, 1.7, 2.17, 4.1 | 0013 |
 | O-3 | Confirm the pinned runtime chosen in 0.2 | 0.2 end | 0002 rule |
 | O-4 | Perks: invisible engine layer only, or a visible Morrowind-flavoured perk layer merged with vastei | 2.1 (asked in 1.7) | Invisible layer (0005 C4) |

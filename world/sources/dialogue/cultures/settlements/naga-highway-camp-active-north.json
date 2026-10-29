@@ -1,0 +1,142 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "entries": [
+  {
+   "norms": [
+    {
+     "text": "Every load taken gets a notched tally stick as its receipt.",
+     "source": "world/sources/catalogue/places-naga-kur-deeps.json#place.naga-kur-deeps.naga-highway-camp-active-north"
+    },
+    {
+     "text": "Cargo is taken; the walker is let go.",
+     "source": "world/sources/catalogue/places-naga-kur-deeps.json#place.naga-kur-deeps.naga-highway-camp-active-north"
+    },
+    {
+     "text": "The watch whistles when a walker rounds the bend.",
+     "source": "world/sources/catalogue/places-naga-kur-deeps.json#place.naga-kur-deeps.naga-highway-camp-active-north"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Killing a walker, because his tribe then comes for the camp.",
+     "source": "world/sources/catalogue/places-naga-kur-deeps.json#place.naga-kur-deeps.naga-highway-camp-active-north"
+    },
+    {
+     "text": "Taking a load without cutting its stick.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "A robbed walker who comes back next season.",
+     "source": "world/sources/catalogue/places-naga-kur-deeps.json#place.naga-kur-deeps.naga-highway-camp-active-north"
+    },
+    {
+     "text": "Cane lashed the same hour it is cut.",
+     "source": "world/sources/catalogue/places-naga-kur-deeps.json#place.naga-kur-deeps.naga-highway-camp-active-north"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Raiders who kill on the tracks and leave the settled tribes to take the blame.",
+     "source": "world/sources/catalogue/places-naga-kur-deeps.json#place.naga-kur-deeps.naga-highway-camp-active-north"
+    }
+   ],
+   "opinions": {
+    "place": {
+     "lean": 1,
+     "text": "A blind bend over a pond: walkers are seen before they see the camp.",
+     "source": "world/sources/catalogue/places-naga-kur-deeps.json#place.naga-kur-deeps.naga-highway-camp-active-north"
+    },
+    "work": {
+     "lean": 1,
+     "text": "Cargo off the walked track, a stick for each load, hides smoked for trade.",
+     "source": "world/sources/catalogue/places-naga-kur-deeps.json#place.naga-kur-deeps.naga-highway-camp-active-north"
+    },
+    "trade": {
+     "lean": 1,
+     "text": "The best smoked hides are kept back for trade.",
+     "source": "world/sources/catalogue/places-naga-kur-deeps.json#place.naga-kur-deeps.naga-highway-camp-active-north"
+    },
+    "danger": {
+     "lean": 0,
+     "text": "A dead walker brings his tribe; the dens round the pond are a nuisance.",
+     "source": "world/sources/catalogue/places-naga-kur-deeps.json#place.naga-kur-deeps.naga-highway-camp-active-north"
+    },
+    "faction": {
+     "lean": -1,
+     "text": "No tribe owns the camp. The settled tribes take the blame for it.",
+     "source": "world/sources/catalogue/places-naga-kur-deeps.json#place.naga-kur-deeps.naga-highway-camp-active-north"
+    },
+    "rumour": {
+     "lean": 0,
+     "text": "Talk is of Cut-Rope's raiders on the same tracks.",
+     "source": "world/sources/catalogue/places-naga-kur-deeps.json#place.naga-kur-deeps.naga-highway-camp-active-north"
+    },
+    "directions": {
+     "lean": 0,
+     "text": "The track runs on to the Polers' Camp; the guides there pole on to Dead-Water Village.",
+     "source": "world/sources/catalogue/places-naga-kur-deeps.json#place.naga-kur-deeps.naga-highway-camp-active-north"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Walker, for anyone on the track.",
+      "source": "world/sources/catalogue/places-naga-kur-deeps.json#place.naga-kur-deeps.naga-highway-camp-active-north"
+     },
+     {
+      "text": "Guest, for one welcomed at the fire; ojel, for any outsider.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "low",
+    "oaths": [],
+    "neverSaid": [
+     {
+      "text": "Who pays the camp to leave a stretch alone.",
+      "source": "world/sources/catalogue/places-naga-kur-deeps.json#place.naga-kur-deeps.naga-highway-camp-active-north"
+     }
+    ]
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "The settled tribes get blamed for the camp's work. Cut-Rope's killings get blamed on the camp.",
+      "source": "world/sources/catalogue/places-naga-kur-deeps.json#place.naga-kur-deeps.naga-highway-camp-active-north"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "The camp does not work some stretches of track this season. The lieutenant gives no reason.",
+      "source": "world/sources/catalogue/places-naga-kur-deeps.json#place.naga-kur-deeps.naga-highway-camp-active-north"
+     }
+    ]
+   },
+   "views": [],
+   "deviationRate": 0.25,
+   "id": "culture.settlement.naga-highway-camp-active-north",
+   "level": "settlement",
+   "name": "The North Cut Camp",
+   "parent": "culture.region.naga-kur-deeps",
+   "placeId": "place.naga-kur-deeps.naga-highway-camp-active-north",
+   "dissent": [
+    {
+     "personId": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+     "topic": "trade",
+     "lean": 2,
+     "text": "He smokes the hides and keeps the best for trade; he is the camp's seller.",
+     "source": "inferred"
+    },
+    {
+     "personId": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+     "topic": "danger",
+     "lean": -1,
+     "text": "She holds the bend by day and knaps flint there; from it she has found walkers Cut-Rope killed on the same tracks. The camp gets the blame. She is right to worry.",
+     "source": "inferred"
+    }
+   ]
+  }
+ ]
+}

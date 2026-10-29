@@ -1,0 +1,194 @@
+{
+ "schemaVersion": 1,
+ "domain": "culture-sheet",
+ "_": "Faction and office sheets for The Marsh Charter (lane 2.5a2). Ranks: the registry ladder (associate, member, senior); named offices beyond it are listed by their own rank slug.",
+ "entries": [
+  {
+   "id": "culture.faction.marsh-charter",
+   "level": "faction",
+   "name": "The Marsh Charter",
+   "parent": "culture.province.black-marsh",
+   "factionId": "faction.marsh-charter",
+   "norms": [
+    {
+     "text": "A fighting company takes contracts and answers for them.",
+     "source": "world/sources/lore/topics/guilds-and-orders.md"
+    },
+    {
+     "text": "Promotion needs competence and sponsors.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Breaking a contract mid-job.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "Competence, public service.",
+     "source": "world/sources/lore/topics/guilds-and-orders.md"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Foreign charters that would own them.",
+     "source": "world/sources/lore/topics/guilds-and-orders.md"
+    }
+   ],
+   "opinions": {
+    "work": {
+     "lean": 1,
+     "text": "Wamasu, raiders, escorts: paid work.",
+     "source": "world/sources/lore/topics/guilds-and-orders.md"
+    },
+    "faction": {
+     "lean": 0,
+     "text": "The state hires us when its levies cannot.",
+     "source": "inferred"
+    },
+    "danger": {
+     "lean": -1,
+     "text": "Wamasu and Sul-Xan.",
+     "source": "world/sources/lore/extrapolation/argonia-4e201-state.md"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Blade; captain.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [
+     {
+      "text": "On the contract.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "Who pays the auxiliary branch.",
+      "source": "inferred"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "The charter question splits the company.",
+      "source": "world/sources/lore/topics/guilds-and-orders.md"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "A wamasu den near Tenmar.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.salt-teeth",
+     "lean": -1,
+     "text": "Pirates our captains hunt.",
+     "source": "inferred"
+    },
+    {
+     "node": "culture.faction.an-xileel",
+     "lean": 1,
+     "text": "A paying client.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.15
+  },
+  {
+   "id": "culture.office.marsh-charter.senior",
+   "level": "office",
+   "name": "Contract captain",
+   "parent": "culture.faction.marsh-charter",
+   "factionId": "faction.marsh-charter",
+   "rank": "senior",
+   "norms": [
+    {
+     "text": "Recites the contract terms first.",
+     "source": "inferred"
+    }
+   ],
+   "taboos": [
+    {
+     "text": "Unpaid work.",
+     "source": "inferred"
+    }
+   ],
+   "values": [
+    {
+     "text": "The contract.",
+     "source": "inferred"
+    }
+   ],
+   "contempts": [
+    {
+     "text": "Shirkers.",
+     "source": "inferred"
+    }
+   ],
+   "opinions": {
+    "work": {
+     "lean": 1,
+     "text": "Contracts.",
+     "source": "inferred"
+    }
+   },
+   "speech": {
+    "addressTerms": [
+     {
+      "text": "Blade.",
+      "source": "inferred"
+     }
+    ],
+    "formality": "plain",
+    "oaths": [
+     {
+      "text": "On the contract.",
+      "source": "inferred"
+     }
+    ],
+    "neverSaid": [
+     {
+      "text": "The fee.",
+      "source": "inferred"
+     }
+    ],
+    "registerRef": "docs/standards/text/culture-registers.md#4-faction--class-layer--the-words-an-institution-issues"
+   },
+   "talk": {
+    "grievances": [
+     {
+      "text": "Sponsors are slow.",
+      "source": "inferred"
+     }
+    ],
+    "rumours": [
+     {
+      "text": "Double pay for wamasu.",
+      "source": "inferred"
+     }
+    ]
+   },
+   "views": [
+    {
+     "node": "culture.faction.marsh-charter",
+     "lean": 2,
+     "text": "Theirs.",
+     "source": "inferred"
+    }
+   ],
+   "deviationRate": 0.1
+  }
+ ]
+}

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "kind": "settlement-warning-known-red",
+  "why": "Settlement compile warnings that are named, owned and tracked rather than silently tolerated. The exporter still refuses to publish on any UNEXPLAINED warning: a warning outside this register is a hard error; so is a register row that has started passing; so is a row whose place is not in the compiled set. Each row names the owner and where the work is queued, so a row can never become a quiet holding position. Keys are (placeId, subjectId, ruleId) taken from the compiled floodBandReport's structured rows, so a row survives a change in the measured sample counts and dies when the finding itself dies.",
+  "measuredOn": "2026-09-22",
+  "warnings": [],
+  "retired": {
+    "on": "2026-09-22",
+    "by": "16h part 1, lane D (record reads, decision 0066)",
+    "rows": [
+      {
+        "placeId": "place.mercantile-coast.lilmoth",
+        "subjectId": "district.lilmoth.shore-quarter",
+        "reason": "blueprint retired 2026-09-23 (owner)"
+      },
+      {
+        "placeId": "place.mercantile-coast.lilmoth",
+        "subjectId": "district.lilmoth.pusbottom",
+        "reason": "blueprint retired 2026-09-23 (owner)"
+      },
+      {
+        "subjectId": "parcel.sap-tapping-licensed.stage",
+        "reason": "works-quays-flood-section is now out of scope by id: no water entity under the footprint (16g rule scope)"
+      },
+      {
+        "subjectId": "parcel.sap-tapping-licensed.stage-deck",
+        "reason": "works-quays-flood-section out of scope by id"
+      },
+      {
+        "subjectId": "parcel.sap-tapping-licensed.stage-stair",
+        "reason": "works-quays-flood-section out of scope by id"
+      },
+      {
+        "subjectId": "parcel.sap-tapping-licensed.mule-line",
+        "reason": "works-quays-flood-section out of scope by id"
+      },
+      {
+        "subjectId": "district.lilmoth.council-crown",
+        "reason": "argonian-stilt share rule out of scope by id: no building in the district stands on a recorded body or reach"
+      },
+      {
+        "subjectId": "parcel.nine-trunks.guest-hut-1",
+        "reason": "dwelling-dry-levee-or-bench now conforms: the flood band is read from the reach record by id. No reach stands under the hut"
+      },
+      {
+        "subjectId": "parcel.nine-trunks.guest-hut-2",
+        "reason": "dwelling-dry-levee-or-bench now conforms, same cause as guest-hut-1"
+      }
+    ]
+  }
+}

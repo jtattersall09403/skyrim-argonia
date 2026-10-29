@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "about": "Lore-required standing water the base terrain does not hold on its own. The graph derive appends each as a body with origin 'authored'; the terrain stage (16b) digs it to the terrainPrecondition. Feeder channels are authored waterways (16b), appended to the graph by the extension rule.",
+  "bodies": [
+    {
+      "id": "blackrose-lake",
+      "kind": "lake-lowland",
+      "name": null,
+      "lore": "Blackrose stands on a lake with three canon water approaches: rivers from the NE (Murkwood) and W (Blackwood) and the S outlet to Oliis Bay (world/sources/lore; refine_province.FEEDER_SECTORS).",
+      "centreCell": [
+        1290,
+        3508
+      ],
+      "radiiM": [
+        156.7,
+        120.0
+      ],
+      "bedM": -2.4,
+      "levelM": 1.6,
+      "shoreline": "organic",
+      "island": {
+        "radiusM": 63.3,
+        "topM": 2.6,
+        "note": "the city island, offset up to 20 m from centre"
+      },
+      "source": "shape_province.impose_blackrose_lake (BLACKROSE_UV 0.32/0.87, LAKE_RADII_M, LAKE_LEVEL_M, LAKE_BED_M, ISLAND_R_M, ISLAND_TOP_M). Level 1.6 (owner 2026-09-12, decision 0060): the lake stands on a sill above the sea; its S outlet's bed falls from the lake level at the rim to Oliis Bay, so it spills there and the graph's outlet river grades down to the bay. Canon: 'situated in a lake' joined to the bay by a navigable river (lore/blackrose.md), not a tidal arm; and inland water at 0 joined to the sea would be sea-connected, which the routing must never treat as land or lake."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+ "schemaVersion": 2,
+ "cellId": "LilmothApothecaryHouse",
+ "additions": [
+  {
+   "id": "LilmothApothecaryHouse:add:bed-lantern-01",
+   "assetId": "vanilla:clutter/common/candlelanternwithcandle01",
+   "pos": [
+    122.221,
+    81.268,
+    76.779
+   ],
+   "rotZDeg": 0,
+   "zone": "bed",
+   "why": "Lights the bed and the woodpile beside it."
+  }
+ ]
+}

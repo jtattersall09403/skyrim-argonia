@@ -1,0 +1,101 @@
+{
+ "id": "ladder-roof",
+ "start": {
+  "query": "?view=character&x=3961.8&z=1363.115&t=12:00&d=7-28",
+  "kit": "start",
+  "seed": 1
+ },
+ "notes": "The opening work camp at noon. The ladder is the barge pier's bp-ladder (placement place.pirate-freeholds.opening-work-camp...barge-pier.assembly.bp-ladder at (3962.091, -3.382, 1363.115), yaw 270, its top about 2.07 m up): journey-spot.mjs --hour 12 --at 3961.8,1363.115 (the ladder centre, z 1363.115: the mount feels at every 0.05 m of height, so no ray passes between the rungs) gives light 1 (sconce2 17.6 m), E picks nothing, nobody in sight. The rest is on the ground by the camp's rest sign socket.opening-work-camp.sign-rest (the rest sign marks the sleeping ground; the pause deck's rest offers tier camp): --at 3927.2,1387.3 gives E to the sign at 1.15 m (reach 1.6 m), the watch n3-2 and n3 at 19.1 and 23.3 m, named.",
+ "steps": [
+  {
+   "name": "up-the-ladder",
+   "transition": "W at the foot of the pier's ladder, facing it: the hands take the rungs and the body climbs to the pier's top",
+   "stage": {
+    "at": {
+     "x": 3961.8,
+     "z": 1363.115,
+     "yaw": -1.57
+    },
+    "hour": 12,
+    "place": "place.pirate-freeholds.opening-work-camp"
+   },
+   "do": {
+    "action": "ladder"
+   },
+   "keys": [
+    {
+     "down": "KeyW"
+    },
+    {
+     "wait_s": 1.5
+    },
+    {
+     "up": "KeyW"
+    }
+   ],
+   "expect": {
+    "climbMode": "ladder"
+   }
+  },
+  {
+   "name": "rest-by-the-sign",
+   "transition": "T at the camp's rest sign, Rest: eight hours on the ground (the sign marks the sleeping ground, rest tier camp)",
+   "teleport": {
+    "x": 3927.2,
+    "z": 1387.3,
+    "yaw": 1.57
+   },
+   "do": {
+    "action": "rest",
+    "hours": 8,
+    "near": [
+     {
+      "id": "npc.pirate-freeholds.opening-work-camp.n3-2",
+      "m": 19.1,
+      "facing": false
+     },
+     {
+      "id": "npc.pirate-freeholds.opening-work-camp.n3",
+      "m": 23.3,
+      "facing": false
+     }
+    ]
+   },
+   "keys": [
+    {
+     "press": "KeyT"
+    },
+    {
+     "wait_s": 0.6
+    },
+    {
+     "click": "[data-es-act=\"rest\"]"
+    },
+    {
+     "wait_s": 1.0
+    },
+    {
+     "press": "Escape"
+    }
+   ],
+   "expect": {
+    "rested": true
+   },
+   "hold_s": 0.5
+  },
+  {
+   "name": "save-and-load",
+   "transition": "save after the rest and load: the body, the climb state and the skills come back equal",
+   "do": {
+    "action": "reload"
+   },
+   "keys": [],
+   "expect": {
+    "saved": [
+     "traversal",
+     "progression"
+    ]
+   }
+  }
+ ]
+}

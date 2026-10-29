@@ -10,7 +10,8 @@ G0); if not, stop. Then, by the end of this part:
 - records come out of the generator pipeline;
 - the owner has played in the studio through the stream on the phone and the Mac.
 
-**What this part is not.** It builds no game system beyond what a spike needs. Spike code lives in `spikes/`
+**What this part is not.** It builds no game system beyond what a spike needs, and no tool before the chunk that
+uses it (decision 0027 §7). Spike code lives in `spikes/`
 unless a spike says its output becomes the real component. A spike that grows into a system is a defect: stop
 and move the work to Part 1.
 
@@ -32,8 +33,8 @@ If any of these is missing, 0.1's first check-in asks for it.
 | Id | Chunk | Depends on | Lane-able beside |
 |---|---|---|---|
 | 0.0 | [Can it be played? Vanilla Skyrim streamed, touch and GameSir controls, a feel probe (G0)](0.0-can-it-be-played.md) | — | — |
-| 0.1 | [Bootstrap: repo, ways of working, build VM, import](0.1-bootstrap.md) | 0.0 (G0 passed) | — |
-| 0.2 | [The GPU box and the go/no-go spikes G1–G11](0.2-spikes.md) | 0.1 | 0.3 §a, §b |
+| 0.1 | [Bootstrap: repo, ways of working, lean toolchain, import](0.1-bootstrap.md) | 0.0 (owner: in parallel with its close-out) | 0.0 |
+| 0.2 | [The GPU box and the go/no-go spikes G1–G5, G8, G10, G11](0.2-spikes.md) | 0.1 | 0.3 §a, §b; 2.W1 after G4 |
 | 0.3 | [The pinned stack, permissions and the installer](0.3-stack-and-installer.md) | 0.2 G3 | 0.4, 0.5 |
 | 0.5 | [The record pipeline, the quarantine and the immersion inventory](0.5-pipeline-quarantine-inventory.md) | 0.2 G4 | 0.3 |
 | 0.4 | [The bridge, the studio and the two runners](0.4-bridge-studio-runners.md) | 0.2 G1, G4, G5, G8, G10 (so after 0.2 closes); 0.5 §a, §b | 0.3 |
@@ -43,7 +44,8 @@ as G1-bridge scripts.
 
 ## Part 0 exit (the owner signs)
 
-- G0–G11 passed, or the owner accepted a gate's documented fallback in writing. Decisions 0001, 0002, 0004,
+- G0–G5, G8, G10 and G11 passed, or the owner accepted a gate's documented fallback in writing (G6 and G9 live in
+  2.7, G7 in 2.W2: decision 0027). Decisions 0001, 0002, 0004,
   0007 and 0014 carry the measured facts.
 - A fresh GPU box reaches a passing smoke scene through `installer/install.py` with no manual step beyond the
   documented downloads.

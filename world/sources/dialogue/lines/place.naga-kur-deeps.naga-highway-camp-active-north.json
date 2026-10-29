@@ -1,0 +1,2019 @@
+{
+  "schemaVersion": 1,
+  "domain": "dialogue-lines",
+  "placeId": "place.naga-kur-deeps.naga-highway-camp-active-north",
+  "entries": [
+    {
+      "schemaVersion": 1,
+      "id": "greeting.naga-highway-camp-active-north-n1.base",
+      "type": "greeting",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "words": "Name your load, walker.",
+      "available": [],
+      "variants": {
+        "low": "Stay off my bench.",
+        "high": "Up to the fire. Name it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.naga-highway-camp-active-north-n1.night",
+      "type": "greeting",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "words": "Late, walker. What do you carry?",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Dark, yet walking. Name it.",
+        "high": "Late hour. Come to the fire."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.naga-highway-camp-active-north-n1.high",
+      "type": "greeting",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "words": "A fair load last time. Come ahead.",
+      "available": [
+        {
+          "speakerDispositionAtLeast": 70
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "You passed once. Do not lean on it.",
+        "high": "Your last stick was fair. Take the fire."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.naga-highway-camp-active-north-n1.crime",
+      "type": "greeting",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "words": "You made trouble at my bench. Go.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "Off my fire, trouble-bringer.",
+        "high": "I remember your load. Say why."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n1.naga-highway-camp-active-north",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "keys": {
+        "topic": "topic.naga-highway-camp-active-north"
+      },
+      "words": "Two marks on a stick, that's what this camp is worth to a stranger. I'm the lieutenant here. I cut the receipts. We sit on a bench above the Mile House track, where it bends round a pond. A traveller coming down is under our eyes before the first tent shows to him. The smoke gives us away, I grant that. He is standing at the gate before he smells it.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.naga-highway-camp-active-north.default",
+        "hash": "b9b72310"
+      },
+      "factIds": [
+        "fact.broke-column.bench"
+      ],
+      "variants": {
+        "low": "This is a camp on a bench above the Mile House track. I cut the receipts here. Come down the bend and we see you first. That's all you need.",
+        "high": "One mark on a stick is all I ask of you, friend of the gate. I'm the lieutenant here, so I cut the receipts. We sit on a bench above the Mile House track, where it bends round a pond. From the watch we see you coming long before you see a tent. Sit at the fire a while, the smoke is the worst of it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n1.naga-highway-camp-active-north-work",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "keys": {
+        "topic": "topic.naga-highway-camp-active-north-work"
+      },
+      "words": "A fat load is four marks and a long cut. My work is the stopping of loads. The band takes the cargo off a walker's back, then he goes free. I cut a stick for what was taken and split it down the middle. He leaves with one half as his receipt. The other half hangs on the board under the watch. Bux-Xeek smokes the hides, if you ever want to ask him.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.naga-highway-camp-active-north-work.default",
+        "hash": "d1dfc658"
+      },
+      "factIds": [
+        "fact.camp.stick"
+      ],
+      "variants": {
+        "low": "I cut a stick for every load. The band takes the cargo. You get half the stick. Leave the other half on the board alone.",
+        "high": "A fat load is four marks and a long cut. I'm the one who cuts them. The band takes the cargo at the gate, then the walker goes on his way with a stick split down the middle as his receipt. The other half hangs on the board under the watch. Bring me a clean hide to trade next time and I'll cut the stick short."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n1.naga-highway-camp-active-north-people",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "keys": {
+        "topic": "topic.naga-highway-camp-active-north-people"
+      },
+      "words": "Six of us live here. I cut the receipts. The other five take turns at the gate, the bend and the fire. Whoever's off sleeps in the hide tent. Strangers get fed, watched and sent down the track. Most can't read a body, so a raised hand sends them running.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.naga-highway-camp-active-north-people.default",
+        "hash": "056ef2e7"
+      },
+      "factIds": [
+        "fact.band.turns"
+      ],
+      "variants": {
+        "low": "Six live here. The five others work in turns. I cut the receipts. Strangers are fed and sent down the track.",
+        "high": "Six of us live here. I cut the receipts. The other five take turns at the gate, the bend and the fire, so no post stands cold. Strangers get fed at our fire and watched, then sent down the track. Raise a hand slowly if you want to be friendly. Most travellers don't read a body."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n1.naga-highway-camp-active-north-danger",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "keys": {
+        "topic": "topic.naga-highway-camp-active-north-danger"
+      },
+      "words": "A dead walker brings his whole tribe up the bank against this camp. So we take the load and let him go. The killing on these tracks is Cut-Rope's raiders. The settled tribes lay it at our gate. Death hoppers and hackwings nest round the pond. A crocodile lies in the water.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.naga-highway-camp-active-north-danger.default",
+        "hash": "8a334c1e"
+      },
+      "factIds": [
+        "fact.camp.no-kill"
+      ],
+      "variants": {
+        "low": "A dead walker brings his tribe against us, so we kill none. Cut-Rope does the killing. There's a crocodile in the pond.",
+        "high": "A dead walker brings his tribe up the bank against this camp, so we take the load and let him go. Cut-Rope's raiders do the killing on these tracks. The settled tribes blame us for it, as you'll hear. Go round the pond wide. Death hoppers and hackwings nest there. A crocodile lies in the water."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n1.naga-highway-camp-active-north-directions",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "keys": {
+        "topic": "topic.naga-highway-camp-active-north-directions"
+      },
+      "words": "You turn off the track for our path at the cane gate, between the two totems. One of the band stands there. Carry on along the track, past us, to the Polers' Camp. The guides there pole travellers down to Dead-Water Village.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.naga-highway-camp-active-north-directions.default",
+        "hash": "29e29c91"
+      },
+      "factIds": [
+        "fact.band.totems"
+      ],
+      "variants": {
+        "low": "Our path starts at the cane gate. One of the band stands by the totems. The track goes on to the Polers' Camp.",
+        "high": "You turn off the track for our path at the cane gate, between the two totems. One of the band is always posted there. Carry on along the track to the Polers' Camp. The guides there pole travellers down to Dead-Water Village. Tell them the lieutenant sent you."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n1.role-camps-orders",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "keys": {
+        "topic": "topic.role-camps-orders"
+      },
+      "words": "I give the orders here. They're few. The load is taken, the walker goes free. Every load gets its stick as a receipt. We kill no walker, since his tribe would come for the camp. Walkers we've robbed return the season after.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-camps-orders.default",
+        "hash": "3bcf71a5"
+      },
+      "factIds": [
+        "fact.camp.orders",
+        "fact.camp.stick",
+        "fact.camp.walker-free",
+        "fact.camp.no-kill",
+        "fact.camp.returns"
+      ],
+      "variants": {
+        "low": "I give the orders. Take the load, cut the stick, let the walker go. No killing, or his tribe comes for us. He returns next season.",
+        "high": "I give the orders here. They are simple. Take the load. Let the walker go free with a stick as his receipt. Kill him and his tribe comes for the camp. Walkers we've robbed return the season after, so be fair with them. They pay us again."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.naga-highway-camp-active-north-n1.passing",
+      "type": "bark",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "slot": "passing",
+      "words": "Show your load.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.naga-highway-camp-active-north-n1.at-work",
+      "type": "bark",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "slot": "at-work",
+      "words": "One more stick.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.naga-highway-camp-active-north-n1.warning",
+      "type": "bark",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "slot": "warning",
+      "words": "Away from the gate.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.naga-highway-camp-active-north-n2.base",
+      "type": "greeting",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "words": "Walk up slowly, guest. The totems saw you.",
+      "available": [],
+      "variants": {
+        "low": "Stand off from the gate, walker.",
+        "high": "The totems and I are glad of you, guest."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.naga-highway-camp-active-north-n2.night",
+      "type": "greeting",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "words": "You walk late. Halt at the gate.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Turn back down the track.",
+        "high": "Late again, guest. Come up, the fire is lit."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.naga-highway-camp-active-north-n2.high",
+      "type": "greeting",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "words": "The totems know your face, guest.",
+      "available": [
+        {
+          "speakerDispositionAtLeast": 70
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Known or not, you wait at the gate.",
+        "high": "A known face, guest. The gate is open for you."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.naga-highway-camp-active-north-n2.crime",
+      "type": "greeting",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "words": "No stick for that load. Leave this gate.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "Get off the track.",
+        "high": "You cut no stick for that load. Go back and answer for it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2.naga-highway-camp-active-north",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "keys": {
+        "topic": "topic.naga-highway-camp-active-north"
+      },
+      "words": "I keep the gate for the camp. That's the cane gate between the two totems, where our path leaves the track. The tents sit up on a bench over the track, with the pond below. I tell the totems what comes round that pond. They've never missed a walker yet.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.naga-highway-camp-active-north.default",
+        "hash": "b9b72310"
+      },
+      "factIds": [
+        "fact.broke-column.bench"
+      ],
+      "variants": {
+        "low": "The tents are up on the bench over the track. Go and look. I've a gate to hold.",
+        "high": "I'm glad of a face I know. Our tents sit on a bench above the track, with the pond below. Walkers come into view before they see us. Come round the pond by daylight. I'll tell the totems you're friendly."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2.naga-highway-camp-active-north-work",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "keys": {
+        "topic": "topic.naga-highway-camp-active-north-work"
+      },
+      "words": "I stand the gate while the band lifts cargo off walkers. The lieutenant cuts a notched stick for every load. The walker carries it away as his receipt. I keep the gate at night. From there I've watched good loads walk past stretches of track we don't work. The lieutenant gives no reason.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.naga-highway-camp-active-north-work.default",
+        "hash": "d1dfc658"
+      },
+      "factIds": [
+        "fact.camp.stick"
+      ],
+      "variants": {
+        "low": "Loads come off walkers, each with a stick. That's all you need. The stretches we leave idle are my business.",
+        "high": "Come by the gate in daylight. I'll show you a stick. The lieutenant cuts one notched stick for every load the band lifts. The walker takes it away as his receipt. At night, I watch good loads pass stretches we leave idle. I'd work every one of them."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2.naga-highway-camp-active-north-people",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "keys": {
+        "topic": "topic.naga-highway-camp-active-north-people"
+      },
+      "words": "Six of us live here. Heita-Kai is the lieutenant. The band passes the posts round in turns. Mine come at dusk and in the dark. Okan-Leel stands the dark with me. Strangers shout at the gate and can't read a raised hand. I feed them and send them down the track.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.naga-highway-camp-active-north-people.default",
+        "hash": "056ef2e7"
+      },
+      "factIds": [
+        "fact.band.turns"
+      ],
+      "variants": {
+        "low": "Six of us live here. The band works in turns. I don't talk about walkers.",
+        "high": "Six of us live here under Heita-Kai, the lieutenant. The band passes the posts round in turns. Okan-Leel stands the dark with me. Walkers who sit quiet at the gate get fed and sent off kindly. I'll feed you if you wait."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2.naga-highway-camp-active-north-danger",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "keys": {
+        "topic": "topic.naga-highway-camp-active-north-danger"
+      },
+      "words": "We take cargo and let the walker go. A dead walker brings his tribe down on the camp. Cut-Rope's raiders rob those tracks too. The settled tribes blame us for their dead. The pond has dens of death hoppers, hackwings and one crocodile. They're a nuisance to us.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.naga-highway-camp-active-north-danger.default",
+        "hash": "8a334c1e"
+      },
+      "factIds": [
+        "fact.camp.no-kill"
+      ],
+      "variants": {
+        "low": "Keep to the track. A dead walker brings his tribe. Cut-Rope kills on it. The pond has dens.",
+        "high": "We take cargo and let the walker go. If he dies, his tribe marches on us. Cut-Rope's raiders kill on the same tracks. The settled tribes blame us for it. Keep clear of the pond edge. Hoppers, hackwings and a crocodile have dens there."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2.naga-highway-camp-active-north-directions",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "keys": {
+        "topic": "topic.naga-highway-camp-active-north-directions"
+      },
+      "words": "I'm the one at the totems, so you'll meet me first. Our path leaves the track at the cane gate. If you're not coming up, keep to the track past the pond. It carries you to the Polers' Camp. The guides there pole walkers on to Dead-Water Village.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.naga-highway-camp-active-north-directions.default",
+        "hash": "29e29c91"
+      },
+      "factIds": [
+        "fact.band.totems"
+      ],
+      "variants": {
+        "low": "The track goes on past the gate. Follow it. I'm at the totems.",
+        "high": "I stand at the totems by the cane gate, where our path leaves the track. Walk on past the pond. The track brings you to the Polers' Camp. The guides there pole walkers on to Dead-Water Village. Go in daylight, guest."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2.role-band",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "keys": {
+        "topic": "topic.role-band"
+      },
+      "words": "I'm one of the band, five of us under Heita-Kai. We take turns. The camp always has a watcher. My turns are at the totems on the gate, where I give them the news of the track. They've never argued back. I like that in a listener.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-band.default",
+        "hash": "8fc1bdbd"
+      },
+      "factIds": [
+        "fact.band.turns",
+        "fact.band.totems"
+      ],
+      "variants": {
+        "low": "The band works in turns. I'm at the totems. Leave me be.",
+        "high": "Five of us make the band under Heita-Kai. We take turns. The camp always has a watcher. I stand at the totems on the gate. I'd sooner be there than anywhere. Come up in the evening. I'll tell them you're welcome."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.naga-highway-camp-active-north-n2.passing",
+      "type": "bark",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "slot": "passing",
+      "words": "Watch the bend.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.naga-highway-camp-active-north-n2.at-work",
+      "type": "bark",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "slot": "at-work",
+      "words": "Totems and me.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.naga-highway-camp-active-north-n2.warning",
+      "type": "bark",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "slot": "warning",
+      "words": "No stick, no pass.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.naga-highway-camp-active-north-n2.rumour",
+      "type": "bark",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "slot": "rumour",
+      "words": "Idle stretches waste loads.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.naga-highway-camp-active-north-n2-2.base",
+      "type": "greeting",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "words": "Racks are full of cured stock today. Look, buyer.",
+      "available": [],
+      "variants": {
+        "low": "No stock for you today.",
+        "high": "Come, buyer. The best rack is yours to see first."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.naga-highway-camp-active-north-n2-2.night",
+      "type": "greeting",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "words": "Dark on the track. Come at first light.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "The racks are shut for the night.",
+        "high": "Dark, buyer. Come to the fire a while."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.naga-highway-camp-active-north-n2-2.high",
+      "type": "greeting",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "words": "You bought well last time, buyer. More today?",
+      "available": [
+        {
+          "speakerDispositionAtLeast": 70
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "The last sale is done. Expect no favour.",
+        "high": "Back already, buyer. I set the best aside for you."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.naga-highway-camp-active-north-n2-2.crime",
+      "type": "greeting",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "words": "You robbed the band. Return the hide.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "You robbed the band. Drop the hide and walk.",
+        "high": "You robbed the band. Pay for the hide, buyer. Talk after."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-2.naga-highway-camp-active-north",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "keys": {
+        "topic": "topic.naga-highway-camp-active-north"
+      },
+      "words": "I smoke the hides here, over the camp's one fire. The tents sit on a bench above the track, so we see walkers round the pond long before they find us. I'm at the racks from first light, tending the smoke. A hide comes off thick, thin, cured or spoiled. I can tell which by the smell before I touch it.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.naga-highway-camp-active-north.default",
+        "hash": "b9b72310"
+      },
+      "factIds": [
+        "fact.broke-column.bench"
+      ],
+      "variants": {
+        "low": "The camp is on a bench over the track. That is all a stranger needs. I have hides on the rack and no time to describe them.",
+        "high": "Sit, if you like. The tents are on a bench above the track. From the fire I watch walkers come round the pond. I'm the camp's seller. You are talking to the right man, so ask about hides and I will show you the best rack first."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-2.naga-highway-camp-active-north-work",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "keys": {
+        "topic": "topic.naga-highway-camp-active-north-work"
+      },
+      "words": "At the gate, the walker hands over his cargo. Then he goes on his way. The lieutenant cuts a notched stick for each load and gives it to him as a receipt. My part is the hides. I smoke them over the one fire and set the best aside to sell. Thick or thin, cured or spoiled, I grade each before it goes on the rack.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.naga-highway-camp-active-north-work.default",
+        "hash": "d1dfc658"
+      },
+      "factIds": [
+        "fact.camp.stick"
+      ],
+      "variants": {
+        "low": "The lieutenant cuts a notched stick for every load we take. The walker carries it off as his receipt. Hides are my work. I'm busy.",
+        "high": "Every load we take gets a notched stick, cut by the lieutenant. The walker leaves with it as his receipt. Me, I'm the seller. I smoke the hides and set the best ones aside for a buyer who asks. Come to the fire and I'll lay out what I have."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-2.naga-highway-camp-active-north-people",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "keys": {
+        "topic": "topic.naga-highway-camp-active-north-people"
+      },
+      "words": "We are six here. The lieutenant cuts the receipts. The five of the band share the watch, the racks and the cane gate by turns. Then we sleep in the hide tent. The settled tribes call us killers from their villages. I would like to see one of them stand a turn at my fire.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.naga-highway-camp-active-north-people.default",
+        "hash": "056ef2e7"
+      },
+      "factIds": [
+        "fact.band.turns"
+      ],
+      "variants": {
+        "low": "Six live here. The band works in turns. The settled tribes tell lies about us.",
+        "high": "There are six of us. Heita-Kai cuts the receipts. The five of the band share the watch, the racks and the cane gate by turns. I like a buyer at my fire. The tribes in their villages will tell you we are killers. They have never stood a turn out here."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-2.naga-highway-camp-active-north-danger",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "keys": {
+        "topic": "topic.naga-highway-camp-active-north-danger"
+      },
+      "words": "A dead walker brings his tribe against the camp, so we take the cargo and let him go. Cut-Rope's raiders kill on the same tracks. The settled tribes blame us for the bodies. Round the pond a crocodile lives. Death hoppers and hackwings den in the reeds. I've no reason to go near the water.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.naga-highway-camp-active-north-danger.default",
+        "hash": "8a334c1e"
+      },
+      "factIds": [
+        "fact.camp.no-kill"
+      ],
+      "variants": {
+        "low": "A dead walker brings his tribe against us. So he lives. The pond has a crocodile and worse. Stay off the bank.",
+        "high": "I'll tell you plainly. If we kill a walker, his tribe comes against the camp. We take the load and cut the stick instead. The real trouble is Cut-Rope's raiders on the same tracks. Then there is the pond, with a crocodile, death hoppers and hackwings in the reeds. Stay on the track."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-2.naga-highway-camp-active-north-directions",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "keys": {
+        "topic": "topic.naga-highway-camp-active-north-directions"
+      },
+      "words": "The camp's way in is a cane gate with a totem on each side. One of the band stands among the totems there. He will stop you. Beyond the gate the walked ground goes on to the Polers' Camp, where guides pole travellers to Dead-Water Village.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.naga-highway-camp-active-north-directions.default",
+        "hash": "29e29c91"
+      },
+      "factIds": [
+        "fact.band.totems"
+      ],
+      "variants": {
+        "low": "Beyond the gate the walked ground goes to the Polers' Camp. Guides there pole you to Dead-Water Village. One of the band is at the totems. Don't walk past him.",
+        "high": "Look for the cane gate between two totems. One of the band stands there, so stop and show your hands. Beyond us the walked ground goes on to the Polers' Camp. Guides there pole travellers to Dead-Water Village."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-2.role-band",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "keys": {
+        "topic": "topic.role-band"
+      },
+      "words": "Five of us share the posts around the day. One stands among the totems at the gate. Another is up on the scaffold watching the bend. He whistles the moment a walker shows below. I have the fire. I smoke hides there while the rest sleep. I grade each hide as it comes off.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-band.default",
+        "hash": "8fc1bdbd"
+      },
+      "factIds": [
+        "fact.band.totems",
+        "fact.band.whistle"
+      ],
+      "variants": {
+        "low": "Five of us. One at the gate totems, one on the bend. The one on the bend whistles at walkers. I'm at the fire.",
+        "high": "We are five. We share the posts. One stands among the totems at the gate. One watches the bend and whistles at the first walker. I smoke hides at the fire while the others sleep. When you want to see a rack, come by the fire."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.naga-highway-camp-active-north-n2-2.passing",
+      "type": "bark",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "slot": "passing",
+      "words": "Hides here.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.naga-highway-camp-active-north-n2-2.at-work",
+      "type": "bark",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "slot": "at-work",
+      "words": "Thick. Cured.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.naga-highway-camp-active-north-n2-2.warning",
+      "type": "bark",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "slot": "warning",
+      "words": "Back from the racks.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.naga-highway-camp-active-north-n2-2.rumour",
+      "type": "bark",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-2",
+      "slot": "rumour",
+      "words": "Track runs slow.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.naga-highway-camp-active-north-n2-3.base",
+      "type": "greeting",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "words": "Speak slowly, guest. I woke late.",
+      "available": [],
+      "variants": {
+        "low": "I am asleep, walker.",
+        "high": "Guest, take the warm side. I woke late but I will listen."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.naga-highway-camp-active-north-n2-3.night",
+      "type": "greeting",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "words": "The tent is for sleeping. Say it short.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "My turn is over. Leave me.",
+        "high": "Guest, step in and keep your voice low."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.naga-highway-camp-active-north-n2-3.high",
+      "type": "greeting",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "words": "What news do you carry, guest?",
+      "available": [
+        {
+          "speakerDispositionAtLeast": 70
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "News? Say it fast.",
+        "high": "Guest, sit by the fire. What news?"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.naga-highway-camp-active-north-n2-3.crime",
+      "type": "greeting",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "words": "You stole here. The band will hear.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "Thief. The band will hear.",
+        "high": "You stole here, guest. Put it right before the band hears."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-3.naga-highway-camp-active-north",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "keys": {
+        "topic": "topic.naga-highway-camp-active-north"
+      },
+      "words": "This is the bench over the pond where the track bends. Walkers come round the water and see reeds. We see them first. I slept two hours between watches last night. The tent fills with rack smoke. I like the place less than the rest of the band do.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.naga-highway-camp-active-north.default",
+        "hash": "b9b72310"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "A bench over a pond. Smoke in the tent. Ask the others if you want praise for it.",
+        "high": "It's the bench over the pond where the track bends. Walkers see reeds. We see them. The tent is full of rack smoke, so I sleep badly here. The air by the fire is better than in my tent, if you want to sit a while."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-3.naga-highway-camp-active-north-work",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "keys": {
+        "topic": "topic.naga-highway-camp-active-north-work"
+      },
+      "words": "The lieutenant takes cargo off walkers. She cuts each one a stick for it. I take whatever turn the band gives me at the gate, the fire or the bend. The best of the smoked hides are put aside to trade. That part I don't mind.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.naga-highway-camp-active-north-work.default",
+        "hash": "d1dfc658"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Cargo comes off walkers. They get a stick. I take my turn. Then I sleep.",
+        "high": "The lieutenant takes cargo off walkers and cuts each one a stick for it. My turns come at the gate, the fire or the bend. The best smoked hides go aside to trade. Ask me what they cost. I like a buyer."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-3.naga-highway-camp-active-north-people",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "keys": {
+        "topic": "topic.naga-highway-camp-active-north-people"
+      },
+      "words": "Six of us live at this camp. Heita-Kai is the lieutenant who cuts the receipts. The other five are the band. We share out three posts by turns. Strangers walk down the track and can't read a body, so we feed them and watch them go. Today I slept four hours.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.naga-highway-camp-active-north-people.default",
+        "hash": "056ef2e7"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Six of us. A lieutenant, five in the band. Strangers get fed and watched.",
+        "high": "Six live here. Heita-Kai is the lieutenant. The other five are the band, so we trade the three posts round. A stranger who can't read a body is fed first. Then he is sent on his way. Sit down and I'll tell you who has the watch."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-3.naga-highway-camp-active-north-danger",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "keys": {
+        "topic": "topic.naga-highway-camp-active-north-danger"
+      },
+      "words": "Kill a walker and his tribe comes up the bank after us. So we take his cargo. He keeps walking. Cut-Rope's raiders do their killing on these same tracks. The settled tribes blame us for it. A croc, hoppers and hackwings have dens round the pond. I keep out of those reeds.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.naga-highway-camp-active-north-danger.default",
+        "hash": "8a334c1e"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Kill a walker and his tribe comes. The pond has a croc and hoppers. Stay out of the reeds.",
+        "high": "A dead walker brings his tribe up the bank, so we take cargo and let him go. Cut-Rope's raiders kill along these tracks. The blame lands on us. A croc, hoppers and hackwings den round the pond. Stay on the track there, guest. They seldom come up to it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-3.naga-highway-camp-active-north-directions",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "keys": {
+        "topic": "topic.naga-highway-camp-active-north-directions"
+      },
+      "words": "Our path leaves the track at the cane gate, with a totem on each side. Follow the track on and you reach the Polers' Camp. Their guides take travellers down the water by pole to Dead-Water Village. I don't know the poling. I've only heard where it ends.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.naga-highway-camp-active-north-directions.default",
+        "hash": "29e29c91"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Past the gate the track goes to the Polers' Camp. Their guides pole on to Dead-Water Village.",
+        "high": "The cane gate between the two totems is our path. The track goes on past it to the Polers' Camp. The guides there pole travellers to Dead-Water Village. I haven't been. The way is plain enough to follow."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-3.role-band",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "keys": {
+        "topic": "topic.role-band"
+      },
+      "words": "We work in turns. One of us stands the bend. When a walker shows below, he whistles. Another smokes hides over the fire while the rest sleep. That is the turn I like best. I had five hours before the whistle woke me today.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-band.default",
+        "hash": "8fc1bdbd"
+      },
+      "factIds": [
+        "fact.band.whistle",
+        "fact.band.hides"
+      ],
+      "variants": {
+        "low": "The bend has a watcher who whistles when a walker shows below. Hides get smoked at the fire while the rest sleep. I sleep.",
+        "high": "We work in turns. A watcher stands the bend. He whistles the moment a walker shows below. Another smokes hides over the fire while the rest sleep. Take the fire turn with me some evening. I'll show you how the hides are hung."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.naga-highway-camp-active-north-n2-3.passing",
+      "type": "bark",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "slot": "passing",
+      "words": "Slept badly. Quiet here.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.naga-highway-camp-active-north-n2-3.at-work",
+      "type": "bark",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "slot": "at-work",
+      "words": "Watching the bend.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.naga-highway-camp-active-north-n2-3.warning",
+      "type": "bark",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "slot": "warning",
+      "words": "Band, up. Thief.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.naga-highway-camp-active-north-n2-4.base",
+      "type": "greeting",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "words": "Hands where I can see them, ojel.",
+      "available": [],
+      "variants": {
+        "low": "Walk, ojel. I have work.",
+        "high": "Welcome to the bench, ojel. Take the dry ground."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.naga-highway-camp-active-north-n2-4.night",
+      "type": "greeting",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "words": "Flint chips by the fire, ojel. Watch where you step.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Chips on the ground. Walk round them, ojel.",
+        "high": "Come near the fire, ojel. The chips are swept aside."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.naga-highway-camp-active-north-n2-4.high",
+      "type": "greeting",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "words": "You again, ojel. The bend is quiet.",
+      "available": [
+        {
+          "speakerDispositionAtLeast": 70
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Hurry past, ojel.",
+        "high": "Back so soon, ojel. A quiet bend today."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.naga-highway-camp-active-north-n2-4.crime",
+      "type": "greeting",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "words": "Leave this post, ojel. You are done here.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "Out, ojel. Off this track.",
+        "high": "I expected better of you, ojel. Walk away."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-4.naga-highway-camp-active-north",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "keys": {
+        "topic": "topic.naga-highway-camp-active-north"
+      },
+      "words": "The camp sits on the bench above the pond, at the blind bend of the track. I sit at that bend by day and chip flint. A walker is in my sight a long while before the camp is in his.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.naga-highway-camp-active-north.default",
+        "hash": "b9b72310"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "A camp on the bench over the pond. Look up from the track if you want to see it. Most walkers do not.",
+        "high": "This is the bench over the pond, the best seat on the track. From the bend I watch walkers a long while before they know we are here. Sit by the fire if you like. Mind the flint chips."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-4.naga-highway-camp-active-north-work",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "keys": {
+        "topic": "topic.naga-highway-camp-active-north-work"
+      },
+      "words": "I work flint by the fire in the evening, knapping blades for the camp. Give me one and my thumb goes to the edge before my mouth opens. A flake that bites is good. A flake that slides is waste.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.naga-highway-camp-active-north-work.default",
+        "hash": "d1dfc658"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Flint, by the fire, in the evening. That is my part of the work.",
+        "high": "In the evening, I knap flint by the fire, blades for the camp's work. Bring me yours and my thumb will go along the edge, then I will tell you true what it is worth."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-4.naga-highway-camp-active-north-people",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "keys": {
+        "topic": "topic.naga-highway-camp-active-north-people"
+      },
+      "words": "Six live on this bench. Heita-Kai is the lieutenant. Jeen-Ozzu, Bux-Xeek, Okan-Leel and Im-Jei are band, as I am. Six is already as many people as I care to know.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.naga-highway-camp-active-north-people.default",
+        "hash": "056ef2e7"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Six of us. Heita-Kai is the lieutenant. The rest are band.",
+        "high": "Six live here. Heita-Kai is the lieutenant. The four beside me in the band are Jeen-Ozzu, Bux-Xeek, Okan-Leel and Im-Jei. If you want a trade, find Bux-Xeek at the fire."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-4.naga-highway-camp-active-north-danger",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "keys": {
+        "topic": "topic.naga-highway-camp-active-north-danger"
+      },
+      "words": "By day, I sit at the bend and flake flint. I have found walkers dead on these tracks from there. Cut-Rope's raiders killed them. The settled tribes put the blame on the camp. The pond has a crocodile. Hackwings and death hoppers den there.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.naga-highway-camp-active-north-danger.default",
+        "hash": "8a334c1e"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Cut-Rope's raiders kill walkers on these tracks. The camp gets the blame. Stay off the pond bank, there are teeth in it.",
+        "high": "I sit at the bend by day, so I see what lies on the track. Cut-Rope's raiders leave walkers dead there and the settled tribes blame the camp. The pond has a crocodile. Hackwings and death hoppers den there too, so stay on the track."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-4.about-tribeless-naga",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "keys": {
+        "topic": "topic.about-tribeless-naga"
+      },
+      "words": "Naga are an Argonian breed, tall and adder-like. Tribeless Naga belong to no tribe. Many of them rob merchants who walk the tracks. Cut-Rope's raiders make up one such band. This camp is tribeless too, but we take cargo and leave the walker breathing.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-tribeless-naga.default",
+        "hash": "127d20b2"
+      },
+      "factIds": [
+        "fact.naga.adder",
+        "fact.naga.tribeless",
+        "fact.naga.tracks",
+        "fact.naga.cutrope"
+      ],
+      "variants": {
+        "low": "Naga are a tall, adder-like Argonian breed. Many belong to no tribe and rob merchants on the tracks. Cut-Rope's raiders make up one such band.",
+        "high": "Naga are tall, an adder-like breed of Argonian. The tribeless ones belong to no tribe. Many rob merchants who walk the tracks. Cut-Rope's raiders make up one such band. If they stop you on the track, give up the load and walk away quickly."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-4.about-ojel",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "keys": {
+        "topic": "topic.about-ojel"
+      },
+      "words": "We say ojel for an outsider, any outsider. It is a plain word with no insult in it. Lukiul is a different word. The An-Xileel coined it as a slur for Argonians hatched far from Black Marsh, because those cannot hear the Hist.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-ojel.default",
+        "hash": "a30272d6"
+      },
+      "factIds": [
+        "fact.ojel.outsiders",
+        "fact.ojel.neutral",
+        "fact.lukiul.slur",
+        "fact.lukiul.deaf"
+      ],
+      "variants": {
+        "low": "Outsider. Plain word, no insult. Lukiul is the slur, the An-Xileel's, for Argonians hatched far from Black Marsh who cannot hear the Hist. Do not use it.",
+        "high": "Ojel means outsider in Jel, our tongue. It carries no insult, so take no offence from me. Lukiul is the word to avoid. The An-Xileel coined it as a slur for Argonians hatched far from Black Marsh, who cannot hear the Hist."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-4.naga-highway-camp-active-north-directions",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "keys": {
+        "topic": "topic.naga-highway-camp-active-north-directions"
+      },
+      "words": "Take the track on past the bend until you reach the Polers' Camp. The guides there pole travellers by water to Dead-Water Village. I would sooner see you walking to them than standing at our gate.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.naga-highway-camp-active-north-directions.default",
+        "hash": "29e29c91"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Along the track to the Polers' Camp. Their guides pole on to Dead-Water Village. Not through our gate.",
+        "high": "Go along the track to the Polers' Camp, a walk worth making. Their guides pole people on to Dead-Water Village. Leave before dark and the bend will let you pass quietly."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-4.role-band",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "keys": {
+        "topic": "topic.role-band"
+      },
+      "words": "One of the band smokes the hides at the fire while the others sleep. Flint flakes pile at my feet in the evening by the same fire. Every blade I make gets my thumb along the edge before it leaves my hand.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-band.default",
+        "hash": "8fc1bdbd"
+      },
+      "factIds": [
+        "fact.band.hides"
+      ],
+      "variants": {
+        "low": "One of us smokes hides at the fire while the others sleep. I flake flint.",
+        "high": "One of the band smokes hides at the fire while the others sleep. I work beside them with my flint, so the chips fall where the smoke is thick. Come by in the evening and I will show you a good edge."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.naga-highway-camp-active-north-n2-4.passing",
+      "type": "bark",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "slot": "passing",
+      "words": "Walker passing.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.naga-highway-camp-active-north-n2-4.at-work",
+      "type": "bark",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "slot": "at-work",
+      "words": "Bad flint. It cracked.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.naga-highway-camp-active-north-n2-4.warning",
+      "type": "bark",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "slot": "warning",
+      "words": "Sharp. Step back.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.naga-highway-camp-active-north-n2-5.base",
+      "type": "greeting",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "words": "Two hundred paces off, I had you, walker.",
+      "available": [],
+      "variants": {
+        "low": "Walker. Say it short.",
+        "high": "Walker, I had you from far off. You are early."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.naga-highway-camp-active-north-n2-5.night",
+      "type": "greeting",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "words": "Black water tonight. I did not see you come.",
+      "available": [
+        {
+          "timeOfDay": "night"
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "Not tonight, walker.",
+        "high": "Dark as the pond. I still marked you."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.naga-highway-camp-active-north-n2-5.high",
+      "type": "greeting",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "words": "I knew your walk across the pond.",
+      "available": [
+        {
+          "speakerDispositionAtLeast": 70
+        },
+        {
+          "not": {
+            "owingHere": []
+          }
+        }
+      ],
+      "variants": {
+        "low": "That walk again. Do not linger.",
+        "high": "Your walk, across the water. I am glad of it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "greeting.naga-highway-camp-active-north-n2-5.crime",
+      "type": "greeting",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "words": "You took from the camp.",
+      "available": [
+        {
+          "owingHere": []
+        }
+      ],
+      "variants": {
+        "low": "Your hand was in our stores.",
+        "high": "You took from us, walker. Return it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-5.naga-highway-camp-active-north",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "keys": {
+        "topic": "topic.naga-highway-camp-active-north"
+      },
+      "words": "The best post in the deeps is the bend above the pond. I stand it. Raiders camp on the bench behind me. The track curves round the water below, so I see a walker before he sees one tent.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.naga-highway-camp-active-north.default",
+        "hash": "b9b72310"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "A raiders' camp on a bench above a pond. The track curves below it. That is all.",
+        "high": "Stand here a while and watch the bend with me. Raiders camp on the bench behind us, above the pond. I see a walker on the track long before he sees a tent. Yesterday I picked one out at two hundred paces."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-5.naga-highway-camp-active-north-work",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "keys": {
+        "topic": "topic.naga-highway-camp-active-north-work"
+      },
+      "words": "I watch the bend from the scaffold and whistle the moment a walker shows below. The others take his cargo and wave him down the track. The lieutenant cuts a notched stick for the load. He leaves with it as a receipt.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.naga-highway-camp-active-north-work.default",
+        "hash": "d1dfc658"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "I whistle at the bend. The lieutenant cuts the sticks. Ask her about the rest.",
+        "high": "I watch the bend from the scaffold and whistle the moment a walker shows below. The others lift his cargo and wave him down the track. Bux-Xeek smokes hides at the fire and sets the best aside for trade, if you want to buy."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-5.naga-highway-camp-active-north-people",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "keys": {
+        "topic": "topic.naga-highway-camp-active-north-people"
+      },
+      "words": "Six live here. Heita-Kai is the lieutenant and cuts the receipts. Five of us take turns at the gate, at the fire and on the bend. Most outsiders cannot read body speech. We watch them, feed them and send them down the track.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.naga-highway-camp-active-north-people.default",
+        "hash": "056ef2e7"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Six live here. Heita-Kai is the lieutenant. The rest of us take turns. Outsiders stare at us.",
+        "high": "Six live on the bench. Heita-Kai is the lieutenant and cuts the receipts. Five of us share the band. We take turns at the gate, at the fire and on the bend. I like the bend best. Most outsiders cannot read body speech, so I wave slowly."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-5.naga-highway-camp-active-north-danger",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "keys": {
+        "topic": "topic.naga-highway-camp-active-north-danger"
+      },
+      "words": "Nothing rounds the bend before I whistle. One crocodile lairs by the pond, with death hoppers and hackwings among the reeds. We take a walker's cargo and seldom his life. A dead walker brings his tribe. Cut-Rope's raiders work the tracks here.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.naga-highway-camp-active-north-danger.default",
+        "hash": "8a334c1e"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Dens round the pond. Cut-Rope's raiders on the tracks. I whistle first.",
+        "high": "Stay out of the reeds. One crocodile lairs by the pond, with death hoppers and hackwings among the reeds. We take a walker's cargo and seldom his life. A dead walker brings his tribe up the bank. Cut-Rope's raiders work the tracks here too."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-5.naga-highway-camp-active-north-directions",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "keys": {
+        "topic": "topic.naga-highway-camp-active-north-directions"
+      },
+      "words": "The camp path leaves the track at the cane gate, between two totems. Go on along the track as far as the Polers' Camp. Its guides take travellers by pole to Dead-Water Village.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.naga-highway-camp-active-north-directions.default",
+        "hash": "29e29c91"
+      },
+      "factIds": [],
+      "variants": {
+        "low": "Cane gate, two totems. The track runs on to the Polers' Camp. Its guides take travellers by pole to Dead-Water Village.",
+        "high": "You will see the cane gate between its two totems, where the camp path leaves the track. Go on along the track as far as the Polers' Camp. Its guides take travellers by pole to Dead-Water Village."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-5.role-band",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "keys": {
+        "topic": "topic.role-band"
+      },
+      "words": "Our work goes by turns. The camp is always watched. One of us stands at the totems by the gate. I take the bend and whistle the moment a walker shows below. A fourth smokes hides over the fire while the rest sleep.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.role-band.default",
+        "hash": "8fc1bdbd"
+      },
+      "factIds": [
+        "fact.band.turns"
+      ],
+      "variants": {
+        "low": "Our work goes by turns. I have the bend. Ask the others about the rest.",
+        "high": "Our work goes by turns. The camp is always watched. One of us stands at the gate totems. I take the bend, the best post of the five. I whistle the moment a walker shows below. A fourth smokes hides over the fire while the rest sleep."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.naga-highway-camp-active-north-n2-5.passing",
+      "type": "bark",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "slot": "passing",
+      "words": "Boots on the track!",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.naga-highway-camp-active-north-n2-5.at-work",
+      "type": "bark",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "slot": "at-work",
+      "words": "Reeds moving at the bend.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bark.naga-highway-camp-active-north-n2-5.warning",
+      "type": "bark",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "slot": "warning",
+      "words": "Pack to the ground.",
+      "available": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n1.about-naga",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "keys": {
+        "topic": "topic.about-naga"
+      },
+      "words": "A Naga is an Argonian of the tall kind with an adder's look. Stand one of us up and he's near eight feet, sometimes seven, with a very wide mouth full of needle fangs. We live far in the deep marsh. Some Naga rob roads. Others don't. Plenty of Argonians hate us anyway. Plenty don't.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-naga.default",
+        "hash": "661c334e"
+      },
+      "factIds": [
+        "fact.naga.tall",
+        "fact.naga.deep",
+        "fact.naga.not-all"
+      ],
+      "variants": {
+        "low": "Naga are tall Argonians, adder-like, from the deep marsh. Not all rob roads. Not all Argonians hate us.",
+        "high": "A Naga is an Argonian of the tall kind with an adder's look. Stand one of us up and he's near eight feet, sometimes seven, with a very wide mouth full of needle fangs. We live far in the deep marsh. Some Naga rob roads, but plenty don't. You'll meet Argonians who hate us and others who don't, friend. Judge them one at a time."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n1.about-tribeless-naga",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "keys": {
+        "topic": "topic.about-tribeless-naga"
+      },
+      "words": "A Naga with no tribe is a tribeless one. Naga are the tall, adder-like Argonians. Most of the brigands in the marsh come from them. They work the tracks when merchants are on foot. One of those bands is Cut-Rope's raiders. I'd sooner you didn't take them for the same as us.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-tribeless-naga.default",
+        "hash": "127d20b2"
+      },
+      "factIds": [
+        "fact.naga.adder",
+        "fact.naga.tribeless",
+        "fact.naga.tracks",
+        "fact.naga.cutrope"
+      ],
+      "variants": {
+        "low": "Tribeless Naga belong to no tribe. Most of the marsh's brigands are tribeless, adder-like and tall. Cut-Rope's raiders are one band.",
+        "high": "A Naga with no tribe is a tribeless one. Naga are the tall, adder-like Argonians. Most of the brigands in the marsh come from them. They work the tracks when merchants are on foot. One of those bands is Cut-Rope's raiders. Don't take them for the same as us, friend. We cut a stick and they cut nothing."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n1.about-long-water-hold",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "keys": {
+        "topic": "topic.about-long-water-hold"
+      },
+      "words": "Long-Water Hold is where a settled Naga tribe lives, far in the marsh on firm ground. The poling route through the deep swamp passes its landing. Loaded craft can tie up there because the water is deep. Its people look after a Hist and live by their fields. They are after the road trade. They fall out with kin of theirs who belong to no tribe and rob that road.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-long-water-hold.default",
+        "hash": "e8bea244"
+      },
+      "factIds": [
+        "fact.long-water-hold.settled",
+        "fact.long-water-hold.route",
+        "fact.long-water-hold.kin"
+      ],
+      "variants": {
+        "low": "Long-Water Hold is a settled Naga village on firm ground by the poling route. Deep landing. They look after a Hist. They fall out with their tribeless kin over the road trade.",
+        "high": "Long-Water Hold is where a settled Naga tribe lives, far in the marsh on firm ground. The poling route through the deep swamp passes its landing. Loaded craft can tie up there because the water is deep. Its people look after a Hist and live by their fields. They are after the road trade. They fall out with kin of theirs who belong to no tribe and rob that road. Sell there if you can, friend."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n1.about-north-cut",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "keys": {
+        "topic": "topic.about-north-cut"
+      },
+      "words": "Surveyors from the Empire marked out the North Cut as a road, going north out of Stormhold to reach the Tear road. They gave up after four kilometres. The land beside it stays empty. The villagers cut stone from it for their yards. The water off it runs down over two fields and a hamlet.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-north-cut.default",
+        "hash": "2bad3dd6"
+      },
+      "factIds": [
+        "fact.north-cut.abandoned",
+        "fact.north-cut.quarry",
+        "fact.north-cut.drains"
+      ],
+      "variants": {
+        "low": "The North Cut is a road the Empire's surveyors gave up on after four kilometres. Villagers cut stone from it.",
+        "high": "Surveyors from the Empire marked out the North Cut as a road, going north out of Stormhold to reach the Tear road. They gave up after four kilometres. The land beside it stays empty. The villagers cut stone from it for their yards, so you may meet them there. The water off it runs down over two fields and a hamlet."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n1.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "The Prison road and the Border road were laid by the Empire. The Mile House was its waystation. People still use the old names for all three. Follow the Prison road and it leads to the Rose. On a dry rise by that road sits the Tag House.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.imperial",
+        "fact.road.old-names",
+        "fact.road.tag-house"
+      ],
+      "variants": {
+        "low": "Prison road, Border road, Mile House: old Imperial names, still used. The Prison road leads to the Rose. The Tag House sits on a dry rise by it.",
+        "high": "The Prison road and the Border road were laid by the Empire. The Mile House was its waystation. People still use the old names for all three. Follow the Prison road and it leads to the Rose. On a dry rise by that road sits the Tag House, a good place for a rest, friend."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-3.about-long-water-hold",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "keys": {
+        "topic": "topic.about-long-water-hold"
+      },
+      "words": "Long-Water Hold is a village of settled Naga. It stands deep in the marsh on firm ground. It sits on the poling route that most of the inner swamp uses. The landing is deep enough for loaded craft. The people tend a Hist and their fields. They want traffic on the road. Their tribeless kin rob that road. The two sides quarrel.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-long-water-hold.default",
+        "hash": "e8bea244"
+      },
+      "factIds": [
+        "fact.long-water-hold.settled",
+        "fact.long-water-hold.route",
+        "fact.long-water-hold.kin"
+      ],
+      "variants": {
+        "low": "A settled Naga village on the busy poling route. They tend a Hist. They quarrel with the kin who rob the road.",
+        "high": "Long-Water Hold is a village of settled Naga, deep in the marsh. The busiest poling route of the inner swamp runs by it. Its landing takes loaded craft. They tend a Hist and fields. They want caravans on the road. Their tribeless kin rob that road, so the two sides quarrel."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-3.about-naga",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "keys": {
+        "topic": "topic.about-naga"
+      },
+      "words": "Naga are Argonians, but tall ones. Many stand seven feet or more. Their wide mouths are full of needle fangs. Far from the roads, down in the marsh, that is their home. Some are brigands. Some are not. Some Argonians hate them. Not all do. I slept badly, so ask me the rest later.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-naga.default",
+        "hash": "661c334e"
+      },
+      "factIds": [
+        "fact.naga.tall",
+        "fact.naga.deep",
+        "fact.naga.not-all"
+      ],
+      "variants": {
+        "low": "Tall adder-like Argonians with needle fangs. They live deep in the marsh. Not all are brigands.",
+        "high": "Naga are the tall Argonians, adder-like, with wide mouths full of fangs. They live deep in the marsh. Brigands are some of them. Hatred of them is some of the marsh, not all of it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-3.about-north-cut",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "keys": {
+        "topic": "topic.about-north-cut"
+      },
+      "words": "Imperial surveyors began the North Cut as a road out of Stormhold, heading north to meet the Tear road. They gave up after four kilometres. No village stands on it now. Villagers dig its stone for their yards. Now it drains water onto a hamlet and two fields.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-north-cut.default",
+        "hash": "2bad3dd6"
+      },
+      "factIds": [
+        "fact.north-cut.abandoned",
+        "fact.north-cut.quarry",
+        "fact.north-cut.drains"
+      ],
+      "variants": {
+        "low": "An Imperial road, given up after four kilometres. Villagers quarry its stone. It drains onto two fields and a hamlet.",
+        "high": "The North Cut began as a road the Imperial surveyors drove north from Stormhold. It was meant to reach the Tear road. They quit after four kilometres. Villagers dig its stone for their yards. Now it drains water onto a hamlet and two fields."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-3.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "The Prison road is an old Imperial road. People still use its old name. They use the old name for the Border road too. Follow the Prison road and it leads to the Rose. Beside it sits the Tag House, up on a dry rise.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.imperial",
+        "fact.road.old-names",
+        "fact.road.tag-house"
+      ],
+      "variants": {
+        "low": "An old Imperial road, still called by its old name. It leads to the Rose. The Tag House is up on a rise beside it.",
+        "high": "The Empire cut the Prison road long ago. People keep the old names for it and for the Border road. It leads to the Rose. The Tag House sits up on a dry rise beside it. Sleep there if the ground is wet."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-3.about-tribeless-naga",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-3",
+      "keys": {
+        "topic": "topic.about-tribeless-naga"
+      },
+      "words": "Naga with no tribe are tall adder-like Argonians. The marsh's brigands are mostly of them. A good many work the tracks when merchants are walking. Cut-Rope's raiders are one such band. They kill where we do not.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-tribeless-naga.default",
+        "hash": "127d20b2"
+      },
+      "factIds": [
+        "fact.naga.adder",
+        "fact.naga.tribeless",
+        "fact.naga.tracks",
+        "fact.naga.cutrope"
+      ],
+      "variants": {
+        "low": "Adder-like Argonians with no tribe. Most brigands are of them. Cut-Rope's raiders are one band.",
+        "high": "The tribeless are tall adder-like Argonians who belong to no tribe. The marsh's brigands mostly come from them. A good many work the tracks when merchants are walking. Cut-Rope's raiders are one band. Walk with care on their stretches."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-4.about-long-water-hold",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "keys": {
+        "topic": "topic.about-long-water-hold"
+      },
+      "words": "Long-Water Hold is a village in the deep marsh. Its Naga are settled, with a Hist and fields to tend. The ground there is firm. The chief route of the polers through the inner swamp passes it. They want the road's trade, so they quarrel with the tribeless kin who rob the road.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-long-water-hold.default",
+        "hash": "e8bea244"
+      },
+      "factIds": [
+        "fact.long-water-hold.settled",
+        "fact.long-water-hold.route",
+        "fact.long-water-hold.kin"
+      ],
+      "variants": {
+        "low": "A Naga village in the deep marsh. Its people are settled, with a Hist and fields. The chief route of the polers through the inner swamp passes it. They quarrel with the tribeless kin who rob the road they want for trade.",
+        "high": "Long-Water Hold lies deep in the marsh. A settled Naga tribe lives there on firm ground, tending a Hist and fields. The polers' chief route through the inner swamp passes its landing. Loaded craft tie up there easily. The tribe wants the road's trade, so it quarrels with the tribeless kin who rob the road."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-4.about-naga",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "keys": {
+        "topic": "topic.about-naga"
+      },
+      "words": "A Naga stands seven or eight feet tall, with a wide mouth full of needle fangs. The deep marsh is where our kind lives. Not every Naga robs on the roads. The inner swamps belong to the Naga-Kur.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-naga.default",
+        "hash": "661c334e"
+      },
+      "factIds": [
+        "fact.naga.tall",
+        "fact.naga.deep",
+        "fact.naga.not-all"
+      ],
+      "variants": {
+        "low": "Naga are tall, seven or eight feet, with needle fangs. They live in the deep marsh. Not every Naga robs on the roads.",
+        "high": "A Naga stands seven or eight feet tall, with a wide mouth full of needle fangs. The deep marsh is where our kind lives. Not every Naga robs on the roads. The inner swamps belong to the Naga-Kur. The tribeless ones are the road robbers."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-4.about-north-cut",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "keys": {
+        "topic": "topic.about-north-cut"
+      },
+      "words": "The North Cut is an old Imperial road. Surveyors began it at Stormhold and drove it north toward the Tear road. They quit once four kilometres lay behind them. No residents live on it. Villagers cut stone from it to pave their yards. Its water drains down to a hamlet and two fields.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-north-cut.default",
+        "hash": "2bad3dd6"
+      },
+      "factIds": [
+        "fact.north-cut.abandoned",
+        "fact.north-cut.quarry",
+        "fact.north-cut.drains"
+      ],
+      "variants": {
+        "low": "An old Imperial road, begun at Stormhold and driven north toward the Tear road. The surveyors quit once four kilometres lay behind them. Villagers cut its stone. Water from it drains down to a hamlet and two fields.",
+        "high": "The North Cut is an old Imperial road. Surveyors began it at Stormhold and drove it north toward the Tear road. They quit once four kilometres lay behind them, so no residents live on it. Villagers cut stone from it to pave their yards. Its water drains down to a hamlet and two fields."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-4.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-4",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "Imperial work, all of it. The Prison road and the Border road are roads. The Mile House is a waystation. People use the old names still. The Prison road heads for the Rose. A Tag House stands on a dry rise next to it.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.imperial",
+        "fact.road.old-names",
+        "fact.road.tag-house"
+      ],
+      "variants": {
+        "low": "Old Imperial roads and a waystation, still known by their old names. The Prison road heads for the Rose. A Tag House stands on a dry rise next to it.",
+        "high": "Imperial work, all of it. The old ones say the roads rotted the cargo. The Prison road and the Border road are roads. The Mile House is a waystation. People use the old names still. The Prison road heads for the Rose, with a Tag House on a dry rise next to it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-5.about-north-cut",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "keys": {
+        "topic": "topic.about-north-cut"
+      },
+      "words": "Imperial surveyors drove a road out of Stormhold, aiming at the Tear road. After four kilometres, they quit. No residents live along it. Village crews cut stone from it for their yards. Rain runs off the cut into two fields and a hamlet.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-north-cut.default",
+        "hash": "2bad3dd6"
+      },
+      "factIds": [
+        "fact.north-cut.abandoned",
+        "fact.north-cut.quarry",
+        "fact.north-cut.drains"
+      ],
+      "variants": {
+        "low": "Surveyors drove it out of Stormhold, aiming at the Tear road. They quit at four kilometres. No residents. Village crews take its stone. Rain runs into two fields and a hamlet.",
+        "high": "Imperial surveyors drove a road out of Stormhold, aiming at the Tear road. After four kilometres, they quit. No residents live along it to feed you. Village crews cut stone from it for their yards. Rain runs off the cut into two fields and a hamlet."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-5.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "Imperials laid the Prison road and the Border road. They also raised the Mile House as a waystation. People still use those old names. Follow the Prison road and it leads toward the Rose. Up on a dry rise by that road sits the Tag House.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.imperial",
+        "fact.road.old-names",
+        "fact.road.tag-house"
+      ],
+      "variants": {
+        "low": "Old Imperial roads and a waystation: the Prison road, the Border road, the Mile House. People use the old names. The Prison road leads toward the Rose. The Tag House sits up on a dry rise by it.",
+        "high": "Imperials laid the Prison road and the Border road. They also raised the Mile House as a waystation. People still use those old names. Follow the Prison road toward the Rose. Up on a dry rise by that road sits the Tag House. Bring dry boots."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-5.about-tribeless-naga",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "keys": {
+        "topic": "topic.about-tribeless-naga"
+      },
+      "words": "A Naga is an Argonian of the tall, adder-like breed. The marsh's brigands are mostly Naga with no tribe at all. Many take loads off the tracks while merchants are on them. Cut-Rope's raiders are a band of that kind.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-tribeless-naga.default",
+        "hash": "127d20b2"
+      },
+      "factIds": [
+        "fact.naga.adder",
+        "fact.naga.tribeless",
+        "fact.naga.tracks",
+        "fact.naga.cutrope"
+      ],
+      "variants": {
+        "low": "Naga: tall, adder-like Argonians. Most marsh brigands are tribeless Naga, tied to no tribe. Many rob the tracks. Cut-Rope's raiders are a band of that kind.",
+        "high": "A Naga is an Argonian of the tall, adder-like breed. The marsh's brigands are mostly Naga with no tribe at all. Many take loads off the tracks while merchants are on them. Cut-Rope's raiders are a band of that kind. We take less than they do."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-5.about-naga",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "keys": {
+        "topic": "topic.about-naga"
+      },
+      "words": "A Naga is an Argonian built like an adder, seven or eight feet tall, with a wide mouth of needle fangs. We live in the deep marsh. Not every Naga robs a road. Some Argonians hate us. Others do not.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-naga.default",
+        "hash": "661c334e"
+      },
+      "factIds": [
+        "fact.naga.tall",
+        "fact.naga.deep",
+        "fact.naga.not-all"
+      ],
+      "variants": {
+        "low": "Naga are tall adder-like Argonians, seven or eight feet, fanged. We live in the deep marsh. Not every Naga robs. Not every Argonian hates us.",
+        "high": "A Naga is an Argonian built like an adder, seven or eight feet tall, with a wide mouth of needle fangs. We live in the deep marsh. Not every Naga robs a road. Some Argonians hate us. Others will share a fire with you."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2-5.about-long-water-hold",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2-5",
+      "keys": {
+        "topic": "topic.about-long-water-hold"
+      },
+      "words": "Long-Water Hold lies in the deep marsh. A settled Naga tribe lives there on firm ground, beside the chief poling route. Its landing takes loaded craft. The settled Naga are at odds with their tribeless kin, who work that route.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-long-water-hold.default",
+        "hash": "e8bea244"
+      },
+      "factIds": [
+        "fact.long-water-hold.settled",
+        "fact.long-water-hold.route",
+        "fact.long-water-hold.kin"
+      ],
+      "variants": {
+        "low": "A settled Naga tribe lives there, on firm ground by the chief poling route. The landing takes loaded craft. They are at odds with their tribeless kin.",
+        "high": "Long-Water Hold lies in the deep marsh. A settled Naga tribe lives there on firm ground, beside the chief poling route. Its landing takes loaded craft. The settled Naga are at odds with their tribeless kin, who work that route."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2.about-naga",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "keys": {
+        "topic": "topic.about-naga"
+      },
+      "words": "We're Naga. A grown one stands seven feet or eight, long in the body like an adder, with needle teeth in a wide mouth. Our people keep to the deep marsh. Not all of us rob. The settled tribes farm and tend their Hist. They still blame us for every body on the track.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-naga.default",
+        "hash": "661c334e"
+      },
+      "factIds": [
+        "fact.naga.tall",
+        "fact.naga.deep",
+        "fact.naga.not-all"
+      ],
+      "variants": {
+        "low": "Naga are tall and have fangs. Most live in the deep marsh. Not all of us rob.",
+        "high": "Naga stand seven feet or eight, long like an adder, with needle teeth. We keep to the deep marsh. Not all of us rob. I'll say that to anyone who sits by our fire."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2.about-tribeless-naga",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "keys": {
+        "topic": "topic.about-tribeless-naga"
+      },
+      "words": "I'm tribeless, like the rest of the band. A tribeless Naga belongs to no tribe. Naga are the tall adder-bodied Argonians. Most brigands in the marsh come from our number. Plenty work the tracks when merchants are walking them. Cut-Rope's raiders are one such band. They kill walkers where we only take cargo.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-tribeless-naga.default",
+        "hash": "127d20b2"
+      },
+      "factIds": [
+        "fact.naga.adder",
+        "fact.naga.tribeless",
+        "fact.naga.tracks",
+        "fact.naga.cutrope"
+      ],
+      "variants": {
+        "low": "Tribeless Naga have no tribe. Most brigands are our kind. Cut-Rope is a band of them.",
+        "high": "We're tribeless Naga, the tall adder-bodied Argonians with no tribe. Most brigands in the marsh come from our number. Plenty work the tracks when merchants walk them. Cut-Rope's raiders are one band of us. We cut a stick. They cut a throat."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2.about-long-water-hold",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "keys": {
+        "topic": "topic.about-long-water-hold"
+      },
+      "words": "Long-Water Hold belongs to a settled Naga tribe. Their village is deep in the marsh on firm ground, right on the chief poling route through the inner swamp. Loaded craft can tie up at their landing. They keep a Hist, fields and villages. The road trade is what they're after. They quarrel with us, their kin without a tribe, for robbing that road.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-long-water-hold.default",
+        "hash": "e8bea244"
+      },
+      "factIds": [
+        "fact.long-water-hold.settled",
+        "fact.long-water-hold.route",
+        "fact.long-water-hold.kin"
+      ],
+      "variants": {
+        "low": "Long-Water Hold is a settled tribe's village on the main poling route. They quarrel with us.",
+        "high": "Long-Water Hold belongs to a settled Naga tribe. Their village sits on firm ground on the chief poling route through the inner swamp. Loaded craft can tie up at their landing. They keep a Hist, fields and villages. The road trade is what they're after. They quarrel with us over it."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2.about-north-cut",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "keys": {
+        "topic": "topic.about-north-cut"
+      },
+      "words": "Imperial surveyors started the North Cut at Stormhold, heading north for the Tear road. They quit at the four-kilometre mark. It has no residents. Villagers cut stone from it for their yards. The cut drains off into two fields and a hamlet.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-north-cut.default",
+        "hash": "2bad3dd6"
+      },
+      "factIds": [
+        "fact.north-cut.abandoned",
+        "fact.north-cut.quarry",
+        "fact.north-cut.drains"
+      ],
+      "variants": {
+        "low": "The North Cut is a road the Empire dropped after four kilometres. Villagers cut stone from it.",
+        "high": "Imperial surveyors started the North Cut at Stormhold, heading north for the Tear road. They quit at the four-kilometre mark. It has no residents. Villagers cut stone from it for their yards. It drains off into two fields and a hamlet."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "override.naga-highway-camp-active-north-n2.about-prison-road",
+      "type": "dialogue",
+      "speaker": "npc.naga-kur-deeps.naga-highway-camp-active-north.n2",
+      "keys": {
+        "topic": "topic.about-prison-road"
+      },
+      "words": "The Empire laid the Prison road and the Border road. The Mile House is a waystation on them. They're old now. Folk here keep using the Imperial names. The Prison road heads for the Rose, with the Tag House on a dry rise beside it.",
+      "available": [],
+      "derivedFrom": {
+        "poolLineId": "pool.about-prison-road.default",
+        "hash": "28fb8321"
+      },
+      "factIds": [
+        "fact.road.imperial",
+        "fact.road.old-names",
+        "fact.road.tag-house"
+      ],
+      "variants": {
+        "low": "The Prison road is an old Imperial road. It heads for the Rose. The Tag House is beside it.",
+        "high": "The Empire laid the Prison road and the Border road. The Mile House is a waystation on them. They're old now. Folk here keep using the Imperial names. The Prison road heads for the Rose, with the Tag House on a dry rise beside it. Walk it by day, guest."
+      }
+    }
+  ],
+  "people": [
+    {
+      "id": "npc.naga-kur-deeps.naga-highway-camp-active-north.n1",
+      "name": "Heita-Kai",
+      "role": "the lieutenant",
+      "services": [],
+      "topics": [
+        "topic.latest-rumours",
+        "topic.north-cut-quiet",
+        "topic.north-cut-receipt"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,5374 @@
+{
+ "assets": {
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/ararch01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 19.31,
+   "heightM": 20.79,
+   "interior": "none",
+   "medianWallM": 1.56,
+   "planAreaM2": 13.49,
+   "planCentreM": [
+    -0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 0.333,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "open sided \u2014 only 33% of the ring at 1.6 m hits a wall, so it does not enclose anything"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/ararch02": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 19.29,
+   "interior": "none",
+   "medianWallM": 1.56,
+   "planAreaM2": 13.73,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 0.333,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/ararch03": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 15.06,
+   "interior": "none",
+   "medianWallM": 1.56,
+   "planAreaM2": 13.49,
+   "planCentreM": [
+    -0.18,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 0.333,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/ararchcolumn01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 9.35,
+   "heightM": 12.36,
+   "interior": "none",
+   "medianWallM": 1.05,
+   "planAreaM2": 6.47,
+   "planCentreM": [
+    -0.06,
+    0.51
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "name token 'column' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/ararchcolumn03": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 9.35,
+   "heightM": 12.36,
+   "interior": "none",
+   "medianWallM": 1.05,
+   "planAreaM2": 6.47,
+   "planCentreM": [
+    -0.06,
+    0.51
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "name token 'column' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/ararchcolumn04": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 8.52,
+   "interior": "none",
+   "planAreaM2": 4.88,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (4.9 m\u00b2 plan, 8.5 m tall)"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/ararchcolumn05": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 6.19,
+   "interior": "none",
+   "planAreaM2": 4.92,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (4.9 m\u00b2 plan, 6.2 m tall)"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arblock04": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.91,
+   "interior": "none",
+   "planAreaM2": 7.51,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (7.5 m\u00b2 plan, 0.9 m tall)"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arblock06": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 46.8,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 47\u00b0 in the piece's own frame carries 3.79x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.91,
+   "interior": "none",
+   "planAreaM2": 7.51,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (7.5 m\u00b2 plan, 0.9 m tall)"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arblock09": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 137.2,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 137\u00b0 in the piece's own frame carries 1.43x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.91,
+   "interior": "none",
+   "planAreaM2": 3.93,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (3.9 m\u00b2 plan, 0.9 m tall)"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arbrick02": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.91,
+   "interior": "none",
+   "planAreaM2": 1.65,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.6 m\u00b2 plan, 0.9 m tall)"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arbrick04": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.91,
+   "interior": "none",
+   "planAreaM2": 1.65,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.6 m\u00b2 plan, 0.9 m tall)"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arbrick06": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 129.3,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 129\u00b0 in the piece's own frame carries 3.31x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.91,
+   "interior": "none",
+   "planAreaM2": 0.91,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.9 m\u00b2 plan, 0.9 m tall)"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arbrick07": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 129.3,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 129\u00b0 in the piece's own frame carries 3.31x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.91,
+   "interior": "none",
+   "planAreaM2": 0.91,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.9 m\u00b2 plan, 0.9 m tall)"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arbrick08": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 129.3,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 129\u00b0 in the piece's own frame carries 3.31x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.91,
+   "interior": "none",
+   "planAreaM2": 0.91,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.9 m\u00b2 plan, 0.9 m tall)"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arbrick09": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 129.3,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 129\u00b0 in the piece's own frame carries 3.31x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.91,
+   "interior": "none",
+   "planAreaM2": 0.91,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.9 m\u00b2 plan, 0.9 m tall)"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arbrick10": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 129.3,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 129\u00b0 in the piece's own frame carries 3.31x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.91,
+   "interior": "none",
+   "planAreaM2": 0.91,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.9 m\u00b2 plan, 0.9 m tall)"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arbridge02": {
+   "category": "ruin",
+   "closedShellPromotedBy": "own-geometry-door",
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 0.89,
+     "kind": "open-front",
+     "offsetM": [
+      -1.27,
+      -0.11
+     ],
+     "sideDeg": 275.0
+    }
+   ],
+   "doorwaysMeasuredBelowM": 4.0,
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 4.0,
+   "front": {
+    "deg": 18.4,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 18\u00b0 in the piece's own frame carries 1.63x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 3.59,
+   "heightM": 8.91,
+   "interior": "none",
+   "medianWallM": 1.97,
+   "planAreaM2": 89.83,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 0.778,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "name token 'bridge' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arbridge04": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 1.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 7.91,
+   "heightM": 8.91,
+   "interior": "none",
+   "medianWallM": 3.69,
+   "planAreaM2": 89.83,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 0.722,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "name token 'bridge' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arcolumn01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 9.76,
+   "heightM": 10.38,
+   "interior": "none",
+   "medianWallM": 2.25,
+   "planAreaM2": 17.21,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "name token 'column' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arcolumn03": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 17.41,
+   "heightM": 17.41,
+   "interior": "none",
+   "medianWallM": 2.25,
+   "planAreaM2": 17.21,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "name token 'column' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arentrance01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 314.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 314\u00b0 in the piece's own frame carries 15.23x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 6.33,
+   "heightM": 6.87,
+   "interior": "none",
+   "medianWallM": 2.95,
+   "planAreaM2": 41.19,
+   "planCentreM": [
+    -1.1,
+    0.18
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor, and the up ray finds no down-facing ceiling): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arhillsideentrance01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 5.0,
+   "front": {
+    "deg": 162.8,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 163\u00b0 in the piece's own frame carries 1.65x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 8.64,
+   "interior": "none",
+   "medianWallM": 5.43,
+   "planAreaM2": 214.35,
+   "planCentreM": [
+    0.02,
+    -16.47
+   ],
+   "provenance": [],
+   "ringFraction": 0.667,
+   "roofOverhead": false,
+   "sizeClass": "large",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arinnercircle01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 164.9,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 165\u00b0 in the piece's own frame carries 1.41x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 24.25,
+   "interior": "none",
+   "planAreaM2": 4.16,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (4.2 m\u00b2 plan, 24.2 m tall)"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arinnercircle02": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 166.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 166\u00b0 in the piece's own frame carries 2.09x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 24.14,
+   "interior": "none",
+   "planAreaM2": 4.16,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (4.2 m\u00b2 plan, 24.1 m tall)"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arinnercircle03": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 22.22,
+   "interior": "none",
+   "planAreaM2": 3.45,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (3.5 m\u00b2 plan, 22.2 m tall)"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arinnercircle04": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 6.61,
+   "interior": "none",
+   "planAreaM2": 1.7,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.7 m\u00b2 plan, 6.6 m tall)"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arinnercircle05": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 17.3,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 17\u00b0 in the piece's own frame carries 1.49x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 10.77,
+   "interior": "none",
+   "planAreaM2": 2.61,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (2.6 m\u00b2 plan, 10.8 m tall)"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arinnercircle06": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 310.8,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 311\u00b0 in the piece's own frame carries 1.52x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 21.32,
+   "interior": "none",
+   "planAreaM2": 2.83,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (2.8 m\u00b2 plan, 21.3 m tall)"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arinnercircle07": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 193.6,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 194\u00b0 in the piece's own frame carries 2.13x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 23.06,
+   "interior": "none",
+   "planAreaM2": 4.15,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (4.2 m\u00b2 plan, 23.1 m tall)"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arinnercircle08": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 21.36,
+   "interior": "none",
+   "planAreaM2": 4.17,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (4.2 m\u00b2 plan, 21.4 m tall)"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/aroutercircle02": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 288.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 289\u00b0 in the piece's own frame carries 1.71x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 16.66,
+   "heightM": 20.66,
+   "interior": "none",
+   "medianWallM": 2.12,
+   "planAreaM2": 26.95,
+   "planCentreM": [
+    -9.97,
+    -0.38
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor, and the up ray finds no down-facing ceiling): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/aroutercircle03": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 337.9,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 338\u00b0 in the piece's own frame carries 1.76x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 10.33,
+   "heightM": 10.33,
+   "interior": "none",
+   "medianWallM": 2.32,
+   "planAreaM2": 21.68,
+   "planCentreM": [
+    -10.04,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor, and the up ray finds no down-facing ceiling): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/aroutercircle04": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 222.7,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 223\u00b0 in the piece's own frame carries 1.65x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 13.78,
+   "heightM": 13.82,
+   "interior": "none",
+   "medianWallM": 2.32,
+   "planAreaM2": 21.68,
+   "planCentreM": [
+    -10.04,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor, and the up ray finds no down-facing ceiling): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/aroutercircle05": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 224.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 225\u00b0 in the piece's own frame carries 1.83x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 6.39,
+   "heightM": 6.41,
+   "interior": "none",
+   "medianWallM": 2.32,
+   "planAreaM2": 21.68,
+   "planCentreM": [
+    -10.04,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor, and the up ray finds no down-facing ceiling): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/aroutercircle06": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 19.65,
+   "heightM": 20.17,
+   "interior": "none",
+   "medianWallM": 2.31,
+   "planAreaM2": 29.2,
+   "planCentreM": [
+    -10.0,
+    -0.14
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor, and the up ray finds no down-facing ceiling): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/aroutercircle07": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 19.65,
+   "heightM": 20.66,
+   "interior": "none",
+   "medianWallM": 2.23,
+   "planAreaM2": 28.45,
+   "planCentreM": [
+    -9.99,
+    0.27
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor, and the up ray finds no down-facing ceiling): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/aroutercircle08": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 16.85,
+   "heightM": 20.66,
+   "interior": "none",
+   "medianWallM": 2.31,
+   "planAreaM2": 32.3,
+   "planCentreM": [
+    -9.85,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor, and the up ray finds no down-facing ceiling): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arringdivider01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 7.16,
+   "heightM": 9.83,
+   "interior": "none",
+   "medianWallM": 0.66,
+   "planAreaM2": 57.06,
+   "planCentreM": [
+    0.0,
+    -23.69
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor, and the up ray finds no down-facing ceiling): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arringdivider02": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 4.5,
+   "heightM": 9.83,
+   "interior": "none",
+   "medianWallM": 0.66,
+   "planAreaM2": 57.04,
+   "planCentreM": [
+    0.0,
+    -22.77
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor, and the up ray finds no down-facing ceiling): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arringdivider03": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 2.45,
+   "heightM": 5.22,
+   "interior": "none",
+   "medianWallM": 0.66,
+   "planAreaM2": 57.04,
+   "planCentreM": [
+    0.0,
+    -22.77
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor, and the up ray finds no down-facing ceiling): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arringdivider04": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 7.66,
+   "heightM": 9.86,
+   "interior": "none",
+   "medianWallM": 0.66,
+   "planAreaM2": 57.04,
+   "planCentreM": [
+    0.0,
+    -22.77
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor, and the up ray finds no down-facing ceiling): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arringinnerwall01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 8.0,
+   "front": {
+    "deg": 230.1,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 230\u00b0 in the piece's own frame carries 1.62x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 1.75,
+   "heightM": 9.78,
+   "interior": "none",
+   "medianWallM": 0.36,
+   "planAreaM2": 6.15,
+   "planCentreM": [
+    0.0,
+    -15.29
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arringinnerwall03": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 224.4,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 224\u00b0 in the piece's own frame carries 2.36x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 7.82,
+   "heightM": 7.87,
+   "interior": "none",
+   "medianWallM": 0.97,
+   "planAreaM2": 6.31,
+   "planCentreM": [
+    0.0,
+    -15.5
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arringinnerwall04": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 133.4,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 133\u00b0 in the piece's own frame carries 1.76x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 4.78,
+   "heightM": 4.85,
+   "interior": "none",
+   "medianWallM": 0.97,
+   "planAreaM2": 6.31,
+   "planCentreM": [
+    0.0,
+    -15.5
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arringledge01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 3.88,
+   "interior": "none",
+   "medianWallM": 4.28,
+   "planAreaM2": 109.96,
+   "planCentreM": [
+    -0.11,
+    0.3
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": false,
+   "sizeClass": "medium",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arringouterwall01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 7.0,
+   "front": {
+    "deg": 342.7,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 343\u00b0 in the piece's own frame carries 1.61x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 1.86,
+   "heightM": 9.78,
+   "interior": "none",
+   "medianWallM": 0.36,
+   "planAreaM2": 15.79,
+   "planCentreM": [
+    -0.37,
+    -29.9
+   ],
+   "provenance": [],
+   "ringFraction": 0.569,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arringouterwall02": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 26.9,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 27\u00b0 in the piece's own frame carries 2.84x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 8.45,
+   "interior": "none",
+   "medianWallM": 0.41,
+   "planAreaM2": 15.9,
+   "planCentreM": [
+    -0.68,
+    -29.67
+   ],
+   "provenance": [],
+   "ringFraction": 0.431,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arringouterwall04": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 5.81,
+   "heightM": 7.87,
+   "interior": "none",
+   "medianWallM": 0.48,
+   "planAreaM2": 17.75,
+   "planCentreM": [
+    14.98,
+    -25.98
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arspiralcolumn": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 3.56,
+   "heightM": 3.62,
+   "interior": "none",
+   "medianWallM": 1.57,
+   "planAreaM2": 8.04,
+   "planCentreM": [
+    -0.15,
+    -0.04
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "name token 'column' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arstairsside02": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 106.9,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 107\u00b0 in the piece's own frame carries 2.57x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 5.29,
+   "interior": "none",
+   "medianWallM": 0.32,
+   "planAreaM2": 34.16,
+   "planCentreM": [
+    -5.58,
+    17.53
+   ],
+   "provenance": [],
+   "ringFraction": 0.583,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arstairsside03": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 5.29,
+   "interior": "none",
+   "medianWallM": 0.32,
+   "planAreaM2": 34.16,
+   "planCentreM": [
+    -5.58,
+    17.53
+   ],
+   "provenance": [],
+   "ringFraction": 0.583,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arstatuewall03": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 7.84,
+   "interior": "none",
+   "medianWallM": 1.24,
+   "planAreaM2": 26.58,
+   "planCentreM": [
+    0.0,
+    -8.57
+   ],
+   "provenance": [],
+   "ringFraction": 0.556,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/artower02": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 2.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 7.31,
+   "heightM": 23.16,
+   "interior": "none",
+   "medianWallM": 1.47,
+   "planAreaM2": 23.78,
+   "planCentreM": [
+    4.06,
+    3.81
+   ],
+   "provenance": [],
+   "ringFraction": 0.597,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "open sided \u2014 only 60% of the ring at 1.6 m hits a wall, so it does not enclose anything"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/artower03": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 8.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 8.76,
+   "heightM": 23.16,
+   "interior": "none",
+   "medianWallM": 0.12,
+   "planAreaM2": 23.79,
+   "planCentreM": [
+    3.45,
+    4.4
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor, and the up ray finds no down-facing ceiling): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/artower04": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 2.0,
+   "front": {
+    "deg": 164.0,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 164\u00b0 in the piece's own frame carries 1.48x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 7.31,
+   "heightM": 18.01,
+   "interior": "none",
+   "medianWallM": 1.53,
+   "planAreaM2": 23.8,
+   "planCentreM": [
+    3.89,
+    3.95
+   ],
+   "provenance": [],
+   "ringFraction": 0.611,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "open sided \u2014 only 61% of the ring at 1.6 m hits a wall, so it does not enclose anything"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/artowerfloor01": {
+   "category": "ruin",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 345.2,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 345\u00b0 in the piece's own frame carries 1.50x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.28,
+   "interior": "none",
+   "planAreaM2": 62.0,
+   "provenance": [],
+   "sizeClass": "medium",
+   "why": "too small to hold an interior (62.0 m\u00b2 plan, 0.3 m tall)"
+  },
+  "ayleidkit:igsresources/dungeons/ayleidruins/exterior/arwell01": {
+   "category": "ruin",
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.87,
+     "kind": "leaf",
+     "offsetM": [
+      4.79,
+      1.58
+     ],
+     "sideDeg": 105.0
+    },
+    {
+     "arcM": 1.41,
+     "kind": "leaf",
+     "offsetM": [
+      1.71,
+      -4.71
+     ],
+     "sideDeg": 22.5
+    },
+    {
+     "arcM": 0.85,
+     "kind": "leaf",
+     "offsetM": [
+      -4.3,
+      -2.57
+     ],
+     "sideDeg": 305.0
+    },
+    {
+     "arcM": 0.83,
+     "kind": "leaf",
+     "offsetM": [
+      -4.87,
+      -1.01
+     ],
+     "sideDeg": 285.0
+    }
+   ],
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 221.8,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 222\u00b0 in the piece's own frame carries 1.51x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 3.88,
+   "heightM": 6.61,
+   "interior": "none",
+   "medianWallM": 5.06,
+   "planAreaM2": 83.36,
+   "planCentreM": [
+    -0.33,
+    0.21
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor, and the up ray finds no down-facing ceiling): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "kotm:argonia/imperialruins/columnbig": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 10.58,
+   "interior": "none",
+   "planAreaM2": 3.67,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (3.7 m\u00b2 plan, 10.6 m tall)"
+  },
+  "kotm:argonia/imperialruins/columnbigbroken1": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 5.57,
+   "interior": "none",
+   "planAreaM2": 2.37,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (2.4 m\u00b2 plan, 5.6 m tall)"
+  },
+  "kotm:argonia/imperialruins/columnbigbroken2": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 4.35,
+   "interior": "none",
+   "planAreaM2": 2.37,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (2.4 m\u00b2 plan, 4.3 m tall)"
+  },
+  "kotm:argonia/imperialruins/columnsmallbroken1": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 40.3,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 40\u00b0 in the piece's own frame carries 3.11x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 1.93,
+   "interior": "none",
+   "planAreaM2": 2.37,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (2.4 m\u00b2 plan, 1.9 m tall)"
+  },
+  "kotm:argonia/imperialruins/columnsmallbroken2": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 224.2,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 224\u00b0 in the piece's own frame carries 2.27x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 2.3,
+   "interior": "none",
+   "planAreaM2": 2.37,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (2.4 m\u00b2 plan, 2.3 m tall)"
+  },
+  "kotm:argonia/imperialruins/plaza01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 165.6,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 166\u00b0 in the piece's own frame carries 1.49x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 1.8,
+   "interior": "none",
+   "planAreaM2": 310.27,
+   "provenance": [],
+   "sizeClass": "large",
+   "why": "too small to hold an interior (310.3 m\u00b2 plan, 1.8 m tall)"
+  },
+  "kotm:argonia/imperialruins/redruin1": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 2.0,
+   "front": null,
+   "frontFaceFraction": 0.986,
+   "headroomM": 99.0,
+   "heightM": 10.19,
+   "interior": "none",
+   "medianWallM": 5.72,
+   "planAreaM2": 243.09,
+   "planCentreM": [
+    0.55,
+    -0.96
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": false,
+   "sizeClass": "large",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "kotm:argonia/imperialruins/redruin2": {
+   "category": "misc",
+   "doorStoreyM": 1.14,
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.07,
+     "kind": "leaf",
+     "offsetM": [
+      -3.65,
+      -2.42
+     ],
+     "sideDeg": 325.0
+    },
+    {
+     "arcM": 0.94,
+     "kind": "leaf",
+     "offsetM": [
+      -12.49,
+      -1.51
+     ],
+     "sideDeg": 277.5
+    },
+    {
+     "arcM": 0.93,
+     "kind": "leaf",
+     "offsetM": [
+      -12.5,
+      0.32
+     ],
+     "sideDeg": 267.5
+    },
+    {
+     "arcM": 3.26,
+     "kind": "open-front",
+     "offsetM": [
+      9.41,
+      1.62
+     ],
+     "sideDeg": 98.72
+    },
+    {
+     "arcM": 1.01,
+     "kind": "opening",
+     "offsetM": [
+      12.57,
+      0.08
+     ],
+     "sideDeg": 90.85
+    },
+    {
+     "arcM": 0.82,
+     "kind": "open-front",
+     "offsetM": [
+      10.59,
+      1.18
+     ],
+     "sideDeg": 95.95
+    }
+   ],
+   "doorwaysMeasuredAboveFloorM": 0.0,
+   "entrance": {
+    "doorAsset": "mwkeep:tesak1243/mwimperialarchitecture/architecture/keep/clutter/mwimparchsewer01",
+    "heightM": -2.469,
+    "kind": "esp-door",
+    "offsetM": [
+     4.268,
+     1.426
+    ],
+    "placements": 2,
+    "radiusM": 4.5,
+    "sideDeg": 108.48,
+    "yawDeg": 45.0
+   },
+   "entranceWhy": "the exterior door mwkeep:tesak1243/mwimperialarchitecture/architecture/keep/clutter/mwimparchsewer01 that opens this interior, at the offset the plugin places it in this shell's own frame (2 placements)",
+   "espLink": {
+    "doorModel": "mwkeep:tesak1243/mwimperialarchitecture/architecture/keep/clutter/mwimparchsewer01",
+    "interiorCell": "LilmothSinkingManorInt01",
+    "interiorFamily": "mwkeep:tesak1243/mwimperialarchitecture/architecture/keep/interior/smroom",
+    "interiorSizeM": {
+     "heightM": 18.21,
+     "planXM": 45.17,
+     "planYM": 35.93
+    },
+    "placements": 2,
+    "plugin": "King of the Murkmire.esp"
+   },
+   "floorOffsetM": 0.0,
+   "frontFaceFraction": 0.986,
+   "headroomM": 3.47,
+   "heightM": 9.71,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 2.69,
+   "planAreaM2": 408.17,
+   "planCentreM": [
+    -2.05,
+    -0.14
+   ],
+   "provenance": [
+    {
+     "arcM": 0.94,
+     "centreShiftM": 0.1,
+     "clearM": 2.6,
+     "kind": "opening",
+     "offsetM": [
+      8.75,
+      -0.61
+     ],
+     "rayConfirmed": true,
+     "sideDeg": 87.5,
+     "sillYM": -3.73,
+     "widthM": 3.25
+    }
+   ],
+   "ringFraction": 0.972,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    -2.5,
+    0.0
+   ],
+   "storeys": 2,
+   "tileset": "interior-kotm-v1",
+   "why": "King of the Murkmire.esp teleports from this shell into interior cell LilmothSinkingManorInt01 (2 placements of the load door); that cell is built from mwkeep:tesak1243/mwimperialarchitecture/architecture/keep/interior/smroom, which is packaged as interior-kotm-v1"
+  },
+  "kotm:argonia/imperialruins/redruin3": {
+   "category": "misc",
+   "entrance": {
+    "doorAsset": "kotm:tesak1243/mwimperialarchitecture/architecture/keep/doors/fixed/mwimparchdoorsingleload01",
+    "heightM": -6.66,
+    "kind": "esp-door",
+    "offsetM": [
+     2.975,
+     9.261
+    ],
+    "placements": 2,
+    "radiusM": 9.727,
+    "sideDeg": 162.19,
+    "yawDeg": 90.0
+   },
+   "entranceWhy": "the exterior door kotm:tesak1243/mwimperialarchitecture/architecture/keep/doors/fixed/mwimparchdoorsingleload01 that opens this interior, at the offset the plugin places it in this shell's own frame (2 placements)",
+   "espLink": {
+    "doorModel": "kotm:tesak1243/mwimperialarchitecture/architecture/keep/doors/fixed/mwimparchdoorsingleload01",
+    "interiorCell": "LilmothApothecary01",
+    "interiorFamily": "mwkeep:tesak1243/mwimperialarchitecture/architecture/keep/exterior",
+    "interiorSizeM": {
+     "heightM": 6.32,
+     "planXM": 10.55,
+     "planYM": 18.13
+    },
+    "placements": 2,
+    "plugin": "King of the Murkmire.esp"
+   },
+   "floorOffsetM": 0.0,
+   "frontFaceFraction": 1.0,
+   "headroomM": 7.26,
+   "heightM": 17.81,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 6.06,
+   "planAreaM2": 193.18,
+   "planCentreM": [
+    -1.48,
+    -1.46
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    -6.7,
+    0.0
+   ],
+   "storeys": 2,
+   "tileset": "interior-kotm-v1",
+   "why": "King of the Murkmire.esp teleports from this shell into interior cell LilmothApothecary01 (2 placements of the load door); that cell is built from mwkeep:tesak1243/mwimperialarchitecture/architecture/keep/exterior, which is packaged as interior-kotm-v1"
+  },
+  "kotm:argonia/imperialruins/redruin4": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 3.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 7.34,
+   "interior": "none",
+   "medianWallM": 8.0,
+   "planAreaM2": 392.52,
+   "planCentreM": [
+    0.5,
+    -1.12
+   ],
+   "provenance": [],
+   "ringFraction": 0.944,
+   "roofOverhead": false,
+   "sizeClass": "large",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "kotm:argonia/imperialruins/redruingate": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 6.0,
+   "front": {
+    "deg": 350.7,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 351\u00b0 in the piece's own frame carries 1.37x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.389,
+   "headroomM": 1.64,
+   "heightM": 14.32,
+   "interior": "none",
+   "medianWallM": 0.33,
+   "planAreaM2": 39.02,
+   "planCentreM": [
+    1.75,
+    0.55
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "name token 'gate' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/imperialruins/rubblecolumn1": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.79,
+   "interior": "none",
+   "planAreaM2": 2.15,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (2.1 m\u00b2 plan, 0.8 m tall)"
+  },
+  "kotm:argonia/imperialruins/rubblecolumn2": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.79,
+   "interior": "none",
+   "planAreaM2": 1.19,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.2 m\u00b2 plan, 0.8 m tall)"
+  },
+  "kotm:argonia/imperialruins/ruinedwall01": {
+   "category": "misc",
+   "closedShellPromotedBy": "door-piece",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 75.2,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 75\u00b0 in the piece's own frame carries 1.76x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 17.08,
+   "heightM": 17.08,
+   "interior": "none",
+   "medianWallM": 4.19,
+   "planAreaM2": 240.26,
+   "planCentreM": [
+    -2.52,
+    2.87
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/imperialruins/ruinedwall02": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 10.31,
+   "heightM": 10.97,
+   "interior": "none",
+   "medianWallM": 1.29,
+   "planAreaM2": 37.48,
+   "planCentreM": [
+    0.0,
+    1.11
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/imperialruins/ruinedwall03": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 9.49,
+   "heightM": 11.0,
+   "interior": "none",
+   "medianWallM": 0.72,
+   "planAreaM2": 35.11,
+   "planCentreM": [
+    0.0,
+    0.7
+   ],
+   "provenance": [],
+   "ringFraction": 0.972,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/imperialruins/ruins_14": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 5.0,
+   "front": null,
+   "frontFaceFraction": 0.222,
+   "headroomM": 2.46,
+   "heightM": 7.54,
+   "interior": "none",
+   "medianWallM": 0.63,
+   "planAreaM2": 13.35,
+   "planCentreM": [
+    0.41,
+    0.04
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a closed prop seen from inside, not a room \u2014 only 22% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor, and the up ray finds no down-facing ceiling): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "kotm:argonia/imperialruins/ruins_15": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 4.59,
+   "interior": "none",
+   "planAreaM2": 2.84,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (2.8 m\u00b2 plan, 4.6 m tall)"
+  },
+  "kotm:argonia/imperialruins/ruins_16": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 2.78,
+   "interior": "none",
+   "planAreaM2": 3.11,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (3.1 m\u00b2 plan, 2.8 m tall)"
+  },
+  "kotm:argonia/imperialruins/ruins_17": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 7.54,
+   "interior": "none",
+   "planAreaM2": 2.87,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (2.9 m\u00b2 plan, 7.5 m tall)"
+  },
+  "kotm:argonia/imperialruins/ruins_17b": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 3.44,
+   "interior": "none",
+   "planAreaM2": 1.35,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.4 m\u00b2 plan, 3.4 m tall)"
+  },
+  "kotm:argonia/imperialruins/ruins_17c": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 4.39,
+   "interior": "none",
+   "planAreaM2": 1.35,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.4 m\u00b2 plan, 4.4 m tall)"
+  },
+  "kotm:argonia/imperialruins/tallwall01": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 74.2,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 74\u00b0 in the piece's own frame carries 7.10x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 30.54,
+   "heightM": 36.86,
+   "interior": "none",
+   "medianWallM": 0.0,
+   "planAreaM2": 60.36,
+   "planCentreM": [
+    2.36,
+    0.09
+   ],
+   "provenance": [],
+   "ringFraction": 0.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "kotm:argonia/imperialruins/tallwall01ruin": {
+   "category": "misc",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 82.1,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 82\u00b0 in the piece's own frame carries 14.47x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 31.19,
+   "heightM": 36.87,
+   "interior": "none",
+   "medianWallM": 0.0,
+   "planAreaM2": 60.1,
+   "planCentreM": [
+    2.4,
+    0.9
+   ],
+   "provenance": [],
+   "ringFraction": 0.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "vanilla:clutter/quest/da13vineceiling01nocol": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 2.13,
+   "interior": "none",
+   "planAreaM2": 0.9,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.9 m\u00b2 plan, 2.1 m tall)"
+  },
+  "vanilla:clutter/quest/da13vinefloor01": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.38,
+   "interior": "none",
+   "planAreaM2": 34.18,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (34.2 m\u00b2 plan, 0.4 m tall)"
+  },
+  "vanilla:clutter/quest/da13vinefloor01nocol": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.38,
+   "interior": "none",
+   "planAreaM2": 34.18,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (34.2 m\u00b2 plan, 0.4 m tall)"
+  },
+  "vanilla:clutter/quest/da13vinefloor02nocol": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 135.3,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 135\u00b0 in the piece's own frame carries 1.69x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.44,
+   "interior": "none",
+   "planAreaM2": 27.36,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (27.4 m\u00b2 plan, 0.4 m tall)"
+  },
+  "vanilla:clutter/quest/da13vinefloorlg01": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 135.0,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 135\u00b0 in the piece's own frame carries 2.36x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.37,
+   "interior": "none",
+   "planAreaM2": 5.75,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (5.8 m\u00b2 plan, 0.4 m tall)"
+  },
+  "vanilla:clutter/quest/da13vinefloorlg02": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 1.82,
+   "interior": "none",
+   "planAreaM2": 2.34,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (2.3 m\u00b2 plan, 1.8 m tall)"
+  },
+  "vanilla:clutter/quest/da13vinegiantcluster01": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 285.2,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 285\u00b0 in the piece's own frame carries 1.56x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 5.97,
+   "interior": "none",
+   "planAreaM2": 0.95,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.9 m\u00b2 plan, 6.0 m tall)"
+  },
+  "vanilla:clutter/quest/da13vinewall01": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 316.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 317\u00b0 in the piece's own frame carries 1.35x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 6.39,
+   "interior": "none",
+   "planAreaM2": 2.21,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (2.2 m\u00b2 plan, 6.4 m tall)"
+  },
+  "vanilla:clutter/quest/da13vinewall01nocol": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 316.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 317\u00b0 in the piece's own frame carries 1.35x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 6.39,
+   "interior": "none",
+   "planAreaM2": 2.21,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (2.2 m\u00b2 plan, 6.4 m tall)"
+  },
+  "vanilla:clutter/quest/da13vinewall02": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 6.39,
+   "interior": "none",
+   "planAreaM2": 1.91,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.9 m\u00b2 plan, 6.4 m tall)"
+  },
+  "vanilla:clutter/quest/da13vinewall02nocol": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 6.39,
+   "interior": "none",
+   "planAreaM2": 1.91,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.9 m\u00b2 plan, 6.4 m tall)"
+  },
+  "vanilla:clutter/quest/da13vinewall03": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 6.39,
+   "interior": "none",
+   "planAreaM2": 0.96,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.0 m\u00b2 plan, 6.4 m tall)"
+  },
+  "vanilla:clutter/quest/da13vinewall03nocol": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 6.39,
+   "interior": "none",
+   "planAreaM2": 0.96,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.0 m\u00b2 plan, 6.4 m tall)"
+  },
+  "vanilla:clutter/quest/da13vinewalllg01": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 5.65,
+   "interior": "none",
+   "planAreaM2": 1.24,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.2 m\u00b2 plan, 5.7 m tall)"
+  },
+  "vanilla:clutter/quest/da13vinewalllg02": {
+   "category": "clutter",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 6.08,
+   "interior": "none",
+   "planAreaM2": 2.08,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (2.1 m\u00b2 plan, 6.1 m tall)"
+  },
+  "vanilla:dungeons/imperial/exterior/impextarchsupport01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 347.6,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 348\u00b0 in the piece's own frame carries 1.39x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 6.23,
+   "heightM": 6.34,
+   "interior": "none",
+   "medianWallM": 0.74,
+   "planAreaM2": 6.47,
+   "planCentreM": [
+    1.0,
+    0.1
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor, and the up ray finds no down-facing ceiling): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "vanilla:dungeons/imperial/exterior/impextbldgcorner01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 331.3,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 51 times with other statics to one side; the side they left open, at 331\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 3.59,
+   "heightM": 8.73,
+   "interior": "none",
+   "medianWallM": 0.98,
+   "planAreaM2": 6.37,
+   "planCentreM": [
+    2.65,
+    2.57
+   ],
+   "provenance": [],
+   "ringFraction": 0.903,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor, and the up ray finds no down-facing ceiling): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "vanilla:dungeons/imperial/exterior/impextbldgcorner02": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 202.5,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 54 times with other statics to one side; the side they left open, at 202\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 3.59,
+   "heightM": 8.73,
+   "interior": "none",
+   "medianWallM": 0.98,
+   "planAreaM2": 6.37,
+   "planCentreM": [
+    2.57,
+    -2.65
+   ],
+   "provenance": [],
+   "ringFraction": 0.903,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor, and the up ray finds no down-facing ceiling): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "vanilla:dungeons/imperial/exterior/impextbldgcorner03": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 151.6,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 40 times with other statics to one side; the side they left open, at 152\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 3.59,
+   "heightM": 8.73,
+   "interior": "none",
+   "medianWallM": 0.98,
+   "planAreaM2": 6.37,
+   "planCentreM": [
+    -2.65,
+    -2.57
+   ],
+   "provenance": [],
+   "ringFraction": 0.903,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor, and the up ray finds no down-facing ceiling): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "vanilla:dungeons/imperial/exterior/impextbldgcorner04": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 49.4,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 61 times with other statics to one side; the side they left open, at 49\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 3.59,
+   "heightM": 8.73,
+   "interior": "none",
+   "medianWallM": 0.98,
+   "planAreaM2": 6.37,
+   "planCentreM": [
+    -2.57,
+    2.65
+   ],
+   "provenance": [],
+   "ringFraction": 0.903,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor, and the up ray finds no down-facing ceiling): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "vanilla:dungeons/imperial/exterior/impextbldgicorner01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 6.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 8.83,
+   "interior": "none",
+   "medianWallM": 1.93,
+   "planAreaM2": 32.95,
+   "planCentreM": [
+    -1.32,
+    -1.04
+   ],
+   "provenance": [],
+   "ringFraction": 0.639,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "vanilla:dungeons/imperial/exterior/impextbldgicorner02": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "a free-standing plugin load door beside the shell",
+   "espLink": {
+    "doorModel": "vanilla:dungeons/imperial/door/impwooddoorholedoorload",
+    "interiorCell": "BrokenTowerRedoubt01",
+    "interiorFamily": "vanilla:dungeons/imperial/tower",
+    "interiorSizeM": {
+     "heightM": 38.1,
+     "planXM": 98.21,
+     "planYM": 58.5
+    },
+    "placements": 2,
+    "plugin": "Skyrim.esm"
+   },
+   "floorOffsetM": 6.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 8.83,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 2.09,
+   "planAreaM2": 32.84,
+   "planCentreM": [
+    -1.4,
+    0.79
+   ],
+   "provenance": [],
+   "ringFraction": 0.625,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "storeyLevelsM": [
+    6.0
+   ],
+   "storeys": 1,
+   "tileset": "vanilla-imperial-int",
+   "why": "Skyrim.esm teleports from this shell into interior cell BrokenTowerRedoubt01 (2 placements of the load door); that cell is built from vanilla:dungeons/imperial/tower, which is packaged as vanilla-imperial-int"
+  },
+  "vanilla:dungeons/imperial/exterior/impextbldgicorner03": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 6.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 8.83,
+   "interior": "none",
+   "medianWallM": 1.38,
+   "planAreaM2": 33.15,
+   "planCentreM": [
+    1.53,
+    1.82
+   ],
+   "provenance": [],
+   "ringFraction": 0.681,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "vanilla:dungeons/imperial/exterior/impextbldgicorner04": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 6.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 8.83,
+   "interior": "none",
+   "medianWallM": 1.62,
+   "planAreaM2": 33.05,
+   "planCentreM": [
+    1.3,
+    -1.73
+   ],
+   "provenance": [],
+   "ringFraction": 0.667,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "vanilla:dungeons/imperial/exterior/impextbldgmid01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.2,
+   "interior": "none",
+   "planAreaM2": 53.0,
+   "provenance": [],
+   "sizeClass": "medium",
+   "why": "too small to hold an interior (53.0 m\u00b2 plan, 0.2 m tall)"
+  },
+  "vanilla:dungeons/imperial/exterior/impextbldgmid02": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.2,
+   "interior": "none",
+   "planAreaM2": 53.0,
+   "provenance": [],
+   "sizeClass": "medium",
+   "why": "too small to hold an interior (53.0 m\u00b2 plan, 0.2 m tall)"
+  },
+  "vanilla:dungeons/imperial/exterior/impextbldgmid03": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.41,
+   "interior": "none",
+   "planAreaM2": 53.0,
+   "provenance": [],
+   "sizeClass": "medium",
+   "why": "too small to hold an interior (53.0 m\u00b2 plan, 0.4 m tall)"
+  },
+  "vanilla:dungeons/imperial/exterior/impextbldgsecondcorner01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 7.32,
+   "heightM": 9.19,
+   "interior": "none",
+   "medianWallM": 1.15,
+   "planAreaM2": 6.66,
+   "planCentreM": [
+    3.64,
+    3.64
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "vanilla:dungeons/imperial/exterior/impextbldgsecondcorner02": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 240.7,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 18 times with other statics to one side; the side they left open, at 241\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 7.32,
+   "heightM": 9.19,
+   "interior": "none",
+   "medianWallM": 1.15,
+   "planAreaM2": 6.66,
+   "planCentreM": [
+    3.64,
+    -3.64
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "vanilla:dungeons/imperial/exterior/impextbldgsecondcorner03": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 115.5,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 19 times with other statics to one side; the side they left open, at 116\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 7.32,
+   "heightM": 9.19,
+   "interior": "none",
+   "medianWallM": 1.15,
+   "planAreaM2": 6.66,
+   "planCentreM": [
+    -3.64,
+    -3.64
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "vanilla:dungeons/imperial/exterior/impextbldgsecondcorner04": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 7.32,
+   "heightM": 9.19,
+   "interior": "none",
+   "medianWallM": 1.15,
+   "planAreaM2": 6.66,
+   "planCentreM": [
+    -3.64,
+    3.64
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "vanilla:dungeons/imperial/exterior/impextbldgsecondicorner01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 6.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 8.83,
+   "interior": "none",
+   "medianWallM": 1.93,
+   "planAreaM2": 32.95,
+   "planCentreM": [
+    -1.32,
+    -1.04
+   ],
+   "provenance": [],
+   "ringFraction": 0.639,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "vanilla:dungeons/imperial/exterior/impextbldgsecondicorner02": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 6.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 8.83,
+   "interior": "none",
+   "medianWallM": 2.09,
+   "planAreaM2": 32.84,
+   "planCentreM": [
+    -1.4,
+    0.79
+   ],
+   "provenance": [],
+   "ringFraction": 0.625,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "vanilla:dungeons/imperial/exterior/impextbldgsecondicorner03": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 6.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 8.83,
+   "interior": "none",
+   "medianWallM": 1.38,
+   "planAreaM2": 33.15,
+   "planCentreM": [
+    1.53,
+    1.82
+   ],
+   "provenance": [],
+   "ringFraction": 0.681,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "vanilla:dungeons/imperial/exterior/impextbldgsecondicorner04": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 6.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 8.83,
+   "interior": "none",
+   "medianWallM": 1.62,
+   "planAreaM2": 33.05,
+   "planCentreM": [
+    1.3,
+    -1.73
+   ],
+   "provenance": [],
+   "ringFraction": 0.667,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "vanilla:dungeons/imperial/exterior/impextbldgsecondstraight01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 0.0,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 8 times with other statics to one side; the side they left open, at 0\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 7.05,
+   "heightM": 8.83,
+   "interior": "none",
+   "medianWallM": 0.47,
+   "planAreaM2": 6.05,
+   "planCentreM": [
+    0.61,
+    3.29
+   ],
+   "provenance": [],
+   "ringFraction": 0.472,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "open sided \u2014 only 47% of the ring at 1.6 m hits a wall, so it does not enclose anything"
+  },
+  "vanilla:dungeons/imperial/exterior/impextbldgsecondstraight02": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 270.0,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 9 times with other statics to one side; the side they left open, at 270\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 7.14,
+   "heightM": 8.76,
+   "interior": "none",
+   "medianWallM": 0.43,
+   "planAreaM2": 6.44,
+   "planCentreM": [
+    3.32,
+    0.15
+   ],
+   "provenance": [],
+   "ringFraction": 0.472,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "open sided \u2014 only 47% of the ring at 1.6 m hits a wall, so it does not enclose anything"
+  },
+  "vanilla:dungeons/imperial/exterior/impextbldgsecondstraight03": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 180.0,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 24 times with other statics to one side; the side they left open, at 180\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "heightM": 8.83,
+   "interior": "none",
+   "planAreaM2": 5.98,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (6.0 m\u00b2 plan, 8.8 m tall)"
+  },
+  "vanilla:dungeons/imperial/exterior/impextbldgsecondstraight04": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 90.0,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 7 times with other statics to one side; the side they left open, at 90\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "heightM": 8.76,
+   "interior": "none",
+   "planAreaM2": 5.94,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (5.9 m\u00b2 plan, 8.8 m tall)"
+  },
+  "vanilla:dungeons/imperial/exterior/impextbldgstraight01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 7.05,
+   "heightM": 8.83,
+   "interior": "none",
+   "medianWallM": 0.47,
+   "planAreaM2": 6.05,
+   "planCentreM": [
+    0.61,
+    3.29
+   ],
+   "provenance": [],
+   "ringFraction": 0.472,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "open sided \u2014 only 47% of the ring at 1.6 m hits a wall, so it does not enclose anything"
+  },
+  "vanilla:dungeons/imperial/exterior/impextbldgstraight02": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 236.4,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 358 times with other statics to one side; the side they left open, at 236\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 7.14,
+   "heightM": 8.76,
+   "interior": "none",
+   "medianWallM": 0.43,
+   "planAreaM2": 6.44,
+   "planCentreM": [
+    3.32,
+    0.15
+   ],
+   "provenance": [],
+   "ringFraction": 0.472,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "open sided \u2014 only 47% of the ring at 1.6 m hits a wall, so it does not enclose anything"
+  },
+  "vanilla:dungeons/imperial/exterior/impextbldgstraight03": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 153.7,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 207 times with other statics to one side; the side they left open, at 154\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "heightM": 8.83,
+   "interior": "none",
+   "planAreaM2": 5.98,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (6.0 m\u00b2 plan, 8.8 m tall)"
+  },
+  "vanilla:dungeons/imperial/exterior/impextbldgstraight04": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 100.3,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 386 times with other statics to one side; the side they left open, at 100\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "heightM": 8.76,
+   "interior": "none",
+   "planAreaM2": 5.94,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (5.9 m\u00b2 plan, 8.8 m tall)"
+  },
+  "vanilla:dungeons/imperial/exterior/impextblocks01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.86,
+   "interior": "none",
+   "planAreaM2": 4.7,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (4.7 m\u00b2 plan, 0.9 m tall)"
+  },
+  "vanilla:dungeons/imperial/exterior/impextblocks02": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.74,
+   "interior": "none",
+   "planAreaM2": 4.58,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (4.6 m\u00b2 plan, 0.7 m tall)"
+  },
+  "vanilla:dungeons/imperial/exterior/impextblocks03": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.81,
+   "interior": "none",
+   "planAreaM2": 3.22,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (3.2 m\u00b2 plan, 0.8 m tall)"
+  },
+  "vanilla:dungeons/imperial/exterior/impextblocks04": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.73,
+   "interior": "none",
+   "planAreaM2": 3.27,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (3.3 m\u00b2 plan, 0.7 m tall)"
+  },
+  "vanilla:dungeons/imperial/exterior/impextblocks05": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.75,
+   "interior": "none",
+   "planAreaM2": 1.59,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.6 m\u00b2 plan, 0.8 m tall)"
+  },
+  "vanilla:dungeons/imperial/exterior/impextblocks06": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.6,
+   "interior": "none",
+   "planAreaM2": 1.53,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.5 m\u00b2 plan, 0.6 m tall)"
+  },
+  "vanilla:dungeons/imperial/exterior/impextbridge01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 2.09,
+   "interior": "none",
+   "planAreaM2": 26.35,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (26.4 m\u00b2 plan, 2.1 m tall)"
+  },
+  "vanilla:dungeons/imperial/exterior/impextdoorhole01": {
+   "category": "dungeon-kit",
+   "entrance": {
+    "count": 26,
+    "doorAsset": "vanilla:dungeons/imperial/door/impwooddoorholedoorload",
+    "doorwaySource": "assembly",
+    "kind": "assembly",
+    "offsetM": [
+     -0.08,
+     -0.0
+    ],
+    "radiusM": 0.08,
+    "sideDeg": 270.47
+   },
+   "entranceWhy": "a free-standing plugin load door beside the shell",
+   "espLink": {
+    "doorModel": "vanilla:dungeons/imperial/door/impwooddoorholedoorload",
+    "interiorCell": "BrokenTowerRedoubt01",
+    "interiorFamily": "vanilla:dungeons/imperial/tower",
+    "interiorSizeM": {
+     "heightM": 38.1,
+     "planXM": 98.21,
+     "planYM": 58.5
+    },
+    "placements": 4,
+    "plugin": "Skyrim.esm"
+   },
+   "floorOffsetM": 2.0,
+   "frontFaceFraction": 0.0,
+   "headroomM": 1.6,
+   "heightM": 3.65,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 1.1,
+   "planAreaM2": 8.86,
+   "planCentreM": [
+    -0.13,
+    -0.02
+   ],
+   "provenance": [
+    {
+     "count": 7,
+     "doorAsset": "vanilla:dungeons/imperial/door/impwooddoorsingleload01",
+     "doorwaySource": "assembly",
+     "kind": "assembly",
+     "offsetM": [
+      0.52,
+      0.01
+     ],
+     "radiusM": 0.52,
+     "sideDeg": 91.28
+    }
+   ],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "storeyLevelsM": [
+    2.0
+   ],
+   "storeys": 1,
+   "tileset": "vanilla-imperial-int",
+   "why": "Skyrim.esm teleports from this shell into interior cell BrokenTowerRedoubt01 (4 placements of the load door); that cell is built from vanilla:dungeons/imperial/tower, which is packaged as vanilla-imperial-int"
+  },
+  "vanilla:dungeons/imperial/exterior/impextfloorchunk01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 287.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 288\u00b0 in the piece's own frame carries 1.52x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.28,
+   "interior": "none",
+   "planAreaM2": 50.66,
+   "provenance": [],
+   "sizeClass": "medium",
+   "why": "too small to hold an interior (50.7 m\u00b2 plan, 0.3 m tall)"
+  },
+  "vanilla:dungeons/imperial/exterior/impextfloorchunk02": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 287.7,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 288\u00b0 in the piece's own frame carries 1.56x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.23,
+   "interior": "none",
+   "planAreaM2": 50.66,
+   "provenance": [],
+   "sizeClass": "medium",
+   "why": "too small to hold an interior (50.7 m\u00b2 plan, 0.2 m tall)"
+  },
+  "vanilla:dungeons/imperial/exterior/impextlighthouse01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "a free-standing plugin load door beside the shell",
+   "espLink": {
+    "doorModel": "vanilla:dungeons/imperial/door/impwooddoorholedoorload",
+    "interiorCell": "FortSnowhawk01",
+    "interiorFamily": "vanilla:dungeons/imperial/tower",
+    "interiorSizeM": {
+     "heightM": 32.37,
+     "planXM": 61.15,
+     "planYM": 36.3
+    },
+    "placements": 2,
+    "plugin": "Skyrim.esm"
+   },
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 5.15,
+   "heightM": 9.99,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 0.81,
+   "planAreaM2": 49.79,
+   "planCentreM": [
+    0.31,
+    0.08
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "storeyLevelsM": [
+    0.0
+   ],
+   "storeys": 1,
+   "tileset": "vanilla-imperial-int",
+   "why": "Skyrim.esm teleports from this shell into interior cell FortSnowhawk01 (2 placements of the load door); that cell is built from vanilla:dungeons/imperial/tower, which is packaged as vanilla-imperial-int"
+  },
+  "vanilla:dungeons/imperial/exterior/impextrubble01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "a free-standing plugin load door beside the shell",
+   "espLink": {
+    "doorModel": "vanilla:dungeons/imperial/door/impwooddoorholedoorload",
+    "interiorCell": "GallowsRock01",
+    "interiorFamily": "vanilla:dungeons/imperial/clutterkits",
+    "interiorSizeM": {
+     "heightM": 16.1,
+     "planXM": 86.3,
+     "planYM": 132.44
+    },
+    "placements": 2,
+    "plugin": "Skyrim.esm"
+   },
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 223.8,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 224\u00b0 in the piece's own frame carries 1.48x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 3.37,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 0.11,
+   "planAreaM2": 119.23,
+   "planCentreM": [
+    -0.22,
+    0.2
+   ],
+   "provenance": [],
+   "ringFraction": 0.542,
+   "roofOverhead": false,
+   "sizeClass": "medium",
+   "storeyLevelsM": [
+    0.0
+   ],
+   "storeys": 1,
+   "tileset": "vanilla-imperial-int",
+   "why": "Skyrim.esm teleports from this shell into interior cell GallowsRock01 (2 placements of the load door); that cell is built from vanilla:dungeons/imperial/clutterkits, which is packaged as vanilla-imperial-int"
+  },
+  "vanilla:dungeons/imperial/exterior/impextrubble02": {
+   "category": "dungeon-kit",
+   "closedShellPromotedBy": "door-piece",
+   "entrance": {
+    "doorAsset": "vanilla:dungeons/imperial/door/impwooddoordoubleload01",
+    "kind": "esp-door",
+    "placements": 4,
+    "radial": true,
+    "radiusM": 7.671
+   },
+   "entranceWhy": "the exterior door vanilla:dungeons/imperial/door/impwooddoordoubleload01 that opens this interior, at a constant radius on any bearing across the plugin's placements (4 placements)",
+   "espLink": {
+    "doorModel": "vanilla:dungeons/imperial/door/impwooddoordoubleload01",
+    "interiorCell": "FortSnowhawk01",
+    "interiorFamily": "vanilla:dungeons/imperial/tower",
+    "interiorSizeM": {
+     "heightM": 32.37,
+     "planXM": 61.15,
+     "planYM": 36.3
+    },
+    "placements": 2,
+    "plugin": "Skyrim.esm"
+   },
+   "floorOffsetM": 0.0,
+   "frontFaceFraction": 0.0,
+   "headroomM": 3.03,
+   "heightM": 4.94,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 2.39,
+   "planAreaM2": 57.9,
+   "planCentreM": [
+    0.42,
+    -0.28
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "storeyLevelsM": [
+    0.0
+   ],
+   "storeys": 1,
+   "tileset": "vanilla-imperial-int",
+   "why": "Skyrim.esm teleports from this shell into interior cell FortSnowhawk01 (2 placements of the load door); that cell is built from vanilla:dungeons/imperial/tower, which is packaged as vanilla-imperial-int"
+  },
+  "vanilla:dungeons/imperial/exterior/impextrubble03": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 75.0,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 75\u00b0 in the piece's own frame carries 1.52x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 1.52,
+   "interior": "none",
+   "planAreaM2": 55.86,
+   "provenance": [],
+   "sizeClass": "medium",
+   "why": "too small to hold an interior (55.9 m\u00b2 plan, 1.5 m tall)"
+  },
+  "vanilla:dungeons/imperial/exterior/impextrubble04": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 316.9,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 317\u00b0 in the piece's own frame carries 1.82x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.98,
+   "interior": "none",
+   "planAreaM2": 21.7,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (21.7 m\u00b2 plan, 1.0 m tall)"
+  },
+  "vanilla:dungeons/imperial/exterior/impextrubble05": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 252.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 253\u00b0 in the piece's own frame carries 1.69x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 1.6,
+   "heightM": 3.37,
+   "interior": "none",
+   "medianWallM": 0.33,
+   "planAreaM2": 88.92,
+   "planCentreM": [
+    0.4,
+    -0.01
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "a crawl space, not a room \u2014 only 1.6 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "vanilla:dungeons/imperial/exterior/impextrubble06": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 1.6,
+   "heightM": 4.87,
+   "interior": "none",
+   "medianWallM": 0.0,
+   "planAreaM2": 16.29,
+   "planCentreM": [
+    -0.19,
+    -2.31
+   ],
+   "provenance": [],
+   "ringFraction": 0.792,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 1.6 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "vanilla:dungeons/imperial/exterior/impextstairs01": {
+   "category": "dungeon-kit",
+   "closedShellPromotedBy": "door-piece",
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.52,
+     "kind": "leaf",
+     "offsetM": [
+      1.74,
+      -2.42
+     ],
+     "sideDeg": 47.5
+    }
+   ],
+   "entrance": null,
+   "entranceWhy": "a free-standing plugin load door beside the shell",
+   "espLink": {
+    "doorModel": "vanilla:dungeons/imperial/door/impwooddoorholedoorload",
+    "interiorCell": "FellglowKeep02",
+    "interiorFamily": "vanilla:dungeons/imperial/clutterkits",
+    "interiorSizeM": {
+     "heightM": 26.54,
+     "planXM": 67.53,
+     "planYM": 94.22
+    },
+    "placements": 4,
+    "plugin": "Skyrim.esm"
+   },
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 3.49,
+   "heightM": 5.21,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 2.42,
+   "planAreaM2": 30.51,
+   "planCentreM": [
+    -0.0,
+    -0.82
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "storeyLevelsM": [
+    0.0
+   ],
+   "storeys": 1,
+   "tileset": "vanilla-imperial-int",
+   "why": "Skyrim.esm teleports from this shell into interior cell FellglowKeep02 (4 placements of the load door); that cell is built from vanilla:dungeons/imperial/clutterkits, which is packaged as vanilla-imperial-int"
+  },
+  "vanilla:dungeons/imperial/exterior/impextstairs02": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 223.9,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 224\u00b0 in the piece's own frame carries 1.69x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 2.07,
+   "interior": "none",
+   "planAreaM2": 15.49,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (15.5 m\u00b2 plan, 2.1 m tall)"
+  },
+  "vanilla:dungeons/imperial/exterior/impextstairs03": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 1.04,
+   "interior": "none",
+   "planAreaM2": 4.52,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (4.5 m\u00b2 plan, 1.0 m tall)"
+  },
+  "vanilla:dungeons/imperial/exterior/impextsupport01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 168.2,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 168\u00b0 in the piece's own frame carries 5.15x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 6.22,
+   "interior": "none",
+   "planAreaM2": 3.89,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (3.9 m\u00b2 plan, 6.2 m tall)"
+  },
+  "vanilla:dungeons/imperial/exterior/impexttower01": {
+   "category": "dungeon-kit",
+   "closedShellPromotedBy": "door-piece",
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.9,
+     "kind": "leaf",
+     "offsetM": [
+      -1.19,
+      7.11
+     ],
+     "sideDeg": 197.5
+    }
+   ],
+   "entrance": {
+    "doorAsset": "vanilla:dungeons/imperial/door/impwooddoorsingleload01",
+    "kind": "esp-door",
+    "placements": 18,
+    "radial": true,
+    "radiusM": 7.096
+   },
+   "entranceWhy": "the exterior door vanilla:dungeons/imperial/door/impwooddoorsingleload01 that opens this interior, at a constant radius on any bearing across the plugin's placements (18 placements)",
+   "espLink": {
+    "doorModel": "vanilla:dungeons/imperial/door/impwooddoorsingleload01",
+    "interiorCell": "FortSungard02",
+    "interiorFamily": "vanilla:dungeons/imperial/tower",
+    "interiorSizeM": {
+     "heightM": 28.81,
+     "planXM": 48.03,
+     "planYM": 31.19
+    },
+    "placements": 4,
+    "plugin": "Skyrim.esm"
+   },
+   "floorOffsetM": 0.0,
+   "frontFaceFraction": 0.0,
+   "headroomM": 18.38,
+   "heightM": 19.95,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 7.09,
+   "planAreaM2": 179.27,
+   "planCentreM": [
+    0.98,
+    0.25
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    0.0
+   ],
+   "storeys": 1,
+   "tileset": "vanilla-imperial-int",
+   "why": "Skyrim.esm teleports from this shell into interior cell FortSungard02 (4 placements of the load door); that cell is built from vanilla:dungeons/imperial/tower, which is packaged as vanilla-imperial-int"
+  },
+  "vanilla:dungeons/imperial/exterior/impexttower01dark": {
+   "category": "dungeon-kit",
+   "closedShellPromotedBy": "door-piece",
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.9,
+     "kind": "leaf",
+     "offsetM": [
+      -1.19,
+      7.11
+     ],
+     "sideDeg": 197.5
+    }
+   ],
+   "entrance": null,
+   "entranceWhy": "a free-standing plugin load door beside the shell",
+   "espLink": {
+    "doorModel": "vanilla:dungeons/imperial/door/impwooddoorholedoorload",
+    "interiorCell": "AbandonedPrison01",
+    "interiorFamily": "vanilla:dungeons/imperial/tower",
+    "interiorSizeM": {
+     "heightM": 48.49,
+     "planXM": 114.14,
+     "planYM": 79.25
+    },
+    "placements": 2,
+    "plugin": "Skyrim.esm"
+   },
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 137.4,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 137\u00b0 in the piece's own frame carries 1.43x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 18.38,
+   "heightM": 19.95,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 7.09,
+   "planAreaM2": 179.27,
+   "planCentreM": [
+    0.98,
+    0.25
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    0.0
+   ],
+   "storeys": 1,
+   "tileset": "vanilla-imperial-int",
+   "why": "Skyrim.esm teleports from this shell into interior cell AbandonedPrison01 (2 placements of the load door); that cell is built from vanilla:dungeons/imperial/tower, which is packaged as vanilla-imperial-int"
+  },
+  "vanilla:dungeons/imperial/exterior/impexttower02": {
+   "category": "dungeon-kit",
+   "closedShellPromotedBy": "door-piece",
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.27,
+     "kind": "leaf",
+     "offsetM": [
+      -1.24,
+      7.11
+     ],
+     "sideDeg": 190.0
+    }
+   ],
+   "entrance": {
+    "doorAsset": "vanilla:dungeons/imperial/door/impwooddoorsingleload01",
+    "heightM": -0.38,
+    "kind": "esp-door",
+    "offsetM": [
+     -6.891,
+     2.722
+    ],
+    "placements": 2,
+    "radiusM": 7.409,
+    "sideDeg": 248.44,
+    "yawDeg": 76.04
+   },
+   "entranceWhy": "the exterior door vanilla:dungeons/imperial/door/impwooddoorsingleload01 that opens this interior, at the offset the plugin places it in this shell's own frame (2 placements)",
+   "espLink": {
+    "doorModel": "vanilla:dungeons/imperial/door/impwooddoorsingleload01",
+    "interiorCell": "FaldarsTooth01",
+    "interiorFamily": "vanilla:dungeons/imperial/tower",
+    "interiorSizeM": {
+     "heightM": 26.35,
+     "planXM": 103.46,
+     "planYM": 149.84
+    },
+    "placements": 2,
+    "plugin": "Skyrim.esm"
+   },
+   "floorOffsetM": 0.0,
+   "frontFaceFraction": 0.0,
+   "headroomM": 7.47,
+   "heightM": 19.95,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 7.25,
+   "planAreaM2": 177.05,
+   "planCentreM": [
+    0.02,
+    -0.02
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    -0.4,
+    0.0
+   ],
+   "storeys": 1,
+   "tileset": "vanilla-imperial-int",
+   "why": "Skyrim.esm teleports from this shell into interior cell FaldarsTooth01 (2 placements of the load door); that cell is built from vanilla:dungeons/imperial/tower, which is packaged as vanilla-imperial-int"
+  },
+  "vanilla:dungeons/imperial/exterior/impexttower03": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "a free-standing plugin load door beside the shell",
+   "espLink": {
+    "doorModel": "vanilla:dungeons/imperial/door/impwooddoorholedoorload",
+    "interiorCell": "FellglowKeep01",
+    "interiorFamily": "vanilla:dungeons/imperial/clutterkits",
+    "interiorSizeM": {
+     "heightM": 24.15,
+     "planXM": 108.36,
+     "planYM": 168.08
+    },
+    "placements": 2,
+    "plugin": "Skyrim.esm"
+   },
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 9.1,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 9\u00b0 in the piece's own frame carries 1.99x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 12.66,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 5.46,
+   "planAreaM2": 145.95,
+   "planCentreM": [
+    -0.24,
+    -1.81
+   ],
+   "provenance": [],
+   "ringFraction": 0.694,
+   "roofOverhead": false,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    0.0
+   ],
+   "storeys": 1,
+   "tileset": "vanilla-imperial-int",
+   "why": "Skyrim.esm teleports from this shell into interior cell FellglowKeep01 (2 placements of the load door); that cell is built from vanilla:dungeons/imperial/clutterkits, which is packaged as vanilla-imperial-int"
+  },
+  "vanilla:dungeons/imperial/exterior/impexttowershellbase01": {
+   "category": "dungeon-kit",
+   "closedShellPromotedBy": "door-piece",
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.9,
+     "kind": "leaf",
+     "offsetM": [
+      -5.71,
+      -4.38
+     ],
+     "sideDeg": 307.5
+    },
+    {
+     "arcM": 1.89,
+     "kind": "leaf",
+     "offsetM": [
+      7.14,
+      0.94
+     ],
+     "sideDeg": 97.5
+    },
+    {
+     "arcM": 1.89,
+     "kind": "leaf",
+     "offsetM": [
+      -2.15,
+      -6.83
+     ],
+     "sideDeg": 342.5
+    },
+    {
+     "arcM": 1.26,
+     "kind": "leaf",
+     "offsetM": [
+      0.0,
+      -7.19
+     ],
+     "sideDeg": 0.0
+    }
+   ],
+   "entrance": null,
+   "entranceWhy": "a free-standing plugin load door beside the shell",
+   "espLink": {
+    "doorModel": "vanilla:dungeons/imperial/door/impwooddoorholedoorload",
+    "interiorCell": "BrokenTowerRedoubt01",
+    "interiorFamily": "vanilla:dungeons/imperial/tower",
+    "interiorSizeM": {
+     "heightM": 38.1,
+     "planXM": 98.21,
+     "planYM": 58.5
+    },
+    "placements": 2,
+    "plugin": "Skyrim.esm"
+   },
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 180.0,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 6 times with other statics to one side; the side they left open, at 180\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 7.28,
+   "heightM": 7.28,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 7.22,
+   "planAreaM2": 174.29,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    0.0
+   ],
+   "storeys": 1,
+   "tileset": "vanilla-imperial-int",
+   "why": "Skyrim.esm teleports from this shell into interior cell BrokenTowerRedoubt01 (2 placements of the load door); that cell is built from vanilla:dungeons/imperial/tower, which is packaged as vanilla-imperial-int"
+  },
+  "vanilla:dungeons/imperial/exterior/impexttowershelldoor01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 2.0,
+   "front": {
+    "deg": 131.3,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 131\u00b0 in the piece's own frame carries 1.94x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 2.06,
+   "heightM": 10.47,
+   "interior": "none",
+   "medianWallM": 1.57,
+   "planAreaM2": 26.36,
+   "planCentreM": [
+    -0.47,
+    -6.27
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 2.1 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "vanilla:dungeons/imperial/exterior/impexttowershelldoor02": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 2.0,
+   "front": {
+    "deg": 41.6,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 42\u00b0 in the piece's own frame carries 1.93x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 2.06,
+   "heightM": 10.47,
+   "interior": "none",
+   "medianWallM": 1.57,
+   "planAreaM2": 26.36,
+   "planCentreM": [
+    -6.27,
+    0.47
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 2.1 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "vanilla:dungeons/imperial/exterior/impexttowershelldoor03": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 2.0,
+   "front": {
+    "deg": 0.0,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 12 times with other statics to one side; the side they left open, at 0\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 2.06,
+   "heightM": 10.47,
+   "interior": "none",
+   "medianWallM": 1.57,
+   "planAreaM2": 26.36,
+   "planCentreM": [
+    0.47,
+    6.27
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 2.1 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "vanilla:dungeons/imperial/exterior/impexttowershelldoor04": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 2.0,
+   "front": {
+    "deg": 220.9,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 221\u00b0 in the piece's own frame carries 1.89x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 2.06,
+   "heightM": 10.47,
+   "interior": "none",
+   "medianWallM": 1.57,
+   "planAreaM2": 26.36,
+   "planCentreM": [
+    6.27,
+    -0.47
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 2.1 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "vanilla:dungeons/imperial/exterior/impexttowershellfloor2nd01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 224.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 224\u00b0 in the piece's own frame carries 1.94x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.9,
+   "interior": "none",
+   "planAreaM2": 81.23,
+   "provenance": [],
+   "sizeClass": "medium",
+   "why": "too small to hold an interior (81.2 m\u00b2 plan, 0.9 m tall)"
+  },
+  "vanilla:dungeons/imperial/exterior/impexttowershellstairs01": {
+   "category": "dungeon-kit",
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 3.5,
+     "kind": "opening",
+     "offsetM": [
+      2.71,
+      -0.16
+     ],
+     "sideDeg": 102.5
+    }
+   ],
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 180.0,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 15 times with other statics to one side; the side they left open, at 180\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "frontFaceFraction": 0.982,
+   "headroomM": 9.33,
+   "heightM": 12.28,
+   "interior": "none",
+   "medianWallM": 2.43,
+   "planAreaM2": 174.88,
+   "planCentreM": [
+    1.04,
+    -0.53
+   ],
+   "provenance": [],
+   "ringFraction": 0.778,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "why": "name token 'stairs' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "vanilla:dungeons/imperial/exterior/impexttowershelltop01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 2.15,
+   "heightM": 3.48,
+   "interior": "none",
+   "medianWallM": 7.44,
+   "planAreaM2": 174.29,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "why": "a crawl space, not a room \u2014 only 2.1 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "vanilla:dungeons/imperial/exterior/impexttowershellwall01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 10.01,
+   "interior": "none",
+   "medianWallM": 0.48,
+   "planAreaM2": 20.48,
+   "planCentreM": [
+    -0.79,
+    -6.22
+   ],
+   "provenance": [],
+   "ringFraction": 0.597,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "vanilla:dungeons/imperial/exterior/impexttowershellwall02": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 10.01,
+   "interior": "none",
+   "medianWallM": 0.54,
+   "planAreaM2": 20.61,
+   "planCentreM": [
+    -6.17,
+    0.47
+   ],
+   "provenance": [],
+   "ringFraction": 0.597,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "vanilla:dungeons/imperial/exterior/impexttowershellwall03": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 10.01,
+   "interior": "none",
+   "medianWallM": 0.57,
+   "planAreaM2": 20.8,
+   "planCentreM": [
+    0.63,
+    6.23
+   ],
+   "provenance": [],
+   "ringFraction": 0.597,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "vanilla:dungeons/imperial/exterior/impexttowershellwall04": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 10.01,
+   "interior": "none",
+   "medianWallM": 0.49,
+   "planAreaM2": 20.44,
+   "planCentreM": [
+    6.14,
+    -0.76
+   ],
+   "provenance": [],
+   "ringFraction": 0.597,
+   "roofOverhead": false,
+   "sizeClass": "small",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "vanilla:dungeons/imperial/exterior/impexttowershort01": {
+   "category": "dungeon-kit",
+   "closedShellPromotedBy": "door-piece",
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.27,
+     "kind": "leaf",
+     "offsetM": [
+      -1.25,
+      7.11
+     ],
+     "sideDeg": 190.0
+    }
+   ],
+   "entrance": {
+    "doorAsset": "vanilla:dungeons/ship/shiptrapdoor01",
+    "heightM": 7.283,
+    "kind": "esp-door",
+    "offsetM": [
+     -0.809,
+     -4.858
+    ],
+    "placements": 2,
+    "radiusM": 4.925,
+    "sideDeg": 350.55,
+    "yawDeg": 168.81
+   },
+   "entranceWhy": "the exterior door vanilla:dungeons/ship/shiptrapdoor01 that opens this interior, at the offset the plugin places it in this shell's own frame (2 placements)",
+   "espLink": {
+    "doorModel": "vanilla:dungeons/ship/shiptrapdoor01",
+    "interiorCell": "CrackedTuskKeep01",
+    "interiorFamily": "vanilla:dungeons/imperial/clutterkits",
+    "interiorSizeM": {
+     "heightM": 21.85,
+     "planXM": 49.75,
+     "planYM": 37.2
+    },
+    "placements": 2,
+    "plugin": "Skyrim.esm"
+   },
+   "floorOffsetM": 0.0,
+   "frontFaceFraction": 0.0,
+   "headroomM": 7.43,
+   "heightM": 9.01,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 7.23,
+   "planAreaM2": 174.95,
+   "planCentreM": [
+    0.0,
+    -0.0
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    0.0,
+    7.3
+   ],
+   "storeys": 2,
+   "tileset": "vanilla-imperial-int",
+   "why": "Skyrim.esm teleports from this shell into interior cell CrackedTuskKeep01 (2 placements of the load door); that cell is built from vanilla:dungeons/imperial/clutterkits, which is packaged as vanilla-imperial-int"
+  },
+  "vanilla:dungeons/imperial/exterior/impextwall01": {
+   "category": "dungeon-kit",
+   "closedShellPromotedBy": "door-piece",
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.38,
+     "kind": "leaf",
+     "offsetM": [
+      -2.47,
+      1.9
+     ],
+     "sideDeg": 232.5
+    }
+   ],
+   "entrance": null,
+   "entranceWhy": "a free-standing plugin load door beside the shell",
+   "espLink": {
+    "doorModel": "vanilla:dungeons/imperial/door/impwooddoorholedoorload",
+    "interiorCell": "FortGreenwall01",
+    "interiorFamily": "vanilla:dungeons/imperial/tower",
+    "interiorSizeM": {
+     "heightM": 33.32,
+     "planXM": 64.49,
+     "planYM": 57.1
+    },
+    "placements": 2,
+    "plugin": "Skyrim.esm"
+   },
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 220.2,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 220\u00b0 in the piece's own frame carries 1.39x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 7.28,
+   "heightM": 8.12,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 3.17,
+   "planAreaM2": 41.25,
+   "planCentreM": [
+    -0.08,
+    0.06
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "storeyLevelsM": [
+    0.0
+   ],
+   "storeys": 1,
+   "tileset": "vanilla-imperial-int",
+   "why": "Skyrim.esm teleports from this shell into interior cell FortGreenwall01 (2 placements of the load door); that cell is built from vanilla:dungeons/imperial/tower, which is packaged as vanilla-imperial-int"
+  },
+  "vanilla:dungeons/imperial/exterior/impextwall02": {
+   "category": "dungeon-kit",
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.92,
+     "kind": "leaf",
+     "offsetM": [
+      -0.12,
+      3.27
+     ],
+     "sideDeg": 185.0
+    },
+    {
+     "arcM": 1.52,
+     "kind": "leaf",
+     "offsetM": [
+      2.38,
+      -1.16
+     ],
+     "sideDeg": 67.5
+    },
+    {
+     "arcM": 1.33,
+     "kind": "leaf",
+     "offsetM": [
+      0.06,
+      -3.14
+     ],
+     "sideDeg": 357.5
+    },
+    {
+     "arcM": 1.1,
+     "kind": "leaf",
+     "offsetM": [
+      1.74,
+      3.5
+     ],
+     "sideDeg": 157.5
+    }
+   ],
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 220.8,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 221\u00b0 in the piece's own frame carries 1.64x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 7.46,
+   "heightM": 8.3,
+   "interior": "none",
+   "medianWallM": 3.03,
+   "planAreaM2": 42.69,
+   "planCentreM": [
+    0.19,
+    -0.25
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "vanilla:dungeons/imperial/exterior/impextwall03": {
+   "category": "dungeon-kit",
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 2.0,
+     "kind": "leaf",
+     "offsetM": [
+      -2.47,
+      2.74
+     ],
+     "sideDeg": 225.0
+    },
+    {
+     "arcM": 1.2,
+     "kind": "leaf",
+     "offsetM": [
+      -2.35,
+      -0.24
+     ],
+     "sideDeg": 277.5
+    },
+    {
+     "arcM": 1.05,
+     "kind": "leaf",
+     "offsetM": [
+      -2.38,
+      -2.71
+     ],
+     "sideDeg": 317.5
+    }
+   ],
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 219.8,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 220\u00b0 in the piece's own frame carries 1.50x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 7.4,
+   "heightM": 8.36,
+   "interior": "none",
+   "medianWallM": 3.15,
+   "planAreaM2": 42.73,
+   "planCentreM": [
+    0.18,
+    0.09
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "vanilla:dungeons/imperial/exterior/impextwall04": {
+   "category": "dungeon-kit",
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.81,
+     "kind": "leaf",
+     "offsetM": [
+      -2.29,
+      -1.05
+     ],
+     "sideDeg": 292.5
+    },
+    {
+     "arcM": 1.71,
+     "kind": "leaf",
+     "offsetM": [
+      -2.46,
+      3.02
+     ],
+     "sideDeg": 212.5
+    },
+    {
+     "arcM": 1.48,
+     "kind": "leaf",
+     "offsetM": [
+      -2.42,
+      0.59
+     ],
+     "sideDeg": 247.5
+    },
+    {
+     "arcM": 1.33,
+     "kind": "leaf",
+     "offsetM": [
+      0.01,
+      -3.14
+     ],
+     "sideDeg": 7.5
+    }
+   ],
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 359.8,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 10 times with other statics to one side; the side they left open, at 360\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 7.52,
+   "heightM": 8.52,
+   "interior": "none",
+   "medianWallM": 3.14,
+   "planAreaM2": 42.43,
+   "planCentreM": [
+    -0.37,
+    -0.26
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "vanilla:dungeons/imperial/exterior/impextwall05": {
+   "category": "dungeon-kit",
+   "closedShellPromotedBy": "door-piece",
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.88,
+     "kind": "leaf",
+     "offsetM": [
+      -0.05,
+      -3.18
+     ],
+     "sideDeg": 7.5
+    },
+    {
+     "arcM": 0.82,
+     "kind": "leaf",
+     "offsetM": [
+      -2.37,
+      1.85
+     ],
+     "sideDeg": 222.5
+    }
+   ],
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 7.53,
+   "heightM": 7.74,
+   "interior": "none",
+   "medianWallM": 3.12,
+   "planAreaM2": 41.93,
+   "planCentreM": [
+    -0.43,
+    -0.27
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "vanilla:dungeons/imperial/exterior/impextwalldivider01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 0.9,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 13 times with other statics to one side; the side they left open, at 1\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 7.54,
+   "heightM": 7.62,
+   "interior": "none",
+   "medianWallM": 1.39,
+   "planAreaM2": 15.57,
+   "planCentreM": [
+    0.46,
+    -0.03
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor, and the up ray finds no down-facing ceiling): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "vanilla:dungeons/imperial/exterior/impextwallgate01": {
+   "category": "dungeon-kit",
+   "closedShellPromotedBy": "door-piece",
+   "doorwaysClosedDropped": [
+    {
+     "arcM": 1.95,
+     "kind": "opening",
+     "offsetM": [
+      2.4,
+      -0.04
+     ],
+     "sideDeg": 87.5
+    }
+   ],
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 4.0,
+   "front": {
+    "deg": 255.7,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 256\u00b0 in the piece's own frame carries 1.40x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 3.28,
+   "heightM": 8.12,
+   "interior": "none",
+   "medianWallM": 3.35,
+   "planAreaM2": 41.25,
+   "planCentreM": [
+    -0.08,
+    0.06
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "name token 'gate' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "vanilla:dungeons/imperial/exterior/impextwindow01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 2.4,
+   "interior": "none",
+   "planAreaM2": 0.4,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.4 m\u00b2 plan, 2.4 m tall)"
+  },
+  "vanilla:dungeons/imperial/exterior/impextwindow01dark": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 2.4,
+   "interior": "none",
+   "planAreaM2": 0.4,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.4 m\u00b2 plan, 2.4 m tall)"
+  },
+  "vanilla:dungeons/nordic/exterior/nortmpextdebris01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 223.7,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 224\u00b0 in the piece's own frame carries 2.39x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 8.65,
+   "heightM": 8.99,
+   "interior": "none",
+   "medianWallM": 3.62,
+   "planAreaM2": 44.31,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor, and the up ray finds no down-facing ceiling): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "vanilla:dungeons/nordic/exterior/nortmpextdebris02": {
+   "category": "dungeon-kit",
+   "doorStoreyM": 0.4,
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 3.17,
+   "heightM": 3.37,
+   "interior": "none",
+   "medianWallM": 2.21,
+   "planAreaM2": 16.15,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor, and the up ray finds no down-facing ceiling): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "vanilla:dungeons/nordic/exterior/nortmpextdebris03": {
+   "category": "dungeon-kit",
+   "doorStoreyM": 0.39,
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 3.19,
+   "heightM": 3.59,
+   "interior": "none",
+   "medianWallM": 1.96,
+   "planAreaM2": 12.79,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor, and the up ray finds no down-facing ceiling): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "vanilla:dungeons/nordic/exterior/nortmpextdebris04": {
+   "category": "dungeon-kit",
+   "doorStoreyM": 0.24,
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 3.27,
+   "heightM": 3.73,
+   "interior": "none",
+   "medianWallM": 1.91,
+   "planAreaM2": 12.06,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor, and the up ray finds no down-facing ceiling): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "vanilla:dungeons/nordic/exterior/nortmpextdebris05": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 2.11,
+   "interior": "none",
+   "planAreaM2": 16.53,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (16.5 m\u00b2 plan, 2.1 m tall)"
+  },
+  "vanilla:dungeons/nordic/exterior/nortmpextdebris06": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 3.0,
+   "heightM": 3.08,
+   "interior": "none",
+   "medianWallM": 1.42,
+   "planAreaM2": 8.8,
+   "planCentreM": [
+    -0.06,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor, and the up ray finds no down-facing ceiling): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "vanilla:dungeons/nordic/exterior/nortmpextdebris07": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 2.22,
+   "heightM": 2.41,
+   "interior": "none",
+   "medianWallM": 1.22,
+   "planAreaM2": 8.92,
+   "planCentreM": [
+    -0.79,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a closed prop seen from inside, not a room \u2014 only 0% of the ring hits show a face turned towards the stander (a room needs 60%, and the down ray finds no up-facing floor, and the up ray finds no down-facing ceiling): the mesh is a hollow shell whose faces all point outward, so this is massing \u2014 a plinth, a basin, a stair block, a tower mass \u2014 usable as a solid, never entered"
+  },
+  "vanilla:dungeons/nordic/exterior/nortmpextdebris08": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": null,
+   "frontFaceFraction": 0.0,
+   "headroomM": 2.11,
+   "heightM": 2.26,
+   "interior": "none",
+   "medianWallM": 1.38,
+   "planAreaM2": 7.26,
+   "planCentreM": [
+    -0.13,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 2.1 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "vanilla:dungeons/nordic/exterior/nortmpextplanter01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.82,
+   "interior": "none",
+   "planAreaM2": 9.41,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (9.4 m\u00b2 plan, 0.8 m tall)"
+  },
+  "vanilla:dungeons/nordic/exterior/nortmpextplatcordblend01": {
+   "category": "dungeon-kit",
+   "entrance": {
+    "doorAsset": "vanilla:dungeons/nordic/doors/animated/smdoor01/nordoorsmload01",
+    "heightM": -7.283,
+    "kind": "esp-door",
+    "offsetM": [
+     1.714,
+     -0.004
+    ],
+    "placements": 4,
+    "radiusM": 5.218,
+    "sideDeg": 89.88,
+    "yawDeg": 0.0
+   },
+   "entranceWhy": "the exterior door vanilla:dungeons/nordic/doors/animated/smdoor01/nordoorsmload01 that opens this interior, at the offset the plugin places it in this shell's own frame (4 placements)",
+   "espLink": {
+    "doorModel": "vanilla:dungeons/nordic/doors/animated/smdoor01/nordoorsmload01",
+    "interiorCell": "FrostmereCrypt01",
+    "interiorFamily": "vanilla:dungeons/nordic/rubble",
+    "interiorSizeM": {
+     "heightM": 40.22,
+     "planXM": 91.19,
+     "planYM": 76.85
+    },
+    "placements": 2,
+    "plugin": "Skyrim.esm"
+   },
+   "floorOffsetM": 0.0,
+   "frontFaceFraction": 1.0,
+   "headroomM": 12.59,
+   "heightM": 14.57,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 2.8,
+   "planAreaM2": 190.45,
+   "planCentreM": [
+    1.23,
+    0.0
+   ],
+   "provenance": [
+    {
+     "arcM": 3.42,
+     "centreShiftM": -0.0,
+     "clearM": 2.95,
+     "kind": "open-front",
+     "offsetM": [
+      -1.57,
+      0.0
+     ],
+     "rayConfirmed": true,
+     "sideDeg": 270.0,
+     "sillYM": -14.57,
+     "widthM": 5.05
+    }
+   ],
+   "ringFraction": 0.806,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "storeyLevelsM": [
+    -7.3,
+    0.0
+   ],
+   "storeys": 2,
+   "tileset": "vanilla-imperial-int",
+   "why": "Skyrim.esm teleports from this shell into interior cell FrostmereCrypt01 (2 placements of the load door); that cell is built from vanilla:dungeons/nordic/rubble, which is packaged as vanilla-imperial-int"
+  },
+  "vanilla:dungeons/nordic/exterior/nortmpextplatcorin01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 6.0,
+   "front": {
+    "deg": 90.0,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 12 times with other statics to one side; the side they left open, at 90\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 6.33,
+   "heightM": 14.69,
+   "interior": "none",
+   "medianWallM": 2.15,
+   "planAreaM2": 201.23,
+   "planCentreM": [
+    -0.53,
+    0.53
+   ],
+   "provenance": [],
+   "ringFraction": 0.236,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "why": "open sided \u2014 only 24% of the ring at 1.6 m hits a wall, so it does not enclose anything"
+  },
+  "vanilla:dungeons/nordic/exterior/nortmpextplatcorout01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 6.0,
+   "front": {
+    "deg": 180.1,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 198 times with other statics to one side; the side they left open, at 180\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 8.57,
+   "heightM": 14.57,
+   "interior": "none",
+   "medianWallM": 2.43,
+   "planAreaM2": 95.34,
+   "planCentreM": [
+    1.2,
+    -1.2
+   ],
+   "provenance": [],
+   "ringFraction": 0.639,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "open sided \u2014 only 64% of the ring at 1.6 m hits a wall, so it does not enclose anything"
+  },
+  "vanilla:dungeons/nordic/exterior/nortmpextplatexsmfree01": {
+   "category": "dungeon-kit",
+   "closedShellPromotedBy": "own-geometry-door",
+   "entrance": {
+    "doorAsset": "vanilla:dungeons/nordic/doors/animated/smdoor01/nordoorsmload01",
+    "kind": "esp-door",
+    "placements": 24,
+    "radial": true,
+    "radiusM": 1.821
+   },
+   "entranceWhy": "the exterior door vanilla:dungeons/nordic/doors/animated/smdoor01/nordoorsmload01 that opens this interior, at a constant radius on any bearing across the plugin's placements (24 placements)",
+   "espLink": {
+    "doorModel": "vanilla:dungeons/nordic/doors/animated/smdoor01/nordoorsmload01",
+    "interiorCell": "HagRockRedoubt01",
+    "interiorFamily": "vanilla:dungeons/nordic/rubble",
+    "interiorSizeM": {
+     "heightM": 20.78,
+     "planXM": 54.44,
+     "planYM": 67.85
+    },
+    "placements": 2,
+    "plugin": "Skyrim.esm"
+   },
+   "floorOffsetM": 0.0,
+   "frontFaceFraction": 0.0,
+   "headroomM": 12.16,
+   "heightM": 13.01,
+   "interior": "tileset",
+   "interiorSource": "esp-door",
+   "medianWallM": 2.22,
+   "planAreaM2": 23.31,
+   "planCentreM": [
+    -0.0,
+    1.36
+   ],
+   "provenance": [
+    {
+     "count": 19,
+     "doorAsset": "vanilla:dungeons/nordic/doors/animated/smdoor02/nordoorsmload02",
+     "doorwaySource": "assembly",
+     "kind": "assembly",
+     "offsetM": [
+      -0.0,
+      1.83
+     ],
+     "radiusM": 1.83,
+     "sideDeg": 180.08
+    },
+    {
+     "count": 14,
+     "doorAsset": "vanilla:dungeons/nordic/doors/animated/smdoor01/nordoorsmload01",
+     "doorwaySource": "assembly",
+     "kind": "assembly",
+     "offsetM": [
+      -0.0,
+      1.89
+     ],
+     "radiusM": 1.89,
+     "sideDeg": 180.07
+    },
+    {
+     "arcM": 3.48,
+     "centreShiftM": -0.0,
+     "clearM": 2.95,
+     "kind": "open-front",
+     "offsetM": [
+      -0.0,
+      -0.86
+     ],
+     "rayConfirmed": true,
+     "sideDeg": 0.0,
+     "sillYM": -14.56,
+     "widthM": 5.05
+    }
+   ],
+   "ringFraction": 0.75,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "storeyLevelsM": [
+    0.0
+   ],
+   "storeys": 1,
+   "tileset": "vanilla-imperial-int",
+   "why": "Skyrim.esm teleports from this shell into interior cell HagRockRedoubt01 (2 placements of the load door); that cell is built from vanilla:dungeons/nordic/rubble, which is packaged as vanilla-imperial-int"
+  },
+  "vanilla:dungeons/nordic/exterior/nortmpextplatfloorraised01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 287.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 287\u00b0 in the piece's own frame carries 1.71x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.28,
+   "interior": "none",
+   "planAreaM2": 31.61,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (31.6 m\u00b2 plan, 0.3 m tall)"
+  },
+  "vanilla:dungeons/nordic/exterior/nortmpextplatfloorraised01stone": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 287.5,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 287\u00b0 in the piece's own frame carries 1.71x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.28,
+   "interior": "none",
+   "planAreaM2": 31.61,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (31.6 m\u00b2 plan, 0.3 m tall)"
+  },
+  "vanilla:dungeons/nordic/exterior/nortmpextplatfloorraised02": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 287.6,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 288\u00b0 in the piece's own frame carries 1.63x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.28,
+   "interior": "none",
+   "planAreaM2": 50.66,
+   "provenance": [],
+   "sizeClass": "medium",
+   "why": "too small to hold an interior (50.7 m\u00b2 plan, 0.3 m tall)"
+  },
+  "vanilla:dungeons/nordic/exterior/nortmpextplatgaurdhouse01": {
+   "category": "dungeon-kit",
+   "entrance": {
+    "arcM": 1.96,
+    "centreShiftM": -0.0,
+    "clearM": 2.95,
+    "kind": "open-front",
+    "offsetM": [
+     0.0,
+     -2.72
+    ],
+    "rayConfirmed": true,
+    "sideDeg": 5.0,
+    "sillYM": -0.28,
+    "widthM": 1.95
+   },
+   "floorOffsetM": 0.0,
+   "frontFaceFraction": 1.0,
+   "headroomM": 4.76,
+   "heightM": 5.74,
+   "interior": "shell",
+   "medianWallM": 2.69,
+   "planAreaM2": 38.12,
+   "planCentreM": [
+    -0.24,
+    0.08
+   ],
+   "provenance": [
+    {
+     "arcM": 1.96,
+     "centreShiftM": -0.0,
+     "clearM": 2.95,
+     "kind": "open-front",
+     "offsetM": [
+      0.0,
+      2.87
+     ],
+     "rayConfirmed": true,
+     "sideDeg": 175.0,
+     "sillYM": -0.28,
+     "widthM": 1.95
+    }
+   ],
+   "ringFraction": 0.778,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "storeyLevelsM": [
+    0.0
+   ],
+   "storeys": 1,
+   "why": "measured to enclose a volume \u2014 78% of the ring at 1.6 m hits a wall, there is a roof overhead and 2.7 m of room to stand \u2014 with no matched interior and no tileset rule, so Phase 12 must claim an interior for it"
+  },
+  "vanilla:dungeons/nordic/exterior/nortmpextplatmid01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.0,
+   "interior": "none",
+   "planAreaM2": 211.99,
+   "provenance": [],
+   "sizeClass": "large",
+   "why": "too small to hold an interior (212.0 m\u00b2 plan, 0.0 m tall)"
+  },
+  "vanilla:dungeons/nordic/exterior/nortmpextplatmid02": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.0,
+   "interior": "none",
+   "planAreaM2": 53.0,
+   "provenance": [],
+   "sizeClass": "medium",
+   "why": "too small to hold an interior (53.0 m\u00b2 plan, 0.0 m tall)"
+  },
+  "vanilla:dungeons/nordic/exterior/nortmpextplatshaftbot01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.46,
+   "interior": "none",
+   "planAreaM2": 53.0,
+   "provenance": [],
+   "sizeClass": "medium",
+   "why": "too small to hold an interior (53.0 m\u00b2 plan, 0.5 m tall)"
+  },
+  "vanilla:dungeons/nordic/exterior/nortmpextplatstaircapl01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 1.0,
+   "front": {
+    "deg": 270.0,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 236 times with other statics to one side; the side they left open, at 270\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 2.3,
+   "heightM": 7.31,
+   "interior": "none",
+   "medianWallM": 0.97,
+   "planAreaM2": 43.61,
+   "planCentreM": [
+    -2.04,
+    4.94
+   ],
+   "provenance": [],
+   "ringFraction": 0.597,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "open sided \u2014 only 60% of the ring at 1.6 m hits a wall, so it does not enclose anything"
+  },
+  "vanilla:dungeons/nordic/exterior/nortmpextplatstaircapr01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 1.0,
+   "front": {
+    "deg": 90.1,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 235 times with other statics to one side; the side they left open, at 90\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 2.3,
+   "heightM": 7.31,
+   "interior": "none",
+   "medianWallM": 0.97,
+   "planAreaM2": 43.61,
+   "planCentreM": [
+    2.04,
+    4.94
+   ],
+   "provenance": [],
+   "ringFraction": 0.597,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "open sided \u2014 only 60% of the ring at 1.6 m hits a wall, so it does not enclose anything"
+  },
+  "vanilla:dungeons/nordic/exterior/nortmpextplatstairmid01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 5.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 7.31,
+   "interior": "none",
+   "medianWallM": 0.45,
+   "planAreaM2": 156.08,
+   "planCentreM": [
+    0.0,
+    1.24
+   ],
+   "provenance": [],
+   "ringFraction": 0.472,
+   "roofOverhead": false,
+   "sizeClass": "large",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "vanilla:dungeons/nordic/exterior/nortmpextplatstairmid02": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 5.0,
+   "front": null,
+   "frontFaceFraction": 1.0,
+   "headroomM": 99.0,
+   "heightM": 7.31,
+   "interior": "none",
+   "medianWallM": 0.45,
+   "planAreaM2": 77.53,
+   "planCentreM": [
+    0.0,
+    1.24
+   ],
+   "provenance": [],
+   "ringFraction": 0.472,
+   "roofOverhead": false,
+   "sizeClass": "medium",
+   "why": "open to the sky \u2014 nothing overhead from inside it, so it is a platform, deck, walkway, quay, hull or wall segment, not an enclosure"
+  },
+  "vanilla:dungeons/nordic/exterior/nortmpextplattower01": {
+   "category": "dungeon-kit",
+   "closedShellPromotedBy": "own-geometry-door",
+   "doorwaysMeasuredAboveFloorM": 23.0,
+   "entrance": {
+    "arcM": 0.82,
+    "centreShiftM": -0.0,
+    "clearM": 2.1,
+    "kind": "opening",
+    "offsetM": [
+     -0.0,
+     2.41
+    ],
+    "rayConfirmed": true,
+    "sideDeg": 0.0,
+    "sillYM": 1.15,
+    "widthM": 1.35
+   },
+   "floorOffsetM": 0.0,
+   "frontFaceFraction": 0.0,
+   "headroomM": 21.37,
+   "heightM": 26.82,
+   "interior": "shell",
+   "medianWallM": 1.63,
+   "planAreaM2": 14.91,
+   "planCentreM": [
+    -0.0,
+    3.35
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "storeyLevelsM": [
+    0.0
+   ],
+   "storeys": 1,
+   "why": "measured to enclose a volume \u2014 100% of the ring at 1.6 m hits a wall, there is a roof overhead and 1.6 m of room to stand \u2014 with no matched interior and no tileset rule, so Phase 12 must claim an interior for it"
+  },
+  "vanilla:dungeons/nordic/exterior/nortmpextplattower02": {
+   "category": "dungeon-kit",
+   "closedShellPromotedBy": "own-geometry-door",
+   "doorwaysMeasuredAboveFloorM": 23.0,
+   "entrance": {
+    "arcM": 0.86,
+    "centreShiftM": -0.0,
+    "clearM": 2.1,
+    "kind": "opening",
+    "offsetM": [
+     0.0,
+     -1.23
+    ],
+    "rayConfirmed": true,
+    "sideDeg": 0.0,
+    "sillYM": 1.15,
+    "widthM": 1.35
+   },
+   "floorOffsetM": 0.0,
+   "frontFaceFraction": 0.0,
+   "headroomM": 21.38,
+   "heightM": 26.81,
+   "interior": "shell",
+   "medianWallM": 1.97,
+   "planAreaM2": 24.12,
+   "planCentreM": [
+    0.0,
+    0.0
+   ],
+   "provenance": [],
+   "ringFraction": 1.0,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "storeyLevelsM": [
+    0.0
+   ],
+   "storeys": 1,
+   "why": "measured to enclose a volume \u2014 100% of the ring at 1.6 m hits a wall, there is a roof overhead and 2.0 m of room to stand \u2014 with no matched interior and no tileset rule, so Phase 12 must claim an interior for it"
+  },
+  "vanilla:dungeons/nordic/exterior/nortmpextplattowerbridge01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 180.0,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 181 times with other statics to one side; the side they left open, at 180\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "heightM": 1.48,
+   "interior": "none",
+   "planAreaM2": 15.48,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (15.5 m\u00b2 plan, 1.5 m tall)"
+  },
+  "vanilla:dungeons/nordic/exterior/nortmpextplattowerbridgeendcap01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 1.37,
+   "interior": "none",
+   "planAreaM2": 2.1,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (2.1 m\u00b2 plan, 1.4 m tall)"
+  },
+  "vanilla:dungeons/nordic/exterior/nortmpextplattowerbridgefree01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 0.0,
+   "front": {
+    "deg": 0.0,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 119 times with other statics to one side; the side they left open, at 0\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "frontFaceFraction": 0.175,
+   "headroomM": 1.81,
+   "heightM": 3.59,
+   "interior": "none",
+   "medianWallM": 1.11,
+   "planAreaM2": 10.82,
+   "planCentreM": [
+    -0.13,
+    -0.52
+   ],
+   "provenance": [],
+   "ringFraction": 0.875,
+   "roofOverhead": true,
+   "sizeClass": "small",
+   "why": "a crawl space, not a room \u2014 only 1.8 m of headroom (a room needs 2.2 m), so this is the underside of a deck, plaza or platform"
+  },
+  "vanilla:dungeons/nordic/exterior/nortmpextplatwall01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 9.12,
+   "front": {
+    "deg": 270.2,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 53 times with other statics to one side; the side they left open, at 270\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 5.41,
+   "heightM": 14.58,
+   "interior": "none",
+   "medianWallM": 2.21,
+   "planAreaM2": 148.37,
+   "planCentreM": [
+    0.91,
+    -0.52
+   ],
+   "provenance": [],
+   "ringFraction": 0.458,
+   "roofOverhead": true,
+   "sizeClass": "large",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "vanilla:dungeons/nordic/exterior/nortmpextplatwall02": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "floorOffsetM": 8.0,
+   "front": {
+    "deg": 96.2,
+    "evidence": "co-placement",
+    "outside": true,
+    "why": "the source authors placed this piece 188 times with other statics to one side; the side they left open, at 96\u00b0 in its own frame, is the front \u2014 and on an enclosure edge that open side is the outside"
+   },
+   "frontFaceFraction": 0.0,
+   "headroomM": 6.58,
+   "heightM": 14.58,
+   "interior": "none",
+   "medianWallM": 3.66,
+   "planAreaM2": 72.22,
+   "planCentreM": [
+    0.0,
+    -2.32
+   ],
+   "provenance": [],
+   "ringFraction": 0.278,
+   "roofOverhead": true,
+   "sizeClass": "medium",
+   "why": "name token 'wall' \u2014 a hull, a hollow tree or a floor slab, not a building"
+  },
+  "vanilla:dungeons/nordic/exterior/nortmpextstairsfree01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 1.58,
+   "interior": "none",
+   "planAreaM2": 40.45,
+   "provenance": [],
+   "sizeClass": "medium",
+   "why": "too small to hold an interior (40.5 m\u00b2 plan, 1.6 m tall)"
+  },
+  "vanilla:dungeons/nordic/rubble/norvineceiling01nocol": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 2.13,
+   "interior": "none",
+   "planAreaM2": 0.9,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (0.9 m\u00b2 plan, 2.1 m tall)"
+  },
+  "vanilla:dungeons/nordic/rubble/norvinefloor01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.38,
+   "interior": "none",
+   "planAreaM2": 34.18,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (34.2 m\u00b2 plan, 0.4 m tall)"
+  },
+  "vanilla:dungeons/nordic/rubble/norvinefloor01nocol": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 0.38,
+   "interior": "none",
+   "planAreaM2": 34.18,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (34.2 m\u00b2 plan, 0.4 m tall)"
+  },
+  "vanilla:dungeons/nordic/rubble/norvinefloor02nocol": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": {
+    "deg": 135.3,
+    "evidence": "asymmetry",
+    "outside": true,
+    "why": "the band at 135\u00b0 in the piece's own frame carries 1.69x the triangle density of a median band \u2014 the detailed face, which is the show side"
+   },
+   "heightM": 0.44,
+   "interior": "none",
+   "planAreaM2": 27.36,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (27.4 m\u00b2 plan, 0.4 m tall)"
+  },
+  "vanilla:dungeons/nordic/rubble/norvinewall01": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 6.39,
+   "interior": "none",
+   "planAreaM2": 2.21,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (2.2 m\u00b2 plan, 6.4 m tall)"
+  },
+  "vanilla:dungeons/nordic/rubble/norvinewall01nocol": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 6.39,
+   "interior": "none",
+   "planAreaM2": 2.21,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (2.2 m\u00b2 plan, 6.4 m tall)"
+  },
+  "vanilla:dungeons/nordic/rubble/norvinewall02": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 6.39,
+   "interior": "none",
+   "planAreaM2": 1.94,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.9 m\u00b2 plan, 6.4 m tall)"
+  },
+  "vanilla:dungeons/nordic/rubble/norvinewall02nocol": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 6.39,
+   "interior": "none",
+   "planAreaM2": 1.94,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.9 m\u00b2 plan, 6.4 m tall)"
+  },
+  "vanilla:dungeons/nordic/rubble/norvinewall03": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 6.39,
+   "interior": "none",
+   "planAreaM2": 0.98,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.0 m\u00b2 plan, 6.4 m tall)"
+  },
+  "vanilla:dungeons/nordic/rubble/norvinewall03nocol": {
+   "category": "dungeon-kit",
+   "entrance": null,
+   "entranceWhy": "not an enclosure, so no doorway is derived",
+   "front": null,
+   "heightM": 6.39,
+   "interior": "none",
+   "planAreaM2": 0.98,
+   "provenance": [],
+   "sizeClass": "small",
+   "why": "too small to hold an interior (1.0 m\u00b2 plan, 6.4 m tall)"
+  }
+ },
+ "kit": "ruin-imperial-v1",
+ "provenance": {
+  "exterior-interior-links.json": {
+   "miner": "worldgen.mine_door_links",
+   "minerVersion": "f82ba0f946d3",
+   "plugins": [
+    "ArgonianHome.esp",
+    "ArgonianLakeHouse.esl",
+    "Black Marsh North.esp",
+    "Black Marsh.esm",
+    "CCAyliedRuinsResources.esp",
+    "Cathedral - 3D FallForest Grass.esp",
+    "Cathedral - 3D Pine & Reach Grass.esp",
+    "Cathedral - 3D Tundra Grass.esp",
+    "DMArgonianHaus.esp",
+    "DarkwaterDen.esp",
+    "DepthsOfSkyrim.esp",
+    "Ferries  - Another Oakwood addon.esp",
+    "Ferries  - More Bandit Camps patch.esp",
+    "Ferries - Alternate Perspective - Here there be Monsters Patch.esp",
+    "Ferries - Alternate Perspective Patch.esp",
+    "Ferries - Alternate Start Patch.esp",
+    "Ferries - Animated Ships patch.esp",
+    "Ferries - B-oat patch - No inialta scene.esp",
+    "Ferries - B-oat patch - With Inialta Scene.esp",
+    "Ferries - Better Docks patch.esp",
+    "Ferries - Bruma Addon.esp",
+    "Ferries - Chanterelle Addon.esp",
+    "Ferries - Dynamic Boats Patch.esp",
+    "Ferries - JK Solitude Outskirts.esp",
+    "Ferries - JKs Raven Rock patch.esp",
+    "Ferries - Lainalten addon.esp",
+    "Ferries - Laintar Dale addon.esp",
+    "Ferries - Lux patch.esp",
+    "Ferries - Midwood Addon.esp",
+    "Ferries - Moon and Star addon.esp",
+    "Ferries - Old Gate Mill - Morthal Player house Addon.esp",
+    "Ferries - Riften patch.esp",
+    "Ferries - Rigmor of Bruma patch.esp",
+    "Ferries - Ryn Lumber Mills patch.esp",
+    "Ferries - Save the Icerunner Patch.esp",
+    "Ferries - Shadow Over Inialta addon.esp",
+    "Ferries - Siege At Icemoth Addon.esp",
+    "Ferries - TGSolitude Patch.esp",
+    "Ferries - Wyrmstooth Addon.esp",
+    "Ferries.esp",
+    "Here There Be Monsters - Curse of Cipactli.esp",
+    "King of the Murkmire.esp",
+    "SNT ferry.esp",
+    "SSKMovingBoats.esp",
+    "Sailboats.esp",
+    "Scriptfreeshipsailing.esp",
+    "Seashells.esp",
+    "Skyfall Sleeping Tree Overhaul.esp",
+    "Skyrim.esm",
+    "Tropical Skyrim -- Birds.esp",
+    "Tropical Skyrim.esp",
+    "Update.esm",
+    "Valenwood.esp",
+    "XanmeerResources.esp",
+    "igs_tileset_ayleid.esp"
+   ],
+   "poolRegister": {
+    "date": "2026-10-06",
+    "pools": [
+     "bmv",
+     "vanilla",
+     "tropical",
+     "xanmeer",
+     "drjacopo",
+     "hoddminir",
+     "jokerine",
+     "shores",
+     "mudmother",
+     "ferries",
+     "rowboats",
+     "ayleidcc",
+     "xalfek",
+     "darkwater",
+     "ayleidkit",
+     "histtree",
+     "canoe",
+     "ferryraft",
+     "sbot",
+     "depths",
+     "sirenroot",
+     "htbm",
+     "mwkeep",
+     "kotm",
+     "sailboats",
+     "impships",
+     "boatsanim",
+     "hlaalu"
+    ],
+    "source": "worldgen.asset_registry.POOLS",
+    "uncommittedChanges": false
+   },
+   "poolsMined": [
+    "ayleidcc",
+    "ayleidkit",
+    "bmv",
+    "boatsanim",
+    "canoe",
+    "darkwater",
+    "depths",
+    "drjacopo",
+    "ferries",
+    "ferryraft",
+    "histtree",
+    "htbm",
+    "jokerine",
+    "kotm",
+    "marshrest",
+    "mudmother",
+    "mwkeep",
+    "sailboats",
+    "tropical",
+    "vanilla",
+    "xalfek",
+    "xanmeer"
+   ],
+   "runDate": "2026-10-09"
+  },
+  "kit-assemblies-mined.json": {
+   "miner": "worldgen.mine_assemblies",
+   "minerVersion": "dd469251b755",
+   "plugins": [
+    "ArgonianLakeHouse.esl",
+    "Black Marsh North.esp",
+    "Black Marsh.esm",
+    "CCAyliedRuinsResources.esp",
+    "DMArgonianHaus.esp",
+    "DarkwaterDen.esp",
+    "DepthsOfSkyrim.esp",
+    "Ferries.esp",
+    "Here There Be Monsters - Curse of Cipactli.esp",
+    "King of the Murkmire.esp",
+    "SNT ferry.esp",
+    "SSKMovingBoats.esp",
+    "Sailboats.esp",
+    "Scriptfreeshipsailing.esp",
+    "Seashells.esp",
+    "Skyfall Sleeping Tree Overhaul.esp",
+    "Skyrim.esm",
+    "Tropical Skyrim -- Birds.esp",
+    "Tropical Skyrim.esp",
+    "Update.esm",
+    "Valenwood.esp",
+    "XanmeerResources.esp",
+    "igs_tileset_ayleid.esp"
+   ],
+   "poolRegister": {
+    "date": "2026-09-25",
+    "pools": [
+     "bmv",
+     "vanilla",
+     "tropical",
+     "xanmeer",
+     "drjacopo",
+     "hoddminir",
+     "jokerine",
+     "shores",
+     "mudmother",
+     "ferries",
+     "rowboats",
+     "ayleidcc",
+     "xalfek",
+     "darkwater",
+     "ayleidkit",
+     "histtree",
+     "canoe",
+     "ferryraft",
+     "sbot",
+     "depths",
+     "sirenroot",
+     "htbm",
+     "mwkeep",
+     "kotm",
+     "sailboats",
+     "impships",
+     "boatsanim",
+     "hlaalu"
+    ],
+    "source": "worldgen.asset_registry.POOLS",
+    "uncommittedChanges": true
+   },
+   "poolsMined": [
+    "ayleidcc",
+    "ayleidkit",
+    "bmv",
+    "boatsanim",
+    "canoe",
+    "darkwater",
+    "depths",
+    "ferries",
+    "ferryraft",
+    "histtree",
+    "htbm",
+    "jokerine",
+    "kotm",
+    "mudmother",
+    "mwkeep",
+    "sailboats",
+    "tropical",
+    "vanilla",
+    "xalfek",
+    "xanmeer"
+   ],
+   "runDate": "2026-09-26"
+  }
+ },
+ "rules": {
+  "doorwayArcM": [
+   0.8,
+   5.0
+  ],
+  "enclosureMinRing": 0.75,
+  "enclosureMinRoomM": 1.5,
+  "entranceRank": [
+   "esp-door",
+   "assembly",
+   "composite-leaf",
+   "approach",
+   "door-piece",
+   "leaf",
+   "opening",
+   "open-front"
+  ],
+  "entranceRankWhy": "one canonical entrance per piece (owner ruling 2026-09-07), ranked from the mod's own load door down to an open front; the losing evidence stays in `provenance` for audit and is never drawn or matched against",
+  "eyeHeightM": 1.6,
+  "frontEvidence": [
+   "co-placement (the bearing away from the neighbours the source authors planted around this piece)",
+   "asymmetry (the bearing band with the highest triangle density: the detailed, outward face)"
+  ],
+  "sizeClassMaxM2": {
+   "medium": 120.0,
+   "small": 40.0
+  }
+ },
+ "schemaVersion": 2
+}
