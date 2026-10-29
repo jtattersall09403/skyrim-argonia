@@ -175,7 +175,10 @@
    "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; SKSE's own readme terms not read"
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; SKSE's own readme terms not read",
+   "runtime": "loads on 1.7.104.0 (skse64 2.3.1 loader; main menu reached 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "address-library",
@@ -202,7 +205,10 @@
    "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "crash-logger",
@@ -226,7 +232,41 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
    "ai_clause": "none: open licence MIT governs",
    "permission_ask": false,
-   "permission_evidence": "gh api repos/alandtse/CrashLoggerSSE licence MIT; Nexus description states no AI clause"
+   "permission_evidence": "gh api repos/alandtse/CrashLoggerSSE licence MIT; Nexus description states no AI clause",
+   "runtime": "loads on 1.7.104.0 (CrashLogger.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "engine-fixes",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 17230,
+    "file": 794484
+   },
+   "name": "SSE Engine Fixes (skse64 plugin)",
+   "author": "aers",
+   "version": "7.0.21 beta",
+   "archive": "Engine Fixes 7.0.21 beta for Skyrim AE 1.7.99 17230 7.0.21 2026-08-24T16-52Z vlGiB9OkV.7z",
+   "size_kb": 9289,
+   "why": "Community Shaders requires EngineFixes.dll (without it CS disables all its hooks and features, seen at the main menu 2026-10-29); engine bug fixes",
+   "chunk": "0.2",
+   "required": true,
+   "profile": "play",
+   "sha256": "b6de89ec76d426e2f9701dce0cba44dd07619abe1ed885bfafd34cceb3225744",
+   "licence": "MIT (github aers/EngineFixesSkyrim64)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence MIT governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/aers/EngineFixesSkyrim64 licence MIT; Nexus description states no AI clause",
+   "pick": [
+    "EngineFixes FOMOD Installer/Required/*",
+    "EngineFixes FOMOD Installer/AE/*"
+   ],
+   "runtime": "loads on 1.7.104.0 (EngineFixes.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "papyrusutil",
@@ -250,7 +290,10 @@
    "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
+   "runtime": "loads on 1.7.104.0 (PapyrusUtil.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "po3-tweaks",
@@ -274,7 +317,10 @@
    "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; gh powerof3/Tweaks not found"
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; gh powerof3/Tweaks not found",
+   "runtime": "loads on 1.7.104.0 (po3_Tweaks.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "po3-papyrus-extender",
@@ -298,7 +344,10 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
    "ai_clause": "none: open licence GPL-3.0 governs",
    "permission_ask": false,
-   "permission_evidence": "gh api repos/powerof3/PapyrusExtenderSSE licence GPL-3.0; Nexus description states no AI clause"
+   "permission_evidence": "gh api repos/powerof3/PapyrusExtenderSSE licence GPL-3.0; Nexus description states no AI clause",
+   "runtime": "loads on 1.7.104.0 (po3_PapyrusExtender.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "consoleutil-extended",
@@ -322,7 +371,10 @@
    "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; gh KrisV777/ConsoleUtilExtended not found"
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; gh KrisV777/ConsoleUtilExtended not found",
+   "runtime": "its ConsoleUtilSSE.dll is replaced by consoleutilsse-ng's 1.7 build (intended)",
+   "conflicts": "ConsoleUtilSSE.dll overridden by consoleutilsse-ng (resolved: the later row is the 1.7 build)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "consoleutilsse-ng",
@@ -346,7 +398,10 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
    "ai_clause": "none: open licence GPL-3.0 governs",
    "permission_ask": false,
-   "permission_evidence": "gh api repos/VersuchDrei/ConsoleUtilSSE licence GPL-3.0; Nexus description states no AI clause"
+   "permission_evidence": "gh api repos/VersuchDrei/ConsoleUtilSSE licence GPL-3.0; Nexus description states no AI clause",
+   "runtime": "loads on 1.7.104.0 (ConsoleUtilSSE.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "fuz-ro-doh",
@@ -370,7 +425,10 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
    "ai_clause": "none: open licence GPL-3.0 governs",
    "permission_ask": false,
-   "permission_evidence": "repo guessed from author name shadeMe; gh licence GPL-3.0; page text has no terms"
+   "permission_evidence": "repo guessed from author name shadeMe; gh licence GPL-3.0; page text has no terms",
+   "runtime": "loads on 1.7.104.0 (Fuz Ro D'oh.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "skyui",
@@ -397,7 +455,10 @@
    "permission_evidence": "Nexus description read; gh schlangster/skyui licence none; reuse-audit.md line 236 'source-visible, not open-licensed'",
    "plugins": [
     "SkyUI_SE.esp"
-   ]
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "mcm-helper",
@@ -430,7 +491,10 @@
    "permission_evidence": "gh api repos/Exit-9B/MCM-Helper licence MIT; Nexus description states no AI clause",
    "plugins": [
     "MCMHelper.esp"
-   ]
+   ],
+   "runtime": "loads on 1.7.104.0 (MCMHelper.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "pandora",
@@ -455,7 +519,10 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
    "ai_clause": "none: open licence GPL-3.0 governs",
    "permission_ask": false,
-   "permission_evidence": "gh api repos/Monitor221hz/Pandora-Behaviour-Engine-Plus licence GPL-3.0; Nexus description states no AI clause"
+   "permission_evidence": "gh api repos/Monitor221hz/Pandora-Behaviour-Engine-Plus licence GPL-3.0; Nexus description states no AI clause",
+   "runtime": "a Windows tool, runs beside the game",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "open-animation-replacer",
@@ -482,7 +549,10 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
    "ai_clause": "none: open licence GPL-3.0 governs",
    "permission_ask": false,
-   "permission_evidence": "gh api repos/Ersh1/OpenAnimationReplacer licence GPL-3.0; Nexus description states no AI clause"
+   "permission_evidence": "gh api repos/Ersh1/OpenAnimationReplacer licence GPL-3.0; Nexus description states no AI clause",
+   "runtime": "loads on 1.7.104.0 (OpenAnimationReplacer.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "animation-queue-fix",
@@ -509,7 +579,10 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
    "ai_clause": "none: open licence GPL-3.0 governs",
    "permission_ask": false,
-   "permission_evidence": "gh api repos/Ersh1/AnimationQueueFix licence GPL-3.0; Nexus description states no AI clause"
+   "permission_evidence": "gh api repos/Ersh1/AnimationQueueFix licence GPL-3.0; Nexus description states no AI clause",
+   "runtime": "loads on 1.7.104.0 (AnimationQueueFix.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "amr",
@@ -533,7 +606,10 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
    "ai_clause": "none: open licence MIT governs",
    "permission_ask": false,
-   "permission_evidence": "gh api repos/alexsylex/AnimationMotionRevolution licence MIT; Nexus description states no AI clause"
+   "permission_evidence": "gh api repos/alexsylex/AnimationMotionRevolution licence MIT; Nexus description states no AI clause",
+   "runtime": "its AnimationMotionRevolution.dll is replaced by amr-1.7.104's 1.7 build (intended)",
+   "conflicts": "AnimationMotionRevolution.dll overridden by amr-1.7.104 (resolved: the later row is the 1.7 build)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "amr-1.7.104",
@@ -560,7 +636,10 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
    "ai_clause": "none: open licence MIT governs",
    "permission_ask": false,
-   "permission_evidence": "Nexus description says original source by alexsylex; upstream gh MIT; rebuild repo's own licence not read"
+   "permission_evidence": "Nexus description says original source by alexsylex; upstream gh MIT; rebuild repo's own licence not read",
+   "runtime": "loads on 1.7.104.0 (AnimationMotionRevolution.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "payload-interpreter",
@@ -584,7 +663,10 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
    "ai_clause": "none: open licence MIT governs",
    "permission_ask": false,
-   "permission_evidence": "gh api repos/D7ry/PayloadInterpreter licence MIT; Nexus description states no AI clause"
+   "permission_evidence": "gh api repos/D7ry/PayloadInterpreter licence MIT; Nexus description states no AI clause",
+   "runtime": "its PayloadInterpreter.dll is replaced by payload-interpreter-1.7.104's 1.7 build (intended)",
+   "conflicts": "PayloadInterpreter.dll overridden by payload-interpreter-1.7.104 (resolved: the later row is the 1.7 build)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "payload-interpreter-1.7.104",
@@ -608,7 +690,10 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
    "ai_clause": "none: open licence GPL-3.0-or-later governs",
    "permission_ask": false,
-   "permission_evidence": "Nexus description states relicensed GPL-3.0-or-later, D7ry MIT original preserved; gh GPL-3.0"
+   "permission_evidence": "Nexus description states relicensed GPL-3.0-or-later, D7ry MIT original preserved; gh GPL-3.0",
+   "runtime": "loads on 1.7.104.0 (PayloadInterpreter.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "behavior-data-injector",
@@ -635,7 +720,10 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
    "ai_clause": "none: open licence GPL-3.0 governs",
    "permission_ask": false,
-   "permission_evidence": "gh api repos/doodlum/BehaviorDataInjector licence GPL-3.0; Nexus description states no AI clause"
+   "permission_evidence": "gh api repos/doodlum/BehaviorDataInjector licence GPL-3.0; Nexus description states no AI clause",
+   "runtime": "loads on 1.7.104.0 (BehaviorDataInjector.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "spid",
@@ -659,7 +747,10 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
    "ai_clause": "none: open licence MIT governs",
    "permission_ask": false,
-   "permission_evidence": "gh api repos/powerof3/Spell-Perk-Item-Distributor licence MIT; Nexus description states no AI clause"
+   "permission_evidence": "gh api repos/powerof3/Spell-Perk-Item-Distributor licence MIT; Nexus description states no AI clause",
+   "runtime": "loads on 1.7.104.0 (po3_SpellPerkItemDistributor.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "dtry-key-utils",
@@ -686,7 +777,10 @@
    "permission_evidence": "gh D7ry/DtryKeyUtil licence none; Nexus API v1 description read in full; no permission or AI text found",
    "plugins": [
     "Keytrace.esp"
-   ]
+   ],
+   "runtime": "its DtryKeyUtil.dll is replaced by dtry-key-utils-1.7.104's 1.7 build (intended)",
+   "conflicts": "DtryKeyUtil.dll overridden by dtry-key-utils-1.7.104 (resolved: the later row is the 1.7 build)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "dtry-key-utils-1.7.104",
@@ -710,7 +804,10 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
    "ai_clause": "none: open licence GPL-3.0 governs",
    "permission_ask": false,
-   "permission_evidence": "gh licence GPL-3.0; description discloses the patch was made with AI assistance and relies on Dtry's modification grant; original D7ry/DtryKeyUtil has no licence file"
+   "permission_evidence": "gh licence GPL-3.0; description discloses the patch was made with AI assistance and relies on Dtry's modification grant; original D7ry/DtryKeyUtil has no licence file",
+   "runtime": "loads on 1.7.104.0 (DtryKeyUtil.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "skse-menu-framework",
@@ -734,7 +831,10 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
    "ai_clause": "none: open licence GPL-3.0 governs",
    "permission_ask": false,
-   "permission_evidence": "gh api repos/qtr-modding/skse-menu-framework-3 licence GPL-3.0; Nexus description states no AI clause"
+   "permission_evidence": "gh api repos/qtr-modding/skse-menu-framework-3 licence GPL-3.0; Nexus description states no AI clause",
+   "runtime": "loads on 1.7.104.0 (SKSEMenuFramework.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "imgui-icons",
@@ -758,7 +858,10 @@
    "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; credits Jost, Noto Sans JP, Font Awesome 5 icons without terms"
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; credits Jost, Noto Sans JP, Font Awesome 5 icons without terms",
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "media-keys-fix",
@@ -782,7 +885,10 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
    "ai_clause": "none: open licence LGPL-3.0 governs",
    "permission_ask": false,
-   "permission_evidence": "gh api repos/epinter/MediaKeysFix licence LGPL-3.0; Nexus description states no AI clause"
+   "permission_evidence": "gh api repos/epinter/MediaKeysFix licence LGPL-3.0; Nexus description states no AI clause",
+   "runtime": "loads on 1.7.104.0 (MediaKeysFix.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "xpmsse",
@@ -820,7 +926,10 @@
    "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; skeleton/behaviour assets used as installed dependency",
    "plugins": [
     "XPMSE.esp"
-   ]
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "pandora-xpmse-patch",
@@ -844,7 +953,10 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
    "ai_clause": "none: open licence GPL-3.0 governs",
    "permission_ask": false,
-   "permission_evidence": "gh api repos/Monitor221hz/Skyrim-Skeleton-Auto-Patch licence GPL-3.0; Nexus description states no AI clause"
+   "permission_evidence": "gh api repos/Monitor221hz/Skyrim-Skeleton-Auto-Patch licence GPL-3.0; Nexus description states no AI clause",
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "ssedisplaytweaks",
@@ -871,7 +983,10 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
    "ai_clause": "none: open licence MIT governs",
    "permission_ask": false,
-   "permission_evidence": "gh api repos/SlavicPotato/SSEDisplayTweaks licence MIT; Nexus description states no AI clause"
+   "permission_evidence": "gh api repos/SlavicPotato/SSEDisplayTweaks licence MIT; Nexus description states no AI clause",
+   "runtime": "loads on 1.7.104.0 (SSEDisplayTweaks.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "precision",
@@ -913,7 +1028,10 @@
    "permission_evidence": "gh api repos/Ersh1/Precision licence GPL-3.0; Nexus description states no AI clause",
    "plugins": [
     "Precision.esp"
-   ]
+   ],
+   "runtime": "loads on 1.7.104.0 (Precision.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "true-directional-movement",
@@ -962,7 +1080,10 @@
    "permission_evidence": "gh api repos/Ersh1/TrueDirectionalMovement licence GPL-3.0; Nexus description states no AI clause",
    "plugins": [
     "TrueDirectionalMovement.esp"
-   ]
+   ],
+   "runtime": "loads on 1.7.104.0 (TrueDirectionalMovement.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "truehud",
@@ -994,7 +1115,10 @@
    "permission_evidence": "gh api repos/Ersh1/TrueHUD licence GPL-3.0; Nexus description states no AI clause",
    "plugins": [
     "TrueHUD.esl"
-   ]
+   ],
+   "runtime": "loads on 1.7.104.0 (TrueHUD.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "tk-dodge-se",
@@ -1022,7 +1146,10 @@
    "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "tk-dodge-re",
@@ -1056,7 +1183,10 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
    "ai_clause": "none: open licence MIT governs",
    "permission_ask": false,
-   "permission_evidence": "gh api repos/max-su-2019/TK_Dodge_RE licence MIT; Nexus description states no AI clause"
+   "permission_evidence": "gh api repos/max-su-2019/TK_Dodge_RE licence MIT; Nexus description states no AI clause",
+   "runtime": "its TK_Dodge_RE.dll is replaced by tk-dodge-re-addon's 1.7 build (intended)",
+   "conflicts": "TK_Dodge_RE.dll overridden by tk-dodge-re-addon (resolved: the later row is the 1.7 build)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "tk-dodge-re-addon",
@@ -1097,7 +1227,10 @@
    "permission_evidence": "Nexus description: 'Source and permissions are open though and ports are welcome as long as they honor the license of the code'; no licence named",
    "plugins": [
     "TKDodgeAddon.esp"
-   ]
+   ],
+   "runtime": "loads on 1.7.104.0 (TK_Dodge_RE.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "dynamic-dodge",
@@ -1128,7 +1261,10 @@
    "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "iframe-generator",
@@ -1159,7 +1295,10 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
    "ai_clause": "none: open licence GPL-3.0 governs",
    "permission_ask": false,
-   "permission_evidence": "gh api repos/doodlum/MaxsuIFrame-NG licence GPL-3.0; Nexus description states no AI clause"
+   "permission_evidence": "gh api repos/doodlum/MaxsuIFrame-NG licence GPL-3.0; Nexus description states no AI clause",
+   "runtime": "loads on 1.7.104.0 (MaxsuIFrame.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "skysa",
@@ -1194,7 +1333,10 @@
    "permission_evidence": "Nexus description is a video link only; reuse-audit.md line 267: no source or licence stated",
    "plugins": [
     "(SGC) SkySA.esp"
-   ]
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "elder-souls-sword",
@@ -1226,7 +1368,10 @@
    "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "one-click-power-attack",
@@ -1268,7 +1413,10 @@
    "permission_evidence": "gh jarari/OneClickPowerAttack licence none (reuse-audit.md line 273); Nexus API v1 description read in full; no permission or AI text found",
    "plugins": [
     "OCPA.esl"
-   ]
+   ],
+   "runtime": "loads on 1.7.104.0 (OneClickPowerAttack.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "oar-stamina-cost",
@@ -1297,7 +1445,10 @@
    "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission. Page mentions an LLM only as an idea source.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; mod is an OAR animation folder (stamina-cost data), page credits a Gemini LLM for ideas only"
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; mod is an OAR animation folder (stamina-cost data), page credits a Gemini LLM for ideas only",
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "elden-parry",
@@ -1338,7 +1489,10 @@
    "permission_evidence": "gh D7ry/EldenParry licence none; doodlum fork GPL-3.0 (reuse-audit.md line 271)",
    "plugins": [
     "EldenParry.esp"
-   ]
+   ],
+   "runtime": "its EldenParry.dll is replaced by elden-parry-1.7.99's 1.7 build (intended)",
+   "conflicts": "EldenParry.dll overridden by elden-parry-1.7.99 (resolved: the later row is the 1.7 build)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "elden-parry-1.7.99",
@@ -1366,7 +1520,10 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
    "ai_clause": "none: open licence GPL-3.0 governs",
    "permission_ask": false,
-   "permission_evidence": "gh licences GPL-3.0 for doodlum forks; base D7ry/DtryKeyUtil has no licence file"
+   "permission_evidence": "gh licences GPL-3.0 for doodlum forks; base D7ry/DtryKeyUtil has no licence file",
+   "runtime": "loads on 1.7.104.0 (EldenParry.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "elden-parry-precision-fix",
@@ -1394,7 +1551,10 @@
    "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "bdi-payload-patch",
@@ -1422,7 +1582,10 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
    "ai_clause": "none: open licence MIT governs",
    "permission_ask": false,
-   "permission_evidence": "gh api repos/max-su-2019/BehaviorDataInjector licence MIT; Nexus description states no AI clause"
+   "permission_evidence": "gh api repos/max-su-2019/BehaviorDataInjector licence MIT; Nexus description states no AI clause",
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "rim-parry",
@@ -1453,7 +1616,10 @@
    "permission_evidence": "Nexus API v1 description read 2026-10-29 (lane 0.2): no permission or AI text found",
    "plugins": [
     "RimExecutionHitSA.esp"
-   ]
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "rim-parry-ctd-fix",
@@ -1484,7 +1650,10 @@
    "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
    "plugins": [
     "RimExecutionHitSA.esp"
-   ]
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "rim-parry-elden-patch",
@@ -1515,7 +1684,10 @@
    "permission_evidence": "Nexus text credits only; reuse-audit.md line 272: source and licence unverified",
    "plugins": [
     "EREP_patchSA.esp"
-   ]
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "1 dangling refs inside EREP_patchSA.esp's own records (upstream leftovers; no missing master; houseCARL check 2026-10-29)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "rim-parry-one-parry",
@@ -1543,7 +1715,10 @@
    "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "modern-stagger-lock",
@@ -1567,7 +1742,10 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
    "ai_clause": "none: open licence MIT governs",
    "permission_ask": false,
-   "permission_evidence": "gh api repos/SkyHorizon3/ModernStaggerLock licence MIT, pushed 2026-10-27; no AI clause in the licence"
+   "permission_evidence": "gh api repos/SkyHorizon3/ModernStaggerLock licence MIT, pushed 2026-10-27; no AI clause in the licence",
+   "runtime": "loads on 1.7.104.0 (ModernStaggerLock.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "maxsu-block-overhaul",
@@ -1593,7 +1771,10 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
    "ai_clause": "none: open licence MIT governs",
    "permission_ask": false,
-   "permission_evidence": "gh api repos/max-su-2019/MaxuBlockOverhaul licence MIT, pushed 2025-02-17; Nexus 114366 text links it"
+   "permission_evidence": "gh api repos/max-su-2019/MaxuBlockOverhaul licence MIT, pushed 2025-02-17; Nexus 114366 text links it",
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "dark-souls-combat",
@@ -1624,7 +1805,10 @@
    "permission_summary": "Page says do not reupload, make derivatives or use its assets without permission; a pure player-download dependency is not covered, and the owner confirmed use on 2026-10-29.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus description: 'Please do not reupload, make a derivative work, or use assets from this mod without my permission'; combat-mod-28567.md line 29 owner-confirmed fine 2026-10-29; no AI text"
+   "permission_evidence": "Nexus description: 'Please do not reupload, make a derivative work, or use assets from this mod without my permission'; combat-mod-28567.md line 29 owner-confirmed fine 2026-10-29; no AI text",
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "freeclimb",
@@ -1651,7 +1835,10 @@
    "permission_evidence": "Nexus description: code GPL-3.0 only; gh GPL-3.0; sourcing-register uses its clips (third-party animation licensing is in its THIRD-PARTY-NOTICES, not read)",
    "plugins": [
     "FreeClimb.esp"
-   ]
+   ],
+   "runtime": "loads on 1.7.104.0 (FreeClimb.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "swimming-extensions",
@@ -1678,7 +1865,10 @@
    "permission_evidence": "Nexus description: 'Svimex's source code is AGPLv3'; gh AGPL-3.0",
    "plugins": [
     "SwimmingExtensions.esp"
-   ]
+   ],
+   "runtime": "loads on 1.7.104.0 (Svimex.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "sailable-ship",
@@ -1705,7 +1895,10 @@
    "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; reuse-audit.md line 259: permissions unknown, fork only after permission is read",
    "plugins": [
     "Sailable Ship.esm"
-   ]
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "evg-animated-traversal",
@@ -1732,7 +1925,10 @@
    "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; sourcing-register uses its wall-drop, failed-ledge and ladder clips",
    "plugins": [
     "EVGAnimatedTraversal.esl"
-   ]
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "custom-skills-framework",
@@ -1756,7 +1952,10 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
    "ai_clause": "none: open licence MIT governs",
    "permission_ask": false,
-   "permission_evidence": "gh licence MIT; reuse-audit.md line 250"
+   "permission_evidence": "gh licence MIT; reuse-audit.md line 250",
+   "runtime": "loads on 1.7.104.0 (CustomSkills.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "prismaui",
@@ -1780,7 +1979,10 @@
    "permission_summary": "Custom licence allows free use up to US$100k revenue and unmodified redistribution with the licence file; a project depending on it unmodified needs no permission, but publicly distributing a modified build needs written permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "reuse-audit.md line 232 (Prisma UI License: modified versions need written permission; no AI clause found, grep of LICENSE.md for AI/machine/artificial/train returned nothing); gh licence NOASSERTION"
+   "permission_evidence": "reuse-audit.md line 232 (Prisma UI License: modified versions need written permission; no AI clause found, grep of LICENSE.md for AI/machine/artificial/train returned nothing); gh licence NOASSERTION",
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "dear-diary",
@@ -1821,7 +2023,10 @@
    "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus description read; reuse-audit.md line 233: permissions unknown; credits SureAI SWF 'used with permission'"
+   "permission_evidence": "Nexus description read; reuse-audit.md line 233: permissions unknown; credits SureAI SWF 'used with permission'",
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "wood-and-paper",
@@ -1845,7 +2050,10 @@
    "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus description read; reuse-audit.md line 234: permissions unknown"
+   "permission_evidence": "Nexus description read; reuse-audit.md line 234: permissions unknown",
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "oblivion-loading-menu",
@@ -1874,7 +2082,10 @@
    "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus description read; reuse-audit.md line 235: permissions unknown, reuses SureAI SWF with permission"
+   "permission_evidence": "Nexus description read; reuse-audit.md line 235: permissions unknown, reuses SureAI SWF with permission",
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "flat-world-map",
@@ -1901,7 +2112,10 @@
    "permission_evidence": "Nexus description read; reuse-audit.md line 255: permissions unknown; bundles a GPLv3 add-on 'with author's permission'",
    "plugins": [
     "FWMF for Fantasy Paper Maps.esp"
-   ]
+   ],
+   "runtime": "loads on 1.7.104.0 (FlatMapMarkersSSE.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "no-google-maps",
@@ -1925,7 +2139,10 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
    "ai_clause": "none: open licence GPL-3.0 governs",
    "permission_ask": false,
-   "permission_evidence": "gh licence GPL-3.0; reuse-audit.md line 254"
+   "permission_evidence": "gh licence GPL-3.0; reuse-audit.md line 254",
+   "runtime": "loads on 1.7.104.0 (NoGoogleMapsSkyrim.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "magic-expanded",
@@ -1952,7 +2169,10 @@
    "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
    "plugins": [
     "Magic.esp"
-   ]
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "community-shaders",
@@ -1976,7 +2196,10 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
    "ai_clause": "none: open licence GPL-3.0 governs",
    "permission_ask": false,
-   "permission_evidence": "Nexus description 'Open Source (GPL-3.0)'; gh GPL-3.0"
+   "permission_evidence": "Nexus description 'Open Source (GPL-3.0)'; gh GPL-3.0",
+   "runtime": "loads on 1.7.104.0 (CommunityShaders.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "tropical-skyrim-sse",
@@ -2004,7 +2227,10 @@
    "plugins": [
     "Tropical Skyrim -- Birds.esp",
     "Tropical Skyrim.esp"
-   ]
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "xanmeer-tileset",
@@ -2031,7 +2257,10 @@
    "permission_evidence": "Nexus description read: tileset 'purely the models/textures'; credits NorthWindBlue/Jonathan Morris; assets-creatures.md says 'available for this project' per audit-world.md line 53",
    "plugins": [
     "XanmeerResources.esp"
-   ]
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "king-of-the-murkmire",
@@ -2058,7 +2287,10 @@
    "permission_evidence": "Nexus description: 'Lastly, if you want to make an addon, please don't make use of AI in it at all'; assets-creatures.md line 131: 'free for use in your mods if they are released for free and do not make use of AI'; sourcing-register: author permission held by owner 2026-09-24",
    "plugins": [
     "King of the Murkmire.esp"
-   ]
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "336 dangling refs inside King of the Murkmire.esp's own records (upstream leftovers; no missing master; houseCARL check 2026-10-29)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "htbm",
@@ -2085,7 +2317,10 @@
    "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
    "plugins": [
     "Here There Be Monsters.esp"
-   ]
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "13 dangling refs inside Here There Be Monsters.esp's own records (upstream leftovers; no missing master; houseCARL check 2026-10-29)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "htbm-cipactli",
@@ -2112,7 +2347,10 @@
    "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; sourcing-register uses its native clothing (modder's resource, use with credit)",
    "plugins": [
     "Here There Be Monsters - Curse of Cipactli.esp"
-   ]
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "2 dangling refs inside Here There Be Monsters - Curse of Cipactli.esp's own records (upstream leftovers; no missing master; houseCARL check 2026-10-29)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "mud-mother-grove",
@@ -2139,7 +2377,10 @@
    "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
    "plugins": [
     "ArgonianLakeHouse.esl"
-   ]
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "xalfek",
@@ -2168,7 +2409,10 @@
    "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "mw-imperial-keep",
@@ -2192,7 +2436,10 @@
    "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus description: models 'usable for the modding community'; no formal terms"
+   "permission_evidence": "Nexus description: models 'usable for the modding community'; no formal terms",
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "mw-hlaalu",
@@ -2216,7 +2463,10 @@
    "permission_summary": "The page says the assets may be used freely in mods, and the audit notes a no-conversion-to-other-games flag; depending is fine, but placing its meshes in our plugin should be confirmed.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus description: 'You're free to use these assets in your mods'; assets-creatures.md line 132 notes a 'convert to other games: not allowed' flag on 157997"
+   "permission_evidence": "Nexus description: 'You're free to use these assets in your mods'; assets-creatures.md line 132 notes a 'convert to other games: not allowed' flag on 157997",
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "drjacopo-grass",
@@ -2240,7 +2490,10 @@
    "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "seashells",
@@ -2269,7 +2522,10 @@
    "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "shores-of-skyrim-cc",
@@ -2293,7 +2549,10 @@
    "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found"
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "base-object-swapper",
@@ -2317,7 +2576,10 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
    "ai_clause": "none: open licence GPL-3.0 governs",
    "permission_ask": false,
-   "permission_evidence": "gh api repos/powerof3/BaseObjectSwapper licence GPL-3.0; Nexus description states no AI clause"
+   "permission_evidence": "gh api repos/powerof3/BaseObjectSwapper licence GPL-3.0; Nexus description states no AI clause",
+   "runtime": "loads on 1.7.104.0 (po3_BaseObjectSwapper.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "skyrim-ferries",
@@ -2349,7 +2611,10 @@
    },
    "plugins": [
     "Ferries.esp"
-   ]
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "rowboats",
@@ -2373,7 +2638,10 @@
    "permission_summary": "Page says CC Attribution: free to share and adapt for any purpose including commercial with credit, so depending on or using the boat in our mod needs only attribution.",
    "ai_clause": "none: open licence CC-BY governs",
    "permission_ask": false,
-   "permission_evidence": "Nexus description 'License: CC Attribution'; no AI clause in text; version unspecified"
+   "permission_evidence": "Nexus description 'License: CC Attribution'; no AI clause in text; version unspecified",
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "cc-ayleid-resources",
@@ -2400,7 +2668,10 @@
    "permission_evidence": "Nexus description: 'Feel free to use these assets in your mods as long as these are not being sold ... proper credit'",
    "plugins": [
     "CCAyliedRuinsResources.esp"
-   ]
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "sleeping-hist-tree",
@@ -2427,7 +2698,10 @@
    "permission_evidence": "Nexus description: author gives permission only to backport to LE ('You have my permission')",
    "plugins": [
     "Skyfall Sleeping Tree Overhaul.esp"
-   ]
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "ships-and-boats-of-tamriel",
@@ -2451,7 +2725,10 @@
    "permission_summary": "Free to use in not-for-profit Skyrim mods with credit and no financial gain; depending is fine, and our free mod may use it with credit, but the page says nothing on AI or conversion.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus description Permissions: 'for anybody to use for their own not-for-profit Skyrim and SkyrimSE mods ... credit me'; no use for financial gain"
+   "permission_evidence": "Nexus description Permissions: 'for anybody to use for their own not-for-profit Skyrim and SkyrimSE mods ... credit me'; no use for financial gain",
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "depths-of-skyrim",
@@ -2478,7 +2755,10 @@
    "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
    "plugins": [
     "DepthsOfSkyrim.esp"
-   ]
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "22 dangling refs inside DepthsOfSkyrim.esp's own records (upstream leftovers; no missing master; houseCARL check 2026-10-29)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "sirenroot",
@@ -2505,7 +2785,10 @@
    "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
    "plugins": [
     "evgSIRENROOT.esm"
-   ]
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "sailboats-expanded-update",
@@ -2532,7 +2815,10 @@
    "permission_evidence": "Nexus API v1 description read 2026-10-29 (lane 0.2): no permission or AI text found",
    "plugins": [
     "Scriptfreeshipsailing.esp"
-   ]
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "sailboats-expanded",
@@ -2559,7 +2845,10 @@
    "permission_evidence": "Nexus description read; sourcing-register source.sailboats-expanded: Nexus box paraphrase no re-upload, no conversion to other games, asset use only with permission; some assets belong to other authors",
    "plugins": [
     "Sailboats.esp"
-   ]
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "boats-operational",
@@ -2589,7 +2878,10 @@
    "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; page credits Vicn and DeviantKaled permission to its own author only",
    "plugins": [
     "SSKMovingBoats.esp"
-   ]
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "bmv",
@@ -2623,7 +2915,10 @@
    "permission_evidence": "assets-creatures.md line 130 (ModDB page states no permissions or credits); audit-world.md line 53 ('available for this project')",
    "plugins": [
     "Black Marsh.esm"
-   ]
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "tropical-skyrim-le",
@@ -2647,7 +2942,9 @@
    "permission_summary": "The page requires contacting the author for permission before using its contents in another mod or re-uploading; a pure player-download dependency is not covered, but our generated plugin placing its trees is using its contents, so ask.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus description Licensing/Legal: 'you MUST contact me and obtain permission before uploading this mod to other sites or using its contents in your own mod'; assets-creatures.md line 129"
+   "permission_evidence": "Nexus description Licensing/Legal: 'you MUST contact me and obtain permission before uploading this mod to other sites or using its contents in your own mod'; assets-creatures.md line 129",
+   "runtime": "not laid (pipeline source)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "hoddminir",
@@ -2671,7 +2968,9 @@
    "permission_summary": "Described as a resource others may use in their own mods and retexture, but not in pay-for-mods; depending on the download is fine, and permission to place it in our generated plugin is implied but unwritten as a licence.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus description: resource pack 'you can use yourself', 'Feel free to change any texture', models not for pay-for-mods"
+   "permission_evidence": "Nexus description: resource pack 'you can use yourself', 'Feel free to change any texture', models not for pay-for-mods",
+   "runtime": "not laid (pipeline source)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "darkwater-den",
@@ -2695,7 +2994,9 @@
    "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; credits many third-party resource authors"
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; credits many third-party resource authors",
+   "runtime": "not laid (pipeline source)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "ayleid-building-kit",
@@ -2719,7 +3020,9 @@
    "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus description: modder's resource made with credited permission from Varlaisaran; no stated terms to us"
+   "permission_evidence": "Nexus description: modder's resource made with credited permission from Varlaisaran; no stated terms to us",
+   "runtime": "not laid (pipeline source)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "script-free-ship-sailing",
@@ -2743,7 +3046,9 @@
    "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission. The register's note says asset-use permission is not on file.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus description read; sourcing-register source.sfss-canoe: Nexus box paraphrase says no re-upload, asset use and modification only with author's permission, canoe needs FrankFamily's permission"
+   "permission_evidence": "Nexus description read; sourcing-register source.sfss-canoe: Nexus box paraphrase says no re-upload, asset use and modification only with author's permission, canoe needs FrankFamily's permission",
+   "runtime": "not laid (pipeline source)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "solitude-ferry",
@@ -2767,7 +3072,9 @@
    "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus description: 'If anyone knows how and wants to convert ferry for SE, go right ahead'; no other terms"
+   "permission_evidence": "Nexus description: 'If anyone knows how and wants to convert ferry for SE, go right ahead'; no other terms",
+   "runtime": "not laid (pipeline source)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "cyrodiil-ships",
@@ -2791,7 +3098,9 @@
    "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
-   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; Beyond Skyrim resource, all assets by Markus Liberty"
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; Beyond Skyrim resource, all assets by Markus Liberty",
+   "runtime": "not laid (pipeline source)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "skylink-ai",
@@ -2843,7 +3152,10 @@
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
    "ai_clause": "none: open licence GPL-3.0-only governs",
    "permission_ask": false,
-   "permission_evidence": "Nexus description: 'GPL-3.0-only, as required by Mutagen'; gh licence GPL-3.0"
+   "permission_evidence": "Nexus description: 'GPL-3.0-only, as required by Mutagen'; gh licence GPL-3.0",
+   "runtime": "a Windows tool, runs beside the game",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: a dev tool on our machine"
   }
  ]
 }

@@ -4,7 +4,7 @@
 #   housecarl.ps1 -Calls '[{"name":"housecarl_load_order_status","arguments":{}}]'
 param([string]$Calls = '[]', [switch]$List, [int]$TimeoutS = 600)
 $ErrorActionPreference = 'Stop'
-$exe = 'C:\argonia\MO2\tools\housecarl\housecarl\server\housecarl-mcp.exe'
+$exe = (Get-ChildItem C:\argonia\MO2\tools\housecarl -Recurse -Filter housecarl-mcp.exe | Select -First 1).FullName
 $psi = New-Object System.Diagnostics.ProcessStartInfo $exe
 $psi.UseShellExecute = $false; $psi.RedirectStandardInput = $true; $psi.RedirectStandardOutput = $true
 $psi.RedirectStandardError = $true; $psi.CreateNoWindow = $true

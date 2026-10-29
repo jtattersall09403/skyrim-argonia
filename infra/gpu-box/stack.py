@@ -653,7 +653,8 @@ def cmd_push(a):
 def cmd_menu(a):
     """Launch through SKSE in the desktop session; main menu = SKSE's data-loaded message plus a still."""
     os.environ.setdefault("DESKTOP_WAIT", "600")
-    out = run("desktop", r"& C:\argonia\infra\stack.ps1 menu", capture=True)
+    keep = "$env:ARGONIA_KEEP = '1'; " if os.environ.get("ARGONIA_KEEP") else ""  # leave the game running after
+    out = run("desktop", keep + r"& C:\argonia\infra\stack.ps1 menu", capture=True)
     print(out)
     stills = STACK / "stills"
     stills.mkdir(exist_ok=True)
