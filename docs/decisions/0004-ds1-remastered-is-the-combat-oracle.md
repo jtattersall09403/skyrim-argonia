@@ -1,9 +1,9 @@
 # 0004: Dark Souls Remastered is the combat yardstick; we match DS1 timings; knowledge only
 
 **Status:** decided 2026-10-27 (owner: "we should match DS1 for timings"; prefers DS1 Remastered, owns it;
-DS3 only came up because ds3-open-re looked like tooling, which it is not: it is netcode). Scoped 2026-10-29 by
-decision 0019's revision: combat is existing mods, tuned, so DSR is measured where a gap or a tuning question
-needs a number, not as a whole system to rebuild.
+DS3 only came up because ds3-open-re looked like tooling, which it is not: it is netcode). Since 2026-10-29 (decision
+0019) each DS1 behaviour is either a tuned mod or our own build, so DSR is measured for every number a mod row
+is tuned to or a built row implements.
 
 ## Context
 
@@ -16,7 +16,7 @@ live (since Nov 2022) though it has no client anti-cheat.
 ## Decision
 
 1. **Where a combat number or timing is set, it comes from measuring DS1 Remastered**, and only the numbers
-   the gap register (decision 0019 §2) or a tuning question needs are measured. Where the old design's numbers
+   the combat map (decision 0019 §2) tunes or builds are measured. Where the old design's numbers
    differ from DSR, **DSR wins** (owner ruling). Stats-driven damage, mitigation and attribute effects still come from
    Argonia's own Morrowind-based model (decision 0005): DS1 supplies the *feel* (windows, frames, poise
    behaviour, stamina rhythm, AI shape), Argonia supplies the *character sheet*.
@@ -40,9 +40,8 @@ live (since Nov 2022) though it has no client anti-cheat.
 
 ## Consequences
 
-- The 13/11/9 question is answered when roll i-frames are tuned (G6 if the gap register calls for it, else
-  1.4); the result is written back here.
-- Decision 0019 sets the frame: existing mods are the combat system and DSR is the yardstick for their gaps;
+- The 13/11/9 question is answered when roll i-frames are tuned (G6 if the combat map calls for it, else 1.4); the result is written back here.
+- Decision 0019 sets the frame: DS1's whole system is the target, each behaviour a tuned mod or our build;
   nothing of the old project's combat (code, constants, animation choices) is inherited.
 - Burden tiers: Argonia's ratios (fast < 0.2, mid < 0.35, fat < 1, of carry capacity) define the tiers; DSR
   supplies the i-frames and recovery per tier (DSR's own 25%/50% thresholds do not bind).

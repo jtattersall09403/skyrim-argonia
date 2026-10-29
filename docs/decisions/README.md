@@ -24,7 +24,7 @@ Rulings inherited from elder-souls-argonia are listed (carry / adapt / drop) in
 - [0015](0015-repo-licence-and-licence-tracking.md) Repo licence (GPL-3.0 code, CC BY-NC-SA content, recommended) and licence tracking
 - [0016](0016-weapon-classes-follow-morrowind.md) Weapon classes follow Morrowind, including crossbows and thrown
 - [0017](0017-one-coherent-argonian-ui-approach-chosen-with-the-owner.md) One coherent Argonian UI, Morrowind in spirit and good by today's standards: Morrowind dialogue and pause-menu windows (draggable, resizable, remembered); the approach chosen with the owner in G11
-- [0019](0019-combat-is-existing-mods-tuned-built-only-where-they-fall-short.md) Combat is existing mods, tuned (a deep dive and a gap register first); we build only where they fall short; nothing from the old project's combat
+- [0019](0019-combat-maps-each-ds1-behaviour-to-a-tuned-mod-or-our-own-ds1-build.md) Combat maps each DS1 behaviour to a tuned mod or to our own build of DS1's system (the combat map decides, row by row); nothing from the old project's combat
 - [0020](0020-reuse-others-methods-universal-modder-and-ghidra-tooling.md) Reuse others' methods: universal-modder's skills, agents and field notes; agent-ready Ghidra tooling (ReVa, pyghidra-mcp)
 - [0021](0021-fast-focused-loops-and-the-ladder.md) Fast focused loops with eyes on the cheapest rung of the ladder; one lane tests a feature and its joins; journeys are eyeless on two runners
 - [0022](0022-the-studio-boots-into-any-place.md) The studio: a dev build of the game that boots into any place, for agents and the owner; it only observes and teleports

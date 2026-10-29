@@ -13,9 +13,9 @@ stories, quests and places authored in `jtattersall09403/elder-souls-argonia`, w
 - **Morrowind's soul**: topic-hyperlink dialogue, seven attributes and 27 skills, rest-and-vastei levelling,
   Morrowind item classes and armour pieces, no quest markers (directions in the journal), a Morrowind journal,
   map, UI and HUD, Pelagiad everywhere ([decision 0005](decisions/0005-the-morrowind-soul-contract.md));
-- **Dark Souls 1 combat** from existing souls-like mods, tuned against Dark Souls Remastered and wired to
-  Argonia's Morrowind-based stats, with our own code only where a deep dive shows the mods fall short
-  ([0019](decisions/0019-combat-is-existing-mods-tuned-built-only-where-they-fall-short.md),
+- **Dark Souls 1 combat**, DS1 Remastered's whole system as the target, wired to Argonia's Morrowind-based
+  stats: each behaviour either a souls-like mod, tuned, or our own build of DS1's system, as the combat map decides
+  ([0019](decisions/0019-combat-maps-each-ds1-behaviour-to-a-tuned-mod-or-our-own-ds1-build.md),
   [0004](decisions/0004-ds1-remastered-is-the-combat-oracle.md));
 - **free climbing, swimming and diving, sailable and ownable boats**;
 - **Skyrim SE-level graphics** with modern lighting and fog;
@@ -64,8 +64,8 @@ skse/  (CMake, CommonLibSSE-NG, built from Linux)
                   disposition, Owing, directions, journal); the menu router; PrismaUI bindings
 skse/core/ the rules Skyrim's own systems cannot carry (G10's native map), pure C++, unit-tested;
            written fresh, never ported (decision 0026)
-   ArgoniaCombat  only if the combat gap register licenses it (decision 0019): the gaps the souls-like
-                  mods cannot close by settings or small tweaks, over their APIs
+   ArgoniaCombat  the combat map's "build from DS1" rows (decision 0019): DS1's state machine, windows, poise,
+                  i-frames by load and the like where a mod cannot carry them, over the mods' APIs
    ArgoniaBoats   helm sailing (Wind Waker model), boat ownership/moorings/recovery
    ArgoniaBridge  DEV ONLY: localhost API for agents (scene, teleport, time, weather, input, activate, read, nav,
                   events, still, booth, frametime)
@@ -159,10 +159,10 @@ column is Part 1's thread; "whole" is the chunk that completes it.
 | Magic | 0146, 0148, 76 §123 | 1 + 4 + 5 | Skyrim magic | magic rules | 2.9 |
 | Crafting | 0150, 76 §124 | 1 + 4 | Skyrim crafting | recipes, stations | 2.10 |
 | Stealth, crime, Owing, locks, pickpocket | 0151, 0092 | 1 + 4 + 5 | Skyrim detection | Owing ledger, lock threshold | 2.11 |
-| **Combat: souls-like mods, tuned** | DSR as yardstick (0004, 0019); nothing from the old combat | 1 + 2 (+5 only for gaps) | the 0.0 stack (SkySA, Precision, TDM, TrueHUD, DMCO/Dodge Framework, Elden Parry, Rim Parry and Execution, Modern Stagger Lock, MaxsuBlockOverhaul), BFCO, SCAR, CPR | the gap register; tuned settings; small tweaks (single-press backstab); code only for licensed gaps | 1.4 deep dive → 2.7 (G6, G9 only if the register needs them) |
+| **Combat: DS1's system, each behaviour a tuned mod or our build** | DSR measured (0004, 0019); nothing from the old combat | 1 + 2 + 5 | the 0.0 stack (SkySA, Precision, TDM, TrueHUD, DMCO/Dodge Framework, Elden Parry, Rim Parry and Execution, Modern Stagger Lock, MaxsuBlockOverhaul), BFCO, SCAR, CPR | the combat map; tuned settings; small tweaks (single-press backstab); ArgoniaCombat for the built rows | 1.4 map → 2.7 (G6, G9 when the map needs them) |
 | Wiring the mods to our stats | 76 sheet | 1 + 5 | game settings, perk entry points, mod settings | the wiring spec | 1.4 draft → 2.7 §a |
 | Movesets | chosen for DS1 fidelity (0019 §6) | 2 (+5) | permitted Skyrim movesets, AMR, Payload Interpreter, XPMSSE | runtime timing control (0014 §2) | 0.2 G9 → 1.4 → 2.7 §e |
-| Enemy AI, bosses | DSR AI shape, 0142 | 2 (+5 only for gaps) | SCAR (MIT), CPR, UND, Wait Your Turn | AI config; boss phases | 1.4 → 2.7 → 4.3 |
+| Enemy AI, bosses | DSR AI shape, 0142 | 2 + 5 | SCAR (MIT), CPR, UND, Wait Your Turn | AI config; boss phases | 1.4 → 2.7 → 4.3 |
 | Ranged (shoulder aim, recoverable arrows), thrown | 76 §121.1 | 1 + 2 | Skyrim archery, TDM aim, Throwable Weapons SKSE | tuning | 2.7 §i |
 | Climbing, ladders | 0152 BotW | 2 (+3) | FreeClimb (GPL), SkyParkour, EVG Animated Traversal | rule tuning | 1.6 → 2.13 |
 | Swimming, diving, breath | 76 §122 | 1 + 2 | Underwater NG | breath formula | 1.6 → 2.13 |
