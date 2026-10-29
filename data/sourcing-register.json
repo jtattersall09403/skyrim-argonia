@@ -43,5 +43,14 @@
     "used_by": "tools/ArgoniaGen/pipeline.py: Argonia.esm <-> plugin/Argonia/ YAML (0.4 §a)",
     "linked_or_forked_by": "run as a CLI; nothing vendored",
     "notes": "build-VM tool only"
+  },
+  {
+    "name": "Transbot9 All-Tamriel heightmap (the apron)",
+    "source_url": "see the old project's 0067 record (imported: docs/inherited-rulings.md)",
+    "version": "as frozen in the old project's R2 vault; hash pinned in tools/argonia_world/terrain/vault.py",
+    "licence": "CC BY-NC 4.0",
+    "used_by": "tools/argonia_world/terrain (2.W1 apron cells beyond the border)",
+    "linked_or_forked_by": "data only; used at 1:1 beyond the border; credited",
+    "notes": "credit line required in the README credits and the release notes"
   }
 ]
