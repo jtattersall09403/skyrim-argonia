@@ -75,6 +75,12 @@ switch ($Cmd) {
     if (Get-Process SkyrimSE -EA SilentlyContinue) { throw 'Skyrim is running; quit it first' }
     & $PSCommandPath off | Out-Null
     robocopy $Overlay $Data /E /NFL /NDL /NJH /NJS /NP | Out-Null
+    # the gamepad in DS1's layout (controlmap.py makes it from the player's own Interface archive): loose in
+    # Data, which Skyrim reads over its archive; ControlMap_Custom.txt in My Games was not read (2026-10-29)
+    if (Test-Path "$Root\controls\controlmap.txt") {
+      New-Item -ItemType Directory -Force "$Data\Interface\Controls\PC" | Out-Null
+      Copy-Item "$Root\controls\controlmap.txt" "$Data\Interface\Controls\PC\controlmap.txt" -Force
+    }
     Copy-Item "$State\plugins-modded.txt" "$Prefs\Plugins.txt" -Force
     New-Item -ItemType File -Force "$State\mode-on" | Out-Null
     "combat mods on: $((Get-ChildItem $Overlay -Recurse -File).Count) files"

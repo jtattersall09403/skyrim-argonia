@@ -1,0 +1,1 @@
+[{"wait": 8000}, {"probe": "__fakePad.axis(1, -1)"}, {"wait": 1500}, {"probe": "__fakePad.press(1, 150)"}, {"wait": 1000}, {"probe": "__fakePad.axis(1, 0)"}, {"wait": 1000}, {"shot": "trace-end"}]
