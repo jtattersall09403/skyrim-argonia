@@ -1,0 +1,1 @@
+[{"wait": 8000}, {"probe": "__fakePad.press(0, 300)"}, {"wait": 1500}, {"probe": "__fakePad.press(2, 300)"}, {"wait": 1500}, {"probe": "__fakePad.press(1, 300)"}, {"wait": 2000}]

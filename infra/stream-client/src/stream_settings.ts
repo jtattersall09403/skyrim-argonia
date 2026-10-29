@@ -2,6 +2,9 @@
 // - the stream is the size of this whole screen in real pixels (upstream goes full screen on the first tap), so the unfolded Magic V5, the folded phone, the Mac, a
 //   monitor or a tablet each fill the screen (the host matches its desktop to the request, sunshine-prep.ps1);
 // - the bitrate follows the pixel count;
+// - pads keep the Xbox layout: upstream names the Gamepad API's bottom button (0) "b" and the left one (2) "y", the
+//   Nintendo layout, so on the GameSir X2s and the touch pad A acted as B and X as Y in Skyrim (measured with
+//   XInput on the game machine, 2026-10-29); its invertAB and invertXY put them back;
 // - the mouse is relative (games turn the camera by movement; upstream's "follow" sends absolute positions, which
 //   pins Skyrim's camera), and the pointer is captured on the first click in the stream (Escape releases it).
 
@@ -48,6 +51,7 @@ export function applyStreamSettings(storage: Storage = localStorage) {
         bitrate: bitrateFor(size.width, size.height),
         fps: 60,
         mouseMode: "relative",
+        controllerConfig: { ...(s.controllerConfig as object ?? {}), invertAB: true, invertXY: true },
     })
     try { storage.setItem("mlSettings", JSON.stringify(s)) } catch { /* private mode: upstream defaults */ }
     return size
