@@ -10,6 +10,7 @@
 //   crash yes-really         dereferences null on the main thread: the fail-on-purpose case for crash reporting
 #include "bridge.h"
 #include "input.h"
+#include <cwchar>
 
 namespace argonia::bridge {
 namespace {
@@ -20,9 +21,24 @@ in::SendResult g_last_send;
 
 // The game's render window: RE::Main's, else the engine's window class (game-14 saw focus on a second window of
 // the game's process, which the old pid check passed).
+// RE::Main::wnd is not read: on the pinned runtime it gave a code address, not an HWND (game-15), so every focus
+// check failed. The window is this process's top-level window of the engine's class.
 HWND game_window() {
-  if (auto* m = RE::Main::GetSingleton(); m && m->wnd) return reinterpret_cast<HWND>(m->wnd);
-  return FindWindowW(L"Skyrim Special Edition", nullptr);
+  struct Find { DWORD pid; HWND found; } f{GetCurrentProcessId(), nullptr};
+  EnumWindows(
+      [](HWND h, LPARAM p) -> BOOL {
+        auto* f = reinterpret_cast<Find*>(p);
+        DWORD pid = 0;
+        GetWindowThreadProcessId(h, &pid);
+        wchar_t cls[64]{};
+        if (pid == f->pid && GetClassNameW(h, cls, 64) && std::wcscmp(cls, L"Skyrim Special Edition") == 0) {
+          f->found = h;
+          return FALSE;
+        }
+        return TRUE;
+      },
+      reinterpret_cast<LPARAM>(&f));
+  return f.found;
 }
 
 in::Window window_info(HWND h) {
