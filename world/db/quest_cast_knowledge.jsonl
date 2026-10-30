@@ -1,8 +1,15 @@
+{"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.after-landing","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.after-poler-dead","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.after-rains","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.after-shared","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.after-station","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.basket-at-cut","value":"suspects"}
 {"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.charges-answer","value":"hides \"it means her rise started the quarrel\""}
 {"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.clay-cut","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.clay-holds","value":"ignorant"}
 {"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.cracked-lining","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.crocodile-dead","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.ferry-free","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.ford-charge","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.ford-in-well","value":"hides \"she says the water is only low after a dry season\""}
 {"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.jar-kept","value":"knows"}
@@ -15,6 +22,11 @@
 {"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.stop-charge","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.terms-figure","value":"ignorant"}
 {"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.water-dipper","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.after-keeper-dead","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.after-landing","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.after-rains","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.after-shared","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.after-station","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.basket-at-cut","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.basket-left","value":"hides \"he ran from it, and the landing's poler does not run\""}
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.charges-answer","value":"hides \"he says so only when pressed\""}
@@ -22,6 +34,8 @@
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.clay-holds","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.cracked-lining","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.crocodile-bend","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.crocodile-dead","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.ferry-free","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.ford-charge","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.landing-free","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.lining-will-hold","value":"ignorant"}
@@ -33,12 +47,20 @@
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.takes-doubts","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.terms-figure","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.water-dipper","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.after-keeper-dead","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.after-landing","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.after-poler-dead","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.after-rains","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.after-shared","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.after-station","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.basket-at-cut","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.charges-answer","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.clay-cut","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.clay-holds","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.cracked-lining","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.crocodile-bend","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.crocodile-dead","value":"knows"}
+{"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.ferry-free","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.ford-charge","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.ford-in-well","value":"suspects"}
 {"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.jar-kept","value":"knows"}

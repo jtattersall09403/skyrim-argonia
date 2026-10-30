@@ -152,6 +152,9 @@
 {"quest_id":"quest.local.lf83","review_findings_ord":77,"ord":0,"value":"objections[3]"}
 {"quest_id":"quest.local.lf83","review_findings_ord":77,"ord":1,"value":"Livia's cracked-well row"}
 {"quest_id":"quest.local.lf83","review_findings_ord":78,"ord":0,"value":"review-r4.md"}
+{"quest_id":"quest.local.lf83","review_findings_ord":79,"ord":0,"value":"topic.lf83-one-charge"}
+{"quest_id":"quest.local.lf83","review_findings_ord":79,"ord":1,"value":"flag.lf83.livia-persuaded"}
+{"quest_id":"quest.local.lf83","review_findings_ord":79,"ord":2,"value":"flag.lf83.poler-persuaded"}
 {"quest_id":"quest.local.lh38","review_findings_ord":0,"ord":0,"value":"shapeData.misdiagnosis"}
 {"quest_id":"quest.local.lh38","review_findings_ord":0,"ord":1,"value":"fact.greenspring.why-pressures-3"}
 {"quest_id":"quest.local.lh38","review_findings_ord":0,"ord":2,"value":"quest.mr.mr01"}
