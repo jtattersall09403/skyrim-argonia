@@ -22,9 +22,12 @@ useful".
    by **one runner** in the game through the bridge (0.3 §d). Its pass or fail is read from state and events
    with timestamps; the runner moves the player between steps by teleport; each step is a short action, a real
    input or the activation call the input makes. **The runner takes a still at every step** and keeps it with
-   the run as evidence; a failing step's stills go to a reader with the step's expectation. What the 2026-10-28
-   ruling forbids stays forbidden: no agent pilots the game by looking, and no step is judged by pixels unless
-   its brief gives an L5 reason. Green closes a journey; then the owner plays it in the studio (L6).
+   the run as evidence; a failing step's stills go to a reader with the step's expectation. **Agents also check
+   interactively** (owner, 2026-10-30): a fast, targeted check is driven by an agent one action at a time, reading
+   state after each and looking with stills when needed, so it adapts to fades, NPC movement and other variance;
+   what works is kept as a journey, whose waits are on real signals and which an agent re-drives live when it
+   goes red. Never long interactive playthroughs (a whole quest or a complicated sequence). Green closes a
+   journey; then the owner plays it in the studio (L6).
 4. **Eyes are stills, and a clip only with a reason.** A reader judges stills: UI screens at L3; places,
    pieces, poses and states at L4 through bridge stills from fixed vantages; a journey's per-step stills on a
    red. A short clip (L5, 3–8 s) is allowed only for a join no still can show (a screen transition, the

@@ -60,7 +60,7 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 
 - Fast focused loops with eyes; the lane that builds a feature tests it and its joins in one loop; each block at the cheapest level that proves it, composed once ([loops](docs/loops.md), [0021](docs/decisions/0021-fast-focused-loops-and-the-ladder.md)): L1 data, L2 logic, L3 off-game stills, L4 in game from a scene, L5 a clip with a reason, L6 owner.
 - Every in-game check starts from a scene on the base save, never the new-game flow; the bridge and console are the hands; no mode or switch stands in for a game action ([0022](docs/decisions/0022-the-studio-boots-into-any-place.md)).
-- Journeys read state and events and keep a still per step; teleport between short steps; no agent plays by looking ([0021](docs/decisions/0021-fast-focused-loops-and-the-ladder.md)).
+- Agents run fast targeted checks interactively, reading state and stills; never long playthroughs; what works becomes a journey ([0021](docs/decisions/0021-fast-focused-loops-and-the-ladder.md)).
 - Reuse before harness; no time budgets, only measured cycle times ([0029](docs/decisions/0029-part-0-is-one-sequence-not-spikes.md)).
 - Scenes set state at step 0 and never set what they test; measure everything, diagnose all, fix once, re-measure.
 - `make check` is the one gate (≤ 3 min); run only what the change can reach; a red is re-proved by its one test.
