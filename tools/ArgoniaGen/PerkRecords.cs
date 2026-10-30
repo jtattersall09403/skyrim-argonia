@@ -41,7 +41,12 @@ static class PerkRecords
                     FragmentIndex = (ushort)I(f, "index"), Unknown = 0, Unknown2 = 1,
                     ScriptName = name, FragmentName = S(f, "name"),
                 });
-            p.VirtualMachineAdapter = new PerkAdapter { ScriptFragments = fr };
+            // The fragment script is also the perk's attached script, as the CK writes it: without the Scripts entry
+            // the engine binds no ARG_PRKF instance and the entry point's fragment never runs (game-9: E on the camp
+            // spot and on a speaker ran nothing with the .pex laid; no bind line in Papyrus.0.log).
+            var vm = new PerkAdapter { ScriptFragments = fr };
+            vm.Scripts.Add(new ScriptEntry { Name = name });
+            p.VirtualMachineAdapter = vm;
         }
         mod.Perks.Add(p);
     }

@@ -7,6 +7,7 @@
 #include "argonia/core/version.h"
 
 #include <algorithm>
+#include <cctype>
 #include <format>
 
 namespace argonia::plugin {
@@ -102,8 +103,12 @@ bool ChangeSettlementStanding(RE::StaticFunctionTag*, RE::BSFixedString place, s
 bool OpenDialogueNative(RE::StaticFunctionTag*, RE::TESObjectREFR* target) { return OpenDialogue(target); }
 RE::BSFixedString ViewIntentNative(RE::StaticFunctionTag*, RE::BSFixedString json) { return ViewIntent(Str(json)); }
 RE::BSFixedString ViewState(RE::StaticFunctionTag*, RE::BSFixedString view) {
+  // BSFixedString pools strings case-insensitively: "dialogue" can come back as an older "Dialogue" (game-9: the
+  // pushed dialogue state read null), and every view name is lower case.
+  auto name = Str(view);
+  std::ranges::transform(name, name.begin(), [](unsigned char ch) { return static_cast<char>(std::tolower(ch)); });
   std::lock_guard l(Get().lock);
-  auto it = Get().views.find(Str(view));
+  auto it = Get().views.find(name);
   return it == Get().views.end() ? RE::BSFixedString() : RE::BSFixedString(it->second);
 }
 

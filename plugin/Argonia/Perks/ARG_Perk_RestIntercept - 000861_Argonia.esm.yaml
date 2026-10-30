@@ -1,6 +1,8 @@
 FormKey: 000861:Argonia.esm
 EditorID: ARG_Perk_RestIntercept
 VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_PRKF_RestIntercept
   ScriptFragments:
     FileName: ARG_PRKF_RestIntercept
     Fragments:

@@ -1,6 +1,8 @@
 FormKey: 000854:Argonia.esm
 EditorID: ARG_Perk_DialogueIntercept
 VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_PRKF_DialogueIntercept
   ScriptFragments:
     FileName: ARG_PRKF_DialogueIntercept
     Fragments:
