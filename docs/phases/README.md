@@ -176,8 +176,8 @@ reason.
 
 The planner reads CLAUDE.md's session-start list, then runs the chunks in dependency order from PROGRESS's first
 `todo` row to the named chunk, delegating each chunk's sections to `deliver` lanes and running disjoint lanes in
-parallel as the part README's "runs beside" column says (each game machine takes one lane at a time, `job_guard.sh
-run --gpu=NAME`, and more are cloned when the queue is the bottleneck; the build VM takes several). At each chunk's close it writes the Outcome, rewrites the next Starting
+parallel as the part README's "runs beside" column says (one lane per game machine, `job_guard.sh
+run --gpu=NAME`; extra machines only for a substantial gain, created per job and stopped after; the build VM takes several). At each chunk's close it writes the Outcome, rewrites the next Starting
 state, marks PROGRESS, commits by pathspec and pushes; at each part's close it posts the check-in. **It stops
 only at a blocking owner gate, a hard-to-reverse call, or a blocker it cannot clear after the brief's fallbacks.**
 
@@ -226,5 +226,5 @@ owner gate until 2.W5's walks.
 | 4.1 world-builder proved, packet template written | 4.2 packets | a packet runs the proven skill unattended on minor types |
 | 4.2 packets holding a quest's places | 4.3 that quest's line | a quest needs its places built |
 
-Chunks run as side lanes when their files are disjoint, which is the point of Part 2's two tracks. Only one lane
-drives the GPU box at a time (`job_guard.sh --gpu`).
+Chunks run as side lanes when their files are disjoint, which is the point of Part 2's two tracks. One lane per
+game machine (`job_guard.sh --gpu[=NAME]`); extra machines only for a substantial gain, created per job and stopped after.

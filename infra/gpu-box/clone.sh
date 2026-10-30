@@ -93,6 +93,8 @@ if [ "$ID" = None ]; then
   if [ -f "$sent" ]; then mkdir -p "$HOME/.argonia/stack/push-$NAME"; cp -n "$sent" "$HOME/.argonia/stack/push-$NAME/"; fi
   aws ec2 wait instance-running --region $R --instance-ids "$ID"
 fi
+# The AWS-side idle backstop, keyed to this instance (idle-stop.ps1 inside Windows comes with the image).
+"$here/alarm.sh" "$NAME"
 
 # 3. First boot.
 export ARGONIA_PLAY=$NAME

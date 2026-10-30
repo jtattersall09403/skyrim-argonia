@@ -33,7 +33,7 @@ and hydrology arrays in `$ARGONIA_DATA`, the corpus in `$ARGONIA_PRIVATE`, and t
 
 **The overnight order.** 0.2 on the game machine and 0.4 §a–§c on the build VM at once; 0.3 when 0.2's stack
 passes its smoke scene; 0.4 §d when 0.3's hands work; then Part 1's 1.1 and the world track's 2.W1 at once.
-Only one lane drives the game machine at a time (`job_guard.sh run --gpu`).
+One lane per game machine (`job_guard.sh run --gpu[=NAME]`); extra machines only for a substantial gain, created per job and stopped after.
 
 ## Part 0 exit (the owner signs)
 

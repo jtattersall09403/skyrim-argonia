@@ -60,8 +60,8 @@ crash is a failure, never "still running"; a check that cannot change a decision
 
 Game-machine time is the bottleneck: batch L4 checks per lane, start the machine once per batch, stop it after. **One
 lane per game machine** (universal-modder's one-game-worker rule): `job_guard.sh --gpu[=NAME]` takes that machine's
-lock; more machines are cloned when the queue is the bottleneck (owner, 2026-10-29: as many as the parallelism
-needs; `infra/gpu-box/clone.sh`), within the quota and the cost rules. Each port (combat, climbing, boats, dialogue) keeps a journal file
+lock; extra machines only for a substantial gain, created per job and stopped after (owner #13: up to three;
+streaming stays on argonia-play, extra machines are headless; `infra/gpu-box/clone.sh`), within the quota and cost rules. Each port (combat, climbing, boats, dialogue) keeps a journal file
 `docs/research/journals/<port>.md` (universal-modder's MODLOG): what was tried, measured and learned, so nothing
 is lost at a context hand-off.
 
