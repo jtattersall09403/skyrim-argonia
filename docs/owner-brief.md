@@ -198,4 +198,4 @@ Something they can **play**, that is:
 | 2026-10-30 | **Every in-game check runs in one batch**, with the checks most likely to crash run last so they cannot block the others. |
 | 2026-10-30 | **Distant terrain (LOD) is made the native Skyrim way** (the Creation Kit's own LOD generation), not with community tools. |
 | 2026-10-30 | **Frame rate (#16)**: the owner plays the shaders-on and shaders-off cards once the work is finished, then decides on the machine type. |
-
+| 2026-10-30 | **Up to 3 game machines, only when needed** (#13; the console steps done): agents reason over whether another machine gives a substantial speed or efficiency gain over one; never three by default. **Streaming stays on one machine**: argonia-play is the only one the owner streams from; extra machines are headless test machines, never in the owner's Moonlight hosts. |
