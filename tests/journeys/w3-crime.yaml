@@ -1,7 +1,7 @@
 # w3-infra's crime check (002dca4): Claywater's town crime faction (ARG_Faction_ClaywaterStation, Track Crime; its four
 # people its members) tracks a crime against one of them. The player strikes Livia in her sight (an assault, the
-# player's own blow by the real pad); the bounty she reports lands with her crime faction. Read by the console's
-# GetCrimeGold on Livia (the player's crime gold with her crime faction), before (kept) and after.
+# player's own blow by the real pad); the bounty she reports lands with her crime faction. Read as the player's violent
+# crime gold with that faction, before (kept) and after; Livia's own GetCrimeGold is her bounty, always 0.
 id: w3-crime
 runner: 1
 scene: first-place
@@ -14,7 +14,7 @@ steps:
       - {console: "player.equipitem 00012EB7"}
       - {wait: 2}
     expect:
-      - {console: "ARG_Ref_ClaywaterStationLivia.GetCrimeGold", keep: gold_before}
+      - {console: "player.GetCrimeGoldViolent ARG_Faction_ClaywaterStation", keep: gold_before}
       - {console: "ARG_Ref_ClaywaterStationLivia.GetInFaction ARG_Faction_ClaywaterStation", contains: ">> 1"}
   - name: draw
     do: [{pad: "RB:120 wait:1500"}]
@@ -22,6 +22,6 @@ steps:
   - name: strike              # the blow lands on her; the assault is reported to her crime faction
     do: [{pad: "RB:120 wait:1200"}, {pad: "RB:120 wait:1200"}]
     expect:
-      - {event: {kind: hit, match: "*"}, within: 5}
-      - {console: "ARG_Ref_ClaywaterStationLivia.GetCrimeGold", ne: {kept: gold_before}, within: 8}
-      - {console: "ARG_Ref_ClaywaterStationLivia.GetCrimeGold", not_contains: ">> 0.00"}
+      - {event: {kind: hit, match: "*"}, within: 5}   # hit data carries runtime hex ids; the crime gold read is the real check
+      - {console: "player.GetCrimeGoldViolent ARG_Faction_ClaywaterStation", ne: {kept: gold_before}, within: 8}
+      - {console: "player.GetCrimeGoldViolent ARG_Faction_ClaywaterStation", not_contains: ">> 0.00"}

@@ -28,12 +28,14 @@ steps:
     expect:
       - {read: [core, ViewState, dialogue], path: value.body.speaker.id, eq: npc.imperial-fringe.claywater-station.n1-3}
       - {read: [core, KnowsTopic, topic.claywater-two-charges], path: value, eq: true}   # her greeting links it
-  - name: stage-10
-    do: [{call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}]
-    expect:
+      # Linking the topic sets stage 10 inside this step, so its notice is seen here (diag-quest-crime.md)
       - {console: "GetStage ARG_Q_LF83", contains: ">> 10", within: 8}
       - {read: [core, JournalEntries], path: value, contains: "quest.local.lf83 10 0 ", within: 5}
       - {event: {kind: mod, match: ArgoniaJournalNotice}, within: 5}   # the "journal updated" notice (system-wide)
+  - name: stage-10
+    do: [{call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}]
+    expect:
+      - {console: "GetStage ARG_Q_LF83", contains: ">> 10"}
   - name: hear-station-open     # objective 10: two-charges heard of Livia
     do:
       - {console: "player.moveto ARG_Ref_ClaywaterStationLivia 0 -120 0"}
