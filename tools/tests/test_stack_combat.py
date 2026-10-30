@@ -142,3 +142,15 @@ def test_stage_prunes_a_tool_of_another_set():
     loop = src.index("for d in list(tools.iterdir())")
     assert "d.name not in ids" in src[loop:loop + 200] and "shutil.rmtree(d)" in src[loop:loop + 200]
     assert loop < src.index("for m in rows:")
+
+
+def test_stack_ps1_on_lays_in_place_and_waits_for_holders():
+    """game-12: the deploy's and LOD's fresh lay died deleting SkyUI_SE.bsa that another process held. `on` and
+    `off` wait for the holders first (failing with their names), and `on` leaves a file that already matches."""
+    src = (Path(stack.__file__).parent / "stack.ps1").read_text()
+    on = src[src.index("  'on' {"):src.index("  'off' {")]
+    off = src[src.index("  'off' {"):]
+    assert on.index("Wait-DataFree") < on.index("Delete(") and off.index("Wait-DataFree") < off.index("Delete(")
+    assert "& $PSCommandPath off" not in on  # no wholesale delete before the lay
+    assert "LastWriteTimeUtc -eq $a.LastWriteTimeUtc) { $kept++; continue }" in on
+    assert "'SkyrimSE', 'skse64_loader', 'xLODGenx64'" in src

@@ -82,27 +82,53 @@ public static class Fg { [DllImport("user32.dll")] public static extern bool Set
   return $true
 }
 
+# Processes that hold Data's files open: wait at most 30 s for them to exit, then fail naming them (game-12: the
+# deploy's and LOD's fresh lay died on an IOException deleting SkyUI_SE.bsa that a leftover xLODGen held).
+function Wait-DataFree {
+  $names = 'SkyrimSE', 'skse64_loader', 'xLODGenx64', 'TexGenx64', 'DynDOLODx64', 'LODGenx64*', 'Texconv*'
+  for ($i = 0; $i -lt 30; $i++) { if (-not (Get-Process $names -EA SilentlyContinue)) { return }; Start-Sleep 1 }
+  $held = (Get-Process $names -EA SilentlyContinue | % { "$($_.ProcessName) ($($_.Id))" }) -join ', '
+  throw "Data is held by $held after 30 s; quit or kill it first"
+}
+
 switch ($Cmd) {
   'on' {
-    if (Get-Process SkyrimSE -EA SilentlyContinue) { throw 'Skyrim is running; quit it first' }
-    & $PSCommandPath off | Out-Null
+    Wait-DataFree
+    # Laid in place (game-12): what the profile lays is mapped first (the highest priority wins); a Data file that
+    # already is that file (a hard link to it: the same length and write time) is left alone, so an unchanged file
+    # is never deleted; everything else that is not vanilla goes, as `off` does.
+    foreach ($k in $Keep) { if (Test-Path "$Data\$k") {
+      New-Item -ItemType Directory -Force (Split-Path "$State\keep\$k") | Out-Null; Copy-Item "$Data\$k" "$State\keep\$k" -Force } }
     Add-Type -TypeDefinition 'using System; using System.Runtime.InteropServices; public static class HL {
       [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
       public static extern bool CreateHardLink(string link, string target, IntPtr sa); }'
     $order = @(Get-Content "$Profile\modlist.txt" | ? { $_ -like '+*' } | % { $_.Substring(1) })
     [array]::Reverse($order)  # modlist.txt lists the highest priority first; lay the lowest first
-    $n = 0
+    $want = @{}
     foreach ($m in $order) {
       $src = "$Mo2\mods\$m"
       if (-not (Test-Path $src)) { continue }
-      foreach ($f in [IO.Directory]::EnumerateFiles($src, '*', 'AllDirectories')) {
-        $dst = "\\?\$Data" + $f.Substring($src.Length)
-        [void][IO.Directory]::CreateDirectory([IO.Path]::GetDirectoryName($dst))
-        if ([IO.File]::Exists($dst)) { [IO.File]::Delete($dst) }
-        if (-not [HL]::CreateHardLink($dst, "\\?\$f", [IntPtr]::Zero)) { throw "link failed: $f" }
-        $n++
-      }
+      foreach ($f in [IO.Directory]::EnumerateFiles($src, '*', 'AllDirectories')) { $want[$f.Substring($src.Length).ToLower()] = $f }
     }
+    $vanilla = @{}; Get-Content "$Root\infra\vanilla-data-files.txt" | % { $vanilla[$_.ToLower()] = 1 }
+    $removed = 0
+    foreach ($f in @([IO.Directory]::EnumerateFiles("\\?\$Data", '*', 'AllDirectories'))) {
+      $rel = $f.Substring($f.IndexOf('\Data\') + 5).ToLower()   # with its leading \, as $want's keys
+      if ($want.ContainsKey($rel) -or $vanilla[$rel.Substring(1)] -or $rel.StartsWith('\shadercache\')) { continue }
+      [IO.File]::SetAttributes($f, 'Normal'); [IO.File]::Delete($f); $removed++
+    }
+    $n = 0; $kept = 0
+    foreach ($rel in $want.Keys) {
+      $f = $want[$rel]; $dst = "\\?\$Data" + $f.Substring($f.IndexOf('\', "$Mo2\mods\".Length))
+      $a = [IO.FileInfo]::new("\\?\$f"); $b = [IO.FileInfo]::new($dst)
+      if ($b.Exists -and $b.Length -eq $a.Length -and $b.LastWriteTimeUtc -eq $a.LastWriteTimeUtc) { $kept++; continue }
+      [void][IO.Directory]::CreateDirectory([IO.Path]::GetDirectoryName($dst))
+      if ($b.Exists) { [IO.File]::SetAttributes($dst, 'Normal'); [IO.File]::Delete($dst) }
+      if (-not [HL]::CreateHardLink($dst, "\\?\$f", [IntPtr]::Zero)) { throw "link failed: $f" }
+      $n++
+    }
+    Get-ChildItem $Data -Recurse -Directory | Sort { $_.FullName.Length } -Descending |
+      ? { -not (Get-ChildItem -LiteralPath $_.FullName -Force) } | % { Remove-Item -LiteralPath ("\\?\" + $_.FullName) -Force }
     # SKSE's loader and DLLs beside the game (inert unless launched through skse64_loader.exe)
     if (Test-Path "$Mo2\root") { Copy-Item "$Mo2\root\*" $Game -Force }
     # the gamepad layout (controlmap.py makes it from the player's own Interface archive): loose in Data, which
@@ -123,12 +149,12 @@ switch ($Cmd) {
     }
     Copy-Item "$Profile\plugins.txt" "$Prefs\Plugins.txt" -Force
     New-Item -ItemType File -Force "$State\mode-on" | Out-Null
-    "argonia profile on: $n files from $($order.Count) mods"
+    "argonia profile on: $n files laid, $kept already laid, $removed removed, from $($order.Count) mods"
   }
   'off' {
     # Independent of any record: everything in Data that the vanilla install does not have goes (the game's own
     # shader cache stays). Vanilla Data has no loose files the mods replace, so nothing needs restoring.
-    if (Get-Process SkyrimSE -EA SilentlyContinue) { throw 'Skyrim is running; quit it first' }
+    Wait-DataFree
     foreach ($k in $Keep) { if (Test-Path "$Data\$k") {
       New-Item -ItemType Directory -Force (Split-Path "$State\keep\$k") | Out-Null; Copy-Item "$Data\$k" "$State\keep\$k" -Force } }
     $vanilla = @{}; Get-Content "$Root\infra\vanilla-data-files.txt" | % { $vanilla[$_.ToLower()] = 1 }
