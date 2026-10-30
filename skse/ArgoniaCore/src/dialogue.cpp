@@ -2,8 +2,8 @@
 // The intercept: the player's ARG_Perk_DialogueIntercept replaces the default activation of any ARG_Speaker with its
 // fragment, which calls ArgoniaCore.OpenDialogue(target); the vanilla Dialogue Menu, should it open anyway, is closed
 // the frame it opens (the router's backstop) and our conversation opened for the same speaker. The view host keeps
-// each view's last push and logs it whole; ViewIntent is the one intent entry for every view (dialogue, sitting),
-// routed by type; the web-view binding (PrismaUI) is 1.2 §0's, behind Push() and ViewIntent.
+// each view's last push and logs it whole; ViewIntent is the one intent entry for every view (dialogue, journal,
+// chart, sitting), routed by type; the web-view binding (PrismaUI) is views.cpp's, behind Push() and ViewIntent.
 #include "core.h"
 
 namespace argonia::plugin {
@@ -28,7 +28,7 @@ void OnDialogueSurface(ac::router::SurfaceId) {
   c.pending_speaker = {};
   // A new conversation replaces the last, which may never have been closed; a refusal leaves none open.
   c.talk.reset();
-  c.views.erase("dialogue");
+  CloseView("dialogue");
   auto* actor = ref ? ref->As<RE::Actor>() : nullptr;
   auto id = SpeakerId(actor);
   if (!id) {
@@ -93,6 +93,9 @@ class MenuSink final : public RE::BSTEventSink<RE::MenuOpenCloseEvent> {
       }
       c.pending_speaker = mtm->speaker;
     }
+    // Escape opens the Journal Menu too (its System tab: save, settings, quit, until 3.1); only the journal key's
+    // opening is ours to replace.
+    if (menu == RE::JournalMenu::MENU_NAME && !JournalKeyTaken()) return RE::BSEventNotifyControl::kContinue;
     const auto v = c.router.on_menu(menu);
     if (!v.note.empty()) SKSE::log::info("router: {}", v.note);
     if (v.action == ac::router::Action::block)
@@ -149,7 +152,7 @@ std::string DialogueIntent(std::string_view json) {
   for (const auto& n : r.notes) SKSE::log::info("{}", n);
   if (r.closed) {
     c.talk.reset();
-    c.views.erase("dialogue");
+    CloseView("dialogue");
     SKSE::log::info("dialogue: closed");
     FactsChanged("dialogue closed");
     return {};
@@ -166,20 +169,30 @@ std::string DialogueIntent(std::string_view json) {
 
 // The one intent entry every view's listener calls: routed by the intent's type to the view's host.
 std::string ViewIntent(std::string_view json) {
+  std::lock_guard l(Get().lock);  // the JS listener's task, the bridge and Papyrus all come here
   const auto view = ac::router::intent_view(json);
   if (!view) {
     SKSE::log::warn("views: intent refused: {}", view.error());
     return R"({"error":"the intent does not fit the schema"})";
   }
+  const auto m = ac::msg::decode_intent(json);
+  const bool closing = m && std::holds_alternative<ac::msg::ViewClose>(*m);
+  if (*view == "dialogue" && closing && !Get().talk) {  // the probe's window, or one left after a load
+    CloseView("dialogue");
+    return {};
+  }
   if (*view == "dialogue") return DialogueIntent(json);
+  if ((*view == "journal" || *view == "chart") && closing) {
+    CloseView(*view);
+    return {};
+  }
+  if (m)
+    if (const auto* p = std::get_if<ac::msg::JournalPage>(&*m)) return JournalIntent(*p);
+  if (m)
+    if (const auto* p = std::get_if<ac::msg::ChartPan>(&*m)) return ChartIntent(*p);
   if (*view == "sitting") return SittingIntent(json);
   SKSE::log::warn("views: no host for the {} view's intents yet", *view);
   return R"({"error":"that view has no host yet"})";
-}
-
-void Push(std::string_view view, std::string json) {
-  SKSE::log::info("view {} <- {}", view, json);
-  Get().views[std::string(view)] = std::move(json);
 }
 
 void InstallHooks() {

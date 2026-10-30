@@ -501,7 +501,7 @@ std::string SittingIntent(std::string_view json) {
   for (const auto& n : r.notes) SKSE::log::info("{}", n);
   if (r.closed) {
     c.sitting.reset();
-    c.views.erase("sitting");
+    CloseView("sitting");
     MirrorAttributes();
     MirrorPools();
     WriteCombat("sitting closed");

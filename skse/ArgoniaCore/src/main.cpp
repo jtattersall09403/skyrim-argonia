@@ -50,7 +50,7 @@ void OnRevert(SKSE::SerializationInterface*) {
   c.families.reset_all();
   c.inflight.clear();
   c.talk.reset();
-  c.views.clear();
+  plugin::CloseAllViews();
   c.season.reset();
   c.sitting.reset();
   c.health.clear();
@@ -70,6 +70,7 @@ void OnDataLoaded() {
     for (const auto& why : store.error()) SKSE::log::error("dialogue: {}", why);
   }
   plugin::InstallHooks();
+  plugin::ViewsDataLoaded();
   plugin::LifeDataLoaded();
   plugin::CombatDataLoaded();
 }
@@ -80,10 +81,12 @@ void OnGameReady(const char* how) {
   plugin::LifeGameReady();
   plugin::WriteCombat(how);
   plugin::FactsChanged(how);
+  plugin::ViewsGameReady();
 }
 
 void OnMessage(SKSE::MessagingInterface::Message* m) {
   switch (m->type) {
+    case SKSE::MessagingInterface::kPostLoad: plugin::ViewsPostLoad(); break;
     case SKSE::MessagingInterface::kDataLoaded: OnDataLoaded(); break;
     case SKSE::MessagingInterface::kPostLoadGame: OnGameReady("game loaded"); break;
     case SKSE::MessagingInterface::kNewGame:

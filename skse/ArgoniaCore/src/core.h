@@ -8,6 +8,7 @@
 #include "argonia/core/router.h"
 #include "argonia/core/seam.h"
 #include "argonia/core/talk.h"
+#include "argonia/core/views.h"
 
 #include <map>
 #include <mutex>
@@ -44,6 +45,10 @@ struct Core {
   bool dying = false;                                     // the death intercept is running
   bool lockpicking = false;                               // the Lockpicking Menu is open
   ac::life::QuitWatch quit_watch;                         // the actual quit, from the menu events (once per quit)
+  // 1.2 §0 (views.cpp): the web-view host, the journal key's latch, the HUD's last bars.
+  ac::views::Host view_host;
+  ac::views::KeyLatch journal_key;
+  std::vector<ac::msg::Bar> hud_bars;
 };
 Core& Get();
 
@@ -81,7 +86,6 @@ void EnsurePerks();
 // --- dialogue.cpp: the router's handler, the view host, the sinks ---------------------------------------------
 bool OpenDialogue(RE::TESObjectREFR* target);
 std::string ViewIntent(std::string_view json);
-void Push(std::string_view view, std::string json);
 // The dev bridge's greeting read: the window a conversation with this speaker opens on, as JSON; the refusal else.
 std::expected<std::string, std::string> GreetingFor(std::string_view speaker_id);
 void InstallHooks();
@@ -112,6 +116,21 @@ void WriteCombat(std::string_view why);
 // The armour pieces an actor wears (heavy and light; clothing and medium's missing marker skipped), with the
 // Unarmored slots each covers: one walk serves the hit's armour skill and the carriers' rating.
 std::vector<ac::combat::Piece> WornPieces(RE::Actor* a);
+
+// --- views.cpp: the PrismaUI binding (1.2 §0) -----------------------------------------------------------------
+bool ViewsBound();
+void ViewsPostLoad();    // kPostLoad: PrismaUI's API, or the views stay off
+void ViewsDataLoaded();  // after InstallHooks: the views created, the journal and map handlers, the HUD loop
+void ViewsGameReady();   // the HUD's whole state
+bool JournalKeyTaken();  // the Journal Menu opening now follows the journal key (J, the pad's Back), not Escape
+// A push keeps the view's last state (ViewState reads it) and sends it; a modal view opens on its first push.
+void Push(std::string_view view, std::string json);
+void CloseView(std::string_view view);
+void CloseAllViews();
+std::string JournalIntent(const ac::msg::JournalPage& at);
+std::string ChartIntent(const ac::msg::ChartPan& pan);
+std::string ViewProbe(std::string_view topics);  // dev: the probe's 300-topic window (bridge only)
+std::vector<std::string> ViewsReport();          // dev: bound, and each view's ready/open
 
 // --- natives.cpp ------------------------------------------------------------------------------------------------
 bool RegisterNatives(RE::BSScript::IVirtualMachine* vm);
