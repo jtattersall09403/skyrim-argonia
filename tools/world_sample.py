@@ -182,7 +182,8 @@ HOLD = [{"console": "coc ARG_HoldingCell"}, {"wait": 5}]
 def arrive(stop: dict, first: bool) -> dict:
     # One fresh process per stop: a second cross-cell cow in one process crashed the engine at stop 2 (diag3-g15
     # §world-sample, game, not our DLL). The relaunch loads the journey's save (the holding cell) without a scene.
-    do = [] if first else [{"relaunch": {"save": True, "scene": False}}, {"console": f"bat {stop['scene']}"}, {"wait": 8}]
+    # The quit itself goes from the holding cell: qqq straight after a `teleport pos` probe crashed (game-16, twice).
+    do = [] if first else [*HOLD, {"relaunch": {"save": True, "scene": False}}, {"console": f"bat {stop['scene']}"}, {"wait": 8}]
     return {"name": f"s{stop['n']:02d}-arrive", "do": do, "expect": [in_world(stop["n"])]}
 
 

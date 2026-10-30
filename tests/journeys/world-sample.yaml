@@ -250,6 +250,10 @@ steps:
   - no stretched or smeared ground texture
 - name: s02-arrive
   do:
+  - &id001
+    console: coc ARG_HoldingCell
+  - &id002
+    wait: 5
   - relaunch:
       save: true
       scene: false
@@ -302,6 +306,8 @@ steps:
   - no pine, spruce, birch, snow, frost, heather, Nordic architecture or Nordic-grey rock anywhere in frame
 - name: s03-arrive
   do:
+  - *id001
+  - *id002
   - relaunch:
       save: true
       scene: false
@@ -404,6 +410,8 @@ steps:
   - no pine, spruce, birch, snow, frost, heather, Nordic architecture or Nordic-grey rock anywhere in frame
 - name: s04-arrive
   do:
+  - *id001
+  - *id002
   - relaunch:
       save: true
       scene: false
@@ -469,6 +477,8 @@ steps:
   - water colour reads fresh and green-brown, not blue
 - name: s05-arrive
   do:
+  - *id001
+  - *id002
   - relaunch:
       save: true
       scene: false
@@ -504,6 +514,8 @@ steps:
   - no pine, spruce, birch, snow, frost, heather, Nordic architecture or Nordic-grey rock anywhere in frame
 - name: s06-arrive
   do:
+  - *id001
+  - *id002
   - relaunch:
       save: true
       scene: false
@@ -541,6 +553,8 @@ steps:
   - no pine, spruce, birch, snow, frost, heather, Nordic architecture or Nordic-grey rock anywhere in frame
 - name: s07-arrive
   do:
+  - *id001
+  - *id002
   - relaunch:
       save: true
       scene: false
@@ -575,10 +589,8 @@ steps:
   - no pine, spruce, birch, snow, frost, heather, Nordic architecture or Nordic-grey rock anywhere in frame
 - name: s07-coast-travel
   do:
-  - &id001
-    console: coc ARG_HoldingCell
-  - &id002
-    wait: 5
+  - *id001
+  - *id002
   - console: cow ARG_Province 61 57
   - wait: 8
   expect:
@@ -621,6 +633,8 @@ steps:
   - no pine, spruce, birch, snow, frost, heather, Nordic architecture or Nordic-grey rock anywhere in frame
 - name: s08-arrive
   do:
+  - *id001
+  - *id002
   - relaunch:
       save: true
       scene: false
@@ -710,6 +724,8 @@ steps:
   - no pop-in line across the view
 - name: s09-arrive
   do:
+  - *id001
+  - *id002
   - relaunch:
       save: true
       scene: false
@@ -803,6 +819,8 @@ steps:
     within: 1
 - name: s10-arrive
   do:
+  - *id001
+  - *id002
   - relaunch:
       save: true
       scene: false
@@ -855,6 +873,8 @@ steps:
   - the board points away from the post towards 16 deg (the way to Archon)
 - name: s11-arrive
   do:
+  - *id001
+  - *id002
   - relaunch:
       save: true
       scene: false
@@ -954,6 +974,8 @@ steps:
     within: 0
 - name: s12-arrive
   do:
+  - *id001
+  - *id002
   - relaunch:
       save: true
       scene: false
@@ -1641,6 +1663,8 @@ steps:
   - the player stands on the walkable ground at the block's centre, nothing floating or sunk
 - name: s13-arrive
   do:
+  - *id001
+  - *id002
   - relaunch:
       save: true
       scene: false

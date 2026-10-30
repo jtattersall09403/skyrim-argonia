@@ -42,8 +42,8 @@ def test_each_scene_ends_on_its_travel_line_and_sets_time_and_a_region_weather()
 def test_travel_lines_after_the_first_are_run_by_the_journey_with_a_wait():
     for s in STOPS[1:]:
         arrive = next(st for st in JOURNEY["steps"] if st["name"] == f"s{s['n']:02d}-arrive")
-        assert arrive["do"][0] == {"relaunch": {"save": True, "scene": False}} \
-            and arrive["do"][1] == {"console": f"bat {s['scene']}"} and arrive["do"][2]["wait"] <= 10
+        assert arrive["do"][:2] == ws.HOLD and arrive["do"][2] == {"relaunch": {"save": True, "scene": False}} \
+            and arrive["do"][3] == {"console": f"bat {s['scene']}"} and arrive["do"][4]["wait"] <= 10
 
 
 def test_numbers_decide_where_the_brief_says():
