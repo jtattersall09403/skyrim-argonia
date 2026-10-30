@@ -1,10 +1,11 @@
-"""A reference's runtime form id from its editor id, for the console (game-7, 2026-10-30).
+"""A form's runtime id from its editor id, for the console (game-7, 2026-10-30).
 
-The game keeps no reference's editor id: `player.moveto ARG_Ref_ClaywaterStationRoadIn` is refused ("Item ... not
-found") while `prid 100008E9` finds the same ref. So every `ARG_*` word that names a REFR or ACHR in the world
-database's formid table is written as its runtime id: the plugin's prefix (the bridge's `plugin` read: "10" for a
-full plugin, "FE001" for a light one) and its local id. Base forms, cells and worldspaces keep their editor ids
-(`coc`, `cow` and po3's Tweaks need those). A calling reference is quoted: `"100008DB".GetDisabled`.
+The game keeps no reference's editor id, nor most base forms': `player.moveto ARG_Ref_ClaywaterStationRoadIn` and
+`player.placeatme ARG_CampSpot 1` are refused ("Item ... not found") while `prid 100008E9` finds the ref. So every
+`ARG_*` word in the world database's formid table is written as its runtime id: the plugin's prefix (the bridge's
+`plugin` read: "10" for a full plugin, "FE001" for a light one) and its local id. Cells, worldspaces, globals and
+quests keep their editor ids: `coc`, `cow`, `set <global> to` and the quest commands take those, and the game keeps
+them. A calling reference is quoted: `"100008DB".GetDisabled`.
 
     python3 tools/ref_ids.py render <out dir>      # tests/scenes/*.txt with refs as ids, for deploy.sh to send
 """
@@ -16,16 +17,16 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
 WORD = re.compile(r"\bARG_\w+\b")
-REF_TYPES = {"REFR", "ACHR"}
+KEEP_NAMES = {"CELL", "WRLD", "GLOB", "QUST"}
 
 
 def ref_rows() -> dict[str, tuple[str, int]]:
-    """{editor id: (plugin, local id)} for every placed reference in the world database."""
+    """{editor id: (plugin, local id)} for every form the console must be given by id."""
     sys.path.insert(0, str(REPO))
     from tools.argonia_world import db
     from tools.argonia_world.place_build import ref_edid
     w = db.open()
-    rows = {r.editor_id: (r.plugin, r.form_id) for r in w.rows("formid") if r.record_type in REF_TYPES}
+    rows = {r.editor_id: (r.plugin, r.form_id) for r in w.rows("formid") if r.record_type not in KEEP_NAMES}
     # A borrowed cell's own ref (the station house's KotM door) keeps its host's id and gets no editor id; it is
     # named as ours would be, ARG_Ref_<the build_ref id>, so a journey can face it.
     for r in w.rows("build_ref"):

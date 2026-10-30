@@ -3,10 +3,12 @@
 ; settlement, as a traveller would make one), the traveller's steel sword (ours), and the steel shield the
 ; crocodile carries (the loot under test; its own KotM loot is unknown). Nothing about LF83, the sheet, vastei
 ; or the rest is set.
-player.moveto ARG_Ref_ClaywaterStationRoadIn
+; the travel line is last: lines after it ran before the move landed, so the camp spot was placed in the holding
+; cell (game-7); the spot is placed at the road ref itself
 set gamehour to 10
 fw 0000081A
-player.placeatme ARG_CampSpot 1
+ARG_Ref_ClaywaterStationRoadIn.placeatme ARG_CampSpot 1
 player.additem ARG_Weap_SteelSword 1
 player.equipitem ARG_Weap_SteelSword
 ARG_Ref_ClaywaterStationCrocodile.additem ARG_Armo_Steel_Shield 1
+player.moveto ARG_Ref_ClaywaterStationRoadIn

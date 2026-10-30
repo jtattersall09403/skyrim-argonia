@@ -231,12 +231,12 @@ def cmd_pad(a):
                         "released": console("player.IsBlocking")})
     # lock-on needs a target: a wolf placed by the player (setup), then RS; TDM's lock shows its reticle
     console(f"player.placeatme {WOLF} 1")
-    console("tai")  # AI off for the target while the lock is read (setup); toggled back below
+    # No `tai`: it is a global toggle, and a run stopped between the pair left every actor's AI off for the session
+    # (game-7). The wolf keeps its AI for the 1.5 s of the lock and is killed after.
     time.sleep(1.0)
     B.pad("RX=0:100 RS:120 wait:900")
     record("lockon-RS", {"still": still("lockon-RS")})
     B.pad("RS:120 wait:600")
-    console("tai")
     console("killall")
 
 

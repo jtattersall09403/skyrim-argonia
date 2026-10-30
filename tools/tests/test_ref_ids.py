@@ -17,3 +17,9 @@ def test_a_light_plugin_prefix():
 def test_a_borrowed_cells_ref_is_named_like_ours():
     fix = ref_ids.resolver({"King of the Murkmire.esp": "08"}.__getitem__)
     assert fix("player.moveto ARG_Ref_ClaywaterStationStationHouseDoor") == "player.moveto 088933E1"
+
+
+def test_a_base_form_becomes_its_id_and_a_global_keeps_its_name():
+    fix = ref_ids.resolver({"Argonia.esm": "10"}.__getitem__)
+    assert fix("player.placeatme ARG_CampSpot 1") == "player.placeatme 1000085F 1"
+    assert "ARG_QuarantineNever" in fix("set ARG_QuarantineNever to 0")
