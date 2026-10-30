@@ -1,4 +1,4 @@
-# The crocodile in and working (planner-owned, bb7395f; fixes-1's den on the bank by LF83's pool): placed and alive,
+# The crocodile in and working (planner-owned, bb7395f; the shallows den in LF83's pool, cf11cb0): placed and alive,
 # it attacks when the player comes near (no god mode: its blow lands), it dies to the player's blows (god mode for
 # the kill only), and it does not respawn: the player leaves, eleven days pass (past the engine's 10-day cell reset),
 # and on return it is still dead.
@@ -10,12 +10,13 @@ steps:
     expect:
       - {console: "ARG_Ref_ClaywaterStationCrocodile.GetDead", contains: ">> 0"}
       - {console: "ARG_Ref_ClaywaterStationCrocodile.GetDisabled", contains: ">> 0"}
-  - name: attacks-near     # on the bank 4 m south of it, facing it; it starts the fight and its blow lands
+  - name: attacks-near     # wading in its pool 6 m north of it (a water ambusher: it cannot reach the bank, cf11cb0)
     do:
-      - {console: "player.moveto ARG_Ref_ClaywaterStationCrocodile 0 -400 0"}
-      - {console: "player.setangle z 0"}
+      - {console: "player.moveto ARG_Ref_ClaywaterStationCrocodile 0 400 0"}
+      - {console: "player.setangle z 180"}
       - {wait: 6}
     expect:
+      - {console: "ARG_Ref_ClaywaterStationCrocodile.IsSwimming", contains: ">> 1"}
       - {console: "ARG_Ref_ClaywaterStationCrocodile.IsInCombat", contains: ">> 1", within: 10}
       - {console: "ARG_Ref_ClaywaterStationCrocodile.GetDistance player", keep: croc_near}
       - {event: {kind: hit, match: "*"}, within: 10}
