@@ -155,3 +155,45 @@ What decides it:
   under 5 fighters without draining.
 - **B2 is the candidate** if its poise staggers by worn weight and one riposte plays: the rule set to port.
 - **A stays** if B2 adds nothing over A's stagger. Either way, the numbers DSC uses are not DSR's (decision 0004).
+
+## 2026-10-30: A restored exactly; DSC's engine fallback tried (lane game-11)
+**A's 20 bad files.** `stack.py verify` after game-10's B/B2 -> A switch: 20 *missing*, every one with a CJK name:
+rim-parry's `... - 副本.wav` copies and the `.hkx` and `.xlsm` files under openanimationreplacer (all in rim-parry's
+staged tree). Windows `tar` converts each pax UTF-8 name through the ANSI code page (1252) and skips one it cannot
+convert ("Archive entry has empty or unreadable filename ... skipping", exit 1, which the push ignored). Proved on a
+two-file tar: `°` laid, `副本` skipped. Fix (3fea556): names that are not ASCII go in a zip that .NET's ZipFile
+unpacks, since it honours the UTF-8 flag; tar's exit code is checked; a test is in tooling/tests/test_stack_push.py.
+rim-parry re-pushed: **verify 0 bad, 0 unrecorded** (22,573 files; tk-dodge.toml matches too).
+
+**A plays, once the roll perk is granted.** After the restore, combat-trial-a failed at pandora-wired (moved 0) and
+smoke's roll saw no TKDR_DodgeStart. ArgoniaCore logged "the sheet is uninitialised, no carrier is written". The
+base save starts with `coc` from the main menu, which sends no kNewGame, so NewCharacter (e668b08) never ran. No
+roll tier was set, and TK Dodge's perk lock (bUsePerkLock, TKDodgeAddon.esp|0x809) refused every roll. With
+`player.addperk FE00D809` added by hand, smoke's roll passed (> 300 units). fixes-2 fixed it at source in 2dab64e
+(the character is made at game ready). That fix has not been deployed or re-proved in game yet. combat-trial-a's own
+pandora-wired step (stick held 300 ms) moved 11 units with the perk; smoke's roll (500 ms) passed. Re-run trial-a
+after the deploy.
+
+**DSC through Nemesis (0.2's named fallback): no wiring so far.**
+- Nemesis Unlimited Behavior Engine v0.84-beta (Nexus 60033, GPL-3) is a B/B2-only tool row.
+- `stack.ps1 nemesis` lays its engine into `Data\Nemesis_Engine`, but not its 16 bundled patches, one of which is
+  `mod\tkuc`. It turns 197 behaviour and animation-data files in Data from hard links into copies, so it never
+  writes through into a mod. It runs `-update`, then `-generate <our 9 codes>`.
+- On the machine (B2 laid):
+  - `-update` **crashed** (exit -1073741819, 0xC0000005). The last UpdateLog line was "New Animations extraction
+    start (Folder: behavior templates\b\behavior)", the FNIS `b` template, where DSC's 30 `b` lines would be read.
+  - `-generate` **hung** at 0 CPU until its 900 s limit, and wrote no behaviours.
+- DSC's shipped hkx files are SE packfiles (hk_2010.2.0-r1, 8-byte pointers), so the format is not the cause.
+- Pandora 5.0.0-beta's FNIS parser (its source, read by a research agent; tag v5.0.0-beta) needs both
+  `animations\<folder>\FNIS_<folder>_List.txt` and `behaviors\FNIS_<folder>_Behavior.hkx` in the real Data. It drops
+  annotations (TSprintStop, TWeapEquip), and its paired (`pa`) case is commented out.
+- **Owed before the verdict:** one Pandora run on the B2 Data, reading its "FNIS Parser ... BBDarkSoulsCombat" lines.
+  It was cut short when the machine was stopped for the owner. Then FNIS for SE (Nexus 3038; no documented
+  unattended mode, and it would replace the Nemesis-format behaviours that TDM, TK Dodge and the rest of the stack
+  need), or the verdict "DSC not viable on this stack".
+
+| Group | Engine | DSC events | Journey | Verdict |
+|---|---|---|---|---|
+| A (0.0 stack) | Pandora | n/a | smoke roll ok with the perk; trial-a owed after 2dab64e's deploy | restore exact (verify 0 bad) |
+| B (DSC) | Pandora (game-10) | all MISSING | scene load failed | dead at Pandora |
+| B2 (DSC, crits off) | Pandora (game-10) / Nemesis (game-11) | all MISSING / update crashed, generate hung | not run | not wired; Pandora's parser lines owed |

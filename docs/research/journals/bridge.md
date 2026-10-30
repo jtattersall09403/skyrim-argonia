@@ -170,3 +170,13 @@ times are on the machine; ours are from the build VM through the tunnel.
 last-line read is wrong, and our save and load wait for completion where its calls do not. It stays an oracle
 only. It is **not laid**: the comparison removes it and relaunches clean. The planner's recommendation stands:
 keep ArgoniaBridge.
+
+## 2026-10-30: 0.3's two timings, recorded (lane game-11)
+Measured, not budgeted (0.3 §c targets); the planner reads them when it batches L4 work.
+- **Scene to scene** (the base save loaded, then `bat <scene>`; the runner's `scene_s`): p50 **7.7 s**, min 7.1 s,
+  max 11.8 s, over the 80 journey runs of 2026-10-30 that recorded it (first-place 29, claywater-walk 12, smoke 7,
+  quarantine 5, lf83-components 5, livia-sleep 5, croc-den 4, ui-probe 3; out/runs/*/2026103*/report.json).
+- **Launch to a scene:** `bridge.py launch --fresh` to the main menu with the bridge answering took 60 s (deploy
+  g11-deploy1: the profile laid, our DLLs and ESMs copied in); with the scene, about **68 s**.
+- **Edit to verdict** (0.3 §e's timed loop, game-8): **238.3 s** with the machine up: edit 1.0 s, header 3.8 s,
+  deploy 233.5 s (the SKSE build and the relaunch), read 0.1 s.

@@ -8,7 +8,9 @@
 #   stack.ps1 menu                 launch through SKSE, wait for the main menu, keep a still, print SKSE's plugin lines
 #   stack.ps1 verify [-Full]       every laid file's hash against installed.json (cached by size and mtime; -Full rehashes)
 #   stack.ps1 play-vanilla | play-modded [-Wait]   switch, then launch (the owner's stream cards)
-param([Parameter(Mandatory)][string]$Cmd, [switch]$Wait, [switch]$Full)
+#   stack.ps1 play-modded -Shaders on|off [-Wait]   the same with Community Shaders' DLL laid or set aside (the
+#                                  owner's on/off comparison, #16); the next `on` lays it again (exact undo)
+param([Parameter(Mandatory)][string]$Cmd, [switch]$Wait, [switch]$Full, [ValidateSet('', 'on', 'off')][string]$Shaders = '')
 $ErrorActionPreference = 'Stop'
 $Game = 'C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition'
 $Data = "$Game\Data"
@@ -314,7 +316,14 @@ public static class ParHash {
     Set-GameWindow
     Start-Process powershell.exe -WindowStyle Hidden -ArgumentList '-ExecutionPolicy', 'Bypass', '-File', "$Root\infra\splash.ps1"
     if ($Cmd -eq 'play-vanilla') { & $PSCommandPath off; Start-Process "$Game\SkyrimSE.exe" -WorkingDirectory $Game }
-    else { & $PSCommandPath on; Start-Process "$Game\skse64_loader.exe" -WorkingDirectory $Game }
+    else {
+      & $PSCommandPath on
+      # Shaders off: only CS's DLL leaves Data (a hard link: its mod file stays); its settings files stay ($Keep)
+      $cs = "$Data\SKSE\Plugins\CommunityShaders.dll"
+      if ($Shaders -eq 'off' -and (Test-Path $cs)) { Remove-Item -LiteralPath $cs -Force; 'community shaders: off (DLL set aside)' }
+      elseif ($Shaders) { "community shaders: $(if (Test-Path $cs) { 'on' } else { 'on asked, DLL not in the profile' })" }
+      Start-Process "$Game\skse64_loader.exe" -WorkingDirectory $Game
+    }
     if ($Wait) {
       for ($i = 0; $i -lt 60 -and -not (Get-Process SkyrimSE -EA SilentlyContinue); $i++) { Start-Sleep 1 }
       while (Get-Process SkyrimSE -EA SilentlyContinue) { Start-Sleep 2 }

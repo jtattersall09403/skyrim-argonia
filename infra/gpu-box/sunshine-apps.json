@@ -16,7 +16,7 @@
       "wait-all": true
     },
     {
-      "name": "Skyrim (Argonia stack)",
+      "name": "Argonia (shaders on)",
       "prep-cmd": [
         {
           "do": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\sunshine-prep.ps1",
@@ -25,7 +25,21 @@
         }
       ],
       "image-path": "C:\\argonia\\cards\\skyrim-souls.png",
-      "cmd": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\stack.ps1 play-modded -Wait",
+      "cmd": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\stack.ps1 play-modded -Shaders on -Wait",
+      "auto-detach": false,
+      "wait-all": true
+    },
+    {
+      "name": "Argonia (shaders off)",
+      "prep-cmd": [
+        {
+          "do": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\sunshine-prep.ps1",
+          "undo": "",
+          "elevated": false
+        }
+      ],
+      "image-path": "C:\\argonia\\cards\\skyrim-souls.png",
+      "cmd": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\stack.ps1 play-modded -Shaders off -Wait",
       "auto-detach": false,
       "wait-all": true
     }
