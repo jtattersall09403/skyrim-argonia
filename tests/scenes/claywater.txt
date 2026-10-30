@@ -1,0 +1,4 @@
+; Claywater Station (0.4 d): on the Blackwood Road south-east of the station, facing in; mid-morning, clear
+player.moveto ARG_Ref_ClaywaterStationRoadIn
+set gamehour to 10
+fw 0000081A

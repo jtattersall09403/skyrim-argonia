@@ -1,0 +1,35 @@
+# 0.4 §d acceptance, in game from `bat claywater`: the player walks the road into Claywater Station and into an
+# interior; the people stand at their posts by day; LF83's things are placed and enabled. Judged by console state;
+# a still per step. The schedules (sandbox by day, sleep by night) are nav-sandbox-20's and a night step here.
+id: claywater-walk
+runner: 1
+scene: claywater
+steps:
+  - name: arrived
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+  - name: walk-in
+    do: [{pad: "LY=1:3000"}, {pad: "LY=1:3000"}]
+    expect: [{moved: {gt: 600}}]
+  - name: people-placed
+    expect:
+      - {console: "ARG_Ref_ClaywaterStationLivia.GetDisabled", contains: ">> 0"}
+      - {console: "ARG_Ref_ClaywaterStationSigns.GetDisabled", contains: ">> 0"}
+      - {console: "ARG_Ref_ClaywaterStationTakes.GetDisabled", contains: ">> 0"}
+      - {console: "ARG_Ref_ClaywaterStationGaius.GetDisabled", contains: ">> 0"}
+  - name: lf83-things-placed
+    expect:
+      - {console: "ARG_Ref_ClaywaterStationWell.GetDisabled", contains: ">> 0"}
+      - {console: "ARG_Ref_ClaywaterStationMortarTub.GetDisabled", contains: ">> 0"}
+      - {console: "ARG_Ref_ClaywaterStationRaft.GetDisabled", contains: ">> 0"}
+      - {console: "ARG_Ref_ClaywaterStationCrocodile.GetDead", contains: ">> 0"}
+  - name: to-the-station-door
+    do: [{console: "player.moveto ARG_Ref_ClaywaterStationB1Door"}, {wait: 2}]
+  - name: enter-the-station-house   # the real path: activate the load door
+    do: [{key: "E 120"}, {wait: 6}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 0"}]
+  - name: out-again
+    do: [{key: "E 120"}, {wait: 6}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+  - name: night
+    do: [{console: "set gamehour to 23"}, {wait: 8}]
+    expect: [{console: "ARG_Ref_ClaywaterStationLivia.GetSleeping", not_contains: ">> 0", within: 60}]

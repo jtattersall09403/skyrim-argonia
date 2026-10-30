@@ -1,0 +1,4 @@
+; LF83's start (0.4 d): by Claywater's well junction, facing the well; mid-morning; nothing about LF83 is set
+player.moveto ARG_Ref_ClaywaterStationQuestBoard
+set gamehour to 10
+fw 0000081A

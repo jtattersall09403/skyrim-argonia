@@ -1,0 +1,32 @@
+# 0.4 §d's look loop: vantage stills of Claywater Station at the play camera, for a `reader` against the place's
+# design note (world/sources/blueprints, claywater-station) with the Nordic-tells checklist: no Nordic model,
+# texture or word; pieces seated on the ground (no floating or buried footing); doors at their doorways; the scour
+# pool holding water at the clay cut; people whole (no seam, tone mismatch or dark face). Stills are the evidence;
+# each step only checks the teleport landed. Fix and re-shoot until the reader passes them.
+id: claywater-look
+runner: 1
+scene: claywater
+steps:
+  - name: road-in
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+  - name: well-junction
+    do: [{console: "player.moveto ARG_Ref_ClaywaterStationQuestBoard"}, {wait: 3}]
+  - name: station-house-front
+    do: [{console: "player.moveto ARG_Ref_ClaywaterStationB1Door"}, {wait: 3}]
+  - name: huts-row
+    do: [{console: "player.moveto ARG_Ref_ClaywaterStationB6Door"}, {wait: 3}]
+  - name: family-hut
+    do: [{console: "player.moveto ARG_Ref_ClaywaterStationB5Door"}, {wait: 3}]
+  - name: landing-and-raft
+    do: [{console: "player.moveto ARG_Ref_ClaywaterStationRaft"}, {wait: 3}]
+  - name: clay-cut-and-pool
+    do: [{console: "player.moveto ARG_Ref_ClaywaterStationClayBend"}, {wait: 3}]
+  - name: ford-ambush-road
+    do: [{console: "player.moveto ARG_Ref_ClaywaterStationAmbushPlayer"}, {wait: 3}]
+  - name: livia-full-body
+    do: [{console: "player.moveto ARG_Ref_ClaywaterStationLivia"}, {wait: 3}]
+  - name: signs-full-body
+    do: [{console: "player.moveto ARG_Ref_ClaywaterStationSigns"}, {wait: 3}]
+  - name: station-house-inside
+    do: [{console: "player.moveto ARG_Ref_ClaywaterStationB1Door"}, {wait: 2}, {key: "E 120"}, {wait: 6}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 0"}]

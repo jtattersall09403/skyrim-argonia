@@ -1,0 +1,7 @@
+; the Blackwood Road ambush beyond Claywater's ford (0.4 d, 1.6's archetype): the player north-west of the ford,
+; facing the deserter, armed; noon. The fight itself is not set: the deserter acts on its own AI
+player.moveto ARG_Ref_ClaywaterStationAmbushPlayer
+set gamehour to 12
+fw 0000081A
+player.additem 00012EB7 1
+player.equipitem 00012EB7
