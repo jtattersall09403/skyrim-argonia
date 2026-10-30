@@ -1,7 +1,7 @@
 // One focus model for keyboard, pad and touch (0017 goal 2: every control reachable by pad and finger).
 //
 // - Keyboard: arrows move focus spatially, Enter/Space press (the platform's own button behaviour), Escape is back,
-//   PageUp/PageDown and Q/E are the view's previous/next, +/- zoom.
+//   Tab is back too (the vanilla menus close on it), PageUp/PageDown and Q/E are the view's previous/next, +/- zoom.
 // - Pad: the Gamepad API where the web view has it (d-pad and left stick move, A press, B back, LB/RB previous/next,
 //   triggers zoom, right stick pans). In game, PrismaUI (Ultralight has no Gamepad API) dispatches
 //   gamepadbuttondown on window.prismaUi.controls with the same W3C button index; the d-pad and buttons map alike.
@@ -20,7 +20,7 @@ const FOCUSABLE = "button:not([disabled]),[data-nav]";
 const DIRS: Partial<Record<NavAction, [number, number]>> = { up: [0, -1], down: [0, 1], left: [-1, 0], right: [1, 0] };
 
 const KEYS: Record<string, NavAction> = {
-  ArrowUp: "up", ArrowDown: "down", ArrowLeft: "left", ArrowRight: "right", Escape: "back",
+  ArrowUp: "up", ArrowDown: "down", ArrowLeft: "left", ArrowRight: "right", Escape: "back", Tab: "back",
   PageUp: "prev", PageDown: "next", q: "prev", e: "next", "+": "zoomIn", "=": "zoomIn", "-": "zoomOut",
   w: "panUp", s: "panDown", a: "panLeft", d: "panRight",
 };

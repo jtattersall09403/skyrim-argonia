@@ -152,6 +152,10 @@ void ResetActors(const std::vector<ac::respawn::ActorId>& ids) {
   for (auto id : ids) {
     auto* a = RE::TESForm::LookupByID<RE::Actor>(id);
     if (!a) continue;
+    if (a->IsDisabled()) {  // a disabled actor has no 3D or process to reset (diag4: the disabled deserter)
+      SKSE::log::info("respawn: {:08X} is disabled; not reset", id);
+      continue;
+    }
     if (a->IsDead()) a->Resurrect(true, true);  // (resetInventory, attach3D)
     else {  // a living roster actor is reset too: whole again, wherever the fight left it
       auto* avo = a->AsActorValueOwner();

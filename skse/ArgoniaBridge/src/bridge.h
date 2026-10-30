@@ -49,6 +49,10 @@ std::filesystem::path my_games();
 // The player when it stands in a loaded cell; nullptr at the main menu or during a load.
 RE::PlayerCharacter* player_in_world();
 
+// Why an actor cannot take an actor endpoint's calls (disabled, not loaded: no 3D or not in an attached cell, or no AI
+// process), or empty when it can. game-16's dev-grow crashed on a null vtable call on the disabled deserter.
+std::string actor_unready(RE::Actor* a);
+
 // Installed by main.cpp: the event sinks at data loaded, the player's animation sink after every load (both on
 // the main thread), the frame-time hook at plugin load.
 void events_install();

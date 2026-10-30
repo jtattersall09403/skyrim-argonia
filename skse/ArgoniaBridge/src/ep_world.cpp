@@ -287,6 +287,19 @@ std::string global(const Request& req) {
   });
 }
 
+}  // namespace
+
+std::string actor_unready(RE::Actor* a) {
+  if (!a) return "is missing";
+  if (a->IsDisabled()) return "is disabled";
+  auto* cell = a->GetParentCell();
+  if (!a->Is3DLoaded() || !cell || !cell->IsAttached()) return "is not loaded (no 3D or not in a loaded cell)";
+  if (!a->GetActorRuntimeData().currentProcess) return "has no AI process";
+  return {};
+}
+
+namespace {
+
 RE::Actor* actor_arg(const Request& req, std::size_t i, std::string& err) {
   if (req.args.size() <= i || req.args[i] == "player") {
     auto* p = player_in_world();
@@ -296,7 +309,14 @@ RE::Actor* actor_arg(const Request& req, std::size_t i, std::string& err) {
   auto* f = find_form(req.args[i]);
   auto* r = f ? f->AsReference() : nullptr;
   auto* a = r ? r->As<RE::Actor>() : nullptr;
-  if (!a) err = "no actor reference " + req.args[i];
+  if (!a) {
+    err = "no actor reference " + req.args[i];
+    return nullptr;
+  }
+  if (auto why = actor_unready(a); !why.empty()) {
+    err = "actor " + req.args[i] + " " + why;
+    return nullptr;
+  }
   return a;
 }
 

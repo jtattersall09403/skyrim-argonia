@@ -241,6 +241,11 @@ void HideVanillaHud() {
 class HudMenuSink final : public RE::BSTEventSink<RE::MenuOpenCloseEvent> {
  public:
   RE::BSEventNotifyControl ProcessEvent(const RE::MenuOpenCloseEvent* e, RE::BSTEventSource<RE::MenuOpenCloseEvent>*) override {
+    if (e && !e->opening && e->menuName == RE::MapMenu::MENU_NAME)  // the map gone: our chart over it goes too
+      SKSE::GetTaskInterface()->AddTask([] {
+        std::lock_guard l(Get().lock);
+        if (Get().view_host.is_open("chart")) CloseView("chart");
+      });
     if (e && e->opening && e->menuName == RE::HUDMenu::MENU_NAME)
       SKSE::GetTaskInterface()->AddTask([] {
         std::lock_guard l(Get().lock);
@@ -309,25 +314,30 @@ void PushHudState() {
   else SKSE::log::error("views: the HUD does not fit the schema: {}", json.error());
 }
 
+// The "journal updated" mod event, one per journal change: a change whose HUD notice merges into the last still
+// tells the system (game-16: stage 20's entry merged 0.18 s after clue 11 and no event left). Main thread.
+void SendJournalEvent(std::string str, std::int32_t mark) {
+  SKSE::ModCallbackEvent ev{"ArgoniaJournalNotice", RE::BSFixedString(str), static_cast<float>(mark), nullptr};
+  if (auto* src = SKSE::GetModCallbackEventSource()) src->SendEvent(&ev);
+  else SKSE::log::warn("journal notice: no mod callback event source; ArgoniaJournalNotice not sent");
+}
+
 void JournalNoticeNow(ac::journal::NoticeCause cause, std::string quest, std::int32_t mark) {
   auto& c = Get();
-  std::lock_guard l(c.lock);
-  const auto n = ac::journal::notify(c.journal_notices, cause, quest, mark, Now());
   const char* what = cause == ac::journal::NoticeCause::entry ? "entry" : "clue";
-  if (!n) {
-    SKSE::log::info("journal notice: {} {} {} merged into the last", quest, what, mark);
-    return;
+  {
+    std::lock_guard l(c.lock);
+    const auto n = ac::journal::notify(c.journal_notices, cause, quest, mark, Now());
+    if (!n) {
+      SKSE::log::info("journal notice: {} {} {} merged into the last (event still sent)", quest, what, mark);
+    } else {
+      // The engine's own notification (the HUD's message block, never among the hidden clips) and our HUD's stack.
+      RE::SendHUDMessage::ShowHUDMessage(std::string(ac::journal::kNoticeText).c_str());
+      if (g_api) PushHudState();
+      SKSE::log::info("journal notice {}: {} {} {}", n->seq, quest, what, mark);
+    }
   }
-  // The engine's own notification (the HUD's message block, never among the hidden clips) and our HUD's stack.
-  RE::SendHUDMessage::ShowHUDMessage(std::string(ac::journal::kNoticeText).c_str());
-  if (g_api) PushHudState();
-  // Sent on the main thread: from the view's thread (game-16) no sink ever saw it.
-  SKSE::GetTaskInterface()->AddTask([str = quest + " " + what, mark] {
-    SKSE::ModCallbackEvent ev{"ArgoniaJournalNotice", RE::BSFixedString(str), static_cast<float>(mark), nullptr};
-    if (auto* src = SKSE::GetModCallbackEventSource()) src->SendEvent(&ev);
-    else SKSE::log::warn("journal notice: no mod callback event source; ArgoniaJournalNotice not sent");
-  });
-  SKSE::log::info("journal notice {}: {} {} {}", n->seq, quest, what, mark);
+  SendJournalEvent(quest + " " + what, mark);  // outside the lock: a sink may call back into ArgoniaCore
 }
 
 void PushHudBars() {
@@ -341,6 +351,31 @@ void PushHudBars() {
     c.views["hud"] = *json;  // ViewState reads it; the host keeps the full state for a page reload
     Apply({{ac::views::OpKind::push, "hud", std::move(*json)}});
   }
+}
+
+// --- our views' close controls ------------------------------------------------------------------------------------
+// While the journal or the chart is open, the controls that close the vanilla menus close ours (B's pad press reaches
+// the view as its back action): Cancel in the menu context, and the key whose gameplay event is the Tween Menu (Tab),
+// the Journal (Esc, the pad's Back) or, for the chart, the Quick Map (M again). The dialogue and sitting views close
+// through their own intents (goodbye, stand), never here.
+void CloseByControl(const RE::ButtonEvent& b, const RE::UserEvents& ue) {
+  std::optional<std::string> open;
+  {
+    std::lock_guard l(Get().lock);
+    if (auto m = Get().view_host.modal()) open = std::string(*m);
+  }
+  if (!open || (*open != "journal" && *open != "chart")) return;
+  const auto* cm = RE::ControlMap::GetSingleton();
+  const std::string_view game = cm ? cm->GetUserEventName(b.GetIDCode(), b.GetDevice(), RE::ControlMap::InputContextID::kGameplay)
+                                   : std::string_view{};
+  const bool closes = b.QUserEvent() == ue.cancel || game == ue.tweenMenu.c_str() || game == ue.journal.c_str() ||
+                      (*open == "chart" && game == ue.quickMap.c_str());
+  if (!closes) return;
+  SKSE::log::info("views: {} closed by {} ({})", *open, game.empty() ? b.QUserEvent().c_str() : std::string(game).c_str(),
+                  b.GetIDCode());
+  SKSE::GetTaskInterface()->AddTask([v = *open] {
+    ViewIntent(R"({"type":"view.close","v":1,"body":{"view":")" + v + R"("}})");
+  });
 }
 
 // --- the journal key ---------------------------------------------------------------------------------------------
@@ -364,7 +399,13 @@ class InputSink final : public RE::BSTEventSink<RE::InputEvent*> {
         std::lock_guard l(Get().lock);
         swallow = g_close_guard.swallow(key, b->IsDown(), b->IsUp(), Get().view_host.modal().has_value());
       }
-      if (swallow) const_cast<RE::BSFixedString&>(b->QUserEvent()) = "";
+      if (swallow) {
+        const_cast<RE::BSFixedString&>(b->QUserEvent()) = "";
+        // TK Dodge rolls on a sprint-key release held under SprintingPressDuration, read by key code in its own
+        // input sink: the swallowed release reads as a long hold, and our sink runs first (prepended below).
+        if (b->IsUp()) const_cast<RE::ButtonEvent*>(b)->GetRuntimeData().heldDownSecs = 3600.0f;
+      }
+      if (b->IsDown() && !swallow) CloseByControl(*b, *ue);
     }
     return RE::BSEventNotifyControl::kContinue;
   }
@@ -408,7 +449,8 @@ void ViewsDataLoaded() {
     else c.router_log.push_back("refused: " + why);
   }
   static InputSink input;
-  if (auto* idm = RE::BSInputDeviceManager::GetSingleton()) idm->AddEventSink<RE::InputEvent*>(&input);
+  // Prepended: our sink sees a press before TK Dodge's (registered earlier, at input loaded) can act on it.
+  if (auto* idm = RE::BSInputDeviceManager::GetSingleton()) idm->PrependEventSink(&input);
   static CellSink cells;
   if (auto* p = RE::PlayerCharacter::GetSingleton()) p->AsBGSActorCellEventSource()->AddEventSink(&cells);
   if (c.router.install(ac::router::HookId::hudElements, &why)) {
@@ -458,6 +500,14 @@ void CloseView(std::string_view view) {
   const bool was_modal = c.view_host.modal().has_value();
   Apply(c.view_host.close(view));
   if (was_modal != c.view_host.modal().has_value()) PushHudState();
+  // The chart stands over the engine's MapMenu (game-16: the kHide sent at its opening does not take): closing the
+  // chart closes the map, so the player is back in the world.
+  if (view == "chart")
+    if (auto* ui = RE::UI::GetSingleton(); ui && ui->IsMenuOpen(RE::MapMenu::MENU_NAME))
+      if (auto* q = RE::UIMessageQueue::GetSingleton()) {
+        q->AddMessage(RE::MapMenu::MENU_NAME, RE::UI_MESSAGE_TYPE::kHide, nullptr);
+        SKSE::log::info("views: chart closed; MapMenu hidden");
+      }
 }
 
 void CloseAllViews() {

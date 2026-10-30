@@ -95,6 +95,7 @@ std::string dev_grow(const Request& req) {
       auto* ref = f ? f->AsReference() : nullptr;
       auto* target = ref ? ref->As<RE::Actor>() : nullptr;
       if (!p || !target || target->IsDead()) return reply_error("dev-grow", "no player, or no living actor " + g.target);
+      if (auto why = actor_unready(target); !why.empty()) return reply_error("dev-grow", "actor " + g.target + " " + why);
       auto* weap = p->GetEquippedObject(false);
       auto* src = RE::ScriptEventSourceHolder::GetSingleton();
       if (!src) return reply_error("dev-grow", "no script event source");
