@@ -1,8 +1,9 @@
 // Real input, frame time and the forced crash (0.3 §a; the input path rebuilt by lane input, 2026-10-30).
-//   input key <chord> <ms> [engine|os]   a key press held ms (<= 3000). engine (default): ButtonEvents sent on the
+//   input key <chord> <ms> [os|engine]   a key press held ms (<= 3000). engine: ButtonEvents sent on the
 //                            main thread to the game's own input event source, so no window focus or WndProc is on
 //                            the path. os: SendInput scan codes after the main window is made foreground; the count
-//                            injected and GetLastError come back. Calls and schedule: protocol/input.h.
+//                            injected and GetLastError come back. os is the default: engine events open menus (J) but neither move the player
+//                            nor turn the camera (game-15, measured). Calls and schedule: protocol/input.h.
 //   focus                    brings the game's main window to the foreground, or says who holds it
 //   input-diag               the foreground window, the game's window, the WndProc's module (PrismaUI?), last SendInput
 //   frametime [frames]       real frame intervals, measured at the player's per-frame update (a vtable hook by

@@ -12,7 +12,7 @@ Request req(const std::string& line) { return std::get<Request>(parse(kTok + " "
 void key_calls() {
   auto v = key_call(req("input key F 150"));
   auto* k = std::get_if<KeyCall>(&v);
-  CHECK(k && k->route == Route::engine && k->ms == 150 && k->codes.size() == 1 && k->codes[0] == 0x21);
+  CHECK(k && k->route == Route::os && k->ms == 150 && k->codes.size() == 1 && k->codes[0] == 0x21);
   v = key_call(req("input key LSHIFT+W 800 os"));
   k = std::get_if<KeyCall>(&v);
   CHECK(k && k->route == Route::os && k->codes.size() == 2);

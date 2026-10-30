@@ -24,7 +24,7 @@ struct KeyCall {
   std::vector<std::uint16_t> codes;
   std::string names;
   int ms = 0;
-  Route route = Route::engine;
+  Route route = Route::os;  // engine events reach menus but do not move the player or turn the camera (game-15)
 };
 std::variant<KeyCall, std::string> key_call(const Request& r);  // the call, or the refusal in words
 
