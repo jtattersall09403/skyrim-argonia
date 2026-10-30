@@ -208,4 +208,6 @@ Something they can **play**, that is:
 | 2026-10-30 | **Machine move after things work**: get everything working on the current g4dn first, then move for frame rate. Approved: g6.xlarge in London, Paris or Ireland, or g5.xlarge at $0.31/h, whichever is available (the owner requested a G spot quota of 16 in eu-west-3 and eu-west-1). No standing retry loop. |
 | 2026-10-30 | **Respawn on rest covers our own actors only** (planner, applying 0012): the rest roster is limited to our plugins' actors. **Owner (#18): the game is set only in Argonia; Skyrim's province and landmass are not in it, so vanilla actors are irrelevant; respawn follows our authored rules.** |
 | 2026-10-30 | **No 'restart at this size' button**: folding or unfolding mid-session keeps the picture size until the game next starts. |
+| 2026-10-30 | **Magic is mostly covered by the Morrowind spells mod** (Magic Expanded, 133435): reuse it rather than build magic. |
+| 2026-10-30 | **Fix, don't defer**: anything fixable is fixed, with more rounds overnight, so the owner gets something fixed and complete in the morning; 'known issues' only for what truly cannot be fixed in time, each with why. Replaces the planner's time-box. |
 
