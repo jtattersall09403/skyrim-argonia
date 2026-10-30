@@ -7,7 +7,7 @@ import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import {
   encodeIntent, messageTable, type ChartState, type DialogueState, type HudState, type IntentMessage,
-  type JournalState, type PushMessage,
+  type JournalState, type PushMessage, type SittingState,
 } from "../../schema/generated/messages.ts";
 import { esc, intentsIn, textOf } from "../core/html.ts";
 import { remFor } from "../core/scale.ts";
@@ -16,11 +16,12 @@ import { render as chart } from "../chart/render.ts";
 import { backIntent, render as dialogue } from "../dialogue/render.ts";
 import { barLength, render as hud, renderBars } from "../hud/render.ts";
 import { render as journal, turn } from "../journal/render.ts";
+import { done as sittingDone, render as sitting } from "../sitting/render.ts";
 
 const root = new URL("../../../", import.meta.url);
 type Fixture = { states: Record<string, PushMessage>; intents: Record<string, IntentMessage> };
 const fx = (s: string): Fixture => JSON.parse(readFileSync(new URL(`ui/fixtures/${s}.json`, root), "utf8"));
-const screens = ["dialogue", "journal", "hud", "chart"] as const;
+const screens = ["dialogue", "journal", "hud", "chart", "sitting"] as const;
 
 // Every HTML a push can produce (the dialogue's with the persuasion panel open as well), keyed by fixture state.
 function renders(screen: string, m: PushMessage): string[] {
@@ -30,6 +31,7 @@ function renders(screen: string, m: PushMessage): string[] {
     case "hud.state": return [hud(m.body)];
     case "hud.bars": return [renderBars(m.body.bars)];
     case "chart.state": return [chart(m.body)];
+    case "sitting.state": return [sitting(m.body)];
   }
   throw new Error(`${screen}: no view renders ${(m as PushMessage).type}`);
 }
@@ -39,6 +41,7 @@ function programmatic(m: PushMessage): IntentMessage[] {
   const out: (IntentMessage | null)[] = [];
   if (m.type === "dialogue.state") out.push(backIntent(m.body));
   if (m.type === "journal.state") out.push(turn(m.body, -1), turn(m.body, 1), { type: "view.close", v: 1, body: { view: "journal" } });
+  if (m.type === "sitting.state") out.push(sittingDone());
   if (m.type === "chart.state") out.push(panIntent(m.body.view), { type: "view.close", v: 1, body: { view: "chart" } });
   return out.filter((x): x is IntentMessage => x !== null);
 }
@@ -96,6 +99,18 @@ test("each view shows what the push carried", () => {
     assert.ok(t.includes(String(s.vastei.carried)), name);
     assert.equal(html.includes('class="sneak"'), s.sneak.sneaking, `${name}: the eye iff sneaking`);
     assert.doesNotMatch(html, /compass|marker/i, `${name}: no compass, no marker`);
+  }
+  for (const [name, m] of Object.entries(fx("sitting").states)) {
+    const s = (m as { body: SittingState }).body;
+    const html = sitting(s), t = textOf(html);
+    assert.ok(t.includes(`Level ${s.level}`) && t.includes(String(s.vastei)), name);
+    assert.ok(t.includes(String(s.health.before)) && t.includes(String(s.health.after)), name);
+    if (s.notice) assert.ok(t.includes(s.notice), name);
+    for (const a of s.attributes) {
+      assert.ok(t.includes(a.name) && t.includes(`+${a.bought} / ${a.cap}`) && t.includes(String(a.cost)), `${name}: ${a.id}`);
+      assert.equal(intentsIn(html).some((i) => JSON.stringify(i).includes(`"attribute":"${a.id}"`)), a.refusal === undefined, `${name}: ${a.id} Buy iff no refusal`);
+    }
+    assert.equal(intentsIn(html).filter((i) => (i as IntentMessage).type === "sitting.done").length, 1, name);
   }
   for (const [name, m] of Object.entries(fx("chart").states)) {
     const s = (m as { body: ChartState }).body;

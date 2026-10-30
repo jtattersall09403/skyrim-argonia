@@ -1,0 +1,247 @@
+{
+ "screen": "sitting",
+ "doc": "Mock data for the level sitting's L3 harness (1.5). Costs follow 40(1+lvl/10)^1.3 x (1+attr/50)^2 x (1+0.5(n-1)); the core computes them in play.",
+ "states": {
+  "fresh": {
+   "type": "sitting.state",
+   "v": 1,
+   "body": {
+    "level": 2,
+    "vastei": 1500,
+    "pendingAfter": 0,
+    "attributes": [
+     {
+      "id": "agility",
+      "name": "Agility",
+      "value": 40,
+      "bought": 0,
+      "cap": 3,
+      "cost": 164.3
+     },
+     {
+      "id": "endurance",
+      "name": "Endurance",
+      "value": 35,
+      "bought": 0,
+      "cap": 3,
+      "cost": 146.5
+     },
+     {
+      "id": "intelligence",
+      "name": "Intelligence",
+      "value": 45,
+      "bought": 0,
+      "cap": 3,
+      "cost": 183.0
+     },
+     {
+      "id": "personality",
+      "name": "Personality",
+      "value": 30,
+      "bought": 0,
+      "cap": 3,
+      "cost": 129.8
+     },
+     {
+      "id": "speed",
+      "name": "Speed",
+      "value": 42,
+      "bought": 0,
+      "cap": 3,
+      "cost": 171.6
+     },
+     {
+      "id": "strength",
+      "name": "Strength",
+      "value": 38,
+      "bought": 0,
+      "cap": 3,
+      "cost": 157.0
+     },
+     {
+      "id": "willpower",
+      "name": "Willpower",
+      "value": 33,
+      "bought": 0,
+      "cap": 3,
+      "cost": 139.7
+     }
+    ],
+    "health": {
+     "before": 120,
+     "after": 120
+    }
+   }
+  },
+  "midSitting": {
+   "type": "sitting.state",
+   "v": 1,
+   "body": {
+    "level": 2,
+    "vastei": 150,
+    "pendingAfter": 1,
+    "attributes": [
+     {
+      "id": "agility",
+      "name": "Agility",
+      "value": 40,
+      "bought": 0,
+      "cap": 3,
+      "cost": 164.3,
+      "refusal": "tooDear"
+     },
+     {
+      "id": "endurance",
+      "name": "Endurance",
+      "value": 38,
+      "bought": 3,
+      "cap": 3,
+      "cost": 392.6,
+      "refusal": "atCapThisSitting"
+     },
+     {
+      "id": "intelligence",
+      "name": "Intelligence",
+      "value": 45,
+      "bought": 0,
+      "cap": 3,
+      "cost": 183.0,
+      "refusal": "tooDear"
+     },
+     {
+      "id": "personality",
+      "name": "Personality",
+      "value": 30,
+      "bought": 0,
+      "cap": 3,
+      "cost": 129.8
+     },
+     {
+      "id": "speed",
+      "name": "Speed",
+      "value": 42,
+      "bought": 0,
+      "cap": 3,
+      "cost": 171.6,
+      "refusal": "tooDear"
+     },
+     {
+      "id": "strength",
+      "name": "Strength",
+      "value": 38,
+      "bought": 0,
+      "cap": 3,
+      "cost": 157.0,
+      "refusal": "tooDear"
+     },
+     {
+      "id": "willpower",
+      "name": "Willpower",
+      "value": 33,
+      "bought": 0,
+      "cap": 3,
+      "cost": 139.7
+     }
+    ],
+    "health": {
+     "before": 120,
+     "after": 129
+    },
+    "notice": "Endurance can rise no more at this sitting."
+   }
+  },
+  "tooDear": {
+   "type": "sitting.state",
+   "v": 1,
+   "body": {
+    "level": 3,
+    "vastei": 60,
+    "pendingAfter": 2,
+    "attributes": [
+     {
+      "id": "agility",
+      "name": "Agility",
+      "value": 44,
+      "bought": 0,
+      "cap": 3,
+      "cost": 198.8,
+      "refusal": "tooDear"
+     },
+     {
+      "id": "endurance",
+      "name": "Endurance",
+      "value": 40,
+      "bought": 0,
+      "cap": 3,
+      "cost": 182.3,
+      "refusal": "tooDear"
+     },
+     {
+      "id": "intelligence",
+      "name": "Intelligence",
+      "value": 50,
+      "bought": 0,
+      "cap": 3,
+      "cost": 225.0,
+      "refusal": "tooDear"
+     },
+     {
+      "id": "personality",
+      "name": "Personality",
+      "value": 34,
+      "bought": 0,
+      "cap": 3,
+      "cost": 158.8,
+      "refusal": "tooDear"
+     },
+     {
+      "id": "speed",
+      "name": "Speed",
+      "value": 46,
+      "bought": 0,
+      "cap": 3,
+      "cost": 207.4,
+      "refusal": "tooDear"
+     },
+     {
+      "id": "strength",
+      "name": "Strength",
+      "value": 42,
+      "bought": 0,
+      "cap": 3,
+      "cost": 190.5,
+      "refusal": "tooDear"
+     },
+     {
+      "id": "willpower",
+      "name": "Willpower",
+      "value": 38,
+      "bought": 0,
+      "cap": 3,
+      "cost": 174.3,
+      "refusal": "tooDear"
+     }
+    ],
+    "health": {
+     "before": 140,
+     "after": 140
+    },
+    "notice": "Not enough vastei for that."
+   }
+  }
+ },
+ "intents": {
+  "buyStrength": {
+   "type": "sitting.buy",
+   "v": 1,
+   "body": {
+    "attribute": "strength"
+   }
+  },
+  "rise": {
+   "type": "sitting.done",
+   "v": 1,
+   "body": {}
+  }
+ }
+}

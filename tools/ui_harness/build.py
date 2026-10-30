@@ -17,7 +17,7 @@ import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-VIEWS = ("dialogue", "journal", "hud", "chart")
+VIEWS = ("dialogue", "journal", "hud", "chart", "sitting")
 OUT = ROOT / "out" / "ui" / "views"
 NPM = Path.home() / ".argonia" / "npm"
 CHART_LAYER_PX = 2048

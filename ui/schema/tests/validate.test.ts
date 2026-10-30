@@ -11,7 +11,7 @@ import {
 
 const root = new URL("../../../", import.meta.url);
 const read = (p: string) => readFileSync(new URL(p, root), "utf8");
-const screens = ["dialogue", "journal", "hud", "chart"];
+const screens = ["dialogue", "journal", "hud", "chart", "sitting"];
 
 const refusal = (r: { ok: boolean; error?: string }): string => (r.ok ? "<accepted>" : (r as { error: string }).error);
 

@@ -245,6 +245,17 @@ class Harness:
         if sent != want:
             fails.append(f"journal sent {sent}, want {want}")
 
+        sx = fixtures("sitting")
+        p = self.open(vp, "sitting")
+        p.evaluate("(m) => window.argonia.push(m)", json.dumps(sx["states"]["fresh"]))
+        p.click(".attr[data-attr=strength] .buy")
+        p.keyboard.press("Escape")
+        p.click(".rise")
+        sent = [json.loads(s) for s in p.evaluate("() => window.argoniaSent")]
+        want = [sx["intents"]["buyStrength"], sx["intents"]["rise"], sx["intents"]["rise"]]
+        if sent != want:
+            fails.append(f"sitting sent {sent}, want {want}")
+
         if (self.out / "views" / "chart" / "assets" / "index.js").exists():
             c = fixtures("chart")
             p = self.open(vp, "chart")
