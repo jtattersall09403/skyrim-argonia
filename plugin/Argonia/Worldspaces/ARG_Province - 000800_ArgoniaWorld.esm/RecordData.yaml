@@ -89,13 +89,13 @@ TopCell:
     EditorID: ARG_Ref_ClaywaterStationB1Door
     SkyrimMajorRecordFlags:
     - 0x400
-    Base: 029CB0:Skyrim.esm
+    Base: 093D0D:King of the Murkmire.esp
     TeleportDestination:
       Door: 8933E1:King of the Murkmire.esp
       Position: 8622.41, -5156.74, 5711.58
       Rotation: 0, 0, 4.287916
     Placement:
-      Position: -231669.1, 47410.11, 2628.22
+      Position: -231669.1, 47410.11, 2675.15
       Rotation: 0, 0, 3.700098
   - MutagenObjectType: PlacedObject
     FormKey: 0008B7:Argonia.esm

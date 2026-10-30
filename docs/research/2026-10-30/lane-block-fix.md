@@ -53,7 +53,7 @@
 - `make check`: CHECK GREEN, 311 passed. Plugin regenerated twice identical, plugin/ current, Spriggit round trip
   byte-identical.
 
-## The station house: the ready swap (not applied)
+## The station house: the swap (applied on the planner's ruling)
 The candidate is the house King of the Murkmire builds for this very interior. The borrowed cell 893374
 (LilmothApothecaryHouse) leads out by door 8933E1 to exterior door 889070. Beside that door stands
 `MurkmireHouse01Yellow` (8933E3, `argonia/blackwood/house1.nif`, 9.3 × 6.8 × 10.7 m, 5.9 m of it below the
@@ -66,8 +66,8 @@ ground (432 u).
     (17.1 × 12.5);
   - Black Marsh.esm `01cyrodilhouse2` (Cyrodiil farmhouse, 16.3 × 15.8).
   - The farmhouse is 20.1 × 10.1 m. house1 is smaller, so the b1 stone walls enclose a larger yard.
-- Apply it only if claywater-look's still reads a Skyrim farmhouse from the road. Through db.py, upsert these rows
-  (b1 and b1-door replace their `piece`/`base`; b1-door keeps its door_to, socket and persistent fields):
+- Applied (planner ruling) through db.py: these rows. b1 and b1-door replace their `piece`/`base`; b1-door keeps its door_to,
+  socket and persistent fields:
 
 ```
 {"id": "ref.claywater-station.b1", "base": "8933E3:King of the Murkmire.esp", "x_m": 316.62, "y_m": 3068.74, "z_m": 36.87, "yaw_deg": 32}
@@ -75,11 +75,17 @@ ground (432 u).
 {"id": "ref.claywater-station.b1-doorframe", "base": "0CE602:King of the Murkmire.esp", "x_m": 318.62, "y_m": 3066.0, "z_m": 39.3, "yaw_deg": 212}
 {"id": "ref.claywater-station.b1-stairs", "base": "157332:King of the Murkmire.esp", "x_m": 319.45, "y_m": 3064.26, "z_m": 37.6, "yaw_deg": 302}
 ```
-  The two new rows take cell_id `cell.claywater-station.exterior` and persistent false. Set b1's `piece` to null.
-  Then add keep verdicts for 8933E3, 0CE602 and 157332, and close the 0396A1 and 029CB0 verdicts.
+  The two new rows take cell_id `cell.claywater-station.exterior` and persistent false. 8933E3, 0CE602 and 157332
+  have keep verdicts. 0396A1 and 029CB0 are no longer reached from the block.
+- `place_build._arrival`: an exterior door now steps out away from its own building (`<b>-door` → `<b>`, whether a
+  piece or a base), else from the nearest piece. The house is now a base row, and the stairs would have been nearest.
+  b4 to b6 arrive unchanged (no YAML diff).
+- After: `make plugin` twice gives Argonia.esm sha f62ff0624cd06714… both times (458,466 bytes). The block
+  inventory has 1,131 rows: 1,130 keep and 1 restyle (Dragon's Tongue, P2), with 0 unreviewed and 0 open blockers.
+  `make check` is CHECK GREEN with 312 passed, and plugin-check is green.
 
 ## Owed
 - claywater-look (game lane): stills of the stable plot (the awning hut), the family hut's rack and pot, and the
-  station house from the road.
+  station house (now KotM's Blackwood house) from the road and at its door.
 - The quest YAMLs under plugin/Argonia/Quests/ (31 new) and the counts' share from quest shelling belong to
   game-7's uncommitted quarantine change. I did not commit them.

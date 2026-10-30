@@ -8,10 +8,10 @@ Regions:
 Temporary:
 - MutagenObjectType: PlacedObject
   FormKey: 00088E:Argonia.esm
-  Base: 0396A1:Black Marsh.esm
+  Base: 8933E3:King of the Murkmire.esp
   Placement:
-    Position: -231963.2, 47298.06, 2636.34
-    Rotation: 0, 0, 3.700098
+    Position: -231779.73, 47246.24, 2582.01
+    Rotation: 0, 0, 0.558505
 - MutagenObjectType: PlacedObject
   FormKey: 00088F:Argonia.esm
   Base: 672FEB:King of the Murkmire.esp
@@ -331,3 +331,15 @@ Temporary:
   Placement:
     Position: -230576.66, 46947.92, 2567.73
     Rotation: 0, 0, 2.007129
+- MutagenObjectType: PlacedObject
+  FormKey: 00096E:Argonia.esm
+  Base: 0CE602:King of the Murkmire.esp
+  Placement:
+    Position: -231639.69, 47438.12, 2752.18
+    Rotation: 0, 0, 3.700098
+- MutagenObjectType: PlacedObject
+  FormKey: 00096F:Argonia.esm
+  Base: 157332:King of the Murkmire.esp
+  Placement:
+    Position: -231581.55, 47559.97, 2633.13
+    Rotation: 0, 0, 5.270894

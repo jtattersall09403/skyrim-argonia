@@ -9,7 +9,7 @@ as the records of Argonia.esm, one layer per place (`place:<slug>`).
   `base` is a FormKey of a master or the EditorID of a record of ours. Exterior positions go through the province
   grid (`intermediate._pos_exterior`, z on the 2.W1 ground when the row gives none); interior ones through
   `_pos_interior`. Load doors teleport to a point 1.2 m in front of their partner (exterior: out from the building,
-  away from the host piece's centre; interior: toward the cell's centre of references).
+  away from the door's building, `<b>` for `<b>-door`, else the nearest piece; interior: toward the cell's centre of references).
 - **People.** Per `build_person`: an NPC_ templated on a vanilla NPC_ (Traits: face, body, voice; a creature also
   takes its stats, attacks, AI data, spells and inventory), the speaker keyword for people, Unique, no Respawn
   flag (a killed one stays dead), and one package per `npc_day_block` row: `work:N` sandboxes around the reference
@@ -105,10 +105,13 @@ def _arrival(ctx, refs_by_id, cells, partner) -> tuple[list[float], list[float]]
     """A point DOOR_ARRIVAL_M in front of the partner door, facing away from it."""
     from tools.argonia_world.intermediate import _rot
     kind = cells[partner.cell_id].kind
-    if kind == "exterior":  # out from the building: away from the nearest non-door piece of the same cell
-        hosts = [o for o in refs_by_id.values() if o.cell_id == partner.cell_id and o.piece and o.id != partner.id
-                 and "door" not in o.id]
-        h = min(hosts, key=lambda o: (o.x_m - partner.x_m) ** 2 + (o.y_m - partner.y_m) ** 2)
+    if kind == "exterior":  # out from the building: away from the door's own building (`<b>-door` -> `<b>`, a
+        # piece or a base), else from the nearest non-door piece of the same cell
+        h = refs_by_id.get(partner.id.removesuffix("-door"))
+        if h is None or h.id == partner.id or h.cell_id != partner.cell_id:
+            hosts = [o for o in refs_by_id.values() if o.cell_id == partner.cell_id and o.piece and o.id != partner.id
+                     and "door" not in o.id]
+            h = min(hosts, key=lambda o: (o.x_m - partner.x_m) ** 2 + (o.y_m - partner.y_m) ** 2)
         dx, dy = partner.x_m - h.x_m, partner.y_m - h.y_m
     else:  # into the room: toward the centre of the cell's references
         own = [o for o in refs_by_id.values() if o.cell_id == partner.cell_id and o.id != partner.id]

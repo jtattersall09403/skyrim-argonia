@@ -10,7 +10,7 @@
    "by_depth": {
     "0": 13,
     "1": 13,
-    "2": 346,
+    "2": 347,
     "3": 334,
     "4": 118,
     "5": 306
@@ -19,14 +19,14 @@
     "Argonia.esm": 34,
     "ArgoniaWorld.esm": 11,
     "ArgonianLakeHouse.esl": 3,
-    "Black Marsh.esm": 2,
+    "Black Marsh.esm": 1,
     "Dawnguard.esm": 6,
     "Dragonborn.esm": 2,
     "Ferries.esp": 1,
     "HearthFires.esm": 4,
     "Here There Be Monsters - Curse of Cipactli.esp": 42,
-    "King of the Murkmire.esp": 217,
-    "Skyrim.esm": 783,
+    "King of the Murkmire.esp": 220,
+    "Skyrim.esm": 782,
     "Update.esm": 4,
     "ccBGSSSE001-Fish.esm": 10,
     "ccBGSSSE025-AdvDSGS.esm": 1,
@@ -44,7 +44,7 @@
     "CLAS": 8,
     "CLMT": 1,
     "CONT": 14,
-    "DOOR": 3,
+    "DOOR": 2,
     "FACT": 15,
     "FLOR": 3,
     "FURN": 13,
@@ -67,7 +67,7 @@
     "SNDR": 135,
     "SOUN": 3,
     "SPEL": 9,
-    "STAT": 292,
+    "STAT": 294,
     "TREE": 24,
     "TXST": 23,
     "VTYP": 8,
@@ -76,11 +76,10 @@
     "WTHR": 17
    },
    "by_verdict": {
-    "keep": 1127,
-    "replace": 1,
-    "restyle": 2
+    "keep": 1130,
+    "restyle": 1
    },
-   "rows": 1130,
+   "rows": 1131,
    "unreviewed": 0
   },
   "by_kind": {
@@ -91,8 +90,8 @@
   "by_reach": {
    "engine": 3326,
    "start-quest": 686,
-   "unreached": 121291,
-   "world": 101655
+   "unreached": 121292,
+   "world": 101654
   },
   "by_type": {
    "ACTI": 3090,
@@ -151,13 +150,13 @@
    "WTHR": 118
   },
   "by_verdict": {
-   "keep": 1194,
+   "keep": 1197,
    "replace": 3,
    "restyle": 6,
-   "unreviewed": 225755
+   "unreviewed": 225752
   },
-  "reachable": 105667,
-  "reachable_unreviewed": 104469,
+  "reachable": 105666,
+  "reachable_unreviewed": 104466,
   "rows": 226958
  },
  "load_order": [
