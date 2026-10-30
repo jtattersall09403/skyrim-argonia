@@ -72,6 +72,7 @@ class GameEngine final : public ac::seam::Engine, public ac::seam::EngineWrites 
 ac::seam::Session Session();
 // A fact changed (`why` names it for the log): step the watched quests and apply the orders; check the season.
 void FactsChanged(std::string_view why);
+void NewCharacter();  // the sheet from race and class, once, at the new game (the studio character's answers)
 void MirrorAttributes();
 // The player's perks of ours: the dialogue intercept, the rest intercept and the combat carriers.
 void EnsurePerks();

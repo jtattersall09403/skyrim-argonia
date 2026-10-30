@@ -95,9 +95,54 @@ void bands_and_scores() {
   CHECK_NEAR(skill_score(SkillId::alchemy, Effective::of(s)), (30 + 4) / 1.2, 1e-9);
 }
 
+// A sheet with no attribute set (the studio character before the new-character step) derives nothing: the caller
+// leaves the engine's own values, so health is never written as 0.
+void uninitialised_sheet_derives_nothing() {
+  Sheet s;
+  CHECK(s.uninitialised());
+  CHECK(!derive_set(s, Effective::of(s), 0).has_value());
+  CHECK_NEAR(derive(s, Effective::of(s), 0).health, 0.0, 1e-9);  // the degenerate value the guard keeps out
+  s.a[AttrId::endurance] = 1;
+  CHECK(!s.uninitialised());
+  CHECK(derive_set(s, Effective::of(s), 0).has_value());
+}
+
+// The studio character (start.json: Argonian, Marsh guide, male): race baselines, favoured speed and endurance +10,
+// skills 5 + race + major 25 / minor 10 + 5 for the combat specialisation; the derived health is above 0.
+void new_character_studio() {
+  const Sheet s = new_character(gen::RaceId::argonian, false, gen::ClassId::marsh_guide);
+  CHECK(!s.uninitialised());
+  CHECK_NEAR(s.a[AttrId::strength], 40, 1e-9);
+  CHECK_NEAR(s.a[AttrId::intelligence], 40, 1e-9);
+  CHECK_NEAR(s.a[AttrId::willpower], 30, 1e-9);
+  CHECK_NEAR(s.a[AttrId::agility], 50, 1e-9);
+  CHECK_NEAR(s.a[AttrId::speed], 60, 1e-9);      // 50 + favoured 10
+  CHECK_NEAR(s.a[AttrId::endurance], 40, 1e-9);  // 30 + favoured 10
+  CHECK_NEAR(s.a[AttrId::personality], 30, 1e-9);
+  CHECK(s.level == 1);
+  CHECK(s.cls.spec == Specialisation::combat);
+  CHECK_NEAR(s.s[SkillId::athletics], 5 + 15 + 25 + 5, 1e-9);
+  CHECK_NEAR(s.s[SkillId::spear], 5 + 5 + 25 + 5, 1e-9);
+  CHECK_NEAR(s.s[SkillId::alchemy], 5 + 5 + 10, 1e-9);  // minor; magic is not the class's specialisation
+  CHECK_NEAR(s.s[SkillId::illusion], 5 + 5, 1e-9);
+  CHECK(s.cls.of[idx(SkillId::spear)] == SkillClass::major);
+  CHECK(s.cls.of[idx(SkillId::alchemy)] == SkillClass::minor);
+  CHECK(s.cls.of[idx(SkillId::handToHand)] == SkillClass::misc);
+  const auto d = derive_set(s, Effective::of(s), 0);
+  CHECK(d.has_value());
+  CHECK_NEAR(d->health, (40 + 40) / 2.0 + 1 * 40 / 10.0, 1e-9);
+  CHECK(d->health > 0 && d->stamina > 0 && d->magicka > 0);
+  const Sheet f = new_character(gen::RaceId::argonian, true, gen::ClassId::marsh_guide);
+  CHECK_NEAR(f.a[AttrId::intelligence], 50, 1e-9);  // the female baselines
+  CHECK_NEAR(f.a[AttrId::agility], 40, 1e-9);
+  CHECK(gen::studio_race == gen::RaceId::argonian && gen::studio_class == gen::ClassId::marsh_guide);
+}
+
 }  // namespace
 
 int main() {
+  uninitialised_sheet_derives_nothing();
+  new_character_studio();
   five_builds();
   health_is_retroactive();
   stamina_above_reference();

@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import difflib
+import json
 import re
 import sys
 from pathlib import Path
@@ -143,7 +144,49 @@ def sheet(w: db.World) -> str:
           "enum class WearPer : std::uint8_t { damage, use, second };",
           f"inline constexpr std::array<WearPer, {len(wear)}> kWearPer{{"
           + ", ".join(f"WearPer::{r['per']}" for r in wear) + "};", "", *_constants(w, "sheet")]
+    b += ["", *_creation(w, attrs, skills)]
     return _wrap("sheet", ["array", "cstddef", "cstdint", "optional", "string_view"], b)
+
+
+def _creation(w: db.World, attrs: list[str], skills: list[str]) -> list[str]:
+    """Character creation (76 §119): each race's attribute baselines per sex and skill bonuses, each class's
+    specialisation, favoured attributes and major and minor skills, and the studio character's answers."""
+    races = w.values("SELECT id FROM race ORDER BY id")
+    classes = w.values("SELECT id FROM class ORDER BY id")
+    out = [*_enum("RaceId", races), *_enum("ClassId", classes),
+           "struct RaceRow {", "  std::array<double, kAttrIdCount> male, female;  // attribute baselines, in AttrId order",
+           "  std::array<double, kSkillIdCount> skill_bonus;                // in SkillId order", "};",
+           f"inline constexpr std::array<RaceRow, {len(races)}> kRaces{{{{"]
+    for r in races:
+        sex = {}
+        for sx in ("male", "female"):
+            got = {x["attribute"]: x["value"] for x in w.query(
+                "SELECT attribute, value FROM race_base_attribute WHERE race_id = ? AND sex = ?", r, sx)}
+            sex[sx] = ", ".join(num(got[a]) for a in attrs)
+        bonus = {x["skill"]: x["value"] for x in w.query(
+            "SELECT skill, value FROM race_skill_bonus WHERE race_id = ?", r)}
+        out.append(f"    {{{{{{{sex['male']}}}}}, {{{{{sex['female']}}}}}, {{{{"
+                   + ", ".join(num(bonus.get(k, 0)) for k in skills) + f"}}}}}},  // {r}")
+    out += ["}};", "",
+            "struct ClassRow {", "  Specialisation spec;", "  std::array<AttrId, 2> favoured;",
+            "  std::array<SkillId, 5> major, minor;", "};",
+            f"inline constexpr std::array<ClassRow, {len(classes)}> kClasses{{{{"]
+    for c in classes:
+        cl = w.query("SELECT specialization FROM class WHERE id = ?", c)[0]
+        fav = w.values("SELECT value FROM class_favoured_attributes WHERE class_id = ? ORDER BY ord", c)
+        maj = w.values("SELECT value FROM class_majors WHERE class_id = ? ORDER BY ord", c)
+        mnr = w.values("SELECT value FROM class_minors WHERE class_id = ? ORDER BY ord", c)
+        if (len(fav), len(maj), len(mnr)) != (2, 5, 5):
+            raise SystemExit(f"class {c}: needs 2 favoured attributes, 5 majors and 5 minors")
+        sk = lambda l: "{{" + ", ".join(f"SkillId::{ident(x)}" for x in l) + "}}"  # noqa: E731
+        out.append(f"    {{Specialisation::{ident(cl['specialization'])}, {{{{"
+                   + ", ".join(f"AttrId::{ident(x)}" for x in fav) + f"}}}}, {sk(maj)}, {sk(mnr)}}},  // {c}")
+    studio = json.loads((REPO / "data/quarantine/start.json").read_text(encoding="utf-8"))["studio"]
+    out += ["}};", "",
+            "// The studio character's fixed answers (data/quarantine/start.json `studio`; decision 0022).",
+            f"inline constexpr RaceId studio_race = RaceId::{ident(studio['race'])};",
+            f"inline constexpr ClassId studio_class = ClassId::{ident(studio['class'])};"]
+    return out
 
 
 def progression(w: db.World) -> str:

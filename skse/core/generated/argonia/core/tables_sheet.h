@@ -257,4 +257,57 @@ inline constexpr double walk_speed_divisor = 200.0;  // docs/design/world/76-sta
 inline constexpr double walk_speed_factor_base = 0.75;  // docs/design/world/76-stats-progression.md §122
 }  // namespace sheet
 
+enum class RaceId : std::uint8_t { altmer, argonian, bosmer, breton, dunmer, imperial, khajiit, nord, orsimer, redguard };
+inline constexpr std::size_t kRaceIdCount = 10;
+inline constexpr std::array<std::string_view, 10> kRaceIdNames{"altmer", "argonian", "bosmer", "breton", "dunmer", "imperial", "khajiit", "nord", "orsimer", "redguard"};
+enum class ClassId : std::uint8_t { assassin, barbarian, grave_singer, healer, kaal, knight, mage, marsh_guide, monk, nightblade, reed_sail_hand, root_herald, scout, shadowscale, spellsword, thief, tree_minder, warrior };
+inline constexpr std::size_t kClassIdCount = 18;
+inline constexpr std::array<std::string_view, 18> kClassIdNames{"assassin", "barbarian", "grave-singer", "healer", "kaal", "knight", "mage", "marsh-guide", "monk", "nightblade", "reed-sail-hand", "root-herald", "scout", "shadowscale", "spellsword", "thief", "tree-minder", "warrior"};
+struct RaceRow {
+  std::array<double, kAttrIdCount> male, female;  // attribute baselines, in AttrId order
+  std::array<double, kSkillIdCount> skill_bonus;                // in SkillId order
+};
+inline constexpr std::array<RaceRow, 10> kRaces{{
+    {{{40.0, 40.0, 50.0, 40.0, 30.0, 30.0, 40.0}}, {{40.0, 30.0, 50.0, 40.0, 40.0, 30.0, 40.0}}, {{0.0, 10.0, 5.0, 0.0, 0.0, 0.0, 0.0, 5.0, 10.0, 10.0, 0.0, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0}}},  // altmer
+    {{{50.0, 30.0, 40.0, 30.0, 50.0, 40.0, 30.0}}, {{40.0, 30.0, 50.0, 30.0, 40.0, 40.0, 40.0}}, {{0.0, 5.0, 0.0, 15.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 5.0, 0.0, 0.0, 0.0, 5.0, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 5.0, 0.0, 5.0}}},  // argonian
+    {{{50.0, 30.0, 40.0, 40.0, 50.0, 30.0, 30.0}}, {{50.0, 30.0, 40.0, 40.0, 50.0, 30.0, 30.0}}, {{5.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10.0, 0.0, 15.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10.0, 0.0, 0.0, 0.0}}},  // bosmer
+    {{{30.0, 30.0, 50.0, 40.0, 30.0, 40.0, 50.0}}, {{30.0, 30.0, 50.0, 40.0, 40.0, 30.0, 50.0}}, {{0.0, 5.0, 5.0, 0.0, 0.0, 0.0, 0.0, 10.0, 0.0, 0.0, 0.0, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10.0, 10.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0}}},  // breton
+    {{{40.0, 40.0, 40.0, 30.0, 50.0, 40.0, 30.0}}, {{40.0, 30.0, 40.0, 40.0, 50.0, 40.0, 30.0}}, {{0.0, 0.0, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 10.0, 0.0, 0.0, 0.0, 0.0, 5.0, 5.0, 5.0, 0.0, 0.0, 5.0, 0.0, 0.0, 10.0, 0.0, 0.0, 0.0, 0.0, 0.0}}},  // dunmer
+    {{{30.0, 40.0, 40.0, 50.0, 40.0, 40.0, 30.0}}, {{30.0, 40.0, 40.0, 50.0, 30.0, 40.0, 40.0}}, {{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 5.0, 0.0, 0.0, 0.0, 5.0, 0.0, 0.0, 5.0, 10.0, 0.0, 0.0, 10.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10.0, 0.0}}},  // imperial
+    {{{50.0, 30.0, 40.0, 40.0, 40.0, 40.0, 30.0}}, {{50.0, 40.0, 40.0, 40.0, 40.0, 30.0, 30.0}}, {{15.0, 0.0, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 5.0, 0.0, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 5.0, 5.0, 0.0, 5.0, 0.0, 0.0, 0.0}}},  // khajiit
+    {{{30.0, 50.0, 30.0, 30.0, 40.0, 50.0, 40.0}}, {{30.0, 40.0, 30.0, 30.0, 40.0, 50.0, 50.0}}, {{0.0, 0.0, 0.0, 0.0, 10.0, 0.0, 10.0, 0.0, 0.0, 0.0, 0.0, 5.0, 0.0, 0.0, 5.0, 0.0, 10.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 5.0, 0.0, 0.0}}},  // nord
+    {{{35.0, 50.0, 30.0, 30.0, 30.0, 45.0, 50.0}}, {{35.0, 50.0, 40.0, 25.0, 30.0, 45.0, 45.0}}, {{0.0, 0.0, 0.0, 0.0, 5.0, 10.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10.0, 0.0, 0.0, 0.0, 0.0, 10.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10.0, 0.0, 0.0, 0.0, 0.0}}},  // orsimer
+    {{{40.0, 50.0, 30.0, 30.0, 40.0, 50.0, 30.0}}, {{40.0, 50.0, 30.0, 40.0, 40.0, 40.0, 30.0}}, {{0.0, 0.0, 0.0, 5.0, 5.0, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 5.0, 0.0, 0.0, 15.0, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0}}},  // redguard
+}};
+
+struct ClassRow {
+  Specialisation spec;
+  std::array<AttrId, 2> favoured;
+  std::array<SkillId, 5> major, minor;
+};
+inline constexpr std::array<ClassRow, 18> kClasses{{
+    {Specialisation::stealth, {{AttrId::speed, AttrId::agility}}, {{SkillId::shortBlade, SkillId::sneak, SkillId::marksman, SkillId::lightArmor, SkillId::security}}, {{SkillId::acrobatics, SkillId::illusion, SkillId::alchemy, SkillId::athletics, SkillId::unarmored}}},  // assassin
+    {Specialisation::combat, {{AttrId::strength, AttrId::speed}}, {{SkillId::axe, SkillId::blunt, SkillId::mediumArmor, SkillId::athletics, SkillId::block}}, {{SkillId::longBlade, SkillId::unarmored, SkillId::acrobatics, SkillId::spear, SkillId::smithing}}},  // barbarian
+    {Specialisation::magic, {{AttrId::willpower, AttrId::personality}}, {{SkillId::mysticism, SkillId::conjuration, SkillId::restoration, SkillId::alchemy, SkillId::speechcraft}}, {{SkillId::illusion, SkillId::unarmored, SkillId::shortBlade, SkillId::security, SkillId::athletics}}},  // grave-singer
+    {Specialisation::magic, {{AttrId::personality, AttrId::willpower}}, {{SkillId::restoration, SkillId::alchemy, SkillId::illusion, SkillId::mysticism, SkillId::unarmored}}, {{SkillId::speechcraft, SkillId::mercantile, SkillId::shortBlade, SkillId::lightArmor, SkillId::conjuration}}},  // healer
+    {Specialisation::combat, {{AttrId::endurance, AttrId::personality}}, {{SkillId::spear, SkillId::mediumArmor, SkillId::block, SkillId::speechcraft, SkillId::athletics}}, {{SkillId::longBlade, SkillId::marksman, SkillId::restoration, SkillId::smithing, SkillId::acrobatics}}},  // kaal
+    {Specialisation::combat, {{AttrId::strength, AttrId::personality}}, {{SkillId::longBlade, SkillId::heavyArmor, SkillId::block, SkillId::speechcraft, SkillId::smithing}}, {{SkillId::mercantile, SkillId::restoration, SkillId::blunt, SkillId::athletics, SkillId::mediumArmor}}},  // knight
+    {Specialisation::magic, {{AttrId::intelligence, AttrId::willpower}}, {{SkillId::destruction, SkillId::alteration, SkillId::mysticism, SkillId::restoration, SkillId::enchant}}, {{SkillId::illusion, SkillId::conjuration, SkillId::alchemy, SkillId::unarmored, SkillId::speechcraft}}},  // mage
+    {Specialisation::combat, {{AttrId::speed, AttrId::endurance}}, {{SkillId::athletics, SkillId::acrobatics, SkillId::spear, SkillId::marksman, SkillId::mediumArmor}}, {{SkillId::alchemy, SkillId::security, SkillId::block, SkillId::restoration, SkillId::sneak}}},  // marsh-guide
+    {Specialisation::stealth, {{AttrId::agility, AttrId::strength}}, {{SkillId::handToHand, SkillId::unarmored, SkillId::acrobatics, SkillId::athletics, SkillId::block}}, {{SkillId::sneak, SkillId::shortBlade, SkillId::restoration, SkillId::marksman, SkillId::alchemy}}},  // monk
+    {Specialisation::magic, {{AttrId::willpower, AttrId::speed}}, {{SkillId::illusion, SkillId::destruction, SkillId::shortBlade, SkillId::sneak, SkillId::lightArmor}}, {{SkillId::mysticism, SkillId::alteration, SkillId::security, SkillId::athletics, SkillId::marksman}}},  // nightblade
+    {Specialisation::stealth, {{AttrId::strength, AttrId::endurance}}, {{SkillId::athletics, SkillId::blunt, SkillId::mercantile, SkillId::block, SkillId::mediumArmor}}, {{SkillId::speechcraft, SkillId::security, SkillId::marksman, SkillId::smithing, SkillId::acrobatics}}},  // reed-sail-hand
+    {Specialisation::stealth, {{AttrId::personality, AttrId::intelligence}}, {{SkillId::speechcraft, SkillId::mercantile, SkillId::security, SkillId::sneak, SkillId::illusion}}, {{SkillId::shortBlade, SkillId::lightArmor, SkillId::alchemy, SkillId::athletics, SkillId::marksman}}},  // root-herald
+    {Specialisation::stealth, {{AttrId::speed, AttrId::endurance}}, {{SkillId::marksman, SkillId::lightArmor, SkillId::athletics, SkillId::sneak, SkillId::shortBlade}}, {{SkillId::acrobatics, SkillId::security, SkillId::alchemy, SkillId::block, SkillId::spear}}},  // scout
+    {Specialisation::stealth, {{AttrId::agility, AttrId::speed}}, {{SkillId::sneak, SkillId::shortBlade, SkillId::marksman, SkillId::security, SkillId::illusion}}, {{SkillId::lightArmor, SkillId::acrobatics, SkillId::alchemy, SkillId::athletics, SkillId::unarmored}}},  // shadowscale
+    {Specialisation::combat, {{AttrId::willpower, AttrId::endurance}}, {{SkillId::longBlade, SkillId::destruction, SkillId::alteration, SkillId::heavyArmor, SkillId::block}}, {{SkillId::restoration, SkillId::mysticism, SkillId::mediumArmor, SkillId::athletics, SkillId::illusion}}},  // spellsword
+    {Specialisation::stealth, {{AttrId::agility, AttrId::speed}}, {{SkillId::security, SkillId::sneak, SkillId::shortBlade, SkillId::lightArmor, SkillId::acrobatics}}, {{SkillId::mercantile, SkillId::speechcraft, SkillId::marksman, SkillId::athletics, SkillId::illusion}}},  // thief
+    {Specialisation::magic, {{AttrId::willpower, AttrId::intelligence}}, {{SkillId::restoration, SkillId::alchemy, SkillId::mysticism, SkillId::illusion, SkillId::unarmored}}, {{SkillId::alteration, SkillId::speechcraft, SkillId::athletics, SkillId::shortBlade, SkillId::conjuration}}},  // tree-minder
+    {Specialisation::combat, {{AttrId::strength, AttrId::endurance}}, {{SkillId::longBlade, SkillId::heavyArmor, SkillId::block, SkillId::axe, SkillId::athletics}}, {{SkillId::blunt, SkillId::spear, SkillId::smithing, SkillId::mediumArmor, SkillId::acrobatics}}},  // warrior
+}};
+
+// The studio character's fixed answers (data/quarantine/start.json `studio`; decision 0022).
+inline constexpr RaceId studio_race = RaceId::argonian;
+inline constexpr ClassId studio_class = ClassId::marsh_guide;
+
 }  // namespace argonia::core::gen

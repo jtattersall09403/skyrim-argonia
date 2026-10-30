@@ -157,6 +157,10 @@ void WriteCombat(std::string_view why) {
     lo.right = RightHand(p);
     lo.worn = WornPieces(p);
     lo.carried_kg = avo->GetActorValue(RE::ActorValue::kInventoryWeight) / ac::gen::units::weight_per_kg;
+    if (c.state.sheet.uninitialised()) {
+      SKSE::log::warn("combat: the sheet is uninitialised, no carrier is written ({})", why);
+      return;
+    }
     const auto pass = cb::compute(c.state.sheet, ac::Effective::of(c.state.sheet), lo);
     std::string line;
     for (const auto& w : pass.writes) {

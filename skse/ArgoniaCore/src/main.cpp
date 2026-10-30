@@ -86,7 +86,10 @@ void OnMessage(SKSE::MessagingInterface::Message* m) {
   switch (m->type) {
     case SKSE::MessagingInterface::kDataLoaded: OnDataLoaded(); break;
     case SKSE::MessagingInterface::kPostLoadGame: OnGameReady("game loaded"); break;
-    case SKSE::MessagingInterface::kNewGame: OnGameReady("new game"); break;
+    case SKSE::MessagingInterface::kNewGame:
+      plugin::NewCharacter();
+      OnGameReady("new game");
+      break;
     default: break;
   }
 }

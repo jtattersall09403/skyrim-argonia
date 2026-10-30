@@ -51,6 +51,13 @@ struct Sheet {
   int level = 1;
   Class cls;
   bool operator==(const Sheet&) const = default;
+  // No attribute set: the new-character step has not run (or the save predates it). Its derived values would be
+  // degenerate (health 0), so nothing is written from it; the engine keeps its own.
+  bool uninitialised() const {
+    for (double x : a.v)
+      if (x > 0) return false;
+    return true;
+  }
 };
 
 // The sheet after the effect stack (effects.h): effective attributes and skills, and one combined value per stat
@@ -78,6 +85,14 @@ struct Derived {
 
 // Every derived value of 76 §117-§122 over the effective sheet and what is carried.
 Derived derive(const Sheet& sh, const Effective& e, double carried_kg);
+
+// derive(), or none while the sheet is uninitialised: the caller leaves the engine's own values alone.
+std::optional<Derived> derive_set(const Sheet& sh, const Effective& e, double carried_kg);
+
+// The new character (76 §119): the race's attribute baselines for the sex, the class's favoured attributes +10;
+// skills start at 5, plus the race's bonus, +25 a major, +10 a minor and +5 for the class's specialisation.
+// Level 1, no growth. ArgoniaCore runs it once, at the new game, for the studio character.
+Sheet new_character(gen::RaceId race, bool female, gen::ClassId cls);
 
 // The burden tier for carried / capacity (76 §122).
 BurdenTier burden_tier(double ratio);

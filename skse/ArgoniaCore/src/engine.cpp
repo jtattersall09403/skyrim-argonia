@@ -185,6 +185,20 @@ void FactsChanged(std::string_view why) {
   if (why != "season") SeasonCheck();
 }
 
+void NewCharacter() {
+  auto* p = Player();
+  if (!p) return;
+  auto& c = Get();
+  std::lock_guard l(c.lock);
+  if (!c.state.sheet.uninitialised()) return;  // run once: a sheet that exists is the character's
+  const auto* base = p->GetActorBase();
+  const bool female = base && base->IsFemale();
+  c.state.sheet = ac::new_character(ac::gen::studio_race, female, ac::gen::studio_class);
+  SKSE::log::info("new character: {} {} {} (health {:.0f})", ac::gen::kRaceIdNames[std::size_t(ac::gen::studio_race)],
+                  female ? "female" : "male", ac::gen::kClassIdNames[std::size_t(ac::gen::studio_class)],
+                  ac::derive(c.state.sheet, ac::Effective::of(c.state.sheet), 0).health);
+}
+
 void MirrorAttributes() {
   auto* p = Player();
   if (!p) return;

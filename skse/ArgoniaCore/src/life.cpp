@@ -385,11 +385,15 @@ void MirrorPools() {
   if (!p) return;
   auto& c = Get();
   std::lock_guard l(c.lock);
-  const auto d = ac::derive(c.state.sheet, ac::Effective::of(c.state.sheet), 0);
+  const auto d = ac::derive_set(c.state.sheet, ac::Effective::of(c.state.sheet), 0);
+  if (!d) {  // no sheet yet: the engine's own pools stay (a derived 0 would leave the player dead)
+    SKSE::log::warn("pools: the sheet is uninitialised, the engine's pools are left alone");
+    return;
+  }
   auto* avo = p->AsActorValueOwner();
-  avo->SetBaseActorValue(RE::ActorValue::kHealth, static_cast<float>(d.health));
-  avo->SetBaseActorValue(RE::ActorValue::kStamina, static_cast<float>(d.stamina));
-  avo->SetBaseActorValue(RE::ActorValue::kMagicka, static_cast<float>(d.magicka));
+  avo->SetBaseActorValue(RE::ActorValue::kHealth, static_cast<float>(d->health));
+  avo->SetBaseActorValue(RE::ActorValue::kStamina, static_cast<float>(d->stamina));
+  avo->SetBaseActorValue(RE::ActorValue::kMagicka, static_cast<float>(d->magicka));
 }
 
 bool SuspendCheck(ac::life::SuspendWhy why) {

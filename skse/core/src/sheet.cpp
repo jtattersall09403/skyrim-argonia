@@ -86,4 +86,34 @@ Derived derive(const Sheet& sh, const Effective& e, double carried_kg) {
   return d;
 }
 
+std::optional<Derived> derive_set(const Sheet& sh, const Effective& e, double carried_kg) {
+  if (sh.uninitialised()) return std::nullopt;
+  return derive(sh, e, carried_kg);
+}
+
+Sheet new_character(gen::RaceId race, bool female, gen::ClassId cls) {
+  const auto& r = gen::kRaces[std::size_t(race)];
+  const auto& k = gen::kClasses[std::size_t(cls)];
+  Sheet sh;
+  sh.a.v = female ? r.female : r.male;
+  for (auto f : k.favoured) sh.a[f] += gen::class_rules::favoured_attribute_bonus;
+  sh.level = 1;
+  sh.cls.spec = k.spec;
+  sh.cls.favoured.assign(k.favoured.begin(), k.favoured.end());
+  for (std::size_t i = 0; i < gen::kSkillIdCount; ++i) {
+    sh.cls.of[i] = SkillClass::misc;
+    sh.s.v[i] = gen::class_rules::starting_skill + r.skill_bonus[i] +
+                (gen::kSkills[i].spec == k.spec ? gen::class_rules::specialization_bonus : 0.0);
+  }
+  for (auto s : k.major) {
+    sh.cls.of[idx(s)] = SkillClass::major;
+    sh.s[s] += gen::class_rules::major_bonus;
+  }
+  for (auto s : k.minor) {
+    sh.cls.of[idx(s)] = SkillClass::minor;
+    sh.s[s] += gen::class_rules::minor_bonus;
+  }
+  return sh;
+}
+
 }  // namespace argonia::core
