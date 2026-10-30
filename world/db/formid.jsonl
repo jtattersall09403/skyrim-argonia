@@ -189,8 +189,10 @@
 {"editor_id":"ARG_Ref_ClaywaterStationB1Bench","plugin":"Argonia.esm","form_id":2192,"record_type":"REFR","entity_key":"ref.claywater-station.b1-bench"}
 {"editor_id":"ARG_Ref_ClaywaterStationB1Bucket","plugin":"Argonia.esm","form_id":2193,"record_type":"REFR","entity_key":"ref.claywater-station.b1-bucket"}
 {"editor_id":"ARG_Ref_ClaywaterStationB1Door","plugin":"Argonia.esm","form_id":2194,"record_type":"REFR","entity_key":"ref.claywater-station.b1-door"}
+{"editor_id":"ARG_Ref_ClaywaterStationB1Doorframe","plugin":"Argonia.esm","form_id":2414,"record_type":"REFR","entity_key":"ref.claywater-station.b1-doorframe"}
 {"editor_id":"ARG_Ref_ClaywaterStationB1Post","plugin":"Argonia.esm","form_id":2195,"record_type":"REFR","entity_key":"ref.claywater-station.b1-post"}
 {"editor_id":"ARG_Ref_ClaywaterStationB1Sack","plugin":"Argonia.esm","form_id":2196,"record_type":"REFR","entity_key":"ref.claywater-station.b1-sack"}
+{"editor_id":"ARG_Ref_ClaywaterStationB1Stairs","plugin":"Argonia.esm","form_id":2415,"record_type":"REFR","entity_key":"ref.claywater-station.b1-stairs"}
 {"editor_id":"ARG_Ref_ClaywaterStationB1Wood","plugin":"Argonia.esm","form_id":2197,"record_type":"REFR","entity_key":"ref.claywater-station.b1-wood"}
 {"editor_id":"ARG_Ref_ClaywaterStationB1wNe1","plugin":"Argonia.esm","form_id":2198,"record_type":"REFR","entity_key":"ref.claywater-station.b1w-ne1"}
 {"editor_id":"ARG_Ref_ClaywaterStationB1wNe2","plugin":"Argonia.esm","form_id":2199,"record_type":"REFR","entity_key":"ref.claywater-station.b1w-ne2"}

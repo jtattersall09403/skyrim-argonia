@@ -9,7 +9,7 @@ namespace argonia::core::gen {
 
 // One record of ours by its world id: the plugin that holds it, its signature and its local FormID.
 struct FormRow { std::string_view id, plugin, type; std::uint32_t local; };
-inline constexpr std::array<FormRow, 264> kForms{{
+inline constexpr std::array<FormRow, 266> kForms{{
     {"birthsign.serpent", "Argonia.esm", "SPEL", 0x000808},
     {"class.marsh-guide", "Argonia.esm", "CLAS", 0x000806},
     {"climate.black-marsh", "Argonia.esm", "CLMT", 0x000813},
@@ -115,8 +115,10 @@ inline constexpr std::array<FormRow, 264> kForms{{
     {"ref.claywater-station.b1-bench", "Argonia.esm", "REFR", 0x000890},
     {"ref.claywater-station.b1-bucket", "Argonia.esm", "REFR", 0x000891},
     {"ref.claywater-station.b1-door", "Argonia.esm", "REFR", 0x000892},
+    {"ref.claywater-station.b1-doorframe", "Argonia.esm", "REFR", 0x00096E},
     {"ref.claywater-station.b1-post", "Argonia.esm", "REFR", 0x000893},
     {"ref.claywater-station.b1-sack", "Argonia.esm", "REFR", 0x000894},
+    {"ref.claywater-station.b1-stairs", "Argonia.esm", "REFR", 0x00096F},
     {"ref.claywater-station.b1-wood", "Argonia.esm", "REFR", 0x000895},
     {"ref.claywater-station.b1w-ne1", "Argonia.esm", "REFR", 0x000896},
     {"ref.claywater-station.b1w-ne2", "Argonia.esm", "REFR", 0x000897},
