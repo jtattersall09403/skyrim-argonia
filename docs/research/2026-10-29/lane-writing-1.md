@@ -262,3 +262,58 @@ Accepted round-1 answers: R1, R2, R7, R9, R13; partly: R4, R5, R6, R11; not acce
    - the cost line from `python3 tools/cost_report.py`;
    - no permission-drafts note (the planner dropped it: the permissions are already obtained).
 6. Run `make check` once, then commit by pathspec.
+
+## Dialogue (writing-3, 2026-10-30)
+
+**Done.** The dialogue for the three placed Claywater people and the LF83 journal are written, imported and reviewed.
+- Four `dialogue-writer` agents ran in parallel from rebuilt briefs (`brief.py`, `place_brief.py`). Their notes and
+  fact requests are in `~/argonia-private/work/writing-3/{livia,signs,takes,journal}.md`.
+- Lines imported with `lines.py import`, `status written`, 107 rows:
+  - Livia Varinius (well-keeper): 39 lines;
+  - Signs-For-The-Cargo (landing-s-poler): 30 lines;
+  - Takes-The-Short-Weight (n1-3): 38 lines.
+- Each person has three-band greetings, including the dry-season stage-0 greeting that links
+  `topic.claywater-two-charges`. Each has every quest topic at its stages, every place topic, a greeting after
+  each ending they live through, and a Goodbye.
+- The journal text for stages 10, 20, 30, 40, 41, 42, 90, 92 and 93 replaced `journalText` through
+  `quest_record export/import` (`world/db/quest_stage.jsonl`, 9 rows).
+- Text review:
+  - Round 1 (`reader`, report `~/argonia-private/work/writing-3/text-review.md`) found 52 itemised rows, plus
+    206 comma-and joins and 67 uses of "citizen". All were applied in one fix pass.
+  - The re-review covered only the changed bands (200 bands, report `text-rereview.md`). It found 28 rows, and all
+    were applied.
+  - After the fixes, `lint.py` gives 0 regex hits on all four texts (imperial, argonian, argonian; journal as
+    imperial). A pattern count gives comma-and, nobody/somebody, only-one and rather-than 0 in every file, and
+    "citizen" 26 (from 67).
+- Rulings made in the fix pass:
+  - At stage 40 the clay is already rammed in, as the `lf83-well-clayed` variant shows.
+  - The e-shared and e-landing reward is the Drowning Gate ferry, not the raft. Journal 40 and 42 were corrected.
+  - The poler's stage-30 lines no longer say the crocodile holds the cut.
+  - Takes's mending clue names "a woman of the landing" (k16's "the poler's wife").
+- Owner check-in: issue #14.
+
+**Open, for the quest writer or planner (none blocks Part 1):**
+1. Fact requests:
+   - the about-onkobra, about-prison-road, about-gideon, about-helstrom and about-blackwood answers (what each
+     is, where it is, how far);
+   - directions from the station to Gideon and to Leyawiin;
+   - where Gaius Vibius, Keeps-The-Second-Ledger, Abhuki and Mee-Seesh stand. The lines point to them without a
+     place. Signs's Helstrom and prison-road pointers to Abhuki and Mee-Seesh need confirming;
+   - Livia's training and bed and stable prices;
+   - what each keeper knows after each ending (the greetings rest on the stage names);
+   - a danger fact for Takes after the crocodile is dead.
+2. Mechanism: the record's "player chooses to pay (takeGold 1)" at the ford has no line. `lines.py` has one
+   `onDelivered` per line, so a choice needs its own line or a choice mechanism (2.5).
+3. Quest topics answer only to stage 30. After an ending only greetings and place topics answer, and the brief
+   lists no post-ending topic stages.
+4. Doubts left from review:
+   - Signs says the well stands at the station house door, while Livia puts her counter by that door.
+   - The journal gives the free Drowning Gate ferry, but no spoken line does.
+   - Journal 20's "I'm to kill the crocodile" is the objective gloss; no speaker says it.
+   - "Gods keep the road dry" (Livia's goodbye) needs checking against the Imperial-fringe register.
+   - Livia says "citizen" to every race. There are no listener variants yet.
+5. Tooling:
+   - The `lines.py` docstring shows `'>='`, but the `condition_op` lookup holds `≥ ≤ ≠`. The importer does not
+     check the operator.
+   - The style guide's prose linter (the comma-and, nobody-somebody, only-one table) has no implementation in
+     the repo. `lint.py` does not catch comma-and, so the reader carried it.
