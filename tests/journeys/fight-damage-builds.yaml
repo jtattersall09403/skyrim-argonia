@@ -34,7 +34,8 @@ steps:
     expect:
       - {read: [av, VoicePoints, player], path: current, eq: {kept: vp}}
       - {console: player.IsWeaponOut, not_contains: ">> 0"}
-  - name: novice-blow         # Str 40, Agi 40, Long Blade 5: 10.8 (+-0.5)
+  - name: novice-blow         # Str 40, Agi 40, Long Blade 5: blow 24 x 0.501 x 0.90 = 10.82; the deserter's AR 31.5 mitigates
+    # AR/(AR+135.6+0.6x24) = 0.1736 (body_incoming_damage uses the reference blow 24), so health loss = 10.82 x 0.8264 = 8.94 (+-0.5)
     do:
       - {call: [dev-set, SetSkill, longBlade, "5"]}
       - {call: [dev-set, SetAttribute, strength, "40"]}
@@ -44,9 +45,9 @@ steps:
       - {strike: "{opp}"}
     expect:
       - {event: {kind: hit, match: "*"}}
-      - {read: [av, Health, "{opp}"], path: current, ge: 1988.7}
-      - {read: [av, Health, "{opp}"], path: current, le: 1989.7}
-  - name: god-blow            # Str 100, Agi 100, Long Blade 100: 36.0 (+-0.5)
+      - {read: [av, Health, "{opp}"], path: current, ge: 1990.5}
+      - {read: [av, Health, "{opp}"], path: current, le: 1991.5}
+  - name: god-blow            # Str 100, Agi 100, Long Blade 100: blow 24 x 1.0 x 1.5 = 36.0; x 0.8264 (AR 31.5 as above) = 29.75 (+-0.5)
     do:
       - {call: [dev-set, SetSkill, longBlade, "100"]}
       - {call: [dev-set, SetAttribute, strength, "100"]}
@@ -56,7 +57,7 @@ steps:
       - {strike: "{opp}"}
     expect:
       - {event: {kind: hit, match: "*"}}
-      - {read: [av, Health, "{opp}"], path: current, ge: 1963.2}
-      - {read: [av, Health, "{opp}"], path: current, le: 1964.2}
+      - {read: [av, Health, "{opp}"], path: current, ge: 1969.7}
+      - {read: [av, Health, "{opp}"], path: current, le: 1970.7}
   - name: difficulties
     owed: the same ratio at each difficulty (a GetGameSetting read of fDiffMultHPByPCN/ToPCN per difficulty)
