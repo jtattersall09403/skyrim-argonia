@@ -20,6 +20,9 @@ step() { local s=$SECONDS; echo "== $1"; shift; "$@"; echo "== $(( SECONDS - s )
 
 [ $plugin = 1 ] && step "make plugin" make --no-print-directory plugin
 for f in Argonia.esm ArgoniaWorld.esm; do [ -f "out/$f" ] || { echo "no out/$f: make plugin first" >&2; exit 1; }; done
+# A province without NAVM is a province where no one walks (game-8: every deploy since 2.W4 shipped none).
+"$PY" -c 'import sys; n = open("out/ArgoniaWorld.esm", "rb").read().count(b"NAVM"); print(f"ArgoniaWorld.esm: {n} NAVM"); sys.exit(n == 0)' \
+  || [ "${ARGONIA_NO_NAVMESH:-}" = 1 ] || { echo "out/ArgoniaWorld.esm has no navmesh: make navmesh (or ARGONIA_NO_NAVMESH=1)" >&2; exit 1; }
 step "machine up" "$run" up
 if [ $stage = 1 ]; then step "stack stage" "$PY" "$here/stack.py" stage; step "stack push" "$PY" "$here/stack.py" push; fi
 step "game down" "$run" ps 'powershell -ExecutionPolicy Bypass -File C:\argonia\infra\bridge.ps1 -Cmd kill'

@@ -1,5 +1,5 @@
-; Claywater Station (0.4 d): on the Blackwood Road south-east of the station, facing in; mid-morning, clear
+; Claywater Station (0.4 d): on the Blackwood Road south-east of the station, facing in; mid-morning, the dry-season haze (ARG_Weather_tannin_haze, ours)
 ; the travel line is last: a line after a cow ran during its load and crashed the game (game-6)
 set gamehour to 10
-fw 0000081A
+fw ARG_Weather_tannin_haze
 player.moveto ARG_Ref_ClaywaterStationRoadIn

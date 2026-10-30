@@ -9,7 +9,7 @@
 ; Never in a packet: the vanilla actor is a Nordic element.
 ; the travel line is last: a line after a cow ran during its load and crashed the game (game-6)
 set gamehour to 12
-fw 0000081A
+fw ARG_Weather_tannin_haze
 ARG_Ref_ClaywaterStationKeeperWork.placeatme 00019FE8 1
 ARG_Ref_ClaywaterStationKeeperWork.placeatme ARG_Npc_WellKeeper 1
 player.moveto ARG_Ref_ClaywaterStationKeeperWork 0 -300 0

@@ -90,6 +90,17 @@ def test_broken_step_fails_readably_with_its_still(tmp_path):
     assert f["reason"] == "moved 0 units on the ground, wanted gt 100" and f["still"].endswith("01-stand.png")
 
 
+def test_an_owed_step_is_listed_not_run_and_the_journey_goes_on(tmp_path):
+    camp = {"name": "camp", "owed": "the rest fragment's Papyrus (#15)", "do": [{"console": "nosuch"}],
+            "expect": [{"moved": {"gt": 100}, "within": 0}]}
+    fake = Fake()
+    rep = rj.Runner(fake, tmp_path / "out").run(journey(tmp_path, [camp, WALK]), "base")
+    assert rep["passed"] and [s["name"] for s in rep["steps"]] == ["walk"] and "nosuch" not in fake.lines
+    assert rep["owed"] == [{"n": 1, "name": "camp", "why": "the rest fragment's Papyrus (#15)"}]
+    with pytest.raises(SystemExit, match="owed"):
+        journey(tmp_path, [{"name": "camp", "owed": ""}])
+
+
 def test_refused_action_is_the_reason(tmp_path):
     rep = rj.Runner(Fake(), tmp_path / "out").run(journey(tmp_path, [{"name": "c", "do": [{"console": "nosuch"}]}]), "b")
     assert "not found" in rep["steps"][0]["reason"]

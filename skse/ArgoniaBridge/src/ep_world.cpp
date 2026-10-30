@@ -375,6 +375,90 @@ std::string inventory(const Request& req) {
   });
 }
 
+// One actor's AI state: its process level (-1 none, 0 high ... 3 low), whether its own AI runs (kProcessMe, which
+// Papyrus EnableAI and the console's `tai` on a ref switch), the package it runs, and the flags a frozen actor shows.
+std::string actor_json(RE::Actor* a, const RE::NiPoint3& from) {
+  auto* base = a->GetActorBase();
+  auto* pkg = a->GetCurrentPackage();
+  auto pos = a->GetPosition();
+  auto* cell = a->GetParentCell();
+  return JsonObject()
+      .hex("ref", a->GetFormID())
+      .hex("base", base ? base->GetFormID() : 0)
+      .str("name", a->GetName())
+      .integer("level", static_cast<int>(a->GetProcessLevel()))
+      .boolean("process", a->GetActorRuntimeData().currentProcess != nullptr)
+      .boolean("ai_enabled", a->IsAIEnabled())
+      .hex("package", pkg ? pkg->GetFormID() : 0)
+      .boolean("combat", a->IsInCombat())
+      .boolean("dead", a->IsDead())
+      .boolean("disabled", a->IsDisabled())
+      .boolean("loaded_3d", a->Get3D() != nullptr)
+      .hex("cell", cell ? cell->GetFormID() : 0)
+      .num("dist", pos.GetDistance(from))
+      .raw("pos", JsonObject().num("x", pos.x).num("y", pos.y).num("z", pos.z).done())
+      .done();
+}
+
+// actors [radius] [ref id...]: the engine's process switches (the global AI toggles), then every actor in the four
+// process lists within radius of the player (default 6000), and each named ref whether listed or not. The read that
+// splits "no AI" (game-8): an actor with no process has no package; a listed one with ai_enabled false is switched off.
+std::string actors(const Request& req) {
+  return on_main_thread("actors", [req] {
+    auto* p = player_in_world();
+    auto* lists = RE::ProcessLists::GetSingleton();
+    if (!p || !lists) return reply_error("actors", "no player in a world or no process lists");
+    double radius = 6000.0;
+    std::vector<RE::Actor*> named;
+    for (const auto& s : req.args) {
+      if (auto* f = s.size() == 8 || s.starts_with("0x") ? find_form(s) : nullptr) {
+        auto* r = f->AsReference();
+        if (auto* a = r ? r->As<RE::Actor>() : nullptr) named.push_back(a);
+        else return reply_error("actors", "no actor reference " + s);
+      } else {
+        try { radius = std::stod(s); } catch (...) { return reply_error("actors", "usage: actors [radius] [ref id...]"); }
+      }
+    }
+    const auto from = p->GetPosition();
+    std::string listed = "[";
+    const std::pair<const char*, RE::BSTArray<RE::ActorHandle>*> sets[] = {
+        {"high", &lists->highActorHandles}, {"middle_high", &lists->middleHighActorHandles},
+        {"middle_low", &lists->middleLowActorHandles}, {"low", &lists->lowActorHandles}};
+    int counts[4] = {0, 0, 0, 0};
+    for (int i = 0; i < 4; ++i)
+      for (auto& h : *sets[i].second) {
+        auto a = h.get();
+        if (!a) continue;
+        ++counts[i];
+        if (a->GetPosition().GetDistance(from) > radius) continue;
+        if (listed.size() > 1) listed += ',';
+        listed += actor_json(a.get(), from);
+      }
+    std::string refs = "[";
+    for (auto* a : named) {
+      if (refs.size() > 1) refs += ',';
+      refs += actor_json(a, from);
+    }
+    return reply_ok("actors", JsonObject()
+                                  .raw("switches", JsonObject()
+                                                       .boolean("high", lists->processHigh)
+                                                       .boolean("middle_high", lists->processMHigh)
+                                                       .boolean("middle_low", lists->processMLow)
+                                                       .boolean("low", lists->processLow)
+                                                       .boolean("schedules", lists->runSchedules)
+                                                       .boolean("movement", lists->runMovement)
+                                                       .boolean("detection", lists->runDetection)
+                                                       .done())
+                                  .raw("counts", JsonObject().integer("high", counts[0]).integer("middle_high", counts[1])
+                                                     .integer("middle_low", counts[2]).integer("low", counts[3]).done())
+                                  .num("radius", radius)
+                                  .raw("listed", listed + "]")
+                                  .raw("refs", refs + "]")
+                                  .done());
+  });
+}
+
+const Register r_actors{"actors", &actors};
 const Register r_teleport{"teleport", &teleport};
 const Register r_time{"time", &time_ep};
 const Register r_weather{"weather", &weather};

@@ -25,6 +25,9 @@ console <line> with contains / not_contains; event {kind, match} since the step 
 ground since the step began; quests_running {allowed: <json>} (the bridge's running quests against the file's
 `running` list); music {allowed: [<edid>, ...]} (the music type playing is one of them, or none plays).
 
+Owed (game-8): a step with `owed: <what it waits on>` is not run; the report lists it under `owed` and the
+journey goes on past it (a step whose game side cannot exist yet, e.g. a Papyrus fragment before the compiler).
+
 Kept values (1.7): an expectation with `keep: <name>` stores what it read (a read with only `keep` always holds);
 a later comparison value `{kept: <name>}` compares against it, and `{name}` or `{name.2}` in an action's text is
 replaced by it (a kept string is split on spaces for the index), so a step can go back to where a pile fell.
@@ -89,6 +92,8 @@ def load_journey(path: pathlib.Path) -> dict:
     for i, s in enumerate(j["steps"]):
         if "name" not in s:
             raise SystemExit(f"{path}: step {i} has no name")
+        if "owed" in s and not (isinstance(s["owed"], str) and s["owed"].strip()):
+            raise SystemExit(f"{path}: step {s['name']}: `owed` names what the step waits on")
         for a in s.get("do", []):
             if len(a) != 1 or next(iter(a)) not in ACTIONS:
                 raise SystemExit(f"{path}: step {s['name']}: unknown action {a}")
@@ -294,6 +299,10 @@ class Runner:
             rep["scene_output"] = self.apply_scene(j.get("scene"), save)
             rep["scene_s"] = round(time.monotonic() - t0, 1)
             for n, step in enumerate(j["steps"], 1):
+                if step.get("owed"):  # not run: what it waits on is named, and the journey goes on past it
+                    rep.setdefault("owed", []).append({"n": n, "name": step["name"], "why": step["owed"]})
+                    print(f"  {n:2d} {step['name']:<24} OWED: {step['owed']}", flush=True)
+                    continue
                 rec = self.step(n, step)
                 rep["steps"].append(rec)
                 if not rec["passed"]:

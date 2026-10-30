@@ -26,3 +26,30 @@ def test_canon_sorts_records_and_keeps_children_with_their_record():
         + grup(b"CELL", 0, rec(b"CELL", 0x802), kids, rec(b"CELL", 0x804))
     assert pipeline.canon(shuffled) == ordered
     assert pipeline.canon(ordered) == ordered
+
+
+def test_make_plugin_carries_the_province_navmesh(tmp_path, monkeypatch, capsys):
+    """game-8: `make plugin` rebuilt ArgoniaWorld.esm without the navmesh, so no person could walk in game."""
+    seen = []
+
+    def world(data, into, sample, nav=None, veg=True):
+        seen.append(nav)
+        esm = tmp_path / "w.esm"
+        esm.write_bytes(b"x")
+        return esm
+
+    monkeypatch.setattr(pipeline, "OUT", tmp_path)
+    monkeypatch.setattr(pipeline, "world", world)
+    monkeypatch.setattr(pipeline, "_terrain_stamp", lambda: "ground-1")
+    monkeypatch.setattr(pipeline, "ENV", {})
+    pipeline.master_world(tmp_path, rebuild=True)
+    assert seen == [None] and "no province navmesh" in capsys.readouterr().out
+    nav = tmp_path / "navmesh" / "province"
+    nav.mkdir(parents=True)
+    (nav / "build.json").write_text("{}")
+    (nav / "terrain.stamp").write_text("ground-0")
+    pipeline.master_world(tmp_path, rebuild=True)
+    assert seen[-1] == nav and "predates the current ground" in capsys.readouterr().out
+    (nav / "terrain.stamp").write_text("ground-1")
+    pipeline.master_world(tmp_path, rebuild=True)
+    assert seen[-1] == nav and "WARNING" not in capsys.readouterr().out

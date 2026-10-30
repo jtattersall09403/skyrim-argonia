@@ -1,5 +1,5 @@
 ; LF83's start (0.4 d): by Claywater's well junction, facing the well; mid-morning; nothing about LF83 is set
 ; the travel line is last: a line after a cow ran during its load and crashed the game (game-6)
 set gamehour to 10
-fw 0000081A
+fw ARG_Weather_tannin_haze
 player.moveto ARG_Ref_ClaywaterStationQuestBoard

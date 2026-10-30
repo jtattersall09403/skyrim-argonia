@@ -284,7 +284,7 @@ def master_world(data: Path, rebuild: bool) -> None:
     only when missing."""
     target = OUT / WORLD_ESM
     if rebuild or not target.exists():
-        wesm = world(data, OUT / "terrain", sample=False)
+        wesm = world(data, OUT / "terrain", sample=False, nav=province_navmesh())
         shutil.copyfile(wesm, target)
         print(f"plugin: out/{WORLD_ESM} ({wesm.stat().st_size} bytes) sha256 {sha256(wesm)}")
     ENV["ARGONIA_WORLD_ESM"] = str(target)
@@ -382,6 +382,20 @@ def links(data: Path, ours: Path) -> list[str]:
     return [] if r.returncode == 0 else [f"links: red\n{(r.stdout + r.stderr)[-2500:]}"]
 
 
+def province_navmesh() -> Path | None:
+    """The last `make navmesh` build, which every ArgoniaWorld.esm carries (game-8: `make plugin` wrote the world
+    without it, so the deployed province had no NAVM and no person could walk). Its stamp is the ground it was built
+    on: a ground change since is reported (`make navmesh` rebuilds, about 26 min), never silently dropped."""
+    nav = OUT / "navmesh" / "province"
+    if not (nav / "build.json").exists():
+        print("plugin: WARNING no province navmesh (out/navmesh/province): people cannot walk; run `make navmesh`")
+        return None
+    stamp = nav / "terrain.stamp"
+    if not stamp.exists() or stamp.read_text() != _terrain_stamp():
+        print("plugin: WARNING the province navmesh predates the current ground; `make navmesh` rebuilds it")
+    return nav
+
+
 # --- the navmesh (2.W4 §b): its own target, outside the gate but for a fixed sample's hash ---------------------------
 NAV = ROOT / "tools" / "navmesh"
 NAV_SAMPLE = (0, 0, 1, 1)  # four cells of the terrain sample (terrain/world.py SAMPLE)
@@ -407,7 +421,9 @@ def navmesh() -> int:
     scans(data)
     water(OUT / "terrain", sample=False)
     nav = OUT / "navmesh" / "province"
+    ground = _terrain_stamp()
     run(sys.executable, "-m", "tools.navmesh", "build", "--province", "--out", nav, capped=True, quiet=False)
+    (nav / "terrain.stamp").write_text(ground)
     wesm = world(data, OUT / "terrain", sample=False, nav=nav)
     sys.path.insert(0, str(ROOT))
     from tools.navmesh import checks as nav_checks
