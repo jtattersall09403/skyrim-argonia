@@ -54,6 +54,9 @@ DESIGN_PIECES = {
 ARM_YAW_OFFSET = -90.0
 ARM_TOP_M = 2.27  # Claywater's upper board stands 2.27 m up its post (old layout op 141)
 ARM_STEP_M = 0.29  # half the old gap between its two boards (2.27 and 1.69 m), so five arms stay on the post
+FOOTPRINT_HALF_M = 4.0  # a built ref's footprint is its square this far each way (the mesh bounds are not on this VM)
+FOOTPRINT_MARGIN_M = 2.0  # and a signpost keeps this far outside it
+SIGN_REACH_M = 120.0  # a place's signpost looks for road paint this near the place's node
 GROUND_TOL_M = 0.5  # the ref-heights rule (f6177a7)
 KEYWORD = ("ARG_ClosedGate", "hook.closed-gate")
 PERK = ("ARG_Perk_RoadClosed", "hook.road-closed")  # ArgoniaCore's EnsurePerks gives it by this world id
@@ -87,9 +90,53 @@ def slug(s: str) -> str:
 
 def arm_texts(w) -> dict[tuple[str, int], str]:
     """(signpost id, ord) -> what the arm reads: the destination place's name, else the node's (an exit's city)."""
-    return {(r["signpost_id"], r["ord"]): r["text"] for r in w.query(
+    return {(r["signpost_id"], r["ord"]): re.sub(r"^The ", "the ", r["text"]) for r in w.query(
         "SELECT a.signpost_id, a.ord, coalesce(p.name, n.name) text FROM signpost_arm a "
         "JOIN route_node n ON n.id = a.to_node_id LEFT JOIN place p ON p.id = n.place_id ORDER BY 1, 2")}
+
+
+def footprints(w) -> list[tuple[str, float, float, float]]:
+    """(place id, x, y, half side) of every exterior build_ref, with the margin a signpost keeps."""
+    h = FOOTPRINT_HALF_M + FOOTPRINT_MARGIN_M
+    return [(r["place_id"], r["x_m"], r["y_m"], h) for r in w.query(
+        "SELECT c.place_id, r.x_m, r.y_m FROM build_ref r JOIN build_cell c ON c.id = r.cell_id "
+        "WHERE c.kind = 'exterior' AND coalesce(r.disabled, 0) = 0")]
+
+
+def in_footprint(x: float, y: float, fps, place_id: str | None = None) -> bool:
+    return any((place_id is None or f[0] == place_id) and abs(x - f[1]) <= f[3] and abs(y - f[2]) <= f[3] for f in fps)
+
+
+def road_edge_site(w, node: dict, fps) -> tuple[float, float, float]:
+    """(x, y, yaw) of a place node's signpost: the road-paint edge sample (a road's centreline offset by half its flat
+    width, every metre along it) nearest the node that is outside every footprint of the place, turned to face the
+    road's centreline. The node itself when no road paint lies within SIGN_REACH_M."""
+    nx, ny = node["x_m"], node["y_m"]
+    best = None
+    for r in w.query("SELECT route_id, flat_width_m FROM road ORDER BY route_id"):
+        pts = [(p["x_m"], p["y_m"]) for p in w.query(
+            "SELECT x_m, y_m FROM road_point WHERE route_id = ? ORDER BY ord", r["route_id"])]
+        half = r["flat_width_m"] / 2
+        for a, b in zip(pts[:-1], pts[1:]):
+            L = math.hypot(b[0] - a[0], b[1] - a[1])
+            if L == 0:
+                continue
+            ux, uy = (b[0] - a[0]) / L, (b[1] - a[1]) / L
+            for k in range(int(L) + 1):
+                cx, cy = a[0] + ux * k, a[1] + uy * k
+                if math.hypot(cx - nx, cy - ny) > SIGN_REACH_M:
+                    continue
+                for side in (1, -1):
+                    ex, ey = cx - uy * half * side, cy + ux * half * side
+                    if in_footprint(ex, ey, fps, node["place_id"]):
+                        continue
+                    d = math.hypot(ex - nx, ey - ny)
+                    if best is None or d < best[0]:
+                        best = (d, ex, ey, cx, cy)
+    if best is None:
+        return nx, ny, None
+    _, ex, ey, cx, cy = best
+    return round(ex, 2), round(ey, 2), round(heading((ex, ey), (cx, cy)), 2)
 
 
 def placements(w, z_at) -> list[dict]:
@@ -112,11 +159,16 @@ def placements(w, z_at) -> list[dict]:
         out.append({"id": "landing." + s["id"].split(".", 1)[1], "kind": "landing", "piece": s["piece"],
                     "at_m": [x, y, round(max(z_at(x, y), 0.0), 2)], "yaw": round(yaw, 2), "station": s["id"]})
     texts = arm_texts(w)
-    for s in w.query("SELECT * FROM signpost ORDER BY id"):
-        x, y = s["x_m"], s["y_m"]
+    fps = footprints(w)
+    for s in w.query("SELECT s.*, n.kind node_kind, n.place_id FROM signpost s JOIN route_node n ON n.id = s.node_id "
+                     "ORDER BY s.id"):
+        x, y, yaw = s["x_m"], s["y_m"], s["yaw_deg"]
+        if s["node_kind"] == "place":  # off the place's centre, where a built place may stand
+            x, y, face = road_edge_site(w, {"x_m": x, "y_m": y, "place_id": s["place_id"]}, fps)
+            yaw = yaw if face is None else face
         z = round(z_at(x, y), 2)
         out.append({"id": s["id"], "kind": "signpost", "piece": "signpost", "at_m": [x, y, z],
-                    "yaw": round(s["yaw_deg"], 2), "signpost": s["id"]})
+                    "yaw": round(yaw, 2), "signpost": s["id"]})
         for a in w.query("SELECT * FROM signpost_arm WHERE signpost_id = ? ORDER BY ord", s["id"]):
             k = a["ord"]
             out.append({"id": f"{s['id']}.arm{k}", "kind": "arm", "piece": "signpost-arm",
@@ -228,6 +280,10 @@ def check(w, resolver, z_at) -> list[str]:
         want = max(z_at(x, y), 0.0) if p["kind"] == "landing" else z_at(x, y)
         if abs(z - want) > GROUND_TOL_M:
             errs.append(f"{p['id']}: z {z} m is {z - want:+.2f} m off the final ground")
+    fps = footprints(w)
+    for p in ps:
+        if p["kind"] == "signpost" and in_footprint(p["at_m"][0], p["at_m"][1], fps):
+            errs.append(f"{p['id']}: the post stands inside a built ref's footprint")
     arms: dict[str, int] = {}
     for p in ps:
         if p["kind"] == "arm":

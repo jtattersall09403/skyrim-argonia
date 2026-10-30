@@ -52,6 +52,30 @@ def test_a_floating_post_and_a_blank_arm_fail_on_purpose(world, monkeypatch):
     assert sum("has no text" in e for e in errs) == n
 
 
+def test_no_signpost_inside_a_footprint_and_one_planted_fails(world, monkeypatch):
+    w, res, g = world
+    plan = infra.placements(w, g.z)
+    assert not any("footprint" in e for e in infra.check(w, res, g.z))
+    fps = infra.footprints(w)
+    assert fps
+    f = fps[0]
+    sites = infra.road_edge_site(w, {"x_m": f[1], "y_m": f[2], "place_id": f[0]}, fps)
+    assert not infra.in_footprint(sites[0], sites[1], fps, f[0])  # the site search steps out of the footprints
+    planted = [dict(p, at_m=[f[1], f[2], p["at_m"][2]]) if p["kind"] == "signpost" else p for p in plan]
+    monkeypatch.setattr(infra, "placements", lambda *_: planted)
+    errs = infra.check(w, res, g.z)
+    assert sum("footprint" in e for e in errs) == sum(1 for p in plan if p["kind"] == "signpost")
+
+
+def test_place_signposts_stand_on_the_road_edge(world):
+    w, res, g = world
+    plan = {p["id"]: p for p in infra.placements(w, g.z)}
+    for r in w.query("SELECT s.id, s.x_m, s.y_m FROM signpost s JOIN route_node n ON n.id = s.node_id "
+                     "WHERE n.kind = 'place'"):
+        x, y, _ = plan[r["id"]]["at_m"]
+        assert 0 < ((x - r["x_m"]) ** 2 + (y - r["y_m"]) ** 2) ** .5 <= 10
+
+
 def test_edids():
     assert infra.edid({"id": "gate.tear-road", "kind": "gate"}) == "ARG_Ref_GateTearRoad"
     assert infra.edid({"id": "sign.place.imperial-fringe.gideon.arm1", "kind": "arm",

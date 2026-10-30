@@ -2,7 +2,7 @@ FormKey: 00099B:Argonia.esm
 EditorID: ARG_ACTI_SignArmTheTeethOfSithis
 Name:
   TargetLanguage: English
-  Value: The Teeth of Sithis
+  Value: the Teeth of Sithis
 Model:
   File: roadsignmedium01r.nif
 ActivateTextOverride:
