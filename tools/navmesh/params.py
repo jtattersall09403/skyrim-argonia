@@ -28,6 +28,9 @@ SNAP_MAX = 256.0  # a vertex within this of the ground is put back on it: Recast
 WELD_Z = 16.0  # detail vertices at one plan position within this height are one vertex
 BORDER_SAMPLES = 2  # the ground read beyond each cell edge (256 units, 8 voxels), so erosion and ledges see across
 WATER_MAX_DEPTH = 1000.0  # deeper water has no navmesh: vanilla water triangles lie on the bed, 99% within 953
+OBJECT_AGENT_RADIUS = 16.0  # the erosion in a cell that holds placed collision: at 32 the walkable strip in front of a
+# porch door (the station house's doorframe slab, 125 deep, 45 above the ground, met by a 45-degree stair) erodes
+# away and the door is cut off (measured on Claywater, lane nav-walk); 16 keeps it. Ground-only cells keep 32.
 TOLERANCE_Z = 32.0  # L1: a vertex within this of the ground (two detail errors), or of the water surface
 SEAM_DZ = 64.0  # a cross-cell edge pair links when both its ends are within this height
 ISLAND_REPORT_M2 = 100.0  # L1: every island (a component apart from the main one) larger than this is listed, m^2
@@ -36,7 +39,7 @@ ISLAND_REPORT_M2 = 100.0  # L1: every island (a component apart from the main on
 def recast() -> dict:
     """The parameters ArgoniaNav reads from grid.json."""
     return {"snapMax": SNAP_MAX, "cs": CELL_SIZE, "ch": CELL_HEIGHT, "maxSlopeDeg": MAX_SLOPE_DEG, "agentHeight": AGENT_HEIGHT,
-            "agentRadius": AGENT_RADIUS, "agentClimb": AGENT_CLIMB, "edgeMaxLen": EDGE_MAX_LEN,
+            "agentRadius": AGENT_RADIUS, "objAgentRadius": OBJECT_AGENT_RADIUS, "agentClimb": AGENT_CLIMB, "edgeMaxLen": EDGE_MAX_LEN,
             "edgeMaxError": EDGE_MAX_ERROR, "detailSampleDist": DETAIL_SAMPLE_DIST,
             "detailSampleMaxError": DETAIL_SAMPLE_MAX_ERROR, "waterMaxDepth": WATER_MAX_DEPTH, "weldZ": WELD_Z,
             "borderSamples": BORDER_SAMPLES, "regionMinSize": REGION_MIN_SIZE,

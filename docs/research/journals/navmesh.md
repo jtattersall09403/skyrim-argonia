@@ -117,5 +117,10 @@ at a hand-off. The lane report is `docs/research/2026-10-29/lane-2.W4-navmesh.md
   merges overrides; not measured by us), 0.4 §d's NPC walk, 2.W4's 200 path requests and 20 sandboxers
   (`tests/scenes/nav-claywater.json`, `tests/journeys/nav-*.yaml`).
 - **The CK comparison** on the game machine (`infra/gpu-box/navmesh_ck.ps1`, drafted, not run).
-- **Placed objects:** collision from the synced masters' NIFs (bhkCompressedMeshShape, as tes4skyrim decodes it),
-  door triangles at load doors, then cover.
+- **Placed objects (nav-walk, 2026-10-30):** real collision now comes from the laid stack's meshes (bsa.py,
+  meshes.py, nif.py). The ground is solid, and cells with placed collision erode by 16. Livia's station-house door
+  is now reachable on the block (docs/research/2026-10-30/lane-nav-walk.md).
+- **Door triangles (owed):** vanilla puts the door triangle under the linked door's XTEL arrival point (426/426).
+  Ours must be NAVM overrides in Argonia.esm, because the door REFRs live there. The NAVI merges across plugins:
+  Dawnguard and KotM carry only their own NVMIs.
+- **Cover:** not started.

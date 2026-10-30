@@ -27,12 +27,12 @@ static class Program
 
 sealed class Params
 {
-    public float SnapMax, Cs, Ch, MaxSlopeDeg, AgentHeight, AgentRadius, AgentClimb, EdgeMaxLen, EdgeMaxError, DetailSampleDist, DetailSampleMaxError, WaterMaxDepth, WeldZ;
+    public float SnapMax, Cs, Ch, MaxSlopeDeg, ObjAgentRadius, AgentHeight, AgentRadius, AgentClimb, EdgeMaxLen, EdgeMaxError, DetailSampleDist, DetailSampleMaxError, WaterMaxDepth, WeldZ;
     public int BorderSamples, RegionMinSize, RegionMergeSize, VertsPerPoly;
     public static Params From(JsonElement p) => new()
     {
         SnapMax = p.GetProperty("snapMax").GetSingle(), Cs = p.GetProperty("cs").GetSingle(), Ch = p.GetProperty("ch").GetSingle(),
-        MaxSlopeDeg = p.GetProperty("maxSlopeDeg").GetSingle(), AgentHeight = p.GetProperty("agentHeight").GetSingle(),
+        MaxSlopeDeg = p.GetProperty("maxSlopeDeg").GetSingle(), ObjAgentRadius = p.GetProperty("objAgentRadius").GetSingle(), AgentHeight = p.GetProperty("agentHeight").GetSingle(),
         AgentRadius = p.GetProperty("agentRadius").GetSingle(), AgentClimb = p.GetProperty("agentClimb").GetSingle(),
         EdgeMaxLen = p.GetProperty("edgeMaxLen").GetSingle(), EdgeMaxError = p.GetProperty("edgeMaxError").GetSingle(),
         DetailSampleDist = p.GetProperty("detailSampleDist").GetSingle(), DetailSampleMaxError = p.GetProperty("detailSampleMaxError").GetSingle(),
@@ -61,7 +61,7 @@ static class Cells
         var raw = Path.Combine(outDir, "raw");
         Directory.CreateDirectory(raw);
         foreach (var old in Directory.GetFiles(raw, "cy*.bin")) File.Delete(old);
-        // the placed objects' boxes (inputs.py objects.f32: 8 corners of 3 floats each, world x, y, z), if any
+        // the placed objects' collision (inputs.py objects.f32: triangles, 3 corners of world x, y, z), if any
         var objPath = Path.Combine(inDir, "objects.f32");
         var obj = File.Exists(objPath) ? Raster<float>(objPath, (int)(new FileInfo(objPath).Length / 4)) : Array.Empty<float>();
         var grid = new Grid(rows, cols, x0, ytop, step, hgt, wat, flg, obj);
@@ -154,37 +154,41 @@ static class Cells
                 int a = j * n + i, b = a + 1, c = a + n, d = c + 1;  // a NW, b NE, c SW, d SE
                 Tri(a, c, b); Tri(b, c, d);
             }
-        // the placed objects (inputs.py objects.f32: each a box as its 8 corners in world x, y, z; corner 1 is +x from
-        // corner 0, 2 is +y, 4 is +z) over the window, rasterised solid; their tops walkable as any span. The
-        // heightfield's height range takes them in, or a tall box would be clipped to a false top inside itself.
+        // the placed objects' collision (inputs.py objects.f32: triangles, 3 corners of world x, y, z) over the window,
+        // rasterised as the ground is: walkable up to the slope limit, any other face an obstacle. The heightfield's
+        // height range takes them in, or a tall object would be clipped to a false top inside itself.
         float wxa = verts[0], wxb = verts[3 * (n - 1)], wyb = verts[2], wya = verts[3 * (n * n - 1) + 2];
-        var boxes = new List<int>();
-        for (var t = 0; t + 24 <= g.Obj.Length; t += 24)
+        var objV = new List<float>();
+        var objT = new List<int>();
+        var objA = new List<int>();
+        for (var t = 0; t + 9 <= g.Obj.Length; t += 9)
         {
-            float xa = float.MaxValue, xb = float.MinValue, ya = float.MaxValue, yb = float.MinValue;
-            for (var k = 0; k < 8; k++) { xa = MathF.Min(xa, g.Obj[t + 3 * k]); xb = MathF.Max(xb, g.Obj[t + 3 * k]); ya = MathF.Min(ya, g.Obj[t + 3 * k + 1]); yb = MathF.Max(yb, g.Obj[t + 3 * k + 1]); }
+            float xa = MathF.Min(g.Obj[t], MathF.Min(g.Obj[t + 3], g.Obj[t + 6])), xb = MathF.Max(g.Obj[t], MathF.Max(g.Obj[t + 3], g.Obj[t + 6]));
+            float ya = MathF.Min(g.Obj[t + 1], MathF.Min(g.Obj[t + 4], g.Obj[t + 7])), yb = MathF.Max(g.Obj[t + 1], MathF.Max(g.Obj[t + 4], g.Obj[t + 7]));
             if (xb < wxa || xa > wxb || yb < wya || ya > wyb) continue;
-            boxes.Add(t);
-            for (var k = 0; k < 8; k++) { zmin = Math.Min(zmin, g.Obj[t + 3 * k + 2]); zmax = Math.Max(zmax, g.Obj[t + 3 * k + 2]); }
+            var k0 = objV.Count / 3;
+            for (var k = 0; k < 3; k++)
+            {
+                objV.Add(g.Obj[t + 3 * k]); objV.Add(g.Obj[t + 3 * k + 2]); objV.Add(g.Obj[t + 3 * k + 1]);  // Recast space
+                zmin = Math.Min(zmin, g.Obj[t + 3 * k + 2]); zmax = Math.Max(zmax, g.Obj[t + 3 * k + 2]);
+            }
+            objT.Add(k0); objT.Add(k0 + 1); objT.Add(k0 + 2);
         }
+        var ov = objV.ToArray();
+        for (var t = 0; t < objT.Count; t += 3) objA.Add(Slope(ov, objT[t], objT[t + 1], objT[t + 2], cosMax));
         float bord = B * g.Step;
         var bmin = new RcVec3f(wx0 - bord, zmin - 2 * p.Ch, wy0 - bord);
         var bmax = new RcVec3f(wx0 + CellUnits + bord, zmax + p.AgentHeight + 2 * p.Ch, wy0 + CellUnits + bord);
         int border = (int)MathF.Round(bord / p.Cs);
         int size = (int)MathF.Round((CellUnits + 2 * bord) / p.Cs);
         var ctx = new RcContext();
-        int walkH = (int)MathF.Ceiling(p.AgentHeight / p.Ch), walkC = (int)MathF.Floor(p.AgentClimb / p.Ch), walkR = (int)MathF.Ceiling(p.AgentRadius / p.Cs);
+        int walkH = (int)MathF.Ceiling(p.AgentHeight / p.Ch), walkC = (int)MathF.Floor(p.AgentClimb / p.Ch), walkR = (int)MathF.Ceiling((objA.Count > 0 ? p.ObjAgentRadius : p.AgentRadius) / p.Cs);
         var hf = new RcHeightfield(size, size, bmin, bmax, p.Cs, p.Ch, border);
         RcRasterizations.RasterizeTriangles(ctx, verts, tris.ToArray(), areas.ToArray(), areas.Count, hf, walkC);
-        foreach (var t in boxes)
+        if (objA.Count > 0)
         {
-            RcVec3f C(int k) => new(g.Obj[t + 3 * k], g.Obj[t + 3 * k + 2], g.Obj[t + 3 * k + 1]);  // Recast space
-            var o = C(0);
-            RcVec3f centre = new(0, 0, 0);
-            for (var k = 0; k < 8; k++) centre += C(k);
-            centre *= 1f / 8;
-            RcVec3f[] half = { (C(1) - o) * 0.5f, (C(4) - o) * 0.5f, (C(2) - o) * 0.5f };
-            RcFilledVolumeRasterization.RasterizeBox(hf, centre, half, Walkable, walkC, ctx);
+            RcRasterizations.RasterizeTriangles(ctx, ov, objT.ToArray(), objA.ToArray(), objA.Count, hf, walkC);
+            SolidGround(hf, g);
         }
         RcFilters.FilterLowHangingWalkableObstacles(ctx, walkC, hf);
         RcFilters.FilterLedgeSpans(ctx, walkH, walkC, hf);
@@ -201,14 +205,66 @@ static class Cells
         if (pm.npolys == 0) return (outV, outT);
         var dm = RcMeshDetails.BuildPolyMeshDetail(ctx, pm, chf, p.DetailSampleDist, p.DetailSampleMaxError);
         Weld(dm, pm, p.WeldZ, outV, outT);
-        // Recast's heights are voxel tops (up to a voxel high, more on a slope): a vertex that came from the ground
-        // goes back onto it. Placed-object collision, when it joins, keeps its own heights (beyond snapMax).
+        // Recast's heights are voxel tops (up to a voxel high, more on a slope): each vertex goes back onto the
+        // nearest surface under or over it, the ground or a walkable face of a placed object (a porch, a deck, a
+        // stair), within snapMax.
         for (var i = 0; i < outV.Count; i += 3)
         {
-            var z = Ground(g, outV[i], outV[i + 1]);
-            if (MathF.Abs(outV[i + 2] - z) <= p.SnapMax) outV[i + 2] = z;
+            float x = outV[i], y = outV[i + 1], z0 = outV[i + 2];
+            var z = Ground(g, x, y);
+            for (var t = 0; t < objT.Count; t += 3)
+            {
+                if (objA[t / 3] == Null) continue;
+                var s = OnTriangle(ov, objT[t], objT[t + 1], objT[t + 2], x, y);
+                if (s is float zs && MathF.Abs(zs - z0) < MathF.Abs(z - z0)) z = zs;
+            }
+            if (MathF.Abs(z0 - z) <= p.SnapMax) outV[i + 2] = z;
         }
         return (outV, outT);
+    }
+
+    // The ground is solid, as the game's terrain is: in each column every span below the one that holds the ground
+    // joins it. Without this, collision that reaches under the ground (a hut's buried base, a pier's footing) is
+    // open floor beneath it, and Recast's ledge filter drops the real ground beside it as a ledge.
+    static void SolidGround(RcHeightfield hf, Grid g)
+    {
+        for (var z = 0; z < hf.height; z++)
+            for (var x = 0; x < hf.width; x++)
+            {
+                var first = hf.spans[x + z * hf.width];
+                if (first == null || first.next == null) continue;
+                float wx = hf.bmin.X + (x + 0.5f) * hf.cs, wy = hf.bmin.Z + (z + 0.5f) * hf.cs;
+                var gi = (int)MathF.Floor((Ground(g, wx, wy) - hf.bmin.Y) / hf.ch);
+                RcSpan? at = null;
+                for (var sp = first; sp != null && sp.smin <= gi + 1; sp = sp.next) at = sp;
+                if (at == null || at == first) continue;
+                at.smin = first.smin;
+                hf.spans[x + z * hf.width] = at;
+            }
+    }
+
+    static int Slope(float[] v, int a, int b, int c, float cosMax)
+    {
+        float ux = v[3 * b] - v[3 * a], uy = v[3 * b + 1] - v[3 * a + 1], uz = v[3 * b + 2] - v[3 * a + 2];
+        float wx = v[3 * c] - v[3 * a], wy = v[3 * c + 1] - v[3 * a + 1], wz = v[3 * c + 2] - v[3 * a + 2];
+        float nx = uy * wz - uz * wy, ny = uz * wx - ux * wz, nz = ux * wy - uy * wx;
+        float len = MathF.Sqrt(nx * nx + ny * ny + nz * nz);
+        // facing up: counter-clockwise seen from above in the world, as Havok winds the outside of a collision mesh;
+        // (x, y, z) -> Recast (x, z, y) is a mirror, so that is a negative Recast normal y
+        return len > 0 && -ny / len >= cosMax ? Walkable : Null;
+    }
+
+    // The height of a triangle (Recast space: x, up, world y) over the plan point (x, y), or null when the point is
+    // outside it in plan (half a unit of slack).
+    static float? OnTriangle(float[] v, int a, int b, int c, float x, float y)
+    {
+        float ax = v[3 * a], ay = v[3 * a + 2], bx = v[3 * b], by = v[3 * b + 2], cx = v[3 * c], cy = v[3 * c + 2];
+        float d = (by - cy) * (ax - cx) + (cx - bx) * (ay - cy);
+        if (MathF.Abs(d) < 1e-6f) return null;
+        float l1 = ((by - cy) * (x - cx) + (cx - bx) * (y - cy)) / d, l2 = ((cy - ay) * (x - cx) + (ax - cx) * (y - cy)) / d, l3 = 1 - l1 - l2;
+        float eps = 0.5f / MathF.Max(1f, MathF.Sqrt(MathF.Abs(d)));
+        if (l1 < -eps || l2 < -eps || l3 < -eps) return null;
+        return l1 * v[3 * a + 1] + l2 * v[3 * b + 1] + l3 * v[3 * c + 1];
     }
 
     static int Area(float[] v, float[] wet, bool[] road, int a, int b, int c, float cosMax, float waterMaxDepth)

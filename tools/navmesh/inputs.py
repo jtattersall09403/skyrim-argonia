@@ -9,9 +9,10 @@
                                   ArgoniaWorld.esm places; 2.W2)
                       flags.u8    bit 0: the painted road (routes/paint.py's BC_ROAD and TRACK, 2.W3)
 
-                      objects.f32 the placed objects over the box (placed.py: the built places' references as their
-                                  bounds' boxes), 8 corners of 3 floats each in units; written only when there are
-                                  some. ArgoniaNav rasterises them solid beside the ground.
+                      objects.f32 the placed objects' collision over the box (placed.py: the built places'
+                                  references as their meshes' collision triangles), 3 corners of 3 floats each in
+                                  units; written only when there are some. ArgoniaNav rasterises them beside the
+                                  ground (walkable up to the slope limit) and keeps their heights.
 """
 from __future__ import annotations
 
@@ -96,7 +97,7 @@ def water_levels(box, r0: int, c0: int, shape, x0u: float, ytop: float, cells_pa
 
 def write(out: Path, box, src=None, cells_path: Path = WATER_CELLS, objects: np.ndarray | None = None) -> dict:
     """Write the rasters and grid.json for `box` (x0, y0, x1, y1) into `out`; returns grid.json's content.
-    `objects`: (k, 8, 3) world-unit box corners of placed collision (placed.py), kept where they touch the box."""
+    `objects`: (k, 3, 3) world-unit triangles of placed collision (placed.py), kept where they touch the box."""
     from tools.argonia_world.routes import paint as road_paint
     from tools.argonia_world.terrain import build
 

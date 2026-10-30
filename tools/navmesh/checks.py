@@ -37,23 +37,39 @@ class Rasters:
         self.h = np.memmap(d / "height.f32", np.float32, "r", shape=shape)
         self.w = np.memmap(d / "water.f32", np.float32, "r", shape=shape)
         self.f = np.memmap(d / "flags.u8", np.uint8, "r", shape=shape)
-        obj = d / "objects.f32"  # the placed objects' boxes (inputs.py), 8 corners each
-        self.boxes = np.fromfile(obj, np.float32).reshape(-1, 8, 3).astype(np.float64) if obj.exists() else None
+        obj = d / "objects.f32"  # the placed objects' collision triangles (inputs.py), 3 corners each
+        self.tris = np.fromfile(obj, np.float32).reshape(-1, 3, 3).astype(np.float64) if obj.exists() else None
 
     def top_dist(self, x, y, z, margin: float):
-        """|z - the box top| at (x, y) for the highest placed box whose footprint (grown by `margin`) holds the point,
-        else inf: a vertex on an object stands on that object, not the ground."""
-        d = np.full(np.shape(x), np.inf)
-        if self.boxes is None:
+        """|z - the nearest placed-collision surface| at (x, y), over every object triangle that holds the point in
+        plan (its edges grown by `margin`; the plane carried on past them), else inf: a vertex on a porch, a deck or
+        a stair stands on that object, not the ground."""
+        x, y, z = (np.asarray(a, np.float64) for a in (x, y, z))
+        d = np.full(x.shape, np.inf)
+        if self.tris is None or not len(x):
             return d
-        p = np.stack([x, y], axis=1)
-        for b in self.boxes:
-            o, u, v = b[0, :2], b[1, :2] - b[0, :2], b[2, :2] - b[0, :2]
-            lu, lv = np.linalg.norm(u), np.linalg.norm(v)
-            a, c = (p - o) @ (u / lu), (p - o) @ (v / lv)
-            m = (a >= -margin) & (a <= lu + margin) & (c >= -margin) & (c <= lv + margin)
-            if m.any():
-                d[m] = np.minimum(d[m], np.abs(np.asarray(z)[m] - b[4, 2]))
+        t = self.tris
+        lo, hi = t[:, :, :2].min(axis=1) - margin, t[:, :, :2].max(axis=1) + margin
+        t = t[(hi[:, 0] >= x.min()) & (lo[:, 0] <= x.max()) & (hi[:, 1] >= y.min()) & (lo[:, 1] <= y.max())]
+        if not len(t):
+            return d
+        a, b, c = t[:, 0], t[:, 1], t[:, 2]
+        den = (b[:, 1] - c[:, 1]) * (a[:, 0] - c[:, 0]) + (c[:, 0] - b[:, 0]) * (a[:, 1] - c[:, 1])
+        ok = np.abs(den) > 1e-6
+        a, b, c, den = a[ok], b[ok], c[ok], den[ok]
+        sgn = np.sign(den)
+        for s in range(0, len(x), 512):
+            px, py = x[s:s + 512, None], y[s:s + 512, None]
+            inside = np.ones((len(px), len(a)), bool)
+            for u, w in ((a, b), (b, c), (c, a)):  # signed plan distance to each edge, inside positive
+                ex, ey = w[:, 0] - u[:, 0], w[:, 1] - u[:, 1]
+                ln = np.hypot(ex, ey) + 1e-12
+                inside &= sgn * (ex * (py - u[:, 1]) - ey * (px - u[:, 0])) / ln >= -margin
+            l1 = ((b[:, 1] - c[:, 1]) * (px - c[:, 0]) + (c[:, 0] - b[:, 0]) * (py - c[:, 1])) / den
+            l2 = ((c[:, 1] - a[:, 1]) * (px - c[:, 0]) + (a[:, 0] - c[:, 0]) * (py - c[:, 1])) / den
+            zs = l1 * a[:, 2] + l2 * b[:, 2] + (1 - l1 - l2) * c[:, 2]
+            dz = np.where(inside, np.abs(z[s:s + 512, None] - zs), np.inf)
+            d[s:s + 512] = dz.min(axis=1)
         return d
 
     def frac(self, x, y):
@@ -277,7 +293,7 @@ def run(out: Path) -> dict:
     cd = np.concatenate(cdev) if cdev else np.zeros(0)
     res = {
         "box": box, "navm": len(navm_meta), "triangles": int(sum(tri_count.values())), "vertices": int(len(vd)),
-        "objects": 0 if ras.boxes is None else len(ras.boxes),
+        "objects": 0 if ras.tris is None else len(ras.tris),
         "heights": {"tolerance": params.TOLERANCE_Z, "over": over, "vertex_max": round(float(vd.max()), 2) if len(vd) else 0,
                     "vertex_p99": round(float(np.percentile(vd, 99)), 2) if len(vd) else 0,
                     "centroid_p99": round(float(np.percentile(cd, 99)), 2) if len(cd) else 0,

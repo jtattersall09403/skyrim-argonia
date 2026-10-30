@@ -133,7 +133,7 @@ def main(argv=None) -> int:
     out = Path(a.out) if a.out else ROOT / "out" / "navmesh" / name
     objects = None
     if not a.no_placed and placed.INTERMEDIATE.exists():  # the built places' references (placed.py)
-        objects, tally = placed.boxes(game_data())
+        objects, tally = placed.triangles(game_data())
         print(json.dumps({"placed": tally}))
     res = build(box, out, check=not a.no_check, objects=objects)
     print(json.dumps({k: res[k] for k in ("box", "times", "totals", "sha256")}, sort_keys=True))
