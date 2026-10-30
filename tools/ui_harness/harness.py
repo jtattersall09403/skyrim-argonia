@@ -189,7 +189,7 @@ class Harness:
         if shoot:
             path.parent.mkdir(parents=True, exist_ok=True)
             p.screenshot(path=str(path))
-        m["still"] = str(path.relative_to(ROOT))
+        m["still"] = str(path.relative_to(ROOT) if path.is_relative_to(ROOT) else path)
         m["fails"] = judge(m, vp, view == "hud" and not json.loads(pushes[0])["body"].get("visible", True))
         return m
 

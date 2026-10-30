@@ -1,7 +1,7 @@
 """ui/fixtures/chart.json's positions, made from out/chart/index.json so the mock chart agrees with the real one.
 
 The fixture's shape stays hand-written (the schema lane's); this sets every place's id and position, the revealed
-cells (a walk round Claywater Station: the 5 x 5 cells about its cell) and the views, from the index.
+cells (a walk round Claywater Station: the 13 x 13 cells about its cell) and the views, from the index.
 `--check` exits 1 if the fixture has drifted from the index (the gate's test runs it when out/chart exists).
 """
 from __future__ import annotations
@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[2]
 FIXTURE = ROOT / "ui" / "fixtures" / "chart.json"
 INDEX = ROOT / "out" / "chart" / "index.json"
 HOME = "Claywater Station"
-WALK = 2  # cells each way round the home cell
+WALK = 6  # cells each way round the home cell (a walk of a few minutes; the 2.W4 demo used a radius of 9)
 
 
 def units(ix: dict, px: float, py: float) -> tuple[float, float]:

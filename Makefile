@@ -6,7 +6,7 @@ PY := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/python) python3)
 # A failing part records its name, then fails.
 FAIL = || { echo $@ >> $(RED); exit 1; }
 
-.PHONY: check hooks plugin db chart navmesh $(PARTS)
+.PHONY: check hooks plugin db chart navmesh ui-stills $(PARTS)
 
 check:
 	@rm -f $(RED)
@@ -45,8 +45,13 @@ skse:
 
 # The views' side of the message schema and its generator (1.1 §c): the TS validator's refusals, the fixtures.
 NODE := $(firstword $(shell command -v node) $(HOME)/.local/bin/node)
+# The views (1.2): their L1 tests here; the L3 smoke (headless shell, ~6 s) runs in `unit` as tools/ui_harness/tests.
 ui:
-	@$(NODE) --experimental-strip-types --disable-warning=ExperimentalWarning --test --test-reporter=dot 'ui/schema/tests/*.test.ts' 'tools/schema_gen/tests/*.test.ts' $(FAIL)
+	@$(NODE) --experimental-strip-types --disable-warning=ExperimentalWarning --test --test-reporter=dot 'ui/schema/tests/*.test.ts' 'tools/schema_gen/tests/*.test.ts' 'ui/views/tests/*.test.ts' $(FAIL)
+
+# The L3 stills (1.2): every view x fixture x viewport -> out/ui/stills/ and out/ui/report.json; not in the gate (~160 s).
+ui-stills:
+	@$(PY) -m tools.ui_harness
 
 # The immersion inventory's counts (decision 0006 §2); binding from 2.17 with IMMERSION_BIND=1.
 immersion:

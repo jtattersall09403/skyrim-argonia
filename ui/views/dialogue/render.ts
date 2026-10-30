@@ -51,9 +51,9 @@ export function render(s: DialogueState, ui: DialogueUi = { persuading: false })
       ${persuade}
       <ul class="topics scroll" data-list="topics">${topics}</ul>
       ${goodbye}
+      ${ui.persuading && s.persuasion.available ? persuasionPanel(s) : ""}
     </aside>
   </div>
-  ${ui.persuading && s.persuasion.available ? persuasionPanel(s) : ""}
 </section>`;
 }
 
