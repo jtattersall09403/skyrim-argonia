@@ -4,7 +4,8 @@
 #   job_guard.sh run [--gpu[=<machine>]] <name> -- <command...>   start; --gpu takes that game machine's lock
 #     (default $ARGONIA_PLAY, else argonia-play; the job runs with ARGONIA_PLAY set to it, so run.sh, stack.py,
 #     skse_build.sh and bridge.py inside it drive that machine). Locks are per machine: two machines' jobs run side
-#     by side, two jobs on one machine do not (the second exits at once). argonia-play keeps the old gpu.lock.
+#     by side; a second job on one machine queues for the lock (up to $GPU_WAIT s, default 7200; GPU_WAIT=0 exits at
+#     once) and `status` shows it as queued behind the holder. argonia-play keeps the old gpu.lock.
 #   job_guard.sh wait <name>                          wait up to 270 s; exit 0 done-ok, 1 done-failed, 3 still running
 #   job_guard.sh status [<name>] | log <name>
 set -euo pipefail
@@ -23,9 +24,13 @@ case "$cmd" in
     fi
     name=$1; shift; [ "${1:-}" = "--" ] && shift
     if [ -f "$JOBS/$name.pid" ] && kill -0 "$(cat "$JOBS/$name.pid")" 2>/dev/null; then echo "job $name already running" >&2; exit 2; fi
-    rm -f "$JOBS/$name.rc"
+    rm -f "$JOBS/$name.rc" "$JOBS/$name.started"
     if [ $gpu = 1 ]; then
-      setsid nohup flock -n "$lock" bash -c '"$@"; echo $? > "'"$JOBS/$name.rc"'"' _ "$@" > "$JOBS/$name.log" 2>&1 &
+      wait_s=${GPU_WAIT:-7200}; holder=$(cat "$lock.holder" 2>/dev/null || echo "?")
+      # The holder file names the job inside the lock; `started` marks that this one got it (queued until then).
+      setsid nohup bash -c 'echo "queued for '"$ARGONIA_PLAY"' behind '"$holder"' (up to '"$wait_s"' s)"
+        flock -w '"$wait_s"' "'"$lock"'" bash -c '"'"'echo '"$name"' > "'"$lock"'.holder"; touch "'"$JOBS/$name.started"'"
+          echo "got the lock"; "$@"; echo $? > "'"$JOBS/$name.rc"'"'"'"' _ "$@" || { rc=$?; [ -f "'"$JOBS/$name.rc"'" ] || echo "$rc" > "'"$JOBS/$name.rc"'"; echo "lock wait gave up (rc $rc)"; }' _ "$@" > "$JOBS/$name.log" 2>&1 &
     else
       setsid nohup bash -c '"$@"; echo $? > "'"$JOBS/$name.rc"'"' _ "$@" > "$JOBS/$name.log" 2>&1 &
     fi
@@ -43,7 +48,8 @@ case "$cmd" in
     echo "job $name still running"; tail -3 "$JOBS/$name.log"; exit 3 ;;
   status)
     for f in "$JOBS"/${1:-*}.pid; do [ -e "$f" ] || continue; n=$(basename "$f" .pid)
-      if [ -f "$JOBS/$n.rc" ]; then echo "$n done rc=$(cat "$JOBS/$n.rc")"; elif kill -0 "$(cat "$f")" 2>/dev/null; then echo "$n running"; else echo "$n dead"; fi; done ;;
+      if [ -f "$JOBS/$n.rc" ]; then echo "$n done rc=$(cat "$JOBS/$n.rc")"; elif kill -0 "$(cat "$f")" 2>/dev/null; then
+        if grep -q '^queued for' "$JOBS/$n.log" 2>/dev/null && [ ! -f "$JOBS/$n.started" ]; then echo "$n queued ($(head -1 "$JOBS/$n.log"))"; else echo "$n running"; fi; else echo "$n dead"; fi; done ;;
   log) tail -n 50 "$JOBS/$1.log" ;;
   *) sed -n '2,10p' "$0"; exit 2 ;;
 esac
