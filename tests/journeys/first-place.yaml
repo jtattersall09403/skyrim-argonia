@@ -120,7 +120,9 @@ steps:
     do: [{console: "ARG_Ref_ClaywaterStationClayBasket.activate player"}, {wait: 2}]
     expect:
       - {console: "player.GetItemCount ARG_Misc_Lf83ClayBasket", contains: ">> 1"}
-      - {console: "GetStage ARG_Q_LF83", contains: ">> 30", within: 8}
+  - name: clay-stage-30    # the basket moves LF83 to 30 only once the talks took it (10, 20)
+    owed: "LF83 starts from the talks, which wait on the dialogue fragment (Papyrus, owner #15) (game-8)"
+    expect: [{console: "GetStage ARG_Q_LF83", contains: ">> 30", within: 8}]
   # --- loot and equip ------------------------------------------------------------------------------------------
   - name: loot-the-croc    # the corpse's container menu, Take All (R), close
     do: [{console: "ARG_Ref_ClaywaterStationCrocodile.activate player"}, {wait: 2}, {key: "R 120"}, {wait: 1}, {key: "TAB 120"}, {wait: 1}]

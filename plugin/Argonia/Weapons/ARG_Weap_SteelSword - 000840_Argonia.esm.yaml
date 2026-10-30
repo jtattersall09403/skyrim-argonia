@@ -5,6 +5,7 @@ Name:
   Value: Steel Sword
 Model:
   File: Argonia\weapons\steel-sword.nif
+EquipmentType: 013F44:Skyrim.esm
 Keywords:
 - 00083C:Argonia.esm
 BasicStats:

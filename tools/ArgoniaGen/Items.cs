@@ -59,6 +59,7 @@ static class ItemWriters
             Keywords = new ExtendedList<IFormLinkGetter<IKeywordGetter>>(),
         };
         foreach (var k in A(r, "keywords")) w.Keywords.Add(new FormLink<IKeywordGetter>(FK(k.GetString()!)));
+        w.EquipmentType.SetTo(FK(S(r, "equipSlot")));  // none crashed the Container Menu (game-8)
         return w;
     }
 

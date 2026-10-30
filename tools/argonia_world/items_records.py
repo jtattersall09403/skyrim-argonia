@@ -66,6 +66,7 @@ def weapon_record(alloc: Allocator, world, item_id: str = SWORD) -> dict:
     return {"type": "WEAP", "edid": edid, "formKey": alloc.form_key(edid, "WEAP", it.id), "name": it.name,
             "model": model_path(it), "weight": su.kg_to_weight(it.weight_kg), "value": it.value,
             "keywords": [alloc.form_key(cls.keyword_edid)], "animation": sub.animation,
+            "equipSlot": su.weapon_equip_slot(sub.animation),
             "speed": su.WEAP_NEUTRAL_SPEED, "reach": su.WEAP_NEUTRAL_REACH,
             "damage": round(combat_records.listed_damage(world, item_id))}
 

@@ -63,6 +63,7 @@ def test_sword_comes_from_its_row_and_carries_the_long_blade_keyword(world, allo
     assert w["keywords"] == [alloc.form_key(lb.keyword_edid)]
     assert world.get("skill", lb.skill).id == "longBlade"
     assert w["animation"] == "OneHandSword"
+    assert w["equipSlot"] == su.EQUIP_EITHER_HAND  # none crashed the Container Menu (game-8)
     assert w["model"].endswith("steel-sword.nif") and "/" not in w["model"]
 
 

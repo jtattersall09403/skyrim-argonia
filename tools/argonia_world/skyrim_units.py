@@ -80,6 +80,16 @@ BIPED_FIRST_SLOT = 30  # biped slot numbers run 30..61; the record stores them a
 DEFAULT_RACE = "000019:Skyrim.esm"  # DefaultRace: the race an ARMA names so every race can wear it
 ARMOR_TYPE = {"light": "LightArmor", "heavy": "HeavyArmor"}  # a set's armour_class as the engine's ARMO type; no medium
 
+# The equip slot (ETYP) a weapon's animation type takes: the engine reads it whenever the weapon is listed (a WEAP
+# without one crashed the Container Menu on Take All, SkyrimSE+093FE2F, game-8). Skyrim.esm's EitherHand / BothHands.
+EQUIP_EITHER_HAND, EQUIP_BOTH_HANDS = "013F44:Skyrim.esm", "013F45:Skyrim.esm"
+TWO_HANDED_ANIMATIONS = {"TwoHandSword", "TwoHandAxe", "Bow", "Crossbow", "Staff"}
+
+
+def weapon_equip_slot(animation: str) -> str:
+    return EQUIP_BOTH_HANDS if animation in TWO_HANDED_ANIMATIONS else EQUIP_EITHER_HAND
+
+
 WEAP_NEUTRAL_SPEED = WEAP_NEUTRAL_REACH = 1.0  # the engine's neutral multipliers; ArgoniaCore holds the measured values
 
 
