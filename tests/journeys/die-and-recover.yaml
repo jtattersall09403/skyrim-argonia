@@ -19,6 +19,7 @@ steps:
       - {console: '"{opp}".stopcombat'}
       - {console: '"{opp}".disable'}   # the hostile deserter out of the way: the engine rightly refuses a rest beside him (game-16)
       - {rest: ARG_Ref_ClaywaterStationAmbushPlayer}   # stops combat, aims at the camp spot, E until the rest logs (game-16)
+      - {console: '"{opp}".moveto player 0 300 0'}   # loaded beside the player before enable (diag4)
       - {console: '"{opp}".enable'}
     expect: [{read: [core, WakePoint], path: value, ne: "", keep: wake, within: 10}]
   - name: earn                # the vastei carried, set (the check is the pile on death, not earning it)
