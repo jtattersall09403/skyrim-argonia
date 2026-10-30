@@ -8,7 +8,9 @@
 param([ValidateSet('tools', 'build', 'all')][string]$Stage = 'all',
       [ValidateSet('windows-dev', 'windows-release')][string]$Preset = 'windows-dev',
       [string]$Root = 'C:\argonia\skse',
-      [string]$ModDir = 'C:\argonia\MO2\mods')
+      [string]$ModDir = 'C:\argonia\MO2\mods',
+      # A compile-only pass on one target (SKSE_TARGET in skse_build.sh): no tests, no install, for fixing compile errors fast
+      [string]$Target = '')
 $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 $Tools = 'C:\argonia\tools'
@@ -91,6 +93,7 @@ function Build {
   try {
     Run 'configure' "cmake --preset $Preset"
     Select-String -Path $Log -Pattern 'CommonLibSSE|prebuilt' | Select-Object -Last 4 | ForEach-Object { Write-Host $_.Line }
+    if ($Target) { Run 'build' "cmake --build --preset $Preset --target $Target"; Write-Host "SKSE-TARGET OK ($Target, compile only)"; return }
     Run 'build' "cmake --build --preset $Preset"
     Run 'tests' "ctest --test-dir $Root\build\$Preset --output-on-failure"
     Select-String -Path $Log -Pattern 'tests passed|tests failed' | ForEach-Object { Write-Host "ctest: $($_.Line)" }

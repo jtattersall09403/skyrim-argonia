@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # make deploy's first half (chunk 0.3 §b): send skse/ to the game machine and build it there with MSVC.
+# SKSE_TARGET=<target> (e.g. ArgoniaBridge) compiles that one target only (no tests, no install): fast compile-error loops.
 #   skse_build.sh [--machine argonia-play-N] [--worktree] [tools|build|all] [windows-dev|windows-release]   default: build windows-dev
 #   on argonia-play (or $ARGONIA_PLAY); ARGONIA_MODDIR='C:\argonia\no-deploy' leaves the DLLs in the build tree
 #   (the game holds MO2's copies locked while it runs; the game lane deploys)
@@ -49,7 +50,7 @@ echo "skse: $(tar -tf "$tarball" | wc -l) files, $(du -h "$tarball" | cut -f1)"
 "$run" put "$here/skse_build.ps1" C:/argonia/infra/skse_build.ps1 >/dev/null
 
 for pass in 1 2 3; do
-  out=$("$run" ps "powershell -ExecutionPolicy Bypass -File C:\\argonia\\infra\\skse_build.ps1 -Stage $stage -Preset $preset${ARGONIA_MODDIR:+ -ModDir $ARGONIA_MODDIR}" 2>&1) \
+  out=$("$run" ps "powershell -ExecutionPolicy Bypass -File C:\\argonia\\infra\\skse_build.ps1 -Stage $stage -Preset $preset${ARGONIA_MODDIR:+ -ModDir $ARGONIA_MODDIR}${SKSE_TARGET:+ -Target $SKSE_TARGET}" 2>&1) \
     || { echo "$out"; exit 1; }
   echo "$out"
   grep -q REBOOT-NEEDED <<<"$out" || break
@@ -58,6 +59,9 @@ for pass in 1 2 3; do
   read -t 45 < /dev/zero 2>/dev/null || true
   for i in $(seq 1 24); do "$run" ps hostname >/dev/null 2>&1 && break; read -t 10 < /dev/zero 2>/dev/null || true; done
 done
+if [ -n "${SKSE_TARGET:-}" ]; then  # a compile-only pass: the manifest stays as the last full build left it
+  grep -q "SKSE-TARGET OK" <<<"$out" && exit 0 || { echo "no SKSE-TARGET OK line" >&2; exit 1; }
+fi
 grep -q "SKSE-BUILD OK" <<<"$out" || [ "$stage" = tools ] || { echo "no SKSE-BUILD OK line" >&2; exit 1; }
 [ "$stage" = tools ] || python3 "$here/skse_manifest.py" save "$tree" "$manifest" "$filelist"
 # the stamp deploy.sh reads to skip an unchanged build: written only after success, and only for a clean skse/ tree
