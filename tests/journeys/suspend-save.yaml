@@ -25,8 +25,8 @@ steps:
     do:
       - {console: "tgm"}
       - {console: "ARG_Ref_ClaywaterStationCrocodile.moveto player 0 200 0"}
-      - {strike: ARG_Ref_ClaywaterStationCrocodile}   # the player's blow starts the fight (startcombat left the player out of combat: game-16)
-      - {wait: 2}
+      - {console: "ARG_Ref_ClaywaterStationCrocodile.startcombat player"}   # the engine's own call: the check is a drop in combat (one blow did not start it: game-16)
+      - {wait: 3}
       - {call: [core-suspend, stream_drop]}
     expect:
       - {console: "player.IsInCombat", contains: ">> 1"}

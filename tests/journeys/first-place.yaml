@@ -82,6 +82,18 @@ steps:
   - name: well-water       # why-failing: draw the well's water (hasItem item.lf83.well-water)
     do: [{console: "ARG_Ref_ClaywaterStationWellWater.activate player"}, {wait: 2}]
     expect: [{console: "player.GetItemCount ARG_Misc_Lf83WellWater", not_contains: ">> 0"}]
+  - name: ford-tasted      # Takes tastes the water (cracked-well), then tells the yearly mending: Livia's stone objection
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationTakes 0 -120 0"}
+      - {console: "player.setangle z 0"}
+      - {talk: ARG_Ref_ClaywaterStationTakes}
+      - {wait: 2}
+      - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.lf83-cracked-well"}}']}
+      - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.lf83-cracked-well"}}']}
+      - {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}
+    expect:
+      - {read: [core, GetFlag, flag.lf83.ford-tasted], path: value, eq: true}
+      - {read: [core, GetFlag, flag.lf83.mending-heard], path: value, eq: true}
   - name: clear-bend       # staged death (croc-den and the fight journeys own the fight)
     do: [{console: "ARG_Ref_ClaywaterStationCrocodile.kill"}, {wait: 2}]
     expect: [{console: "ARG_Ref_ClaywaterStationCrocodile.GetDead", contains: ">> 1"}]
@@ -94,25 +106,29 @@ steps:
   # --- loot and equip ------------------------------------------------------------------------------------------
   # --- fight the ambush, die, wake, take the vastei back --------------------------------------------------------
   # --- finish the quest -----------------------------------------------------------------------------------------
-  - name: terms-with-livia
+  - name: terms-with-signs # the landing agrees first (its terms, then one charge: the basket taken) -- Livia's half-charge objection
     do:
       - {console: "player.setangle x 0"}
+      - {console: "player.moveto ARG_Ref_ClaywaterStationSigns 0 -120 0"}
+      - {console: "player.setangle z 0"}
+      - {talk: ARG_Ref_ClaywaterStationSigns}   # the speaker walks under AI: set before the player, E once the crosshair shows them
+      - {wait: 2}
+      - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.claywater-landing-terms"}}']}
+      - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.lf83-one-charge"}}']}
+      - {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}
+    expect:
+      - {read: [core, GetFlag, flag.lf83.one-charge-landing], path: value, eq: true}
+      - {console: "player.GetItemCount ARG_Misc_Lf83ClayBasket", contains: ">> 0"}
+  - name: terms-with-livia # both objections answered: Livia agrees -> stage 40, the quest completed
+    do:
       - {console: "player.moveto ARG_Ref_ClaywaterStationLivia 0 -120 0"}
       - {console: "player.setangle z 0"}
       - {talk: ARG_Ref_ClaywaterStationLivia}   # the speaker walks under AI: set before the player, E once the crosshair shows them
       - {wait: 2}
       - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.lf83-one-charge"}}']}
       - {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}
-    expect: [{read: [core, KnowsTopic, topic.lf83-one-charge], path: value, eq: true}]
-  - name: terms-with-signs # both keepers agree -> stage 40, the quest completed
-    do:
-      - {console: "player.moveto ARG_Ref_ClaywaterStationSigns 0 -120 0"}
-      - {console: "player.setangle z 0"}
-      - {talk: ARG_Ref_ClaywaterStationSigns}   # the speaker walks under AI: set before the player, E once the crosshair shows them
-      - {wait: 2}
-      - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.lf83-one-charge"}}']}
-      - {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}
     expect:
+      - {read: [core, GetFlag, flag.lf83.one-charge-station], path: value, eq: true}
       - {console: "GetStage ARG_Q_LF83", contains: ">> 40", within: 8}
       - {read: [core, JournalEntries], path: value, contains: "quest.local.lf83 40 "}
   # --- rest, spend at the sitting -------------------------------------------------------------------------------

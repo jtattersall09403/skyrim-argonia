@@ -27,6 +27,7 @@ steps:
     expect: [{event: {kind: menu, match: Journal Menu}}]
   - name: quit-confirmed     # the pad's d-pad to the list's last entry (Quit: the list stops at its end), A, then A on
     do:                      # the confirmation's Yes (the bridge's keys have no arrows; the pad drives menus)
+      - {pad: "RB:80 wait:300 RB:80 wait:300"}   # Esc opened the Journal on Quests, not System (still 06, batch 20261030T213737)
       - {pad: "DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120"}
       - {pad: "A:120 wait:1500 A:120"}
       - {wait: 8}

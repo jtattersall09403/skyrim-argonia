@@ -32,6 +32,13 @@ steps:
     expect:
       - {read: [frametime, 600], path: p50_ms, keep: closed_p50}
       - {read: [frametime, 600], path: p99_ms, keep: closed_p99}
+  - name: frames-open        # the cost: the 300-topic window pushed and drawn over running play (600 frames); a menu
+    do: [{call: [core, ViewProbe, "300"]}, {wait: 1}]   # pauses the game and no frames arrive (game-16), so no menu is open
+    expect:
+      - {read: [core, ViewState, dialogue], path: value.body.topics, contains: "Topic 300"}
+      - {read: [frametime, 600], path: p50_ms, keep: open_p50}
+      - {read: [frametime, 600], path: p99_ms, le: 22.3, keep: open_p99}
+      - {read: [core, Views], path: value, keep: views_at_measure}   # whether the page showed it: the still and this read
   - name: talk-livia         # the real intercept opens our dialogue view
     do:
       - {console: "player.moveto ARG_Ref_ClaywaterStationLivia 0 -120 0"}
@@ -47,10 +54,6 @@ steps:
     expect:
       - {read: [core, ViewState, dialogue], path: value.body.topics, contains: "Topic 300"}
       - {read: [core, Views], path: value, contains: "dialogue ready open"}
-  - name: frames-open        # the cost: the 300-topic window open (600 frames); within the 0.2 §d bar
-    expect:
-      - {read: [frametime, 600], path: p50_ms, keep: open_p50}
-      - {read: [frametime, 600], path: p99_ms, le: 22.3, keep: open_p99}
   - name: close-dialogue     # Escape clears the filter, a second Escape closes (view.close)
     do: [{key: "ESC 80"}, {wait: 1}, {key: "ESC 80"}, {wait: 1}]
     expect:

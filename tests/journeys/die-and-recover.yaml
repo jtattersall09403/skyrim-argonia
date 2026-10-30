@@ -1,5 +1,5 @@
 # 1.5 (owed L4), native map S17a: die with vastei -> wake at the camp with no load -> the pile holds it -> take it
-# back, the same amount. The vastei is earned by blows (no setter through the bridge); the player's health is forced
+# back, the same amount. The vastei is set by dev-set SetVastei (setup); the player's health is forced
 # low as setup only, and the deserter's own attacks deal the death.
 id: die-and-recover
 runner: 1
@@ -21,13 +21,8 @@ steps:
       - {rest: ARG_Ref_ClaywaterStationAmbushPlayer}   # stops combat, aims at the camp spot, E until the rest logs (game-16)
       - {console: '"{opp}".enable'}
     expect: [{read: [core, WakePoint], path: value, ne: "", keep: wake, within: 10}]
-  - name: earn                # blows on the deserter (its health raised as setup)
-    do:
-      - {console: '"{opp}".setav health 2000'}
-      - {console: "player.moveto {opp} 0 -110 0"}
-      - {console: "player.setangle z 0"}
-      - {pad: "RB:120 wait:1500"}
-      - {pad: "RB:120 wait:550 RB:120 wait:550 RB:120 wait:550 RB:120 wait:550"}
+  - name: earn                # the vastei carried, set (the check is the pile on death, not earning it)
+    do: [{call: [dev-set, SetVastei, "50"]}]
     expect:
       - {read: [core, GetVastei], path: value, gt: 0}
       - {read: [core, GetVastei], path: value, keep: v}
