@@ -8,9 +8,9 @@ Status: `todo`, `in progress (lane)`, `done (commit)`, `blocked (why)`, `dropped
 |---|---|---|---|
 | 0 | 0.0 | Can it be played? Vanilla Skyrim streamed, touch and GameSir controls, a feel probe (G0) | done (2026-10-29; the owner's sessions passed; the dodge and pad fixes the owner reported go to 0.2 §c) |
 | 0 | 0.1 | Bootstrap: repo, ways of working, lean toolchain, import | done (2026-10-29; see the brief's Outcome; the owner answered #11 the same day and the arrays are pulled) |
-| 0 | 0.2 | Our stack on the game machine | in progress (game-3: install, verify, bridge done; the dodge's zeroed root motion and the 60/45 frame bar open; lane-game-3) |
+| 0 | 0.2 | Our stack on the game machine | in progress (game-3: install, verify, bridge done; game-7: rolls 338-373 units on their stick, backstep 416-428, burden lock green, compass gone; smoke pad and scene red (a pad call timeout, no Stats key); frame bar owner #16; lane-game-7) |
 | 0 | 0.3 | The agent's hands: bridge, SKSE build, scenes, runner, deploy, the timed loop | in progress (§a done live 50/50, 09b1a66 759f37e; §b built, deploy and Papyrus compile owed (CK missing, #15); §c–§e next) |
-| 0 | 0.4 | The pipeline, the quarantine, the inventory and the first block | in progress (§0 data model done e62a0e5…9217521; §a pipeline done 33b453f; §c inventory done 63ea3ed; §b journey and §d the block owed on the game machine) |
+| 0 | 0.4 | The pipeline, the quarantine, the inventory and the first block | in progress (§0 data model done e62a0e5…9217521; §a pipeline done 33b453f; §c inventory done 63ea3ed; §b quarantine done 000cee0 (the allowlist; green at days 0, 1, 10, 50, silence playing; lane-game-7); §d claywater-walk green to step 7, the night red: the people run no AI) |
 | 1 | 1.1 | The game-state seam | in progress (native map, core rules, schema, adapters built and L2 green: c26c042 aae9ac8 0710bee; L4 owed) |
 | 1 | 1.2 | The UI, stage one: Pelagiad, the paper theme, the dialogue window, the journal, our HUD and the chart | in progress (the four views at L3, reader passes dialogue, journal, HUD: 2d7dcb5 dd0d5cf; §0 probe, §a theme and L4 owed) |
 | 1 | 1.3 | Talk and carry, on the sheet | in progress (route b, topics, actions, items, AV audit: f7ca725 7ccb595; LF83's three people written 645ddf7 356c0ac; L4 owed) |
