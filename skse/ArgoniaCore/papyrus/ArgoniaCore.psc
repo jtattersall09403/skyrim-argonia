@@ -24,6 +24,9 @@ Bool Function TakeGold(Int aiAmount) global native
 Bool Function ChangeDisposition(String asNpc, Int aiDelta) global native
 Bool Function ChangeSettlementStanding(String asSettlement, Int aiDelta) global native
 
+; A quest thing's activate hook (ARG_PRKF_ThingHook, 1.4): the reference's base sets its flag (the thing table).
+Bool Function ThingActivated(ObjectReference akRef) global native
+
 ; --- The dialogue intercept (ARG_PRKF_DialogueIntercept) and the view host ---
 Bool Function OpenDialogue(ObjectReference akSpeaker) global native
 ; Any view's intent as the schema's JSON (ui/schema), routed by its type (dialogue.*, sitting.*, view.close);

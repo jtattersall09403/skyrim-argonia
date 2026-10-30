@@ -150,8 +150,10 @@ class CellSink final : public RE::BSTEventSink<RE::BGSActorCellEvent> {
 };
 
 // --- the vanilla HUD (1.2 §d) ------------------------------------------------------------------------------------
-// Each clip of router::hidden_hud_clips() is set invisible and taken out of the movie's HudElements list (the list
-// HUDMovieBase's mode changes walk to show and hide its elements), so no mode shows it again. The movie stays: the
+// Each clip of router::hidden_hud_clips() is held hidden by three locks (router.h, kHudModes: game-10 read "0 out of
+// HudElements" and the clips back with the next mode): _visible false now; its mode members deleted, so
+// HUDMovieBase.SetMode's hasOwnProperty(mode) is false in every mode; _alpha 0, which no mode change touches; and its
+// entry taken out of HudElements (router::hud_list_removals: by identity, our mark or _name). The movie stays: the
 // crosshair and subtitles are restyled rows. Run at every HUD Menu opening and every load; only while our views are
 // bound, so a missing PrismaUI leaves the vanilla bars (the player is never without health).
 void HideVanillaHud() {
@@ -172,8 +174,9 @@ void HideVanillaHud() {
       break;
     }
   const auto clips = ac::router::hidden_hud_clips();
-  std::size_t hidden = 0, listed = 0;
-  std::string missing;
+  std::vector<RE::GFxValue> found;
+  std::size_t hidden = 0, modes = 0, faded = 0;
+  std::string missing, seen;  // seen: the first clip's members, for the Views line when a lock does not take
   for (auto clip : clips) {
     const std::string path = root + "." + std::string(clip);
     RE::GFxValue v;
@@ -182,28 +185,41 @@ void HideVanillaHud() {
       continue;
     }
     movie->SetVariable((path + "._visible").c_str(), RE::GFxValue(false));
-    // A plain member of our own marks the clip: an AS2 clip's built-in _name is not read through GetMember (game-10,
-    // 2026-10-30: 0 of 4 matched by _name), but a member we set is, on the same object the list holds.
+    if (movie->SetVariable((path + "._alpha").c_str(), RE::GFxValue(0.0))) ++faded;
+    std::vector<std::string> members;
+    v.VisitMembers([&](const char* name, const RE::GFxValue&) { if (name) members.emplace_back(name); });
+    if (seen.empty() && !members.empty()) {
+      for (std::size_t i = 0; i < members.size() && i < 12; ++i) seen += (i ? "," : "") + members[i];
+      seen = std::string(clip) + "{" + seen + "}";
+    }
+    for (auto m : ac::router::kHudModes) members.emplace_back(m);  // deleted by name too: a visit may skip them
+    bool cleared = false;
+    for (const auto& m : members)
+      if (ac::router::is_hud_mode(m) && v.HasMember(m.c_str())) cleared |= v.DeleteMember(m.c_str());
+    modes += cleared;
     v.SetMember("argoniaHidden", RE::GFxValue(true));
+    found.push_back(v);
     ++hidden;
   }
   std::uint32_t size = 0;
+  std::size_t listed = 0;
   if (!list_name.empty()) {
     size = list.GetArraySize();
-    for (std::uint32_t i = size; i-- > 0;) {
-      RE::GFxValue el, mark;
-      if (list.GetElement(i, &el) && el.IsObject() && el.GetMember("argoniaHidden", &mark) && mark.IsBool() &&
-          mark.GetBool()) {
-        list.RemoveElement(i);
-        ++listed;
-      }
+    std::vector<ac::router::HudListEntry> entries(size);
+    for (std::uint32_t i = 0; i < size; ++i) {
+      RE::GFxValue el, mark, name;
+      if (!list.GetElement(i, &el) || !(el.IsObject() || el.IsDisplayObject())) continue;
+      for (const auto& f : found) entries[i].same_object |= el == f;
+      entries[i].marked = el.GetMember("argoniaHidden", &mark) && mark.IsBool() && mark.GetBool();
+      if (el.GetMember("_name", &name) && name.IsString()) entries[i].name = name.GetString();
     }
+    for (auto i : ac::router::hud_list_removals(entries, clips)) listed += list.RemoveElement(i);
   }
   g_vanilla_hud = "vanilla-hud hidden " + std::to_string(hidden) + "/" + std::to_string(clips.size()) +
                   (list_name.empty() ? ", no HudElements list"
                                      : ", " + std::to_string(listed) + " out of " + list_name + " (" +
                                            std::to_string(size) + " listed)") +
-                  (missing.empty() ? "" : ", missing:" + missing);
+                  ", modes cleared " + std::to_string(modes) + ", alpha 0 " + std::to_string(faded) + (missing.empty() ? "" : ", missing:" + missing) + (seen.empty() ? "" : ", members " + seen);
   SKSE::log::info("views: {}", g_vanilla_hud);
 }
 
@@ -270,9 +286,30 @@ void PushHudState() {
   auto* p = RE::PlayerCharacter::GetSingleton();
   s.sneak = {p && p->IsSneaking(), 0.0};
   s.vastei = {std::int64_t(c.state.prog.vastei), std::nullopt};
+  for (const auto& n : ac::journal::live(c.journal_notices, Now()))
+    s.notices.push_back({"journal-" + std::to_string(n.seq), ac::msg::NoticeKind::journal,
+                         std::string(ac::journal::kNoticeText)});
   c.hud_bars = s.bars;
   if (auto json = ac::msg::encode(s)) Push("hud", std::move(*json));
   else SKSE::log::error("views: the HUD does not fit the schema: {}", json.error());
+}
+
+void JournalNoticeNow(ac::journal::NoticeCause cause, std::string quest, std::int32_t mark) {
+  auto& c = Get();
+  std::lock_guard l(c.lock);
+  const auto n = ac::journal::notify(c.journal_notices, cause, quest, mark, Now());
+  const char* what = cause == ac::journal::NoticeCause::entry ? "entry" : "clue";
+  if (!n) {
+    SKSE::log::info("journal notice: {} {} {} merged into the last", quest, what, mark);
+    return;
+  }
+  // The engine's own notification (the HUD's message block, never among the hidden clips) and our HUD's stack.
+  RE::SendHUDMessage::ShowHUDMessage(std::string(ac::journal::kNoticeText).c_str());
+  if (g_api) PushHudState();
+  SKSE::ModCallbackEvent ev{"ArgoniaJournalNotice", RE::BSFixedString(quest + " " + what), static_cast<float>(mark),
+                            nullptr};
+  if (auto* src = SKSE::GetModCallbackEventSource()) src->SendEvent(&ev);
+  SKSE::log::info("journal notice {}: {} {} {}", n->seq, quest, what, mark);
 }
 
 void PushHudBars() {
@@ -369,6 +406,11 @@ void ViewsGameReady() {
   MarkPlayerCell("load");
   HideVanillaHud();
   PushHudState();
+}
+
+void JournalNotice(ac::journal::NoticeCause cause, std::string_view quest, std::int32_t mark) {
+  // On the main thread: a native runs on a Papyrus thread, and the HUD and the event sinks expect the main one.
+  SKSE::GetTaskInterface()->AddTask([cause, q = std::string(quest), mark] { JournalNoticeNow(cause, q, mark); });
 }
 
 bool JournalKeyTaken() { return Get().journal_key.take(Now()); }

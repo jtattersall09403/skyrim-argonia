@@ -32,5 +32,19 @@ int main() {
   CHECK(!decode(bad));
   bad.pop_back();
   CHECK(!decode(bad));
+
+  // The "journal updated" notice: one per entry or clue, a clue and its stage's entry merged, the stack ages out.
+  Notices ns;
+  auto a = notify(ns, NoticeCause::clue, "LF83", 1, 100.0);
+  CHECK(a && a->seq == 1 && a->cause == NoticeCause::clue);
+  CHECK(!notify(ns, NoticeCause::entry, "LF83", 20, 101.5));  // the stage the clue set: merged
+  auto b = notify(ns, NoticeCause::entry, "LF84", 10, 101.5);  // another quest is told
+  CHECK(b && b->seq == 2 && b->quest == "LF84");
+  auto c = notify(ns, NoticeCause::entry, "LF83", 30, 102.0);  // the merge window has passed
+  CHECK(c && c->seq == 3 && c->mark == 30);
+  CHECK(live(ns, 103.0).size() == 3);
+  CHECK((live(ns, 107.0) == std::vector<Notice>{*b, *c}));   // the first aged out after kNoticeLife
+  CHECK(live(ns, 200.0).empty());
+  CHECK(kNoticeText == "Journal updated");
   return TEST_MAIN_RESULT("core.journal");
 }

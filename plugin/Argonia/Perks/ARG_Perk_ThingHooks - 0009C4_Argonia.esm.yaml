@@ -1,0 +1,35 @@
+FormKey: 0009C4:Argonia.esm
+EditorID: ARG_Perk_ThingHooks
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_PRKF_ThingHook
+  ScriptFragments:
+    FileName: ARG_PRKF_ThingHook
+    Fragments:
+    - Unknown2: 1
+      ScriptName: ARG_PRKF_ThingHook
+      FragmentName: Fragment_0
+Description:
+  TargetLanguage: English
+  Value: ''
+NumRanks: 1
+Hidden: True
+Effects:
+- MutagenObjectType: PerkEntryPointAddActivateChoice
+  Conditions:
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: HasKeywordConditionData
+        Keyword: 0009C3:Argonia.esm
+      ComparisonValue: 1
+  ButtonLabel:
+    TargetLanguage: English
+    Value: Examine
+  Flags:
+    Flags:
+    - RunImmediately
+    - ReplaceDefault
+  EntryPoint: Activate
+  PerkConditionTabCount: 2

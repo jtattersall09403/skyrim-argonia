@@ -27,7 +27,7 @@ ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "out" / "intermediate" / "argonia.json"
 QUARANTINE = ROOT / "data" / "quarantine"
 KIND_ORDER = ("base", "place", "population", "quest", "patch")
-TYPE_ORDER = ("GMST", "GLOB", "MUSC", "STAT", "LTEX", "CLAS", "FACT", "SPEL", "LVLI", "KYWD", "WEAP", "ARMA", "ARMO", "CONT", "BOOK", "MISC", "ALCH", "ACTI", "PERK", "MESG", "ECZN", "PACK", "NPC_", "QUST", "CELL", "IMGS", "WTHR", "CLMT", "REGN", "WRLD")
+TYPE_ORDER = ("GMST", "GLOB", "MUSC", "STAT", "LTEX", "CLAS", "RACE", "CSTY", "FACT", "SPEL", "LVLI", "KYWD", "WEAP", "ARMA", "ARMO", "CONT", "BOOK", "MISC", "ALCH", "ACTI", "PERK", "MESG", "ECZN", "PACK", "NPC_", "QUST", "CELL", "IMGS", "WTHR", "CLMT", "REGN", "WRLD")
 
 
 @dataclass
@@ -219,6 +219,8 @@ def build(data: Path, scan: dict, index: Index, alloc: Allocator, extra: list[La
     layers.append(life_records.layer(alloc, alloc.world, scan))
     from tools.argonia_world import quest_gen  # 1.4: the quests in the game, from their records
     layers += quest_gen.layers(alloc, alloc.world)
+    from tools.argonia_world import thing_hooks  # 1.4: the quest things' activate hook (keyword and perk)
+    layers.append(thing_hooks.layer(alloc, alloc.world))
     from tools.argonia_world.terrain import grass  # 2.W1: the painted ground grows only grass-source GRAS (0006)
     layers.append(grass.layer(alloc.world, grass.load_scan()))
     order = load_order(data) + [regions_api.LAND_PLUGIN]  # ArgoniaWorld.esm, the generated ground (decision 0031)

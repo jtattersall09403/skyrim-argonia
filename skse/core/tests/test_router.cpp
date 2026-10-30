@@ -101,6 +101,20 @@ void vanilla_hud_hidden() {
   }
   CHECK(bars && compass);
   CHECK(row(SurfaceId::hudBars).replacement == Replacement::view && row(SurfaceId::hudBars).by == "hud");
+
+  // game-10: the list held 22 entries and none matched by mark; any one of identity, mark or name takes it out.
+  const auto hidden = hidden_hud_clips();
+  std::vector<HudListEntry> list(22);
+  list[2].same_object = true;
+  list[5].marked = true;
+  list[9].name = "CompassShoutMeterHolder";
+  list[11].name = "Crosshair";  // a restyled clip stays
+  CHECK((hud_list_removals(list, hidden) == std::vector<std::uint32_t>{9, 5, 2}));  // highest first
+  CHECK(hud_list_removals(std::vector<HudListEntry>(22), hidden).empty());
+  // The mode flags SetMode reads: every known mode, a mod's new ...Mode, never a clip's own members.
+  for (auto m : kHudModes) CHECK(is_hud_mode(m));
+  CHECK(is_hud_mode("FishingMode") && is_hud_mode("VATSPlayback"));
+  CHECK(!is_hud_mode("Mode") && !is_hud_mode("_visible") && !is_hud_mode("argoniaHidden") && !is_hud_mode("onModeChange"));
 }
 
 int main() {

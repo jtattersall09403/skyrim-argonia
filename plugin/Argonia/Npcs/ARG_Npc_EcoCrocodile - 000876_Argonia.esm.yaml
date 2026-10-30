@@ -107,5 +107,6 @@ PlayerSkills:
     Value: 0
   - Key: Enchanting
     Value: 0
+CombatStyle: 0009C5:Argonia.esm
 Height: 1
 Weight: 50

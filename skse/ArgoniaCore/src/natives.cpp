@@ -28,6 +28,20 @@ bool Act(std::string_view verb, std::vector<Arg> args) {
   return out.done;
 }
 
+}  // namespace
+
+bool MeetThing(const RE::TESForm* record, ac::things::Hook how) {
+  const char* way = how == ac::things::Hook::activate ? "activated" : "read";
+  auto id = WorldId(record);
+  const auto* row = id ? ac::things::hook_for(*id, how) : nullptr;
+  if (!row) return false;  // not a quest thing met this way: nothing to set, nothing logged (every book opens here)
+  const bool ok = Act("setFlag", {std::string(row->flag), true});
+  SKSE::log::info("things: {} {} sets {} ({}){}", *id, way, row->flag, row->quest, ok ? "" : ", refused");
+  return ok;
+}
+
+namespace {
+
 std::optional<std::string> QuestId(RE::TESQuest* q, std::string_view native) {
   auto id = WorldId(q);
   if (!id) SKSE::log::error("{}: {:08X} is not a quest of ours", native, q ? q->GetFormID() : 0u);
@@ -74,6 +88,7 @@ bool AddJournalEntry(RE::StaticFunctionTag*, RE::TESQuest* q, std::int32_t stage
     return false;
   }
   SKSE::log::info("journal: {} stage {} kind {} on {}-{}-{}", *id, stage, kind, date.year, date.month + 1, date.day);
+  JournalNotice(ac::journal::NoticeCause::entry, *id, stage);
   return true;
 }
 
@@ -185,6 +200,10 @@ Strings JournalEntries(RE::StaticFunctionTag*) {
 
 // --- 1.5: grow, die, rest, save --------------------------------------------------------------------------------
 bool RestAtNative(RE::StaticFunctionTag*, RE::TESObjectREFR* spot) { return RestAt(spot); }
+// ARG_PRKF_ThingHook's one call: the activated reference's base, met as a quest thing (1.4).
+bool ThingActivated(RE::StaticFunctionTag*, RE::TESObjectREFR* ref) {
+  return MeetThing(ref ? ref->GetBaseObject() : nullptr, ac::things::Hook::activate);
+}
 RE::BSFixedString RestNotice(RE::StaticFunctionTag*) {
   std::lock_guard l(Get().lock);
   return Get().rest_notice;
@@ -267,6 +286,7 @@ bool RegisterNatives(RE::BSScript::IVirtualMachine* vm) {
   vm->RegisterFunction("GetDisposition"sv, k, GetDisposition);
   vm->RegisterFunction("JournalEntries"sv, k, JournalEntries);
   vm->RegisterFunction("RestAt"sv, k, RestAtNative);
+  vm->RegisterFunction("ThingActivated"sv, k, ThingActivated);
   vm->RegisterFunction("RestNotice"sv, k, RestNotice);
   vm->RegisterFunction("TakeVastei"sv, k, TakeVasteiNative);
   vm->RegisterFunction("SittingIntent"sv, k, SittingIntentNative);

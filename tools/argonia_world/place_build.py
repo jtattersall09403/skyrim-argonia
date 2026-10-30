@@ -30,7 +30,7 @@ from tools.argonia_world import skyrim_units as su
 
 FK_RE = re.compile(r"^[0-9A-F]{6}:.+\.(esm|esp|esl)$", re.I)
 DOOR_ARRIVAL_M = 1.2  # how far in front of a partner door the teleport lands
-# LF83's activators (quest.local.lf83 things; their activation hooks are 1.4's ArgoniaCore runtime)
+# LF83's activators (quest.local.lf83 things); a thing_hook row gives one the hook keyword and "Examine" (thing_hooks.py)
 ACTIVATORS = {
     "ARG_ACTI_LF83WellHead": ("Well Head", "dungeons/mines/clutter/genericwell01.nif"),
     "ARG_ACTI_LF83MortarTub": ("Mortar Tub", "clutter/bucket01.nif"),
@@ -48,6 +48,15 @@ CREATURE_TEMPLATE_FLAGS = ["Traits", "Stats", "Factions", "SpellList", "Inventor
 # Attack 1500. These are vanilla's own numbers in game units, not metres, so no conversion is involved.
 CREATURE_AGGRO = {"behavior": True, "warn": 0, "warnOrAttack": 2000, "attack": 1500}
 CREATURE_AI = {"aggression": "VeryAggressive", "confidence": "Foolhardy", "energy": 50, "aggro": CREATURE_AGGRO}
+# Our combat styles for creatures (CSTY; creature_hunt.combat_style). melee-ambush: a lone predator that closes and
+# bites, then backs off (game-10 §4: the crocodile's NPC_ had none; vanilla predators carry one, csWolf and csBear).
+# Our own numbers, in vanilla's ranges: offensive over defensive, staggered targets pressed, no bash, no circling.
+COMBAT_STYLES = {
+    "melee-ambush": {"edid": "ARG_CSTY_MeleeAmbush", "offensive": 0.9, "defensive": 0.1, "groupOffensive": 0.75,
+                     "avoidThreat": 0.2, "attackStaggered": 3.0, "powerAttackStaggered": 2.0,
+                     "powerAttackBlocking": 2.5, "circle": 0.0, "fallback": 0.25, "flankDistance": 0.2,
+                     "stalkTime": 0.3, "longRangeStrafe": 0.0, "flags": ["Dueling"]},
+}
 # A settlement's crime faction (lane w3-infra): the settlement faction seated at the place (place_faction_presence role
 # 'seat'), crime tracked, hidden from the player; its crime values are the Owing of the place's region in gold
 # (owing_region rates). Escape and werewolf have no Owing rate yet (2.10), so they are 0. Every person of the place is
@@ -145,7 +154,9 @@ def _arrival(ctx, refs_by_id, cells, partner) -> tuple[list[float], list[float]]
 def _ref_record(ctx, r, cells, refs_by_id) -> dict:
     from tools.argonia_world.intermediate import _rot
     kind = cells[r.cell_id].kind
-    rec = {"formKey": ref_form_key(ctx.alloc, r), "base": ctx.base(r), "pos": _pos(ctx, kind, r), "rot": _rot(r.yaw_deg)}
+    hunt = ctx.world.get("creature_hunt", r.npc_id) if r.npc_id else None
+    at = refs_by_id[hunt.den_ref_id] if hunt and hunt.way == "shallows" else r  # (a): it waits in the water at its den
+    rec = {"formKey": ref_form_key(ctx.alloc, r), "base": ctx.base(r), "pos": _pos(ctx, kind, at), "rot": _rot(at.yaw_deg)}
     if r.persistent and not r.host_ref_form_key:
         rec["edid"] = ref_edid(r.id)
     if r.persistent:
@@ -167,6 +178,7 @@ def _ref_record(ctx, r, cells, refs_by_id) -> dict:
 
 def _items(ctx, world, refs) -> None:
     from tools.argonia_world import items_records as ir
+    from tools.argonia_world import thing_hooks as th
     for r in refs:
         b = r.base or ""
         if b.startswith("ARG_Misc_") and b not in ctx.records:
@@ -182,6 +194,9 @@ def _items(ctx, world, refs) -> None:
             name, model = ACTIVATORS[b]
             ctx.records[b] = {"type": "ACTI", "edid": b, "formKey": ctx.alloc.form_key(b, "ACTI", r.thing_id), "name": name,
                               "model": model.replace("/", "\\")}
+            if b in th.activated(world):  # 1.4: the perk's Activate entry on this keyword calls ThingActivated
+                ctx.records[b]["keywords"] = [ctx.alloc.form_key(th.KEYWORD[0], "KYWD", th.KEYWORD[1])]
+                ctx.records[b]["activateTextOverride"] = th.VERB
 
 
 def town_faction(ctx, world, place_id: str) -> str | None:
@@ -202,6 +217,23 @@ def town_faction(ctx, world, place_id: str) -> str | None:
                     "stealMult": float(o["rates_theft_per_value"]), "escape": 0, "werewolf": 0}
     ctx.records[edid] = rec
     return rec["formKey"]
+
+
+def _combat_style(ctx, name: str) -> str:
+    """The FormKey of our CSTY `name` (COMBAT_STYLES), its record added to the layer once."""
+    cs = COMBAT_STYLES[name]
+    if cs["edid"] not in ctx.records:
+        ctx.records[cs["edid"]] = {"type": "CSTY", "formKey": ctx.alloc.form_key(cs["edid"], "CSTY", "combat-style." + name),
+                                   **cs}
+    return ctx.records[cs["edid"]]["formKey"]
+
+
+def _walking_race(ctx, race: str) -> None:
+    """creature_hunt way `walk` (b): the creature's race overridden in Argonia.esm with the Walks flag added, the rest
+    of the master's record kept (ArgoniaGen RaceRecords copies it from the master and adds the flags)."""
+    edid = "ARG_RaceWalks_" + slug(race.split(":", 1)[0])
+    if edid not in ctx.records:
+        ctx.records[edid] = {"type": "RACE", "override": True, "edid": edid, "formKey": race, "flagsAdd": ["Walks"]}
 
 
 def _people(ctx, world, refs, cells, crime: str | None = None) -> None:
@@ -240,8 +272,10 @@ def _people(ctx, world, refs, cells, crime: str | None = None) -> None:
                                       p.sandbox_radius_m, start, span)
             ctx.records[pk["edid"]] = pk
             pkgs.append(pk["formKey"])
-        if creature:  # its den is the marker it owns (Claywater's crocodile: on the bank by LF83's pool), else where it stands
-            den = next((r for r in refs if r.owner_npc_id == p.npc_id and not r.npc_id), actor)
+        hunt = world.get("creature_hunt", p.npc_id) if creature else None
+        if creature:  # its den: creature_hunt's, else the marker it owns (Claywater's crocodile: by LF83's pool), else where it stands
+            den = (next(r for r in refs if r.id == hunt.den_ref_id) if hunt else
+                   next((r for r in refs if r.owner_npc_id == p.npc_id and not r.npc_id), actor))
             pk = packages.sandbox(ctx.alloc, f"{edid}_Den", f"{p.npc_id}#den", ref_form_key(ctx.alloc, den), p.sandbox_radius_m, 0, 24)
             ctx.records[pk["edid"]] = pk
             pkgs.append(pk["formKey"])
@@ -254,6 +288,10 @@ def _people(ctx, world, refs, cells, crime: str | None = None) -> None:
                "flags": [] if creature else ["Unique", "AutoCalcStats"]}
         if creature:
             rec.update(CREATURE_AI)
+            if hunt:
+                rec["combatStyle"] = _combat_style(ctx, hunt.combat_style)
+                if hunt.way == "walk":
+                    _walking_race(ctx, p.race_form_key)
         else:
             rec.update(PEOPLE_AI)
             if crime:

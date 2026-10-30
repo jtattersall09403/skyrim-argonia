@@ -2,6 +2,7 @@
 the clay-cut bank by LF83's scour pool, so the fight is on foot (game-8: its 20 m sandbox around the cut's lip was
 42% under water, it swam, and the player's blows never landed). The navmesh side is measured in the lane report
 (docs/research/2026-10-30/lane-fixes-1.md): the den on our navmesh, the bank's path to it, the circle dry."""
+import dataclasses
 import math
 
 from tools.argonia_world import db
@@ -64,3 +65,62 @@ def test_old_flags_fail_on_purpose():  # the old flags (AIData templated) left t
     old = [f for f in pb.CREATURE_TEMPLATE_FLAGS] + ["AIData"]
     with pytest.raises(ValueError, match="no attack radius"):
         pb.check_creatures(_creature(old))
+
+
+# --- how the crocodile hunts (creature_hunt; game-10 §4, the planner's call: (b) walk first, (a) shallows one row away)
+
+def _croc_records(w, hunt=None):
+    """The crocodile's place records from _people, with creature_hunt's row replaced by `hunt` when given."""
+    from tools.argonia_world import place_build as pb
+    from tools.argonia_world.formids import Allocator
+
+    class W:  # the world, with one row swapped
+        def __getattr__(self, k):
+            return getattr(w, k)
+
+        def get(self, table, key):
+            return hunt if table == "creature_hunt" and hunt is not None and key == CROC else w.get(table, key)
+    ww = W()
+    ctx = pb._Ctx(Allocator(w), ww, None, None)
+    actor = next(r for r in w.rows("build_ref") if r.npc_id == CROC)
+    place = w.get("build_cell", actor.cell_id).place_id
+    cells = {c.id: c for c in w.rows("build_cell", place_id=place)}
+    refs = [r for r in w.rows("build_ref") if r.cell_id in cells]
+    pb._people(ctx, ww, refs, cells)
+    return ctx, actor, cells, {r.id: r for r in refs}
+
+
+def test_crocodile_walks_by_default_with_our_combat_style():
+    w = db.open()
+    hunt = w.get("creature_hunt", CROC)
+    assert hunt.way == "walk" and hunt.den_ref_id == _den(w, CROC).id  # (b): the bank den
+    ctx, *_ = _croc_records(w)
+    npc = next(r for r in ctx.records.values() if r["type"] == "NPC_")
+    race = [r for r in ctx.records.values() if r["type"] == "RACE"]
+    assert race == [{"type": "RACE", "override": True, "edid": race[0]["edid"],
+                     "formKey": w.get("build_person", CROC).race_form_key, "flagsAdd": ["Walks"]}]
+    csty = next(r for r in ctx.records.values() if r["type"] == "CSTY")
+    assert npc["combatStyle"] == csty["formKey"] and csty["offensive"] > csty["defensive"]
+
+
+def test_shallows_fallback_is_one_row_away():
+    from tools.argonia_world import place_build as pb
+    w = db.open()
+    shallows = w.get("build_ref", "ref.claywater-station.crocodile-den-shallows")
+    pool = w.get("build_ground", "ground.claywater-station.scour-pool")
+    d = math.hypot(shallows.x_m - pool.x_m, shallows.y_m - pool.y_m)
+    floor_there = pool.floor_m + max(0.0, d - pool.flat_radius_m) * pool.side_rise
+    assert 0 < WATER_M - floor_there < 1.5, floor_there  # wading depth at the pool's edge
+    row = dataclasses.replace(w.get("creature_hunt", CROC), way="shallows", den_ref_id=shallows.id)
+    ctx, actor, cells, by_id = _croc_records(w, row)
+    assert not [r for r in ctx.records.values() if r["type"] == "RACE"]  # the race as King of the Murkmire has it
+    assert next(r for r in ctx.records.values() if r["type"] == "NPC_")["combatStyle"]
+    den = next(r for r in ctx.records.values() if r["type"] == "PACK" and r["edid"].endswith("_Den"))
+    assert den  # the sandbox centre follows the row
+
+    class Ground:
+        def z(self, x, y):
+            return floor_there
+    ctx.ground = Ground()
+    rec = pb._ref_record(ctx, actor, cells, by_id)
+    assert rec["pos"] == pb._pos(ctx, "exterior", shallows)  # it waits in the water at its den

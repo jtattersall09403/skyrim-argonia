@@ -44,6 +44,7 @@
 {"editor_id":"ARG_Booth_Floor1","plugin":"Argonia.esm","form_id":2406,"record_type":"REFR"}
 {"editor_id":"ARG_Booth_Floor2","plugin":"Argonia.esm","form_id":2407,"record_type":"REFR"}
 {"editor_id":"ARG_Booth_Floor3","plugin":"Argonia.esm","form_id":2408,"record_type":"REFR"}
+{"editor_id":"ARG_CSTY_MeleeAmbush","plugin":"Argonia.esm","form_id":2501,"record_type":"CSTY","entity_key":"combat-style.melee-ambush"}
 {"editor_id":"ARG_CampSpot","plugin":"Argonia.esm","form_id":2143,"record_type":"ACTI","entity_key":"rest.camp-spot"}
 {"editor_id":"ARG_Class_marsh_guide","plugin":"Argonia.esm","form_id":2054,"record_type":"CLAS","entity_key":"class.marsh-guide"}
 {"editor_id":"ARG_Climate_black_marsh","plugin":"Argonia.esm","form_id":2067,"record_type":"CLMT","entity_key":"climate.black-marsh"}
@@ -195,6 +196,7 @@
 {"editor_id":"ARG_Perk_DialogueIntercept","plugin":"Argonia.esm","form_id":2132,"record_type":"PERK","entity_key":"hook.dialogue-intercept"}
 {"editor_id":"ARG_Perk_RestIntercept","plugin":"Argonia.esm","form_id":2145,"record_type":"PERK","entity_key":"hook.rest-intercept"}
 {"editor_id":"ARG_Perk_RoadClosed","plugin":"Argonia.esm","form_id":2420,"record_type":"PERK","entity_key":"hook.road-closed"}
+{"editor_id":"ARG_Perk_ThingHooks","plugin":"Argonia.esm","form_id":2500,"record_type":"PERK","entity_key":"hook.thing-activate"}
 {"editor_id":"ARG_ProvingGround","plugin":"Argonia.esm","form_id":2404,"record_type":"CELL"}
 {"editor_id":"ARG_Q_LF83","plugin":"Argonia.esm","form_id":2130,"record_type":"QUST","entity_key":"quest.local.lf83"}
 {"editor_id":"ARG_QuarantineNever","plugin":"Argonia.esm","form_id":2048,"record_type":"GLOB"}
@@ -272,6 +274,7 @@
 {"editor_id":"ARG_Ref_ClaywaterStationCleat2","plugin":"Argonia.esm","form_id":2252,"record_type":"REFR","entity_key":"ref.claywater-station.cleat2"}
 {"editor_id":"ARG_Ref_ClaywaterStationCrocodile","plugin":"Argonia.esm","form_id":2253,"record_type":"ACHR","entity_key":"ref.claywater-station.crocodile"}
 {"editor_id":"ARG_Ref_ClaywaterStationCrocodileDen","plugin":"Argonia.esm","form_id":2416,"record_type":"REFR","entity_key":"ref.claywater-station.crocodile-den"}
+{"editor_id":"ARG_Ref_ClaywaterStationCrocodileDenShallows","plugin":"Argonia.esm","form_id":2502,"record_type":"REFR","entity_key":"ref.claywater-station.crocodile-den-shallows"}
 {"editor_id":"ARG_Ref_ClaywaterStationD9Bench","plugin":"Argonia.esm","form_id":2254,"record_type":"REFR","entity_key":"ref.claywater-station.d9-bench"}
 {"editor_id":"ARG_Ref_ClaywaterStationD9Chop","plugin":"Argonia.esm","form_id":2255,"record_type":"REFR","entity_key":"ref.claywater-station.d9-chop"}
 {"editor_id":"ARG_Ref_ClaywaterStationD9Hide","plugin":"Argonia.esm","form_id":2256,"record_type":"REFR","entity_key":"ref.claywater-station.d9-hide"}
@@ -434,6 +437,7 @@
 {"editor_id":"ARG_Sign_serpent","plugin":"Argonia.esm","form_id":2056,"record_type":"SPEL","entity_key":"birthsign.serpent"}
 {"editor_id":"ARG_Speaker","plugin":"Argonia.esm","form_id":2131,"record_type":"KYWD","entity_key":"hook.speaker"}
 {"editor_id":"ARG_StartQuest","plugin":"Argonia.esm","form_id":2053,"record_type":"QUST"}
+{"editor_id":"ARG_ThingHook","plugin":"Argonia.esm","form_id":2499,"record_type":"KYWD","entity_key":"hook.thing"}
 {"editor_id":"ARG_VasteiPile","plugin":"Argonia.esm","form_id":2138,"record_type":"KYWD","entity_key":"hook.vastei-pile"}
 {"editor_id":"ARG_VasteiPileActivator","plugin":"Argonia.esm","form_id":2144,"record_type":"ACTI","entity_key":"death.vastei-pile"}
 {"editor_id":"ARG_WChance_coastal_clear_co","plugin":"Argonia.esm","form_id":2068,"record_type":"GLOB","entity_key":"weather_chance.ARG_WChance_coastal_clear_co"}

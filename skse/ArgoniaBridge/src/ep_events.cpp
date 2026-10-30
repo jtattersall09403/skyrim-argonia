@@ -8,8 +8,9 @@ namespace {
 
 struct Event {
   std::uint64_t seq;
-  std::string kind;  // hit | anim | quest | menu
-  std::string match;  // what wait_event matches: the anim tag, the quest id, the menu name, the hit target id
+  std::string kind;  // hit | anim | quest | menu | mod
+  std::string match;  // what wait_event matches: the anim tag, the quest id, the menu name, the hit target id, the
+                      // mod event's name (ArgoniaJournalNotice: ArgoniaCore's "journal updated" notice)
   std::string json;   // the whole event, a JSON object
 };
 
@@ -44,7 +45,8 @@ std::string hex(std::uint32_t id) {
 struct Sinks : RE::BSTEventSink<RE::TESHitEvent>,
                RE::BSTEventSink<RE::TESQuestStageEvent>,
                RE::BSTEventSink<RE::MenuOpenCloseEvent>,
-               RE::BSTEventSink<RE::BSAnimationGraphEvent> {
+               RE::BSTEventSink<RE::BSAnimationGraphEvent>,
+               RE::BSTEventSink<SKSE::ModCallbackEvent> {
   RE::BSEventNotifyControl ProcessEvent(const RE::TESHitEvent* e, RE::BSTEventSource<RE::TESHitEvent>*) override {
     if (!e) return RE::BSEventNotifyControl::kContinue;
     auto t = e->target ? e->target->GetFormID() : 0, c = e->cause ? e->cause->GetFormID() : 0;
@@ -70,6 +72,12 @@ struct Sinks : RE::BSTEventSink<RE::TESHitEvent>,
     if (!e) return RE::BSEventNotifyControl::kContinue;
     push("anim", e->tag.c_str(), JsonObject().str("tag", e->tag.c_str()).str("payload", e->payload.c_str())
                                      .hex("holder", e->holder ? e->holder->GetFormID() : 0));
+    return RE::BSEventNotifyControl::kContinue;
+  }
+  RE::BSEventNotifyControl ProcessEvent(const SKSE::ModCallbackEvent* e, RE::BSTEventSource<SKSE::ModCallbackEvent>*) override {
+    if (!e) return RE::BSEventNotifyControl::kContinue;
+    push("mod", e->eventName.c_str(), JsonObject().str("event", e->eventName.c_str()).str("str", e->strArg.c_str())
+                                          .num("num", e->numArg));
     return RE::BSEventNotifyControl::kContinue;
   }
 };
@@ -139,6 +147,7 @@ void events_install() {
     h->AddEventSink<RE::TESQuestStageEvent>(&g_sinks);
   }
   if (auto* ui = RE::UI::GetSingleton()) ui->AddEventSink<RE::MenuOpenCloseEvent>(&g_sinks);
+  if (auto* mods = SKSE::GetModCallbackEventSource()) mods->AddEventSink(&g_sinks);
 }
 
 // The player's animation graph is rebuilt by every load, so its sink is re-added (main thread).

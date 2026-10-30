@@ -80,6 +80,10 @@ class MenuSink final : public RE::BSTEventSink<RE::MenuOpenCloseEvent> {
     }
     auto& c = Get();
     std::lock_guard l(c.lock);
+    if (menu == RE::BookMenu::MENU_NAME) {  // 1.4: a quest thing's read hook (the ledger), in the world or carried
+      MeetThing(RE::BookMenu::GetTargetForm(), ac::things::Hook::read);
+      return RE::BSEventNotifyControl::kContinue;
+    }
     if (menu == RE::DialogueMenu::MENU_NAME) {
       auto* mtm = RE::MenuTopicManager::GetSingleton();
       auto speaker = mtm ? mtm->speaker.get() : RE::NiPointer<RE::TESObjectREFR>{};

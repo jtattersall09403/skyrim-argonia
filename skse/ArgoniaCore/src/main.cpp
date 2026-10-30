@@ -76,6 +76,7 @@ void OnDataLoaded() {
 }
 
 void OnGameReady(const char* how) {
+  plugin::NewCharacter();  // a no-op once the sheet exists; a `coc` start from the main menu sends no kNewGame
   plugin::EnsurePerks();
   plugin::MirrorAttributes();
   plugin::LifeGameReady();
@@ -90,7 +91,6 @@ void OnMessage(SKSE::MessagingInterface::Message* m) {
     case SKSE::MessagingInterface::kDataLoaded: OnDataLoaded(); break;
     case SKSE::MessagingInterface::kPostLoadGame: OnGameReady("game loaded"); break;
     case SKSE::MessagingInterface::kNewGame:
-      plugin::NewCharacter();
       OnGameReady("new game");
       break;
     default: break;

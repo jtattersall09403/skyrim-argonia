@@ -3266,6 +3266,18 @@ CREATE TABLE "quest_thing_state" (
   FOREIGN KEY ("quest_id", "things_ord") REFERENCES "quest_thing" ("quest_id", "ord") ON DELETE CASCADE
 );
 
+-- One native hook on a quest thing (1.4): activating the thing's activator, or reading its book, sets one flag of
+-- the quest. ArgoniaCore's thing table (skse/core generated things.h, tools/argonia_world/thing_hooks.py) is keyed by
+-- the world id of the record the thing is placed as (its build_ref base). Not part of the quest record: a quest
+-- rewrite keeps these rows, and thing_hooks' check refuses one whose thing or flag the quest no longer has.
+CREATE TABLE "thing_hook" (
+  "quest_id" TEXT NOT NULL REFERENCES "quest"("id"),
+  "thing_id" TEXT NOT NULL,
+  "hook" TEXT NOT NULL CHECK ("hook" IN ('activate', 'read')),
+  "sets_flag" TEXT NOT NULL,
+  PRIMARY KEY ("quest_id", "thing_id")
+);
+
 -- Home of one row per element of `conclusions` of each quest row (ordered by `ord` where it has one).
 CREATE TABLE "quest_conclusion" (
   "quest_id" TEXT NOT NULL,
@@ -6317,6 +6329,19 @@ CREATE TABLE "build_person" (
   "outfit_stand_in" BOOLEAN NOT NULL DEFAULT 0 CHECK ("outfit_stand_in" IN (0, 1)),
   "outfit_why" TEXT,
   CHECK (("outfit_form_key" IS NULL) = ("outfit_why" IS NULL))
+);
+
+-- How a placed creature hunts (game-10 §4, the planner's call): `walk` (b) overrides its race in Argonia.esm to walk
+-- (the race's Walks flag; its walk and run movement types are kept) so it fights on the bank at its den; `shallows`
+-- (a) leaves the race as it is and stands the creature at `den_ref_id` in the water's edge, where it attacks a player
+-- wading in. Either way the creature's NPC_ carries our own combat style (`combat_style`, place_build.COMBAT_STYLES).
+-- The switch from (b) to (a) is this one row: `way` and `den_ref_id`.
+CREATE TABLE "creature_hunt" (
+  "npc_id" TEXT NOT NULL PRIMARY KEY REFERENCES "build_person"("npc_id"),
+  "way" TEXT NOT NULL CHECK ("way" IN ('walk', 'shallows')),
+  "den_ref_id" TEXT NOT NULL REFERENCES "build_ref"("id"),
+  "combat_style" TEXT NOT NULL CHECK ("combat_style" IN ('melee-ambush')),
+  "why" TEXT NOT NULL
 );
 
 -- Home of one ground edit a built place asks of the generated terrain (0.4 §d): a bowl carved to `floor_m` (metres

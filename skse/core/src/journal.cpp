@@ -49,6 +49,20 @@ std::span<const gen::JournalObjectiveText> objectives(const gen::JournalStageTex
   return std::span(gen::kJournalObjectives).subspan(t.first_objective, t.objective_count);
 }
 
+std::optional<Notice> notify(Notices& n, NoticeCause cause, std::string_view quest, std::int32_t mark, double now) {
+  for (const auto& x : n.recent)
+    if (x.quest == quest && now - x.at >= 0 && now - x.at < kNoticeMerge) return std::nullopt;
+  Notice out{++n.seq, now, cause, std::string(quest), mark};
+  n.recent.push_back(out);
+  live(n, now);
+  return out;
+}
+
+std::vector<Notice> live(Notices& n, double now) {
+  std::erase_if(n.recent, [&](const Notice& x) { return now - x.at >= kNoticeLife || now < x.at; });
+  return n.recent;
+}
+
 cosave::Bytes encode(const Log& log) {
   cosave::Writer w;
   w.u32(std::uint32_t(log.entries.size()));

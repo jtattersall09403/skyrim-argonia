@@ -8,6 +8,7 @@
 #include "argonia/core/router.h"
 #include "argonia/core/seam.h"
 #include "argonia/core/talk.h"
+#include "argonia/core/things.h"
 #include "argonia/core/views.h"
 
 #include <map>
@@ -49,6 +50,7 @@ struct Core {
   ac::views::Host view_host;
   ac::views::KeyLatch journal_key;
   std::vector<ac::msg::Bar> hud_bars;
+  ac::journal::Notices journal_notices;  // the "journal updated" notices (game-10 §2): when, in skse/core journal
 };
 Core& Get();
 
@@ -131,8 +133,14 @@ std::string JournalIntent(const ac::msg::JournalPage& at);
 std::string ChartIntent(const ac::msg::ChartPan& pan);
 std::string ViewProbe(std::string_view topics);  // dev: the probe's 300-topic window (bridge only)
 std::vector<std::string> ViewsReport();          // dev: bound, and each view's ready/open
+// An entry logged or a clue found: "Journal updated" through the engine's HUD notification and our HUD's notices,
+// and the ArgoniaJournalNotice mod event (the bridge's `mod` events, so a journey can wait on it). Any thread.
+void JournalNotice(ac::journal::NoticeCause cause, std::string_view quest, std::int32_t mark);
 
 // --- natives.cpp ------------------------------------------------------------------------------------------------
 bool RegisterNatives(RE::BSScript::IVirtualMachine* vm);
+// A quest thing met (1.4): the record's row in the thing table sets its flag (the setFlag action); false when the
+// record is no quest thing met this way. The activate hook's native and the Book Menu's opening call it.
+bool MeetThing(const RE::TESForm* record, ac::things::Hook how);
 
 }  // namespace argonia::plugin

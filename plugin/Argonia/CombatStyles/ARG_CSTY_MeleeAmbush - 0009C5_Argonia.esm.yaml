@@ -1,0 +1,21 @@
+FormKey: 0009C5:Argonia.esm
+EditorID: ARG_CSTY_MeleeAmbush
+OffensiveMult: 0.9
+DefensiveMult: 0.1
+GroupOffensiveMult: 0.75
+EquipmentScoreMultMelee: 1
+EquipmentScoreMultMagic: 1
+EquipmentScoreMultRanged: 1
+EquipmentScoreMultShout: 1
+EquipmentScoreMultUnarmed: 1
+EquipmentScoreMultStaff: 1
+AvoidThreatChance: 0.2
+Melee:
+  AttackStaggeredMult: 3
+  PowerAttackStaggeredMult: 2
+  PowerAttackBlockingMult: 2.5
+CloseRange:
+  FallbackMult: 0.25
+  FlankDistance: 0.2
+  StalkTime: 0.3
+LongRangeStrafeMult: 0

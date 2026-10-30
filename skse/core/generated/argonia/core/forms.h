@@ -9,10 +9,11 @@ namespace argonia::core::gen {
 
 // One record of ours by its world id: the plugin that holds it, its signature and its local FormID.
 struct FormRow { std::string_view id, plugin, type; std::uint32_t local; };
-inline constexpr std::array<FormRow, 349> kForms{{
+inline constexpr std::array<FormRow, 353> kForms{{
     {"birthsign.serpent", "Argonia.esm", "SPEL", 0x000808},
     {"class.marsh-guide", "Argonia.esm", "CLAS", 0x000806},
     {"climate.black-marsh", "Argonia.esm", "CLMT", 0x000813},
+    {"combat-style.melee-ambush", "Argonia.esm", "CSTY", 0x0009C5},
     {"combat.carriers", "Argonia.esm", "PERK", 0x000855},
     {"creature-at.imperial-fringe.claywater-station.eco-crocodile", "Argonia.esm", "NPC_", 0x000876},
     {"death.vastei-pile", "Argonia.esm", "ACTI", 0x000860},
@@ -31,6 +32,8 @@ inline constexpr std::array<FormRow, 349> kForms{{
     {"hook.rest-spot", "Argonia.esm", "KYWD", 0x000859},
     {"hook.road-closed", "Argonia.esm", "PERK", 0x000974},
     {"hook.speaker", "Argonia.esm", "KYWD", 0x000853},
+    {"hook.thing", "Argonia.esm", "KYWD", 0x0009C3},
+    {"hook.thing-activate", "Argonia.esm", "PERK", 0x0009C4},
     {"hook.vastei-pile", "Argonia.esm", "KYWD", 0x00085A},
     {"image_space.dawn", "Argonia.esm", "IMGS", 0x000809},
     {"image_space.day", "Argonia.esm", "IMGS", 0x00080A},
@@ -202,6 +205,7 @@ inline constexpr std::array<FormRow, 349> kForms{{
     {"ref.claywater-station.cleat2", "Argonia.esm", "REFR", 0x0008CC},
     {"ref.claywater-station.crocodile", "Argonia.esm", "ACHR", 0x0008CD},
     {"ref.claywater-station.crocodile-den", "Argonia.esm", "REFR", 0x000970},
+    {"ref.claywater-station.crocodile-den-shallows", "Argonia.esm", "REFR", 0x0009C6},
     {"ref.claywater-station.d9-bench", "Argonia.esm", "REFR", 0x0008CE},
     {"ref.claywater-station.d9-chop", "Argonia.esm", "REFR", 0x0008CF},
     {"ref.claywater-station.d9-hide", "Argonia.esm", "REFR", 0x0008D0},

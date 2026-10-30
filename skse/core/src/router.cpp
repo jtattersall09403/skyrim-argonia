@@ -21,6 +21,24 @@ std::vector<std::string_view> hidden_hud_clips() {
   return out;
 }
 
+bool is_hud_mode(std::string_view m) {
+  for (auto k : kHudModes)
+    if (m == k) return true;
+  return (m.size() > 4 && m.ends_with("Mode")) || (m.size() > 8 && m.ends_with("Playback"));
+}
+
+std::vector<std::uint32_t> hud_list_removals(const std::vector<HudListEntry>& list,
+                                             const std::vector<std::string_view>& hidden) {
+  std::vector<std::uint32_t> out;
+  for (std::size_t i = list.size(); i-- > 0;) {
+    const auto& e = list[i];
+    bool named = false;
+    for (auto h : hidden) named |= !e.name.empty() && e.name == h;
+    if (e.same_object || e.marked || named) out.push_back(std::uint32_t(i));
+  }
+  return out;
+}
+
 bool Router::install(HookId h, std::string* why) {
   if (hooks_[std::size_t(h)]) {
     if (why) *why = "hook " + std::string(name(h)) + ": already installed; a system registers a handler, never a hook";

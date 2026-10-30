@@ -174,6 +174,7 @@ void FactsChanged(std::string_view why) {
       const bool ok = CallQuest(q, "SetObjectiveCompleted", static_cast<std::int32_t>(i), true);
       refused |= !ok;
       SKSE::log::info("quests: {} objective {} completed ({}){}", o.quest, i, why, ok ? "" : ", dispatch refused");
+      if (ok) JournalNotice(ac::journal::NoticeCause::clue, o.quest, static_cast<std::int32_t>(i));
     }
     if (o.set_stage) {
       const bool ok = CallQuest(q, "SetStage", static_cast<std::int32_t>(*o.set_stage));
@@ -190,10 +191,10 @@ void NewCharacter() {
   if (!p) return;
   auto& c = Get();
   std::lock_guard l(c.lock);
-  if (!c.state.sheet.uninitialised()) return;  // run once: a sheet that exists is the character's
   const auto* base = p->GetActorBase();
   const bool female = base && base->IsFemale();
-  c.state.sheet = ac::new_character(ac::gen::studio_race, female, ac::gen::studio_class);
+  // Once: a sheet that exists is the character's. Also at every game ready (a `coc` start sends no kNewGame).
+  if (!ac::ensure_character(c.state.sheet, ac::gen::studio_race, female, ac::gen::studio_class)) return;
   SKSE::log::info("new character: {} {} {} (health {:.0f})", ac::gen::kRaceIdNames[std::size_t(ac::gen::studio_race)],
                   female ? "female" : "male", ac::gen::kClassIdNames[std::size_t(ac::gen::studio_class)],
                   ac::derive(c.state.sheet, ac::Effective::of(c.state.sheet), 0).health);
@@ -218,7 +219,8 @@ void MirrorAttributes() {
 void EnsurePerks() {
   auto* p = Player();
   if (!p) return;
-  for (auto id : {"hook.dialogue-intercept"sv, "hook.rest-intercept"sv, "hook.road-closed"sv, "combat.carriers"sv}) {
+  for (auto id : {"hook.dialogue-intercept"sv, "hook.rest-intercept"sv, "hook.road-closed"sv, "hook.thing-activate"sv,
+                  "combat.carriers"sv}) {
     auto* perk = Lookup<RE::BGSPerk>(id);
     if (!perk) {
       SKSE::log::error("perks: {} is not in this load order", id);

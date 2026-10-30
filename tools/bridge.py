@@ -45,6 +45,10 @@ HEALTH_EVERY = 20.0  # seconds between health checks while a call waits: a crash
 TIMEOUTS = {"load": 150.0, "save": 45.0, "core-suspend": 45.0, "nav": 30.0, "booth": 60.0, "input": 15.0,
             "wait_event": 70.0, "frametime": 120.0}  # 2000 frames at 20 fps is 100 s
 DEFAULT_TIMEOUT = 15.0
+# Event kinds (ep_events.cpp): hit, anim, quest, menu, mod. A `mod` event is an SKSE mod callback, matched by name:
+# ArgoniaCore's "journal updated" notice (str "<quest> entry|clue", num the stage or objective). A journey asserts it
+# with `event: {kind: mod, match: ArgoniaJournalNotice}`.
+JOURNAL_NOTICE_EVENT = "ArgoniaJournalNotice"
 HEARTBEAT_EVERY = 240.0  # seconds between busy-flag refreshes; idle-stop.ps1 stops after 15 idle minutes
 INPUT_CAP_MS = 3000  # kInputCapMs in the plugin
 

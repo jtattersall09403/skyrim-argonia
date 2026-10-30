@@ -115,9 +115,24 @@ void roll_lock() {
   CHECK(!roll_perk_wanted(std::nullopt, BurdenTier::overloaded));
 }
 
+// game-11: a game started with `coc` from the main menu reaches game ready with no sheet; the character is made
+// there, so the carriers (and the roll tier) are written; a second game ready keeps that sheet.
+void character_made_at_game_ready() {
+  Sheet sh;
+  CHECK(sh.uninitialised());
+  CHECK(compute(sh, Effective::of(sh), Loadout{}).writes.empty() || sh.uninitialised());
+  CHECK(ensure_character(sh, gen::studio_race, false, gen::studio_class));
+  CHECK(!sh.uninitialised());
+  CHECK(!compute(sh, Effective::of(sh), Loadout{}).writes.empty());
+  const Sheet made = sh;
+  CHECK(!ensure_character(sh, gen::studio_race, true, gen::studio_class));
+  CHECK(sh == made);
+}
+
 }  // namespace
 
 int main() {
+  character_made_at_game_ready();
   the_spec_table();
   neutral_cases();
   armour_and_mitigation();

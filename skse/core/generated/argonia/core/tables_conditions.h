@@ -207,5 +207,9 @@ inline constexpr double disposition_min = 0.0;  // docs/design/world/76-stats-pr
 inline constexpr double personality_coefficient = 0.5;  // docs/design/world/76-stats-progression.md §117
 inline constexpr double personality_reference = 50.0;  // docs/design/world/76-stats-progression.md §117
 }  // namespace disposition
+namespace journal {
+inline constexpr double notice_life_seconds = 6.0;  // game-10 §2 (lane fixes-2): real seconds a "Journal updated" notice stays in our HUD's notice stack
+inline constexpr double notice_merge_seconds = 2.0;  // game-10 §2 (lane fixes-2): a clue that sets a stage and that stage's entry, raised within this many real seconds, are one "Journal updated" notice
+}  // namespace journal
 
 }  // namespace argonia::core::gen

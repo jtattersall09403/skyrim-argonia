@@ -4,7 +4,7 @@ Reads the sheet (attribute, skill, skill_bands, sheet_rules, class_rules and the
 condition tables (condition_term, condition_shape*) through db.py and writes data-only headers to
 skse/core/generated/argonia/core/: tables_sheet.h, tables_progression.h, tables_conditions.h, tables_actions.h
 the topic store's fixture, fixture_topics.h (topic_tables.py), and the journal's text,
-journal_text.h (quest_gen.py).
+journal_text.h (quest_gen.py), and the quest things' hooks, things_table.h (thing_hooks.py).
 
     python3 -m tools.argonia_world.core_tables            # write the headers
     python3 -m tools.argonia_world.core_tables --check    # the gate: exit 1 and a diff when a header is stale
@@ -328,6 +328,8 @@ def render(w: db.World) -> dict[str, str]:
     out[forms_table.HEADER] = forms_table.render(w)
     from tools.argonia_world import quest_gen  # 1.4: the journal's text from the quest rows
     out[quest_gen.JOURNAL_HEADER] = quest_gen.journal_text(w)
+    from tools.argonia_world import thing_hooks  # 1.4: the quest things' hooks, by record world id
+    out[thing_hooks.HEADER] = thing_hooks.render(w)
     return out
 
 

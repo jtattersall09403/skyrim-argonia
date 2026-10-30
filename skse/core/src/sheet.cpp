@@ -91,6 +91,12 @@ std::optional<Derived> derive_set(const Sheet& sh, const Effective& e, double ca
   return derive(sh, e, carried_kg);
 }
 
+bool ensure_character(Sheet& sh, gen::RaceId race, bool female, gen::ClassId cls) {
+  if (!sh.uninitialised()) return false;
+  sh = new_character(race, female, cls);
+  return true;
+}
+
 Sheet new_character(gen::RaceId race, bool female, gen::ClassId cls) {
   const auto& r = gen::kRaces[std::size_t(race)];
   const auto& k = gen::kClasses[std::size_t(cls)];

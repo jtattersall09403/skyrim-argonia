@@ -83,6 +83,29 @@ inline constexpr std::array<HudClip, 4> kHudClips{{
 // The clips to hide: those whose row is not restyled, in table order.
 std::vector<std::string_view> hidden_hud_clips();
 
+// How a clip stays hidden (game-10: "0 out of HudElements (22 listed)", the clips came back with the next mode).
+// hudmenu.swf's HUDMovieBase.SetMode walks HudElements and sets each element's _visible to
+// element.hasOwnProperty(mode), the mode flags SetModes put on each clip (Health.All = true, ...). So three locks,
+// each enough alone, each counted in the Views line: the clip's mode members deleted (no mode shows it), its _alpha
+// 0 (no mode change touches _alpha: TrueHUD hides vanilla bars this way), and its entry taken out of HudElements,
+// matched by identity (the same object), by our argoniaHidden mark, or by its _name.
+inline constexpr std::array<std::string_view, 16> kHudModes{
+    "All",       "StealthMode", "Favor",       "Swimming",     "HorseMode",  "WarHorseMode", "MovementDisabled",
+    "InventoryMode", "BookMode", "DialogueMode", "BarterMode", "TweenMode", "WorldMapMode", "JournalMode", "CartMode",
+    "VATSPlayback"};
+// A member HUDMovieBase reads as a mode flag: a known mode, or any other name the HUD's mode naming gives
+// (…Mode, …Playback), so a mode another HUD mod adds is cleared too.
+bool is_hud_mode(std::string_view member);
+// One entry of HudElements as the adapter reads it.
+struct HudListEntry {
+  bool same_object = false;  // == to one hidden clip's value (the same display object)
+  bool marked = false;       // carries our argoniaHidden member
+  std::string name;          // its _name, empty when unreadable
+};
+// The indices to take out of HudElements, highest first (so each removal keeps the others' indices).
+std::vector<std::uint32_t> hud_list_removals(const std::vector<HudListEntry>& list,
+                                             const std::vector<std::string_view>& hidden);
+
 // The view an intent is for (dialogue, journal, chart, sitting), from its type, so every view's intents reach
 // ArgoniaCore through one listener (the web view's window.argoniaIntent) and are routed here; view.close names
 // its view. A refusal is the schema twin's words (a malformed intent, a push sent as an intent).

@@ -93,6 +93,10 @@ std::optional<Derived> derive_set(const Sheet& sh, const Effective& e, double ca
 // skills start at 5, plus the race's bonus, +25 a major, +10 a minor and +5 for the class's specialisation.
 // Level 1, no growth. ArgoniaCore runs it once, at the new game, for the studio character.
 Sheet new_character(gen::RaceId race, bool female, gen::ClassId cls);
+// At game ready: a sheet still uninitialised becomes the new character (game-11: a `coc` from the main menu starts a
+// game with no kNewGame, so the sheet stayed empty, no carrier was written and TK Dodge's perk lock refused every
+// roll). True when it made one; a sheet that exists is the character's and is never replaced.
+bool ensure_character(Sheet& sh, gen::RaceId race, bool female, gen::ClassId cls);
 
 // The burden tier for carried / capacity (76 §122).
 BurdenTier burden_tier(double ratio);
