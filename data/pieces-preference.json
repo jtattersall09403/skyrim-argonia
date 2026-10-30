@@ -1,0 +1,28 @@
+{
+  "_about": "The piece resolver's preference among several base records for one mesh (tools/argonia_world/pieces.py; decision 0006 §8, 0012). Tiers win in this order; inside a tier the later plugin in load order, then the placed kind, then the lowest FormID (so vanilla's plain base beats its Snow variant). A plugin takes its tier from the first `plugins` pattern it matches (fnmatch, case-insensitive); an unmatched plugin is `other`. A `kits` row lifts its plugin to the named tier for meshes under its folder, so a kit's own mesh is placed from its own mod. The DLCs and Creation Club rank last: their ash, snow and Solstheim variants never win unless a kit row names the folder (their own dlc01/dlc02 meshes). It lives in data/, not world/db, because it is a build rule over the dependency manifest's plugins, not a world fact.",
+  "tiers": ["kit", "black-marsh", "tropical", "vanilla", "other", "dlc"],
+  "plugins": [
+    {"pattern": "Black Marsh.esm", "tier": "black-marsh"},
+    {"pattern": "King of the Murkmire.esp", "tier": "black-marsh"},
+    {"pattern": "Here There Be Monsters*.esp", "tier": "black-marsh"},
+    {"pattern": "XanmeerResources.esp", "tier": "black-marsh"},
+    {"pattern": "ArgonianLakeHouse.esl", "tier": "black-marsh"},
+    {"pattern": "Tropical Skyrim*.esp", "tier": "tropical"},
+    {"pattern": "Skyrim.esm", "tier": "vanilla"},
+    {"pattern": "Update.esm", "tier": "vanilla"},
+    {"pattern": "Dawnguard.esm", "tier": "dlc"},
+    {"pattern": "HearthFires.esm", "tier": "dlc"},
+    {"pattern": "Dragonborn.esm", "tier": "dlc"},
+    {"pattern": "cc*", "tier": "dlc"}
+  ],
+  "kits": [
+    {"prefix": "meshes/argonia/", "plugin": "King of the Murkmire.esp", "tier": "kit"},
+    {"prefix": "meshes/argonianweapons/", "plugin": "King of the Murkmire.esp", "tier": "kit"},
+    {"prefix": "meshes/tesak1243/", "plugin": "King of the Murkmire.esp", "tier": "kit"},
+    {"prefix": "meshes/gv_meshes/", "plugin": "ArgonianLakeHouse.esl", "tier": "kit"},
+    {"prefix": "meshes/here there be monsters/", "plugin": "Here There Be Monsters.esp", "tier": "kit"},
+    {"prefix": "meshes/here there be monsters - curse of cipactli/", "plugin": "Here There Be Monsters - Curse of Cipactli.esp", "tier": "kit"},
+    {"prefix": "meshes/dlc01/", "plugin": "Dawnguard.esm", "tier": "vanilla"},
+    {"prefix": "meshes/dlc02/", "plugin": "Dragonborn.esm", "tier": "vanilla"}
+  ]
+}

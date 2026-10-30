@@ -106,7 +106,7 @@ Temporary:
     Rotation: 0, 0, 2.792527
 - MutagenObjectType: PlacedObject
   FormKey: 0008F2:Argonia.esm
-  Base: 0354AA:DepthsOfSkyrim.esp
+  Base: 672FEB:King of the Murkmire.esp
   Placement:
     Position: -231613.06, 50064.17, 2318.83
     Rotation: 0, 0, 0.349066

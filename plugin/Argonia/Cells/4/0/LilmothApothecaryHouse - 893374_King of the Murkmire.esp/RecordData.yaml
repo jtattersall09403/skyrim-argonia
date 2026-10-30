@@ -1,0 +1,87 @@
+FormKey: 893374:King of the Murkmire.esp
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
+EditorID: LilmothApothecaryHouse
+SkyrimMajorRecordFlags:
+- Compressed
+Name:
+  TargetLanguage: English
+  Value: Claywater Station House
+Flags:
+- IsInteriorCell
+- ShowSky
+Lighting:
+  AmbientColor: '#00202621'
+  DirectionalColor: '#00000000'
+  FogNearColor: '#00172116'
+  FogFar: 4500
+  FogPower: 0.6
+  AmbientColors:
+    DirectionalXPlus: '#002C2418'
+    DirectionalXMinus: '#00232415'
+    DirectionalYPlus: '#00282517'
+    DirectionalYMinus: '#00282217'
+    DirectionalZPlus: '#0013110A'
+    DirectionalZMinus: '#003C3623'
+    Specular: '#00172116'
+    Scale: 1
+  FogFarColor: '#00172116'
+  FogMax: 1
+  Inherits:
+  - AmbientColor
+  - DirectionalColor
+  - FogColor
+  - FogNear
+  - FogFar
+  - ClipDistance
+LightingTemplate: 06AB01:Skyrim.esm
+WaterHeight: 0
+Location: 893373:King of the Murkmire.esp
+Owner: 88E1F3:King of the Murkmire.esp
+SkyAndWeatherFromRegion: 00FF17:King of the Murkmire.esp
+AcousticSpace: 913CE9:King of the Murkmire.esp
+Music: 0AD63B:King of the Murkmire.esp
+ImageSpace: 000167:Skyrim.esm
+Persistent:
+- MutagenObjectType: PlacedObject
+  FormKey: 0008F7:Argonia.esm
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_Ref_ClaywaterStationLedger
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 00086F:Argonia.esm
+  Owner: 000886:Argonia.esm
+  Placement:
+    Position: 8395.48, -5165.83, 5792.32
+    Rotation: 0, 0, 1.570796
+- MutagenObjectType: PlacedObject
+  FormKey: 8933BE:King of the Murkmire.esp
+  MajorRecordFlagsRaw: 1024
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 0259DF:King of the Murkmire.esp
+  Owner: 000886:Argonia.esm
+  Placement:
+    Position: 8475.24, -5397.28, 5711.79
+    Rotation: 0, 0, 1.570796
+- MutagenObjectType: PlacedObject
+  FormKey: 8933E1:King of the Murkmire.esp
+  MajorRecordFlagsRaw: 1024
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 093D0D:King of the Murkmire.esp
+  TeleportDestination:
+    Door: 000892:Argonia.esm
+    Position: -231732.33, 47354.77, 2631.87
+    Rotation: 0, 0, 3.993559
+  Placement:
+    Position: 8698.99, -5122.13, 5711.58
+Temporary:
+- MutagenObjectType: PlacedObject
+  FormKey: 8933E9:King of the Murkmire.esp
+  Base: 70CFBE:Here There Be Monsters - Curse of Cipactli.esp
+  Placement:
+    Position: 8410.11, -5172.14, 5766.83
+    Rotation: 0, 0, 5.810201
+MajorFlags:
+- 0x40000

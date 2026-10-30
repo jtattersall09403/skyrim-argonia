@@ -14,7 +14,7 @@ Temporary:
     Rotation: 0, 0, 3.700098
 - MutagenObjectType: PlacedObject
   FormKey: 00088F:Argonia.esm
-  Base: 0354AA:DepthsOfSkyrim.esp
+  Base: 672FEB:King of the Murkmire.esp
   Placement:
     Position: -231557.05, 47508.15, 2616.92
 - MutagenObjectType: PlacedObject
@@ -25,7 +25,7 @@ Temporary:
     Rotation: 0, 0, 0.558505
 - MutagenObjectType: PlacedObject
   FormKey: 000891:Argonia.esm
-  Base: A9A53F:Sailable Ship.esm
+  Base: 012FDF:Skyrim.esm
   Placement:
     Position: -231739.11, 47620.19, 2626.01
     Rotation: 0, 0, 0.523599
@@ -156,7 +156,7 @@ Temporary:
     Rotation: 0, 0, 2.129302
 - MutagenObjectType: PlacedObject
   FormKey: 0008A8:Argonia.esm
-  Base: 0354AA:DepthsOfSkyrim.esp
+  Base: 672FEB:King of the Murkmire.esp
   Placement:
     Position: -231080.84, 46121.59, 2679.29
 - MutagenObjectType: PlacedObject
@@ -251,7 +251,7 @@ Temporary:
     Rotation: 0, 0, 0.349066
 - MutagenObjectType: PlacedObject
   FormKey: 0008D0:Argonia.esm
-  Base: 008AB8:HearthFires.esm
+  Base: 0727A1:Skyrim.esm
   Placement:
     Position: -230632.67, 45407.31, 2658.26
     Rotation: 0, 0, 4.153884
@@ -303,7 +303,7 @@ Temporary:
     Rotation: 0, 0, 3.160093
 - MutagenObjectType: PlacedObject
   FormKey: 0008ED:Argonia.esm
-  Base: 0BB7B3:Skyrim.esm
+  Base: 31865D:Here There Be Monsters - Curse of Cipactli.esp
   Placement:
     Position: -230520.62, 45925.51, 2619.12
     Rotation: 0, 0, 4.153884

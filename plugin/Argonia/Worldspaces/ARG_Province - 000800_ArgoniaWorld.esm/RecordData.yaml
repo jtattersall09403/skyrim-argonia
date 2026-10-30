@@ -92,8 +92,8 @@ TopCell:
     Base: 029CB0:Skyrim.esm
     TeleportDestination:
       Door: 8933E1:King of the Murkmire.esp
-      Position: 8627.08, -5165.62, 5711.58
-      Rotation: 0, 0, 4.1685
+      Position: 8622.41, -5156.74, 5711.58
+      Rotation: 0, 0, 4.287916
     Placement:
       Position: -231669.1, 47410.11, 2628.22
       Rotation: 0, 0, 3.700098
@@ -119,8 +119,8 @@ TopCell:
     Base: 089921:King of the Murkmire.esp
     TeleportDestination:
       Door: 0CC274:King of the Murkmire.esp
-      Position: 7696.31, -3972.6, 6491.01
-      Rotation: 0, 0, 4.913637
+      Position: 7699.53, -3961.07, 6491.01
+      Rotation: 0, 0, 5.056176
     Placement:
       Position: -230212.5, 54482.94, 2500.3
   - MutagenObjectType: PlacedObject

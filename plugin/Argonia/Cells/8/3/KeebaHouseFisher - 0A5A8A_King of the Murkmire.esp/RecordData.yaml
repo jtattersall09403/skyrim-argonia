@@ -1,0 +1,93 @@
+FormKey: 0A5A8A:King of the Murkmire.esp
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
+EditorID: KeebaHouseFisher
+SkyrimMajorRecordFlags:
+- Compressed
+Name:
+  TargetLanguage: English
+  Value: The Poler's Hut
+Flags:
+- IsInteriorCell
+Lighting:
+  AmbientColor: '#00202621'
+  DirectionalColor: '#00000000'
+  FogNearColor: '#00172116'
+  FogFar: 4500
+  FogPower: 0.6
+  AmbientColors:
+    DirectionalXPlus: '#002C2418'
+    DirectionalXMinus: '#00232415'
+    DirectionalYPlus: '#00282517'
+    DirectionalYMinus: '#00282217'
+    DirectionalZPlus: '#0013110A'
+    DirectionalZMinus: '#003C3623'
+    Specular: '#00172116'
+    Scale: 1
+  FogFarColor: '#00172116'
+  FogMax: 1
+  Inherits:
+  - AmbientColor
+  - DirectionalColor
+  - FogColor
+  - FogNear
+  - FogFar
+  - ClipDistance
+LightingTemplate: 06AB01:Skyrim.esm
+WaterHeight: 0
+Location: 025D04:King of the Murkmire.esp
+Owner: 09E0D3:King of the Murkmire.esp
+AcousticSpace: 913CE9:King of the Murkmire.esp
+Music: 0AD63B:King of the Murkmire.esp
+ImageSpace: 000167:Skyrim.esm
+Persistent:
+- MutagenObjectType: PlacedObject
+  FormKey: 0A5B30:King of the Murkmire.esp
+  MajorRecordFlagsRaw: 1024
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 089921:King of the Murkmire.esp
+  TeleportDestination:
+    Door: 0008B7:Argonia.esm
+    Position: -231963.2, 52326.07, 2447.64
+  Placement:
+    Position: 7784.95, -3766.63, 5820.68
+    Rotation: 0, 0, 0.800059
+- MutagenObjectType: PlacedObject
+  FormKey: 0A5B5E:King of the Murkmire.esp
+  MajorRecordFlagsRaw: 1024
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 08EAD9:King of the Murkmire.esp
+  Owner: 00087A:Argonia.esm
+  Placement:
+    Position: 7216.8, -3686.87, 5811.51
+    Rotation: 0, 0, 2.783277
+- MutagenObjectType: PlacedNpc
+  FormKey: 0A5BA6:King of the Murkmire.esp
+  MajorRecordFlagsRaw: 3072
+  SkyrimMajorRecordFlags:
+  - 0x400
+  - InitiallyDisabled
+  Base: 0A5BA2:King of the Murkmire.esp
+  Placement:
+    Position: 7430.95, -4123.51, 5817.18
+    Rotation: 0, 0, 4.983264
+  MajorFlags:
+  - Persistent
+  - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
+  FormKey: 0A5BA7:King of the Murkmire.esp
+  MajorRecordFlagsRaw: 3072
+  SkyrimMajorRecordFlags:
+  - 0x400
+  - InitiallyDisabled
+  Base: 0A5BA4:King of the Murkmire.esp
+  Placement:
+    Position: 7378.78, -4210.27, 5817.18
+    Rotation: 0, 0, 5.283112
+  MajorFlags:
+  - Persistent
+  - InitiallyDisabled
+MajorFlags:
+- 0x40000

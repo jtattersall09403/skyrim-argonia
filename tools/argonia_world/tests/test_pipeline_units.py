@@ -16,9 +16,9 @@ from tools.argonia_world.pieces import Index, Resolver, stat_edid
 
 ROOT = Path(__file__).resolve().parents[3]
 INDEX = {
-    "plugins": ["Skyrim.esm", "BM.esp"],
+    "plugins": ["Skyrim.esm", "Black Marsh.esm"],
     "records": [
-        {"mesh": "meshes/a/floor.nif", "plugin": "BM.esp", "formKey": "000900:BM.esp", "type": "Static", "edid": "BMFloor"},
+        {"mesh": "meshes/a/floor.nif", "plugin": "Black Marsh.esm", "formKey": "000900:Black Marsh.esm", "type": "Static", "edid": "BMFloor"},
         {"mesh": "meshes/a/floor.nif", "plugin": "Skyrim.esm", "formKey": "080157:Skyrim.esm", "type": "Static", "edid": "FloorIce"},
         {"mesh": "meshes/a/floor.nif", "plugin": "Skyrim.esm", "formKey": "03CB89:Skyrim.esm", "type": "Static", "edid": "Floor"},
         {"mesh": "meshes/a/door.nif", "plugin": "Skyrim.esm", "formKey": "000123:Skyrim.esm", "type": "Door", "edid": "Door"},
@@ -97,9 +97,36 @@ def test_committed_table_is_valid():
 def test_resolver_prefers_the_later_plugin_then_lowest_formid():
     res = Resolver(Index(INDEX), {"vanilla:a/floor": "meshes/a/floor.nif"})
     [r] = res.resolve("Meshes\\A\\Floor.NIF")
-    assert (r.kind, r.form_key) == ("base", "000900:BM.esp")  # a Black Marsh mod before vanilla (0006 §8)
+    assert (r.kind, r.form_key) == ("base", "000900:Black Marsh.esm")  # a Black Marsh mod before vanilla (0006 §8)
     vanilla = Resolver(Index({**INDEX, "records": INDEX["records"][1:]}))
     assert vanilla.resolve("meshes/a/floor.nif")[0].form_key == "03CB89:Skyrim.esm"  # not the ice variant
+
+
+def test_resolver_never_lets_a_dlc_variant_win_unless_a_kit_names_it():
+    # 1.7's Claywater walls: Dragonborn (later in load order) re-uses vanilla's mesh for its volcanic-ash swap.
+    wall = "meshes/architecture/farmhouse/stonewall/stonewall01.nif"
+    rows = [{"mesh": wall, "plugin": "Skyrim.esm", "formKey": "00099B:Skyrim.esm", "type": "Static", "edid": "Stonewall01"},
+            {"mesh": wall, "plugin": "Skyrim.esm", "formKey": "06F15F:Skyrim.esm", "type": "Static", "edid": "Stonewall01Snow"},
+            {"mesh": wall, "plugin": "Dragonborn.esm", "formKey": "03C39F:Dragonborn.esm", "type": "Static",
+             "edid": "DLC2Stonewall01VolcanicAsh"},
+            {"mesh": "meshes/dlc02/a/hut.nif", "plugin": "Dragonborn.esm", "formKey": "000777:Dragonborn.esm",
+             "type": "Static", "edid": "DLC2Hut"},
+            {"mesh": "meshes/dlc02/a/hut.nif", "plugin": "Sailable Ship.esm", "formKey": "000888:Sailable Ship.esm",
+             "type": "Static", "edid": "ShipHut"},
+            {"mesh": "meshes/landscape/rocks/rockl01.nif", "plugin": "DepthsOfSkyrim.esp", "formKey": "000901:DepthsOfSkyrim.esp",
+             "type": "Static", "edid": "TBPRockL01Moss"},
+            {"mesh": "meshes/landscape/rocks/rockl01.nif", "plugin": "King of the Murkmire.esp",
+             "formKey": "000902:King of the Murkmire.esp", "type": "Static", "edid": "ArgoniaRockL01"},
+            {"mesh": "meshes/landscape/rocks/rockl01.nif", "plugin": "Tropical Skyrim.esp",
+             "formKey": "000903:Tropical Skyrim.esp", "type": "Static", "edid": "TropRockL01"}]
+    order = ["Skyrim.esm", "Dragonborn.esm", "Sailable Ship.esm", "Tropical Skyrim.esp", "King of the Murkmire.esp",
+             "DepthsOfSkyrim.esp"]
+    res = Resolver(Index({"plugins": order, "records": rows, "meshes": []}))
+    assert res.resolve(wall)[0].edid == "Stonewall01"  # vanilla, not the ash swap nor the snow variant
+    assert res.resolve("meshes/dlc02/a/hut.nif")[0].edid == "DLC2Hut"  # the DLC's own folder names it
+    assert res.resolve("meshes/landscape/rocks/rockl01.nif")[0].edid == "ArgoniaRockL01"  # Black Marsh, then Tropical
+    no_bm = Resolver(Index({"plugins": order, "records": rows[-1:] + rows[-3:-2], "meshes": []}))
+    assert no_bm.resolve("meshes/landscape/rocks/rockl01.nif")[0].edid == "TropRockL01"  # Tropical before other mods
 
 
 def test_resolver_new_stat_composite_and_unresolved():

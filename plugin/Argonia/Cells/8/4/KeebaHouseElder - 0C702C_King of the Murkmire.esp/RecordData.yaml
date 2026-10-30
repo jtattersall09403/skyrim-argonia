@@ -1,0 +1,118 @@
+FormKey: 0C702C:King of the Murkmire.esp
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
+EditorID: KeebaHouseElder
+SkyrimMajorRecordFlags:
+- Compressed
+Name:
+  TargetLanguage: English
+  Value: The Landing Family's Hut
+Flags:
+- IsInteriorCell
+- PublicArea
+Lighting:
+  AmbientColor: '#00202621'
+  DirectionalColor: '#00000000'
+  FogNearColor: '#00172116'
+  FogFar: 4500
+  FogPower: 0.6
+  AmbientColors:
+    DirectionalXPlus: '#002C2418'
+    DirectionalXMinus: '#00232415'
+    DirectionalYPlus: '#00282517'
+    DirectionalYMinus: '#00282217'
+    DirectionalZPlus: '#0013110A'
+    DirectionalZMinus: '#003C3623'
+    Specular: '#00172116'
+    Scale: 1
+  FogFarColor: '#00172116'
+  FogMax: 1
+  Inherits:
+  - AmbientColor
+  - DirectionalColor
+  - FogColor
+  - FogNear
+  - FogFar
+  - ClipDistance
+LightingTemplate: 06AB01:Skyrim.esm
+WaterHeight: 0
+Location: 025D07:King of the Murkmire.esp
+Owner: 09E0D3:King of the Murkmire.esp
+AcousticSpace: 913CE9:King of the Murkmire.esp
+Music: 0AD63B:King of the Murkmire.esp
+ImageSpace: 000167:Skyrim.esm
+Persistent:
+- MutagenObjectType: PlacedObject
+  FormKey: 00087D:Argonia.esm
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_Ref_ClaywaterStationGaiusBed
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 08EAD9:King of the Murkmire.esp
+  Owner: 00087F:Argonia.esm
+  Placement:
+    Position: 7630.89, -3911.6, 6051.08
+- MutagenObjectType: PlacedObject
+  FormKey: 0CC274:King of the Murkmire.esp
+  MajorRecordFlagsRaw: 1024
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 089921:King of the Murkmire.esp
+  TeleportDestination:
+    Door: 0008BC:Argonia.esm
+    Position: -230212.5, 54566.97, 2505.1
+  Placement:
+    Position: 7778.65, -3989.4, 6491.01
+    Rotation: 0, 0, 2.470863
+- MutagenObjectType: PlacedObject
+  FormKey: 0CC275:King of the Murkmire.esp
+  MajorRecordFlagsRaw: 3072
+  SkyrimMajorRecordFlags:
+  - 0x400
+  - InitiallyDisabled
+  Base: 089921:King of the Murkmire.esp
+  Placement:
+    Position: 6950.69, -3959.78, 6060.4
+    Rotation: 0, 0, 3.970799
+- MutagenObjectType: PlacedNpc
+  FormKey: 0CC27C:King of the Murkmire.esp
+  MajorRecordFlagsRaw: 3072
+  SkyrimMajorRecordFlags:
+  - 0x400
+  - InitiallyDisabled
+  Base: 0CC278:King of the Murkmire.esp
+  Placement:
+    Position: 7266.94, -3868.18, 6485.48
+  MajorFlags:
+  - Persistent
+  - InitiallyDisabled
+- MutagenObjectType: PlacedObject
+  FormKey: 0CC29B:King of the Murkmire.esp
+  MajorRecordFlagsRaw: 1024
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 08EADA:King of the Murkmire.esp
+  Owner: 000882:Argonia.esm
+  Placement:
+    Position: 7763.95, -3911.6, 6051.08
+Temporary:
+- MutagenObjectType: PlacedObject
+  FormKey: 01AA8B:King of the Murkmire.esp
+  Base: 516170:Here There Be Monsters - Curse of Cipactli.esp
+  Scale: 0.3
+  Placement:
+    Position: 7546.71, -3913.7, 6183.02
+    Rotation: 0, 0, 5.700071
+- MutagenObjectType: PlacedObject
+  FormKey: 01AABD:King of the Murkmire.esp
+  Base: 0608B0:King of the Murkmire.esp
+  Scale: 0.5
+  Placement:
+    Position: 6962.8, -3618.45, 6330.01
+- MutagenObjectType: PlacedObject
+  FormKey: 01AADD:King of the Murkmire.esp
+  Base: 70CFBE:Here There Be Monsters - Curse of Cipactli.esp
+  Placement:
+    Position: 7153.98, -3605.98, 6344.02
+MajorFlags:
+- 0x40000

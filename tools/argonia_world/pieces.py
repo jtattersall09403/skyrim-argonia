@@ -19,6 +19,7 @@ archives on the build VM; it is derived from game files and never committed (dec
 """
 from __future__ import annotations
 
+import fnmatch
 import json
 import re
 import sys
@@ -27,11 +28,35 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 INDEX = ROOT / "out" / "pieces-index.json"
-# Among several base records for one mesh: the latest plugin in load order (Black Marsh mods before Tropical
-# Skyrim before vanilla, 0006 §8, as the load order lists them), then the kind a placed piece most often is,
-# then the lowest FormID (vanilla's snow and ice variants come later, so the plain one wins).
+PREFERENCE = ROOT / "data" / "pieces-preference.json"
+# Among several base records for one mesh: the preference tier (data/pieces-preference.json: a kit's own mod for
+# its folder, then the Black Marsh mods, Tropical Skyrim, vanilla, other mods, the DLCs last, 0006 §8), then the
+# later plugin in load order, then the kind a placed piece most often is, then the lowest FormID (vanilla's snow
+# and ice variants come later, so the plain one wins).
 TYPE_RANK = {"Static": 0, "MoveableStatic": 1, "Furniture": 2, "Door": 3, "Container": 4, "Activator": 5,
              "Light": 6, "Flora": 7, "Tree": 8, "Grass": 9}
+
+
+class Preference:
+    """The tier of a (mesh, plugin) pair, from the preference table."""
+
+    def __init__(self, doc: dict):
+        self.tiers = {t: i for i, t in enumerate(doc["tiers"])}
+        self.plugins = [(r["pattern"].lower(), self.tiers[r["tier"]]) for r in doc["plugins"]]
+        self.kits = sorted(((norm_mesh(r["prefix"]), r["plugin"].lower(), self.tiers[r["tier"]]) for r in doc["kits"]),
+                           key=lambda k: -len(k[0]))
+        self.other = self.tiers["other"]
+
+    @classmethod
+    def load(cls, path: Path = PREFERENCE) -> Preference:
+        return cls(json.loads(Path(path).read_text(encoding="utf-8")))
+
+    def tier(self, mesh: str, plugin: str) -> int:
+        p = plugin.lower()
+        for prefix, kit, t in self.kits:
+            if mesh.startswith(prefix) and p == kit:
+                return t
+        return next((t for pat, t in self.plugins if fnmatch.fnmatchcase(p, pat)), self.other)
 
 
 def norm_mesh(p: str) -> str:
@@ -57,15 +82,16 @@ class Resolution:
 
 
 class Index:
-    def __init__(self, doc: dict):
+    def __init__(self, doc: dict, prefer: Preference | None = None):
         self.plugins = list(doc["plugins"])
+        self.prefer = prefer or Preference.load()
         rank = {p.lower(): i for i, p in enumerate(self.plugins)}
         self.by_mesh: dict[str, list[dict]] = {}
         for r in doc["records"]:
             self.by_mesh.setdefault(norm_mesh(r["mesh"]), []).append(r)
-        for rows in self.by_mesh.values():
-            rows.sort(key=lambda r: (-rank.get(r["plugin"].lower(), -1), TYPE_RANK.get(r["type"], 99),
-                                     int(r["formKey"].split(":")[0], 16)))
+        for mesh, rows in self.by_mesh.items():
+            rows.sort(key=lambda r: (self.prefer.tier(mesh, r["plugin"]), -rank.get(r["plugin"].lower(), -1),
+                                     TYPE_RANK.get(r["type"], 99), int(r["formKey"].split(":")[0], 16)))
         self.meshes = {norm_mesh(m) for m in doc["meshes"]} | set(self.by_mesh)
 
     @classmethod

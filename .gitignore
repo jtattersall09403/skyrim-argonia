@@ -35,5 +35,7 @@ tmp/
 *.btr
 *.bto
 *.psc.bak
-# Spriggit names a record directory "<EditorID> - <id>_<Plugin>.esm" (a worldspace override): not a plugin file
+# Spriggit names a record directory "<EditorID> - <id>_<Plugin>.esm" (a worldspace override) or ".esp" (a borrowed
+# cell's override, 0012 §6): not a plugin file
 !plugin/Argonia/**/*.esm/
+!plugin/Argonia/**/*.esp/
