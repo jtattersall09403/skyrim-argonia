@@ -66,6 +66,7 @@
 {"id":"stamina_regen_delay_s","module":"sheet","value":1.05,"design_ref":"docs/design/world/76-stats-progression.md §121.2"}
 {"id":"strength_damage_base","module":"carriers","value":50.0,"design_ref":"docs/design/world/76-stats-progression.md §121.1"}
 {"id":"strength_damage_divisor","module":"carriers","value":100.0,"design_ref":"docs/design/world/76-stats-progression.md §121.1"}
+{"id":"suspend_save_interval_s","module":"rest","value":300.0,"design_ref":"docs/phases/2-slice/2.8-progression.md §c (the hidden suspend save; the interval in real seconds is 1.5's pick, crash cover between pause-hub saves)"}
 {"id":"swim_athletics_base","module":"sheet","value":0.5,"design_ref":"docs/design/world/76-stats-progression.md §122"}
 {"id":"swim_athletics_divisor","module":"sheet","value":100.0,"design_ref":"docs/design/world/76-stats-progression.md §122"}
 {"id":"swim_base_mps","module":"sheet","value":1.6,"design_ref":"docs/design/world/76-stats-progression.md §122"}

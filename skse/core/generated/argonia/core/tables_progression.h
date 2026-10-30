@@ -90,6 +90,9 @@ inline constexpr double spec_factor = 0.8;  // docs/design/world/76-stats-progre
 inline constexpr double vastei_per_use = 4.0;  // docs/design/world/76-stats-progression.md §120.3
 inline constexpr double vastei_skill_divisor = 50.0;  // docs/design/world/76-stats-progression.md §120.3
 }  // namespace progression
+namespace rest {
+inline constexpr double suspend_save_interval_s = 300.0;  // docs/phases/2-slice/2.8-progression.md §c (the hidden suspend save; the interval in real seconds is 1.5's pick, crash cover between pause-hub saves)
+}  // namespace rest
 namespace sitting {
 inline constexpr double cost_attr_divisor = 50.0;  // docs/design/world/76-stats-progression.md §120.4
 inline constexpr double cost_attr_exponent = 2.0;  // docs/design/world/76-stats-progression.md §120.4
