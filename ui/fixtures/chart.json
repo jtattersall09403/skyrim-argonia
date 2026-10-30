@@ -1,6 +1,6 @@
 {
  "screen": "chart",
- "doc": "Mock data for 1.2's L3 harness (parchment chart). Claywater Station's id is the world db's; the other places' ids are mock and their positions rough.",
+ "doc": "Mock data for 1.2's L3 harness (parchment chart). Place ids, positions and the revealed cells are made from out/chart/index.json by tools/ui_harness/chart_fixture.py; the gate checks they agree.",
  "states": {
   "claywater": {
    "type": "chart.state",
@@ -10,104 +10,104 @@
     "sketch": "chart.sketch",
     "revealed": [
      {
-      "x": -3,
-      "y": -2
+      "x": -59,
+      "y": 9
      },
      {
-      "x": -3,
-      "y": -1
+      "x": -59,
+      "y": 10
      },
      {
-      "x": -3,
-      "y": 0
+      "x": -59,
+      "y": 11
      },
      {
-      "x": -3,
-      "y": 1
+      "x": -59,
+      "y": 12
      },
      {
-      "x": -3,
-      "y": 2
+      "x": -59,
+      "y": 13
      },
      {
-      "x": -2,
-      "y": -2
+      "x": -58,
+      "y": 9
      },
      {
-      "x": -2,
-      "y": -1
+      "x": -58,
+      "y": 10
      },
      {
-      "x": -2,
-      "y": 0
+      "x": -58,
+      "y": 11
      },
      {
-      "x": -2,
-      "y": 1
+      "x": -58,
+      "y": 12
      },
      {
-      "x": -2,
-      "y": 2
+      "x": -58,
+      "y": 13
      },
      {
-      "x": -1,
-      "y": -2
+      "x": -57,
+      "y": 9
      },
      {
-      "x": -1,
-      "y": -1
+      "x": -57,
+      "y": 10
      },
      {
-      "x": -1,
-      "y": 0
+      "x": -57,
+      "y": 11
      },
      {
-      "x": -1,
-      "y": 1
+      "x": -57,
+      "y": 12
      },
      {
-      "x": -1,
-      "y": 2
+      "x": -57,
+      "y": 13
      },
      {
-      "x": 0,
-      "y": -2
+      "x": -56,
+      "y": 9
      },
      {
-      "x": 0,
-      "y": -1
+      "x": -56,
+      "y": 10
      },
      {
-      "x": 0,
-      "y": 0
+      "x": -56,
+      "y": 11
      },
      {
-      "x": 0,
-      "y": 1
+      "x": -56,
+      "y": 12
      },
      {
-      "x": 0,
-      "y": 2
+      "x": -56,
+      "y": 13
      },
      {
-      "x": 1,
-      "y": -2
+      "x": -55,
+      "y": 9
      },
      {
-      "x": 1,
-      "y": -1
+      "x": -55,
+      "y": 10
      },
      {
-      "x": 1,
-      "y": 0
+      "x": -55,
+      "y": 11
      },
      {
-      "x": 1,
-      "y": 1
+      "x": -55,
+      "y": 12
      },
      {
-      "x": 1,
-      "y": 2
+      "x": -55,
+      "y": 13
      }
     ],
     "places": [
@@ -115,30 +115,30 @@
       "id": "place.imperial-fringe.claywater-station",
       "name": "Claywater Station",
       "kind": "settlement",
-      "x": -0.5,
-      "y": 0.25,
+      "x": -56.85,
+      "y": 11.7,
       "discovered": true
      },
      {
-      "id": "place.mock.gideon",
+      "id": "place.imperial-fringe.gideon",
       "name": "Gideon",
       "kind": "settlement",
-      "x": 40,
-      "y": -12,
+      "x": -35.48,
+      "y": 11.53,
       "discovered": false
      },
      {
-      "id": "place.mock.lilmoth",
+      "id": "place.mercantile-coast.lilmoth",
       "name": "Lilmoth",
       "kind": "settlement",
-      "x": 55,
-      "y": -60,
+      "x": -0.5,
+      "y": -44.14,
       "discovered": false
      }
     ],
     "view": {
-     "centreX": -0.5,
-     "centreY": 0.25,
+     "centreX": -56.85,
+     "centreY": 11.7,
      "zoom": 4
     }
    }
@@ -152,25 +152,25 @@
     "revealed": [],
     "places": [
      {
-      "id": "place.mock.gideon",
+      "id": "place.imperial-fringe.gideon",
       "name": "Gideon",
       "kind": "settlement",
-      "x": 40,
-      "y": -12,
+      "x": -35.48,
+      "y": 11.53,
       "discovered": false
      },
      {
-      "id": "place.mock.lilmoth",
+      "id": "place.mercantile-coast.lilmoth",
       "name": "Lilmoth",
       "kind": "settlement",
-      "x": 55,
-      "y": -60,
+      "x": -0.5,
+      "y": -44.14,
       "discovered": false
      }
     ],
     "view": {
-     "centreX": 30,
-     "centreY": -30,
+     "centreX": 1.0,
+     "centreY": 1.0,
      "zoom": 1
     }
    }
@@ -182,8 +182,8 @@
    "v": 1,
    "body": {
     "view": {
-     "centreX": 3,
-     "centreY": -1.5,
+     "centreX": -53.85,
+     "centreY": 10.2,
      "zoom": 2
     }
    }

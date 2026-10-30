@@ -1,0 +1,99 @@
+/* The paper theme, first cut (1.2; the full design system is 2.2). Tokens and their reasons: ui/DESIGN.md.
+   Pelagiad comes from the install (fonts/ beside the views); it is never committed. */
+@font-face {
+  font-family: "Pelagiad";
+  src: url("../fonts/Pelagiad.ttf") format("truetype");
+  font-display: block;
+}
+
+:root {
+  /* paper */
+  --paper: #e6d9b8;
+  --paper-light: #f1e8cf;
+  --paper-dark: #cdbb8f;
+  --paper-edge: #9c8259;
+  --paper-shadow: rgba(30, 22, 10, 0.55);
+  /* ink */
+  --ink: #2a2015;
+  --ink-soft: #54432c;
+  --ink-faint: #7d6a4c;
+  --rust: #7b2f1d;        /* headings, dates, the disposition fill: Black Marsh red clay */
+  --link: #1d5263;        /* hyperlinked keywords: a deep marsh teal, Morrowind's blue moved to our palette */
+  --link-hi: #0f3a48;
+  --moss: #4b5a2a;        /* focus and selection */
+  --focus: #b0702a;       /* the focus ring: amber, seen on paper and over play */
+  /* the HUD over play */
+  --bar-health: #9a2f22;
+  --bar-stamina: #3f6e2c;
+  --bar-magicka: #2f4f96;
+  --bar-breath: #3a7884;
+  --bar-climb: #b07a26;
+  --trough: rgba(18, 14, 8, 0.82);
+  --plate: rgba(230, 217, 184, 0.92);
+  /* space and type (1rem is set from the viewport by scale.ts) */
+  --s1: 0.25rem; --s2: 0.5rem; --s3: 0.75rem; --s4: 1rem; --s6: 1.5rem; --s8: 2rem;
+  --t-body: 1rem; --t-head: 1.25rem; --t-title: 1.6rem; --t-banner: 2.6rem;
+  --line: 1.32;
+  --edge: 0.12rem;
+  font-size: min(calc(100vh / 34), calc(100vw / 52));
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; overflow: hidden; }
+body {
+  font-family: "Pelagiad", "Palatino Linotype", Palatino, serif;
+  font-size: var(--t-body);
+  line-height: var(--line);
+  color: var(--ink);
+  background: transparent;
+  -webkit-font-smoothing: antialiased;
+}
+button {
+  font: inherit; color: inherit; background: none; border: 0; padding: 0; margin: 0; cursor: pointer;
+  text-align: inherit; line-height: inherit;
+}
+button:disabled { cursor: default; color: var(--ink-faint); }
+:focus { outline: none; }
+button:focus-visible, button:focus, [data-nav]:focus {
+  outline: var(--edge) solid var(--focus);
+  outline-offset: 0.08rem;
+  background-color: rgba(176, 112, 42, 0.16);
+}
+body[data-device="touch"] button:focus { outline: none; background-color: transparent; }
+
+/* A sheet of paper: a warm ground, a soft mottle and a darker rim, all in CSS (no texture file). */
+.paper {
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(ellipse at 18% 12%, rgba(255, 250, 230, 0.55), transparent 55%),
+    radial-gradient(ellipse at 82% 88%, rgba(160, 130, 80, 0.22), transparent 60%),
+    radial-gradient(ellipse at 60% 30%, rgba(180, 150, 100, 0.12), transparent 40%),
+    radial-gradient(ellipse at center, transparent 62%, rgba(120, 90, 50, 0.28) 100%);
+  border: var(--edge) solid var(--paper-edge);
+  box-shadow: 0 0.3rem 1.2rem var(--paper-shadow), inset 0 0 0 0.25rem rgba(241, 232, 207, 0.6),
+    inset 0 0 0 calc(0.25rem + 1px) rgba(84, 67, 44, 0.45);
+  border-radius: 0.2rem;
+}
+
+/* The close mark every view carries for touch (Escape and the pad's B do the same). */
+.close {
+  min-width: 2.2rem; min-height: 2.2rem; padding: 0 var(--s3);
+  border: var(--edge) solid var(--ink-soft); border-radius: 0.2rem;
+  background: var(--paper-light); color: var(--ink);
+}
+
+.rule {
+  height: 0; border: 0; border-top: 1px solid var(--ink-faint); margin: var(--s2) 0;
+  opacity: 0.8;
+}
+
+/* A thin scroll bar in ink, wide enough to drag by finger on the fold. */
+.scroll { overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: var(--ink-faint) transparent; }
+.scroll::-webkit-scrollbar { width: 0.45rem; }
+.scroll::-webkit-scrollbar-thumb { background: var(--ink-faint); border-radius: 0.2rem; }
+
+/* The L3 harness's stand-in for a game frame behind views (never in the bundle's default look). */
+body.backdrop {
+  background: radial-gradient(ellipse at 30% 40%, #5d6b4a, #2d3524 60%, #1a1f15);
+}
+body.backdrop.bright { background: linear-gradient(#cfd6c4, #9aa585 55%, #6e7a58); }

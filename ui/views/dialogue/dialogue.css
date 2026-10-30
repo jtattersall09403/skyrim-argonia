@@ -1,0 +1,69 @@
+/* The dialogue window: Morrowind's layout (text left, disposition, persuasion, topics and Goodbye right) in paper. */
+body { display: flex; align-items: center; justify-content: center; }
+#view { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+
+.dialogue {
+  position: relative;
+  width: min(94vw, 62rem); height: 88vh;
+  display: flex; flex-direction: column;
+  padding: var(--s3) var(--s4) var(--s4);
+}
+.title { text-align: center; border-bottom: 1px solid var(--ink-faint); margin-bottom: var(--s3); }
+.title h1 {
+  margin: 0 0 var(--s1); font-size: var(--t-title); font-weight: normal; letter-spacing: 0.06em; color: var(--ink);
+}
+.cols { flex: 1; min-height: 0; display: flex; gap: var(--s4); }
+
+.talk {
+  flex: 2.1; min-width: 0; padding: var(--s2) var(--s3);
+  background: rgba(241, 232, 207, 0.55); border: 1px solid rgba(84, 67, 44, 0.35);
+  box-shadow: inset 0 0.1rem 0.4rem rgba(80, 60, 30, 0.25);
+}
+.entry { margin: 0 0 var(--s3); }
+.entry p { margin: 0; }
+.entry.notice p { color: var(--ink-soft); font-style: italic; }
+.entry:not(.last) { color: var(--ink-soft); }
+.asked { margin: 0 0 var(--s1); font-size: var(--t-head); font-weight: normal; color: var(--rust); }
+.kw {
+  display: inline; color: var(--link); text-decoration: underline; text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.14em;
+}
+.kw:hover { color: var(--link-hi); }
+
+.side { flex: 1; min-width: 10.5rem; max-width: 19rem; display: flex; flex-direction: column; gap: var(--s2); }
+.disp-bar {
+  position: relative; height: 1.6rem; border: var(--edge) solid var(--ink-soft); background: var(--trough);
+  border-radius: 0.1rem; overflow: hidden;
+}
+.disp-fill { position: absolute; inset: 0 auto 0 0; background: linear-gradient(#a84a2c, var(--rust) 60%, #5d2113); }
+.disp-text {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  color: var(--paper-light); text-shadow: 0 0 0.2rem #000, 0 0 0.1rem #000;
+}
+.special, .goodbye, .back-btn {
+  min-height: 2rem; padding: var(--s1) var(--s3); text-align: center;
+  border: var(--edge) solid var(--ink-soft); border-radius: 0.15rem; background: var(--paper-light);
+}
+.topics {
+  flex: 1; min-height: 0; list-style: none; margin: 0; padding: var(--s1) 0;
+  border-top: 1px solid var(--ink-faint); border-bottom: 1px solid var(--ink-faint);
+}
+.topic { display: block; width: 100%; padding: 0.12rem var(--s2); color: var(--link); }
+.topic:hover { color: var(--link-hi); background: rgba(176, 112, 42, 0.1); }
+
+.persuade {
+  position: absolute; right: var(--s4); top: 4.2rem; width: min(22rem, 80%); padding: var(--s3) var(--s4);
+  display: flex; flex-direction: column; gap: var(--s2); z-index: 2;
+}
+.persuade h2 { margin: 0; font-size: var(--t-head); font-weight: normal; color: var(--rust); text-align: center; }
+.persuade .opts { display: flex; flex-direction: column; gap: var(--s1); }
+.opt {
+  display: flex; justify-content: space-between; gap: var(--s3); padding: var(--s1) var(--s3);
+  border-bottom: 1px solid rgba(84, 67, 44, 0.3);
+}
+.opt .cost { color: var(--ink-soft); }
+.opt:disabled .cost { color: var(--ink-faint); }
+
+/* Short and wide (the fold closed at 21:9): the side column narrows, the title tightens. */
+@media (max-aspect-ratio: 1/1) { .dialogue { height: 80vh; } }
+@media (min-aspect-ratio: 2/1) { .dialogue { width: min(80vw, 66rem); height: 92vh; } .title h1 { font-size: var(--t-head); } }

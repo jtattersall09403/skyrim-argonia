@@ -1,0 +1,74 @@
+/* Our HUD over play: thin souls bars in an ink frame, paper plaques behind every word so text reads over a bright
+   frame, nothing at the screen's centre but the prompt, and no compass. */
+#view { position: fixed; inset: 0; pointer-events: none; }
+.hud { position: absolute; inset: 0; }
+.hud.hidden { display: none; }
+
+.bars { position: absolute; left: 2.5vw; top: 3.5vh; display: flex; flex-direction: column; gap: 0.32rem; }
+.bar {
+  position: relative; height: 0.62rem; max-width: 42vw; background: var(--trough);
+  border: 0.1rem solid #1a140b; outline: 1px solid rgba(230, 217, 184, 0.55); border-radius: 0.06rem;
+}
+.bar.health { height: 0.78rem; }
+.bar .fill { position: absolute; inset: 0 auto 0 0; box-shadow: inset 0 0.12rem 0 rgba(255, 255, 255, 0.22); }
+.bar.health .fill { background: var(--bar-health); }
+.bar.stamina .fill { background: var(--bar-stamina); }
+.bar.magicka .fill { background: var(--bar-magicka); }
+.bar.breath .fill { background: var(--bar-breath); }
+.bar.climb .fill { background: var(--bar-climb); }
+
+.notice, .fx, .sneak, .banner, .prompt, .vastei {
+  background: var(--plate); color: var(--ink); border: 1px solid var(--paper-edge); border-radius: 0.15rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0, 0, 0, 0.45);
+}
+
+.notices { position: absolute; left: 2.5vw; top: 28vh; margin: 0; padding: 0; list-style: none;
+  display: flex; flex-direction: column; gap: var(--s1); max-width: 38vw; }
+.notice { padding: 0.1rem var(--s3); border-left: 0.3rem solid var(--ink-soft); }
+.notice.journal { border-left-color: var(--link); }
+.notice.discovery { border-left-color: var(--moss); }
+.notice.warning { border-left-color: var(--rust); }
+
+.effects { position: absolute; right: 2.5vw; top: 3.5vh; margin: 0; padding: 0; list-style: none;
+  display: flex; flex-direction: column; align-items: flex-end; gap: var(--s1); }
+.fx { display: flex; align-items: center; gap: var(--s2); padding: 0.05rem var(--s2) 0.05rem 0.1rem; }
+.medal { width: 1.5rem; height: 1.5rem; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
+  border: 0.12rem solid var(--moss); background: var(--paper-light); }
+.fx.bane .medal { border-color: var(--rust); }
+.medal svg { width: 1.1rem; height: 1.1rem; fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-linecap: round; }
+.fx.bane .medal svg { fill: var(--rust); stroke: none; }
+.fx-time { color: var(--ink-soft); }
+
+.sneak { position: absolute; left: 50%; top: 3.5vh; transform: translateX(-50%); display: flex; align-items: center;
+  gap: var(--s2); padding: 0.05rem var(--s3); }
+.eye-svg { width: 2.6rem; height: 2.2rem; }
+.eye-svg .lid { fill: var(--paper-light); stroke: var(--ink); stroke-width: 1.4; }
+.eye-svg .iris { fill: var(--ink); }
+.sneak[data-eye="0"] .iris { fill: var(--ink-soft); }
+
+.banner { position: absolute; left: 50%; top: 17vh; transform: translateX(-50%); text-align: center;
+  padding: var(--s2) var(--s8); min-width: 40vw; }
+.banner .found { color: var(--rust); letter-spacing: 0.2em; }
+.banner .place { font-size: var(--t-banner); letter-spacing: 0.08em; line-height: 1.1; }
+.banner .region { color: var(--ink-soft); }
+.banner::before, .banner::after { content: ""; display: block; height: 1px; margin: var(--s1) 12%;
+  background: linear-gradient(90deg, transparent, var(--ink-soft), transparent); }
+
+.prompt { position: absolute; left: 50%; top: 62vh; transform: translateX(-50%); display: flex; align-items: center;
+  gap: var(--s3); padding: var(--s1) var(--s4); white-space: nowrap; }
+.prompt .target { color: var(--ink-soft); }
+.glyph { display: none; align-items: center; justify-content: center; min-width: 1.6rem; height: 1.6rem; }
+body[data-device="keyboard"] .glyph[data-device="keyboard"],
+body[data-device="gamepad"] .glyph[data-device="gamepad"],
+body[data-device="touch"] .glyph[data-device="touch"] { display: inline-flex; }
+.glyph.key { padding: 0 0.3rem; border: 0.12rem solid var(--ink); border-bottom-width: 0.25rem; border-radius: 0.2rem;
+  background: var(--paper-light); }
+.glyph.pad { border-radius: 50%; background: var(--ink); color: var(--paper-light); }
+.glyph.touch .ring { width: 1.3rem; height: 1.3rem; border-radius: 50%; border: 0.15rem solid var(--ink);
+  box-shadow: inset 0 0 0 0.3rem var(--paper-light), inset 0 0 0 0.6rem var(--ink); }
+
+.vastei { position: absolute; right: 2.5vw; bottom: 4vh; display: flex; align-items: baseline; gap: var(--s2);
+  padding: var(--s1) var(--s4); }
+.vastei .count { font-size: var(--t-title); line-height: 1; }
+.vastei .vlabel { color: var(--ink-soft); }
+.vastei .gain { color: var(--moss); }

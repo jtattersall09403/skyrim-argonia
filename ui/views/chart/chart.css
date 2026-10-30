@@ -1,0 +1,19 @@
+/* The chart: the parchment in a paper frame, the controls along the foot, the places' names only on focus. */
+#view { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; }
+.chart { width: 96vw; height: 94vh; display: flex; flex-direction: column; gap: var(--s2); padding: var(--s2); }
+.sheet { position: relative; flex: 1; min-height: 0; overflow: hidden; border: 1px solid var(--ink-soft); }
+.layers { display: block; width: 100%; height: 100%; touch-action: none; cursor: grab; }
+.places { position: absolute; inset: 0; pointer-events: none; }
+.place {
+  position: absolute; width: 1.6rem; height: 1.6rem; margin: -0.8rem 0 0 -0.8rem; border-radius: 50%;
+  pointer-events: auto;
+}
+.place .pname {
+  display: none; position: absolute; left: 50%; bottom: 1.7rem; transform: translateX(-50%); white-space: nowrap;
+  padding: 0 var(--s2); background: var(--paper-light); border: 1px solid var(--ink-soft); border-radius: 0.15rem;
+}
+.place:focus .pname, .place:hover .pname { display: block; }
+.place:focus { outline: var(--edge) solid var(--focus); background: rgba(176, 112, 42, 0.2); }
+.controls { display: flex; justify-content: flex-end; gap: var(--s2); }
+.zoom { min-width: 2.2rem; min-height: 2.2rem; text-align: center; font-size: var(--t-head);
+  border: var(--edge) solid var(--ink-soft); border-radius: 0.2rem; background: var(--paper-light); }
