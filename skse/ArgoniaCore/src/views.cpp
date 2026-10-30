@@ -538,6 +538,9 @@ std::string ViewProbe(std::string_view topics) {
                                                        "Livia (probe)", n));
   if (!json) return R"({"error":"the probe window does not fit the schema"})";
   Push("dialogue", *json);
+  // The probe measures the window drawn over running play: its focus (which pauses the game, so no frame reaches the
+  // bridge's player-update clock: game-16/17 ui-probe frames-open) is dropped; the page stays shown. Dev only.
+  if (auto it = g_ids.find("dialogue"); g_api && it != g_ids.end()) g_api->Unfocus(it->second);
   return *json;
 }
 
