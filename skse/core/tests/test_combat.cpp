@@ -65,12 +65,18 @@ void armour_and_mitigation() {
   const auto s = argonia::test::marsh_hand();  // Heavy Armor 45, Unarmored 5
   const auto e = Effective::of(s);
   const auto c = carriers::compute(s, e, BurdenTier::mid, {}, {});
-  const Piece cuirass{SkillId::heavyArmor, 50};
+  const Piece cuirass{SkillId::heavyArmor, 50, 0b0010};
   const double bare = 0.0065 * 5 * 5;
   CHECK_NEAR(armour_rating(c, std::span(&cuirass, 1)), 47.5128 + 3 * bare, 1e-3);
   CHECK_NEAR(armour_rating(c, {}), 4 * bare, 1e-12);
   const std::vector<Piece> five(5, cuirass);
-  CHECK_NEAR(armour_rating(c, five), 5 * 47.5128, 5e-3);  // more pieces than slots: no negative bare term
+  CHECK_NEAR(armour_rating(c, five), 5 * 47.5128 + 3 * bare, 5e-3);  // five on one slot cover one slot
+  // Counted by slot: a shield covers none, so shield + cuirass + gauntlets + boots leaves the head bare.
+  const std::vector<Piece> kit{{SkillId::heavyArmor, 0, 0}, {SkillId::heavyArmor, 0, 0b0010},
+                               {SkillId::heavyArmor, 0, 0b0100}, {SkillId::heavyArmor, 0, 0b1000}};
+  CHECK_NEAR(armour_rating(c, kit), bare, 1e-12);
+  const std::vector<Piece> full{{SkillId::lightArmor, 0, 0b0001}, {SkillId::lightArmor, 0, 0b1110}};
+  CHECK_NEAR(armour_rating(c, full), 0, 1e-12);  // every slot covered: no Unarmored term
   Loadout l{{SkillId::longBlade}, {cuirass}, 45};
   const auto p = compute(s, e, l);
   CHECK_NEAR(value_of(p, CarrierId::body_incoming_damage), -carriers::mitigation(p.armour_rating, 24), 1e-12);

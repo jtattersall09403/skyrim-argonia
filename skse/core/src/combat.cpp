@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <array>
+#include <bit>
 #include <cstdlib>
 
 namespace argonia::core::combat {
@@ -50,7 +51,9 @@ double armour_rating(const carriers::Carriers& c, std::span<const Piece> worn) {
     const auto i = armour_index(p.skill);
     if (i < c.armour_rating_mult.size()) ar += std::max(0.0, p.raw_rating) * c.armour_rating_mult[i];
   }
-  const double bare = std::max(0.0, gen::carriers::unarmored_slots - static_cast<double>(worn.size()));
+  std::uint32_t covered = 0;
+  for (const auto& p : worn) covered |= p.covers;
+  const double bare = std::max(0.0, gen::carriers::unarmored_slots - static_cast<double>(std::popcount(covered)));
   return ar + bare * c.unarmored_rating_per_slot;
 }
 

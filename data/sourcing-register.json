@@ -994,7 +994,7 @@
     "source_url": "https://store.steampowered.com/app/489830/",
     "version": "the pinned runtime 1.7.104 (decision 0002); Skyrim - Meshes0.bsa",
     "licence": "Bethesda EULA: the player's own copy; nothing is shipped (decision 0003), referenced by path only",
-    "used_by": "Argonia.esm ACTI ARG_CampSpot (meshes/furniture/bedroll/bedrollground.nif; verdict: replace with bedroll01.nif), ACTI ARG_VasteiPileActivator (meshes/clutter/soulgem/soulgempetty01.nif; verdict: keep); tools/argonia_world/life_records.py",
+    "used_by": "Argonia.esm ACTI ARG_CampSpot (meshes/furniture/bedroll/bedroll01.nif; bedrollground.nif replaced, it is a marker only), ACTI ARG_VasteiPileActivator (meshes/clutter/soulgem/soulgempetty01.nif; verdict: keep); tools/argonia_world/life_records.py",
     "linked_or_forked_by": "linked: the record names the archive path; the engine loads the player's own file",
     "notes": "Borrowing under decision 0012 §6; quarantine verdicts in data/immersion/verdicts.jsonl (core-wiring, 2026-10-30)."
   },

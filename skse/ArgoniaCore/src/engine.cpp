@@ -66,6 +66,10 @@ RE::TESForm* Lookup(std::string_view world_id) {
   return row && dh ? dh->LookupForm(row->local, row->plugin) : nullptr;
 }
 
+RE::ActorValue AvNamed(std::string_view name) {
+  return RE::ActorValueList::LookupActorValueByName(std::string(name).c_str());
+}
+
 std::optional<std::string> WorldId(const RE::TESForm* form) {
   if (!form) return std::nullopt;
   const auto* file = form->GetFile(0);

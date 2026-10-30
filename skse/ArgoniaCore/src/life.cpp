@@ -30,10 +30,6 @@ ac::rest::Pos PosOf(const RE::TESObjectREFR* r) {
   return ac::life::at_units(p.x, p.y, p.z, SpaceOf(r));
 }
 
-RE::ActorValue AvNamed(std::string_view name) {
-  return RE::ActorValueList::LookupActorValueByName(std::string(name).c_str());
-}
-
 double Health(RE::Actor* a, bool max) {
   auto* avo = a->AsActorValueOwner();
   return max ? avo->GetPermanentActorValue(RE::ActorValue::kHealth) : avo->GetActorValue(RE::ActorValue::kHealth);
@@ -50,20 +46,7 @@ bool LocationHas(RE::BGSLocation* loc, std::string_view world_id) {
   return false;
 }
 
-ac::life::Worn WornArmour(RE::Actor* a) {
-  ac::life::Worn w;
-  for (auto& [obj, data] : a->GetInventory([](RE::TESBoundObject& o) { return o.IsArmor(); })) {
-    if (!data.second || !data.second->IsWorn()) continue;
-    auto* armo = obj->As<RE::TESObjectARMO>();
-    if (!armo) continue;
-    switch (armo->GetArmorType()) {
-      case RE::BGSBipedObjectForm::ArmorType::kHeavyArmor: ++w.heavy; break;
-      case RE::BGSBipedObjectForm::ArmorType::kLightArmor: ++w.light; break;
-      default: break;  // clothing; medium armour's marker is 1.3's (none yet)
-    }
-  }
-  return w;
-}
+ac::life::Worn WornArmour(RE::Actor* a) { return ac::life::worn_of(WornPieces(a)); }
 
 ac::life::Target TargetOf(RE::Actor* a) {
   ac::life::Target t;
@@ -75,9 +58,9 @@ ac::life::Target TargetOf(RE::Actor* a) {
   return t;
 }
 
-std::optional<ac::SkillId> WeaponSkill(RE::FormID source) {
-  auto* weap = RE::TESForm::LookupByID<RE::TESObjectWEAP>(source);
-  if (!weap || weap->IsHandToHandMelee()) return std::nullopt;
+// The weapon-class skill of a weapon (none: not a weapon, or no Argonia class keyword).
+std::optional<ac::SkillId> ClassSkill(const RE::TESObjectWEAP* weap) {
+  if (!weap) return std::nullopt;
   std::optional<ac::SkillId> out;
   weap->ForEachKeyword([&](RE::BGSKeyword* kw) {
     if (auto id = WorldId(kw))
@@ -87,8 +70,18 @@ std::optional<ac::SkillId> WeaponSkill(RE::FormID source) {
       }
     return RE::BSContainer::ForEachResult::kContinue;
   });
-  if (!out) SKSE::log::warn("grow: weapon {:08X} carries no Argonia weapon class; the blow trains nothing", source);
-  return out ? out : std::optional<ac::SkillId>{};
+  return out;
+}
+
+// The skill a landed blow trains (core life::blow_skill): none for a spell, enchantment, poison or explosion and
+// for a weapon with no class (logged), Hand-to-hand for fists.
+std::optional<ac::SkillId> BlowSkill(RE::FormID source) {
+  auto* weap = RE::TESForm::LookupByID<RE::TESObjectWEAP>(source);
+  const bool fists = weap && weap->IsHandToHandMelee();
+  const auto cls = fists ? std::nullopt : ClassSkill(weap);
+  if (weap && !fists && !cls)
+    SKSE::log::warn("grow: weapon {:08X} carries no Argonia weapon class; the blow trains nothing", source);
+  return ac::life::blow_skill(weap != nullptr, fists, cls);
 }
 
 std::optional<ac::SkillId> SchoolSkill(RE::FormID spell) {
@@ -134,9 +127,13 @@ void ResetActors(const std::vector<ac::respawn::ActorId>& ids) {
     auto* a = RE::TESForm::LookupByID<RE::Actor>(id);
     if (!a) continue;
     if (a->IsDead()) a->Resurrect(false, true);
-    RE::NiPoint3 pos, rot;
-    RE::TESForm* space = nullptr;
-    if (a->GetEditorLocation(pos, rot, space, nullptr)) a->SetPosition(pos, true);
+    else {  // a living roster actor is reset too: whole again, wherever the fight left it
+      auto* avo = a->AsActorValueOwner();
+      for (auto av : {RE::ActorValue::kHealth, RE::ActorValue::kStamina, RE::ActorValue::kMagicka})
+        avo->RestoreActorValue(av, avo->GetPermanentActorValue(av));
+    }
+    if (!a->MoveToEditorLocation())  // across cells, unlike SetPosition
+      SKSE::log::warn("respawn: {:08X} has no editor location; left where it stands", id);
   }
   if (!ids.empty()) SKSE::log::info("respawn: {} actors reset", ids.size());
 }
@@ -287,7 +284,7 @@ class HitSink final : public RE::BSTEventSink<RE::TESHitEvent> {
         std::lock_guard l(Get().lock);
         dmg = Get().health.damage(target->GetFormID(), Health(target, false), Health(target, true));
       }
-      Use(ac::life::hit_dealt(WeaponSkill(e->source), dmg, TargetOf(target)), "hit");
+      if (const auto skill = BlowSkill(e->source)) Use(ac::life::hit_dealt(*skill, dmg, TargetOf(target)), "hit");
     } else if (target == p) {
       double dmg;
       {
@@ -419,7 +416,9 @@ bool SuspendSaveFor(std::string_view wire) {
   return due;
 }
 
-std::optional<ac::SkillId> WeaponSkillOf(RE::FormID weapon) { return WeaponSkill(weapon); }
+std::optional<ac::SkillId> WeaponSkillOf(RE::FormID weapon) {
+  return ClassSkill(RE::TESForm::LookupByID<RE::TESObjectWEAP>(weapon));
+}
 
 bool RestAt(RE::TESObjectREFR* spot) {
   auto* p = Player();
@@ -455,6 +454,8 @@ bool RestAt(RE::TESObjectREFR* spot) {
     for (auto av : {RE::ActorValue::kHealth, RE::ActorValue::kStamina, RE::ActorValue::kMagicka})
       avo->RestoreActorValue(av, avo->GetPermanentActorValue(av));
     ResetActors(reset);
+    std::lock_guard l(Get().lock);
+    Get().health.clear();  // healed and reset actors: a hit after the rest is measured from their new health
   });
   if (r.sitting) {
     c.sitting = ac::life::open_sitting(*r.sitting, c.state);
@@ -520,12 +521,19 @@ void LifeDataLoaded() {
   }
   // Rest is the only save: the engine's own save points off (autosaves on rest, wait, travel, the menus).
   int off = 0;
-  if (auto* ini = RE::INISettingCollection::GetSingleton())
-    for (auto name : {"bSaveOnRest:SaveGame", "bSaveOnWait:SaveGame", "bSaveOnTravel:SaveGame", "bSaveOnCharacterMenu:SaveGame"})
-      if (auto* s = ini->GetSetting(name)) {
-        s->data.b = false;
-        ++off;
-      }
+  // They are SkyrimPrefs.ini settings (the Gameplay menu's "Save on ..."), so the prefs collection holds them.
+  for (auto name : {"bSaveOnRest:SaveGame", "bSaveOnWait:SaveGame", "bSaveOnTravel:SaveGame", "bSaveOnCharacterMenu:SaveGame"}) {
+    RE::Setting* s = nullptr;
+    if (auto* prefs = RE::INIPrefSettingCollection::GetSingleton()) s = prefs->GetSetting(name);
+    if (!s)
+      if (auto* ini = RE::INISettingCollection::GetSingleton()) s = ini->GetSetting(name);
+    if (s) {
+      s->data.b = false;
+      ++off;
+    } else {
+      SKSE::log::error("saves: {} is in neither ini collection; that engine save point stays on", name);
+    }
+  }
   // The roster: our persistent placed actors whose base carries a respawn keyword (records make them persistent).
   c.roster.clear();
   struct Kw { RE::BGSKeyword* kw; ac::respawn::RespawnClass cls; };

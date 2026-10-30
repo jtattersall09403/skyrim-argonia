@@ -4,7 +4,7 @@ Name:
   TargetLanguage: English
   Value: Camp
 Model:
-  File: Furniture\Bedroll\BedrollGround.nif
+  File: Furniture\Bedroll\Bedroll01.nif
 Keywords:
 - 000859:Argonia.esm
 ActivateTextOverride:

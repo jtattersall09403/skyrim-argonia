@@ -57,6 +57,10 @@ def test_activators():
     assert (camp["name"], camp["activateTextOverride"], camp["keywords"]) == ("Camp", "Rest", [r["ARG_RestSpot"]["formKey"]])
     assert (pile["name"], pile["activateTextOverride"], pile["keywords"]) == ("Vastei", "Take", [r["ARG_VasteiPile"]["formKey"]])
     assert camp["model"].lower().endswith(".nif") and pile["model"].lower().endswith(".nif")
+    # The camp spot must be seen and picked: bedrollground.nif is a furniture marker with no geometry or collision
+    # (quarantine verdict 00085F); the borrowed model is the one the verdict names.
+    assert camp["model"].lower() != "furniture\\bedroll\\bedrollground.nif"
+    assert camp["model"].lower() == "furniture\\bedroll\\bedroll01.nif"
 
 
 def test_perk_two_choices():

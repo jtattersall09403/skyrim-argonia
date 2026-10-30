@@ -40,6 +40,31 @@ game machine was another lane's and nothing was deployed.
 - Marksman was mirrored from our Marksman skill, but the wiring pins it at 0 (Skyrim's skill damage term must stay
   neutral). The mirror is removed, and a test checks that no mirror writes a pinned skill.
 
+**The /code-review pass** (high; 1.5's, 1.6's and this lane's commits, 48c12a6..2bf575c) gave 10 findings. 8 are
+fixed, each with a test where its logic sits:
+- **Spell and unclassed-weapon hits trained Hand-to-hand**, because `hit_dealt(nullopt)` means fists. Fixed by
+  `life::blow_skill` (a non-weapon or an unclassed weapon trains nothing), tested in core.life.
+- **Armour counted pieces, not slots**, so a shield used up a slot. Fixed: `Piece::covers` is a slot bitmask, and
+  core.combat tests the shield, the overlap and the full set.
+- **A borrowed vanilla piece's rating counted twice**, once by the engine and once by the carrier. Fixed:
+  `raw_rating` is 0 until our data holds one.
+- **The hit and the carriers walked the armour separately**: now one walk, through `WornPieces`, `life::worn_of`
+  (tested), and one shared `AvNamed`.
+- **WriteCombat is coalesced**, so Take All queues one task, not one per item.
+- **HealthWatch was not cleared at a rest**, so the first hit after it read 0. **ResetActors** used SetPosition (no
+  cell change, the living stayed hurt). It now uses MoveToEditorLocation and restores the pools. These two are
+  engine calls, so their proof is L4 (die-and-recover, grow-at-rest).
+- **The engine save points are SkyrimPrefs.ini settings.** They are now looked up in INIPrefSettingCollection first,
+  and a miss is logged (L4: rest-is-the-only-save).
+- **The camp spot was invisible.** `bedrollground.nif` is a marker only. It is now `bedroll01.nif`
+  (life_records.py), and test_life_records refuses the marker.
+
+Not changed:
+- **`view.close` for the sitting.** The schema's ViewId has no `sitting`, so that intent cannot be decoded. The
+  sitting closes by `sitting.done` (its Escape).
+- **Block, HeavyArmor and LightArmor mirrors and Skyrim's own terms.** The armour half is closed by the 0 raw
+  rating. Block is the L4 question below.
+
 **Losses, stated:**
 - **AR is only the Unarmored term until the item rows carry a rating.** Our ARMO records have rating 0 (w.armour.vanilla),
   and `item` has no armour-rating column yet. So `Energy` reflects Unarmored only (0.0065 × skill² for each of the 4

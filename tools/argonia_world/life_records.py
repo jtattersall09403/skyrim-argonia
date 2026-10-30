@@ -6,8 +6,9 @@ Every field is plain and resolved; ArgoniaGen's ActivatorRecords.cs, GameSetting
 choices. The two models, picked from out/pieces-index.json by the asset route (Black Marsh mods, then Tropical Skyrim
 SSE, then vanilla; the index holds no Black Marsh or Tropical Skyrim bedroll or soul marker, so vanilla's, as a path
 only, never a file):
-  - ARG_CampSpot: furniture/bedroll/bedrollground.nif, vanilla's low ground bedroll (it is a ground roll, not a bed
-    with a frame, and has no Nordic element; a camp is a bedroll).
+  - ARG_CampSpot: furniture/bedroll/bedroll01.nif, vanilla's ground bedroll (a stitched hide with a fur pillow, no
+    Nordic element; a camp is a bedroll). Not bedrollground.nif: that file is only the furniture marker and an
+    editor marker, with no visible geometry and no collision (quarantine verdict 00085F, core-wiring 2026-10-30).
   - ARG_VasteiPile: clutter/soulgem/soulgempetty01.nif, the smallest, lowest solid clutter mesh that reads as a soul
     and has collision (so it can be activated). No effect-style mesh has collision; the gold ring, halo and wisps
     come from vanilla effect shaders ArgoniaCore applies at runtime. Swap for a plainer marker if the look wants.
@@ -23,7 +24,7 @@ LOC_SETTLEMENT = ("ARG_LocType_Settlement", "hook.loc-settlement")
 LOC_DUNGEON = ("ARG_LocType_Dungeon", "hook.loc-dungeon")
 PERK_EDID = "ARG_Perk_RestIntercept"
 FRAGMENT_SCRIPT = "ARG_PRKF_RestIntercept"
-CAMP_MODEL = "Furniture\\Bedroll\\BedrollGround.nif"
+CAMP_MODEL = "Furniture\\Bedroll\\Bedroll01.nif"
 VASTEI_MODEL = "Clutter\\SoulGem\\SoulGemPetty01.nif"
 
 

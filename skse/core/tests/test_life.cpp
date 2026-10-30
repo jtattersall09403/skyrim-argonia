@@ -75,6 +75,17 @@ int main() {
   dummy.dummy = true;
   CHECK(!use(s, hit_dealt(SkillId::longBlade, 20, dummy)).counted());
   CHECK(!use(s, hit_dealt(std::nullopt, 0, hostile)).counted());  // no damage, no use
+  // Only weapons train weapon skills: a spell or an unclassed weapon trains nothing; fists train Hand-to-hand.
+  CHECK(!blow_skill(false, false, std::nullopt));
+  CHECK(!blow_skill(false, false, SkillId::longBlade));
+  CHECK(!blow_skill(true, false, std::nullopt));
+  CHECK(blow_skill(true, true, std::nullopt) == SkillId::handToHand);
+  CHECK(blow_skill(true, false, SkillId::axe) == SkillId::axe);
+  const combat::Piece pieces[] = {{SkillId::heavyArmor, 50, 0}, {SkillId::heavyArmor, 0, 0}, {SkillId::lightArmor, 0, 0},
+                                  {SkillId::mediumArmor, 0, 0}};
+  const auto w = worn_of(pieces);
+  CHECK(w.heavy == 2 && w.light == 1 && w.medium == 1);
+  CHECK(armour_skill(w) == SkillId::heavyArmor);
   CHECK(hit_dealt(std::nullopt, 5, hostile).skill == SkillId::handToHand);
 
   // Struck while blocking: the armour class's hitTaken, then Block; a kill trains the armour class.

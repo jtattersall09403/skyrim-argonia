@@ -6,6 +6,7 @@
 // the player at the last rest; the save policy says when the rest save and the hidden suspend save are written.
 // ArgoniaCore implements the engine side (actor values, the pile reference, the fade, BGSSaveLoadManager::Save).
 #pragma once
+#include "argonia/core/combat.h"
 #include "argonia/core/death.h"
 #include "argonia/core/messages.h"
 #include "argonia/core/progression.h"
@@ -45,6 +46,12 @@ struct Worn { int light = 0, medium = 0, heavy = 0; };
 // The armour skill a hit or a kill trains: the class worn on the most pieces (a tie goes to the heavier), Unarmored
 // with none.
 SkillId armour_skill(const Worn& w);
+// The worn armour classes from the pieces the engine reports (one walk serves both the hit and the carriers).
+Worn worn_of(std::span<const combat::Piece> pieces);
+// The skill a landed blow trains, from what the hit's source is: a weapon with an Argonia class trains that class's
+// skill, a hand-to-hand weapon (fists) Hand-to-hand; a spell, enchantment, poison or explosion (not a weapon) and a
+// weapon with no class train nothing (none). 2.9 owns spell hits through CheckCast.
+std::optional<SkillId> blow_skill(bool is_weapon, bool hand_to_hand, std::optional<SkillId> weapon_class);
 
 // The damage of a hit, which TESHitEvent does not carry: the target's health before (last seen after its previous
 // hit, its maximum the first time) less its health now, never below 0. Regeneration between hits makes it read low

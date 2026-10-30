@@ -39,29 +39,6 @@ ac::carriers::HandContext RightHand(RE::Actor* a) {
   return h;  // requirement_shortfall: item soft requirements are 2.7's; 0 until then
 }
 
-std::vector<cb::Piece> WornPieces(RE::Actor* a) {
-  std::vector<cb::Piece> out;
-  for (auto& [obj, data] : a->GetInventory([](RE::TESBoundObject& o) { return o.IsArmor(); })) {
-    if (!data.second || !data.second->IsWorn()) continue;
-    auto* armo = obj->As<RE::TESObjectARMO>();
-    if (!armo) continue;
-    cb::Piece p;
-    switch (armo->GetArmorType()) {
-      case RE::BGSBipedObjectForm::ArmorType::kHeavyArmor: p.skill = ac::SkillId::heavyArmor; break;
-      case RE::BGSBipedObjectForm::ArmorType::kLightArmor: p.skill = ac::SkillId::lightArmor; break;
-      default: continue;  // clothing covers no armour slot; medium armour's marker is 1.3's (none yet)
-    }
-    // The raw rating: our records carry 0 (w.armour.vanilla), so this reads 0 until the item rows hold a rating
-    // (a stated loss in docs/research/journals/combat.md); a borrowed vanilla piece reads its own.
-    p.raw_rating = armo->GetArmorRating();
-    out.push_back(p);
-  }
-  return out;
-}
-
-RE::ActorValue AvNamed(std::string_view name) {
-  return RE::ActorValueList::LookupActorValueByName(std::string(name).c_str());
-}
 
 // Equip changes the hand and the armour; a carried-item change moves the burden tier.
 class LoadoutSink final : public RE::BSTEventSink<RE::TESEquipEvent>,
@@ -80,6 +57,32 @@ class LoadoutSink final : public RE::BSTEventSink<RE::TESEquipEvent>,
 };
 
 }  // namespace
+
+std::vector<cb::Piece> WornPieces(RE::Actor* a) {
+  using Slot = RE::BGSBipedObjectForm::BipedObjectSlot;
+  // The four Unarmored slots (76 §118), one bit each in core/combat's order: head (a hood sits on the hair slot),
+  // body, hands, feet.
+  constexpr Slot kSlots[][2] = {{Slot::kHead, Slot::kHair}, {Slot::kBody, Slot::kBody}, {Slot::kHands, Slot::kHands},
+                                {Slot::kFeet, Slot::kFeet}};
+  std::vector<cb::Piece> out;
+  for (auto& [obj, data] : a->GetInventory([](RE::TESBoundObject& o) { return o.IsArmor(); })) {
+    if (!data.second || !data.second->IsWorn()) continue;
+    auto* armo = obj->As<RE::TESObjectARMO>();
+    if (!armo) continue;
+    cb::Piece p;
+    switch (armo->GetArmorType()) {
+      case RE::BGSBipedObjectForm::ArmorType::kHeavyArmor: p.skill = ac::SkillId::heavyArmor; break;
+      case RE::BGSBipedObjectForm::ArmorType::kLightArmor: p.skill = ac::SkillId::lightArmor; break;
+      default: continue;  // clothing covers no armour slot; medium armour's marker is 1.3's (none yet)
+    }
+    for (std::uint32_t bit = 0; bit < std::size(kSlots); ++bit)
+      if (armo->HasPartOf(kSlots[bit][0]) || armo->HasPartOf(kSlots[bit][1])) p.covers |= 1u << bit;
+    // The raw rating is 0: our records carry none (w.armour.vanilla) and the item rows hold no rating yet (a stated
+    // loss, docs/research/journals/combat.md). A record's own rating is the engine's to apply, never counted twice.
+    out.push_back(p);
+  }
+  return out;
+}
 
 void CombatDataLoaded() {
   static LoadoutSink sink;
@@ -114,7 +117,22 @@ void CombatDataLoaded() {
 }
 
 void WriteCombat(std::string_view why) {
-  SKSE::GetTaskInterface()->AddTask([why = std::string(why)] {
+  // One pending pass at a time: a burst of changes (Take All from a chest) queues one task, which reads the state
+  // as it is when it runs; the reasons are joined for the log.
+  static std::mutex m;
+  static std::string pending;
+  {
+    std::lock_guard g(m);
+    const bool queued = !pending.empty();
+    if (pending.find(why) == std::string::npos) pending += (queued ? ", " : "") + std::string(why);
+    if (queued) return;
+  }
+  SKSE::GetTaskInterface()->AddTask([] {
+    std::string why;
+    {
+      std::lock_guard g(m);
+      why = std::exchange(pending, {});
+    }
     auto* p = Player();
     if (!p) return;
     auto& c = Get();

@@ -24,6 +24,7 @@ using gen::CarrierId;
 struct Piece {
   SkillId skill = SkillId::unarmored;
   double raw_rating = 0;
+  std::uint32_t covers = 0;  // a bit per Unarmored slot it covers (head, body, hands, feet); 0 for a shield
 };
 
 // What the engine says the player holds, wears and carries.
@@ -34,7 +35,7 @@ struct Loadout {
 };
 
 // The player's armour rating: each piece's raw rating times its class band, plus the Unarmored term for every
-// slot of the four no piece covers (76 §118).
+// slot of the four no piece covers (76 §118), counted by slot: a shield covers none, two pieces on one slot one.
 double armour_rating(const carriers::Carriers& c, std::span<const Piece> worn);
 
 // The value one carrier's actor value holds (factor − 1); 0 for a reserved (unwired) carrier and for an empty hand.

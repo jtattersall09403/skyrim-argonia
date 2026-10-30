@@ -54,6 +54,22 @@ std::optional<SkillId> weapon_skill(std::string_view class_world_id) {
 std::span<const SkillMirror> skill_mirrors() { return kSkillMirrors; }
 std::span<const std::string_view> vanilla_skills() { return kVanillaSkills; }
 
+Worn worn_of(std::span<const combat::Piece> pieces) {
+  Worn w;
+  for (const auto& p : pieces) {
+    if (p.skill == SkillId::heavyArmor) ++w.heavy;
+    else if (p.skill == SkillId::mediumArmor) ++w.medium;
+    else if (p.skill == SkillId::lightArmor) ++w.light;
+  }
+  return w;
+}
+
+std::optional<SkillId> blow_skill(bool is_weapon, bool hand_to_hand, std::optional<SkillId> weapon_class) {
+  if (!is_weapon) return std::nullopt;
+  if (hand_to_hand) return SkillId::handToHand;
+  return weapon_class;
+}
+
 SkillId armour_skill(const Worn& w) {
   if (w.heavy + w.medium + w.light <= 0) return SkillId::unarmored;
   if (w.heavy >= w.medium && w.heavy >= w.light) return SkillId::heavyArmor;

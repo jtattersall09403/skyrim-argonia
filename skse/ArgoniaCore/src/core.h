@@ -2,6 +2,7 @@
 // skse/core (seam, talk, quest_runtime, router, families ...) and tested there; these files turn engine events into
 // the seam's inputs and write its outputs back (SetStage, SetObjectiveCompleted, actor values, globals, view pushes).
 #pragma once
+#include "argonia/core/combat.h"
 #include "argonia/core/life.h"
 #include "argonia/core/quests.h"
 #include "argonia/core/router.h"
@@ -53,6 +54,8 @@ T* Lookup(std::string_view world_id) {
   return f ? f->As<T>() : nullptr;
 }
 std::optional<std::string> WorldId(const RE::TESForm* form);
+// An actor value by its engine (AVIF enum) name; kNone for a name the runtime does not know.
+RE::ActorValue AvNamed(std::string_view name);
 inline constexpr RE::FormID kGold = 0x0000000F;  // Skyrim.esm's Gold001, the engine's own currency record
 class GameEngine final : public ac::seam::Engine, public ac::seam::EngineWrites {
  public:
@@ -98,6 +101,9 @@ bool SuspendSaveFor(std::string_view why);
 void CombatDataLoaded();
 // Recompute and write on the main thread; `why` names the change for the log.
 void WriteCombat(std::string_view why);
+// The armour pieces an actor wears (heavy and light; clothing and medium's missing marker skipped), with the
+// Unarmored slots each covers: one walk serves the hit's armour skill and the carriers' rating.
+std::vector<ac::combat::Piece> WornPieces(RE::Actor* a);
 
 // --- natives.cpp ------------------------------------------------------------------------------------------------
 bool RegisterNatives(RE::BSScript::IVirtualMachine* vm);
