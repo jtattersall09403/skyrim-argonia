@@ -722,7 +722,7 @@ def journey(stops: list[dict]) -> dict:
     for s in stops:
         for st in s["steps"]:
             steps.append(st)
-    return {"id": "world-sample", "runner": 1, "scene": stops[0]["scene"],
+    return {"id": "world-sample", "runner": 1, "crash_risk": "high", "scene": stops[0]["scene"],  # travel across the province
             "stops": [{"n": s["n"], "title": s["title"], "scene": s["scene"], "cell": s["cell"],
                        "region": s["weather"]["region"], "weather": s["weather"]["edid"],
                        **{k: s[k] for k in ("cliff", "corner", "reach", "falls", "basin", "lake", "coast", "vegetation", "border",

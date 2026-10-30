@@ -6,6 +6,7 @@
 # vertices (terrain build.game_heights_m), within 0.5 m. Steps with `reader:` list what a `reader` checks on the still.
 id: world-sample
 runner: 1
+crash_risk: high
 scene: world-sample-01-claywater
 stops:
 - n: 1
