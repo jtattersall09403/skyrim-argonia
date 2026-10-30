@@ -18,6 +18,7 @@ RULES = [
     (START + r"git\s+stash\b", "git stash hides work from other lanes: commit or leave it"),
     (START + r"git\s+reset\s+--hard\b", "git reset --hard discards work"),
     (START + r"git\s+update-ref\b", "git update-ref can drop other lanes' commits (2026-10-30): commit by pathspec"),
+    (r"\bGIT_INDEX_FILE=", "a temporary git index commits a stale view of shared files (2026-10-30, twice): git add + git commit -- <paths>"),
     (START + r"(pkill|killall)\b", "pkill/killall can hit other lanes: kill one pid you started"),
     (START + r"kill\s+-9\s+-1\b", "kill -9 -1 kills every process"),
     (START + r"git\s+commit\b[^;&|\n]*\s--(\s*$|\s*[;&|])", "git commit with an empty pathspec commits everything staged"),
