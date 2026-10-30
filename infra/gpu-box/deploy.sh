@@ -30,7 +30,16 @@ if [ $stage = 1 ]; then step "stack stage" "$PY" "$here/stack.py" stage; step "s
 if [ $papyrus = 1 ]; then step "papyrus" "$here/records_jobs.sh" papyrus; fi
 ls out/gpu/papyrus/*.pex >/dev/null 2>&1 || { echo "no out/gpu/papyrus/*.pex: records_jobs.sh papyrus" >&2; exit 1; }
 step "game down" "$run" ps 'powershell -ExecutionPolicy Bypass -File C:\argonia\infra\bridge.ps1 -Cmd kill'
-[ $skse = 1 ] && step "skse build" "$here/skse_build.sh" build windows-dev
+if [ $skse = 1 ]; then
+  # unchanged skse/ (clean tree, stamp and both DLLs on the machine) skips the 124 s build; tools/skse_stamp.py decides
+  skse_tree=$(git rev-parse HEAD:skse); skse_dirty=0; [ -z "$(git status --porcelain -- skse)" ] || skse_dirty=1
+  probe=$("$run" ps 'foreach($n in "ArgoniaCore.dll","ArgoniaBridge.dll"){ if(Get-ChildItem C:\argonia\skse\out\windows-dev -Recurse -Filter $n -ErrorAction SilentlyContinue){"dll=$n"} }; $s="C:\argonia\skse\out\windows-dev\skse.stamp"; if(Test-Path $s){"stamp=" + (Get-Content $s -Raw).Trim()}' 2>/dev/null || true)
+  if "$PY" "$repo/tools/skse_stamp.py" "$skse_tree" windows-dev "$skse_dirty" <<<"$probe"; then
+    echo "skse build: unchanged ($skse_tree)"
+  else
+    step "skse build" "$here/skse_build.sh" build windows-dev
+  fi
+fi
 
 send_esms() {
   "$run" ps 'New-Item -ItemType Directory -Force C:\argonia\ours | Out-Null' >/dev/null

@@ -36,3 +36,7 @@ for pass in 1 2 3; do
   for i in $(seq 1 24); do "$run" ps hostname >/dev/null 2>&1 && break; read -t 10 < /dev/zero 2>/dev/null || true; done
 done
 grep -q "SKSE-BUILD OK" <<<"$out" || [ "$stage" = tools ] || { echo "no SKSE-BUILD OK line" >&2; exit 1; }
+# the stamp deploy.sh reads to skip an unchanged build: written only after success, and only for a clean skse/ tree
+if [ "$stage" != tools ] && [ -z "$(cd "$repo" && git status --porcelain -- skse)" ]; then
+  "$run" ps "Set-Content -NoNewline -Path C:\\argonia\\skse\\out\\$preset\\skse.stamp -Value '$(cd "$repo" && git rev-parse HEAD:skse):$preset'" >/dev/null
+fi
