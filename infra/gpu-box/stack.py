@@ -85,6 +85,7 @@ def save_manifest(doc):
 
 
 THEME = "argonia-theme"  # 1.2 §a's derived UI theme overlay (tools/ui_theme)
+LOD = "Argonia LOD (generated)"  # 2.W4 §c: filled on the machine by lod.ps1 (decision 0014 §4), never staged or pushed
 CURRENT_PART = "0"  # stack.py --through's default: the rows of every chunk of the part being built
 
 
@@ -580,7 +581,7 @@ def cmd_stage(a):
     names, record, ids, pruned, restaged = [], {}, {m["id"] for m in rows}, set(), {"pandora-output"}
     prev = json.loads((STACK / "installed.json").read_text())["files"] if (STACK / "installed.json").exists() else {}
     for d in list(mods.iterdir()):
-        if d.name not in ids and d.name not in ("pandora-output", THEME):
+        if d.name not in ids and d.name not in ("pandora-output", THEME, LOD):
             shutil.rmtree(d)
     for m in rows:
         laid = {k: v for k, v in m.items() if k not in DOC_FIELDS}  # a permission or note edit does not re-stage
@@ -621,6 +622,8 @@ def cmd_stage(a):
         names.append(THEME)
         restaged.add(THEME)
         print(f"staged {THEME} from {theme}")
+    names.append(LOD)  # filled by lod.ps1 on the machine; it overrides nothing of the mods
+    (mods / LOD).mkdir(exist_ok=True)
     names.append("pandora-output")  # filled when Pandora runs on the machine; highest priority
     (mods / "pandora-output").mkdir(exist_ok=True)
     prof = MO2 / "profiles" / PROFILE
@@ -715,7 +718,7 @@ def cmd_push(a):
     inst = json.loads((STACK / "installed.json").read_text())["files"]
     for n in names:
         digest[n] = hashlib.sha256("".join(sorted(f"{k}{v[1]}" for k, v in inst.items() if v[0] == n)).encode()).hexdigest()
-    todo = [n for n in names if sent.get(n) != digest[n] and n != "pandora-output"]
+    todo = [n for n in names if sent.get(n) != digest[n] and n not in ("pandora-output", LOD)]
     run("ps", r"New-Item -ItemType Directory -Force C:\argonia\MO2\mods, C:\argonia\MO2\push, C:\argonia\MO2\tools,"
               rf" C:\argonia\MO2\profiles\{PROFILE}, C:\argonia\MO2\root | Out-Null")
     batch = [todo[i:i + 12] for i in range(0, len(todo), 12)]

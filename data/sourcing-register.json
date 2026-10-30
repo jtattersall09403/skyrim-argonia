@@ -1006,5 +1006,32 @@
     "used_by": "skse/ArgoniaCore/src/combat.cpp (reads tk-dodge.toml's sDodgeRequiredPerkID at data loaded; gives or takes the perk by burden tier), world/db/combat_mod_setting.jsonl (bUsePerkLock = true, w.roll.tier)",
     "linked_or_forked_by": "linked: the perk is looked up at runtime by the plugin and local id the mod's own config names",
     "notes": "The roll lock rides the mod's own condition, so no input filter or behaviour edit is needed (combat-wiring.md w.roll.tier)."
+  },
+  {
+    "name": "xLODGen (terrain LOD)",
+    "source_url": "https://github.com/sheson/xLODGen/releases/tag/v132",
+    "version": "beta 132 (the manifest's xlodgen row)",
+    "licence": "MPL 1.1 (xEdit-based)",
+    "used_by": "infra/gpu-box/lod.ps1 terrain, lod.sh; installer/steps/lod.md",
+    "notes": "Terrain LOD for ARG_Province (2.W4 §c)",
+    "linked_or_forked_by": "run as a tool on the machine (C:\\argonia\\tools); nothing of it or its output is committed or shipped; the output is made on the player's machine (decision 0014 §4)"
+  },
+  {
+    "name": "DynDOLOD 3 standalone (TexGen, DynDOLOD, LODGen, Texconv)",
+    "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/68518",
+    "version": "3.00 Alpha-217 (the manifest's dyndolod row)",
+    "licence": "CC BY-NC-SA 4.0; the exes MPL 1.1",
+    "used_by": "infra/gpu-box/lod.ps1 texgen and dyndolod, lod.sh; installer/steps/lod.md",
+    "notes": "Object and tree LOD for ARG_Province (2.W4 §c); official host per dyndolod.info/Downloads",
+    "linked_or_forked_by": "run as a tool on the machine (C:\\argonia\\tools); nothing of it or its output is committed or shipped; the output is made on the player's machine (decision 0014 §4)"
+  },
+  {
+    "name": "DynDOLOD Resources SE 3 (core files)",
+    "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/52897",
+    "version": "3.00 Alpha-59 (the manifest's dyndolod-resources row)",
+    "licence": "CC BY-NC-SA 4.0",
+    "used_by": "infra/gpu-box/lod.ps1 (linked into Data for the run; its Meshes and Textures copied into the generated mod on the machine)",
+    "notes": "Needed by TexGen and DynDOLOD while they run; the FOMOD's required core only",
+    "linked_or_forked_by": "run as a tool on the machine (C:\\argonia\\tools); nothing of it or its output is committed or shipped; the output is made on the player's machine (decision 0014 §4)"
   }
 ]

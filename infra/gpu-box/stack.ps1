@@ -217,9 +217,10 @@ public static class ParHash {
   }
 }
 '@
-    # Pandora's outputs replace some mods' behaviour files in Data: those paths hold Pandora's file, not the mod's
-    $pandora = @{}; if (Test-Path "$Mo2\mods\pandora-output") {
-      Get-ChildItem "$Mo2\mods\pandora-output" -Recurse -File | % { $pandora[$_.FullName.Substring("$Mo2\mods\pandora-output\".Length).ToLower()] = 1 } }
+    # Pandora's outputs replace some mods' behaviour files in Data: those paths hold Pandora's file, not the mod's;
+    # the generated LOD (lod.ps1) is made on the machine too, so neither is in installed.json
+    $pandora = @{}; foreach ($gen in 'pandora-output', 'Argonia LOD (generated)') { if (Test-Path "$Mo2\mods\$gen") {
+      Get-ChildItem "$Mo2\mods\$gen" -Recurse -File | % { $pandora[$_.FullName.Substring("$Mo2\mods\$gen\".Length).ToLower()] = 1 } } }
     $bad = 0; $n = 0; $todo = New-Object System.Collections.Generic.List[object]; $hits = 0
     $out = New-Object System.Collections.Generic.List[string]
     foreach ($k in $rec.Keys) {
