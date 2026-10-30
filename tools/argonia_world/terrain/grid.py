@@ -50,10 +50,11 @@ class Sources:
     tint: np.ndarray | None  # (N/4+1)^2 x 4 uint8 RGBA, or None (white)
     pad: int = PAD
     regrade: object = None  # the water's regrade (water_regrade.Regrade), applied by heights()
+    edits: object = None  # the built places' ground edits (place_ground.Edits), applied by heights() before it
 
     @classmethod
     def load(cls, root: Path | None = None, apron: bool = True) -> Sources:
-        from tools.argonia_world.terrain import png, water_regrade
+        from tools.argonia_world.terrain import place_ground, png, water_regrade
 
         r = root or data_root()
         tint = r / "terrain" / "ground-tint.png"
@@ -64,6 +65,7 @@ class Sources:
             tint=png.read(tint) if tint.exists() else None,
             pad=PAD if apron else 0,
             regrade=water_regrade.Regrade.load(PAD if apron else 0),
+            edits=place_ground.Edits.load(PAD if apron else 0),
         )
 
     @property
@@ -120,6 +122,8 @@ class Sources:
         if ir0 < ir1 and ic0 < ic1:
             out[ir0 - r0:ir1 - r0, ic0 - c0:ic1 - c0] = self.ground[ir0 - p:ir1 - p, ic0 - p:ic1 - p]
             inside[ir0 - r0:ir1 - r0, ic0 - c0:ic1 - c0] = True
+            if self.edits is not None:
+                self.edits.apply(out, r0, c0)  # the built places' ground edits (place_ground.py)
             if self.regrade is not None:
                 self.regrade.apply(out, r0, c0)  # the water's border regrade (water_regrade.py)
         if inside.all():

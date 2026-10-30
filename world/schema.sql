@@ -6311,3 +6311,18 @@ CREATE TABLE "build_person" (
   "sandbox_radius_m" REAL NOT NULL CHECK ("sandbox_radius_m" > 0),
   "respawn" BOOLEAN NOT NULL DEFAULT 0 CHECK ("respawn" IN (0, 1))
 );
+
+-- Home of one ground edit a built place asks of the generated terrain (0.4 §d): a bowl carved to `floor_m` (metres
+-- above sea level) over `flat_radius_m` around the province point (x_m east, y_m south), its side rising
+-- `side_rise` metres per metre out from there until it meets the ground (a ceiling, as the water's bed regrade).
+-- terrain/place_ground.py applies it under the water's regrade, so the water plan, the LAND and the navmesh stand on it.
+CREATE TABLE "build_ground" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "place_id" TEXT NOT NULL REFERENCES "place"("id"),
+  "x_m" REAL NOT NULL,
+  "y_m" REAL NOT NULL,
+  "floor_m" REAL NOT NULL,
+  "flat_radius_m" REAL NOT NULL CHECK ("flat_radius_m" >= 0),
+  "side_rise" REAL NOT NULL CHECK ("side_rise" > 0),
+  "why" TEXT NOT NULL
+);

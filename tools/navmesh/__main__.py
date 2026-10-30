@@ -1,7 +1,7 @@
 """The navmesh job (2.W4 §b; 0.4 §d navmesh (b)): every exterior cell's NAVM and the NAVI, from the game's ground.
 
-    python -m tools.navmesh build (--block claywater | --cells x0,y0,x1,y1 | --province) [--out DIR] [--no-check]
-        inputs.py (the ground, water and road rasters) -> ArgoniaNav (DotRecast, per cell) -> stitch.py (seams,
+    python -m tools.navmesh build (--block claywater | --cells x0,y0,x1,y1 | --province) [--out DIR] [--no-check] [--no-placed]
+        inputs.py (the ground, water and road rasters; the built places' objects from placed.py) -> ArgoniaNav (DotRecast, per cell) -> stitch.py (seams,
         edge links, NVNM, NAVI) -> checks.py (L1); writes DIR/navm, DIR/navi.json, DIR/check.json, DIR/build.json
         (times, counts, the sha256 of the records). Exit 1 when a check is red.
     python -m tools.navmesh vanilla [--out DIR]
@@ -63,14 +63,14 @@ def build_tool() -> None:
                    env=DOTNET_ENV, capture_output=True)
 
 
-def build(box, out: Path, check: bool = True) -> dict:
+def build(box, out: Path, check: bool = True, objects=None) -> dict:
     from tools.navmesh import checks, inputs, stitch
     from tools.argonia_world.terrain import world
 
     t = {}
     t0 = time.time()
     build_tool()
-    inputs.write(out / "in", box)
+    inputs.write(out / "in", box, objects=objects)
     t["inputs_s"] = round(time.time() - t0, 1)
     t0 = time.time()
     r = subprocess.run([str(NAV_BIN), "cells", "--in", str(out / "in"), "--out", str(out)], env=DOTNET_ENV,
@@ -95,7 +95,13 @@ def build(box, out: Path, check: bool = True) -> dict:
     return res
 
 
+def game_data() -> Path:
+    root = os.environ.get("ARGONIA_GAME_ROOT")
+    return Path(root) / "Data" if root else Path.home() / "games" / "skyrimse" / "Data"
+
+
 def main(argv=None) -> int:
+    from tools.navmesh import placed
     ap = argparse.ArgumentParser(prog="python -m tools.navmesh")
     sub = ap.add_subparsers(dest="cmd", required=True)
     b = sub.add_parser("build")
@@ -105,6 +111,7 @@ def main(argv=None) -> int:
     g.add_argument("--province", action="store_true")
     b.add_argument("--out")
     b.add_argument("--no-check", action="store_true")
+    b.add_argument("--no-placed", action="store_true", help="the ground only, without the built places' objects")
     v = sub.add_parser("vanilla")
     v.add_argument("--out", default=str(ROOT / "out" / "navmesh" / "vanilla"))
     k = sub.add_parser("block")
@@ -124,7 +131,11 @@ def main(argv=None) -> int:
     box = block(a.block) if a.block else province() if a.province else tuple(int(c) for c in a.cells.split(","))
     name = a.block or ("province" if a.province else "_".join(map(str, box)))
     out = Path(a.out) if a.out else ROOT / "out" / "navmesh" / name
-    res = build(box, out, check=not a.no_check)
+    objects = None
+    if not a.no_placed and placed.INTERMEDIATE.exists():  # the built places' references (placed.py)
+        objects, tally = placed.boxes(game_data())
+        print(json.dumps({"placed": tally}))
+    res = build(box, out, check=not a.no_check, objects=objects)
     print(json.dumps({k: res[k] for k in ("box", "times", "totals", "sha256")}, sort_keys=True))
     if "check" in res:
         print(json.dumps(res["check"], sort_keys=True))

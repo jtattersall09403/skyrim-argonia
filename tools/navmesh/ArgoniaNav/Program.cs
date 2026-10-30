@@ -61,7 +61,10 @@ static class Cells
         var raw = Path.Combine(outDir, "raw");
         Directory.CreateDirectory(raw);
         foreach (var old in Directory.GetFiles(raw, "cy*.bin")) File.Delete(old);
-        var grid = new Grid(rows, cols, x0, ytop, step, hgt, wat, flg);
+        // the placed objects' boxes (inputs.py objects.f32: 8 corners of 3 floats each, world x, y, z), if any
+        var objPath = Path.Combine(inDir, "objects.f32");
+        var obj = File.Exists(objPath) ? Raster<float>(objPath, (int)(new FileInfo(objPath).Length / 4)) : Array.Empty<float>();
+        var grid = new Grid(rows, cols, x0, ytop, step, hgt, wat, flg, obj);
         long cells = 0, tris = 0;
         for (var cy = box[3]; cy >= box[1]; cy--)
         {
@@ -91,7 +94,7 @@ static class Cells
         return a;
     }
 
-    sealed record Grid(int Rows, int Cols, float X0, float Ytop, float Step, float[] H, float[] W, byte[] F)
+    sealed record Grid(int Rows, int Cols, float X0, float Ytop, float Step, float[] H, float[] W, byte[] F, float[] Obj)
     {
         // sample (row, col) from world (x, y) at sample positions
         public int Col(float x) => (int)Math.Round((x - X0) / Step);
@@ -151,6 +154,19 @@ static class Cells
                 int a = j * n + i, b = a + 1, c = a + n, d = c + 1;  // a NW, b NE, c SW, d SE
                 Tri(a, c, b); Tri(b, c, d);
             }
+        // the placed objects (inputs.py objects.f32: each a box as its 8 corners in world x, y, z; corner 1 is +x from
+        // corner 0, 2 is +y, 4 is +z) over the window, rasterised solid; their tops walkable as any span. The
+        // heightfield's height range takes them in, or a tall box would be clipped to a false top inside itself.
+        float wxa = verts[0], wxb = verts[3 * (n - 1)], wyb = verts[2], wya = verts[3 * (n * n - 1) + 2];
+        var boxes = new List<int>();
+        for (var t = 0; t + 24 <= g.Obj.Length; t += 24)
+        {
+            float xa = float.MaxValue, xb = float.MinValue, ya = float.MaxValue, yb = float.MinValue;
+            for (var k = 0; k < 8; k++) { xa = MathF.Min(xa, g.Obj[t + 3 * k]); xb = MathF.Max(xb, g.Obj[t + 3 * k]); ya = MathF.Min(ya, g.Obj[t + 3 * k + 1]); yb = MathF.Max(yb, g.Obj[t + 3 * k + 1]); }
+            if (xb < wxa || xa > wxb || yb < wya || ya > wyb) continue;
+            boxes.Add(t);
+            for (var k = 0; k < 8; k++) { zmin = Math.Min(zmin, g.Obj[t + 3 * k + 2]); zmax = Math.Max(zmax, g.Obj[t + 3 * k + 2]); }
+        }
         float bord = B * g.Step;
         var bmin = new RcVec3f(wx0 - bord, zmin - 2 * p.Ch, wy0 - bord);
         var bmax = new RcVec3f(wx0 + CellUnits + bord, zmax + p.AgentHeight + 2 * p.Ch, wy0 + CellUnits + bord);
@@ -160,6 +176,16 @@ static class Cells
         int walkH = (int)MathF.Ceiling(p.AgentHeight / p.Ch), walkC = (int)MathF.Floor(p.AgentClimb / p.Ch), walkR = (int)MathF.Ceiling(p.AgentRadius / p.Cs);
         var hf = new RcHeightfield(size, size, bmin, bmax, p.Cs, p.Ch, border);
         RcRasterizations.RasterizeTriangles(ctx, verts, tris.ToArray(), areas.ToArray(), areas.Count, hf, walkC);
+        foreach (var t in boxes)
+        {
+            RcVec3f C(int k) => new(g.Obj[t + 3 * k], g.Obj[t + 3 * k + 2], g.Obj[t + 3 * k + 1]);  // Recast space
+            var o = C(0);
+            RcVec3f centre = new(0, 0, 0);
+            for (var k = 0; k < 8; k++) centre += C(k);
+            centre *= 1f / 8;
+            RcVec3f[] half = { (C(1) - o) * 0.5f, (C(4) - o) * 0.5f, (C(2) - o) * 0.5f };
+            RcFilledVolumeRasterization.RasterizeBox(hf, centre, half, Walkable, walkC, ctx);
+        }
         RcFilters.FilterLowHangingWalkableObstacles(ctx, walkC, hf);
         RcFilters.FilterLedgeSpans(ctx, walkH, walkC, hf);
         RcFilters.FilterWalkableLowHeightSpans(ctx, walkH, hf);

@@ -9,15 +9,15 @@
                                   ArgoniaWorld.esm places; 2.W2)
                       flags.u8    bit 0: the painted road (routes/paint.py's BC_ROAD and TRACK, 2.W3)
 
-Placed-object collision joins later (`ObjectSource`): once the masters' meshes are synced, each placed REFR's
-collision triangles go into the same cell job beside the ground, walkable or blocking by their normals.
+                      objects.f32 the placed objects over the box (placed.py: the built places' references as their
+                                  bounds' boxes), 8 corners of 3 floats each in units; written only when there are
+                                  some. ArgoniaNav rasterises them solid beside the ground.
 """
 from __future__ import annotations
 
 import json
 import math
 from pathlib import Path
-from typing import Iterable, Protocol
 
 import numpy as np
 
@@ -30,22 +30,15 @@ PLANE_BASES_FIRST, PLANE_BASES_LAST = 0x100004, 0x100007  # the four water-plane
 PLANE_HALF_UNITS = 512.0  # Water1024.nif: -512..512 (water/plan.py PLANE_MESH_UNITS / 2)
 
 
-class ObjectSource(Protocol):
-    """Placed-object collision for a cell box (the interface the synced masters will fill)."""
-
-    def triangles(self, box: tuple[int, int, int, int]) -> Iterable[tuple[np.ndarray, int]]:
-        """(3x3 float32 world-unit vertices, area hint) per collision triangle."""
-
-
 def ground_sources():
     """terrain/grid.Sources.load without the ground tint (the navmesh reads heights and cover only; the tint's PNG
     decode is 9 of the 11 s a small box takes)."""
-    from tools.argonia_world.terrain import grid, water_regrade
+    from tools.argonia_world.terrain import grid, place_ground, water_regrade
     r = grid.data_root() / "terrain"
     return grid.Sources(ground=np.load(r / "refined-height-f32.npy", mmap_mode="r"),
                         apron=np.load(r / "apron-source-near.npy", mmap_mode="r"),
                         cover=np.load(r / "landcover-i16.npy", mmap_mode="r"), tint=None, pad=grid.PAD,
-                        regrade=water_regrade.Regrade.load(grid.PAD))
+                        regrade=water_regrade.Regrade.load(grid.PAD), edits=place_ground.Edits.load(grid.PAD))
 
 
 def window(src, box, border: int = params.BORDER_SAMPLES) -> tuple[int, int, int, int]:
@@ -101,13 +94,12 @@ def water_levels(box, r0: int, c0: int, shape, x0u: float, ytop: float, cells_pa
     return level
 
 
-def write(out: Path, box, src=None, cells_path: Path = WATER_CELLS, objects: ObjectSource | None = None) -> dict:
-    """Write the rasters and grid.json for `box` (x0, y0, x1, y1) into `out`; returns grid.json's content."""
+def write(out: Path, box, src=None, cells_path: Path = WATER_CELLS, objects: np.ndarray | None = None) -> dict:
+    """Write the rasters and grid.json for `box` (x0, y0, x1, y1) into `out`; returns grid.json's content.
+    `objects`: (k, 8, 3) world-unit box corners of placed collision (placed.py), kept where they touch the box."""
     from tools.argonia_world.routes import paint as road_paint
     from tools.argonia_world.terrain import build
 
-    if objects is not None:
-        raise NotImplementedError("placed-object collision: waits for the synced masters (2.W4 §b)")
     src = src or ground_sources()
     out.mkdir(parents=True, exist_ok=True)
     r0, r1, c0, c1 = window(src, box)
@@ -130,7 +122,18 @@ def write(out: Path, box, src=None, cells_path: Path = WATER_CELLS, objects: Obj
     flags.tofile(out / "flags.u8")
     del hm
     (out / "height.npy").unlink()
+    xr = (x0u, x0u + shape[1] * su.VERTEX_SPACING_UNITS)
+    yr = (ytop - shape[0] * su.VERTEX_SPACING_UNITS, ytop)
+    obj = out / "objects.f32"
+    obj.unlink(missing_ok=True)
+    n_obj = 0
+    if objects is not None and len(objects):
+        lo, hi = objects.min(axis=1), objects.max(axis=1)
+        keep = (hi[:, 0] >= xr[0]) & (lo[:, 0] <= xr[1]) & (hi[:, 1] >= yr[0]) & (lo[:, 1] <= yr[1])
+        n_obj = int(keep.sum())
+        if n_obj:
+            objects[keep].astype(np.float32).tofile(obj)
     grid = {"rows": shape[0], "cols": shape[1], "x0": x0u, "ytop": ytop, "step": su.VERTEX_SPACING_UNITS,
-            "cells": list(box), "params": params.recast()}
+            "cells": list(box), "params": params.recast(), **({"objects": n_obj} if n_obj else {})}
     (out / "grid.json").write_text(json.dumps(grid, indent=1, sort_keys=True) + "\n")
     return grid

@@ -37,6 +37,24 @@ class Rasters:
         self.h = np.memmap(d / "height.f32", np.float32, "r", shape=shape)
         self.w = np.memmap(d / "water.f32", np.float32, "r", shape=shape)
         self.f = np.memmap(d / "flags.u8", np.uint8, "r", shape=shape)
+        obj = d / "objects.f32"  # the placed objects' boxes (inputs.py), 8 corners each
+        self.boxes = np.fromfile(obj, np.float32).reshape(-1, 8, 3).astype(np.float64) if obj.exists() else None
+
+    def top_dist(self, x, y, z, margin: float):
+        """|z - the box top| at (x, y) for the highest placed box whose footprint (grown by `margin`) holds the point,
+        else inf: a vertex on an object stands on that object, not the ground."""
+        d = np.full(np.shape(x), np.inf)
+        if self.boxes is None:
+            return d
+        p = np.stack([x, y], axis=1)
+        for b in self.boxes:
+            o, u, v = b[0, :2], b[1, :2] - b[0, :2], b[2, :2] - b[0, :2]
+            lu, lv = np.linalg.norm(u), np.linalg.norm(v)
+            a, c = (p - o) @ (u / lu), (p - o) @ (v / lv)
+            m = (a >= -margin) & (a <= lu + margin) & (c >= -margin) & (c <= lv + margin)
+            if m.any():
+                d[m] = np.minimum(d[m], np.abs(np.asarray(z)[m] - b[4, 2]))
+        return d
 
     def frac(self, x, y):
         g = self.g
@@ -160,7 +178,7 @@ def run(out: Path) -> dict:
         dg = _dist_band(v[:, 2], lo, hi)
         wl = ras.water_at(v[:, 0], v[:, 1])
         dw = np.where(np.isfinite(wl), np.abs(v[:, 2] - wl), np.inf)
-        d = np.minimum(dg, dw)
+        d = np.minimum(np.minimum(dg, dw), ras.top_dist(v[:, 0], v[:, 1], v[:, 2], params.TOLERANCE_Z))
         vdev.append(d)
         over += int((d > params.TOLERANCE_Z).sum())
         cen = v[tv].mean(axis=1)
@@ -259,6 +277,7 @@ def run(out: Path) -> dict:
     cd = np.concatenate(cdev) if cdev else np.zeros(0)
     res = {
         "box": box, "navm": len(navm_meta), "triangles": int(sum(tri_count.values())), "vertices": int(len(vd)),
+        "objects": 0 if ras.boxes is None else len(ras.boxes),
         "heights": {"tolerance": params.TOLERANCE_Z, "over": over, "vertex_max": round(float(vd.max()), 2) if len(vd) else 0,
                     "vertex_p99": round(float(np.percentile(vd, 99)), 2) if len(vd) else 0,
                     "centroid_p99": round(float(np.percentile(cd, 99)), 2) if len(cd) else 0,
