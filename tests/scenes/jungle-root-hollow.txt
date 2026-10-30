@@ -1,0 +1,6 @@
+; Jungle Root Hollow, a clearable place (owner 2026-10-30): its four creatures are untilCleared. The player beside
+; the first, armed; noon. Nothing about respawn or the cleared state is set here.
+set gamehour to 12
+player.additem 00012EB7 1
+player.equipitem 00012EB7
+player.moveto ARG_Ref_JungleRootHollowC1 0 600 0

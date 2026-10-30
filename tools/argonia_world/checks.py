@@ -158,8 +158,8 @@ def season_is(w) -> list[str]:
 
 @check("respawn-clearable", "npc_statblock", "npc", "place_build_hostility")
 def respawn_clearable(w) -> list[str]:
-    """An actor homed in a clearable place never respawns, on rest or on waking (owner 2026-10-30)."""
-    return [f"npc_statblock {r[0]}: respawn {r[1]!r} in clearable {r[2]}; must be 'never'"
+    """An actor homed in a clearable place respawns only until the place is cleared (owner 2026-10-30)."""
+    return [f"npc_statblock {r[0]}: respawn {r[1]!r} in clearable {r[2]}; must be 'untilCleared' or 'never'"
             for r in w.query("SELECT s.npc_id, s.respawn, n.home_place_id FROM npc_statblock s "
                              "JOIN npc n ON n.id = s.npc_id JOIN place_build_hostility h ON h.place_id = n.home_place_id "
-                             "WHERE h.clearable = 1 AND s.respawn <> 'never' ORDER BY 1")]
+                             "WHERE h.clearable = 1 AND s.respawn NOT IN ('untilCleared', 'never') ORDER BY 1")]

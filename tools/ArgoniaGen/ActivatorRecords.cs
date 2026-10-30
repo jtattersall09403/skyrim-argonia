@@ -1,4 +1,4 @@
-// ACTI and GMST: the intermediate's activators (tools/argonia_world/life_records.py) and game-setting overrides -> Mutagen.
+// ACTI, LCTN and GMST: the intermediate's activators (tools/argonia_world/life_records.py) and game-setting overrides -> Mutagen.
 // No choices here: the name, mesh path, keyword links and verb arrive resolved; a GMST is an override of a
 // master's setting (its FormKey is the master's) or, for a setting no master record carries, a new record of ours.
 using System.Text.Json;
@@ -22,6 +22,7 @@ static class ActivatorRecords
         {
             case "ACTI": Acti(mod, r); break;
             case "GMST": Setting(mod, r); break;
+            case "LCTN": Location(mod, r); break;
             default: throw new InvalidDataException($"ActivatorRecords: {S(r, "type")}");
         }
     }
@@ -42,6 +43,15 @@ static class ActivatorRecords
             foreach (var k in kws.EnumerateArray()) a.Keywords.Add(new FormLink<IKeywordGetter>(FK(k.GetString()!)));
         }
         mod.Activators.Add(a);
+    }
+
+    // A clearable place's location: name and keywords only; the engine keeps its cleared state (saved with the game).
+    static void Location(SkyrimMod mod, JsonElement r)
+    {
+        var l = new Location(FK(S(r, "formKey")), Rel) { EditorID = S(r, "edid"), Name = new TranslatedString(Language.English, S(r, "name")) };
+        l.Keywords = new Noggog.ExtendedList<IFormLinkGetter<IKeywordGetter>>();
+        foreach (var k in r.GetProperty("keywords").EnumerateArray()) l.Keywords.Add(new FormLink<IKeywordGetter>(FK(k.GetString()!)));
+        mod.Locations.Add(l);
     }
 
     static void Setting(SkyrimMod mod, JsonElement r)

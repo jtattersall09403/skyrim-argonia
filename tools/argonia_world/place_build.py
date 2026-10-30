@@ -165,6 +165,9 @@ def _ref_record(ctx, r, cells, refs_by_id) -> dict:
         rec["scale"] = r.scale
     if r.npc_id or r.actor:
         rec["actor"] = True
+        if r.persistent and r.npc_id and (home := _clearable_home(ctx.world, r.npc_id)):
+            from tools.argonia_world.life_records import location_key
+            rec["persistentLocation"] = location_key(ctx.alloc, home)  # its editor location: the cleared state's LCTN
     if r.disabled:
         rec["disabled"] = True
     if r.owner_npc_id:
@@ -305,8 +308,15 @@ def _people(ctx, world, refs, cells, crime: str | None = None) -> None:
         ctx.records[edid] = rec
 
 
+def _clearable_home(world, npc_id: str) -> str | None:
+    npc = world.get("npc", npc_id)
+    h = npc and npc.home_place_id and world.get("place_build_hostility", npc.home_place_id)
+    return npc.home_place_id if h and h.clearable else None
+
+
 def respawns(world, npc_id: str) -> bool:
-    """The actor's NPC_ Respawn flag: its statblock's respawn class resets on a rest (owner 2026-10-30)."""
+    """The actor's NPC_ Respawn flag: its statblock's class resets on a rest, `onRest` or `untilCleared` (owner
+    2026-10-30); a cleared place's ECZN Never Resets and ArgoniaCore's roster stop the latter."""
     sb = world.get("npc_statblock", npc_id)
     return bool(sb and world.get("core_respawn_class", sb.respawn).on_rest)
 

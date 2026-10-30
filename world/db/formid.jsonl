@@ -61,8 +61,14 @@
 {"editor_id":"ARG_ImageSpace_marsh_mist","plugin":"Argonia.esm","form_id":2060,"record_type":"IMGS","entity_key":"image_space.mist"}
 {"editor_id":"ARG_ImageSpace_marsh_night","plugin":"Argonia.esm","form_id":2061,"record_type":"IMGS","entity_key":"image_space.night"}
 {"editor_id":"ARG_ImageSpace_marsh_storm","plugin":"Argonia.esm","form_id":2062,"record_type":"IMGS","entity_key":"image_space.storm"}
+{"editor_id":"ARG_LocType_Clearable","plugin":"Argonia.esm","form_id":2503,"record_type":"KYWD","entity_key":"hook.loc-clearable"}
 {"editor_id":"ARG_LocType_Dungeon","plugin":"Argonia.esm","form_id":2140,"record_type":"KYWD","entity_key":"hook.loc-dungeon"}
 {"editor_id":"ARG_LocType_Settlement","plugin":"Argonia.esm","form_id":2139,"record_type":"KYWD","entity_key":"hook.loc-settlement"}
+{"editor_id":"ARG_Loc_JungleRootHollow","plugin":"Argonia.esm","form_id":2508,"record_type":"LCTN","entity_key":"loc.place.saxhleel-coast.jungle-root-hollow"}
+{"editor_id":"ARG_Loc_NagaHighwayCampActiveNorth","plugin":"Argonia.esm","form_id":2507,"record_type":"LCTN","entity_key":"loc.place.naga-kur-deeps.naga-highway-camp-active-north"}
+{"editor_id":"ARG_Loc_TeethOfSithis","plugin":"Argonia.esm","form_id":2506,"record_type":"LCTN","entity_key":"loc.place.mercantile-coast.teeth-of-sithis"}
+{"editor_id":"ARG_Loc_TheBrokeColumn","plugin":"Argonia.esm","form_id":2504,"record_type":"LCTN","entity_key":"loc.place.imperial-fringe.the-broke-column"}
+{"editor_id":"ARG_Loc_VoriplasmVault","plugin":"Argonia.esm","form_id":2505,"record_type":"LCTN","entity_key":"loc.place.imperial-penal-south.voriplasm-vault"}
 {"editor_id":"ARG_Misc_Lf83ClayBasket","plugin":"Argonia.esm","form_id":2158,"record_type":"MISC","entity_key":"item.lf83.clay-basket"}
 {"editor_id":"ARG_Misc_Lf83WellSilt","plugin":"Argonia.esm","form_id":2162,"record_type":"MISC","entity_key":"item.lf83.well-silt"}
 {"editor_id":"ARG_Misc_Lf83WellWater","plugin":"Argonia.esm","form_id":2163,"record_type":"MISC","entity_key":"item.lf83.well-water"}

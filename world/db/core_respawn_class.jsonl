@@ -1,2 +1,3 @@
-{"id":"never","on_rest":false}
-{"id":"onRest","on_rest":true}
+{"id":"never","on_rest":false,"until_cleared":false}
+{"id":"onRest","on_rest":true,"until_cleared":false}
+{"id":"untilCleared","on_rest":true,"until_cleared":true}

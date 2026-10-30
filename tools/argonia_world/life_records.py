@@ -24,11 +24,25 @@ REST_SPOT = ("ARG_RestSpot", "hook.rest-spot")
 VASTEI_PILE = ("ARG_VasteiPile", "hook.vastei-pile")
 LOC_SETTLEMENT = ("ARG_LocType_Settlement", "hook.loc-settlement")
 LOC_DUNGEON = ("ARG_LocType_Dungeon", "hook.loc-dungeon")
+LOC_CLEARABLE = ("ARG_LocType_Clearable", "hook.loc-clearable")
 PERK_EDID = "ARG_Perk_RestIntercept"
 FRAGMENT_SCRIPT = "ARG_PRKF_RestIntercept"
 CAMP_MODEL = "Furniture\\Bedroll\\Bedroll01.nif"
 VASTEI_MODEL = "Effects\\AshPileGhost01.nif"
 VASTEI_FX_ART = "0506D6:Skyrim.esm"  # ARTO SoulTrapTargetEffects (magic/soultraptargeteffects.nif); 1.5 runtime
+
+
+def location_edid(place_id: str) -> str:
+    return "ARG_Loc_" + "".join(w[:1].upper() + w[1:] for w in place_id.rsplit(".", 1)[1].split("-"))
+
+
+def location_key(alloc, place_id: str) -> str:
+    """The LCTN of a clearable place (owner 2026-10-30): the engine's own cleared state lives on it."""
+    return alloc.form_key(location_edid(place_id), "LCTN", f"loc.{place_id}")
+
+
+def clearable_places(world) -> list[str]:
+    return sorted(h.place_id for h in world.rows("place_build_hostility") if h.clearable)
 
 
 def _choice(kw: str, label: str, fragment: int) -> dict:
@@ -63,10 +77,15 @@ def layer(alloc: Allocator, world, scan: dict) -> Layer:
     fk = alloc.form_key
     keys = {}
     recs: list[dict] = []
-    kws = [REST_SPOT, VASTEI_PILE, LOC_SETTLEMENT, LOC_DUNGEON]
+    kws = [REST_SPOT, VASTEI_PILE, LOC_SETTLEMENT, LOC_DUNGEON, LOC_CLEARABLE]
     for edid, wid in kws:
         keys[edid] = fk(edid, "KYWD", wid)
         recs.append({"type": "KYWD", "edid": edid, "formKey": keys[edid]})
+    # One LCTN per clearable place, keyworded clearable: its persistent actors carry it as their editor location
+    # (place_build), and ArgoniaCore sets its native cleared flag once every untilCleared actor there is dead at once.
+    for pid in clearable_places(world):
+        recs.append({"type": "LCTN", "edid": location_edid(pid), "formKey": location_key(alloc, pid),
+                     "name": world.get("place", pid).name, "keywords": [keys[LOC_CLEARABLE[0]]]})
     recs.append({"type": "ACTI", "edid": "ARG_CampSpot", "formKey": fk("ARG_CampSpot", "ACTI", "rest.camp-spot"),
                  "name": "Camp", "model": CAMP_MODEL, "keywords": [keys[REST_SPOT[0]]], "activateTextOverride": "Rest"})
     recs.append({"type": "ACTI", "edid": "ARG_VasteiPileActivator",

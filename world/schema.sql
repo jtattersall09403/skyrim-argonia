@@ -6004,13 +6004,15 @@ CREATE TABLE "core_disposition_band" (
   "min" INTEGER NOT NULL
 );
 
--- Home of the respawn classes (76 §126, decision 0031; owner 2026-10-30): whether a rest or a wake resets the actor.
--- Each actor's class is its statblock's `respawn`; `onRest` compiles to the NPC_ Respawn flag, and ArgoniaCore
--- resurrects such actors at their placement through the engine's own reset. An actor homed in a clearable place is
--- `never` (the named check respawn-clearable).
+-- Home of the respawn classes (76 §126, decision 0031; owner 2026-10-30): whether a rest or a wake resets the actor,
+-- and whether its place being cleared stops it. Each actor's class is its statblock's `respawn`; `onRest` and
+-- `untilCleared` compile to the NPC_ Respawn flag, and ArgoniaCore resurrects such actors at their placement. An
+-- actor homed in a clearable place is `untilCleared` (or `never`): it respawns until every `untilCleared` actor of
+-- the place is dead at once, then the place's LCTN is cleared and never again (check respawn-clearable).
 CREATE TABLE "core_respawn_class" (
   "id" TEXT NOT NULL PRIMARY KEY,
-  "on_rest" BOOLEAN NOT NULL CHECK ("on_rest" IN (0, 1))
+  "on_rest" BOOLEAN NOT NULL CHECK ("on_rest" IN (0, 1)),
+  "until_cleared" BOOLEAN NOT NULL CHECK ("until_cleared" IN (0, 1))
 );
 
 -- Home of the ways an item wears (item_condition.wear's values; 76 §121.6): what one unit of wear is measured in.

@@ -1,0 +1,58 @@
+# 1.5 respawn in a clearable place (owner 2026-10-30): its enemies respawn after a rest UNTIL the whole place is
+# cleared, then never. Jungle Root Hollow's four creatures are `untilCleared` (NPC_ Respawn flag; ACHR XLCN =
+# ARG_Loc_JungleRootHollow, keyworded clearable). Kill one, rest: it is back and the place is not cleared. Kill all
+# four: the LCTN's native cleared flag is set; rest: none is back.
+# DRAFT (runner 0) until Jungle Root Hollow is built into the plugin (no build_ref yet); then runner: 1.
+id: rest-respawn-cleared
+runner: 0
+crash_risk: medium   # one place, two rests (each writes the rest save)
+scene: jungle-root-hollow
+steps:
+  - name: setup               # a camp spot by the hollow; the place starts uncleared
+    do:
+      - {console: "player.placeatme ARG_CampSpot 1"}
+    expect:
+      - {console: "GetLocationCleared ARG_Loc_JungleRootHollow", contains: ">> 0"}
+      - {log: {name: ArgoniaCore, contains: "in clearable places)"}}
+  - name: kill-one
+    do:
+      - {console: "ARG_Ref_JungleRootHollowC1.kill"}
+      - {wait: 2}
+    expect:
+      - {console: "ARG_Ref_JungleRootHollowC1.GetDead", contains: ">> 1"}
+      - {console: "GetLocationCleared ARG_Loc_JungleRootHollow", contains: ">> 0"}
+  - name: rest-one-back
+    do:
+      - {console: "player.setangle x 40"}
+      - {wait: 3}
+      - {key: "E 120"}
+      - {wait: 4}
+      - {console: "player.setangle x 0"}
+    expect:
+      - {log: {name: ArgoniaCore, contains: "saves: ArgoniaRest written (rest)"}, within: 10}
+      - {console: "ARG_Ref_JungleRootHollowC1.GetDead", contains: ">> 0"}
+      - {console: "GetLocationCleared ARG_Loc_JungleRootHollow", contains: ">> 0"}
+  - name: kill-all            # every untilCleared actor dead at once: the place is cleared
+    do:
+      - {console: "ARG_Ref_JungleRootHollowC1.kill"}
+      - {console: "ARG_Ref_JungleRootHollowC2.kill"}
+      - {console: "ARG_Ref_JungleRootHollowC22.kill"}
+      - {console: "ARG_Ref_JungleRootHollowC23.kill"}
+      - {wait: 2}
+    expect:
+      - {log: {name: ArgoniaCore, contains: "cleared; its untilCleared actors stay dead"}, within: 5}
+      - {console: "GetLocationCleared ARG_Loc_JungleRootHollow", contains: ">> 1"}
+  - name: rest-none-back
+    do:
+      - {console: "player.setangle x 40"}
+      - {wait: 3}
+      - {key: "E 120"}
+      - {wait: 4}
+      - {console: "player.setangle x 0"}
+    expect:
+      - {log: {name: ArgoniaCore, contains: "saves: ArgoniaRest written (rest)"}, within: 10}
+      - {console: "ARG_Ref_JungleRootHollowC1.GetDead", contains: ">> 1"}
+      - {console: "ARG_Ref_JungleRootHollowC2.GetDead", contains: ">> 1"}
+      - {console: "ARG_Ref_JungleRootHollowC22.GetDead", contains: ">> 1"}
+      - {console: "ARG_Ref_JungleRootHollowC23.GetDead", contains: ">> 1"}
+      - {console: "GetLocationCleared ARG_Loc_JungleRootHollow", contains: ">> 1"}

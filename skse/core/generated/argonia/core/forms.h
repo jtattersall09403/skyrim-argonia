@@ -9,7 +9,7 @@ namespace argonia::core::gen {
 
 // One record of ours by its world id: the plugin that holds it, its signature and its local FormID.
 struct FormRow { std::string_view id, plugin, type; std::uint32_t local; };
-inline constexpr std::array<FormRow, 353> kForms{{
+inline constexpr std::array<FormRow, 359> kForms{{
     {"birthsign.serpent", "Argonia.esm", "SPEL", 0x000808},
     {"class.marsh-guide", "Argonia.esm", "CLAS", 0x000806},
     {"climate.black-marsh", "Argonia.esm", "CLMT", 0x000813},
@@ -24,6 +24,7 @@ inline constexpr std::array<FormRow, 353> kForms{{
     {"gate.tear-road", "Argonia.esm", "REFR", 0x000976},
     {"hook.closed-gate", "Argonia.esm", "KYWD", 0x000971},
     {"hook.dialogue-intercept", "Argonia.esm", "PERK", 0x000854},
+    {"hook.loc-clearable", "Argonia.esm", "KYWD", 0x0009C7},
     {"hook.loc-dungeon", "Argonia.esm", "KYWD", 0x00085C},
     {"hook.loc-settlement", "Argonia.esm", "KYWD", 0x00085B},
     {"hook.respawn-onRest", "Argonia.esm", "KYWD", 0x00085D},
@@ -114,6 +115,11 @@ inline constexpr std::array<FormRow, 353> kForms{{
     {"land_region.saxhleel-coast.tidal-delta", "ArgoniaWorld.esm", "REGN", 0x08002E},
     {"landing.drowning-gate.east", "Argonia.esm", "REFR", 0x000977},
     {"landing.drowning-gate.west", "Argonia.esm", "REFR", 0x000978},
+    {"loc.place.imperial-fringe.the-broke-column", "Argonia.esm", "LCTN", 0x0009C8},
+    {"loc.place.imperial-penal-south.voriplasm-vault", "Argonia.esm", "LCTN", 0x0009C9},
+    {"loc.place.mercantile-coast.teeth-of-sithis", "Argonia.esm", "LCTN", 0x0009CA},
+    {"loc.place.naga-kur-deeps.naga-highway-camp-active-north", "Argonia.esm", "LCTN", 0x0009CB},
+    {"loc.place.saxhleel-coast.jungle-root-hollow", "Argonia.esm", "LCTN", 0x0009CC},
     {"lock.opening-work-camp.guard-stores", "Argonia.esm", "CONT", 0x00084F},
     {"meshes/actors/sfss/canoe/canoe1.nif", "Argonia.esm", "STAT", 0x0008C8},
     {"meshes/advertising_board.nif", "Argonia.esm", "STAT", 0x0008D2},

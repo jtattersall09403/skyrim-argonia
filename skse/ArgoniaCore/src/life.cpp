@@ -5,6 +5,7 @@
 // the sitting view. Engine writes from a Papyrus native or a sink run on the main thread through SKSE's task queue.
 #include "core.h"
 
+#include <algorithm>
 #include <chrono>
 
 namespace argonia::plugin {
@@ -111,10 +112,36 @@ void Use(const ac::progression::UseEvent& ev, std::string_view what) {
 }
 
 // --- the respawn roster (G13.1, G17.1) -------------------------------------------------------------------------
+// The clearable places cleared now. A place's cleared state is the engine's own: the LCTN's `cleared` flag, which the
+// save keeps (BGSLocation::ChangeFlags::kCleared), so no co-save family. When every `untilCleared` actor of a place is
+// dead at once (the core rule), set it as Papyrus Location.SetCleared does. Caller holds the lock.
+ac::respawn::ClearedSet ClearedNow() {
+  auto& c = Get();
+  ac::respawn::ClearedSet cleared;
+  std::vector<ac::respawn::ActorId> dead;
+  for (const auto& r : c.roster) {
+    if (r.place && !cleared.contains(r.place))
+      if (auto* loc = RE::TESForm::LookupByID<RE::BGSLocation>(r.place); loc && loc->IsCleared())
+        cleared.places.push_back(r.place);
+    if (auto* a = RE::TESForm::LookupByID<RE::Actor>(r.actor); a && a->IsDead()) dead.push_back(r.actor);
+  }
+  for (auto place : ac::respawn::newly_cleared(c.roster, dead, cleared)) {
+    if (auto* loc = RE::TESForm::LookupByID<RE::BGSLocation>(place)) {
+      loc->cleared = true;
+      loc->everCleared = true;
+      loc->AddChange(RE::BGSLocation::ChangeFlags::kCleared);
+      SKSE::log::info("respawn: {} ({:08X}) cleared; its untilCleared actors stay dead", loc->GetName(), place);
+    }
+    cleared.places.push_back(place);
+  }
+  return cleared;
+}
+
 ac::life::Roster RosterNow() {
   auto& c = Get();
   ac::life::Roster r;
   r.actors = c.roster;
+  r.cleared = ClearedNow();
   return r;
 }
 
@@ -317,6 +344,10 @@ class HitSink final : public RE::BSTEventSink<RE::TESHitEvent> {
 class KillSink final : public RE::BSTEventSink<RE::TESDeathEvent> {
  public:
   RE::BSEventNotifyControl ProcessEvent(const RE::TESDeathEvent* e, RE::BSTEventSource<RE::TESDeathEvent>*) override {
+    if (e && e->dead && e->actorDying) {  // any death of a roster actor may clear its place, whoever killed it
+      std::lock_guard l(Get().lock);
+      ClearedNow();
+    }
     auto* p = Player();
     if (!e || !e->dead || !p || !e->actorDying || !e->actorKiller || e->actorKiller.get() != p)
       return RE::BSEventNotifyControl::kContinue;
@@ -561,22 +592,29 @@ void LifeDataLoaded() {
     }
   }
   // The roster: every persistent placed actor whose base carries the NPC_ Respawn flag (records make our people
-  // persistent; the flag is the compiled `onRest` class, place_build.respawns). The flag is the engine's own respawn
-  // fact, so no keyword or second table can disagree with it.
+  // persistent; the flag is the compiled `onRest` or `untilCleared` class, place_build.respawns). An actor whose
+  // editor location (ACHR XLCN, place_build) is a clearable place's LCTN is `untilCleared` for that place.
   c.roster.clear();
   const auto on_rest = ac::respawn::class_named("onRest");
-  if (on_rest) {
+  const auto until_cleared = ac::respawn::class_named("untilCleared");
+  auto* clearable = Lookup<RE::BGSKeyword>("hook.loc-clearable");
+  if (on_rest && until_cleared) {
     const auto& [map, lock] = RE::TESForm::GetAllForms();
     RE::BSReadLockGuard g(lock);
     for (auto& [id, form] : *map) {
       auto* a = form ? form->As<RE::Actor>() : nullptr;
       auto* base = a ? a->GetActorBase() : nullptr;
       if (!base || a->IsPlayerRef()) continue;
-      if (base->actorData.actorBaseFlags.all(RE::ACTOR_BASE_DATA::Flag::kRespawn))
+      if (!base->actorData.actorBaseFlags.all(RE::ACTOR_BASE_DATA::Flag::kRespawn)) continue;
+      auto* loc = a->GetEditorLocation();
+      if (clearable && loc && loc->HasKeyword(clearable))
+        c.roster.push_back({a->GetFormID(), *until_cleared, loc->GetFormID()});
+      else
         c.roster.push_back({a->GetFormID(), *on_rest});
     }
   }
-  SKSE::log::info("respawn: roster of {} flagged actors", c.roster.size());
+  SKSE::log::info("respawn: roster of {} flagged actors ({} in clearable places)", c.roster.size(),
+                  std::ranges::count_if(c.roster, [](const auto& r) { return r.place != 0; }));
   static HitSink hits;
   static KillSink kills;
   static CastSink casts;

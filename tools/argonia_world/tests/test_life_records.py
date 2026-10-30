@@ -22,7 +22,13 @@ class Alloc:
 class World:
     def __init__(self, settings):
         self.t = {"core_respawn_class": [NS(id="never", on_rest=False), NS(id="onRest", on_rest=True)],
+                  "place_build_hostility": [NS(place_id="place.r.the-broke-column", clearable=True),
+                                            NS(place_id="place.r.claywater-station", clearable=False)],
                   "game_setting": settings}
+
+    def get(self, table, key):
+        assert table == "place" and key == "place.r.the-broke-column"
+        return NS(id=key, name="The Broke Column")
 
     def rows(self, table, order=None, **where):
         return self.t[table]
@@ -47,6 +53,14 @@ def test_keywords_and_no_respawn_keyword():
     assert {"hook.rest-spot", "hook.vastei-pile", "hook.loc-settlement", "hook.loc-dungeon",
             "rest.camp-spot", "death.vastei-pile",
             "hook.rest-intercept"} <= set(a.keys)
+
+
+def test_clearable_place_has_a_location_keyworded_clearable():
+    a, r = recs()
+    loc = r["ARG_Loc_TheBrokeColumn"]
+    assert (loc["type"], loc["name"], loc["keywords"]) == ("LCTN", "The Broke Column", [r["ARG_LocType_Clearable"]["formKey"]])
+    assert "loc.place.r.the-broke-column" in a.keys and "loc.place.r.claywater-station" not in a.keys
+    assert "hook.loc-clearable" in a.keys
 
 
 def test_activators():

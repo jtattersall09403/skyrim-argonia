@@ -14,8 +14,9 @@ clone in `$ARGONIA_PRIVATE/old-repo`; it gives goals, never machinery (0026).
 | Every hostile record carries a respawn class; places carry a hostile-or-clearable share (55 % target, 50 % floor). | `docs/phases/2-slice/2.7-combat-and-encounters.md:127, 152`; `docs/decisions/0041-phase11-settlement-decisions.md:76, 145`; `docs/world/97-placement-principles.md:197` (A10) |
 | Bonfires: none. Rest is a camp (or a bed); the old project never had a bonfire object. | grep of the old repo: no bonfire ruling |
 
-**What 2026-10-30 changes:** the old `untilCleared` (respawn on rest until the place is cleared) is replaced: an
-enemy homed in a clearable place **never** respawns, after rest or death. Everything else stands.
+**What 2026-10-30 changes:** nothing in substance. An enemy homed in a clearable place respawns after rest or death
+**until the whole place is cleared**, then never (`untilCleared`; the owner's correction of the same day: an earlier
+reading of 'never' was the planner's error, implemented in 18f7174 and 4aabb98 and undone in lane-respawn-cleared).
 
 ## 2. The native Skyrim way
 
@@ -27,8 +28,9 @@ enemy homed in a clearable place **never** respawns, after rest or death. Everyt
   `Cell::Reset` (CommonLib `TESObjectCELL` reset / `ObjectReference::Reset` per actor) is the engine's own reset; a
   rest asks it of each cell that holds a respawning actor, and the Respawn flag decides who returns.
 - **Clearable places.** ECZN flag `Never Resets` plus the LCTN `cleared` state: a clearable place's encounter zone
-  is Never Resets, so even a reset leaves its dead dead. With every actor there `never`, the flag is a second
-  guard, not the mechanism.
+  is Never Resets, so the engine's own reset never brings its dead back; ArgoniaCore's rest roster resurrects its
+  `untilCleared` actors until every one is dead at once, then sets the LCTN's cleared flag (saved by the engine,
+  `BGSLocation::ChangeFlags::kCleared`) and skips them for good.
 - **Treasure.** Placed containers are never reset by our rest (we reset actors, not cells' containers), so
   placed treasure never respawns.
 
@@ -36,12 +38,11 @@ enemy homed in a clearable place **never** respawns, after rest or death. Everyt
 
 - `npc_statblock.respawn` and `creature_statblock.respawn` now reference `core_respawn_class` (FK).
 - `build_person.respawn` (a second copy of the same fact) is gone; the NPC_ flag is derived from the statblock.
-- 42 rows set to `never`: the 41 actors homed in clearable places (the Broke Column, Teeth of Sithis, the Naga
+- (Superseded by lane-respawn-cleared: the 41 are `untilCleared`; the crocodile stays `never`.) 42 rows set to `never`: the 41 actors homed in clearable places (the Broke Column, Teeth of Sithis, the Naga
   highway camp, Voriplasm Vault, Jungle Root Hollow; 12 of them were `untilCleared`) and the Claywater crocodile
   (owner: never respawns). The ambush deserter and the bog dogs stay `onRest`; townsfolk stay `never`.
 - Named check `respawn-clearable` (gate) and `tools/argonia_world/tests/test_respawn.py` (L1).
-- `untilCleared` stays in `core_respawn_class` (unused) because `core_tables.py` compiles it into ArgoniaCore's
-  C++ table; retiring it is a regenerate of that table, folded into the 1.5 runtime addition.
+- `untilCleared` is in `core_respawn_class` and the C++ table (retired in 4aabb98, reinstated).
 
 ## 4. The vastei pile visual
 

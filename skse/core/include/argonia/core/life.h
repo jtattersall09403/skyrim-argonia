@@ -96,6 +96,7 @@ Gain use(seam::State& s, const progression::UseEvent& ev);
 // --- Rest (G16.3, G17.1) --------------------------------------------------------------------------------------
 struct Roster {
   std::vector<respawn::Roster> actors;  // the placed actors with a respawn class that resets
+  respawn::ClearedSet cleared;          // the clearable places cleared now (the LCTNs' native flag)
 };
 struct Rested {
   rest::Outcome outcome;                         // the ruling and what the rest does

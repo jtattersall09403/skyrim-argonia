@@ -3,7 +3,7 @@
 // maths and no choices; every number and link arrives resolved.
 //   ref: {formKey, edid?, base, pos, rot, scale?, persistent?, actor? (true: an ACHR of an NPC_ base),
 //         disabled? (initially disabled), teleport? {door: the partner door ref, pos, rot},
-//         owner? (NPC_ or FACT), lock? {level: LockLevel name, key?}, encounterZone?, ignoredBySandbox?,
+//         owner? (NPC_ or FACT), persistentLocation? (ACHR XLCN), lock? {level: LockLevel name, key?}, encounterZone?, ignoredBySandbox?,
 //         linked? [{ref, keyword?}], enableParent? {ref, opposite?}}
 using System.Text.Json;
 using Mutagen.Bethesda.Plugins;
@@ -39,6 +39,7 @@ static class PlacedRefs
             var a = new PlacedNpc(FK(S(p, "formKey")), Rel) { EditorID = Os(p, "edid"), Placement = place, Scale = scale };
             a.Base.SetTo(FK(S(p, "base")));
             if (Os(p, "encounterZone") is { } ez) a.EncounterZone.SetTo(FK(ez));
+            if (Os(p, "persistentLocation") is { } pl) a.PersistentLocation.SetTo(FK(pl));  // XLCN: its editor location
             if (Persistent(p)) a.MajorRecordFlagsRaw |= (int)PlacedNpc.MajorFlag.Persistent;
             if (B(p, "disabled")) a.MajorRecordFlagsRaw |= (int)SkyrimMajorRecord.SkyrimMajorRecordFlag.InitiallyDisabled;
             Linked(p, a.LinkedReferences);
