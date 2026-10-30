@@ -92,7 +92,23 @@ def _rot(yaw) -> list[float]:
 
 
 # --- the quarantine (0.4 §b, decision 0012) ---------------------------------------------------------------
-def quarantine_layers(alloc: Allocator, scan: dict, resolver: Resolver) -> list[Layer]:
+def quarantined(rows: list[dict], vanilla: set[str]) -> list[dict]:
+    """The scanned self-starting quests that decision 0012 quarantines: the base game's and the Creation Club's only.
+    A dependency mod's own start-game quests are its machinery (SkyUI's MCM, TK Dodge's controller, which gives the
+    roll's perk, the ship's input quest): shelling them broke the roll and the menus (game-6, 2026-10-30)."""
+    return [r for r in rows if r.get("plugin", r["formKey"].split(":", 1)[1]).lower() in vanilla]
+
+
+def vanilla_plugins(data: Path) -> set[str]:
+    """The base game's masters and the Creation Club plugins present, lower case: load_order()'s leading part."""
+    order = load_order(data)
+    present = {p.name.lower() for p in Path(data).iterdir()}
+    ccc = Path(data).parent / "Skyrim.ccc"
+    cc = {n.strip().lower() for n in ccc.read_text().splitlines()} if ccc.exists() else set()
+    return {m.lower() for m in order if m.lower() in {o.lower() for o in su.OFFICIAL_MASTERS} | (cc & present)}
+
+
+def quarantine_layers(alloc: Allocator, scan: dict, resolver: Resolver, vanilla: set[str]) -> list[Layer]:
     start = json.loads((QUARANTINE / "start.json").read_text(encoding="utf-8"))
     allowed = json.loads((QUARANTINE / "allowed-quests.json").read_text(encoding="utf-8"))
     fk = alloc.form_key
@@ -100,7 +116,8 @@ def quarantine_layers(alloc: Allocator, scan: dict, resolver: Resolver) -> list[
     never = start["never"]
     records: list[dict] = [
         {"type": "GLOB", "edid": never["edid"], "formKey": fk(never["edid"], "GLOB"), "value": never["value"]},
-        {"type": "MUSC", "edid": start["music"]["edid"], "formKey": fk(start["music"]["edid"], "MUSC"), "flags": []},
+        {"type": "MUSC", "edid": start["music"]["edid"], "formKey": fk(start["music"]["edid"], "MUSC"), "flags": [],
+         "tracks": [su.SILENT_MUSIC_TRACK]},
     ]
     m, fl = cell["marker"], cell["floor"]
     floor = resolver.resolve(fl["piece"])
@@ -132,7 +149,7 @@ def quarantine_layers(alloc: Allocator, scan: dict, resolver: Resolver) -> list[
     keep = {k["edid"] for k in allowed["keepVanilla"]}
     never_cond = [{"function": "GetGlobalValue", "global": fk(never["edid"]), "op": "EqualTo", "value": 1}]
     shells: dict[str, dict] = {}
-    for row in scan["quests"] + allowed["prevent"]:
+    for row in quarantined(scan["quests"], vanilla) + allowed["prevent"]:
         if row["edid"] in keep:
             continue
         # The inert shell: the master's id and EditorID only, no flags, stages, aliases or scripts, and an event
@@ -141,7 +158,7 @@ def quarantine_layers(alloc: Allocator, scan: dict, resolver: Resolver) -> list[
                                   "flags": [], "eventConditions": never_cond}
     for row in scan["musicTypes"]:
         shells[row["formKey"]] = {"type": "MUSC", "override": True, "edid": row["edid"], "formKey": row["formKey"],
-                                  "flags": row["flags"]}  # no tracks: vanilla music never plays
+                                  "flags": row["flags"], "tracks": [su.SILENT_MUSIC_TRACK]}  # silence only
     return [starter, Layer("patch:quarantine", list(shells.values()))]
 
 
@@ -196,8 +213,11 @@ def load_order(data: Path) -> list[str]:
 def build(data: Path, scan: dict, index: Index, alloc: Allocator, extra: list[Layer] = ()) -> dict:
     resolver = Resolver(index)
     studio = json.loads((QUARANTINE / "start.json").read_text(encoding="utf-8"))["studio"]
-    layers = quarantine_layers(alloc, scan, resolver) + [sheet_layer(alloc, alloc.world, studio)] + list(extra)
+    layers = quarantine_layers(alloc, scan, resolver, vanilla_plugins(data)) + [sheet_layer(alloc, alloc.world, studio)] + list(extra)
     layers += regions_api.layers(alloc, alloc.world, regions_api.wrld_record(), resolver)  # 2.W3: regions, weather, climate
+    from tools.argonia_world import fixtures, place_build  # 0.4 §d: the built places; the studio's fixture cells
+    layers += place_build.layers(alloc, alloc.world, resolver, regions_api.wrld_record()["formKey"])
+    layers.append(fixtures.layer(alloc, resolver))
     from tools.argonia_world import items_records  # 1.3 §c: the item records of the carry rung
     layers.append(items_records.layer(alloc, alloc.world))
     from tools.argonia_world import hooks_records  # native map P3: the dialogue intercept perk

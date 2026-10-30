@@ -2,3 +2,5 @@ FormKey: 03D4A3:Dragonborn.esm
 EditorID: DLC2MUSExploreSnow
 Flags:
 - CycleTracks
+Tracks:
+- 0137FA:Skyrim.esm

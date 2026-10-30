@@ -2,3 +2,5 @@ FormKey: 0B9DCC:Skyrim.esm
 EditorID: MUSExploreSovngarde
 Flags:
 - CycleTracks
+Tracks:
+- 0137FA:Skyrim.esm

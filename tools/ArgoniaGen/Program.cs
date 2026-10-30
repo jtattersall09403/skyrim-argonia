@@ -6,6 +6,7 @@
 //   generate   --in <json> --data <dir> --out <Argonia.esm>     the records, written deterministically
 //   ltex       --data <dir> --plugins a.esm,b.esp --out <json>   every LTEX's winning copy and every GRAS (LandTextures.cs)
 //   world      --in <json> --land <dir> --data <dir> --out <ArgoniaWorld.esm> [--water <dir>] [--navmesh <dir>]   the generated ground (LandWorld.cs), its water (WaterRecords.cs) and navmesh (NavmeshRecords.cs)
+//   links      --data <dir> --order <file> --check a.esm,b.esm [--ours <dir>]   every FormLink and master resolved in the game's order (LinkCheck.cs)
 //   navmesh    roundtrip --in <jsonl.gz> --data <dir> --out <esm>   the vanilla NAVM round trip (NavmeshRecords.cs)
 using ArgoniaGen;
 
@@ -46,6 +47,8 @@ try
             return PackageRecords.Dump(Dir(Opt("--data")), Opt("--out") ?? throw new ArgumentException("missing --out"), (Opt("--edids") ?? "").Split(','), Opt("--plugin") ?? "Skyrim.esm");
         case "navmesh":
             return NavmeshRecords.Run(args, Opt, Dir);
+        case "links":
+            return LinkCheck.Run(Dir(Opt("--data")), Opt("--order") ?? throw new ArgumentException("missing --order"), (Opt("--check") ?? "Argonia.esm,ArgoniaWorld.esm").Split(','), Opt("--ours") is { } o ? string.Join(',', o.Split(',').Select(Dir)) : null);
         default:
             return Fail($"unknown command {args[0]}");
     }

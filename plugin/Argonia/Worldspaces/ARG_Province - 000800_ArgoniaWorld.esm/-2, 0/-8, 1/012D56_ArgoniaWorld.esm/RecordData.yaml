@@ -1,0 +1,62 @@
+FormKey: 012D56:ArgoniaWorld.esm
+Flags:
+- HasWater
+Grid:
+  Point: -57, 13
+WaterHeight: 2467.86
+Regions:
+- 080010:ArgoniaWorld.esm
+Water: 100002:ArgoniaWorld.esm
+Temporary:
+- MutagenObjectType: PlacedObject
+  FormKey: 0008BB:Argonia.esm
+  Base: 050D7B:King of the Murkmire.esp
+  Placement:
+    Position: -230212.5, 54300.86, 2493.4
+- MutagenObjectType: PlacedObject
+  FormKey: 0008BD:Argonia.esm
+  Base: 08995A:King of the Murkmire.esp
+  Placement:
+    Position: -230212.5, 54482.94, 2500.3
+- MutagenObjectType: PlacedObject
+  FormKey: 0008BE:Argonia.esm
+  Base: 000039:ArgonianLakeHouse.esl
+  Placement:
+    Position: -230380.56, 53810.67, 2460.9
+- MutagenObjectType: PlacedObject
+  FormKey: 0008BF:Argonia.esm
+  Base: 041EC7:Skyrim.esm
+  Placement:
+    Position: -230597.66, 54861.09, 2549.65
+- MutagenObjectType: PlacedObject
+  FormKey: 0008C0:Argonia.esm
+  Base: 1AD5D1:King of the Murkmire.esp
+  Placement:
+    Position: -230520.62, 55001.14, 2561.57
+- MutagenObjectType: PlacedObject
+  FormKey: 0008C1:Argonia.esm
+  Base: 050D7B:King of the Murkmire.esp
+  Placement:
+    Position: -230912.78, 53320.47, 2462.49
+    Rotation: 0, 0, 4.712389
+- MutagenObjectType: PlacedObject
+  FormKey: 0008C4:Argonia.esm
+  Base: 08995A:King of the Murkmire.esp
+  Placement:
+    Position: -231094.86, 53320.47, 2478.69
+    Rotation: 0, 0, 4.712389
+- MutagenObjectType: PlacedObject
+  FormKey: 0008D4:Argonia.esm
+  Base: 0008D5:Argonia.esm
+  Placement:
+    Position: -230800.73, 53789.66, 2493.29
+- MutagenObjectType: PlacedObject
+  FormKey: 0008D6:Argonia.esm
+  Base: 1AD605:King of the Murkmire.esp
+  Placement:
+    Position: -230422.6, 54966.13, 2547.99
+- MutagenObjectType: PlacedObject
+  FormKey: 0008D7:Argonia.esm
+  Base: 035F49:Skyrim.esm
+  Placement:
+    Position: -230412.08, 55016.34, 2552.76

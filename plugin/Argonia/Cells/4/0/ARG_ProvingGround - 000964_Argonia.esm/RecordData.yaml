@@ -1,0 +1,771 @@
+FormKey: 000964:Argonia.esm
+EditorID: ARG_ProvingGround
+Name:
+  TargetLanguage: English
+  Value: Proving Ground
+Flags:
+- IsInteriorCell
+- HasWater
+- CantTravelFromHere
+Lighting:
+  AmbientColor: '#00C8C8C8'
+  DirectionalColor: '#00A0A0A0'
+  FogNearColor: '#00C8C8C8'
+  FogNear: 20000
+  FogFar: 40000
+  DirectionalFade: 1
+  FogClipDistance: 40000
+  FogPower: 1
+  AmbientColors:
+    DirectionalXPlus: '#00000000'
+    DirectionalXMinus: '#00000000'
+    DirectionalYPlus: '#00000000'
+    DirectionalYMinus: '#00000000'
+    DirectionalZPlus: '#00000000'
+    DirectionalZMinus: '#00000000'
+    Specular: '#00000000'
+  FogFarColor: '#00C8C8C8'
+  FogMax: 1
+  LightFadeBegin: 4000
+  LightFadeEnd: 8000
+WaterHeight: -3.5
+Water: 100002:ArgoniaWorld.esm
+Persistent:
+- MutagenObjectType: PlacedObject
+  FormKey: 000953:Argonia.esm
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_PG_StartMarker
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 000034:Skyrim.esm
+  Placement: {}
+- MutagenObjectType: PlacedObject
+  FormKey: 000954:Argonia.esm
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_PG_WallRockDryMarker
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 000034:Skyrim.esm
+  Placement:
+    Position: -1890.81, -1400.6, 0
+    Rotation: 0, 0, 3.141593
+- MutagenObjectType: PlacedObject
+  FormKey: 000955:Argonia.esm
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_PG_WallRockWetMarker
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 000034:Skyrim.esm
+  Placement:
+    Position: -1260.54, -1400.6, 0
+    Rotation: 0, 0, 3.141593
+- MutagenObjectType: PlacedObject
+  FormKey: 000956:Argonia.esm
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_PG_WallMasonryDryMarker
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 000034:Skyrim.esm
+  Placement:
+    Position: -630.27, -1400.6, 0
+    Rotation: 0, 0, 3.141593
+- MutagenObjectType: PlacedObject
+  FormKey: 000957:Argonia.esm
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_PG_WallMasonryWetMarker
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 000034:Skyrim.esm
+  Placement:
+    Position: 0, -1400.6, 0
+    Rotation: 0, 0, 3.141593
+- MutagenObjectType: PlacedObject
+  FormKey: 000958:Argonia.esm
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_PG_WallTimberDryMarker
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 000034:Skyrim.esm
+  Placement:
+    Position: 630.27, -1400.6, 0
+    Rotation: 0, 0, 3.141593
+- MutagenObjectType: PlacedObject
+  FormKey: 000959:Argonia.esm
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_PG_WallTimberWetMarker
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 000034:Skyrim.esm
+  Placement:
+    Position: 1260.54, -1400.6, 0
+    Rotation: 0, 0, 3.141593
+- MutagenObjectType: PlacedObject
+  FormKey: 00095A:Argonia.esm
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_PG_LadderMarker
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 000034:Skyrim.esm
+  Placement:
+    Position: -1960.84, -560.24, 0
+    Rotation: 0, 0, 1.570796
+- MutagenObjectType: PlacedObject
+  FormKey: 00095B:Argonia.esm
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_PG_DoorAMarker
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 000034:Skyrim.esm
+  Placement:
+    Position: -840.36, 560.24, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 00095C:Argonia.esm
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_PG_DoorBMarker
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 000034:Skyrim.esm
+  Placement:
+    Position: -280.12, 560.24, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 00095D:Argonia.esm
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_PG_WaterAnkleMarker
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 000034:Skyrim.esm
+  Placement:
+    Position: 735.32, 245.11, 0
+    Rotation: 0, 0, 4.712389
+- MutagenObjectType: PlacedObject
+  FormKey: 00095E:Argonia.esm
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_PG_WaterWaistMarker
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 000034:Skyrim.esm
+  Placement:
+    Position: 735.32, -245.11, 0
+    Rotation: 0, 0, 4.712389
+- MutagenObjectType: PlacedObject
+  FormKey: 00095F:Argonia.esm
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_PG_WaterSwimMarker
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 000034:Skyrim.esm
+  Placement:
+    Position: 1225.53, 245.11, 0
+    Rotation: 0, 0, 4.712389
+- MutagenObjectType: PlacedObject
+  FormKey: 000960:Argonia.esm
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_PG_WaterDeepMarker
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 000034:Skyrim.esm
+  Placement:
+    Position: 1225.53, -245.11, 0
+    Rotation: 0, 0, 4.712389
+- MutagenObjectType: PlacedObject
+  FormKey: 000961:Argonia.esm
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_PG_DuelPlayerMarker
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 000034:Skyrim.esm
+  Placement:
+    Position: 0, 2170.93, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000962:Argonia.esm
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_PG_DuelOpponentMarker
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 000034:Skyrim.esm
+  Placement:
+    Position: 0, 2871.23, 0
+    Rotation: 0, 0, 3.141593
+- MutagenObjectType: PlacedObject
+  FormKey: 000963:Argonia.esm
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_PG_DuelFarMarker
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 000034:Skyrim.esm
+  Placement:
+    Position: 0, 1820.78, 0
+Temporary:
+- MutagenObjectType: PlacedObject
+  FormKey: 0008F8:Argonia.esm
+  EditorID: ARG_PG_Floor000
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -1715.74, 1715.74, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 0008F9:Argonia.esm
+  EditorID: ARG_PG_Floor001
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -1715.74, 1225.53, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 0008FA:Argonia.esm
+  EditorID: ARG_PG_Floor002
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -1715.74, 735.32, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 0008FB:Argonia.esm
+  EditorID: ARG_PG_Floor003
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -1715.74, 245.11, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 0008FC:Argonia.esm
+  EditorID: ARG_PG_Floor004
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -1715.74, -245.11, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 0008FD:Argonia.esm
+  EditorID: ARG_PG_Floor005
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -1715.74, -735.32, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 0008FE:Argonia.esm
+  EditorID: ARG_PG_Floor006
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -1715.74, -1225.53, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 0008FF:Argonia.esm
+  EditorID: ARG_PG_Floor007
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -1715.74, -1715.74, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000900:Argonia.esm
+  EditorID: ARG_PG_Floor008
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -1225.53, 1715.74, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000901:Argonia.esm
+  EditorID: ARG_PG_Floor009
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -1225.53, 1225.53, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000902:Argonia.esm
+  EditorID: ARG_PG_Floor010
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -1225.53, 735.32, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000903:Argonia.esm
+  EditorID: ARG_PG_Floor011
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -1225.53, 245.11, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000904:Argonia.esm
+  EditorID: ARG_PG_Floor012
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -1225.53, -245.11, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000905:Argonia.esm
+  EditorID: ARG_PG_Floor013
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -1225.53, -735.32, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000906:Argonia.esm
+  EditorID: ARG_PG_Floor014
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -1225.53, -1225.53, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000907:Argonia.esm
+  EditorID: ARG_PG_Floor015
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -1225.53, -1715.74, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000908:Argonia.esm
+  EditorID: ARG_PG_Floor016
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -735.32, 1715.74, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000909:Argonia.esm
+  EditorID: ARG_PG_Floor017
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -735.32, 1225.53, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 00090A:Argonia.esm
+  EditorID: ARG_PG_Floor018
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -735.32, 735.32, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 00090B:Argonia.esm
+  EditorID: ARG_PG_Floor019
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -735.32, 245.11, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 00090C:Argonia.esm
+  EditorID: ARG_PG_Floor020
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -735.32, -245.11, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 00090D:Argonia.esm
+  EditorID: ARG_PG_Floor021
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -735.32, -735.32, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 00090E:Argonia.esm
+  EditorID: ARG_PG_Floor022
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -735.32, -1225.53, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 00090F:Argonia.esm
+  EditorID: ARG_PG_Floor023
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -735.32, -1715.74, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000910:Argonia.esm
+  EditorID: ARG_PG_Floor024
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -245.11, 1715.74, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000911:Argonia.esm
+  EditorID: ARG_PG_Floor025
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -245.11, 1225.53, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000912:Argonia.esm
+  EditorID: ARG_PG_Floor026
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -245.11, 735.32, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000913:Argonia.esm
+  EditorID: ARG_PG_Floor027
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -245.11, 245.11, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000914:Argonia.esm
+  EditorID: ARG_PG_Floor028
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -245.11, -245.11, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000915:Argonia.esm
+  EditorID: ARG_PG_Floor029
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -245.11, -735.32, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000916:Argonia.esm
+  EditorID: ARG_PG_Floor030
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -245.11, -1225.53, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000917:Argonia.esm
+  EditorID: ARG_PG_Floor031
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -245.11, -1715.74, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000918:Argonia.esm
+  EditorID: ARG_PG_Floor032
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 245.11, 1715.74, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000919:Argonia.esm
+  EditorID: ARG_PG_Floor033
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 245.11, 1225.53, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 00091A:Argonia.esm
+  EditorID: ARG_PG_Floor034
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 245.11, 735.32, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 00091B:Argonia.esm
+  EditorID: ARG_PG_Floor035
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 245.11, 245.11, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 00091C:Argonia.esm
+  EditorID: ARG_PG_Floor036
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 245.11, -245.11, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 00091D:Argonia.esm
+  EditorID: ARG_PG_Floor037
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 245.11, -735.32, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 00091E:Argonia.esm
+  EditorID: ARG_PG_Floor038
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 245.11, -1225.53, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 00091F:Argonia.esm
+  EditorID: ARG_PG_Floor039
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 245.11, -1715.74, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000920:Argonia.esm
+  EditorID: ARG_PG_Floor040
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 735.32, 1715.74, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000921:Argonia.esm
+  EditorID: ARG_PG_Floor041
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 735.32, 1225.53, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000922:Argonia.esm
+  EditorID: ARG_PG_Floor042
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 735.32, 735.32, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000923:Argonia.esm
+  EditorID: ARG_PG_Floor043
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 735.32, -735.32, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000924:Argonia.esm
+  EditorID: ARG_PG_Floor044
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 735.32, -1225.53, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000925:Argonia.esm
+  EditorID: ARG_PG_Floor045
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 735.32, -1715.74, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000926:Argonia.esm
+  EditorID: ARG_PG_Floor046
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 1225.53, 1715.74, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000927:Argonia.esm
+  EditorID: ARG_PG_Floor047
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 1225.53, 1225.53, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000928:Argonia.esm
+  EditorID: ARG_PG_Floor048
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 1225.53, 735.32, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000929:Argonia.esm
+  EditorID: ARG_PG_Floor049
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 1225.53, -735.32, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 00092A:Argonia.esm
+  EditorID: ARG_PG_Floor050
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 1225.53, -1225.53, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 00092B:Argonia.esm
+  EditorID: ARG_PG_Floor051
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 1225.53, -1715.74, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 00092C:Argonia.esm
+  EditorID: ARG_PG_Floor052
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 1715.74, 1715.74, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 00092D:Argonia.esm
+  EditorID: ARG_PG_Floor053
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 1715.74, 1225.53, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 00092E:Argonia.esm
+  EditorID: ARG_PG_Floor054
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 1715.74, 735.32, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 00092F:Argonia.esm
+  EditorID: ARG_PG_Floor055
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 1715.74, 245.11, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000930:Argonia.esm
+  EditorID: ARG_PG_Floor056
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 1715.74, -245.11, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000931:Argonia.esm
+  EditorID: ARG_PG_Floor057
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 1715.74, -735.32, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000932:Argonia.esm
+  EditorID: ARG_PG_Floor058
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 1715.74, -1225.53, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000933:Argonia.esm
+  EditorID: ARG_PG_Floor059
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 1715.74, -1715.74, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000934:Argonia.esm
+  EditorID: ARG_PG_Floor060
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -245.11, 2696.16, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000935:Argonia.esm
+  EditorID: ARG_PG_Floor061
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -245.11, 2205.95, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000936:Argonia.esm
+  EditorID: ARG_PG_Floor062
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 245.11, 2696.16, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000937:Argonia.esm
+  EditorID: ARG_PG_Floor063
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 245.11, 2205.95, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000938:Argonia.esm
+  EditorID: ARG_PG_PoolAnkleFloor
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 735.32, 245.11, -24.51
+- MutagenObjectType: PlacedObject
+  FormKey: 000939:Argonia.esm
+  EditorID: ARG_PG_PoolWaistFloor
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 735.32, -245.11, -73.53
+- MutagenObjectType: PlacedObject
+  FormKey: 00093A:Argonia.esm
+  EditorID: ARG_PG_PoolSwimFloor
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 1225.53, 245.11, -143.56
+- MutagenObjectType: PlacedObject
+  FormKey: 00093B:Argonia.esm
+  EditorID: ARG_PG_PoolDeepFloor
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 1225.53, -245.11, -283.62
+- MutagenObjectType: PlacedObject
+  FormKey: 00093C:Argonia.esm
+  EditorID: ARG_PG_WallRockDry0
+  Base: 04564C:Skyrim.esm
+  Placement:
+    Position: -2065.89, -1680.72, 0
+    Rotation: 0, 0, 3.141593
+- MutagenObjectType: PlacedObject
+  FormKey: 00093D:Argonia.esm
+  EditorID: ARG_PG_WallRockDry1
+  Base: 04564C:Skyrim.esm
+  Placement:
+    Position: -1890.81, -1680.72, 0
+    Rotation: 0, 0, 3.141593
+- MutagenObjectType: PlacedObject
+  FormKey: 00093E:Argonia.esm
+  EditorID: ARG_PG_WallRockDry2
+  Base: 04564C:Skyrim.esm
+  Placement:
+    Position: -1715.74, -1680.72, 0
+    Rotation: 0, 0, 3.141593
+- MutagenObjectType: PlacedObject
+  FormKey: 00093F:Argonia.esm
+  EditorID: ARG_PG_WallRockWet0
+  Base: 04564C:Skyrim.esm
+  Placement:
+    Position: -1435.62, -1680.72, 0
+    Rotation: 0, 0, 3.141593
+- MutagenObjectType: PlacedObject
+  FormKey: 000940:Argonia.esm
+  EditorID: ARG_PG_WallRockWet1
+  Base: 04564C:Skyrim.esm
+  Placement:
+    Position: -1260.54, -1680.72, 0
+    Rotation: 0, 0, 3.141593
+- MutagenObjectType: PlacedObject
+  FormKey: 000941:Argonia.esm
+  EditorID: ARG_PG_WallRockWet2
+  Base: 04564C:Skyrim.esm
+  Placement:
+    Position: -1085.46, -1680.72, 0
+    Rotation: 0, 0, 3.141593
+- MutagenObjectType: PlacedObject
+  FormKey: 000942:Argonia.esm
+  EditorID: ARG_PG_WallMasonryDry0
+  Base: 050C58:Skyrim.esm
+  Placement:
+    Position: -805.35, -1680.72, 0
+    Rotation: 0, 0, 3.141593
+- MutagenObjectType: PlacedObject
+  FormKey: 000943:Argonia.esm
+  EditorID: ARG_PG_WallMasonryDry1
+  Base: 050C58:Skyrim.esm
+  Placement:
+    Position: -630.27, -1680.72, 0
+    Rotation: 0, 0, 3.141593
+- MutagenObjectType: PlacedObject
+  FormKey: 000944:Argonia.esm
+  EditorID: ARG_PG_WallMasonryDry2
+  Base: 050C58:Skyrim.esm
+  Placement:
+    Position: -455.19, -1680.72, 0
+    Rotation: 0, 0, 3.141593
+- MutagenObjectType: PlacedObject
+  FormKey: 000945:Argonia.esm
+  EditorID: ARG_PG_WallMasonryWet0
+  Base: 050C58:Skyrim.esm
+  Placement:
+    Position: -175.07, -1680.72, 0
+    Rotation: 0, 0, 3.141593
+- MutagenObjectType: PlacedObject
+  FormKey: 000946:Argonia.esm
+  EditorID: ARG_PG_WallMasonryWet1
+  Base: 050C58:Skyrim.esm
+  Placement:
+    Position: 0, -1680.72, 0
+    Rotation: 0, 0, 3.141593
+- MutagenObjectType: PlacedObject
+  FormKey: 000947:Argonia.esm
+  EditorID: ARG_PG_WallMasonryWet2
+  Base: 050C58:Skyrim.esm
+  Placement:
+    Position: 175.07, -1680.72, 0
+    Rotation: 0, 0, 3.141593
+- MutagenObjectType: PlacedObject
+  FormKey: 000948:Argonia.esm
+  EditorID: ARG_PG_WallTimberDry0
+  Base: 089FEF:Skyrim.esm
+  Placement:
+    Position: 455.19, -1680.72, 0
+    Rotation: 0, 0, 3.141593
+- MutagenObjectType: PlacedObject
+  FormKey: 000949:Argonia.esm
+  EditorID: ARG_PG_WallTimberDry1
+  Base: 089FEF:Skyrim.esm
+  Placement:
+    Position: 630.27, -1680.72, 0
+    Rotation: 0, 0, 3.141593
+- MutagenObjectType: PlacedObject
+  FormKey: 00094A:Argonia.esm
+  EditorID: ARG_PG_WallTimberDry2
+  Base: 089FEF:Skyrim.esm
+  Placement:
+    Position: 805.35, -1680.72, 0
+    Rotation: 0, 0, 3.141593
+- MutagenObjectType: PlacedObject
+  FormKey: 00094B:Argonia.esm
+  EditorID: ARG_PG_WallTimberWet0
+  Base: 089FEF:Skyrim.esm
+  Placement:
+    Position: 1085.46, -1680.72, 0
+    Rotation: 0, 0, 3.141593
+- MutagenObjectType: PlacedObject
+  FormKey: 00094C:Argonia.esm
+  EditorID: ARG_PG_WallTimberWet1
+  Base: 089FEF:Skyrim.esm
+  Placement:
+    Position: 1260.54, -1680.72, 0
+    Rotation: 0, 0, 3.141593
+- MutagenObjectType: PlacedObject
+  FormKey: 00094D:Argonia.esm
+  EditorID: ARG_PG_WallTimberWet2
+  Base: 089FEF:Skyrim.esm
+  Placement:
+    Position: 1435.62, -1680.72, 0
+    Rotation: 0, 0, 3.141593
+- MutagenObjectType: PlacedObject
+  FormKey: 00094E:Argonia.esm
+  EditorID: ARG_PG_Ladder
+  Base: 02FBAD:Skyrim.esm
+  Placement:
+    Position: -1960.84, -560.24, 0
+    Rotation: 0, 0, 1.570796
+- MutagenObjectType: PlacedObject
+  FormKey: 00094F:Argonia.esm
+  EditorID: ARG_PG_LadderDeck0
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -2205.95, -560.24, 381.66
+- MutagenObjectType: PlacedObject
+  FormKey: 000950:Argonia.esm
+  EditorID: ARG_PG_LadderDeck1
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -2696.16, -560.24, 381.66
+- MutagenObjectType: PlacedObject
+  FormKey: 000951:Argonia.esm
+  EditorID: ARG_PG_DoorA
+  Base: 042035:Skyrim.esm
+  TeleportDestination:
+    Door: 000952:Argonia.esm
+    Position: -280.12, 455.19, 0
+    Rotation: 0, 0, 3.141593
+  Placement:
+    Position: -840.36, 560.24, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000952:Argonia.esm
+  EditorID: ARG_PG_DoorB
+  Base: 042035:Skyrim.esm
+  TeleportDestination:
+    Door: 000951:Argonia.esm
+    Position: -840.36, 455.19, 0
+    Rotation: 0, 0, 3.141593
+  Placement:
+    Position: -280.12, 560.24, 0

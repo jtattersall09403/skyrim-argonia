@@ -1,8 +1,0 @@
-FormKey: 7BF565:Sailable Ship.esm
-EditorID: aaaShipUpdateQuest
-EventConditions:
-- MutagenObjectType: ConditionFloat
-  Data:
-    MutagenObjectType: GetGlobalValueConditionData
-    Global: 000800:Argonia.esm
-  ComparisonValue: 1

@@ -2,3 +2,5 @@ FormKey: 01714A:Skyrim.esm
 EditorID: MUSExploreSovngardeChant
 Flags:
 - AbruptTransition
+Tracks:
+- 0137FA:Skyrim.esm

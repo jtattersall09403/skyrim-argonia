@@ -1,8 +1,0 @@
-FormKey: 000D62:OCPA.esl
-EditorID: OCPA
-EventConditions:
-- MutagenObjectType: ConditionFloat
-  Data:
-    MutagenObjectType: GetGlobalValueConditionData
-    Global: 000800:Argonia.esm
-  ComparisonValue: 1

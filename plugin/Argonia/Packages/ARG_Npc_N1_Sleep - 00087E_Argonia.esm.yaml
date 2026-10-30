@@ -1,0 +1,128 @@
+FormKey: 00087E:Argonia.esm
+EditorID: ARG_Npc_N1_Sleep
+Flags:
+- WeaponsUnequipped
+Type: Package
+PreferredSpeed: Run
+InterruptFlags:
+- HellosToPlayer
+- RandomConversations
+- ObserveCombatBehavior
+- GreetCorpseBehavior
+- ReactionToPlayerActions
+- FriendlyFireComments
+- AggroRadiusBehavior
+- AllowIdleChatter
+- 0x100
+- WorldInteractions
+- 0x400
+- 0x800
+- 0x1000
+- 0x2000
+- 0x4000
+- 0x8000
+ScheduleMonth: -1
+ScheduleDayOfWeek: Any
+ScheduleHour: 21
+Unknown3: 0x000000
+ScheduleDurationInMinutes: 540
+PackageTemplate: 019717:Skyrim.esm
+DataInputVersion: 6
+Data:
+- Key: 0
+  Value:
+    MutagenObjectType: PackageDataLocation
+    Flags: []
+    Location:
+      Target:
+        MutagenObjectType: LocationTarget
+        Link: 00087D:Argonia.esm
+      Radius: 560
+- Key: 1
+  Value:
+    MutagenObjectType: PackageDataTarget
+    Flags: []
+    Target:
+      MutagenObjectType: PackageTargetObjectType
+      Type: TouchActorEffects
+- Key: 2
+  Value:
+    MutagenObjectType: PackageDataObjectList
+    Flags: []
+    Data: 0
+- Key: 6
+  Value:
+    MutagenObjectType: PackageDataBool
+    Flags: []
+- Key: 8
+  Value:
+    MutagenObjectType: PackageDataBool
+    Flags: []
+- Key: 11
+  Value:
+    MutagenObjectType: PackageDataBool
+    Flags: []
+- Key: 13
+  Value:
+    MutagenObjectType: PackageDataBool
+    Flags: []
+    Data: True
+- Key: 15
+  Value:
+    MutagenObjectType: PackageDataBool
+    Flags: []
+    Data: True
+- Key: 17
+  Value:
+    MutagenObjectType: PackageDataBool
+    Flags: []
+- Key: 18
+  Value:
+    MutagenObjectType: PackageDataBool
+    Flags: []
+    Data: True
+- Key: 19
+  Value:
+    MutagenObjectType: PackageDataBool
+    Flags: []
+    Data: True
+- Key: 20
+  Value:
+    MutagenObjectType: PackageDataBool
+    Flags: []
+    Data: True
+- Key: 21
+  Value:
+    MutagenObjectType: PackageDataBool
+    Flags: []
+    Data: True
+- Key: 22
+  Value:
+    MutagenObjectType: PackageDataBool
+    Flags: []
+    Data: True
+- Key: 24
+  Value:
+    MutagenObjectType: PackageDataFloat
+    Flags: []
+    Data: 50
+- Key: 25
+  Value:
+    MutagenObjectType: PackageDataBool
+    Flags: []
+    Data: True
+- Key: 26
+  Value:
+    MutagenObjectType: PackageDataFloat
+    Flags: []
+    Data: 300
+XnamMarker: 0x1B
+OnBegin:
+  Topics:
+  - MutagenObjectType: TopicReference
+OnEnd:
+  Topics:
+  - MutagenObjectType: TopicReference
+OnChange:
+  Topics:
+  - MutagenObjectType: TopicReference

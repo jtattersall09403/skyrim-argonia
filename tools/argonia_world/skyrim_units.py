@@ -70,6 +70,8 @@ EDITOR_ID_MAX = 99  # the CK's limit; voice paths take only the first 25 (gotcha
 # Skyrim.ccc for those present, then the dependency plugins (data/dependencies.json), then ours.
 OFFICIAL_MASTERS = ("Skyrim.esm", "Update.esm", "Dawnguard.esm", "HearthFires.esm", "Dragonborn.esm")
 ENGINE_MARKER_HEADING = "000034:Skyrim.esm"  # XMarkerHeading: the engine's own heading marker
+SILENT_MUSIC_TRACK = "0137FA:Skyrim.esm"  # _MUSExploreSILENT30, a silent MUST: vanilla _NONE's one track. A MUSC with no
+#   track is an access violation when the engine picks one (SkyrimSE.exe+0327DC4, game-6), so every MUSC has this one
 MAP_MARKER = "000010:Skyrim.esm"  # MapMarker: the static a map marker reference stands on
 
 # --- items (1.3 §c) ---------------------------------------------------------------------------------------------

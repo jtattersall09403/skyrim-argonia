@@ -2,3 +2,5 @@ FormKey: 0C76D2:Skyrim.esm
 EditorID: MUSExploreCoast
 Flags:
 - CycleTracks
+Tracks:
+- 0137FA:Skyrim.esm

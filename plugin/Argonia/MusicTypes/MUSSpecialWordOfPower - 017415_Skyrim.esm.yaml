@@ -4,3 +4,5 @@ Flags:
 - PlaysOneSelection
 - DucksCurrentTrack
 - DoesNotQueue
+Tracks:
+- 0137FA:Skyrim.esm

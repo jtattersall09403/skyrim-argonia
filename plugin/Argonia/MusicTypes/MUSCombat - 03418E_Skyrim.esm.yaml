@@ -3,3 +3,5 @@ EditorID: MUSCombat
 Flags:
 - CycleTracks
 - DucksCurrentTrack
+Tracks:
+- 0137FA:Skyrim.esm

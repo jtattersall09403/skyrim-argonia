@@ -75,8 +75,32 @@ static class Generate
             .WithLoadOrder(loadOrder.Append(modKey))
             .WithDataFolder(data)
             .Write();
+        // A master's own masters are listed too (as the Creation Kit does), or the engine hoists an ESP master above
+        // this ESM but leaves that ESP's master below it (Cipactli above HTBM, game-6). Mutagen's WithAllParentMasters
+        // reads every master from Data, and ArgoniaWorld.esm is not there, so the parents are read here (PlaceCells'
+        // resolution) and the file written once more with them.
+        var listed = ReadMasters(outPath, data);
+        var parents = listed.SelectMany(m => ReadMasters(MasterPath(m, data), data)).Distinct().Where(m => !listed.Contains(m)).ToList();
+        if (parents.Count > 0)
+            mod.BeginWrite
+                .ToPath(outPath)
+                .WithLoadOrder(loadOrder.Append(modKey))
+                .WithDataFolder(data)
+                .WithExtraIncludedMasters(parents)
+                .Write();
         Console.WriteLine($"generate: {mod.EnumerateMajorRecords().Count()} records -> {outPath}");
         return 0;
+    }
+
+    static string MasterPath(ModKey m, string data) =>
+        m.FileName.String.Equals("ArgoniaWorld.esm", StringComparison.OrdinalIgnoreCase)
+            ? Environment.GetEnvironmentVariable("ARGONIA_WORLD_ESM") ?? throw new InvalidDataException("ARGONIA_WORLD_ESM is not set (pipeline.py sets it)")
+            : Path.Combine(data, m.FileName.String);
+
+    static List<ModKey> ReadMasters(string path, string data)
+    {
+        using var m = SkyrimMod.CreateFromBinaryOverlay(path, Rel);
+        return m.ModHeader.MasterReferences.Select(r => r.Master).ToList();
     }
 
     // ---- field helpers -------------------------------------------------------------------------------------
@@ -111,6 +135,10 @@ static class Generate
     static void Music(SkyrimMod mod, JsonElement r)
     {
         var m = new MusicType(Key(r), Rel) { EditorID = S(r, "edid"), Flags = Flags<MusicType.Flag>(r, "flags") };
+        // An empty track list is an access violation when the engine picks a track (game-6): never written.
+        var tracks = A(r, "tracks").Select(t => FK(t.GetString()!)).ToList();
+        if (tracks.Count == 0) throw new InvalidDataException($"MUSC {m.EditorID} has no track: the engine crashes on it");
+        m.Tracks = tracks.Select(t => (IFormLinkGetter<IMusicTrackGetter>)t.ToLink<IMusicTrackGetter>()).ToExtendedList();
         mod.MusicTypes.Add(m);
     }
 

@@ -2,3 +2,5 @@ FormKey: 87AD2D:Here There Be Monsters - Curse of Cipactli.esp
 EditorID: CIPHTBMMUSGreathouse
 Flags:
 - CycleTracks
+Tracks:
+- 0137FA:Skyrim.esm

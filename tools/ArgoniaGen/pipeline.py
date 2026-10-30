@@ -144,7 +144,7 @@ def _terrain_stamp() -> str:
     from tools.argonia_world.terrain.landcover import table
     h = hashlib.sha256(repr(sorted(table(db.open()).items())).encode())
     for f in sorted(TERRAIN / n for n in ("__main__.py", "build.py", "grid.py", "landcover.py", "paint.py", "png.py",
-                                          "quantize.py", "world.py")):  # what the cell lines depend on
+                                          "place_ground.py", "quantize.py", "world.py")):  # what the cell lines depend on
         h.update(f.name.encode() + f.read_bytes())
     roads = ROOT / "tools" / "argonia_world" / "routes" / "paint.py"  # 2.W3's road paint and the rows it reads
     h.update(roads.read_bytes() + repr(db.open().values(
@@ -155,6 +155,8 @@ def _terrain_stamp() -> str:
         h.update(f"{n}:{f.stat().st_size}:{int(f.stat().st_mtime)}".encode() if f.exists() else n.encode())
     from tools.argonia_world.terrain import water_regrade
     h.update(water_regrade.stamp().encode())  # 2.W2's border regrade (rows in the world db)
+    from tools.argonia_world.terrain import place_ground
+    h.update(place_ground.stamp().encode())  # 0.4 §d: the built places' ground edits (build_ground rows)
     return h.hexdigest()
 
 
@@ -231,10 +233,23 @@ def sha256(p: Path) -> str:
     return hashlib.sha256(p.read_bytes()).hexdigest()
 
 
+def master_world(data: Path, rebuild: bool) -> None:
+    """out/ArgoniaWorld.esm, the master the place layers' cell overrides copy (PlaceCells.cs reads it from
+    $ARGONIA_WORLD_ESM): rebuilt by `make plugin` (the terrain is reused while its stamp holds), built by the gate
+    only when missing."""
+    target = OUT / WORLD_ESM
+    if rebuild or not target.exists():
+        wesm = world(data, OUT / "terrain", sample=False)
+        shutil.copyfile(wesm, target)
+        print(f"plugin: out/{WORLD_ESM} ({wesm.stat().st_size} bytes) sha256 {sha256(wesm)}")
+    ENV["ARGONIA_WORLD_ESM"] = str(target)
+
+
 def plugin() -> int:
     data = data_dir()
     build_tool()
     scans(data)
+    master_world(data, rebuild=True)  # first: Argonia.esm's place cells override its cells
     esm, yaml = generate(data, OUT / "build", frozen=False)
     shutil.copyfile(esm, OUT / "Argonia.esm")
     shutil.rmtree(YAML, ignore_errors=True)
@@ -242,9 +257,6 @@ def plugin() -> int:
     from tools.argonia_world import forms_table; forms_table.write()  # the allocator may have added rows (1.1)
     n = sum(1 for _ in YAML.rglob("*.yaml"))
     print(f"plugin: out/Argonia.esm ({esm.stat().st_size} bytes), {n} YAML files in plugin/Argonia/")
-    wesm = world(data, OUT / "terrain", sample=False)
-    shutil.copyfile(wesm, OUT / WORLD_ESM)
-    print(f"plugin: out/{WORLD_ESM} ({wesm.stat().st_size} bytes) sha256 {sha256(wesm)}")
     return 0
 
 
@@ -261,6 +273,7 @@ def check() -> int:
         errs.append("formids: " + r.stdout.strip())
     build_tool()
     scans(data)
+    master_world(data, rebuild=False)
     a_esm, a_yaml = generate(data, OUT / "check" / "a", frozen=True)
     built = sorted({r["layer"].split(":", 1)[1] for r in json.loads((OUT / "check" / "a" / "argonia.json").read_text())["records"]
                     if r.get("layer", "").startswith("place:")})
@@ -268,6 +281,7 @@ def check() -> int:
                        cwd=ROOT, check=False, capture_output=True, text=True)
     if r.returncode:
         errs.append("pieces: " + r.stdout.strip())
+    errs += links(data, a_esm.parent)
     b_esm, b_yaml = generate(data, OUT / "check" / "b", frozen=True)
     if a_esm.read_bytes() != b_esm.read_bytes():
         errs.append("regenerate: the two ESMs differ")
@@ -301,6 +315,26 @@ def check() -> int:
         print("plugin: regenerate twice identical; plugin/Argonia/ current; Spriggit round trip byte-identical; "
               f"{WORLD_ESM} sample hash as the manifest")
     return 1 if errs else 0
+
+
+# --- the game's load order (game-6: an empty MUSC and an unhoisted master crashed coc ARG_HoldingCell) ------------
+PROFILE_PLUGINS = HOME / ".argonia" / "stack" / "MO2" / "profiles" / "Argonia" / "plugins.txt"  # infra/gpu-box/stack.py
+
+
+def links(data: Path, ours: Path) -> list[str]:
+    """ArgoniaGen links: every FormLink in Argonia.esm (from `ours`) and ArgoniaWorld.esm resolved, every master
+    loaded before its plugin, every master's masters listed, every MUSC with a track, in the order the game is given:
+    the laid vanilla plugins, the staged profile's plugins.txt, then ours (bridge.ps1 prepare)."""
+    if not PROFILE_PLUGINS.exists():
+        print(f"plugin: links SKIPPED, no staged profile at {PROFILE_PLUGINS} (infra/gpu-box/stack.py stage)")
+        return []
+    vanilla = [n for n in (ROOT / "infra" / "gpu-box" / "vanilla-data-files.txt").read_text().split()
+               if n.lower().endswith((".esm", ".esp", ".esl"))]
+    order = OUT / "check" / "load-order.txt"
+    order.write_text("\n".join(vanilla + PROFILE_PLUGINS.read_text().splitlines() + [WORLD_ESM, "Argonia.esm"]) + "\n")
+    r = subprocess.run([str(GEN), "links", "--data", str(data), "--order", str(order), "--ours", f"{ours},{OUT}"],
+                       cwd=ROOT, env=ENV, capture_output=True, text=True, check=False)
+    return [] if r.returncode == 0 else [f"links: red\n{(r.stdout + r.stderr)[-2500:]}"]
 
 
 # --- the navmesh (2.W4 §b): its own target, outside the gate but for a fixed sample's hash ---------------------------

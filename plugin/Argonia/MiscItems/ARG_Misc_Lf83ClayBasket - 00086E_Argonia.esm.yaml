@@ -1,0 +1,8 @@
+FormKey: 00086E:Argonia.esm
+EditorID: ARG_Misc_Lf83ClayBasket
+Name:
+  TargetLanguage: English
+  Value: The Landing's Clay Basket
+Model:
+  File: clutter\basket01.nif
+Weight: 8

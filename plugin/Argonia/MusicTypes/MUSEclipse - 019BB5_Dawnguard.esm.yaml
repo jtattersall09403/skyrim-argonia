@@ -2,3 +2,5 @@ FormKey: 019BB5:Dawnguard.esm
 EditorID: MUSEclipse
 Flags:
 - PlaysOneSelection
+Tracks:
+- 0137FA:Skyrim.esm

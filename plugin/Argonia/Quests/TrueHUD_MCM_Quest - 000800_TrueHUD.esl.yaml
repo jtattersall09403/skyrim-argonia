@@ -1,8 +1,0 @@
-FormKey: 000800:TrueHUD.esl
-EditorID: TrueHUD_MCM_Quest
-EventConditions:
-- MutagenObjectType: ConditionFloat
-  Data:
-    MutagenObjectType: GetGlobalValueConditionData
-    Global: 000800:Argonia.esm
-  ComparisonValue: 1

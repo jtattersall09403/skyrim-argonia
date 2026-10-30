@@ -1,8 +1,0 @@
-FormKey: 7D44E3:King of the Murkmire.esp
-EditorID: KoTMHuluxinoagQuest
-EventConditions:
-- MutagenObjectType: ConditionFloat
-  Data:
-    MutagenObjectType: GetGlobalValueConditionData
-    Global: 000800:Argonia.esm
-  ComparisonValue: 1

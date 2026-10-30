@@ -2,3 +2,5 @@ FormKey: 00301E:Update.esm
 EditorID: MUSCombatBossUmbra
 Flags:
 - DucksCurrentTrack
+Tracks:
+- 0137FA:Skyrim.esm

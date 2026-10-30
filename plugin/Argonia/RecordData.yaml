@@ -29,31 +29,19 @@ ModHeader:
     FileSize: 0
   - Master: _ResourcePack.esl
     FileSize: 0
-  - Master: SkyUI_SE.esp
-    FileSize: 0
-  - Master: Precision.esp
-    FileSize: 0
-  - Master: TrueDirectionalMovement.esp
-    FileSize: 0
-  - Master: TrueHUD.esl
-    FileSize: 0
-  - Master: TKDodgeAddon.esp
-    FileSize: 0
-  - Master: OCPA.esl
-    FileSize: 0
   - Master: Sailable Ship.esm
-    FileSize: 0
-  - Master: EVGAnimatedTraversal.esl
-    FileSize: 0
-  - Master: Magic.esp
     FileSize: 0
   - Master: Tropical Skyrim.esp
     FileSize: 0
   - Master: King of the Murkmire.esp
     FileSize: 0
+  - Master: Here There Be Monsters.esp
+    FileSize: 0
   - Master: Here There Be Monsters - Curse of Cipactli.esp
     FileSize: 0
   - Master: ArgonianLakeHouse.esl
+    FileSize: 0
+  - Master: Ferries.esp
     FileSize: 0
   - Master: DepthsOfSkyrim.esp
     FileSize: 0

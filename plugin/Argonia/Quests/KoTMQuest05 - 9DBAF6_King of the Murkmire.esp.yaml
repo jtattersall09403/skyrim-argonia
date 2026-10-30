@@ -1,8 +1,0 @@
-FormKey: 9DBAF6:King of the Murkmire.esp
-EditorID: KoTMQuest05
-EventConditions:
-- MutagenObjectType: ConditionFloat
-  Data:
-    MutagenObjectType: GetGlobalValueConditionData
-    Global: 000800:Argonia.esm
-  ComparisonValue: 1

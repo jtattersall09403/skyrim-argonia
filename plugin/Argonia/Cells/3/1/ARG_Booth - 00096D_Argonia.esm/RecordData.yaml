@@ -1,0 +1,84 @@
+FormKey: 00096D:Argonia.esm
+EditorID: ARG_Booth
+Name:
+  TargetLanguage: English
+  Value: Booth
+Flags:
+- IsInteriorCell
+- CantTravelFromHere
+Lighting:
+  AmbientColor: '#00C8C8C8'
+  DirectionalColor: '#00A0A0A0'
+  FogNearColor: '#00C8C8C8'
+  FogNear: 20000
+  FogFar: 40000
+  DirectionalFade: 1
+  FogClipDistance: 40000
+  FogPower: 1
+  AmbientColors:
+    DirectionalXPlus: '#00000000'
+    DirectionalXMinus: '#00000000'
+    DirectionalYPlus: '#00000000'
+    DirectionalYMinus: '#00000000'
+    DirectionalZPlus: '#00000000'
+    DirectionalZMinus: '#00000000'
+    Specular: '#00000000'
+  FogFarColor: '#00C8C8C8'
+  FogMax: 1
+  LightFadeBegin: 4000
+  LightFadeEnd: 8000
+Persistent:
+- MutagenObjectType: PlacedObject
+  FormKey: 00096C:Argonia.esm
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_BoothMarker
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 000034:Skyrim.esm
+  Placement: {}
+Temporary:
+- MutagenObjectType: PlacedObject
+  FormKey: 000965:Argonia.esm
+  EditorID: ARG_Booth_Floor0
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -245.11, 245.11, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000966:Argonia.esm
+  EditorID: ARG_Booth_Floor1
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: -245.11, -245.11, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000967:Argonia.esm
+  EditorID: ARG_Booth_Floor2
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 245.11, 245.11, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000968:Argonia.esm
+  EditorID: ARG_Booth_Floor3
+  Base: 03CB89:Skyrim.esm
+  Placement:
+    Position: 245.11, -245.11, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 000969:Argonia.esm
+  EditorID: ARG_Booth_Backdrop0
+  Base: 050C58:Skyrim.esm
+  Placement:
+    Position: -175.07, -490.21, 0
+    Rotation: 0, 0, 3.141593
+- MutagenObjectType: PlacedObject
+  FormKey: 00096A:Argonia.esm
+  EditorID: ARG_Booth_Backdrop1
+  Base: 050C58:Skyrim.esm
+  Placement:
+    Position: 0, -490.21, 0
+    Rotation: 0, 0, 3.141593
+- MutagenObjectType: PlacedObject
+  FormKey: 00096B:Argonia.esm
+  EditorID: ARG_Booth_Backdrop2
+  Base: 050C58:Skyrim.esm
+  Placement:
+    Position: 175.07, -490.21, 0
+    Rotation: 0, 0, 3.141593

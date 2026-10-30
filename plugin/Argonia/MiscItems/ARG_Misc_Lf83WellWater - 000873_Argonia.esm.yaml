@@ -1,0 +1,8 @@
+FormKey: 000873:Argonia.esm
+EditorID: ARG_Misc_Lf83WellWater
+Name:
+  TargetLanguage: English
+  Value: Dipper of Well Water
+Model:
+  File: clutter\glazedjugsmall01.nif
+Weight: 0.5

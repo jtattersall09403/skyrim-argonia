@@ -1,0 +1,276 @@
+FormKey: 000800:ArgoniaWorld.esm
+EditorID: ARG_Province
+Name:
+  TargetLanguage: English
+  Value: Black Marsh
+Climate: 000813:Argonia.esm
+LandDefaults:
+  DefaultLandHeight: -2048
+MapData:
+  NorthwestCellCoords: -62, 63
+  SoutheastCellCoords: 63, -62
+  CameraMinHeight: 50000
+  CameraMaxHeight: 80000
+  CameraInitialPitch: 50
+ObjectBoundsMin: -130, -130
+ObjectBoundsMax: 131, 131
+TopCell:
+  FormKey: 000801:ArgoniaWorld.esm
+  MajorRecordFlagsRaw: 1024
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Flags:
+  - HasWater
+  Grid: {}
+  Persistent:
+  - MutagenObjectType: PlacedObject
+    FormKey: 000874:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ClaywaterStationClayBend
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000034:Skyrim.esm
+    Placement:
+      Position: -234239.11, 47963.33, 2467.86
+  - MutagenObjectType: PlacedObject
+    FormKey: 000877:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ClaywaterStationPolerWork
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000034:Skyrim.esm
+    Placement:
+      Position: -229974.4, 51716.83, 2354.96
+      Rotation: 0, 0, 5.178392
+  - MutagenObjectType: PlacedObject
+    FormKey: 00087B:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ClaywaterStationFamilyWork
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000034:Skyrim.esm
+    Placement:
+      Position: -230394.58, 54954.22, 2544.14
+  - MutagenObjectType: PlacedObject
+    FormKey: 000883:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ClaywaterStationKeeperWork
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000034:Skyrim.esm
+    Placement:
+      Position: -231199.9, 47690.22, 2569.31
+      Rotation: 0, 0, 3.490659
+  - MutagenObjectType: PlacedNpc
+    FormKey: 00088C:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ClaywaterStationAmbushDeserter
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000858:Argonia.esm
+    Placement:
+      Position: -239358.16, 52991.34, 2395.22
+      Rotation: 0, 0, 1.745329
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedObject
+    FormKey: 00088D:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ClaywaterStationAmbushPlayer
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000034:Skyrim.esm
+    Placement:
+      Position: -236795.14, 52760.25, 2548.69
+      Rotation: 0, 0, 4.886922
+  - MutagenObjectType: PlacedObject
+    FormKey: 000892:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ClaywaterStationB1Door
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 029CB0:Skyrim.esm
+    TeleportDestination:
+      Door: 8933E1:King of the Murkmire.esp
+      Position: 8627.08, -5165.62, 5711.58
+      Rotation: 0, 0, 4.1685
+    Placement:
+      Position: -231669.1, 47410.11, 2628.22
+      Rotation: 0, 0, 3.700098
+  - MutagenObjectType: PlacedObject
+    FormKey: 0008B7:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ClaywaterStationB4Door
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 089921:King of the Murkmire.esp
+    TeleportDestination:
+      Door: 0A5B30:King of the Murkmire.esp
+      Position: 7711.09, -3806.71, 5820.68
+      Rotation: 0, 0, 4.215246
+    Placement:
+      Position: -231963.2, 52242.04, 2447.16
+  - MutagenObjectType: PlacedObject
+    FormKey: 0008BC:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ClaywaterStationB5Door
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 089921:King of the Murkmire.esp
+    TeleportDestination:
+      Door: 0CC274:King of the Murkmire.esp
+      Position: 7696.31, -3972.6, 6491.01
+      Rotation: 0, 0, 4.913637
+    Placement:
+      Position: -230212.5, 54482.94, 2500.3
+  - MutagenObjectType: PlacedObject
+    FormKey: 0008C3:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ClaywaterStationB6Door
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 089921:King of the Murkmire.esp
+    TeleportDestination:
+      Door: 09B4BD:King of the Murkmire.esp
+      Position: 7472.79, -3806.36, 6065.16
+      Rotation: 0, 0, 3.208757
+    Placement:
+      Position: -231094.86, 53320.47, 2478.69
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 0008C9:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ClaywaterStationClayBasket
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 00086E:Argonia.esm
+    Placement:
+      Position: -234204.1, 47998.34, 2467.86
+  - MutagenObjectType: PlacedNpc
+    FormKey: 0008CD:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ClaywaterStationCrocodile
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000876:Argonia.esm
+    Placement:
+      Position: -234309.14, 47823.27, 2486.88
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedNpc
+    FormKey: 0008D8:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ClaywaterStationGaius
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 00087F:Argonia.esm
+    Placement:
+      Position: -230457.6, 53775.65, 2465.08
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedNpc
+    FormKey: 0008DB:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ClaywaterStationLivia
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000886:Argonia.esm
+    Placement:
+      Position: -231192.9, 47690.22, 2568.5
+      Rotation: 0, 0, 3.490659
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedObject
+    FormKey: 0008DC:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ClaywaterStationMortarTub
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000870:Argonia.esm
+    Placement:
+      Position: -231290.94, 47753.24, 2580.78
+      Rotation: 0, 0, 0.523599
+  - MutagenObjectType: PlacedObject
+    FormKey: 0008E7:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ClaywaterStationQuestBoard
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000034:Skyrim.esm
+    Placement:
+      Position: -231437.98, 48068.37, 2580.59
+      Rotation: 0, 0, 0.785398
+  - MutagenObjectType: PlacedObject
+    FormKey: 0008E8:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ClaywaterStationRaft
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 00081A:Ferries.esp
+    Placement:
+      Position: -229561.23, 51506.75, 2342.8
+      Rotation: 0, 0, 2.036799
+  - MutagenObjectType: PlacedObject
+    FormKey: 0008E9:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ClaywaterStationRoadIn
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000034:Skyrim.esm
+    Placement:
+      Position: -229120.06, 43306.46, 2594.6
+  - MutagenObjectType: PlacedNpc
+    FormKey: 0008EC:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ClaywaterStationSigns
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 00087A:Argonia.esm
+    Placement:
+      Position: -229974.4, 51716.83, 2354.96
+      Rotation: 0, 0, 5.178392
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedNpc
+    FormKey: 0008F1:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ClaywaterStationTakes
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000882:Argonia.esm
+    Placement:
+      Position: -230352.56, 53670.61, 2459.65
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedObject
+    FormKey: 0008F4:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ClaywaterStationWell
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000871:Argonia.esm
+    Placement:
+      Position: -231332.95, 47704.22, 2585.49
+      Rotation: 0, 0, 0.244346
+  - MutagenObjectType: PlacedObject
+    FormKey: 0008F5:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ClaywaterStationWellSilt
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000872:Argonia.esm
+    Owner: 000886:Argonia.esm
+    Placement:
+      Position: -231304.94, 47788.26, 2582.83
+  - MutagenObjectType: PlacedObject
+    FormKey: 0008F6:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ClaywaterStationWellWater
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000873:Argonia.esm
+    Owner: 000886:Argonia.esm
+    Placement:
+      Position: -231234.9, 47830.27, 2572.23
+  MajorFlags:
+  - Persistent

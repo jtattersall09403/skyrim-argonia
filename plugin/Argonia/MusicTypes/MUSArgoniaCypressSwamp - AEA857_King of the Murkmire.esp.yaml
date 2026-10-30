@@ -2,3 +2,5 @@ FormKey: AEA857:King of the Murkmire.esp
 EditorID: MUSArgoniaCypressSwamp
 Flags:
 - CycleTracks
+Tracks:
+- 0137FA:Skyrim.esm

@@ -1,8 +1,0 @@
-FormKey: 000802:SkyUI_SE.esp
-EditorID: SKI_ConfigManagerInstance
-EventConditions:
-- MutagenObjectType: ConditionFloat
-  Data:
-    MutagenObjectType: GetGlobalValueConditionData
-    Global: 000800:Argonia.esm
-  ComparisonValue: 1

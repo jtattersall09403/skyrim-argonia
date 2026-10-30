@@ -2,3 +2,5 @@ FormKey: 017035:Skyrim.esm
 EditorID: MUSTavernB
 Flags:
 - CycleTracks
+Tracks:
+- 0137FA:Skyrim.esm

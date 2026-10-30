@@ -151,48 +151,56 @@ Aliases:
   - Optional
   - AllowDead
   - AllowDisabled
+  ForcedReference: 0008DB:Argonia.esm
 - ID: 1
   Name: LandingSPoler
   Flags:
   - Optional
   - AllowDead
   - AllowDisabled
+  ForcedReference: 0008EC:Argonia.esm
 - ID: 2
   Name: N13
   Flags:
   - Optional
   - AllowDead
   - AllowDisabled
+  ForcedReference: 0008F1:Argonia.esm
 - ID: 3
   Name: N1
   Flags:
   - Optional
   - AllowDead
   - AllowDisabled
+  ForcedReference: 0008D8:Argonia.esm
 - ID: 4
   Name: WellHead
   Flags:
   - Optional
   - AllowDead
   - AllowDisabled
+  ForcedReference: 0008F4:Argonia.esm
 - ID: 5
   Name: WellSilt
   Flags:
   - Optional
   - AllowDead
   - AllowDisabled
+  ForcedReference: 0008F5:Argonia.esm
 - ID: 6
   Name: StationWaterLedger
   Flags:
   - Optional
   - AllowDead
   - AllowDisabled
+  ForcedReference: 0008F7:Argonia.esm
 - ID: 7
   Name: FerryRaft
   Flags:
   - Optional
   - AllowDead
   - AllowDisabled
+  ForcedReference: 0008E8:Argonia.esm
 - ID: 8
   Name: LandingWalls
   Flags:
@@ -205,27 +213,32 @@ Aliases:
   - Optional
   - AllowDead
   - AllowDisabled
+  ForcedReference: 000874:Argonia.esm
 - ID: 10
   Name: ClayBasket
   Flags:
   - Optional
   - AllowDead
   - AllowDisabled
+  ForcedReference: 0008C9:Argonia.esm
 - ID: 11
   Name: EcoCrocodile
   Flags:
   - Optional
   - AllowDead
   - AllowDisabled
+  ForcedReference: 0008CD:Argonia.esm
 - ID: 12
   Name: WellWater
   Flags:
   - Optional
   - AllowDead
   - AllowDisabled
+  ForcedReference: 0008F6:Argonia.esm
 - ID: 13
   Name: MortarTub
   Flags:
   - Optional
   - AllowDead
   - AllowDisabled
+  ForcedReference: 0008DC:Argonia.esm

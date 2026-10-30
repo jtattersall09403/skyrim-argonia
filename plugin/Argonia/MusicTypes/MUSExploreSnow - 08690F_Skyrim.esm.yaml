@@ -2,3 +2,5 @@ FormKey: 08690F:Skyrim.esm
 EditorID: MUSExploreSnow
 Flags:
 - CycleTracks
+Tracks:
+- 0137FA:Skyrim.esm

@@ -1,0 +1,31 @@
+FormKey: 00086F:Argonia.esm
+EditorID: ARG_Book_StationWaterLedger
+Name:
+  TargetLanguage: English
+  Value: Station Water Ledger
+Model:
+  File: clutter\books\basicbook01.nif
+BookText:
+  TargetLanguage: English
+  Value: >-
+    Water drawn and beds let, Claywater Station, 4E 201.
+
+
+    Morndas, 3 Rain's Hand. Drawn 62 buckets. Two beds let upstairs, 6 drakes the pair.
+
+
+    Tirdas, 4 Rain's Hand. Drawn 48. The poler's wife came for water. Charged her nothing, as always. A bed let to a carter, 3 drakes.
+
+
+    Middas, 5 Rain's Hand. Drawn 71. A new crack in the well head, a finger wide. The roof shows it first. Windlass rope spliced.
+
+
+    Turdas, 6 Rain's Hand. Drawn 55. No beds. The landing keepers charge the same travellers again for the ford. Travellers ask me why.
+
+
+    The landing keepers will not mend the well in stone.
+Teaches:
+  MutagenObjectType: BookTeachesNothing
+  RawContent: 0
+Value: 1
+Weight: 0.5
