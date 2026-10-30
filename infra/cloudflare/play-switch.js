@@ -113,7 +113,9 @@ main{max-width:30em;text-align:center}a{color:#c9b67a}.stop{display:inline-block
 function json(o, status = 200) { return new Response(JSON.stringify(o), { status, headers: { "content-type": "application/json", "cache-control": "no-store" } }) }
 
 async function state(env) {
-  const xml = await ec2(env, { Action: "DescribeInstances", "Filter.1.Name": "tag:Name", "Filter.1.Value.1": NAME })
+  const xml = await ec2(env, { Action: "DescribeInstances", "Filter.1.Name": "tag:Name", "Filter.1.Value.1": NAME,
+    // never a terminated or shutting-down instance that still carries the name (a cut-over leaves one)
+    "Filter.2.Name": "instance-state-name", "Filter.2.Value.1": "pending", "Filter.2.Value.2": "running", "Filter.2.Value.3": "stopping", "Filter.2.Value.4": "stopped" })
   const items = [...xml.matchAll(/<instancesSet>([\s\S]*?)<\/instancesSet>/g)].map((m) => m[1]).join("")
   const id = /<instanceId>(i-[0-9a-f]+)<\/instanceId>/.exec(items)?.[1]
   const st = /<instanceState>[\s\S]*?<name>([a-z-]+)<\/name>/.exec(items)?.[1] ?? "missing"
