@@ -32,3 +32,4 @@ skyrim - voices_en0.bsa
 skyrim.esm
 update.esm
 video\bgs_logo.bik
+scripts.zip

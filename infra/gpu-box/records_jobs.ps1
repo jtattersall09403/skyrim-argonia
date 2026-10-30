@@ -1,7 +1,7 @@
 # The record pipeline's game-machine jobs (0.4 §a), run by records_jobs.sh from the build VM. Inputs arrive in
 # C:\argonia\records\in, outputs leave from C:\argonia\records\out. Nothing here is committed or shipped.
 #   -Stage papyrus   compile in\papyrus\*.psc with the CK's PapyrusCompiler against the base sources from the CK's
-#                    own Scripts.zip (unpacked once to Data\Source\Scripts), out\papyrus\*.pex + compile.log
+#                    own Scripts.zip (unpacked once to records\base\Source\Scripts), out\papyrus\*.pex + compile.log
 #   -Stage ckload    load in\Argonia.esm in the Creation Kit with file logging on, out\ck-warnings.log
 #                    (advisory until stable twice, decision 0018 §3; the plugin is chosen in the Data dialog by
 #                    UI Automation, unproven until its first run)
@@ -20,10 +20,17 @@ switch ($Stage) {
   'papyrus' {
     $pc = "$Game\Papyrus Compiler\PapyrusCompiler.exe"
     Need $pc 'the Creation Kit (Steam: Skyrim Special Edition: Creation Kit)'
-    $base = "$Data\Source\Scripts"
+    # The compiler is built for CLR 2 (.NET 3.5), which the machine lacks (rc 0x80131700, game-9); it runs on CLR 4.
+    $cfg = "$pc.config"
+    if (-not (Test-Path $cfg)) {
+      '<?xml version="1.0"?><configuration><startup useLegacyV2RuntimeActivationPolicy="true"><supportedRuntime version="v4.0"/></startup></configuration>' |
+        Set-Content $cfg -Encoding ascii
+    }
+    # Unpacked outside Data, where stack.ps1 off (every deploy's fresh launch) would remove it.
+    $base = "$Root\base\Source\Scripts"
     if (-not (Test-Path "$base\Actor.psc")) {
       Need "$Data\Scripts.zip" "the CK's Scripts.zip"
-      Expand-Archive "$Data\Scripts.zip" -DestinationPath $Data -Force   # unpacks Source\Scripts
+      Expand-Archive "$Data\Scripts.zip" -DestinationPath "$Root\base" -Force   # unpacks Source\Scripts
     }
     $flags = "$base\TESV_Papyrus_Flags.flg"; Need $flags 'the Papyrus flags file'
     $dst = "$Out\papyrus"; Remove-Item $dst -Recurse -Force -EA SilentlyContinue; New-Item -ItemType Directory $dst | Out-Null

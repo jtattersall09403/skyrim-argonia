@@ -3,7 +3,7 @@
 #   bridge.ps1 token               the token ArgoniaBridge wrote at this launch (and its time)
 #   bridge.ps1 kill                end SkyrimSE and its loader; a zombie (not responding, or surviving a kill) is
 #                                  taskkilled with its tree, and the call fails if anything survives 20 s
-#   bridge.ps1 prepare [-Fresh]    the profile on (stack.ps1 on, only if it is off, or always with -Fresh), then ArgoniaBridge.dll, ArgoniaCore.dll and our ESMs (C:\argonia\ours) copied from
+#   bridge.ps1 prepare [-Fresh]    the profile on (stack.ps1 on, only if it is off, or always with -Fresh), then ArgoniaBridge.dll, ArgoniaCore.dll, our ESMs and .pex (C:\argonia\ours) copied from
 #                                  the dev-only MO2 folder into Data\SKSE\Plugins (a copy, not a link, so a rebuild
 #                                  never meets a locked file); stack.ps1 off removes it
 #   bridge.ps1 hang                suspends SkyrimSE (NtSuspendProcess): a zombie on purpose, for the relaunch check
@@ -66,7 +66,10 @@ switch ($Cmd) {
     foreach ($e in 'ArgoniaWorld.esm', 'Argonia.esm') { if (Test-Path "C:\argonia\ours\$e") {
       Copy-Item "C:\argonia\ours\$e" "$Game\Data\$e" -Force; $esms += $e
       $lines = @(Get-Content $prefs | ? { $_.TrimStart('*') -ne $e }); $lines += "*$e"; $lines | Set-Content $prefs -Encoding ASCII } }
-    J ([ordered]@{ laid = $true; file = "$dst\ArgoniaBridge.dll"; sha256 = $h; bytes = (Get-Item $src).Length; core_sha256 = $ch; esms = $esms })
+    # Our compiled Papyrus (make deploy puts it in C:\argonia\ours\scripts) into Data\Scripts; stack.ps1 off removes it.
+    $pex = @(Get-ChildItem C:\argonia\ours\scripts\*.pex -EA SilentlyContinue)
+    if ($pex) { New-Item -ItemType Directory -Force "$Game\Data\Scripts" | Out-Null; $pex | Copy-Item -Destination "$Game\Data\Scripts" -Force }
+    J ([ordered]@{ laid = $true; file = "$dst\ArgoniaBridge.dll"; sha256 = $h; bytes = (Get-Item $src).Length; core_sha256 = $ch; esms = $esms; pex = $pex.Count })
   }
   'hang' {
     $p = Get-Process SkyrimSE -EA SilentlyContinue | Select -First 1
