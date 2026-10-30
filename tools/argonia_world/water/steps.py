@@ -4,7 +4,10 @@ vanilla rapids or waterfall piece at every step (old 0064: waterfalls are the va
 A reach's water-level profile runs linearly along its centreline from `level_from_m` to `level_to_m` (the graph's
 reach is one kind, so one slope). It is cut into n steps of equal length, n = ceil(drop / STEP_MAX_M) limited so no
 step is shorter than STEP_MIN_M; a step's level is the profile at its midpoint, so the water stands at most half a
-step above or below the graded profile. Pieces stand at each step's downstream edge, at the upper level, facing
+step above or below the graded profile. The spacing is the design (the owner's ruling of 2026-10-29): a gentle
+reach steps 0.5 m at a line of white water as often as its grade asks; a steep one (a rapid or a chute) becomes
+step-and-pool, pools STEP_MIN_M long (a pool a player reads as one, and at most about four of one reach in a cell)
+dropping grade x STEP_MIN_M at a cascade, or at a falls piece from FALLS_STEP_M. Pieces stand at each step's downstream edge, at the upper level, facing
 downstream; a fall reach has no plane, only the waterfall at its lip and mist at its plunge.
 """
 from __future__ import annotations
@@ -15,7 +18,7 @@ from dataclasses import dataclass
 from tools.argonia_world.water.model import Graph, Reach
 
 STEP_MAX_M = 0.5  # the largest drop between two steps of a graded reach (a riffle's line of white water)
-STEP_MIN_M = 8.0  # the shortest step (four plane samples): steeper reaches take bigger drops instead
+STEP_MIN_M = 16.0  # the shortest step (a pool of nine samples): steeper reaches take bigger drops instead
 PIECE_MIN_DROP_M = 0.05  # a smaller join between steps is not a visible step and gets no piece
 
 # The vanilla kit, by mesh (resolved through pieces.py); nominal width/height in units from each base record's
@@ -27,11 +30,7 @@ PIECES = {
     "mist": ("meshes/effects/fxwaterfallmistblast.nif", 757.0, 652.0),       # FXWaterfallMistBlast 01ACAE
 }
 CASCADE_DROP_M = 0.75  # a step at least this tall takes the sloped waterfall body instead of the rapids line
-# A merge of steps (the plane budget, budget.py) may make a drop up to MERGED_DROP_MAX_M, or MERGED_FACTOR times the
-# grade's step where that is taller (a steep reach); the merged step's level is still the graded profile at its
-# midpoint, so the water stays within half a merged step of the grade.
-MERGED_DROP_MAX_M = 2.0
-MERGED_FACTOR = 2.0
+FALLS_STEP_M = 3.0  # a step at least this tall takes the tall waterfall body (the graph's fallDropM)
 
 
 @dataclass(frozen=True)
@@ -103,26 +102,15 @@ def reach_steps(r: Reach) -> list[Step]:
 
 
 def piece_for(drop: float) -> str:
-    return "cascade" if drop >= CASCADE_DROP_M else "rapids"
+    return "falls" if drop >= FALLS_STEP_M else "cascade" if drop >= CASCADE_DROP_M else "rapids"
 
 
-def merge(r: Reach, st: list[Step], k: int) -> list[Step]:
-    """Steps k and k+1 of a reach as one step over both runs, at the profile's level at the joined run's midpoint."""
-    total = arcs(r.points)[-1]
-    a, b = st[k], st[k + 1]
-    m = Step(r.id, a.index, a.s0, b.s1, profile(r, (a.s0 + b.s1) / 2, total), min(a.profile_lo_m, b.profile_lo_m),
-             max(a.profile_hi_m, b.profile_hi_m))
-    return st[:k] + [m] + st[k + 2:]
-
-
-def drop_allowed(r: Reach, merged: bool = False) -> float:
-    """The largest drop between two of a reach's steps: the grade's step (a steep reach's, as STEP_MIN_M forces),
-    or MERGED_DROP_MAX_M once the budget has merged its steps."""
+def drop_allowed(r: Reach) -> float:
+    """The largest drop between two of a reach's steps: the grade's step (a steep reach's, as STEP_MIN_M forces)."""
     total = arcs(r.points)[-1] if r.points else 0.0
     drop = max(0.0, r.level_from_m - r.level_to_m)
     fewest = max(1, int(total // STEP_MIN_M))
-    base = max(STEP_MAX_M, drop / fewest)
-    return max(MERGED_FACTOR * base, MERGED_DROP_MAX_M) if merged else base
+    return max(STEP_MAX_M, drop / fewest)
 
 
 def plan(g: Graph, rules: dict[str, str]) -> tuple[dict[str, list[Step]], list[Piece]]:

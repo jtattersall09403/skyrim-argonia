@@ -11,9 +11,10 @@ samples:
   3. the sea mask at 0;
   4. stepped reaches: the samples within half the channel width (plus half a sample) of the centreline whose
      ground is below the step's level, at that level (the lower one where two reaches' corridors meet);
-  5. the shore: water spreads onto dry ground below its level next to it, SHORE_FILL_SAMPLES samples deep (the
-     lowest neighbouring level that stands above the ground), because the patched ground the terrain lane builds
-     differs from the shaped ground the raster was solved on and a channel's corridor is narrower than its trench;
+  5. the shore: water other than a river's spreads onto dry ground below its level next to it, SHORE_FILL_SAMPLES
+     samples deep (the lowest neighbouring level that stands above the ground), because the patched ground the
+     terrain lane builds differs from the shaped ground the raster was solved on; a river stays in its corridor,
+     and the step-and-pool regrade raises its low banks (oriented.py);
   6. hollows: dry ground below 0 is under the default water in game, so it is water at 0;
 """
 from __future__ import annotations
@@ -219,7 +220,7 @@ def shore_fill(f: Field, ground: np.ndarray, rounds: int = SHORE_FILL_SAMPLES) -
         for r0 in range(0, n, band):
             r1 = min(n, r0 + band)
             a0, a1 = max(0, r0 - 1), min(n, r1 + 1)
-            lv = f.level[a0:a1]
+            lv = np.where(f.source[a0:a1] == 4, np.float32(np.nan), f.level[a0:a1])  # a river does not spread
             gr = np.asarray(ground[a0:a1], dtype=np.float32)
             best = np.full(lv.shape, np.inf, dtype=np.float32)
             bt = np.full(lv.shape, DRY, dtype=np.uint8)
@@ -240,7 +241,7 @@ def shore_fill(f: Field, ground: np.ndarray, rounds: int = SHORE_FILL_SAMPLES) -
                 best[take] = nb[take]
                 bt[take] = nt[take]
                 bo[take] = no[take]
-            grow = np.isnan(lv) & np.isfinite(best)
+            grow = np.isnan(f.level[a0:a1]) & np.isfinite(best)
             k0 = r0 - a0
             g = grow[k0:k0 + (r1 - r0)]
             new_l[r0:r1][g] = best[k0:k0 + (r1 - r0)][g]

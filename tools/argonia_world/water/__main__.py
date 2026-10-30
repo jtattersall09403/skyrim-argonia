@@ -21,26 +21,58 @@ from pathlib import Path
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[3]
+REGRADE_PASSES = 2
 
 
-def run_plan(out: Path, index_path: Path, budget_n: int | None = None, write_db: bool = False) -> int:
-    from tools.argonia_world import pieces as pz
-    from tools.argonia_world import skyrim_units as su
-    from tools.argonia_world.water import budget, classify, field, layer, model, plan, steps
+def plan_province(log=print):
+    """The designed plan of the whole province: (graph, reach rules, steps, field, design, turned tiles, cells, the
+    ground it stands on, the regrade's floors and beds)."""
+    from tools.argonia_world.water import classify, design, field, model, oriented, plan, steps
 
     t0 = time.time()
-    budget_n = budget.BUDGET if budget_n is None else budget_n
     g = model.load()
     rules = classify.classify(g)
     by_id = {r.id: (r.rule, r.water) for rs in rules.values() for r in rs}
     reach_rule = {r.id: r.rule for r in rules["reaches"]}
-    st0, _ = steps.plan(g, reach_rule)
+    wtypes = {rid: w for rid, (_, w) in by_id.items()}
+    st, _ = steps.plan(g, reach_rule)
     inp = field.Inputs.load()
+    raw = inp.ground
     # the whole plan stands on the ground as the LAND stores it (quantised and limited), not the refined field
-    inp.ground = game_ground(inp.ground, {})
-    n = inp.ground.shape[0]
-    res, (f, oplanes, cells), ground, f0 = budget.run(g, inp, by_id, st0, budget_n, log=print)
-    st = res.steps
+    inp.ground = game_ground(raw, {})
+    # the step-and-pool regrade: the beds carved first, then the design on the carved ground and the banks and
+    # sills its tiles ask for
+    beds = oriented.carve(g, st, inp.ground)
+    inp.ground = game_ground(raw, {}, {i: v[0] for i, v in beds.items()})
+    floors: dict = {}
+    for _ in range(REGRADE_PASSES):  # the banks a tile asks for change the field the next tiles stand on
+        f = field.build(g, inp, by_id, st)
+        design.design(g, f, inp.ground)
+        plan.shown_levels(f)
+        oriented.plan(g, st, f, inp.ground, wtypes, plan.LEAK_TOL_M, floors)
+        clamped = oriented.clamp_beds(beds, f)
+        del f
+        inp.ground = game_ground(raw, {i: v[0] for i, v in floors.items()}, {i: v[0] for i, v in beds.items()})
+        log(f"water plan: regrade {len(beds)} beds ({clamped} clamped to adjoining lower water), {len(floors)} banks and sills ({time.time() - t0:.0f} s)")
+    # the design and the plan on the regraded ground (the LAND's own)
+    ground = inp.ground
+    f = field.build(g, inp, by_id, st)
+    des = design.design(g, f, ground)
+    plan.shown_levels(f)
+    oplanes = oriented.plan(g, st, f, ground, wtypes, plan.LEAK_TOL_M)
+    cells = plan.plan_cells(f, ground, oplanes, greedy_over=0)
+    return g, reach_rule, st, f, des, oplanes, cells, ground, floors, beds
+
+
+def run_plan(out: Path, index_path: Path, write_db: bool = False) -> int:
+    from tools.argonia_world import pieces as pz
+    from tools.argonia_world import skyrim_units as su
+    from tools.argonia_world.water import budget, classify, design, field, layer, plan, steps
+
+    t0 = time.time()
+    g, reach_rule, st, f, des, oplanes, cells, ground, floors, beds = plan_province()
+    rules = classify.classify(g)
+    n = ground.shape[0]
     pieces = steps.pieces(g, reach_rule, st)
     # the pieces into their cells
     for p in pieces:
@@ -48,36 +80,17 @@ def run_plan(out: Path, index_path: Path, budget_n: int | None = None, write_db:
         cx, cy = plan.cell_index(min(x, n - 1), min(y, n - 1), (n - 1) // plan.Q)
         cells.setdefault((cx, cy), plan.CellPlan(cx, cy, "default")).pieces.append(p)
     R = plan.realised(f, cells, n)
-    loss = budget.losses(f0.level, f0.owner, f0.owners, f, ground, res)
-    pre = plan.check_bodies(g, f, R, ground)
-    sh = f.shown.ravel()
-    gr_flat = ground.reshape(-1)
-    for bid in pre["uncovered"]:
-        idx = f.body_samples.get(bid)
-        if idx is not None and idx.size and (np.asarray(gr_flat[idx]) < sh[idx] - 0.0051).any():
-            continue  # it has water to show and the plan misses it: a failure, not a loss
-        if bid not in pre["buried"]:
-            pre["buried"].append(bid)
-    for bid in pre["buried"]:
-        b = g.bodies[bid]  # its ground stands above its level everywhere: no water to show (the terrain's patch)
-        x, y = b.deepest if b.deepest else (0, 0)
-        idx = f0.body_samples.get(bid)
-        cnt = int(idx.size) if idx is not None else 0
-        key = (bid, *plan.cell_index(min(x, n - 1), min(y, n - 1), (n - 1) // plan.Q), "buried")
-        loss.setdefault(key, [cnt, 0.0, 0.0])
-    lost_bodies = {k[0] for k in loss if k[0].startswith("body.")}
-    game = ground  # already the LAND's ground, with the regrade's floors
     checks = {
-        "bodies": plan.check_bodies(g, f, R, ground, lost=lost_bodies),
+        "bodies": plan.check_bodies(g, f, R, ground, des),
         "wet": plan.check_wet(f, R, ground),
         "overlap": plan.check_overlap(cells, n),
-        "float": plan.check_float(f, cells, game),
-        "steps": plan.check_steps(g, st, res.merged),
-        "banks": plan.check_banks(g, st, game, f.level),
-        "groundAs": "float and banks: build.game_heights_m (quantised, limited, regraded); the rest: the "
-                    "refined heightfield with the regrade",
+        "float": plan.check_float(f, cells, ground),
+        "walls": plan.check_walls(f, ground, pieces),
+        "sides": plan.check_sides(f, ground, pieces),
+        "steps": plan.check_steps(g, st),
+        "banks": plan.check_banks(g, st, ground, f.level),
+        "groundAs": "build.game_heights_m with the step-and-pool regrade (the LAND's own ground)",
     }
-    del inp, f0
     # the pieces resolved through the piece index (vanilla kit, old 0064)
     try:
         resolver = pz.Resolver(pz.Index.load(index_path))
@@ -92,7 +105,8 @@ def run_plan(out: Path, index_path: Path, budget_n: int | None = None, write_db:
     sample_pieces = [p for p in pieces if p.reach == sample]
     out.mkdir(parents=True, exist_ok=True)
     # cells.jsonl: one line per cell with water work, refs in Skyrim units with their FormKeys
-    lines, over, over_budget = [], [], []
+    lines, over = [], []
+    over_budget = budget.over(cells)
     nplanes = 0
     for (cx, cy), cp in sorted(cells.items(), key=lambda kv: (kv[0][1], kv[0][0])):
         refs = []
@@ -106,8 +120,6 @@ def run_plan(out: Path, index_path: Path, budget_n: int | None = None, write_db:
             for r in plan.plane_refs(p):
                 refs.append({"base": layer.plane_key(p.wtype), **r})
         nplanes += len(refs)
-        if len(refs) > budget_n:
-            over_budget.append(f"({cx},{cy}): {len(refs)} planes")
         for p in cp.pieces:
             if p.kind not in resolved or resolved[p.kind].kind != "base":
                 continue
@@ -132,8 +144,8 @@ def run_plan(out: Path, index_path: Path, budget_n: int | None = None, write_db:
     (out / "cells.jsonl").write_text("".join(x + "\n" for x in lines), encoding="utf-8")
     (out / "records.json").write_text(json.dumps({"schema": 1, "records": layer.records()}, indent=1,
                                                  sort_keys=True) + "\n", encoding="utf-8")
-    tables = db_rows(res, loss, cells, n)
-    totals = budget_totals(res, loss, tables)
+    tables = {**design.rows(des), "water_regrade": regrade_rows(floors, beds, n)}
+    totals = design_totals(des, floors, beds, tables)
     modes = collections.Counter(cp.mode for cp in cells.values())
     per_cell = sorted((sum(len(plan.squares(p)) for p in cp.planes) + len(cp.oplanes) for cp in cells.values()),
                       reverse=True)
@@ -151,7 +163,7 @@ def run_plan(out: Path, index_path: Path, budget_n: int | None = None, write_db:
                   "planeSides": dict(collections.Counter(str(s) for cp in cells.values() for p in cp.planes
                                                          for _, _, s in plan.squares(p))),
                   "overSlot": over, "overBudget": over_budget},
-        "budget": totals,
+        "design": totals,
         "steps": {"reaches": len(st), "steps": sum(len(v) for v in st.values()),
                   "pieces": dict(collections.Counter(p.kind for p in pieces))},
         "sampleReach": {"id": sample, "kind": sr.kind, "river": sr.river, "lengthM": sr.length_m,
@@ -171,8 +183,8 @@ def run_plan(out: Path, index_path: Path, budget_n: int | None = None, write_db:
     (out / "plan.json").write_text(json.dumps(summary, indent=1, sort_keys=True, default=str) + "\n", encoding="utf-8")
     fails = []
     b = checks["bodies"]
-    if b["covered"] != b["bodies"]:
-        fails.append(f"bodies: {b['covered']}/{b['bodies']} have a placed water record or a cell water height")
+    if b["uncovered"]:
+        fails.append(f"bodies: {len(b['uncovered'])} kept bodies not realised, first {b['uncovered'][:5]}")
     if checks["wet"]["unrealised"]:
         fails.append(f"wet: {checks['wet']['unrealised']} wet samples have no water over them")
     ov = checks["overlap"]
@@ -187,36 +199,37 @@ def run_plan(out: Path, index_path: Path, budget_n: int | None = None, write_db:
     if over:
         fails.append(f"cells over their FormID slot: {len(over)}")
     if over_budget:
-        fails.append(f"cells over the plane budget {budget_n}: {len(over_budget)}, first {over_budget[:3]}")
-    if budget_n == budget.BUDGET:
-        if write_db:
-            write_tables(tables)
-            print(f"water plan: world db: {', '.join(f'{t} {len(r)}' for t, r in tables.items())} rows")
-        elif (stale := stale_tables(tables)):
-            fails.append(f"the world db's budget rows differ from the plan in {stale}: run "
-                         "`python -m tools.argonia_world.water plan --write-db` and commit the db rows")
-    print(f"water plan: {b['covered']}/{b['bodies']} bodies covered; {len(cells)} cells with water "
-          f"({dict(modes)}); {nplanes} plane refs; {summary['steps']['steps']} steps on {len(st)} reaches; "
-          f"pieces {summary['steps']['pieces']}; banks flagged on {len(checks['banks']['flagged'])} reaches; "
-          f"budget {budget_n}: {totals['cellsOver']} cells over, {totals['cellsMerged']} merged, "
-          f"{totals['cellsFallback']} fallback, {totals['bodiesWithLoss']} bodies and {totals['reachesWithLoss']} "
-          f"reaches with a loss, {totals['regradedVertices']} regraded vertices; "
+        fails.append(f"cells over the plane budget {budget.BUDGET} (the design must change, nothing falls back): "
+                     f"{len(over_budget)}: {over_budget[:10]}")
+    if write_db:
+        write_tables(tables)
+        print(f"water plan: world db: {', '.join(f'{t} {len(r)}' for t, r in tables.items())} rows")
+    elif (stale := stale_tables(tables)):
+        fails.append(f"the world db's water design rows differ from the plan in {stale}: run "
+                     "`python -m tools.argonia_world.water plan --write-db` and commit the db rows")
+    print(f"water plan: {b['realised']} bodies realised, {b['droppedByDesign']} dropped by design, "
+          f"{len(b['uncovered'])} uncovered; {len(cells)} cells with water ({dict(modes)}); {nplanes} plane refs "
+          f"(max {summary['cells']['planesMaxPerCell']}, p95 {summary['cells']['planesP95PerCell']} per cell); "
+          f"{summary['steps']['steps']} steps on {len(st)} reaches; pieces {summary['steps']['pieces']}; "
+          f"{totals['basinsKept']} basins kept, {totals['basinsDropped']} dropped; {totals['regradedVertices']} regraded vertices; "
+          f"walls {checks['walls']['samples']}; open sides {checks['sides']['samples']} "
+          f"(reach {checks['sides']['bySource']['reach']}); banks flagged on {len(checks['banks']['flagged'])} reaches; "
           f"sample reach {sample}; {summary['seconds']} s -> {out}")
     for x in fails:
         print("FAIL", x)
     return 1 if fails else 0
 
 
-def game_ground(ground, floors: dict):
+def game_ground(ground, floors: dict, ceilings: dict | None = None):
     """The province's ground as the LAND will store it (terrain build.game_heights_m: quantised and limited, the
-    regrade's floors applied), in row bands; the frozen array plus floors where the terrain grid is not there."""
+    regrade applied), in row bands; the frozen array where the terrain grid is not there."""
     from tools.argonia_world.terrain import build, grid
     try:
         src = grid.Sources.load()
     except (FileNotFoundError, OSError) as e:
         print(f"water plan: no terrain grid ({e}); float and banks use the refined heightfield")
         return ground
-    src.regrade = regrade_from(floors, ground.shape[0], src.pad)
+    src.regrade = regrade_from(floors, ground.shape[0], src.pad, ceilings)
     n = ground.shape[0]
     out = np.empty((n, n), dtype=np.float32)
     band = 256
@@ -226,56 +239,38 @@ def game_ground(ground, floors: dict):
     return out
 
 
-def regrade_from(floors: dict, n: int, pad: int):
+def regrade_from(floors: dict, n: int, pad: int, ceilings: dict | None = None):
     from tools.argonia_world.terrain import water_regrade
-    return water_regrade.Regrade.from_flat(floors, n, pad)
+    return water_regrade.Regrade.from_flat(floors, n, pad, ceilings)
 
 
-def db_rows(res, loss: dict, cells: dict, n: int) -> dict:
-    """The budget's rows for the world db: cells reduced, losses per entity and cell, the regrade's vertices."""
-    from tools.argonia_world.water import budget, plan
-    cell_rows = []
-    for (cx, cy), before in sorted(res.before.items()):
-        cp = cells.get((cx, cy))
-        fb = (cx, cy) in res.fallback
-        cell_rows.append({"cx": cx, "cy": cy, "budget": res.budget, "planes_before": before,
-                          "planes_after": budget.count(cp) if cp else 0, "outcome": "fallback" if fb else "merged",
-                          "level_m": round(res.fallback[(cx, cy)], 2) if fb else None,
-                          "ring_cut_vertices": res.ring_cut.get((cx, cy), 0) if fb else None})
-    loss_rows = [{"entity_id": e, "cx": cx, "cy": cy, "kind": k, "samples": v[0], "max_cm": int(round(v[1] * 100)),
-                  "mean_cm": round(v[2] * 100 / v[0], 1) if v[0] else 0.0}
-                 for (e, cx, cy, k), v in sorted(loss.items())]
-    cells_n = (n - 1) // plan.Q
-    reg_rows = []
-    for i in sorted(res.floors):
+def regrade_rows(floors: dict, beds: dict, n: int) -> list[dict]:
+    """The step-and-pool regrade's vertices for the world db's `water_regrade`."""
+    out = []
+    for i in sorted(beds):
         y, x = divmod(i, n)
-        cx, cy = plan.cell_index(x, y, cells_n)
-        reg_rows.append({"x": x, "y": y, "floor_m": res.floors[i], "cx": cx, "cy": cy})
-    return {"water_budget_cell": cell_rows, "water_loss": loss_rows, "water_regrade": reg_rows}
+        out.append({"x": x, "y": y, "kind": "bed", "z_m": beds[i][0], "entity_id": beds[i][1]})
+    for i in sorted(floors):
+        y, x = divmod(i, n)
+        z, rid, kind = floors[i]
+        out.append({"x": x, "y": y, "kind": kind, "z_m": z, "entity_id": rid})
+    return out
 
 
-def budget_totals(res, loss: dict, tables: dict) -> dict:
-    kinds = collections.Counter()
-    cm = collections.Counter()
-    for (e, _, _, k), v in loss.items():
-        kinds[k] += v[0]
-    bodies = sorted({e for (e, _, _, _) in loss if e.startswith("body.")})
-    reaches = sorted({e for (e, _, _, _) in loss if e.startswith("reach.")})
-    by_body = {}
-    for (e, _, _, k), v in loss.items():
-        if e.startswith("body."):
-            d = by_body.setdefault(e, {"samples": 0, "maxCm": 0})
-            d["samples"] += v[0]
-            d["maxCm"] = max(d["maxCm"], int(round(v[1] * 100)))
-    del cm
-    return {"budget": res.budget, "rounds": res.rounds, "cellsOver": len(res.before),
-            "cellsMerged": len(res.before) - len(res.fallback), "cellsFallback": len(res.fallback),
-            "fallbackCells": [f"({cx},{cy}) at {h:.2f} m" for (cx, cy), h in sorted(res.fallback.items())],
-            "reachesStepMerged": len(res.merged), "cellsSnapped": len(res.snaps),
-            "regradedVertices": len(res.floors), "ringCutVertices": sum(res.ring_cut.values()),
-            "lossSamplesByKind": dict(sorted(kinds.items())), "bodiesWithLoss": len(bodies),
-            "reachesWithLoss": len(reaches), "worstBodies": sorted(by_body.items(), key=lambda kv: -kv[1]["maxCm"])[:15],
-            "lossRows": len(tables["water_loss"])}
+def design_totals(des, floors: dict, beds: dict, tables: dict) -> dict:
+    kept = [b for b in des.basins if b.outcome == "kept"]
+    dropped = [b for b in des.basins if b.outcome == "dropped"]
+    reasons = collections.Counter(b.reason.split(":")[0] for b in dropped)
+    return {"basinsKept": len(kept), "basinsDropped": len(dropped), "droppedBasinsByReason": dict(reasons),
+            "droppedAreaM2": round(sum(b.area_m2 for b in dropped)),
+            "keptAreaM2": round(sum(b.area_m2 for b in kept)),
+            "basinLevelRules": dict(collections.Counter(b.level_rule for b in kept)),
+            "basinsSpilled": des.spilled, "driedToMarshSamples": des.dried, "shoreGrownSamples": des.grown,
+            "droppedSamples": des.dropped_samples,
+            "bodyOutcomes": dict(collections.Counter(v[0] for v in des.body.values())),
+            "regradedVertices": len(floors) + len(beds),
+            "regradeByKind": {"bed": len(beds), **collections.Counter(v[2] for v in floors.values())},
+            "rows": {t: len(r) for t, r in tables.items()}}
 
 
 def write_tables(tables: dict) -> None:
@@ -308,15 +303,13 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("cmd", choices=["plan", "records"])
     ap.add_argument("--out", default=str(ROOT / "out" / "water"))
     ap.add_argument("--index", default=str(ROOT / "out" / "pieces-index.json"))
-    ap.add_argument("--budget", type=int, default=None, help="plane refs per cell (default budget.BUDGET)")
-    ap.add_argument("--write-db", action="store_true", help="write the budget's loss and regrade rows (default "
-                    "budget only)")
+    ap.add_argument("--write-db", action="store_true", help="write the design's basin, body and regrade rows")
     a = ap.parse_args(argv)
     if a.cmd == "records":
         from tools.argonia_world.water import layer
         print(json.dumps(layer.records(), indent=1, sort_keys=True))
         return 0
-    return run_plan(Path(a.out), Path(a.index), a.budget, a.write_db)
+    return run_plan(Path(a.out), Path(a.index), a.write_db)
 
 
 if __name__ == "__main__":

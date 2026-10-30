@@ -25,13 +25,6 @@ from tools.argonia_world.water.steps import Piece, Step, arcs, at, drop_allowed
 Q = su.QUADS_PER_CELL  # 32 samples per cell side
 CX0, CY0 = su.PROVINCE_CELL_SW
 LEAK_TOL_M = 0.05  # dry ground this far under a plane is a wet film at the waterline, not a floating sheet
-# Within a cell, water levels closer than this stand as one level (the most common of them): the marsh sheets'
-# levels interleave a few centimetres apart, and every distinct level is its own set of planes. Kept under
-# STEP_MAX_M so a river's steps never merge. The change it makes is measured (`snap` in the plan) and is the loss.
-SNAP_M = 0.0
-# Water shallower than this at a sample need not be covered (a plane covers it when it passes): the ragged film at
-# a marsh sheet's edge is otherwise one tiny plane per sample. The film left uncovered is measured (`shallowLeft`).
-SHALLOW_M = 0.0  # measured: 0.1 m saves 10 % of the planes but leaves 1,400 bodies' edges bare (see the journal)
 PLANE_MESH_UNITS = 1024.0  # Water1024.nif: a flat square, object bounds -512..512 (Skyrim.esm, 2026-10-29)
 BANK_OFFSET_SAMPLES = 2  # a bank is sampled this far beyond the channel's half width
 BANK_TOL_M = 0.05
@@ -165,7 +158,7 @@ def level_blocks(cd: np.ndarray, gr: np.ndarray, code: int, done: np.ndarray | N
     under a higher step's water, at most LEAK_TOL_M below it); never over lower water or open low ground, and
     never where a turned step plane of the same level already stands (`done`)."""
     own = cd == code
-    req = own & (gr < code / 100.0 - SHALLOW_M)  # a film shallower than SHALLOW_M is covered only in passing
+    req = own & (gr < code / 100.0)
     hidden = gr >= code / 100.0 - LEAK_TOL_M
     ok = own | (((cd == DRYC) | (cd > code)) & hidden)
     if done is not None:
@@ -178,52 +171,18 @@ def level_blocks(cd: np.ndarray, gr: np.ndarray, code: int, done: np.ndarray | N
     return out
 
 
-def snap(cd: np.ndarray, snap_cm: int) -> np.ndarray:
-    """Levels grouped from the lowest while within `snap_cm` of the group's first; each group takes its most
-    common level (the higher on a tie)."""
-    wet = cd != DRYC
-    if snap_cm <= 0 or not wet.any():
-        return cd
-    vals, counts = np.unique(cd[wet], return_counts=True)
-    to = {}
-    i = 0
-    while i < len(vals):
-        j = i
-        while j + 1 < len(vals) and vals[j + 1] - vals[i] <= snap_cm:
-            j += 1
-        grp = range(i, j + 1)
-        rep = max(grp, key=lambda k: (counts[k], vals[k]))
-        for k in grp:
-            to[int(vals[k])] = int(vals[rep])
-        i = j + 1
-    out = cd.copy()
-    out[wet] = np.vectorize(to.__getitem__, otypes=[np.int32])(cd[wet])
-    return out
-
-
-def shown_levels(f: Field, n: int, snap_m: float = SNAP_M, remap: dict | None = None) -> None:
-    """Set `f.shown`: each cell's water levels after `snap` and the budget's per-cell `remap` ({cell: {code:
-    code}}, budget.py), the levels the plan stands."""
+def shown_levels(f: Field) -> None:
+    """Set `f.shown`: the levels the plan stands, each the field's level rounded to its centimetre code."""
     f.shown = f.level.copy()
-    cells = (n - 1) // Q
-    sc = int(round(snap_m * 100))
-    for iy in range(cells):
-        for ix in range(cells):
-            key = (CX0 + ix, CY0 + cells - 1 - iy)
-            m = (remap or {}).get(key)
-            r0, r1, c0, c1 = cell_window(*key, n)
-            cd = snap(codes(f.level[r0:r1, c0:c1]), sc)
-            for a, b in (m or {}).items():
-                cd[cd == a] = b
-            wet = cd != DRYC
-            if wet.any():
-                f.shown[r0:r1, c0:c1][wet] = cd[wet] / 100.0
+    wet = ~np.isnan(f.level)
+    f.shown[wet] = np.rint(f.level[wet] * np.float32(100)) / np.float32(100)
 
 
 def plan_cells(f: Field, ground: np.ndarray, oplanes: list | None = None,
                greedy_over: int | None = None) -> dict[tuple[int, int], CellPlan]:
     """Every cell's plan from `f.shown` (shown_levels first) and the turned step planes already placed. A cell whose
-    quadtree planes number more than `greedy_over` takes the greedy cover where that is smaller."""
+    quadtree planes number more than `greedy_over` takes the greedy cover where that is smaller (0: every cell takes
+    the smaller of the two covers)."""
     n = ground.shape[0]
     cells = (n - 1) // Q
     out: dict[tuple[int, int], CellPlan] = {}
@@ -259,12 +218,17 @@ def plan_cells(f: Field, ground: np.ndarray, oplanes: list | None = None,
                     continue
             cp = out.setdefault((cx, cy), CellPlan(cx, cy, "planes"))
             wt = f.wtype[r0:r1, c0:c1]
+            base = base_level(cd, gr, levels, {oc for oc, _, _ in here} | {code_of(o.level_m) for o in cp.oplanes})
+            if base is not None:  # the cell's lowest water is its cell water height; only the higher are planes
+                sub = wt[cd == base]
+                cp.mode, cp.level_m = "height", base / 100.0
+                cp.wtype = WATER_TYPES[np.bincount(sub[sub != DRY], minlength=len(WATER_TYPES)).argmax()]
             best, best_k = [], float("inf")
             for greedy in (False, True):
                 planes = []
                 for code in (int(v) for v in levels):
-                    if code == 0:
-                        continue  # the default water already stands at 0 here
+                    if code == 0 or code == base:
+                        continue  # the default water, or the cell's own water height, already stands here
                     done = np.zeros(cd.shape, dtype=bool)
                     for oc, rr, cc in here:
                         if oc == code:
@@ -280,6 +244,20 @@ def plan_cells(f: Field, ground: np.ndarray, oplanes: list | None = None,
                     break
             cp.planes.extend(best)
     return out
+
+
+def base_level(cd: np.ndarray, gr: np.ndarray, levels, tile_codes: set) -> int | None:
+    """The code of a cell's lowest water when it can stand as the cell's water height under the planes of the
+    higher: it is above sea level, no dry ground lies below it (it would show there), every higher water's bed hides
+    it (no water surface under another), and no turned tile stands at it."""
+    lo = int(levels[0])
+    if lo <= 0 or len(levels) < 2 or lo in tile_codes:
+        return None
+    wet = cd != DRYC
+    z = lo / 100.0 - LEAK_TOL_M
+    if (gr[~wet] < z).any() or (gr[wet & (cd > lo)] < z).any():
+        return None
+    return lo
 
 
 def squares(p: Plane) -> list[tuple[int, int, int]]:
@@ -331,69 +309,98 @@ def realised(f: Field, cells: dict[tuple[int, int], CellPlan], n: int) -> np.nda
     return R
 
 
-def check_bodies(g: Graph, f: Field, R: np.ndarray, ground: np.ndarray, tol_m: float = SNAP_M,
-                 lost: dict | None = None) -> dict:
-    """Every body has water over every one of its samples whose ground lies below its shown level (its level after
-    the snap; the snap's own loss is measured in check_wet): the default water,
-    a cell water height or a plane, at its level within the snap (the ocean: the worldspace default water at 0).
-    A body whose every sample is above its level on the terrain lane's ground (patched since the graph was
-    solved) has no water to show: it is listed as `buried`, and counted uncovered."""
-    sh = f.shown.ravel()
-    Rr = R.ravel()
-    gr = ground.reshape(-1)
-    bad, buried, stands_in, carve_lost, recorded = [], [], {}, [], []
-    covered = 0
-    n = ground.shape[0]
+def check_bodies(g: Graph, f: Field, R: np.ndarray, ground: np.ndarray, design) -> dict:
+    """Every body by its designed outcome (design.py): the sea and a body at sea level stand under the default water;
+    a body at its own level has water realised over every one of its samples below its level (or the graph's
+    `realised_by` body does); a basin's body is realised by its basin, which has water and every sample of it
+    realised; a dropped body is listed with its reason. `uncovered` lists any other body: a failure."""
+    sh, Rr = f.shown.ravel(), R.ravel()
+    gr = np.asarray(ground).reshape(-1)
+    basin_ok = {}
+    for b in design.basins:
+        basin_ok[b.id] = b.outcome == "kept" and b.samples > 0
+    bad, dropped, outcomes = [], {}, {}
     for b in g.bodies.values():
-        if b.kind == "ocean":
-            ok = True
-        elif b.realised_by and b.realised_by in g.bodies:
-            ok = True  # the graph's own record: another body realises it (the Blackrose lake's bowl)
-            stands_in[b.id] = {"in": b.realised_by, "why": "realised_by"}
-        else:
+        outcome, basin, reason = design.body[b.id]
+        outcomes[outcome] = outcomes.get(outcome, 0) + 1
+        if outcome == "dropped":
+            dropped[b.id] = reason or next(x.reason for x in design.basins if x.id == basin)
+            continue
+        if outcome == "basin":
+            ok = basin_ok.get(basin, False)
+        elif outcome == "own-level" and not (b.realised_by and b.realised_by in g.bodies):
             idx = f.body_samples.get(b.id)
-            if idx is not None and idx.size:
-                idx = idx[np.asarray(gr[idx]) < sh[idx] - 0.0051]
-                if idx.size == 0:
-                    buried.append(b.id)
-            # realised at the level the plan stands (the budget's merges move it: the move is a recorded loss)
-            ok = idx is not None and idx.size > 0 and bool(np.all(np.abs(Rr[idx] - sh[idx]) <= tol_m + 0.0051))
-        if not ok and b.lost_at_carve:
-            carve_lost.append(b.id)  # the graph records it lost at the carve: no water of its own by design
+            idx = idx[gr[idx] < sh[idx] - 0.0051] if idx is not None else None
+            ok = idx is not None and idx.size > 0 and bool(np.all(np.abs(Rr[idx] - sh[idx]) <= 0.0051))
+        else:
             ok = True
-        elif not ok and b.deepest is not None:
-            # a body with no water of its own whose deepest sample stands in other water (a carve-made backswamp
-            # inside a lower sheet): that water realises it, at its own level; the difference is listed
-            x, y = b.deepest
-            i = y * n + x
-            if not np.isnan(sh[i]) and float(gr[i]) < sh[i] and abs(Rr[i] - sh[i]) <= 0.0051:
-                ok = True
-                stands_in[b.id] = {"levelM": b.level_m, "shownM": round(float(sh[i]), 3)}
-        if not ok and lost and b.id in lost:
-            ok = True  # no water of its own left, and the loss is recorded (water_loss)
-            recorded.append(b.id)
-        covered += ok
         if not ok:
             bad.append(b.id)
-    return {"bodies": len(g.bodies), "covered": covered, "uncovered": bad, "buried": buried,
-            "standsInOtherWater": stands_in, "lostAtCarve": carve_lost, "recordedLoss": recorded}
+    return {"bodies": len(g.bodies), "outcomes": outcomes, "realised": len(g.bodies) - len(dropped) - len(bad),
+            "droppedByDesign": len(dropped), "uncovered": bad, "dropped": dropped}
 
 
-def check_wet(f: Field, R: np.ndarray, ground: np.ndarray, tol_m: float = SNAP_M) -> dict:
-    """Every wet sample whose ground lies below its shown level has that level over it; the snap's loss is the
-    samples it dried (shown below their ground though their own level is above it)."""
+def check_wet(f: Field, R: np.ndarray, ground: np.ndarray) -> dict:
+    """Every wet sample whose ground lies below its shown level has that level over it."""
     wet = ~np.isnan(f.level)
     gr = np.asarray(ground)
     below = wet & (gr < f.shown - 0.0051)
     miss = below & ~(np.abs(R - f.shown) <= 0.0051)
-    dried = wet & (gr >= f.shown - 0.0051) & (gr < f.level)
-    moved = np.abs(f.shown[wet] - f.level[wet])
-    moved = moved[~np.isnan(moved)]  # a fallback cell's dried samples are counted in driedBySnapOrRounding
     return {"wetSamples": int(wet.sum()), "wetAboveGround": int(below.sum()),
-            "groundAboveItsWater": int((wet & (gr >= f.level)).sum()), "driedBySnapOrRounding": int(dried.sum()),
-            "unrealised": int(miss.sum()),
-            "snappedSamples": int((moved > 0.0051).sum()), "snapMaxM": round(float(moved.max()) if moved.size else 0.0, 3),
-            "snapMeanM": round(float(moved.mean()) if moved.size else 0.0, 4)}
+            "groundAboveItsWater": int((wet & (gr >= f.level)).sum()), "unrealised": int(miss.sum())}
+
+
+def check_walls(f: Field, ground: np.ndarray, pieces: list, tol_m: float = LEAK_TOL_M) -> dict:
+    """Water beside lower dry ground (its edge would stand in the air): wet samples with a 4-neighbour that is dry
+    and lower than the water by more than `tol_m`; those within two samples of a step piece are under the piece."""
+    n = ground.shape[0]
+    gr = np.asarray(ground)
+    lv = f.shown
+    wet = ~np.isnan(lv)
+    wall = np.zeros((n, n), dtype=bool)
+    height = np.zeros((n, n), dtype=np.float32)
+    for dr, dc in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+        a = np.s_[max(0, dr):n + min(0, dr), max(0, dc):n + min(0, dc)]
+        b = np.s_[max(0, -dr):n + min(0, -dr), max(0, -dc):n + min(0, -dc)]
+        with np.errstate(invalid="ignore"):
+            m = wet[b] & ~wet[a] & (gr[a] < lv[b] - tol_m)
+        wall[b] |= m
+        height[b] = np.maximum(height[b], np.where(m, lv[b] - gr[a], 0))
+    near = np.zeros((n, n), dtype=bool)
+    for p in pieces:
+        c, r = int(round(p.east_m / MPP)), int(round(p.south_m / MPP))
+        near[max(0, r - 2):r + 3, max(0, c - 2):c + 3] = True
+    w = wall & ~near
+    hs = height[w]
+    src = np.bincount(f.source[w], minlength=7)
+    return {"samples": int(w.sum()), "underPieces": int((wall & near).sum()),
+            "bySource": {k: int(v) for k, v in zip(["dry", "body", "raster", "sea", "reach", "shore", "hollow"], src)},
+            "heightP50M": round(float(np.percentile(hs, 50)), 2) if hs.size else 0.0,
+            "heightP90M": round(float(np.percentile(hs, 90)), 2) if hs.size else 0.0,
+            "heightMaxM": round(float(hs.max()), 2) if hs.size else 0.0}
+
+
+def check_sides(f: Field, ground: np.ndarray, pieces: list, tol_m: float = 0.05) -> dict:
+    """Open sides between waters: a water sample beside (4 neighbours) lower water whose ground stands more than
+    `tol_m` below that lower water's level, so the lower water looks into the higher one under its surface; those
+    within two samples of a step piece are under the piece. Counted, by the higher water's source."""
+    n = ground.shape[0]
+    gr = np.asarray(ground)
+    lv = f.shown
+    side = np.zeros((n, n), dtype=bool)
+    for dr, dc in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+        a = np.s_[max(0, dr):n + min(0, dr), max(0, dc):n + min(0, dc)]
+        b = np.s_[max(0, -dr):n + min(0, -dr), max(0, -dc):n + min(0, -dc)]
+        with np.errstate(invalid="ignore"):
+            side[b] |= (lv[a] < lv[b] - tol_m) & (gr[b] < lv[a] - tol_m)
+    near = np.zeros((n, n), dtype=bool)
+    for p in pieces:
+        c, r = int(round(p.east_m / MPP)), int(round(p.south_m / MPP))
+        near[max(0, r - 2):r + 3, max(0, c - 2):c + 3] = True
+    w = side & ~near
+    src = np.bincount(f.source[w], minlength=7)
+    return {"samples": int(w.sum()), "underPieces": int((side & near).sum()),
+            "bySource": {k: int(v) for k, v in zip(["dry", "body", "raster", "sea", "reach", "shore", "hollow"], src)}}
 
 
 def footprints(cells: dict[tuple[int, int], CellPlan], n: int):
@@ -424,8 +431,9 @@ def check_overlap(cells: dict[tuple[int, int], CellPlan], n: int) -> dict:
 
 
 def check_float(f: Field, cells: dict[tuple[int, int], CellPlan], ground: np.ndarray) -> dict:
-    """Every plane sample that is not its own water must be hidden by ground (no sheet over lower water or air)."""
-    floating, stacked = 0, 0
+    """Every plane sample that is not its own water must be hidden by ground (no sheet over lower water or air); a
+    tile's overhang (lower water under its step's piece, oriented.py) is counted apart."""
+    floating, stacked, overhang = 0, 0, 0
     for cp in cells.values():
         for p in cp.planes:
             sl = (slice(p.r0, p.r0 + p.rows), slice(p.c0, p.c0 + p.cols))
@@ -435,21 +443,23 @@ def check_float(f: Field, cells: dict[tuple[int, int], CellPlan], ground: np.nda
             floating += int((~own & (gr < p.level_m - LEAK_TOL_M)).sum())
             stacked += int((~own & ~np.isnan(lv)).sum())
         for op in cp.oplanes:
-            lv = f.shown.ravel()[op.idx]
+            keep = ~np.isin(op.idx, op.over)
+            idx = op.idx[keep]
+            lv = f.shown.ravel()[idx]
             own = np.abs(lv - op.level_m) < 0.0051
-            gr = np.asarray(ground.reshape(-1)[op.idx])
+            gr = np.asarray(ground.reshape(-1)[idx])
             floating += int((~own & (gr < op.level_m - LEAK_TOL_M)).sum())
             stacked += int((~own & ~np.isnan(lv)).sum())
-    return {"floatingSamples": floating, "underHigherWaterSamples": stacked}
+            overhang += int(op.over.size)
+    return {"floatingSamples": floating, "underHigherWaterSamples": stacked, "overhangSamples": overhang}
 
 
-def check_steps(g: Graph, steps: dict[str, list[Step]], merged: set | frozenset = frozenset()) -> dict:
-    """Each step's level inside the graded profile over its run, and each drop within the grade's step (the
-    merged one where the budget merged the reach's steps)."""
+def check_steps(g: Graph, steps: dict[str, list[Step]]) -> dict:
+    """Each step's level inside the graded profile over its run, and each drop within the grade's step."""
     bad, n, max_dev, max_drop = [], 0, 0.0, 0.0
     for rid, st in steps.items():
         r = g.reaches[rid]
-        allowed = drop_allowed(r, rid in merged) + 1e-6
+        allowed = drop_allowed(r) + 1e-6
         for s in st:
             n += 1
             dev = max(0.0, s.profile_lo_m - s.level_m, s.level_m - s.profile_hi_m)

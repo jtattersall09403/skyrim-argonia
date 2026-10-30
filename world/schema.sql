@@ -5476,45 +5476,44 @@ CREATE TABLE "hydrology_setting" (
   "value" TEXT NOT NULL
 );
 
--- The water plan's plane budget (2.W2; the planner's ruling of 2026-10-29), written by
--- `python -m tools.argonia_world.water plan --write-db` (budget.py) and checked equal to the plan by every plan run.
--- Home of a cell that was over the plane budget: what it held, what it holds, and how it was brought under.
-CREATE TABLE "water_budget_cell" (
-  "cx" INTEGER NOT NULL,
-  "cy" INTEGER NOT NULL,
-  "budget" INTEGER NOT NULL,
-  "planes_before" INTEGER NOT NULL,
-  "planes_after" INTEGER NOT NULL,
-  "outcome" TEXT NOT NULL CHECK ("outcome" IN ('merged', 'fallback')),
-  "level_m" REAL,
-  "ring_cut_vertices" INTEGER,
-  PRIMARY KEY ("cx", "cy")
-);
-
--- Home of one loss of the budget: an entity's water in one cell moved, dried or flooded by a kind of reduction.
--- entity_id is a hydrology_body or hydrology_reach id, or `source:<raster|sea|shore|hollow>` for water no body
--- owns; kind is snap, step-merge, dried, flooded, fallback-raised, fallback-lowered, fallback-dried,
--- fallback-flooded, or buried (a body whose patched ground stands above its level everywhere).
-CREATE TABLE "water_loss" (
-  "entity_id" TEXT NOT NULL,
-  "cx" INTEGER NOT NULL,
-  "cy" INTEGER NOT NULL,
-  "kind" TEXT NOT NULL CHECK ("kind" IN ('snap', 'step-merge', 'dried', 'flooded', 'fallback-raised',
-    'fallback-lowered', 'fallback-dried', 'fallback-flooded', 'buried')),
+-- The designed water (2.W2; the owner's ruling of 2026-10-29: designed, nothing falls back), written by
+-- `python -m tools.argonia_world.water plan --write-db` (design.py, oriented.py) and checked equal to the plan by every
+-- plan run.
+-- Home of a still-water basin: touching marsh, swamp, pond and pool patches within 1.5 m of each other, standing at
+-- one designed level (level_rule: median, lower-quartile or lowest of its patches' levels, or spill: the highest
+-- level whose shore holds); a dropped basin is a puddle or a film by design, its reason given.
+CREATE TABLE "water_basin" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "level_m" REAL NOT NULL,
   "samples" INTEGER NOT NULL,
-  "max_cm" INTEGER NOT NULL,
-  "mean_cm" REAL NOT NULL,
-  PRIMARY KEY ("entity_id", "cx", "cy", "kind")
+  "area_m2" REAL NOT NULL,
+  "depth_m" REAL NOT NULL,
+  "patches" INTEGER NOT NULL,
+  "level_rule" TEXT NOT NULL CHECK ("level_rule" IN ('median', 'lower-quartile', 'lowest', 'spill')),
+  "outcome" TEXT NOT NULL CHECK ("outcome" IN ('kept', 'dropped')),
+  "reason" TEXT
 );
 
--- Home of one regraded ground vertex: the floor a fallback cell's border stands at (terrain/water_regrade.py).
+-- Home of a hydrology body's designed outcome: sea (the default water), own-level (one level, its own), basin (it
+-- stands in a basin), or dropped (no water by design: its basin's reason, or its own).
+CREATE TABLE "water_body_design" (
+  "body_id" TEXT NOT NULL PRIMARY KEY REFERENCES "hydrology_body"("id"),
+  "outcome" TEXT NOT NULL CHECK ("outcome" IN ('sea', 'own-level', 'basin', 'dropped')),
+  "basin_id" TEXT REFERENCES "water_basin"("id"),
+  "reason" TEXT
+);
+
+-- Home of one shaped ground vertex of the water's regrade (terrain/water_regrade.py): kind bed is a river step's
+-- channel carved down to z_m (a ceiling: the pool); bank a dry bank raised to z_m beside a river's water or under its
+-- tile, sill the lip below a cascade or fall raised to hold the upper pool, berm a still water's low shore raised to
+-- close it (floors). entity_id is the reach, body or basin water that asks for it (none for water no body owns).
 CREATE TABLE "water_regrade" (
   "x" INTEGER NOT NULL,
   "y" INTEGER NOT NULL,
-  "floor_m" REAL NOT NULL,
-  "cx" INTEGER NOT NULL,
-  "cy" INTEGER NOT NULL,
-  PRIMARY KEY ("x", "y")
+  "kind" TEXT NOT NULL CHECK ("kind" IN ('bed', 'bank', 'sill', 'berm')),
+  "z_m" REAL NOT NULL,
+  "entity_id" TEXT,
+  PRIMARY KEY ("x", "y", "kind")
 );
 
 -- == Regions, weather, light, roads and the route graph (2.W3; decision 0028: regions are the unit of authorship) ==
