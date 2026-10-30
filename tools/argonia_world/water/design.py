@@ -373,8 +373,9 @@ def _dry(f: wfield.Field, win, m: np.ndarray) -> None:
 
 def rows(d: Design) -> dict:
     """The design's rows for the world db."""
-    basins = [{"id": b.id, "level_m": round(b.level_m, 2), "samples": b.samples, "area_m2": round(b.area_m2, 1),
-               "depth_m": round(b.depth_m, 2), "patches": b.patches, "level_rule": b.level_rule,
+    # + 0.0: a rounded -0.0 is 0.0, as the db reads it back
+    basins = [{"id": b.id, "level_m": round(b.level_m, 2) + 0.0, "samples": b.samples,
+               "area_m2": round(b.area_m2, 1) + 0.0, "depth_m": round(b.depth_m, 2) + 0.0, "patches": b.patches, "level_rule": b.level_rule,
                "outcome": b.outcome, "reason": b.reason} for b in sorted(d.basins, key=lambda b: b.id)]
     bodies = [{"body_id": k, "outcome": v[0], "basin_id": v[1], "reason": v[2]} for k, v in sorted(d.body.items())]
     return {"water_basin": basins, "water_body_design": bodies}

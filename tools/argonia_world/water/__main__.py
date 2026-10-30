@@ -249,11 +249,11 @@ def regrade_rows(floors: dict, beds: dict, n: int) -> list[dict]:
     out = []
     for i in sorted(beds):
         y, x = divmod(i, n)
-        out.append({"x": x, "y": y, "kind": "bed", "z_m": beds[i][0], "entity_id": beds[i][1]})
+        out.append({"x": x, "y": y, "kind": "bed", "z_m": beds[i][0] + 0.0, "entity_id": beds[i][1]})
     for i in sorted(floors):
         y, x = divmod(i, n)
         z, rid, kind = floors[i]
-        out.append({"x": x, "y": y, "kind": kind, "z_m": z, "entity_id": rid})
+        out.append({"x": x, "y": y, "kind": kind, "z_m": z + 0.0, "entity_id": rid})
     return out
 
 
