@@ -69,6 +69,25 @@
   crocodile was 340 units away on land. The fight now starts on the bank, 200 units south of the crocodile and
   facing it.
 
+- **A crash (fp4 run 1, loot-the-croc).** ContainerMenu, SkyrimSE+093FE2F `test byte ptr [rdi+0x38]` with rdi 0, on
+  our Steel Sword (10000840). The weapon had no equip slot (ETYP); +0x38 is BGSEquipSlot's flags.
+  - Fixed at source: `skyrim_units.weapon_equip_slot` (EitherHand 013F44, BothHands 013F45 by animation),
+    items_records writes `equipSlot`, and Items.cs sets EquipmentType. L2: test_items_records.
+  - Deployed in 348 s. The full `make plugin` wrote ArgoniaWorld.esm byte-identical to `make navmesh`'s (d47d9ab3),
+    so the navmesh carry works.
+  - No crash since: 4 runs.
+- **The crocodile fight is flaky:** it passed 2 of 6 runs.
+  - The crocodile sits in its den below the clay-cut bank and does not come out.
+  - With the navmesh it keeps 160-180 units from any staging point (moveto 90, 150 or 200 south; the crocodile
+    moved to the player). It never enters combat (combat false).
+  - The player's swings play (weaponSwing, HitFrame) but land no hit, so its health stays 175/175.
+  - Open, for the fight lane: the staging needs a reachable spot, or the crocodile's aggro and den package need
+    looking at.
+- **The tannin haze is a heavy yellow fog at the clay cut.** The croc stills barely show the ground beyond about
+  30 m. It is our weather, so its look is the weather lane's call.
+- **first-place runs so far** (fp3 to fp6, two runs each): steps 1-2 and 11-17 green when the crocodile is hit.
+  The rest are owed or follow the croc.
+
 ## 5. Weather
 - Nine Argonia scenes now `fw ARG_Weather_tannin_haze` (ours, dry-haze, realised in every group), not Skyrim's
   0000081A. Riverwood (a vanilla control place) keeps it. In game `fw 10000812` took (`weather` read).
