@@ -53,12 +53,20 @@ Not covered, with reasons:
   Sleep template; the template's Target finds the bed she owns there (the bed ref 8933BE already carries her
   ownership, 000886). L1: `check_package_targets` now also requires the home cell to hold a ref owned by every NPC_
   that runs the package (2 tests, one fails on purpose).
-- In game (deploy2, `tests/journeys/livia-sleep.yaml`): at 20:30 she is outside; at 23:00 she is in her house
-  (GetInCell 1: she walked to her door and the door link took her in) running ARG_Npc_WellKeeper_Sleep (000885);
-  asleep (GetSleeping 3) 39 units from her bed at 23:54. The first runs read her 20 s after the player entered and
-  failed (0); the read now waits up to 90 s.
-- The hut door still (B4): the first still faced the pod's back (the door-local axis taken the wrong way); re-shot
-  facing door-local +y.
+- In game (`tests/journeys/livia-sleep.yaml`):
+  - **Home by 23:00: green** (4 of 4 runs): at 20:30 she is outside; at 23:00 she is in her house (GetInCell 1), so
+    she walked to her door and the door link took her in, running ARG_Npc_WellKeeper_Sleep (000885).
+  - **Asleep: red with the player in the room.** With the player in the interior from 23:00, GetSleeping read 0 after
+    90 s (deploy3, 1 run) and after one more game hour (deploy4, 2 of 2 runs). Once, with the player gone outside,
+    she was read asleep (GetSleeping 3) 39 units from her bed at 23:54. The bed is reached from its side (the nav
+    journal: KotM's interior navmesh, nearest centroid 101 units from the bed's centre). **Next:** read her distance
+    to the bed and her position over a minute in the loaded interior (moving, stuck at the side, or standing); the
+    bed's furniture markers against the navmesh.
+- The hut door still (B4, for nav-walk-2), read by a `reader`: the first still faced the pod's back (door-local axis
+  taken the wrong way). The second, from door-local -y facing the door: live render; the door sits in a recessed,
+  rounded alcove with a mud rim all round, not floating or buried; no gap, cliff or water at the sill (its base hid
+  by the player and grass); nothing Nordic. "The pod and its recessed door read as Black Marsh and look correctly
+  placed."
 
 ## 4. The crocodile
 - Placed and alive at its den; **it did not attack** a player 200 or 430 units away (2 of 2 runs failed at
@@ -87,5 +95,54 @@ Not covered, with reasons:
   at the first red, so frames-closed/open, scroll, journal, Escape, chart and relaunch have not run: decision 0017's
   numbers other than "binds on 1.7.104" are still owed.
 
-## 6. Batch 2 (deploy3)
-(pending)
+## 6. The combat trial (bdd9282, ba5e33d)
+- pad.ps1 now holds a trigger or button across steps (`+LT=1:600 RB:120 wait:1500 -:100`; `-` releases them), so
+  parry-riposte is a run step in combat-trial-a/b/b2 (99bd4d5).
+- **B2: dead at Pandora.** `stack.py combat B2` installed and ran Pandora; `pandora-check` read every DSC FNIS event
+  MISSING from the behaviours (BB_DSC_ForwardRoll_Fast, BB_DSC_Backstep_Med, BB_DSC_RightRoll_Fat_MAG,
+  BB_DSC_pa_1HMKillMoveBleedOutKill, BB_DSC_pa_KillMoveH2HComboA, ...): "DSC's FNIS animations did not reach the
+  behaviours (B is dead)". combat-trial-b2 failed at its first check, pandora-wired (moved 0 units, wanted > 150).
+  Papyrus.0.log fetched to out/combat-trial/papyrus-b2.log.
+- **B:** the same pandora-check (every DSC event MISSING, animdata 0 DSC clip lines); combat-trial-b then failed at
+  its scene: "the game reported a failed load of argoniabase" (the base save is A's).
+- **A (restore):** installed, main menu with 29 DLLs, 0 not loaded; combat-trial-a failed at pandora-wired (moved 0
+  units, wanted > 150: the roll did not move the player). **`stack.py verify` after A: 20 bad** (was 1 bad,
+  tk-dodge.toml, before the trial): the switch back to A is not exact on the machine. The next lane must read the
+  20 names (`stack.py verify`) and restore A before any other check (a full `make deploy` relays the profile).
+
+| Group | Pandora (DSC events) | Journey | Verdict |
+|---|---|---|---|
+| A (0.0 stack) | n/a | failed at pandora-wired (roll moved 0) after the restore | not measured; restore not exact (20 bad) |
+| B (DSC) | all MISSING | scene load failed | dead at Pandora |
+| B2 (DSC, crits off) | all MISSING | failed at pandora-wired | dead at Pandora |
+
+- **The gate:** `make check` red in plugin-check: "order: Dark Souls Combat.esp is listed but not found in
+  /home/ubuntu/games/skyrimse/Data" (links: 1 problem). Cause: combat-trial-prep's DSC rows (bdd9282) put DSC in
+  the load order the links check reads, and the build VM's Data mirror lacks it. Not w3-infra's 002dca4.
+
+## 7. Not done (hand-off to the next game lane)
+1. **ui-probe** past `hud`: ui-gaps' a196939 still reads "0 out of HudElements (22 listed)" (deploy4). Either the
+   next ui-gaps fix, or run the remaining steps with that one expectation relaxed to get decision 0017's numbers
+   (frames closed/open p50/p99, scroll, journal key, Escape keeps System, chart, relaunch).
+2. **The crocodile:** the planner's call in §4, then croc-den.yaml twice.
+3. **Livia asleep with the player in the room** (§3 next step).
+4. **w3-infra (002dca4)** asks for a deploy (Argonia.esm, the DLL with hook.road-closed, ARG_PRKF_RoadClosed.pex)
+   and three checks: world-sample s09-gate-message (notice "The road beyond is closed.", crosshair "Open Border
+   Gate", HasPerk ARG_Perk_RoadClosed 1, push-north stops), s10-sign-text (Gideon arm 0 reads "To Archon"; board
+   direction and height; does a script-less named ACTI prompt), and crime (a theft in Livia's sight gives
+   GetCrimeGoldNonviolent on ARG_Faction_ClaywaterStation > 0). Report docs/research/2026-10-30/lane-w3-infra.md.
+5. **The world sample** (tests/journeys/world-sample.yaml, 79 steps, 13 scenes; deploy sends every scene, 30 sent).
+6. **LOD** (lane-2.W4-lod.md's sequence; lod.ps1 not parsed yet), then the map check (FWMF needs the terrain LOD).
+7. **The memory climb:** a load-only loop is written (scratch memclimb.py: A base-save loads, B exterior to the
+   holding cell and back, C the holding cell reloaded; private MB after each). Seen in passing: 5,608 MB private
+   after ~10 min of journeys on a fresh launch.
+8. **The soak**, last, once, never a gate.
+9. **Closing chunks:** none closes yet. 1.4 closes when the planner rules the three thing hooks (well head, mortar
+   tub, ledger) and the missing "journal updated" notice (§2) dropped or deferred; 0.3 needs only recording
+   (scene-to-scene time and the 238.3 s edit-to-verdict into journals/bridge.md); 0.2 §b needs verify clean
+   (tk-dodge.toml differs), §c lock-on/climb/swim/menus, §d latency; 0.4 §d needs the other people's day and night
+   reads and the stills.
+
+## Commits
+e7ee9f3 native sleep; 99bd4d5 LF83 component checks and pad.ps1; af6c541 (child) crocodile AI data; 4cc88c9 lint;
+fdd620f croc-den and livia-sleep journeys, this report.
