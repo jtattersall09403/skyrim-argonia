@@ -1,0 +1,197 @@
+# LF83's building blocks, headless (owner ruling 2026-10-30, bb7395f): no playthrough; each stage advances from facts
+# set through their real paths, read back by state and events. Talks are the real path (E at the speaker opens our
+# window through the intercept perk); a topic is the view's own intent (`core ViewIntent`), as a click sends it.
+# Fact -> path map: docs/research/2026-10-30/lane-game-10.md §2. The crocodile's death is staged with `kill` (the
+# fight itself is game-10's crocodile check, not this one's). Endings 41/90/92/93: lf83-endings.yaml.
+# The "journal updated" notice: ArgoniaCore has no HUD notice (game-10 finding); the journal family (`core
+# JournalEntries`, one line "<quest> <stage> <kind> <date>" per entry) is what is read.
+id: lf83-components
+runner: 1
+scene: first-place
+steps:
+  - name: arrived
+    expect:
+      - {console: "GetStage ARG_Q_LF83", contains: ">> 0"}
+      - {read: [core, KnowsTopic, topic.claywater-two-charges], path: value, eq: false}
+      - {read: [core, JournalEntries], path: value, not_contains: "quest.local.lf83"}
+  # --- stage 10: the hook topic heard of a named speaker (dry season) -------------------------------------------
+  - name: talk-takes
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationTakes 0 -120 0"}
+      - {console: "player.setangle z 0"}
+      - {console: "ARG_Ref_ClaywaterStationTakes.moveto player 0 110 0"}
+      - {console: "player.setangle x 0"}
+      - {wait: 3}
+      - {key: "E 120"}
+      - {wait: 2}
+    expect:
+      - {read: [core, ViewState, dialogue], path: value.body.speaker.id, eq: npc.imperial-fringe.claywater-station.n1-3}
+      - {read: [core, KnowsTopic, topic.claywater-two-charges], path: value, eq: true}   # her greeting links it
+  - name: stage-10
+    do: [{call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}]
+    expect:
+      - {console: "GetStage ARG_Q_LF83", contains: ">> 10", within: 8}
+      - {read: [core, JournalEntries], path: value, contains: "quest.local.lf83 10 0 ", within: 5}
+  - name: hear-station-open     # objective 10: two-charges heard of Livia
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationLivia 0 -120 0"}
+      - {console: "player.setangle z 0"}
+      - {console: "ARG_Ref_ClaywaterStationLivia.moveto player 0 110 0"}
+      - {wait: 3}
+      - {key: "E 120"}
+      - {wait: 2}
+    expect: [{read: [core, ViewState, dialogue], path: value.body.speaker.id, eq: npc.imperial-fringe.claywater-station.well-keeper}]
+  - name: hear-station
+    do:
+      - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.claywater-two-charges"}}']}
+      - {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}
+    expect:
+      - {console: "GetObjectiveCompleted ARG_Q_LF83 10", contains: ">> 1", within: 8}
+      - {console: "GetStage ARG_Q_LF83", contains: ">> 10"}
+  # --- stage 20: the landing's side and the clay bend, heard of Signs ------------------------------------------
+  - name: hear-landing-open
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationSigns 0 -120 0"}
+      - {console: "player.setangle z 0"}
+      - {console: "ARG_Ref_ClaywaterStationSigns.moveto player 0 110 0"}
+      - {wait: 3}
+      - {key: "E 120"}
+      - {wait: 2}
+    expect: [{read: [core, ViewState, dialogue], path: value.body.speaker.id, eq: npc.imperial-fringe.claywater-station.landing-s-poler}]
+  - name: hear-landing
+    do:
+      - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.claywater-two-charges"}}']}
+    expect:   # two-charges.tell links the clay bend: offered in Signs' list
+      - {read: [core, ViewState, dialogue], path: value.body.topics, contains: "topic.lf83-clay-bend"}
+  - name: stage-20
+    do:
+      - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.lf83-clay-bend"}}']}
+      - {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}
+    expect:
+      - {console: "GetStage ARG_Q_LF83", contains: ">> 20", within: 8}
+      - {read: [core, JournalEntries], path: value, contains: "quest.local.lf83 20 0 ", within: 5}
+      - {read: [core, KnowsTopic, topic.claywater-landing-terms], path: value, eq: true}   # granted by stage 20
+      - {read: [core, KnowsTopic, topic.lf83-cracked-well], path: value, eq: true}
+  # --- why-failing: the well water tasted (Takes), then the old mending heard ----------------------------------
+  - name: draw-water
+    do: [{console: "ARG_Ref_ClaywaterStationWellWater.activate player"}, {wait: 2}]
+    expect: [{console: "player.GetItemCount ARG_Misc_Lf83WellWater", not_contains: ">> 0"}]
+  - name: cracked-well-offered
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationTakes 0 -120 0"}
+      - {console: "player.setangle z 0"}
+      - {console: "ARG_Ref_ClaywaterStationTakes.moveto player 0 110 0"}
+      - {wait: 3}
+      - {key: "E 120"}
+      - {wait: 2}
+    expect:
+      - {read: [core, ViewState, dialogue], path: value.body.topics, contains: "topic.lf83-cracked-well"}
+  - name: ford-tasted      # cracked-well.tasted takes the water and sets the flag -> objective 20
+    do: [{call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.lf83-cracked-well"}}']}]
+    expect:
+      - {read: [core, GetFlag, flag.lf83.ford-tasted], path: value, eq: true}
+      - {console: "GetObjectiveCompleted ARG_Q_LF83 20", contains: ">> 1", within: 8}
+  - name: mending-heard    # asked again after the taste: cracked-well.mending
+    do:
+      - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.lf83-cracked-well"}}']}
+      - {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}
+    expect: [{read: [core, GetFlag, flag.lf83.mending-heard], path: value, eq: true}]
+  # --- stage 30: the bend cleared (staged death), the clay got ---------------------------------------------------
+  - name: clear-bend
+    do: [{console: "ARG_Ref_ClaywaterStationCrocodile.kill"}, {wait: 2}]
+    expect:
+      - {console: "ARG_Ref_ClaywaterStationCrocodile.GetDead", contains: ">> 1"}
+      - {console: "GetObjectiveCompleted ARG_Q_LF83 21", contains: ">> 1", within: 8}
+  - name: get-clay
+    do: [{console: "ARG_Ref_ClaywaterStationClayBasket.activate player"}, {wait: 2}]
+    expect:
+      - {console: "player.GetItemCount ARG_Misc_Lf83ClayBasket", contains: ">> 1"}
+      - {console: "GetStage ARG_Q_LF83", contains: ">> 30", within: 8}
+      - {read: [core, JournalEntries], path: value, contains: "quest.local.lf83 30 0 ", within: 5}
+      - {read: [core, KnowsTopic, topic.lf83-one-charge], path: value, eq: true}   # granted by stage 30
+  # --- stage 40: both keepers agree to one charge (Signs first, then Livia) --------------------------------------
+  - name: signs-agrees-open
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationSigns 0 -120 0"}
+      - {console: "player.setangle z 0"}
+      - {console: "ARG_Ref_ClaywaterStationSigns.moveto player 0 110 0"}
+      - {wait: 3}
+      - {key: "E 120"}
+      - {wait: 2}
+    expect: [{read: [core, ViewState, dialogue], path: value.body.speaker.id, eq: npc.imperial-fringe.claywater-station.landing-s-poler}]
+  - name: signs-agrees
+    do:
+      - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.claywater-landing-terms"}}']}   # Livia agrees only once the landing's terms are heard of Signs
+      - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.lf83-one-charge"}}']}
+      - {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}
+    expect:
+      - {read: [core, GetFlag, flag.lf83.one-charge-landing], path: value, eq: true}
+      - {console: "GetObjectiveCompleted ARG_Q_LF83 31", contains: ">> 1"}   # old-mending: the mending heard at 20 counts at 30
+      - {console: "player.GetItemCount ARG_Misc_Lf83ClayBasket", contains: ">> 0"}
+      - {console: "GetStage ARG_Q_LF83", contains: ">> 30"}
+  - name: livia-agrees-open
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationLivia 0 -120 0"}
+      - {console: "player.setangle z 0"}
+      - {console: "ARG_Ref_ClaywaterStationLivia.moveto player 0 110 0"}
+      - {wait: 3}
+      - {key: "E 120"}
+      - {wait: 2}
+    expect: [{read: [core, ViewState, dialogue], path: value.body.speaker.id, eq: npc.imperial-fringe.claywater-station.well-keeper}]
+  - name: livia-agrees
+    do:
+      - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.lf83-one-charge"}}']}
+      - {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}
+    expect:
+      - {read: [core, GetFlag, flag.lf83.one-charge-station], path: value, eq: true}
+      - {console: "GetStage ARG_Q_LF83", contains: ">> 40", within: 8}
+      - {read: [core, JournalEntries], path: value, contains: "quest.local.lf83 40 1 ", within: 5}
+      - {read: [core, GetFlag, flag.lf83.terms-settled], path: value, eq: true}
+      - {console: "GetQuestCompleted ARG_Q_LF83", contains: ">> 1"}
+  - name: never-vanilla    # no Dialogue Menu opened for any of our speakers (1.1's acceptance)
+    expect: [{read: [events, 0, menu], path: events, not_contains: "Dialogue Menu"}]
+  # --- every family across a rest save and its load ----------------------------------------------------------
+  - name: rest
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationRoadIn 0 -90 0"}
+      - {console: "player.setangle z 0"}
+      - {console: "player.setangle x 40"}
+      - {wait: 3}
+      - {key: "E 120"}
+      - {wait: 4}
+      - {console: "player.setangle x 0"}
+    expect:
+      - {read: [core, WakePoint], path: value, ne: ""}
+      - {read: [core, SaveCount], path: value, keep: saves_rest, within: 10}
+  - name: before-load
+    expect:
+      - {read: [core, Families], path: "", keep: families}
+      - {read: [core, FamilyDigest, STAT], path: value, keep: d_stat}
+      - {read: [core, FamilyDigest, TOPC], path: value, keep: d_topc}
+      - {read: [core, FamilyDigest, JRNL], path: value, keep: d_jrnl}
+      - {read: [core, FamilyDigest, QSTA], path: value, keep: d_qsta}
+      - {read: [core, FamilyDigest, DETH], path: value, keep: d_deth}
+      - {read: [core, FamilyDigest, DISP], path: value, keep: d_disp}
+      - {read: [core, FamilyDigest, ITEM], path: value, keep: d_item}
+      - {read: [core, FamilyDigest, QWCH], path: value, keep: d_qwch}
+      - {read: [core, FamilyDigest, META], path: value, keep: d_meta}
+      - {read: [core, JournalEntries], path: value, keep: journal}
+  - name: load-rest-save
+    do: [{call: [load, ArgoniaRest]}, {wait: 4}]
+  - name: every-family
+    expect:
+      - {read: [core, Families], path: "", eq: {kept: families}}
+      - {read: [core, FamilyDigest, STAT], path: value, eq: {kept: d_stat}}
+      - {read: [core, FamilyDigest, TOPC], path: value, eq: {kept: d_topc}}
+      - {read: [core, FamilyDigest, JRNL], path: value, eq: {kept: d_jrnl}}
+      - {read: [core, FamilyDigest, QSTA], path: value, eq: {kept: d_qsta}}
+      - {read: [core, FamilyDigest, DETH], path: value, eq: {kept: d_deth}}
+      - {read: [core, FamilyDigest, DISP], path: value, eq: {kept: d_disp}}
+      - {read: [core, FamilyDigest, ITEM], path: value, eq: {kept: d_item}}
+      - {read: [core, FamilyDigest, QWCH], path: value, eq: {kept: d_qwch}}
+      - {read: [core, FamilyDigest, META], path: value, eq: {kept: d_meta}}
+      - {read: [core, JournalEntries], path: value, eq: {kept: journal}}
+      - {read: [core, SaveCount], path: value, eq: {kept: saves_rest}}
+      - {console: "GetStage ARG_Q_LF83", contains: ">> 40"}
+      - {read: [core, GetFlag, flag.lf83.terms-settled], path: value, eq: true}
+      - {read: [core, KnowsTopic, topic.lf83-one-charge], path: value, eq: true}

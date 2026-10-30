@@ -1,0 +1,104 @@
+# LF83's other endings, headless (owner ruling bb7395f), one journey: each ending is terminal, so each segment loads
+# the base save and runs the first-place scene again (`bat first-place`; deploy laid it), then reaches stage 10 the
+# real way (Takes' greeting links the hook topic) and sets the one fact that ends it:
+#   41 the ford charge bought (gold staged, the landing's topic asked); 90 the wet season (the month staged; a gold
+#   pickup makes ArgoniaCore re-read its facts, as any fact change does); 92 / 93 a keeper dead (staged `kill`).
+# Each ending writes its journal entry (kind 1 complete, 2 failed) and closes the quest in the engine.
+id: lf83-endings
+runner: 1
+scene: first-place
+steps:
+  # --- 41: the ford charge bought -------------------------------------------------------------------------------
+  - name: f41-stage-10
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationTakes 0 -120 0"}
+      - {console: "player.setangle z 0"}
+      - {console: "ARG_Ref_ClaywaterStationTakes.moveto player 0 110 0"}
+      - {console: "player.setangle x 0"}
+      - {wait: 3}
+      - {key: "E 120"}
+      - {wait: 2}
+      - {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}
+    expect: [{console: "GetStage ARG_Q_LF83", contains: ">> 10", within: 8}]
+  - name: f41-buy
+    do:
+      - {console: "player.additem f 100"}
+      - {console: "player.moveto ARG_Ref_ClaywaterStationSigns 0 -120 0"}
+      - {console: "player.setangle z 0"}
+      - {console: "ARG_Ref_ClaywaterStationSigns.moveto player 0 110 0"}
+      - {wait: 3}
+      - {key: "E 120"}
+      - {wait: 2}
+      - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.claywater-two-charges"}}']}
+      - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.lf83-ford-charge"}}']}
+      - {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}
+    expect:
+      - {read: [core, GetFlag, flag.lf83.ford-charge-bought], path: value, eq: true}
+      - {console: "GetStage ARG_Q_LF83", contains: ">> 41", within: 8}
+      - {read: [core, JournalEntries], path: value, contains: "quest.local.lf83 41 1 ", within: 5}
+      - {console: "GetQuestCompleted ARG_Q_LF83", contains: ">> 1"}
+  # --- 90: the wet season ---------------------------------------------------------------------------------------
+  - name: f90-stage-10
+    do:
+      - {call: [load, argoniabase]}
+      - {wait: 4}
+      - {console: "bat first-place"}
+      - {wait: 4}
+      - {console: "player.moveto ARG_Ref_ClaywaterStationTakes 0 -120 0"}
+      - {console: "player.setangle z 0"}
+      - {console: "ARG_Ref_ClaywaterStationTakes.moveto player 0 110 0"}
+      - {console: "player.setangle x 0"}
+      - {wait: 3}
+      - {key: "E 120"}
+      - {wait: 2}
+      - {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}
+    expect: [{console: "GetStage ARG_Q_LF83", contains: ">> 10", within: 8}]
+  - name: f90-wet
+    do: [{console: "set GameMonth to 7"}, {console: "set GameDay to 17"}, {wait: 1}, {console: "player.additem f 1"}, {wait: 2}]
+    expect:
+      - {console: "GetStage ARG_Q_LF83", contains: ">> 90", within: 8}
+      - {read: [core, JournalEntries], path: value, contains: "quest.local.lf83 90 2 ", within: 5}
+  # --- 92: the well-keeper dead ---------------------------------------------------------------------------------
+  - name: f92-stage-10
+    do:
+      - {call: [load, argoniabase]}
+      - {wait: 4}
+      - {console: "bat first-place"}
+      - {wait: 4}
+      - {console: "player.moveto ARG_Ref_ClaywaterStationTakes 0 -120 0"}
+      - {console: "player.setangle z 0"}
+      - {console: "ARG_Ref_ClaywaterStationTakes.moveto player 0 110 0"}
+      - {console: "player.setangle x 0"}
+      - {wait: 3}
+      - {key: "E 120"}
+      - {wait: 2}
+      - {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}
+    expect: [{console: "GetStage ARG_Q_LF83", contains: ">> 10", within: 8}]
+  - name: f92-keeper-dead
+    do: [{console: "ARG_Ref_ClaywaterStationLivia.kill"}, {wait: 2}]
+    expect:
+      - {console: "ARG_Ref_ClaywaterStationLivia.GetDead", contains: ">> 1"}
+      - {console: "GetStage ARG_Q_LF83", contains: ">> 92", within: 8}
+      - {read: [core, JournalEntries], path: value, contains: "quest.local.lf83 92 2 ", within: 5}
+  # --- 93: the landing's poler dead -----------------------------------------------------------------------------
+  - name: f93-stage-10
+    do:
+      - {call: [load, argoniabase]}
+      - {wait: 4}
+      - {console: "bat first-place"}
+      - {wait: 4}
+      - {console: "player.moveto ARG_Ref_ClaywaterStationTakes 0 -120 0"}
+      - {console: "player.setangle z 0"}
+      - {console: "ARG_Ref_ClaywaterStationTakes.moveto player 0 110 0"}
+      - {console: "player.setangle x 0"}
+      - {wait: 3}
+      - {key: "E 120"}
+      - {wait: 2}
+      - {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}
+    expect: [{console: "GetStage ARG_Q_LF83", contains: ">> 10", within: 8}]
+  - name: f93-poler-dead
+    do: [{console: "ARG_Ref_ClaywaterStationSigns.kill"}, {wait: 2}]
+    expect:
+      - {console: "ARG_Ref_ClaywaterStationSigns.GetDead", contains: ">> 1"}
+      - {console: "GetStage ARG_Q_LF83", contains: ">> 93", within: 8}
+      - {read: [core, JournalEntries], path: value, contains: "quest.local.lf83 93 2 ", within: 5}

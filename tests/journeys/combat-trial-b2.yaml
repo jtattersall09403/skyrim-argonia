@@ -102,7 +102,12 @@ steps:
       - {event: {kind: hit, match: '"power": true'}}
       - {read: [av, Health, "{opp}"], path: current, lt: {kept: opp_health}}
   - name: parry-riposte    # Elden Parry's timed bash, then Rim Parry's riposte; with DSC's crits off, exactly one riposte plays
-    owed: "pad.ps1 holds no button or trigger across steps (only sticks): a bash is L1 or L2 held while R1 taps; add +LT=1 as a held trigger, then do: [{console: '{opp}.startcombat player'}, {pad: '+LT=1:600 RB:120 wait:1500 -:100'}, {pad: 'RB:120 wait:2000'}] and expect a blocked-or-bash hit event on the opponent, its health below the kept value and, in B, anim 'pair'"
+    do: [{console: "player.moveto {opp} 0 -110 0"}, {console: "player.setangle z 0"}, {console: "{opp}.startcombat player"},
+         {pad: "+LT=1:600 RB:120 wait:1500 -:100"}, {pad: "RB:120 wait:2000"}]   # L2 held while R1 taps (pad.ps1's held trigger, game-10), then R1
+    expect:
+      - {event: {kind: hit, match: "*"}}
+      - {read: [av, Health, "{opp}"], path: current, lt: {kept: opp_health}}
+      - {event: {kind: anim, match: pair}, within: 3}
   - name: script-load      # four more deserters fight the god-moded player for 30 s: the Papyrus queue under DSC's per-actor scripts
     do: [{console: "player.placeatme ARG_Npc_AmbushDeserter 4"}, {console: "{opp}.startcombat player"}, {wait: 10}, {call: [papyrus-queue]},
          {wait: 10}, {call: [papyrus-queue]}, {wait: 10}, {call: [papyrus-queue]}]
