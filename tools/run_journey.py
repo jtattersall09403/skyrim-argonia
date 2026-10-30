@@ -419,13 +419,12 @@ class Runner:
             last = (self.b.call("events") or {}).get("last")
             self.b.call("input", "key", key, 100, route)
             time.sleep(1.5)
-            if menu == "journal":
-                if "journal ready closed" in json.dumps(self.b.call("core", "Views")):
-                    self.calls.append({"call": ["close_menu", menu], "result": [key, route]})
-                    return [key, route]
-                continue
+            view = MENU_VIEWS.get(menu)  # our view over it (the M chart over MapMenu: smoke game-16)
+            view_ok = view is None or f"{view} ready closed" in json.dumps(self.b.call("core", "Views"))
             evs = (self.b.call("events", last, "menu") or {}).get("events") or []
-            if any((e.get("data") or {}).get("menu") == menu and not (e.get("data") or {}).get("opening") for e in evs):
+            menu_ok = menu == "journal" or any((e.get("data") or {}).get("menu") == menu
+                                               and not (e.get("data") or {}).get("opening") for e in evs)
+            if view_ok and menu_ok:
                 self.calls.append({"call": ["close_menu", menu], "result": [key, route]})
                 return [key, route]
         raise StepFailed(f"close_menu {menu}: none of {CLOSE_KEYS} closed it")
@@ -652,6 +651,7 @@ def _form_id(text) -> int | None:
 
 TALK_UNITS, TALK_WAIT_S = 110, 5.0  # 5 s: a player moveto before it may load a cell and fade
 STRIKE_UNITS = 80  # inside a sword's reach
+MENU_VIEWS = {"journal": "journal", "MapMenu": "chart"}  # a menu name and our view that stands for or over it
 CLOSE_KEYS = (("ESC", "engine"), ("TAB", "engine"), ("ESC", "os"), ("TAB", "os"))  # tried in order (game-16)
 AIM_EYE_Z, AIM_CHEST_Z = 110, 90  # a standing human's eye and chest above the feet (units)
 ACTIONS = {"pad": Runner._pad, "talk": Runner._talk, "strike": Runner._strike, "rest": Runner._rest, "close_menu": Runner._close_menu, "key": Runner._key, "console": Runner._console, "teleport": Runner._teleport,
