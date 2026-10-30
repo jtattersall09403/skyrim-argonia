@@ -1,6 +1,7 @@
 // ArgoniaGen: the Mutagen side of the pipeline (decision 0009). Python plans and resolves; this writes records.
 //   counts     --data <dir>                                      records per major type in Skyrim.esm (0.1)
 //   index      --data <dir> --plugins a.esm,b.esm --out <json>  every modelled base record and archive mesh (pieces.py)
+//   cells      --data <dir> --plugins a.esm,b.esp --out <json>   every interior cell's refs, bases and door partners (CellScan.cs)
 //   quests     --data <dir> --plugins a.esm,b.esm --out <json>  vanilla quests: start-game-enabled and story-manager-started
 //   generate   --in <json> --data <dir> --out <Argonia.esm>     the records, written deterministically
 //   ltex       --data <dir> --plugins a.esm,b.esp --out <json>   every LTEX's winning copy and every GRAS (LandTextures.cs)
@@ -28,6 +29,8 @@ try
             return Counts.Run(Dir(Opt("--data")));
         case "index":
             return PieceIndex.Run(Dir(Opt("--data")), Plugins(), Opt("--out") ?? throw new ArgumentException("missing --out"));
+        case "cells":
+            return CellScan.Run(Dir(Opt("--data")), Plugins(), Opt("--out") ?? throw new ArgumentException("missing --out"));
         case "quests":
             return QuestScan.Run(Dir(Opt("--data")), Plugins(), Opt("--out") ?? throw new ArgumentException("missing --out"));
         case "generate":
@@ -39,6 +42,8 @@ try
             return LandWorld.Run(Opt("--in") ?? throw new ArgumentException("missing --in"),
                                  Opt("--land") ?? throw new ArgumentException("missing --land"), Dir(Opt("--data")),
                                  Opt("--out") ?? throw new ArgumentException("missing --out"), Opt("--water"), Opt("--navmesh"));
+        case "packages":
+            return PackageRecords.Dump(Dir(Opt("--data")), Opt("--out") ?? throw new ArgumentException("missing --out"), (Opt("--edids") ?? "").Split(','), Opt("--plugin") ?? "Skyrim.esm");
         case "navmesh":
             return NavmeshRecords.Run(args, Opt, Dir);
         default:

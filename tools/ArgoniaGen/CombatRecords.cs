@@ -70,6 +70,17 @@ static class CombatRecords
             n.Perks.Add(new PerkPlacement { Perk = new FormLink<IPerkGetter>(FK(p.GetString()!)), Rank = 1 });
         foreach (var i in A(r, "items"))
             n.Items.Add(new ContainerEntry { Item = new ContainerItem { Item = new FormLink<IItemGetter>(FK(S(i, "item"))), Count = I(i, "count") } });
+        // Optional people fields (the block's residents): absent means the record writes exactly as before.
+        foreach (var f in A(r, "flags")) n.Configuration.Flags |= Enum.Parse<NpcConfiguration.Flag>(f.GetString()!);
+        if (r.TryGetProperty("keywords", out var kws))
+        {
+            n.Keywords = new ExtendedList<IFormLinkGetter<IKeywordGetter>>();
+            foreach (var k in kws.EnumerateArray()) n.Keywords.Add(new FormLink<IKeywordGetter>(FK(k.GetString()!)));
+        }
+        if (r.TryGetProperty("packages", out var pks))
+            foreach (var k in pks.EnumerateArray()) n.Packages.Add(new FormLink<IPackageGetter>(FK(k.GetString()!)));
+        if (r.TryGetProperty("voice", out var vo)) n.Voice.SetTo(FK(vo.GetString()!));
+        if (r.TryGetProperty("outfit", out var of)) n.DefaultOutfit.SetTo(FK(of.GetString()!));
         mod.Npcs.Add(n);
     }
 
