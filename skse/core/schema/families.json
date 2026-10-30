@@ -52,6 +52,11 @@
     {"list": "deeds", "count": 1000, "keyed": true, "of": [{"u32": "faction"},
      {"list": "classes", "count": 1000, "keyed": true, "of": [{"u32": "deed"}, {"i32": "count", "min": 1}]}]}]}
   ]},
+  {"id": "TOPC", "module": "topics", "include": "argonia/core/topics.h", "versions": [
+   {"version": 1, "layout": [
+    {"list": "topics", "count": 100000, "keyed": true, "of": [{"u32": "topic"},
+     {"list": "heard_from", "count": 100000, "keyed": true, "of": [{"u32": "npc"}]}]}]}
+  ]},
   {"id": "TEST", "module": "test", "test": true, "versions": [
    {"version": 1, "migrates": true, "layout": [{"u32": "a"}]},
    {"version": 2, "layout": [{"u32": "a"}, {"u32": "b"}]}
