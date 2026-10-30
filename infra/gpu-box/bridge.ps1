@@ -57,7 +57,10 @@ switch ($Cmd) {
     New-Item -ItemType Directory -Force $dst | Out-Null
     Copy-Item $src "$dst\ArgoniaBridge.dll" -Force
     $h = (Get-FileHash "$dst\ArgoniaBridge.dll" -Algorithm SHA256).Hash.ToLower()
-    J ([ordered]@{ laid = $true; file = "$dst\ArgoniaBridge.dll"; sha256 = $h; bytes = (Get-Item $src).Length })
+    # ArgoniaCore (0.3 §b, 1.1) is laid beside it until make deploy lays our mods (2026-10-30: not in the modlist)
+    $core = 'C:\argonia\MO2\mods\Argonia SKSE\SKSE\Plugins\ArgoniaCore.dll'; $ch = $null
+    if (Test-Path $core) { Copy-Item $core "$dst\ArgoniaCore.dll" -Force; $ch = (Get-FileHash "$dst\ArgoniaCore.dll").Hash.ToLower() }
+    J ([ordered]@{ laid = $true; file = "$dst\ArgoniaBridge.dll"; sha256 = $h; bytes = (Get-Item $src).Length; core_sha256 = $ch })
   }
   'hang' {
     $p = Get-Process SkyrimSE -EA SilentlyContinue | Select -First 1

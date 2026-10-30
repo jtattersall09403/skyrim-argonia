@@ -42,7 +42,8 @@ STATE = Path.home() / ".argonia" / "bridge"
 KEY = Path.home() / ".argonia" / "keys" / "argonia-play"
 HEALTH_EVERY = 20.0  # seconds between health checks while a call waits: a crash is seen within 60 s
 # Per-command reply caps (seconds); the plugin's own caps are a little shorter, so its error arrives first.
-TIMEOUTS = {"load": 150.0, "save": 45.0, "nav": 30.0, "booth": 60.0, "input": 15.0, "wait_event": 70.0}
+TIMEOUTS = {"load": 150.0, "save": 45.0, "nav": 30.0, "booth": 60.0, "input": 15.0, "wait_event": 70.0,
+            "frametime": 120.0}  # 2000 frames at 20 fps is 100 s
 DEFAULT_TIMEOUT = 15.0
 INPUT_CAP_MS = 3000  # kInputCapMs in the plugin
 

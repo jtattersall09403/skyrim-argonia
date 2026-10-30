@@ -240,7 +240,7 @@ public static class ParHash {
     # .NET's enumeration, not cmd's dir: dir prints in the OEM code page, which mangles non-ASCII names
     foreach ($f in [IO.Directory]::EnumerateFiles("\\?\$Data", '*', 'AllDirectories')) {
       $rel = $f.Substring($f.IndexOf('\Data\') + 6).ToLower()
-      if ($vanilla[$rel] -or $pandora[$rel] -or $rec[$rel] -or $keepSet[$rel] -or $rel.StartsWith('shadercache\') -or $rel.StartsWith('mcm\settings\') -or $rel -eq 'interface\controls\pc\controlmap.txt' -or $rel -eq 'skse\plugins\argoniabridge.dll' -or
+      if ($vanilla[$rel] -or $pandora[$rel] -or $rec[$rel] -or $keepSet[$rel] -or $rel.StartsWith('shadercache\') -or $rel.StartsWith('mcm\settings\') -or $rel -eq 'interface\controls\pc\controlmap.txt' -or $rel -eq 'skse\plugins\argoniabridge.dll' -or $rel -eq 'skse\plugins\argoniacore.dll' -or
           ($rel -match '^skse\\(plugins\\[^\\]+\.ini|[^\\]+\.log)$')) { continue }  # inis and logs the plugins write at first run
       "unrecorded: $rel"; $extra++
     }

@@ -181,3 +181,35 @@ Next steps:
 - Decide unlocked behaviour. DS1 rolls forward along the stick, which here needs TK Dodge to send TKDodgeForward
   whenever TDM is free.
 - Add Keytrace if Dynamic Dodge's 8-way is wanted.
+
+## 2026-10-30: frame time on the g4dn.xlarge is CPU-bound (lane game-3)
+
+Method: Riverwood at the base save, 20 s settle, then the bridge's `frametime 2000` (the player's per-frame
+update). At the same time, 25 samples of `nvidia-smi` GPU utilisation and total CPU. Defender was quiet in every
+run (MsMpEng +0.31 to +0.36 CPU-s over 30 s). "Uncapped" means Display Tweaks' `EnableVSync=false` and
+`FramerateLimit=0` (a copy laid over the aside ini), with SkyrimPrefs `bVsync=0`, both restored after. The
+driver is the scratch `ft.py`.
+
+| Run (g4dn.xlarge, T4) | fps median | fps 1% low | p50 / p99 ms | GPU util | CPU total |
+|---|---|---|---|---|---|
+| Community Shaders on, capped | 42.4 | 22.1 | 23.6 / 45.2 | 42 % | 61 % |
+| Community Shaders on, uncapped | 44.5 | 23.8 | 22.5 / 42.0 | 43 % | 59 % |
+| Community Shaders off, uncapped | 52.5 | 25.4 | 19.0 / 39.4 | 40 % | 65 % |
+
+**Reading.**
+- **The game is CPU-bound.** The GPU sits near 40 % while the frame takes 19 to 24 ms. Total CPU is about 60 % of
+  4 vCPUs, which fits a saturated main thread.
+- **The cap is not the limit:** uncapped gains only 2 fps.
+- **No Community Shaders setting can meet the bar.** CS fully off is the lightest CS setting there is, and it
+  gives 52.5 fps median and 25.4 fps 1% low. That is under 60 / 45.
+- **The brief's next fallback is a larger instance.** The g6.xlarge has an L4 and faster AMD EPYC cores. It fits
+  the 8-vCPU spot quota and costs $0.287/h spot in eu-west-2a, against $0.246 for the g4dn. The GRID driver
+  596.86 supports the L4. The switch has not been made yet.
+
+The 1% low here (p99, about 22 to 25 fps) is lower than game-2's (32 to 40): those runs took 600 frames, these
+take 2000, so they include the cell's streaming hitches.
+
+**PresentMon 2.5.1 records no presents from any process,** in the desktop session (session 1, interactive,
+elevated) as well as over SSH. `--output_stdout` prints nothing, and no CSV is written. `smoke.py frametime` now
+falls back to the bridge's frame times and records PresentMon's output beside them. The GPU-bound reading uses
+nvidia-smi instead. The cause (ETW DXGI events on the GRID display) is not found.

@@ -286,7 +286,10 @@ def cmd_frametime(a):
     OUT.mkdir(parents=True, exist_ok=True)
     local = OUT / f"presentmon-{a.label}.csv"
     if subprocess.run([RUN, "get", csv.replace("\\", "/"), str(local)], capture_output=True).returncode:
-        raise SystemExit(f"PresentMon wrote no CSV:\n{out}")
+        # the bridge's frame intervals still answer the bar; PresentMon's absence is recorded beside them
+        record(f"frametime-{a.label}", {"presentmon": "no CSV: " + out.strip()[-300:],
+                                        "bridge": B.call("frametime", 2000), "still": still(f"frametime-{a.label}")})
+        return
     rows = local.read_text().splitlines()
     head = rows[0].split(",")
     col = {n: head.index(n) for n in ("MsBetweenPresents", "msGPUActive") if n in head}
