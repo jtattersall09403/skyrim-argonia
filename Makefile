@@ -6,9 +6,13 @@ PY := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/python) python3)
 # A failing part records its name, then fails.
 FAIL = || { echo $@ >> $(RED); exit 1; }
 
-.PHONY: check hooks plugin db chart navmesh ui-stills deploy $(PARTS)
+.PHONY: check check-run hooks plugin db chart navmesh ui-stills deploy $(PARTS)
 
+# One gate at a time on this VM: two lanes' checks at once share $(RED) and out/check/, and thrash the CPU (2026-10-30).
 check:
+	@mkdir -p out && flock out/.check.lock $(MAKE) --no-print-directory check-run
+
+check-run:
 	@rm -f $(RED)
 	@$(MAKE) -k -j --no-print-directory $(PARTS) || true
 	@if [ -s $(RED) ]; then echo "CHECK RED: $$(sort $(RED) | tr '\n' ' ')"; rm -f $(RED); exit 1; else echo "CHECK GREEN"; fi
