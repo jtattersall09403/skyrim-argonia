@@ -26,6 +26,7 @@ static class ItemWriters
             case "ARMO": mod.Armors.Add(Armour(r)); break;
             case "CONT": mod.Containers.Add(Container(r)); break;
             case "BOOK": mod.Books.Add(Book(r)); break;
+            case "MISC": mod.MiscItems.Add(new MiscItem(Key(r), Rel) { EditorID = S(r, "edid"), Name = T(r, "name"), Model = M(r, "model"), Value = (uint)I(r, "value"), Weight = F(r, "weight") }); break;
             case "ALCH": mod.Ingestibles.Add(Potion(r)); break;
             default: throw new InvalidDataException($"ItemWriters: {S(r, "type")}");
         }

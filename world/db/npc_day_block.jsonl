@@ -366,3 +366,11 @@
 {"npc_id":"creature-at.saxhleel-coast.pearl-lots.eco-swamp-jelly-2","ord":1,"from":"12:00","to":"00:00","spot":"work:0","activity":"forage"}
 {"npc_id":"creature-at.saxhleel-coast.pearl-lots.eco-swamp-jelly-3","ord":0,"from":"00:00","to":"12:00","spot":"work:0","activity":"forage"}
 {"npc_id":"creature-at.saxhleel-coast.pearl-lots.eco-swamp-jelly-3","ord":1,"from":"12:00","to":"00:00","spot":"work:0","activity":"forage"}
+{"npc_id":"npc.imperial-fringe.claywater-station.landing-s-poler","ord":0,"from":"06:00","to":"21:00","spot":"work:0","activity":"sandbox"}
+{"npc_id":"npc.imperial-fringe.claywater-station.landing-s-poler","ord":1,"from":"21:00","to":"06:00","spot":"home","activity":"sleep"}
+{"npc_id":"npc.imperial-fringe.claywater-station.n1","ord":0,"from":"06:00","to":"21:00","spot":"work:0","activity":"sandbox"}
+{"npc_id":"npc.imperial-fringe.claywater-station.n1","ord":1,"from":"21:00","to":"06:00","spot":"home","activity":"sleep"}
+{"npc_id":"npc.imperial-fringe.claywater-station.n1-3","ord":0,"from":"06:00","to":"21:00","spot":"work:0","activity":"sandbox"}
+{"npc_id":"npc.imperial-fringe.claywater-station.n1-3","ord":1,"from":"21:00","to":"06:00","spot":"home","activity":"sleep"}
+{"npc_id":"npc.imperial-fringe.claywater-station.well-keeper","ord":0,"from":"06:00","to":"21:00","spot":"work:0","activity":"sandbox"}
+{"npc_id":"npc.imperial-fringe.claywater-station.well-keeper","ord":1,"from":"21:00","to":"06:00","spot":"home","activity":"sleep"}

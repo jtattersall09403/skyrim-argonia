@@ -6249,3 +6249,65 @@ CREATE TABLE "game_setting_combat" (
                                     "provenance" GLOB 'OWNER:*' OR "provenance" GLOB 'GUESS:*' OR
                                     "provenance" GLOB 'MOD:*' OR "provenance" GLOB 'SHEET:*')
 );
+
+-- == The built places (0.4 §d; decision 0026 §3) ==
+-- Home of each cell a built place uses: its exterior (the worldspace cells under it, overridden by the place's layer
+-- in Argonia.esm, decision 0031 §2), an interior of our own, or a master's interior borrowed whole (decision 0012
+-- §6: the borrowed cell passes the review of what the player sees; `review` holds the verdict and its evidence).
+CREATE TABLE "build_cell" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "place_id" TEXT NOT NULL REFERENCES "place"("id"),
+  "kind" TEXT NOT NULL CHECK ("kind" IN ('exterior', 'own', 'borrowed')),
+  "edid" TEXT CHECK ("edid" IS NULL OR "edid" GLOB 'ARG_*'),
+  "name" TEXT,
+  "host_form_key" TEXT CHECK ("host_form_key" IS NULL OR "host_form_key" GLOB '[0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F]:*'),
+  "ambient" TEXT,
+  "review" TEXT,
+  CHECK (("kind" = 'own') = ("edid" IS NOT NULL AND "name" IS NOT NULL)),
+  CHECK (("kind" = 'borrowed') = ("host_form_key" IS NOT NULL))
+);
+
+-- Home of every reference a built place lays: what it places (a design piece resolved by pieces.py, a master's base
+-- record by FormKey, or a record of ours by EditorID), where (exterior: province metres, x east, y south, z up, NULL z
+-- on the ground; interior: cell metres from its origin, y south), and how. `socket_id` names the socket the reference
+-- realises (a bed, a work spot, LF83's sockets); `thing_id` the quest thing or item it is (its alias is filled with
+-- it); `npc_id` makes it that person's actor; `door_to` pairs load doors; `host_ref_form_key` makes the row an override of
+-- a borrowed cell's own reference; `disabled` turns one off (its residents, a door into the mod's own world); `actor` marks a master's actor
+-- (ACHR) among them (ours are the rows with `npc_id`).
+CREATE TABLE "build_ref" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "cell_id" TEXT NOT NULL REFERENCES "build_cell"("id"),
+  "piece" TEXT,
+  "base" TEXT,
+  "x_m" REAL NOT NULL,
+  "y_m" REAL NOT NULL,
+  "z_m" REAL,
+  "yaw_deg" REAL NOT NULL DEFAULT 0,
+  "scale" REAL CHECK ("scale" IS NULL OR "scale" > 0),
+  "persistent" BOOLEAN NOT NULL DEFAULT 0 CHECK ("persistent" IN (0, 1)),
+  "disabled" BOOLEAN CHECK ("disabled" IN (0, 1)),
+  "actor" BOOLEAN CHECK ("actor" IN (0, 1)),
+  "door_to" TEXT REFERENCES "build_ref"("id"),
+  "owner_npc_id" TEXT REFERENCES "npc"("id"),
+  "npc_id" TEXT REFERENCES "npc"("id"),
+  "socket_id" TEXT,
+  "thing_id" TEXT,
+  "host_ref_form_key" TEXT CHECK ("host_ref_form_key" IS NULL OR "host_ref_form_key" GLOB '[0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F]:*'),
+  "why" TEXT NOT NULL,
+  CHECK (("piece" IS NULL) <> ("base" IS NULL)),
+  CHECK ("npc_id" IS NULL OR "persistent" = 1),
+  CHECK ("door_to" IS NULL OR "persistent" = 1)
+);
+
+-- Home of a built person's Skyrim record choices (0.4 §d): the vanilla NPC_ whose face, body and voice the person's
+-- record takes through its template (TPLT, Traits flag), and the radius of the day's sandbox and the night's bed.
+-- The schedule itself is the person's `npc_day_block` rows; the places are the `build_ref` rows of their sockets.
+CREATE TABLE "build_person" (
+  "npc_id" TEXT NOT NULL PRIMARY KEY REFERENCES "npc"("id"),
+  "template_form_key" TEXT NOT NULL CHECK ("template_form_key" GLOB '[0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F]:*'),
+  "template_why" TEXT NOT NULL,
+  "race_form_key" TEXT NOT NULL CHECK ("race_form_key" GLOB '[0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F]:*'),
+  "speaker" BOOLEAN NOT NULL DEFAULT 1 CHECK ("speaker" IN (0, 1)),
+  "sandbox_radius_m" REAL NOT NULL CHECK ("sandbox_radius_m" > 0),
+  "respawn" BOOLEAN NOT NULL DEFAULT 0 CHECK ("respawn" IN (0, 1))
+);

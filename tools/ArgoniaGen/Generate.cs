@@ -21,6 +21,7 @@ static class Generate
         if (root.GetProperty("schema").GetInt32() != 1) throw new InvalidDataException("intermediate schema must be 1");
         var modKey = ModKey.FromFileName(root.GetProperty("mod").GetString()!);
         var mod = new SkyrimMod(modKey, Rel);
+        using var places = new PlaceCells(data);
         mod.ModHeader.Flags |= SkyrimModHeader.HeaderFlag.Master;
         mod.ModHeader.Author = root.GetProperty("author").GetString();
         mod.ModHeader.Description = root.GetProperty("description").GetString();
@@ -34,6 +35,7 @@ static class Generate
                 case "GLOB": Glob(mod, r); break;
                 case "MUSC": Music(mod, r); break;
                 case "STAT": Static(mod, r); break;
+                case "CELL" when r.TryGetProperty("override", out var ov) && ov.GetBoolean(): places.Add(r); break;
                 case "CELL": Cell(mod, r); break;
                 case "QUST": QuestRecords.Write(mod, r); break;
                 case "CLAS": Class(mod, r); break;
@@ -46,9 +48,10 @@ static class Generate
                 case "ARMA": ItemWriters.Write(mod, r); break;
                 case "CONT": ItemWriters.Write(mod, r); break;
                 case "BOOK": ItemWriters.Write(mod, r); break;
+                case "MISC": ItemWriters.Write(mod, r); break;
                 case "ALCH": ItemWriters.Write(mod, r); break;
-                case "PACK": PackageRecords.Write(mod, r, data); break;
                 case "PERK": PerkRecords.Write(mod, r); break;
+                case "PACK": PackageRecords.Write(mod, r, data); break;
                 case "NPC_" or "ECZN": CombatRecords.Write(mod, r); break;
                 case "ACTI" or "GMST": ActivatorRecords.Write(mod, r); break;
                 case "REGN" or "CLMT" or "WTHR" or "IMGS" or "WRLD": RegionWriters.Write(mod, r, data); break;
@@ -56,6 +59,7 @@ static class Generate
             }
         }
 
+        places.Finish(mod);  // the place layers' cell overrides, after the WRLD override exists
         // Interior cell blocks and sub-blocks in number order (the canonical order the round trip compares).
         var blocks = mod.Cells.Records.OrderBy(b => b.BlockNumber).ToList();
         mod.Cells.Records.Clear();
@@ -126,6 +130,8 @@ static class Generate
             Flags = Flags<Cell.Flag>(r, "flags"),
         };
         if (Os(r, "music") is { } mus) c.Music.SetTo(FK(mus));
+        if (Os(r, "water") is { } wat) c.Water.SetTo(FK(wat));  // interior water (fixtures): optional
+        if (r.TryGetProperty("waterHeight", out var wh)) c.WaterHeight = wh.GetSingle();
         if (r.TryGetProperty("lighting", out var l))
             c.Lighting = new CellLighting
             {
@@ -142,22 +148,7 @@ static class Generate
                 DirectionalFade = F(l, "directionalFade", 1),
                 FogMax = F(l, "fogMax", 1),
             };
-        foreach (var p in A(r, "refs"))
-        {
-            var o = new PlacedObject(Key(p), Rel)
-            {
-                EditorID = Os(p, "edid"),
-                Placement = new Placement { Position = P3(p, "pos"), Rotation = P3(p, "rot") },
-            };
-            o.Base.SetTo(FK(S(p, "base")));
-            if (p.TryGetProperty("scale", out var sc) && Math.Abs(sc.GetSingle() - 1f) > 1e-6) o.Scale = sc.GetSingle();
-            if (p.TryGetProperty("persistent", out var pe) && pe.GetBoolean())
-            {
-                o.MajorRecordFlagsRaw |= (int)PlacedObject.DefaultMajorFlag.Persistent;
-                c.Persistent.Add(o);
-            }
-            else c.Temporary.Add(o);
-        }
+        foreach (var p in A(r, "refs")) PlacedRefs.File(c, p);
         if (!c.Flags.HasFlag(Mutagen.Bethesda.Skyrim.Cell.Flag.IsInteriorCell))
             throw new InvalidDataException($"{c.EditorID}: exterior cells go through the worldspace writer (0.4 §d)");
         // Interior cells live in block id%10, sub-block (id/10)%10 (the engine's grouping).
