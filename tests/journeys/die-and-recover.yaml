@@ -40,11 +40,12 @@ steps:
       - {read: [core, GetVastei], path: value, eq: 0}
       - {read: [core, WakePoint], path: value, eq: {kept: wake}}
       - {read: [core, PileState], path: value, ne: "", keep: pile}
+      - {read: [refs, ARG_VasteiPileActivator], path: refs.0.ref, keep: pile_ref}
       - {read: [player], path: dead, eq: false}
   - name: take-pile           # stand on the pile, look down at it, activate
     do:
       - {console: '"{opp}".stopcombat'}
-      - {teleport: "pos {pile.0} {pile.1} {pile.2}"}
+      - {console: "player.moveto {pile_ref}"}   # a raw pos teleport missed the pile (game-17) and is crash-prone (diag4)
       - {console: "player.setangle x 80"}
       - {wait: 2}
       - {key: "E 120"}

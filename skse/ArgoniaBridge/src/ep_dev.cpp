@@ -102,8 +102,10 @@ std::string dev_grow(const Request& req) {
       auto* avo = target->AsActorValueOwner();
       for (int i = 0; i < 10 && blows < g.max_blows; ++i, ++blows) {
         if (avo->GetActorValue(RE::ActorValue::kHealth) < 0.5f * avo->GetPermanentActorValue(RE::ActorValue::kHealth))
-          target->RestoreActorValue(RE::ActorValue::kHealth, avo->GetPermanentActorValue(RE::ActorValue::kHealth));
-        target->DamageActorValue(RE::ActorValue::kHealth, 20.0f);
+          avo->RestoreActorValue(RE::ActorValue::kHealth, avo->GetPermanentActorValue(RE::ActorValue::kHealth));
+        avo->DamageActorValue(RE::ActorValue::kHealth, 20.0f);
+        // through avo, never Actor's inherited helpers: ActorValueOwner sits at 0xB8 on 1.7 (0xB0 on SE), and the
+        // static base offset read a null vtable at +0x30 (ModActorValue; game-16 and game-17 crashes at bridge+5DC33/+5E543)
         RE::TESHitEvent ev(target, p, weap ? weap->GetFormID() : 0, 0, RE::TESHitEvent::Flag::kNone);
         src->SendEvent(&ev);
       }

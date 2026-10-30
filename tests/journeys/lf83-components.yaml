@@ -63,14 +63,15 @@ steps:
       - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.claywater-two-charges"}}']}
     expect:   # two-charges.tell links the clay bend: offered in Signs' list
       - {read: [core, ViewState, dialogue], path: value.body.topics, contains: "topic.lf83-clay-bend"}
+      # both charges heard is stage 20 (diag5: objective 11 completes on the two-charges topic, so its notice lands here)
+      - {console: "GetStage ARG_Q_LF83", contains: ">> 20", within: 8}
+      - {read: [core, JournalEntries], path: value, contains: "quest.local.lf83 20 0 ", within: 5}
+      - {event: {kind: mod, match: ArgoniaJournalNotice}, within: 5}   # the "journal updated" notice (system-wide)
   - name: stage-20
     do:
       - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.lf83-clay-bend"}}']}
       - {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}
     expect:
-      - {console: "GetStage ARG_Q_LF83", contains: ">> 20", within: 8}
-      - {read: [core, JournalEntries], path: value, contains: "quest.local.lf83 20 0 ", within: 5}
-      - {event: {kind: mod, match: ArgoniaJournalNotice}, within: 5}   # the "journal updated" notice (system-wide)
       - {read: [core, KnowsTopic, topic.claywater-landing-terms], path: value, eq: true}   # granted by stage 20
       - {read: [core, KnowsTopic, topic.lf83-cracked-well], path: value, eq: true}
   # --- why-failing: the well water tasted (Takes), then the old mending heard ----------------------------------
