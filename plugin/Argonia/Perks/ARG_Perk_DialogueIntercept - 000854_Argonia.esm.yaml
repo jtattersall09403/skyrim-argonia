@@ -1,0 +1,33 @@
+FormKey: 000854:Argonia.esm
+EditorID: ARG_Perk_DialogueIntercept
+VirtualMachineAdapter:
+  ScriptFragments:
+    FileName: ARG_PRKF_DialogueIntercept
+    Fragments:
+    - Unknown2: 1
+      ScriptName: ARG_PRKF_DialogueIntercept
+      FragmentName: Fragment_0
+Description:
+  TargetLanguage: English
+  Value: ''
+NumRanks: 1
+Hidden: True
+Effects:
+- MutagenObjectType: PerkEntryPointAddActivateChoice
+  Conditions:
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: HasKeywordConditionData
+        Keyword: 000853:Argonia.esm
+      ComparisonValue: 1
+  ButtonLabel:
+    TargetLanguage: English
+    Value: Speak
+  Flags:
+    Flags:
+    - RunImmediately
+    - ReplaceDefault
+  EntryPoint: Activate
+  PerkConditionTabCount: 2
