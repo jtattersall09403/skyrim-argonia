@@ -37,7 +37,7 @@ if [ $skse = 1 ]; then
   if "$PY" "$repo/tools/skse_stamp.py" "$skse_tree" windows-dev "$skse_dirty" <<<"$probe"; then
     echo "skse build: unchanged ($skse_tree)"
   else
-    step "skse build" "$here/skse_build.sh" build windows-dev
+    step "skse build" "$here/skse_build.sh" --worktree build windows-dev
   fi
 fi
 
