@@ -1,0 +1,27 @@
+# Livia sleeps the native way (game-10; owner ruling bb7395f "NPC sleep uses Skyrim's native way"): her sleep package
+# is vanilla's Sleep template with Location "in cell" (her station house) and the template's Target, which finds the
+# bed she owns there (an ownership on the bed ref). Nothing moves her: the clock passes on the game's own time (a
+# raised timescale), she walks to her door, the door link takes her in, and she lies down. The player waits outside
+# by the road, then goes in through the door to read her.
+id: livia-sleep
+runner: 1
+scene: first-place
+steps:
+  - name: evening-out
+    do: [{console: "set gamehour to 20.5"}, {wait: 2}]
+    expect:
+      - {console: "ARG_Ref_ClaywaterStationLivia.GetInCell LilmothApothecaryHouse", contains: ">> 0"}
+      - {console: "ARG_Ref_ClaywaterStationLivia.GetSleeping", contains: ">> 0"}
+  - name: to-bedtime       # 20:30 -> 23:00; her package from 21:00 is the sleep package
+    do: [{game_hours: 2.5}, {wait: 5}]
+    expect:
+      - {console: "GetCurrentTime", contains: ">> 23"}
+      - {console: "ARG_Ref_ClaywaterStationLivia.GetInCell LilmothApothecaryHouse", contains: ">> 1", within: 30}
+  - name: go-in            # through her door: the player reads her in the loaded interior
+    do: [{console: "player.moveto ARG_Ref_ClaywaterStationLivia 0 -150 0"}, {wait: 6},
+         {call: [console, "ARG_Ref_ClaywaterStationLivia.GetCurrentAIPackage"]}]
+  - name: asleep           # inside, the clock runs on: she lies down in her own bed (game-10: asleep 39 units from it by 23:54)
+    do: [{game_hours: 1}, {wait: 3}]
+    expect:
+      - {console: "ARG_Ref_ClaywaterStationLivia.GetSleeping", contains: ">> 3", within: 30}   # 3: asleep
+      - {console: "ARG_Ref_ClaywaterStationLivia.GetInCell LilmothApothecaryHouse", contains: ">> 1"}

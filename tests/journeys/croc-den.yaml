@@ -1,0 +1,37 @@
+# The crocodile in and working (planner-owned, bb7395f; fixes-1's den on the bank by LF83's pool): placed and alive,
+# it attacks when the player comes near (no god mode: its blow lands), it dies to the player's blows (god mode for
+# the kill only), and it does not respawn: the player leaves, eleven days pass (past the engine's 10-day cell reset),
+# and on return it is still dead.
+id: croc-den
+runner: 1
+scene: first-place
+steps:
+  - name: placed
+    expect:
+      - {console: "ARG_Ref_ClaywaterStationCrocodile.GetDead", contains: ">> 0"}
+      - {console: "ARG_Ref_ClaywaterStationCrocodile.GetDisabled", contains: ">> 0"}
+  - name: attacks-near     # on the bank 4 m south of it, facing it; it starts the fight and its blow lands
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationCrocodile 0 -400 0"}
+      - {console: "player.setangle z 0"}
+      - {wait: 6}
+    expect:
+      - {console: "ARG_Ref_ClaywaterStationCrocodile.IsInCombat", contains: ">> 1", within: 10}
+      - {console: "ARG_Ref_ClaywaterStationCrocodile.GetDistance player", keep: croc_near}
+      - {event: {kind: hit, match: "*"}, within: 10}
+  - name: kill-1           # the player's blows (lock on, light attacks); god mode so the fight cannot end the other way
+    do: [{console: "tgm"}, {console: "player.moveto ARG_Ref_ClaywaterStationCrocodile 0 -150 0"}, {console: "player.setangle z 0"},
+         {pad: "RS:150 wait:500"}, {pad: "RB:120 wait:900 RB:120 wait:900"}, {pad: "RB:120 wait:900 RB:120 wait:900"}]
+  - name: kill-2
+    do: [{console: "player.moveto ARG_Ref_ClaywaterStationCrocodile 0 -150 0"}, {console: "player.setangle z 0"},
+         {pad: "RB:120 wait:900 RB:120 wait:900"}, {pad: "RB:120 wait:900 RB:120 wait:900"}]
+  - name: kill-3
+    do: [{console: "player.moveto ARG_Ref_ClaywaterStationCrocodile 0 -150 0"}, {console: "player.setangle z 0"},
+         {pad: "RB:120 wait:900 RB:120 wait:900"}, {pad: "RB:120 wait:900 RB:120 wait:900"}]
+    expect: [{console: "ARG_Ref_ClaywaterStationCrocodile.GetDead", contains: ">> 1", within: 10}]
+  - name: leave-eleven-days
+    do: [{console: "tgm"}, {console: "coc ARG_HoldingCell"}, {wait: 6}, {game_hours: 264}]
+  - name: return-still-dead
+    do: [{teleport: "ref ARG_Ref_ClaywaterStationRoadIn"}, {wait: 6}]
+    expect:
+      - {console: "ARG_Ref_ClaywaterStationCrocodile.GetDead", contains: ">> 1"}
