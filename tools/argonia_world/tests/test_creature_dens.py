@@ -49,7 +49,6 @@ def test_claywater_crocodile_dens_on_the_bank_out_of_the_pool():
 
 
 def _creature(flags, **extra):
-    from tools.argonia_world import place_build as pb
     return [{"type": "NPC_", "edid": "ARG_Npc_C", "templateFlags": flags, **extra}]
 
 
