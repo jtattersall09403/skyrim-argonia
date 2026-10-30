@@ -212,3 +212,24 @@ def test_owed_status_and_write_owed(tmp_path, journeys):
     assert ids == ["bad", "crash", "quit", "re"]
     b = rb.load_batch([str(tmp_path / "b.yaml")])
     assert [i["id"] for i in b["items"]] == ids
+
+
+def test_write_owed_orders_by_crash_risk_save_changing_last(tmp_path, journeys):
+    import yaml
+    d = rb.JOURNEYS
+    for f in d.glob("*.yaml"):
+        f.unlink()
+    def j(jid, risk=None, last=False):
+        body = {"id": jid, "runner": 1, "steps": [{"name": "s"}], **({"crash_risk": risk} if risk else {})}
+        (d / f"{jid}.yaml").write_text(yaml.safe_dump({**body, **({"batch_last": True} if last else {})}))
+    j("a-tour", "high"); j("b-quit", "high", last=True); j("c-read", "low"); j("d-saves", "low", last=True)
+    j("e-fight", "medium"); j("f-unset"); j("g-read", "low")
+    out = tmp_path / "hist"
+    p = out / "batch" / "g" / "20261030T1"
+    p.mkdir(parents=True)
+    (p / "summary.json").write_text(json.dumps({"items": [{"kind": "journey", "id": "g-read", "passed": True}]}))
+    assert rb.write_owed(tmp_path / "o.yaml", d, out) == ["c-read", "d-saves", "e-fight", "f-unset", "a-tour", "b-quit"]
+    assert rb.write_owed(tmp_path / "a.yaml", d, out, every=True)[:3] == ["c-read", "g-read", "d-saves"]
+    j("h-bad", "extreme")
+    with pytest.raises(SystemExit, match="crash_risk"):
+        rb.owed(d, out)

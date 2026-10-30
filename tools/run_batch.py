@@ -54,6 +54,7 @@ JOURNEYS = REPO / "tests" / "journeys"
 OUT = REPO / "out"
 RELAUNCH_MB = 6000  # game-10's long run crashed after ~230 MB per loop; a relaunch costs ~70 s
 LAUNCH_TRIES = 2
+CRASH_RISKS = ("low", "medium", "high")  # a journey's `crash_risk` (unset: medium); --write-owed runs low first
 
 
 def parse_items(spec: list) -> list[dict]:
@@ -279,17 +280,27 @@ def owed(journeys: pathlib.Path = None, out: pathlib.Path = None) -> list[dict]:
         h = hist.get(jid, [])
         status = "never" if not h else "passed" if h[-1][1] else "failed"
         last = j.get("batch_last") or any("relaunch" in a for s in j.get("steps", []) for a in s.get("do", []))
-        rows.append({"id": jid, "status": status, "runs": len(h), "soak": "soak" in j, "last": bool(last)})
+        risk = j.get("crash_risk", "medium")
+        if risk not in CRASH_RISKS:
+            raise SystemExit(f"{f}: crash_risk {risk!r} (one of {', '.join(CRASH_RISKS)})")
+        rows.append({"id": jid, "status": status, "runs": len(h), "soak": "soak" in j, "last": bool(last),
+                     "risk": risk})
     return rows
 
 
-def write_owed(path: pathlib.Path, journeys: pathlib.Path = None, out: pathlib.Path = None) -> list[str]:
-    """A batch of every runnable journey not passed, save-changing last; its item ids."""
-    rows = [r for r in owed(journeys, out) if r["status"] in ("never", "failed") and not r.get("soak")]
-    ids = [r["id"] for r in rows if not r["last"]] + [r["id"] for r in rows if r["last"]]
-    head = (f"# Written by tools/run_batch.py --write-owed: every runnable journey not yet passed ({len(ids)}), the\n"
-            "# save-changing ones (a relaunch, or batch_last) last. Run: tooling/job_guard.sh run --gpu batch -- python3\n"
-            f"# tools/run_batch.py {path.as_posix()}\n")
+def write_owed(path: pathlib.Path, journeys: pathlib.Path = None, out: pathlib.Path = None,
+               every: bool = False) -> list[str]:
+    """A batch of every runnable journey not passed (`every`: passed too), ordered by crash_risk low, medium, high
+    and save-changing last within each tier (owner, 2026-10-30: the crash-prone run last); its item ids."""
+    want = ("never", "failed", "passed") if every else ("never", "failed")
+    rows = [r for r in owed(journeys, out) if r["status"] in want and not r.get("soak")]
+    rows.sort(key=lambda r: (CRASH_RISKS.index(r["risk"]), r["last"]))  # stable: by id within a key
+    ids = [r["id"] for r in rows]
+    what = "every runnable journey" if every else "every runnable journey not yet passed"
+    head = (f"# Written by tools/run_batch.py --write-owed{' --all' if every else ''}: {what} ({len(ids)}), by\n"
+            "# crash_risk (low, medium, high), save-changing (a relaunch, or batch_last) last in each tier. Run:\n"
+            "# tooling/job_guard.sh run --gpu batch -- python3"
+            f" tools/run_batch.py {path.as_posix()}\n")
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(head + f"id: {path.stem}\nrelaunch_mb: {RELAUNCH_MB}\nrelaunch_every: 0\nitems:\n"
                     + "".join(f"  - {i}\n" for i in ids))
@@ -303,6 +314,7 @@ def main(argv=None) -> int:
     p.add_argument("--only", default=None, help="<item>[:<step>]: that item (or step) alone")
     p.add_argument("--owed", action="store_true", help="list every journey and its status from the run history")
     p.add_argument("--write-owed", type=pathlib.Path, default=None, help="write a batch of every runnable journey not passed")
+    p.add_argument("--all", action="store_true", help="with --write-owed: every runnable journey, passed ones too")
     p.add_argument("--dry", action="store_true", help="validate every item and its scene; no game")
     p.add_argument("--no-stills", action="store_true", help="stills only for a failed step")
     p.add_argument("--relaunch-mb", type=float, default=None)
@@ -313,7 +325,7 @@ def main(argv=None) -> int:
                   + (" last" if r.get("last") else ""))
         return 0
     if a.write_owed:
-        ids = write_owed(a.write_owed)
+        ids = write_owed(a.write_owed, every=a.all)
         print(f"{a.write_owed}: {len(ids)} items: {' '.join(ids)}")
         return 0
     if not a.items:
