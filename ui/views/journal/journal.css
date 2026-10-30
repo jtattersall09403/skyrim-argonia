@@ -48,7 +48,7 @@ body { display: flex; align-items: center; justify-content: center; }
   min-height: 2rem; min-width: 5.5rem; padding: var(--s1) var(--s3); text-align: center;
   border: var(--edge) solid rgba(176, 140, 80, 0.6); border-radius: 0.15rem; color: var(--paper-light);
 }
-span.turn { border-color: transparent; }
+.turn.none { visibility: hidden; }
 .tab.on { background: var(--paper); color: var(--ink); }
 .folio { min-width: 5rem; text-align: center; }
 .foot .close { color: var(--ink); }

@@ -134,6 +134,7 @@ def stills_for(view: str) -> list[tuple[str, list[str], dict]]:
         out.append(("effects@bright", [json.dumps(st["effects"])], {"bright": True}))
     if view == "journal":
         out.append(("questIndex+focus", [json.dumps(st["questIndex"])], {"first": ".qlink"}))
+        out.append(("lf83+turned", [json.dumps(st["lf83"])], {"keys": ["PageDown"]}))   # the second leaf
     return out
 
 
@@ -198,6 +199,8 @@ class Harness:
         if shoot:
             path.parent.mkdir(parents=True, exist_ok=True)
             p.screenshot(path=str(path))
+        if view == "journal":
+            m["journal"] = p.evaluate(JOURNAL)
         m["still"] = str(path.relative_to(ROOT) if path.is_relative_to(ROOT) else path)
         m["fails"] = judge(m, vp, view == "hud" and not json.loads(pushes[0])["body"].get("visible", True))
         return m
@@ -272,6 +275,31 @@ class Harness:
         return fails
 
 
+# The journal's leaves: a page whose text runs past the spread continues in further leaves the view turns locally.
+# The view counts them as the text needs, offers Next when there is more, and the last leaf shows the page's end.
+JOURNAL = r"""
+() => {
+  const v = document.getElementById("view"), f = document.querySelector(".flow, .index");
+  if (!f) return { fails: [], leaves: 0 };
+  const stride = f.clientWidth + (parseFloat(getComputedStyle(f).columnGap) || 0);
+  const need = Math.max(1, Math.ceil((f.scrollWidth - 1) / stride)), n = Number(v.dataset.leaves || 0);
+  const fails = [];
+  if (n !== need) fails.push(`the view counts ${n} leaves, the text needs ${need}`);
+  const next = document.querySelector(".turn.next");
+  if (need > 1 && Number(v.dataset.leaf) === 0 && (!next || next.classList.contains("none"))) fails.push("more leaves, no Next");
+  const was = f.scrollLeft;
+  f.scrollLeft = (need - 1) * stride;
+  const fr = f.getBoundingClientRect(), last = f.lastElementChild;
+  const rects = last ? [...last.getClientRects()] : [];
+  const end = rects[rects.length - 1];
+  if (end && (end.right > fr.right + 1 || end.left < fr.left - 1 || end.bottom > fr.bottom + 1))
+    fails.push("the page's last text is past its last leaf");
+  f.scrollLeft = was;
+  return { fails, leaves: need };
+}
+"""
+
+
 def judge(m: dict, vp: Viewport, empty_ok: bool) -> list[str]:
     f = []
     if m["texts"] == 0 and not empty_ok:
@@ -298,6 +326,8 @@ def judge(m: dict, vp: Viewport, empty_ok: bool) -> list[str]:
         f.append(f"errors: {m['errors'][:3]}")
     if m.get("topics", {}).get("fails"):
         f.append(f"300 topics: {m['topics']['fails']}")
+    if m.get("journal", {}).get("fails"):
+        f.append(f"journal leaves: {m['journal']['fails']}")
     return f
 
 
@@ -314,7 +344,8 @@ def run(smoke: bool, out: Path = OUT, shoot: bool = True) -> dict:
         for vp in (folded, desk):
             plan.append((vp, "dialogue", "threeHundredTopics", [json.dumps(st["dialogue"]["threeHundredTopics"])], {}))
         plan += [(folded, "hud", "play", [json.dumps(st["hud"]["play"])], {}),
-                 (folded, "journal", "entries", [json.dumps(st["journal"]["entries"])], {})]
+                 (folded, "journal", "entries", [json.dumps(st["journal"]["entries"])], {}),
+                 (folded, "journal", "lf83", [json.dumps(st["journal"]["lf83"])], {})]
         if info["chart"]:
             plan.append((folded, "chart", "claywater", [json.dumps(st["chart"]["claywater"])], {}))
     else:

@@ -1,6 +1,8 @@
 // The journal (1.2 §c), render only: Morrowind's open book. The entries tab is a spread of dated entries (the page
 // ArgoniaCore sent, flowing over both leaves); the quests tab is the index with each quest's directions in words.
-// Page turns, tabs and a quest pick are journal.page intents; ArgoniaCore answers with the page.
+// Page turns, tabs and a quest pick are journal.page intents; ArgoniaCore answers with the page. A page whose text
+// runs past the spread flows on into further leaves (CSS columns); main.ts turns those locally before it asks
+// ArgoniaCore for the next page, so a long entry is read whole at any viewport.
 import type { JournalEntry, JournalPage, JournalState, QuestIndexItem } from "../../schema/generated/messages.ts";
 import { esc, intentButton } from "../core/html.ts";
 
@@ -27,12 +29,16 @@ export function render(s: JournalState): string {
     intentButton(page({ tab: t, page: 0 }), `tab${s.tab === t ? " on" : ""}`, label,
       `data-key="tab:${t}" aria-pressed="${s.tab === t}"`);
   const filter = s.questFilter !== undefined ? { questFilter: s.questFilter } : {};
-  const prev = s.page > 0
-    ? intentButton(page({ tab: s.tab, page: s.page - 1, ...filter }), "turn prev", "Previous", `data-key="prev"`)
-    : `<span class="turn"></span>`;
-  const next = s.page + 1 < s.pageCount
-    ? intentButton(page({ tab: s.tab, page: s.page + 1, ...filter }), "turn next", "Next", `data-key="next"`)
-    : `<span class="turn"></span>`;
+  // Each turn button is a view-local control (data-ui): main.ts turns a leaf, or sends the page intent it carries.
+  // With no page that way it carries none and stays hidden unless main.ts finds a leaf to turn to.
+  const turnButton = (dir: "prev" | "next", to: number, label: string) => {
+    const attrs = `data-key="${dir}" data-ui="turn" data-dir="${dir}"`;
+    return to >= 0 && to < s.pageCount
+      ? intentButton(page({ tab: s.tab, page: to, ...filter }), `turn ${dir}`, label, attrs)
+      : `<button type="button" class="turn ${dir} none" ${attrs}>${label}</button>`;
+  };
+  const prev = turnButton("prev", s.page - 1, "Previous");
+  const next = turnButton("next", s.page + 1, "Next");
 
   let leaves: string;
   if (s.tab === "entries") {

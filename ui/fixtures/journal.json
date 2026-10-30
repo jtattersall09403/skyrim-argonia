@@ -1,6 +1,6 @@
 {
  "screen": "journal",
- "doc": "Mock data for 1.2's L3 harness (journal). Quest ids from the world db; entry text is mock, not a record.",
+ "doc": "Mock data for 1.2's L3 harness (journal). Quest ids from the world db; entry text is mock, not a record, except lf83: LF83's stages 10, 20 and 30 as the quest rows give them (journal_text.h), long enough to run into further leaves.",
  "states": {
   "entries": {
    "type": "journal.state",
@@ -207,6 +207,83 @@
     "pageCount": 1,
     "entries": [],
     "quests": []
+   }
+  },
+  "lf83": {
+   "type": "journal.state",
+   "v": 1,
+   "body": {
+    "tab": "entries",
+    "page": 0,
+    "pageCount": 1,
+    "entries": [
+     {
+      "quest": "quest.local.lf83",
+      "questName": "The Well and the Landing",
+      "date": {
+       "year": 201,
+       "month": 8,
+       "day": 16,
+       "hour": 9.5,
+       "text": "16th of the Eighth Month, 201"
+      },
+      "kind": "progress",
+      "runs": [
+       {
+        "text": "I came to Claywater Station on the Blackwood Road. Travellers there pay Livia Varinius, the well-keeper, 2 drakes for the stop this season. Signs-For-The-Cargo, the landing's poler, now wants 1 drake from every walker who wades the ford. I'm to hear each keeper's side. Claywater Station is about 640 yards west of the signpost at Cartwright's Cross on the Blackwood Road, where the arms point to Gideon and to Leyawiin. Going west, a painted pole barrier stands in a field about 110 yards off the road on the right; that is the Drowning Gate. The station house roof shows about 100 yards on, ahead on the left. Livia Varinius keeps the well at the station house door, inside the low stone walls. Signs-For-The-Cargo poles the plank raft at the landing stage across the ford in the morning, about 65 yards north of the well. The round mud huts stand behind it on the far bank. If the road runs on into open marsh with no roofs in sight, I have passed it."
+       }
+      ]
+     },
+     {
+      "quest": "quest.local.lf83",
+      "questName": "The Well and the Landing",
+      "date": {
+       "year": 201,
+       "month": 8,
+       "day": 17,
+       "hour": 9.5,
+       "text": "17th of the Eighth Month, 201"
+      },
+      "kind": "progress",
+      "runs": [
+       {
+        "text": "At Claywater Station, Livia Varinius told me she raised the station's charge to 2 drakes to pay a mason to re-line the cracked well in stone. Signs-For-The-Cargo told me the landing began charging walkers at the ford. The landing worked this ford before the well was dug. The landing will not haul stone for the station. Signs-For-The-Cargo says a crocodile has taken the landing's clay cut below the ford. The landing will hear terms only from whoever wins back the cut before the rains. I'm to kill the crocodile and bring back the clay basket that lies at the cut. The cut is below the ford on the station bank. From the well, I go about 45 yards west, outside the low stone walls, to where the river swings west under a bare clay bank and the water lies deep and dark. If the bank flattens into reeds, I have gone past it. Signs-For-The-Cargo says Takes-The-Short-Weight can tell what ails the station's water. She lives in the round mud hut on the landing bank, about 30 yards north of the raft. In the morning she sits at the landing's fire, about 50 yards north of the raft."
+       }
+      ]
+     },
+     {
+      "quest": "quest.local.lf83",
+      "questName": "The Well and the Landing",
+      "date": {
+       "year": 201,
+       "month": 8,
+       "day": 18,
+       "hour": 9.5,
+       "text": "18th of the Eighth Month, 201"
+      },
+      "kind": "progress",
+      "runs": [
+       {
+        "text": "I killed the crocodile at the clay cut below the ford at Claywater Station and have the landing's clay basket. I'm to put terms to Livia Varinius and to Signs-For-The-Cargo before the rains: one charge of 2 drakes a stop, 1 to each bank, with the landing's clay rammed in behind the cracked lining. Livia Varinius says a mason's lining will mend the well and mud has no place in it. She says the landing would take half a charge for water it never draws. I'm to find out whether the well has cracked before. Takes-The-Short-Weight can taste the station's water if I bring it to her in Livia Varinius's dipper. Signs-For-The-Cargo says the station only wants stone. He will not haul it. Livia Varinius is at the well in the morning, at the counter by the station house door in the afternoon and at the stable at dusk. Signs-For-The-Cargo poles the raft in the morning and is at the drying racks behind it in the afternoon."
+       }
+      ]
+     }
+    ],
+    "quests": [
+     {
+      "id": "quest.local.lf83",
+      "name": "The Well and the Landing",
+      "status": "active",
+      "started": {
+       "year": 201,
+       "month": 8,
+       "day": 16,
+       "hour": 9.5,
+       "text": "16th of the Eighth Month, 201"
+      },
+      "directions": "Livia Varinius is at the well in the morning, at the counter by the station house door in the afternoon and at the stable at dusk; Signs-For-The-Cargo poles the raft in the morning and is at the drying racks behind it in the afternoon."
+     }
+    ]
    }
   }
  },
