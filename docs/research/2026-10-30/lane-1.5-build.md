@@ -34,22 +34,18 @@ Dated 2026-10-30. The lane stopped at the context mark. Test level: L2 and L3 do
 - **The L4 drafts** (feb4b87): `tests/journeys/{grow-at-rest,die-and-recover,rest-is-the-only-save,suspend-save}.yaml`.
 
 **Left, in order:**
-1. **The records are uncommitted, shared with 1.6-wiring.** The planner's order is that 1.6 commits both lanes' hunks. My child wrote these files:
-   - `tools/argonia_world/life_records.py` and `tests/test_life_records.py` (6 pass);
-   - `tools/ArgoniaGen/ActivatorRecords.cs` (ACTI, GMST), the scan section in `Reading.cs`, the `Generate.cs` case, the README lines;
-   - in `formids.py`, `GMST_EDID` (a GMST may use the engine's name);
-   - the `game_setting` table and its rows;
-   - the layer line and `TYPE_ORDER` in `intermediate.py`.
-
-   `make plugin` cannot run until 1.6 fixes `combat_records.archetype_records` (StopIteration at the shield lookup). I sent ac3b5f228e6ac9e1c the file list and asked it to commit after `make plugin` ×2 and `make check`.
+1. **The records: done.** 1.6-wiring committed both lanes' shared files as dbf8da4. `make plugin` is deterministic, `plugin-check` is green and `make check` is green (265 passed). The commit holds:
+   - `life_records.py` and its test, `ActivatorRecords.cs`, the `Reading.cs` scan, `formids.py` (`GMST_EDID`);
+   - the `game_setting` table and its rows, the intermediate lines, and the regenerated plugin/ and forms.h;
+   - 1.6's own change: the formid table's CHECK in `world/schema.sql` now admits engine-named GMST EditorIDs.
 
    The records:
    - KYWD: `ARG_RestSpot`, `ARG_VasteiPile`, `ARG_LocType_Settlement`, `ARG_LocType_Dungeon`, `ARG_Respawn_OnRest`, `ARG_Respawn_UntilCleared`;
    - ACTI: `ARG_CampSpot` (`Furniture\Bedroll\BedrollGround.nif`, verb "Rest") and `ARG_VasteiPileActivator` (world id `death.vastei-pile`, `Clutter\SoulGem\SoulGemPetty01.nif`, verb "Take");
    - PERK: `ARG_Perk_RestIntercept`;
-   - GMST: `fXPPerSkillRank` = 0 is a new record (not in any master; the engine reads by EditorID); `iHoursToRespawnCell` (0D3646) and `iHoursToRespawnCellCleared` (0D3647) are overrides set to 1,000,000.
+   - GMST: `fXPPerSkillRank` = 0 is a new record (it is in no master); `iHoursToRespawnCell` (0D3646) and `iHoursToRespawnCellCleared` (0D3647) are overrides set to 1,000,000.
 
-   Both model paths are vanilla and need a quarantine review (0012). The sourcing register is owed.
+   Still owed: a quarantine review of the two vanilla model paths (0012), and the sourcing register.
 2. **MSVC.** The first build (msvc-15) gave 4 errors, all fixed in 0f3eaa4:
    - `byCharGenFlag` now goes through `GetGameStatsData()`;
    - `RestoreActorValue` now takes 2 arguments;
@@ -66,7 +62,7 @@ Dated 2026-10-30. The lane stopped at the context mark. Test level: L2 and L3 do
 
 **Reds and gaps:**
 - `bash skse/check.sh`: 28/28 green, peak RSS 400 MB. `make ui` is green, per the child.
-- The full `make check` was not run, because the shared record files are mid-edit.
+- `make check`: green (265 passed), run by 1.6-wiring on dbf8da4.
 - **`tests/journeys/cosave.yaml` (1.1's) uses a console `save`.** With rest as the only save, the chargen block may refuse it. It should save by resting.
 - **Stated losses:**
   - Hit damage reads low when the target regenerates between hits (HealthWatch). S16a decides on the HandleHealthDamage hook.
