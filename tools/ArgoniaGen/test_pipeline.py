@@ -53,3 +53,11 @@ def test_make_plugin_carries_the_province_navmesh(tmp_path, monkeypatch, capsys)
     (nav / "terrain.stamp").write_text("ground-1")
     pipeline.master_world(tmp_path, rebuild=True)
     assert seen[-1] == nav and "WARNING" not in capsys.readouterr().out
+
+
+def test_plugin_skip_decision():
+    skip = pipeline.skip_plugin
+    assert skip("abc", "abc\n", True)          # same inputs, both ESMs there
+    assert not skip("abc", "abd", True)         # an input changed
+    assert not skip("abc", None, True)          # no stamp: never built, or the last build failed
+    assert not skip("abc", "abc", False)        # an ESM is missing

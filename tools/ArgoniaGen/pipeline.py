@@ -302,8 +302,50 @@ def master_world(data: Path, rebuild: bool) -> None:
     ENV["ARGONIA_WORLD_ESM"] = str(target)
 
 
-def plugin() -> int:
+PLUGIN_STAMP = OUT / "plugin.stamp"
+# What `plugin` reads (found from generate/world/scans): the world db and schema, the Spriggit YAML, data/, the
+# generator's sources and the world/navmesh tooling; the binary, the province navmesh's build record, the terrain
+# vault's inputs and the game's plugins/archives are folded in by size and time (too big to read).
+HASH_DIRS = ("world", "plugin", "data", "tools/ArgoniaGen", "tools/argonia_world", "tools/navmesh")
+HASH_SKIP = {"bin", "obj", "__pycache__", ".pytest_cache"}
+
+
+def input_hash(data: Path | None = None) -> str:
+    import hashlib
+    h = hashlib.sha256()
+    for d in HASH_DIRS:
+        for dp, dn, fn in os.walk(ROOT / d):
+            dn[:] = sorted(x for x in dn if x not in HASH_SKIP)
+            for f in sorted(fn):
+                if not f.endswith((".pyc", ".log")):
+                    p = Path(dp) / f
+                    h.update(str(p.relative_to(ROOT)).encode() + b"\0" + p.read_bytes() + b"\0")
+    extra = [GEN, GEN.with_suffix(".dll"), NAV_PROVINCE / "build.json"]
+    sys.path.insert(0, str(ROOT))
+    from tools.argonia_world.terrain import vault
+    extra += [vault.data_dir() / n for n in sorted(vault.FILES)]
+    if data is not None:
+        extra += sorted(data.glob("*.es[mpl]")) + sorted(data.glob("*.bsa"))
+    for f in extra:
+        st = f.stat() if f.exists() else None
+        h.update(f"{f.name}:{st.st_size}:{int(st.st_mtime)}".encode() if st else f.name.encode())
+    return h.hexdigest()
+
+
+def skip_plugin(now: str, stamp: str | None, esms_exist: bool) -> bool:
+    """The skip decision: the inputs hash to what the last successful build wrote, and both ESMs are there."""
+    return esms_exist and stamp is not None and stamp.strip() == now
+
+
+def plugin(force: bool = False) -> int:
     data = data_dir()
+    if not force:
+        now = input_hash(data)
+        stamp = PLUGIN_STAMP.read_text() if PLUGIN_STAMP.exists() else None
+        if skip_plugin(now, stamp, (OUT / "Argonia.esm").exists() and (OUT / WORLD_ESM).exists()):
+            print(f"plugin: unchanged ({now[:16]})")
+            return 0
+    PLUGIN_STAMP.unlink(missing_ok=True)
     build_tool()
     scans(data)
     master_world(data, rebuild=True)  # first: Argonia.esm's place cells override its cells
@@ -314,6 +356,7 @@ def plugin() -> int:
     from tools.argonia_world import forms_table; forms_table.write()  # the allocator may have added rows (1.1)
     n = sum(1 for _ in YAML.rglob("*.yaml"))
     print(f"plugin: out/Argonia.esm ({esm.stat().st_size} bytes), {n} YAML files in plugin/Argonia/")
+    PLUGIN_STAMP.write_text(input_hash(data))  # after success, over the tree the build left (the allocator's rows included)
     return 0
 
 

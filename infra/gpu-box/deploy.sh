@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # make deploy (chunk 0.3 §e): our build onto the game machine, the game restarted, the base save rebuilt.
-#   deploy.sh [--no-plugin] [--no-papyrus] [--no-skse] [--no-stage] [--no-base]      run under: tooling/job_guard.sh run --gpu deploy -- make deploy
+#   deploy.sh [--no-plugin] [--no-papyrus] [--no-skse] [--no-stage] [--no-base]      run: `make plugin` first, outside the lock (an unchanged build is skipped by its input hash), then
+#   tooling/job_guard.sh run --gpu <name> -- make deploy  (step 1 then hits the skip: the machine never idles on a plugin build)
 # 1. make plugin: out/Argonia.esm and out/ArgoniaWorld.esm (skipped with --no-plugin);
 # 1b. records_jobs.sh papyrus: every .psc we have compiled with the CK's compiler into out/gpu/papyrus (--no-papyrus
 #    lays the last compile);
