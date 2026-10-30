@@ -210,6 +210,7 @@ class Batch:
                        "reason": (bad or {}).get("reason") or rep.get("error") or rep.get("crash"),
                        "crash": bool(rep.get("crash")), "seconds": rep["seconds"], "scene_s": rep.get("scene_s"),
                        "steps_s": round(sum(s.get("seconds", 0) for s in rep["steps"]), 1),
+                       "transport_retries": sum(s.get("transport_retries", 0) for s in rep["steps"]),
                        "loaded": load, "relaunched_before": relaunched, "mb_before": mb, "mb_after": private_mb(self.b),
                        "owed": [o["name"] for o in rep.get("owed", [])], "report": rep["_out"]}
                 self.summary["items"].append(rec)
@@ -233,6 +234,7 @@ class Batch:
         s["step_classes_s"] = {"launch": round(sum(x["seconds"] for x in s["launches"]), 1),
                                "scene_apply": round(sum(i["scene_s"] or 0 for i in items), 1),
                                "steps": round(sum(i["steps_s"] for i in items), 1)}
+        s["transport_retries"] = sum(i.get("transport_retries", 0) for i in items)
         mbs = [i["mb_after"] for i in items if i["mb_after"]]
         s["mb_peak"] = max(mbs) if mbs else None
 

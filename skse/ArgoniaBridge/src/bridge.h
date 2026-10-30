@@ -54,5 +54,9 @@ RE::PlayerCharacter* player_in_world();
 void events_install();
 void events_on_game_loaded();
 void input_install();
+// The i-frame trace's per-frame sample (ep_dev.cpp), called by the player's update hook.
+void trace_frame(RE::PlayerCharacter* p);
+// True between SKSE's kPreLoadGame and kPostLoadGame: the task queue does not run, so a task waits the load out.
+bool save_loading();
 
 }  // namespace argonia::bridge

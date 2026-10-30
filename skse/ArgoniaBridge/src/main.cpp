@@ -40,7 +40,13 @@ namespace {
 std::atomic<std::uint64_t> g_tasks_run{0};
 std::string g_token;
 std::mutex g_one_request;  // the pipe and the socket share the handlers: one request at a time
+std::atomic<bool> g_save_loading{false};
+// A task queued during a save load waits up to 10 s more for it (game-12: items died on a 3 s timeout during a load);
+// 10 s keeps the reply inside the client's 15 s default, and bridge.py retries a read that still timed out.
+constexpr auto kLoadWaitCap = 10s;
 }  // namespace
+
+bool save_loading() { return g_save_loading.load(); }
 
 std::string on_main_thread(const std::string& cmd, std::function<std::string()> fn, std::chrono::milliseconds timeout) {
   auto done = std::make_shared<std::promise<std::string>>();
@@ -53,7 +59,11 @@ std::string on_main_thread(const std::string& cmd, std::function<std::string()> 
       done->set_value(reply_error("task", e.what()));
     }
   });
-  if (result.wait_for(timeout) != std::future_status::ready)
+  auto ready = result.wait_for(timeout) == std::future_status::ready;
+  for (auto waited = 0ms; !ready && save_loading() && waited < kLoadWaitCap; waited += 500ms)
+    ready = result.wait_for(500ms) == std::future_status::ready;
+  if (!ready && save_loading()) return reply_error(cmd, "main thread did not run the task: a save load is still running after 13 s");
+  if (!ready)
     return reply_error(cmd, "main thread did not run the task within " + std::to_string(timeout.count()) + " ms");
   return result.get();
 }
@@ -165,7 +175,11 @@ void on_message(SKSE::MessagingInterface::Message* m) {
       std::thread([] { serve_tcp(kTcpPort, [](const std::string& e) { SKSE::log::critical("bridge: {}", e); }); }).detach();
       SKSE::log::info("bridge: serving \\\\.\\pipe\\argonia-bridge and 127.0.0.1:{} (DEV ONLY)", kTcpPort);
       return;
+    case SKSE::MessagingInterface::kPreLoadGame:
+      g_save_loading = true;
+      return;
     case SKSE::MessagingInterface::kPostLoadGame: {
+      g_save_loading = false;
       std::scoped_lock l(s.m);
       ++s.loads;
       // SKSE passes the load's success as the pointer value itself ((void*)success), not a pointer to a bool:

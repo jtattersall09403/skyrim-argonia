@@ -54,6 +54,7 @@ std::chrono::steady_clock::time_point g_last;
 struct PlayerUpdate {
   static void thunk(RE::PlayerCharacter* p, float delta) {
     func(p, delta);
+    trace_frame(p);
     std::scoped_lock l(g_fm);
     if (g_want == 0) return;
     auto now = std::chrono::steady_clock::now();

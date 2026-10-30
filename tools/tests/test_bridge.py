@@ -235,3 +235,64 @@ def test_save_bytes_reads_both_files_and_refuses_a_path():
     assert "ArgoniaRest." in m.calls[-1]
     with pytest.raises(B.BridgeError, match="not a save name"):
         b.save_bytes("..\\x")
+
+
+def test_a_main_thread_timeout_on_a_read_is_retried_and_counted(monkeypatch):
+    monkeypatch.setattr(B, "RETRY_BACKOFF", (0, 0, 0))
+    n = []
+
+    def reply(line):
+        n.append(line)
+        if len(n) < 3:
+            return {"ok": False, "cmd": "player", "error": "main thread did not run the task within 3000 ms"}
+        return {"ok": True, "cmd": "player", "result": {"z": 1}}
+
+    ls, port = serve(reply)
+    b = make(port, FakeMachine())
+    assert b.call("player") == {"z": 1}
+    assert len(n) == 3 and b.transport_retries == 2
+    ls.close()
+
+
+def test_a_load_that_outlasts_three_tries_still_fails(monkeypatch):
+    monkeypatch.setattr(B, "RETRY_BACKOFF", (0, 0, 0))
+    n = []
+    ls, port = serve(lambda line: n.append(line) or {
+        "ok": False, "error": "main thread did not run the task: a save load is still running after 13 s"})
+    b = make(port, FakeMachine())
+    with pytest.raises(B.BridgeError, match="save load"):
+        b.call("player")
+    assert len(n) == 3 and b.transport_retries == 2
+    ls.close()
+
+
+def test_a_write_or_an_assertion_is_never_retried(monkeypatch):
+    monkeypatch.setattr(B, "RETRY_BACKOFF", (0, 0, 0))
+    n = []
+    ls, port = serve(lambda line: n.append(line) or {"ok": False, "error": "main thread did not run the task within 3000 ms"})
+    b = make(port, FakeMachine())
+    with pytest.raises(B.BridgeError):
+        b.call("console", "player.kill")  # the queued task may still run: never twice
+    ls.close()
+    ls, port = serve(lambda line: n.append(line) or {"ok": False, "error": "no actor value Foo"})
+    with pytest.raises(B.BridgeError):
+        make(port, FakeMachine()).call("av", "Foo")
+    assert len(n) == 2
+    ls.close()
+
+
+def test_a_connection_reset_is_retried(monkeypatch):
+    monkeypatch.setattr(B, "RETRY_BACKOFF", (0, 0, 0))
+    b = B.Bridge(machine=FakeMachine(), port=1)
+    b.tunnel, b.heartbeat, b.token = (lambda: None), (lambda: None), (lambda refresh=False: "t" * 32)
+    calls = []
+
+    def exchange(line, cap):
+        calls.append(line)
+        if len(calls) == 1:
+            raise ConnectionResetError("reset")
+        return {"ok": True, "result": {"found": True}}
+
+    b._exchange = exchange
+    assert b.call("logfile", "CommunityShaders", "x") == {"found": True}
+    assert b.transport_retries == 1

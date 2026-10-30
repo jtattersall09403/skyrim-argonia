@@ -436,6 +436,7 @@ class Runner:
         for name in {e["log"]["name"] for e in step.get("expect", []) if "log" in e}:
             ctx["log_lines"][name] = len(skse_log(self.b, name))
         rec = {"n": n, "name": step["name"], "passed": True}
+        retries0 = getattr(self.b, "transport_retries", 0)
         try:
             for a in step.get("do", []):
                 self.act(a)
@@ -456,6 +457,7 @@ class Runner:
             except BridgeError as e:
                 rec["still"] = f"none: {e}"
         rec["seconds"] = round(time.monotonic() - t, 1)
+        rec["transport_retries"] = getattr(self.b, "transport_retries", 0) - retries0
         print(f"  {n:2d} {step['name']:<24} {'ok' if rec['passed'] else 'FAIL: ' + rec['reason']}", flush=True)
         return rec
 

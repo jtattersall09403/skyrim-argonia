@@ -51,6 +51,13 @@ DEFAULT_TIMEOUT = 15.0
 JOURNAL_NOTICE_EVENT = "ArgoniaJournalNotice"
 HEARTBEAT_EVERY = 240.0  # seconds between busy-flag refreshes; idle-stop.ps1 stops after 15 idle minutes
 INPUT_CAP_MS = 3000  # kInputCapMs in the plugin
+# A transport hitch is retried, never an assertion or any other refusal (game-12: 4 of 5 items died on one "main
+# thread did not run the task" each). At most 3 tries, 0.5 then 1 s apart (2 s before a fourth, never reached).
+RETRY_BACKOFF = (0.5, 1.0, 2.0)
+RETRY_TRIES = 3
+# Commands that change the game: a timed-out task stays queued and runs later, so a retry could do it twice.
+NO_RETRY = {"console", "teleport", "pad", "input", "key", "load", "save", "core-suspend", "crash", "booth", "dev-set",
+            "dev-grow", "time", "weather", "trace", "nav", "launch"}
 
 
 def machine_name() -> str:
@@ -201,13 +208,31 @@ class Bridge:
         return json.loads(buf.split(b"\n", 1)[0])
 
     # -- calls -----------------------------------------------------------------------------------------------
+    transport_retries = 0  # every retried hitch since this Bridge was made; a journey step reports its share
+
     def call(self, command: str, *args, timeout: float | None = None) -> dict:
-        """One endpoint call; its `result` on success, else BridgeError (GameDown when the game is down)."""
+        """One endpoint call; its `result` on success, else BridgeError (GameDown when the game is down). A read that
+        meets a main-thread timeout or a connection reset is tried again, at most RETRY_TRIES times in all."""
+        tries = 1 if command in NO_RETRY else RETRY_TRIES
+        for n in range(tries):
+            try:
+                return self._call_once(command, *args, timeout=timeout)
+            except (BridgeError, ConnectionResetError) as e:
+                hitch = isinstance(e, ConnectionResetError) or (
+                    type(e) is BridgeError and "did not run the task" in str(e))
+                if not hitch or n + 1 >= tries:
+                    raise
+                self.transport_retries += 1
+                print(f"bridge: {command}: transport retry {n + 1} after {e}", file=sys.stderr)
+                time.sleep(RETRY_BACKOFF[n])
+        raise AssertionError("unreachable")
+
+    def _call_once(self, command: str, *args, timeout: float | None = None) -> dict:
         self.tunnel()
         self.heartbeat()
         cap = timeout or TIMEOUTS.get(command, DEFAULT_TIMEOUT)
         words = " ".join(str(a) for a in args)
-        if command in ("console", "teleport") and "ARG_" in words:  # the game keeps no ref's editor id (tools/ref_ids.py)
+        if command in ("console", "teleport", "refs", "dev-grow") and "ARG_" in words:  # the game keeps no ref's editor id (tools/ref_ids.py)
             words = self.resolve_refs(words)
         tail = f" {command}" + (f" {words}" if words else "")  # never str.format: a view intent's JSON has braces
         if "\n" in tail or "\r" in tail:
