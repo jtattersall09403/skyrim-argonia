@@ -24,7 +24,7 @@ steps:
       - {console: "player.moveto ARG_Ref_ClaywaterStationLivia 0 -110 0"}
       - {console: "player.setangle z 0"}
       - {console: "ARG_Ref_ClaywaterStationLivia.moveto player 0 100 0"}
-      - {console: "ARG_Ref_ClaywaterStationLivia.setav health 5"}   # damageav 1000 killed her before the blows (game-16 still)
+      - {console: "ARG_Ref_ClaywaterStationLivia.forceav health 5"}   # damageav 1000, then setav 5 over the kept damage, killed her before the blows (game-16)
       - {wait: 1}
     expect: [{console: player.IsWeaponOut, contains: ">>"}]   # strike draws (R here sheathed a drawn blade: game-16)
   - name: strike              # the player's blows

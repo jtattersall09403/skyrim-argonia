@@ -391,7 +391,6 @@ class Runner:
         refusal or no rest line (game-16: grow-at-rest and die-and-recover never rested; the crosshair was off)."""
         marker = str(marker).strip()
         self.b.call("console", "player.stopcombat")
-        self.b.call("console", "stopcombatalarm")  # every actor's alarm and combat cleared (engine console)
         self.b.call("console", f"player.moveto {marker} 0 -90 0")
         time.sleep(4)  # the moveto settles (cell attach)
         n0 = len(skse_log(self.b, "ArgoniaCore"))
@@ -417,7 +416,10 @@ class Runner:
         menu = str(menu).strip()
         for key, route in CLOSE_KEYS:
             last = (self.b.call("events") or {}).get("last")
-            self.b.call("input", "key", key, 100, route)
+            if route == "pad":
+                self.b.pad(f"{key}:150 -:100")
+            else:
+                self.b.call("input", "key", key, 100, route)
             time.sleep(1.5)
             view = MENU_VIEWS.get(menu)  # our view over it (the M chart over MapMenu: smoke game-16)
             view_ok = view is None or f"{view} ready closed" in json.dumps(self.b.call("core", "Views"))
@@ -652,7 +654,7 @@ def _form_id(text) -> int | None:
 TALK_UNITS, TALK_WAIT_S = 110, 5.0  # 5 s: a player moveto before it may load a cell and fade
 STRIKE_UNITS = 80  # inside a sword's reach
 MENU_VIEWS = {"journal": "journal", "MapMenu": "chart"}  # a menu name and our view that stands for or over it
-CLOSE_KEYS = (("ESC", "engine"), ("TAB", "engine"), ("ESC", "os"), ("TAB", "os"))  # tried in order (game-16)
+CLOSE_KEYS = (("B", "pad"), ("ESC", "engine"), ("TAB", "engine"), ("ESC", "os"), ("TAB", "os"))  # tried in order; pad B closes our journal (game-16, live)
 AIM_EYE_Z, AIM_CHEST_Z = 110, 90  # a standing human's eye and chest above the feet (units)
 ACTIONS = {"pad": Runner._pad, "talk": Runner._talk, "strike": Runner._strike, "rest": Runner._rest, "close_menu": Runner._close_menu, "key": Runner._key, "console": Runner._console, "teleport": Runner._teleport,
            "wait": Runner._wait, "game_hours": Runner._game_hours, "call": Runner._call, "relaunch": Runner._relaunch}

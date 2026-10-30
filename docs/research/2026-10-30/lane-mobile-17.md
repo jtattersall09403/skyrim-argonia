@@ -81,8 +81,17 @@ Run touchfix4 on argonia-play-2 (20:48-20:55 UTC; prep in the desktop session, g
 
 ## Owed (#17, after lane touch-fix)
 1. Favourites: favourite an item by console at step 0, then D-up on the pad and by touch; FavoritesMenu event or not.
+   **game-16 (live, pad, deploy 18ed1e4): still red.** The pad is alive (LY moves the player), but D-up gave no menu
+   event, before and after an attempt to favourite the sword in the inventory (I, then F by the engine and os routes;
+   whether the favourite took is unproven: the console has no favourite command). Next step: favourite through
+   the inventory with a still that shows the mark, then D-up.
 2. The B press that closes our HTML journal also rolls (TKDR_DodgeStart 0.1-0.2 s after PrismaUI_FocusMenu closes):
    ArgoniaCore's view close should consume that B/Esc so TK Dodge never sees it; prove with a B tap closing the
    journal and no dodge event.
+   **game-16 (pad, deploy 18ed1e4, which includes 5f7e595): still red.** BACK opens the journal, and B closes it
+   ("journal ready closed"), but one TKDR_DodgeStart (holder 00000014) still fires in that step. B outside a view is
+   not yet re-proven, because the run stopped at this step. Touch B was not run.
 3. R3 lock-on: a `tdm-target` read naming the deserter after R3 with him in front (game-16's aim helper).
+   **game-16: passed (pad, live).** The deserter was faced with `strike`, then RS (R3) was pressed, and `tdm-target`
+   read `locked: true`.
 4. Mid-session fold or unfold: offer a one-tap "restart at this size" on the play page (asked of the owner on #17).
