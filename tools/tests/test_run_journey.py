@@ -375,7 +375,7 @@ STEP = lambda n: {"name": n, "expect": [{"console": "player.IsWeaponOut", "conta
 
 
 def test_each_passed_step_saves_and_only_the_latest_is_kept(tmp_path):
-    j = journey(tmp_path, [STEP("a"), {"name": "b", "owed": "x"}, STEP("c")])
+    j = journey(tmp_path, [STEP("a"), {"name": "b", "owed": "x"}, STEP("c")], step_saves=True)
     b = SaveFake()
     rep = rj.Runner(b, tmp_path / "out", stills=False).run(j, "base")
     assert rep["passed"]
@@ -387,7 +387,7 @@ def test_each_passed_step_saves_and_only_the_latest_is_kept(tmp_path):
 
 def test_from_loads_the_save_before_the_step_with_its_kept_values(tmp_path):
     keep = {"name": "a", "expect": [{"console": "player.IsWeaponOut", "keep": "w"}]}
-    j = journey(tmp_path, [keep, STEP("b"), STEP("c")])
+    j = journey(tmp_path, [keep, STEP("b"), STEP("c")], step_saves=True)
     b = SaveFake()
     rj.Runner(b, tmp_path / "out", stills=False).run(j, "base", start=None)
     (tmp_path / "resume" / "t.json").write_text(json.dumps(
@@ -406,8 +406,8 @@ def test_from_without_the_save_refuses(tmp_path):
         rj.Runner(SaveFake(), tmp_path / "out", stills=False).run(j, "base", start="b")
 
 
-def test_step_saves_false_saves_nothing(tmp_path):
-    j = journey(tmp_path, [STEP("a")], step_saves=False)
+def test_step_saves_off_by_default_saves_nothing(tmp_path):
+    j = journey(tmp_path, [STEP("a")])
     b = SaveFake()
     assert rj.Runner(b, tmp_path / "out", stills=False).run(j, "base")["passed"]
     assert not [l for l in b.lines if l.startswith("save ")]

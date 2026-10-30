@@ -18,7 +18,7 @@ steps:
       - {read: [core, GetVastei], path: value, keep: v0}
       - {read: [core, GetLevel], path: value, keep: lvl0}
       - {read: [core, GetSkill, longBlade], path: value, keep: lb0}
-      - {read: [av, OneHanded, player], path: base, keep: oh0}
+      - {console: "player.getbaseav OneHanded", keep: oh0}   # the av read refuses vanilla names (game-13)
   - name: arm
     do:
       - {console: '"{opp}".stopcombat'}
@@ -38,7 +38,7 @@ steps:
       - {event: {kind: hit, match: "*"}}
       - {log: {name: ArgoniaCore, contains: "grow: hit longBlade"}}
       - {read: [core, GetVastei], path: value, gt: {kept: v0}}
-      - {read: [av, OneHanded, player], path: base, eq: {kept: oh0}}   # P4: vanilla XP never moves
+      - {console: "player.getbaseav OneHanded", eq: {kept: oh0}}   # P4: vanilla XP never moves
       - {read: [core, GetLevel], path: value, eq: {kept: lvl0}}          # the level waits for rest
       - {event: {kind: menu, match: LevelUp Menu, absent: true}}
   - name: rest-no-pending     # with no level pending the rest saves and no sitting opens

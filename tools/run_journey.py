@@ -457,7 +457,7 @@ class Runner:
                 save, scene, load = resumed, None, True
                 self.kept = dict(kept)
                 rep.update(resumed_from=resumed, save=resumed)
-        saves = j.get("step_saves", True)
+        saves = j.get("step_saves", False)  # off by default: the console `save` was silently refused in game-13 (0 argj-*.ess after 30 items)
         last = first + 1 if only else len(j["steps"])
         t0 = time.monotonic()
         try:
