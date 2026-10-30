@@ -68,6 +68,10 @@ EOF
 case "${1:-}" in tools|survey|run|still) ;; *) sed -n "2,10p" "$0"; exit 2 ;; esac
 "$run" ps 'New-Item -ItemType Directory -Force C:\argonia\infra, C:\argonia\tools | Out-Null' >/dev/null
 "$run" put "$here/lod.ps1" C:/argonia/infra/lod.ps1 >/dev/null
+# ARG_Province's LODSettings file, from the land the plugin build wrote (lodsettings.py; lod.ps1 lays it)
+"$PY" "$here/lodsettings.py" "$repo/out/terrain/land" "$repo/out/lod/ARG_Province.lod"
+"$run" ps 'New-Item -ItemType Directory -Force C:\argonia\lod | Out-Null' >/dev/null
+"$run" put "$repo/out/lod/ARG_Province.lod" C:/argonia/lod/ARG_Province.lod >/dev/null
 case "${1:-}" in
   tools) tools ;;
   survey) [ -n "${2:-}" ] || { sed -n '2,10p' "$0"; exit 2; }; DESKTOP_WAIT=400 ps1 survey -Tool "$2"; fetch_back ;;

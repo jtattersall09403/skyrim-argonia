@@ -132,7 +132,11 @@ $Known = @(
 function Watch-Popups($proc, $main) {
   foreach ($t in [W]::Tops($proc.Id)) {
     if ($t -eq $main) { continue }
+    # the VCL's own windows (the hidden application window, the main form once the options dialog closes) are no
+    # pop-up; nor is a window with no text at all (game-12: Generate stopped on "unknown pop-up: ")
+    if ([W]::Cls($t) -in 'TApplication', 'TfrmMain') { continue }
     $text = (@([W]::Text($t)) + @([W]::Kids($t) | % { [W]::Text($_) })) -join ' / '
+    if (-not ($text -replace '[\s/]', '')) { continue }
     $k = $Known | ? { $text -match $_.match } | Select -First 1
     if (-not $k) { Dump $proc 'unknown pop-up'; throw "${Step}: unknown pop-up: $text" }
     $b = [W]::Kids($t) | ? { ([W]::Text($_) -replace '&', '') -eq $k.answer } | Select -First 1
@@ -176,7 +180,7 @@ function Tool-Text($proc) {
 function Start-Tool($name, $argline) {
   Get-Process -Name ([IO.Path]::GetFileNameWithoutExtension($Exe[$name])) -EA SilentlyContinue | Stop-Process -Force
   if (-not (Test-Path $Exe[$name])) { throw "no $($Exe[$name]): lod.sh tools" }
-  Say "start $($Exe[$name]) $argline"
+  Say "start $($Exe[$name]) $argline" | Write-Host  # to the host: this function returns only the process
   Start-Process $Exe[$name] -ArgumentList $argline -WorkingDirectory (Split-Path $Exe[$name]) -PassThru
 }
 $Paths = "-sse -autoload -d:`"$Data\`" -p:`"$Prefs\Plugins.txt`" -m:`"$Ini`""
@@ -198,12 +202,28 @@ function Link-Resources {  # into Data while the tools run
   foreach ($d in 'Meshes', 'Textures') { Link-Into-Data "$Res\$d" "\$d" }
 }
 
+# ARG_Province's LODSettings file (lodsettings.py on the build VM, sent by lod.sh): xLODGen lists a worldspace only
+# when Data\LODSettings\<WRLD>.lod exists, and the game reads it to place the LOD. It lives in the LOD mod, so the
+# profile lays it with the rest (game-12: terrain failed "ARG_Province not in the worldspace list").
+function Lay-LodSettings {
+  $src = "$Work\ARG_Province.lod"
+  if (-not (Test-Path $src)) { throw "${Step}: no $src (lod.sh sends it)" }
+  New-Item -ItemType Directory -Force "$Mod\LODSettings" | Out-Null
+  Copy-Item $src "$Mod\LODSettings\$World.lod" -Force
+  Say "lodsettings: $Mod\LODSettings\$World.lod ($((Get-Item $src).Length) bytes)"
+}
+
 switch ($Step) {
   'prepare' {
     & "$Root\infra\bridge.ps1" -Cmd kill | Out-Null
+    # a tool a failed step left open holds Data's archives, and the fresh lay below cannot delete them (game-12)
+    Get-Process xLODGenx64, TexGenx64, DynDOLODx64, LODGen*, Texconv* -EA SilentlyContinue | Stop-Process -Force -EA SilentlyContinue
+    Start-Sleep 2
     Remove-Item "$Mod\*" -Recurse -Force -EA SilentlyContinue   # Data without any old LOD of ours
     foreach ($o in $Out.Values) { Remove-Item $o -Recurse -Force -EA SilentlyContinue; New-Item -ItemType Directory -Force $o | Out-Null }
+    Lay-LodSettings
     & "$Root\infra\bridge.ps1" -Cmd prepare -Fresh | Out-Null
+    if (-not (Test-Path "$Data\LODSettings\$World.lod")) { throw "prepare: LODSettings\$World.lod not laid in Data" }
     if (-not (Test-Path "$Data\ArgoniaWorld.esm")) { throw 'prepare: ArgoniaWorld.esm not in Data (make deploy first)' }
     Link-Resources
     Say "plugins: $((Get-Content "$Prefs\Plugins.txt") -join ', ')"
@@ -271,6 +291,7 @@ switch ($Step) {
       if (Test-Path $src) { robocopy $src $Mod /E /NFL /NDL /NJH /NJS /NP | Out-Null }
     }
     Get-ChildItem $Mod -Recurse -Include *.zip, *.log, *.txt -File | ? { $_.DirectoryName -eq $Mod } | Remove-Item -Force
+    Lay-LodSettings
     $plugins = Get-ChildItem $Mod -File -Include *.esp, *.esm, *.esl -Recurse
     if ($plugins) { Say "plugins in the output (not enabled by this job): $($plugins.Name -join ', ')" }
     $files = Get-ChildItem $Mod -Recurse -File

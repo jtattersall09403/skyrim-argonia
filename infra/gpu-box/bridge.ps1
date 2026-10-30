@@ -55,16 +55,20 @@ switch ($Cmd) {
     $dst = "$Game\Data\SKSE\Plugins"
     if (-not (Test-Path $src)) { J @{ laid = $false; error = "no $src (skse_build.sh build windows-dev)" }; exit 1 }
     New-Item -ItemType Directory -Force $dst | Out-Null
-    Copy-Item $src "$dst\ArgoniaBridge.dll" -Force
+    # A file already laid (same length and write time; Copy-Item keeps the time) is not copied again (game-12): a
+    # relaunch was copying the 229 MB world ESM each time, and LOD's tools hold Data's plugins open while they run.
+    function Lay($from, $to) { $a = Get-Item $from; $b = Get-Item $to -EA SilentlyContinue
+      if (-not $b -or $a.Length -ne $b.Length -or $a.LastWriteTimeUtc -ne $b.LastWriteTimeUtc) { Copy-Item $from $to -Force } }
+    Lay $src "$dst\ArgoniaBridge.dll"
     $h = (Get-FileHash "$dst\ArgoniaBridge.dll" -Algorithm SHA256).Hash.ToLower()
     # ArgoniaCore (0.3 §b, 1.1) is laid beside it (skse_build.sh puts it in MO2's Argonia SKSE, outside the modlist)
     $core = 'C:\argonia\MO2\mods\Argonia SKSE\SKSE\Plugins\ArgoniaCore.dll'; $ch = $null
-    if (Test-Path $core) { Copy-Item $core "$dst\ArgoniaCore.dll" -Force; $ch = (Get-FileHash "$dst\ArgoniaCore.dll").Hash.ToLower() }
+    if (Test-Path $core) { Lay $core "$dst\ArgoniaCore.dll"; $ch = (Get-FileHash "$dst\ArgoniaCore.dll").Hash.ToLower() }
     # Our plugins (make deploy puts out/*.esm into C:\argonia\ours): copied into Data and enabled last in Plugins.txt,
     # ArgoniaWorld.esm before Argonia.esm (its master). stack.ps1 off removes them with everything else.
     $esms = @(); $prefs = "$env:LOCALAPPDATA\Skyrim Special Edition\Plugins.txt"
     foreach ($e in 'ArgoniaWorld.esm', 'Argonia.esm') { if (Test-Path "C:\argonia\ours\$e") {
-      Copy-Item "C:\argonia\ours\$e" "$Game\Data\$e" -Force; $esms += $e
+      Lay "C:\argonia\ours\$e" "$Game\Data\$e"; $esms += $e
       $lines = @(Get-Content $prefs | ? { $_.TrimStart('*') -ne $e }); $lines += "*$e"; $lines | Set-Content $prefs -Encoding ASCII } }
     # Our compiled Papyrus (make deploy puts it in C:\argonia\ours\scripts) into Data\Scripts; stack.ps1 off removes it.
     $pex = @(Get-ChildItem C:\argonia\ours\scripts\*.pex -EA SilentlyContinue)
