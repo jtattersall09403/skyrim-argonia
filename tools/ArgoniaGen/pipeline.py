@@ -5,6 +5,8 @@
                          (out/), serialise it with Spriggit into plugin/Argonia/; build the generated ground,
                          out/ArgoniaWorld.esm (decision 0031: never serialised; the terrain is rebuilt only when its
                          code or inputs change) and print its sha256
+    pipeline.py vegetation  (2.W4 §a, opt-in) out/ArgoniaWorld.esm with the province's vegetation REFRs spliced in
+                         (tools/argonia_world/vegetation; its L1 checks and the spliced plugin's read-back)
     pipeline.py navmesh  the province's navmesh (tools/navmesh), then out/ArgoniaWorld.esm with its NAVM and NAVI
     pipeline.py check    the FormID table append-only; every design piece resolved; regenerate twice into
                          out/check/{a,b}: identical ESM bytes and YAML trees, and equal to the committed
@@ -204,7 +206,43 @@ def water(into: Path, sample: bool) -> Path:
     return d
 
 
-def world(data: Path, into: Path, sample: bool, nav: Path | None = None) -> Path:
+VEG = ROOT / "tools" / "argonia_world" / "vegetation"
+VEG_TABLES = ("land_region_object", "object_form", "vegetation_form", "vegetation_region_budget", "cell_region_run",
+              "build_ref", "build_cell", "road", "road_point")
+
+
+def _veg_stamp() -> str:
+    """The placement's code, the water plan's stamp (the ground and water it stands on), the navmesh inputs it
+    reuses and the tables it reads: a change replaces."""
+    import hashlib
+    h = hashlib.sha256(_water_stamp().encode())
+    from tools.argonia_world import db
+    w = db.open()
+    for f in sorted(VEG.glob("*.py")) + [ROOT / "tools" / "navmesh" / "inputs.py",
+                                         ROOT / "tools" / "argonia_world" / "routes" / "paint.py"]:
+        h.update(f.name.encode() + f.read_bytes())
+    for t in VEG_TABLES:
+        h.update(t.encode() + repr([tuple(r) for r in w.query(f'SELECT * FROM "{t}"')]).encode())
+    h.update((WATER_OUT / "cells.jsonl").read_bytes())
+    return h.hexdigest()
+
+
+def vegetation(into: Path, sample: bool) -> Path:
+    """The province's vegetation (2.W4 §a: our placement from the region rules) with its L1 checks against the
+    LAND under `into`: the sample's cells for the gate, else every cell (re-placed only when its stamp changes)."""
+    d = into / "vegetation"
+    stamp = d / "veg.stamp"
+    now = None if sample else _veg_stamp()
+    if sample or not (stamp.exists() and stamp.read_text() == now):
+        stamp.unlink(missing_ok=True)
+        run(sys.executable, "-m", "tools.argonia_world.vegetation", "build", "--out", d, "--water",
+            WATER_OUT / "cells.jsonl", "--land", into / "land", *(["--sample"] if sample else []), capped=True)
+        if now:
+            stamp.write_text(now)
+    return d
+
+
+def world(data: Path, into: Path, sample: bool, nav: Path | None = None, veg: bool = False) -> Path:
     """terrain cells -> world.json -> ArgoniaWorld.esm under `into`; the full grid's cells are reused while the
     stamp holds. `nav`: a built navmesh (tools/navmesh) whose NAVM and NAVI go in too (`make navmesh`)."""
     into.mkdir(parents=True, exist_ok=True)
@@ -225,6 +263,13 @@ def world(data: Path, into: Path, sample: bool, nav: Path | None = None) -> Path
     r = subprocess.run(full, cwd=ROOT, env=dict(ENV, **WORLD_ENV), capture_output=True, text=True, check=False)
     if r.returncode:
         raise SystemExit(f"plugin: ArgoniaWorld.esm failed\n{(r.stdout + r.stderr)[-3000:]}")
+    if veg:  # 2.W4 §a, opt-in until its budget is settled: the REFRs spliced into each cell (VegetationRecords.cs)
+        vdir = vegetation(into, sample)
+        tmp = esm.with_suffix(".veg.esm")
+        run(*(CAP if CAP else []), GEN, "vegetation", "--in", esm, "--veg", vdir, "--out", tmp)
+        tmp.replace(esm)
+        print(run(sys.executable, "-m", "tools.argonia_world.vegetation", "readback", "--out", vdir, "--esm", esm,
+                  "--gen", GEN).strip())
     return esm
 
 
@@ -375,7 +420,17 @@ def navmesh() -> int:
     return 0
 
 
+def vegetation_world() -> int:
+    """`pipeline.py vegetation` (2.W4 §a, opt-in): out/ArgoniaWorld.esm with the province's vegetation spliced in."""
+    data = data_dir()
+    build_tool()
+    wesm = world(data, OUT / "terrain", sample=False, veg=True)
+    shutil.copyfile(wesm, OUT / WORLD_ESM)
+    print(f"vegetation: out/{WORLD_ESM} ({wesm.stat().st_size} bytes) sha256 {sha256(wesm)}")
+    return 0
+
+
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else ""
     sys.exit(plugin() if cmd == "plugin" else check() if cmd == "check" else navmesh() if cmd == "navmesh"
-             else (print(__doc__) or 2))
+             else vegetation_world() if cmd == "vegetation" else (print(__doc__) or 2))

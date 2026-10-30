@@ -6326,3 +6326,26 @@ CREATE TABLE "build_ground" (
   "side_rise" REAL NOT NULL CHECK ("side_rise" > 0),
   "why" TEXT NOT NULL
 );
+
+-- == Vegetation (2.W4 §a, our own placement from the region rules; tools/argonia_world/vegetation) ==
+
+-- Home of a region-object form's scale range (the RDOT's size variance): the placement draws each stem's scale
+-- uniformly in [scale_min, scale_max]. Our numbers, by the form's role, until the L4 stills judge them.
+CREATE TABLE "vegetation_form" (
+  "form_key" TEXT NOT NULL PRIMARY KEY REFERENCES "object_form"("form_key"),
+  "scale_min" REAL NOT NULL CHECK ("scale_min" > 0),
+  "scale_max" REAL NOT NULL,
+  "why" TEXT NOT NULL,
+  CHECK ("scale_min" <= "scale_max")
+);
+
+-- Home of a region's vegetation budget: the share of its placed stems it keeps (`keep`, 0..1], so that no cell of
+-- the region holds more than `cap` references. Written by `python -m tools.argonia_world.vegetation build --budget`
+-- over the whole province (thinning is a region density change, never a hand deletion; 2.W4 §a).
+CREATE TABLE "vegetation_region_budget" (
+  "land_region_id" TEXT NOT NULL PRIMARY KEY REFERENCES "land_region"("id"),
+  "keep" REAL NOT NULL CHECK ("keep" > 0 AND "keep" <= 1),
+  "cap" INTEGER NOT NULL CHECK ("cap" > 0),
+  "densest_cell_refs" INTEGER NOT NULL,
+  "why" TEXT NOT NULL
+);

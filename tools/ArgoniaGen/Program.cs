@@ -6,6 +6,8 @@
 //   generate   --in <json> --data <dir> --out <Argonia.esm>     the records, written deterministically
 //   ltex       --data <dir> --plugins a.esm,b.esp --out <json>   every LTEX's winning copy and every GRAS (LandTextures.cs)
 //   world      --in <json> --land <dir> --data <dir> --out <ArgoniaWorld.esm> [--water <dir>] [--navmesh <dir>]   the generated ground (LandWorld.cs), its water (WaterRecords.cs) and navmesh (NavmeshRecords.cs)
+//   vegetation --in <ArgoniaWorld.esm> --veg <dir> --out <esm>   the vegetation REFRs spliced into each cell's Temporary group (VegetationRecords.cs)
+//   vegcheck   --in <esm> --first <hex> --last <hex> --out <jsonl>   its Mutagen read-back: vegetation REFRs per cell
 //   links      --data <dir> --order <file> --check a.esm,b.esm [--ours <dir>]   every FormLink and master resolved in the game's order (LinkCheck.cs)
 //   navmesh    roundtrip --in <jsonl.gz> --data <dir> --out <esm>   the vanilla NAVM round trip (NavmeshRecords.cs)
 using ArgoniaGen;
@@ -43,6 +45,14 @@ try
             return LandWorld.Run(Opt("--in") ?? throw new ArgumentException("missing --in"),
                                  Opt("--land") ?? throw new ArgumentException("missing --land"), Dir(Opt("--data")),
                                  Opt("--out") ?? throw new ArgumentException("missing --out"), Opt("--water"), Opt("--navmesh"));
+        case "vegetation":
+            return VegetationRecords.Run(Opt("--in") ?? throw new ArgumentException("missing --in"),
+                                         Opt("--veg") ?? throw new ArgumentException("missing --veg"),
+                                         Opt("--out") ?? throw new ArgumentException("missing --out"));
+        case "vegcheck":
+            return VegetationRecords.Check(Opt("--in") ?? throw new ArgumentException("missing --in"),
+                                           Convert.ToUInt32(Opt("--first") ?? "0", 16), Convert.ToUInt32(Opt("--last") ?? "FFFFFF", 16),
+                                           Opt("--out") ?? throw new ArgumentException("missing --out"));
         case "packages":
             return PackageRecords.Dump(Dir(Opt("--data")), Opt("--out") ?? throw new ArgumentException("missing --out"), (Opt("--edids") ?? "").Split(','), Opt("--plugin") ?? "Skyrim.esm");
         case "navmesh":

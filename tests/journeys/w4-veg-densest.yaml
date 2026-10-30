@@ -1,0 +1,37 @@
+# Draft (2.W4 §a, lane 2.W4-veg): owed L4, run by 0.3's hands. The world sample's stop 8 (docs/phases/1-core-loop/
+# README.md): the densest vegetation cell. The vegetation is our own placement from the region rules (the CK's
+# generator is not on the game machine, owner issue #15). Its counts are thinned by region into vanilla Tamriel's
+# forested range (p95 83, max 162 refs a cell); the hard cap (vegetation/place.py CAP, 400) stays until this measurement.
+# Cells: out/terrain/vegetation/summary.json "densest" (the first ten).
+id: w4-veg-densest
+status: draft, owed L4
+scenes: [w4-veg-densest, w4-veg-bare]
+steps:
+  - scene: w4-veg-densest
+    at: the densest cell's centre, ground z + 1.6 m (summary.json densest[0]; 2026-10-30 build: cell (-49,27),
+      107 refs; the next two (-26,8) 106 and (-37,-44) 105), the play camera, noon, clear weather forced by the scene (it sets
+      weather and time, never the vegetation)
+    do: hold 30 s, then turn the camera through 360 degrees in 8 steps of 45, 5 s each
+    read: [frame_time_ms per frame, loaded cells, references in the loaded cells (TREE and STAT counted apart)]
+    still: one per 45-degree step at the play camera
+  - scene: w4-veg-bare
+    at: the same cell, the same camera and weather, with the vegetation references of the 5 x 5 loaded cells
+      disabled by the scene (`disable` on each FormID in the cells' reserved slots, vegetation/place.py ref_id)
+    do: the same
+    read: [frame_time_ms per frame]
+  - repeat: both scenes twice more, alternating, so drift between runs shows
+  - scene: w4-veg-rocks
+    at: one placed ref of each of the three vanilla rocks (RockL01 018199, RockL01Wet 0BB8BC,
+      RockPileL03FieldGrass01Moss 024E4A; lane 2.W3-ts-reverify: Tropical Skyrim leaves them as vanilla), the
+      nearest to the densest cell, 4 m off, the play camera; one conformed (ConformToSlope) on a slope above 15 degrees
+    still: one per rock
+decide:
+  per_ref_ms: (with - without) / refs in the loaded cells, median of the three runs
+  cap: the lane proposes the cap from the per-ref cost and the 0.2 §d frame-time bar, for the densest 5 x 5 view;
+    the planner sets place.CAP, the lane re-runs `python -m tools.argonia_world.vegetation build --budget` (the
+    region keeps) and reports the totals
+  reader: the stills go to a reader with the checklist "no pine, spruce, birch, snow, frost, heather or other
+    Nordic flora; the three rocks read as marsh stone (wet, mossy), not as northern granite; a conformed rock sits
+    on its slope, not tilted against it; trunks stand on the ground, none floating or sunk to the crown"
+fails_if: a crash; frame times flat with the vegetation on and off (the measurement is not live); a reader hit
+  on Nordic flora; a floating or tilted-against-slope ref
