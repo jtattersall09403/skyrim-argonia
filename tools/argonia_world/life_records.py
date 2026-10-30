@@ -31,16 +31,6 @@ VASTEI_MODEL = "Effects\\AshPileGhost01.nif"
 VASTEI_FX_ART = "0506D6:Skyrim.esm"  # ARTO SoulTrapTargetEffects (magic/soultraptargeteffects.nif); 1.5 runtime
 
 
-def _cap(s: str) -> str:
-    return s[:1].upper() + s[1:]
-
-
-def respawn_keywords(world) -> list[tuple[str, str]]:
-    """(edid, world id) of one keyword per respawn class that resets on a rest."""
-    return [(f"ARG_Respawn_{_cap(r.id)}", f"hook.respawn-{r.id}")
-            for r in world.rows("core_respawn_class", order="id") if r.on_rest]
-
-
 def _choice(kw: str, label: str, fragment: int) -> dict:
     return {
         "entryPoint": "Activate", "function": "AddActivateChoice", "rank": 0, "priority": 0, "tabCount": 2,
@@ -73,7 +63,7 @@ def layer(alloc: Allocator, world, scan: dict) -> Layer:
     fk = alloc.form_key
     keys = {}
     recs: list[dict] = []
-    kws = [REST_SPOT, VASTEI_PILE, LOC_SETTLEMENT, LOC_DUNGEON, *respawn_keywords(world)]
+    kws = [REST_SPOT, VASTEI_PILE, LOC_SETTLEMENT, LOC_DUNGEON]
     for edid, wid in kws:
         keys[edid] = fk(edid, "KYWD", wid)
         recs.append({"type": "KYWD", "edid": edid, "formKey": keys[edid]})

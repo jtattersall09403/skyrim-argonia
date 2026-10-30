@@ -1,0 +1,54 @@
+# 1.5 respawn runtime (owner 2026-10-30; docs/research/2026-10-30/respawn-rulings.md): a rest resets the actors
+# whose NPC_ carries the Respawn flag (`onRest`) and no others. The Blackwood Road ambush deserter (`onRest`) and the
+# Claywater crocodile (`never`) are both killed by the console; the player rests at a camp spot placed at the
+# ambush marker at step 0; the deserter is back alive at its placement and the crocodile is still dead.
+id: rest-respawn
+runner: 1
+crash_risk: medium   # cell travel and one rest (writes the rest save)
+scene: claywater-ambush
+steps:
+  - name: setup               # the deserter at its placement, before its AI moves it
+    do:
+      - {console: "ARG_Ref_ClaywaterStationAmbushPlayer.placeatme ARG_CampSpot 1"}
+    expect:
+      - {console: "ARG_Ref_ClaywaterStationAmbushDeserter.GetDead", contains: ">> 0"}
+      - {read: [actors, "4000", ARG_Ref_ClaywaterStationAmbushDeserter], path: refs.0.pos, keep: deserter_pos0}
+      - {read: [actors, "4000", ARG_Ref_ClaywaterStationAmbushDeserter], path: refs.0.dist, keep: deserter_dist0}
+  - name: kill-crocodile      # by its pool, so its cell is loaded
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationCrocodile 0 400 0"}
+      - {wait: 4}
+      - {console: "ARG_Ref_ClaywaterStationCrocodile.kill"}
+      - {wait: 2}
+    expect:
+      - {console: "ARG_Ref_ClaywaterStationCrocodile.GetDead", contains: ">> 1"}
+  - name: kill-deserter
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationAmbushPlayer"}
+      - {wait: 4}
+      - {console: "ARG_Ref_ClaywaterStationAmbushDeserter.kill"}
+      - {wait: 2}
+    expect:
+      - {console: "ARG_Ref_ClaywaterStationAmbushDeserter.GetDead", contains: ">> 1"}
+  - name: rest                # the camp spot, as grow-at-rest rests
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationAmbushPlayer 0 -90 0"}
+      - {console: "player.setangle z 0"}
+      - {console: "player.setangle x 40"}
+      - {wait: 3}
+      - {key: "E 120"}
+      - {wait: 4}
+      - {console: "player.setangle x 0"}
+    expect:
+      - {log: {name: ArgoniaCore, contains: "saves: ArgoniaRest written (rest)"}, within: 10}
+      - {log: {name: ArgoniaCore, contains: "actors reset"}}
+  - name: deserter-back-crocodile-not
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationAmbushPlayer"}
+      - {wait: 4}
+    expect:
+      - {console: "ARG_Ref_ClaywaterStationAmbushDeserter.GetDead", contains: ">> 0"}
+      - {read: [actors, "4000", ARG_Ref_ClaywaterStationAmbushDeserter], path: refs.0.dead, eq: false}
+      - {read: [actors, "4000", ARG_Ref_ClaywaterStationAmbushDeserter], path: refs.0.dist, lt: 1500}
+      - {read: [actors, "4000", ARG_Ref_ClaywaterStationAmbushDeserter], path: refs.0.pos, keep: deserter_pos1}
+      - {console: "ARG_Ref_ClaywaterStationCrocodile.GetDead", contains: ">> 1"}

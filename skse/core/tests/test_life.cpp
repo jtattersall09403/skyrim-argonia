@@ -115,17 +115,16 @@ int main() {
   town.in_settlement = true;
   CHECK(rest_at(s, town, {}).outcome.ruling.verdict == rest::Verdict::wait_only);
 
-  // Rest at the camp: the wake point, the roster reset (onRest yes, never no, untilCleared in a cleared place no),
+  // Rest at the camp: the wake point, the roster reset (onRest yes, never no),
   // and the sitting opens because a level is pending; the save waits for the sitting's close.
   Roster roster;
-  roster.actors = {{0x100, *respawn::class_named("onRest"), 1}, {0x101, *respawn::class_named("never"), 1},
-                   {0x102, *respawn::class_named("untilCleared"), 2}, {0x103, *respawn::class_named("untilCleared"), 3}};
-  roster.cleared.places = {2};
+  roster.actors = {{0x100, *respawn::class_named("onRest")}, {0x101, *respawn::class_named("never")},
+                   {0x102, *respawn::class_named("onRest")}};
   const auto camp = at(100, 200);
   auto rested = rest_at(s, camp_at(camp), roster);
   CHECK(rested.outcome.ruling.verdict == rest::Verdict::rest);
   CHECK(s.death.wake == camp);
-  CHECK((rested.reset == std::vector<respawn::ActorId>{0x100, 0x103}));
+  CHECK((rested.reset == std::vector<respawn::ActorId>{0x100, 0x102}));
   CHECK(rested.sitting.has_value() && !rested.save_now);
   CHECK(rested.sitting->sheet.level == 2);
 
@@ -171,7 +170,7 @@ int main() {
   CHECK(d1.outcome.pile && d1.outcome.pile->vastei == 120 && d1.outcome.pile->at == fell);
   CHECK(d1.outcome.wake == camp && d1.had_wake_point && !d1.replaced_pile);
   CHECK(s.prog.vastei == 0 && s.sheet.level == 2);  // the character is kept
-  CHECK((d1.reset == std::vector<respawn::ActorId>{0x100, 0x103}));
+  CHECK((d1.reset == std::vector<respawn::ActorId>{0x100, 0x102}));
   CHECK(pile_name(120) == "Vastei (120)" && pile_name(99.7) == "Vastei (99)");
   CHECK(!take_pile(s, at(503, 500)));       // 3 m: too far
   CHECK(!take_pile(s, at(500, 500, 8)));    // another cell

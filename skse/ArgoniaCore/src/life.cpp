@@ -114,19 +114,18 @@ void Use(const ac::progression::UseEvent& ev, std::string_view what) {
 ac::life::Roster RosterNow() {
   auto& c = Get();
   ac::life::Roster r;
-  for (const auto& a : c.roster) {
-    r.actors.push_back(a);
-    if (auto* loc = RE::TESForm::LookupByID<RE::BGSLocation>(a.place); loc && loc->IsCleared())
-      r.cleared.places.push_back(a.place);
-  }
+  r.actors = c.roster;
   return r;
 }
 
+// The engine's own cell-reset step for a respawning actor: Resurrect with its inventory reset to the base record
+// (template drops only, 76 §126), then back to its placement. Only roster actors are touched: never containers, so
+// placed treasure never refills, and never a `never` actor (the core rule leaves them out of `ids`).
 void ResetActors(const std::vector<ac::respawn::ActorId>& ids) {
   for (auto id : ids) {
     auto* a = RE::TESForm::LookupByID<RE::Actor>(id);
     if (!a) continue;
-    if (a->IsDead()) a->Resurrect(false, true);
+    if (a->IsDead()) a->Resurrect(true, true);  // (resetInventory, attach3D)
     else {  // a living roster actor is reset too: whole again, wherever the fight left it
       auto* avo = a->AsActorValueOwner();
       for (auto av : {RE::ActorValue::kHealth, RE::ActorValue::kStamina, RE::ActorValue::kMagicka})
@@ -561,29 +560,23 @@ void LifeDataLoaded() {
       SKSE::log::error("saves: {} is in neither ini collection; that engine save point stays on", name);
     }
   }
-  // The roster: our persistent placed actors whose base carries a respawn keyword (records make them persistent).
+  // The roster: every persistent placed actor whose base carries the NPC_ Respawn flag (records make our people
+  // persistent; the flag is the compiled `onRest` class, place_build.respawns). The flag is the engine's own respawn
+  // fact, so no keyword or second table can disagree with it.
   c.roster.clear();
-  struct Kw { RE::BGSKeyword* kw; ac::respawn::RespawnClass cls; };
-  std::vector<Kw> kws;
-  for (std::size_t i = 0; i < ac::gen::kRespawnClassCount; ++i)
-    if (ac::gen::kRespawnClasses[i].on_rest)
-      if (auto* kw = Lookup<RE::BGSKeyword>("hook.respawn-" + std::string(ac::gen::kRespawnClassNames[i])))
-        kws.push_back({kw, ac::respawn::RespawnClass(i)});
-  {
+  const auto on_rest = ac::respawn::class_named("onRest");
+  if (on_rest) {
     const auto& [map, lock] = RE::TESForm::GetAllForms();
     RE::BSReadLockGuard g(lock);
     for (auto& [id, form] : *map) {
       auto* a = form ? form->As<RE::Actor>() : nullptr;
       auto* base = a ? a->GetActorBase() : nullptr;
       if (!base || a->IsPlayerRef()) continue;
-      for (const auto& k : kws)
-        if (base->HasKeyword(k.kw)) {
-          auto* loc = a->GetEditorLocation();
-          c.roster.push_back({a->GetFormID(), k.cls, loc ? loc->GetFormID() : 0u});
-          break;
-        }
+      if (base->actorData.actorBaseFlags.all(RE::ACTOR_BASE_DATA::Flag::kRespawn))
+        c.roster.push_back({a->GetFormID(), *on_rest});
     }
   }
+  SKSE::log::info("respawn: roster of {} flagged actors", c.roster.size());
   static HitSink hits;
   static KillSink kills;
   static CastSink casts;

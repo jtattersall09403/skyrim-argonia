@@ -21,8 +21,7 @@ class Alloc:
 
 class World:
     def __init__(self, settings):
-        self.t = {"core_respawn_class": [NS(id="never", on_rest=False), NS(id="onRest", on_rest=True),
-                                         NS(id="untilCleared", on_rest=True)],
+        self.t = {"core_respawn_class": [NS(id="never", on_rest=False), NS(id="onRest", on_rest=True)],
                   "game_setting": settings}
 
     def rows(self, table, order=None, **where):
@@ -41,13 +40,12 @@ def recs():
     return a, {r["edid"]: r for r in lay.records}
 
 
-def test_keywords_include_one_per_resting_respawn_class():
+def test_keywords_and_no_respawn_keyword():
     a, r = recs()
-    assert {"ARG_RestSpot", "ARG_VasteiPile", "ARG_LocType_Settlement", "ARG_LocType_Dungeon",
-            "ARG_Respawn_OnRest", "ARG_Respawn_UntilCleared"} <= set(r)
-    assert "ARG_Respawn_Never" not in r
+    assert {"ARG_RestSpot", "ARG_VasteiPile", "ARG_LocType_Settlement", "ARG_LocType_Dungeon"} <= set(r)
+    assert not [e for e in r if e.startswith("ARG_Respawn_")]  # the runtime reads the NPC_ Respawn flag instead
     assert {"hook.rest-spot", "hook.vastei-pile", "hook.loc-settlement", "hook.loc-dungeon",
-            "hook.respawn-onRest", "hook.respawn-untilCleared", "rest.camp-spot", "death.vastei-pile",
+            "rest.camp-spot", "death.vastei-pile",
             "hook.rest-intercept"} <= set(a.keys)
 
 

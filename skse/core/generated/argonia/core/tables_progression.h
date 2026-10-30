@@ -64,14 +64,13 @@ inline constexpr std::array<BedTierRow, 3> kBedTiers{{
     {1.08, 8.0},  // owned
 }};
 
-enum class RespawnClass : std::uint8_t { never, onRest, untilCleared };
-inline constexpr std::size_t kRespawnClassCount = 3;
-inline constexpr std::array<std::string_view, 3> kRespawnClassNames{"never", "onRest", "untilCleared"};
-struct RespawnRow { bool on_rest; bool until_cleared; };
-inline constexpr std::array<RespawnRow, 3> kRespawnClasses{{
-    {false, false},  // never
-    {true, false},  // onRest
-    {true, true},  // untilCleared
+enum class RespawnClass : std::uint8_t { never, onRest };
+inline constexpr std::size_t kRespawnClassCount = 2;
+inline constexpr std::array<std::string_view, 2> kRespawnClassNames{"never", "onRest"};
+struct RespawnRow { bool on_rest; };
+inline constexpr std::array<RespawnRow, 2> kRespawnClasses{{
+    {false},  // never
+    {true},  // onRest
 }};
 
 namespace death {

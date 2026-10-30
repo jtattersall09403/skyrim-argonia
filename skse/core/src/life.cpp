@@ -150,7 +150,7 @@ Rested rest_at(seam::State& s, const rest::Context& ctx, const Roster& roster) {
   }
   if (r.outcome.wake_point) s.death.wake = *r.outcome.wake_point;
   s.prog = progression::on_rest(s.prog);
-  if (r.outcome.respawn) r.reset = respawn::to_reset(roster.actors, roster.cleared);
+  if (r.outcome.respawn) r.reset = respawn::to_reset(roster.actors);
   if (r.outcome.open_sitting)
     if (auto st = sitting::open(s.sheet, s.prog.vastei, s.prog.pending_levels)) r.sitting = std::move(*st);
   r.save_now = r.outcome.save && !r.sitting;
@@ -252,7 +252,7 @@ Died die(seam::State& s, rest::Pos at, const Roster& roster) {
   d.replaced_pile = s.death.pile.has_value();
   s.death.pile = d.outcome.pile;  // a second death replaces the pile, even with nothing carried
   s.prog.vastei = d.outcome.carried;
-  if (d.outcome.counts_as_rest) d.reset = respawn::to_reset(roster.actors, roster.cleared);
+  if (d.outcome.counts_as_rest) d.reset = respawn::to_reset(roster.actors);
   return d;
 }
 

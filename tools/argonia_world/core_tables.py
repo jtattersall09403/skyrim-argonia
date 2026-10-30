@@ -219,9 +219,9 @@ def progression(w: db.World) -> str:
           f"inline constexpr std::array<BedTierRow, {len(beds)}> kBedTiers{{{{"]
     b += [f"    {{{num(r['xp_mult'])}, {num(r['hours'])}}},  // {r['id']}" for r in beds]
     b += ["}};", "", *_enum("RespawnClass", [r["id"] for r in resp]),
-          "struct RespawnRow { bool on_rest; bool until_cleared; };",
+          "struct RespawnRow { bool on_rest; };",
           f"inline constexpr std::array<RespawnRow, {len(resp)}> kRespawnClasses{{{{"]
-    b += [f"    {{{'true' if r['on_rest'] else 'false'}, {'true' if r['until_cleared'] else 'false'}}},  // {r['id']}"
+    b += [f"    {{{'true' if r['on_rest'] else 'false'}}},  // {r['id']}"
           for r in resp]
     b += ["}};", "", *_constants(w, "progression"),
           "namespace units {  // tools/argonia_world/skyrim_units.py, the one home of Skyrim unit facts",

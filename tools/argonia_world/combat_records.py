@@ -108,6 +108,8 @@ def archetype_records(alloc: Allocator, world, npc_id: str) -> list[dict]:
             ]}
     ecz = {"type": "ECZN", "edid": ecz_edid, "formKey": alloc.form_key(ecz_edid, "ECZN", f"{npc_id}#zone"),
            "minLevel": c["level"], "maxLevel": c["level"]}
+    if home_clearable(world, npc_id):  # a clearable place's dead stay dead, even through a cell reset (owner 2026-10-30)
+        ecz["flags"] = ["NeverResets"]
     weapon = items_records.weapon_record(alloc, world, arch.weapon)["formKey"]
     items = [weapon]
     if arch.shield:
@@ -127,6 +129,13 @@ def archetype_records(alloc: Allocator, world, npc_id: str) -> list[dict]:
     if respawns(world, npc_id):
         rec["flags"] = ["Respawn"]
     return [perk, ecz, rec]
+
+
+def home_clearable(world, npc_id: str) -> bool:
+    """The actor's home place is clearable (place_build_hostility.clearable)."""
+    npc = world.get("npc", npc_id)
+    h = npc and npc.home_place_id and world.get("place_build_hostility", npc.home_place_id)
+    return bool(h and h.clearable)
 
 
 def layer(alloc: Allocator, world) -> Layer:

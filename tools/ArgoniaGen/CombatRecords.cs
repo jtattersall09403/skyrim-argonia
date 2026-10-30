@@ -33,9 +33,11 @@ static class CombatRecords
 
     static void Zone(SkyrimMod mod, JsonElement r)
     {
+        var flags = (EncounterZone.Flag)0;  // optional "flags": EncounterZone.Flag names (NeverResets: a clearable place)
+        foreach (var f in A(r, "flags")) flags |= Enum.Parse<EncounterZone.Flag>(f.GetString()!);
         mod.EncounterZones.Add(new EncounterZone(FK(S(r, "formKey")), Rel)
         {
-            EditorID = S(r, "edid"), MinLevel = (byte)I(r, "minLevel"), MaxLevel = (byte)I(r, "maxLevel"),
+            EditorID = S(r, "edid"), MinLevel = (byte)I(r, "minLevel"), MaxLevel = (byte)I(r, "maxLevel"), Flags = flags,
         });
     }
 
