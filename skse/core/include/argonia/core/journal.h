@@ -11,7 +11,7 @@
 
 namespace argonia::core::journal {
 
-using QuestId = std::uint32_t;  // the QUST FormID
+using QuestId = std::uint32_t;  // the quest's world id key (FNV-1a 32, seam::key): stable across load orders
 using EntryId = std::uint32_t;  // the stage whose log entry it is
 
 struct GameDate {

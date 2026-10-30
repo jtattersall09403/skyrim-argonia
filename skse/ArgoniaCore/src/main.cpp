@@ -1,93 +1,113 @@
-// ArgoniaCore stub (0.3 §b): loads through SKSE on the pinned runtime by Address Library, registers the Papyrus
-// natives ArgoniaCore.Version() and ArgoniaCore.SaveCount(), and keeps the META co-save family. The family's
-// encoding and migration rules live in core/ and are tested there; this file only moves bytes.
-#include "argonia/core/cosave.h"
+// ArgoniaCore (PLAN §3; 1.1): loads through SKSE on the pinned runtime by Address Library, owns every co-save family
+// through skse/core's families registry (META included), registers the Papyrus natives, installs the router's hooks
+// once and gives the player the dialogue intercept's perk. The families' encodings and migrations live in core/ and
+// are tested there; the callbacks here only move bytes.
+#include "core.h"
 #include "argonia/core/version.h"
 
-namespace cosave = argonia::core::cosave;
+namespace plugin = argonia::plugin;
+namespace ac = argonia::core;
 
 namespace {
 
-std::mutex g_lock;
-cosave::Meta g_meta;  // guarded by g_lock: callbacks run on the main thread, natives on VM threads
-
 void OnSave(SKSE::SerializationInterface* ser) {
-  cosave::Bytes bytes;
-  {
-    std::lock_guard l(g_lock);
-    ++g_meta.save_count;
-    g_meta.written_by = cosave::packed_build_version();
-    bytes = cosave::encode(g_meta);
+  auto& c = plugin::Get();
+  std::lock_guard l(c.lock);
+  ac::seam::on_save(c.state);
+  std::size_t written = 0;
+  for (const auto& rec : c.families.save_all()) {
+    if (!ser->OpenRecord(rec.id, rec.version) ||
+        !ser->WriteRecordData(rec.payload.data(), static_cast<std::uint32_t>(rec.payload.size()))) {
+      SKSE::log::error("co-save: {} v{} not written", ac::families::fourcc_name(rec.id), rec.version);
+      continue;
+    }
+    ++written;
   }
-  if (!ser->OpenRecord(cosave::kMetaType, cosave::kMetaSpec.current) ||
-      !ser->WriteRecordData(bytes.data(), static_cast<std::uint32_t>(bytes.size()))) {
-    SKSE::log::error("co-save: META not written");
-    return;
-  }
-  SKSE::log::info("co-save: META v{} written, save_count {}", cosave::kMetaSpec.current, g_meta.save_count);
+  SKSE::log::info("co-save: {} families written, save_count {}", written, c.state.meta.save_count);
 }
 
 void OnLoad(SKSE::SerializationInterface* ser) {
+  auto& c = plugin::Get();
+  std::lock_guard l(c.lock);
   std::uint32_t type = 0, version = 0, length = 0;
   while (ser->GetNextRecordInfo(type, version, length)) {
-    cosave::Bytes bytes(length);
+    ac::cosave::Bytes bytes(length);
     if (length && ser->ReadRecordData(bytes.data(), length) != length) {
-      SKSE::log::error("co-save: record {:08X} short read", type);
+      SKSE::log::error("co-save: record {} short read", ac::families::fourcc_name(type));
       continue;
     }
-    if (type != cosave::kMetaType) {
-      SKSE::log::warn("co-save: unknown record {:08X} v{} skipped", type, version);
-      continue;
-    }
-    auto result = cosave::upgrade(cosave::kMetaSpec, version, bytes);
-    auto meta = (result == cosave::LoadResult::ok || result == cosave::LoadResult::migrated)
-                    ? cosave::decode_meta(bytes)
-                    : std::nullopt;
-    if (!meta) {
-      SKSE::log::error("co-save: META v{} not loaded ({})", version, cosave::to_string(result));
-      continue;
-    }
-    std::lock_guard l(g_lock);
-    g_meta = *meta;
-    SKSE::log::info("co-save: META v{} loaded ({}), save_count {}", version, cosave::to_string(result), g_meta.save_count);
+    const auto r = c.families.load(type, version, std::move(bytes));
+    if (r.ok()) SKSE::log::info("{}", r.message);
+    else SKSE::log::error("{}", r.message);
   }
+  SKSE::log::info("co-save: loaded, save_count {}", c.state.meta.save_count);
 }
 
 void OnRevert(SKSE::SerializationInterface*) {
-  std::lock_guard l(g_lock);
-  g_meta = {};
+  auto& c = plugin::Get();
+  std::lock_guard l(c.lock);
+  c.families.reset_all();
+  c.talk.reset();
+  c.views.clear();
+  c.season.reset();
 }
 
-RE::BSFixedString Version(RE::StaticFunctionTag*) { return argonia::core::kVersionString; }
-
-std::int32_t SaveCount(RE::StaticFunctionTag*) {
-  std::lock_guard l(g_lock);
-  return static_cast<std::int32_t>(g_meta.save_count);
+void OnDataLoaded() {
+  auto& c = plugin::Get();
+  std::lock_guard l(c.lock);
+  c.graphs = ac::gen::quest_graphs();
+  for (const auto& g : c.graphs)
+    for (const auto& why : ac::quest_runtime::check(g)) SKSE::log::error("quests: {}: {}", g.id, why);
+  auto store = ac::talk::fixture_store();
+  if (store) {
+    c.store = std::move(*store);
+    SKSE::log::info("dialogue: topic store {} topics, {} lines", c.store->all().size(), c.store->lines().size());
+  } else {
+    for (const auto& why : store.error()) SKSE::log::error("dialogue: {}", why);
+  }
+  plugin::InstallHooks();
 }
 
-bool RegisterNatives(RE::BSScript::IVirtualMachine* vm) {
-  vm->RegisterFunction("Version"sv, "ArgoniaCore"sv, Version);
-  vm->RegisterFunction("SaveCount"sv, "ArgoniaCore"sv, SaveCount);
-  return true;
+void OnGameReady(const char* how) {
+  plugin::EnsurePerk();
+  plugin::MirrorAttributes();
+  plugin::FactsChanged(how);
+}
+
+void OnMessage(SKSE::MessagingInterface::Message* m) {
+  switch (m->type) {
+    case SKSE::MessagingInterface::kDataLoaded: OnDataLoaded(); break;
+    case SKSE::MessagingInterface::kPostLoadGame: OnGameReady("game loaded"); break;
+    case SKSE::MessagingInterface::kNewGame: OnGameReady("new game"); break;
+    default: break;
+  }
 }
 
 }  // namespace
 
 SKSE_PLUGIN_LOAD(const SKSE::LoadInterface* skse) {
   SKSE::Init(skse);
-  SKSE::log::info("ArgoniaCore {} loading on runtime {}", argonia::core::kVersionString, skse->RuntimeVersion().string("."));
+  SKSE::log::info("ArgoniaCore {} loading on runtime {}", ac::kVersionString, skse->RuntimeVersion().string("."));
+
+  auto& c = plugin::Get();
+  for (const auto& why : ac::seam::bind(c.families, c.state)) SKSE::log::critical("{}", why);
+  std::string ids;
+  for (auto id : c.families.ids()) ids += (ids.empty() ? "" : " ") + ac::families::fourcc_name(id);
 
   auto* ser = SKSE::GetSerializationInterface();
-  ser->SetUniqueID(cosave::kUniqueId);
+  ser->SetUniqueID(ac::cosave::kUniqueId);
   ser->SetSaveCallback(OnSave);
   ser->SetLoadCallback(OnLoad);
   ser->SetRevertCallback(OnRevert);
 
-  if (!SKSE::GetPapyrusInterface()->Register(RegisterNatives)) {
+  if (!SKSE::GetPapyrusInterface()->Register(plugin::RegisterNatives)) {
     SKSE::log::critical("Papyrus natives not registered");
     return false;
   }
-  SKSE::log::info("ArgoniaCore loaded: natives ArgoniaCore.Version, ArgoniaCore.SaveCount; co-save ARGN/META v{}",
-                  cosave::kMetaSpec.current);
+  if (!SKSE::GetMessagingInterface()->RegisterListener(OnMessage)) {
+    SKSE::log::critical("SKSE messaging listener not registered");
+    return false;
+  }
+  SKSE::log::info("ArgoniaCore loaded: co-save ARGN families {}", ids);
   return true;
 }

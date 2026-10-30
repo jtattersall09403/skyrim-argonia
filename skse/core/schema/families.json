@@ -57,6 +57,9 @@
     {"list": "topics", "count": 100000, "keyed": true, "of": [{"u32": "topic"},
      {"list": "heard_from", "count": 100000, "keyed": true, "of": [{"u32": "npc"}]}]}]}
   ]},
+  {"id": "QWCH", "module": "seam", "include": "argonia/core/seam.h", "versions": [
+   {"version": 1, "layout": [{"list": "quests", "count": 100000, "keyed": true, "of": [{"u32": "quest"}]}]}
+  ]},
   {"id": "TEST", "module": "test", "test": true, "versions": [
    {"version": 1, "migrates": true, "layout": [{"u32": "a"}]},
    {"version": 2, "layout": [{"u32": "a"}, {"u32": "b"}]}

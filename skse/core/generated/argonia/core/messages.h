@@ -519,13 +519,13 @@ inline json::Value to_json(const Speaker& v) {
 inline bool from_json(const json::Value& j, Speaker& out, const std::string& path, std::string& err) {
   json::Fields f(j, path, err);
   if (!f.ok()) return false;
-  if (const json::Value* x = f.req("id")) {
-    if (!json::read(*x, out.id, path + ".id", err)) return false;
+  if (const json::Value* f_id = f.req("id")) {
+    if (!json::read(*f_id, out.id, path + ".id", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("name")) {
-    if (!json::read(*x, out.name, path + ".name", err)) return false;
+  if (const json::Value* f_name = f.req("name")) {
+    if (!json::read(*f_name, out.name, path + ".name", err)) return false;
   } else {
     return false;
   }
@@ -542,14 +542,14 @@ inline json::Value to_json(const TextRun& v) {
 inline bool from_json(const json::Value& j, TextRun& out, const std::string& path, std::string& err) {
   json::Fields f(j, path, err);
   if (!f.ok()) return false;
-  if (const json::Value* x = f.req("text")) {
-    if (!json::read(*x, out.text, path + ".text", err)) return false;
+  if (const json::Value* f_text = f.req("text")) {
+    if (!json::read(*f_text, out.text, path + ".text", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.opt("topic")) {
+  if (const json::Value* f_topic = f.opt("topic")) {
     out.topic.emplace();
-    if (!json::read(*x, *out.topic, path + ".topic", err)) return false;
+    if (!json::read(*f_topic, *out.topic, path + ".topic", err)) return false;
   } else {
     out.topic.reset();
   }
@@ -567,20 +567,20 @@ inline json::Value to_json(const DialogueEntry& v) {
 inline bool from_json(const json::Value& j, DialogueEntry& out, const std::string& path, std::string& err) {
   json::Fields f(j, path, err);
   if (!f.ok()) return false;
-  if (const json::Value* x = f.req("kind")) {
-    if (!from_json(*x, out.kind, path + ".kind", err)) return false;
+  if (const json::Value* f_kind = f.req("kind")) {
+    if (!from_json(*f_kind, out.kind, path + ".kind", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.opt("heading")) {
+  if (const json::Value* f_heading = f.opt("heading")) {
     out.heading.emplace();
-    if (!json::read(*x, *out.heading, path + ".heading", err)) return false;
+    if (!json::read(*f_heading, *out.heading, path + ".heading", err)) return false;
   } else {
     out.heading.reset();
   }
-  if (const json::Value* x = f.req("runs")) {
+  if (const json::Value* f_runs = f.req("runs")) {
     {
-      const json::Array* a0 = (*x).as_array();
+      const json::Array* a0 = (*f_runs).as_array();
       if (!a0) return json::fail(err, path + ".runs", "want a list");
       out.runs.clear();
       out.runs.reserve(a0->size());
@@ -605,13 +605,13 @@ inline json::Value to_json(const TopicItem& v) {
 inline bool from_json(const json::Value& j, TopicItem& out, const std::string& path, std::string& err) {
   json::Fields f(j, path, err);
   if (!f.ok()) return false;
-  if (const json::Value* x = f.req("id")) {
-    if (!json::read(*x, out.id, path + ".id", err)) return false;
+  if (const json::Value* f_id = f.req("id")) {
+    if (!json::read(*f_id, out.id, path + ".id", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("label")) {
-    if (!json::read(*x, out.label, path + ".label", err)) return false;
+  if (const json::Value* f_label = f.req("label")) {
+    if (!json::read(*f_label, out.label, path + ".label", err)) return false;
   } else {
     return false;
   }
@@ -628,13 +628,13 @@ inline json::Value to_json(const Disposition& v) {
 inline bool from_json(const json::Value& j, Disposition& out, const std::string& path, std::string& err) {
   json::Fields f(j, path, err);
   if (!f.ok()) return false;
-  if (const json::Value* x = f.req("value")) {
-    if (!json::read_int(*x, out.value, 0.0, 100.0, path + ".value", err)) return false;
+  if (const json::Value* f_value = f.req("value")) {
+    if (!json::read_int(*f_value, out.value, 0.0, 100.0, path + ".value", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("band")) {
-    if (!from_json(*x, out.band, path + ".band", err)) return false;
+  if (const json::Value* f_band = f.req("band")) {
+    if (!from_json(*f_band, out.band, path + ".band", err)) return false;
   } else {
     return false;
   }
@@ -653,24 +653,24 @@ inline json::Value to_json(const PersuasionOption& v) {
 inline bool from_json(const json::Value& j, PersuasionOption& out, const std::string& path, std::string& err) {
   json::Fields f(j, path, err);
   if (!f.ok()) return false;
-  if (const json::Value* x = f.req("id")) {
-    if (!json::read(*x, out.id, path + ".id", err)) return false;
+  if (const json::Value* f_id = f.req("id")) {
+    if (!json::read(*f_id, out.id, path + ".id", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("label")) {
-    if (!json::read(*x, out.label, path + ".label", err)) return false;
+  if (const json::Value* f_label = f.req("label")) {
+    if (!json::read(*f_label, out.label, path + ".label", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("enabled")) {
-    if (!json::read(*x, out.enabled, path + ".enabled", err)) return false;
+  if (const json::Value* f_enabled = f.req("enabled")) {
+    if (!json::read(*f_enabled, out.enabled, path + ".enabled", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.opt("cost")) {
+  if (const json::Value* f_cost = f.opt("cost")) {
     out.cost.emplace();
-    if (!json::read_int(*x, *out.cost, 0.0, json::kMaxSafeInt, path + ".cost", err)) return false;
+    if (!json::read_int(*f_cost, *out.cost, 0.0, json::kMaxSafeInt, path + ".cost", err)) return false;
   } else {
     out.cost.reset();
   }
@@ -687,14 +687,14 @@ inline json::Value to_json(const Persuasion& v) {
 inline bool from_json(const json::Value& j, Persuasion& out, const std::string& path, std::string& err) {
   json::Fields f(j, path, err);
   if (!f.ok()) return false;
-  if (const json::Value* x = f.req("available")) {
-    if (!json::read(*x, out.available, path + ".available", err)) return false;
+  if (const json::Value* f_available = f.req("available")) {
+    if (!json::read(*f_available, out.available, path + ".available", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("options")) {
+  if (const json::Value* f_options = f.req("options")) {
     {
-      const json::Array* a0 = (*x).as_array();
+      const json::Array* a0 = (*f_options).as_array();
       if (!a0) return json::fail(err, path + ".options", "want a list");
       out.options.clear();
       out.options.reserve(a0->size());
@@ -723,14 +723,14 @@ inline json::Value to_json(const DialogueState& v) {
 inline bool from_json(const json::Value& j, DialogueState& out, const std::string& path, std::string& err) {
   json::Fields f(j, path, err);
   if (!f.ok()) return false;
-  if (const json::Value* x = f.req("speaker")) {
-    if (!from_json(*x, out.speaker, path + ".speaker", err)) return false;
+  if (const json::Value* f_speaker = f.req("speaker")) {
+    if (!from_json(*f_speaker, out.speaker, path + ".speaker", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("entries")) {
+  if (const json::Value* f_entries = f.req("entries")) {
     {
-      const json::Array* a0 = (*x).as_array();
+      const json::Array* a0 = (*f_entries).as_array();
       if (!a0) return json::fail(err, path + ".entries", "want a list");
       out.entries.clear();
       out.entries.reserve(a0->size());
@@ -742,9 +742,9 @@ inline bool from_json(const json::Value& j, DialogueState& out, const std::strin
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("topics")) {
+  if (const json::Value* f_topics = f.req("topics")) {
     {
-      const json::Array* a0 = (*x).as_array();
+      const json::Array* a0 = (*f_topics).as_array();
       if (!a0) return json::fail(err, path + ".topics", "want a list");
       out.topics.clear();
       out.topics.reserve(a0->size());
@@ -756,18 +756,18 @@ inline bool from_json(const json::Value& j, DialogueState& out, const std::strin
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("disposition")) {
-    if (!from_json(*x, out.disposition, path + ".disposition", err)) return false;
+  if (const json::Value* f_disposition = f.req("disposition")) {
+    if (!from_json(*f_disposition, out.disposition, path + ".disposition", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("persuasion")) {
-    if (!from_json(*x, out.persuasion, path + ".persuasion", err)) return false;
+  if (const json::Value* f_persuasion = f.req("persuasion")) {
+    if (!from_json(*f_persuasion, out.persuasion, path + ".persuasion", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("canLeave")) {
-    if (!json::read(*x, out.can_leave, path + ".canLeave", err)) return false;
+  if (const json::Value* f_can_leave = f.req("canLeave")) {
+    if (!json::read(*f_can_leave, out.can_leave, path + ".canLeave", err)) return false;
   } else {
     return false;
   }
@@ -783,8 +783,8 @@ inline json::Value to_json(const DialogueTopic& v) {
 inline bool from_json(const json::Value& j, DialogueTopic& out, const std::string& path, std::string& err) {
   json::Fields f(j, path, err);
   if (!f.ok()) return false;
-  if (const json::Value* x = f.req("topic")) {
-    if (!json::read(*x, out.topic, path + ".topic", err)) return false;
+  if (const json::Value* f_topic = f.req("topic")) {
+    if (!json::read(*f_topic, out.topic, path + ".topic", err)) return false;
   } else {
     return false;
   }
@@ -800,8 +800,8 @@ inline json::Value to_json(const DialogueKeyword& v) {
 inline bool from_json(const json::Value& j, DialogueKeyword& out, const std::string& path, std::string& err) {
   json::Fields f(j, path, err);
   if (!f.ok()) return false;
-  if (const json::Value* x = f.req("topic")) {
-    if (!json::read(*x, out.topic, path + ".topic", err)) return false;
+  if (const json::Value* f_topic = f.req("topic")) {
+    if (!json::read(*f_topic, out.topic, path + ".topic", err)) return false;
   } else {
     return false;
   }
@@ -817,8 +817,8 @@ inline json::Value to_json(const DialoguePersuade& v) {
 inline bool from_json(const json::Value& j, DialoguePersuade& out, const std::string& path, std::string& err) {
   json::Fields f(j, path, err);
   if (!f.ok()) return false;
-  if (const json::Value* x = f.req("option")) {
-    if (!json::read(*x, out.option, path + ".option", err)) return false;
+  if (const json::Value* f_option = f.req("option")) {
+    if (!json::read(*f_option, out.option, path + ".option", err)) return false;
   } else {
     return false;
   }
@@ -850,28 +850,28 @@ inline json::Value to_json(const GameDate& v) {
 inline bool from_json(const json::Value& j, GameDate& out, const std::string& path, std::string& err) {
   json::Fields f(j, path, err);
   if (!f.ok()) return false;
-  if (const json::Value* x = f.req("year")) {
-    if (!json::read_int(*x, out.year, -json::kMaxSafeInt, json::kMaxSafeInt, path + ".year", err)) return false;
+  if (const json::Value* f_year = f.req("year")) {
+    if (!json::read_int(*f_year, out.year, -json::kMaxSafeInt, json::kMaxSafeInt, path + ".year", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("month")) {
-    if (!json::read_int(*x, out.month, 1.0, 12.0, path + ".month", err)) return false;
+  if (const json::Value* f_month = f.req("month")) {
+    if (!json::read_int(*f_month, out.month, 1.0, 12.0, path + ".month", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("day")) {
-    if (!json::read_int(*x, out.day, 1.0, 31.0, path + ".day", err)) return false;
+  if (const json::Value* f_day = f.req("day")) {
+    if (!json::read_int(*f_day, out.day, 1.0, 31.0, path + ".day", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("hour")) {
-    if (!json::read_num(*x, out.hour, 0.0, 24.0, path + ".hour", err)) return false;
+  if (const json::Value* f_hour = f.req("hour")) {
+    if (!json::read_num(*f_hour, out.hour, 0.0, 24.0, path + ".hour", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("text")) {
-    if (!json::read(*x, out.text, path + ".text", err)) return false;
+  if (const json::Value* f_text = f.req("text")) {
+    if (!json::read(*f_text, out.text, path + ".text", err)) return false;
   } else {
     return false;
   }
@@ -891,29 +891,29 @@ inline json::Value to_json(const JournalEntry& v) {
 inline bool from_json(const json::Value& j, JournalEntry& out, const std::string& path, std::string& err) {
   json::Fields f(j, path, err);
   if (!f.ok()) return false;
-  if (const json::Value* x = f.req("quest")) {
-    if (!json::read(*x, out.quest, path + ".quest", err)) return false;
+  if (const json::Value* f_quest = f.req("quest")) {
+    if (!json::read(*f_quest, out.quest, path + ".quest", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("questName")) {
-    if (!json::read(*x, out.quest_name, path + ".questName", err)) return false;
+  if (const json::Value* f_quest_name = f.req("questName")) {
+    if (!json::read(*f_quest_name, out.quest_name, path + ".questName", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("date")) {
-    if (!from_json(*x, out.date, path + ".date", err)) return false;
+  if (const json::Value* f_date = f.req("date")) {
+    if (!from_json(*f_date, out.date, path + ".date", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("kind")) {
-    if (!from_json(*x, out.kind, path + ".kind", err)) return false;
+  if (const json::Value* f_kind = f.req("kind")) {
+    if (!from_json(*f_kind, out.kind, path + ".kind", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("runs")) {
+  if (const json::Value* f_runs = f.req("runs")) {
     {
-      const json::Array* a0 = (*x).as_array();
+      const json::Array* a0 = (*f_runs).as_array();
       if (!a0) return json::fail(err, path + ".runs", "want a list");
       out.runs.clear();
       out.runs.reserve(a0->size());
@@ -941,29 +941,29 @@ inline json::Value to_json(const QuestIndexItem& v) {
 inline bool from_json(const json::Value& j, QuestIndexItem& out, const std::string& path, std::string& err) {
   json::Fields f(j, path, err);
   if (!f.ok()) return false;
-  if (const json::Value* x = f.req("id")) {
-    if (!json::read(*x, out.id, path + ".id", err)) return false;
+  if (const json::Value* f_id = f.req("id")) {
+    if (!json::read(*f_id, out.id, path + ".id", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("name")) {
-    if (!json::read(*x, out.name, path + ".name", err)) return false;
+  if (const json::Value* f_name = f.req("name")) {
+    if (!json::read(*f_name, out.name, path + ".name", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("status")) {
-    if (!from_json(*x, out.status, path + ".status", err)) return false;
+  if (const json::Value* f_status = f.req("status")) {
+    if (!from_json(*f_status, out.status, path + ".status", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("started")) {
-    if (!from_json(*x, out.started, path + ".started", err)) return false;
+  if (const json::Value* f_started = f.req("started")) {
+    if (!from_json(*f_started, out.started, path + ".started", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.opt("directions")) {
+  if (const json::Value* f_directions = f.opt("directions")) {
     out.directions.emplace();
-    if (!json::read(*x, *out.directions, path + ".directions", err)) return false;
+    if (!json::read(*f_directions, *out.directions, path + ".directions", err)) return false;
   } else {
     out.directions.reset();
   }
@@ -984,30 +984,30 @@ inline json::Value to_json(const JournalState& v) {
 inline bool from_json(const json::Value& j, JournalState& out, const std::string& path, std::string& err) {
   json::Fields f(j, path, err);
   if (!f.ok()) return false;
-  if (const json::Value* x = f.req("tab")) {
-    if (!from_json(*x, out.tab, path + ".tab", err)) return false;
+  if (const json::Value* f_tab = f.req("tab")) {
+    if (!from_json(*f_tab, out.tab, path + ".tab", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("page")) {
-    if (!json::read_int(*x, out.page, 0.0, json::kMaxSafeInt, path + ".page", err)) return false;
+  if (const json::Value* f_page = f.req("page")) {
+    if (!json::read_int(*f_page, out.page, 0.0, json::kMaxSafeInt, path + ".page", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("pageCount")) {
-    if (!json::read_int(*x, out.page_count, 1.0, json::kMaxSafeInt, path + ".pageCount", err)) return false;
+  if (const json::Value* f_page_count = f.req("pageCount")) {
+    if (!json::read_int(*f_page_count, out.page_count, 1.0, json::kMaxSafeInt, path + ".pageCount", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.opt("questFilter")) {
+  if (const json::Value* f_quest_filter = f.opt("questFilter")) {
     out.quest_filter.emplace();
-    if (!json::read(*x, *out.quest_filter, path + ".questFilter", err)) return false;
+    if (!json::read(*f_quest_filter, *out.quest_filter, path + ".questFilter", err)) return false;
   } else {
     out.quest_filter.reset();
   }
-  if (const json::Value* x = f.req("entries")) {
+  if (const json::Value* f_entries = f.req("entries")) {
     {
-      const json::Array* a0 = (*x).as_array();
+      const json::Array* a0 = (*f_entries).as_array();
       if (!a0) return json::fail(err, path + ".entries", "want a list");
       out.entries.clear();
       out.entries.reserve(a0->size());
@@ -1019,9 +1019,9 @@ inline bool from_json(const json::Value& j, JournalState& out, const std::string
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("quests")) {
+  if (const json::Value* f_quests = f.req("quests")) {
     {
-      const json::Array* a0 = (*x).as_array();
+      const json::Array* a0 = (*f_quests).as_array();
       if (!a0) return json::fail(err, path + ".quests", "want a list");
       out.quests.clear();
       out.quests.reserve(a0->size());
@@ -1047,19 +1047,19 @@ inline json::Value to_json(const JournalPage& v) {
 inline bool from_json(const json::Value& j, JournalPage& out, const std::string& path, std::string& err) {
   json::Fields f(j, path, err);
   if (!f.ok()) return false;
-  if (const json::Value* x = f.req("tab")) {
-    if (!from_json(*x, out.tab, path + ".tab", err)) return false;
+  if (const json::Value* f_tab = f.req("tab")) {
+    if (!from_json(*f_tab, out.tab, path + ".tab", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("page")) {
-    if (!json::read_int(*x, out.page, 0.0, json::kMaxSafeInt, path + ".page", err)) return false;
+  if (const json::Value* f_page = f.req("page")) {
+    if (!json::read_int(*f_page, out.page, 0.0, json::kMaxSafeInt, path + ".page", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.opt("questFilter")) {
+  if (const json::Value* f_quest_filter = f.opt("questFilter")) {
     out.quest_filter.emplace();
-    if (!json::read(*x, *out.quest_filter, path + ".questFilter", err)) return false;
+    if (!json::read(*f_quest_filter, *out.quest_filter, path + ".questFilter", err)) return false;
   } else {
     out.quest_filter.reset();
   }
@@ -1078,23 +1078,23 @@ inline json::Value to_json(const Bar& v) {
 inline bool from_json(const json::Value& j, Bar& out, const std::string& path, std::string& err) {
   json::Fields f(j, path, err);
   if (!f.ok()) return false;
-  if (const json::Value* x = f.req("kind")) {
-    if (!from_json(*x, out.kind, path + ".kind", err)) return false;
+  if (const json::Value* f_kind = f.req("kind")) {
+    if (!from_json(*f_kind, out.kind, path + ".kind", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("current")) {
-    if (!json::read_num(*x, out.current, 0.0, std::numeric_limits<double>::max(), path + ".current", err)) return false;
+  if (const json::Value* f_current = f.req("current")) {
+    if (!json::read_num(*f_current, out.current, 0.0, (std::numeric_limits<double>::max)(), path + ".current", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("max")) {
-    if (!json::read_num(*x, out.max, 0.0, std::numeric_limits<double>::max(), path + ".max", err)) return false;
+  if (const json::Value* f_max = f.req("max")) {
+    if (!json::read_num(*f_max, out.max, 0.0, (std::numeric_limits<double>::max)(), path + ".max", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("shown")) {
-    if (!json::read(*x, out.shown, path + ".shown", err)) return false;
+  if (const json::Value* f_shown = f.req("shown")) {
+    if (!json::read(*f_shown, out.shown, path + ".shown", err)) return false;
   } else {
     return false;
   }
@@ -1111,13 +1111,13 @@ inline json::Value to_json(const Sneak& v) {
 inline bool from_json(const json::Value& j, Sneak& out, const std::string& path, std::string& err) {
   json::Fields f(j, path, err);
   if (!f.ok()) return false;
-  if (const json::Value* x = f.req("sneaking")) {
-    if (!json::read(*x, out.sneaking, path + ".sneaking", err)) return false;
+  if (const json::Value* f_sneaking = f.req("sneaking")) {
+    if (!json::read(*f_sneaking, out.sneaking, path + ".sneaking", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("eye")) {
-    if (!json::read_num(*x, out.eye, 0.0, 1.0, path + ".eye", err)) return false;
+  if (const json::Value* f_eye = f.req("eye")) {
+    if (!json::read_num(*f_eye, out.eye, 0.0, 1.0, path + ".eye", err)) return false;
   } else {
     return false;
   }
@@ -1137,29 +1137,29 @@ inline json::Value to_json(const Effect& v) {
 inline bool from_json(const json::Value& j, Effect& out, const std::string& path, std::string& err) {
   json::Fields f(j, path, err);
   if (!f.ok()) return false;
-  if (const json::Value* x = f.req("id")) {
-    if (!json::read(*x, out.id, path + ".id", err)) return false;
+  if (const json::Value* f_id = f.req("id")) {
+    if (!json::read(*f_id, out.id, path + ".id", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("label")) {
-    if (!json::read(*x, out.label, path + ".label", err)) return false;
+  if (const json::Value* f_label = f.req("label")) {
+    if (!json::read(*f_label, out.label, path + ".label", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("glyph")) {
-    if (!json::read(*x, out.glyph, path + ".glyph", err)) return false;
+  if (const json::Value* f_glyph = f.req("glyph")) {
+    if (!json::read(*f_glyph, out.glyph, path + ".glyph", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("polarity")) {
-    if (!from_json(*x, out.polarity, path + ".polarity", err)) return false;
+  if (const json::Value* f_polarity = f.req("polarity")) {
+    if (!from_json(*f_polarity, out.polarity, path + ".polarity", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.opt("remaining")) {
+  if (const json::Value* f_remaining = f.opt("remaining")) {
     out.remaining.emplace();
-    if (!json::read_num(*x, *out.remaining, 0.0, std::numeric_limits<double>::max(), path + ".remaining", err)) return false;
+    if (!json::read_num(*f_remaining, *out.remaining, 0.0, (std::numeric_limits<double>::max)(), path + ".remaining", err)) return false;
   } else {
     out.remaining.reset();
   }
@@ -1176,14 +1176,14 @@ inline json::Value to_json(const Vastei& v) {
 inline bool from_json(const json::Value& j, Vastei& out, const std::string& path, std::string& err) {
   json::Fields f(j, path, err);
   if (!f.ok()) return false;
-  if (const json::Value* x = f.req("carried")) {
-    if (!json::read_int(*x, out.carried, 0.0, json::kMaxSafeInt, path + ".carried", err)) return false;
+  if (const json::Value* f_carried = f.req("carried")) {
+    if (!json::read_int(*f_carried, out.carried, 0.0, json::kMaxSafeInt, path + ".carried", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.opt("gained")) {
+  if (const json::Value* f_gained = f.opt("gained")) {
     out.gained.emplace();
-    if (!json::read_int(*x, *out.gained, 0.0, json::kMaxSafeInt, path + ".gained", err)) return false;
+    if (!json::read_int(*f_gained, *out.gained, 0.0, json::kMaxSafeInt, path + ".gained", err)) return false;
   } else {
     out.gained.reset();
   }
@@ -1202,24 +1202,24 @@ inline json::Value to_json(const PlaceBanner& v) {
 inline bool from_json(const json::Value& j, PlaceBanner& out, const std::string& path, std::string& err) {
   json::Fields f(j, path, err);
   if (!f.ok()) return false;
-  if (const json::Value* x = f.req("place")) {
-    if (!json::read(*x, out.place, path + ".place", err)) return false;
+  if (const json::Value* f_place = f.req("place")) {
+    if (!json::read(*f_place, out.place, path + ".place", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("name")) {
-    if (!json::read(*x, out.name, path + ".name", err)) return false;
+  if (const json::Value* f_name = f.req("name")) {
+    if (!json::read(*f_name, out.name, path + ".name", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.opt("region")) {
+  if (const json::Value* f_region = f.opt("region")) {
     out.region.emplace();
-    if (!json::read(*x, *out.region, path + ".region", err)) return false;
+    if (!json::read(*f_region, *out.region, path + ".region", err)) return false;
   } else {
     out.region.reset();
   }
-  if (const json::Value* x = f.req("firstVisit")) {
-    if (!json::read(*x, out.first_visit, path + ".firstVisit", err)) return false;
+  if (const json::Value* f_first_visit = f.req("firstVisit")) {
+    if (!json::read(*f_first_visit, out.first_visit, path + ".firstVisit", err)) return false;
   } else {
     return false;
   }
@@ -1236,13 +1236,13 @@ inline json::Value to_json(const InputGlyph& v) {
 inline bool from_json(const json::Value& j, InputGlyph& out, const std::string& path, std::string& err) {
   json::Fields f(j, path, err);
   if (!f.ok()) return false;
-  if (const json::Value* x = f.req("device")) {
-    if (!from_json(*x, out.device, path + ".device", err)) return false;
+  if (const json::Value* f_device = f.req("device")) {
+    if (!from_json(*f_device, out.device, path + ".device", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("glyph")) {
-    if (!json::read(*x, out.glyph, path + ".glyph", err)) return false;
+  if (const json::Value* f_glyph = f.req("glyph")) {
+    if (!json::read(*f_glyph, out.glyph, path + ".glyph", err)) return false;
   } else {
     return false;
   }
@@ -1260,19 +1260,19 @@ inline json::Value to_json(const Prompt& v) {
 inline bool from_json(const json::Value& j, Prompt& out, const std::string& path, std::string& err) {
   json::Fields f(j, path, err);
   if (!f.ok()) return false;
-  if (const json::Value* x = f.req("verb")) {
-    if (!json::read(*x, out.verb, path + ".verb", err)) return false;
+  if (const json::Value* f_verb = f.req("verb")) {
+    if (!json::read(*f_verb, out.verb, path + ".verb", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("target")) {
-    if (!json::read(*x, out.target, path + ".target", err)) return false;
+  if (const json::Value* f_target = f.req("target")) {
+    if (!json::read(*f_target, out.target, path + ".target", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("inputs")) {
+  if (const json::Value* f_inputs = f.req("inputs")) {
     {
-      const json::Array* a0 = (*x).as_array();
+      const json::Array* a0 = (*f_inputs).as_array();
       if (!a0) return json::fail(err, path + ".inputs", "want a list");
       out.inputs.clear();
       out.inputs.reserve(a0->size());
@@ -1298,18 +1298,18 @@ inline json::Value to_json(const Notice& v) {
 inline bool from_json(const json::Value& j, Notice& out, const std::string& path, std::string& err) {
   json::Fields f(j, path, err);
   if (!f.ok()) return false;
-  if (const json::Value* x = f.req("id")) {
-    if (!json::read(*x, out.id, path + ".id", err)) return false;
+  if (const json::Value* f_id = f.req("id")) {
+    if (!json::read(*f_id, out.id, path + ".id", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("kind")) {
-    if (!from_json(*x, out.kind, path + ".kind", err)) return false;
+  if (const json::Value* f_kind = f.req("kind")) {
+    if (!from_json(*f_kind, out.kind, path + ".kind", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("text")) {
-    if (!json::read(*x, out.text, path + ".text", err)) return false;
+  if (const json::Value* f_text = f.req("text")) {
+    if (!json::read(*f_text, out.text, path + ".text", err)) return false;
   } else {
     return false;
   }
@@ -1332,14 +1332,14 @@ inline json::Value to_json(const HudState& v) {
 inline bool from_json(const json::Value& j, HudState& out, const std::string& path, std::string& err) {
   json::Fields f(j, path, err);
   if (!f.ok()) return false;
-  if (const json::Value* x = f.req("visible")) {
-    if (!json::read(*x, out.visible, path + ".visible", err)) return false;
+  if (const json::Value* f_visible = f.req("visible")) {
+    if (!json::read(*f_visible, out.visible, path + ".visible", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("bars")) {
+  if (const json::Value* f_bars = f.req("bars")) {
     {
-      const json::Array* a0 = (*x).as_array();
+      const json::Array* a0 = (*f_bars).as_array();
       if (!a0) return json::fail(err, path + ".bars", "want a list");
       out.bars.clear();
       out.bars.reserve(a0->size());
@@ -1351,14 +1351,14 @@ inline bool from_json(const json::Value& j, HudState& out, const std::string& pa
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("sneak")) {
-    if (!from_json(*x, out.sneak, path + ".sneak", err)) return false;
+  if (const json::Value* f_sneak = f.req("sneak")) {
+    if (!from_json(*f_sneak, out.sneak, path + ".sneak", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("effects")) {
+  if (const json::Value* f_effects = f.req("effects")) {
     {
-      const json::Array* a0 = (*x).as_array();
+      const json::Array* a0 = (*f_effects).as_array();
       if (!a0) return json::fail(err, path + ".effects", "want a list");
       out.effects.clear();
       out.effects.reserve(a0->size());
@@ -1370,26 +1370,26 @@ inline bool from_json(const json::Value& j, HudState& out, const std::string& pa
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("vastei")) {
-    if (!from_json(*x, out.vastei, path + ".vastei", err)) return false;
+  if (const json::Value* f_vastei = f.req("vastei")) {
+    if (!from_json(*f_vastei, out.vastei, path + ".vastei", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.opt("banner")) {
+  if (const json::Value* f_banner = f.opt("banner")) {
     out.banner.emplace();
-    if (!from_json(*x, *out.banner, path + ".banner", err)) return false;
+    if (!from_json(*f_banner, *out.banner, path + ".banner", err)) return false;
   } else {
     out.banner.reset();
   }
-  if (const json::Value* x = f.opt("prompt")) {
+  if (const json::Value* f_prompt = f.opt("prompt")) {
     out.prompt.emplace();
-    if (!from_json(*x, *out.prompt, path + ".prompt", err)) return false;
+    if (!from_json(*f_prompt, *out.prompt, path + ".prompt", err)) return false;
   } else {
     out.prompt.reset();
   }
-  if (const json::Value* x = f.req("notices")) {
+  if (const json::Value* f_notices = f.req("notices")) {
     {
-      const json::Array* a0 = (*x).as_array();
+      const json::Array* a0 = (*f_notices).as_array();
       if (!a0) return json::fail(err, path + ".notices", "want a list");
       out.notices.clear();
       out.notices.reserve(a0->size());
@@ -1413,9 +1413,9 @@ inline json::Value to_json(const HudBars& v) {
 inline bool from_json(const json::Value& j, HudBars& out, const std::string& path, std::string& err) {
   json::Fields f(j, path, err);
   if (!f.ok()) return false;
-  if (const json::Value* x = f.req("bars")) {
+  if (const json::Value* f_bars = f.req("bars")) {
     {
-      const json::Array* a0 = (*x).as_array();
+      const json::Array* a0 = (*f_bars).as_array();
       if (!a0) return json::fail(err, path + ".bars", "want a list");
       out.bars.clear();
       out.bars.reserve(a0->size());
@@ -1440,13 +1440,13 @@ inline json::Value to_json(const CellKey& v) {
 inline bool from_json(const json::Value& j, CellKey& out, const std::string& path, std::string& err) {
   json::Fields f(j, path, err);
   if (!f.ok()) return false;
-  if (const json::Value* x = f.req("x")) {
-    if (!json::read_int(*x, out.x, -json::kMaxSafeInt, json::kMaxSafeInt, path + ".x", err)) return false;
+  if (const json::Value* f_x = f.req("x")) {
+    if (!json::read_int(*f_x, out.x, -json::kMaxSafeInt, json::kMaxSafeInt, path + ".x", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("y")) {
-    if (!json::read_int(*x, out.y, -json::kMaxSafeInt, json::kMaxSafeInt, path + ".y", err)) return false;
+  if (const json::Value* f_y = f.req("y")) {
+    if (!json::read_int(*f_y, out.y, -json::kMaxSafeInt, json::kMaxSafeInt, path + ".y", err)) return false;
   } else {
     return false;
   }
@@ -1467,33 +1467,33 @@ inline json::Value to_json(const ChartPlace& v) {
 inline bool from_json(const json::Value& j, ChartPlace& out, const std::string& path, std::string& err) {
   json::Fields f(j, path, err);
   if (!f.ok()) return false;
-  if (const json::Value* x = f.req("id")) {
-    if (!json::read(*x, out.id, path + ".id", err)) return false;
+  if (const json::Value* f_id = f.req("id")) {
+    if (!json::read(*f_id, out.id, path + ".id", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("name")) {
-    if (!json::read(*x, out.name, path + ".name", err)) return false;
+  if (const json::Value* f_name = f.req("name")) {
+    if (!json::read(*f_name, out.name, path + ".name", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("kind")) {
-    if (!json::read(*x, out.kind, path + ".kind", err)) return false;
+  if (const json::Value* f_kind = f.req("kind")) {
+    if (!json::read(*f_kind, out.kind, path + ".kind", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("x")) {
-    if (!json::read_num(*x, out.x, -std::numeric_limits<double>::max(), std::numeric_limits<double>::max(), path + ".x", err)) return false;
+  if (const json::Value* f_x = f.req("x")) {
+    if (!json::read_num(*f_x, out.x, -(std::numeric_limits<double>::max)(), (std::numeric_limits<double>::max)(), path + ".x", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("y")) {
-    if (!json::read_num(*x, out.y, -std::numeric_limits<double>::max(), std::numeric_limits<double>::max(), path + ".y", err)) return false;
+  if (const json::Value* f_y = f.req("y")) {
+    if (!json::read_num(*f_y, out.y, -(std::numeric_limits<double>::max)(), (std::numeric_limits<double>::max)(), path + ".y", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("discovered")) {
-    if (!json::read(*x, out.discovered, path + ".discovered", err)) return false;
+  if (const json::Value* f_discovered = f.req("discovered")) {
+    if (!json::read(*f_discovered, out.discovered, path + ".discovered", err)) return false;
   } else {
     return false;
   }
@@ -1511,18 +1511,18 @@ inline json::Value to_json(const ChartView& v) {
 inline bool from_json(const json::Value& j, ChartView& out, const std::string& path, std::string& err) {
   json::Fields f(j, path, err);
   if (!f.ok()) return false;
-  if (const json::Value* x = f.req("centreX")) {
-    if (!json::read_num(*x, out.centre_x, -std::numeric_limits<double>::max(), std::numeric_limits<double>::max(), path + ".centreX", err)) return false;
+  if (const json::Value* f_centre_x = f.req("centreX")) {
+    if (!json::read_num(*f_centre_x, out.centre_x, -(std::numeric_limits<double>::max)(), (std::numeric_limits<double>::max)(), path + ".centreX", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("centreY")) {
-    if (!json::read_num(*x, out.centre_y, -std::numeric_limits<double>::max(), std::numeric_limits<double>::max(), path + ".centreY", err)) return false;
+  if (const json::Value* f_centre_y = f.req("centreY")) {
+    if (!json::read_num(*f_centre_y, out.centre_y, -(std::numeric_limits<double>::max)(), (std::numeric_limits<double>::max)(), path + ".centreY", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("zoom")) {
-    if (!json::read_num(*x, out.zoom, 0.05, 64.0, path + ".zoom", err)) return false;
+  if (const json::Value* f_zoom = f.req("zoom")) {
+    if (!json::read_num(*f_zoom, out.zoom, 0.05, 64.0, path + ".zoom", err)) return false;
   } else {
     return false;
   }
@@ -1542,19 +1542,19 @@ inline json::Value to_json(const ChartState& v) {
 inline bool from_json(const json::Value& j, ChartState& out, const std::string& path, std::string& err) {
   json::Fields f(j, path, err);
   if (!f.ok()) return false;
-  if (const json::Value* x = f.req("worldspace")) {
-    if (!json::read(*x, out.worldspace, path + ".worldspace", err)) return false;
+  if (const json::Value* f_worldspace = f.req("worldspace")) {
+    if (!json::read(*f_worldspace, out.worldspace, path + ".worldspace", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("sketch")) {
-    if (!json::read(*x, out.sketch, path + ".sketch", err)) return false;
+  if (const json::Value* f_sketch = f.req("sketch")) {
+    if (!json::read(*f_sketch, out.sketch, path + ".sketch", err)) return false;
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("revealed")) {
+  if (const json::Value* f_revealed = f.req("revealed")) {
     {
-      const json::Array* a0 = (*x).as_array();
+      const json::Array* a0 = (*f_revealed).as_array();
       if (!a0) return json::fail(err, path + ".revealed", "want a list");
       out.revealed.clear();
       out.revealed.reserve(a0->size());
@@ -1566,9 +1566,9 @@ inline bool from_json(const json::Value& j, ChartState& out, const std::string& 
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("places")) {
+  if (const json::Value* f_places = f.req("places")) {
     {
-      const json::Array* a0 = (*x).as_array();
+      const json::Array* a0 = (*f_places).as_array();
       if (!a0) return json::fail(err, path + ".places", "want a list");
       out.places.clear();
       out.places.reserve(a0->size());
@@ -1580,8 +1580,8 @@ inline bool from_json(const json::Value& j, ChartState& out, const std::string& 
   } else {
     return false;
   }
-  if (const json::Value* x = f.req("view")) {
-    if (!from_json(*x, out.view, path + ".view", err)) return false;
+  if (const json::Value* f_view = f.req("view")) {
+    if (!from_json(*f_view, out.view, path + ".view", err)) return false;
   } else {
     return false;
   }
@@ -1597,8 +1597,8 @@ inline json::Value to_json(const ChartPan& v) {
 inline bool from_json(const json::Value& j, ChartPan& out, const std::string& path, std::string& err) {
   json::Fields f(j, path, err);
   if (!f.ok()) return false;
-  if (const json::Value* x = f.req("view")) {
-    if (!from_json(*x, out.view, path + ".view", err)) return false;
+  if (const json::Value* f_view = f.req("view")) {
+    if (!from_json(*f_view, out.view, path + ".view", err)) return false;
   } else {
     return false;
   }
@@ -1614,8 +1614,8 @@ inline json::Value to_json(const ViewClose& v) {
 inline bool from_json(const json::Value& j, ViewClose& out, const std::string& path, std::string& err) {
   json::Fields f(j, path, err);
   if (!f.ok()) return false;
-  if (const json::Value* x = f.req("view")) {
-    if (!from_json(*x, out.view, path + ".view", err)) return false;
+  if (const json::Value* f_view = f.req("view")) {
+    if (!from_json(*f_view, out.view, path + ".view", err)) return false;
   } else {
     return false;
   }

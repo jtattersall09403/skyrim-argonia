@@ -238,6 +238,7 @@ def plugin() -> int:
     shutil.copyfile(esm, OUT / "Argonia.esm")
     shutil.rmtree(YAML, ignore_errors=True)
     shutil.copytree(yaml, YAML)
+    from tools.argonia_world import forms_table; forms_table.write()  # the allocator may have added rows (1.1)
     n = sum(1 for _ in YAML.rglob("*.yaml"))
     print(f"plugin: out/Argonia.esm ({esm.stat().st_size} bytes), {n} YAML files in plugin/Argonia/")
     wesm = world(data, OUT / "terrain", sample=False)

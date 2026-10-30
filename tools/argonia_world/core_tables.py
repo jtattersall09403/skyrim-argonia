@@ -257,6 +257,8 @@ def render(w: db.World) -> dict[str, str]:
     out = {f"tables_{h}.h": f(w) for h, f in (("sheet", sheet), ("progression", progression),
                                               ("conditions", conditions), ("actions", actions))}
     out["fixture_topics.h"] = fixture_topics(w)
+    from tools.argonia_world import forms_table  # 1.1 adapters: world id -> FormID
+    out[forms_table.HEADER] = forms_table.render(w)
     return out
 
 

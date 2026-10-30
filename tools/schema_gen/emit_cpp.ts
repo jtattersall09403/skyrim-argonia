@@ -43,8 +43,8 @@ function enc(t: Ty, src: string, depth: number): string {
 }
 
 const bounds = (t: { min?: number; max?: number }, int: boolean) =>
-  `${t.min === undefined ? (int ? "-json::kMaxSafeInt" : "-std::numeric_limits<double>::max()") : lit(t.min)}, ` +
-  `${t.max === undefined ? (int ? "json::kMaxSafeInt" : "std::numeric_limits<double>::max()") : lit(t.max)}`;
+  `${t.min === undefined ? (int ? "-json::kMaxSafeInt" : "-(std::numeric_limits<double>::max)()") : lit(t.min)}, ` +
+  `${t.max === undefined ? (int ? "json::kMaxSafeInt" : "(std::numeric_limits<double>::max)()") : lit(t.max)}`;
 
 // Statements decoding json::Value `src` into `dst`; `path` is a std::string expression.
 function dec(t: Ty, src: string, dst: string, path: string, depth: number, pad: string): string {
@@ -74,6 +74,9 @@ function emitStruct(s: StructDef): string {
   return `// ${s.doc}\nstruct ${s.name} {\n${members}  bool operator==(const ${s.name}&) const = default;\n};\n`;
 }
 
+// One name per field's JSON value: MSVC (C4456) reads consecutive if-init declarations of one name as shadowing.
+const fx = (k: string) => `f_${cppMember(k)}`;
+
 function emitCodec(s: StructDef): string {
   const fields = Object.entries(s.fields);
   let toj = `inline json::Value to_json(const ${s.name}& v) {\n  json::Object o;\n`;
@@ -91,10 +94,10 @@ function emitCodec(s: StructDef): string {
     const m = `out.${cppMember(k)}`;
     const p = `path + ${cstr("." + k)}`;
     if (t.kind === "opt") {
-      fromj += `  if (const json::Value* x = f.opt(${cstr(k)})) {\n    ${m}.emplace();\n` +
-        dec(t.of, "*x", `*${m}`, p, 0, "    ") + `  } else {\n    ${m}.reset();\n  }\n`;
+      fromj += `  if (const json::Value* ${fx(k)} = f.opt(${cstr(k)})) {\n    ${m}.emplace();\n` +
+        dec(t.of, `*${fx(k)}`, `*${m}`, p, 0, "    ") + `  } else {\n    ${m}.reset();\n  }\n`;
     } else {
-      fromj += `  if (const json::Value* x = f.req(${cstr(k)})) {\n` + dec(t, "*x", m, p, 0, "    ") +
+      fromj += `  if (const json::Value* ${fx(k)} = f.req(${cstr(k)})) {\n` + dec(t, `*${fx(k)}`, m, p, 0, "    ") +
         `  } else {\n    return false;\n  }\n`;
     }
   }

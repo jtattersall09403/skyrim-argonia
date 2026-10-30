@@ -27,6 +27,7 @@
 {"editor_id":"ARG_ImageSpace_marsh_night","plugin":"Argonia.esm","form_id":2061,"record_type":"IMGS","entity_key":"image_space.night"}
 {"editor_id":"ARG_ImageSpace_marsh_storm","plugin":"Argonia.esm","form_id":2062,"record_type":"IMGS","entity_key":"image_space.storm"}
 {"editor_id":"ARG_MusicSilence","plugin":"Argonia.esm","form_id":2049,"record_type":"MUSC"}
+{"editor_id":"ARG_Perk_DialogueIntercept","plugin":"Argonia.esm","form_id":2132,"record_type":"PERK","entity_key":"hook.dialogue-intercept"}
 {"editor_id":"ARG_Q_LF83","plugin":"Argonia.esm","form_id":2130,"record_type":"QUST","entity_key":"quest.local.lf83"}
 {"editor_id":"ARG_QuarantineNever","plugin":"Argonia.esm","form_id":2048,"record_type":"GLOB"}
 {"editor_id":"ARG_Race_argonian","plugin":"Argonia.esm","form_id":2055,"record_type":"SPEL","entity_key":"race.argonian"}
@@ -79,6 +80,7 @@
 {"editor_id":"ARG_Region_saxhleel_coast_interior_swamp","plugin":"ArgoniaWorld.esm","form_id":524333,"record_type":"REGN","entity_key":"land_region.saxhleel-coast.interior-swamp"}
 {"editor_id":"ARG_Region_saxhleel_coast_tidal_delta","plugin":"ArgoniaWorld.esm","form_id":524334,"record_type":"REGN","entity_key":"land_region.saxhleel-coast.tidal-delta"}
 {"editor_id":"ARG_Sign_serpent","plugin":"Argonia.esm","form_id":2056,"record_type":"SPEL","entity_key":"birthsign.serpent"}
+{"editor_id":"ARG_Speaker","plugin":"Argonia.esm","form_id":2131,"record_type":"KYWD","entity_key":"hook.speaker"}
 {"editor_id":"ARG_StartQuest","plugin":"Argonia.esm","form_id":2053,"record_type":"QUST"}
 {"editor_id":"ARG_WChance_coastal_clear_co","plugin":"Argonia.esm","form_id":2068,"record_type":"GLOB","entity_key":"weather_chance.ARG_WChance_coastal_clear_co"}
 {"editor_id":"ARG_WChance_coastal_cloudy_co","plugin":"Argonia.esm","form_id":2069,"record_type":"GLOB","entity_key":"weather_chance.ARG_WChance_coastal_cloudy_co"}

@@ -9,6 +9,7 @@
 #include "argonia/core/journal.h"
 #include "argonia/core/progression.h"
 #include "argonia/core/quest_state.h"
+#include "argonia/core/seam.h"
 #include "argonia/core/topics.h"
 
 #include <vector>
@@ -42,6 +43,9 @@ inline std::vector<roundtrip::FamilySchema> family_schemas() {
     }},
     {cosave::fourcc("TOPC"), "topics", false, {
         {1, false, {list("topics", 100000, {u32("topic"), list("heard_from", 100000, {u32("npc")}, true)}, true)}},
+    }},
+    {cosave::fourcc("QWCH"), "seam", false, {
+        {1, false, {list("quests", 100000, {u32("quest")}, true)}},
     }},
     {cosave::fourcc("TEST"), "test", true, {
         {1, true, {u32("a")}},

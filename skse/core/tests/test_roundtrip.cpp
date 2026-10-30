@@ -6,6 +6,7 @@
 #include "builds.h"
 #include "argonia/core/family_layouts.h"
 #include "argonia/core/roundtrip.h"
+#include "argonia/core/seam.h"
 
 #include <set>
 #include <string>
@@ -16,15 +17,7 @@ using namespace argonia::core::families;
 namespace {
 
 struct Live {
-  cosave::Meta meta;
-  Sheet sheet;
-  progression::Progress prog;
-  disposition::Table disp;
-  journal::Log log;
-  items::Table items;
-  death::State dth;
-  quest_state::State qst;
-  topics::Known known;
+  seam::State st;                  // every real family, bound by the plugin's own seam::bind
   std::uint32_t a = 0, b = 0;      // TEST
   std::string name;                // TSTN
   std::int32_t count = 0;
@@ -41,39 +34,17 @@ bool lift_test_1_to_2(Bytes& bytes) {
   return true;
 }
 
-template <class T, class Dec>
-std::function<bool(std::span<const std::uint8_t>)> into(T& slot, Dec dec) {
-  return [&slot, dec](std::span<const std::uint8_t> b) {
-    auto t = dec(b);
-    if (t) slot = *t;
-    return t.has_value();
-  };
-}
-
 Family fam(std::uint32_t id, std::uint32_t version, std::function<Bytes()> save,
            std::function<bool(std::span<const std::uint8_t>)> load, std::function<void()> reset, std::vector<Step> steps = {}) {
   return Family{id, version, std::move(steps), std::move(save), std::move(load), std::move(reset)};
 }
 
-// Every family the tree defines, bound to its module's own encode and decode.
+// Every family the tree defines: the real ones through seam::bind (what ArgoniaCore registers), then the tests'.
 void bind_all(Registry& reg) {
-  CHECK(reg.add(fam(cosave::kMetaType, cosave::kMetaSpec.current, [] { return cosave::encode(live.meta); },
-                    into(live.meta, cosave::decode_meta), [] { live.meta = {}; })));
-  CHECK(reg.add(fam(progression::kStatsType, 1, [] { return progression::encode(live.sheet, live.prog); },
-                    [](auto b) { return progression::decode(b, live.sheet, live.prog); },
-                    [] { live.sheet = {}; live.prog = {}; })));
-  CHECK(reg.add(fam(disposition::kDispositionsType, 1, [] { return disposition::encode(live.disp); },
-                    into(live.disp, disposition::decode), [] { live.disp.clear(); })));
-  CHECK(reg.add(fam(journal::kJournalType, 1, [] { return journal::encode(live.log); }, into(live.log, journal::decode),
-                    [] { live.log = {}; })));
-  CHECK(reg.add(fam(items::kItemsType, 1, [] { return items::encode(live.items); }, into(live.items, items::decode),
-                    [] { live.items.clear(); })));
-  CHECK(reg.add(fam(death::kDeathType, 1, [] { return death::encode(live.dth); }, into(live.dth, death::decode),
-                    [] { live.dth = {}; })));
-  CHECK(reg.add(fam(quest_state::kQuestStateType, 1, [] { return quest_state::encode(live.qst); },
-                    into(live.qst, quest_state::decode), [] { live.qst = {}; })));
-  CHECK(reg.add(fam(topics::kTopicsType, 1, [] { return topics::encode(live.known); }, into(live.known, topics::decode),
-                    [] { live.known = {}; })));
+  for (const auto& why : seam::bind(reg, live.st)) {
+    std::fprintf(stderr, "  %s\n", why.c_str());
+    CHECK(why.empty());
+  }
   CHECK(reg.add(fam(
       cosave::fourcc("TEST"), 2, [] { cosave::Writer w; w.u32(live.a); w.u32(live.b); return w.take(); },
       [](std::span<const std::uint8_t> b) {
@@ -112,7 +83,7 @@ void every_family_against_its_schema() {
     if (!declared.count(id)) std::fprintf(stderr, "  family %s has no schema\n", fourcc_name(id).c_str());
     CHECK(declared.count(id) == 1);
   }
-  CHECK(declared.size() == reg.ids().size() && schemas.size() == 10);
+  CHECK(declared.size() == reg.ids().size() && schemas.size() == 11);
 }
 
 void two_versions_a_migration_and_a_refusal() {
