@@ -23,12 +23,15 @@ steps:
       - {console: "ARG_Ref_ClaywaterStationRaft.GetDisabled", contains: ">> 0"}
       - {console: "ARG_Ref_ClaywaterStationCrocodile.GetDead", contains: ">> 0"}
   - name: to-the-station-door
-    do: [{console: "player.moveto ARG_Ref_ClaywaterStationB1Door"}, {wait: 2}]
+    # 140 units out along the door's own heading (212 deg) and facing it: moveto onto the door left the camera in its
+    # thatch, and E found nothing (game-7)
+    do: [{console: "player.moveto ARG_Ref_ClaywaterStationB1Door -74 -119 20"}, {console: "player.setangle z 32"}, {wait: 2}]
   - name: enter-the-station-house   # the real path: activate the load door
     do: [{key: "E 120"}, {wait: 6}]
     expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 0"}]
-  - name: out-again
-    do: [{key: "E 120"}, {wait: 6}]
+  - name: out-again   # the arrival faces into the room: stand before the house's own (KotM) door and face it
+    do: [{console: "player.moveto ARG_Ref_ClaywaterStationStationHouseDoor 0 -120 0"}, {console: "player.setangle z 0"},
+         {wait: 2}, {key: "E 120"}, {wait: 6}]
     expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
   - name: night
     do: [{console: "set gamehour to 23"}, {wait: 8}]

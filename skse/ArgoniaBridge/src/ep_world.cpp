@@ -188,7 +188,8 @@ std::string weather(const Request& req) {
   });
 }
 
-// quest <form id | editor id>: its stage and state.
+// quest <form id | editor id>: its stage and state. `running` is the console's GetQuestRunning (the quest's enabled
+// flag): CommonLib's IsRunning() is only "not stopping", true for 2,385 idle quests (game-7); it stays as `not_stopping`.
 std::string quest(const Request& req) {
   std::string q = rest(req);
   if (q.empty()) return reply_error("quest", "usage: quest <form id | editor id>");
@@ -201,10 +202,76 @@ std::string quest(const Request& req) {
                                  .str("editor_id", quest->GetFormEditorID())
                                  .str("name", quest->GetName())
                                  .integer("stage", quest->GetCurrentStageID())
-                                 .boolean("running", quest->IsRunning())
+                                 .boolean("running", quest->IsEnabled())
+                                 .boolean("not_stopping", quest->IsRunning())
                                  .boolean("enabled", quest->IsEnabled())
                                  .boolean("completed", quest->IsCompleted())
                                  .done());
+  });
+}
+
+// quests: every running quest, by editor id and its plugin (the quarantine journey's list, 0.4 §b). The console's
+// `sq` is no use for this: its output is the console buffer's tail, 1,567 "(Off)" lines, the running ones cut off.
+std::string quests(const Request&) {
+  return on_main_thread("quests", [] {
+    auto* dh = RE::TESDataHandler::GetSingleton();
+    if (!dh) return reply_error("quests", "no data handler yet");
+    std::string out = "[";
+    std::size_t total = 0;
+    for (auto* q : dh->GetFormArray<RE::TESQuest>()) {
+      if (!q) continue;
+      ++total;
+      if (!q->IsEnabled()) continue;  // the console's GetQuestRunning; CommonLib's IsRunning() is only "not stopping"
+      auto* file = q->GetFile(0);
+      if (out.size() > 1) out += ',';
+      out += JsonObject()
+                 .hex("id", q->GetFormID())
+                 .str("editor_id", q->GetFormEditorID())
+                 .str("plugin", file ? file->GetFilename() : "")
+                 .integer("stage", q->GetCurrentStageID())
+                 .done();
+    }
+    return reply_ok("quests", JsonObject().integer("total", static_cast<int>(total)).raw("running", out + "]").done());
+  });
+}
+
+// music: the music type playing and the queue under it (the quarantine journey's read: only our silence plays).
+std::string music(const Request&) {
+  return on_main_thread("music", [] {
+    auto* mm = RE::BSMusicManager::GetSingleton();
+    if (!mm) return reply_error("music", "no music manager yet");
+    // Not every BSIMusicType is a form: the engine's own NoMusic is not, and casting it to BGSMusicType crashed the
+    // game (game-7). Only an object whose vtable is BGSMusicType's BSIMusicType vtable is read as a form.
+    static const std::uintptr_t form_vt = REL::Relocation<std::uintptr_t>{RE::VTABLE_BGSMusicType[1]}.address();
+    auto ref = [](RE::BSIMusicType* t) -> std::string {
+      if (!t) return "null";
+      if (*reinterpret_cast<std::uintptr_t*>(t) != form_vt) return R"({"id":null,"editor_id":"","engine":true})";
+      return form_ref(static_cast<RE::BGSMusicType*>(t));
+    };
+    std::string queue = "[";
+    for (auto* t : mm->musicQueue) {
+      if (queue.size() > 1) queue += ',';
+      queue += ref(t);
+    }
+    return reply_ok("music", JsonObject().raw("current", ref(mm->current)).raw("queue", queue + "]").done());
+  });
+}
+
+// plugin <file>: a loaded plugin's runtime form-id prefix ("10" for a full plugin, "FE001" for a light one). The
+// game keeps no reference's editor id, so `player.moveto ARG_Ref_...` is refused at the console (game-7); the
+// scenes and journeys name refs by the world database's local id under this prefix (infra/gpu-box/scene_ids.py).
+std::string plugin(const Request& req) {
+  std::string name = rest(req);
+  if (name.empty()) return reply_error("plugin", "usage: plugin <file name>");
+  return on_main_thread("plugin", [name] {
+    auto* dh = RE::TESDataHandler::GetSingleton();
+    auto* file = dh ? dh->LookupModByName(name) : nullptr;
+    if (!file || file->GetCompileIndex() == 0xFF) return reply_error("plugin", "not loaded: " + name);
+    char prefix[8];
+    if (file->IsLight()) std::snprintf(prefix, sizeof prefix, "FE%03X", file->GetSmallFileCompileIndex());
+    else std::snprintf(prefix, sizeof prefix, "%02X", file->GetCompileIndex());
+    return reply_ok("plugin", JsonObject().str("file", file->GetFilename()).str("prefix", prefix)
+                                  .boolean("light", file->IsLight()).done());
   });
 }
 
@@ -312,6 +379,9 @@ const Register r_teleport{"teleport", &teleport};
 const Register r_time{"time", &time_ep};
 const Register r_weather{"weather", &weather};
 const Register r_quest{"quest", &quest};
+const Register r_quests{"quests", &quests};
+const Register r_music{"music", &music};
+const Register r_plugin{"plugin", &plugin};
 const Register r_global{"global", &global};
 const Register r_av{"av", &av};
 const Register r_graph{"graph", &graph};

@@ -5,10 +5,13 @@
 #include "core.h"
 #include "argonia/core/combat.h"
 
+#include <atomic>
+#include <chrono>
 #include <filesystem>
 #include <format>
 #include <fstream>
 #include <sstream>
+#include <thread>
 
 namespace argonia::plugin {
 
@@ -51,7 +54,19 @@ class LoadoutSink final : public RE::BSTEventSink<RE::TESEquipEvent>,
   RE::BSEventNotifyControl ProcessEvent(const RE::TESContainerChangedEvent* e,
                                         RE::BSTEventSource<RE::TESContainerChangedEvent>*) override {
     constexpr RE::FormID kPlayerRef = 0x14;
-    if (e && (e->newContainer == kPlayerRef || e->oldContainer == kPlayerRef)) WriteCombat("carried");
+    if (e && (e->newContainer == kPlayerRef || e->oldContainer == kPlayerRef)) {
+      WriteCombat("carried");
+      // The event comes before the engine moves the item, so the pass it queues reads the old weight: the tier lagged
+      // one change behind (game-6: ingots added, roll still unlocked; removed, roll locked and stuck there). A second
+      // pass once the burst has settled reads the weight as it is.
+      static std::atomic<bool> settling{false};
+      if (!settling.exchange(true))
+        std::thread([] {
+          std::this_thread::sleep_for(std::chrono::milliseconds(500));
+          settling = false;
+          WriteCombat("carried, settled");
+        }).detach();
+    }
     return RE::BSEventNotifyControl::kContinue;
   }
 };

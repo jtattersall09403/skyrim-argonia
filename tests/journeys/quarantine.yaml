@@ -1,19 +1,20 @@
-# 0.4 §b: after a new game, and after 1, 10 and 50 in-game days, only the allowed quests run (decision 0012).
+# 0.4 §b: after a new game, and after 1, 10 and 50 in-game days, only the allowlist's quests run (decision 0012) and
+# only our silence plays (the bridge's `quests` and `music` reads).
 # Time passes on the game's own clock (the runner's game_hours: the timescale raised, then put back).
 id: quarantine
 runner: 1
 scene: holding
 steps:
   - name: day-0
-    expect: [{quests_running: {allowed: data/quarantine/allowed-quests.json}, within: 0}]
+    expect: [{quests_running: {allowed: data/quarantine/allowed-quests.json}, within: 0}, {music: {allowed: [ARG_MusicSilence]}, within: 0}]
   - name: day-1
     do: [{game_hours: 24}]
-    expect: [{quests_running: {allowed: data/quarantine/allowed-quests.json}, within: 0}]
+    expect: [{quests_running: {allowed: data/quarantine/allowed-quests.json}, within: 0}, {music: {allowed: [ARG_MusicSilence]}, within: 0}]
   - name: day-10
     do: [{game_hours: 216}]
-    expect: [{quests_running: {allowed: data/quarantine/allowed-quests.json}, within: 0}]
+    expect: [{quests_running: {allowed: data/quarantine/allowed-quests.json}, within: 0}, {music: {allowed: [ARG_MusicSilence]}, within: 0}]
   - name: day-50
     do: [{game_hours: 960}]
-    expect: [{quests_running: {allowed: data/quarantine/allowed-quests.json}, within: 0}]
+    expect: [{quests_running: {allowed: data/quarantine/allowed-quests.json}, within: 0}, {music: {allowed: [ARG_MusicSilence]}, within: 0}]
   - name: still-here
     expect: [{read: [player], path: cell.editor_id, eq: ARG_HoldingCell}]

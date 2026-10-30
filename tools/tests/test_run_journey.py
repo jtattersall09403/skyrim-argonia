@@ -31,16 +31,29 @@ class Fake:
             self.lines.append(args[0])
             if args[0] == "IsPC1stPerson":
                 return {"output": "IsPC1stPerson >> 0.00\n"}
-            if args[0] == "sq":
-                return {"output": "ARG_StartQuest 10\nWIGreeting 0\n"}
             if args[0] == "nosuch":
                 raise BridgeError("console: Script command \"nosuch\" not found")
             return {"output": f"{args[0]} >> 1.00\n"}
         if cmd == "load":
             return {"loaded": args[0]}
+        if cmd == "quests":
+            return {"total": 3, "running": [{"id": "10000805", "editor_id": "ARG_StartQuest", "plugin": "Argonia.esm"},
+                                            {"id": "10000900", "editor_id": "ARG_Q_LF83", "plugin": "Argonia.esm"},
+                                            {"id": "0001A2B3", "editor_id": "WIGreeting", "plugin": "Skyrim.esm"}]}
+        if cmd == "music":
+            return {"current": {"id": "0001B0D2", "editor_id": "MUSExploreTundra", "name": ""}, "queue": []}
         if cmd == "global":
             return {"value": 0}
         return {}
+
+    def resolve_refs(self, text):
+        return text
+
+    def running_quests(self):
+        return self.call("quests")["running"]
+
+    def music(self):
+        return self.call("music")
 
     def pad(self, seq):
         self.x += 200.0
@@ -91,6 +104,12 @@ def test_quests_running_against_the_allowed_list(tmp_path):
     exp = {"quests_running": {"allowed": "data/quarantine/allowed-quests.json"}, "within": 0}
     rep = rj.Runner(Fake(), tmp_path / "out").run(journey(tmp_path, [{"name": "q", "expect": [exp]}]), "b")
     assert rep["steps"][0]["reason"].startswith("1 quests running") and "WIGreeting" in rep["steps"][0]["reason"]
+
+
+def test_music_against_the_allowed_types(tmp_path):
+    exp = {"music": {"allowed": ["ARG_MusicSilence"]}, "within": 0}
+    rep = rj.Runner(Fake(), tmp_path / "out").run(journey(tmp_path, [{"name": "m", "expect": [exp]}]), "b")
+    assert "MUSExploreTundra plays" in rep["steps"][0]["reason"]
 
 
 def test_three_identical_failures_stop(tmp_path, monkeypatch):

@@ -92,23 +92,17 @@ def _rot(yaw) -> list[float]:
 
 
 # --- the quarantine (0.4 §b, decision 0012) ---------------------------------------------------------------
-def quarantined(rows: list[dict], vanilla: set[str]) -> list[dict]:
-    """The scanned self-starting quests that decision 0012 quarantines: the base game's and the Creation Club's only.
-    A dependency mod's own start-game quests are its machinery (SkyUI's MCM, TK Dodge's controller, which gives the
-    roll's perk, the ship's input quest): shelling them broke the roll and the menus (game-6, 2026-10-30)."""
-    return [r for r in rows if r.get("plugin", r["formKey"].split(":", 1)[1]).lower() in vanilla]
+def quarantined(rows: list[dict], allowed: list[dict]) -> list[dict]:
+    """The scanned self-starting quests that decision 0012 quarantines: every one the allowlist does not name, by
+    plugin and editor id, whether the base game's, the Creation Club's or a mod's (planner ruling, game-7). The
+    allowlist keeps the dependency mods' controllers (TK Dodge's, which gives the roll's perk; SkyUI's MCM; the
+    ship's input), each with its reason; a story mod's quests are shelled (King of the Murkmire's)."""
+    keep = {(a["plugin"].lower(), a["edid"].lower()) for a in allowed}
+    return [r for r in rows
+            if (r.get("plugin", r["formKey"].split(":", 1)[1]).lower(), r["edid"].lower()) not in keep]
 
 
-def vanilla_plugins(data: Path) -> set[str]:
-    """The base game's masters and the Creation Club plugins present, lower case: load_order()'s leading part."""
-    order = load_order(data)
-    present = {p.name.lower() for p in Path(data).iterdir()}
-    ccc = Path(data).parent / "Skyrim.ccc"
-    cc = {n.strip().lower() for n in ccc.read_text().splitlines()} if ccc.exists() else set()
-    return {m.lower() for m in order if m.lower() in {o.lower() for o in su.OFFICIAL_MASTERS} | (cc & present)}
-
-
-def quarantine_layers(alloc: Allocator, scan: dict, resolver: Resolver, vanilla: set[str]) -> list[Layer]:
+def quarantine_layers(alloc: Allocator, scan: dict, resolver: Resolver) -> list[Layer]:
     start = json.loads((QUARANTINE / "start.json").read_text(encoding="utf-8"))
     allowed = json.loads((QUARANTINE / "allowed-quests.json").read_text(encoding="utf-8"))
     fk = alloc.form_key
@@ -146,12 +140,9 @@ def quarantine_layers(alloc: Allocator, scan: dict, resolver: Resolver, vanilla:
     })
     starter = Layer("quest:start", records)
 
-    keep = {k["edid"] for k in allowed["keepVanilla"]}
     never_cond = [{"function": "GetGlobalValue", "global": fk(never["edid"]), "op": "EqualTo", "value": 1}]
     shells: dict[str, dict] = {}
-    for row in quarantined(scan["quests"], vanilla) + allowed["prevent"]:
-        if row["edid"] in keep:
-            continue
+    for row in quarantined(scan["quests"], allowed["running"]) + allowed["prevent"]:
         # The inert shell: the master's id and EditorID only, no flags, stages, aliases or scripts, and an event
         # condition that is never true, so neither the new game nor the story manager can start it.
         shells[row["formKey"]] = {"type": "QUST", "override": True, "edid": row["edid"], "formKey": row["formKey"],
@@ -213,7 +204,7 @@ def load_order(data: Path) -> list[str]:
 def build(data: Path, scan: dict, index: Index, alloc: Allocator, extra: list[Layer] = ()) -> dict:
     resolver = Resolver(index)
     studio = json.loads((QUARANTINE / "start.json").read_text(encoding="utf-8"))["studio"]
-    layers = quarantine_layers(alloc, scan, resolver, vanilla_plugins(data)) + [sheet_layer(alloc, alloc.world, studio)] + list(extra)
+    layers = quarantine_layers(alloc, scan, resolver) + [sheet_layer(alloc, alloc.world, studio)] + list(extra)
     layers += regions_api.layers(alloc, alloc.world, regions_api.wrld_record(), resolver)  # 2.W3: regions, weather, climate
     from tools.argonia_world import fixtures, place_build  # 0.4 §d: the built places; the studio's fixture cells
     layers += place_build.layers(alloc, alloc.world, resolver, regions_api.wrld_record()["formKey"])

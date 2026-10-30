@@ -37,18 +37,26 @@ function Set-GameWindow {
   $docs = "$env:USERPROFILE\Documents\My Games\Skyrim Special Edition"
   $set = {
     param($file, $section, $values)
+    # The key is set inside its own section, and a copy of it under any other section is dropped: the first match
+    # anywhere had put bShowCompass=0 under [Display], and the game kept [Interface]'s bShowCompass=1 (game-7).
     $lines = [System.Collections.Generic.List[string]](Get-Content $file)
     foreach ($k in $values.Keys) {
-      $i = $lines.FindIndex([Predicate[string]]{ param($l) $l -match "^$([regex]::Escape($k))=" })
-      if ($i -ge 0) { $lines[$i] = "$k=$($values[$k])" }
-      else { $s = $lines.IndexOf("[$section]"); if ($s -lt 0) { $lines.Add("[$section]"); $s = $lines.Count - 1 }; $lines.Insert($s + 1, "$k=$($values[$k])") }
+      $pat = "^$([regex]::Escape($k))="
+      $cur = ''; $keep = [System.Collections.Generic.List[string]]::new()
+      foreach ($l in $lines) { if ($l -match '^\[(.+)\]$') { $cur = $Matches[1] }; if (-not ($l -match $pat -and $cur -ne $section)) { $keep.Add($l) } }
+      $lines = $keep
+      $s = $lines.IndexOf("[$section]"); if ($s -lt 0) { $lines.Add("[$section]"); $s = $lines.Count - 1 }
+      $e = $s + 1; while ($e -lt $lines.Count -and -not ($lines[$e] -match '^\[')) { $e++ }
+      $i = -1; for ($j = $s + 1; $j -lt $e; $j++) { if ($lines[$j] -match $pat) { $i = $j; break } }
+      if ($i -ge 0) { $lines[$i] = "$k=$($values[$k])" } else { $lines.Insert($s + 1, "$k=$($values[$k])") }
     }
     $lines | Set-Content $file -Encoding ASCII
   }
   & $set "$docs\SkyrimPrefs.ini" 'Display' @{ 'iSize W' = $b.Width; 'iSize H' = $b.Height; 'bFull Screen' = 0; 'bBorderless' = 1 }
   & $set "$docs\Skyrim.ini" 'General' @{ 'bAlwaysActive' = 1 }
   # No compass and no quest marker (1.2 §a, Morrowind's way): the player finds places by the chart and directions.
-  & $set "$docs\SkyrimPrefs.ini" 'Interface' @{ 'bShowCompass' = 0; 'bShowQuestMarkers' = 0 }
+  & $set "$docs\SkyrimPrefs.ini" 'Interface' @{ 'bShowCompass' = 0 }
+  & $set "$docs\SkyrimPrefs.ini" 'GamePlay' @{ 'bShowQuestMarkers' = 0; 'bShowFloatingQuestMarkers' = 0 }
   # Skyrim does not declare DPI awareness, so on a scaled desktop Windows enlarges its window past the screen edge.
   $layers = 'HKCU:\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers'
   New-Item -Path $layers -Force | Out-Null

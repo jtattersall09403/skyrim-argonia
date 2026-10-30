@@ -22,7 +22,8 @@ wait <seconds, at most 10>; game_hours <n> (time passes at a raised timescale, t
 timescale is put back); call [<command>, args...] (any bridge read, kept in the report).
 Expectations: read [<command>, args...] with path a.b.c and one of eq ne gt ge lt le contains not_contains;
 console <line> with contains / not_contains; event {kind, match} since the step began; moved {gt|lt: units} on the
-ground since the step began; quests_running {allowed: <json>} (the console's running-quest list against a file).
+ground since the step began; quests_running {allowed: <json>} (the bridge's running quests against the file's
+`running` list); music {allowed: [<edid>, ...]} (the music type playing is one of them, or none plays).
 
 Kept values (1.7): an expectation with `keep: <name>` stores what it read (a read with only `keep` always holds);
 a later comparison value `{kept: <name>}` compares against it, and `{name}` or `{name.2}` in an action's text is
@@ -172,7 +173,11 @@ class Runner:
             src = SCENES / f"{scene}.txt"
             if not src.exists():
                 raise StepFailed(f"no scene {src}")
-            subprocess.run([self.run_sh, "put", str(src), f"{GAME_ROOT}/{scene}.txt"], check=True, capture_output=True)
+            # refs as runtime ids: the game keeps no ref's editor id (tools/ref_ids.py, game-7)
+            self.out.mkdir(parents=True, exist_ok=True)
+            sent = self.out / f"scene-{scene}.txt"
+            sent.write_text(self.b.resolve_refs(src.read_text()))
+            subprocess.run([self.run_sh, "put", str(sent), f"{GAME_ROOT}/{scene}.txt"], check=True, capture_output=True)
             out = self.b.call("console", f"bat {scene}")["output"]
             time.sleep(2)  # a coc in the scene loads a cell
             return out
@@ -255,11 +260,21 @@ class Runner:
             return None if OPS[o](d, v) else f"moved {d:.0f} units on the ground, wanted {o} {v}"
         if "quests_running" in exp:
             allowed = json.loads((REPO / exp["quests_running"]["allowed"]).read_text())
-            ok = {q["edid"].lower() for q in allowed["running"] + allowed.get("keepVanilla", [])}
+            ok = {q["edid"].lower() for q in allowed["running"]}
+            ours = {p.lower() for p in allowed.get("ours", {}).get("plugins", [])}
             running = running_quests(self.b)
-            ctx.setdefault("notes", {})["running_quests"] = running
-            extra = sorted(q for q in running if q.lower() not in ok)
+            ctx.setdefault("notes", {})["running_quests"] = sorted(f"{q['editor_id']} ({q['plugin']})" for q in running)
+            extra = sorted({q["editor_id"] or f"{q['id']}:{q['plugin']}" for q in running
+                            if q["editor_id"].lower() not in ok and q["plugin"].lower() not in ours})
             return None if not extra else f"{len(extra)} quests running that the allowed list lacks: {', '.join(extra[:20])}"
+        if "music" in exp:
+            m = self.b.music()
+            ctx.setdefault("notes", {})["music"] = m
+            cur = m.get("current")
+            want = {w.lower() for w in exp["music"]["allowed"]}
+            if cur is None or cur.get("engine") or (cur.get("editor_id") or "").lower() in want:  # engine: NoMusic
+                return None
+            return f"music type {cur.get('editor_id') or cur.get('id')} plays, wanted one of {sorted(want)} or none"
         raise StepFailed(f"unknown expectation {exp}")
 
     def expect(self, exp: dict, ctx: dict):
@@ -331,7 +346,7 @@ class Runner:
 
 ACTIONS = {"pad": Runner._pad, "key": Runner._key, "console": Runner._console, "teleport": Runner._teleport,
            "wait": Runner._wait, "game_hours": Runner._game_hours, "call": Runner._call}
-EXPECTS = ("read", "console", "event", "moved", "quests_running")
+EXPECTS = ("read", "console", "event", "moved", "quests_running", "music")
 # The 0.2 §d bar (60 fps median, 45 fps 1% lows) as frame times, and the soak's flatness tolerances.
 SOAK_BARS = {"p50_ms": 1000 / 60, "p99_ms": 1000 / 45, "queue_growth": 5, "cosave_growth_bytes": 512}
 
@@ -405,15 +420,10 @@ def third_person(b):
     raise StepFailed("the camera stays in first person")
 
 
-def running_quests(b) -> list[str]:
-    """The running quests by editor id, from the console's `sqs`-free list: `sq` prints every started quest."""
-    out = b.call("console", "sq")["output"]
-    names = []
-    for line in out.splitlines():
-        word = line.strip().split(" ", 1)[0]
-        if word and word.replace("_", "").isalnum() and not word.isdigit() and word.lower() != "sq":
-            names.append(word)
-    return sorted(set(names))
+def running_quests(b) -> list[dict]:
+    """The running quests, from the bridge's `quests` read ({"editor_id", "plugin", ...}). Not the console's `sq`: its
+    output is the console buffer's tail, 1,567 "(Off)" lines with the running ones cut off (game-7, 2026-10-30)."""
+    return b.running_quests()
 
 
 def signature(rep: dict) -> str:

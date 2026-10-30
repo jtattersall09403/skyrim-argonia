@@ -203,6 +203,8 @@ class Bridge:
         self.heartbeat()
         cap = timeout or TIMEOUTS.get(command, DEFAULT_TIMEOUT)
         words = " ".join(str(a) for a in args)
+        if command in ("console", "teleport") and "ARG_" in words:  # the game keeps no ref's editor id (tools/ref_ids.py)
+            words = self.resolve_refs(words)
         tail = f" {command}" + (f" {words}" if words else "")  # never str.format: a view intent's JSON has braces
         if "\n" in tail or "\r" in tail:
             raise BridgeError(f"{command}: a request is one line")
@@ -214,6 +216,15 @@ class Bridge:
                 self._raise_if_down()
             raise BridgeError(f"{command}: {reply.get('error')}")
         return reply.get("result")
+
+    def resolve_refs(self, text: str) -> str:
+        """Every ref's editor id in the text as its runtime id (tools/ref_ids.py), for this launch's load order."""
+        if getattr(self, "_ref_fix", (None,))[0] != self.token():
+            if str(REPO) not in sys.path:
+                sys.path.insert(0, str(REPO))
+            from tools import ref_ids
+            self._ref_fix = (self.token(), ref_ids.resolver(lambda p: self.call("plugin", p)["prefix"]))
+        return "\n".join(self._ref_fix[1](line) for line in text.split("\n"))
 
     def heartbeat(self) -> None:
         """Refresh the machine's busy flag (C:\\argonia\\state\\busy, which idle-stop.ps1 reads) at most every
@@ -298,6 +309,14 @@ class Bridge:
         """The Papyrus VM's stacks: {"stacks": running + suspended, "running", "suspended", "waiting_latent",
         "waiting_functions", "overstressed"} (the soak's queue length)."""
         return self.call("papyrus-queue")
+
+    def running_quests(self) -> list[dict]:
+        """Every running quest: [{"id", "editor_id", "plugin", "stage"}] (the quarantine journey's list)."""
+        return self.call("quests")["running"]
+
+    def music(self) -> dict:
+        """The music type playing and its queue: {"current": {"id", "editor_id", "name"} | None, "queue": [...]}."""
+        return self.call("music")
 
     def save_bytes(self, name: str = "ArgoniaRest") -> dict:
         """The sizes of Saves\\<name>.ess and its co-save <name>.skse on the machine, in bytes (0 when absent)."""

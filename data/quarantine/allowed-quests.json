@@ -1,11 +1,29 @@
 {
- "schema": 1,
- "about": "Decision 0012 §2: the quests that may be running after a new game and after 1, 10 and 50 in-game days. Every other self-starting vanilla quest (start-game-enabled or started by the story manager, listed from the masters by ArgoniaGen quests) is generated as an inert shell override; the journey (0.4 §b) compares the running list with 'running'.",
+ "schema": 2,
+ "about": "Decision 0012 §2, as an allowlist (planner ruling, game-7, 2026-10-30): the quests that may run after a new game and after 1, 10 and 50 in-game days. Every other self-starting quest of the load order (start-game-enabled or started by the story manager, listed by ArgoniaGen quests), whether base game, Creation Club or a mod's, is generated as an inert shell override. A dependency mod's controller quest stays, with its reason per row; a story mod's quests do not (King of the Murkmire: we borrow its cells, never its quests). The journey (0.4 §b) compares the bridge's running quests with 'running'.",
+ "ours": {"plugins": ["Argonia.esm", "ArgoniaWorld.esm"], "why": "our own quests (the start, the block's quests from quest_gen.py, ARG_Q_LF83 first) are ours to run; the allowlist rules on everyone else's"},
  "running": [
-  {"edid": "ARG_StartQuest", "why": "our start: new game to the holding cell (0.4 §b)"}
+  {"edid": "ARG_StartQuest", "plugin": "Argonia.esm", "why": "our start: the new game to the holding cell (0.4 §b)"},
+  {"edid": "StyyTKDodgeControllerQuest", "plugin": "TKDodgeAddon.esp", "why": "TK Dodge's controller: it gives the roll's perk (shelled, the roll went, game-6)"},
+  {"edid": "SKI_ConfigManagerInstance", "plugin": "SkyUI_SE.esp", "why": "SkyUI's MCM: registers every mod's menu"},
+  {"edid": "SKI_ConfigMenuInstance", "plugin": "SkyUI_SE.esp", "why": "SkyUI's own MCM page; its properties point at the other SKI_ quests"},
+  {"edid": "SKI_SettingsManagerInstance", "plugin": "SkyUI_SE.esp", "why": "SkyUI's settings store, read by its menus"},
+  {"edid": "SKI_MainInstance", "plugin": "SkyUI_SE.esp", "why": "SkyUI's version and menu-file checks"},
+  {"edid": "SKI_WidgetManagerInstance", "plugin": "SkyUI_SE.esp", "why": "SkyUI's widget host, a property of its MCM page"},
+  {"edid": "SKI_ActiveEffectsWidgetInstance", "plugin": "SkyUI_SE.esp", "why": "a property of SkyUI's MCM page (a shell has no script, so the page would read None); the widget is SkyUI's, off in its MCM, and our HUD replaces it in Part 5"},
+  {"edid": "SKI_FavoritesManagerInstance", "plugin": "SkyUI_SE.esp", "why": "a property of SkyUI's MCM page, as above; the favourites menu is reviewed in Part 5"},
+  {"edid": "Precision_MCM_Quest", "plugin": "Precision.esp", "why": "Precision's MCM: the combat map's tuned hit mod (0019)"},
+  {"edid": "TrueDirectionalMovement_MCM_Quest", "plugin": "TrueDirectionalMovement.esp", "why": "True Directional Movement's MCM: the lock-on and the movement the combat map tunes"},
+  {"edid": "TrueHUD_MCM_Quest", "plugin": "TrueHUD.esl", "why": "TrueHUD's MCM: the lock-on target bars"},
+  {"edid": "OCPA", "plugin": "OCPA.esl", "why": "One Click Power Attack's controller: the heavy attack on its own input"},
+  {"edid": "aaaMagicConfigQuest", "plugin": "Magic.esp", "why": "the magic mod's config controller"},
+  {"edid": "aaaShipQuest", "plugin": "Sailable Ship.esm", "why": "the ship's controller (boats, the owner brief)"},
+  {"edid": "aaaShipUpdateQuest", "plugin": "Sailable Ship.esm", "why": "the ship's update loop"},
+  {"edid": "aaaShipInputQuest", "plugin": "Sailable Ship.esm", "why": "the ship's input quest (shelled, the helm went dead, game-6)"},
+  {"edid": "EVGNPCDoorQuest", "plugin": "EVGAnimatedTraversal.esl", "why": "Animated Traversal's controller: people open doors with their animation"}
  ],
- "keepVanilla": [],
  "prevent": [
   {"edid": "MQ101", "formKey": "03372B:Skyrim.esm", "why": "the Helgen intro; the new-game flow starts it, no flag does"}
- ]
+ ],
+ "shelledOnPurpose": "Not allowed, so shelled: King of the Murkmire's 29 (a story mod), Black Marsh.esm's 01Captain (a story mod), _ResourcePack's ferry, carriage, spell-tome and aloe injectors (vanilla-style travel and list edits), evgSIRENROOT's quest (content, not a controller), and every base-game and Creation Club self-starting quest."
 }

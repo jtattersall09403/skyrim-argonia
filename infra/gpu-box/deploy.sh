@@ -4,9 +4,9 @@
 # 1. make plugin: out/Argonia.esm and out/ArgoniaWorld.esm (skipped with --no-plugin);
 # 2. stack.py stage + push: the profile with the db's mod settings and the deferred rows our ESMs master;
 # 3. the game killed, then skse_build.sh: ArgoniaCore.dll and ArgoniaBridge.dll built with MSVC into MO2;
-# 4. the ESMs to C:\argonia\ours (sent only when their hash changed) and the scenes (tests/scenes/*.txt) to the game's
-#    folder, where `bat <id>` reads them;
+# 4. the ESMs to C:\argonia\ours (sent only when their hash changed);
 # 5. bridge.py launch --fresh: the profile laid again, our DLLs and ESMs copied in (bridge.ps1 prepare), main menu;
+#    then the scenes (tests/scenes/*.txt, refs as runtime ids by tools/ref_ids.py) to the game's folder for `bat <id>`;
 # 6. base_save.py: a new game, the quarantine start, the studio character in the holding cell, saved as argoniabase.
 # Every step prints its seconds; the last line is DEPLOY OK.
 set -euo pipefail
@@ -35,13 +35,17 @@ send_esms() {
   done
   local ps  # the machine-side helpers too: a --no-stage deploy left an old stack.ps1 there (no compass line, game-6)
   for ps in stack.ps1 bridge.ps1; do "$run" put "$here/$ps" "C:/argonia/infra/$ps" >/dev/null; done
+}
+send_scenes() {  # after the launch: a ref is named by its runtime id, the plugin's prefix read from the game (game-7)
+  rm -rf out/scenes; "$PY" tools/ref_ids.py render out/scenes
   local sc
-  for sc in tests/scenes/*.txt; do
+  for sc in out/scenes/*.txt; do
     "$run" put "$sc" "C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/$(basename "$sc")" >/dev/null
   done
-  echo "$(ls tests/scenes/*.txt | wc -l) scenes sent"
+  echo "$(ls out/scenes/*.txt | wc -l) scenes sent"
 }
-step "send ESMs, scenes and helpers" send_esms
+step "send ESMs and helpers" send_esms
 step "launch" "$PY" tools/bridge.py launch --fresh
+step "send scenes" send_scenes
 [ $base = 1 ] && step "base save" "$PY" "$here/base_save.py"
 echo "DEPLOY OK in $(( SECONDS - t0 )) s"

@@ -48,6 +48,8 @@ reply) or `Bridge().call(command, *args)` (the `result`, or `BridgeError` / `Gam
 | `time [hour]` | the calendar; with an hour, sets GameHour and reads it back | an hour outside [0, 24); the hour did not take |
 | `weather [id]` | the current and last weather; with one, `ForceWeather` and reads it back | not a weather; the sky did not take it |
 | `quest <id/edid>` | stage, running, enabled, completed | not a quest |
+| `quests` | every running quest (`TESDataHandler`'s quest array, enabled as the console's `GetQuestRunning` reads it; CommonLib's `IsRunning()` is only "not stopping", true for 2,385 idle quests): id, editor id, plugin, stage; and `total`. The quarantine journey's list: the console's `sq` came back as the buffer's tail, 1,567 `(Off)` lines with the running ones cut off (game-7). `Bridge.running_quests()` | no data handler yet |
+| `music` | `BSMusicManager`'s current music type and its queue (id, editor id). The quarantine journey's music read. `Bridge.music()` | no music manager yet |
 | `global <id/edid>` | its value | not a global |
 | `av <name> [player/ref]` | current, base, permanent | no such actor value or actor |
 | `graph <player/ref> <name>...` | each behaviour graph variable as bool, int and float; null for a name no graph knows (game-3, 2026-10-30: `bIsDodging` times a roll) | no actor reference; fewer than two args |
