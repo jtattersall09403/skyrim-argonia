@@ -47,6 +47,7 @@ static class Generate
                 case "CONT": ItemWriters.Write(mod, r); break;
                 case "BOOK": ItemWriters.Write(mod, r); break;
                 case "ALCH": ItemWriters.Write(mod, r); break;
+                case "PACK": PackageRecords.Write(mod, r, data); break;
                 case "PERK": PerkRecords.Write(mod, r); break;
                 case "NPC_" or "ECZN": CombatRecords.Write(mod, r); break;
                 case "ACTI" or "GMST": ActivatorRecords.Write(mod, r); break;
