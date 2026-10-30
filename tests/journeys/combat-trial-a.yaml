@@ -18,7 +18,7 @@ steps:
   - name: sheet-and-perk-lock   # unburdened: our burden tier leaves TK Dodge's perk on the player; the sheet is up
     do: [{console: "player.unequipall"}, {console: "player.additem ARG_Weap_SteelSword 1"}, {console: "player.equipitem ARG_Weap_SteelSword"}, {wait: 2}]
     expect:
-      - {console: "player.hasperk TKDodgeAddon.esp|0x809", contains: ">> 1"}
+      - {console: "player.hasperk TKDodgeAddon.esp|0x809", contains: ">> 1"}   # the client writes the runtime id (tools/bridge.py)
       - {read: [core, GetAttribute, strength], path: value, ge: 1}
       - {read: [logfile, ArgoniaCore, "combat: carriers"], path: found, eq: true}
   - name: roll-event            # the pad's roll reaches the graph: our behaviour build carries TK Dodge's event

@@ -26,7 +26,7 @@ steps:
     expect: [{read: [core, WakePoint], path: value, ne: "", keep: wake, within: 10}]
   - name: earn                # blows on the deserter (its health raised as setup)
     do:
-      - {console: "{opp}.setav health 2000"}
+      - {console: '"{opp}".setav health 2000'}
       - {console: "player.moveto {opp} 0 -110 0"}
       - {console: "player.setangle z 0"}
       - {pad: "RB:120 wait:1500"}
@@ -37,7 +37,7 @@ steps:
   - name: die                 # the deserter's attacks; no death camera, no load
     do:
       - {console: "player.forceav health 5"}
-      - {console: "{opp}.startcombat player"}
+      - {console: '"{opp}".startcombat player'}
       - {wait: 10}
     expect:
       - {log: {name: ArgoniaCore, contains: "death: fell"}, within: 20}
@@ -50,7 +50,7 @@ steps:
       - {read: [player], path: dead, eq: false}
   - name: take-pile           # stand on the pile, look down at it, activate
     do:
-      - {console: "{opp}.stopcombat"}
+      - {console: '"{opp}".stopcombat'}
       - {teleport: "pos {pile.0} {pile.1} {pile.2}"}
       - {console: "player.setangle x 80"}
       - {wait: 2}
@@ -63,7 +63,7 @@ steps:
   - name: second-death        # the pile is dropped again: one pile in the form map
     do:
       - {console: "player.forceav health 5"}
-      - {console: "{opp}.startcombat player"}
+      - {console: '"{opp}".startcombat player'}
       - {wait: 10}
     expect:
       - {log: {name: ArgoniaCore, contains: "death: woke"}, within: 20}
@@ -71,7 +71,7 @@ steps:
   - name: third-death-replaces  # dying again with the pile untaken replaces it: still one
     do:
       - {console: "player.forceav health 5"}
-      - {console: "{opp}.startcombat player"}
+      - {console: '"{opp}".startcombat player'}
       - {wait: 10}
     expect:
       - {log: {name: ArgoniaCore, contains: "death: woke"}, within: 20}

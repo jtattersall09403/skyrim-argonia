@@ -234,6 +234,8 @@ class Bridge:
         words = " ".join(str(a) for a in args)
         if command in ("console", "teleport", "refs", "dev-grow", "actors") and "ARG_" in words:  # the game keeps no ref's editor id (tools/ref_ids.py)
             words = self.resolve_refs(words)
+        if "|0x" in words:  # a plugin-relative form (<file>.esp|0x809): the console takes none (game-13)
+            words = self.resolve_plugin_forms(words)
         tail = f" {command}" + (f" {words}" if words else "")  # never str.format: a view intent's JSON has braces
         if "\n" in tail or "\r" in tail:
             raise BridgeError(f"{command}: a request is one line")
@@ -254,6 +256,19 @@ class Bridge:
             from tools import ref_ids
             self._ref_fix = (self.token(), ref_ids.resolver(lambda p: self.call("plugin", p)["prefix"]))
         return "\n".join(self._ref_fix[1](line) for line in text.split("\n"))
+
+    def resolve_plugin_forms(self, text: str) -> str:
+        """`<file>.esp|0x<hex>` as its runtime id for this launch's load order (the `plugin` read's prefix), quoted
+        when it calls a function, as the console requires (tools/journey_lint.py)."""
+        if str(REPO) not in sys.path:
+            sys.path.insert(0, str(REPO))
+        from tools import ref_ids
+        from tools.journey_lint import PLUGIN_FORM
+
+        def one(m):
+            rid = ref_ids.runtime_id(self.call("plugin", m.group(1))["prefix"], int(m.group(2), 16))
+            return f'"{rid}"' if m.string[m.end():m.end() + 1] == "." else rid
+        return PLUGIN_FORM.sub(one, text)
 
     def heartbeat(self) -> None:
         """Refresh the machine's busy flag (C:\\argonia\\state\\busy, which idle-stop.ps1 reads) at most every

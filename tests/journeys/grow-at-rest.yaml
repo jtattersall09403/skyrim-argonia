@@ -21,9 +21,9 @@ steps:
       - {read: [av, OneHanded, player], path: base, keep: oh0}
   - name: arm
     do:
-      - {console: "{opp}.stopcombat"}
-      - {console: "{opp}.setav aggression 0"}
-      - {console: "{opp}.setav health 2000"}
+      - {console: '"{opp}".stopcombat'}
+      - {console: '"{opp}".setav aggression 0'}
+      - {console: '"{opp}".setav health 2000'}
       - {console: "player.moveto {opp} 0 -110 0"}
       - {console: "player.setangle z 0"}
       - {pad: "RB:120 wait:1500"}
@@ -43,7 +43,7 @@ steps:
       - {event: {kind: menu, match: LevelUp Menu, absent: true}}
   - name: rest-no-pending     # with no level pending the rest saves and no sitting opens
     do:
-      - {console: "{opp}.stopcombat"}
+      - {console: '"{opp}".stopcombat'}
       - {console: "player.moveto ARG_Ref_ClaywaterStationAmbushPlayer 0 -90 0"}
       - {console: "player.setangle z 0"}
       - {console: "player.setangle x 40"}
@@ -56,7 +56,7 @@ steps:
       - {read: [core, SittingOpen], path: value, eq: false}
       - {read: [core, GetLevel], path: value, eq: {kept: lvl0}}
   - name: pending-level       # blows until a level is pending; the level still waits for rest
-    do: [{call: [dev-grow, "{opp}", "1", "2000"]}, {console: "{opp}.stopcombat"}]
+    do: [{call: [dev-grow, "{opp}", "1", "2000"]}, {console: '"{opp}".stopcombat'}]
     expect:
       - {read: [core, GetPendingLevels], path: value, eq: 1}
       - {read: [core, GetLevel], path: value, eq: {kept: lvl0}}

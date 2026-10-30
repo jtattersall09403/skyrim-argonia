@@ -13,19 +13,19 @@ steps:
     expect:
       - {read: [actors, "4000"], path: listed.0.ref, keep: opp}
       - {read: [av, VoicePoints, player], path: current, keep: vp}
-  - name: pinned-skills       # never mirrored
+  - name: pinned-skills       # never mirrored; the console's names (the av read refused OneHanded in game-13)
     expect:
-      - {read: [av, OneHanded, player], path: base, eq: 0}
-      - {read: [av, TwoHanded, player], path: base, eq: 0}
-      - {read: [av, Marksman, player], path: base, eq: 0}
+      - {console: "player.getbaseav OneHanded", contains: ">> 0.00"}
+      - {console: "player.getbaseav TwoHanded", contains: ">> 0.00"}
+      - {console: "player.getbaseav Marksman", contains: ">> 0.00"}
   - name: carriers-move-on-equip
     do: [{console: "player.unequipitem ARG_Weap_SteelSword"}, {wait: 2}]
     expect: [{read: [av, VoicePoints, player], path: current, ne: {kept: vp}}]
   - name: arm                 # the deserter calmed and held, the player behind it, weapon drawn
     do:
       - {console: "player.equipitem ARG_Weap_SteelSword"}
-      - {console: "{opp}.stopcombat"}
-      - {console: "{opp}.setav aggression 0"}
+      - {console: '"{opp}".stopcombat'}
+      - {console: '"{opp}".setav aggression 0'}
       - {console: "player.moveto {opp} 0 -110 0"}
       - {console: "player.setangle z 0"}
       - {pad: "RB:120 wait:1500"}
@@ -35,7 +35,7 @@ steps:
       - {call: [dev-set, SetSkill, longBlade, "5"]}
       - {call: [dev-set, SetAttribute, strength, "40"]}
       - {call: [dev-set, SetAttribute, agility, "40"]}
-      - {console: "{opp}.setav health 2000"}
+      - {console: '"{opp}".setav health 2000'}
       - {wait: 1}
       - {pad: "RB:120 wait:1200"}
     expect:
@@ -47,7 +47,7 @@ steps:
       - {call: [dev-set, SetSkill, longBlade, "100"]}
       - {call: [dev-set, SetAttribute, strength, "100"]}
       - {call: [dev-set, SetAttribute, agility, "100"]}
-      - {console: "{opp}.setav health 2000"}
+      - {console: '"{opp}".setav health 2000'}
       - {wait: 1}
       - {pad: "RB:120 wait:1200"}
     expect:

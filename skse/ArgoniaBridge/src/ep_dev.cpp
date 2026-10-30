@@ -10,6 +10,7 @@
 //   ltex                          the land texture under the player
 //   logfile <name> <text>         an SKSE log beside ours: its line count and the lines containing the text
 //   trace start <frames> [var..]  arms a per-frame trace of the player (position, health, ghost or any named graph
+//   vocab                         the console/script function names and the av names, for the journey linter
 //   trace read [samples]          bool true = an i-frame); read gives the window (first/last i-frame frame)
 #include "bridge.h"
 #include "dev.h"
@@ -267,6 +268,36 @@ std::string trace(const Request& req) {
   return reply_error("trace", usage);
 }
 
+// --- vocab -----------------------------------------------------------------------------------------------------
+// vocab: the names a journey may use, for the journey linter's cache (tools/fetch_vocab.py; lane journey-lint):
+// the console and script functions (CommonLib's SCRIPT_FUNCTION tables: name, short name, parameter count, whether
+// a calling reference is allowed) and every actor value name the `av` read accepts (GetActorValueName round-trips).
+// No placed ref's editor id: the game keeps none (game-7); the linter reads those from the world database.
+std::string vocab(const Request&) {
+  return on_main_thread("vocab", [] {
+    std::string fns = "[";
+    auto table = [&fns](RE::SCRIPT_FUNCTION* first, std::size_t n, const char* kind) {
+      for (std::size_t i = 0; first && i < n; ++i) {
+        const auto& f = first[i];
+        if (!f.functionName || !*f.functionName) continue;
+        if (fns.size() > 1) fns += ",";
+        fns += JsonObject().str("name", f.functionName).str("short", f.shortName ? f.shortName : "")
+                   .integer("params", f.numParams).boolean("ref", f.referenceFunction).str("kind", kind).done();
+      }
+    };
+    table(RE::SCRIPT_FUNCTION::GetFirstConsoleCommand(), RE::SCRIPT_FUNCTION::Commands::kConsoleCommandsEnd, "console");
+    table(RE::SCRIPT_FUNCTION::GetFirstScriptCommand(), RE::SCRIPT_FUNCTION::Commands::kScriptCommandsEnd, "script");
+    std::string avs = "[";
+    for (std::uint32_t i = 0; i < static_cast<std::uint32_t>(RE::ActorValue::kTotal); ++i) {
+      const char* n = RE::ActorValueList::GetActorValueName(static_cast<RE::ActorValue>(i));
+      if (!n || !*n) continue;
+      if (avs.size() > 1) avs += ",";
+      avs += json_string(n);
+    }
+    return reply_ok("vocab", JsonObject().raw("functions", fns + "]").raw("actor_values", avs + "]").done());
+  }, 10s);
+}
+
 const Register r_dev_set{"dev-set", &dev_set};
 const Register r_dev_grow{"dev-grow", &dev_grow};
 const Register r_tdm{"tdm-target", &tdm_target};
@@ -275,6 +306,7 @@ const Register r_ini{"ini", &ini};
 const Register r_ltex{"ltex", &ltex};
 const Register r_logfile{"logfile", &logfile};
 const Register r_trace{"trace", &trace};
+const Register r_vocab{"vocab", &vocab};
 
 }  // namespace
 

@@ -145,7 +145,27 @@ def dry(path: pathlib.Path) -> str:
                     raise SystemExit(f"{path}: step {s['name']}: compares with {v['kept']!r} before it is kept")
             if "keep" in e:
                 kept.add(e["keep"])
-    return f"{path.name}: {len(j['steps'])} steps, scene {j.get('scene')}, {len(kept)} kept values: ok"
+    from tools import journey_lint
+    vocab = _vocab()
+    errs = journey_lint.lint(j, vocab)
+    if errs:
+        raise SystemExit(f"{path}: lint:\n  " + "\n  ".join(errs))
+    return f"{path.name}: {len(j['steps'])} steps, scene {j.get('scene')}, {len(kept)} kept values: ok" + (
+        "" if vocab else " (lint: static only, no vocab cache)")
+
+
+_VOCAB: list = []
+
+
+def _vocab():
+    """The linter's vocabulary cache, read once; one warning when it is absent (tools/fetch_vocab.py fills it)."""
+    if not _VOCAB:
+        from tools import journey_lint
+        _VOCAB.append(journey_lint.load_vocab())
+        if _VOCAB[0] is None:
+            print(f"warning: no {journey_lint.vocab_path()}: the journey lint checks the console grammar only "
+                  "(fill it on the game machine: python3 tools/fetch_vocab.py)", file=sys.stderr)
+    return _VOCAB[0]
 
 
 def _refs(value) -> list[str]:
