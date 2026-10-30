@@ -39,6 +39,8 @@ def test_shape_and_units():
     assert s["formKey"] != z["formKey"]
     with pytest.raises(ValueError):
         pk.sleep(a, "ARG_Pack_C", "k", REF, 3.0, 25, 8)
+    home = pk.sleep(a, "ARG_Pack_D", "k", REF, 3.0, 21, 9, cell_form_key="893374:King of the Murkmire.esp")
+    assert home["location"] == {"cell": "893374:King of the Murkmire.esp", "radius": 0}  # in cell: her own bed there
 
 
 @pytest.mark.skipif(not (DATA / "Skyrim.esm").exists() or not GEN.exists() or not DOTNET.exists(),

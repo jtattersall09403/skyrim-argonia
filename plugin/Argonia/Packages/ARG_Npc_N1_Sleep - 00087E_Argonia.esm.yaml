@@ -34,9 +34,8 @@ Data:
     MutagenObjectType: PackageDataLocation
     Location:
       Target:
-        MutagenObjectType: LocationTarget
-        Link: 00087D:Argonia.esm
-      Radius: 560
+        MutagenObjectType: LocationCell
+        Link: 0C702C:King of the Murkmire.esp
 - Key: 1
   Value:
     MutagenObjectType: PackageDataTarget

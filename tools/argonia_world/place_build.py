@@ -173,7 +173,7 @@ def _items(ctx, world, refs) -> None:
                               "model": model.replace("/", "\\")}
 
 
-def _people(ctx, world, refs) -> None:
+def _people(ctx, world, refs, cells) -> None:
     from tools.argonia_world import packages
     from tools.argonia_world.combat_records import _studio_class
     from tools.argonia_world.hooks_records import SPEAKER_EDID
@@ -198,7 +198,7 @@ def _people(ctx, world, refs) -> None:
                 if bed is None:
                     raise ValueError(f"{p.npc_id}: no bed of theirs realises {npc.home_home_socket_id}")
                 pk = packages.sleep(ctx.alloc, f"{edid}_Sleep", f"{p.npc_id}#sleep", ref_form_key(ctx.alloc, bed),
-                                    p.sandbox_radius_m, start, span)
+                                    p.sandbox_radius_m, start, span, cell_form_key=_interior_key(ctx.alloc, cells.get(bed.cell_id)))
             else:
                 n = int(b.spot.split(":")[1])
                 work = [w.socket_id for w in world.rows("npc_work", npc_id=p.npc_id) if w.ord == n]
@@ -239,7 +239,7 @@ def place_records(alloc, world, resolver, ground, wrld_form_key: str, place_id: 
     ctx = _Ctx(alloc, world, resolver, ground)
     _items(ctx, world, refs)
     if any(r.npc_id for r in refs):
-        _people(ctx, world, refs)
+        _people(ctx, world, refs, cells)
     out: list[dict] = []
     ext_cells: dict[tuple[int, int], list[dict]] = {}
     for cid, c in sorted(cells.items()):
@@ -281,19 +281,45 @@ def check_people(records: list[dict]) -> None:
         raise ValueError("people records short of a vanilla NPC_'s AI fields: " + "; ".join(bad))
 
 
+def _interior_key(alloc, c) -> str | None:
+    """The CELL FormKey of an interior build cell (a home a sleep package can name), None outdoors."""
+    if c is None or c.kind == "exterior":
+        return None
+    return c.host_form_key if c.kind == "borrowed" else alloc.form_key(c.edid, "CELL", c.id)
+
+
 def check_package_targets(records: list[dict]) -> None:
     """Every PACK location ref is a persistent reference: ours, or an override of a master's with the Persistent
     flag set. The engine resolves a package's target while its cell is unloaded only when the ref is persistent
-    (game-7: Livia's sleep package at a temporary borrowed bed gave GetCurrentAIPackage -1)."""
-    persistent = {}
+    (game-7: Livia's sleep package at a temporary borrowed bed gave GetCurrentAIPackage -1). A location "in cell"
+    (the native sleep, game-10) names a CELL of these records holding a bed ref owned by every NPC_ that runs it."""
+    persistent, cell_owners = {}, {}
     for rec in records:
         if rec.get("type") == "CELL":
             for ref in rec.get("refs", []):
                 persistent[ref["formKey"]] = bool(ref.get("persistent"))
-    bad = [f"{r['edid']} -> {r['location']['ref']}" for r in records
-           if r.get("type") == "PACK" and not persistent.get(r["location"]["ref"], False)]
+            cell_owners[rec.get("formKey")] = {ref["owner"] for ref in rec.get("refs", []) if ref.get("owner")}
+    runners: dict[str, list[str]] = {}
+    for rec in records:
+        if rec.get("type") == "NPC_":
+            for pk in rec.get("packages") or []:
+                runners.setdefault(pk, []).append(rec["formKey"])
+    bad = []
+    for r in records:
+        if r.get("type") != "PACK":
+            continue
+        loc = r["location"]
+        if "cell" in loc:
+            if loc["cell"] not in cell_owners:
+                bad.append(f"{r['edid']} -> cell {loc['cell']}: not a cell of these records")
+            for npc in runners.get(r["formKey"], []):
+                if npc not in cell_owners.get(loc["cell"], set()):
+                    bad.append(f"{r['edid']} -> cell {loc['cell']}: no ref there owned by {npc}")
+        elif not persistent.get(loc["ref"], False):
+            bad.append(f"{r['edid']} -> {loc['ref']}: not persistent")
     if bad:
-        raise ValueError("package targets that are not persistent references of ours: " + "; ".join(bad))
+        raise ValueError("package targets that are not persistent references of ours, or homes without the sleeper's "
+                         "own bed: " + "; ".join(bad))
 
 
 def _cell_keys():

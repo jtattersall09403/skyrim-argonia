@@ -34,9 +34,8 @@ Data:
     MutagenObjectType: PackageDataLocation
     Location:
       Target:
-        MutagenObjectType: LocationTarget
-        Link: 8933BE:King of the Murkmire.esp
-      Radius: 420
+        MutagenObjectType: LocationCell
+        Link: 893374:King of the Murkmire.esp
 - Key: 1
   Value:
     MutagenObjectType: PackageDataTarget

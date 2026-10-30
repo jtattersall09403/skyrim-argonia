@@ -31,6 +31,11 @@ def sandbox(alloc, edid, entity_key, ref_form_key, radius_m, start_hour, hours) 
     return _record(alloc, edid, entity_key, SANDBOX_TEMPLATE, [], ref_form_key, radius_m, start_hour, hours)
 
 
-def sleep(alloc, edid, entity_key, ref_form_key, radius_m, start_hour, hours) -> dict:
-    """Sleep in a bed found within radius_m of a placed reference (vanilla sleep packages carry WeaponsUnequipped)."""
-    return _record(alloc, edid, entity_key, SLEEP_TEMPLATE, ["WeaponsUnequipped"], ref_form_key, radius_m, start_hour, hours)
+def sleep(alloc, edid, entity_key, ref_form_key, radius_m, start_hour, hours, cell_form_key: str | None = None) -> dict:
+    """Sleep the native way (vanilla sleep packages carry WeaponsUnequipped): with `cell_form_key`, Location is "in cell"
+    (the sleeper's home interior) and the template's Target finds a bed the sleeper owns there (game-10); else a bed
+    within radius_m of a placed reference (outdoors, where no cell is a home)."""
+    rec = _record(alloc, edid, entity_key, SLEEP_TEMPLATE, ["WeaponsUnequipped"], ref_form_key, radius_m, start_hour, hours)
+    if cell_form_key:
+        rec["location"] = {"cell": cell_form_key, "radius": 0}
+    return rec

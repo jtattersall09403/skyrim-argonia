@@ -20,3 +20,24 @@ def test_temporary_or_missing_target_fails():  # the failure it was added for, p
         check_package_targets(_recs(False))
     with pytest.raises(ValueError, match="not persistent"):
         check_package_targets(_recs(True)[:1])
+
+
+HOME = "893374:King of the Murkmire.esp"
+NPC = "000886:Argonia.esm"
+
+
+def _home(owner):
+    return [{"type": "PACK", "edid": "ARG_Npc_T_Sleep", "formKey": "000885:Argonia.esm", "location": {"cell": HOME, "radius": 0}},
+            {"type": "NPC_", "formKey": NPC, "packages": ["000885:Argonia.esm"]},
+            {"type": "CELL", "formKey": HOME, "refs": [{"formKey": BED, "persistent": True, "owner": owner}]}]
+
+
+def test_sleep_in_home_cell_with_own_bed_passes():  # the native sleep (game-10): in cell, the template finds her bed
+    check_package_targets(_home(NPC))
+
+
+def test_home_cell_without_the_sleepers_bed_fails():
+    with pytest.raises(ValueError, match="no ref there owned by"):
+        check_package_targets(_home("000999:Argonia.esm"))
+    with pytest.raises(ValueError, match="not a cell of these records"):
+        check_package_targets(_home(NPC)[:2])
