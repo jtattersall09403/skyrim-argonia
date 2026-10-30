@@ -162,9 +162,13 @@ void ResetActors(const std::vector<ac::respawn::ActorId>& ids) {
     // An actor never moved by the engine has no starting-position extra, so MoveToEditorLocation refuses (game-16:
     // the ambush deserter stayed 2888 units off); its placement as the data left it is the same spot.
     auto& homes = Get().homes;
-    if (auto h = homes.find(id); h != homes.end() && h->second.cell)
-      a->MoveTo_Impl(RE::ObjectRefHandle(), h->second.cell, h->second.world, h->second.pos, h->second.rot);
-    else
+    auto h = homes.find(id);
+    const bool same = h != homes.end() && (h->second.world ? a->GetWorldspace() == h->second.world
+                                                           : a->GetParentCell() == h->second.cell);
+    if (same) {  // an exterior actor changes cell as it is placed, as one that walks does
+      a->SetPosition(h->second.pos, true);
+      a->SetAngle(h->second.rot);
+    } else
       SKSE::log::warn("respawn: {:08X} has no editor location; left where it stands", id);
   }
   if (!ids.empty()) SKSE::log::info("respawn: {} actors reset", ids.size());
