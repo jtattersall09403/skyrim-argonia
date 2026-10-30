@@ -1,5 +1,5 @@
 {
  "cells": "world.SAMPLE",
- "sha256": "d53e7471466f961125f51bf63f01345f8723140bda57d19c095f07300ca5b75f",
- "measured": "2026-10-30, two builds identical; the WRLD EditorID renamed ArgoniaWorld -> ARG_Province (KotM's worldspace is also ArgoniaWorld); 2.W2's designed water and regrade, on 2.W3's REGN shells, XCLR and road paint"
+ "sha256": "0e319eafda84c1bf1abd8268ae91683a23e62f8060ca9e056565007477f95dd3",
+ "measured": "2026-10-30, re-pinned deliberately: vegetation now in the sample cells (4 cells, 81 refs); 2026-10-30, two builds identical; the WRLD EditorID renamed ArgoniaWorld -> ARG_Province (KotM's worldspace is also ArgoniaWorld); 2.W2's designed water and regrade, on 2.W3's REGN shells, XCLR and road paint"
 }

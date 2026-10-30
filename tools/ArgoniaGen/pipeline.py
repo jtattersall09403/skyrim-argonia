@@ -5,7 +5,7 @@
                          (out/), serialise it with Spriggit into plugin/Argonia/; build the generated ground,
                          out/ArgoniaWorld.esm (decision 0031: never serialised; the terrain is rebuilt only when its
                          code or inputs change) and print its sha256
-    pipeline.py vegetation  (2.W4 §a, opt-in) out/ArgoniaWorld.esm with the province's vegetation REFRs spliced in
+    pipeline.py vegetation  (2.W4 §a; `plugin` and the gate's sample build already include it) out/ArgoniaWorld.esm with the province's vegetation REFRs spliced in
                          (tools/argonia_world/vegetation; its L1 checks and the spliced plugin's read-back)
     pipeline.py navmesh  the province's navmesh (tools/navmesh), then out/ArgoniaWorld.esm with its NAVM and NAVI
     pipeline.py check    the FormID table append-only; every design piece resolved; regenerate twice into
@@ -242,7 +242,7 @@ def vegetation(into: Path, sample: bool) -> Path:
     return d
 
 
-def world(data: Path, into: Path, sample: bool, nav: Path | None = None, veg: bool = False) -> Path:
+def world(data: Path, into: Path, sample: bool, nav: Path | None = None, veg: bool = True) -> Path:
     """terrain cells -> world.json -> ArgoniaWorld.esm under `into`; the full grid's cells are reused while the
     stamp holds. `nav`: a built navmesh (tools/navmesh) whose NAVM and NAVI go in too (`make navmesh`)."""
     into.mkdir(parents=True, exist_ok=True)
@@ -263,7 +263,7 @@ def world(data: Path, into: Path, sample: bool, nav: Path | None = None, veg: bo
     r = subprocess.run(full, cwd=ROOT, env=dict(ENV, **WORLD_ENV), capture_output=True, text=True, check=False)
     if r.returncode:
         raise SystemExit(f"plugin: ArgoniaWorld.esm failed\n{(r.stdout + r.stderr)[-3000:]}")
-    if veg:  # 2.W4 §a, opt-in until its budget is settled: the REFRs spliced into each cell (VegetationRecords.cs)
+    if veg:  # 2.W4 §a, part of the build (the sample too: the gate's vegcheck): the REFRs spliced into each cell (VegetationRecords.cs)
         vdir = vegetation(into, sample)
         tmp = esm.with_suffix(".veg.esm")
         run(*(CAP if CAP else []), GEN, "vegetation", "--in", esm, "--veg", vdir, "--out", tmp)
