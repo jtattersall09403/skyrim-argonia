@@ -353,7 +353,7 @@ class Runner:
         self.b.call("console", f"{caller}.moveto player {dx:.0f} {dy:.0f} 0")
         self.b.call("console", f"{caller}.setangle z {(h + 180) % 360:.0f}")
         want = _form_id(self.b.resolve_refs(ref))
-        seen, end, aimed = None, time.monotonic() + TALK_WAIT_S, 0.0
+        seen, end, aimed = None, time.monotonic() + TALK_WAIT_S, time.monotonic()
         while True:
             seen = (self.b.call("crosshair") or {}).get("ref")
             if seen and want is not None and _form_id(seen.get("id")) == want:
@@ -382,6 +382,7 @@ class Runner:
         pitch = -math.degrees(math.atan2(dz, max(math.hypot(dx, dy), 1.0)))  # x: positive looks down
         self.b.call("console", f"player.setangle z {yaw:.1f}")
         self.b.call("console", f"player.setangle x {pitch:.1f}")
+        self.b.call("input", "key", "W", 40)  # the third-person camera takes setangle only once the player moves
 
     def _talk(self, ref):
         """`talk: <ref>`: _face, then E (retried while no menu opens)."""

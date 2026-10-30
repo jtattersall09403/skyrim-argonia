@@ -158,7 +158,13 @@ void ResetActors(const std::vector<ac::respawn::ActorId>& ids) {
       for (auto av : {RE::ActorValue::kHealth, RE::ActorValue::kStamina, RE::ActorValue::kMagicka})
         avo->RestoreActorValue(av, avo->GetPermanentActorValue(av));
     }
-    if (!a->MoveToEditorLocation())  // across cells, unlike SetPosition
+    if (a->MoveToEditorLocation()) continue;  // across cells, unlike SetPosition
+    // An actor never moved by the engine has no starting-position extra, so MoveToEditorLocation refuses (game-16:
+    // the ambush deserter stayed 2888 units off); its placement as the data left it is the same spot.
+    auto& homes = Get().homes;
+    if (auto h = homes.find(id); h != homes.end() && h->second.cell)
+      a->MoveTo_Impl(RE::ObjectRefHandle(), h->second.cell, h->second.world, h->second.pos, h->second.rot);
+    else
       SKSE::log::warn("respawn: {:08X} has no editor location; left where it stands", id);
   }
   if (!ids.empty()) SKSE::log::info("respawn: {} actors reset", ids.size());
@@ -595,6 +601,7 @@ void LifeDataLoaded() {
   // persistent; the flag is the compiled `onRest` or `untilCleared` class, place_build.respawns). An actor whose
   // editor location (ACHR XLCN, place_build) is a clearable place's LCTN is `untilCleared` for that place.
   c.roster.clear();
+  c.homes.clear();
   const auto on_rest = ac::respawn::class_named("onRest");
   const auto until_cleared = ac::respawn::class_named("untilCleared");
   auto* clearable = Lookup<RE::BGSKeyword>("hook.loc-clearable");
@@ -606,6 +613,11 @@ void LifeDataLoaded() {
       auto* base = a ? a->GetActorBase() : nullptr;
       if (!base || a->IsPlayerRef()) continue;
       if (!base->actorData.actorBaseFlags.all(RE::ACTOR_BASE_DATA::Flag::kRespawn)) continue;
+      // Our people only (game-16: 2930 vanilla and dependency actors carried the flag and were reset each rest,
+      // unreviewed vanilla behaviour, 0012); ours are placed by Argonia.esm or ArgoniaWorld.esm.
+      auto* file = a->GetFile(0);
+      if (!file || !std::string_view(file->GetFilename()).starts_with("Argonia")) continue;
+      c.homes[a->GetFormID()] = {a->GetPosition(), a->GetAngle(), a->GetParentCell(), a->GetWorldspace()};
       auto* loc = a->GetEditorLocation();
       if (clearable && loc && loc->HasKeyword(clearable))
         c.roster.push_back({a->GetFormID(), *until_cleared, loc->GetFormID()});

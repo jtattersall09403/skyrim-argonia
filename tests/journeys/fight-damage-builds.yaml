@@ -41,6 +41,7 @@ steps:
       - {call: [dev-set, SetAttribute, strength, "40"]}
       - {call: [dev-set, SetAttribute, agility, "40"]}
       - {console: '"{opp}".setav health 2000'}
+      - {console: '"{opp}".restoreav health 1000'}   # setav keeps the last blow's damage (game-16: 2000-8.94-29.75)
       - {wait: 1}
       - {strike: "{opp}"}
     expect:
@@ -53,6 +54,7 @@ steps:
       - {call: [dev-set, SetAttribute, strength, "100"]}
       - {call: [dev-set, SetAttribute, agility, "100"]}
       - {console: '"{opp}".setav health 2000'}
+      - {console: '"{opp}".restoreav health 1000'}   # setav keeps the last blow's damage (game-16: 2000-8.94-29.75)
       - {wait: 1}
       - {strike: "{opp}"}
     expect:

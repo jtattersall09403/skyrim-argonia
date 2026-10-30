@@ -39,6 +39,8 @@ struct Core {
   ac::life::HealthWatch health;                           // each hit actor's health after its last hit
   std::optional<ac::life::Sitting> sitting;               // the open level sitting
   std::vector<ac::respawn::Roster> roster;                // the placed actors that reset at a rest
+  struct Home { RE::NiPoint3 pos, rot; RE::TESObjectCELL* cell = nullptr; RE::TESWorldSpace* world = nullptr; };
+  std::map<RE::FormID, Home> homes;                       // each roster actor's placement as the data left it
   std::optional<double> last_save_s;                      // the last rest or suspend save, real seconds
   RE::ObjectRefHandle pile_ref;                           // the vastei pile in the world
   RE::ObjectRefHandle rest_spot;                          // the camp spot of the last rest (since the load)

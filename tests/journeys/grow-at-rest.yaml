@@ -55,6 +55,7 @@ steps:
       - {console: "player.moveto ARG_Ref_ClaywaterStationAmbushPlayer 0 -90 0"}
       - {console: "player.setangle z 0"}
       - {console: "player.setangle x 40"}
+      - {key: "W 40"}             # the camera takes setangle once the player moves (diag3-g15)
       - {wait: 3}
       - {key: "E 120"}
       - {wait: 4}
@@ -74,6 +75,7 @@ steps:
       - {console: "player.moveto ARG_Ref_ClaywaterStationAmbushPlayer 0 -90 0"}
       - {console: "player.setangle z 0"}
       - {console: "player.setangle x 40"}
+      - {key: "W 40"}             # the camera takes setangle once the player moves (diag3-g15)
       - {wait: 3}
       - {key: "E 120"}
       - {wait: 4}
