@@ -5,6 +5,7 @@
 # are owed to a scene with those props. Ends at the main menu: a save-changing item, last in its batch.
 id: ui-sweep
 runner: 1
+batch_last: true         # it ends at the main menu or changes the saves: last in a batch (run_batch --write-owed)
 scene: first-place
 steps:
   - name: hud-open            # no compass, no marker: the vanilla HUD elements are hidden; turn the camera round

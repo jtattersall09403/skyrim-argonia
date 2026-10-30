@@ -335,6 +335,14 @@ class Bridge:
             raise BridgeError(f"save_bytes: unreadable answer {out.strip()[-200:]!r}")
         return {k: int(v) for k, v in sizes.items()}
 
+    def delete_save(self, name: str) -> None:
+        """Remove Saves\\<name>.ess and its co-save (a journey's superseded step save); absent files are fine."""
+        if not valid_save_name(name):
+            raise BridgeError(f"delete_save: {name!r} is not a save name")
+        self.machine.ps(
+            "$d=\"$env:USERPROFILE\\Documents\\My Games\\Skyrim Special Edition\\Saves\"; "
+            f"foreach($x in 'ess','skse'){{Remove-Item -EA SilentlyContinue (Join-Path $d ('{name}.'+$x))}}")
+
     def pad(self, seq: str) -> dict:
         """A real gamepad sequence on the virtual Xbox pad (infra/gpu-box/pad.ps1, ViGEm), capped at 3 s."""
         total = pad_duration_ms(seq)

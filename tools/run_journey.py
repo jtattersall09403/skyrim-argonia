@@ -44,6 +44,12 @@ run again and again until the minutes pass, and after each loop the Papyrus queu
 and its co-save sizes and the frame times are measured; it passes with no crash, the queue flat, the co-save flat
 after the first loop and the frame times within the 0.2 §d bar. Out: soak.json beside the loops' reports.
 
+Resume (step saves): after each passed step the runner saves the game natively (console `save argj-<id>-<step>`)
+and removes the journey's previous step save, so one is kept per journey; the kept values go beside it in
+out/resume/<id>.json. `--from <step>` loads the save of the step before it and runs from there, `--only <step>` runs
+that one step; neither applies the scene again. A journey that counts saves (SaveCount) or tests that nothing but a
+rest saves sets `step_saves: false`, and has no resume.
+
 --dry validates a journey (or a soak and the journey it loops) and its scene without the game.
 
 Out: out/runs/<id>/<stamp>/ with report.json, a still per step (<n>-<name>.png) and, for a failed step,
@@ -66,6 +72,7 @@ sys.path.insert(0, str(REPO))
 from tools.bridge import Bridge, BridgeError, GameDown  # noqa: E402
 
 BASE_SAVE = "argoniabase"
+RESUME = REPO / "out" / "resume"
 SCENES = REPO / "tests" / "scenes"
 GAME_ROOT = "C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition"
 OPS = {"eq": lambda a, b: a == b, "ne": lambda a, b: a != b, "gt": lambda a, b: a > b, "ge": lambda a, b: a >= b,
@@ -162,6 +169,7 @@ class Runner:
         self.kept: dict = {}
         self.scene: str | None = None  # the journey's scene and save, for a relaunch
         self.save = BASE_SAVE
+        self.resume_dir = RESUME
 
     def fill(self, value):
         """`{name}` / `{name.i}` in an action's text: the kept value (a string split on spaces for the index)."""
@@ -339,21 +347,69 @@ class Runner:
             time.sleep(0.5)
 
     # -- a run -----------------------------------------------------------------------------------------------
-    def run(self, j: dict, save: str, load: bool = True) -> dict:
+    def resume_point(self, j: dict, step: str) -> tuple[str | None, dict, int]:
+        """For --from/--only <step>: the step save to load (None: the journey's start), the values kept up to it, and
+        the step's index. SystemExit when the step is unknown or its predecessor's save was never made."""
+        names = [s["name"] for s in j["steps"]]
+        if step not in names:
+            raise SystemExit(f"{j['id']}: no step {step!r}")
+        i = names.index(step)
+        before = [s["name"] for s in j["steps"][:i] if not s.get("owed")]
+        if not before:
+            return None, {}, i
+        f = self.resume_dir / f"{j['id']}.json"
+        state = json.loads(f.read_text()) if f.is_file() else {}
+        have = state.get("saves", {})
+        if before[-1] not in have:
+            raise SystemExit(f"{j['id']}: no step save after {before[-1]!r} (run the journey through it first)")
+        return have[before[-1]]["save"], have[before[-1]]["kept"], i
+
+    def step_save(self, j: dict, step: str) -> None:
+        """The game saved natively after a passed step; the journey's previous step save removed (one per journey)."""
+        name = f"argj-{j['id']}-{step}"
+        self.b.call("console", f"save {name}")
+        f = self.resume_dir / f"{j['id']}.json"
+        state = json.loads(f.read_text()) if f.is_file() else {}
+        old = state.get("latest")
+        saves = {k: v for k, v in state.get("saves", {}).items() if v["save"] != old or old == name}
+        saves[step] = {"save": name, "kept": self.kept}
+        if old and old != name:
+            try:
+                self.b.delete_save(old)
+            except (BridgeError, AttributeError):
+                pass
+            saves = {k: v for k, v in saves.items() if v["save"] != old}
+        self.resume_dir.mkdir(parents=True, exist_ok=True)
+        f.write_text(json.dumps({"latest": name, "saves": saves}, indent=1, default=str))
+
+    def run(self, j: dict, save: str, load: bool = True, start: str | None = None, only: bool = False) -> dict:
         self.out.mkdir(parents=True, exist_ok=True)
         rep = {"id": j["id"], "save": save, "scene": j.get("scene"), "steps": [], "passed": False, "loaded": load}
         self.scene, self.save = j.get("scene"), save
+        first, scene = 0, j.get("scene")
+        if start:
+            resumed, kept, first = self.resume_point(j, start)
+            if resumed:
+                save, scene, load = resumed, None, True
+                self.kept = dict(kept)
+                rep.update(resumed_from=resumed, save=resumed)
+        saves = j.get("step_saves", True)
+        last = first + 1 if only else len(j["steps"])
         t0 = time.monotonic()
         try:
-            rep["scene_output"] = self.apply_scene(j.get("scene"), save, load=load)
+            rep["scene_output"] = self.apply_scene(scene, save, load=load)
             rep["scene_s"] = round(time.monotonic() - t0, 1)
             for n, step in enumerate(j["steps"], 1):
+                if not first < n <= last:
+                    continue
                 if step.get("owed"):  # not run: what it waits on is named, and the journey goes on past it
                     rep.setdefault("owed", []).append({"n": n, "name": step["name"], "why": step["owed"]})
                     print(f"  {n:2d} {step['name']:<24} OWED: {step['owed']}", flush=True)
                     continue
                 rec = self.step(n, step)
                 rep["steps"].append(rec)
+                if rec["passed"] and saves:
+                    self.step_save(j, step["name"])
                 if not rec["passed"]:
                     rep["failed_at"] = step["name"]
                     fail = {"journey": j["id"], "step": step["name"], "do": step.get("do"), "expect": step.get("expect"),
@@ -512,6 +568,8 @@ def main(argv=None) -> int:
     p.add_argument("--save", default=None)
     p.add_argument("--no-stills", action="store_true", help="stills only for a failed step")
     p.add_argument("--dry", action="store_true", help="validate the file and its scene; no game")
+    p.add_argument("--from", dest="start", default=None, help="load the step save before this step and run from it")
+    p.add_argument("--only", default=None, help="load the step save before this step and run it alone")
     a = p.parse_args(argv)
     if a.dry:
         print(dry(a.journey))
@@ -529,7 +587,8 @@ def main(argv=None) -> int:
     for r in range(1, a.runs + 1):
         out = REPO / "out" / "runs" / j["id"] / time.strftime("%Y%m%dT%H%M%S")
         print(f"{j['id']} run {r}: {out}", flush=True)
-        rep = Runner(b, out, stills=not a.no_stills).run(j, save)
+        rep = Runner(b, out, stills=not a.no_stills).run(j, save, **({"start": a.only or a.start, "only": bool(a.only)}
+                                                           if a.only or a.start else {}))
         verdict = "PASS" if rep["passed"] else "CRASH" if rep.get("crash") else "FAIL"
         print(f"{j['id']} run {r}: {verdict} in {rep['seconds']} s"
               + ("" if rep["passed"] else f" at {rep['failed_at']}: {signature(rep).split('|', 1)[1]}"), flush=True)

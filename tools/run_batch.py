@@ -20,6 +20,16 @@ A batch file:
 `chain: true` saves a full save load (about 7 s, and the memory it grows) when the item follows one of the same
 scene family and needs nothing the base save resets; it is ignored after a relaunch or a failed item.
 
+Resume, per item (run_journey's step saves): `--from <item>[:<step>]` starts the batch at that item (and that
+item at the step, from its step save); `--only <item>[:<step>]` runs that item alone (that step alone).
+
+What is owed: `--owed` lists every journey under tests/journeys with its status, from the summary.json history
+under out/batch and the run reports under out/runs (draft: not runnable; never: runnable, no run on record;
+failed: its last run failed; passed: its last run passed). `--write-owed <batch.yaml>` writes a batch of every
+runnable journey not passed (never or failed), soaks and `must_fail` fixtures left out, the save-changing ones last: a journey with a
+`relaunch` action or `batch_last: true` (it ends at the main menu, quits or writes the saves the next item reads).
+Game lanes compose their batch this way, so no runnable draft is skipped.
+
 A crash is a failure: the item is recorded with its crash, the game is relaunched (bridge `launch`) and the batch
 goes on. Out: out/batch/<id>/<stamp>/summary.json, rewritten after every item: per item pass/fail, the failing step
 and its reason, seconds (and the scene apply's), private MB before and after, and whether the game was relaunched;
@@ -41,6 +51,7 @@ from tools import run_journey as rj  # noqa: E402
 from tools.bridge import Bridge, BridgeError  # noqa: E402
 
 JOURNEYS = REPO / "tests" / "journeys"
+OUT = REPO / "out"
 RELAUNCH_MB = 6000  # game-10's long run crashed after ~230 MB per loop; a relaunch costs ~70 s
 LAUNCH_TRIES = 2
 
@@ -147,7 +158,7 @@ class Batch:
             return f"{n} items since the last launch"
         return None
 
-    def run_one(self, it: dict, run: int, load: bool) -> dict:
+    def run_one(self, it: dict, run: int, load: bool, start: str | None = None, only: bool = False) -> dict:
         stamp = time.strftime("%Y%m%dT%H%M%S")
         out = self.out / f"{len(self.summary['items']) + 1:02d}-{it['id']}-{run}-{stamp}"
         runner = rj.Runner(self.b, out, stills=self.stills, sent=self.sent)
@@ -155,21 +166,30 @@ class Batch:
             j = rj.load_journey(JOURNEYS / f"{it['id']}.yaml")
             save = it["save"] or j.get("save") or rj.BASE_SAVE
         else:  # a scene alone: applied, one still; it passes when the bridge and the game took it
-            j = {"id": it["id"], "scene": it["id"], "steps": [{"name": "applied", "do": [{"wait": 2}]}]}
+            j = {"id": it["id"], "scene": it["id"], "step_saves": False, "steps": [{"name": "applied", "do": [{"wait": 2}]}]}
             save = it["save"] or rj.BASE_SAVE
-        rep = runner.run(j, save, load=load)
+        rep = runner.run(j, save, load=load, **({"start": start, "only": only} if start else {}))
         rep["_out"] = str(out)
         return rep
 
-    def run(self) -> dict:
+    def run(self, start: str | None = None, only: bool = False) -> dict:
+        """`start` is `<item>[:<step>]` (--from), alone with `only` (--only)."""
         t0, prev_ok = self.clock(), False
+        items = self.batch["items"]
+        first_step = None
+        if start:
+            iid, _, first_step = start.partition(":")
+            ids = [i["id"] for i in items]
+            if iid not in ids:
+                raise SystemExit(f"{self.batch['id']}: no item {iid!r}")
+            items = items[ids.index(iid):][:1 if only else None]
         lod = lod_tools_running(self.b)
         if lod:
             self.summary["aborted"] = f"refused: an LOD tool is running on the machine ({', '.join(lod)}); run the batch alone"
             self.summary["seconds"] = 0.0
             self.write()
             return self.summary
-        for it in self.batch["items"]:
+        for k, it in enumerate(items):
             for run in range(1, it["runs"] + 1):
                 mb = private_mb(self.b)
                 why = self.need_relaunch(mb)
@@ -182,7 +202,8 @@ class Batch:
                         return self.summary
                     relaunched, prev_ok = True, False
                 load = not (it["chain"] and prev_ok and run == 1)
-                rep = self.run_one(it, run, load)
+                resume = first_step if k == 0 and run == 1 and first_step else None
+                rep = self.run_one(it, run, load, start=resume, only=only and bool(resume))
                 bad = next((s for s in rep["steps"] if not s["passed"]), None)
                 rec = {"kind": it["kind"], "id": it["id"], "run": run, "passed": rep["passed"],
                        "failed_at": rep.get("failed_at"),
@@ -216,13 +237,85 @@ class Batch:
         s["mb_peak"] = max(mbs) if mbs else None
 
 
+def history(out: pathlib.Path = None) -> dict:
+    """journey id -> its runs on record, oldest first: (stamp, passed), from batch summaries and run reports."""
+    out = out or OUT
+    runs: dict = {}
+    for f in sorted((out / "batch").glob("*/*/summary.json")):
+        try:
+            items = json.loads(f.read_text()).get("items", [])
+        except (OSError, ValueError):
+            continue
+        for i in items:
+            if i.get("kind", "journey") == "journey":
+                runs.setdefault(i["id"], []).append((f.parent.name, bool(i.get("passed"))))
+    for f in sorted((out / "runs").glob("*/*/report.json")):
+        try:
+            r = json.loads(f.read_text())
+        except (OSError, ValueError):
+            continue
+        runs.setdefault(f.parent.parent.name, []).append((f.parent.name, bool(r.get("passed"))))
+    return {k: sorted(v) for k, v in runs.items()}
+
+
+def owed(journeys: pathlib.Path = None, out: pathlib.Path = None) -> list[dict]:
+    """Every journey file with its status: draft, never, failed or passed (its last run), and whether it is a soak
+    or save-changing."""
+    import yaml
+    journeys, hist, rows = journeys or JOURNEYS, history(out), []
+    for f in sorted(journeys.glob("*.yaml")):
+        try:
+            j = yaml.safe_load(f.read_text())
+        except yaml.YAMLError:
+            j = None
+        jid = (j or {}).get("id", f.stem) if isinstance(j, dict) else f.stem
+        if not isinstance(j, dict) or j.get("runner") != 1:
+            rows.append({"id": jid, "status": "draft", "runs": 0})
+            continue
+        if j.get("must_fail"):  # a fixture that fails on purpose: never owed
+            continue
+        h = hist.get(jid, [])
+        status = "never" if not h else "passed" if h[-1][1] else "failed"
+        last = j.get("batch_last") or any("relaunch" in a for s in j.get("steps", []) for a in s.get("do", []))
+        rows.append({"id": jid, "status": status, "runs": len(h), "soak": "soak" in j, "last": bool(last)})
+    return rows
+
+
+def write_owed(path: pathlib.Path, journeys: pathlib.Path = None, out: pathlib.Path = None) -> list[str]:
+    """A batch of every runnable journey not passed, save-changing last; its item ids."""
+    rows = [r for r in owed(journeys, out) if r["status"] in ("never", "failed") and not r.get("soak")]
+    ids = [r["id"] for r in rows if not r["last"]] + [r["id"] for r in rows if r["last"]]
+    head = (f"# Written by tools/run_batch.py --write-owed: every runnable journey not yet passed ({len(ids)}), the\n"
+            "# save-changing ones (a relaunch, or batch_last) last. Run: tooling/job_guard.sh run --gpu batch -- python3\n"
+            f"# tools/run_batch.py {path.as_posix()}\n")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(head + f"id: {path.stem}\nrelaunch_mb: {RELAUNCH_MB}\nrelaunch_every: 0\nitems:\n"
+                    + "".join(f"  - {i}\n" for i in ids))
+    return ids
+
+
 def main(argv=None) -> int:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    p.add_argument("items", nargs="+", help="a batch .yaml, or journeys (id[:runs]) and scene:<id>")
+    p.add_argument("items", nargs="*", help="a batch .yaml, or journeys (id[:runs]) and scene:<id>")
+    p.add_argument("--from", dest="start", default=None, help="<item>[:<step>]: start there (a step from its step save)")
+    p.add_argument("--only", default=None, help="<item>[:<step>]: that item (or step) alone")
+    p.add_argument("--owed", action="store_true", help="list every journey and its status from the run history")
+    p.add_argument("--write-owed", type=pathlib.Path, default=None, help="write a batch of every runnable journey not passed")
     p.add_argument("--dry", action="store_true", help="validate every item and its scene; no game")
     p.add_argument("--no-stills", action="store_true", help="stills only for a failed step")
     p.add_argument("--relaunch-mb", type=float, default=None)
     a = p.parse_args(argv)
+    if a.owed:
+        for r in owed():
+            print(f"{r['id']:<28} {r['status']:<7} runs {r['runs']}" + (" soak" if r.get("soak") else "")
+                  + (" last" if r.get("last") else ""))
+        return 0
+    if a.write_owed:
+        ids = write_owed(a.write_owed)
+        print(f"{a.write_owed}: {len(ids)} items: {' '.join(ids)}")
+        return 0
+    if not a.items:
+        p.error("a batch or items")
     batch = load_batch(a.items)
     if a.relaunch_mb:
         batch["relaunch_mb"] = a.relaunch_mb
@@ -232,7 +325,7 @@ def main(argv=None) -> int:
         return 0
     dry(batch)  # a bad item fails before the game is touched
     out = REPO / "out" / "batch" / batch["id"] / time.strftime("%Y%m%dT%H%M%S")
-    s = Batch(Bridge(), batch, out, stills=not a.no_stills).run()
+    s = Batch(Bridge(), batch, out, stills=not a.no_stills).run(start=a.only or a.start, only=bool(a.only))
     print(f"{batch['id']}: {s['passed_n']}/{len(s['items'])} passed in {s['seconds']} s; {out / 'summary.json'}")
     for f in s["failed"]:
         print("  FAIL " + f)

@@ -4,6 +4,8 @@
 # journey ends at the main menu: a batch's next item loads its save. Runs last in a batch, or before a relaunch.
 id: menus-quit
 runner: 1
+batch_last: true         # it ends at the main menu or changes the saves: last in a batch (run_batch --write-owed)
+step_saves: false        # it counts or tests saves: no step save (run_journey resume)
 scene: first-place
 steps:
   - name: tween-stays        # Tab opens the pause hub; 5 s on it is still open, and no save was written

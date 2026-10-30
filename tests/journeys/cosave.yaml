@@ -3,6 +3,7 @@
 # save (1.5): the journey saves by resting.
 id: cosave
 runner: 1
+step_saves: false        # it counts or tests saves: no step save (run_journey resume)
 scene: first-place
 steps:
   - name: families-listed

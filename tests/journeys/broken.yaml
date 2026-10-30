@@ -1,6 +1,7 @@
 # Fails on purpose (0.3 §d): the runner must stop at `stand-still` with a readable reason and its still.
 id: broken
 runner: 1
+must_fail: true          # a fixture: never owed (run_batch --owed)
 scene: holding
 steps:
   - name: stand-still

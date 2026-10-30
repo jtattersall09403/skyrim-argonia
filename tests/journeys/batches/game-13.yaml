@@ -1,0 +1,39 @@
+# Written by tools/run_batch.py --write-owed: every runnable journey not yet passed (32), the
+# save-changing ones (a relaunch, or batch_last) last. Run: tooling/job_guard.sh run --gpu batch -- python3
+# tools/run_batch.py tests/journeys/batches/game-13.yaml
+id: game-13
+relaunch_mb: 6000
+relaunch_every: 0
+items:
+  - attributes
+  - claywater-look
+  - claywater-walk
+  - combat-trial-a
+  - combat-trial-b
+  - combat-trial-b2
+  - croc-den
+  - dialogue-intercept
+  - fight-archetype
+  - fight-damage-builds
+  - fight-lock-on
+  - fight-roll-burden
+  - first-place
+  - grow-at-rest
+  - lf83-components
+  - lf83-endings
+  - livia-sleep
+  - quest-board
+  - rest-is-the-only-save
+  - smoke
+  - w3-crime
+  - w3-interior-sun
+  - w3-road-hops
+  - w3-weather-stills
+  - water-swim
+  - world-sample
+  - cosave
+  - die-and-recover
+  - menus-quit
+  - suspend-save
+  - ui-probe
+  - ui-sweep

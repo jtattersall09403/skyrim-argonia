@@ -3,6 +3,7 @@
 # low as setup only, and the deserter's own attacks deal the death.
 id: die-and-recover
 runner: 1
+batch_last: true         # it ends at the main menu or changes the saves: last in a batch (run_batch --write-owed)
 scene: duel-ring
 steps:
   - name: setup

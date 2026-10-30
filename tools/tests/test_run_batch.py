@@ -14,8 +14,9 @@ from tools.bridge import BridgeError, GameDown  # noqa: E402
 
 
 @pytest.fixture(autouse=True)
-def no_sleep(monkeypatch):
+def no_sleep(monkeypatch, tmp_path):
     monkeypatch.setattr(rj.time, "sleep", lambda s: None)
+    monkeypatch.setattr(rj, "RESUME", tmp_path / "resume")
 
 
 class Machine:
@@ -163,3 +164,51 @@ def test_refuses_while_an_lod_tool_runs(tmp_path, journeys):
     s = rb.Batch(f, {"id": "t", "items": rb.parse_items(["good"]), "relaunch_mb": 6000, "relaunch_every": 0},
                  tmp_path / "out", stills=False).run()
     assert "xLODGenx64" in s["aborted"] and s["items"] == [] and f.launches == 0
+
+
+def test_from_and_only_pick_items(tmp_path, journeys):
+    batch = {"id": "t", "items": rb.parse_items(["bad", "good", "crash"]), "relaunch_mb": 6000, "relaunch_every": 0}
+    s = rb.Batch(Fake(), batch, tmp_path / "o1", stills=False).run(start="good", only=True)
+    assert [i["id"] for i in s["items"]] == ["good"]
+    s = rb.Batch(Fake(), batch, tmp_path / "o2", stills=False).run(start="good")
+    assert [i["id"] for i in s["items"]] == ["good", "crash"]
+    with pytest.raises(SystemExit):
+        rb.Batch(Fake(), batch, tmp_path / "o3", stills=False).run(start="nope")
+
+
+def test_from_a_step_loads_its_step_save(tmp_path, journeys):
+    """A failed step leaves the save of the step before it as the journey's latest: --from that step loads it."""
+    import yaml
+    ok = {"name": "a", "expect": [{"read": ["player"], "path": "dead", "eq": False}]}
+    bad = {"name": "b", "expect": [{"read": ["player"], "path": "dead", "eq": True, "within": 0}]}
+    (rb.JOURNEYS / "two.yaml").write_text(yaml.safe_dump({"id": "two", "runner": 1, "scene": "sc", "steps": [ok, bad]}))
+    batch = {"id": "t", "items": rb.parse_items(["two"]), "relaunch_mb": 6000, "relaunch_every": 0}
+    f = Fake()
+    s = rb.Batch(f, batch, tmp_path / "o1", stills=False).run()
+    assert not s["items"][0]["passed"] and "save argj-two-a" in f.lines
+    loads, n = f.loads, len(f.lines)
+    s = rb.Batch(f, batch, tmp_path / "o2", stills=False).run(start="two:b", only=True)
+    assert s["items"][0]["failed_at"] == "b" and f.loads == loads + 1
+    assert "bat sc" not in f.lines[n:]  # the step save, not the scene
+
+
+def test_owed_status_and_write_owed(tmp_path, journeys):
+    import yaml
+    d = rb.JOURNEYS
+    (d / "draft.yaml").write_text("id: draft\nstatus: draft\n")
+    (d / "fixture.yaml").write_text(yaml.safe_dump({"id": "fixture", "runner": 1, "must_fail": True, "steps": []}))
+    (d / "quit.yaml").write_text(yaml.safe_dump({"id": "quit", "runner": 1, "batch_last": True, "steps": [{"name": "q"}]}))
+    (d / "re.yaml").write_text(yaml.safe_dump({"id": "re", "runner": 1, "steps": [{"name": "r", "do": [{"relaunch": True}]}]}))
+    out = tmp_path / "hist"
+    for stamp, items in {"20261029T1": [("good", False), ("bad", True)], "20261030T1": [("good", True), ("bad", False)]}.items():
+        p = out / "batch" / "g" / stamp
+        p.mkdir(parents=True)
+        (p / "summary.json").write_text(json.dumps({"items": [{"kind": "journey", "id": i, "passed": ok} for i, ok in items]}))
+    rows = {r["id"]: r for r in rb.owed(d, out)}
+    assert "fixture" not in rows
+    assert rows["draft"]["status"] == "draft" and rows["good"]["status"] == "passed"
+    assert rows["bad"]["status"] == "failed" and rows["crash"]["status"] == "never"
+    ids = rb.write_owed(tmp_path / "b.yaml", d, out)
+    assert ids == ["bad", "crash", "quit", "re"]
+    b = rb.load_batch([str(tmp_path / "b.yaml")])
+    assert [i["id"] for i in b["items"]] == ids

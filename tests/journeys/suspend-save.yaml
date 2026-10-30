@@ -3,6 +3,7 @@
 # Ends by a relaunch on the suspend save (no scene: the player resumes where it quit): a save-changing item, last in its batch.
 id: suspend-save
 runner: 1
+step_saves: false        # it counts or tests saves: no step save (run_journey resume)
 scene: first-place
 steps:
   - name: rest

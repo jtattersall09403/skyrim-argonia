@@ -65,6 +65,11 @@ class Fake:
         return out
 
 
+@pytest.fixture(autouse=True)
+def _resume_dir(tmp_path, monkeypatch):
+    monkeypatch.setattr(rj, "RESUME", tmp_path / "resume")
+
+
 def journey(tmp_path, steps, **kw):
     import yaml
     p = tmp_path / "j.yaml"
@@ -354,3 +359,59 @@ def test_a_kept_value_plus_a_number_bounds_a_change(tmp_path):
     r.b = type("B", (), {"call": lambda self, *a, **k: {"current": 68.5}})()
     assert r.check({"read": ["av", "Health", "player"], "path": "current", "le": {"kept": "hp", "plus": -31}}, {}) is None
     assert r.check({"read": ["av", "Health", "player"], "path": "current", "ge": {"kept": "hp", "plus": -31}}, {}) is not None
+
+
+class SaveFake(Fake):
+    def __init__(self):
+        super().__init__()
+        self.deleted, self.loads = [], []
+
+    def call(self, cmd, *args, **kw):
+        if cmd == "load":
+            self.loads.append(args[0])
+        return super().call(cmd, *args)
+
+    def delete_save(self, name):
+        self.deleted.append(name)
+
+
+STEP = lambda n: {"name": n, "expect": [{"console": "player.IsWeaponOut", "contains": ">> 1"}]}
+
+
+def test_each_passed_step_saves_and_only_the_latest_is_kept(tmp_path):
+    j = journey(tmp_path, [STEP("a"), {"name": "b", "owed": "x"}, STEP("c")])
+    b = SaveFake()
+    rep = rj.Runner(b, tmp_path / "out", stills=False).run(j, "base")
+    assert rep["passed"]
+    assert [l for l in b.lines if l.startswith("save ")] == ["save argj-t-a", "save argj-t-c"]
+    assert b.deleted == ["argj-t-a"]
+    state = json.loads((tmp_path / "resume" / "t.json").read_text())
+    assert state["latest"] == "argj-t-c" and list(state["saves"]) == ["c"]
+
+
+def test_from_loads_the_save_before_the_step_with_its_kept_values(tmp_path):
+    keep = {"name": "a", "expect": [{"console": "player.IsWeaponOut", "keep": "w"}]}
+    j = journey(tmp_path, [keep, STEP("b"), STEP("c")])
+    b = SaveFake()
+    rj.Runner(b, tmp_path / "out", stills=False).run(j, "base", start=None)
+    (tmp_path / "resume" / "t.json").write_text(json.dumps(
+        {"latest": "argj-t-a", "saves": {"a": {"save": "argj-t-a", "kept": {"w": "kept!"}}}}))
+    b2 = SaveFake()
+    r = rj.Runner(b2, tmp_path / "out2", stills=False)
+    rep = r.run(j, "base", start="b", only=True)
+    assert rep["passed"] and rep["resumed_from"] == "argj-t-a"
+    assert b2.loads == ["argj-t-a"] and [s["name"] for s in rep["steps"]] == ["b"]
+    assert r.kept == {"w": "kept!"}
+
+
+def test_from_without_the_save_refuses(tmp_path):
+    j = journey(tmp_path, [STEP("a"), STEP("b")])
+    with pytest.raises(SystemExit, match="no step save after 'a'"):
+        rj.Runner(SaveFake(), tmp_path / "out", stills=False).run(j, "base", start="b")
+
+
+def test_step_saves_false_saves_nothing(tmp_path):
+    j = journey(tmp_path, [STEP("a")], step_saves=False)
+    b = SaveFake()
+    assert rj.Runner(b, tmp_path / "out", stills=False).run(j, "base")["passed"]
+    assert not [l for l in b.lines if l.startswith("save ")]
