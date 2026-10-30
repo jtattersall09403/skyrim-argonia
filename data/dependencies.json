@@ -1781,7 +1781,7 @@
     "file": 104449
    },
    "name": "Dark Souls Combat System SE by TheDriedFinger",
-   "why": "combat group B candidate (owner, 2026-10-29); trialled in its own lane after 0.2",
+   "why": "combat groups B (pure) and B2 (DSC's poise and stamina under A's rolls, parry and backstab), the owner's trial (2026-10-29); the set gates it, A is the default",
    "chunk": "2.7",
    "required": false,
    "profile": "play",
@@ -1805,7 +1805,43 @@
    "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
    "linked_or_forked_by": "none: depended on as the player’s own download",
-   "from": "2.7"
+   "drop_why": "sound/fx/BB_DSC holds Dark Souls audio rips (its DSC Sounds.txt links the extract): decisions 0003 and 0004; the SNDR records then play nothing",
+   "plugins": [
+    "Dark Souls Combat.esp"
+   ],
+   "plugin_values": [
+    {
+     "set": "dsc-b",
+     "plugin": "Dark Souls Combat.esp",
+     "quest_script_int": {
+      "quest": "BB_RollCameraQuest",
+      "script": "BB_RollCameraQuestScript",
+      "values": {
+       "RollKey": 277
+      }
+     },
+     "glob": {
+      "BB_Poise_VarDebugTrace": 1
+     },
+     "why": "the roll on the pad's sprint button, B (SKSE code 277; controlmap.py binds Sprint to B, DS1's roll button): the mod registers one key, LAlt (56), so out of the box a pad never rolls, and the owner plays on a pad; a tap rolls, a hold runs, as TK Dodge in A; the debug trace on for the trial: the mod's only read of max and current poise is its Papyrus log (stack.ps1 turns Papyrus logging on), and it reads the global only every fifth update, so it cannot be set at scene step 0"
+    },
+    {
+     "set": "dsc-b2",
+     "plugin": "Dark Souls Combat.esp",
+     "quest_script_int": {
+      "quest": "BB_RollCameraQuest",
+      "script": "BB_RollCameraQuestScript",
+      "values": {
+       "RollKey": 0
+      }
+     },
+     "glob": {
+      "BB_Poise_VarCritsAllowed": 0,
+      "BB_Poise_VarDebugTrace": 1
+     },
+     "why": "B2: crits off, so Rim Parry and Elden Parry own parry, riposte and backstab (the mod's backstab and riposte prep are gated on the global); the roll key unbound (scan code 0, no key sends it), so TK Dodge alone rolls on the sprint tap; the debug trace on for the trial: the mod's only read of max and current poise is its Papyrus log (stack.ps1 turns Papyrus logging on), and it reads the global only every fifth update, so it cannot be set at scene step 0"
+    }
+   ]
   },
   {
    "id": "freeclimb",

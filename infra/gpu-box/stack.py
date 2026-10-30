@@ -16,6 +16,11 @@ the game machine, with exact undo (chunk 0.2 §b; grew from 0.0's combat_test_st
   stack.py verify [--full]                    archives against the manifest; every laid file in Data against installed.json
                                               (hashes cached by size and mtime on the machine; --full rehashes all)
   stack.py masters                            plugins (ESM/ESP/ESL) and mesh path lists to $ARGONIA_GAME_ROOT/Data (0.4)
+  stack.py combat A|B|B2 [--dry DIR]          the combat group's set (souls-0.0, dsc-b, dsc-b2) installed, then Pandora's
+                                              DSC check; --dry stages only the combat group of each named set into DIR
+                                              (build VM only), checks the switch is idempotent and exactly undone, and
+                                              writes each set's file list
+  stack.py pandora-check                      on the machine: Pandora's log and output hold DSC's FNIS animations
 
 Machine: `stack.py --machine argonia-play-2 <cmd>` (or ARGONIA_PLAY=argonia-play-2) drives that game machine; the
 default is argonia-play. Each machine keeps its own push record and menu still.
@@ -102,12 +107,21 @@ def started(chunk, through):
     return p < tp or (p == tp and (tn == float("inf") or (t == tt and n <= tn)))
 
 
+def picks(doc, sets):
+    """The set each group lays: the manifest's first, unless --set names another. An unknown name is refused (it
+    would silently lay none of the group's set rows)."""
+    known = doc.get("sets", {})
+    for g, s in sets.items():
+        if s not in known.get(g, []):
+            raise SystemExit(f"--set {g}={s}: the manifest's sets for {g!r} are {known.get(g)}")
+    return {**{g: names[0] for g, names in known.items()}, **sets}
+
+
 def chosen(doc, sets, dev, through=CURRENT_PART, need=()):
     """The rows the profile lays, in load order: play rows (dev rows with --dev), one set per group, and only the
     rows whose `from` chunk has started by `through` (deferred rows arrive with their first-use chunk), or whose
     plugin is in `need` (a master of our built plugins: Argonia.esm cannot load without it)."""
-    pick = {g: names[0] for g, names in doc.get("sets", {}).items()}
-    pick.update(sets)
+    pick = picks(doc, sets)
     out = []
     for m in doc["mods"]:
         if m["profile"] == "pipeline" or (m["profile"] == "dev" and not dev) or m.get("dropped"):
@@ -446,9 +460,12 @@ def prune(data, m):
                     key=lambda x: -len(x.parts)):
         shutil.rmtree(d, ignore_errors=True)  # Rim Parry's unused sound backups
     for pat in m.get("drop", []):
+        gone = 0
         for f in list(data.rglob("*")):
             if f.exists() and fnmatch.fnmatch(str(f.relative_to(data)).lower(), pat.lower()):
+                gone += sum(1 for x in f.rglob("*") if x.is_file()) if f.is_dir() else 1
                 shutil.rmtree(f) if f.is_dir() else f.unlink()
+        print(f"  {m['id']}: drop {pat}: {gone} files" + ("" if gone else " (matched nothing: a stale drop list?)"))
     if m.get("keep"):
         keep_subset(data, m["keep"])
     for d in sorted((x for x in data.rglob("*") if x.is_dir()), key=lambda x: -len(x.parts)):
@@ -538,6 +555,122 @@ def apply_ini(m, data):
         print(f"  {m['id']}: set {', '.join(edit['set'])} in {edit['file']}")
 
 
+def plugin_values(m, data, pick):
+    """The row's `plugin_values` for the chosen set (decision 0014: a mod's setting made at install, never shipped):
+    a GLOB's value and a quest script's int property, written into the staged plugin. For a mod with no ini whose
+    settings are records (Dark Souls Combat's crits global and roll key)."""
+    for e in m.get("plugin_values", []):
+        if e["set"] != pick.get(m["group"]):
+            continue
+        f = ci(data, e["plugin"])
+        if f is None:
+            raise SystemExit(f"{m['id']}: no {e['plugin']} to set")
+        q = e.get("quest_script_int") or {}
+        f.write_bytes(edit_plugin(f.read_bytes(), e.get("glob", {}), q.get("quest"), q.get("script"),
+                                  q.get("values", {})))
+        print(f"  {m['id']}: set {', '.join([*e.get('glob', {}), *q.get('values', {})])} in {e['plugin']} ({e['set']})")
+
+
+def _wstr(b, i):
+    n = struct.unpack_from("<H", b, i)[0]
+    return b[i + 2:i + 2 + n].decode("latin-1"), i + 2 + n
+
+
+def _skip_value(b, i, typ, fmt):
+    one = {1: 8, 3: 4, 4: 4, 5: 1}
+    if typ in one:
+        return i + one[typ]
+    if typ == 2:
+        return _wstr(b, i)[1]
+    if typ in (11, 12, 13, 14, 15):
+        n, i = struct.unpack_from("<I", b, i)[0], i + 4
+        for _ in range(n):
+            i = _skip_value(b, i, typ - 10, fmt)
+        return i
+    raise SystemExit(f"VMAD property type {typ} not handled")
+
+
+def set_script_ints(vmad, script, values):
+    """A VMAD with `script`'s int properties set to `values` (added when the CK left the default), the rest kept."""
+    version, fmt, count = struct.unpack_from("<hhH", vmad, 0)
+    out, i, found = bytearray(vmad[:6]), 6, False
+    for _ in range(count):
+        start = i
+        name, i = _wstr(vmad, i)
+        status, nprops = vmad[i], struct.unpack_from("<H", vmad, i + 1)[0]
+        i += 3
+        props = []
+        for _ in range(nprops):
+            p0 = i
+            pname, i = _wstr(vmad, i)
+            typ = vmad[i]
+            i = _skip_value(vmad, i + (2 if version >= 4 else 1), typ, fmt)
+            props.append((pname, vmad[p0:i]))
+        if name.lower() != script.lower():
+            out += vmad[start:i]
+            continue
+        found, left = True, dict(values)
+        kept = []
+        for pname, raw in props:
+            if pname in left:
+                raw = struct.pack("<H", len(pname)) + pname.encode() + bytes([3, 1]) + struct.pack("<i", left.pop(pname))
+            kept.append(raw)
+        kept += [struct.pack("<H", len(k)) + k.encode() + bytes([3, 1]) + struct.pack("<i", v) for k, v in left.items()]
+        out += struct.pack("<H", len(name)) + name.encode() + bytes([status]) + struct.pack("<H", len(kept)) + b"".join(kept)
+    if not found:
+        raise SystemExit(f"no script {script} in the VMAD")
+    return bytes(out + vmad[i:])  # the quest's fragments and aliases, as they were
+
+
+def edit_plugin(buf, globs, quest=None, script=None, values=None):
+    """The plugin with each named GLOB's FLTV set and `quest`'s `script` ints set; GRUP and record sizes follow."""
+    left_g, left_q = {k.lower(): v for k, v in globs.items()}, bool(quest)
+
+    def subs(body):
+        i = 0
+        while i < len(body):
+            t, n = body[i:i + 4], struct.unpack_from("<H", body, i + 4)[0]
+            yield t, body[i + 6:i + 6 + n]
+            i += 6 + n
+
+    def record(head, body):
+        nonlocal left_q
+        typ, flags = head[:4], struct.unpack_from("<I", head, 8)[0]
+        if typ not in (b"GLOB", b"QUST"):
+            return head + body
+        if flags & 0x40000:
+            return head + body  # compressed: neither record kind DSC needs is
+        parts = list(subs(body))
+        edid = next((v for t, v in parts if t == b"EDID"), b"").rstrip(b"\0").decode("latin-1").lower()
+        if typ == b"GLOB" and edid in left_g:
+            parts = [(t, struct.pack("<f", float(left_g.pop(edid))) if t == b"FLTV" else v) for t, v in parts]
+        elif typ == b"QUST" and quest and edid == quest.lower():
+            parts = [(t, set_script_ints(v, script, values) if t == b"VMAD" else v) for t, v in parts]
+            left_q = False
+        else:
+            return head + body
+        body = b"".join(t + struct.pack("<H", len(v)) + v for t, v in parts)
+        return head[:4] + struct.pack("<I", len(body)) + head[8:] + body
+
+    def walk(b, i, end):
+        out = bytearray()
+        while i < end:
+            typ, size = b[i:i + 4], struct.unpack_from("<I", b, i + 4)[0]
+            if typ == b"GRUP":
+                inner = walk(b, i + 24, i + size)
+                out += b[i:i + 4] + struct.pack("<I", 24 + len(inner)) + b[i + 8:i + 24] + inner
+                i += size
+            else:
+                out += record(b[i:i + 24], b[i + 24:i + 24 + size])
+                i += 24 + size
+        return bytes(out)
+
+    out = walk(buf, 0, len(buf))
+    if left_g or left_q:
+        raise SystemExit(f"not in the plugin: {sorted(left_g) + ([quest] if left_q else [])}")
+    return out
+
+
 def our_masters():
     """The masters of our built plugins in out/ (make plugin), which make deploy lays."""
     need = set()
@@ -574,7 +707,14 @@ DOC_FIELDS = {"licence", "permission_summary", "ai_clause", "permission_ask", "p
 
 def cmd_stage(a):
     doc = manifest()
-    rows = chosen(doc, dict(s.split("=", 1) for s in a.set), a.dev, a.through, need=our_masters())
+    sets = dict(s.split("=", 1) for s in a.set)
+    rows, pick = chosen(doc, sets, a.dev, a.through, need=our_masters()), picks(doc, sets)
+    STACK, MO2 = stack_dirs(a)  # noqa: N806 (a scratch stage for a dry run, else the build VM's stack)
+    group = getattr(a, "group", None)
+    if group:  # one group alone: a dry run's file lists, never the real stack (it would remove every other row)
+        if not getattr(a, "into", None):
+            raise SystemExit("--group stages into a scratch dir only (--into DIR)")
+        rows = [m for m in rows if m["group"] == group]
     mods, tools, root, work = MO2 / "mods", MO2 / "tools", MO2 / "root", STACK / "_unpacked"
     keys = STACK / "staged"  # a row is re-staged only when its archive or its manifest entry changed
     for d in (mods, tools, root, keys):
@@ -588,6 +728,8 @@ def cmd_stage(a):
         laid = {k: v for k, v in m.items() if k not in DOC_FIELDS}  # a permission or note edit does not re-stage
         if combat_settings(m["id"]):  # a changed db setting re-stages its row (and only rows that have some)
             laid["combat_settings"] = combat_settings(m["id"])
+        if m.get("plugin_values"):  # a row shared by sets whose values differ re-stages when the set changes
+            laid["chosen_set"] = pick.get(m["group"])
         data, key = mods / m["id"], hashlib.sha256(json.dumps(laid, sort_keys=True).encode()).hexdigest()
         kf = keys / f"{m['id']}.json"
         laid_ok = (tools / m["id"]).exists() if m.get("install") == "tool" else (data.exists() or m.get("install"))
@@ -609,6 +751,7 @@ def cmd_stage(a):
             shutil.rmtree(src)
             prune(data, m)
             apply_ini(m, data)
+            plugin_values(m, data, pick)
             kf.write_text(json.dumps({"key": key, "fomod": taken}))
             restaged.add(m["id"])
             print(f"staged {m['id']}" + (f" ({'; '.join(taken)})" if taken else ""))
@@ -647,8 +790,9 @@ def cmd_stage(a):
                     unmet.append(f"{n}: {f.name} needs masters not loaded before it: {missing}")
                 plugins.append(f.name)
                 have.add(f.name.lower())
-    if unmet:
+    if unmet and not group:
         raise SystemExit("\n".join(unmet))
+    print("\n".join(f"  (one group: {u})" for u in unmet))
     (prof / "plugins.txt").write_text("".join(f"*{p}\r\n" for p in plugins))
     (prof / "loadorder.txt").write_text("".join(f"{p}\r\n" for p in vanilla_plugins() + plugins))
     files = {}
@@ -667,6 +811,13 @@ def cmd_stage(a):
             files["..\\" + f.name.lower()] = ["skse", sha256(f)]
     (STACK / "installed.json").write_text(json.dumps({"rows": record, "plugins": plugins, "files": files}, indent=0))
     print(f"profile {PROFILE}: {len(names) - 1} mods, {len(plugins)} plugins, {len(files)} files")
+    return restaged - {"pandora-output"}
+
+
+def stack_dirs(a):
+    """The stage's home: --into DIR (a scratch dry run) or ~/.argonia/stack."""
+    into = getattr(a, "into", None)
+    return (pathlib.Path(into), pathlib.Path(into) / "MO2") if into else (STACK, MO2)
 
 
 # ---- the machine --------------------------------------------------------------------------------------------------
@@ -923,6 +1074,89 @@ def cmd_masters(a):
     print(f"{n} plugins and {len(list(lists.iterdir()))} mesh lists in {data}")
 
 
+COMBAT = {"A": "souls-0.0", "B": "dsc-b", "B2": "dsc-b2"}  # the owner's names for the combat sets
+DSC_EVENTS = ["BB_DSC_ForwardRoll_Fast", "BB_DSC_Backstep_Med", "BB_DSC_RightRoll_Fat_MAG",
+              "BB_DSC_pa_1HMKillMoveBleedOutKill", "BB_DSC_pa_KillMoveH2HComboA"]  # FNIS b, b, b (MAG), pa, pa
+
+
+def cmd_combat(a):
+    """`combat A|B|B2`: install that set (stack.ps1 on starts from bare Data: the exact undo), then the Pandora check
+    when DSC is laid. With --dry DIR: each named set's combat group staged in turn into DIR on the build VM, then
+    the first again; the switch must restage only what differs, a second stage of the same set must restage
+    nothing, and the first set's files must come back byte for byte. Each set's list is DIR/files-<name>.txt."""
+    if not a.dry:
+        if len(a.which) != 1:
+            raise SystemExit("combat installs one set: A, B or B2")
+        a.set = [f"combat={COMBAT[a.which[0]]}"]
+        cmd_install(a)
+        if a.which[0] != "A":
+            cmd_pandora_check(a)
+        return
+    out, lists = pathlib.Path(a.dry), {}
+    out.mkdir(parents=True, exist_ok=True)
+    stage = argparse.Namespace(dev=False, through=a.through, into=str(out), group="combat")
+
+    def one(name):
+        stage.set = [f"combat={COMBAT[name]}"]
+        print(f"== combat {name} ({COMBAT[name]})")
+        restaged = cmd_stage(stage) - {THEME, MAP}  # derived overlays, copied afresh by every stage
+        inst = json.loads((out / "installed.json").read_text())
+        return restaged, inst
+
+    order = list(a.which) + [a.which[0]]
+    first = None
+    for n, name in enumerate(order):
+        restaged, inst = one(name)
+        files = {k: v for k, v in inst["files"].items() if not v[0].startswith(("argonia-", "Argonia LOD"))}
+        if n == len(order) - 1:
+            if files != first:
+                raise SystemExit(f"combat {name} again: {len(set(files) ^ set(first))} files differ from its first stage")
+            again, _ = one(name)
+            if again:
+                raise SystemExit(f"combat {name} a second time restaged {sorted(again)}: not idempotent")
+            print(f"undo exact: combat {name} again = its first stage ({len(files)} files); a second stage restaged nothing")
+            break
+        first = first or files
+        lists[name] = files
+        (out / f"files-{name}.txt").write_text("".join(f"{v[0]}\t{k}\t{v[1]}\n" for k, v in sorted(files.items())))
+        rows = sorted({v[0] for v in files.values()})
+        dsc = [k for k, v in files.items() if v[0] == "dark-souls-combat"]
+        rips = [k for k in dsc if k.startswith("sound\\")]
+        if rips:
+            raise SystemExit(f"combat {name}: DSC's sound rips are laid: {rips[:3]}")
+        print(f"combat {name}: {len(rows)} rows, {len(files)} files, plugins {inst['plugins']}; "
+              f"DSC {len(dsc)} files, 0 under sound\\; restaged {len(restaged)}")
+    names = list(lists)
+    for x, y in zip(names, names[1:]):
+        rx, ry = {v[0] for v in lists[x].values()}, {v[0] for v in lists[y].values()}
+        print(f"{x} -> {y}: rows out {sorted(rx - ry)}; rows in {sorted(ry - rx)}")
+
+
+def cmd_pandora_check(a):
+    """Pandora read DSC's FNIS list (combat-mod-28567.md §6.1): its engine log names the mod, the generated behaviours
+    hold DSC's animation events (the paired killmoves are the open risk) and the animation data its clips. Run on
+    the machine after `stack.ps1 pandora`; DSC loads its rolls by these events, so a miss means B is dead."""
+    events = ",".join(f"'{e}'" for e in DSC_EVENTS)
+    out = run("ps", rf"""
+$out = 'C:\argonia\MO2\mods\pandora-output'; $log = 'C:\argonia\logs\pandora-engine.log'
+if (Test-Path $log) {{ $l = Select-String -Path $log -Pattern 'BBDarkSoulsCombat|FNIS' | Select -First 20
+  "log: $(@(Select-String -Path $log -Pattern 'BBDarkSoulsCombat').Count) DSC lines; $(@(Select-String -Path $log -Pattern 'error|fail' ).Count) error/fail lines"
+  $l | % {{ '  ' + $_.Line }} }} else {{ 'log: none (run stack.ps1 pandora first)' }}
+$beh = Get-ChildItem "$out\meshes" -Recurse -File -Filter *.hkx -EA SilentlyContinue
+foreach ($e in @({events})) {{
+  $hit = @($beh | ? {{ [Text.Encoding]::ASCII.GetString([IO.File]::ReadAllBytes($_.FullName)).Contains($e) }} | % Name)
+  "event ${{e}}: " + $(if ($hit) {{ $hit -join ' ' }} else {{ 'MISSING' }}) }}
+$ad = "$out\meshes\animationdatasinglefile.txt"
+"animdata: " + $(if (Test-Path $ad) {{ @(Select-String -Path $ad -Pattern 'BBDarkSoulsCombat' -SimpleMatch).Count }} else {{ 'no file' }}) + ' DSC clip lines'
+""", capture=True)
+    print(out.strip())
+    missing = [ln for ln in out.splitlines() if ln.endswith("MISSING") and "_pa_" not in ln]
+    if missing or "log: none" in out:
+        raise SystemExit("pandora-check: DSC's FNIS animations did not reach the behaviours (B is dead): " + "; ".join(missing))
+    print("PANDORA-DSC OK" + (" (paired killmoves missing: B's own riposte and backstab cannot play)"
+                              if "MISSING" in out else ""))
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--machine", help="game machine (default $ARGONIA_PLAY, else argonia-play)")
@@ -938,7 +1172,16 @@ def main():
                        help="lay deferred rows whose `from` chunk has started by this part or chunk (default: the current part)")
         if name == "install":
             s.add_argument("--skip-fetch", action="store_true")
-    for name in ("push", "menu", "masters", "prune", "evict", "animdata"):
+        else:
+            s.add_argument("--into", help="stage into this dir instead of ~/.argonia/stack (a dry run)")
+            s.add_argument("--group", help="with --into: only this group's rows")
+    c = sub.add_parser("combat", help="install combat set A (souls-0.0), B (dsc-b) or B2 (dsc-b2)")
+    c.add_argument("which", nargs="+", choices=sorted(COMBAT))
+    c.add_argument("--dry", help="stage the combat group of each named set into this scratch dir; check the switch")
+    c.add_argument("--dev", action="store_true")
+    c.add_argument("--through", default=CURRENT_PART)
+    c.add_argument("--skip-fetch", action="store_true")
+    for name in ("push", "menu", "masters", "prune", "evict", "animdata", "pandora-check"):
         sub.add_parser(name)
     sub.add_parser("verify").add_argument("--full", action="store_true", help="rehash every file (no cache)")
     a = p.parse_args()
@@ -946,7 +1189,7 @@ def main():
         os.environ["ARGONIA_PLAY"] = a.machine  # run.sh reads it
     {"fetch": cmd_fetch, "stage": cmd_stage, "push": cmd_push, "install": cmd_install, "menu": cmd_menu,
      "verify": cmd_verify, "masters": cmd_masters, "prune": cmd_prune, "evict": cmd_evict,
-     "animdata": cmd_animdata}[a.cmd](a)
+     "animdata": cmd_animdata, "combat": cmd_combat, "pandora-check": cmd_pandora_check}[a.cmd](a)
 
 
 if __name__ == "__main__":

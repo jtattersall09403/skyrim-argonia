@@ -20,6 +20,9 @@
   {"edid": "aaaShipQuest", "plugin": "Sailable Ship.esm", "why": "the ship's controller (boats, the owner brief)"},
   {"edid": "aaaShipUpdateQuest", "plugin": "Sailable Ship.esm", "why": "the ship's update loop"},
   {"edid": "aaaShipInputQuest", "plugin": "Sailable Ship.esm", "why": "the ship's input quest (shelled, the helm went dead, game-6)"},
+  {"edid": "BB_Poise_GivePlayerAbilityQuest", "plugin": "Dark Souls Combat.esp", "why": "Dark Souls Combat's controller (combat sets B and B2 only): gives the player the poise ability, the poise cloak and the shield-parry perk"},
+  {"edid": "BB_RollCameraQuest", "plugin": "Dark Souls Combat.esp", "why": "Dark Souls Combat's roll quest (B and B2): every poise monitor reads its RollKey property, so a shell (no script) breaks the poise effect too"},
+  {"edid": "BB_Poise_ConfigMenuQuest", "plugin": "Dark Souls Combat.esp", "why": "Dark Souls Combat's MCM (B and B2): its settings are staged into the plugin (plugin_values), the menu is for reading them and for its Uninstall"},
   {"edid": "EVGNPCDoorQuest", "plugin": "EVGAnimatedTraversal.esl", "why": "Animated Traversal's controller: people open doors with their animation"}
  ],
  "prevent": [
