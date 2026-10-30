@@ -205,4 +205,5 @@ Something they can **play**, that is:
 | 2026-10-30 | **#16: move the play machine to a g6.xlarge** (about $0.04/h more is fine), cloned from the image; London first, then another European region for latency; retire the old machine and its disk so nothing is charged twice. **The frame bar is revised**: median 60 fps best, 50 fps acceptable; 95% of frames at or above 45 fps when the median is above 50; 1% lows of 25–30 fps acceptable if unavoidable. |
 | 2026-10-30 | **The loop is: check everything, then diagnose everything, then build and deploy all the fixes together, then check again** (one batch, parallel diagnosis, one deploy per round). |
 | 2026-10-30 | **NPC movement is not checked in game**: walking, wandering and swimming are the base engine's own work, so the NPC-walk, NPC-sandbox and NPC-swim checks are dropped. |
+| 2026-10-30 | **Machine move after things work**: get everything working on the current g4dn first, then move for frame rate. Approved: g6.xlarge in London, Paris or Ireland, or g5.xlarge at $0.31/h, whichever is available (the owner requested a G spot quota of 16 in eu-west-3 and eu-west-1). No standing retry loop. |
 
