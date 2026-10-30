@@ -311,13 +311,43 @@ def _cell_keys():
     return key
 
 
+class GameGround:
+    """The final game ground at province metres (x east, y south): bilinear over `build.game_heights_m` with every
+    layer applied (the river regrade and the place ground edits), the numbers the LAND stores, so a reference
+    with no explicit z stands on the ground the player sees, not on the frozen 2.W1 array."""
+
+    def __init__(self, src=None):
+        from tools.argonia_world.terrain.grid import Sources
+        self.src = src if src is not None else Sources.load()
+        self._cache: dict[tuple[int, int], object] = {}
+
+    def _block(self, br: int, bc: int):
+        from tools.argonia_world.terrain import build as tb
+        b = self._cache.get((br, bc))
+        if b is None:  # 33 x 33 samples with a shared edge, so a bilinear 2x2 is inside
+            p = self.src.pad
+            b = tb.game_heights_m(self.src, p + br * 32, p + br * 32 + 33, p + bc * 32, p + bc * 32 + 33)
+            self._cache[(br, bc)] = b
+        return b
+
+    def z(self, x: float, y: float) -> float:
+        n = self.src.n
+        c = min(max(x / su.PROVINCE_SAMPLE_M, 0), n - 1e-6)
+        r = min(max(y / su.PROVINCE_SAMPLE_M, 0), n - 1e-6)
+        c0, r0 = int(c), int(r)
+        fc, fr = c - c0, r - r0
+        h = self._block(r0 // 32, c0 // 32)
+        i, j = r0 % 32, c0 % 32
+        a, b, cc, d = (float(h[i, j]), float(h[i, j + 1]), float(h[i + 1, j]), float(h[i + 1, j + 1]))
+        return (a * (1 - fc) + b * fc) * (1 - fr) + (cc * (1 - fc) + d * fc) * fr
+
+
 def layers(alloc, world, resolver, wrld_form_key: str) -> list:
     from tools.argonia_world.intermediate import Layer
-    from tools.argonia_world.routes.build import Ground
     places = sorted({c.place_id for c in world.rows("build_cell")})
     if not places:
         return []
-    ground = Ground()
+    ground = GameGround()
     return [Layer(f"place:{p.rsplit('.', 1)[1]}", place_records(alloc, world, resolver, ground, wrld_form_key, p))
             for p in places]
 
