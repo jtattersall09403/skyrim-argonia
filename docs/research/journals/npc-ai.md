@@ -73,3 +73,18 @@ whose written input count differs. It was proved failing once on the real data: 
 
 **Outfits are stand-ins** (`outfit_stand_in = 1`). They are King of the Murkmire's Saxhleel tunics (grey, green,
 orange) and AnWamasuLeatherOutfit01 for Livia, in place of each npc's `look_outfit`, until that clothing is ours.
+
+## 2026-10-30: the cause was the navmesh, and the console read misled (game-8)
+
+**The read.** The console's GetCurrentAIPackage and GetCurrentAIProcedure answer -1 for vanilla Golldir too, while
+he runs his package. They cannot tell a template (PKCU) package from no AI, so they are not an oracle. Use the
+bridge's `actors [radius] [ref...]` read instead. It gives the process level, the actor's own AI flag (kProcessMe),
+the current package, and the engine's global process switches.
+
+**The finding.** Read with `actors`, all four people had a high process, AI on and their day package, both before
+and after the record fixes. What they lacked was ground to walk on. ArgoniaWorld.esm had 0 NAVM, and `nav`
+reported "no navmesh in the loaded cells". The cause: `make plugin` rebuilt the world without the navmesh that
+`make navmesh` writes. With the province navmesh deployed (12,085 NAVM), Livia in combat closed 300 units on the
+player within 6 s, and the people left their placements at noon.
+
+**Guards.** `make plugin` carries out/navmesh/province (test_pipeline). deploy.sh refuses a world with no NAVM.
