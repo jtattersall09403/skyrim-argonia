@@ -414,9 +414,14 @@ class Runner:
         """`close_menu: <menu>`: the open menu closed the way a player does (the first key that works of
         CLOSE_KEYS), checked by its close event; our journal view by the Views read. StepFailed when none closes it."""
         menu = str(menu).strip()
-        for key, route in CLOSE_KEYS:
+        keys = CLOSE_KEYS
+        if menu == "MapMenu":  # our chart owns the map's input: closed by its own close intent, the control it binds
+            keys = (("view.close", "intent"),) + CLOSE_KEYS
+        for key, route in keys:
             last = (self.b.call("events") or {}).get("last")
-            if route == "pad":
+            if route == "intent":
+                self.b.call("core", "ViewIntent", json.dumps({"type": "view.close", "v": 1, "body": {"view": MENU_VIEWS[menu]}}))
+            elif route == "pad":
                 self.b.pad(f"{key}:150 -:100")
             else:
                 self.b.call("input", "key", key, 100, route)
@@ -429,7 +434,7 @@ class Runner:
             if view_ok and menu_ok:
                 self.calls.append({"call": ["close_menu", menu], "result": [key, route]})
                 return [key, route]
-        raise StepFailed(f"close_menu {menu}: none of {CLOSE_KEYS} closed it")
+        raise StepFailed(f"close_menu {menu}: none of {keys} closed it")
 
     def _talk(self, ref):
         """`talk: <ref>`: _face, then E (retried while no menu opens)."""

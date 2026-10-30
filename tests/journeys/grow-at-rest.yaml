@@ -52,7 +52,9 @@ steps:
   - name: rest-no-pending     # with no level pending the rest saves and no sitting opens
     do:
       - {console: '"{opp}".stopcombat'}
+      - {console: '"{opp}".disable'}   # the hostile deserter out of the way: the engine rightly refuses a rest beside him (game-16)
       - {rest: ARG_Ref_ClaywaterStationAmbushPlayer}   # stops combat, aims at the camp spot, E until the rest logs (game-16)
+      - {console: '"{opp}".enable'}
     expect:
       - {log: {name: ArgoniaCore, contains: "saves: ArgoniaRest written (rest)"}, within: 10}
       - {read: [core, SittingOpen], path: value, eq: false}
@@ -65,7 +67,9 @@ steps:
       - {read: [core, GetAttribute, endurance], path: value, keep: end0}
   - name: rest-opens-sitting
     do:
+      - {console: '"{opp}".disable'}   # the hostile deserter out of the way: the engine rightly refuses a rest beside him (game-16)
       - {rest: ARG_Ref_ClaywaterStationAmbushPlayer}   # stops combat, aims at the camp spot, E until the rest logs (game-16)
+      - {console: '"{opp}".enable'}
     expect:
       - {read: [core, SittingOpen], path: value, eq: true, within: 10}
       - {read: [core, ViewState, sitting], path: value.type, eq: sitting.state}

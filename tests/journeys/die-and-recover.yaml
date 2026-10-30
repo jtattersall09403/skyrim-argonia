@@ -17,7 +17,9 @@ steps:
   - name: rest                # the wake point is the camp; the deserter out of combat ("cannot rest with enemies nearby")
     do:
       - {console: '"{opp}".stopcombat'}
+      - {console: '"{opp}".disable'}   # the hostile deserter out of the way: the engine rightly refuses a rest beside him (game-16)
       - {rest: ARG_Ref_ClaywaterStationAmbushPlayer}   # stops combat, aims at the camp spot, E until the rest logs (game-16)
+      - {console: '"{opp}".enable'}
     expect: [{read: [core, WakePoint], path: value, ne: "", keep: wake, within: 10}]
   - name: earn                # blows on the deserter (its health raised as setup)
     do:
