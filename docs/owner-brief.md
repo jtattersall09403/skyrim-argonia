@@ -192,3 +192,10 @@ Something they can **play**, that is:
 | 2026-10-30 | **Standing permission: agents may always start and stop the game machines** ("you always have permission to do this"); a stop is never a reason to wait. |
 | 2026-10-30 | **The soak is dropped** unless the owner asks for it. **Each game-machine slot runs a whole batch** of checks, not one at a time. |
 | 2026-10-30 | **Decompile whenever it would be useful** (games, mod scripts, mod menus, DLLs). Game decompiles stay private and inform our own code; a mod's decompiled code may be adapted when its author or licence permits, credited (0003 §8). The stat sheet stays ours; ESLA is a pattern source. |
+| 2026-10-30 | **Interiors may look Nordic**: Claywater station house (and any borrowed interior) is fine with a Nordic look; exteriors must be Tropical Skyrim, and an interior uses Tropical Skyrim's version where one exists, else vanilla as it is. (Given before; recorded late.) |
+| 2026-10-30 | **Test our integration, not other modders' work**: an in-game check proves what we made (a creature present, in the right place, alive, configured; a mod wired and loaded), never behaviour a human modder built and tested (the crocodile attacking, a dodge's feel). A check must be able to fail for a reason about our work. |
+| 2026-10-30 | **In-game checks are simple and in real places**: no test arenas; use real locations (Claywater and the province). The four fight checks are simplified. The one-hour road walk is dropped. |
+| 2026-10-30 | **Every in-game check runs in one batch**, with the checks most likely to crash run last so they cannot block the others. |
+| 2026-10-30 | **Distant terrain (LOD) is made the native Skyrim way** (the Creation Kit's own LOD generation), not with community tools. |
+| 2026-10-30 | **Frame rate (#16)**: the owner plays the shaders-on and shaders-off cards once the work is finished, then decides on the machine type. |
+
