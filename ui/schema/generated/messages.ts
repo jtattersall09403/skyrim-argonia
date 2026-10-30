@@ -2,7 +2,7 @@
 // run `node --experimental-strip-types tools/schema_gen/gen.ts`; the gate refuses a stale twin. The C++ twin is
 // skse/core/generated/argonia/core/messages.h. Views never hold game state: they render pushes and send intents.
 
-export const schemaHash = "6a6e27ff2a000392";
+export const schemaHash = "7ab8e13754f35387";
 
 /** what put an entry in the window */
 export type DialogueEntryKind = "greeting" | "answer" | "notice";
@@ -22,6 +22,10 @@ export type EffectPolarity = "boon" | "bane";
 export type InputDevice = "keyboard" | "gamepad" | "touch";
 /** what raised a notice */
 export type NoticeKind = "info" | "journal" | "discovery" | "warning";
+/** one of the seven attributes (Morrowind's, without Luck) */
+export type AttributeId = "agility" | "endurance" | "intelligence" | "personality" | "speed" | "strength" | "willpower";
+/** why the next point of an attribute cannot be bought */
+export type SittingRefusal = "noPendingLevel" | "atCapThisSitting" | "atPurchaseCap" | "tooDear";
 /** a view the player can close */
 export type ViewId = "dialogue" | "journal" | "chart";
 
@@ -323,6 +327,53 @@ export interface ChartPan {
   /** Where the chart is looking; kept by ArgoniaCore between openings */
   view: ChartView;
 }
+/** One attribute's row of the sitting */
+export interface SittingAttribute {
+  /** one of the seven attributes (Morrowind's, without Luck) */
+  id: AttributeId;
+  /** the attribute's name as the sheet shows it */
+  name: string;
+  /** the attribute now, with this sitting's points */
+  value: number;
+  /** points bought this sitting */
+  bought: number;
+  /** the most points one sitting may buy */
+  cap: number;
+  /** the vastei the next point costs (cost formula, ArgoniaCore's) */
+  cost: number;
+  /** why the next point cannot be bought; absent when it can */
+  refusal?: SittingRefusal;
+}
+/** A pool the sitting recomputes */
+export interface SittingPool {
+  /** the maximum when the sitting opened */
+  before: number;
+  /** the maximum with this sitting's points */
+  after: number;
+}
+/** The open sitting after each purchase */
+export interface SittingState {
+  /** the level this sitting takes */
+  level: number;
+  /** vastei carried, after this sitting's purchases */
+  vastei: number;
+  /** pending levels left for later rests */
+  pendingAfter: number;
+  /** the seven attributes, in the sheet's order */
+  attributes: SittingAttribute[];
+  /** A pool the sitting recomputes */
+  health: SittingPool;
+  /** one line about the last pick (a refusal), as ArgoniaCore words it */
+  notice?: string;
+}
+/** The player bought one point of an attribute */
+export interface SittingBuy {
+  /** one of the seven attributes (Morrowind's, without Luck) */
+  attribute: AttributeId;
+}
+/** The player rose from the sitting; unspent vastei carries over */
+export interface SittingDone {
+}
 /** The player closed a view (Escape, the pad's B, the close button) */
 export interface ViewClose {
   /** a view the player can close */
@@ -334,7 +385,8 @@ export type PushMessage =
   | { type: "journal.state"; v: 1; body: JournalState }
   | { type: "hud.state"; v: 1; body: HudState }
   | { type: "hud.bars"; v: 1; body: HudBars }
-  | { type: "chart.state"; v: 1; body: ChartState };
+  | { type: "chart.state"; v: 1; body: ChartState }
+  | { type: "sitting.state"; v: 1; body: SittingState };
 export type IntentMessage =
   | { type: "dialogue.topic"; v: 1; body: DialogueTopic }
   | { type: "dialogue.keyword"; v: 1; body: DialogueKeyword }
@@ -342,6 +394,8 @@ export type IntentMessage =
   | { type: "dialogue.goodbye"; v: 1; body: DialogueGoodbye }
   | { type: "journal.page"; v: 1; body: JournalPage }
   | { type: "chart.pan"; v: 1; body: ChartPan }
+  | { type: "sitting.buy"; v: 1; body: SittingBuy }
+  | { type: "sitting.done"; v: 1; body: SittingDone }
   | { type: "view.close"; v: 1; body: ViewClose };
 export type Message = PushMessage | IntentMessage;
 export type Direction = "push" | "intent";
@@ -359,6 +413,9 @@ export const messageTable: readonly { type: string; version: number; dir: Direct
   { type: "hud.bars", version: 1, dir: "push" },
   { type: "chart.state", version: 1, dir: "push" },
   { type: "chart.pan", version: 1, dir: "intent" },
+  { type: "sitting.state", version: 1, dir: "push" },
+  { type: "sitting.buy", version: 1, dir: "intent" },
+  { type: "sitting.done", version: 1, dir: "intent" },
   { type: "view.close", version: 1, dir: "intent" },
 ];
 
@@ -429,6 +486,16 @@ const NoticeKindValues: readonly string[] = ["info", "journal", "discovery", "wa
 function checkNoticeKind(x: unknown, p: string): string | null {
   if (typeof x !== "string") return bad(p, "want one of info, journal, discovery, warning");
   return NoticeKindValues.includes(x) ? null : bad(p, `'${x}' is not one of info, journal, discovery, warning`);
+}
+const AttributeIdValues: readonly string[] = ["agility", "endurance", "intelligence", "personality", "speed", "strength", "willpower"];
+function checkAttributeId(x: unknown, p: string): string | null {
+  if (typeof x !== "string") return bad(p, "want one of agility, endurance, intelligence, personality, speed, strength, willpower");
+  return AttributeIdValues.includes(x) ? null : bad(p, `'${x}' is not one of agility, endurance, intelligence, personality, speed, strength, willpower`);
+}
+const SittingRefusalValues: readonly string[] = ["noPendingLevel", "atCapThisSitting", "atPurchaseCap", "tooDear"];
+function checkSittingRefusal(x: unknown, p: string): string | null {
+  if (typeof x !== "string") return bad(p, "want one of noPendingLevel, atCapThisSitting, atPurchaseCap, tooDear");
+  return SittingRefusalValues.includes(x) ? null : bad(p, `'${x}' is not one of noPendingLevel, atCapThisSitting, atPurchaseCap, tooDear`);
 }
 const ViewIdValues: readonly string[] = ["dialogue", "journal", "chart"];
 function checkViewId(x: unknown, p: string): string | null {
@@ -818,6 +885,66 @@ function checkChartPan(x: unknown, p: string): string | null {
   if ((e = checkChartView(o["view"], p + ".view")) !== null) return e;
   return null;
 }
+function checkSittingAttribute(x: unknown, p: string): string | null {
+  const o = members(x, p, ["id","name","value","bought","cap","cost","refusal"]);
+  if (typeof o === "string") return o;
+  let e: string | null;
+  if (o["id"] === undefined) return bad(p + ".id", "missing");
+  if ((e = checkAttributeId(o["id"], p + ".id")) !== null) return e;
+  if (o["name"] === undefined) return bad(p + ".name", "missing");
+  if ((e = (typeof o["name"] === "string" ? null : bad(p + ".name", "want a string"))) !== null) return e;
+  if (o["value"] === undefined) return bad(p + ".value", "missing");
+  if ((e = whole(o["value"], 0, MAX_SAFE, p + ".value")) !== null) return e;
+  if (o["bought"] === undefined) return bad(p + ".bought", "missing");
+  if ((e = whole(o["bought"], 0, MAX_SAFE, p + ".bought")) !== null) return e;
+  if (o["cap"] === undefined) return bad(p + ".cap", "missing");
+  if ((e = whole(o["cap"], 0, MAX_SAFE, p + ".cap")) !== null) return e;
+  if (o["cost"] === undefined) return bad(p + ".cost", "missing");
+  if ((e = real(o["cost"], 0, Number.MAX_VALUE, p + ".cost")) !== null) return e;
+  if (o["refusal"] !== undefined && (e = checkSittingRefusal(o["refusal"], p + ".refusal")) !== null) return e;
+  return null;
+}
+function checkSittingPool(x: unknown, p: string): string | null {
+  const o = members(x, p, ["before","after"]);
+  if (typeof o === "string") return o;
+  let e: string | null;
+  if (o["before"] === undefined) return bad(p + ".before", "missing");
+  if ((e = real(o["before"], 0, Number.MAX_VALUE, p + ".before")) !== null) return e;
+  if (o["after"] === undefined) return bad(p + ".after", "missing");
+  if ((e = real(o["after"], 0, Number.MAX_VALUE, p + ".after")) !== null) return e;
+  return null;
+}
+function checkSittingState(x: unknown, p: string): string | null {
+  const o = members(x, p, ["level","vastei","pendingAfter","attributes","health","notice"]);
+  if (typeof o === "string") return o;
+  let e: string | null;
+  if (o["level"] === undefined) return bad(p + ".level", "missing");
+  if ((e = whole(o["level"], 1, MAX_SAFE, p + ".level")) !== null) return e;
+  if (o["vastei"] === undefined) return bad(p + ".vastei", "missing");
+  if ((e = real(o["vastei"], 0, Number.MAX_VALUE, p + ".vastei")) !== null) return e;
+  if (o["pendingAfter"] === undefined) return bad(p + ".pendingAfter", "missing");
+  if ((e = whole(o["pendingAfter"], 0, MAX_SAFE, p + ".pendingAfter")) !== null) return e;
+  if (o["attributes"] === undefined) return bad(p + ".attributes", "missing");
+  if ((e = each(o["attributes"], p + ".attributes", (e0: unknown, i0: string) => checkSittingAttribute(e0, i0))) !== null) return e;
+  if (o["health"] === undefined) return bad(p + ".health", "missing");
+  if ((e = checkSittingPool(o["health"], p + ".health")) !== null) return e;
+  if (o["notice"] !== undefined && (e = (typeof o["notice"] === "string" ? null : bad(p + ".notice", "want a string"))) !== null) return e;
+  return null;
+}
+function checkSittingBuy(x: unknown, p: string): string | null {
+  const o = members(x, p, ["attribute"]);
+  if (typeof o === "string") return o;
+  let e: string | null;
+  if (o["attribute"] === undefined) return bad(p + ".attribute", "missing");
+  if ((e = checkAttributeId(o["attribute"], p + ".attribute")) !== null) return e;
+  return null;
+}
+function checkSittingDone(x: unknown, p: string): string | null {
+  const o = members(x, p, []);
+  if (typeof o === "string") return o;
+  let e: string | null;
+  return null;
+}
 function checkViewClose(x: unknown, p: string): string | null {
   const o = members(x, p, ["view"]);
   if (typeof o === "string") return o;
@@ -839,6 +966,9 @@ const bodies: Record<string, (x: unknown, p: string) => string | null> = {
   "hud.bars": checkHudBars,
   "chart.state": checkChartState,
   "chart.pan": checkChartPan,
+  "sitting.state": checkSittingState,
+  "sitting.buy": checkSittingBuy,
+  "sitting.done": checkSittingDone,
   "view.close": checkViewClose,
 };
 

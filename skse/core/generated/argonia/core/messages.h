@@ -19,7 +19,7 @@
 namespace argonia::core::msg {
 
 // FNV-1a 64 of the schema's shape; the views' twin carries the same value (ui/schema/generated/messages.ts).
-inline constexpr std::string_view kSchemaHash = "6a6e27ff2a000392";
+inline constexpr std::string_view kSchemaHash = "7ab8e13754f35387";
 
 enum class Direction : std::uint8_t { push, intent };  // push: ArgoniaCore -> view; intent: view -> ArgoniaCore
 
@@ -58,6 +58,14 @@ inline constexpr std::array<std::string_view, 3> kInputDeviceNames{"keyboard", "
 // what raised a notice
 enum class NoticeKind : std::uint8_t { info, journal, discovery, warning };
 inline constexpr std::array<std::string_view, 4> kNoticeKindNames{"info", "journal", "discovery", "warning"};
+
+// one of the seven attributes (Morrowind's, without Luck)
+enum class AttributeId : std::uint8_t { agility, endurance, intelligence, personality, speed, strength, willpower };
+inline constexpr std::array<std::string_view, 7> kAttributeIdNames{"agility", "endurance", "intelligence", "personality", "speed", "strength", "willpower"};
+
+// why the next point of an attribute cannot be bought
+enum class SittingRefusal : std::uint8_t { noPendingLevel, atCapThisSitting, atPurchaseCap, tooDear };
+inline constexpr std::array<std::string_view, 4> kSittingRefusalNames{"noPendingLevel", "atCapThisSitting", "atPurchaseCap", "tooDear"};
 
 // a view the player can close
 enum class ViewId : std::uint8_t { dialogue, journal, chart };
@@ -324,6 +332,47 @@ struct ChartPan {
   bool operator==(const ChartPan&) const = default;
 };
 
+// One attribute's row of the sitting
+struct SittingAttribute {
+  AttributeId id{};  // one of the seven attributes (Morrowind's, without Luck)
+  std::string name;  // the attribute's name as the sheet shows it
+  std::int64_t value = 0;  // the attribute now, with this sitting's points
+  std::int64_t bought = 0;  // points bought this sitting
+  std::int64_t cap = 0;  // the most points one sitting may buy
+  double cost = 0;  // the vastei the next point costs (cost formula, ArgoniaCore's)
+  std::optional<SittingRefusal> refusal;  // why the next point cannot be bought; absent when it can
+  bool operator==(const SittingAttribute&) const = default;
+};
+
+// A pool the sitting recomputes
+struct SittingPool {
+  double before = 0;  // the maximum when the sitting opened
+  double after = 0;  // the maximum with this sitting's points
+  bool operator==(const SittingPool&) const = default;
+};
+
+// The open sitting after each purchase
+struct SittingState {
+  std::int64_t level = 0;  // the level this sitting takes
+  double vastei = 0;  // vastei carried, after this sitting's purchases
+  std::int64_t pending_after = 0;  // pending levels left for later rests
+  std::vector<SittingAttribute> attributes;  // the seven attributes, in the sheet's order
+  SittingPool health;  // A pool the sitting recomputes
+  std::optional<std::string> notice;  // one line about the last pick (a refusal), as ArgoniaCore words it
+  bool operator==(const SittingState&) const = default;
+};
+
+// The player bought one point of an attribute
+struct SittingBuy {
+  AttributeId attribute{};  // one of the seven attributes (Morrowind's, without Luck)
+  bool operator==(const SittingBuy&) const = default;
+};
+
+// The player rose from the sitting; unspent vastei carries over
+struct SittingDone {
+  bool operator==(const SittingDone&) const = default;
+};
+
 // The player closed a view (Escape, the pad's B, the close button)
 struct ViewClose {
   ViewId view{};  // a view the player can close
@@ -400,18 +449,36 @@ struct Traits<ChartPan> {
   static constexpr Direction dir = Direction::intent;
 };
 template <>
+struct Traits<SittingState> {
+  static constexpr std::string_view type = "sitting.state";
+  static constexpr std::uint32_t version = 1;
+  static constexpr Direction dir = Direction::push;
+};
+template <>
+struct Traits<SittingBuy> {
+  static constexpr std::string_view type = "sitting.buy";
+  static constexpr std::uint32_t version = 1;
+  static constexpr Direction dir = Direction::intent;
+};
+template <>
+struct Traits<SittingDone> {
+  static constexpr std::string_view type = "sitting.done";
+  static constexpr std::uint32_t version = 1;
+  static constexpr Direction dir = Direction::intent;
+};
+template <>
 struct Traits<ViewClose> {
   static constexpr std::string_view type = "view.close";
   static constexpr std::uint32_t version = 1;
   static constexpr Direction dir = Direction::intent;
 };
 
-using Push = std::variant<DialogueState, JournalState, HudState, HudBars, ChartState>;
-using Intent = std::variant<DialogueTopic, DialogueKeyword, DialoguePersuade, DialogueGoodbye, JournalPage, ChartPan, ViewClose>;
-using Message = std::variant<DialogueState, DialogueTopic, DialogueKeyword, DialoguePersuade, DialogueGoodbye, JournalState, JournalPage, HudState, HudBars, ChartState, ChartPan, ViewClose>;
+using Push = std::variant<DialogueState, JournalState, HudState, HudBars, ChartState, SittingState>;
+using Intent = std::variant<DialogueTopic, DialogueKeyword, DialoguePersuade, DialogueGoodbye, JournalPage, ChartPan, SittingBuy, SittingDone, ViewClose>;
+using Message = std::variant<DialogueState, DialogueTopic, DialogueKeyword, DialoguePersuade, DialogueGoodbye, JournalState, JournalPage, HudState, HudBars, ChartState, ChartPan, SittingState, SittingBuy, SittingDone, ViewClose>;
 
 struct MessageInfo { std::string_view type; std::uint32_t version; Direction dir; };
-inline constexpr std::array<MessageInfo, 12> kMessages{{
+inline constexpr std::array<MessageInfo, 15> kMessages{{
     {"dialogue.state", 1, Direction::push},
     {"dialogue.topic", 1, Direction::intent},
     {"dialogue.keyword", 1, Direction::intent},
@@ -423,6 +490,9 @@ inline constexpr std::array<MessageInfo, 12> kMessages{{
     {"hud.bars", 1, Direction::push},
     {"chart.state", 1, Direction::push},
     {"chart.pan", 1, Direction::intent},
+    {"sitting.state", 1, Direction::push},
+    {"sitting.buy", 1, Direction::intent},
+    {"sitting.done", 1, Direction::intent},
     {"view.close", 1, Direction::intent},
 }};
 
@@ -499,6 +569,22 @@ inline bool from_json(const json::Value& j, NoticeKind& out, const std::string& 
   for (std::size_t i = 0; i < kNoticeKindNames.size(); ++i)
     if (*s == kNoticeKindNames[i]) { out = NoticeKind(i); return true; }
   return json::fail(err, path, "'" + *s + "' is not one of info, journal, discovery, warning");
+}
+inline json::Value to_json(AttributeId v) { return json::Value::string(std::string(kAttributeIdNames[std::size_t(v)])); }
+inline bool from_json(const json::Value& j, AttributeId& out, const std::string& path, std::string& err) {
+  const std::string* s = j.as_string();
+  if (!s) return json::fail(err, path, "want one of agility, endurance, intelligence, personality, speed, strength, willpower");
+  for (std::size_t i = 0; i < kAttributeIdNames.size(); ++i)
+    if (*s == kAttributeIdNames[i]) { out = AttributeId(i); return true; }
+  return json::fail(err, path, "'" + *s + "' is not one of agility, endurance, intelligence, personality, speed, strength, willpower");
+}
+inline json::Value to_json(SittingRefusal v) { return json::Value::string(std::string(kSittingRefusalNames[std::size_t(v)])); }
+inline bool from_json(const json::Value& j, SittingRefusal& out, const std::string& path, std::string& err) {
+  const std::string* s = j.as_string();
+  if (!s) return json::fail(err, path, "want one of noPendingLevel, atCapThisSitting, atPurchaseCap, tooDear");
+  for (std::size_t i = 0; i < kSittingRefusalNames.size(); ++i)
+    if (*s == kSittingRefusalNames[i]) { out = SittingRefusal(i); return true; }
+  return json::fail(err, path, "'" + *s + "' is not one of noPendingLevel, atCapThisSitting, atPurchaseCap, tooDear");
 }
 inline json::Value to_json(ViewId v) { return json::Value::string(std::string(kViewIdNames[std::size_t(v)])); }
 inline bool from_json(const json::Value& j, ViewId& out, const std::string& path, std::string& err) {
@@ -1605,6 +1691,169 @@ inline bool from_json(const json::Value& j, ChartPan& out, const std::string& pa
   return f.done();
 }
 
+inline json::Value to_json(const SittingAttribute& v) {
+  json::Object o;
+  o.reserve(7);
+  o.push_back({"id", to_json(v.id)});
+  o.push_back({"name", json::Value::string(v.name)});
+  o.push_back({"value", json::Value::number(double(v.value))});
+  o.push_back({"bought", json::Value::number(double(v.bought))});
+  o.push_back({"cap", json::Value::number(double(v.cap))});
+  o.push_back({"cost", json::Value::number(v.cost)});
+  if (v.refusal) o.push_back({"refusal", to_json(*v.refusal)});
+  return json::Value::object(std::move(o));
+}
+inline bool from_json(const json::Value& j, SittingAttribute& out, const std::string& path, std::string& err) {
+  json::Fields f(j, path, err);
+  if (!f.ok()) return false;
+  if (const json::Value* f_id = f.req("id")) {
+    if (!from_json(*f_id, out.id, path + ".id", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_name = f.req("name")) {
+    if (!json::read(*f_name, out.name, path + ".name", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_value = f.req("value")) {
+    if (!json::read_int(*f_value, out.value, 0.0, json::kMaxSafeInt, path + ".value", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_bought = f.req("bought")) {
+    if (!json::read_int(*f_bought, out.bought, 0.0, json::kMaxSafeInt, path + ".bought", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_cap = f.req("cap")) {
+    if (!json::read_int(*f_cap, out.cap, 0.0, json::kMaxSafeInt, path + ".cap", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_cost = f.req("cost")) {
+    if (!json::read_num(*f_cost, out.cost, 0.0, (std::numeric_limits<double>::max)(), path + ".cost", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_refusal = f.opt("refusal")) {
+    out.refusal.emplace();
+    if (!from_json(*f_refusal, *out.refusal, path + ".refusal", err)) return false;
+  } else {
+    out.refusal.reset();
+  }
+  return f.done();
+}
+
+inline json::Value to_json(const SittingPool& v) {
+  json::Object o;
+  o.reserve(2);
+  o.push_back({"before", json::Value::number(v.before)});
+  o.push_back({"after", json::Value::number(v.after)});
+  return json::Value::object(std::move(o));
+}
+inline bool from_json(const json::Value& j, SittingPool& out, const std::string& path, std::string& err) {
+  json::Fields f(j, path, err);
+  if (!f.ok()) return false;
+  if (const json::Value* f_before = f.req("before")) {
+    if (!json::read_num(*f_before, out.before, 0.0, (std::numeric_limits<double>::max)(), path + ".before", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_after = f.req("after")) {
+    if (!json::read_num(*f_after, out.after, 0.0, (std::numeric_limits<double>::max)(), path + ".after", err)) return false;
+  } else {
+    return false;
+  }
+  return f.done();
+}
+
+inline json::Value to_json(const SittingState& v) {
+  json::Object o;
+  o.reserve(6);
+  o.push_back({"level", json::Value::number(double(v.level))});
+  o.push_back({"vastei", json::Value::number(v.vastei)});
+  o.push_back({"pendingAfter", json::Value::number(double(v.pending_after))});
+  o.push_back({"attributes", [&] { json::Array a0; a0.reserve(v.attributes.size()); for (const auto& e0 : v.attributes) a0.push_back(to_json(e0)); return json::Value::array(std::move(a0)); }()});
+  o.push_back({"health", to_json(v.health)});
+  if (v.notice) o.push_back({"notice", json::Value::string(*v.notice)});
+  return json::Value::object(std::move(o));
+}
+inline bool from_json(const json::Value& j, SittingState& out, const std::string& path, std::string& err) {
+  json::Fields f(j, path, err);
+  if (!f.ok()) return false;
+  if (const json::Value* f_level = f.req("level")) {
+    if (!json::read_int(*f_level, out.level, 1.0, json::kMaxSafeInt, path + ".level", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_vastei = f.req("vastei")) {
+    if (!json::read_num(*f_vastei, out.vastei, 0.0, (std::numeric_limits<double>::max)(), path + ".vastei", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_pending_after = f.req("pendingAfter")) {
+    if (!json::read_int(*f_pending_after, out.pending_after, 0.0, json::kMaxSafeInt, path + ".pendingAfter", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_attributes = f.req("attributes")) {
+    {
+      const json::Array* a0 = (*f_attributes).as_array();
+      if (!a0) return json::fail(err, path + ".attributes", "want a list");
+      out.attributes.clear();
+      out.attributes.reserve(a0->size());
+      for (std::size_t i0 = 0; i0 < a0->size(); ++i0) {
+        out.attributes.emplace_back();
+        if (!from_json((*a0)[i0], out.attributes.back(), path + ".attributes" + "[" + std::to_string(i0) + "]", err)) return false;
+      }
+    }
+  } else {
+    return false;
+  }
+  if (const json::Value* f_health = f.req("health")) {
+    if (!from_json(*f_health, out.health, path + ".health", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_notice = f.opt("notice")) {
+    out.notice.emplace();
+    if (!json::read(*f_notice, *out.notice, path + ".notice", err)) return false;
+  } else {
+    out.notice.reset();
+  }
+  return f.done();
+}
+
+inline json::Value to_json(const SittingBuy& v) {
+  json::Object o;
+  o.reserve(1);
+  o.push_back({"attribute", to_json(v.attribute)});
+  return json::Value::object(std::move(o));
+}
+inline bool from_json(const json::Value& j, SittingBuy& out, const std::string& path, std::string& err) {
+  json::Fields f(j, path, err);
+  if (!f.ok()) return false;
+  if (const json::Value* f_attribute = f.req("attribute")) {
+    if (!from_json(*f_attribute, out.attribute, path + ".attribute", err)) return false;
+  } else {
+    return false;
+  }
+  return f.done();
+}
+
+inline json::Value to_json(const SittingDone& v) {
+  json::Object o;
+  (void)v;
+  return json::Value::object(std::move(o));
+}
+inline bool from_json(const json::Value& j, SittingDone& out, const std::string& path, std::string& err) {
+  json::Fields f(j, path, err);
+  if (!f.ok()) return false;
+  (void)out;
+  return f.done();
+}
+
 inline json::Value to_json(const ViewClose& v) {
   json::Object o;
   o.reserve(1);
@@ -1758,6 +2007,39 @@ std::expected<V, std::string> decode_as(std::string_view text, std::string_view 
       return std::unexpected("chart.pan: " + std::string(refuse));
     }
   }
+  if (type == "sitting.state") {
+    if constexpr (std::is_constructible_v<V, SittingState>) {
+      if (v != 1)
+        return std::unexpected("sitting.state version " + std::to_string(v) + ": this build speaks version 1");
+      SittingState m;
+      if (!from_json(*body, m, "sitting.state body", err)) return std::unexpected(err);
+      return V{std::in_place_type<SittingState>, std::move(m)};
+    } else {
+      return std::unexpected("sitting.state: " + std::string(refuse));
+    }
+  }
+  if (type == "sitting.buy") {
+    if constexpr (std::is_constructible_v<V, SittingBuy>) {
+      if (v != 1)
+        return std::unexpected("sitting.buy version " + std::to_string(v) + ": this build speaks version 1");
+      SittingBuy m;
+      if (!from_json(*body, m, "sitting.buy body", err)) return std::unexpected(err);
+      return V{std::in_place_type<SittingBuy>, std::move(m)};
+    } else {
+      return std::unexpected("sitting.buy: " + std::string(refuse));
+    }
+  }
+  if (type == "sitting.done") {
+    if constexpr (std::is_constructible_v<V, SittingDone>) {
+      if (v != 1)
+        return std::unexpected("sitting.done version " + std::to_string(v) + ": this build speaks version 1");
+      SittingDone m;
+      if (!from_json(*body, m, "sitting.done body", err)) return std::unexpected(err);
+      return V{std::in_place_type<SittingDone>, std::move(m)};
+    } else {
+      return std::unexpected("sitting.done: " + std::string(refuse));
+    }
+  }
   if (type == "view.close") {
     if constexpr (std::is_constructible_v<V, ViewClose>) {
       if (v != 1)
@@ -1851,6 +2133,27 @@ inline std::expected<std::string, std::string> encode(const ChartPan& m) {
   std::string err;
   if (!detail::from_json(body, check, "chart.pan body", err)) return std::unexpected(err);
   return json::envelope("chart.pan", 1, std::move(body));
+}
+inline std::expected<std::string, std::string> encode(const SittingState& m) {
+  json::Value body = detail::to_json(m);
+  SittingState check;
+  std::string err;
+  if (!detail::from_json(body, check, "sitting.state body", err)) return std::unexpected(err);
+  return json::envelope("sitting.state", 1, std::move(body));
+}
+inline std::expected<std::string, std::string> encode(const SittingBuy& m) {
+  json::Value body = detail::to_json(m);
+  SittingBuy check;
+  std::string err;
+  if (!detail::from_json(body, check, "sitting.buy body", err)) return std::unexpected(err);
+  return json::envelope("sitting.buy", 1, std::move(body));
+}
+inline std::expected<std::string, std::string> encode(const SittingDone& m) {
+  json::Value body = detail::to_json(m);
+  SittingDone check;
+  std::string err;
+  if (!detail::from_json(body, check, "sitting.done body", err)) return std::unexpected(err);
+  return json::envelope("sitting.done", 1, std::move(body));
 }
 inline std::expected<std::string, std::string> encode(const ViewClose& m) {
   json::Value body = detail::to_json(m);
