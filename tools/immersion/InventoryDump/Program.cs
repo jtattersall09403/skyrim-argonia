@@ -1,5 +1,8 @@
 // InventoryDump: the Mutagen half of the immersion inventory (decision 0006 §1). Read-only over the load order.
-//   dump     --data DIR --load-order a.esm,b.esm,... [--root PATH] --out FILE.jsonl
+//   dump     --data DIR --load-order a.esm,b.esm,... [--root PATH] [--block WRLD:x0,y0,x1,y1] [--block-cells fk,...] --out FILE.jsonl
+//            --block adds `block`: the walk depth from the block's cells (that worldspace's grid box plus the named
+//            interiors) by what the player meets there: a cell its refs, a ref its base, a base its parts, five hops,
+//            never through a faction, quest, topic, location, package, keyword or another cell (Dump.Stop)
 //   archives --data DIR --archives "x.bsa,y.bsa" --out FILE.json   (paths in each archive + UI translate keys)
 //   fixture  --out DIR                                             (two tiny plugins, no game data, for the reachability test)
 // Rows carry identifiers only (type, FormKey, editor id, plugins); never names, text or file data (decision 0003).
@@ -20,7 +23,8 @@ var json = new JsonSerializerOptions { WriteIndented = false };
 
 switch (args[0])
 {
-    case "dump": return Dump.Run(data, (Arg("--load-order") ?? "Skyrim.esm").Split(',', StringSplitOptions.RemoveEmptyEntries), Arg("--root"), outPath);
+    case "dump": return Dump.Run(data, (Arg("--load-order") ?? "Skyrim.esm").Split(',', StringSplitOptions.RemoveEmptyEntries), Arg("--root"), outPath,
+        Arg("--block"), (Arg("--block-cells") ?? "").Split(',', StringSplitOptions.RemoveEmptyEntries));
     case "archives":
     {
         var result = new Dictionary<string, object>();
@@ -114,8 +118,23 @@ static class Dump
         }
     }
 
-    public static int Run(string data, string[] order, string? root, string outPath)
+    // The block walk labels these but never walks out of them: each is a hub that would reach the whole load order.
+    public static readonly HashSet<string> Stop = new() { "RACE", "VTYP", "FACT", "QUST", "DIAL", "INFO", "LCTN", "CELL", "WRLD", "PACK", "KYWD", "PERK", "IDLE", "CLAS", "SMQN", "SMBN", "SMEN", "SCEN", "DLBR", "DLVW" };
+    public const int BlockDepth = 5;
+
+    public static int Run(string data, string[] order, string? root, string outPath, string? blockBox = null, string[]? blockCells = null)
     {
+        string? blockWorld = null; int bx0 = 0, by0 = 0, bx1 = -1, by1 = -1;
+        if (blockBox != null)
+        {
+            var parts = blockBox.Split(':');
+            var n = parts[1].Split(',').Select(int.Parse).ToArray();
+            (blockWorld, bx0, by0, bx1, by1) = (parts[0], n[0], n[1], n[2], n[3]);
+        }
+        var interiorSeeds = new HashSet<FormKey>((blockCells ?? Array.Empty<string>()).Select(s => FormKey.Factory(s)));
+        var blockSeeds = new HashSet<int>();
+        var sigOf = new Dictionary<int, string>();
+        var disabled = new HashSet<int>();
         var paths = order.Select(n => n.Contains('/') ? n : Path.Combine(data, n)).ToList();
         if (root != null) paths.Add(root);
         // No text is read (rows hold identifiers only), so point Mutagen's strings lookup at an empty folder:
@@ -139,6 +158,11 @@ static class Dump
                 // overrides) counts only if something reaches it
                 if (isRoot && r.FormKey.ModKey == mod.ModKey) rootSeeds.Add(id);
                 var sig = Sig.Of(r);
+                sigOf[id] = sig;
+                if (r is IPlacedGetter)  // the winning override decides: Initially Disabled (0x800) is never met
+                {
+                    if ((r.MajorRecordFlagsRaw & 0x800) != 0) disabled.Add(id); else disabled.Remove(id);
+                }
                 if (r is IDialogTopicGetter d)
                 {
                     foreach (var info in d.Responses) g.Link(d.FormKey, info.FormKey);
@@ -161,8 +185,17 @@ static class Dump
                     g.Link(child, c.FormKey);
                 }
             }
+            foreach (var c in CellsOf(mod)) if (interiorSeeds.Contains(c.FormKey)) blockSeeds.Add(g.Id(c.FormKey));
             foreach (var w in mod.Worldspaces)
             {
+                if (blockWorld != null && w.EditorID == blockWorld)
+                {
+                    blockSeeds.Add(g.Id(w.FormKey));
+                    if (w.TopCell != null) blockSeeds.Add(g.Id(w.TopCell.FormKey));  // persistent refs live here
+                    foreach (var b in w.SubCells) foreach (var s in b.Items) foreach (var c in s.Items)
+                        if (c.Grid is { } gr && gr.Point.X >= bx0 && gr.Point.X <= bx1 && gr.Point.Y >= by0 && gr.Point.Y <= by1)
+                            blockSeeds.Add(g.Id(c.FormKey));
+                }
                 if (w.TopCell != null) g.Link(w.TopCell.FormKey, w.FormKey);
                 foreach (var b in w.SubCells) foreach (var s in b.Items) foreach (var c in s.Items) g.Link(c.FormKey, w.FormKey);
             }
@@ -184,6 +217,21 @@ static class Dump
             }
         }
         Walk(rootSeeds, 1);
+        // The block walk: breadth first, so `block` is the fewest hops from the block's cells. Seeds expand (a cell its
+        // refs, the worldspace its climate and water); a Stop type or a disabled ref is labelled and not walked out of.
+        var depth = new int[g.Keys.Count];
+        Array.Fill(depth, -1);
+        var via = new int[g.Keys.Count];
+        var queue = new Queue<int>();
+        foreach (var s in blockSeeds) { depth[s] = 0; queue.Enqueue(s); }
+        while (queue.Count > 0)
+        {
+            var n = queue.Dequeue();
+            if (depth[n] >= BlockDepth || disabled.Contains(n)) continue;
+            if (depth[n] > 0 && sigOf.TryGetValue(n, out var ns) && Stop.Contains(ns)) continue;
+            foreach (var m in g.Own[n].Concat(g.Extra[n] ?? Enumerable.Empty<int>()))
+                if (depth[m] < 0 && !disabled.Contains(m)) { depth[m] = depth[n] + 1; via[m] = n; queue.Enqueue(m); }
+        }
         Walk(rows.Values.Where(x => x.start_enabled == true).Select(x => g.Id(FormKey.Factory(x.formkey))), 2);
 
         using var w2 = new StreamWriter(outPath);
@@ -192,6 +240,13 @@ static class Dump
         {
             row.reach = g.TryId(fk, out var i) ? reach[i] switch { 1 => "world", 2 => "start-quest", _ => null } : null;
             if (row.reach != null) reached++;
+            if ((blockBox != null || blockSeeds.Count > 0) && g.TryId(fk, out var j) && depth[j] >= 0)
+            {
+                row.block = depth[j];
+                var path = new List<string>();  // the hops it was met through, nearest first: SIG:formkey
+                for (var k = j; depth[k] > 0; k = via[k]) path.Add($"{sigOf.GetValueOrDefault(via[k], "?")}:{g.Keys[via[k]]}");
+                if (path.Count > 0) row.block_via = string.Join(" < ", path);
+            }
             w2.WriteLine(JsonSerializer.Serialize(row));
         }
         Console.Error.WriteLine($"rows {rows.Count}, graph nodes {g.Keys.Count}, listed rows reached {reached}, peak MB {Environment.WorkingSet / 1048576}");
@@ -207,6 +262,10 @@ static class Dump
         public List<string> plugins { get; set; } = new();
         public bool? start_enabled { get; set; }
         public string? reach { get; set; }
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+        public int? block { get; set; }
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+        public string? block_via { get; set; }
     }
 }
 

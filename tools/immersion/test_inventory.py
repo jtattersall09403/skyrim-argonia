@@ -77,3 +77,20 @@ def test_fixture_block_reaches_every_record_it_references(tmp_path):
     for label, keys in (("world", made["world"]), ("start-quest", made["start_quest"]), (None, made["unreached"])):
         for k in keys:
             assert rows[k]["reach"] == label, rows[k]
+
+
+@needs_dotnet
+def test_fixture_block_walk_labels_what_the_cell_shows_and_stops_at_quests(tmp_path):
+    """--block-cells: the cell's refs, their bases and the NPC's race and voice get hops from the cell; the quest
+    (never placed), the start quest and the unused static get none. Fails on purpose without the walk."""
+    made = json.loads(inventory.run_dump("fixture", "--out", str(tmp_path)))
+    out = tmp_path / "rows.jsonl"
+    cell, npc, quest, weap, rock, barrel, race, voice = made["world"]
+    inventory.run_dump("dump", "--load-order", made["base_plugin"], "--root", made["block"], "--block-cells", cell,
+                       "--out", str(out))
+    rows = {r["formkey"]: r for r in map(json.loads, out.read_text().splitlines())}
+    assert rows[cell]["block"] == 0
+    assert rows[rock]["block"] == rows[barrel]["block"] == rows[npc]["block"] == 2  # cell -> ref -> base
+    assert rows[race]["block"] == rows[voice]["block"] == 3
+    for k in (quest, weap, *made["start_quest"], *made["unreached"]):
+        assert rows[k].get("block") is None, rows[k]

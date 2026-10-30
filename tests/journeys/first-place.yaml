@@ -4,8 +4,8 @@
 # between short steps. ArgoniaCore's state is read through the bridge's `core` (reads and the two view intents only).
 # A talk is the real path: stand 1.2 m south of the speaker facing north and press E (the intercept perk opens our
 # window); a topic is the view's own intent (ViewIntent) until a click sends it.
-# Staged by the scene (never tested here): the place, hour, weather, a camp spot by the road, a travelling dagger, the
-# crocodile's loot. Cheats: god mode for the crocodile only (the ambush and the death are the tested fight), and the
+# Staged by the scene (never tested here): the place, hour, weather, a camp spot by the road, the traveller's steel sword,
+# the crocodile's loot (a steel shield). Cheats: god mode for the crocodile only (the ambush and the death are the tested fight), and the
 # player's health lowered before the death so the deserter's blow is the lethal one (die-and-recover's rule).
 # Owed at L4 (game-6): `core` and `papyrus-queue` deployed (dec1c2b); the face-and-press E pose tuned once per speaker.
 id: first-place
@@ -115,10 +115,10 @@ steps:
     do: [{console: "ARG_Ref_ClaywaterStationCrocodile.activate player"}, {wait: 2}, {key: "R 120"}, {wait: 1}, {key: "TAB 120"}, {wait: 1}]
     expect:
       - {event: {kind: menu, match: ContainerMenu}}
-      - {console: "player.GetItemCount ARG_Weap_SteelSword", contains: ">> 1"}
-  - name: equip-the-sword  # the game's equip path (EquipManager, as the inventory's click); no hand drives the menu yet
-    do: [{console: "player.equipitem ARG_Weap_SteelSword"}, {wait: 1}]
-    expect: [{console: "player.GetEquipped ARG_Weap_SteelSword", contains: ">> 1"}]
+      - {console: "player.GetItemCount ARG_Armo_Steel_Shield", contains: ">> 1"}
+  - name: equip-the-shield  # the game's equip path (EquipManager, as the inventory's click); no hand drives the menu yet
+    do: [{console: "player.equipitem ARG_Armo_Steel_Shield"}, {wait: 1}]
+    expect: [{console: "player.GetEquipped ARG_Armo_Steel_Shield", contains: ">> 1"}]
   # --- fight the ambush, die, wake, take the vastei back --------------------------------------------------------
   - name: to-the-ambush
     do: [{teleport: "ref ARG_Ref_ClaywaterStationAmbushPlayer"}, {wait: 3}]

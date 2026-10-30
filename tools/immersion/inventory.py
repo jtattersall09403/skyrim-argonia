@@ -5,6 +5,8 @@
     python3 tools/immersion/inventory.py --gate     the gate part: report the counts (always passes through Part 1)
     python3 tools/immersion/inventory.py --gate --bind   the binding gate (from 2.17): fails on a reachable
                                                      `unreviewed` row, or a replace/hide/remove row without a check
+    python3 tools/immersion/inventory.py --block claywater   also label each row with its hops from the block's cells
+                                                     (`block`; counts.json gains `block`): what a player there meets
 
 Sources: every record of 0006 §1's types across the load order (InventoryDump, Mutagen), every menu SWF in the
 profile's archives and loose files, every view of ours (ui/), the UI translate keys. Reachability: from our
@@ -99,21 +101,43 @@ def run_dump(*args: str) -> str:
     return r.stdout
 
 
-def record_rows(data: Path, order: list[str], root: Path | None, tmp: Path):
+BLOCKS = ("claywater",)  # tools/navmesh BLOCKS names the place
+BLOCK_WORLD = "ARG_Province"
+
+
+def block_args(name: str) -> list[str]:
+    """InventoryDump's block arguments: the place's cell box (tools/navmesh's, from db.py's place row) in the
+    province, and the borrowed interiors its build_cell rows name."""
+    sys.path.insert(0, str(REPO))
+    from tools.argonia_world import db  # noqa: E402
+    from tools.navmesh.__main__ import BLOCKS as NAV_BLOCKS, block as cell_box  # the one block-box rule (numpy: the venv)
+    x0, y0, x1, y1 = cell_box(name)
+    hosts = [r[0] for r in db.open().query(
+        "SELECT host_form_key FROM build_cell WHERE place_id = ? AND host_form_key IS NOT NULL ORDER BY id",
+        NAV_BLOCKS[name])]
+    return ["--block", f"{BLOCK_WORLD}:{x0},{y0},{x1},{y1}"] + (["--block-cells", ",".join(hosts)] if hosts else [])
+
+
+def record_rows(data: Path, order: list[str], root: Path | None, tmp: Path, block: list[str] | None = None):
     """Stream the record rows: InventoryDump writes JSONL, read here one line at a time."""
     out = tmp / "records.jsonl"
     args = ["dump", "--data", str(data), "--load-order", ",".join(order), "--out", str(out)]
     if root:
         args += ["--root", str(root)]
-    run_dump(*args)
+    run_dump(*args, *(block or []))
     with out.open() as f:
         for line in f:
             r = json.loads(line)
             t = r["type"]
             reach = r["reach"] or ("engine" if t in ENGINE_TYPES else None)
             surface = "audio" if t in AUDIO else "text" if t in TEXT or (t == "GMST" and (r["edid"] or "").startswith("s")) else "record"
-            yield {"id": r["formkey"], "kind": "record", "type": t, "edid": r["edid"], "source": r["origin"],
+            row = {"id": r["formkey"], "kind": "record", "type": t, "edid": r["edid"], "source": r["origin"],
                    "plugins": r["plugins"], "surface": surface, "reach": reach}
+            if r.get("block") is not None:
+                row["block"] = r["block"]
+                if r.get("block_via"):
+                    row["block_via"] = r["block_via"]
+            yield row
 
 
 def archives(data: Path) -> list[Path]:
@@ -204,6 +228,7 @@ class Tally:
         self.n = self.reachable = self.reachable_unreviewed = self.failing = 0
         self.by = {k: collections.Counter() for k in ("kind", "reach", "verdict", "type")}
         self.first_failures: list[str] = []
+        self.block = {k: collections.Counter() for k in ("type", "verdict", "depth", "source")}
 
     def add(self, r: dict) -> dict:
         self.n += 1
@@ -212,6 +237,11 @@ class Tally:
         for k in ("kind", "verdict", "type"):
             self.by[k][r[k]] += 1
         self.by["reach"][r["reach"] or "unreached"] += 1
+        if r.get("block") is not None:
+            self.block["type"][r["type"]] += 1
+            self.block["verdict"][r["verdict"]] += 1
+            self.block["depth"][str(r["block"])] += 1
+            self.block["source"][r["source"]] += 1
         if (f := failure(r)) is not None:
             self.failing += 1
             if len(self.first_failures) < 20:
@@ -219,8 +249,13 @@ class Tally:
         return r
 
     def counts(self) -> dict:
-        return {"rows": self.n, "reachable": self.reachable, "reachable_unreviewed": self.reachable_unreviewed,
-                **{f"by_{k}": dict(sorted(v.items())) for k, v in self.by.items()}}
+        c = {"rows": self.n, "reachable": self.reachable, "reachable_unreviewed": self.reachable_unreviewed,
+             **{f"by_{k}": dict(sorted(v.items())) for k, v in self.by.items()}}
+        if self.block["type"]:
+            c["block"] = {"rows": sum(self.block["type"].values()),
+                          "unreviewed": self.block["verdict"].get("unreviewed", 0),
+                          **{f"by_{k}": dict(sorted(v.items())) for k, v in self.block.items()}}
+        return c
 
 
 def stream(path: Path):
@@ -258,7 +293,7 @@ def gate(inventory: Path = INVENTORY, counts_path: Path = COUNTS, bind: bool = F
     return 0
 
 
-def build(root_arg: str | None, out: Path) -> int:
+def build(root_arg: str | None, out: Path, block: str | None = None) -> int:
     data = data_dir()
     if not (data / "Skyrim.esm").is_file():
         raise SystemExit(f"no Skyrim.esm in {data} (set ARGONIA_GAME_ROOT)")
@@ -275,12 +310,13 @@ def build(root_arg: str | None, out: Path) -> int:
     tally, verdicts = Tally(), load_verdicts()
     out.parent.mkdir(parents=True, exist_ok=True)
     with out.open("w") as f:
-        for part in (record_rows(data, order, root, tmp), menus, strings, view_rows()):
+        bargs = block_args(block) if block else None
+        for part in (record_rows(data, order, root, tmp, bargs), menus, strings, view_rows()):
             for r in merge(part, verdicts):
                 f.write(json.dumps(tally.add(r), sort_keys=True) + "\n")
     c = tally.counts()
     COUNTS.write_text(json.dumps({
-        "load_order": order, "root": root.name if root else None,
+        "load_order": order, "root": root.name if root else None, "block_args": bargs,
         "menu_swfs_per_archive": {k: v for k, v in per_archive.items() if v},
         "counts": c}, indent=1, sort_keys=True) + "\n")
     print(f"wrote {out} ({c['rows']} rows; root {root.name if root else 'none'}; {len(order)} plugins; "
@@ -294,10 +330,11 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--bind", action="store_true", help="with --gate: fail on reachable unreviewed rows (from 2.17)")
     ap.add_argument("--root", help="our plugin (default: $ARGONIA_PLUGIN, Data/Argonia.esm, out/plugin/Argonia.esm)")
     ap.add_argument("--out", type=Path, default=INVENTORY)
+    ap.add_argument("--block", choices=sorted(BLOCKS), help="label rows by hops from this block's cells")
     a = ap.parse_args(argv)
     if a.gate:
         return gate(a.out, bind=a.bind or os.environ.get("IMMERSION_BIND") == "1")
-    return build(a.root, a.out)
+    return build(a.root, a.out, a.block)
 
 
 if __name__ == "__main__":
