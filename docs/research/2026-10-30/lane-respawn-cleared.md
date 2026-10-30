@@ -29,7 +29,18 @@ Brief: enemies in clearable places respawn after death or rest **until the whole
    `runner: 1` the `--dry` lint passes except the four `ARG_Ref_JungleRootHollow*` refs "not in our plugins".
    Flip to `runner: 1` when the place is built. Listed in `in-game-owed.md`.
 
+## Gate and build
+
+`make check`: GREEN in 2 m 52 s (437 pytest, 33/33 C++, plugin regenerate twice identical). ArgoniaGen
+`dotnet build` 0 errors. The Windows compile (`job_guard.sh run --gpu respawn-cleared -- infra/gpu-box/skse_build.sh
+build windows-dev`) got the lock and failed at ssh: `Could not resolve hostname none` (argonia-play stopped; this
+lane may not start it). **The DLL is not compiled**: `life.cpp`'s CommonLib calls (`BGSLocation::cleared`,
+`everCleared`, `AddChange`, `GetEditorLocation`, `HasKeyword`) are unproved by a compiler.
+
 ## game-15: deploy and run
+
+- First, with the machine up: `tooling/job_guard.sh run --gpu respawn-cleared -- infra/gpu-box/skse_build.sh build
+  windows-dev` at 313a8a9 or later; a compile error there is this lane's.
 
 - Deploy: `Argonia.esm` from this commit (5 LCTN, 1 KYWD added) and the ArgoniaCore DLL from
   `skse_build.sh build windows-dev` of this commit (job `respawn-cleared`).
