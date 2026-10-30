@@ -76,9 +76,8 @@ Written by the agent that closes Part 0.
 
 ## Part 1 exit (the owner signs)
 
-- The first-place journey (1.7) is green twice in a row, and the stack ran a 60-minute soak
-  (the journey looped) with no crash, no growing script lag (the Papyrus queue length is read through the
-  bridge) and no co-save growth beyond the expected.
+- The one batch of in-game checks (`tests/journeys/batches/all.yaml`, crash-prone last) is green, first-place among
+  them, with the memory climb per loop measured (the soak is dropped, owner 2026-10-30).
 - The owner played the thread in the studio and gave the verdict, with the measured stream latency written
   beside it:
   - **The place:** does Claywater Station feel like Black Marsh, up close and from the road?
