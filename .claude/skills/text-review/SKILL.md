@@ -8,7 +8,7 @@ description: Review player-visible or world-record prose (place records, quest r
 One review per change set: one `reader` pass, then the linter. The writer never reviews its own text.
 
 1. **Reader pass.** Spawn ONE `reader` over every changed prose file. Its brief (from `tooling/brief_template.py`)
-   names the file list, the report path, the style guide (`docs/design/text/style-guide.md` once imported; the
+   names the file list, the report path, the style guide (`docs/design/standards/text/style-guide.md`; the
    culture register only when dialogue is in scope) and `Mode: prose`. Split only when the set will not fit one
    context, launching every reader in the same message. It returns `file:line | rule | reason | rewrite` rows.
 2. **Apply** each rewrite unless it changes a fact, name, number, lore claim or typed field, or breaks a ban
