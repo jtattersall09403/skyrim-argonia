@@ -1,0 +1,32 @@
+# fixes-1's owed L4 (the menu lag; the quit save, 2.8 §c): a menu opened in play stays open (game-8: the suspend
+# save's spinner closed the Journal), no suspend save is written on an opening, and quitting from the Journal's System
+# tab (the player's own Quit and its confirmation, by keys) writes ArgoniaSuspend as the confirmation closes. The
+# journey ends at the main menu: a batch's next item loads its save. Runs last in a batch, or before a relaunch.
+id: menus-quit
+runner: 1
+scene: first-place
+steps:
+  - name: tween-stays        # Tab opens the pause hub; 5 s on it is still open, and no save was written
+    do: [{key: "TAB 120"}, {wait: 5}]
+    expect:
+      - {event: {kind: menu, match: TweenMenu}}
+      - {event: {kind: menu, match: '"opening": false', absent: true}}
+  - name: tween-closed
+    do: [{key: "TAB 120"}, {wait: 1.5}]
+  - name: journal-stays      # our journal (J), 5 s open, still open
+    do: [{key: "J 120"}, {wait: 5}]
+    expect: [{read: [core, Views], path: value, contains: "journal ready open"}]
+  - name: journal-closed
+    do: [{key: "ESC 80"}, {wait: 1.5}]
+    expect: [{read: [core, Views], path: value, contains: "journal ready closed"}]
+  - name: system-tab         # Escape in play: the vanilla Journal Menu on its System tab
+    do: [{key: "ESC 80"}, {wait: 2}]
+    expect: [{event: {kind: menu, match: Journal Menu}}]
+  - name: quit-confirmed     # the pad's d-pad to the list's last entry (Quit: the list stops at its end), A, then A on
+    do:                      # the confirmation's Yes (the bridge's keys have no arrows; the pad drives menus)
+      - {pad: "DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120"}
+      - {pad: "A:120 wait:1500 A:120"}
+      - {wait: 8}
+    expect:
+      - {log: {name: ArgoniaCore, contains: "saves: ArgoniaSuspend written (quit)"}, within: 15}
+      - {event: {kind: menu, match: MainMenu}, within: 30}

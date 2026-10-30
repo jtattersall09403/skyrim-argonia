@@ -303,3 +303,28 @@ def test_the_ui_probe_validates_with_its_relaunch():
     assert steps["relaunch"]["do"] == [{"relaunch": True}] and "owed" not in steps["relaunch"]
     assert "owed" not in steps["remembered"]
     assert "ok" in rj.dry(here / "ui-probe.yaml")
+
+
+def test_event_absent_and_log_since_the_step(tmp_path):
+    class LogFake(Fake):
+        def __init__(self):
+            super().__init__()
+            self.log = ["old line"]
+            self.machine = self
+
+        def ps(self, script, timeout=120):
+            return "\n".join(self.log)
+
+        def call(self, cmd, *args):
+            if cmd == "console" and args[0] == "quit-now":
+                self.log.append("saves: ArgoniaSuspend written (quit)")
+            return super().call(cmd, *args)
+    j = journey(tmp_path, [
+        {"name": "stays", "expect": [{"event": {"kind": "menu", "match": "nomenu", "absent": True}}]},
+        {"name": "quit", "do": [{"console": "quit-now"}],
+         "expect": [{"log": {"name": "ArgoniaCore", "contains": "ArgoniaSuspend written (quit)"}}]},
+        {"name": "again", "expect": [{"log": {"name": "ArgoniaCore", "contains": "ArgoniaSuspend written"}, "within": 0}]},
+        {"name": "closed", "expect": [{"event": {"kind": "anim", "match": "dodgestart", "absent": True}}]}])
+    rep = rj.Runner(LogFake(), tmp_path / "out", stills=False).run(j, "base")
+    assert [s["passed"] for s in rep["steps"]] == [True, True, False]  # an old line is not new; the run stops there
+    assert "no line with" in rep["steps"][2]["reason"]

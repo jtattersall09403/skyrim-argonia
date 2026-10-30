@@ -1,0 +1,27 @@
+# w3-infra's crime check (002dca4): Claywater's town crime faction (ARG_Faction_ClaywaterStation, Track Crime; its four
+# people its members) tracks a crime against one of them. The player strikes Livia in her sight (an assault, the
+# player's own blow by the real pad); the bounty she reports lands with her crime faction. Read by the console's
+# GetCrimeGold on Livia (the player's crime gold with her crime faction), before (kept) and after.
+id: w3-crime
+runner: 1
+scene: first-place
+steps:
+  - name: face-livia          # 1.2 m from her, facing her, a sword in hand
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationLivia 0 -120 0"}
+      - {console: "player.setangle z 0"}
+      - {console: "ARG_Ref_ClaywaterStationLivia.moveto player 0 110 0"}
+      - {console: "player.equipitem 00012EB7"}
+      - {wait: 2}
+    expect:
+      - {console: "ARG_Ref_ClaywaterStationLivia.GetCrimeGold", keep: gold_before}
+      - {console: "ARG_Ref_ClaywaterStationLivia.GetInFaction ARG_Faction_ClaywaterStation", contains: ">> 1"}
+  - name: draw
+    do: [{pad: "RB:120 wait:1500"}]
+    expect: [{console: player.IsWeaponOut, not_contains: ">> 0"}]
+  - name: strike              # the blow lands on her; the assault is reported to her crime faction
+    do: [{pad: "RB:120 wait:1200"}, {pad: "RB:120 wait:1200"}]
+    expect:
+      - {event: {kind: hit, match: "*"}, within: 5}
+      - {console: "ARG_Ref_ClaywaterStationLivia.GetCrimeGold", ne: {kept: gold_before}, within: 8}
+      - {console: "ARG_Ref_ClaywaterStationLivia.GetCrimeGold", not_contains: ">> 0.00"}

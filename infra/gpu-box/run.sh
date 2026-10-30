@@ -42,15 +42,18 @@ case "${1:-}" in
   ip) ip ;;
   ps) shift; ps "$*" ;;
   desktop)
-    shift
-    printf '%s\n' "$*" > "${TMPDIR:-/tmp}/argonia-desktop-$M.ps1"
-    scp "${SSH_OPTS[@]}" "${TMPDIR:-/tmp}/argonia-desktop-$M.ps1" "Administrator@$(ip):C:/argonia/desktop-job.ps1" >/dev/null
-    ps '$o="C:\argonia\logs\desktop-job.log"; Remove-Item $o -EA SilentlyContinue
-$a=New-ScheduledTaskAction -Execute powershell.exe -Argument "-ExecutionPolicy Bypass -WindowStyle Hidden -Command try { & C:\argonia\desktop-job.ps1 *> $o } finally { New-Item C:\argonia\logs\desktop-job.done -Force }"
-Remove-Item C:\argonia\logs\desktop-job.done -EA SilentlyContinue
-Register-ScheduledTask -TaskName argonia-desktop-job -Action $a -User Administrator -RunLevel Highest -Force | Out-Null
-Start-ScheduledTask argonia-desktop-job
-for ($i=0; $i -lt '"${DESKTOP_WAIT:-240}"' -and -not (Test-Path C:\argonia\logs\desktop-job.done); $i++) { Start-Sleep 1 }
+    # DESKTOP_JOB names the job (default "job"): its task, script, log and done flag are its own, so a long GUI job
+    # (lod.sh's, hours) and the bridge's short ones (launch, stills, the pad) run side by side (game-12).
+    shift; j=${DESKTOP_JOB:-job}
+    case "$j" in *[!a-z0-9-]*|'') echo "DESKTOP_JOB: [a-z0-9-] only" >&2; exit 2 ;; esac
+    printf '%s\n' "$*" > "${TMPDIR:-/tmp}/argonia-desktop-$M-$j.ps1"
+    scp "${SSH_OPTS[@]}" "${TMPDIR:-/tmp}/argonia-desktop-$M-$j.ps1" "Administrator@$(ip):C:/argonia/desktop-$j.ps1" >/dev/null
+    ps '$o="C:\argonia\logs\desktop-'"$j"'.log"; Remove-Item $o -EA SilentlyContinue
+$a=New-ScheduledTaskAction -Execute powershell.exe -Argument "-ExecutionPolicy Bypass -WindowStyle Hidden -Command try { & C:\argonia\desktop-'"$j"'.ps1 *> $o } finally { New-Item C:\argonia\logs\desktop-'"$j"'.done -Force }"
+Remove-Item C:\argonia\logs\desktop-'"$j"'.done -EA SilentlyContinue
+Register-ScheduledTask -TaskName argonia-desktop-'"$j"' -Action $a -User Administrator -RunLevel Highest -Force | Out-Null
+Start-ScheduledTask argonia-desktop-'"$j"'
+for ($i=0; $i -lt '"${DESKTOP_WAIT:-240}"' -and -not (Test-Path C:\argonia\logs\desktop-'"$j"'.done); $i++) { Start-Sleep 1 }
 Get-Content $o -EA SilentlyContinue' ;;
   get) scp "${SSH_OPTS[@]}" -r "Administrator@$(ip):$2" "$3" ;;
   put) scp "${SSH_OPTS[@]}" -r "$2" "Administrator@$(ip):$3" ;;

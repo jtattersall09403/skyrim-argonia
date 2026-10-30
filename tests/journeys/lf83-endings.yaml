@@ -35,6 +35,7 @@ steps:
     expect:
       - {read: [core, GetFlag, flag.lf83.ford-charge-bought], path: value, eq: true}
       - {console: "GetStage ARG_Q_LF83", contains: ">> 41", within: 8}
+      - {event: {kind: mod, match: ArgoniaJournalNotice}, within: 5}   # the "journal updated" notice
       - {read: [core, JournalEntries], path: value, contains: "quest.local.lf83 41 1 ", within: 5}
       - {console: "GetQuestCompleted ARG_Q_LF83", contains: ">> 1"}
   # --- 90: the wet season ---------------------------------------------------------------------------------------
@@ -57,6 +58,7 @@ steps:
     do: [{console: "set GameMonth to 7"}, {console: "set GameDay to 17"}, {wait: 1}, {console: "player.additem f 1"}, {wait: 2}]
     expect:
       - {console: "GetStage ARG_Q_LF83", contains: ">> 90", within: 8}
+      - {event: {kind: mod, match: ArgoniaJournalNotice}, within: 5}   # the "journal updated" notice
       - {read: [core, JournalEntries], path: value, contains: "quest.local.lf83 90 2 ", within: 5}
   # --- 92: the well-keeper dead ---------------------------------------------------------------------------------
   - name: f92-stage-10
@@ -79,6 +81,7 @@ steps:
     expect:
       - {console: "ARG_Ref_ClaywaterStationLivia.GetDead", contains: ">> 1"}
       - {console: "GetStage ARG_Q_LF83", contains: ">> 92", within: 8}
+      - {event: {kind: mod, match: ArgoniaJournalNotice}, within: 5}   # the "journal updated" notice
       - {read: [core, JournalEntries], path: value, contains: "quest.local.lf83 92 2 ", within: 5}
   # --- 93: the landing's poler dead -----------------------------------------------------------------------------
   - name: f93-stage-10
@@ -101,4 +104,5 @@ steps:
     expect:
       - {console: "ARG_Ref_ClaywaterStationSigns.GetDead", contains: ">> 1"}
       - {console: "GetStage ARG_Q_LF83", contains: ">> 93", within: 8}
+      - {event: {kind: mod, match: ArgoniaJournalNotice}, within: 5}   # the "journal updated" notice
       - {read: [core, JournalEntries], path: value, contains: "quest.local.lf83 93 2 ", within: 5}

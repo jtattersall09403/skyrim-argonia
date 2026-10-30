@@ -26,7 +26,9 @@ step after it sees a restarted game, e.g. what a view remembers between sessions
 Expectations: read [<command>, args...] with path a.b.c and one of eq ne gt ge lt le contains not_contains;
 console <line> with contains / not_contains; event {kind, match} since the step began; moved {gt|lt: units} on the
 ground since the step began; quests_running {allowed: <json>} (the bridge's running quests against the file's
-`running` list); music {allowed: [<edid>, ...]} (the music type playing is one of them, or none plays).
+`running` list); music {allowed: [<edid>, ...]} (the music type playing is one of them, or none plays);
+event {kind, match, absent: true} holds when no such event came; log {name: ArgoniaCore, contains: <text>} an SKSE
+plugin's log has the text in a line written since the step began.
 
 Owed (game-8): a step with `owed: <what it waits on>` is not run; the report lists it under `owed` and the
 journey goes on past it (a step whose game side cannot exist yet, e.g. a Papyrus fragment before the compiler).
@@ -149,9 +151,11 @@ def dig(value, path: str):
 
 
 class Runner:
-    def __init__(self, bridge, out: pathlib.Path, stills: bool = True, run_sh=None):
+    def __init__(self, bridge, out: pathlib.Path, stills: bool = True, run_sh=None, sent: dict | None = None):
         self.b, self.out, self.stills = bridge, out, stills
         self.run_sh = run_sh or str(REPO / "infra" / "gpu-box" / "run.sh")
+        # scene -> the resolved text last put on the machine: a batch shares one, so an unchanged scene is not re-sent
+        self.sent = {} if sent is None else sent
         self.calls = []
         self.kept: dict = {}
         self.scene: str | None = None  # the journey's scene and save, for a relaunch
@@ -175,9 +179,12 @@ class Runner:
         return value
 
     # -- the scene -----------------------------------------------------------------------------------------
-    def apply_scene(self, scene: str | None, save: str):
-        self.b.call("load", save)
-        time.sleep(3)  # the load screen fades
+    def apply_scene(self, scene: str | None, save: str, load: bool = True):
+        """The save loaded (not when `load` is false: a batch chaining journeys of one scene family), the play
+        camera, then the scene sent (only when its resolved text changed since the last put) and run by `bat`."""
+        if load:
+            self.b.call("load", save)
+            time.sleep(3)  # the load screen fades
         third_person(self.b)
         if scene:
             src = SCENES / f"{scene}.txt"
@@ -185,9 +192,11 @@ class Runner:
                 raise StepFailed(f"no scene {src}")
             # refs as runtime ids: the game keeps no ref's editor id (tools/ref_ids.py, game-7)
             self.out.mkdir(parents=True, exist_ok=True)
-            sent = self.out / f"scene-{scene}.txt"
-            sent.write_text(self.b.resolve_refs(src.read_text()))
-            subprocess.run([self.run_sh, "put", str(sent), f"{GAME_ROOT}/{scene}.txt"], check=True, capture_output=True)
+            sent, text = self.out / f"scene-{scene}.txt", self.b.resolve_refs(src.read_text())
+            sent.write_text(text)
+            if self.sent.get(scene) != text:
+                subprocess.run([self.run_sh, "put", str(sent), f"{GAME_ROOT}/{scene}.txt"], check=True, capture_output=True)
+                self.sent[scene] = text
             out = self.b.call("console", f"bat {scene}")["output"]
             time.sleep(2)  # a coc in the scene loads a cell
             return out
@@ -281,7 +290,15 @@ class Runner:
             seen = self.b.call("events", ctx["since"], ev["kind"])["events"]
             want = str(ev.get("match", "*"))
             hit = [e for e in seen if want == "*" or want.lower() in json.dumps(e["data"]).lower()]
+            if ev.get("absent"):  # none may come: e.g. a menu that must stay open (`"opening": false` is its close)
+                return None if not hit else f"{len(hit)} {ev['kind']} events matching {want!r} since the step began: {hit[0]['data']}"
             return None if hit else f"no {ev['kind']} event matching {want!r} since the step began ({len(seen)} {ev['kind']} events)"
+        if "log" in exp:
+            lines = skse_log(self.b, exp["log"]["name"])
+            start = ctx["log_lines"].get(exp["log"]["name"], 0)
+            lines = lines[start:] if len(lines) >= start else lines
+            want = exp["log"]["contains"]
+            return None if any(want in ln for ln in lines) else f"{exp['log']['name']}.log has no line with {want!r} since the step began ({len(lines)} new lines)"
         if "moved" in exp:
             p = self.b.call("player")["pos"]
             d = math.hypot(p["x"] - ctx["pos"]["x"], p["y"] - ctx["pos"]["y"])
@@ -315,13 +332,13 @@ class Runner:
             time.sleep(0.5)
 
     # -- a run -----------------------------------------------------------------------------------------------
-    def run(self, j: dict, save: str) -> dict:
+    def run(self, j: dict, save: str, load: bool = True) -> dict:
         self.out.mkdir(parents=True, exist_ok=True)
-        rep = {"id": j["id"], "save": save, "scene": j.get("scene"), "steps": [], "passed": False}
+        rep = {"id": j["id"], "save": save, "scene": j.get("scene"), "steps": [], "passed": False, "loaded": load}
         self.scene, self.save = j.get("scene"), save
         t0 = time.monotonic()
         try:
-            rep["scene_output"] = self.apply_scene(j.get("scene"), save)
+            rep["scene_output"] = self.apply_scene(j.get("scene"), save, load=load)
             rep["scene_s"] = round(time.monotonic() - t0, 1)
             for n, step in enumerate(j["steps"], 1):
                 if step.get("owed"):  # not run: what it waits on is named, and the journey goes on past it
@@ -352,7 +369,9 @@ class Runner:
 
     def step(self, n: int, step: dict) -> dict:
         t = time.monotonic()
-        ctx = {"since": self.b.call("events")["last"], "pos": self.b.call("player")["pos"]}
+        ctx = {"since": self.b.call("events")["last"], "pos": self.b.call("player")["pos"], "log_lines": {}}
+        for name in {e["log"]["name"] for e in step.get("expect", []) if "log" in e}:
+            ctx["log_lines"][name] = len(skse_log(self.b, name))
         rec = {"n": n, "name": step["name"], "passed": True}
         try:
             for a in step.get("do", []):
@@ -381,7 +400,20 @@ class Runner:
 ACTIONS = {"pad": Runner._pad, "key": Runner._key, "console": Runner._console, "teleport": Runner._teleport,
            "wait": Runner._wait, "game_hours": Runner._game_hours, "call": Runner._call, "relaunch": Runner._relaunch}
 QUIT_WAIT_S = 60  # a clean quit (a suspend save first, 2.8 §c) gets this long before launch kills what is left
-EXPECTS = ("read", "console", "event", "moved", "quests_running", "music")
+EXPECTS = ("read", "console", "event", "moved", "quests_running", "music", "log")
+SKSE_LOGS = "$env:USERPROFILE\\Documents\\My Games\\Skyrim Special Edition\\SKSE"
+
+
+def skse_log(b, name: str) -> list[str]:
+    """An SKSE plugin's log on the machine (ArgoniaCore, ArgoniaBridge), as lines; a step compares the lines past
+    its start. A log that a launch rewrote is shorter: then every line counts as new."""
+    import re
+    if not re.fullmatch(r"[A-Za-z0-9_]+", name):
+        raise StepFailed(f"log {name!r}: a plugin's name")
+    out = b.machine.ps(f"Get-Content \"{SKSE_LOGS}\\{name}.log\" -EA SilentlyContinue", timeout=60)
+    return out.splitlines()
+
+
 # The 0.2 §d bar (60 fps median, 45 fps 1% lows) as frame times, and the soak's flatness tolerances.
 SOAK_BARS = {"p50_ms": 1000 / 60, "p99_ms": 1000 / 45, "queue_growth": 5, "cosave_growth_bytes": 512}
 

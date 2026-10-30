@@ -3,8 +3,9 @@
 # window through the intercept perk); a topic is the view's own intent (`core ViewIntent`), as a click sends it.
 # Fact -> path map: docs/research/2026-10-30/lane-game-10.md §2. The crocodile's death is staged with `kill` (the
 # fight itself is game-10's crocodile check, not this one's). Endings 41/90/92/93: lf83-endings.yaml.
-# The "journal updated" notice: ArgoniaCore has no HUD notice (game-10 finding); the journal family (`core
-# JournalEntries`, one line "<quest> <stage> <kind> <date>" per entry) is what is read.
+# The "journal updated" notice (fixes-2: the engine's HUD message, and the SKSE mod event ArgoniaJournalNotice) is
+# asserted at each stage and clue, beside the journal family (`core JournalEntries`, one line per entry). The thing
+# hooks (activate or read sets a fact) are read after stage 20.
 id: lf83-components
 runner: 1
 scene: first-place
@@ -32,6 +33,7 @@ steps:
     expect:
       - {console: "GetStage ARG_Q_LF83", contains: ">> 10", within: 8}
       - {read: [core, JournalEntries], path: value, contains: "quest.local.lf83 10 0 ", within: 5}
+      - {event: {kind: mod, match: ArgoniaJournalNotice}, within: 5}   # the "journal updated" notice (system-wide)
   - name: hear-station-open     # objective 10: two-charges heard of Livia
     do:
       - {console: "player.moveto ARG_Ref_ClaywaterStationLivia 0 -120 0"}
@@ -47,6 +49,7 @@ steps:
       - {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}
     expect:
       - {console: "GetObjectiveCompleted ARG_Q_LF83 10", contains: ">> 1", within: 8}
+      - {event: {kind: mod, match: ArgoniaJournalNotice}, within: 5}   # the "journal updated" notice (system-wide)
       - {console: "GetStage ARG_Q_LF83", contains: ">> 10"}
   # --- stage 20: the landing's side and the clay bend, heard of Signs ------------------------------------------
   - name: hear-landing-open
@@ -70,6 +73,7 @@ steps:
     expect:
       - {console: "GetStage ARG_Q_LF83", contains: ">> 20", within: 8}
       - {read: [core, JournalEntries], path: value, contains: "quest.local.lf83 20 0 ", within: 5}
+      - {event: {kind: mod, match: ArgoniaJournalNotice}, within: 5}   # the "journal updated" notice (system-wide)
       - {read: [core, KnowsTopic, topic.claywater-landing-terms], path: value, eq: true}   # granted by stage 20
       - {read: [core, KnowsTopic, topic.lf83-cracked-well], path: value, eq: true}
   # --- why-failing: the well water tasted (Takes), then the old mending heard ----------------------------------
@@ -91,23 +95,61 @@ steps:
     expect:
       - {read: [core, GetFlag, flag.lf83.ford-tasted], path: value, eq: true}
       - {console: "GetObjectiveCompleted ARG_Q_LF83 20", contains: ">> 1", within: 8}
+      - {event: {kind: mod, match: ArgoniaJournalNotice}, within: 5}   # the "journal updated" notice (system-wide)
   - name: mending-heard    # asked again after the taste: cracked-well.mending
     do:
       - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.lf83-cracked-well"}}']}
       - {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}
     expect: [{read: [core, GetFlag, flag.lf83.mending-heard], path: value, eq: true}]
+  # --- the thing hooks (system-wide, fixes-2): activating a thing or reading a document sets its fact ----------
+  - name: thing-hooks-perk  # the hidden perk that routes an Examine on a hooked thing to ArgoniaCore
+    expect: [{console: "player.HasPerk ARG_Perk_ThingHooks", contains: ">> 1"}]
+  - name: well-head        # E on the well head (the perk's Activate entry): flag crack-seen
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationWell 0 -100 0"}
+      - {console: "player.setangle z 0"}
+      - {console: "player.setangle x 30"}
+      - {wait: 3}
+      - {key: "E 120"}
+      - {wait: 2}
+      - {console: "player.setangle x 0"}
+    expect: [{read: [core, GetFlag, flag.lf83.crack-seen], path: value, eq: true, within: 5}]
+  - name: mortar-tub       # E on the mortar tub: flag tub-seen
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationMortarTub 0 -100 0"}
+      - {console: "player.setangle z 0"}
+      - {console: "player.setangle x 30"}
+      - {wait: 3}
+      - {key: "E 120"}
+      - {wait: 2}
+      - {console: "player.setangle x 0"}
+    expect: [{read: [core, GetFlag, flag.lf83.tub-seen], path: value, eq: true, within: 5}]
+  - name: ledger-read      # the ledger read (its Book Menu opening, read by ArgoniaCore's menu sink): flag ledger-read
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationLedger 0 -80 0"}
+      - {wait: 4}
+      - {console: "ARG_Ref_ClaywaterStationLedger.activate player"}
+      - {wait: 2}
+    expect:
+      - {event: {kind: menu, match: Book Menu}}
+      - {read: [core, GetFlag, flag.lf83.ledger-read], path: value, eq: true, within: 5}
+  - name: ledger-closed
+    do: [{key: "TAB 120"}, {wait: 1.5}, {console: "player.moveto ARG_Ref_ClaywaterStationRoadIn"}, {wait: 4}]
+    expect: [{event: {kind: menu, match: '"opening": false'}}]
   # --- stage 30: the bend cleared (staged death), the clay got ---------------------------------------------------
   - name: clear-bend
     do: [{console: "ARG_Ref_ClaywaterStationCrocodile.kill"}, {wait: 2}]
     expect:
       - {console: "ARG_Ref_ClaywaterStationCrocodile.GetDead", contains: ">> 1"}
       - {console: "GetObjectiveCompleted ARG_Q_LF83 21", contains: ">> 1", within: 8}
+      - {event: {kind: mod, match: ArgoniaJournalNotice}, within: 5}   # the "journal updated" notice (system-wide)
   - name: get-clay
     do: [{console: "ARG_Ref_ClaywaterStationClayBasket.activate player"}, {wait: 2}]
     expect:
       - {console: "player.GetItemCount ARG_Misc_Lf83ClayBasket", contains: ">> 1"}
       - {console: "GetStage ARG_Q_LF83", contains: ">> 30", within: 8}
       - {read: [core, JournalEntries], path: value, contains: "quest.local.lf83 30 0 ", within: 5}
+      - {event: {kind: mod, match: ArgoniaJournalNotice}, within: 5}   # the "journal updated" notice (system-wide)
       - {read: [core, KnowsTopic, topic.lf83-one-charge], path: value, eq: true}   # granted by stage 30
   # --- stage 40: both keepers agree to one charge (Signs first, then Livia) --------------------------------------
   - name: signs-agrees-open
@@ -146,6 +188,7 @@ steps:
       - {read: [core, GetFlag, flag.lf83.one-charge-station], path: value, eq: true}
       - {console: "GetStage ARG_Q_LF83", contains: ">> 40", within: 8}
       - {read: [core, JournalEntries], path: value, contains: "quest.local.lf83 40 1 ", within: 5}
+      - {event: {kind: mod, match: ArgoniaJournalNotice}, within: 5}   # the "journal updated" notice (system-wide)
       - {read: [core, GetFlag, flag.lf83.terms-settled], path: value, eq: true}
       - {console: "GetQuestCompleted ARG_Q_LF83", contains: ">> 1"}
   - name: never-vanilla    # no Dialogue Menu opened for any of our speakers (1.1's acceptance)

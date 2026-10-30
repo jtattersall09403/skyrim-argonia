@@ -31,10 +31,11 @@ steps:
     expect: [{event: {kind: menu, match: MapMenu}}]
   - name: map-closed
     do: [{key: "M 120"}, {wait: 1}]
-  - name: journal
+  - name: journal        # J opens our journal view (1.2), which replaced the vanilla Journal Menu
     do: [{key: "J 120"}, {wait: 1.5}]
-    expect: [{event: {kind: menu, match: Journal Menu}}]
+    expect: [{read: [core, Views], path: value, contains: "journal ready open"}]
   - name: journal-closed
-    do: [{key: "J 120"}, {wait: 1}]
+    do: [{key: "ESC 80"}, {wait: 1}]
+    expect: [{read: [core, Views], path: value, contains: "journal ready closed"}]
   - name: alive
     expect: [{read: [player], path: dead, eq: false}]

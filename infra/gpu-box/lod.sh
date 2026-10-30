@@ -24,7 +24,7 @@ ps1() {  # one lod.ps1 step; the GUI steps in the desktop session, the rest over
   local line="powershell -ExecutionPolicy Bypass -File C:\\argonia\\infra\\lod.ps1 -Step $step -Preset ${PRESET:-Medium} $*"
   local t0=$SECONDS out
   case "$step" in
-    terrain|texgen|dyndolod|survey) out=$(DESKTOP_WAIT=${DESKTOP_WAIT:-14400} "$run" desktop "$line") ;;
+    terrain|texgen|dyndolod|survey) out=$(DESKTOP_JOB=lod DESKTOP_WAIT=${DESKTOP_WAIT:-14400} "$run" desktop "$line") ;;  # its own desktop job: the batch's run beside it
     *) out=$("$run" ps "$line") ;;
   esac
   echo "$out"
