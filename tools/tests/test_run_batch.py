@@ -181,7 +181,7 @@ def test_from_a_step_loads_its_step_save(tmp_path, journeys):
     import yaml
     ok = {"name": "a", "expect": [{"read": ["player"], "path": "dead", "eq": False}]}
     bad = {"name": "b", "expect": [{"read": ["player"], "path": "dead", "eq": True, "within": 0}]}
-    (rb.JOURNEYS / "two.yaml").write_text(yaml.safe_dump({"id": "two", "runner": 1, "scene": "sc", "steps": [ok, bad]}))
+    (rb.JOURNEYS / "two.yaml").write_text(yaml.safe_dump({"id": "two", "runner": 1, "scene": "sc", "step_saves": True, "steps": [ok, bad]}))
     batch = {"id": "t", "items": rb.parse_items(["two"]), "relaunch_mb": 6000, "relaunch_every": 0}
     f = Fake()
     s = rb.Batch(f, batch, tmp_path / "o1", stills=False).run()
