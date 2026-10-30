@@ -108,10 +108,10 @@ steps:
     do: [{console: "player.moveto ARG_Ref_ClaywaterStationCrocodile 0 -200 0"}, {console: "player.setangle z 0"}, {wait: 1},
          {console: "tgm"}, {pad: "RB:120 wait:900"}, {pad: "RS:150 wait:500"}, {pad: "RB:120 wait:900 RB:120 wait:900"}]
     expect: [{event: {kind: hit, match: "*"}, within: 3}]
-  - name: croc-fight-2
-    do: [{pad: "RB:120 wait:900 RB:120 wait:900"}, {pad: "RB:120 wait:900 RB:120 wait:900"}]
-  - name: croc-fight-3
-    do: [{pad: "RB:120 wait:900 RB:120 wait:900"}, {pad: "RB:120 wait:900 RB:120 wait:900"}]
+  - name: croc-fight-2         # back in reach: with the navmesh the crocodile keeps its distance between swings (game-8)
+    do: [{console: "player.moveto ARG_Ref_ClaywaterStationCrocodile 0 -150 0"}, {console: "player.setangle z 0"}, {pad: "RB:120 wait:900 RB:120 wait:900"}, {pad: "RB:120 wait:900 RB:120 wait:900"}]
+  - name: croc-fight-3         # back in reach: with the navmesh the crocodile keeps its distance between swings (game-8)
+    do: [{console: "player.moveto ARG_Ref_ClaywaterStationCrocodile 0 -150 0"}, {console: "player.setangle z 0"}, {pad: "RB:120 wait:900 RB:120 wait:900"}, {pad: "RB:120 wait:900 RB:120 wait:900"}]
     expect: [{console: "ARG_Ref_ClaywaterStationCrocodile.GetDead", contains: ">> 1", within: 10}]
   - name: croc-dead-god-off
     do: [{console: "tgm"}]
