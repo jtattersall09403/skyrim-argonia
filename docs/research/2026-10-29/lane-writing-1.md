@@ -169,3 +169,51 @@ Low
     an unmeetable "poler's wife" (place lane).
 
 Accepted round-1 answers: R1, R2, R7, R9, R13; partly: R4, R5, R6, R11; not accepted: R3, R8, R10, R12.
+
+## Continuation (2026-10-29, second context): the schema gaps, rounds 2 and 3, and the hand-off
+
+**Committed.**
+- `a55a367` Three 0030-section columns (planner ruling): `quest_objective.objective_text` (the record's
+  `objectiveText`), `quest_clue.kind` (`concept` | `lead`, CHECK) and `dialogue_line.status` (`imported` | `written`,
+  NOT NULL). All 2040 existing lines were migrated through db.py as `imported`. `lines.py` now selects and writes by
+  `status`, and `quest_view.json` maps the two record fields. Tests: written lines are marked and a bad status is
+  refused (test_lines); objectiveText and kind round-trip and a bad kind is refused (test_quest_record). The
+  dialogue-write SKILL band line now reads 1.3's three bands.
+- `852816b` Round 2 (fresh quest-reviewer: 4 high, 10 medium, 15 low, report
+  `~/argonia-private/work/writing-1/review-r2.md`), every finding answered in the record (`R2-*` rows). The main
+  changes:
+  - The secret is now the yearly mending, not the crack.
+  - The clay cut moved to the river's first swing below the ford. It is on the station bank, measured against
+    `hydrology_reach_point` reach.169-1660.
+  - Every settlement topic is granted, and Takes's clue is a taste test at her door.
+  - The four objections are conditions, and the dry season is the deadline.
+  - The quest is held to tier M: one variant, two approaches a stage, no rumours, no setWeather.
+  - The six objective texts are in `objective_text`. `lf83_things.objective_entries` writes their `journal_entry`
+    rows from it and deletes the stale `text.objective.lf83.carry-terms`.
+  - `stage_walk.py` reads `seasonIs` (4/4 tests).
+- `786cc01` Round 3 (fresh reviewer: 3 high, 8 medium, 20 low, report `review-r3.md`), every finding answered
+  (`R3-*` rows). The main changes:
+  - The yearly mending has three clues: k2, k15 (the mortar tub) and k16 (Takes, from the poler's wife, t10). It
+    gates through objective `old-mending` at stage 30.
+  - The seal is clay rammed behind the lining.
+  - New item `item.lf83.well-water` (Livia's dipper) with its socket.
+  - The ledger route is inside the station house, gated on the 0012 cell review.
+  - The deadline is seasonIs wet. The terms have a figure (fact.lf83.terms-figure).
+  - The e-shared and e-landing reward is the Drowning Gate ferry fare set to 0.
+- Tests: 75/75 in tools/argonia_world/tests and .claude/skills. `db check` is green.
+
+**Handed to the planner (the record names each).**
+- 16a: a scour pool of 2.5 m or more under the cut at (281.5, 3058.5), and `socket.claywater-station.den-crocodile`
+  moved there (it sits 55 m east of the raft, on marsh).
+- 16b: activators that set `flag.lf83.crack-seen` (the well head) and `flag.lf83.tub-seen` (the mortar tub); a
+  ledger-read hook (`flag.lf83.ledger-read`); and the crocodile den never respawning from the kill on.
+- The Part 1 evaluator must cover seasonIs, topicHeardFrom, objectiveComplete, flag, npcAlive, hasItem, goldAtLeast
+  and speakerDispositionAtLeast, and the actions takeGold, takeItem, giveItem, setFlag, grantTopic,
+  applyLocalVariant, setPrice, changeDisposition and changeSettlementStanding.
+- Confirm that the 4E 201 dry season holding Rain's Hand (the ledger's imported date) is at or after the game's
+  start date.
+- 0012: `DawnstarBrinasHouse` hosts the ledger. The ledger route stays closed until that cell is reviewed.
+- 2.12 schema item: NEGOTIATION shapeData (sides, leverage, objections, aftermath) is still prose in
+  `quest_shape_data_items`.
+- Withdrawn: the round-1 claim that ford-mooring's water_id is a tarn 1.3 km away. body.221-1650 is the tarn at the
+  ford.

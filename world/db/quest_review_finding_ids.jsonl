@@ -144,6 +144,14 @@
 {"quest_id":"quest.local.lf83","review_findings_ord":70,"ord":0,"value":"threshold 50"}
 {"quest_id":"quest.local.lf83","review_findings_ord":71,"ord":0,"value":"M8 hand-off"}
 {"quest_id":"quest.local.lf83","review_findings_ord":72,"ord":0,"value":"journal 41"}
+{"quest_id":"quest.local.lf83","review_findings_ord":73,"ord":0,"value":"thing.lf83.clay-bend"}
+{"quest_id":"quest.local.lf83","review_findings_ord":73,"ord":1,"value":"creature.crocodile territory"}
+{"quest_id":"quest.local.lf83","review_findings_ord":74,"ord":0,"value":"socket.claywater-station.lf83-clay-basket"}
+{"quest_id":"quest.local.lf83","review_findings_ord":75,"ord":0,"value":"stages.10.directions"}
+{"quest_id":"quest.local.lf83","review_findings_ord":76,"ord":0,"value":"item.station-water-ledger"}
+{"quest_id":"quest.local.lf83","review_findings_ord":77,"ord":0,"value":"objections[3]"}
+{"quest_id":"quest.local.lf83","review_findings_ord":77,"ord":1,"value":"Livia's cracked-well row"}
+{"quest_id":"quest.local.lf83","review_findings_ord":78,"ord":0,"value":"review-r4.md"}
 {"quest_id":"quest.local.lh38","review_findings_ord":0,"ord":0,"value":"shapeData.misdiagnosis"}
 {"quest_id":"quest.local.lh38","review_findings_ord":0,"ord":1,"value":"fact.greenspring.why-pressures-3"}
 {"quest_id":"quest.local.lh38","review_findings_ord":0,"ord":2,"value":"quest.mr.mr01"}

@@ -61,7 +61,8 @@ SOCKETS = [
              "ford (reach.169-1660 apex 280.2, 3049.4), the landing's clay since before the well; spade cuts and "
              "waders' prints in the clay. Needs a scour pool of 2.5 m or more and the crocodile den here (planner)."),
     dict(id="socket.claywater-station.lf83-clay-basket", kind="item", at_x=282.0, at_y=3058.0, zone="evidence",
-         why="LF83: the landing's clay basket, dropped at the cut.", value_tier="trivial", owner=SIGNS,
+         why="LF83: the landing's clay basket, dropped at the cut; unowned, so taking it back is no theft.",
+         value_tier="trivial",
          item_kind="quest", item="item.lf83.clay-basket"),
 ]
 
@@ -120,6 +121,8 @@ def apply(w: db.World) -> None:
     have = {r.id: r.ord for r in w.rows("socket", place_id=PLACE)}
     nxt = max(have.values(), default=-1) + 1
     for s in SOCKETS:
+        if s["id"] in have and "owner" not in s:
+            w.update("socket", PLACE, have[s["id"]], owner=None)   # a re-run clears an owner the row no longer names
         ord_ = have.get(s["id"])
         if ord_ is None:
             ord_, nxt = nxt, nxt + 1
