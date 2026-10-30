@@ -11,7 +11,7 @@ import {
 } from "../../schema/generated/messages.ts";
 import { esc, intentsIn, textOf } from "../core/html.ts";
 import { remFor } from "../core/scale.ts";
-import { type CellIndex, labelAt, pan, panIntent, revealRects, toPx, toUnits, transform } from "../chart/geom.ts";
+import { type CellIndex, hits, labelAt, placeLabels, pan, panIntent, revealRects, toPx, toUnits, transform } from "../chart/geom.ts";
 import { render as chart } from "../chart/render.ts";
 import { backIntent, render as dialogue } from "../dialogue/render.ts";
 import { barLength, render as hud, renderBars } from "../hud/render.ts";
@@ -156,6 +156,13 @@ test("the type scale: 1rem meets 2.5 mm on the Magic V5 and 28 px at 1080p", () 
   assert.ok(mm(remFor(2376, 1060), 404) >= 2.5, `folded ${mm(remFor(2376, 1060), 404)}`);
   assert.ok(mm(remFor(2352, 2172), 403) >= 2.5);
   assert.ok(remFor(1920, 1080) >= 28);
+  // A 21:9 monitor keeps the desktop scale (1080 / 34), not the phone's (1080 / 26); the fold, at 1:1 or at its own
+  // density, keeps the phone's.
+  assert.equal(remFor(2560, 1080), 1080 / 34);
+  assert.equal(remFor(3440, 1440), 1440 / 34);
+  assert.equal(remFor(2560, 1080, 2), 1080 / 34);
+  assert.equal(remFor(2376, 1060), 1060 / 26);
+  assert.equal(remFor(2376 / 2.6, 1060 / 2.6, 2.6), (1060 / 2.6) / 26);
 });
 
 test("chart geometry: cells map to the index's rects, a pan stays in bounds, zoom clamps", () => {
@@ -186,4 +193,24 @@ test("chart geometry: cells map to the index's rects, a pan stays in bounds, zoo
   // The paper fills the sheet: a view centred on a corner stops at the edge.
   const edge = transform(ix, { centreX: -2, centreY: 2, zoom: 4 }, 400, 200);
   assert.ok(edge.tx <= 0 && edge.tx >= 400 - 200 * edge.scale && edge.ty <= 0 && edge.ty >= 200 - 200 * edge.scale);
+});
+
+test("label collisions: by priority, a clashing label moves to a free spot or is dropped, none overlap", () => {
+  // Blackrose and Lilmoth on top of each other: the first keeps its spot, the second moves clear of it.
+  const boxes = [{ id: "blackrose", x: 100, y: 100, w: 120, h: 30 }, { id: "lilmoth", x: 110, y: 105, w: 80, h: 30 }];
+  const spots = placeLabels(boxes, 400, 300);
+  assert.deepEqual(spots.get("blackrose"), [0, 0]);
+  const moved = spots.get("lilmoth")!;
+  assert.ok(moved && (moved[0] !== 0 || moved[1] !== 0));
+  const at = boxes.map((b) => ({ ...b, x: b.x + (spots.get(b.id)?.[0] ?? 0), y: b.y + (spots.get(b.id)?.[1] ?? 0) }));
+  assert.ok(!hits(at[0], at[1]));
+  // Boxed in on a sheet too small for any candidate: dropped, never overlapping.
+  const tight = placeLabels([{ id: "a", x: 0, y: 0, w: 100, h: 30 }, { id: "b", x: 0, y: 0, w: 100, h: 30 }], 100, 30);
+  assert.equal(tight.get("b"), null);
+  // A crowd: whatever is placed never overlaps.
+  const crowd = Array.from({ length: 30 }, (_, i) => ({ id: `p${i}`, x: 50 + (i % 5) * 20, y: 50 + (i % 3) * 10, w: 90, h: 24 }));
+  const s2 = placeLabels(crowd, 500, 400);
+  const kept = crowd.filter((b) => s2.get(b.id)).map((b) => ({ ...b, x: b.x + s2.get(b.id)![0], y: b.y + s2.get(b.id)![1] }));
+  for (let i = 0; i < kept.length; i++) for (let j = i + 1; j < kept.length; j++) assert.ok(!hits(kept[i], kept[j]), `${i}/${j}`);
+  assert.ok(kept.length >= 3);
 });

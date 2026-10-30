@@ -30,14 +30,12 @@
   --bar-climb: #b07a26;
   --trough: rgba(18, 14, 8, 0.82);
   --plate: rgba(230, 217, 184, 0.92);
-  /* space and type (1rem is set from the viewport by scale.ts) */
+  /* space and type (1rem is set from the device by scale.ts, the one place) */
   --s1: 0.25rem; --s2: 0.5rem; --s3: 0.75rem; --s4: 1rem; --s6: 1.5rem; --s8: 2rem;
   --t-body: 1rem; --t-head: 1.25rem; --t-title: 1.6rem; --t-banner: 2.6rem;
   --line: 1.32;
   --edge: 0.12rem;
-  font-size: min(calc(100vh / 34), calc(100vw / 52));
 }
-@media (min-aspect-ratio: 2/1) { :root { font-size: min(calc(100vh / 26), calc(100vw / 52)); } }
 
 * { box-sizing: border-box; }
 html, body { margin: 0; height: 100%; overflow: hidden; }

@@ -57,3 +57,8 @@ at a hand-off. The lane report is `docs/research/2026-10-30/lane-1.2-views.md`.
     summed to about 2.2 GB RSS, about 840 MB of it in the chart page's renderer (its three 2048² canvases). Closing
     each viewport's page bounds this.
   - The smoke subset takes 6 s in pytest.
+
+- **1.2 polish (2026-10-30).** Chart labels are placed by priority with offset candidates (`placeLabels`); a harness
+  check measures label-box overlap in every chart still. Margins are paper plus inline noise, the chart edge feathered.
+  The phone type scale keys on device pixels (css x density, at most 2440 wide), not aspect alone: 21:9 monitors keep the
+  desktop scale. Reader round 4 failed (gradient margins and a hard seam; a stray "th" of a covered label); round 5 below.

@@ -94,3 +94,24 @@ Neither is this lane's:
 - **The gate stays within budget.** The smoke runs in pytest in 5–6 s: 5 stills, the wiring and the 300 topics.
 - **Memory.** The harness's Python peaked at 135–150 MB. The headless shell reached about 2.2 GB RSS summed with four
   pages open; the harness now closes each viewport's page when that viewport is done.
+
+## Polish
+
+- **Label collisions.** `placeLabels` (`ui/views/chart/geom.ts`): labels are placed by priority (cities first, larger plate
+  first); each tries its own spot, then 8 offsets above, below and diagonal, and is dropped if none is free. A displaced
+  plate leaves a paper patch over the chart's own small lettering (`.label.moved::before`). Checks: a unit test in
+  `views.test.ts`, and the harness measures every shown label's box in every chart still (`labelOverlaps`). Made to fail
+  once: with the pass off, `chart/unexplored@v5-folded` failed with "Lilmoth / Blackrose"; on, 0 fails in 112 stills.
+- **Margins.** The sheet carries `.paper` plus an inline fibre-noise mottle (no texture file); the canvas no longer fills
+  flat cream, and the chart's straight edges are feathered into the paper.
+- **Type scale.** `scale.ts` `isPhoneLandscape`: aspect 2:1 or wider and at most 2440 device px wide (css px x density).
+  2560x1080, 3440x1440 and a 2560x1080 css retina keep the desktop scale; the fold keeps the phone's. The duplicated
+  root font size and its media query are removed from `theme.css`.
+- **Gate.** `make ui` and `pytest tools/ui_harness tools/chart` green. `make check` reds, none from this lane: `lint`
+  (unused `budget` import in `tools/argonia_world/water/__main__.py`), `skse` (`skse/core/generated` stale against
+  uncommitted db rows, 2 new forms), `unit` (`test_job_guard::test_locks_are_per_machine`, gpu lock busy from another lane).
+- **Reader, chart stills.** Rounds 4 to 6 (two fix iterations, the cap): round 4 failed (gradient margins, a "th" fragment),
+  round 5 failed (ghost Lilmoth, tile seams), round 6 failed on the 1080p, 720p and folded unexplored stills: faint ghost
+  Lilmoth under the displaced label (patch then made opaque, not re-judged), margin noise seams, a value step at the
+  map edge. The claywater stills and v5-unfolded labels pass. Left for the next pass: re-judge the opaque patch; make
+  the margins from the base layer's own paper (not CSS noise) so no step shows.

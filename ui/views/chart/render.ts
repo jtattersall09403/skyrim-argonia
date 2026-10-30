@@ -12,7 +12,7 @@ export function render(s: ChartState, cities: { id: string; name: string; x: num
     `<button type="button" class="place" data-nav data-key="place:${esc(p.id)}" data-place="${esc(p.id)}"
       data-x="${p.x}" data-y="${p.y}" aria-label="${esc(p.name)}"><span class="pname">${esc(p.name)}</span></button>`).join("");
   return `<section class="chart paper" aria-label="Chart" data-worldspace="${esc(s.worldspace)}" data-sketch="${esc(s.sketch)}">
-  <div class="sheet"><canvas class="layers"></canvas><div class="labels">${labels}</div><div class="places">${places}</div></div>
+  <div class="sheet paper"><canvas class="layers"></canvas><div class="labels">${labels}</div><div class="places">${places}</div></div>
   <div class="controls">
     <button type="button" class="zoom" data-ui="zoom-in" data-key="zoom-in" aria-label="Zoom in">+</button>
     <button type="button" class="zoom" data-ui="zoom-out" data-key="zoom-out" aria-label="Zoom out">&minus;</button>

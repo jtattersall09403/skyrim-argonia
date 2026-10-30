@@ -27,6 +27,30 @@ export function labelAt(ix: CellIndex, t: { scale: number; tx: number; ty: numbe
   return { left: px * t.scale + t.tx + minPx * 0.6, top: py * t.scale + t.ty };
 }
 
+// Label collisions. Each box is where a label sits on the sheet in screen px; `order` is the caller's priority
+// (major cities first). A label keeps its own spot when free; otherwise it tries the offsets round its anchor (above,
+// below, and the four diagonals, then two steps out) and takes the first that is on the sheet and clear of every box
+// already placed. A label with no free spot is dropped (null): at a closer zoom it separates from its neighbour.
+export interface LabelBox { id: string; x: number; y: number; w: number; h: number }
+export const hits = (a: LabelBox, b: LabelBox, gap = 0): boolean =>
+  a.x < b.x + b.w + gap && b.x < a.x + a.w + gap && a.y < b.y + b.h + gap && b.y < a.y + a.h + gap;
+export function placeLabels(boxes: LabelBox[], sheetW: number, sheetH: number, gap = 2): Map<string, [number, number] | null> {
+  const placed: LabelBox[] = [], out = new Map<string, [number, number] | null>();
+  for (const b of boxes) {
+    const offsets: [number, number][] = [[0, 0], [0, -b.h], [0, b.h], [b.w / 2, -b.h], [b.w / 2, b.h], [-b.w / 2, -b.h],
+      [-b.w / 2, b.h], [0, -2 * b.h], [0, 2 * b.h]];
+    let spot: [number, number] | null = null;
+    for (const [dx, dy] of offsets) {
+      const c = { ...b, x: b.x + dx, y: b.y + dy };
+      if (c.x < 0 || c.y < 0 || c.x + c.w > sheetW || c.y + c.h > sheetH) continue;
+      if (placed.some((p) => hits(c, p, gap))) continue;
+      placed.push(c); spot = [dx, dy]; break;
+    }
+    out.set(b.id, spot);
+  }
+  return out;
+}
+
 export const key = (c: CellKey): string => `${c.x},${c.y}`;
 
 // The sketch's cities the push did not name: the chart letters them whether or not the player has been there.

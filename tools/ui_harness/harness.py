@@ -72,6 +72,14 @@ MEASURE = r"""
     const r = b.getBoundingClientRect();
     if (r.width && b.scrollWidth > b.clientWidth + 1 && !b.classList.contains("kw")) out.clipped.push(b.textContent.trim().slice(0, 40));
   }
+  // The chart's labels: no two shown labels' boxes overlap (the view's collision pass; 1 px of slack).
+  const lab = [...document.querySelectorAll(".label:not([hidden])")].map((e) => [e.textContent.trim(), e.getBoundingClientRect()]);
+  out.labelOverlaps = [];
+  for (let i = 0; i < lab.length; i++) for (let j = i + 1; j < lab.length; j++) {
+    const a = lab[i][1], b = lab[j][1];
+    if (a.left < b.right - 1 && b.left < a.right - 1 && a.top < b.bottom - 1 && b.top < a.bottom - 1) out.labelOverlaps.push(lab[i][0] + " / " + lab[j][0]);
+  }
+  out.labels = lab.length;
   out.scroll = document.documentElement.scrollWidth > W + 1 || document.documentElement.scrollHeight > H + 1;
   return out;
 }
@@ -271,6 +279,8 @@ def judge(m: dict, vp: Viewport, empty_ok: bool) -> list[str]:
         f.append(f"text off screen: {m['offscreen'][:3]}")
     if m["clipped"]:
         f.append(f"button text clipped: {m['clipped'][:3]}")
+    if m.get("labelOverlaps"):
+        f.append(f"chart labels overlap: {m['labelOverlaps'][:3]}")
     if m["scroll"]:
         f.append("the page scrolls")
     if m["errors"]:

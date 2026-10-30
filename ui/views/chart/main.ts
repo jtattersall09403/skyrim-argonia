@@ -4,7 +4,7 @@
 // lasts; when it settles the view is sent as chart.pan, and ArgoniaCore keeps it between openings.
 import type { ChartState, ChartView } from "../../schema/generated/messages.ts";
 import { send, start } from "../core/bridge.ts";
-import { type CellIndex, labelAt, pan, panIntent, revealRects, sketchCities, toPx, transform } from "./geom.ts";
+import { type CellIndex, type LabelBox, labelAt, placeLabels, pan, panIntent, revealRects, sketchCities, toPx, transform } from "./geom.ts";
 import { render } from "./render.ts";
 
 declare global { interface Window { ARGONIA_CHART_INDEX: CellIndex } }
@@ -75,27 +75,63 @@ function draw(): void {
   const t = transform(ix, view, w, h);
   const c = canvas.getContext("2d")!;
   c.setTransform(dpr, 0, 0, dpr, 0, 0);
-  c.fillStyle = "#eeead6"; c.fillRect(0, 0, w, h);   // the chart's open water, so the sheet reads as one paper
+  c.clearRect(0, 0, canvas.width, canvas.height);   // the margins show the sheet's paper (the theme's .paper mottle)
   c.imageSmoothingEnabled = true; c.imageSmoothingQuality = "high";
   c.setTransform(dpr * t.scale, 0, 0, dpr * t.scale, dpr * t.tx, dpr * t.ty);
   c.drawImage(imgs.base, 0, 0, ix.size, ix.size);
   c.drawImage(masked!, 0, 0, ix.size, ix.size);
   c.drawImage(imgs.ink, 0, 0, ix.size, ix.size);
+  // Where the sheet is wider than the chart, feather the chart's straight edges into the paper (destination-out).
+  c.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const x0 = t.tx, x1 = t.tx + ix.size * t.scale, y0 = t.ty, y1 = t.ty + ix.size * t.scale;
+  const f = Math.max(24, 3 * parseFloat(getComputedStyle(document.documentElement).fontSize));
+  c.globalCompositeOperation = "destination-out";
+  const strip = (ax: number, ay: number, bx: number, by: number, rx: number, ry: number, rw: number, rh: number) => {
+    const g = c.createLinearGradient(ax, ay, bx, by);
+    g.addColorStop(0, "rgba(0,0,0,1)"); g.addColorStop(1, "rgba(0,0,0,0)");
+    c.fillStyle = g; c.fillRect(rx, ry, rw, rh);
+  };
+  if (x0 > 0) strip(x0, 0, x0 + f, 0, x0, Math.max(0, y0), f, Math.min(h, y1) - Math.max(0, y0));
+  if (x1 < w) strip(x1, 0, x1 - f, 0, x1 - f, Math.max(0, y0), f, Math.min(h, y1) - Math.max(0, y0));
+  if (y0 > 0) strip(0, y0, 0, y0 + f, Math.max(0, x0), y0, Math.min(w, x1) - Math.max(0, x0), f);
+  if (y1 < h) strip(0, y1, 0, y1 - f, Math.max(0, x0), y1 - f, Math.min(w, x1) - Math.max(0, x0), f);
+  c.globalCompositeOperation = "source-over";
   for (const el of root.querySelectorAll<HTMLElement>(".place")) {
     const [px, py] = toPx(ix, Number(el.dataset.x), Number(el.dataset.y));
     el.style.left = `${px * t.scale + t.tx}px`; el.style.top = `${py * t.scale + t.ty}px`;
   }
   const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
+  // Pass 1: where each label wants to sit, measured with its text. Pass 2: collisions by priority.
+  const boxes: (LabelBox & { el: HTMLElement; city: boolean })[] = [];
   for (const el of root.querySelectorAll<HTMLElement>(".label")) {
     const at = labelAt(ix, t, el.dataset.label!, Number(el.dataset.x), Number(el.dataset.y),
       el.dataset.discovered === "true", rem * 0.75);
     el.hidden = at === null || at.left > w || at.left < 0 || at.top > h || at.top < 0;   // the sheet clips the rest
-    if (!at) continue;
+    el.style.transform = "";
+    if (!at || el.hidden) continue;
     el.style.left = `${at.left}px`; el.style.top = `${at.top}px`;
     el.classList.toggle("over", at.cover !== undefined);
     el.classList.toggle("beside", at.cover === undefined);   // no drawn label: a small ink mark at the place
     if (at.cover) { el.style.minWidth = `${at.cover[2] + 0.4 * rem}px`; el.style.minHeight = `${at.cover[3] + 0.2 * rem}px`; }
     else { el.style.minWidth = ""; el.style.minHeight = ""; }
+    const lead = at.cover ? 0.2 * rem : 0.55 * rem;   // the plate's margin, or the ink mark beside a bare label
+    const bw = el.offsetWidth + lead, bh = el.offsetHeight;
+    boxes.push({ id: el.dataset.label!, x: at.left - lead, y: at.top - bh / 2, w: bw, h: bh, el,
+      city: !!ix.places?.[el.dataset.label!]?.city });
+  }
+  // Major cities first, then the rest; the larger plate (the bigger drawn name) first within each.
+  boxes.sort((a, b) => Number(b.city) - Number(a.city) || b.w * b.h - a.w * a.h);
+  const spots = placeLabels(boxes, w, h);
+  for (const b of boxes) {
+    const spot = spots.get(b.id) ?? null;
+    b.el.hidden = spot === null;
+    b.el.classList.toggle("moved", !!spot && (spot[0] !== 0 || spot[1] !== 0) && b.el.classList.contains("over"));
+    if (b.el.style.minWidth) {
+      b.el.style.setProperty("--cw", `calc(${b.el.style.minWidth} + 0.6rem)`);
+      b.el.style.setProperty("--ch", `calc(${b.el.style.minHeight} + 0.6rem)`);
+    }
+    if (spot) b.el.style.setProperty("--dx", `${-spot[0]}px`), b.el.style.setProperty("--dy", `${-spot[1]}px`);
+    if (spot) b.el.style.transform = `translate(${spot[0]}px, calc(-50% + ${spot[1]}px))`;
   }
   document.body.dataset.ready = "1";
 }
