@@ -82,6 +82,13 @@ static class CombatRecords
         if (r.TryGetProperty("voice", out var vo)) n.Voice.SetTo(FK(vo.GetString()!));
         if (r.TryGetProperty("outfit", out var of)) n.DefaultOutfit.SetTo(FK(of.GetString()!));
         if (r.TryGetProperty("energy", out var en)) n.AIData.EnergyLevel = (byte)en.GetInt32();
+        if (r.TryGetProperty("aggro", out var ag))
+        {
+            n.AIData.AggroRadiusBehavior = ag.GetProperty("behavior").GetBoolean();
+            n.AIData.Warn = (uint)ag.GetProperty("warn").GetInt32();
+            n.AIData.WarnOrAttack = (uint)ag.GetProperty("warnOrAttack").GetInt32();
+            n.AIData.Attack = (uint)ag.GetProperty("attack").GetInt32();
+        }
         if (r.TryGetProperty("responsibility", out var rs)) n.AIData.Responsibility = Enum.Parse<Responsibility>(rs.GetString()!);
         if (r.TryGetProperty("mood", out var md)) n.AIData.Mood = Enum.Parse<Mood>(md.GetString()!);
         if (r.TryGetProperty("assistance", out var asst)) n.AIData.Assistance = Enum.Parse<Assistance>(asst.GetString()!);

@@ -12,7 +12,6 @@ Configuration:
   - Stats
   - Factions
   - SpellList
-  - AIData
   - Inventory
   - Script
   - AttackData
@@ -21,7 +20,12 @@ Race: 000A01:King of the Murkmire.esp
 Perks: []
 Items: []
 AIData:
-  Confidence: Average
+  Aggression: VeryAggressive
+  Confidence: Foolhardy
+  EnergyLevel: 50
+  AggroRadiusBehavior: True
+  WarnOrAttack: 2000
+  Attack: 1500
 Packages:
 - 000875:Argonia.esm
 Class: 000806:Argonia.esm

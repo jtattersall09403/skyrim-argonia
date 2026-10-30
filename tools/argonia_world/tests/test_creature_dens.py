@@ -46,3 +46,22 @@ def test_claywater_crocodile_dens_on_the_bank_out_of_the_pool():
     assert math.hypot(den.x_m - raft.x_m, den.y_m - raft.y_m) > p.sandbox_radius_m
     actor = next(r for r in w.rows("build_ref") if r.npc_id == CROC)
     assert math.hypot(actor.x_m - den.x_m, actor.y_m - den.y_m) <= p.sandbox_radius_m
+
+
+def _creature(flags, **extra):
+    from tools.argonia_world import place_build as pb
+    return [{"type": "NPC_", "edid": "ARG_Npc_C", "templateFlags": flags, **extra}]
+
+
+def test_creature_without_templated_ai_carries_an_attack_radius():
+    from tools.argonia_world import place_build as pb
+    pb.check_creatures(_creature(pb.CREATURE_TEMPLATE_FLAGS, **pb.CREATURE_AI))
+    assert pb.CREATURE_AI["aggro"]["attack"] > 0 and "AIData" not in pb.CREATURE_TEMPLATE_FLAGS
+
+
+def test_old_flags_fail_on_purpose():  # the old flags (AIData templated) left the record with no radius of its own
+    import pytest
+    from tools.argonia_world import place_build as pb
+    old = [f for f in pb.CREATURE_TEMPLATE_FLAGS] + ["AIData"]
+    with pytest.raises(ValueError, match="no attack radius"):
+        pb.check_creatures(_creature(old))

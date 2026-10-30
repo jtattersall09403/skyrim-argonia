@@ -41,7 +41,13 @@ PEOPLE_TEMPLATE_FLAGS = ["Traits"]
 # stats auto-calculated from class and level, AIDT energy 50 (0 is Mutagen's default, not a vanilla value), no crime.
 PEOPLE_AI = {"aggression": "Unaggressive", "confidence": "Average", "energy": 50, "responsibility": "NoCrime",
              "mood": "Neutral", "assistance": "HelpsNobody", "soundLevel": "Normal"}
-CREATURE_TEMPLATE_FLAGS = ["Traits", "Stats", "Factions", "SpellList", "AIData", "Inventory", "Script", "AttackData"]
+# AIData is not templated: a creature template can carry no aggro radius (EncCrocodileBlackMarsh01 has behaviour off and
+# Warn/WarnOrAttack/Attack 0, so the crocodile detected the player and never fought). The creature's own AI is below.
+CREATURE_TEMPLATE_FLAGS = ["Traits", "Stats", "Factions", "SpellList", "Inventory", "Script", "AttackData"]
+# Vanilla predators' AIDT (EncWolf, EncBear, EncSabreCat): VeryAggressive, Foolhardy, aggro radius on, WarnOrAttack 2000,
+# Attack 1500. These are vanilla's own numbers in game units, not metres, so no conversion is involved.
+CREATURE_AGGRO = {"behavior": True, "warn": 0, "warnOrAttack": 2000, "attack": 1500}
+CREATURE_AI = {"aggression": "VeryAggressive", "confidence": "Foolhardy", "energy": 50, "aggro": CREATURE_AGGRO}
 
 
 def slug(s: str) -> str:
@@ -221,7 +227,9 @@ def _people(ctx, world, refs, cells) -> None:
                "aggression": "Unaggressive", "confidence": "Average", "height": su.NPC_DEFAULT_HEIGHT,
                "weight": su.NPC_DEFAULT_WEIGHT, "perks": [], "items": [], "packages": pkgs,
                "flags": [] if creature else ["Unique", "AutoCalcStats"]}
-        if not creature:
+        if creature:
+            rec.update(CREATURE_AI)
+        else:
             rec.update(PEOPLE_AI)
             if p.outfit_form_key:
                 rec["outfit"] = p.outfit_form_key
@@ -261,6 +269,7 @@ def place_records(alloc, world, resolver, ground, wrld_form_key: str, place_id: 
     out = list(ctx.records.values()) + out
     check_package_targets(out)
     check_people(out)
+    check_creatures(out)
     return out
 
 
@@ -279,6 +288,15 @@ def check_people(records: list[dict]) -> None:
                        f"{TEMPLATE_INPUTS.get(r.get('template'))}")
     if bad:
         raise ValueError("people records short of a vanilla NPC_'s AI fields: " + "; ".join(bad))
+
+
+def check_creatures(records: list[dict]) -> None:
+    """L1: a creature NPC_ (templated beyond Traits) carries its own attack radius and does not template AIData, whose
+    template may hold radius 0 (the crocodile detected the player and never fought)."""
+    bad = [r["edid"] for r in records if r.get("type") == "NPC_" and r.get("templateFlags") != PEOPLE_TEMPLATE_FLAGS
+           and (r.get("aggro", {}).get("attack", 0) <= 0 or "AIData" in r["templateFlags"])]
+    if bad:
+        raise ValueError("creatures with no attack radius of their own: " + ", ".join(bad))
 
 
 def _interior_key(alloc, c) -> str | None:
