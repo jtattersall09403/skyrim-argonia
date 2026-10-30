@@ -35,7 +35,8 @@ std::vector<Op> Host::open(std::string_view view) {
   const auto* s = spec(view);
   if (!s || !s->modal || modal_ == view) return ops;
   if (modal_) {
-    auto shut = close(*modal_);
+    const std::string prev = *modal_;  // a copy: close() resets modal_, which a view of it would dangle on
+    auto shut = close(prev);
     ops.insert(ops.end(), shut.begin(), shut.end());
   }
   modal_ = std::string(view);
@@ -87,7 +88,10 @@ std::vector<Op> Host::close(std::string_view view) {
 
 std::vector<Op> Host::close_all() {
   std::vector<Op> ops;
-  if (modal_) ops = close(*modal_);
+  if (modal_) {
+    const std::string prev = *modal_;
+    ops = close(prev);
+  }
   for (const auto& s : kViews)
     if (s.modal) last_.erase(std::string(s.id));
   return ops;

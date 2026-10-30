@@ -91,6 +91,7 @@ def save_manifest(doc):
 
 THEME = "argonia-theme"  # 1.2 §a's derived UI theme overlay (tools/ui_theme)
 MAP = "argonia-map"  # 1.2 §e's derived world map overlay over FWMF (tools/chart/fwmf.py, installer/steps/world-map.md)
+VIEWS = "argonia-views"  # 1.2 §0's view bundle (tools/ui_harness/build.py: out/ui/views) under PrismaUI/views/argonia
 LOD = "Argonia LOD (generated)"  # 2.W4 §c: filled on the machine by lod.ps1 (decision 0014 §4), never staged or pushed
 CURRENT_PART = "0"  # stack.py --through's default: the rows of every chunk of the part being built
 
@@ -722,7 +723,7 @@ def cmd_stage(a):
     names, record, ids, pruned, restaged = [], {}, {m["id"] for m in rows}, set(), {"pandora-output"}
     prev = json.loads((STACK / "installed.json").read_text())["files"] if (STACK / "installed.json").exists() else {}
     for d in list(mods.iterdir()):
-        if d.name not in ids and d.name not in ("pandora-output", THEME, MAP, LOD):
+        if d.name not in ids and d.name not in ("pandora-output", THEME, MAP, VIEWS, LOD):
             shutil.rmtree(d)
     for m in rows:
         laid = {k: v for k, v in m.items() if k not in DOC_FIELDS}  # a permission or note edit does not re-stage
@@ -775,6 +776,13 @@ def cmd_stage(a):
         names.append(MAP)
         restaged.add(MAP)
         print(f"staged {MAP} from {chart}")
+    views = REPO / "out" / "ui" / "views"  # made on the build VM by tools/ui_harness/build.py (the installer's step)
+    if (views / "dialogue" / "index.html").exists():  # PrismaUI loads file:///views/<path> from Data/PrismaUI/views
+        shutil.rmtree(mods / VIEWS, ignore_errors=True)
+        shutil.copytree(views, mods / VIEWS / "PrismaUI" / "views" / "argonia")
+        names.append(VIEWS)
+        restaged.add(VIEWS)
+        print(f"staged {VIEWS} from {views}")
     names.append("pandora-output")  # filled when Pandora runs on the machine; highest priority
     (mods / "pandora-output").mkdir(exist_ok=True)
     prof = MO2 / "profiles" / PROFILE
@@ -1099,7 +1107,7 @@ def cmd_combat(a):
     def one(name):
         stage.set = [f"combat={COMBAT[name]}"]
         print(f"== combat {name} ({COMBAT[name]})")
-        restaged = cmd_stage(stage) - {THEME, MAP}  # derived overlays, copied afresh by every stage
+        restaged = cmd_stage(stage) - {THEME, MAP, VIEWS}  # derived overlays, copied afresh by every stage
         inst = json.loads((out / "installed.json").read_text())
         return restaged, inst
 
