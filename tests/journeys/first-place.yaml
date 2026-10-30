@@ -23,11 +23,10 @@ steps:
     do: [{pad: "LY=1:3000"}, {pad: "LY=1:3000"}]
     expect: [{moved: {gt: 600}}]
   - name: make-camp        # a rest outside the settlement: the wake point for the death later
-    owed: "the rest perk's fragment ARG_PRKF_RestIntercept is not compiled (Papyrus, owner #15): E on the camp spot runs nothing (game-8)"
     do:
-      - {console: "player.moveto ARG_Ref_ClaywaterStationRoadIn 0 -150 0"}
+      - {console: "player.moveto ARG_Ref_ClaywaterStationRoadIn 0 -90 0"}   # 150 units off, the bedroll is out of reach (game-9)
       - {console: "player.setangle z 0"}
-      - {console: "player.setangle x 30"}
+      - {console: "player.setangle x 40"}
       - {wait: 1}
       - {key: "E 120"}
       - {wait: 4}
@@ -36,53 +35,49 @@ steps:
       - {read: [core, SaveCount], path: value, gt: {kept: saves0}, within: 10}
   # --- talk, learn a topic, ask it of a second person, take LF83 -----------------------------------------------
   - name: talk-to-takes    # n1-3, the landing's walker: her greeting links the hook topic (dry season)
-    owed: "E on a person runs the dialogue perk's fragment ARG_PRKF_DialogueIntercept (OpenDialogue), not compiled (Papyrus, owner #15) (game-8)"
     do:
       - {console: "player.moveto ARG_Ref_ClaywaterStationTakes 0 -120 0"}
       - {console: "player.setangle z 0"}
+      - {console: "ARG_Ref_ClaywaterStationTakes.moveto player 0 110 0"}   # the speaker walks (AI since game-8): brought back into the pose (game-9)
       - {console: "player.setangle x 0"}
-      - {wait: 1}
+      - {wait: 3}   # the moveto loads a cell and fades; a key pressed under the Fader Menu is lost (game-9)
       - {key: "E 120"}
       - {wait: 2}
     expect:
       - {read: [core, ViewState, dialogue], path: value.body.speaker.id, eq: npc.imperial-fringe.claywater-station.n1-3}
   - name: learn-topic
-    owed: "E on a person runs the dialogue perk's fragment ARG_PRKF_DialogueIntercept (OpenDialogue), not compiled (Papyrus, owner #15) (game-8)"
     do: [{call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.claywater-two-charges"}}']}]
     expect:
       - {read: [core, KnowsTopic, topic.claywater-two-charges], path: value, eq: true}
   - name: goodbye-takes
-    owed: "E on a person runs the dialogue perk's fragment ARG_PRKF_DialogueIntercept (OpenDialogue), not compiled (Papyrus, owner #15) (game-8)"
     do: [{call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}, {wait: 1}]
     expect: [{read: [core, ViewState, dialogue], path: value, eq: null}]
   - name: ask-livia        # the same topic of a second person: the station's side (objective hear-station)
-    owed: "E on a person runs the dialogue perk's fragment ARG_PRKF_DialogueIntercept (OpenDialogue), not compiled (Papyrus, owner #15) (game-8)"
     do:
       - {console: "player.moveto ARG_Ref_ClaywaterStationLivia 0 -120 0"}
       - {console: "player.setangle z 0"}
-      - {wait: 1}
+      - {console: "ARG_Ref_ClaywaterStationLivia.moveto player 0 110 0"}   # the speaker walks (AI since game-8): brought back into the pose (game-9)
+      - {wait: 3}   # the moveto loads a cell and fades; a key pressed under the Fader Menu is lost (game-9)
       - {key: "E 120"}
       - {wait: 2}
       - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.claywater-two-charges"}}']}
     expect:
       - {read: [core, ViewState, dialogue], path: value.body.speaker.id, eq: npc.imperial-fringe.claywater-station.well-keeper}
   - name: took-lf83        # the quest started from the topic heard of a named speaker; its journal entry written
-    owed: "E on a person runs the dialogue perk's fragment ARG_PRKF_DialogueIntercept (OpenDialogue), not compiled (Papyrus, owner #15) (game-8)"
     expect:
       - {console: "GetStage ARG_Q_LF83", contains: ">> 10"}
       - {read: [core, JournalEntries], path: value, contains: "quest.local.lf83 10 "}
   - name: livia-landing-terms
-    owed: "E on a person runs the dialogue perk's fragment ARG_PRKF_DialogueIntercept (OpenDialogue), not compiled (Papyrus, owner #15) (game-8)"
     do:
       - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.claywater-landing-terms"}}']}
       - {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}
     expect: [{read: [core, KnowsTopic, topic.claywater-landing-terms], path: value, eq: true}]
   - name: ask-signs        # the landing's side and its terms (objective hear-landing) -> stage 20
-    owed: "E on a person runs the dialogue perk's fragment ARG_PRKF_DialogueIntercept (OpenDialogue), not compiled (Papyrus, owner #15) (game-8)"
     do:
       - {console: "player.moveto ARG_Ref_ClaywaterStationSigns 0 -120 0"}
       - {console: "player.setangle z 0"}
-      - {wait: 1}
+      - {console: "ARG_Ref_ClaywaterStationSigns.moveto player 0 110 0"}   # the speaker walks (AI since game-8): brought back into the pose (game-9)
+      - {wait: 3}   # the moveto loads a cell and fades; a key pressed under the Fader Menu is lost (game-9)
       - {key: "E 120"}
       - {wait: 2}
       - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.claywater-two-charges"}}']}
@@ -121,7 +116,6 @@ steps:
     expect:
       - {console: "player.GetItemCount ARG_Misc_Lf83ClayBasket", contains: ">> 1"}
   - name: clay-stage-30    # the basket moves LF83 to 30 only once the talks took it (10, 20)
-    owed: "LF83 starts from the talks, which wait on the dialogue fragment (Papyrus, owner #15) (game-8)"
     expect: [{console: "GetStage ARG_Q_LF83", contains: ">> 30", within: 8}]
   # --- loot and equip ------------------------------------------------------------------------------------------
   - name: loot-the-croc    # the corpse's container menu, Take All (R), close
@@ -152,7 +146,6 @@ steps:
       - {read: [player], path: dead, eq: false}
       - {console: "ARG_Ref_ClaywaterStationAmbushDeserter.GetDead", contains: ">> 0"}
   - name: retrieve-vastei  # back to where the pile fell, face down onto it, take it
-    owed: "the pile's Take is the same perk's Fragment_1 (Papyrus, owner #15)"
     do:
       - {teleport: "pos {pile.0} {pile.1} {pile.2}"}
       - {console: "player.setangle x 60"}
@@ -164,23 +157,23 @@ steps:
       - {read: [core, PileState], path: value, eq: ""}
   # --- finish the quest -----------------------------------------------------------------------------------------
   - name: terms-with-livia
-    owed: "E on a person runs the dialogue perk's fragment ARG_PRKF_DialogueIntercept (OpenDialogue), not compiled (Papyrus, owner #15) (game-8)"
     do:
       - {console: "player.setangle x 0"}
       - {console: "player.moveto ARG_Ref_ClaywaterStationLivia 0 -120 0"}
       - {console: "player.setangle z 0"}
-      - {wait: 1}
+      - {console: "ARG_Ref_ClaywaterStationLivia.moveto player 0 110 0"}   # the speaker walks (AI since game-8): brought back into the pose (game-9)
+      - {wait: 3}   # the moveto loads a cell and fades; a key pressed under the Fader Menu is lost (game-9)
       - {key: "E 120"}
       - {wait: 2}
       - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.lf83-one-charge"}}']}
       - {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}
     expect: [{read: [core, KnowsTopic, topic.lf83-one-charge], path: value, eq: true}]
   - name: terms-with-signs # both keepers agree -> stage 40, the quest completed
-    owed: "E on a person runs the dialogue perk's fragment ARG_PRKF_DialogueIntercept (OpenDialogue), not compiled (Papyrus, owner #15) (game-8)"
     do:
       - {console: "player.moveto ARG_Ref_ClaywaterStationSigns 0 -120 0"}
       - {console: "player.setangle z 0"}
-      - {wait: 1}
+      - {console: "ARG_Ref_ClaywaterStationSigns.moveto player 0 110 0"}   # the speaker walks (AI since game-8): brought back into the pose (game-9)
+      - {wait: 3}   # the moveto loads a cell and fades; a key pressed under the Fader Menu is lost (game-9)
       - {key: "E 120"}
       - {wait: 2}
       - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.lf83-one-charge"}}']}
@@ -194,11 +187,10 @@ steps:
       - {read: [core, GetPendingLevels], path: value, ge: 1}
       - {read: [core, GetLevel], path: value, keep: level0}
   - name: rest-at-camp
-    owed: "the rest perk's fragment ARG_PRKF_RestIntercept is not compiled (Papyrus, owner #15): E on the camp spot runs nothing (game-8)"
     do:
-      - {console: "player.moveto ARG_Ref_ClaywaterStationRoadIn 0 -150 0"}
+      - {console: "player.moveto ARG_Ref_ClaywaterStationRoadIn 0 -90 0"}   # 150 units off, the bedroll is out of reach (game-9)
       - {console: "player.setangle z 0"}
-      - {console: "player.setangle x 30"}
+      - {console: "player.setangle x 40"}
       - {wait: 1}
       - {key: "E 120"}
       - {wait: 3}
@@ -206,11 +198,9 @@ steps:
       - {read: [core, SittingOpen], path: value, eq: true}
       - {read: [core, ViewState, sitting], path: value.type, eq: sitting.state}
   - name: spend            # one point of endurance, the view's own intent
-    owed: "the sitting opens only from a rest (make-camp's fragment, owner #15)"
     do: [{call: [core, ViewIntent, '{"type":"sitting.buy","v":1,"body":{"attribute":"endurance"}}']}]
     expect: [{read: [core, ViewState, sitting], path: value.body.attributes, contains: "'bought': 1"}]
   - name: rise
-    owed: "the sitting opens only from a rest (make-camp's fragment, owner #15)"
     do: [{call: [core, ViewIntent, '{"type":"sitting.done","v":1,"body":{}}']}, {wait: 4}]
     expect:
       - {read: [core, SittingOpen], path: value, eq: false}
@@ -230,10 +220,8 @@ steps:
       - {read: [core, FamilyDigest, QWCH], path: value, keep: d_qwch}
       - {read: [core, FamilyDigest, META], path: value, keep: d_meta}
   - name: load-rest-save
-    owed: "ArgoniaRest is written only by a rest (owner #15)"
     do: [{call: [load, ArgoniaRest]}, {wait: 4}]
   - name: every-family
-    owed: "compares with the rest save's values (owner #15)"
     expect:
       - {read: [core, Families], path: "", eq: {kept: families}}
       - {read: [core, Families], path: value, contains: "QWCH"}

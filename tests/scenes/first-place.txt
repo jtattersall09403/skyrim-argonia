@@ -5,6 +5,9 @@
 ; or the rest is set.
 ; the travel line is last: lines after it ran before the move landed, so the camp spot was placed in the holding
 ; cell (game-7); the spot is placed at the road ref itself
+; the dry season (days 0-127; the base save starts on Last Seed 17, the wet season): LF83 is a dry-season story (game-9)
+set GameMonth to 2
+set GameDay to 15
 set gamehour to 10
 fw ARG_Weather_tannin_haze
 ARG_Ref_ClaywaterStationRoadIn.placeatme ARG_CampSpot 1

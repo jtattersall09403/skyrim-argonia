@@ -55,6 +55,11 @@ Type: SideQuest
 Stages:
 - Flags:
   - StartUpStage
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: ''
 - Index: 10
   LogEntries:
   - Flags: []

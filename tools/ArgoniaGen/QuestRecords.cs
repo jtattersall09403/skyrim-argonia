@@ -40,11 +40,15 @@ static class QuestRecords
             Type = Enum.Parse<Quest.TypeEnum>(Os(r, "questType") ?? "None"),
         };
         foreach (var c in A(r, "eventConditions")) q.EventConditions.Add(Condition(c));
+        var fragStages = r.TryGetProperty("fragments", out var fs0) ? A(fs0, "stages").Select(i => (ushort)i.GetInt32()).ToHashSet() : new HashSet<ushort>();
         foreach (var st in A(r, "stages"))
         {
             var stage = new QuestStage { Index = (ushort)I(st, "index"), Flags = Flags<QuestStage.Flag>(st, "flags") };
             foreach (var e in A(st, "log"))
                 stage.LogEntries.Add(new QuestLogEntry { Flags = Flags<QuestLogEntry.Flag>(e, "flags"), Entry = Text(S(e, "text")) });
+            // A stage's fragment hangs on one of its log entries (StageIndex), as the CK writes every stage: a stage with
+            // none runs no fragment (game-9: LF83's stage-0 WatchQuest never ran, so nothing stepped the quest).
+            if (stage.LogEntries.Count == 0 && fragStages.Contains(stage.Index)) stage.LogEntries.Add(new QuestLogEntry { Flags = 0, Entry = Text("") });
             q.Stages.Add(stage);
         }
         foreach (var o in A(r, "objectives"))
