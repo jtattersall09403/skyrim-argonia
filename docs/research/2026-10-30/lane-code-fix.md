@@ -53,4 +53,5 @@ below was checked against ~/.argonia/commonlib: `BSTEventSource::PrependEventSin
 - **Next slot must prove:** grow-at-rest's dev-grow either answers or errors with "is disabled", and does not crash.
 
 ## Gate and build
-See the commit and the build job `code-fix` for results.
+- `make check`: CHECK RED on unit (test_world_sample) and plugin-check (the ArgoniaWorld.esm sample hash). Both come from another lane's uncommitted world/db and world_sample.py edits in the shared tree, which this change cannot reach. All other parts are green.
+- Compile: NOT RUN. Both queued jobs (codefix-core and codefix-bridge on argonia-play) failed with an ssh timeout to 172.31.18.177, because the machine is stopped and this lane may not start it. The first step of the next slot is `SKSE_TARGET=ArgoniaCore` and then `ArgoniaBridge` compiles of 1aa3444.
