@@ -82,6 +82,12 @@ static class PieceIndex
         if (Directory.Exists(loose))
             foreach (var f in Directory.EnumerateFiles(loose, "*.nif", SearchOption.AllDirectories))
                 meshes.Add(Norm(Path.GetRelativePath(data, f)));
+        // Meshes laid on the game machine by mods the build VM does not hold: one path per line.
+        var lists = Path.Combine(data, "argonia-mesh-lists");
+        if (Directory.Exists(lists))
+            foreach (var f in Directory.EnumerateFiles(lists, "*.txt"))
+                foreach (var line in File.ReadLines(f))
+                    if (line.Trim() is { Length: > 0 } l && l.EndsWith(".nif", StringComparison.OrdinalIgnoreCase)) meshes.Add(Norm(l));
         var records = won.Values.ToList();
         records.Sort((a, b) => string.CompareOrdinal(a["mesh"] + a["formKey"], b["mesh"] + b["formKey"]));
         Load.WriteJson(outPath, new { plugins, records, meshes });

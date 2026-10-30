@@ -67,7 +67,8 @@ def scans(data: Path):
     sys.path.insert(0, str(ROOT))
     from tools.argonia_world.intermediate import load_order
     order = load_order(data)
-    files = [data / p for p in order] + sorted(data.glob("*.bsa")) + [GEN.with_suffix(".dll")]
+    files = [data / p for p in order] + sorted(data.glob("*.bsa")) \
+        + sorted((data / "argonia-mesh-lists").glob("*.txt")) + [GEN.with_suffix(".dll")]
     stamp = json.dumps([[f.name, f.stat().st_size, int(f.stat().st_mtime)] for f in files])
     sf = OUT / "scan.stamp"
     if sf.exists() and sf.read_text() == stamp and all((OUT / f).exists() for f in ("vanilla-scan.json", "pieces-index.json", "ltex-scan.json")):
