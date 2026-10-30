@@ -9,13 +9,7 @@ scene: first-place
 steps:
   - name: rest
     do:
-      - {console: "player.moveto ARG_Ref_ClaywaterStationRoadIn 0 -90 0"}
-      - {console: "player.setangle z 0"}
-      - {console: "player.setangle x 40"}
-      - {wait: 3}
-      - {key: "E 120"}
-      - {wait: 4}
-      - {console: "player.setangle x 0"}
+      - {rest: ARG_Ref_ClaywaterStationRoadIn}   # the camp spot at the road-in marker (game-16 rest action)
     expect: [{read: [core, WakePoint], path: value, ne: "", keep: wake, within: 10}]
   - name: menus-write-nothing # Tab, 5 s open: nothing closes it (the suspend save's spinner closed menus, game-8)
     do: [{key: "TAB 120"}, {wait: 5}]
@@ -31,8 +25,8 @@ steps:
     do:
       - {console: "tgm"}
       - {console: "ARG_Ref_ClaywaterStationCrocodile.moveto player 0 200 0"}
-      - {console: "ARG_Ref_ClaywaterStationCrocodile.startcombat player"}
-      - {wait: 3}
+      - {strike: ARG_Ref_ClaywaterStationCrocodile}   # the player's blow starts the fight (startcombat left the player out of combat: game-16)
+      - {wait: 2}
       - {call: [core-suspend, stream_drop]}
     expect:
       - {console: "player.IsInCombat", contains: ">> 1"}

@@ -366,7 +366,7 @@ class Runner:
                                  f"(last: {(seen or {}).get('editor_id') or (seen or {}).get('id') or 'nothing'})")
             time.sleep(0.25)
 
-    def _aim(self, caller):
+    def _aim(self, caller, chest_z=None):
         """The player turned to the ref's measured position: yaw by atan2 of the offset, pitch down to its chest
         (AIM_CHEST_Z above its feet) from the eye (AIM_EYE_Z above the player's); game-16: a fixed heading and
         a fixed 15-degree pitch missed an NPC that moved or stood off the moveto mark."""
@@ -377,12 +377,58 @@ class Runner:
             return
         pos = self.b.call("player")["pos"]
         dx, dy = tx - float(pos["x"]), ty - float(pos["y"])
-        dz = (tz + AIM_CHEST_Z) - (float(pos["z"]) + AIM_EYE_Z)
+        dz = (tz + (AIM_CHEST_Z if chest_z is None else chest_z)) - (float(pos["z"]) + AIM_EYE_Z)
         yaw = math.degrees(math.atan2(dx, dy)) % 360
         pitch = -math.degrees(math.atan2(dz, max(math.hypot(dx, dy), 1.0)))  # x: positive looks down
         self.b.call("console", f"player.setangle z {yaw:.1f}")
         self.b.call("console", f"player.setangle x {pitch:.1f}")
         self.b.call("input", "key", "W", 40)  # the third-person camera takes setangle only once the player moves
+
+    def _rest(self, marker):
+        """`rest: <marker ref>`: rest at the camp spot placed at that marker, the player's way: combat stopped around
+        the player (the engine refuses a rest with a hostile in combat), the player set 90 units short of the marker
+        and aimed down at it, then E (up to 3 tries) until ArgoniaCore logs the rest or its refusal. StepFailed on a
+        refusal or no rest line (game-16: grow-at-rest and die-and-recover never rested; the crosshair was off)."""
+        marker = str(marker).strip()
+        self.b.call("console", "player.stopcombat")
+        self.b.call("console", "stopcombatalarm")  # every actor's alarm and combat cleared (engine console)
+        self.b.call("console", f"player.moveto {marker} 0 -90 0")
+        time.sleep(4)  # the moveto settles (cell attach)
+        n0 = len(skse_log(self.b, "ArgoniaCore"))
+        for attempt in (1, 2, 3):
+            self._aim(marker, chest_z=0)
+            time.sleep(0.5)
+            self.b.call("input", "key", "E", 120)
+            for _ in range(16):
+                time.sleep(0.5)
+                new = skse_log(self.b, "ArgoniaCore")[n0:]
+                done = [ln for ln in new if "rest: at " in ln or "rest: refused" in ln]
+                if done:
+                    self.b.call("console", "player.setangle x 0")
+                    self.calls.append({"call": ["rest", marker], "result": done[-1], "attempt": attempt})
+                    if "refused" in done[-1]:
+                        raise StepFailed(f"rest at {marker}: refused: {done[-1]}")
+                    return done[-1]
+        raise StepFailed(f"rest at {marker}: no rest line in ArgoniaCore.log after 3 E presses")
+
+    def _close_menu(self, menu):
+        """`close_menu: <menu>`: the open menu closed the way a player does (the first key that works of
+        CLOSE_KEYS), checked by its close event; our journal view by the Views read. StepFailed when none closes it."""
+        menu = str(menu).strip()
+        for key, route in CLOSE_KEYS:
+            last = (self.b.call("events") or {}).get("last")
+            self.b.call("input", "key", key, 100, route)
+            time.sleep(1.5)
+            if menu == "journal":
+                if "journal ready closed" in json.dumps(self.b.call("core", "Views")):
+                    self.calls.append({"call": ["close_menu", menu], "result": [key, route]})
+                    return [key, route]
+                continue
+            evs = (self.b.call("events", last, "menu") or {}).get("events") or []
+            if any((e.get("data") or {}).get("menu") == menu and not (e.get("data") or {}).get("opening") for e in evs):
+                self.calls.append({"call": ["close_menu", menu], "result": [key, route]})
+                return [key, route]
+        raise StepFailed(f"close_menu {menu}: none of {CLOSE_KEYS} closed it")
 
     def _talk(self, ref):
         """`talk: <ref>`: _face, then E (retried while no menu opens)."""
@@ -606,8 +652,9 @@ def _form_id(text) -> int | None:
 
 TALK_UNITS, TALK_WAIT_S = 110, 5.0  # 5 s: a player moveto before it may load a cell and fade
 STRIKE_UNITS = 80  # inside a sword's reach
+CLOSE_KEYS = (("ESC", "engine"), ("TAB", "engine"), ("ESC", "os"), ("TAB", "os"))  # tried in order (game-16)
 AIM_EYE_Z, AIM_CHEST_Z = 110, 90  # a standing human's eye and chest above the feet (units)
-ACTIONS = {"pad": Runner._pad, "talk": Runner._talk, "strike": Runner._strike, "key": Runner._key, "console": Runner._console, "teleport": Runner._teleport,
+ACTIONS = {"pad": Runner._pad, "talk": Runner._talk, "strike": Runner._strike, "rest": Runner._rest, "close_menu": Runner._close_menu, "key": Runner._key, "console": Runner._console, "teleport": Runner._teleport,
            "wait": Runner._wait, "game_hours": Runner._game_hours, "call": Runner._call, "relaunch": Runner._relaunch}
 QUIT_WAIT_S = 60  # a clean quit (a suspend save first, 2.8 §c) gets this long before launch kills what is left
 EXPECTS = ("read", "console", "event", "moved", "quests_running", "music", "log")

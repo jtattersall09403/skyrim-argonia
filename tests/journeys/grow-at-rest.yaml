@@ -52,15 +52,7 @@ steps:
   - name: rest-no-pending     # with no level pending the rest saves and no sitting opens
     do:
       - {console: '"{opp}".stopcombat'}
-      - {console: "player.moveto ARG_Ref_ClaywaterStationAmbushPlayer 0 -90 0"}
-      - {wait: 4}                 # as rest-respawn (passes): the moveto settles before the camera is set
-      - {console: "player.setangle z 0"}
-      - {console: "player.setangle x 40"}
-      - {key: "W 40"}             # the camera takes setangle once the player moves (diag3-g15)
-      - {wait: 3}
-      - {key: "E 120"}
-      - {wait: 4}
-      - {console: "player.setangle x 0"}
+      - {rest: ARG_Ref_ClaywaterStationAmbushPlayer}   # stops combat, aims at the camp spot, E until the rest logs (game-16)
     expect:
       - {log: {name: ArgoniaCore, contains: "saves: ArgoniaRest written (rest)"}, within: 10}
       - {read: [core, SittingOpen], path: value, eq: false}
@@ -73,15 +65,7 @@ steps:
       - {read: [core, GetAttribute, endurance], path: value, keep: end0}
   - name: rest-opens-sitting
     do:
-      - {console: "player.moveto ARG_Ref_ClaywaterStationAmbushPlayer 0 -90 0"}
-      - {wait: 4}                 # as rest-respawn (passes): the moveto settles before the camera is set
-      - {console: "player.setangle z 0"}
-      - {console: "player.setangle x 40"}
-      - {key: "W 40"}             # the camera takes setangle once the player moves (diag3-g15)
-      - {wait: 3}
-      - {key: "E 120"}
-      - {wait: 4}
-      - {console: "player.setangle x 0"}
+      - {rest: ARG_Ref_ClaywaterStationAmbushPlayer}   # stops combat, aims at the camp spot, E until the rest logs (game-16)
     expect:
       - {read: [core, SittingOpen], path: value, eq: true, within: 10}
       - {read: [core, ViewState, sitting], path: value.type, eq: sitting.state}

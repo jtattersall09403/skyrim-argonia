@@ -248,11 +248,12 @@ std::string frametime(const Request& req) {
   }
   auto in_world = on_main_thread("frametime", [] { return player_in_world() ? "yes"s : "no"s; });
   if (in_world != "yes") return reply_error("frametime", "no player in a world: frames are measured in game");
+  // The wait is capped under bridge.py's 120 s reply window (game-16: 600 frames in a menu gave NoReply, not a reason).
   std::unique_lock l(g_fm);
   g_frames.clear();
   g_last = {};
   g_want = static_cast<std::size_t>(n);
-  if (!g_fcv.wait_for(l, std::chrono::milliseconds(static_cast<long long>(n * 250 + 2000)), [] { return g_want == 0; })) {
+  if (!g_fcv.wait_for(l, std::chrono::milliseconds(std::min(static_cast<long long>(n * 250 + 2000), 100000LL)), [] { return g_want == 0; })) {
     g_want = 0;
     return reply_error("frametime", "only " + std::to_string(g_frames.size()) + " frames arrived (paused or in a menu?)");
   }

@@ -39,7 +39,7 @@ steps:
     expect: [{event: {kind: menu, match: MapMenu}}]
     reader: [the sheet in our palette (warm paper, moss or near-black frame, red-clay accents), every word in Pelagiad, no Nordic ornament, the Argonia title where a title shows]
   - name: map-closed          # Tab: the map swallows M (batch 20261030T151243: M left it open and Q was lost)
-    do: [{key: "TAB 120"}, {wait: 1.5}]
+    do: [{close_menu: MapMenu}]
     expect: [{event: {kind: menu, match: '"menu": "MapMenu", "opening": false'}}]
   - name: favorites
     do: [{key: "Q 120"}, {wait: 2}]
@@ -60,7 +60,7 @@ steps:
     expect: [{read: [core, Views], path: value, contains: "journal ready open"}]
     reader: [the sheet in our palette (warm paper, moss or near-black frame, red-clay accents), every word in Pelagiad, no Nordic ornament, the Argonia title where a title shows]
   - name: journal-closed
-    do: [{key: "ESC 80"}, {wait: 1.5}]
+    do: [{close_menu: journal}]
   - name: system-tab          # Escape in play: the vanilla Journal Menu's System tab (the MCM lives under it)
     do: [{key: "ESC 80"}, {wait: 2}]
     expect: [{event: {kind: menu, match: Journal Menu}}]

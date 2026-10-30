@@ -522,7 +522,7 @@ def test_talk_fails_clearly_when_the_crosshair_never_shows_the_npc(monkeypatch, 
     b = TalkFake(shows_after=None)
     rep = rj.Runner(b, tmp_path / "o").run(journey(tmp_path, [{"name": "hi", "do": [{"talk": "ARG_Ref_Livia"}]}]), "base")
     assert not rep["passed"] and "crosshair never showed it" in rep["steps"][0]["reason"] and "Player" in rep["steps"][0]["reason"]
-    assert b.keys == [("key", "W", 80)]  # the camera nudge only: no E
+    assert b.keys[0] == ("key", "W", 80) and all(k == ("key", "W", 40) for k in b.keys[1:])  # nudge and aim re-syncs: no E
 
 
 def test_a_save_load_waits_for_the_load_to_settle_before_the_scene(monkeypatch):

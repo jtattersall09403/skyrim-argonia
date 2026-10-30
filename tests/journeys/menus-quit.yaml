@@ -20,7 +20,7 @@ steps:
     do: [{key: "J 120"}, {wait: 5}]
     expect: [{read: [core, Views], path: value, contains: "journal ready open"}]
   - name: journal-closed
-    do: [{key: "ESC 80"}, {wait: 1.5}]
+    do: [{close_menu: journal}]
     expect: [{read: [core, Views], path: value, contains: "journal ready closed"}]
   - name: system-tab         # Escape in play: the vanilla Journal Menu on its System tab
     do: [{key: "ESC 80"}, {wait: 2}]
