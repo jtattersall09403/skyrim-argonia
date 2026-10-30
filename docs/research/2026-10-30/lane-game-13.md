@@ -58,10 +58,14 @@ Launch 241 s, scene apply 197 s, steps 2,429 s; 6 launches. Crash logs (in the S
 - decision 0017 1.2 §0: ui-probe failed at talk-livia before the frame-time steps; no numbers.
 - PROGRESS rows and Outcomes: not edited; no chunk item closes on this batch alone.
 
-## Next lane (in order)
-1. When fix-batch-reds commits: one `make deploy` from a clean worktree (`git -C <wt> fetch && checkout --detach origin/main`; note 087959c sat on local main unpushed), `python3 tools/fetch_vocab.py` with the game up, then `run_batch.py --dry` and only the reds.
-2. CK LOD: lay LODSettings\ARG_Province.lod again, build lod.ps1 `-Step cklod` from ck-lod-plan.md (GUI only, no switch), alone on the machine.
-3. A real-device stream latency for 0.2 §d.
+## Next lane (game-14; in order)
+1. **Running now: job `g13-reds2`** (`tooling/job_guard.sh wait g13-reds2`), the all.yaml reds after fix-batch-reds (2ab2798), deployed from a clean worktree at origin/main 2b00039 (DEPLOY OK 352 s, both ESMs unchanged, plugin built outside the lock). Items: claywater-look, combat-trial-a, dialogue-intercept, fight-archetype, fight-damage-builds, fight-lock-on, quest-board, w3-crime, first-place, lf83-components, w3-weather-stills, ui-sweep, ui-probe, die-and-recover, menus-quit, suspend-save, then the crash re-proves fight-roll-burden:3, smoke:3, world-sample:3 at the end. Output: `/tmp/claude-1000/-home-ubuntu-skyrim-argonia/00aec70d-9f88-4179-b6de-7faca8084fef/scratchpad/g12-wt/out/batch/<id>/<stamp>/summary.json` (copy it to out/batch/). Stills to a reader; diagnose each red; then stop argonia-play.
+2. **grow-at-rest left out:** with the vocab cache filled, its lint fails (`av OneHanded`: no such actor value, steps setup and ten-blows), so run_batch refused the whole run. Fix the journey, then run it alone.
+3. fetch_vocab is done: $ARGONIA_PRIVATE/vocab.json, 1,172 functions, 164 actor values, 192 refs.
+4. Step saves: set the default off (the finding above).
+5. A real-device stream latency for 0.2 §d.
+6. 0017 1.2 §0 from ui-probe's frame times when it passes.
+LOD is not this lane's: argonia-play-2 is being made for the CK LOD run.
 
 ## Machine state
-argonia-play stopped at the end of this lane. Combat A laid, verify 0 bad. HEAD 087959c deployed. Data has no xLODGen/DynDOLOD files.
+argonia-play is running job g13-reds2; the next lane stops it when the job ends. Combat A laid, verify 0 bad. origin/main 2b00039 deployed (fix-batch-reds 2ab2798 in it). Data has no xLODGen/DynDOLOD files.
