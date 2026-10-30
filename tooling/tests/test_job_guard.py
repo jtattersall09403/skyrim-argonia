@@ -63,3 +63,33 @@ def test_locks_are_per_machine(tmp_path):
 def test_unknown_machine_refused(tmp_path):
     r = guard(tmp_path, "run", "--gpu=somebox", "x", "--", "true")
     assert r.returncode == 2 and "no such game machine" in r.stderr
+
+
+def test_slot_reservation(tmp_path):
+    jobs = tmp_path / ".argonia" / "jobs"
+    lane_a, lane_b = {"ARGONIA_LANE": "a", "GPU_WAIT": "0"}, {"ARGONIA_LANE": "b", "GPU_WAIT": "0"}
+    assert guard(tmp_path, "reserve", "--gpu", "a", "--minutes", "5").returncode == 0
+    assert (jobs / "gpu.lock.slot").read_text().split()[0] == "a"
+    assert "slot gpu: a until" in guard(tmp_path, "status").stdout
+    assert guard(tmp_path, "reserve", "--gpu", "b").returncode == 1  # held by another lane
+    assert guard(tmp_path, "reserve", "--gpu", "a").returncode == 0  # renewal
+
+    # Own slot passes; another lane queues (gives up with GPU_WAIT=0); no lane ignores slots.
+    guard(tmp_path, "run", "--gpu", "own", "--", "true", env=lane_a)
+    assert guard(tmp_path, "wait", "own").returncode == 0
+    guard(tmp_path, "run", "--gpu", "other", "--", "true", env=lane_b)
+    assert guard(tmp_path, "wait", "other").returncode == 1
+    assert "queued behind slot of a until" in (jobs / "other.log").read_text()
+
+    # An expired slot is ignored.
+    (jobs / "gpu.lock.slot").write_text(f"a {int(time.time()) - 10}\n")
+    guard(tmp_path, "run", "--gpu", "late", "--", "true", env=lane_b)
+    assert guard(tmp_path, "wait", "late").returncode == 0
+
+    # Release frees it; only the owner may release.
+    assert guard(tmp_path, "reserve", "--gpu", "a").returncode == 0
+    assert guard(tmp_path, "release", "--gpu", "b").returncode == 1
+    assert guard(tmp_path, "release", "--gpu", "a").returncode == 0
+    assert not (jobs / "gpu.lock.slot").exists()
+    guard(tmp_path, "run", "--gpu", "free", "--", "true", env=lane_b)
+    assert guard(tmp_path, "wait", "free").returncode == 0
