@@ -17,8 +17,10 @@ export const BUTTON_INDEX = {
 export type ButtonId = keyof typeof BUTTON_INDEX
 export const BUTTON_COUNT = 17
 
-/** A tap is held at least this long, so a once-per-frame poll (upstream's requestAnimationFrame) always sees it. */
-export const MIN_HOLD_MS = 50
+/** A tap is held at least this long (or until the finger lifts, if later). 50 ms reached the pad poll but not the
+ *  game: a touch tap on B left our HTML journal open and a tap on RT gave no One Click Power Attack, where a 150 ms
+ *  pad press did both (lane mobile-17, 2026-10-30). */
+export const MIN_HOLD_MS = 150
 /** Radial dead zone of the touch sticks, as a fraction of the stick radius. */
 export const STICK_DEADZONE = 0.08
 
@@ -127,9 +129,10 @@ const LABEL: Record<ButtonId, string> = {
  */
 export function layoutFor(w: number, h: number): Layout {
     const shape = shapeOf(w, h)
+    if (shape === "folded-landscape") return bandLayout(w, h)
     const short = Math.min(w, h)
     // the button diameter: ~9.5% of the short side, never under 44 px (the touch minimum) nor over 96
-    const unit = Math.round(Math.max(44, Math.min(96, short * (shape === "folded-landscape" ? 0.13 : 0.095))))
+    const unit = Math.round(Math.max(44, Math.min(96, short * (0.095))))
     const gap = Math.round(unit * 0.18)
     const m = Math.round(Math.max(12, unit * 0.3)) // edge margin, clear of rounded corners
     // portrait: controls live under the video (16:9 at the top)
@@ -190,6 +193,59 @@ export function layoutFor(w: number, h: number): Layout {
     const toggle = { x: Math.round(tc - ts / 2), y: Math.round(top + ty + sh / 2 + gap), w: ts, h: ts }
     if (dcy + dp * 1.5 > zones[0].rest.y - radius + top) zones[0].rest.y = Math.round(Math.min(h - m - radius / 2, top + dcy + dp * 1.5 + gap + radius))
     return { shape, unit, buttons, zones, toggle }
+}
+
+/** The folded phone in landscape: the screen is too short for buttons over the picture without covering the
+ *  HUD (the LB pill sat on the health and stamina bars and A on the money counter, lane mobile-17), so every button
+ *  lives in a band at each side and the stream is asked for the picture between them (stream_settings.ts). */
+export function bandUnit(h: number): number { return Math.round(Math.max(44, Math.min(96, h * 0.11))) }
+export function bandWidth(w: number, h: number): number {
+    if (shapeOf(w, h) !== "folded-landscape") return 0
+    return Math.min(Math.round(w * 0.3), Math.round(bandUnit(h) * 3.8))
+}
+
+function bandLayout(w: number, h: number): Layout {
+    const unit = bandUnit(h)
+    const gap = Math.round(unit * 0.18)
+    const m = Math.round(Math.max(12, unit * 0.3))
+    const band = bandWidth(w, h)
+    const buttons: ButtonSpec[] = []
+    const add = (id: ButtonId, cx: number, cy: number, size = unit, round = true, small = false) =>
+        buttons.push({ kind: "button", id, label: LABEL[id], round, small, rect: { x: Math.round(cx - size / 2), y: Math.round(cy - size / 2), w: Math.round(size), h: Math.round(size) } })
+    const sw = Math.min(unit * 1.5, band - 2 * m), sh = unit * 0.8
+    const pill = (id: ButtonId, cx: number, cy: number, small = false) =>
+        buttons.push({ kind: "button", id, label: LABEL[id], round: false, small, rect: { x: Math.round(cx - sw / 2), y: Math.round(cy - sh / 2), w: Math.round(sw), h: Math.round(sh) } })
+    const lc = band / 2, rc = w - band / 2
+    const ty = m + sh / 2, by = ty + sh + gap
+    pill("lt", lc, ty); pill("lb", lc, by)
+    pill("rt", rc, ty); pill("rb", rc, by)
+    const tc = w / 2
+    pill("back", tc - gap / 2 - sw / 2, ty, true)
+    pill("start", tc + gap / 2 + sw / 2, ty, true)
+    // left band: the d-pad, then L3 under it
+    const dp = Math.max(40, unit * 0.78)
+    const dcy = by + sh / 2 + gap + dp * 1.5
+    add("up", lc, dcy - dp, dp * 0.92, false, true)
+    add("down", lc, dcy + dp, dp * 0.92, false, true)
+    add("left", lc - dp, dcy, dp * 0.92, false, true)
+    add("right", lc + dp, dcy, dp * 0.92, false, true)
+    add("l3", lc, Math.min(h - m - unit * 0.425, dcy + dp * 1.5 + gap + unit * 0.425), unit * 0.85)
+    // right band: the face diamond in the bottom corner, R3 above it
+    const d = unit + gap * 0.6
+    const fy = h - m - unit / 2 - d
+    add("y", rc, fy - d); add("x", rc - d, fy); add("b", rc + d, fy); add("a", rc, fy + d)
+    add("r3", rc + d, Math.max(by + sh / 2 + gap + unit * 0.425, fy - d - gap - unit * 0.5), unit * 0.85)
+    const zoneTop = Math.round(ty + sh / 2 + gap)
+    const radius = Math.round(unit * 1.25)
+    // the rings rest on the picture's inner edge: bottom left (nothing of the HUD there) and mid right (the money
+    // counter sits bottom right)
+    const zones: ZoneSpec[] = [
+        { kind: "stick", side: "left", radius, rect: { x: 0, y: zoneTop, w: Math.round(w / 2), h: h - zoneTop }, rest: { x: Math.round(band + m + radius), y: Math.round(h - m - radius) } },
+        { kind: "stick", side: "right", radius, rect: { x: Math.round(w / 2), y: zoneTop, w: w - Math.round(w / 2), h: h - zoneTop }, rest: { x: Math.round(w - band - m - radius), y: Math.round(h / 2 + gap) } },
+    ]
+    const ts = Math.round(Math.max(36, unit * 0.6))
+    const toggle = { x: Math.round(tc - ts / 2), y: Math.round(ty + sh / 2 + gap), w: ts, h: ts }
+    return { shape: "folded-landscape", unit, buttons, zones, toggle }
 }
 
 /** Rectangles that overlap (for the layout test): any two buttons, or a button off screen. */

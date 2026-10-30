@@ -1,0 +1,9 @@
+[{"wait": 15000}, {"shot": "p-hud"},
+ {"probe": "__fakePad.axis(1,-1)"}, {"wait": 1500}, {"probe": "__fakePad.axis(1,0)"}, {"wait": 1500},
+ {"probe": "__fakePad.axis(2,1)"}, {"wait": 1000}, {"probe": "__fakePad.axis(2,0)"}, {"wait": 1000}, {"shot": "p-rx"},
+ {"probe": "__fakePad.axis(1,-1)"}, {"wait": 1500}, {"probe": "__fakePad.axis(1,0)"}, {"wait": 1500},
+ {"probe": "__fakePad.press(2,200)"}, {"wait": 2500},
+ {"probe": "__fakePad.press(11,150)"}, {"wait": 2000}, {"shot": "p-r3"},
+ {"probe": "__fakePad.press(11,150)"}, {"wait": 1500},
+ {"probe": "__fakePad.press(12,200)"}, {"wait": 2000}, {"shot": "p-up"},
+ {"probe": "__fakePad.press(1,150)"}, {"wait": 2000}, {"shot": "p-after"}]

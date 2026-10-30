@@ -1,6 +1,6 @@
 import { test } from "node:test"
 import assert from "node:assert/strict"
-import { BUTTON_INDEX, MIN_HOLD_MS, PadModel, layoutFor, layoutProblems, shapeOf, stickFromDrag, type ButtonId } from "../src/touch_model.ts"
+import { BUTTON_INDEX, MIN_HOLD_MS, PadModel, bandWidth, layoutFor, layoutProblems, shapeOf, stickFromDrag, type ButtonId } from "../src/touch_model.ts"
 
 test("stick: drag maps to Gamepad API axes (y down), clamped, with a radial dead zone", () => {
     assert.deepEqual(stickFromDrag(0, 0, 100), { x: 0, y: 0 })
@@ -82,4 +82,21 @@ test("every Xbox control Skyrim reads is on screen in all three shapes, none ove
         }
         for (const z of l.zones) assert.ok(z.rect.w >= w / 3 && z.rect.h >= h / 3 - (shape === "folded-portrait" ? w * 9 / 16 : 0), `${z.side} zone at ${w}x${h}`)
     }
+})
+
+test("folded landscape: every button but Back and Start sits in a side band, clear of the picture and its HUD", () => {
+    for (const [w, h] of [[970, 432], [914, 408], [844, 390]]) {
+        const band = bandWidth(w, h)
+        assert.ok(band >= 150 && w - 2 * band >= h * 1.25, `${w}x${h} band ${band}`)
+        for (const b of layoutFor(w, h).buttons) {
+            if (b.id === "back" || b.id === "start") continue
+            const r = b.rect
+            assert.ok(r.x + r.w <= band || r.x >= w - band, `${b.id} over the picture at ${w}x${h}`)
+        }
+    }
+    assert.equal(bandWidth(784, 724), 0)
+})
+
+test("a tap is held at least 120 ms, so the game sees a touch B or RT as it sees a pad press", () => {
+    assert.ok(MIN_HOLD_MS >= 120)
 })

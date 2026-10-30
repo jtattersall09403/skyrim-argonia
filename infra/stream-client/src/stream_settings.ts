@@ -8,6 +8,8 @@
 // - the mouse is relative (games turn the camera by movement; upstream's "follow" sends absolute positions, which
 //   pins Skyrim's camera), and the pointer is captured on the first click in the stream (Escape releases it).
 
+import { bandWidth } from "./touch_model.ts"
+
 export const MAX_EDGE = 2560   // the T4's NVENC and the stream budget: larger screens are scaled to fit
 export const MAX_HEIGHT = 2160 // taller streams never start (2352 x 2172, the unfolded Magic V5 in full screen,
                                // failed to connect; 2352 x 2160 streams, measured 2026-10-29)
@@ -56,8 +58,14 @@ export function preferredCodec(): "h265" | "h264" {
 export const SCALE_KEY = "argoniaStreamScale"
 export const MIN_SCALE = 0.5
 
+/** The picture to stream for a screen: all of it, except on a touch screen in the folded phone's landscape shape,
+ *  where the touch buttons take a band at each side and the game renders the picture between them. */
+export function pictureCss(scr: { width: number, height: number }, touch: boolean): { width: number, height: number } {
+    return touch ? { width: scr.width - 2 * bandWidth(scr.width, scr.height), height: scr.height } : scr
+}
+
 export function applyStreamSettings(storage: Storage = localStorage, session: Storage | null = sessionStorage) {
-    const scr = fullScreenCss()
+    const scr = pictureCss(fullScreenCss(), (navigator.maxTouchPoints ?? 0) > 0)
     let scale = 1
     try { scale = Math.max(MIN_SCALE, Math.min(1, Number(session?.getItem(SCALE_KEY) ?? 1) || 1)) } catch { /* none */ }
     const size = streamSize(scr.width * scale, scr.height * scale, window.devicePixelRatio || 1)
