@@ -13,6 +13,14 @@ std::optional<SurfaceId> by_menu(std::string_view menu_name) {
   return std::nullopt;
 }
 
+std::vector<std::string_view> hidden_hud_clips() {
+  std::vector<std::string_view> out;
+  for (const auto& c : kHudClips)
+    if (row(c.surface).kind == SurfaceKind::hud && row(c.surface).replacement != Replacement::restyled)
+      out.push_back(c.clip);
+  return out;
+}
+
 bool Router::install(HookId h, std::string* why) {
   if (hooks_[std::size_t(h)]) {
     if (why) *why = "hook " + std::string(name(h)) + ": already installed; a system registers a handler, never a hook";

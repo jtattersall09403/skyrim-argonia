@@ -119,6 +119,8 @@ std::vector<std::string> bind(families::Registry& reg, State& s) {
           [&s] { s.known = {}; }));
   add(fam(kWatchType, 1, [&s] { return encode(s.watch); }, into(s.watch, [](auto b) { return decode(b); }),
           [&s] { s.watch = {}; }));
+  add(families::Family{chart::kChartType, chart::kChartVersion, chart::migrations(),
+                       [&s] { return chart::encode(s.chart); }, into(s.chart, chart::decode), [&s] { s.chart = {}; }});
   return refused;
 }
 

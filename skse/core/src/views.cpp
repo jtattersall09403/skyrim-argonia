@@ -123,6 +123,15 @@ std::string chart_layout_text(const msg::ChartView& v) {
   return t ? *t : std::string();
 }
 
+msg::ChartState chart_state(const chart::Discovered& d, const msg::ChartView& v) {
+  msg::ChartState s;
+  s.worldspace = "argonia";
+  s.sketch = "chart.sketch";
+  for (const auto& c : chart::cells(d)) s.revealed.push_back({c.x, c.y});
+  s.view = v;
+  return s;
+}
+
 // --- the journal -------------------------------------------------------------------------------------------------
 
 namespace {
@@ -163,14 +172,19 @@ msg::GameDate date(const journal::GameDate& d) {
 }
 
 msg::JournalState journal_state(const journal::Log& log, const std::function<QuestNames(journal::QuestId)>& name,
-                                const std::function<std::string(journal::QuestId, journal::EntryId)>& text,
-                                const msg::JournalPage& at, std::size_t per_page) {
+                                const EntryText& text, const Directions& directions, const msg::JournalPage& at,
+                                std::size_t per_page) {
   msg::JournalState s;
   s.tab = at.tab;
   s.quest_filter = at.quest_filter;
   for (const auto& q : journal::index(log)) {
     const auto n = name(q.quest);
-    s.quests.push_back({n.id, n.name, status(q.status), date(q.started), std::nullopt});
+    std::optional<std::string> dir;
+    if (q.status == journal::Status::active && !q.entries.empty() && directions) {
+      const auto& last = log.entries[q.entries.back()];
+      dir = directions(last.quest, last.entry);
+    }
+    s.quests.push_back({n.id, n.name, status(q.status), date(q.started), std::move(dir)});
   }
   std::vector<const journal::Entry*> shown;
   for (const auto& e : log.entries)
@@ -188,6 +202,17 @@ msg::JournalState journal_state(const journal::Log& log, const std::function<Que
     }
   }
   return s;
+}
+
+std::string entry_text(journal::QuestId q, journal::EntryId e) {
+  const auto* t = journal::stage_text(q, e);
+  return t ? std::string(t->log) : std::string();
+}
+
+std::optional<std::string> entry_directions(journal::QuestId q, journal::EntryId e) {
+  const auto* t = journal::stage_text(q, e);
+  if (!t || t->directions.empty()) return std::nullopt;
+  return std::string(t->directions);
 }
 
 // --- the probe ---------------------------------------------------------------------------------------------------

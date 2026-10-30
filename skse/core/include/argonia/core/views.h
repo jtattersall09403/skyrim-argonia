@@ -5,6 +5,7 @@
 // as Morrowind keeps its window layout per install, not per save), the journal's state from the log, and the
 // 300-topic probe window (dev only: the probe journey's speaker).
 #pragma once
+#include "argonia/core/chart.h"
 #include "argonia/core/journal.h"
 #include "argonia/core/messages.h"
 
@@ -81,19 +82,29 @@ class KeyLatch {
 // missing, unreadable or out-of-range file gives the whole province (centre 1,1, zoom 1).
 msg::ChartView remembered_chart(std::optional<std::string_view> text);
 std::string chart_layout_text(const msg::ChartView& v);
+// The open chart: the sketch everywhere, the revealed layer through the cells of the CHRT family (x then y), the
+// view as remembered. Discovered places join with 2.W4.
+msg::ChartState chart_state(const chart::Discovered& d, const msg::ChartView& v);
 
 // The game date as the journal prints it ("16th of the Eighth Month, 201"); views never format dates.
 msg::GameDate date(const journal::GameDate& d);
 
 // The journal at one page of a tab. `name(quest)` is the quest's display name and its world id, `text(quest,
-// entry)` the log entry's text; entries are paged `per_page` at a time, oldest first, optionally filtered to one
-// quest (by world id).
+// entry)` the log entry's text, `directions(quest, entry)` where to go next after that entry (an active quest's
+// index line shows its latest entry's); entries are paged `per_page` at a time, oldest first, optionally filtered
+// to one quest (by world id).
 struct QuestNames {
   std::string id, name;
 };
+using EntryText = std::function<std::string(journal::QuestId, journal::EntryId)>;
+using Directions = std::function<std::optional<std::string>(journal::QuestId, journal::EntryId)>;
 msg::JournalState journal_state(const journal::Log& log, const std::function<QuestNames(journal::QuestId)>& name,
-                                const std::function<std::string(journal::QuestId, journal::EntryId)>& text,
-                                const msg::JournalPage& at, std::size_t per_page = 6);
+                                const EntryText& text, const Directions& directions, const msg::JournalPage& at,
+                                std::size_t per_page = 6);
+// The records' words (journal::stage_text): the stage's log entry ("" when the table lacks the stage) and its
+// directions (none when it gives none). What ArgoniaCore passes to journal_state.
+std::string entry_text(journal::QuestId q, journal::EntryId e);
+std::optional<std::string> entry_directions(journal::QuestId q, journal::EntryId e);
 
 // The 1.2 §0 probe's window: a speaker with `topics` topics (labels "Topic 001" ...), one greeting, Goodbye on.
 msg::DialogueState probe_dialogue(std::string speaker_id, std::string speaker_name, std::size_t topics);

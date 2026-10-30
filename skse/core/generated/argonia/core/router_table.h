@@ -30,7 +30,7 @@ inline constexpr std::array<HookRow, 6> kHooks{{
     {"P3: a player perk's Activate entry point (Run Immediately, Replace Default) on Argonia speakers calls ArgoniaCore's open-dialogue native; fallback the guarded activate-slot swap (route 6); Dialogue Menu blocked by menuOpenClose as the backstop", "1.3 §b"},  // dialogueIntercept
     {"the Respawn - Soulslike pattern: the player kept essential, a TESEnterBleedoutEvent sink runs our respawn instead of the death camera and the load of the last save", "1.5"},  // deathIntercept
     {"P4: vanilla skill gain and character XP off by data (AVSK useMult 0, fXPPerSkillRank 0); the router only checks LevelUp Menu never opens, a hook only if S16a finds a gain path", "1.5"},  // progressionOff
-    {"the vanilla HUD's elements hidden: bShowCompass and bShowQuestMarkers by setting, the rest through the HUD movie's element visibility (UNVERIFIED)", "1.2 §d"},  // hudElements
+    {"the HUD movie's clips (router::kHudClips: Health, Magica, Stamina, CompassShoutMeterHolder under _root.HUDMovieBaseInstance) set _visible false and taken out of its HudElements list, at each HUD Menu opening and load, while our views are bound; no INI setting is written (bShowCompass would persist into the player's SkyrimPrefs.ini). L4 owed (lane ui-gaps)", "1.2 §d"},  // hudElements
     {"the HUD's notification queue intercepted (quest, discovery, skill and one-line engine messages) and re-sent as our notices (mechanism UNVERIFIED)", "1.2 §d"},  // notifications
 }};
 

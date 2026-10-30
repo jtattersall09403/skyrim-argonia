@@ -65,6 +65,24 @@ class Router {
   std::array<Handler, gen::kSurfaceIdCount> handlers_{};
 };
 
+// The vanilla HUD's clips (1.2 §d): hudmenu.swf's instance names under kHudRoot, as HUD mods (iHUD, SkyHUD)
+// address them, for the HUD rows that hide something. ArgoniaCore hides each clip of a row that is suppressed or our
+// view and takes it out of the movie's HudElements list, so the HUD's mode changes never show it again; the movie
+// itself stays (the crosshair and subtitles are restyled rows).
+struct HudClip {
+  SurfaceId surface;
+  std::string_view clip;
+};
+inline constexpr std::string_view kHudRoot = "_root.HUDMovieBaseInstance";
+inline constexpr std::array<HudClip, 4> kHudClips{{
+    {SurfaceId::hudBars, "Health"},
+    {SurfaceId::hudBars, "Magica"},
+    {SurfaceId::hudBars, "Stamina"},
+    {SurfaceId::hudCompass, "CompassShoutMeterHolder"},  // the compass and the shout meter share the holder
+}};
+// The clips to hide: those whose row is not restyled, in table order.
+std::vector<std::string_view> hidden_hud_clips();
+
 // The view an intent is for (dialogue, journal, chart, sitting), from its type, so every view's intents reach
 // ArgoniaCore through one listener (the web view's window.argoniaIntent) and are routed here; view.close names
 // its view. A refusal is the schema twin's words (a malformed intent, a push sent as an intent).

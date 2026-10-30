@@ -36,7 +36,7 @@
   },
   {
    "id": "hudElements",
-   "mechanism": "the vanilla HUD's elements hidden: bShowCompass and bShowQuestMarkers by setting, the rest through the HUD movie's element visibility (UNVERIFIED)",
+   "mechanism": "the HUD movie's clips (router::kHudClips: Health, Magica, Stamina, CompassShoutMeterHolder under _root.HUDMovieBaseInstance) set _visible false and taken out of its HudElements list, at each HUD Menu opening and load, while our views are bound; no INI setting is written (bShowCompass would persist into the player's SkyrimPrefs.ini). L4 owed (lane ui-gaps)",
    "chunk": "1.2 §d"
   },
   {

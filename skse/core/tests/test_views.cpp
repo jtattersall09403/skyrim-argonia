@@ -2,6 +2,7 @@
 // the other modal; close unfocuses and hides; the HUD never closes. The journal key latch; the chart's remembered
 // view round-trips and falls back; the journal pages and filters; the 300-topic probe fits the schema.
 #include "check.h"
+#include "argonia/core/seam.h"
 #include "argonia/core/views.h"
 
 #include <set>
@@ -91,24 +92,73 @@ void chart_layout() {
   CHECK(remembered_chart(R"({"type":"view.close","v":1,"body":{"view":"chart"}})") == whole);
 }
 
+// The chart's state carries the CHRT family's cells, x then y, and the remembered view; it fits the schema.
+void chart_reveal() {
+  chart::Discovered d;
+  chart::reveal(d, {-56, 12});
+  chart::reveal(d, {-57, 11});
+  chart::reveal(d, {-56, 11});
+  const msg::ChartView v{-56.85, 11.7, 4};
+  const auto s = chart_state(d, v);
+  CHECK((s.revealed == std::vector<msg::CellKey>{{-57, 11}, {-56, 11}, {-56, 12}}));
+  CHECK(s.view == v && s.sketch == "chart.sketch" && s.worldspace == "argonia");
+  auto j = msg::encode(s);
+  CHECK(j && j->find(R"("revealed":[{"x":-57,"y":11})") != std::string::npos);
+  CHECK(chart_state({}, v).revealed.empty());
+}
+
 void the_journal() {
   journal::Log log;
   for (int i = 0; i < 8; ++i) journal::append(log, i < 7 ? 1u : 2u, std::uint32_t(10 * (i + 1)), {201, 8, 16 + i, 9.0});
   auto name = [](journal::QuestId q) { return QuestNames{"quest." + std::to_string(q), "Quest " + std::to_string(q)}; };
   auto text = [](journal::QuestId, journal::EntryId e) { return "entry " + std::to_string(e); };
-  auto s = journal_state(log, name, text, {msg::JournalTab::entries, 0, std::nullopt}, 6);
+  const Directions none;
+  auto s = journal_state(log, name, text, none, {msg::JournalTab::entries, 0, std::nullopt}, 6);
   CHECK(s.page_count == 2 && s.entries.size() == 6 && s.entries[0].runs[0].text == "entry 10");
   CHECK(s.entries[0].date.text == "16th of the Eighth Month, 201" && s.quests.size() == 2);
-  s = journal_state(log, name, text, {msg::JournalTab::entries, 9, std::nullopt}, 6);  // clamped to the last page
+  s = journal_state(log, name, text, none, {msg::JournalTab::entries, 9, std::nullopt}, 6);  // clamped to the last page
   CHECK(s.page == 1 && s.entries.size() == 2);
-  s = journal_state(log, name, text, {msg::JournalTab::entries, 0, std::string("quest.2")}, 6);
+  s = journal_state(log, name, text, none, {msg::JournalTab::entries, 0, std::string("quest.2")}, 6);
   CHECK(s.page_count == 1 && s.entries.size() == 1 && s.entries[0].quest == "quest.2");
   CHECK(msg::encode(s).has_value());
   CHECK(date({201, 1, 1, 0}).text == "1st of the First Month, 201" && date({201, 3, 22, 0}).text.starts_with("22nd"));
   CHECK(date({201, 3, 13, 0}).text.starts_with("13th") && date({201, 3, 23, 0}).text.starts_with("23rd"));
   const journal::Log empty;
-  s = journal_state(empty, name, text, {msg::JournalTab::quests, 0, std::nullopt});
+  s = journal_state(empty, name, text, none, {msg::JournalTab::quests, 0, std::nullopt});
   CHECK(s.page_count == 1 && s.entries.empty() && msg::encode(s).has_value());
+}
+
+// LF83's words from the generated table (quest rows -> journal_text.h): an entry's text, the active quest's
+// directions from its latest stage, none once it has ended.
+void the_journal_text() {
+  const auto lf83 = seam::key("quest.local.lf83");
+  const auto* t10 = journal::stage_text(lf83, 10);
+  CHECK(t10 && t10->quest_id == "quest.local.lf83" && t10->log.starts_with("I came to Claywater Station"));
+  CHECK(t10 && t10->directions.starts_with("From the Blackwood Road"));
+  CHECK(t10 && journal::objectives(*t10).size() == 2 && journal::objectives(*t10)[0].index == 10 &&
+        journal::objectives(*t10)[0].text == "Hear Livia Varinius's side at the well.");
+  CHECK(!journal::stage_text(lf83, 11) && !journal::stage_text(lf83 + 1, 10) && entry_text(lf83, 11).empty());
+  CHECK(!entry_directions(lf83, 40));  // an ending gives no directions
+  for (std::size_t i = 1; i < gen::kJournalStages.size(); ++i) {  // sorted, so the lookup's binary search holds
+    const auto &a = gen::kJournalStages[i - 1], &b = gen::kJournalStages[i];
+    CHECK((std::pair{a.quest, a.stage} < std::pair{b.quest, b.stage}));
+  }
+  for (const auto& r : gen::kJournalStages) {
+    CHECK(seam::key(r.quest_id) == r.quest);  // the generator's FNV-1a is quest_state::key
+    CHECK(!r.log.empty() && !r.log.starts_with("[not yet written"));
+  }
+
+  journal::Log log;
+  journal::append(log, lf83, 10, {201, 8, 16, 9.0});
+  journal::append(log, lf83, 20, {201, 8, 17, 9.0});
+  auto name = [](journal::QuestId) { return QuestNames{"quest.local.lf83", "Two Charges at Claywater"}; };
+  auto s = journal_state(log, name, entry_text, entry_directions, {msg::JournalTab::entries, 0, std::nullopt});
+  CHECK(s.entries.size() == 2 && s.entries[1].runs[0].text.starts_with("At Claywater Station, Livia Varinius told me"));
+  CHECK(s.quests.size() == 1 && s.quests[0].directions && s.quests[0].directions->starts_with("The clay cut is below"));
+  CHECK(msg::encode(s).has_value());
+  journal::append(log, lf83, 40, {201, 8, 20, 9.0}, journal::Kind::complete);
+  s = journal_state(log, name, entry_text, entry_directions, {msg::JournalTab::quests, 0, std::nullopt});
+  CHECK(s.quests[0].status == msg::QuestStatus::complete && !s.quests[0].directions);
 }
 
 void the_probe() {
@@ -131,7 +181,9 @@ int main() {
   hud_always_open();
   latch();
   chart_layout();
+  chart_reveal();
   the_journal();
+  the_journal_text();
   the_probe();
   return TEST_MAIN_RESULT("views");
 }

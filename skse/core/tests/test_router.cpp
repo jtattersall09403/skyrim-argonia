@@ -89,7 +89,22 @@ void intents_reach_their_view() {
   CHECK(!intent_view(R"({"type":"sitting.buy","v":1,"body":{"attribute":"luck"}})"));  // no Luck
 }
 
+// 1.2 §d: the vanilla bars and the compass are hidden through their rows; no restyled row's clip is.
+void vanilla_hud_hidden() {
+  CHECK((hidden_hud_clips() == std::vector<std::string_view>{"Health", "Magica", "Stamina", "CompassShoutMeterHolder"}));
+  bool bars = false, compass = false;
+  for (const auto& c : kHudClips) {
+    CHECK(row(c.surface).kind == SurfaceKind::hud && row(c.surface).hook == HookId::hudElements);
+    CHECK(row(c.surface).replacement != Replacement::restyled);
+    bars |= c.surface == SurfaceId::hudBars;
+    compass |= c.surface == SurfaceId::hudCompass;
+  }
+  CHECK(bars && compass);
+  CHECK(row(SurfaceId::hudBars).replacement == Replacement::view && row(SurfaceId::hudBars).by == "hud");
+}
+
 int main() {
+  vanilla_hud_hidden();
   intents_reach_their_view();
   the_registry();
   a_hook_is_installed_once();

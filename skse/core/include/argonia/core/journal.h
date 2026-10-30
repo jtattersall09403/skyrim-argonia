@@ -1,7 +1,9 @@
 // The journal log (2.12 §b, native map G22.3): dated entries in the order they were written, and the quest index
-// the journal view lists. Text lives in the records; the log holds ids and dates only.
+// the journal view lists. Text lives in the records (generated/journal_text.h, from the quest rows); the log holds
+// ids and dates only.
 #pragma once
 #include "argonia/core/cosave.h"
+#include "argonia/core/journal_text.h"
 
 #include <compare>
 #include <cstdint>
@@ -37,6 +39,11 @@ struct QuestLine {
 };
 // One line per quest, most recently written first.
 std::vector<QuestLine> index(const Log& log);
+
+// The records' words for a quest's stage: its log entry, directions and objectives (gen::kJournalStages); null when
+// the table has no such stage.
+const gen::JournalStageText* stage_text(QuestId q, EntryId stage);
+std::span<const gen::JournalObjectiveText> objectives(const gen::JournalStageText& t);
 
 inline constexpr std::uint32_t kJournalType = cosave::fourcc("JRNL");
 cosave::Bytes encode(const Log& log);

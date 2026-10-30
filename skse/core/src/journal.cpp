@@ -1,6 +1,7 @@
 #include "argonia/core/journal.h"
 
 #include <algorithm>
+#include <utility>
 
 namespace argonia::core::journal {
 
@@ -34,6 +35,18 @@ std::vector<QuestLine> index(const Log& log) {
   std::vector<QuestLine> sorted;
   for (auto i : order) sorted.push_back(std::move(out[i]));
   return sorted;
+}
+
+const gen::JournalStageText* stage_text(QuestId q, EntryId stage) {
+  auto it = std::lower_bound(gen::kJournalStages.begin(), gen::kJournalStages.end(), std::pair{q, stage},
+                             [](const gen::JournalStageText& t, std::pair<QuestId, EntryId> k) {
+                               return std::pair{t.quest, t.stage} < k;
+                             });
+  return it != gen::kJournalStages.end() && it->quest == q && it->stage == stage ? &*it : nullptr;
+}
+
+std::span<const gen::JournalObjectiveText> objectives(const gen::JournalStageText& t) {
+  return std::span(gen::kJournalObjectives).subspan(t.first_objective, t.objective_count);
 }
 
 cosave::Bytes encode(const Log& log) {

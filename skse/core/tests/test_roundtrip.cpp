@@ -83,7 +83,7 @@ void every_family_against_its_schema() {
     if (!declared.count(id)) std::fprintf(stderr, "  family %s has no schema\n", fourcc_name(id).c_str());
     CHECK(declared.count(id) == 1);
   }
-  CHECK(declared.size() == reg.ids().size() && schemas.size() == 11);
+  CHECK(declared.size() == reg.ids().size() && schemas.size() == 12);
 }
 
 void two_versions_a_migration_and_a_refusal() {

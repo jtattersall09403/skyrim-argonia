@@ -75,8 +75,8 @@ void every_family_through_one_registry() {
   families::Registry ra, rb;
   CHECK(seam::bind(ra, a).empty());
   CHECK(seam::bind(rb, b).empty());
-  CHECK(ra.ids().size() == 9);
-  CHECK(seam::bind(ra, a).size() == 9);  // a second bind is refused family by family
+  CHECK(ra.ids().size() == 10);
+  CHECK(seam::bind(ra, a).size() == 10);  // a second bind is refused family by family
   // A marker in every family.
   seam::on_save(a);
   a.sheet.a[AttrId::strength] = 61;
@@ -87,11 +87,13 @@ void every_family_through_one_registry() {
   quest_state::set_flag(a.quests, "flag.lf83.ford-tasted", true);
   a.known.learn("topic.claywater-two-charges", kKeeper);
   a.watch.quests.insert(seam::key(kLf83));
+  chart::reveal(a.chart, {-56, 11});
   std::map<std::uint32_t, std::string> before;
   for (auto id : ra.ids()) before[id] = seam::digest(ra, id);
   for (auto& rec : ra.save_all()) CHECK(rb.load(rec.id, rec.version, rec.payload).ok());
   for (auto id : rb.ids()) CHECK(seam::digest(rb, id) == before[id]);
-  CHECK(b.meta.save_count == 1 && b.sheet.a[AttrId::strength] == 61 && b.watch == a.watch && b.known == a.known);
+  CHECK(b.meta.save_count == 1 && b.sheet.a[AttrId::strength] == 61 && b.watch == a.watch && b.known == a.known &&
+        b.chart == a.chart);
   // The scene reset leaves nothing behind: every family reads as a fresh state's.
   seam::State fresh;
   families::Registry rf;

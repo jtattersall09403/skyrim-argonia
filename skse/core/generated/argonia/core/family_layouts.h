@@ -2,6 +2,7 @@
 // change the JSON and run `node --experimental-strip-types tools/schema_gen/gen.ts`; the gate refuses a stale file.
 #pragma once
 #include "argonia/core/roundtrip.h"
+#include "argonia/core/chart.h"
 #include "argonia/core/cosave.h"
 #include "argonia/core/death.h"
 #include "argonia/core/disposition.h"
@@ -46,6 +47,9 @@ inline std::vector<roundtrip::FamilySchema> family_schemas() {
     }},
     {cosave::fourcc("QWCH"), "seam", false, {
         {1, false, {list("quests", 100000, {u32("quest")}, true)}},
+    }},
+    {cosave::fourcc("CHRT"), "chart", false, {
+        {1, false, {list("columns", 65536, {i32("x", double(chart::kCellMin), double(chart::kCellMax)), list("rows", 65536, {i32("y", double(chart::kCellMin), double(chart::kCellMax))}, true)}, true)}},
     }},
     {cosave::fourcc("TEST"), "test", true, {
         {1, true, {u32("a")}},

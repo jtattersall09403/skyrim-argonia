@@ -7,6 +7,7 @@
 // actor-value mirrors); no rule lives there, so all of it is tested here at L2.
 #pragma once
 #include "argonia/core/actions.h"
+#include "argonia/core/chart.h"
 #include "argonia/core/conditions.h"
 #include "argonia/core/cosave.h"
 #include "argonia/core/death.h"
@@ -64,9 +65,10 @@ struct State {
   quest_state::State quests;
   topics::Known known;
   Watch watch;
+  chart::Discovered chart;  // the chart's revealed cells (CHRT)
 };
 
-// Registers every family over `s`: META, STAT, DISP, JRNL, ITEM, DETH, QSTA, TOPC, QWCH. Returns the refusals
+// Registers every family over `s`: META, STAT, DISP, JRNL, ITEM, DETH, QSTA, TOPC, QWCH, CHRT. Returns the refusals
 // (none expected; a second bind of the same registry is refused family by family).
 std::vector<std::string> bind(families::Registry& reg, State& s);
 // The META step a save takes: one more save, written by this build.

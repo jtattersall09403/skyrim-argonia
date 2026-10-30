@@ -4,7 +4,9 @@
 // chart's and the HUD's states. If PrismaUI.dll is absent the views stay off: the dialogue intercept's window has
 // nowhere to draw (logged), and the journal and map keys keep the vanilla menus (their handlers are not registered).
 // The router's surfaces: journalMenu (the "Journal" user event, J and the pad's Back, never Escape's System tab),
-// mapMenu (our chart: decision 0017's 1.2 §0 record says why it replaces FWMF's map), the HUD (always on).
+// mapMenu (our chart: decision 0017's 1.2 §0 record says why it replaces FWMF's map), the HUD (always on; the
+// vanilla HUD's bars and compass hidden through the hudElements hook, router::kHudClips). The chart's revealed
+// cells: the player's exterior cell in ARG_Province is marked on every cell change (BGSActorCellEvent) and at load.
 #include "core.h"
 #include "prisma_api.h"
 
@@ -33,6 +35,7 @@ prisma::Api1* g_api = nullptr;
 prisma::Api2* g_api2 = nullptr;
 std::map<std::string, prisma::View, std::less<>> g_ids;  // our view id -> PrismaUI's handle (set once, at data loaded)
 std::atomic<bool> g_hud_loop{false};
+std::string g_vanilla_hud = "vanilla-hud not yet hidden";  // ViewsReport's line: what the last hide found
 
 double Now() {
   return std::chrono::duration<double>(std::chrono::steady_clock::now().time_since_epoch()).count();
@@ -111,18 +114,102 @@ void WriteLayout(const ac::msg::ChartView& v) {
 
 // --- the chart ---------------------------------------------------------------------------------------------------
 void OpenChart() {
-  ac::msg::ChartState s;
-  s.worldspace = "argonia";
-  s.sketch = "chart.sketch";
-  // The revealed cells and discovered places are 1.2 §e's co-save family (owed); the sketch shows everywhere.
-  s.view = ac::views::remembered_chart(ReadLayout());  // read on every opening: a restart reads the same file
-  auto json = ac::msg::encode(s);
+  // The revealed cells from the CHRT family; the view read on every opening (a restart reads the same file).
+  auto json = ac::msg::encode(ac::views::chart_state(Get().state.chart, ac::views::remembered_chart(ReadLayout())));
   if (!json) {
     SKSE::log::error("views: the chart does not fit the schema: {}", json.error());
     return;
   }
   Push("chart", std::move(*json));
 }
+
+// The player's cell, if it is an exterior cell of ARG_Province, joins the revealed set (logged when new).
+void MarkPlayerCell(std::string_view why) {
+  auto* p = RE::PlayerCharacter::GetSingleton();
+  auto* cell = p ? p->GetParentCell() : nullptr;
+  auto* ws = p ? p->GetWorldspace() : nullptr;
+  if (!cell || !ws || !cell->IsExteriorCell()) return;
+  const char* edid = ws->GetFormEditorID();
+  if (!edid || std::string_view(edid) != ac::chart::kWorldspace) return;
+  const auto* xy = cell->GetCoordinates();
+  if (!xy) return;
+  auto& c = Get();
+  std::lock_guard l(c.lock);
+  if (ac::chart::reveal(c.state.chart, {xy->cellX, xy->cellY}))
+    SKSE::log::info("chart: cell {},{} revealed ({}), {} in all", xy->cellX, xy->cellY, why,
+                    ac::chart::count(c.state.chart));
+}
+
+class CellSink final : public RE::BSTEventSink<RE::BGSActorCellEvent> {
+ public:
+  // Enter or leave: the player's parent cell is read, so a leave re-marks the cell already marked (a no-op).
+  RE::BSEventNotifyControl ProcessEvent(const RE::BGSActorCellEvent* e, RE::BSTEventSource<RE::BGSActorCellEvent>*) override {
+    if (e) SKSE::GetTaskInterface()->AddTask([] { MarkPlayerCell("cell change"); });
+    return RE::BSEventNotifyControl::kContinue;
+  }
+};
+
+// --- the vanilla HUD (1.2 §d) ------------------------------------------------------------------------------------
+// Each clip of router::hidden_hud_clips() is set invisible and taken out of the movie's HudElements list (the list
+// HUDMovieBase's mode changes walk to show and hide its elements), so no mode shows it again. The movie stays: the
+// crosshair and subtitles are restyled rows. Run at every HUD Menu opening and every load; only while our views are
+// bound, so a missing PrismaUI leaves the vanilla bars (the player is never without health).
+void HideVanillaHud() {
+  if (!g_api) return;
+  auto* ui = RE::UI::GetSingleton();
+  auto menu = ui ? ui->GetMenu<RE::HUDMenu>() : RE::GPtr<RE::HUDMenu>{};
+  auto* movie = menu ? menu->uiMovie.get() : nullptr;
+  if (!movie) {
+    g_vanilla_hud = "vanilla-hud no movie";
+    return;
+  }
+  const std::string root(ac::router::kHudRoot);
+  RE::GFxValue list;
+  std::string list_name;
+  for (const char* n : {"HudElements", "HUDElements"})
+    if (movie->GetVariable(&list, (root + "." + n).c_str()) && list.IsArray()) {
+      list_name = n;
+      break;
+    }
+  const auto clips = ac::router::hidden_hud_clips();
+  std::size_t hidden = 0, listed = 0;
+  std::string missing;
+  for (auto clip : clips) {
+    const std::string path = root + "." + std::string(clip);
+    RE::GFxValue v;
+    if (!movie->GetVariable(&v, path.c_str()) || !v.IsDisplayObject()) {
+      missing += " " + std::string(clip);
+      continue;
+    }
+    movie->SetVariable((path + "._visible").c_str(), RE::GFxValue(false));
+    ++hidden;
+    if (list_name.empty()) continue;
+    for (std::uint32_t i = list.GetArraySize(); i-- > 0;) {
+      RE::GFxValue el, name;
+      if (list.GetElement(i, &el) && el.IsDisplayObject() && el.GetMember("_name", &name) && name.IsString() &&
+          clip == name.GetString()) {
+        list.RemoveElement(i);
+        ++listed;
+      }
+    }
+  }
+  g_vanilla_hud = "vanilla-hud hidden " + std::to_string(hidden) + "/" + std::to_string(clips.size()) +
+                  (list_name.empty() ? ", no HudElements list" : ", " + std::to_string(listed) + " out of " + list_name) +
+                  (missing.empty() ? "" : ", missing:" + missing);
+  SKSE::log::info("views: {}", g_vanilla_hud);
+}
+
+class HudMenuSink final : public RE::BSTEventSink<RE::MenuOpenCloseEvent> {
+ public:
+  RE::BSEventNotifyControl ProcessEvent(const RE::MenuOpenCloseEvent* e, RE::BSTEventSource<RE::MenuOpenCloseEvent>*) override {
+    if (e && e->opening && e->menuName == RE::HUDMenu::MENU_NAME)
+      SKSE::GetTaskInterface()->AddTask([] {
+        std::lock_guard l(Get().lock);
+        HideVanillaHud();
+      });
+    return RE::BSEventNotifyControl::kContinue;
+  }
+};
 
 // --- the journal -------------------------------------------------------------------------------------------------
 void OpenJournal(const ac::msg::JournalPage& at) {
@@ -138,10 +225,9 @@ void OpenJournal(const ac::msg::JournalPage& at) {
       }
     return n;
   };
-  // The entry's text is the stage's log line in the record; its table into core is 1.4's (owed): the date and the
-  // quest's heading show meanwhile.
-  auto text = [](ac::journal::QuestId, ac::journal::EntryId) { return std::string(); };
-  auto json = ac::msg::encode(ac::views::journal_state(c.state.log, name, text, at));
+  // The entry's words are the stage's log entry and directions from the quest rows (generated/journal_text.h).
+  auto json = ac::msg::encode(
+      ac::views::journal_state(c.state.log, name, ac::views::entry_text, ac::views::entry_directions, at));
   if (!json) {
     SKSE::log::error("views: the journal does not fit the schema: {}", json.error());
     return;
@@ -250,7 +336,16 @@ void ViewsDataLoaded() {
   }
   static InputSink input;
   if (auto* idm = RE::BSInputDeviceManager::GetSingleton()) idm->AddEventSink<RE::InputEvent*>(&input);
-  c.router_log.push_back("sinks: InputEvent (the journal key)");
+  static CellSink cells;
+  if (auto* p = RE::PlayerCharacter::GetSingleton()) p->AsBGSActorCellEventSource()->AddEventSink(&cells);
+  if (c.router.install(ac::router::HookId::hudElements, &why)) {
+    static HudMenuSink hud;
+    if (auto* ui = RE::UI::GetSingleton()) ui->AddEventSink<RE::MenuOpenCloseEvent>(&hud);
+    c.router_log.push_back("hook hudElements: the HUD movie's clips hidden at each HUD Menu opening and load");
+  } else {
+    c.router_log.push_back("refused: " + why);
+  }
+  c.router_log.push_back("sinks: InputEvent (the journal key), BGSActorCellEvent (the chart's cells)");
   if (!g_hud_loop.exchange(true))
     std::thread([] {
       for (;;) {
@@ -263,6 +358,8 @@ void ViewsDataLoaded() {
 void ViewsGameReady() {
   auto& c = Get();
   std::lock_guard l(c.lock);
+  MarkPlayerCell("load");
+  HideVanillaHud();
   PushHudState();
 }
 
@@ -326,6 +423,8 @@ std::vector<std::string> ViewsReport() {
   std::lock_guard l(c.lock);
   std::vector<std::string> out;
   out.push_back(std::string("bound ") + (g_api2 ? "v2" : g_api ? "v1" : "no"));
+  out.push_back(g_vanilla_hud);
+  out.push_back("chart revealed " + std::to_string(ac::chart::count(c.state.chart)));
   for (const auto& s : ac::views::kViews)
     out.push_back(std::string(s.id) + (c.view_host.is_ready(s.id) ? " ready" : " loading") +
                   (c.view_host.is_open(s.id) ? " open" : " closed"));
