@@ -1,7 +1,8 @@
 # 1.6-wiring: the pad's lock-on as OUR wiring (owner, 2026-10-30): TDM's lock key bound to R3 and our lock distance
 # (fTargetLockDistance 2000 u, wiring row w.lockon.distance) on the Blackwood Road beyond Claywater's ford (bat
 # claywater-ambush). The lock is read from TDM's plugin API (the bridge's `tdm-target`). Cut: target switching by a
-# flick (TDM's own behaviour) and the arena's three placed hostiles.
+# flick (TDM's own behaviour), the arena's three placed hostiles, and beyond-range (TDM's own break rule, our value
+# a mod-default guess; diag2-crash-misc 2026-10-30).
 id: fight-lock-on
 runner: 1
 crash_risk: low
@@ -14,6 +15,3 @@ steps:
     expect:
       - {read: [tdm-target], path: locked, eq: true}
       - {read: [tdm-target], path: dist, lt: 2000}
-  - name: beyond-range        # 30 m away: R3 locks nothing (our 2000 u)
-    do: [{pad: "RS:120 wait:500"}, {console: "player.moveto {opp} 0 -3000 0"}, {wait: 2}, {pad: "RS:120 wait:800"}]
-    expect: [{read: [tdm-target], path: locked, eq: false}]

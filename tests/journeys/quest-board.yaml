@@ -11,9 +11,7 @@ steps:
     do:
       - {console: "player.moveto ARG_Ref_ClaywaterStationTakes 0 -120 0"}
       - {console: "player.setangle z 0"}
-      - {console: "ARG_Ref_ClaywaterStationTakes.moveto player 0 110 0"}
-      - {wait: 3}
-      - {key: "E 120"}
+      - {talk: ARG_Ref_ClaywaterStationTakes}
       - {wait: 2}
     expect: [{read: [core, KnowsTopic, topic.claywater-two-charges], path: value, eq: true}]
   - name: stage-10
@@ -31,7 +29,7 @@ steps:
       - {pad: "RB:120 wait:1500"}
     expect: [{console: player.IsWeaponOut, not_contains: ">> 0"}]
   - name: strike              # the player's blows
-    do: [{pad: "RB:120 wait:900 RB:120 wait:900 RB:120 wait:900"}]
+    do: [{pad: "RB:120 wait:900"}, {pad: "RB:120 wait:900"}, {pad: "RB:120 wait:900"}]   # one pad call each: 3 x 1020 ms is over the 3 s cap
     expect:
       - {event: {kind: hit, match: "*"}}
       - {console: "ARG_Ref_ClaywaterStationLivia.GetDead", contains: ">> 1", within: 8}

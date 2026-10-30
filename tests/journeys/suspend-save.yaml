@@ -17,9 +17,13 @@ steps:
       - {wait: 4}
       - {console: "player.setangle x 0"}
     expect: [{read: [core, WakePoint], path: value, ne: "", keep: wake, within: 10}]
-  - name: menus-write-nothing # Tab and J, 5 s each
-    do: [{key: "TAB 120"}, {wait: 5}, {key: "TAB 120"}, {wait: 1.5}, {key: "J 120"}, {wait: 5}, {key: "ESC 80"}, {wait: 1.5}]
-    expect: [{event: {kind: menu, match: '"opening": false', absent: true}}]
+  - name: menus-write-nothing # Tab, 5 s open: nothing closes it (the suspend save's spinner closed menus, game-8)
+    do: [{key: "TAB 120"}, {wait: 5}]
+    expect:
+      - {event: {kind: menu, match: TweenMenu}}
+      - {event: {kind: menu, match: '"opening": false', absent: true}}
+  - name: menus-closed        # the step closes it itself, so the close is not counted above (batch 20261030T151243)
+    do: [{key: "TAB 120"}, {wait: 1.5}]
   - name: stream-drop
     do: [{call: [core-suspend, stream_drop]}]
     expect: [{log: {name: ArgoniaCore, contains: "saves: ArgoniaSuspend written (stream_drop)"}, within: 10}]

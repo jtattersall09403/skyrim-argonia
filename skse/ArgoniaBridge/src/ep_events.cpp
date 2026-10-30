@@ -46,7 +46,8 @@ struct Sinks : RE::BSTEventSink<RE::TESHitEvent>,
                RE::BSTEventSink<RE::TESQuestStageEvent>,
                RE::BSTEventSink<RE::MenuOpenCloseEvent>,
                RE::BSTEventSink<RE::BSAnimationGraphEvent>,
-               RE::BSTEventSink<SKSE::ModCallbackEvent> {
+               RE::BSTEventSink<SKSE::ModCallbackEvent>,
+               RE::BSTEventSink<SKSE::CrosshairRefEvent> {
   RE::BSEventNotifyControl ProcessEvent(const RE::TESHitEvent* e, RE::BSTEventSource<RE::TESHitEvent>*) override {
     if (!e) return RE::BSEventNotifyControl::kContinue;
     auto t = e->target ? e->target->GetFormID() : 0, c = e->cause ? e->cause->GetFormID() : 0;
@@ -80,8 +81,31 @@ struct Sinks : RE::BSTEventSink<RE::TESHitEvent>,
                                           .num("num", e->numArg));
     return RE::BSEventNotifyControl::kContinue;
   }
+  // SKSE's crosshair event: the ref under the crosshair (none: 0), kept for the `crosshair` read; not in the ring.
+  RE::BSEventNotifyControl ProcessEvent(const SKSE::CrosshairRefEvent* e, RE::BSTEventSource<SKSE::CrosshairRefEvent>*) override {
+    crosshair.store(e && e->crosshairRef ? e->crosshairRef->GetFormID() : 0);
+    return RE::BSEventNotifyControl::kContinue;
+  }
+  std::atomic<RE::FormID> crosshair{0};
 };
 Sinks g_sinks;
+
+// crosshair: the reference under the player's crosshair (SKSE's crosshair event), or null; the `talk` action waits
+// on it before E (diag2-dialogue-crime: an NPC under AI walked out of the crosshair before the key).
+std::string crosshair(const Request&) {
+  return on_main_thread("crosshair", [] {
+    auto id = g_sinks.crosshair.load();
+    auto* f = id ? RE::TESForm::LookupByID(id) : nullptr;
+    auto* p = RE::PlayerCharacter::GetSingleton();
+    auto* r = f ? f->AsReference() : nullptr;
+    std::string ref = f ? JsonObject().hex("id", id).str("editor_id", f->GetFormEditorID()).str("name", r ? r->GetDisplayFullName() : f->GetName()).done()
+                        : "null";
+    return reply_ok("crosshair", JsonObject().raw("ref", ref)
+                                     .num("dist", r && p ? r->GetPosition().GetDistance(p->GetPosition()) : -1.0)
+                                     .done());
+  });
+}
+const Register r_crosshair{"crosshair", &crosshair};
 
 std::string events(const Request& req) {
   std::uint64_t since = 0;
@@ -148,6 +172,7 @@ void events_install() {
   }
   if (auto* ui = RE::UI::GetSingleton()) ui->AddEventSink<RE::MenuOpenCloseEvent>(&g_sinks);
   if (auto* mods = SKSE::GetModCallbackEventSource()) mods->AddEventSink(&g_sinks);
+  if (auto* cross = SKSE::GetCrosshairRefEventSource()) cross->AddEventSink(&g_sinks);
 }
 
 // The player's animation graph is rebuilt by every load, so its sink is re-added (main thread).

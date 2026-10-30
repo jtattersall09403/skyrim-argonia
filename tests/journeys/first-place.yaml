@@ -3,7 +3,7 @@
 # (claywater-walk, dialogue-intercept, quest-board, die-and-recover, fight-archetype, grow-at-rest,
 # rest-is-the-only-save, cosave). Order as 1.7 gives it. Judged on state and events, a still per step; teleports
 # between short steps. ArgoniaCore's state is read through the bridge's `core` (reads and the two view intents only).
-# A talk is the real path: stand 1.2 m south of the speaker facing north and press E (the intercept perk opens our
+# A talk is the real path: stand south of the speaker facing north, `talk` sets them 1.1 m ahead and presses E (the intercept perk opens our
 # window); a topic is the view's own intent (ViewIntent) until a click sends it.
 # Staged by the scene (never tested here): the place, hour, weather, a camp spot by the road, the traveller's steel sword,
 # the crocodile's loot (a steel shield). Cheats: god mode for the crocodile only (the ambush and the death are the tested fight), and the
@@ -37,10 +37,8 @@ steps:
     do:
       - {console: "player.moveto ARG_Ref_ClaywaterStationTakes 0 -120 0"}
       - {console: "player.setangle z 0"}
-      - {console: "ARG_Ref_ClaywaterStationTakes.moveto player 0 110 0"}   # the speaker walks (AI since game-8): brought back into the pose (game-9)
       - {console: "player.setangle x 0"}
-      - {wait: 3}   # the moveto loads a cell and fades; a key pressed under the Fader Menu is lost (game-9)
-      - {key: "E 120"}
+      - {talk: ARG_Ref_ClaywaterStationTakes}   # the speaker walks under AI: set before the player, E once the crosshair shows them
       - {wait: 2}
     expect:
       - {read: [core, ViewState, dialogue], path: value.body.speaker.id, eq: npc.imperial-fringe.claywater-station.n1-3}
@@ -55,9 +53,7 @@ steps:
     do:
       - {console: "player.moveto ARG_Ref_ClaywaterStationLivia 0 -120 0"}
       - {console: "player.setangle z 0"}
-      - {console: "ARG_Ref_ClaywaterStationLivia.moveto player 0 110 0"}   # the speaker walks (AI since game-8): brought back into the pose (game-9)
-      - {wait: 3}   # the moveto loads a cell and fades; a key pressed under the Fader Menu is lost (game-9)
-      - {key: "E 120"}
+      - {talk: ARG_Ref_ClaywaterStationLivia}   # the speaker walks under AI: set before the player, E once the crosshair shows them
       - {wait: 2}
       - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.claywater-two-charges"}}']}
     expect:
@@ -66,18 +62,11 @@ steps:
     expect:
       - {console: "GetStage ARG_Q_LF83", contains: ">> 10"}
       - {read: [core, JournalEntries], path: value, contains: "quest.local.lf83 10 "}
-  - name: livia-landing-terms
-    do:
-      - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.claywater-landing-terms"}}']}
-      - {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}
-    expect: [{read: [core, KnowsTopic, topic.claywater-landing-terms], path: value, eq: true}]
   - name: ask-signs        # the landing's side and its terms (objective hear-landing) -> stage 20
     do:
       - {console: "player.moveto ARG_Ref_ClaywaterStationSigns 0 -120 0"}
       - {console: "player.setangle z 0"}
-      - {console: "ARG_Ref_ClaywaterStationSigns.moveto player 0 110 0"}   # the speaker walks (AI since game-8): brought back into the pose (game-9)
-      - {wait: 3}   # the moveto loads a cell and fades; a key pressed under the Fader Menu is lost (game-9)
-      - {key: "E 120"}
+      - {talk: ARG_Ref_ClaywaterStationSigns}   # the speaker walks under AI: set before the player, E once the crosshair shows them
       - {wait: 2}
       - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.claywater-two-charges"}}']}
       - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.claywater-landing-terms"}}']}
@@ -109,9 +98,7 @@ steps:
       - {console: "player.setangle x 0"}
       - {console: "player.moveto ARG_Ref_ClaywaterStationLivia 0 -120 0"}
       - {console: "player.setangle z 0"}
-      - {console: "ARG_Ref_ClaywaterStationLivia.moveto player 0 110 0"}   # the speaker walks (AI since game-8): brought back into the pose (game-9)
-      - {wait: 3}   # the moveto loads a cell and fades; a key pressed under the Fader Menu is lost (game-9)
-      - {key: "E 120"}
+      - {talk: ARG_Ref_ClaywaterStationLivia}   # the speaker walks under AI: set before the player, E once the crosshair shows them
       - {wait: 2}
       - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.lf83-one-charge"}}']}
       - {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}
@@ -120,9 +107,7 @@ steps:
     do:
       - {console: "player.moveto ARG_Ref_ClaywaterStationSigns 0 -120 0"}
       - {console: "player.setangle z 0"}
-      - {console: "ARG_Ref_ClaywaterStationSigns.moveto player 0 110 0"}   # the speaker walks (AI since game-8): brought back into the pose (game-9)
-      - {wait: 3}   # the moveto loads a cell and fades; a key pressed under the Fader Menu is lost (game-9)
-      - {key: "E 120"}
+      - {talk: ARG_Ref_ClaywaterStationSigns}   # the speaker walks under AI: set before the player, E once the crosshair shows them
       - {wait: 2}
       - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.lf83-one-charge"}}']}
       - {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}

@@ -19,36 +19,42 @@ steps:
     reader: [the sheet in our palette (warm paper, moss or near-black frame, red-clay accents), every word in Pelagiad, no Nordic ornament, the Argonia title where a title shows]
   - name: tween-closed
     do: [{key: "TAB 120"}, {wait: 1.5}]
+    expect: [{event: {kind: menu, match: '"menu": "TweenMenu", "opening": false'}}]
   - name: inventory
     do: [{key: "I 120"}, {wait: 2}]
     expect: [{event: {kind: menu, match: InventoryMenu}}]
     reader: [the sheet in our palette (warm paper, moss or near-black frame, red-clay accents), every word in Pelagiad, no Nordic ornament, the Argonia title where a title shows]
   - name: inventory-closed
     do: [{key: "I 120"}, {wait: 1.5}]
+    expect: [{event: {kind: menu, match: '"menu": "InventoryMenu", "opening": false'}}]
   - name: magic
     do: [{key: "P 120"}, {wait: 2}]
     expect: [{event: {kind: menu, match: MagicMenu}}]
     reader: [the sheet in our palette (warm paper, moss or near-black frame, red-clay accents), every word in Pelagiad, no Nordic ornament, the Argonia title where a title shows]
   - name: magic-closed
     do: [{key: "P 120"}, {wait: 1.5}]
+    expect: [{event: {kind: menu, match: '"menu": "MagicMenu", "opening": false'}}]
   - name: map
     do: [{key: "M 120"}, {wait: 2}]
     expect: [{event: {kind: menu, match: MapMenu}}]
     reader: [the sheet in our palette (warm paper, moss or near-black frame, red-clay accents), every word in Pelagiad, no Nordic ornament, the Argonia title where a title shows]
-  - name: map-closed
-    do: [{key: "M 120"}, {wait: 1.5}]
+  - name: map-closed          # Tab: the map swallows M (batch 20261030T151243: M left it open and Q was lost)
+    do: [{key: "TAB 120"}, {wait: 1.5}]
+    expect: [{event: {kind: menu, match: '"menu": "MapMenu", "opening": false'}}]
   - name: favorites
     do: [{key: "Q 120"}, {wait: 2}]
     expect: [{event: {kind: menu, match: FavoritesMenu}}]
     reader: [the sheet in our palette (warm paper, moss or near-black frame, red-clay accents), every word in Pelagiad, no Nordic ornament, the Argonia title where a title shows]
   - name: favorites-closed
     do: [{key: "Q 120"}, {wait: 1.5}]
+    expect: [{event: {kind: menu, match: '"menu": "FavoritesMenu", "opening": false'}}]
   - name: sleep-wait
     do: [{key: "T 120"}, {wait: 2}]
     expect: [{event: {kind: menu, match: SleepWaitMenu}}]
     reader: [the sheet in our palette (warm paper, moss or near-black frame, red-clay accents), every word in Pelagiad, no Nordic ornament, the Argonia title where a title shows]
   - name: sleep-wait-closed
     do: [{key: "T 120"}, {wait: 1.5}]
+    expect: [{event: {kind: menu, match: '"menu": "SleepWaitMenu", "opening": false'}}]
   - name: journal             # our journal view (or Dear Diary's, per the router)
     do: [{key: "J 120"}, {wait: 2}]
     expect: [{read: [core, Views], path: value, contains: "journal ready open"}]

@@ -468,7 +468,9 @@ def test_failure_logs_fetched_only_on_failure(tmp_path):
     assert all("-Tail 200" in c for c in fake.machine.cmds) and not any("crash-" in c for c in fake.machine.cmds)
     assert (tmp_path / "f" / "tail-Papyrus.0.log").read_text().startswith("line from")
     got = rj.fetch_failure_logs(fake, tmp_path / "c", crash=True)
-    assert got[-1] == "tail-crash.log" and (tmp_path / "c" / "tail-crash.log").read_text() == "line from crash"
+    assert got[-2:] == ["tail-crash.log", "crash-head.log"] and (tmp_path / "c" / "tail-crash.log").read_text() == "line from crash"
+    head = fake.machine.cmds[-1]
+    assert "crash-" in head and "-TotalCount 120" in head  # the header and probable call stack, not only the module list
 
 
 def test_run_report_lists_log_tails_on_failure_only(tmp_path):
@@ -480,3 +482,58 @@ def test_run_report_lists_log_tails_on_failure_only(tmp_path):
     fake.machine.cmds.clear()
     rep = rj.Runner(fake, tmp_path / "good").run(journey(tmp_path, [WALK]), "base")
     assert rep["passed"] and "logs" not in rep and not fake.machine.cmds
+
+
+class TalkFake(Fake):
+    """The crosshair shows `ref` from the `shows_after`-th read (None: never)."""
+    def __init__(self, shows_after=None, heading=90.0):
+        super().__init__()
+        self.shows_after, self.heading, self.reads, self.keys = shows_after, heading, 0, []
+
+    def call(self, cmd, *args):
+        if cmd == "player":
+            return {"pos": {"x": 0.0, "y": 0.0, "z": 0.0}, "heading_deg": self.heading}
+        if cmd == "crosshair":
+            self.reads += 1
+            hit = self.shows_after is not None and self.reads >= self.shows_after
+            return {"ref": {"id": "FE00180C", "editor_id": ""} if hit else {"id": "00000014", "editor_id": "Player"}}
+        if cmd == "input":
+            self.keys.append(args)
+            return {"ms": 120}
+        return super().call(cmd, *args)
+
+    def resolve_refs(self, text):
+        return text.replace("ARG_Ref_Livia", '"FE00180C"')
+
+
+def test_talk_sets_the_npc_before_the_player_and_presses_e_once_the_crosshair_shows_it(monkeypatch):
+    _clock(monkeypatch)
+    b = TalkFake(shows_after=3, heading=90.0)
+    rj.Runner(b, pathlib.Path("/nonexistent")).act({"talk": "ARG_Ref_Livia"})
+    assert "ARG_Ref_Livia.moveto player 110 0 0" in b.lines and "ARG_Ref_Livia.setangle z 270" in b.lines
+    assert b.reads == 3 and b.keys == [("key", "E", 120)]
+
+
+def test_talk_fails_clearly_when_the_crosshair_never_shows_the_npc(monkeypatch, tmp_path):
+    _clock(monkeypatch)
+    b = TalkFake(shows_after=None)
+    rep = rj.Runner(b, tmp_path / "o").run(journey(tmp_path, [{"name": "hi", "do": [{"talk": "ARG_Ref_Livia"}]}]), "base")
+    assert not rep["passed"] and "crosshair never showed it" in rep["steps"][0]["reason"] and "Player" in rep["steps"][0]["reason"]
+    assert b.keys == []
+
+
+def test_a_save_load_waits_for_the_load_to_settle_before_the_scene(monkeypatch):
+    now = _clock(monkeypatch)
+    r = rj.Runner(LoadFake([{"menu": "Loading Menu", "opening": True}, {"menu": "Loading Menu", "opening": False}]),
+                  pathlib.Path("/nonexistent"))
+    r.apply_scene(None, "base")
+    assert r.b.polls >= 3 and now[0] >= 1.5  # the close seen, then the settle
+
+
+def test_wait_load_waits_out_a_fade_after_the_load(monkeypatch):
+    now = _clock(monkeypatch)
+    r = rj.Runner.__new__(rj.Runner)
+    r.b = LoadFake([{"menu": "Loading Menu", "opening": True}, {"menu": "Loading Menu", "opening": False},
+                    {"menu": "Fader Menu", "opening": True}])
+    r.wait_load(7, cap=5)
+    assert now[0] >= 5  # the fade never closed: held to the cap, never acting under it

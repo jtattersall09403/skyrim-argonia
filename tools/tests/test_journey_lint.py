@@ -70,3 +70,10 @@ def test_the_client_writes_a_plugin_form_as_its_runtime_id():
     assert seen[1].endswith(" console player.hasperk FE002809")
     assert seen[3].endswith(' console "0A000012".GetLevel')
     ls.close()
+
+
+def test_talk_names_one_placed_ref():
+    j = {"steps": [{"name": "a", "do": [{"talk": "ARG_Ref_ClaywaterStationLivia"}, {"talk": "{opp}"}]},
+                   {"name": "b", "do": [{"talk": "Livia 0 110"}]}]}
+    errs = L.lint(j, None)
+    assert len(errs) == 1 and errs[0].startswith("step b: talk")

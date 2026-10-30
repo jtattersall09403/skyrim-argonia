@@ -14,8 +14,9 @@ steps:
       - {console: "player.equipitem ARG_Weap_SteelSword"}
       - {wait: 2}
     expect: [{read: [actors, "4000"], path: listed.0.ref, keep: opp}]
-  - name: rest                # the wake point is the camp
+  - name: rest                # the wake point is the camp; the deserter out of combat ("cannot rest with enemies nearby")
     do:
+      - {console: '"{opp}".stopcombat'}
       - {console: "player.moveto ARG_Ref_ClaywaterStationAmbushPlayer 0 -90 0"}
       - {console: "player.setangle z 0"}
       - {console: "player.setangle x 40"}

@@ -36,10 +36,8 @@ steps:
     do:
       - {console: "player.moveto ARG_Ref_ClaywaterStationLivia 0 -120 0"}
       - {console: "player.setangle z 0"}
-      - {console: "ARG_Ref_ClaywaterStationLivia.moveto player 0 110 0"}
       - {console: "player.setangle x 0"}
-      - {wait: 3}
-      - {key: "E 120"}
+      - {talk: ARG_Ref_ClaywaterStationLivia}
       - {wait: 2}
     expect:
       - {read: [core, ViewState, dialogue], path: value.body.speaker.id, eq: npc.imperial-fringe.claywater-station.well-keeper}

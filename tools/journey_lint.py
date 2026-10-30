@@ -92,6 +92,18 @@ def read_call(call: list, vocab: dict | None) -> list[str]:
     return errs
 
 
+def talk_ref(ref: str, vocab: dict | None) -> list[str]:
+    """`talk: <ref>` names one placed ref: an ARG_Ref_* editor id (a placed ref of ours with the vocab cache) or a
+    kept value; the runner builds its console lines and reads the crosshair against it."""
+    import re as _re
+    ref = ref.strip()
+    if not (_re.fullmatch(r"ARG_Ref_\w+", ref) or _re.fullmatch(r"\{[A-Za-z_]\w*(?:\.\d+)?\}", ref)):
+        return [f"talk `{ref}`: name one placed ref (ARG_Ref_<name> or a kept {{name}})"]
+    if vocab and vocab.get("refs") is not None and ref.startswith("ARG_Ref_") and ref not in vocab["refs"]:
+        return [f"talk `{ref}`: no placed ref {ref} in our plugins (vocab cache)"]
+    return []
+
+
 def lint(journey: dict, vocab: dict | None) -> list[str]:
     """Every error in a runnable journey, as `step <name>: <what>`."""
     errs = []
@@ -103,6 +115,8 @@ def lint(journey: dict, vocab: dict | None) -> list[str]:
                 found += console_line(str(v), vocab)
             elif k == "call" and isinstance(v, list):
                 found += read_call(v, vocab)
+            elif k == "talk":
+                found += talk_ref(str(v), vocab)
         for e in s.get("expect", []):
             if "console" in e:
                 found += console_line(str(e["console"]), vocab)

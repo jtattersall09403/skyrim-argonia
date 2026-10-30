@@ -17,7 +17,8 @@ A runnable journey has `runner: 1` (the drafts beside it are prose for a lane to
         expect:                  # each polled until it holds or `within` seconds pass (default 5)
           - moved: {gt: 100}
 
-Actions: pad <seq>; key "<K[+K]> <ms>"; console <line>; teleport [cell <edid> | pos x y z | ref <id>];
+Actions: pad <seq>; key "<K[+K]> <ms>"; talk <ref> (the NPC set 1.1 m before the player facing them, then E once
+the crosshair shows it, or the step fails); console <line>; teleport [cell <edid> | pos x y z | ref <id>];
 wait <seconds, at most 10>; game_hours <n> (time passes at a raised timescale, the game's own clock, then the
 timescale is put back); call [<command>, args...] (any bridge read, kept in the report); relaunch <save | true>
 (the game quit cleanly by the console's qqq, launched again through the bridge's `launch` to the main menu with the
@@ -213,8 +214,10 @@ class Runner:
         """The save loaded (not when `load` is false: a batch chaining journeys of one scene family), the play
         camera, then the scene sent (only when its resolved text changed since the last put) and run by `bat`."""
         if load:
+            since = self.b.call("events")["last"]
             self.b.call("load", save)
-            time.sleep(3)  # the load screen fades
+            self.wait_load(since, appear=5.0)  # act only on a settled world: the travel line inside a load's tail
+            # crashed the engine twice (diag2-crash-misc, batch 20261030T151243)
         third_person(self.b)
         if scene:
             src = SCENES / f"{scene}.txt"
@@ -236,14 +239,16 @@ class Runner:
     def wait_load(self, since: int, appear: float = 2.0, cap: float = 30.0):
         """Wait on the bridge's menu events: until a Loading Menu close (opening:false) has arrived since `since`, or
         no Loading Menu opened within `appear` s (the scene loaded nothing); then 1 s for the fade-in. Capped at `cap`."""
-        t0 = time.monotonic()
+        waited = 0.0  # counted in polls, not the clock: the bridge call's own time is slack in the caller's favour
         while True:
-            evs = [e["data"] for e in self.b.call("events", since, "menu")["events"]
-                   if e["data"].get("menu") == "Loading Menu"]
-            waited = time.monotonic() - t0
-            if any(not d.get("opening") for d in evs) or waited >= cap or (not evs and waited >= appear):
+            menus = [e["data"] for e in self.b.call("events", since, "menu")["events"]]
+            evs = [d for d in menus if d.get("menu") == "Loading Menu"]
+            fades = [d for d in menus if d.get("menu") == "Fader Menu"]
+            fading = bool(fades) and fades[-1].get("opening")  # a key under the Fader Menu is lost (menus-quit, 20261030)
+            if waited >= cap or (not fading and (any(not d.get("opening") for d in evs) or (not evs and waited >= appear))):
                 break
             time.sleep(0.25)
+            waited += 0.25
         time.sleep(1)  # the fade-in
 
     # -- actions -------------------------------------------------------------------------------------------
@@ -310,6 +315,28 @@ class Runner:
         r = {"quit_clean": clean, "save": save, "ping": launched.get("ping")}
         self.calls.append({"call": ["relaunch", save], "result": r})
         return r
+
+    def _talk(self, ref):
+        """`talk: <ref>`: the NPC moved TALK_UNITS in front of the player, turned to face them, then E once the
+        crosshair's ref is that NPC (the bridge's `crosshair` read), polled for TALK_WAIT_S; StepFailed when it never
+        is. An NPC under AI walked out of the crosshair during a fixed wait before E (diag2-dialogue-crime)."""
+        ref = str(ref).strip().strip('"')
+        caller = ref if ref.startswith("ARG_") else f'"{ref}"'  # a runtime id calls quoted (tools/journey_lint.py)
+        h = float(self.b.call("player")["heading_deg"])
+        dx, dy = TALK_UNITS * math.sin(math.radians(h)), TALK_UNITS * math.cos(math.radians(h))
+        self.b.call("console", f"{caller}.moveto player {dx:.0f} {dy:.0f} 0")
+        self.b.call("console", f"{caller}.setangle z {(h + 180) % 360:.0f}")
+        want = _form_id(self.b.resolve_refs(ref))
+        seen, end = None, time.monotonic() + TALK_WAIT_S
+        while True:
+            seen = (self.b.call("crosshair") or {}).get("ref")
+            if seen and want is not None and _form_id(seen.get("id")) == want:
+                break
+            if time.monotonic() >= end:
+                raise StepFailed(f"talk {ref}: the crosshair never showed it within {TALK_WAIT_S:g} s "
+                                 f"(last: {(seen or {}).get('editor_id') or (seen or {}).get('id') or 'nothing'})")
+            time.sleep(0.25)
+        return self.b.call("input", "key", "E", 120)
 
     def _call(self, args):
         r = self.b.call(*args)
@@ -501,7 +528,17 @@ class Runner:
         return rec
 
 
-ACTIONS = {"pad": Runner._pad, "key": Runner._key, "console": Runner._console, "teleport": Runner._teleport,
+def _form_id(text) -> int | None:
+    """A runtime form id as an int, from `0001A26F`, `0x1A26F` or `"0001A26F"`; None for anything else."""
+    t = str(text or "").strip().strip('"')
+    try:
+        return int(t, 16)
+    except ValueError:
+        return None
+
+
+TALK_UNITS, TALK_WAIT_S = 110, 5.0  # 5 s: a player moveto before it may load a cell and fade
+ACTIONS = {"pad": Runner._pad, "talk": Runner._talk, "key": Runner._key, "console": Runner._console, "teleport": Runner._teleport,
            "wait": Runner._wait, "game_hours": Runner._game_hours, "call": Runner._call, "relaunch": Runner._relaunch}
 QUIT_WAIT_S = 60  # a clean quit (a suspend save first, 2.8 §c) gets this long before launch kills what is left
 EXPECTS = ("read", "console", "event", "moved", "quests_running", "music", "log")
@@ -520,6 +557,7 @@ def skse_log(b, name: str) -> list[str]:
 
 GAME_DOCS = "$env:USERPROFILE\\Documents\\My Games\\Skyrim Special Edition"
 FAIL_LOG_LINES = 200
+CRASH_HEAD_LINES = 120  # a crash log's header, probable call stack and objects sit in its first ~60-120 lines
 
 
 def fetch_failure_logs(b, out: pathlib.Path, crash: bool = False) -> list[str]:
@@ -529,18 +567,22 @@ def fetch_failure_logs(b, out: pathlib.Path, crash: bool = False) -> list[str]:
             "Papyrus.0.log": f"{GAME_DOCS}\\Logs\\Script\\Papyrus.0.log"}
     if crash:
         srcs["crash.log"] = None
+        srcs["crash-head.log"] = "head"
     got = []
     out.mkdir(parents=True, exist_ok=True)
     for name, path in srcs.items():
-        cmd = (f"Get-ChildItem \"{SKSE_LOGS}\\crash-*.log\" -EA SilentlyContinue | Sort-Object LastWriteTime | Select-Object -Last 1 | "
-               f"Get-Content -Tail {FAIL_LOG_LINES}" if path is None else
+        newest = (f"Get-ChildItem \"{SKSE_LOGS}\\crash-*.log\" -EA SilentlyContinue | Sort-Object LastWriteTime | "
+                  "Select-Object -Last 1 | ")
+        cmd = (newest + f"Get-Content -Tail {FAIL_LOG_LINES}" if path is None else
+               newest + f"Get-Content -TotalCount {CRASH_HEAD_LINES}" if path == "head" else
                f"Get-Content \"{path}\" -Tail {FAIL_LOG_LINES} -EA SilentlyContinue")
         try:
             text = b.machine.ps(cmd, timeout=60)
         except Exception as e:  # a dead machine or a stalled shell must not hide the failure it reports
             text = f"(fetch failed: {e})"
-        (out / f"tail-{name}").write_text(text)
-        got.append(f"tail-{name}")
+        fname = name if path == "head" else f"tail-{name}"
+        (out / fname).write_text(text)
+        got.append(fname)
     return got
 
 

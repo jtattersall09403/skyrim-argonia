@@ -458,6 +458,24 @@ std::string actors(const Request& req) {
   });
 }
 
+// crime-gold <faction form id | editor id>: the player's crime gold with that faction (Papyrus Faction's
+// GetCrimeGoldViolent / NonViolent). The console's GetCrimeGoldViolent takes no faction: it reads the calling
+// actor's own value (diag2-dialogue-crime, 2026-10-30).
+std::string crime_gold(const Request& req) {
+  std::string want = rest(req);
+  if (want.empty()) return reply_error("crime-gold", "usage: crime-gold <faction form id | editor id>");
+  return on_main_thread("crime-gold", [want] {
+    auto* f = find_form(want);
+    auto* fac = f ? f->As<RE::TESFaction>() : nullptr;
+    if (!fac) return reply_error("crime-gold", "no faction " + want);
+    return reply_ok("crime-gold", JsonObject()
+                                      .raw("faction", form_ref(fac))
+                                      .integer("violent", fac->GetCrimeGoldViolent())
+                                      .integer("nonviolent", fac->GetCrimeGoldNonViolent())
+                                      .done());
+  });
+}
+
 const Register r_actors{"actors", &actors};
 const Register r_teleport{"teleport", &teleport};
 const Register r_time{"time", &time_ep};
@@ -470,6 +488,7 @@ const Register r_global{"global", &global};
 const Register r_av{"av", &av};
 const Register r_graph{"graph", &graph};
 const Register r_inventory{"inventory", &inventory};
+const Register r_crime_gold{"crime-gold", &crime_gold};
 
 }  // namespace
 }  // namespace argonia::bridge

@@ -14,10 +14,8 @@ steps:
     do:
       - {console: "player.moveto ARG_Ref_ClaywaterStationTakes 0 -120 0"}
       - {console: "player.setangle z 0"}
-      - {console: "ARG_Ref_ClaywaterStationTakes.moveto player 0 110 0"}
       - {console: "player.setangle x 0"}
-      - {wait: 3}
-      - {key: "E 120"}
+      - {talk: ARG_Ref_ClaywaterStationTakes}
       - {wait: 2}
       - {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}
     expect: [{console: "GetStage ARG_Q_LF83", contains: ">> 10", within: 8}]
@@ -26,9 +24,7 @@ steps:
       - {console: "player.additem f 100"}
       - {console: "player.moveto ARG_Ref_ClaywaterStationSigns 0 -120 0"}
       - {console: "player.setangle z 0"}
-      - {console: "ARG_Ref_ClaywaterStationSigns.moveto player 0 110 0"}
-      - {wait: 3}
-      - {key: "E 120"}
+      - {talk: ARG_Ref_ClaywaterStationSigns}
       - {wait: 2}
       - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.claywater-two-charges"}}']}
       - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.lf83-ford-charge"}}']}
@@ -48,10 +44,8 @@ steps:
       - {wait: 4}
       - {console: "player.moveto ARG_Ref_ClaywaterStationTakes 0 -120 0"}
       - {console: "player.setangle z 0"}
-      - {console: "ARG_Ref_ClaywaterStationTakes.moveto player 0 110 0"}
       - {console: "player.setangle x 0"}
-      - {wait: 3}
-      - {key: "E 120"}
+      - {talk: ARG_Ref_ClaywaterStationTakes}
       - {wait: 2}
       - {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}
     expect: [{console: "GetStage ARG_Q_LF83", contains: ">> 10", within: 8}]
@@ -70,10 +64,8 @@ steps:
       - {wait: 4}
       - {console: "player.moveto ARG_Ref_ClaywaterStationTakes 0 -120 0"}
       - {console: "player.setangle z 0"}
-      - {console: "ARG_Ref_ClaywaterStationTakes.moveto player 0 110 0"}
       - {console: "player.setangle x 0"}
-      - {wait: 3}
-      - {key: "E 120"}
+      - {talk: ARG_Ref_ClaywaterStationTakes}
       - {wait: 2}
       - {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}
     expect: [{console: "GetStage ARG_Q_LF83", contains: ">> 10", within: 8}]
@@ -93,10 +85,8 @@ steps:
       - {wait: 4}
       - {console: "player.moveto ARG_Ref_ClaywaterStationTakes 0 -120 0"}
       - {console: "player.setangle z 0"}
-      - {console: "ARG_Ref_ClaywaterStationTakes.moveto player 0 110 0"}
       - {console: "player.setangle x 0"}
-      - {wait: 3}
-      - {key: "E 120"}
+      - {talk: ARG_Ref_ClaywaterStationTakes}
       - {wait: 2}
       - {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}
     expect: [{console: "GetStage ARG_Q_LF83", contains: ">> 10", within: 8}]

@@ -1,7 +1,8 @@
 # w3-infra's crime check (002dca4): Claywater's town crime faction (ARG_Faction_ClaywaterStation, Track Crime; its four
 # people its members) tracks a crime against one of them. The player strikes Livia in her sight (an assault, the
-# player's own blow by the real pad); the bounty she reports lands with her crime faction. Read as the player's violent
-# crime gold with that faction, before (kept) and after; Livia's own GetCrimeGold is her bounty, always 0.
+# player's own blow by the real pad, our steel sword in hand); the bounty she reports lands with her crime faction.
+# Read through the bridge's `crime-gold` (Papyrus Faction.GetCrimeGoldViolent): the console's GetCrimeGoldViolent takes
+# no faction and printed the player's own 0 (diag2-dialogue-crime). The faction as a plugin form (ARG_Faction_ClaywaterStation). Read within 3 s of the hit, before she fights back.
 id: w3-crime
 runner: 1
 crash_risk: low
@@ -12,17 +13,17 @@ steps:
       - {console: "player.moveto ARG_Ref_ClaywaterStationLivia 0 -120 0"}
       - {console: "player.setangle z 0"}
       - {console: "ARG_Ref_ClaywaterStationLivia.moveto player 0 110 0"}
-      - {console: "player.equipitem 00012EB7"}
+      - {console: "player.additem ARG_Weap_SteelSword 1"}
+      - {console: "player.equipitem ARG_Weap_SteelSword"}
       - {wait: 2}
     expect:
-      - {console: "player.GetCrimeGoldViolent ARG_Faction_ClaywaterStation", keep: gold_before}
+      - {read: [crime-gold, "Argonia.esm|0x9C2"], path: violent, keep: gold_before}
       - {console: "ARG_Ref_ClaywaterStationLivia.GetInFaction ARG_Faction_ClaywaterStation", contains: ">> 1"}
   - name: draw
     do: [{pad: "RB:120 wait:1500"}]
     expect: [{console: player.IsWeaponOut, not_contains: ">> 0"}]
   - name: strike              # the blow lands on her; the assault is reported to her crime faction
-    do: [{pad: "RB:120 wait:1200"}, {pad: "RB:120 wait:1200"}]
+    do: [{pad: "RB:120 wait:1200"}]   # one blow: she fights back and can kill the player before a second read
     expect:
       - {event: {kind: hit, match: "*"}, within: 5}   # hit data carries runtime hex ids; the crime gold read is the real check
-      - {console: "player.GetCrimeGoldViolent ARG_Faction_ClaywaterStation", ne: {kept: gold_before}, within: 8}
-      - {console: "player.GetCrimeGoldViolent ARG_Faction_ClaywaterStation", not_contains: ">> 0.00"}
+      - {read: [crime-gold, "Argonia.esm|0x9C2"], path: violent, gt: {kept: gold_before}, within: 3}
