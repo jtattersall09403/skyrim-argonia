@@ -97,3 +97,9 @@
   - The activators have no keyword or verb.
   - The NPC_ EditorIDs come from npc ids (`ARG_Npc_N1`, `ARG_Npc_N13`).
   - The pool's look at the clay cut needs judging.
+- **Gate** (on d146564, game-6's commit of the shared files):
+  - `make plugin` twice gives the same out/Argonia.esm, sha256 ff89544a… (454,542 bytes).
+  - ArgoniaWorld.esm with the pool: 037ee922….
+  - plugin-check is green, including game-6's link check.
+  - `make check` is green: 286 pytest, 29 ctest, 1:44, 1.06 GB peak.
+  - game-6 was told the block is ready to lay, with the scenes and journeys.
