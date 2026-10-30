@@ -18,6 +18,9 @@ Bool Function SetFlag(String asFlag, Bool abValue) global native
 Bool Function ApplyLocalVariant(String asPlace, String asVariant) global native
 Bool Function SetPrice(String asService, Int aiPrice) global native
 Bool Function GiveItem(String asItem, Int aiCount) global native
+Bool Function TakeItem(String asItem, Int aiCount) global native
+Bool Function GiveGold(Int aiAmount) global native
+Bool Function TakeGold(Int aiAmount) global native
 Bool Function ChangeDisposition(String asNpc, Int aiDelta) global native
 Bool Function ChangeSettlementStanding(String asSettlement, Int aiDelta) global native
 

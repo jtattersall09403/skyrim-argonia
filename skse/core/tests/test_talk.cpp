@@ -69,6 +69,9 @@ void livia_talks() {
   CHECK(msg::encode(v).has_value());
   // The greeting's keywords are learned from her, so her topic list is not empty.
   CHECK(!v.topics.empty() && st.known.size() > 0);
+  // and open() hands those notes on for the SKSE log, not into a dropped reply.
+  CHECK(!c->greeting_notes().empty() && c->greeting_notes()[0].find("learned ") == 0);
+  CHECK(talk::speaks(*store, kKeeper) && !talk::speaks(*store, "npc.nobody"));
   const std::string t = v.topics.front().id;
   auto r = c->ask(t, ses);
   CHECK(r.state && r.state->entries.size() == 2 && r.state->entries[1].kind == msg::DialogueEntryKind::answer);

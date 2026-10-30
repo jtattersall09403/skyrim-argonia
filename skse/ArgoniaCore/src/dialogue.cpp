@@ -9,21 +9,29 @@ namespace argonia::plugin {
 
 namespace {
 
+// The world id of an actor whose talk is ours (a record of ours with lines in the store); none for anyone else.
+std::optional<std::string> SpeakerId(RE::Actor* actor) {
+  auto& c = Get();
+  if (!actor || !c.store) return std::nullopt;
+  auto id = WorldId(actor->GetActorBase());
+  if (!id) id = WorldId(actor);
+  if (!id || !ac::talk::speaks(*c.store, *id)) return std::nullopt;
+  return id;
+}
+
 // Opens the conversation for the pending speaker: the router's dialogue handler.
 void OnDialogueSurface(ac::router::SurfaceId) {
   auto& c = Get();
   std::lock_guard l(c.lock);
   auto ref = c.pending_speaker.get();
   c.pending_speaker = {};
+  // A new conversation replaces the last, which may never have been closed; a refusal leaves none open.
+  c.talk.reset();
+  c.views.erase("dialogue");
   auto* actor = ref ? ref->As<RE::Actor>() : nullptr;
-  if (!actor || !c.store) {
-    SKSE::log::warn("dialogue: no speaker or no topic store; nothing opens");
-    return;
-  }
-  auto id = WorldId(actor->GetActorBase());
-  if (!id) id = WorldId(actor);
+  auto id = SpeakerId(actor);
   if (!id) {
-    SKSE::log::warn("dialogue: {:08X} is not a record of ours; nothing opens", actor->GetFormID());
+    SKSE::log::warn("dialogue: {:08X} is not an Argonia speaker; nothing opens", actor ? actor->GetFormID() : 0);
     return;
   }
   auto s = Session();
@@ -33,6 +41,7 @@ void OnDialogueSurface(ac::router::SurfaceId) {
     return;
   }
   c.talk = std::move(*conv);
+  for (const auto& n : c.talk->greeting_notes()) SKSE::log::info("{}", n);
   auto json = ac::msg::encode(c.talk->view(s));
   if (!json) {
     SKSE::log::error("dialogue: the window does not fit the schema: {}", json.error());
@@ -53,8 +62,19 @@ class MenuSink final : public RE::BSTEventSink<RE::MenuOpenCloseEvent> {
     }
     auto& c = Get();
     std::lock_guard l(c.lock);
-    if (menu == RE::DialogueMenu::MENU_NAME)
-      if (auto* mtm = RE::MenuTopicManager::GetSingleton()) c.pending_speaker = mtm->speaker;
+    if (menu == RE::DialogueMenu::MENU_NAME) {
+      auto* mtm = RE::MenuTopicManager::GetSingleton();
+      auto speaker = mtm ? mtm->speaker.get() : RE::NiPointer<RE::TESObjectREFR>{};
+      auto* actor = speaker ? speaker->As<RE::Actor>() : nullptr;
+      // Only an Argonia speaker's menu is ours to close; anyone else keeps the vanilla menu (logged: decision 0012
+      // quarantines it, and a closed menu with nothing in its place would leave the player unable to talk at all).
+      if (!SpeakerId(actor)) {
+        SKSE::log::warn("router: vanilla Dialogue Menu left open for {:08X}, not an Argonia speaker",
+                        actor ? actor->GetFormID() : 0);
+        return RE::BSEventNotifyControl::kContinue;
+      }
+      c.pending_speaker = mtm->speaker;
+    }
     const auto v = c.router.on_menu(menu);
     if (!v.note.empty()) SKSE::log::info("router: {}", v.note);
     if (v.action == ac::router::Action::block)
@@ -80,7 +100,10 @@ class ContainerSink final : public RE::BSTEventSink<RE::TESContainerChangedEvent
                                         RE::BSTEventSource<RE::TESContainerChangedEvent>*) override {
     constexpr RE::FormID kPlayerRef = 0x14;
     if (e && (e->newContainer == kPlayerRef || e->oldContainer == kPlayerRef))
-      if (auto id = WorldId(RE::TESForm::LookupByID(e->baseObj))) FactsChanged("carried " + *id);
+    {
+      if (e->baseObj == kGold) FactsChanged("gold");  // Skyrim.esm's, so it has no world id; goldAtLeast reads it
+      else if (auto id = WorldId(RE::TESForm::LookupByID(e->baseObj))) FactsChanged("carried " + *id);
+    }
     return RE::BSEventNotifyControl::kContinue;
   }
 };

@@ -54,6 +54,7 @@ void forms_both_ways() {
   const auto* back = seam::form_at("ARGONIA.ESM", 0x852);  // file names compare without case
   CHECK(back && back->id == kLf83);
   CHECK(!seam::form("quest.none") && !seam::form_at("Argonia.esm", 0xFFFFFF));
+  CHECK(!seam::form_at("Argonia\x0Esm", 0x852));  // only letters fold: '.' (0x2E) is not 0x0E
   for (std::size_t i = 1; i < gen::kForms.size(); ++i) CHECK(gen::kForms[i - 1].id < gen::kForms[i].id);  // sorted
 }
 
@@ -241,6 +242,20 @@ void attributes() {
 
 }  // namespace
 
+// Orders the engine has not run yet are not given twice; a refused dispatch, a load or a revert lets them again.
+void in_flight_once() {
+  seam::InFlight f;
+  const seam::Order o{kLf83, {10, 11}, 20};
+  CHECK(f.filter({o}) == std::vector<seam::Order>{o});
+  CHECK(f.filter({o}).empty());                                    // the VM has not run the first yet
+  CHECK((f.filter({{kLf83, {10, 12}, 20}}) == std::vector<seam::Order>{{kLf83, {12}, std::nullopt}}));
+  CHECK((f.filter({{kLf83, {}, 30}}) == std::vector<seam::Order>{{kLf83, {}, 30}}));  // the next stage passes
+  f.forget(kLf83);
+  CHECK(f.filter({o}) == std::vector<seam::Order>{o});
+  f.clear();
+  CHECK(f.filter({o}) == std::vector<seam::Order>{o});
+}
+
 int main() {
   forms_both_ways();
   watch_family();
@@ -250,5 +265,6 @@ int main() {
   lf83_start_to_end();
   hooks_once();
   attributes();
+  in_flight_once();
   return TEST_MAIN_RESULT("core.seam");
 }

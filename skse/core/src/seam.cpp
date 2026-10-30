@@ -51,11 +51,15 @@ const gen::FormRow* form(std::string_view id) {
   return it != gen::kForms.end() && it->id == id ? &*it : nullptr;
 }
 
+namespace {
+constexpr char ascii_lower(char c) { return c >= 'A' && c <= 'Z' ? char(c - 'A' + 'a') : c; }
+}  // namespace
+
 const gen::FormRow* form_at(std::string_view plugin, std::uint32_t local) {
   for (const auto& r : gen::kForms)
     if (r.local == local && r.plugin.size() == plugin.size() &&
         std::equal(r.plugin.begin(), r.plugin.end(), plugin.begin(),
-                   [](char a, char b) { return (a | 0x20) == (b | 0x20); }))  // Skyrim's file names ignore case
+                   [](char a, char b) { return ascii_lower(a) == ascii_lower(b); }))  // Skyrim's file names ignore case
       return &r;
   return nullptr;
 }
@@ -335,6 +339,25 @@ std::vector<Order> Session::step() const {
     out.push_back({g.id, std::move(st.completed), st.set_stage});
   }
   return out;
+}
+
+std::vector<Order> InFlight::filter(std::vector<Order> orders) {
+  std::vector<Order> out;
+  for (auto& o : orders) {
+    auto& sent = sent_[o.quest];
+    std::vector<std::uint16_t> fresh;
+    for (auto i : o.completed)
+      if (sent.done.insert(i).second) fresh.push_back(i);
+    o.completed = std::move(fresh);
+    if (o.set_stage && sent.stage == o.set_stage) o.set_stage.reset();
+    else if (o.set_stage) sent.stage = o.set_stage;
+    if (!o.completed.empty() || o.set_stage) out.push_back(std::move(o));
+  }
+  return out;
+}
+
+void InFlight::forget(std::string_view quest) {
+  if (auto it = sent_.find(quest); it != sent_.end()) sent_.erase(it);
 }
 
 // --- Router -------------------------------------------------------------------------------------------------

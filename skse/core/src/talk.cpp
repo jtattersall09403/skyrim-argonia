@@ -39,17 +39,46 @@ msg::DispositionBand band_of(int d) {
 
 }  // namespace
 
-std::expected<topics::Store, std::vector<std::string>> fixture_store() {
-  std::vector<std::string> errors;
-  std::vector<topics::Topic> ts;
+namespace fixture_rows {
+
+std::vector<topics::Topic> topics() {
+  std::vector<topics::Topic> out;
   for (const auto& t : fx::kTopics) {
     topics::Topic x{std::string(t.id), std::string(t.label), {}, t.essential};
     for (std::size_t i = 0; i < t.form_count; ++i) x.forms.emplace_back(fx::kForms[t.first_form + i]);
-    ts.push_back(std::move(x));
+    out.push_back(std::move(x));
   }
-  std::vector<topics::Line> ls;
+  return out;
+}
+
+std::expected<conditions::Pred, std::string> condition(std::size_t c) {
+  const auto& fc = fx::kConds[c];
+  std::vector<conditions::FlatNode> nodes;
+  for (std::size_t i = 0; i < fc.node_count; ++i) {
+    const auto& n = fx::kNodes[fc.first_node + i];
+    std::vector<conditions::Arg> args;
+    for (std::size_t j = 0; j < n.arg_count; ++j) args.push_back(arg(fx::kArgs[n.first_arg + j]));
+    nodes.push_back({n.parent, n.term, std::move(args)});
+  }
+  return conditions::from_flat(nodes);
+}
+
+std::vector<std::expected<actions::Action, std::string>> action_list(std::size_t l) {
+  std::vector<std::expected<actions::Action, std::string>> out;
+  const auto& al = fx::kActionLists[l];
+  for (std::size_t i = 0; i < al.count; ++i) {
+    const auto& a = fx::kActions[al.first + i];
+    std::vector<conditions::Arg> args;
+    for (std::size_t j = 0; j < a.arg_count; ++j) args.push_back(arg(fx::kActionArgs[a.first_arg + j]));
+    out.push_back(actions::make(a.verb, std::move(args)));
+  }
+  return out;
+}
+
+std::vector<topics::Line> lines(bool written_only, std::vector<std::string>& errors) {
+  std::vector<topics::Line> out;
   for (const auto& l : fx::kLines) {
-    if (!written(l.speaker)) continue;
+    if (written_only && !written(l.speaker)) continue;
     topics::Line x;
     x.id = l.id;
     auto ty = topics::line_type(l.type);
@@ -61,45 +90,44 @@ std::expected<topics::Store, std::vector<std::string>> fixture_store() {
     x.low = l.low;
     x.high = l.high;
     if (l.cond >= 0) {
-      const auto& fc = fx::kConds[std::size_t(l.cond)];
-      std::vector<conditions::FlatNode> nodes;
-      for (std::size_t i = 0; i < fc.node_count; ++i) {
-        const auto& n = fx::kNodes[fc.first_node + i];
-        std::vector<conditions::Arg> args;
-        for (std::size_t j = 0; j < n.arg_count; ++j) args.push_back(arg(fx::kArgs[n.first_arg + j]));
-        nodes.push_back({n.parent, n.term, std::move(args)});
-      }
-      auto c = conditions::from_flat(nodes);
+      auto c = condition(std::size_t(l.cond));
       if (c) x.available = *c; else errors.push_back(x.id + ": " + c.error());
     }
     for (std::size_t i = 0; i < l.link_count; ++i) x.links.emplace_back(fx::kLinks[l.first_link + i]);
-    if (l.actions >= 0) {
-      const auto& al = fx::kActionLists[std::size_t(l.actions)];
-      for (std::size_t i = 0; i < al.count; ++i) {
-        const auto& a = fx::kActions[al.first + i];
-        std::vector<conditions::Arg> args;
-        for (std::size_t j = 0; j < a.arg_count; ++j) args.push_back(arg(fx::kActionArgs[a.first_arg + j]));
-        auto act = actions::make(a.verb, std::move(args));
-        if (act) x.on_delivered.push_back(*act); else errors.push_back(x.id + ": " + act.error());
+    if (l.actions >= 0)
+      for (auto& a : action_list(std::size_t(l.actions))) {
+        if (a) x.on_delivered.push_back(*a); else errors.push_back(x.id + ": " + a.error());
       }
-    }
-    ls.push_back(std::move(x));
+    out.push_back(std::move(x));
   }
+  return out;
+}
+
+}  // namespace fixture_rows
+
+std::expected<topics::Store, std::vector<std::string>> fixture_store() {
+  std::vector<std::string> errors;
+  auto ls = fixture_rows::lines(true, errors);
   if (!errors.empty()) return std::unexpected(errors);
-  return topics::Store::build(std::move(ts), std::move(ls));
+  return topics::Store::build(fixture_rows::topics(), std::move(ls));
+}
+
+bool speaks(const topics::Store& store, std::string_view speaker_id) {
+  const auto lines = store.lines();
+  return std::any_of(lines.begin(), lines.end(), [&](const topics::Line& l) { return l.speaker == speaker_id; });
 }
 
 std::expected<Conversation, std::string> Conversation::open(const topics::Store& store, seam::Session& session,
                                                             std::string speaker_id, std::string speaker_name) {
-  const auto lines = store.lines();
-  if (std::none_of(lines.begin(), lines.end(), [&](const topics::Line& l) { return l.speaker == speaker_id; }))
+  if (!speaks(store, speaker_id))
     return std::unexpected("dialogue: " + speaker_id + " has no lines in the topic store; not an Argonia speaker");
   Conversation c(store, std::move(speaker_id), std::move(speaker_name));
   const topics::Speaker sp{c.id_, seam::disposition_of(session.state(), c.id_)};
   const auto host = session.facts();
   if (auto g = topics::greeting(store, sp, session.state().known, host)) {
-    Reply ignored;
-    c.add(msg::DialogueEntryKind::greeting, std::nullopt, *g, session, ignored);
+    Reply r;
+    c.add(msg::DialogueEntryKind::greeting, std::nullopt, *g, session, r);
+    c.greeting_notes_ = std::move(r.notes);
   }
   return c;
 }

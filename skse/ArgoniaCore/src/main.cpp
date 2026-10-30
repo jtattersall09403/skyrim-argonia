@@ -29,6 +29,7 @@ void OnSave(SKSE::SerializationInterface* ser) {
 void OnLoad(SKSE::SerializationInterface* ser) {
   auto& c = plugin::Get();
   std::lock_guard l(c.lock);
+  c.inflight.clear();
   std::uint32_t type = 0, version = 0, length = 0;
   while (ser->GetNextRecordInfo(type, version, length)) {
     ac::cosave::Bytes bytes(length);
@@ -47,6 +48,7 @@ void OnRevert(SKSE::SerializationInterface*) {
   auto& c = plugin::Get();
   std::lock_guard l(c.lock);
   c.families.reset_all();
+  c.inflight.clear();
   c.talk.reset();
   c.views.clear();
   c.season.reset();

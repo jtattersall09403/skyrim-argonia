@@ -24,6 +24,8 @@
 #include "argonia/core/weather.h"
 
 #include <cstdint>
+#include <functional>
+#include <map>
 #include <optional>
 #include <set>
 #include <span>
@@ -94,7 +96,8 @@ class Engine {
 // The season on a date (weather's calendar); none for a date the calendar does not have.
 std::optional<weather::Season> season(const Date& d);
 // A person's disposition now: the co-save's value once met, else their base (authored base 0 until the person
-// rows carry one, 2.W5) from the player's effective Personality.
+// rows carry one, 2.W5) from the player's Personality: the base attribute until an effect can fortify it (no
+// magic effect writes the attributes yet; the effective value is owed to the spell chunk).
 int disposition_of(const State& s, std::string_view npc);
 // Quest state the actions keep in QSTA until their chunk gives them a family (2.6 prices, 2.12 variants and
 // standing): a settlement's standing is the counter named by its id, a local variant the flag "<place>#<variant>",
@@ -165,6 +168,24 @@ class Session {
   const Engine& e_;
   EngineWrites& w_;
   std::span<const quest_runtime::Graph> graphs_;
+};
+
+// The orders given to the engine that it has not shown yet. The engine's quest functions run on the VM later
+// (DispatchMethodCall), so a step taken before they run (a native's change and the container event it raises)
+// would give the same orders again. Each objective and stage passes once, until clear() (on load and revert) or
+// forget(quest) (when the engine refused the dispatch).
+class InFlight {
+ public:
+  std::vector<Order> filter(std::vector<Order> orders);
+  void forget(std::string_view quest);
+  void clear() { sent_.clear(); }
+
+ private:
+  struct Sent {
+    std::set<std::uint16_t> done;
+    std::optional<std::int32_t> stage;
+  };
+  std::map<std::string, Sent, std::less<>> sent_;
 };
 
 // --- The router's hooks, installed once (1.1 §d) ---------------------------------------------------------------

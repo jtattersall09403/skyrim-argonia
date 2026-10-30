@@ -7,8 +7,6 @@ namespace argonia::plugin {
 
 namespace {
 
-constexpr RE::FormID kGold = 0x0000000F;  // Skyrim.esm's Gold001, the engine's own currency record
-
 RE::PlayerCharacter* Player() { return RE::PlayerCharacter::GetSingleton(); }
 
 // Calls a Quest script function on the quest's bound object, through the VM (SetStage runs the stage's fragment).
@@ -161,20 +159,24 @@ ac::seam::Session Session() {
 void FactsChanged(std::string_view why) {
   auto& c = Get();
   std::lock_guard l(c.lock);
-  for (const auto& o : Session().step()) {
+  for (const auto& o : c.inflight.filter(Session().step())) {
     auto* q = Lookup<RE::TESQuest>(o.quest);
     if (!q) {
       SKSE::log::error("quests: {} is watched but not in this load order", o.quest);
       continue;
     }
+    bool refused = false;
     for (auto i : o.completed) {
       const bool ok = CallQuest(q, "SetObjectiveCompleted", static_cast<std::int32_t>(i), true);
+      refused |= !ok;
       SKSE::log::info("quests: {} objective {} completed ({}){}", o.quest, i, why, ok ? "" : ", dispatch refused");
     }
     if (o.set_stage) {
       const bool ok = CallQuest(q, "SetStage", static_cast<std::int32_t>(*o.set_stage));
+      refused |= !ok;
       SKSE::log::info("quests: {} SetStage {} ({}){}", o.quest, *o.set_stage, why, ok ? "" : ", dispatch refused");
     }
+    if (refused) c.inflight.forget(o.quest);  // the next step gives them again
   }
   if (why != "season") SeasonCheck();
 }

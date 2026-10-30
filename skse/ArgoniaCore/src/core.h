@@ -30,6 +30,7 @@ struct Core {
   std::map<std::string, std::string, std::less<>> views;  // the last push per view, as the view received it
   std::optional<ac::weather::Season> season;              // the season the weather globals hold
   RE::ObjectRefHandle pending_speaker;                    // the person the intercept is opening for
+  ac::seam::InFlight inflight;                            // quest orders dispatched, not yet run by the VM
 };
 Core& Get();
 
@@ -41,6 +42,7 @@ T* Lookup(std::string_view world_id) {
   return f ? f->As<T>() : nullptr;
 }
 std::optional<std::string> WorldId(const RE::TESForm* form);
+inline constexpr RE::FormID kGold = 0x0000000F;  // Skyrim.esm's Gold001, the engine's own currency record
 class GameEngine final : public ac::seam::Engine, public ac::seam::EngineWrites {
  public:
   std::optional<int> item_count(std::string_view item) const override;

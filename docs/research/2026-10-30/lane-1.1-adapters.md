@@ -59,3 +59,45 @@ Dated 2026-10-30. The lane stopped at the context mark. Commit `0c53bee`. Test l
   - Settlement standing, local variants and prices live in QSTA (keys `place#variant`, `price#service`) until 2.6 and 2.12.
   - An unmet person's base disposition is 0, because the NPC rows hold no authored base.
   - The Store is the generated fixture. The record sidecar loader is owed to 2.W5.
+
+## Continuation (2026-10-30, second context)
+
+**Done:**
+- **The intercept perk** was already committed in 8dacfe1, by the last context's child. `make plugin-check` passed
+  on it (exit 0, 290 MB peak RSS) once the water lane's rows were in.
+- **The Papyrus compile is owed.** argonia-play has no CK: no `Papyrus Compiler\PapyrusCompiler.exe` under the
+  game folder or anywhere on C:, and no `appmanifest_1946180.acf`. `records_jobs.ps1` stops at
+  `Need $pc 'the Creation Kit ...'`, and the owner-setup step "Add the Creation Kit to the Steam library" is still
+  unticked. `records_jobs.sh papyrus [files|dirs]` now takes a list. With no list it compiles `papyrus/`,
+  `papyrus/generated/` and `skse/ArgoniaCore/papyrus/` into one in-folder, so a fragment finds ArgoniaCore.psc.
+  There are no .pex hashes yet.
+- **Four L4 drafts** in `tests/journeys/`: `cosave`, `quest-board` (main run and two fail-forwards), `attributes`,
+  and `dialogue-intercept` (blocked on 2.W5's ARG_Speaker on Livia's NPC_). They are in 0.3 §d's format, because
+  `tools/run_journey.py` does not exist.
+- **The skse-build journal section** covers the MSVC `max` macro, no deploy while the game runs, and the missing CK.
+- **/code-review (high) over 18c0053..HEAD:** 10 findings; 9 fixed, 1 a stated loss.
+  - The stale conversation: OpenDialogue now resets `talk` before each open.
+  - Duplicate quest orders: `seam::InFlight`, with `in_flight_once` as its test.
+  - Every vanilla Dialogue Menu was closed: now only an ARG_Speaker's is (`talk::speaks`), and the rest are left
+    open with a warn line.
+  - Gold changes did not re-step the quests: they do now.
+  - The greeting's notes were swallowed: they are now logged (`greeting_notes`, with a test).
+  - The fixture conversion was duplicated: there is now one `talk::fixture_rows`.
+  - `form_at`'s case fold matched non-letters: it now folds ASCII letters only, with a test.
+  - Natives were missing: `TakeItem`, `GiveGold` and `TakeGold` are added.
+  - `records_jobs.sh`'s default missed sources: it now covers all three folders.
+  - **Stated loss:** disposition reads the base Personality, not the effective one. No effect writes the attributes
+    yet; the comment now says so.
+- **Measured:**
+  - `bash skse/check.sh`: 27/27, 387 MB peak RSS.
+  - MSVC no-deploy build (`-ModDir C:\argonia\no-deploy`): SKSE-BUILD OK, ctest 27/27, 0 `warning C` lines.
+    `ArgoniaCore.dll` is 1,315,840 bytes, SHA256 202701DAE1F6731C96472C690B6B8A93686D55E4411BEB3C1B071B16D1607E57.
+- **The deploy was handed to game-3** (a658d578d34038e38): the command, the SKSE log lines and the co-save lines to
+  check. game-3 will deploy at the next game-down slot. `Version()` through the bridge waits on the .pex.
+
+**Left:**
+- The CK install on argonia-play, then `records_jobs.sh papyrus` and the .pex hashes.
+- game-3's deploy lines.
+- The L4 runs, once `run_journey.py` exists.
+- The effective Personality, owed to the spell chunk.
+- `form_at`'s linear scan (P2 rolling), which matters only once the formid table holds the world.

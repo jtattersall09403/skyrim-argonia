@@ -83,6 +83,11 @@ bool SetPrice(RE::StaticFunctionTag*, RE::BSFixedString service, std::int32_t pr
 bool GiveItem(RE::StaticFunctionTag*, RE::BSFixedString item, std::int32_t n) {
   return Act("giveItem", {Str(item), static_cast<double>(n)});
 }
+bool TakeItem(RE::StaticFunctionTag*, RE::BSFixedString item, std::int32_t n) {
+  return Act("takeItem", {Str(item), static_cast<double>(n)});
+}
+bool GiveGold(RE::StaticFunctionTag*, std::int32_t n) { return Act("giveGold", {static_cast<double>(n)}); }
+bool TakeGold(RE::StaticFunctionTag*, std::int32_t n) { return Act("takeGold", {static_cast<double>(n)}); }
 bool ChangeDisposition(RE::StaticFunctionTag*, RE::BSFixedString npc, std::int32_t delta) {
   return Act("changeDisposition", {Str(npc), static_cast<double>(delta)});
 }
@@ -182,6 +187,9 @@ bool RegisterNatives(RE::BSScript::IVirtualMachine* vm) {
   vm->RegisterFunction("ApplyLocalVariant"sv, k, ApplyLocalVariant);
   vm->RegisterFunction("SetPrice"sv, k, SetPrice);
   vm->RegisterFunction("GiveItem"sv, k, GiveItem);
+  vm->RegisterFunction("TakeItem"sv, k, TakeItem);
+  vm->RegisterFunction("GiveGold"sv, k, GiveGold);
+  vm->RegisterFunction("TakeGold"sv, k, TakeGold);
   vm->RegisterFunction("ChangeDisposition"sv, k, ChangeDisposition);
   vm->RegisterFunction("ChangeSettlementStanding"sv, k, ChangeSettlementStanding);
   vm->RegisterFunction("OpenDialogue"sv, k, OpenDialogueNative);

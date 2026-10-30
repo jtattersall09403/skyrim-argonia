@@ -23,11 +23,23 @@ std::vector<msg::TextRun> runs(const topics::Store& store, std::string_view text
 // decision 0024 §7). The record loader replaces it when the people land (2.W5). Refusals are the reasons.
 std::expected<topics::Store, std::vector<std::string>> fixture_store();
 
+// The fixture's rows as the store's types, through the same validating constructors a loader uses: the one
+// conversion fixture_store() and the L2 tests share. `errors` collects any row a constructor refused.
+namespace fixture_rows {
+std::vector<topics::Topic> topics();
+std::expected<conditions::Pred, std::string> condition(std::size_t c);
+std::vector<std::expected<actions::Action, std::string>> action_list(std::size_t l);
+std::vector<topics::Line> lines(bool written_only, std::vector<std::string>& errors);  // false: every line
+}  // namespace fixture_rows
+
 struct Reply {
   std::optional<msg::DialogueState> state;  // the window to show; empty when it closed
   bool closed = false;
   std::vector<std::string> notes;           // refusals and action outcomes, for the SKSE log
 };
+
+// Whether the store holds any line for this speaker: an Argonia speaker, whose talk is ours.
+bool speaks(const topics::Store& store, std::string_view speaker_id);
 
 class Conversation {
  public:
@@ -41,6 +53,8 @@ class Conversation {
   Reply on_intent_text(std::string_view json, seam::Session& session);
   msg::DialogueState view(const seam::Session& session) const;
   const std::string& speaker() const { return id_; }
+  // The greeting's learning and action outcomes from open(), for the SKSE log.
+  const std::vector<std::string>& greeting_notes() const { return greeting_notes_; }
 
  private:
   Conversation(const topics::Store& s, std::string id, std::string name) : store_(&s), id_(std::move(id)), name_(std::move(name)) {}
@@ -49,6 +63,7 @@ class Conversation {
   const topics::Store* store_;
   std::string id_, name_;
   std::vector<msg::DialogueEntry> entries_;
+  std::vector<std::string> greeting_notes_;
 };
 
 }  // namespace argonia::core::talk
