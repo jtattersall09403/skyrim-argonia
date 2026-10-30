@@ -217,3 +217,48 @@ Accepted round-1 answers: R1, R2, R7, R9, R13; partly: R4, R5, R6, R11; not acce
   `quest_shape_data_items`.
 - Withdrawn: the round-1 claim that ford-mooring's water_id is a tarn 1.3 km away. body.221-1650 is the tarn at the
   ford.
+
+**Round 4 and `reviewed` (`979cf55`).**
+- Round 4 (fresh reviewer: 4 high, 4 medium, 15 low; report `review-r4.md`).
+- The four high findings are fixed:
+  - the crocodile's territory override is added to the 16a hand-off;
+  - the basket socket is unowned;
+  - stage 10's left and right are corrected, and its yards are converted from the measured metres;
+  - the ledger host is reworded. Its re-hosting on a table is added to the 0012 pass.
+- R4-M3 is fixed: the conditions read the evidence flags directly.
+- The rest go into review row `R4-rest`, noted for 2.12 under the planner's convergence rule.
+- `recordStatus: reviewed`. Briefs and place briefs are rebuilt.
+- Next lanes, from R4-rest: the dialogue writers should know that R4-M2 (Signs's stage-10 clay-bend row still uses
+  takes-doubts) and R4-M4 (Takes's cracked-well topic carries eight facts) stand. Write Signs's stage-10 line
+  without the reprisal. Pace Takes's topic over two answers.
+
+## Hand-off (second context, at the 250k mark): exact list for the next writing lane
+1. Run three `dialogue-writer` agents in parallel, one per person, plus a fourth for the journal brief. Each gets
+   the quest brief and the place brief:
+   - Livia Varinius: `out/briefs/lf83/lf83-livia-varinius.md` and `out/briefs/place/well-keeper.md`.
+   - Signs-For-The-Cargo: `out/briefs/lf83/lf83-signs-for-the-cargo.md` and `out/briefs/place/landing-s-poler.md`.
+   - Takes-The-Short-Weight: `out/briefs/lf83/lf83-takes-the-short-weight.md` and `out/briefs/place/n1-3.md`.
+   - The journal: `out/briefs/lf83/lf83-journal.md`.
+   Briefs are git-ignored; rebuild them first with
+   `brief.py quest.local.lf83 out/briefs/lf83` and `place_brief.py --person <id> --out out/briefs/place/<slug>.md`.
+   - Output: `out/lines/<slug>.yaml` in lines.py format.
+   - Ids: `line.claywater-station.<slug>.<topic-slug>[.<variant>]`.
+   - Bands: 1.3's three (the fixed SKILL §4).
+   - Gates: the terms written in each topic intent, as `available`.
+   - Actions as `onDelivered`. Signs's ford-charge line needs goldAtLeast 100 and takeGold 100. Livia's
+     two-charges pay line takes takeGold 2 and gives giveItem item.lf83.well-water. Takes's taste line takes
+     takeItem item.lf83.well-water and sets setFlag ford-tasted and mending-heard. Signs's one-charge line takes
+     takeItem clay-basket.
+   - Every greeting links topic.claywater-two-charges at stage 0 in the dry season. Each person gets
+     post-ending greeting variants and a Goodbye.
+   - Reports go to `~/argonia-private/work/writing-1/`.
+2. Import each file with `lines.py import out/lines/<slug>.yaml`, then lint it with
+   `lines.py text F > t.txt; lint.py t.txt --race <race>`.
+3. The journal text replaces each stage's `journalText` through `quest_record export/import`.
+4. Run `text-review` with one `reader` over the lines and the journal text, then the linter.
+5. Post the owner check-in with `owner_inbox.py --post check`:
+   - plain English: what the quest is, who the three people are, where the record and lines live, how to reply,
+     and that nothing waits on the read;
+   - the cost line from `python3 tools/cost_report.py`;
+   - no permission-drafts note (the planner dropped it: the permissions are already obtained).
+6. Run `make check` once, then commit by pathspec.
