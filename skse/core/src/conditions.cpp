@@ -297,6 +297,27 @@ std::expected<Pred, std::string> make(std::string_view term, std::vector<Arg> ar
   return make(*t, std::move(args), std::move(children));
 }
 
+std::expected<Pred, std::string> from_flat(std::span<const FlatNode> nodes) {
+  if (nodes.empty() || nodes[0].parent != -1) return std::unexpected("a tree starts with its root (parent -1)");
+  std::vector<Pred> built(nodes.size());
+  for (std::size_t i = 0; i < nodes.size(); ++i) {
+    auto t = term_named(nodes[i].term);
+    if (!t) return std::unexpected("'" + std::string(nodes[i].term) + "' is not in the vocabulary");
+    if (i > 0 && (nodes[i].parent < 0 || std::size_t(nodes[i].parent) >= i))
+      return std::unexpected("node " + std::to_string(i) + ": its parent must come before it");
+    built[i] = Pred{*t, nodes[i].args, {}};
+  }
+  // Attach from the last node back, so each child is whole (its own children gathered, last first, then put back in
+  // order) before it moves into its parent.
+  for (std::size_t i = nodes.size(); i-- > 1;) {
+    std::reverse(built[i].children.begin(), built[i].children.end());
+    built[std::size_t(nodes[i].parent)].children.push_back(std::move(built[i]));
+  }
+  std::reverse(built[0].children.begin(), built[0].children.end());
+  if (auto e = check(built[0])) return std::unexpected(*e);
+  return std::move(built[0]);
+}
+
 Pred all(std::vector<Pred> c) { return Pred{Term::all, {}, std::move(c)}; }
 Pred any(std::vector<Pred> c) { return Pred{Term::any, {}, std::move(c)}; }
 Pred negate(Pred c) { return Pred{Term::not_, {}, {std::move(c)}}; }

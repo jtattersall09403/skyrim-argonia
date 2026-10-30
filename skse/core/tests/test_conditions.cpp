@@ -153,6 +153,82 @@ void mirrors_for_p2() {
   CHECK(row(Term::knowsTopic).native.empty());
 }
 
+
+// LF83's terms (the Claywater quest), each true, false and unanswered against the stub.
+void lf83_terms() {
+  const std::string topic = "topic.t", npc = "npc.n", quest = "quest.q", obj = "obj.o", item = "item.i";
+  Stub s;
+  auto truth_case = [&](Pred p, const std::string& k) {
+    CHECK(evaluate(p, s).value == Tri::unknown);
+    s.truths[k] = true;
+    CHECK(eval(p, s));
+    s.truths[k] = false;
+    CHECK(!eval(p, s) && evaluate(p, s).value == Tri::no);
+  };
+  truth_case(P("topicHeardFrom", {topic, npc}), "topicHeardFrom(topic.t, npc.n)");
+  truth_case(P("objectiveComplete", {quest, obj}), "objectiveComplete(quest.q, obj.o)");
+  truth_case(P("npcAlive", {npc}), "npcAlive(npc.n)");
+  // flag: the wanted value is the optional second argument (true when left out); the key is the flag alone.
+  Pred raised = P("flag", {std::string("flag.f"), 1.0}), lowered = P("flag", {std::string("flag.f"), false});
+  CHECK(evaluate(raised, s).value == Tri::unknown);
+  s.truths["flag(flag.f)"] = true;
+  CHECK(eval(raised, s) && !eval(lowered, s) && eval(P("flag", {std::string("flag.f")}), s));
+  s.truths["flag(flag.f)"] = false;
+  CHECK(!eval(raised, s) && eval(lowered, s));
+  // hasItem: the count is the threshold (one when left out), asked by item alone.
+  Pred two = P("hasItem", {item, 2.0}), any_ = P("hasItem", {item});
+  CHECK(evaluate(two, s).value == Tri::unknown);
+  s.numbers["hasItem(item.i)"] = 1;
+  CHECK(!eval(two, s) && eval(any_, s));
+  s.numbers["hasItem(item.i)"] = 2;
+  CHECK(eval(two, s));
+  s.numbers["hasItem(item.i)"] = 0;
+  CHECK(!eval(any_, s));
+  // goldAtLeast and speakerDispositionAtLeast: a number with no key, at or above the threshold.
+  for (std::string_view t : {"goldAtLeast", "speakerDispositionAtLeast"}) {
+    Pred p = P(t, {70.0});
+    const std::string k = std::string(t) + "()";
+    CHECK(evaluate(p, s).value == Tri::unknown);
+    s.numbers[k] = 69;
+    CHECK(!eval(p, s));
+    s.numbers[k] = 70;
+    CHECK(eval(p, s));
+  }
+  CHECK(!make("goldAtLeast", {std::string("100")}).has_value());
+  // seasonIs: a state, compared as given.
+  Pred wet = P("seasonIs", {std::string("wet")});
+  // seasonIs has no closed set yet: the rows use dry, dry-peak, wet, wet-peak, weather has dry, hatching, wet.
+  CHECK(evaluate(wet, s).value == Tri::unknown);
+  s.states["seasonIs()"] = "dry";
+  CHECK(!eval(wet, s));
+  s.states["seasonIs()"] = "wet";
+  CHECK(eval(wet, s));
+}
+
+// from_flat: preorder rows with parent indices rebuild the same tree make() would, children in order.
+void flat_trees() {
+  std::vector<FlatNode> rows{{-1, "all", {}},
+                             {0, "questStage", {std::string("quest.q"), std::string("="), 30.0}},
+                             {0, "not", {}},
+                             {2, "any", {}},
+                             {3, "flag", {std::string("flag.a"), 1.0}},
+                             {3, "hasItem", {std::string("item.i"), 1.0}},
+                             {0, "seasonIs", {std::string("dry")}}};
+  auto t = from_flat(rows);
+  CHECK(t.has_value());
+  if (t) {
+    Pred want = all({P("questStage", {std::string("quest.q"), std::string("="), 30.0}),
+                     negate(any({P("flag", {std::string("flag.a"), 1.0}), P("hasItem", {std::string("item.i"), 1.0})})),
+                     P("seasonIs", {std::string("dry")})});
+    CHECK(*t == want);
+  }
+  CHECK(!from_flat({}).has_value());
+  std::vector<FlatNode> late{{-1, "all", {}}, {2, "flag", {std::string("f")}}, {0, "flag", {std::string("g")}}};
+  CHECK(!from_flat(late).has_value());  // a parent after its child
+  std::vector<FlatNode> bad{{-1, "not", {}}};
+  CHECK(!from_flat(bad).has_value());  // validated: not takes one
+}
+
 }  // namespace
 
 int main() {
@@ -162,6 +238,8 @@ int main() {
   other_shapes();
   unknowns_never_hold();
   mirrors_for_p2();
+  lf83_terms();
+  flat_trees();
   CHECK(compare(1, Op::le, 1) && compare(0, Op::lt, 1) && !compare(1, Op::eq, 2));
   CHECK(op_named("≥") == Op::ge && !op_named(">="));
   return TEST_MAIN_RESULT("core.conditions");

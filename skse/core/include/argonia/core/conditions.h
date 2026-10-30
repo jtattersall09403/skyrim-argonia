@@ -40,6 +40,14 @@ std::optional<std::string> check(const Pred& p);
 // A validated node, or why not.
 std::expected<Pred, std::string> make(Term t, std::vector<Arg> args, std::vector<Pred> children = {});
 std::expected<Pred, std::string> make(std::string_view term, std::vector<Arg> args, std::vector<Pred> children = {});
+// A tree from flat rows (a loader's shape: the world's `condition` rows, a generated table): nodes in preorder, each
+// naming its parent's index (-1 for the root, which is node 0); children keep their order. Validated as make() does.
+struct FlatNode {
+  int parent;
+  std::string_view term;
+  std::vector<Arg> args;
+};
+std::expected<Pred, std::string> from_flat(std::span<const FlatNode> nodes);
 Pred all(std::vector<Pred> c);
 Pred any(std::vector<Pred> c);
 Pred negate(Pred c);

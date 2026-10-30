@@ -6075,3 +6075,15 @@ CREATE TABLE "ltex_grass" (
   "grass_form_key" TEXT NOT NULL,
   PRIMARY KEY ("ltex_form_key", "ord")
 );
+
+-- == The action vocabulary's shapes (lane 1.3-rules; 85 §B as data, read by skse/core `actions`) ==
+
+-- Home of an action verb's arguments in order (85 §B): the kind of each and whether it may be left out
+-- (a left-out count is one; a left-out flag is true).
+CREATE TABLE "action_shape_arg" (
+  "term" TEXT NOT NULL REFERENCES "condition_term"("id"),
+  "ord" INTEGER NOT NULL,
+  "kind" TEXT NOT NULL CHECK ("kind" IN ('id', 'int', 'bool')),
+  "optional" BOOLEAN NOT NULL CHECK ("optional" IN (0, 1)),
+  PRIMARY KEY ("term", "ord")
+);
