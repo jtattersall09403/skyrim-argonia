@@ -64,7 +64,7 @@ lock; extra machines only for a substantial gain, created per job and stopped af
 streaming stays on argonia-play, extra machines are headless; `infra/gpu-box/clone.sh`), within the quota and cost rules. Each port (combat, climbing, boats, dialogue) keeps a journal file
 `docs/research/journals/<port>.md` (universal-modder's MODLOG): what was tried, measured and learned, so nothing
 is lost at a context hand-off.
-Game lanes `job_guard.sh reserve --gpu[=NAME] <lane>` at slot start and `release` at the end, and run jobs with `ARGONIA_LANE=<lane>`: the lock is per job, so without a slot another lane's job can take the machine between yours (a renamed DLL was left in place that way, 2026-10-30). Release the slot whenever you step away from the machine for more than about 10 minutes (coding, diagnosing) and re-reserve on return: a held slot starves other lanes' short jobs (2026-10-30, an owner-priority touch fix queued behind a 2-hour slot).
+Game lanes `job_guard.sh reserve --gpu[=NAME] <lane>` at slot start and `release` at the end, and run jobs with `ARGONIA_LANE=<lane>`: the lock is per job, so without a slot another lane's job can take the machine between yours (a renamed DLL was left in place that way, 2026-10-30). Release the slot whenever you step away from the machine for more than about 10 minutes (coding, diagnosing) and re-reserve on return: a held slot starves other lanes' short jobs (2026-10-30, an owner-priority touch fix queued behind a 2-hour slot). Before writing a CommonLibSSE-NG call, grep the pinned source at `~/.argonia/commonlib` (v15.2.0; reclone with `git clone --depth 1 --branch v15.2.0 https://github.com/alandtse/CommonLibSSE-NG.git ~/.argonia/commonlib`) instead of guessing through remote compiles.
 
 ## 4. The gate
 
