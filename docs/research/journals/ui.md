@@ -62,3 +62,37 @@ at a hand-off. The lane report is `docs/research/2026-10-30/lane-1.2-views.md`.
   check measures label-box overlap in every chart still. Margins are paper plus inline noise, the chart edge feathered.
   The phone type scale keys on device pixels (css x density, at most 2440 wide), not aspect alone: 21:9 monitors keep the
   desktop scale. Reader round 4 failed (gradient margins and a hard seam; a stray "th" of a covered label); round 5 below.
+
+## 2026-10-30: Pelagiad everywhere, the light retheme and the title (lane 1.2-theme)
+
+The lane report is `docs/research/2026-10-30/lane-1.2-theme.md`; the install steps are `installer/steps/ui-theme.md`.
+
+- **Dear Diary's art is in SWFs, not DDS.** Its menus load `interface/deardiary/**/<menu>_BG.swf` at run time (the
+  path strings are in each menu's bytecode). Each BG SWF holds one DefineBitsLossless2 bitmap (format 5, ARGB,
+  premultiplied). The copies embedded in the menu SWFs are fully transparent placeholders, so treating them changes
+  nothing. The SkyUI config panel's copy is the one real exception. The only DDS is `mainmenuwallpaper.dds` (DXT1,
+  2048², no mips). It is Skyrim's map (Falkreath Hold, Helgen, a hold emblem) with "The Elder Scrolls V / SKYRIM"
+  painted in, and Dear Diary's `logo.nif` shows it as the main menu. So it is replaced, not recoloured.
+- **Nordic marks in Dear Diary:**
+  - `map_bonus_BG.swf` carries the horned Dragonborn helmet as a watermark;
+  - `craftingmenu_enchanting_BG.swf` carries Skyrim's barbed enchanting sigil.
+
+  Both are cleared. The alchemy flask, the wheel's sunburst and the Oblivion-like loading frame's baroque
+  cartouche are not Nordic (reader, round 2).
+- **The font library.** Dear Diary's `fonts_fritzq.swf` is the working model:
+  - its tags are SetBackgroundColor, DefineFont3 (HasLayout, WideCodes), DefineFontName, ExportAssets under the
+    font's name, ShowFrame and End;
+  - menus import `$Everywhere*` names from `gfxfontlib.swf`, and `fontconfig.txt` maps them.
+
+  Our writer is pure Python. fontTools reads the TrueType outlines (quadratic, so they map 1:1 to SWF curves), at
+  a 20× 1024 em. On the laid dear-diary, skyui, wood-and-paper and oblivion-loading-menu folders, no menu imports
+  an unmapped name. JPEXS was not needed. Java is not on the VM.
+- **The palette map.**
+  - Measured: Dear Diary's paper sits at value 0.65 and saturation 0.12. Its frames sit at hue 18, saturation 0.5
+    and value 0.29.
+  - The first cut tinted everything above saturation 0.18, which turned the paper's warm stains orange and its
+    burnt edges into green mould.
+  - Final thresholds: dark frames tint to moss from saturation 0.38; bright leather tints to rust from 0.5.
+  - The bright loading parchment is held at `--paper`.
+- **Not done:** the in-game proof (L4, `tests/journeys/ui-sweep.yaml`). Scaleform may reject a detail of the
+  writer's DefineFont3 that the decoder accepts, so the first in-game still is the oracle.

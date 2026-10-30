@@ -12,6 +12,8 @@ py:pytest=9.2.0 sha256=n/a
 py:ruff=0.17.3 sha256=n/a
 py:requests=2.34.2 sha256=n/a
 py:pyyaml=6.0.1 sha256=n/a
+# the font library (1.2 §a, tools/ui_theme/fontlib.py): TrueType outlines into DefineFont3; the SWF itself is our own writer
+py:fonttools=4.60.1 sha256=n/a
 py:boto3=1.43.121 sha256=n/a
 py:playwright=1.55.0 sha256=n/a
 # the L3 UI harness (1.2): Playwright's headless shell, `python -m playwright install --only-shell chromium` (build v1187)

@@ -67,9 +67,18 @@
     "source_url": "https://github.com/isaskar/Pelagiad (commit f981301916d0e5a7ea9ce39d2af4e56df09677ca)",
     "version": "Pelagiad.ttf sha256 b282ea043af32e15bab8cf9e01d9625c0fa5032761ffbc57d7a5f939098a7d92 (pinned in tools/chart/render.py)",
     "licence": "SIL OFL 1.1 (Copyright (c) 2015 Isak Larborn; Reserved Font Name \"Pelagiad.ttf\")",
-    "used_by": "tools/chart (2.W4 §c parchment chart labels); later the UI font library (1.2 §a)",
+    "used_by": "tools/chart (2.W4 §c parchment chart labels); the UI font library fonts_pelagiad.swf and the Argonia title (1.2 §a, tools/ui_theme/fontlib.py, ui/title/title.py), both made at install",
     "linked_or_forked_by": "fetched by `python -m tools.chart fetch-font` into $ARGONIA_PRIVATE/fonts/pelagiad with its LICENSE.txt; not committed",
     "notes": "OFL allows bundling with the licence file (3.4 ships it so); unmodified, so the Reserved Font Name stays"
+  },
+  {
+    "name": "fontTools (Python library)",
+    "source_url": "https://pypi.org/project/fonttools/4.60.1/",
+    "version": "4.60.1 (infra/build-vm/toolchain.lock py:fonttools)",
+    "licence": "MIT",
+    "used_by": "tools/ui_theme/fontlib.py (1.2 §a): reads Pelagiad's outlines into the font library SWF; run at install (0014 §7)",
+    "linked_or_forked_by": "a pinned pip dependency of the build VM and the installer; not vendored",
+    "notes": "none"
   },
   {
     "name": "Skyrim Script Extender (SKSE64) (Nexus 30379)",
@@ -598,7 +607,7 @@
     "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/23010?tab=files&file_id=238225",
     "version": "3.0.6 (archive sha256 660c47a174b5..., data/dependencies.json row dear-diary)",
     "licence": "none stated",
-    "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 1.2: paper SkyUI menus",
+    "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 1.2: paper SkyUI menus; its menu bitmaps recoloured to our palette at install by tools/ui_theme/retheme.py (an overlay made on the player's machine, never shipped)",
     "linked_or_forked_by": "none: depended on as the player’s own download",
     "notes": "permission: No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission. AI clause: not stated: ask the author Permission request drafted for the owner (0.2 §e)."
   },
@@ -607,7 +616,7 @@
     "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/44174?tab=files&file_id=210124",
     "version": "1.0.2 (archive sha256 cdff527f39a8..., data/dependencies.json row wood-and-paper)",
     "licence": "none stated",
-    "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 1.2: Dear Diary's wood and paper skin",
+    "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 1.2: Dear Diary's wood and paper skin; its menu bitmaps recoloured to our palette at install by tools/ui_theme/retheme.py (an overlay made on the player's machine, never shipped)",
     "linked_or_forked_by": "none: depended on as the player’s own download",
     "notes": "permission: No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission. AI clause: not stated: ask the author Permission request drafted for the owner (0.2 §e)."
   },
@@ -616,7 +625,7 @@
     "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/38708?tab=files&file_id=152357",
     "version": "1.0 (archive sha256 5e3ec2151cd8..., data/dependencies.json row oblivion-loading-menu)",
     "licence": "none stated",
-    "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 1.2: paper loading screen (16:9)",
+    "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 1.2: paper loading screen (16:9); its menu bitmaps recoloured to our palette at install by tools/ui_theme/retheme.py (an overlay made on the player's machine, never shipped)",
     "linked_or_forked_by": "none: depended on as the player’s own download",
     "notes": "permission: No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission. AI clause: not stated: ask the author Permission request drafted for the owner (0.2 §e)."
   },
