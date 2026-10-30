@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# make deploy (chunk 0.3 §e): our build onto the game machine, the game restarted, the base save rebuilt.
+#   deploy.sh [--no-plugin] [--no-skse] [--no-stage] [--no-base]      run under: tooling/job_guard.sh run --gpu deploy -- make deploy
+# 1. make plugin: out/Argonia.esm and out/ArgoniaWorld.esm (skipped with --no-plugin);
+# 2. stack.py stage + push: the profile with the db's mod settings and the deferred rows our ESMs master;
+# 3. the game killed, then skse_build.sh: ArgoniaCore.dll and ArgoniaBridge.dll built with MSVC into MO2;
+# 4. the ESMs to C:\argonia\ours (sent only when their hash changed) and the scenes (tests/scenes/*.txt) to the game's
+#    folder, where `bat <id>` reads them;
+# 5. bridge.py launch --fresh: the profile laid again, our DLLs and ESMs copied in (bridge.ps1 prepare), main menu;
+# 6. base_save.py: a new game, the quarantine start, the studio character in the holding cell, saved as argoniabase.
+# Every step prints its seconds; the last line is DEPLOY OK.
+set -euo pipefail
+here=$(cd "$(dirname "$0")" && pwd); repo=$(cd "$here/../.." && pwd); cd "$repo"
+PY=$(ls "$HOME/.argonia/venv/bin/python" 2>/dev/null || command -v python3)
+plugin=1 skse=1 stage=1 base=1
+for a in "$@"; do case "$a" in --no-plugin) plugin=0 ;; --no-skse) skse=0 ;; --no-stage) stage=0 ;; --no-base) base=0 ;;
+  *) sed -n '2,10p' "$0"; exit 2 ;; esac; done
+run="$here/run.sh"; t0=$SECONDS
+step() { local s=$SECONDS; echo "== $1"; shift; "$@"; echo "== $(( SECONDS - s )) s"; }
+
+[ $plugin = 1 ] && step "make plugin" make --no-print-directory plugin
+for f in Argonia.esm ArgoniaWorld.esm; do [ -f "out/$f" ] || { echo "no out/$f: make plugin first" >&2; exit 1; }; done
+step "machine up" "$run" up
+if [ $stage = 1 ]; then step "stack stage" "$PY" "$here/stack.py" stage; step "stack push" "$PY" "$here/stack.py" push; fi
+step "game down" "$run" ps 'powershell -ExecutionPolicy Bypass -File C:\argonia\infra\bridge.ps1 -Cmd kill'
+[ $skse = 1 ] && step "skse build" "$here/skse_build.sh" build windows-dev
+
+send_esms() {
+  "$run" ps 'New-Item -ItemType Directory -Force C:\argonia\ours | Out-Null' >/dev/null
+  for f in Argonia.esm ArgoniaWorld.esm; do
+    local want have
+    want=$(sha256sum "out/$f" | cut -c1-64)
+    have=$("$run" ps "if (Test-Path C:\\argonia\\ours\\$f) { (Get-FileHash C:\\argonia\\ours\\$f).Hash.ToLower() }" | tr -d '\r\n')
+    if [ "$want" = "$have" ]; then echo "$f unchanged"; else "$run" put "out/$f" "C:/argonia/ours/$f" >/dev/null; echo "$f sent ($want)"; fi
+  done
+  local sc
+  for sc in tests/scenes/*.txt; do
+    "$run" put "$sc" "C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/$(basename "$sc")" >/dev/null
+  done
+  echo "$(ls tests/scenes/*.txt | wc -l) scenes sent"
+}
+step "send ESMs and scenes" send_esms
+step "launch" "$PY" tools/bridge.py launch --fresh
+[ $base = 1 ] && step "base save" "$PY" "$here/base_save.py"
+echo "DEPLOY OK in $(( SECONDS - t0 )) s"

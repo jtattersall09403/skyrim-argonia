@@ -49,6 +49,18 @@ def still(name):
     return str(B.screenshot(OUT / f"{name}.png"))
 
 
+def third_person():
+    """The play camera is third person (owner, 2026-10-29); a save or a stray F can leave it in first, where TDM's
+    directional movement is off and every roll reads as a strafe (game-5, 2026-10-30: IsPC1stPerson >> 1 under all
+    of game-3's dodge numbers). Toggle POV is F on the keyboard; a 100 ms press did not take, 300 ms did."""
+    for _ in range(2):
+        if console("IsPC1stPerson").endswith("0.00"):
+            return True
+        B.call("input", "key", "F", 300)
+        time.sleep(1.0)
+    raise SystemExit("the camera stays in first person")
+
+
 def record(key, value):
     RESULTS[key] = value
     OUT.mkdir(parents=True, exist_ok=True)
@@ -65,6 +77,7 @@ def cmd_launch(a):
     r = B.launch(fresh=a.fresh)
     B.call("load", a.save)
     time.sleep(4)  # the load screen fades
+    third_person()
     p = player()
     record("launch", {"save": a.save, "cell": p["cell"], "world": p["worldspace"], "ping": r["ping"],
                       "still": still("launch")})
@@ -113,9 +126,16 @@ def cmd_dodge(a):
     global STILLS
     STILLS = not a.no_stills
     want = a.dirs.split(",") if a.dirs else list(DIRS) + ["back"]
-    if a.cell:  # an open floor: at Riverwood a roll toward the trees ends on a trunk (setup only)
+    if a.at:  # an open floor (setup only): QASmoke's pillars stopped rolls at 2 to 80 units (game-5, 2026-10-30)
+        world, x, y = a.at.split(",")
+        B.call("console", f"cow {world} {int(float(x) // 4096)} {int(float(y) // 4096)}")
+        time.sleep(8)
+        B.call("teleport", "pos", x, y, player()["pos"]["z"] + 300)
+        time.sleep(3)  # the fall to the ground
+    elif a.cell:  # at Riverwood a roll toward the trees ends on a trunk
         B.call("console", f"coc {a.cell}")
         time.sleep(8)
+    third_person()
     if a.drawn:
         B.pad("RB:120 wait:1500")  # RB on sheathed draws: the sword out, as in a fight
     home = player()["pos"]
@@ -179,6 +199,7 @@ WOLF = "00023ABE"  # Skyrim.esm: Wolf, an actor base the console places (the ban
 
 
 def cmd_pad(a):
+    third_person()
     console("player.setav stamina 300")  # setup only: enough stamina for several attacks
     console("player.restoreav stamina 300")
     B.pad("RB:120 wait:1500")  # RB on sheathed draws, so the light attack below is an attack
@@ -246,6 +267,7 @@ def cmd_scene(a, run=1):
     t0 = time.monotonic()
     B.call("load", a.save)
     time.sleep(4)
+    third_person()
     p = player()
     home = p["pos"]
     record(f"scene{run}-load", {"cell": p["cell"]["editor_id"], "still": still(f"scene{run}-load")})
@@ -313,7 +335,9 @@ def main():
     s.add_argument("--dirs", default="", help="a subset, e.g. back,N,E (default: all eight and the backstep)")
     s.add_argument("--no-stills", action="store_true")
     s.add_argument("--drawn", action="store_true", help="the weapon drawn first")
-    s.add_argument("--cell", default="qasmoke", help="the cell to roll in (empty: where the player stands)")
+    s.add_argument("--cell", default="", help="a cell to roll in by coc (empty: --at, else where the player stands)")
+    s.add_argument("--at", default="tamriel,10700,-13025",
+                   help="world,x,y of an open floor (default: the plain west of Whiterun's palms, Tropical Skyrim)")
     sub.add_parser("pad")
     sub.add_parser("menus")
     s = sub.add_parser("scene")

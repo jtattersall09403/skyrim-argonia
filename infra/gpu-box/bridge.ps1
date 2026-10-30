@@ -3,7 +3,7 @@
 #   bridge.ps1 token               the token ArgoniaBridge wrote at this launch (and its time)
 #   bridge.ps1 kill                end SkyrimSE and its loader; a zombie (not responding, or surviving a kill) is
 #                                  taskkilled with its tree, and the call fails if anything survives 20 s
-#   bridge.ps1 prepare [-Fresh]    the profile on (stack.ps1 on, only if it is off, or always with -Fresh), then ArgoniaBridge.dll copied from
+#   bridge.ps1 prepare [-Fresh]    the profile on (stack.ps1 on, only if it is off, or always with -Fresh), then ArgoniaBridge.dll, ArgoniaCore.dll and our ESMs (C:\argonia\ours) copied from
 #                                  the dev-only MO2 folder into Data\SKSE\Plugins (a copy, not a link, so a rebuild
 #                                  never meets a locked file); stack.ps1 off removes it
 #   bridge.ps1 hang                suspends SkyrimSE (NtSuspendProcess): a zombie on purpose, for the relaunch check
@@ -57,10 +57,16 @@ switch ($Cmd) {
     New-Item -ItemType Directory -Force $dst | Out-Null
     Copy-Item $src "$dst\ArgoniaBridge.dll" -Force
     $h = (Get-FileHash "$dst\ArgoniaBridge.dll" -Algorithm SHA256).Hash.ToLower()
-    # ArgoniaCore (0.3 §b, 1.1) is laid beside it until make deploy lays our mods (2026-10-30: not in the modlist)
+    # ArgoniaCore (0.3 §b, 1.1) is laid beside it (skse_build.sh puts it in MO2's Argonia SKSE, outside the modlist)
     $core = 'C:\argonia\MO2\mods\Argonia SKSE\SKSE\Plugins\ArgoniaCore.dll'; $ch = $null
     if (Test-Path $core) { Copy-Item $core "$dst\ArgoniaCore.dll" -Force; $ch = (Get-FileHash "$dst\ArgoniaCore.dll").Hash.ToLower() }
-    J ([ordered]@{ laid = $true; file = "$dst\ArgoniaBridge.dll"; sha256 = $h; bytes = (Get-Item $src).Length; core_sha256 = $ch })
+    # Our plugins (make deploy puts out/*.esm into C:\argonia\ours): copied into Data and enabled last in Plugins.txt,
+    # ArgoniaWorld.esm before Argonia.esm (its master). stack.ps1 off removes them with everything else.
+    $esms = @(); $prefs = "$env:LOCALAPPDATA\Skyrim Special Edition\Plugins.txt"
+    foreach ($e in 'ArgoniaWorld.esm', 'Argonia.esm') { if (Test-Path "C:\argonia\ours\$e") {
+      Copy-Item "C:\argonia\ours\$e" "$Game\Data\$e" -Force; $esms += $e
+      $lines = @(Get-Content $prefs | ? { $_.TrimStart('*') -ne $e }); $lines += "*$e"; $lines | Set-Content $prefs -Encoding ASCII } }
+    J ([ordered]@{ laid = $true; file = "$dst\ArgoniaBridge.dll"; sha256 = $h; bytes = (Get-Item $src).Length; core_sha256 = $ch; esms = $esms })
   }
   'hang' {
     $p = Get-Process SkyrimSE -EA SilentlyContinue | Select -First 1

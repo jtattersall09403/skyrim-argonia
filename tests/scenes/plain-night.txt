@@ -1,0 +1,6 @@
+cow tamriel 2 -4
+player.setpos x 10700
+player.setpos y -13025
+player.setpos z -4500
+set gamehour to 0
+fw 0000081A

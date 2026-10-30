@@ -1,0 +1,38 @@
+# The 0.2 §c smoke scene as a journey (0.3 §d): walk, draw, swing, roll, block, the menus, on the open plain.
+# Climb, swim, ladder and boat wait for 0.4's proving ground (the fixtures); the lock-on is fight-lock-on's.
+id: smoke
+runner: 1
+scene: plain-armed
+steps:
+  - name: walk
+    do: [{pad: "LY=1:1500"}]
+    expect: [{moved: {gt: 100}}]
+  - name: draw
+    do: [{pad: "RB:120 wait:1500"}]
+    expect: [{console: player.IsWeaponOut, not_contains: ">> 0"}]
+  - name: swing
+    do: [{pad: "RB:120 wait:1200"}]
+    expect: [{event: {kind: anim, match: weaponSwing}}]
+  - name: roll
+    do: [{pad: "+LX=0,LY=1:500 B:100 wait:600 -:1200"}]
+    expect: [{event: {kind: anim, match: TKDR_DodgeStart}}, {moved: {gt: 300}}]
+  - name: block
+    do: [{pad: "LB:1800"}]
+    expect: [{event: {kind: anim, match: blockStartOut}}]
+  - name: inventory
+    do: [{key: "I 120"}, {wait: 1.5}]
+    expect: [{event: {kind: menu, match: InventoryMenu}}]
+  - name: inventory-closed
+    do: [{key: "I 120"}, {wait: 1}]
+  - name: map
+    do: [{key: "M 120"}, {wait: 2}]
+    expect: [{event: {kind: menu, match: MapMenu}}]
+  - name: map-closed
+    do: [{key: "M 120"}, {wait: 1}]
+  - name: journal
+    do: [{key: "J 120"}, {wait: 1.5}]
+    expect: [{event: {kind: menu, match: Journal Menu}}]
+  - name: journal-closed
+    do: [{key: "J 120"}, {wait: 1}]
+  - name: alive
+    expect: [{read: [player], path: dead, eq: false}]

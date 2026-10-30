@@ -1,0 +1,3 @@
+coc riverwood
+set gamehour to 12
+fw 0000081A

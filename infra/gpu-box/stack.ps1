@@ -47,6 +47,8 @@ function Set-GameWindow {
   }
   & $set "$docs\SkyrimPrefs.ini" 'Display' @{ 'iSize W' = $b.Width; 'iSize H' = $b.Height; 'bFull Screen' = 0; 'bBorderless' = 1 }
   & $set "$docs\Skyrim.ini" 'General' @{ 'bAlwaysActive' = 1 }
+  # No compass and no quest marker (1.2 §a, Morrowind's way): the player finds places by the chart and directions.
+  & $set "$docs\SkyrimPrefs.ini" 'Interface' @{ 'bShowCompass' = 0; 'bShowQuestMarkers' = 0 }
   # Skyrim does not declare DPI awareness, so on a scaled desktop Windows enlarges its window past the screen edge.
   $layers = 'HKCU:\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers'
   New-Item -Path $layers -Force | Out-Null

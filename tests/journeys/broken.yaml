@@ -1,0 +1,9 @@
+# Fails on purpose (0.3 §d): the runner must stop at `stand-still` with a readable reason and its still.
+id: broken
+runner: 1
+scene: holding
+steps:
+  - name: stand-still
+    expect: [{moved: {gt: 100}, within: 2}]
+  - name: never-reached
+    do: [{pad: "LY=1:500"}]

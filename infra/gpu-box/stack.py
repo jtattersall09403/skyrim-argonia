@@ -84,6 +84,7 @@ def save_manifest(doc):
     MANIFEST.write_text(json.dumps(doc, indent=1, ensure_ascii=False) + "\n")
 
 
+THEME = "argonia-theme"  # 1.2 §a's derived UI theme overlay (tools/ui_theme)
 CURRENT_PART = "0"  # stack.py --through's default: the rows of every chunk of the part being built
 
 
@@ -99,16 +100,17 @@ def started(chunk, through):
     return p < tp or (p == tp and (tn == float("inf") or (t == tt and n <= tn)))
 
 
-def chosen(doc, sets, dev, through=CURRENT_PART):
+def chosen(doc, sets, dev, through=CURRENT_PART, need=()):
     """The rows the profile lays, in load order: play rows (dev rows with --dev), one set per group, and only the
-    rows whose `from` chunk has started by `through` (deferred rows arrive with their first-use chunk)."""
+    rows whose `from` chunk has started by `through` (deferred rows arrive with their first-use chunk), or whose
+    plugin is in `need` (a master of our built plugins: Argonia.esm cannot load without it)."""
     pick = {g: names[0] for g, names in doc.get("sets", {}).items()}
     pick.update(sets)
     out = []
     for m in doc["mods"]:
         if m["profile"] == "pipeline" or (m["profile"] == "dev" and not dev) or m.get("dropped"):
             continue
-        if m.get("from") and not started(m["from"], through):
+        if m.get("from") and not started(m["from"], through) and not set(m.get("plugins") or []) & set(need):
             continue
         sets = m.get("set")  # one name or a list: a row shared by several sets stays one row
         if sets and pick.get(m["group"]) not in ([sets] if isinstance(sets, str) else sets):
@@ -534,6 +536,15 @@ def apply_ini(m, data):
         print(f"  {m['id']}: set {', '.join(edit['set'])} in {edit['file']}")
 
 
+def our_masters():
+    """The masters of our built plugins in out/ (make plugin), which make deploy lays."""
+    need = set()
+    for f in ("Argonia.esm", "ArgoniaWorld.esm"):
+        if (REPO / "out" / f).exists():
+            need |= set(masters_of(REPO / "out" / f))
+    return need
+
+
 def masters_of(plugin):
     """The MAST entries of a plugin's TES4 header."""
     with open(plugin, "rb") as f:
@@ -561,7 +572,7 @@ DOC_FIELDS = {"licence", "permission_summary", "ai_clause", "permission_ask", "p
 
 def cmd_stage(a):
     doc = manifest()
-    rows = chosen(doc, dict(s.split("=", 1) for s in a.set), a.dev, a.through)
+    rows = chosen(doc, dict(s.split("=", 1) for s in a.set), a.dev, a.through, need=our_masters())
     mods, tools, root, work = MO2 / "mods", MO2 / "tools", MO2 / "root", STACK / "_unpacked"
     keys = STACK / "staged"  # a row is re-staged only when its archive or its manifest entry changed
     for d in (mods, tools, root, keys):
@@ -569,7 +580,7 @@ def cmd_stage(a):
     names, record, ids, pruned, restaged = [], {}, {m["id"] for m in rows}, set(), {"pandora-output"}
     prev = json.loads((STACK / "installed.json").read_text())["files"] if (STACK / "installed.json").exists() else {}
     for d in list(mods.iterdir()):
-        if d.name not in ids and d.name != "pandora-output":
+        if d.name not in ids and d.name not in ("pandora-output", THEME):
             shutil.rmtree(d)
     for m in rows:
         laid = {k: v for k, v in m.items() if k not in DOC_FIELDS}  # a permission or note edit does not re-stage
@@ -603,6 +614,13 @@ def cmd_stage(a):
             names.append(m["id"])
         record[m["id"]] = {"fomod": taken} if taken else {}
     shutil.rmtree(work, ignore_errors=True)
+    theme = REPO / "out" / "ui_theme" / THEME  # derived on the build VM (installer/steps/ui-theme.md), never committed
+    if theme.exists():  # above dear-diary, wood-and-paper and oblivion-loading-menu, so its fontconfig.txt wins
+        shutil.rmtree(mods / THEME, ignore_errors=True)
+        shutil.copytree(theme, mods / THEME)
+        names.append(THEME)
+        restaged.add(THEME)
+        print(f"staged {THEME} from {theme}")
     names.append("pandora-output")  # filled when Pandora runs on the machine; highest priority
     (mods / "pandora-output").mkdir(exist_ok=True)
     prof = MO2 / "profiles" / PROFILE

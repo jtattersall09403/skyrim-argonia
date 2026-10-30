@@ -6,7 +6,7 @@ PY := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/python) python3)
 # A failing part records its name, then fails.
 FAIL = || { echo $@ >> $(RED); exit 1; }
 
-.PHONY: check hooks plugin db chart navmesh ui-stills $(PARTS)
+.PHONY: check hooks plugin db chart navmesh ui-stills deploy $(PARTS)
 
 check:
 	@rm -f $(RED)
@@ -65,6 +65,11 @@ plugin:
 # FormIDs append-only, pieces resolved, regenerate twice identical, plugin/ current, Spriggit round trip byte-identical.
 plugin-check:
 	@mkdir -p out && flock out/.plugin.lock $(PY) tools/ArgoniaGen/pipeline.py check $(FAIL)
+
+# Our build onto the game machine (0.3 §e): make plugin, the profile restaged, our DLLs built there, the ESMs and
+# scenes sent, the game relaunched, the base save rebuilt. Run it under tooling/job_guard.sh run --gpu.
+deploy:
+	@bash infra/gpu-box/deploy.sh $(DEPLOY_ARGS)
 
 hooks:
 	@bash tooling/guards/install_hooks.sh

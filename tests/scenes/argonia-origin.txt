@@ -1,0 +1,2 @@
+cow ARG_Province 0 0
+set gamehour to 12
