@@ -112,6 +112,7 @@ void input_keys_and_frames() {
 
 void nav_tests();
 void dev_tests();
+void input_tests();
 
 void core_calls_and_the_queue() {
   auto parsed = [](std::string line) { return std::get<Request>(parse(kToken + " " + line, kToken)); };
@@ -129,6 +130,7 @@ int main() {
   input_keys_and_frames();
   nav_tests();
   dev_tests();
+  input_tests();
   rest_keeps_the_line();
   numbers_and_form_ids();
   json_objects();
