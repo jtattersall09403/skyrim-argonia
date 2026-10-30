@@ -48,3 +48,33 @@ Views (reader): tween, wait and HTML journal readable at both sizes, nothing cli
 2. Touch taps (50 ms) do not close the PrismaUI journal or fire OCPA's RT power attack, though a 150 ms pad press does: likely the tap is too short for those readers; test a longer MIN_HOLD_MS.
 3. Folded touch layout overlaps the HUD bars and counter.
 4. R3 lock-on and the right stick need a reading with a target and an angle field.
+
+## Lane touch-fix (2026-10-30): the #17 findings fixed at source
+Changes (infra/stream-client, commit 75fae90): touch buttons are held at least 150 ms (`MIN_HOLD_MS`, was 50: the
+measured pad press that worked); the folded phone in landscape puts every button in a band at each side
+(`bandLayout`, `bandWidth` = 3.8 button units) and the client streams only the picture between the bands
+(`pictureCss`), so nothing covers the HUD; e2e `hold` step; steps `touchfix-pad.json`, `touchfix-touch.json`.
+Run touchfix (19:57-20:01 UTC, scratchpad m17/run2.py; bridge events and a 0.5 s player/tdm-target poll):
+- PASS touch B: a tap closed the HTML journal (PrismaUI_FocusMenu closed 3.4 s after opening, at the tap). The same
+  B press also rolled once the journal had closed (TKDR_DodgeStart 0.2 s later): polish, P2.
+- PASS touch RT: a tap and a 700 ms hold each gave PowerAttack_Start_end (2 of 2).
+- PASS right stick: LY forward before and after a 1 s RX push moved the player along headings ~170 deg and ~59 deg
+  (position deltas -541/+95 then +273/-459 units): the camera turned ~110 deg with RX alone.
+- PASS folded layout (still drive-t-hud): health, stamina and magicka bars and the money counter are clear; every
+  button sits in the side bands, Back and Start over the black strip above the picture.
+- FAIL D-up Favourites, pad and touch: no FavoritesMenu event. controlmap.py maps Favorites to D-up as the ruling
+  says; the keyboard check (Q) in that run was malformed.
+- UNPROVEN R3 lock-on: tdm-target read locked=true with no target all run (no NPC in reach at claywater-ambush).
+- Aspect, first run: still 16:9. Cause: the runner ran sunshine-prep.ps1 through `run.sh ps` (session 0), which cannot
+  see the virtual display, so the game kept SkyrimPrefs 1920x1080 (read on the machine).
+Run touchfix4 on argonia-play-2 (20:48-20:55 UTC; prep in the desktop session, game relaunched per shape):
+- PASS aspect: unfolded 2340x2160 request gave a 2240x2068 virtual display and the game fills the 784x724 phone
+  view with no bands (still drive-p-up); folded picture request 1484x1058 gave 1600x1200 (nearest 4:3).
+- PASS again: touch RT tap and hold (PowerAttack_Start_end x2); touch B closed the journal (2.7 s, at the tap).
+- Still open: D-up opens no FavoritesMenu by pad or touch, though controlmap maps Favorites to D-up (likely Skyrim
+  needs a favourited item; the keyboard Q control check was malformed both runs). R3: TDM's lock flag toggled with
+  each R3 (6 changes) with the deserter on screen, but tdm-target never named a target.
+- Open: a stream started while Skyrim is already running keeps the game's old shape (sunshine-prep leaves a running
+  game alone), so folding or unfolding mid-session brings bands back until the next launch.
+- The clone needed `stack.ps1 on` first (the image held a bare Data: no Address Library, our DLLs disabled).
+  argonia-play-2 ran 20:29-~21:00 UTC, about 0.5 h, ~$0.13; terminated, spot request cancelled, alarm deleted.
