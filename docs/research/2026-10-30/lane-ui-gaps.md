@@ -70,7 +70,7 @@ and two overflowed at 1080p, so text was cut off where the player could not see 
 - `bash skse/check.sh`: 32/32.
 - pytest for run_journey, core_tables and quest_gen: 34 passed.
 - Node view tests: green.
-- `make check`: see the commit message of the last commit.
+- `make check`: every part green (352 python tests in 118 s, skse 32/32, ui, plugin round trip) except `lint`, whose one finding is F401 in game-10's uncommitted `tools/argonia_world/tests/test_creature_dens.py:52`, not in this lane's paths.
 
 ## Owed to game-10 (L4)
 
