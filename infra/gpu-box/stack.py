@@ -45,6 +45,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
+import zipfile
 
 HERE = pathlib.Path(__file__).resolve().parent
 REPO = HERE.parents[1]
@@ -852,19 +853,57 @@ def stream(*args):
 PART = 1 << 30  # a mod's tar goes over in 1 GB parts, one on the build VM's disk at a time (BM&V is 21 GB)
 
 
+def wide_names(src):
+    """Files under `src` whose path is not plain ASCII, relative and '/'-separated. Windows tar converts each name
+    through the ANSI code page (1252) and skips one it cannot convert with "empty or unreadable filename" (game-10's
+    A restore: Rim Parry's and Modern Stagger Lock's `- 副本` copies and OAR's `RP弹反开启时间.xlsm`, 20 files
+    missing from Data); these go in a zip instead, whose UTF-8 names .NET reads exactly."""
+    return sorted(str(f.relative_to(src)).replace(os.sep, "/") for f in src.rglob("*")
+                  if f.is_file() and not str(f.relative_to(src)).isascii())
+
+
 def send_tar(src, out, n):
-    """tar `src` as C:/argonia/MO2/push/<n>.tar.NNN parts, never the whole tar on the build VM's disk."""
+    """tar `src` as C:/argonia/MO2/push/<n>.tar.NNN parts, never the whole tar on the build VM's disk; the files
+    with non-ASCII paths (wide_names) go as C:/argonia/MO2/push/<n>.wide.zip. Returns that zip's file count."""
     # three tries: one scp of a 1 GB part dropped with exit 255 while the machine was busy (2026-10-29)
     put = (f"for i in 1 2 3; do {RUN} put \"$FILE\" C:/argonia/MO2/push/ >/dev/null && break; [ $i = 3 ] && exit 1; "
            f"done && rm \"$FILE\"")
+    wide = set(wide_names(src))
+    names = sorted(str(f.relative_to(src)).replace(os.sep, "/") for f in src.rglob("*") if f.is_file())
+    listing = "".join(f"./{x}\0" for x in names if x not in wide)
     # pax: names go as UTF-8 in pax headers; in GNU format Windows tar reads the raw bytes as cp437 and lays
     # `°` as `┬░` (2026-10-29: 64 files of BM&V, Rim Parry and Modern Stagger Lock)
-    tar = subprocess.Popen(["tar", "--format=pax", "-cf", "-", "-C", str(src), "."], stdout=subprocess.PIPE)
-    subprocess.run(["split", "-b", str(PART), "-d", "-a", "3", f"--filter=cat > \"$FILE\" && {put}", "-",
-                    str(out / f"{n}.tar.")], stdin=tar.stdout, check=True)
+    tar = subprocess.Popen(["tar", "--format=pax", "--null", "--no-recursion", "-cf", "-", "-C", str(src), "-T", "-"],
+                           stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+    split = subprocess.Popen(["split", "-b", str(PART), "-d", "-a", "3", f"--filter=cat > \"$FILE\" && {put}", "-",
+                              str(out / f"{n}.tar.")], stdin=tar.stdout)
     tar.stdout.close()
-    if tar.wait():
+    tar.stdin.write(listing.encode("utf-8", "surrogateescape"))
+    tar.stdin.close()
+    if tar.wait() or split.wait():
         raise SystemExit(f"tar of {src} failed")
+    if wide:
+        z = out / f"{n}.wide.zip"
+        with zipfile.ZipFile(z, "w", zipfile.ZIP_STORED) as zf:  # non-ASCII names carry the UTF-8 flag (bit 11)
+            for x in sorted(wide):
+                zf.write(src / x, x)
+        run("put", str(z), f"C:/argonia/MO2/push/{n}.wide.zip")
+        z.unlink()
+    return len(wide)
+
+
+def unpack_script(n):
+    """PowerShell that lays the pushed <n>: the parts joined, tar unpacked (its exit code checked: a skipped entry
+    is a failed push), then <n>.wide.zip unpacked by .NET, which honours the zip's UTF-8 names."""
+    d, push = rf"C:\argonia\MO2\mods\{n}", r"C:\argonia\MO2\push"
+    return (rf"Remove-Item -Recurse -Force -LiteralPath '{d}' -EA SilentlyContinue; "
+            rf"New-Item -ItemType Directory -Force '{d}' | Out-Null; "
+            + join_parts(n) +
+            rf"tar -xf '{push}\{n}.tar' -C '{d}'; if ($LASTEXITCODE) {{ 'UNPACK FAILED: {n} (tar)'; exit 1 }}; "
+            rf"Remove-Item '{push}\{n}.tar'; "
+            rf"if (Test-Path -LiteralPath '{push}\{n}.wide.zip') {{ Add-Type -AssemblyName System.IO.Compression.FileSystem; "
+            rf"[IO.Compression.ZipFile]::ExtractToDirectory('{push}\{n}.wide.zip', '{d}'); "
+            rf"Remove-Item -LiteralPath '{push}\{n}.wide.zip' }}")
 
 
 def join_parts(n):
@@ -892,12 +931,10 @@ def cmd_push(a):
     for group in batch:
         for n in group:
             send_tar(MO2 / "mods" / n, out, n)
-        script = "; ".join(rf"Remove-Item -Recurse -Force -LiteralPath 'C:\argonia\MO2\mods\{n}' -EA SilentlyContinue; "
-                           rf"New-Item -ItemType Directory -Force 'C:\argonia\MO2\mods\{n}' | Out-Null; "
-                           + join_parts(n) +
-                           rf"tar -xf 'C:\argonia\MO2\push\{n}.tar' -C 'C:\argonia\MO2\mods\{n}'; "
-                           rf"Remove-Item 'C:\argonia\MO2\push\{n}.tar'" for n in group)
-        run("ps", script)
+        script = "; ".join(unpack_script(n) for n in group)
+        out_ps = run("ps", script + "; 'UNPACKED'", check=False, capture=True)  # absent after any failure
+        if "UNPACKED" not in out_ps.splitlines()[-1:]:
+            raise SystemExit("push: unpack failed: " + out_ps.strip()[-600:])
         for n in group:
             sent[n] = digest[n]
         (out / "sent.json").write_text(json.dumps(sent))
