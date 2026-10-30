@@ -270,13 +270,16 @@ class Runner:
         time.sleep(float(seconds))
 
     def _game_hours(self, hours):
-        """Game time passes on the game's own clock: the timescale raised so an hour is 0.6 s, then put back."""
+        """Game time passes on the game's own clock: the timescale raised, then put back. An hour is 0.6 s (6000) for a
+        short span; a span over two days runs ten times faster (60000), so a 50-day quarantine soak takes about 75 s,
+        not 12 minutes (2026-10-30 batch)."""
         before = self.b.call("time")
         old = float(self.b.call("global", "TimeScale")["value"])
-        self.b.call("console", "set timescale to 6000")
+        scale = 60000 if float(hours) > 48 else 6000
+        self.b.call("console", f"set timescale to {scale}")
         try:
             want = float(before["days_passed"]) + float(hours) / 24
-            for _ in range(int(float(hours) * 3) + 30):
+            for _ in range(int(float(hours) * 3 * 6000 / scale) + 30):
                 time.sleep(0.5)
                 if float(self.b.call("time")["days_passed"]) >= want:
                     break
