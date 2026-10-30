@@ -96,3 +96,23 @@ Ruled out:
 Left: Engine Fixes, Behavior Data Injector, Payload Interpreter, OAR itself, SkySA, Custom Skills, the
 behaviour files Pandora built, and Skyrim.ini or controlmap settings. Next: the same bisect over those, then a run
 with the profile off (vanilla behaviours: a vanilla power attack's step is the control).
+
+**0.2 §d, frame time (Defender quiet, +0.47 and +0.38 CPU-s over 30 s; Riverwood at the base save; the bridge's
+`frametime 600`, the player's per-frame Update interval):**
+
+| Run | p50 ms | p99 ms | fps median | fps 1% low |
+|---|---|---|---|---|
+| Community Shaders on, run 1 | 22.22 | 30.97 | 45.0 | 32.3 |
+| Community Shaders on, run 2 | 21.81 | 28.36 | 45.8 | 35.3 |
+| Community Shaders off (DLL aside) | 18.90 | 24.73 | 52.9 | 40.4 |
+
+**Both miss the bar** (60 fps median, 45 fps 1% low) on the g4dn.xlarge. CS costs about 3 ms. The water test
+cells, away from Riverwood's density, sit on the 60 fps cap (water.md).
+
+Owed:
+- **PresentMon.** `smoke.py frametime` ran it, but `run.sh get` found no CSV (the ETW session likely needs the
+  desktop session or admin).
+- **The CPU or GPU bound reading.**
+- **The stream latency.** `stream-e2e` was not run in this slot.
+
+The brief's fallback is lighter CS settings, then a larger instance, each measured.

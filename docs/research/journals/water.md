@@ -74,3 +74,41 @@ is lost at a hand-off. The lane reports are `docs/research/2026-10-29/lane-2.W2-
 - The work is on the ref `wip/water-design` (b50f2ab); the shared tree stayed at HEAD. The next steps are in
   `docs/research/2026-10-29/lane-water-design.md` §5. The first is to measure whether 32 is the right budget
   (an L4 frame time) before designing further.
+
+## 2026-10-30: the plane budget measured in game (lane game-2, L4)
+
+**The test plugin.** `ArgoniaWaterTest.esp` is dev only and never committed (a scratch build:
+`wip/water-design`'s `water plan` re-run in a worktree, 25,225 plane refs, max 127 at (-39,-43); Mutagen
+0.54.4). It holds the designed plane refs of three cells, laid in empty Tamriel exteriors, with the plan's 2
+WATR and 2 ACTI (fresh, black). Each set has a persistent XMarker as its enable parent, so `prid <marker>` then
+`disable` takes the set off.
+- **A:** (-39,-43), 127 planes, at Tamriel (-21,-4).
+- **B:** (-32,-16), 65 planes (no cell has exactly 64), at (35,15).
+- **C:** (-58,11), 32 planes, at (-6,-15).
+
+The `out/water/cells.jsonl` in the shared tree is an older plan, with a maximum of 41 per cell.
+
+**The run.** Defender was quiet (+0.38 CPU-s over 30 s), Community Shaders on, 12:00, clear weather, AI off.
+Each set was measured with the bridge's `frametime 600`: planes on, then the set disabled, then enabled again.
+
+| Set | Planes | On: p50 / p99 ms (fps p50, 1% low) | Off | On again |
+|---|---|---|---|---|
+| A (-39,-43) | 127 | 16.69 / 17.73 (59.9, 56.4) | 16.65 / 19.37 (60.0, 51.6) | 16.66 / 20.51 (60.0, 48.8) |
+| B (-32,-16) | 65 | 16.66 / 19.44 (60.0, 51.4) | 16.66 / 19.74 (60.0, 50.7) | 16.63 / 19.98 (60.1, 50.0) |
+| C (-58,11) | 32 | 16.72 / 21.60 (59.8, 46.3) | 16.67 / 27.91 (60.0, 35.8) | 16.68 / 21.18 (60.0, 47.2) |
+
+**Reading.**
+- Every median sits on the 60 fps vsync cap (16.67 ms), with the planes on and off.
+- The 1% lows move by more between two runs of the same state (C: 35.8 to 47.2) than between on and off.
+- So **127 planes show no measurable cost against the 0.2 §d bar** (60 fps median, 45 fps 1% low) on the
+  g4dn.xlarge. Every on-state passes the bar. The plane count is not what limits the budget at 127.
+
+**Caveats, owed:**
+- The vsync cap hides the headroom. An uncapped run, or the GPU time per frame (PresentMon wrote no CSV in this
+  slot), would give the true cost per plane.
+- The player fell from the teleport point (600 above the planes) to the ground, so the view was at plane level
+  rather than looking down from above.
+- One run per state.
+
+For scale, Riverwood alone runs at 45.8 fps median and 35.3 fps 1% low with CS on in the same slot. The dense
+land, not water planes, misses the bar.
