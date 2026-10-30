@@ -253,7 +253,7 @@ std::string frametime(const Request& req) {
   g_frames.clear();
   g_last = {};
   g_want = static_cast<std::size_t>(n);
-  if (!g_fcv.wait_for(l, std::chrono::milliseconds(std::min(static_cast<long long>(n * 250 + 2000), 100000LL)), [] { return g_want == 0; })) {
+  if (!g_fcv.wait_for(l, std::chrono::milliseconds((std::min)(static_cast<long long>(n * 250 + 2000), 100000LL)), [] { return g_want == 0; })) {
     g_want = 0;
     return reply_error("frametime", "only " + std::to_string(g_frames.size()) + " frames arrived (paused or in a menu?)");
   }
