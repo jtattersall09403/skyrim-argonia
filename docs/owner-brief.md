@@ -187,3 +187,5 @@ Something they can **play**, that is:
 | 2026-10-30 | **The look of the place is the owner's call** ("if you've used Tropical Skyrim and the selected mods for everything you'll be fine"); agents check Nordic tells, not feel. |
 | 2026-10-30 | **The soak runs last**, after everything else, once; never as an automated or regular gate. |
 | 2026-10-30 | **The planner owns** the world map fix, the screen technology choice (1.2 §0), the crocodile working in game, and the Dark Souls Combat trial (combat groups B/B2); all are in the goal. NPC sleep uses Skyrim's native way. |
+| 2026-10-30 | **A creature from a mod is used as its mod designed it**: KotM's crocodile is a water ambusher, so it lives in the shallows and attacks waders, not overridden to walk. |
+| 2026-10-30 | **Quest features are system-wide and native first**: the journal-updated notice (the engine's own HUD message) and thing hooks (activate/read sets a fact) serve every quest; LF83 is only the first user. |
