@@ -13,6 +13,10 @@ $client = New-Object Nefarius.ViGEm.Client.ViGEmClient
 $pad = $client.CreateXbox360Controller()
 $pad.Connect()
 Start-Sleep -Milliseconds $Settle   # the game notices a new pad on its next poll
+# Each call is a fresh hot-plug: the game's first read of a new pad only switches it to the pad, so a short first
+# press (RB to draw) was lost (diag3-g15). A small right-stick nudge does the switch before the sequence.
+$pad.SetAxisValue([Nefarius.ViGEm.Client.Targets.Xbox360.Xbox360Axis]::RightThumbY, 6000); Start-Sleep -Milliseconds 120
+$pad.SetAxisValue([Nefarius.ViGEm.Client.Targets.Xbox360.Xbox360Axis]::RightThumbY, 0); Start-Sleep -Milliseconds 300
 $B = [Nefarius.ViGEm.Client.Targets.Xbox360.Xbox360Button]
 $names = @{ A = $B::A; B = $B::B; X = $B::X; Y = $B::Y; LB = $B::LeftShoulder; RB = $B::RightShoulder; LS = $B::LeftThumb;
             RS = $B::RightThumb; START = $B::Start; BACK = $B::Back; UP = $B::Up; DOWN = $B::Down; LEFT = $B::Left; RIGHT = $B::Right }

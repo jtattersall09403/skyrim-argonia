@@ -28,8 +28,11 @@ steps:
       - {console: '"{opp}".setav aggression 0'}
       - {console: "player.moveto {opp} 0 -110 0"}
       - {console: "player.setangle z 0"}
+      - {key: "W 80"}             # the third-person camera ignores setangle until the player moves (diag3-g15)
       - {pad: "RB:120 wait:1500"}
-    expect: [{read: [av, VoicePoints, player], path: current, eq: {kept: vp}}]
+    expect:
+      - {read: [av, VoicePoints, player], path: current, eq: {kept: vp}}
+      - {console: player.IsWeaponOut, not_contains: ">> 0"}
   - name: novice-blow         # Str 40, Agi 40, Long Blade 5: 10.8 (+-0.5)
     do:
       - {call: [dev-set, SetSkill, longBlade, "5"]}

@@ -12,6 +12,7 @@ steps:
     do:
       - {console: "player.moveto ARG_Ref_ClaywaterStationLivia 0 -120 0"}
       - {console: "player.setangle z 0"}
+      - {key: "W 80"}             # the third-person camera ignores setangle until the player moves (diag3-g15)
       - {console: "ARG_Ref_ClaywaterStationLivia.moveto player 0 110 0"}
       - {console: "player.additem ARG_Weap_SteelSword 1"}
       - {console: "player.equipitem ARG_Weap_SteelSword"}

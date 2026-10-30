@@ -511,7 +511,7 @@ def test_talk_sets_the_npc_before_the_player_and_presses_e_once_the_crosshair_sh
     b = TalkFake(shows_after=3, heading=90.0)
     rj.Runner(b, pathlib.Path("/nonexistent")).act({"talk": "ARG_Ref_Livia"})
     assert "ARG_Ref_Livia.moveto player 110 0 0" in b.lines and "ARG_Ref_Livia.setangle z 270" in b.lines
-    assert b.reads == 3 and b.keys == [("key", "E", 120)]
+    assert b.reads == 3 and b.keys == [("key", "W", 80), ("key", "E", 120)]  # the camera nudge, then E
 
 
 def test_talk_fails_clearly_when_the_crosshair_never_shows_the_npc(monkeypatch, tmp_path):
@@ -519,7 +519,7 @@ def test_talk_fails_clearly_when_the_crosshair_never_shows_the_npc(monkeypatch, 
     b = TalkFake(shows_after=None)
     rep = rj.Runner(b, tmp_path / "o").run(journey(tmp_path, [{"name": "hi", "do": [{"talk": "ARG_Ref_Livia"}]}]), "base")
     assert not rep["passed"] and "crosshair never showed it" in rep["steps"][0]["reason"] and "Player" in rep["steps"][0]["reason"]
-    assert b.keys == []
+    assert b.keys == [("key", "W", 80)]  # the camera nudge only: no E
 
 
 def test_a_save_load_waits_for_the_load_to_settle_before_the_scene(monkeypatch):

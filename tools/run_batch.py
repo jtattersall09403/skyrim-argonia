@@ -32,6 +32,9 @@ save-changing ones last (owner, 2026-10-30: one batch, crash-prone last); `--all
 a journey with a `relaunch` action or `batch_last: true` (it ends at the main menu, quits or writes the saves the next item reads).
 Game lanes compose their batch this way, so no runnable draft is skipped.
 
+`relaunch_before: true` in a journey gives it a fresh game process (its scene changes worldspace with `cow`, which
+crashes the engine after uptime: smoke, world-sample).
+
 A crash is a failure: the item is recorded with its crash, the game is relaunched (bridge `launch`) and the batch
 goes on. Out: out/batch/<id>/<stamp>/summary.json, rewritten after every item: per item pass/fail, the failing step
 and its reason, seconds (and the scene apply's), private MB before and after, and whether the game was relaunched;
@@ -196,6 +199,10 @@ class Batch:
             for run in range(1, it["runs"] + 1):
                 mb = private_mb(self.b)
                 why = self.need_relaunch(mb)
+                if not why and self.since_launch and it.get("kind", "journey") == "journey" and \
+                        (JOURNEYS / f"{it['id']}.yaml").exists() and \
+                        (rj.load_journey(JOURNEYS / f"{it['id']}.yaml") or {}).get("relaunch_before"):
+                    why = "relaunch_before: its scene changes worldspace (engine crash after uptime, diag3-g15)"
                 relaunched = False
                 if why:
                     if not self.launch(why):

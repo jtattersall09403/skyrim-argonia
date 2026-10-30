@@ -2,7 +2,8 @@
 # Climb, swim, ladder and boat wait for 0.4's proving ground (the fixtures); the lock-on is fight-lock-on's.
 id: smoke
 runner: 1
-crash_risk: low
+crash_risk: high
+relaunch_before: true   # its scene cows to Tamriel: the engine crashes on that after uptime (diag3-g15)
 scene: plain-armed
 steps:
   - name: place          # the open plain inside the scene's cell (a setpos in the scene raced its cow: a crash)

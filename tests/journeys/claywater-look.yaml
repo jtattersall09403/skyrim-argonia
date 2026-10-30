@@ -31,6 +31,6 @@ steps:
   - name: station-house-inside
     # claywater-walk's stand-off: 70 units out on the porch against the door's heading, facing it (moveto onto the door
     # left the player outside with the prompt shown; diag2-crash-misc)
-    do: [{console: "player.moveto ARG_Ref_ClaywaterStationB1Door 37 60 20"}, {console: "player.setangle z 212"}, {wait: 2},
+    do: [{console: "player.moveto ARG_Ref_ClaywaterStationB1Door 37 60 20"}, {console: "player.setangle z 212"}, {key: "W 80"}, {wait: 2},
          {key: "E 120"}, {wait: 6}]
     expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 0"}]

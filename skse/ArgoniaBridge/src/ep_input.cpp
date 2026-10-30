@@ -2,8 +2,9 @@
 //   input key <chord> <ms> [os|engine]   a key press held ms (<= 3000). engine: ButtonEvents sent on the
 //                            main thread to the game's own input event source, so no window focus or WndProc is on
 //                            the path. os: SendInput scan codes after the main window is made foreground; the count
-//                            injected and GetLastError come back. os is the default: engine events open menus (J) but neither move the player
-//                            nor turn the camera (game-15, measured). Calls and schedule: protocol/input.h.
+//                            injected and GetLastError come back. With no route named, movement and camera keys go
+//                            os (engine events neither move nor turn: game-15) and every other key engine (os E,
+//                            ESC, TAB lost: no activation, menus left open). protocol/input.cpp is_movement_key. Calls and schedule: protocol/input.h.
 //   focus                    brings the game's main window to the foreground, or says who holds it
 //   input-diag               the foreground window, the game's window, the WndProc's module (PrismaUI?), last SendInput
 //   frametime [frames]       real frame intervals, measured at the player's per-frame update (a vtable hook by

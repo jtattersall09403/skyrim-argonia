@@ -18,12 +18,30 @@ std::variant<KeyCall, std::string> key_call(const Request& r) {
   if (!ms || *ms < 1 || *ms > kInputCapMs || *ms != static_cast<int>(*ms))
     return "the hold must be a whole 1..3000 ms (inputs are capped at 3 s)";
   c.ms = static_cast<int>(*ms);
+  // No route named: os for the keys the player moves or looks with (engine ButtonEvents neither move the player nor
+  // turn the camera), engine for every other key (os E, ESC and TAB were lost in game-15: no activation, menus
+  // left open; engine opened and closed them in the batch before).
+  c.route = Route::engine;
+  for (auto code : c.codes)
+    if (is_movement_key(code)) c.route = Route::os;
   if (a.size() == 4) {
     if (a[3] == "engine") c.route = Route::engine;
     else if (a[3] == "os") c.route = Route::os;
     else return "the route is engine or os, not " + a[3];
   }
   return c;
+}
+
+bool is_movement_key(std::uint16_t code) {
+  switch (code) {
+    case 0x11: case 0x1E: case 0x1F: case 0x20:  // W A S D
+    case 0x21:                                   // F (POV)
+    case 0x39: case 0x38: case 0x2A: case 0x1D:  // SPACE LALT LSHIFT LCTRL
+    case 0x2E:                                   // C (sneak)
+      return true;
+    default:
+      return false;
+  }
 }
 
 std::vector<Tick> press_ticks(int ms, int frame_ms) {

@@ -26,7 +26,7 @@ steps:
     do: [{key: "TAB 120"}, {wait: 1.5}]
   - name: stream-drop
     do: [{call: [core-suspend, stream_drop]}]
-    expect: [{log: {name: ArgoniaCore, contains: "saves: ArgoniaSuspend written (stream_drop)"}, within: 10}]
+    expect: [{log: {name: ArgoniaCore, contains: "saves: ArgoniaSuspend written (stream drop)"}, within: 10}]
   - name: in-combat-drop      # the crocodile's attack; the drop save is written in combat
     do:
       - {console: "tgm"}
@@ -36,7 +36,7 @@ steps:
       - {call: [core-suspend, stream_drop]}
     expect:
       - {console: "player.IsInCombat", contains: ">> 1"}
-      - {log: {name: ArgoniaCore, contains: "saves: ArgoniaSuspend written (stream_drop)"}, within: 10}
+      - {log: {name: ArgoniaCore, contains: "saves: ArgoniaSuspend written (stream drop)"}, within: 10}
   - name: interval-not-in-combat
     owed: a 300 s in-combat hold (30 waits) measured once on the game slot before it joins a batch
   - name: walk-away           # 50 m from the camp, out of combat

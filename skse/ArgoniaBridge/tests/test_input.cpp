@@ -13,6 +13,15 @@ void key_calls() {
   auto v = key_call(req("input key F 150"));
   auto* k = std::get_if<KeyCall>(&v);
   CHECK(k && k->route == Route::os && k->ms == 150 && k->codes.size() == 1 && k->codes[0] == 0x21);
+  v = key_call(req("input key E 120"));  // activation and menu keys default to the engine route
+  k = std::get_if<KeyCall>(&v);
+  CHECK(k && k->route == Route::engine);
+  v = key_call(req("input key TAB+W 120"));  // any movement key in the chord: os
+  k = std::get_if<KeyCall>(&v);
+  CHECK(k && k->route == Route::os);
+  v = key_call(req("input key E 120 os"));
+  k = std::get_if<KeyCall>(&v);
+  CHECK(k && k->route == Route::os);
   v = key_call(req("input key LSHIFT+W 800 os"));
   k = std::get_if<KeyCall>(&v);
   CHECK(k && k->route == Route::os && k->codes.size() == 2);

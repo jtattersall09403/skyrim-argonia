@@ -260,8 +260,10 @@ class Runner:
         return self.b.pad(str(seq))
 
     def _key(self, spec):
-        keys, ms = str(spec).split()
-        return self.b.call("input", "key", keys, int(ms))
+        keys, ms, *route = str(spec).split()  # `key: "TAB 120"` or `key: "TAB 120 engine"`; the bridge picks per key
+        r = self.b.call("input", "key", keys, int(ms), *route)
+        self.calls.append({"call": ["input", "key", keys, int(ms), *route], "result": r})
+        return r
 
     def _console(self, line):
         return self.b.call("console", line)
@@ -321,6 +323,9 @@ class Runner:
         crosshair's ref is that NPC (the bridge's `crosshair` read), polled for TALK_WAIT_S; StepFailed when it never
         is. An NPC under AI walked out of the crosshair during a fixed wait before E (diag2-dialogue-crime)."""
         ref = str(ref).strip().strip('"')
+        # The third-person camera keeps its own orbit until the player moves, so after console-only setup the
+        # crosshair ray ignores setangle (diag3-g15): one short step re-syncs it before the NPC is placed.
+        self.b.call("input", "key", "W", 80)
         caller = ref if ref.startswith("ARG_") else f'"{ref}"'  # a runtime id calls quoted (tools/journey_lint.py)
         h = float(self.b.call("player")["heading_deg"])
         dx, dy = TALK_UNITS * math.sin(math.radians(h)), TALK_UNITS * math.cos(math.radians(h))
@@ -336,7 +341,9 @@ class Runner:
                 raise StepFailed(f"talk {ref}: the crosshair never showed it within {TALK_WAIT_S:g} s "
                                  f"(last: {(seen or {}).get('editor_id') or (seen or {}).get('id') or 'nothing'})")
             time.sleep(0.25)
-        return self.b.call("input", "key", "E", 120)
+        r = self.b.call("input", "key", "E", 120)  # engine route by default (bridge: activation keys)
+        self.calls.append({"call": ["input", "key", "E", 120], "result": r})
+        return r
 
     def _call(self, args):
         r = self.b.call(*args)

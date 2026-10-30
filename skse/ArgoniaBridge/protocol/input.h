@@ -24,7 +24,7 @@ struct KeyCall {
   std::vector<std::uint16_t> codes;
   std::string names;
   int ms = 0;
-  Route route = Route::os;  // engine events reach menus but do not move the player or turn the camera (game-15)
+  Route route = Route::os;  // the default is per key: is_movement_key (input.cpp)
 };
 std::variant<KeyCall, std::string> key_call(const Request& r);  // the call, or the refusal in words
 
@@ -37,6 +37,9 @@ struct Tick {
 };
 // A press held `ms`: the down at 0, a held event every `frame_ms` (the engine re-sends held keys each frame, and
 // movement reads them), the up at `ms`.
+// The keys the player moves or looks with (W A S D, F, SPACE, LALT, LSHIFT, LCTRL, C): os by default.
+bool is_movement_key(std::uint16_t code);
+
 std::vector<Tick> press_ticks(int ms, int frame_ms = 16);
 
 // Who holds the foreground, from the window handles and process ids.
