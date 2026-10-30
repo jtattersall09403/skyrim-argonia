@@ -1844,6 +1844,38 @@
    ]
   },
   {
+   "id": "nemesis",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 60033,
+    "file": 248867
+   },
+   "name": "Nemesis Unlimited Behavior Engine",
+   "author": "ShikyoKira",
+   "version": "0.84-beta",
+   "archive": "Nemesis Unlimited Behavior Engine-60033-v0-84-beta-1639426722.rar",
+   "size_kb": 25515,
+   "why": "combat groups B and B2 only: the behaviour engine for DSC's FNIS list, which Pandora 5.0.0-beta did not wire (game-10; 0.2's named fallback for a Pandora failure); run on the machine in place of Pandora when the set lays it",
+   "chunk": "2.7",
+   "required": false,
+   "profile": "play",
+   "set": [
+    "dsc-b",
+    "dsc-b2"
+   ],
+   "install": "tool",
+   "sha256": "f1a4fda023dfb64444b2dfad2f6dc2c4e0df51afbe39042819a8ee6ffcc0eabd",
+   "licence": "GPL-3.0 (github ShikyoKira/Project-New-Reign---Nemesis-Main LICENSE; the Nexus page: 'licensed under GPL3')",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "Nexus SSE 60033 description (API, 2026-10-30): 'transparent and free for all modders and users, licensed under GPL3'; GitHub repo LICENSE GPL-3.0",
+   "runtime": "a Windows tool, runs beside the game (never under Wine)",
+   "conflicts": "replaces Pandora's run for the DSC sets only; set A keeps Pandora",
+   "linked_or_forked_by": "none: depended on as the player's own download"
+  },
+  {
    "id": "freeclimb",
    "group": "traversal",
    "source": {

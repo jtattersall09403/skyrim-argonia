@@ -143,7 +143,53 @@ switch ($Cmd) {
     Remove-Item "$Prefs\Plugins.txt", "$State\mode-on" -Force -EA SilentlyContinue
     "argonia profile off (vanilla): $removed files removed"
   }
+  'nemesis' {
+    # Nemesis 0.84-beta (DSC sets B and B2 only: Pandora did not wire DSC's FNIS list, game-10). Its output goes in
+    # the same pandora-output mod, so the profile, verify and pandora-check read it unchanged. Nemesis has no output
+    # path: it writes into Data, and a file there is a hard link into a mod, so every file it may write is first made
+    # a copy (never write through a link). Its own bundled patches (mod\tkuc and 15 more) are never laid: it
+    # generates only the codes our stack laid.
+    $out = "$Mo2\mods\pandora-output"; Remove-Item $out -Recurse -Force -EA SilentlyContinue
+    & $PSCommandPath on | Out-Null
+    $codes = @(Get-ChildItem "$Data\Nemesis_Engine\mod" -Directory -EA SilentlyContinue | % Name)
+    $tool = "$Mo2\tools\nemesis\Nemesis_Engine"
+    foreach ($f in [IO.Directory]::EnumerateFiles($tool, '*', 'AllDirectories')) {
+      $rel = $f.Substring($tool.Length + 1)
+      if ($rel -like 'mod\*') { continue }
+      $dst = "$Data\Nemesis_Engine\$rel"; [void][IO.Directory]::CreateDirectory([IO.Path]::GetDirectoryName($dst))
+      [IO.File]::Copy($f, $dst, $true)
+    }
+    $unlinked = 0
+    foreach ($f in @([IO.Directory]::EnumerateFiles("$Data\meshes", '*', 'AllDirectories') | ? { $_ -match '\\(behaviors|characters|character assets)[^\\]*\\[^\\]+\.hkx$|\.txt$' }) +
+                   @(Get-ChildItem "$Data\scripts" -Filter 'fnis*.pex' -EA SilentlyContinue | % FullName)) {
+      $tmp = "$f.unlink"; [IO.File]::Copy($f, $tmp, $true); [IO.File]::Delete($f); [IO.File]::Move($tmp, $f); $unlinked++
+    }
+    $t0 = (Get-Date).ToUniversalTime().AddSeconds(-2)
+    $exe = "$Data\Nemesis_Engine\Nemesis Unlimited Behavior Engine.exe"
+    $log = "$Root\logs\pandora-engine.log"
+    "engine: Nemesis 0.84-beta; codes $($codes -join ' '); $unlinked files made copies" | Set-Content $log
+    foreach ($na in @('-update', ('-generate ' + ($codes -join ' ')))) {
+      $p = Start-Process $exe -WorkingDirectory (Split-Path $exe) -ArgumentList $na -PassThru
+      if (-not $p.WaitForExit(900000)) { $p.Kill(); "nemesis $na did not finish in 900 s" | Add-Content $log; throw "Nemesis $na did not finish in 900 s" }
+      "nemesis $na exit $($p.ExitCode)" | Add-Content $log
+    }
+    Get-ChildItem "$Data\Nemesis_Engine" -Recurse -File -Include *.txt, *.log -EA SilentlyContinue |
+      ? { $_.LastWriteTimeUtc -ge $t0 -and $_.FullName -notlike '*\mod\*' } |
+      % { "== $($_.Name)"; Get-Content $_.FullName -TotalCount 400 } | Add-Content $log
+    # Its output: every file in Data written since the run began, outside its own engine folder
+    $n = 0
+    foreach ($f in @([IO.Directory]::EnumerateFiles($Data, '*', 'AllDirectories'))) {
+      $rel = $f.Substring($Data.Length + 1)
+      if ($rel -like 'Nemesis_Engine\*' -or $rel -like 'shadercache\*') { continue }
+      if ([IO.File]::GetLastWriteTimeUtc($f) -lt $t0 -and [IO.File]::GetCreationTimeUtc($f) -lt $t0) { continue }
+      $dst = "$out\$rel"; [void][IO.Directory]::CreateDirectory([IO.Path]::GetDirectoryName($dst)); [IO.File]::Copy($f, $dst, $true); $n++
+    }
+    if ($n -eq 0) { throw "Nemesis wrote no behaviours; see $log" }
+    & $PSCommandPath on | Out-Null
+    "nemesis: $n output files from $($codes.Count) mods ($($codes -join ', '))"
+  }
   'pandora' {
+    if (Test-Path "$Mo2\tools\nemesis") { & $PSCommandPath nemesis; break }  # the DSC sets' engine (stack.py lays it)
     # Pandora (a GUI app: run in the desktop session) writes to the outputPath in its Settings.json and, with
     # --auto_run, patches the mods cached in <output>\Pandora_Engine\ActiveMods.json (code, active, priority).
     $out = "$Mo2\mods\pandora-output"; Remove-Item $out -Recurse -Force -EA SilentlyContinue

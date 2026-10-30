@@ -834,7 +834,7 @@ def stack_dirs(a):
 def run(*args, check=True, capture=False):
     r = subprocess.run([RUN, *args], text=True, capture_output=capture, encoding="utf-8", errors="replace")
     if check and r.returncode != 0:
-        raise SystemExit(f"run.sh {args[0]} failed: {(r.stderr or '')[-400:]}")
+        raise SystemExit(f"run.sh {args[0]} failed ({' '.join(args[1:])[:160]}): {(r.stderr or '')[-400:]} {(r.stdout or '')[-400:]}")
     return r.stdout if capture else ""
 
 
@@ -993,11 +993,12 @@ def cmd_install(a):
         cmd_fetch(argparse.Namespace(record=False, only=None))
     cmd_stage(a)
     cmd_masters(a)  # the build VM's Data follows the staged set: the gate reads this profile (game-10: DSC listed, absent)
+    # the game quit before the push: a running game holds its DLLs, so a mod the new set drops cannot be removed
+    # (game-11: B2's push failed on ModernStaggerLock.dll); a bridge launch keeps it running
+    run("ps", r"Get-Process SkyrimSE,skse64_loader -EA SilentlyContinue | Stop-Process -Force; Start-Sleep 3")
     cmd_push(a)
-    # bare Data first, the game quit (a bridge launch keeps it running)
-    print(run("ps", r"Get-Process SkyrimSE,skse64_loader -EA SilentlyContinue | Stop-Process -Force; Start-Sleep 3; "
-                    r"& C:\argonia\infra\stack.ps1 off", capture=True))
-    os.environ["DESKTOP_WAIT"] = "900"
+    print(run("ps", r"& C:\argonia\infra\stack.ps1 off", capture=True))  # bare Data first
+    os.environ["DESKTOP_WAIT"] = "2000"  # Pandora, or Nemesis (update then generate, 900 s each at most)
     print(run("desktop", r"& C:\argonia\infra\stack.ps1 pandora", capture=True))
     cmd_animdata(a)
     cmd_menu(a)

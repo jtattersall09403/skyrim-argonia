@@ -76,7 +76,9 @@ def test_each_combat_set_lays_its_rows():
            for k, v in stack.COMBAT.items()}
     assert "dark-souls-combat" not in ids["A"] and "modern-stagger-lock" in ids["A"]
     assert "dark-souls-combat" in ids["B"] and not ids["B"] & {"tk-dodge-re", "elden-parry", "rim-parry", "modern-stagger-lock"}
-    assert ids["B2"] == ids["A"] - {"modern-stagger-lock"} | {"dark-souls-combat"}
+    # the DSC sets' behaviour engine: Nemesis runs in place of Pandora for B and B2 only (game-11)
+    assert "nemesis" in ids["B"] and "nemesis" in ids["B2"] and "nemesis" not in ids["A"]
+    assert ids["B2"] == ids["A"] - {"modern-stagger-lock"} | {"dark-souls-combat", "nemesis"}
 
 
 def test_b2_and_b_values_and_the_rips_drop_are_data():
