@@ -112,20 +112,23 @@ def test_walk_stays_in_the_data_one_row_away():
     assert npc["combatStyle"] == csty["formKey"] and csty["offensive"] > csty["defensive"]
 
 
-def test_shallows_den_stands_at_wading_depth():
+def test_shallows_den_sits_in_water_at_least_2_5_m_deep():
+    """LF83: the scour pool is 2.5 m deep or more at the clay cut, and the swim-only crocodile waits in it (game-12:
+    the old den stood on the bank at 33.26 m, above the 32.84 m surface). Read on the generated game ground, the
+    height the LAND stores and the generator stands the den on."""
     from tools.argonia_world import place_build as pb
     w = db.open()
     shallows = w.get("build_ref", "ref.claywater-station.crocodile-den-shallows")
-    pool = w.get("build_ground", "ground.claywater-station.scour-pool")
-    d = math.hypot(shallows.x_m - pool.x_m, shallows.y_m - pool.y_m)
-    floor_there = pool.floor_m + max(0.0, d - pool.flat_radius_m) * pool.side_rise
-    assert 0 < WATER_M - floor_there < 1.5, floor_there  # wading depth at the pool's edge
+    assert shallows.z_m is None  # the generator places it on the ground
+    floor_there = pb.GameGround().z(shallows.x_m, shallows.y_m)
+    assert WATER_M - floor_there >= POOL_DEPTH_M, floor_there
+    p = w.get("build_person", CROC)
+    raft = w.get("build_ref", "ref.claywater-station.raft")  # the ford stays outside its territory
+    assert math.hypot(shallows.x_m - raft.x_m, shallows.y_m - raft.y_m) > p.sandbox_radius_m
     row = dataclasses.replace(w.get("creature_hunt", CROC), way="shallows", den_ref_id=shallows.id)
     ctx, actor, cells, by_id = _croc_records(w, row)
     assert not [r for r in ctx.records.values() if r["type"] == "RACE"]  # the race as King of the Murkmire has it
     assert next(r for r in ctx.records.values() if r["type"] == "NPC_")["combatStyle"]
-    den = next(r for r in ctx.records.values() if r["type"] == "PACK" and r["edid"].endswith("_Den"))
-    assert den  # the sandbox centre follows the row
 
     class Ground:
         def z(self, x, y):

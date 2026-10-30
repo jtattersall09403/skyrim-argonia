@@ -157,7 +157,7 @@ TopCell:
     - 0x400
     Base: 000876:Argonia.esm
     Placement:
-      Position: -234239.11, 47998.34, 2328
+      Position: -234239.11, 48418.51, 2120
       Rotation: 0, 0, 3.141593
     MajorFlags:
     - Persistent
@@ -888,7 +888,7 @@ TopCell:
     - 0x400
     Base: 000034:Skyrim.esm
     Placement:
-      Position: -234239.11, 47998.34, 2328
+      Position: -234239.11, 48418.51, 2120
       Rotation: 0, 0, 3.141593
   MajorFlags:
   - Persistent
