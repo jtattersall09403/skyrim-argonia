@@ -101,6 +101,17 @@ def private_mb(b) -> float | None:
     return float(m[-1]) if m else None
 
 
+LOD_TOOLS = ("xLODGen", "xLODGenx64", "TexGen", "TexGenx64", "DynDOLOD", "DynDOLODx64", "LODGen", "LODGenx64", "Texconv")
+
+
+def lod_tools_running(b) -> list[str]:
+    """The LOD tools running on the machine; a batch beside one is void (game-12: xLODGen starved the game on 4 vCPU)."""
+    names = ",".join(f"'{n}'" for n in LOD_TOOLS)
+    out = b.machine.ps(f"Get-Process -Name {names} -EA SilentlyContinue | ForEach-Object {{ 'LOD ' + $_.ProcessName }}",
+                       timeout=90)
+    return sorted(set(re.findall(r"LOD (\S+)", out)))
+
+
 class Batch:
     def __init__(self, bridge, batch: dict, out: pathlib.Path, stills: bool = True, clock=time.monotonic):
         self.b, self.batch, self.out, self.stills, self.clock = bridge, batch, out, stills, clock
@@ -152,6 +163,12 @@ class Batch:
 
     def run(self) -> dict:
         t0, prev_ok = self.clock(), False
+        lod = lod_tools_running(self.b)
+        if lod:
+            self.summary["aborted"] = f"refused: an LOD tool is running on the machine ({', '.join(lod)}); run the batch alone"
+            self.summary["seconds"] = 0.0
+            self.write()
+            return self.summary
         for it in self.batch["items"]:
             for run in range(1, it["runs"] + 1):
                 mb = private_mb(self.b)

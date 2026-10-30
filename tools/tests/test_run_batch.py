@@ -23,6 +23,8 @@ class Machine:
         self.f = fake
 
     def ps(self, script, timeout=120):
+        if "Get-Process -Name" in script:
+            return "".join(f"LOD {n}\n" for n in getattr(self.f, "lod", []))
         return "MB none" if not self.f.alive else f"MB {self.f.mb}"
 
 
@@ -153,3 +155,11 @@ def test_launch_failing_twice_aborts(tmp_path, journeys):
     f.launch = lambda fresh=False: (_ for _ in ()).throw(BridgeError("no main menu"))
     s = rb.Batch(f, batch, tmp_path / "out", stills=False).run()
     assert "aborted" in s and not s["passed"] and len(s["launches"]) == 2
+
+
+def test_refuses_while_an_lod_tool_runs(tmp_path, journeys):
+    f = Fake()
+    f.lod = ["xLODGenx64"]
+    s = rb.Batch(f, {"id": "t", "items": rb.parse_items(["good"]), "relaunch_mb": 6000, "relaunch_every": 0},
+                 tmp_path / "out", stills=False).run()
+    assert "xLODGenx64" in s["aborted"] and s["items"] == [] and f.launches == 0
