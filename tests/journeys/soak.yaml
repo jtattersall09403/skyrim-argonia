@@ -1,0 +1,13 @@
+# The soak (1.7, Part 1 exit): first-place looped for 60 minutes. After each loop the runner measures the Papyrus
+# queue (`papyrus-queue`: running + suspended stacks), the rest save and its co-save sizes (Saves\ArgoniaRest.ess
+# and .skse on the machine), and 600 frame times (`frametime`). It passes with no crash, the queue flat (its peak at
+# most 5 stacks over the first loop's), the co-save flat after the first loop (within 512 bytes) and every loop's
+# frame times within the 0.2 §d bar (60 fps median, 45 fps 1% lows). Out: soak.json and each loop's report.
+#   tooling/job_guard.sh run --gpu soak -- python3 tools/run_journey.py tests/journeys/soak.yaml
+id: soak
+runner: 1
+soak:
+  journey: first-place
+  minutes: 60
+  frames: 600
+  bars: {p50_ms: 16.67, p99_ms: 22.22, queue_growth: 5, cosave_growth_bytes: 512}

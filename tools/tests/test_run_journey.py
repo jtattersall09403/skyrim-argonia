@@ -112,3 +112,109 @@ def test_draft_is_refused(tmp_path):
     p.write_text("id: d\nstatus: draft\nsteps: []\n")
     with pytest.raises(SystemExit):
         rj.load_journey(p)
+
+
+class CoreFake(Fake):
+    """Fake with ArgoniaCore reads: a vastei that grows on each pad, a pile string, and soak measures."""
+    def __init__(self, **kw):
+        super().__init__(**kw)
+        self.vastei, self.teleports, self.queue, self.cosave = 0, [], iter([3, 4, 3]), iter([2000, 2210, 2210, 2210])
+
+    def call(self, cmd, *args):
+        if cmd == "core":
+            if args[0] == "GetVastei":
+                return {"native": "GetVastei", "value": self.vastei}
+            if args[0] == "PileState":
+                return {"native": "PileState", "value": "10.50 -20.25 3.00 0000003C 120"}
+        if cmd == "teleport":
+            self.teleports.append(args)
+            return {}
+        if cmd == "frametime":
+            return {"p50_ms": 15.0, "p99_ms": 20.0}
+        return super().call(cmd, *args)
+
+    def pad(self, seq):
+        self.vastei += 5
+        return super().pad(seq)
+
+    def papyrus_queue(self):
+        return {"stacks": next(self.queue, 3)}
+
+    def save_bytes(self, name):
+        return {"ess": 1, "skse": next(self.cosave, 2210)}
+
+
+def test_kept_values_compare_later_and_fill_an_action(tmp_path):
+    j = journey(tmp_path, [
+        {"name": "before", "expect": [{"read": ["core", "GetVastei"], "path": "value", "keep": "v0"}]},
+        {"name": "earn", "do": [{"pad": "RB:120"}], "expect": [{"read": ["core", "GetVastei"], "path": "value",
+                                                                 "gt": {"kept": "v0"}}]},
+        {"name": "pile", "expect": [{"read": ["core", "PileState"], "path": "value", "ne": "", "keep": "pile"}]},
+        {"name": "go", "do": [{"teleport": "pos {pile.0} {pile.1} {pile.2}"}]}])
+    b = CoreFake()
+    rep = rj.Runner(b, tmp_path / "out", stills=False).run(j, "argoniabase")
+    assert rep["passed"], rep
+    assert b.teleports == [("pos", "10.50", "-20.25", "3.00")]
+
+
+def test_a_kept_comparison_fails_with_its_reason(tmp_path):
+    j = journey(tmp_path, [
+        {"name": "before", "expect": [{"read": ["core", "GetVastei"], "path": "value", "keep": "v0"}]},
+        {"name": "no-input", "expect": [{"read": ["core", "GetVastei"], "path": "value", "gt": {"kept": "v0"}}]}])
+    rep = rj.Runner(CoreFake(), tmp_path / "out", stills=False).run(j, "argoniabase")
+    assert rep["failed_at"] == "no-input" and "wanted gt 0" in rep["steps"][1]["reason"]
+
+
+def test_dry_validates_scene_and_kept_order(tmp_path, monkeypatch):
+    import yaml
+    monkeypatch.setattr(rj, "SCENES", tmp_path)
+    (tmp_path / "s.txt").write_text("set gamehour to 10\r\n")
+    good = tmp_path / "good.yaml"
+    good.write_text(yaml.safe_dump({"id": "good", "runner": 1, "scene": "s", "steps": [
+        {"name": "a", "expect": [{"read": ["core", "PileState"], "path": "value", "keep": "pile"}]},
+        {"name": "b", "do": [{"teleport": "pos {pile.0} {pile.1} {pile.2}"}]}]}))
+    assert "2 steps" in rj.dry(good)
+    early = tmp_path / "early.yaml"
+    early.write_text(yaml.safe_dump({"id": "early", "runner": 1, "scene": "s", "steps": [
+        {"name": "b", "do": [{"teleport": "pos {pile.0} 0 0"}]}]}))
+    with pytest.raises(SystemExit, match="before it is kept"):
+        rj.dry(early)
+    noscene = tmp_path / "noscene.yaml"
+    noscene.write_text(yaml.safe_dump({"id": "n", "runner": 1, "scene": "missing", "steps": [{"name": "a"}]}))
+    with pytest.raises(SystemExit, match="no scene"):
+        rj.dry(noscene)
+    soak = tmp_path / "soak.yaml"
+    soak.write_text(yaml.safe_dump({"id": "soak", "runner": 1, "soak": {"journey": "good", "minutes": 1}}))
+    assert "soak of good" in rj.dry(soak)
+    soak.write_text(yaml.safe_dump({"id": "soak", "runner": 1, "soak": {"journey": "good", "bars": {"fps": 1}}}))
+    with pytest.raises(SystemExit, match="unknown soak bars"):
+        rj.dry(soak)
+
+
+def test_the_real_first_place_and_soak_validate():
+    here = pathlib.Path(rj.__file__).resolve().parents[1] / "tests" / "journeys"
+    assert "ok" in rj.dry(here / "first-place.yaml")
+    assert "soak of first-place" in rj.dry(here / "soak.yaml")
+
+
+def test_soak_loops_measures_and_judges(tmp_path):
+    import yaml
+    (tmp_path / "inner.yaml").write_text(yaml.safe_dump({"id": "inner", "runner": 1, "steps": [{"name": "a"}]}))
+    j = {"id": "soak", "runner": 1, "soak": {"journey": "inner", "minutes": 1, "frames": 10}}
+    ticks = iter([0, 10, 20, 30, 100])  # three loops inside the minute, then the clock runs out
+    v = rj.soak(CoreFake(), j, tmp_path, tmp_path / "out", "argoniabase", clock=lambda: next(ticks))
+    assert v["passed"], v["reasons"]
+    assert [x["papyrus"]["stacks"] for x in v["loops"]] == [3, 4, 3]
+    assert (tmp_path / "out" / "soak.json").is_file()
+
+
+def test_judge_soak_names_every_reason():
+    bars = rj.SOAK_BARS
+    loops = [{"n": 1, "passed": True, "papyrus": {"stacks": 3}, "save_bytes": {"skse": 2000}, "frames": {"p50_ms": 15}},
+             {"n": 2, "passed": True, "papyrus": {"stacks": 30}, "save_bytes": {"skse": 2200}, "frames": {"p50_ms": 15}},
+             {"n": 3, "passed": False, "failed_at": "die", "papyrus": {"stacks": 31}, "save_bytes": {"skse": 4000},
+              "frames": {"p50_ms": 25, "p99_ms": 40}},
+             {"n": 4, "passed": False, "failed_at": "game down", "crash": "crash-1.log"}]
+    why = " | ".join(rj.judge_soak(loops, bars))
+    for part in ("game went down", "failed at die", "queue grew 3 -> 31", "co-save after the first loop", "p50 25"):
+        assert part in why, why

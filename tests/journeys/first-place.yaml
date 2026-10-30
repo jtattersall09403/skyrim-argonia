@@ -1,0 +1,230 @@
+# The first-place journey (1.7): Claywater Station played as one loop, composed from the chunk journeys
+# (claywater-walk, dialogue-intercept, quest-board, die-and-recover, fight-archetype, grow-at-rest,
+# rest-is-the-only-save, cosave). Order as 1.7 gives it. Judged on state and events, a still per step; teleports
+# between short steps. ArgoniaCore's state is read through the bridge's `core` (reads and the two view intents only).
+# A talk is the real path: stand 1.2 m south of the speaker facing north and press E (the intercept perk opens our
+# window); a topic is the view's own intent (ViewIntent) until a click sends it.
+# Staged by the scene (never tested here): the place, hour, weather, a camp spot by the road, a travelling dagger, the
+# crocodile's loot. Cheats: god mode for the crocodile only (the ambush and the death are the tested fight), and the
+# player's health lowered before the death so the deserter's blow is the lethal one (die-and-recover's rule).
+# Owed at L4 (game-6): `core` and `papyrus-queue` deployed (dec1c2b); the face-and-press E pose tuned once per speaker.
+id: first-place
+runner: 1
+scene: first-place
+steps:
+  # --- arrive by the road ---------------------------------------------------------------------------------------
+  - name: arrived
+    expect:
+      - {console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}
+      - {console: "GetStage ARG_Q_LF83", contains: ">> 0"}
+      - {read: [core, KnowsTopic, topic.claywater-two-charges], path: value, eq: false}
+      - {read: [core, SaveCount], path: value, keep: saves0}
+  - name: walk-in
+    do: [{pad: "LY=1:3000"}, {pad: "LY=1:3000"}]
+    expect: [{moved: {gt: 600}}]
+  - name: make-camp        # a rest outside the settlement: the wake point for the death later
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationRoadIn 0 -150 0"}
+      - {console: "player.setangle z 0"}
+      - {console: "player.setangle x 30"}
+      - {wait: 1}
+      - {key: "E 120"}
+      - {wait: 4}
+    expect:
+      - {read: [core, WakePoint], path: value, ne: ""}
+      - {read: [core, SaveCount], path: value, gt: {kept: saves0}, within: 10}
+  # --- talk, learn a topic, ask it of a second person, take LF83 -----------------------------------------------
+  - name: talk-to-takes    # n1-3, the landing's walker: her greeting links the hook topic (dry season)
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationTakes 0 -120 0"}
+      - {console: "player.setangle z 0"}
+      - {console: "player.setangle x 0"}
+      - {wait: 1}
+      - {key: "E 120"}
+      - {wait: 2}
+    expect:
+      - {read: [core, ViewState, dialogue], path: value.body.speaker.id, eq: npc.imperial-fringe.claywater-station.n1-3}
+  - name: learn-topic
+    do: [{call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.claywater-two-charges"}}']}]
+    expect:
+      - {read: [core, KnowsTopic, topic.claywater-two-charges], path: value, eq: true}
+  - name: goodbye-takes
+    do: [{call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}, {wait: 1}]
+    expect: [{read: [core, ViewState, dialogue], path: value, eq: null}]
+  - name: ask-livia        # the same topic of a second person: the station's side (objective hear-station)
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationLivia 0 -120 0"}
+      - {console: "player.setangle z 0"}
+      - {wait: 1}
+      - {key: "E 120"}
+      - {wait: 2}
+      - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.claywater-two-charges"}}']}
+    expect:
+      - {read: [core, ViewState, dialogue], path: value.body.speaker.id, eq: npc.imperial-fringe.claywater-station.well-keeper}
+  - name: took-lf83        # the quest started from the topic heard of a named speaker; its journal entry written
+    expect:
+      - {console: "GetStage ARG_Q_LF83", contains: ">> 10"}
+      - {read: [core, JournalEntries], path: value, contains: "quest.local.lf83 10 "}
+  - name: livia-landing-terms
+    do:
+      - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.claywater-landing-terms"}}']}
+      - {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}
+    expect: [{read: [core, KnowsTopic, topic.claywater-landing-terms], path: value, eq: true}]
+  - name: ask-signs        # the landing's side and its terms (objective hear-landing) -> stage 20
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationSigns 0 -120 0"}
+      - {console: "player.setangle z 0"}
+      - {wait: 1}
+      - {key: "E 120"}
+      - {wait: 2}
+      - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.claywater-two-charges"}}']}
+      - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.claywater-landing-terms"}}']}
+      - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.lf83-clay-bend"}}']}
+      - {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}
+    expect:
+      - {console: "GetStage ARG_Q_LF83", contains: ">> 20", within: 8}
+      - {read: [core, KnowsTopic, topic.lf83-clay-bend], path: value, eq: true}
+  - name: never-vanilla    # no Dialogue Menu opened for any of our speakers in the whole run (1.1's acceptance)
+    expect: [{read: [events, 0, menu], path: events, not_contains: "Dialogue Menu"}]
+  # --- follow its directions, do its action --------------------------------------------------------------------
+  - name: well-water       # why-failing: draw the well's water (hasItem item.lf83.well-water)
+    do: [{console: "ARG_Ref_ClaywaterStationWellWater.activate player"}, {wait: 2}]
+    expect: [{console: "player.GetItemCount ARG_Misc_Lf83WellWater", not_contains: ">> 0"}]
+  - name: to-the-clay-cut  # the directions: the cut below the ford, where the crocodile dens
+    do: [{teleport: "ref ARG_Ref_ClaywaterStationClayBend"}, {wait: 3}]
+    expect:
+      - {console: "ARG_Ref_ClaywaterStationCrocodile.GetDead", contains: ">> 0"}
+  - name: croc-fight-1     # god mode for this fight only; the blows are the player's (lock on, light attacks)
+    do: [{console: "tgm"}, {pad: "RB:120 wait:900"}, {pad: "RS:150 wait:500"}, {pad: "RB:120 wait:900 RB:120 wait:900"}]
+    expect: [{event: {kind: hit, match: "*"}, within: 3}]
+  - name: croc-fight-2
+    do: [{pad: "RB:120 wait:900 RB:120 wait:900"}, {pad: "RB:120 wait:900 RB:120 wait:900"}]
+  - name: croc-fight-3
+    do: [{pad: "RB:120 wait:900 RB:120 wait:900"}, {pad: "RB:120 wait:900 RB:120 wait:900"}]
+    expect: [{console: "ARG_Ref_ClaywaterStationCrocodile.GetDead", contains: ">> 1", within: 10}]
+  - name: croc-dead-god-off
+    do: [{console: "tgm"}]
+    expect: [{read: [core, GetVastei], path: value, gt: 0, keep: vastei_croc}]
+  - name: get-clay         # get-clay: the landing's basket at the cut -> stage 30 (with clear-bend and why-failing)
+    do: [{console: "ARG_Ref_ClaywaterStationClayBasket.activate player"}, {wait: 2}]
+    expect:
+      - {console: "player.GetItemCount ARG_Misc_Lf83ClayBasket", contains: ">> 1"}
+      - {console: "GetStage ARG_Q_LF83", contains: ">> 30", within: 8}
+  # --- loot and equip ------------------------------------------------------------------------------------------
+  - name: loot-the-croc    # the corpse's container menu, Take All (R), close
+    do: [{console: "ARG_Ref_ClaywaterStationCrocodile.activate player"}, {wait: 2}, {key: "R 120"}, {wait: 1}, {key: "TAB 120"}, {wait: 1}]
+    expect:
+      - {event: {kind: menu, match: ContainerMenu}}
+      - {console: "player.GetItemCount ARG_Weap_SteelSword", contains: ">> 1"}
+  - name: equip-the-sword  # the game's equip path (EquipManager, as the inventory's click); no hand drives the menu yet
+    do: [{console: "player.equipitem ARG_Weap_SteelSword"}, {wait: 1}]
+    expect: [{console: "player.GetEquipped ARG_Weap_SteelSword", contains: ">> 1"}]
+  # --- fight the ambush, die, wake, take the vastei back --------------------------------------------------------
+  - name: to-the-ambush
+    do: [{teleport: "ref ARG_Ref_ClaywaterStationAmbushPlayer"}, {wait: 3}]
+    expect: [{console: "ARG_Ref_ClaywaterStationAmbushDeserter.IsInCombat", contains: ">> 1", within: 10}]
+  - name: ambush-fight
+    do: [{pad: "RS:150 wait:400"}, {pad: "RB:120 wait:900 RB:120 wait:900"}, {pad: "RB:120 wait:900 RB:120 wait:900"}]
+    expect:
+      - {event: {kind: hit, match: "*"}}
+      - {read: [core, GetVastei], path: value, gt: {kept: vastei_croc}, keep: vastei_carried}
+  - name: die              # health lowered (setup); the deserter's next blow is the lethal one; no load, no death camera
+    do: [{console: "player.forceav health 5"}, {wait: 8}]
+    expect:
+      - {read: [core, PileState], path: value, ne: "", within: 15, keep: pile}
+      - {read: [core, GetVastei], path: value, eq: 0}
+      - {moved: {gt: 2000}, within: 10}   # woke at the camp by the road, far from the ambush; no load
+  - name: woke-at-camp     # waking is a rest: alive, the deserter reset
+    expect:
+      - {read: [player], path: dead, eq: false}
+      - {console: "ARG_Ref_ClaywaterStationAmbushDeserter.GetDead", contains: ">> 0"}
+  - name: retrieve-vastei  # back to where the pile fell, face down onto it, take it
+    do:
+      - {teleport: "pos {pile.0} {pile.1} {pile.2}"}
+      - {console: "player.setangle x 60"}
+      - {wait: 2}
+      - {key: "E 120"}
+      - {wait: 2}
+    expect:
+      - {read: [core, GetVastei], path: value, eq: {kept: vastei_carried}}
+      - {read: [core, PileState], path: value, eq: ""}
+  # --- finish the quest -----------------------------------------------------------------------------------------
+  - name: terms-with-livia
+    do:
+      - {console: "player.setangle x 0"}
+      - {console: "player.moveto ARG_Ref_ClaywaterStationLivia 0 -120 0"}
+      - {console: "player.setangle z 0"}
+      - {wait: 1}
+      - {key: "E 120"}
+      - {wait: 2}
+      - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.lf83-one-charge"}}']}
+      - {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}
+    expect: [{read: [core, KnowsTopic, topic.lf83-one-charge], path: value, eq: true}]
+  - name: terms-with-signs # both keepers agree -> stage 40, the quest completed
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationSigns 0 -120 0"}
+      - {console: "player.setangle z 0"}
+      - {wait: 1}
+      - {key: "E 120"}
+      - {wait: 2}
+      - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.lf83-one-charge"}}']}
+      - {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}
+    expect:
+      - {console: "GetStage ARG_Q_LF83", contains: ">> 40", within: 8}
+      - {read: [core, JournalEntries], path: value, contains: "quest.local.lf83 40 "}
+  # --- rest, spend at the sitting -------------------------------------------------------------------------------
+  - name: grown            # the place's fights earned a level (the join 1.7 exists to find if they did not)
+    expect:
+      - {read: [core, GetPendingLevels], path: value, ge: 1}
+      - {read: [core, GetLevel], path: value, keep: level0}
+  - name: rest-at-camp
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationRoadIn 0 -150 0"}
+      - {console: "player.setangle z 0"}
+      - {console: "player.setangle x 30"}
+      - {wait: 1}
+      - {key: "E 120"}
+      - {wait: 3}
+    expect:
+      - {read: [core, SittingOpen], path: value, eq: true}
+      - {read: [core, ViewState, sitting], path: value.type, eq: sitting.state}
+  - name: spend            # one point of endurance, the view's own intent
+    do: [{call: [core, ViewIntent, '{"type":"sitting.buy","v":1,"body":{"attribute":"endurance"}}']}]
+    expect: [{read: [core, ViewState, sitting], path: value.body.attributes, contains: "'bought': 1"}]
+  - name: rise
+    do: [{call: [core, ViewIntent, '{"type":"sitting.done","v":1,"body":{}}']}, {wait: 4}]
+    expect:
+      - {read: [core, SittingOpen], path: value, eq: false}
+      - {read: [core, GetLevel], path: value, gt: {kept: level0}}
+      - {read: [core, SaveCount], path: value, keep: saves_rest}
+  # --- load the rest save, read every family ---------------------------------------------------------------------
+  - name: before-load
+    expect:
+      - {read: [core, Families], path: "", keep: families}
+      - {read: [core, FamilyDigest, STAT], path: value, keep: d_stat}
+      - {read: [core, FamilyDigest, TOPC], path: value, keep: d_topc}
+      - {read: [core, FamilyDigest, JRNL], path: value, keep: d_jrnl}
+      - {read: [core, FamilyDigest, QSTA], path: value, keep: d_qsta}
+      - {read: [core, FamilyDigest, DETH], path: value, keep: d_deth}
+      - {read: [core, FamilyDigest, DISP], path: value, keep: d_disp}
+      - {read: [core, FamilyDigest, ITEM], path: value, keep: d_item}
+      - {read: [core, FamilyDigest, QWCH], path: value, keep: d_qwch}
+      - {read: [core, FamilyDigest, META], path: value, keep: d_meta}
+  - name: load-rest-save
+    do: [{call: [load, ArgoniaRest]}, {wait: 4}]
+  - name: every-family
+    expect:
+      - {read: [core, Families], path: "", eq: {kept: families}}
+      - {read: [core, Families], path: value, contains: "QWCH"}
+      - {read: [core, FamilyDigest, STAT], path: value, eq: {kept: d_stat}}
+      - {read: [core, FamilyDigest, TOPC], path: value, eq: {kept: d_topc}}
+      - {read: [core, FamilyDigest, JRNL], path: value, eq: {kept: d_jrnl}}
+      - {read: [core, FamilyDigest, QSTA], path: value, eq: {kept: d_qsta}}
+      - {read: [core, FamilyDigest, DETH], path: value, eq: {kept: d_deth}}
+      - {read: [core, FamilyDigest, DISP], path: value, eq: {kept: d_disp}}
+      - {read: [core, FamilyDigest, ITEM], path: value, eq: {kept: d_item}}
+      - {read: [core, FamilyDigest, QWCH], path: value, eq: {kept: d_qwch}}
+      - {read: [core, FamilyDigest, META], path: value, eq: {kept: d_meta}}
+      - {read: [core, SaveCount], path: value, eq: {kept: saves_rest}}
+      - {console: "GetStage ARG_Q_LF83", contains: ">> 40"}
+      - {read: [core, KnowsTopic, topic.lf83-one-charge], path: value, eq: true}
