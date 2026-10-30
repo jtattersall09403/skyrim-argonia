@@ -16,6 +16,7 @@ RULES = [
     (START + r"git\s+checkout\s+--(\s|$)", "git checkout -- discards work: use the Edit tool"),
     (START + r"git\s+restore\b", "git restore discards work: use the Edit tool"),
     (START + r"git\s+stash\b", "git stash hides work from other lanes: commit or leave it"),
+    (r"--autostash\b|rebase\.autoStash|merge\.autoStash", "autostash is a git stash of other lanes' work (2026-10-30): pull only on a clean tree, or commit by pathspec without pulling"),
     (START + r"git\s+reset\s+--hard\b", "git reset --hard discards work"),
     (START + r"git\s+update-ref\b", "git update-ref can drop other lanes' commits (2026-10-30): commit by pathspec"),
     (r"\bGIT_INDEX_FILE=", "a temporary git index commits a stale view of shared files (2026-10-30, twice): git add + git commit -- <paths>"),
