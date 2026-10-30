@@ -183,3 +183,7 @@ Something they can **play**, that is:
 | 2026-10-29 | **The parchment chart follows the old repo's map**, which the owner liked. |
 | 2026-10-29 | **In-game checks are a small, smart sample** that covers most pitfalls, not exhaustive walks. |
 | 2026-10-29 | **SkyLink AI**: if our bridge gives trouble, follow SkyLink's approach as closely as possible (it worked on an earlier runtime). |
+| 2026-10-30 | **Part 1 checks are headless component checks**, not playthroughs: no agent plays the quest start to finish; the building blocks and their connections are proven by state and event reads (the quest runtime's stages, the "journal updated" notice at each stage and clue, the dialogue topics granted, completion). The first-place journey is re-cut that way. |
+| 2026-10-30 | **The look of the place is the owner's call** ("if you've used Tropical Skyrim and the selected mods for everything you'll be fine"); agents check Nordic tells, not feel. |
+| 2026-10-30 | **The soak runs last**, after everything else, once; never as an automated or regular gate. |
+| 2026-10-30 | **The planner owns** the world map fix, the screen technology choice (1.2 §0), the crocodile working in game, and the Dark Souls Combat trial (combat groups B/B2); all are in the goal. NPC sleep uses Skyrim's native way. |
