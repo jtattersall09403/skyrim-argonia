@@ -189,3 +189,5 @@ Something they can **play**, that is:
 | 2026-10-30 | **The planner owns** the world map fix, the screen technology choice (1.2 §0), the crocodile working in game, and the Dark Souls Combat trial (combat groups B/B2); all are in the goal. NPC sleep uses Skyrim's native way. |
 | 2026-10-30 | **A creature from a mod is used as its mod designed it**: KotM's crocodile is a water ambusher, so it lives in the shallows and attacks waders, not overridden to walk. |
 | 2026-10-30 | **Quest features are system-wide and native first**: the journal-updated notice (the engine's own HUD message) and thing hooks (activate/read sets a fact) serve every quest; LF83 is only the first user. |
+| 2026-10-30 | **Standing permission: agents may always start and stop the game machines** ("you always have permission to do this"); a stop is never a reason to wait. |
+| 2026-10-30 | **The soak is dropped** unless the owner asks for it. **Each game-machine slot runs a whole batch** of checks, not one at a time. |
