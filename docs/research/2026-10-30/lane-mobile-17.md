@@ -78,3 +78,11 @@ Run touchfix4 on argonia-play-2 (20:48-20:55 UTC; prep in the desktop session, g
   game alone), so folding or unfolding mid-session brings bands back until the next launch.
 - The clone needed `stack.ps1 on` first (the image held a bare Data: no Address Library, our DLLs disabled).
   argonia-play-2 ran 20:29-~21:00 UTC, about 0.5 h, ~$0.13; terminated, spot request cancelled, alarm deleted.
+
+## Owed (#17, after lane touch-fix)
+1. Favourites: favourite an item by console at step 0, then D-up on the pad and by touch; FavoritesMenu event or not.
+2. The B press that closes our HTML journal also rolls (TKDR_DodgeStart 0.1-0.2 s after PrismaUI_FocusMenu closes):
+   ArgoniaCore's view close should consume that B/Esc so TK Dodge never sees it; prove with a B tap closing the
+   journal and no dodge event.
+3. R3 lock-on: a `tdm-target` read naming the deserter after R3 with him in front (game-16's aim helper).
+4. Mid-session fold or unfold: offer a one-tap "restart at this size" on the play page (asked of the owner on #17).
