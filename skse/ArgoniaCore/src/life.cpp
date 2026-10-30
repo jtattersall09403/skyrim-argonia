@@ -378,6 +378,8 @@ void MirrorSkills() {
     if (m.actor_value.empty()) continue;  // a Custom Skills Framework skill: its globals are 1.3's, owed
     if (const auto av = AvNamed(m.actor_value); av != RE::ActorValue::kNone)
       avo->SetBaseActorValue(av, static_cast<float>(c.state.sheet.s[m.skill]));
+    else
+      SKSE::log::error("grow: skill mirror {} is not an engine actor value name", m.actor_value);
   }
 }
 
@@ -509,6 +511,7 @@ void LifeDataLoaded() {
   int zeroed = 0;
   for (auto name : ac::life::vanilla_skills()) {
     auto* info = RE::ActorValueList::GetActorValueInfo(AvNamed(name));
+    if (!info || !info->skill) SKSE::log::error("grow: vanilla skill {} is not an engine actor value name", name);
     if (info && info->skill) {
       info->skill->useMult = 0;
       info->skill->offsetMult = 0;

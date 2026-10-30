@@ -97,3 +97,18 @@ save and load; `ArgoniaBridge/ping.ps1` returns ok and `-Token bad` fails. Addre
   and no appmanifest for 1946180. `records_jobs.sh papyrus <files|dirs>` stops at its `Need` check, and the
   owner-setup step "Add the Creation Kit to the Steam library" is still unticked. Until the CK is installed,
   ArgoniaCore.psc, ARG_PRKF_DialogueIntercept.psc and ARG_QF_LF83.psc are uncompiled.
+
+## 2026-10-30: the combat wiring and 1.5's owed wiring (lane core-wiring)
+
+- **MSVC green first time** (`ARGONIA_MODDIR='C:\argonia\no-deploy' skse_build.sh build windows-dev`; the new env
+  var forwards `-ModDir`, so the DLLs stay in the build tree while the game holds MO2's copies). SKSE-BUILD OK,
+  ctest 29/29, no `warning C` line. `ArgoniaCore.dll` is 1,450,496 bytes and `ArgoniaBridge.dll` 833,536 bytes, at
+  `C:\argonia\skse\out\windows-dev\{dist,dev}\SKSE\Plugins`. On the build VM, `bash skse/check.sh` gives 29/29.
+- **An SKSE message is the dev bridge's way into ArgoniaCore.** ArgoniaCore registers a listener for the sender
+  `ArgoniaBridge`. A refused registration is only a warning, because the bridge is absent in a release. The data is
+  a plain struct in `core/life.h`, so both DLLs share its layout through `argonia_core`. Dispatch is synchronous,
+  so the answer comes back in the struct.
+- **Engine actor value names are not the menu's.** `LookupActorValueByName` takes AVIF enum names: `Marksman`
+  (not Archery) and `Speechcraft` (not Speech). g++ and MSVC both accept a wrong name, and only the runtime returns
+  none. So the adapters now log an unknown name, and a core test refuses the menu names.
+

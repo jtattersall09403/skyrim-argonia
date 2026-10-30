@@ -988,5 +988,23 @@
     "used_by": "the bridge comparison (docs/research/journals/bridge.md): its pipe endpoints tried beside ArgoniaBridge in a dev game slot",
     "linked_or_forked_by": "FetchContent in skse/third_party/skylink/CMakeLists.txt (built only with ARGONIA_SKYLINK=1, by infra/gpu-box/skylink_build.ps1) into MO2 mod 'SkyLink (dev, rebuilt)'; nothing vendored",
     "notes": "dev only, never ships (skse/dev-only.txt lists SkyrimMCPPlugin.dll); its .NET MCP server is not rebuilt (the pipe is spoken directly by infra/gpu-box/skylink.ps1)"
+  },
+  {
+    "name": "Skyrim Special Edition base game: borrowed meshes (the player's own install)",
+    "source_url": "https://store.steampowered.com/app/489830/",
+    "version": "the pinned runtime 1.7.104 (decision 0002); Skyrim - Meshes0.bsa",
+    "licence": "Bethesda EULA: the player's own copy; nothing is shipped (decision 0003), referenced by path only",
+    "used_by": "Argonia.esm ACTI ARG_CampSpot (meshes/furniture/bedroll/bedrollground.nif; verdict: replace with bedroll01.nif), ACTI ARG_VasteiPileActivator (meshes/clutter/soulgem/soulgempetty01.nif; verdict: keep); tools/argonia_world/life_records.py",
+    "linked_or_forked_by": "linked: the record names the archive path; the engine loads the player's own file",
+    "notes": "Borrowing under decision 0012 §6; quarantine verdicts in data/immersion/verdicts.jsonl (core-wiring, 2026-10-30)."
+  },
+  {
+    "name": "TK Dodge RE Addon: its dodge perk (TKDodgeAddon.esp|0x809) and bUsePerkLock",
+    "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/125238",
+    "version": "the manifest's tk-dodge-re-addon row (data/dependencies.json)",
+    "licence": "the mod's Nexus permissions (the dependency row); depended on unmodified, the player's own download",
+    "used_by": "skse/ArgoniaCore/src/combat.cpp (reads tk-dodge.toml's sDodgeRequiredPerkID at data loaded; gives or takes the perk by burden tier), world/db/combat_mod_setting.jsonl (bUsePerkLock = true, w.roll.tier)",
+    "linked_or_forked_by": "linked: the perk is looked up at runtime by the plugin and local id the mod's own config names",
+    "notes": "The roll lock rides the mod's own condition, so no input filter or behaviour edit is needed (combat-wiring.md w.roll.tier)."
   }
 ]
