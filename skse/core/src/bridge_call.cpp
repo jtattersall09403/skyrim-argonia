@@ -18,6 +18,9 @@ constexpr std::array kNatives{
     Native{"GetLevel", false, R::Int},          Native{"GetSkill", true, R::Float},
     Native{"PileState", false, R::Text},        Native{"WakePoint", false, R::Text},
     Native{"SittingOpen", false, R::Bool},
+    // Bridge only, no Papyrus twin: the 1.2 §0 probe's window (its fixture, never what the probe measures) and the
+    // views' binding state.
+    Native{"ViewProbe", true, R::Json},         Native{"Views", false, R::TextList},
 };
 
 std::string wrap(std::string_view native, json::Value v) {

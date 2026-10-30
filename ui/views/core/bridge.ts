@@ -1,6 +1,7 @@
 // The one seam between a view and ArgoniaCore (decision 0017 §3), browser side.
 //
-// In: ArgoniaCore calls window.argonia.push(text) with one envelope (PrismaUI's Invoke). The text is decoded with the
+// In: ArgoniaCore calls window.argoniaPush(text) with one envelope (PrismaUI's InteropCall, which finds a global
+// function by name, so the entry is a top-level alias of window.argonia.push). The text is decoded with the
 // schema's validator; a refusal is logged and the view keeps what it showed.
 // Out: an intent is checked with encodeIntent before it leaves and handed to window.argoniaIntent(text), the JS
 // listener the SKSE side registers (PrismaUI RegisterJSListener). Every sent intent is also kept on
@@ -22,6 +23,7 @@ declare global {
   interface Window {
     argonia: ArgoniaGlobal;
     argoniaIntent?: (text: string) => void;
+    argoniaPush: (text: string) => boolean;
     argoniaSent: string[];
   }
 }
@@ -73,6 +75,7 @@ export function start(hooks: ViewHooks): void {
     input: (a) => nav.input(a),
     device: setDevice,
   };
+  window.argoniaPush = (text: string) => window.argonia.push(text);
   document.addEventListener("click", (e) => {
     const el = (e.target as HTMLElement).closest<HTMLElement>("[data-intent],[data-ui]");
     if (!el || (el as HTMLButtonElement).disabled) return;

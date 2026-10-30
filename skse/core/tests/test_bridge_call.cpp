@@ -1,5 +1,5 @@
-// L2: the dev bridge's `core` whitelist (1.7): reads and the two view intents go; setters, form natives and unknown
-// names are refused; each value travels as valid JSON.
+// L2: the dev bridge's `core` whitelist (1.7): reads, the two view intents and the 1.2 §0 probe's two go; setters,
+// form natives and unknown names are refused; each value travels as valid JSON.
 #include "check.h"
 #include "argonia/core/bridge_call.h"
 
@@ -18,7 +18,8 @@ int main() {
   for (auto setter : {"SetVastei", "SetAttribute", "GrantTopic", "SetFlag", "ChangeDisposition", "GiveItem",
                       "RestAt", "TakeVastei", "OpenDialogue", "WatchQuest", "AddJournalEntry", "SuspendSave", ""})
     CHECK(refuse(setter, false) && refuse(setter, true));
-  CHECK(natives().size() == 21);
+  CHECK(natives().size() == 23);  // 21 of ArgoniaCore.psc, plus the bridge-only ViewProbe and Views (1.2 §0)
+  CHECK(!refuse("ViewProbe", true) && !refuse("Views", false));
   CHECK(find("Families") && find("Families")->returns == Returns::TextList);
 
   auto v = json::parse(encode_number("GetVastei", 120));

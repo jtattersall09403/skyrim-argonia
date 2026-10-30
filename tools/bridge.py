@@ -295,7 +295,7 @@ class Bridge:
     CORE_NATIVES = ("Version", "SaveCount", "ViewIntent", "ViewState", "GetAttribute", "Families", "FamilyDigest",
                     "RouterLog", "GetFlag", "KnowsTopic", "GetDisposition", "JournalEntries", "RestNotice",
                     "SittingIntent", "GetVastei", "GetPendingLevels", "GetLevel", "GetSkill", "PileState", "WakePoint",
-                    "SittingOpen")  # skse/core/src/bridge_call.cpp's whitelist; the plugin refuses anything else too
+                    "SittingOpen", "ViewProbe", "Views")  # skse/core/src/bridge_call.cpp's whitelist; the plugin refuses anything else too
 
     def core(self, native: str, arg: str | None = None):
         """An ArgoniaCore native through ArgoniaBridge's `core` (1.7's journeys): its value. Only the reads of

@@ -55,6 +55,8 @@ body { display: flex; align-items: center; justify-content: center; }
     radial-gradient(farthest-side at 50% 100%, rgba(60, 40, 15, 0.45), transparent) bottom / 100% 0.8rem no-repeat scroll;
   scrollbar-width: auto; scrollbar-color: var(--ink-soft) rgba(84, 67, 44, 0.15);
 }
+/* The typed filter over the topic list: the letters as typed, in the ink of the list. */
+.filter { padding: 0 var(--s1); font-style: italic; color: var(--ink-soft); border-top: 1px solid var(--ink-faint); }
 .topics::-webkit-scrollbar { width: 0.6rem; }
 .topics::-webkit-scrollbar-track { background: rgba(84, 67, 44, 0.15); }
 .topics::-webkit-scrollbar-thumb { background: var(--ink-soft); }

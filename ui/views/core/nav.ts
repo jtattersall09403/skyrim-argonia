@@ -3,7 +3,8 @@
 // - Keyboard: arrows move focus spatially, Enter/Space press (the platform's own button behaviour), Escape is back,
 //   PageUp/PageDown and Q/E are the view's previous/next, +/- zoom.
 // - Pad: the Gamepad API where the web view has it (d-pad and left stick move, A press, B back, LB/RB previous/next,
-//   triggers zoom, right stick pans); where it has not, the SKSE side calls window.argonia.input(action).
+//   triggers zoom, right stick pans). In game, PrismaUI (Ultralight has no Gamepad API) dispatches
+//   gamepadbuttondown on window.prismaUi.controls with the same W3C button index; the d-pad and buttons map alike.
 // - Touch: every control is a button at least one text line tall; lists scroll natively.
 // Nothing here is game state: only which control has focus.
 export type NavAction =
@@ -113,6 +114,14 @@ export function installNav(h: NavHooks) {
   };
   let padLoop = 0;
   window.addEventListener("gamepadconnected", () => { if (!padLoop) padLoop = requestAnimationFrame(pad); });
+  const PRISMA_BUTTONS: Record<number, NavAction> = {
+    12: "up", 13: "down", 14: "left", 15: "right", 0: "accept", 1: "back", 4: "prev", 5: "next", 6: "zoomOut", 7: "zoomIn",
+  };
+  const controls = (window as { prismaUi?: { controls?: EventTarget } }).prismaUi?.controls;
+  controls?.addEventListener("gamepadbuttondown", (e) => {
+    const a = PRISMA_BUTTONS[(e as CustomEvent<{ w3cButtonIndex: number }>).detail?.w3cButtonIndex];
+    if (a) { h.device("gamepad"); input(a); }
+  });
 
   return {
     input,

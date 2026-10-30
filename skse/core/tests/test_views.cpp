@@ -1,0 +1,137 @@
+// L2: the web-view host (1.2 §0): a push before the page loads waits for DOM ready; a modal push opens it and closes
+// the other modal; close unfocuses and hides; the HUD never closes. The journal key latch; the chart's remembered
+// view round-trips and falls back; the journal pages and filters; the 300-topic probe fits the schema.
+#include "check.h"
+#include "argonia/core/views.h"
+
+#include <set>
+
+using namespace argonia::core;
+using namespace argonia::core::views;
+
+namespace {
+
+bool has(const std::vector<Op>& ops, OpKind k, std::string_view v) {
+  for (const auto& o : ops)
+    if (o.kind == k && o.view == v) return true;
+  return false;
+}
+
+void the_table() {
+  std::set<std::string_view> ids;
+  for (const auto& s : kViews) {
+    ids.insert(s.id);
+    CHECK(s.page == "argonia/" + std::string(s.id) + "/index.html");
+  }
+  CHECK(ids.size() == kViews.size());
+  CHECK(spec("hud") && !spec("hud")->modal);
+  CHECK(spec("dialogue") && spec("dialogue")->modal);
+  CHECK(!spec("inventory"));
+}
+
+void push_waits_for_ready() {
+  Host h;
+  auto ops = h.push("dialogue", "A");
+  CHECK(h.is_open("dialogue") && !has(ops, OpKind::push, "dialogue") && !has(ops, OpKind::show, "dialogue"));
+  ops = h.ready("dialogue");
+  CHECK(ops.size() == 3 && ops[0] == (Op{OpKind::push, "dialogue", "A"}));
+  CHECK(has(ops, OpKind::show, "dialogue") && has(ops, OpKind::focus, "dialogue"));
+  ops = h.push("dialogue", "B");  // already open: only the push
+  CHECK(ops.size() == 1 && ops[0] == (Op{OpKind::push, "dialogue", "B"}));
+  // a page that loads closed is hidden
+  ops = h.ready("journal");
+  CHECK(ops.size() == 1 && ops[0].kind == OpKind::hide);
+}
+
+void one_modal() {
+  Host h;
+  h.ready("dialogue");
+  h.ready("chart");
+  h.push("dialogue", "A");
+  auto ops = h.push("chart", "C");
+  CHECK(has(ops, OpKind::unfocus, "dialogue") && has(ops, OpKind::hide, "dialogue"));
+  CHECK(has(ops, OpKind::show, "chart") && has(ops, OpKind::focus, "chart") && has(ops, OpKind::push, "chart"));
+  CHECK(h.modal() == "chart" && !h.is_open("dialogue") && !h.last("dialogue"));
+  ops = h.close("chart");
+  CHECK(ops.size() == 2 && has(ops, OpKind::unfocus, "chart") && has(ops, OpKind::hide, "chart"));
+  CHECK(!h.modal() && h.close("chart").empty());
+}
+
+void hud_always_open() {
+  Host h;
+  auto ops = h.ready("hud");
+  CHECK(ops.size() == 1 && ops[0].kind == OpKind::show);
+  ops = h.push("hud", "H");
+  CHECK(ops.size() == 1 && ops[0].kind == OpKind::push);
+  CHECK(h.close("hud").empty() && h.is_open("hud"));
+  h.ready("sitting");
+  h.push("sitting", "S");
+  ops = h.close_all();
+  CHECK(has(ops, OpKind::hide, "sitting") && !has(ops, OpKind::hide, "hud") && h.last("hud"));
+  CHECK(h.push("nonesuch", "x").empty());
+}
+
+void latch() {
+  KeyLatch k;
+  CHECK(!k.take(10));
+  k.press(10);
+  CHECK(k.take(10.5));
+  CHECK(!k.take(10.6));  // once per press
+  k.press(10);
+  CHECK(!k.take(12));  // stale: Escape's Journal Menu passes
+}
+
+void chart_layout() {
+  const msg::ChartView v{-56.85, 11.7, 4};
+  CHECK(remembered_chart(chart_layout_text(v)) == v);
+  const msg::ChartView whole{1, 1, 1};
+  CHECK(remembered_chart(std::nullopt) == whole);
+  CHECK(remembered_chart("not json") == whole);
+  CHECK(remembered_chart(R"({"type":"chart.pan","v":1,"body":{"view":{"centreX":0,"centreY":0,"zoom":900}}})") == whole);
+  CHECK(remembered_chart(R"({"type":"view.close","v":1,"body":{"view":"chart"}})") == whole);
+}
+
+void the_journal() {
+  journal::Log log;
+  for (int i = 0; i < 8; ++i) journal::append(log, i < 7 ? 1u : 2u, std::uint32_t(10 * (i + 1)), {201, 8, 16 + i, 9.0});
+  auto name = [](journal::QuestId q) { return QuestNames{"quest." + std::to_string(q), "Quest " + std::to_string(q)}; };
+  auto text = [](journal::QuestId, journal::EntryId e) { return "entry " + std::to_string(e); };
+  auto s = journal_state(log, name, text, {msg::JournalTab::entries, 0, std::nullopt}, 6);
+  CHECK(s.page_count == 2 && s.entries.size() == 6 && s.entries[0].runs[0].text == "entry 10");
+  CHECK(s.entries[0].date.text == "16th of the Eighth Month, 201" && s.quests.size() == 2);
+  s = journal_state(log, name, text, {msg::JournalTab::entries, 9, std::nullopt}, 6);  // clamped to the last page
+  CHECK(s.page == 1 && s.entries.size() == 2);
+  s = journal_state(log, name, text, {msg::JournalTab::entries, 0, std::string("quest.2")}, 6);
+  CHECK(s.page_count == 1 && s.entries.size() == 1 && s.entries[0].quest == "quest.2");
+  CHECK(msg::encode(s).has_value());
+  CHECK(date({201, 1, 1, 0}).text == "1st of the First Month, 201" && date({201, 3, 22, 0}).text.starts_with("22nd"));
+  CHECK(date({201, 3, 13, 0}).text.starts_with("13th") && date({201, 3, 23, 0}).text.starts_with("23rd"));
+  const journal::Log empty;
+  s = journal_state(empty, name, text, {msg::JournalTab::quests, 0, std::nullopt});
+  CHECK(s.page_count == 1 && s.entries.empty() && msg::encode(s).has_value());
+}
+
+void the_probe() {
+  const auto s = probe_dialogue("npc.imperial-fringe.claywater-station.well-keeper", "Livia", 300);
+  CHECK(s.topics.size() == 300 && s.topics[299].label == "Topic 300");
+  std::set<std::string> ids;
+  for (const auto& t : s.topics) ids.insert(t.id);
+  CHECK(ids.size() == 300);
+  auto j = msg::encode(s);
+  CHECK(j.has_value());
+  if (j) CHECK(msg::decode_push(*j).has_value());
+}
+
+}  // namespace
+
+int main() {
+  the_table();
+  push_waits_for_ready();
+  one_modal();
+  hud_always_open();
+  latch();
+  chart_layout();
+  the_journal();
+  the_probe();
+  return TEST_MAIN_RESULT("views");
+}

@@ -13,7 +13,7 @@ import { esc, intentsIn, textOf } from "../core/html.ts";
 import { remFor } from "../core/scale.ts";
 import { type CellIndex, hits, labelAt, placeLabels, pan, panIntent, revealRects, toPx, toUnits, transform } from "../chart/geom.ts";
 import { render as chart } from "../chart/render.ts";
-import { backIntent, render as dialogue } from "../dialogue/render.ts";
+import { backIntent, filterTopics, render as dialogue } from "../dialogue/render.ts";
 import { barLength, render as hud, renderBars } from "../hud/render.ts";
 import { render as journal, turn } from "../journal/render.ts";
 import { done as sittingDone, render as sitting } from "../sitting/render.ts";
@@ -145,6 +145,19 @@ test("the dialogue window renders 300 topics, each a button sending its own topi
   assert.equal(topics.length, 300);
   assert.equal(new Set(topics.map((t) => t.body.topic)).size, 300);
   assert.equal((html.match(/data-key="topic:/g) ?? []).length, 300);
+});
+
+test("typed letters narrow the topic list (1.2 §0's filter); the filter shows, the intents stay the topics'", () => {
+  const s = (fx("dialogue").states.threeHundredTopics as { body: DialogueState }).body;
+  const labels = s.topics.map((t) => t.label);
+  const want = labels.filter((l) => l.toLowerCase().includes("2"));
+  assert.ok(want.length > 0 && want.length < 300);
+  assert.deepEqual(filterTopics(s.topics, "2").map((t) => t.label), want);
+  assert.equal(filterTopics(s.topics, "").length, 300);
+  const html = dialogue(s, { persuading: false, filter: "2" });
+  assert.equal((html.match(/data-key="topic:/g) ?? []).length, want.length);
+  assert.ok(html.includes('<div class="filter"'));
+  assert.ok(!dialogue(s).includes('class="filter"'));
 });
 
 test("bars grow with their stat's maximum; text is escaped", () => {

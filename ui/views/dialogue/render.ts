@@ -4,7 +4,11 @@
 import type { DialogueState, TextRun } from "../../schema/generated/messages.ts";
 import { esc, intentButton } from "../core/html.ts";
 
-export interface DialogueUi { persuading: boolean }
+// filter: typed letters narrow the topic list (view-local, never state; 1.2 §0's probe: 300 topics).
+export interface DialogueUi { persuading: boolean; filter?: string }
+
+export const filterTopics = <T extends { label: string }>(topics: T[], filter = ""): T[] =>
+  filter ? topics.filter((t) => t.label.toLowerCase().includes(filter.toLowerCase())) : topics;
 
 const runsHtml = (runs: TextRun[]): string =>
   runs.map((r) => r.topic === undefined
@@ -32,7 +36,7 @@ function persuasionPanel(s: DialogueState): string {
 
 export function render(s: DialogueState, ui: DialogueUi = { persuading: false }): string {
   const d = s.disposition;
-  const topics = s.topics.map((t) =>
+  const topics = filterTopics(s.topics, ui.filter).map((t) =>
     `<li>${intentButton({ type: "dialogue.topic", v: 1, body: { topic: t.id } }, "topic", esc(t.label),
       `data-key="topic:${esc(t.id)}"`)}</li>`).join("");
   const persuade = s.persuasion.available
@@ -49,6 +53,7 @@ export function render(s: DialogueState, ui: DialogueUi = { persuading: false })
           <span class="disp-text">Disposition ${d.value}</span></div>
       </div>
       ${persuade}
+      ${ui.filter ? `<div class="filter" aria-live="polite">${esc(ui.filter)}</div>` : ""}
       <ul class="topics scroll" data-list="topics">${topics}</ul>
       ${goodbye}
       ${ui.persuading && s.persuasion.available ? persuasionPanel(s) : ""}
