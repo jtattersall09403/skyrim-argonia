@@ -83,3 +83,52 @@ These join the standing rules:
 - 1.2 builds the design system in the chosen approach, after the look rounds; 2.2 and 3.1 build from it.
 - The PrismaUI risk (0001 §2) stands while it is the working assumption: pin its version early and keep a
   fallback per screen.
+
+## 1.2 §0 record: PrismaUI or Scaleform (to fill from the probe)
+
+The planner owns this choice (owner ruling, 2026-10-30). The candidate built first is **PrismaUI 1.5.1**, because our
+four views already exist as web views (L3 green) and the binding is built (lane ui-live, 2026-10-30):
+- `skse/ArgoniaCore/src/views.cpp` calls PrismaUI's published API through our own declaration of it (`prisma_api.h`);
+- the host's rules are `skse/core` views (L2), so a Scaleform adapter would replace only that file;
+- the bundle is made at install (`tools/ui_harness/build.py`) and laid by `stack.py` as `argonia-views`.
+
+**The map.** Our chart view replaces the MapMenu; FWMF's chart stays laid as the fallback. Three reasons:
+- the vanilla map draws the player's marker, which C9 forbids;
+- the revealed layer is per visited cell, which a static map texture cannot show;
+- one technology for the four screens keeps one input model: pad, keys and touch through `nav.ts`.
+
+If PrismaUI does not load, the map handler is never registered and the M key opens FWMF's map.
+
+**What decides** (`tests/journeys/ui-probe.yaml`, run by the game lane). PrismaUI is chosen when all of these hold:
+1. `bound`: PrismaUI's API answers on 1.7.104 and all five pages report DOM ready;
+2. `frames-open`: the p99 frame time with the 300-topic window open is within the 0.2 §d bar (≤ 22.2 ms). The cost is
+   the open p50 minus the closed p50, and it should be ≤ 1.0 ms;
+3. the L5 clip of `scroll` shows no hitch, and the `filter` still shows the 13 topics of "29";
+4. `chart-reopen` comes back to the view where it was left; `remembered` does the same after a relaunch, once the
+   runner can relaunch;
+5. J and the pad's Back open our journal, and Escape still opens the System tab;
+6. a reader passes the stills: Pelagiad, no vanilla menu behind, no flash.
+
+Scaleform is chosen when 1 fails (PrismaUI will not load, or the API is refused), or when 2 fails and a profile
+shows the cost is the web view itself rather than our page.
+
+**The switch cost, if Scaleform:**
+- each of the five views is re-authored as an SWF (render and glue). JPEXS needs Java, which the build VM lacks, so
+  the SWFs are written by our own writer, as the font library is (`tools/ui_theme`);
+- `views.cpp`'s ops become a custom `IMenu` per view with `GFxValue::Invoke` for the push, and an `ExternalInterface`
+  handler for the intents;
+- `ui/schema`, `skse/core` (the rules and the host's ops), the router and the journey are unchanged;
+- goal 2's draggable, remembered windows would have to be built in ActionScript.
+
+**Filled from the probe** (the game lane's run; the planner writes the choice here and in 1.2's brief):
+
+| Measure | Value | Bar |
+|---|---|---|
+| PrismaUI bound, pages ready | | all five |
+| frame time closed p50 / p99 (ms) | | |
+| frame time open p50 / p99 (ms) | | p99 ≤ 22.2 |
+| open − closed p50 (ms) | | ≤ 1.0 |
+| scroll clip: hitch seen | | none |
+| chart remembered (reopen / relaunch) | | both |
+| journal key, Escape kept | | both |
+| **Choice** | | |

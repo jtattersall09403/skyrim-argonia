@@ -2013,9 +2013,9 @@
    "ai_clause": "not stated: ask the author",
    "permission_ask": true,
    "permission_evidence": "reuse-audit.md line 232 (Prisma UI License: modified versions need written permission; no AI clause found, grep of LICENSE.md for AI/machine/artificial/train returned nothing); gh licence NOASSERTION",
-   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "runtime": "SKSE/plugins/PrismaUI.dll plus PrismaUI/libs (Ultralight); laid and loaded to the main menu on 1.7.104.0 (earlier rows said no DLL: wrong, the archive carries one); our views bound through its API: tests/journeys/ui-probe.yaml is the in-game proof (1.2 §0)",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download; ArgoniaCore calls its published modder API through our own declaration of it (skse/ArgoniaCore/src/prisma_api.h, PrismaUI_API.h at tag 1.5.1), never its code"
   },
   {
    "id": "dear-diary",

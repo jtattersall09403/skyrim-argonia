@@ -96,3 +96,27 @@ The lane report is `docs/research/2026-10-30/lane-1.2-theme.md`; the install ste
   - The bright loading parchment is held at `--paper`.
 - **Not done:** the in-game proof (L4, `tests/journeys/ui-sweep.yaml`). Scaleform may reject a detail of the
   writer's DefineFont3 that the decoder accepts, so the first in-game still is the oracle.
+
+## 2026-10-30, ui-live: binding our views to PrismaUI
+
+- **The archive carries a DLL.** PrismaUI 1.5.1 ships `SKSE/plugins/PrismaUI.dll` and `PrismaUI/libs` (Ultralight).
+  The dependency row had said "data only (no DLL)"; it is corrected.
+- **The API is the published header at tag 1.5.1** (`src/PrismaUI_API.h`). The plugin calls
+  `GetProcAddress(PrismaUI.dll, "RequestPluginAPI")` with V1 or V2. V2 adds `RegisterConsoleCallback`, which we use to
+  log page errors to the SKSE log. We call it through our own declaration of the interface (`prisma_api.h`); the
+  virtual order is the ABI.
+- **Paths.** `CreateView("argonia/dialogue/index.html")` loads `file:///views/<path>` under the PrismaUI base folder
+  (`ViewManager.cpp:36`). So the bundle lays at `Data/PrismaUI/views/argonia/`, and the pages' relative links
+  (`../core/theme.css`, `../fonts`) hold.
+- **Calls in and out.**
+  - In: `InteropCall` looks the function up as a property of the global object (`Communication.cpp:333`), so a dotted
+    `argonia.push` would not resolve. `window.argoniaPush` is the top-level alias.
+  - Out: `RegisterJSListener(view, "argoniaIntent", cb)` puts the function on `window`. Its callback carries no view
+    id, which suits us: `ViewIntent` routes by the intent's type. The callback runs on Ultralight's thread, so the
+    intent goes to the main thread as an SKSE task.
+- **The pad.** Ultralight has no Gamepad API. PrismaUI dispatches `gamepadbuttondown` on `window.prismaUi.controls`,
+  with the W3C button index. `nav.ts` maps those to the same actions; the sticks are not forwarded.
+- **The journal key.** Our control map binds the "Journal" user event to J and the pad's Back. Escape opens the same
+  Journal Menu (its System tab), so the router replaces it only within 1 s of a Journal press (the latch).
+- **MSVC found a dangling view.** `Host::open` closed the previous modal through a `string_view` of the very
+  `optional<string>` that `close` resets. GCC passed it; MSVC's ctest failed it. It now passes a copy.
