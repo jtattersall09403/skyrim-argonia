@@ -320,9 +320,12 @@ void JournalNoticeNow(ac::journal::NoticeCause cause, std::string quest, std::in
   // The engine's own notification (the HUD's message block, never among the hidden clips) and our HUD's stack.
   RE::SendHUDMessage::ShowHUDMessage(std::string(ac::journal::kNoticeText).c_str());
   if (g_api) PushHudState();
-  SKSE::ModCallbackEvent ev{"ArgoniaJournalNotice", RE::BSFixedString(quest + " " + what), static_cast<float>(mark),
-                            nullptr};
-  if (auto* src = SKSE::GetModCallbackEventSource()) src->SendEvent(&ev);
+  // Sent on the main thread: from the view's thread (game-16) no sink ever saw it.
+  SKSE::GetTaskInterface()->AddTask([str = quest + " " + what, mark] {
+    SKSE::ModCallbackEvent ev{"ArgoniaJournalNotice", RE::BSFixedString(str), static_cast<float>(mark), nullptr};
+    if (auto* src = SKSE::GetModCallbackEventSource()) src->SendEvent(&ev);
+    else SKSE::log::warn("journal notice: no mod callback event source; ArgoniaJournalNotice not sent");
+  });
   SKSE::log::info("journal notice {}: {} {} {}", n->seq, quest, what, mark);
 }
 

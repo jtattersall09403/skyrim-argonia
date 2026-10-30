@@ -64,6 +64,7 @@ steps:
       - {read: [core, JournalEntries], path: value, contains: "quest.local.lf83 10 "}
   - name: ask-signs        # the landing's side and its terms (objective hear-landing) -> stage 20
     do:
+      - {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}   # Livia's menu was still open (game-16 still)
       - {console: "player.moveto ARG_Ref_ClaywaterStationSigns 0 -120 0"}
       - {console: "player.setangle z 0"}
       - {talk: ARG_Ref_ClaywaterStationSigns}   # the speaker walks under AI: set before the player, E once the crosshair shows them

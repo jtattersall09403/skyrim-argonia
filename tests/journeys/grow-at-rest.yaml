@@ -53,6 +53,7 @@ steps:
     do:
       - {console: '"{opp}".stopcombat'}
       - {console: "player.moveto ARG_Ref_ClaywaterStationAmbushPlayer 0 -90 0"}
+      - {wait: 4}                 # as rest-respawn (passes): the moveto settles before the camera is set
       - {console: "player.setangle z 0"}
       - {console: "player.setangle x 40"}
       - {key: "W 40"}             # the camera takes setangle once the player moves (diag3-g15)
@@ -73,6 +74,7 @@ steps:
   - name: rest-opens-sitting
     do:
       - {console: "player.moveto ARG_Ref_ClaywaterStationAmbushPlayer 0 -90 0"}
+      - {wait: 4}                 # as rest-respawn (passes): the moveto settles before the camera is set
       - {console: "player.setangle z 0"}
       - {console: "player.setangle x 40"}
       - {key: "W 40"}             # the camera takes setangle once the player moves (diag3-g15)
