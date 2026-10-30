@@ -112,3 +112,23 @@ Each set was measured with the bridge's `frametime 600`: planes on, then the set
 
 For scale, Riverwood alone runs at 45.8 fps median and 35.3 fps 1% low with CS on in the same slot. The dense
 land, not water planes, misses the bar.
+
+## 2026-10-30: the designed model on main (lane water-design-2)
+
+- **The budget is 128** (the planner's ruling on the run above), still a hard error naming each cell over it. The
+  parked model was applied onto main (from its merge base, the water paths only). Every cell now takes the
+  smaller of its two covers (quadtree or greedy), so the plane refs fell from 25,225 to 20,774.
+- **The one unrealised body** (body.1746-2172, a 90 m2 swamp) stood on samples another body held (field step 2
+  shares them). That body was a puddle, so its water was dropped, and the sharer fell through to "own level" with
+  no water. Now a body on another body's samples takes that body's outcome (33 bodies).
+- **The carve cut below adjoining lower water:** 7,413 open sides (a water beside lower water, over a bed below
+  that water's level, so the lower water looks under the higher surface), 4,934 of them on carved beds. Now
+  `oriented.clamp_beds` raises a bed beside another owner's lower water to that level, each regrade pass (4,126 and
+  2,280 raised). This leaves 3,907 open sides (2,301 not under a piece, 1,195 of them a river's). They are counted
+  in the plan (`checks.sides`), not failed. Plane refs fell to 20,165 (max 120, p95 26).
+- **The plan is green:** 0 over budget, 0 float, overlap, unrealised wet samples or bodies, and 0 step
+  violations; 1,423 bodies dropped by design; 63 to 91 s, peak RSS 0.93 GB.
+- **The staleness check failed `make plugin`** for every lane: a rounded -0.0 basin depth read back from the db as
+  0.0. The rows now write 0.0 (343d52f).
+- **`make plugin` twice:** ArgoniaWorld.esm 115,210,144 bytes, sha256 0190ed40.. both times, peak 1.13 GB. The
+  terrain sample manifest was regenerated deliberately (04c44e0c..). The navmesh sample hash is unchanged.
