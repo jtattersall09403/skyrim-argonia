@@ -12,7 +12,8 @@ the file from the rows. Written lines are `dialogue_line` rows with `status` `wr
     - id: line.claywater-station.well-keeper.greeting
       type: greeting                    # line_type: greeting, dialogue, goodbye, bark
       topic: topic.x                    # the topic a dialogue line answers (none for a greeting or goodbye)
-      available: {questStage: [quest.local.lf83, '>=', 20]}   # optional; the condition vocabulary only
+      available: {questStage: [quest.local.lf83, '≥', 20]}    # optional; the condition vocabulary only (an `op`
+                                                              # argument is a condition_op row: = ≠ ≥ ≤ < >)
       low: ...                          # disposition < 30 (optional; else `words` serves every band)
       words: ...                        # 30-69, and the fallback for a missing band
       high: ...                         # >= 70 (optional)
@@ -48,6 +49,10 @@ def _check(doc: dict, w: db.World) -> list[str]:
         errs.append(f"speaker {doc.get('speaker')!r}: no npc row")
     preds, verbs = records.vocabulary(w)
     terms = preds | {"all", "any", "not"}
+    ops = set(w.values("SELECT id FROM condition_op"))
+    op_at = {}
+    for r in w.query("SELECT term, ord FROM condition_shape_arg WHERE kind = 'op'"):
+        op_at.setdefault(r["term"], set()).add(r["ord"])
     seen = set()
     for i, ln in enumerate(doc.get("lines") or []):
         where = f"lines[{i}] {ln.get('id', '?') if isinstance(ln, dict) else ''}"
@@ -69,6 +74,10 @@ def _check(doc: dict, w: db.World) -> list[str]:
         for term in _terms(ln.get("available")):
             if term not in terms:
                 errs.append(f"{where}: {term!r} is not a condition term")
+        for term, args in _leaves(ln.get("available")):
+            for i in sorted(op_at.get(term, ())):
+                if i < len(args) and args[i] not in ops:
+                    errs.append(f"{where}: {term} operator {args[i]!r} is not one of {' '.join(sorted(ops))}")
         for a in ln.get("onDelivered") or []:
             if not isinstance(a, dict) or len(a) != 1 or next(iter(a)) not in verbs:
                 errs.append(f"{where}: {a!r} is not one action of the vocabulary")
@@ -88,6 +97,21 @@ def _terms(c):
             yield from _terms(v)
         elif k == "not":
             yield from _terms(v)
+
+
+def _leaves(c):
+    """(term, args) of every predicate in a condition tree."""
+    if c is None:
+        return
+    if isinstance(c, list):
+        for k in c:
+            yield from _leaves(k)
+        return
+    for k, v in c.items():
+        if k in ("all", "any", "not"):
+            yield from _leaves(v)
+        else:
+            yield k, (v if isinstance(v, list) else [v])
 
 
 def _owned(w: db.World, speaker: str) -> list[sqlite3.Row]:

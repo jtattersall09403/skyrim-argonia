@@ -14,7 +14,7 @@ DOC = {
         {"id": "line.test.livia.greeting", "type": "greeting", "low": "Low.", "words": "Mid.", "high": "High.",
          "facts": ["fact.claywater-station.why-founding-2"], "links": ["topic.claywater-station"]},
         {"id": "line.test.livia.two-charges", "type": "dialogue", "topic": "topic.claywater-two-charges",
-         "available": {"questStage": ["quest.local.lf83", ">=", 10]}, "words": "Two drakes a skin.",
+         "available": {"questStage": ["quest.local.lf83", "≥", 10]}, "words": "Two drakes a skin.",
          "onDelivered": [{"setFlag": ["flag.lf83.test", True]}]},
     ],
 }
@@ -66,6 +66,9 @@ def test_reimport_replaces(w):
     (lambda d: d["lines"][0].update(facts=["fact.no-such"]), "dangling"),
     (lambda d: d["lines"][1].pop("topic"), "answers a topic"),
     (lambda d: d["lines"][0].update(colour="red"), "unknown key"),
+    (lambda d: d["lines"][1].update(available={"questStage": ["quest.local.lf83", ">=", 10]}), "operator '>='"),
+    (lambda d: d["lines"][1].update(available={"not": {"questStage": ["quest.local.lf83", "!=", 10]}}),
+     "operator '!='"),
 ])
 def test_bad_file_refused_whole(w, mutate, needle):
     doc = copy.deepcopy(DOC)
