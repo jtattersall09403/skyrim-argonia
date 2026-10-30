@@ -7,7 +7,7 @@ studio character made, saved as `argoniabase`. Every scene (`bat <id>`) starts f
 The new game is started by the console's `coc ARG_HoldingCell` at the main menu, which begins a new game with the
 start-game-enabled quests running and the player placed in the cell. Our start quest's own move (0.4 §b,
 ARG_StartQuestScript) needs its compiled script; until the Creation Kit is installed (owner issue #15) the coc is the
-move. The studio character (data/quarantine/start.json `studio`) takes the Argonian race; its class and birthsign
+move. The coc's test kit is removed. The studio character (data/quarantine/start.json `studio`) takes the Argonian race; its class and birthsign
 records wait for 1.3's setters.
 """
 import argparse
@@ -43,6 +43,10 @@ def main(argv=None):
         raise SystemExit(f"the new game did not reach {cell}")
     time.sleep(3)
     out = {"cell": cell, "new_game_s": round(time.monotonic() - t0, 1)}
+    # A coc from the main menu hands the player the engine's test kit (iron armour, a sword, potions, 96.5 kg): not
+    # our start, and it put a sheet-less studio character (carry 30 kg) at the overloaded tier, so no roll (game-6).
+    b.call("console", "player.removeallitems")
+    out["carried_kg"] = b.call("console", "player.getav inventoryweight")["output"].strip()
     out["race"] = b.call("console", f"player.setrace {RACES[studio['race']]}")["output"].strip()
     time.sleep(3)  # the race change rebuilds the player's 3D
     if b.call("console", "IsPC1stPerson")["output"].strip().endswith("1.00"):

@@ -45,6 +45,18 @@ def console(cmd):
     return B.call("console", cmd)["output"].strip()
 
 
+def travel(cmd):
+    """A cow or coc: the cell load holds the main thread past the bridge's 3 s cap, so that one refusal is the load
+    in progress, not a failure (game-6, 2026-10-30); player() then waits it out."""
+    try:
+        console(cmd)
+    except BridgeError as e:
+        if "main thread" not in str(e):
+            raise
+    time.sleep(8)
+    return player()
+
+
 def still(name):
     return str(B.screenshot(OUT / f"{name}.png"))
 
@@ -128,13 +140,11 @@ def cmd_dodge(a):
     want = a.dirs.split(",") if a.dirs else list(DIRS) + ["back"]
     if a.at:  # an open floor (setup only): QASmoke's pillars stopped rolls at 2 to 80 units (game-5, 2026-10-30)
         world, x, y = a.at.split(",")
-        B.call("console", f"cow {world} {int(float(x) // 4096)} {int(float(y) // 4096)}")
-        time.sleep(8)
+        travel(f"cow {world} {int(float(x) // 4096)} {int(float(y) // 4096)}")
         B.call("teleport", "pos", x, y, player()["pos"]["z"] + 300)
         time.sleep(3)  # the fall to the ground
     elif a.cell:  # at Riverwood a roll toward the trees ends on a trunk
-        B.call("console", f"coc {a.cell}")
-        time.sleep(8)
+        travel(f"coc {a.cell}")
     third_person()
     if a.drawn:
         B.pad("RB:120 wait:1500")  # RB on sheathed draws: the sword out, as in a fight
