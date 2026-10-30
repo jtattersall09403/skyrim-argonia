@@ -17,7 +17,7 @@ def run(cmd):
 @pytest.mark.parametrize("cmd", [
     "sleep 5", "rtk sleep 5", "make && sleep 1",
     "until test -f x; do echo; done", "while kill -0 123; do :; done", "tail -f log", "tail -n5 --pid=3 log",
-    "git checkout -- file", "git restore file", "git stash", "git reset --hard HEAD~1",
+    "git checkout -- file", "git restore file", "git stash", "git reset --hard HEAD~1", "git update-ref refs/heads/main abc123",
     "pkill python", "killall node", "kill -9 -1", "git commit -m x --", "git commit -m x -- ; ls",
     "cat ~/.argonia/secrets.env", "head -3 ~/.argonia/secrets.env", "rtk less ~/.argonia/secrets.env"])
 def test_refused(cmd):
