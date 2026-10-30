@@ -12,6 +12,7 @@
 # The sitting view is grow-at-rest's (its rest opens it); its still there counts for 1.2 §0.
 id: ui-probe
 runner: 1
+crash_risk: high
 scene: first-place
 steps:
   - name: bound              # PrismaUI's API answered and every page reported DOM ready

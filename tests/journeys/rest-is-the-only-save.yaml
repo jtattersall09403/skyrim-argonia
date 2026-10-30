@@ -3,6 +3,7 @@
 # so a save the game made would move it. A second camp spot is placed at Claywater's well junction (a settlement).
 id: rest-is-the-only-save
 runner: 1
+crash_risk: high
 step_saves: false        # it counts or tests saves: no step save (run_journey resume)
 scene: first-place
 steps:

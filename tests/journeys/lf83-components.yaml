@@ -8,6 +8,7 @@
 # hooks (activate or read sets a fact) are read after stage 20.
 id: lf83-components
 runner: 1
+crash_risk: medium
 scene: first-place
 steps:
   - name: arrived

@@ -10,6 +10,7 @@
 # Owed at L4 (game-6): `core` and `papyrus-queue` deployed (dec1c2b); the face-and-press E pose tuned once per speaker.
 id: first-place
 runner: 1
+crash_risk: medium
 scene: first-place
 steps:
   # --- arrive by the road ---------------------------------------------------------------------------------------

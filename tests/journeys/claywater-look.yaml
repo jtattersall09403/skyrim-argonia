@@ -5,6 +5,7 @@
 # each step only checks the teleport landed. Fix and re-shoot until the reader passes them.
 id: claywater-look
 runner: 1
+crash_risk: low
 scene: claywater
 steps:
   - name: road-in

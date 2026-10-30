@@ -4,6 +4,7 @@
 # Runtime 1.7.104 first; on a fail there, repeat on 1.6.1170 before any change to the pin (decision 0002).
 id: w3-interior-sun
 runner: 1
+crash_risk: medium
 scene: first-place
 steps:
   - name: enter               # Livia's house, a room with windows

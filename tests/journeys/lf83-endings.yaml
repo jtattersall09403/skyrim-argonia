@@ -6,6 +6,7 @@
 # Each ending writes its journal entry (kind 1 complete, 2 failed) and closes the quest in the engine.
 id: lf83-endings
 runner: 1
+crash_risk: medium
 scene: first-place
 steps:
   # --- 41: the ford charge bought -------------------------------------------------------------------------------

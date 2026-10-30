@@ -4,6 +4,7 @@
 # called by the Papyrus VM (the input set; the clamp and the mirror are what is read back).
 id: attributes
 runner: 1
+crash_risk: low
 scene: first-place
 steps:
   - name: mirrors-equal       # each attribute equals its mirror AV, all 7

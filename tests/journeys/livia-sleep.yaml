@@ -5,6 +5,7 @@
 # by the road, then goes in through the door to read her.
 id: livia-sleep
 runner: 1
+crash_risk: medium
 scene: first-place
 steps:
   - name: evening-out

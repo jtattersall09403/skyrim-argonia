@@ -3,6 +3,7 @@
 # output); this journey swims between them on the pad. Rapids and falls reaches are owed to the generator.
 id: water-swim
 runner: 1
+crash_risk: medium
 scene: world-sample-04-rapids
 steps:
   - name: top

@@ -3,6 +3,7 @@
 # Time passes on the game's own clock (the runner's game_hours: the timescale raised, then put back).
 id: quarantine
 runner: 1
+crash_risk: low
 scene: holding
 steps:
   - name: day-0

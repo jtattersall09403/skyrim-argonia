@@ -4,6 +4,7 @@
 # (blue-grey fog, snow light, pale sun) and the old weather references. Marsh view: world-sample stop 6.
 id: w3-weather-stills
 runner: 1
+crash_risk: medium
 scene: world-sample-06-marsh
 steps:
   - name: mist-06

@@ -4,6 +4,7 @@
 # Livia's health is lowered as setup (the means), never her death.
 id: quest-board
 runner: 1
+crash_risk: low
 scene: first-place
 steps:
   - name: talk-takes          # stage 10 the real way: Takes' greeting links the hook topic

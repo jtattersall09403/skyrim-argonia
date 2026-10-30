@@ -3,6 +3,7 @@
 # N13 and the landing's poler. The perk is added by ArgoniaCore on load (engine.cpp EnsurePerk), never the scene.
 id: dialogue-intercept
 runner: 1
+crash_risk: low
 scene: first-place
 steps:
   - name: closed

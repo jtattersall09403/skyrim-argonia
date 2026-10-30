@@ -3,6 +3,7 @@
 # a still per step. The schedules (sandbox by day, sleep by night) are nav-sandbox-20's and a night step here.
 id: claywater-walk
 runner: 1
+crash_risk: low
 scene: claywater
 steps:
   - name: arrived

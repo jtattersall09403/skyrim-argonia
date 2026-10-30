@@ -4,6 +4,7 @@
 # crime gold with that faction, before (kept) and after; Livia's own GetCrimeGold is her bounty, always 0.
 id: w3-crime
 runner: 1
+crash_risk: low
 scene: first-place
 steps:
   - name: face-livia          # 1.2 m from her, facing her, a sword in hand

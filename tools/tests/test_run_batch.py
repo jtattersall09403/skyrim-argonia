@@ -224,6 +224,7 @@ def test_write_owed_orders_by_crash_risk_save_changing_last(tmp_path, journeys):
         (d / f"{jid}.yaml").write_text(yaml.safe_dump({**body, **({"batch_last": True} if last else {})}))
     j("a-tour", "high"); j("b-quit", "high", last=True); j("c-read", "low"); j("d-saves", "low", last=True)
     j("e-fight", "medium"); j("f-unset"); j("g-read", "low")
+    (d / "other-set.yaml").write_text(yaml.safe_dump({"id": "other-set", "runner": 1, "stack": "B", "steps": []}))
     out = tmp_path / "hist"
     p = out / "batch" / "g" / "20261030T1"
     p.mkdir(parents=True)

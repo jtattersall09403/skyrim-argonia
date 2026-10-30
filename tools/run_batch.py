@@ -2,13 +2,13 @@
 """One game slot, one batch (owner, 2026-10-30): many journeys and scenes in sequence under ONE `job_guard --gpu`
 job, keeping going past failures. DEV ONLY: it drives the running game through tools/bridge.py.
 
-    tooling/job_guard.sh run --gpu batch -- python3 tools/run_batch.py tests/journeys/batches/game-12.yaml
-    python3 tools/run_batch.py --dry tests/journeys/batches/game-12.yaml      # validate every item; no game
+    tooling/job_guard.sh run --gpu batch -- python3 tools/run_batch.py tests/journeys/batches/all.yaml
+    python3 tools/run_batch.py --dry tests/journeys/batches/all.yaml      # validate every item; no game
     python3 tools/run_batch.py smoke croc-den:2 scene:world-sample-03-corner  # an ad hoc batch, id "adhoc"
 
 A batch file:
 
-    id: game-12
+    id: all
     relaunch_mb: 6000          # relaunch the game before an item when SkyrimSE's private memory is past this
     relaunch_every: 0          # and/or every N items (0: never on count alone)
     items:
@@ -26,8 +26,10 @@ item at the step, from its step save); `--only <item>[:<step>]` runs that item a
 What is owed: `--owed` lists every journey under tests/journeys with its status, from the summary.json history
 under out/batch and the run reports under out/runs (draft: not runnable; never: runnable, no run on record;
 failed: its last run failed; passed: its last run passed). `--write-owed <batch.yaml>` writes a batch of every
-runnable journey not passed (never or failed), soaks and `must_fail` fixtures left out, the save-changing ones last: a journey with a
-`relaunch` action or `batch_last: true` (it ends at the main menu, quits or writes the saves the next item reads).
+runnable journey not passed (never or failed), soaks, `must_fail` fixtures and journeys for another combat
+set (`stack: B`) left out, ordered by `crash_risk` (low, medium, high; unset: medium) and, within a tier, the
+save-changing ones last (owner, 2026-10-30: one batch, crash-prone last); `--all` adds the passed ones. Save-changing:
+a journey with a `relaunch` action or `batch_last: true` (it ends at the main menu, quits or writes the saves the next item reads).
 Game lanes compose their batch this way, so no runnable draft is skipped.
 
 A crash is a failure: the item is recorded with its crash, the game is relaunched (bridge `launch`) and the batch
@@ -275,7 +277,7 @@ def owed(journeys: pathlib.Path = None, out: pathlib.Path = None) -> list[dict]:
         if not isinstance(j, dict) or j.get("runner") != 1:
             rows.append({"id": jid, "status": "draft", "runs": 0})
             continue
-        if j.get("must_fail"):  # a fixture that fails on purpose: never owed
+        if j.get("must_fail") or j.get("stack"):  # a fixture that fails on purpose, or one for another combat set
             continue
         h = hist.get(jid, [])
         status = "never" if not h else "passed" if h[-1][1] else "failed"

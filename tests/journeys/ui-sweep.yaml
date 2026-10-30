@@ -5,6 +5,7 @@
 # opens by activating it from the console (the menu's look is the test). Barter, training and crafting are owed. Ends at the main menu: a save-changing item, last in its batch.
 id: ui-sweep
 runner: 1
+crash_risk: medium
 batch_last: true         # it ends at the main menu or changes the saves: last in a batch (run_batch --write-owed)
 scene: ui-props
 steps:

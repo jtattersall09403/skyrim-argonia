@@ -4,6 +4,7 @@
 # journey ends at the main menu: a batch's next item loads its save. Runs last in a batch, or before a relaunch.
 id: menus-quit
 runner: 1
+crash_risk: high
 batch_last: true         # it ends at the main menu or changes the saves: last in a batch (run_batch --write-owed)
 step_saves: false        # it counts or tests saves: no step save (run_journey resume)
 scene: first-place
