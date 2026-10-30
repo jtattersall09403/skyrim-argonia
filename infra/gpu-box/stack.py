@@ -955,6 +955,7 @@ def cmd_install(a):
     if not a.skip_fetch:
         cmd_fetch(argparse.Namespace(record=False, only=None))
     cmd_stage(a)
+    cmd_masters(a)  # the build VM's Data follows the staged set: the gate reads this profile (game-10: DSC listed, absent)
     cmd_push(a)
     # bare Data first, the game quit (a bridge launch keeps it running)
     print(run("ps", r"Get-Process SkyrimSE,skse64_loader -EA SilentlyContinue | Stop-Process -Force; Start-Sleep 3; "
@@ -1053,33 +1054,45 @@ def bsa_names(path):
     return out
 
 
+MASTERS_COPIED = "argonia-masters-copied.txt"  # what masters laid in the build VM's Data, so a set switch can undo it
+
+
 def cmd_masters(a):
-    """Plugins and mesh path lists to the build VM's game tree, so ArgoniaGen can master them (0.4)."""
+    """Plugins and mesh path lists to the build VM's game tree, so ArgoniaGen can master them (0.4). Only the staged
+    (active) set's: a plugin an earlier set laid here and this one does not stage is taken out again, with its mesh
+    list, so Data, the profile's plugins.txt and argonia-plugins.txt name the same set (game-10: combat B left
+    Dark Souls Combat.esp in the profile the gate reads, absent from Data)."""
     game = pathlib.Path(os.environ.get("ARGONIA_GAME_ROOT", HOME / "games" / "skyrimse"))
     data, lists = game / "Data", game / "Data" / "argonia-mesh-lists"
     lists.mkdir(parents=True, exist_ok=True)
     inst = json.loads((STACK / "installed.json").read_text())
-    n = 0
     keys = STACK / "staged"
-    for mod in sorted((MO2 / "mods").iterdir()):
+    copied, mods = [], sorted((MO2 / "mods").iterdir())
+    for mod in mods:
         kf = keys / f"{mod.name}.json"
-        if kf.exists() and json.loads(kf.read_text()).get("pruned"):
-            for f in mod.iterdir():
-                if f.suffix.lower() in PLUGIN_EXT:
-                    shutil.copy2(f, data / f.name)
-                    n += 1
-            continue  # its mesh list was written before the prune
-        meshes = [k for k, v in inst["files"].items() if v[0] == mod.name and k.startswith("meshes\\")]
+        pruned = kf.exists() and json.loads(kf.read_text()).get("pruned")
+        meshes = [] if pruned else [k for k, v in inst["files"].items() if v[0] == mod.name and k.startswith("meshes\\")]
         for f in mod.iterdir():
             if f.suffix.lower() in PLUGIN_EXT:
                 shutil.copy2(f, data / f.name)
-                n += 1
-            elif f.suffix.lower() == ".bsa":
+                copied.append(f.name)
+            elif f.suffix.lower() == ".bsa" and not pruned:
                 meshes += [x.lower() for x in bsa_names(f) if x.lower().startswith("meshes")]
-        if meshes:
+        if meshes:  # a pruned mod's list was written before the prune
             (lists / f"{mod.name}.txt").write_text("\n".join(sorted(set(meshes))) + "\n")
+    record = data / MASTERS_COPIED
+    now = {c.lower() for c in copied}
+    gone = [x for x in (record.read_text().split("\n") if record.exists() else []) if x and x.lower() not in now]
+    for x in gone:
+        (data / x).unlink(missing_ok=True)
+    staged = {m.name for m in mods}
+    for f in lists.iterdir():
+        if f.stem not in staged:
+            f.unlink()
+    record.write_text("\n".join(sorted(copied)) + "\n")
     (data / "argonia-plugins.txt").write_text("\n".join(inst["plugins"]) + "\n")
-    print(f"{n} plugins and {len(list(lists.iterdir()))} mesh lists in {data}")
+    print(f"{len(copied)} plugins ({len(gone)} of another set taken out) and {len(list(lists.iterdir()))} mesh lists "
+          f"in {data}")
 
 
 COMBAT = {"A": "souls-0.0", "B": "dsc-b", "B2": "dsc-b2"}  # the owner's names for the combat sets

@@ -1,5 +1,6 @@
 """The combat sets A, B and B2 (stack.py combat; docs/research/2026-10-29/combat-mod-28567.md §5): which rows each
 lays, and the plugin values stage writes into a mod's plugin (B2's crits global, the roll key)."""
+import json
 import struct
 import sys
 from pathlib import Path
@@ -89,3 +90,43 @@ def test_b2_and_b_values_and_the_rips_drop_are_data():
 def test_an_unknown_set_is_refused():
     with pytest.raises(SystemExit):
         stack.picks(stack.manifest(), {"combat": "dsc-c"})
+
+
+def test_masters_lays_only_the_staged_sets_plugins(tmp_path, monkeypatch):
+    """game-10's gate red: combat B staged Dark Souls Combat.esp into the profile the gate reads while the build VM's
+    Data lacked it. masters lays the staged set's plugins into Data and takes out those an earlier set laid."""
+    st, game = tmp_path / "stack", tmp_path / "game"
+    (game / "Data").mkdir(parents=True)
+    (st / "staged").mkdir(parents=True)
+    monkeypatch.setattr(stack, "STACK", st)
+    monkeypatch.setattr(stack, "MO2", st / "MO2")
+    monkeypatch.setenv("ARGONIA_GAME_ROOT", str(game))
+
+    def stage(mods):
+        import shutil
+        shutil.rmtree(st / "MO2", ignore_errors=True)
+        files = {}
+        for mod, plugs in mods.items():
+            (st / "MO2" / "mods" / mod).mkdir(parents=True)
+            for p in plugs:
+                (st / "MO2" / "mods" / mod / p).write_bytes(b"TES4")
+            files[f"meshes\\{mod}\\a.nif"] = [mod, "h"]
+        (st / "installed.json").write_text(json.dumps({"plugins": [p for ps in mods.values() for p in ps], "files": files}))
+
+    data = game / "Data"
+    stage({"precision": ["Precision.esp"], "dark-souls-combat": ["Dark Souls Combat.esp"]})  # set B
+    stack.cmd_masters(None)
+    assert (data / "Dark Souls Combat.esp").exists() and (data / "argonia-mesh-lists" / "dark-souls-combat.txt").exists()
+    stage({"precision": ["Precision.esp"]})  # back to A
+    stack.cmd_masters(None)
+    assert not (data / "Dark Souls Combat.esp").exists()
+    assert not (data / "argonia-mesh-lists" / "dark-souls-combat.txt").exists()
+    assert (data / "Precision.esp").exists()
+    assert (data / "argonia-plugins.txt").read_text().split() == ["Precision.esp"]
+
+
+def test_install_syncs_masters_after_the_stage():
+    """Every install (combat A, B, B2 included) lays the staged set's plugins into the build VM's Data."""
+    import inspect
+    src = inspect.getsource(stack.cmd_install)
+    assert src.index("cmd_stage(a)") < src.index("cmd_masters(a)") < src.index("cmd_push(a)")
