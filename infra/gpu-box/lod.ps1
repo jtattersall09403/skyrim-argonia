@@ -246,10 +246,10 @@ switch ($Step) {
     Set-Check $p 'Terrain LOD' $true
     Dump $p 'before Generate'
     Click $p 'Generate'
-    Measure-Run $p { Watch-Popups $p $main; (Tool-Text $p) -match 'LOD Generator: finished' }
+    Measure-Run $p { Watch-Popups $p $main; (Tool-Text $p) -match 'LOD Generator: finished|LOD generation done' }
     $txt = Tool-Text $p; Set-Content "$Work\logs\terrain-messages.txt" $txt
     $p | Stop-Process -Force
-    if ($txt -notmatch "finished") { throw 'terrain: xLODGen did not finish' }
+    if ($txt -notmatch 'finished|generation done') { throw 'terrain: xLODGen did not finish' }
     $n = (Get-ChildItem $Out.terrain -Recurse -File -Include *.btr, *.dds).Count; Say "terrain: $n files"
     if (-not $n) { throw 'terrain: no .btr or .dds written' }
     Link-Into-Data $Out.terrain   # DynDOLOD culls object LOD below the terrain LOD
