@@ -6,7 +6,8 @@ export type Rect = [number, number, number, number];
 export interface CellIndex {
   size: number;                                            // master canvas side in px
   cells: Record<string, Rect>;                             // "x,y" -> [left, top, width, height] in master px
-  places?: Record<string, { city: boolean; label: Rect | null }>; // label: [x0, y0, x1, y1] of the chart's lettering
+  // label: [x0, y0, x1, y1] of the chart's lettering; a city (lettered by the sketch) also has its name and cell
+  places?: Record<string, { city: boolean; label: Rect | null; name?: string; cell?: [number, number] }>;
 }
 
 // Where the view letters a place in screen px, or null. The chart's own lettering is kept where it reads (at least
@@ -27,6 +28,11 @@ export function labelAt(ix: CellIndex, t: { scale: number; tx: number; ty: numbe
 }
 
 export const key = (c: CellKey): string => `${c.x},${c.y}`;
+
+// The sketch's cities the push did not name: the chart letters them whether or not the player has been there.
+export const sketchCities = (ix: CellIndex, named: Set<string>) =>
+  Object.entries(ix.places ?? {}).filter(([id, p]) => p.city && p.name && !named.has(id))
+    .map(([id, p]) => ({ id, name: p.name!, x: p.cell![0] + 0.5, y: p.cell![1] + 0.5 }));
 
 // Cell units -> master px, read from the index's cell 0,0 (the map is linear: one cell is one rect).
 export function toPx(ix: CellIndex, u: number, v: number): [number, number] {

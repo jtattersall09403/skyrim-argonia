@@ -4,7 +4,7 @@
 // lasts; when it settles the view is sent as chart.pan, and ArgoniaCore keeps it between openings.
 import type { ChartState, ChartView } from "../../schema/generated/messages.ts";
 import { send, start } from "../core/bridge.ts";
-import { type CellIndex, labelAt, pan, panIntent, revealRects, toPx, transform } from "./geom.ts";
+import { type CellIndex, labelAt, pan, panIntent, revealRects, sketchCities, toPx, transform } from "./geom.ts";
 import { render } from "./render.ts";
 
 declare global { interface Window { ARGONIA_CHART_INDEX: CellIndex } }
@@ -21,7 +21,7 @@ const layers = new Map<string, Promise<{ base: HTMLImageElement; revealed: HTMLI
 function layersFor(id: string) {
   if (!layers.has(id)) {
     const dir = SKETCHES[id];
-    if (!dir) throw new Error(`chart: unknown sketch '${id}'`);
+    if (!dir) return Promise.reject(new Error(`chart: unknown sketch '${id}'`));
     layers.set(id, Promise.all(["base", "revealed", "ink"].map((n) => load(`${dir}/${n}-2048.png`)))
       .then(([base, revealed, ink]) => ({ base, revealed, ink })));
   }
@@ -32,6 +32,10 @@ let state: ChartState | null = null;
 let view: ChartView = { centreX: 0, centreY: 0, zoom: 1 };
 let masked: HTMLCanvasElement | null = null;
 let maskedFor = "";
+let pushKey = "";          // the sketch and revealed cells of the last push: the mask is rebuilt only when they change
+let frame = 0;
+// Pointer events can outrun the frame rate: draw at most once a frame.
+const drawSoon = () => { if (!frame) frame = requestAnimationFrame(() => { frame = 0; draw(); }); };
 let imgs: { base: HTMLImageElement; revealed: HTMLImageElement; ink: HTMLImageElement } | null = null;
 
 // The revealed layer through the cells: one mask pixel per cell, smoothed up in two steps (a soft edge about a
@@ -67,8 +71,7 @@ function draw(): void {
   const w = canvas.clientWidth, h = canvas.clientHeight, dpr = window.devicePixelRatio || 1;
   if (canvas.width !== Math.round(w * dpr)) canvas.width = Math.round(w * dpr);
   if (canvas.height !== Math.round(h * dpr)) canvas.height = Math.round(h * dpr);
-  const key = `${state.sketch}|${JSON.stringify(state.revealed)}`;
-  if (maskedFor !== key) { masked = mask(imgs.revealed, state); maskedFor = key; }
+  if (maskedFor !== pushKey) { masked = mask(imgs.revealed, state); maskedFor = pushKey; }
   const t = transform(ix, view, w, h);
   const c = canvas.getContext("2d")!;
   c.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -86,10 +89,11 @@ function draw(): void {
   for (const el of root.querySelectorAll<HTMLElement>(".label")) {
     const at = labelAt(ix, t, el.dataset.label!, Number(el.dataset.x), Number(el.dataset.y),
       el.dataset.discovered === "true", rem * 0.75);
-    el.hidden = at === null || at.left > w || at.top > h || at.top < 0;
+    el.hidden = at === null || at.left > w || at.left < 0 || at.top > h || at.top < 0;   // the sheet clips the rest
     if (!at) continue;
     el.style.left = `${at.left}px`; el.style.top = `${at.top}px`;
     el.classList.toggle("over", at.cover !== undefined);
+    el.classList.toggle("beside", at.cover === undefined);   // no drawn label: a small ink mark at the place
     if (at.cover) { el.style.minWidth = `${at.cover[2] + 0.4 * rem}px`; el.style.minHeight = `${at.cover[3] + 0.2 * rem}px`; }
     else { el.style.minWidth = ""; el.style.minHeight = ""; }
   }
@@ -128,20 +132,21 @@ root.addEventListener("pointermove", (e) => {
     if (pinch0 > 0) view = pan(ix, view, w, h, 0, 0, d / pinch0);
     pinch0 = d;
   }
-  draw();
+  drawSoon();
 });
 const up = (e: PointerEvent) => { if (pts.delete(e.pointerId) && pts.size === 0) moved(view, true); };
 root.addEventListener("pointerup", up);
 root.addEventListener("pointercancel", up);
 root.addEventListener("wheel", (e) => { e.preventDefault(); step(0, 0, e.deltaY < 0 ? 1.25 : 0.8); }, { passive: false });
-window.addEventListener("resize", draw);
+window.addEventListener("resize", drawSoon);
 
 start({
   accepts: ["chart.state"],
   render(m) {
     if (m.type !== "chart.state") return;
     state = m.body; view = m.body.view;
-    root.innerHTML = render(state);
+    pushKey = `${state.sketch}|${JSON.stringify(state.revealed)}`;
+    root.innerHTML = render(state, sketchCities(ix, new Set(state.places.map((p) => p.id))));
     delete document.body.dataset.ready;
     layersFor(state.sketch).then((l) => { imgs = l; draw(); }, (e: Error) => window.argonia.errors.push(e.message));
     if (imgs) draw();

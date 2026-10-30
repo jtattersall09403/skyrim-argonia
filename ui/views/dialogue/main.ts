@@ -25,7 +25,7 @@ start({
     if (m.type !== "dialogue.state") return;
     const same = state?.speaker.id === m.body.speaker.id;
     state = m.body;
-    if (!same) ui.persuading = false;
+    if (!same || !m.body.persuasion.available) ui.persuading = false;
     draw(same);
   },
   back() {

@@ -1,7 +1,7 @@
 """ui/fixtures/chart.json's positions, made from out/chart/index.json so the mock chart agrees with the real one.
 
 The fixture's shape stays hand-written (the schema lane's); this sets every place's id and position, the revealed
-cells (a walk round Claywater Station: the 13 x 13 cells about its cell) and the views, from the index.
+cells (a walk round Claywater Station: the cells within 6 of its cell) and the views, from the index.
 `--check` exits 1 if the fixture has drifted from the index (the gate's test runs it when out/chart exists).
 """
 from __future__ import annotations
@@ -37,7 +37,7 @@ def made(fx: dict, ix: dict) -> dict:
     hx, hy = home["cell"]
     hu, hv = units(ix, *home["px"])
     walk = [{"x": hx + dx, "y": hy + dy} for dx in range(-WALK, WALK + 1) for dy in range(-WALK, WALK + 1)
-            if f"{hx + dx},{hy + dy}" in ix["cells"]]
+            if dx * dx + dy * dy <= WALK * WALK and f"{hx + dx},{hy + dy}" in ix["cells"]]
     half = ix["size"] / 2
     cu, cv = units(ix, half, half)
     for name, st in fx["states"].items():

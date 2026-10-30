@@ -60,7 +60,9 @@ def chart_index(src: Path) -> dict:
     sketch letters it (a city) and where the chart's own lettering sits, so the view can letter it larger."""
     ix = json.loads(src.read_text())
     return {"size": ix["size"], "cells": {k: v[2:6] for k, v in ix["cells"].items()},
-            "places": {k: {"city": bool(p["city"]), "label": p["label"]} for k, p in ix["places"].items()}}
+            "places": {k: {"city": bool(p.get("city")), "label": p.get("label"),
+                           **({"name": p["name"], "cell": p["cell"]} if p.get("city") else {})}
+                       for k, p in ix.get("places", {}).items()}}
 
 
 def build(out: Path = OUT, chart_dir: Path | None = None, minify: bool = True) -> dict:

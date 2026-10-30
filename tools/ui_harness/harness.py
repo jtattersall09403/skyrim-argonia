@@ -55,7 +55,7 @@ MEASURE = r"""
     if (r.width === 0 || r.height === 0 || cs.visibility === "hidden" || cs.display === "none") continue;
     // A row scrolled out of its list is not on screen; only what a scroller shows counts.
     let hidden = false;
-    for (let p = el.parentElement; p; p = p.parentElement) {
+    for (let p = el.parentElement; p && p.id !== "view"; p = p.parentElement) {
       const ps = getComputedStyle(p);
       if (/(auto|scroll|hidden)/.test(ps.overflowY + ps.overflowX)) {
         const pr = p.getBoundingClientRect();
@@ -170,6 +170,7 @@ class Harness:
             self.loaded = None    # clicks, keys or a device leave state behind: the next still reloads
         if opt.get("device"):
             p.evaluate(f"() => window.argonia.device('{opt['device']}')")
+        p.evaluate("() => { window.argonia.errors.length = 0; }")
         for m in pushes:
             assert p.evaluate("(m) => window.argonia.push(m)", m), f"{view}.{name}: push refused"
         if view == "chart":

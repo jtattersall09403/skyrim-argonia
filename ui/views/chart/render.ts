@@ -4,9 +4,10 @@
 import type { ChartState } from "../../schema/generated/messages.ts";
 import { esc, intentButton } from "../core/html.ts";
 
-export function render(s: ChartState): string {
-  const labels = s.places.map((p) =>
-    `<span class="label" data-label="${esc(p.id)}" data-x="${p.x}" data-y="${p.y}" data-discovered="${p.discovered}">${esc(p.name)}</span>`).join("");
+export function render(s: ChartState, cities: { id: string; name: string; x: number; y: number }[] = []): string {
+  const all = [...s.places, ...cities.map((c) => ({ ...c, discovered: false }))];
+  const labels = all.map((p) =>
+    `<span class="label" hidden data-label="${esc(p.id)}" data-x="${p.x}" data-y="${p.y}" data-discovered="${p.discovered}">${esc(p.name)}</span>`).join("");
   const places = s.places.filter((p) => p.discovered).map((p) =>
     `<button type="button" class="place" data-nav data-key="place:${esc(p.id)}" data-place="${esc(p.id)}"
       data-x="${p.x}" data-y="${p.y}" aria-label="${esc(p.name)}"><span class="pname">${esc(p.name)}</span></button>`).join("");

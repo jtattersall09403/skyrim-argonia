@@ -25,3 +25,5 @@
 .label.over { display: flex; align-items: center; margin-left: -0.2rem; background: rgba(225, 212, 176, 0.94); border-radius: 0.3rem; box-shadow: 0 0 0.3rem 0.25rem rgba(225, 212, 176, 0.9); }
 .label[data-discovered="false"] { color: #4a4630; }
 .label[hidden] { display: none; }
+.label.beside::before { content: ""; position: absolute; left: -0.55rem; top: 50%; width: 0.4rem; height: 0.4rem;
+  margin-top: -0.2rem; border-radius: 50%; background: #2b2e1c; box-shadow: 0 0 0 0.12rem #f1e8cf; }
