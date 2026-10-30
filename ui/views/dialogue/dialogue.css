@@ -47,7 +47,18 @@ body { display: flex; align-items: center; justify-content: center; }
 .topics {
   flex: 1; min-height: 0; list-style: none; margin: 0; padding: var(--s1) 0;
   border-top: 1px solid var(--ink-faint); border-bottom: 1px solid var(--ink-faint);
+  /* Scroll shadows: a dark fade at an edge with more beyond it, the cue that the list goes on. */
+  background:
+    linear-gradient(var(--paper), rgba(230, 217, 184, 0)) top / 100% 1.2rem no-repeat local,
+    linear-gradient(rgba(230, 217, 184, 0), var(--paper)) bottom / 100% 1.2rem no-repeat local,
+    radial-gradient(farthest-side at 50% 0, rgba(60, 40, 15, 0.45), transparent) top / 100% 0.8rem no-repeat scroll,
+    radial-gradient(farthest-side at 50% 100%, rgba(60, 40, 15, 0.45), transparent) bottom / 100% 0.8rem no-repeat scroll;
+  scrollbar-width: auto; scrollbar-color: var(--ink-soft) rgba(84, 67, 44, 0.15);
 }
+.topics::-webkit-scrollbar { width: 0.6rem; }
+.topics::-webkit-scrollbar-track { background: rgba(84, 67, 44, 0.15); }
+.topics::-webkit-scrollbar-thumb { background: var(--ink-soft); }
+.topics:last-child { border-bottom: 0; }
 .topic { display: block; width: 100%; padding: 0.12rem var(--s2); color: var(--link); }
 .topic:hover { color: var(--link-hi); background: rgba(176, 112, 42, 0.1); }
 
@@ -62,7 +73,8 @@ body { display: flex; align-items: center; justify-content: center; }
   border-bottom: 1px solid rgba(84, 67, 44, 0.3);
 }
 .opt .cost { color: var(--ink-soft); }
-.opt:disabled .cost { color: var(--ink-faint); }
+.opt:disabled { color: var(--ink-soft); font-style: italic; text-decoration: line-through; text-decoration-color: rgba(84, 67, 44, 0.5); }
+.opt:disabled .cost { color: var(--ink-soft); }
 
 /* Short and wide (the fold closed at 21:9): the side column narrows, the title tightens. */
 @media (max-aspect-ratio: 1/1) { .dialogue { height: 80vh; } }

@@ -2,9 +2,28 @@
 // canvas as out/chart/index.json gives them (x east, y south from the canvas's NW corner; cell y grows north).
 import type { CellKey, ChartView, IntentMessage } from "../../schema/generated/messages.ts";
 
+export type Rect = [number, number, number, number];
 export interface CellIndex {
   size: number;                                            // master canvas side in px
-  cells: Record<string, [number, number, number, number]>; // "x,y" -> [left, top, width, height] in master px
+  cells: Record<string, Rect>;                             // "x,y" -> [left, top, width, height] in master px
+  places?: Record<string, { city: boolean; label: Rect | null }>; // label: [x0, y0, x1, y1] of the chart's lettering
+}
+
+// Where the view letters a place in screen px, or null. The chart's own lettering is kept where it reads (at least
+// `minPx` tall on screen); where it is smaller, the view letters it at 1rem on a paper plate over the drawn one. A
+// place is lettered only where the paper shows it: a city (the sketch) or a discovered place (the revealed layer).
+export function labelAt(ix: CellIndex, t: { scale: number; tx: number; ty: number }, id: string, x: number, y: number,
+  discovered: boolean, minPx: number): { left: number; top: number; cover?: Rect } | null {
+  const rec = ix.places?.[id];
+  if (!discovered && !rec?.city) return null;
+  const lab = rec?.label ?? null;
+  if (lab) {
+    if ((lab[3] - lab[1]) * t.scale >= minPx) return null;
+    const cover: Rect = [lab[0] * t.scale + t.tx, lab[1] * t.scale + t.ty, (lab[2] - lab[0]) * t.scale, (lab[3] - lab[1]) * t.scale];
+    return { left: cover[0], top: cover[1] + cover[3] / 2, cover };
+  }
+  const [px, py] = toPx(ix, x, y);
+  return { left: px * t.scale + t.tx + minPx * 0.6, top: py * t.scale + t.ty };
 }
 
 export const key = (c: CellKey): string => `${c.x},${c.y}`;

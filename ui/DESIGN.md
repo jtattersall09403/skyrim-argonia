@@ -13,18 +13,20 @@ and a moss accent. No Nordic ornament (0006).
 
 - **Pelagiad everywhere** (OFL; `fonts/Pelagiad.ttf` sits beside the views and is copied at install from
   `$ARGONIA_PRIVATE/fonts/pelagiad`, never committed). The fallback is Palatino.
-- **The scale follows the viewport.** `1rem = min(height / 34, width / 52)`, set by `core/scale.ts`:
+- **The scale follows the viewport.** `1rem = min(height / 34, width / 52)`, and `height / 26` on a screen 2:1 or
+  wider, which is a phone held landscape (the fold closed is 2.24:1; desktops are 16:9 or 16:10). `core/scale.ts`
+  sets it:
 
   | Viewport | 1rem | Physical |
   |---|---|---|
   | 1920×1080 | 31.8 px | above the 28 px 10-foot minimum |
   | 1280×720 | 21.2 px | |
-  | Magic V5 folded, 2376×1060 at 404 ppi | 31.2 px | 1.96 mm |
+  | Magic V5 folded, 2376×1060 at 404 ppi | 40.8 px | 2.56 mm |
   | Magic V5 unfolded, 2352×2172 at 403 ppi | 45.2 px | 2.85 mm |
 
   The 0.2 §d stream scale is not recorded, so the views are judged at 1:1.
-- **No text is smaller than 1rem.** That is the readability bar: at least 1.9 mm em height on the folded phone. The
-  harness measures the smallest drawn text in every still.
+- **No text is smaller than 1rem.** That is the readability bar: at least 2.5 mm em height on the phone. The
+  reader's first round failed 1.96 mm. The harness measures the smallest drawn text in every still.
 - **Sizes:** `--t-body` 1rem, `--t-head` 1.25rem, `--t-title` 1.6rem, `--t-banner` 2.6rem. The line height is 1.32.
 
 ## Colour

@@ -5,11 +5,13 @@ import type { ChartState } from "../../schema/generated/messages.ts";
 import { esc, intentButton } from "../core/html.ts";
 
 export function render(s: ChartState): string {
+  const labels = s.places.map((p) =>
+    `<span class="label" data-label="${esc(p.id)}" data-x="${p.x}" data-y="${p.y}" data-discovered="${p.discovered}">${esc(p.name)}</span>`).join("");
   const places = s.places.filter((p) => p.discovered).map((p) =>
     `<button type="button" class="place" data-nav data-key="place:${esc(p.id)}" data-place="${esc(p.id)}"
       data-x="${p.x}" data-y="${p.y}" aria-label="${esc(p.name)}"><span class="pname">${esc(p.name)}</span></button>`).join("");
   return `<section class="chart paper" aria-label="Chart" data-worldspace="${esc(s.worldspace)}" data-sketch="${esc(s.sketch)}">
-  <div class="sheet"><canvas class="layers"></canvas><div class="places">${places}</div></div>
+  <div class="sheet"><canvas class="layers"></canvas><div class="labels">${labels}</div><div class="places">${places}</div></div>
   <div class="controls">
     <button type="button" class="zoom" data-ui="zoom-in" data-key="zoom-in" aria-label="Zoom in">+</button>
     <button type="button" class="zoom" data-ui="zoom-out" data-key="zoom-out" aria-label="Zoom out">&minus;</button>

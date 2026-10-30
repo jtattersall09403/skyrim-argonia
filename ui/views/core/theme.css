@@ -37,6 +37,7 @@
   --edge: 0.12rem;
   font-size: min(calc(100vh / 34), calc(100vw / 52));
 }
+@media (min-aspect-ratio: 2/1) { :root { font-size: min(calc(100vh / 26), calc(100vw / 52)); } }
 
 * { box-sizing: border-box; }
 html, body { margin: 0; height: 100%; overflow: hidden; }

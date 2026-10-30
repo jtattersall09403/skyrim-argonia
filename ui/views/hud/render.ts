@@ -13,9 +13,12 @@ const BAR_NAME: Record<Bar["kind"], string> = {
   health: "Health", stamina: "Stamina", magicka: "Magicka", breath: "Breath", climb: "Grip",
 };
 
-const bar = (b: Bar): string => `<div class="bar ${b.kind}" style="width:${barLength(b).toFixed(2)}rem"
+// The three standing bars are known by colour and place, as in Dark Souls; breath and grip come and go, so they
+// carry their name.
+const NAMED = new Set<Bar["kind"]>(["breath", "climb"]);
+const bar = (b: Bar): string => `<div class="row ${b.kind}"><div class="bar ${b.kind}" style="width:${barLength(b).toFixed(2)}rem"
   role="meter" aria-label="${BAR_NAME[b.kind]}" aria-valuenow="${Math.round(b.current)}" aria-valuemax="${Math.round(b.max)}">
-  <div class="fill" style="width:${fillPct(b).toFixed(1)}%"></div></div>`;
+  <div class="fill" style="width:${fillPct(b).toFixed(1)}%"></div></div>${NAMED.has(b.kind) ? `<span class="bar-name">${BAR_NAME[b.kind]}</span>` : ""}</div>`;
 
 // The sneak eye, our own drawing: the lids part as detection rises; a word beside it for the folded phone.
 export const sneakWord = (eye: number): string => (eye < 0.25 ? "Hidden" : eye < 0.75 ? "Watched" : "Seen");

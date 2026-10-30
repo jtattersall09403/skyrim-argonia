@@ -11,7 +11,7 @@ import {
 } from "../../schema/generated/messages.ts";
 import { esc, intentsIn, textOf } from "../core/html.ts";
 import { remFor } from "../core/scale.ts";
-import { type CellIndex, pan, panIntent, revealRects, toPx, toUnits, transform } from "../chart/geom.ts";
+import { type CellIndex, labelAt, pan, panIntent, revealRects, toPx, toUnits, transform } from "../chart/geom.ts";
 import { render as chart } from "../chart/render.ts";
 import { backIntent, render as dialogue } from "../dialogue/render.ts";
 import { barLength, render as hud, renderBars } from "../hud/render.ts";
@@ -151,10 +151,10 @@ test("no Nordic or Skyrim word in what the views draw", () => {
   }
 });
 
-test("the type scale: 1rem meets 1.9 mm on the folded Magic V5 and 28 px at 1080p", () => {
+test("the type scale: 1rem meets 2.5 mm on the Magic V5 and 28 px at 1080p", () => {
   const mm = (px: number, ppi: number) => (px / ppi) * 25.4;
-  assert.ok(mm(remFor(2376, 1060), 404) >= 1.9, `folded ${mm(remFor(2376, 1060), 404)}`);
-  assert.ok(mm(remFor(2352, 2172), 403) >= 1.9);
+  assert.ok(mm(remFor(2376, 1060), 404) >= 2.5, `folded ${mm(remFor(2376, 1060), 404)}`);
+  assert.ok(mm(remFor(2352, 2172), 403) >= 2.5);
   assert.ok(remFor(1920, 1080) >= 28);
 });
 
@@ -175,6 +175,14 @@ test("chart geometry: cells map to the index's rects, a pan stays in bounds, zoo
   const [px, py] = toPx(ix, far.centreX, far.centreY);
   assert.ok(px >= 0 && px <= 200 && py >= 0 && py <= 200);
   ok(panIntent(pan(ix, v, 400, 200, 30, 10, 1.5)), "pan");
+  // Lettering: a city's small drawn label is covered by ours, a large one is left; a discovered place with no drawn
+  // label is lettered beside it; an undiscovered non-city is never lettered.
+  ix.places = { city: { city: true, label: [10, 10, 50, 20] }, hut: { city: false, label: null } };
+  const t1 = { scale: 1, tx: 0, ty: 0 };
+  assert.deepEqual(labelAt(ix, t1, "city", 0, 0, false, 20)?.cover, [10, 10, 40, 10]);
+  assert.equal(labelAt(ix, { scale: 4, tx: 0, ty: 0 }, "city", 0, 0, false, 20), null);
+  assert.equal(labelAt(ix, t1, "hut", 0, 0, false, 20), null);
+  assert.ok(labelAt(ix, t1, "hut", 0, 0, true, 20)!.left > toPx(ix, 0, 0)[0]);
   // The paper fills the sheet: a view centred on a corner stops at the edge.
   const edge = transform(ix, { centreX: -2, centreY: 2, zoom: 4 }, 400, 200);
   assert.ok(edge.tx <= 0 && edge.tx >= 400 - 200 * edge.scale && edge.ty <= 0 && edge.ty >= 200 - 200 * edge.scale);

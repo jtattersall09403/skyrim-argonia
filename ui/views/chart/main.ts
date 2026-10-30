@@ -4,7 +4,7 @@
 // lasts; when it settles the view is sent as chart.pan, and ArgoniaCore keeps it between openings.
 import type { ChartState, ChartView } from "../../schema/generated/messages.ts";
 import { send, start } from "../core/bridge.ts";
-import { type CellIndex, pan, panIntent, revealRects, toPx, transform } from "./geom.ts";
+import { type CellIndex, labelAt, pan, panIntent, revealRects, toPx, transform } from "./geom.ts";
 import { render } from "./render.ts";
 
 declare global { interface Window { ARGONIA_CHART_INDEX: CellIndex } }
@@ -49,6 +49,9 @@ function mask(revealed: HTMLImageElement, s: ChartState): HTMLCanvasElement {
   for (const side of [n * 4, revealed.width]) {
     const up = document.createElement("canvas"); up.width = up.height = side;
     const u = up.getContext("2d")!; u.imageSmoothingEnabled = true; u.imageSmoothingQuality = "high";
+    // The old chart's long, gradual fade (2.W4's demo blurs 20 master px); a web view without canvas filters keeps
+    // the bilinear edge alone.
+    if (side !== n * 4 && "filter" in u) u.filter = `blur(${Math.round(side / 256)}px)`;
     u.drawImage(src, 0, 0, side, side); src = up;
   }
   const u = src.getContext("2d")!;
@@ -69,7 +72,7 @@ function draw(): void {
   const t = transform(ix, view, w, h);
   const c = canvas.getContext("2d")!;
   c.setTransform(dpr, 0, 0, dpr, 0, 0);
-  c.fillStyle = "#ddd0aa"; c.fillRect(0, 0, w, h);
+  c.fillStyle = "#eeead6"; c.fillRect(0, 0, w, h);   // the chart's open water, so the sheet reads as one paper
   c.imageSmoothingEnabled = true; c.imageSmoothingQuality = "high";
   c.setTransform(dpr * t.scale, 0, 0, dpr * t.scale, dpr * t.tx, dpr * t.ty);
   c.drawImage(imgs.base, 0, 0, ix.size, ix.size);
@@ -78,6 +81,17 @@ function draw(): void {
   for (const el of root.querySelectorAll<HTMLElement>(".place")) {
     const [px, py] = toPx(ix, Number(el.dataset.x), Number(el.dataset.y));
     el.style.left = `${px * t.scale + t.tx}px`; el.style.top = `${py * t.scale + t.ty}px`;
+  }
+  const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
+  for (const el of root.querySelectorAll<HTMLElement>(".label")) {
+    const at = labelAt(ix, t, el.dataset.label!, Number(el.dataset.x), Number(el.dataset.y),
+      el.dataset.discovered === "true", rem * 0.75);
+    el.hidden = at === null || at.left > w || at.top > h || at.top < 0;
+    if (!at) continue;
+    el.style.left = `${at.left}px`; el.style.top = `${at.top}px`;
+    el.classList.toggle("over", at.cover !== undefined);
+    if (at.cover) { el.style.minWidth = `${at.cover[2] + 0.4 * rem}px`; el.style.minHeight = `${at.cover[3] + 0.2 * rem}px`; }
+    else { el.style.minWidth = ""; el.style.minHeight = ""; }
   }
   document.body.dataset.ready = "1";
 }

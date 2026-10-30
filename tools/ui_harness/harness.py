@@ -38,7 +38,7 @@ VIEWPORTS = (
     Viewport("v5-folded", 2376, 1060, 404.0),
     Viewport("v5-unfolded", 2352, 2172, 403.0),
 )
-MIN_MM = 1.9      # the smallest text's em height on the phone (DESIGN.md)
+MIN_MM = 2.5      # the smallest text's em height on the phone (DESIGN.md; the reader's round 1 failed 1.96)
 MIN_PX_DESK = 20  # and on a desktop window, at 720p
 
 # Measured in the page after each push.

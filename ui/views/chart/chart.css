@@ -17,3 +17,11 @@
 .controls { display: flex; justify-content: flex-end; gap: var(--s2); }
 .zoom { min-width: 2.2rem; min-height: 2.2rem; text-align: center; font-size: var(--t-head);
   border: var(--edge) solid var(--ink-soft); border-radius: 0.2rem; background: var(--paper-light); }
+
+/* The view's own lettering, where the chart's drawn letters are too small to read: 1rem Pelagiad on a paper plate. */
+.labels { position: absolute; inset: 0; pointer-events: none; }
+.label { position: absolute; transform: translateY(-50%); white-space: nowrap; padding: 0 0.2rem; line-height: 1.15;
+  color: #2b2e1c; text-shadow: 0 0 0.15rem #f1e8cf, 0 0 0.3rem #f1e8cf; letter-spacing: 0.03em; }
+.label.over { display: flex; align-items: center; margin-left: -0.2rem; background: rgba(225, 212, 176, 0.94); border-radius: 0.3rem; box-shadow: 0 0 0.3rem 0.25rem rgba(225, 212, 176, 0.9); }
+.label[data-discovered="false"] { color: #4a4630; }
+.label[hidden] { display: none; }

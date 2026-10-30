@@ -56,9 +56,11 @@ PAGE = """<!doctype html>
 
 
 def chart_index(src: Path) -> dict:
-    """The cell rects of out/chart/index.json, without the tile numbers the view does not need."""
+    """What the view needs of out/chart/index.json: the cell rects (without tile numbers), and per place whether the
+    sketch letters it (a city) and where the chart's own lettering sits, so the view can letter it larger."""
     ix = json.loads(src.read_text())
-    return {"size": ix["size"], "cells": {k: v[2:6] for k, v in ix["cells"].items()}}
+    return {"size": ix["size"], "cells": {k: v[2:6] for k, v in ix["cells"].items()},
+            "places": {k: {"city": bool(p["city"]), "label": p["label"]} for k, p in ix["places"].items()}}
 
 
 def build(out: Path = OUT, chart_dir: Path | None = None, minify: bool = True) -> dict:
