@@ -241,11 +241,6 @@ void HideVanillaHud() {
 class HudMenuSink final : public RE::BSTEventSink<RE::MenuOpenCloseEvent> {
  public:
   RE::BSEventNotifyControl ProcessEvent(const RE::MenuOpenCloseEvent* e, RE::BSTEventSource<RE::MenuOpenCloseEvent>*) override {
-    if (e && !e->opening && e->menuName == RE::MapMenu::MENU_NAME)  // the map gone: our chart over it goes too
-      SKSE::GetTaskInterface()->AddTask([] {
-        std::lock_guard l(Get().lock);
-        if (Get().view_host.is_open("chart")) CloseView("chart");
-      });
     if (e && e->opening && e->menuName == RE::HUDMenu::MENU_NAME)
       SKSE::GetTaskInterface()->AddTask([] {
         std::lock_guard l(Get().lock);

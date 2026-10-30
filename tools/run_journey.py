@@ -429,7 +429,8 @@ class Runner:
             view = MENU_VIEWS.get(menu)  # our view over it (the M chart over MapMenu: smoke game-16)
             view_ok = view is None or f"{view} ready closed" in json.dumps(self.b.call("core", "Views"))
             evs = (self.b.call("events", last, "menu") or {}).get("events") or []
-            menu_ok = menu == "journal" or any((e.get("data") or {}).get("menu") == menu
+            # the router hides MapMenu as the chart opens (its close event comes then): the chart closed is the map closed
+            menu_ok = menu in ("journal", "MapMenu") or any((e.get("data") or {}).get("menu") == menu
                                                and not (e.get("data") or {}).get("opening") for e in evs)
             if view_ok and menu_ok:
                 self.calls.append({"call": ["close_menu", menu], "result": [key, route]})
