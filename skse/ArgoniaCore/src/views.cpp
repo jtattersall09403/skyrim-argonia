@@ -364,7 +364,7 @@ class InputSink final : public RE::BSTEventSink<RE::InputEvent*> {
         std::lock_guard l(Get().lock);
         swallow = g_close_guard.swallow(key, b->IsDown(), b->IsUp(), Get().view_host.modal().has_value());
       }
-      if (swallow) b->userEvent = "";
+      if (swallow) const_cast<RE::ButtonEvent*>(b)->strUserEvent = "";
     }
     return RE::BSEventNotifyControl::kContinue;
   }
