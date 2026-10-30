@@ -101,3 +101,18 @@ Dated 2026-10-30. The lane stopped at the context mark. Commit `0c53bee`. Test l
 - The L4 runs, once `run_journey.py` exists.
 - The effective Personality, owed to the spell chunk.
 - `form_at`'s linear scan (P2 rolling), which matters only once the formid table holds the world.
+
+**Deploy result (game-3, after the continuation):** game-3 deployed the DLL I built (SHA256 202701DA…7E57). It
+loads on runtime 1.7.104.0.
+- **What works:** the families line lists all 9 (no TEST or TSTN), the second dialogueIntercept registration is
+  refused, and the three sinks are installed. The co-save round trip passes: "9 families written, save_count 1",
+  then 9 version-1 loads.
+- **What fails:**
+  - **The perk is not in the load order.** The log has [E] "dialogue: the intercept perk (hook.dialogue-intercept)
+    is not in this load order" at every load. The profile does not have Argonia.esm laid in.
+  - **About 40 weather warnings.** [W] "weather: global ARG_WChance_* not found", from the same missing plugin.
+  - **ArgoniaCore.dll is not in the modlist.** "Argonia SKSE" is missing from the profile, so for now
+    `bridge.ps1 prepare` copies the DLL into Data.
+- **Owed:**
+  - `make deploy` lays Argonia.esm and the SKSE mod in the profile.
+  - The CK install, so `Version()` can be called and the .pex built.
