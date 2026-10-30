@@ -44,3 +44,5 @@ hand-off. The lane report is `docs/research/2026-10-30/lane-2.W4-lod.md`; the pl
   it from deletion. `push` never sends it, and `stack.ps1 verify` counts its files as machine-made, as it does
   Pandora's. So `make deploy` keeps the LOD on the machine, and `lod.ps1 prepare` empties it for a fresh run.
 - **The machine:** argonia-play is a g4dn.xlarge with 16 GB and 4 vCPU, the player-PC proxy the 0014 §4 rule names.
+- **Planner ruling (2026-10-30):** driving the dialogs by window messages meets "no UI clicks", provided every
+  window is logged and an unknown pop-up stops the step. The run is step 5 of game-9's brief.

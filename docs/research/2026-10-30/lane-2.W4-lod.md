@@ -19,10 +19,12 @@ None of xLODGen, TexGen or DynDOLOD has an unattended mode. `-sse -autoload -o: 
 skip the plugin list. The worldspace, the preset and Start/OK/Generate are GUI only: xEdit 4.1.6 calls
 `mniNavGenerateLODClick` with an unconditional ShowModal, and dyndolod.info's Command Line Argument page lists paths
 only. lod.ps1 drives these dialogs by window messages in the desktop session. The control captions are unproven
-until the survey runs. **Open call for the planner:** does message-driven dialog control meet "no UI clicks"?
+until the survey runs. **Planner ruling (2026-10-30):** driving the dialogs by window messages is allowed, provided every window
+is logged and an unknown pop-up stops the step.
 
 ## Not done (owed in game-8's slot)
-- game-8 holds argonia-play for about 3-4 h more and will message when the GPU lock is free. In that slot:
+- The run moved to game-9's brief (step 5, after the CK install, the Papyrus compile and first-place), so one lane
+  drives the machine. Its sequence:
   `lod.sh tools`, then `lod.sh survey` for each tool, then `lod.sh still without`, then
   `job_guard.sh run --gpu lod -- infra/gpu-box/lod.sh run`, then `lod.sh still with`, a reader on the two stills,
   installer/steps/lod.md with the measured time and RAM, and the brief's §c Outcome.
