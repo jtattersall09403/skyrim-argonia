@@ -132,3 +132,13 @@ def test_install_syncs_masters_after_the_stage():
     import inspect
     src = inspect.getsource(stack.cmd_install)
     assert src.index("cmd_stage(a)") < src.index("cmd_masters(a)") < src.index("cmd_push(a)")
+
+
+def test_stage_prunes_a_tool_of_another_set():
+    """game-12: back to A after B2, the staged MO2/tools still held Nemesis, push sent it, and A's Pandora step ran
+    Nemesis (hung). The stage takes out every tool folder whose row is not in the staged set."""
+    import inspect
+    src = inspect.getsource(stack.cmd_stage)
+    loop = src.index("for d in list(tools.iterdir())")
+    assert "d.name not in ids" in src[loop:loop + 200] and "shutil.rmtree(d)" in src[loop:loop + 200]
+    assert loop < src.index("for m in rows:")

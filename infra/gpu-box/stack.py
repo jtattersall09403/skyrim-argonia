@@ -726,6 +726,9 @@ def cmd_stage(a):
     for d in list(mods.iterdir()):
         if d.name not in ids and d.name not in ("pandora-output", THEME, MAP, VIEWS, LOD):
             shutil.rmtree(d)
+    for d in list(tools.iterdir()):  # a tool of another set too (game-12: B2's Nemesis stayed, and A's Pandora ran it)
+        if d.is_dir() and d.name not in ids:
+            shutil.rmtree(d)
     for m in rows:
         laid = {k: v for k, v in m.items() if k not in DOC_FIELDS}  # a permission or note edit does not re-stage
         if combat_settings(m["id"]):  # a changed db setting re-stages its row (and only rows that have some)
