@@ -1,25 +1,28 @@
-# 1.5 (owed L4), native map S16a-c: skill use earns vastei and never vanilla XP; the level waits for rest. The duel
-# ring's deserter is the target (its health raised as setup so the blows land without a kill); a camp spot is placed
+# 1.5 (owed L4), native map S16a-c: skill use earns vastei and never vanilla XP; the level waits for rest. The Blackwood
+# Road's ambush deserter is the target (calmed at step 0 so a rest is allowed) (its health raised as setup so the blows land without a kill); a camp spot is placed
 # at the player's marker at step 0. The pending level comes from landed blows sent by the dev bridge's `dev-grow` into
 # ArgoniaCore's own hit sink (the count is measured and kept); the rest and the sitting are what is tested.
 id: grow-at-rest
 runner: 1
-scene: duel-ring
+crash_risk: medium   # a long fight and two rests (each writes the rest save)
+scene: claywater-ambush
 steps:
   - name: setup
     do:
-      - {console: "ARG_PG_DuelPlayerMarker.placeatme ARG_CampSpot 1"}
+      - {console: "ARG_Ref_ClaywaterStationAmbushPlayer.placeatme ARG_CampSpot 1"}
       - {console: "player.additem ARG_Weap_SteelSword 1"}
       - {console: "player.equipitem ARG_Weap_SteelSword"}
       - {wait: 2}
     expect:
-      - {read: [actors, "3000"], path: listed.0.ref, keep: opp}
+      - {read: [actors, "4000"], path: listed.0.ref, keep: opp}
       - {read: [core, GetVastei], path: value, keep: v0}
       - {read: [core, GetLevel], path: value, keep: lvl0}
       - {read: [core, GetSkill, longBlade], path: value, keep: lb0}
       - {read: [av, OneHanded, player], path: base, keep: oh0}
   - name: arm
     do:
+      - {console: "{opp}.stopcombat"}
+      - {console: "{opp}.setav aggression 0"}
       - {console: "{opp}.setav health 2000"}
       - {console: "player.moveto {opp} 0 -110 0"}
       - {console: "player.setangle z 0"}
@@ -41,7 +44,7 @@ steps:
   - name: rest-no-pending     # with no level pending the rest saves and no sitting opens
     do:
       - {console: "{opp}.stopcombat"}
-      - {console: "player.moveto ARG_PG_DuelPlayerMarker 0 -90 0"}
+      - {console: "player.moveto ARG_Ref_ClaywaterStationAmbushPlayer 0 -90 0"}
       - {console: "player.setangle z 0"}
       - {console: "player.setangle x 40"}
       - {wait: 3}
@@ -60,7 +63,7 @@ steps:
       - {read: [core, GetAttribute, endurance], path: value, keep: end0}
   - name: rest-opens-sitting
     do:
-      - {console: "player.moveto ARG_PG_DuelPlayerMarker 0 -90 0"}
+      - {console: "player.moveto ARG_Ref_ClaywaterStationAmbushPlayer 0 -90 0"}
       - {console: "player.setangle z 0"}
       - {console: "player.setangle x 40"}
       - {wait: 3}

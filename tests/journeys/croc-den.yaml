@@ -1,37 +1,29 @@
-# The crocodile in and working (planner-owned, bb7395f; the shallows den in LF83's pool, cf11cb0): placed and alive,
-# it attacks when the player comes near (no god mode: its blow lands), it dies to the player's blows (god mode for
-# the kill only), and it does not respawn: the player leaves, eleven days pass (past the engine's 10-day cell reset),
-# and on return it is still dead.
+# The crocodile placed by us (the shallows den in LF83's pool, cf11cb0), checked as OUR record and wiring (owner,
+# 2026-10-30): present, alive, enabled, in the water at its den (IsSwimming; its position kept for the report
+# beside the den's water height, which the world-fixes lane owns), and its no-respawn flag (ours) holds: killed by the console, the player leaves, eleven days pass
+# (past the engine's 10-day cell reset) and on return it is still dead. How it attacks and how it dies to blows are
+# KotM's water ambusher as its author built it, not checked here.
 id: croc-den
 runner: 1
+crash_risk: high   # cell travel and a long wait away
 scene: first-place
 steps:
-  - name: placed
+  - name: present
     expect:
       - {console: "ARG_Ref_ClaywaterStationCrocodile.GetDead", contains: ">> 0"}
       - {console: "ARG_Ref_ClaywaterStationCrocodile.GetDisabled", contains: ">> 0"}
-  - name: attacks-near     # wading in its pool 6 m north of it (a water ambusher: it cannot reach the bank, cf11cb0)
+  - name: in-its-pool      # the player wades in 6 m north of it, so its cell is loaded and its AI runs
     do:
       - {console: "player.moveto ARG_Ref_ClaywaterStationCrocodile 0 400 0"}
-      - {console: "player.setangle z 180"}
-      - {wait: 6}
+      - {wait: 4}
     expect:
       - {console: "ARG_Ref_ClaywaterStationCrocodile.IsSwimming", contains: ">> 1"}
-      - {console: "ARG_Ref_ClaywaterStationCrocodile.IsInCombat", contains: ">> 1", within: 10}
-      - {console: "ARG_Ref_ClaywaterStationCrocodile.GetDistance player", keep: croc_near}
-      - {event: {kind: hit, match: "*"}, within: 10}
-  - name: kill-1           # the player's blows (lock on, light attacks); god mode so the fight cannot end the other way
-    do: [{console: "tgm"}, {console: "player.moveto ARG_Ref_ClaywaterStationCrocodile 0 -150 0"}, {console: "player.setangle z 0"},
-         {pad: "RS:150 wait:500"}, {pad: "RB:120 wait:900 RB:120 wait:900"}, {pad: "RB:120 wait:900 RB:120 wait:900"}]
-  - name: kill-2
-    do: [{console: "player.moveto ARG_Ref_ClaywaterStationCrocodile 0 -150 0"}, {console: "player.setangle z 0"},
-         {pad: "RB:120 wait:900 RB:120 wait:900"}, {pad: "RB:120 wait:900 RB:120 wait:900"}]
-  - name: kill-3
-    do: [{console: "player.moveto ARG_Ref_ClaywaterStationCrocodile 0 -150 0"}, {console: "player.setangle z 0"},
-         {pad: "RB:120 wait:900 RB:120 wait:900"}, {pad: "RB:120 wait:900 RB:120 wait:900"}]
-    expect: [{console: "ARG_Ref_ClaywaterStationCrocodile.GetDead", contains: ">> 1", within: 10}]
-  - name: leave-eleven-days
-    do: [{console: "tgm"}, {console: "coc ARG_HoldingCell"}, {wait: 6}, {game_hours: 264}]
+      - {console: "ARG_Ref_ClaywaterStationCrocodile.GetDistance player", keep: croc_dist}
+      - {read: [actors, "1500", ARG_Ref_ClaywaterStationCrocodile], path: refs.0.dead, eq: false}
+      - {read: [actors, "1500", ARG_Ref_ClaywaterStationCrocodile], path: refs.0.dist, lt: 700}
+      - {read: [actors, "1500", ARG_Ref_ClaywaterStationCrocodile], path: refs.0.pos, keep: croc_pos}
+  - name: killed-away-eleven-days
+    do: [{console: "ARG_Ref_ClaywaterStationCrocodile.kill"}, {wait: 2}, {console: "coc ARG_HoldingCell"}, {wait: 6}, {game_hours: 264}]
   - name: return-still-dead
     do: [{teleport: "ref ARG_Ref_ClaywaterStationRoadIn"}, {wait: 6}]
     expect:

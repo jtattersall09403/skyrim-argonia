@@ -1,47 +1,22 @@
-# 1.6-wiring (owed L4): rolls at the burden tiers; wiring rows w.roll.tier, w.roll.distance, w.iframes.*,
-# w.stamina.roll. The load is the steel set and ingots added as setup (r = kg / (30 + 3 x Str)); the roll is the
-# pad's (sprint tap, stick held). The i-frame window is the bridge's per-frame `trace` (ghost or TK Dodge's graph bools).
+# 1.6-wiring: the roll-burden tier from carried weight, as OUR rule (owner, 2026-10-30): ArgoniaCore's burden tier
+# (r = kg / (30 + 3 x Str)) takes TK Dodge's required perk when overloaded and gives it back when not (wiring row
+# w.roll.tier). On the Blackwood Road beyond Claywater's ford (bat claywater-ambush); the load is ingots added as
+# setup. Cut: roll distance, stamina per roll and the i-frame trace (TK Dodge's and the i-frame generator's own).
 id: fight-roll-burden
 runner: 1
-scene: duel-ring
+crash_risk: low
+scene: claywater-ambush
 steps:
-  - name: fast
-    do: [{console: "player.unequipall"}, {console: "player.moveto ARG_PG_DuelPlayerMarker"}, {wait: 2}]
-    expect:
-      - {read: [av, Stamina, player], path: current, keep: st}
-      - {console: "player.hasperk TKDodgeAddon.esp|0x809", not_contains: ">> 0"}
-  - name: roll-fast
-    do: [{pad: "+LX=0,LY=1:500 B:100 wait:600 -:1200"}]
-    expect:
-      - {event: {kind: anim, match: TKDR_DodgeStart}}
-      - {moved: {gt: 300}}
-      - {read: [av, Stamina, player], path: current, le: {kept: st, plus: -14}}
-  - name: load-fat            # steel set and ingots (setup): the fat tier
-    do:
-      - {console: "player.additem ARG_Armo_Steel_Cuirass 1"}
-      - {console: "player.additem ARG_Armo_Steel_Greaves 1"}
-      - {console: "player.additem 0005ACE4 20"}
-      - {wait: 3}
-    expect: [{read: [av, InventoryWeight, player], path: current, keep: carried}]
-  - name: roll-fat
-    do: [{pad: "+LX=0,LY=1:500 B:100 wait:600 -:1200"}]
-    expect: [{event: {kind: anim, match: TKDR_DodgeStart}}]
-  - name: overloaded          # far over capacity: TK Dodge's perk taken, no roll
-    do: [{console: "player.additem 0005ACE4 300"}, {wait: 3}]
+  - name: unburdened
+    do: [{console: "player.unequipall"}, {wait: 2}]
+    expect: [{console: "player.hasperk TKDodgeAddon.esp|0x809", contains: ">> 1"}]
+  - name: overloaded          # far over capacity: the perk taken
+    do: [{console: "player.additem 0005ACE4 320"}, {wait: 3}]
     expect:
       - {log: {name: ArgoniaCore, contains: "combat: roll locked (burden overloaded)"}, within: 10}
-  - name: no-roll
-    do: [{pad: "+LX=0,LY=1:500 B:100 wait:600 -:1200"}]
-    expect: [{event: {kind: anim, match: TKDR_DodgeStart, absent: true}}]
+      - {console: "player.hasperk TKDodgeAddon.esp|0x809", contains: ">> 0"}
   - name: unlocked            # the ingots dropped: the perk given back
     do: [{console: "player.removeitem 0005ACE4 320"}, {wait: 3}]
-    expect: [{log: {name: ArgoniaCore, contains: "roll unlocked"}, within: 10}]
-  - name: iframes-per-frame   # a traced roll: the i-frame window, first to last i-frame frame
-    do:
-      - {call: [trace, start, "180", bIframeActive, bInIframe]}
-      - {pad: "+LX=0,LY=1:500 B:100 wait:600 -:1200"}
-      - {wait: 1}
     expect:
-      - {read: [trace, read], path: iframe_frames, gt: 0}
-      - {read: [trace, read], path: window_ms, gt: 0}
-      - {read: [trace, read], path: window_ms, keep: iframe_ms}
+      - {log: {name: ArgoniaCore, contains: "combat: roll unlocked"}, within: 10}
+      - {console: "player.hasperk TKDodgeAddon.esp|0x809", contains: ">> 1"}

@@ -1,118 +1,35 @@
-# The combat trial, group A, the 0.0 stack: TK Dodge RE rolls, Elden Parry and Rim Parry, Modern Stagger Lock.
-# Install: python3 infra/gpu-box/stack.py combat A (set souls-0.0; stack.ps1 on starts from bare Data, the
-# exact undo; the base save stays on A and nothing here saves). Before it: stack.py pandora-check (DSC's FNIS list in
-# Pandora's output; B and B2 are dead without it). After it: the Papyrus log (Documents\My Games\Skyrim Special
-# Edition\Logs\Script\Papyrus.0.log), whose 'BB Poise System' lines hold DSC's max and current poise (the debug
-# trace is staged on in B and B2), goes beside the report. Headless state checks, not a playthrough (owner ruling
-# 2026-10-30): each step reads state and events and keeps a still; the numbers fill the table in
-# docs/research/journals/combat.md (trial plan). Roll distance: each roll step's two `call: [player]` positions.
+# The combat trial, group A (the 0.0 stack), as a check of OUR wiring only (owner, 2026-10-30: test our integration,
+# not other modders' work; simple checks in real places, no arena). Install: python3 infra/gpu-box/stack.py combat A.
+# On the Blackwood Road beyond Claywater's ford (claywater-ambush): the set's plugins are loaded, ArgoniaCore read
+# TK Dodge's perk lock and holds it, the sheet is up and feeding the carriers, the roll's anim event fires (our
+# Pandora output), TDM's lock-on answers. How far a roll goes, poise, parries and the Papyrus queue under a brawl
+# are the mods' own behaviour and are not checked here.
 id: combat-trial-a
 runner: 1
-scene: duel-ring
+crash_risk: low
+scene: claywater-ambush
 steps:
-  - name: ready            # the set is the one asked for; the opponent (duel-ring's placeatme) and the baselines kept
-    do: [{console: "tgm"}, {console: "player.additem ARG_Weap_SteelSword 1"}, {console: "player.additem ARG_Armo_Steel_Shield 1"}, {console: "player.additem ARG_Armo_Steel_Cuirass 1"}, {console: "player.additem ARG_Armo_Steel_Helm 1"}, {console: "player.additem ARG_Armo_Steel_Boots 1"}, {console: "player.additem ARG_Armo_Steel_Gauntlets 1"}, {console: "player.additem ARG_Armo_Steel_Greaves 1"}, {console: "player.additem ARG_Armo_Steel_Pauldrons 1"}, {wait: 1}]
+  - name: plugins-loaded
     expect:
-      - {read: [av, Stamina, player], path: permanent, keep: stamina_max}
-      - {read: [papyrus-queue], path: stacks, keep: queue_start}
-      - {read: [actors, "3000"], path: listed.0.ref, keep: opp}
-      - {read: [actors, "3000"], path: listed.0.name, keep: opp_name}
-  - name: pandora-wired    # A's own behaviour proof: TK Dodge's roll event and its root motion (animdata.py)
-    do: [{pad: "+LX=0,LY=1:300 B:100 wait:900 -:600"}]
-    expect: [{event: {kind: anim, match: TKDR_DodgeStart}}, {moved: {gt: 150}}]
-  - name: load-fast             # the loadout; stamina and DSC's roll weight (its log) decide the band
-    do: [{console: "player.unequipall"}, {wait: 1}, {console: "player.equipitem ARG_Weap_SteelSword"}, {wait: 2}]
+      - {read: [actors, "4000"], path: listed.0.ref, keep: opp}
+      - {read: [plugin, "Precision.esp"], path: file, eq: "Precision.esp"}
+      - {read: [plugin, "TKDodgeAddon.esp"], path: file, eq: "TKDodgeAddon.esp"}
+      - {read: [logfile, ArgoniaCore, "combat: TK Dodge perk lock on"], path: found, eq: true}
+  - name: sheet-and-perk-lock   # unburdened: our burden tier leaves TK Dodge's perk on the player; the sheet is up
+    do: [{console: "player.unequipall"}, {console: "player.additem ARG_Weap_SteelSword 1"}, {console: "player.equipitem ARG_Weap_SteelSword"}, {wait: 2}]
     expect:
-      - {console: "player.GetEquipped ARG_Weap_SteelSword", contains: ">> 1"}
-      - {read: [av, Stamina, player], path: current, keep: stamina_fast}
-      - {read: [av, InventoryWeight, player], path: current, keep: carried_fast}
-  - name: roll-fast-fwd
-    do: [{call: [player]}, {pad: "+LY=1:300 B:100 wait:1200 -:300"}, {call: [player]}, {wait: 2}]
-    expect: [{event: {kind: anim, match: TKDR_DodgeStart}}, {moved: {gt: 50}}]
-  - name: roll-fast-back
-    do: [{call: [player]}, {pad: "+LY=-1:300 B:100 wait:1200 -:300"}, {call: [player]}, {wait: 2}]
-    expect: [{event: {kind: anim, match: TKDR_DodgeStart}}, {moved: {gt: 50}}]
-  - name: roll-fast-left
-    do: [{call: [player]}, {pad: "+LX=-1:300 B:100 wait:1200 -:300"}, {call: [player]}, {wait: 2}]
-    expect: [{event: {kind: anim, match: TKDR_DodgeStart}}, {moved: {gt: 50}}]
-  - name: roll-fast-right
-    do: [{call: [player]}, {pad: "+LX=1:300 B:100 wait:1200 -:300"}, {call: [player]}, {wait: 2}]
-    expect: [{event: {kind: anim, match: TKDR_DodgeStart}}, {moved: {gt: 50}}]
-  - name: load-mid              # the loadout; stamina and DSC's roll weight (its log) decide the band
-    do: [{console: "player.unequipall"}, {wait: 1}, {console: "player.equipitem ARG_Weap_SteelSword"}, {console: "player.equipitem ARG_Armo_Steel_Cuirass"}, {console: "player.equipitem ARG_Armo_Steel_Helm"}, {wait: 2}]
+      - {console: "player.hasperk TKDodgeAddon.esp|0x809", contains: ">> 1"}
+      - {read: [core, GetAttribute, strength], path: value, ge: 1}
+      - {read: [logfile, ArgoniaCore, "combat: carriers"], path: found, eq: true}
+  - name: roll-event            # the pad's roll reaches the graph: our behaviour build carries TK Dodge's event
+    do: [{console: "tgm"}, {pad: "+LX=0,LY=1:300 B:100 wait:900 -:600"}, {console: "tgm"}]
+    expect: [{event: {kind: anim, match: TKDR_DodgeStart}}]
+  - name: lock-on               # R3 six metres from the deserter: TDM's API reports a lock on it
+    do:
+      - {console: "player.moveto {opp} 0 -600 0"}
+      - {console: "player.setangle z 0"}
+      - {wait: 1}
+      - {pad: "RS:120 wait:800"}
     expect:
-      - {console: "player.GetEquipped ARG_Weap_SteelSword", contains: ">> 1"}
-      - {read: [av, Stamina, player], path: current, keep: stamina_mid}
-      - {read: [av, InventoryWeight, player], path: current, keep: carried_mid}
-  - name: roll-mid-fwd
-    do: [{call: [player]}, {pad: "+LY=1:300 B:100 wait:1200 -:300"}, {call: [player]}, {wait: 2}]
-    expect: [{event: {kind: anim, match: TKDR_DodgeStart}}, {moved: {gt: 50}}]
-  - name: roll-mid-back
-    do: [{call: [player]}, {pad: "+LY=-1:300 B:100 wait:1200 -:300"}, {call: [player]}, {wait: 2}]
-    expect: [{event: {kind: anim, match: TKDR_DodgeStart}}, {moved: {gt: 50}}]
-  - name: roll-mid-left
-    do: [{call: [player]}, {pad: "+LX=-1:300 B:100 wait:1200 -:300"}, {call: [player]}, {wait: 2}]
-    expect: [{event: {kind: anim, match: TKDR_DodgeStart}}, {moved: {gt: 50}}]
-  - name: roll-mid-right
-    do: [{call: [player]}, {pad: "+LX=1:300 B:100 wait:1200 -:300"}, {call: [player]}, {wait: 2}]
-    expect: [{event: {kind: anim, match: TKDR_DodgeStart}}, {moved: {gt: 50}}]
-  - name: load-fat              # the loadout; stamina and DSC's roll weight (its log) decide the band
-    do: [{console: "player.unequipall"}, {wait: 1}, {console: "player.equipitem ARG_Weap_SteelSword"}, {console: "player.equipitem ARG_Armo_Steel_Shield"}, {console: "player.equipitem ARG_Armo_Steel_Cuirass"}, {console: "player.equipitem ARG_Armo_Steel_Helm"}, {console: "player.equipitem ARG_Armo_Steel_Boots"}, {console: "player.equipitem ARG_Armo_Steel_Gauntlets"}, {console: "player.equipitem ARG_Armo_Steel_Greaves"}, {console: "player.equipitem ARG_Armo_Steel_Pauldrons"}, {wait: 2}]
-    expect:
-      - {console: "player.GetEquipped ARG_Weap_SteelSword", contains: ">> 1"}
-      - {read: [av, Stamina, player], path: current, keep: stamina_fat}
-      - {read: [av, InventoryWeight, player], path: current, keep: carried_fat}
-  - name: roll-fat-fwd
-    do: [{call: [player]}, {pad: "+LY=1:300 B:100 wait:1200 -:300"}, {call: [player]}, {wait: 2}]
-    expect: [{event: {kind: anim, match: TKDR_DodgeStart}}, {moved: {gt: 50}}]
-  - name: roll-fat-back
-    do: [{call: [player]}, {pad: "+LY=-1:300 B:100 wait:1200 -:300"}, {call: [player]}, {wait: 2}]
-    expect: [{event: {kind: anim, match: TKDR_DodgeStart}}, {moved: {gt: 50}}]
-  - name: roll-fat-left
-    do: [{call: [player]}, {pad: "+LX=-1:300 B:100 wait:1200 -:300"}, {call: [player]}, {wait: 2}]
-    expect: [{event: {kind: anim, match: TKDR_DodgeStart}}, {moved: {gt: 50}}]
-  - name: roll-fat-right
-    do: [{call: [player]}, {pad: "+LX=1:300 B:100 wait:1200 -:300"}, {call: [player]}, {wait: 2}]
-    expect: [{event: {kind: anim, match: TKDR_DodgeStart}}, {moved: {gt: 50}}]
-  - name: poise-naked-arm  # the loadout, the opponent back at its marker, the event mark
-    do: [{console: "player.unequipall"}, {wait: 1}, {console: "player.equipitem ARG_Weap_SteelSword"}, {console: "player.moveto ARG_PG_DuelPlayerMarker"}, {console: "{opp}.moveto ARG_PG_DuelOpponentMarker"}, {wait: 2}]
-    expect:
-      - {read: [events], path: last, keep: ev_naked}
-  - name: poise-naked      # A has no poise pool: the hits and any stagger are recorded for the table
-    do: [{console: "{opp}.startcombat player"}, {wait: 10}, {wait: 10}, {wait: 10}, {call: [events, "{ev_naked}", hit]}, {call: [events, "{ev_naked}", anim]}, {console: "{opp}.stopcombat"}, {wait: 2}]
-    expect: [{read: [player], path: dead, eq: false}]
-  - name: poise-heavy-arm  # the loadout, the opponent back at its marker, the event mark
-    do: [{console: "player.unequipall"}, {wait: 1}, {console: "player.equipitem ARG_Weap_SteelSword"}, {console: "player.equipitem ARG_Armo_Steel_Shield"}, {console: "player.equipitem ARG_Armo_Steel_Cuirass"}, {console: "player.equipitem ARG_Armo_Steel_Helm"}, {console: "player.equipitem ARG_Armo_Steel_Boots"}, {console: "player.equipitem ARG_Armo_Steel_Gauntlets"}, {console: "player.equipitem ARG_Armo_Steel_Greaves"}, {console: "player.equipitem ARG_Armo_Steel_Pauldrons"}, {console: "player.moveto ARG_PG_DuelPlayerMarker"}, {console: "{opp}.moveto ARG_PG_DuelOpponentMarker"}, {wait: 2}]
-    expect:
-      - {read: [events], path: last, keep: ev_heavy}
-  - name: poise-heavy      # A has no poise pool: the hits and any stagger are recorded for the table
-    do: [{console: "{opp}.startcombat player"}, {wait: 10}, {wait: 10}, {wait: 10}, {call: [events, "{ev_heavy}", hit]}, {call: [events, "{ev_heavy}", anim]}, {console: "{opp}.stopcombat"}, {wait: 2}]
-    expect: [{read: [player], path: dead, eq: false}]
-  - name: backstab-arm     # behind the idle opponent, both facing north, the weapon drawn; its health kept
-    do: [{console: "{opp}.stopcombat"}, {console: "{opp}.restoreav health 1000"}, {console: "{opp}.setangle z 0"},
-         {console: "player.moveto {opp} 0 -110 0"}, {console: "player.setangle z 0"}, {pad: "RB:120 wait:1500"}]
-    expect:
-      - {read: [av, Health, "{opp}"], path: current, keep: opp_health}
-      - {console: player.IsWeaponOut, not_contains: ">> 0"}
-  - name: backstab         # Rim Parry's execution from behind (One Click Power Attack's heavy)
-    do: [{pad: "RT:150 wait:2500"}]
-    expect:
-      - {event: {kind: hit, match: '"power": true'}}
-      - {read: [av, Health, "{opp}"], path: current, lt: {kept: opp_health}}
-  - name: parry-riposte    # Elden Parry's timed bash, then Rim Parry's riposte; one riposte
-    do: [{console: "player.moveto {opp} 0 -110 0"}, {console: "player.setangle z 0"}, {console: "{opp}.startcombat player"},
-         {pad: "+LT=1:600 RB:120 wait:1500 -:100"}, {pad: "RB:120 wait:2000"}]   # L2 held while R1 taps (pad.ps1's held trigger, game-10), then R1
-    expect:
-      - {event: {kind: hit, match: "*"}}
-      - {read: [av, Health, "{opp}"], path: current, lt: {kept: opp_health}}
-  - name: script-load      # four more deserters fight the god-moded player for 30 s: the Papyrus queue under DSC's per-actor scripts
-    do: [{console: "player.placeatme ARG_Npc_AmbushDeserter 4"}, {console: "{opp}.startcombat player"}, {wait: 10}, {call: [papyrus-queue]},
-         {wait: 10}, {call: [papyrus-queue]}, {wait: 10}, {call: [papyrus-queue]}]
-    expect:
-      - {read: [papyrus-queue], path: overstressed, eq: false}
-      - {read: [papyrus-queue], path: stacks, keep: queue_fight}
-  - name: settle           # every fighter dead, 20 s on: the queue drains back toward its start (both kept for the table)
-    do: [{console: "killall"}, {wait: 10}, {wait: 10}]
-    expect:
-      - {read: [papyrus-queue], path: stacks, keep: queue_settled}
-      - {read: [player], path: dead, eq: false}
+      - {read: [tdm-target], path: locked, eq: true}
+      - {read: [tdm-target], path: dist, lt: 2000}

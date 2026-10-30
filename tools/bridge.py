@@ -232,7 +232,7 @@ class Bridge:
         self.heartbeat()
         cap = timeout or TIMEOUTS.get(command, DEFAULT_TIMEOUT)
         words = " ".join(str(a) for a in args)
-        if command in ("console", "teleport", "refs", "dev-grow") and "ARG_" in words:  # the game keeps no ref's editor id (tools/ref_ids.py)
+        if command in ("console", "teleport", "refs", "dev-grow", "actors") and "ARG_" in words:  # the game keeps no ref's editor id (tools/ref_ids.py)
             words = self.resolve_refs(words)
         tail = f" {command}" + (f" {words}" if words else "")  # never str.format: a view intent's JSON has braces
         if "\n" in tail or "\r" in tail:

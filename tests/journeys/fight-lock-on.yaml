@@ -1,27 +1,19 @@
-# 1.6-wiring (owed L4): the pad's lock-on; wiring row w.lockon.distance (fTargetLockDistance 2000 u, the GUESS
-# until DSR's LockCamParam is measured). Three hostiles placed at step 0; the lock target is read from TDM's own
-# plugin API (the bridge's `tdm-target`), the stills are kept for TrueHUD's reticle.
+# 1.6-wiring: the pad's lock-on as OUR wiring (owner, 2026-10-30): TDM's lock key bound to R3 and our lock distance
+# (fTargetLockDistance 2000 u, wiring row w.lockon.distance) on the Blackwood Road beyond Claywater's ford (bat
+# claywater-ambush). The lock is read from TDM's plugin API (the bridge's `tdm-target`). Cut: target switching by a
+# flick (TDM's own behaviour) and the arena's three placed hostiles.
 id: fight-lock-on
 runner: 1
-scene: duel-ring
+crash_risk: low
+scene: claywater-ambush
 steps:
-  - name: place
-    do:
-      - {console: "player.placeatme ARG_Npc_AmbushDeserter 1"}
-      - {console: "player.placeatme ARG_Npc_AmbushDeserter 1"}
-      - {wait: 2}
-    expect: [{read: [actors, "4000"], path: listed.2.ref, keep: far}]
-  - name: lock-near           # R3 (TDM uTargetLockKey 273)
-    do: [{pad: "RS:120 wait:800"}]
-    expect: [{read: [graph, player, bTDM_TargetLock], path: values, keep: lock_state}]
-  - name: lock-target-read    # locked on the nearest, within 2000 u
+  - name: find
+    expect: [{read: [actors, "4000"], path: listed.0.ref, keep: opp}]
+  - name: lock-near           # R3 (uTargetLockKey 273) 6 m from the deserter
+    do: [{console: "player.moveto {opp} 0 -600 0"}, {console: "player.setangle z 0"}, {wait: 1}, {pad: "RS:120 wait:800"}]
     expect:
       - {read: [tdm-target], path: locked, eq: true}
       - {read: [tdm-target], path: dist, lt: 2000}
-      - {read: [tdm-target], path: target.id, keep: first}
-  - name: flick-switch        # the right stick flicked: another target
-    do: [{pad: "+RX=1:150 -:400"}]
-    expect: [{read: [tdm-target], path: target.id, ne: {kept: first}}]
-  - name: beyond-range        # 30 m from every hostile: R3 locks nothing
-    do: [{pad: "RS:120 wait:500"}, {console: "player.moveto {far} 0 -2900 0"}, {wait: 2}, {pad: "RS:120 wait:800"}]
+  - name: beyond-range        # 30 m away: R3 locks nothing (our 2000 u)
+    do: [{pad: "RS:120 wait:500"}, {console: "player.moveto {opp} 0 -3000 0"}, {wait: 2}, {pad: "RS:120 wait:800"}]
     expect: [{read: [tdm-target], path: locked, eq: false}]

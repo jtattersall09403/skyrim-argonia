@@ -1,17 +1,18 @@
-# 1.6-wiring (owed L4), native map S14a/S11b: the sheet -> damage and stamina join. Wiring rows w.damage.*,
-# w.stamina.*, w.armour.*; docs/research/2026-10-30/combat-wiring.md. The builds' attributes are set at the step's
-# start through the dev bridge's `dev-set` (ArgoniaCore's own SetAttribute); Long Blade through the dev-only
-# `dev-set SetSkill` (ArgoniaDev.SetSkill, the windows-dev ArgoniaCore only; core seam::set_skill clamps 0-100).
+# 1.6-wiring, native map S14a/S11b: our damage formula's result with our attributes and skills (owner, 2026-10-30:
+# simple reads in a real place). On the Blackwood Road beyond Claywater's ford (bat claywater-ambush). The inputs are
+# set at each step's start through the dev bridge's `dev-set` (ArgoniaCore's SetAttribute; dev-only SetSkill); one
+# light blow on the deserter (calmed, health raised) and its health loss against docs/research/2026-10-30/combat-wiring.md.
+# Kept: the pinned vanilla skills, the carriers moving on equip. Cut: the power attack's stamina (kept only, never judged).
 id: fight-damage-builds
 runner: 1
-scene: duel-ring
+crash_risk: low
+scene: claywater-ambush
 steps:
   - name: find
     do: [{console: "player.additem ARG_Weap_SteelSword 1"}, {console: "player.equipitem ARG_Weap_SteelSword"}, {wait: 2}]
     expect:
-      - {read: [actors, "3000"], path: listed.0.ref, keep: opp}
+      - {read: [actors, "4000"], path: listed.0.ref, keep: opp}
       - {read: [av, VoicePoints, player], path: current, keep: vp}
-      - {log: {name: ArgoniaCore, contains: "combat: carriers"}, within: 10}
   - name: pinned-skills       # never mirrored
     expect:
       - {read: [av, OneHanded, player], path: base, eq: 0}
@@ -20,52 +21,38 @@ steps:
   - name: carriers-move-on-equip
     do: [{console: "player.unequipitem ARG_Weap_SteelSword"}, {wait: 2}]
     expect: [{read: [av, VoicePoints, player], path: current, ne: {kept: vp}}]
-  - name: carriers-back
-    do: [{console: "player.equipitem ARG_Weap_SteelSword"}, {wait: 2}]
-    expect: [{read: [av, VoicePoints, player], path: current, eq: {kept: vp}}]
-  - name: arm
+  - name: arm                 # the deserter calmed and held, the player behind it, weapon drawn
     do:
-      - {console: "{opp}.setav health 2000"}
+      - {console: "player.equipitem ARG_Weap_SteelSword"}
+      - {console: "{opp}.stopcombat"}
+      - {console: "{opp}.setav aggression 0"}
       - {console: "player.moveto {opp} 0 -110 0"}
       - {console: "player.setangle z 0"}
       - {pad: "RB:120 wait:1500"}
-    expect: [{read: [av, Health, "{opp}"], path: current, keep: h0}]
-  - name: light-blow          # recorded against 24 x (1 + VoicePoints) in the report
-    do: [{pad: "RB:120 wait:1200"}]
-    expect:
-      - {event: {kind: hit, match: "*"}}
-      - {read: [av, Health, "{opp}"], path: current, lt: {kept: h0}}
-      - {read: [av, Health, "{opp}"], path: current, keep: h1}
-  - name: power-attack-stamina
-    do: [{pad: "RT:150 wait:2500"}]
-    expect: [{read: [av, Stamina, player], path: current, keep: st1}]
-  - name: novice-blow         # Str 40, Agi 40, Long Blade 5 (the inputs), one light blow
+    expect: [{read: [av, VoicePoints, player], path: current, eq: {kept: vp}}]
+  - name: novice-blow         # Str 40, Agi 40, Long Blade 5: 10.8 (+-0.5)
     do:
       - {call: [dev-set, SetSkill, longBlade, "5"]}
       - {call: [dev-set, SetAttribute, strength, "40"]}
       - {call: [dev-set, SetAttribute, agility, "40"]}
-      - {wait: 1}
       - {console: "{opp}.setav health 2000"}
       - {wait: 1}
       - {pad: "RB:120 wait:1200"}
     expect:
       - {event: {kind: hit, match: "*"}}
-      - {read: [av, Health, "{opp}"], path: current, keep: hn}
-      - {read: [av, Health, "{opp}"], path: current, ge: 1988.7}   # 2000 - 10.8 (+-0.5), combat-wiring.md novice
+      - {read: [av, Health, "{opp}"], path: current, ge: 1988.7}
       - {read: [av, Health, "{opp}"], path: current, le: 1989.7}
-  - name: god-blow            # Str 100, Agi 100, Long Blade 100: the same blow lands harder
+  - name: god-blow            # Str 100, Agi 100, Long Blade 100: 36.0 (+-0.5)
     do:
       - {call: [dev-set, SetSkill, longBlade, "100"]}
       - {call: [dev-set, SetAttribute, strength, "100"]}
       - {call: [dev-set, SetAttribute, agility, "100"]}
-      - {wait: 1}
       - {console: "{opp}.setav health 2000"}
       - {wait: 1}
       - {pad: "RB:120 wait:1200"}
     expect:
       - {event: {kind: hit, match: "*"}}
-      - {read: [av, Health, "{opp}"], path: current, lt: {kept: hn}}
-      - {read: [av, Health, "{opp}"], path: current, ge: 1963.2}   # 2000 - 36.0 (+-0.5), combat-wiring.md god
+      - {read: [av, Health, "{opp}"], path: current, ge: 1963.2}
       - {read: [av, Health, "{opp}"], path: current, le: 1964.2}
   - name: difficulties
     owed: the same ratio at each difficulty (a GetGameSetting read of fDiffMultHPByPCN/ToPCN per difficulty)

@@ -3,19 +3,20 @@
 # low as setup only, and the deserter's own attacks deal the death.
 id: die-and-recover
 runner: 1
+crash_risk: high     # death and wake three times
 batch_last: true         # it ends at the main menu or changes the saves: last in a batch (run_batch --write-owed)
-scene: duel-ring
+scene: claywater-ambush
 steps:
   - name: setup
     do:
-      - {console: "ARG_PG_DuelPlayerMarker.placeatme ARG_CampSpot 1"}
+      - {console: "ARG_Ref_ClaywaterStationAmbushPlayer.placeatme ARG_CampSpot 1"}
       - {console: "player.additem ARG_Weap_SteelSword 1"}
       - {console: "player.equipitem ARG_Weap_SteelSword"}
       - {wait: 2}
-    expect: [{read: [actors, "3000"], path: listed.0.ref, keep: opp}]
+    expect: [{read: [actors, "4000"], path: listed.0.ref, keep: opp}]
   - name: rest                # the wake point is the camp
     do:
-      - {console: "player.moveto ARG_PG_DuelPlayerMarker 0 -90 0"}
+      - {console: "player.moveto ARG_Ref_ClaywaterStationAmbushPlayer 0 -90 0"}
       - {console: "player.setangle z 0"}
       - {console: "player.setangle x 40"}
       - {wait: 3}

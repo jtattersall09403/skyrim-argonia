@@ -1,63 +1,25 @@
-# 1.6-wiring (owed L4), bat claywater-ambush and native map S13a-c: the ambush deserter's fixed danger, its hit, the
-# player's blow, guard and parry, and its respawn after rest. Wiring rows w.enemy.*, w.guard.stability,
-# w.parry.window, w.damage.critical. Setup only: the player's armour off (0 AR), a camp spot at the player's mark.
+# 1.6-wiring, the ambush deserter's archetype as OUR record (owner, 2026-10-30: test our integration, simple reads in
+# a real place): on the Blackwood Road beyond Claywater's ford (bat claywater-ambush), its level, max health and
+# steel kit are the record's values, and its light hit on 0 AR is our number (24 x 1.3333 = 32). Native map S13a.
+# Cut: aggro range (Skyrim's AI), the player's blow, parry and riposte (Elden Parry, Rim Parry), the rest respawn.
 id: fight-archetype
 runner: 1
+crash_risk: low
 scene: claywater-ambush
 steps:
   - name: find
-    do: [{console: "ARG_Ref_ClaywaterStationAmbushPlayer.placeatme ARG_CampSpot 1"}, {wait: 1}]
     expect:
       - {read: [actors, "4000"], path: listed.0.ref, keep: opp}
       - {read: [actors, "4000"], path: listed.0.name, keep: opp_name}
-  - name: fixed-danger        # level 10, max health 44 (race start + offset -6)
+  - name: record-values       # level 10, max health 44 (race start + offset -6), steel kit
     expect:
       - {console: "{opp}.GetLevel", contains: ">> 10"}
       - {read: [av, Health, "{opp}"], path: permanent, eq: 44}
       - {read: [inventory, "{opp}"], path: items, contains: "Steel"}
-  - name: level-20-same
-    owed: a recalculation path for a placed actor's level after player.setlevel 20 (the read is the step above's)
-  - name: aggro               # 15 m in its view: in combat on its own AI within 5 s
-    do: [{console: "player.unequipall"}, {console: "player.moveto {opp} 0 -1050 0"}, {console: "player.setangle z 0"}]
-    expect: [{console: "{opp}.IsInCombat", contains: ">> 1", within: 5}]
-  - name: its-light-hit       # 24 x 1.3333 = 32 +- 1 on 0 AR
-    do: [{console: "player.moveto {opp} 0 -150 0"}]
+  - name: its-light-hit       # 24 x 1.3333 = 32 +- 1 on the player's 0 AR
+    do: [{console: "player.unequipall"}, {console: "{opp}.startcombat player"}, {console: "player.moveto {opp} 0 -150 0"}]
     expect:
       - {read: [av, Health, player], path: current, keep: hp}
       - {event: {kind: hit, match: "*"}, within: 8}
       - {read: [av, Health, player], path: current, le: {kept: hp, plus: -31}}
-  - name: blow                # the player's light blow; its health before and after (the marsh-hand figure 16.9 needs the build's sheet)
-    do:
-      - {console: "{opp}.stopcombat"}
-      - {console: "player.equipitem ARG_Weap_SteelSword"}
-      - {console: "player.moveto {opp} 0 -110 0"}
-      - {pad: "RB:120 wait:1500"}
-    expect: [{read: [av, Health, "{opp}"], path: current, keep: opp_hp}]
-  - name: blow-lands
-    do: [{pad: "RB:120 wait:1200"}]
-    expect:
-      - {event: {kind: hit, match: "*"}}
-      - {read: [av, Health, "{opp}"], path: current, lt: {kept: opp_hp}}
-  - name: parry-riposte       # Elden Parry's timed bash, then one riposte
-    do:
-      - {console: "player.equipitem ARG_Armo_Steel_Shield"}
-      - {console: "{opp}.startcombat player"}
-      - {pad: "+LT=1:600 RB:120 wait:1500 -:100"}
-      - {pad: "RB:120 wait:2000"}
-    expect: [{event: {kind: hit, match: "*"}}]
-  - name: kill                # the player's blows on a deserter brought low (setup)
-    do:
-      - {console: "{opp}.forceav health 5"}
-      - {console: "player.moveto {opp} 0 -110 0"}
-      - {pad: "RB:120 wait:900 RB:120 wait:900 RB:120 wait:900"}
-    expect: [{console: "{opp}.GetDead", contains: ">> 1", within: 8}]
-  - name: rest-respawns       # waking counts as a rest: it is back
-    do:
-      - {console: "player.moveto ARG_Ref_ClaywaterStationAmbushPlayer 0 -90 0"}
-      - {console: "player.setangle z 0"}
-      - {console: "player.setangle x 40"}
-      - {wait: 3}
-      - {key: "E 120"}
-      - {wait: 6}
-      - {console: "player.setangle x 0"}
-    expect: [{console: "{opp}.GetDead", contains: ">> 0", within: 15}]
+      - {read: [av, Health, player], path: current, ge: {kept: hp, plus: -33}}
