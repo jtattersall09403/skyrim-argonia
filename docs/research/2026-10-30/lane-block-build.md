@@ -52,3 +52,48 @@
 ## Reds and things not run
 - `make plugin`, plugin-check and `make check` have not been run since 4739988. The new code paths are inert until step 1. The `Generate.Cell` refactor should write byte-identical refs, but this is unproved.
 - Authoring script (not tracked): ~/.argonia/author_claywater.py. It regenerates the rows from the old layout and ~/.argonia/claywater-hosts.json, an extract of out/cells-scan.json.
+
+## Continuation (2026-10-30, the second context)
+- **Rename** (84ffd1f). The WRLD EditorID is now `ARG_Province`, because King of the Murkmire's worldspace is also
+  `ArgoniaWorld`. ArgoniaWorld.esm keeps its file name.
+  - The terrain sample manifest was re-pinned deliberately to `d53e7471…`: two builds identical, and re-measured
+    after the pool with no change.
+  - Also renamed in the scenes and journeys, navmesh_ck.ps1, 2.W1 and 0031. That commit also carries the owner's
+    staged 2.W1 edits.
+- **The layers registered; ARGONIA_WORLD_ESM set** (`pipeline.master_world`: out/ArgoniaWorld.esm is built before
+  generate). Both are in the shared files that game-6 commits, together with its MUSC and link fixes.
+  - First `make plugin`: green, 2:59, 1.12 GB peak.
+  - `place:claywater-station`: 2 ACTI, 1 BOOK, 3 MISC, 5 NPC_, 9 PACK, 9 STAT, and 11 CELLs (4 borrowed KotM
+    interiors with our names, 7 ArgoniaWorld.esm exteriors) holding all 124 refs. `place:fixtures`: 2 CELLs.
+- **First-run reds fixed** (84ffd1f):
+  - The borrowed cell's name.
+  - The ACTI verb and keywords are now optional.
+  - `b.from_`.
+  - The Spriggit round trip differed in 8 cell-children group headers: the master's stamp 0x3552/1 was copied by
+    DeepCopy. Fixed by zeroing it in PlaceCells.Shell.
+- **Aliases.** LF83 has 13 of 14 aliases forced to placed refs. `thing.lf83.landing-walls` is a set of buildings, so
+  it has none.
+- **Scour pool** (b960b9e). It is a `build_ground` row, a ceiling bowl:
+  - Floor 30.3 m (2.5 m below the planned 32.84 m surface), 3 m flat, side rise 0.5, centred 6.5 m north of the cut
+    in the channel.
+  - `terrain/place_ground.py` applies it in `Sources.heights`, before the water's regrade.
+  - The water plan was re-run with `--write-db` (52 s, 0.98 GB). It changed 39 water_regrade rows, all of
+    reach.169-1660.
+  - game-6 added place_ground's stamp to `_terrain_stamp`.
+- **Navmesh** (b960b9e). `tools/navmesh/placed.py` makes the built places' exterior refs into OBND boxes.
+  - The masters' meshes are not on the build VM, so these are record bounds, not mesh collision: a doorway is solid.
+  - 76 of 101 refs have a box. The other 25 are markers, items and our own STATs, which have no OBND.
+  - ArgoniaNav rasterises each box solid (RasterizeBox), with the heightfield's range grown to hold it. Without
+    that, a box was clipped to a false top inside itself.
+  - checks.py lets a vertex stand on a box top.
+  - Claywater block: green, 0 over, 136 islands (120 on the ground only), under-30° coverage 0.969 (0.976 on the
+    ground only), 13 s, 230 MB. The NAV sample's hash is unchanged.
+- **Scenes and journeys** (1e3f2f2): the scenes `claywater`, `quest-board` and `claywater-ambush`; the journeys
+  `claywater-walk` (8 steps) and `claywater-look` (11 vantage stills for the reader). Both journeys load in the
+  runner; neither has been run in game yet.
+- **1.4's Starting state** now lists the well-head, mortar-tub and ledger hooks as owed.
+- **For L4:**
+  - Our 10 STATs carry no OBND.
+  - The activators have no keyword or verb.
+  - The NPC_ EditorIDs come from npc ids (`ARG_Npc_N1`, `ARG_Npc_N13`).
+  - The pool's look at the clay cut needs judging.
