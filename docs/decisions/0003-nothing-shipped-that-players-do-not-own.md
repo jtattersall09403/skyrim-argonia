@@ -13,7 +13,7 @@
    - any third-party mod file (meshes, textures, animations, scripts, plugins), converted or not, unless its
      licence explicitly allows redistribution in a derivative and the sourcing register says so;
    - any FromSoftware file or data table (params, TAE, AI scripts, animations, meshes), converted or not;
-   - decompiled code or disassembly from any game, retail offsets or decompiler names copied into code
+   - decompiled code or disassembly from any game (Bethesda, FromSoftware or any other), retail offsets or decompiler names copied into code
      (CommonLibSSE-NG and Address Library IDs are the community interfaces and are fine);
    - credentials, Steam/Nexus keys, or the owner's game files.
 3. **Owned-game ownership is implicit:** our master plugin requires `Skyrim.esm` and the official BSAs from the
@@ -32,6 +32,13 @@
    ordinary fair commentary of one's own play, but are never committed.
 7. **Derived files** (FaceGen heads, LOD, behaviours, re-timed animations, silent voice files, patched menus)
    are made at runtime or on the player's machine by the installer, never shipped (decision 0014).
+
+8. **Decompiling is a normal tool** (owner, 2026-10-30: "if it would be useful to do at some point for
+   something then we should do it"). Agents decompile a game binary, a mod's scripts (`.pex`), a mod's menus
+   (`.swf`) or a DLL whenever reading it answers a question faster than guessing. Game decompiles stay under
+   `$ARGONIA_PRIVATE` and inform code we write ourselves (§2: they are the game makers' to permit, not ours). A
+   mod's decompiled scripts or menus may be adapted into our source when its author or licence permits it,
+   credited, with the permission recorded in the sourcing register in the same commit.
 
 ## Consequences
 

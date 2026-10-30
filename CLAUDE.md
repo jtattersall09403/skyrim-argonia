@@ -18,7 +18,7 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 
 ## Never
 
-- Never commit or release a game or mod file, converted or not, decompiled code, retail offsets, or secrets
+- Never commit or release a game or mod file, converted or not, game decompiles, retail offsets, or secrets
   ([0003](docs/decisions/0003-nothing-shipped-that-players-do-not-own.md)); the no-assets guard is not bypassed.
 - Never make art beyond UI and minor Fal-made 2D elements ([0006](docs/decisions/0006-black-marsh-immersion-no-nordic-element-survives.md)).
 - Never take FromSoftware data, animations or code into Argonia: measure DSR, write our own numbers ([0004](docs/decisions/0004-ds1-remastered-is-the-combat-oracle.md)).
@@ -37,7 +37,7 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 - Base-Skyrim assets come from Tropical Skyrim SSE before vanilla; Black Marsh mods before both (0006 §8).
 - Study before building: field notes, owned games, mod source, OpenMW, reference ports; findings go to `docs/research/` ([0020](docs/decisions/0020-reuse-others-methods-universal-modder-and-ghidra-tooling.md)).
 - The running game is the oracle: behaviour closes only on an in-game check that can fail (L4+).
-- Ghidra is a scalpel: targeted headless scripts for a named question; output stays in `$ARGONIA_PRIVATE`.
+- Decompile whatever helps ([0003](docs/decisions/0003-nothing-shipped-that-players-do-not-own.md) §8): game output stays in `$ARGONIA_PRIVATE`; permitted mod code may be adapted.
 - De-risk first: prove each class of work on a real sample as the first step of the chunk that builds it, never a spike (0023, 0029).
 - Every system is built to its final interface; content can be thin, systems ship whole; what the player meets is complete.
 - Everything is built natively the Skyrim way: the old project gives goals and content, never machinery; Skyrim's own systems and tools first, used better ([0026](docs/decisions/0026-everything-is-built-natively-the-skyrim-way.md)).

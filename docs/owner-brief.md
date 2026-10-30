@@ -191,3 +191,4 @@ Something they can **play**, that is:
 | 2026-10-30 | **Quest features are system-wide and native first**: the journal-updated notice (the engine's own HUD message) and thing hooks (activate/read sets a fact) serve every quest; LF83 is only the first user. |
 | 2026-10-30 | **Standing permission: agents may always start and stop the game machines** ("you always have permission to do this"); a stop is never a reason to wait. |
 | 2026-10-30 | **The soak is dropped** unless the owner asks for it. **Each game-machine slot runs a whole batch** of checks, not one at a time. |
+| 2026-10-30 | **Decompile whenever it would be useful** (games, mod scripts, mod menus, DLLs). Game decompiles stay private and inform our own code; a mod's decompiled code may be adapted when its author or licence permits, credited (0003 §8). The stat sheet stays ours; ESLA is a pattern source. |

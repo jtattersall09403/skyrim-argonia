@@ -14,7 +14,7 @@ Ghidra approach). Evidence: [um-ghidra-lens](../research/2026-10-27/um-ghidra-le
    5. **Our own SKSE plugin code** (S2).
    6. **Our own deep hook or replacement screen** (S3).
    7. **Ask the owner** (never: make art beyond the decision 0006 exception, ship others' files, or copy
-      decompiled code).
+      decompiled game code; decompiling itself is a normal tool, decision 0003 §8).
 2. **Study before building.** For each system, first read what owned games and existing mods already do:
    DS1R/DS3 data (combat), OpenMW source (Morrowind's formulas, dialogue filter semantics, disposition,
    persuasion: it is the readable Morrowind), Skyrim's own records (water, AI packages), mod source code
