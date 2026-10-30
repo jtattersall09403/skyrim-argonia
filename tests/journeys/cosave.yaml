@@ -2,7 +2,10 @@
 # exist yet (checked 2026-10-30). 1.1's acceptance: ArgoniaCore's co-save families survive save, quit and load.
 id: cosave
 status: draft, owed L4
-scene: the base save; ArgoniaCore.dll deployed, Argonia.esm loaded
+scene: >-
+  bat camp (the base save with an ARG_CampSpot in reach; until bat camp exists, step 0 places one with
+  `player.placeatme ARG_CampSpot`); ArgoniaCore.dll deployed, Argonia.esm loaded. Rest is the only save (1.5), so
+  the journey saves by resting, never by the console's `save` (the chargen block refuses it).
 # Step 0 gives every family something to carry, through the natives. This is allowed, because the journey tests
 # persistence, not the setting.
 step0:
@@ -16,9 +19,12 @@ steps:
   - do: read ArgoniaCore.Families() and, for each, ArgoniaCore.FamilyDigest(fourcc); read SaveCount()
     expect: Families() lists META STAT DISP JRNL ITEM DETH QSTA TOPC QWCH (TEST and TSTN never in a release build)
     still: one
-  - do: console `save arg-cosave`, then quit the game process (qqq) and wait for it to exit (timeout 60 s)
-    expect: the SKSE log shows ArgoniaCore's save callback writing 9 families, with no error
-  - do: relaunch through the stack, then console `load arg-cosave` (timeout 120 s to the loaded event)
+  - do: activate the camp spot (SkyLink's activate on the ARG_CampSpot reference; no level is pending, so no
+      sitting opens), wait for "saves: ArgoniaRest written (rest)", then quit the game process (qqq) and wait for
+      it to exit (timeout 60 s)
+    expect: ArgoniaRest.ess has a new time; the SKSE log shows ArgoniaCore's save callback writing 9 families, with
+      no error
+  - do: relaunch through the stack, then the bridge's `load ArgoniaRest` (timeout 120 s to the loaded event)
     expect: the SKSE log shows the load callback reading 9 families, with no 'unknown family' or version error
     still: one
   - do: read Families(), FamilyDigest(each), SaveCount(), GetFlag("flag.test.cosave"),

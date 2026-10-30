@@ -15,7 +15,7 @@ from tools.argonia_world import core_tables, db
 CORE = core_tables.REPO / "skse" / "core"
 # The rule modules (native map §6.1). The co-save byte layer (cosave, families) is encoding, not formulas.
 RULES = ["curve", "sheet", "effects", "carriers", "progression", "sitting", "rest", "death", "respawn", "conditions",
-         "disposition", "journal", "items"]
+         "disposition", "journal", "items", "combat"]
 LITERAL = re.compile(r"(?<![\w.])(\d+\.?\d*(?:[eE][-+]?\d+)?|\.\d+)(?![\w.])")
 ALLOWED = {"0", "1", "0.0", "1.0"}
 

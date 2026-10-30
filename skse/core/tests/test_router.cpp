@@ -79,7 +79,18 @@ void death_runs_its_flow() {
 
 }  // namespace
 
+void intents_reach_their_view() {
+  CHECK(intent_view(R"({"type":"sitting.buy","v":1,"body":{"attribute":"endurance"}})").value_or("") == "sitting");
+  CHECK(intent_view(R"({"type":"sitting.done","v":1,"body":{}})").value_or("") == "sitting");
+  CHECK(intent_view(R"({"type":"dialogue.goodbye","v":1,"body":{}})").value_or("") == "dialogue");
+  CHECK(intent_view(R"({"type":"view.close","v":1,"body":{"view":"journal"}})").value_or("") == "journal");
+  CHECK(!intent_view(R"({"type":"sitting.state","v":1,"body":{}})"));  // a push is never an intent
+  CHECK(!intent_view("not json"));
+  CHECK(!intent_view(R"({"type":"sitting.buy","v":1,"body":{"attribute":"luck"}})"));  // no Luck
+}
+
 int main() {
+  intents_reach_their_view();
   the_registry();
   a_hook_is_installed_once();
   one_handler_per_surface();

@@ -13,22 +13,23 @@ using gen::UseKind;
 
 constexpr std::string_view kWeaponClassPrefix = "weapon_class.";
 
-// 1.3 §a's table: fifteen skills on a vanilla actor value, twelve on Custom Skills Framework (no name yet).
+// 1.3 §a's table: fourteen skills on a vanilla actor value, the rest on Custom Skills Framework (no name yet).
+// Marksman is not mirrored: the vanilla weapon skills stay pinned at 0 (combat::pinned_vanilla_skills).
 constexpr std::array<SkillMirror, gen::kSkillIdCount> kSkillMirrors{{
     {SkillId::acrobatics, ""},          {SkillId::alchemy, "Alchemy"},       {SkillId::alteration, "Alteration"},
     {SkillId::athletics, ""},           {SkillId::axe, ""},                  {SkillId::block, "Block"},
     {SkillId::blunt, ""},               {SkillId::conjuration, "Conjuration"}, {SkillId::destruction, "Destruction"},
     {SkillId::enchant, "Enchanting"},   {SkillId::handToHand, ""},           {SkillId::heavyArmor, "HeavyArmor"},
     {SkillId::illusion, "Illusion"},    {SkillId::lightArmor, "LightArmor"}, {SkillId::longBlade, ""},
-    {SkillId::marksman, "Archery"},     {SkillId::mediumArmor, ""},          {SkillId::mercantile, ""},
+    {SkillId::marksman, ""},           {SkillId::mediumArmor, ""},          {SkillId::mercantile, ""},
     {SkillId::mysticism, ""},           {SkillId::restoration, "Restoration"}, {SkillId::security, "Lockpicking"},
     {SkillId::shortBlade, ""},          {SkillId::smithing, "Smithing"},     {SkillId::sneak, "Sneak"},
-    {SkillId::spear, ""},               {SkillId::speechcraft, "Speech"},    {SkillId::unarmored, ""},
+    {SkillId::spear, ""},               {SkillId::speechcraft, "Speechcraft"},{SkillId::unarmored, ""},
 }};
 
 constexpr std::array<std::string_view, 18> kVanillaSkills{
-    "OneHanded", "TwoHanded", "Archery", "Block", "Smithing", "HeavyArmor", "LightArmor", "Pickpocket", "Lockpicking",
-    "Sneak", "Alchemy", "Speech", "Alteration", "Conjuration", "Destruction", "Illusion", "Restoration", "Enchanting"};
+    "OneHanded", "TwoHanded", "Marksman", "Block", "Smithing", "HeavyArmor", "LightArmor", "Pickpocket", "Lockpicking",
+    "Sneak", "Alchemy", "Speechcraft", "Alteration", "Conjuration", "Destruction", "Illusion", "Restoration", "Enchanting"};
 
 UseEvent base(SkillId s, UseKind k) {
   UseEvent ev{};
@@ -270,6 +271,12 @@ const char* to_string(SuspendWhy w) {
     case SuspendWhy::interval: return "interval";
   }
   return "?";
+}
+
+std::optional<SuspendWhy> suspend_why(std::string_view wire) {
+  if (wire == "quit") return SuspendWhy::quit;
+  if (wire == "stream_drop") return SuspendWhy::stream_drop;
+  return std::nullopt;
 }
 
 bool suspend_due(SuspendWhy why, double now_s, std::optional<double> last_save_s, bool in_combat, bool can_save_now) {

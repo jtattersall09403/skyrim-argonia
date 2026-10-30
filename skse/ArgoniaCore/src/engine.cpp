@@ -197,16 +197,19 @@ void MirrorAttributes() {
   }
 }
 
-void EnsurePerk() {
-  auto* perk = Lookup<RE::BGSPerk>("hook.dialogue-intercept");
+void EnsurePerks() {
   auto* p = Player();
-  if (!perk || !p) {
-    SKSE::log::error("dialogue: the intercept perk (hook.dialogue-intercept) is not in this load order");
-    return;
-  }
-  if (!p->HasPerk(perk)) {
-    p->AddPerk(perk);
-    SKSE::log::info("dialogue: intercept perk {:08X} added to the player", perk->GetFormID());
+  if (!p) return;
+  for (auto id : {"hook.dialogue-intercept"sv, "hook.rest-intercept"sv, "combat.carriers"sv}) {
+    auto* perk = Lookup<RE::BGSPerk>(id);
+    if (!perk) {
+      SKSE::log::error("perks: {} is not in this load order", id);
+      continue;
+    }
+    if (!p->HasPerk(perk)) {
+      p->AddPerk(perk);
+      SKSE::log::info("perks: {} ({:08X}) added to the player", id, perk->GetFormID());
+    }
   }
 }
 

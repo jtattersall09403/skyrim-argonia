@@ -105,6 +105,7 @@ inline constexpr double points_per_attribute_cap = 5.0;  // docs/design/world/76
 }  // namespace sitting
 namespace units {  // tools/argonia_world/skyrim_units.py, the one home of Skyrim unit facts
 inline constexpr double units_per_metre = 70.03;
+inline constexpr double weight_per_kg = 1.0;
 }  // namespace units
 
 }  // namespace argonia::core::gen

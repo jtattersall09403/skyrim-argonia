@@ -145,6 +145,16 @@ inline constexpr std::string_view kRestSave = "ArgoniaRest";        // one slot,
 inline constexpr std::string_view kSuspendSave = "ArgoniaSuspend";  // the hidden suspend save
 enum class SuspendWhy { quit, stream_drop, pause_hub, interval };
 const char* to_string(SuspendWhy w);
+// A caller's reason by its wire name ("quit", "stream_drop"): only the two outside callers' reasons are accepted
+// (the pause hub and the interval are ArgoniaCore's own), so an unknown word never forces a save in combat.
+std::optional<SuspendWhy> suspend_why(std::string_view wire);
+// The dev bridge's call (ArgoniaBridge `core-suspend <why>`): an SKSE message to ArgoniaCore whose data is this
+// struct; ArgoniaCore's listener answers in `written` before the dispatch returns.
+inline constexpr std::uint32_t kBridgeSuspendMessage = cosave::fourcc("SUSP");
+struct BridgeSuspend {
+  char why[32] = {};
+  bool written = false;
+};
 // When the suspend save is written: on a quit or a stream drop always; on opening the pause hub (where quit lives)
 // or at any other event once the interval has passed since the last save of either kind, never in combat; never
 // when the game cannot save now (a menu, a load). `now_s` and `last_save_s` are real seconds.

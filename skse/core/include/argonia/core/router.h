@@ -3,7 +3,10 @@
 // and the verdict for each surface the engine shows. ArgoniaCore's adapter installs the real hooks and acts on the
 // verdict (closing a blocked menu); none of that is here, so the rules are tested on Linux.
 #pragma once
+#include "argonia/core/messages.h"
 #include "argonia/core/router_table.h"
+
+#include <expected>
 
 #include <array>
 #include <functional>
@@ -61,5 +64,10 @@ class Router {
   std::array<bool, gen::kHookIdCount> hooks_{};
   std::array<Handler, gen::kSurfaceIdCount> handlers_{};
 };
+
+// The view an intent is for (dialogue, journal, chart, sitting), from its type, so every view's intents reach
+// ArgoniaCore through one listener (the web view's window.argoniaIntent) and are routed here; view.close names
+// its view. A refusal is the schema twin's words (a malformed intent, a push sent as an intent).
+std::expected<std::string_view, std::string> intent_view(std::string_view json);
 
 }  // namespace argonia::core::router

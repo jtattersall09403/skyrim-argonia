@@ -14,7 +14,11 @@ steps:
   - land 2 power attacks; read the player's stamina before and after each
   - read GetGameSetting for fDiffMultHPByPCN and fDiffMultHPToPCN, and each difficulty in turn
 pass:
-  - VoicePoints = P x S - 1 from skse/core carriers (novice -0.549, god +0.500); OneHanded base AV = 0
+  - VoicePoints = P x S - 1 from skse/core carriers (novice -0.549, god +0.500); OneHanded, TwoHanded and
+    Marksman base AVs = 0 (pinned; L2: core.combat pinned_skills_are_never_mirrored); the SKSE log's
+    "combat: carriers (...)" line holds the values read (L2: core.combat the_spec_table)
+  - the carriers move on equip: unequip the sword and VoicePoints reads the hand-to-hand value (P of Hand-to-hand,
+    no Strength, - 1), re-equip and it reads the build's value again
   - light blow damage = 24 x (1 + VoicePoints) within 0.5 (novice 10.8, god 36.0); ratio god/novice 3.33 +- 2 %
   - the same ratio at every difficulty (the difficulty GMSTs held at 1)
   - power attack stamina scales by 1 + VoiceRate against a carrier-0 control run

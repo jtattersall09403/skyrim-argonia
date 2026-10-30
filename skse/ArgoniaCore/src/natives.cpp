@@ -124,6 +124,7 @@ float SetAttribute(RE::StaticFunctionTag*, RE::BSFixedString name, float v) {
     stored = ac::seam::set_attribute(Get().state, *a, v);
   }
   MirrorAttributes();
+  WriteCombat("attribute");
   FactsChanged("attribute");
   return static_cast<float>(stored);
 }
@@ -187,17 +188,7 @@ float TakeVasteiNative(RE::StaticFunctionTag*, RE::TESObjectREFR* pile) {
   return got ? static_cast<float>(*got) : -1.0f;
 }
 RE::BSFixedString SittingIntentNative(RE::StaticFunctionTag*, RE::BSFixedString json) { return SittingIntent(Str(json)); }
-bool SuspendSave(RE::StaticFunctionTag*, RE::BSFixedString why) {
-  const auto w = Str(why) == "quit" ? ac::life::SuspendWhy::quit : ac::life::SuspendWhy::stream_drop;
-  std::optional<double> before;
-  {
-    std::lock_guard l(Get().lock);
-    before = Get().last_save_s;
-  }
-  SuspendCheck(w);
-  std::lock_guard l(Get().lock);
-  return Get().last_save_s != before;
-}
+bool SuspendSave(RE::StaticFunctionTag*, RE::BSFixedString why) { return SuspendSaveFor(Str(why)); }
 float GetVastei(RE::StaticFunctionTag*) {
   std::lock_guard l(Get().lock);
   return static_cast<float>(Get().state.prog.vastei);

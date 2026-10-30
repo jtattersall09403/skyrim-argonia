@@ -15,6 +15,10 @@ steps:
 pass:
   - fast, mid, fat: a roll plays; the swing does no damage inside the i-frame window; i-frame window = fIFrameDuration
     (0.3 s) x the tier's iframe_scale once w.iframes.tier is built (until then: equal across tiers, the recorded loss)
-  - overloaded: no roll (w.roll.tier, once ArgoniaCore toggles TK Dodge's required perk)
+  - overloaded: no roll. w.roll.tier is built (core-wiring): tk-dodge.toml has bUsePerkLock = true (staged from
+    combat_mod_setting), and ArgoniaCore takes TK Dodge's required perk (TKDodgeAddon.esp|0x809) at the
+    overloaded tier and gives it back below (L2: core.combat roll_lock). Read: the SKSE log's "combat: roll locked
+    (burden overloaded)" and "roll unlocked", and console `player.hasperk <xx000809>` 0 when overloaded, 1 after
+    dropping the ingots
   - roll stamina cost = fDodgeCost (15); regen starts fDamagedStaminaRegenDelay (1.05 s) after the roll
 fails_if: a roll at overloaded, damage taken inside the measured window, a stuck ghost state, a crash

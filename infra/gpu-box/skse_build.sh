@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # make deploy's first half (chunk 0.3 §b): send skse/ to the game machine and build it there with MSVC.
 #   skse_build.sh [--machine argonia-play-N] [tools|build|all] [windows-dev|windows-release]   default: build windows-dev
-#   on argonia-play (or $ARGONIA_PLAY)
+#   on argonia-play (or $ARGONIA_PLAY); ARGONIA_MODDIR='C:\argonia\no-deploy' leaves the DLLs in the build tree
+#   (the game holds MO2's copies locked while it runs; the game lane deploys)
 # Windows' OpenSSH has no rsync, so the tree goes as one tar (tracked and new files under skse/, ignored ones
 # left out, file times kept so Ninja rebuilds only what changed) over scp, then skse_build.ps1 unpacks and builds.
 # The first run on a fresh machine is `all` (installs VS 2026 Build Tools, MinGit, vcpkg; tens of minutes): run it
@@ -25,7 +26,7 @@ echo "skse: $(tar -tf "$tarball" | wc -l) files, $(du -h "$tarball" | cut -f1)"
 "$run" put "$here/skse_build.ps1" C:/argonia/infra/skse_build.ps1 >/dev/null
 
 for pass in 1 2 3; do
-  out=$("$run" ps "powershell -ExecutionPolicy Bypass -File C:\\argonia\\infra\\skse_build.ps1 -Stage $stage -Preset $preset" 2>&1) \
+  out=$("$run" ps "powershell -ExecutionPolicy Bypass -File C:\\argonia\\infra\\skse_build.ps1 -Stage $stage -Preset $preset${ARGONIA_MODDIR:+ -ModDir $ARGONIA_MODDIR}" 2>&1) \
     || { echo "$out"; exit 1; }
   echo "$out"
   grep -q REBOOT-NEEDED <<<"$out" || break

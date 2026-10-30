@@ -35,9 +35,14 @@ int main() {
     CHECK(skill_mirrors()[i].skill == SkillId(i));
     vanilla += !skill_mirrors()[i].actor_value.empty();
   }
-  CHECK(vanilla == 15);  // 1.3 §a: fifteen on vanilla actor values, twelve on Custom Skills Framework
+  CHECK(vanilla == 14);  // 1.3 §a's fifteen less Marksman, which stays pinned at 0 (combat-wiring.md)
+  // The engine's actor value names (AVIF enum names), not the menu's: Marksman, not Archery; Speechcraft, not Speech.
+  CHECK(skill_mirrors()[idx(SkillId::speechcraft)].actor_value == "Speechcraft");
+  CHECK(skill_mirrors()[idx(SkillId::marksman)].actor_value.empty());
   CHECK(skill_mirrors()[idx(SkillId::security)].actor_value == "Lockpicking");
   CHECK(vanilla_skills().size() == 18);
+  for (auto menu_name : {"Archery", "Speech"})
+    CHECK(std::set<std::string_view>(vanilla_skills().begin(), vanilla_skills().end()).count(menu_name) == 0);
   CHECK(std::set<std::string_view>(vanilla_skills().begin(), vanilla_skills().end()).count("OneHanded") == 1);
 
   // Armour class by the most pieces worn; ties go to the heavier; nothing worn is Unarmored.
@@ -184,6 +189,9 @@ int main() {
   // The suspend save: quit and stream drop always (if the game can save); else once the interval has passed and
   // never in combat.
   const double iv = gen::rest::suspend_save_interval_s;
+  CHECK(suspend_why("quit") == SuspendWhy::quit);
+  CHECK(suspend_why("stream_drop") == SuspendWhy::stream_drop);
+  for (auto w : {"", "pause_hub", "interval", "stream drop", "QUIT"}) CHECK(!suspend_why(w));
   CHECK(suspend_due(SuspendWhy::quit, 10, 9, true, true));
   CHECK(suspend_due(SuspendWhy::stream_drop, 10, 9, false, true));
   CHECK(!suspend_due(SuspendWhy::quit, 10, 9, false, false));

@@ -5,6 +5,8 @@ status: draft, owed L4
 scene: >-
   bat camp
 step0:
+  - the SKSE log has "perks: hook.rest-intercept ... added to the player" (or the player already has it: console
+    `player.hasperk <xx000861>` = 1); without it the camp spot's Rest verb is the vanilla activation
   - count the files in the save folder (the bridge's file list) -> N0; note ArgoniaRest.ess's time if present
 steps:
   - do: >-

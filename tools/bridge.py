@@ -42,8 +42,8 @@ STATE = Path.home() / ".argonia" / "bridge"
 KEY = Path.home() / ".argonia" / "keys" / "argonia-play"
 HEALTH_EVERY = 20.0  # seconds between health checks while a call waits: a crash is seen within 60 s
 # Per-command reply caps (seconds); the plugin's own caps are a little shorter, so its error arrives first.
-TIMEOUTS = {"load": 150.0, "save": 45.0, "nav": 30.0, "booth": 60.0, "input": 15.0, "wait_event": 70.0,
-            "frametime": 120.0}  # 2000 frames at 20 fps is 100 s
+TIMEOUTS = {"load": 150.0, "save": 45.0, "core-suspend": 45.0, "nav": 30.0, "booth": 60.0, "input": 15.0,
+            "wait_event": 70.0, "frametime": 120.0}  # 2000 frames at 20 fps is 100 s
 DEFAULT_TIMEOUT = 15.0
 INPUT_CAP_MS = 3000  # kInputCapMs in the plugin
 
@@ -245,6 +245,14 @@ class Bridge:
         out.parent.mkdir(parents=True, exist_ok=True)
         self.machine.get(remote, out)
         return out
+
+    def suspend_save(self, why: str = "stream_drop") -> dict:
+        """ArgoniaCore's hidden suspend save (2.8 §c): the stream client's hand on a drop ("stream_drop") or a quit
+        ("quit"). ArgoniaBridge's `core-suspend` messages ArgoniaCore and answers once ArgoniaSuspend.ess is written;
+        any other reason is refused before it is sent."""
+        if why not in ("quit", "stream_drop"):
+            raise BridgeError(f"suspend_save: {why!r} is not a caller's reason (quit, stream_drop)")
+        return self.call("core-suspend", why)
 
     def pad(self, seq: str) -> dict:
         """A real gamepad sequence on the virtual Xbox pad (infra/gpu-box/pad.ps1, ViGEm), capped at 3 s."""

@@ -2,7 +2,8 @@
 // The intercept: the player's ARG_Perk_DialogueIntercept replaces the default activation of any ARG_Speaker with its
 // fragment, which calls ArgoniaCore.OpenDialogue(target); the vanilla Dialogue Menu, should it open anyway, is closed
 // the frame it opens (the router's backstop) and our conversation opened for the same speaker. The view host keeps
-// each view's last push and logs it whole; the web-view binding (PrismaUI) is 1.2 §0's, behind Push().
+// each view's last push and logs it whole; ViewIntent is the one intent entry for every view (dialogue, sitting),
+// routed by type; the web-view binding (PrismaUI) is 1.2 §0's, behind Push() and ViewIntent.
 #include "core.h"
 
 namespace argonia::plugin {
@@ -120,7 +121,9 @@ bool OpenDialogue(RE::TESObjectREFR* target) {
   return v.handled && c.talk.has_value();
 }
 
-std::string ViewIntent(std::string_view json) {
+namespace {
+
+std::string DialogueIntent(std::string_view json) {
   auto& c = Get();
   std::lock_guard l(c.lock);
   if (!c.talk) return R"({"error":"no conversation is open"})";
@@ -140,6 +143,21 @@ std::string ViewIntent(std::string_view json) {
   if (!out.empty()) Push("dialogue", out);
   FactsChanged("topic heard");
   return out;
+}
+
+}  // namespace
+
+// The one intent entry every view's listener calls: routed by the intent's type to the view's host.
+std::string ViewIntent(std::string_view json) {
+  const auto view = ac::router::intent_view(json);
+  if (!view) {
+    SKSE::log::warn("views: intent refused: {}", view.error());
+    return R"({"error":"the intent does not fit the schema"})";
+  }
+  if (*view == "dialogue") return DialogueIntent(json);
+  if (*view == "sitting") return SittingIntent(json);
+  SKSE::log::warn("views: no host for the {} view's intents yet", *view);
+  return R"({"error":"that view has no host yet"})";
 }
 
 void Push(std::string_view view, std::string json) {

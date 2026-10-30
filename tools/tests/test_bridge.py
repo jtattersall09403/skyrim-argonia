@@ -90,6 +90,18 @@ def test_a_refusal_raises_bridge_error():
     ls.close()
 
 
+def test_suspend_save_sends_core_suspend_and_refuses_other_reasons():
+    seen = []
+    ls, port = serve(lambda line: seen.append(line) or {"ok": True, "result": {"why": "stream_drop"}})
+    b = make(port, FakeMachine())
+    assert b.suspend_save()["why"] == "stream_drop"
+    assert seen == ["t" * 32 + " core-suspend stream_drop"]
+    with pytest.raises(B.BridgeError, match="not a caller's reason"):  # the fail-on-purpose case: never sent
+        b.suspend_save("pause_hub")
+    assert len(seen) == 1
+    ls.close()
+
+
 def test_a_stale_token_is_refreshed_once(tmp_path):
     (tmp_path / "token").write_text("old" + "0" * 29)
     m = FakeMachine(token="n" * 32)

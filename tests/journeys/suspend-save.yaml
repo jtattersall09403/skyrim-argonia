@@ -13,9 +13,10 @@ steps:
       within 5 s ArgoniaSuspend.ess is written ("saves: ArgoniaSuspend written (pause hub)"), unless a save of
       either kind was written in the last 300 s (then none, and the log says nothing)
   - do: >-
-      the bridge calls ArgoniaCore.SuspendSave("stream_drop") (its hand on a stream drop)
+      the bridge's `core-suspend stream_drop` (Bridge.suspend_save(), the stream client's hand on a drop; an SKSE
+      message to ArgoniaCore, which runs SuspendSave("stream_drop"))
     expect: >-
-      returns true; ArgoniaSuspend.ess has a new time
+      ok with the file; ArgoniaSuspend.ess has a new time; `core-suspend pause_hub` is refused (fails on purpose)
   - do: >-
       start a fight (the archetype); while in combat, call SuspendSave("stream_drop") and wait 300 s
     expect: >-

@@ -26,9 +26,10 @@ Bool Function ChangeSettlementStanding(String asSettlement, Int aiDelta) global 
 
 ; --- The dialogue intercept (ARG_PRKF_DialogueIntercept) and the view host ---
 Bool Function OpenDialogue(ObjectReference akSpeaker) global native
-; A view's intent as the schema's JSON (ui/schema); returns the view's next state, "" when it closed.
+; Any view's intent as the schema's JSON (ui/schema), routed by its type (dialogue.*, sitting.*, view.close);
+; returns the view's next state, "" when it closed.
 String Function ViewIntent(String asJson) global native
-; The last state pushed to a view ("dialogue", "journal", "hud", "chart"), "" when none.
+; The last state pushed to a view ("dialogue", "sitting", "journal", "hud", "chart"), "" when none.
 String Function ViewState(String asView) global native
 
 ; --- The sheet's attributes (canonical in the STAT family; mirrored into reserved actor values) ---
@@ -52,7 +53,8 @@ String Function RestNotice() global native
 Float Function TakeVastei(ObjectReference akPile) global native
 ; The sitting view's intent (sitting.buy, sitting.done) as JSON; the new sitting.state, "" once it closed.
 String Function SittingIntent(String asJson) global native
-; The hidden suspend save: "quit" or "stream_drop" (the bridge's hand on a drop); true when written.
+; The hidden suspend save: "quit" or "stream_drop" (the bridge calls it by core-suspend); true when queued; any
+; other word is refused.
 Bool Function SuspendSave(String asWhy) global native
 ; Reads for the L4 journeys, and the scenes' step-0 setter of carried vastei.
 Float Function GetVastei() global native

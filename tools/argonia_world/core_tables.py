@@ -181,7 +181,8 @@ def progression(w: db.World) -> str:
           for r in resp]
     b += ["}};", "", *_constants(w, "progression"),
           "namespace units {  // tools/argonia_world/skyrim_units.py, the one home of Skyrim unit facts",
-          f"inline constexpr double units_per_metre = {su.UNITS_PER_METRE!r};", "}  // namespace units"]
+          f"inline constexpr double units_per_metre = {su.UNITS_PER_METRE!r};",
+          f"inline constexpr double weight_per_kg = {num(su.WEIGHT_PER_KG)};", "}  // namespace units"]
     return _wrap("progression", ["array", "cstddef", "cstdint", "string_view", "argonia/core/tables_sheet.h"], b)
 
 
@@ -249,6 +250,24 @@ def actions(w: db.World) -> str:
     return _wrap("actions", ["array", "cstddef", "cstdint", "string_view"], b)
 
 
+def combat(w: db.World) -> str:
+    """The combat wiring's runtime side (1.6, combat-wiring.md): the P1 carriers ArgoniaCore writes and the
+    combat_constant scalars, from combat_carrier and combat_constant."""
+    rows = w.query("SELECT * FROM combat_carrier ORDER BY id")
+    b = [*_enum("CarrierId", [r["id"] for r in rows]),
+         "struct CarrierRow {", "  std::string_view actor_value;  // the reserved actor value ArgoniaCore writes",
+         "  std::string_view entry_point;  // the ARG_Perk_Carriers entry point that reads it (Multiply 1 + AV Mult)",
+         "  bool wired;                     // false: reserved, never written", "};",
+         f"inline constexpr std::array<CarrierRow, {len(rows)}> kCarriers{{{{"]
+    b += [f"    {{{sv(r['actor_value'])}, {sv(r['entry_point'])}, {'true' if r['wired'] else 'false'}}},  // {r['id']}"
+          for r in rows]
+    consts = w.query("SELECT id, value, provenance FROM combat_constant ORDER BY id")
+    b += ["}};", "", "namespace combat {"]
+    b += [f"inline constexpr double {ident(r['id'])} = {num(r['value'])};  // {r['provenance']}" for r in consts]
+    b.append("}  // namespace combat")
+    return _wrap("combat", ["array", "cstddef", "cstdint", "string_view"], b)
+
+
 def fixture_topics(w: db.World) -> str:
     from tools.argonia_world import topic_tables
     text = _wrap("fixture_topics", ["array", "cstddef", "cstdint", "string_view"], topic_tables.render(w))
@@ -258,7 +277,8 @@ def fixture_topics(w: db.World) -> str:
 
 def render(w: db.World) -> dict[str, str]:
     out = {f"tables_{h}.h": f(w) for h, f in (("sheet", sheet), ("progression", progression),
-                                              ("conditions", conditions), ("actions", actions))}
+                                              ("conditions", conditions), ("actions", actions),
+                                              ("combat", combat))}
     out["fixture_topics.h"] = fixture_topics(w)
     from tools.argonia_world import forms_table  # 1.1 adapters: world id -> FormID
     out[forms_table.HEADER] = forms_table.render(w)

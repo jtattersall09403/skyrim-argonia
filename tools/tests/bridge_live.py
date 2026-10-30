@@ -81,6 +81,9 @@ def state(b: Bridge) -> None:
         return {"save": s, "load": b.call("load", "bridge-test")}
     case("save", "bridge-test, then load it back", save_load, False)
     case("save", "a name with a path", lambda: b.call("save", "a/b"), True)
+    # ArgoniaCore's suspend save through the bridge (2.8 §c; needs ArgoniaCore loaded).
+    case("core-suspend", "stream_drop writes ArgoniaSuspend.ess", lambda: b.call("core-suspend", "stream_drop"), False)
+    case("core-suspend", "a reason that is not a caller's", lambda: b.call("core-suspend", "pause_hub"), True)
 
 
 def world(b: Bridge) -> None:

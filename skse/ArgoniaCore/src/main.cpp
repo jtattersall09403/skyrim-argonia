@@ -71,12 +71,14 @@ void OnDataLoaded() {
   }
   plugin::InstallHooks();
   plugin::LifeDataLoaded();
+  plugin::CombatDataLoaded();
 }
 
 void OnGameReady(const char* how) {
-  plugin::EnsurePerk();
+  plugin::EnsurePerks();
   plugin::MirrorAttributes();
   plugin::LifeGameReady();
+  plugin::WriteCombat(how);
   plugin::FactsChanged(how);
 }
 
@@ -87,6 +89,16 @@ void OnMessage(SKSE::MessagingInterface::Message* m) {
     case SKSE::MessagingInterface::kNewGame: OnGameReady("new game"); break;
     default: break;
   }
+}
+
+// The dev bridge's hands (ArgoniaBridge's `core-suspend`): an SKSE message from the plugin "ArgoniaBridge". The
+// bridge waits for the dispatch to return, so `written` is the answer it reads (the save itself runs as a task).
+void OnBridgeMessage(SKSE::MessagingInterface::Message* m) {
+  if (!m || m->type != ac::life::kBridgeSuspendMessage || !m->data || m->dataLen != sizeof(ac::life::BridgeSuspend))
+    return;
+  auto* req = static_cast<ac::life::BridgeSuspend*>(m->data);
+  req->why[sizeof(req->why) - 1] = '\0';
+  req->written = plugin::SuspendSaveFor(req->why);
 }
 
 }  // namespace
@@ -114,6 +126,9 @@ SKSE_PLUGIN_LOAD(const SKSE::LoadInterface* skse) {
     SKSE::log::critical("SKSE messaging listener not registered");
     return false;
   }
+  // The bridge is dev only (absent in a release), so a refused listener is a warning, never a load failure.
+  if (!SKSE::GetMessagingInterface()->RegisterListener("ArgoniaBridge", OnBridgeMessage))
+    SKSE::log::warn("no listener for ArgoniaBridge's messages (the dev bridge cannot call SuspendSave)");
   SKSE::log::info("ArgoniaCore loaded: co-save ARGN families {}", ids);
   return true;
 }

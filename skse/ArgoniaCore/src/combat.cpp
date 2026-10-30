@@ -1,0 +1,155 @@
+// The combat wiring's adapter (1.6; docs/research/2026-10-30/combat-wiring.md): on every sheet, effect, equip or
+// burden change the player's carriers are written into their reserved actor values (core/combat computes them;
+// ARG_Perk_Carriers reads them), the vanilla weapon skills are pinned at 0, and TK Dodge's required perk is given or
+// taken by burden tier (its own perk lock: no roll when overloaded). Engine writes run on the main thread.
+#include "core.h"
+#include "argonia/core/combat.h"
+
+#include <filesystem>
+#include <format>
+#include <fstream>
+#include <sstream>
+
+namespace argonia::plugin {
+
+namespace {
+
+namespace cb = ac::combat;
+
+RE::PlayerCharacter* Player() { return RE::PlayerCharacter::GetSingleton(); }
+
+struct RollLock {
+  std::optional<cb::PerkLock> lock;
+  RE::BGSPerk* perk = nullptr;
+};
+RollLock& Roll() {
+  static RollLock r;
+  return r;
+}
+
+ac::carriers::HandContext RightHand(RE::Actor* a) {
+  ac::carriers::HandContext h;
+  auto* weap = a->GetEquippedObject(false) ? a->GetEquippedObject(false)->As<RE::TESObjectWEAP>() : nullptr;
+  if (!weap || weap->IsHandToHandMelee()) {
+    h.skill = ac::SkillId::handToHand;
+    return h;
+  }
+  h.skill = WeaponSkillOf(weap->GetFormID());  // none: not an Argonia weapon class, so the carrier stays neutral
+  h.bow = weap->IsBow() || weap->IsCrossbow();
+  return h;  // requirement_shortfall: item soft requirements are 2.7's; 0 until then
+}
+
+std::vector<cb::Piece> WornPieces(RE::Actor* a) {
+  std::vector<cb::Piece> out;
+  for (auto& [obj, data] : a->GetInventory([](RE::TESBoundObject& o) { return o.IsArmor(); })) {
+    if (!data.second || !data.second->IsWorn()) continue;
+    auto* armo = obj->As<RE::TESObjectARMO>();
+    if (!armo) continue;
+    cb::Piece p;
+    switch (armo->GetArmorType()) {
+      case RE::BGSBipedObjectForm::ArmorType::kHeavyArmor: p.skill = ac::SkillId::heavyArmor; break;
+      case RE::BGSBipedObjectForm::ArmorType::kLightArmor: p.skill = ac::SkillId::lightArmor; break;
+      default: continue;  // clothing covers no armour slot; medium armour's marker is 1.3's (none yet)
+    }
+    // The raw rating: our records carry 0 (w.armour.vanilla), so this reads 0 until the item rows hold a rating
+    // (a stated loss in docs/research/journals/combat.md); a borrowed vanilla piece reads its own.
+    p.raw_rating = armo->GetArmorRating();
+    out.push_back(p);
+  }
+  return out;
+}
+
+RE::ActorValue AvNamed(std::string_view name) {
+  return RE::ActorValueList::LookupActorValueByName(std::string(name).c_str());
+}
+
+// Equip changes the hand and the armour; a carried-item change moves the burden tier.
+class LoadoutSink final : public RE::BSTEventSink<RE::TESEquipEvent>,
+                          public RE::BSTEventSink<RE::TESContainerChangedEvent> {
+ public:
+  RE::BSEventNotifyControl ProcessEvent(const RE::TESEquipEvent* e, RE::BSTEventSource<RE::TESEquipEvent>*) override {
+    if (e && e->actor && e->actor.get() == Player()) WriteCombat("equip");
+    return RE::BSEventNotifyControl::kContinue;
+  }
+  RE::BSEventNotifyControl ProcessEvent(const RE::TESContainerChangedEvent* e,
+                                        RE::BSTEventSource<RE::TESContainerChangedEvent>*) override {
+    constexpr RE::FormID kPlayerRef = 0x14;
+    if (e && (e->newContainer == kPlayerRef || e->oldContainer == kPlayerRef)) WriteCombat("carried");
+    return RE::BSEventNotifyControl::kContinue;
+  }
+};
+
+}  // namespace
+
+void CombatDataLoaded() {
+  static LoadoutSink sink;
+  if (auto* src = RE::ScriptEventSourceHolder::GetSingleton()) {
+    src->AddEventSink<RE::TESEquipEvent>(&sink);
+    src->AddEventSink<RE::TESContainerChangedEvent>(&sink);
+  }
+  auto& r = Roll();
+  r = {};
+  const std::filesystem::path toml = "Data/SKSE/Plugins/tk-dodge.toml";
+  std::ifstream in(toml);
+  if (!in) {
+    SKSE::log::warn("combat: {} not found; the roll is not locked by burden", toml.string());
+    return;
+  }
+  std::stringstream text;
+  text << in.rdbuf();
+  r.lock = cb::tk_dodge_perk_lock(text.str());
+  if (!r.lock) {
+    SKSE::log::error("combat: tk-dodge.toml names no readable sDodgeRequiredPerkID; the roll is not locked by burden");
+    return;
+  }
+  auto* dh = RE::TESDataHandler::GetSingleton();
+  r.perk = dh ? dh->LookupForm<RE::BGSPerk>(r.lock->local, r.lock->plugin) : nullptr;
+  if (!r.perk) {
+    SKSE::log::error("combat: TK Dodge's required perk {}|{:X} is not in this load order", r.lock->plugin, r.lock->local);
+    r.lock.reset();
+    return;
+  }
+  SKSE::log::info("combat: TK Dodge perk lock {} (perk {:08X}); the roll follows the burden tier",
+                  r.lock->on ? "on" : "off (bUsePerkLock = false: every tier rolls)", r.perk->GetFormID());
+}
+
+void WriteCombat(std::string_view why) {
+  SKSE::GetTaskInterface()->AddTask([why = std::string(why)] {
+    auto* p = Player();
+    if (!p) return;
+    auto& c = Get();
+    std::lock_guard l(c.lock);
+    auto* avo = p->AsActorValueOwner();
+    cb::Loadout lo;
+    lo.right = RightHand(p);
+    lo.worn = WornPieces(p);
+    lo.carried_kg = avo->GetActorValue(RE::ActorValue::kInventoryWeight) / ac::gen::units::weight_per_kg;
+    const auto pass = cb::compute(c.state.sheet, ac::Effective::of(c.state.sheet), lo);
+    std::string line;
+    for (const auto& w : pass.writes) {
+      const auto av = AvNamed(w.actor_value);
+      if (av == RE::ActorValue::kNone) {
+        SKSE::log::error("combat: carrier actor value {} unknown to the runtime", w.actor_value);
+        continue;
+      }
+      avo->SetBaseActorValue(av, static_cast<float>(w.value));
+      line += std::format(" {}={:.3f}", w.actor_value, w.value);
+    }
+    for (auto name : cb::pinned_vanilla_skills())
+      if (const auto av = AvNamed(name); av != RE::ActorValue::kNone) avo->SetBaseActorValue(av, 0.0f);
+      else SKSE::log::error("combat: pinned skill {} unknown to the runtime", name);
+    auto& r = Roll();
+    if (const auto want = cb::roll_perk_wanted(r.lock, pass.burden); want && r.perk && *want != p->HasPerk(r.perk)) {
+      if (*want) p->AddPerk(r.perk);
+      else p->RemovePerk(r.perk);
+      SKSE::log::info("combat: roll {} (burden {})", *want ? "unlocked" : "locked", ac::gen::kBurdenTierNames[std::size_t(pass.burden)]);
+    }
+    line = std::format("burden {}, AR {:.1f};", ac::gen::kBurdenTierNames[std::size_t(pass.burden)],
+                       pass.armour_rating) + line;
+    static std::string last;  // logged when the values change, not at every pick-up
+    if (line != last) SKSE::log::info("combat: carriers ({}): {}", why, line);
+    last = std::move(line);
+  });
+}
+
+}  // namespace argonia::plugin

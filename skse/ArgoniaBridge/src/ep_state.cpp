@@ -1,6 +1,7 @@
 // The first endpoints (0.3 §a): player, console, save, load. Each refuses what it cannot do truthfully: no player
 // in a world, a line the console would not compile, a save that is not on disk, a load the game did not finish.
 #include "bridge.h"
+#include "argonia/core/life.h"
 
 namespace argonia::bridge {
 namespace {
@@ -124,10 +125,44 @@ std::string load(const Request& req) {
   return reply_ok("load", JsonObject().str("name", name).integer("ms", ms).done());
 }
 
+// core-suspend <quit|stream_drop>: ArgoniaCore's hidden suspend save (2.8 §c), the stream client's hand on a drop.
+// The call is an SKSE message to ArgoniaCore (core::life::BridgeSuspend), dispatched on the main thread; ok only
+// once Saves\ArgoniaSuspend.ess exists, newer than the call (30 s cap), as `save` does.
+std::string core_suspend(const Request& req) {
+  namespace life = argonia::core::life;
+  auto why = rest(req);
+  if (!life::suspend_why(why)) return reply_error("core-suspend", "usage: core-suspend <quit|stream_drop>");
+  auto file = save_path(std::string(life::kSuspendSave));
+  auto t0 = std::filesystem::file_time_type::clock::now();
+  auto queued = on_main_thread(req.command, [why] {
+    if (!player_in_world()) return reply_error("core-suspend", "no player in a world to save (main menu or loading)");
+    life::BridgeSuspend m{};
+    why.copy(m.why, sizeof(m.why) - 1);
+    const bool sent = SKSE::GetMessagingInterface()->Dispatch(life::kBridgeSuspendMessage, &m, sizeof(m), "ArgoniaCore");
+    if (!sent || !m.written)
+      return reply_error("core-suspend", sent ? "ArgoniaCore refused: the game cannot save now (a menu or load open, "
+                                                "or the player dying); its log says which"
+                                              : "ArgoniaCore is not loaded (the message had no receiver)");
+    return reply_ok("core-suspend", "true");
+  });
+  if (queued.find("\"ok\":true") == std::string::npos) return queued;
+  for (int i = 0; i < 300; ++i) {  // 30 s
+    std::error_code ec;
+    auto size = std::filesystem::file_size(file, ec);
+    if (!ec && size > 0 && std::filesystem::last_write_time(file, ec) >= t0 - 2s) {
+      std::this_thread::sleep_for(300ms);  // let the writer finish
+      return reply_ok("core-suspend", JsonObject().str("why", why).str("file", file.string()).done());
+    }
+    std::this_thread::sleep_for(100ms);
+  }
+  return reply_error("core-suspend", "ArgoniaCore queued the save but " + file.string() + " was not written within 30 s");
+}
+
 const Register r_player{"player", &player};
 const Register r_console{"console", &console};
 const Register r_save{"save", &save};
 const Register r_load{"load", &load};
+const Register r_core_suspend{"core-suspend", &core_suspend};
 
 }  // namespace
 }  // namespace argonia::bridge

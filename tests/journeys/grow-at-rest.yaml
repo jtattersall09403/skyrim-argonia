@@ -37,12 +37,12 @@ steps:
     still: >-
       one, of the sitting view
   - do: >-
-      ViewIntent through ArgoniaCore.SittingIntent('{"type":"sitting.buy","v":1,"body":{"attribute":"endurance"}}')
+      ArgoniaCore.ViewIntent('{"type":"sitting.buy","v":1,"body":{"attribute":"endurance"}}')
       (the view's own intent, until the PrismaUI binding sends it from a click)
     expect: >-
       the returned state's vastei = before - the endurance row's cost; Endurance +1; health.after > health.before
   - do: >-
-      SittingIntent('{"type":"sitting.done","v":1,"body":{}}')
+      ViewIntent('{"type":"sitting.done","v":1,"body":{}}')
     expect: >-
       SittingOpen() false; GetLevel() = start + 1; GetPendingLevels() 0; GetAttribute("endurance") +1;
       console `GetBaseAV Health` equals the core's derive(health) for the new sheet; SaveCount() +1 and the save

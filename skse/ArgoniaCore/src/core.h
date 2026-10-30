@@ -70,7 +70,8 @@ ac::seam::Session Session();
 // A fact changed (`why` names it for the log): step the watched quests and apply the orders; check the season.
 void FactsChanged(std::string_view why);
 void MirrorAttributes();
-void EnsurePerk();
+// The player's perks of ours: the dialogue intercept, the rest intercept and the combat carriers.
+void EnsurePerks();
 
 // --- dialogue.cpp: the router's handler, the view host, the sinks ---------------------------------------------
 bool OpenDialogue(RE::TESObjectREFR* target);
@@ -83,10 +84,20 @@ void LifeDataLoaded();
 void LifeGameReady();
 void MirrorSkills();
 void MirrorPools();
-void SuspendCheck(ac::life::SuspendWhy why);
+// True when a suspend save is due and queued.
+bool SuspendCheck(ac::life::SuspendWhy why);
 bool RestAt(RE::TESObjectREFR* spot);
 std::string SittingIntent(std::string_view json);
 std::optional<double> TakeVastei(RE::TESObjectREFR* pile);
+// The skill an equipped weapon trains, from its Argonia weapon-class keyword; none for any other weapon.
+std::optional<ac::SkillId> WeaponSkillOf(RE::FormID weapon);
+// The suspend save on a caller's reason ("quit", "stream_drop"); false when refused or not due (the log says why).
+bool SuspendSaveFor(std::string_view why);
+
+// --- combat.cpp: the carriers, the pinned weapon skills, the roll lock (1.6) -------------------------------------
+void CombatDataLoaded();
+// Recompute and write on the main thread; `why` names the change for the log.
+void WriteCombat(std::string_view why);
 
 // --- natives.cpp ------------------------------------------------------------------------------------------------
 bool RegisterNatives(RE::BSScript::IVirtualMachine* vm);

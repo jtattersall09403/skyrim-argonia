@@ -89,4 +89,19 @@ std::vector<std::string> Router::load_log() const {
   return out;
 }
 
+std::expected<std::string_view, std::string> intent_view(std::string_view json) {
+  auto in = msg::decode_intent(json);
+  if (!in) return std::unexpected(in.error());
+  return std::visit(
+      [](const auto& m) -> std::string_view {
+        using T = std::decay_t<decltype(m)>;
+        if constexpr (std::is_same_v<T, msg::ViewClose>) return msg::kViewIdNames[std::size_t(m.view)];
+        else {
+          const auto type = msg::Traits<T>::type;
+          return type.substr(0, type.find('.'));
+        }
+      },
+      *in);
+}
+
 }  // namespace argonia::core::router

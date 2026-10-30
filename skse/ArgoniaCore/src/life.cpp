@@ -110,7 +110,10 @@ void Use(const ac::progression::UseEvent& ev, std::string_view what) {
   SKSE::log::info("grow: {} {}: {:.3f} points, {:.3f} vastei (carried {:.1f}), ranks {}, levels {} (pending {})",
                   what, ac::gen::kSkillIdNames[ac::idx(g.skill)], g.points, g.vastei, c.state.prog.vastei, g.ranks,
                   g.levels, c.state.prog.pending_levels);
-  if (g.ranks > 0) MirrorSkills();
+  if (g.ranks > 0) {
+    MirrorSkills();
+    WriteCombat("skill rank");
+  }
   SuspendCheck(ac::life::SuspendWhy::interval);
 }
 
@@ -390,7 +393,7 @@ void MirrorPools() {
   avo->SetBaseActorValue(RE::ActorValue::kMagicka, static_cast<float>(d.magicka));
 }
 
-void SuspendCheck(ac::life::SuspendWhy why) {
+bool SuspendCheck(ac::life::SuspendWhy why) {
   auto& c = Get();
   bool due;
   {
@@ -400,7 +403,21 @@ void SuspendCheck(ac::life::SuspendWhy why) {
     if (due) c.last_save_s = Seconds();  // one at a time: the task sets it again when written
   }
   if (due) WriteSave(ac::life::kSuspendSave, ac::life::to_string(why));
+  return due;
 }
+
+bool SuspendSaveFor(std::string_view wire) {
+  const auto why = ac::life::suspend_why(wire);
+  if (!why) {
+    SKSE::log::warn("saves: SuspendSave(\"{}\") refused: the callers' reasons are quit and stream_drop", wire);
+    return false;
+  }
+  const bool due = SuspendCheck(*why);
+  if (!due) SKSE::log::info("saves: SuspendSave({}) not due (a menu or load is open, or the player is dying)", wire);
+  return due;
+}
+
+std::optional<ac::SkillId> WeaponSkillOf(RE::FormID weapon) { return WeaponSkill(weapon); }
 
 bool RestAt(RE::TESObjectREFR* spot) {
   auto* p = Player();
@@ -457,6 +474,7 @@ std::string SittingIntent(std::string_view json) {
     c.views.erase("sitting");
     MirrorAttributes();
     MirrorPools();
+    WriteCombat("sitting closed");
     if (r.save_now) WriteSave(ac::life::kRestSave, "rest, after the sitting");
     FactsChanged("sitting closed");
     return {};
