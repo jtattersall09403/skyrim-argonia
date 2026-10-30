@@ -34,7 +34,10 @@ case "$cmd" in
     name=$1; end=$((SECONDS + 270))
     while [ $SECONDS -lt $end ]; do
       if [ -f "$JOBS/$name.rc" ]; then rc=$(cat "$JOBS/$name.rc"); tail -5 "$JOBS/$name.log"; [ "$rc" = 0 ] && exit 0 || exit 1; fi
-      if ! kill -0 "$(cat "$JOBS/$name.pid" 2>/dev/null || echo 0)" 2>/dev/null; then echo "job $name died without a result (gpu lock busy?)"; tail -5 "$JOBS/$name.log"; exit 1; fi
+      if ! kill -0 "$(cat "$JOBS/$name.pid" 2>/dev/null || echo 0)" 2>/dev/null; then
+        # The job may have written its result and exited between the two checks: look once more before calling it dead.
+        if [ -f "$JOBS/$name.rc" ]; then continue; fi
+        echo "job $name died without a result (gpu lock busy?)"; tail -5 "$JOBS/$name.log"; exit 1; fi
       read -t 5 < /dev/zero 2>/dev/null || true
     done
     echo "job $name still running"; tail -3 "$JOBS/$name.log"; exit 3 ;;
