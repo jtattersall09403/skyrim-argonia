@@ -5,7 +5,7 @@
 # The perk ARG_Perk_DialogueIntercept (0x854) is in the plugin (8dacfe1), but no NPC_ carries the keyword yet.
 id: dialogue-intercept
 status: draft, owed L4 (blocked on 2.W5's speaker keyword)
-scene: claywater (the base save; cow ArgoniaWorld -57 11; the player holds ARG_Perk_DialogueIntercept, which
+scene: claywater (the base save; cow ARG_Province -57 11; the player holds ARG_Perk_DialogueIntercept, which
   ArgoniaCore adds on load (engine.cpp EnsurePerk), never the scene)
 steps:
   - do: read RouterLog() and ViewState("dialogue"); subscribe to MenuOpenCloseEvent through the bridge

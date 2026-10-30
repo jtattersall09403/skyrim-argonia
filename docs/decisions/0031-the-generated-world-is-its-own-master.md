@@ -12,7 +12,7 @@ As YAML that is hundreds of megabytes of numbers no reviewer reads; it would swa
 
 ## Decision
 
-1. **`ArgoniaWorld.esm`** holds the generated ground: the `ArgoniaWorld` WRLD, every exterior CELL and its LAND,
+1. **`ArgoniaWorld.esm`** holds the generated ground: the `ARG_Province` WRLD, every exterior CELL and its LAND,
    and later the other bulk outputs of the world track that are pure functions of the world database and the frozen
    arrays (water heights on cells, the region generator's placements if they prove bulky, generated navmesh). It is
    a master of `Argonia.esm`.

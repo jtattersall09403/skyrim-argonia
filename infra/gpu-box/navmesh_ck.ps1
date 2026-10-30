@@ -47,7 +47,7 @@ try {
   Click (Find $dlg 'Set as Active File')
   Click (Find $dlg 'OK')
   $main = Find $A::RootElement 'Creation Kit' 20
-  # 2. Per cell of the box: load it in the render window (Cell View: worldspace ArgoniaWorld, the cell's X, Y),
+  # 2. Per cell of the box: load it in the render window (Cell View: worldspace ARG_Province, the cell's X, Y),
   #    then Navmesh > Generate (Recast, the dialog's defaults) for the loaded cell. The CK offers no command line
   #    for this, so each step is a menu path; the whole box can instead go through "Generate for this worldspace"
   #    with a cell range when the dialog offers it (unproven).
@@ -55,7 +55,7 @@ try {
     for ($x = $x0; $x -le $x1; $x++) {
       [System.Windows.Forms.SendKeys]::SendWait('^{F7}')  # unproven: the CK's "go to cell" binding
       $go = Find $A::RootElement 'Go to Cell' 1
-      [System.Windows.Forms.SendKeys]::SendWait("ArgoniaWorld $x $y{ENTER}")
+      [System.Windows.Forms.SendKeys]::SendWait("ARG_Province $x $y{ENTER}")
       Click (Find $main 'Navmesh')
       Click (Find $main 'Generate Navmesh...')
       $gen = Find $A::RootElement 'Navmesh Generation' 1

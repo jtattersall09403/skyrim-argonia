@@ -3,7 +3,7 @@
 // overriding that CELL in Argonia.esm. An override replaces the whole CELL record, so the master's own record is
 // copied (its water, regions, lighting, flags; never its children) and only the references are ours. Persistent
 // references of an exterior cell go to the worldspace's persistent cell, as the Creation Kit files them.
-//   CELL {"override": true, "formKey": <the master's CELL>, "edid"?, "worldspace"?: <WRLD FormKey, exterior only>,
+//   CELL {"override": true, "formKey": <the master's CELL>, "edid"?, "name"?, "worldspace"?: <WRLD FormKey, exterior only>,
 //         "refs": [PlacedRefs]}
 // The master is read from $ARGONIA_WORLD_ESM for ArgoniaWorld.esm (pipeline.py sets it: out/ArgoniaWorld.esm), else
 // from the Data folder; a missing master or cell is an error.
@@ -21,7 +21,7 @@ sealed class PlaceCells : IDisposable
     const SkyrimRelease Rel = SkyrimRelease.SkyrimSE;
     readonly string data;
     readonly Dictionary<ModKey, ISkyrimModDisposableGetter> masters = new();
-    readonly List<(FormKey key, string? ws, List<JsonElement> refs, string? edid)> pending = new();
+    readonly List<(FormKey key, string? ws, List<JsonElement> refs, string? edid, string? name)> pending = new();
 
     public PlaceCells(string data) { this.data = data; }
 
@@ -31,7 +31,7 @@ sealed class PlaceCells : IDisposable
     public void Add(JsonElement r)
     {
         var refs = r.TryGetProperty("refs", out var a) ? a.EnumerateArray().ToList() : new List<JsonElement>();
-        pending.Add((FormKey.Factory(S(r, "formKey")), Os(r, "worldspace"), refs, Os(r, "edid")));
+        pending.Add((FormKey.Factory(S(r, "formKey")), Os(r, "worldspace"), refs, Os(r, "edid"), Os(r, "name")));
     }
 
     ISkyrimModDisposableGetter Master(ModKey mk)
@@ -50,26 +50,31 @@ sealed class PlaceCells : IDisposable
     static ICellGetter? FindExterior(IWorldspaceGetter ws, FormKey k) =>
         ws.SubCells.SelectMany(b => b.Items).SelectMany(sb => sb.Items).FirstOrDefault(c => c.FormKey == k);
 
-    static Cell Shell(ICellGetter src)
+    static Cell Shell(ICellGetter src, string? name)
     {
         var c = (Cell)src.DeepCopy();
+        if (name != null) c.Name = name;  // a borrowed interior's displayed name is ours
         c.Temporary.Clear();
         c.Persistent.Clear();
         c.Landscape = null;
         c.NavigationMeshes.Clear();
+        // The master's group stamps are not ours, and Spriggit does not keep them: zero, as every cell we write.
+        c.Timestamp = 0; c.UnknownGroupData = 0;
+        c.PersistentTimestamp = 0; c.PersistentUnknownGroupData = 0;
+        c.TemporaryTimestamp = 0; c.TemporaryUnknownGroupData = 0;
         return c;
     }
 
     /// After every other record: the overrides into their blocks, persistent exterior refs into the WRLD's top cell.
     public void Finish(SkyrimMod mod)
     {
-        foreach (var (key, wsKey, refs, edid) in pending)
+        foreach (var (key, wsKey, refs, edid, name) in pending)
         {
             var master = Master(key.ModKey);
             if (wsKey is null)
             {
                 var src = FindInterior(master, key) ?? throw new InvalidDataException($"cell override: no interior {key} in {key.ModKey}");
-                var c = Shell(src);
+                var c = Shell(src, name);
                 foreach (var p in refs) PlacedRefs.File(c, p);
                 int block = (int)(key.ID % 10), sub = (int)(key.ID / 10 % 10);
                 var b = mod.Cells.Records.FirstOrDefault(x => x.BlockNumber == block);
@@ -83,7 +88,7 @@ sealed class PlaceCells : IDisposable
             var mws = master.Worldspaces.FirstOrDefault(w => w.FormKey == wk) ?? throw new InvalidDataException($"cell override: no worldspace {wk} in {key.ModKey}");
             var ws = mod.Worldspaces.FirstOrDefault(w => w.FormKey == wk) ?? throw new InvalidDataException($"cell override: Argonia.esm has no WRLD override {wk}");
             var srcCell = FindExterior(mws, key) ?? throw new InvalidDataException($"cell override: no exterior cell {key} in {wk}");
-            var cell = Shell(srcCell);
+            var cell = Shell(srcCell, name);
             foreach (var p in refs)
             {
                 if (PlacedRefs.Persistent(p)) ws.TopCell!.Persistent.Add(PlacedRefs.Build(p));

@@ -7,7 +7,7 @@ each regenerated and never edited:
 - **the QUST** as an intermediate record (tools/ArgoniaGen/QuestRecords.cs writes it): stages with their log
   entries (the stage's journal text; a stage still waiting for its text gets a placeholder the records check
   flags), objectives with their text and *no target data* (no markers, old 0137), a reference alias per cast
-  member and thing (Optional, never Essential or Protected: nobody is unkillable, old 0138), and the begin
+  member and thing, forced to the reference a built place lays for it (Optional, never Essential or Protected: nobody is unkillable, old 0138), and the begin
   fragments bound to their stages. Stage 0 is the generator's own start-up stage: it hands the quest to ArgoniaCore.
 - **the begin fragments** (papyrus/generated/ARG_QF_<code>.psc, compiled on the game machine by the CK's
   compiler): only what needs the engine's own quest functions (objectives shown, all completed or failed) and one
@@ -102,7 +102,8 @@ def _alias_name(i: str) -> str:
     return "".join(x.capitalize() for x in re.split(r"[^0-9A-Za-z]+", i.rsplit(".", 1)[-1]) if x)[:60]
 
 
-def qust(alloc, p: Plan) -> dict:
+def qust(alloc, p: Plan, forced: dict[str, str] | None = None) -> dict:
+    """`forced`: cast or thing id -> the FormKey of the reference a built place lays for it (place_build.placed)."""
     q = p.q
     stages = [{"index": STARTUP, "flags": ["StartUpStage"]}]
     for st in p.stages:
@@ -117,6 +118,9 @@ def qust(alloc, p: Plan) -> dict:
                   for st in p.stages for o in st.get("objectives") or []]
     aliases = [{"id": i, "name": _alias_name(x["id"]), "flags": ["Optional", "AllowDead", "AllowDisabled"]}
                for i, x in enumerate([*(q.get("cast") or []), *(q.get("things") or [])])]
+    for a, x in zip(aliases, [*(q.get("cast") or []), *(q.get("things") or [])]):
+        if (forced or {}).get(x["id"]):
+            a["forcedRef"] = forced[x["id"]]
     if len({a["name"] for a in aliases}) != len(aliases):
         raise ValueError(f"{q['id']}: two aliases share a name {[a['name'] for a in aliases]}")
     key = alloc.form_key(edid(q), "QUST", q["id"])
@@ -132,7 +136,9 @@ def qust(alloc, p: Plan) -> dict:
 
 def layers(alloc, w: db.World):
     from tools.argonia_world.intermediate import Layer
-    return [Layer(f"quest:{qid.rsplit('.', 1)[-1]}", [qust(alloc, plan(w, qid))]) for qid in QUESTS]
+    from tools.argonia_world import place_build
+    forced = {k: place_build.ref_form_key(alloc, w.get("build_ref", v)) for k, v in place_build.placed(w).items()}
+    return [Layer(f"quest:{qid.rsplit('.', 1)[-1]}", [qust(alloc, plan(w, qid), forced)]) for qid in QUESTS]
 
 
 # --- the begin fragments (Papyrus) -----------------------------------------------------------------------------

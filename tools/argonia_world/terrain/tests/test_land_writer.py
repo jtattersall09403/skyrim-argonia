@@ -38,7 +38,7 @@ def test_four_cells_written_and_read_back(tmp_path):
     assert _write(tmp_path, "b") == blob
     recs = list(esm.records(blob))
     wrld = [r for r in recs if r.sig == "WRLD"]
-    assert len(wrld) == 1 and wrld[0].first("EDID") == b"ArgoniaWorld\0" and wrld[0].formid & 0xFFFFFF == world.WRLD_ID
+    assert len(wrld) == 1 and wrld[0].first("EDID") == b"ARG_Province\0" and wrld[0].formid & 0xFFFFFF == world.WRLD_ID
     cells = [r for r in recs if r.sig == "CELL"]
     lands = [r for r in recs if r.sig == "LAND"]
     assert len(cells) == 5 and len(lands) == 4  # the persistent top cell has no LAND

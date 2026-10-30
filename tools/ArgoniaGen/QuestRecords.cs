@@ -54,11 +54,16 @@ static class QuestRecords
             q.Objectives.Add(new QuestObjective { Index = (ushort)I(o, "index"), DisplayText = Text(S(o, "text")) });
         }
         foreach (var a in A(r, "aliases"))
-            q.Aliases.Add(new QuestAlias
+        {
+            var al = new QuestAlias
             {
                 ID = (uint)I(a, "id"), Type = QuestAlias.TypeEnum.Reference, Name = S(a, "name"),
                 Flags = Flags<QuestAlias.Flag>(a, "flags"),
-            });
+            };
+            if (a.TryGetProperty("forcedRef", out var fr))  // the reference a built place lays (place_build.placed)
+                al.ForcedReference.SetTo(FormKey.Factory(fr.GetString()!));
+            q.Aliases.Add(al);
+        }
         if (q.Aliases.Count > 0) q.NextAliasID = (uint)q.Aliases.Count;
 
         var scripts = A(r, "scripts").ToList();

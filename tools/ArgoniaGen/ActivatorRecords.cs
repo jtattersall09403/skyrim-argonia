@@ -33,9 +33,10 @@ static class ActivatorRecords
             EditorID = S(r, "edid"),
             Name = new TranslatedString(Language.English, S(r, "name")),
             Model = new Model { File = S(r, "model") },
-            ActivateTextOverride = new TranslatedString(Language.English, S(r, "activateTextOverride")),
         };
-        if (r.TryGetProperty("keywords", out var kws))
+        if (r.TryGetProperty("activateTextOverride", out var verb) && verb.ValueKind == JsonValueKind.String)
+            a.ActivateTextOverride = new TranslatedString(Language.English, verb.GetString()!);
+        if (r.TryGetProperty("keywords", out var kws) && kws.GetArrayLength() > 0)
         {
             a.Keywords = new Noggog.ExtendedList<IFormLinkGetter<IKeywordGetter>>();
             foreach (var k in kws.EnumerateArray()) a.Keywords.Add(new FormLink<IKeywordGetter>(FK(k.GetString()!)));

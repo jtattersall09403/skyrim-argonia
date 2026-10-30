@@ -161,7 +161,7 @@ def _items(ctx, world, refs) -> None:
         elif b in ACTIVATORS and b not in ctx.records:
             name, model = ACTIVATORS[b]
             ctx.records[b] = {"type": "ACTI", "edid": b, "formKey": ctx.alloc.form_key(b, "ACTI", r.thing_id), "name": name,
-                              "model": model.replace("/", "\\"), "keywords": [], "activateTextOverride": None}
+                              "model": model.replace("/", "\\")}
 
 
 def _people(ctx, world, refs) -> None:
@@ -173,14 +173,16 @@ def _people(ctx, world, refs) -> None:
         if r.socket_id:
             by_socket.setdefault(r.socket_id, []).append(r)
     for p in world.rows("build_person"):
+        actor = next((r for r in refs if r.npc_id == p.npc_id), None)
+        if actor is None:  # placed by another place
+            continue
         npc = world.get("npc", p.npc_id)
         edid = npc_edid(p.npc_id)
-        actor = next(r for r in refs if r.npc_id == p.npc_id)
         pkgs = []
         creature = npc.kind == "creature"
         blocks = world.rows("npc_day_block", npc_id=p.npc_id) if not creature else []
         for b in sorted(blocks, key=lambda x: x.ord):
-            start, end = hours(b["from"]), hours(b["to"])
+            start, end = hours(b.from_), hours(b.to)
             span = (end - start) % 24
             if b.spot == "home":
                 bed = next((r for r in by_socket.get(npc.home_home_socket_id, []) if r.owner_npc_id == p.npc_id), None)
@@ -218,18 +220,12 @@ def _people(ctx, world, refs) -> None:
 
 
 def place_records(alloc, world, resolver, ground, wrld_form_key: str, place_id: str) -> list[dict]:
-    from tools.argonia_world.terrain import build as tb
     cells = {c.id: c for c in world.rows("build_cell", place_id=place_id)}
     refs = sorted((r for r in world.rows("build_ref") if r.cell_id in cells), key=lambda r: r.id)
     by_id = {r.id: r for r in world.rows("build_ref")}
     ctx = _Ctx(alloc, world, resolver, ground)
     _items(ctx, world, refs)
-    people = {p.npc_id for p in world.rows("build_person")}
-    placed_people = {r.npc_id for r in refs if r.npc_id}
-    for p in sorted(people & placed_people):
-        pass
-    _people_rows = [r for r in refs if r.npc_id in people]
-    if _people_rows:
+    if any(r.npc_id for r in refs):
         _people(ctx, world, refs)
     out: list[dict] = []
     ext_cells: dict[tuple[int, int], list[dict]] = {}

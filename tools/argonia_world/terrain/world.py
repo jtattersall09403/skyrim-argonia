@@ -24,7 +24,7 @@ from tools.argonia_world.terrain.build import LAND_PLUGIN, form_key
 WRLD_ID = su.FORMID_FIRST  # the plugin's first id
 TOP_CELL_ID = su.FORMID_FIRST + 1  # the worldspace's persistent cell
 CELLS_FIRST = su.FORMID_FIRST + 0x10  # build.Builder's default base: CELL, LAND pairs by grid position
-EDID = "ArgoniaWorld"
+EDID = "ARG_Province"
 NAME = "Black Marsh"  # the worldspace's name the map shows (immersion inventory: our word)
 DEFAULT_LAND_UNITS = -2048.0  # a cell with no LAND (open sea beyond the apron) lies 29 m under the sea
 DEFAULT_WATER_UNITS = 0.0  # the sea at 0 (brief §a)

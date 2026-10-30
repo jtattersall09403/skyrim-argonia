@@ -3,7 +3,7 @@
  "status": "draft (2.W1): owed L4; no scene runner exists yet, so the fields are the check's needs, not a format",
  "checks": "2.W1 §a: ground heights within 0.5 m of the heightfield at 1,000 random points",
  "base": "the base save, ArgoniaWorld.esm and Argonia.esm loaded",
- "step0": ["cow ArgoniaWorld 0 0 (enter the worldspace; nothing about the ground is set)"],
+ "step0": ["cow ARG_Province 0 0 (enter the worldspace; nothing about the ground is set)"],
  "points": "out/terrain/probe-points.json (written by `python3 -m tools.argonia_world.terrain check`): pos in units, groundM, landZ, limited",
  "per_point": ["place the probe marker at pos x, y, z = landZ + 2048", "let it settle on the ground (havok drop or GetHeight read through the bridge)", "read its z: pass when |z / 70.03 - groundM| <= 0.5 m; a limited point is reported apart with its error"],
  "stills": "one still per 100 points at the probe, for the reader",

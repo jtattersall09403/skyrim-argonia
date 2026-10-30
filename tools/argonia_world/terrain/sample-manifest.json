@@ -1,5 +1,5 @@
 {
  "cells": "world.SAMPLE",
- "sha256": "04c44e0c63ba2ffd6642732e600e1748a5c23ca36f7101f44daf1ed237bd4d85",
- "measured": "2026-10-30, two builds identical; 2.W2's designed water (water-design-2: basins, step-and-pool rivers, the plane budget 128) and its regrade (bed, bank, sill and berm vertices, water_regrade.py), on 2.W3's REGN shells, XCLR and road paint"
+ "sha256": "d53e7471466f961125f51bf63f01345f8723140bda57d19c095f07300ca5b75f",
+ "measured": "2026-10-30, two builds identical; the WRLD EditorID renamed ArgoniaWorld -> ARG_Province (KotM's worldspace is also ArgoniaWorld); 2.W2's designed water and regrade, on 2.W3's REGN shells, XCLR and road paint"
 }

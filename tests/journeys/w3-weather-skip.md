@@ -3,7 +3,7 @@
 **Checks:** every region's weather cycles over a 7-day time skip, and only from its own list (the REGN weather lists in
 Argonia.esm over the shells' XCLR in ArgoniaWorld.esm).
 
-- **Scene:** the base save, with ArgoniaWorld.esm and Argonia.esm loaded. Step 0 teleports (`cow ArgoniaWorld x y`)
+- **Scene:** the base save, with ArgoniaWorld.esm and Argonia.esm loaded. Step 0 teleports (`cow ARG_Province x y`)
   to the centre cell of one region per weather group. Take the coastal, marsh, jungle, uplands and lowland regions
   with the most cells in `land_region`: five regions. Step 0 sets nothing about weather.
 - **Per region:** wait 7 game days in 6-hour steps (`set GameHour`/`wait` through SkyLink, no `fw`). At each step

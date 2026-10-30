@@ -4,7 +4,7 @@
 # quest_fail_forward and condition rows for quest.local.lf83). ARG_QF_LF83's fragments only call the natives.
 id: quest-board
 status: draft, owed L4
-scene: claywater (the base save; cow ArgoniaWorld -57 11; season dry; nothing about LF83 set)
+scene: claywater (the base save; cow ARG_Province -57 11; season dry; nothing about LF83 set)
 runs:
   main:
     steps:
