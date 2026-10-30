@@ -1,0 +1,6 @@
+; the duel ring in the proving ground: the player and one ambush deserter (fight-archetype.yaml, w.enemy.*)
+; the archetype is placed at its marker and starts idle; the check provokes it, the scene does not
+coc ARG_ProvingGround
+set gamehour to 12
+player.moveto ARG_PG_DuelPlayerMarker
+ARG_PG_DuelOpponentMarker.placeatme ARG_Npc_AmbushDeserter 1

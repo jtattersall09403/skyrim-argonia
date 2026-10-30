@@ -1,0 +1,4 @@
+; the proving ground (0.4 fixtures): flat arena, walls of each climb class, pools, ladder, doors, duel ring
+coc ARG_ProvingGround
+player.moveto ARG_PG_StartMarker
+set gamehour to 12
