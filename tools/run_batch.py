@@ -118,7 +118,7 @@ LOD_TOOLS = ("xLODGen", "xLODGenx64", "TexGen", "TexGenx64", "DynDOLOD", "DynDOL
 def lod_tools_running(b) -> list[str]:
     """The LOD tools running on the machine; a batch beside one is void (game-12: xLODGen starved the game on 4 vCPU)."""
     names = ",".join(f"'{n}'" for n in LOD_TOOLS)
-    out = b.machine.ps(f"Get-Process -Name {names} -EA SilentlyContinue | ForEach-Object {{ 'LOD ' + $_.ProcessName }}",
+    out = b.machine.ps(f"Get-Process -Name {names} -EA SilentlyContinue | ForEach-Object {{ 'LOD ' + $_.ProcessName }}; 'LOD-none'; exit 0",
                        timeout=90)
     return sorted(set(re.findall(r"LOD (\S+)", out)))
 
