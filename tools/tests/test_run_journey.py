@@ -415,3 +415,72 @@ def test_step_saves_false_saves_nothing(tmp_path):
     b = SaveFake()
     assert rj.Runner(b, tmp_path / "out", stills=False).run(j, "base")["passed"]
     assert not [l for l in b.lines if l.startswith("save ")]
+
+
+class LoadFake(Fake):
+    """menu events by call count: `menus` is the list returned from the third poll on."""
+    def __init__(self, menus):
+        super().__init__()
+        self.menus, self.polls = menus, 0
+
+    def call(self, cmd, *args):
+        if cmd == "events" and args:
+            self.polls += 1
+            return {"events": [{"seq": i, "data": d} for i, d in enumerate(self.menus if self.polls >= 3 else [])]}
+        if cmd == "events":
+            return {"last": 7}
+        return super().call(cmd, *args)
+
+
+def _clock(monkeypatch):
+    now = [0.0]
+    monkeypatch.setattr(rj.time, "monotonic", lambda: now[0])
+    monkeypatch.setattr(rj.time, "sleep", lambda s: now.__setitem__(0, now[0] + s))
+    return now
+
+
+def test_wait_load_returns_after_loading_menu_closes(monkeypatch):
+    now = _clock(monkeypatch)
+    r = rj.Runner.__new__(rj.Runner)
+    r.b = LoadFake([{"menu": "Loading Menu", "opening": True}, {"menu": "Loading Menu", "opening": False}])
+    r.wait_load(7)
+    assert r.b.polls == 3 and 1.5 <= now[0] < 2.5  # two empty polls, the close, then the 1 s fade
+
+
+def test_wait_load_gives_up_when_no_load_opens(monkeypatch):
+    now = _clock(monkeypatch)
+    r = rj.Runner.__new__(rj.Runner)
+    r.b = LoadFake([])
+    r.wait_load(7)
+    assert 3.0 <= now[0] < 3.5  # 2 s for a load to appear, then the 1 s fade
+
+
+class Machine:
+    def __init__(self):
+        self.cmds = []
+
+    def ps(self, script, timeout=120):
+        self.cmds.append(script)
+        return "line from " + ("crash" if "crash-" in script else script.split("\\")[-1].split('"')[0])
+
+
+def test_failure_logs_fetched_only_on_failure(tmp_path):
+    fake = Fake()
+    fake.machine = Machine()
+    got = rj.fetch_failure_logs(fake, tmp_path / "f")
+    assert got == ["tail-ArgoniaCore.log", "tail-ArgoniaBridge.log", "tail-Papyrus.0.log"]
+    assert all("-Tail 200" in c for c in fake.machine.cmds) and not any("crash-" in c for c in fake.machine.cmds)
+    assert (tmp_path / "f" / "tail-Papyrus.0.log").read_text().startswith("line from")
+    got = rj.fetch_failure_logs(fake, tmp_path / "c", crash=True)
+    assert got[-1] == "tail-crash.log" and (tmp_path / "c" / "tail-crash.log").read_text() == "line from crash"
+
+
+def test_run_report_lists_log_tails_on_failure_only(tmp_path):
+    fake = Fake()
+    fake.machine = Machine()
+    bad = {"name": "bad", "expect": [{"moved": {"gt": 100}}]}
+    rep = rj.Runner(fake, tmp_path / "bad").run(journey(tmp_path, [bad]), "base")
+    assert not rep["passed"] and "tail-ArgoniaCore.log" in rep["logs"] and (tmp_path / "bad" / "tail-ArgoniaBridge.log").exists()
+    fake.machine.cmds.clear()
+    rep = rj.Runner(fake, tmp_path / "good").run(journey(tmp_path, [WALK]), "base")
+    assert rep["passed"] and "logs" not in rep and not fake.machine.cmds

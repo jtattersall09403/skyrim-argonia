@@ -193,10 +193,8 @@ void HideVanillaHud() {
       seen = std::string(clip) + "{" + seen + "}";
     }
     for (auto m : ac::router::kHudModes) members.emplace_back(m);  // deleted by name too: a visit may skip them
-    bool cleared = false;
     for (const auto& m : members)
-      if (ac::router::is_hud_mode(m) && v.HasMember(m.c_str())) cleared |= v.DeleteMember(m.c_str());
-    modes += cleared;
+      if (ac::router::is_hud_mode(m) && v.HasMember(m.c_str())) v.DeleteMember(m.c_str());
     v.SetMember("argoniaHidden", RE::GFxValue(true));
     found.push_back(v);
     ++hidden;
@@ -213,13 +211,29 @@ void HideVanillaHud() {
       entries[i].marked = el.GetMember("argoniaHidden", &mark) && mark.IsBool() && mark.GetBool();
       if (el.GetMember("_name", &name) && name.IsString()) entries[i].name = name.GetString();
     }
-    for (auto i : ac::router::hud_list_removals(entries, clips)) listed += list.RemoveElement(i);
+    for (auto i : ac::router::hud_list_removals(entries, clips)) list.RemoveElement(i);
+    // the end state, not this call's delta (later calls find nothing left to remove): hidden clips no longer listed
+    size = list.GetArraySize();
+    for (auto f : found) {
+      bool in = false;
+      for (std::uint32_t i = 0; i < size && !in; ++i) {
+        RE::GFxValue el;
+        in = list.GetElement(i, &el) && el == f;
+      }
+      listed += !in;
+    }
+  }
+  // likewise modes: clips with no mode member left (the first call deleted them, later calls find none)
+  for (auto f : found) {
+    bool any = false;
+    for (auto m : ac::router::kHudModes) any |= f.HasMember(std::string(m).c_str());
+    modes += !any;
   }
   g_vanilla_hud = "vanilla-hud hidden " + std::to_string(hidden) + "/" + std::to_string(clips.size()) +
                   (list_name.empty() ? ", no HudElements list"
                                      : ", " + std::to_string(listed) + " out of " + list_name + " (" +
                                            std::to_string(size) + " listed)") +
-                  ", modes cleared " + std::to_string(modes) + ", alpha 0 " + std::to_string(faded) + (missing.empty() ? "" : ", missing:" + missing) + (seen.empty() ? "" : ", members " + seen);
+                  ", modes absent " + std::to_string(modes) + ", alpha 0 " + std::to_string(faded) + (missing.empty() ? "" : ", missing:" + missing) + (seen.empty() ? "" : ", members " + seen);
   SKSE::log::info("views: {}", g_vanilla_hud);
 }
 

@@ -207,10 +207,24 @@ class Runner:
             if self.sent.get(scene) != text:
                 subprocess.run([self.run_sh, "put", str(sent), f"{GAME_ROOT}/{scene}.txt"], check=True, capture_output=True)
                 self.sent[scene] = text
+            since = self.b.call("events")["last"]
             out = self.b.call("console", f"bat {scene}")["output"]
-            time.sleep(2)  # a coc in the scene loads a cell
+            self.wait_load(since)  # a coc/moveto in the scene loads a cell; input before it ends is lost
             return out
         return ""
+
+    def wait_load(self, since: int, appear: float = 2.0, cap: float = 30.0):
+        """Wait on the bridge's menu events: until a Loading Menu close (opening:false) has arrived since `since`, or
+        no Loading Menu opened within `appear` s (the scene loaded nothing); then 1 s for the fade-in. Capped at `cap`."""
+        t0 = time.monotonic()
+        while True:
+            evs = [e["data"] for e in self.b.call("events", since, "menu")["events"]
+                   if e["data"].get("menu") == "Loading Menu"]
+            waited = time.monotonic() - t0
+            if any(not d.get("opening") for d in evs) or waited >= cap or (not evs and waited >= appear):
+                break
+            time.sleep(0.25)
+        time.sleep(1)  # the fade-in
 
     # -- actions -------------------------------------------------------------------------------------------
     def act(self, action: dict):
@@ -425,6 +439,8 @@ class Runner:
         except (BridgeError, StepFailed) as e:
             rep["failed_at"] = rep.get("failed_at") or "scene"
             rep["error"] = str(e)
+        if not rep["passed"]:
+            rep["logs"] = fetch_failure_logs(self.b, self.out, crash=bool(rep.get("crash")))
         rep["seconds"] = round(time.monotonic() - t0, 1)
         rep["calls"] = self.calls
         (self.out / "report.json").write_text(json.dumps(rep, indent=1))
@@ -477,6 +493,32 @@ def skse_log(b, name: str) -> list[str]:
         raise StepFailed(f"log {name!r}: a plugin's name")
     out = b.machine.ps(f"Get-Content \"{SKSE_LOGS}\\{name}.log\" -EA SilentlyContinue", timeout=60)
     return out.splitlines()
+
+
+GAME_DOCS = "$env:USERPROFILE\\Documents\\My Games\\Skyrim Special Edition"
+FAIL_LOG_LINES = 200
+
+
+def fetch_failure_logs(b, out: pathlib.Path, crash: bool = False) -> list[str]:
+    """On a failed run only: the last 200 lines of ArgoniaCore.log, ArgoniaBridge.log and Papyrus.0.log (and, on a
+    crash, the newest crash-*.log) from the machine into the item's folder. Never raises: a fetch that fails is noted."""
+    srcs = {"ArgoniaCore.log": f"{SKSE_LOGS}\\ArgoniaCore.log", "ArgoniaBridge.log": f"{SKSE_LOGS}\\ArgoniaBridge.log",
+            "Papyrus.0.log": f"{GAME_DOCS}\\Logs\\Script\\Papyrus.0.log"}
+    if crash:
+        srcs["crash.log"] = None
+    got = []
+    out.mkdir(parents=True, exist_ok=True)
+    for name, path in srcs.items():
+        cmd = (f"Get-ChildItem \"{SKSE_LOGS}\\crash-*.log\" -EA SilentlyContinue | Sort-Object LastWriteTime | Select-Object -Last 1 | "
+               f"Get-Content -Tail {FAIL_LOG_LINES}" if path is None else
+               f"Get-Content \"{path}\" -Tail {FAIL_LOG_LINES} -EA SilentlyContinue")
+        try:
+            text = b.machine.ps(cmd, timeout=60)
+        except Exception as e:  # a dead machine or a stalled shell must not hide the failure it reports
+            text = f"(fetch failed: {e})"
+        (out / f"tail-{name}").write_text(text)
+        got.append(f"tail-{name}")
+    return got
 
 
 # The 0.2 §d bar (60 fps median, 45 fps 1% lows) as frame times, and the soak's flatness tolerances.
