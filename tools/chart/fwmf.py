@@ -23,9 +23,9 @@ import json
 import struct
 from pathlib import Path
 
-import numpy as np
 from PIL import Image
 
+from tools.argonia_world import skyrim_units as su
 from tools.chart import render
 
 WORLDSPACE = "ARG_Province"  # terrain/world.py's EDID
@@ -35,7 +35,7 @@ TEXTURE = f"textures/terrain/{WS_DIR}/argonia-chart.dds"
 BACK = f"textures/terrain/{WS_DIR}/back.dds"
 MARKERS = "SKSE/Plugins/FlatMapMarkersSSE.json"
 MANIFEST = "argonia-map.json"
-CELL_UNITS = 4096.0  # one exterior cell, game units (the chart index's cell lattice)
+CELL_UNITS = float(su.CELL_UNITS)  # one exterior cell, game units (the chart index's cell lattice)
 
 # Measured from FWMF 1.9.990 (FWMF for Fantasy Paper Maps: its Tamriel block, plugin and markers file; 2026-10-30).
 FWMF_BLOCK = "meshes/terrain/tamriel/tamriel.32.0.0.btr"
@@ -151,7 +151,7 @@ def extent(index: dict) -> tuple[float, float, float]:
     """The chart image's centre (x, y) and half side in game units, from the chart index's cell rectangles (each
     cell's [tx, ty, x, y, w, h] in pixels; y down = south)."""
     cells = index["cells"]
-    (k0, r0), (k1, r1) = sorted(cells.items())[0], sorted(cells.items())[-1]
+    (k0, r0), (k1, _r1) = sorted(cells.items())[0], sorted(cells.items())[-1]
     cx0, cy0 = map(int, k0.split(","))
     cx1, cy1 = map(int, k1.split(","))
     px_per_cell = r0[4]
