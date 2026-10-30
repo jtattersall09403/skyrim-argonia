@@ -487,7 +487,7 @@ CREATE TABLE "npc_statblock" (
   "band" TEXT NOT NULL,
   "position" REAL NOT NULL,
   "loadout" TEXT,
-  "respawn" TEXT NOT NULL,
+  "respawn" TEXT NOT NULL REFERENCES "core_respawn_class"("id"),
   "soul_trappable" BOOLEAN NOT NULL CHECK ("soul_trappable" IN (0, 1)),
   "class_id" TEXT REFERENCES "class"("id"),
   PRIMARY KEY ("npc_id"),
@@ -1065,7 +1065,7 @@ CREATE TABLE "creature_statblock" (
   "class" TEXT NOT NULL,
   "band" TEXT NOT NULL,
   "position" REAL NOT NULL,
-  "respawn" TEXT NOT NULL,
+  "respawn" TEXT NOT NULL REFERENCES "core_respawn_class"("id"),
   "soul_trappable" BOOLEAN NOT NULL CHECK ("soul_trappable" IN (0, 1)),
   PRIMARY KEY ("creature_id"),
   FOREIGN KEY ("creature_id") REFERENCES "creature" ("id") ON DELETE CASCADE
@@ -6005,7 +6005,9 @@ CREATE TABLE "core_disposition_band" (
 );
 
 -- Home of the respawn classes (76 §126, decision 0031): whether a rest resets the actor, and whether a cleared place
--- stops it.
+-- stops it. Each actor's class is its statblock's `respawn`; `onRest` compiles to the NPC_ Respawn flag, so the
+-- engine's own cell reset brings it back. Owner 2026-10-30: an actor homed in a clearable place is `never` (the
+-- named check respawn-clearable), so `untilCleared` is unused.
 CREATE TABLE "core_respawn_class" (
   "id" TEXT NOT NULL PRIMARY KEY,
   "on_rest" BOOLEAN NOT NULL CHECK ("on_rest" IN (0, 1)),
@@ -6324,7 +6326,6 @@ CREATE TABLE "build_person" (
   "race_form_key" TEXT NOT NULL CHECK ("race_form_key" GLOB '[0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F]:*'),
   "speaker" BOOLEAN NOT NULL DEFAULT 1 CHECK ("speaker" IN (0, 1)),
   "sandbox_radius_m" REAL NOT NULL CHECK ("sandbox_radius_m" > 0),
-  "respawn" BOOLEAN NOT NULL DEFAULT 0 CHECK ("respawn" IN (0, 1)),
   "outfit_form_key" TEXT CHECK ("outfit_form_key" IS NULL OR "outfit_form_key" GLOB '[0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F]:*'),
   "outfit_stand_in" BOOLEAN NOT NULL DEFAULT 0 CHECK ("outfit_stand_in" IN (0, 1)),
   "outfit_why" TEXT,

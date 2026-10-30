@@ -298,11 +298,17 @@ def _people(ctx, world, refs, cells, crime: str | None = None) -> None:
                 rec.update(factions=[{"faction": crime, "rank": 0}], crimeFaction=crime)
             if p.outfit_form_key:
                 rec["outfit"] = p.outfit_form_key
-        if p.respawn:
+        if respawns(world, p.npc_id):
             rec["flags"].append("Respawn")
         if p.speaker:
             rec["keywords"] = [ctx.alloc.form_key(SPEAKER_EDID, "KYWD", "hook.speaker")]
         ctx.records[edid] = rec
+
+
+def respawns(world, npc_id: str) -> bool:
+    """The actor's NPC_ Respawn flag: its statblock's respawn class resets on a rest (owner 2026-10-30)."""
+    sb = world.get("npc_statblock", npc_id)
+    return bool(sb and world.get("core_respawn_class", sb.respawn).on_rest)
 
 
 def place_records(alloc, world, resolver, ground, wrld_form_key: str, place_id: str) -> list[dict]:

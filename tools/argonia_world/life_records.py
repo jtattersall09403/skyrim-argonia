@@ -9,9 +9,11 @@ only, never a file):
   - ARG_CampSpot: furniture/bedroll/bedroll01.nif, vanilla's ground bedroll (a stitched hide with a fur pillow, no
     Nordic element; a camp is a bedroll). Not bedrollground.nif: that file is only the furniture marker and an
     editor marker, with no visible geometry and no collision (quarantine verdict 00085F, core-wiring 2026-10-30).
-  - ARG_VasteiPile: clutter/soulgem/soulgempetty01.nif, the smallest, lowest solid clutter mesh that reads as a soul
-    and has collision (so it can be activated). No effect-style mesh has collision; the gold ring, halo and wisps
-    come from vanilla effect shaders ArgoniaCore applies at runtime. Swap for a plainer marker if the look wants.
+  - ARG_VasteiPile: effects/ashpileghost01.nif, the mesh of vanilla's DefaultAshPileGhost (101048:Skyrim.esm), the
+    soft pale glowing heap a slain ghost leaves and the player activates to loot: a pile you walk to and take, with no
+    Nordic ornament (owner 2026-10-30: native, nice-looking, from magic; ranking in
+    docs/research/2026-10-30/respawn-rulings.md §4). ArgoniaCore plays VASTEI_FX_ART on it, vanilla's Soul Trap
+    target art (violet soul wisps), so it reads as souls. Both are referenced by path and FormKey, never shipped.
 """
 from __future__ import annotations
 
@@ -25,7 +27,8 @@ LOC_DUNGEON = ("ARG_LocType_Dungeon", "hook.loc-dungeon")
 PERK_EDID = "ARG_Perk_RestIntercept"
 FRAGMENT_SCRIPT = "ARG_PRKF_RestIntercept"
 CAMP_MODEL = "Furniture\\Bedroll\\Bedroll01.nif"
-VASTEI_MODEL = "Clutter\\SoulGem\\SoulGemPetty01.nif"
+VASTEI_MODEL = "Effects\\AshPileGhost01.nif"
+VASTEI_FX_ART = "0506D6:Skyrim.esm"  # ARTO SoulTrapTargetEffects (magic/soultraptargeteffects.nif); 1.5 runtime
 
 
 def _cap(s: str) -> str:

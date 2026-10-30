@@ -1,6 +1,8 @@
 FormKey: 000858:Argonia.esm
 EditorID: ARG_Npc_AmbushDeserter
 Configuration:
+  Flags:
+  - Respawn
   Level:
     MutagenObjectType: NpcLevel
     Level: 10

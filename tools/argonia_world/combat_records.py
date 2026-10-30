@@ -123,6 +123,9 @@ def archetype_records(alloc: Allocator, world, npc_id: str) -> list[dict]:
            "healthOffset": c["health_offset"], "aggression": "VeryAggressive" if ffa and ffa.fight >= 100 else "Aggressive",
            "confidence": "Foolhardy" if ffa and ffa.flee == 0 else "Average",
            "height": su.NPC_DEFAULT_HEIGHT, "weight": su.NPC_DEFAULT_WEIGHT, "perks": [perk["formKey"]], "items": [{"item": i, "count": 1} for i in items]}
+    from tools.argonia_world.place_build import respawns
+    if respawns(world, npc_id):
+        rec["flags"] = ["Respawn"]
     return [perk, ecz, rec]
 
 
