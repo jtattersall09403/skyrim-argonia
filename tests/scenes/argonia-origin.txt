@@ -1,2 +1,3 @@
-cow ARG_Province 0 0
+; the travel line is last: a line after a cow ran during its load and crashed the game (game-6)
 set gamehour to 12
+cow ARG_Province 0 0

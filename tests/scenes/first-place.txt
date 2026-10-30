@@ -1,11 +1,12 @@
 ; the first place (1.7): on the Blackwood Road south-east of Claywater Station, facing in; mid-morning, clear.
 ; Stages only what is proved elsewhere: the place, the hour, the weather, a camp spot by the road (outside the
-; settlement, as a traveller would make one), a travelling dagger, and the steel sword the crocodile carries
-; (the loot under test; its own KotM loot is unknown). Nothing about LF83, the sheet, vastei or the rest is set.
+; settlement, as a traveller would make one), the traveller's steel sword (ours), and the steel shield the
+; crocodile carries (the loot under test; its own KotM loot is unknown). Nothing about LF83, the sheet, vastei
+; or the rest is set.
 player.moveto ARG_Ref_ClaywaterStationRoadIn
 set gamehour to 10
 fw 0000081A
 player.placeatme ARG_CampSpot 1
-player.additem 0001397E 1
-player.equipitem 0001397E
-ARG_Ref_ClaywaterStationCrocodile.additem ARG_Weap_SteelSword 1
+player.additem ARG_Weap_SteelSword 1
+player.equipitem ARG_Weap_SteelSword
+ARG_Ref_ClaywaterStationCrocodile.additem ARG_Armo_Steel_Shield 1

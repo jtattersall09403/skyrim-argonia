@@ -33,13 +33,15 @@ send_esms() {
     have=$("$run" ps "if (Test-Path C:\\argonia\\ours\\$f) { (Get-FileHash C:\\argonia\\ours\\$f).Hash.ToLower() }" | tr -d '\r\n')
     if [ "$want" = "$have" ]; then echo "$f unchanged"; else "$run" put "out/$f" "C:/argonia/ours/$f" >/dev/null; echo "$f sent ($want)"; fi
   done
+  local ps  # the machine-side helpers too: a --no-stage deploy left an old stack.ps1 there (no compass line, game-6)
+  for ps in stack.ps1 bridge.ps1; do "$run" put "$here/$ps" "C:/argonia/infra/$ps" >/dev/null; done
   local sc
   for sc in tests/scenes/*.txt; do
     "$run" put "$sc" "C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/$(basename "$sc")" >/dev/null
   done
   echo "$(ls tests/scenes/*.txt | wc -l) scenes sent"
 }
-step "send ESMs and scenes" send_esms
+step "send ESMs, scenes and helpers" send_esms
 step "launch" "$PY" tools/bridge.py launch --fresh
 [ $base = 1 ] && step "base save" "$PY" "$here/base_save.py"
 echo "DEPLOY OK in $(( SECONDS - t0 )) s"

@@ -4,6 +4,8 @@ id: smoke
 runner: 1
 scene: plain-armed
 steps:
+  - name: place          # the open plain inside the scene's cell (a setpos in the scene raced its cow: a crash)
+    do: [{teleport: "pos 10700 -13025 -4400"}, {wait: 3}, {console: "player.equipitem 00012EB7"}, {wait: 1}]
   - name: walk
     do: [{pad: "LY=1:1500"}]
     expect: [{moved: {gt: 100}}]

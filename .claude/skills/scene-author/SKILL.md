@@ -12,7 +12,7 @@ Decisions 0021 and 0022; chunk 0.3 §c and §d. A check in game starts from the 
 
 - One console line per line, CRLF, applied with `bat <id>` from the base save. The runner sends the file to the game's
   folder before it applies it; `make deploy` sends them all. The owner types the same `bat <id>` on the stream.
-- It **stages**: the place (`coc <cell>`, or `cow <world> <x> <y>` then `player.setpos x/y/z`), the hour
+- It **stages**: the place (`coc <cell>`, or `cow <world> <x> <y>`, `player.moveto <marker>`) as the file's **last line**: a line after it runs during the cell load, and a `setpos` or `fw` there crashed the game twice (game-6, 2026-10-30); a point inside the cell, or anything placed by the player, is the journey's first step (`teleport pos x y z`), the hour
   (`set gamehour to 12`), the weather (`fw <hex id>`), the kit (`player.additem`, `player.equipitem`), who stands
   where (`player.placeatme`), quest stages, and the sheet (`player.setav`) until 1.3's setters exist.
 - It **never sets what the check tests** (loops rule 4): a roll check never sets the player's speed, a quest check never
