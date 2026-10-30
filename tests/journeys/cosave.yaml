@@ -1,38 +1,54 @@
-# Draft (1.1 adapters): owed L4, run by 0.3's hands. In 0.3 §d's format, because tools/run_journey.py does not
-# exist yet (checked 2026-10-30). 1.1's acceptance: ArgoniaCore's co-save families survive save, quit and load.
+# 1.1 adapters (owed L4): ArgoniaCore's co-save families survive a rest save, a quit and a relaunch. The scene sets
+# nothing in the families; LF83's start (a real topic) gives JRNL, QWCH and TOPC something to carry. Rest is the only
+# save (1.5): the journey saves by resting.
 id: cosave
-status: draft, owed L4
-scene: >-
-  bat camp (the base save with an ARG_CampSpot in reach; until bat camp exists, step 0 places one with
-  `player.placeatme ARG_CampSpot`); ArgoniaCore.dll deployed, Argonia.esm loaded. Rest is the only save (1.5), so
-  the journey saves by resting, never by the console's `save` (the chargen block refuses it).
-# Step 0 gives every family something to carry, through the natives. This is allowed, because the journey tests
-# persistence, not the setting.
-step0:
-  - ArgoniaCore.SetFlag("flag.test.cosave", True)          # QSTA
-  - ArgoniaCore.GrantTopic("topic.claywater-two-charges")  # TOPC
-  - ArgoniaCore.ChangeDisposition("npc.imperial-fringe.claywater-station.well-keeper", 7)  # DISP
-  - ArgoniaCore.SetAttribute("strength", 55)               # STAT
-  - ArgoniaCore.GiveItem("item.potion-of-regeneration", 1) # ITEM
-  - setstage ARG_Q_LF83 0 (WatchQuest; QWCH), then ArgoniaCore.AddJournalEntry(ARG_Q_LF83, 10, 0)  # JRNL
+runner: 1
+scene: first-place
 steps:
-  - do: read ArgoniaCore.Families() and, for each, ArgoniaCore.FamilyDigest(fourcc); read SaveCount()
-    expect: Families() lists META STAT DISP JRNL ITEM DETH QSTA TOPC QWCH (TEST and TSTN never in a release build)
-    still: one
-  - do: activate the camp spot (SkyLink's activate on the ARG_CampSpot reference; no level is pending, so no
-      sitting opens), wait for "saves: ArgoniaRest written (rest)", then quit the game process (qqq) and wait for
-      it to exit (timeout 60 s)
-    expect: ArgoniaRest.ess has a new time; the SKSE log shows ArgoniaCore's save callback writing 9 families, with
-      no error
-  - do: relaunch through the stack, then the bridge's `load ArgoniaRest` (timeout 120 s to the loaded event)
-    expect: the SKSE log shows the load callback reading 9 families, with no 'unknown family' or version error
-    still: one
-  - do: read Families(), FamilyDigest(each), SaveCount(), GetFlag("flag.test.cosave"),
-      KnowsTopic("topic.claywater-two-charges"), GetDisposition(well-keeper), GetAttribute("strength"),
-      JournalEntries(), console `GetAV Fame`
-    expect: every digest equals its step-1 value; SaveCount is the step-1 value + 1; the flag is true and the topic
-      known; disposition is its step-1 value; strength is 55 and GetAV Fame is 55 (the mirror is re-applied on load);
-      the LF83 stage-10 entry is present once
-pass: every expectation above
-fails_if: a digest differs, a family is missing or extra, SaveCount does not move by exactly 1, a load error in the
-  SKSE log, a crash
+  - name: families-listed
+    expect:
+      - {read: [core, Families], path: "", contains: STAT}
+      - {read: [core, Families], path: "", contains: QWCH}
+      - {read: [core, Families], path: "", not_contains: TSTN}
+  - name: rest
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationRoadIn 0 -90 0"}
+      - {console: "player.setangle z 0"}
+      - {console: "player.setangle x 40"}
+      - {wait: 3}
+      - {key: "E 120"}
+      - {wait: 4}
+      - {console: "player.setangle x 0"}
+    expect:
+      - {log: {name: ArgoniaCore, contains: "saves: ArgoniaRest written (rest)"}, within: 10}
+      - {read: [core, SaveCount], path: value, keep: saves, within: 10}
+  - name: digests-before
+    expect:
+      - {read: [core, Families], path: "", keep: families}
+      - {read: [core, FamilyDigest, META], path: value, keep: d_meta}
+      - {read: [core, FamilyDigest, STAT], path: value, keep: d_stat}
+      - {read: [core, FamilyDigest, DISP], path: value, keep: d_disp}
+      - {read: [core, FamilyDigest, JRNL], path: value, keep: d_jrnl}
+      - {read: [core, FamilyDigest, ITEM], path: value, keep: d_item}
+      - {read: [core, FamilyDigest, DETH], path: value, keep: d_deth}
+      - {read: [core, FamilyDigest, QSTA], path: value, keep: d_qsta}
+      - {read: [core, FamilyDigest, TOPC], path: value, keep: d_topc}
+      - {read: [core, FamilyDigest, QWCH], path: value, keep: d_qwch}
+      - {read: [core, GetAttribute, strength], path: value, keep: str}
+  - name: quit-relaunch-load  # the game process quits and relaunches; the rest save loads
+    do: [{relaunch: ArgoniaRest}, {wait: 4}]
+    expect: [{log: {name: ArgoniaCore, contains: "co-save"}, within: 30}]
+  - name: digests-after
+    expect:
+      - {read: [core, Families], path: "", eq: {kept: families}, within: 20}
+      - {read: [core, FamilyDigest, META], path: value, eq: {kept: d_meta}}
+      - {read: [core, FamilyDigest, STAT], path: value, eq: {kept: d_stat}}
+      - {read: [core, FamilyDigest, DISP], path: value, eq: {kept: d_disp}}
+      - {read: [core, FamilyDigest, JRNL], path: value, eq: {kept: d_jrnl}}
+      - {read: [core, FamilyDigest, ITEM], path: value, eq: {kept: d_item}}
+      - {read: [core, FamilyDigest, DETH], path: value, eq: {kept: d_deth}}
+      - {read: [core, FamilyDigest, QSTA], path: value, eq: {kept: d_qsta}}
+      - {read: [core, FamilyDigest, TOPC], path: value, eq: {kept: d_topc}}
+      - {read: [core, FamilyDigest, QWCH], path: value, eq: {kept: d_qwch}}
+      - {read: [core, SaveCount], path: value, eq: {kept: saves}}
+      - {read: [av, Fame, player], path: current, eq: {kept: str}}

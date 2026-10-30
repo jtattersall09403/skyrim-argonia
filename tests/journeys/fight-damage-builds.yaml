@@ -1,25 +1,44 @@
-# Draft (1.6-wiring): owed L4. 1.6 acceptance (the sheet -> damage and stamina join) and native-map S14a/S11b.
-# Wiring rows: w.damage.*, w.stamina.max, w.stamina.power, w.armour.*; docs/research/2026-10-30/combat-wiring.md.
+# 1.6-wiring (owed L4), native map S14a/S11b: the sheet -> damage and stamina join. Wiring rows w.damage.*,
+# w.stamina.*, w.armour.*; docs/research/2026-10-30/combat-wiring.md. The novice and god builds are set through
+# ArgoniaCore's setters, which the bridge refuses: those halves are owed; the base-save build is measured here.
 id: fight-damage-builds
-status: draft, owed L4
+runner: 1
 scene: duel-ring
-builds: [novice (Str 40, Long Blade 5, Agi 40), god (Str 100, Long Blade 100, Agi 100)]
-setup_step_0:
-  - set each build through ArgoniaCore (never the console's SetAV on our attribute AVs; the scene sets state only)
-  - equip ARG_Weap_SteelSword (listed 24); the target is a training dummy with ARG_Perk_Arch_* removed and 0 armour
-  - ArgoniaCore has written the carriers; the player has ARG_Perk_Carriers
 steps:
-  - read the carrier AVs (VoicePoints, VoiceRate, Energy, OneHandedSkillAdvance) and the vanilla OneHanded base AV
-  - land 5 light blows with SkyLink input; read the target's health before and after each (bridge stat read)
-  - land 2 power attacks; read the player's stamina before and after each
-  - read GetGameSetting for fDiffMultHPByPCN and fDiffMultHPToPCN, and each difficulty in turn
-pass:
-  - VoicePoints = P x S - 1 from skse/core carriers (novice -0.549, god +0.500); OneHanded, TwoHanded and
-    Marksman base AVs = 0 (pinned; L2: core.combat pinned_skills_are_never_mirrored); the SKSE log's
-    "combat: carriers (...)" line holds the values read (L2: core.combat the_spec_table)
-  - the carriers move on equip: unequip the sword and VoicePoints reads the hand-to-hand value (P of Hand-to-hand,
-    no Strength, - 1), re-equip and it reads the build's value again
-  - light blow damage = 24 x (1 + VoicePoints) within 0.5 (novice 10.8, god 36.0); ratio god/novice 3.33 +- 2 %
-  - the same ratio at every difficulty (the difficulty GMSTs held at 1)
-  - power attack stamina scales by 1 + VoiceRate against a carrier-0 control run
-fails_if: damage differs between difficulties, a carrier reads 0 after ArgoniaCore's write, a crash
+  - name: find
+    do: [{console: "player.additem ARG_Weap_SteelSword 1"}, {console: "player.equipitem ARG_Weap_SteelSword"}, {wait: 2}]
+    expect:
+      - {read: [actors, "3000"], path: listed.0.ref, keep: opp}
+      - {read: [av, VoicePoints, player], path: current, keep: vp}
+      - {log: {name: ArgoniaCore, contains: "combat: carriers"}, within: 10}
+  - name: pinned-skills       # never mirrored
+    expect:
+      - {read: [av, OneHanded, player], path: base, eq: 0}
+      - {read: [av, TwoHanded, player], path: base, eq: 0}
+      - {read: [av, Marksman, player], path: base, eq: 0}
+  - name: carriers-move-on-equip
+    do: [{console: "player.unequipitem ARG_Weap_SteelSword"}, {wait: 2}]
+    expect: [{read: [av, VoicePoints, player], path: current, ne: {kept: vp}}]
+  - name: carriers-back
+    do: [{console: "player.equipitem ARG_Weap_SteelSword"}, {wait: 2}]
+    expect: [{read: [av, VoicePoints, player], path: current, eq: {kept: vp}}]
+  - name: arm
+    do:
+      - {console: "{opp}.setav health 2000"}
+      - {console: "player.moveto {opp} 0 -110 0"}
+      - {console: "player.setangle z 0"}
+      - {pad: "RB:120 wait:1500"}
+    expect: [{read: [av, Health, "{opp}"], path: current, keep: h0}]
+  - name: light-blow          # recorded against 24 x (1 + VoicePoints) in the report
+    do: [{pad: "RB:120 wait:1200"}]
+    expect:
+      - {event: {kind: hit, match: "*"}}
+      - {read: [av, Health, "{opp}"], path: current, lt: {kept: h0}}
+      - {read: [av, Health, "{opp}"], path: current, keep: h1}
+  - name: power-attack-stamina
+    do: [{pad: "RT:150 wait:2500"}]
+    expect: [{read: [av, Stamina, player], path: current, keep: st1}]
+  - name: builds
+    owed: ArgoniaCore setters through the bridge for the novice (Str 40, LB 5, Agi 40) and god (100s) builds; then 10.8 / 36.0 within 0.5
+  - name: difficulties
+    owed: the same ratio at each difficulty (a GetGameSetting read of fDiffMultHPByPCN/ToPCN per difficulty)

@@ -1,0 +1,31 @@
+# 2.W3 §a (owed L4; docs/research/2026-10-29/interior-sun.md): sunlight through interior windows follows the sun
+# (Community Shaders' interior sun). Clear weather is forced outside before going in; the scene sets nothing about
+# light. A still per hour from a fixed camera goes to a `reader` (the lit patch moves or vanishes between hours).
+# Runtime 1.7.104 first; on a fail there, repeat on 1.6.1170 before any change to the pin (decision 0002).
+id: w3-interior-sun
+runner: 1
+scene: first-place
+steps:
+  - name: enter               # Livia's house, a room with windows
+    do: [{console: "fw ARG_Weather_tannin_haze"}, {console: "coc LilmothApothecaryHouse"}, {wait: 8}]
+    expect: [{read: [weather], path: interior, eq: true, within: 15}]
+  - name: hour-06
+    do: [{console: "set gamehour to 6"}, {console: "player.setangle z 0"}, {console: "player.setangle x 0"}, {wait: 3}]
+    reader: [a lit patch from a window on the floor or wall, or none at dawn; no black or white room]
+  - name: hour-12
+    do: [{console: "set gamehour to 12"}, {wait: 3}]
+    reader: [the lit patch has moved since 06, or appeared]
+  - name: hour-16
+    do: [{console: "set gamehour to 16"}, {wait: 3}]
+    reader: [the lit patch has moved since 12]
+  - name: hour-20
+    do: [{console: "set gamehour to 20"}, {wait: 3}]
+    reader: [no sun patch after sunset]
+  - name: alive               # nothing crashed while the hours turned
+    expect: [{read: [player], path: dead, eq: false}]
+  - name: second-interior
+    owed: a hall with several windows facing another way (no such interior is built yet)
+  - name: control-bit-15
+    owed: the same still with the cell's bit 15 cleared (a control build of the cell), so the check can fail
+  - name: cs-log
+    owed: Community Shaders' log name for the `log` expectation (the feature loaded)

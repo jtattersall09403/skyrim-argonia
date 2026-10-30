@@ -1,0 +1,50 @@
+# 2.W3 §a (owed L4): our 4 Black Marsh weathers and the restyled Tropical Skyrim weathers read as humid green-gold
+# marsh light, never Nordic blue-grey. The look is under test, so forcing the weather (`fw`) is the setup of each
+# still; the cycling is world-sample's stop 11. The stills go to a reader panel with the Nordic-tells checklist
+# (blue-grey fog, snow light, pale sun) and the old weather references. Marsh view: world-sample stop 6.
+id: w3-weather-stills
+runner: 1
+scene: world-sample-06-marsh
+steps:
+  - name: mist-06
+    do: [{console: "set gamehour to ARG_Weather_mist"}, {console: "fw 6"}, {wait: 8}]
+    expect: [{read: [weather], path: current, contains: 6, within: 10}]
+    reader: [humid green-gold marsh light, no blue-grey fog, no snow light or pale sun, no black or white sky, clouds present]
+  - name: mist-18
+    do: [{console: "set gamehour to ARG_Weather_mist"}, {console: "fw 18"}, {wait: 8}]
+    expect: [{read: [weather], path: current, contains: 18, within: 10}]
+    reader: [humid green-gold marsh light, no blue-grey fog, no snow light or pale sun, no black or white sky, clouds present]
+  - name: haze-12
+    do: [{console: "set gamehour to ARG_Weather_tannin_haze"}, {console: "fw 12"}, {wait: 8}]
+    expect: [{read: [weather], path: current, contains: 12, within: 10}]
+    reader: [humid green-gold marsh light, no blue-grey fog, no snow light or pale sun, no black or white sky, clouds present]
+  - name: storm-15
+    do: [{console: "set gamehour to ARG_Weather_storm"}, {console: "fw 15"}, {wait: 8}]
+    expect: [{read: [weather], path: current, contains: 15, within: 10}]
+    reader: [humid green-gold marsh light, no blue-grey fog, no snow light or pale sun, no black or white sky, clouds present]
+  - name: storm-22
+    do: [{console: "set gamehour to ARG_Weather_storm"}, {console: "fw 22"}, {wait: 8}]
+    expect: [{read: [weather], path: current, contains: 22, within: 10}]
+    reader: [humid green-gold marsh light, no blue-grey fog, no snow light or pale sun, no black or white sky, clouds present]
+  - name: squall-12
+    do: [{console: "set gamehour to ARG_Weather_squall"}, {console: "fw 12"}, {wait: 8}]
+    expect: [{read: [weather], path: current, contains: 12, within: 10}]
+    reader: [humid green-gold marsh light, no blue-grey fog, no snow light or pale sun, no black or white sky, clouds present]
+  - name: clear-12
+    do: [{console: "set gamehour to SkyrimClear"}, {console: "fw 12"}, {wait: 8}]
+    expect: [{read: [weather], path: current, contains: 12, within: 10}]
+    reader: [humid green-gold marsh light, no blue-grey fog, no snow light or pale sun, no black or white sky, clouds present]
+  - name: cloudy-12
+    do: [{console: "set gamehour to SkyrimCloudy"}, {console: "fw 12"}, {wait: 8}]
+    expect: [{read: [weather], path: current, contains: 12, within: 10}]
+    reader: [humid green-gold marsh light, no blue-grey fog, no snow light or pale sun, no black or white sky, clouds present]
+  - name: rain-12
+    do: [{console: "set gamehour to SkyrimOvercastRainTU"}, {console: "fw 12"}, {wait: 8}]
+    expect: [{read: [weather], path: current, contains: 12, within: 10}]
+    reader: [humid green-gold marsh light, no blue-grey fog, no snow light or pale sun, no black or white sky, clouds present]
+  - name: fog-12
+    do: [{console: "set gamehour to SkyrimFog"}, {console: "fw 12"}, {wait: 8}]
+    expect: [{read: [weather], path: current, contains: 12, within: 10}]
+    reader: [humid green-gold marsh light, no blue-grey fog, no snow light or pale sun, no black or white sky, clouds present]
+  - name: jungle-view
+    owed: a jungle view stop (world_sample.py has none); the Tropical Skyrim four again there make 12

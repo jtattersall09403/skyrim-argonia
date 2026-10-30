@@ -1,54 +1,55 @@
-# Draft (1.5 build): owed L4, native map S16a, S16b, S16c. In 0.3 §d's format (tools/run_journey.py does not exist
-# yet). 1.5's acceptance: scripted skill uses -> pending level -> rest -> the sitting opens -> spend -> values change.
+# 1.5 (owed L4), native map S16a-c: skill use earns vastei and never vanilla XP; the level waits for rest. The duel
+# ring's deserter is the target (its health raised as setup so the blows land without a kill); a camp spot is placed
+# at the player's marker at step 0. Reaching a pending level needs a measured blow count or a bridge setter: owed.
 id: grow-at-rest
-status: draft, owed L4
-scene: >-
-  bat duel-ring (a hostile training opponent of the archetype in reach), then bat camp; Argonia.esm and
-  ArgoniaCore.dll deployed. Until bat camp exists, step 0 places the camp spot with `player.placeatme ARG_CampSpot`.
-step0:
-  - equip the steel sword (item.steel-sword, keyword ARG_WeapClass_LongBlade); read ArgoniaCore.GetSkill("longBlade") -> L0
-  - read console `GetAV OneHanded`, `GetPCMiscStat` is not used; read the vanilla XP through the bridge's
-    PlayerSkills read (S16a) -> X0
-  - the archetype's health set high (console `setav health 2000` on it) so the blows land without a kill
+runner: 1
+scene: duel-ring
 steps:
-  - do: >-
-      ten connecting blows, each at least 15% of the target's health (SkyLink attack inputs, not a console hit)
-    expect: >-
-      the SKSE log has ten "grow: hit longBlade" lines; GetVastei() equals the sum of their vastei; vanilla
-      One-handed XP equals X0 (P4); `GetAV OneHanded` unchanged
-    still: >-
-      one, with the HUD's vastei plaque
-  - do: >-
-      one block (raise the shield as the opponent swings), take one hit, cast one Destruction spell, pick one lock
-    expect: >-
-      one "grow:" line each (struck heavyArmor or lightArmor, block, cast destruction, unlock security); vanilla
-      XP unchanged after each
-  - do: >-
-      keep the blows going until GetPendingLevels() reads 1 (log the count and the game minutes)
-    expect: >-
-      GetLevel() is still the start level; the LevelUp Menu never reports open (RouterLog has no levelUpMenu
-      sighting, the SKSE log has no "LevelUp Menu opened" error); no "rest and meditate" notice in the still
-    still: >-
-      one
-  - do: >-
-      teleport to the camp spot; activate it (SkyLink activate)
-    expect: >-
-      SittingOpen() is true; ViewState("sitting") is a sitting.state with level = start + 1 and seven rows
-    still: >-
-      one, of the sitting view
-  - do: >-
-      ArgoniaCore.ViewIntent('{"type":"sitting.buy","v":1,"body":{"attribute":"endurance"}}')
-      (the view's own intent, until the PrismaUI binding sends it from a click)
-    expect: >-
-      the returned state's vastei = before - the endurance row's cost; Endurance +1; health.after > health.before
-  - do: >-
-      ViewIntent('{"type":"sitting.done","v":1,"body":{}}')
-    expect: >-
-      SittingOpen() false; GetLevel() = start + 1; GetPendingLevels() 0; GetAttribute("endurance") +1;
-      console `GetBaseAV Health` equals the core's derive(health) for the new sheet; SaveCount() +1 and the save
-      folder has ArgoniaRest.ess with a new time
-pass: >-
-  every expectation above
-fails_if: >-
-  any vanilla skill XP moves; the LevelUp Menu opens; the sitting does not open or applies a price other than
-  the row's; no rest save; a crash
+  - name: setup
+    do:
+      - {console: "ARG_PG_DuelPlayerMarker.placeatme ARG_CampSpot 1"}
+      - {console: "player.additem ARG_Weap_SteelSword 1"}
+      - {console: "player.equipitem ARG_Weap_SteelSword"}
+      - {wait: 2}
+    expect:
+      - {read: [actors, "3000"], path: listed.0.ref, keep: opp}
+      - {read: [core, GetVastei], path: value, keep: v0}
+      - {read: [core, GetLevel], path: value, keep: lvl0}
+      - {read: [core, GetSkill, longBlade], path: value, keep: lb0}
+      - {read: [av, OneHanded, player], path: base, keep: oh0}
+  - name: arm
+    do:
+      - {console: "{opp}.setav health 2000"}
+      - {console: "player.moveto {opp} 0 -110 0"}
+      - {console: "player.setangle z 0"}
+      - {pad: "RB:120 wait:1500"}
+    expect: [{console: player.IsWeaponOut, not_contains: ">> 0"}]
+  - name: ten-blows           # the player's attacks, not a console hit
+    do:
+      - {pad: "RB:120 wait:550 RB:120 wait:550 RB:120 wait:550 RB:120 wait:550"}
+      - {pad: "RB:120 wait:550 RB:120 wait:550 RB:120 wait:550 RB:120 wait:550"}
+      - {pad: "RB:120 wait:550 RB:120 wait:550"}
+      - {wait: 1}
+    expect:
+      - {event: {kind: hit, match: "*"}}
+      - {log: {name: ArgoniaCore, contains: "grow: hit longBlade"}}
+      - {read: [core, GetVastei], path: value, gt: {kept: v0}}
+      - {read: [av, OneHanded, player], path: base, eq: {kept: oh0}}   # P4: vanilla XP never moves
+      - {read: [core, GetLevel], path: value, eq: {kept: lvl0}}          # the level waits for rest
+      - {event: {kind: menu, match: LevelUp Menu, absent: true}}
+  - name: pending-level
+    owed: a measured blow count to GetPendingLevels 1 (or a dev setter); then the sitting at the camp, sitting.buy endurance, sitting.done
+  - name: rest-no-pending     # with no level pending the rest saves and no sitting opens
+    do:
+      - {console: "{opp}.stopcombat"}
+      - {console: "player.moveto ARG_PG_DuelPlayerMarker 0 -90 0"}
+      - {console: "player.setangle z 0"}
+      - {console: "player.setangle x 40"}
+      - {wait: 3}
+      - {key: "E 120"}
+      - {wait: 4}
+      - {console: "player.setangle x 0"}
+    expect:
+      - {log: {name: ArgoniaCore, contains: "saves: ArgoniaRest written (rest)"}, within: 10}
+      - {read: [core, SittingOpen], path: value, eq: false}
+      - {read: [core, GetLevel], path: value, eq: {kept: lvl0}}

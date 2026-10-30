@@ -1,17 +1,30 @@
-# Draft (2.W2): owed L4. 2.W2 §a acceptance: a journey swims the length of three sample rivers (one per class)
-# without falling out of water.
+# 2.W2 §a (owed L4): a swim down a sample river without falling out of the water. The stepped reach is world-sample's
+# stop 4 (reach.949-1591; its two ends' teleports and z bounds are copied from world-sample.yaml, the generator's
+# output); this journey swims between them on the pad. Rapids and falls reaches are owed to the generator.
 id: water-swim
-status: draft, owed L4
-scene: water-reaches
-reaches: [river (stepped, the stepped-river proof), rapids, falls]
-per_reach:
-  - teleport to the reach's start at the surface, facing downstream
-  - swim downstream with SkyLink forward input in 5 s legs; between legs teleport no further than the next step
-    (short steps, 0021 §3)
-  - read each second: position, IsSwimming, the water height under the player (GetWaterLevel / the bridge's read),
-    breath
-  - at each step piece: a still at the play camera
-  - at the falls: teleport across the lip to the plunge pool's surface and swim out of it
-pass: IsSwimming true at every read inside the reach's corridor, the water height under the player equal to the plan's
-  step level (within 1 unit), no fall damage, no drowning on the surface
-fails_if: IsSwimming false inside the corridor (fell out of water), a fall through a plane, a crash
+runner: 1
+scene: world-sample-04-rapids
+steps:
+  - name: top
+    do: [{teleport: "pos -131328.0 58240.0 1343.52"}, {wait: 4}, {console: "player.setangle z 105"}]
+    expect: [{read: [player], path: in_air, eq: false, within: 3}]
+  - name: swim-1              # downstream (east-north-east), the stick held
+    do: [{pad: "+LY=1:2900 -:100"}]
+    expect:
+      - {moved: {gt: 200}}
+      - {read: [player], path: in_air, eq: false}
+      - {read: [player], path: pos.z, ge: 780.99}
+  - name: swim-2
+    do: [{pad: "+LY=1:2900 -:100"}]
+    expect:
+      - {moved: {gt: 200}}
+      - {read: [player], path: in_air, eq: false}
+      - {read: [player], path: pos.z, ge: 780.99}
+  - name: swim-3
+    do: [{pad: "+LY=1:2900 -:100"}]
+    expect:
+      - {moved: {gt: 200}}
+      - {read: [player], path: in_air, eq: false}
+      - {read: [player], path: pos.z, le: 1278.54}
+  - name: rapids-and-falls
+    owed: rapids and falls reaches' ends from tools/world_sample.py (stop 5 has the falls' foot only)

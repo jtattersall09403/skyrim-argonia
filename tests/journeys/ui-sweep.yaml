@@ -1,35 +1,80 @@
-# Draft (1.2 §a, lane 1.2-theme): owed L4, run by a game lane with 0.3's hands (SkyLink and the console).
-# In 0.3 §d's format, as the other drafts here, because tools/run_journey.py does not exist yet.
-# Acceptance (1.2 §a): every menu the player can open from the first place shows Pelagiad, the theme in our palette
-# and the Argonia title; no compass, no quest marker. The reader judges the stills (palette, no Nordic tell).
+# 1.2 §a (owed L4): every vanilla and SkyUI menu reachable from the first place shows Pelagiad, our palette, the
+# Argonia title, and no compass or quest marker. Each menu opens by its key (judged by its menu event), a still per
+# step; the stills go to a `reader` with each step's `reader:` list (palette, Pelagiad, no Nordic tell, no Futura).
+# The menus that need a prop the first place does not stage (container, barter, book, lockpick, training, crafting)
+# are owed to a scene with those props. Ends at the main menu: a save-changing item, last in its batch.
 id: ui-sweep
-status: draft, owed L4
-scene: the base save at the first place; the profile with argonia-theme laid above dear-diary, wood-and-paper and
-  oblivion-loading-menu (installer/steps/ui-theme.md run on the game machine)
-setup_checks:
-  - read: Data/interface/fontconfig.txt through the VFS (MO2 winner)
-    expect: the argonia-theme copy (first line names tools/ui_theme/fontlib.py); fonts_pelagiad.swf present
-  - read: Skyrim.ini / SkyrimPrefs.ini [Interface] bShowCompass and bShowQuestMarkers
-    expect: both 0 (owed by the game lane: stack.py does not set them yet, see the lane report)
+runner: 1
+scene: first-place
 steps:
-  - do: quit to the main menu (console `qqq` is not allowed; use the pause menu's Quit to main menu)
-    expect: the Argonia title on our dark paper; no Skyrim map, no "Skyrim" wordmark; menu words in Pelagiad
-    still: main-menu
-  - do: main menu > Load
-    expect: the save list sheet in our paper, moss frame, Pelagiad
-    still: main-menu-load
-  - do: load the base save; open each menu by its key or by the console where no key exists, one still each, closing
-      it before the next - Tween (Tab), Inventory (I), Magic (P), Map (M), Journal (J, our view or Dear Diary's per
-      the router), Favorites (Q), Sleep/Wait (T), a container (the scene's chest), barter (the scene's merchant),
-      a book (the scene's book), a message box (console `ShowMessage` none: use the wait menu's confirm),
-      lockpicking (the scene's locked chest), training (the scene's trainer), crafting (the scene's alchemy table),
-      the MCM config panel (System > Mod Configuration), the loading screen (coc to the next place)
-    expect: each: the sheet in our palette (warm paper, moss or near-black frame, red-clay accents), all text in
-      Pelagiad, no Nordic ornament (no horned helmet on the map's side panel, no barbed sigil on enchanting)
-    still: one per menu, named by the menu
-  - do: close every menu and stand in the open at the first place for 5 s; turn the camera 360 degrees
-    expect: no compass and no quest marker in the HUD; read the HUD movie's compass element visibility = false
-    still: hud-open
-pass: every expectation, and the reader passes every still for palette and Nordic tells
-fails_if: a vanilla font (Futura) anywhere, a menu in Dear Diary's original grey and red-brown, the Skyrim map or
-  wordmark, a compass or marker, a missing glyph box, a crash
+  - name: hud-open            # no compass, no marker: the vanilla HUD elements are hidden; turn the camera round
+    do: [{wait: 2}, {pad: "+RX=1:2500 -:100"}]
+    expect: [{read: [core, Views], path: value, contains: "vanilla-hud hidden 4/4"}]
+    reader: [no compass and no quest marker anywhere in the HUD, our HUD bars in our palette]
+  - name: tween
+    do: [{key: "TAB 120"}, {wait: 2}]
+    expect: [{event: {kind: menu, match: TweenMenu}}]
+    reader: [the sheet in our palette (warm paper, moss or near-black frame, red-clay accents), every word in Pelagiad, no Nordic ornament, the Argonia title where a title shows]
+  - name: tween-closed
+    do: [{key: "TAB 120"}, {wait: 1.5}]
+  - name: inventory
+    do: [{key: "I 120"}, {wait: 2}]
+    expect: [{event: {kind: menu, match: InventoryMenu}}]
+    reader: [the sheet in our palette (warm paper, moss or near-black frame, red-clay accents), every word in Pelagiad, no Nordic ornament, the Argonia title where a title shows]
+  - name: inventory-closed
+    do: [{key: "I 120"}, {wait: 1.5}]
+  - name: magic
+    do: [{key: "P 120"}, {wait: 2}]
+    expect: [{event: {kind: menu, match: MagicMenu}}]
+    reader: [the sheet in our palette (warm paper, moss or near-black frame, red-clay accents), every word in Pelagiad, no Nordic ornament, the Argonia title where a title shows]
+  - name: magic-closed
+    do: [{key: "P 120"}, {wait: 1.5}]
+  - name: map
+    do: [{key: "M 120"}, {wait: 2}]
+    expect: [{event: {kind: menu, match: MapMenu}}]
+    reader: [the sheet in our palette (warm paper, moss or near-black frame, red-clay accents), every word in Pelagiad, no Nordic ornament, the Argonia title where a title shows]
+  - name: map-closed
+    do: [{key: "M 120"}, {wait: 1.5}]
+  - name: favorites
+    do: [{key: "Q 120"}, {wait: 2}]
+    expect: [{event: {kind: menu, match: FavoritesMenu}}]
+    reader: [the sheet in our palette (warm paper, moss or near-black frame, red-clay accents), every word in Pelagiad, no Nordic ornament, the Argonia title where a title shows]
+  - name: favorites-closed
+    do: [{key: "Q 120"}, {wait: 1.5}]
+  - name: sleep-wait
+    do: [{key: "T 120"}, {wait: 2}]
+    expect: [{event: {kind: menu, match: SleepWaitMenu}}]
+    reader: [the sheet in our palette (warm paper, moss or near-black frame, red-clay accents), every word in Pelagiad, no Nordic ornament, the Argonia title where a title shows]
+  - name: sleep-wait-closed
+    do: [{key: "T 120"}, {wait: 1.5}]
+  - name: journal             # our journal view (or Dear Diary's, per the router)
+    do: [{key: "J 120"}, {wait: 2}]
+    expect: [{read: [core, Views], path: value, contains: "journal ready open"}]
+    reader: [the sheet in our palette (warm paper, moss or near-black frame, red-clay accents), every word in Pelagiad, no Nordic ornament, the Argonia title where a title shows]
+  - name: journal-closed
+    do: [{key: "ESC 80"}, {wait: 1.5}]
+  - name: system-tab          # Escape in play: the vanilla Journal Menu's System tab (the MCM lives under it)
+    do: [{key: "ESC 80"}, {wait: 2}]
+    expect: [{event: {kind: menu, match: Journal Menu}}]
+    reader: [the sheet in our palette (warm paper, moss or near-black frame, red-clay accents), every word in Pelagiad, no Nordic ornament, the Argonia title where a title shows]
+  - name: system-closed
+    do: [{key: "ESC 80"}, {wait: 1.5}]
+  - name: mcm
+    owed: the pad path into System > Mod Configuration (its list position under the SkyUI tab)
+  - name: prop-menus
+    owed: a scene staging a chest, a merchant, a book, a locked chest, a trainer and an alchemy table at the first place
+  - name: loading-screen      # coc to Claywater's interior and back: the loading menu
+    do: [{console: "player.moveto ARG_Ref_ClaywaterStationLivia"}, {wait: 1}, {console: "coc LilmothApothecaryHouse"}, {wait: 1}]
+    expect: [{event: {kind: menu, match: Loading Menu}, within: 10}]
+    reader: [the sheet in our palette (warm paper, moss or near-black frame, red-clay accents), every word in Pelagiad, no Nordic ornament, the Argonia title where a title shows]
+  - name: interface-ini
+    owed: a bridge read of the INI's [Interface] bShowCompass and bShowQuestMarkers (0 and 0)
+  - name: main-menu           # the player's own Quit (the pad, as menus-quit), to the main menu
+    do:
+      - {key: "ESC 80"}
+      - {wait: 2}
+      - {pad: "DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120"}
+      - {pad: "A:120 wait:1500 A:120"}
+      - {wait: 8}
+    expect: [{event: {kind: menu, match: MainMenu}, within: 30}]
+    reader: [the Argonia title on our dark paper, no Skyrim map or wordmark, menu words in Pelagiad]

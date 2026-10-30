@@ -296,6 +296,24 @@ def test_relaunch_to_a_named_save_after_a_hung_quit(tmp_path, monkeypatch):
     assert rep["calls"][-1]["result"]["quit_clean"] is False
 
 
+def test_relaunch_without_the_scene_resumes_where_the_save_left(tmp_path):
+    j = journey(tmp_path, [{"name": "relaunch", "do": [{"relaunch": {"save": "ArgoniaSuspend", "scene": False}}]}])
+    j["scene"] = "plain-armed"
+
+    class BatFake(RelaunchFake):
+        def call(self, cmd, *args, **kw):
+            if cmd == "console" and str(args[0]).startswith("bat "):
+                self.log.append(("bat",))
+            return super().call(cmd, *args, **kw)
+
+    b = BatFake()
+    b.resolve_refs = lambda text: text
+    rep = rj.Runner(b, tmp_path / "out", stills=False, run_sh="true").run(j, "argoniabase")
+    assert rep["passed"], rep
+    assert b.log.count(("bat",)) == 1  # the journey's start only
+    assert b.log[-2:] == [("launch",), ("load", "ArgoniaSuspend")]  # no bat after the relaunch's load
+
+
 def test_the_ui_probe_validates_with_its_relaunch():
     here = pathlib.Path(rj.__file__).resolve().parents[1] / "tests" / "journeys"
     j = rj.load_journey(here / "ui-probe.yaml")
@@ -328,3 +346,11 @@ def test_event_absent_and_log_since_the_step(tmp_path):
     rep = rj.Runner(LogFake(), tmp_path / "out", stills=False).run(j, "base")
     assert [s["passed"] for s in rep["steps"]] == [True, True, False]  # an old line is not new; the run stops there
     assert "no line with" in rep["steps"][2]["reason"]
+
+
+def test_a_kept_value_plus_a_number_bounds_a_change(tmp_path):
+    r = rj.Runner(None, tmp_path / "out", stills=False)
+    r.kept["hp"] = 100.0
+    r.b = type("B", (), {"call": lambda self, *a, **k: {"current": 68.5}})()
+    assert r.check({"read": ["av", "Health", "player"], "path": "current", "le": {"kept": "hp", "plus": -31}}, {}) is None
+    assert r.check({"read": ["av", "Health", "player"], "path": "current", "ge": {"kept": "hp", "plus": -31}}, {}) is not None

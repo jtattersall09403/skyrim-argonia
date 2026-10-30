@@ -1,6 +1,6 @@
 # Draft (2.W4-navmesh, 0.4 §d navmesh (b)): owed L4, run by 0.3's hands.
 id: nav-npc-walk
-status: draft, owed L4
+status: draft, owed L4 (not runnable: see docs/research/2026-10-30/lane-journeys-ready.md)
 scene: nav-claywater
 steps:
   - do: spawn one Argonian NPC (Argonia.esm's test actor) on the road at the block's west edge (cell -60,11, the

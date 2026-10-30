@@ -22,7 +22,8 @@ wait <seconds, at most 10>; game_hours <n> (time passes at a raised timescale, t
 timescale is put back); call [<command>, args...] (any bridge read, kept in the report); relaunch <save | true>
 (the game quit cleanly by the console's qqq, launched again through the bridge's `launch` to the main menu with the
 bridge answering, then the save loaded, the journey's own with `true`, and the journey's scene applied again: a
-step after it sees a restarted game, e.g. what a view remembers between sessions).
+step after it sees a restarted game, e.g. what a view remembers between sessions; `{save: <name>, scene: false}`
+loads the save without the scene, so the player resumes where the save left them).
 Expectations: read [<command>, args...] with path a.b.c and one of eq ne gt ge lt le contains not_contains;
 console <line> with contains / not_contains; event {kind, match} since the step began; moved {gt|lt: units} on the
 ground since the step began; quests_running {allowed: <json>} (the bridge's running quests against the file's
@@ -34,7 +35,8 @@ Owed (game-8): a step with `owed: <what it waits on>` is not run; the report lis
 journey goes on past it (a step whose game side cannot exist yet, e.g. a Papyrus fragment before the compiler).
 
 Kept values (1.7): an expectation with `keep: <name>` stores what it read (a read with only `keep` always holds);
-a later comparison value `{kept: <name>}` compares against it, and `{name}` or `{name.2}` in an action's text is
+a later comparison value `{kept: <name>}` compares against it (`{kept: <name>, plus: -32}` against it plus a number,
+for a measured change within a tolerance), and `{name}` or `{name.2}` in an action's text is
 replaced by it (a kept string is split on spaces for the index), so a step can go back to where a pile fell.
 
 A soak (1.7) has `soak: {journey: <id>, minutes: 60, frames: 600, bars: {...}}` instead of steps: the journey is
@@ -241,7 +243,12 @@ class Runner:
         return {"from": before["days_passed"], "to": self.b.call("time")["days_passed"]}
 
     def _relaunch(self, save):
-        """Quit cleanly, relaunch, load `save` (true: the journey's own) and apply the journey's scene again."""
+        """Quit cleanly, relaunch, load `save` (true: the journey's own) and apply the journey's scene again; with
+        `{save: <name>, scene: false}` the save is loaded and no scene is applied (the player resumes where it left)."""
+        scene = self.scene
+        if isinstance(save, dict):
+            scene = self.scene if save.get("scene", True) else None
+            save = save.get("save", True)
         save = self.save if save is True else str(save)
         try:
             self.b.call("console", "qqq", timeout=10)  # the reply may not come: the game is going down
@@ -254,7 +261,7 @@ class Runner:
                 break
             time.sleep(1)
         launched = self.b.launch()  # kills what is left (a quit that hung), lays the DLL, waits for the ping
-        self.apply_scene(self.scene, save)
+        self.apply_scene(scene, save)
         r = {"quit_clean": clean, "save": save, "ping": launched.get("ping")}
         self.calls.append({"call": ["relaunch", save], "result": r})
         return r
@@ -270,7 +277,7 @@ class Runner:
         op = next((k for k in OPS if k in exp), None)
         want = exp.get(op)
         if isinstance(want, dict) and "kept" in want:
-            want = self.kept[want["kept"]]
+            want = self.kept[want["kept"]] + want["plus"] if "plus" in want else self.kept[want["kept"]]
         if "read" in exp or "console" in exp:
             if "read" in exp:
                 got = dig(self.b.call(*self.fill(exp["read"])), exp.get("path", ""))

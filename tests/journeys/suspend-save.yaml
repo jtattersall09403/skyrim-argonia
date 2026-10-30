@@ -1,33 +1,48 @@
-# Draft (1.5 build): owed L4, the hidden suspend save (2.8 §c): a quit or a stream drop writes ArgoniaSuspend, and the
-# interval writes it while the game runs, never in combat and never with a menu open; opening a menu never does.
+# 1.5 / 2.8 §c (owed L4): the hidden suspend save. Opening a menu writes nothing (menus-quit holds the open-menu half);
+# the stream client's drop writes it, in combat too; Continue after a quit loads it, and the wake point stays the camp.
+# Ends by a relaunch on the suspend save (no scene: the player resumes where it quit): a save-changing item, last in its batch.
 id: suspend-save
-status: draft, owed L4
-scene: >-
-  bat camp
-step0:
-  - rest at the camp (ArgoniaRest written); note ArgoniaSuspend.ess's time if present
+runner: 1
+scene: first-place
 steps:
-  - do: >-
-      open the pause hub (Tab: the TweenMenu), then the Journal (J), each for 5 s
-    expect: >-
-      no ArgoniaSuspend.ess is written and the log has no "saves: ArgoniaSuspend written"; each menu stays open
-      until closed (game-8's lag: the save's spinner closed the Journal)
-  - do: >-
-      the bridge's `core-suspend stream_drop` (Bridge.suspend_save(), the stream client's hand on a drop; an SKSE
-      message to ArgoniaCore, which runs SuspendSave("stream_drop"))
-    expect: >-
-      ok with the file; ArgoniaSuspend.ess has a new time; `core-suspend pause_hub` is refused (fails on purpose)
-  - do: >-
-      start a fight (the archetype); while in combat, call SuspendSave("stream_drop") and wait 300 s
-    expect: >-
-      the stream-drop save is written even in combat; no interval save is written in combat
-  - do: >-
-      walk 50 m from the camp, quit from the Journal's System tab (Quit, confirm Yes), relaunch, choose Continue
-    expect: >-
-      the log has "saves: ArgoniaSuspend written (quit)" as the confirmation closes; the game loads ArgoniaSuspend (the newest), the player stands 50 m from the camp, and WakePoint() is
-      still the camp; dying now wakes at the camp, not at the suspend point
-pass: >-
-  every expectation above
-fails_if: >-
-  the suspend save is offered as a player save; it is written in combat on the interval; Continue loads an
-  older save; a crash
+  - name: rest
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationRoadIn 0 -90 0"}
+      - {console: "player.setangle z 0"}
+      - {console: "player.setangle x 40"}
+      - {wait: 3}
+      - {key: "E 120"}
+      - {wait: 4}
+      - {console: "player.setangle x 0"}
+    expect: [{read: [core, WakePoint], path: value, ne: "", keep: wake, within: 10}]
+  - name: menus-write-nothing # Tab and J, 5 s each
+    do: [{key: "TAB 120"}, {wait: 5}, {key: "TAB 120"}, {wait: 1.5}, {key: "J 120"}, {wait: 5}, {key: "ESC 80"}, {wait: 1.5}]
+    expect: [{event: {kind: menu, match: '"opening": false', absent: true}}]
+  - name: stream-drop
+    do: [{call: [core-suspend, stream_drop]}]
+    expect: [{log: {name: ArgoniaCore, contains: "saves: ArgoniaSuspend written (stream_drop)"}, within: 10}]
+  - name: in-combat-drop      # the crocodile's attack; the drop save is written in combat
+    do:
+      - {console: "tgm"}
+      - {console: "ARG_Ref_ClaywaterStationCrocodile.moveto player 0 200 0"}
+      - {console: "ARG_Ref_ClaywaterStationCrocodile.startcombat player"}
+      - {wait: 3}
+      - {call: [core-suspend, stream_drop]}
+    expect:
+      - {console: "player.IsInCombat", contains: ">> 1"}
+      - {log: {name: ArgoniaCore, contains: "saves: ArgoniaSuspend written (stream_drop)"}, within: 10}
+  - name: interval-not-in-combat
+    owed: a 300 s in-combat hold (30 waits) measured once on the game slot before it joins a batch
+  - name: walk-away           # 50 m from the camp, out of combat
+    do:
+      - {console: "ARG_Ref_ClaywaterStationCrocodile.stopcombat"}
+      - {console: "tgm"}
+      - {console: "player.moveto ARG_Ref_ClaywaterStationRoadIn 0 -3500 0"}
+      - {wait: 3}
+      - {call: [core-suspend, quit]}
+    expect: [{read: [player], path: pos, keep: away}]
+  - name: continue            # the game quits and relaunches on the suspend save
+    do: [{relaunch: {save: ArgoniaSuspend, scene: false}}, {wait: 4}]
+    expect:
+      - {read: [core, WakePoint], path: value, eq: {kept: wake}, within: 30}
+      - {moved: {lt: 300}}

@@ -1,6 +1,6 @@
 # Draft (2.W2): owed L4. 2.W2 join: water <-> NPC swim paths (L4 nav).
 id: water-npc-swim
-status: draft, owed L4
+status: draft, owed L4 (not runnable: see docs/research/2026-10-30/lane-journeys-ready.md)
 scene: water-reaches
 reaches: [river (stepped, the stepped-river proof), river (flat backwater)]
 per_reach:

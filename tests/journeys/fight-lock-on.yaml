@@ -1,12 +1,20 @@
-# Draft (1.6-wiring): owed L4. 1.6 deliverable "the pad and lock-on"; wiring row w.lockon.distance.
+# 1.6-wiring (owed L4): the pad's lock-on; wiring row w.lockon.distance (fTargetLockDistance 2000 u, the GUESS
+# until DSR's LockCamParam is measured). Three hostiles placed at step 0; the lock target is TDM's graph and
+# TrueHUD's reticle, which no bridge read exposes yet: those expectations are owed, the stills are kept.
 id: fight-lock-on
-status: draft, owed L4
+runner: 1
 scene: duel-ring
-setup_step_0: [the archetype placed hostile at 10 m, a second hostile at 25 m and one at 35 m]
 steps:
-  - press the right stick (TDM uTargetLockKey 273) with SkyLink; read TDM's lock target (TrueHUD reticle actor, bridge)
-  - flick the right stick toward the 25 m hostile; read the target
-  - teleport the player to 30 m from every hostile and press again
-pass: lock acquires the nearest hostile in view; the flick switches; nothing locks beyond fTargetLockDistance
-  (2000 u = 28.6 m, the GUESS until DSR's LockCamParam is measured); a still per step at the play camera
-fails_if: no lock inside range, a lock beyond it, a crash
+  - name: place
+    do:
+      - {console: "player.placeatme ARG_Npc_AmbushDeserter 1"}
+      - {console: "player.placeatme ARG_Npc_AmbushDeserter 1"}
+      - {wait: 2}
+    expect: [{read: [actors, "4000"], path: listed.2.ref, keep: far}]
+  - name: lock-near           # R3 (TDM uTargetLockKey 273)
+    do: [{pad: "RS:120 wait:800"}]
+    expect: [{read: [graph, player, bTDM_TargetLock], path: values, keep: lock_state}]
+  - name: lock-target-read
+    owed: a bridge read of TDM's current lock target (the actor), to assert nearest, flick-switch and none beyond 2000 u
+  - name: beyond-range        # 30 m from every hostile: R3 locks nothing
+    do: [{pad: "RS:120 wait:500"}, {console: "player.moveto {far} 0 -2900 0"}, {wait: 2}, {pad: "RS:120 wait:800"}]

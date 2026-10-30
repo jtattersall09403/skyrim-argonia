@@ -1,26 +1,34 @@
-# Draft (1.1 adapters): owed L4, run by 0.3's hands. In 0.3 §d's format, because tools/run_journey.py does not
-# exist yet (checked 2026-10-30). 1.1's acceptance: talking to an Argonia speaker opens our dialogue view, never
-# the vanilla Dialogue Menu.
-# BLOCKED until 2.W5: the journey needs Livia Varinius's NPC_ record to carry the keyword ARG_Speaker (KYWD 0x853).
-# The perk ARG_Perk_DialogueIntercept (0x854) is in the plugin (8dacfe1), but no NPC_ carries the keyword yet.
+# 1.1 adapters (owed L4): talking to an Argonia speaker opens our dialogue view, never the vanilla Dialogue Menu.
+# The 2.W5 block is gone: ARG_Speaker (KYWD 0x853) is on Livia's NPC_ (plugin/Argonia/Npcs/ARG_Npc_WellKeeper), N1,
+# N13 and the landing's poler. The perk is added by ArgoniaCore on load (engine.cpp EnsurePerk), never the scene.
 id: dialogue-intercept
-status: draft, owed L4 (blocked on 2.W5's speaker keyword)
-scene: claywater (the base save; cow ARG_Province -57 11; the player holds ARG_Perk_DialogueIntercept, which
-  ArgoniaCore adds on load (engine.cpp EnsurePerk), never the scene)
+runner: 1
+scene: first-place
 steps:
-  - do: read RouterLog() and ViewState("dialogue"); subscribe to MenuOpenCloseEvent through the bridge
-    expect: ViewState("dialogue") == ""
-  - do: face Livia Varinius (npc.imperial-fringe.claywater-station.well-keeper) at 150 units and activate
-    expect: within 2 s, RouterLog() gains an OpenDialogue entry for her; ViewState("dialogue") is non-empty and
-      names her; no MenuOpenCloseEvent with "Dialogue Menu" opening (the whole journey)
-    still: one (our window at the play camera)
-  - do: ViewIntent a topic choice from the state's topic list
-    expect: the next state shows that topic's answer; RouterLog() records the choice
-  - do: ViewIntent goodbye
-    expect: ViewIntent returns ""; ViewState("dialogue") == ""; the player can move (controls back)
-  - do: activate a vanilla actor without ARG_Speaker (the control)
-    expect: the vanilla path is untouched (the perk's HasKeyword condition fails); this one is allowed to open the
-      Dialogue Menu, which shows the condition can fail
-pass: every expectation; Dialogue Menu never opens for Livia
-fails_if: the Dialogue Menu opens for an ARG_Speaker, the view does not open within 2 s, controls are not returned
-  on close, a crash
+  - name: closed
+    expect:
+      - {read: [core, ViewState, dialogue], path: value, eq: ""}
+      - {read: [events], path: last, keep: ev0}
+  - name: speak-livia         # E at her, face to face: our window, within 2 s
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationLivia 0 -120 0"}
+      - {console: "player.setangle z 0"}
+      - {console: "ARG_Ref_ClaywaterStationLivia.moveto player 0 110 0"}
+      - {wait: 3}
+      - {key: "E 120"}
+    expect:
+      - {read: [core, ViewState, dialogue], path: value.body.speaker.id, eq: npc.imperial-fringe.claywater-station.well-keeper, within: 2}
+      - {read: [core, RouterLog], path: value, contains: OpenDialogue}
+      - {event: {kind: menu, match: Dialogue Menu, absent: true}}
+  - name: topic               # a topic choice from the state's list, as a click sends it
+    do: [{call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.claywater-two-charges"}}']}]
+    expect:
+      - {read: [core, ViewState, dialogue], path: value.body.speaker.id, eq: npc.imperial-fringe.claywater-station.well-keeper}
+      - {event: {kind: menu, match: Dialogue Menu, absent: true}}
+  - name: goodbye             # closed, the controls back: a step forward moves the player
+    do: [{call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}, {wait: 1}, {pad: "+LY=1:800 -:100"}]
+    expect:
+      - {read: [core, ViewState, dialogue], path: value, eq: ""}
+      - {moved: {gt: 50}}
+  - name: control-non-speaker
+    owed: a friendly non-speaker NPC form placeable at the first place (the vanilla path, allowed to open the Dialogue Menu)

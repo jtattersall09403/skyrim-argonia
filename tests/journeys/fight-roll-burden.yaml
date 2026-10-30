@@ -1,24 +1,40 @@
-# Draft (1.6-wiring): owed L4. 1.6 deliverable "rolls at the three burden tiers" and 1.7's duel at light, medium and
-# heavy load. Wiring rows: w.roll.tier, w.roll.distance, w.iframes.*, w.stamina.roll, w.stamina.regen*.
+# 1.6-wiring (owed L4): rolls at the burden tiers; wiring rows w.roll.tier, w.roll.distance, w.iframes.*,
+# w.stamina.roll. The load is the steel set and ingots added as setup (r = kg / (30 + 3 x Str)); the roll is the
+# pad's (sprint tap, stick held). Per-frame i-frame tracing (PresentMon) is owed to a frame-trace read.
 id: fight-roll-burden
-status: draft, owed L4
+runner: 1
 scene: duel-ring
-loads: [fast (r 0.10), mid (r 0.25), fat (r 0.60), overloaded (r 1.10)]   # r = carried kg / (30 + 3 x Str)
-setup_step_0:
-  - Strength 50 (capacity 180 kg) set through ArgoniaCore; carried weight set by adding the steel set and ingots
-  - the archetype's swing is replaced by a scripted dummy swing at a fixed interval (the scene sets it, never the test)
 steps:
-  - read ArgoniaCore's burden tier for the load (bridge) and the TK Dodge graph variable TKDR_IframeDuration
-  - roll forward through the dummy's swing with SkyLink (sprint tap, stick held); log position, IsGhost/i-frame graph
-    state and health every frame (60 fps, PresentMon timestamps), and a still at the roll's mid-point
-  - read stamina before and after the roll; then wait and read stamina each 0.1 s until it regenerates
-pass:
-  - fast, mid, fat: a roll plays; the swing does no damage inside the i-frame window; i-frame window = fIFrameDuration
-    (0.3 s) x the tier's iframe_scale once w.iframes.tier is built (until then: equal across tiers, the recorded loss)
-  - overloaded: no roll. w.roll.tier is built (core-wiring): tk-dodge.toml has bUsePerkLock = true (staged from
-    combat_mod_setting), and ArgoniaCore takes TK Dodge's required perk (TKDodgeAddon.esp|0x809) at the
-    overloaded tier and gives it back below (L2: core.combat roll_lock). Read: the SKSE log's "combat: roll locked
-    (burden overloaded)" and "roll unlocked", and console `player.hasperk <xx000809>` 0 when overloaded, 1 after
-    dropping the ingots
-  - roll stamina cost = fDodgeCost (15); regen starts fDamagedStaminaRegenDelay (1.05 s) after the roll
-fails_if: a roll at overloaded, damage taken inside the measured window, a stuck ghost state, a crash
+  - name: fast
+    do: [{console: "player.unequipall"}, {console: "player.moveto ARG_PG_DuelPlayerMarker"}, {wait: 2}]
+    expect:
+      - {read: [av, Stamina, player], path: current, keep: st}
+      - {console: "player.hasperk TKDodgeAddon.esp|0x809", not_contains: ">> 0"}
+  - name: roll-fast
+    do: [{pad: "+LX=0,LY=1:500 B:100 wait:600 -:1200"}]
+    expect:
+      - {event: {kind: anim, match: TKDR_DodgeStart}}
+      - {moved: {gt: 300}}
+      - {read: [av, Stamina, player], path: current, le: {kept: st, plus: -14}}
+  - name: load-fat            # steel set and ingots (setup): the fat tier
+    do:
+      - {console: "player.additem ARG_Armo_Steel_Cuirass 1"}
+      - {console: "player.additem ARG_Armo_Steel_Greaves 1"}
+      - {console: "player.additem 0005ACE4 20"}
+      - {wait: 3}
+    expect: [{read: [av, InventoryWeight, player], path: current, keep: carried}]
+  - name: roll-fat
+    do: [{pad: "+LX=0,LY=1:500 B:100 wait:600 -:1200"}]
+    expect: [{event: {kind: anim, match: TKDR_DodgeStart}}]
+  - name: overloaded          # far over capacity: TK Dodge's perk taken, no roll
+    do: [{console: "player.additem 0005ACE4 300"}, {wait: 3}]
+    expect:
+      - {log: {name: ArgoniaCore, contains: "combat: roll locked (burden overloaded)"}, within: 10}
+  - name: no-roll
+    do: [{pad: "+LX=0,LY=1:500 B:100 wait:600 -:1200"}]
+    expect: [{event: {kind: anim, match: TKDR_DodgeStart, absent: true}}]
+  - name: unlocked            # the ingots dropped: the perk given back
+    do: [{console: "player.removeitem 0005ACE4 320"}, {wait: 3}]
+    expect: [{log: {name: ArgoniaCore, contains: "roll unlocked"}, within: 10}]
+  - name: iframes-per-frame
+    owed: a frame-trace read (position, ghost state and health per frame through a swing) for the i-frame window per tier

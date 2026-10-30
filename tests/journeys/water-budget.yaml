@@ -1,7 +1,7 @@
 # Draft (2.W2): owed L4, run by 0.3's hands. The planner's ruling of 2026-10-29: the plane budget (budget.BUDGET,
 # default 32) is final only after this measurement. Both scenes come from one build at --budget 64.
 id: water-budget
-status: draft, owed L4
+status: draft, owed L4 (not runnable: see docs/research/2026-10-30/lane-journeys-ready.md)
 scenes: [water-budget-32, water-budget-64]
 steps:
   - scene: water-budget-32

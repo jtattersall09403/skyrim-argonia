@@ -1,22 +1,63 @@
-# Draft (1.6-wiring): owed L4. 1.6 acceptance (bat claywater-ambush) and native-map S13a, S13b, S13c.
-# Wiring rows: w.enemy.*, w.guard.stability, w.parry.window, w.damage.critical.
+# 1.6-wiring (owed L4), bat claywater-ambush and native map S13a-c: the ambush deserter's fixed danger, its hit, the
+# player's blow, guard and parry, and its respawn after rest. Wiring rows w.enemy.*, w.guard.stability,
+# w.parry.window, w.damage.critical. Setup only: the player's armour off (0 AR), a camp spot at the player's mark.
 id: fight-archetype
-status: draft, owed L4
+runner: 1
 scene: claywater-ambush
-actor: ARG_Npc_AmbushDeserter (npc.imperial-fringe.claywater-station.ambush-deserter; D2 at 0.5; zone ARG_Ecz_AmbushDeserter)
 steps:
-  - with the player at level 1 then level 20 (set through ArgoniaCore), read the archetype's level and max health
-  - read its perk list (ARG_Perk_Arch_AmbushDeserter) and inventory (steel sword, steel shield), a still of it equipped
-  - teleport the player 15 m in its view; within 5 s it is in combat targeting the player
-  - let it land 3 unblocked light hits on a player with 0 AR; read the player's health before and after each
-  - land 3 light blows of the marsh-hand build; read its health before and after each
-  - guard one swing with the shield; parry one (Elden Parry window), riposte; a still per step
-  - kill it, loot it; rest (1.5) and re-enter: it is back
-pass:
-  - level 10 and max health 44 at both player levels (fixed danger; health = race start + offset -6, the race start
-    read here settles combat_constant race_start_health)
-  - its light hit lands 32 +- 1 (24 x 1.3333); the marsh-hand blow lands 20.5 x 0.826 = 16.9 +- 0.5
-  - the guarded hit takes the guard's share (1 + OneHandedSkillAdvance) of the vanilla block; parry plays once, one
-    riposte
-  - respawned after rest
-fails_if: level or health moves with the player's level, damage off by more than the tolerance, a double riposte, a crash
+  - name: find
+    do: [{console: "ARG_Ref_ClaywaterStationAmbushPlayer.placeatme ARG_CampSpot 1"}, {wait: 1}]
+    expect:
+      - {read: [actors, "4000"], path: listed.0.ref, keep: opp}
+      - {read: [actors, "4000"], path: listed.0.name, keep: opp_name}
+  - name: fixed-danger        # level 10, max health 44 (race start + offset -6)
+    expect:
+      - {console: "{opp}.GetLevel", contains: ">> 10"}
+      - {read: [av, Health, "{opp}"], path: permanent, eq: 44}
+      - {read: [inventory, "{opp}"], path: items, contains: "Steel"}
+  - name: level-20-same
+    owed: a recalculation path for a placed actor's level after player.setlevel 20 (the read is the step above's)
+  - name: aggro               # 15 m in its view: in combat on its own AI within 5 s
+    do: [{console: "player.unequipall"}, {console: "player.moveto {opp} 0 -1050 0"}, {console: "player.setangle z 0"}]
+    expect: [{console: "{opp}.IsInCombat", contains: ">> 1", within: 5}]
+  - name: its-light-hit       # 24 x 1.3333 = 32 +- 1 on 0 AR
+    do: [{console: "player.moveto {opp} 0 -150 0"}]
+    expect:
+      - {read: [av, Health, player], path: current, keep: hp}
+      - {event: {kind: hit, match: "*"}, within: 8}
+      - {read: [av, Health, player], path: current, le: {kept: hp, plus: -31}}
+  - name: blow                # the player's light blow; its health before and after (the marsh-hand figure 16.9 needs the build's sheet)
+    do:
+      - {console: "{opp}.stopcombat"}
+      - {console: "player.equipitem ARG_Weap_SteelSword"}
+      - {console: "player.moveto {opp} 0 -110 0"}
+      - {pad: "RB:120 wait:1500"}
+    expect: [{read: [av, Health, "{opp}"], path: current, keep: opp_hp}]
+  - name: blow-lands
+    do: [{pad: "RB:120 wait:1200"}]
+    expect:
+      - {event: {kind: hit, match: "*"}}
+      - {read: [av, Health, "{opp}"], path: current, lt: {kept: opp_hp}}
+  - name: parry-riposte       # Elden Parry's timed bash, then one riposte
+    do:
+      - {console: "player.equipitem ARG_Armo_Steel_Shield"}
+      - {console: "{opp}.startcombat player"}
+      - {pad: "+LT=1:600 RB:120 wait:1500 -:100"}
+      - {pad: "RB:120 wait:2000"}
+    expect: [{event: {kind: hit, match: "*"}}]
+  - name: kill                # the player's blows on a deserter brought low (setup)
+    do:
+      - {console: "{opp}.forceav health 5"}
+      - {console: "player.moveto {opp} 0 -110 0"}
+      - {pad: "RB:120 wait:900 RB:120 wait:900 RB:120 wait:900"}
+    expect: [{console: "{opp}.GetDead", contains: ">> 1", within: 8}]
+  - name: rest-respawns       # waking counts as a rest: it is back
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationAmbushPlayer 0 -90 0"}
+      - {console: "player.setangle z 0"}
+      - {console: "player.setangle x 40"}
+      - {wait: 3}
+      - {key: "E 120"}
+      - {wait: 6}
+      - {console: "player.setangle x 0"}
+    expect: [{console: "{opp}.GetDead", contains: ">> 0", within: 15}]

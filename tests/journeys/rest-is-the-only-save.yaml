@@ -1,36 +1,59 @@
-# Draft (1.5 build): owed L4, native map S17a's saving half. 1.5's acceptance: manual saves, quicksave and autosaves
-# are hidden; rest writes the save.
+# 1.5 (owed L4), native map S17a's saving half: quicksave, the wait and travel autosaves write nothing; the rest at
+# the camp writes the one save; a rest inside a settlement is refused. SaveCount (META) counts every co-save write,
+# so a save the game made would move it. A second camp spot is placed at Claywater's well junction (a settlement).
 id: rest-is-the-only-save
-status: draft, owed L4
-scene: >-
-  bat camp
-step0:
-  - the SKSE log has "perks: hook.rest-intercept ... added to the player" (or the player already has it: console
-    `player.hasperk <xx000861>` = 1); without it the camp spot's Rest verb is the vanilla activation
-  - count the files in the save folder (the bridge's file list) -> N0; note ArgoniaRest.ess's time if present
+runner: 1
+scene: first-place
 steps:
-  - do: >-
-      press the quicksave key (F5 through SkyLink); open the Journal Menu's System tab and choose Save if reachable
-    expect: >-
-      the save-folder count is still N0; no new quicksave file; the SKSE log has no "co-save: ... written"
-  - do: >-
-      travel through a load door, wait one hour (the T key; wait is allowed everywhere), open the character menu
-    expect: >-
-      still N0 (bSaveOnTravel, bSaveOnWait and bSaveOnCharacterMenu off; no autosave file is written)
-  - do: >-
-      activate the camp spot (no level pending)
-    expect: >-
-      exactly one save written: ArgoniaRest.ess has a new time; SaveCount() +1; the SKSE log has
-      "saves: ArgoniaRest written (rest)"
-  - do: >-
-      activate a camp spot placed inside the settlement bounds (a location with ARG_LocType_Settlement)
-    expect: >-
-      refused with the wait-only line as a notification; no save written; WakePoint() unchanged
-  - do: >-
-      load ArgoniaRest from the main menu
-    expect: >-
-      every family's digest equals its value before the load (FamilyDigest) and the player stands at the camp
-pass: >-
-  every expectation above
-fails_if: >-
-  any save other than the rest save is written; a refused rest moves the wake point; the load differs
+  - name: before
+    expect:
+      - {read: [core, SaveCount], path: value, keep: n0}
+      - {read: [core, WakePoint], path: value, keep: wake0}
+  - name: quicksave           # F5: nothing written
+    do: [{key: "F5 120"}, {wait: 4}]
+    expect: [{read: [core, SaveCount], path: value, eq: {kept: n0}}]
+  - name: wait-an-hour        # the wait autosave is off
+    do: [{game_hours: 1}, {wait: 3}]
+    expect: [{read: [core, SaveCount], path: value, eq: {kept: n0}}]
+  - name: travel-autosave
+    owed: a load door reachable from the first place, named by its ref (the travel autosave through a real door)
+  - name: rest                # the one save
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationRoadIn 0 -90 0"}
+      - {console: "player.setangle z 0"}
+      - {console: "player.setangle x 40"}
+      - {wait: 3}
+      - {key: "E 120"}
+      - {wait: 4}
+      - {console: "player.setangle x 0"}
+    expect:
+      - {log: {name: ArgoniaCore, contains: "saves: ArgoniaRest written (rest)"}, within: 10}
+      - {read: [core, SaveCount], path: value, gt: {kept: n0}}
+      - {read: [core, SaveCount], path: value, keep: n1}
+      - {read: [core, WakePoint], path: value, keep: wake1}
+  - name: settlement-refused  # a camp spot inside Claywater: the wait-only line, no save, the wake point unmoved
+    do:
+      - {console: "ARG_Ref_ClaywaterStationQuestBoard.placeatme ARG_CampSpot 1"}
+      - {console: "player.moveto ARG_Ref_ClaywaterStationQuestBoard 0 -90 0"}
+      - {console: "player.setangle z 0"}
+      - {console: "player.setangle x 40"}
+      - {wait: 3}
+      - {key: "E 120"}
+      - {wait: 3}
+      - {console: "player.setangle x 0"}
+    expect:
+      - {read: [core, RestNotice], path: value, ne: ""}
+      - {read: [core, SaveCount], path: value, eq: {kept: n1}}
+      - {read: [core, WakePoint], path: value, eq: {kept: wake1}}
+  - name: digests-before
+    expect:
+      - {read: [core, FamilyDigest, STAT], path: value, keep: d_stat}
+      - {read: [core, FamilyDigest, DETH], path: value, keep: d_deth}
+      - {read: [core, FamilyDigest, META], path: value, keep: d_meta}
+  - name: load-rest
+    do: [{call: [load, ArgoniaRest]}, {wait: 4}]
+  - name: loaded-same
+    expect:
+      - {read: [core, FamilyDigest, STAT], path: value, eq: {kept: d_stat}, within: 20}
+      - {read: [core, FamilyDigest, DETH], path: value, eq: {kept: d_deth}}
+      - {read: [core, WakePoint], path: value, eq: {kept: wake1}}

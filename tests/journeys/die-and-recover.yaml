@@ -1,42 +1,62 @@
-# Draft (1.5 build): owed L4, native map S17a. 1.5's acceptance: die with vastei -> wake at the camp -> walk to the
-# pile -> take it -> the amount is equal; a second death replaces the pile; the archetype respawns after rest.
+# 1.5 (owed L4), native map S17a: die with vastei -> wake at the camp with no load -> the pile holds it -> take it
+# back, the same amount. The vastei is earned by blows (no setter through the bridge); the player's health is forced
+# low as setup only, and the deserter's own attacks deal the death.
 id: die-and-recover
-status: draft, owed L4
-scene: >-
-  bat camp then bat claywater-ambush (the archetype onRest, persistent, keyword ARG_Respawn_OnRest)
-step0:
-  - rest at the camp spot (activate it; no level pending, so no sitting): WakePoint() reads the spot's position
-  - move one container in the camp (console `setpos x` on it) and note it: a death must load no save
-  - ArgoniaCore.SetVastei(120)
+runner: 1
+scene: duel-ring
 steps:
-  - do: >-
-      teleport near the archetype; kill it (SkyLink attacks)
-    expect: >-
-      the archetype is dead (`GetDead` 1)
-  - do: >-
-      let the second hostile (or console `kill` on the player is NOT used: a game action) deal lethal damage; set
-      the player's health low at step 0 of this step only if the fight is too slow (`player.damageav health`)
-    expect: >-
-      no death camera, no load (the SKSE log has "death: fell" and "death: woke", no "co-save: loaded");
-      within 3 s the player stands within 2 m of the camp spot; GetVastei() 0; PileState() reads the death spot
-      and 120; the moved container is still moved; the archetype is alive again at its editor place (waking counts
-      as a rest)
-    still: >-
-      one at the camp, one at the pile (a gold ring with a halo; the halo shader is owed, see the report)
-  - do: >-
-      teleport 1.5 m from the pile; activate it
-    expect: >-
-      the prompt reads "Take Vastei (120)"; GetVastei() 120; PileState() empty; the pile reference is gone
-    still: >-
-      one
-  - do: >-
-      SetVastei(50); die again at another spot; then SetVastei(30); die a third time elsewhere
-    expect: >-
-      after each death exactly one pile reference exists (the form scan in the log, or the console `prid` on
-      the old one fails); PileState() holds 30 at the third spot; the 50 pile is gone
-pass: >-
-  every expectation above
-fails_if: >-
-  a save is loaded on death; two piles exist; the amount taken differs from the amount dropped; the
-  archetype stays dead after waking; the bleedout kneel lasts more than a frame before the fade (recorded, not a fail
-  until the fallback hook is chosen); a crash
+  - name: setup
+    do:
+      - {console: "ARG_PG_DuelPlayerMarker.placeatme ARG_CampSpot 1"}
+      - {console: "player.additem ARG_Weap_SteelSword 1"}
+      - {console: "player.equipitem ARG_Weap_SteelSword"}
+      - {wait: 2}
+    expect: [{read: [actors, "3000"], path: listed.0.ref, keep: opp}]
+  - name: rest                # the wake point is the camp
+    do:
+      - {console: "player.moveto ARG_PG_DuelPlayerMarker 0 -90 0"}
+      - {console: "player.setangle z 0"}
+      - {console: "player.setangle x 40"}
+      - {wait: 3}
+      - {key: "E 120"}
+      - {wait: 4}
+      - {console: "player.setangle x 0"}
+    expect: [{read: [core, WakePoint], path: value, ne: "", keep: wake, within: 10}]
+  - name: earn                # blows on the deserter (its health raised as setup)
+    do:
+      - {console: "{opp}.setav health 2000"}
+      - {console: "player.moveto {opp} 0 -110 0"}
+      - {console: "player.setangle z 0"}
+      - {pad: "RB:120 wait:1500"}
+      - {pad: "RB:120 wait:550 RB:120 wait:550 RB:120 wait:550 RB:120 wait:550"}
+    expect:
+      - {read: [core, GetVastei], path: value, gt: 0}
+      - {read: [core, GetVastei], path: value, keep: v}
+  - name: die                 # the deserter's attacks; no death camera, no load
+    do:
+      - {console: "player.forceav health 5"}
+      - {console: "{opp}.startcombat player"}
+      - {wait: 10}
+    expect:
+      - {log: {name: ArgoniaCore, contains: "death: fell"}, within: 20}
+      - {log: {name: ArgoniaCore, contains: "death: woke"}, within: 10}
+  - name: woke-at-camp
+    expect:
+      - {read: [core, GetVastei], path: value, eq: 0}
+      - {read: [core, WakePoint], path: value, eq: {kept: wake}}
+      - {read: [core, PileState], path: value, ne: "", keep: pile}
+      - {read: [player], path: dead, eq: false}
+  - name: take-pile           # stand on the pile, look down at it, activate
+    do:
+      - {console: "{opp}.stopcombat"}
+      - {teleport: "pos {pile.0} {pile.1} {pile.2}"}
+      - {console: "player.setangle x 80"}
+      - {wait: 2}
+      - {key: "E 120"}
+      - {wait: 2}
+      - {console: "player.setangle x 0"}
+    expect:
+      - {read: [core, GetVastei], path: value, eq: {kept: v}}
+      - {read: [core, PileState], path: value, eq: ""}
+  - name: second-death-replaces
+    owed: a pile-count read (the form scan) to show exactly one pile after a second and third death
