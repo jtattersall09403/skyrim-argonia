@@ -42,7 +42,7 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 - Every system is built to its final interface; content can be thin, systems ship whole; what the player meets is complete.
 - Everything is built natively the Skyrim way: the old project gives goals and content, never machinery; Skyrim's own systems and tools first, used better ([0026](docs/decisions/0026-everything-is-built-natively-the-skyrim-way.md)).
 - The world is one relational database (`world/schema.sql`, 3NF, keys; read and written only through `db.py`); records, YAML and the ESM are derived ([0030](docs/decisions/0030-one-relational-world-database.md), [0009](docs/decisions/0009-world-content-is-imported-then-generated-into-plugins.md)).
-- Skyrim unit facts live only in the units module .
+- Skyrim unit facts live only in the units module.
 - New state lives in ArgoniaCore's versioned co-save families; rules live where 1.1's native map put them, unit-tested; logic stays out of Papyrus.
 - Record every dependency and asset in the sourcing register in the commit that first uses it.
 
