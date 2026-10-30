@@ -2,6 +2,7 @@
 // in a world, a line the console would not compile, a save that is not on disk, a load the game did not finish.
 #include "bridge.h"
 #include "argonia/core/life.h"
+#include "argonia/core/talk.h"
 
 namespace argonia::bridge {
 namespace {
@@ -125,6 +126,23 @@ std::string load(const Request& req) {
   return reply_ok("load", JsonObject().str("name", name).integer("ms", ms).done());
 }
 
+// greeting <speaker world id>: the window our dialogue opens on for that speaker (0.3 §e's timed loop reads the
+// greeting back): an SKSE message to ArgoniaCore (core::talk::BridgeGreeting), answered before the dispatch returns.
+std::string greeting(const Request& req) {
+  namespace talk = argonia::core::talk;
+  auto id = rest(req);
+  if (id.empty() || id.size() >= sizeof(talk::BridgeGreeting::speaker))
+    return reply_error("greeting", "usage: greeting <speaker world id, e.g. npc.imperial-fringe.claywater-station.well-keeper>");
+  return on_main_thread(req.command, [id] {
+    auto m = std::make_unique<talk::BridgeGreeting>();
+    id.copy(m->speaker, sizeof(m->speaker) - 1);
+    const bool sent = SKSE::GetMessagingInterface()->Dispatch(talk::kBridgeGreetingMessage, m.get(), sizeof(*m), "ArgoniaCore");
+    if (!sent) return reply_error("greeting", "ArgoniaCore is not loaded (the message had no receiver)");
+    if (!m->ok) return reply_error("greeting", m->error[0] ? m->error : "ArgoniaCore did not answer");
+    return reply_ok("greeting", m->json);
+  });
+}
+
 // core-suspend <quit|stream_drop>: ArgoniaCore's hidden suspend save (2.8 §c), the stream client's hand on a drop.
 // The call is an SKSE message to ArgoniaCore (core::life::BridgeSuspend), dispatched on the main thread; ok only
 // once Saves\ArgoniaSuspend.ess exists, newer than the call (30 s cap), as `save` does.
@@ -163,6 +181,7 @@ const Register r_console{"console", &console};
 const Register r_save{"save", &save};
 const Register r_load{"load", &load};
 const Register r_core_suspend{"core-suspend", &core_suspend};
+const Register r_greeting{"greeting", &greeting};
 
 }  // namespace
 }  // namespace argonia::bridge

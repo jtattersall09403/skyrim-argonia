@@ -80,6 +80,8 @@ void EnsurePerks();
 bool OpenDialogue(RE::TESObjectREFR* target);
 std::string ViewIntent(std::string_view json);
 void Push(std::string_view view, std::string json);
+// The dev bridge's greeting read: the window a conversation with this speaker opens on, as JSON; the refusal else.
+std::expected<std::string, std::string> GreetingFor(std::string_view speaker_id);
 void InstallHooks();
 
 // --- life.cpp: grow, die, rest, save (1.5) ---------------------------------------------------------------------

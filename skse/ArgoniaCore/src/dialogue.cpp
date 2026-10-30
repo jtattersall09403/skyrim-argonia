@@ -52,6 +52,23 @@ void OnDialogueSurface(ac::router::SurfaceId) {
   FactsChanged("greeting read");
 }
 
+}  // namespace
+
+std::expected<std::string, std::string> GreetingFor(std::string_view speaker_id) {
+  auto& c = Get();
+  std::lock_guard l(c.lock);
+  if (!c.store) return std::unexpected("no topic store loaded");
+  if (!ac::talk::speaks(*c.store, speaker_id)) return std::unexpected("not an Argonia speaker: " + std::string(speaker_id));
+  auto s = Session();
+  auto conv = ac::talk::Conversation::open(*c.store, s, std::string(speaker_id), std::string(speaker_id));
+  if (!conv) return std::unexpected(conv.error());
+  auto json = ac::msg::encode(conv->view(s));
+  if (!json) return std::unexpected("the window does not fit the schema: " + json.error());
+  return std::move(*json);
+}
+
+namespace {
+
 class MenuSink final : public RE::BSTEventSink<RE::MenuOpenCloseEvent> {
  public:
   RE::BSEventNotifyControl ProcessEvent(const RE::MenuOpenCloseEvent* e, RE::BSTEventSource<RE::MenuOpenCloseEvent>*) override {

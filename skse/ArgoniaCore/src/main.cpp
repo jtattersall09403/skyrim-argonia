@@ -94,6 +94,17 @@ void OnMessage(SKSE::MessagingInterface::Message* m) {
 // The dev bridge's hands (ArgoniaBridge's `core-suspend`): an SKSE message from the plugin "ArgoniaBridge". The
 // bridge waits for the dispatch to return, so `written` is the answer it reads (the save itself runs as a task).
 void OnBridgeMessage(SKSE::MessagingInterface::Message* m) {
+  if (m && m->type == ac::talk::kBridgeGreetingMessage && m->data && m->dataLen == sizeof(ac::talk::BridgeGreeting)) {
+    auto* req = static_cast<ac::talk::BridgeGreeting*>(m->data);
+    req->speaker[sizeof(req->speaker) - 1] = '\0';
+    auto r = plugin::GreetingFor(req->speaker);
+    const std::string& text = r ? *r : r.error();
+    char* into = r ? req->json : req->error;
+    const std::size_t cap = r ? sizeof(req->json) : sizeof(req->error);
+    req->ok = r.has_value() && text.size() < cap;
+    text.copy(into, (std::min)(text.size(), cap - 1));  // (std::min): windows.h defines min
+    return;
+  }
   if (!m || m->type != ac::life::kBridgeSuspendMessage || !m->data || m->dataLen != sizeof(ac::life::BridgeSuspend))
     return;
   auto* req = static_cast<ac::life::BridgeSuspend*>(m->data);

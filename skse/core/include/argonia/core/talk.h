@@ -4,6 +4,7 @@
 // told them), runs the line's onDelivered actions through the seam's Session, and gives the view a full
 // dialogue.state after each change. Views hold no state: ArgoniaCore keeps the conversation here.
 #pragma once
+#include "argonia/core/cosave.h"
 #include "argonia/core/messages.h"
 #include "argonia/core/seam.h"
 #include "argonia/core/topics.h"
@@ -64,6 +65,17 @@ class Conversation {
   std::string id_, name_;
   std::vector<msg::DialogueEntry> entries_;
   std::vector<std::string> greeting_notes_;
+};
+
+// The dev bridge's `greeting <speaker id>` (0.3 §e's timed loop): an SKSE message to ArgoniaCore whose data is this
+// struct. Its listener opens a conversation with the speaker as the intercept does, without showing it, and writes
+// the window (dialogue.state JSON, the greeting first) into `json` before the dispatch returns; `error` otherwise.
+inline constexpr std::uint32_t kBridgeGreetingMessage = cosave::fourcc("GRET");
+struct BridgeGreeting {
+  char speaker[128] = {};
+  char json[32768] = {};
+  char error[256] = {};
+  bool ok = false;
 };
 
 }  // namespace argonia::core::talk
