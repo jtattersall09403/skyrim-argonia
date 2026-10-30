@@ -15,6 +15,7 @@
 #include "argonia/core/seam.h"
 #include "argonia/core/sitting.h"
 
+#include <array>
 #include <cstdint>
 #include <map>
 #include <optional>
@@ -119,6 +120,11 @@ struct SittingReply {
 // to the STAT family: the sheet with its points and the new level, the vastei left, one pending level taken.
 SittingReply on_intent_text(Sitting& sit, std::string_view json, seam::State& s);
 void close(const Sitting& sit, seam::State& s);
+
+// A position in Skyrim units (a reference's GetPosition) as the core's metres; `cell` the cell or worldspace FormID.
+rest::Pos at_units(double x, double y, double z, std::uint32_t cell);
+// And back, for the engine's MoveTo.
+std::array<double, 3> to_units(const rest::Pos& p);
 
 // --- Death and the pile (G17.1) -------------------------------------------------------------------------------
 struct Died {

@@ -170,6 +170,11 @@ int main() {
   die(s, at(1, 1), roster);
   CHECK(!s.death.pile);                     // dying with nothing carried leaves no pile and loses the old one
 
+  // Units: the recovery radius in Skyrim units is 2 m x units_per_metre, and back.
+  const auto u = at_units(2 * gen::units::units_per_metre, 0, 0, 7);
+  CHECK_NEAR(u.x, 2, 1e-12);
+  CHECK_NEAR(to_units(u)[0], 2 * gen::units::units_per_metre, 1e-9);
+
   // Death before any rest wakes where the player fell.
   seam::State fresh;
   fresh.prog.vastei = 5;

@@ -17,6 +17,7 @@ import sys
 from pathlib import Path
 
 from tools.argonia_world import db
+from tools.argonia_world import skyrim_units as su
 
 REPO = Path(__file__).resolve().parents[2]
 OUT = REPO / "skse" / "core" / "generated" / "argonia" / "core"
@@ -178,7 +179,9 @@ def progression(w: db.World) -> str:
           f"inline constexpr std::array<RespawnRow, {len(resp)}> kRespawnClasses{{{{"]
     b += [f"    {{{'true' if r['on_rest'] else 'false'}, {'true' if r['until_cleared'] else 'false'}}},  // {r['id']}"
           for r in resp]
-    b += ["}};", "", *_constants(w, "progression")]
+    b += ["}};", "", *_constants(w, "progression"),
+          "namespace units {  // tools/argonia_world/skyrim_units.py, the one home of Skyrim unit facts",
+          f"inline constexpr double units_per_metre = {su.UNITS_PER_METRE!r};", "}  // namespace units"]
     return _wrap("progression", ["array", "cstddef", "cstdint", "string_view", "argonia/core/tables_sheet.h"], b)
 
 

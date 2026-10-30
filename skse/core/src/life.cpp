@@ -248,6 +248,16 @@ std::optional<double> take_pile(seam::State& s, rest::Pos player) {
   return got;
 }
 
+rest::Pos at_units(double x, double y, double z, std::uint32_t cell) {
+  const double m = gen::units::units_per_metre;
+  return {x / m, y / m, z / m, cell};
+}
+
+std::array<double, 3> to_units(const rest::Pos& p) {
+  const double m = gen::units::units_per_metre;
+  return {p.x * m, p.y * m, p.z * m};
+}
+
 std::string pile_name(double vastei) {
   return "Vastei (" + std::to_string(static_cast<long long>(std::floor(vastei))) + ")";
 }

@@ -103,5 +103,8 @@ inline constexpr double cost_nth_increment = 0.5;  // docs/design/world/76-stats
 inline constexpr double levels_per_sitting = 1.0;  // docs/design/world/76-stats-progression.md §120.4, §126 (O-16 open)
 inline constexpr double points_per_attribute_cap = 5.0;  // docs/design/world/76-stats-progression.md §120.4
 }  // namespace sitting
+namespace units {  // tools/argonia_world/skyrim_units.py, the one home of Skyrim unit facts
+inline constexpr double units_per_metre = 70.03;
+}  // namespace units
 
 }  // namespace argonia::core::gen
