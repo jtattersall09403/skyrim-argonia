@@ -248,7 +248,24 @@ def place_records(alloc, world, resolver, ground, wrld_form_key: str, place_id: 
         for (cx, cy), recs in sorted(ext_cells.items()):
             out.append({"type": "CELL", "override": True, "edid": f"ARG_Cell_{slug(place_id.rsplit('.', 1)[1])}_{cx}_{cy}",
                         "formKey": keys(cx, cy), "worldspace": wrld_form_key, "refs": recs})
-    return list(ctx.records.values()) + out
+    out = list(ctx.records.values()) + out
+    check_package_targets(out)
+    return out
+
+
+def check_package_targets(records: list[dict]) -> None:
+    """Every PACK location ref is a persistent reference: ours, or an override of a master's with the Persistent
+    flag set. The engine resolves a package's target while its cell is unloaded only when the ref is persistent
+    (game-7: Livia's sleep package at a temporary borrowed bed gave GetCurrentAIPackage -1)."""
+    persistent = {}
+    for rec in records:
+        if rec.get("type") == "CELL":
+            for ref in rec.get("refs", []):
+                persistent[ref["formKey"]] = bool(ref.get("persistent"))
+    bad = [f"{r['edid']} -> {r['location']['ref']}" for r in records
+           if r.get("type") == "PACK" and not persistent.get(r["location"]["ref"], False)]
+    if bad:
+        raise ValueError("package targets that are not persistent references of ours: " + "; ".join(bad))
 
 
 def _cell_keys():
