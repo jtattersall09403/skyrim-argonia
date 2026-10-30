@@ -1,7 +1,8 @@
 {"dialogue_line_id":"line.claywater-station.landing-s-poler.claywater-station-danger","ord":0,"value":"topic.lf83-clay-bend"}
+{"dialogue_line_id":"line.claywater-station.landing-s-poler.ford-charge.after-other","ord":0,"value":"topic.claywater-two-charges"}
 {"dialogue_line_id":"line.claywater-station.landing-s-poler.greeting.dry-start","ord":0,"value":"topic.claywater-two-charges"}
-{"dialogue_line_id":"line.claywater-station.landing-s-poler.two-charges","ord":0,"value":"topic.lf83-ford-charge"}
-{"dialogue_line_id":"line.claywater-station.landing-s-poler.two-charges","ord":1,"value":"topic.lf83-clay-bend"}
+{"dialogue_line_id":"line.claywater-station.landing-s-poler.two-charges.tell","ord":0,"value":"topic.lf83-ford-charge"}
+{"dialogue_line_id":"line.claywater-station.landing-s-poler.two-charges.tell","ord":1,"value":"topic.lf83-clay-bend"}
 {"dialogue_line_id":"line.claywater-station.n1-3.claywater-station","ord":0,"value":"topic.claywater-station-people"}
 {"dialogue_line_id":"line.claywater-station.n1-3.claywater-station","ord":1,"value":"topic.claywater-station-work"}
 {"dialogue_line_id":"line.claywater-station.n1-3.greeting.dry-start","ord":0,"value":"topic.claywater-two-charges"}

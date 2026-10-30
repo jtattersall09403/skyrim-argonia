@@ -5,6 +5,11 @@
 {"list_id":"dialogue_line:line.claywater-station.landing-s-poler.one-charge.agrees:on_delivered","ord":0,"arg_ord":1,"value":1}
 {"list_id":"dialogue_line:line.claywater-station.landing-s-poler.one-charge.agrees:on_delivered","ord":1,"arg_ord":0,"value":"flag.lf83.one-charge-landing"}
 {"list_id":"dialogue_line:line.claywater-station.landing-s-poler.one-charge.agrees:on_delivered","ord":1,"arg_ord":1,"value":1}
+{"list_id":"dialogue_line:line.claywater-station.landing-s-poler.one-charge.argued:on_delivered","ord":0,"arg_ord":0,"value":"flag.lf83.poler-persuaded"}
+{"list_id":"dialogue_line:line.claywater-station.landing-s-poler.one-charge.argued:on_delivered","ord":0,"arg_ord":1,"value":1}
+{"list_id":"dialogue_line:line.claywater-station.landing-s-poler.two-charges.pay:on_delivered","ord":0,"arg_ord":0,"value":1}
+{"list_id":"dialogue_line:line.claywater-station.landing-s-poler.two-charges.pay:on_delivered","ord":1,"arg_ord":0,"value":"flag.lf83.ford-paid"}
+{"list_id":"dialogue_line:line.claywater-station.landing-s-poler.two-charges.pay:on_delivered","ord":1,"arg_ord":1,"value":1}
 {"list_id":"dialogue_line:line.claywater-station.n1-3.cracked-well.ask:on_delivered","ord":0,"arg_ord":0,"value":"flag.lf83.taste-asked"}
 {"list_id":"dialogue_line:line.claywater-station.n1-3.cracked-well.ask:on_delivered","ord":0,"arg_ord":1,"value":1}
 {"list_id":"dialogue_line:line.claywater-station.n1-3.cracked-well.mending:on_delivered","ord":0,"arg_ord":0,"value":"flag.lf83.mending-heard"}
@@ -15,11 +20,15 @@
 {"list_id":"dialogue_line:line.claywater-station.n1-3.cracked-well.tasted:on_delivered","ord":1,"arg_ord":1,"value":1}
 {"list_id":"dialogue_line:line.claywater-station.well-keeper.one-charge.agree:on_delivered","ord":0,"arg_ord":0,"value":"flag.lf83.one-charge-station"}
 {"list_id":"dialogue_line:line.claywater-station.well-keeper.one-charge.agree:on_delivered","ord":0,"arg_ord":1,"value":1}
+{"list_id":"dialogue_line:line.claywater-station.well-keeper.one-charge.argued:on_delivered","ord":0,"arg_ord":0,"value":"flag.lf83.livia-persuaded"}
+{"list_id":"dialogue_line:line.claywater-station.well-keeper.one-charge.argued:on_delivered","ord":0,"arg_ord":1,"value":1}
 {"list_id":"dialogue_line:line.claywater-station.well-keeper.stop-charge.drop:on_delivered","ord":0,"arg_ord":0,"value":"flag.lf83.stop-charge-dropped"}
 {"list_id":"dialogue_line:line.claywater-station.well-keeper.stop-charge.drop:on_delivered","ord":0,"arg_ord":1,"value":1}
 {"list_id":"dialogue_line:line.claywater-station.well-keeper.two-charges.pay:on_delivered","ord":0,"arg_ord":0,"value":2}
 {"list_id":"dialogue_line:line.claywater-station.well-keeper.two-charges.pay:on_delivered","ord":1,"arg_ord":0,"value":"item.lf83.well-water"}
 {"list_id":"dialogue_line:line.claywater-station.well-keeper.two-charges.pay:on_delivered","ord":1,"arg_ord":1,"value":1}
+{"list_id":"dialogue_line:line.claywater-station.well-keeper.two-charges.pay:on_delivered","ord":2,"arg_ord":0,"value":"flag.lf83.stop-paid"}
+{"list_id":"dialogue_line:line.claywater-station.well-keeper.two-charges.pay:on_delivered","ord":2,"arg_ord":1,"value":1}
 {"list_id":"dialogue_line:pool.bog-iron-deep-end.start:on_delivered","ord":0,"arg_ord":0,"value":"quest.local.lf67"}
 {"list_id":"dialogue_line:pool.bog-iron-deep-end.start:on_delivered","ord":0,"arg_ord":1,"value":10}
 {"list_id":"dialogue_line:pool.broke-column-levy.start:on_delivered","ord":0,"arg_ord":0,"value":"quest.fg.fg07"}

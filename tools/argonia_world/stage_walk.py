@@ -30,15 +30,20 @@ class State:
     done: set = dataclasses.field(default_factory=set)          # (quest, objective)
     disposition: dict = dataclasses.field(default_factory=dict)
     season: str | None = None                                   # None: the dry season, where quests start
+    stages: dict = dataclasses.field(default_factory=dict)      # quest -> stage (for a line's questStage)
+    skills: dict = dataclasses.field(default_factory=dict)      # skill -> value
+    gold: int = 0
 
     def merged(self, other: "State") -> "State":
         return State(self.heard | other.heard, self.known | other.known, {**self.items, **other.items},
                      {**self.flags, **other.flags}, self.dead | other.dead, {**self.days, **other.days},
                      self.done | other.done, {**self.disposition, **other.disposition},
-                     other.season or self.season)
+                     other.season or self.season, {**self.stages, **other.stages}, {**self.skills, **other.skills},
+                     max(self.gold, other.gold))
 
 
 SEASONS = ("dry", "hatching", "wet")   # the `season` rows, in order
+OPS = {"=": int.__eq__, "≠": int.__ne__, "≥": int.__ge__, "≤": int.__le__, "<": int.__lt__, ">": int.__gt__}
 
 
 class Unsupported(Exception):
@@ -74,6 +79,12 @@ def holds(c, s: State, objectives: dict) -> bool:
     if term == "objectiveComplete":
         key = (args[0], args[1])
         return key in s.done or (key in objectives and holds(objectives[key], s, objectives))
+    if term == "questStage":
+        return args[0] in s.stages and OPS[args[1]](s.stages[args[0]], args[2])
+    if term == "skillAtLeast":
+        return s.skills.get(args[0], 0) >= args[1]
+    if term == "goldAtLeast":
+        return s.gold >= args[0]
     raise Unsupported(term)
 
 

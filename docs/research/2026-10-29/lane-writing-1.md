@@ -317,3 +317,45 @@ Accepted round-1 answers: R1, R2, R7, R9, R13; partly: R4, R5, R6, R11; not acce
      check the operator.
    - The style guide's prose linter (the comma-and, nobody-somebody, only-one table) has no implementation in
      the repo. `lint.py` does not catch comma-and, so the reader carried it.
+
+## Follow-ups (writing-4, 2026-10-30)
+
+**Done.** This closes the dialogue open list above for the owner's 1.7 verdict.
+- **Persuasion route, by flag.** The vocabulary has no persuade action verb, so persuasion is a Speechcraft check
+  on the line: `skillAtLeast speechcraft 30`, an authored threshold that is never rolled. Each keeper's
+  `one-charge.argued` line sets `flag.lf83.livia-persuaded` or `flag.lf83.poler-persuaded`, and the agreement
+  lines read the flag, never disposition.
+  - Livia's persuasion answers her stone objection only, once the yearly mending is found. Her half-charge
+    objection still needs the landing's promise.
+  - Signs's persuasion answers his stone objection once the basket is back.
+  - Review round 5 (record R5; report `~/argonia-private/work/writing-4/review-persuasion.md`) found 0 high and 5
+    medium. M1 and M3 were fixed. M2, M4 and the lows are noted for 2.12.
+- **Facts.** `tools/argonia_world/content/claywater_facts.py` adds 8 place facts, read off the route, hydrology,
+  glossary and socket rows: the road to Gideon and to Leyawiin, Gideon, the Onkobra (the ford's stream is not the
+  Onkobra), Helstrom, the Prison road, and where the household and the travellers stand. The record adds 8 more:
+  one per ending, the free ferry, and the crocodile's death. The `about-*`, directions and people lines of all three
+  people now state these facts and no longer send the player to the unplaced travellers.
+- **Choice to pay.** It stands in until 2.5's choice buttons. Once the player has heard a keeper's side, asking
+  `two-charges` again with the money pays, once only: Signs takes 1 drake and sets `flag.lf83.ford-paid`; Livia
+  takes 2, gives the dipper and sets `flag.lf83.stop-paid`.
+- **Post-ending topics.** Every quest topic of the three placed people answers at every ending they live through:
+  44 new lines, each fixed to its ending's stage.
+- **Tooling.** `lines.py` refuses any operator that is not a `condition_op` row, with two tests.
+- **Tests.** `test_stage_walk.py` drives the lines in first-match id order through four checks:
+  - the persuasion route reaches stage 40;
+  - Speechcraft 29 gets the refusals;
+  - persuading Livia alone leaves the half-charge objection open;
+  - the pay choice happens once.
+  It also checks that the post-ending answers cover every ending and topic.
+- **Text review.** One `reader` pass over the 61 new and changed lines found 74 rows, and all were applied (see
+  `~/argonia-private/work/writing-4/apply.md`). `lint.py` then gives 0 regex hits on all three people. Store::lint
+  reports 0 findings on 0145.
+
+**Open, for the planner:**
+- Gaius Vibius (Imperial) shares the landing's household hut in the place build (`socket.claywater-station.npc-family`).
+  This may be a slot artefact.
+- The people lines name posts for Gaius Vibius, Keeps-The-Second-Ledger, Abhuki and Mee-Seesh. Only three people
+  are placed in Part 1.
+- The reader's fact doubts are in `~/argonia-private/work/writing-4/text-review.md`. They include the Drowning Gate
+  as both a barrier and a ferry, and Livia hiding a reason that the other two state.
+- The rest of the earlier list (training and bed prices, Livia's listener variants) stays open.
