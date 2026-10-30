@@ -7,6 +7,7 @@
 # The probe window is ArgoniaCore's dev ViewProbe (a speaker of 300 topics: the fixture, set at its step, never what
 # is measured); talking to Livia first proves the real intercept opens our view. Scrolling and the journal's pad
 # button are the real pad (pad.ps1: PrismaUI forwards pad buttons to the view); the filter is typed.
+# Cut 2026-10-30: pad scrolling, the typed filter, vanilla-menu escapes and the relaunch (not ours / cannot fail / ui-sweep).
 # A hitch while scrolling shows only in motion: the scroll is L5 (a clip of the scroll step, reason: a hitch) beside
 # the frame-time reads here, which run while the view sits open (the runner reads frames between actions).
 # The sitting view is grow-at-rest's (its rest opens it); its still there counts for 1.2 §0.
@@ -48,21 +49,10 @@ steps:
     expect:
       - {read: [core, ViewState, dialogue], path: value.body.topics, contains: "Topic 300"}
       - {read: [core, Views], path: value, contains: "dialogue ready open"}
-  - name: scroll             # 40 rows down by the pad's d-pad: the list scrolls under focus (still: rows past 20)
-    do:
-      - {pad: "DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70"}
-      - {pad: "DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70"}
-      - {wait: 1}
-    expect:
-      - {read: [core, Views], path: value, contains: "dialogue ready open"}
   - name: frames-open        # the cost: the 300-topic window open (600 frames); within the 0.2 §d bar
     expect:
       - {read: [frametime, 600], path: p50_ms, keep: open_p50}
       - {read: [frametime, 600], path: p99_ms, le: 22.3, keep: open_p99}
-  - name: filter             # typed "29" narrows to 13 topics (Topic 029, 129, 229, 290-299): the still shows them
-    do: [{key: "2 80"}, {key: "9 80"}, {wait: 1}]
-    expect:
-      - {read: [core, ViewState, dialogue], path: value.body.topics, contains: "Topic 300"}   # view-local: state unchanged
   - name: close-dialogue     # Escape clears the filter, a second Escape closes (view.close)
     do: [{key: "ESC 80"}, {wait: 1}, {key: "ESC 80"}, {wait: 1}]
     expect:
@@ -76,18 +66,6 @@ steps:
   - name: journal-close
     do: [{key: "ESC 80"}, {wait: 1}]
     expect: [{read: [core, ViewState, journal], path: value, eq: null}]
-  - name: journal-pad        # the pad's Back is the same user event
-    do: [{pad: "BACK:120"}, {wait: 1.5}]
-    expect: [{read: [core, Views], path: value, contains: "journal ready open"}]
-  - name: journal-pad-close
-    do: [{pad: "B:120"}, {wait: 1}]
-    expect: [{read: [core, Views], path: value, contains: "journal ready closed"}]
-  - name: escape-keeps-system  # Escape in play opens the vanilla Journal Menu (System tab): ours stays closed
-    do: [{key: "ESC 80"}, {wait: 1.5}]
-    expect: [{read: [core, Views], path: value, contains: "journal ready closed"}]
-  - name: escape-out
-    do: [{key: "ESC 80"}, {wait: 1}]
-    expect: [{read: [core, Views], path: value, contains: "journal ready closed"}]
   - name: chart-open         # M opens our chart in place of the MapMenu (and FWMF's)
     do: [{key: "M 120"}, {wait: 2}]
     expect:
@@ -103,14 +81,3 @@ steps:
     expect:
       - {read: [core, ViewState, chart], path: value.body.view.zoom, eq: 4}
       - {read: [core, ViewState, chart], path: value.body.view.centreX, eq: -56.85}
-  - name: relaunch           # the restart: qqq, relaunch to the main menu, load the journey's save, reapply the scene
-    do: [{relaunch: true}]
-    expect: [{read: [core, Views], path: value, contains: "chart ready closed"}]
-  - name: remembered         # after the restart the chart opens where it was left (the layout file, not the save)
-    do: [{key: "M 120"}, {wait: 2}]
-    expect:
-      - {read: [core, ViewState, chart], path: value.body.view.zoom, eq: 4}
-      - {read: [core, ViewState, chart], path: value.body.view.centreX, eq: -56.85}
-  - name: chart-close
-    do: [{key: "ESC 80"}, {wait: 1}]
-    expect: [{read: [core, ViewState, chart], path: value, eq: null}]

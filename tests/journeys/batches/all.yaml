@@ -29,9 +29,9 @@ items:
   - ui-sweep
   - croc-den
   - rest-is-the-only-save
+  - ui-probe
   - world-sample
   - cosave
   - die-and-recover
   - menus-quit
   - suspend-save
-  - ui-probe

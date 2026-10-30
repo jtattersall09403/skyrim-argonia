@@ -319,12 +319,8 @@ def test_relaunch_without_the_scene_resumes_where_the_save_left(tmp_path):
     assert b.log[-2:] == [("launch",), ("load", "ArgoniaSuspend")]  # no bat after the relaunch's load
 
 
-def test_the_ui_probe_validates_with_its_relaunch():
+def test_the_ui_probe_validates():
     here = pathlib.Path(rj.__file__).resolve().parents[1] / "tests" / "journeys"
-    j = rj.load_journey(here / "ui-probe.yaml")
-    steps = {s["name"]: s for s in j["steps"]}
-    assert steps["relaunch"]["do"] == [{"relaunch": True}] and "owed" not in steps["relaunch"]
-    assert "owed" not in steps["remembered"]
     assert "ok" in rj.dry(here / "ui-probe.yaml")
 
 

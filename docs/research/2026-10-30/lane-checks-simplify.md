@@ -49,3 +49,13 @@ broken version of our work fail it". first-place, lf83-components and ui-probe a
 - The ambush deserter is assumed to be `actors 4000`'s first listed actor from the ambush marker (as fight-archetype
   already assumed).
 - `hasperk` replies `>> 1.00` / `>> 0.00`.
+
+## Second pass: first-place, lf83-components, ui-probe
+
+| Journey | Cut | Why |
+|---|---|---|
+| first-place | walk-in; three croc-fight steps, god mode, to-the-clay-cut; loot and equip (Container Menu, EquipManager); ambush fight, die, woke, retrieve-vastei; grown; rest-at-camp, spend, rise; before/load/every-family. The croc is killed by console | Fights, death and the croc are croc-den, fight-* and die-and-recover; the sitting is grow-at-rest; families across a load are cosave; looting and equipping are the game's. Kept: the camp rest, talks to stage 10/20/30/40, journal rows, no vanilla dialogue |
+| lf83-components | rest, before-load, load-rest-save, every-family; ledger-closed; the Book Menu event; never-vanilla | Families and load are cosave; the Book Menu is vanilla (the flag ledger-read is the check); never-vanilla is in first-place. Kept: every stage, clue, notice and thing hook |
+| ui-probe | scroll (40 pad presses), filter (view-local, state unchanged: could not fail), journal-pad pair, escape-keeps-system, escape-out (vanilla Journal Menu), relaunch and remembered, chart-close | Pad timing and typed keys test PrismaUI and the pad, not our binding; the vanilla escape is Skyrim's; the layout file is already read by chart-reopen; relaunch is cosave's. Kept: bound views, HUD, both frame-time reads (p99 bar), dialogue open with 300 topics, journal key, chart open/pan/reopen |
+
+all.yaml regenerated (30 items).
