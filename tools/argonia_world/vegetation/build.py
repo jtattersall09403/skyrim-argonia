@@ -58,14 +58,17 @@ def keeps(w) -> dict[str, float]:
     return {r["land_region_id"]: r["keep"] for r in w.query("SELECT * FROM vegetation_region_budget")}
 
 
+PROBE_PLACE = "place.studio.world-sample"  # tools/world_sample.py's probe markers
+
+
 def footprints(w, pad: int) -> list[tuple[float, float, float, float]]:
     """Each built place's exterior footprint as a grid rectangle (row0, col0, row1, col1): its refs' bounds plus
     the margin."""
     m = place.PLACE_MARGIN_M
     out = []
     for r in w.query("SELECT c.place_id, min(r.x_m) x0, max(r.x_m) x1, min(r.y_m) y0, max(r.y_m) y1 FROM build_ref r "
-                     "JOIN build_cell c ON c.id = r.cell_id WHERE c.kind = 'exterior' GROUP BY c.place_id "
-                     "ORDER BY c.place_id"):
+                     "JOIN build_cell c ON c.id = r.cell_id WHERE c.kind = 'exterior' AND c.place_id <> ? GROUP BY c.place_id "
+                     "ORDER BY c.place_id", PROBE_PLACE):  # the probe markers stand everywhere and clear nothing
         s = su.PROVINCE_SAMPLE_M
         out.append(((r["y0"] - m) / s + pad, (r["x0"] - m) / s + pad, (r["y1"] + m) / s + pad, (r["x1"] + m) / s + pad))
     return out

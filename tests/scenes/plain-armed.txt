@@ -3,4 +3,4 @@ set gamehour to 12
 fw ARG_Weather_tannin_haze
 player.additem 00012EB7 1
 player.equipitem 00012EB7
-cow tamriel 2 -4
+player.moveto ARG_Ref_ClaywaterStationRoadIn

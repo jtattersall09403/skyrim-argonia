@@ -78,7 +78,8 @@ def test_the_probe_window_is_half_a_metre_each_way():
     tol = 0.5 * 70.03
     z = [e for e in st["expect"]]
     assert z[0]["ge"] == pytest.approx(700.0 - tol, abs=0.01) and z[1]["le"] == pytest.approx(700.0 + tol, abs=0.01)
-    assert st["do"][0]["teleport"] == "pos 1.0 2.0 800.0"
+    assert st["do"][0] == {"console": f"player.moveto {ws.probe_edid('p')}"}
+    assert ws.PROBES[ws.probe_ref("p")][2] == pytest.approx(800.0 / ws.su.UNITS_PER_METRE, abs=0.01)
 
 
 @pytest.mark.skipif(not (ws.data_root() / "terrain" / "refined-height-f32.npy").exists()
@@ -117,3 +118,17 @@ def test_every_cow_in_a_journey_step_comes_from_the_holding_cell():
             for i, line in enumerate(lines):
                 if line.startswith("cow ") or line.startswith("bat world-sample"):
                     assert {"coc ARG_HoldingCell", "relaunch"} & set(lines[:i]), (name, st["name"])
+
+
+def test_every_probe_moves_to_a_placed_marker_of_the_world_db():
+    """diag4 fix 1: no raw `teleport pos`; each probe's moveto names a persistent XMarker build_ref row."""
+    from tools.argonia_world import db
+    from tools.argonia_world.place_build import ref_edid
+    w = db.open()
+    rows = w.query("SELECT id, base, persistent FROM build_ref WHERE cell_id = ?", ws.PROBE_CELL)
+    edids = {ref_edid(r["id"]): r for r in rows}
+    assert all(r["persistent"] and r["base"] == ws.su.ENGINE_MARKER_HEADING for r in rows)
+    assert "teleport" not in ws.JOURNEY.read_text()
+    moves = [d["console"].split()[1] for st in JOURNEY["steps"] for d in st.get("do", [])
+             if isinstance(d, dict) and str(d.get("console", "")).startswith("player.moveto ARG_Ref_Probe")]
+    assert len(moves) >= 15 and set(moves) == set(edids), set(moves) ^ set(edids)

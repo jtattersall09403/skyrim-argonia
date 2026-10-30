@@ -9,7 +9,7 @@ namespace argonia::core::gen {
 
 // One record of ours by its world id: the plugin that holds it, its signature and its local FormID.
 struct FormRow { std::string_view id, plugin, type; std::uint32_t local; };
-inline constexpr std::array<FormRow, 359> kForms{{
+inline constexpr std::array<FormRow, 380> kForms{{
     {"birthsign.serpent", "Argonia.esm", "SPEL", 0x000808},
     {"class.marsh-guide", "Argonia.esm", "CLAS", 0x000806},
     {"climate.black-marsh", "Argonia.esm", "CLMT", 0x000813},
@@ -251,6 +251,27 @@ inline constexpr std::array<FormRow, 359> kForms{{
     {"ref.claywater-station.well", "Argonia.esm", "REFR", 0x0008F4},
     {"ref.claywater-station.well-silt", "Argonia.esm", "REFR", 0x0008F5},
     {"ref.claywater-station.well-water", "Argonia.esm", "REFR", 0x0008F6},
+    {"ref.probe.s01-probe-east-30m", "Argonia.esm", "REFR", 0x0009CD},
+    {"ref.probe.s01-probe-road-in", "Argonia.esm", "REFR", 0x0009CE},
+    {"ref.probe.s01-probe-west-30m", "Argonia.esm", "REFR", 0x0009CF},
+    {"ref.probe.s02-probe-foot", "Argonia.esm", "REFR", 0x0009D0},
+    {"ref.probe.s02-probe-top-shelf", "Argonia.esm", "REFR", 0x0009D1},
+    {"ref.probe.s03-probe-corner", "Argonia.esm", "REFR", 0x0009D2},
+    {"ref.probe.s03-probe-ne", "Argonia.esm", "REFR", 0x0009D3},
+    {"ref.probe.s03-probe-nw", "Argonia.esm", "REFR", 0x0009D4},
+    {"ref.probe.s03-probe-se", "Argonia.esm", "REFR", 0x0009D5},
+    {"ref.probe.s03-probe-sw", "Argonia.esm", "REFR", 0x0009D6},
+    {"ref.probe.s04-bottom-of-reach", "Argonia.esm", "REFR", 0x0009D7},
+    {"ref.probe.s04-top-of-reach", "Argonia.esm", "REFR", 0x0009D8},
+    {"ref.probe.s05-at-the-falls", "Argonia.esm", "REFR", 0x0009D9},
+    {"ref.probe.s06-deepest-point", "Argonia.esm", "REFR", 0x0009DA},
+    {"ref.probe.s07-coast-land", "Argonia.esm", "REFR", 0x0009DB},
+    {"ref.probe.s07-coast-sea", "Argonia.esm", "REFR", 0x0009DC},
+    {"ref.probe.s07-lake-bank", "Argonia.esm", "REFR", 0x0009DD},
+    {"ref.probe.s08-probe-centre", "Argonia.esm", "REFR", 0x0009DE},
+    {"ref.probe.s09-segment-push-west", "Argonia.esm", "REFR", 0x0009DF},
+    {"ref.probe.s10-face-the-sign", "Argonia.esm", "REFR", 0x0009E0},
+    {"ref.probe.s13-probe-summit", "Argonia.esm", "REFR", 0x0009E1},
     {"rest.camp-spot", "Argonia.esm", "ACTI", 0x00085F},
     {"setting.fDiffMultHPByPCE", "Argonia.esm", "GMST", 0x000862},
     {"setting.fDiffMultHPByPCH", "Argonia.esm", "GMST", 0x000863},

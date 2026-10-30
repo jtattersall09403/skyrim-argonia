@@ -1,13 +1,14 @@
-# The 0.2 §c smoke scene as a journey (0.3 §d): walk, draw, swing, roll, block, the menus, on the open plain.
+# The 0.2 §c smoke scene as a journey (0.3 §d): walk, draw, swing, roll, block, the menus, on Claywater's road in.
 # Climb, swim, ladder and boat wait for 0.4's proving ground (the fixtures); the lock-on is fight-lock-on's.
 id: smoke
 runner: 1
 crash_risk: high
-relaunch_before: true   # its scene cows to Tamriel: the engine crashes on that after uptime (diag3-g15)
+relaunch_before: true   # a fresh process before its cross-cell move (diag3-g15)
 scene: plain-armed
 steps:
-  - name: place          # the open plain inside the scene's cell (a setpos in the scene raced its cow: a crash)
-    do: [{teleport: "pos 10700 -13025 -4400"}, {wait: 3}, {console: "player.equipitem 00012EB7"}, {wait: 1}]
+  - name: place          # on Claywater's road in (ARG_Province; vanilla's Tamriel is quarantined, 0012); its scene moves there
+    do: [{wait: 3}, {console: "player.equipitem 00012EB7"}, {wait: 1}]
+    expect: [{read: [player], path: worldspace.editor_id, eq: ARG_Province, within: 20}]
   - name: walk
     do: [{pad: "LY=1:1500"}]
     expect: [{moved: {gt: 100}}]

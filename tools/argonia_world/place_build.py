@@ -474,8 +474,18 @@ def layers(alloc, world, resolver, wrld_form_key: str) -> list:
     if not places:
         return []
     ground = GameGround()
-    return [Layer(f"place:{p.rsplit('.', 1)[1]}", place_records(alloc, world, resolver, ground, wrld_form_key, p))
-            for p in places]
+    out, seen = [], {}  # exterior CELL override formKey -> the first place's record: one override per cell
+    for p in places:
+        recs = []
+        for rec in place_records(alloc, world, resolver, ground, wrld_form_key, p):
+            if rec.get("type") == "CELL" and rec.get("worldspace") and rec["formKey"] in seen:
+                seen[rec["formKey"]]["refs"] += rec["refs"]  # two places stand in one cell (the probe markers)
+                continue
+            if rec.get("type") == "CELL" and rec.get("worldspace"):
+                seen[rec["formKey"]] = rec
+            recs.append(rec)
+        out.append(Layer(f"place:{p.rsplit('.', 1)[1]}", recs))
+    return out
 
 
 def built_places(world) -> list[str]:

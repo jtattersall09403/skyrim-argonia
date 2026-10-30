@@ -95,12 +95,15 @@ def arm_texts(w) -> dict[tuple[str, int], str]:
         "JOIN route_node n ON n.id = a.to_node_id LEFT JOIN place p ON p.id = n.place_id ORDER BY 1, 2")}
 
 
+from tools.argonia_world.vegetation.build import PROBE_PLACE  # noqa: E402 - markers clear nothing
+
+
 def footprints(w) -> list[tuple[str, float, float, float]]:
     """(place id, x, y, half side) of every exterior build_ref, with the margin a signpost keeps."""
     h = FOOTPRINT_HALF_M + FOOTPRINT_MARGIN_M
     return [(r["place_id"], r["x_m"], r["y_m"], h) for r in w.query(
         "SELECT c.place_id, r.x_m, r.y_m FROM build_ref r JOIN build_cell c ON c.id = r.cell_id "
-        "WHERE c.kind = 'exterior' AND coalesce(r.disabled, 0) = 0")]
+        "WHERE c.kind = 'exterior' AND coalesce(r.disabled, 0) = 0 AND c.place_id <> ?", PROBE_PLACE)]
 
 
 def in_footprint(x: float, y: float, fps, place_id: str | None = None) -> bool:

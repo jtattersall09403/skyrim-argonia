@@ -11,7 +11,7 @@ values in the journey are data, not hand-typed.
 Every stop: a scene (month, day, hour, a weather from the stop's own region list, never Skyrim's SkyrimClear
 0000081A; the travel line last), then steps that read what a number decides. A distant stop is reached by the
 journey's `console: bat <scene>` (the scene files reach the machine with `make deploy`; only the first is sent by
-the runner), then a `teleport pos` inside the loaded cells and a read of the player's z against the expected ground.
+the runner), then a `player.moveto` to a placed probe marker (an XMarker of the world DB) and a read of the player's z against the expected ground.
 """
 from __future__ import annotations
 
@@ -99,6 +99,58 @@ class Ground:
         return math.degrees(math.atan(math.hypot(dzdx, dzdy)))
 
 
+# --- probe markers ----------------------------------------------------------------------------------------------
+# A raw `teleport pos` (SetPosition) across cells crashed the engine (diag4 fix 1); every probe point is a placed,
+# persistent XMarker of the world DB (`build_ref` rows `ref.probe.<step>` in PROBE_CELL) and the journey moves the
+# player with `player.moveto`, the engine's normal path. `--write` syncs the rows through db.py; `make plugin` emits them.
+from tools.argonia_world.vegetation.build import PROBE_PLACE  # noqa: E402 - footprints skip it
+PROBE_CELL = "cell.studio.world-sample"
+PROBES: dict[str, tuple[float, float, float]] = {}  # ref id -> (x_m, y_m south, z_m), filled by build()
+
+
+def probe_ref(step: str) -> str:
+    return f"ref.probe.{step}"
+
+
+def probe_edid(step: str) -> str:
+    from tools.argonia_world.place_build import ref_edid
+    return ref_edid(probe_ref(step))
+
+
+def probe_go(step: str, x_u: float, y_u: float, z_u: float) -> dict:
+    """Record a marker at these worldspace units and return the step's move to it."""
+    xm, ym = _province_m(x_u, y_u)
+    PROBES[probe_ref(step)] = (round(xm, 3), round(ym, 3), round(su.units_to_metres(z_u), 3))
+    return {"console": f"player.moveto {probe_edid(step)}"}
+
+
+def probe_rows() -> list[dict]:
+    return [{"id": rid, "cell_id": PROBE_CELL, "base": su.ENGINE_MARKER_HEADING, "x_m": x, "y_m": y, "z_m": z,
+             "yaw_deg": 0.0, "persistent": True, "why": f"world-sample probe {rid.split('.', 2)[2]} (tools/world_sample.py)"}
+            for rid, (x, y, z) in sorted(PROBES.items())]
+
+
+def sync_probes(db, write: bool) -> bool:
+    """True when the DB's probe rows match PROBES; with `write`, make them match and save."""
+    have = {r["id"]: dict(r) for r in db.query("SELECT * FROM build_ref WHERE cell_id = ?", PROBE_CELL)}
+    want = {r["id"]: r for r in probe_rows()}
+    same = set(have) == set(want) and all(
+        all(have[k][c] == v or (isinstance(v, float) and abs(have[k][c] - v) < 1e-6) for c, v in r.items())
+        for k, r in want.items())
+    if same or not write:
+        return same
+    if db.get("place", PROBE_PLACE) is None:
+        db.insert("place", id=PROBE_PLACE, name="World sample probes")
+    if db.get("build_cell", PROBE_CELL) is None:
+        db.insert("build_cell", id=PROBE_CELL, place_id=PROBE_PLACE, kind="exterior")
+    for k in have:
+        db.delete("build_ref", k)
+    for r in want.values():
+        db.insert("build_ref", **r)
+    db.save()
+    return True
+
+
 def probe_step(g: Ground, name: str, r: int, c: int, why: str, hi_extra_u: float = 0.0,
                above_ground_only: bool = True, reader: list | None = None) -> dict:
     """Teleport 1.4 m above the vertex, let it fall, read z against the ground the LAND stores (+-0.5 m)."""
@@ -106,7 +158,7 @@ def probe_step(g: Ground, name: str, r: int, c: int, why: str, hi_extra_u: float
     tol = su.metres_to_units(TOL_M)
     step = {
         "name": name, "why": why,
-        "do": [{"teleport": f"pos {x} {y} {su.rounded(z + DROP_U, 2)}"}, {"wait": 4}],
+        "do": [probe_go(name, x, y, z + DROP_U), {"wait": 4}],
         "expect": [{"read": ["player"], "path": "pos.z", "ge": su.rounded(z - tol, 2), "within": 3},
                    {"read": ["player"], "path": "pos.z", "le": su.rounded(z + tol + hi_extra_u, 2), "within": 3}],
         "expected_ground_m": round(float(g.H[r, c]), 3),
@@ -308,7 +360,7 @@ def stop_4(w: World, g: Ground) -> dict:
         s["steps"].append({
             "name": f"s04-{tag}-of-reach",
             "why": f"the {tag} of {reach['id']}: on the bed or the surface, not under the ground or in the air",
-            "do": [{"teleport": f"pos {x} {y} {su.rounded(max(z, water_u) + DROP_U, 2)}"}, {"wait": 4}],
+            "do": [probe_go(f"s04-{tag}-of-reach", x, y, max(z, water_u) + DROP_U), {"wait": 4}],
             "expect": [{"read": ["player"], "path": "pos.z", "ge": su.rounded(z - tol, 2), "within": 3},
                        {"read": ["player"], "path": "pos.z", "le": su.rounded(water_u + tol, 2), "within": 3},
                        {"read": ["player"], "path": "in_air", "eq": False, "within": 3}],
@@ -355,7 +407,7 @@ def stop_5(w: World, g: Ground) -> dict:
     s["steps"].append({
         "name": "s05-at-the-falls",
         "why": "the player stands at the foot of the fall: on the ground (or swimming in its pool), below the lip",
-        "do": [{"teleport": f"pos {x} {y} {su.rounded(max(z, 0) + DROP_U, 2)}"}, {"wait": 4}],
+        "do": [probe_go("s05-at-the-falls", x, y, max(z, 0) + DROP_U), {"wait": 4}],
         "expect": [{"read": ["player"], "path": "pos.z", "ge": su.rounded(z - tol, 2), "within": 3},
                    {"read": ["player"], "path": "pos.z", "le": su.rounded(top_z, 2), "within": 3}],
         "expected_ground_m": round(float(g.H[r, c]), 3),
@@ -386,7 +438,7 @@ def stop_6(w: World, g: Ground) -> dict:
     s["steps"] = [arrive(s, False), {
         "name": "s06-deepest-point",
         "why": f"the deepest sample of {row[0]}: below the basin level {row[4]} m; the player stands on the bed or swims at the level",
-        "do": [{"teleport": f"pos {x} {y} {su.rounded(max(z, level_u) + DROP_U, 2)}"}, {"wait": 4}],
+        "do": [probe_go("s06-deepest-point", x, y, max(z, level_u) + DROP_U), {"wait": 4}],
         "expect": [{"read": ["player"], "path": "pos.z", "ge": su.rounded(z - tol, 2), "within": 3},
                    {"read": ["player"], "path": "pos.z", "le": su.rounded(level_u + tol, 2), "within": 3}],
         "expected_ground_m": round(float(g.H[r, c]), 3), "expected_water_m": row[4],
@@ -433,7 +485,7 @@ def stop_7(w: World, g: Ground) -> dict:
                    probe_step(g, "s07-coast-land", rr, shore_pt, "land three samples back from the sea edge"),
                    {"name": "s07-coast-sea",
                     "why": "three samples out in the sea: the sea default is level 0, so the player swims",
-                    "do": [{"teleport": "pos {} {} {}".format(*(g.units(rr, sea_pt)[:2] + (su.rounded(su.metres_to_units(1.5), 2),)))},
+                    "do": [probe_go("s07-coast-sea", *g.units(rr, sea_pt)[:2], su.metres_to_units(1.5)),
                            {"wait": 4}],
                     "expect": [{"read": ["player"], "path": "swimming", "eq": True, "within": 5}],
                     "reader": ["the sea meets the shore without a gap; the water plane is at one level",
@@ -518,7 +570,7 @@ def stop_9(w: World, g: Ground) -> dict:
          "reader": [f"the notice reads \"{gate['message']}\" in our own words", "the crosshair named the gate \"Border Gate\""]},
         {"name": "s09-segment-travel", "do": [*HOLD, {"console": cow(*g.cell(wr, wc))}, {"wait": 8}], "expect": [in_world(9)]},
         {"name": "s09-segment-push-west", "why": "30 m inside the west border, facing west, walking out for 9 s",
-         "do": [{"teleport": f"pos {seg_x} {seg_y} {su.rounded(seg_z + DROP_U, 2)}"}, {"wait": 3},
+         "do": [probe_go("s09-segment-push-west", seg_x, seg_y, seg_z + DROP_U), {"wait": 3},
                 {"console": "player.setangle z 270"}, *push],
          "expect": [{"read": ["player"], "path": "pos.x", "le": su.rounded(seg_x - 300, 2), "within": 1},
                     {"read": ["player"], "path": "pos.x", "ge": min(xs), "within": 1},
@@ -554,7 +606,7 @@ def stop_10(w: World, g: Ground) -> dict:
     out_dx, out_dy = math.sin(a) * 0.6 + math.cos(a) * 1.5, math.cos(a) * 0.6 - math.sin(a) * 1.5
     s["steps"] = [arrive(s, False), {
         "name": "s10-face-the-sign", "why": f"5 m in front of {sign[0]}, facing it",
-        "do": [{"teleport": f"pos {px} {py} {su.rounded(pz + DROP_U, 2)}"}, {"wait": 4}, {"console": f"player.setangle z {heading}"}, {"wait": 1}],
+        "do": [probe_go("s10-face-the-sign", px, py, pz + DROP_U), {"wait": 4}, {"console": f"player.setangle z {heading}"}, {"wait": 1}],
         "expect": [{"read": ["player"], "path": "pos.z", "ge": su.rounded(pz - su.metres_to_units(TOL_M), 2), "within": 3},
                    {"read": ["player"], "path": "pos.z", "le": su.rounded(pz + su.metres_to_units(TOL_M), 2), "within": 3}],
         "reader": [f"the signpost stands upright on the ground, with {len(arms)} arms", f"the arms point the way: {names}",
@@ -745,7 +797,9 @@ HEADER = """# The world track's in-game sample (docs/phases/1-core-loop/README.m
 def render() -> dict[Path, str]:
     import yaml
     w, g = World(), Ground()
+    PROBES.clear()
     stops = build(w, g)
+    render.world = w
     files = {JOURNEY: HEADER + yaml.safe_dump(journey(stops), sort_keys=False, width=140, allow_unicode=True)}
     for s in stops:
         files[SCENES / f"{s['scene']}.txt"] = scene_text(s)
@@ -762,12 +816,15 @@ def main(argv=None) -> int:
     except Missing as e:
         print(f"world_sample: data not on this machine: {e}", file=sys.stderr)
         return 2
+    probes_ok = sync_probes(render.world.db, a.write)
     if a.write:
         for p, t in files.items():
             p.write_bytes(t.encode())
         print(f"wrote {len(files)} files")
         return 0
     stale = [str(p.relative_to(REPO)) for p, t in files.items() if not p.exists() or p.read_bytes() != t.encode()]
+    if not probes_ok:
+        stale.append("the probe markers (build_ref rows)")
     if stale:
         print("stale (run tools/world_sample.py --write): " + ", ".join(stale))
         return 1
